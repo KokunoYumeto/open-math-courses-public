@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear forms in logarithms: the problem, the trivial bounds, and effectivity · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="linear-forms-in-logarithms-the-problem-the-trivial-bounds-and-effectivity">Linear forms in logarithms: the problem, the trivial bounds, and effectivity</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>Two integers can be very large and still differ by one. To study a difference such as <span class="math" data-tex="\(2^x-3^y\)">\(2^x-3^y\)</span>, divide by one of the powers. The question becomes how close <span class="math" data-tex="\(2^x3^{-y}\)">\(2^x3^{-y}\)</span> can be to <span class="math" data-tex="\(1\)">\(1\)</span>. Taking logarithms changes multiplication into addition, but introduces a second question: how much cancellation can occur in <span class="math" data-tex="\(x\log 2-y\log 3\)">\(x\log 2-y\log 3\)</span>?</p>
+<p>This lesson develops the elementary estimates that make the question precise. It proves the passage between the multiplicative and additive forms, a height bound, a box-principle construction of small forms, and an explicit finiteness consequence of a polynomial lower bound. Its height prerequisite is the written lesson <a href="../TR-TRANS/TR-TRANS-02.html"><em>Heights of algebraic numbers</em></a> in <em>Transcendental numbers</em>: Theorem 2.4 supplies the normalization, Proposition 2.5 the product and sum inequalities, and Theorem 2.8 the one-place Liouville inequality. The freely accessible treatments [Waldschmidt 1992], [Waldschmidt 2000] and [Evertse 2019] provide the comparisons discussed below. The logarithm methods of Baker and later authors are credited in the references.</p>
+<h2 id="1-start-with-a-diophantine-equation">1. Start with a Diophantine equation</h2>
+<p>If <span class="math" data-tex="\(2^x-3^y=k\)">\(2^x-3^y=k\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+2^x3^{-y}-1=k3^{-y}.
+\]">\[
+2^x3^{-y}-1=k3^{-y}.
+\]</span>
+<p>For fixed nonzero <span class="math" data-tex="\(k\)">\(k\)</span>, the right side is exponentially small as <span class="math" data-tex="\(y\)">\(y\)</span> grows. A lower bound that decreases only as a power of <span class="math" data-tex="\(\max(x,y)\)">\(\max(x,y)\)</span> must eventually contradict this identity. This is the central mechanism of effective applications.</p>
+<p>Let <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> be nonzero algebraic numbers, let <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span> be integers, and choose logarithms <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> with <span class="math" data-tex="\(e^{\ell_j}=\alpha_j\)">\(e^{\ell_j}=\alpha_j\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+P=\prod_{j=1}^n\alpha_j^{b_j},\qquad
+\Delta=P-1,\qquad
+\Lambda=\sum_{j=1}^n b_j\ell_j,\qquad
+B=\max\{3,|b_1|,\ldots,|b_n|\}.
+\]">\[
+P=\prod_{j=1}^n\alpha_j^{b_j},\qquad
+\Delta=P-1,\qquad
+\Lambda=\sum_{j=1}^n b_j\ell_j,\qquad
+B=\max\{3,|b_1|,\ldots,|b_n|\}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(e^\Lambda=P\)">\(e^\Lambda=P\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\Delta=0\quad\Longleftrightarrow\quad\Lambda\in2\pi i\mathbb Z.
+\]">\[
+\Delta=0\quad\Longleftrightarrow\quad\Lambda\in2\pi i\mathbb Z.
+\]</span>
+<p>If the <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> are positive real numbers and the <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> are real logarithms, this reduces to <span class="math" data-tex="\(\Delta=0\Longleftrightarrow\Lambda=0\)">\(\Delta=0\Longleftrightarrow\Lambda=0\)</span>. A family is <em>multiplicatively independent</em> if <span class="math" data-tex="\(P=1\)">\(P=1\)</span> forces every <span class="math" data-tex="\(b_j=0\)">\(b_j=0\)</span>. For positive real numbers this is exactly the rational linear independence of their real logarithms.</p>
+<p>For <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>, independence follows from unique factorization: <span class="math" data-tex="\(2^u3^v=1\)">\(2^u3^v=1\)</span> implies <span class="math" data-tex="\(u=v=0\)">\(u=v=0\)</span>. More generally, independence of positive rationals can be checked by linear algebra on the vectors of their prime valuations. For example, <span class="math" data-tex="\(2,3,6\)">\(2,3,6\)</span> are dependent even though no two of them are powers of each other.</p>
+<p>An <em>inhomogeneous</em> logarithmic form has the shape</p>
+<span class="math math-display" data-tex="\[
+\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n,
+\qquad \beta_j\in\overline{\mathbb Q}.
+\]">\[
+\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n,
+\qquad \beta_j\in\overline{\mathbb Q}.
+\]</span>
+<p>It need not exponentiate to an algebraic number. Its exponential is <span class="math" data-tex="\(e^{\beta_0}\prod_j\alpha_j^{\beta_j}\)">\(e^{\beta_0}\prod_j\alpha_j^{\beta_j}\)</span>, where each algebraic power means <span class="math" data-tex="\(e^{\beta_j\ell_j}\)">\(e^{\beta_j\ell_j}\)</span> for the chosen logarithm. For instance, <span class="math" data-tex="\(\pi+\log 2=-i\log(-1)+\log2\)">\(\pi+\log 2=-i\log(-1)+\log2\)</span> is a homogeneous algebraic-coefficient logarithmic form if <span class="math" data-tex="\(\log(-1)=i\pi\)">\(\log(-1)=i\pi\)</span>.</p>
+<h2 id="2-which-logarithm-is-small">2. Which logarithm is small?</h2>
+<p>Our principal logarithm has imaginary part in <span class="math" data-tex="\((-\pi,\pi]\)">\((-\pi,\pi]\)</span>. We only use its holomorphic restriction near <span class="math" data-tex="\(1\)">\(1\)</span>, so its convention on the negative real axis creates no ambiguity in the following estimates.</p>
+<p><strong>Lemma 1.1 (local comparison).</strong> If <span class="math" data-tex="\(|w|&lt;1/2\)">\(|w|&lt;1/2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|\operatorname{Log}(1+w)|\le2|w|.
+\]">\[
+|\operatorname{Log}(1+w)|\le2|w|.
+\]</span>
+<p>If <span class="math" data-tex="\(|z|\le1/2\)">\(|z|\le1/2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|e^z-1|\le2|z|.
+\]">\[
+|e^z-1|\le2|z|.
+\]</span>
+<p><strong>Proof.</strong> The line segment from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1+w\)">\(1+w\)</span> stays in the right half-plane. Hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Log}(1+w)=\int_0^1\frac{w}{1+tw}\,dt.
+\]">\[
+\operatorname{Log}(1+w)=\int_0^1\frac{w}{1+tw}\,dt.
+\]</span>
+<p>The integrand has absolute value at most <span class="math" data-tex="\(|w|/(1-|w|)\le2|w|\)">\(|w|/(1-|w|)\le2|w|\)</span>. Likewise</p>
+<span class="math math-display" data-tex="\[
+e^z-1=z\int_0^1 e^{tz}\,dt,
+\]">\[
+e^z-1=z\int_0^1 e^{tz}\,dt,
+\]</span>
+<p>and <span class="math" data-tex="\(e^{|z|}\le e^{1/2}&lt;2\)">\(e^{|z|}\le e^{1/2}&lt;2\)</span>. This proves both estimates. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (branch correction).</strong> Take principal logarithms of the <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>. If <span class="math" data-tex="\(|\Delta|&lt;1/2\)">\(|\Delta|&lt;1/2\)</span>, there is an even integer <span class="math" data-tex="\(b_0\)">\(b_0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|b_0|\le\sum_j|b_j|+1\le nB+1,
+\qquad
+\left|b_0\log(-1)+\sum_jb_j\log\alpha_j\right|\le2|\Delta|.
+\]">\[
+|b_0|\le\sum_j|b_j|+1\le nB+1,
+\qquad
+\left|b_0\log(-1)+\sum_jb_j\log\alpha_j\right|\le2|\Delta|.
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(u=\operatorname{Log}(1+\Delta)\)">\(u=\operatorname{Log}(1+\Delta)\)</span>. Since <span class="math" data-tex="\(e^u=e^\Lambda\)">\(e^u=e^\Lambda\)</span>, the elementary description of the kernel of the exponential gives <span class="math" data-tex="\(\Lambda-u=2\pi i k\)">\(\Lambda-u=2\pi i k\)</span> for an integer <span class="math" data-tex="\(k\)">\(k\)</span>. Choose <span class="math" data-tex="\(b_0=-2k\)">\(b_0=-2k\)</span>. Then the corrected form equals <span class="math" data-tex="\(u\)">\(u\)</span>, so Lemma 1.1 gives its bound. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\pi|b_0|=|\operatorname{Im}(\Lambda-u)|
+\le\pi\sum_j|b_j|+|\operatorname{Im}u|.
+\]">\[
+\pi|b_0|=|\operatorname{Im}(\Lambda-u)|
+\le\pi\sum_j|b_j|+|\operatorname{Im}u|.
+\]</span>
+<p>The number <span class="math" data-tex="\(1+\Delta\)">\(1+\Delta\)</span> has positive real part, so <span class="math" data-tex="\(|\operatorname{Im}u|&lt;\pi/2\)">\(|\operatorname{Im}u|&lt;\pi/2\)</span>. The claimed integer bound follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The correction cannot be omitted. If <span class="math" data-tex="\(\alpha_1=\alpha_2=-1\)">\(\alpha_1=\alpha_2=-1\)</span> and <span class="math" data-tex="\(b_1=b_2=1\)">\(b_1=b_2=1\)</span>, then <span class="math" data-tex="\(P=1\)">\(P=1\)</span> but <span class="math" data-tex="\(\Lambda=2\pi i\)">\(\Lambda=2\pi i\)</span>. There are examples with a small nonzero <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> too: take <span class="math" data-tex="\(\alpha_1=-1\)">\(\alpha_1=-1\)</span>, <span class="math" data-tex="\(\alpha_2=-(1+1/N)\)">\(\alpha_2=-(1+1/N)\)</span>, and both coefficients equal to <span class="math" data-tex="\(1\)">\(1\)</span>. Then <span class="math" data-tex="\(\Delta=1/N\)">\(\Delta=1/N\)</span>, while <span class="math" data-tex="\(\Lambda=\log(1+1/N)+2\pi i\)">\(\Lambda=\log(1+1/N)+2\pi i\)</span>.</p>
+<p>For positive real bases, <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is real and no correction is needed. For complex bases, smallness of <span class="math" data-tex="\(P-1\)">\(P-1\)</span> means closeness of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to the period lattice, not necessarily to its origin.</p>
+<h2 id="3-what-arithmetic-alone-gives">3. What arithmetic alone gives</h2>
+<p>We use the absolute logarithmic Weil height <span class="math" data-tex="\(h\)">\(h\)</span>. For a degree-<span class="math" data-tex="\(d\)">\(d\)</span> number <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, whose primitive minimal polynomial has positive leading coefficient <span class="math" data-tex="\(a\)">\(a\)</span> and roots <span class="math" data-tex="\(\gamma_1,\ldots,\gamma_d\)">\(\gamma_1,\ldots,\gamma_d\)</span>, our normalization is</p>
+<span class="math math-display" data-tex="\[
+h(\gamma)=\frac1d\left(\log a+\sum_{r=1}^d\log\max\{1,|\gamma_r|\}\right).
+\]">\[
+h(\gamma)=\frac1d\left(\log a+\sum_{r=1}^d\log\max\{1,|\gamma_r|\}\right).
+\]</span>
+<p>The prerequisite height facts are</p>
+<span class="math math-display" data-tex="\[
+h(uv)\le h(u)+h(v),\quad h(u^{-1})=h(u),\quad
+h(u+v)\le h(u)+h(v)+\log2,
+\]">\[
+h(uv)\le h(u)+h(v),\quad h(u^{-1})=h(u),\quad
+h(u+v)\le h(u)+h(v)+\log2,
+\]</span>
+<p>and the one-place Liouville inequality: if <span class="math" data-tex="\(0\ne u\in K\subset\mathbb C\)">\(0\ne u\in K\subset\mathbb C\)</span> and <span class="math" data-tex="\([K:\mathbb Q]=D\)">\([K:\mathbb Q]=D\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\log|u|\ge-Dh(u).
+\]">\[
+\log|u|\ge-Dh(u).
+\]</span>
+<p>The written internal proof provider is <a href="../TR-TRANS/TR-TRANS-02.html"><em>Heights of algebraic numbers</em></a>, Theorem 2.8, together with Theorem 2.4 and Proposition 2.5. Its statement covers every number field and every nonzero algebraic element, with this absolute normalization. [Waldschmidt 1992, Chapter 3] gives a freely accessible complementary treatment with the same absolute-height convention.</p>
+<p><strong>Proposition 1.3 (elementary lower bound).</strong> If <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span> and <span class="math" data-tex="\(K=\mathbb Q(\alpha_1,\ldots,\alpha_n)\)">\(K=\mathbb Q(\alpha_1,\ldots,\alpha_n)\)</span> has degree <span class="math" data-tex="\(D\)">\(D\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta|\ge-D\left(\log2+\sum_j|b_j|h(\alpha_j)\right)
+\ge-D\left(\log2+B\sum_jh(\alpha_j)\right).
+\]">\[
+\log|\Delta|\ge-D\left(\log2+\sum_j|b_j|h(\alpha_j)\right)
+\ge-D\left(\log2+B\sum_jh(\alpha_j)\right).
+\]</span>
+<p><strong>Proof.</strong> Repeated multiplication and inversion give <span class="math" data-tex="\(h(P)\le\sum_j|b_j|h(\alpha_j)\)">\(h(P)\le\sum_j|b_j|h(\alpha_j)\)</span>. Since <span class="math" data-tex="\(h(1)=0\)">\(h(1)=0\)</span>, we have <span class="math" data-tex="\(h(P-1)\le h(P)+\log2\)">\(h(P-1)\le h(P)+\log2\)</span>. Apply Liouville's inequality to the nonzero element <span class="math" data-tex="\(P-1\)">\(P-1\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a sharper elementary estimate for rationals. Write <span class="math" data-tex="\(\alpha_j=u_j/v_j\)">\(\alpha_j=u_j/v_j\)</span> in lowest terms, with nonzero integers <span class="math" data-tex="\(u_j,v_j\)">\(u_j,v_j\)</span>, and put <span class="math" data-tex="\(A_j=\max\{|u_j|,|v_j|\}\)">\(A_j=\max\{|u_j|,|v_j|\}\)</span>. Before any cancellation, write <span class="math" data-tex="\(P=U/V\)">\(P=U/V\)</span> with integers <span class="math" data-tex="\(U,V\ne0\)">\(U,V\ne0\)</span>. The denominator satisfies <span class="math" data-tex="\(|V|\le\prod_j A_j^{|b_j|}\)">\(|V|\le\prod_j A_j^{|b_j|}\)</span>. If <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>, the integer <span class="math" data-tex="\(U-V\)">\(U-V\)</span> is nonzero, so</p>
+<span class="math math-display" data-tex="\[
+|\Delta|=\frac{|U-V|}{|V|}\ge\prod_jA_j^{-|b_j|}.
+\]">\[
+|\Delta|=\frac{|U-V|}{|V|}\ge\prod_jA_j^{-|b_j|}.
+\]</span>
+<p>For <span class="math" data-tex="\(\Delta=2^m3^{-n}-1\)">\(\Delta=2^m3^{-n}-1\)</span>, with <span class="math" data-tex="\(m,n\ge0\)">\(m,n\ge0\)</span>, one can use the actual denominator <span class="math" data-tex="\(3^n\)">\(3^n\)</span>, obtaining <span class="math" data-tex="\(|\Delta|\ge3^{-n}\)">\(|\Delta|\ge3^{-n}\)</span>. This improves the uniform denominator estimate <span class="math" data-tex="\(2^{-m}3^{-n}\)">\(2^{-m}3^{-n}\)</span>, but still falls exponentially with <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For example, <span class="math" data-tex="\(3^5/2^8-1=-13/256\)">\(3^5/2^8-1=-13/256\)</span>. The actual denominator gives <span class="math" data-tex="\(13/256\ge1/256\)">\(13/256\ge1/256\)</span>; the uniform product estimate gives only <span class="math" data-tex="\(1/(3^5 2^8)\)">\(1/(3^5 2^8)\)</span>. The problem is not that the elementary bound is false. It allows far more cancellation than the exponents usually produce.</p>
+<h2 id="4-why-no-fixed-positive-lower-bound-works">4. Why no fixed positive lower bound works</h2>
+<p><strong>Lemma 1.4 (box principle).</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let <span class="math" data-tex="\(a_1,\ldots,a_n\ge2\)">\(a_1,\ldots,a_n\ge2\)</span> be integers, and set <span class="math" data-tex="\(A=\max_j a_j\)">\(A=\max_j a_j\)</span>. For every integer <span class="math" data-tex="\(B&gt;2n\log A\)">\(B&gt;2n\log A\)</span>, there are integers <span class="math" data-tex="\(b_j\)">\(b_j\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+0&lt;\max_j|b_j|\le B,
+\qquad
+\left|\prod_j a_j^{b_j}-1\right|\le\frac{2n\log A}{B^{n-1}}.
+\]">\[
+0&lt;\max_j|b_j|\le B,
+\qquad
+\left|\prod_j a_j^{b_j}-1\right|\le\frac{2n\log A}{B^{n-1}}.
+\]</span>
+<p><strong>Proof.</strong> Consider the <span class="math" data-tex="\((B+1)^n\)">\((B+1)^n\)</span> labelled points</p>
+<span class="math math-display" data-tex="\[
+s(c)=\sum_j c_j\log a_j,\qquad c\in\{0,\ldots,B\}^n,
+\]">\[
+s(c)=\sum_j c_j\log a_j,\qquad c\in\{0,\ldots,B\}^n,
+\]</span>
+<p>in an interval of length at most <span class="math" data-tex="\(nB\log A\)">\(nB\log A\)</span>. If two labels give the same point, their difference supplies a nonzero vector with product exactly <span class="math" data-tex="\(1\)">\(1\)</span>, which proves the assertion. Otherwise, sort the points. One of the <span class="math" data-tex="\((B+1)^n-1\)">\((B+1)^n-1\)</span> successive gaps is at most</p>
+<span class="math math-display" data-tex="\[
+\frac{nB\log A}{(B+1)^n-1}\le\frac{n\log A}{B^{n-1}}.
+\]">\[
+\frac{nB\log A}{(B+1)^n-1}\le\frac{n\log A}{B^{n-1}}.
+\]</span>
+<p>Subtract the corresponding labels. The resulting nonzero vector has coefficients of absolute value at most <span class="math" data-tex="\(B\)">\(B\)</span>, and its logarithmic form has absolute value at most the displayed quantity. Since <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(B&gt;2n\log A\)">\(B&gt;2n\log A\)</span>, this is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Lemma 1.1 finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For multiplicatively independent bases, the products constructed here are different from <span class="math" data-tex="\(1\)">\(1\)</span>. Their distances from <span class="math" data-tex="\(1\)">\(1\)</span> tend to zero as <span class="math" data-tex="\(B\to\infty\)">\(B\to\infty\)</span>. The same argument works for positive rationals: the points lie in an interval of length at most <span class="math" data-tex="\(B\sum_j|\log\alpha_j|\)">\(B\sum_j|\log\alpha_j|\)</span>. Thus there cannot be a positive lower bound independent of the coefficients.</p>
+<p>Combining the elementary lower bound and the box principle leaves a wide range:</p>
+<span class="math math-display" data-tex="\[
+e^{-cB}\quad\hbox{versus}\quad B^{-(n-1)}.
+\]">\[
+e^{-cB}\quad\hbox{versus}\quad B^{-(n-1)}.
+\]</span>
+<p>The first holds for every nonzero form; the second describes forms that exist for arbitrarily large coefficient bounds. A theorem of the shape <span class="math" data-tex="\(|\Delta|\ge B^{-C}\)">\(|\Delta|\ge B^{-C}\)</span>, with a fixed <span class="math" data-tex="\(C\)">\(C\)</span>, closes the most important part of that range. It does not assert that every coefficient vector nearly attains the bound.</p>
+<h2 id="5-from-a-polynomial-bound-to-a-finite-search">5. From a polynomial bound to a finite search</h2>
+<p><strong>Proposition 1.5.</strong> Suppose an explicitly known <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+|2^x3^{-y}-1|\ge\max\{3,x,y\}^{-C}
+\]">\[
+|2^x3^{-y}-1|\ge\max\{3,x,y\}^{-C}
+\]</span>
+<p>whenever <span class="math" data-tex="\(x,y\ge0\)">\(x,y\ge0\)</span> and <span class="math" data-tex="\(2^x3^{-y}\ne1\)">\(2^x3^{-y}\ne1\)</span>. For a nonzero integer <span class="math" data-tex="\(k\)">\(k\)</span>, every solution of <span class="math" data-tex="\(2^x-3^y=k\)">\(2^x-3^y=k\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\max\{x,y\}&amp;\le\max\{3,R(C,k)\},\\
+R(C,k)&amp;=\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|)}}{2\log2}\right)^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\max\{x,y\}&amp;\le\max\{3,R(C,k)\},\\
+R(C,k)&amp;=\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|)}}{2\log2}\right)^2.
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(B=\max\{3,x,y\}\)">\(B=\max\{3,x,y\}\)</span>. The equation and the assumed bound give</p>
+<span class="math math-display" data-tex="\[
+3^y\le|k|B^C,
+\qquad 2^x\le3^y+|k|\le2|k|B^C.
+\]">\[
+3^y\le|k|B^C,
+\qquad 2^x\le3^y+|k|\le2|k|B^C.
+\]</span>
+<p>If <span class="math" data-tex="\(\max(x,y)\ge3\)">\(\max(x,y)\ge3\)</span>, then <span class="math" data-tex="\(B=\max(x,y)\)">\(B=\max(x,y)\)</span> and <span class="math" data-tex="\(2^B\le\max(2^x,3^y)\le2|k|B^C\)">\(2^B\le\max(2^x,3^y)\le2|k|B^C\)</span>. Taking logarithms yields</p>
+<span class="math math-display" data-tex="\[
+B\log2\le\log(2|k|)+C\log B.
+\]">\[
+B\log2\le\log(2|k|)+C\log B.
+\]</span>
+<p>For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-tex="\(\log t\le\sqrt t\)">\(\log t\le\sqrt t\)</span>: differentiation shows the maximum of <span class="math" data-tex="\(\log t/\sqrt t\)">\(\log t/\sqrt t\)</span> is <span class="math" data-tex="\(2/e&lt;1\)">\(2/e&lt;1\)</span>. With <span class="math" data-tex="\(s=\sqrt B\)">\(s=\sqrt B\)</span>, the preceding inequality implies</p>
+<span class="math math-display" data-tex="\[
+(\log2)s^2-Cs-\log(2|k|)\le0.
+\]">\[
+(\log2)s^2-Cs-\log(2|k|)\le0.
+\]</span>
+<p>The positive root bounds <span class="math" data-tex="\(s\)">\(s\)</span>, giving <span class="math" data-tex="\(B\le R(C,k)\)">\(B\le R(C,k)\)</span>. The remaining solutions have both exponents below <span class="math" data-tex="\(3\)">\(3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This deliberately generous bound is enough to make a finite search possible. Later reductions replace large initial bounds by much smaller ones. If <span class="math" data-tex="\(C\)">\(C\)</span> is merely known to exist, Proposition 1.5 proves finiteness but does not specify the search range.</p>
+<h3 id="general-differences-of-powers">General differences of powers</h3>
+<p>Normalizing by the larger power gives a symmetric estimate. This is the
+argument of [Evertse 2019], Corollary 5.5; here we retain a prefactor,
+include zero exponents, and supply the resulting search bound.</p>
+<p><strong>Corollary (general differences of powers).</strong> Fix integers <span class="math" data-tex="\(a,b\ge2\)">\(a,b\ge2\)</span>.
+Suppose known constants <span class="math" data-tex="\(0&lt;c\le1\)">\(0&lt;c\le1\)</span> and <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> satisfy
+<span class="math math-display" data-tex="\[
+|a^u b^v-1|\ge c\max\{3,|u|,|v|\}^{-C}
+\]">\[
+|a^u b^v-1|\ge c\max\{3,|u|,|v|\}^{-C}
+\]</span>
+for every integer pair <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> with <span class="math" data-tex="\(a^u b^v\ne1\)">\(a^u b^v\ne1\)</span>.
+For <span class="math" data-tex="\(m,n\ge0\)">\(m,n\ge0\)</span> with <span class="math" data-tex="\(a^m\ne b^n\)">\(a^m\ne b^n\)</span>, put
+<span class="math" data-tex="\(B=\max\{3,m,n\}\)">\(B=\max\{3,m,n\}\)</span>. Then
+<span class="math math-display" data-tex="\[
+|a^m-b^n|\ge c\max\{a^m,b^n\}B^{-C}.
+\]">\[
+|a^m-b^n|\ge c\max\{a^m,b^n\}B^{-C}.
+\]</span>
+In particular, if <span class="math" data-tex="\(a^m-b^n=k\ne0\)">\(a^m-b^n=k\ne0\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T&amp;=\log(|k|/c),\\
+R_*&amp;=\left(\frac{C+\sqrt{C^2+4T\log2}}{2\log2}\right)^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+T&amp;=\log(|k|/c),\\
+R_*&amp;=\left(\frac{C+\sqrt{C^2+4T\log2}}{2\log2}\right)^2.
+\end{aligned}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\max(m,n)\le\max\{2,R_*\}.
+\]">\[
+\max(m,n)\le\max\{2,R_*\}.
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(a^m&gt;b^n\)">\(a^m&gt;b^n\)</span>, apply the assumed estimate to
+<span class="math" data-tex="\(a^{-m}b^n\)">\(a^{-m}b^n\)</span> and multiply by <span class="math" data-tex="\(a^m\)">\(a^m\)</span>. In the other case, apply it
+to <span class="math" data-tex="\(a^m b^{-n}\)">\(a^m b^{-n}\)</span> and multiply by <span class="math" data-tex="\(b^n\)">\(b^n\)</span>. The coefficient bound
+is <span class="math" data-tex="\(B\)">\(B\)</span> in either orientation. This proves the first inequality.</p>
+<p>When <span class="math" data-tex="\(\max(m,n)\ge3\)">\(\max(m,n)\ge3\)</span>, at least one exponent equals <span class="math" data-tex="\(B\)">\(B\)</span>, so
+<span class="math" data-tex="\(\max(a^m,b^n)\ge2^B\)">\(\max(a^m,b^n)\ge2^B\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+B\log2\le\log(|k|/c)+C\log B.
+\]">\[
+B\log2\le\log(|k|/c)+C\log B.
+\]</span>
+Use <span class="math" data-tex="\(\log B\le\sqrt B\)">\(\log B\le\sqrt B\)</span> as in Proposition 1.5 and solve the
+quadratic inequality in <span class="math" data-tex="\(\sqrt B\)">\(\sqrt B\)</span>. Its constant term is
+nonpositive, since <span class="math" data-tex="\(|k|\ge1\)">\(|k|\ge1\)</span> and <span class="math" data-tex="\(c\le1\)">\(c\le1\)</span>. If both exponents
+are below three, their maximum is at most two. These cases give the
+stated bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fixed-base estimate (5.47), proved later in
+<a href="TR-BAKER-05.html#10-consequences-and-later-refinements"><em>Effective lower bounds II: proof of Baker's theorem</em></a>,
+supplies an effective <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Its proof follows the complete effective theorem in that lesson. Neither that estimate nor the
+corollary requires multiplicative independence. They apply, for example,
+to <span class="math" data-tex="\(4^m-8^n=k\)">\(4^m-8^n=k\)</span>, provided the difference is nonzero. An elementary
+valuation argument solves one such example in Exercise 6.</p>
+<h2 id="6-effectivity-and-the-shape-of-the-later-theorems">6. Effectivity and the shape of the later theorems</h2>
+<p>A constant is <em>effectively computable from given data</em> if the proof supplies a terminating procedure producing a valid value from those data. A formula is one way to do this. A finite algorithm is another. An ineffective existence proof supplies neither, even if its conclusion is true.</p>
+<p>Here is a concrete contrast. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> multiplicatively independent positive integers <span class="math" data-tex="\(a_1,\ldots,a_n\)">\(a_1,\ldots,a_n\)</span>, Gelfond's many-logarithm result says that, for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, there exists <span class="math" data-tex="\(c_\delta&gt;0\)">\(c_\delta&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|a_1^{b_1}\cdots a_n^{b_n}-1|\ge c_\delta e^{-\delta B}
+\]">\[
+|a_1^{b_1}\cdots a_n^{b_n}-1|\ge c_\delta e^{-\delta B}
+\]</span>
+<p>for nonzero coefficient vectors, where <span class="math" data-tex="\(B=\max\{3,|b_j|\}\)">\(B=\max\{3,|b_j|\}\)</span>. The quoted result is ineffective in <span class="math" data-tex="\(c_\delta\)">\(c_\delta\)</span>. Gelfond's earlier two-logarithm estimate gives, for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, an effective <span class="math" data-tex="\(c_\varepsilon&gt;0\)">\(c_\varepsilon&gt;0\)</span> in a lower bound</p>
+<span class="math math-display" data-tex="\[
+|a_1^{b_1}a_2^{b_2}-1|\ge c_\varepsilon
+\exp\bigl(- (\log B)^{5+\varepsilon}\bigr).
+\]">\[
+|a_1^{b_1}a_2^{b_2}-1|\ge c_\varepsilon
+\exp\bigl(- (\log B)^{5+\varepsilon}\bigr).
+\]</span>
+<p>These historical attributions and the distinction between the original effective and ineffective methods are discussed in [Waldschmidt 2000], Section 1.2, especially Theorem 1.9, and [Waldschmidt 1992], Introduction. Both free treatments state this historical comparison for integer bases. The stronger fixed-base polynomial estimate in this course applies to positive rationals as well. The following calculation proves both weaker numerical conclusions in that full setting with effective constants.</p>
+<p><strong>Lemma 1.6 (weaker bounds from a polynomial estimate).</strong> Suppose <span class="math" data-tex="\(|\Delta|\ge aB^{-C}\)">\(|\Delta|\ge aB^{-C}\)</span>, with known <span class="math" data-tex="\(a,C&gt;0\)">\(a,C&gt;0\)</span> and <span class="math" data-tex="\(B\ge3\)">\(B\ge3\)</span>. For every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and every <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\Delta|\ge a\exp\bigl(C-C\log(C/\delta)\bigr)e^{-\delta B},
+\]">\[
+|\Delta|\ge a\exp\bigl(C-C\log(C/\delta)\bigr)e^{-\delta B},
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+|\Delta|\ge a\exp\left(-(q-1)(C/q)^{q/(q-1)}\right)
+\exp\bigl(- (\log B)^q\bigr).
+\]">\[
+|\Delta|\ge a\exp\left(-(q-1)(C/q)^{q/(q-1)}\right)
+\exp\bigl(- (\log B)^q\bigr).
+\]</span>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, the function <span class="math" data-tex="\(\delta x-C\log x\)">\(\delta x-C\log x\)</span> has its minimum at <span class="math" data-tex="\(x=C/\delta\)">\(x=C/\delta\)</span>, where its value is <span class="math" data-tex="\(C-C\log(C/\delta)\)">\(C-C\log(C/\delta)\)</span>. Thus <span class="math" data-tex="\(B^{-C}e^{\delta B}\)">\(B^{-C}e^{\delta B}\)</span> is at least the first exponential constant. On <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, the minimum of <span class="math" data-tex="\(t^q-Ct\)">\(t^q-Ct\)</span> occurs at <span class="math" data-tex="\(t=(C/q)^{1/(q-1)}\)">\(t=(C/q)^{1/(q-1)}\)</span> and equals <span class="math" data-tex="\(-(q-1)(C/q)^{q/(q-1)}\)">\(-(q-1)(C/q)^{q/(q-1)}\)</span>. Use <span class="math" data-tex="\(t=\log B\)">\(t=\log B\)</span> for the second bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(q=5+\varepsilon\)">\(q=5+\varepsilon\)</span>, the second formula has the two-logarithm shape above. For fixed positive rational bases, the polynomial estimate is proved in the effective-bound lessons, specifically (5.47), from the full effective Baker theorem and the local comparison of Section 2. Consequently both weaker numerical bounds admit effective constants whenever the product is not one; the historical many-logarithm proof did not supply them. Lemma 1.6 states exactly where that later input is used. The elementary arguments in Sections 2–4 do not depend on it.</p>
+<p>The following table describes shapes, not interchangeable theorem statements. The heights, branches and nonvanishing conditions must be specified afresh whenever a theorem is applied. Write <span class="math" data-tex="\(\Omega=\prod_j\log A_j\)">\(\Omega=\prod_j\log A_j\)</span>, where the admissible <span class="math" data-tex="\(A_j\)">\(A_j\)</span> depend on the theorem.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Characteristic conclusion</th>
+<th>Treatment in this course</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baker's qualitative theorem</td>
+<td>Rationally independent logarithms remain independent over the algebraic numbers, even after adjoining <span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td>Proved by an auxiliary function and extrapolation</td>
+</tr>
+<tr>
+<td>Baker's algebraic-coefficient measure</td>
+<td>A nonzero form has size <span class="math" data-tex="\(&gt;B^{-C}\)">\(&gt;B^{-C}\)</span>, with effectively computable <span class="math" data-tex="\(C\)">\(C\)</span> and bounded algebraic degrees</td>
+<td>Proved in <a href="TR-BAKER-05.html"><em>Effective lower bounds II: proof of Baker's theorem</em></a>; <span class="math" data-tex="\(B\)">\(B\)</span> bounds coefficient heights</td>
+</tr>
+<tr>
+<td>Feldman's polynomial refinement</td>
+<td>Integer-coefficient multiplicative forms satisfy <span class="math" data-tex="\(\lvert\Delta\rvert\ge B^{-C}\)">\(\lvert\Delta\rvert\ge B^{-C}\)</span></td>
+<td>Fixed-base consequence proved in <a href="TR-BAKER-05.html"><em>Effective lower bounds II: proof of Baker's theorem</em></a>, Section 10; individual-height estimates treated in the lesson on many logarithms</td>
+</tr>
+<tr>
+<td>Baker's product-height refinement</td>
+<td>An exponent involving <span class="math" data-tex="\(\Omega\log\Omega\)">\(\Omega\log\Omega\)</span></td>
+<td>Treated in <a href="TR-BAKER-08.html"><em>Linear forms in many logarithms: the modern estimates and how to use them</em></a>, alongside the subsequent refinements</td>
+</tr>
+<tr>
+<td>Philippon–Waldschmidt, Wüstholz, and Baker–Wüstholz</td>
+<td>A lower bound whose exponent involves <span class="math" data-tex="\(\Omega\log B\)">\(\Omega\log B\)</span></td>
+<td>Statements, conditions and deductions given in that same lesson on many logarithms</td>
+</tr>
+<tr>
+<td>Laurent's determinant method</td>
+<td>Two-logarithm estimates involving <span class="math" data-tex="\((\log B&#x27;)^2\)">\((\log B&#x27;)^2\)</span></td>
+<td>General parameter theorem proved in <a href="TR-BAKER-06.html"><em>Two logarithms I: an interpolation determinant</em></a>; sharper explicit families in <a href="TR-BAKER-07.html"><em>Two logarithms II: explicit lower bounds</em></a></td>
+</tr>
+<tr>
+<td>Matveev's estimate</td>
+<td>Explicit product-height bounds with improved dependence on the number of logarithms</td>
+<td>Theorem 8.6 and its applications in the lesson on many logarithms</td>
+</tr>
+<tr>
+<td>Yu and Bugeaud–Laurent</td>
+<td>Upper bounds for a normalized <span class="math" data-tex="\(p\)">\(p\)</span>-adic valuation</td>
+<td>Proofs planned in <em>Two p-adic logarithms and Yu's estimates</em></td>
+</tr>
+</tbody>
+</table>
+<p>The algebraic-coefficient and integer-coefficient versions use different size parameters. Keeping this distinction prevents a transcendence measure from being mistaken for an integer-exponent estimate.</p>
+<p>One further distinction matters. For <span class="math" data-tex="\(\alpha=1+1/N\)">\(\alpha=1+1/N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac1{N+1}\le\log\left(1+\frac1N\right)\le\frac1N,
+\qquad h(\alpha)=\log(N+1).
+\]">\[
+\frac1{N+1}\le\log\left(1+\frac1N\right)\le\frac1N,
+\qquad h(\alpha)=\log(N+1).
+\]</span>
+<p>The inequalities follow by integrating <span class="math" data-tex="\(1/(1+t)\)">\(1/(1+t)\)</span> from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. The logarithm is small even though the height is large. Refined estimates with a parameter <span class="math" data-tex="\(E\)">\(E\)</span> exploit this discrepancy. A height parameter cannot be replaced by the size of the logarithm alone.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Determine exactly when <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span> in terms of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and explain what changes for positive real bases. Give an example showing why principal logarithms of negative bases can require a period correction.</p>
+<p><strong>Exercise 2 (easy).</strong> For each <span class="math" data-tex="\(1\le n\le10\)">\(1\le n\le10\)</span>, choose the integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span> minimizing <span class="math" data-tex="\(|2^m-3^n|\)">\(|2^m-3^n|\)</span>. Compare <span class="math" data-tex="\(|2^m3^{-n}-1|\)">\(|2^m3^{-n}-1|\)</span> with both elementary rational lower bounds from Section 3.</p>
+<p><strong>Exercise 3 (medium).</strong> Repeat the box-principle proof for multiplicatively independent positive rationals <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>, with <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Give a sufficient lower threshold for <span class="math" data-tex="\(B\)">\(B\)</span> and prove that the nonzero distances from <span class="math" data-tex="\(1\)">\(1\)</span> accumulate at zero.</p>
+<p><strong>Exercise 4 (medium).</strong> In Lemma 1.4, explain why the count is <span class="math" data-tex="\((B+1)^n\)">\((B+1)^n\)</span>, why a repeated point is harmless there, and why multiplicative independence is needed when one wants the constructed distance to be nonzero. Derive the exact successive-gap bound before estimating it by <span class="math" data-tex="\(n\log A/B^{n-1}\)">\(n\log A/B^{n-1}\)</span>.</p>
+<p><strong>Exercise 5 (hard).</strong> Assume the lower bound in Proposition 1.5. Prove its explicit search bound, including solutions where one exponent is zero. Then derive an explicit bound when the hypothesis is weakened to <span class="math" data-tex="\(|2^x3^{-y}-1|\ge cB^{-C}\)">\(|2^x3^{-y}-1|\ge cB^{-C}\)</span>, with known <span class="math" data-tex="\(0&lt;c\le1\)">\(0&lt;c\le1\)</span>.</p>
+<p><strong>Exercise 6 (medium).</strong> The bases <span class="math" data-tex="\(4\)">\(4\)</span> and <span class="math" data-tex="\(8\)">\(8\)</span> are multiplicatively dependent. Solve <span class="math" data-tex="\(4^m-8^n=56\)">\(4^m-8^n=56\)</span> for integers <span class="math" data-tex="\(m,n\ge0\)">\(m,n\ge0\)</span>, using the exact power of <span class="math" data-tex="\(2\)">\(2\)</span> dividing each side. Explain why the general corollary also applies to this equation.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> Since <span class="math" data-tex="\(e^\Lambda=1+\Delta\)">\(e^\Lambda=1+\Delta\)</span>, the kernel <span class="math" data-tex="\(2\pi i\mathbb Z\)">\(2\pi i\mathbb Z\)</span> of the complex exponential gives the exact criterion. Real logarithms give a real <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>; its intersection with that kernel is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. With two bases equal to <span class="math" data-tex="\(-1\)">\(-1\)</span> and both coefficients equal to <span class="math" data-tex="\(1\)">\(1\)</span>, the principal logarithmic form is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, although <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>.</p>
+<p><strong>Solution 2.</strong> For a fixed <span class="math" data-tex="\(3^n\)">\(3^n\)</span>, the closest power of <span class="math" data-tex="\(2\)">\(2\)</span> is one of the two powers immediately bracketing it. All others are farther away by monotonicity. Checking those two integers gives:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th>nearest exponent <span class="math" data-tex="\(m\)">\(m\)</span></th>
+<th><span class="math" data-tex="\(\lvert2^m-3^n\rvert\)">\(\lvert2^m-3^n\rvert\)</span></th>
+<th>exact normalized distance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1 or 2</td>
+<td>1</td>
+<td><span class="math" data-tex="\(1/3\)">\(1/3\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td><span class="math" data-tex="\(1/9\)">\(1/9\)</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td><span class="math" data-tex="\(5/27\)">\(5/27\)</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>17</td>
+<td><span class="math" data-tex="\(17/81\)">\(17/81\)</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td><span class="math" data-tex="\(13/243\)">\(13/243\)</span></td>
+</tr>
+<tr>
+<td>6</td>
+<td>9</td>
+<td>217</td>
+<td><span class="math" data-tex="\(217/729\)">\(217/729\)</span></td>
+</tr>
+<tr>
+<td>7</td>
+<td>11</td>
+<td>139</td>
+<td><span class="math" data-tex="\(139/2187\)">\(139/2187\)</span></td>
+</tr>
+<tr>
+<td>8</td>
+<td>13</td>
+<td>1631</td>
+<td><span class="math" data-tex="\(1631/6561\)">\(1631/6561\)</span></td>
+</tr>
+<tr>
+<td>9</td>
+<td>14</td>
+<td>3299</td>
+<td><span class="math" data-tex="\(3299/19683\)">\(3299/19683\)</span></td>
+</tr>
+<tr>
+<td>10</td>
+<td>16</td>
+<td>6487</td>
+<td><span class="math" data-tex="\(6487/59049\)">\(6487/59049\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Each normalized distance is at least <span class="math" data-tex="\(3^{-n}\)">\(3^{-n}\)</span>, because its numerator is a positive integer. It is consequently also at least the weaker bound <span class="math" data-tex="\(2^{-m}3^{-n}\)">\(2^{-m}3^{-n}\)</span>. The first two rows attain the actual-denominator bound. Small coefficient values need not show a smooth trend: the polynomial lower bounds are uniform restrictions on cancellation, not monotonicity claims.</p>
+<p><strong>Solution 3.</strong> Put <span class="math" data-tex="\(S=\sum_j|\log\alpha_j|&gt;0\)">\(S=\sum_j|\log\alpha_j|&gt;0\)</span>. The sums indexed by <span class="math" data-tex="\(\{0,\ldots,B\}^n\)">\(\{0,\ldots,B\}^n\)</span> lie between <span class="math" data-tex="\(B\sum_{\log\alpha_j&lt;0}\log\alpha_j\)">\(B\sum_{\log\alpha_j&lt;0}\log\alpha_j\)</span> and <span class="math" data-tex="\(B\sum_{\log\alpha_j&gt;0}\log\alpha_j\)">\(B\sum_{\log\alpha_j&gt;0}\log\alpha_j\)</span>, an interval of length <span class="math" data-tex="\(BS\)">\(BS\)</span>. Independence makes the sums distinct. The smallest successive gap is at most <span class="math" data-tex="\(BS/((B+1)^n-1)\le S/B^{n-1}\)">\(BS/((B+1)^n-1)\le S/B^{n-1}\)</span>. For an integer <span class="math" data-tex="\(B&gt;2S\)">\(B&gt;2S\)</span>, this is below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Subtract labels and use Lemma 1.1 to obtain a nonzero multiplicative distance at most <span class="math" data-tex="\(2S/B^{n-1}\)">\(2S/B^{n-1}\)</span>. These bounds tend to zero. If the corresponding coefficient vectors belonged to a fixed finite set, their positive distances would have a positive minimum, a contradiction. Thus the construction supplies arbitrarily small nonzero distances.</p>
+<p><strong>Solution 4.</strong> Each coordinate has <span class="math" data-tex="\(B+1\)">\(B+1\)</span> choices, including both endpoints. There are therefore <span class="math" data-tex="\((B+1)^n\)">\((B+1)^n\)</span> labelled sums. A repeated sum yields a nonzero difference of labels whose product is exactly <span class="math" data-tex="\(1\)">\(1\)</span>, meeting the weak inequality in the lemma. Under independence, repetition is impossible. For distinct sums <span class="math" data-tex="\(s_1&lt;\cdots&lt;s_N\)">\(s_1&lt;\cdots&lt;s_N\)</span>, the <span class="math" data-tex="\(N-1\)">\(N-1\)</span> successive gaps add to <span class="math" data-tex="\(s_N-s_1\le nB\log A\)">\(s_N-s_1\le nB\log A\)</span>; at least one gap is at most <span class="math" data-tex="\(nB\log A/((B+1)^n-1)\)">\(nB\log A/((B+1)^n-1)\)</span>. Finally <span class="math" data-tex="\((B+1)^n-1\ge B^n\)">\((B+1)^n-1\ge B^n\)</span>, giving the stated simpler estimate.</p>
+<p><strong>Solution 5.</strong> For the original hypothesis, Section 5 gives all steps. They use only <span class="math" data-tex="\(x,y\ge0\)">\(x,y\ge0\)</span>, so zero exponents are included. With the weakened hypothesis, the equation gives <span class="math" data-tex="\(3^y\le(|k|/c)B^C\)">\(3^y\le(|k|/c)B^C\)</span> and <span class="math" data-tex="\(2^x\le(|k|/c)B^C+|k|\le(2|k|/c)B^C\)">\(2^x\le(|k|/c)B^C+|k|\le(2|k|/c)B^C\)</span>. Replace <span class="math" data-tex="\(\log(2|k|)\)">\(\log(2|k|)\)</span> throughout the quadratic argument by <span class="math" data-tex="\(\log(2|k|/c)\)">\(\log(2|k|/c)\)</span>. The explicit bound is</p>
+<span class="math math-display" data-tex="\[
+\max(x,y)\le\max\left\{3,
+\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|/c)}}{2\log2}\right)^2\right\}.
+\]">\[
+\max(x,y)\le\max\left\{3,
+\left(\frac{C+\sqrt{C^2+4\log2\,\log(2|k|/c)}}{2\log2}\right)^2\right\}.
+\]</span>
+<p><strong>Solution 6.</strong> The difference is positive, so <span class="math" data-tex="\(2m&gt;3n\)">\(2m&gt;3n\)</span>, and
+<span class="math math-display" data-tex="\[
+56=2^{3n}(2^{2m-3n}-1).
+\]">\[
+56=2^{3n}(2^{2m-3n}-1).
+\]</span>
+The factor in parentheses is odd. Since <span class="math" data-tex="\(56=2^3\cdot7\)">\(56=2^3\cdot7\)</span>, its exact
+power of two forces <span class="math" data-tex="\(3n=3\)">\(3n=3\)</span>, hence <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. The odd factor then
+gives <span class="math" data-tex="\(2^{2m-3}=8\)">\(2^{2m-3}=8\)</span>, so <span class="math" data-tex="\(m=3\)">\(m=3\)</span>. Conversely, <span class="math" data-tex="\(4^3-8=56\)">\(4^3-8=56\)</span>.
+This includes the possible zero-exponent cases: the valuation already
+forces <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and positivity forces <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. The corollary requires
+only a nonzero difference and a fixed-base lower bound; a multiplicative
+relation among the bases does not violate either condition.</p>
+<h2 id="prerequisites-and-continuation">Prerequisites and continuation</h2>
+<p>The sole arithmetic prerequisite beyond elementary rational arithmetic is the absolute-height theory specified in Section 3, supplied by the written <em>Heights of algebraic numbers</em> lesson in <em>Transcendental numbers</em>. The local comparison, branch correction, rational and height lower bounds, box-principle construction, finite-search calculations and Lemma 1.6 are proved here. The general difference-of-powers corollary is proved here under its stated lower-bound hypothesis; the later estimate (5.47) supplies that hypothesis. The table in Section 6 locates the different theorem shapes and their conditions. The next two lessons prove the qualitative Baker theorem before the course turns to effective constants.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Waldschmidt 1992] Michel Waldschmidt, <em>Linear Independence of Logarithms of Algebraic Numbers</em>, IMSc Report 116, 1992, revised text dated 2016. Introduction and Chapter 3. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/LIL.pdf">Author's text</a>.</li>
+<li>[Waldschmidt 2000] Michel Waldschmidt, <em>Diophantine Approximation on Linear Algebraic Groups</em>, Springer, 2000. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf">Author's full text</a>. Section 1.2 explains the elementary denominator, box-principle and historical effectivity comparisons; Chapter 3 supplies the height framework.</li>
+<li>[Evertse 2019] Jan-Hendrik Evertse, <em>Diophantine Equations</em>, Chapter 5, “Linear forms in logarithms,” 2019, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-5.pdf">author's chapter</a>. Corollaries 5.3 and 5.5 explain the branch correction and normalized difference-of-powers argument. The effective logarithm theorem itself is stated there; this course supplies its proof in its effective-bound lessons.</li>
+</ul>
+<h2 id="editable-sources"><span id="editable-source"></span>Editable source</h2>
+<p><a href="src/TR-BAKER-01.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-02.html">Baker&#x27;s theorem I: building an auxiliary function →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-01.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-01.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

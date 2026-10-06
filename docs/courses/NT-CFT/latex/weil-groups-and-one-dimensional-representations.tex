@@ -1,0 +1,641 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\setlist{itemsep=3pt,topsep=5pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcommand{\passthrough}[1]{#1}
+\newcommand{\pandocbounded}[1]{#1}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>0.75\textheight0.75\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\hypersetup{pdfauthor={OpenAI GPT-6.1 Sol, Codex, Ultra effort}}
+\begin{document}
+\section{Weil groups and one-dimensional
+representations}\label{weil-groups-and-one-dimensional-representations}
+
+\emph{Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October
+2026. Self-checked by the writing AI; no independent review is claimed.
+Public domain (CC0).}
+
+Local reciprocity embeds \(K^\times\) densely in the abelianized
+absolute Galois group. Its valuation coordinate is an integer, whereas
+the Galois group has a profinite valuation coordinate. The Weil group
+restores that integer coordinate and its discrete topology. Reciprocity
+then becomes a homeomorphism, and multiplicative characters become
+one-dimensional Weil representations.
+
+We use \href{../explicit-local-reciprocity-and-existence.html}{Explicit
+local reciprocity and the existence theorem}, especially Theorem 9.4,
+and the unit-filtration theorem in
+\href{../abelian-ramification-conductors-and-hasse-arf.html}{Abelian
+ramification, conductors and Hasse--Arf}. The analytic character factors
+come from \emph{Tate's local theory at the finite places} and
+\emph{Tate's local theory at the infinite places} in the course
+\emph{Adèles and L-functions}, lessons 7 and 8. We supply the additional
+Fourier argument needed in positive characteristic. Sections 1--4
+concern a nonarchimedean local field of either characteristic. Section 5
+treats the real and complex fields; section 6 translates Frobenius
+conventions, and section 7 connects the local construction to global
+reciprocity.
+
+\textbf{Prerequisite proof availability.} The named results below
+identify specific programme lessons. The
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#lesson-12}{prerequisite
+record} distinguishes published proofs, supplied owner texts awaiting
+publication, and missing full proofs. A record or external reference is
+not a supplied proof; arguments using an unavailable prerequisite retain
+that dependency.
+
+\subsection{1. Inertia open, Frobenius
+discrete}\label{inertia-open-frobenius-discrete}
+
+Let \(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\), and let \(I_K\) be
+inertia. The unramified-extension theorem gives \[
+1\longrightarrow I_K\longrightarrow G_K
+ \xrightarrow{d}\widehat{\mathbf Z}\longrightarrow1.
+\tag{1}
+\] We choose \(d\) so that an arithmetic Frobenius, acting by
+\(x\mapsto x^q\) on the residue field, has degree 1. Define \[
+W_K=d^{-1}(\mathbf Z).
+\tag{2}
+\] Give \(I_K\) its profinite topology and make it open in \(W_K\).
+Every coset of \(I_K\) has the topology transported from \(I_K\) by
+translation.
+
+\subsubsection{Proposition 12.1. The local Weil
+group}\label{proposition-12.1.-the-local-weil-group}
+
+The topology just specified makes \(W_K\) a locally compact, totally
+disconnected group. Its quotient by \(I_K\) is the discrete group
+\(\mathbf Z\). The inclusion \(W_K\hookrightarrow G_K\) is continuous
+and has dense image. The Weil topology is strictly finer than the
+topology induced by \(G_K\).
+
+\textbf{Proof.} Choose \(\phi\in G_K\) with \(d(\phi)=1\). Integer
+powers of any element of a profinite group extend continuously to
+profinite powers: in each finite quotient reduce the exponent modulo
+that element's finite order, and take the compatible inverse limit. Thus
+\(t\mapsto\phi^t\), \(t\in\widehat{\mathbf Z}\), is a continuous
+homomorphism and \(d(\phi^t)=t\). Every element of \(G_K\) has a unique
+expression \(i\phi^t\). The corresponding bijection \[
+I_K\rtimes\widehat{\mathbf Z}\longrightarrow G_K
+\] is a homeomorphism, since its domain is compact and its target
+Hausdorff.
+
+On \(W_K\) this expression has \(t\in\mathbf Z\). The prescribed
+topology is precisely the product topology of \(I_K\rtimes\mathbf Z\),
+with \(\mathbf Z\) discrete. The action of each \(\phi^m\) on \(I_K\) is
+continuous, so multiplication and inversion are continuous. The open
+subgroup \(I_K\) is compact and totally disconnected, proving the
+asserted local properties. The inclusion is continuous on every open
+coset. Since \(\mathbf Z\) is dense in \(\widehat{\mathbf Z}\), the
+product description proves density.
+
+In the subspace topology the set \(\{\phi^m:m\in\mathbf Z\}\) has the
+profinite, rather than discrete, topology. Indeed, every open
+neighborhood of 1 in \(G_K\) contains a nonidentity \(\phi^m\): pass to
+an open normal subgroup and take a positive multiple of the order of
+\(\phi\) in its finite quotient. Such a power has degree \(m\ne0\), so
+it is outside inertia. Consequently \(I_K\) is not open in the subspace
+topology. ∎
+
+The choice of \(\phi\) splits the group but is not part of its
+definition. A different lift changes the splitting, not \(W_K\) or its
+topology.
+
+\subsection{2. A topological reciprocity
+isomorphism}\label{a-topological-reciprocity-isomorphism}
+
+For any topological group \(H\), write \[
+H^{\mathrm{ab}}=H/\overline{[H,H]}.
+\] The closure is essential: this is the maximal \textbf{Hausdorff}
+abelian quotient.
+
+\subsubsection{Theorem 12.2. Reciprocity for the Weil
+group}\label{theorem-12.2.-reciprocity-for-the-weil-group}
+
+Arithmetic local reciprocity induces a topological isomorphism \[
+\operatorname{rec}_K:K^\times\xrightarrow{\ \sim\ }W_K^{\mathrm{ab}}.
+\tag{3}
+\] It carries \(\mathcal O_K^\times\) onto the image of \(I_K\), and a
+uniformizer onto a class of arithmetic degree 1.
+
+\textbf{Proof.} Put \(D=\overline{[G_K,G_K]}\). Since \(d\) has abelian
+target, \(D\subset I_K\). Density of \(W_K\) implies \[
+\overline{[W_K,W_K]}^{\,G_K}=D:
+\tag{4}
+\] approximate each of the finitely many entries in a product of
+commutators by elements of \(W_K\), using continuity of the commutator
+map. Both commutator subgroups lie in \(I_K\), where the two topologies
+agree. Thus their closure in \(W_K\) is also \(D\). We obtain an
+injective map \(W_K/D\to G_K/D\), whose image is exactly the inverse
+image of \(\mathbf Z\) under the induced degree map.
+
+Theorem 9.4 identifies \(G_K^{\mathrm{ab}}\) with the completion of
+\(K^\times=\pi^{\mathbf Z}\times\mathcal O_K^\times\) for its open
+subgroups of finite index: \[
+G_K^{\mathrm{ab}}\simeq\widehat{\mathbf Z}\times\mathcal O_K^\times.
+\tag{5}
+\] The degree is the first coordinate, and reciprocity embeds
+\(K^\times\) as \(\mathbf Z\times\mathcal O_K^\times\). By (4), this is
+the underlying group \(W_K^{\mathrm{ab}}\).
+
+It remains to check the topology. The subgroup \(I_K/D\) is compact and
+open in \(W_K/D\). Its map onto the degree-zero subgroup in (5) is a
+continuous bijection from a compact space to a Hausdorff space, hence a
+homeomorphism. Reciprocity is therefore a homeomorphism on the unit
+group. Each integer-degree coset in both groups is open and is a
+translate of that unit group. Translating the homeomorphism on each
+coset proves (3). ∎
+
+This argument does not put the subspace topology from
+\(G_K^{\mathrm{ab}}\) on \(W_K^{\mathrm{ab}}\). With that topology its
+integer coordinate would again fail to be discrete.
+
+\subsection{3. Characters, conductors and Euler
+factors}\label{characters-conductors-and-euler-factors}
+
+A character below means a continuous homomorphism to
+\(\mathbf C^\times\); it need not be unitary or have finite image.
+
+\subsubsection{Proposition 12.3. Local reciprocity in dimension
+one}\label{proposition-12.3.-local-reciprocity-in-dimension-one}
+
+Composition with (3) gives a bijection \[
+\{\text{characters of }W_K\}
+\longleftrightarrow
+\{\text{characters of }K^\times\},\qquad
+\chi(a)=\rho(\operatorname{rec}_K(a)).
+\tag{6}
+\] The restriction of \(\rho\) to inertia has finite image. Unramified
+characters correspond to characters trivial on \(\mathcal O_K^\times\).
+Their conductors and their arithmetic Euler factors agree.
+
+More precisely, put \(U^0=\mathcal O_K^\times\) and
+\(U^j=1+\mathfrak p_K^j\) for \(j\geq1\). The conductor is \[
+a(\chi)=\min\{j\geq0:\chi(U^j)=1\}
+       =a(\rho).
+\tag{7}
+\] For \(q^{-s}=\exp(-s\log q)\), define \[
+L_{\mathrm{ar}}(s,\rho)
+=\det(1-q^{-s}\rho(\phi)\mid V^{I_K})^{-1}.
+\] In dimension one this equals \[
+L(s,\chi)=
+\begin{cases}
+(1-\chi(\pi)q^{-s})^{-1},&a(\chi)=0,\\
+1,&a(\chi)>0.
+\end{cases}
+\tag{8}
+\]
+
+\textbf{Proof.} A character kills commutators and their closure, because
+its target is Hausdorff. It therefore factors through
+\(W_K^{\mathrm{ab}}\), and Theorem 12.2 proves the bijection.
+
+The group \(\mathbf C^\times\) has a neighborhood of 1 containing no
+nontrivial subgroup. One may use an annulus with argument restricted to
+a small arc: powers of an element of nonunit modulus leave the annulus;
+powers of a nontrivial unit complex number leave the arc. Continuity
+gives an open subgroup \(J\) of the profinite group \(I_K\) whose image
+is inside that neighborhood. Its image is a subgroup, hence trivial.
+Thus \(\rho(I_K)\) is finite.
+
+To compare conductors without assuming that \(\chi\) has finite image,
+write \[
+\chi(\pi^m u)=\chi(\pi)^m\chi_0(u),\qquad \chi_0(\pi)=1.
+\] The unit character has finite image, so \(\chi_0\) is finite order.
+By the existence theorem it factors through a finite abelian extension.
+The unit-filtration theorem of lesson 10 identifies the images of
+\(U^j\) with its upper ramification groups at integer \(j\). This proves
+(7), with conductor zero exactly in the unramified case. The unramified
+factor \(\chi(\pi)^m\) does not affect inertia or the conductor.
+
+If inertia acts nontrivially in dimension one, \(V^{I_K}=0\) and the
+determinant is 1. Otherwise \(V^{I_K}=V\), and all degree-one lifts give
+the scalar \(\chi(\pi)\): the units are killed. This proves (8). ∎
+
+For every \(\lambda\in\mathbf C^\times\), \[
+\chi_\lambda(\pi^m u)=\lambda^m
+\] is an unramified character. Its Weil representation factors through
+the discrete quotient \(W_K/I_K=\mathbf Z\). When \(\lambda=q^{-1}\), it
+cannot extend continuously to a character of the compact group \(G_K\):
+its image contains the unbounded sequence \(q^m\), \(m\geq0\).
+
+\subsection{4. Rank-one local constants in either
+characteristic}\label{rank-one-local-constants-in-either-characteristic}
+
+We record the analytic data as well as the representation. Choose a
+nontrivial continuous additive character \(\psi:K\to\mathbf T\) and a
+positive additive Haar measure \(dx\). Write \[
+N=\max\{r\in\mathbf Z:\psi(\pi^{-r}\mathcal O_K)=1\},
+\qquad m=\operatorname{vol}_{dx}(\mathcal O_K).
+\tag{9}
+\] Continuity and nontriviality make \(N\) a finite integer. Normalize
+\(d^\times x\) to give the units volume 1.
+
+Here is the Fourier foundation for all nonarchimedean local fields,
+including positive characteristic. Such a \(\psi\) exists: take a
+nontrivial additive character of the finite residue field on
+\(\mathcal O_K\), and extend successively to \(\pi^{-r}\mathcal O_K\).
+At each step the quotient is finite abelian. A circle-valued character
+extends across a finite cyclic enlargement by choosing a root of the
+prescribed value of a multiple of its generator; adjoining finitely many
+generators gives the required extension. The union is \(K\), and the
+kernel still contains \(\pi\mathcal O_K\), so the resulting character is
+continuous.
+
+Additive Haar measure can be constructed by assigning mass \(m q^{-r}\)
+to each coset of \(\pi^r\mathcal O_K\). These assignments are consistent
+under subdivision into \(q\) smaller cosets, define the measure on
+compact open sets, and then on their Borel completion. Translation
+invariance and the scaling identity \(d(ax)=|a|\,dx\) follow on these
+cosets and hence on integrable functions.
+
+Let \(\mathcal S(K)\) be the locally constant compactly supported
+functions, and use the positive kernel
+\(\widehat f(y)=\int f(x)\psi(xy)\,dx\). The annihilator of
+\(\pi^r\mathcal O_K\) is \(\pi^{-r-N}\mathcal O_K\): multiplying this
+ideal by \(y\) is an ideal on which \(\psi\) is trivial exactly when
+\(v(y)+r\geq-N\). Translation and character orthogonality give \[
+\widehat{\mathbf1_{a+\pi^r\mathcal O_K}}(y)
+=m q^{-r}\psi(ay)\mathbf1_{\pi^{-r-N}\mathcal O_K}(y).
+\tag{10}
+\] Applying this formula twice gives \[
+\widehat{\widehat f}(x)=m^2q^N f(-x).
+\tag{11}
+\] Every Schwartz function is a finite linear combination of these
+indicators, so (10) proves preservation of \(\mathcal S(K)\) and (11)
+for every \(f\). The self-dual measure is characterized by
+\(m=q^{-N/2}\).
+
+For a multiplicative character \(c\), put \(\check c=c^{-1}|\cdot|\),
+and set \[
+Z(f,c)=\int_{K^\times}f(x)c(x)\,d^\times x.
+\] The integral converges when \(|c(\pi)|<1\). Splitting into shells
+\(\pi^j\mathcal O_K^\times\) gives a finite Laurent polynomial plus a
+tail. Local constancy makes the tail \(f(0)c(\pi)^J/(1-c(\pi))\) in the
+unramified case; unit-character orthogonality makes it zero in the
+ramified case. This gives rational continuation in \(c(\pi)\).
+
+The functional equation follows by the same two-variable calculation in
+every characteristic. In the strip \(q^{-1}<|c(\pi)|<1\), both \(c\) and
+\(\check c\) have absolutely convergent zeta integrals. With
+\(d^\times x=\kappa\,dx/|x|\), the substitution \(y=xz\) transforms \[
+Z(f,c)Z(\widehat g,\check c)
+=\kappa^2\int_{K^\times}c(z)^{-1}
+       \left(\int_K f(x)\widehat g(zx)\,dx\right)dz.
+\tag{12}
+\] The absolute-value double integral is finite by reversing that
+substitution. For each fixed \(z\), Fubini on the compact supports gives
+\[
+\int f(x)\widehat g(zx)\,dx=\int\widehat f(zt)g(t)\,dt.
+\] The resulting double integral is also absolutely convergent, as the
+reverse substitution now gives the product for \(g,\widehat f\). Hence
+(12) equals \(Z(g,c)Z(\widehat f,\check c)\). A test
+\(g=c|_{\mathcal O_K^\times}^{-1}\mathbf1_{\mathcal O_K^\times}\) has
+zeta integral 1, so this proves \[
+Z(\widehat f,\check c)
+=\epsilon(c,\psi,dx)\frac{L(\check c)}{L(c)}Z(f,c).
+\tag{13}
+\] Here \(L(c)=(1-c(\pi))^{-1}\) when \(c\) is unramified and is 1
+otherwise. Rational continuation extends (13) beyond the strip. Formula
+(11), applied twice, shows that its factor is not identically zero.
+
+For completeness, its finite calculation is \[
+\epsilon(c,\psi,dx)=
+\begin{cases}
+m q^N c(\pi)^N,&a(c)=0,\\
+m q^N c(b)\displaystyle\sum_{u\in(\mathcal O_K/\mathfrak p_K^a)^\times}
+ c(u)^{-1}\psi(u/b),&a(c)=a\geq1,
+\end{cases}
+\quad v(b)=a+N.
+\tag{14}
+\] In the first case use \(f=\mathbf1_{\mathcal O_K}\) and (10). In the
+second use the preceding unit-character test. Translation by
+\(\mathfrak p_K^a\) forces its transform to be supported on
+\(\pi^{-a-N}\mathcal O_K\). It vanishes at every strictly higher
+valuation: for \(a\geq2\) multiply the unit variable by \(v\in U^{a-1}\)
+with \(c(v)\ne1\), which leaves the additive factor unchanged; for
+\(a=1\), ordinary orthogonality on the units suffices. At \(y=w/b\) the
+transform is \[
+m q^{-a}c(w)\sum_u c(u)^{-1}\psi(u/b).
+\] Its dual zeta integral on that one shell multiplies this by
+\(c(b)|b|^{-1}c(w)^{-1}\), proving (14). Replacing \(b\) by \(vb\),
+\(v\) a unit, multiplies its two factors by \(c(v)\) and \(c(v)^{-1}\),
+respectively.
+
+The Gauss sum is nonzero. Indeed, applying (11) again to this test gives
+the product of the sums for the unit character and its inverse equal to
+\(c(-1)q^a\); complex conjugation gives absolute value \(q^{a/2}\) for
+either sum. This proves nonvanishing in (14) for every \(c(\pi)\ne0\),
+not just meromorphically. All steps used finite quotients, compact open
+cosets and (10); none required characteristic zero. They also explain
+exactly how the finite-place Tate formulas extend to function-field
+completions.
+
+For the corresponding Weil character define \[
+\epsilon_{\mathrm{ar}}(s,\rho,\psi,dx)
+=\epsilon(\chi|\cdot|^s,\psi,dx).
+\tag{15}
+\] This transports the full functional equation, rather than just an
+unspecified scalar. In particular, with the measure fixed, \[
+\epsilon(c,\psi,t\,dx)=t\epsilon(c,\psi,dx),\qquad
+\epsilon(c,\psi_r,dx)=c(r)|r|^{-1}\epsilon(c,\psi,dx).
+\tag{16}
+\] These follow by scaling the Fourier transform and by substituting
+\(y\mapsto ry\) in its zeta integral. For self-dual measure, (11) and
+cancellation of the two \(L\)-ratios give \[
+\epsilon(c,\psi,dx_\psi)\epsilon(c^{-1}|\cdot|,\psi,dx_\psi)=c(-1).
+\tag{17}
+\] Thus duality involves an inverse character \textbf{and} a norm twist;
+it is not a rule that simply inverts epsilon.
+
+The higher-dimensional extension is Deligne's Theorem 4.1: there is a
+unique family of nonzero constants for finite-dimensional smooth complex
+Weil representations, multiplicative in exact sequences, scaled by
+\(t^{\dim V}\) under \(dx\mapsto t\,dx\), compatible with induction of
+virtual representations of dimension zero through finite separable
+extensions using \(\psi\circ\operatorname{Tr}\), and equal to Tate's
+constants in dimension one under geometric reciprocity. Its
+representation-theoretic proof belongs to
+\href{https://kokunoyumeto.github.io/open-math-courses/courses/NT-CFT/proof-dependencies.html\#LG-GAL-06}{Local
+L-factors and epsilon-factors of Weil group representations}, section 3.
+That edition supplies the statement and uniqueness proof; the general
+existence proof remains required there. Our proofs of (3), (6)--(8) and
+(13)--(17) do not use that higher-dimensional existence assertion.
+
+\subsection{5. The real and complex Weil
+groups}\label{the-real-and-complex-weil-groups}
+
+\subsubsection{Proposition 12.4. Archimedean
+abelianizations}\label{proposition-12.4.-archimedean-abelianizations}
+
+Set \(W_{\mathbf C}=\mathbf C^\times\) with its usual topology. The real
+Weil group has two components \[
+W_{\mathbf R}=\mathbf C^\times\sqcup j\mathbf C^\times,\qquad
+j^2=-1,\qquad jzj^{-1}=\bar z.
+\tag{20}
+\] It is a locally compact group, and \[
+W_{\mathbf C}^{\mathrm{ab}}=\mathbf C^\times,\qquad
+W_{\mathbf R}^{\mathrm{ab}}\simeq\mathbf R^\times,
+\quad z\longmapsto|z|^2,\quad j\longmapsto-1
+\tag{21}
+\] are topological isomorphisms.
+
+\textbf{Proof.} Realize \(z\) as the complex matrix
+\(\operatorname{diag}(z,\bar z)\) and \(j\) as
+\(\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)\). Their
+two sets of matrices are closed under multiplication and satisfy (20),
+so associativity follows from matrix multiplication. Each component has
+the usual topology of \(\mathbf C^\times\), and the relations show
+continuity of the group operations.
+
+The indicated map \(p:W_{\mathbf R}\to\mathbf R^\times\) is a surjective
+homomorphism: the relation \(j^2=-1\) maps to \((-1)^2=|-1|^2=1\), and
+conjugation preserves \(|z|^2\). Its kernel is the circle \(S^1\) in the
+first component. The commutators \([j,z]=\bar z/z\) fill that circle,
+while every commutator lies in the kernel because the quotient is
+abelian. Thus the commutator subgroup equals \(S^1\), already closed.
+The inverse map on quotient classes is represented by \(\sqrt{x}\) for
+\(x>0\) and \(j\sqrt{-x}\) for \(x<0\); these representatives vary
+continuously on the two open components. This proves the real
+topological assertion. The complex assertion is immediate because
+\(\mathbf C^\times\) is abelian. ∎
+
+The real sign character is 1 on \(\mathbf C^\times\) and is \(-1\) on
+\(j\mathbf C^\times\). The map \(z\mapsto|z|^2\) in (21) also displays
+compatibility with the norm \(\mathbf C^\times\to\mathbf R^\times\).
+
+All real multiplicative characters have the form
+\(\operatorname{sgn}(x)^e|x|^t\), \(e\in\{0,1\}\), \(t\in\mathbf C\).
+All complex ones have the form \((z/|z|)^\ell|z|_{\mathbf C}^t\),
+\(\ell\in\mathbf Z\), with \(|z|_{\mathbf C}=|z|^2\). To see this, a
+continuous character of \(\mathbf R_{>0}\) becomes a character of
+\((\mathbf R,+)\) under logarithm; lifting near 1 and subdividing
+intervals gives \(x\mapsto e^{ax}\). A character of \(S^1\) lifted along
+\(e^{i\theta}\) has form \(e^{ib\theta}\), and periodicity forces
+\(b\in\mathbf Z\). A character of \(\{\pm1\}\) has values \(1,(-1)^e\).
+
+Transporting the proved archimedean Tate factors through (21), for the
+negative additive characters \(\psi_{\mathbf R}(x)=e^{-2\pi ix}\),
+\(\psi_{\mathbf C}(z)=e^{-4\pi i\operatorname{Re}z}\), and self-dual
+measures \(dx\), \(2\,d(\operatorname{Re}z)\,d(\operatorname{Im}z)\),
+respectively, gives \[
+\begin{array}{c|c|c}
+\chi&L(s,\chi)&\epsilon(s,\chi)\\ \hline
+\operatorname{sgn}^e|\cdot|^t&
+\Gamma_{\mathbf R}(s+t+e)&(-i)^e\\
+(z/|z|)^\ell|\cdot|_{\mathbf C}^t&
+\Gamma_{\mathbf C}(s+t+|\ell|/2)&(-i)^{|\ell|}
+\end{array}
+\tag{22}
+\] where \(\Gamma_{\mathbf R}(u)=\pi^{-u/2}\Gamma(u/2)\) and
+\(\Gamma_{\mathbf C}(u)=2(2\pi)^{-u}\Gamma(u)\). The Gaussian and
+polynomial Fourier proofs are \emph{Tate's local theory at the infinite
+places}, Propositions 8.2--8.3 and Theorem 8.1. Replacing these negative
+additive characters by their positives multiplies epsilon by
+\(\chi(-1)\), giving \(i^e\) and \(i^{|\ell|}\). This phase change is
+independent of a Frobenius convention.
+
+\subsection{6. Translating Frobenius
+conventions}\label{translating-frobenius-conventions}
+
+\subsubsection{Proposition 12.5. Arithmetic and geometric
+reciprocity}\label{proposition-12.5.-arithmetic-and-geometric-reciprocity}
+
+For nonarchimedean \(K\), geometric reciprocity is \[
+\operatorname{rec}^{\mathrm{geo}}_K(a)=\operatorname{rec}_K(a)^{-1}.
+\tag{18}
+\] It sends a uniformizer to a geometric Frobenius class. For a fixed
+Weil character \(\rho\), its multiplicative character under (18) is
+\(\chi^{-1}\). For a fixed multiplicative character \(\chi\), the
+corresponding Weil characters in the two conventions are dual.
+Conductors are unchanged. For any complex Weil representation with
+finite inertia image, \[
+L_{\mathrm{geo}}(s,V)=L_{\mathrm{ar}}(s,V^\vee),
+\tag{19}
+\] where each side uses the indicated Frobenius on the same underlying
+representation or its dual.
+
+\textbf{Proof.} Inversion is a continuous automorphism of the abelian
+group \(W_K^{\mathrm{ab}}\), and it reverses degree. Evaluating \(\rho\)
+on (18) proves the character statement. Inverse characters have the same
+kernel on each unit group, proving the conductor statement.
+
+For (19), averaging over the finite inertia image identifies
+\((V^\vee)^{I_K}\) with the dual of \(V^{I_K}\): the averaging
+idempotent has image \(V^{I_K}\), and its dual has image the dual of
+that summand. Frobenius preserves both summands. Its operator on the
+dual invariants is the transpose inverse of its operator on the original
+invariants, which has the same determinant polynomial as the inverse
+operator. A geometric lift is the inverse of an arithmetic lift up to
+inertia, which is trivial on these invariants. This proves (19). ∎
+
+For example an unramified fixed representation with arithmetic
+eigenvalue \(\lambda\) has arithmetic factor \((1-\lambda q^{-s})^{-1}\)
+and geometric factor \((1-\lambda^{-1}q^{-s})^{-1}\). If one changes the
+reciprocity map and also dualizes the representation so that the
+multiplicative character is held fixed, its Tate factor stays the same.
+
+Deligne fixes geometric reciprocity in §2.3 and explains its
+cohomological Euler-factor convention in §3.6. When using his factors,
+evaluate the multiplicative character through his reciprocity map; do
+not keep an arithmetic character identification while inserting a
+geometric Frobenius. Additive characters and measures are separate
+choices, governed by (16). At archimedean places there is no
+residue-field Frobenius and hence no arithmetic/geometric choice of this
+kind.
+
+\subsection{7. Global Weil groups and the idèle class
+group}\label{global-weil-groups-and-the-iduxe8le-class-group}
+
+Let \(C_F=\mathbb A_F^\times/F^\times\) for a global field \(F\). The
+local theorem has a global analogue \[
+C_F\simeq W_F^{\mathrm{ab}},
+\tag{23}
+\] compatible with the maps \(F_v^\times\to C_F\) and local Weil groups.
+
+For a function field over its full finite constant field, the group is
+again a subgroup of the absolute Galois group: take the inverse image of
+the integral powers of constant-field Frobenius and make its geometric
+kernel open. The proof of (23) uses global reciprocity, the compact
+degree-zero subgroup of \(C_F\), and its integral degree quotient. The
+complete proof is
+\href{../global-existence-and-the-idelic-class-field-correspondence.html}{Global
+existence and the idèlic class field correspondence}, sections 5--8,
+equations (14)--(34). It proves injectivity even for
+characteristic-power extensions, identifies the compact degree-zero
+kernel, and verifies that the Hausdorff commutator quotient has exactly
+the required topology and local compatibility.
+
+A number field has no finite constant field whose Frobenius supplies
+such a subgroup. Its global Weil group is instead constructed from
+relative extensions \[
+1\longrightarrow C_L\longrightarrow W_{L/F}
+ \longrightarrow\operatorname{Gal}(L/F)\longrightarrow1
+\tag{24}
+\] defined by the global class-formation fundamental classes, with
+compatible transition maps as \(L/F\) runs through finite Galois
+extensions.
+\href{../brauer-groups-of-local-and-global-fields.html}{Brauer groups of
+local and global fields}, Theorem 24.6 and section 7, proves the
+fundamental-class theorem, constructs these extensions and their
+coherent quotient maps, and proves local compactness, the Hausdorff
+abelianization and local compatibility in (23). Its equations (29)--(39)
+give the complete number-field construction. The function-field
+construction is the preceding proof in lesson 17. These global arguments
+use reciprocity established later in the course; the local proofs above
+are independent of them. The classical number-field construction is due
+to Weil; Deligne §2.5 identifies this source rather than constructing it
+there.
+
+\subsection{8. Exercises with solutions}\label{exercises-with-solutions}
+
+\subsubsection{Exercise 1. Density and the topology ---
+easy}\label{exercise-1.-density-and-the-topology-easy}
+
+Prove density of \(W_K\) and openness of inertia. Show why density does
+not give the Weil group the subspace topology.
+
+\textbf{Solution.} In the splitting
+\(G_K=I_K\rtimes\widehat{\mathbf Z}\), the subset \(W_K\) is
+\(I_K\rtimes\mathbf Z\). Every product neighborhood meets it because an
+open subset of \(\widehat{\mathbf Z}\) contains an integer. In the Weil
+topology \(I_K\) is open by construction. In the Galois subspace
+topology every identity neighborhood contains a nonzero integral power
+of \(\phi\), by taking a multiple of its order in a finite quotient.
+Therefore inertia is not open in that topology.
+
+\subsubsection{Exercise 2. The real abelianization ---
+medium}\label{exercise-2.-the-real-abelianization-medium}
+
+Compute the closed commutator subgroup of \(W_{\mathbf R}\) and recover
+the sign representation.
+
+\textbf{Solution.} For \(z=re^{i\theta}\), \([j,z]=e^{-2i\theta}\), so
+these commutators fill \(S^1\). The homomorphism \(z\mapsto r^2\),
+\(j\mapsto-1\) has precisely this kernel; hence all commutators are in
+\(S^1\) and the closed commutator subgroup equals \(S^1\). The quotient
+is \(\mathbf R^\times\), with the continuous inverse classes described
+in Proposition 12.4. Pulling back sign gives 1 on the first component
+and \(-1\) on the second; the relation \(j^2=-1\) is respected since
+both sides have character value 1.
+
+\subsubsection{Exercise 3. Matching conductors ---
+medium}\label{exercise-3.-matching-conductors-medium}
+
+Let \(\rho\) correspond to \(\chi\). Prove equality of their conductors
+even when \(\chi(\pi)\) has infinite order.
+
+\textbf{Solution.} The unit restriction has finite image by the
+no-small-subgroup argument. Remove the unramified character taking
+\(\pi\) to \(\chi(\pi)\), leaving a finite-order character \(\chi_0\)
+with the same restriction to every \(U^j\). It factors through a finite
+abelian extension by local existence. Reciprocity sends \(U^j\) to its
+integer upper ramification group, so the least \(j\) on which \(\chi_0\)
+is trivial equals the Weil conductor. Restoring the unramified factor
+changes neither side.
+
+\subsubsection{Exercise 4. Proving the homeomorphism ---
+hard}\label{exercise-4.-proving-the-homeomorphism-hard}
+
+A continuous bijection need not be a homeomorphism. Supply the
+topological step in Theorem 12.2 and contrast the embedding in
+\(G_K^{\mathrm{ab}}\).
+
+\textbf{Solution.} Write \(D=\overline{[G_K,G_K]}\subset I_K\). In
+\(W_K/D\), the subgroup \(I_K/D\) is compact and open. Reciprocity
+restricts to a continuous bijection \(\mathcal O_K^\times\to I_K/D\);
+compactness and the Hausdorff property make it a homeomorphism. Both
+groups are disjoint unions of open translates indexed by \(\mathbf Z\).
+On every translate, multiplication transports that homeomorphism, so the
+inverse map is continuous on an open cover and hence everywhere. In
+\(G_K^{\mathrm{ab}}\) the degree coordinate instead lies in
+\(\widehat{\mathbf Z}\). Its integer subgroup is dense and has a
+nondiscrete induced topology, so the original dense embedding is not the
+same topological assertion.
+
+\subsection{Editable edition}\label{editable-edition}
+
+The reading edition provides the complete LaTeX source of this lesson,
+the cumulative course LaTeX and the editable source ZIP. The archive
+contains all twenty-four Markdown lessons, complete LaTeX bodies,
+original diagrams, metadata and reproduction instructions.
+
+\subsection{References}\label{references}
+
+The local Weil construction and one-dimensional formulas use the written
+rank-one Fourier prerequisites. Global Weil constructions are supplied
+in lessons 17 and 24. General higher-dimensional epsilon existence
+remains an explicit, incomplete LG-GAL-06 prerequisite; the free
+research paper is not its programme proof.
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://math.mit.edu/~poonen/786/notes.pdf}{Bjorn Poonen, Tate's
+  Thesis, MIT 18.786 lecture notes (2015)}.
+\item
+  \href{https://ncatlab.org/nlab/files/TateNumberTheory.pdf}{John Tate,
+  Number theoretic background (1979), freely available paper}.
+\item
+  \href{https://publications.ias.edu/sites/default/files/Number20.pdf}{Pierre
+  Deligne, Les constantes des équations fonctionnelles des fonctions L
+  (1973), IAS archive}.
+\end{itemize}
+
+The \href{../free-proofs.html}{proof guide} gives the lesson sequence
+and the exact prerequisite record. External references accompany the
+written arguments.
+
+\end{document}

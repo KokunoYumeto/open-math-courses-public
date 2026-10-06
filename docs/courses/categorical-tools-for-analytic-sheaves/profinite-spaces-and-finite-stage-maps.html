@@ -1,0 +1,191 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Profinite spaces and finite-stage maps</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">This revised source version has owner checking of its declared changes. Its earlier independent review applies only to the historical source hash recorded in the metadata.</p><h1 id="profinite-spaces-and-finite-stage-maps">Profinite spaces and finite-stage maps</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>A finite observation of an infinite sequence depends on finitely much information. For inverse systems of finite sets, this idea has a categorical form: continuous maps between their limits are exactly formal pro-morphisms. A transition need not be surjective. Some points at a finite stage can disappear from every compatible infinite family, and equality of maps must account for those disappearing points.</p>
+<p>Read <a href="ind-objects-through-their-elements.html#5-reverse-the-arrows-for-pro-objects">Ind-objects through their elements, Section 5</a> for the opposite-category convention, <a href="formal-colimits-and-test-objects.html#2-hom-out-of-the-whole-colimit">Formal colimits and test objects, Section 2</a> for formal Hom and composition, and <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index, Section 2</a> for cofinal reindexing with its full cocone factor. We retain two proved dependencies: <a href="https://stacks.math.columbia.edu/tag/086J">Stacks, Lemma 4.21.7</a>, on nonempty limits of finite nonempty sets, and <a href="https://stacks.math.columbia.edu/tag/08ZW">Stacks, Lemma 5.22.2</a>, on the topological characterization and finite-partition presentation of profinite spaces. The proof below supplies the morphism comparison, including systems with non-surjective maps and empty stages.</p>
+<h2 id="1-formal-systems-and-their-topological-realization">1. Formal systems and their topological realization</h2>
+<p>Fix an indexing universe. Let <span class="math" data-tex="\(\mathsf{FinSet}\)">\(\mathsf{FinSet}\)</span> be its finite sets and <span class="math" data-tex="\(\mathsf{Stone}\)">\(\mathsf{Stone}\)</span> its compact Hausdorff totally disconnected spaces, with continuous maps. The empty space is allowed. Give each finite set the discrete topology.</p>
+<p>By <a href="https://stacks.math.columbia.edu/tag/0032">Stacks, Lemma 4.21.5</a>, any small cofiltered diagram has a cofinal presentation as an inverse system over a small directed poset. This replacement preserves limits in topological spaces and preserves the formal pro-object. For the latter assertion, apply ordinary cofinality to the filtered colimits <span class="math" data-tex="\(\operatorname{colim}_i\operatorname{Hom}(X_i,T)\)">\(\operatorname{colim}_i\operatorname{Hom}(X_i,T)\)</span> describing its covariant functor, then take the opposite category. We can therefore work with directed posets without restricting which pro-objects occur.</p>
+<p>Write an inverse system as <span class="math" data-tex="\((X_i,p_{ki})\)">\((X_i,p_{ki})\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+p_{ki}:X_k\longrightarrow X_i\quad(k\geq i),
+\qquad p_{ii}=1,
+\qquad p_{\ell i}=p_{ki}p_{\ell k}.
+\]">\[
+p_{ki}:X_k\longrightarrow X_i\quad(k\geq i),
+\qquad p_{ii}=1,
+\qquad p_{\ell i}=p_{ki}p_{\ell k}.
+\]</span>
+<p>Its realization is the topological limit</p>
+<span class="math math-display" data-tex="\[
+L_X=\lim_i X_i,
+\qquad \pi_i:L_X\longrightarrow X_i.
+\tag{1.1}
+\]">\[
+L_X=\lim_i X_i,
+\qquad \pi_i:L_X\longrightarrow X_i.
+\tag{1.1}
+\]</span>
+<p>The retained topological theorem puts <span class="math" data-tex="\(L_X\)">\(L_X\)</span> in <span class="math" data-tex="\(\mathsf{Stone}\)">\(\mathsf{Stone}\)</span>. Its topology is the subspace topology from <span class="math" data-tex="\(\prod_i X_i\)">\(\prod_i X_i\)</span>. In particular finite-coordinate cylinders give a neighborhood basis. Directedness lets us replace any finite collection of coordinate conditions by a condition at one common later coordinate. Consequently the sets <span class="math" data-tex="\(\pi_i^{-1}(\{a\})\)">\(\pi_i^{-1}(\{a\})\)</span> form a clopen basis, after empty members are discarded.</p>
+<p>The formal Hom formula is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,Y)
+=\lim_j\operatorname{colim}_i\operatorname{Map}(X_i,Y_j).
+\tag{1.2}
+\]">\[
+\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,Y)
+=\lim_j\operatorname{colim}_i\operatorname{Map}(X_i,Y_j).
+\tag{1.2}
+\]</span>
+<p>In the inner colimit, moving to a later source stage means precomposing with <span class="math" data-tex="\(p_{ki}\)">\(p_{ki}\)</span>. The outer limit imposes compatibility with the target transitions. We use this existing formula and its composition rule; Section 3 will identify it with continuous maps.</p>
+<h2 id="2-which-finite-stage-points-survive">2. Which finite-stage points survive?</h2>
+<p>Define the stable image at stage <span class="math" data-tex="\(i\)">\(i\)</span> by</p>
+<span class="math math-display" data-tex="\[
+S_i=\bigcap_{k\geq i}p_{ki}(X_k)\subset X_i.
+\tag{2.1}
+\]">\[
+S_i=\bigcap_{k\geq i}p_{ki}(X_k)\subset X_i.
+\tag{2.1}
+\]</span>
+<p><strong>Lemma 2.1.</strong> The projection image <span class="math" data-tex="\(\pi_i(L_X)\)">\(\pi_i(L_X)\)</span> is <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. For each <span class="math" data-tex="\(i\)">\(i\)</span>, there is a <span class="math" data-tex="\(k\geq i\)">\(k\geq i\)</span> such that <span class="math" data-tex="\(p_{ki}(X_k)=S_i\)">\(p_{ki}(X_k)=S_i\)</span>.</p>
+<p><strong>Proof.</strong> A compatible family has its <span class="math" data-tex="\(i\)">\(i\)</span>-coordinate in every later image, giving <span class="math" data-tex="\(\pi_i(L_X)\subset S_i\)">\(\pi_i(L_X)\subset S_i\)</span>. Conversely, take <span class="math" data-tex="\(a\in S_i\)">\(a\in S_i\)</span>. On the directed tail <span class="math" data-tex="\(k\geq i\)">\(k\geq i\)</span>, the sets</p>
+<span class="math math-display" data-tex="\[
+F_k=\{x\in X_k:p_{ki}(x)=a\}
+\]">\[
+F_k=\{x\in X_k:p_{ki}(x)=a\}
+\]</span>
+<p>are finite and nonempty. Their transitions restrict to an inverse system, since <span class="math" data-tex="\(p_{\ell i}=p_{ki}p_{\ell k}\)">\(p_{\ell i}=p_{ki}p_{\ell k}\)</span>. The retained nonempty-limit lemma gives a compatible family in these fibers. The tail is cofinal, so it determines a point of <span class="math" data-tex="\(L_X\)">\(L_X\)</span> with <span class="math" data-tex="\(i\)">\(i\)</span>-coordinate <span class="math" data-tex="\(a\)">\(a\)</span>. This proves the first assertion without assuming surjective transitions in the original system.</p>
+<p>For the second, every <span class="math" data-tex="\(a\in X_i\setminus S_i\)">\(a\in X_i\setminus S_i\)</span> is absent from some image <span class="math" data-tex="\(p_{k_a i}(X_{k_a})\)">\(p_{k_a i}(X_{k_a})\)</span>. There are only finitely many such points. Choose one common upper bound <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(i\)">\(i\)</span> and these <span class="math" data-tex="\(k_a\)">\(k_a\)</span>. Its image contains no point outside <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, while the intersection (2.1) is contained in that image. They are equal. If there are no excluded points, take <span class="math" data-tex="\(k=i\)">\(k=i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is stabilization of the image at a <em>fixed</em> stage. It does not say the objects or transitions eventually become constant.</p>
+<p>We will also use the empty case of the retained nonempty-limit lemma:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L_X=\varnothing\\
+\Longleftrightarrow\\
+X_i=\varnothing\text{ for some }i.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+L_X=\varnothing\\
+\Longleftrightarrow\\
+X_i=\varnothing\text{ for some }i.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The reverse implication follows from projection to that stage. For the forward implication, if every finite stage were nonempty, the cited lemma would give a point of the limit. Once an empty stage occurs, every stage in its directed tail is empty, because there is no map from a nonempty set to the empty set.</p>
+<h2 id="3-a-finite-target-detects-a-finite-stage">3. A finite target detects a finite stage</h2>
+<p>For a finite discrete set <span class="math" data-tex="\(T\)">\(T\)</span>, stage maps yield continuous maps by composition with <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>. They give a canonical comparison</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_T:\ &amp;\operatorname{colim}_i\operatorname{Map}(X_i,T)\\
+&amp;\longrightarrow\operatorname{Cont}(L_X,T).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\gamma_T:\ &amp;\operatorname{colim}_i\operatorname{Map}(X_i,T)\\
+&amp;\longrightarrow\operatorname{Cont}(L_X,T).
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p><strong>Theorem 3.1.</strong> The comparison (3.1) is bijective, naturally in <span class="math" data-tex="\(T\)">\(T\)</span>. This includes <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span> and does not require the source transitions to be surjective.</p>
+<p><strong>Proof: surjectivity.</strong> First suppose <span class="math" data-tex="\(L_X\)">\(L_X\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> are nonempty, and let <span class="math" data-tex="\(f:L_X\to T\)">\(f:L_X\to T\)</span> be continuous. Each point has a single-coordinate cylinder neighborhood on which <span class="math" data-tex="\(f\)">\(f\)</span> is constant: use openness of its fiber, the cylinder basis, and a common coordinate for the finitely many conditions defining a basic neighborhood. Compactness gives finitely many such cylinders covering <span class="math" data-tex="\(L_X\)">\(L_X\)</span>. Choose a common later index <span class="math" data-tex="\(k\)">\(k\)</span> for their coordinates.</p>
+<p>If two points have the same <span class="math" data-tex="\(k\)">\(k\)</span>-coordinate, they belong to the same members of this cover. One such cylinder contains the first point, hence also the second, and <span class="math" data-tex="\(f\)">\(f\)</span> has the same value at both. Thus <span class="math" data-tex="\(f\)">\(f\)</span> factors through a map</p>
+<span class="math math-display" data-tex="\[
+\bar f:S_k=\pi_k(L_X)\longrightarrow T.
+\]">\[
+\bar f:S_k=\pi_k(L_X)\longrightarrow T.
+\]</span>
+<p>Extend <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> to <span class="math" data-tex="\(X_k\)">\(X_k\)</span> by assigning any fixed element of <span class="math" data-tex="\(T\)">\(T\)</span> to the points outside <span class="math" data-tex="\(S_k\)">\(S_k\)</span>. This stage map represents <span class="math" data-tex="\(f\)">\(f\)</span> in (3.1). The extension is used only for existence; injectivity below will remove its arbitrary choices.</p>
+<p>If <span class="math" data-tex="\(L_X\)">\(L_X\)</span> is empty and <span class="math" data-tex="\(T\)">\(T\)</span> is nonempty, any constant stage map represents its unique map to <span class="math" data-tex="\(T\)">\(T\)</span>. If <span class="math" data-tex="\(T\)">\(T\)</span> is empty, a continuous map exists only when <span class="math" data-tex="\(L_X\)">\(L_X\)</span> is empty. Equation (2.2) then supplies an empty stage, whose unique map to <span class="math" data-tex="\(T\)">\(T\)</span> represents it. This handles every case in which the right side has an element.</p>
+<p><strong>Proof: injectivity.</strong> Suppose <span class="math" data-tex="\(a:X_i\to T\)">\(a:X_i\to T\)</span> and <span class="math" data-tex="\(b:X_j\to T\)">\(b:X_j\to T\)</span> give the same continuous map. Move them to a common stage <span class="math" data-tex="\(k\)">\(k\)</span>, obtaining <span class="math" data-tex="\(a p_{ki}\)">\(a p_{ki}\)</span> and <span class="math" data-tex="\(b p_{kj}\)">\(b p_{kj}\)</span>. Equality on <span class="math" data-tex="\(L_X\)">\(L_X\)</span> says that these maps agree on <span class="math" data-tex="\(S_k\)">\(S_k\)</span>, by Lemma 2.1. Choose <span class="math" data-tex="\(\ell\geq k\)">\(\ell\geq k\)</span> with <span class="math" data-tex="\(p_{\ell k}(X_\ell)=S_k\)">\(p_{\ell k}(X_\ell)=S_k\)</span>. Their composites from <span class="math" data-tex="\(X_\ell\)">\(X_\ell\)</span> therefore agree on the whole set. This is exactly equality of their classes in the filtered colimit. The argument also applies to empty stages and targets whenever representatives exist.</p>
+<p>Postcomposition with a map of finite targets commutes with the construction of (3.1), proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no assertion that a representative is uniquely determined on all of <span class="math" data-tex="\(X_k\)">\(X_k\)</span>. It is determined on the surviving points, and a further transition makes those the only points relevant to its class.</p>
+<h2 id="4-the-category-equivalence">4. The category equivalence</h2>
+<p>For a second inverse system <span class="math" data-tex="\((Y_j)\)">\((Y_j)\)</span>, the topological limit property gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cont}(L_X,L_Y)
+\simeq\lim_j\operatorname{Cont}(L_X,Y_j).
+\tag{4.1}
+\]">\[
+\operatorname{Cont}(L_X,L_Y)
+\simeq\lim_j\operatorname{Cont}(L_X,Y_j).
+\tag{4.1}
+\]</span>
+<p>Indeed a compatible family of coordinate maps defines a unique set map into the limit. It is continuous because every coordinate map is continuous and the limit has the subspace topology from the product. This includes empty spaces: the usual limit property has no nonemptiness hypothesis.</p>
+<p><strong>Theorem 4.1.</strong> Taking topological limits defines an equivalence</p>
+<span class="math math-display" data-tex="\[
+R:\operatorname{Pro}(\mathsf{FinSet})\simeq\mathsf{Stone}.
+\tag{4.2}
+\]">\[
+R:\operatorname{Pro}(\mathsf{FinSet})\simeq\mathsf{Stone}.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> Combining (1.2), Theorem 3.1 and (4.1) gives bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,Y)
+&amp;=\lim_j\operatorname{colim}_i\operatorname{Map}(X_i,Y_j)\\
+&amp;\simeq\lim_j\operatorname{Cont}(L_X,Y_j)\\
+&amp;\simeq\operatorname{Cont}(L_X,L_Y).
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,Y)
+&amp;=\lim_j\operatorname{colim}_i\operatorname{Map}(X_i,Y_j)\\
+&amp;\simeq\lim_j\operatorname{Cont}(L_X,Y_j)\\
+&amp;\simeq\operatorname{Cont}(L_X,L_Y).
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>These construct <span class="math" data-tex="\(R\)">\(R\)</span> on morphisms. The identity class gives each projection <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span>, hence the identity on the limit. For composition, let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span> be pro-maps. Represent the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-component of <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(b:Y_j\to Z_\ell\)">\(b:Y_j\to Z_\ell\)</span>, and the <span class="math" data-tex="\(j\)">\(j\)</span>-component of <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(a:X_i\to Y_j\)">\(a:X_i\to Y_j\)</span>. Their composite component is represented by <span class="math" data-tex="\(ba\)">\(ba\)</span>. Writing superscripts to distinguish the limit projections, we have</p>
+<span class="math math-display" data-tex="\[
+\pi_\ell^Z R(g)R(f)
+=b\pi_j^Y R(f)=ba\pi_i^X.
+\]">\[
+\pi_\ell^Z R(g)R(f)
+=b\pi_j^Y R(f)=ba\pi_i^X.
+\]</span>
+<p>This is exactly the limit map induced by the composite representative, so (4.3) respects composition. Moving representatives to later stages changes neither side. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is a functor, and (4.3) makes it fully faithful. Cofinal replacements give the same canonical limit and the same formal Hom classes, so the construction applies to arbitrary small cofiltered presentations.</p>
+<p>For essential surjectivity, retain the finite-partition presentation from <a href="https://stacks.math.columbia.edu/tag/08ZW">Stacks, Lemma 5.22.2</a>. For a space <span class="math" data-tex="\(S\in\mathsf{Stone}\)">\(S\in\mathsf{Stone}\)</span>, let <span class="math" data-tex="\(P(S)\)">\(P(S)\)</span> be the inverse system of finite clopen partitions, ordered by refinement. Its finite set at a partition is the set of its nonempty blocks, and its transitions send a fine block to the containing coarse block. The cited result supplies the canonical homeomorphism</p>
+<span class="math math-display" data-tex="\[
+\theta_S:S\xrightarrow{\sim}R(P(S)),
+\qquad s\longmapsto\text{its block in every partition}.
+\tag{4.4}
+\]">\[
+\theta_S:S\xrightarrow{\sim}R(P(S)),
+\qquad s\longmapsto\text{its block in every partition}.
+\tag{4.4}
+\]</span>
+<p>For <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, use its empty partition; the corresponding system is the constant empty set. Thus essential surjectivity includes the empty space, and full faithfulness proves (4.2).</p>
+<p>An inverse functor can be made explicit. A continuous <span class="math" data-tex="\(f:S\to S&#x27;\)">\(f:S\to S&#x27;\)</span> pulls each finite clopen partition of <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> back to a finite clopen partition of <span class="math" data-tex="\(S\)">\(S\)</span>, discarding empty inverse images. The map on block sets sends a pulled-back block to its target block. Refinement preserves these maps; they define a pro-morphism <span class="math" data-tex="\(P(f)\)">\(P(f)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+R(P(f))=\theta_{S&#x27;}f\theta_S^{-1}.
+\tag{4.5}
+\]">\[
+R(P(f))=\theta_{S&#x27;}f\theta_S^{-1}.
+\tag{4.5}
+\]</span>
+<p>Alternatively, full faithfulness makes it the unique pro-morphism satisfying (4.5). That formula and faithfulness prove the identity and composition laws for <span class="math" data-tex="\(P\)">\(P\)</span>, and make <span class="math" data-tex="\(\theta\)">\(\theta\)</span> natural. For each pro-object <span class="math" data-tex="\(X\)">\(X\)</span>, full faithfulness lifts <span class="math" data-tex="\(\theta_{R(X)}\)">\(\theta_{R(X)}\)</span> to a unique isomorphism <span class="math" data-tex="\(X\to P(R(X))\)">\(X\to P(R(X))\)</span>; its inverse is the lift of the inverse homeomorphism. Naturality follows after applying the faithful functor <span class="math" data-tex="\(R\)">\(R\)</span>. Together with (4.4), these are the required natural inverse equivalences. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A map to an entire profinite target need not factor through one finite source stage. What (4.3) says is that its <em>each finite target coordinate</em> factors through a source stage; the source stage may depend on that coordinate. Exercise 3 shows why this distinction matters.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 1 (introductory: parity needs three coordinates).</strong> Let <span class="math" data-tex="\(X_n=\{0,1\}^{\{1,\ldots,n\}}\)">\(X_n=\{0,1\}^{\{1,\ldots,n\}}\)</span>, with truncation transitions and <span class="math" data-tex="\(X_0\)">\(X_0\)</span> a singleton. Identify its limit. Give a stage representative for the map to <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> that takes the parity of the first three coordinates. Prove it cannot be represented at a stage <span class="math" data-tex="\(n&lt;3\)">\(n&lt;3\)</span>.</p>
+<p><strong>Solution.</strong> Compatible finite prefixes specify exactly one infinite binary sequence, so the limit is <span class="math" data-tex="\(\{0,1\}^{\mathbb N_{&gt;0}}\)">\(\{0,1\}^{\mathbb N_{&gt;0}}\)</span> with its product topology. At stage three use <span class="math" data-tex="\((x_1,x_2,x_3)\mapsto x_1+x_2+x_3\pmod 2\)">\((x_1,x_2,x_3)\mapsto x_1+x_2+x_3\pmod 2\)</span>. Its composite with the projection is the required continuous map. Two sequences whose first two coordinates agree but whose third coordinates differ have different parities. They have identical projections to every stage <span class="math" data-tex="\(n&lt;3\)">\(n&lt;3\)</span>; a stage map there would give them equal values. Thus three is the least possible stage. Every transition here is surjective, so there are no disappearing points at the stages.</p>
+<p><strong>Exercise 2 (intermediate: an extra point disappears).</strong> Let <span class="math" data-tex="\(X_n=\{a,b,c_n\}\)">\(X_n=\{a,b,c_n\}\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. Each transition from stage <span class="math" data-tex="\(n+1\)">\(n+1\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span> fixes <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and sends <span class="math" data-tex="\(c_{n+1}\)">\(c_{n+1}\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>. Compute the limit and stable images. Construct two distinct stage-zero maps to <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> that induce the same limit map. Show that this pro-object is isomorphic to the constant two-element set.</p>
+<p><strong>Solution.</strong> No compatible family can have coordinate <span class="math" data-tex="\(c_n\)">\(c_n\)</span>, since it is absent from the image of stage <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. The only families are the all-<span class="math" data-tex="\(a\)">\(a\)</span> and all-<span class="math" data-tex="\(b\)">\(b\)</span> families. The limit is the discrete two-element space, and <span class="math" data-tex="\(S_n=\{a,b\}\)">\(S_n=\{a,b\}\)</span> at every stage. Take both maps to send <span class="math" data-tex="\(a\)">\(a\)</span> to zero and <span class="math" data-tex="\(b\)">\(b\)</span> to one, but let their values at <span class="math" data-tex="\(c_0\)">\(c_0\)</span> differ. They agree on the limit and become equal after precomposition with the first transition, as Theorem 3.1 predicts.</p>
+<p>Let <span class="math" data-tex="\(D=\{a,b\}\)">\(D=\{a,b\}\)</span>. Its inclusions into every <span class="math" data-tex="\(X_n\)">\(X_n\)</span> are compatible and define a pro-map <span class="math" data-tex="\(s:\iota D\to X\)">\(s:\iota D\to X\)</span>. The maps <span class="math" data-tex="\(r_n:X_n\to D\)">\(r_n:X_n\to D\)</span> fixing <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and sending <span class="math" data-tex="\(c_n\)">\(c_n\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> define the same class <span class="math" data-tex="\(r:X\to\iota D\)">\(r:X\to\iota D\)</span>. Clearly <span class="math" data-tex="\(rs=1_D\)">\(rs=1_D\)</span>. At target stage <span class="math" data-tex="\(n\)">\(n\)</span>, the component of <span class="math" data-tex="\(sr\)">\(sr\)</span> sends the extra point to <span class="math" data-tex="\(a\)">\(a\)</span>. After one further source transition, it agrees with the representative of the identity component, since that transition already sends <span class="math" data-tex="\(c_{n+1}\)">\(c_{n+1}\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(sr=1_X\)">\(sr=1_X\)</span> in the pro-category. This proves the claimed isomorphism while retaining non-surjective original transitions.</p>
+<p><strong>Exercise 3 (advanced: stages depend on the target coordinate).</strong> Give <span class="math" data-tex="\(T=\mathbb N_{&gt;0}\cup\{\infty\}\)">\(T=\mathbb N_{&gt;0}\cup\{\infty\}\)</span> the topology in which finite integers are isolated and neighborhoods of <span class="math" data-tex="\(\infty\)">\(\infty\)</span> contain all but finitely many integers. On the infinite binary sequence space, let <span class="math" data-tex="\(f\)">\(f\)</span> take the index of the first one, and take value <span class="math" data-tex="\(\infty\)">\(\infty\)</span> on the all-zero sequence. Prove that <span class="math" data-tex="\(T\)">\(T\)</span> is in <span class="math" data-tex="\(\mathsf{Stone}\)">\(\mathsf{Stone}\)</span> and that <span class="math" data-tex="\(f\)">\(f\)</span> is continuous. Show that <span class="math" data-tex="\(f\)">\(f\)</span> does not factor through any finite prefix stage, although each of its finite partition coordinates does.</p>
+<p><strong>Solution.</strong> An open cover contains a member containing <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, leaving only finitely many isolated integers to cover; hence <span class="math" data-tex="\(T\)">\(T\)</span> is compact. Distinct integers are separated by singleton opens, and an integer <span class="math" data-tex="\(n\)">\(n\)</span> is separated from <span class="math" data-tex="\(\infty\)">\(\infty\)</span> by <span class="math" data-tex="\(\{n\}\)">\(\{n\}\)</span> and its complement. These are clopen. The cofinite neighborhoods of <span class="math" data-tex="\(\infty\)">\(\infty\)</span> are also clopen, so this is a clopen basis; any two distinct points are separated by a clopen set, which forces connected subsets to be singletons. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is compact, Hausdorff and totally disconnected.</p>
+<p>The inverse image of <span class="math" data-tex="\(n\)">\(n\)</span> is the cylinder requiring the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> bits to be zero and the <span class="math" data-tex="\(n\)">\(n\)</span>-th bit to be one. It is clopen. The inverse image of a basic neighborhood of <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, whose finite complement is <span class="math" data-tex="\(F\)">\(F\)</span>, is the complement of the finite union of those cylinders for <span class="math" data-tex="\(n\in F\)">\(n\in F\)</span>, hence open. These sets form a target basis, proving continuity. At every prefix length <span class="math" data-tex="\(m\)">\(m\)</span>, the all-zero sequence and a sequence whose first one occurs at <span class="math" data-tex="\(m+1\)">\(m+1\)</span> have the same prefix but different <span class="math" data-tex="\(f\)">\(f\)</span>-values. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> never factors through that finite stage.</p>
+<p>The partitions with blocks <span class="math" data-tex="\(\{1\},\ldots,\{m\},\{m+1,m+2,\ldots,\infty\}\)">\(\{1\},\ldots,\{m\},\{m+1,m+2,\ldots,\infty\}\)</span> suffice to present <span class="math" data-tex="\(T\)">\(T\)</span>. Any finite clopen partition has its <span class="math" data-tex="\(\infty\)">\(\infty\)</span>-block cofinite, so one of these partitions refines it. The map to the displayed block set depends only on the first <span class="math" data-tex="\(m\)">\(m\)</span> source bits: either the first one has occurred, or the image belongs to the tail block. These finite coordinates are compatible and define the pro-morphism corresponding to <span class="math" data-tex="\(f\)">\(f\)</span>. Their source stages grow with <span class="math" data-tex="\(m\)">\(m\)</span>; there is no uniform finite prefix.</p>
+<p><strong>Exercise 4 (intermediate: the empty object is retained).</strong> Take <span class="math" data-tex="\(X_0\)">\(X_0\)</span> a singleton and <span class="math" data-tex="\(X_n=\varnothing\)">\(X_n=\varnothing\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, with the unique possible inverse transitions. For a finite set <span class="math" data-tex="\(T\)">\(T\)</span>, compute both <span class="math" data-tex="\(\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,\iota T)\)">\(\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(X,\iota T)\)</span> and <span class="math" data-tex="\(\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(\iota T,X)\)">\(\operatorname{Hom}_{\operatorname{Pro}(\mathsf{FinSet})}(\iota T,X)\)</span>. Explain why an inverse system with every finite stage nonempty cannot give the same realization.</p>
+<p><strong>Solution.</strong> The limit of <span class="math" data-tex="\(X\)">\(X\)</span> is empty. In the first Hom formula, the filtered tail consists of the singleton sets <span class="math" data-tex="\(\operatorname{Map}(\varnothing,T)\)">\(\operatorname{Map}(\varnothing,T)\)</span>, including when <span class="math" data-tex="\(T\)">\(T\)</span> is empty. Its colimit is a singleton. In the second formula, the target limit of Hom sets contains <span class="math" data-tex="\(\operatorname{Map}(T,\varnothing)\)">\(\operatorname{Map}(T,\varnothing)\)</span> at every stage <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. It is empty if <span class="math" data-tex="\(T\ne\varnothing\)">\(T\ne\varnothing\)</span>, and is a singleton if <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>; compatibility adds no further condition. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is isomorphic to the constant empty set, as also follows by restricting to its cofinal empty tail. It is initial, and it is not terminal since a constant singleton has no map to it. Finally the retained nonempty-limit lemma gives a point in the limit of any cofiltered system of finite nonempty sets, regardless of surjectivity of its transitions. Such a system cannot realize the empty space.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <em>Categories</em>, <a href="https://stacks.math.columbia.edu/tag/0032">Lemma 4.21.5</a>, for directed replacement, and <a href="https://stacks.math.columbia.edu/tag/086J">Lemma 4.21.7</a>, for nonempty limits of finite nonempty sets. Their proofs are retained by reference.</li>
+<li>The Stacks Project, <em>Topology</em>, <a href="https://stacks.math.columbia.edu/tag/08ZW">Lemma 5.22.2 and Section 5.22</a>, for the existing topological characterization and finite clopen partition presentation. The morphism comparison (3.1) and its application (4.3) are checked here; the referenced text is not reproduced.</li>
+<li><a href="formal-colimits-and-test-objects.html#2-hom-out-of-the-whole-colimit">Formal colimits and test objects, Section 2</a>, <a href="ind-objects-through-their-elements.html#5-reverse-the-arrows-for-pro-objects">Ind-objects through their elements, Section 5</a>, and <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index, Section 2</a>, for the complete formal Hom, opposite-category and cofinality arguments.</li>
+</ul>
+<p>This is an exposition of known mathematics with independently written proof details and exercises. It makes no claim of new research or independent review.</p>
+</main></body></html>

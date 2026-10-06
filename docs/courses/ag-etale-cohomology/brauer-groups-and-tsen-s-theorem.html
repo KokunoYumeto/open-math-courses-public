@@ -1,0 +1,441 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Brauer groups and Tsen&#x27;s theorem</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Sites, topoi and étale cohomology</a></nav><h1 id="brauer-groups-and-tsen-s-theorem">Brauer groups and Tsen's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.</em></p>
+<p>A matrix algebra can become visibly a matrix algebra only after extending the field. Its descent data are projective matrices, and the failure to lift those matrices to a genuine linear action is a second cohomology class. We identify that class precisely, then use polynomial equations to show that it vanishes over finite fields and function fields of curves over an algebraically closed field.</p>
+<p>Throughout, <span class="math" data-tex="\(K\)">\(K\)</span> is a field, <span class="math" data-tex="\(K^s\)">\(K^s\)</span> a separable closure and <span class="math" data-tex="\(G_K=\operatorname{Gal}(K^s/K)\)">\(G_K=\operatorname{Gal}(K^s/K)\)</span>. Galois modules and cochains are discrete and continuous, respectively. The Brauer group is written additively. We use the field-topos comparison, continuous cochains, Hilbert 90 and the cohomological-dimension criteria proved in <a href="galois-cohomology-and-the-etale-cohomology-of-a-field.html">Galois cohomology and the étale cohomology of a field</a>.</p>
+<p>The algebra prerequisites are proved in four lessons on algebras. We use <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-02.html">Semisimple rings and Wedderburn's theorem</a>, Theorem 3.1, and <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-04.html">Central simple algebras and the Brauer group</a>, Theorems 1.1, 2.1, 4.3 and 5.1. Finite Galois descent and matrix Hilbert 90 are proved in <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-06.html">Hilbert 90 in Noether's form and Galois descent</a>, Theorems 2.1 and 3.1. Their exact roles are stated below. Crossed products are constructed in <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-05.html">Crossed products and factor systems</a>; our proof uses projective matrices directly.</p>
+<h2 id="1-the-algebra-input-and-brauer-equivalence">1. The algebra input and Brauer equivalence</h2>
+<p>A <strong>central simple <span class="math" data-tex="\(K\)">\(K\)</span>-algebra</strong> is a nonzero unital associative algebra <span class="math" data-tex="\(A\)">\(A\)</span>, finite dimensional over <span class="math" data-tex="\(K\)">\(K\)</span>, with center <span class="math" data-tex="\(K\)">\(K\)</span> and no two-sided ideals except <span class="math" data-tex="\(0,A\)">\(0,A\)</span>. A <strong>division algebra</strong> has an inverse for every nonzero element. A field extension <span class="math" data-tex="\(E/K\)">\(E/K\)</span> <strong>splits</strong> <span class="math" data-tex="\(A\)">\(A\)</span> if <span class="math" data-tex="\(A_E=A\otimes_K E\)">\(A_E=A\otimes_K E\)</span> is a matrix algebra over <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Here are the precise previously proved results we need.</p>
+<p><strong>Algebra input 1.1.</strong> Every central simple algebra has the form</p>
+<span class="math math-display" data-tex="\[
+A\simeq M_r(D),\qquad Z(D)=K,
+\tag{1.1}
+\]">\[
+A\simeq M_r(D),\qquad Z(D)=K,
+\tag{1.1}
+\]</span>
+<p>where the central division algebra <span class="math" data-tex="\(D\)">\(D\)</span> is unique up to <span class="math" data-tex="\(K\)">\(K\)</span>-isomorphism. Every <span class="math" data-tex="\(K\)">\(K\)</span>-algebra automorphism of <span class="math" data-tex="\(A\)">\(A\)</span> is conjugation by a unit. Central simple algebras remain central simple under every field extension, and the tensor product of two of them is central simple. Every such algebra has a finite separable splitting field, hence a finite Galois splitting field.</p>
+<p><strong>Proof locators and applicability.</strong> A finite dimensional algebra is Artinian. The Wedderburn–Artin theorem (<em>Semisimple rings and Wedderburn's theorem</em>, Theorem 3.1) therefore applies; simplicity leaves one matrix factor, and its center identifies the center of the division ring with <span class="math" data-tex="\(K\)">\(K\)</span>. The theorem also proves uniqueness by the endomorphism division ring of a simple module. Skolem–Noether is Theorem 2.1 of <em>Central simple algebras and the Brauer group</em>, applied to the two embeddings <span class="math" data-tex="\(\operatorname{id}_A\)">\(\operatorname{id}_A\)</span> and the given automorphism. Its Theorem 1.1 proves the tensor and arbitrary scalar-extension assertions by a minimal tensor-length ideal argument. Its Theorem 4.3 proves existence of a separable maximal subfield of a central division algebra, including imperfect fields, and proves that this subfield splits the algebra. The same field splits its matrix algebras. Passing to its Galois closure gives the last assertion. These are the complete prerequisite proofs used here.</p>
+<p>If <span class="math" data-tex="\(A_E\simeq M_n(E)\)">\(A_E\simeq M_n(E)\)</span>, then <span class="math" data-tex="\(\dim_K A=n^2\)">\(\dim_K A=n^2\)</span>; the integer <span class="math" data-tex="\(n\)">\(n\)</span> is the <strong>degree</strong> of <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(\deg D=d\)">\(\deg D=d\)</span>, equation (1.1) gives <span class="math" data-tex="\(n=rd\)">\(n=rd\)</span>. The integer <span class="math" data-tex="\(d\)">\(d\)</span> is its <strong>index</strong>. Thus two central simple algebras of the same degree and with the same division representative are isomorphic.</p>
+<p>We also record the map that produces inverses:</p>
+<span class="math math-display" data-tex="\[
+A\otimes_K A^{\mathrm{op}}\longrightarrow\operatorname{End}_K(A),
+\qquad a\otimes b\longmapsto(x\longmapsto axb).
+\tag{1.2}
+\]">\[
+A\otimes_K A^{\mathrm{op}}\longrightarrow\operatorname{End}_K(A),
+\qquad a\otimes b\longmapsto(x\longmapsto axb).
+\tag{1.2}
+\]</span>
+<p>It is an algebra homomorphism because multiplication in the second factor is reversed. The map is nonzero because it preserves the identity. Its kernel is a two-sided ideal in a simple algebra, so that kernel is zero. Thus the map is injective. Both sides have dimension <span class="math" data-tex="\((\dim_K A)^2\)">\((\dim_K A)^2\)</span>, so it is an isomorphism. The target is a split matrix algebra.</p>
+<p>Two central simple algebras are <strong>Brauer equivalent</strong> if <span class="math" data-tex="\(M_u(A)\simeq M_v(B)\)">\(M_u(A)\simeq M_v(B)\)</span> for some positive <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. By (1.1), this holds exactly when their division representatives are isomorphic. Tensor product respects this equivalence because <span class="math" data-tex="\(M_u(A)\otimes B\simeq M_u(A\otimes B)\)">\(M_u(A)\otimes B\simeq M_u(A\otimes B)\)</span>. Associativity and interchange of factors give an associative commutative operation; the class of <span class="math" data-tex="\(K\)">\(K\)</span> is its identity and (1.2) gives <span class="math" data-tex="\([A^{\mathrm{op}}]=-[A]\)">\([A^{\mathrm{op}}]=-[A]\)</span>. This is the <strong>Brauer group</strong> <span class="math" data-tex="\(\operatorname{Br}(K)\)">\(\operatorname{Br}(K)\)</span>. Extension of scalars gives a group homomorphism on Brauer groups. In particular,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(K)=0
+\quad\Longleftrightarrow\quad
+\text{every finite central division algebra over }K\text{ equals }K.
+\tag{1.3}
+\]">\[
+\operatorname{Br}(K)=0
+\quad\Longleftrightarrow\quad
+\text{every finite central division algebra over }K\text{ equals }K.
+\tag{1.3}
+\]</span>
+<h2 id="2-forms-of-a-matrix-algebra">2. Forms of a matrix algebra</h2>
+<p>For a group <span class="math" data-tex="\(G\)">\(G\)</span> acting on a possibly noncommutative group <span class="math" data-tex="\(H\)">\(H\)</span>, a continuous <strong>1-cocycle</strong> is a continuous function <span class="math" data-tex="\(\beta:G\to H\)">\(\beta:G\to H\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\beta_{gh}=\beta_g\,g(\beta_h).
+\tag{2.1}
+\]">\[
+\beta_{gh}=\beta_g\,g(\beta_h).
+\tag{2.1}
+\]</span>
+<p>Two cocycles define the same element of <span class="math" data-tex="\(H^1(G,H)\)">\(H^1(G,H)\)</span> if <span class="math" data-tex="\(\beta&#x27;_g=S\beta_g g(S)^{-1}\)">\(\beta&#x27;_g=S\beta_g g(S)^{-1}\)</span> for some <span class="math" data-tex="\(S\in H\)">\(S\in H\)</span>. This is the usual equivalence, with the change-of-basis element written as the inverse of the alternative convention. The result is a pointed set, whose base point is the trivial cocycle.</p>
+<p><strong>Theorem 2.1.</strong> The <span class="math" data-tex="\(K\)">\(K\)</span>-isomorphism classes of central simple algebras of degree <span class="math" data-tex="\(n\)">\(n\)</span> are naturally in bijection with</p>
+<span class="math math-display" data-tex="\[
+H^1(G_K,\operatorname{PGL}_n(K^s)).
+\tag{2.2}
+\]">\[
+H^1(G_K,\operatorname{PGL}_n(K^s)).
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> First work over a finite Galois splitting field <span class="math" data-tex="\(E/K\)">\(E/K\)</span>, with group <span class="math" data-tex="\(Q\)">\(Q\)</span>, and choose <span class="math" data-tex="\(\phi:A_E\simeq M_n(E)\)">\(\phi:A_E\simeq M_n(E)\)</span>. Transport the canonical action <span class="math" data-tex="\(1\otimes g\)">\(1\otimes g\)</span> to a semilinear action <span class="math" data-tex="\(\rho_g\)">\(\rho_g\)</span> on <span class="math" data-tex="\(M_n(E)\)">\(M_n(E)\)</span>. Composing with inverse entrywise application of <span class="math" data-tex="\(g\)">\(g\)</span> gives an <span class="math" data-tex="\(E\)">\(E\)</span>-algebra automorphism. By Skolem–Noether it is <span class="math" data-tex="\(\operatorname{Ad}(P_g)\)">\(\operatorname{Ad}(P_g)\)</span> for some <span class="math" data-tex="\(P_g\in\operatorname{GL}_n(E)\)">\(P_g\in\operatorname{GL}_n(E)\)</span>. A matrix acts trivially by conjugation exactly when it is scalar, so the projective class <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span> is unique. Consequently</p>
+<span class="math math-display" data-tex="\[
+\rho_g(X)=P_g\,g(X)P_g^{-1},
+\qquad \rho_g\rho_h=\rho_{gh}
+\tag{2.3}
+\]">\[
+\rho_g(X)=P_g\,g(X)P_g^{-1},
+\qquad \rho_g\rho_h=\rho_{gh}
+\tag{2.3}
+\]</span>
+<p>is exactly the projective cocycle relation (2.1). Replacing <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by <span class="math" data-tex="\(\operatorname{Ad}(S)\phi\)">\(\operatorname{Ad}(S)\phi\)</span> changes <span class="math" data-tex="\(\beta_g\)">\(\beta_g\)</span> to <span class="math" data-tex="\(S\beta_g g(S)^{-1}\)">\(S\beta_g g(S)^{-1}\)</span>. An isomorphism of algebras gives the same change, so we have a well-defined class.</p>
+<p>Conversely, a projective cocycle on <span class="math" data-tex="\(Q\)">\(Q\)</span> defines (2.3), which is a genuine semilinear action by algebra automorphisms: scalar discrepancies in <span class="math" data-tex="\(P_g g(P_h)\)">\(P_g g(P_h)\)</span> disappear under conjugation. Set</p>
+<span class="math math-display" data-tex="\[
+A=M_n(E)^{\rho(Q)}.
+\tag{2.4}
+\]">\[
+A=M_n(E)^{\rho(Q)}.
+\tag{2.4}
+\]</span>
+<p>The finite Galois descent theorem (<em>Hilbert 90 in Noether's form and Galois descent</em>, Theorem 2.1) says that the multiplication-preserving map <span class="math" data-tex="\(A\otimes_K E\to M_n(E)\)">\(A\otimes_K E\to M_n(E)\)</span> is an isomorphism. It also gives <span class="math" data-tex="\(\dim_K A=n^2\)">\(\dim_K A=n^2\)</span>. If <span class="math" data-tex="\(I\)">\(I\)</span> were a nonzero proper two-sided ideal of <span class="math" data-tex="\(A\)">\(A\)</span>, its scalar extension would be a nonzero proper ideal of <span class="math" data-tex="\(M_n(E)\)">\(M_n(E)\)</span>, by injectivity and dimensions of vector-space extension. This is impossible. A central element of <span class="math" data-tex="\(A\)">\(A\)</span> becomes scalar in <span class="math" data-tex="\(M_n(E)\)">\(M_n(E)\)</span>, and invariance of a scalar means it lies in <span class="math" data-tex="\(E^Q=K\)">\(E^Q=K\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is central simple.</p>
+<p>For <span class="math" data-tex="\(\beta&#x27;_g=S\beta_g g(S)^{-1}\)">\(\beta&#x27;_g=S\beta_g g(S)^{-1}\)</span>, conjugation by <span class="math" data-tex="\(S\)">\(S\)</span> intertwines the two semilinear actions, so restricts to an isomorphism of their fixed algebras. Starting with <span class="math" data-tex="\(A,\phi\)">\(A,\phi\)</span>, taking invariants in its transported action recovers <span class="math" data-tex="\(\phi(A)\)">\(\phi(A)\)</span>. Starting with <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, the descent isomorphism recovers exactly (2.3), and hence exactly <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. This proves both inverse identities over <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Finally consider an arbitrary continuous projective cocycle on <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. Its image is finite by compactness. Choose one matrix lift for every value. A sufficiently small open normal subgroup <span class="math" data-tex="\(U\)">\(U\)</span> fixes every entry of those finitely many lifts and lies in the open set where <span class="math" data-tex="\(\beta_u=1\)">\(\beta_u=1\)</span>. Equation (2.1) gives <span class="math" data-tex="\(\beta_{gu}=\beta_g\)">\(\beta_{gu}=\beta_g\)</span> for <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>. Thus the cocycle descends to <span class="math" data-tex="\(Q=G_K/U\)">\(Q=G_K/U\)</span> with values in <span class="math" data-tex="\(\operatorname{PGL}_n(E)\)">\(\operatorname{PGL}_n(E)\)</span>, where <span class="math" data-tex="\(E=(K^s)^U\)">\(E=(K^s)^U\)</span>. Every gauge matrix also has entries in a finite extension, so two finite descriptions and any equivalence between them can be placed over one common finite Galois field. Descent is compatible with that refinement: the original fixed algebra, after extension, has the same transported action and the same inverse descent isomorphism. Since every central simple algebra has a finite Galois splitting field, the finite bijections give (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-boundary-and-the-cohomological-brauer-group">3. The boundary and the cohomological Brauer group</h2>
+<p>For a projective cocycle, choose continuous lifts <span class="math" data-tex="\(P_g\)">\(P_g\)</span>. These exist by choosing a lift for each of its finitely many values. There are unique scalars <span class="math" data-tex="\(c(g,h)\in(K^s)^\times\)">\(c(g,h)\in(K^s)^\times\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+P_g g(P_h)=c(g,h)P_{gh}.
+\tag{3.1}
+\]">\[
+P_g g(P_h)=c(g,h)P_{gh}.
+\tag{3.1}
+\]</span>
+<p>Associativity of the product of the three semilinear operators <span class="math" data-tex="\(P_g g\)">\(P_g g\)</span>, <span class="math" data-tex="\(P_h h\)">\(P_h h\)</span>, <span class="math" data-tex="\(P_t t\)">\(P_t t\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+c(g,h)c(gh,t)=g(c(h,t))c(g,ht).
+\tag{3.2}
+\]">\[
+c(g,h)c(gh,t)=g(c(h,t))c(g,ht).
+\tag{3.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(c\)">\(c\)</span> is a continuous multiplicative 2-cocycle. We use the following boundary convention:</p>
+<span class="math math-display" data-tex="\[
+\delta_n([\beta])=[c^{-1}],
+\qquad
+c(g,h)^{-1}=P_g^{-1}P_{gh}\,g(P_h^{-1}).
+\tag{3.3}
+\]">\[
+\delta_n([\beta])=[c^{-1}],
+\qquad
+c(g,h)^{-1}=P_g^{-1}P_{gh}\,g(P_h^{-1}).
+\tag{3.3}
+\]</span>
+<p>The last expression is scalar: substitute (3.1) to obtain <span class="math" data-tex="\(c^{-1}I_n\)">\(c^{-1}I_n\)</span>. This convention agrees with <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-theorem-brauer-delta">Stacks, Tag 03R7</a>.</p>
+<p>For comparison, the central-extension connecting map is often defined as <span class="math" data-tex="\([c]\)">\([c]\)</span>. Equation (3.3) is its inverse, so the two maps have the same zero fibre. Choosing (3.3) makes the class of the crossed product with positive factor system <span class="math" data-tex="\(a\)">\(a\)</span> equal to <span class="math" data-tex="\([a]\)">\([a]\)</span>, as in Section 6 of <em>Crossed products and factor systems</em>: its matrix descent multiplier is <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>. With the other boundary convention that identification is negated. All abelian cochain differentials retain the convention of lesson 8.</p>
+<p>Here are the independence checks. Multiplying lifts by scalars <span class="math" data-tex="\(b_g\)">\(b_g\)</span> changes</p>
+<span class="math math-display" data-tex="\[
+c(g,h)\quad\text{to}\quad
+b_g g(b_h)b_{gh}^{-1}c(g,h)=(db)(g,h)c(g,h).
+\tag{3.4}
+\]">\[
+c(g,h)\quad\text{to}\quad
+b_g g(b_h)b_{gh}^{-1}c(g,h)=(db)(g,h)c(g,h).
+\tag{3.4}
+\]</span>
+<p>Hence the inverse multiplier changes by a coboundary. Replacing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by a gauge-equivalent cocycle and using lifts <span class="math" data-tex="\(S P_g g(S)^{-1}\)">\(S P_g g(S)^{-1}\)</span> leaves <span class="math" data-tex="\(c\)">\(c\)</span> unchanged. Further scalar changes are already covered by (3.4). All these functions are continuous after one finite refinement. Thus (3.3) is well defined.</p>
+<p><strong>Theorem 3.1.</strong> These boundaries induce a natural isomorphism of abelian groups</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(K)\xrightarrow{\sim}
+H^2(G_K,(K^s)^\times)
+=H^2_{\mathrm{\acute et}}(\operatorname{Spec}K,\mathbb G_m).
+\tag{3.5}
+\]">\[
+\operatorname{Br}(K)\xrightarrow{\sim}
+H^2(G_K,(K^s)^\times)
+=H^2_{\mathrm{\acute et}}(\operatorname{Spec}K,\mathbb G_m).
+\tag{3.5}
+\]</span>
+<p>For every <span class="math" data-tex="\(n\)">\(n\)</span>, the map <span class="math" data-tex="\(\delta_n\)">\(\delta_n\)</span> is injective on the isomorphism classes of degree-<span class="math" data-tex="\(n\)">\(n\)</span> forms of a matrix algebra.</p>
+<p><strong>Proof: compatibility and the group map.</strong> For two algebras split over a common <span class="math" data-tex="\(E\)">\(E\)</span>, tensor their splitting isomorphisms. The transported matrices are <span class="math" data-tex="\(P_g\otimes Q_g\)">\(P_g\otimes Q_g\)</span>, with multiplier <span class="math" data-tex="\(c(g,h)d(g,h)\)">\(c(g,h)d(g,h)\)</span>. Thus the boundary of a tensor product is the sum of the two boundaries. For a split matrix factor choose all its matrices to be the identity; tensoring by it leaves the multiplier unchanged. Therefore the boundaries descend through Brauer equivalence to a homomorphism</p>
+<span class="math math-display" data-tex="\[
+\delta:\operatorname{Br}(K)\longrightarrow H^2(G_K,(K^s)^\times).
+\tag{3.6}
+\]">\[
+\delta:\operatorname{Br}(K)\longrightarrow H^2(G_K,(K^s)^\times).
+\tag{3.6}
+\]</span>
+<p><strong>Proof: zero kernel and injectivity on forms.</strong> If <span class="math" data-tex="\(\delta([A])=0\)">\(\delta([A])=0\)</span>, then <span class="math" data-tex="\(c=db\)">\(c=db\)</span> for a continuous scalar 1-cochain <span class="math" data-tex="\(b\)">\(b\)</span>. Replace <span class="math" data-tex="\(P_g\)">\(P_g\)</span> by <span class="math" data-tex="\(b_g^{-1}P_g\)">\(b_g^{-1}P_g\)</span>, so that its multiplier is one. Place all matrices and cochains over a common finite Galois field as in Theorem 2.1 and the finite-quotient cochain comparison of lesson 8, Proposition 3.1. The resulting matrices are a genuine <span class="math" data-tex="\(\operatorname{GL}_n\)">\(\operatorname{GL}_n\)</span>-cocycle. Matrix Hilbert 90 (<em>Hilbert 90 in Noether's form and Galois descent</em>, Theorem 3.1) gives</p>
+<span class="math math-display" data-tex="\[
+P_g=B g(B)^{-1}.
+\tag{3.7}
+\]">\[
+P_g=B g(B)^{-1}.
+\tag{3.7}
+\]</span>
+<p>Conjugating by <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span> makes the semilinear action entrywise Galois action. Its fixed algebra is <span class="math" data-tex="\(M_n(K)\)">\(M_n(K)\)</span>. Hence <span class="math" data-tex="\(A\)">\(A\)</span> is split, and (3.6) has zero kernel.</p>
+<p>If two degree-<span class="math" data-tex="\(n\)">\(n\)</span> forms <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have the same boundary, the group homomorphism gives <span class="math" data-tex="\(\delta([A]-[B])=0\)">\(\delta([A]-[B])=0\)</span>, so their Brauer classes agree. They have the same division representative <span class="math" data-tex="\(D\)">\(D\)</span>. Writing <span class="math" data-tex="\(A=M_r(D)\)">\(A=M_r(D)\)</span>, <span class="math" data-tex="\(B=M_s(D)\)">\(B=M_s(D)\)</span>, their equal degree implies <span class="math" data-tex="\(r=s\)">\(r=s\)</span>. Thus <span class="math" data-tex="\(A\simeq B\)">\(A\simeq B\)</span>; by Theorem 2.1 their projective cocycles are equivalent. This proves the asserted injectivity on forms. Exactness of a sequence of pointed sets at its base point alone would establish only the zero-fibre assertion; the group and fixed-degree argument establishes the full assertion.</p>
+<p><strong>Proof: surjectivity.</strong> Let <span class="math" data-tex="\(\xi\in H^2(G_K,(K^s)^\times)\)">\(\xi\in H^2(G_K,(K^s)^\times)\)</span>. Lesson 8, Proposition 3.1, represents it by a 2-cocycle <span class="math" data-tex="\(a:Q\times Q\to E^\times\)">\(a:Q\times Q\to E^\times\)</span>, with <span class="math" data-tex="\(E/K\)">\(E/K\)</span> finite Galois and <span class="math" data-tex="\(Q=\operatorname{Gal}(E/K)\)">\(Q=\operatorname{Gal}(E/K)\)</span>. We may normalize <span class="math" data-tex="\(a(1,g)=a(g,1)=1\)">\(a(1,g)=a(g,1)=1\)</span>. Indeed, (3.2) shows that <span class="math" data-tex="\(a(1,g)=u\)">\(a(1,g)=u\)</span> is constant and <span class="math" data-tex="\(a(g,1)=g(u)\)">\(a(g,1)=g(u)\)</span>; multiplying by the coboundary of the constant 1-cochain <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> gives these normalizations.</p>
+<p>Put <span class="math" data-tex="\(c=a^{-1}\)">\(c=a^{-1}\)</span> and let <span class="math" data-tex="\(V\)">\(V\)</span> be the <span class="math" data-tex="\(E\)">\(E\)</span>-vector space with basis <span class="math" data-tex="\((e_h)_{h\in Q}\)">\((e_h)_{h\in Q}\)</span>. Define invertible semilinear maps by</p>
+<span class="math math-display" data-tex="\[
+T_g(\lambda e_h)=g(\lambda)c(g,h)e_{gh}.
+\tag{3.8}
+\]">\[
+T_g(\lambda e_h)=g(\lambda)c(g,h)e_{gh}.
+\tag{3.8}
+\]</span>
+<p>Their inverses exist because they permute the basis up to nonzero scalars. On <span class="math" data-tex="\(e_t\)">\(e_t\)</span>, equation (3.2) gives</p>
+<span class="math math-display" data-tex="\[
+T_gT_h(e_t)
+=g(c(h,t))c(g,ht)e_{ght}
+=c(g,h)c(gh,t)e_{ght}
+=c(g,h)T_{gh}(e_t).
+\tag{3.9}
+\]">\[
+T_gT_h(e_t)
+=g(c(h,t))c(g,ht)e_{ght}
+=c(g,h)c(gh,t)e_{ght}
+=c(g,h)T_{gh}(e_t).
+\tag{3.9}
+\]</span>
+<p>Conjugation <span class="math" data-tex="\(X\mapsto T_gXT_g^{-1}\)">\(X\mapsto T_gXT_g^{-1}\)</span> therefore defines a genuine semilinear <span class="math" data-tex="\(Q\)">\(Q\)</span>-action on <span class="math" data-tex="\(\operatorname{End}_E(V)\)">\(\operatorname{End}_E(V)\)</span>: the scalar in (3.9) cancels. Its fixed algebra <span class="math" data-tex="\(A\)">\(A\)</span> descends to <span class="math" data-tex="\(K\)">\(K\)</span> by Theorem 2.1, has degree <span class="math" data-tex="\(|Q|\)">\(|Q|\)</span>, and has multiplier <span class="math" data-tex="\(c\)">\(c\)</span>. Its boundary is <span class="math" data-tex="\([c^{-1}]=[a]=\xi\)">\([c^{-1}]=[a]=\xi\)</span>. This proves surjectivity without importing a crossed-product calculation.</p>
+<p>All constructions commute with extension of fields, with compatible separable closures: the transported matrices and their scalar multipliers extend coefficientwise and restrict along the induced Galois-group map. This proves naturality. The final equality in (3.5) is the field-topos comparison from lesson 8. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, Brauer groups are torsion, since lesson 8 proves that positive-degree continuous cohomology of a profinite group is torsion even for nontorsion discrete coefficients. For <span class="math" data-tex="\(m\)">\(m\)</span> invertible in <span class="math" data-tex="\(K\)">\(K\)</span>, its Kummer sequence and Hilbert 90 give</p>
+<span class="math math-display" data-tex="\[
+H^2(G_K,\mu_m)\simeq\operatorname{Br}(K)[m].
+\tag{3.10}
+\]">\[
+H^2(G_K,\mu_m)\simeq\operatorname{Br}(K)[m].
+\tag{3.10}
+\]</span>
+<p>There is no claim here that <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> detects the characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> part of the Brauer group on the étale site.</p>
+<h2 id="4-polynomial-conditions-on-fields">4. Polynomial conditions on fields</h2>
+<p>For an integer <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, a field is <strong><span class="math" data-tex="\(C_r\)">\(C_r\)</span></strong> if every homogeneous polynomial of positive degree <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(n&gt;d^r\)">\(n&gt;d^r\)</span> variables has a nonzero zero. A zero polynomial satisfies the conclusion automatically. In particular, <span class="math" data-tex="\(C_1\)">\(C_1\)</span> means that more variables than the degree force a nontrivial solution.</p>
+<p>We will need a simultaneous-equations fact over an algebraically closed field. Its precise algebra prerequisites are the strong Nullstellensatz in <em><a href="../AG-CA/AG-CA-06.html">The Nullstellensatz and Jacobson rings</a></em>, Theorem 2.2, and Krull's height theorem in <em><a href="../AG-CA/AG-CA-11.html">Dimension theory of Noetherian local rings</a></em>, Theorem 3.1. These lessons give complete proofs of those foundational results.</p>
+<p><strong>Lemma 4.1 (fewer equations than variables).</strong> If <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed and <span class="math" data-tex="\(f_1,\ldots,f_R\in k[X_1,\ldots,X_N]\)">\(f_1,\ldots,f_R\in k[X_1,\ldots,X_N]\)</span> are homogeneous of positive degree, with <span class="math" data-tex="\(R&lt;N\)">\(R&lt;N\)</span>, they have a common zero different from the origin. Zero equations may be omitted.</p>
+<p><strong>Proof.</strong> Suppose the origin is their only common zero. By the strong Nullstellensatz, the radical of <span class="math" data-tex="\(I=(f_1,\ldots,f_R)\)">\(I=(f_1,\ldots,f_R)\)</span> is the maximal ideal <span class="math" data-tex="\(\mathfrak m=(X_1,\ldots,X_N)\)">\(\mathfrak m=(X_1,\ldots,X_N)\)</span>. Thus <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is minimal over <span class="math" data-tex="\(I\)">\(I\)</span>, and Krull's height theorem gives <span class="math" data-tex="\(\operatorname{ht}\mathfrak m\leq R\)">\(\operatorname{ht}\mathfrak m\leq R\)</span>. But the strict chain</p>
+<span class="math math-display" data-tex="\[
+(0)\subsetneq(X_1)\subsetneq(X_1,X_2)
+\subsetneq\cdots\subsetneq(X_1,\ldots,X_N)
+\tag{4.1}
+\]">\[
+(0)\subsetneq(X_1)\subsetneq(X_1,X_2)
+\subsetneq\cdots\subsetneq(X_1,\ldots,X_N)
+\tag{4.1}
+\]</span>
+<p>consists of prime ideals, since each quotient is a polynomial ring over <span class="math" data-tex="\(k\)">\(k\)</span>. It gives <span class="math" data-tex="\(\operatorname{ht}\mathfrak m\geq N\)">\(\operatorname{ht}\mathfrak m\geq N\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applying the lemma to one equation proves that an algebraically closed field is <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. It also explains precisely why a homogeneous dimension count supplies a nonzero solution, rather than just the origin.</p>
+<p><strong>Theorem 4.2 (Chevalley–Warning).</strong> For polynomials <span class="math" data-tex="\(f_1,\ldots,f_s\)">\(f_1,\ldots,f_s\)</span> over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> with sum of degrees less than <span class="math" data-tex="\(n\)">\(n\)</span>, the number of common zeros in <span class="math" data-tex="\(\mathbb F_q^n\)">\(\mathbb F_q^n\)</span> is divisible by the characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. In particular, a homogeneous form of degree <span class="math" data-tex="\(d&lt;n\)">\(d&lt;n\)</span> has a nonzero zero, so every finite field is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</p>
+<p><strong>Proof.</strong> A zero polynomial can be omitted; a nonzero constant leaves no common zeros. In the remaining case count solutions as an element of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\#Z\cdot1
+=\sum_{x\in\mathbb F_q^n}
+\prod_{i=1}^s\bigl(1-f_i(x)^{q-1}\bigr).
+\tag{4.2}
+\]">\[
+\#Z\cdot1
+=\sum_{x\in\mathbb F_q^n}
+\prod_{i=1}^s\bigl(1-f_i(x)^{q-1}\bigr).
+\tag{4.2}
+\]</span>
+<p>The product equals one at a common zero and zero elsewhere. Every monomial in its expansion has total degree at most <span class="math" data-tex="\((q-1)\sum_i\deg f_i&lt;n(q-1)\)">\((q-1)\sum_i\deg f_i&lt;n(q-1)\)</span>. Consequently some coordinate exponent <span class="math" data-tex="\(e\)">\(e\)</span> is less than <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. If <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, the sum of <span class="math" data-tex="\(x^e=1\)">\(x^e=1\)</span> over that coordinate is <span class="math" data-tex="\(q\cdot1=0\)">\(q\cdot1=0\)</span>. If <span class="math" data-tex="\(0&lt;e&lt;q-1\)">\(0&lt;e&lt;q-1\)</span>, choose a generator <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of the cyclic group <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span> (proved in lesson 8, Solution 1). Then</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in\mathbb F_q}x^e
+=\sum_{j=0}^{q-2}\omega^{je}=0,
+\tag{4.3}
+\]">\[
+\sum_{x\in\mathbb F_q}x^e
+=\sum_{j=0}^{q-2}\omega^{je}=0,
+\tag{4.3}
+\]</span>
+<p>because <span class="math" data-tex="\(\omega^e\ne1\)">\(\omega^e\ne1\)</span> and this geometric series has numerator <span class="math" data-tex="\(\omega^{e(q-1)}-1=0\)">\(\omega^{e(q-1)}-1=0\)</span>. Summing a multivariable monomial factors into the coordinate sums, so every monomial contributes zero to (4.2), including its constant term. Thus <span class="math" data-tex="\(\#Z\cdot1=0\)">\(\#Z\cdot1=0\)</span>, meaning <span class="math" data-tex="\(p\mid\#Z\)">\(p\mid\#Z\)</span>. A positive-degree homogeneous form vanishes at the origin. If that were its only zero, its zero count would be one, contradicting divisibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.3 (reduced norm as a polynomial).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> has degree <span class="math" data-tex="\(n\)">\(n\)</span>, its reduced norm is a homogeneous polynomial of degree <span class="math" data-tex="\(n\)">\(n\)</span> in the <span class="math" data-tex="\(n^2\)">\(n^2\)</span> coordinates of a <span class="math" data-tex="\(K\)">\(K\)</span>-basis. An element <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> is invertible exactly when <span class="math" data-tex="\(\operatorname{Nrd}_A(x)\ne0\)">\(\operatorname{Nrd}_A(x)\ne0\)</span>.</p>
+<p><strong>Proof.</strong> Choose a finite Galois splitting field <span class="math" data-tex="\(E\)">\(E\)</span>, a splitting <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and a <span class="math" data-tex="\(K\)">\(K\)</span>-basis <span class="math" data-tex="\(a_1,\ldots,a_{n^2}\)">\(a_1,\ldots,a_{n^2}\)</span>. Put <span class="math" data-tex="\(B_i=\phi(a_i\otimes1)\)">\(B_i=\phi(a_i\otimes1)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+F(X_1,\ldots,X_{n^2})
+=\det\left(\sum_iX_iB_i\right)\in E[X_1,\ldots,X_{n^2}].
+\tag{4.4}
+\]">\[
+F(X_1,\ldots,X_{n^2})
+=\det\left(\sum_iX_iB_i\right)\in E[X_1,\ldots,X_{n^2}].
+\tag{4.4}
+\]</span>
+<p>It is homogeneous of degree <span class="math" data-tex="\(n\)">\(n\)</span>. Since each <span class="math" data-tex="\(B_i\)">\(B_i\)</span> is invariant under (2.3), we have <span class="math" data-tex="\(g(B_i)=P_g^{-1}B_iP_g\)">\(g(B_i)=P_g^{-1}B_iP_g\)</span>. Acting on the coefficients of (4.4), while fixing the indeterminates, therefore leaves its determinant unchanged. Its coefficients are in <span class="math" data-tex="\(E^Q=K\)">\(E^Q=K\)</span>. This coefficientwise argument also works over finite fields; pointwise invariance alone would not suffice to identify polynomial coefficients there.</p>
+<p>Changing <span class="math" data-tex="\(\phi\)">\(\phi\)</span> conjugates every <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, which preserves the determinant. Two splitting fields can be enlarged to a common one, where the same observation applies. Thus evaluation defines a well-defined reduced norm. An invertible element has invertible image and nonzero determinant. Conversely, if its image is invertible, its inverse is fixed by the transported Galois action, because the inverse is unique. It descends to an inverse in <span class="math" data-tex="\(A\)">\(A\)</span>. Finally <span class="math" data-tex="\(F\)">\(F\)</span> is not the zero polynomial: evaluation at the coordinate tuple of <span class="math" data-tex="\(1\)">\(1\)</span> gives one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.4.</strong> Every <span class="math" data-tex="\(C_1\)">\(C_1\)</span> field has trivial Brauer group. Every finite extension of a <span class="math" data-tex="\(C_1\)">\(C_1\)</span> field, including an inseparable extension, is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be a finite central division algebra over a <span class="math" data-tex="\(C_1\)">\(C_1\)</span> field, of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its reduced norm is a degree-<span class="math" data-tex="\(d\)">\(d\)</span> form in <span class="math" data-tex="\(d^2\)">\(d^2\)</span> variables. If <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, then <span class="math" data-tex="\(d^2&gt;d\)">\(d^2&gt;d\)</span>, so the <span class="math" data-tex="\(C_1\)">\(C_1\)</span> condition produces a nonzero element of <span class="math" data-tex="\(D\)">\(D\)</span> of reduced norm zero. Lemma 4.3 says it is not invertible, contradicting division. Hence <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(D=K\)">\(D=K\)</span>, and (1.3) gives <span class="math" data-tex="\(\operatorname{Br}(K)=0\)">\(\operatorname{Br}(K)=0\)</span>.</p>
+<p>For the extension assertion let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> have degree <span class="math" data-tex="\(e\)">\(e\)</span>, with basis <span class="math" data-tex="\(b_1,\ldots,b_e\)">\(b_1,\ldots,b_e\)</span>, and let <span class="math" data-tex="\(F\)">\(F\)</span> be a degree-<span class="math" data-tex="\(d\)">\(d\)</span> form over <span class="math" data-tex="\(L\)">\(L\)</span> in <span class="math" data-tex="\(n&gt;d\)">\(n&gt;d\)</span> variables. Substitute</p>
+<span class="math math-display" data-tex="\[
+x_j=\sum_{i=1}^e Z_{ji}b_i.
+\tag{4.5}
+\]">\[
+x_j=\sum_{i=1}^e Z_{ji}b_i.
+\tag{4.5}
+\]</span>
+<p>In the free <span class="math" data-tex="\(K[Z]\)">\(K[Z]\)</span>-algebra <span class="math" data-tex="\(L\otimes_K K[Z]\)">\(L\otimes_K K[Z]\)</span>, multiplication by <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> has an <span class="math" data-tex="\(e\)">\(e\)</span>-by-<span class="math" data-tex="\(e\)">\(e\)</span> matrix with entries homogeneous of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Its determinant is a form over <span class="math" data-tex="\(K\)">\(K\)</span> of degree <span class="math" data-tex="\(ed\)">\(ed\)</span> in <span class="math" data-tex="\(en&gt;ed\)">\(en&gt;ed\)</span> variables, or is identically zero. The <span class="math" data-tex="\(C_1\)">\(C_1\)</span> property, or any nonzero tuple in the latter case, supplies a nonzero coordinate tuple where the determinant vanishes. Equation (4.5) gives a nonzero tuple in <span class="math" data-tex="\(L^n\)">\(L^n\)</span> because the <span class="math" data-tex="\(b_i\)">\(b_i\)</span> are a basis. At that tuple the determinant is the field norm of <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span>, which is zero exactly when <span class="math" data-tex="\(F(x)=0\)">\(F(x)=0\)</span>: multiplication by a nonzero element of a field is invertible. No separability was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-tsen-s-theorem-by-bounded-polynomials">5. Tsen's theorem by bounded polynomials</h2>
+<p><strong>Theorem 5.1 (Tsen).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be algebraically closed. The function field <span class="math" data-tex="\(K\)">\(K\)</span> of an integral algebraic curve over <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</p>
+<p><strong>Proof.</strong> Such a function field is finitely generated of transcendence degree one. Choose a transcendental element <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span>. The remaining finite list of field generators is algebraic over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>, hence generates a finite extension. Write <span class="math" data-tex="\([K:k(t)]=e\)">\([K:k(t)]=e\)</span> and choose a basis <span class="math" data-tex="\(w_1,\ldots,w_e\)">\(w_1,\ldots,w_e\)</span>. Separability of this extension is unnecessary.</p>
+<p>Let <span class="math" data-tex="\(F\in K[x_1,\ldots,x_n]\)">\(F\in K[x_1,\ldots,x_n]\)</span> be homogeneous of positive degree <span class="math" data-tex="\(d&lt;n\)">\(d&lt;n\)</span>. For an integer <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span> seek a solution of the form</p>
+<span class="math math-display" data-tex="\[
+x_j=\sum_{i=1}^e\sum_{r=0}^m z_{jir}t^rw_i,
+\qquad z_{jir}\in k.
+\tag{5.1}
+\]">\[
+x_j=\sum_{i=1}^e\sum_{r=0}^m z_{jir}t^rw_i,
+\qquad z_{jir}\in k.
+\tag{5.1}
+\]</span>
+<p>There are <span class="math" data-tex="\(ne(m+1)\)">\(ne(m+1)\)</span> scalar unknowns. Expand each term of <span class="math" data-tex="\(F\)">\(F\)</span> using the basis. Only finitely many products consisting of a coefficient of <span class="math" data-tex="\(F\)">\(F\)</span> times <span class="math" data-tex="\(d\)">\(d\)</span> basis elements occur. Each has <span class="math" data-tex="\(e\)">\(e\)</span> coordinates in <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>. Choose a nonzero common polynomial denominator <span class="math" data-tex="\(D(t)\)">\(D(t)\)</span> for all of these finitely many rational coordinates, and an integer <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span> bounding the degrees of their polynomial numerators after multiplication by <span class="math" data-tex="\(D\)">\(D\)</span>. Both choices depend on <span class="math" data-tex="\(F\)">\(F\)</span> and the basis, but not on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>The polynomial coefficients in (5.1) have degree at most <span class="math" data-tex="\(m\)">\(m\)</span>. A product of <span class="math" data-tex="\(d\)">\(d\)</span> of them has degree at most <span class="math" data-tex="\(dm\)">\(dm\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+D(t)F(x_1,\ldots,x_n)
+=\sum_{i=1}^e\sum_{s=0}^{dm+C}
+H_{is}(z)t^sw_i,
+\tag{5.2}
+\]">\[
+D(t)F(x_1,\ldots,x_n)
+=\sum_{i=1}^e\sum_{s=0}^{dm+C}
+H_{is}(z)t^sw_i,
+\tag{5.2}
+\]</span>
+<p>where each <span class="math" data-tex="\(H_{is}\)">\(H_{is}\)</span> is homogeneous of degree <span class="math" data-tex="\(d\)">\(d\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>, or zero. This is an identity with indeterminate coordinates, not an asymptotic assertion.</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Exact bound</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scalar unknowns in the proposed solution</td>
+<td><span class="math" data-tex="\(ne(m+1)\)">\(ne(m+1)\)</span></td>
+</tr>
+<tr>
+<td>Scalar coefficient equations in (5.2)</td>
+<td>at most <span class="math" data-tex="\(e(dm+C+1)\)">\(e(dm+C+1)\)</span></td>
+</tr>
+<tr>
+<td>Difference of these bounds</td>
+<td><span class="math" data-tex="\(e((n-d)m+n-C-1)\)">\(e((n-d)m+n-C-1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Because <span class="math" data-tex="\(n&gt;d\)">\(n&gt;d\)</span>, choose <span class="math" data-tex="\(m\)">\(m\)</span> large enough that</p>
+<span class="math math-display" data-tex="\[
+ne(m+1)&gt;e(dm+C+1).
+\tag{5.3}
+\]">\[
+ne(m+1)&gt;e(dm+C+1).
+\tag{5.3}
+\]</span>
+<p>Lemma 4.1 gives a nonzero scalar tuple <span class="math" data-tex="\(z\)">\(z\)</span> annihilating every <span class="math" data-tex="\(H_{is}\)">\(H_{is}\)</span>. At least one of the polynomials <span class="math" data-tex="\(\sum_r z_{jir}t^r\)">\(\sum_r z_{jir}t^r\)</span> is nonzero, by transcendence of <span class="math" data-tex="\(t\)">\(t\)</span>. The <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>-linear independence of the <span class="math" data-tex="\(w_i\)">\(w_i\)</span> then shows that some <span class="math" data-tex="\(x_j\ne0\)">\(x_j\ne0\)</span>. Equation (5.2), the basis independence, and <span class="math" data-tex="\(D(t)\ne0\)">\(D(t)\ne0\)</span> give <span class="math" data-tex="\(F(x)=0\)">\(F(x)=0\)</span>. This proves the <span class="math" data-tex="\(C_1\)">\(C_1\)</span> assertion in full. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Alternatively, one can first run the same count with <span class="math" data-tex="\(e=1\)">\(e=1\)</span> to prove that <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>, and then apply the finite-extension part of Theorem 4.4. The displayed proof includes the basis and denominator count directly, so it also shows where every equation comes from for a general curve.</p>
+<p>The assertion extends to any field extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> of transcendence degree one. Every finite collection of its elements lies in a finitely generated subfield of transcendence degree one, after adjoining one transcendental element if necessary. The coefficients of any proposed form therefore lie in a function field covered by the theorem, and a nonzero solution there is a solution in <span class="math" data-tex="\(K\)">\(K\)</span>. This passage uses only finitely many coefficients; it requires no assertion about Brauer groups commuting with limits.</p>
+<h2 id="6-cohomological-consequences-and-a-scheme-outlook">6. Cohomological consequences and a scheme outlook</h2>
+<p><strong>Corollary 6.1.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(C_1\)">\(C_1\)</span>, then every finite extension <span class="math" data-tex="\(E/K\)">\(E/K\)</span> has <span class="math" data-tex="\(\operatorname{Br}(E)=0\)">\(\operatorname{Br}(E)=0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(K)\leq1,
+\qquad
+H^q(G_K,(K^s)^\times)=0\quad(q\geq1).
+\tag{6.1}
+\]">\[
+\operatorname{cd}(K)\leq1,
+\qquad
+H^q(G_K,(K^s)^\times)=0\quad(q\geq1).
+\tag{6.1}
+\]</span>
+<p>In particular, these conclusions apply to finite fields and to the fields in Tsen's theorem.</p>
+<p><strong>Proof.</strong> The assertion for all finite extensions is Theorem 4.4 applied twice. By Theorem 3.1 it gives <span class="math" data-tex="\(H^2(G_E,(E^s)^\times)=0\)">\(H^2(G_E,(E^s)^\times)=0\)</span> for every finite separable extension. For every prime <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>, the criterion proved in lesson 8, Proposition 5.5, gives <span class="math" data-tex="\(\operatorname{cd}_\ell(K)\leq1\)">\(\operatorname{cd}_\ell(K)\leq1\)</span>. In characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, its Theorem 5.4 gives <span class="math" data-tex="\(\operatorname{cd}_p(K)\leq1\)">\(\operatorname{cd}_p(K)\leq1\)</span> even without perfection. Taking all primes proves the first part of (6.1): positive cohomology above degree one vanishes for every discrete torsion coefficient module.</p>
+<p>The multiplicative coefficient group <span class="math" data-tex="\(M=(K^s)^\times\)">\(M=(K^s)^\times\)</span> is usually not torsion, so this last assertion alone does not prove the second part. For this argument write abelian groups additively, let <span class="math" data-tex="\(T\subset M\)">\(T\subset M\)</span> be the torsion subgroup, and put <span class="math" data-tex="\(N=M/T\)">\(N=M/T\)</span>. The quotient <span class="math" data-tex="\(N\)">\(N\)</span> is torsion free: if a multiple of the class of <span class="math" data-tex="\(m\)">\(m\)</span> is zero, a further multiple annihilates <span class="math" data-tex="\(m\)">\(m\)</span>, so <span class="math" data-tex="\(m\in T\)">\(m\in T\)</span>. We have two exact sequences of discrete continuous modules</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow T\longrightarrow M\longrightarrow N\longrightarrow0,
+\qquad
+0\longrightarrow N\longrightarrow N\otimes_{\mathbb Z}\mathbb Q
+\longrightarrow C\longrightarrow0.
+\tag{6.2}
+\]">\[
+0\longrightarrow T\longrightarrow M\longrightarrow N\longrightarrow0,
+\qquad
+0\longrightarrow N\longrightarrow N\otimes_{\mathbb Z}\mathbb Q
+\longrightarrow C\longrightarrow0.
+\tag{6.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(C\)">\(C\)</span> is torsion. Every element of the rationalization still has an open stabilizer, since it is a finite sum of fractions of elements of <span class="math" data-tex="\(N\)">\(N\)</span>. Lesson 8, Corollary 3.2, gives <span class="math" data-tex="\(H^q(G_K,N\otimes\mathbb Q)=0\)">\(H^q(G_K,N\otimes\mathbb Q)=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. The second sequence in (6.2) therefore gives</p>
+<span class="math math-display" data-tex="\[
+H^q(G_K,N)\simeq H^{q-1}(G_K,C)=0
+\quad(q\geq3).
+\tag{6.3}
+\]">\[
+H^q(G_K,N)\simeq H^{q-1}(G_K,C)=0
+\quad(q\geq3).
+\tag{6.3}
+\]</span>
+<p>The first sequence, using <span class="math" data-tex="\(H^q(G_K,T)=0\)">\(H^q(G_K,T)=0\)</span> for <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, gives <span class="math" data-tex="\(H^q(G_K,M)\simeq H^q(G_K,N)\)">\(H^q(G_K,M)\simeq H^q(G_K,N)\)</span> for <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>. Thus the desired groups vanish for <span class="math" data-tex="\(q\geq3\)">\(q\geq3\)</span>. Degree two vanishes by <span class="math" data-tex="\(\operatorname{Br}(K)=0\)">\(\operatorname{Br}(K)=0\)</span> and (3.5); degree one vanishes by Hilbert 90. This proves every degree in (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The dimension bound need not be zero. For example, over an algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span> with a prime <span class="math" data-tex="\(\ell\ne\operatorname{char}k\)">\(\ell\ne\operatorname{char}k\)</span>, the element <span class="math" data-tex="\(t\)">\(t\)</span> is not an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power in <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>: its order of vanishing at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is one, whereas an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th power has order divisible by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Kummer gives <span class="math" data-tex="\(H^1(k(t),\mu_\ell)\ne0\)">\(H^1(k(t),\mu_\ell)\ne0\)</span>, so <span class="math" data-tex="\(\operatorname{cd}(k(t))=1\)">\(\operatorname{cd}(k(t))=1\)</span>.</p>
+<p>For a scheme <span class="math" data-tex="\(S\)">\(S\)</span>, an <strong>Azumaya algebra</strong> is a finite locally free unital <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span>-algebra which becomes a matrix algebra on an étale cover. Matrix sizes can vary between components. Brauer equivalence permits tensoring by algebras <span class="math" data-tex="\(\operatorname{End}_{\mathcal O_S}(V)\)">\(\operatorname{End}_{\mathcal O_S}(V)\)</span>, with <span class="math" data-tex="\(V\)">\(V\)</span> a locally free module of finite positive rank. Tensor product and opposite algebras give the scheme's Azumaya Brauer group. Matrix-algebra transition automorphisms are projective linear, and their scalar lifting obstruction gives a class in <span class="math" data-tex="\(H^2_{\mathrm{\acute et}}(S,\mathbb G_m)\)">\(H^2_{\mathrm{\acute et}}(S,\mathbb G_m)\)</span>, with the same inverse-boundary choice as (3.3). This is the scheme version motivating <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-brauer-scheme">Stacks, Section 0A2J</a>. The field proof does not assert that every class of <span class="math" data-tex="\(H^2(S,\mathbb G_m)\)">\(H^2(S,\mathbb G_m)\)</span> is represented by an Azumaya algebra on an arbitrary scheme; that problem needs further geometry.</p>
+<h2 id="7-quaternion-and-finite-field-examples">7. Quaternion and finite-field examples</h2>
+<p>Suppose <span class="math" data-tex="\(\operatorname{char}K\ne2\)">\(\operatorname{char}K\ne2\)</span> and <span class="math" data-tex="\(a,b\in K^\times\)">\(a,b\in K^\times\)</span>. The quaternion algebra</p>
+<span class="math math-display" data-tex="\[
+(a,b)_K=K\langle i,j\rangle/(i^2-a,\ j^2-b,\ ij+ji)
+\tag{7.1}
+\]">\[
+(a,b)_K=K\langle i,j\rangle/(i^2-a,\ j^2-b,\ ij+ji)
+\tag{7.1}
+\]</span>
+<p>has basis <span class="math" data-tex="\(1,i,j,ij\)">\(1,i,j,ij\)</span>, is central simple, and has degree two; these facts are proved in Section 6 of <em>Central simple algebras and the Brauer group</em>. Conjugation changes the signs of <span class="math" data-tex="\(i,j,ij\)">\(i,j,ij\)</span> and reverses products. Multiplying an element by its conjugate gives its reduced norm:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nrd}(x_0+x_1i+x_2j+x_3ij)
+=x_0^2-a x_1^2-b x_2^2+ab x_3^2.
+\tag{7.2}
+\]">\[
+\operatorname{Nrd}(x_0+x_1i+x_2j+x_3ij)
+=x_0^2-a x_1^2-b x_2^2+ab x_3^2.
+\tag{7.2}
+\]</span>
+<p>One checks the formula by using <span class="math" data-tex="\(ij=-ji\)">\(ij=-ji\)</span>, which cancels cross terms, and <span class="math" data-tex="\((ij)^2=-ab\)">\((ij)^2=-ab\)</span>. Its identification with reduced norm follows after splitting, where conjugation is the adjugate of a two-by-two matrix, or from the explicit matrices in that prerequisite. Lemma 4.3 shows that this algebra is a division algebra exactly when (7.2) has no nonzero zero. Otherwise (1.1), with total degree two, forces it to be <span class="math" data-tex="\(M_2(K)\)">\(M_2(K)\)</span>.</p>
+<p>For <span class="math" data-tex="\(a=b=-1\)">\(a=b=-1\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, (7.2) is the sum of four squares. It is positive on every nonzero tuple, so Hamilton's algebra <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> is a division algebra and its Brauer class is nonzero. Lesson 8 computed</p>
+<span class="math math-display" data-tex="\[
+H^2(\operatorname{Gal}(\mathbb C/\mathbb R),\mathbb C^\times)
+\simeq\mathbb R^\times/\mathbb R_{&gt;0}\simeq\mathbb Z/2\mathbb Z.
+\tag{7.3}
+\]">\[
+H^2(\operatorname{Gal}(\mathbb C/\mathbb R),\mathbb C^\times)
+\simeq\mathbb R^\times/\mathbb R_{&gt;0}\simeq\mathbb Z/2\mathbb Z.
+\tag{7.3}
+\]</span>
+<p>Theorem 3.1 identifies <span class="math" data-tex="\(\operatorname{Br}(\mathbb R)\)">\(\operatorname{Br}(\mathbb R)\)</span> with this group, so <span class="math" data-tex="\([\mathbb H]\)">\([\mathbb H]\)</span> is its unique nonzero element. The normalized multiplier whose value at the pair of conjugations is <span class="math" data-tex="\(-1\)">\(-1\)</span> represents it; its inverse is again <span class="math" data-tex="\(-1\)">\(-1\)</span>, consistent with (3.3).</p>
+<p>For <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, Theorems 4.2 and 4.4 give <span class="math" data-tex="\(\operatorname{Br}(\mathbb F_q)=0\)">\(\operatorname{Br}(\mathbb F_q)=0\)</span>. There is also a direct division-algebra proof: a central division algebra over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> is a finite set, and Wedderburn's little theorem says every finite division ring is a field. Its complete proof is Proposition 5.2 of <em>Central simple algebras and the Brauer group</em>; it uses maximal subfields, Skolem–Noether and a finite-group coset fixed-point count. The center condition then makes the division algebra exactly <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. These are two routes to the same conclusion, with the polynomial proof available here and the group-theoretic proof in that lesson.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove directly that the tensor product of two central simple <span class="math" data-tex="\(K\)">\(K\)</span>-algebras is central simple.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove that a homogeneous form of degree <span class="math" data-tex="\(d&lt;n\)">\(d&lt;n\)</span> over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> has a nonzero zero by showing that its number of zeros is divisible by the characteristic. Include the constant monomials in the counting argument.</p>
+<p><strong>Exercise 3 (medium).</strong> Suppose <span class="math" data-tex="\(\operatorname{char}K\ne2\)">\(\operatorname{char}K\ne2\)</span>. Show that <span class="math" data-tex="\((a,b)_K\)">\((a,b)_K\)</span> is split if and only if <span class="math" data-tex="\(b\)">\(b\)</span> is a norm from the quadratic étale algebra <span class="math" data-tex="\(L=K[T]/(T^2-a)\)">\(L=K[T]/(T^2-a)\)</span>. When <span class="math" data-tex="\(a\)">\(a\)</span> is nonsquare, this is the field <span class="math" data-tex="\(K(\sqrt a)\)">\(K(\sqrt a)\)</span>. Explain the square case.</p>
+<p><strong>Exercise 4 (medium).</strong> Deduce that every smooth plane conic over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>, with <span class="math" data-tex="\(k\)">\(k\)</span> algebraically closed, has a rational point.</p>
+<p><strong>Exercise 5 (hard).</strong> For algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic different from two, show that every quadratic form in <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span> variables over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> has a nonzero zero, including degenerate forms. Deduce that every quaternion algebra over <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> is split.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution 1.</strong> Put <span class="math" data-tex="\(R=A\otimes_K B\)">\(R=A\otimes_K B\)</span> and let <span class="math" data-tex="\(I\ne0\)">\(I\ne0\)</span> be a two-sided ideal. Choose a nonzero element of <span class="math" data-tex="\(I\)">\(I\)</span> of smallest tensor length, written <span class="math" data-tex="\(x=\sum_{i=1}^r a_i\otimes b_i\)">\(x=\sum_{i=1}^r a_i\otimes b_i\)</span>, with the <span class="math" data-tex="\(b_i\)">\(b_i\)</span> linearly independent and <span class="math" data-tex="\(a_1\ne0\)">\(a_1\ne0\)</span>. Since <span class="math" data-tex="\(Aa_1A=A\)">\(Aa_1A=A\)</span>, choose finitely many <span class="math" data-tex="\(u_j,v_j\in A\)">\(u_j,v_j\in A\)</span> with <span class="math" data-tex="\(\sum_j u_j a_1v_j=1\)">\(\sum_j u_j a_1v_j=1\)</span>. The element <span class="math" data-tex="\(y=\sum_j(u_j\otimes1)x(v_j\otimes1)\)">\(y=\sum_j(u_j\otimes1)x(v_j\otimes1)\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span> and has the form</p>
+<span class="math math-display" data-tex="\[
+y=1\otimes b_1+\sum_{i=2}^r a&#x27;_i\otimes b_i.
+\tag{9.1}
+\]">\[
+y=1\otimes b_1+\sum_{i=2}^r a&#x27;_i\otimes b_i.
+\tag{9.1}
+\]</span>
+<p>It is nonzero by independence of the <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, and has length at most <span class="math" data-tex="\(r\)">\(r\)</span>. For any <span class="math" data-tex="\(u\in A\)">\(u\in A\)</span>, its commutator with <span class="math" data-tex="\(u\otimes1\)">\(u\otimes1\)</span> has an expression using at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span> of these tensors. Minimality forces it to be zero. Independence implies that every <span class="math" data-tex="\(a&#x27;_i\)">\(a&#x27;_i\)</span> commutes with all of <span class="math" data-tex="\(A\)">\(A\)</span>, so lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Thus <span class="math" data-tex="\(y=1\otimes b\)">\(y=1\otimes b\)</span> for some nonzero <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. Since <span class="math" data-tex="\(BbB=B\)">\(BbB=B\)</span>, its two-sided multiples put <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>. Hence <span class="math" data-tex="\(I=R\)">\(I=R\)</span>.</p>
+<p>If <span class="math" data-tex="\(z=\sum_i a_i\otimes b_i\)">\(z=\sum_i a_i\otimes b_i\)</span> is central, use an independent list <span class="math" data-tex="\(b_i\)">\(b_i\)</span>. Commuting with every <span class="math" data-tex="\(u\otimes1\)">\(u\otimes1\)</span> puts all <span class="math" data-tex="\(a_i\)">\(a_i\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(z=1\otimes b\)">\(z=1\otimes b\)</span>. Commuting with <span class="math" data-tex="\(1\otimes B\)">\(1\otimes B\)</span> puts <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. The center of <span class="math" data-tex="\(R\)">\(R\)</span> is therefore <span class="math" data-tex="\(K\)">\(K\)</span>. It is nonzero and finite dimensional as the tensor product of two nonzero finite vector spaces. This proves all parts of central simplicity.</p>
+<p><strong>Solution 2.</strong> For a nonzero form <span class="math" data-tex="\(f\)">\(f\)</span>, the number <span class="math" data-tex="\(N\)">\(N\)</span> of zeros satisfies</p>
+<span class="math math-display" data-tex="\[
+N\cdot1=\sum_{x\in\mathbb F_q^n}\bigl(1-f(x)^{q-1}\bigr).
+\tag{9.2}
+\]">\[
+N\cdot1=\sum_{x\in\mathbb F_q^n}\bigl(1-f(x)^{q-1}\bigr).
+\tag{9.2}
+\]</span>
+<p>The constant term contributes <span class="math" data-tex="\(q^n\cdot1=0\)">\(q^n\cdot1=0\)</span>. Every monomial in <span class="math" data-tex="\(f^{q-1}\)">\(f^{q-1}\)</span> has total degree <span class="math" data-tex="\(d(q-1)&lt;n(q-1)\)">\(d(q-1)&lt;n(q-1)\)</span>, hence an exponent <span class="math" data-tex="\(e&lt;q-1\)">\(e&lt;q-1\)</span>. If <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, summing that coordinate gives <span class="math" data-tex="\(q\cdot1=0\)">\(q\cdot1=0\)</span>; if <span class="math" data-tex="\(0&lt;e&lt;q-1\)">\(0&lt;e&lt;q-1\)</span>, the geometric series over a generator of <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span> gives zero as in (4.3). Thus the whole sum is zero, and <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>. Homogeneity gives the origin as a zero; it cannot be the only one. For the zero form, every tuple is a zero and a nonzero tuple exists since <span class="math" data-tex="\(n&gt;d\geq1\)">\(n&gt;d\geq1\)</span>. This proves the requested statement, including the case <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, when the relevant small exponent is necessarily zero.</p>
+<p><strong>Solution 3.</strong> First suppose <span class="math" data-tex="\(a\)">\(a\)</span> is nonsquare. Then <span class="math" data-tex="\(L=K(\sqrt a)\)">\(L=K(\sqrt a)\)</span> is a quadratic field with nontrivial automorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Write the quaternion algebra as <span class="math" data-tex="\(L\oplus Lj\)">\(L\oplus Lj\)</span>, where <span class="math" data-tex="\(jx=\sigma(x)j\)">\(jx=\sigma(x)j\)</span> and <span class="math" data-tex="\(j^2=b\)">\(j^2=b\)</span>. If <span class="math" data-tex="\(b=c\sigma(c)\)">\(b=c\sigma(c)\)</span> for <span class="math" data-tex="\(c\in L^\times\)">\(c\in L^\times\)</span>, let <span class="math" data-tex="\(L\)">\(L\)</span> act on its underlying two-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-space by multiplication and let <span class="math" data-tex="\(j\)">\(j\)</span> act by <span class="math" data-tex="\(J(v)=c\sigma(v)\)">\(J(v)=c\sigma(v)\)</span>. Then <span class="math" data-tex="\(J^2=b\)">\(J^2=b\)</span> and <span class="math" data-tex="\(Jm_x=m_{\sigma(x)}J\)">\(Jm_x=m_{\sigma(x)}J\)</span>. These satisfy the defining relations, giving a unital algebra homomorphism to <span class="math" data-tex="\(\operatorname{End}_K(L)\)">\(\operatorname{End}_K(L)\)</span>. Central simplicity makes it injective, and both dimensions are four. Thus it is an isomorphism.</p>
+<p>Conversely, if the quaternion algebra is <span class="math" data-tex="\(\operatorname{End}_K(V)\)">\(\operatorname{End}_K(V)\)</span> with <span class="math" data-tex="\(\dim_K V=2\)">\(\dim_K V=2\)</span>, its embedded field <span class="math" data-tex="\(L\)">\(L\)</span> makes <span class="math" data-tex="\(V\)">\(V\)</span> one dimensional over <span class="math" data-tex="\(L\)">\(L\)</span>. Choose an <span class="math" data-tex="\(L\)">\(L\)</span>-basis to identify <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span>. The relation with <span class="math" data-tex="\(j\)">\(j\)</span> says its operator is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-semilinear, so it is <span class="math" data-tex="\(v\mapsto c\sigma(v)\)">\(v\mapsto c\sigma(v)\)</span>, where <span class="math" data-tex="\(c=J(1)\ne0\)">\(c=J(1)\ne0\)</span> because <span class="math" data-tex="\(j\)">\(j\)</span> is invertible. Squaring gives <span class="math" data-tex="\(b=c\sigma(c)\)">\(b=c\sigma(c)\)</span>. This proves both directions.</p>
+<p>If <span class="math" data-tex="\(a=s^2\in K^{\times2}\)">\(a=s^2\in K^{\times2}\)</span>, the étale algebra is <span class="math" data-tex="\(K\times K\)">\(K\times K\)</span>, and its norm <span class="math" data-tex="\((u,v)\mapsto uv\)">\((u,v)\mapsto uv\)</span> is surjective on units. The quaternion algebra is always split, as the matrices</p>
+<span class="math math-display" data-tex="\[
+i\longmapsto\begin{pmatrix}s&amp;0\\0&amp;-s\end{pmatrix},
+\qquad
+j\longmapsto\begin{pmatrix}0&amp;b\\1&amp;0\end{pmatrix}
+\tag{9.3}
+\]">\[
+i\longmapsto\begin{pmatrix}s&amp;0\\0&amp;-s\end{pmatrix},
+\qquad
+j\longmapsto\begin{pmatrix}0&amp;b\\1&amp;0\end{pmatrix}
+\tag{9.3}
+\]</span>
+<p>satisfy the relations. Their images of <span class="math" data-tex="\(1,i,j,ij\)">\(1,i,j,ij\)</span> are independent: the first two span diagonal matrices and the last two span off-diagonal matrices, since <span class="math" data-tex="\(2,s,b\)">\(2,s,b\)</span> are nonzero. This gives an isomorphism to <span class="math" data-tex="\(M_2(K)\)">\(M_2(K)\)</span>. If the wording uses the field <span class="math" data-tex="\(K(\sqrt a)=K\)">\(K(\sqrt a)=K\)</span> in this case, its degree-one norm is the identity and is also surjective; the quadratic étale wording retains the intended degree-two norm uniformly.</p>
+<p><strong>Solution 4.</strong> Write the conic in <span class="math" data-tex="\(\mathbb P^2_{k(t)}\)">\(\mathbb P^2_{k(t)}\)</span> as <span class="math" data-tex="\(F(X,Y,Z)=0\)">\(F(X,Y,Z)=0\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> homogeneous of degree two. Tsen gives a nonzero triple <span class="math" data-tex="\((x,y,z)\in k(t)^3\)">\((x,y,z)\in k(t)^3\)</span> with <span class="math" data-tex="\(F(x,y,z)=0\)">\(F(x,y,z)=0\)</span>, since <span class="math" data-tex="\(3&gt;2\)">\(3&gt;2\)</span>. Its projective class <span class="math" data-tex="\([x:y:z]\)">\([x:y:z]\)</span> is the desired rational point. The same existence argument works for a singular plane quadratic equation; smoothness is part of the stated conic hypothesis and does not need an additional step here.</p>
+<p><strong>Solution 5.</strong> A quadratic form is a homogeneous degree-two polynomial, regardless of degeneracy. Since <span class="math" data-tex="\(n\geq3&gt;2\)">\(n\geq3&gt;2\)</span>, Tsen gives a nonzero zero. The zero form has every nonzero vector as a zero. Apply this to the reduced norm (7.2) of a quaternion algebra, which has four variables. Its nonzero zero is a nonzero noninvertible algebra element by Lemma 4.3. The algebra is therefore not division. A degree-two central simple algebra is <span class="math" data-tex="\(M_r(D)\)">\(M_r(D)\)</span> with <span class="math" data-tex="\(r\deg D=2\)">\(r\deg D=2\)</span>; the only remaining possibility is <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(D=K\)">\(D=K\)</span>, so it is split. This also supplies the quaternion conclusion without needing to diagonalize an arbitrary quadratic form.</p>
+<h2 id="10-proof-scope-and-conventions">10. Proof scope and conventions</h2>
+<p>The Wedderburn, Skolem–Noether, separable-splitting, tensor and finite-descent theorems are used from the algebra lessons cited in Sections 1 and 2, and the Nullstellensatz and the height theorem from the commutative-algebra lessons cited in Section 4; those lessons prove them completely. We have proved here both inverse maps for matrix forms, the well-defined boundary with its explicit sign, the Brauer group map and its zero kernel, injectivity on fixed-degree forms, surjectivity by semilinear projective matrices, the finite-field counting theorem, the generic reduced-norm polynomial, preservation of <span class="math" data-tex="\(C_1\)">\(C_1\)</span> under all finite field extensions, full Tsen with a fixed denominator bound, and all positive-degree unit-cohomology and dimension consequences. Every exercise has a complete solution.</p>
+<p>No perfection assumption enters Tsen or the characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> dimension bound. Cohomological dimension concerns torsion modules; the additional rationalization argument is what proves higher vanishing for <span class="math" data-tex="\((K^s)^\times\)">\((K^s)^\times\)</span>. The Azumaya paragraph is an outlook, without a general representability theorem for scheme cohomology.</p>
+<h2 id="11-references">11. References</h2>
+<ul>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, Brauer Groups: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-section-phantom">Tag 073W, chapter</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-theorem-wedderburn">Tag 0747, Wedderburn</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-section-brauer">Section 074J, Brauer group</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-theorem-skolem-noether">Tag 074Q, Skolem–Noether</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/brauer.html#brauer-proposition-separable-splitting-field">Tag 0752, separable splitting</a>. The AI Integrated Stacks Project English reader is used for these public links.</li>
+<li>The same work, Étale Cohomology: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-brauer-groups">Section 03R1</a>, including the definitions and identifications 03R2, 03R3 and 03R5, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-central-simple-algebra-pgln">Tag 03R6, forms</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-theorem-brauer-delta">Tag 03R7, cohomological Brauer group</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-brauer-scheme">Section 0A2J, schemes</a>.</li>
+<li>The same work, Galois-cohomology dimension and polynomial fields: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-galois-cohomology">Section 03R8</a>, including 03R9, 03RA, 03RB, 03RC, 03RD, 03RF and 03RG. These supply the dimension criterion, <span class="math" data-tex="\(C_r\)">\(C_r\)</span> definitions, simultaneous-equation lemma, reduced-norm argument, Tsen and its cohomological consequences; the curve proof and all-degree unit vanishing have been supplied fully above.</li>
+<li>Lessons of this collection used as prerequisites: <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-02.html">Semisimple rings and Wedderburn's theorem</a>, <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-04.html">Central simple algebras and the Brauer group</a>, <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-05.html">Crossed products and factor systems</a>, <a href="../AG-LTF/support/NOE-HYP--NOE-HYP-06.html">Hilbert 90 in Noether's form and Galois descent</a>, <a href="../AG-CA/AG-CA-06.html">The Nullstellensatz and Jacobson rings</a> and <a href="../AG-CA/AG-CA-11.html">Dimension theory of Noetherian local rings</a>, at the theorem numbers given in the text.</li>
+</ul>
+<footer><a href="src/brauer-groups-and-tsen-s-theorem.md">Editable Markdown source</a> · <a href="licence.html">Sources and authorship</a></footer></main></body></html>

@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The adjoint group, composition and isomorphism · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-07.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-adjoint-group-composition-and-isomorphism">The adjoint group, composition and isomorphism</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>A transformation group has two kinds of structure. It moves points of a manifold, and it moves its own infinitesimal directions by conjugation. The second action is linear. It detects the centre, makes normal subgroups visible as invariant subspaces, and connects transformation groups with triangular matrices.</p>
+<p>We use finite-dimensional analytic local groups over <span class="math" data-tex="$\mathbb K=\mathbb R$">$\mathbb K=\mathbb R$</span> or <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Their Lie algebra is the space of left-invariant vector fields, evaluated at the identity. The existence and uniqueness results of <a href="LIE-TG-06.html">The third fundamental theorem</a> are available. All subgroup and quotient statements concern connected germs at the identity. The linear algebra theorem of Lie requires <span class="math" data-tex="$\mathbb K=\mathbb C$">$\mathbb K=\mathbb C$</span>; Engel's theorem works over either field.</p>
+<h2 id="1-conjugation-and-the-adjoint-representation">1. Conjugation and the adjoint representation</h2>
+<p>For a group element <span class="math" data-tex="$a$">$a$</span> near the identity, set</p>
+<span class="math math-display" data-tex="$$
+C_a(b)=aba^{-1},\qquad
+\operatorname{Ad}_a=(dC_a)_e:\mathfrak g\longrightarrow\mathfrak g.
+\tag{1.1}
+$$">$$
+C_a(b)=aba^{-1},\qquad
+\operatorname{Ad}_a=(dC_a)_e:\mathfrak g\longrightarrow\mathfrak g.
+\tag{1.1}
+$$</span>
+<p>Locality means that these formulas are used on a smaller common neighbourhood where the indicated products exist. Since <span class="math" data-tex="$C_aC_b=C_{ab}$">$C_aC_b=C_{ab}$</span>, differentiation gives</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ad}_{ab}=\operatorname{Ad}_a\operatorname{Ad}_b.
+\tag{1.2}
+$$">$$
+\operatorname{Ad}_{ab}=\operatorname{Ad}_a\operatorname{Ad}_b.
+\tag{1.2}
+$$</span>
+<p>Every group automorphism carries a left-invariant field to the left-invariant field with the transformed value at <span class="math" data-tex="$e$">$e$</span>. Diffeomorphisms preserve brackets. Therefore <span class="math" data-tex="$\operatorname{Ad}_a$">$\operatorname{Ad}_a$</span> is a Lie algebra automorphism.</p>
+<p><strong>Lemma (matrix exponential and logarithm).</strong> In a neighbourhood of zero in the space of real or complex square matrices, the absolutely convergent series</p>
+<span class="math math-display" data-tex="$$
+\exp A=\sum_{j=0}^{\infty}\frac{A^j}{j!},\qquad
+\log(I+B)=\sum_{j=1}^{\infty}\frac{(-1)^{j+1}}{j}B^j
+$$">$$
+\exp A=\sum_{j=0}^{\infty}\frac{A^j}{j!},\qquad
+\log(I+B)=\sum_{j=1}^{\infty}\frac{(-1)^{j+1}}{j}B^j
+$$</span>
+<p>are inverse analytic maps. If <span class="math" data-tex="$I+B$">$I+B$</span> preserves a linear subspace and <span class="math" data-tex="$\|B\|&lt;1$">$\|B\|&lt;1$</span> in a submultiplicative norm, its logarithm preserves that subspace too.</p>
+<p><strong>Proof.</strong> The exponential converges absolutely for every <span class="math" data-tex="$A$">$A$</span>; the logarithm does so for <span class="math" data-tex="$\|B\|&lt;1$">$\|B\|&lt;1$</span>, locally uniformly with derivatives. For scalars, put
+<span class="math" data-tex="$\ell(z)=\sum_{j\ge1}(-1)^{j+1}z^j/j$">$\ell(z)=\sum_{j\ge1}(-1)^{j+1}z^j/j$</span>. Termwise differentiation gives <span class="math" data-tex="$\ell&#x27;(z)=1/(1+z)$">$\ell&#x27;(z)=1/(1+z)$</span>. Thus <span class="math" data-tex="$\exp(\ell(z))/(1+z)$">$\exp(\ell(z))/(1+z)$</span> has derivative zero and value one at zero, proving <span class="math" data-tex="$\exp(\ell(z))=1+z$">$\exp(\ell(z))=1+z$</span>. Also <span class="math" data-tex="$\ell(\exp z-1)$">$\ell(\exp z-1)$</span> has derivative one and value zero near zero, proving <span class="math" data-tex="$\ell(\exp z-1)=z$">$\ell(\exp z-1)=z$</span>.</p>
+<p>These are identities of convergent power series. Substitute a single matrix in each identity. All its powers commute, and absolute convergence justifies regrouping their products. On a sufficiently small matrix ball the scalar majorants also bound each composition, giving <span class="math" data-tex="$\exp(\log(I+B))=I+B$">$\exp(\log(I+B))=I+B$</span> and <span class="math" data-tex="$\log(\exp A)=A$">$\log(\exp A)=A$</span>. No commutativity of different matrices is required.</p>
+<p>If <span class="math" data-tex="$I+B$">$I+B$</span> preserves a subspace, so does <span class="math" data-tex="$B=(I+B)-I$">$B=(I+B)-I$</span>, hence every power of <span class="math" data-tex="$B$">$B$</span> and every partial sum of its logarithm. A finite-dimensional subspace is closed, so the limit preserves it. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 1.1.</strong> The differential of <span class="math" data-tex="$\operatorname{Ad}$">$\operatorname{Ad}$</span> is</p>
+<span class="math math-display" data-tex="$$
+\operatorname{ad}_u(v)=[u,v].
+\tag{1.3}
+$$">$$
+\operatorname{ad}_u(v)=[u,v].
+\tag{1.3}
+$$</span>
+<p>Moreover, the kernel of <span class="math" data-tex="$\operatorname{Ad}$">$\operatorname{Ad}$</span> near <span class="math" data-tex="$e$">$e$</span> is the central subgroup germ <span class="math" data-tex="$\exp Z(\mathfrak g)$">$\exp Z(\mathfrak g)$</span>. Its image has <span class="math" data-tex="$\dim\mathfrak g-\dim Z(\mathfrak g)$">$\dim\mathfrak g-\dim Z(\mathfrak g)$</span> essential parameters. In particular, the adjoint representation is locally faithful exactly when <span class="math" data-tex="$Z(\mathfrak g)=0$">$Z(\mathfrak g)=0$</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$U$">$U$</span> be the left-invariant field with value <span class="math" data-tex="$u$">$u$</span>. Its flow on the parameter group is <span class="math" data-tex="$b\mapsto b\exp(tu)$">$b\mapsto b\exp(tu)$</span>. For any field <span class="math" data-tex="$V$">$V$</span>, the flow identity</p>
+<span class="math math-display" data-tex="$$
+\left.\frac d{dt}\right|_{0}(\Phi_U^{-t})_*V=[U,V]
+\tag{1.4}
+$$">$$
+\left.\frac d{dt}\right|_{0}(\Phi_U^{-t})_*V=[U,V]
+\tag{1.4}
+$$</span>
+<p>follows by differentiating <span class="math" data-tex="$D\Phi_U^{-t}\,V\circ\Phi_U^t$">$D\Phi_U^{-t}\,V\circ\Phi_U^t$</span> in coordinates. If <span class="math" data-tex="$V$">$V$</span> is left-invariant, evaluate the right-hand side at <span class="math" data-tex="$e$">$e$</span>. The left-hand side there is the derivative of <span class="math" data-tex="$\operatorname{Ad}_{\exp(tu)}v$">$\operatorname{Ad}_{\exp(tu)}v$</span>: right translation by <span class="math" data-tex="$\exp(-tu)$">$\exp(-tu)$</span> carries the value of <span class="math" data-tex="$V$">$V$</span> at <span class="math" data-tex="$\exp(tu)$">$\exp(tu)$</span> to the derivative of conjugation. This proves (1.3). The one-parameter homomorphism (1.2) now solves a constant linear ODE, so</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ad}_{\exp(tu)}=e^{t\operatorname{ad}_u}.
+\tag{1.5}
+$$">$$
+\operatorname{Ad}_{\exp(tu)}=e^{t\operatorname{ad}_u}.
+\tag{1.5}
+$$</span>
+<p>The group exponential is a local coordinate map at zero, by the canonical-coordinate construction in lesson 3. For <span class="math" data-tex="$u$">$u$</span> sufficiently small, <span class="math" data-tex="$e^{\operatorname{ad}_u}=I$">$e^{\operatorname{ad}_u}=I$</span> implies <span class="math" data-tex="$\operatorname{ad}_u=0$">$\operatorname{ad}_u=0$</span> by the matrix logarithm lemma. Thus the kernel is exactly <span class="math" data-tex="$\exp Z(\mathfrak g)$">$\exp Z(\mathfrak g)$</span> near <span class="math" data-tex="$e$">$e$</span>.</p>
+<p>If <span class="math" data-tex="$\operatorname{Ad}_a=I$">$\operatorname{Ad}_a=I$</span>, conjugation fixes every <span class="math" data-tex="$\exp(tu)$">$\exp(tu)$</span> by uniqueness of its one-parameter group. These exponentials fill a neighbourhood of <span class="math" data-tex="$e$">$e$</span>, so <span class="math" data-tex="$a$">$a$</span> commutes with all nearby elements. The converse follows immediately from (1.1). Finally the differential of <span class="math" data-tex="$\operatorname{Ad}$">$\operatorname{Ad}$</span> has kernel <span class="math" data-tex="$Z(\mathfrak g)$">$Z(\mathfrak g)$</span>. Translations and (1.2) make its rank constant. The constant-rank theorem proved in lesson 1, Theorem B, gives the stated image dimension and essential parameter count. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The word <strong>locally</strong> matters. A connected global group can have a discrete nontrivial centre even when its Lie algebra has zero centre; <span class="math" data-tex="$\operatorname{SL}_2(\mathbb R)$">$\operatorname{SL}_2(\mathbb R)$</span> has the central elements <span class="math" data-tex="$I$">$I$</span> and <span class="math" data-tex="$-I$">$-I$</span>. A local chart about <span class="math" data-tex="$I$">$I$</span> excludes <span class="math" data-tex="$-I$">$-I$</span>. Also, in the right-action convention used in earlier lessons, the pushforward of a fundamental field by a point transformation <span class="math" data-tex="$T_a$">$T_a$</span> corresponds to <span class="math" data-tex="$\operatorname{Ad}_{a^{-1}}$">$\operatorname{Ad}_{a^{-1}}$</span>, not <span class="math" data-tex="$\operatorname{Ad}_a$">$\operatorname{Ad}_a$</span>. Definition (1.1) fixes the convention independently of that choice.</p>
+<p><strong>Example 1.2: rotations.</strong> Identify <span class="math" data-tex="$\mathfrak{so}(3)$">$\mathfrak{so}(3)$</span> with <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span> by <span class="math" data-tex="$v\mapsto A_v$">$v\mapsto A_v$</span>, where <span class="math" data-tex="$A_vw=v\times w$">$A_vw=v\times w$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+RA_vR^{-1}=A_{Rv},\qquad [A_u,A_v]=A_{u\times v}.
+$$">$$
+RA_vR^{-1}=A_{Rv},\qquad [A_u,A_v]=A_{u\times v}.
+$$</span>
+<p>The first identity follows because rotations preserve the cross product. If <span class="math" data-tex="$u\times v=0$">$u\times v=0$</span> for every <span class="math" data-tex="$v$">$v$</span>, then <span class="math" data-tex="$u=0$">$u=0$</span>. The adjoint group is therefore the usual faithful rotation group on <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span>.</p>
+<p><strong>Example 1.3: the Heisenberg group.</strong> In the exponential coordinates of lesson 6,</p>
+<span class="math math-display" data-tex="$$
+(x,y,z)(u,v,w)=(x+u,y+v,z+w+\tfrac12(xv-yu)).
+$$">$$
+(x,y,z)(u,v,w)=(x+u,y+v,z+w+\tfrac12(xv-yu)).
+$$</span>
+<p>Its algebra has <span class="math" data-tex="$[e_x,e_y]=e_z$">$[e_x,e_y]=e_z$</span> and all other basis brackets zero. Hence</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ad}_{(x,y,z)}e_x=e_x-ye_z,\qquad
+\operatorname{Ad}_{(x,y,z)}e_y=e_y+xe_z,\qquad
+\operatorname{Ad}_{(x,y,z)}e_z=e_z.
+$$">$$
+\operatorname{Ad}_{(x,y,z)}e_x=e_x-ye_z,\qquad
+\operatorname{Ad}_{(x,y,z)}e_y=e_y+xe_z,\qquad
+\operatorname{Ad}_{(x,y,z)}e_z=e_z.
+$$</span>
+<p>The parameter <span class="math" data-tex="$z$">$z$</span> disappears. The kernel is the central line, and the adjoint image is a two-dimensional abelian group. An adjoint group can itself have a centre.</p>
+<h2 id="2-subgroups-ideals-and-quotient-groups">2. Subgroups, ideals, and quotient groups</h2>
+<p>A linear subspace <span class="math" data-tex="$\mathfrak h\subset\mathfrak g$">$\mathfrak h\subset\mathfrak g$</span> is a <strong>subalgebra</strong> when <span class="math" data-tex="$[\mathfrak h,\mathfrak h]\subset\mathfrak h$">$[\mathfrak h,\mathfrak h]\subset\mathfrak h$</span>. It is an <strong>ideal</strong> when <span class="math" data-tex="$[\mathfrak g,\mathfrak h]\subset\mathfrak h$">$[\mathfrak g,\mathfrak h]\subset\mathfrak h$</span>. A subgroup is <strong>normal</strong>, or invariant in Lie's terminology, when nearby conjugations preserve its germ.</p>
+<p><strong>Theorem 2.1.</strong> Subalgebras correspond bijectively to connected local subgroup germs. Under this correspondence, ideals correspond exactly to normal subgroup germs.</p>
+<p><strong>Proof.</strong> Translate <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> to the distribution <span class="math" data-tex="$D_a=(dL_a)_e\mathfrak h$">$D_a=(dL_a)_e\mathfrak h$</span> on the parameter group. The left-invariant fields belonging to a basis of <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> span <span class="math" data-tex="$D$">$D$</span>. Their brackets remain in <span class="math" data-tex="$D$">$D$</span>, so Frobenius gives a unique leaf germ <span class="math" data-tex="$H$">$H$</span> through <span class="math" data-tex="$e$">$e$</span>.</p>
+<p>Left translations preserve <span class="math" data-tex="$D$">$D$</span>. For <span class="math" data-tex="$a\in H$">$a\in H$</span>, the leaf through <span class="math" data-tex="$a$">$a$</span> is <span class="math" data-tex="$H$">$H$</span>, hence <span class="math" data-tex="$L_a$">$L_a$</span> carries the germ of <span class="math" data-tex="$H$">$H$</span> into that leaf. This proves closure under sufficiently small products. The ordered flows of a basis of <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> give coordinates on <span class="math" data-tex="$H$">$H$</span>; they are products of exponentials <span class="math" data-tex="$\exp(tu)$">$\exp(tu)$</span> with <span class="math" data-tex="$u\in\mathfrak h$">$u\in\mathfrak h$</span>. Their inverses are reversed products of <span class="math" data-tex="$\exp(-tu)$">$\exp(-tu)$</span>, which also lie in <span class="math" data-tex="$H$">$H$</span>. Thus <span class="math" data-tex="$H$">$H$</span> is a subgroup germ with tangent algebra <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span>.</p>
+<p>Conversely, the left-invariant fields tangent to a subgroup are closed under brackets because brackets of tangent fields are tangent. A connected subgroup germ with tangent algebra <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> is an integral leaf of <span class="math" data-tex="$D$">$D$</span>, so uniqueness of that leaf proves the bijection.</p>
+<p>If <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> is an ideal, every <span class="math" data-tex="$\operatorname{ad}_u$">$\operatorname{ad}_u$</span> preserves it. Equation (1.5) shows that conjugation by <span class="math" data-tex="$\exp(tu)$">$\exp(tu)$</span> preserves its tangent algebra, and consequently its unique subgroup germ. Products of small exponentials fill the parameter group; hence <span class="math" data-tex="$H$">$H$</span> is normal. Conversely, normality gives <span class="math" data-tex="$\operatorname{Ad}_a\mathfrak h=\mathfrak h$">$\operatorname{Ad}_a\mathfrak h=\mathfrak h$</span>. Differentiate along <span class="math" data-tex="$a=\exp(tu)$">$a=\exp(tu)$</span> to obtain <span class="math" data-tex="$[u,\mathfrak h]\subset\mathfrak h$">$[u,\mathfrak h]\subset\mathfrak h$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For an ideal <span class="math" data-tex="$\mathfrak i$">$\mathfrak i$</span>, define the quotient bracket by</p>
+<span class="math math-display" data-tex="$$
+[u+\mathfrak i,v+\mathfrak i]=[u,v]+\mathfrak i.
+\tag{2.1}
+$$">$$
+[u+\mathfrak i,v+\mathfrak i]=[u,v]+\mathfrak i.
+\tag{2.1}
+$$</span>
+<p>Changing either representative changes the bracket by an element of <span class="math" data-tex="$\mathfrak i$">$\mathfrak i$</span>, so this is well defined. Skew symmetry and Jacobi pass to the quotient.</p>
+<p><strong>Theorem 2.2.</strong> Every Lie algebra homomorphism <span class="math" data-tex="$f:\mathfrak g\to\mathfrak q$">$f:\mathfrak g\to\mathfrak q$</span> integrates uniquely to a local group homomorphism <span class="math" data-tex="$F:G\to Q$">$F:G\to Q$</span>. If <span class="math" data-tex="$f$">$f$</span> is surjective, <span class="math" data-tex="$F$">$F$</span> is a submersion and its kernel is the subgroup germ with algebra <span class="math" data-tex="$\ker f$">$\ker f$</span>. In particular, <span class="math" data-tex="$G/I$">$G/I$</span> is a local group with algebra <span class="math" data-tex="$\mathfrak g/\mathfrak i$">$\mathfrak g/\mathfrak i$</span> when <span class="math" data-tex="$I$">$I$</span> corresponds to an ideal <span class="math" data-tex="$\mathfrak i$">$\mathfrak i$</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="$G\times Q$">$G\times Q$</span>, take the distribution spanned by</p>
+<span class="math math-display" data-tex="$$
+(U_u,U_{f(u)}),\qquad u\in\mathfrak g,
+$$">$$
+(U_u,U_{f(u)}),\qquad u\in\mathfrak g,
+$$</span>
+<p>where both fields are left-invariant. The homomorphism identity makes this distribution involutive. Projection onto <span class="math" data-tex="$G$">$G$</span> is an isomorphism on each of its tangent spaces. Its Frobenius leaf through <span class="math" data-tex="$(e,e)$">$(e,e)$</span> is therefore the graph of an analytic map <span class="math" data-tex="$F$">$F$</span>, and</p>
+<span class="math math-display" data-tex="$$
+dF(U_u)=U_{f(u)}\circ F,\qquad F(e)=e.
+\tag{2.2}
+$$">$$
+dF(U_u)=U_{f(u)}\circ F,\qquad F(e)=e.
+\tag{2.2}
+$$</span>
+<p>These equations determine <span class="math" data-tex="$F$">$F$</span> uniquely along successive basis flows, and those flows give local coordinates. Fix <span class="math" data-tex="$a\in G$">$a\in G$</span>. The maps <span class="math" data-tex="$b\mapsto F(ab)$">$b\mapsto F(ab)$</span> and <span class="math" data-tex="$b\mapsto F(a)F(b)$">$b\mapsto F(a)F(b)$</span> have the same value at <span class="math" data-tex="$e$">$e$</span> and satisfy the same equations (2.2) in <span class="math" data-tex="$b$">$b$</span>, because left translations preserve left-invariant fields. The same uniqueness proves <span class="math" data-tex="$F(ab)=F(a)F(b)$">$F(ab)=F(a)F(b)$</span>.</p>
+<p>The rank of <span class="math" data-tex="$dF$">$dF$</span> equals the rank of <span class="math" data-tex="$f$">$f$</span> everywhere by (2.2). Surjectivity gives a submersion. Its identity fibre is a subgroup germ with tangent algebra <span class="math" data-tex="$\ker f$">$\ker f$</span>, hence is the subgroup already constructed in Theorem 2.1. Apply this to the projection <span class="math" data-tex="$\mathfrak g\to\mathfrak g/\mathfrak i$">$\mathfrak g\to\mathfrak g/\mathfrak i$</span>, using the local existence theorem to construct <span class="math" data-tex="$Q$">$Q$</span>. The fibres of <span class="math" data-tex="$F$">$F$</span> are precisely local cosets of <span class="math" data-tex="$I$">$I$</span>: <span class="math" data-tex="$F(a)=F(b)$">$F(a)=F(b)$</span> is equivalent to <span class="math" data-tex="$a^{-1}b\in I$">$a^{-1}b\in I$</span>. Thus <span class="math" data-tex="$Q$">$Q$</span> realizes the local quotient. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The first isomorphism theorem is now transparent: <span class="math" data-tex="$\mathfrak g/\ker f\simeq\operatorname{im}f$">$\mathfrak g/\ker f\simeq\operatorname{im}f$</span>, by <span class="math" data-tex="$u+\ker f\mapsto f(u)$">$u+\ker f\mapsto f(u)$</span>. The map is well defined, bijective, and bracket preserving. Historically, an isomorphism was called <em>holoedric</em>, while a quotient relationship was called <em>meroedric</em>. These terms do not assert that distinct actions with the same algebra are conjugate: isotropy must also be considered.</p>
+<h2 id="3-solvability-and-nilpotence">3. Solvability and nilpotence</h2>
+<p>Define the derived series and the lower central series by</p>
+<span class="math math-display" data-tex="$$
+\mathfrak g^{(0)}=\mathfrak g,\quad
+\mathfrak g^{(j+1)}=[\mathfrak g^{(j)},\mathfrak g^{(j)}],
+\qquad
+\gamma_1\mathfrak g=\mathfrak g,\quad
+\gamma_{j+1}\mathfrak g=[\mathfrak g,\gamma_j\mathfrak g].
+\tag{3.1}
+$$">$$
+\mathfrak g^{(0)}=\mathfrak g,\quad
+\mathfrak g^{(j+1)}=[\mathfrak g^{(j)},\mathfrak g^{(j)}],
+\qquad
+\gamma_1\mathfrak g=\mathfrak g,\quad
+\gamma_{j+1}\mathfrak g=[\mathfrak g,\gamma_j\mathfrak g].
+\tag{3.1}
+$$</span>
+<p>Brackets of subspaces mean their linear spans. Jacobi shows that all these spaces are ideals: if <span class="math" data-tex="$I$">$I$</span> is an ideal, then <span class="math" data-tex="$[a,[u,v]]=[[a,u],v]+[u,[a,v]]$">$[a,[u,v]]=[[a,u],v]+[u,[a,v]]$</span> belongs to <span class="math" data-tex="$[I,I]$">$[I,I]$</span> when <span class="math" data-tex="$u,v\in I$">$u,v\in I$</span>. The same calculation applies to <span class="math" data-tex="$[\mathfrak g,I]$">$[\mathfrak g,I]$</span>.</p>
+<p>The algebra is <strong>solvable</strong> if its derived series reaches zero, and <strong>nilpotent</strong> if its lower central series reaches zero. Nilpotence implies solvability, since repeated derived terms lie in successively deeper lower central terms. Lie's historical “integrable” groups refer here to solvable groups, not to every group admitting a local integral action.</p>
+<p>For <span class="math" data-tex="$[h,e]=e$">$[h,e]=e$</span>, the affine algebra has derived algebra <span class="math" data-tex="$\mathbb K e$">$\mathbb K e$</span>, whose own bracket is zero. It is solvable. Its lower central series stays <span class="math" data-tex="$\mathbb K e$">$\mathbb K e$</span> after the first step, so it is not nilpotent. The Heisenberg algebra has <span class="math" data-tex="$\gamma_2=\mathbb K e_z$">$\gamma_2=\mathbb K e_z$</span> and <span class="math" data-tex="$\gamma_3=0$">$\gamma_3=0$</span>.</p>
+<p>Upper triangular matrices are solvable. A commutator has zero diagonal, so the first derived algebra is strictly upper triangular. A product of <span class="math" data-tex="$n$">$n$</span> strictly upper triangular <span class="math" data-tex="$n\times n$">$n\times n$</span> matrices is zero: every nonzero entry of a product requires a strictly increasing chain of <span class="math" data-tex="$n+1$">$n+1$</span> indices. Iterated brackets are sums of such products. This also proves that a subalgebra of strictly upper triangular matrices is nilpotent.</p>
+<h2 id="4-engel-s-theorem">4. Engel's theorem</h2>
+<p><strong>Theorem 4.1 (Engel).</strong> If a Lie algebra <span class="math" data-tex="$L\subset\operatorname{End}(V)$">$L\subset\operatorname{End}(V)$</span> consists entirely of nilpotent operators, there is a basis <span class="math" data-tex="$v_1,\ldots,v_n$">$v_1,\ldots,v_n$</span> such that</p>
+<span class="math math-display" data-tex="$$
+L v_j\subset\operatorname{span}(v_1,\ldots,v_{j-1}).
+\tag{4.1}
+$$">$$
+L v_j\subset\operatorname{span}(v_1,\ldots,v_{j-1}).
+\tag{4.1}
+$$</span>
+<p>Thus all its matrices are strictly upper triangular. A finite-dimensional abstract Lie algebra is nilpotent if and only if every <span class="math" data-tex="$\operatorname{ad}_u$">$\operatorname{ad}_u$</span> is nilpotent.</p>
+<p><strong>Proof.</strong> First prove that <span class="math" data-tex="$L$">$L$</span> annihilates a common nonzero vector whenever <span class="math" data-tex="$V\ne0$">$V\ne0$</span>. Induct on <span class="math" data-tex="$\dim L$">$\dim L$</span>, allowing an arbitrary representation with nilpotent image by replacing the algebra with its image. Dimension zero is immediate.</p>
+<p>For a nilpotent operator <span class="math" data-tex="$a$">$a$</span> with <span class="math" data-tex="$a^d=0$">$a^d=0$</span>, the operator <span class="math" data-tex="$\operatorname{ad}_a$">$\operatorname{ad}_a$</span> on <span class="math" data-tex="$\operatorname{End}(V)$">$\operatorname{End}(V)$</span> is nilpotent. Indeed,</p>
+<span class="math math-display" data-tex="$$
+(\operatorname{ad}_a)^m T=
+\sum_{j=0}^m(-1)^j\binom mj a^{m-j}Ta^j,
+$$">$$
+(\operatorname{ad}_a)^m T=
+\sum_{j=0}^m(-1)^j\binom mj a^{m-j}Ta^j,
+$$</span>
+<p>which vanishes when <span class="math" data-tex="$m\ge2d-1$">$m\ge2d-1$</span>. Let <span class="math" data-tex="$H$">$H$</span> be a proper subalgebra of <span class="math" data-tex="$L$">$L$</span>. The adjoint action of <span class="math" data-tex="$H$">$H$</span> on <span class="math" data-tex="$L/H$">$L/H$</span> is well defined and consists of nilpotent operators. Its image has dimension at most <span class="math" data-tex="$\dim H&lt;\dim L$">$\dim H&lt;\dim L$</span>, so the induction hypothesis gives a nonzero class <span class="math" data-tex="$b+H$">$b+H$</span> killed by <span class="math" data-tex="$H$">$H$</span>. In other words, <span class="math" data-tex="$b\notin H$">$b\notin H$</span> and <span class="math" data-tex="$[H,b]\subset H$">$[H,b]\subset H$</span>. Consequently the normalizer of every proper subalgebra strictly contains it.</p>
+<p>Choose <span class="math" data-tex="$H$">$H$</span> maximal among proper subalgebras. Its normalizer must be <span class="math" data-tex="$L$">$L$</span>, so <span class="math" data-tex="$H$">$H$</span> is an ideal. Also <span class="math" data-tex="$L/H$">$L/H$</span> has dimension one: otherwise the inverse image of any nonzero one-dimensional subalgebra of <span class="math" data-tex="$L/H$">$L/H$</span> would lie strictly between <span class="math" data-tex="$H$">$H$</span> and <span class="math" data-tex="$L$">$L$</span>. Write <span class="math" data-tex="$L=H+\mathbb K b$">$L=H+\mathbb K b$</span>.</p>
+<p>By induction, <span class="math" data-tex="$W=\{v:Hv=0\}$">$W=\{v:Hv=0\}$</span> is nonzero. For <span class="math" data-tex="$a\in H$">$a\in H$</span> and <span class="math" data-tex="$w\in W$">$w\in W$</span>,</p>
+<span class="math math-display" data-tex="$$
+a(bw)=b(aw)+[a,b]w=0.
+$$">$$
+a(bw)=b(aw)+[a,b]w=0.
+$$</span>
+<p>Thus <span class="math" data-tex="$bW\subset W$">$bW\subset W$</span>. The nilpotent operator <span class="math" data-tex="$b|_W$">$b|_W$</span> has a nonzero kernel; a vector in this kernel is annihilated by all of <span class="math" data-tex="$L$">$L$</span>. This completes the induction.</p>
+<p>Take that vector as <span class="math" data-tex="$v_1$">$v_1$</span> and apply the result to <span class="math" data-tex="$V/\mathbb K v_1$">$V/\mathbb K v_1$</span>. Every induced operator remains nilpotent. Repeating constructs the full flag (4.1).</p>
+<p>For an abstract algebra with nilpotent adjoint operators, apply (4.1) to its adjoint representation on <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>. A product of <span class="math" data-tex="$\dim\mathfrak g$">$\dim\mathfrak g$</span> adjoint operators is zero, so every nested bracket of that depth vanishes and the lower central series terminates. Conversely, if <span class="math" data-tex="$\gamma_{s+1}\mathfrak g=0$">$\gamma_{s+1}\mathfrak g=0$</span>, each application of <span class="math" data-tex="$\operatorname{ad}_u$">$\operatorname{ad}_u$</span> moves a vector one step deeper in the lower central series; hence <span class="math" data-tex="$(\operatorname{ad}_u)^s=0$">$(\operatorname{ad}_u)^s=0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Nilpotence of a basis of <span class="math" data-tex="$L$">$L$</span> would not suffice: the hypothesis applies to <strong>every</strong> element. For instance <span class="math" data-tex="$E_{12}$">$E_{12}$</span> and <span class="math" data-tex="$E_{21}$">$E_{21}$</span> are individually nilpotent, but their sum is invertible on <span class="math" data-tex="$\mathbb K^2$">$\mathbb K^2$</span> and their bracket is diagonal.</p>
+<h2 id="5-lie-s-theorem">5. Lie's theorem</h2>
+<p><strong>Theorem 5.1 (Lie).</strong> Every representation of a solvable complex Lie algebra on a nonzero finite-dimensional complex vector space has a common eigenvector. It has an invariant full flag, and therefore all its matrices are upper triangular in a single basis.</p>
+<p><strong>Proof.</strong> Prove the common-eigenvector assertion by induction on the dimension of the algebra <span class="math" data-tex="$L$">$L$</span>. Dimension zero is trivial. For <span class="math" data-tex="$L\ne0$">$L\ne0$</span>, solvability gives <span class="math" data-tex="$[L,L]\ne L$">$[L,L]\ne L$</span>. Choose a codimension-one subspace containing <span class="math" data-tex="$[L,L]$">$[L,L]$</span>; it is an ideal <span class="math" data-tex="$H$">$H$</span>. Write <span class="math" data-tex="$L=H\oplus\mathbb C b$">$L=H\oplus\mathbb C b$</span>. The restriction to <span class="math" data-tex="$H$">$H$</span> has a common eigenvector <span class="math" data-tex="$v\ne0$">$v\ne0$</span> by induction. Thus there is a linear functional <span class="math" data-tex="$\lambda:H\to\mathbb C$">$\lambda:H\to\mathbb C$</span> with <span class="math" data-tex="$av=\lambda(a)v$">$av=\lambda(a)v$</span>.</p>
+<p>We claim that <span class="math" data-tex="$\lambda([a,b])=0$">$\lambda([a,b])=0$</span> for all <span class="math" data-tex="$a\in H$">$a\in H$</span>. Let</p>
+<span class="math math-display" data-tex="$$
+W_j=\operatorname{span}(v,bv,\ldots,b^jv),\qquad
+W=\operatorname{span}(v,bv,b^2v,\ldots).
+$$">$$
+W_j=\operatorname{span}(v,bv,\ldots,b^jv),\qquad
+W=\operatorname{span}(v,bv,b^2v,\ldots).
+$$</span>
+<p>The space <span class="math" data-tex="$W$">$W$</span> is finite dimensional and <span class="math" data-tex="$b$">$b$</span>-invariant. Simultaneously for every <span class="math" data-tex="$a\in H$">$a\in H$</span>, induction on <span class="math" data-tex="$j$">$j$</span> gives</p>
+<span class="math math-display" data-tex="$$
+a b^jv-\lambda(a)b^jv\in W_{j-1}.
+\tag{5.1}
+$$">$$
+a b^jv-\lambda(a)b^jv\in W_{j-1}.
+\tag{5.1}
+$$</span>
+<p>For <span class="math" data-tex="$j=0$">$j=0$</span> this is the eigenvector equation. For the next step use <span class="math" data-tex="$ab=ba+[a,b]$">$ab=ba+[a,b]$</span>; both <span class="math" data-tex="$a$">$a$</span> and <span class="math" data-tex="$[a,b]$">$[a,b]$</span> belong to <span class="math" data-tex="$H$">$H$</span>, so the induction hypothesis controls their action on <span class="math" data-tex="$b^jv$">$b^jv$</span>. Until the first linear dependence, <span class="math" data-tex="$v,bv,\ldots,b^{m-1}v$">$v,bv,\ldots,b^{m-1}v$</span> is a basis of <span class="math" data-tex="$W$">$W$</span>, where <span class="math" data-tex="$m=\dim W$">$m=\dim W$</span>. Equation (5.1) shows that <span class="math" data-tex="$H$">$H$</span> preserves <span class="math" data-tex="$W$">$W$</span> and every <span class="math" data-tex="$a|_W$">$a|_W$</span> has the constant diagonal <span class="math" data-tex="$\lambda(a)$">$\lambda(a)$</span>. In particular,</p>
+<span class="math math-display" data-tex="$$
+m\lambda([a,b])=\operatorname{tr}([a,b]|_W)
+=\operatorname{tr}(a|_Wb|_W-b|_Wa|_W)=0.
+$$">$$
+m\lambda([a,b])=\operatorname{tr}([a,b]|_W)
+=\operatorname{tr}(a|_Wb|_W-b|_Wa|_W)=0.
+$$</span>
+<p>Characteristic zero gives the claim.</p>
+<p>Now let <span class="math" data-tex="$V_\lambda=\{w:aw=\lambda(a)w\text{ for every }a\in H\}$">$V_\lambda=\{w:aw=\lambda(a)w\text{ for every }a\in H\}$</span>. It contains <span class="math" data-tex="$v$">$v$</span>. For <span class="math" data-tex="$w\in V_\lambda$">$w\in V_\lambda$</span>,</p>
+<span class="math math-display" data-tex="$$
+a(bw)=b(aw)+[a,b]w=\lambda(a)bw.
+$$">$$
+a(bw)=b(aw)+[a,b]w=\lambda(a)bw.
+$$</span>
+<p>Therefore <span class="math" data-tex="$b$">$b$</span> preserves <span class="math" data-tex="$V_\lambda$">$V_\lambda$</span>. Over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, <span class="math" data-tex="$b|_{V_\lambda}$">$b|_{V_\lambda}$</span> has an eigenvector; that vector is a common eigenvector of <span class="math" data-tex="$H$">$H$</span> and <span class="math" data-tex="$b$">$b$</span>, hence of <span class="math" data-tex="$L$">$L$</span>.</p>
+<p>Its line is invariant. Apply the same assertion to the quotient by that line and repeat, obtaining an invariant full flag. Choosing a basis adapted to the flag makes every operator upper triangular. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The trace step explains the characteristic-zero hypothesis. Algebraic closure is used to find the final eigenvector. Over <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>, the one-dimensional abelian algebra generated by</p>
+<span class="math math-display" data-tex="$$
+\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}
+$$">$$
+\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}
+$$</span>
+<p>is solvable but has no real invariant line. There is no real triangularization in that example.</p>
+<h2 id="6-similarity-and-reciprocal-groups">6. Similarity and reciprocal groups</h2>
+<p>Two local transformation actions are <strong>similar</strong> when an analytic change of point coordinates conjugates one to the other, allowing a corresponding change of group parameters. An action is <strong>simply transitive</strong> near <span class="math" data-tex="$p$">$p$</span> when its orbit map <span class="math" data-tex="$a\mapsto p\cdot a$">$a\mapsto p\cdot a$</span> is a local diffeomorphism. Equivalently, its generators form a pointwise basis near <span class="math" data-tex="$p$">$p$</span> and the group and manifold have the same dimension.</p>
+<p><strong>Theorem 6.1.</strong> Simply transitive local actions with isomorphic Lie algebras are similar. The local transformations commuting with a simply transitive action form a reciprocal simply transitive group.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$F:G\to Q$">$F:G\to Q$</span> be the local group isomorphism integrating an algebra isomorphism, by Theorem 2.2 and the inverse-function theorem. Choose points <span class="math" data-tex="$p\in M$">$p\in M$</span>, <span class="math" data-tex="$q\in N$">$q\in N$</span>. Their orbit maps <span class="math" data-tex="$\theta_M$">$\theta_M$</span> and <span class="math" data-tex="$\theta_N$">$\theta_N$</span> are local diffeomorphisms. Set</p>
+<span class="math math-display" data-tex="$$
+\Psi=\theta_N\circ F\circ\theta_M^{-1}.
+$$">$$
+\Psi=\theta_N\circ F\circ\theta_M^{-1}.
+$$</span>
+<p>For <span class="math" data-tex="$x=\theta_M(a)$">$x=\theta_M(a)$</span>, the right-action law gives</p>
+<span class="math math-display" data-tex="$$
+\Psi(x\cdot b)=\theta_N(F(ab))
+=\theta_N(F(a)F(b))=\Psi(x)\cdot F(b).
+$$">$$
+\Psi(x\cdot b)=\theta_N(F(ab))
+=\theta_N(F(a)F(b))=\Psi(x)\cdot F(b).
+$$</span>
+<p>This is the required conjugacy.</p>
+<p>Use <span class="math" data-tex="$\theta_M$">$\theta_M$</span> to identify <span class="math" data-tex="$M$">$M$</span> with the parameter group, so the action consists of right translations <span class="math" data-tex="$R_b(a)=ab$">$R_b(a)=ab$</span>. A local map <span class="math" data-tex="$S$">$S$</span> commuting with every sufficiently small <span class="math" data-tex="$R_b$">$R_b$</span> must satisfy</p>
+<span class="math math-display" data-tex="$$
+S(b)=S(R_b(e))=R_b(S(e))=S(e)b.
+$$">$$
+S(b)=S(R_b(e))=R_b(S(e))=S(e)b.
+$$</span>
+<p>Thus <span class="math" data-tex="$S=L_c$">$S=L_c$</span> with <span class="math" data-tex="$c=S(e)$">$c=S(e)$</span>. Conversely, every left translation commutes with every right translation, by associativity. The left translations are parametrized by <span class="math" data-tex="$c$">$c$</span>, and their orbit map at <span class="math" data-tex="$e$">$e$</span> is <span class="math" data-tex="$c\mapsto c$">$c\mapsto c$</span>, so they are simply transitive. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>As parameterized families of diffeomorphisms, <span class="math" data-tex="$L_c\circ L_d=L_{cd}$">$L_c\circ L_d=L_{cd}$</span> while <span class="math" data-tex="$R_c\circ R_d=R_{dc}$">$R_c\circ R_d=R_{dc}$</span>. The reciprocal families therefore have opposite parameter multiplication if their parameters are labeled identically. Relabeling a right translation by <span class="math" data-tex="$c^{-1}$">$c^{-1}$</span> makes its multiplication the same as that of the left translations. This is the precise sense of “the same composition” in the reciprocal-group statement. Their infinitesimal left- and right-invariant frames commute with each other and have opposite bracket signs, as computed in lesson 5.</p>
+<h3 id="regular-centralizers">Regular centralizers</h3>
+<p>The <strong>centralizer</strong> fixes every transformation under conjugation; the <strong>normalizer</strong> preserves the whole group as a set. The infinitesimal centralizer of fields <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span> consists of analytic fields <span class="math" data-tex="$Z$">$Z$</span> with <span class="math" data-tex="$[X_a,Z]=0$">$[X_a,Z]=0$</span> for every <span class="math" data-tex="$a$">$a$</span>. It can be infinite-dimensional even when the given group is finite-dimensional.</p>
+<p><strong>Theorem 6.2 (the regular centralizer).</strong> Let <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span> be independent over constants, satisfy constant bracket relations, and have constant pointwise rank <span class="math" data-tex="$n$">$n$</span> on an <span class="math" data-tex="$s$">$s$</span>-dimensional analytic neighborhood. Choose <span class="math" data-tex="$X_1,\ldots,X_n$">$X_1,\ldots,X_n$</span> pointwise independent and write</p>
+<span class="math math-display" data-tex="$$
+X_{n+k}=\sum_{\rho=1}^{n}\varphi_{k\rho}(x)X_\rho,
+\qquad 1\le k\le r-n.
+\tag{6.1}
+$$">$$
+X_{n+k}=\sum_{\rho=1}^{n}\varphi_{k\rho}(x)X_\rho,
+\qquad 1\le k\le r-n.
+\tag{6.1}
+$$</span>
+<p>Suppose the full array of functions <span class="math" data-tex="$\varphi_{k\rho}$">$\varphi_{k\rho}$</span> has constant functional rank <span class="math" data-tex="$m$">$m$</span>. After shrinking the neighborhood, there are <span class="math" data-tex="$q=s-m$">$q=s-m$</span> pointwise independent fields <span class="math" data-tex="$Z_1,\ldots,Z_q$">$Z_1,\ldots,Z_q$</span>, each centralizing all the <span class="math" data-tex="$X_a$">$X_a$</span>. Every field in the infinitesimal centralizer has a unique expression</p>
+<span class="math math-display" data-tex="$$
+Z=\sum_{\alpha=1}^{q}h_\alpha(u_1,\ldots,u_{s-n})Z_\alpha,
+\tag{6.2}
+$$">$$
+Z=\sum_{\alpha=1}^{q}h_\alpha(u_1,\ldots,u_{s-n})Z_\alpha,
+\tag{6.2}
+$$</span>
+<p>where <span class="math" data-tex="$u_1,\ldots,u_{s-n}$">$u_1,\ldots,u_{s-n}$</span> are local independent orbit invariants and the <span class="math" data-tex="$h_\alpha$">$h_\alpha$</span> are arbitrary analytic functions. In particular, the centralizer is zero when <span class="math" data-tex="$m=s$">$m=s$</span>, and has dimension <span class="math" data-tex="$s-m$">$s-m$</span> over constants when the action is transitive. When <span class="math" data-tex="$r=n$">$r=n$</span>, the coefficient array is empty and <span class="math" data-tex="$m=0$">$m=0$</span>.</p>
+<p><strong>Proof.</strong> For a tangent vector <span class="math" data-tex="$z$">$z$</span> at <span class="math" data-tex="$x$">$x$</span>, lift each field to the tangent bundle by</p>
+<span class="math math-display" data-tex="$$
+W_a(x,z)=\bigl(\xi_a(x),D\xi_a(x)z\bigr),
+\qquad X_a(x)=\xi_a(x).
+\tag{6.3}
+$$">$$
+W_a(x,z)=\bigl(\xi_a(x),D\xi_a(x)z\bigr),
+\qquad X_a(x)=\xi_a(x).
+\tag{6.3}
+$$</span>
+<p>Differentiating both components gives <span class="math" data-tex="$[W_a,W_b]=W_{[X_a,X_b]}$">$[W_a,W_b]=W_{[X_a,X_b]}$</span>. The second component is the derivative of the first bracket in the direction <span class="math" data-tex="$z$">$z$</span>: differentiating <span class="math" data-tex="$\xi_a^j\partial_j\xi_b^i-\xi_b^j\partial_j\xi_a^i$">$\xi_a^j\partial_j\xi_b^i-\xi_b^j\partial_j\xi_a^i$</span> supplies exactly its Hessian and product terms. Thus the lifts have the same constant structure relations. The graph of a field <span class="math" data-tex="$Z(x)=\zeta(x)$">$Z(x)=\zeta(x)$</span> is invariant under <span class="math" data-tex="$W_a$">$W_a$</span> exactly when</p>
+<span class="math math-display" data-tex="$$
+D\zeta(x)\xi_a(x)=D\xi_a(x)\zeta(x),
+\tag{6.4}
+$$">$$
+D\zeta(x)\xi_a(x)=D\xi_a(x)\zeta(x),
+\tag{6.4}
+$$</span>
+<p>which is <span class="math" data-tex="$[X_a,Z]=0$">$[X_a,Z]=0$</span>.</p>
+<p>Define the analytic kernel bundle</p>
+<span class="math math-display" data-tex="$$
+K_x=\bigcap_{k,\rho}\ker d\varphi_{k\rho}(x).
+\tag{6.5}
+$$">$$
+K_x=\bigcap_{k,\rho}\ker d\varphi_{k\rho}(x).
+\tag{6.5}
+$$</span>
+<p>The constant-rank hypothesis makes its rank <span class="math" data-tex="$q=s-m$">$q=s-m$</span>; a nonzero minor supplies an analytic frame by solving the corresponding linear equations. From (6.1),</p>
+<span class="math math-display" data-tex="$$
+[X_{n+k},Z]
+=\sum_\rho\varphi_{k\rho}[X_\rho,Z]
+-\sum_\rho Z(\varphi_{k\rho})X_\rho.
+\tag{6.6}
+$$">$$
+[X_{n+k},Z]
+=\sum_\rho\varphi_{k\rho}[X_\rho,Z]
+-\sum_\rho Z(\varphi_{k\rho})X_\rho.
+\tag{6.6}
+$$</span>
+<p>Consequently <span class="math" data-tex="$Z$">$Z$</span> commutes with every generator if and only if it commutes with the first <span class="math" data-tex="$n$">$n$</span> and takes values in <span class="math" data-tex="$K$">$K$</span>.</p>
+<p>We must show that these algebraic conditions permit every initial value in <span class="math" data-tex="$K$">$K$</span>. Let <span class="math" data-tex="$\mathfrak a$">$\mathfrak a$</span> be the constant coefficient space of the generators, and let <span class="math" data-tex="$\mathfrak a_x$">$\mathfrak a_x$</span> be the kernel of evaluation <span class="math" data-tex="$\mathfrak a\to T_xM$">$\mathfrak a\to T_xM$</span>. A basis of that kernel is</p>
+<span class="math math-display" data-tex="$$
+B_k(x)=e_{n+k}-\sum_\rho\varphi_{k\rho}(x)e_\rho.
+\tag{6.7}
+$$">$$
+B_k(x)=e_{n+k}-\sum_\rho\varphi_{k\rho}(x)e_\rho.
+\tag{6.7}
+$$</span>
+<p>The flow <span class="math" data-tex="$\Phi_t$">$\Phi_t$</span> of any <span class="math" data-tex="$X_b$">$X_b$</span> transports the generator space by a constant invertible linear map. Indeed, the flow identity (1.4), applied to this finite-dimensional span, gives a constant linear ODE for the coefficients of <span class="math" data-tex="$(\Phi_t)_*X_a$">$(\Phi_t)_*X_a$</span>. It follows that <span class="math" data-tex="$\mathfrak a_{\Phi_t(x)}$">$\mathfrak a_{\Phi_t(x)}$</span> is obtained from <span class="math" data-tex="$\mathfrak a_x$">$\mathfrak a_x$</span> by that fixed linear map. In the kernel chart (6.7), the new coefficient array is therefore an analytic function of the old array alone; solving for it uses an invertible minor. Its derivative in any direction <span class="math" data-tex="$z\in K_x$">$z\in K_x$</span> is zero. Hence</p>
+<span class="math math-display" data-tex="$$
+D\Phi_t(x)K_x=K_{\Phi_t(x)}.
+\tag{6.8}
+$$">$$
+D\Phi_t(x)K_x=K_{\Phi_t(x)}.
+\tag{6.8}
+$$</span>
+<p>This proves that the tangent lifts preserve <span class="math" data-tex="$K$">$K$</span>. On this bundle,</p>
+<span class="math math-display" data-tex="$$
+W_{n+k}-\sum_\rho\varphi_{k\rho}W_\rho
+=\left(0,\sum_\rho(d\varphi_{k\rho}z)\xi_\rho\right)=0.
+\tag{6.9}
+$$">$$
+W_{n+k}-\sum_\rho\varphi_{k\rho}W_\rho
+=\left(0,\sum_\rho(d\varphi_{k\rho}z)\xi_\rho\right)=0.
+\tag{6.9}
+$$</span>
+<p>The lifted distribution on <span class="math" data-tex="$K$">$K$</span> is therefore involutive of rank <span class="math" data-tex="$n$">$n$</span>, and its projection is an isomorphism onto the rank-<span class="math" data-tex="$n$">$n$</span> orbit distribution. The analytic Frobenius theorem proved in <a href="LIE-TG-04.html#2-straightening-a-complete-system">Complete systems and invariants, §2</a> gives local lifted leaves.</p>
+<p>Choose an <span class="math" data-tex="$(s-n)$">$(s-n)$</span>-dimensional transversal <span class="math" data-tex="$T$">$T$</span> to the orbit plaques. A lifted leaf through a vector of <span class="math" data-tex="$K|_T$">$K|_T$</span> projects locally diffeomorphically to the associated plaque. Uniqueness of the Frobenius leaf makes its lift unambiguous. Equivalently, use the orbit coordinates supplied by Frobenius and compose the corresponding horizontal coordinate flows. This transports the vector to each point of the plaque. The transport is linear and invertible, since its fiber equation is a homogeneous linear ODE and the reverse path gives its inverse.</p>
+<p>Choose an analytic basis of <span class="math" data-tex="$K|_T$">$K|_T$</span> and transport it. This gives pointwise independent fields <span class="math" data-tex="$Z_1,\ldots,Z_q$">$Z_1,\ldots,Z_q$</span> whose graphs are invariant under the lifts, so they commute with all generators by (6.4) and (6.6). Every commuting field is determined by its arbitrary analytic initial section on <span class="math" data-tex="$T$">$T$</span>. The first-integral coordinates <span class="math" data-tex="$u$">$u$</span> label the plaques, by <a href="LIE-TG-04.html#3-invariants-of-a-local-group">Complete systems and invariants, Theorem 3.2</a>. Expanding its initial section in that basis proves (6.2), including uniqueness. Conversely, <span class="math" data-tex="$X_a h_\alpha(u)=0$">$X_a h_\alpha(u)=0$</span>, so every expression (6.2) commutes with the generators.</p>
+<p>When <span class="math" data-tex="$n=s$">$n=s$</span>, the transversal is a point and the coefficients are constants. When <span class="math" data-tex="$q=0$">$q=0$</span>, the initial fiber is zero. These prove the remaining conclusions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>If the given algebra is zero, every analytic field centralizes it; (6.2) then holds with <span class="math" data-tex="$n=m=0$">$n=m=0$</span>, all <span class="math" data-tex="$s$">$s$</span> coordinates as invariants, and the coordinate frame as the <span class="math" data-tex="$Z_\alpha$">$Z_\alpha$</span>. In general, Jacobi implies that <span class="math" data-tex="$[Z_\alpha,Z_\beta]$">$[Z_\alpha,Z_\beta]$</span> again centralizes the given algebra. Its coefficients in the frame are first integrals, so they can vary with <span class="math" data-tex="$u$">$u$</span> when the action is intransitive; the centralizing frame itself can have nonzero brackets.</p>
+<p><strong>Example 6.3.</strong> On the plane, <span class="math" data-tex="$X_1=\partial_x$">$X_1=\partial_x$</span> and <span class="math" data-tex="$X_2=y\partial_x$">$X_2=y\partial_x$</span> have <span class="math" data-tex="$r=2$">$r=2$</span>, <span class="math" data-tex="$n=1$">$n=1$</span> and <span class="math" data-tex="$\varphi=y$">$\varphi=y$</span>, so <span class="math" data-tex="$m=1$">$m=1$</span> and <span class="math" data-tex="$q=1$">$q=1$</span>. A field commuting with <span class="math" data-tex="$\partial_x$">$\partial_x$</span> has the form <span class="math" data-tex="$f(y)\partial_x+g(y)\partial_y$">$f(y)\partial_x+g(y)\partial_y$</span>. Its bracket with <span class="math" data-tex="$y\partial_x$">$y\partial_x$</span> is <span class="math" data-tex="$-g(y)\partial_x$">$-g(y)\partial_x$</span>, forcing <span class="math" data-tex="$g=0$">$g=0$</span>. The full centralizer is therefore <span class="math" data-tex="$f(y)\partial_x$">$f(y)\partial_x$</span>: one arbitrary function of one invariant. Adding <span class="math" data-tex="$X_3=\partial_y$">$X_3=\partial_y$</span> makes the action transitive and forces <span class="math" data-tex="$f$">$f$</span> to be constant. Adding both translations and the Euler field instead gives a transitive action with zero centralizer.</p>
+<h3 id="invariant-foliations-and-reciprocal-subgroups">Invariant foliations and reciprocal subgroups</h3>
+<p><strong>Theorem 6.4.</strong> For a simply transitive local action of dimension <span class="math" data-tex="$n$">$n$</span>, its invariant regular foliations of dimension <span class="math" data-tex="$m$">$m$</span> correspond bijectively to the connected <span class="math" data-tex="$m$">$m$</span>-dimensional local subgroups of its reciprocal action. If <span class="math" data-tex="$0&lt;m&lt;n$">$0&lt;m&lt;n$</span>, these are precisely its regular systems of imprimitivity. Every such action with <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span> is imprimitive.</p>
+<p>In the group coordinates of Theorem 6.1, where the given action consists of right translations, let <span class="math" data-tex="$H$">$H$</span> be the subgroup corresponding to a foliation. Its leaves are the right cosets <span class="math" data-tex="$Hp$">$Hp$</span>. The subgroup of the given action preserving the fixed leaf <span class="math" data-tex="$Hp$">$Hp$</span> has parameters <span class="math" data-tex="$p^{-1}Hp$">$p^{-1}Hp$</span>; the reciprocal subgroup preserving that leaf, and every leaf of the family, has parameters <span class="math" data-tex="$H$">$H$</span>. The two transformation subgroups correspond under an isomorphism of the full reciprocal transformation groups.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$D$">$D$</span> be the foliation's regular tangent distribution. Right-translation invariance gives</p>
+<span class="math math-display" data-tex="$$
+D_p=(dR_p)_eD_e.
+\tag{6.10}
+$$">$$
+D_p=(dR_p)_eD_e.
+\tag{6.10}
+$$</span>
+<p>Set <span class="math" data-tex="$\mathfrak h=D_e$">$\mathfrak h=D_e$</span>. Its right-invariant fields are sections of <span class="math" data-tex="$D$">$D$</span>. Their brackets are right-invariant fields with the negative algebra bracket, as in Solution 4. Involutivity of <span class="math" data-tex="$D$">$D$</span> therefore says that <span class="math" data-tex="$\mathfrak h$">$\mathfrak h$</span> is a subalgebra. Theorem 2.1 integrates it to a connected local subgroup <span class="math" data-tex="$H$">$H$</span>. The distribution tangent to its right cosets <span class="math" data-tex="$Hp$">$Hp$</span> is exactly (6.10), so its leaves agree with the given foliation, by uniqueness of integral leaves.</p>
+<p>Conversely, every subalgebra supplies this right-invariant involutive distribution. Its right cosets form a regular local foliation, right translation permutes the cosets, and left translation by <span class="math" data-tex="$H$">$H$</span> preserves each of them. The distribution at the identity recovers the subalgebra, proving uniqueness and the correspondence. Normality is not required. For <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span>, any nonzero one-dimensional subalgebra is proper and gives a system of imprimitivity.</p>
+<p>For a fixed leaf, cancellation of sufficiently small local products gives</p>
+<span class="math math-display" data-tex="$$
+Hpa=Hp\ \Longleftrightarrow\ pa p^{-1}\in H,\qquad
+bHp=Hp\ \Longleftrightarrow\ b\in H.
+\tag{6.11}
+$$">$$
+Hpa=Hp\ \Longleftrightarrow\ pa p^{-1}\in H,\qquad
+bHp=Hp\ \Longleftrightarrow\ b\in H.
+\tag{6.11}
+$$</span>
+<p>Thus the two stabilizers have dimension <span class="math" data-tex="$m$">$m$</span>. As transformation families, <span class="math" data-tex="$R_a\circ R_b=R_{ba}$">$R_a\circ R_b=R_{ba}$</span> and <span class="math" data-tex="$L_a\circ L_b=L_{ab}$">$L_a\circ L_b=L_{ab}$</span>. The map</p>
+<span class="math math-display" data-tex="$$
+R_a\longmapsto L_{p a^{-1}p^{-1}}
+\tag{6.12}
+$$">$$
+R_a\longmapsto L_{p a^{-1}p^{-1}}
+\tag{6.12}
+$$</span>
+<p>is therefore an isomorphism: the inverse and conjugation turn <span class="math" data-tex="$ba$">$ba$</span> into <span class="math" data-tex="$(pa^{-1}p^{-1})(pb^{-1}p^{-1})$">$(pa^{-1}p^{-1})(pb^{-1}p^{-1})$</span>. It sends the first stabilizer exactly to the second. Infinitesimally it sends the left-invariant field of <span class="math" data-tex="$u$">$u$</span> to the negative right-invariant field of <span class="math" data-tex="$\operatorname{Ad}_p u$">$\operatorname{Ad}_p u$</span>, reconciling the opposite bracket signs. All these equalities concern local germs on common domains. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>More generally, if an <span class="math" data-tex="$m$">$m$</span>-dimensional regular manifold admits an <span class="math" data-tex="$m$">$m$</span>-dimensional subgroup of a simply transitive action, that subgroup's orbit through <span class="math" data-tex="$p$">$p$</span> is an open piece of the manifold, by the inverse-function theorem. Write it as <span class="math" data-tex="$pH_0=(pH_0p^{-1})p$">$pH_0=(pH_0p^{-1})p$</span> and apply the fixed-leaf argument with <span class="math" data-tex="$H=pH_0p^{-1}$">$H=pH_0p^{-1}$</span>. This proves the reciprocal stabilizer assertion without first assuming an invariant foliation.</p>
+<p><strong>Corollary 6.5.</strong> The infinitesimal transformations common to reciprocal simply transitive groups are their central fields, and the two groups have the same local normalizer.</p>
+<p><strong>Proof.</strong> Membership in the reciprocal algebra means commuting with every field of the first algebra. Their intersection is consequently the centre of the first algebra, and mutual reciprocity makes it the centre of the second as well. A local diffeomorphism carries a centralizer to the centralizer of the transported algebra, because it preserves brackets. Normalizing either algebra therefore normalizes the other; reversing the argument proves equality of the normalizers. The connected local groups are generated by their flows, so the same conclusion holds for those group germs. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 6.6.</strong> In the Heisenberg coordinates of Example 1.3, take <span class="math" data-tex="$H$">$H$</span> generated by <span class="math" data-tex="$e_x$">$e_x$</span>. Its right cosets are</p>
+<span class="math math-display" data-tex="$$
+y=y_0,\qquad z-\tfrac12y_0x=\text{constant}.
+\tag{6.13}
+$$">$$
+y=y_0,\qquad z-\tfrac12y_0x=\text{constant}.
+\tag{6.13}
+$$</span>
+<p>Their tangent field is <span class="math" data-tex="$V_x=\partial_x+\tfrac12y\partial_z$">$V_x=\partial_x+\tfrac12y\partial_z$</span>. The given right-translation action is generated by the left-invariant fields <span class="math" data-tex="$U_x,U_y,U_z$">$U_x,U_y,U_z$</span> of Solution 4, and all commute with <span class="math" data-tex="$V_x$">$V_x$</span>. The subgroup is not normal because <span class="math" data-tex="$[e_y,e_x]=-e_z$">$[e_y,e_x]=-e_z$</span>. At <span class="math" data-tex="$p=(0,c,0)$">$p=(0,c,0)$</span> the subgroup preserving the fixed leaf in the given action has algebra <span class="math" data-tex="$\mathbb K(e_x+ce_z)$">$\mathbb K(e_x+ce_z)$</span>, while the reciprocal subgroup preserving every leaf has algebra <span class="math" data-tex="$\mathbb K e_x$">$\mathbb K e_x$</span>. Conjugation gives</p>
+<span class="math math-display" data-tex="$$
+p^{-1}(t,0,0)p=(t,0,ct).
+\tag{6.14}
+$$">$$
+p^{-1}(t,0,0)p=(t,0,ct).
+\tag{6.14}
+$$</span>
+<p>This also shows why single-leaf stabilizers need not have the same basis direction at a nonidentity base point. For <span class="math" data-tex="$n=1$">$n=1$</span>, no dimension satisfies <span class="math" data-tex="$0&lt;m&lt;n$">$0&lt;m&lt;n$</span>, so the imprimitivity conclusion has no one-dimensional version.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> For <span class="math" data-tex="$[h,e]=e$">$[h,e]=e$</span>, compute the matrices of <span class="math" data-tex="$\operatorname{ad}_h$">$\operatorname{ad}_h$</span> and <span class="math" data-tex="$\operatorname{ad}_e$">$\operatorname{ad}_e$</span> in the ordered basis <span class="math" data-tex="$(h,e)$">$(h,e)$</span>, and determine the centre.</p>
+<p><strong>Exercise 2 (medium).</strong> Compute the derived and lower central series of the affine algebra, and identify its connected normal subgroup in the action <span class="math" data-tex="$x\mapsto\alpha x+\beta$">$x\mapsto\alpha x+\beta$</span> with <span class="math" data-tex="$\alpha&gt;0$">$\alpha&gt;0$</span>.</p>
+<p><strong>Exercise 3 (medium).</strong> Prove the abstract conclusion of Engel's theorem directly for <span class="math" data-tex="$\dim\mathfrak g\le3$">$\dim\mathfrak g\le3$</span>, using the nonzero centre established by the common-zero-vector part of its proof. Identify the possible nonabelian nilpotent algebra in dimension three.</p>
+<p><strong>Exercise 4 (medium).</strong> On the Heisenberg group, compute the left- and right-invariant fields associated to <span class="math" data-tex="$e_x,e_y,e_z$">$e_x,e_y,e_z$</span>. Verify that the two triples commute with each other and have opposite internal brackets. Explain the composition convention of the reciprocal groups.</p>
+<p><strong>Exercise 5 (hard).</strong> In the proof of Lie's theorem, justify (5.1) explicitly for every <span class="math" data-tex="$j$">$j$</span>, then complete the argument for a representation that is not faithful. Deduce that the derived algebra of any solvable complex matrix algebra consists of nilpotent matrices.</p>
+<p><strong>Exercise 6 (medium).</strong> Determine the full local analytic infinitesimal centralizer of each plane action below. Give the orbit rank <span class="math" data-tex="$n$">$n$</span>, coefficient rank <span class="math" data-tex="$m$">$m$</span>, centralizing-frame rank <span class="math" data-tex="$q$">$q$</span>, and the number of free functions or constants:</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+&amp;\text{(a)}\quad \partial_x;\\
+&amp;\text{(b)}\quad \partial_x,\ y\partial_x;\\
+&amp;\text{(c)}\quad \partial_x,\ y\partial_x,\ \partial_y;\\
+&amp;\text{(d)}\quad \partial_x,\ \partial_y,\ x\partial_x+y\partial_y.
+\end{aligned}
+$$">$$
+\begin{aligned}
+&amp;\text{(a)}\quad \partial_x;\\
+&amp;\text{(b)}\quad \partial_x,\ y\partial_x;\\
+&amp;\text{(c)}\quad \partial_x,\ y\partial_x,\ \partial_y;\\
+&amp;\text{(d)}\quad \partial_x,\ \partial_y,\ x\partial_x+y\partial_y.
+\end{aligned}
+$$</span>
+<p><strong>Exercise 7 (hard).</strong> Consider the two triples of vector-field coefficients on three-dimensional space</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+X_1&amp;=(1,0,y),&amp;X_2&amp;=(x,0,z),&amp;X_3&amp;=(x^2,xy-z,xz),\\
+Z_1&amp;=(0,1,x),&amp;Z_2&amp;=(0,y,z),&amp;Z_3&amp;=(xy-z,y^2,yz).
+\end{aligned}
+$$">$$
+\begin{aligned}
+X_1&amp;=(1,0,y),&amp;X_2&amp;=(x,0,z),&amp;X_3&amp;=(x^2,xy-z,xz),\\
+Z_1&amp;=(0,1,x),&amp;Z_2&amp;=(0,y,z),&amp;Z_3&amp;=(xy-z,y^2,yz).
+\end{aligned}
+$$</span>
+<p>Find their determinants and internal brackets, and verify all mixed brackets. Identify where they are reciprocal simply transitive actions. Describe their ranks and orbits on <span class="math" data-tex="$z=xy$">$z=xy$</span>, and exhibit a projective transformation interchanging the triples.</p>
+<p><strong>Exercise 8 (hard).</strong> For the Heisenberg group of Example 1.3, let <span class="math" data-tex="$H$">$H$</span> be generated by <span class="math" data-tex="$e_x$">$e_x$</span>. Find the foliation by right cosets of <span class="math" data-tex="$H$">$H$</span>, prove that the given right-translation action preserves it, and decide whether <span class="math" data-tex="$H$">$H$</span> is normal. For <span class="math" data-tex="$p=(0,c,0)$">$p=(0,c,0)$</span>, find both subgroups preserving the fixed leaf <span class="math" data-tex="$Hp$">$Hp$</span> and write an isomorphism of the full reciprocal transformation groups carrying one stabilizer to the other.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> Columns are images of the ordered basis vectors, so</p>
+<span class="math math-display" data-tex="$$
+\operatorname{ad}_h=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix},\qquad
+\operatorname{ad}_e=\begin{pmatrix}0&amp;0\\-1&amp;0\end{pmatrix}.
+$$">$$
+\operatorname{ad}_h=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix},\qquad
+\operatorname{ad}_e=\begin{pmatrix}0&amp;0\\-1&amp;0\end{pmatrix}.
+$$</span>
+<p>If <span class="math" data-tex="$ah+be$">$ah+be$</span> is central, its bracket with <span class="math" data-tex="$e$">$e$</span> gives <span class="math" data-tex="$ae=0$">$ae=0$</span> and its bracket with <span class="math" data-tex="$h$">$h$</span> gives <span class="math" data-tex="$-be=0$">$-be=0$</span>. Hence <span class="math" data-tex="$a=b=0$">$a=b=0$</span>. Its adjoint representation is locally faithful, although <span class="math" data-tex="$\operatorname{ad}_e$">$\operatorname{ad}_e$</span> alone is nilpotent.</p>
+<p><strong>Solution 2.</strong> The derived series is <span class="math" data-tex="$\mathfrak g,\mathbb K e,0$">$\mathfrak g,\mathbb K e,0$</span>. The lower central series is <span class="math" data-tex="$\mathfrak g,\mathbb K e,\mathbb K e,\ldots$">$\mathfrak g,\mathbb K e,\mathbb K e,\ldots$</span>. In the affine action, <span class="math" data-tex="$e=\partial_x$">$e=\partial_x$</span> generates translations. They form a normal subgroup because conjugating a translation by <span class="math" data-tex="$x\mapsto\alpha x+\beta$">$x\mapsto\alpha x+\beta$</span> gives a translation by the old amount multiplied by <span class="math" data-tex="$\alpha$">$\alpha$</span> (or its reciprocal for the opposite conjugation). The quotient is the one-dimensional dilation group. The distinction between the two series proves solvability and failure of nilpotence.</p>
+<p><strong>Solution 3.</strong> If the algebra is nonzero and every adjoint is nilpotent, the common-zero-vector argument applied to the adjoint representation gives <span class="math" data-tex="$Z(\mathfrak g)\ne0$">$Z(\mathfrak g)\ne0$</span>. The same hypothesis passes to quotients. In dimension two, quotienting by any central line leaves dimension one, so all brackets of the original algebra lie in that central line. Choose a central basis element <span class="math" data-tex="$z$">$z$</span> and a complement <span class="math" data-tex="$u$">$u$</span>; the only possible basis bracket is <span class="math" data-tex="$[u,z]=0$">$[u,z]=0$</span>, so the algebra is abelian. Dimensions zero and one are already abelian.</p>
+<p>In dimension three, the quotient by the whole centre has dimension at most two, and the preceding argument makes it abelian. Thus <span class="math" data-tex="$[\mathfrak g,\mathfrak g]\subset Z(\mathfrak g)$">$[\mathfrak g,\mathfrak g]\subset Z(\mathfrak g)$</span> and <span class="math" data-tex="$\gamma_3=0$">$\gamma_3=0$</span>. If the centre has dimension at least two, choose a complement of dimension at most one; every bracket then vanishes. If the algebra is nonabelian, its centre has dimension one. For a central element <span class="math" data-tex="$z$">$z$</span> and a complementary basis <span class="math" data-tex="$u,v$">$u,v$</span>, write <span class="math" data-tex="$[u,v]=cz$">$[u,v]=cz$</span> with <span class="math" data-tex="$c\ne0$">$c\ne0$</span>; rescale <span class="math" data-tex="$z$">$z$</span> to make <span class="math" data-tex="$[u,v]=z$">$[u,v]=z$</span>. This is exactly the Heisenberg algebra.</p>
+<p><strong>Solution 4.</strong> Differentiate right multiplication by <span class="math" data-tex="$(t,0,0)$">$(t,0,0)$</span>, <span class="math" data-tex="$(0,t,0)$">$(0,t,0)$</span>, and <span class="math" data-tex="$(0,0,t)$">$(0,0,t)$</span> to obtain the left-invariant fields</p>
+<span class="math math-display" data-tex="$$
+U_x=\partial_x-\tfrac y2\partial_z,\quad
+U_y=\partial_y+\tfrac x2\partial_z,\quad U_z=\partial_z.
+$$">$$
+U_x=\partial_x-\tfrac y2\partial_z,\quad
+U_y=\partial_y+\tfrac x2\partial_z,\quad U_z=\partial_z.
+$$</span>
+<p>Differentiating left multiplication gives the right-invariant fields</p>
+<span class="math math-display" data-tex="$$
+V_x=\partial_x+\tfrac y2\partial_z,\quad
+V_y=\partial_y-\tfrac x2\partial_z,\quad V_z=\partial_z.
+$$">$$
+V_x=\partial_x+\tfrac y2\partial_z,\quad
+V_y=\partial_y-\tfrac x2\partial_z,\quad V_z=\partial_z.
+$$</span>
+<p>Direct differentiation gives <span class="math" data-tex="$[U_x,U_y]=U_z$">$[U_x,U_y]=U_z$</span>, <span class="math" data-tex="$[V_x,V_y]=-V_z$">$[V_x,V_y]=-V_z$</span>, and all other internal basis brackets zero. For the mixed pair <span class="math" data-tex="$U_x,V_y$">$U_x,V_y$</span>, the two derivatives of the <span class="math" data-tex="$\partial_z$">$\partial_z$</span> coefficient are <span class="math" data-tex="$-1/2$">$-1/2$</span> and <span class="math" data-tex="$-1/2$">$-1/2$</span>, so their difference is zero; for <span class="math" data-tex="$U_y,V_x$">$U_y,V_x$</span> they are both <span class="math" data-tex="$1/2$">$1/2$</span>. The remaining mixed pairs vanish because no coefficient depends on <span class="math" data-tex="$z$">$z$</span> and a field does not differentiate its own transverse coordinate. Thus <span class="math" data-tex="$[U_i,V_j]=0$">$[U_i,V_j]=0$</span> for all <span class="math" data-tex="$i,j$">$i,j$</span>. Left translations compose in the written order and right translations in the reverse order. Inverting the right-translation parameter identifies their composition laws.</p>
+<p><strong>Solution 5.</strong> Suppose (5.1) holds at level <span class="math" data-tex="$j$">$j$</span> simultaneously for every <span class="math" data-tex="$a\in H$">$a\in H$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+a b^{j+1}v=b(a b^jv)+[a,b]b^jv.
+$$">$$
+a b^{j+1}v=b(a b^jv)+[a,b]b^jv.
+$$</span>
+<p>The first term differs from <span class="math" data-tex="$\lambda(a)b^{j+1}v$">$\lambda(a)b^{j+1}v$</span> by an element of <span class="math" data-tex="$bW_{j-1}\subset W_j$">$bW_{j-1}\subset W_j$</span>. The second belongs to <span class="math" data-tex="$W_j$">$W_j$</span> by the induction hypothesis for <span class="math" data-tex="$[a,b]\in H$">$[a,b]\in H$</span>. This proves the next level. The initial level is the defining eigenvector equation. Once the cyclic span stops growing, <span class="math" data-tex="$bW\subset W$">$bW\subset W$</span>, so the trace calculation is valid on a finite-dimensional invariant space. It proves <span class="math" data-tex="$\lambda([H,b])=0$">$\lambda([H,b])=0$</span>, hence invariance of the common eigenspace. An eigenvector of <span class="math" data-tex="$b$">$b$</span> on that space is common to the whole algebra. Quotienting by its line repeats the proof and gives the full flag.</p>
+<p>For a nonfaithful representation, one may either run the same proof on the abstract algebra using its operators, or pass to its image. The image is solvable because the homomorphism carries each derived term onto the corresponding derived term. Triangularization therefore still holds. In an upper triangular basis, every commutator has diagonal entries zero, so the derived algebra consists of strictly upper triangular, hence nilpotent, matrices. This statement concerns the represented derived algebra; it does not say that every represented element of a solvable algebra is nilpotent.</p>
+<p><strong>Solution 6.</strong> Write <span class="math" data-tex="$Z=A(x,y)\partial_x+B(x,y)\partial_y$">$Z=A(x,y)\partial_x+B(x,y)\partial_y$</span>. Commutation with <span class="math" data-tex="$\partial_x$">$\partial_x$</span> forces <span class="math" data-tex="$A=f(y)$">$A=f(y)$</span> and <span class="math" data-tex="$B=g(y)$">$B=g(y)$</span>.</p>
+<p>In (a), both functions are arbitrary. There are no dependency coefficients, so <span class="math" data-tex="$n=1$">$n=1$</span>, <span class="math" data-tex="$m=0$">$m=0$</span>, <span class="math" data-tex="$q=2$">$q=2$</span>; the first integral is <span class="math" data-tex="$y$">$y$</span>. In (b), the additional bracket is</p>
+<span class="math math-display" data-tex="$$
+[y\partial_x,Z]=-g(y)\partial_x,
+$$">$$
+[y\partial_x,Z]=-g(y)\partial_x,
+$$</span>
+<p>so <span class="math" data-tex="$g=0$">$g=0$</span>. The dependency coefficient is <span class="math" data-tex="$\varphi=y$">$\varphi=y$</span>, giving <span class="math" data-tex="$n=1$">$n=1$</span>, <span class="math" data-tex="$m=1$">$m=1$</span>, <span class="math" data-tex="$q=1$">$q=1$</span>, with one arbitrary function <span class="math" data-tex="$f(y)$">$f(y)$</span>. In (c), commutation with <span class="math" data-tex="$\partial_y$">$\partial_y$</span> also gives <span class="math" data-tex="$f&#x27;=0$">$f&#x27;=0$</span>. Choose <span class="math" data-tex="$\partial_x,\partial_y$">$\partial_x,\partial_y$</span> as the orbit frame; the dependency coefficient of <span class="math" data-tex="$y\partial_x$">$y\partial_x$</span> is still <span class="math" data-tex="$y$">$y$</span>, hence <span class="math" data-tex="$n=2$">$n=2$</span>, <span class="math" data-tex="$m=1$">$m=1$</span>, <span class="math" data-tex="$q=1$">$q=1$</span>. There is one arbitrary constant.</p>
+<p>In (d), both translations force <span class="math" data-tex="$A,B$">$A,B$</span> to be constants, say <span class="math" data-tex="$a,b$">$a,b$</span>. Their bracket with the Euler field is</p>
+<span class="math math-display" data-tex="$$
+[x\partial_x+y\partial_y,a\partial_x+b\partial_y]
+=-a\partial_x-b\partial_y,
+$$">$$
+[x\partial_x+y\partial_y,a\partial_x+b\partial_y]
+=-a\partial_x-b\partial_y,
+$$</span>
+<p>so both vanish. Relative to the two translations, the coefficient array is <span class="math" data-tex="$(x,y)$">$(x,y)$</span> of rank <span class="math" data-tex="$m=2$">$m=2$</span>; therefore <span class="math" data-tex="$n=2$">$n=2$</span> and <span class="math" data-tex="$q=0$">$q=0$</span>. All four results agree with Theorem 6.2, including the difference between orbit rank and centralizer rank.</p>
+<p><strong>Solution 7.</strong> Put <span class="math" data-tex="$q=z-xy$">$q=z-xy$</span> and use <span class="math" data-tex="$[A,B]=DB\,A-DA\,B$">$[A,B]=DB\,A-DA\,B$</span> for coefficient columns. Direct expansion gives</p>
+<span class="math math-display" data-tex="$$
+\det(X_1,X_2,X_3)=q^2,\qquad
+\det(Z_1,Z_2,Z_3)=-q^2.
+$$">$$
+\det(X_1,X_2,X_3)=q^2,\qquad
+\det(Z_1,Z_2,Z_3)=-q^2.
+$$</span>
+<p>For either triple <span class="math" data-tex="$F=X$">$F=X$</span> or <span class="math" data-tex="$F=Z$">$F=Z$</span>,</p>
+<span class="math math-display" data-tex="$$
+[F_1,F_2]=F_1,\qquad
+[F_1,F_3]=2F_2,\qquad
+[F_2,F_3]=F_3.
+$$">$$
+[F_1,F_2]=F_1,\qquad
+[F_1,F_3]=2F_2,\qquad
+[F_2,F_3]=F_3.
+$$</span>
+<p>The mixed brackets all vanish. For example,</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+DZ_3\,X_3
+&amp;=DX_3\,Z_3\\
+&amp;=\bigl(2x(xy-z),\,2y(xy-z),\,2xyz-z^2\bigr);
+\end{aligned}
+$$">$$
+\begin{aligned}
+DZ_3\,X_3
+&amp;=DX_3\,Z_3\\
+&amp;=\bigl(2x(xy-z),\,2y(xy-z),\,2xyz-z^2\bigr);
+\end{aligned}
+$$</span>
+<p>the remaining eight pairs give the same cancellation component by component. On <span class="math" data-tex="$q\ne0$">$q\ne0$</span>, each triple is a frame and hence a simply transitive local action. Commutation and Theorem 6.1 show that they are reciprocal.</p>
+<p>The surface <span class="math" data-tex="$q=0$">$q=0$</span> is preserved because</p>
+<span class="math math-display" data-tex="$$
+(X_1q,X_2q,X_3q)=(0,q,2xq),\qquad
+(Z_1q,Z_2q,Z_3q)=(0,q,2yq).
+$$">$$
+(X_1q,X_2q,X_3q)=(0,q,2xq),\qquad
+(Z_1q,Z_2q,Z_3q)=(0,q,2yq).
+$$</span>
+<p>On that surface <span class="math" data-tex="$X_2=xX_1$">$X_2=xX_1$</span>, <span class="math" data-tex="$X_3=x^2X_1$">$X_3=x^2X_1$</span>, while <span class="math" data-tex="$Z_2=yZ_1$">$Z_2=yZ_1$</span>, <span class="math" data-tex="$Z_3=y^2Z_1$">$Z_3=y^2Z_1$</span>. Both ranks are exactly one, since the leading <span class="math" data-tex="$x$">$x$</span> or <span class="math" data-tex="$y$">$y$</span> component of the first field is one. The first triple's orbits are the lines <span class="math" data-tex="$y=\mathrm{constant}$">$y=\mathrm{constant}$</span>, <span class="math" data-tex="$z=xy$">$z=xy$</span>; the second's are the lines <span class="math" data-tex="$x=\mathrm{constant}$">$x=\mathrm{constant}$</span>, <span class="math" data-tex="$z=xy$">$z=xy$</span>. The projective affine coordinate interchange <span class="math" data-tex="$(x,y,z)\mapsto(y,x,z)$">$(x,y,z)\mapsto(y,x,z)$</span> preserves the surface and sends each <span class="math" data-tex="$X_i$">$X_i$</span> to <span class="math" data-tex="$Z_i$">$Z_i$</span>.</p>
+<p>Thus preservation of a quadric and simple transitivity on its ambient regular region are distinct assertions. At <span class="math" data-tex="$(0,0,1)$">$(0,0,1)$</span>, a reciprocal frame normalized to have the negative initial values of the <span class="math" data-tex="$X_i$">$X_i$</span> is <span class="math" data-tex="$(Z_3,-Z_2,Z_1)$">$(Z_3,-Z_2,Z_1)$</span>; it has the same structure constants as the <span class="math" data-tex="$X$">$X$</span> frame, in agreement with the sign convention.</p>
+<p><strong>Solution 8.</strong> Left multiplication by <span class="math" data-tex="$(t,0,0)$">$(t,0,0)$</span> gives</p>
+<span class="math math-display" data-tex="$$
+(t,0,0)(x,y,z)=(x+t,y,z+\tfrac12ty).
+$$">$$
+(t,0,0)(x,y,z)=(x+t,y,z+\tfrac12ty).
+$$</span>
+<p>The right cosets have invariants <span class="math" data-tex="$y$">$y$</span> and <span class="math" data-tex="$z-yx/2$">$z-yx/2$</span>, and tangent field <span class="math" data-tex="$V_x=\partial_x+(y/2)\partial_z$">$V_x=\partial_x+(y/2)\partial_z$</span>. Solution 4 gives <span class="math" data-tex="$[U_i,V_x]=0$">$[U_i,V_x]=0$</span>, so the right-translation action generated by the <span class="math" data-tex="$U_i$">$U_i$</span> preserves the foliation. The algebra <span class="math" data-tex="$\mathbb K e_x$">$\mathbb K e_x$</span> is not an ideal, since <span class="math" data-tex="$[e_y,e_x]=-e_z$">$[e_y,e_x]=-e_z$</span>; hence <span class="math" data-tex="$H$">$H$</span> is not normal.</p>
+<p>Conjugation at <span class="math" data-tex="$p=(0,c,0)$">$p=(0,c,0)$</span> gives</p>
+<span class="math math-display" data-tex="$$
+p^{-1}(t,0,0)p=(t,0,ct).
+$$">$$
+p^{-1}(t,0,0)p=(t,0,ct).
+$$</span>
+<p>The fixed-leaf stabilizer inside the given right translations is therefore the subgroup with algebra <span class="math" data-tex="$\mathbb K(e_x+ce_z)$">$\mathbb K(e_x+ce_z)$</span>. Inside the reciprocal left translations it is <span class="math" data-tex="$H$">$H$</span>, with algebra <span class="math" data-tex="$\mathbb K e_x$">$\mathbb K e_x$</span>, and this latter subgroup preserves every leaf. The full-family isomorphism is <span class="math" data-tex="$R_a\mapsto L_{pa^{-1}p^{-1}}$">$R_a\mapsto L_{pa^{-1}p^{-1}}$</span>, by (6.12). For <span class="math" data-tex="$a=p^{-1}(t,0,0)p$">$a=p^{-1}(t,0,0)p$</span> its image is <span class="math" data-tex="$L_{(-t,0,0)}$">$L_{(-t,0,0)}$</span>, so it carries the stabilizers onto one another, including their opposite raw parameter convention.</p>
+<h2 id="historical-terminology-and-references">Historical terminology and references</h2>
+<p>Lie–Engel I, Chapter 15, Theorem 47, treats invariant subgroups; Chapter 16, Theorems 48–49, treats the adjoint group and its essential parameters. Chapter 17, Theorem 54, concerns equal structure constants, while Chapters 19–20, Theorems 64 and 68, treat simply transitive and reciprocal groups. Chapter 20, Theorems 67 and 69, gives the general centralizer and the invariant-foliation correspondence proved above. “Excellent” infinitesimal transformations are central directions. The historical conclusions here are interpreted as local statements; no claim about global discrete kernels is inferred from their infinitesimal parameter counts.</p>
+<ul>
+<li>Sophus Lie and Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume I (1888), the chapters and theorem numbers above; contextual access through <a href="https://arxiv.org/abs/1003.3202">Merker's presentation</a>.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/LAG.pdf"><em>Lie Algebras, Algebraic Groups, and Lie Groups</em></a>, Chapter I, §§2–3, especially Theorems 2.8 and 3.7, for the linear algebra statements of Engel and Lie. The arguments in this lesson include the normalizer induction and the cyclic-space trace step explicitly.</li>
+</ul>
+<p>The historical location of Lie's triangularization theorem in the original Lie–Engel volumes has not been established here. Its attribution is by theorem name; the modern numbered reference supplies a verifiable statement and proof. Semisimple structure theory, including Cartan's criteria and root classification, lies beyond this lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-06.html">← The third fundamental theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-08.html">Transitivity and primitivity →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-07.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Exact reflection and phase transport for the original
+operator</title>
+<style>body{box-sizing:border-box;width:100%;min-width:0}main{min-width:0}body{font:18px/1.65 system-ui;color:#142535;background:#fbfcfa;max-width:980px;margin:2rem auto;padding:0 1.3rem}a{color:#075c89}h1{font-size:2.3rem;line-height:1.2}h2{margin-top:2rem}img{max-width:100%;height:auto}.math.display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.5rem 0}math{font-size:1.04em}.math.display math{width:max-content;min-width:100%}.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}pre{overflow-x:auto}nav,footer{border-block:1px solid #ccd8df;padding:1rem 0;margin:1.5rem 0}article{overflow-wrap:anywhere}table{border-collapse:collapse;max-width:100%;display:block;overflow-x:auto}td,th{border:1px solid #ccd;padding:.4rem}aside{background:#eef4f7;padding:1rem;border-radius:8px}</style>
+</head><body><main><nav><a href="../../index.html">Elliptic operators and boundary problems</a> · <a href="../../supporting-proofs.html">Learn first</a> · <a href="reflection-adjoint-supplement.html">Markdown</a> · <a href="reflection-adjoint-supplement.tex">TeX</a> · <a href="../../credits.html">Credits and terms</a></nav>
+<aside>Component license: CC0-1.0. Original contributor notices remain in the source. HTML preparation: OpenAI Codex, GPT-6.1 Sol, Ultra effort. Programme proof and review evidence is retained for each lesson. This edition does not claim independent review of the whole course. <a href="../../component-notices/TITLE_PAGE.md">Authors and component terms</a></aside><details><summary>Contents</summary><ul><li><a href="#fixed-quantities-and-the-involution-on-functions-and-distributions">1.
+Fixed quantities and the involution on functions and distributions</a></li><li><a href="#the-full-weaker-polynomial-pullback-and-every-basis-graph-bound">2.
+The full weaker-polynomial pullback and every basis graph bound</a></li><li><a href="#the-actual-minimal-domain-and-every-trace-phase">3. The actual
+minimal domain and every trace phase</a></li><li><a href="#the-exact-kernel-bridges-and-the-distinction-between-two-adjoint-domains">4.
+The exact kernel bridges and the distinction between two adjoint
+domains</a></li><li><a href="#the-transported-completed-inverse-closed-minimal-range-and-quotient-maps">5.
+The transported completed inverse, closed minimal range, and quotient
+maps</a></li><li><a href="#the-exact-entire-mode-phases-and-graph-energies">6. The exact
+entire mode phases and graph energies</a></li></ul></details><section aria-label="Reflection and kernel diagram"><figure><img alt="Two exact kernel bridges with the original square, full phase, reflection and trace transport" src="figures/reflection_graph_kernel_bridge.png"/><figcaption>The two exact kernel bridges retain the graph-kernel intersection. Full phase and reflection: <a href="#eq-JM4">JM4–JM5</a>. Original graph norms and trace transport: <a href="#eq-JM13">JM13–JM17</a>. Actual kernels: <a href="#eq-JM19">JM19–JM20</a>.</figcaption></figure><p><a href="figures/render_reflection_bridge.py">Reproduce the figure</a> · <a href="figures/FIGURE_FORMULAS_AND_REPRODUCTION.json">Exact figure formulas</a> · <a href="../u006-graph-domains/graph-domain-note.html">Complete graph-domain proofs</a> · <a href="RIGHTS.md">Component terms</a></p></section><article><span id="AN03-JM-SECTION-0"></span><h1 id="exact-reflection-and-phase-transport-for-the-original-operator">Exact
+reflection and phase transport for the original operator</h1>
+<p>This separate reflection and adjoint supplement proves an exact
+transport for the original operator. Its complete graph-domain
+foundations are in <a href="../u006-graph-domains/graph-domain-note.html">The two graph-domain
+quotients of the local inverse</a>. The receiving original-source proofs
+are <span class="unlinked">Local
+inverse, Section 14.6, (CS40)–(CS50)</span> and <span class="unlinked">Section
+14.8.5, (CE25)–(CE34)</span>. The complete packaged proofs are <a href="../../local-elliptic-coefficients.html#eq-CS40">the local inverse
+identities</a> and <a href="../../local-elliptic-coefficients.html#eq-CE25">the
+original-coefficient example</a>. The pinned source citations require
+repository access. No new external theorem is used, and no novelty is
+claimed.</p>
+<p>All Hilbert inner products below are linear in their first argument.
+Distribution pairings are complex bilinear. The resulting distinction
+between the Hilbert adjoint and distributional transpose is retained
+explicitly.</p>
+<span id="AN03-JM-SECTION-1"></span><h2 id="fixed-quantities-and-the-involution-on-functions-and-distributions">1.
+Fixed quantities and the involution on functions and distributions</h2>
+<p>Keep the original coordinates and all constants:</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>4</mn><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mi>j</mi></msub><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>∂</mi><msub><mi>x</mi><mi>j</mi></msub></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>p</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi>i</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ U=(-1/4,1/4)^2,\qquad D_j=-i\partial_{x_j},\qquad
+ p(\xi_1,\xi_2)=\xi_1^2+i\xi_2,
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM1" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>14</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>20</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>7</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>20</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>32</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>12</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>7</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>12</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>5</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>λ</mi><mo>*</mo></msub><mo>=</mo><mrow><mtext mathvariant="normal">the largest eigenvalue of </mtext><mspace width="0.333em"></mspace></mrow><mi>C</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>K</mi><mo>=</mo><mn>41472</mn><msub><mi>λ</mi><mo>*</mo></msub><msqrt><mn>33</mn></msqrt><mspace width="0.167em"></mspace><msup><mi>e</mi><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><mi>a</mi><mo>=</mo><msqrt><mfrac><mrow><msqrt><mn>2</mn></msqrt><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></msqrt><mo>,</mo><mspace width="1.0em"></mspace><mi>ε</mi><mo>=</mo><mfrac><mn>2</mn><mrow><mi>K</mi><mi>a</mi></mrow></mfrac><mo>&gt;</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM1)</mtext></mrow><annotation encoding="application/x-tex">
+ C=\begin{pmatrix}14&amp;-20&amp;7\\-20&amp;32&amp;-12\\7&amp;-12&amp;5\end{pmatrix},
+ \quad\lambda_*=\text{the largest eigenvalue of }C,\quad
+ K=41472\lambda_*\sqrt{33}\,e^2,\quad
+ a=\sqrt{\frac{\sqrt2-1}{2}},\quad
+ \varepsilon=\frac2{Ka}&gt;0 .
+ \tag{JM1}
+</annotation></semantics></math></span></p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Y=L^2(U)</annotation></semantics></math></span>.
+For every polynomial
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></span>,
+keep its complete derivative strength
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>q</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><munder><mo>∑</mo><mrow><mi>α</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℕ</mi><mn>2</mn></msup></mrow></munder><mo form="prefix" stretchy="false">|</mo><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><mi>q</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>V</mi><mi>p</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>q</mi><mo>:</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>ξ</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow></munder><mover><mi>q</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>&lt;</mo><mi>∞</mi><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>q</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>ξ</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow></munder><mfrac><mrow><mover><mi>q</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \widetilde q(\xi)^2=\sum_{\alpha\in\mathbb N^2}
+                              |\partial_\xi^\alpha q(\xi)|^2,
+ \quad
+ V_p=\{q:\sup_{\xi\in\mathbb R^2}\widetilde q(\xi)/\widetilde p(\xi)&lt;\infty\},
+ \quad
+ \|q\|_p=\sup_{\xi\in\mathbb R^2}\frac{\widetilde q(\xi)}{\widetilde p(\xi)}.
+</annotation></semantics></math></span> For any actual declared basis
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>q</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">q_1,\ldots,q_4</annotation></semantics></math></span>
+of the exact space
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>p</mi></msub><annotation encoding="application/x-tex">V_p</annotation></semantics></math></span>,
+define
+<span class="math display"><math display="block" id="eq-JM2" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><msub><mi>q</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="0.222em"></mspace><mn>1</mn><mo>≤</mo><mi>j</mi><mo>≤</mo><mn>4</mn><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>4</mn></munderover><mo form="postfix" stretchy="false">∥</mo><msub><mi>q</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><msup><mover><mrow><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><mo accent="true">¯</mo></mover><mrow><mo form="postfix" stretchy="false">∥</mo><mo>⋅</mo><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM2)</mtext></mrow><annotation encoding="application/x-tex">
+ H=\{u\in L^2(U):q_j(D)u\in L^2(U),\ 1\leq j\leq4\},
+ \quad
+ \|u\|_H^2=\|u\|_2^2+\sum_{j=1}^4\|q_j(D)u\|_2^2,
+ \quad H_{\min}=\overline{C_c^\infty(U)}^{\|\cdot\|_H}.
+ \tag{JM2}
+</annotation></semantics></math></span> The complete proofs of finite
+dimension, Hilbert completeness,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>p</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">span</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo>,</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">V_p=\operatorname{span}\{1,\xi_1,\xi_1^2,\xi_2\}</annotation></semantics></math></span>,
+and the four monomial norms are <a href="../u006-graph-domains/graph-domain-note.html#eq-GM1">GM1</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM2">GM2</a> and
+<a href="../u006-graph-domains/graph-domain-note.html#eq-GM31">GM31</a>
+of the retained note. No norm for a different basis is substituted for
+(JM2).</p>
+<p>Retain the original full operator and its full Hilbert formal
+adjoint:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><msubsup><mi>D</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi>i</mi><msub><mi>D</mi><mn>2</mn></msub><mo>+</mo><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>D</mi><mn>1</mn></msub><mo>=</mo><mi>−</mi><msubsup><mi>∂</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msub><mi>∂</mi><mn>2</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>∂</mi><mn>1</mn></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ P=D_1^2+iD_2+\varepsilon x_1D_1
+    =-\partial_1^2+\partial_2-i\varepsilon x_1\partial_1,
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM3" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><msup><mi>P</mi><mo>†</mo></msup><mo>=</mo><msubsup><mi>D</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><msub><mi>D</mi><mn>2</mn></msub><mo>+</mo><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>D</mi><mn>1</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi><mo>=</mo><mi>−</mi><msubsup><mi>∂</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msub><mi>∂</mi><mn>2</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>∂</mi><mn>1</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM3)</mtext></mrow><annotation encoding="application/x-tex">
+ A=P^\dagger
+    =D_1^2-iD_2+\varepsilon x_1D_1-i\varepsilon
+    =-\partial_1^2-\partial_2-i\varepsilon x_1\partial_1-i\varepsilon.
+ \tag{JM3}
+</annotation></semantics></math></span> The zeroth-order term is the
+contribution from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>D</mi><mn>1</mn></msub><mi>v</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mi>v</mi></mrow><annotation encoding="application/x-tex">D_1(\varepsilon x_1 v)=\varepsilon x_1D_1v-i\varepsilon v</annotation></semantics></math></span>.
+It is retained in every calculation below. For this specific smooth
+coefficient, both expressions act on every distribution; this does not
+assert that an arbitrary continuous coefficient can multiply any
+distributional derivative.</p>
+<p>Put
+<span class="math display"><math display="block" id="eq-JM4" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM4)</mtext></mrow><annotation encoding="application/x-tex">
+ \rho(x_1,x_2)=(x_1,-x_2),\qquad
+ Jf(x_1,x_2)=e^{-i\varepsilon x_2}f(x_1,-x_2).
+ \tag{JM4}
+</annotation></semantics></math></span> The real reflection has determinant
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span>,
+absolute Jacobian
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>,
+and preserves the actual open square. Since
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ε</mi><annotation encoding="application/x-tex">\varepsilon</annotation></semantics></math></span>
+is real, its displayed phase has modulus one. Thus change of variables,
+with Lebesgue measure and the absolute Jacobian retained, gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>J</mi><mi>f</mi><mo>,</mo><mi>J</mi><mi>h</mi><msub><mo form="postfix" stretchy="false">⟩</mo><mn>2</mn></msub><mo>=</mo><msub><mo>∫</mo><mi>U</mi></msub><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mover><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><mo accent="true">¯</mo></mover><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>x</mi><mn>1</mn></msub><mspace width="0.167em"></mspace><mi>d</mi><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>f</mi><mo>,</mo><mi>h</mi><msub><mo form="postfix" stretchy="false">⟩</mo><mn>2</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \langle Jf,Jh\rangle_2
+   =\int_U e^{-i\varepsilon x_2}f(x_1,-x_2)
+                    e^{i\varepsilon x_2}\overline{h(x_1,-x_2)}\,dx_1\,dx_2
+   =\langle f,h\rangle_2 .
+</annotation></semantics></math></span> Applying the exact phase twice gives
+<span class="math display"><math display="block" id="eq-JM5" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>J</mi><mo>*</mo></msup><mo>=</mo><mi>J</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM5)</mtext></mrow><annotation encoding="application/x-tex">
+ J^2f(x)
+   =e^{-i\varepsilon x_2}e^{-i\varepsilon(-x_2)}f(x)=f(x),
+ \qquad \|Jf\|_2=\|f\|_2,\qquad J^*=J .
+ \tag{JM5}
+</annotation></semantics></math></span> Consequently
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+is a complex-linear unitary involution on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math></span>.</p>
+<p>Its distributional extension is specified by the actual bilinear
+transpose:
+<span class="math display"><math display="block" id="eq-JM6" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>J</mi><mi>T</mi><mo>,</mo><mi>ϕ</mi><msub><mo form="postfix" stretchy="false">⟩</mo><mrow><msup><mi mathvariant="script">𝒟</mi><mo>′</mo></msup><mo>,</mo><mi mathvariant="script">𝒟</mi></mrow></msub><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>T</mi><mo>,</mo><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mi>ϕ</mi><msub><mo form="postfix" stretchy="false">⟩</mo><mrow><msup><mi mathvariant="script">𝒟</mi><mo>′</mo></msup><mo>,</mo><mi mathvariant="script">𝒟</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mi>ϕ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM6)</mtext></mrow><annotation encoding="application/x-tex">
+ \langle JT,\phi\rangle_{\mathcal D',\mathcal D}
+    =\langle T,J^{\mathrm t}\phi\rangle_{\mathcal D',\mathcal D},
+ \qquad
+ J^{\mathrm t}\phi(x_1,x_2)
+      =e^{i\varepsilon x_2}\phi(x_1,-x_2).
+ \tag{JM6}
+</annotation></semantics></math></span> The test transform maps
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_c^\infty(U)</annotation></semantics></math></span>
+continuously to itself; reflection preserves compact support, and
+differentiation of its smooth phase leaves a finite sum of smooth
+bounded factors on each compact set. Formula (JM6) therefore defines a
+distribution for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math></span>.
+For an
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+function, the substitution
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>↦</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">x_2\mapsto-x_2</annotation></semantics></math></span>
+in its bilinear integral gives precisely this formula, so it agrees with
+(JM4). The test transform also squares to the identity, because its
+phases are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><annotation encoding="application/x-tex">e^{i\varepsilon x_2}</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><annotation encoding="application/x-tex">e^{-i\varepsilon x_2}</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">J^2=I</annotation></semantics></math></span>
+on distributions. In particular the plus sign in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><annotation encoding="application/x-tex">J^{\mathrm t}</annotation></semantics></math></span>
+is not replaced by the minus sign of the function formula or by the
+Hilbert adjoint convention.</p>
+<p>For smooth functions, differentiation retains the complete phase
+contributions and gives
+<span class="math display"><math display="block" id="eq-JM7" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><mi>J</mi><mo>=</mo><mi>J</mi><msub><mi>D</mi><mn>1</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>D</mi><mn>2</mn></msub><mi>J</mi><mo>=</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>D</mi><mn>2</mn></msub><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>x</mi><mn>1</mn></msub><mi>J</mi><mo>=</mo><mi>J</mi><msub><mi>x</mi><mn>1</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM7)</mtext></mrow><annotation encoding="application/x-tex">
+ D_1J=JD_1,\qquad
+ D_2J=J(-D_2-\varepsilon),\qquad
+ x_1J=Jx_1 .
+ \tag{JM7}
+</annotation></semantics></math></span> Indeed differentiation of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><annotation encoding="application/x-tex">e^{-i\varepsilon x_2}</annotation></semantics></math></span>
+contributes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>i</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>i</mi><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mo>=</mo><mi>−</mi><mi>ε</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup></mrow><annotation encoding="application/x-tex">(-i)(-i\varepsilon)e^{-i\varepsilon x_2}=-\varepsilon e^{-i\varepsilon x_2}</annotation></semantics></math></span>;
+differentiation of the reflected argument contributes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mn>2</mn></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">i e^{-i\varepsilon x_2}(\partial_2f)(x_1,-x_2)</annotation></semantics></math></span>.
+Together these are exactly the second formula. The other coordinate and
+multiplication formulas follow because neither its phase nor its
+reflection changes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span>.</p>
+<p>These formulas also hold on all distributions, without a regularity
+premise. In the bilinear convention
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>D</mi><mi>j</mi><mi mathvariant="normal">t</mi></msubsup><mo>=</mo><mi>−</mi><msub><mi>D</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">D_j^{\mathrm t}=-D_j</annotation></semantics></math></span>.
+On tests, direct differentiation of the plus-phase transform gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>1</mn></msub><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mo>=</mo><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><msub><mi>D</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">D_1J^{\mathrm t}=J^{\mathrm t}D_1</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>2</mn></msub><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mo>=</mo><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>D</mi><mn>2</mn></msub><mo>+</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D_2J^{\mathrm t}=J^{\mathrm t}(-D_2+\varepsilon)</annotation></semantics></math></span>.
+For the second distributional identity, pair its left side against
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>
+to obtain
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>T</mi><mo>,</mo><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>D</mi><mn>2</mn></msub><mi>ϕ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\langle T,J^{\mathrm t}(-D_2\phi)\rangle</annotation></semantics></math></span>.
+The right side pairs as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>T</mi><mo>,</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>D</mi><mn>2</mn></msub><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>J</mi><mi mathvariant="normal">t</mi></msup><mi>ϕ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\langle T,(D_2-\varepsilon)J^{\mathrm t}\phi\rangle</annotation></semantics></math></span>,
+which is the same expression by the displayed test identity. The first
+and multiplication identities follow by the same transpose calculation.
+Thus no differentiation or coefficient term is lost in their
+distributional extension.</p>
+<span id="AN03-JM-SECTION-2"></span><h2 id="the-full-weaker-polynomial-pullback-and-every-basis-graph-bound">2.
+The full weaker-polynomial pullback and every basis graph bound</h2>
+<p>Define the original affine frequency transform
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>τ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>q</mi><mi>#</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>q</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><mi>−</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \tau(\xi_1,\xi_2)=(\xi_1,-\xi_2-\varepsilon),\qquad
+ q^\#(\xi)=q(\xi_1,-\xi_2-\varepsilon).
+</annotation></semantics></math></span> It is an involution. Applying (JM7)
+successively to each monomial, then adding every coefficient, gives on
+all distributions
+<span class="math display"><math display="block" id="eq-JM8" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>J</mi><mo>=</mo><mi>J</mi><msup><mi>q</mi><mi>#</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><msup><mi>q</mi><mi>#</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><msub><mi>α</mi><mn>2</mn></msub></msup><mo form="prefix" stretchy="false">(</mo><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><mi>q</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mover><msup><mi>q</mi><mi>#</mi></msup><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mover><mi>q</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM8)</mtext></mrow><annotation encoding="application/x-tex">
+ q(D)J=Jq^\#(D),\qquad
+ \partial_\xi^\alpha q^\#(\xi)
+       =(-1)^{\alpha_2}(\partial_\xi^\alpha q)(\tau\xi),
+ \qquad
+ \widetilde{q^\#}(\xi)=\widetilde q(\tau\xi).
+ \tag{JM8}
+</annotation></semantics></math></span> The chain rule has no additional
+higher-order term, because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>τ</mi><annotation encoding="application/x-tex">\tau</annotation></semantics></math></span>
+is affine with linear part
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>−</mi><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{diag}(1,-1)</annotation></semantics></math></span>.
+Iterating the first-order chain rule proves the sign
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><msub><mi>α</mi><mn>2</mn></msub></msup></mrow><annotation encoding="application/x-tex">(-1)^{\alpha_2}</annotation></semantics></math></span>
+for every multi-index, including zero derivatives.</p>
+<p>The full original
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></span>-strength
+at the reflected and translated frequency is
+<span class="math display"><math display="block" id="eq-JM9" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>4</mn></msubsup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>ξ</mi><mn>2</mn></msub><mo>+</mo><mi>ε</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>+</mo><mn>4</mn><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mn>1</mn><mo>+</mo><mn>4</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM9)</mtext></mrow><annotation encoding="application/x-tex">
+ \widetilde p(\tau\xi)^2
+    =\xi_1^4+(\xi_2+\varepsilon)^2+4\xi_1^2+1+4.
+ \tag{JM9}
+</annotation></semantics></math></span> This contains the nonzero
+translated-frequency contribution and both separate constants
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>4</mn><annotation encoding="application/x-tex">4</annotation></semantics></math></span>.
+To compare it with the original array, the complete derivative array of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>p</mi><mi>#</mi></msup><mo>=</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><msub><mi>ξ</mi><mn>2</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">p^\#=\xi_1^2-i\xi_2-i\varepsilon</annotation></semantics></math></span>
+is the array of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">¯</mo></mover><mo>=</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><mi>i</mi><msub><mi>ξ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\overline p=\xi_1^2-i\xi_2</annotation></semantics></math></span>
+with the additional zeroth entry
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">-i\varepsilon</annotation></semantics></math></span>
+and no additional derivative entries. The two arrays have exactly the
+same first and second derivative entries and all the same zeros. The
+Euclidean triangle inequality therefore gives
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>ε</mi><mo>≤</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mfrac><mi>ε</mi><msqrt><mn>5</mn></msqrt></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><msqrt><mrow><mn>1</mn><mo>+</mo><mn>4</mn></mrow></msqrt><mo>=</mo><msqrt><mn>5</mn></msqrt><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \widetilde p(\tau\xi)\leq\widetilde p(\xi)+\varepsilon
+       \leq\left(1+\frac{\varepsilon}{\sqrt5}\right)\widetilde p(\xi),
+ \qquad \widetilde p(\xi)\geq\sqrt{1+4}=\sqrt5 .
+</annotation></semantics></math></span> For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>∈</mo><msub><mi>V</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">q\in V_p</annotation></semantics></math></span>,
+keep every factor in
+<span class="math display"><math display="block" id="eq-JM10" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><msup><mi>q</mi><mi>#</mi></msup><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mover><mi>q</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>q</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mspace width="0.167em"></mspace><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>τ</mi><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>+</mo><mfrac><mi>ε</mi><msqrt><mn>5</mn></msqrt></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">∥</mo><mi>q</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mspace width="0.167em"></mspace><mover><mi>p</mi><mo accent="true">̃</mo></mover><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM10)</mtext></mrow><annotation encoding="application/x-tex">
+ \widetilde{q^\#}(\xi)
+       =\widetilde q(\tau\xi)
+       \leq\|q\|_p\,\widetilde p(\tau\xi)
+       \leq\left(1+\frac{\varepsilon}{\sqrt5}\right)
+                  \|q\|_p\,\widetilde p(\xi).
+ \tag{JM10}
+</annotation></semantics></math></span> Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mi>#</mi></msup><mo>∈</mo><msub><mi>V</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">q^\#\in V_p</annotation></semantics></math></span>,
+with the exact proved bound
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>q</mi><mi>#</mi></msup><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>ε</mi><mi>/</mi><msqrt><mn>5</mn></msqrt><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><mi>q</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">\|q^\#\|_p\leq(1+\varepsilon/\sqrt5)\|q\|_p</annotation></semantics></math></span>.
+Applying it again to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>q</mi><mi>#</mi></msup><annotation encoding="application/x-tex">q^\#</annotation></semantics></math></span>
+yields
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>q</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>ε</mi><mi>/</mi><msqrt><mn>5</mn></msqrt><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><msup><mi>q</mi><mi>#</mi></msup><msub><mo form="postfix" stretchy="false">∥</mo><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">\|q\|_p\leq(1+\varepsilon/\sqrt5)\|q^\#\|_p</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msup><mi>q</mi><mi>#</mi></msup><msup><mo form="postfix" stretchy="false">)</mo><mi>#</mi></msup><mo>=</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">(q^\#)^\#=q</annotation></semantics></math></span>.
+This proves both directions of the comparison while retaining the
+original polynomial as the receiving object.</p>
+<p>Let the column of original monomials be
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>,</mo><msub><mi>ξ</mi><mn>1</mn></msub><mo>,</mo><msubsup><mi>ξ</mi><mn>1</mn><mn>2</mn></msubsup><mo>,</mo><msub><mi>ξ</mi><mn>2</mn></msub><msup><mo form="postfix" stretchy="false">)</mo><mi mathvariant="normal">T</mi></msup></mrow><annotation encoding="application/x-tex">r=(1,\xi_1,\xi_1^2,\xi_2)^{\mathrm T}</annotation></semantics></math></span>.
+For the actual basis in (JM2), write its exact coefficient matrix as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">q=B_0r</annotation></semantics></math></span>,
+where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>∈</mo><msub><mrow><mi mathvariant="normal">GL</mi><mo>⁡</mo></mrow><mn>4</mn></msub><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℂ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">B_0\in\operatorname{GL}_4(\mathbb C)</annotation></semantics></math></span>.
+No coefficient of this basis matrix is discarded. The pullback has the
+full matrices
+<span class="math display"><math display="block" id="eq-JM11" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>r</mi><mi>#</mi></msup><mo>=</mo><msub><mi>B</mi><mi>#</mi></msub><mi>r</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>B</mi><mi>#</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mi>ε</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>q</mi><mi>#</mi></msup><mo>=</mo><mi>β</mi><mi>q</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>β</mi><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><msub><mi>B</mi><mi>#</mi></msub><msubsup><mi>B</mi><mn>0</mn><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo>,</mo><mspace width="2.0em"></mspace><msup><mi>β</mi><mn>2</mn></msup><mo>=</mo><msub><mi>I</mi><mn>4</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM11)</mtext></mrow><annotation encoding="application/x-tex">
+ r^\#=B_\#r,\qquad
+ B_\#=
+ \begin{pmatrix}
+ 1&amp;0&amp;0&amp;0\\
+ 0&amp;1&amp;0&amp;0\\
+ 0&amp;0&amp;1&amp;0\\
+ -\varepsilon&amp;0&amp;0&amp;-1
+ \end{pmatrix},\qquad
+ q^\#=\beta q,\qquad
+ \beta=B_0B_\#B_0^{-1},\qquad \beta^2=I_4 .
+ \tag{JM11}
+</annotation></semantics></math></span> The last row retains the translation
+term
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">-\varepsilon</annotation></semantics></math></span>.
+The other zero entries are retained in the printed matrix. The basis
+formula follows by inserting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>r</mi><mi>#</mi></msup><annotation encoding="application/x-tex">r^\#</annotation></semantics></math></span>
+into
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>q</mi><mi>#</mi></msup><mo>=</mo><msub><mi>B</mi><mn>0</mn></msub><msup><mi>r</mi><mi>#</mi></msup></mrow><annotation encoding="application/x-tex">q^\#=B_0r^\#</annotation></semantics></math></span>.
+The involution formula follows either by multiplying
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>B</mi><mi>#</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>I</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">B_\#^2=I_4</annotation></semantics></math></span>
+or by applying the polynomial involution twice.</p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">u\in H</annotation></semantics></math></span>,
+(JM8) and (JM11) give
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>q</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>J</mi><mi>u</mi><mo>=</mo><mi>J</mi><msub><mo>∑</mo><mi>k</mi></msub><msub><mi>β</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><msub><mi>q</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">q_j(D)Ju=J\sum_k\beta_{jk}q_k(D)u</annotation></semantics></math></span>.
+Every right side is an
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+function, which proves
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>u</mi><mo>∈</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">Ju\in H</annotation></semantics></math></span>.
+Exact
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+unitarity then gives the original-norm identity
+<span class="math display"><math display="block" id="eq-JM12" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mn>4</mn></munderover><msubsup><mrow><mo form="prefix" stretchy="true">∥</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mn>4</mn></munderover><msub><mi>β</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><msub><mi>q</mi><mi>k</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>D</mi><mo form="postfix" stretchy="false">)</mo><mi>u</mi><mo form="postfix" stretchy="true">∥</mo></mrow><mn>2</mn><mn>2</mn></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM12)</mtext></mrow><annotation encoding="application/x-tex">
+ \|Ju\|_H^2
+    =\|u\|_2^2
+       +\sum_{j=1}^4
+             \left\|\sum_{k=1}^4\beta_{jk}q_k(D)u\right\|_2^2.
+ \tag{JM12}
+</annotation></semantics></math></span> Put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>β</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>β</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><msup><mi mathvariant="double-struck">ℂ</mi><mn>4</mn></msup><mo>→</mo><msup><mi mathvariant="double-struck">ℂ</mi><mn>4</mn></msup></mrow></msub></mrow><annotation encoding="application/x-tex">\sigma_\beta=\|\beta\|_{\mathbb C^4\to\mathbb C^4}</annotation></semantics></math></span>,
+with the ordinary Euclidean coefficient-vector norm, and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>β</mi></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo>,</mo><msub><mi>σ</mi><mi>β</mi></msub><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\kappa_\beta=\max\{1,\sigma_\beta\}</annotation></semantics></math></span>.
+The definition of this finite matrix norm and integration imply
+<span class="math display"><math display="block" id="eq-JM13" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>κ</mi><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><msub><mi>κ</mi><mi>β</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>H</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a bounded involution.</mtext></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM13)</mtext></mrow><annotation encoding="application/x-tex">
+ \kappa_\beta^{-1}\|u\|_H
+       \leq\|Ju\|_H\leq\kappa_\beta\|u\|_H,
+ \qquad J:H\longrightarrow H\text{ is a bounded involution.}
+ \tag{JM13}
+</annotation></semantics></math></span> The upper estimate uses (JM12) and its
+unchanged separate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+term. Apply it to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">Ju</annotation></semantics></math></span>
+and use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mi>u</mi><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">J^2u=u</annotation></semantics></math></span>
+for the lower estimate. If a directly summed finite bound is desired,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>β</mi></msub><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><msub><mo>∑</mo><mrow><mi>j</mi><mo>,</mo><mi>k</mi></mrow></msub><mo form="prefix" stretchy="false">|</mo><msub><mi>β</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\sigma_\beta\leq(\sum_{j,k}|\beta_{jk}|^2)^{1/2}</annotation></semantics></math></span>
+follows by rowwise Cauchy–Schwarz; every actual basis coefficient
+remains in that sum.</p>
+<p>For the declared monomial basis of <a href="../u006-graph-domains/graph-domain-note.html#eq-GM32">GM32</a>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>=</mo><msub><mi>I</mi><mn>4</mn></msub></mrow><annotation encoding="application/x-tex">B_0=I_4</annotation></semantics></math></span>,
+so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><msub><mi>B</mi><mi>#</mi></msub></mrow><annotation encoding="application/x-tex">\beta=B_\#</annotation></semantics></math></span>.
+The actual graph norm has its two separate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>
+terms:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mi>+</mi><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mi>+</mi><mo form="postfix" stretchy="false">∥</mo><msub><mi>D</mi><mn>1</mn></msub><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mi>+</mi><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>D</mi><mn>1</mn><mn>2</mn></msubsup><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mi>+</mi><mo form="postfix" stretchy="false">∥</mo><msub><mi>D</mi><mn>2</mn></msub><mi>u</mi><mo>+</mo><mi>ε</mi><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">
+ \|Ju\|_H^2
+     =\|u\|_2^2+\|u\|_2^2+
+          \|D_1u\|_2^2+\|D_1^2u\|_2^2+\|D_2u+\varepsilon u\|_2^2
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM14" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><mn>2</mn><mi>ε</mi><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">⟨</mo><msub><mi>D</mi><mn>2</mn></msub><mi>u</mi><mo>,</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">⟩</mo><mn>2</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM14)</mtext></mrow><annotation encoding="application/x-tex">
+     =\|u\|_H^2+\varepsilon^2\|u\|_2^2
+                    +2\varepsilon\operatorname{Re}\langle D_2u,u\rangle_2.
+ \tag{JM14}
+</annotation></semantics></math></span> The matrix coefficient norm has squared
+value
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>σ</mi><mi>β</mi><mn>2</mn></msubsup><mo>=</mo><mn>1</mn><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup><mi>/</mi><mn>2</mn><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>ε</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><msqrt><mrow><msup><mi>ε</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sigma_\beta^2=1+\varepsilon^2/2+
+(\varepsilon/2)\sqrt{\varepsilon^2+4}</annotation></semantics></math></span>:
+the nontrivial block of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>β</mi><mo>*</mo></msup><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta^*\beta</annotation></semantics></math></span>
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup></mtd><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}1+\varepsilon^2&amp;\varepsilon\\\varepsilon&amp;1\end{pmatrix}</annotation></semantics></math></span>;
+its characteristic polynomial gives these two eigenvalues with signs
+plus and minus, and the other two eigenvalues are one.</p>
+<p>Keeping the separate duplicate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>
+terms gives the stronger proved bound
+<span class="math display"><math display="block" id="eq-JM15" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mn>1</mn><mo>+</mo><mfrac><msup><mi>ε</mi><mn>2</mn></msup><mn>4</mn></mfrac><mo>+</mo><mfrac><mi>ε</mi><mn>4</mn></mfrac><msqrt><mrow><msup><mi>ε</mi><mn>2</mn></msup><mo>+</mo><mn>8</mn></mrow></msqrt><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>k</mi><mi>H</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><msub><mi>k</mi><mi>H</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM15)</mtext></mrow><annotation encoding="application/x-tex">
+ k_H^2=1+\frac{\varepsilon^2}{4}
+                 +\frac{\varepsilon}{4}\sqrt{\varepsilon^2+8},
+ \qquad k_H^{-1}\|u\|_H\leq\|Ju\|_H\leq k_H\|u\|_H.
+ \tag{JM15}
+</annotation></semantics></math></span> Here is a direct verification in the
+original metric. For a pair of complex numbers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>,</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">b,d</annotation></semantics></math></span>,
+the relevant input expression is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>b</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>b</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>d</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|b|^2+|b|^2+|d|^2</annotation></semantics></math></span>,
+and its output is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>b</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>b</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>d</mi><mo>+</mo><mi>ε</mi><mi>b</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|b|^2+|b|^2+|d+\varepsilon b|^2</annotation></semantics></math></span>.
+Their Hermitian matrices are respectively
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{diag}(2,1)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup></mtd><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">\begin{pmatrix}2+\varepsilon^2&amp;\varepsilon\\\varepsilon&amp;1\end{pmatrix}</annotation></semantics></math></span>.
+The determinant of the difference with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t\operatorname{diag}(2,1)</annotation></semantics></math></span>
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>t</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><msup><mi>ε</mi><mn>2</mn></msup><mi>t</mi></mrow><annotation encoding="application/x-tex">2(1-t)^2-\varepsilon^2t</annotation></semantics></math></span>.
+Its larger root is exactly
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">t=k_H^2</annotation></semantics></math></span>.
+At that root the matrix
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup><mrow><mi mathvariant="normal">diag</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup></mtd><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>ε</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">
+ k_H^2\operatorname{diag}(2,1)-
+       \begin{pmatrix}2+\varepsilon^2&amp;\varepsilon\\\varepsilon&amp;1\end{pmatrix}
+</annotation></semantics></math></span> has determinant zero and positive
+diagonal entries: the lower entry is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup><mo>−</mo><mn>1</mn><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_H^2-1&gt;0</annotation></semantics></math></span>,
+and the upper is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>ε</mi><mi>/</mi><mn>2</mn><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msqrt><mrow><msup><mi>ε</mi><mn>2</mn></msup><mo>+</mo><mn>8</mn></mrow></msqrt><mo>−</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(\varepsilon/2)(\sqrt{\varepsilon^2+8}-\varepsilon)&gt;0</annotation></semantics></math></span>.
+Its quadratic form is nonnegative, because if the two positive diagonal
+entries are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">\alpha,\delta</annotation></semantics></math></span>,
+their product is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ε</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\varepsilon^2</annotation></semantics></math></span>,
+and its form is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msqrt><mi>α</mi></msqrt><mi>b</mi><mo>−</mo><msqrt><mi>δ</mi></msqrt><mi>d</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|\sqrt\alpha b-\sqrt\delta d|^2</annotation></semantics></math></span>.
+Thus the output pair is bounded by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">k_H^2</annotation></semantics></math></span>
+times the input pair. Integrate this bound and retain both other graph
+derivatives, whose norms are unchanged by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>.
+Since
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>k</mi><mi>H</mi><mn>2</mn></msubsup><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k_H^2\geq1</annotation></semantics></math></span>,
+they obey the same upper bound. Apply it to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">Ju</annotation></semantics></math></span>
+for the inverse estimate. This proves (JM15) as a bound in the original
+graph metric. It does not assert equality with the actual graph-operator
+norm, nor replace the original metric by the two-dimensional coefficient
+matrix.</p>
+<span id="AN03-JM-SECTION-3"></span><h2 id="the-actual-minimal-domain-and-every-trace-phase">3. The actual
+minimal domain and every trace phase</h2>
+<p>The map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+sends
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_c^\infty(U)</annotation></semantics></math></span>
+onto itself: reflection preserves the square and compact support, and
+multiplication by its smooth phase preserves smoothness. By (JM13) both
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+and its inverse are bounded on the actual
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub><mo>→</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">u_j\to u</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+with compactly supported smooth
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>j</mi></msub><annotation encoding="application/x-tex">u_j</annotation></semantics></math></span>,
+then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mi>u</mi><mi>j</mi></msub><mo>→</mo><mi>J</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">Ju_j\to Ju</annotation></semantics></math></span>
+in the same norm. Applying the involution for the reverse inclusion
+proves
+<span class="math display"><math display="block" id="eq-JM16" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM16)</mtext></mrow><annotation encoding="application/x-tex">
+ JH_{\min}=H_{\min}.
+ \tag{JM16}
+</annotation></semantics></math></span></p>
+<p>For the monomial basis, the six trace maps in <a href="../u006-graph-domains/graph-domain-note.html#eq-GM55">GM55</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM56">GM56</a>
+have the exact transport
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mrow><mn>1</mn><mo>,</mo><mi>±</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>γ</mi><mrow><mn>1</mn><mo>,</mo><mi>±</mi></mrow></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>γ</mi><mrow><mn>1</mn><mo>,</mo><mi>±</mi></mrow><mo>′</mo></msubsup><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mo form="prefix" stretchy="false">(</mo><msubsup><mi>γ</mi><mrow><mn>1</mn><mo>,</mo><mi>±</mi></mrow><mo>′</mo></msubsup><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ \gamma_{1,\pm}(Ju)(x_2)
+     =e^{-i\varepsilon x_2}(\gamma_{1,\pm}u)(-x_2),
+ \qquad
+ \gamma'_{1,\pm}(Ju)(x_2)
+     =e^{-i\varepsilon x_2}(\gamma'_{1,\pm}u)(-x_2),
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM17" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>γ</mi><mrow><mn>2</mn><mo>,</mo><mi>+</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><mi>/</mi><mn>4</mn></mrow></msup><msub><mi>γ</mi><mrow><mn>2</mn><mo>,</mo><mi>−</mi></mrow></msub><mi>u</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>γ</mi><mrow><mn>2</mn><mo>,</mo><mi>−</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mi>ε</mi><mi>/</mi><mn>4</mn></mrow></msup><msub><mi>γ</mi><mrow><mn>2</mn><mo>,</mo><mi>+</mi></mrow></msub><mi>u</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM17)</mtext></mrow><annotation encoding="application/x-tex">
+ \gamma_{2,+}(Ju)=e^{-i\varepsilon/4}\gamma_{2,-}u,\qquad
+ \gamma_{2,-}(Ju)=e^{i\varepsilon/4}\gamma_{2,+}u .
+ \tag{JM17}
+</annotation></semantics></math></span> These are equalities in their actual
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn><mo>,</mo><mn>1</mn><mi>/</mi><mn>4</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L^2(-1/4,1/4)</annotation></semantics></math></span>
+trace spaces. To prove the vertical formulas, regard
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>⋅</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(x_1,\cdot)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mn>1</mn></msub><mi>u</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>⋅</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\partial_1u(x_1,\cdot)</annotation></semantics></math></span>
+as the continuous Hilbert-valued representatives supplied by <a href="../u006-graph-domains/graph-domain-note.html#eq-GM53">GM53</a>.
+The phase-reflection transform on that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+space is a fixed unitary map independent of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span>.
+It therefore commutes with taking the endpoint limits of those two
+representatives. The derivative identity (JM7) gives the indicated first
+derivative as well. For the horizontal formulas, use the continuous
+representative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo form="prefix" stretchy="false">(</mo><mi>⋅</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">u(\cdot,x_2)</annotation></semantics></math></span>
+in the other
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+space; reflection changes the endpoint and the phase evaluates at the
+original endpoint
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>+</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">+1/4</annotation></semantics></math></span>
+or
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">-1/4</annotation></semantics></math></span>,
+giving exactly the displayed factors. Thus every side and phase is
+accounted for. All six zero conditions are transported to themselves,
+with the horizontal sides exchanged, in agreement with (JM16). No trace
+of a missing mixed derivative is assumed.</p>
+<span id="AN03-JM-SECTION-4"></span><h2 id="the-exact-kernel-bridges-and-the-distinction-between-two-adjoint-domains">4.
+The exact kernel bridges and the distinction between two adjoint
+domains</h2>
+<p>Using (JM7), with the zeroth-order term in (JM3) still present, gives
+on every distribution
+<span class="math display"><math display="block" id="eq-JM18" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>J</mi><mo>=</mo><mi>J</mi><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">[</mo><msubsup><mi>D</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi>i</mi><msub><mi>D</mi><mn>2</mn></msub><mo>+</mo><mi>i</mi><mi>ε</mi><mo>+</mo><mi>ε</mi><msub><mi>x</mi><mn>1</mn></msub><msub><mi>D</mi><mn>1</mn></msub><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">]</mo><mo>=</mo><mi>J</mi><mi>P</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>P</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>A</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM18)</mtext></mrow><annotation encoding="application/x-tex">
+ AJ
+   =J\bigl[D_1^2+iD_2+i\varepsilon+
+                    \varepsilon x_1D_1-i\varepsilon\bigr]
+   =JP,\qquad PJ=JA.
+ \tag{JM18}
+</annotation></semantics></math></span> The first equality shows the two
+separate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">i\varepsilon</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>i</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">-i\varepsilon</annotation></semantics></math></span>
+contributions before their cancellation. The second intertwining follows
+by multiplying
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">AJ=JP</annotation></semantics></math></span>
+on both sides by the involution. This is a proved comparison of the
+original two operators; neither is used as a replacement definition of
+the other.</p>
+<p>Define the full distributional
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+kernel and the actual graph kernel separately:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>P</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>u</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>P</mi><mi>u</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><msup><mi mathvariant="script">𝒟</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>N</mi><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>P</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>Y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>K</mi><mi>P</mi></msub><mo>∩</mo><mi>H</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ K_P=\{u\in L^2(U):Pu=0\text{ in }\mathcal D'(U)\},
+ \quad N=\ker(P:H\to Y)=K_P\cap H,
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM19" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>†</mo></msup><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>A</mi><mi>v</mi><mo>=</mo><mn>0</mn><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> in </mtext><mspace width="0.333em"></mspace></mrow><msup><mi mathvariant="script">𝒟</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>T</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><mi>P</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></msub><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> as an operator in </mtext><mspace width="0.333em"></mspace></mrow><mi>Y</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM19)</mtext></mrow><annotation encoding="application/x-tex">
+ N^\dagger=\ker T_{\min}^*
+       =\{v\in L^2(U):Av=0\text{ in }\mathcal D'(U)\},
+ \qquad T_{\min}=P|_{H_{\min}}\text{ as an operator in }Y.
+ \tag{JM19}
+</annotation></semantics></math></span> The adjoint-domain equality is proved
+in <a href="../u006-graph-domains/graph-domain-note.html#eq-GM26">GM26</a>.
+The first kernel is closed in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>:
+if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>j</mi></msub><mo>→</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">u_j\to u</annotation></semantics></math></span>
+there, every test pairing of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><msub><mi>u</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">Pu_j</annotation></semantics></math></span>
+converges to that of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">Pu</annotation></semantics></math></span>,
+because distributional derivatives and multiplication by the specific
+smooth coefficient are continuous on distributions. Thus a sequence of
+zero pairings has a zero limit. The same argument applies to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>N</mi><mo>†</mo></msup><annotation encoding="application/x-tex">N^\dagger</annotation></semantics></math></span>.</p>
+<p>The distributional identity (JM18) proves
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mi>K</mi><mi>P</mi></msub><mo>⊂</mo><msup><mi>N</mi><mo>†</mo></msup></mrow><annotation encoding="application/x-tex">J K_P\subset N^\dagger</annotation></semantics></math></span>,
+and its reverse identity proves
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msup><mi>N</mi><mo>†</mo></msup><mo>⊂</mo><msub><mi>K</mi><mi>P</mi></msub></mrow><annotation encoding="application/x-tex">J N^\dagger\subset K_P</annotation></semantics></math></span>.
+Using
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">J^2=I</annotation></semantics></math></span>
+proves both surjectivity and inverse formulas. The map
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>:</mo><msub><mi>K</mi><mi>P</mi></msub><mo>→</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a complex-linear unitary bijection in the original </mtext><mspace width="0.333em"></mspace></mrow><msup><mi>L</mi><mn>2</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> norms</mtext></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ J:K_P\longrightarrow\ker T_{\min}^*
+       \text{ is a complex-linear unitary bijection in the original }L^2\text{ norms}.
+</annotation></semantics></math></span> Preservation of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+then gives the strongest corresponding graph-domain bridge
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>:</mo><mi>N</mi><mo>→</mo><msup><mi>N</mi><mo>†</mo></msup><mo>∩</mo><mi>H</mi><mo>=</mo><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>Y</mi><mo form="postfix" stretchy="false">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a bounded bijection with inverse </mtext><mspace width="0.333em"></mspace></mrow><mi>J</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ J:N\longrightarrow N^\dagger\cap H=\ker(A:H\to Y)
+       \text{ is a bounded bijection with inverse }J,
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM20" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>κ</mi><mi>β</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><msub><mi>κ</mi><mi>β</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>∈</mo><mi>N</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM20)</mtext></mrow><annotation encoding="application/x-tex">
+ \kappa_\beta^{-1}\|u\|_H\leq\|Ju\|_H\leq\kappa_\beta\|u\|_H
+       \quad(u\in N),
+ \qquad
+ \|Ju\|_2=\|u\|_2.
+ \tag{JM20}
+</annotation></semantics></math></span> For the monomial basis use the stronger
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>H</mi></msub><annotation encoding="application/x-tex">k_H</annotation></semantics></math></span>
+bound (JM15). The spaces
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>†</mo></msup><mo>∩</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">N^\dagger\cap H</annotation></semantics></math></span>
+are closed in their
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+norms because they are kernels of bounded maps
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>,</mo><mi>A</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">P,A:H\to Y</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+this boundedness follows directly from its polynomial terms and bounded
+smooth coefficients, or from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>J</mi><mi>P</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A=JPJ</annotation></semantics></math></span>,
+(JM13), and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>P</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>C</mi><mi>P</mi></msub></mrow><annotation encoding="application/x-tex">\|P\|\leq C_P</annotation></semantics></math></span>.
+The broader
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>P</mi></msub><annotation encoding="application/x-tex">K_P</annotation></semantics></math></span>
+is not silently identified with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>.
+Likewise the full
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>N</mi><mo>†</mo></msup><annotation encoding="application/x-tex">N^\dagger</annotation></semantics></math></span>
+is not silently identified with its intersection with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>.</p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">A_{\min}</annotation></semantics></math></span>
+mean the minimal graph closure in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+of the formal expression
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+initially on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_c^\infty(U)</annotation></semantics></math></span>.
+This is a different domain question from the Hilbert adjoint
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><annotation encoding="application/x-tex">T_{\min}^*</annotation></semantics></math></span>.
+Indeed unitary transport on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>,
+the core transport
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup></mrow><annotation encoding="application/x-tex">JC_c^\infty=C_c^\infty</annotation></semantics></math></span>,
+and (JM18) give
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><mi>J</mi><msub><mi>T</mi><mi mathvariant="normal">min</mi></msub><mi>J</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Dom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ A_{\min}=JT_{\min}J,\qquad
+ \operatorname{Dom}(A_{\min})=JH_{\min}=H_{\min},
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM21" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Dom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>v</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mo>:</mo><mi>A</mi><mi>v</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mi>U</mi><mo form="postfix" stretchy="false">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> as a distribution</mtext></mrow><mo form="postfix" stretchy="false">}</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><mi>v</mi><mo>=</mo><mi>A</mi><mi>v</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM21)</mtext></mrow><annotation encoding="application/x-tex">
+ \operatorname{Dom}(T_{\min}^*)
+       =\{v\in L^2(U):Av\in L^2(U)\text{ as a distribution}\},
+ \qquad T_{\min}^*v=Av.
+ \tag{JM21}
+</annotation></semantics></math></span> For the closure assertion, the graph
+map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>P</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo>,</mo><mi>J</mi><mi>P</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(u,Pu)\mapsto(Ju,JPu)</annotation></semantics></math></span>
+is an isometry on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>⊕</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">Y\oplus Y</annotation></semantics></math></span>;
+it maps the core graph of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math></span>
+onto the core graph of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+by (JM18). It consequently maps their graph closures onto one another.
+GM-A1 identifies the first closure domain as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>,
+and (JM16) gives the displayed transported domain. This proves the first
+formula, including closedness and dense definition. The second formula
+retains the fully proved <a href="../u006-graph-domains/graph-domain-note.html#eq-GM26">GM26</a>
+domain, rather than giving it the minimal trace conditions.</p>
+<p>The actual inclusion
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mo>⊂</mo><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup></mrow><annotation encoding="application/x-tex">A_{\min}\subset T_{\min}^*</annotation></semantics></math></span>
+follows from (JM21) since
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">u\in H_{\min}</annotation></semantics></math></span>
+has all polynomial derivatives and hence
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>u</mi><mo>∈</mo><msup><mi>L</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">Au\in L^2</annotation></semantics></math></span>.
+It is proper. For example
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">u_0=1</annotation></semantics></math></span>
+is a nonzero member of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+by <a href="../u006-graph-domains/graph-domain-note.html#eq-GM45">GM45</a>, so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mi>u</mi><mn>0</mn></msub><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup></mrow><annotation encoding="application/x-tex">Ju_0=e^{-i\varepsilon x_2}</annotation></semantics></math></span>
+is a nonzero element of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>N</mi><mo>†</mo></msup><mo>∩</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">N^\dagger\cap H</annotation></semantics></math></span>
+by (JM18). It is in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Dom</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>T</mi><mrow><mi mathvariant="normal">min</mi><mo>⁡</mo></mrow><mo>*</mo></msubsup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\operatorname{Dom}(T_{\min}^*)</annotation></semantics></math></span>.
+It cannot be in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>,
+since (JM16) would put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mn>0</mn></msub><annotation encoding="application/x-tex">u_0</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>,
+contradicting the injectivity estimate <a href="../u006-graph-domains/graph-domain-note.html#eq-GM8">GM8</a> or
+its positive distance in <a href="../u006-graph-domains/graph-domain-note.html#eq-GM46">GM46</a>.
+Thus it is outside the domain of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">A_{\min}</annotation></semantics></math></span>.
+This proves the specific strict inclusion, while making no unproved
+strict inclusion between
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>P</mi></msub><annotation encoding="application/x-tex">K_P</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>.</p>
+<span id="AN03-JM-SECTION-5"></span><h2 id="the-transported-completed-inverse-closed-minimal-range-and-quotient-maps">5.
+The transported completed inverse, closed minimal range, and quotient
+maps</h2>
+<p>Retain
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">E:Y\to H</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>E</mi><mo>=</mo><msub><mi>I</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">PE=I_Y</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>P</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">EP=I</annotation></semantics></math></span>
+on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>
+from <a href="../u006-graph-domains/graph-domain-note.html#eq-GM6">GM6</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM8">GM8</a> and
+the original (CS43)–(CS50). Let
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mi>P</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mi>A</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ R=P(H_{\min}),\qquad R_A=A(H_{\min}).
+</annotation></semantics></math></span> The exact range transport and minimal
+graph-operator comparison are
+<span class="math display"><math display="block" id="eq-JM22" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mi>A</mi></msub><mo>=</mo><mi>J</mi><mi>R</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>T</mi><mi mathvariant="normal">min</mi></msub><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM22)</mtext></mrow><annotation encoding="application/x-tex">
+ R_A=JR,\qquad
+ A_{\min}(Ju)=J(T_{\min}u)\quad(u\in H_{\min}).
+ \tag{JM22}
+</annotation></semantics></math></span> Indeed
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+maps
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>
+onto itself and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">AJ=JP</annotation></semantics></math></span>.
+This proves each range inclusion and their equality. Since
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math></span>
+is closed in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Y</mi><annotation encoding="application/x-tex">Y</annotation></semantics></math></span>
+by GM-A and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>
+is unitary,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">JR</annotation></semantics></math></span>
+is closed.</p>
+<p>Define the transported map using its full phases, rather than a new
+coefficient convention:
+<span class="math display"><math display="block" id="eq-JM23" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>J</mi><mi>E</mi><mi>J</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>A</mi><mi>F</mi><mo>=</mo><msub><mi>I</mi><mi>Y</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mi>A</mi><mi>u</mi><mo>=</mo><mi>u</mi><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>F</mi><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM23)</mtext></mrow><annotation encoding="application/x-tex">
+ F=JEJ:Y\longrightarrow H,\qquad
+ AF=I_Y,\qquad
+ FAu=u\quad(u\in H_{\min}),\qquad
+ F(JR)=H_{\min}.
+ \tag{JM23}
+</annotation></semantics></math></span> For boundedness, (JM13), exact
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+unitarity on the input side, and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>E</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>C</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">\|E\|\leq C_E</annotation></semantics></math></span>
+give
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>F</mi><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><msub><mi>κ</mi><mi>β</mi></msub><msub><mi>C</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\|Ff\|_H\leq\kappa_\beta C_E\|f\|_2</annotation></semantics></math></span>.
+The right-inverse formula is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>F</mi><mo>=</mo><mi>A</mi><mi>J</mi><mi>E</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>P</mi><mi>E</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>J</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">AF=AJEJ=JPEJ=JJ=I</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">u\in H_{\min}</annotation></semantics></math></span>,
+use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>A</mi><mi>u</mi><mo>=</mo><mi>P</mi><mi>J</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">JAu=PJu</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">Ju\in H_{\min}</annotation></semantics></math></span>
+to give
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>A</mi><mi>u</mi><mo>=</mo><mi>J</mi><mi>E</mi><mi>P</mi><mi>J</mi><mi>u</mi><mo>=</mo><mi>J</mi><mi>J</mi><mi>u</mi><mo>=</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">FAu=JEPJu=JJu=u</annotation></semantics></math></span>.
+Finally
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><mi>E</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">F(JR)=JE(R)=JH_{\min}=H_{\min}</annotation></semantics></math></span>,
+using the exactly proved <a href="../u006-graph-domains/graph-domain-note.html#eq-GM8">GM8</a> image
+formula. Hence
+<span class="math display"><math display="block" id="eq-JM24" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi mathvariant="normal">min</mi></msub><mo>:</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>→</mo><mi>J</mi><mi>R</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is a bounded bijection with inverse </mtext><mspace width="0.333em"></mspace></mrow><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mi>J</mi><mi>R</mi></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub><mo>≤</mo><msub><mi>κ</mi><mi>β</mi></msub><msub><mi>C</mi><mi>E</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>A</mi><mi>u</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM24)</mtext></mrow><annotation encoding="application/x-tex">
+ A_{\min}:H_{\min}\longrightarrow JR
+       \text{ is a bounded bijection with inverse }F|_{JR},
+ \quad
+ \|u\|_H\leq\kappa_\beta C_E\|Au\|_2\quad(u\in H_{\min}).
+ \tag{JM24}
+</annotation></semantics></math></span> Its graph-domain operator norm is at
+most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>κ</mi><mi>β</mi></msub><msub><mi>C</mi><mi>P</mi></msub></mrow><annotation encoding="application/x-tex">\kappa_\beta C_P</annotation></semantics></math></span>
+from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>J</mi><mi>P</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A=JPJ</annotation></semantics></math></span>.
+In the monomial basis, every coefficient gives the explicit independent
+bound
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>A</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>H</mi><mo>→</mo><mi>Y</mi></mrow></msub><mo>≤</mo><msub><mi>C</mi><mi>A</mi></msub><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo form="prefix" stretchy="false">|</mo><mi>−</mi><mi>i</mi><mi>ε</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup><mi>/</mi><mn>16</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mn>1</mn><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>−</mi><mi>i</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \|A\|_{H\to Y}
+   \leq C_A=\left(|-i\varepsilon|^2+
+                     \varepsilon^2/16+|1|^2+|-i|^2\right)^{1/2}.
+</annotation></semantics></math></span> Its first coefficient is the retained
+zeroth-order term. The corresponding original constants are
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>P</mi></msub><mo>=</mo><msup><mrow><mo form="prefix" stretchy="true">(</mo><mo form="prefix" stretchy="false">|</mo><mn>0</mn><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><msup><mi>ε</mi><mn>2</mn></msup><mi>/</mi><mn>16</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mn>1</mn><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>i</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>C</mi><mi>E</mi></msub><mo>=</mo><mn>2</mn><mi>K</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><mo>+</mo><mfrac><mn>1</mn><mn>5</mn></mfrac><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ C_P=\left(|0|^2+\varepsilon^2/16+|1|^2+|i|^2\right)^{1/2},
+ \qquad
+ C_E=2K\left(\frac15+\frac15+a^2+1+1\right)^{1/2}.
+</annotation></semantics></math></span> For that basis
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>F</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>k</mi><mi>H</mi></msub><msub><mi>C</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">\|F\|\leq k_H C_E</annotation></semantics></math></span>
+and the coercive bound in (JM24) also improves to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>H</mi></msub><msub><mi>C</mi><mi>E</mi></msub></mrow><annotation encoding="application/x-tex">k_H C_E</annotation></semantics></math></span>,
+using (JM15). Both copies of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">1/5</annotation></semantics></math></span>
+and both copies of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math></span>
+remain present. The map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math></span>
+is a right inverse of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>Y</mi></mrow><annotation encoding="application/x-tex">A:H\to Y</annotation></semantics></math></span>
+on every input; its inverse on the minimal realization is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mrow><mi>J</mi><mi>R</mi></mrow></msub></mrow><annotation encoding="application/x-tex">F|_{JR}</annotation></semantics></math></span>.
+There is no claim that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mi>f</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">Ff\in H_{\min}</annotation></semantics></math></span>
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∉</mo><mi>J</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">f\notin JR</annotation></semantics></math></span>.</p>
+<p>The kernel projections are transported exactly:
+<span class="math display"><math display="block" id="eq-JM25" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo>=</mo><mi>I</mi><mo>−</mo><mi>E</mi><mi>P</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>A</mi></msub><mo>=</mo><mi>I</mi><mo>−</mo><mi>F</mi><mi>A</mi><mo>=</mo><mi>J</mi><mi>Q</mi><mi>J</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">Ran</mi><mo>⁡</mo></mrow><msub><mi>Q</mi><mi>A</mi></msub><mo>=</mo><mi>J</mi><mi>N</mi><mo>=</mo><msup><mi>N</mi><mo>†</mo></msup><mo>∩</mo><mi>H</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">ker</mi><mo>⁡</mo></mrow><msub><mi>Q</mi><mi>A</mi></msub><mo>=</mo><mi>F</mi><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>A</mi></msub><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM25)</mtext></mrow><annotation encoding="application/x-tex">
+ Q=I-EP,\qquad Q_A=I-FA=JQJ,\qquad
+ \operatorname{Ran}Q_A=JN=N^\dagger\cap H,\qquad
+ \ker Q_A=F(Y),\qquad Q_AH_{\min}=0.
+ \tag{JM25}
+</annotation></semantics></math></span> The equality follows from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><mi>J</mi><mi>E</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">F=JEJ</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>J</mi><mi>P</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">A=JPJ</annotation></semantics></math></span>.
+Its range, kernel and zero restriction follow by applying the original
+projection identities <a href="../u006-graph-domains/graph-domain-note.html#eq-GM9">GM9</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM11">GM11</a>
+through the bijections
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>:</mo><mi>H</mi><mo>→</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">J:H\to H</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>:</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>→</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">J:H_{\min}\to H_{\min}</annotation></semantics></math></span>.
+This also proves its idempotence. An explicit bound is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>Q</mi><mi>A</mi></msub><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msubsup><mi>κ</mi><mi>β</mi><mn>2</mn></msubsup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>C</mi><mi>E</mi></msub><msub><mi>C</mi><mi>P</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\|Q_A\|\leq\kappa_\beta^2(1+C_EC_P)</annotation></semantics></math></span>;
+the direct formula gives the additional bound
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><msub><mi>κ</mi><mi>β</mi></msub><msub><mi>C</mi><mi>E</mi></msub><mspace width="0.167em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>A</mi><mo form="postfix" stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">1+\kappa_\beta C_E\,\|A\|</annotation></semantics></math></span>.
+For the monomial basis use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mi>H</mi></msub><annotation encoding="application/x-tex">k_H</annotation></semantics></math></span>
+in place of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>β</mi></msub><annotation encoding="application/x-tex">\kappa_\beta</annotation></semantics></math></span>
+and the proved
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>A</mi></msub><annotation encoding="application/x-tex">C_A</annotation></semantics></math></span>
+in the second bound. No orthogonality of the graph-domain summands is
+asserted.</p>
+<p>There are exact quotient transports
+<span class="math display"><math display="block" id="eq-JM26" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi mathvariant="script">𝒥</mi><mi>H</mi></msub><mo>:</mo><mi>H</mi><mi>/</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>→</mo><mi>H</mi><mi>/</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>↦</mo><mo form="prefix" stretchy="false">[</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi mathvariant="script">𝒥</mi><mi>Y</mi></msub><mo>:</mo><mi>Y</mi><mi>/</mi><mi>R</mi><mo>→</mo><mi>Y</mi><mi>/</mi><mi>J</mi><mi>R</mi><mo>,</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">[</mo><mi>f</mi><mo form="postfix" stretchy="false">]</mo><mo>↦</mo><mo form="prefix" stretchy="false">[</mo><mi>J</mi><mi>f</mi><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM26)</mtext></mrow><annotation encoding="application/x-tex">
+ \mathcal J_H:H/H_{\min}\to H/H_{\min},\quad [u]\mapsto[Ju],
+ \qquad
+ \mathcal J_Y:Y/R\to Y/JR,\quad[f]\mapsto[Jf].
+ \tag{JM26}
+</annotation></semantics></math></span> The first is well defined by (JM16),
+involutive, and obeys both
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>κ</mi><mi>β</mi></msub><annotation encoding="application/x-tex">\kappa_\beta</annotation></semantics></math></span>
+bounds in the original quotient norm: take the infimum over
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>∈</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">h\in H_{\min}</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mo>−</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><msub><mo form="postfix" stretchy="false">∥</mo><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">\|J(u-h)\|_H</annotation></semantics></math></span>,
+then use the inverse. The second is well defined because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">J(R)=JR</annotation></semantics></math></span>.
+Its inverse is the same formula in the opposite quotient spaces, and it
+is isometric:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">inf</mi><mrow><mi>m</mi><mo>∈</mo><mi>R</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mi>f</mi><mo>−</mo><mi>J</mi><mi>m</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mo>=</mo><munder><mi mathvariant="normal">inf</mi><mrow><mi>m</mi><mo>∈</mo><mi>R</mi></mrow></munder><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo>−</mo><mi>m</mi><msub><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \inf_{m\in R}\|Jf-Jm\|_2=\inf_{m\in R}\|f-m\|_2.
+</annotation></semantics></math></span> The two actual quotient decompositions
+therefore commute with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>A</mi></msub><mi>J</mi><mi>u</mi><mo>,</mo><mo form="prefix" stretchy="false">[</mo><mi>A</mi><mi>J</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>Q</mi><mi>u</mi><mo>,</mo><mo form="prefix" stretchy="false">[</mo><mi>J</mi><mi>P</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ [Ju]\longmapsto(Q_AJu,[AJu])
+       =(JQu,[JPu]).
+</annotation></semantics></math></span> This is the transport of the original
+map
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>Q</mi><mi>u</mi><mo>,</mo><mo form="prefix" stretchy="false">[</mo><mi>P</mi><mi>u</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[u]\mapsto(Qu,[Pu])</annotation></semantics></math></span>
+by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">J|_N</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒥</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">\mathcal J_Y</annotation></semantics></math></span>.
+The adjoint-side inverse is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>v</mi><mo>,</mo><mo form="prefix" stretchy="false">[</mo><mi>f</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">[</mo><mi>v</mi><mo>+</mo><mi>F</mi><mi>f</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">(v,[f])\mapsto[v+Ff]</annotation></semantics></math></span>,
+which is well defined because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>R</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">F(JR)=H_{\min}</annotation></semantics></math></span>.
+It is inverse by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>F</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">AF=I</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>A</mi></msub><mi>F</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">Q_AF=0</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><msub><mi>Q</mi><mi>A</mi></msub><mi>u</mi><mo>+</mo><mi>F</mi><mi>A</mi><mi>u</mi></mrow><annotation encoding="application/x-tex">u=Q_Au+FAu</annotation></semantics></math></span>;
+these are precisely the identities just proved. Moreover
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>J</mi><mi>R</mi><msup><mo form="postfix" stretchy="false">)</mo><mo>⟂</mo></msup><mo>=</mo><mi>J</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>R</mi><mo>⟂</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi><msup><mi>N</mi><mo>†</mo></msup><mo>=</mo><msub><mi>K</mi><mi>P</mi></msub></mrow><annotation encoding="application/x-tex">(JR)^\perp=J(R^\perp)=J N^\dagger=K_P</annotation></semantics></math></span>.
+For its proof,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>⟂</mo><mi>J</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">y\perp JR</annotation></semantics></math></span>
+if and only if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>y</mi><mo>⟂</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">Jy\perp R</annotation></semantics></math></span>
+by unitarity, and then use the kernel bijection (JM19)–(JM20). Thus the
+adjoint-side obstruction quotient retains the full
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+kernel of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math></span>;
+it is not reduced to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>.</p>
+<span id="AN03-JM-SECTION-6"></span><h2 id="the-exact-entire-mode-phases-and-graph-energies">6. The exact
+entire mode phases and graph energies</h2>
+<p>Retain the complete even and odd functions from <a href="../u006-graph-domains/graph-domain-note.html#eq-GM34">GM34</a> and
+<a href="../u006-graph-domains/graph-domain-note.html#eq-GM47">GM47</a>:
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>φ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><mfrac><mrow><munderover><mo>∏</mo><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>−</mo><mn>2</mn><mi>i</mi><mi>ε</mi><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mi>!</mi></mrow></mfrac><msubsup><mi>x</mi><mn>1</mn><mrow><mn>2</mn><mi>k</mi></mrow></msubsup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ψ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><mfrac><mrow><munderover><mo>∏</mo><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>h</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>!</mi></mrow></mfrac><msubsup><mi>x</mi><mn>1</mn><mrow><mn>2</mn><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ \varphi_z(x_1)=
+     \sum_{k=0}^\infty
+       \frac{\prod_{h=0}^{k-1}(z-2i\varepsilon h)}{(2k)!}x_1^{2k},
+ \qquad
+ \psi_z(x_1)=
+     \sum_{k=0}^\infty
+       \frac{\prod_{h=0}^{k-1}(z-i\varepsilon(2h+1))}{(2k+1)!}x_1^{2k+1}.
+</annotation></semantics></math></span> The empty products are one. Their
+complete compact convergence, every differentiated series, and actual
+graph-domain membership were proved in <a href="../u006-graph-domains/graph-domain-note.html#eq-GM34">GM34</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM40">GM40</a> and
+<a href="../u006-graph-domains/graph-domain-note.html#eq-GM47">GM47</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM48">GM48</a>.
+With
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>z</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>φ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>z</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>ψ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ u_z^{\rm e}=e^{zx_2}\varphi_z(x_1),\qquad
+ u_z^{\rm o}=e^{zx_2}\psi_z(x_1),
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>g</mi><mi>λ</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>λ</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>φ</mi><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>g</mi><mi>λ</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>λ</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>ψ</mi><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ g_\lambda^{\rm e}=e^{\lambda x_2}\varphi_{-\lambda-i\varepsilon}(x_1),\qquad
+ g_\lambda^{\rm o}=e^{\lambda x_2}\psi_{-\lambda-i\varepsilon}(x_1),
+</annotation></semantics></math></span> retain also the actual <a href="../u006-graph-domains/graph-domain-note.html#eq-GM42">GM42</a>
+parametrization
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>v</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>+</mo><mi>i</mi><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>φ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msubsup><mi>v</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>+</mo><mi>i</mi><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msub><mi>ψ</mi><mi>z</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ v_z^{\rm e}=e^{-(z+i\varepsilon)x_2}\varphi_z(x_1),\qquad
+ v_z^{\rm o}=e^{-(z+i\varepsilon)x_2}\psi_z(x_1).
+</annotation></semantics></math></span> The exact full-parameter transport is
+<span class="math display"><math display="block" id="eq-JM27" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msubsup><mi>v</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msubsup><mi>g</mi><mrow><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">e</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msubsup><mi>v</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msubsup><mi>g</mi><mrow><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">o</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><msubsup><mi>g</mi><mi>λ</mi><mi mathvariant="normal">e</mi></msubsup><mo>=</mo><msubsup><mi>u</mi><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">e</mi></msubsup><mo>,</mo><mspace width="2.0em"></mspace><mi>J</mi><msubsup><mi>g</mi><mi>λ</mi><mi mathvariant="normal">o</mi></msubsup><mo>=</mo><msubsup><mi>u</mi><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">o</mi></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM27)</mtext></mrow><annotation encoding="application/x-tex">
+ Ju_z^{\rm e}=v_z^{\rm e}=g_{-z-i\varepsilon}^{\rm e},\qquad
+ Ju_z^{\rm o}=v_z^{\rm o}=g_{-z-i\varepsilon}^{\rm o},\qquad
+ Jg_\lambda^{\rm e}=u_{-\lambda-i\varepsilon}^{\rm e},\qquad
+ Jg_\lambda^{\rm o}=u_{-\lambda-i\varepsilon}^{\rm o}.
+ \tag{JM27}
+</annotation></semantics></math></span> For example the even left side is
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mi>−</mi><mi>i</mi><mi>ε</mi><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><msup><mi>e</mi><mrow><mi>z</mi><mo form="prefix" stretchy="false">(</mo><mi>−</mi><msub><mi>x</mi><mn>2</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></msup><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mo accent="false">∞</mo></munderover><mfrac><mrow><munderover><mo>∏</mo><mrow><mi>h</mi><mo>=</mo><mn>0</mn></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo>−</mo><mn>2</mn><mi>i</mi><mi>ε</mi><mi>h</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mi>!</mi></mrow></mfrac><msubsup><mi>x</mi><mn>1</mn><mrow><mn>2</mn><mi>k</mi></mrow></msubsup><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ e^{-i\varepsilon x_2}e^{z(-x_2)}
+    \sum_{k=0}^\infty
+       \frac{\prod_{h=0}^{k-1}(z-2i\varepsilon h)}{(2k)!}x_1^{2k}.
+</annotation></semantics></math></span> Its full exponential is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><annotation encoding="application/x-tex">e^{(-z-i\varepsilon)x_2}</annotation></semantics></math></span>.
+At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>=</mo><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><annotation encoding="application/x-tex">\lambda=-z-i\varepsilon</annotation></semantics></math></span>,
+the complete even
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math></span>-coefficient
+is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>h</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>z</mi><mo>−</mo><mn>2</mn><mi>i</mi><mi>ε</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">-\lambda-i\varepsilon(2h+1)=z-2i\varepsilon h</annotation></semantics></math></span>.
+For the odd family its coefficient is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>λ</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>h</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mi>h</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-\lambda-i\varepsilon-i\varepsilon(2h+1)
+  =z-i\varepsilon(2h+1)</annotation></semantics></math></span>. Thus every
+product factor and factorial agrees with the respective original
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>
+series; no phase is discarded. The reverse formulas follow by the same
+parameter calculation or
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">J^2=I</annotation></semantics></math></span>.</p>
+<p>Exact
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+unitarity gives equality of the two mode
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+norms. The graph norms obey the more informative original-metric formula
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>g</mi><mrow><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">e</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ε</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>ε</mi><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">e</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>,</mo></mrow><annotation encoding="application/x-tex">
+ \|g_{-z-i\varepsilon}^{\rm e}\|_H^2
+    =\|u_z^{\rm e}\|_H^2+
+             (\varepsilon^2+2\varepsilon\operatorname{Im}z)\|u_z^{\rm e}\|_2^2,
+</annotation></semantics></math></span>
+<span class="math display"><math display="block" id="eq-JM28" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>g</mi><mrow><mi>−</mi><mi>z</mi><mo>−</mo><mi>i</mi><mi>ε</mi></mrow><mi mathvariant="normal">o</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mi>H</mi><mn>2</mn></msubsup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ε</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn><mi>ε</mi><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>u</mi><mi>z</mi><mi mathvariant="normal">o</mi></msubsup><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM28)</mtext></mrow><annotation encoding="application/x-tex">
+ \|g_{-z-i\varepsilon}^{\rm o}\|_H^2
+    =\|u_z^{\rm o}\|_H^2+
+             (\varepsilon^2+2\varepsilon\operatorname{Im}z)\|u_z^{\rm o}\|_2^2
+ \tag{JM28}
+</annotation></semantics></math></span> for the monomial metric <a href="../u006-graph-domains/graph-domain-note.html#eq-GM32">GM32</a>.
+Indeed
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mn>2</mn></msub><msub><mi>u</mi><mi>z</mi></msub><mo>=</mo><mi>−</mi><mi>i</mi><mi>z</mi><mspace width="0.167em"></mspace><msub><mi>u</mi><mi>z</mi></msub></mrow><annotation encoding="application/x-tex">D_2u_z=-iz\,u_z</annotation></semantics></math></span>
+in both families, so the cross term in (JM14) has real part
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">Re</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>i</mi><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>z</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">Im</mi><mo>⁡</mo></mrow><mi>z</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>u</mi><mi>z</mi></msub><msubsup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\operatorname{Re}(-iz)\|u_z\|_2^2=(\operatorname{Im}z)\|u_z\|_2^2</annotation></semantics></math></span>.
+Every other derivative term and both separate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>
+terms are unchanged. This proves the formulas, including when that
+correction is negative. Their full right sides remain nonnegative
+because they equal the actual squared graph norms with last derivative
+factor
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>z</mi><mo>+</mo><mi>i</mi><mi>ε</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">|z+i\varepsilon|^2</annotation></semantics></math></span>.
+No graph unitarity is inferred from the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>L</mi><mn>2</mn></msup><annotation encoding="application/x-tex">L^2</annotation></semantics></math></span>
+unitarity.</p>
+<p>Finally this comparison also transports the complete bounded solver
+choices proved in <a href="../u006-graph-domains/graph-domain-note.html#eq-GM58">GM58</a>–<a href="../u006-graph-domains/graph-domain-note.html#eq-GM64">GM64</a>. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>:</mo><mi>Y</mi><mo>→</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">G:Y\to H</annotation></semantics></math></span>
+satisfies
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mi>G</mi><mo>=</mo><msub><mi>I</mi><mi>Y</mi></msub></mrow><annotation encoding="application/x-tex">PG=I_Y</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mi>P</mi><mo>=</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">GP=I</annotation></semantics></math></span>
+on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><annotation encoding="application/x-tex">H_{\min}</annotation></semantics></math></span>,
+then
+<span class="math display"><math display="block" id="eq-JM29" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>A</mi></msub><mo>=</mo><mi>J</mi><mi>G</mi><mi>J</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>A</mi><msub><mi>G</mi><mi>A</mi></msub><mo>=</mo><msub><mi>I</mi><mi>Y</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>G</mi><mi>A</mi></msub><mi>A</mi><mo>=</mo><mi>I</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> on </mtext><mspace width="0.333em"></mspace></mrow><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><msub><mi>G</mi><mi>A</mi></msub><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>κ</mi><mi>β</mi></msub><mo form="postfix" stretchy="false">∥</mo><mi>G</mi><mo form="postfix" stretchy="false">∥</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(JM29)</mtext></mrow><annotation encoding="application/x-tex">
+ G_A=JGJ,\qquad
+ AG_A=I_Y,\qquad G_AA=I\text{ on }H_{\min},
+ \qquad \|G_A\|\leq\kappa_\beta\|G\|.
+ \tag{JM29}
+</annotation></semantics></math></span> The two identities follow by inserting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>P</mi></mrow><annotation encoding="application/x-tex">AJ=JP</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>A</mi><mo>=</mo><mi>P</mi><mi>J</mi></mrow><annotation encoding="application/x-tex">JA=PJ</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub><mo>=</mo><msub><mi>H</mi><mi mathvariant="normal">min</mi></msub></mrow><annotation encoding="application/x-tex">JH_{\min}=H_{\min}</annotation></semantics></math></span>;
+the norm bound uses
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>J</mi><annotation encoding="application/x-tex">J</annotation></semantics></math></span>’s
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+bound on the output and its exact unitary input norm. The same
+conjugation is the inverse correspondence and gives the inverse bound.
+At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>E</mi></mrow><annotation encoding="application/x-tex">G=E</annotation></semantics></math></span>
+it gives the already proved
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math></span>.</p>
+<p>If the original choice is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mi>E</mi><mo>+</mo><mi>L</mi><msub><mi>π</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">G=E+L\pi_R</annotation></semantics></math></span>,
+write
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mi>A</mi></msub><mo>=</mo><mi>F</mi><mo>+</mo><msub><mi>L</mi><mi>A</mi></msub><msub><mi>π</mi><mrow><mi>J</mi><mi>R</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>L</mi><mi>A</mi></msub><mo>=</mo><mi>J</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub><mspace width="0.167em"></mspace><mi>L</mi><mspace width="0.167em"></mspace><msubsup><mi mathvariant="script">𝒥</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><mo>:</mo><mi>Y</mi><mi>/</mi><mi>J</mi><mi>R</mi><mo>→</mo><msup><mi>N</mi><mo>†</mo></msup><mo>∩</mo><mi>H</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+ G_A=F+L_A\pi_{JR},\qquad
+ L_A=J|_N\,L\,\mathcal J_Y^{-1}:
+                   Y/JR\longrightarrow N^\dagger\cap H.
+</annotation></semantics></math></span> To verify this exact parameter formula,
+note that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>π</mi><mi>R</mi></msub><mi>J</mi><mo>=</mo><msubsup><mi mathvariant="script">𝒥</mi><mi>Y</mi><mrow><mi>−</mi><mn>1</mn></mrow></msubsup><msub><mi>π</mi><mrow><mi>J</mi><mi>R</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\pi_RJ=\mathcal J_Y^{-1}\pi_{JR}</annotation></semantics></math></span>,
+since both send
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>J</mi><mi>f</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[Jf]</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mi>/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">Y/R</annotation></semantics></math></span>.
+Substitution gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mi>G</mi><mi>J</mi><mo>=</mo><mi>J</mi><mi>E</mi><mi>J</mi><mo>+</mo><mi>J</mi><mi>L</mi><msub><mi>π</mi><mi>R</mi></msub><mi>J</mi></mrow><annotation encoding="application/x-tex">JGJ=JEJ+JL\pi_RJ</annotation></semantics></math></span>,
+exactly the displayed formula. Boundedness and its inverse use the
+isometry of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="script">𝒥</mi><mi>Y</mi></msub><annotation encoding="application/x-tex">\mathcal J_Y</annotation></semantics></math></span>
+and the two graph bounds of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">J|_N</annotation></semantics></math></span>.
+Thus the comparison retains the original full solver parameters and
+transports them to the actual graph-domain adjoint kernels; it does not
+replace either original operator or confuse a minimal realization with
+its Hilbert adjoint.</p>
+<p>The diagram accompanying this supplement labels both kernel bridges,
+the exact phase and reflection, and the original square’s trace
+transport. Its caption points to (JM4)–(JM5), (JM13)–(JM17), and
+(JM19)–(JM20). The graph-domain note supplies the complete earlier
+proofs. The <a href="../u006-graph-domains/source-use-ledger.json">bounded
+original-author TeX comparison</a> records the earlier reading coverage;
+this supplement makes no additional human-source reading or exhaustive
+literature claim.</p></article>
+<footer></footer></main></body></html>

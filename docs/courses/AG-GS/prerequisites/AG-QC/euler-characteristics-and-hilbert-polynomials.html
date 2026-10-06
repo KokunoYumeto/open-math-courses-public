@@ -1,0 +1,258 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Euler characteristics and Hilbert polynomials</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main style="max-width:72rem;margin:auto;padding:1rem"><nav><a href="../../index.html">Group schemes</a> · <a href="https://kokunoyumeto.github.io/open-math-courses-public/">Open Mathematics Courses</a></nav><h1 id="euler-characteristics-and-hilbert-polynomials">Euler characteristics and Hilbert polynomials</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).</em></p>
+<p>Individual cohomology groups can jump in a family. Their alternating sum is more stable. Twisting a coherent sheaf by powers of a line bundle turns this sum into a polynomial, and an ample line bundle makes its degree detect the dimension of the support. Flatness then preserves the polynomial through degenerations, including the small embedded pieces that a picture of the underlying curve can miss.</p>
+<p>We use <a href="proper-morphisms-and-coherent-direct-images.html">proper coherent direct images</a>, including coherent filtrations and extension of morphisms from an open set, and <a href="serres-theorems-on-projective-schemes.html">Serre's theorems</a>. The planned lessons <em>Tor and flat modules</em> and <em>Graded modules and Hilbert–Samuel functions</em>, in <em>Commutative algebra for geometry</em>, supply the module criteria for flatness and eventual graded Hilbert functions. We also use that course's <em>Krull dimension and Noether normalization</em>: a finite type domain over a field has the same dimension at every closed point [Stacks, Tag 00OS]. For a nonzerodivisor in the maximal ideal of a Noetherian local ring, quotienting lowers dimension by one [Tag 00KW]. These are dimension-theoretic prerequisites, distinct from the cohomological polynomial theorems proved here.</p>
+<h2 id="1-the-finite-alternating-sum">1. The finite alternating sum</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be proper over a field <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> coherent. Its cohomology groups are finite-dimensional by the preceding lesson. They vanish in sufficiently high degree: a finite affine cover has affine intersections, because <span class="math" data-tex="\(X\)">\(X\)</span> is separated, and its finite ordered Čech complex computes cohomology. Define</p>
+<span class="math math-display" data-tex="\[
+\chi(X,F)=\sum_{q\geq0}(-1)^q\dim_k H^q(X,F).
+\]">\[
+\chi(X,F)=\sum_{q\geq0}(-1)^q\dim_k H^q(X,F).
+\]</span>
+<p>Both finiteness statements matter. A formal alternating sum of infinite-dimensional spaces would not have this meaning. We write <span class="math" data-tex="\(\chi(F)\)">\(\chi(F)\)</span> when the scheme and base field are understood.</p>
+<p><strong>Proposition 1.1 (additivity).</strong> For a short exact sequence of coherent sheaves on a proper <span class="math" data-tex="\(k\)">\(k\)</span>-scheme,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow F&#x27;\longrightarrow F\longrightarrow F&#x27;&#x27;\longrightarrow0,
+\qquad \chi(F)=\chi(F&#x27;)+\chi(F&#x27;&#x27;).
+\]">\[
+0\longrightarrow F&#x27;\longrightarrow F\longrightarrow F&#x27;&#x27;\longrightarrow0,
+\qquad \chi(F)=\chi(F&#x27;)+\chi(F&#x27;&#x27;).
+\]</span>
+<p><strong>Proof.</strong> The associated long exact cohomology sequence is finite after its trailing zero terms are removed. In any finite exact sequence of finite-dimensional vector spaces, write each space's dimension as the dimension of the incoming image plus that of the outgoing image. The alternating sum cancels these image dimensions in pairs. Applied to the cohomology sequence, this is exactly the asserted identity. The same argument, or successive short exact sequences at the kernels, gives the alternating formula for any finite exact sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (proper pushforward).</strong> If <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> is a <span class="math" data-tex="\(k\)">\(k\)</span>-morphism between proper <span class="math" data-tex="\(k\)">\(k\)</span>-schemes and <span class="math" data-tex="\(G\)">\(G\)</span> is coherent on <span class="math" data-tex="\(Y\)">\(Y\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\chi(Y,G)=\sum_{q\geq0}(-1)^q\chi(X,R^qf_*G).
+\]">\[
+\chi(Y,G)=\sum_{q\geq0}(-1)^q\chi(X,R^qf_*G).
+\]</span>
+<p><strong>Proof.</strong> The morphism <span class="math" data-tex="\(f\)">\(f\)</span> is proper: its graph is closed in <span class="math" data-tex="\(Y\times_k X\)">\(Y\times_k X\)</span>, since <span class="math" data-tex="\(X\)">\(X\)</span> is separated, and the projection to <span class="math" data-tex="\(X\)">\(X\)</span> is the base change of the proper map <span class="math" data-tex="\(Y\to\operatorname{Spec}k\)">\(Y\to\operatorname{Spec}k\)</span>. Thus its higher direct images are coherent. Only finitely many are nonzero. Indeed, cover <span class="math" data-tex="\(X\)">\(X\)</span> by finitely many affines, cover each inverse image by finitely many affines, and take the maximum of their finite Čech bounds. Localization of cohomology identifies these computations with the restrictions of <span class="math" data-tex="\(R^qf_*G\)">\(R^qf_*G\)</span>.</p>
+<p>Leray gives a bounded spectral sequence of finite-dimensional vector spaces</p>
+<span class="math math-display" data-tex="\[
+E_2^{p,q}=H^p(X,R^qf_*G)\Longrightarrow H^{p+q}(Y,G).
+\]">\[
+E_2^{p,q}=H^p(X,R^qf_*G)\Longrightarrow H^{p+q}(Y,G).
+\]</span>
+<p>On each page, the differential raises total degree by one. Passing to its cohomology preserves the alternating sum in total degree, by the same image cancellation as in Proposition 1.1. On the limiting page, the terms of total degree <span class="math" data-tex="\(n\)">\(n\)</span> are the graded pieces of a finite filtration of <span class="math" data-tex="\(H^n(Y,G)\)">\(H^n(Y,G)\)</span>, whose dimensions sum to its dimension. Therefore the alternating sum on the second page equals <span class="math" data-tex="\(\chi(Y,G)\)">\(\chi(Y,G)\)</span>. Grouping that page by <span class="math" data-tex="\(q\)">\(q\)</span> proves the formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For later use, field extension preserves these numbers. A finite affine-cover complex for <span class="math" data-tex="\(F\)">\(F\)</span> tensors term by term with any extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> to become the complex for <span class="math" data-tex="\(F_K\)">\(F_K\)</span> on <span class="math" data-tex="\(X_K\)">\(X_K\)</span>. Since <span class="math" data-tex="\(K\)">\(K\)</span> is flat,</p>
+<span class="math math-display" data-tex="\[
+H^q(X_K,F_K)\cong H^q(X,F)\otimes_k K,
+\qquad \chi(X_K,F_K)=\chi(X,F).
+\]">\[
+H^q(X_K,F_K)\cong H^q(X,F)\otimes_k K,
+\qquad \chi(X_K,F_K)=\chi(X,F).
+\]</span>
+<p>This argument concerns flat extension of the field; an arbitrary change of the parameter ring will require the flatness argument in Section 4.</p>
+<h2 id="2-why-twisting-gives-a-polynomial">2. Why twisting gives a polynomial</h2>
+<p>A <strong>numerical polynomial</strong> is a polynomial in <span class="math" data-tex="\(\mathbf Q[T]\)">\(\mathbf Q[T]\)</span> taking integer values at all integers. Rational coefficients are necessary: <span class="math" data-tex="\(\binom{T+2}{2}\)">\(\binom{T+2}{2}\)</span> is integer-valued without lying in <span class="math" data-tex="\(\mathbf Z[T]\)">\(\mathbf Z[T]\)</span>. If a function <span class="math" data-tex="\(a:\mathbf Z\to\mathbf Z\)">\(a:\mathbf Z\to\mathbf Z\)</span> has first difference <span class="math" data-tex="\(a(n+1)-a(n)\)">\(a(n+1)-a(n)\)</span> given by a polynomial of degree at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, then <span class="math" data-tex="\(a\)">\(a\)</span> is given by a numerical polynomial of degree at most <span class="math" data-tex="\(d\)">\(d\)</span>. To see this, expand the difference in the basis <span class="math" data-tex="\(\binom{T}{j}\)">\(\binom{T}{j}\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\binom{T+1}{j+1}-\binom{T}{j+1}=\binom{T}{j},
+\]">\[
+\binom{T+1}{j+1}-\binom{T}{j+1}=\binom{T}{j},
+\]</span>
+<p>and choose the integration constant to match <span class="math" data-tex="\(a(0)\)">\(a(0)\)</span>. Equality follows forward and backward from the difference equation. Integer values of the resulting polynomial follow from its equality with <span class="math" data-tex="\(a\)">\(a\)</span>, including at negative integers.</p>
+<p><strong>Theorem 2.1 (polynomial Euler characteristic).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be proper over <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(L\)">\(L\)</span> invertible, and <span class="math" data-tex="\(F\)">\(F\)</span> coherent. There is a unique numerical polynomial <span class="math" data-tex="\(P_{F,L}\)">\(P_{F,L}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+P_{F,L}(n)=\chi(X,F\otimes L^n)\quad(n\in\mathbf Z).
+\]">\[
+P_{F,L}(n)=\chi(X,F\otimes L^n)\quad(n\in\mathbf Z).
+\]</span>
+<p>For <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>, its degree is at most <span class="math" data-tex="\(\dim\operatorname{Supp}F\)">\(\dim\operatorname{Supp}F\)</span>. For <span class="math" data-tex="\(F=0\)">\(F=0\)</span>, it is the zero polynomial.</p>
+<p><strong>Proof.</strong> Uniqueness follows because a nonzero polynomial has only finitely many roots. We prove existence and the degree bound by induction on support dimension. If the support has dimension zero, <span class="math" data-tex="\(F\)">\(F\)</span> is a sheaf on the closed scheme defined by its annihilator, which is zero-dimensional and of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>. This scheme is finite over <span class="math" data-tex="\(k\)">\(k\)</span>: its finitely many points are open, each local ring is Artinian, its residue field is finite over <span class="math" data-tex="\(k\)">\(k\)</span>, and its finite nilpotent filtration makes the ring finite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>. Equivalently this is the zero-dimensional case of Noether normalization. Every invertible module on each of these local Artinian rings is free of rank one. Thus twisting preserves the dimension of global sections, and higher cohomology is zero. The polynomial is constant.</p>
+<p>Now use the coherent filtration from the preceding lesson. Its factors are <span class="math" data-tex="\(i_*I\)">\(i_*I\)</span>, where <span class="math" data-tex="\(i:V\hookrightarrow X\)">\(i:V\hookrightarrow X\)</span> is integral and closed and <span class="math" data-tex="\(I\subset\mathcal O_V\)">\(I\subset\mathcal O_V\)</span> is a nonzero coherent ideal. Twisting is exact, closed pushforward preserves cohomology, and Euler characteristic is additive. It suffices to prove the assertion for <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>, whose dimension does not exceed that of the original support.</p>
+<p>At the generic point of <span class="math" data-tex="\(V\)">\(V\)</span>, choose a nonzero isomorphism between the one-dimensional vector spaces <span class="math" data-tex="\(I_\eta\)">\(I_\eta\)</span> and <span class="math" data-tex="\((I\otimes L)_\eta\)">\((I\otimes L)_\eta\)</span>. It defines an isomorphism on some dense open <span class="math" data-tex="\(U\)">\(U\)</span>. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the ideal of its closed complement. The extension lemma of the preceding lesson extends this map to</p>
+<span class="math math-display" data-tex="\[
+E=J^aI\longrightarrow I\otimes L
+\]">\[
+E=J^aI\longrightarrow I\otimes L
+\]</span>
+<p>for some <span class="math" data-tex="\(a\)">\(a\)</span>. There is also the inclusion <span class="math" data-tex="\(E\hookrightarrow I\)">\(E\hookrightarrow I\)</span>. Both maps are injective. For the extended map, its kernel is generically zero and is a subsheaf of the ideal <span class="math" data-tex="\(E\)">\(E\)</span> on an integral scheme; on an affine chart it is a torsion submodule of a submodule of a domain, hence zero. Both cokernels <span class="math" data-tex="\(Q,Q&#x27;\)">\(Q,Q&#x27;\)</span> have proper closed support in <span class="math" data-tex="\(V\)">\(V\)</span>, and consequently support dimension at most <span class="math" data-tex="\(\dim V-1\)">\(\dim V-1\)</span>. We have</p>
+<span class="math math-display" data-tex="\[
+0\to E\to I\to Q\to0,
+\qquad 0\to E\to I\otimes L\to Q&#x27;\to0.
+\]">\[
+0\to E\to I\to Q\to0,
+\qquad 0\to E\to I\otimes L\to Q&#x27;\to0.
+\]</span>
+<p>After tensoring with <span class="math" data-tex="\(L^n\)">\(L^n\)</span> and subtracting their Euler identities,</p>
+<span class="math math-display" data-tex="\[
+\chi(I\otimes L^{n+1})-\chi(I\otimes L^n)
+=\chi(Q&#x27;\otimes L^n)-\chi(Q\otimes L^n).
+\]">\[
+\chi(I\otimes L^{n+1})-\chi(I\otimes L^n)
+=\chi(Q&#x27;\otimes L^n)-\chi(Q\otimes L^n).
+\]</span>
+<p>The right side is a polynomial of degree at most <span class="math" data-tex="\(\dim V-1\)">\(\dim V-1\)</span> by induction. The difference argument above completes the proof, and additivity reassembles the filtration. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses all integer twists. Eventual agreement with a polynomial would be weaker. It also explains why ampleness is absent from existence: two lattices inside a common generic line produce a difference supported in smaller dimension. For the trivial line bundle on a positive-dimensional proper scheme, the function is constant, so degree equality cannot hold for arbitrary <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<h2 id="3-ampleness-detects-support-dimension">3. Ampleness detects support dimension</h2>
+<p><strong>Theorem 3.1 (degree and positive leading coefficient).</strong> If <span class="math" data-tex="\(L\)">\(L\)</span> is ample and <span class="math" data-tex="\(F\ne0\)">\(F\ne0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\deg P_{F,L}=\dim\operatorname{Supp}F,
+\]">\[
+\deg P_{F,L}=\dim\operatorname{Supp}F,
+\]</span>
+<p>and the leading coefficient is positive. This holds over every field.</p>
+<p><strong>Proof.</strong> A positive power <span class="math" data-tex="\(L^b\)">\(L^b\)</span> is very ample on the proper scheme, by the ample embedding prerequisite used in Serre's theorems. Since
+<span class="math" data-tex="\(P_{F,L^b}(n)=P_{F,L}(bn)\)">\(P_{F,L^b}(n)=P_{F,L}(bn)\)</span>, it is enough to prove the assertion for a very ample bundle, whose restrictions to closed subschemes are again very ample.</p>
+<p>Induct on <span class="math" data-tex="\(d=\dim\operatorname{Supp}F\)">\(d=\dim\operatorname{Supp}F\)</span>. In dimension zero the proof of Theorem 2.1 gives a positive constant: a nonzero module on a finite affine scheme has nonzero global sections. For <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, first consider <span class="math" data-tex="\(F=\mathcal O_V\)">\(F=\mathcal O_V\)</span> with <span class="math" data-tex="\(V\)">\(V\)</span> integral of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Embed <span class="math" data-tex="\(V\)">\(V\)</span> in a finite projective space using <span class="math" data-tex="\(L\)">\(L\)</span>. Choose a coordinate section <span class="math" data-tex="\(s\)">\(s\)</span> that is nonzero on <span class="math" data-tex="\(V\)">\(V\)</span>, and let <span class="math" data-tex="\(D\)">\(D\)</span> be its zero scheme. It is nonempty. Otherwise <span class="math" data-tex="\(V\)">\(V\)</span> would be contained in the affine coordinate chart and would itself be affine; its coordinate ring would be finite-dimensional by proper cohomology finiteness, forcing <span class="math" data-tex="\(\dim V=0\)">\(\dim V=0\)</span>.</p>
+<p>The section is regular on the integral scheme. Its vanishing support is a proper closed subset, so has dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Choose a closed point <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span>. On an affine neighborhood in <span class="math" data-tex="\(V\)">\(V\)</span>, the local ring at <span class="math" data-tex="\(x\)">\(x\)</span> has dimension <span class="math" data-tex="\(d\)">\(d\)</span> by the finite-type dimension theorem [Stacks, Tag 00OS]. The section is a nonzero element of its maximal ideal after trivializing <span class="math" data-tex="\(L\)">\(L\)</span>; the one-equation theorem [Tag 00KW] gives dimension <span class="math" data-tex="\(d-1\)">\(d-1\)</span> for its quotient. Hence <span class="math" data-tex="\(D\)">\(D\)</span> has dimension exactly <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. The regular multiplication sequence gives</p>
+<span class="math math-display" data-tex="\[
+0\to L^{n-1}\xrightarrow{s}L^n\to L^n|_D\to0,
+\qquad P_{\mathcal O_V,L}(n)-P_{\mathcal O_V,L}(n-1)=P_{\mathcal O_D,L|_D}(n).
+\]">\[
+0\to L^{n-1}\xrightarrow{s}L^n\to L^n|_D\to0,
+\qquad P_{\mathcal O_V,L}(n)-P_{\mathcal O_V,L}(n-1)=P_{\mathcal O_D,L|_D}(n).
+\]</span>
+<p>By induction the last polynomial has degree <span class="math" data-tex="\(d-1\)">\(d-1\)</span> and positive leading coefficient <span class="math" data-tex="\(c\)">\(c\)</span>. The first polynomial therefore has degree <span class="math" data-tex="\(d\)">\(d\)</span> and leading coefficient <span class="math" data-tex="\(c/d&gt;0\)">\(c/d&gt;0\)</span>.</p>
+<p>For a nonzero ideal <span class="math" data-tex="\(I\subset\mathcal O_V\)">\(I\subset\mathcal O_V\)</span>, the quotient <span class="math" data-tex="\(\mathcal O_V/I\)">\(\mathcal O_V/I\)</span> has smaller-dimensional support. Additivity and Theorem 2.1 show that <span class="math" data-tex="\(P_I\)">\(P_I\)</span> has the same top term as <span class="math" data-tex="\(P_{\mathcal O_V}\)">\(P_{\mathcal O_V}\)</span>. Finally filter an arbitrary <span class="math" data-tex="\(F\)">\(F\)</span> into ideal factors on integral closed subschemes as before. Their supports have union <span class="math" data-tex="\(\operatorname{Supp}F\)">\(\operatorname{Supp}F\)</span>, so at least one has dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Every factor of dimension <span class="math" data-tex="\(d\)">\(d\)</span> has positive leading coefficient, and all other factors contribute lower-degree polynomials. Their sum has positive coefficient in degree <span class="math" data-tex="\(d\)">\(d\)</span>. This proves the assertion. No extension to an infinite field was needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On <span class="math" data-tex="\(\mathbf P^N_k\)">\(\mathbf P^N_k\)</span> with <span class="math" data-tex="\(L=\mathcal O(1)\)">\(L=\mathcal O(1)\)</span>, write <span class="math" data-tex="\(P_F=P_{F,L}\)">\(P_F=P_{F,L}\)</span> and call it the <strong>Hilbert polynomial</strong>. Serre vanishing gives</p>
+<span class="math math-display" data-tex="\[
+P_F(n)=\dim_k H^0(\mathbf P^N_k,F(n))\quad(n\gg0).
+\]">\[
+P_F(n)=\dim_k H^0(\mathbf P^N_k,F(n))\quad(n\gg0).
+\]</span>
+<p>The finitely generated graded module</p>
+<span class="math math-display" data-tex="\[
+\Gamma_{\geq0}(F)=\bigoplus_{n\geq0}H^0(\mathbf P^N_k,F(n))
+\]">\[
+\Gamma_{\geq0}(F)=\bigoplus_{n\geq0}H^0(\mathbf P^N_k,F(n))
+\]</span>
+<p>therefore has graded Hilbert polynomial <span class="math" data-tex="\(P_F\)">\(P_F\)</span>, in the convention of <em>Graded modules and Hilbert–Samuel functions</em>. A negative-degree truncation changes no eventual graded Hilbert function. If <span class="math" data-tex="\(F=\widetilde M\)">\(F=\widetilde M\)</span> for a finite graded module <span class="math" data-tex="\(M\)">\(M\)</span>, the tail-recovery theorem in Serre's lesson identifies <span class="math" data-tex="\(M_n\)">\(M_n\)</span> with <span class="math" data-tex="\(H^0(F(n))\)">\(H^0(F(n))\)</span> for sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, so its Hilbert polynomial is the same. None of these assertions identifies the low-degree Hilbert function with <span class="math" data-tex="\(P_F\)">\(P_F\)</span>.</p>
+<p>The argument also gives the familiar multiplicity description. If <span class="math" data-tex="\(d=\dim\operatorname{Supp}F\)">\(d=\dim\operatorname{Supp}F\)</span>, its degree-<span class="math" data-tex="\(d\)">\(d\)</span> coefficient is</p>
+<span class="math math-display" data-tex="\[
+\sum_{\dim V_i=d}\ell_{\mathcal O_{X,\eta_i}}(F_{\eta_i})\,
+[n^d]P_{\mathcal O_{V_i},L}(n).
+\]">\[
+\sum_{\dim V_i=d}\ell_{\mathcal O_{X,\eta_i}}(F_{\eta_i})\,
+[n^d]P_{\mathcal O_{V_i},L}(n).
+\]</span>
+<p>Indeed localizing the coherent filtration at each generic point counts its ideal factors as length-one residue-field factors; smaller supports disappear. All generic lengths here are finite. Thus embedded components of smaller dimension cannot alter the top term, though they can alter lower terms.</p>
+<h2 id="4-flat-projective-families">4. Flat projective families</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be Noetherian, <span class="math" data-tex="\(X\hookrightarrow\mathbf P^N_S\)">\(X\hookrightarrow\mathbf P^N_S\)</span> closed, and <span class="math" data-tex="\(F\)">\(F\)</span> coherent on <span class="math" data-tex="\(X\)">\(X\)</span> and flat over <span class="math" data-tex="\(S\)">\(S\)</span>. Write <span class="math" data-tex="\(F_s\)">\(F_s\)</span> for its pullback to the fiber over <span class="math" data-tex="\(s\)">\(s\)</span>, and use the restricted <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> for its Hilbert polynomial.</p>
+<p><strong>Lemma 4.1 (the high-twist flat complex).</strong> Locally on <span class="math" data-tex="\(S\)">\(S\)</span>, there is an integer <span class="math" data-tex="\(m_0\)">\(m_0\)</span> such that for every <span class="math" data-tex="\(m\geq m_0\)">\(m\geq m_0\)</span>, the module <span class="math" data-tex="\(H^0(X,F(m))\)">\(H^0(X,F(m))\)</span> is finite locally free and commutes with every base change. All higher cohomology of these twists is zero after every base change.</p>
+<p><strong>Proof.</strong> Work over <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span>. Push <span class="math" data-tex="\(F\)">\(F\)</span> to projective space, and form its finite ordered Čech complex <span class="math" data-tex="\(C^\bullet(m)\)">\(C^\bullet(m)\)</span> on the <span class="math" data-tex="\(N+1\)">\(N+1\)</span> standard affine charts. This pushforward is still flat over <span class="math" data-tex="\(A\)">\(A\)</span>: its stalks on <span class="math" data-tex="\(X\)">\(X\)</span> are the original stalks, and its other stalks are zero. On any affine intersection, the section module is <span class="math" data-tex="\(A\)">\(A\)</span>-flat. In detail, tensor an injection of <span class="math" data-tex="\(A\)">\(A\)</span>-modules with the sheaf. Stalkwise flatness preserves injectivity; taking sections on the affine preserves this exact sequence of quasi-coherent sheaves. This is precisely the module criterion for flatness. Thus all terms of <span class="math" data-tex="\(C^\bullet(m)\)">\(C^\bullet(m)\)</span> are flat, although they need not be finite over <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Relative Serre vanishing supplies <span class="math" data-tex="\(m_0\)">\(m_0\)</span> with <span class="math" data-tex="\(H^q(C^\bullet(m))=0\)">\(H^q(C^\bullet(m))=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> and <span class="math" data-tex="\(m\geq m_0\)">\(m\geq m_0\)</span>. The degree-zero cohomology is finite by projective finiteness. A bounded complex of flat modules concentrated in nonnegative degrees and exact in positive degrees has flat degree-zero cohomology, and remains exact in positive degrees after tensoring with any module. Here is the needed argument. At the last degree <span class="math" data-tex="\(r\)">\(r\)</span>, the map <span class="math" data-tex="\(C^{r-1}\to C^r\)">\(C^{r-1}\to C^r\)</span> is surjective. Its kernel is flat, since both the middle and quotient modules are flat. Moving downward, put <span class="math" data-tex="\(Z^q=\ker(C^q\to C^{q+1})\)">\(Z^q=\ker(C^q\to C^{q+1})\)</span>. Exactness gives surjections <span class="math" data-tex="\(C^{q-1}\to Z^q\)">\(C^{q-1}\to Z^q\)</span>, and the sequences</p>
+<span class="math math-display" data-tex="\[
+0\to Z^{q-1}\to C^{q-1}\to Z^q\to0
+\]">\[
+0\to Z^{q-1}\to C^{q-1}\to Z^q\to0
+\]</span>
+<p>show inductively that every <span class="math" data-tex="\(Z^q\)">\(Z^q\)</span>, including <span class="math" data-tex="\(Z^0=H^0\)">\(Z^0=H^0\)</span>, is flat. A short exact sequence with flat quotient remains exact under every tensor product, so these same sequences prove the claimed tensor assertion. The case of a complex with only <span class="math" data-tex="\(C^0\)">\(C^0\)</span> is immediate.</p>
+<p>A finite module over Noetherian <span class="math" data-tex="\(A\)">\(A\)</span> is finitely presented, and a finitely presented flat module is locally free, by <em>Tor and flat modules</em>. For an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, the base-changed standard cover has section complex <span class="math" data-tex="\(C^\bullet(m)\otimes_A B\)">\(C^\bullet(m)\otimes_A B\)</span>, by the affine module/sheaf correspondence. The tensor assertion therefore proves</p>
+<span class="math math-display" data-tex="\[
+H^0(X,F(m))\otimes_A B\cong H^0(X_B,F_B(m)),
+\qquad H^q(X_B,F_B(m))=0\ (q&gt;0).
+\]">\[
+H^0(X,F(m))\otimes_A B\cong H^0(X_B,F_B(m)),
+\qquad H^q(X_B,F_B(m))=0\ (q&gt;0).
+\]</span>
+<p>These identities localize on an arbitrary base change, proving the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (constancy in a flat projective family).</strong> The function <span class="math" data-tex="\(s\mapsto P_{F_s}\in\mathbf Q[T]\)">\(s\mapsto P_{F_s}\in\mathbf Q[T]\)</span> is locally constant.</p>
+<p><strong>Proof.</strong> Over the affine neighborhood above, choose the <span class="math" data-tex="\(N+1\)">\(N+1\)</span> consecutive integers <span class="math" data-tex="\(m_0,\ldots,m_0+N\)">\(m_0,\ldots,m_0+N\)</span>. Lemma 4.1 identifies the value of the fiber polynomial at each of them with the rank of a finite locally free module at <span class="math" data-tex="\(s\)">\(s\)</span>. These finitely many rank functions are locally constant. Every fiber polynomial has degree at most <span class="math" data-tex="\(N\)">\(N\)</span>, by Theorem 2.1, so its values at these <span class="math" data-tex="\(N+1\)">\(N+1\)</span> distinct integers determine it by polynomial interpolation. Intersecting the finitely many neighborhoods on which the ranks are constant proves local constancy of the whole polynomial. In particular <span class="math" data-tex="\(\chi(X_s,F_s)=P_{F_s}(0)\)">\(\chi(X_s,F_s)=P_{F_s}(0)\)</span> is locally constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Čech terms in this proof can be infinite modules. Their flatness, boundedness and high-twist exactness suffice; replacing them by finite modules without construction would leave a gap. A finite complex controlling all twists and all cohomological degrees is developed in the next lesson.</p>
+<h2 id="5-curves-and-a-conic-degeneration">5. Curves and a conic degeneration</h2>
+<p>For a nonzero homogeneous equation <span class="math" data-tex="\(f\)">\(f\)</span> of degree <span class="math" data-tex="\(e\geq1\)">\(e\geq1\)</span>, the plane curve <span class="math" data-tex="\(C=V(f)\subset\mathbf P^2_k\)">\(C=V(f)\subset\mathbf P^2_k\)</span> has</p>
+<span class="math math-display" data-tex="\[
+0\to\mathcal O(n-e)\xrightarrow{f}\mathcal O(n)\to\mathcal O_C(n)\to0.
+\]">\[
+0\to\mathcal O(n-e)\xrightarrow{f}\mathcal O(n)\to\mathcal O_C(n)\to0.
+\]</span>
+<p>The projective-space calculation gives <span class="math" data-tex="\(\chi(\mathcal O(n))=\binom{n+2}{2}\)">\(\chi(\mathcal O(n))=\binom{n+2}{2}\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, using the polynomial meaning of the binomial coefficient. Thus</p>
+<span class="math math-display" data-tex="\[
+P_C(n)=\binom{n+2}{2}-\binom{n-e+2}{2}
+=en-\frac{e(e-3)}2.
+\]">\[
+P_C(n)=\binom{n+2}{2}-\binom{n-e+2}{2}
+=en-\frac{e(e-3)}2.
+\]</span>
+<p>We use the arithmetic genus convention <span class="math" data-tex="\(p_a(C)=1-\chi(C,\mathcal O_C)\)">\(p_a(C)=1-\chi(C,\mathcal O_C)\)</span>, so <span class="math" data-tex="\(p_a(C)=(e-1)(e-2)/2\)">\(p_a(C)=(e-1)(e-2)/2\)</span>. Smoothness and irreducibility are unnecessary for this calculation. For a smooth geometrically connected curve it agrees with the dimension of <span class="math" data-tex="\(H^1(\mathcal O_C)\)">\(H^1(\mathcal O_C)\)</span>; for disconnected or nonreduced curves the Euler definition remains the convention.</p>
+<p>The cubic Veronese embedding of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> gives a twisted cubic <span class="math" data-tex="\(T\subset\mathbf P^3\)">\(T\subset\mathbf P^3\)</span>, with <span class="math" data-tex="\(\mathcal O_T(1)\cong\mathcal O_{\mathbf P^1}(3)\)">\(\mathcal O_T(1)\cong\mathcal O_{\mathbf P^1}(3)\)</span>. Consequently <span class="math" data-tex="\(P_T(n)=3n+1\)">\(P_T(n)=3n+1\)</span>. Two skew lines are a disjoint union of two copies of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, each of degree one, and have polynomial <span class="math" data-tex="\(2n+2\)">\(2n+2\)</span>. Two intersecting reduced lines instead have <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span>: the exact sequence gluing their functions subtracts the one-dimensional intersection point. Their support pictures alone do not specify the constant term.</p>
+<p>Consider over <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span> the homogeneous algebra</p>
+<span class="math math-display" data-tex="\[
+B=A[x,y,z]/(xy-tz^2),\qquad \mathcal C=\operatorname{Proj}B.
+\]">\[
+B=A[x,y,z]/(xy-tz^2),\qquad \mathcal C=\operatorname{Proj}B.
+\]</span>
+<p>It is flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Order monomials lexicographically with <span class="math" data-tex="\(x&gt;y&gt;z\)">\(x&gt;y&gt;z\)</span>. The relation is monic with leading monomial <span class="math" data-tex="\(xy\)">\(xy\)</span>; division leaves a unique <span class="math" data-tex="\(A\)">\(A\)</span>-linear combination of monomials not divisible by <span class="math" data-tex="\(xy\)">\(xy\)</span>. Uniqueness follows since a nonzero multiple of the relation has leading monomial divisible by <span class="math" data-tex="\(xy\)">\(xy\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is free over <span class="math" data-tex="\(A\)">\(A\)</span>. Its homogeneous localizations are flat, and their degree-zero summands are flat, so the affine charts of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> are flat as well. Every fiber is a plane conic and has <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span>, including the special fiber <span class="math" data-tex="\(xy=0\)">\(xy=0\)</span>, the two intersecting lines. The total family preserves the scheme structure at their intersection.</p>
+<p><img src="assets/euler-characteristics-and-hilbert-polynomials/Conics-605301AF2C9DC7B20C7A9851550BB4AAD6E5216E126948075F9317EC58070FCC.png" alt="Real affine charts of the conic family at t=-1, 0, and 1" class="course-figure" width="928" height="896" style="max-width:100%;height:auto" loading="lazy" decoding="async" data-asset-id="Conics" data-asset-sha256="605301AF2C9DC7B20C7A9851550BB4AAD6E5216E126948075F9317EC58070FCC"></p>
+<p><em>Figure 1. The real charts z=1 of xy=tz², in the window <span class="math" data-tex="\(-2.2\le x,y\le2.2\)">\(-2.2\le x,y\le2.2\)</span>. The red fiber t=0 consists of the two coordinate axes. Points at infinity are omitted; this drawing shows the real support, while the equations and flatness proof specify the scheme. Every projective fiber has Hilbert polynomial 2n+1.</em></p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (easy: plane curves).</strong> Compute the polynomial and arithmetic genus of a plane curve of degree <span class="math" data-tex="\(e\)">\(e\)</span>, and decide whether a plane cubic can be a flat limit of twisted cubics as a reduced subscheme of <span class="math" data-tex="\(\mathbf P^3\)">\(\mathbf P^3\)</span>.</p>
+<p><strong>Solution.</strong> The hypersurface sequence gives <span class="math" data-tex="\(P(n)=en-e(e-3)/2\)">\(P(n)=en-e(e-3)/2\)</span> and <span class="math" data-tex="\(p_a=(e-1)(e-2)/2\)">\(p_a=(e-1)(e-2)/2\)</span>. A plane cubic has <span class="math" data-tex="\(3n\)">\(3n\)</span>, whereas a twisted cubic has <span class="math" data-tex="\(3n+1\)">\(3n+1\)</span>. Theorem 4.2 excludes a flat family with precisely these two fibers. It leaves open a limit whose underlying curve is a plane cubic and whose structure sheaf has an additional length-one contribution; Exercise 6.5 constructs it.</p>
+<p><strong>Exercise 6.2 (easy: polynomial additivity).</strong> Given <span class="math" data-tex="\(0\to F&#x27;\to F\to F&#x27;&#x27;\to0\)">\(0\to F&#x27;\to F\to F&#x27;&#x27;\to0\)</span> on a proper scheme with a fixed invertible <span class="math" data-tex="\(L\)">\(L\)</span>, prove additivity of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and of <span class="math" data-tex="\(P_{F,L}\)">\(P_{F,L}\)</span>. Does support dimension itself add?</p>
+<p><strong>Solution.</strong> The finite long cohomology sequence proves Euler additivity. Tensoring by each <span class="math" data-tex="\(L^n\)">\(L^n\)</span> preserves exactness, so the three polynomial values satisfy additivity at every integer; polynomial uniqueness gives <span class="math" data-tex="\(P_F=P_{F&#x27;}+P_{F&#x27;&#x27;}\)">\(P_F=P_{F&#x27;}+P_{F&#x27;&#x27;}\)</span>. Supports satisfy <span class="math" data-tex="\(\operatorname{Supp}F=\operatorname{Supp}F&#x27;\cup\operatorname{Supp}F&#x27;&#x27;\)">\(\operatorname{Supp}F=\operatorname{Supp}F&#x27;\cup\operatorname{Supp}F&#x27;&#x27;\)</span>, so their dimensions take the maximum, rather than the sum. For ample <span class="math" data-tex="\(L\)">\(L\)</span>, positivity of leading coefficients makes this maximum consistent with the polynomial degree.</p>
+<p><strong>Exercise 6.3 (medium: cubic and skew lines).</strong> Compute the Hilbert polynomials of a twisted cubic and of two skew lines directly from their parametrizations and components.</p>
+<p><strong>Solution.</strong> The complete degree-three linear system on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> gives <span class="math" data-tex="\([s:u]\mapsto[s^3:s^2u:su^2:u^3]\)">\([s:u]\mapsto[s^3:s^2u:su^2:u^3]\)</span>. On the first chart the ratios are <span class="math" data-tex="\(1,a,a^2,a^3\)">\(1,a,a^2,a^3\)</span>, and on the last they are <span class="math" data-tex="\(b^3,b^2,b,1\)">\(b^3,b^2,b,1\)</span>; these recover the two affine charts of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. The pulled-back twist is <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span>, so projective-line cohomology gives <span class="math" data-tex="\(\chi(\mathcal O(3n))=3n+1\)">\(\chi(\mathcal O(3n))=3n+1\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. Skew lines are disjoint and their function sheaf is the direct sum of the two component pushforwards, each with polynomial <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Their sum is <span class="math" data-tex="\(2n+2\)">\(2n+2\)</span>.</p>
+<p><strong>Exercise 6.4 (medium: conic fibers).</strong> Verify flatness and the fiber polynomial for <span class="math" data-tex="\(xy=tz^2\)">\(xy=tz^2\)</span>, including <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p><strong>Solution.</strong> The monic relation gives the free standard-monomial basis of Section 5, proving flatness on the projective charts. Its degree-<span class="math" data-tex="\(n\)">\(n\)</span> basis, for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, consists of <span class="math" data-tex="\(x^az^{n-a}\)">\(x^az^{n-a}\)</span>, <span class="math" data-tex="\(0\leq a\leq n\)">\(0\leq a\leq n\)</span>, and <span class="math" data-tex="\(y^bz^{n-b}\)">\(y^bz^{n-b}\)</span>, <span class="math" data-tex="\(1\leq b\leq n\)">\(1\leq b\leq n\)</span>. It has <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span> elements independently of <span class="math" data-tex="\(t\)">\(t\)</span>. The hypersurface Euler calculation agrees with this eventual Hilbert function. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the two lines meet at one point, so their Euler polynomials add as <span class="math" data-tex="\((n+1)+(n+1)-1=2n+1\)">\((n+1)+(n+1)-1=2n+1\)</span>.</p>
+<p><strong>Exercise 6.5 (hard: the embedded point in a cubic limit).</strong> In <span class="math" data-tex="\(k[t,X,Y,Z,W]\)">\(k[t,X,Y,Z,W]\)</span>, all four projective variables having degree one and <span class="math" data-tex="\(t\)">\(t\)</span> degree zero, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g_1&amp;=XW-tY^2,&amp;g_2&amp;=YW+tX^2-tYZ,\\
+g_3&amp;=W^2-tWZ+t^2XY,&amp;g_4&amp;=X^3+Y^3-XYZ.
+\end{aligned}
+\]">\[
+\begin{aligned}
+g_1&amp;=XW-tY^2,&amp;g_2&amp;=YW+tX^2-tYZ,\\
+g_3&amp;=W^2-tWZ+t^2XY,&amp;g_4&amp;=X^3+Y^3-XYZ.
+\end{aligned}
+\]</span>
+<p>Show that the projective family defined by these equations is flat, its nonzero fibers are twisted cubics, and its zero fiber has a nodal plane cubic and a length-one embedded point.</p>
+<p><strong>Solution.</strong> Use lexicographic order <span class="math" data-tex="\(W&gt;X&gt;Y&gt;Z\)">\(W&gt;X&gt;Y&gt;Z\)</span>, treating <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> as the coefficient ring. The leading monomials are <span class="math" data-tex="\(XW,YW,W^2,X^3\)">\(XW,YW,W^2,X^3\)</span>, all with coefficient one. These polynomials form a monic Gröbner basis over this ring. The pairs with relatively prime leading monomials reduce to zero by the product criterion; the four remaining pairs reduce by the first four identities below, in which each right-hand product has leading monomial strictly below the corresponding common multiple:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Yg_1-Xg_2&amp;=-t g_4,\\
+Wg_1-Xg_3&amp;=-tYg_2+tZg_1,\\
+Wg_2-Yg_3&amp;=tXg_1,\\
+X^2g_1-Wg_4&amp;=-Y^2g_2+YZg_1,\\
+X^3g_3-W^2g_4&amp;=(XYZ-Y^3)g_3-tWZg_4+t^2XYg_4.
+\end{aligned}
+\]">\[
+\begin{aligned}
+Yg_1-Xg_2&amp;=-t g_4,\\
+Wg_1-Xg_3&amp;=-tYg_2+tZg_1,\\
+Wg_2-Yg_3&amp;=tXg_1,\\
+X^2g_1-Wg_4&amp;=-Y^2g_2+YZg_1,\\
+X^3g_3-W^2g_4&amp;=(XYZ-Y^3)g_3-tWZg_4+t^2XYg_4.
+\end{aligned}
+\]</span>
+<p>The last pair also has relatively prime leading monomials, but its displayed reduction checks it explicitly. The only other pair, <span class="math" data-tex="\(g_2,g_4\)">\(g_2,g_4\)</span>, is relatively prime. To justify the basis criterion, choose an expression of an ideal element with smallest possible maximal leading monomial. If leading terms cancel, the corresponding pair identity replaces that cancellation by terms with smaller leading monomials; pairs with relatively prime leading monomials have the elementary product reduction. Thus a nonzero ideal element has leading monomial divisible by one of the four displayed leading monomials. Division then gives existence and uniqueness of a remainder outside that monomial ideal. Monic division therefore makes the monomials outside <span class="math" data-tex="\((XW,YW,W^2,X^3)\)">\((XW,YW,W^2,X^3)\)</span> a free <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>-basis of the quotient. This proves flatness of the homogeneous algebra and hence of its projective charts, by localization and degree-zero summands.</p>
+<p>For <span class="math" data-tex="\(t=a\ne0\)">\(t=a\ne0\)</span>, set <span class="math" data-tex="\(U=Z-W/a\)">\(U=Z-W/a\)</span>, <span class="math" data-tex="\(V=X\)">\(V=X\)</span>, <span class="math" data-tex="\(T=Y\)">\(T=Y\)</span>, <span class="math" data-tex="\(Q=W/a\)">\(Q=W/a\)</span>. The first three relations become the standard twisted-cubic relations</p>
+<span class="math math-display" data-tex="\[
+V^2-UT=0,\quad T^2-VQ=0,\quad VT-UQ=0.
+\]">\[
+V^2-UT=0,\quad T^2-VQ=0,\quad VT-UQ=0.
+\]</span>
+<p>The fourth follows from them, since
+<span class="math math-display" data-tex="\[
+V(V^2-UT)+T(T^2-VQ)=V^3+T^3-VT(U+Q). 
+\]">\[
+V(V^2-UT)+T(T^2-VQ)=V^3+T^3-VT(U+Q). 
+\]</span> The charts <span class="math" data-tex="\(U\ne0\)">\(U\ne0\)</span> and <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span> cover their projective scheme: if both vanish at a homogeneous prime, the equations force <span class="math" data-tex="\(V,T\)">\(V,T\)</span> to vanish too. The first chart has coordinate ring <span class="math" data-tex="\(k[V/U]\)">\(k[V/U]\)</span>, where <span class="math" data-tex="\(T/U=(V/U)^2\)">\(T/U=(V/U)^2\)</span>, <span class="math" data-tex="\(Q/U=(V/U)^3\)">\(Q/U=(V/U)^3\)</span>; the other chart gives the reciprocal parameter. Thus the scheme is the cubic Veronese <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. In the original coordinates the parametrization is</p>
+<span class="math math-display" data-tex="\[
+[s:u]\longmapsto[s^2u:su^2:s^3+u^3:a u^3].
+\]">\[
+[s:u]\longmapsto[s^2u:su^2:s^3+u^3:a u^3].
+\]</span>
+<p>At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the ideal is</p>
+<span class="math math-display" data-tex="\[
+(XW,YW,W^2,X^3+Y^3-XYZ).
+\]">\[
+(XW,YW,W^2,X^3+Y^3-XYZ).
+\]</span>
+<p>The reduced curve lies in <span class="math" data-tex="\(W=0\)">\(W=0\)</span> and has equation <span class="math" data-tex="\(F=X^3+Y^3-XYZ\)">\(F=X^3+Y^3-XYZ\)</span>. This cubic is integral: in <span class="math" data-tex="\(k[X,Y][Z]\)">\(k[X,Y][Z]\)</span> it is primitive and linear in <span class="math" data-tex="\(Z\)">\(Z\)</span>, with relatively prime coefficients <span class="math" data-tex="\(-XY\)">\(-XY\)</span> and <span class="math" data-tex="\(X^3+Y^3\)">\(X^3+Y^3\)</span>, and hence is irreducible. At <span class="math" data-tex="\(P=[0:0:1:0]\)">\(P=[0:0:1:0]\)</span>, its affine equation is <span class="math" data-tex="\(x^3+y^3-xy\)">\(x^3+y^3-xy\)</span>, with two distinct tangent lines <span class="math" data-tex="\(x=0\)">\(x=0\)</span> and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Its derivatives show there is no other singular point, in every characteristic. It is therefore a nodal plane cubic.</p>
+<p>Let <span class="math" data-tex="\(B_0\)">\(B_0\)</span> be the special homogeneous ring. Killing <span class="math" data-tex="\(W\)">\(W\)</span> gives the curve ring <span class="math" data-tex="\(k[X,Y,Z]/(F)\)">\(k[X,Y,Z]/(F)\)</span>. The kernel <span class="math" data-tex="\((W)\)">\((W)\)</span> has basis <span class="math" data-tex="\(WZ^j\)">\(WZ^j\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, and as a graded module is <span class="math" data-tex="\(k[Z](-1)\)">\(k[Z](-1)\)</span>, annihilated by <span class="math" data-tex="\(X,Y,W\)">\(X,Y,W\)</span>. After sheafification it is a length-one skyscraper at <span class="math" data-tex="\(P\)">\(P\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+0\to k(P)\to\mathcal O_{\operatorname{Proj}B_0}\to\mathcal O_C\to0.
+\]">\[
+0\to k(P)\to\mathcal O_{\operatorname{Proj}B_0}\to\mathcal O_C\to0.
+\]</span>
+<p>It is embedded rather than an isolated point: its prime <span class="math" data-tex="\((X,Y,W)\)">\((X,Y,W)\)</span> is the annihilator of the nonzero element <span class="math" data-tex="\(W\)">\(W\)</span>, and properly contains the curve's minimal prime <span class="math" data-tex="\((W,F)\)">\((W,F)\)</span>. The special polynomial is therefore <span class="math" data-tex="\(3n+1\)">\(3n+1\)</span>. Counting standard monomials confirms this: for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, those without <span class="math" data-tex="\(W\)">\(W\)</span> contribute <span class="math" data-tex="\(3n\)">\(3n\)</span>, and <span class="math" data-tex="\(WZ^{n-1}\)">\(WZ^{n-1}\)</span> contributes one. The embedded structure records exactly the constant term that a reduced plane cubic would lose.</p>
+<p><strong>Exercise 6.6 (challenging: jumping groups, constant sum).</strong> On <span class="math" data-tex="\(\mathbf P^1_{k[t]}\)">\(\mathbf P^1_{k[t]}\)</span>, take the extension of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> by <span class="math" data-tex="\(\mathcal O(-2)\)">\(\mathcal O(-2)\)</span> whose class in <span class="math" data-tex="\(H^1(\mathcal O(-2))=k[t]\)">\(H^1(\mathcal O(-2))=k[t]\)</span> is <span class="math" data-tex="\(t\)">\(t\)</span>. Compute the cohomology of each fiber, and compare its Euler polynomial.</p>
+<p><strong>Solution.</strong> The usual Čech extension construction gives a vector bundle <span class="math" data-tex="\(E\)">\(E\)</span>; its exact sequence has locally free quotient and kernel, so it is locally split as a sequence of sheaves and flat over the base. On the fiber <span class="math" data-tex="\(t=a\)">\(t=a\)</span>, the connecting homomorphism <span class="math" data-tex="\(H^0(\mathcal O)\to H^1(\mathcal O(-2))\)">\(H^0(\mathcal O)\to H^1(\mathcal O(-2))\)</span> is multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>, by the torsor/extension cocycle description. The long exact sequence shows <span class="math" data-tex="\(h^0(E_a)=h^1(E_a)=0\)">\(h^0(E_a)=h^1(E_a)=0\)</span> if <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, and both are one if <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Their alternating sum is always zero. For all integer twists, additivity gives <span class="math" data-tex="\(P_{E_a}(n)=(n+1)+(n-1)=2n\)">\(P_{E_a}(n)=(n+1)+(n-1)=2n\)</span>, independent of <span class="math" data-tex="\(a\)">\(a\)</span>. The polynomial preserves an alternating sum, not each summand separately.</p>
+<h2 id="references-and-further-direction">References and further direction</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, in its AI Integrated Stacks Project edition: Euler additivity <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-euler-characteristic-additive">Tag 08AA</a>; extension of fields <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-euler-characteristic-extend-base-field">Tag 08AB</a>; proper pushforward <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-euler-characteristic-morphism">Tag 0BEK</a>; polynomial twisting <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-numerical-polynomial-from-euler">Tag 0BEM</a>; generic multiplicities <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-numerical-polynomial-leading-term">Tag 0BEN</a>; eventual global sections <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-hilbert-polynomial-H0">Tag 08AE</a>.</li>
+<li>The degree assertion, with the zero sheaf separated, is also <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-hilbert-polynomial-degree-support">AI Integrated Stacks Project, varieties.tex, lemma-hilbert-polynomial-degree-support</a>. Section 3 proves it here, and proves the ample version on proper schemes. Dimension prerequisites: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-dimension-spell-it-out">Tag 00OS</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-one-equation">Tag 00KW</a>.</li>
+<li>The open reference treatments retain GNU FDL 1.2; this lesson's exposition and proofs are independently written CC0. AI Integrated Stacks Project includes AI-proposed additions and corrections and is not reviewed by maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks project</a>. The next lesson constructs the finite Grothendieck complex needed to control arbitrary fiber cohomology; the present flat-family proof already supplies its high-twist special case.</li>
+</ul>
+<details class="figure-provenance"><summary>Figure credits and source locators</summary><p>These credits cover the illustrations only. They do not change the lesson’s proof status.</p><ul><li><strong>Conics</strong> — GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort.<p>Original exact real affine chart of xy=tz² at t=-1,0,1.</p><ul><li>Section 5 and Exercise 6.4. Real support only, points at infinity omitted. No source image copied.</li></ul><p>Figure SHA-256: <code>605301AF2C9DC7B20C7A9851550BB4AAD6E5216E126948075F9317EC58070FCC</code></p></li></ul></details><footer><a href="src/euler-characteristics-and-hilbert-polynomials.md">Editable source</a></footer></main></body></html>

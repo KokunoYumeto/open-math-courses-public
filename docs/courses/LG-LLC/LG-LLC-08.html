@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dihedral supercuspidals, rectifiers and rank-two characterization · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-08.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="dihedral-supercuspidals-rectifiers-and-rank-two-characterization">Dihedral supercuspidals, rectifiers and rank-two characterization</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A character of a quadratic extension produces a two-dimensional Weil representation by induction. The Weil representation also produces a supercuspidal representation of the general linear group. Their epsilon factors have the same induction constant. This gives a concrete part of the correspondence, and character twists identify its representations uniquely. A second construction, using a finite-field cuspidal representation, labels the same objects with a different character; its unramified quadratic rectifier must be included.</p>
+<p>We assume the quadratic-induction results of <em>Two-dimensional Weil representations: induction and projective symmetry</em>, the non-supercuspidal dictionary, the proved rank-two converse theorem, and the Weil-representation construction from <em>Supercuspidal representations of the two-dimensional general linear group</em>. The automorphic construction and its functional equation are stated inputs. We prove the induced parameter's epsilon formula, the determinant match, the independence of the inducing description and a precise characterization theorem. Basic references are [Jacquet–Langlands 1970], [Deligne 1973] and [Adrian–Roe 2013].</p>
+<h2 id="1-the-construction-and-its-character-label">1. The construction and its character label</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field, and let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be a separable quadratic extension. Use geometric reciprocity on both fields. Let <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span> be the quadratic character of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, and write <span class="math" data-tex="\(\theta^\sigma(x)=\theta(\sigma x)\)">\(\theta^\sigma(x)=\theta(\sigma x)\)</span> for a smooth character <span class="math" data-tex="\(\theta:E^\times\to\mathbb C^\times\)">\(\theta:E^\times\to\mathbb C^\times\)</span>.</p>
+<p><strong>Theorem 1.1 (Weil construction, stated).</strong> The Weil representation for the norm quadratic space <span class="math" data-tex="\(E\)">\(E\)</span>, together with <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, gives a smooth irreducible representation <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span> of <span class="math" data-tex="\(\mathrm{GL}_2(F)\)">\(\mathrm{GL}_2(F)\)</span>. If <span class="math" data-tex="\(\theta\ne\theta^\sigma\)">\(\theta\ne\theta^\sigma\)</span>, it is supercuspidal. It has
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\omega_{\Pi_E(\theta)}&amp;=\theta|_{F^\times}\eta_{E/F},\\
+\Pi_E(\theta^\sigma)&amp;\simeq\Pi_E(\theta),\\
+\Pi_E(\theta)^\vee&amp;\simeq\Pi_E(\theta^{-1}),\\
+\Pi_E(\theta)\otimes(\xi\circ\det)
+ &amp;\simeq\Pi_E(\theta(\xi\circ N_{E/F})).
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+\omega_{\Pi_E(\theta)}&amp;=\theta|_{F^\times}\eta_{E/F},\\
+\Pi_E(\theta^\sigma)&amp;\simeq\Pi_E(\theta),\\
+\Pi_E(\theta)^\vee&amp;\simeq\Pi_E(\theta^{-1}),\\
+\Pi_E(\theta)\otimes(\xi\circ\det)
+ &amp;\simeq\Pi_E(\theta(\xi\circ N_{E/F})).
+\end{aligned}
+\tag{1.1}
+\]</span>
+For <span class="math" data-tex="\(\psi_E=\psi_F\circ\operatorname{Tr}_{E/F}\)">\(\psi_E=\psi_F\circ\operatorname{Tr}_{E/F}\)</span>, its standard factors satisfy
+<span class="math math-display" data-tex="\[
+L_F(s,\Pi_E(\theta))=L_E(s,\theta),\qquad
+\epsilon_F(s,\Pi_E(\theta),\psi_F)
+=\lambda(E/F,\psi_F)\epsilon_E(s,\theta,\psi_E).
+\tag{1.2}
+\]">\[
+L_F(s,\Pi_E(\theta))=L_E(s,\theta),\qquad
+\epsilon_F(s,\Pi_E(\theta),\psi_F)
+=\lambda(E/F,\psi_F)\epsilon_E(s,\theta,\psi_E).
+\tag{1.2}
+\]</span>
+Use the same self-dual additive measures in the two factor theories.</p>
+<p>The exact construction and irreducibility locators are [Jacquet–Langlands 1970, §1 and Theorem 4.6]; (1.1) and (1.2) are Theorem 4.7. The induced representation of their index-two norm subgroup is included in <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span>; it is a representation of the full general linear group. This label belongs to the Weil construction and should be distinguished from the finite-field label in Section 5.</p>
+<p>The condition in their Theorem 4.6 that <span class="math" data-tex="\(\theta\)">\(\theta\)</span> not factor through the norm is equivalent to <span class="math" data-tex="\(\theta\ne\theta^\sigma\)">\(\theta\ne\theta^\sigma\)</span>. Indeed a norm character is invariant. Conversely, an invariant character is trivial on every <span class="math" data-tex="\(\sigma u/u\)">\(\sigma u/u\)</span>; Hilbert 90 identifies these elements with the norm-one subgroup. It therefore descends to <span class="math" data-tex="\(N(E^\times)\)">\(N(E^\times)\)</span>, an open subgroup of index two in <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. It extends to a smooth character of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>: choose a representative of the other coset and a square root of the prescribed value on its square. This proves the equivalence using the class-field norm theorem and Hilbert 90. An invariant character gives a principal series <span class="math" data-tex="\(I(\xi,\xi\eta_{E/F})\)">\(I(\xi,\xi\eta_{E/F})\)</span>, as stated in Theorem 4.6(iv), rather than a supercuspidal.</p>
+<h2 id="2-induction-in-dimension-zero-and-the-lambda-factor">2. Induction in dimension zero and the lambda factor</h2>
+<p>The parameter is
+<span class="math math-display" data-tex="\[
+\rho_E(\theta)=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta,
+\qquad N=0.
+\tag{2.1}
+\]">\[
+\rho_E(\theta)=\operatorname{Ind}_{W_E}^{W_F}\widehat\theta,
+\qquad N=0.
+\tag{2.1}
+\]</span>
+The induction constant is defined by
+<span class="math math-display" data-tex="\[
+\lambda(E/F,\psi_F)=
+\frac{\epsilon_F(s,\operatorname{Ind}_{W_E}^{W_F}1,\psi_F)}
+     {\epsilon_E(s,1,\psi_E)}.
+\tag{2.2}
+\]">\[
+\lambda(E/F,\psi_F)=
+\frac{\epsilon_F(s,\operatorname{Ind}_{W_E}^{W_F}1,\psi_F)}
+     {\epsilon_E(s,1,\psi_E)}.
+\tag{2.2}
+\]</span>
+This ratio is independent of <span class="math" data-tex="\(s\)">\(s\)</span>. Here is the normalization check. Define <span class="math" data-tex="\(n_F(\psi_F)\)">\(n_F(\psi_F)\)</span> by saying that <span class="math" data-tex="\(\varpi_F^{-n_F}\mathcal O_F\)">\(\varpi_F^{-n_F}\mathcal O_F\)</span> is the largest fractional ideal on which <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span> is trivial. If the different has exponent <span class="math" data-tex="\(d=d(E/F)\)">\(d=d(E/F)\)</span>, trace duality gives
+<span class="math math-display" data-tex="\[
+n_E(\psi_E)=e(E/F)n_F(\psi_F)+d.
+\tag{2.3}
+\]">\[
+n_E(\psi_E)=e(E/F)n_F(\psi_F)+d.
+\tag{2.3}
+\]</span>
+The conductor–discriminant identity gives
+<span class="math" data-tex="\(a_F(\operatorname{Ind}1)=f(E/F)d\)">\(a_F(\operatorname{Ind}1)=f(E/F)d\)</span>. These ramification identities are prerequisites [Deligne 1973, §§2 and 5; Conrad, Remark 4.26 and §5]. The epsilon exponent in the numerator is
+<span class="math" data-tex="\(f d+2n_F\)">\(f d+2n_F\)</span>, while that in the denominator, expressed with <span class="math" data-tex="\(q_F\)">\(q_F\)</span>, is <span class="math" data-tex="\(f n_E=f d+fe n_F=f d+2n_F\)">\(f n_E=f d+fe n_F=f d+2n_F\)</span>. They cancel. Thus (2.2) is the usual constant measured at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> as well.</p>
+<p><strong>Theorem 2.1.</strong> For every smooth character of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon_F(s,\rho_E(\theta),\psi_F)
+=\lambda(E/F,\psi_F)\epsilon_E(s,\theta,\psi_E).
+\tag{2.4}
+\]">\[
+\epsilon_F(s,\rho_E(\theta),\psi_F)
+=\lambda(E/F,\psi_F)\epsilon_E(s,\theta,\psi_E).
+\tag{2.4}
+\]</span></p>
+<p><strong>Proof.</strong> The defining induction property of Weil epsilon factors applies to virtual representations of dimension zero [Deligne 1973, Theorem 4.1(3) and equations (5.6.1)–(5.6.2)]. Apply it to <span class="math" data-tex="\([\widehat\theta]-[1]\)">\([\widehat\theta]-[1]\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>. Multiplicativity on virtual classes gives
+<span class="math math-display" data-tex="\[
+\frac{\epsilon_F(s,\operatorname{Ind}\widehat\theta,\psi_F)}
+     {\epsilon_F(s,\operatorname{Ind}1,\psi_F)}
+=\frac{\epsilon_E(s,\theta,\psi_E)}
+      {\epsilon_E(s,1,\psi_E)}.
+\]">\[
+\frac{\epsilon_F(s,\operatorname{Ind}\widehat\theta,\psi_F)}
+     {\epsilon_F(s,\operatorname{Ind}1,\psi_F)}
+=\frac{\epsilon_E(s,\theta,\psi_E)}
+      {\epsilon_E(s,1,\psi_E)}.
+\]</span>
+Dimension zero cancels the possible change of additive Haar measures. Norm twisting to introduce <span class="math" data-tex="\(s\)">\(s\)</span> commutes with induction because the Weil norm on <span class="math" data-tex="\(W_F\)">\(W_F\)</span> restricts to that on <span class="math" data-tex="\(W_E\)">\(W_E\)</span>. Multiply by the numerator's denominator and use (2.2). This proves (2.4) with the chosen measures, rather than dropping the induction constant. ∎</p>
+<p><strong>Proposition 2.2.</strong> If <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is unramified quadratic, then
+<span class="math math-display" data-tex="\[
+\lambda(E/F,\psi_F)=(-1)^{n_F(\psi_F)}.
+\tag{2.5}
+\]">\[
+\lambda(E/F,\psi_F)=(-1)^{n_F(\psi_F)}.
+\tag{2.5}
+\]</span>
+In particular it is one for conductor-zero <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span>.</p>
+<p><strong>Proof.</strong> In this case <span class="math" data-tex="\(\operatorname{Ind}1=1\oplus\eta_{E/F}\)">\(\operatorname{Ind}1=1\oplus\eta_{E/F}\)</span>, with <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span> unramified and <span class="math" data-tex="\(\eta_{E/F}(\varpi_F)=-1\)">\(\eta_{E/F}(\varpi_F)=-1\)</span>. For an unramified character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the Tate change-of-additive-character formula gives
+<span class="math math-display" data-tex="\[
+\epsilon_F(s,\alpha,\psi_F)
+=\alpha(\varpi_F)^{n_F}q_F^{-n_F(s-1/2)}.
+\]">\[
+\epsilon_F(s,\alpha,\psi_F)
+=\alpha(\varpi_F)^{n_F}q_F^{-n_F(s-1/2)}.
+\]</span>
+A unit used to scale a conductor-zero additive character contributes nothing to an unramified <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Multiply this formula for <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span>. Its value is <span class="math" data-tex="\((-1)^{n_F}q_F^{-2n_F(s-1/2)}\)">\((-1)^{n_F}q_F^{-2n_F(s-1/2)}\)</span>. The different exponent is zero, so <span class="math" data-tex="\(n_E=n_F\)">\(n_E=n_F\)</span> and <span class="math" data-tex="\(q_E=q_F^2\)">\(q_E=q_F^2\)</span>. The denominator of (2.2) is <span class="math" data-tex="\(q_F^{-2n_F(s-1/2)}\)">\(q_F^{-2n_F(s-1/2)}\)</span>. Division proves (2.5). ∎</p>
+<h2 id="3-matching-the-dihedral-part">3. Matching the dihedral part</h2>
+<p><strong>Theorem 3.1.</strong> For <span class="math" data-tex="\(\theta\ne\theta^\sigma\)">\(\theta\ne\theta^\sigma\)</span>, the representation <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span> and parameter <span class="math" data-tex="\(\rho_E(\theta)\)">\(\rho_E(\theta)\)</span> have the same central/determinant character and the same <span class="math" data-tex="\(L\)">\(L\)</span>- and epsilon factors after every character twist. They have equal conductors.</p>
+<p><strong>Proof.</strong> Quadratic induction is irreducible by the theorem proved in the Weil-representation lesson. Its determinant, computed there by transfer, is
+<span class="math math-display" data-tex="\[
+\det\rho_E(\theta)=
+\widehat{\theta|_{F^\times}\eta_{E/F}}.
+\tag{3.1}
+\]">\[
+\det\rho_E(\theta)=
+\widehat{\theta|_{F^\times}\eta_{E/F}}.
+\tag{3.1}
+\]</span>
+Comparison with the scalar action in (1.1) gives the central-character match, including its quadratic sign.</p>
+<p>The supercuspidal twisted Kirillov model consists of compactly supported functions on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, so its twisted standard <span class="math" data-tex="\(L\)">\(L\)</span>-factor is one, as proved in the correspondence-statement lesson, Proposition 4.2. An irreducible two-dimensional Weil representation, including every character twist of (2.1), has zero inertia invariants: a nonzero invariant space would be the full irreducible space and would force the representation to factor through the cyclic Weil quotient. Its <span class="math" data-tex="\(L\)">\(L\)</span>-factor is consequently one as well.</p>
+<p>Projection onto the two coset summands proves the induction projection formula
+<span class="math math-display" data-tex="\[
+\rho_E(\theta)\otimes\widehat\xi
+\simeq\rho_E(\theta(\xi\circ N_{E/F})).
+\tag{3.2}
+\]">\[
+\rho_E(\theta)\otimes\widehat\xi
+\simeq\rho_E(\theta(\xi\circ N_{E/F})).
+\tag{3.2}
+\]</span>
+The reciprocity norm identity is used to identify the restricted character. Its extra factor is invariant under <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so the inducing character remains regular. The automorphic twist identity in (1.1), the automorphic formula (1.2), and our induced epsilon formula (2.4) now give equal epsilon factors for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and every <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span>.</p>
+<p>For conductors, use conductor-zero <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span>. The <span class="math" data-tex="\(E\)">\(E\)</span>-epsilon exponent, expressed with <span class="math" data-tex="\(q_F\)">\(q_F\)</span>, is
+<span class="math" data-tex="\(f(a_E(\theta)+d)\)">\(f(a_E(\theta)+d)\)</span>, by (2.3). The constant <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> contributes no exponent. Equality of factors proves
+<span class="math math-display" data-tex="\[
+a_\epsilon(\Pi_E(\theta))
+=a_F(\rho_E(\theta))
+=f(E/F)\bigl(a_E(\theta)+d(E/F)\bigr).
+\tag{3.3}
+\]">\[
+a_\epsilon(\Pi_E(\theta))
+=a_F(\rho_E(\theta))
+=f(E/F)\bigl(a_E(\theta)+d(E/F)\bigr).
+\tag{3.3}
+\]</span>
+The right-hand side is also the Artin induction formula for a character. Since the representation is generic, its epsilon conductor is its newvector conductor by the generic newvector prerequisite. ∎</p>
+<p><strong>Corollary 3.2 (independence of an inducing description).</strong> If two regular quadratic inducing pairs have isomorphic induced Weil representations, their Weil-constructed representations are isomorphic. This holds also in residue characteristic two.</p>
+<p><strong>Proof.</strong> Their determinant characters agree by (3.1). Theorem 3.1 identifies their twisted epsilon factors with those of the same twisted parameter. Their twisted <span class="math" data-tex="\(L\)">\(L\)</span>-factors and dual <span class="math" data-tex="\(L\)">\(L\)</span>-factors are all one, so their twisted gamma factors agree. The rank-two local converse theorem applies to these two supercuspidals and gives an isomorphism. No uniqueness of the quadratic inducing field is assumed. ∎</p>
+<p>Thus a parameter induced from three quadratic extensions supplies a single representation. The Klein-four examples of the Weil-representation lesson illustrate exactly this issue.</p>
+<h2 id="4-existence-and-a-precise-characterization">4. Existence and a precise characterization</h2>
+<p><strong>Theorem 4.1 (Kutzko, stated).</strong> For a p-adic field <span class="math" data-tex="\(F\)">\(F\)</span>, the rank-two local Langlands correspondence exists, including the primitive parameters in residue characteristic two. It is a bijection to Frobenius-semisimple rank-two Weil–Deligne parameters with the five properties stated in the correspondence-statement lesson.</p>
+<p>The original theorem is [Kutzko 1980], announced there with an outline of the proof. Its place in the history and its extension to the modern factor-normalized formulation are recalled in [Carayol 2000, Introduction and §2] and [Getz–Hahn 2022, §12.4]; a complete proof of existence in every rank is [Scholze 2013, Theorem 1.2]. Positive-characteristic existence is supplied by the theorem of Laumon–Rapoport–Stuhler stated later. The calculations of Sections 1–3 hold for every nonarchimedean local field; the historical p-adic attribution here does not restrict those calculations.</p>
+<p><strong>Proposition 4.2.</strong> Every factor-preserving correspondence sends <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span> to <span class="math" data-tex="\(\rho_E(\theta)\)">\(\rho_E(\theta)\)</span>.</p>
+<p><strong>Proof.</strong> Take the preimage <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span> of <span class="math" data-tex="\(\rho_E(\theta)\)">\(\rho_E(\theta)\)</span>. The rank-two classification in the correspondence-statement lesson makes <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span> supercuspidal. Its central character and every twisted factor agree with those of <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span> by Theorem 3.1 and factor preservation. Their gamma factors agree, and the local converse theorem identifies <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span> with <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span>. ∎</p>
+<p>In odd residue characteristic, every irreducible two-dimensional Weil representation is dihedral by the proved classification. Consequently this identifies the entire supercuspidal part there. In residue characteristic two, the primitive tetrahedral and octahedral parameters require the additional constructions in the existence theorem. The elementary dihedral calculation is retained with its actual scope.</p>
+<p>The next theorem records exactly what character epsilon factors determine.</p>
+<p><strong>Theorem 4.3 (characterization with the non-supercuspidal dictionary fixed).</strong> Let <span class="math" data-tex="\(R_1,R_2\)">\(R_1,R_2\)</span> be bijections from rank-two irreducible representations to rank-two parameters. Suppose they agree with the dictionary of the non-supercuspidal lesson, have determinant equal to the central character, and satisfy
+<span class="math math-display" data-tex="\[
+\epsilon(s,\pi\otimes(\xi\circ\det),\psi)
+=\epsilon(s,R_i(\pi)\otimes\widehat\xi,\psi)
+\quad(i=1,2)
+\tag{4.1}
+\]">\[
+\epsilon(s,\pi\otimes(\xi\circ\det),\psi)
+=\epsilon(s,R_i(\pi)\otimes\widehat\xi,\psi)
+\quad(i=1,2)
+\tag{4.1}
+\]</span>
+for every character <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Rank-one parameters are fixed by reciprocity. Then <span class="math" data-tex="\(R_1=R_2\)">\(R_1=R_2\)</span>.</p>
+<p><strong>Proof.</strong> Their common non-supercuspidal dictionary fills precisely all reducible-Weil parameters. Bijectivity therefore makes both maps carry supercuspidals onto irreducible Weil parameters with zero monodromy.</p>
+<p>For a supercuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, put <span class="math" data-tex="\(\rho=R_1(\pi)\)">\(\rho=R_1(\pi)\)</span> and <span class="math" data-tex="\(\pi&#x27;=R_2^{-1}(\rho)\)">\(\pi&#x27;=R_2^{-1}(\rho)\)</span>. The determinant assumption gives <span class="math" data-tex="\(\omega_\pi=\omega_{\pi&#x27;}\)">\(\omega_\pi=\omega_{\pi&#x27;}\)</span>, and (4.1) gives equal twisted epsilon factors. Every twisted standard and dual <span class="math" data-tex="\(L\)">\(L\)</span>-factor of these supercuspidals is one. Thus their gamma factors are their epsilon factors and agree for all twists. The rank-two local converse theorem gives <span class="math" data-tex="\(\pi\simeq\pi&#x27;\)">\(\pi\simeq\pi&#x27;\)</span>, whence <span class="math" data-tex="\(R_2(\pi)=R_1(\pi)\)">\(R_2(\pi)=R_1(\pi)\)</span>. The maps already agree on the other representations. ∎</p>
+<p>The fixed-dictionary hypothesis is necessary. Take an unramified character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\alpha(\varpi)=\zeta_3\)">\(\alpha(\varpi)=\zeta_3\)</span>, a primitive cube root of unity. The two distinct irreducible principal series
+<span class="math math-display" data-tex="\[
+I(1,1),\qquad I(\alpha,\alpha^{-1})
+\tag{4.2}
+\]">\[
+I(1,1),\qquad I(\alpha,\alpha^{-1})
+\tag{4.2}
+\]</span>
+have central character one and equal epsilon factors after every character twist. For an unramified twist, both epsilon factors are one for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. For a ramified twist <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of conductor <span class="math" data-tex="\(m\)">\(m\)</span>, the unramified-twist rule for Tate's epsilon factor multiplies its value by <span class="math" data-tex="\(\alpha(\varpi)^m\)">\(\alpha(\varpi)^m\)</span>; the inverse-character factor multiplies by the inverse value. These cancel, and both pair epsilon factors are <span class="math" data-tex="\(\epsilon(s,\xi)^2\)">\(\epsilon(s,\xi)^2\)</span>. Changing <span class="math" data-tex="\(\psi\)">\(\psi\)</span> multiplies both by the same determinant and norm factor. But their standard <span class="math" data-tex="\(L\)">\(L\)</span>-factors are
+<span class="math math-display" data-tex="\[
+(1-X)^{-2},\qquad (1+X+X^2)^{-1},
+\tag{4.3}
+\]">\[
+(1-X)^{-2},\qquad (1+X+X^2)^{-1},
+\tag{4.3}
+\]</span>
+which differ. One could interchange just these two parameters in a bijection and retain the determinant and all character-twisted epsilon identities. Therefore those identities alone do not characterize an unrestricted rank-two dictionary.</p>
+<p>There is also a bounded-data version on supercuspidals. If their conductors are at most <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>, agreement of twisted epsilon factors for characters of conductor at most <span class="math" data-tex="\(2c&#x27;+4\)">\(2c&#x27;+4\)</span> suffices. Their twisted <span class="math" data-tex="\(L\)">\(L\)</span>-factors are one, so these are exactly the bounded gamma equalities in Exercise 7.4 of the local-factor lesson. Its proof uses [Deligne–Henniart 1981, Theorem 4.6 and Lemma 4.7] to extend the equality to all higher-conductor twists, and then the proved converse theorem. This supplies the explicit role of stability and preserves its strict ramification-break condition.</p>
+<h2 id="5-depth-zero-and-the-rectifier">5. Depth zero and the rectifier</h2>
+<p>Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be unramified quadratic. A regular character <span class="math" data-tex="\(\bar\Theta:k_E^\times\to\mathbb C^\times\)">\(\bar\Theta:k_E^\times\to\mathbb C^\times\)</span> gives a finite-field cuspidal representation of <span class="math" data-tex="\(\mathrm{GL}_2(k_F)\)">\(\mathrm{GL}_2(k_F)\)</span> [Deligne–Lusztig 1976, Proposition 7.4 and Theorem 8.3]. Its dimension formula is the absolute value of the Euler characteristic in their Theorem 7.1: the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> part of <span class="math" data-tex="\(|\mathrm{GL}_2(k_F)|\)">\(|\mathrm{GL}_2(k_F)|\)</span>, divided by <span class="math" data-tex="\(|k_E^\times|\)">\(|k_E^\times|\)</span>, is <span class="math" data-tex="\((q_F-1)^2(q_F+1)/(q_F^2-1)=q_F-1\)">\((q_F-1)^2(q_F+1)/(q_F^2-1)=q_F-1\)</span>. Inflating it to <span class="math" data-tex="\(\mathrm{GL}_2(\mathcal O_F)\)">\(\mathrm{GL}_2(\mathcal O_F)\)</span>, extending over the center by a chosen lift <span class="math" data-tex="\(\Theta:E^\times\to\mathbb C^\times\)">\(\Theta:E^\times\to\mathbb C^\times\)</span>, and compactly inducing gives a depth-zero supercuspidal, denoted <span class="math" data-tex="\(\pi_{\mathrm{tame}}(\Theta)\)">\(\pi_{\mathrm{tame}}(\Theta)\)</span>. This construction and its irreducibility are the depth-zero prerequisite [Murnaghan 2009, §8, Proposition 1]. The central character of this labeling is <span class="math" data-tex="\(\Theta|_{F^\times}\)">\(\Theta|_{F^\times}\)</span>.</p>
+<p><strong>Theorem 5.1 (depth-zero rectifier, stated).</strong> In this labeling the parameter is
+<span class="math math-display" data-tex="\[
+\operatorname{rec}(\pi_{\mathrm{tame}}(\Theta))
+=\operatorname{Ind}_{W_E}^{W_F}\widehat{\Theta\delta_E},
+\tag{5.1}
+\]">\[
+\operatorname{rec}(\pi_{\mathrm{tame}}(\Theta))
+=\operatorname{Ind}_{W_E}^{W_F}\widehat{\Theta\delta_E},
+\tag{5.1}
+\]</span>
+where <span class="math" data-tex="\(\delta_E\)">\(\delta_E\)</span> is the unramified quadratic character of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>, so <span class="math" data-tex="\(\delta_E(\varpi_E)=-1\)">\(\delta_E(\varpi_E)=-1\)</span>. For p-adic fields this is the depth-zero case of the rectifier theorem of Bushnell and Henniart; see [Adrian–Roe 2013, Theorem 3.3, Proposition 3.4 and Theorem 9.5]. The explicit example below is over <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>, within that scope. The finite-field construction and the comparison theorem are not proved here.</p>
+<p>The correction already makes the determinant work. Restriction of <span class="math" data-tex="\(\delta_E\)">\(\delta_E\)</span> to <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> is <span class="math" data-tex="\(\eta_{E/F}\)">\(\eta_{E/F}\)</span>: both are unramified and take <span class="math" data-tex="\(\varpi_F\)">\(\varpi_F\)</span> to minus one. Hence
+<span class="math math-display" data-tex="\[
+\det\operatorname{Ind}\widehat{\Theta\delta_E}
+=\widehat{\Theta|_{F^\times}\delta_E|_{F^\times}\eta_{E/F}}
+=\widehat{\Theta|_{F^\times}}.
+\]">\[
+\det\operatorname{Ind}\widehat{\Theta\delta_E}
+=\widehat{\Theta|_{F^\times}\delta_E|_{F^\times}\eta_{E/F}}
+=\widehat{\Theta|_{F^\times}}.
+\]</span>
+Inducing <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> without its rectifier would insert an extra quadratic central character. Since the rectifier has order two, (5.1) also identifies <span class="math" data-tex="\(\pi_{\mathrm{tame}}(\Theta)\)">\(\pi_{\mathrm{tame}}(\Theta)\)</span> with <span class="math" data-tex="\(\Pi_E(\Theta\delta_E)\)">\(\Pi_E(\Theta\delta_E)\)</span> in the Weil-construction labeling.</p>
+<p><strong>Example 5.2 (a complete depth-zero example over <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>).</strong> Let <span class="math" data-tex="\(E=\mathbb Q_3(i)\)">\(E=\mathbb Q_3(i)\)</span>, with <span class="math" data-tex="\(i^2=-1\)">\(i^2=-1\)</span>, the unramified quadratic extension. In <span class="math" data-tex="\(k_E=\mathbb F_9\)">\(k_E=\mathbb F_9\)</span>, the element <span class="math" data-tex="\(g=1+i\)">\(g=1+i\)</span> has order eight: <span class="math" data-tex="\(g^2=-i\)">\(g^2=-i\)</span> and <span class="math" data-tex="\(g^4=-1\)">\(g^4=-1\)</span>. Put <span class="math" data-tex="\(\zeta=e^{\pi i/4}\)">\(\zeta=e^{\pi i/4}\)</span>, and choose
+<span class="math math-display" data-tex="\[
+\bar\Theta(g)=\zeta,\qquad \Theta(3)=1,
+\qquad \Theta|_{1+3\mathcal O_E}=1.
+\]">\[
+\bar\Theta(g)=\zeta,\qquad \Theta(3)=1,
+\qquad \Theta|_{1+3\mathcal O_E}=1.
+\]</span>
+Frobenius changes the residue character to its cube, which is different. Thus the finite-field representation is cuspidal, of dimension two. Its inflation and central extension give the indicated compact induction. The corrected character <span class="math" data-tex="\(\theta=\Theta\delta_E\)">\(\theta=\Theta\delta_E\)</span> has <span class="math" data-tex="\(\theta(3)=-1\)">\(\theta(3)=-1\)</span>, residue character <span class="math" data-tex="\(\bar\Theta\)">\(\bar\Theta\)</span>, and conductor one.</p>
+<p>The parameter has <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, conductor two by (3.3), and projective image of order eight: <span class="math" data-tex="\(\theta/\theta^\sigma\)">\(\theta/\theta^\sigma\)</span> has residue order four. Its Frobenius matrix on the coset basis can be taken as
+<span class="math math-display" data-tex="\[
+\rho(\Phi_F)=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\qquad \rho(\Phi_F)^2=-1.
+\tag{5.2}
+\]">\[
+\rho(\Phi_F)=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\qquad \rho(\Phi_F)^2=-1.
+\tag{5.2}
+\]</span>
+Its determinant at a uniformizer is one. On units the central character is <span class="math" data-tex="\(\Theta|_{\mathbb Z_3^\times}\)">\(\Theta|_{\mathbb Z_3^\times}\)</span>; in particular <span class="math" data-tex="\(\Theta(-1)=\zeta^4=-1\)">\(\Theta(-1)=\zeta^4=-1\)</span>. Its standard <span class="math" data-tex="\(L\)">\(L\)</span>-factor is one.</p>
+<p>Fix the conductor-zero character <span class="math" data-tex="\(\psi_F\)">\(\psi_F\)</span> whose value on <span class="math" data-tex="\(u/3\)">\(u/3\)</span>, for an integral <span class="math" data-tex="\(u\)">\(u\)</span>, is <span class="math" data-tex="\(e^{2\pi i\bar u/3}\)">\(e^{2\pi i\bar u/3}\)</span>, and use the positive-sign Fourier transform. Then <span class="math" data-tex="\(\psi_E(u/3)=\omega^{\operatorname{Tr}_{\mathbb F_9/\mathbb F_3}(\bar u)}\)">\(\psi_E(u/3)=\omega^{\operatorname{Tr}_{\mathbb F_9/\mathbb F_3}(\bar u)}\)</span>, where <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span>. The character Gauss sum is
+<span class="math math-display" data-tex="\[
+G=\sum_{j=0}^7\zeta^{-j}\omega^{\operatorname{Tr}(g^j)}.
+\tag{5.3}
+\]">\[
+G=\sum_{j=0}^7\zeta^{-j}\omega^{\operatorname{Tr}(g^j)}.
+\tag{5.3}
+\]</span>
+For <span class="math" data-tex="\(j=0,\ldots,7\)">\(j=0,\ldots,7\)</span>, the trace sequence is <span class="math" data-tex="\(2,2,0,2,1,1,0,1\)">\(2,2,0,2,1,1,0,1\)</span>. The <span class="math" data-tex="\(j=2,6\)">\(j=2,6\)</span> terms cancel, and the others give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G&amp;=\omega^2(1-i\sqrt2)+\omega(-1+i\sqrt2)\\
+ &amp;= (\omega^2-\omega)(1-i\sqrt2)
+ =-\sqrt6-i\sqrt3.
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+G&amp;=\omega^2(1-i\sqrt2)+\omega(-1+i\sqrt2)\\
+ &amp;= (\omega^2-\omega)(1-i\sqrt2)
+ =-\sqrt6-i\sqrt3.
+\end{aligned}
+\tag{5.4}
+\]</span>
+For clarity, Tate's ramified formula here follows by taking the test function <span class="math" data-tex="\(\theta^{-1}1_{\mathcal O_E^\times}\)">\(\theta^{-1}1_{\mathcal O_E^\times}\)</span>. Its zeta integral is one. Its Fourier transform is supported on the valuation-minus-one shell, with value <span class="math" data-tex="\(9^{-1}\theta(v)G\)">\(9^{-1}\theta(v)G\)</span> at <span class="math" data-tex="\(v/3\)">\(v/3\)</span>. The dual zeta integral is consequently <span class="math" data-tex="\(\theta(3)G9^{-s}=-G9^{-s}\)">\(\theta(3)G9^{-s}=-G9^{-s}\)</span>. All character <span class="math" data-tex="\(L\)">\(L\)</span>-factors are one, so this is its epsilon factor. Proposition 2.2 gives <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+\epsilon_F(s,\pi_{\mathrm{tame}}(\Theta),\psi_F)
+=(\sqrt6+i\sqrt3)3^{-2s}.
+\tag{5.5}
+\]">\[
+\epsilon_F(s,\pi_{\mathrm{tame}}(\Theta),\psi_F)
+=(\sqrt6+i\sqrt3)3^{-2s}.
+\tag{5.5}
+\]</span>
+The value at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> is <span class="math" data-tex="\((\sqrt6+i\sqrt3)/3\)">\((\sqrt6+i\sqrt3)/3\)</span>, of absolute value one. Its conductor exponent is two, agreeing with the induced parameter and the generic newvector conductor. The negative uniformizer value in the rectifier accounts for the sign in this calculation.</p>
+<h2 id="6-exercises-and-complete-solutions">6. Exercises and complete solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Compute the lambda factor for an unramified quadratic extension, allowing arbitrary additive-character conductor.</p>
+<p><strong>Solution.</strong> Decompose <span class="math" data-tex="\(\operatorname{Ind}1=1\oplus\eta\)">\(\operatorname{Ind}1=1\oplus\eta\)</span>. The two unramified Tate epsilon factors multiply to <span class="math" data-tex="\((-1)^{n_F}q_F^{-2n_F(s-1/2)}\)">\((-1)^{n_F}q_F^{-2n_F(s-1/2)}\)</span>. The trace character has <span class="math" data-tex="\(n_E=n_F\)">\(n_E=n_F\)</span>, and its trivial-character factor is <span class="math" data-tex="\(q_E^{-n_F(s-1/2)}=q_F^{-2n_F(s-1/2)}\)">\(q_E^{-n_F(s-1/2)}=q_F^{-2n_F(s-1/2)}\)</span>. Their ratio is <span class="math" data-tex="\((-1)^{n_F}\)">\((-1)^{n_F}\)</span>. It is one when <span class="math" data-tex="\(n_F=0\)">\(n_F=0\)</span>, and minus one when <span class="math" data-tex="\(n_F\)">\(n_F\)</span> is odd.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Derive induced epsilon factors from induction in dimension zero.</p>
+<p><strong>Solution.</strong> The virtual class <span class="math" data-tex="\(\widehat\theta-1\)">\(\widehat\theta-1\)</span> has dimension zero. Its epsilon factor is the quotient of those of its two terms, and induction preserves that quotient with the trace additive character. Solving the quotient identity for <span class="math" data-tex="\(\epsilon_F(\operatorname{Ind}\widehat\theta)\)">\(\epsilon_F(\operatorname{Ind}\widehat\theta)\)</span> introduces exactly the ratio <span class="math" data-tex="\(\epsilon_F(\operatorname{Ind}1)/\epsilon_E(1)\)">\(\epsilon_F(\operatorname{Ind}1)/\epsilon_E(1)\)</span>, namely <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The norm restriction gives the same identity for every <span class="math" data-tex="\(s\)">\(s\)</span>. Measures cancel in the virtual quotient, while (2.2) fixes them in the two positive-dimensional factors.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Verify conductor preservation for an unramified quadratic regular character of conductor <span class="math" data-tex="\(m\)">\(m\)</span>, and for a ramified quadratic character of conductor <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Solution.</strong> Formula (3.3) is <span class="math" data-tex="\(f(m+d)\)">\(f(m+d)\)</span>. In the unramified quadratic case <span class="math" data-tex="\(f=2,d=0\)">\(f=2,d=0\)</span>, so the value is <span class="math" data-tex="\(2m\)">\(2m\)</span>. In the ramified quadratic case <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, so it is <span class="math" data-tex="\(m+d\)">\(m+d\)</span>, with the actual different exponent retained. For a tamely ramified quadratic extension <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, giving <span class="math" data-tex="\(m+1\)">\(m+1\)</span>; for a dyadic extension <span class="math" data-tex="\(d\)">\(d\)</span> need not be one. The analytic factor (1.2), with <span class="math" data-tex="\(n_F=0,n_E=d\)">\(n_F=0,n_E=d\)</span>, has the same exponent. The constant <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has none. The representation is generic, so the newvector conductor is this epsilon exponent.</p>
+<p><strong>Exercise 6.4 (hard).</strong> Prove rank-two characterization by twisted epsilon factors with the non-supercuspidal dictionary fixed. Explain its bounded-conductor version and why removing the fixed-dictionary hypothesis fails.</p>
+<p><strong>Solution.</strong> A fixed non-supercuspidal dictionary exhausts reducible-Weil parameters. For two candidate bijections and a common irreducible parameter, their two preimages are therefore supercuspidal. Their central characters agree by the determinant condition. Twisted standard and dual factors are one on both preimages, so equal twisted epsilon factors are equal gamma factors. The proved local converse theorem identifies the preimages, giving equality of the bijections. For conductor bound <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>, the same argument begins with twists of conductor at most <span class="math" data-tex="\(2c&#x27;+4\)">\(2c&#x27;+4\)</span>. The explicit stability argument of the local-factor lesson's Exercise 7.4 supplies equality for all higher twists and then applies the converse theorem. Finally, the two principal series (4.2) have equal central and all twisted epsilon factors but unequal <span class="math" data-tex="\(L\)">\(L\)</span>-factors (4.3). Interchanging their parameters supplies the required counterexample to an unrestricted assertion.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Weil representation, the construction and its irreducibility, and the automorphic functional equation (1.2) are [Jacquet–Langlands 1970, §1 and Theorems 4.6–4.7], or the supercuspidal-construction prerequisite. The virtual epsilon-factor induction axiom is [Deligne 1973, Theorem 4.1(3), equations (5.6.1)–(5.6.2)]; its application to a character and the normalization of lambda were proved here. The ramification norm, different and conductor–discriminant identities are prerequisites. Their precise exponents were retained in (2.3) and (3.3).</p>
+<p>Kutzko's rank-two existence theorem is stated in Section 4 [Kutzko 1980]; its proof using local representation theory is not supplied. Positive-characteristic existence is the stated later theorem of Laumon–Rapoport–Stuhler. The rank-two converse theorem is proved earlier in this course. The explicit stability input is [Deligne–Henniart 1981, Theorem 4.6 and Lemma 4.7], used through the earlier bounded-twist exercise. The characterization and the counterexample to an unrestricted epsilon-only claim were proved here.</p>
+<p>The finite-field cuspidal representation and its compact-induction construction are prerequisites from the supercuspidal-construction lesson. Exact external locators are [Deligne–Lusztig 1976, Theorem 7.1, Proposition 7.4 and Theorem 8.3] and [Murnaghan 2009, §8, Proposition 1]. The rectifier is a stated comparison theorem of Bushnell and Henniart [Adrian–Roe 2013, Theorem 3.3, Proposition 3.4 and Theorem 9.5]. Its p-adic depth-zero application, central-character check and the complete <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span> epsilon calculation were carried out explicitly. No assertion that the two constructions use identical character labels is made.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Jacquet–Langlands 1970] Hervé Jacquet and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §1 and Theorems 4.6–4.7.</li>
+<li>[Deligne 1973] Pierre Deligne, “<a href="https://publications.ias.edu/sites/default/files/Number20.pdf">Les constantes des équations fonctionnelles des fonctions L</a>,” in <em>Modular Functions of One Variable II</em>, Lecture Notes in Mathematics 349, Springer, 1973, 501–597, Theorem 4.1 and §5, especially equations (5.5.1)–(5.6.2).</li>
+<li>[Deligne–Henniart 1981] Pierre Deligne and Guy Henniart, “<a href="https://publications.ias.edu/sites/default/files/Number43.pdf">Sur la variation, par torsion, des constantes locales d'équations fonctionnelles de fonctions L</a>,” <em>Inventiones mathematicae</em> 64 (1981), 89–118, Theorem 4.6 and Lemma 4.7.</li>
+<li>[Kutzko 1980] Philip Kutzko, “<a href="https://www.ams.org/journals/bull/1980-02-03/S0273-0979-1980-14765-5/S0273-0979-1980-14765-5.pdf">The Langlands conjecture for GL_2 of a local field</a>,” <em>Bulletin of the American Mathematical Society (New Series)</em> 2 (1980), 455–458.</li>
+<li>[Adrian–Roe 2013] Moshe Adrian and David Roe, <a href="https://arxiv.org/abs/1307.0469"><em>Rectifiers and the local Langlands correspondence: the unramified case</em></a>, §§3 and 9, Theorem 3.3, Proposition 3.4 and Theorem 9.5. The cited version uses geometric Frobenius and gives the depth-zero rectifier value <span class="math" data-tex="\((-1)^{n-1}\)">\((-1)^{n-1}\)</span>.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §§11.5 and 12.4.</li>
+<li>[Carayol 2000] Henri Carayol, “<a href="https://www.numdam.org/item/SB_1998-1999__41__191_0/">Preuve de la conjecture de Langlands locale pour GL_n : travaux de Harris–Taylor et Henniart</a>,” Séminaire Bourbaki, exposé 857 (1998–1999), <em>Astérisque</em> 266 (2000), 191–243.</li>
+<li>[Scholze 2013] Peter Scholze, <a href="https://arxiv.org/abs/1010.1540v1"><em>The Local Langlands Correspondence for GL_n over p-adic fields</em></a>, <em>Inventiones mathematicae</em> 192 (2013), 663–715, Theorem 1.2.</li>
+<li>[Conrad] Keith Conrad, <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/different.pdf"><em>The different ideal</em></a>, expository notes, Remark 4.26 and §5.</li>
+<li>[Deligne–Lusztig 1976] Pierre Deligne and George Lusztig, “<a href="https://publications.ias.edu/sites/default/files/Number27.pdf">Representations of reductive groups over finite fields</a>,” <em>Annals of Mathematics</em> 103 (1976), 103–161.</li>
+<li>[Murnaghan 2009] Fiona Murnaghan, <a href="https://www.math.toronto.edu/murnaghan/courses/mat1197/notes.pdf"><em>Representations of Reductive p-adic Groups</em></a>, notes under revision March 2009, §8, Proposition 1, page 66: compact induction from an inflated finite-field cuspidal representation extended over the center.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-07.html">← Two-dimensional Weil representations: induction and projective symmetry</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-09.html">Modular forms, elliptic curves and local–global compatibility →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-08.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

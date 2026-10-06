@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Positive vectors from a faithful state · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-FSN.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 136 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="positive-vectors-from-a-faithful-state">Positive vectors from a faithful state</h1>
+<p><em>Original AI-authored pedagogical exposition by the OA-MOD course project; CC0-1.0. The proofs use the precise earlier results stated below.</em></p>
+<p>A faithful normal state supplies a cyclic separating vector. Starting from that vector, we construct a cone in which every bounded normal positive functional has exactly one representative. The construction uses the faithful-state modular theorem and a two-by-two matrix algebra. No theorem about an unbounded weight is used in this argument. The general-weight construction and its additional obligations remain in OA-MOD-SF and OA-MOD-WH.</p>
+<p>The principal freely accessible historical source is Uffe Haagerup, <em>The standard form of von Neumann algebras</em>, Math. Scand. 37 (1975), 271–283, especially Theorem 1.1, Lemmas 1.3–1.5 and 2.10. Its proof of the cone theorem uses an earlier dual-cone result; its bounded-functional theorem cites the state case. We supply both arguments here at the stated faithful-state scope, including the relevant domain and comparison proofs. Existing original arguments in OA-MOD-SF are retained and specialized with their assumptions checked explicitly.</p>
+<h2 id="inputs-and-the-exact-scope">Inputs and the exact scope</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a nonzero von Neumann algebra with a faithful normal state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Work in its faithful normal GNS representation on <span class="math" data-tex="\(H\)">\(H\)</span>, with cyclic separating unit vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. We suppress the representation symbol. Inner products are linear in the first variable. The faithful-state theorem OA-MOD-FS supplies</p>
+<span class="math math-display" data-tex="\[
+S=\overline{S_0},\quad S_0(x\xi)=x^*\xi,\qquad
+F=S^*=\overline{F_0},\quad F_0(x&#x27;\xi)=x&#x27;^*\xi,
+\]">\[
+S=\overline{S_0},\quad S_0(x\xi)=x^*\xi,\qquad
+F=S^*=\overline{F_0},\quad F_0(x&#x27;\xi)=x&#x27;^*\xi,
+\]</span>
+<span class="math math-display" data-tex="\[
+S=J\Delta^{1/2},\quad F=J\Delta^{-1/2},\quad
+JMJ=M&#x27;,\quad J\xi=\xi,\quad\Delta\xi=\xi,
+\qquad\sigma_t(x)=\Delta^{it}x\Delta^{-it}\in M.
+\tag{FSN.1}
+\]">\[
+S=J\Delta^{1/2},\quad F=J\Delta^{-1/2},\quad
+JMJ=M&#x27;,\quad J\xi=\xi,\quad\Delta\xi=\xi,
+\qquad\sigma_t(x)=\Delta^{it}x\Delta^{-it}\in M.
+\tag{FSN.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, <span class="math" data-tex="\(x&#x27;\in M&#x27;\)">\(x&#x27;\in M&#x27;\)</span>, and all equalities of unbounded operators include their domains. No separability of <span class="math" data-tex="\(H\)">\(H\)</span> or of the predual is assumed. The sequence of approximants used for a single vector is not a countable basis.</p>
+<p>The earlier Hilbert-space proofs supply orthogonal projections and the Riesz theorem. QF-03–04 supplies representation and unitary covariance of a densely defined closed nonnegative form. BK-07 supplies polar decomposition of a bounded map between different Hilbert spaces. SK-05–09 supplies the spectral calculus, including half-power domains, spectral cutoffs and dominated convergence. MA-02–03 and MA-16 supply vectorwise strong Gaussian integration and its spectral transform. The retained scalar contracts <strong>MA-DEP-SCALAR-COMPLEX</strong> and <strong>MA-DEP-SCALAR-INTEGRATION</strong> supply the scalar identity theorem and dominated differentiation used in the analytic-element argument. CP supplies the concrete predual, bounded positive functionals, their norm <span class="math" data-tex="\(\omega(1)\)">\(\omega(1)\)</span>, and normality of vector functionals. None of these prerequisites is the natural-cone conclusion being proved here.</p>
+<p>For <span class="math" data-tex="\(C\subset H\)">\(C\subset H\)</span>, use the complex Hilbert-space dual cone</p>
+<span class="math math-display" data-tex="\[
+C^\vee=\{v\in H:\langle u,v\rangle\text{ is real and nonnegative for every }u\in C\}.
+\tag{FSN.2}
+\]">\[
+C^\vee=\{v\in H:\langle u,v\rangle\text{ is real and nonnegative for every }u\in C\}.
+\tag{FSN.2}
+\]</span>
+<p>The real-part dual in all of <span class="math" data-tex="\(H\)">\(H\)</span> is a different object. All closures below are norm closures.</p>
+<h2 id="positive-symmetric-operators-have-affiliated-positive-extensions">Positive symmetric operators have affiliated positive extensions</h2>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be a densely defined nonnegative symmetric operator. Complete <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> in the inner product</p>
+<span class="math math-display" data-tex="\[
+\langle u,v\rangle_V=\langle u,v\rangle+\langle Tu,v\rangle.
+\]">\[
+\langle u,v\rangle_V=\langle u,v\rangle+\langle Tu,v\rangle.
+\]</span>
+<p>The inclusion into <span class="math" data-tex="\(H\)">\(H\)</span> extends to a contraction <span class="math" data-tex="\(j:V\to H\)">\(j:V\to H\)</span>. This map is injective: if <span class="math" data-tex="\(u_n\to w\)">\(u_n\to w\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(u_n\to0\)">\(u_n\to0\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, then, for every <span class="math" data-tex="\(v\in D(T)\)">\(v\in D(T)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle u_n,v\rangle_V=\langle u_n,(1+T)v\rangle\longrightarrow0.
+\]">\[
+\langle u_n,v\rangle_V=\langle u_n,(1+T)v\rangle\longrightarrow0.
+\]</span>
+<p>Density of <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> gives <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. Thus the completed form is a densely defined closed nonnegative form on the actual subspace <span class="math" data-tex="\(j(V)\subset H\)">\(j(V)\subset H\)</span>. QF-03 represents it by a positive self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span>. For <span class="math" data-tex="\(u\in D(T)\)">\(u\in D(T)\)</span>, continuity in the form norm gives
+<span class="math" data-tex="\(\bar q(u,v)=\langle Tu,v\rangle\)">\(\bar q(u,v)=\langle Tu,v\rangle\)</span> for every <span class="math" data-tex="\(v\in D(\bar q)\)">\(v\in D(\bar q)\)</span>. The operator-domain part of that theorem implies <span class="math" data-tex="\(h\supset T\)">\(h\supset T\)</span>.</p>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>, each unitary of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> preserves its domain and form, and so acts isometrically on the form completion. The extended action agrees with its action on <span class="math" data-tex="\(H\)">\(H\)</span>. QF-04 therefore gives <span class="math" data-tex="\(uhu^*=h\)">\(uhu^*=h\)</span>; equivalently, all spectral projections of <span class="math" data-tex="\(h\)">\(h\)</span> belong to <span class="math" data-tex="\(M\)">\(M\)</span>. This proves the required affiliation without assuming that the original positive symmetric operator is self-adjoint.</p>
+<h2 id="duality-of-the-two-positive-multiplication-cones">Duality of the two positive multiplication cones</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+C_l=\overline{M_+\xi},\qquad C_r=\overline{M&#x27;_+\xi}.
+\tag{FSN.3}
+\]">\[
+C_l=\overline{M_+\xi},\qquad C_r=\overline{M&#x27;_+\xi}.
+\tag{FSN.3}
+\]</span>
+<p>These are closed convex cones. We prove</p>
+<span class="math math-display" data-tex="\[
+C_l=C_r^\vee,\qquad C_r=C_l^\vee.
+\tag{FSN.4}
+\]">\[
+C_l=C_r^\vee,\qquad C_r=C_l^\vee.
+\tag{FSN.4}
+\]</span>
+<p>For positive <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>, their square roots commute, and
+<span class="math" data-tex="\(\langle a\xi,b\xi\rangle=\|a^{1/2}b^{1/2}\xi\|^2\ge0\)">\(\langle a\xi,b\xi\rangle=\|a^{1/2}b^{1/2}\xi\|^2\ge0\)</span>. Thus <span class="math" data-tex="\(C_l\subset C_r^\vee\)">\(C_l\subset C_r^\vee\)</span>.</p>
+<p>Take <span class="math" data-tex="\(\eta\in C_r^\vee\)">\(\eta\in C_r^\vee\)</span>. The linear functional
+<span class="math" data-tex="\(f(x&#x27;)=\langle x&#x27;\xi,\eta\rangle\)">\(f(x&#x27;)=\langle x&#x27;\xi,\eta\rangle\)</span> on <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is positive, hence satisfies <span class="math" data-tex="\(f(x&#x27;^*)=\overline{f(x&#x27;)}\)">\(f(x&#x27;^*)=\overline{f(x&#x27;)}\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\langle F_0x&#x27;\xi,\eta\rangle=\langle\eta,x&#x27;\xi\rangle.
+\]">\[
+\langle F_0x&#x27;\xi,\eta\rangle=\langle\eta,x&#x27;\xi\rangle.
+\]</span>
+<p>The right side is bounded by <span class="math" data-tex="\(\|\eta\|\|x&#x27;\xi\|\)">\(\|\eta\|\|x&#x27;\xi\|\)</span>. The conjugate-linear adjoint criterion gives <span class="math" data-tex="\(\eta\in D(F_0^*)=D(S)\)">\(\eta\in D(F_0^*)=D(S)\)</span> and <span class="math" data-tex="\(S\eta=\eta\)">\(S\eta=\eta\)</span>.</p>
+<p>On the dense subspace <span class="math" data-tex="\(M&#x27;\xi\)">\(M&#x27;\xi\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+T_0(x&#x27;\xi)=x&#x27;\eta.
+\]">\[
+T_0(x&#x27;\xi)=x&#x27;\eta.
+\]</span>
+<p>It is well defined because <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is separating for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. For <span class="math" data-tex="\(x&#x27;,y&#x27;\in M&#x27;\)">\(x&#x27;,y&#x27;\in M&#x27;\)</span>, positivity and the Hermitian identity for <span class="math" data-tex="\(f\)">\(f\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\langle x&#x27;\eta,y&#x27;\xi\rangle
+=\langle\eta,x&#x27;^*y&#x27;\xi\rangle
+=\langle y&#x27;^*x&#x27;\xi,\eta\rangle
+=\langle x&#x27;\xi,y&#x27;\eta\rangle,
+\]">\[
+\langle x&#x27;\eta,y&#x27;\xi\rangle
+=\langle\eta,x&#x27;^*y&#x27;\xi\rangle
+=\langle y&#x27;^*x&#x27;\xi,\eta\rangle
+=\langle x&#x27;\xi,y&#x27;\eta\rangle,
+\]</span>
+<span class="math math-display" data-tex="\[
+\langle T_0x&#x27;\xi,x&#x27;\xi\rangle
+=\langle\eta,x&#x27;^*x&#x27;\xi\rangle\ge0.
+\]">\[
+\langle T_0x&#x27;\xi,x&#x27;\xi\rangle
+=\langle\eta,x&#x27;^*x&#x27;\xi\rangle\ge0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(T_0\)">\(T_0\)</span> is positive symmetric and closable. Its domain is invariant under every unitary <span class="math" data-tex="\(u&#x27;\in M&#x27;\)">\(u&#x27;\in M&#x27;\)</span>, and <span class="math" data-tex="\(T_0u&#x27;=u&#x27;T_0\)">\(T_0u&#x27;=u&#x27;T_0\)</span> there; the inverse unitary gives equality of the domains. Passing to its graph closure <span class="math" data-tex="\(T\)">\(T\)</span> proves affiliation with <span class="math" data-tex="\(M\)">\(M\)</span>. Apply FSN-02 to obtain an affiliated positive self-adjoint extension <span class="math" data-tex="\(h\)">\(h\)</span>. Since <span class="math" data-tex="\(\xi\in D(T_0)\)">\(\xi\in D(T_0)\)</span>, we have <span class="math" data-tex="\(h\xi=\eta\)">\(h\xi=\eta\)</span>. The operators
+<span class="math" data-tex="\(h_n=h1_{[0,n]}(h)\)">\(h_n=h1_{[0,n]}(h)\)</span> are bounded positive elements of <span class="math" data-tex="\(M\)">\(M\)</span>, and spectral convergence on <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span> gives <span class="math" data-tex="\(h_n\xi\to\eta\)">\(h_n\xi\to\eta\)</span>. Hence <span class="math" data-tex="\(\eta\in C_l\)">\(\eta\in C_l\)</span>, proving the first equality in (FSN.4). The same argument for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> proves the second; its required adjoint-core identity is <span class="math" data-tex="\(S_0^*=F\)">\(S_0^*=F\)</span>, already in (FSN.1).</p>
+<p>Closedness of <span class="math" data-tex="\(S\)">\(S\)</span> gives <span class="math" data-tex="\(S\theta=\theta\)">\(S\theta=\theta\)</span> for <span class="math" data-tex="\(\theta\in C_l\)">\(\theta\in C_l\)</span>, because it fixes every positive multiple <span class="math" data-tex="\(a\xi\)">\(a\xi\)</span>. Similarly <span class="math" data-tex="\(F\)">\(F\)</span> fixes <span class="math" data-tex="\(C_r\)">\(C_r\)</span>. Since <span class="math" data-tex="\(J\xi=\xi\)">\(J\xi=\xi\)</span> and <span class="math" data-tex="\(JMJ=M&#x27;\)">\(JMJ=M&#x27;\)</span>,</p>
+<span class="math math-display" data-tex="\[
+JC_l=C_r,\qquad \Delta^{1/2}C_l=C_r.
+\tag{FSN.5}
+\]">\[
+JC_l=C_r,\qquad \Delta^{1/2}C_l=C_r.
+\tag{FSN.5}
+\]</span>
+<p>Both assertions include surjectivity of the indicated map on these cones. The complex linear spans of <span class="math" data-tex="\(C_l,C_r\)">\(C_l,C_r\)</span> are dense, because positive elements linearly span each algebra and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is cyclic for both. In particular both cones are pointed.</p>
+<h2 id="analytic-vectors-with-bounded-multiplication">Analytic vectors with bounded multiplication</h2>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, let <span class="math" data-tex="\(g_r(t)=\sqrt{r/\pi}e^{-rt^2}\)">\(g_r(t)=\sqrt{r/\pi}e^{-rt^2}\)</span>. If <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+a_r(z)=\int_{\mathbb R}g_r(t-z)\sigma_t(a)\,dt\qquad(z\in\mathbb C).
+\tag{FSN.6}
+\]">\[
+a_r(z)=\int_{\mathbb R}g_r(t-z)\sigma_t(a)\,dt\qquad(z\in\mathbb C).
+\tag{FSN.6}
+\]</span>
+<p>These are vectorwise strong integrals. The bound
+<span class="math" data-tex="\(\int|g_r(t-z)|dt=e^{r(\operatorname{Im}z)^2}\)">\(\int|g_r(t-z)|dt=e^{r(\operatorname{Im}z)^2}\)</span> gives bounded operators in <span class="math" data-tex="\(M\)">\(M\)</span>; finite Riemann sums and strong closedness justify membership. Difference quotients converge in operator norm because the scalar kernels do so in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, locally uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>. Thus <span class="math" data-tex="\(a_r(z)\)">\(a_r(z)\)</span> is norm entire. For real <span class="math" data-tex="\(s\)">\(s\)</span>, change of variable gives <span class="math" data-tex="\(a_r(s)=\sigma_s(a_r(0))\)">\(a_r(s)=\sigma_s(a_r(0))\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+\|a_r(0)\|\le\|a\|,\qquad a_r(0)\longrightarrow a\text{ strongly* as }r\to\infty.
+\tag{FSN.7}
+\]">\[
+\|a_r(0)\|\le\|a\|,\qquad a_r(0)\longrightarrow a\text{ strongly* as }r\to\infty.
+\tag{FSN.7}
+\]</span>
+<p>The last assertion follows by the Gaussian approximate-identity estimate separately on each vector for <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(a^*\)">\(a^*\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the unital star algebra generated by these Gaussian elements and all their complex translates. It consists of norm-entire elements for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The multiplication law and the relation <span class="math" data-tex="\(\sigma_z(a)^*=\sigma_{\bar z}(a^*)\)">\(\sigma_z(a)^*=\sigma_{\bar z}(a^*)\)</span> follow by analytic continuation of their real identities, tested against bounded functionals. It is invariant under all complex translates.</p>
+<p>For completeness the vector-domain implication used below follows directly from spectral bands. If <span class="math" data-tex="\(a\in\mathcal E\)">\(a\in\mathcal E\)</span>, the entire vector function <span class="math" data-tex="\(f(z)=\sigma_z(a)\xi\)">\(f(z)=\sigma_z(a)\xi\)</span> agrees with <span class="math" data-tex="\(\Delta^{it}a\xi\)">\(\Delta^{it}a\xi\)</span> on the real axis. Put <span class="math" data-tex="\(E_n=1_{[1/n,n]}(\Delta)\)">\(E_n=1_{[1/n,n]}(\Delta)\)</span>. The two entire <span class="math" data-tex="\(E_nH\)">\(E_nH\)</span>-valued functions <span class="math" data-tex="\(E_nf(z)\)">\(E_nf(z)\)</span> and <span class="math" data-tex="\(\Delta^{iz}E_na\xi\)">\(\Delta^{iz}E_na\xi\)</span> agree for real <span class="math" data-tex="\(z\)">\(z\)</span>, hence everywhere. For real <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math" data-tex="\(\Delta^s E_na\xi=E_nf(-is)\)">\(\Delta^s E_na\xi=E_nf(-is)\)</span> has squared norms bounded by <span class="math" data-tex="\(\|f(-is)\|^2\)">\(\|f(-is)\|^2\)</span>. Monotone convergence of its spectral integrals yields</p>
+<span class="math math-display" data-tex="\[
+a\xi\in D(\Delta^s),\qquad
+\Delta^s a\xi=\sigma_{-is}(a)\xi.
+\tag{FSN.8}
+\]">\[
+a\xi\in D(\Delta^s),\qquad
+\Delta^s a\xi=\sigma_{-is}(a)\xi.
+\tag{FSN.8}
+\]</span>
+<p>This establishes the actual domain, not merely a formal analytic continuation.</p>
+<h2 id="the-self-dual-cone-and-the-standard-form-axioms">The self-dual cone and the standard-form axioms</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+P=\overline{\{aJaJ\xi:a\in M\}}.
+\tag{FSN.9}
+\]">\[
+P=\overline{\{aJaJ\xi:a\in M\}}.
+\tag{FSN.9}
+\]</span>
+<p>Bounded strong* approximation in (FSN.7) shows that <span class="math" data-tex="\(a\)">\(a\)</span> may equivalently range over <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. For <span class="math" data-tex="\(a\in\mathcal E\)">\(a\in\mathcal E\)</span>, put <span class="math" data-tex="\(b=\sigma_{-i/4}(a)\)">\(b=\sigma_{-i/4}(a)\)</span>. By (FSN.1) and (FSN.8),</p>
+<span class="math math-display" data-tex="\[
+\Delta^{1/4}aa^*\xi
+=\sigma_{-i/4}(a)\sigma_{-i/4}(a^*)\xi
+=bJb\xi=bJbJ\xi.
+\tag{FSN.10}
+\]">\[
+\Delta^{1/4}aa^*\xi
+=\sigma_{-i/4}(a)\sigma_{-i/4}(a^*)\xi
+=bJb\xi=bJbJ\xi.
+\tag{FSN.10}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(Jb\xi=\Delta^{1/2}b^*\xi=\sigma_{-i/2}(b^*)\xi\)">\(Jb\xi=\Delta^{1/2}b^*\xi=\sigma_{-i/2}(b^*)\xi\)</span>. The map <span class="math" data-tex="\(a\mapsto\sigma_{-i/4}(a)\)">\(a\mapsto\sigma_{-i/4}(a)\)</span> is a bijection of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>.</p>
+<p>The analytic vectors <span class="math" data-tex="\(aa^*\xi\)">\(aa^*\xi\)</span> are dense in <span class="math" data-tex="\(C_l\)">\(C_l\)</span>: write a positive element as a square and apply (FSN.7) to its square root. If <span class="math" data-tex="\(\theta_n,\theta\in C_l\)">\(\theta_n,\theta\in C_l\)</span> and <span class="math" data-tex="\(\theta_n\to\theta\)">\(\theta_n\to\theta\)</span>, then (FSN.5) gives <span class="math" data-tex="\(\Delta^{1/2}(\theta_n-\theta)=J(\theta_n-\theta)\to0\)">\(\Delta^{1/2}(\theta_n-\theta)=J(\theta_n-\theta)\to0\)</span>, so spectral Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\|\Delta^{1/4}(\theta_n-\theta)\|^2
+\le\|\Delta^{1/2}(\theta_n-\theta)\|\|\theta_n-\theta\|\longrightarrow0.
+\]">\[
+\|\Delta^{1/4}(\theta_n-\theta)\|^2
+\le\|\Delta^{1/2}(\theta_n-\theta)\|\|\theta_n-\theta\|\longrightarrow0.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+P=\overline{\Delta^{1/4}C_l}
+=\overline{\Delta^{-1/4}C_r}.
+\tag{FSN.11}
+\]">\[
+P=\overline{\Delta^{1/4}C_l}
+=\overline{\Delta^{-1/4}C_r}.
+\tag{FSN.11}
+\]</span>
+<p>The second equality uses <span class="math" data-tex="\(\Delta^{1/2}C_l=C_r\)">\(\Delta^{1/2}C_l=C_r\)</span> and the exact spectral domains. These are closures of linear images of convex cones, so <span class="math" data-tex="\(P\)">\(P\)</span> is a closed convex cone.</p>
+<p>Directly on (FSN.9), commutation of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(JMJ\)">\(JMJ\)</span> gives <span class="math" data-tex="\(Jv=v\)">\(Jv=v\)</span> for <span class="math" data-tex="\(v\in P\)">\(v\in P\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+xJxJ(aJaJ\xi)=(xa)J(xa)J\xi\in P\qquad(x,a\in M).
+\tag{FSN.12}
+\]">\[
+xJxJ(aJaJ\xi)=(xa)J(xa)J\xi\in P\qquad(x,a\in M).
+\tag{FSN.12}
+\]</span>
+<p>Thus <span class="math" data-tex="\(xJxJP\subset P\)">\(xJxJP\subset P\)</span>. Real modular powers preserve <span class="math" data-tex="\(P\)">\(P\)</span>, because they fix <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, commute with <span class="math" data-tex="\(J\)">\(J\)</span> and conjugate <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(\sigma_t(a)\)">\(\sigma_t(a)\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in C_l,v\in C_r\)">\(u\in C_l,v\in C_r\)</span>, spectral cutoffs followed by convergence in the displayed half-power domains prove
+<span class="math" data-tex="\(\langle\Delta^{1/4}u,\Delta^{-1/4}v\rangle=\langle u,v\rangle\ge0\)">\(\langle\Delta^{1/4}u,\Delta^{-1/4}v\rangle=\langle u,v\rangle\ge0\)</span>. Hence <span class="math" data-tex="\(P\subset P^\vee\)">\(P\subset P^\vee\)</span>. Conversely let <span class="math" data-tex="\(w\in P^\vee\)">\(w\in P^\vee\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+w_r=\int_{\mathbb R}g_r(t)\Delta^{it}w\,dt
+=\exp\bigl(- (\log\Delta)^2/(4r)\bigr)w.
+\]">\[
+w_r=\int_{\mathbb R}g_r(t)\Delta^{it}w\,dt
+=\exp\bigl(- (\log\Delta)^2/(4r)\bigr)w.
+\]</span>
+<p>The positive kernel and modular invariance give <span class="math" data-tex="\(w_r\in P^\vee\)">\(w_r\in P^\vee\)</span>. The Gaussian spectral multiplier puts <span class="math" data-tex="\(w_r\)">\(w_r\)</span> in every real-power domain, and <span class="math" data-tex="\(w_r\to w\)">\(w_r\to w\)</span>. For every <span class="math" data-tex="\(v\in C_r\)">\(v\in C_r\)</span>, spectral pairing and (FSN.11) give</p>
+<span class="math math-display" data-tex="\[
+\langle\Delta^{-1/4}w_r,v\rangle
+=\langle w_r,\Delta^{-1/4}v\rangle\ge0.
+\]">\[
+\langle\Delta^{-1/4}w_r,v\rangle
+=\langle w_r,\Delta^{-1/4}v\rangle\ge0.
+\]</span>
+<p>By (FSN.4), <span class="math" data-tex="\(\Delta^{-1/4}w_r\in C_l\)">\(\Delta^{-1/4}w_r\in C_l\)</span>, and thus <span class="math" data-tex="\(w_r\in P\)">\(w_r\in P\)</span>. Closedness gives <span class="math" data-tex="\(w\in P\)">\(w\in P\)</span>. We have proved <span class="math" data-tex="\(P=P^\vee\)">\(P=P^\vee\)</span>.</p>
+<p>Finally, if <span class="math" data-tex="\(z=z^*\in Z(M)\)">\(z=z^*\in Z(M)\)</span>, then <span class="math" data-tex="\(Sz=zS\)">\(Sz=zS\)</span> on <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>: first check this on <span class="math" data-tex="\(M\xi\)">\(M\xi\)</span>, then pass to its graph closure. The same argument on <span class="math" data-tex="\(M&#x27;\xi\)">\(M&#x27;\xi\)</span> gives <span class="math" data-tex="\(Fz=zF\)">\(Fz=zF\)</span>. Thus <span class="math" data-tex="\(z\)">\(z\)</span> preserves <span class="math" data-tex="\(D(\Delta)=D(FS)\)">\(D(\Delta)=D(FS)\)</span>, and <span class="math" data-tex="\(\Delta z=z\Delta\)">\(\Delta z=z\Delta\)</span> there. It follows that <span class="math" data-tex="\(z\)">\(z\)</span> commutes with <span class="math" data-tex="\((1+\Delta)^{-1}\)">\((1+\Delta)^{-1}\)</span>, hence with all spectral projections of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and its half power on the actual domain. Now <span class="math" data-tex="\(S=J\Delta^{1/2}\)">\(S=J\Delta^{1/2}\)</span> gives <span class="math" data-tex="\(Jz=zJ\)">\(Jz=zJ\)</span> on the dense range of <span class="math" data-tex="\(\Delta^{1/2}\)">\(\Delta^{1/2}\)</span>; boundedness extends it to <span class="math" data-tex="\(H\)">\(H\)</span>. Splitting an arbitrary central element into real and imaginary self-adjoint parts proves</p>
+<span class="math math-display" data-tex="\[
+JzJ=z^*\quad(z\in Z(M)).
+\]">\[
+JzJ=z^*\quad(z\in Z(M)).
+\]</span>
+<p>Together with (FSN.1), pointwise fixedness, self-duality and (FSN.12), these are all four standard-form axioms. The real and imaginary parts of any vector lie in the real space <span class="math" data-tex="\(H_J=\{v:Jv=v\}\)">\(H_J=\{v:Jv=v\}\)</span>; the next section proves that <span class="math" data-tex="\(P\)">\(P\)</span> spans this space over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<h2 id="geometry-controls-the-represented-functionals">Geometry controls the represented functionals</h2>
+<p>The real Hilbert space <span class="math" data-tex="\(H_J\)">\(H_J\)</span> has its inherited real inner product. For a vector <span class="math" data-tex="\(v\in H_J\)">\(v\in H_J\)</span>, choose a sequence in <span class="math" data-tex="\(P\)">\(P\)</span> whose distances to <span class="math" data-tex="\(v\)">\(v\)</span> decrease to the infimum. Convexity and the parallelogram identity make this a Cauchy sequence, so there is a closest vector <span class="math" data-tex="\(a\in P\)">\(a\in P\)</span>. The same identity proves uniqueness. Differentiating squared distance along the segments to <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(2a\)">\(2a\)</span>, and along <span class="math" data-tex="\(a+t u\)">\(a+t u\)</span> for <span class="math" data-tex="\(u\in P,t\ge0\)">\(u\in P,t\ge0\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\langle v-a,a\rangle=0,\qquad
+\langle a-v,u\rangle\ge0\quad(u\in P).
+\]">\[
+\langle v-a,a\rangle=0,\qquad
+\langle a-v,u\rangle\ge0\quad(u\in P).
+\]</span>
+<p>Since <span class="math" data-tex="\(a-v\in H_J\)">\(a-v\in H_J\)</span>, these are real pairings. Self-duality gives <span class="math" data-tex="\(b=a-v\in P\)">\(b=a-v\in P\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+v=a-b,\qquad a,b\in P,\qquad\langle a,b\rangle=0.
+\tag{FSN.13}
+\]">\[
+v=a-b,\qquad a,b\in P,\qquad\langle a,b\rangle=0.
+\tag{FSN.13}
+\]</span>
+<p>Conversely such an <span class="math" data-tex="\(a\)">\(a\)</span> minimizes the distance: for <span class="math" data-tex="\(u\in P\)">\(u\in P\)</span>,
+<span class="math" data-tex="\(\|v-u\|^2=\|b\|^2+\|a-u\|^2+2\langle b,u\rangle\ge\|b\|^2\)">\(\|v-u\|^2=\|b\|^2+\|a-u\|^2+2\langle b,u\rangle\ge\|b\|^2\)</span>.
+Thus this decomposition is unique. In particular <span class="math" data-tex="\(P\)">\(P\)</span> spans <span class="math" data-tex="\(H_J\)">\(H_J\)</span> over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and spans <span class="math" data-tex="\(H\)">\(H\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in P\)">\(u\in P\)</span>, let <span class="math" data-tex="\(p_u\in M\)">\(p_u\in M\)</span> be the projection onto <span class="math" data-tex="\(\overline{M&#x27;u}\)">\(\overline{M&#x27;u}\)</span>; its conjugate <span class="math" data-tex="\(Jp_uJ\)">\(Jp_uJ\)</span> projects onto <span class="math" data-tex="\(\overline{Mu}\)">\(\overline{Mu}\)</span>. These projections exist in the indicated commutants because their closed subspaces reduce the corresponding star algebra.</p>
+<p>If <span class="math" data-tex="\(a,b\in P\)">\(a,b\in P\)</span> are orthogonal, then for every <span class="math" data-tex="\(x\in M,t\in\mathbb C\)">\(x\in M,t\in\mathbb C\)</span>, invariance and self-duality give</p>
+<span class="math math-display" data-tex="\[
+0\le\langle(1+t x)J(1+t x)J a,b\rangle
+=2\operatorname{Re}\bigl(t\langle xa,b\rangle\bigr)
++|t|^2\langle xJxJa,b\rangle.
+\]">\[
+0\le\langle(1+t x)J(1+t x)J a,b\rangle
+=2\operatorname{Re}\bigl(t\langle xa,b\rangle\bigr)
++|t|^2\langle xJxJa,b\rangle.
+\]</span>
+<p>Arbitrarily small <span class="math" data-tex="\(t\)">\(t\)</span> of arbitrary phase imply <span class="math" data-tex="\(\langle xa,b\rangle=0\)">\(\langle xa,b\rangle=0\)</span>. Replacing <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span> proves <span class="math" data-tex="\(Ma\perp Mb\)">\(Ma\perp Mb\)</span>; conjugating their projections by <span class="math" data-tex="\(J\)">\(J\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+p_a p_b=0.
+\tag{FSN.14}
+\]">\[
+p_a p_b=0.
+\tag{FSN.14}
+\]</span>
+<p>The converse is immediate because <span class="math" data-tex="\(p_a a=a,p_b b=b\)">\(p_a a=a,p_b b=b\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\omega_u(x)=\langle xu,u\rangle\)">\(\omega_u(x)=\langle xu,u\rangle\)</span>. For <span class="math" data-tex="\(u,v\in P\)">\(u,v\in P\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|u-v\|^2\le\|\omega_u-\omega_v\|
+\le(\|u\|+\|v\|)\|u-v\|.
+\tag{FSN.15}
+\]">\[
+\|u-v\|^2\le\|\omega_u-\omega_v\|
+\le(\|u\|+\|v\|)\|u-v\|.
+\tag{FSN.15}
+\]</span>
+<p>To prove the lower bound, decompose <span class="math" data-tex="\(u-v=a-b\)">\(u-v=a-b\)</span> by (FSN.13), and take the self-adjoint contraction <span class="math" data-tex="\(d=p_a-p_b\)">\(d=p_a-p_b\)</span>. Using (FSN.14),</p>
+<span class="math math-display" data-tex="\[
+(\omega_u-\omega_v)(d)
+=\|a\|^2-\|b\|^2+2\langle v,a+b\rangle.
+\]">\[
+(\omega_u-\omega_v)(d)
+=\|a\|^2-\|b\|^2+2\langle v,a+b\rangle.
+\]</span>
+<p>All cone pairings are nonnegative, and
+<span class="math" data-tex="\(0\le\langle u,b\rangle=\langle v,b\rangle-\|b\|^2\)">\(0\le\langle u,b\rangle=\langle v,b\rangle-\|b\|^2\)</span>. The expression is therefore at least <span class="math" data-tex="\(\|a\|^2+\|b\|^2=\|u-v\|^2\)">\(\|a\|^2+\|b\|^2=\|u-v\|^2\)</span>, and the functional norm bounds it above. This also covers <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, or both. The upper bound follows from</p>
+<span class="math math-display" data-tex="\[
+(\omega_u-\omega_v)(x)
+=\langle x(u-v),u\rangle+\langle xv,u-v\rangle
+\]">\[
+(\omega_u-\omega_v)(x)
+=\langle x(u-v),u\rangle+\langle xv,u-v\rangle
+\]</span>
+<p>and Cauchy–Schwarz, for every <span class="math" data-tex="\(\|x\|\le1\)">\(\|x\|\le1\)</span>. Thus a positive normal functional has at most one representative in <span class="math" data-tex="\(P\)">\(P\)</span>. This is proved before asserting that every such functional has one.</p>
+<h2 id="comparing-two-faithful-states-by-four-closed-graphs">Comparing two faithful states by four closed graphs</h2>
+<p>Let <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> be faithful normal states of the same algebra, with triples <span class="math" data-tex="\((H_j,\xi_j,J_j)\)">\((H_j,\xi_j,J_j)\)</span> and cones <span class="math" data-tex="\(P_j\)">\(P_j\)</span> as constructed above. On <span class="math" data-tex="\(N=M_2(M)\)">\(N=M_2(M)\)</span>, the functional</p>
+<span class="math math-display" data-tex="\[
+\Phi(X)=\tfrac12\bigl(\varphi_1(X_{11})+\varphi_2(X_{22})\bigr)
+\tag{FSN.16}
+\]">\[
+\Phi(X)=\tfrac12\bigl(\varphi_1(X_{11})+\varphi_2(X_{22})\bigr)
+\tag{FSN.16}
+\]</span>
+<p>is a faithful normal state. Normality follows from its bounded diagonal compressions. If a positive <span class="math" data-tex="\(X=Y^*Y\)">\(X=Y^*Y\)</span> has <span class="math" data-tex="\(\Phi(X)=0\)">\(\Phi(X)=0\)</span>, faithfulness applied to its two diagonal sums gives <span class="math" data-tex="\(Y_{ij}=0\)">\(Y_{ij}=0\)</span> for all four entries. Thus <span class="math" data-tex="\(X=0\)">\(X=0\)</span>.</p>
+<p>Its GNS Hilbert space is the direct sum of four slots <span class="math" data-tex="\(H_{ij}=H_j\)">\(H_{ij}=H_j\)</span>: the vector for <span class="math" data-tex="\(X\)">\(X\)</span> has components <span class="math" data-tex="\(2^{-1/2}X_{ij}\xi_j\)">\(2^{-1/2}X_{ij}\xi_j\)</span>. Left multiplication acts by the usual row matrix operations. In particular every slot is densely filled by single-entry matrices. The initial Tomita operator exchanges slots <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and <span class="math" data-tex="\((j,i)\)">\((j,i)\)</span>, acting on their vector cores by</p>
+<span class="math math-display" data-tex="\[
+T_{ij,0}(x\xi_j)=x^*\xi_i.
+\tag{FSN.17}
+\]">\[
+T_{ij,0}(x\xi_j)=x^*\xi_i.
+\tag{FSN.17}
+\]</span>
+<p>The common factor <span class="math" data-tex="\(2^{-1/2}\)">\(2^{-1/2}\)</span> cancels in this formula.</p>
+<p>The slot projections preserve the initial graph, with the stated exchange. Applying them to convergent graph sequences proves that the closed Tomita operator has slot restrictions exactly <span class="math" data-tex="\(T_{ij}=\overline{T_{ij,0}}\)">\(T_{ij}=\overline{T_{ij,0}}\)</span>. Thus these operators have dense domains; the closed involution identity gives <span class="math" data-tex="\(T_{ji}=T_{ij}^{-1}\)">\(T_{ji}=T_{ij}^{-1}\)</span>, including domains and ranges. Their kernels are zero and their ranges are dense. The squared graph form is an orthogonal sum of the four slot forms. Hence <span class="math" data-tex="\(\Delta_\Phi\)">\(\Delta_\Phi\)</span> reduces the slots, and its restriction <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> has half-power domain <span class="math" data-tex="\(D(T_{ij})\)">\(D(T_{ij})\)</span>. Its polar conjugation exchanges them by antiunitaries</p>
+<span class="math math-display" data-tex="\[
+T_{ij}=K_{ij}D_{ij}^{1/2},\qquad
+K_{ij}:H_j\longrightarrow H_i,\qquad K_{ji}=K_{ij}^{-1}.
+\tag{FSN.18}
+\]">\[
+T_{ij}=K_{ij}D_{ij}^{1/2},\qquad
+K_{ij}:H_j\longrightarrow H_i,\qquad K_{ji}=K_{ij}^{-1}.
+\tag{FSN.18}
+\]</span>
+<p>On the diagonal <span class="math" data-tex="\(K_{jj}=J_j\)">\(K_{jj}=J_j\)</span>. These conclusions are restrictions of the faithful-state Tomita construction on <span class="math" data-tex="\(N\)">\(N\)</span>; they assume no theorem about relative modular operators.</p>
+<p>By FS applied to <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, <span class="math" data-tex="\(Q=J_\Phi e_{12}J_\Phi\)">\(Q=J_\Phi e_{12}J_\Phi\)</span> commutes with <span class="math" data-tex="\(N\)">\(N\)</span>. Starting in slot <span class="math" data-tex="\((i,2)\)">\((i,2)\)</span>, its three factors visit <span class="math" data-tex="\((2,i)\)">\((2,i)\)</span>, then <span class="math" data-tex="\((1,i)\)">\((1,i)\)</span>, then <span class="math" data-tex="\((i,1)\)">\((i,1)\)</span>. Thus its coefficient in row <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(K_{1i}K_{i2}\)">\(K_{1i}K_{i2}\)</span>. Commutation with <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span> makes the two row coefficients equal; commutation with <span class="math" data-tex="\(\operatorname{diag}(x,x)\)">\(\operatorname{diag}(x,x)\)</span> makes this coefficient intertwine the two representations. Therefore</p>
+<span class="math math-display" data-tex="\[
+U=J_1K_{12}=K_{12}J_2:H_2\longrightarrow H_1,
+\qquad Ux=xU,\qquad UJ_2=J_1U.
+\tag{FSN.19}
+\]">\[
+U=J_1K_{12}=K_{12}J_2:H_2\longrightarrow H_1,
+\qquad Ux=xU,\qquad UJ_2=J_1U.
+\tag{FSN.19}
+\]</span>
+<p>The notation <span class="math" data-tex="\(Ux=xU\)">\(Ux=xU\)</span> uses the appropriate representation of <span class="math" data-tex="\(x\)">\(x\)</span> on each side. The map <span class="math" data-tex="\(U\)">\(U\)</span> is unitary, as a product of two antiunitaries.</p>
+<p>We check that <span class="math" data-tex="\(UP_2=P_1\)">\(UP_2=P_1\)</span>, rather than inferring this from intertwining. Put <span class="math" data-tex="\(g_j(x)=xJ_jx\xi_j\)">\(g_j(x)=xJ_jx\xi_j\)</span>, so the closures of these generators are <span class="math" data-tex="\(P_j\)">\(P_j\)</span>. Products <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span> and <span class="math" data-tex="\(x^*y\)">\(x^*y\)</span> belong to <span class="math" data-tex="\(M\)">\(M\)</span>, and hence to the exact core domains in (FSN.17). Pointwise <span class="math" data-tex="\(J_j\)">\(J_j\)</span>-fixedness of the generators, commutation of the two algebras and (FSN.19) give the full pairing computation</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle g_1(x),Ug_2(y)\rangle
+&amp;=\langle J_1x\xi_1,Ux^*J_2yJ_2y\xi_2\rangle\\
+&amp;=\langle J_1x\xi_1,J_1UyJ_2(x^*y\xi_2)\rangle\\
+&amp;=\langle UyJ_2(x^*y\xi_2),x\xi_1\rangle\\
+&amp;=\langle K_{12}(x^*y\xi_2),y^*x\xi_1\rangle\\
+&amp;=\langle D_{21}^{1/2}(y^*x\xi_1),y^*x\xi_1\rangle\ge0.
+\end{aligned}
+\tag{FSN.20}
+\]">\[
+\begin{aligned}
+\langle g_1(x),Ug_2(y)\rangle
+&amp;=\langle J_1x\xi_1,Ux^*J_2yJ_2y\xi_2\rangle\\
+&amp;=\langle J_1x\xi_1,J_1UyJ_2(x^*y\xi_2)\rangle\\
+&amp;=\langle UyJ_2(x^*y\xi_2),x\xi_1\rangle\\
+&amp;=\langle K_{12}(x^*y\xi_2),y^*x\xi_1\rangle\\
+&amp;=\langle D_{21}^{1/2}(y^*x\xi_1),y^*x\xi_1\rangle\ge0.
+\end{aligned}
+\tag{FSN.20}
+\]</span>
+<p>For the last equality, use <span class="math" data-tex="\(T_{21}(y^*x\xi_1)=x^*y\xi_2\)">\(T_{21}(y^*x\xi_1)=x^*y\xi_2\)</span> and <span class="math" data-tex="\(K_{12}=K_{21}^{-1}\)">\(K_{12}=K_{21}^{-1}\)</span>. The positive operator acts on <span class="math" data-tex="\(H_1\)">\(H_1\)</span>, and its argument is in its half-power domain. Thus self-duality gives <span class="math" data-tex="\(UP_2\subseteq P_1\)">\(UP_2\subseteq P_1\)</span>. Interchanging the states gives the reverse inclusion, since its unitary is <span class="math" data-tex="\(U^*=K_{21}J_1=J_2K_{21}\)">\(U^*=K_{21}J_1=J_2K_{21}\)</span>.</p>
+<p>This cone-preserving intertwiner is unique. Indeed, two such maps send each <span class="math" data-tex="\(v\in P_2\)">\(v\in P_2\)</span> to vectors in <span class="math" data-tex="\(P_1\)">\(P_1\)</span> representing the same functional. Inequality (FSN.15) makes those vectors equal; complex spanning gives equality of the maps. We denote it <span class="math" data-tex="\(I_{1\leftarrow2}\)">\(I_{1\leftarrow2}\)</span>. Uniqueness proves composition, identity and inverse laws for comparisons of any three faithful states.</p>
+<h2 id="every-bounded-normal-positive-functional-has-a-vector">Every bounded normal positive functional has a vector</h2>
+<p>Fix the original faithful state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\rho_\varepsilon=\omega+\varepsilon\varphi,\qquad
+c_\varepsilon=\rho_\varepsilon(1)&gt;0,
+\qquad\psi_\varepsilon=c_\varepsilon^{-1}\rho_\varepsilon.
+\]">\[
+\rho_\varepsilon=\omega+\varepsilon\varphi,\qquad
+c_\varepsilon=\rho_\varepsilon(1)&gt;0,
+\qquad\psi_\varepsilon=c_\varepsilon^{-1}\rho_\varepsilon.
+\]</span>
+<p>Then <span class="math" data-tex="\(\psi_\varepsilon\)">\(\psi_\varepsilon\)</span> is a faithful normal state. Its cyclic vector belongs to its cone: it is the generator corresponding to <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. By FSN-07,</p>
+<span class="math math-display" data-tex="\[
+v_\varepsilon=\sqrt{c_\varepsilon}\,
+I_{\varphi\leftarrow\psi_\varepsilon}\xi_{\psi_\varepsilon}\in P
+\]">\[
+v_\varepsilon=\sqrt{c_\varepsilon}\,
+I_{\varphi\leftarrow\psi_\varepsilon}\xi_{\psi_\varepsilon}\in P
+\]</span>
+<p>represents <span class="math" data-tex="\(\rho_\varepsilon\)">\(\rho_\varepsilon\)</span>. For <span class="math" data-tex="\(\varepsilon,\delta&gt;0\)">\(\varepsilon,\delta&gt;0\)</span>, (FSN.15) gives</p>
+<span class="math math-display" data-tex="\[
+\|v_\varepsilon-v_\delta\|^2
+\le\|\rho_\varepsilon-\rho_\delta\|
+=|\varepsilon-\delta|.
+\tag{FSN.21}
+\]">\[
+\|v_\varepsilon-v_\delta\|^2
+\le\|\rho_\varepsilon-\rho_\delta\|
+=|\varepsilon-\delta|.
+\tag{FSN.21}
+\]</span>
+<p>Take <span class="math" data-tex="\(\varepsilon=1/n\)">\(\varepsilon=1/n\)</span>. Closedness of <span class="math" data-tex="\(P\)">\(P\)</span> gives a limit <span class="math" data-tex="\(v_\omega\in P\)">\(v_\omega\in P\)</span>. The upper bound in (FSN.15), or the vector-functional estimate used to prove it, shows that this vector represents <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, because <span class="math" data-tex="\(\rho_{1/n}\to\omega\)">\(\rho_{1/n}\to\omega\)</span> in predual norm. Uniqueness is again the lower bound. The choice of sequence and all comparison choices disappear by uniqueness. For <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span> this gives <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span>.</p>
+<p>The map <span class="math" data-tex="\(P\to M_*^+\)">\(P\to M_*^+\)</span> is consequently a homeomorphism for the Hilbert norm and the predual norm, with</p>
+<span class="math math-display" data-tex="\[
+\|v_\omega-v_\nu\|\le\|\omega-\nu\|^{1/2},\qquad
+\|v_\omega\|^2=\omega(1),\qquad
+v_{c\omega}=\sqrt c\,v_\omega\quad(c\ge0).
+\tag{FSN.22}
+\]">\[
+\|v_\omega-v_\nu\|\le\|\omega-\nu\|^{1/2},\qquad
+\|v_\omega\|^2=\omega(1),\qquad
+v_{c\omega}=\sqrt c\,v_\omega\quad(c\ge0).
+\tag{FSN.22}
+\]</span>
+<p>This construction used faithful bounded states on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span> only. In particular, it did not select an unbounded weight on the complement of the support of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<h2 id="supports-and-monotone-functional-nets">Supports and monotone functional nets</h2>
+<p>For a vector <span class="math" data-tex="\(v\in P\)">\(v\in P\)</span>, the projection <span class="math" data-tex="\(p_v\)">\(p_v\)</span> of FSN-06 is exactly the support of <span class="math" data-tex="\(\omega_v\)">\(\omega_v\)</span>. It fixes <span class="math" data-tex="\(v\)">\(v\)</span>. If a projection <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> satisfies <span class="math" data-tex="\(\omega_v(1-e)=0\)">\(\omega_v(1-e)=0\)</span>, then <span class="math" data-tex="\((1-e)v=0\)">\((1-e)v=0\)</span>; since <span class="math" data-tex="\(e\)">\(e\)</span> commutes with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, its range contains <span class="math" data-tex="\(\overline{M&#x27;v}\)">\(\overline{M&#x27;v}\)</span>, so <span class="math" data-tex="\(p_v\le e\)">\(p_v\le e\)</span>. This is the least-support characterization, including <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Also <span class="math" data-tex="\(Jp_vJ\)">\(Jp_vJ\)</span> projects onto <span class="math" data-tex="\(\overline{Mv}\)">\(\overline{Mv}\)</span>. Hence (FSN.14) gives</p>
+<span class="math math-display" data-tex="\[
+s(\omega)s(\nu)=0\quad\Longleftrightarrow\quad
+\langle v_\omega,v_\nu\rangle=0.
+\tag{FSN.23}
+\]">\[
+s(\omega)s(\nu)=0\quad\Longleftrightarrow\quad
+\langle v_\omega,v_\nu\rangle=0.
+\tag{FSN.23}
+\]</span>
+<p>Faithfulness of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is equivalent to <span class="math" data-tex="\(p_{v_\omega}=1\)">\(p_{v_\omega}=1\)</span>; its representative is then both cyclic and separating. The converse follows from its support.</p>
+<p>If <span class="math" data-tex="\((\omega_i)\)">\((\omega_i)\)</span> is any increasing net of normal positive functionals whose pointwise supremum is a bounded normal positive functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|\omega-\omega_i\|=(\omega-\omega_i)(1)\longrightarrow0,
+\qquad v_{\omega_i}\longrightarrow v_\omega.
+\]">\[
+\|\omega-\omega_i\|=(\omega-\omega_i)(1)\longrightarrow0,
+\qquad v_{\omega_i}\longrightarrow v_\omega.
+\]</span>
+<p>The corresponding conclusion holds for a decreasing net with a pointwise infimum <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>. Here the norm identities use positivity and evaluation at the identity; no sequential dominated convergence has been applied to an arbitrary net. A bounded limiting functional is required in the increasing case. An infinite-valued weight cannot be represented by a Hilbert-space vector, whose value at <span class="math" data-tex="\(1\)">\(1\)</span> is finite.</p>
+<h2 id="three-computations-that-test-the-construction">Three computations that test the construction</h2>
+<p><strong>A nontracial matrix state.</strong> Let <span class="math" data-tex="\(M=M_d(\mathbb C)\)">\(M=M_d(\mathbb C)\)</span>, let <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span> have <span class="math" data-tex="\(\operatorname{Tr}D=1\)">\(\operatorname{Tr}D=1\)</span>, and put <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(Dx)\)">\(\varphi(x)=\operatorname{Tr}(Dx)\)</span>. Identify its GNS space with Hilbert–Schmidt matrices by <span class="math" data-tex="\(x\xi\mapsto xD^{1/2}\)">\(x\xi\mapsto xD^{1/2}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+J(X)=X^*,\qquad\Delta(X)=DXD^{-1},\qquad
+aJaJ\xi=aD^{1/2}a^*.
+\]">\[
+J(X)=X^*,\qquad\Delta(X)=DXD^{-1},\qquad
+aJaJ\xi=aD^{1/2}a^*.
+\]</span>
+<p>Every generator is a positive matrix. Conversely, for <span class="math" data-tex="\(B\ge0\)">\(B\ge0\)</span>, choose <span class="math" data-tex="\(a=B^{1/2}D^{-1/4}\)">\(a=B^{1/2}D^{-1/4}\)</span>; then <span class="math" data-tex="\(aD^{1/2}a^*=B\)">\(aD^{1/2}a^*=B\)</span>. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is exactly the positive-matrix cone, although <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> need not be tracial. The functional <span class="math" data-tex="\(\omega_E(x)=\operatorname{Tr}(Ex)\)">\(\omega_E(x)=\operatorname{Tr}(Ex)\)</span>, <span class="math" data-tex="\(E\ge0\)">\(E\ge0\)</span>, has representative <span class="math" data-tex="\(E^{1/2}\)">\(E^{1/2}\)</span>. These identities verify the quarter-power choice and the distinction between the cyclic vector <span class="math" data-tex="\(D^{1/2}\)">\(D^{1/2}\)</span> and the whole cone.</p>
+<p><strong>Cone order does not imply functional order.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+B=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}.
+\]">\[
+A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+B=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}.
+\]</span>
+<p>Both are positive and <span class="math" data-tex="\(B-A=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\ge0\)">\(B-A=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\ge0\)</span>, so <span class="math" data-tex="\(A\le B\)">\(A\le B\)</span> in the cone. But their represented functionals have density difference</p>
+<span class="math math-display" data-tex="\[
+B^2-A^2=\begin{pmatrix}4&amp;3\\3&amp;2\end{pmatrix},
+\]">\[
+B^2-A^2=\begin{pmatrix}4&amp;3\\3&amp;2\end{pmatrix},
+\]</span>
+<p>whose determinant is <span class="math" data-tex="\(-1\)">\(-1\)</span>. For <span class="math" data-tex="\(w=(2,-3)^T\)">\(w=(2,-3)^T\)</span> and the positive rank-one projection <span class="math" data-tex="\(e=ww^*/13\)">\(e=ww^*/13\)</span>,
+<span class="math" data-tex="\((\omega_B-\omega_A)(e)=-2/13&lt;0\)">\((\omega_B-\omega_A)(e)=-2/13&lt;0\)</span>. Therefore the vector-functional correspondence is not an order isomorphism. This does not contradict its norm homeomorphism or its preservation of orthogonal supports.</p>
+<p><strong>The square-root exponent is optimal at zero.</strong> For a state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, uniqueness gives <span class="math" data-tex="\(v_{\varepsilon\varphi}=\sqrt\varepsilon\,v_\varphi\)">\(v_{\varepsilon\varphi}=\sqrt\varepsilon\,v_\varphi\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|v_{\varepsilon\varphi}-v_0\|=\sqrt\varepsilon,
+\qquad\|\varepsilon\varphi-0\|=\varepsilon.
+\]">\[
+\|v_{\varepsilon\varphi}-v_0\|=\sqrt\varepsilon,
+\qquad\|\varepsilon\varphi-0\|=\varepsilon.
+\]</span>
+<p>No uniform local Lipschitz estimate for the inverse map can hold at zero. The exponent <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in (FSN.22) is attained.</p>
+<p>The state assumption in this companion is explicit. Its conclusions are sufficient for arguments whose algebra carries a faithful normal state. Existence and comparison of standard forms for arbitrary algebras, and the construction from arbitrary normal semifinite faithful weights, retain their full separate proofs in SF and WH; this companion makes no reduction of that scope.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-FS.html">← Modular time from a faithful normal state</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/faithful-state-natural-cone.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

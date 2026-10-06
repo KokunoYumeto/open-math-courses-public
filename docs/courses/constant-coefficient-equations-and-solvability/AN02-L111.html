@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Smooth solutions with an exact characteristic halfspace as support</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="smooth-solutions-with-an-exact-characteristic-halfspace-as-support">Smooth solutions with an exact characteristic halfspace as support</h1>
+<p><em>Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026; CC0.</em></p>
+<p>A characteristic plane can be the boundary of a nonzero smooth solution that is zero on the entire other side. Every derivative vanishes at that plane. The construction below works for complex constant coefficients and includes all lower order terms. It imposes no bound on the solution at spatial infinity.</p>
+<p>We use <span class="math" data-tex="\(D_j=-i\partial_{x_j}\)">\(D_j=-i\partial_{x_j}\)</span>, the bilinear dot product when a variable is complex, and the usual Euclidean norm for estimates. The support of a continuous function is the closure of the points where it is nonzero. A function is real analytic if locally it equals a convergent power series in the real coordinates.</p>
+<h2 id="how-to-read-the-construction">How to read the construction</h2>
+<p>The theorem treats every nonzero complex constant-coefficient polynomial and every real characteristic normal, with no normalization or orthogonality requirement. The solution is global and smooth, and solves the full operator including all lower order terms. There is no restriction on growth at infinity. Exact support means every nonempty open subset of the negative halfspace contains a point where the solution is nonzero; it does not mean the solution is nonzero at every point.</p>
+<table aria-label="Construction roadmap" style="width:100%;border-collapse:collapse;margin:1em 0"><thead><tr><th scope="col" style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Part of the argument</th><th scope="col" style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Read here</th><th scope="col" style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">What it supplies</th></tr></thead><tbody><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">The algebraic branch</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Lemma 2, CH3–CH7; Appendix A.2–A.4</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Repeated roots are removed, finite monodromy is killed by <span class="math" data-tex="\(v=t^p\)">\(v=t^p\)</span>, and boundedness gives a branch extending through zero. A zero branch is permitted.</td></tr><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">The full symbol</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">CH8–CH15</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">The branch determines <span class="math" data-tex="\(q(w)\)">\(q(w)\)</span> with <span class="math" data-tex="\(P(iwN+q(w)V)=0\)">\(P(iwN+q(w)V)=0\)</span> and the uniform sublinear bound <span class="math" data-tex="\(|q(w)|\le C|w|^\alpha\)">\(|q(w)|\le C|w|^\alpha\)</span>.</td></tr><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Smoothness and one-sided vanishing</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">CH16–CH21</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Vertical damping dominates every differentiated root contribution. Moving the vertical line to the right proves vanishing on the positive side and all boundary jets.</td></tr><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Nontriviality</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">CH22–CH24</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">The Gram dual selects a line without assuming orthogonal coordinates. A directly proved Gaussian Fourier-injectivity argument gives <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>.</td></tr><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Exact support</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">CH25–CH31 and the final identity argument</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">The two outer-arc estimates justify the left deformation. The resulting holomorphic tube proves negative-interior analyticity, excluding an open region of zeros there.</td></tr><tr><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Test the mechanisms</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">Examples 3–5, CH32–CH35; Exercises 1–5</td><td style="padding:.4em;border:1px solid #d7dfe4;vertical-align:top;text-align:left">A zero branch, the heat operator and an essential lower order term check different features of the theorem. Every exercise has a complete solution.</td></tr></tbody></table>
+<p>The complex tools used in the construction are proved in Appendix A, the finite-cover lemma and CH24. The ordinary entry toolkit consists of real and complex differential calculus, polynomial Euclidean division over a field and rational identities, finite permutations, elementary path lifting and winding contraction. The integral arguments use absolute-integral Fubini and dominated convergence; their precise scalar forms and proofs are available in <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 15.1, equations (LP2) and (LP4). These are the only external proof-provider links used here. No general Puiseux theorem, Holmgren theorem, analytic elliptic regularity or general support theorem is imported.</p>
+<a id="exact-characteristic-halfspace-theorem"></a>
+<p><strong>Theorem 1 (exact characteristic halfspace).</strong> Let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> be a complex polynomial on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span>, and let <span class="math" data-tex="\(P_m\)">\(P_m\)</span> be its homogeneous part of degree <span class="math" data-tex="\(m\)">\(m\)</span>. If <span class="math" data-tex="\(N\in\mathbb R^n\setminus\{0\}\)">\(N\in\mathbb R^n\setminus\{0\}\)</span> satisfies <span class="math" data-tex="\(P_m(N)=0\)">\(P_m(N)=0\)</span>, there is a complex-valued function <span class="math" data-tex="\(u\in C^\infty(\mathbb R^n)\)">\(u\in C^\infty(\mathbb R^n)\)</span> such that
+<span class="math math-display" data-tex="\[
+ P(D)u=0,\qquad
+ \operatorname{supp}u=\{x:x\cdot N\le0\}.
+ \tag{CH1}
+\]">\[
+ P(D)u=0,\qquad
+ \operatorname{supp}u=\{x:x\cdot N\le0\}.
+ \tag{CH1}
+\]</span>
+For every multiindex <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>,
+<span class="math math-display" data-tex="\[
+ \partial^\gamma u(x)=0\quad\hbox{when }x\cdot N=0.
+ \tag{CH2}
+\]">\[
+ \partial^\gamma u(x)=0\quad\hbox{when }x\cdot N=0.
+ \tag{CH2}
+\]</span>
+The constructed solution is real analytic on <span class="math" data-tex="\(x\cdot N&lt;0\)">\(x\cdot N&lt;0\)</span>. Replacing <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(-N\)">\(-N\)</span> gives the positive closed halfspace for the same operator.</p>
+<p>The hypothesis is impossible for <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, since then <span class="math" data-tex="\(P_m=P\)">\(P_m=P\)</span> is a nonzero constant. It is also impossible in dimension one: <span class="math" data-tex="\(P_m(\xi)=a\xi^m\)">\(P_m(\xi)=a\xi^m\)</span>, with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, cannot vanish at a nonzero real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>The proof uses two different decay mechanisms. On a right vertical contour a fractional power <span class="math" data-tex="\(w^\beta\)">\(w^\beta\)</span> damps the integral. On a contour extending to the left, the negative physical coordinate supplies stronger linear decay. The first mechanism gives global smoothness and vanishing for <span class="math" data-tex="\(x\cdot N&gt;0\)">\(x\cdot N&gt;0\)</span>; the second gives analyticity on the negative side. Fourier injectivity then prevents the solution from being zero everywhere.</p>
+<h2 id="a-finite-cover-root-lemma">A finite-cover root lemma</h2>
+<p>We first prove the algebraic step, including the finite-cover argument. The basic one-variable complex facts used in this proof are supplied in Appendix A.</p>
+<p><strong>Lemma 2.</strong> Suppose
+<span class="math math-display" data-tex="\[
+ A(z,v)=z^d+\sum_{j=0}^{d-1}a_j(v)z^j,\qquad d\ge1,
+ \tag{CH3}
+\]">\[
+ A(z,v)=z^d+\sum_{j=0}^{d-1}a_j(v)z^j,\qquad d\ge1,
+ \tag{CH3}
+\]</span>
+where the <span class="math" data-tex="\(a_j\)">\(a_j\)</span> are polynomials in <span class="math" data-tex="\(v\)">\(v\)</span>, and <span class="math" data-tex="\(A(0,0)=0\)">\(A(0,0)=0\)</span>. There are an integer <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, a number <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, and a holomorphic function <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> on <span class="math" data-tex="\(|t|&lt;\rho\)">\(|t|&lt;\rho\)</span>, such that
+<span class="math math-display" data-tex="\[
+ a(0)=0,\qquad A(a(t),t^p)=0,\qquad |a(t)|\le C|t|
+ \quad(|t|&lt;\rho/2).
+ \tag{CH4}
+\]">\[
+ a(0)=0,\qquad A(a(t),t^p)=0,\qquad |a(t)|\le C|t|
+ \quad(|t|&lt;\rho/2).
+ \tag{CH4}
+\]</span>
+The branch <span class="math" data-tex="\(a\)">\(a\)</span> may be identically zero.</p>
+<p><strong>Proof.</strong> Work temporarily over the field <span class="math" data-tex="\(\mathbb C(v)\)">\(\mathbb C(v)\)</span>. The Euclidean algorithm forms the monic squarefree part
+<span class="math math-display" data-tex="\[
+ B=\frac{A}{\gcd(A,\partial_z A)}.
+ \tag{CH5}
+\]">\[
+ B=\frac{A}{\gcd(A,\partial_z A)}.
+ \tag{CH5}
+\]</span>
+Indeed, factoring in an algebraic closure gives <span class="math" data-tex="\(A=\prod_\nu f_\nu^{k_\nu}\)">\(A=\prod_\nu f_\nu^{k_\nu}\)</span> with distinct monic irreducible factors and <span class="math" data-tex="\(B=\prod_\nu f_\nu\)">\(B=\prod_\nu f_\nu\)</span>. Characteristic zero makes each irreducible factor separable. Thus <span class="math" data-tex="\(B\)">\(B\)</span> has no repeated root. The identities <span class="math" data-tex="\(B\mid A\)">\(B\mid A\)</span> and <span class="math" data-tex="\(A\mid B^d\)">\(A\mid B^d\)</span> hold over <span class="math" data-tex="\(\mathbb C(v)\)">\(\mathbb C(v)\)</span>. Exclude the zeros of their finitely many denominators; the specialized polynomials <span class="math" data-tex="\(A(\cdot,v)\)">\(A(\cdot,v)\)</span> and <span class="math" data-tex="\(B(\cdot,v)\)">\(B(\cdot,v)\)</span> then have the same root set. The discriminant of <span class="math" data-tex="\(B\)">\(B\)</span> is a nonzero rational function of <span class="math" data-tex="\(v\)">\(v\)</span>. Equivalently, the Euclidean algorithm gives a rational-coefficient Bézout identity for <span class="math" data-tex="\(B,\partial_z B\)">\(B,\partial_z B\)</span>. Either description shows that, after reducing <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span>, every root of <span class="math" data-tex="\(B(\cdot,v)\)">\(B(\cdot,v)\)</span> is simple whenever <span class="math" data-tex="\(0&lt;|v|&lt;r_0\)">\(0&lt;|v|&lt;r_0\)</span>.</p>
+<p>All roots of <span class="math" data-tex="\(A(\cdot,v)\)">\(A(\cdot,v)\)</span> are uniformly bounded for <span class="math" data-tex="\(|v|\le r_0\)">\(|v|\le r_0\)</span>. In fact, if <span class="math" data-tex="\(M\)">\(M\)</span> bounds its coefficients there, a root has modulus at most <span class="math" data-tex="\(1+M\)">\(1+M\)</span>: for <span class="math" data-tex="\(|z|&gt;1+M\)">\(|z|&gt;1+M\)</span>, the leading term exceeds the sum of the moduli of the remaining terms. This also bounds the roots of <span class="math" data-tex="\(B\)">\(B\)</span> for nonzero <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> such that <span class="math" data-tex="\(0\)">\(0\)</span> is the only root of <span class="math" data-tex="\(A(\cdot,0)\)">\(A(\cdot,0)\)</span> in <span class="math" data-tex="\(|z|\le\varepsilon\)">\(|z|\le\varepsilon\)</span>, and there is no root on the circle. For sufficiently small <span class="math" data-tex="\(|v|\)">\(|v|\)</span>, <span class="math" data-tex="\(A(\cdot,v)\)">\(A(\cdot,v)\)</span> remains nonzero on that circle and has the same positive number of roots inside, counting multiplicity. Here is a direct root-count justification: the integral
+<span class="math math-display" data-tex="\[
+ \frac1{2\pi i}\int_{|z|=\varepsilon}
+       \frac{\partial_z A(z,v)}{A(z,v)}\,dz
+ \tag{CH6}
+\]">\[
+ \frac1{2\pi i}\int_{|z|=\varepsilon}
+       \frac{\partial_z A(z,v)}{A(z,v)}\,dz
+ \tag{CH6}
+\]</span>
+is continuous in <span class="math" data-tex="\(v\)">\(v\)</span> and, after factoring the polynomial, is its integer number of enclosed roots. It is therefore constant. In particular, a root inside the circle exists for some small <span class="math" data-tex="\(v_0\ne0\)">\(v_0\ne0\)</span>.</p>
+<p>At every <span class="math" data-tex="\(0&lt;|v|&lt;r_0\)">\(0&lt;|v|&lt;r_0\)</span>, the simple roots of <span class="math" data-tex="\(B\)">\(B\)</span> have local holomorphic labels. To see this without importing an implicit-function result, isolate a simple root by a small circle <span class="math" data-tex="\(C\)">\(C\)</span>. Nearby parameters keep exactly one root inside <span class="math" data-tex="\(C\)">\(C\)</span>, and that root equals
+<span class="math math-display" data-tex="\[
+ \frac1{2\pi i}\int_C z\,\frac{\partial_z B(z,v)}{B(z,v)}\,dz.
+ \tag{CH7}
+\]">\[
+ \frac1{2\pi i}\int_C z\,\frac{\partial_z B(z,v)}{B(z,v)}\,dz.
+ \tag{CH7}
+\]</span>
+The denominator stays nonzero on <span class="math" data-tex="\(C\)">\(C\)</span>, so differentiation under this finite contour integral proves holomorphy.</p>
+<p>Continue the chosen root along paths in the punctured <span class="math" data-tex="\(v\)">\(v\)</span>-disk. Continuation cannot stop along a compact path: the roots remain bounded, and at a limiting nonzero parameter every root is simple and has a local label as in CH7. The continued root cannot cross <span class="math" data-tex="\(|z|=\varepsilon\)">\(|z|=\varepsilon\)</span>, since that circle is root-free. Local uniqueness also implies that continuations along homotopic paths with fixed endpoints agree. One can check this last assertion by subdividing a path homotopy into small rectangles whose images lie in local-label neighborhoods; opposite routes across each rectangle agree.</p>
+<p>A loop around zero permutes finitely many roots. Choose <span class="math" data-tex="\(p\)">\(p\)</span> so that this permutation raised to its <span class="math" data-tex="\(p\)">\(p\)</span>-th power is the identity, for example the factorial of <span class="math" data-tex="\(\deg_z B\)">\(\deg_z B\)</span>. In the substitution <span class="math" data-tex="\(v=t^p\)">\(v=t^p\)</span>, a loop once around <span class="math" data-tex="\(t=0\)">\(t=0\)</span> goes <span class="math" data-tex="\(p\)">\(p\)</span> times around <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Its root label therefore returns to itself. Every loop in a punctured disk is homotopic to an integer number of such turns: a continuous argument along a loop records its integer winding, and a loop of winding zero contracts after lifting the argument. Consequently the selected label becomes a single-valued holomorphic function <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> on a punctured <span class="math" data-tex="\(t\)">\(t\)</span>-disk.</p>
+<p>It is bounded there, so its singularity at zero is removable. Substitution into CH3 shows <span class="math" data-tex="\(A(a(0),0)=0\)">\(A(a(0),0)=0\)</span>. Since <span class="math" data-tex="\(|a(t)|&lt;\varepsilon\)">\(|a(t)|&lt;\varepsilon\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> is the only root in the closed circle, <span class="math" data-tex="\(a(0)=0\)">\(a(0)=0\)</span>. The Taylor expansion of the extended branch gives <span class="math" data-tex="\(a(t)=t b(t)\)">\(a(t)=t b(t)\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> is holomorphic and bounded on a smaller disk. This proves CH4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Repeated algebraic roots cause no obstruction. For example <span class="math" data-tex="\(A=(z^2-v)^2\)">\(A=(z^2-v)^2\)</span> has squarefree part <span class="math" data-tex="\(B=z^2-v\)">\(B=z^2-v\)</span>; <span class="math" data-tex="\(v=t^2\)">\(v=t^2\)</span> gives the branch <span class="math" data-tex="\(a(t)=t\)">\(a(t)=t\)</span>. The lemma also covers <span class="math" data-tex="\(A=z^d\)">\(A=z^d\)</span>, where the chosen branch is zero.</p>
+<h2 id="a-sublinear-root-of-the-full-symbol">A sublinear root of the full symbol</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+ P=P_m+P_{m-1}+\cdots+P_0
+ \tag{CH8}
+\]">\[
+ P=P_m+P_{m-1}+\cdots+P_0
+ \tag{CH8}
+\]</span>
+with <span class="math" data-tex="\(P_j\)">\(P_j\)</span> homogeneous of degree <span class="math" data-tex="\(j\)">\(j\)</span>. Choose a real vector <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(P_m(V)\ne0\)">\(P_m(V)\ne0\)</span>. Such a vector exists: a polynomial vanishing at every real point is zero, as follows by applying the one-variable polynomial identity successively in each coordinate. The vectors <span class="math" data-tex="\(N,V\)">\(N,V\)</span> are independent because homogeneity makes <span class="math" data-tex="\(P_m\)">\(P_m\)</span> zero on every real multiple of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Form the monic polynomial in <span class="math" data-tex="\(z\)">\(z\)</span>
+<span class="math math-display" data-tex="\[
+ A(z,v)=\frac1{P_m(V)}
+       \sum_{j=0}^m v^{m-j}P_j(N+zV).
+ \tag{CH9}
+\]">\[
+ A(z,v)=\frac1{P_m(V)}
+       \sum_{j=0}^m v^{m-j}P_j(N+zV).
+ \tag{CH9}
+\]</span>
+Its leading <span class="math" data-tex="\(z^m\)">\(z^m\)</span> coefficient is one; only <span class="math" data-tex="\(P_m\)">\(P_m\)</span> contributes that power. Also <span class="math" data-tex="\(A(0,0)=0\)">\(A(0,0)=0\)</span>. Lemma 2 supplies <span class="math" data-tex="\(p,a\)">\(p,a\)</span> as in CH4.</p>
+<p>On the slit plane use
+<span class="math math-display" data-tex="\[
+ \operatorname{Log}w=\log|w|+i\arg w,\quad -\pi&lt;\arg w&lt;\pi.
+ \tag{CH10}
+\]">\[
+ \operatorname{Log}w=\log|w|+i\arg w,\quad -\pi&lt;\arg w&lt;\pi.
+ \tag{CH10}
+\]</span>
+For sufficiently large <span class="math" data-tex="\(|w|\)">\(|w|\)</span>, put
+<span class="math math-display" data-tex="\[
+ t(w)=\exp\!\left[-\frac{\operatorname{Log}w+i\pi/2}{p}\right],
+ \qquad q(w)=iw\,a(t(w)).
+ \tag{CH11}
+\]">\[
+ t(w)=\exp\!\left[-\frac{\operatorname{Log}w+i\pi/2}{p}\right],
+ \qquad q(w)=iw\,a(t(w)).
+ \tag{CH11}
+\]</span>
+This specifies the branch completely; no change of branch occurs on a contour. Since <span class="math" data-tex="\(t(w)^p=1/(iw)\)">\(t(w)^p=1/(iw)\)</span>, homogeneity and CH9 give
+<span class="math math-display" data-tex="\[
+ P(iwN+q(w)V)=(iw)^m P_m(V)
+                   A(a(t(w)),1/(iw))=0.
+ \tag{CH12}
+\]">\[
+ P(iwN+q(w)V)=(iw)^m P_m(V)
+                   A(a(t(w)),1/(iw))=0.
+ \tag{CH12}
+\]</span>
+There are <span class="math" data-tex="\(R_0,C&gt;0\)">\(R_0,C&gt;0\)</span> such that <span class="math" data-tex="\(q\)">\(q\)</span> is holomorphic on
+<span class="math math-display" data-tex="\[
+ \Omega=\{w:|w|&gt;R_0,\ -\pi&lt;\arg w&lt;\pi\},
+ \qquad |q(w)|\le C|w|^\alpha,
+ \quad \alpha=1-\frac1p\in[0,1).
+ \tag{CH13}
+\]">\[
+ \Omega=\{w:|w|&gt;R_0,\ -\pi&lt;\arg w&lt;\pi\},
+ \qquad |q(w)|\le C|w|^\alpha,
+ \quad \alpha=1-\frac1p\in[0,1).
+ \tag{CH13}
+\]</span>
+Indeed <span class="math" data-tex="\(|t(w)|=|w|^{-1/p}\)">\(|t(w)|=|w|^{-1/p}\)</span> and CH4 applies. This uniform bound holds throughout the slit exterior, including arguments close to either side of the cut. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, then <span class="math" data-tex="\(q=0\)">\(q=0\)</span>; the same estimates apply.</p>
+<p>Choose once and for all
+<span class="math math-display" data-tex="\[
+ \alpha&lt;\beta&lt;1,\qquad w^\beta=\exp(\beta\operatorname{Log}w),
+ \qquad k=\cos(\beta\pi/2)&gt;0.
+ \tag{CH14}
+\]">\[
+ \alpha&lt;\beta&lt;1,\qquad w^\beta=\exp(\beta\operatorname{Log}w),
+ \qquad k=\cos(\beta\pi/2)&gt;0.
+ \tag{CH14}
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}w^\beta
+       =|w|^\beta\cos(\beta\arg w)\ge k|w|^\beta.
+ \tag{CH15}
+\]">\[
+ \operatorname{Re}w^\beta
+       =|w|^\beta\cos(\beta\arg w)\ge k|w|^\beta.
+ \tag{CH15}
+\]</span></p>
+<h2 id="the-vertical-integral-and-global-smoothness">The vertical integral and global smoothness</h2>
+<p>For <span class="math" data-tex="\(c&gt;R_0\)">\(c&gt;R_0\)</span> and real <span class="math" data-tex="\(x\)">\(x\)</span>, define
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ r&amp;=x\cdot N,\qquad h=x\cdot V,\\
+ F(x,w)&amp;=\exp[-rw+ihq(w)-w^\beta],\\
+ u_c(x)&amp;=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}F(x,w)\,dw.
+ \end{split}
+ \tag{CH16}
+\]">\[
+ \begin{split}
+ r&amp;=x\cdot N,\qquad h=x\cdot V,\\
+ F(x,w)&amp;=\exp[-rw+ihq(w)-w^\beta],\\
+ u_c(x)&amp;=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}F(x,w)\,dw.
+ \end{split}
+ \tag{CH16}
+\]</span>
+The vertical contour is directed upwards. Along <span class="math" data-tex="\(w=c+is\)">\(w=c+is\)</span>, for <span class="math" data-tex="\(x\)">\(x\)</span> in a fixed compact set,
+<span class="math math-display" data-tex="\[
+ |F(x,c+is)|\le
+ \exp[M c+MC|c+is|^\alpha-k|c+is|^\beta].
+ \tag{CH17}
+\]">\[
+ |F(x,c+is)|\le
+ \exp[M c+MC|c+is|^\alpha-k|c+is|^\beta].
+ \tag{CH17}
+\]</span>
+The <span class="math" data-tex="\(M\)">\(M\)</span> may be increased to bound both <span class="math" data-tex="\(|r|\)">\(|r|\)</span> and <span class="math" data-tex="\(|h|\)">\(|h|\)</span>. Since <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span>, the last two terms are at most <span class="math" data-tex="\(-k|c+is|^\beta/2\)">\(-k|c+is|^\beta/2\)</span> for large <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. Each derivative in <span class="math" data-tex="\(x\)">\(x\)</span> adds a product of components of <span class="math" data-tex="\(-wN+iq(w)V\)">\(-wN+iq(w)V\)</span>, bounded by a fixed power of <span class="math" data-tex="\(1+|s|\)">\(1+|s|\)</span>. Every such power is integrable against <span class="math" data-tex="\(\exp(-k|s|^\beta/2)\)">\(\exp(-k|s|^\beta/2)\)</span>. For example, substitution <span class="math" data-tex="\(y=(k/2)s^\beta\)">\(y=(k/2)s^\beta\)</span> reduces its integral on <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span> to an exponentially decaying power integral. Dominated differentiation, uniformly on compact <span class="math" data-tex="\(x\)">\(x\)</span>-sets, therefore proves <span class="math" data-tex="\(u_c\in C^\infty(\mathbb R^n)\)">\(u_c\in C^\infty(\mathbb R^n)\)</span>.</p>
+<p>Because
+<span class="math math-display" data-tex="\[
+ D_j F=(iwN_j+q(w)V_j)F,
+ \tag{CH18}
+\]">\[
+ D_j F=(iwN_j+q(w)V_j)F,
+ \tag{CH18}
+\]</span>
+CH12 and the same differentiation bounds give <span class="math" data-tex="\(P(D)u_c=0\)">\(P(D)u_c=0\)</span>. This is an equation for the entire polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, not merely its principal part.</p>
+<p>The value is independent of <span class="math" data-tex="\(c\)">\(c\)</span>. For <span class="math" data-tex="\(R_0&lt;c_1&lt;c_2\)">\(R_0&lt;c_1&lt;c_2\)</span>, apply Cauchy's theorem to the rectangle with these vertical sides and horizontal sides at heights <span class="math" data-tex="\(\pm T\)">\(\pm T\)</span>. For fixed real <span class="math" data-tex="\(x\)">\(x\)</span>, the real part of <span class="math" data-tex="\(-rw\)">\(-rw\)</span> is bounded on the horizontal sides, and CH13–CH15 bound the other terms by
+<span class="math math-display" data-tex="\[
+ C_x T^\alpha-kT^\beta/2
+ \tag{CH19}
+\]">\[
+ C_x T^\alpha-kT^\beta/2
+ \tag{CH19}
+\]</span>
+for large <span class="math" data-tex="\(T\)">\(T\)</span>. Their fixed lengths <span class="math" data-tex="\(c_2-c_1\)">\(c_2-c_1\)</span> thus give integrals tending to zero. The two vertical integrals coincide after <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>. Denote their common value by <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>If <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, take <span class="math" data-tex="\(c\)">\(c\)</span> arbitrarily large. For all <span class="math" data-tex="\(|w|\ge c\)">\(|w|\ge c\)</span>, CH13 and <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span> give
+<span class="math math-display" data-tex="\[
+ |h|C|w|^\alpha\le(k/2)|w|^\beta
+ \tag{CH20}
+\]">\[
+ |h|C|w|^\alpha\le(k/2)|w|^\beta
+ \tag{CH20}
+\]</span>
+once <span class="math" data-tex="\(c\)">\(c\)</span> is large enough for this fixed <span class="math" data-tex="\(x\)">\(x\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ |u(x)|\le\frac{e^{-rc}}{2\pi}
+       \int_{\mathbb R}e^{-(k/2)|c+is|^\beta}\,ds
+ \le\frac{e^{-rc}}{2\pi}
+       \int_{\mathbb R}e^{-(k/2)|s|^\beta}\,ds.
+ \tag{CH21}
+\]">\[
+ |u(x)|\le\frac{e^{-rc}}{2\pi}
+       \int_{\mathbb R}e^{-(k/2)|c+is|^\beta}\,ds
+ \le\frac{e^{-rc}}{2\pi}
+       \int_{\mathbb R}e^{-(k/2)|s|^\beta}\,ds.
+ \tag{CH21}
+\]</span>
+The final integral is finite and independent of <span class="math" data-tex="\(c\)">\(c\)</span>. Sending <span class="math" data-tex="\(c\to\infty\)">\(c\to\infty\)</span> proves <span class="math" data-tex="\(u=0\)">\(u=0\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Every derivative is zero on that open set. Its continuity on all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> gives CH2 and also <span class="math" data-tex="\(u=0\)">\(u=0\)</span> on <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<h2 id="a-nonzero-one-dimensional-restriction">A nonzero one-dimensional restriction</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+ \Delta=|N|^2|V|^2-(N\cdot V)^2&gt;0,\qquad
+ L=\frac{|V|^2N-(N\cdot V)V}{\Delta}.
+ \tag{CH22}
+\]">\[
+ \Delta=|N|^2|V|^2-(N\cdot V)^2&gt;0,\qquad
+ L=\frac{|V|^2N-(N\cdot V)V}{\Delta}.
+ \tag{CH22}
+\]</span>
+Then <span class="math" data-tex="\(L\cdot N=1\)">\(L\cdot N=1\)</span> and <span class="math" data-tex="\(L\cdot V=0\)">\(L\cdot V=0\)</span>. At <span class="math" data-tex="\(x=rL\)">\(x=rL\)</span>, CH16 becomes
+<span class="math math-display" data-tex="\[
+ u(rL)=\frac{e^{-cr}}{2\pi}
+       \int_{\mathbb R}e^{-irs}f_c(s)\,ds,\qquad
+ f_c(s)=e^{-(c+is)^\beta}.
+ \tag{CH23}
+\]">\[
+ u(rL)=\frac{e^{-cr}}{2\pi}
+       \int_{\mathbb R}e^{-irs}f_c(s)\,ds,\qquad
+ f_c(s)=e^{-(c+is)^\beta}.
+ \tag{CH23}
+\]</span>
+The function <span class="math" data-tex="\(f_c\)">\(f_c\)</span> is a nonzero Schwartz function. Its modulus has the stretched exponential decay in CH15. Differentiating it in <span class="math" data-tex="\(s\)">\(s\)</span> any number of times gives a finite sum of powers of <span class="math" data-tex="\(c+is\)">\(c+is\)</span> times that same exponential; the powers have at most polynomial growth, and <span class="math" data-tex="\(|c+is|\ge c&gt;0\)">\(|c+is|\ge c&gt;0\)</span>.</p>
+<p>We only need injectivity of the Fourier transform, not a general distribution theorem. If a Schwartz function <span class="math" data-tex="\(f\)">\(f\)</span> has <span class="math" data-tex="\(\int e^{-irs}f(s)\,ds=0\)">\(\int e^{-irs}f(s)\,ds=0\)</span> for every real <span class="math" data-tex="\(r\)">\(r\)</span>, convolve it with
+<span class="math math-display" data-tex="\[
+ g_\epsilon(s)=(4\pi\epsilon)^{-1/2}e^{-s^2/(4\epsilon)}
+       =\frac1{2\pi}\int_{\mathbb R}e^{irs}e^{-\epsilon r^2}\,dr.
+ \tag{CH24}
+\]">\[
+ g_\epsilon(s)=(4\pi\epsilon)^{-1/2}e^{-s^2/(4\epsilon)}
+       =\frac1{2\pi}\int_{\mathbb R}e^{irs}e^{-\epsilon r^2}\,dr.
+ \tag{CH24}
+\]</span>
+Fubini's theorem, justified by <span class="math" data-tex="\(\|f\|_1\int e^{-\epsilon r^2}dr&lt;\infty\)">\(\|f\|_1\int e^{-\epsilon r^2}dr&lt;\infty\)</span>, gives <span class="math" data-tex="\(f*g_\epsilon=0\)">\(f*g_\epsilon=0\)</span>. These Gaussian kernels have mass one and concentrate at zero as <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. Boundedness and uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span>, splitting the integral into <span class="math" data-tex="\(|s|&lt;\eta\)">\(|s|&lt;\eta\)</span> and its Gaussian tail, give <span class="math" data-tex="\(f*g_\epsilon\to f\)">\(f*g_\epsilon\to f\)</span> uniformly. Thus <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. For completeness, the Gaussian identity in CH24 follows by differentiating <span class="math" data-tex="\(I(s)=\int e^{-\epsilon r^2}e^{irs}dr\)">\(I(s)=\int e^{-\epsilon r^2}e^{irs}dr\)</span> and integrating by parts to get <span class="math" data-tex="\(I&#x27;(s)=-sI(s)/(2\epsilon)\)">\(I&#x27;(s)=-sI(s)/(2\epsilon)\)</span>; the value <span class="math" data-tex="\(I(0)=\sqrt{\pi/\epsilon}\)">\(I(0)=\sqrt{\pi/\epsilon}\)</span> follows from the two-dimensional polar-coordinate Gaussian integral.</p>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> were identically zero, CH23 and this injectivity would force <span class="math" data-tex="\(f_c=0\)">\(f_c=0\)</span>, contrary to its exponential formula. Consequently <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>. Since it vanishes on <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, it is nonzero somewhere with <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>.</p>
+<h2 id="the-left-contour-and-exact-support">The left contour and exact support</h2>
+<p>Fix <span class="math" data-tex="\(R&gt;R_0\)">\(R&gt;R_0\)</span>. The contour <span class="math" data-tex="\(\Gamma_R\)">\(\Gamma_R\)</span> consists, in the following order, of
+<span class="math math-display" data-tex="\[
+ \begin{array}{ll}
+  w=-t-iR,&amp;t:\infty\longrightarrow0,\\
+  w=Re^{i\theta},&amp;\theta:-\pi/2\longrightarrow\pi/2,\\
+  w=-t+iR,&amp;t:0\longrightarrow\infty.
+ \end{array}
+ \tag{CH25}
+\]">\[
+ \begin{array}{ll}
+  w=-t-iR,&amp;t:\infty\longrightarrow0,\\
+  w=Re^{i\theta},&amp;\theta:-\pi/2\longrightarrow\pi/2,\\
+  w=-t+iR,&amp;t:0\longrightarrow\infty.
+ \end{array}
+ \tag{CH25}
+\]</span>
+It uses the right semicircle and two horizontal left rays. It stays in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, keeps the disk and the negative-real branch cut on its left as traversed, and has the same upward passage on its right as the vertical contour.</p>
+<p><a href="assets/AN02-L111/characteristic-halfspace-contours-5D84180001F7D3BC4BE05DE8EF8211DAEAD0CCAE611C12B2665A77262AC50830.png" title="Open full-size figure"><img src="assets/AN02-L111/characteristic-halfspace-contours-5D84180001F7D3BC4BE05DE8EF8211DAEAD0CCAE611C12B2665A77262AC50830.png" alt="Exact contours and decay estimates used in CH15 and CH25–CH29" class="course-figure" width="2646" height="1368" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="characteristic-halfspace-contours" data-asset-sha256="5D84180001F7D3BC4BE05DE8EF8211DAEAD0CCAE611C12B2665A77262AC50830"></a><br><a href="assets/AN02-L111/characteristic-halfspace-contours-5D84180001F7D3BC4BE05DE8EF8211DAEAD0CCAE611C12B2665A77262AC50830.png">Open full-size figure</a></p>
+<p><em>Figure 1. The blue contour is the upward vertical line <span class="math" data-tex="\(\operatorname{Re}w=c\)">\(\operatorname{Re}w=c\)</span>. The red contour is exactly CH25: its lower ray points right, its semicircle passes through <span class="math" data-tex="\(+R\)">\(+R\)</span>, and its upper ray points left. The gray disk <span class="math" data-tex="\(|w|\le R\)">\(|w|\le R\)</span> and negative-real cut are excluded during deformation. The dotted outer arcs have <span class="math" data-tex="\(\phi_T\le|\arg w|\le\psi_T\)">\(\phi_T\le|\arg w|\le\psi_T\)</span>; the marked angle <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> splits their two estimates in CH27. The right panel compares the powers controlling the proof: <span class="math" data-tex="\(T^\alpha\)">\(T^\alpha\)</span> from the root, <span class="math" data-tex="\(T^\beta\)">\(T^\beta\)</span> from vertical damping, and <span class="math" data-tex="\(T\)">\(T\)</span> from left decay. It plots the illustrative exponents <span class="math" data-tex="\(\alpha=1/2,\beta=3/4\)">\(\alpha=1/2,\beta=3/4\)</span>, with unit coefficients; these curves are schematic orders, not numerical bounds for an arbitrary <span class="math" data-tex="\(P\)">\(P\)</span>. The inequalities and contour equations, rather than the drawing's example dimensions, specify the proof. Reproducible source: figures/make_figures.py. Human mathematical source: Hörmander I, Theorem 8.6.7; the estimates and detailed contour justification here are original receiving work.</em></p>
+<p>The caption retains the original renderer filename. The same unchanged source is supplied as <a href="figures/an02-l111-make-figures.py">an02-l111-make-figures.py</a>. The <a href="reproduce-AN02-L111.html">standalone reproduction guide</a> links the PNG, SVG, exact geometry and wrapper, and explains the illustrative parameters.</p>
+<p>We justify the deformation for real <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>; complex analyticity will then be proved directly on the new contour. Put <span class="math" data-tex="\(a=-r&gt;0\)">\(a=-r&gt;0\)</span>, and use a vertical line <span class="math" data-tex="\(c&gt;R\)">\(c&gt;R\)</span>, allowed by the already proved independence. Intersect both contours with <span class="math" data-tex="\(|w|&lt;T\)">\(|w|&lt;T\)</span>, where <span class="math" data-tex="\(T&gt;\max(c,R)\)">\(T&gt;\max(c,R)\)</span>. Their upper endpoints have respective arguments
+<span class="math math-display" data-tex="\[
+ \phi_T=\arccos(c/T),\qquad
+ \psi_T=\pi-\arcsin(R/T);
+ \tag{CH26}
+\]">\[
+ \phi_T=\arccos(c/T),\qquad
+ \psi_T=\pi-\arcsin(R/T);
+ \tag{CH26}
+\]</span>
+the lower endpoints have the negative arguments. Join each pair by an arc on <span class="math" data-tex="\(|w|=T\)">\(|w|=T\)</span>. The resulting bounded region between the contours excludes
+<span class="math" data-tex="\(\{|w|\le R\}\cup\{\operatorname{Re}w\le0,\ |\operatorname{Im}w|\le R\}\)">\(\{|w|\le R\}\cup\{\operatorname{Re}w\le0,\ |\operatorname{Im}w|\le R\}\)</span>;
+in particular it excludes the cut and is inside the holomorphic domain. Cauchy's theorem reduces equality of the limiting integrals to decay on the two joining arcs.</p>
+<p>Choose a fixed
+<span class="math math-display" data-tex="\[
+ \frac\pi2&lt;\theta_0&lt;
+       \min\!\left(\pi,\frac{\pi}{2\beta}\right),\qquad
+ k_0=\cos(\beta\theta_0)&gt;0,\qquad b_0=-\cos\theta_0&gt;0.
+ \tag{CH27}
+\]">\[
+ \frac\pi2&lt;\theta_0&lt;
+       \min\!\left(\pi,\frac{\pi}{2\beta}\right),\qquad
+ k_0=\cos(\beta\theta_0)&gt;0,\qquad b_0=-\cos\theta_0&gt;0.
+ \tag{CH27}
+\]</span>
+On either arc, with <span class="math" data-tex="\(\theta=|\arg w|\)">\(\theta=|\arg w|\)</span>, the exponent is bounded by
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}[-rw+ihq(w)-w^\beta]
+ \le aT\cos\theta+C|h|T^\alpha-T^\beta\cos(\beta\theta).
+ \tag{CH28}
+\]">\[
+ \operatorname{Re}[-rw+ihq(w)-w^\beta]
+ \le aT\cos\theta+C|h|T^\alpha-T^\beta\cos(\beta\theta).
+ \tag{CH28}
+\]</span>
+For <span class="math" data-tex="\(\phi_T\le\theta\le\theta_0\)">\(\phi_T\le\theta\le\theta_0\)</span>, <span class="math" data-tex="\(T\cos\theta\le c\)">\(T\cos\theta\le c\)</span> and <span class="math" data-tex="\(\cos(\beta\theta)\ge k_0\)">\(\cos(\beta\theta)\ge k_0\)</span>, so CH28 is at most <span class="math" data-tex="\(ac+C|h|T^\alpha-k_0T^\beta\)">\(ac+C|h|T^\alpha-k_0T^\beta\)</span>, hence at most <span class="math" data-tex="\(-k_0T^\beta/2\)">\(-k_0T^\beta/2\)</span> for large <span class="math" data-tex="\(T\)">\(T\)</span>. For <span class="math" data-tex="\(\theta_0\le\theta\le\psi_T\)">\(\theta_0\le\theta\le\psi_T\)</span>, it is at most
+<span class="math math-display" data-tex="\[
+ -ab_0T+C|h|T^\alpha+T^\beta
+       \le-ab_0T/2
+ \tag{CH29}
+\]">\[
+ -ab_0T+C|h|T^\alpha+T^\beta
+       \le-ab_0T/2
+ \tag{CH29}
+\]</span>
+for large <span class="math" data-tex="\(T\)">\(T\)</span>. Each arc has length at most <span class="math" data-tex="\(\pi T\)">\(\pi T\)</span>. Both integrals therefore tend to zero. The vertical integral equals the integral over CH25.</p>
+<p>Now let <span class="math" data-tex="\(z\in\mathbb C^n\)">\(z\in\mathbb C^n\)</span> and <span class="math" data-tex="\(r=z\cdot N\)">\(r=z\cdot N\)</span>, <span class="math" data-tex="\(h=z\cdot V\)">\(h=z\cdot V\)</span>. Define
+<span class="math math-display" data-tex="\[
+ U(z)=\frac1{2\pi i}\int_{\Gamma_R}
+       \exp[-(z\cdot N)w+i(z\cdot V)q(w)-w^\beta]\,dw
+ \quad\hbox{for }\operatorname{Re}(z\cdot N)&lt;0.
+ \tag{CH30}
+\]">\[
+ U(z)=\frac1{2\pi i}\int_{\Gamma_R}
+       \exp[-(z\cdot N)w+i(z\cdot V)q(w)-w^\beta]\,dw
+ \quad\hbox{for }\operatorname{Re}(z\cdot N)&lt;0.
+ \tag{CH30}
+\]</span>
+This integral is locally uniformly convergent. On a compact subset of this tube there are <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and <span class="math" data-tex="\(M&lt;\infty\)">\(M&lt;\infty\)</span> with <span class="math" data-tex="\(\operatorname{Re}r\le-\delta\)">\(\operatorname{Re}r\le-\delta\)</span>, <span class="math" data-tex="\(|r|,|h|\le M\)">\(|r|,|h|\le M\)</span>. On a ray <span class="math" data-tex="\(w=-t+i\sigma R\)">\(w=-t+i\sigma R\)</span>, <span class="math" data-tex="\(\sigma=\pm1\)">\(\sigma=\pm1\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ \operatorname{Re}(-rw)&amp;=t\operatorname{Re}r+\sigma R\operatorname{Im}r
+       \le-\delta t+RM,\\
+ |F(z,w)|&amp;\le
+ \exp[-\delta t+RM+CM(t+R)^\alpha+(t+R)^\beta].
+ \end{split}
+ \tag{CH31}
+\]">\[
+ \begin{split}
+ \operatorname{Re}(-rw)&amp;=t\operatorname{Re}r+\sigma R\operatorname{Im}r
+       \le-\delta t+RM,\\
+ |F(z,w)|&amp;\le
+ \exp[-\delta t+RM+CM(t+R)^\alpha+(t+R)^\beta].
+ \end{split}
+ \tag{CH31}
+\]</span>
+Since <span class="math" data-tex="\(\alpha,\beta&lt;1\)">\(\alpha,\beta&lt;1\)</span>, this is bounded by a constant times <span class="math" data-tex="\(e^{-\delta t/2}\)">\(e^{-\delta t/2}\)</span>. Any fixed number of derivatives in <span class="math" data-tex="\(z\)">\(z\)</span> only multiplies it by a polynomial in <span class="math" data-tex="\(1+t\)">\(1+t\)</span>. The semicircle is compact and causes no convergence issue.</p>
+<p>Here is also a direct power-series justification of holomorphy, avoiding any unstated several-complex-variable theorem. Around <span class="math" data-tex="\(z_0\)">\(z_0\)</span> in this tube, expand the exponential of the linear increment in <span class="math" data-tex="\(z-z_0\)">\(z-z_0\)</span>. Its coefficients involve components of <span class="math" data-tex="\(-wN+iq(w)V\)">\(-wN+iq(w)V\)</span>, whose sum of moduli is at most <span class="math" data-tex="\(C_1(1+t)\)">\(C_1(1+t)\)</span> on the rays. Choose a polydisk radius so small that the absolute sum of this exponential series is at most <span class="math" data-tex="\(e^{\delta t/4+C_2}\)">\(e^{\delta t/4+C_2}\)</span>. CH31 then provides an integrable majorant for the series and all its partial sums. Termwise integration gives a convergent power series for <span class="math" data-tex="\(U\)">\(U\)</span> on the polydisk. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is holomorphic, and its restriction to real <span class="math" data-tex="\(x\)">\(x\)</span> is real analytic. The proved real contour deformation shows <span class="math" data-tex="\(U(x)=u(x)\)">\(U(x)=u(x)\)</span> for <span class="math" data-tex="\(x\cdot N&lt;0\)">\(x\cdot N&lt;0\)</span>.</p>
+<p>Finally, a real analytic function on a connected open set that vanishes on a nonempty open subset vanishes everywhere there. A short proof useful here is to consider points with a zero neighborhood. They form an open set. They also form a relatively closed set: at a limit point all derivatives are zero by continuity, and the local convergent power series is therefore zero. Connectedness finishes the argument. The halfspace <span class="math" data-tex="\(x\cdot N&lt;0\)">\(x\cdot N&lt;0\)</span> is convex and connected.</p>
+<p>If the present <span class="math" data-tex="\(u\)">\(u\)</span> vanished on any nonempty open subset of that halfspace, it would vanish on the entire halfspace, contradicting its nonzero restriction in CH23. Hence every nonempty open subset of the negative halfspace meets a point where <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>. Every ball centered at its boundary contains such an open subset. Combining this with <span class="math" data-tex="\(u=0\)">\(u=0\)</span> on the positive side proves exactly CH1, not just a support inclusion. CH2 was already proved. This completes Theorem 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="examples">Examples</h2>
+<p><strong>Example 3 (a zero branch).</strong> In coordinates <span class="math" data-tex="\((y,t)\)">\((y,t)\)</span>, take <span class="math" data-tex="\(P(\xi,\tau)=\xi\)">\(P(\xi,\tau)=\xi\)</span>, <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>, <span class="math" data-tex="\(V=e_y\)">\(V=e_y\)</span>. The root is <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. An elementary witness is <span class="math" data-tex="\(u(y,t)=\varphi(t)\)">\(u(y,t)=\varphi(t)\)</span>, where
+<span class="math math-display" data-tex="\[
+ \varphi(t)=
+ \begin{cases}e^{1/t},&amp;t&lt;0,\\0,&amp;t\ge0.\end{cases}
+ \tag{CH32}
+\]">\[
+ \varphi(t)=
+ \begin{cases}e^{1/t},&amp;t&lt;0,\\0,&amp;t\ge0.\end{cases}
+ \tag{CH32}
+\]</span>
+Every left derivative is an exponential times a polynomial in <span class="math" data-tex="\(1/t\)">\(1/t\)</span>, tending to zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>; hence <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is smooth and flat there. It is positive at every negative <span class="math" data-tex="\(t\)">\(t\)</span>, so its support is exactly <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>. The general integral construction permits a zero branch as well.</p>
+<p><strong>Example 4 (the heat operator).</strong> Let
+<span class="math math-display" data-tex="\[
+ P(\xi,\tau)=\xi^2+i\tau,\qquad
+ P(D)=\partial_t-\partial_y^2,\qquad
+ N=e_t,\quad V=e_y.
+ \tag{CH33}
+\]">\[
+ P(\xi,\tau)=\xi^2+i\tau,\qquad
+ P(D)=\partial_t-\partial_y^2,\qquad
+ N=e_t,\quad V=e_y.
+ \tag{CH33}
+\]</span>
+The principal part is <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span>, which vanishes at <span class="math" data-tex="\(N\)">\(N\)</span>. The exact root equation is <span class="math" data-tex="\(q^2-w=0\)">\(q^2-w=0\)</span>. Take <span class="math" data-tex="\(q(w)=w^{1/2}\)">\(q(w)=w^{1/2}\)</span> on the slit plane and <span class="math" data-tex="\(\beta=3/4\)">\(\beta=3/4\)</span>. The construction is
+<span class="math math-display" data-tex="\[
+ u(y,t)=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+       e^{-tw+iyw^{1/2}-w^{3/4}}\,dw.
+ \tag{CH34}
+\]">\[
+ u(y,t)=\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+       e^{-tw+iyw^{1/2}-w^{3/4}}\,dw.
+ \tag{CH34}
+\]</span>
+This nonzero global smooth heat solution has support exactly <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> and all jets zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. In its integrand, <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> gives <span class="math" data-tex="\(-w\)">\(-w\)</span>, while <span class="math" data-tex="\(\partial_y^2\)">\(\partial_y^2\)</span> gives <span class="math" data-tex="\(-q^2\)">\(-q^2\)</span>, so their difference is zero. At <span class="math" data-tex="\(y=0\)">\(y=0\)</span> the Fourier restriction in CH23 proves nontriviality. No estimate controlling spatial growth at infinity was imposed or proved. The conclusion concerns the full smooth class, and does not settle uniqueness in a smaller growth class.</p>
+<p><strong>Example 5 (a lower order term survives).</strong> For <span class="math" data-tex="\(P(\xi,\tau)=\xi\tau-1\)">\(P(\xi,\tau)=\xi\tau-1\)</span>, use <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>, <span class="math" data-tex="\(V=(1,1)\)">\(V=(1,1)\)</span>, so <span class="math" data-tex="\(P_2(V)=1\)">\(P_2(V)=1\)</span>. For <span class="math" data-tex="\(|w|&gt;2\)">\(|w|&gt;2\)</span>, the binomial-series branch
+<span class="math math-display" data-tex="\[
+ q(w)=\frac{2}{iw\,[1+\sqrt{1-4/w^2}]}
+ \tag{CH35}
+\]">\[
+ q(w)=\frac{2}{iw\,[1+\sqrt{1-4/w^2}]}
+ \tag{CH35}
+\]</span>
+satisfies <span class="math" data-tex="\(q(iw+q)=1\)">\(q(iw+q)=1\)</span>. Its asymptotic is <span class="math" data-tex="\(q(w)=1/(iw)+O(|w|^{-3})\)">\(q(w)=1/(iw)+O(|w|^{-3})\)</span>; it is <span class="math" data-tex="\(O(|w|^{-1})\)">\(O(|w|^{-1})\)</span> uniformly outside a sufficiently large disk. One may use the weaker bound <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span> and any <span class="math" data-tex="\(0&lt;\beta&lt;1\)">\(0&lt;\beta&lt;1\)</span>. This produces an exact negative-halfspace solution for <span class="math" data-tex="\(D_yD_t-1\)">\(D_yD_t-1\)</span>. Dropping the constant term would change the root equation and would not verify that operator.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (orientation and coordinates).</strong> Verify CH22. Explain why the theorem supplies both orientations, and why its hypothesis has no instance in dimension one or degree zero.</p>
+<p><strong>Solution.</strong> Taking the dot product of the numerator of <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, and with <span class="math" data-tex="\(V\)">\(V\)</span> gives zero. Strict Cauchy–Schwarz gives <span class="math" data-tex="\(\Delta&gt;0\)">\(\Delta&gt;0\)</span> because <span class="math" data-tex="\(N,V\)">\(N,V\)</span> are independent. Thus <span class="math" data-tex="\(rL\)">\(rL\)</span> is exactly the real line with dot products <span class="math" data-tex="\(r,0\)">\(r,0\)</span>, without requiring <span class="math" data-tex="\(N,V\)">\(N,V\)</span> to be orthogonal or unit vectors. Homogeneity gives <span class="math" data-tex="\(P_m(-N)=(-1)^mP_m(N)=0\)">\(P_m(-N)=(-1)^mP_m(N)=0\)</span>; apply the theorem to <span class="math" data-tex="\(-N\)">\(-N\)</span>, obtaining <span class="math" data-tex="\(x\cdot N\ge0\)">\(x\cdot N\ge0\)</span>. No substitution in the lower order terms is needed. Degree zero gives a nonzero constant principal part, and dimension one gives <span class="math" data-tex="\(aN^m\ne0\)">\(aN^m\ne0\)</span>, as stated before the proof.</p>
+<p><strong>Exercise 2 (repeated roots and branch bounds).</strong> Carry out Lemma 2 for <span class="math" data-tex="\(A(z,v)=(z^2-v)^2\)">\(A(z,v)=(z^2-v)^2\)</span>. Then show that the estimate <span class="math" data-tex="\(a(t)=O(t)\)">\(a(t)=O(t)\)</span> suffices for CH13 even when the Taylor series starts at a higher power.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(A_z=4z(z^2-v)\)">\(A_z=4z(z^2-v)\)</span>; over <span class="math" data-tex="\(\mathbb C(v)\)">\(\mathbb C(v)\)</span>, its monic greatest common divisor with <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(z^2-v\)">\(z^2-v\)</span>. Thus <span class="math" data-tex="\(B=z^2-v\)">\(B=z^2-v\)</span>, whose discriminant is <span class="math" data-tex="\(4v\)">\(4v\)</span>. Its two roots are simple for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>; a turn around zero swaps them. Setting <span class="math" data-tex="\(v=t^2\)">\(v=t^2\)</span> gives <span class="math" data-tex="\(a(t)=t\)">\(a(t)=t\)</span>, or <span class="math" data-tex="\(-t\)">\(-t\)</span>, both extending through zero. In general if <span class="math" data-tex="\(a(t)=t^k b(t)\)">\(a(t)=t^k b(t)\)</span>, <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, then <span class="math" data-tex="\(|q(w)|\le C|w|^{1-k/p}\)">\(|q(w)|\le C|w|^{1-k/p}\)</span>. For <span class="math" data-tex="\(|w|\ge1\)">\(|w|\ge1\)</span>, this is at most <span class="math" data-tex="\(C|w|^{1-1/p}\)">\(C|w|^{1-1/p}\)</span>. If all coefficients vanish, <span class="math" data-tex="\(a=q=0\)">\(a=q=0\)</span>. No division by a leading nonzero Taylor coefficient is used.</p>
+<p><strong>Exercise 3 (the full lower order root).</strong> Verify CH35 and its uniform exterior estimate.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(s=\sqrt{1-4/w^2}\)">\(s=\sqrt{1-4/w^2}\)</span> using the Taylor series for the square root at one. For <span class="math" data-tex="\(|w|&gt;2\)">\(|w|&gt;2\)</span>, its argument <span class="math" data-tex="\(1-4/w^2\)">\(1-4/w^2\)</span> lies in the disk centered at one of radius less than one, so that branch is holomorphic and satisfies <span class="math" data-tex="\(s^2=1-4/w^2\)">\(s^2=1-4/w^2\)</span>. Rationalization gives
+<span class="math math-display" data-tex="\[
+ q=\frac{iw}{2}(s-1).
+\]">\[
+ q=\frac{iw}{2}(s-1).
+\]</span>
+Then <span class="math" data-tex="\(q+iw=(iw/2)(s+1)\)">\(q+iw=(iw/2)(s+1)\)</span>, and
+<span class="math math-display" data-tex="\[
+ q(q+iw)=-\frac{w^2}{4}(s^2-1)=1.
+\]">\[
+ q(q+iw)=-\frac{w^2}{4}(s^2-1)=1.
+\]</span>
+As <span class="math" data-tex="\(|w|\to\infty\)">\(|w|\to\infty\)</span>, <span class="math" data-tex="\(s=1-2/w^2+O(|w|^{-4})\)">\(s=1-2/w^2+O(|w|^{-4})\)</span>, hence <span class="math" data-tex="\(q=-i/w+O(|w|^{-3})=1/(iw)+O(|w|^{-3})\)">\(q=-i/w+O(|w|^{-3})=1/(iw)+O(|w|^{-3})\)</span>. For <span class="math" data-tex="\(|w|\ge R&gt;2\)">\(|w|\ge R&gt;2\)</span>, the power series is uniformly convergent; after increasing <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(|1+s|\ge1\)">\(|1+s|\ge1\)</span>. The denominator formula gives <span class="math" data-tex="\(|q|\le2/|w|\)">\(|q|\le2/|w|\)</span>. This is a uniform bound in every angle, not merely on the positive real axis.</p>
+<p><strong>Exercise 4 (why the two exponent inequalities are needed).</strong> Explain the roles of <span class="math" data-tex="\(\alpha&lt;\beta\)">\(\alpha&lt;\beta\)</span> and <span class="math" data-tex="\(\beta&lt;1\)">\(\beta&lt;1\)</span>. Compute the first two derivatives of <span class="math" data-tex="\(f_c(s)\)">\(f_c(s)\)</span> and verify that they obey Schwartz bounds.</p>
+<p><strong>Solution.</strong> On the vertical contour, the possibly positive root contribution has order <span class="math" data-tex="\(C|h||w|^\alpha\)">\(C|h||w|^\alpha\)</span>. To dominate it for every fixed real <span class="math" data-tex="\(h\)">\(h\)</span>, the damping order must be strictly larger: <span class="math" data-tex="\(\beta&gt;\alpha\)">\(\beta&gt;\alpha\)</span>. With equal orders a sufficiently large <span class="math" data-tex="\(|h|\)">\(|h|\)</span> could defeat the available bound. On the left rays the negative real physical coordinate gives <span class="math" data-tex="\(-\delta t\)">\(-\delta t\)</span>; it must dominate both sublinear terms <span class="math" data-tex="\(t^\alpha,t^\beta\)">\(t^\alpha,t^\beta\)</span>, so <span class="math" data-tex="\(\beta&lt;1\)">\(\beta&lt;1\)</span>. This also gives the strictly positive number <span class="math" data-tex="\(\cos(\beta\pi/2)\)">\(\cos(\beta\pi/2)\)</span> on the vertical line. At <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>, <span class="math" data-tex="\(|e^{-(c+is)}|=e^{-c}\)">\(|e^{-(c+is)}|=e^{-c}\)</span>, which supplies no decay as <span class="math" data-tex="\(|s|\to\infty\)">\(|s|\to\infty\)</span>.</p>
+<p>Writing <span class="math" data-tex="\(w=c+is\)">\(w=c+is\)</span>, direct differentiation yields
+<span class="math math-display" data-tex="\[
+ f_c&#x27;=-i\beta w^{\beta-1}f_c,\qquad
+ f_c&#x27;&#x27;=
+ \left[\beta(\beta-1)w^{\beta-2}
+       -\beta^2w^{2\beta-2}\right]f_c.
+\]">\[
+ f_c&#x27;=-i\beta w^{\beta-1}f_c,\qquad
+ f_c&#x27;&#x27;=
+ \left[\beta(\beta-1)w^{\beta-2}
+       -\beta^2w^{2\beta-2}\right]f_c.
+\]</span>
+Since <span class="math" data-tex="\(|w|\ge c&gt;0\)">\(|w|\ge c&gt;0\)</span>, these factors have no singularity on the line. Multiplying either derivative by any power of <span class="math" data-tex="\(s\)">\(s\)</span> still gives a bounded function, because CH15 gives <span class="math" data-tex="\(|f_c|\le e^{-k|w|^\beta}\)">\(|f_c|\le e^{-k|w|^\beta}\)</span>. Repeated differentiation has the same finite-sum form, proving all Schwartz seminorms are finite.</p>
+<p><strong>Exercise 5 (smooth flatness does not give the exact support alone).</strong> Prove flatness from vanishing on one side. Identify the additional argument needed to exclude an open zero region inside the other side, and prove the real analytic identity assertion used there.</p>
+<p><strong>Solution.</strong> If a smooth <span class="math" data-tex="\(v\)">\(v\)</span> vanishes on <span class="math" data-tex="\(x\cdot N&gt;0\)">\(x\cdot N&gt;0\)</span>, each <span class="math" data-tex="\(\partial^\gamma v\)">\(\partial^\gamma v\)</span> vanishes there too. For a boundary point <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, the points <span class="math" data-tex="\(x_0+\varepsilon N\)">\(x_0+\varepsilon N\)</span> lie on that side for <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and tend to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>; continuity gives <span class="math" data-tex="\(\partial^\gamma v(x_0)=0\)">\(\partial^\gamma v(x_0)=0\)</span>. This proves all jets are flat but permits, for instance, a compactly supported smooth function lying strictly inside the negative halfspace. It does not prove the entire halfspace is the support. Here CH30–CH31 provide analyticity on the connected negative interior, while CH23 supplies a nonzero value there. For any real analytic function, points with a zero neighborhood form an open set. If such points approach an interior point, every derivative at the limit is zero, since all those derivatives vanish at the approaching points. Its local convergent power series is zero; it too has a zero neighborhood. This set is relatively closed. If it is nonempty in a connected domain it equals that domain. Applying this to the constructed <span class="math" data-tex="\(u\)">\(u\)</span> excludes an interior open zero region and gives the exact support.</p>
+<h2 id="appendix-a-the-elementary-complex-tools-used-above">Appendix A: the elementary complex tools used above</h2>
+<p>We record the relevant forms and their proofs to make the dependency boundary explicit. The measure-theoretic tools are ordinary absolute-integral Fubini and dominated convergence. Fourier injectivity was proved directly in CH24. No general Puiseux theorem, analytic elliptic regularity theorem, Holmgren theorem, or support theorem is a prerequisite of this construction.</p>
+<p><strong>A.1 (Cauchy's theorem and integral formula).</strong> A holomorphic function on a neighborhood of the closure of a bounded piecewise smooth planar region has zero integral over its oriented boundary. A holomorphic function inside and near a circle satisfies
+<span class="math math-display" data-tex="\[
+ f(z)=\frac1{2\pi i}\int_C\frac{f(\zeta)}{\zeta-z}\,d\zeta
+\]">\[
+ f(z)=\frac1{2\pi i}\int_C\frac{f(\zeta)}{\zeta-z}\,d\zeta
+\]</span>
+for <span class="math" data-tex="\(z\)">\(z\)</span> inside the circle, and therefore has a convergent Taylor series there.</p>
+<p>One elementary proof starts with triangles. If a triangle integral were nonzero, dividing into four similar triangles and selecting one carrying at least a quarter of that integral gives nested triangles with diameters halving. At their common limit <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, differentiability writes <span class="math" data-tex="\(f(z)=f(z_0)+f&#x27;(z_0)(z-z_0)+o(|z-z_0|)\)">\(f(z)=f(z_0)+f&#x27;(z_0)(z-z_0)+o(|z-z_0|)\)</span>. The constant and linear terms integrate to zero. The error times perimeter is <span class="math" data-tex="\(o(4^{-j})\)">\(o(4^{-j})\)</span>, contradicting the selected integral's lower bound proportional to <span class="math" data-tex="\(4^{-j}\)">\(4^{-j}\)</span>. Finite subdivision and cancellation of interior edges give the assertion for polygonal regions. Approximating each smooth boundary arc by polygonal arcs inside the holomorphic neighborhood, with uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span>, gives the stated piecewise smooth form. For the integral formula remove a small disk about <span class="math" data-tex="\(z\)">\(z\)</span> and apply this theorem to <span class="math" data-tex="\(f(\zeta)/(\zeta-z)\)">\(f(\zeta)/(\zeta-z)\)</span>. The small-circle integral tends to <span class="math" data-tex="\(2\pi i f(z)\)">\(2\pi i f(z)\)</span>. Expanding the kernel geometrically on a smaller concentric disk gives the Taylor series, uniformly on every strictly smaller disk, and the coefficient bounds. These arguments also justify holomorphic dependence of finite contour integrals with denominators bounded away from zero.</p>
+<p><strong>A.2 (bounded removable singularities).</strong> A bounded holomorphic function on a punctured disk extends holomorphically across its center. On any annulus, applying A.1 to its two boundary circles and expanding the two kernels gives the Laurent expansion. If <span class="math" data-tex="\(|f|\le M\)">\(|f|\le M\)</span>, its coefficient of <span class="math" data-tex="\(z^{-j}\)">\(z^{-j}\)</span>, <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, computed on <span class="math" data-tex="\(|z|=r\)">\(|z|=r\)</span>, has modulus at most <span class="math" data-tex="\(Mr^j\)">\(Mr^j\)</span>. The coefficient is independent of <span class="math" data-tex="\(r\)">\(r\)</span> by A.1; letting <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span> makes it zero. The remaining nonnegative-power series is the claimed extension.</p>
+<p><strong>A.3 (polynomial roots and contour counts).</strong> Every nonconstant complex polynomial factors into linear factors. To see existence of one root, its modulus tends to infinity at infinity and hence has a global minimum. If the minimum at <span class="math" data-tex="\(z_0\)">\(z_0\)</span> were nonzero, divide by its value and write the first nonconstant local term as <span class="math" data-tex="\(b(z-z_0)^k\)">\(b(z-z_0)^k\)</span>. Choose a direction making that term negative real. For sufficiently small displacement its negative contribution lowers the modulus, a contradiction. Polynomial division and induction give the factorization. The monic root bound was proved in Lemma 2. For a circle avoiding all roots, factorization gives <span class="math" data-tex="\(A_z/A=\sum_\nu k_\nu/(z-z_\nu)\)">\(A_z/A=\sum_\nu k_\nu/(z-z_\nu)\)</span>. The integral of each summand divided by <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> is one for an inside root and zero for an outside root, by geometric-series integration. This proves CH6 and CH7, and proves stability of the root count whenever the boundary stays root-free.</p>
+<p><strong>A.4 (local labels and monodromy).</strong> Formula CH7 proves local labels at simple roots and their uniqueness. Uniformly bounded roots and simplicity at each nonzero parameter prove continuation along a compact path by a finite cover of local-label neighborhoods. The homotopy-subdivision and winding argument in Lemma 2 prove exactly the path independence needed after <span class="math" data-tex="\(v=t^p\)">\(v=t^p\)</span>. This elementary finite-cover proof is the actual provider of CH4; an unproved invocation of a Puiseux expansion is unnecessary.</p>
+<h2 id="human-source-and-scope">Human source and scope</h2>
+<p>The human-source locator is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I</em>, Section 8.6, Theorem 8.6.7, printed pages 310–311 in the supplied source copy. Its proof uses a fractional-power root, an exponentially damped complex-frequency integral, leftward deformation, and Fourier nontriviality. The present exposition supplies its own finite-cover root lemma, precise branch specification, uniform global smoothness estimates, both outer-arc estimates, a holomorphic tube argument, direct Fourier injectivity, examples, and complete exercises.</p>
+<p>The result is a global smooth homogeneous solution with exact negative-halfspace support, including lower order terms and unrestricted growth, together with the positive-halfspace solution obtained by reversing the real normal. Theorem 1, Lemma 2, the contour proof and Appendix A supply the entire characteristic-halfspace construction. The ordinary entry toolkit listed in the roadmap remains explicit.</p>
+</main></body></html>

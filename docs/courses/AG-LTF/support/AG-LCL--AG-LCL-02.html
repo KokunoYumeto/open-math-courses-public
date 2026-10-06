@@ -1,0 +1,635 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local duality and finiteness</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="local-duality-and-finiteness">Local duality and finiteness</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Local cohomology is usually an infinite module. Over a complete local ring, however, its dual is finite. This reverses two kinds of information: the degrees in which local cohomology vanishes become the degrees in which a finite complex vanishes, and an annihilator question becomes a support question for a finite module. We develop that reversal and use it to prove the finiteness theorem, including specialization-closed supports.</p>
+<p>We use the Čech computation, the depth criterion, and dimension vanishing from <a href="../support/AG-LCL--AG-LCL-01.html">Local cohomology</a>. We also use injective resolutions, derived tensor and Hom, finite free resolutions bounded above, Artin–Rees, and flatness and exactness of completion on finite modules. Complexes have cohomological degrees: <span class="math" data-tex="\(H^i(K[a])=H^{i+a}(K)\)">\(H^i(K[a])=H^{i+a}(K)\)</span>. In particular, a module shifted by <span class="math" data-tex="\([d]\)">\([d]\)</span> lies in degree <span class="math" data-tex="\(-d\)">\(-d\)</span>. Rings are commutative and Noetherian. A finite module means a finitely generated module.</p>
+<p>Our primary algebraic references are [Stacks] and [Grothendieck–Laszlo]. Existence of a dualizing complex is a hypothesis whenever it is used; it is not automatic for arbitrary Noetherian local rings. Proposition 2.5 supplies it for the classes considered there. The proofs below use a single convention throughout: a normalized dualizing complex <span class="math" data-tex="\(\omega^\bullet\)">\(\omega^\bullet\)</span> over <span class="math" data-tex="\((A,\mathfrak m,k)\)">\((A,\mathfrak m,k)\)</span> satisfies <span class="math" data-tex="\(R\operatorname{Hom}_A(k,\omega^\bullet)=k[0]\)">\(R\operatorname{Hom}_A(k,\omega^\bullet)=k[0]\)</span>. We prove that this is equivalent to <span class="math" data-tex="\(R\Gamma_{\mathfrak m}(\omega^\bullet)=E[0]\)">\(R\Gamma_{\mathfrak m}(\omega^\bullet)=E[0]\)</span>, where <span class="math" data-tex="\(E\)">\(E\)</span> is the injective hull of <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="1-the-module-that-detects-the-closed-point">1. The module that detects the closed point</h2>
+<p>An inclusion <span class="math" data-tex="\(N\subset J\)">\(N\subset J\)</span> is <strong>essential</strong> if every nonzero submodule of <span class="math" data-tex="\(J\)">\(J\)</span> meets <span class="math" data-tex="\(N\)">\(N\)</span>. An injective hull is an essential inclusion into an injective module. The essential condition removes superfluous injective summands.</p>
+<p><strong>Proposition 1.1 (construction of the hull).</strong> Every module has an injective hull, unique up to an isomorphism extending its inclusion.</p>
+<p><strong>Proof.</strong> Embed <span class="math" data-tex="\(N\)">\(N\)</span> into an injective module <span class="math" data-tex="\(J\)">\(J\)</span>. Among submodules of <span class="math" data-tex="\(J\)">\(J\)</span> containing <span class="math" data-tex="\(N\)">\(N\)</span> essentially, take a maximal one <span class="math" data-tex="\(E\)">\(E\)</span>, using Zorn: a union of a chain remains essential.</p>
+<p>We verify Baer's criterion for <span class="math" data-tex="\(E\)">\(E\)</span>. Suppose a map <span class="math" data-tex="\(u:\mathfrak b\to E\)">\(u:\mathfrak b\to E\)</span> from an ideal does not extend to <span class="math" data-tex="\(A\)">\(A\)</span>. Form the pushout
+<span class="math math-display" data-tex="\[
+P=(E\oplus A)/\{(u(b),-b):b\in\mathfrak b\}.
+\]">\[
+P=(E\oplus A)/\{(u(b),-b):b\in\mathfrak b\}.
+\]</span>
+The natural inclusion <span class="math" data-tex="\(E\to P\)">\(E\to P\)</span> is injective. Choose a maximal submodule <span class="math" data-tex="\(L\subset P\)">\(L\subset P\)</span> disjoint from <span class="math" data-tex="\(E\)">\(E\)</span>. Then <span class="math" data-tex="\(E\subset P/L\)">\(E\subset P/L\)</span> is essential: otherwise the inverse image of a nonzero disjoint submodule would enlarge <span class="math" data-tex="\(L\)">\(L\)</span>. Also <span class="math" data-tex="\(P/L\ne E\)">\(P/L\ne E\)</span>. Indeed, equality would give a retraction <span class="math" data-tex="\(P\to E\)">\(P\to E\)</span>, and the image of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> would extend <span class="math" data-tex="\(u\)">\(u\)</span>. Extend <span class="math" data-tex="\(E\to J\)">\(E\to J\)</span> to <span class="math" data-tex="\(P/L\to J\)">\(P/L\to J\)</span> by injectivity of <span class="math" data-tex="\(J\)">\(J\)</span>. Its kernel is zero by essentiality. Since essential inclusions compose, its image contradicts maximality of <span class="math" data-tex="\(E\)">\(E\)</span>. Thus Baer's criterion holds. For uniqueness, extend the inclusion of <span class="math" data-tex="\(N\)">\(N\)</span> from one hull into the other. Essentiality makes this map injective. Its image splits because its domain is injective, and essentiality in the target makes the complementary summand zero. ∎</p>
+<p>Fix <span class="math" data-tex="\((A,\mathfrak m,k)\)">\((A,\mathfrak m,k)\)</span>, its hull <span class="math" data-tex="\(E\)">\(E\)</span>, and
+<span class="math math-display" data-tex="\[
+D(N)=\operatorname{Hom}_A(N,E),\qquad E_n=E[\mathfrak m^n].
+\]">\[
+D(N)=\operatorname{Hom}_A(N,E),\qquad E_n=E[\mathfrak m^n].
+\]</span>
+The socle <span class="math" data-tex="\(E[\mathfrak m]\)">\(E[\mathfrak m]\)</span> is exactly the given copy of <span class="math" data-tex="\(k\)">\(k\)</span>. An additional independent socle vector would generate a simple submodule disjoint from it. Moreover,
+<span class="math math-display" data-tex="\[
+E=\bigcup_{n\ge1} E_n.
+\tag{1.1}
+\]">\[
+E=\bigcup_{n\ge1} E_n.
+\tag{1.1}
+\]</span>
+To see this, the torsion submodule <span class="math" data-tex="\(\Gamma_{\mathfrak m}(E)\)">\(\Gamma_{\mathfrak m}(E)\)</span> is injective by the Baer–Artin–Rees argument in Local cohomology, Proposition 2.1. It contains <span class="math" data-tex="\(k\)">\(k\)</span>, so it splits in <span class="math" data-tex="\(E\)">\(E\)</span>, and essentiality kills the complementary summand.</p>
+<p><strong>Lemma 1.2 (finite-length duality).</strong> For every finite-length module <span class="math" data-tex="\(L\)">\(L\)</span>, the evaluation map <span class="math" data-tex="\(L\to D(D(L))\)">\(L\to D(D(L))\)</span> is an isomorphism, and <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span> has the same length as <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> The functor <span class="math" data-tex="\(D\)">\(D\)</span> is exact. Since <span class="math" data-tex="\(D(k)=k\)">\(D(k)=k\)</span>, a composition series proves the length assertion. Evaluation is injective: for <span class="math" data-tex="\(0\ne x\in L\)">\(0\ne x\in L\)</span>, choose a maximal proper submodule of the cyclic module <span class="math" data-tex="\(Ax\)">\(Ax\)</span>. Its quotient is <span class="math" data-tex="\(k\)">\(k\)</span>, and its quotient map, followed by <span class="math" data-tex="\(k\subset E\)">\(k\subset E\)</span>, extends to <span class="math" data-tex="\(L\to E\)">\(L\to E\)</span>; it does not kill <span class="math" data-tex="\(x\)">\(x\)</span>. Equality of lengths now proves surjectivity. ∎</p>
+<p>By adjunction, <span class="math" data-tex="\(E_n\)">\(E_n\)</span> is injective over <span class="math" data-tex="\(A/\mathfrak m^n\)">\(A/\mathfrak m^n\)</span>, and it is its residue-field hull. Lemma 1.2 applied to <span class="math" data-tex="\(A/\mathfrak m^n\)">\(A/\mathfrak m^n\)</span> gives
+<span class="math math-display" data-tex="\[
+\operatorname{End}_A(E_n)=A/\mathfrak m^n.
+\]">\[
+\operatorname{End}_A(E_n)=A/\mathfrak m^n.
+\]</span>
+Every endomorphism preserves <span class="math" data-tex="\(E_n\)">\(E_n\)</span>. Restriction and (1.1) therefore identify scalar multiplication with
+<span class="math math-display" data-tex="\[
+\operatorname{End}_A(E)=\varprojlim_n A/\mathfrak m^n=\widehat A.
+\tag{1.2}
+\]">\[
+\operatorname{End}_A(E)=\varprojlim_n A/\mathfrak m^n=\widehat A.
+\tag{1.2}
+\]</span>
+This also gives every <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power-torsion module a canonical <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-action: to act on a vector killed by <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span>, use the corresponding residue class modulo <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span>.</p>
+<p><strong>Lemma 1.3.</strong> The module <span class="math" data-tex="\(E\)">\(E\)</span> is Artinian. Every Artinian <span class="math" data-tex="\(A\)">\(A\)</span>-module embeds into a finite direct sum of copies of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Given a descending chain <span class="math" data-tex="\(N_1\supset N_2\supset\cdots\)">\(N_1\supset N_2\supset\cdots\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span>, restriction makes <span class="math" data-tex="\(\operatorname{End}(E)\to D(N_i)\)">\(\operatorname{End}(E)\to D(N_i)\)</span> surjective. The kernels form an ascending chain of ideals in the Noetherian ring <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, hence stabilize. Exactness of <span class="math" data-tex="\(D\)">\(D\)</span> then gives <span class="math" data-tex="\(D(N_i/N_{i+1})=0\)">\(D(N_i/N_{i+1})=0\)</span>. A nonzero torsion module has a nonzero finite-length cyclic submodule and hence a nonzero map into <span class="math" data-tex="\(E\)">\(E\)</span>. The quotients must consequently be zero.</p>
+<p>If <span class="math" data-tex="\(N\)">\(N\)</span> is Artinian, each cyclic submodule <span class="math" data-tex="\(Ax\)">\(Ax\)</span> is both finite and Artinian. The chain <span class="math" data-tex="\(\mathfrak m^rAx\)">\(\mathfrak m^rAx\)</span> stabilizes, and Nakayama applied to its stable finite term shows it eventually vanishes. Thus <span class="math" data-tex="\(N\)">\(N\)</span> is torsion. Its socle is a finite-dimensional vector space, since an infinite-dimensional vector space is not Artinian. Embed the socle into <span class="math" data-tex="\(k^r\subset E^r\)">\(k^r\subset E^r\)</span>, and extend to <span class="math" data-tex="\(N\to E^r\)">\(N\to E^r\)</span>. A nonzero kernel would be torsion and would contain a nonzero socle, which is impossible. ∎</p>
+<p><strong>Theorem 1.4 (Matlis duality).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is complete, <span class="math" data-tex="\(D\)">\(D\)</span> is an exact contravariant equivalence between finite and Artinian <span class="math" data-tex="\(A\)">\(A\)</span>-modules. Evaluation is an isomorphism in both categories.</p>
+<p><strong>Proof.</strong> A finite presentation <span class="math" data-tex="\(A^s\to A^r\to M\to0\)">\(A^s\to A^r\to M\to0\)</span> gives
+<span class="math" data-tex="\(0\to D(M)\to E^r\to E^s\)">\(0\to D(M)\to E^r\to E^s\)</span>, so <span class="math" data-tex="\(D(M)\)">\(D(M)\)</span> is Artinian. Conversely, Lemma 1.3, applied also to the quotient of an embedding, gives a copresentation <span class="math" data-tex="\(0\to N\to E^r\to E^s\)">\(0\to N\to E^r\to E^s\)</span> for Artinian <span class="math" data-tex="\(N\)">\(N\)</span>. Dualizing gives a finite presentation of <span class="math" data-tex="\(D(N)\)">\(D(N)\)</span>, because <span class="math" data-tex="\(D(E)=A\)">\(D(E)=A\)</span> by (1.2). Evaluation is an isomorphism on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>; applying it to these presentations and copresentations, using exactness, proves it on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>. These natural evaluation isomorphisms make <span class="math" data-tex="\(D\)">\(D\)</span> an equivalence. ∎</p>
+<p>For noncomplete <span class="math" data-tex="\(A\)">\(A\)</span>, the same proof gives an equivalence between finite <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-modules and Artinian <span class="math" data-tex="\(A\)">\(A\)</span>-modules. To justify using the same hull, construct the residue-field hull over <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>. Its restriction is injective over <span class="math" data-tex="\(A\)">\(A\)</span>, by flatness and tensor–restriction adjunction. Its torsion submodules have identical <span class="math" data-tex="\(A\)">\(A\)</span>- and <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-submodules, because every coefficient acting on a vector killed by <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span> can be represented in <span class="math" data-tex="\(A/\mathfrak m^n\)">\(A/\mathfrak m^n\)</span>. Essentiality and uniqueness of hulls identify it with <span class="math" data-tex="\(E\)">\(E\)</span>. One cannot replace <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> by <span class="math" data-tex="\(A\)">\(A\)</span> in (1.2).</p>
+<p><strong>Example 1.5.</strong> For <span class="math" data-tex="\(A=k[[t]]\)">\(A=k[[t]]\)</span>,
+<span class="math math-display" data-tex="\[
+E=k((t))/k[[t]]=\bigoplus_{j\ge1}kt^{-j}.
+\]">\[
+E=k((t))/k[[t]]=\bigoplus_{j\ge1}kt^{-j}.
+\]</span>
+Multiplication by every nonzero element of this discrete valuation ring is surjective on <span class="math" data-tex="\(E\)">\(E\)</span>, so Baer's criterion, whose ideals are principal, proves injectivity. Every nonzero submodule meets <span class="math" data-tex="\(kt^{-1}\)">\(kt^{-1}\)</span>, proving essentiality. Here <span class="math" data-tex="\(E_n\)">\(E_n\)</span> has basis <span class="math" data-tex="\(t^{-1},\ldots,t^{-n}\)">\(t^{-1},\ldots,t^{-n}\)</span>; compatible endomorphisms of these submodules are precisely compatible residues of a power series. This makes (1.2) visible coefficient by coefficient. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-union-artinian">Tag 08Z4</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-endos">Tag 08Z6</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-injective-hull-has-dcc">Tag 08Z7</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-proposition-matlis">Tag 08Z9</a>].</p>
+<h2 id="2-a-finite-complex-that-provides-duality">2. A finite complex that provides duality</h2>
+<p><strong>Definition 2.1.</strong> A <strong>dualizing complex</strong> for <span class="math" data-tex="\(A\)">\(A\)</span> is a complex <span class="math" data-tex="\(\omega\)">\(\omega\)</span> with bounded finite cohomology, finite injective dimension, and an isomorphism
+<span class="math math-display" data-tex="\[
+A\longrightarrow R\operatorname{Hom}_A(\omega,\omega)
+\tag{2.1}
+\]">\[
+A\longrightarrow R\operatorname{Hom}_A(\omega,\omega)
+\tag{2.1}
+\]</span>
+given by scalar multiplication. Finite injective dimension means that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is represented by a bounded complex of injectives. Write <span class="math" data-tex="\(\mathcal D_\omega(K)=R\operatorname{Hom}_A(K,\omega)\)">\(\mathcal D_\omega(K)=R\operatorname{Hom}_A(K,\omega)\)</span>. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-definition-dualizing">Tag 0A7B</a>].</p>
+<p>We first prove the biduality needed to control uniqueness. This step does not assume local duality.</p>
+<p><strong>Lemma 2.2 (finite-complex biduality).</strong> Evaluation gives <span class="math" data-tex="\(K\simeq\mathcal D_\omega\mathcal D_\omega K\)">\(K\simeq\mathcal D_\omega\mathcal D_\omega K\)</span> for every complex with bounded finite cohomology. Its dual again has bounded finite cohomology.</p>
+<p><strong>Proof.</strong> Choose an injective representative of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> in degrees <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. For any module <span class="math" data-tex="\(N\)">\(N\)</span>, its dual lies in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. For finite <span class="math" data-tex="\(N\)">\(N\)</span>, its cohomology is finite: a finite free resolution and the bounded finite cohomology of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> compute each group using finitely many finite terms. For a bounded finite complex the same assertion follows by truncation triangles.</p>
+<p>For a finite module <span class="math" data-tex="\(N\)">\(N\)</span>, both <span class="math" data-tex="\(\mathcal D_\omega^2N\)">\(\mathcal D_\omega^2N\)</span> and its cohomology lie in a fixed interval <span class="math" data-tex="\([a-b,b-a]\)">\([a-b,b-a]\)</span>, independent of <span class="math" data-tex="\(N\)">\(N\)</span>. Evaluation is an isomorphism for a finite free module by (2.1), and hence for every bounded finite free complex. Truncate a finite free resolution of <span class="math" data-tex="\(N\)">\(N\)</span> far to the left. Its difference from <span class="math" data-tex="\(N\)">\(N\)</span> is a finite syzygy shifted arbitrarily far to the left. Both that syzygy and its double dual have uniform bounds before shifting. The comparison with the truncated free complex therefore proves evaluation is an isomorphism in any prescribed degree. This proves the result for modules; finitely many truncation triangles prove it for bounded finite complexes. ∎</p>
+<p><strong>Theorem 2.3 (uniqueness).</strong> If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(\omega&#x27;\)">\(\omega&#x27;\)</span> are dualizing complexes, then
+<span class="math math-display" data-tex="\[
+\omega&#x27;\simeq\omega\otimes_A^{\mathbf L}L,
+\]">\[
+\omega&#x27;\simeq\omega\otimes_A^{\mathbf L}L,
+\]</span>
+where <span class="math" data-tex="\(L\)">\(L\)</span> is locally a rank-one free module placed in one degree. The degree is locally constant. In particular, over a local ring <span class="math" data-tex="\(L=A[c]\)">\(L=A[c]\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(C=R\operatorname{Hom}_A(\omega,\omega&#x27;)\)">\(C=R\operatorname{Hom}_A(\omega,\omega&#x27;)\)</span>. The natural map
+<span class="math math-display" data-tex="\[
+C\otimes_A^{\mathbf L}K\longrightarrow
+\mathcal D_{\omega&#x27;}\mathcal D_\omega K
+\tag{2.2}
+\]">\[
+C\otimes_A^{\mathbf L}K\longrightarrow
+\mathcal D_{\omega&#x27;}\mathcal D_\omega K
+\tag{2.2}
+\]</span>
+is an isomorphism for bounded finite free complexes. It remains so for finite modules by the truncation argument of Lemma 2.2: the right side has a uniform bounded interval on modules, while the left side has a uniform upper bound, since <span class="math" data-tex="\(C\)">\(C\)</span> has bounded cohomology and a module has a free resolution in nonpositive degrees. The shifted syzygy errors on both sides eventually lie below any fixed degree. Truncation extends this to bounded finite complexes.</p>
+<p>Work locally and let <span class="math" data-tex="\(V=R\operatorname{Hom}_A(k,\omega)\)">\(V=R\operatorname{Hom}_A(k,\omega)\)</span>. It is a bounded finite complex of <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Biduality and adjunction give
+<span class="math math-display" data-tex="\[
+k\simeq R\operatorname{Hom}_k(V,V).
+\]">\[
+k\simeq R\operatorname{Hom}_k(V,V).
+\]</span>
+Splitting a vector-space complex into its cohomology shows that this happens only when <span class="math" data-tex="\(V\)">\(V\)</span> is one-dimensional in a single degree: the degree-zero endomorphism space already has dimension at least the sum of the squares of all nonzero cohomology dimensions. The same holds for <span class="math" data-tex="\(V&#x27;=R\operatorname{Hom}_A(k,\omega&#x27;)\)">\(V&#x27;=R\operatorname{Hom}_A(k,\omega&#x27;)\)</span>. Thus (2.2) for <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(C\otimes_A^{\mathbf L}k\simeq k[c]\)">\(C\otimes_A^{\mathbf L}k\simeq k[c]\)</span>.</p>
+<p>A minimal free resolution of the bounded finite complex <span class="math" data-tex="\(C\)">\(C\)</span> is bounded above and has finite free terms; removing unit entries from differentials constructs it from any such free resolution. Modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> its differentials are zero. The last displayed isomorphism forces exactly one term, of rank one. Hence <span class="math" data-tex="\(C=A[c]\)">\(C=A[c]\)</span>. For a nonlocal ring this argument applies at each prime; finite cohomology permits shrinking to an open neighborhood on which the one surviving module is invertible and the other groups vanish. Finally, (2.2) with <span class="math" data-tex="\(K=\omega\)">\(K=\omega\)</span>, together with <span class="math" data-tex="\(\mathcal D_\omega\omega=A\)">\(\mathcal D_\omega\omega=A\)</span>, identifies its right side with <span class="math" data-tex="\(\omega&#x27;\)">\(\omega&#x27;\)</span> and proves the claimed isomorphism. ∎</p>
+<p><strong>Proposition 2.4 (quotients and localization).</strong> If <span class="math" data-tex="\(B=A/I\)">\(B=A/I\)</span>, then
+<span class="math math-display" data-tex="\[
+\omega_B=R\operatorname{Hom}_A(B,\omega_A)
+\tag{2.3}
+\]">\[
+\omega_B=R\operatorname{Hom}_A(B,\omega_A)
+\tag{2.3}
+\]</span>
+is dualizing over <span class="math" data-tex="\(B\)">\(B\)</span>. Localization of a dualizing complex is dualizing.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(J\)">\(J\)</span> is a bounded injective representative of <span class="math" data-tex="\(\omega_A\)">\(\omega_A\)</span>, then <span class="math" data-tex="\(\operatorname{Hom}_A(B,J)\)">\(\operatorname{Hom}_A(B,J)\)</span> is a bounded complex of injective <span class="math" data-tex="\(B\)">\(B\)</span>-modules, by restriction–Hom adjunction. Its cohomology is finite by Lemma 2.2. For every finite <span class="math" data-tex="\(B\)">\(B\)</span>-complex <span class="math" data-tex="\(K\)">\(K\)</span>, that adjunction identifies its dual over <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\mathcal D_{\omega_A}K\)">\(\mathcal D_{\omega_A}K\)</span>. Applying it twice and setting <span class="math" data-tex="\(K=B\)">\(K=B\)</span> gives precisely the homothety <span class="math" data-tex="\(B\simeq R\operatorname{Hom}_B(\omega_B,\omega_B)\)">\(B\simeq R\operatorname{Hom}_B(\omega_B,\omega_B)\)</span>.</p>
+<p>Over a Noetherian ring a localization of an injective module is injective: Baer's criterion reduces to finitely generated ideals and clearing denominators in their finite presentations. Finite free resolutions compute localization of derived Hom for a bounded finite first argument and a bounded target. Localizing (2.1) therefore proves the last assertion. ∎</p>
+<p>Over a local ring, the vector-space argument in Theorem 2.3 gives a unique shift for which <span class="math" data-tex="\(R\operatorname{Hom}_A(k,\omega)=k[0]\)">\(R\operatorname{Hom}_A(k,\omega)=k[0]\)</span>. We call this shift <strong>normalized</strong>. Quotient duality (2.3) preserves normalization when the quotient is local with the same residue field.</p>
+<p><strong>Proposition 2.5 (regular and Gorenstein rings).</strong> A regular local ring of dimension <span class="math" data-tex="\(n\)">\(n\)</span> has normalized dualizing complex <span class="math" data-tex="\(A[n]\)">\(A[n]\)</span>. Consequently it is Gorenstein. A quotient of a Gorenstein local ring has a dualizing complex. Every complete Noetherian local ring has one.</p>
+<p><strong>Proof.</strong> A regular system of parameters <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> is a regular sequence, so its Koszul complex resolves <span class="math" data-tex="\(k\)">\(k\)</span>. If <span class="math" data-tex="\(N\)">\(N\)</span> is finite, take a minimal free resolution. Computing <span class="math" data-tex="\(\operatorname{Tor}^A_i(k,N)\)">\(\operatorname{Tor}^A_i(k,N)\)</span> instead with the Koszul resolution shows it vanishes for <span class="math" data-tex="\(i&gt;n\)">\(i&gt;n\)</span>. Minimality then makes the free terms vanish for <span class="math" data-tex="\(i&gt;n\)">\(i&gt;n\)</span>. Thus all finite modules have projective dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>. In particular <span class="math" data-tex="\(\operatorname{Ext}^{n+1}_A(A/\mathfrak b,A)=0\)">\(\operatorname{Ext}^{n+1}_A(A/\mathfrak b,A)=0\)</span> for every ideal. Dimension shifting and Baer's criterion imply <span class="math" data-tex="\(\operatorname{id}_A A\le n\)">\(\operatorname{id}_A A\le n\)</span>. The self-dual Koszul complex gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^i_A(k,A)=
+\begin{cases}k&amp;i=n,\\0&amp;i\ne n.\end{cases}
+\]">\[
+\operatorname{Ext}^i_A(k,A)=
+\begin{cases}k&amp;i=n,\\0&amp;i\ne n.\end{cases}
+\]</span>
+Homothety for <span class="math" data-tex="\(A\)">\(A\)</span> is automatic, proving the first assertion.</p>
+<p>Here a local ring is called <strong>Gorenstein</strong> when <span class="math" data-tex="\(A[0]\)">\(A[0]\)</span> is dualizing, equivalently when <span class="math" data-tex="\(A\)">\(A\)</span> has finite injective dimension. Proposition 2.4 proves the quotient assertion. Cohen's structure theorem presents any complete Noetherian local ring as a quotient of a complete regular local ring, so the last assertion follows as well. Cohen's theorem is an imported prerequisite, stated with its locator below. ∎</p>
+<p>If <span class="math" data-tex="\(B=A/(f_1,\ldots,f_c)\)">\(B=A/(f_1,\ldots,f_c)\)</span> for a regular sequence in a regular local ring of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, the Koszul resolution computes
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_A(B,A[n])=B[n-c].
+\tag{2.4}
+\]">\[
+R\operatorname{Hom}_A(B,A[n])=B[n-c].
+\tag{2.4}
+\]</span>
+Thus complete intersections, in particular hypersurfaces, are Gorenstein. This computation also fixes the shift without guessing it from a convention in another source. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-dualizing-unique">Tag 0A7F</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-dualizing-localize">Tag 0A7G</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-normalized-quotient">Tag 0A7N</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-regular-gorenstein">Tag 0AWX</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-ubiquity-dualizing">Tag 0BFR</a>].</p>
+<h2 id="3-local-duality-with-completion-in-the-correct-place">3. Local duality, with completion in the correct place</h2>
+<p>Choose generators <span class="math" data-tex="\(f_1,\ldots,f_r\)">\(f_1,\ldots,f_r\)</span> of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be the extended Čech complex of <span class="math" data-tex="\(A\)">\(A\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> in degree zero. Local cohomology gives
+<span class="math math-display" data-tex="\[
+R\Gamma_{\mathfrak m}(K)=C\otimes_A^{\mathbf L}K
+\tag{3.1}
+\]">\[
+R\Gamma_{\mathfrak m}(K)=C\otimes_A^{\mathbf L}K
+\tag{3.1}
+\]</span>
+for every <span class="math" data-tex="\(K\in D(A)\)">\(K\in D(A)\)</span>. The bounded flat complex <span class="math" data-tex="\(C\)">\(C\)</span> makes this formula valid for unbounded complexes too.</p>
+<p>Here is the derived completion convention, including its universal property. A complex <span class="math" data-tex="\(L\)">\(L\)</span> is <strong>derived complete</strong> if <span class="math" data-tex="\(R\operatorname{Hom}_A(A_{f_j},L)=0\)">\(R\operatorname{Hom}_A(A_{f_j},L)=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. Put
+<span class="math math-display" data-tex="\[
+K^\wedge=R\operatorname{Hom}_A(C,K).
+\tag{3.2}
+\]">\[
+K^\wedge=R\operatorname{Hom}_A(C,K).
+\tag{3.2}
+\]</span>
+The map <span class="math" data-tex="\(C\to A\)">\(C\to A\)</span> induces <span class="math" data-tex="\(K\to K^\wedge\)">\(K\to K^\wedge\)</span>. Formula (3.2) is derived completion: it is left adjoint to inclusion of derived complete complexes.</p>
+<p>To verify this, <span class="math" data-tex="\(C\otimes A_{f_j}\)">\(C\otimes A_{f_j}\)</span> is acyclic, since one factor <span class="math" data-tex="\([A\to A_{f_j}]\)">\([A\to A_{f_j}]\)</span> becomes <span class="math" data-tex="\([A_{f_j}\to A_{f_j}]\)">\([A_{f_j}\to A_{f_j}]\)</span>. Tensor–Hom adjunction proves <span class="math" data-tex="\(K^\wedge\)">\(K^\wedge\)</span> is complete. In the triangle <span class="math" data-tex="\(C\to A\to U\)">\(C\to A\to U\)</span>, the complex <span class="math" data-tex="\(U\)">\(U\)</span> is a bounded complex of sums of localizations <span class="math" data-tex="\(A_{f_{j_1}\cdots f_{j_a}}\)">\(A_{f_{j_1}\cdots f_{j_a}}\)</span>, with <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>. Thus the fiber of <span class="math" data-tex="\(K\to K^\wedge\)">\(K\to K^\wedge\)</span> is <span class="math" data-tex="\(R\operatorname{Hom}_A(U,K)\)">\(R\operatorname{Hom}_A(U,K)\)</span>, built from complexes on which at least one <span class="math" data-tex="\(f_j\)">\(f_j\)</span> acts invertibly. Every such complex has zero derived Hom into a complete complex: for an <span class="math" data-tex="\(A_{f_j}\)">\(A_{f_j}\)</span>-complex <span class="math" data-tex="\(P\)">\(P\)</span>, restriction–Hom adjunction gives
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_A(P,L)=
+R\operatorname{Hom}_{A_{f_j}}(P,R\operatorname{Hom}_A(A_{f_j},L))=0.
+\]">\[
+R\operatorname{Hom}_A(P,L)=
+R\operatorname{Hom}_{A_{f_j}}(P,R\operatorname{Hom}_A(A_{f_j},L))=0.
+\]</span>
+The triangle consequently proves the asserted adjunction. This also shows that the construction is independent of the generators.</p>
+<p>Two further descriptions help connect this to ordinary completion. The Čech complex is the homotopy colimit of the cochain Koszul complexes on <span class="math" data-tex="\(f_1^n,\ldots,f_r^n\)">\(f_1^n,\ldots,f_r^n\)</span> in degrees <span class="math" data-tex="\(0,\ldots,r\)">\(0,\ldots,r\)</span>. Dualizing those finite free complexes therefore gives
+<span class="math math-display" data-tex="\[
+K^\wedge=R\varprojlim_n
+\bigl(K\otimes_A^{\mathbf L}K_\bullet(f_1^n,\ldots,f_r^n)\bigr),
+\tag{3.3}
+\]">\[
+K^\wedge=R\varprojlim_n
+\bigl(K\otimes_A^{\mathbf L}K_\bullet(f_1^n,\ldots,f_r^n)\bigr),
+\tag{3.3}
+\]</span>
+where the homological Koszul complex occupies degrees <span class="math" data-tex="\(-r,\ldots,0\)">\(-r,\ldots,0\)</span>. This follows directly from the mapping telescope: derived Hom changes its direct-sum triangle into the product triangle defining derived inverse limit. Over a Noetherian ring, for bounded complexes with finite cohomology, derived completion has cohomology <span class="math" data-tex="\(\widehat{H^i(K)}\)">\(\widehat{H^i(K)}\)</span>. We use this exactness fact from completion theory; its hypotheses and locators are recorded below. Formula (3.2), rather than an unqualified termwise inverse limit, is our convention for arbitrary complexes.</p>
+<p>We will also use a support adjunction, which has a similarly short Čech proof. If all cohomology of <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power torsion, then <span class="math" data-tex="\(T_{f_j}=0\)">\(T_{f_j}=0\)</span>. For any <span class="math" data-tex="\(A_{f_j}\)">\(A_{f_j}\)</span>-complex <span class="math" data-tex="\(P\)">\(P\)</span>, tensor–restriction adjunction gives <span class="math" data-tex="\(R\operatorname{Hom}_A(T,P)=0\)">\(R\operatorname{Hom}_A(T,P)=0\)</span>. Tensoring the triangle <span class="math" data-tex="\(C\to A\to U\)">\(C\to A\to U\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_A(T,C\otimes_A^{\mathbf L}L)
+\simeq R\operatorname{Hom}_A(T,L).
+\tag{3.4}
+\]">\[
+R\operatorname{Hom}_A(T,C\otimes_A^{\mathbf L}L)
+\simeq R\operatorname{Hom}_A(T,L).
+\tag{3.4}
+\]</span>
+Thus (3.1) is the right adjoint for torsion complexes. These adjunctions, not any boundedness of <span class="math" data-tex="\(K\)">\(K\)</span>, will prove local duality.</p>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is normalized, then <span class="math" data-tex="\(R\Gamma_{\mathfrak m}(\omega)=E[0]\)">\(R\Gamma_{\mathfrak m}(\omega)=E[0]\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(\mathcal D=\mathcal D_\omega\)">\(\mathcal D=\mathcal D_\omega\)</span>. Since <span class="math" data-tex="\(\mathcal D(k)=k[0]\)">\(\mathcal D(k)=k[0]\)</span>, exact triangles along a composition series show that <span class="math" data-tex="\(\mathcal D(L)\)">\(\mathcal D(L)\)</span> is concentrated in degree zero for every finite-length <span class="math" data-tex="\(L\)">\(L\)</span>, and this degree-zero functor is exact and preserves length.</p>
+<p>In particular <span class="math" data-tex="\(F_n=H^0\mathcal D(A/\mathfrak m^n)\)">\(F_n=H^0\mathcal D(A/\mathfrak m^n)\)</span> is the residue-field injective hull over <span class="math" data-tex="\(A/\mathfrak m^n\)">\(A/\mathfrak m^n\)</span>. Indeed, quotient adjunction identifies <span class="math" data-tex="\(R\operatorname{Hom}_{A/\mathfrak m^n}(L,F_n)\)">\(R\operatorname{Hom}_{A/\mathfrak m^n}(L,F_n)\)</span> with <span class="math" data-tex="\(\mathcal D(L)\)">\(\mathcal D(L)\)</span>; its positive cohomology vanishes for every module over this Artinian ring, since all finite modules have finite length and Baer's criterion tests finite ideals. Its socle is <span class="math" data-tex="\(k\)">\(k\)</span>, and every nonzero submodule meets the socle. The quotient maps <span class="math" data-tex="\(A/\mathfrak m^{n+1}\to A/\mathfrak m^n\)">\(A/\mathfrak m^{n+1}\to A/\mathfrak m^n\)</span> induce injections <span class="math" data-tex="\(F_n\to F_{n+1}\)">\(F_n\to F_{n+1}\)</span>.</p>
+<p>The Ext-colimit computation of local cohomology, applied to a bounded injective representative of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, gives
+<span class="math math-display" data-tex="\[
+R\Gamma_{\mathfrak m}(\omega)=
+\operatorname*{hocolim}_n\mathcal D(A/\mathfrak m^n)=F[0],
+\qquad F=\bigcup_n F_n.
+\]">\[
+R\Gamma_{\mathfrak m}(\omega)=
+\operatorname*{hocolim}_n\mathcal D(A/\mathfrak m^n)=F[0],
+\qquad F=\bigcup_n F_n.
+\]</span>
+This torsion module has essential socle <span class="math" data-tex="\(k\)">\(k\)</span>. Extend its socle inclusion to <span class="math" data-tex="\(F\to E\)">\(F\to E\)</span>. Essentiality makes this injective. By (3.4), <span class="math" data-tex="\(R\operatorname{Hom}_A(k,F)=R\operatorname{Hom}_A(k,\omega)=k[0]\)">\(R\operatorname{Hom}_A(k,F)=R\operatorname{Hom}_A(k,\omega)=k[0]\)</span>; in particular <span class="math" data-tex="\(\operatorname{Ext}^1_A(k,F)=0\)">\(\operatorname{Ext}^1_A(k,F)=0\)</span>. The quotient <span class="math" data-tex="\(Q=E/F\)">\(Q=E/F\)</span> is torsion. Applying <span class="math" data-tex="\(\operatorname{Hom}(k,-)\)">\(\operatorname{Hom}(k,-)\)</span> shows its socle is zero, since the socles of <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> agree and <span class="math" data-tex="\(\operatorname{Ext}^1(k,F)=0\)">\(\operatorname{Ext}^1(k,F)=0\)</span>. A nonzero torsion module has a socle, so <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>. ∎</p>
+<p><strong>Theorem 3.2 (local duality).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be Noetherian local with normalized dualizing complex <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. For every <span class="math" data-tex="\(K\in D(A)\)">\(K\in D(A)\)</span>, there is a natural isomorphism
+<span class="math math-display" data-tex="\[
+\boxed{\;
+R\operatorname{Hom}_A(K,\omega)^\wedge
+\simeq R\operatorname{Hom}_A(R\Gamma_{\mathfrak m}(K),E).
+\;}
+\tag{3.5}
+\]">\[
+\boxed{\;
+R\operatorname{Hom}_A(K,\omega)^\wedge
+\simeq R\operatorname{Hom}_A(R\Gamma_{\mathfrak m}(K),E).
+\;}
+\tag{3.5}
+\]</span></p>
+<p><strong>Proof.</strong> Substitute (3.2) into the left side and apply tensor–Hom adjunction:
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_A(C,R\operatorname{Hom}_A(K,\omega))
+=R\operatorname{Hom}_A(C\otimes_A^{\mathbf L}K,\omega).
+\]">\[
+R\operatorname{Hom}_A(C,R\operatorname{Hom}_A(K,\omega))
+=R\operatorname{Hom}_A(C\otimes_A^{\mathbf L}K,\omega).
+\]</span>
+The first argument is torsion. Formula (3.4) lets us replace the second argument by <span class="math" data-tex="\(R\Gamma_{\mathfrak m}(\omega)\)">\(R\Gamma_{\mathfrak m}(\omega)\)</span>, which is <span class="math" data-tex="\(E[0]\)">\(E[0]\)</span> by Proposition 3.1. This gives exactly (3.5), with its natural maps. ∎</p>
+<p><strong>Corollary 3.3 (finite-module form).</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is finite, then
+<span class="math math-display" data-tex="\[
+\widehat{\operatorname{Ext}^{-i}_A(M,\omega)}
+\simeq D(H^i_{\mathfrak m}(M)).
+\tag{3.6}
+\]">\[
+\widehat{\operatorname{Ext}^{-i}_A(M,\omega)}
+\simeq D(H^i_{\mathfrak m}(M)).
+\tag{3.6}
+\]</span>
+Every <span class="math" data-tex="\(H^i_{\mathfrak m}(M)\)">\(H^i_{\mathfrak m}(M)\)</span> is Artinian. If <span class="math" data-tex="\(A\)">\(A\)</span> is complete, equivalently
+<span class="math math-display" data-tex="\[
+H^i_{\mathfrak m}(M)\simeq
+D(\operatorname{Ext}^{-i}_A(M,\omega)).
+\tag{3.7}
+\]">\[
+H^i_{\mathfrak m}(M)\simeq
+D(\operatorname{Ext}^{-i}_A(M,\omega)).
+\tag{3.7}
+\]</span></p>
+<p><strong>Proof.</strong> Lemma 2.2 and exactness of completion on finite cohomology identify the left cohomology of (3.5); injectivity of <span class="math" data-tex="\(E\)">\(E\)</span> identifies the right. To check Artinianness without presupposing it, let <span class="math" data-tex="\(N=H^i_{\mathfrak m}(M)\)">\(N=H^i_{\mathfrak m}(M)\)</span>, a torsion module. Its dual is finite over <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> by (3.6). Evaluation <span class="math" data-tex="\(N\to D(D(N))\)">\(N\to D(D(N))\)</span> is injective: a nonzero cyclic torsion module has a finite-length quotient detecting its generator, and injectivity of <span class="math" data-tex="\(E\)">\(E\)</span> extends the resulting map. The target is Artinian by Theorem 1.4 over <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, so <span class="math" data-tex="\(N\)">\(N\)</span> is Artinian. Evaluation is then an isomorphism by Matlis duality, proving (3.7). ∎</p>
+<p>For <span class="math" data-tex="\(A=k[t]_{(t)}\)">\(A=k[t]_{(t)}\)</span>, a noncomplete discrete valuation ring, <span class="math" data-tex="\(\omega=A[1]\)">\(\omega=A[1]\)</span>, whereas <span class="math" data-tex="\(D(H^1_{(t)}(A))=\widehat A=k[[t]]\)">\(D(H^1_{(t)}(A))=\widehat A=k[[t]]\)</span>. The completion in (3.6) cannot be deleted. Compare [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-local-cohomology-of-dualizing">Tag 0A82</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-theorem-local-duality">Tag 0A84</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-special-case-local-duality">Tag 0AAK</a>].</p>
+<p>For the complete ring <span class="math" data-tex="\(k[[t]]\)">\(k[[t]]\)</span>, the same shift gives <span class="math" data-tex="\(\omega=A[1]\)">\(\omega=A[1]\)</span>, and the Čech complex <span class="math" data-tex="\([A\to A_t]\)">\([A\to A_t]\)</span> gives <span class="math" data-tex="\(H^1_{(t)}(A)=E=k((t))/k[[t]]\)">\(H^1_{(t)}(A)=E=k((t))/k[[t]]\)</span>. All other supported cohomology groups vanish. Thus the explicit hull of Example 1.5 is also the local-duality image of <span class="math" data-tex="\(A\)">\(A\)</span> itself.</p>
+<h2 id="4-reading-depth-dimension-and-the-singularity-from-the-dual">4. Reading depth, dimension and the singularity from the dual</h2>
+<p>For nonzero finite <span class="math" data-tex="\(M\)">\(M\)</span>, put <span class="math" data-tex="\(d=\dim\operatorname{Supp}(M)\)">\(d=\dim\operatorname{Supp}(M)\)</span>. The depth theorem and dimension vanishing of Local cohomology, transported through (3.6), give
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^{-i}_A(M,\omega)=0
+\quad\text{if }i&lt;\operatorname{depth}M\text{ or }i&gt;d,
+\tag{4.1}
+\]">\[
+\operatorname{Ext}^{-i}_A(M,\omega)=0
+\quad\text{if }i&lt;\operatorname{depth}M\text{ or }i&gt;d,
+\tag{4.1}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\operatorname{depth}M=
+\min\{i:\operatorname{Ext}^{-i}_A(M,\omega)\ne0\}.
+\tag{4.2}
+\]">\[
+\operatorname{depth}M=
+\min\{i:\operatorname{Ext}^{-i}_A(M,\omega)\ne0\}.
+\tag{4.2}
+\]</span>
+Faithful flatness of completion and faithfulness of the torsion dual justify both the vanishing and the nonvanishing assertions.</p>
+<p>The dimension bound in (4.1) also has a proof entirely in terms of finite dual modules. Induct on <span class="math" data-tex="\(d\)">\(d\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, finite-length duality places the dual in degree zero. If <span class="math" data-tex="\(M\)">\(M\)</span> has positive depth, choose a nonzerodivisor <span class="math" data-tex="\(f\in\mathfrak m\)">\(f\in\mathfrak m\)</span>. Its quotient has support dimension <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Writing <span class="math" data-tex="\(Q^j=\operatorname{Ext}^j_A(M,\omega)\)">\(Q^j=\operatorname{Ext}^j_A(M,\omega)\)</span> and <span class="math" data-tex="\(P^j=\operatorname{Ext}^j_A(M/fM,\omega)\)">\(P^j=\operatorname{Ext}^j_A(M/fM,\omega)\)</span>, the dual exact sequence gives
+<span class="math math-display" data-tex="\[
+Q^j\xrightarrow{f}Q^j\longrightarrow P^{j+1}.
+\]">\[
+Q^j\xrightarrow{f}Q^j\longrightarrow P^{j+1}.
+\]</span>
+Induction makes the last group zero when <span class="math" data-tex="\(j&lt;-d\)">\(j&lt;-d\)</span> or <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>. Nakayama then makes <span class="math" data-tex="\(Q^j=0\)">\(Q^j=0\)</span> in those degrees. If depth is zero, remove the finite-length module <span class="math" data-tex="\(\Gamma_{\mathfrak m}(M)\)">\(\Gamma_{\mathfrak m}(M)\)</span>. The quotient has positive depth, unless it is zero, and its dimension is still <span class="math" data-tex="\(d\)">\(d\)</span> when <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. The dual exact sequence adds only degree-zero cohomology, proving the same bound for <span class="math" data-tex="\(M\)">\(M\)</span>. Thus the duality proof of dimension vanishing can use this bound directly.</p>
+<p>To prove nonvanishing at the other end, and later compare primes in the finiteness theorem, we need a dimension function.</p>
+<p><strong>Lemma 4.1 (dimension function of a dualizing complex).</strong> For a possibly nonlocal <span class="math" data-tex="\(A\)">\(A\)</span> with dualizing complex <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, define <span class="math" data-tex="\(\delta(\mathfrak p)\)">\(\delta(\mathfrak p)\)</span> by
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_{A_{\mathfrak p}}(\kappa(\mathfrak p),\omega_{\mathfrak p})
+\simeq\kappa(\mathfrak p)[\delta(\mathfrak p)].
+\]">\[
+R\operatorname{Hom}_{A_{\mathfrak p}}(\kappa(\mathfrak p),\omega_{\mathfrak p})
+\simeq\kappa(\mathfrak p)[\delta(\mathfrak p)].
+\]</span>
+This is a bounded integer-valued function. If <span class="math" data-tex="\(\mathfrak p\subset\mathfrak q\)">\(\mathfrak p\subset\mathfrak q\)</span>, then
+<span class="math math-display" data-tex="\[
+\delta(\mathfrak p)-\delta(\mathfrak q)
+=\dim((A/\mathfrak p)_{\mathfrak q}).
+\tag{4.3}
+\]">\[
+\delta(\mathfrak p)-\delta(\mathfrak q)
+=\dim((A/\mathfrak p)_{\mathfrak q}).
+\tag{4.3}
+\]</span>
+For local <span class="math" data-tex="\(A\)">\(A\)</span> and normalized <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, <span class="math" data-tex="\(\delta(\mathfrak m)=0\)">\(\delta(\mathfrak m)=0\)</span>, so <span class="math" data-tex="\(\delta(\mathfrak p)=\dim(A/\mathfrak p)\)">\(\delta(\mathfrak p)=\dim(A/\mathfrak p)\)</span>.</p>
+<p><strong>Proof.</strong> Existence follows from the residue-field argument in Theorem 2.3. A bounded injective representative in degrees <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> remains injective after localization, so <span class="math" data-tex="\(-\delta(\mathfrak p)\in[a,b]\)">\(-\delta(\mathfrak p)\in[a,b]\)</span>; this proves boundedness. Quotient adjunction shows that the function for <span class="math" data-tex="\(R\operatorname{Hom}_A(A/I,\omega)\)">\(R\operatorname{Hom}_A(A/I,\omega)\)</span> is the restriction of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> to <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span>.</p>
+<p>It suffices to prove a drop of one for an adjacent pair of primes. Quotient by the smaller prime, localize at the larger, and normalize. The resulting ring <span class="math" data-tex="\(B\)">\(B\)</span> is a one-dimensional local domain, with fraction field <span class="math" data-tex="\(F\)">\(F\)</span>. Formula (4.1) places its normalized dualizing complex in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Local cohomology identifies the completion of <span class="math" data-tex="\(H^{-1}(\omega_B)\)">\(H^{-1}(\omega_B)\)</span> with <span class="math" data-tex="\(D(H^1_{\mathfrak n}(B))\)">\(D(H^1_{\mathfrak n}(B))\)</span>.</p>
+<p>For <span class="math" data-tex="\(0\ne f\in\mathfrak n\)">\(0\ne f\in\mathfrak n\)</span>, the only prime containing <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>; hence <span class="math" data-tex="\(H^1_{\mathfrak n}(B)=B_f/B\)">\(H^1_{\mathfrak n}(B)=B_f/B\)</span>. It is nonzero by the dimension nonvanishing theorem for rings proved in Local cohomology, and multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> is surjective. If <span class="math" data-tex="\(H^{-1}(\omega_B)\)">\(H^{-1}(\omega_B)\)</span> had finite length, Matlis duality would make <span class="math" data-tex="\(H^1_{\mathfrak n}(B)\)">\(H^1_{\mathfrak n}(B)\)</span> finite length. Nakayama would then make it zero, a contradiction. Thus <span class="math" data-tex="\(H^{-1}(\omega_B)\)">\(H^{-1}(\omega_B)\)</span> has a nonzero generic localization. Over the field <span class="math" data-tex="\(F\)">\(F\)</span>, a dualizing complex has exactly one one-dimensional cohomology group. Its degree must therefore be <span class="math" data-tex="\(-1\)">\(-1\)</span>. The normalized closed-point complex has generic shift <span class="math" data-tex="\([1]\)">\([1]\)</span>, which says exactly that the original <span class="math" data-tex="\(\delta\)">\(\delta\)</span> drops by one along this adjacent specialization.</p>
+<p>Every chain can be refined to a saturated chain: boundedness of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> bounds its length, so the refinement process terminates. Along any saturated chain from <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> to <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, its length equals the difference of the two <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-values. Taking the supremum over chains proves (4.3). ∎</p>
+<p><strong>Theorem 4.2 (dimension and Cohen–Macaulayness).</strong> For nonzero finite <span class="math" data-tex="\(M\)">\(M\)</span>,
+<span class="math math-display" data-tex="\[
+H^d_{\mathfrak m}(M)\ne0,\qquad
+\operatorname{Ext}^{-d}_A(M,\omega)\ne0.
+\tag{4.4}
+\]">\[
+H^d_{\mathfrak m}(M)\ne0,\qquad
+\operatorname{Ext}^{-d}_A(M,\omega)\ne0.
+\tag{4.4}
+\]</span>
+The module <span class="math" data-tex="\(M\)">\(M\)</span> is Cohen–Macaulay if and only if <span class="math" data-tex="\(R\operatorname{Hom}_A(M,\omega)\)">\(R\operatorname{Hom}_A(M,\omega)\)</span> has exactly one nonzero cohomology group, in degree <span class="math" data-tex="\(-d\)">\(-d\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Supp}\operatorname{Ext}^{-i}_A(M,\omega)\le i.
+\tag{4.5}
+\]">\[
+\dim\operatorname{Supp}\operatorname{Ext}^{-i}_A(M,\omega)\le i.
+\tag{4.5}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a minimal prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(\operatorname{Supp}M\)">\(\operatorname{Supp}M\)</span> with <span class="math" data-tex="\(\dim(A/\mathfrak p)=d\)">\(\dim(A/\mathfrak p)=d\)</span>. The module <span class="math" data-tex="\(M_{\mathfrak p}\)">\(M_{\mathfrak p}\)</span> has nonzero finite length. The normalized complex at that prime is <span class="math" data-tex="\(\omega_{\mathfrak p}[-\delta(\mathfrak p)]\)">\(\omega_{\mathfrak p}[-\delta(\mathfrak p)]\)</span>. Its dual of <span class="math" data-tex="\(M_{\mathfrak p}\)">\(M_{\mathfrak p}\)</span> is nonzero in degree zero, by finite-length duality. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^{-d}_A(M,\omega)_{\mathfrak p}\ne0,
+\]">\[
+\operatorname{Ext}^{-d}_A(M,\omega)_{\mathfrak p}\ne0,
+\]</span>
+since <span class="math" data-tex="\(\delta(\mathfrak p)=d\)">\(\delta(\mathfrak p)=d\)</span>. Equations (3.6) and (4.1) prove (4.4). Together with (4.2), they prove the Cohen–Macaulay equivalence: the lower and upper nonvanishing endpoints coincide precisely when depth equals dimension.</p>
+<p>If <span class="math" data-tex="\(\operatorname{Ext}^{-i}_A(M,\omega)_{\mathfrak p}\ne0\)">\(\operatorname{Ext}^{-i}_A(M,\omega)_{\mathfrak p}\ne0\)</span>, its degree with respect to the normalized complex at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is <span class="math" data-tex="\(\delta(\mathfrak p)-i\)">\(\delta(\mathfrak p)-i\)</span>. Finite-module duals of normalized complexes have no positive cohomology by (4.1) over <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span>. Hence <span class="math" data-tex="\(\delta(\mathfrak p)\le i\)">\(\delta(\mathfrak p)\le i\)</span>. Formula (4.3) now bounds <span class="math" data-tex="\(\dim(A/\mathfrak p)\)">\(\dim(A/\mathfrak p)\)</span> by <span class="math" data-tex="\(i\)">\(i\)</span>, giving (4.5). ∎</p>
+<p>In particular, <span class="math" data-tex="\(A\)">\(A\)</span> is Cohen–Macaulay exactly when
+<span class="math math-display" data-tex="\[
+\omega\simeq W[d],\qquad W=H^{-d}(\omega),\quad d=\dim A.
+\tag{4.6}
+\]">\[
+\omega\simeq W[d],\qquad W=H^{-d}(\omega),\quad d=\dim A.
+\tag{4.6}
+\]</span>
+The module <span class="math" data-tex="\(W\)">\(W\)</span> is called the canonical module. It is maximal Cohen–Macaulay: homothety shows its support is all of <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>, and <span class="math" data-tex="\(R\operatorname{Hom}_A(W,\omega)=A[d]\)">\(R\operatorname{Hom}_A(W,\omega)=A[d]\)</span>, by applying <span class="math" data-tex="\(R\operatorname{Hom}(-,\omega)\)">\(R\operatorname{Hom}(-,\omega)\)</span> to (4.6). Equations (4.2) and (4.4) then give depth <span class="math" data-tex="\(W=d\)">\(W=d\)</span>.</p>
+<p><strong>Proposition 4.3 (Gorenstein criteria).</strong> For a local ring possessing a normalized dualizing complex, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(A\)">\(A\)</span> is Gorenstein.</li>
+<li><span class="math" data-tex="\(\omega\simeq A[d]\)">\(\omega\simeq A[d]\)</span>, where <span class="math" data-tex="\(d=\dim A\)">\(d=\dim A\)</span>.</li>
+<li><span class="math" data-tex="\(A\)">\(A\)</span> is Cohen–Macaulay and its canonical module is free of rank one.</li>
+<li><span class="math" data-tex="\(\operatorname{Ext}^i_A(k,A)=0\)">\(\operatorname{Ext}^i_A(k,A)=0\)</span> for all sufficiently large <span class="math" data-tex="\(i\)">\(i\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is dualizing, uniqueness makes <span class="math" data-tex="\(\omega=A[c]\)">\(\omega=A[c]\)</span>. The two nonvanishing endpoints in (4.2) and (4.4), applied to <span class="math" data-tex="\(A\)">\(A\)</span>, force <span class="math" data-tex="\(c=\operatorname{depth}A=d\)">\(c=\operatorname{depth}A=d\)</span>. The converse follows from finite injective dimension of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Formula (4.6) proves the equivalence with (3). Normalization in (2) gives <span class="math" data-tex="\(\operatorname{Ext}^i_A(k,A)=0\)">\(\operatorname{Ext}^i_A(k,A)=0\)</span> for <span class="math" data-tex="\(i\ne d\)">\(i\ne d\)</span>, proving (4).</p>
+<p>For (4) implies (2), biduality identifies <span class="math" data-tex="\(A=R\operatorname{Hom}_A(\omega,\omega)\)">\(A=R\operatorname{Hom}_A(\omega,\omega)\)</span>. Tensor–Hom adjunction gives
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_A(k,A)
+=R\operatorname{Hom}_k(k\otimes_A^{\mathbf L}\omega,k).
+\tag{4.7}
+\]">\[
+R\operatorname{Hom}_A(k,A)
+=R\operatorname{Hom}_k(k\otimes_A^{\mathbf L}\omega,k).
+\tag{4.7}
+\]</span>
+Here we used <span class="math" data-tex="\(R\operatorname{Hom}_A(k,\omega)=k[0]\)">\(R\operatorname{Hom}_A(k,\omega)=k[0]\)</span>. Eventual Ext vanishing therefore makes <span class="math" data-tex="\(k\otimes_A^{\mathbf L}\omega\)">\(k\otimes_A^{\mathbf L}\omega\)</span> bounded below. A minimal free resolution of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, whose differentials vanish modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, must be bounded on both sides. Thus <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is perfect. Base change of its homothety now gives
+<span class="math" data-tex="\(k=R\operatorname{Hom}_k(k\otimes\omega,k\otimes\omega)\)">\(k=R\operatorname{Hom}_k(k\otimes\omega,k\otimes\omega)\)</span>. The vector-space argument of Theorem 2.3 forces its minimal free resolution to consist of one rank-one term. Thus <span class="math" data-tex="\(\omega=A[c]\)">\(\omega=A[c]\)</span>, and the already proved endpoint argument gives <span class="math" data-tex="\(c=d\)">\(c=d\)</span>. ∎</p>
+<p><strong>Corollary 4.4.</strong> An arbitrary Noetherian local ring is Gorenstein if and only if <span class="math" data-tex="\(\operatorname{Ext}^i_A(k,A)=0\)">\(\operatorname{Ext}^i_A(k,A)=0\)</span> for all sufficiently large <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Proof.</strong> The forward implication follows from finite injective dimension. For the converse, flat completion and a resolution by finite free modules identify <span class="math" data-tex="\(\operatorname{Ext}^i_A(k,A)\otimes_A\widehat A\)">\(\operatorname{Ext}^i_A(k,A)\otimes_A\widehat A\)</span> with <span class="math" data-tex="\(\operatorname{Ext}^i_{\widehat A}(k,\widehat A)\)">\(\operatorname{Ext}^i_{\widehat A}(k,\widehat A)\)</span>. The complete ring has a dualizing complex by Proposition 2.5, so Proposition 4.3 makes <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> Gorenstein, with some finite injective-dimension bound <span class="math" data-tex="\(b\)">\(b\)</span>. For every ideal <span class="math" data-tex="\(I\)">\(I\)</span>, the same base change gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^{b+1}_A(A/I,A)\otimes_A\widehat A
+=\operatorname{Ext}^{b+1}_{\widehat A}(\widehat A/I\widehat A,\widehat A)=0.
+\]">\[
+\operatorname{Ext}^{b+1}_A(A/I,A)\otimes_A\widehat A
+=\operatorname{Ext}^{b+1}_{\widehat A}(\widehat A/I\widehat A,\widehat A)=0.
+\]</span>
+Faithful flatness makes the group on the left zero before tensoring. Dimension shifting and Baer's criterion give <span class="math" data-tex="\(\operatorname{id}_A A\le b\)">\(\operatorname{id}_A A\le b\)</span>. ∎</p>
+<p>For a nonlocal ring with a dualizing complex, Gorensteinness is equivalent to the complex being locally an invertible module in one degree. Its locus is open: near a prime where only one cohomology module survives and is free of rank one, finite presentation lets those conditions persist on an open neighborhood. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-sitting-in-degrees">Tag 0A7U</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-dimension-function">Tag 0A7Z</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-depth-in-terms-dualizing-complex">Tag 0AWR</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-apply-CM">Tag 0AWS</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-gorenstein">Tag 0DW9</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-gorenstein-ext">Tag 0BJI</a>].</p>
+<h2 id="5-turning-finiteness-into-a-uniform-annihilator">5. Turning finiteness into a uniform annihilator</h2>
+<p>Let <span class="math" data-tex="\(T\subset\operatorname{Spec}A\)">\(T\subset\operatorname{Spec}A\)</span> be stable under specialization. For a module <span class="math" data-tex="\(N\)">\(N\)</span>, define
+<span class="math math-display" data-tex="\[
+\Gamma_T(N)=\{x\in N:V(\operatorname{Ann}(x))\subset T\},
+\qquad H^i_T(N)=R^i\Gamma_T(N).
+\]">\[
+\Gamma_T(N)=\{x\in N:V(\operatorname{Ann}(x))\subset T\},
+\qquad H^i_T(N)=R^i\Gamma_T(N).
+\]</span>
+This includes <span class="math" data-tex="\(T=V(I)\)">\(T=V(I)\)</span>, where it is ordinary <span class="math" data-tex="\(I\)">\(I\)</span>-power torsion. Specialization stability makes the displayed set a submodule. It is the filtered union of <span class="math" data-tex="\(\Gamma_{V(J)}(N)\)">\(\Gamma_{V(J)}(N)\)</span> over ideals with <span class="math" data-tex="\(V(J)\subset T\)">\(V(J)\subset T\)</span>; the union is filtered because <span class="math" data-tex="\(V(J_1J_2)=V(J_1)\cup V(J_2)\)">\(V(J_1J_2)=V(J_1)\cup V(J_2)\)</span>. Exactness of filtered colimits gives
+<span class="math math-display" data-tex="\[
+H^i_T(N)=\operatorname*{colim}_{V(J)\subset T}H^i_J(N).
+\tag{5.1}
+\]">\[
+H^i_T(N)=\operatorname*{colim}_{V(J)\subset T}H^i_J(N).
+\tag{5.1}
+\]</span>
+In particular every vector in these modules has cyclic support contained in <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>The functor <span class="math" data-tex="\(\Gamma_T\)">\(\Gamma_T\)</span> preserves injectives. Indeed, each <span class="math" data-tex="\(\Gamma_{V(J)}\)">\(\Gamma_{V(J)}\)</span> does by the proof in Local cohomology, and a filtered union of injectives is injective over a Noetherian ring: a map from a finitely presented ideal factors through one term, where it extends by Baer's criterion. These observations also prove the following two facts used below.</p>
+<p>First, localization at <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> gives
+<span class="math math-display" data-tex="\[
+H^i_T(N)_{\mathfrak q}=H^i_{T_{\mathfrak q}}(N_{\mathfrak q}),
+\tag{5.2}
+\]">\[
+H^i_T(N)_{\mathfrak q}=H^i_{T_{\mathfrak q}}(N_{\mathfrak q}),
+\tag{5.2}
+\]</span>
+where <span class="math" data-tex="\(T_{\mathfrak q}\)">\(T_{\mathfrak q}\)</span> is the inverse image of <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(\operatorname{Spec}A_{\mathfrak q}\)">\(\operatorname{Spec}A_{\mathfrak q}\)</span>. To check cofinality in (5.1), an ideal after localization has finitely many minimal primes. If its closed support is in <span class="math" data-tex="\(T_{\mathfrak q}\)">\(T_{\mathfrak q}\)</span>, these primes are localizations of primes in <span class="math" data-tex="\(T\)">\(T\)</span>; their product is an ideal whose global closed support is in <span class="math" data-tex="\(T\)">\(T\)</span> and whose localized radical is the given radical. Čech computation and flat localization now give (5.2).</p>
+<p>Second, for <span class="math" data-tex="\(\mathfrak q\in T\)">\(\mathfrak q\in T\)</span>, composition of the two torsion functors over <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span> is closed-point torsion. Preservation of injectives gives the first-quadrant spectral sequence
+<span class="math math-display" data-tex="\[
+E_2^{a,b}=H^a_{\mathfrak qA_{\mathfrak q}}
+\bigl(H^b_T(M)_{\mathfrak q}\bigr)
+\ \Longrightarrow\
+H^{a+b}_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q}).
+\tag{5.3}
+\]">\[
+E_2^{a,b}=H^a_{\mathfrak qA_{\mathfrak q}}
+\bigl(H^b_T(M)_{\mathfrak q}\bigr)
+\ \Longrightarrow\
+H^{a+b}_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q}).
+\tag{5.3}
+\]</span>
+It can also be constructed by resolving an injective resolution under the two functors and filtering the resulting double complex. In each total degree only finitely many first-quadrant terms contribute, so the spectral sequence supplies a finite filtration of its abutment. No finiteness of its individual terms is assumed.</p>
+<p><strong>Lemma 5.1 (annihilator test).</strong> For finite <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(H^i_T(M)\)">\(H^i_T(M)\)</span> is finite for <span class="math" data-tex="\(0\le i\le s\)">\(0\le i\le s\)</span>.</li>
+<li>Some ideal <span class="math" data-tex="\(J\)">\(J\)</span>, with <span class="math" data-tex="\(V(J)\subset T\)">\(V(J)\subset T\)</span>, kills all these modules.</li>
+</ol>
+<p>For <span class="math" data-tex="\(T=V(I)\)">\(T=V(I)\)</span>, these are equivalent to the existence of <span class="math" data-tex="\(e\)">\(e\)</span> such that <span class="math" data-tex="\(I^eH^i_I(M)=0\)">\(I^eH^i_I(M)=0\)</span> for all <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span>.</p>
+<p><strong>Proof.</strong> A finite module whose support is in <span class="math" data-tex="\(T\)">\(T\)</span> has annihilator with closed zero set in <span class="math" data-tex="\(T\)">\(T\)</span>. Multiplying the annihilators of finitely many such modules proves (1) implies (2).</p>
+<p>For the reverse implication use induction on <span class="math" data-tex="\(s\)">\(s\)</span>. The case <span class="math" data-tex="\(s=0\)">\(s=0\)</span> follows from <span class="math" data-tex="\(H^0_T(M)\subset M\)">\(H^0_T(M)\subset M\)</span>. Remove this finite torsion submodule. It is killed by an ideal <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(V(K)\subset T\)">\(V(K)\subset T\)</span>. In the colimit (5.1), the ideals <span class="math" data-tex="\(JK\)">\(JK\)</span> are cofinal and have zero sets containing <span class="math" data-tex="\(V(K)\)">\(V(K)\)</span>; the removed module is <span class="math" data-tex="\(JK\)">\(JK\)</span>-power torsion, so its positive groups vanish by the Čech complex. Its higher <span class="math" data-tex="\(T\)">\(T\)</span>-supported cohomology is therefore zero. The quotient <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> has <span class="math" data-tex="\(\Gamma_T(M&#x27;)=0\)">\(\Gamma_T(M&#x27;)=0\)</span> and the same positive supported cohomology. If <span class="math" data-tex="\(M&#x27;=0\)">\(M&#x27;=0\)</span> there is nothing left to prove. Otherwise every associated prime of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> is outside <span class="math" data-tex="\(T\)">\(T\)</span>. Prime avoidance chooses <span class="math" data-tex="\(f\in J\)">\(f\in J\)</span> outside these finitely many primes, because <span class="math" data-tex="\(J\)">\(J\)</span> is contained in none of them. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor on <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>.</p>
+<p>In the long exact sequence for <span class="math" data-tex="\(0\to M&#x27;\xrightarrow{f}M&#x27;\to M&#x27;/fM&#x27;\to0\)">\(0\to M&#x27;\xrightarrow{f}M&#x27;\to M&#x27;/fM&#x27;\to0\)</span>, the multiplication maps on <span class="math" data-tex="\(H^i_T(M&#x27;)\)">\(H^i_T(M&#x27;)\)</span> are zero for <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span>. For <span class="math" data-tex="\(0\le i&lt;s\)">\(0\le i&lt;s\)</span> we obtain
+<span class="math math-display" data-tex="\[
+0\to H^i_T(M&#x27;)\to H^i_T(M&#x27;/fM&#x27;)
+\to H^{i+1}_T(M&#x27;)\to0.
+\tag{5.4}
+\]">\[
+0\to H^i_T(M&#x27;)\to H^i_T(M&#x27;/fM&#x27;)
+\to H^{i+1}_T(M&#x27;)\to0.
+\tag{5.4}
+\]</span>
+The middle groups are killed by <span class="math" data-tex="\(J^2\)">\(J^2\)</span>. Induction makes them finite through degree <span class="math" data-tex="\(s-1\)">\(s-1\)</span>. Their quotients in (5.4) make all positive groups through degree <span class="math" data-tex="\(s\)">\(s\)</span> finite, as required.</p>
+<p>For the last assertion, <span class="math" data-tex="\(V(J)\subset V(I)\)">\(V(J)\subset V(I)\)</span> means <span class="math" data-tex="\(I\subset\sqrt J\)">\(I\subset\sqrt J\)</span>; finite generation gives <span class="math" data-tex="\(I^e\subset J\)">\(I^e\subset J\)</span> for some <span class="math" data-tex="\(e\)">\(e\)</span>. Conversely one may take <span class="math" data-tex="\(J=I^e\)">\(J=I^e\)</span>. ∎</p>
+<p>This test concerns a whole initial range of degrees. A single supported cohomology module killed by an ideal need not be finite. The proof needs the preceding degrees in (5.4). See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-check-finiteness-local-cohomology-by-annihilator">Tag 0AW8</a>].</p>
+<h2 id="6-the-annihilator-and-finiteness-theorems">6. The annihilator and finiteness theorems</h2>
+<p>Here is the stronger statement from which finiteness follows. Its extra set <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> allows the annihilator to vanish on a larger locus than the support of local cohomology.</p>
+<p><strong>Theorem 6.1 (Faltings' annihilator theorem with a dualizing complex).</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> possesses a dualizing complex, <span class="math" data-tex="\(T\subset T&#x27;\subset\operatorname{Spec}A\)">\(T\subset T&#x27;\subset\operatorname{Spec}A\)</span> are stable under specialization, <span class="math" data-tex="\(M\)">\(M\)</span> is finite, and <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. The following are equivalent:</p>
+<ol>
+<li>There is an ideal <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(V(J)\subset T&#x27;\)">\(V(J)\subset T&#x27;\)</span> such that <span class="math" data-tex="\(JH^i_T(M)=0\)">\(JH^i_T(M)=0\)</span> for every <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span>.</li>
+<li>For every <span class="math" data-tex="\(\mathfrak p\notin T&#x27;\)">\(\mathfrak p\notin T&#x27;\)</span>, <span class="math" data-tex="\(\mathfrak q\in T\)">\(\mathfrak q\in T\)</span>, <span class="math" data-tex="\(\mathfrak p\subset\mathfrak q\)">\(\mathfrak p\subset\mathfrak q\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{depth}_{A_{\mathfrak p}}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})&gt;s.
+\tag{6.1}
+\]">\[
+\operatorname{depth}_{A_{\mathfrak p}}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})&gt;s.
+\tag{6.1}
+\]</span>
+We give depth of the zero localization the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\omega\)">\(\omega\)</span> for a dualizing complex, <span class="math" data-tex="\(\delta\)">\(\delta\)</span> for Lemma 4.1's bounded dimension function, and
+<span class="math math-display" data-tex="\[
+Q^j=\operatorname{Ext}^j_A(M,\omega).
+\]">\[
+Q^j=\operatorname{Ext}^j_A(M,\omega).
+\]</span>
+These are finite modules. Local duality over <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span>, with normalized complex <span class="math" data-tex="\(\omega_{\mathfrak q}[-\delta(\mathfrak q)]\)">\(\omega_{\mathfrak q}[-\delta(\mathfrak q)]\)</span>, says that
+<span class="math math-display" data-tex="\[
+\widehat{Q^j_{\mathfrak q}}=
+D_{\mathfrak q}\bigl(H^{-\delta(\mathfrak q)-j}_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q})\bigr).
+\tag{6.2}
+\]">\[
+\widehat{Q^j_{\mathfrak q}}=
+D_{\mathfrak q}\bigl(H^{-\delta(\mathfrak q)-j}_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q})\bigr).
+\tag{6.2}
+\]</span>
+Consequently an ideal kills the finite module on the left before completion if and only if it kills the indicated local cohomology module. Faithful flatness and faithfulness of Matlis duality prove this equivalence of annihilators.</p>
+<p>We first prove (2) implies (1). Induct on the cohomology degree <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span>. Degree zero is a finite torsion submodule of <span class="math" data-tex="\(M\)">\(M\)</span>, so its annihilator has zero set in <span class="math" data-tex="\(T\subset T&#x27;\)">\(T\subset T&#x27;\)</span>. Suppose an ideal <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span> with zero set in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> already kills all groups in degrees less than <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>Within this step, descend through the finitely many possible values of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Put <span class="math" data-tex="\(T_n=\{\mathfrak q\in T:\delta(\mathfrak q)\le n\}\)">\(T_n=\{\mathfrak q\in T:\delta(\mathfrak q)\le n\}\)</span>. We construct an ideal <span class="math" data-tex="\(J\)">\(J\)</span>, with <span class="math" data-tex="\(V(J)\subset T&#x27;\)">\(V(J)\subset T&#x27;\)</span>, such that
+<span class="math math-display" data-tex="\[
+\operatorname{Ass}_A(JH^i_T(M))\subset T_n.
+\tag{6.3}
+\]">\[
+\operatorname{Ass}_A(JH^i_T(M))\subset T_n.
+\tag{6.3}
+\]</span>
+For <span class="math" data-tex="\(n\)">\(n\)</span> above all <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-values, <span class="math" data-tex="\(J=A\)">\(J=A\)</span> works. Descending below all those values will make <span class="math" data-tex="\(JH^i_T(M)=0\)">\(JH^i_T(M)=0\)</span>: every nonzero module over a Noetherian ring has an associated prime, by maximizing an element's annihilator.</p>
+<p>Assume (6.3) at level <span class="math" data-tex="\(n\)">\(n\)</span>. We need an ideal <span class="math" data-tex="\(J&#x27;&#x27;\)">\(J&#x27;&#x27;\)</span>, with zero set in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>, which kills
+<span class="math math-display" data-tex="\[
+H^i_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q})
+\quad\text{for every }\mathfrak q\in T\text{ with }\delta(\mathfrak q)=n.
+\tag{6.4}
+\]">\[
+H^i_{\mathfrak qA_{\mathfrak q}}(M_{\mathfrak q})
+\quad\text{for every }\mathfrak q\in T\text{ with }\delta(\mathfrak q)=n.
+\tag{6.4}
+\]</span>
+We construct it uniformly, rather than choosing separate unrelated annihilators at each point. By (6.2), it suffices to kill <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak q}\)">\(Q^{-n-i}_{\mathfrak q}\)</span>.</p>
+<p>Fix one such <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. For <span class="math" data-tex="\(\mathfrak p\subset\mathfrak q\)">\(\mathfrak p\subset\mathfrak q\)</span> outside <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>, the normalized local dual at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> relates <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak p}\)">\(Q^{-n-i}_{\mathfrak p}\)</span> to
+<span class="math math-display" data-tex="\[
+H^{i+n-\delta(\mathfrak p)}_{\mathfrak pA_{\mathfrak p}}(M_{\mathfrak p})
+=H^{i-\dim((A/\mathfrak p)_{\mathfrak q})}_{\mathfrak pA_{\mathfrak p}}(M_{\mathfrak p}).
+\]">\[
+H^{i+n-\delta(\mathfrak p)}_{\mathfrak pA_{\mathfrak p}}(M_{\mathfrak p})
+=H^{i-\dim((A/\mathfrak p)_{\mathfrak q})}_{\mathfrak pA_{\mathfrak p}}(M_{\mathfrak p}).
+\]</span>
+Its degree is below depth by (6.1) and <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span>, so it vanishes. Thus the support of the finite module <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak q}\)">\(Q^{-n-i}_{\mathfrak q}\)</span> is contained in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> after localization.</p>
+<p>Here is why this supplies a global ideal with the required zero set. Take the finitely many minimal primes of <span class="math" data-tex="\(\operatorname{Ann}_A Q^{-n-i}\)">\(\operatorname{Ann}_A Q^{-n-i}\)</span> that are contained in <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. They belong to <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>. Their product has global zero set in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>, and its localization is the radical of the localized annihilator. A sufficiently large power therefore kills <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak q}\)">\(Q^{-n-i}_{\mathfrak q}\)</span>. If there are no such primes, take the unit ideal. Since <span class="math" data-tex="\(Q^{-n-i}\)">\(Q^{-n-i}\)</span> is finite, the same ideal kills it on an open neighborhood of <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. The layer <span class="math" data-tex="\(\{\mathfrak q\in T:\delta(\mathfrak q)=n\}\)">\(\{\mathfrak q\in T:\delta(\mathfrak q)=n\}\)</span>, with the induced topology, is a subspace of a Noetherian space and is quasi-compact. Finitely many neighborhoods suffice. The product of their ideals has zero set in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> and kills every localization in (6.4). This is <span class="math" data-tex="\(J&#x27;&#x27;\)">\(J&#x27;&#x27;\)</span>.</p>
+<p>Now apply (5.3) at a point <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of this layer. In the first column the pages form a decreasing sequence
+<span class="math math-display" data-tex="\[
+E_2^{0,i}\supset E_3^{0,i}\supset\cdots\supset E_{i+2}^{0,i}=E_\infty^{0,i}.
+\]">\[
+E_2^{0,i}\supset E_3^{0,i}\supset\cdots\supset E_{i+2}^{0,i}=E_\infty^{0,i}.
+\]</span>
+There are no incoming differentials. Each successive quotient injects into the target of an outgoing differential, a subquotient of
+<span class="math" data-tex="\(H^r_{\mathfrak q}(H^{i-r+1}_T(M)_{\mathfrak q})\)">\(H^r_{\mathfrak q}(H^{i-r+1}_T(M)_{\mathfrak q})\)</span> for <span class="math" data-tex="\(2\le r\le i+1\)">\(2\le r\le i+1\)</span>. It is killed by <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span>, since <span class="math" data-tex="\(i-r+1&lt;i\)">\(i-r+1&lt;i\)</span>. The last page is a subquotient of the abutment <span class="math" data-tex="\(H^i_{\mathfrak q}(M_{\mathfrak q})\)">\(H^i_{\mathfrak q}(M_{\mathfrak q})\)</span>, killed by <span class="math" data-tex="\(J&#x27;&#x27;\)">\(J&#x27;&#x27;\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(J&#x27;)^iJ&#x27;&#x27;E_2^{0,i}=0.
+\tag{6.5}
+\]">\[
+(J&#x27;)^iJ&#x27;&#x27;E_2^{0,i}=0.
+\tag{6.5}
+\]</span>
+The module <span class="math" data-tex="\((JH^i_T(M))_{\mathfrak q}\)">\((JH^i_T(M))_{\mathfrak q}\)</span> is closed-point torsion. Indeed its associated primes before localization are in <span class="math" data-tex="\(T_n\)">\(T_n\)</span>, whereas a strict generization of <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> has larger <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. A nonzero localization away from the closed point would have an associated prime there, contradicting (6.3). Each cyclic submodule therefore has closed-point support. Thus this module lies in <span class="math" data-tex="\(E_2^{0,i}=H^0_{\mathfrak q}(H^i_T(M)_{\mathfrak q})\)">\(E_2^{0,i}=H^0_{\mathfrak q}(H^i_T(M)_{\mathfrak q})\)</span>. Equation (6.5) kills it. Multiplying <span class="math" data-tex="\(J\)">\(J\)</span> by <span class="math" data-tex="\((J&#x27;)^iJ&#x27;&#x27;\)">\((J&#x27;)^iJ&#x27;&#x27;\)</span> removes all associated primes of value <span class="math" data-tex="\(n\)">\(n\)</span> and preserves (6.3) for the lower layer. The descending induction terminates and produces an annihilator of <span class="math" data-tex="\(H^i_T(M)\)">\(H^i_T(M)\)</span>. Multiply it by <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span> to kill all degrees through <span class="math" data-tex="\(i\)">\(i\)</span>. This proves (1).</p>
+<p>For the converse, suppose <span class="math" data-tex="\(J\)">\(J\)</span> as in (1) exists, but take a violating pair and put
+<span class="math math-display" data-tex="\[
+h=\operatorname{depth}M_{\mathfrak p},\quad
+c=\dim((A/\mathfrak p)_{\mathfrak q}),\quad i=h+c\le s,\quad n=\delta(\mathfrak q).
+\]">\[
+h=\operatorname{depth}M_{\mathfrak p},\quad
+c=\dim((A/\mathfrak p)_{\mathfrak q}),\quad i=h+c\le s,\quad n=\delta(\mathfrak q).
+\]</span>
+The depth theorem and (6.2) make <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak p}\ne0\)">\(Q^{-n-i}_{\mathfrak p}\ne0\)</span>, since its normalized degree is <span class="math" data-tex="\(-h\)">\(-h\)</span>: formula (4.3) gives <span class="math" data-tex="\(\delta(\mathfrak p)=n+c\)">\(\delta(\mathfrak p)=n+c\)</span>.</p>
+<p>On the other hand, every <span class="math" data-tex="\(E_2^{a,b}\)">\(E_2^{a,b}\)</span> of (5.3) with <span class="math" data-tex="\(a+b=i\)">\(a+b=i\)</span> is killed by <span class="math" data-tex="\(J\)">\(J\)</span>, because <span class="math" data-tex="\(b\le i\le s\)">\(b\le i\le s\)</span>. Its abutment has a filtration of length at most <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, so <span class="math" data-tex="\(J^{i+1}\)">\(J^{i+1}\)</span> kills <span class="math" data-tex="\(H^i_{\mathfrak q}(M_{\mathfrak q})\)">\(H^i_{\mathfrak q}(M_{\mathfrak q})\)</span>. Equation (6.2) says it kills <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak q}\)">\(Q^{-n-i}_{\mathfrak q}\)</span> as well. Localize again at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Since <span class="math" data-tex="\(\mathfrak p\notin T&#x27;\)">\(\mathfrak p\notin T&#x27;\)</span> and <span class="math" data-tex="\(V(J)\subset T&#x27;\)">\(V(J)\subset T&#x27;\)</span>, <span class="math" data-tex="\(J_{\mathfrak p}\)">\(J_{\mathfrak p}\)</span> is the unit ideal. This forces <span class="math" data-tex="\(Q^{-n-i}_{\mathfrak p}=0\)">\(Q^{-n-i}_{\mathfrak p}=0\)</span>, the contradiction. ∎</p>
+<p>The proof has two distinct finite controls: the dual Ext modules give finitely many neighborhoods on each dimension layer, and the dimension function gives finitely many layers. Neither control requires local cohomology itself to be finite. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-proposition-annihilator">Tag 0EFC</a>].</p>
+<p><strong>Theorem 6.2 (finiteness).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be Noetherian with a dualizing complex, <span class="math" data-tex="\(T\)">\(T\)</span> stable under specialization, <span class="math" data-tex="\(M\)">\(M\)</span> finite, and <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>. Then <span class="math" data-tex="\(H^i_T(M)\)">\(H^i_T(M)\)</span> is finite for every <span class="math" data-tex="\(i\le s\)">\(i\le s\)</span> if and only if
+<span class="math math-display" data-tex="\[
+\operatorname{depth}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})&gt;s
+\]">\[
+\operatorname{depth}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})&gt;s
+\]</span>
+for all <span class="math" data-tex="\(\mathfrak p\notin T\)">\(\mathfrak p\notin T\)</span>, <span class="math" data-tex="\(\mathfrak q\in T\)">\(\mathfrak q\in T\)</span>, <span class="math" data-tex="\(\mathfrak p\subset\mathfrak q\)">\(\mathfrak p\subset\mathfrak q\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(T&#x27;=T\)">\(T&#x27;=T\)</span> in Theorem 6.1 and apply Lemma 5.1. ∎</p>
+<p>For closed support define the <strong>finiteness cutoff</strong>
+<span class="math math-display" data-tex="\[
+f_I(M)=\inf_{\substack{\mathfrak p\notin V(I),\ \mathfrak q\in V(I)\\
+\mathfrak p\subset\mathfrak q}}
+\bigl(\operatorname{depth}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})\bigr),
+\tag{6.6}
+\]">\[
+f_I(M)=\inf_{\substack{\mathfrak p\notin V(I),\ \mathfrak q\in V(I)\\
+\mathfrak p\subset\mathfrak q}}
+\bigl(\operatorname{depth}M_{\mathfrak p}
++\dim((A/\mathfrak p)_{\mathfrak q})\bigr),
+\tag{6.6}
+\]</span>
+with the infimum of an empty set equal to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. In a Gorenstein local ring the theorem applies, since <span class="math" data-tex="\(A\)">\(A\)</span> itself is dualizing. For any finite <span class="math" data-tex="\(M\)">\(M\)</span>, all <span class="math" data-tex="\(H^i_I(M)\)">\(H^i_I(M)\)</span> with <span class="math" data-tex="\(i&lt;f_I(M)\)">\(i&lt;f_I(M)\)</span> are finite; if the cutoff is finite, <span class="math" data-tex="\(H^{f_I(M)}_I(M)\)">\(H^{f_I(M)}_I(M)\)</span> is not finite. The latter assertion follows by applying the theorem at the cutoff: lower degrees are already finite, so the failure is in that degree. A cutoff of infinity means every degree is finite, and has no “degree at infinity.” Nor does a finite cutoff assert that every later degree is infinite: dimension vanishing still makes sufficiently high groups zero. Compare [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-proposition-finiteness">Tag 0EFD</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-local-annihilator">Tag 0BJU</a>].</p>
+<p><strong>Example 6.3.</strong> For <span class="math" data-tex="\(A=k[[x,y,z]]\)">\(A=k[[x,y,z]]\)</span>, <span class="math" data-tex="\(I=(x)\)">\(I=(x)\)</span>, <span class="math" data-tex="\(M=A\)">\(M=A\)</span>, the pair <span class="math" data-tex="\((0)\subset(x)\)">\((0)\subset(x)\)</span> gives cutoff one, and every eligible pair has positive interval dimension. Thus <span class="math" data-tex="\(H^0_I(A)=0\)">\(H^0_I(A)=0\)</span> is finite, but <span class="math" data-tex="\(H^1_I(A)=A_x/A\)">\(H^1_I(A)=A_x/A\)</span> is not finite. It is also visibly nonfinite: multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is surjective and the module is nonzero, so finiteness would contradict Nakayama. If instead <span class="math" data-tex="\(I=\mathfrak m\)">\(I=\mathfrak m\)</span>, Cohen–Macaulayness of every regular localization and the dimension formula make every eligible sum equal to three. Only <span class="math" data-tex="\(H^3_{\mathfrak m}(A)\)">\(H^3_{\mathfrak m}(A)\)</span> is nonzero, and it is not finite. Finally <span class="math" data-tex="\(I=0\)">\(I=0\)</span> gives <span class="math" data-tex="\(T=\operatorname{Spec}A\)">\(T=\operatorname{Spec}A\)</span>, cutoff infinity and <span class="math" data-tex="\(H^0_T(M)=M\)">\(H^0_T(M)=M\)</span>, with all positive groups zero.</p>
+<p>There is a further version for a Noetherian ring that is universally catenary and whose local rings have Cohen–Macaulay formal fibres. For an ideal <span class="math" data-tex="\(I\)">\(I\)</span> and finite <span class="math" data-tex="\(M\)">\(M\)</span>, it gives the same cutoff (6.6), without assuming a dualizing complex. We state this extension, with those two hypotheses, as an imported theorem below. The theorem proved here covers arbitrary specialization-closed <span class="math" data-tex="\(T\)">\(T\)</span> under the dualizing-complex hypothesis; the cited formal-fibre extension is being asserted here only for closed support.</p>
+<h2 id="7-two-singularity-computations">7. Two singularity computations</h2>
+<p><strong>Example 7.1 (three axes).</strong> Let
+<span class="math math-display" data-tex="\[
+A=k[[x,y,z]]/(xy,yz,zx).
+\]">\[
+A=k[[x,y,z]]/(xy,yz,zx).
+\]</span>
+Every series has a unique expression
+<span class="math" data-tex="\(c+x a(x)+y b(y)+z c_1(z)\)">\(c+x a(x)+y b(y)+z c_1(z)\)</span>. Restriction to the three axes embeds <span class="math" data-tex="\(A\)">\(A\)</span> into
+<span class="math" data-tex="\(k[[x]]\oplus k[[y]]\oplus k[[z]]\)">\(k[[x]]\oplus k[[y]]\oplus k[[z]]\)</span>; its image is the triples with the same constant term. Its three minimal primes define these one-dimensional axes, so <span class="math" data-tex="\(\dim A=1\)">\(\dim A=1\)</span>.</p>
+<p>The element <span class="math" data-tex="\(t=x+y+z\)">\(t=x+y+z\)</span> acts on that embedding as multiplication by <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span> respectively. Each is injective on its power-series ring; hence <span class="math" data-tex="\(t\)">\(t\)</span> is a nonzerodivisor on <span class="math" data-tex="\(A\)">\(A\)</span>. This proves depth one and Cohen–Macaulayness. Eliminate <span class="math" data-tex="\(z=-x-y\)">\(z=-x-y\)</span> in the quotient to obtain
+<span class="math math-display" data-tex="\[
+B=A/(t)=k[x,y]/(x^2,xy,y^2).
+\]">\[
+B=A/(t)=k[x,y]/(x^2,xy,y^2).
+\]</span>
+Its basis is <span class="math" data-tex="\(1,x,y\)">\(1,x,y\)</span>, and its socle is <span class="math" data-tex="\(kx\oplus ky\)">\(kx\oplus ky\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> were Gorenstein, the two-term resolution for this regular element, together with (2.3), would give the normalized dualizing complex <span class="math" data-tex="\(B[0]\)">\(B[0]\)</span>. Since <span class="math" data-tex="\(B\)">\(B\)</span> is Artinian, Proposition 3.1 would make <span class="math" data-tex="\(B\)">\(B\)</span> its residue-field injective hull, whose socle has dimension one. The displayed two-dimensional socle rules this out.</p>
+<p>The type is exactly two. Quotient adjunction and <span class="math" data-tex="\(R\operatorname{Hom}_A(B,A)=B[-1]\)">\(R\operatorname{Hom}_A(B,A)=B[-1]\)</span> give
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1_A(k,A)=\operatorname{Hom}_B(k,B)=k^2.
+\]">\[
+\operatorname{Ext}^1_A(k,A)=\operatorname{Hom}_B(k,B)=k^2.
+\]</span>
+For the canonical module <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(\omega=W[1]\)">\(\omega=W[1]\)</span>, (4.7) identifies this group with <span class="math" data-tex="\(\operatorname{Hom}_k(W/\mathfrak mW,k)\)">\(\operatorname{Hom}_k(W/\mathfrak mW,k)\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> requires two generators. Cohen–Macaulayness controls the degree of the dualizing complex; it does not force its one surviving module to be <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Example 7.2 (a module on a regular surface).</strong> Let <span class="math" data-tex="\(S=k[[x,y]]\)">\(S=k[[x,y]]\)</span> and <span class="math" data-tex="\(M=S/(x)=k[[y]]\)">\(M=S/(x)=k[[y]]\)</span>. The free resolution <span class="math" data-tex="\(0\to S\xrightarrow{x}S\to M\to0\)">\(0\to S\xrightarrow{x}S\to M\to0\)</span> gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1_S(M,S)=M,\qquad
+\operatorname{Ext}^j_S(M,S)=0\ (j\ne1).
+\]">\[
+\operatorname{Ext}^1_S(M,S)=M,\qquad
+\operatorname{Ext}^j_S(M,S)=0\ (j\ne1).
+\]</span>
+Since <span class="math" data-tex="\(\omega_S=S[2]\)">\(\omega_S=S[2]\)</span>, its dual of <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(M[1]\)">\(M[1]\)</span>, concentrated in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. Local cohomology of <span class="math" data-tex="\(M\)">\(M\)</span> is computed by <span class="math" data-tex="\([M\to M_y]\)">\([M\to M_y]\)</span>:
+<span class="math math-display" data-tex="\[
+H^1_{\mathfrak m}(M)=k((y))/k[[y]],\qquad H^i_{\mathfrak m}(M)=0\ (i\ne1).
+\]">\[
+H^1_{\mathfrak m}(M)=k((y))/k[[y]],\qquad H^i_{\mathfrak m}(M)=0\ (i\ne1).
+\]</span>
+On the other side, the inverse-monomial calculation and Proposition 3.1 identify
+<span class="math math-display" data-tex="\[
+E_S=H^2_{\mathfrak m}(S)
+=\bigoplus_{a,b\ge1}kx^{-a}y^{-b}.
+\]">\[
+E_S=H^2_{\mathfrak m}(S)
+=\bigoplus_{a,b\ge1}kx^{-a}y^{-b}.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+D_S(M)=E_S[x]
+=\bigoplus_{b\ge1}kx^{-1}y^{-b}
+\simeq k((y))/k[[y]],
+\]">\[
+D_S(M)=E_S[x]
+=\bigoplus_{b\ge1}kx^{-1}y^{-b}
+\simeq k((y))/k[[y]],
+\]</span>
+via <span class="math" data-tex="\(y^{-b}\mapsto x^{-1}y^{-b}\)">\(y^{-b}\mapsto x^{-1}y^{-b}\)</span>. Multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is zero on both sides, while multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> shifts the displayed basis and kills its first term. This verifies the complete module structure in (3.7), not just a vector-space dimension.</p>
+<h2 id="8-exercises-and-solutions">8. Exercises and solutions</h2>
+<p><strong>Exercise 8.1 (a visible hull; introductory).</strong> For <span class="math" data-tex="\(A=k[[t]]\)">\(A=k[[t]]\)</span>, prove that <span class="math" data-tex="\(k((t))/k[[t]]\)">\(k((t))/k[[t]]\)</span> is the injective hull of <span class="math" data-tex="\(k\)">\(k\)</span>, and compute its endomorphism ring explicitly.</p>
+<p><strong>Solution.</strong> Every ideal is principal. A map <span class="math" data-tex="\((a)\to E\)">\((a)\to E\)</span> extends exactly when its chosen value at <span class="math" data-tex="\(a\)">\(a\)</span> is a multiple by <span class="math" data-tex="\(a\)">\(a\)</span> of an element of <span class="math" data-tex="\(E\)">\(E\)</span>; division in <span class="math" data-tex="\(k((t))\)">\(k((t))\)</span> proves this for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, and the zero ideal poses no condition. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is injective. A nonzero Laurent principal part with pole order <span class="math" data-tex="\(n\)">\(n\)</span> becomes a nonzero multiple of <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> after multiplying by <span class="math" data-tex="\(t^{n-1}\)">\(t^{n-1}\)</span>, proving essentiality. The submodule <span class="math" data-tex="\(E_n\)">\(E_n\)</span> killed by <span class="math" data-tex="\(t^n\)">\(t^n\)</span> is cyclic, generated by <span class="math" data-tex="\(t^{-n}\)">\(t^{-n}\)</span>, with annihilator <span class="math" data-tex="\((t^n)\)">\((t^n)\)</span>. An endomorphism on it is multiplication by a residue class in <span class="math" data-tex="\(A/(t^n)\)">\(A/(t^n)\)</span>. Its restriction to <span class="math" data-tex="\(E_{n-1}\)">\(E_{n-1}\)</span> reduces that residue modulo <span class="math" data-tex="\(t^{n-1}\)">\(t^{n-1}\)</span>. Compatibility over all <span class="math" data-tex="\(n\)">\(n\)</span> is therefore exactly a power series. This gives <span class="math" data-tex="\(\operatorname{End}_A(E)=k[[t]]\)">\(\operatorname{End}_A(E)=k[[t]]\)</span>, including multiplication in the ring of endomorphisms.</p>
+<p><strong>Exercise 8.2 (Koszul normalization; intermediate).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be regular local of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Compute <span class="math" data-tex="\(\operatorname{Ext}^i_A(k,A)\)">\(\operatorname{Ext}^i_A(k,A)\)</span>, and explain why this computation proves Gorensteinness rather than merely suggesting it.</p>
+<p><strong>Solution.</strong> The Koszul resolution on a regular system of parameters is self-dual, with its dual shifted by <span class="math" data-tex="\(-n\)">\(-n\)</span>. Its Hom complex has sole cohomology <span class="math" data-tex="\(A/\mathfrak m=k\)">\(A/\mathfrak m=k\)</span> in degree <span class="math" data-tex="\(n\)">\(n\)</span>. This computes the Ext groups. To establish finite injective dimension, compute <span class="math" data-tex="\(\operatorname{Tor}_i^A(k,N)\)">\(\operatorname{Tor}_i^A(k,N)\)</span> for any finite <span class="math" data-tex="\(N\)">\(N\)</span> with that length-<span class="math" data-tex="\(n\)">\(n\)</span> resolution of <span class="math" data-tex="\(k\)">\(k\)</span>. It vanishes above <span class="math" data-tex="\(n\)">\(n\)</span>. A minimal free resolution of <span class="math" data-tex="\(N\)">\(N\)</span> then has no terms above <span class="math" data-tex="\(n\)">\(n\)</span>, because its reduction modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has zero differentials. In particular <span class="math" data-tex="\(\operatorname{Ext}^{n+1}_A(A/I,A)=0\)">\(\operatorname{Ext}^{n+1}_A(A/I,A)=0\)</span> for every ideal <span class="math" data-tex="\(I\)">\(I\)</span>; the <span class="math" data-tex="\(n\)">\(n\)</span>-th injective syzygy of <span class="math" data-tex="\(A\)">\(A\)</span> is injective by Baer's criterion. Thus <span class="math" data-tex="\(A\)">\(A\)</span> has finite injective dimension and is Gorenstein. Its Ext computation makes <span class="math" data-tex="\(A[n]\)">\(A[n]\)</span> normalized.</p>
+<p><strong>Exercise 8.3 (duality with coefficients; intermediate).</strong> Verify local duality for <span class="math" data-tex="\(S=k[[x,y]]\)">\(S=k[[x,y]]\)</span> and <span class="math" data-tex="\(M=S/(x)\)">\(M=S/(x)\)</span>, and identify the action of each parameter on the local cohomology module.</p>
+<p><strong>Solution.</strong> Applying <span class="math" data-tex="\(\operatorname{Hom}_S(-,S)\)">\(\operatorname{Hom}_S(-,S)\)</span> to the two-term free resolution gives <span class="math" data-tex="\([S\xrightarrow{x}S]\)">\([S\xrightarrow{x}S]\)</span> in degrees zero and one. Its cohomology is <span class="math" data-tex="\(M\)">\(M\)</span> in degree one. Shifting the target by <span class="math" data-tex="\([2]\)">\([2]\)</span> places this in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. The Čech complex on <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, tensored with <span class="math" data-tex="\(M\)">\(M\)</span>, reduces to <span class="math" data-tex="\([k[[y]]\to k((y))]\)">\([k[[y]]\to k((y))]\)</span>, because <span class="math" data-tex="\(M_x=0\)">\(M_x=0\)</span>. Its cokernel has basis <span class="math" data-tex="\(y^{-b}\)">\(y^{-b}\)</span>, <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span>. In the hull <span class="math" data-tex="\(E_S\)">\(E_S\)</span> the elements annihilated by <span class="math" data-tex="\(x\)">\(x\)</span> are exactly <span class="math" data-tex="\(x^{-1}y^{-b}\)">\(x^{-1}y^{-b}\)</span>. Sending one basis to the other intertwines <span class="math" data-tex="\(x\)">\(x\)</span>, which acts as zero, and <span class="math" data-tex="\(y\)">\(y\)</span>, which lowers the pole order and kills the order-one term. All other local cohomology and dual Ext groups vanish. This proves (3.7) in every degree for this module.</p>
+<p><strong>Exercise 8.4 (Cohen–Macaulay but not Gorenstein; intermediate).</strong> Determine dimension, depth and type of the three-axes ring in Example 7.1.</p>
+<p><strong>Solution.</strong> Its minimal primes are <span class="math" data-tex="\((x,y),(y,z),(z,x)\)">\((x,y),(y,z),(z,x)\)</span>, with quotients one-variable power-series rings, so dimension is one. The common-constant embedding into their direct sum makes <span class="math" data-tex="\(x+y+z\)">\(x+y+z\)</span> a nonzerodivisor. Depth is therefore one, so the ring is Cohen–Macaulay. The regular-element quotient is <span class="math" data-tex="\(B=k[x,y]/(x^2,xy,y^2)\)">\(B=k[x,y]/(x^2,xy,y^2)\)</span>; multiplication by either <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span> kills the span of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, and kills no vector with a nonzero constant term. Thus its socle has dimension two. Quotient adjunction identifies <span class="math" data-tex="\(\operatorname{Ext}^1_A(k,A)\)">\(\operatorname{Ext}^1_A(k,A)\)</span> with that socle, so type is two. A Gorenstein ring would give an Artinian Gorenstein quotient with a one-dimensional socle. This proves failure of Gorensteinness.</p>
+<p><strong>Exercise 8.5 (dimension through duality; advanced).</strong> For finite nonzero <span class="math" data-tex="\(M\)">\(M\)</span> over a local ring with normalized dualizing complex, let <span class="math" data-tex="\(d=\dim\operatorname{Supp}M\)">\(d=\dim\operatorname{Supp}M\)</span>. Prove, using local duality, that <span class="math" data-tex="\(H^d_{\mathfrak m}(M)\ne0\)">\(H^d_{\mathfrak m}(M)\ne0\)</span> and <span class="math" data-tex="\(H^i_{\mathfrak m}(M)=0\)">\(H^i_{\mathfrak m}(M)=0\)</span> for <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>.</p>
+<p><strong>Solution.</strong> The finite-dual-module induction in Section 4 places <span class="math" data-tex="\(R\operatorname{Hom}_A(M,\omega)\)">\(R\operatorname{Hom}_A(M,\omega)\)</span> in degrees <span class="math" data-tex="\(-d,\ldots,0\)">\(-d,\ldots,0\)</span>. Explicitly, it starts with finite-length modules; a nonzerodivisor reduces dimension by one and Nakayama kills dual groups outside the indicated interval; removing maximal-ideal torsion reduces the depth-zero case to that case. Formula (3.6) and faithfulness of the torsion dual therefore make <span class="math" data-tex="\(H^i_{\mathfrak m}(M)=0\)">\(H^i_{\mathfrak m}(M)=0\)</span> for <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>. To find a nonzero group in degree <span class="math" data-tex="\(-d\)">\(-d\)</span>, choose a minimal support prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with <span class="math" data-tex="\(\dim(A/\mathfrak p)=d\)">\(\dim(A/\mathfrak p)=d\)</span>. Its localized module is nonzero of finite length. Lemma 4.1 gives <span class="math" data-tex="\(\delta(\mathfrak p)=d\)">\(\delta(\mathfrak p)=d\)</span>, and normalized duality over <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span> sends this module to a nonzero finite-length module in degree zero. Undoing the normalization shift makes
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^{-d}_A(M,\omega)_{\mathfrak p}
+=H^0R\operatorname{Hom}_{A_{\mathfrak p}}
+(M_{\mathfrak p},\omega_{\mathfrak p}[-d])\ne0.
+\]">\[
+\operatorname{Ext}^{-d}_A(M,\omega)_{\mathfrak p}
+=H^0R\operatorname{Hom}_{A_{\mathfrak p}}
+(M_{\mathfrak p},\omega_{\mathfrak p}[-d])\ne0.
+\]</span>
+Hence the finite global Ext module is nonzero. Its completion remains nonzero by faithful flatness. Formula (3.6) makes <span class="math" data-tex="\(D(H^d_{\mathfrak m}(M))\ne0\)">\(D(H^d_{\mathfrak m}(M))\ne0\)</span>, and therefore <span class="math" data-tex="\(H^d_{\mathfrak m}(M)\ne0\)">\(H^d_{\mathfrak m}(M)\ne0\)</span>. The argument uses generic support and the exact shift, not an assumption that <span class="math" data-tex="\(M\)">\(M\)</span> itself is Cohen–Macaulay.</p>
+<h2 id="proof-inputs">Proof inputs</h2>
+<p>The local-cohomology computations, depth criterion, radical independence, flat base change and dimension vanishing used here are proved in Local cohomology. The algebra proofs are in the written lessons linked in Local cohomology, under Proof inputs. From those and the derived-category prerequisite we use tensor–Hom adjunction, injective resolutions and Baer's criterion, minimal free resolutions, Artin–Rees, prime avoidance and associated-prime properties, regular systems of parameters in regular local rings, and faithful flatness of completion.</p>
+<p>Two structural completion inputs are used with their precise hypotheses. Cohen's structure theorem says that a complete Noetherian local ring is a quotient of a complete regular local ring [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-cohen-structure-theorem">Tag 032A</a>]. For a Noetherian ring, a finitely generated ideal <span class="math" data-tex="\(I\)">\(I\)</span>, and a complex whose cohomology modules are finite, derived <span class="math" data-tex="\(I\)">\(I\)</span>-adic completion has cohomology equal to the ordinary completions of those modules [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-derived-completion-pseudo-coherent">Tag 0A06</a>]. In this lesson that fact is needed only for bounded finite-cohomology complexes. The derived completion formula and its adjunction for arbitrary complexes, and the local duality isomorphism, are proved in Section 3.</p>
+<p>The finiteness theorem also has the following extension, supplied with its full linked open proof [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-theorem-finiteness">Tag 0BJV</a>]: if <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian and universally catenary, and every formal fibre of every local ring of <span class="math" data-tex="\(A\)">\(A\)</span> is Cohen–Macaulay, then for each ideal <span class="math" data-tex="\(I\)">\(I\)</span> and finite <span class="math" data-tex="\(M\)">\(M\)</span>, the cutoff <span class="math" data-tex="\(f_I(M)\)">\(f_I(M)\)</span> in (6.6) has the same finiteness meaning as above. Here a formal fibre is a fibre of <span class="math" data-tex="\(A_{\mathfrak p}\to\widehat{A_{\mathfrak p}}\)">\(A_{\mathfrak p}\to\widehat{A_{\mathfrak p}}\)</span>; the Cohen–Macaulay hypothesis concerns all its local rings. Thus the groups below a finite cutoff are finite and the group at it is not; an infinite cutoff means all groups are finite. The linked proof reduces to complete local rings, applies the dualizing-complex theorem, and descends finiteness faithfully flatly. Its formal-fibre hypotheses ensure that completion preserves the displayed cutoff, which is the extra step beyond Section 6. The annihilator theorem and the full specialization-closed finiteness theorem under the dualizing-complex hypothesis are proved here.</p>
+<h2 id="references">References</h2>
+<p>Linked Stacks proofs retain their <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>. The CC0 dedication covers the exposition here.</p>
+<ul>
+<li>[Stacks] The Stacks Project authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/">official project</a>. Tag links use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers. Its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">English reader</a> retains the upstream tags. Relevant sections are Dualizing Complexes, “Matlis duality,” “Dualizing complexes,” “Local duality,” and “Gorenstein rings,” and Local Cohomology, “Finiteness of local cohomology.”</li>
+<li>[Grothendieck–Laszlo] A. Grothendieck, <em>Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux (SGA 2)</em>, revised edition edited by Y. Laszlo, <a href="https://arxiv.org/abs/math/0511279">arXiv:math/0511279</a>, Exposés IV–V for finite-length and local duality and Exposé VIII, Section 2 for finiteness. The historical statements are compared through the common local-cohomology notation; the present lesson uses its own proof organization and exposition.</li>
+</ul>
+</article></main></body></html>

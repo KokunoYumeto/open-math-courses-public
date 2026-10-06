@@ -1,0 +1,1309 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Standard forms over a moving central base · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ED.html">Previous lesson</a><a href="OA-FLOW-L40.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L41.md">Lesson source</a></nav><h1 id="OA-FLOW.CSTD.SETTING">Standard forms over a moving central base</h1>
+<p><em>Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.</em></p>
+<p>The central observables of a von Neumann algebra can move under an action. Decomposing over an invariant part of the centre therefore produces arrows between Hilbert spaces at different base points. Each arrow is unitary, but integrating the arrows requires a square root of a measure density. The same density explains why a global representing vector need not be a unit vector in each fibre.</p>
+<p>A two-point calculation shows what the density must do. Give points <span class="math" data-tex="\(0,1\)">\(0,1\)</span> masses <span class="math" data-tex="\(1/3,2/3\)">\(1/3,2/3\)</span>, and let <span class="math" data-tex="\(s\)">\(s\)</span> interchange them. An unweighted swap sends the squared norm <span class="math" data-tex="\(|a|^2/3+2|b|^2/3\)">\(|a|^2/3+2|b|^2/3\)</span> to <span class="math" data-tex="\(|b|^2/3+2|a|^2/3\)">\(|b|^2/3+2|a|^2/3\)</span>, which is generally different. The map
+<span class="math math-display" data-tex="\[
+ (a,b)\longmapsto \bigl(\sqrt2\,b,\;a/\sqrt2\bigr)
+ \tag{T0}
+\]">\[
+ (a,b)\longmapsto \bigl(\sqrt2\,b,\;a/\sqrt2\bigr)
+ \tag{T0}
+\]</span>
+preserves the norm and squares to the identity. The fibre arrows are still identities between one-dimensional spaces. The two positive factors account entirely for the change of base measure.</p>
+<p>We first construct compatible algebra and standard-form fields over a continuous model of the specified central algebra. The normalizer theorem then gives the arrows and their exact exceptional-set quantifiers. After computing conditional state vectors, we obtain arrows satisfying every group law on one invariant conull base. A final change-of-density calculation separates the underlying action from the reference probability used to display it.</p>
+<p><a id="oa-flow.cstd.setting"></a></p>
+<h2 id="the-moving-field-theorem">The moving-field theorem</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> have separable predual, let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be continuous in the predual topology. Thus <span class="math" data-tex="\(g\mapsto\omega\circ\alpha_g\)">\(g\mapsto\omega\circ\alpha_g\)</span> is norm continuous for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>; the equivalent point-ultraweak formulation is proved in <a href="OA-FLOW-AT.html#oa-flow.at.3">Continuity of normal actions</a>. Fix a unital von Neumann algebra
+<span class="math math-display" data-tex="\[
+ D\subseteq Z(M),\qquad \alpha_g(D)=D\quad(g\in G).
+ \tag{T1}
+\]">\[
+ D\subseteq Z(M),\qquad \alpha_g(D)=D\quad(g\in G).
+ \tag{T1}
+\]</span>
+The reference state below is faithful and normal. It is not required to be invariant. Separability of <span class="math" data-tex="\(G\)">\(G\)</span> is not a second-countability assumption.</p>
+<p>There is a compact metrizable probability model <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, a continuous nonsingular action <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, and a measurable field of nonzero standard forms <span class="math" data-tex="\((M_x,H_x,J_x,P_x)\)">\((M_x,H_x,J_x,P_x)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ D=L^\infty(X,\mu),\qquad
+ H=\int_X^\oplus H_x\,d\mu(x),\qquad
+ M=\int_X^\oplus M_x\,d\mu(x),\\
+ J=\int_X^\oplus J_x\,d\mu(x),\qquad
+ P=\{\eta\in H:\eta(x)\in P_x\text{ almost everywhere}\}.
+ \end{gathered}
+ \tag{T2}
+\]">\[
+ \begin{gathered}
+ D=L^\infty(X,\mu),\qquad
+ H=\int_X^\oplus H_x\,d\mu(x),\qquad
+ M=\int_X^\oplus M_x\,d\mu(x),\\
+ J=\int_X^\oplus J_x\,d\mu(x),\qquad
+ P=\{\eta\in H:\eta(x)\in P_x\text{ almost everywhere}\}.
+ \end{gathered}
+ \tag{T2}
+\]</span>
+The algebra equality contains <strong>every</strong> essentially bounded measurable field in the fibre algebras. Fibres need not be factors: the chosen <span class="math" data-tex="\(D\)">\(D\)</span> may be strictly smaller than the centre.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+ j_g(y)=\frac{d(T_g)_*\mu}{d\mu}(y),\qquad
+ u(g,x):H_x\longrightarrow H_{T_gx}.
+ \tag{T3}
+\]">\[
+ j_g(y)=\frac{d(T_g)_*\mu}{d\mu}(y),\qquad
+ u(g,x):H_x\longrightarrow H_{T_gx}.
+ \tag{T3}
+\]</span>
+For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the fibre arrows are measurable unitaries and the canonical standard implementation is
+<span class="math math-display" data-tex="\[
+ (U_g\eta)(y)=j_g(y)^{1/2}
+       u(g,T_g^{-1}y)\eta(T_g^{-1}y).
+ \tag{T4}
+\]">\[
+ (U_g\eta)(y)=j_g(y)^{1/2}
+       u(g,T_g^{-1}y)\eta(T_g^{-1}y).
+ \tag{T4}
+\]</span>
+At first, the following identities hold almost everywhere for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, or each fixed pair <span class="math" data-tex="\(g,h\)">\(g,h\)</span>:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ u(g,x)M_xu(g,x)^*&amp;=M_{T_gx},&amp;
+ u(g,x)J_x&amp;=J_{T_gx}u(g,x),\\
+ u(g,x)P_x&amp;=P_{T_gx},&amp;
+ u(gh,x)&amp;=u(g,T_hx)u(h,x).
+ \end{aligned}
+ \tag{T5}
+\]">\[
+ \begin{aligned}
+ u(g,x)M_xu(g,x)^*&amp;=M_{T_gx},&amp;
+ u(g,x)J_x&amp;=J_{T_gx}u(g,x),\\
+ u(g,x)P_x&amp;=P_{T_gx},&amp;
+ u(gh,x)&amp;=u(g,T_hx)u(h,x).
+ \end{aligned}
+ \tag{T5}
+\]</span>
+The induced normal isomorphisms
+<span class="math math-display" data-tex="\[
+ \alpha_{g,x}(a)=u(g,x)a\,u(g,x)^*
+ \tag{T6}
+\]">\[
+ \alpha_{g,x}(a)=u(g,x)a\,u(g,x)^*
+ \tag{T6}
+\]</span>
+disintegrate the whole action:
+<span class="math" data-tex="\(\alpha_g(m)(T_gx)=\alpha_{g,x}(m(x))\)">\(\alpha_g(m)(T_gx)=\alpha_{g,x}(m(x))\)</span> almost everywhere for each fixed <span class="math" data-tex="\(g,m\)">\(g,m\)</span>.</p>
+<p>The <a href="#oa-flow.cstd.strict">strict construction</a> chooses Borel representatives on an invariant conull base so that the arrows, their composition law and their preservation of the whole standard-form data hold for every group element and every retained point. It retains all arrows, including those from the stabilizer of a point to itself. The statement about the integrated operator <span class="math" data-tex="\(U_g\)">\(U_g\)</span> remains an almost-everywhere identity for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>. It makes no claim that arbitrary initial versions of every scalar Radon–Nikodym derivative already satisfy simultaneous pointwise identities.</p>
+<p>The construction and the <a href="#oa-flow.cstd.conclusion">final deduction</a> prove these assertions. <a href="OA-FLOW-L42.html#oa-flow.centerg.conclusion">Decomposition over the fixed centre</a> is the stationary-base case with its further central-ergodicity conclusion. Here <span class="math" data-tex="\(D\)">\(D\)</span> is any invariant central algebra and the base can move.</p>
+<p><span id="OA-FLOW.CSTD.SETUP"></span><a id="oa-flow.cstd.setup"></a></p>
+<h2 id="a-continuous-compact-base-for-the-specified-central-algebra">A continuous compact base for the specified central algebra</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> have separable predual, let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be an action by normal automorphisms. Assume predual continuity: <span class="math" data-tex="\(g\mapsto\omega\circ\alpha_g\)">\(g\mapsto\omega\circ\alpha_g\)</span> is norm-continuous for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>. This is equivalent to point-ultraweak continuity by <a href="OA-FLOW-AT.html#oa-flow.at.3">AT3</a>. Fix a unital von Neumann subalgebra
+<span class="math math-display" data-tex="\[
+ D\subseteq Z(M),\qquad \alpha_g(D)=D\quad(g\in G).
+ \tag{A1}
+\]">\[
+ D\subseteq Z(M),\qquad \alpha_g(D)=D\quad(g\in G).
+ \tag{A1}
+\]</span>
+The action on <span class="math" data-tex="\(D\)">\(D\)</span> can move its elements. The fibres below need not be factors, and the reference state need not be invariant. No unimodularity or second-countability assumption on <span class="math" data-tex="\(G\)">\(G\)</span> is made.</p>
+<p>Choose a standard form <span class="math" data-tex="\((M,H,J,P)\)">\((M,H,J,P)\)</span>. Its canonical implementers are the strongly continuous unitary representation furnished by <a href="OA-FLOW-NR.html#oa-flow.nr.1">NR1</a>:
+<span class="math math-display" data-tex="\[
+ U_gaU_g^*=\alpha_g(a),\qquad
+ U_gJ=JU_g,\qquad U_gP=P,\qquad U_gU_h=U_{gh}.
+ \tag{A2}
+\]">\[
+ U_gaU_g^*=\alpha_g(a),\qquad
+ U_gJ=JU_g,\qquad U_gP=P,\qquad U_gU_h=U_{gh}.
+ \tag{A2}
+\]</span>
+We first verify the separability and normalization needed for a measurable field. Choose a norm-dense sequence <span class="math" data-tex="\(f_n\)">\(f_n\)</span> in <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. The cone-vector theorem <a href="OA-FLOW-CR.html#oa-flow.cr.8">CR8</a> and the bound <a href="OA-FLOW-CR.html#oa-flow.cr.6">CR6</a> give
+<span class="math math-display" data-tex="\[
+ \|\xi_f-\xi_{f_n}\|^2\leq\|f-f_n\|.
+ \tag{A3}
+\]">\[
+ \|\xi_f-\xi_{f_n}\|^2\leq\|f-f_n\|.
+ \tag{A3}
+\]</span>
+Thus <span class="math" data-tex="\(P\)">\(P\)</span> is separable. Its complex span is <span class="math" data-tex="\(H\)">\(H\)</span>, by <a href="OA-FLOW-CR.html#oa-flow.cr.1">CR1</a>, so finite rational complex combinations of those vectors form a countable dense subset of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>The positive normal functional
+<span class="math math-display" data-tex="\[
+ \psi=\sum_{n\geq1}2^{-n}\frac{f_n}{1+\|f_n\|},
+ \qquad \varphi=\frac{\psi}{\psi(1)}
+ \tag{A4}
+\]">\[
+ \psi=\sum_{n\geq1}2^{-n}\frac{f_n}{1+\|f_n\|},
+ \qquad \varphi=\frac{\psi}{\psi(1)}
+ \tag{A4}
+\]</span>
+is well defined in predual norm and is faithful. Indeed, if <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span> and <span class="math" data-tex="\(\psi(a)=0\)">\(\psi(a)=0\)</span>, every <span class="math" data-tex="\(f_n(a)=0\)">\(f_n(a)=0\)</span>; density then makes every positive normal functional vanish on <span class="math" data-tex="\(a\)">\(a\)</span>. Positive vector functionals in a faithful concrete representation separate positive operators, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. In particular <span class="math" data-tex="\(\psi(1)&gt;0\)">\(\psi(1)&gt;0\)</span>. The vector <span class="math" data-tex="\(\Omega=\xi_\varphi\in P\)">\(\Omega=\xi_\varphi\in P\)</span> is cyclic and separating, and <a href="OA-FLOW-CR.html#oa-flow.cr.4">CR4</a> identifies its GNS standard form with the chosen one, including its conjugation and cone.</p>
+<p>We require a separable invariant algebra whose diagonal part still generates all of <span class="math" data-tex="\(D\)">\(D\)</span>:
+<span class="math math-display" data-tex="\[
+ A\subseteq M,\qquad C=A\cap D,\qquad
+ A''=M,\quad C''=D,\quad
+ \alpha_g(A)=A,\quad\alpha_g(C)=C.
+ \tag{A5}
+\]">\[
+ A\subseteq M,\qquad C=A\cap D,\qquad
+ A''=M,\quad C''=D,\quad
+ \alpha_g(A)=A,\quad\alpha_g(C)=C.
+ \tag{A5}
+\]</span>
+Here <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> will be unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebras, and all their orbit maps will be norm-continuous.</p>
+<p>Here is the construction, including its countability requirement. The compact-ball proof <span class="unlinked">ST1</span>, together with a dense sequence in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, makes the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span> compact metrizable in its ultraweak topology. The closed unit ball of <span class="math" data-tex="\(D\)">\(D\)</span> is an ultraweakly closed subset. Choose countable ultraweakly dense families in both balls and a norm-dense sequence <span class="math" data-tex="\((\omega_\ell)\)">\((\omega_\ell)\)</span> in the unit ball of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p>For each chosen element <span class="math" data-tex="\(a\)">\(a\)</span> and positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, continuity supplies an identity neighbourhood <span class="math" data-tex="\(V_{a,n}\)">\(V_{a,n}\)</span> such that
+<span class="math math-display" data-tex="\[
+ |\omega_\ell(\alpha_s(a)-a)|&lt;1/n
+ \quad(s\in V_{a,n},\ 1\leq\ell\leq n).
+ \tag{A6}
+\]">\[
+ |\omega_\ell(\alpha_s(a)-a)|&lt;1/n
+ \quad(s\in V_{a,n},\ 1\leq\ell\leq n).
+ \tag{A6}
+\]</span>
+Choose <span class="math" data-tex="\(f_{a,n}\in C_c(G)_+\)">\(f_{a,n}\in C_c(G)_+\)</span>, supported there, with Haar integral one. The compact cutoffs and positive Haar mass used to choose such kernels are proved in <a href="OA-FLOW-L24.html#oa-flow.grp.algebra">L24's approximate-identity construction</a>. The normal integral and translation calculation in <a href="OA-FLOW-NR.html#oa-flow.nr.2">NR2</a> give
+<span class="math math-display" data-tex="\[
+ b_{a,n}=\int_G f_{a,n}(s)\alpha_s(a)\,ds,\qquad
+ \|b_{a,n}\|\leq1,\qquad
+ \|\alpha_t(b_{a,n})-b_{a,n}\|
+ \leq\|L_tf_{a,n}-f_{a,n}\|_1.
+ \tag{A7}
+\]">\[
+ b_{a,n}=\int_G f_{a,n}(s)\alpha_s(a)\,ds,\qquad
+ \|b_{a,n}\|\leq1,\qquad
+ \|\alpha_t(b_{a,n})-b_{a,n}\|
+ \leq\|L_tf_{a,n}-f_{a,n}\|_1.
+ \tag{A7}
+\]</span>
+Thus <span class="math" data-tex="\(b_{a,n}\)">\(b_{a,n}\)</span> has a norm-continuous orbit. If <span class="math" data-tex="\(a\in D\)">\(a\in D\)</span>, then <span class="math" data-tex="\(b_{a,n}\in D\)">\(b_{a,n}\in D\)</span>, because <span class="math" data-tex="\(D\)">\(D\)</span> is invariant and ultraweakly closed. Equation (A6) gives convergence against every <span class="math" data-tex="\(\omega_\ell\)">\(\omega_\ell\)</span>; the uniform bound and approximation of an arbitrary predual functional give <span class="math" data-tex="\(b_{a,n}\to a\)">\(b_{a,n}\to a\)</span> ultraweakly.</p>
+<p>Let <span class="math" data-tex="\(Q\subseteq G\)">\(Q\subseteq G\)</span> be countable and dense, containing the identity. Generate <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(1\)">\(1\)</span> and all <span class="math" data-tex="\(\alpha_q(b_{a,n})\)">\(\alpha_q(b_{a,n})\)</span>, for <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span> and both chosen families of <span class="math" data-tex="\(a\)">\(a\)</span>'s. This is separable and contained in the norm-continuous part of <span class="math" data-tex="\(M\)">\(M\)</span>, which is a closed invariant <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra by NR2. For every <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span>, each orbit value <span class="math" data-tex="\(\alpha_{sq}(b_{a,n})\)">\(\alpha_{sq}(b_{a,n})\)</span> is a norm limit of values with parameter in <span class="math" data-tex="\(Q\)">\(Q\)</span>: for error <span class="math" data-tex="\(1/k\)">\(1/k\)</span>, the inverse image of the corresponding norm ball is an open neighbourhood meeting <span class="math" data-tex="\(Q\)">\(Q\)</span>. Hence <span class="math" data-tex="\(\alpha_s(A)\subseteq A\)">\(\alpha_s(A)\subseteq A\)</span>, and applying this to <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span> gives equality. The ultraweak limits above give <span class="math" data-tex="\(A''=M\)">\(A''=M\)</span>. The diagonal generators belong to <span class="math" data-tex="\(C=A\cap D\)">\(C=A\cap D\)</span> and generate <span class="math" data-tex="\(D\)">\(D\)</span>, proving <span class="math" data-tex="\(C''=D\)">\(C''=D\)</span>. The intersection is closed, unital and separable, and invariance of both algebras proves its invariance. This argument uses finite predual tests, not a countable neighbourhood basis of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>The <span class="unlinked">Gelfand theorem CF6</span> identifies <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> on its nonempty compact character space <span class="math" data-tex="\(X=\operatorname{Spec}(C)\)">\(X=\operatorname{Spec}(C)\)</span>. A countable norm-dense family in <span class="math" data-tex="\(C\)">\(C\)</span> separates the characters, so evaluation embeds <span class="math" data-tex="\(X\)">\(X\)</span> into a countable product of compact metric disks. The continuous injection is a homeomorphism onto its compact image, making <span class="math" data-tex="\(X\)">\(X\)</span> metrizable. Define
+<span class="math math-display" data-tex="\[
+ (T_gx)(c)=x(\alpha_{g^{-1}}(c)),\qquad
+ \widehat{\alpha_g(c)}(x)=\widehat c(T_g^{-1}x).
+ \tag{A8}
+\]">\[
+ (T_gx)(c)=x(\alpha_{g^{-1}}(c)),\qquad
+ \widehat{\alpha_g(c)}(x)=\widehat c(T_g^{-1}x).
+ \tag{A8}
+\]</span>
+These are homeomorphisms with <span class="math" data-tex="\(T_gT_h=T_{gh}\)">\(T_gT_h=T_{gh}\)</span>. The action is jointly continuous: for nets <span class="math" data-tex="\(g_i\to g\)">\(g_i\to g\)</span> and <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span>, the difference when evaluating <span class="math" data-tex="\(c\)">\(c\)</span> is bounded by
+<span class="math" data-tex="\(\|\alpha_{g_i^{-1}}(c)-\alpha_{g^{-1}}(c)\|+
+ |x_i(\alpha_{g^{-1}}(c))-x(\alpha_{g^{-1}}(c))|\)">\(\|\alpha_{g_i^{-1}}(c)-\alpha_{g^{-1}}(c)\|+
+ |x_i(\alpha_{g^{-1}}(c))-x(\alpha_{g^{-1}}(c))|\)</span>, which tends to zero.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the Radon probability representing <span class="math" data-tex="\(\varphi|_C\)">\(\varphi|_C\)</span>, as constructed in <a href="OA-FLOW-HR.html#hr-02">HR2</a>. It has full support: every nonempty open set contains a nonzero positive continuous function, whose integral is positive by faithfulness. The compact-model proof in <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure">Theorem 4.1</a> identifies the <strong>whole</strong> algebra <span class="math" data-tex="\(D\)">\(D\)</span> with <span class="math" data-tex="\(L^\infty(X,\mu)\)">\(L^\infty(X,\mu)\)</span>. Its application here can be seen directly. In the faithful normal GNS representation of <span class="math" data-tex="\(\varphi|_D\)">\(\varphi|_D\)</span>, the subspace <span class="math" data-tex="\(C\Omega_D\)">\(C\Omega_D\)</span> is dense: a vector orthogonal to it defines a normal vector functional vanishing on <span class="math" data-tex="\(C\)">\(C\)</span>, then on <span class="math" data-tex="\(D\)">\(D\)</span> by ultraweak density, and hence is zero. The map <span class="math" data-tex="\(c\Omega_D\mapsto\widehat c\)">\(c\Omega_D\mapsto\widehat c\)</span> extends to an onto unitary to <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span>, since continuous functions are dense there. Continuous multiplication generates all bounded measurable multiplication, by the same theorem's regularity and monotone-class proof. We therefore obtain a normal isomorphism
+<span class="math math-display" data-tex="\[
+ \rho:L^\infty(X,\mu)\longrightarrow D,
+ \qquad \rho(\widehat c)=c,\qquad
+ \varphi(\rho(f))=\int_Xf\,d\mu.
+ \tag{A9}
+\]">\[
+ \rho:L^\infty(X,\mu)\longrightarrow D,
+ \qquad \rho(\widehat c)=c,\qquad
+ \varphi(\rho(f))=\int_Xf\,d\mu.
+ \tag{A9}
+\]</span></p>
+<p>For a fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the faithful normal state <span class="math" data-tex="\(\varphi\circ\alpha_{g^{-1}}\)">\(\varphi\circ\alpha_{g^{-1}}\)</span> restricted to <span class="math" data-tex="\(D\)">\(D\)</span>, and transported through <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, has a strictly positive <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> density. This follows also from the finite density proof <span class="unlinked">DC5</span>: its measure on projections is equivalent to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, by faithfulness. On continuous functions this measure is <span class="math" data-tex="\((T_g)_*\mu\)">\((T_g)_*\mu\)</span>, by (A8); uniqueness of the finite Radon measure gives equality. Thus each <span class="math" data-tex="\(T_g\)">\(T_g\)</span> is nonsingular. Normality and ultraweak density extend (A8) to
+<span class="math math-display" data-tex="\[
+ \alpha_g(\rho(f))=\rho(f\circ T_g^{-1})
+ \quad(f\in L^\infty(X,\mu)).
+ \tag{A10}
+\]">\[
+ \alpha_g(\rho(f))=\rho(f\circ T_g^{-1})
+ \quad(f\in L^\infty(X,\mu)).
+ \tag{A10}
+\]</span>
+The action <span class="math" data-tex="\(T\)">\(T\)</span> is defined on all of the compact space <span class="math" data-tex="\(X\)">\(X\)</span>, including any null points used below.</p>
+<p><span id="OA-FLOW.CSTD.STATIC"></span><a id="oa-flow.cstd.static"></a></p>
+<h2 id="put-the-weighted-field-on-this-particular-compact-base">Put the weighted field on this particular compact base</h2>
+<p>The static decomposition and the compact construction initially give two bases. We now identify them, while keeping track of the reference state.</p>
+<p>Apply <span class="unlinked">DC7</span> to <span class="math" data-tex="\((M,H,D)\)">\((M,H,D)\)</span>. Its hypotheses are separability of <span class="math" data-tex="\(H\)">\(H\)</span> and centrality of the specified unital <span class="math" data-tex="\(D\)">\(D\)</span>; it does not require <span class="math" data-tex="\(D=Z(M)\)">\(D=Z(M)\)</span>, or pointwise invariance under <span class="math" data-tex="\(G\)">\(G\)</span>. Its <span class="unlinked">DC6 diagonal construction</span> supplies a compact Borel base in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Choose the countable generators in DC7 from <span class="math" data-tex="\(A\)">\(A\)</span>: its norm-dense sequence generates <span class="math" data-tex="\(M\)">\(M\)</span>, and its contraction ball is ultraweakly dense in the contraction ball of <span class="math" data-tex="\(M\)">\(M\)</span> by the <a href="OA-FLOW-BD.html#oa-flow.bd.4">bounded-density theorem</a>. The DC7 commutant proof then gives the entire integral algebra and fibre generation by <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Next apply <span class="unlinked">MW7</span> to the faithful normal state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and this central diagonal. Its <a href="../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal">DI13 construction</a> starts with that whole algebra decomposition, localizes the actual left and right involution graphs, and recovers the full fibre Hilbert algebras and the same represented algebra. The compatible GNS realization is part of MW7's proof: the canonical fibre maps are made measurable by pulling back a fundamental family, and both operator transports satisfy the <a href="../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction">GFR10 comparison</a>. Thus a bare algebra decomposition is not being treated as a standard-form decomposition.</p>
+<p>Write the initial base and weights as <span class="math" data-tex="\((Y,\widetilde\nu)\)">\((Y,\widetilde\nu)\)</span> and <span class="math" data-tex="\(\widetilde\varphi_y\)">\(\widetilde\varphi_y\)</span>, retaining a Borel realization <span class="math" data-tex="\(Y\subseteq[0,1]\)">\(Y\subseteq[0,1]\)</span>. Zero fibres and exceptional sets can first be removed. The all-positive evaluation formula <span class="unlinked">MW5</span>, applied to the identity, gives
+<span class="math math-display" data-tex="\[
+ r(y)=\widetilde\varphi_y(1),\qquad
+ 0&lt;r(y)&lt;\infty\ \text{a.e.},\qquad
+ \int_Yr\,d\widetilde\nu=\varphi(1)=1.
+ \tag{A11}
+\]">\[
+ r(y)=\widetilde\varphi_y(1),\qquad
+ 0&lt;r(y)&lt;\infty\ \text{a.e.},\qquad
+ \int_Yr\,d\widetilde\nu=\varphi(1)=1.
+ \tag{A11}
+\]</span>
+Strict positivity follows from faithfulness and nonzero fibres; finiteness follows from the finite integral. Set
+<span class="math math-display" data-tex="\[
+ d\nu=r\,d\widetilde\nu,\qquad
+ \varphi_y=r(y)^{-1}\widetilde\varphi_y.
+ \tag{A12}
+\]">\[
+ d\nu=r\,d\widetilde\nu,\qquad
+ \varphi_y=r(y)^{-1}\widetilde\varphi_y.
+ \tag{A12}
+\]</span>
+These are faithful normal states. This is precisely the inverse-density normalization proved in MW7. On the GNS core its coordinate map is
+<span class="math" data-tex="\(I_y\Lambda_{\widetilde\varphi_y}(a)=\Lambda_{\varphi_y}(a)\)">\(I_y\Lambda_{\widetilde\varphi_y}(a)=\Lambda_{\varphi_y}(a)\)</span>, with norm factor <span class="math" data-tex="\(r(y)^{-1/2}\)">\(r(y)^{-1/2}\)</span>. Consequently <span class="math" data-tex="\(\eta_y\mapsto I_y\eta_y\)">\(\eta_y\mapsto I_y\eta_y\)</span> is an onto unitary of the <strong>integrals</strong>, because the new measure is <span class="math" data-tex="\(r\,d\widetilde\nu\)">\(r\,d\widetilde\nu\)</span>. Its fibre maps need not themselves be unitary. The compensation preserves the entire integrated involution graphs and weight, as MW7 proves.</p>
+<p>In these coordinates <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is a probability, the fibre vectors <span class="math" data-tex="\(\Omega_y=\Lambda_{\varphi_y}(1)\)">\(\Omega_y=\Lambda_{\varphi_y}(1)\)</span> have norm one, and the diagonal identification <span class="math" data-tex="\(\theta:D\to L^\infty(Y,\nu)\)">\(\theta:D\to L^\infty(Y,\nu)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \int_Y\theta(d)\,d\nu=\varphi(d)\quad(d\in D).
+ \tag{A13}
+\]">\[
+ \int_Y\theta(d)\,d\nu=\varphi(d)\quad(d\in D).
+ \tag{A13}
+\]</span>
+We construct a measure-preserving Borel identification with <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span>, rather than assuming these bases coincide.</p>
+<p>Choose a countable norm-dense unital <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span>-star algebra in <span class="math" data-tex="\(C\)">\(C\)</span>. Select Borel representatives of its <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-images. Off one Borel null set, all its countably many linear, multiplicative, star and unit relations hold, as do the inequalities <span class="math" data-tex="\(|\theta(c)(y)|\leq\|c\|\)">\(|\theta(c)(y)|\leq\|c\|\)</span>. At such a point, evaluation extends by norm continuity to a character of <span class="math" data-tex="\(C\)">\(C\)</span>. Denote this character by <span class="math" data-tex="\(\kappa(y)\in X\)">\(\kappa(y)\in X\)</span>. It is Borel, since a countable dense family of continuous functions determines the topology of <span class="math" data-tex="\(X\)">\(X\)</span>. Extend <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> arbitrarily over the null set. Equation (A13) gives
+<span class="math math-display" data-tex="\[
+ \widehat c(\kappa(y))=\theta(c)(y)\ \text{a.e.},\qquad
+ \kappa_*\nu=\mu,\qquad
+ \theta(\rho(f))=f\circ\kappa.
+ \tag{A14}
+\]">\[
+ \widehat c(\kappa(y))=\theta(c)(y)\ \text{a.e.},\qquad
+ \kappa_*\nu=\mu,\qquad
+ \theta(\rho(f))=f\circ\kappa.
+ \tag{A14}
+\]</span>
+The middle equality follows by integrating every <span class="math" data-tex="\(c\in C(X)\)">\(c\in C(X)\)</span>. The last follows first there and then on all of <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>: both maps are normal, and continuous multiplication is ultraweakly dense. In particular pullback by <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is onto <span class="math" data-tex="\(L^\infty(Y,\nu)\)">\(L^\infty(Y,\nu)\)</span>.</p>
+<p>The real coordinate <span class="math" data-tex="\(s(y)=y\)">\(s(y)=y\)</span> on <span class="math" data-tex="\(Y\subseteq[0,1]\)">\(Y\subseteq[0,1]\)</span> therefore has the form <span class="math" data-tex="\(s=\ell\circ\kappa\)">\(s=\ell\circ\kappa\)</span> almost everywhere for a bounded Borel function <span class="math" data-tex="\(\ell:X\to[0,1]\)">\(\ell:X\to[0,1]\)</span>. A completed measurable representative can be replaced by a Borel one; this is the same scalar coding step used in the actual <span class="unlinked">DC11 base-change proof</span>. Put
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ Y_0&amp;=\{y\in Y:\ell(\kappa(y))=y\},\\
+ X_0&amp;=\{x\in X:\ell(x)\in Y_0,\ \kappa(\ell(x))=x\}.
+ \end{split}
+ \tag{A15}
+\]">\[
+ \begin{split}
+ Y_0&amp;=\{y\in Y:\ell(\kappa(y))=y\},\\
+ X_0&amp;=\{x\in X:\ell(x)\in Y_0,\ \kappa(\ell(x))=x\}.
+ \end{split}
+ \tag{A15}
+\]</span>
+These sets are Borel. The first is conull. For <span class="math" data-tex="\(y\in Y_0\)">\(y\in Y_0\)</span>, <span class="math" data-tex="\(\kappa(y)\in X_0\)">\(\kappa(y)\in X_0\)</span>, so (A14) makes the second conull. The restrictions <span class="math" data-tex="\(\kappa:Y_0\to X_0\)">\(\kappa:Y_0\to X_0\)</span> and <span class="math" data-tex="\(\ell:X_0\to Y_0\)">\(\ell:X_0\to Y_0\)</span> are inverse Borel bijections. They preserve the probabilities by (A14). This proves the required identification, including atomic and finite bases.</p>
+<p>Pull all fibre objects back through <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Pullback of their fundamental sections gives the measurable structures, and <span class="math" data-tex="\(\eta(y)\mapsto\eta(\ell(x))\)">\(\eta(y)\mapsto\eta(\ell(x))\)</span> is an onto unitary of the two integrals. It intertwines every scalar multiplier in (A14), every algebra field, and the GNS maps. Thus from now on we have actual compatible identifications
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ H&amp;=\int_X^\oplus H_x\,d\mu(x),&amp;
+ M&amp;=\int_X^\oplus M_x\,d\mu(x),&amp;
+ \rho(f)&amp;=M_f,\\
+ \varphi(a)&amp;=\int_X\varphi_x(a(x))\,d\mu(x),&amp;
+ \Omega(x)&amp;=\Omega_x=\Lambda_{\varphi_x}(1),&amp;
+ \|\Omega_x\|&amp;=1,\\
+ J&amp;=\int_X^\oplus J_x\,d\mu(x),&amp;
+ \Delta_\varphi&amp;=\int_X^\oplus\Delta_x\,d\mu(x).
+ \end{aligned}
+ \tag{A16}
+\]">\[
+ \begin{aligned}
+ H&amp;=\int_X^\oplus H_x\,d\mu(x),&amp;
+ M&amp;=\int_X^\oplus M_x\,d\mu(x),&amp;
+ \rho(f)&amp;=M_f,\\
+ \varphi(a)&amp;=\int_X\varphi_x(a(x))\,d\mu(x),&amp;
+ \Omega(x)&amp;=\Omega_x=\Lambda_{\varphi_x}(1),&amp;
+ \|\Omega_x\|&amp;=1,\\
+ J&amp;=\int_X^\oplus J_x\,d\mu(x),&amp;
+ \Delta_\varphi&amp;=\int_X^\oplus\Delta_x\,d\mu(x).
+ \end{aligned}
+ \tag{A16}
+\]</span>
+The middle algebra consists of <strong>all</strong> measurable essentially bounded sections with values in <span class="math" data-tex="\(M_x\)">\(M_x\)</span>. <span class="unlinked">MW4</span> supplies the full closed-operator domains in (A16), their bounded Borel functional calculus, and the square-integrability domains of unbounded powers. MW5 supplies the GNS vector identity on the whole finite left ideal, which here includes every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>.</p>
+<p>Each nonzero <span class="math" data-tex="\(H_x\)">\(H_x\)</span> is separable, and <span class="math" data-tex="\(M_x\)">\(M_x\)</span> has separable predual: <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a> realizes that predual as a quotient of <span class="math" data-tex="\(H_x\widehat\otimes_\pi\overline{H_x}\)">\(H_x\widehat\otimes_\pi\overline{H_x}\)</span>, which is separable. The representatives of a countable dense star algebra in <span class="math" data-tex="\(A\)">\(A\)</span> give contractive fibre representations, extended to all of <span class="math" data-tex="\(A\)">\(A\)</span> by norm continuity, and
+<span class="math math-display" data-tex="\[
+ M_x=\{a(x):a\in A\}''\quad\text{a.e.}
+ \tag{A17}
+\]">\[
+ M_x=\{a(x):a\in A\}''\quad\text{a.e.}
+ \tag{A17}
+\]</span>
+This is the generator conclusion of DC7, retained through the compatible GNS and base transports. On the discarded Borel null set choose a fixed copy of the standard form and state of <span class="math" data-tex="\(M\)">\(M\)</span>, with its original representation of <span class="math" data-tex="\(A\)">\(A\)</span>. Such Borel pasting retains measurable fields and nonzero fibres. The compact space and its continuous action have not been restricted to a possibly noninvariant subset. All later equalities will specify their almost-everywhere quantifiers.</p>
+<p><span id="OA-FLOW.CSTD.CONE"></span><a id="oa-flow.cstd.cone"></a></p>
+<h2 id="the-natural-cone-with-countable-measurable-tests">The natural cone, with countable measurable tests</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+ P_x=\overline{\Delta_x^{1/4}(M_x)_+\Omega_x}.
+ \tag{A18}
+\]">\[
+ P_x=\overline{\Delta_x^{1/4}(M_x)_+\Omega_x}.
+ \tag{A18}
+\]</span>
+The faithful-state construction <a href="OA-FLOW-NC.html#oa-flow.nc.3">NC3–5</a> proves that <span class="math" data-tex="\((M_x,H_x,J_x,P_x)\)">\((M_x,H_x,J_x,P_x)\)</span> is a standard form. We prove both measurability of these cones and the exact equality
+<span class="math math-display" data-tex="\[
+ P=\{\eta\in H:\eta(x)\in P_x\text{ for a.e. }x\}.
+ \tag{A19}
+\]">\[
+ P=\{\eta\in H:\eta(x)\in P_x\text{ for a.e. }x\}.
+ \tag{A19}
+\]</span></p>
+<p>The <a href="../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family">GFR7 construction</a> supplies measurable contraction sections <span class="math" data-tex="\(q_j(x)\)">\(q_j(x)\)</span> which are strong-star dense in the unit ball of each represented <span class="math" data-tex="\(M_x\)">\(M_x\)</span>, off one common null set. Extend the family on the discarded set using a countable strong-star dense family in the fixed copy of <span class="math" data-tex="\(M\)">\(M\)</span>. Such a family exists on a separable Hilbert space. Hence the same property holds at every point of the chosen realization.</p>
+<p>Include zero and enumerate all positive fields <span class="math" data-tex="\(a_j=kq_i^*q_i\)">\(a_j=kq_i^*q_i\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is a positive integer. Every <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is globally bounded and lies in the whole algebra in (A16). At a fixed <span class="math" data-tex="\(x\)">\(x\)</span>, any <span class="math" data-tex="\(b\in(M_x)_+\)">\(b\in(M_x)_+\)</span> is a strong-star limit of fields from this list evaluated at <span class="math" data-tex="\(x\)">\(x\)</span>: choose <span class="math" data-tex="\(k\geq\|b\|\)">\(k\geq\|b\|\)</span>, approximate <span class="math" data-tex="\((b/k)^{1/2}\)">\((b/k)^{1/2}\)</span> by the contractions <span class="math" data-tex="\(q_i(x)\)">\(q_i(x)\)</span>, and use bounded strong-star continuity of multiplication.</p>
+<p>For every <span class="math" data-tex="\(c\in M_x\)">\(c\in M_x\)</span>, the Tomita identity gives <span class="math" data-tex="\(c\Omega_x\in D(\Delta_x^{1/2})\)">\(c\Omega_x\in D(\Delta_x^{1/2})\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|\Delta_x^{1/4}c\Omega_x\|^2
+ =\langle\Delta_x^{1/2}c\Omega_x,c\Omega_x\rangle
+ \leq\|c^*\Omega_x\|\,\|c\Omega_x\|.
+ \tag{A20}
+\]">\[
+ \|\Delta_x^{1/4}c\Omega_x\|^2
+ =\langle\Delta_x^{1/2}c\Omega_x,c\Omega_x\rangle
+ \leq\|c^*\Omega_x\|\,\|c\Omega_x\|.
+ \tag{A20}
+\]</span>
+The equality is spectral calculus on this domain; the last step uses <span class="math" data-tex="\(S_xc\Omega_x=c^*\Omega_x\)">\(S_xc\Omega_x=c^*\Omega_x\)</span> and the antiunitarity of <span class="math" data-tex="\(J_x\)">\(J_x\)</span>. Applied to differences of positive approximants, (A20) proves that
+<span class="math math-display" data-tex="\[
+ v_j(x)=\Delta_x^{1/4}a_j(x)\Omega_x
+ \tag{A21}
+\]">\[
+ v_j(x)=\Delta_x^{1/4}a_j(x)\Omega_x
+ \tag{A21}
+\]</span>
+are norm-dense in <span class="math" data-tex="\(P_x\)">\(P_x\)</span>. These sections are measurable: bounded spectral truncations of the quarter power in (A16) converge pointwise to them. Also <span class="math" data-tex="\(\|v_j(x)\|\leq\|a_j\|\)">\(\|v_j(x)\|\leq\|a_j\|\)</span>, so each belongs to <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>By <a href="OA-FLOW-NC.html#oa-flow.nc.5">NC5</a> and <a href="OA-FLOW-CR.html#oa-flow.cr.4">CR4</a>, the global cone is the closure of <span class="math" data-tex="\(\Delta_\varphi^{1/4}M_+\Omega\)">\(\Delta_\varphi^{1/4}M_+\Omega\)</span>. Equation (A16) sends each such vector into the right side of (A19). That side is closed: an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-convergent sequence has a fibrewise almost-everywhere convergent subsequence by <span class="unlinked">DF6</span>, and each <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is closed. This proves one inclusion.</p>
+<p>Conversely, take a square-integrable section <span class="math" data-tex="\(\eta(x)\in P_x\)">\(\eta(x)\in P_x\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, let <span class="math" data-tex="\(j_n(x)\)">\(j_n(x)\)</span> be the least index with <span class="math" data-tex="\(\|\eta(x)-v_{j_n(x)}(x)\|&lt;1/n\)">\(\|\eta(x)-v_{j_n(x)}(x)\|&lt;1/n\)</span>. It is measurable by countable distance tests. Choose an integer <span class="math" data-tex="\(k_n\)">\(k_n\)</span> for which
+<span class="math" data-tex="\(\int_{\{j_n&gt;k_n\}}\|\eta(x)\|^2\,d\mu&lt;1/n^2\)">\(\int_{\{j_n&gt;k_n\}}\|\eta(x)\|^2\,d\mu&lt;1/n^2\)</span>, using dominated convergence. The finite paste
+<span class="math math-display" data-tex="\[
+ b_n(x)=\sum_{j=1}^{k_n}1_{\{j_n=j\}}(x)a_j(x)
+ \tag{A22}
+\]">\[
+ b_n(x)=\sum_{j=1}^{k_n}1_{\{j_n=j\}}(x)a_j(x)
+ \tag{A22}
+\]</span>
+is a bounded positive section, hence an element of <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. Its global quarter-power vector equals <span class="math" data-tex="\(v_{j_n(x)}(x)\)">\(v_{j_n(x)}(x)\)</span> on <span class="math" data-tex="\(\{j_n\leq k_n\}\)">\(\{j_n\leq k_n\}\)</span> and is zero elsewhere. Since <span class="math" data-tex="\(\mu(X)=1\)">\(\mu(X)=1\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\eta-\Delta_\varphi^{1/4}b_n\Omega\|^2
+ \leq n^{-2}+\int_{\{j_n&gt;k_n\}}\|\eta(x)\|^2\,d\mu
+ &lt;2n^{-2}.
+ \tag{A23}
+\]">\[
+ \|\eta-\Delta_\varphi^{1/4}b_n\Omega\|^2
+ \leq n^{-2}+\int_{\{j_n&gt;k_n\}}\|\eta(x)\|^2\,d\mu
+ &lt;2n^{-2}.
+ \tag{A23}
+\]</span>
+Each approximant belongs to <span class="math" data-tex="\(P\)">\(P\)</span>, proving (A19).</p>
+<p>For later simultaneous tests, the sections
+<span class="math math-display" data-tex="\[
+ w_j(x)=\frac{v_j(x)}{\max(1,\|v_j(x)\|)}
+ \tag{A24}
+\]">\[
+ w_j(x)=\frac{v_j(x)}{\max(1,\|v_j(x)\|)}
+ \tag{A24}
+\]</span>
+are measurable, have norm at most one, and are norm-dense in <span class="math" data-tex="\(P_x\cap(H_x)_1\)">\(P_x\cap(H_x)_1\)</span>. Indeed radial truncation is continuous and fixes that closed unit part. Thus we have both countable strong-star dense operator-unit-ball sections and countable norm-dense cone-unit-ball sections on the entire chosen base.</p>
+<p><span id="OA-FLOW.CSTD.NORMALIZER"></span><a id="oa-flow.cstd.normalizer"></a></p>
+<h2 id="factor-a-fixed-implementer-into-base-motion-and-a-fibre-unitary">Factor a fixed implementer into base motion and a fibre unitary</h2>
+<p>For each fixed <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, choose a Borel representative
+<span class="math math-display" data-tex="\[
+ j_g(y)=\frac{d(T_g)_*\mu}{d\mu}(y),\qquad 0&lt;j_g(y)&lt;\infty\ \text{a.e.}
+ \tag{A25}
+\]">\[
+ j_g(y)=\frac{d(T_g)_*\mu}{d\mu}(y),\qquad 0&lt;j_g(y)&lt;\infty\ \text{a.e.}
+ \tag{A25}
+\]</span>
+Values on its exceptional null set can be set to one. For the identity choose <span class="math" data-tex="\(j_e=1\)">\(j_e=1\)</span>. At this stage no joint choice in <span class="math" data-tex="\((g,y)\)">\((g,y)\)</span> is asserted.</p>
+<p>The pulled-back field <span class="math" data-tex="\(K_y=H_{T_g^{-1}y}\)">\(K_y=H_{T_g^{-1}y}\)</span> is measurable by its pulled-back fundamental sections. Define the weighted base map
+<span class="math math-display" data-tex="\[
+ B_g:H\longrightarrow\int_X^\oplus K_y\,d\mu(y),\qquad
+ (B_g\eta)(y)=\sqrt{j_g(y)}\,\eta(T_g^{-1}y).
+ \tag{A26}
+\]">\[
+ B_g:H\longrightarrow\int_X^\oplus K_y\,d\mu(y),\qquad
+ (B_g\eta)(y)=\sqrt{j_g(y)}\,\eta(T_g^{-1}y).
+ \tag{A26}
+\]</span>
+The defining pushforward identity gives
+<span class="math math-display" data-tex="\[
+ \int_X j_g(y)\|\eta(T_g^{-1}y)\|^2\,d\mu(y)
+ =\int_X\|\eta(x)\|^2\,d\mu(x).
+ \tag{A27}
+\]">\[
+ \int_X j_g(y)\|\eta(T_g^{-1}y)\|^2\,d\mu(y)
+ =\int_X\|\eta(x)\|^2\,d\mu(x).
+ \tag{A27}
+\]</span>
+The inverse sends <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to
+<span class="math" data-tex="\(x\mapsto j_g(T_gx)^{-1/2}\zeta(T_gx)\)">\(x\mapsto j_g(T_gx)^{-1/2}\zeta(T_gx)\)</span>, and the same identity proves its square integrability. Thus <span class="math" data-tex="\(B_g\)">\(B_g\)</span> is onto, including for unbounded densities. It satisfies <span class="math" data-tex="\(B_gM_f=M_{f\circ T_g^{-1}}B_g\)">\(B_gM_f=M_{f\circ T_g^{-1}}B_g\)</span>.</p>
+<p>By (A2) and (A10), <span class="math" data-tex="\(U_g\)">\(U_g\)</span> has that same diagonal covariance. Consequently <span class="math" data-tex="\(U_gB_g^{-1}\)">\(U_gB_g^{-1}\)</span>, between the two integrals over <span class="math" data-tex="\(X\)">\(X\)</span>, intertwines every scalar multiplication. The two-space proof <span class="unlinked">DC10</span> applies: place this operator in the off-diagonal block on <span class="math" data-tex="\(K_y\oplus H_y\)">\(K_y\oplus H_y\)</span>, use the <span class="unlinked">DF8 diagonal-commutant theorem</span>, and decompose both identities for the unitary and its adjoint. It gives a measurable unitary field <span class="math" data-tex="\(v_g(y):H_{T_g^{-1}y}\to H_y\)">\(v_g(y):H_{T_g^{-1}y}\to H_y\)</span>, unique almost everywhere. Set <span class="math" data-tex="\(u(g,x)=v_g(T_gx)\)">\(u(g,x)=v_g(T_gx)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \boxed{\ (U_g\eta)(y)=\sqrt{j_g(y)}\,
+ u(g,T_g^{-1}y)\eta(T_g^{-1}y),\qquad
+ u(g,x):H_x\longrightarrow H_{T_gx}.\ }
+ \tag{A28}
+\]">\[
+ \boxed{\ (U_g\eta)(y)=\sqrt{j_g(y)}\,
+ u(g,T_g^{-1}y)\eta(T_g^{-1}y),\qquad
+ u(g,x):H_x\longrightarrow H_{T_gx}.\ }
+ \tag{A28}
+\]</span>
+Measurability here means measurability of the operator between the indicated source and pulled-back target fields. The formula holds in the Hilbert integral for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; each pointwise representative equality has its usual almost-everywhere meaning.</p>
+<p>For every fixed pair <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, scalar integration against a bounded Borel test function gives
+<span class="math math-display" data-tex="\[
+ j_{gh}(y)=j_g(y)j_h(T_g^{-1}y)\quad\text{a.e.}
+ \tag{A29}
+\]">\[
+ j_{gh}(y)=j_g(y)j_h(T_g^{-1}y)\quad\text{a.e.}
+ \tag{A29}
+\]</span>
+Indeed successive changes of variables transform the right-hand integral into <span class="math" data-tex="\(\int F(T_gT_hx)\,d\mu(x)\)">\(\int F(T_gT_hx)\,d\mu(x)\)</span>, which is the defining integral for the left side. Uniqueness of the finite Radon–Nikodym derivative proves (A29). Substitute (A28) twice into <span class="math" data-tex="\(U_gU_h=U_{gh}\)">\(U_gU_h=U_{gh}\)</span>; the positive square-root factors agree by (A29). Uniqueness in DF8, applied to the resulting two maps over the same pulled-back field, gives
+<span class="math math-display" data-tex="\[
+ u(gh,x)=u(g,T_hx)u(h,x)\quad\text{for a.e. }x.
+ \tag{A30}
+\]">\[
+ u(gh,x)=u(g,T_hx)u(h,x)\quad\text{for a.e. }x.
+ \tag{A30}
+\]</span>
+This is an almost-everywhere assertion for each fixed pair. If <span class="math" data-tex="\(N_g\)">\(N_g\)</span> denotes a null set excluded for the source-coordinate field of <span class="math" data-tex="\(u(g,\cdot)\)">\(u(g,\cdot)\)</span>, composition also excludes <span class="math" data-tex="\(T_h^{-1}N_g\)">\(T_h^{-1}N_g\)</span>, as well as <span class="math" data-tex="\(N_h\)">\(N_h\)</span>, <span class="math" data-tex="\(N_{gh}\)">\(N_{gh}\)</span>, the pulled-back density-law exception and the null set supplied by uniqueness. Nonsingularity makes this finite union null. There is no uncountable intersection. In particular <span class="math" data-tex="\(u(e,x)=I\)">\(u(e,x)=I\)</span> almost everywhere, and for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math" data-tex="\(u(g^{-1},T_gx)=u(g,x)^*\)">\(u(g^{-1},T_gx)=u(g,x)^*\)</span> almost everywhere.</p>
+<p><span id="OA-FLOW.CSTD.TRANSPORT"></span><a id="oa-flow.cstd.transport"></a></p>
+<h2 id="the-algebra-conjugation-and-cone-are-transported-together">The algebra, conjugation and cone are transported together</h2>
+<p>Fix <span class="math" data-tex="\(g\)">\(g\)</span>. Global covariance in (A2), the normalizer formula and decomposable-field uniqueness first give, for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,
+<span class="math math-display" data-tex="\[
+ u(g,x)a(x)u(g,x)^*=\alpha_g(a)(T_gx)\quad\text{a.e.}
+ \tag{A31}
+\]">\[
+ u(g,x)a(x)u(g,x)^*=\alpha_g(a)(T_gx)\quad\text{a.e.}
+ \tag{A31}
+\]</span>
+Choose a countable norm-dense subset of <span class="math" data-tex="\(A\)">\(A\)</span> and remove its common exceptional set, together with the null sets where (A17) fails at <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(T_gx\)">\(T_gx\)</span>. Contractivity of both fibre representations extends (A31) to every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> on this same set. Since <span class="math" data-tex="\(\alpha_g(A)=A\)">\(\alpha_g(A)=A\)</span>, taking bicommutants proves
+<span class="math math-display" data-tex="\[
+ u(g,x)M_xu(g,x)^*=M_{T_gx}\quad\text{a.e.}
+ \tag{A32}
+\]">\[
+ u(g,x)M_xu(g,x)^*=M_{T_gx}\quad\text{a.e.}
+ \tag{A32}
+\]</span>
+Thus this is transport of the entire fibre von Neumann algebra, not only of a selected operator family.</p>
+<p>Next use <span class="math" data-tex="\(U_gJ=JU_g\)">\(U_gJ=JU_g\)</span> and the conjugation decomposition in (A16). Test (A28) on a countable fundamental family of bounded vector sections. They are square integrable on the probability base. The scalar <span class="math" data-tex="\(\sqrt{j_g}\)">\(\sqrt{j_g}\)</span> is real and positive, so passing it through the conjugate-linear <span class="math" data-tex="\(J_y\)">\(J_y\)</span> leaves it unchanged. After cancellation and nonsingular change from <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(x=T_g^{-1}y\)">\(x=T_g^{-1}y\)</span>, equality on the fundamental family gives
+<span class="math math-display" data-tex="\[
+ u(g,x)J_x=J_{T_gx}u(g,x)\quad\text{a.e.}
+ \tag{A33}
+\]">\[
+ u(g,x)J_x=J_{T_gx}u(g,x)\quad\text{a.e.}
+ \tag{A33}
+\]</span>
+The equality extends to all fibre vectors by continuity of the two conjugate-linear operators.</p>
+<p>Finally the bounded cone sections <span class="math" data-tex="\(w_j\)">\(w_j\)</span> from (A24) are global members of <span class="math" data-tex="\(P\)">\(P\)</span>, by (A19). Since <span class="math" data-tex="\(U_gP=P\)">\(U_gP=P\)</span>, equations (A19) and (A28), positivity of the density, and nonsingularity show
+<span class="math" data-tex="\(u(g,x)w_j(x)\in P_{T_gx}\)">\(u(g,x)w_j(x)\in P_{T_gx}\)</span> almost everywhere. Remove the countable union of these null sets. Density, closure and positive scaling give <span class="math" data-tex="\(u(g,x)P_x\subseteq P_{T_gx}\)">\(u(g,x)P_x\subseteq P_{T_gx}\)</span>. Applying the same argument to <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>, and using the fixed-pair inverse identity following (A30), gives
+<span class="math math-display" data-tex="\[
+ u(g,x)P_x=P_{T_gx}\quad\text{a.e.}
+ \tag{A34}
+\]">\[
+ u(g,x)P_x=P_{T_gx}\quad\text{a.e.}
+ \tag{A34}
+\]</span>
+The union of the exceptional sets used for (A32)–(A34) is still null for this fixed <span class="math" data-tex="\(g\)">\(g\)</span>. Hence these are simultaneous identities of standard forms for that parameter.</p>
+<p>Define the normal isomorphism
+<span class="math math-display" data-tex="\[
+ \alpha_{g,x}:M_x\longrightarrow M_{T_gx},\qquad
+ \alpha_{g,x}(b)=u(g,x)b\,u(g,x)^*.
+ \tag{A35}
+\]">\[
+ \alpha_{g,x}:M_x\longrightarrow M_{T_gx},\qquad
+ \alpha_{g,x}(b)=u(g,x)b\,u(g,x)^*.
+ \tag{A35}
+\]</span>
+Equations (A33)–(A34) and <a href="OA-FLOW-MC.html#oa-flow.mc.1">MC1's uniqueness</a> say that <span class="math" data-tex="\(u(g,x)\)">\(u(g,x)\)</span> is its canonical standard-form unitary. For every <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> and fixed <span class="math" data-tex="\(g\)">\(g\)</span>, conjugating its full operator field in (A28) yields
+<span class="math math-display" data-tex="\[
+ \alpha_g(m)(T_gx)=\alpha_{g,x}(m(x))\quad\text{a.e.},
+ \qquad
+ \alpha_{gh,x}=\alpha_{g,T_hx}\circ\alpha_{h,x}
+ \quad\text{a.e. for each fixed }(g,h).
+ \tag{A36}
+\]">\[
+ \alpha_g(m)(T_gx)=\alpha_{g,x}(m(x))\quad\text{a.e.},
+ \qquad
+ \alpha_{gh,x}=\alpha_{g,T_hx}\circ\alpha_{h,x}
+ \quad\text{a.e. for each fixed }(g,h).
+ \tag{A36}
+\]</span>
+The first pointwise null set may depend on the chosen representative of <span class="math" data-tex="\(m\)">\(m\)</span>; the whole-algebra identity (A32) holds on the fixed-<span class="math" data-tex="\(g\)">\(g\)</span> conull domain. The density in (A28) cancels in operator conjugation. It remains indispensable on Hilbert vectors. We have constructed the compact nonsingular diagonal model, its compatible whole standard-form field and its fixed-parameter transport, with the exact hypotheses (A1).</p>
+<p><span id="OA-FLOW.CSTD.VECTORS"></span><a id="oa-flow.cstd.vectors"></a></p>
+<h2 id="conditional-positive-functional-vectors-and-their-masses">Conditional positive-functional vectors and their masses</h2>
+<p>Keep the <a href="#oa-flow.cstd.static">static standard-form field</a> over the specified invariant unital algebra <span class="math" data-tex="\(D\subseteq Z(M)\)">\(D\subseteq Z(M)\)</span>. Its probability base <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span> realizes the restriction of the faithful reference state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to <span class="math" data-tex="\(D\)">\(D\)</span>. The <a href="#oa-flow.cstd.cone">cone-field identity</a> identifies the actual global natural cone with the square-integrable sections of the fibre cones <span class="math" data-tex="\(P_x\)">\(P_x\)</span>. No invariance of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is assumed, and the algebras <span class="math" data-tex="\(M_x\)">\(M_x\)</span> need not be factors.</p>
+<p>Fix a positive normal functional <span class="math" data-tex="\(\psi\in M_*^+\)">\(\psi\in M_*^+\)</span>, allowing <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>. Its restriction to <span class="math" data-tex="\(D=L^\infty(X,\mu)\)">\(D=L^\infty(X,\mu)\)</span> is a finite positive measure absolutely continuous with respect to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>: a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-null indicator is the zero element of <span class="math" data-tex="\(D\)">\(D\)</span>, and its value under <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is zero. The <span class="unlinked">finite Radon–Nikodym theorem</span> gives
+<span class="math math-display" data-tex="\[
+ h_\psi=\frac{d(\psi|_D)}{d(\varphi|_D)}
+       =\frac{d(\psi|_D)}{d\mu},\qquad
+ h_\psi\ge0,\qquad
+ \int_Xh_\psi\,d\mu=\psi(1)&lt;\infty.
+ \tag{V1}
+\]">\[
+ h_\psi=\frac{d(\psi|_D)}{d(\varphi|_D)}
+       =\frac{d(\psi|_D)}{d\mu},\qquad
+ h_\psi\ge0,\qquad
+ \int_Xh_\psi\,d\mu=\psi(1)&lt;\infty.
+ \tag{V1}
+\]</span>
+We choose a finite nonnegative Borel version after changing it on a null set. The <a href="OA-FLOW-CR.html#oa-flow.cr.8">cone-vector representation theorem</a> gives a unique <span class="math" data-tex="\(\xi_\psi\in P\)">\(\xi_\psi\in P\)</span> with
+<span class="math" data-tex="\(\psi(a)=\langle a\xi_\psi,\xi_\psi\rangle\)">\(\psi(a)=\langle a\xi_\psi,\xi_\psi\rangle\)</span>. Choose a measurable fibre representative <span class="math" data-tex="\(\xi_\psi(x)\)">\(\xi_\psi(x)\)</span>, belonging to <span class="math" data-tex="\(P_x\)">\(P_x\)</span> almost everywhere. For every Borel <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span>, the scalar diagonal projection gives
+<span class="math math-display" data-tex="\[
+ \int_E\|\xi_\psi(x)\|^2\,d\mu(x)
+   =\langle1_E\xi_\psi,\xi_\psi\rangle
+   =\psi(1_E)
+   =\int_Eh_\psi(x)\,d\mu(x).
+ \qquad
+ \boxed{\ \|\xi_\psi(x)\|^2=h_\psi(x)\quad\text{a.e.}\ }
+ \tag{V2}
+\]">\[
+ \int_E\|\xi_\psi(x)\|^2\,d\mu(x)
+   =\langle1_E\xi_\psi,\xi_\psi\rangle
+   =\psi(1_E)
+   =\int_Eh_\psi(x)\,d\mu(x).
+ \qquad
+ \boxed{\ \|\xi_\psi(x)\|^2=h_\psi(x)\quad\text{a.e.}\ }
+ \tag{V2}
+\]</span>
+Uniqueness of finite densities proves the boxed equality. Thus the conditional mass is the squared norm of the actual fibre vector, not a separate normalization convention.</p>
+<p>On the measurable positive locus <span class="math" data-tex="\(X_\psi^+=\{x:h_\psi(x)&gt;0\}\)">\(X_\psi^+=\{x:h_\psi(x)&gt;0\}\)</span>, outside the fixed null set just removed, define
+<span class="math math-display" data-tex="\[
+ \zeta_\psi(x)=h_\psi(x)^{-1/2}\xi_\psi(x),\qquad
+ \psi_x(b)=\langle b\zeta_\psi(x),\zeta_\psi(x)\rangle
+       \quad(b\in M_x).
+ \tag{V3}
+\]">\[
+ \zeta_\psi(x)=h_\psi(x)^{-1/2}\xi_\psi(x),\qquad
+ \psi_x(b)=\langle b\zeta_\psi(x),\zeta_\psi(x)\rangle
+       \quad(b\in M_x).
+ \tag{V3}
+\]</span>
+These are measurable unit cone vectors. Each <span class="math" data-tex="\(\psi_x\)">\(\psi_x\)</span> is a normal state, because it is a vector functional of a unit vector. The uniqueness assertion for the fibre standard form says that its natural-cone representative is exactly
+<span class="math" data-tex="\(\xi_{\psi_x}=\zeta_\psi(x)\)">\(\xi_{\psi_x}=\zeta_\psi(x)\)</span>. On <span class="math" data-tex="\(\{h_\psi=0\}\)">\(\{h_\psi=0\}\)</span>, (V2) makes <span class="math" data-tex="\(\xi_\psi(x)=0\)">\(\xi_\psi(x)=0\)</span>; this vector determines no normalized state. We leave <span class="math" data-tex="\(\psi_x\)">\(\psi_x\)</span> unspecified there and set any integrand multiplied by <span class="math" data-tex="\(h_\psi(x)\)">\(h_\psi(x)\)</span> to zero.</p>
+<p>For every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, viewed as its bounded measurable field, the full disintegration identity is
+<span class="math math-display" data-tex="\[
+ \psi(a)
+   =\int_X\langle a(x)\xi_\psi(x),\xi_\psi(x)\rangle\,d\mu(x)
+   =\int_{X_\psi^+}h_\psi(x)\psi_x(a(x))\,d\mu(x).
+ \tag{V4}
+\]">\[
+ \psi(a)
+   =\int_X\langle a(x)\xi_\psi(x),\xi_\psi(x)\rangle\,d\mu(x)
+   =\int_{X_\psi^+}h_\psi(x)\psi_x(a(x))\,d\mu(x).
+ \tag{V4}
+\]</span>
+The integrand is measurable by the operator-field and vector-field criteria. Its absolute value is at most <span class="math" data-tex="\(\|a\|h_\psi(x)\)">\(\|a\|h_\psi(x)\)</span>, so the identity is valid for every <span class="math" data-tex="\(a\)">\(a\)</span>, not just positive or integrable core elements. On any fixed bounded measurable field the state evaluation in (V3) is measurable. Replacing the chosen representatives of <span class="math" data-tex="\(h_\psi\)">\(h_\psi\)</span> or <span class="math" data-tex="\(\xi_\psi\)">\(\xi_\psi\)</span> changes the resulting field only on a null set for this fixed <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is faithful, then <span class="math" data-tex="\(h_\psi&gt;0\)">\(h_\psi&gt;0\)</span> almost everywhere: a positive-measure zero locus would give a nonzero diagonal projection with <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-value zero. Faithfulness is not needed for (V1)–(V4).</p>
+<p>Now also fix <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, and put <span class="math" data-tex="\(\nu=\psi\circ\alpha_g^{-1}\)">\(\nu=\psi\circ\alpha_g^{-1}\)</span>, where <span class="math" data-tex="\(\nu\)">\(\nu\)</span> denotes a positive functional in this paragraph. The <a href="OA-FLOW-NR.html#oa-flow.nr.1">canonical implementation identity</a> gives
+<span class="math math-display" data-tex="\[
+ U_g\xi_\psi=\xi_\nu.
+ \tag{V5}
+\]">\[
+ U_g\xi_\psi=\xi_\nu.
+ \tag{V5}
+\]</span>
+Indeed <span class="math" data-tex="\(U_g\xi_\psi\)">\(U_g\xi_\psi\)</span> lies in the natural cone and its vector functional is
+<span class="math" data-tex="\(a\mapsto\psi(U_g^*aU_g)=\psi(\alpha_g^{-1}(a))\)">\(a\mapsto\psi(U_g^*aU_g)=\psi(\alpha_g^{-1}(a))\)</span>; uniqueness proves the equality.</p>
+<p>Use the <a href="#oa-flow.cstd.normalizer">moving normalizer formula</a>, with
+<span class="math" data-tex="\(j_g=d(T_g)_*\mu/d\mu\)">\(j_g=d(T_g)_*\mu/d\mu\)</span> and
+<span class="math" data-tex="\(u(g,x):\mathcal H_x\to\mathcal H_{T_gx}\)">\(u(g,x):\mathcal H_x\to\mathcal H_{T_gx}\)</span>. In the source coordinate <span class="math" data-tex="\(x\)">\(x\)</span>, (V5) becomes
+<span class="math math-display" data-tex="\[
+ \xi_\nu(T_gx)
+     =j_g(T_gx)^{1/2}u(g,x)\xi_\psi(x)
+ \quad\text{for almost every }x.
+ \tag{V6}
+\]">\[
+ \xi_\nu(T_gx)
+     =j_g(T_gx)^{1/2}u(g,x)\xi_\psi(x)
+ \quad\text{for almost every }x.
+ \tag{V6}
+\]</span>
+The normalizer formula initially holds in the target coordinate. Nonsingularity of <span class="math" data-tex="\(T_g\)">\(T_g\)</span> permits its null exceptional set to be pulled back to the source coordinate. For the fixed pair <span class="math" data-tex="\((\psi,g)\)">\((\psi,g)\)</span>, include also the vector, mass and unitary-transport exceptional sets. Their finite union remains null.</p>
+<p>Taking squared norms in (V6), using that <span class="math" data-tex="\(u(g,x)\)">\(u(g,x)\)</span> is unitary, gives the mass law
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ h_\nu(T_gx)=j_g(T_gx)\,h_\psi(x)
+ \quad\text{for almost every }x.}
+ \tag{V7}
+\]">\[
+ \boxed{\displaystyle
+ h_\nu(T_gx)=j_g(T_gx)\,h_\psi(x)
+ \quad\text{for almost every }x.}
+ \tag{V7}
+\]</span>
+It also follows directly at the scalar-measure level, which checks the direction of the density. For Borel <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_Eh_\nu\,d\mu
+ &amp;=\nu(1_E)=\psi(\alpha_g^{-1}(1_E))
+   =\int_{T_g^{-1}E}h_\psi(x)\,d\mu(x),\\
+ h_\nu(y)&amp;=j_g(y)h_\psi(T_g^{-1}y)\quad\text{a.e.},\\
+ h_\nu\,\mu&amp;=(T_g)_*(h_\psi\,\mu).
+ \end{aligned}
+ \tag{V8}
+\]">\[
+ \begin{aligned}
+ \int_Eh_\nu\,d\mu
+ &amp;=\nu(1_E)=\psi(\alpha_g^{-1}(1_E))
+   =\int_{T_g^{-1}E}h_\psi(x)\,d\mu(x),\\
+ h_\nu(y)&amp;=j_g(y)h_\psi(T_g^{-1}y)\quad\text{a.e.},\\
+ h_\nu\,\mu&amp;=(T_g)_*(h_\psi\,\mu).
+ \end{aligned}
+ \tag{V8}
+\]</span>
+Here <span class="math" data-tex="\(\alpha_g^{-1}(1_E)(x)=1_E(T_gx)\)">\(\alpha_g^{-1}(1_E)(x)=1_E(T_gx)\)</span>. The second line is the pushforward change-of-variables formula tested on the first line; it uses the derivative at the target point <span class="math" data-tex="\(y\)">\(y\)</span>. The total masses on both sides are <span class="math" data-tex="\(\psi(1)\)">\(\psi(1)\)</span>.</p>
+<p>Since <span class="math" data-tex="\(j_g\)">\(j_g\)</span> is positive and finite almost everywhere, (V7) identifies the positive mass loci under <span class="math" data-tex="\(T_g\)">\(T_g\)</span>, modulo null sets. On that positive locus we may divide (V6) by the square root of (V7), obtaining
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ \zeta_\nu(T_gx)=u(g,x)\zeta_\psi(x)
+ \quad\text{for almost every }x\in X_\psi^+.}
+ \tag{V9}
+\]">\[
+ \boxed{\displaystyle
+ \zeta_\nu(T_gx)=u(g,x)\zeta_\psi(x)
+ \quad\text{for almost every }x\in X_\psi^+.}
+ \tag{V9}
+\]</span>
+The fibre map preserves the cone by the <a href="#oa-flow.cstd.transport">standard-form transport theorem</a>, so these are the normalized natural-cone representatives on both sides. With
+<span class="math" data-tex="\(\alpha_{g,x}=\operatorname{Ad}u(g,x):M_x\to M_{T_gx}\)">\(\alpha_{g,x}=\operatorname{Ad}u(g,x):M_x\to M_{T_gx}\)</span>,
+the corresponding states satisfy
+<span class="math math-display" data-tex="\[
+ \nu_{T_gx}=\psi_x\circ\alpha_{g,x}^{-1}
+ \quad\text{on }M_{T_gx}.
+ \tag{V10}
+\]">\[
+ \nu_{T_gx}=\psi_x\circ\alpha_{g,x}^{-1}
+ \quad\text{on }M_{T_gx}.
+ \tag{V10}
+\]</span>
+For any <span class="math" data-tex="\(b\in M_{T_gx}\)">\(b\in M_{T_gx}\)</span>, insert (V9) into its vector functional and move the unitary to <span class="math" data-tex="\(b\)">\(b\)</span>. This proves the equality for all <span class="math" data-tex="\(b\)">\(b\)</span> on each retained fibre; no union of exceptional sets over its elements is involved.</p>
+<p>The quantifiers in (V6)–(V10) are <strong>for each fixed <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, almost everywhere in <span class="math" data-tex="\(x\)">\(x\)</span></strong>. A finite or countable list of these identities can be localized on one common conull set. The calculation does not assert one set on which representatives for every positive functional and every group parameter all satisfy their identities. Even a separately constructed strict field of arrows does not, by itself, select all those functional representatives simultaneously.</p>
+<p>For the reference state, <span class="math" data-tex="\(h_\varphi=1\)">\(h_\varphi=1\)</span> and
+<span class="math" data-tex="\(\xi_\varphi(x)=\xi_{\varphi_x}\)">\(\xi_\varphi(x)=\xi_{\varphi_x}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ h_{\varphi\circ\alpha_g^{-1}}(y)=j_g(y),\qquad
+ \zeta_{\varphi\circ\alpha_g^{-1}}(T_gx)
+       =u(g,x)\xi_{\varphi_x}.
+ \tag{V11}
+\]">\[
+ h_{\varphi\circ\alpha_g^{-1}}(y)=j_g(y),\qquad
+ \zeta_{\varphi\circ\alpha_g^{-1}}(T_gx)
+       =u(g,x)\xi_{\varphi_x}.
+ \tag{V11}
+\]</span>
+This transported unit vector need not equal <span class="math" data-tex="\(\xi_{\varphi_{T_gx}}\)">\(\xi_{\varphi_{T_gx}}\)</span>. Invariance of the global reference state would impose both invariance of its base probability and compatibility of its conditional states. More precisely, for a fixed <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+ \varphi\circ\alpha_g^{-1}=\varphi
+ \quad\Longleftrightarrow\quad
+ \begin{cases}
+ j_g=1&amp;\text{a.e.},\\
+ u(g,x)\xi_{\varphi_x}=\xi_{\varphi_{T_gx}}
+      &amp;\text{a.e.}
+ \end{cases}
+ \tag{V12}
+\]">\[
+ \varphi\circ\alpha_g^{-1}=\varphi
+ \quad\Longleftrightarrow\quad
+ \begin{cases}
+ j_g=1&amp;\text{a.e.},\\
+ u(g,x)\xi_{\varphi_x}=\xi_{\varphi_{T_gx}}
+      &amp;\text{a.e.}
+ \end{cases}
+ \tag{V12}
+\]</span>
+The forward implication follows from (V7) and (V9). Conversely the two identities inserted in the normalizer formula give <span class="math" data-tex="\(U_g\xi_\varphi=\xi_\varphi\)">\(U_g\xi_\varphi=\xi_\varphi\)</span>, and equality of vector functionals proves the left side. Thus a nonsingular base and a non-invariant reference state are fully compatible with canonical standard-form transport.</p>
+<p><span id="OA-FLOW.CSTD.STRICT"></span><a id="oa-flow.cstd.strict"></a></p>
+<h2 id="one-invariant-base-for-all-standard-form-arrows">One invariant base for all standard-form arrows</h2>
+<p>The preceding construction gives the whole standard-form field over the specified invariant central algebra <span class="math" data-tex="\(D\)">\(D\)</span>, together with its canonical transport for each fixed group element. We now choose representatives with simultaneous arrow identities. The group remains an arbitrary <strong>separable locally compact Hausdorff group</strong>. The fibres remain arbitrary nonzero von Neumann algebras with separable standard Hilbert spaces; they need not be factors.</p>
+<p><strong>Theorem.</strong> On an invariant conull Borel subset <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span>, one can choose measurable standard-form data and jointly Borel fibre unitaries
+<span class="math math-display" data-tex="\[
+ b(g,x):H_x\longrightarrow H_{T_gx}
+ \tag{R1}
+\]">\[
+ b(g,x):H_x\longrightarrow H_{T_gx}
+ \tag{R1}
+\]</span>
+such that, for every <span class="math" data-tex="\(g,h\in G\)">\(g,h\in G\)</span> and <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ b(e,x)&amp;=1,&amp; b(gh,x)&amp;=b(g,T_hx)b(h,x),\\
+ b(g,x)M_xb(g,x)^*&amp;=M_{T_gx},&amp;
+ b(g,x)J_x&amp;=J_{T_gx}b(g,x),\\
+ b(g,x)P_x&amp;=P_{T_gx}.
+ \end{aligned}
+ \tag{R2}
+\]">\[
+ \begin{aligned}
+ b(e,x)&amp;=1,&amp; b(gh,x)&amp;=b(g,T_hx)b(h,x),\\
+ b(g,x)M_xb(g,x)^*&amp;=M_{T_gx},&amp;
+ b(g,x)J_x&amp;=J_{T_gx}b(g,x),\\
+ b(g,x)P_x&amp;=P_{T_gx}.
+ \end{aligned}
+ \tag{R2}
+\]</span>
+The new data agree almost everywhere with the preceding data, in measurable Hilbert coordinates. For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the new arrow field agrees almost everywhere with its original fixed-<span class="math" data-tex="\(g\)">\(g\)</span> transport, and
+<span class="math math-display" data-tex="\[
+ (U_g\eta)(y)=j_g(y)^{1/2}
+       b(g,T_g^{-1}y)\eta(T_g^{-1}y)
+ \tag{R3}
+\]">\[
+ (U_g\eta)(y)=j_g(y)^{1/2}
+       b(g,T_g^{-1}y)\eta(T_g^{-1}y)
+ \tag{R3}
+\]</span>
+is the same operator on the whole direct integral. Thus
+<span class="math" data-tex="\(\operatorname{Ad}b(g,x):M_x\to M_{T_gx}\)">\(\operatorname{Ad}b(g,x):M_x\to M_{T_gx}\)</span> gives normal isomorphisms satisfying the groupoid composition law at every arrow. Their integrated action is the original <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>Here and below, a jointly Borel map between varying Hilbert fibres means a jointly Borel unitary field after measurable orthonormal coordinates on each dimension stratum. Changing those coordinates gives the same intrinsic assertion. Equality in (R3) is an identity of Hilbert-space classes for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>. It does not impose an everywhere chain rule on arbitrary representatives of the scalar derivatives <span class="math" data-tex="\(j_g\)">\(j_g\)</span>.</p>
+<h3 id="the-inputs-to-the-repair">The inputs to the repair</h3>
+<p>We use the actual static field and fixed-parameter arrows already constructed in this lesson. In particular, their operator unit balls have countable measurable strong-star dense sections, their cones have countable norm-dense sections, and their Hilbert dimensions are measurable. The operator sections are supplied by the <a href="../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family">common strong-star dense contraction construction</a>; measurable dimension and coordinates are proved in <span class="unlinked">Compact orthonormal frames and measurable dimension</span>. Null-set defaults can first be chosen to be valid nonzero standard forms. No equivariant field theorem is needed as an input to this step.</p>
+<p>The two measurable repair results used below are the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#1-repairing-an-equivariant-section">Haar section theorem</a>, Theorem 1.2, and the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#3-making-a-measurable-cocycle-strict">strict Polish cocycle theorem</a>, Theorem 3.1. The former applies to a standard Borel target with a strict Borel family of bijections, over a strict nonsingular standard measured action. The latter applies to a jointly Borel cocycle with values in a Polish group whose cocycle law holds almost everywhere for each fixed parameter pair, when the parameter group is second countable and locally compact. We establish that group hypothesis before applying it. We also give the constructions that explain how they act on the present data.</p>
+<p><a id="oa-flow.cstd.strict.quotient"></a></p>
+<h3 id="the-effective-group-and-the-dimension-strata">The effective group and the dimension strata</h3>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be the canonical standard implementation. It is strongly continuous by <a href="OA-FLOW-NR.html#oa-flow.nr.1">Canonical implementation is strongly continuous</a>. The standard Hilbert space is separable by the preceding construction. Hence <span class="math" data-tex="\(\mathcal U(H)\)">\(\mathcal U(H)\)</span>, with the strong topology, is Polish: test a unitary and its adjoint on a countable orthonormal basis in a bounded sum metric. A Cauchy sequence has strong limits <span class="math" data-tex="\(v,w\)">\(v,w\)</span> of the operators and their adjoints; the uniform bounds and multiplication give <span class="math" data-tex="\(vw=wv=1\)">\(vw=wv=1\)</span> and <span class="math" data-tex="\(w=v^*\)">\(w=v^*\)</span>. This proves completeness, and the embedding into two countable products of <span class="math" data-tex="\(H\)">\(H\)</span> gives separability. The resulting topology is the strong topology, since inversion on unitaries is strongly continuous. The kernel of <span class="math" data-tex="\(U\)">\(U\)</span> is exactly <span class="math" data-tex="\(\ker\alpha\)">\(\ker\alpha\)</span>: if <span class="math" data-tex="\(U_g=1\)">\(U_g=1\)</span>, its conjugation on <span class="math" data-tex="\(M\)">\(M\)</span> is the identity; if <span class="math" data-tex="\(\alpha_g=\operatorname{id}\)">\(\alpha_g=\operatorname{id}\)</span>, <a href="OA-FLOW-MC.html#oa-flow.mc.1">uniqueness of canonical standard-form transport</a> gives <span class="math" data-tex="\(U_g=1\)">\(U_g=1\)</span>. Put
+<span class="math math-display" data-tex="\[
+ K=\ker\alpha=\ker U,\qquad Q=G/K.
+ \tag{R4}
+\]">\[
+ K=\ker\alpha=\ker U,\qquad Q=G/K.
+ \tag{R4}
+\]</span>
+The kernel is closed and normal. The quotient is locally compact Hausdorff and separable, and its induced map into <span class="math" data-tex="\(\mathcal U(H)\)">\(\mathcal U(H)\)</span> is continuous and injective. A compact identity neighbourhood in <span class="math" data-tex="\(Q\)">\(Q\)</span> embeds homeomorphically into this Polish group, because a continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image. That neighbourhood is therefore metrizable. Its interior gives a countable local base at the identity in <span class="math" data-tex="\(Q\)">\(Q\)</span>. Translates of a symmetric countable local base by a countable dense subset then give a countable base for <span class="math" data-tex="\(Q\)">\(Q\)</span>: given <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span>, choose a symmetric basic neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(xV^2\subset O\)">\(xV^2\subset O\)</span> and a dense-set point <span class="math" data-tex="\(a\in xV\)">\(a\in xV\)</span>; then <span class="math" data-tex="\(x\in aV\subset O\)">\(x\in aV\subset O\)</span>. Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is second countable. This is the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#4-the-full-separable-locally-compact-scope">effective Polish image argument</a>, with the actual canonical implementation as its homomorphism.</p>
+<p>The chosen compact model of <span class="math" data-tex="\(D\)">\(D\)</span> has full-support probability. If <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, then <span class="math" data-tex="\(f\circ T_k^{-1}=f\)">\(f\circ T_k^{-1}=f\)</span> almost everywhere for every <span class="math" data-tex="\(f\in C(X)\)">\(f\in C(X)\)</span>, since <span class="math" data-tex="\(\alpha_k\)">\(\alpha_k\)</span> fixes <span class="math" data-tex="\(D\)">\(D\)</span>. The two continuous functions are equal everywhere: a nonzero continuous difference would be nonzero on a nonempty open set, which has positive measure. Continuous functions separate points, so <span class="math" data-tex="\(T_kx=x\)">\(T_kx=x\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. Consequently the continuous base action factors through <span class="math" data-tex="\(Q\)">\(Q\)</span>. The quotient action is continuous because the quotient map <span class="math" data-tex="\(G\to Q\)">\(G\to Q\)</span> is open, as is its product with the identity on <span class="math" data-tex="\(X\)">\(X\)</span>. It is nonsingular. The algebra action and <span class="math" data-tex="\(U\)">\(U\)</span> also factor continuously through <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Write <span class="math" data-tex="\(T_q\)">\(T_q\)</span> and <span class="math" data-tex="\(U_q\)">\(U_q\)</span> for these factored actions. Let <span class="math" data-tex="\(d_0(x)=\dim H_x\)">\(d_0(x)=\dim H_x\)</span>, with values in the countable set <span class="math" data-tex="\(\{1,2,\ldots,\infty\}\)">\(\{1,2,\ldots,\infty\}\)</span>. The already proved fixed-<span class="math" data-tex="\(q\)">\(q\)</span> normalizer gives a unitary <span class="math" data-tex="\(H_x\to H_{T_qx}\)">\(H_x\to H_{T_qx}\)</span> almost everywhere. Therefore
+<span class="math math-display" data-tex="\[
+ d_0(T_qx)=d_0(x)\quad\text{almost everywhere for each fixed }q.
+ \tag{R5}
+\]">\[
+ d_0(T_qx)=d_0(x)\quad\text{almost everywhere for each fixed }q.
+ \tag{R5}
+\]</span>
+Apply Haar section repair to this countable target with the trivial target action. It yields an invariant conull Borel set <span class="math" data-tex="\(E_0\)">\(E_0\)</span> and a Borel function <span class="math" data-tex="\(d\)">\(d\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ d=d_0\ \text{almost everywhere},\qquad
+ d(T_qx)=d(x)\quad(q\in Q,\ x\in E_0).
+ \tag{R6}
+\]">\[
+ d=d_0\ \text{almost everywhere},\qquad
+ d(T_qx)=d(x)\quad(q\in Q,\ x\in E_0).
+ \tag{R6}
+\]</span>
+Explicitly, take a positive probability density <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> with respect to Haar measure on <span class="math" data-tex="\(Q\)">\(Q\)</span>. For a point where <span class="math" data-tex="\(t\mapsto d_0(T_tx)\)">\(t\mapsto d_0(T_tx)\)</span> is essentially constant, define <span class="math" data-tex="\(d(x)\)">\(d(x)\)</span> to be that essential value. Encoding the countable target injectively in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the vanishing of its variance is a Borel test for this condition. Fubini and (R5) show that it holds almost everywhere and returns <span class="math" data-tex="\(d_0(x)\)">\(d_0(x)\)</span> almost everywhere. Right translations preserve Haar null sets, so the set of such points is invariant, and its essential value is unchanged along every orbit. This proves (R6) with no union of parameter-dependent exceptional sets.</p>
+<p>Set <span class="math" data-tex="\(X_d=\{x\in E_0:d(x)=d\}\)">\(X_d=\{x\in E_0:d(x)=d\}\)</span>. These Borel strata are exactly invariant. Discard their countably many zero-measure members. For every remaining dimension, choose one valid standard form of that dimension occurring in the original field; it exists because <span class="math" data-tex="\(X_d\)">\(X_d\)</span> has positive measure and <span class="math" data-tex="\(d=d_0\)">\(d=d_0\)</span> almost everywhere. On the part where <span class="math" data-tex="\(d_0=d\)">\(d_0=d\)</span>, measurable orthonormal bases identify the fibres with a fixed Hilbert space <span class="math" data-tex="\(H_d\)">\(H_d\)</span>. At the remaining null points of <span class="math" data-tex="\(X_d\)">\(X_d\)</span>, use the chosen reference standard form on <span class="math" data-tex="\(H_d\)">\(H_d\)</span>. This changes no direct integral or represented algebra. A reference must be a standard form of the actual dimension: a scalar algebra on a larger Hilbert space would not supply the required standard form.</p>
+<p>We can work separately on each positive-measure <span class="math" data-tex="\(X_d\)">\(X_d\)</span>, normalizing its finite measure to a probability. Its projection belongs to <span class="math" data-tex="\(D\)">\(D\)</span>, is fixed by every <span class="math" data-tex="\(\alpha_q\)">\(\alpha_q\)</span>, and commutes with every <span class="math" data-tex="\(U_q\)">\(U_q\)</span>. Thus restricting <span class="math" data-tex="\(U\)">\(U\)</span> to this summand preserves strong continuity. A constant rescaling of the base measure has no effect on the fibre formulas or their Radon–Nikodym derivatives. Until the final reassembly, all fields are on one such stratum and its Hilbert space is
+<span class="math math-display" data-tex="\[
+ \mathcal H_d=L^2(X_d,\mu_d;H_d).
+ \tag{R7}
+\]">\[
+ \mathcal H_d=L^2(X_d,\mu_d;H_d).
+ \tag{R7}
+\]</span></p>
+<p><a id="oa-flow.cstd.strict.cocycle"></a></p>
+<h3 id="from-fixed-element-transports-to-a-strict-unitary-cocycle">From fixed-element transports to a strict unitary cocycle</h3>
+<p>The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#1-a-jointly-measurable-derivative">jointly measurable derivative construction</a>, Lemma 1.1, supplies a positive finite jointly Borel representative <span class="math" data-tex="\(r(q,y)\)">\(r(q,y)\)</span> of <span class="math" data-tex="\(d(T_q)_*\mu_d/d\mu_d\)">\(d(T_q)_*\mu_d/d\mu_d\)</span>, for every fixed <span class="math" data-tex="\(q\)">\(q\)</span>. Define the coordinate-identity base transport by
+<span class="math math-display" data-tex="\[
+ (W_q\eta)(y)=r(q,y)^{1/2}\eta(T_q^{-1}y).
+ \tag{R8}
+\]">\[
+ (W_q\eta)(y)=r(q,y)^{1/2}\eta(T_q^{-1}y).
+ \tag{R8}
+\]</span>
+The change-of-variables identity proves that <span class="math" data-tex="\(W_q\)">\(W_q\)</span> is unitary. The fixed-pair derivative chain rule gives <span class="math" data-tex="\(W_qW_h=W_{qh}\)">\(W_qW_h=W_{qh}\)</span> as operators. Coefficients are Borel by parameter integration on Borel vector representatives; their absolute integrability follows from Cauchy–Schwarz. The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous">measurable-unitary continuity proof</a>, Lemma 2.1, therefore makes <span class="math" data-tex="\(W\)">\(W\)</span> strongly continuous. Its hypotheses hold because <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span> is separable and <span class="math" data-tex="\(Q\)">\(Q\)</span> is locally compact with sigma-finite Haar measure. Restricting the base to a Borel dimension stratum does not require that stratum to be compact.</p>
+<p>Both <span class="math" data-tex="\(U_q\)">\(U_q\)</span> and <span class="math" data-tex="\(W_q\)">\(W_q\)</span> implement the same automorphism of the scalar diagonal. Consequently
+<span class="math math-display" data-tex="\[
+ V_q=U_qW_q^*\in L^\infty(X_d)' .
+ \tag{R9}
+\]">\[
+ V_q=U_qW_q^*\in L^\infty(X_d)' .
+ \tag{R9}
+\]</span>
+The <span class="unlinked">whole diagonal commutant theorem</span> gives a unique measurable unitary field for <span class="math" data-tex="\(V_q\)">\(V_q\)</span>. Unitarity follows by decomposing <span class="math" data-tex="\(V_q^*V_q=V_qV_q^*=1\)">\(V_q^*V_q=V_qV_q^*=1\)</span>, not just by knowing its norm. The topology of this decomposable unitary group is exactly convergence in measure into <span class="math" data-tex="\(\mathcal U(H_d)\)">\(\mathcal U(H_d)\)</span>. Indeed, strong convergence of the integrated unitaries and their adjoints gives convergence in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> on each constant basis vector. These countably many tests give convergence in measure in a bounded metric testing a unitary and its adjoint. Conversely, convergence in that metric in measure gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence on each constant basis vector, by the uniform unitary bound. It gives convergence on localized finite linear combinations, and their density gives strong convergence on all of <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span>. The same holds for adjoints. On a unitary group the strong topology already makes inversion continuous.</p>
+<p>Thus the continuous map <span class="math" data-tex="\(q\mapsto V_q\)">\(q\mapsto V_q\)</span> is a Borel map into <span class="math" data-tex="\(L^0(X_d,\mathcal U(H_d))\)">\(L^0(X_d,\mathcal U(H_d))\)</span>. The general representative construction in <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#5-localizing-the-automorphism-action">Parameterized fields</a>, Lemma 5.1, provides a jointly Borel field <span class="math" data-tex="\(D(q,y)\)">\(D(q,y)\)</span> for it. This part of that lemma requires only a standard probability base, a Polish value group and a Borel parameter map; it does not require a constant factor algebra. To recall the construction, choose a bounded complete metric on the value group and a countable dense family of Borel simple fields. For each class choose the first simple field within <span class="math" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span> at step <span class="math" data-tex="\(n\)">\(n\)</span>, in the integral metric. The choice is Borel. The successive distances are summable, so for each class the chosen fields converge pointwise almost everywhere to a representative. The Cauchy set is jointly Borel; use the identity outside it. This gives the desired joint representative for every parameter's class.</p>
+<p>Define the source-coordinate field
+<span class="math math-display" data-tex="\[
+ b_0(q,x)=D(q,T_qx).
+ \tag{R10}
+\]">\[
+ b_0(q,x)=D(q,T_qx).
+ \tag{R10}
+\]</span>
+It is jointly Borel. For each fixed <span class="math" data-tex="\(q\)">\(q\)</span>, it is the preceding fixed-<span class="math" data-tex="\(q\)">\(q\)</span> normalizer field, by uniqueness in the diagonal theorem and the identity <span class="math" data-tex="\(U_q=V_qW_q\)">\(U_q=V_qW_q\)</span>. In particular it transports the original standard-form data almost everywhere for that <span class="math" data-tex="\(q\)">\(q\)</span>. Multiplication of these operators gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D(qh,y)&amp;=D(q,y)D(h,T_q^{-1}y)\quad\text{almost everywhere},\\
+ b_0(qh,x)&amp;=b_0(q,T_hx)b_0(h,x)\quad\text{almost everywhere},
+ \end{aligned}
+ \tag{R11}
+\]">\[
+ \begin{aligned}
+ D(qh,y)&amp;=D(q,y)D(h,T_q^{-1}y)\quad\text{almost everywhere},\\
+ b_0(qh,x)&amp;=b_0(q,T_hx)b_0(h,x)\quad\text{almost everywhere},
+ \end{aligned}
+ \tag{R11}
+\]</span>
+for each fixed pair <span class="math" data-tex="\(q,h\)">\(q,h\)</span>. For the first formula, write
+<span class="math" data-tex="\(V_{qh}=V_q(W_qV_hW_q^*)\)">\(V_{qh}=V_q(W_qV_hW_q^*)\)</span>. Conjugation by (R8) sends a decomposable field <span class="math" data-tex="\(A(y)\)">\(A(y)\)</span> to <span class="math" data-tex="\(A(T_q^{-1}y)\)">\(A(T_q^{-1}y)\)</span>; its two scalar factors cancel by the fixed-<span class="math" data-tex="\(q\)">\(q\)</span> derivative identity. Uniqueness of the operator field proves the formula simultaneously on a countable basis. Changing <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(T_{qh}x\)">\(T_{qh}x\)</span> gives the second formula. The shifted exceptions remain null by nonsingularity. These are fixed-pair identities at this stage.</p>
+<p>For clarity, the strict-cocycle construction can now be applied entirely in ambient Hilbert coordinates. Put
+<span class="math math-display" data-tex="\[
+ \mathcal P=L^0(Q,\mathcal U(H_d)),\qquad
+ p_x(t)=b_0(t,x),\qquad (R_hp)(t)=p(th),
+ \tag{R12}
+\]">\[
+ \mathcal P=L^0(Q,\mathcal U(H_d)),\qquad
+ p_x(t)=b_0(t,x),\qquad (R_hp)(t)=p(th),
+ \tag{R12}
+\]</span>
+using a probability equivalent to Haar measure in the integral metric. The path-space and closed-orbit arguments in <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#2-polish-paths-and-closed-constant-orbits">Polish paths and closed constant orbits</a>, Lemmas 2.1–2.2, show that <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is Polish, right translation acts continuously, and every constant right orbit <span class="math" data-tex="\(p\mathcal U(H_d)\)">\(p\mathcal U(H_d)\)</span> is closed. Its closed-set code is Borel. Also
+<span class="math" data-tex="\((p,k)\mapsto(p,pk)\)">\((p,k)\mapsto(p,pk)\)</span> has continuous inverse on its closed image, and nonempty closed sets have Borel selectors. The map <span class="math" data-tex="\(x\mapsto p_x\)">\(x\mapsto p_x\)</span> is Borel because its distances to countably many dense simple paths are Borel parameter integrals.</p>
+<p>Fubini applied to (R11), with <span class="math" data-tex="\(h\)">\(h\)</span> fixed, gives
+<span class="math math-display" data-tex="\[
+ p_{T_hx}=R_hp_x\,b_0(h,x)^{-1}
+ \quad\text{in }\mathcal P\text{ for almost every }x.
+ \tag{R13}
+\]">\[
+ p_{T_hx}=R_hp_x\,b_0(h,x)^{-1}
+ \quad\text{in }\mathcal P\text{ for almost every }x.
+ \tag{R13}
+\]</span>
+Therefore <span class="math" data-tex="\(x\mapsto p_x\mathcal U(H_d)\)">\(x\mapsto p_x\mathcal U(H_d)\)</span> is equivariant almost everywhere for each fixed <span class="math" data-tex="\(h\)">\(h\)</span>. Haar section repair makes this closed-set field exactly equivariant on an invariant conull set; denote the repaired field by <span class="math" data-tex="\(C_x\)">\(C_x\)</span>. Each <span class="math" data-tex="\(C_x\)">\(C_x\)</span> is still a constant right orbit. It is the attained essential value of right translates of original constant right orbits, and right translation commutes with constant multiplication. Choose Borel <span class="math" data-tex="\(v_x\in C_x\)">\(v_x\in C_x\)</span>, taking <span class="math" data-tex="\(v_x=p_x\)">\(v_x=p_x\)</span> whenever <span class="math" data-tex="\(p_x\in C_x\)">\(p_x\in C_x\)</span>. This condition is Borel and holds almost everywhere, so <span class="math" data-tex="\(v=p\)">\(v=p\)</span> almost everywhere.</p>
+<p>Exact equivariance and the free constant right action define a unique <span class="math" data-tex="\(b(h,x)\in\mathcal U(H_d)\)">\(b(h,x)\in\mathcal U(H_d)\)</span> by
+<span class="math math-display" data-tex="\[
+ v_{T_hx}=R_hv_x\,b(h,x)^{-1}.
+ \tag{R14}
+\]">\[
+ v_{T_hx}=R_hv_x\,b(h,x)^{-1}.
+ \tag{R14}
+\]</span>
+The inverse orbit-coordinate map makes <span class="math" data-tex="\(b\)">\(b\)</span> jointly Borel. Substituting (R14) twice and using <span class="math" data-tex="\(R_qR_h=R_{qh}\)">\(R_qR_h=R_{qh}\)</span> gives
+<span class="math math-display" data-tex="\[
+ b(qh,x)=b(q,T_hx)b(h,x),\qquad b(e,x)=1
+ \tag{R15}
+\]">\[
+ b(qh,x)=b(q,T_hx)b(h,x),\qquad b(e,x)=1
+ \tag{R15}
+\]</span>
+at every source of the invariant reduction. For each fixed <span class="math" data-tex="\(h\)">\(h\)</span>, compare (R14) with (R13) outside their null exceptions and the exceptions of <span class="math" data-tex="\(v=p\)">\(v=p\)</span> at <span class="math" data-tex="\(x,T_hx\)">\(x,T_hx\)</span>. Nonsingularity makes this a null source exception, and uniqueness gives <span class="math" data-tex="\(b(h,x)=b_0(h,x)\)">\(b(h,x)=b_0(h,x)\)</span> almost everywhere. We have obtained a strict Hilbert-space cocycle without changing any fixed-element operator class.</p>
+<p><a id="oa-flow.cstd.strict.data"></a></p>
+<h3 id="repairing-the-algebra-conjugation-and-cone-together">Repairing the algebra, conjugation and cone together</h3>
+<p>The strict ambient unitaries need not preserve every initially chosen fibre datum at every point. We now repair those data. This is precisely where making a strict Hilbert cocycle alone would be insufficient.</p>
+<p>Let <span class="math" data-tex="\(\mathcal B_d\)">\(\mathcal B_d\)</span> be the unit ball of <span class="math" data-tex="\(B(H_d)\)">\(B(H_d)\)</span> with the strong-star topology. It is Polish: a metric testing operators and adjoints on a countable orthonormal basis is complete on this ball, since the two strong limits of a Cauchy sequence are adjoints of one another and are contractions. It is separable, for example by finite matrix compressions and rational approximations. Let <span class="math" data-tex="\(\mathcal F(Z)\)">\(\mathcal F(Z)\)</span> be the space of nonempty closed subsets of a Polish space <span class="math" data-tex="\(Z\)">\(Z\)</span>, with the sigma-field of open-set hits. The closed-set construction cited after (R12) proves that this is a standard Borel space, with Borel membership and countably many Borel selectors dense in each closed set. Set
+<span class="math math-display" data-tex="\[
+ \mathcal Y_d=
+   \mathcal F(\mathcal B_d)\times
+   \operatorname{AntiU}(H_d)\times\mathcal F(H_d),
+ \qquad
+ \sigma_x=((M_x)_1,J_x,P_x).
+ \tag{R16}
+\]">\[
+ \mathcal Y_d=
+   \mathcal F(\mathcal B_d)\times
+   \operatorname{AntiU}(H_d)\times\mathcal F(H_d),
+ \qquad
+ \sigma_x=((M_x)_1,J_x,P_x).
+ \tag{R16}
+\]</span>
+Antiunitaries form a Polish space by composition with a fixed conjugation. The field <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is Borel: countable fundamental sections detect open hits for the algebra balls and cones, and countably many vector coefficients detect the conjugation field. This argument and the following action are the <a href="../OA-ERGODIC/reader/strict-variable-fields-and-ancillary-conjugacy.html#2-coding-the-fibre-data">standard-form data coding construction</a>, applied to arbitrary standard forms.</p>
+<p>The formula
+<span class="math math-display" data-tex="\[
+ z\cdot(C,J,P)=(zCz^*,zJz^*,zP)
+ \quad(z\in\mathcal U(H_d))
+ \tag{R17}
+\]">\[
+ z\cdot(C,J,P)=(zCz^*,zJz^*,zP)
+ \quad(z\in\mathcal U(H_d))
+ \tag{R17}
+\]</span>
+defines a jointly Borel action on the entire target <span class="math" data-tex="\(\mathcal Y_d\)">\(\mathcal Y_d\)</span>. To see this, conjugation is jointly continuous on the operator ball in the strong-star topology, and unitary multiplication is jointly continuous on vectors. Transform countably many dense selectors of a closed set; their closure is its transformed closed set. An open hit is equivalent to a hit by one transformed selector, proving joint Borelness of both closed-set components. Composition with a fixed conjugation gives the same assertion for the antiunitary component. This does not require a classification, or even a separate Borel description, of the subset consisting of valid standard forms.</p>
+<p>For each fixed <span class="math" data-tex="\(q\)">\(q\)</span>, the previous fixed-element transport and the agreement of <span class="math" data-tex="\(b(q,\cdot)\)">\(b(q,\cdot)\)</span> with <span class="math" data-tex="\(b_0(q,\cdot)\)">\(b_0(q,\cdot)\)</span> give
+<span class="math math-display" data-tex="\[
+ \sigma_{T_qx}=b(q,x)\cdot\sigma_x
+ \quad\text{for almost every }x.
+ \tag{R18}
+\]">\[
+ \sigma_{T_qx}=b(q,x)\cdot\sigma_x
+ \quad\text{for almost every }x.
+ \tag{R18}
+\]</span>
+The bijections <span class="math" data-tex="\(\sigma\mapsto b(q,x)\cdot\sigma\)">\(\sigma\mapsto b(q,x)\cdot\sigma\)</span> obey the strict cocycle law by (R15). Apply Haar section repair again, now to the standard Borel target <span class="math" data-tex="\(\mathcal Y_d\)">\(\mathcal Y_d\)</span>. The mechanism is particularly useful here. Set
+<span class="math math-display" data-tex="\[
+ Z(t,x)=b(t,x)^{-1}\cdot\sigma_{T_tx}.
+ \tag{R19}
+\]">\[
+ Z(t,x)=b(t,x)^{-1}\cdot\sigma_{T_tx}.
+ \tag{R19}
+\]</span>
+For each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, (R18) says <span class="math" data-tex="\(Z(t,x)=\sigma_x\)">\(Z(t,x)=\sigma_x\)</span> almost everywhere. A Borel injection of <span class="math" data-tex="\(\mathcal Y_d\)">\(\mathcal Y_d\)</span> into <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and the variance test used for (R6) detect the Borel set where <span class="math" data-tex="\(Z(\cdot,x)\)">\(Z(\cdot,x)\)</span> has a single Haar-essential value. It is conull by Fubini. The strict identities give, for all <span class="math" data-tex="\(t,h,x\)">\(t,h,x\)</span>,
+<span class="math math-display" data-tex="\[
+ Z(t,T_hx)=b(h,x)\cdot Z(th,x).
+ \tag{R20}
+\]">\[
+ Z(t,T_hx)=b(h,x)\cdot Z(th,x).
+ \tag{R20}
+\]</span>
+Right translations preserve Haar null sets, and (R17) is an invertible map. Thus the essential-constancy set is invariant. Its essential value <span class="math" data-tex="\(\sigma'_x\)">\(\sigma'_x\)</span> is Borel, agrees almost everywhere with <span class="math" data-tex="\(\sigma_x\)">\(\sigma_x\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+ \sigma'_{T_hx}=b(h,x)\cdot\sigma'_x
+ \quad\text{for every }h\text{ and every retained }x.
+ \tag{R21}
+\]">\[
+ \sigma'_{T_hx}=b(h,x)\cdot\sigma'_x
+ \quad\text{for every }h\text{ and every retained }x.
+ \tag{R21}
+\]</span></p>
+<p>Every <span class="math" data-tex="\(\sigma'_x\)">\(\sigma'_x\)</span> is a <strong>valid nonzero standard form</strong>. Indeed its essential value in (R19) is attained for Haar-almost every <span class="math" data-tex="\(t\)">\(t\)</span>. Each such value is unitary transport of a valid standard form, because the initial null-point defaults were valid. Unitary transport preserves the standard-form axioms: it carries the represented algebra and its commutant, conjugation, the self-dual cone, and the relations between them to their conjugates. Hence the attained value is valid. This conclusion does not depend on the set of valid data being Borel.</p>
+<p>The new closed operator balls and cones have countable Borel dense selectors; the new conjugations form a Borel field. They consequently give a measurable standard-form field. Since <span class="math" data-tex="\(\sigma'=\sigma\)">\(\sigma'=\sigma\)</span> almost everywhere, its whole direct-integral algebra, conjugation and cone are the ones already constructed. Every essentially bounded measurable section of the repaired algebras is a section of the old algebras almost everywhere, and conversely. In particular, the whole-algebra equality is retained, rather than just an equality for a selected countable family of operators.</p>
+<p>By (R21), <span class="math" data-tex="\(b(h,x)\)">\(b(h,x)\)</span> carries the repaired algebra, conjugation and cone onto those at <span class="math" data-tex="\(T_hx\)">\(T_hx\)</span> for every arrow. The resulting algebra isomorphism is normal: conjugation by a unitary carries increasing bounded positive nets to nets with the corresponding strong supremum, and its inverse has the same property. Equivalently, it carries every vector-series normal functional to a vector-series normal functional by transporting the vectors. Canonical standard-form uniqueness now identifies <span class="math" data-tex="\(b(h,x)\)">\(b(h,x)\)</span> as the canonical implementer of that fibre isomorphism.</p>
+<p>Neither factoriality nor the equality <span class="math" data-tex="\(D=Z(M)\)">\(D=Z(M)\)</span> entered this coding or repair. They were not used for the closed operator ball, the measurable conjugation and cone, the Polish unitary group, or preservation of the standard-form axioms. Centrality of the specified <span class="math" data-tex="\(D\)">\(D\)</span> was used earlier to obtain the whole static algebra field; its invariance supplies the moving diagonal and (R5). The repaired fibres are not thereby asserted to be factors or to have scalar fixed centres.</p>
+<h3 id="reassembling-the-original-action-and-its-isotropy">Reassembling the original action and its isotropy</h3>
+<p>Unite the countably many repaired positive-measure dimension strata. Their union <span class="math" data-tex="\(E\)">\(E\)</span> is Borel, invariant and conull. Countably many Borel maps on disjoint Borel strata give one Borel field. Pull the arrow field back along the continuous quotient map <span class="math" data-tex="\(G\to Q\)">\(G\to Q\)</span>, retaining the label <span class="math" data-tex="\((g,x)\)">\((g,x)\)</span> for every original group element. This gives (R1)–(R2).</p>
+<p>For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the cocycle repair agrees with the original fixed-element arrow almost everywhere. Replacing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by <span class="math" data-tex="\(\sigma'\)">\(\sigma'\)</span> changes data on a fixed null set <span class="math" data-tex="\(N\)">\(N\)</span>; comparisons at both endpoints only add <span class="math" data-tex="\(N\cup T_g^{-1}N\)">\(N\cup T_g^{-1}N\)</span>, which is null. Uniqueness of decomposable fields in (R9), followed by (R8), therefore proves exactly (R3). Normalization of a stratum's measure was constant, so its derivatives are the restrictions of <span class="math" data-tex="\(j_g\)">\(j_g\)</span>; the countable union yields (R3) for the original probability <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Conjugating a decomposable <span class="math" data-tex="\(m\)">\(m\)</span> by (R3) cancels the scalar multipliers and gives
+<span class="math math-display" data-tex="\[
+ \alpha_g(m)(T_gx)=b(g,x)m(x)b(g,x)^*
+ \quad\text{almost everywhere for every fixed }g,m.
+ \tag{R22}
+\]">\[
+ \alpha_g(m)(T_gx)=b(g,x)m(x)b(g,x)^*
+ \quad\text{almost everywhere for every fixed }g,m.
+ \tag{R22}
+\]</span>
+The measurable positive-functional and conditional-vector identities proved earlier retain their classes as well. The reference state is still not assumed invariant.</p>
+<p>An element of the stabilizer <span class="math" data-tex="\(\{g:T_gx=x\}\)">\(\{g:T_gx=x\}\)</span> still gives an arrow on <span class="math" data-tex="\(H_x\)">\(H_x\)</span>, possibly with a nontrivial algebra automorphism. The construction has not replaced the transformation groupoid by the relation recording only its two endpoints. Elements of <span class="math" data-tex="\(\ker\alpha\)">\(\ker\alpha\)</span> have identity arrows because the construction factors through <span class="math" data-tex="\(Q\)">\(Q\)</span>, but their original labels remain available after pullback. All other isotropy is retained. No freeness, invariance of the reference probability, unimodularity, factoriality or second countability of the original group has been imposed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.CSTD.BASECHANGE"></span><a id="oa-flow.cstd.basechange"></a></p>
+<h2 id="changing-the-reference-probability">Changing the reference probability</h2>
+<p>The Hilbert multiplier is forced by the chosen measure, while the fibre arrows describe the action independently of that choice. This can be checked without reconstructing any field.</p>
+<p>Let <span class="math" data-tex="\(r:X\to(0,\infty)\)">\(r:X\to(0,\infty)\)</span> be measurable with <span class="math" data-tex="\(\int r\,d\mu=1\)">\(\int r\,d\mu=1\)</span>, and put <span class="math" data-tex="\(d\mu'=r\,d\mu\)">\(d\mu'=r\,d\mu\)</span>. Values on a null set can be chosen arbitrarily. The map
+<span class="math math-display" data-tex="\[
+ W:\int_X^\oplus H_x\,d\mu\longrightarrow
+          \int_X^\oplus H_x\,d\mu',
+ \qquad (W\eta)(x)=r(x)^{-1/2}\eta(x)
+ \tag{B1}
+\]">\[
+ W:\int_X^\oplus H_x\,d\mu\longrightarrow
+          \int_X^\oplus H_x\,d\mu',
+ \qquad (W\eta)(x)=r(x)^{-1/2}\eta(x)
+ \tag{B1}
+\]</span>
+is unitary: integration of its squared norm cancels the factor <span class="math" data-tex="\(r\)">\(r\)</span>, and multiplication by <span class="math" data-tex="\(r^{1/2}\)">\(r^{1/2}\)</span> is its inverse. No boundedness of <span class="math" data-tex="\(r\)">\(r\)</span> or <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> is needed. The formula itself gives the exact square-integrable domains.</p>
+<p>For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, testing against bounded nonnegative Borel <span class="math" data-tex="\(f\)">\(f\)</span> gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_X f(y)\,d(T_g)_*\mu'(y)
+ &amp;=\int_X f(T_gx)r(x)\,d\mu(x)\\
+ &amp;=\int_X f(y)\,r(T_g^{-1}y)j_g(y)\,d\mu(y).
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \int_X f(y)\,d(T_g)_*\mu'(y)
+ &amp;=\int_X f(T_gx)r(x)\,d\mu(x)\\
+ &amp;=\int_X f(y)\,r(T_g^{-1}y)j_g(y)\,d\mu(y).
+ \end{aligned}
+\]</span>
+The scalar Radon–Nikodym uniqueness proved in the
+<span class="unlinked">finite density theorem</span>
+therefore yields
+<span class="math math-display" data-tex="\[
+ j'_g(y)=j_g(y)\frac{r(T_g^{-1}y)}{r(y)}
+ \quad\text{almost everywhere}.
+ \tag{B2}
+\]">\[
+ j'_g(y)=j_g(y)\frac{r(T_g^{-1}y)}{r(y)}
+ \quad\text{almost everywhere}.
+ \tag{B2}
+\]</span>
+Substituting (B1) into (T4) shows
+<span class="math math-display" data-tex="\[
+ (WU_gW^{-1}\zeta)(y)
+   =j'_g(y)^{1/2}u(g,T_g^{-1}y)\zeta(T_g^{-1}y).
+ \tag{B3}
+\]">\[
+ (WU_gW^{-1}\zeta)(y)
+   =j'_g(y)^{1/2}u(g,T_g^{-1}y)\zeta(T_g^{-1}y).
+ \tag{B3}
+\]</span>
+The <strong>same</strong> fibre arrows work in the new probability coordinates. Since <span class="math" data-tex="\(r^{-1/2}\)">\(r^{-1/2}\)</span> is real and positive, <span class="math" data-tex="\(W\)">\(W\)</span> also intertwines the conjugations, the cones and every decomposable algebra element. Essential boundedness and equality of fields are unchanged because <span class="math" data-tex="\(\mu'\sim\mu\)">\(\mu'\sim\mu\)</span>.</p>
+<p>For a positive normal functional <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, its representing section in the new Hilbert coordinates is <span class="math" data-tex="\(r^{-1/2}\xi_\psi(x)\)">\(r^{-1/2}\xi_\psi(x)\)</span>. Its central mass and its normalized conditional vector obey
+<span class="math math-display" data-tex="\[
+ h'_\psi=\frac{h_\psi}{r},\qquad
+ (h'_\psi)^{-1/2}r^{-1/2}\xi_\psi
+       =h_\psi^{-1/2}\xi_\psi
+ \quad\text{where }h_\psi&gt;0.
+ \tag{B4}
+\]">\[
+ h'_\psi=\frac{h_\psi}{r},\qquad
+ (h'_\psi)^{-1/2}r^{-1/2}\xi_\psi
+       =h_\psi^{-1/2}\xi_\psi
+ \quad\text{where }h_\psi&gt;0.
+ \tag{B4}
+\]</span>
+Thus changing the reference probability changes both the raw section and its mass, but their normalized cone vector is unchanged. This includes using another faithful normal state as the reference: its restriction to <span class="math" data-tex="\(D\)">\(D\)</span> is an equivalent probability, and its own conditional states have their cone vectors in these same standard-form fibres.</p>
+<p><span id="OA-FLOW.CSTD.CONCLUSION"></span><a id="oa-flow.cstd.conclusion"></a></p>
+<h2 id="what-the-field-represents">What the field represents</h2>
+<p>The static construction gives (T2) over the specified <span class="math" data-tex="\(D\)">\(D\)</span>. The normalizer factorization supplies (T4); its localized algebra, conjugation and cone identities give (T5). Conjugating an arbitrary decomposable operator by (T4) cancels the two positive square-root factors and gives (T6), first on fundamental vector sections and then on the whole direct integral. The cocycle law for <span class="math" data-tex="\(u\)">\(u\)</span> gives
+<span class="math math-display" data-tex="\[
+ \alpha_{gh,x}=\alpha_{g,T_hx}\circ\alpha_{h,x}.
+ \tag{B5}
+\]">\[
+ \alpha_{gh,x}=\alpha_{g,T_hx}\circ\alpha_{h,x}.
+ \tag{B5}
+\]</span>
+The strict construction makes these standard-form arrows and their composition exact on the retained invariant base. These steps prove the moving-field theorem.</p>
+<p>Two different uses of the centre should be distinguished. Taking <span class="math" data-tex="\(D=Z(M)\)">\(D=Z(M)\)</span> gives central factor fields by the
+<span class="unlinked">factor criterion for the full centre</span>.
+Taking <span class="math" data-tex="\(D=Z(M)^\alpha\)">\(D=Z(M)^\alpha\)</span> makes the base stationary and yields the centrally ergodic components proved in
+<a href="OA-FLOW-L42.html#oa-flow.centerg.conclusion">Decomposition over the fixed centre</a>.
+For an intermediate invariant <span class="math" data-tex="\(D\)">\(D\)</span>, neither assertion follows merely from (T2). For example, with the trivial action on <span class="math" data-tex="\(M_2\oplus M_2\)">\(M_2\oplus M_2\)</span> and <span class="math" data-tex="\(D=\mathbb C1\)">\(D=\mathbb C1\)</span>, the base is a single point and its fibre algebra is the nonfactor <span class="math" data-tex="\(M_2\oplus M_2\)">\(M_2\oplus M_2\)</span>. Its fixed centre is also larger than the scalars. This example satisfies all the moving-field hypotheses.</p>
+<p><span id="OA-FLOW.CSTD.EXAMPLE"></span><a id="oa-flow.cstd.example"></a></p>
+<h2 id="a-two-summand-swap-with-unequal-central-masses">A two-summand swap with unequal central masses</h2>
+<p>Let <span class="math" data-tex="\(M=M_2(\mathbb C)\oplus M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\oplus M_2(\mathbb C)\)</span>, let <span class="math" data-tex="\(G=C_2=\{e,s\}\)">\(G=C_2=\{e,s\}\)</span>, and let
+<span class="math" data-tex="\(\alpha_s(a_0,a_1)=(a_1,a_0)\)">\(\alpha_s(a_0,a_1)=(a_1,a_0)\)</span>. Take the full centre <span class="math" data-tex="\(D=\mathbb C\oplus\mathbb C\)">\(D=\mathbb C\oplus\mathbb C\)</span> in this example, and set
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ p=\frac13,\qquad q=\frac23,\qquad
+ \rho_0=\operatorname{diag}\!\left(\frac23,\frac13\right),\qquad
+ \rho_1=\operatorname{diag}\!\left(\frac14,\frac34\right),\\
+ \varphi(a_0,a_1)
+       =p\,\operatorname{Tr}(\rho_0a_0)
+        +q\,\operatorname{Tr}(\rho_1a_1).
+ \end{gathered}
+ \tag{E1}
+\]">\[
+ \begin{gathered}
+ p=\frac13,\qquad q=\frac23,\qquad
+ \rho_0=\operatorname{diag}\!\left(\frac23,\frac13\right),\qquad
+ \rho_1=\operatorname{diag}\!\left(\frac14,\frac34\right),\\
+ \varphi(a_0,a_1)
+       =p\,\operatorname{Tr}(\rho_0a_0)
+        +q\,\operatorname{Tr}(\rho_1a_1).
+ \end{gathered}
+ \tag{E1}
+\]</span>
+Both density matrices are strictly positive and have trace one, so <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a faithful state. Its central base is <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span>, with <span class="math" data-tex="\(\mu(\{0\})=p\)">\(\mu(\{0\})=p\)</span>, <span class="math" data-tex="\(\mu(\{1\})=q\)">\(\mu(\{1\})=q\)</span>, and <span class="math" data-tex="\(T_s(0)=1,\ T_s(1)=0\)">\(T_s(0)=1,\ T_s(1)=0\)</span>.</p>
+<p>Use the same Hilbert–Schmidt standard form on each fibre:
+<span class="math math-display" data-tex="\[
+ \mathcal H_i=M_2(\mathbb C),\qquad
+ \langle b,c\rangle_{\mathrm{HS}}=\operatorname{Tr}(c^*b),
+ \qquad
+ J_ib=b^*,\qquad P_i=\{b:b=b^*\ge0\}.
+ \tag{E2}
+\]">\[
+ \mathcal H_i=M_2(\mathbb C),\qquad
+ \langle b,c\rangle_{\mathrm{HS}}=\operatorname{Tr}(c^*b),
+ \qquad
+ J_ib=b^*,\qquad P_i=\{b:b=b^*\ge0\}.
+ \tag{E2}
+\]</span>
+The algebra acts by left multiplication. These are standard forms directly: the commutant of all left multiplications consists of right multiplications, since a commuting operator is determined by its value at the identity; <span class="math" data-tex="\(J_iL_aJ_i\)">\(J_iL_aJ_i\)</span> is right multiplication by <span class="math" data-tex="\(a^*\)">\(a^*\)</span>. The positive matrix cone is self-dual for this inner product. In detail, a matrix pairing real and nonnegatively with every positive rank-one matrix has all quadratic forms real and nonnegative, hence is self-adjoint positive. Also <span class="math" data-tex="\(J_i\)">\(J_i\)</span> fixes that cone pointwise, and <span class="math" data-tex="\(L_aJ_iL_aJ_i\)">\(L_aJ_iL_aJ_i\)</span> sends <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span> to <span class="math" data-tex="\(aba^*\ge0\)">\(aba^*\ge0\)</span>. The centre condition follows because <span class="math" data-tex="\(J_i\)">\(J_i\)</span> conjugates scalar multiplications.</p>
+<p>The global space is the weighted direct sum, with
+<span class="math math-display" data-tex="\[
+ \|\eta\|_{\mathcal H}^2
+    =p\|\eta_0\|_{\mathrm{HS}}^2
+      +q\|\eta_1\|_{\mathrm{HS}}^2,\qquad
+ J(\eta_0,\eta_1)=(\eta_0^*,\eta_1^*),\qquad
+ P=P_0\oplus P_1.
+ \tag{E3}
+\]">\[
+ \|\eta\|_{\mathcal H}^2
+    =p\|\eta_0\|_{\mathrm{HS}}^2
+      +q\|\eta_1\|_{\mathrm{HS}}^2,\qquad
+ J(\eta_0,\eta_1)=(\eta_0^*,\eta_1^*),\qquad
+ P=P_0\oplus P_1.
+ \tag{E3}
+\]</span>
+The positive weights preserve self-duality on this direct sum. The base swap has derivative
+<span class="math math-display" data-tex="\[
+ j_s(0)=\frac qp=2,\qquad
+ j_s(1)=\frac pq=\frac12.
+ \tag{E4}
+\]">\[
+ j_s(0)=\frac qp=2,\qquad
+ j_s(1)=\frac pq=\frac12.
+ \tag{E4}
+\]</span>
+The fibre maps are simply the identities between the two labelled copies of <span class="math" data-tex="\(M_2\)">\(M_2\)</span>:
+<span class="math math-display" data-tex="\[
+ u(s,0)b=b\in\mathcal H_1,\qquad
+ u(s,1)b=b\in\mathcal H_0.
+ \tag{E5}
+\]">\[
+ u(s,0)b=b\in\mathcal H_1,\qquad
+ u(s,1)b=b\in\mathcal H_0.
+ \tag{E5}
+\]</span>
+They are onto Hilbert–Schmidt unitaries, preserve <span class="math" data-tex="\(J_i\)">\(J_i\)</span> and <span class="math" data-tex="\(P_i\)">\(P_i\)</span>, and satisfy the arrow composition law because two swaps return to the original copy. The global canonical implementer includes the target density:
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ U_s(\eta_0,\eta_1)
+       =\left(\sqrt2\,\eta_1,\frac1{\sqrt2}\eta_0\right).}
+ \tag{E6}
+\]">\[
+ \boxed{\displaystyle
+ U_s(\eta_0,\eta_1)
+       =\left(\sqrt2\,\eta_1,\frac1{\sqrt2}\eta_0\right).}
+ \tag{E6}
+\]</span>
+Its weighted norm is unchanged:
+<span class="math math-display" data-tex="\[
+ p\|\sqrt2\,\eta_1\|_{\mathrm{HS}}^2
+   +q\left\|\frac1{\sqrt2}\eta_0\right\|_{\mathrm{HS}}^2
+ =q\|\eta_1\|_{\mathrm{HS}}^2+p\|\eta_0\|_{\mathrm{HS}}^2.
+ \tag{E7}
+\]">\[
+ p\|\sqrt2\,\eta_1\|_{\mathrm{HS}}^2
+   +q\left\|\frac1{\sqrt2}\eta_0\right\|_{\mathrm{HS}}^2
+ =q\|\eta_1\|_{\mathrm{HS}}^2+p\|\eta_0\|_{\mathrm{HS}}^2.
+ \tag{E7}
+\]</span>
+Moreover <span class="math" data-tex="\(U_s^2=1\)">\(U_s^2=1\)</span>, so this is onto and <span class="math" data-tex="\(U_s^*=U_s\)">\(U_s^*=U_s\)</span>. The factors are positive real, hence <span class="math" data-tex="\(U_sJ=JU_s\)">\(U_sJ=JU_s\)</span> and <span class="math" data-tex="\(U_sP=P\)">\(U_sP=P\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+ U_sL_{(a_0,a_1)}U_s^*\eta=(a_1\eta_0,a_0\eta_1)
+     =L_{\alpha_s(a_0,a_1)}\eta.
+ \tag{E8}
+\]">\[
+ U_sL_{(a_0,a_1)}U_s^*\eta=(a_1\eta_0,a_0\eta_1)
+     =L_{\alpha_s(a_0,a_1)}\eta.
+ \tag{E8}
+\]</span>
+The defining standard-form properties therefore identify (E6) with the canonical implementer. The fibre transport (E5) is unitary without any scalar; the scalar in (E6) compensates for the unequal weights of the two base points.</p>
+<p>The reference vector and its two unit conditional values are
+<span class="math math-display" data-tex="\[
+ \xi_\varphi=(\rho_0^{1/2},\rho_1^{1/2}),\qquad
+ \rho_0^{1/2}=\operatorname{diag}\!\left(\sqrt{\frac23},\frac1{\sqrt3}\right),
+ \qquad
+ \rho_1^{1/2}=\operatorname{diag}\!\left(\frac12,\frac{\sqrt3}{2}\right).
+ \tag{E9}
+\]">\[
+ \xi_\varphi=(\rho_0^{1/2},\rho_1^{1/2}),\qquad
+ \rho_0^{1/2}=\operatorname{diag}\!\left(\sqrt{\frac23},\frac1{\sqrt3}\right),
+ \qquad
+ \rho_1^{1/2}=\operatorname{diag}\!\left(\frac12,\frac{\sqrt3}{2}\right).
+ \tag{E9}
+\]</span>
+Indeed <span class="math" data-tex="\(\|\rho_i^{1/2}\|_{\mathrm{HS}}^2=\operatorname{Tr}(\rho_i)=1\)">\(\|\rho_i^{1/2}\|_{\mathrm{HS}}^2=\operatorname{Tr}(\rho_i)=1\)</span>, and its global vector functional is (E1).</p>
+<p>Set <span class="math" data-tex="\(\nu=\varphi\circ\alpha_s^{-1}=\varphi\circ\alpha_s\)">\(\nu=\varphi\circ\alpha_s^{-1}=\varphi\circ\alpha_s\)</span>. Equations (V5) and (E6) give
+<span class="math math-display" data-tex="\[
+ \xi_\nu=
+   \left(\sqrt2\,\rho_1^{1/2},
+           \frac1{\sqrt2}\rho_0^{1/2}\right),\qquad
+ h_\nu(0)=2,\quad h_\nu(1)=\frac12.
+ \tag{E10}
+\]">\[
+ \xi_\nu=
+   \left(\sqrt2\,\rho_1^{1/2},
+           \frac1{\sqrt2}\rho_0^{1/2}\right),\qquad
+ h_\nu(0)=2,\quad h_\nu(1)=\frac12.
+ \tag{E10}
+\]</span>
+The vector still has global norm one, since <span class="math" data-tex="\(p\cdot2+q\cdot\frac12=1\)">\(p\cdot2+q\cdot\frac12=1\)</span>. Its central masses are
+<span class="math math-display" data-tex="\[
+ \nu(1_{\{0\}})=p\,h_\nu(0)=\frac23,\qquad
+ \nu(1_{\{1\}})=q\,h_\nu(1)=\frac13.
+ \tag{E11}
+\]">\[
+ \nu(1_{\{0\}})=p\,h_\nu(0)=\frac23,\qquad
+ \nu(1_{\{1\}})=q\,h_\nu(1)=\frac13.
+ \tag{E11}
+\]</span>
+In particular <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is not invariant: its original first central mass was <span class="math" data-tex="\(1/3\)">\(1/3\)</span>.</p>
+<p>Dividing the vector values by the square roots of their conditional masses yields
+<span class="math math-display" data-tex="\[
+ \zeta_\nu(0)=\rho_1^{1/2},\qquad
+ \zeta_\nu(1)=\rho_0^{1/2},\qquad
+ \nu_0(a)=\operatorname{Tr}(\rho_1a),\quad
+ \nu_1(a)=\operatorname{Tr}(\rho_0a).
+ \tag{E12}
+\]">\[
+ \zeta_\nu(0)=\rho_1^{1/2},\qquad
+ \zeta_\nu(1)=\rho_0^{1/2},\qquad
+ \nu_0(a)=\operatorname{Tr}(\rho_1a),\quad
+ \nu_1(a)=\operatorname{Tr}(\rho_0a).
+ \tag{E12}
+\]</span>
+Both conditional states have norm one, and the disintegration is
+<span class="math math-display" data-tex="\[
+ \nu(a_0,a_1)
+   =p\cdot2\,\nu_0(a_0)+q\cdot\frac12\,\nu_1(a_1)
+   =q\,\operatorname{Tr}(\rho_1a_0)
+      +p\,\operatorname{Tr}(\rho_0a_1).
+ \tag{E13}
+\]">\[
+ \nu(a_0,a_1)
+   =p\cdot2\,\nu_0(a_0)+q\cdot\frac12\,\nu_1(a_1)
+   =q\,\operatorname{Tr}(\rho_1a_0)
+      +p\,\operatorname{Tr}(\rho_0a_1).
+ \tag{E13}
+\]</span>
+This checks the whole functional, the central masses and the normalized vectors separately.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The two target fibres of the swap: identity fibre transport preserves each incoming unit cone vector; the global square-root density changes its norm; conditional normalization removes that scalar. The central masses are shown separately." src="assets/moving-standard-fields/moving-standard-fields.svg" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The columns are indexed by the <strong>target</strong> point. The incoming vectors originate in the opposite fibres. The orange multipliers are <span class="math" data-tex="\(\sqrt{j_s(y)}\)">\(\sqrt{j_s(y)}\)</span>; the green divisions use <span class="math" data-tex="\(\sqrt{h_\nu(y)}\)">\(\sqrt{h_\nu(y)}\)</span>. These happen to be equal because the source functional is the reference state, whose conditional mass is one. The bars compare the original central masses with the transported masses from (E11); they do not depict fibre dimensions. All values are exact. <a href="assets/moving-standard-fields/render_moving_fields.py">Reproduction code</a>, <a href="assets/moving-standard-fields/exact-data.json">exact data</a> and <a href="assets/moving-standard-fields/README.md">component terms</a> accompany the diagram.</p>
+<p><span id="OA-FLOW.CSTD.EXERCISES"></span><a id="oa-flow.cstd.exercises"></a></p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>1. A zero conditional mass.</strong> In the same example take
+<span class="math" data-tex="\(\psi(a_0,a_1)=\operatorname{Tr}(\rho_0a_0)\)">\(\psi(a_0,a_1)=\operatorname{Tr}(\rho_0a_0)\)</span>. Find its mass density and vector, then transport it by <span class="math" data-tex="\(s\)">\(s\)</span>. Which normalized conditional states are determined?</p>
+<p><strong>Solution.</strong> Its central masses are <span class="math" data-tex="\(1,0\)">\(1,0\)</span>, whereas the base masses remain <span class="math" data-tex="\(1/3,2/3\)">\(1/3,2/3\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ h_\psi=(3,0),\qquad
+ \xi_\psi=(\sqrt3\,\rho_0^{1/2},0).
+ \tag{X1}
+\]">\[
+ h_\psi=(3,0),\qquad
+ \xi_\psi=(\sqrt3\,\rho_0^{1/2},0).
+ \tag{X1}
+\]</span>
+For <span class="math" data-tex="\(\nu=\psi\circ\alpha_s\)">\(\nu=\psi\circ\alpha_s\)</span>, formula (E6) gives
+<span class="math math-display" data-tex="\[
+ h_\nu=\left(0,\frac32\right),\qquad
+ \xi_\nu=\left(0,\sqrt{\frac32}\,\rho_0^{1/2}\right).
+ \tag{X2}
+\]">\[
+ h_\nu=\left(0,\frac32\right),\qquad
+ \xi_\nu=\left(0,\sqrt{\frac32}\,\rho_0^{1/2}\right).
+ \tag{X2}
+\]</span>
+The mass law at source <span class="math" data-tex="\(0\)">\(0\)</span> reads <span class="math" data-tex="\(h_\nu(1)=j_s(1)h_\psi(0)=\frac12\cdot3\)">\(h_\nu(1)=j_s(1)h_\psi(0)=\frac12\cdot3\)</span>. The normalized vector of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> exists at <span class="math" data-tex="\(0\)">\(0\)</span>, that of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span>, and both are <span class="math" data-tex="\(\rho_0^{1/2}\)">\(\rho_0^{1/2}\)</span>; identity fibre transport gives (V9). At the other point the respective vector is zero and determines no conditional state. Assigning a state there would be an additional arbitrary choice with zero weight in the global integral.</p>
+<p><strong>2. An invariant base does not force an invariant reference state.</strong> Replace the masses in (E1) by <span class="math" data-tex="\(p=q=1/2\)">\(p=q=1/2\)</span>, leaving the two matrices unchanged. Determine the density and decide whether the resulting reference state is invariant.</p>
+<p><strong>Solution.</strong> Both densities <span class="math" data-tex="\(j_s(i)\)">\(j_s(i)\)</span> equal one, and <span class="math" data-tex="\(U_s\)">\(U_s\)</span> is the plain swap. The reference state is still not invariant. For <span class="math" data-tex="\(a=(E_{11},0)\)">\(a=(E_{11},0)\)</span>,
+<span class="math math-display" data-tex="\[
+ \varphi(a)=\frac12\cdot\frac23=\frac13,\qquad
+ (\varphi\circ\alpha_s)(a)=\frac12\cdot\frac14=\frac18.
+ \tag{X3}
+\]">\[
+ \varphi(a)=\frac12\cdot\frac23=\frac13,\qquad
+ (\varphi\circ\alpha_s)(a)=\frac12\cdot\frac14=\frac18.
+ \tag{X3}
+\]</span>
+The obstruction is now entirely in the conditional states: <span class="math" data-tex="\(\rho_0\ne\rho_1\)">\(\rho_0\ne\rho_1\)</span>. This isolates the second condition in (V12).</p>
+<p><strong>3. Why the modular conjugation permits the density factor.</strong> Explain why the square-root density passes unchanged through the conjugate-linear <span class="math" data-tex="\(J_{T_gx}\)">\(J_{T_gx}\)</span> in the moving normalizer formula.</p>
+<p><strong>Solution.</strong> Its chosen value <span class="math" data-tex="\(j_g(T_gx)^{1/2}\)">\(j_g(T_gx)^{1/2}\)</span> is real and positive. Conjugate linearity conjugates that scalar, leaving it unchanged. After canceling it, global commutation with <span class="math" data-tex="\(J\)">\(J\)</span> becomes
+<span class="math" data-tex="\(u(g,x)J_x=J_{T_gx}u(g,x)\)">\(u(g,x)J_x=J_{T_gx}u(g,x)\)</span>. No commutation with the modular operator of a non-invariant reference state follows from this.</p>
+<p>For an explicit check of the last sentence, the faithful-state modular operator in the Hilbert–Schmidt model is
+<span class="math" data-tex="\(\Delta_{\varphi_i}(b)=\rho_i b\rho_i^{-1}\)">\(\Delta_{\varphi_i}(b)=\rho_i b\rho_i^{-1}\)</span>.
+Indeed the Tomita operator on <span class="math" data-tex="\(b=a\rho_i^{1/2}\)">\(b=a\rho_i^{1/2}\)</span> is
+<span class="math" data-tex="\(S_ib=a^*\rho_i^{1/2}=\rho_i^{-1/2}b^*\rho_i^{1/2}\)">\(S_ib=a^*\rho_i^{1/2}=\rho_i^{-1/2}b^*\rho_i^{1/2}\)</span>;
+its polar decomposition is <span class="math" data-tex="\(J_i\Delta_{\varphi_i}^{1/2}\)">\(J_i\Delta_{\varphi_i}^{1/2}\)</span>.
+In the original weighted example,
+<span class="math" data-tex="\(\Delta_{\varphi_0}E_{12}=2E_{12}\)">\(\Delta_{\varphi_0}E_{12}=2E_{12}\)</span> and
+<span class="math" data-tex="\(\Delta_{\varphi_1}E_{12}=\frac13E_{12}\)">\(\Delta_{\varphi_1}E_{12}=\frac13E_{12}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ U_s\Delta_\varphi(0,E_{12})
+     =\left(\frac{\sqrt2}{3}E_{12},0\right),\qquad
+ \Delta_\varphi U_s(0,E_{12})
+     =(2\sqrt2\,E_{12},0).
+ \tag{X4}
+\]">\[
+ U_s\Delta_\varphi(0,E_{12})
+     =\left(\frac{\sqrt2}{3}E_{12},0\right),\qquad
+ \Delta_\varphi U_s(0,E_{12})
+     =(2\sqrt2\,E_{12},0).
+ \tag{X4}
+\]</span>
+Thus <span class="math" data-tex="\(U_s\)">\(U_s\)</span> preserves the standard conjugation and cone while it need not commute with <span class="math" data-tex="\(\Delta_\varphi\)">\(\Delta_\varphi\)</span>. It transports the modular data of the state to those of the transported state.</p>
+<p>Here is the positive transport assertion, including its domain statement. For a faithful normal state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, put <span class="math" data-tex="\(\nu=\varphi\circ\alpha_g^{-1}\)">\(\nu=\varphi\circ\alpha_g^{-1}\)</span>. Then <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is faithful and <span class="math" data-tex="\(U_g\xi_\varphi=\xi_\nu\)">\(U_g\xi_\varphi=\xi_\nu\)</span>. The unitary sends the Tomita core <span class="math" data-tex="\(M\xi_\varphi\)">\(M\xi_\varphi\)</span> onto <span class="math" data-tex="\(M\xi_\nu\)">\(M\xi_\nu\)</span>. On the latter core,
+<span class="math math-display" data-tex="\[
+ U_gS_\varphi U_g^*(a\xi_\nu)
+  =U_gS_\varphi(\alpha_g^{-1}(a)\xi_\varphi)
+  =U_g\alpha_g^{-1}(a)^*\xi_\varphi
+  =a^*\xi_\nu.
+ \tag{X5}
+\]">\[
+ U_gS_\varphi U_g^*(a\xi_\nu)
+  =U_gS_\varphi(\alpha_g^{-1}(a)\xi_\varphi)
+  =U_g\alpha_g^{-1}(a)^*\xi_\varphi
+  =a^*\xi_\nu.
+ \tag{X5}
+\]</span>
+The closures of these antilinear core operators are the Tomita operators themselves, and unitary conjugation carries their graphs and closures to each other. Therefore <span class="math" data-tex="\(U_gS_\varphi U_g^*=S_\nu\)">\(U_gS_\varphi U_g^*=S_\nu\)</span>, including equality of the full domains. Uniqueness of polar decomposition then gives
+<span class="math" data-tex="\(U_g\Delta_\varphi U_g^*=\Delta_\nu\)">\(U_g\Delta_\varphi U_g^*=\Delta_\nu\)</span> and <span class="math" data-tex="\(U_gJ_\varphi U_g^*=J_\nu\)">\(U_gJ_\varphi U_g^*=J_\nu\)</span>. In the present standard form the latter conjugations are the same <span class="math" data-tex="\(J\)">\(J\)</span>; the modular operators belong to their respective states.</p>
+<p><strong>4. Fixed parameters and common null sets.</strong> Does having a null exceptional set for every real parameter imply one conull set where all the parameter identities hold?</p>
+<p><strong>Solution.</strong> No. On <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with Lebesgue measure, each <span class="math" data-tex="\(N_t=\{t\}\)">\(N_t=\{t\}\)</span> is null, but <span class="math" data-tex="\(\bigcup_{t\in[0,1]}N_t=[0,1]\)">\(\bigcup_{t\in[0,1]}N_t=[0,1]\)</span>. Countable fundamental-section tests justify the common conull sets for a fixed <span class="math" data-tex="\(g\)">\(g\)</span>, a fixed group pair, or a fixed <span class="math" data-tex="\((\psi,g)\)">\((\psi,g)\)</span> used above. A <a href="#oa-flow.cstd.strict">strict field construction</a> needs its additional repair argument for an all-arrow statement; the fixed-parameter calculation alone does not provide it.</p>
+<p>For further reading, M. Takesaki, <em>Theory of Operator Algebras II</em>, §X.3, Theorem 3.11 and Corollary 3.12, pp. 285–288, treat equivariant disintegration of standard forms and its algebraic form. The programme proofs linked above supply the static fields, normalizer theorem and measurable repair tools used here.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-ED.html">Previous lesson</a><a href="OA-FLOW-L40.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L41.md">Lesson source</a></nav></main></body></html>

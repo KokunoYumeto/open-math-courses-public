@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exponential coordinates and closed subgroups</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../">Kasparov’s KK-theory</a> · <a href="index.html">Supporting compact-group proofs</a> · <a href="compact-lie-foundations.md">Exact structured source</a></p><article class="lesson">
+<h1 id="exponential-coordinates-and-closed-subgroups">Exponential coordinates and closed subgroups</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently expressed receiving proof companion; no independent review or formal verification is claimed. Original expression: public domain (CC0). The complete real field, finite-dimensional linear algebra and the definition of a smooth manifold are the entry conventions.</em></p>
+<p>This companion closes the Lie background used in RT-CPT-02, Lemma 5.1, Theorem 5.2, Corollary 5.4 and Exercise 4. A Lie group below is a finite-dimensional real smooth Hausdorff group with smooth multiplication and inversion; it need not be connected or compact. Under the usual second-countable manifold convention, its closed subgroups also have that convention. The proofs use the freely readable primary notes listed at the end. The exponential proof includes the differential-equation and inverse-function arguments. The full closed-subgroup proof goes beyond the stabilizer case proved in Etingof's §7.4. No classification, integration of an abstract Lie algebra, Frobenius theorem or Baker–Campbell–Hausdorff expansion is required.</p>
+
+<h2 id="CPT-L-001"><span id="cpt-l-001"></span>CPT-L-001 — Contractions and local inverse coordinates</h2>
+<p>The finite-calculus facts used below follow as follows. A continuous function on a compact real interval has a Riemann integral: uniform continuity makes the difference of upper and lower step sums tend to zero, and real completeness gives their common limit. Coordinatewise integration gives vector integrals and their norm bound. The quotient <span class="math" data-tex="\(\int_t^{t+h}a(s)\,ds/h\)">\(\int_t^{t+h}a(s)\,ds/h\)</span> tends to <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> for continuous <span class="math" data-tex="\(a\)">\(a\)</span>, since its difference from <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> is bounded by the oscillation on that interval. Conversely, for continuously differentiable <span class="math" data-tex="\(b\)">\(b\)</span>, subtracting the integral of <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> gives a function with derivative zero. The real mean-value theorem makes each coordinate constant. That theorem follows from Rolle's theorem by subtracting the secant line; Rolle's theorem follows by taking a maximum or minimum on the closed interval and observing that a derivative at an interior extremum is zero. Consequently, on a convex domain,
+<span class="math math-display" data-tex="\[
+f(x+h)-f(x)=\int_0^1Df(x+th)h\,dt.
+\tag{L1.1}
+\]">\[
+f(x+h)-f(x)=\int_0^1Df(x+th)h\,dt.
+\tag{L1.1}
+\]</span>
+A bound on <span class="math" data-tex="\(Df\)">\(Df\)</span> is therefore a Lipschitz bound. Iterating (L1.1) gives Taylor formulas with integral remainders; continuity of the highest derivative on a compact set makes their remainder estimates uniform on that set. This is the uniform Taylor fact used in CPT-L-002.</p>
+<p>Closed bounded sets in finite-dimensional real space are compact. Nested interval bisection gives a convergent subsequence in one bounded coordinate; successively selecting subsequences for the finitely many coordinates gives the assertion for bounded sequences. For the open-cover formulation, enclose the set in a cube and repeatedly subdivide it into finitely many closed subcubes. If there is no finite subcover, choose at each stage a subcube whose intersection with the set has no finite subcover. The cubes are nested, their diameters tend to zero, and real completeness gives their unique common point. Picking a point of the closed set in each cube shows that the common point is in that set. An open member containing it contains the sufficiently small chosen cube, a contradiction. Uniform continuity on a compact set follows by the convergent-subsequence contradiction. A uniform Cauchy sequence of continuous finite-dimensional-valued functions has a pointwise limit by completeness, converges uniformly, and has continuous limit. Thus its uniform function space is complete. The chain and product rules used below follow by substituting the linear approximations in the definition of the derivative; their remainders are of smaller order than the increment.</p>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is a map of a complete metric space to itself with Lipschitz constant <span class="math" data-tex="\(q&lt;1\)">\(q&lt;1\)</span>, its iterates satisfy
+<span class="math math-display" data-tex="\[
+d(T^{n+1}x,T^nx)\leq q^n d(Tx,x).
+\]">\[
+d(T^{n+1}x,T^nx)\leq q^n d(Tx,x).
+\]</span>
+The geometric-series bound makes them Cauchy. Their limit is a fixed point by continuity. Two fixed points have distance at most <span class="math" data-tex="\(q\)">\(q\)</span> times that same distance and hence agree.</p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be smooth between open subsets of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, with <span class="math" data-tex="\(Df(a)\)">\(Df(a)\)</span> invertible. Translating and composing with this inverse linear map reduces to <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, <span class="math" data-tex="\(Df(0)=I\)">\(Df(0)=I\)</span>. On a closed ball <span class="math" data-tex="\(B_r\)">\(B_r\)</span> in the domain, choose <span class="math" data-tex="\(q&lt;1\)">\(q&lt;1\)</span> with <span class="math" data-tex="\(\|I-Df(x)\|\leq q\)">\(\|I-Df(x)\|\leq q\)</span>. For sufficiently small <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+T_y(x)=x-f(x)+y
+\]">\[
+T_y(x)=x-f(x)+y
+\]</span>
+is a <span class="math" data-tex="\(q\)">\(q\)</span>-contraction and maps <span class="math" data-tex="\(B_r\)">\(B_r\)</span> into itself, by <span class="math" data-tex="\(\|T_y(x)\|\leq q\|x\|+\|y\|\)">\(\|T_y(x)\|\leq q\|x\|+\|y\|\)</span>. Its unique fixed point <span class="math" data-tex="\(g(y)\)">\(g(y)\)</span> satisfies <span class="math" data-tex="\(f(g(y))=y\)">\(f(g(y))=y\)</span> and lies in the interior if <span class="math" data-tex="\(\|y\|&lt;(1-q)r\)">\(\|y\|&lt;(1-q)r\)</span>. Equation (L1.1) gives
+<span class="math math-display" data-tex="\[
+\|f(x)-f(x&#x27;)\|\geq(1-q)\|x-x&#x27;\|,
+\qquad
+\|g(y)-g(y&#x27;)\|\leq(1-q)^{-1}\|y-y&#x27;\|.
+\]">\[
+\|f(x)-f(x&#x27;)\|\geq(1-q)\|x-x&#x27;\|,
+\qquad
+\|g(y)-g(y&#x27;)\|\leq(1-q)^{-1}\|y-y&#x27;\|.
+\]</span>
+Thus <span class="math" data-tex="\(f\)">\(f\)</span> is injective on that ball. Restricting to the preimage in its interior of a smaller open <span class="math" data-tex="\(y\)">\(y\)</span>-ball gives inverse homeomorphisms between open neighborhoods. Put <span class="math" data-tex="\(x=g(y)\)">\(x=g(y)\)</span>, <span class="math" data-tex="\(\Delta=g(y+h)-g(y)\)">\(\Delta=g(y+h)-g(y)\)</span>. Differentiability of <span class="math" data-tex="\(f\)">\(f\)</span> gives
+<span class="math math-display" data-tex="\[
+h=Df(x)\Delta+o(\|\Delta\|).
+\]">\[
+h=Df(x)\Delta+o(\|\Delta\|).
+\]</span>
+The Lipschitz bound gives <span class="math" data-tex="\(\Delta=Df(x)^{-1}h+o(\|h\|)\)">\(\Delta=Df(x)^{-1}h+o(\|h\|)\)</span>. Hence <span class="math" data-tex="\(Dg(y)=Df(g(y))^{-1}\)">\(Dg(y)=Df(g(y))^{-1}\)</span>. Matrix inversion is smooth by the adjugate/determinant formula. This identity first makes <span class="math" data-tex="\(g\)">\(g\)</span> continuously differentiable and then, inductively, smooth. Manifold charts give the local inverse theorem for smooth manifolds of equal dimension. In dimension zero the local charts have one point.</p>
+
+<h2 id="CPT-L-002"><span id="cpt-l-002"></span>CPT-L-002 — Local differential equations with smooth parameters</h2>
+<p>For smooth <span class="math" data-tex="\(F(x,p)\)">\(F(x,p)\)</span> on an open subset of <span class="math" data-tex="\(\mathbb R^d\times\mathbb R^k\)">\(\mathbb R^d\times\mathbb R^k\)</span>, the equation
+<span class="math math-display" data-tex="\[
+u&#x27;(t)=F(u(t),p),\qquad u(0)=a
+\tag{L2.1}
+\]">\[
+u&#x27;(t)=F(u(t),p),\qquad u(0)=a
+\tag{L2.1}
+\]</span>
+has, near every <span class="math" data-tex="\((a,p)\)">\((a,p)\)</span>, a unique local solution smooth jointly in <span class="math" data-tex="\(t,a,p\)">\(t,a,p\)</span>. A parameter may have zero dimension.</p>
+<p>Choose closed balls about <span class="math" data-tex="\(x_0,p_0\)">\(x_0,p_0\)</span> contained in the domain, of radii <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, and bounds <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(D_xF\)">\(D_xF\)</span> there. Take <span class="math" data-tex="\(\|a-x_0\|&lt;r/4\)">\(\|a-x_0\|&lt;r/4\)</span>, <span class="math" data-tex="\(\|p-p_0\|&lt;s/2\)">\(\|p-p_0\|&lt;s/2\)</span>, <span class="math" data-tex="\(\tau M&lt;r/4\)">\(\tau M&lt;r/4\)</span>, and <span class="math" data-tex="\(q=\tau L&lt;1/2\)">\(q=\tau L&lt;1/2\)</span>. On continuous curves <span class="math" data-tex="\([-\tau,\tau]\to B_r(x_0)\)">\([-\tau,\tau]\to B_r(x_0)\)</span>, a closed subset of the complete uniform function space, the map
+<span class="math math-display" data-tex="\[
+\Phi_{a,p}(u)(t)=a+\int_0^tF(u(v),p)\,dv
+\tag{L2.2}
+\]">\[
+\Phi_{a,p}(u)(t)=a+\int_0^tF(u(v),p)\,dv
+\tag{L2.2}
+\]</span>
+takes values in <span class="math" data-tex="\(B_{r/2}(x_0)\)">\(B_{r/2}(x_0)\)</span> and is a <span class="math" data-tex="\(q\)">\(q\)</span>-contraction. CPT-L-001 gives its unique fixed point. The fundamental theorem makes it a solution. Conversely every solution remaining in this ball satisfies (L2.2). Local uniqueness applies at every initial value. On a common connected time interval two solutions with the same initial value agree everywhere: their times of agreement are closed by continuity and open by local uniqueness. A real interval is connected by the least-upper-bound property.</p>
+<p>Here is the parameter differentiability argument. Write <span class="math" data-tex="\(z=(a,p)\)">\(z=(a,p)\)</span>, <span class="math" data-tex="\(u_z=u\)">\(u_z=u\)</span>. Bounds for <span class="math" data-tex="\(D_pF\)">\(D_pF\)</span> and the contraction estimate give
+<span class="math" data-tex="\(\|u_{z+h}-u_z\|_\infty\leq C\|h\|/(1-q)\)">\(\|u_{z+h}-u_z\|_\infty\leq C\|h\|/(1-q)\)</span> locally. Define
+<span class="math math-display" data-tex="\[
+(A_z w)(t)=\int_0^tD_xF(u_z(v),p)w(v)\,dv,
+\quad
+(B_z h)(t)=h_a+\int_0^tD_pF(u_z(v),p)h_p\,dv.
+\]">\[
+(A_z w)(t)=\int_0^tD_xF(u_z(v),p)w(v)\,dv,
+\quad
+(B_z h)(t)=h_a+\int_0^tD_pF(u_z(v),p)h_p\,dv.
+\]</span>
+Since <span class="math" data-tex="\(\|A_z\|\leq q\)">\(\|A_z\|\leq q\)</span>, the norm-convergent series
+<span class="math" data-tex="\((1-A_z)^{-1}=\sum_{n\geq0}A_z^n\)">\((1-A_z)^{-1}=\sum_{n\geq0}A_z^n\)</span> has norm at most <span class="math" data-tex="\((1-q)^{-1}\)">\((1-q)^{-1}\)</span>. Operator norm completeness here follows directly from completeness of the uniform function space: the pointwise limit of an operator norm Cauchy sequence is bounded linear, and its convergence is in operator norm. Uniform Taylor remainders for <span class="math" data-tex="\(F\)">\(F\)</span> on the compact balls, the Lipschitz estimate and (L2.2) give
+<span class="math math-display" data-tex="\[
+u_{z+h}-u_z=A_z(u_{z+h}-u_z)+B_z h+o(\|h\|)
+\]">\[
+u_{z+h}-u_z=A_z(u_{z+h}-u_z)+B_z h+o(\|h\|)
+\]</span>
+in the uniform norm. Therefore <span class="math" data-tex="\(Du_z=(1-A_z)^{-1}B_z\)">\(Du_z=(1-A_z)^{-1}B_z\)</span>. It is continuous, since <span class="math" data-tex="\(u_z\)">\(u_z\)</span>, the derivatives of <span class="math" data-tex="\(F\)">\(F\)</span>, and the uniformly convergent inverse series are continuous in <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>All higher parameter derivatives follow from the same argument. On curves taking values strictly inside the ball, the map
+<span class="math" data-tex="\((u,p)\mapsto[t\mapsto F(u(t),p)]\)">\((u,p)\mapsto[t\mapsto F(u(t),p)]\)</span> is smooth in the uniform norm: its <span class="math" data-tex="\(j\)">\(j\)</span>th derivative is the pointwise <span class="math" data-tex="\(j\)">\(j\)</span>th derivative of <span class="math" data-tex="\(F\)">\(F\)</span>, and the uniform Taylor remainder on a slightly smaller compact ball proves this at each finite order. Integration is bounded linear, so (L2.2) has the same property. If <span class="math" data-tex="\(u_z\)">\(u_z\)</span> is <span class="math" data-tex="\(C^j\)">\(C^j\)</span>, then <span class="math" data-tex="\(A_z,B_z\)">\(A_z,B_z\)</span> are <span class="math" data-tex="\(C^j\)">\(C^j\)</span>. The identity
+<span class="math math-display" data-tex="\[
+(1-A_{z+h})^{-1}-(1-A_z)^{-1}
+=(1-A_{z+h})^{-1}(A_{z+h}-A_z)(1-A_z)^{-1}
+\]">\[
+(1-A_{z+h})^{-1}-(1-A_z)^{-1}
+=(1-A_{z+h})^{-1}(A_{z+h}-A_z)(1-A_z)^{-1}
+\]</span>
+proves differentiability of the inverse, and inductively all its derivatives, by the product rule. The formula for <span class="math" data-tex="\(Du_z\)">\(Du_z\)</span> consequently makes <span class="math" data-tex="\(u_z\)">\(u_z\)</span> <span class="math" data-tex="\(C^{j+1}\)">\(C^{j+1}\)</span>. Starting with <span class="math" data-tex="\(j=0\)">\(j=0\)</span> proves all orders. The equation
+<span class="math" data-tex="\(\partial_tu_z(t)=F(u_z(t),p)\)">\(\partial_tu_z(t)=F(u_z(t),p)\)</span>, together with its parameter derivatives, proves all mixed derivatives and joint smoothness. Applied in charts, this proves local existence, uniqueness and smooth dependence for smooth manifold vector fields and their finite-dimensional smooth parameter families.</p>
+
+<h2 id="CPT-L-003"><span id="cpt-l-003"></span>CPT-L-003 — The Lie exponential and its local chart</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a Lie group, <span class="math" data-tex="\(e\)">\(e\)</span> its identity and <span class="math" data-tex="\(\mathfrak g=T_eG\)">\(\mathfrak g=T_eG\)</span>. The field <span class="math" data-tex="\(X^L(g)=d(L_g)_eX\)">\(X^L(g)=d(L_g)_eX\)</span> is smooth and left invariant: differentiate smooth multiplication in its second variable and use <span class="math" data-tex="\(L_gL_h=L_{gh}\)">\(L_gL_h=L_{gh}\)</span>. CPT-L-002 gives its local curve <span class="math" data-tex="\(\beta_X\)">\(\beta_X\)</span> through <span class="math" data-tex="\(e\)">\(e\)</span>. Left translations carry solutions to solutions, so uniqueness gives
+<span class="math math-display" data-tex="\[
+\beta_X(s+t)=\beta_X(s)\beta_X(t)
+\tag{L3.1}
+\]">\[
+\beta_X(s+t)=\beta_X(s)\beta_X(t)
+\tag{L3.1}
+\]</span>
+when the three times lie in a sufficiently small common interval. Indeed, as functions of <span class="math" data-tex="\(t\)">\(t\)</span>, both sides solve the same equation through <span class="math" data-tex="\(\beta_X(s)\)">\(\beta_X(s)\)</span> at zero and agree on the connected overlapping interval.</p>
+<p>This curve extends to all times. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that it is defined on <span class="math" data-tex="\((-2\delta,2\delta)\)">\((-2\delta,2\delta)\)</span>. For <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, <span class="math" data-tex="\(0\leq r&lt;\delta\)">\(0\leq r&lt;\delta\)</span>, set
+<span class="math math-display" data-tex="\[
+\gamma_X(n\delta+r)=\beta_X(\delta)^n\beta_X(r).
+\]">\[
+\gamma_X(n\delta+r)=\beta_X(\delta)^n\beta_X(r).
+\]</span>
+At each endpoint the two formulas agree smoothly: (L3.1) identifies them near the endpoint with one translated local curve. Each piece is a solution, giving a global smooth solution. Uniqueness gives
+<span class="math" data-tex="\(\gamma_X(s+t)=\gamma_X(s)\gamma_X(t)\)">\(\gamma_X(s+t)=\gamma_X(s)\gamma_X(t)\)</span> for all <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, by comparing the two solutions in <span class="math" data-tex="\(t\)">\(t\)</span> through <span class="math" data-tex="\(\gamma_X(s)\)">\(\gamma_X(s)\)</span>. Any smooth one-parameter subgroup with initial velocity <span class="math" data-tex="\(X\)">\(X\)</span> solves the same equation by differentiating its group law, and hence is <span class="math" data-tex="\(\gamma_X\)">\(\gamma_X\)</span>. Rescaling time gives <span class="math" data-tex="\(\gamma_{aX}(t)=\gamma_X(at)\)">\(\gamma_{aX}(t)=\gamma_X(at)\)</span> for every real <span class="math" data-tex="\(a\)">\(a\)</span>, including zero and negative <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\exp_GX=\gamma_X(1)\)">\(\exp_GX=\gamma_X(1)\)</span>. CPT-L-002 provides one local smooth-dependence interval uniformly for <span class="math" data-tex="\(X\)">\(X\)</span> near any <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. Choose a positive integer <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(1/N\)">\(1/N\)</span> in that interval. Then
+<span class="math math-display" data-tex="\[
+\exp_GX=\beta_X(1/N)^N
+\]">\[
+\exp_GX=\beta_X(1/N)^N
+\]</span>
+near <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, proving smoothness everywhere. Rescaling yields
+<span class="math math-display" data-tex="\[
+\exp_G(0)=e,\qquad d(\exp_G)_0=I,\qquad
+\exp_G(sX)\exp_G(tX)=\exp_G((s+t)X).
+\tag{L3.2}
+\]">\[
+\exp_G(0)=e,\qquad d(\exp_G)_0=I,\qquad
+\exp_G(sX)\exp_G(tX)=\exp_G((s+t)X).
+\tag{L3.2}
+\]</span>
+The differential is computed along the straight lines <span class="math" data-tex="\(tX\)">\(tX\)</span>, since <span class="math" data-tex="\(\exp_G(tX)=\gamma_X(t)\)">\(\exp_G(tX)=\gamma_X(t)\)</span>. CPT-L-001 makes <span class="math" data-tex="\(\exp_G\)">\(\exp_G\)</span> a diffeomorphism from a neighborhood of zero to an identity neighborhood. Let <span class="math" data-tex="\(\log_G\)">\(\log_G\)</span> be its local inverse. Formula (L3.2) gives <span class="math" data-tex="\((\exp_GX)^n=\exp_G(nX)\)">\((\exp_GX)^n=\exp_G(nX)\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>; <span class="math" data-tex="\(nX\)">\(nX\)</span> need not lie in the inverse-chart domain.</p>
+<p>The derivative of multiplication at <span class="math" data-tex="\((e,e)\)">\((e,e)\)</span> is <span class="math" data-tex="\((X,Y)\mapsto X+Y\)">\((X,Y)\mapsto X+Y\)</span>, since its restrictions to the coordinate axes are the identity and its differential is linear. Thus for fixed <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>,
+<span class="math math-display" data-tex="\[
+\log_G(\exp_G(sX)\exp_G(sY))
+=s(X+Y)+o(s)\qquad(s\to0).
+\tag{L3.3}
+\]">\[
+\log_G(\exp_G(sX)\exp_G(sY))
+=s(X+Y)+o(s)\qquad(s\to0).
+\tag{L3.3}
+\]</span>
+For any linear direct sum <span class="math" data-tex="\(\mathfrak g=V\oplus W\)">\(\mathfrak g=V\oplus W\)</span>, the map
+<span class="math" data-tex="\((X,Y)\mapsto\exp_GX\exp_GY\)">\((X,Y)\mapsto\exp_GX\exp_GY\)</span>, <span class="math" data-tex="\(X\in V,Y\in W\)">\(X\in V,Y\in W\)</span>, has invertible differential <span class="math" data-tex="\(X+Y\)">\(X+Y\)</span> at zero. CPT-L-001 gives a local product chart. These facts include dimension zero, when the identity is an open point.</p>
+
+<h2 id="CPT-L-004"><span id="cpt-l-004"></span>CPT-L-004 — Every closed subgroup is an embedded Lie subgroup</h2>
+<p><strong>Theorem.</strong> A closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of any finite-dimensional real Lie group <span class="math" data-tex="\(G\)">\(G\)</span>, with its subspace topology, is an embedded smooth submanifold and a Lie group. Its tangent space at the identity is
+<span class="math math-display" data-tex="\[
+\mathfrak h=\{X\in\mathfrak g:\exp_G(tX)\in H
+                 \text{ for every }t\in\mathbb R\}.
+\tag{L4.1}
+\]">\[
+\mathfrak h=\{X\in\mathfrak g:\exp_G(tX)\in H
+                 \text{ for every }t\in\mathbb R\}.
+\tag{L4.1}
+\]</span>
+No connectedness or compactness is assumed.</p>
+<p><strong>Proof.</strong> The set in (L4.1) is closed, contains zero, and is closed under real scalar multiplication. To prove addition, take <span class="math" data-tex="\(X,Y\in\mathfrak h\)">\(X,Y\in\mathfrak h\)</span>, fix any real <span class="math" data-tex="\(t\)">\(t\)</span>, and, for sufficiently large positive integers <span class="math" data-tex="\(n\)">\(n\)</span>, put
+<span class="math math-display" data-tex="\[
+b_n=\log_G(\exp_G((t/n)X)\exp_G((t/n)Y)).
+\]">\[
+b_n=\log_G(\exp_G((t/n)X)\exp_G((t/n)Y)).
+\]</span>
+Equation (L3.3) gives <span class="math" data-tex="\(nb_n\to t(X+Y)\)">\(nb_n\to t(X+Y)\)</span>. The subgroup property and (L3.2) give
+<span class="math math-display" data-tex="\[
+\exp_G(nb_n)=
+ \bigl(\exp_G((t/n)X)\exp_G((t/n)Y)\bigr)^n\in H.
+\]">\[
+\exp_G(nb_n)=
+ \bigl(\exp_G((t/n)X)\exp_G((t/n)Y)\bigr)^n\in H.
+\]</span>
+Continuity and closedness imply <span class="math" data-tex="\(\exp_G(t(X+Y))\in H\)">\(\exp_G(t(X+Y))\in H\)</span>. Since <span class="math" data-tex="\(t\)">\(t\)</span> was arbitrary, <span class="math" data-tex="\(X+Y\in\mathfrak h\)">\(X+Y\in\mathfrak h\)</span>, so it is a linear subspace.</p>
+<p>Choose a linear complement <span class="math" data-tex="\(W\)">\(W\)</span>. There is <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+Y\in W,\quad \|Y\|&lt;\varepsilon,\quad \exp_GY\in H
+\quad\Longrightarrow\quad Y=0.
+\tag{L4.2}
+\]">\[
+Y\in W,\quad \|Y\|&lt;\varepsilon,\quad \exp_GY\in H
+\quad\Longrightarrow\quad Y=0.
+\tag{L4.2}
+\]</span>
+Otherwise choose nonzero <span class="math" data-tex="\(Y_j\in W\)">\(Y_j\in W\)</span> tending to zero with <span class="math" data-tex="\(\exp_GY_j\in H\)">\(\exp_GY_j\in H\)</span>. Compactness of the finite-dimensional unit sphere gives a subsequence with <span class="math" data-tex="\(Y_j/\|Y_j\|\to Z\in W\)">\(Y_j/\|Y_j\|\to Z\in W\)</span>, <span class="math" data-tex="\(\|Z\|=1\)">\(\|Z\|=1\)</span>. For each real <span class="math" data-tex="\(t\)">\(t\)</span> choose an integer <span class="math" data-tex="\(m_j\)">\(m_j\)</span>, possibly negative, with
+<span class="math" data-tex="\(|m_j\|Y_j\|-t|\leq\|Y_j\|\)">\(|m_j\|Y_j\|-t|\leq\|Y_j\|\)</span>. Then <span class="math" data-tex="\(m_jY_j\to tZ\)">\(m_jY_j\to tZ\)</span> and
+<span class="math math-display" data-tex="\[
+\exp_G(m_jY_j)=(\exp_GY_j)^{m_j}\in H.
+\]">\[
+\exp_G(m_jY_j)=(\exp_GY_j)^{m_j}\in H.
+\]</span>
+Closedness gives <span class="math" data-tex="\(\exp_G(tZ)\in H\)">\(\exp_G(tZ)\in H\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>; thus <span class="math" data-tex="\(Z\in\mathfrak h\cap W=0\)">\(Z\in\mathfrak h\cap W=0\)</span>, a contradiction. If <span class="math" data-tex="\(W=0\)">\(W=0\)</span>, (L4.2) is immediate.</p>
+<p>The product chart of CPT-L-003 for <span class="math" data-tex="\(\mathfrak g=\mathfrak h\oplus W\)">\(\mathfrak g=\mathfrak h\oplus W\)</span> restricts to a product of open balls <span class="math" data-tex="\(B\times C\)">\(B\times C\)</span>, with <span class="math" data-tex="\(C\subset\{\|Y\|&lt;\varepsilon\}\)">\(C\subset\{\|Y\|&lt;\varepsilon\}\)</span>. Its image <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is an open identity neighborhood and it is a diffeomorphism there. An element <span class="math" data-tex="\(\exp_GX\exp_GY\)">\(\exp_GX\exp_GY\)</span> in that image lies in <span class="math" data-tex="\(H\)">\(H\)</span> exactly when <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span>: if it lies in <span class="math" data-tex="\(H\)">\(H\)</span>, then <span class="math" data-tex="\(\exp_GX\in H\)">\(\exp_GX\in H\)</span> makes <span class="math" data-tex="\(\exp_GY\in H\)">\(\exp_GY\in H\)</span>, and (L4.2) applies; the converse is (L4.1). Thus this ambient chart cuts out <span class="math" data-tex="\(H\cap\Omega\)">\(H\cap\Omega\)</span> as <span class="math" data-tex="\(B\times\{0\}\)">\(B\times\{0\}\)</span>. Its derivative identifies <span class="math" data-tex="\(T_eH=\mathfrak h\)">\(T_eH=\mathfrak h\)</span>.</p>
+<p>Translate the charts by elements of <span class="math" data-tex="\(H\)">\(H\)</span>. Their restrictions have smooth transition functions, being restrictions of ambient smooth coordinate changes. Their topology is the subspace topology. Hence <span class="math" data-tex="\(H\)">\(H\)</span> is an embedded submanifold. Multiplication and inversion restrict smoothly: in an ambient chart cutting out <span class="math" data-tex="\(H\)">\(H\)</span>, a smooth map valued in <span class="math" data-tex="\(H\)">\(H\)</span> has zero discarded coordinates and smooth retained coordinates. Apply this to the two group operations. The subgroup is Hausdorff and inherits second countability if that convention is made for <span class="math" data-tex="\(G\)">\(G\)</span>. This proves the theorem.</p>
+<p>For the Lie-algebra interpretation, <span class="math" data-tex="\(X^L\)">\(X^L\)</span>, <span class="math" data-tex="\(X\in\mathfrak h\)">\(X\in\mathfrak h\)</span>, is tangent along <span class="math" data-tex="\(H\)">\(H\)</span>, since its flow through <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(h\exp_G(tX)\in H\)">\(h\exp_G(tX)\in H\)</span>. Brackets of tangent smooth fields are tangent: in coordinates cutting out <span class="math" data-tex="\(H\)">\(H\)</span>, their normal coefficients and all their tangential derivatives vanish on <span class="math" data-tex="\(H\)">\(H\)</span>; the coordinate bracket formula therefore has zero normal coefficients there. The bracket at the identity belongs to <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. The exponential of <span class="math" data-tex="\(H\)">\(H\)</span> agrees with the ambient one on <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, by ODE uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+
+<h2 id="CPT-L-005"><span id="cpt-l-005"></span>CPT-L-005 — Unitary targets and no small subgroups</h2>
+<p>The open matrix set <span class="math" data-tex="\(GL_m(\mathbb R)\)">\(GL_m(\mathbb R)\)</span> is a Lie group: multiplication is polynomial and inversion is adjugate divided by determinant. Embed a complex matrix <span class="math" data-tex="\(A=P+iQ\)">\(A=P+iQ\)</span> as
+<span class="math math-display" data-tex="\[
+j(A)=\begin{pmatrix}P&amp;-Q\\Q&amp;P\end{pmatrix}.
+\]">\[
+j(A)=\begin{pmatrix}P&amp;-Q\\Q&amp;P\end{pmatrix}.
+\]</span>
+Block multiplication gives <span class="math" data-tex="\(j(AB)=j(A)j(B)\)">\(j(AB)=j(A)j(B)\)</span>; this linear map is a homeomorphism onto its image. Its image consists of matrices commuting with <span class="math" data-tex="\(J=j(iI)\)">\(J=j(iI)\)</span>. The subgroup <span class="math" data-tex="\(j(U(n))\)">\(j(U(n))\)</span> in <span class="math" data-tex="\(GL_{2n}(\mathbb R)\)">\(GL_{2n}(\mathbb R)\)</span> is cut out by the closed equations
+<span class="math math-display" data-tex="\[
+MJ=JM,\qquad M^{\mathsf T}M=I.
+\]">\[
+MJ=JM,\qquad M^{\mathsf T}M=I.
+\]</span>
+The second equation is exactly <span class="math" data-tex="\(A^*A=I\)">\(A^*A=I\)</span>. CPT-L-004 gives the real Lie-group structure of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>, without assuming it in the closed-subgroup proof. The orthogonality equation bounds every matrix entry by one and defines a closed subset of the whole real matrix space; hence <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> is compact. Finite products have product Lie charts and smooth coordinatewise operations, or can be embedded as closed block-diagonal matrix subgroups. The empty product is the one-point group.</p>
+<p>Every finite-dimensional real Lie group has no small subgroups. In positive dimension choose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> such that <span class="math" data-tex="\(\exp_G\)">\(\exp_G\)</span> is injective on <span class="math" data-tex="\(B_r\)">\(B_r\)</span> and gives its local chart. Put <span class="math" data-tex="\(U=\exp_G(B_{r/3})\)">\(U=\exp_G(B_{r/3})\)</span>. If a subgroup contained in <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(h=\exp_GX\ne e\)">\(h=\exp_GX\ne e\)</span>, let <span class="math" data-tex="\(n\)">\(n\)</span> be the least positive integer with <span class="math" data-tex="\(n\|X\|\geq r/3\)">\(n\|X\|\geq r/3\)</span>. Since <span class="math" data-tex="\(0&lt;\|X\|&lt;r/3\)">\(0&lt;\|X\|&lt;r/3\)</span>, minimality gives <span class="math" data-tex="\(n\|X\|&lt;2r/3&lt;r\)">\(n\|X\|&lt;2r/3&lt;r\)</span>. Its power <span class="math" data-tex="\(h^n=\exp_G(nX)\)">\(h^n=\exp_G(nX)\)</span> cannot lie in <span class="math" data-tex="\(U\)">\(U\)</span>: injectivity on <span class="math" data-tex="\(B_r\)">\(B_r\)</span> would give <span class="math" data-tex="\(nX\in B_{r/3}\)">\(nX\in B_{r/3}\)</span>. This is a contradiction. In dimension zero, <span class="math" data-tex="\(\{e\}\)">\(\{e\}\)</span> is open and contains no nontrivial subgroup. Disconnected and discrete groups are included.</p>
+<h2 id="free-comparison-sources-and-proof-scope">Free comparison sources and proof scope</h2>
+<ul>
+<li>Pavel Etingof, <a href="https://math.mit.edu/~etingof/lnlg.pdf"><em>18.745: Lie Groups and Lie Algebras, I</em>, author lecture notes</a>, §5.3, Proposition 5.12 and Theorem 5.16, printed pp. 36–37, for the exponential and local differential. Theorem 2.16 states the general closed-subgroup theorem; §7.4 proves a stabilizer case. CPT-L-001–004 supply the complete analytic and closed-subgroup arguments here.</li>
+<li>Brian Conrad and Aaron Landesman, <a href="https://math.stanford.edu/~conrad/210CPage/handouts/lie_groups_notes.pdf"><em>Math 210C: Compact Lie Groups</em>, author-hosted lecture notes</a>, Appendices E.2, F.2–F.4 and G.1 for local ODEs, smooth dependence and the exponential. Theorem 6.15 sketches the general closed-subgroup argument; it is not a substitute for CPT-L-004.</li>
+<li>Alejandro Ginory, <a href="https://sites.math.rutgers.edu/~ag930/Some%20Math/Closed%20Subgroup%20Theorem%20for%20Lie%20Groups.pdf"><em>Closed Subgroup Theorem for Lie Groups</em>, author-hosted notes</a>, §3, Theorem 3.1, for the shrinking-power and complementary-coordinate proof. CPT-L-004 supplies the local analytic entries, uses signed integers for negative times, and proves the embedded smooth group structure.</li>
+</ul>
+<p>The links identify freely readable primary notes, not an inferred licence to copy their prose. Their text is not incorporated. This independently expressed companion retains CC0. It closes the stated USED RT-CPT-02 background, without certifying wider differential-geometry or Lie-theory source provenance.</p>
+</article><p>Original reading by GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026; retained mathematical article and every stable ID. Original text and solutions: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. This supporting snapshot preserves the exact continuous-convolution eigenspace proof cited by the KK lesson.</p></main></body></html>

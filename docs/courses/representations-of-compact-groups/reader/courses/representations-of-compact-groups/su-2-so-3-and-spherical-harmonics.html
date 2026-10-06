@@ -1,0 +1,447 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SU(2), SO(3) and spherical harmonics</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="fourier-analysis-and-class-functions-on-compact-groups.html">Previous lesson</a><a href="compact-lie-groups-their-lie-algebras-and-the-adjoint-representation.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="su-2-so-3-and-spherical-harmonics">SU(2), SO(3) and spherical harmonics</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>Rotating a vector, rotating a quadratic form and rotating a two-component spinor produce different representation spaces. Their dimensions alone are suggestive—three, five and two—but dimensions do not explain why a spinor requires a covering group or why a quadratic form has an invariant scalar part. We will connect these examples through explicit group maps and descent conditions.</p>
+<p>Start with ordinary geometric measurements, then construct the quaternion covering maps. Polynomial representations provide the complete irreducible list on the covering group; checking its central elements tells us which representations describe <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>, <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span> and <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>. After that classification, harmonic polynomials turn the rotation types into a complete basis of functions on the sphere. Their zonal functions diagonalize the great-circle transform and prove the central-section uniqueness theorem for symmetric convex bodies.</p>
+<p>We use <a href="representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">unitarization, complete reducibility and Schur's lemma</a>, <a href="matrix-coefficients-and-the-peter-weyl-theorem.html">coefficient density</a>, and <a href="fourier-analysis-and-class-functions-on-compact-groups.html">character completeness and the character test</a>. Round measure on <span class="math" data-tex="\(S^2\)">\(S^2\)</span> and Haar measures have mass one. Our spherical Laplacian has nonpositive eigenvalues.</p>
+<h2 id="what-a-quadratic-measurement-sees">What a quadratic measurement sees</h2>
+<p>A complex quadratic polynomial on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> has the form <span class="math" data-tex="\(x^{\mathsf T}Ax\)">\(x^{\mathsf T}Ax\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> a complex symmetric <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrix. A rotation acts by <span class="math" data-tex="\(A\mapsto RAR^{\mathsf T}\)">\(A\mapsto RAR^{\mathsf T}\)</span>, so it preserves the trace. Consequently this six-dimensional space splits into a one-dimensional part spanned by <span class="math" data-tex="\(x^2+y^2+z^2\)">\(x^2+y^2+z^2\)</span> and a five-dimensional part given by trace-zero matrices. Direct differentiation gives
+<span class="math math-display" data-tex="\[
+\Delta_{\mathbb R^3}(x^{\mathsf T}Ax)=2\operatorname{tr}A.
+\]">\[
+\Delta_{\mathbb R^3}(x^{\mathsf T}Ax)=2\operatorname{tr}A.
+\]</span>
+Thus the trace-zero measurements are precisely the harmonic quadratics. On the sphere the scalar part is constant; the other part measures directional variation. For example, the rotation-invariant function <span class="math" data-tex="\(x^2+y^2+z^2\)">\(x^2+y^2+z^2\)</span> cannot belong to the same irreducible type as <span class="math" data-tex="\(2z^2-x^2-y^2\)">\(2z^2-x^2-y^2\)</span>. We have not yet proved that all five trace-zero directions form one irreducible. The classification below will explain that fact, and will show why the analogous degree-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> space has dimension <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>.</p>
+<h2 id="a-covering-group-built-from-unit-quaternions"><span id="the-three-sphere-and-its-conjugacy-classes"></span>A covering group built from unit quaternions</h2>
+<p>Identify the quaternion algebra with the real span of <span class="math" data-tex="\(1,i,j,k\)">\(1,i,j,k\)</span>, with <span class="math" data-tex="\(i^2=j^2=k^2=-1\)">\(i^2=j^2=k^2=-1\)</span> and <span class="math" data-tex="\(ij=k=-ji\)">\(ij=k=-ji\)</span>, cyclically. An explicit algebra embedding is</p>
+<span class="math math-display" data-tex="\[
+a+bi+cj+dk\longmapsto
+\begin{pmatrix}
+a+bi&amp;c+di\\
+-c+di&amp;a-bi
+\end{pmatrix}.
+\tag{1.1}
+\]">\[
+a+bi+cj+dk\longmapsto
+\begin{pmatrix}
+a+bi&amp;c+di\\
+-c+di&amp;a-bi
+\end{pmatrix}.
+\tag{1.1}
+\]</span>
+<p>The images of <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span> satisfy these multiplication relations, so linearity verifies multiplication on the entire algebra. If <span class="math" data-tex="\(q=a+bi+cj+dk\)">\(q=a+bi+cj+dk\)</span>, quaternion conjugation gives <span class="math" data-tex="\(q\bar q=|q|^2\)">\(q\bar q=|q|^2\)</span>, and (1.1) has determinant <span class="math" data-tex="\(|q|^2\)">\(|q|^2\)</span>. Its adjoint corresponds to <span class="math" data-tex="\(\bar q\)">\(\bar q\)</span>. Every element of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> has the displayed matrix form with <span class="math" data-tex="\(|q|=1\)">\(|q|=1\)</span>: its second column is the unique unit vector orthogonal to the first that makes the determinant one. Thus <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> is exactly the unit quaternions, with underlying space <span class="math" data-tex="\(S^3\)">\(S^3\)</span>.</p>
+<p>Left and right multiplication by a unit quaternion are real linear isometries of <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, because quaternion norms multiply. They preserve round surface measure. Consequently normalized round measure on <span class="math" data-tex="\(S^3\)">\(S^3\)</span> is Haar measure on this group.</p>
+<h2 id="ordinary-rotations-and-the-factor-of-two">Ordinary rotations and the factor of two</h2>
+<p>The imaginary quaternions form <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. For a unit quaternion <span class="math" data-tex="\(q\)">\(q\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\kappa(q)v=qvq^{-1}.
+\tag{3.1}
+\]">\[
+\kappa(q)v=qvq^{-1}.
+\tag{3.1}
+\]</span>
+<p>This real linear map preserves the imaginary subspace and its norm. It is orthogonal, and its determinant is one by continuity on the connected sphere <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, since the identity has determinant one.</p>
+<p>If <span class="math" data-tex="\(q=\cos\theta+u\sin\theta\)">\(q=\cos\theta+u\sin\theta\)</span>, choose a perpendicular unit vector <span class="math" data-tex="\(v\)">\(v\)</span> and put <span class="math" data-tex="\(w=u\times v=uv\)">\(w=u\times v=uv\)</span>. Quaternion multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\kappa(q)u=u,\qquad
+\kappa(q)v=\cos(2\theta)v+\sin(2\theta)w,\qquad
+\kappa(q)w=-\sin(2\theta)v+\cos(2\theta)w.
+\tag{3.2}
+\]">\[
+\kappa(q)u=u,\qquad
+\kappa(q)v=\cos(2\theta)v+\sin(2\theta)w,\qquad
+\kappa(q)w=-\sin(2\theta)v+\cos(2\theta)w.
+\tag{3.2}
+\]</span>
+<p>For instance, expand <span class="math" data-tex="\((c+su)v(c-su)\)">\((c+su)v(c-su)\)</span>, use <span class="math" data-tex="\(uv=-vu=w\)">\(uv=-vu=w\)</span> and <span class="math" data-tex="\(uvu=v\)">\(uvu=v\)</span>, and obtain <span class="math" data-tex="\((c^2-s^2)v+2csw\)">\((c^2-s^2)v+2csw\)</span>. This proves the first rotation formula; the second follows in the same basis. Thus the quaternion parameter <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives a spatial rotation of angle <span class="math" data-tex="\(2\theta\)">\(2\theta\)</span>.</p>
+<p>Every matrix in <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> fixes some unit vector: its nonreal eigenvalues occur in conjugate pairs, while its real eigenvalues are <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, and determinant one in odd dimension forces an eigenvalue one. On the orthogonal plane it is an orientation-preserving planar rotation. Equation (3.2) realizes that axis and angle. Hence <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is surjective. Its kernel consists of the quaternions commuting with all imaginary quaternions, hence with <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span>; their multiplication relations force such a quaternion to be real. Among unit quaternions these are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>.</p>
+<p>We have proved</p>
+<span class="math math-display" data-tex="\[
+SO(3)\simeq SU(2)/\{I,-I\}.
+\tag{3.3}
+\]">\[
+SO(3)\simeq SU(2)/\{I,-I\}.
+\tag{3.3}
+\]</span>
+<p>The isomorphism is topological as well: a continuous bijection from the compact quotient onto a Hausdorff group is a homeomorphism.</p>
+<h2 id="four-dimensional-rotations-and-u-2">Four-dimensional rotations and U(2)</h2>
+<p>Quaternion multiplication defines</p>
+<span class="math math-display" data-tex="\[
+\Phi:SU(2)\times SU(2)\longrightarrow SO(4),\qquad
+\Phi(a,b)q=aqb^{-1}.
+\tag{6.1}
+\]">\[
+\Phi:SU(2)\times SU(2)\longrightarrow SO(4),\qquad
+\Phi(a,b)q=aqb^{-1}.
+\tag{6.1}
+\]</span>
+<p>It is a homomorphism because its left and right actions commute. They are orthogonal, and their determinant is one by connectedness. To prove surjectivity, take <span class="math" data-tex="\(R\in SO(4)\)">\(R\in SO(4)\)</span> and put <span class="math" data-tex="\(q=R(1)\)">\(q=R(1)\)</span>. The operator <span class="math" data-tex="\(L_{q^{-1}}R\)">\(L_{q^{-1}}R\)</span> fixes the real unit vector <span class="math" data-tex="\(1\)">\(1\)</span>, hence acts on its imaginary orthogonal complement as an element of <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>. By (3.3), it is conjugation by some <span class="math" data-tex="\(b\)">\(b\)</span>. Therefore <span class="math" data-tex="\(R(x)=qbx b^{-1}=\Phi(qb,b)x\)">\(R(x)=qbx b^{-1}=\Phi(qb,b)x\)</span>. If <span class="math" data-tex="\(\Phi(a,b)\)">\(\Phi(a,b)\)</span> is identity, its value at <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, and then <span class="math" data-tex="\(a\)">\(a\)</span> commutes with every quaternion, forcing <span class="math" data-tex="\(a=b=\pm1\)">\(a=b=\pm1\)</span>. We have proved</p>
+<span class="math math-display" data-tex="\[
+SO(4)\simeq
+(SU(2)\times SU(2))/\{(1,1),(-1,-1)\}.
+\tag{6.2}
+\]">\[
+SO(4)\simeq
+(SU(2)\times SU(2))/\{(1,1),(-1,-1)\}.
+\tag{6.2}
+\]</span>
+<p>For <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>, the map <span class="math" data-tex="\((z,g)\mapsto zg\)">\((z,g)\mapsto zg\)</span> from <span class="math" data-tex="\(S^1\times SU(2)\)">\(S^1\times SU(2)\)</span> is surjective: choose <span class="math" data-tex="\(z^2=\det U\)">\(z^2=\det U\)</span> and take <span class="math" data-tex="\(g=z^{-1}U\)">\(g=z^{-1}U\)</span>. Its kernel is <span class="math" data-tex="\(\{(1,I),(-1,-I)\}\)">\(\{(1,I),(-1,-I)\}\)</span>.</p>
+<p>These maps separate the geometric quotient from the representation question. For a surjective continuous map <span class="math" data-tex="\(H\to H/N\)">\(H\to H/N\)</span> of compact groups, pullback preserves invariant subspaces and equivalence. A representation of <span class="math" data-tex="\(H\)">\(H\)</span> factors through the quotient exactly when every element of <span class="math" data-tex="\(N\)">\(N\)</span> acts as identity; the resulting map is continuous by the quotient topology. We will therefore classify on the covering groups and then test their kernels. The relevant tests are <span class="math" data-tex="\(-I\)">\(-I\)</span> for <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>, <span class="math" data-tex="\((-I,-I)\)">\((-I,-I)\)</span> for <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>, and <span class="math" data-tex="\((-1,-I)\)">\((-1,-I)\)</span> for <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>.</p>
+<h2 id="integrating-on-the-class-interval">Integrating on the class interval</h2>
+<p id="result-proposition-1-2"><strong>Proposition 1.2 (conjugacy and integration).</strong> Each element of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> is conjugate to exactly one</p>
+<span class="math math-display" data-tex="\[
+t_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta}),
+\qquad 0\leq\theta\leq\pi.
+\]">\[
+t_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta}),
+\qquad 0\leq\theta\leq\pi.
+\]</span>
+<p>For every continuous central function <span class="math" data-tex="\(f\)">\(f\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_{SU(2)}f(g)\,dg
+=\frac2\pi\int_0^\pi f(t_\theta)\sin^2\theta\,d\theta.
+\tag{1.3}
+\]">\[
+\int_{SU(2)}f(g)\,dg
+=\frac2\pi\int_0^\pi f(t_\theta)\sin^2\theta\,d\theta.
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> The finite-dimensional spectral theorem diagonalizes a unitary matrix. Determinant one makes its eigenvalues <span class="math" data-tex="\(z,z^{-1}\)">\(z,z^{-1}\)</span>, with <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>. Multiplying a diagonalizing unitary matrix by a scalar makes its determinant one without changing the conjugation. The matrix corresponding to <span class="math" data-tex="\(j\)">\(j\)</span> interchanges the two eigenvalues. We can therefore choose <span class="math" data-tex="\(\theta\in[0,\pi]\)">\(\theta\in[0,\pi]\)</span>. Trace is <span class="math" data-tex="\(2\cos\theta\)">\(2\cos\theta\)</span>, which is injective on this interval, proving uniqueness.</p>
+<p>Write a unit quaternion as</p>
+<span class="math math-display" data-tex="\[
+q=\cos\theta+u\sin\theta,\qquad u\in S^2,\quad 0&lt;\theta&lt;\pi.
+\tag{1.4}
+\]">\[
+q=\cos\theta+u\sin\theta,\qquad u\in S^2,\quad 0&lt;\theta&lt;\pi.
+\tag{1.4}
+\]</span>
+<p>The derivative in the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> direction has length one and is orthogonal to the two <span class="math" data-tex="\(u\)">\(u\)</span> directions. Their lengths are multiplied by <span class="math" data-tex="\(\sin\theta\)">\(\sin\theta\)</span>. The round metric is therefore <span class="math" data-tex="\(d\theta^2+\sin^2\theta\,ds_{S^2}^2\)">\(d\theta^2+\sin^2\theta\,ds_{S^2}^2\)</span>, and the volume element is <span class="math" data-tex="\(\sin^2\theta\,d\theta\,dA(u)\)">\(\sin^2\theta\,d\theta\,dA(u)\)</span>. Its total volume is <span class="math" data-tex="\(4\pi\int_0^\pi\sin^2\theta\,d\theta=2\pi^2\)">\(4\pi\int_0^\pi\sin^2\theta\,d\theta=2\pi^2\)</span>. The poles have measure zero. The real part of <span class="math" data-tex="\(q\)">\(q\)</span>, equivalently half its matrix trace, is <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span>, so (1.4) lies in the class of <span class="math" data-tex="\(t_\theta\)">\(t_\theta\)</span>. Integrating over <span class="math" data-tex="\(u\)">\(u\)</span> and dividing by <span class="math" data-tex="\(2\pi^2\)">\(2\pi^2\)</span> proves (1.3). ∎</p>
+<p>The class interval is also a topological quotient: its coordinate <span class="math" data-tex="\(\theta=\arccos(\operatorname{tr}(g)/2)\)">\(\theta=\arccos(\operatorname{tr}(g)/2)\)</span> is continuous. Continuous central functions correspond precisely to <span class="math" data-tex="\(C([0,\pi])\)">\(C([0,\pi])\)</span>.</p>
+<h2 id="polynomial-representations-and-the-complete-list">Polynomial representations and the complete list</h2>
+<p>Let <span class="math" data-tex="\(P_m\)">\(P_m\)</span> be the complex homogeneous polynomials of degree <span class="math" data-tex="\(m\)">\(m\)</span> in two variables. Use column variables <span class="math" data-tex="\(Z=(z,w)^t\)">\(Z=(z,w)^t\)</span> and the action</p>
+<span class="math math-display" data-tex="\[
+(\pi_m(g)p)(Z)=p(g^{-1}Z),\qquad m\geq0.
+\tag{2.1}
+\]">\[
+(\pi_m(g)p)(Z)=p(g^{-1}Z),\qquad m\geq0.
+\tag{2.1}
+\]</span>
+<p>This is a representation: applying <span class="math" data-tex="\(h\)">\(h\)</span>, then <span class="math" data-tex="\(g\)">\(g\)</span>, substitutes <span class="math" data-tex="\(h^{-1}g^{-1}Z=(gh)^{-1}Z\)">\(h^{-1}g^{-1}Z=(gh)^{-1}Z\)</span>. It is continuous and has dimension <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. An invariant inner product is obtained by restricting polynomials to the unit sphere in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> and integrating <span class="math" data-tex="\(p\bar q\)">\(p\bar q\)</span>. It is positive definite, since a homogeneous polynomial vanishing on that sphere vanishes everywhere. Unitary changes of variables preserve it.</p>
+<p>The monomial <span class="math" data-tex="\(z^{m-j}w^j\)">\(z^{m-j}w^j\)</span> has eigenvalue <span class="math" data-tex="\(e^{i(2j-m)\theta}\)">\(e^{i(2j-m)\theta}\)</span> under <span class="math" data-tex="\(t_\theta\)">\(t_\theta\)</span>. Hence its character is</p>
+<span class="math math-display" data-tex="\[
+\chi_m(t_\theta)
+=\sum_{j=0}^m e^{i(2j-m)\theta}
+=\frac{\sin((m+1)\theta)}{\sin\theta}.
+\tag{2.2}
+\]">\[
+\chi_m(t_\theta)
+=\sum_{j=0}^m e^{i(2j-m)\theta}
+=\frac{\sin((m+1)\theta)}{\sin\theta}.
+\tag{2.2}
+\]</span>
+<p>The quotient is interpreted continuously at the endpoints: its values are <span class="math" data-tex="\(m+1\)">\(m+1\)</span> at zero and <span class="math" data-tex="\((-1)^m(m+1)\)">\((-1)^m(m+1)\)</span> at <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Formula (2.1) fixes the individual eigenvalue signs; reversing the polynomial action would change them, although the total character here is unchanged.</p>
+<p id="result-theorem-2-3"><strong>Theorem 2.3.</strong> The representations <span class="math" data-tex="\(\pi_m\)">\(\pi_m\)</span>, <span class="math" data-tex="\(m=0,1,\ldots\)">\(m=0,1,\ldots\)</span>, are irreducible, pairwise inequivalent, and exhaust all irreducible continuous unitary representations of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>.</p>
+<p><strong>Proof.</strong> Equations (1.3) and (2.2) give</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_m,\chi_n\rangle
+=\frac2\pi\int_0^\pi
+\sin((m+1)\theta)\sin((n+1)\theta)\,d\theta
+=\delta_{mn}.
+\tag{2.4}
+\]">\[
+\langle\chi_m,\chi_n\rangle
+=\frac2\pi\int_0^\pi
+\sin((m+1)\theta)\sin((n+1)\theta)\,d\theta
+=\delta_{mn}.
+\tag{2.4}
+\]</span>
+<p>Indeed, twice the product of the sines is the difference of the cosines with frequencies <span class="math" data-tex="\(m-n\)">\(m-n\)</span> and <span class="math" data-tex="\(m+n+2\)">\(m+n+2\)</span>. Every nonzero integral frequency has cosine integral zero on <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span>; the constant frequency contributes <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The character norm test in the preceding lesson proves irreducibility, and orthogonality proves inequivalence.</p>
+<p>To prove exhaustion, <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>, <span class="math" data-tex="\(\chi_1=2\cos\theta\)">\(\chi_1=2\cos\theta\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\chi_m-\chi_{m-2}=2\cos(m\theta)\qquad(m\geq2).
+\tag{2.5}
+\]">\[
+\chi_m-\chi_{m-2}=2\cos(m\theta)\qquad(m\geq2).
+\tag{2.5}
+\]</span>
+<p>Thus their span contains every cosine polynomial. The identity <span class="math" data-tex="\(\cos(m\theta)=T_m(\cos\theta)\)">\(\cos(m\theta)=T_m(\cos\theta)\)</span>, obtained inductively from the cosine addition rule, says that these span all polynomials in <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span>: the degree-<span class="math" data-tex="\(m\)">\(m\)</span> polynomial <span class="math" data-tex="\(T_m\)">\(T_m\)</span> has nonzero leading coefficient. Since <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span> identifies <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span> with <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, Stone–Weierstrass makes this span uniformly dense in the continuous class functions. An additional irreducible character would be orthogonal to every <span class="math" data-tex="\(\chi_m\)">\(\chi_m\)</span>, hence to every continuous class function, including itself. Its squared norm is one, a contradiction. ∎</p>
+<p>For example, <span class="math" data-tex="\(\chi_1=2\cos\theta\)">\(\chi_1=2\cos\theta\)</span> and <span class="math" data-tex="\(\chi_2=4\cos^2\theta-1\)">\(\chi_2=4\cos^2\theta-1\)</span>. The two-dimensional defining representation has character <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span>, so it is equivalent to our action on linear polynomials, which is its dual. Every <span class="math" data-tex="\(\chi_m\)">\(\chi_m\)</span> is real, so every <span class="math" data-tex="\(\pi_m\)">\(\pi_m\)</span> is equivalent to its dual.</p>
+<h2 id="which-polynomial-types-descend-to-ordinary-rotations">Which polynomial types descend to ordinary rotations</h2>
+<p id="result-corollary-3-4"><strong>Corollary 3.4.</strong> The irreducible representations of <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> are <span class="math" data-tex="\(\tau_\ell\)">\(\tau_\ell\)</span>, <span class="math" data-tex="\(\ell=0,1,\ldots\)">\(\ell=0,1,\ldots\)</span>, whose pullbacks are <span class="math" data-tex="\(\pi_{2\ell}\)">\(\pi_{2\ell}\)</span>. Their dimensions are <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>.</p>
+<p>Indeed, pulling back along a surjection preserves irreducibility and equivalence. A representation of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> descends exactly when <span class="math" data-tex="\(-I\)">\(-I\)</span> acts trivially. Formula (2.1) gives <span class="math" data-tex="\(\pi_m(-I)=(-1)^mI\)">\(\pi_m(-I)=(-1)^mI\)</span>, so exactly the even indices descend. On a rotation about the third axis by angle <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, the weights of <span class="math" data-tex="\(\tau_\ell\)">\(\tau_\ell\)</span> are</p>
+<span class="math math-display" data-tex="\[
+e^{ik\varphi},\qquad k=-\ell,-\ell+1,\ldots,\ell,
+\tag{3.5}
+\]">\[
+e^{ik\varphi},\qquad k=-\ell,-\ell+1,\ldots,\ell,
+\tag{3.5}
+\]</span>
+<p>each once. Substitute <span class="math" data-tex="\(\theta=\varphi/2\)">\(\theta=\varphi/2\)</span> in the weights of <span class="math" data-tex="\(\pi_{2\ell}\)">\(\pi_{2\ell}\)</span>.</p>
+<h2 id="scalar-charge-and-the-irreducibles-of-u-2">Scalar charge and the irreducibles of U(2)</h2>
+<p>In an irreducible representation of <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>, scalar matrices act as <span class="math" data-tex="\(z^kI\)">\(z^kI\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, by Schur and the circle character classification imported in the first lesson. Its restriction to <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> is irreducible, because any invariant subspace is also invariant under those scalars and therefore under all <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>. Consequently every irreducible is</p>
+<span class="math math-display" data-tex="\[
+\rho_{m,k}(zg)=z^k\pi_m(g),
+\qquad m\geq0,\quad k\in\mathbb Z,\quad k\equiv m\pmod2.
+\tag{6.3}
+\]">\[
+\rho_{m,k}(zg)=z^k\pi_m(g),
+\qquad m\geq0,\quad k\in\mathbb Z,\quad k\equiv m\pmod2.
+\tag{6.3}
+\]</span>
+<p>The parity condition is exactly triviality on <span class="math" data-tex="\((-1,-I)\)">\((-1,-I)\)</span>. Conversely this condition makes (6.3) well defined; restriction to <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> proves irreducibility. The two restrictions recover <span class="math" data-tex="\(m,k\)">\(m,k\)</span>, proving inequivalence. Its dimension is <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. The case <span class="math" data-tex="\(m=0,k=2j\)">\(m=0,k=2j\)</span> is <span class="math" data-tex="\(\det^j\)">\(\det^j\)</span>; the defining two-dimensional representation is <span class="math" data-tex="\(m=1,k=1\)">\(m=1,k=1\)</span>.</p>
+<p>For example, the same three-dimensional <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> type <span class="math" data-tex="\(\pi_2\)">\(\pi_2\)</span> extends to <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span> with any even scalar charge <span class="math" data-tex="\(k\)">\(k\)</span>. These extensions are inequivalent because scalar matrices distinguish their charges. Charge zero is realized by conjugation on the trace-zero endomorphisms of <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>: scalars act trivially, and restriction to <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> has character <span class="math" data-tex="\(\chi_1^2-1=\chi_2\)">\(\chi_1^2-1=\chi_2\)</span>, by the tensor formula below. Thus the spatial three-dimensional type and the defining two-dimensional <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span> type require different central data, even though both come from polynomial representations of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>.</p>
+<p>For <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>, the two covering factors supply independent labels <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span>. The diagonal kernel acts by <span class="math" data-tex="\((-1)^{m+n}\)">\((-1)^{m+n}\)</span>, so only labels of even total parity descend. The complete product-representation argument and its dimensions are given in Exercise 3. Notice the difference from <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>: neither label individually has to be even. The pair <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> descends and has dimension four, whereas <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> does not descend.</p>
+<h2 id="combining-two-polynomial-measurements">Combining two polynomial measurements</h2>
+<p id="result-theorem-2-6"><strong>Theorem 2.6 (Clebsch–Gordan).</strong> For <span class="math" data-tex="\(m,n\geq0\)">\(m,n\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi_m\otimes\pi_n
+\simeq\bigoplus_{k=0}^{\min(m,n)}\pi_{m+n-2k}.
+\tag{2.7}
+\]">\[
+\pi_m\otimes\pi_n
+\simeq\bigoplus_{k=0}^{\min(m,n)}\pi_{m+n-2k}.
+\tag{2.7}
+\]</span>
+<p><strong>Proof.</strong> Assume <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, and put <span class="math" data-tex="\(Q_m(t)=\sum_{a=0}^m t^{m-2a}\)">\(Q_m(t)=\sum_{a=0}^m t^{m-2a}\)</span>. In <span class="math" data-tex="\(Q_mQ_n\)">\(Q_mQ_n\)</span>, the coefficient of <span class="math" data-tex="\(t^{m+n-2r}\)">\(t^{m+n-2r}\)</span> counts pairs <span class="math" data-tex="\(a+b=r\)">\(a+b=r\)</span>, with <span class="math" data-tex="\(0\leq a\leq m\)">\(0\leq a\leq m\)</span>, <span class="math" data-tex="\(0\leq b\leq n\)">\(0\leq b\leq n\)</span>. For <span class="math" data-tex="\(0\leq r\leq m+n\)">\(0\leq r\leq m+n\)</span>, this count is</p>
+<span class="math math-display" data-tex="\[
+\begin{cases}
+r+1,&amp;0\leq r\leq n,\\
+n+1,&amp;n\leq r\leq m,\\
+m+n-r+1,&amp;m\leq r\leq m+n.
+\end{cases}
+\tag{2.8}
+\]">\[
+\begin{cases}
+r+1,&amp;0\leq r\leq n,\\
+n+1,&amp;n\leq r\leq m,\\
+m+n-r+1,&amp;m\leq r\leq m+n.
+\end{cases}
+\tag{2.8}
+\]</span>
+<p>In <span class="math" data-tex="\(\sum_{k=0}^n Q_{m+n-2k}\)">\(\sum_{k=0}^n Q_{m+n-2k}\)</span>, the same power occurs once for each <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(0\leq k\leq n\)">\(0\leq k\leq n\)</span> and <span class="math" data-tex="\(k\leq r\leq m+n-k\)">\(k\leq r\leq m+n-k\)</span>. Its count is exactly (2.8). All coefficients agree. Taking <span class="math" data-tex="\(t=e^{i\theta}\)">\(t=e^{i\theta}\)</span> proves the character identity on every conjugacy class. Finite-dimensional characters determine representations, so it proves (2.7). ∎</p>
+<p>In particular, <span class="math" data-tex="\(\pi_1\otimes\pi_1=\pi_2\oplus\pi_0\)">\(\pi_1\otimes\pi_1=\pi_2\oplus\pi_0\)</span>. On the defining space <span class="math" data-tex="\(V=\mathbb C^2\)">\(V=\mathbb C^2\)</span>, the symmetric tensors give the three-dimensional summand, while <span class="math" data-tex="\(\bigwedge^2V\)">\(\bigwedge^2V\)</span> is the one-dimensional trivial representation because every matrix has determinant one.</p>
+<p>The simplest tensor identity has a visible linear-algebra model. In <span class="math" data-tex="\(V\otimes V\)">\(V\otimes V\)</span>, with <span class="math" data-tex="\(V=\mathbb C^2\)">\(V=\mathbb C^2\)</span>, interchange of the two factors commutes with the group action. Its <span class="math" data-tex="\(+1\)">\(+1\)</span> space has basis <span class="math" data-tex="\(e_1\otimes e_1, e_1\otimes e_2+e_2\otimes e_1,e_2\otimes e_2\)">\(e_1\otimes e_1, e_1\otimes e_2+e_2\otimes e_1,e_2\otimes e_2\)</span>, and its <span class="math" data-tex="\(-1\)">\(-1\)</span> space is spanned by <span class="math" data-tex="\(e_1\otimes e_2-e_2\otimes e_1\)">\(e_1\otimes e_2-e_2\otimes e_1\)</span>. The latter transforms by determinant and is therefore trivial for <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>. This gives the actual three-plus-one splitting underlying <span class="math" data-tex="\(\pi_1\otimes\pi_1=\pi_2\oplus\pi_0\)">\(\pi_1\otimes\pi_1=\pi_2\oplus\pi_0\)</span>; the general character count identifies every higher tensor product.</p>
+<h2 id="harmonic-polynomials-give-the-whole-two-sphere">Harmonic polynomials give the whole two-sphere</h2>
+<p>Let <span class="math" data-tex="\(\mathcal P_\ell\)">\(\mathcal P_\ell\)</span> be the complex homogeneous polynomials of degree <span class="math" data-tex="\(\ell\)">\(\ell\)</span> in real coordinates <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>, let <span class="math" data-tex="\(r^2=x^2+y^2+z^2\)">\(r^2=x^2+y^2+z^2\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\mathcal H_\ell=\ker\Delta_{\mathbb R^3}\cap\mathcal P_\ell,
+\qquad
+H_\ell=\{h|_{S^2}:h\in\mathcal H_\ell\}.
+\tag{4.1}
+\]">\[
+\mathcal H_\ell=\ker\Delta_{\mathbb R^3}\cap\mathcal P_\ell,
+\qquad
+H_\ell=\{h|_{S^2}:h\in\mathcal H_\ell\}.
+\tag{4.1}
+\]</span>
+<p>Use the rotation action <span class="math" data-tex="\((R\cdot f)(v)=f(R^{-1}v)\)">\((R\cdot f)(v)=f(R^{-1}v)\)</span>. Rotations commute with the Euclidean Laplacian, so these spaces are invariant. Restriction is injective on a homogeneous degree: vanishing on the unit sphere implies vanishing at every nonzero point by scaling.</p>
+<p id="result-lemma-4-2"><strong>Lemma 4.2 (harmonic decomposition).</strong></p>
+<span class="math math-display" data-tex="\[
+\mathcal P_\ell
+=\mathcal H_\ell\oplus r^2\mathcal P_{\ell-2}
+=\bigoplus_{j=0}^{\lfloor\ell/2\rfloor}r^{2j}\mathcal H_{\ell-2j},
+\qquad
+\dim H_\ell=2\ell+1.
+\tag{4.3}
+\]">\[
+\mathcal P_\ell
+=\mathcal H_\ell\oplus r^2\mathcal P_{\ell-2}
+=\bigoplus_{j=0}^{\lfloor\ell/2\rfloor}r^{2j}\mathcal H_{\ell-2j},
+\qquad
+\dim H_\ell=2\ell+1.
+\tag{4.3}
+\]</span>
+<p>Spaces with negative degree are zero.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(h\)">\(h\)</span> is homogeneous harmonic of degree <span class="math" data-tex="\(a\)">\(a\)</span>, the product rule and Euler's identity <span class="math" data-tex="\(\sum x_i\partial_i h=ah\)">\(\sum x_i\partial_i h=ah\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\Delta(r^{2j}h)=2j(2a+2j+1)r^{2j-2}h,\qquad j\geq1.
+\tag{4.4}
+\]">\[
+\Delta(r^{2j}h)=2j(2a+2j+1)r^{2j-2}h,\qquad j\geq1.
+\tag{4.4}
+\]</span>
+<p>To verify the coefficient, <span class="math" data-tex="\(\Delta r^{2j}=2j(2j+1)r^{2j-2}\)">\(\Delta r^{2j}=2j(2j+1)r^{2j-2}\)</span>, and twice the gradient product contributes <span class="math" data-tex="\(4ja\,r^{2j-2}h\)">\(4ja\,r^{2j-2}h\)</span>.</p>
+<p>Proceed by induction on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. The degrees zero and one are harmonic. By the inductive decomposition of <span class="math" data-tex="\(\mathcal P_{\ell-2}\)">\(\mathcal P_{\ell-2}\)</span>, the map <span class="math" data-tex="\(q\mapsto\Delta(r^2q)\)">\(q\mapsto\Delta(r^2q)\)</span> is diagonal on its summands <span class="math" data-tex="\(r^{2j}\mathcal H_{\ell-2-2j}\)">\(r^{2j}\mathcal H_{\ell-2-2j}\)</span>, with the nonzero coefficients <span class="math" data-tex="\(2(j+1)(2(\ell-2-2j)+2(j+1)+1)\)">\(2(j+1)(2(\ell-2-2j)+2(j+1)+1)\)</span>. It is therefore an isomorphism of <span class="math" data-tex="\(\mathcal P_{\ell-2}\)">\(\mathcal P_{\ell-2}\)</span>. Given <span class="math" data-tex="\(p\in\mathcal P_\ell\)">\(p\in\mathcal P_\ell\)</span>, choose the unique <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(\Delta(r^2q)=\Delta p\)">\(\Delta(r^2q)=\Delta p\)</span>. Then <span class="math" data-tex="\(p-r^2q\)">\(p-r^2q\)</span> is harmonic. The same isomorphism shows that a harmonic polynomial in <span class="math" data-tex="\(r^2\mathcal P_{\ell-2}\)">\(r^2\mathcal P_{\ell-2}\)</span> is zero. This proves the first direct sum, and induction proves the second.</p>
+<p>The number of degree-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> monomials is <span class="math" data-tex="\(\binom{\ell+2}{2}\)">\(\binom{\ell+2}{2}\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\dim H_\ell=\binom{\ell+2}{2}-\binom{\ell}{2}=2\ell+1,
+\tag{4.5}
+\]">\[
+\dim H_\ell=\binom{\ell+2}{2}-\binom{\ell}{2}=2\ell+1,
+\tag{4.5}
+\]</span>
+<p>with the second term zero for <span class="math" data-tex="\(\ell=0,1\)">\(\ell=0,1\)</span>. ∎</p>
+<p id="result-theorem-4-6"><strong>Theorem 4.6 (spherical harmonics).</strong></p>
+<span class="math math-display" data-tex="\[
+H_\ell\simeq\tau_\ell,\qquad
+L^2(S^2)=\widehat{\bigoplus}_{\ell\geq0}H_\ell,\qquad
+\Delta_{S^2}|_{H_\ell}=-\ell(\ell+1)I.
+\tag{4.7}
+\]">\[
+H_\ell\simeq\tau_\ell,\qquad
+L^2(S^2)=\widehat{\bigoplus}_{\ell\geq0}H_\ell,\qquad
+\Delta_{S^2}|_{H_\ell}=-\ell(\ell+1)I.
+\tag{4.7}
+\]</span>
+<p><strong>Proof.</strong> The nonzero polynomial <span class="math" data-tex="\((x+iy)^\ell\)">\((x+iy)^\ell\)</span> is harmonic, because its <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> second derivatives cancel and its <span class="math" data-tex="\(z\)">\(z\)</span> derivatives vanish. Under a third-axis rotation by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, it has weight <span class="math" data-tex="\(e^{-i\ell\varphi}\)">\(e^{-i\ell\varphi}\)</span> for our inverse-variable action. Decompose the finite-dimensional unitary space <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> into irreducibles <span class="math" data-tex="\(\tau_a\)">\(\tau_a\)</span>. Some summand has that weight. By (3.5) its index satisfies <span class="math" data-tex="\(a\geq\ell\)">\(a\geq\ell\)</span>, so its dimension is at least <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>. This is already the entire dimension (4.5). Therefore <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> is that single summand, with <span class="math" data-tex="\(a=\ell\)">\(a=\ell\)</span>. The dimensions make the different <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> inequivalent.</p>
+<p>The sphere inner product is rotation-invariant. Orthogonal projection from one invariant finite-dimensional subspace to another intertwines their actions; Schur's lemma makes it zero for these inequivalent types. Thus the <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> are mutually orthogonal.</p>
+<p>Restrictions of polynomials form a conjugation-closed algebra containing constants and separating points of <span class="math" data-tex="\(S^2\)">\(S^2\)</span>, so Stone–Weierstrass makes them uniformly dense in <span class="math" data-tex="\(C(S^2)\)">\(C(S^2)\)</span>. Decompose each homogeneous part by (4.3). On the sphere <span class="math" data-tex="\(r^2=1\)">\(r^2=1\)</span>, so its restriction is a finite sum of harmonic restrictions. Continuous functions are <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-dense for the round measure. Hence the orthogonal sum of the <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> is all <span class="math" data-tex="\(L^2(S^2)\)">\(L^2(S^2)\)</span>.</p>
+<p>Finally the polar-coordinate identity</p>
+<span class="math math-display" data-tex="\[
+\Delta_{\mathbb R^3}
+=\partial_r^2+\frac2r\partial_r+\frac1{r^2}\Delta_{S^2}
+\tag{4.8}
+\]">\[
+\Delta_{\mathbb R^3}
+=\partial_r^2+\frac2r\partial_r+\frac1{r^2}\Delta_{S^2}
+\tag{4.8}
+\]</span>
+<p>applied to <span class="math" data-tex="\(r^\ell Y(v)\)">\(r^\ell Y(v)\)</span> gives
+<span class="math" data-tex="\(0=r^{\ell-2}(\ell(\ell+1)Y+\Delta_{S^2}Y)\)">\(0=r^{\ell-2}(\ell(\ell+1)Y+\Delta_{S^2}Y)\)</span>.
+This proves the eigenvalue in (4.7). The coordinate identity is the differential-geometric prerequisite specified below. ∎</p>
+<p>At degree one, <span class="math" data-tex="\(H_1\)">\(H_1\)</span> is spanned by <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span> restricted to the sphere; its Laplacian eigenvalue is <span class="math" data-tex="\(-2\)">\(-2\)</span>. At degree two, a basis is</p>
+<span class="math math-display" data-tex="\[
+xy,\quad xz,\quad yz,\quad x^2-y^2,\quad 2z^2-x^2-y^2.
+\tag{4.9}
+\]">\[
+xy,\quad xz,\quad yz,\quad x^2-y^2,\quad 2z^2-x^2-y^2.
+\tag{4.9}
+\]</span>
+<p>Each has Laplacian zero in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, they are independent, and the dimension is five. Their spherical eigenvalue is <span class="math" data-tex="\(-6\)">\(-6\)</span>.</p>
+<h2 id="zonal-functions-and-the-central-section-transform">Zonal functions and the central-section transform</h2>
+<p>The rotations fixing the north pole form <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span>. Formula (3.5) shows that its fixed subspace in <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> has dimension one. Its element taking value one at that pole is</p>
+<span class="math math-display" data-tex="\[
+Y_\ell(v)=P_\ell(v_z),\qquad
+P_\ell(t)=\frac1{2^\ell\ell!}\frac{d^\ell}{dt^\ell}(t^2-1)^\ell.
+\tag{5.1}
+\]">\[
+Y_\ell(v)=P_\ell(v_z),\qquad
+P_\ell(t)=\frac1{2^\ell\ell!}\frac{d^\ell}{dt^\ell}(t^2-1)^\ell.
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(P_\ell\)">\(P_\ell\)</span> is the Legendre polynomial. We verify this identification rather than infer it from the name. Expanding the derivative gives</p>
+<span class="math math-display" data-tex="\[
+P_\ell(t)=2^{-\ell}
+\sum_{j=0}^{\lfloor\ell/2\rfloor}
+(-1)^j
+\frac{(2\ell-2j)!}{j!(\ell-j)!(\ell-2j)!}\,t^{\ell-2j}.
+\tag{5.2}
+\]">\[
+P_\ell(t)=2^{-\ell}
+\sum_{j=0}^{\lfloor\ell/2\rfloor}
+(-1)^j
+\frac{(2\ell-2j)!}{j!(\ell-j)!(\ell-2j)!}\,t^{\ell-2j}.
+\tag{5.2}
+\]</span>
+<p>The coefficients satisfy
+<span class="math" data-tex="\((k+2)(k+1)a_{k+2}+[\ell(\ell+1)-k(k+1)]a_k=0\)">\((k+2)(k+1)a_{k+2}+[\ell(\ell+1)-k(k+1)]a_k=0\)</span>,
+so substitution proves</p>
+<span class="math math-display" data-tex="\[
+(1-t^2)P_\ell&#x27;&#x27;-2tP_\ell&#x27;+\ell(\ell+1)P_\ell=0.
+\tag{5.3}
+\]">\[
+(1-t^2)P_\ell&#x27;&#x27;-2tP_\ell&#x27;+\ell(\ell+1)P_\ell=0.
+\tag{5.3}
+\]</span>
+<p>Also <span class="math" data-tex="\(P_\ell(1)=1\)">\(P_\ell(1)=1\)</span>: in differentiating <span class="math" data-tex="\((t-1)^\ell(t+1)^\ell\)">\((t-1)^\ell(t+1)^\ell\)</span> <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times at <span class="math" data-tex="\(1\)">\(1\)</span>, only the term differentiating the first factor <span class="math" data-tex="\(\ell\)">\(\ell\)</span> times survives, with value <span class="math" data-tex="\(\ell!2^\ell\)">\(\ell!2^\ell\)</span>. The expression <span class="math" data-tex="\(r^\ell P_\ell(z/r)\)">\(r^\ell P_\ell(z/r)\)</span> is a homogeneous polynomial by (5.2). For a function of <span class="math" data-tex="\(t=v_z\)">\(t=v_z\)</span>, the spherical Laplacian is <span class="math" data-tex="\((1-t^2)\partial_t^2-2t\partial_t\)">\((1-t^2)\partial_t^2-2t\partial_t\)</span>, obtained from the round metric in polar coordinates. Equations (4.8) and (5.3) make that polynomial harmonic. Its restriction is axis-invariant and has pole value one, proving (5.1).</p>
+<p>Define the great-circle transform of a continuous function by</p>
+<span class="math math-display" data-tex="\[
+(Ff)(n)=\int_{\substack{u\in S^2\\u\perp n}} f(u)\,ds(u),
+\tag{5.4}
+\]">\[
+(Ff)(n)=\int_{\substack{u\in S^2\\u\perp n}} f(u)\,ds(u),
+\tag{5.4}
+\]</span>
+<p>where arc length on each unit circle has mass <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Local continuous choices of rotations carrying the north pole <span class="math" data-tex="\(e_z\)">\(e_z\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span> show that <span class="math" data-tex="\(Ff\)">\(Ff\)</span> is continuous. One such choice away from <span class="math" data-tex="\(n=-e_z\)">\(n=-e_z\)</span> is quaternion conjugation by
+<span class="math" data-tex="\((1+n_z+e_z\times n)/\sqrt{2(1+n_z)}\)">\((1+n_z+e_z\times n)/\sqrt{2(1+n_z)}\)</span>; equation (3.2) verifies its action, and its coefficients are continuous. Rotating this construction gives a choice near every <span class="math" data-tex="\(n\)">\(n\)</span>. Invariance of arc length shows that <span class="math" data-tex="\(F\)">\(F\)</span> commutes with rotations.</p>
+<p>This transform extends boundedly to <span class="math" data-tex="\(L^2(S^2)\)">\(L^2(S^2)\)</span>. Cauchy–Schwarz on each circle and integration in <span class="math" data-tex="\(n\)">\(n\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\|Ff\|_2^2
+\leq2\pi\int_{S^2}\int_{u\perp n}|f(u)|^2\,ds(u)\,dn
+=(2\pi)^2\|f\|_2^2.
+\tag{5.5}
+\]">\[
+\|Ff\|_2^2
+\leq2\pi\int_{S^2}\int_{u\perp n}|f(u)|^2\,ds(u)\,dn
+=(2\pi)^2\|f\|_2^2.
+\tag{5.5}
+\]</span>
+<p>For the last identity, the inner-circle incidence measure, integrated over uniformly distributed <span class="math" data-tex="\(n\)">\(n\)</span>, gives a rotation-invariant measure in <span class="math" data-tex="\(u\)">\(u\)</span> of total mass <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Uniqueness of invariant probability measure on the sphere follows by averaging any continuous function over <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>: transitivity makes its group average constant, so every invariant probability has the same integral. Thus the marginal is <span class="math" data-tex="\(2\pi\,du\)">\(2\pi\,du\)</span>. Applying this first to continuous functions proves (5.5), and density gives the extension.</p>
+<p>By the multiplicity-one decomposition (4.7) and Schur's lemma, <span class="math" data-tex="\(F\)">\(F\)</span> acts on <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> as a scalar. More explicitly, project <span class="math" data-tex="\(F|_{H_\ell}\)">\(F|_{H_\ell}\)</span> onto each <span class="math" data-tex="\(H_a\)">\(H_a\)</span>; all the projections with <span class="math" data-tex="\(a\ne\ell\)">\(a\ne\ell\)</span> are zero, and completeness leaves its image in <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span>. Evaluate the zonal function (5.1) at the north pole to find</p>
+<span class="math math-display" data-tex="\[
+F|_{H_\ell}=2\pi P_\ell(0)I,\qquad
+P_{2j}(0)=(-1)^j\frac{\binom{2j}{j}}{4^j},
+\qquad P_{2j+1}(0)=0.
+\tag{5.6}
+\]">\[
+F|_{H_\ell}=2\pi P_\ell(0)I,\qquad
+P_{2j}(0)=(-1)^j\frac{\binom{2j}{j}}{4^j},
+\qquad P_{2j+1}(0)=0.
+\tag{5.6}
+\]</span>
+<p>The values follow directly from (5.2). In particular every even-degree eigenvalue is nonzero.</p>
+<p id="result-theorem-5-7"><strong>Theorem 5.7 (central sections determine an origin-symmetric body).</strong> A compact convex body <span class="math" data-tex="\(B\subset\mathbb R^3\)">\(B\subset\mathbb R^3\)</span> with nonempty interior and <span class="math" data-tex="\(B=-B\)">\(B=-B\)</span> is uniquely determined by the areas of its sections by planes through the origin.</p>
+<p><strong>Proof.</strong> The origin is interior: if <span class="math" data-tex="\(v\)">\(v\)</span> has an interior ball in <span class="math" data-tex="\(B\)">\(B\)</span>, its reflected ball does too, and convexity puts a ball about zero inside <span class="math" data-tex="\(B\)">\(B\)</span>. Choose <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span> with the radius-<span class="math" data-tex="\(a\)">\(a\)</span> ball contained in <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> contained in the radius-<span class="math" data-tex="\(b\)">\(b\)</span> ball. Its Minkowski functional <span class="math" data-tex="\(p_B(x)=\inf\{s&gt;0:x\in sB\}\)">\(p_B(x)=\inf\{s&gt;0:x\in sB\}\)</span> is positively homogeneous and subadditive by convexity. Symmetry makes it even. These facts give
+<span class="math" data-tex="\(|p_B(x)-p_B(y)|\leq p_B(x-y)\leq|x-y|/a\)">\(|p_B(x)-p_B(y)|\leq p_B(x-y)\leq|x-y|/a\)</span>.
+On the sphere it lies between <span class="math" data-tex="\(1/b\)">\(1/b\)</span> and <span class="math" data-tex="\(1/a\)">\(1/a\)</span>. Therefore the radial function <span class="math" data-tex="\(r_B(u)=1/p_B(u)\)">\(r_B(u)=1/p_B(u)\)</span> is positive, continuous and even.</p>
+<p>For completeness, subadditivity follows because <span class="math" data-tex="\(x\in sB\)">\(x\in sB\)</span> and <span class="math" data-tex="\(y\in tB\)">\(y\in tB\)</span> imply <span class="math" data-tex="\(x+y\in(s+t)B\)">\(x+y\in(s+t)B\)</span>, by the convex combination with coefficients <span class="math" data-tex="\(s/(s+t)\)">\(s/(s+t)\)</span> and <span class="math" data-tex="\(t/(s+t)\)">\(t/(s+t)\)</span>; take infima. Closedness of <span class="math" data-tex="\(B\)">\(B\)</span> makes <span class="math" data-tex="\(B=\{x:p_B(x)\leq1\}\)">\(B=\{x:p_B(x)\leq1\}\)</span>, so its ray in direction <span class="math" data-tex="\(u\)">\(u\)</span> ends exactly at <span class="math" data-tex="\(r_B(u)u\)">\(r_B(u)u\)</span>.</p>
+<p>Polar integration in the plane normal to <span class="math" data-tex="\(n\)">\(n\)</span> gives its section area</p>
+<span class="math math-display" data-tex="\[
+A_B(n)=\frac12\int_{u\perp n}r_B(u)^2\,ds(u)
+=\frac12F(r_B^2)(n).
+\tag{5.8}
+\]">\[
+A_B(n)=\frac12\int_{u\perp n}r_B(u)^2\,ds(u)
+=\frac12F(r_B^2)(n).
+\tag{5.8}
+\]</span>
+<p>If two bodies have equal areas, their continuous even difference <span class="math" data-tex="\(f=r_{B_1}^2-r_{B_2}^2\)">\(f=r_{B_1}^2-r_{B_2}^2\)</span> has <span class="math" data-tex="\(Ff=0\)">\(Ff=0\)</span>. Antipodal reflection acts on <span class="math" data-tex="\(H_\ell\)">\(H_\ell\)</span> as <span class="math" data-tex="\((-1)^\ell\)">\((-1)^\ell\)</span>, by homogeneity. Hence an even <span class="math" data-tex="\(f\)">\(f\)</span> has only even-degree harmonic components. Boundedness, equivariance and (5.6) make each such component of <span class="math" data-tex="\(Ff\)">\(Ff\)</span> the corresponding nonzero scalar times the component of <span class="math" data-tex="\(f\)">\(f\)</span>. All components of <span class="math" data-tex="\(f\)">\(f\)</span> vanish, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and continuity makes it zero everywhere. Positivity gives <span class="math" data-tex="\(r_{B_1}=r_{B_2}\)">\(r_{B_1}=r_{B_2}\)</span>. These radial functions determine the bodies, proving equality. ∎</p>
+<p>This proof uses injectivity on even functions. It does not claim a bounded inverse on all continuous even functions. In fact <span class="math" data-tex="\(\binom{2j}{j}/4^j=\prod_{k=1}^j(1-1/(2k))\)">\(\binom{2j}{j}/4^j=\prod_{k=1}^j(1-1/(2k))\)</span> tends to zero: its logarithm is at most <span class="math" data-tex="\(-\sum_{k=1}^j1/(2k)\)">\(-\sum_{k=1}^j1/(2k)\)</span>. Normalizing a nonzero even harmonic to supremum norm one makes the norm of its image tend to zero. Thus a bounded inverse on the range, for the supremum norm, is impossible. Origin symmetry is essential to the argument: the transform annihilates every odd function.</p>
+<h2 id="real-and-quaternionic-forms-of-the-same-character">Real and quaternionic forms of the same character</h2>
+<p>The character <span class="math" data-tex="\(\chi_m\)">\(\chi_m\)</span> of <span class="math" data-tex="\(V_m=\operatorname{Sym}^m\mathbb C^2\)">\(V_m=\operatorname{Sym}^m\mathbb C^2\)</span> is real-valued for every <span class="math" data-tex="\(m\)">\(m\)</span>. That fact alone does not say whether its matrices can be made real. The symmetric-power example in §32 of Etingof's freely accessible 2026 version distinguishes the two possibilities. We give the compact-group construction and a character test.</p>
+<p>On <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> put <span class="math" data-tex="\(J(a,b)=(-\overline b,\overline a)\)">\(J(a,b)=(-\overline b,\overline a)\)</span>. Direct multiplication with the displayed <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> matrices shows that <span class="math" data-tex="\(J\)">\(J\)</span> commutes with the action, is antiunitary, and satisfies <span class="math" data-tex="\(J^2=-I\)">\(J^2=-I\)</span>. The tensor map <span class="math" data-tex="\(J^{\otimes m}\)">\(J^{\otimes m}\)</span> preserves the symmetric tensors, so it restricts to an antiunitary <span class="math" data-tex="\(J_m\)">\(J_m\)</span> on <span class="math" data-tex="\(V_m\)">\(V_m\)</span> with <span class="math" data-tex="\(J_m^2=(-1)^mI\)">\(J_m^2=(-1)^mI\)</span>. The invariant bilinear form
+<span class="math math-display" data-tex="\[
+B_m(v,w)=\langle v,J_mw\rangle
+\]">\[
+B_m(v,w)=\langle v,J_mw\rangle
+\]</span>
+is nondegenerate. With our first-variable-linear inner product, antiunitarity and the square relation give <span class="math" data-tex="\(B_m(w,v)=(-1)^m B_m(v,w)\)">\(B_m(w,v)=(-1)^m B_m(v,w)\)</span>. For even <span class="math" data-tex="\(m\)">\(m\)</span>, the fixed vectors of <span class="math" data-tex="\(J_m\)">\(J_m\)</span> are a real form: every <span class="math" data-tex="\(v\)">\(v\)</span> decomposes as
+<span class="math math-display" data-tex="\[
+v=\frac{v+J_mv}{2}+i\frac{v-J_mv}{2i},
+\]">\[
+v=\frac{v+J_mv}{2}+i\frac{v-J_mv}{2i},
+\]</span>
+with both displayed vectors fixed. For odd <span class="math" data-tex="\(m\)">\(m\)</span>, the square <span class="math" data-tex="\(-I\)">\(-I\)</span> gives a quaternionic structure; there is no invariant symmetric nondegenerate bilinear form. Indeed, Schur's lemma makes the space of invariant forms one-dimensional, and its existing form is alternating. An invariant real form would supply a symmetric form by averaging a real inner product, a contradiction.</p>
+<p>The Frobenius–Schur character indicator detects exactly this sign:
+<span class="math math-display" data-tex="\[
+\int_{SU(2)}\chi_m(g^2)\,dg=(-1)^m.
+\]">\[
+\int_{SU(2)}\chi_m(g^2)\,dg=(-1)^m.
+\]</span>
+To prove it, let <span class="math" data-tex="\(P=\int\pi_m(g)\otimes\pi_m(g)\,dg\)">\(P=\int\pi_m(g)\otimes\pi_m(g)\,dg\)</span>, the orthogonal projection onto invariant tensors, and let <span class="math" data-tex="\(\tau(v\otimes w)=w\otimes v\)">\(\tau(v\otimes w)=w\otimes v\)</span>. In bases, <span class="math" data-tex="\(\operatorname{tr}(\tau(A\otimes A))=\operatorname{tr}(A^2)\)">\(\operatorname{tr}(\tau(A\otimes A))=\operatorname{tr}(A^2)\)</span>. Thus the integral is <span class="math" data-tex="\(\operatorname{tr}(\tau P)\)">\(\operatorname{tr}(\tau P)\)</span>. Invariant tensors correspond to invariant bilinear forms on the dual. Schur's lemma gives a single line, and transposition on it has the symmetry sign of <span class="math" data-tex="\(B_m\)">\(B_m\)</span>, namely <span class="math" data-tex="\((-1)^m\)">\((-1)^m\)</span>. This proves the indicator. The vector representation <span class="math" data-tex="\(m=2\)">\(m=2\)</span> is real; the spinor <span class="math" data-tex="\(m=1\)">\(m=1\)</span> is quaternionic. Both have real characters.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — first characters (easy).</strong> Check orthonormality of <span class="math" data-tex="\(\chi_0,\chi_1,\chi_2\)">\(\chi_0,\chi_1,\chi_2\)</span> using (1.3).</p>
+<p><strong>Solution.</strong> Their class functions are <span class="math" data-tex="\(1,2\cos\theta,4\cos^2\theta-1\)">\(1,2\cos\theta,4\cos^2\theta-1\)</span>. Multiplication by <span class="math" data-tex="\(\sin\theta\)">\(\sin\theta\)</span> gives <span class="math" data-tex="\(\sin\theta,\sin2\theta,\sin3\theta\)">\(\sin\theta,\sin2\theta,\sin3\theta\)</span>. For <span class="math" data-tex="\(a,b\in\{1,2,3\}\)">\(a,b\in\{1,2,3\}\)</span>, the product-to-sum formula gives integral zero when <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span> and <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> when <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Multiplying by <span class="math" data-tex="\(2/\pi\)">\(2/\pi\)</span> gives the <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> identity Gram matrix. The endpoints cause no exception, since they have measure zero.</p>
+<p><strong>Exercise 2 — tensor product multiplicities (medium).</strong> Prove (2.7) from characters, and compute <span class="math" data-tex="\(\pi_3\otimes\pi_2\)">\(\pi_3\otimes\pi_2\)</span>.</p>
+<p><strong>Solution.</strong> Assume <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>. In the product <span class="math" data-tex="\((\sum_{a=0}^m t^{m-2a})(\sum_{b=0}^n t^{n-2b})\)">\((\sum_{a=0}^m t^{m-2a})(\sum_{b=0}^n t^{n-2b})\)</span>, a power indexed by <span class="math" data-tex="\(r=a+b\)">\(r=a+b\)</span> has multiplicity <span class="math" data-tex="\(r+1\)">\(r+1\)</span> up to <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(n+1\)">\(n+1\)</span> up to <span class="math" data-tex="\(m\)">\(m\)</span>, then <span class="math" data-tex="\(m+n-r+1\)">\(m+n-r+1\)</span>. In <span class="math" data-tex="\(\sum_{k=0}^n\sum_{c=0}^{m+n-2k}t^{m+n-2k-2c}\)">\(\sum_{k=0}^n\sum_{c=0}^{m+n-2k}t^{m+n-2k-2c}\)</span>, its multiplicity counts <span class="math" data-tex="\(k\leq n,r,m+n-r\)">\(k\leq n,r,m+n-r\)</span>, giving those same three values. These finite Laurent polynomials coincide, including at <span class="math" data-tex="\(t=\pm1\)">\(t=\pm1\)</span>. They are the characters on diagonal matrices and therefore on all group elements. The preceding lesson's character test identifies the finite-dimensional representations, with each listed summand once. For <span class="math" data-tex="\(m=3,n=2\)">\(m=3,n=2\)</span>, the result is <span class="math" data-tex="\(\pi_5\oplus\pi_3\oplus\pi_1\)">\(\pi_5\oplus\pi_3\oplus\pi_1\)</span>, of total dimension <span class="math" data-tex="\(6+4+2=12=4\cdot3\)">\(6+4+2=12=4\cdot3\)</span>.</p>
+<p><strong>Exercise 3 — all SO(4) irreducibles (medium).</strong> Classify them using (6.2).</p>
+<p><strong>Solution.</strong> First an irreducible representation <span class="math" data-tex="\(V\)">\(V\)</span> of a product <span class="math" data-tex="\(G_1\times G_2\)">\(G_1\times G_2\)</span> of compact groups is finite-dimensional. Decompose its restriction to <span class="math" data-tex="\(G_1\)">\(G_1\)</span> into isotypic components. The <span class="math" data-tex="\(G_2\)">\(G_2\)</span> action commutes with <span class="math" data-tex="\(G_1\)">\(G_1\)</span>, so it preserves every such component. Irreducibility of the product leaves one type <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The canonical multiplicity construction of the first lesson identifies <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V_\sigma\otimes M\)">\(V_\sigma\otimes M\)</span>; every operator commuting with <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is <span class="math" data-tex="\(I\otimes A\)">\(I\otimes A\)</span>, since Schur applied to its matrix of blocks gives scalar entries. Thus <span class="math" data-tex="\(G_2\)">\(G_2\)</span> acts on <span class="math" data-tex="\(M\)">\(M\)</span>. This action must be irreducible, or a proper invariant <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span> would give <span class="math" data-tex="\(V_\sigma\otimes N\)">\(V_\sigma\otimes N\)</span>. Conversely, for irreducible <span class="math" data-tex="\(\sigma,\eta\)">\(\sigma,\eta\)</span>, the product action on <span class="math" data-tex="\(V_\sigma\otimes V_\eta\)">\(V_\sigma\otimes V_\eta\)</span> is irreducible: a commuting projection is <span class="math" data-tex="\(I\otimes A\)">\(I\otimes A\)</span> by the first factor and scalar by the second, so it is zero or identity.</p>
+<p>Apply this to the two <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> factors. The complete product list is <span class="math" data-tex="\(\pi_m\boxtimes\pi_n\)">\(\pi_m\boxtimes\pi_n\)</span>, with <span class="math" data-tex="\(m,n\geq0\)">\(m,n\geq0\)</span>, and the ordered pair is determined by restriction and its multiplicity type. The element <span class="math" data-tex="\((-I,-I)\)">\((-I,-I)\)</span> acts by <span class="math" data-tex="\((-1)^{m+n}\)">\((-1)^{m+n}\)</span>. The representation descends to <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span> precisely when <span class="math" data-tex="\(m+n\)">\(m+n\)</span> is even. Pullback along the quotient preserves irreducibility and equivalence, so this is the complete inequivalent list. Its dimension is <span class="math" data-tex="\((m+1)(n+1)\)">\((m+1)(n+1)\)</span>.</p>
+<p><strong>Exercise 4 — completeness on S² (hard).</strong> Prove the dimension, irreducibility and density statements in (4.7).</p>
+<p><strong>Solution.</strong> Use (4.4) and induction to make <span class="math" data-tex="\(q\mapsto\Delta(r^2q)\)">\(q\mapsto\Delta(r^2q)\)</span> an isomorphism on each degree <span class="math" data-tex="\(\ell-2\)">\(\ell-2\)</span>: on the summand <span class="math" data-tex="\(r^{2j}\mathcal H_a\)">\(r^{2j}\mathcal H_a\)</span> it multiplies by <span class="math" data-tex="\(2(j+1)(2a+2j+3)\)">\(2(j+1)(2a+2j+3)\)</span>, a nonzero number. Subtract the unique <span class="math" data-tex="\(r^2q\)">\(r^2q\)</span> having the same Laplacian as <span class="math" data-tex="\(p\in\mathcal P_\ell\)">\(p\in\mathcal P_\ell\)</span>. This gives <span class="math" data-tex="\(\mathcal P_\ell=\mathcal H_\ell\oplus r^2\mathcal P_{\ell-2}\)">\(\mathcal P_\ell=\mathcal H_\ell\oplus r^2\mathcal P_{\ell-2}\)</span>. Its dimension difference is <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>, and restriction to the sphere is injective by homogeneity.</p>
+<p>The harmonic vector <span class="math" data-tex="\((x+iy)^\ell\)">\((x+iy)^\ell\)</span> has third-axis weight <span class="math" data-tex="\(-\ell\)">\(-\ell\)</span>. Complete reducibility puts that weight into some <span class="math" data-tex="\(\tau_a\)">\(\tau_a\)</span>; the explicit weight list (3.5) forces <span class="math" data-tex="\(a\geq\ell\)">\(a\geq\ell\)</span>. Its dimension <span class="math" data-tex="\(2a+1\)">\(2a+1\)</span> cannot exceed the total <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>, so <span class="math" data-tex="\(a=\ell\)">\(a=\ell\)</span> and there is only this summand. Different indices are inequivalent, hence orthogonal under the invariant sphere inner product. Polynomial restrictions are uniformly dense by Stone–Weierstrass. The iterated harmonic decomposition expresses each of them as a finite sum of <span class="math" data-tex="\(H_a\)">\(H_a\)</span>, since <span class="math" data-tex="\(r^2=1\)">\(r^2=1\)</span> on the sphere. Continuous-function density now makes the closed orthogonal sum all of <span class="math" data-tex="\(L^2(S^2)\)">\(L^2(S^2)\)</span>. Finally (4.8) on <span class="math" data-tex="\(r^\ell Y\)">\(r^\ell Y\)</span> gives the eigenvalue <span class="math" data-tex="\(-\ell(\ell+1)\)">\(-\ell(\ell+1)\)</span>, with multiplicity <span class="math" data-tex="\(2\ell+1\)">\(2\ell+1\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We import the compact-group decomposition, character criteria and Stone–Weierstrass consequences at the opening locators. The circle characters used in (6.3) are the exact classification imported in the first lesson from <em>Characters and the dual group</em>, Theorem 3.1 and Corollary 3.2, with angle coordinate <span class="math" data-tex="\(x=\theta/(2\pi)\)">\(x=\theta/(2\pi)\)</span>.</p>
+<p>The finite matrix spectral theorem, elementary polar integration, Euler's identity for homogeneous polynomials and standard measure approximation are prerequisites. Here is a derivation of the polar Laplacian formula (4.8). In coordinates with volume density <span class="math" data-tex="\(v=\sqrt{|g|}\)">\(v=\sqrt{|g|}\)</span>, integration by parts against compactly supported test functions gives <span class="math" data-tex="\(\operatorname{div}X=v^{-1}\partial_i(vX^i)\)">\(\operatorname{div}X=v^{-1}\partial_i(vX^i)\)</span>; the defining pairing of the gradient gives <span class="math" data-tex="\((\operatorname{grad}f)^i=g^{ij}\partial_jf\)">\((\operatorname{grad}f)^i=g^{ij}\partial_jf\)</span>. Combining them gives the coordinate rule <span class="math" data-tex="\(\Delta f=|g|^{-1/2}\partial_i(|g|^{1/2}g^{ij}\partial_j f)\)">\(\Delta f=|g|^{-1/2}\partial_i(|g|^{1/2}g^{ij}\partial_j f)\)</span>. On the unit two-sphere this is
+<span class="math" data-tex="\(\partial_\theta^2+\cot\theta\,\partial_\theta+\sin^{-2}\theta\,\partial_\varphi^2\)">\(\partial_\theta^2+\cot\theta\,\partial_\theta+\sin^{-2}\theta\,\partial_\varphi^2\)</span>
+because the sphere metric is <span class="math" data-tex="\(d\theta^2+\sin^2\theta\,d\varphi^2\)">\(d\theta^2+\sin^2\theta\,d\varphi^2\)</span>. Euclidean polar coordinates have metric <span class="math" data-tex="\(dr^2+r^2g_{S^2}\)">\(dr^2+r^2g_{S^2}\)</span> and volume density <span class="math" data-tex="\(r^2\sin\theta\)">\(r^2\sin\theta\)</span>; the same rule gives <span class="math" data-tex="\(\partial_r^2+2r^{-1}\partial_r+r^{-2}\Delta_{S^2}\)">\(\partial_r^2+2r^{-1}\partial_r+r^{-2}\Delta_{S^2}\)</span>, exactly (4.8). The coordinate singularities are avoided by computing in open charts and extending the smooth operator. All representation, harmonic-decomposition and convex-body conclusions were proved above.</p>
+<p>The Lie-algebra classification of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> is a separate topic; we did not require it here. General homogeneous-space reciprocity will be developed later in this course.</p>
+<h2 id="references">References</h2>
+<ul>
+
+<li>C. Gruson and V. Serganova, <em>A Journey Through Representation Theory</em> (2018), Chapter 3, §3; Theorem 3.6 for the central-section application.</li>
+
+
+</ul>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §32, in particular the symmetric powers of the defining SU(2) module. The real/quaternionic example motivates the construction above. The antiunitary maps and Haar character-indicator identity are proved here; no source expression is reproduced.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-04.provenance.json">Source and result records</a></footer></body></html>

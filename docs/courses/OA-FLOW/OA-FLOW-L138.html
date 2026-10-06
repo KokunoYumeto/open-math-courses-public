@@ -1,0 +1,457 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duality for C* crossed products · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HARMONIC-LATE.html">Previous lesson</a><a href="OA-FLOW-SF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L138.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">New original free-source reconstruction by GPT-6.1 Sol (OpenAI), Ultra; independent owner mathematical/scope review. The stated harmonic inputs now have their actual earlier topology, HR, H1, scalar Plancherel and H2–H5 proofs. Human review and formal verification are not asserted.</p><h1 id="duality-for-c-crossed-products">Duality for C* crossed products</h1>
+<p><em>The new exposition, proofs, examples and illustration source are dedicated under CC0.</em></p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be an arbitrary C* algebra, <span class="math" data-tex="\(G\)">\(G\)</span> an arbitrary locally compact Hausdorff group, and <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> a point-norm continuous action. The duality statements below assume that <span class="math" data-tex="\(G\)">\(G\)</span> is abelian. They require no unit in <span class="math" data-tex="\(A\)">\(A\)</span>, separability of <span class="math" data-tex="\(A\)">\(A\)</span> or a Hilbert space, second countability, or sigma compactness. Inner products are linear in the first variable. Full crossed products and their nondegenerate covariant representations use L25's convention <span class="math" data-tex="\(\pi(F(s))U_s\)">\(\pi(F(s))U_s\)</span> in the integrated form.</p>
+<p>The earlier operator inputs are the complete <span class="unlinked">CF</span>, <a href="OA-FLOW-SC.html#sc-00">SC</a>, <a href="OA-FLOW-GNS.html#gns-theorem-7-3">GNS</a>, <a href="OA-FLOW-L24.html#oa-flow.grp.completions">L24</a>, <a href="OA-FLOW-L25.html#oa-flow.ccov.completions">L25</a> proofs. The companion <a href="OA-FLOW-TOPOLOGY.html#l138-h0">Fourier completions, compact tests and the returned measure</a> supplies <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>–<a href="OA-FLOW-HARMONIC-LATE.html#l138-h4">H4</a>: compact cutoffs and finite partitions, <span class="math" data-tex="\(C^*(G)=C_0(\widehat G)\)">\(C^*(G)=C_0(\widehat G)\)</span>, equality with the reduced group norm, topological biduality, and exact Haar return. Its Haar/Radon inputs now use the complete earlier HR proof cone. The scalar Plancherel premise is now the complete earlier <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p3">onto Fourier unitary proof</a>, with <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p2">its dual Haar normalization</a> and <a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p4">its exact inverse-integral domain</a>. The proof below is complete at those specified inputs and does not treat an external source citation as their proof.</p>
+<p><a id="oa-flow.xgaps.cstar.harmonic"></a><a id="OA-FLOW.XGAPS.CSTAR.HARMONIC"></a></p>
+<p>The historical harmonic prerequisites now have their actual earlier reader: <a href="OA-FLOW-HARMONIC-LATE.html#oa-flow.xgaps.cstar.harmonic">H0–H5</a>.</p>
+<p><a id="l138-weyl"></a></p>
+<p><a id="oa-flow.xgaps.fourier"></a></p>
+<h2 id="OA-FLOW.XGAPS.FOURIER">1. Characters, convolution and the universal norm</h2>
+<p>For any group, left translation on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> is <span class="math" data-tex="\((\lambda_t\xi)(s)=\xi(t^{-1}s)\)">\((\lambda_t\xi)(s)=\xi(t^{-1}s)\)</span>. For a continuous unitary character <span class="math" data-tex="\(\chi:G\to\mathbb T\)">\(\chi:G\to\mathbb T\)</span>, define the unitary multiplier <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> by
+<span class="math math-display" data-tex="\[
+ (Q_\chi\xi)(s)=\overline{\chi(s)}\,\xi(s),
+ \qquad(\lambda_t\xi)(s)=\xi(t^{-1}s).
+ \tag{47}
+\]">\[
+ (Q_\chi\xi)(s)=\overline{\chi(s)}\,\xi(s),
+ \qquad(\lambda_t\xi)(s)=\xi(t^{-1}s).
+ \tag{47}
+\]</span>
+Direct substitution on an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> representative gives
+<span class="math math-display" data-tex="\[
+ Q_\chi\lambda_tQ_\chi^*=\overline{\chi(t)}\,\lambda_t.
+ \tag{48}
+\]">\[
+ Q_\chi\lambda_tQ_\chi^*=\overline{\chi(t)}\,\lambda_t.
+ \tag{48}
+\]</span>
+The formula holds on all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: scalar multiplication is measurable, both sides are bounded, and translation preserves Haar null classes. For arbitrary <span class="math" data-tex="\(G\)">\(G\)</span> these operators have the same definitions and identity.</p>
+<p><span id="OA-FLOW.XGAPS.AMENABILITY.REPAIR"></span><a id="oa-flow.xgaps.amenability.repair"></a></p>
+<p><a href="OA-FLOW-L25.html#oa-flow.ccov.comparison">L25 Theorem 7.2</a> proves the following precise comparison for every <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span>:
+<span class="math math-display" data-tex="\[
+ C^*(G)\longrightarrow C_r^*(G)\text{ faithful}
+ \quad\Longrightarrow\quad
+ A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G
+ \text{ faithful}.
+ \tag{49}
+\]">\[
+ C^*(G)\longrightarrow C_r^*(G)\text{ faithful}
+ \quad\Longrightarrow\quad
+ A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G
+ \text{ faithful}.
+ \tag{49}
+\]</span>
+It produces compact-uniform almost invariant regular vectors from the factored trivial character, then compresses the tensor covariant pair on actual vectors. Thus (49) is an earlier proved norm comparison; a Fourier coordinate change alone does not prove it.</p>
+<p><span id="OA-FLOW.XGAPS.AMENABILITY.ABELIAN"></span><a id="oa-flow.xgaps.amenability.abelian"></a></p>
+<p>Now assume <span class="math" data-tex="\(G\)">\(G\)</span> abelian and write additively. Its modular function is one: right and left translations coincide, so their Haar Jacobians coincide. Companion <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> proves, from the <span class="unlinked">commutative CF theorem</span> and L24's integration/recovery on a one-dimensional essential space,
+<span class="math math-display" data-tex="\[
+ C^*(G)\cong C_0(\widehat G),\qquad
+ f\longmapsto\widehat f,\qquad
+ \widehat f(\chi)=\int_G f(s)\overline{\chi(s)}\,dm(s).
+ \tag{50}
+\]">\[
+ C^*(G)\cong C_0(\widehat G),\qquad
+ f\longmapsto\widehat f,\qquad
+ \widehat f(\chi)=\int_G f(s)\overline{\chi(s)}\,dm(s).
+ \tag{50}
+\]</span>
+Its proof identifies the spectrum with the compact-open character topology by finite nets on compact <span class="math" data-tex="\(L^1\)">\(L^1\)</span> translation orbits. In particular the transforms of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> are uniformly dense in <span class="math" data-tex="\(C_0(\widehat G)\)">\(C_0(\widehat G)\)</span>. Companion <a href="OA-FLOW-HARMONIC-LATE.html#l138-h2">H2</a>'s scalar Plancherel calculation gives
+<span class="math math-display" data-tex="\[
+ \|\lambda(f)\|=\|\widehat f\|_\infty=\|f\|_u
+ \qquad(f\in L^1(G)).
+ \tag{51}
+\]">\[
+ \|\lambda(f)\|=\|\widehat f\|_\infty=\|f\|_u
+ \qquad(f\in L^1(G)).
+ \tag{51}
+\]</span>
+Haar full support proves the multiplier's lower norm bound. Consequently the group quotient is faithful, and (49) applies to every coefficient algebra.</p>
+<p><a id="l138-dual-action"></a></p>
+<p><a id="oa-flow.xgaps.cstar.dual"></a></p>
+<h2 id="OA-FLOW.XGAPS.CSTAR.DUAL">2. The action on the first crossing</h2>
+<p>On <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> put
+<span class="math math-display" data-tex="\[
+ (\widehat\alpha_\chi F)(s)=\overline{\chi(s)}\,F(s).
+ \tag{52}
+\]">\[
+ (\widehat\alpha_\chi F)(s)=\overline{\chi(s)}\,F(s).
+ \tag{52}
+\]</span>
+The coefficient <a href="OA-FLOW-L25.html#oa-flow.ccov.algebra">product and involution of L25</a> show that this is a star automorphism: the scalar product in a convolution is <span class="math" data-tex="\(\overline{\chi(r)}\overline{\chi(s-r)}=\overline{\chi(s)}\)">\(\overline{\chi(r)}\overline{\chi(s-r)}=\overline{\chi(s)}\)</span>, and inversion changes the character to its conjugate in the adjoint. For any nondegenerate covariant pair,
+<span class="math math-display" data-tex="\[
+ (\pi\rtimes U)(\widehat\alpha_\chi F)
+ =\bigl(\pi\rtimes(\overline\chi\,U)\bigr)(F).
+ \tag{53}
+\]">\[
+ (\pi\rtimes U)(\widehat\alpha_\chi F)
+ =\bigl(\pi\rtimes(\overline\chi\,U)\bigr)(F).
+ \tag{53}
+\]</span>
+The twisted unitaries remain strongly continuous and covariant. Twisting by <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span> is the inverse operation, so taking the suprema over all pairs proves that (52) is isometric for the full norm. It extends uniquely to an automorphism of <span class="math" data-tex="\(B=A\rtimes_\alpha G\)">\(B=A\rtimes_\alpha G\)</span>. The character product gives the action law.</p>
+<p>In <a href="OA-FLOW-L25.html#oa-flow.ccov.multipliers">L25's precise multiplier-pair meaning</a>, its effect on the canonical actions is
+<span class="math math-display" data-tex="\[
+ \widehat\alpha_\chi(i_A(a))=i_A(a),\qquad
+ \widehat\alpha_\chi(i_G(s))=\overline{\chi(s)}\,i_G(s).
+ \tag{54}
+\]">\[
+ \widehat\alpha_\chi(i_A(a))=i_A(a),\qquad
+ \widehat\alpha_\chi(i_G(s))=\overline{\chi(s)}\,i_G(s).
+ \tag{54}
+\]</span>
+These equations mean the corresponding left and right actions on every dense coefficient function. They also follow by the recovered coefficient and group operators in every nondegenerate representation.</p>
+<p>Point-norm continuity of the dual action follows from the compact-open topology: for <span class="math" data-tex="\(F\in C_c(G,A)\)">\(F\in C_c(G,A)\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\widehat\alpha_\chi F-\widehat\alpha_{\chi_0}F\|_u
+ \le\|\widehat\alpha_\chi F-\widehat\alpha_{\chi_0}F\|_1\le\|F\|_1
+ \sup_{s\in\operatorname{supp}F}|\chi(s)-\chi_0(s)|
+ \longrightarrow0.
+ \tag{54a}
+\]">\[
+ \|\widehat\alpha_\chi F-\widehat\alpha_{\chi_0}F\|_u
+ \le\|\widehat\alpha_\chi F-\widehat\alpha_{\chi_0}F\|_1\le\|F\|_1
+ \sup_{s\in\operatorname{supp}F}|\chi(s)-\chi_0(s)|
+ \longrightarrow0.
+ \tag{54a}
+\]</span>
+Density and the automorphism isometries extend the convergence to every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. This estimate is valid for a net of characters.</p>
+<p><a id="l138-transform"></a></p>
+<p><a id="oa-flow.xgaps.cstar.transform"></a></p>
+<h2 id="OA-FLOW.XGAPS.CSTAR.TRANSFORM">3. A faithful double regular representation</h2>
+<p>We prove
+<span class="math math-display" data-tex="\[
+ (A\rtimes_\alpha G)\rtimes_{\widehat\alpha}\widehat G
+ \cong A\otimes_{\min}\mathcal K(L^2(G)).
+ \tag{55}
+\]">\[
+ (A\rtimes_\alpha G)\rtimes_{\widehat\alpha}\widehat G
+ \cong A\otimes_{\min}\mathcal K(L^2(G)).
+ \tag{55}
+\]</span>
+If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, both sides are zero by their definitions. Otherwise choose a faithful nondegenerate <span class="math" data-tex="\(\pi:A\to B(H)\)">\(\pi:A\to B(H)\)</span>, using <a href="OA-FLOW-GNS.html#gns-theorem-7-3">GNS Theorem 7.3</a>. The Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> is arbitrary.</p>
+<p>Let <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>. Companion <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a> identifies <span class="math" data-tex="\(\widehat\Gamma\)">\(\widehat\Gamma\)</span> with <span class="math" data-tex="\(G\)">\(G\)</span> by <span class="math" data-tex="\(t\mapsto[\chi\mapsto\chi(t)]\)">\(t\mapsto[\chi\mapsto\chi(t)]\)</span>, and <a href="OA-FLOW-HARMONIC-LATE.html#l138-h4">H4</a> returns the Haar measure exactly. The Fourier transform used in the <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> coordinate is therefore
+<span class="math math-display" data-tex="\[
+ (\mathcal F_\Gamma v)(t)
+ =\int_\Gamma v(\chi)\overline{\chi(t)}\,d\widehat m(\chi).
+ \tag{TC1}
+\]">\[
+ (\mathcal F_\Gamma v)(t)
+ =\int_\Gamma v(\chi)\overline{\chi(t)}\,d\widehat m(\chi).
+ \tag{TC1}
+\]</span>
+It is the negative-character transform, not the positive-character inverse integral.</p>
+<p>The regular representation of <span class="math" data-tex="\(B\)">\(B\)</span> from <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, followed by the regular representation for its dual action, acts on
+<span class="math" data-tex="\(L^2(\Gamma_\chi)\otimes L^2(G_x)\otimes H\)">\(L^2(\Gamma_\chi)\otimes L^2(G_x)\otimes H\)</span>.
+On compact continuous scalar tensors with fixed vectors its recovered generators are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (J_A(a)\eta)(\chi,x)&amp;=\pi(\alpha_{-x}(a))\eta(\chi,x),\\
+ (J_G(s)\eta)(\chi,x)&amp;=\chi(s)\eta(\chi,x-s),\\
+ (J_\Gamma(\gamma)\eta)(\chi,x)&amp;=\eta(\gamma^{-1}\chi,x).
+ \end{aligned}
+ \tag{TC2}
+\]">\[
+ \begin{aligned}
+ (J_A(a)\eta)(\chi,x)&amp;=\pi(\alpha_{-x}(a))\eta(\chi,x),\\
+ (J_G(s)\eta)(\chi,x)&amp;=\chi(s)\eta(\chi,x-s),\\
+ (J_\Gamma(\gamma)\eta)(\chi,x)&amp;=\eta(\gamma^{-1}\chi,x).
+ \end{aligned}
+ \tag{TC2}
+\]</span>
+The positive character in the second line comes from evaluating <span class="math" data-tex="\(\widehat\alpha\)">\(\widehat\alpha\)</span> at the inverse regular coordinate <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>, as prescribed in <a href="OA-FLOW-L25.html#oa-flow.ccov.regular">L25 Section 4</a>. The first regular representation is faithful on the <strong>full</strong> <span class="math" data-tex="\(B\)">\(B\)</span>, by (49) and (51) for <span class="math" data-tex="\(G\)">\(G\)</span>. Its coefficient representation for the second crossing is faithful and nondegenerate by <a href="OA-FLOW-L25.html#oa-flow.ccov.regular">L25 Proposition 4.1</a>. Applying (49) and (51) separately to the LCA group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> makes the second regular representation faithful on the full double crossing. These are two distinct norm comparisons.</p>
+<p>Tensoring <span class="math" data-tex="\(\mathcal F_\Gamma\)">\(\mathcal F_\Gamma\)</span> with identities is unitary: its rule on finite tensor sums preserves their inner products and has an inverse rule; <span class="unlinked">CF's Hilbert completion</span> extends both. Applying (TC1) to (TC2) gives, first on these compact tensors,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ J_A(a)\zeta(x,t)&amp;=\pi(\alpha_{-x}(a))\zeta(x,t),\\
+ J_G(s)\zeta(x,t)&amp;=\zeta(x-s,t-s),\\
+ J_\Gamma(\gamma)\zeta(x,t)&amp;=\overline{\gamma(t)}\,\zeta(x,t).
+ \end{aligned}
+ \tag{TC3}
+\]">\[
+ \begin{aligned}
+ J_A(a)\zeta(x,t)&amp;=\pi(\alpha_{-x}(a))\zeta(x,t),\\
+ J_G(s)\zeta(x,t)&amp;=\zeta(x-s,t-s),\\
+ J_\Gamma(\gamma)\zeta(x,t)&amp;=\overline{\gamma(t)}\,\zeta(x,t).
+ \end{aligned}
+ \tag{TC3}
+\]</span>
+For the second identity, <span class="math" data-tex="\(\overline{\chi(t)}\chi(s)=\overline{\chi(t-s)}\)">\(\overline{\chi(t)}\chi(s)=\overline{\chi(t-s)}\)</span>. For the third, substitute <span class="math" data-tex="\(\chi=\gamma\eta\)">\(\chi=\gamma\eta\)</span> and use Haar invariance.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+ (S\zeta)(q,t)=\zeta(q+t,t),\qquad
+ (S^{-1}\xi)(x,t)=\xi(x-t,t).
+ \tag{TC4}
+\]">\[
+ (S\zeta)(q,t)=\zeta(q+t,t),\qquad
+ (S^{-1}\xi)(x,t)=\xi(x-t,t).
+ \tag{TC4}
+\]</span>
+The shear preserves compact supports and the squared integral norm: integrate in <span class="math" data-tex="\(q\)">\(q\)</span> first and translate by <span class="math" data-tex="\(t\)">\(t\)</span>. <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24's qualified Radon-product Fubini</a> applies to these compact carriers. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>'s product approximation identifies their compact continuous vector functions with the Hilbert tensor completion. Thus <span class="math" data-tex="\(S\)">\(S\)</span> and its displayed inverse extend to inverse unitaries. For general vectors the calculation is obtained by density, not by an unrestricted product-Borel assertion or a dominated-convergence claim for arbitrary nets.</p>
+<p>On the multiplicity space <span class="math" data-tex="\(K=L^2(G_q,H)\)">\(K=L^2(G_q,H)\)</span>, define
+<span class="math math-display" data-tex="\[
+ [\sigma(a)v](q)=\pi(\alpha_{-q}(a))v(q).
+ \tag{55a}
+\]">\[
+ [\sigma(a)v](q)=\pi(\alpha_{-q}(a))v(q).
+ \tag{55a}
+\]</span>
+This is a contractive star representation. Its continuous vector fields on sigma compact carriers are strongly measurable by <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24 Section 4</a>, and approximation extends its action to every vector. It is faithful: if <span class="math" data-tex="\(\pi(a)v_0\ne0\)">\(\pi(a)v_0\ne0\)</span>, continuity makes this field nonzero with a uniform lower bound near zero; multiply <span class="math" data-tex="\(v_0\)">\(v_0\)</span> by a nonzero compact bump there and use Haar full support.</p>
+<p>It is also nondegenerate, with a genuine net proof. Let <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> be the positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> from <a href="OA-FLOW-GNS.html#gns-lemma-3-1">GNS Lemma 3.1</a> or <a href="OA-FLOW-L24.html#oa-flow.grp.cstarquotients">L24 Lemma 10.2</a>. On a compact <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span>,
+<span class="math math-display" data-tex="\[
+ \sup_{q\in C}
+ \|\pi(\alpha_{-q}(e_i))\pi(b)v-\pi(b)v\|
+ \le\|v\|
+ \sup_{q\in C}\|e_i\alpha_q(b)-\alpha_q(b)\|
+ \longrightarrow0.
+ \tag{TC7}
+\]">\[
+ \sup_{q\in C}
+ \|\pi(\alpha_{-q}(e_i))\pi(b)v-\pi(b)v\|
+ \le\|v\|
+ \sup_{q\in C}\|e_i\alpha_q(b)-\alpha_q(b)\|
+ \longrightarrow0.
+ \tag{TC7}
+\]</span>
+The compact orbit image has a finite norm net; approximate-identity convergence at its finitely many members and the uniform contraction bound prove the last convergence. Finite sums of compact scalar functions times vectors in <span class="math" data-tex="\(\pi(A)H\)">\(\pi(A)H\)</span> are dense in <span class="math" data-tex="\(K\)">\(K\)</span>. Equation (TC7) gives strong convergence of <span class="math" data-tex="\(\sigma(e_i)\)">\(\sigma(e_i)\)</span> to the identity on them, and the contraction bound extends it to all of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>After the shear, the three generators on <span class="math" data-tex="\(L^2(G_t,K)\)">\(L^2(G_t,K)\)</span> are precisely
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [A_a\xi](t)&amp;=\sigma(\alpha_{-t}(a))\xi(t),\\
+ [\Lambda_s\xi](t)&amp;=\xi(t-s),\\
+ [Q_\gamma\xi](t)&amp;=\overline{\gamma(t)}\,\xi(t).
+ \end{aligned}
+ \tag{56}
+\]">\[
+ \begin{aligned}
+ [A_a\xi](t)&amp;=\sigma(\alpha_{-t}(a))\xi(t),\\
+ [\Lambda_s\xi](t)&amp;=\xi(t-s),\\
+ [Q_\gamma\xi](t)&amp;=\overline{\gamma(t)}\,\xi(t).
+ \end{aligned}
+ \tag{56}
+\]</span>
+The coefficient retains <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and its whole multiplicity space. No tensor factor is discarded.</p>
+<p><a id="l138-dense-image"></a></p>
+<p><a id="oa-flow.xgaps.cstar.kernelclosure"></a></p>
+<h2 id="OA-FLOW.XGAPS.CSTAR.KERNELCLOSURE">4. The dense image and its scalar kernels</h2>
+<p>Write <span class="math" data-tex="\(D\)">\(D\)</span> for the closed image of the faithful double regular representation after the two unitaries. <a href="OA-FLOW-L25.html#oa-flow.ccov.integration">L25's integrated representation correspondence</a>, Bochner density and the finite partitions of <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> give
+<span class="math math-display" data-tex="\[
+ D=\overline{\operatorname{span}}\{
+ A_a(1_K\otimes\lambda(f)M_h):
+ a\in A,\ f\in C_c(G),\
+ h(t)=\int_\Gamma g(\gamma)\overline{\gamma(t)}
+          \,d\widehat m(\gamma),\ g\in C_c(\Gamma)\}.
+ \tag{56a}
+\]">\[
+ D=\overline{\operatorname{span}}\{
+ A_a(1_K\otimes\lambda(f)M_h):
+ a\in A,\ f\in C_c(G),\
+ h(t)=\int_\Gamma g(\gamma)\overline{\gamma(t)}
+          \,d\widehat m(\gamma),\ g\in C_c(\Gamma)\}.
+ \tag{56a}
+\]</span>
+Here is the density argument in both variables. A compactly supported continuous <span class="math" data-tex="\(A\)">\(A\)</span>-valued function of the first crossing is <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-approximated by a finite sum of fixed coefficients times compact scalar functions, by <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> and L24. The integrated norm is at most that <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. A compactly supported continuous <span class="math" data-tex="\(B\)">\(B\)</span>-valued function for the second crossing is similarly approximated by finite scalar functions times fixed <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. Approximate each of those finitely many <span class="math" data-tex="\(b\)">\(b\)</span>'s by the first sums. The error in the second integration is at most the scalar <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm times the coefficient norm error. These are dense elements of the two full completions. In the represented generators their products have the order <span class="math" data-tex="\(A_a\Lambda(f)Q(g)\)">\(A_a\Lambda(f)Q(g)\)</span>, giving (56a).</p>
+<p><a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> applied to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a>'s bidual identification, show that these <span class="math" data-tex="\(h\)">\(h\)</span>'s are uniformly dense in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>. The integrated bounds allow all <span class="math" data-tex="\(h\in C_0(G)\)">\(h\in C_0(G)\)</span> in the closed span. Approximating such <span class="math" data-tex="\(h\)">\(h\)</span> uniformly by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, we may examine <span class="math" data-tex="\(f,h\in C_c(G)\)">\(f,h\in C_c(G)\)</span>. The scalar kernel of <span class="math" data-tex="\(\lambda(f)M_h\)">\(\lambda(f)M_h\)</span> is
+<span class="math math-display" data-tex="\[
+ k(t,r)=f(t-r)h(r).
+\]">\[
+ k(t,r)=f(t-r)h(r).
+\]</span>
+It is continuous and compactly supported. If a kernel is bounded in modulus by <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and supported in a compact rectangle <span class="math" data-tex="\(C_1\times C_2\)">\(C_1\times C_2\)</span>, Cauchy–Schwarz gives its scalar or <span class="math" data-tex="\(K\)">\(K\)</span>-valued operator norm at most
+<span class="math math-display" data-tex="\[
+ \delta\,\sqrt{m(C_1)m(C_2)}.
+\]">\[
+ \delta\,\sqrt{m(C_1)m(C_2)}.
+\]</span>
+All integrals here are on finite-measure compact carriers. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> approximates a compact kernel, uniformly with common compact support, by finite products <span class="math" data-tex="\(u(t)v(r)\)">\(u(t)v(r)\)</span>; their integral operators are rank one. Thus every <span class="math" data-tex="\(\lambda(f)M_h\)">\(\lambda(f)M_h\)</span> is compact.</p>
+<p>Conversely, for any <span class="math" data-tex="\(k\in C_c(G\times G)\)">\(k\in C_c(G\times G)\)</span>, the function <span class="math" data-tex="\(k(z+r,r)\)">\(k(z+r,r)\)</span> in the variables <span class="math" data-tex="\((z,r)\)">\((z,r)\)</span> is compactly supported and continuous. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> approximates it by finite <span class="math" data-tex="\(f(z)h(r)\)">\(f(z)h(r)\)</span> with common compact support. Transporting back gives kernels <span class="math" data-tex="\(f(t-r)h(r)\)">\(f(t-r)h(r)\)</span> and convergence in operator norm by the displayed estimate. In particular every rank-one kernel <span class="math" data-tex="\(\xi(t)\overline{\eta(r)}\)">\(\xi(t)\overline{\eta(r)}\)</span>, <span class="math" data-tex="\(\xi,\eta\in C_c(G)\)">\(\xi,\eta\in C_c(G)\)</span>, is in their closed span. Such vectors are <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-dense by <a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24</a>; the estimate
+<span class="math" data-tex="\(\|\theta_{\xi,\eta}\|=\|\xi\|_2\|\eta\|_2\)">\(\|\theta_{\xi,\eta}\|=\|\xi\|_2\|\eta\|_2\)</span>, with the zero cases included, follows from Cauchy–Schwarz and testing <span class="math" data-tex="\(\eta/\|\eta\|_2\)">\(\eta/\|\eta\|_2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \overline{\operatorname{span}}\{\lambda(f)M_h\}
+ =\mathcal K(L^2(G)),\qquad
+ D=\overline{\operatorname{span}}\{
+ A_a(1_K\otimes\theta_{\xi,\eta}):
+ a\in A,\ \xi,\eta\in C_c(G)\}.
+ \tag{57}
+\]">\[
+ \overline{\operatorname{span}}\{\lambda(f)M_h\}
+ =\mathcal K(L^2(G)),\qquad
+ D=\overline{\operatorname{span}}\{
+ A_a(1_K\otimes\theta_{\xi,\eta}):
+ a\in A,\ \xi,\eta\in C_c(G)\}.
+ \tag{57}
+\]</span>
+Here <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is the norm closure of finite-rank operators. It agrees with the usual compact operators: a norm limit of finite-rank operators has totally bounded unit-ball image by finite-dimensional bounded-set compactness; for a compact operator, a finite epsilon net of that image spans a finite-dimensional <span class="math" data-tex="\(E\)">\(E\)</span>, and the orthogonal projection satisfies <span class="math" data-tex="\(\|T-P_ET\|\le\varepsilon\)">\(\|T-P_ET\|\le\varepsilon\)</span>. The finite-dimensional basis construction successively subtracts orthogonal projections and normalizes, so these approximants are finite sums of rank-one operators.</p>
+<p><a id="l138-two-inclusions"></a></p>
+<h2 id="5-the-coefficient-orbit-and-both-inclusions">5. The coefficient orbit and both inclusions</h2>
+<p>We retain <span class="math" data-tex="\(K\)">\(K\)</span> and represent <span class="math" data-tex="\(A\)">\(A\)</span> faithfully by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The kernel of a generator in (57), applied to a compact vector field <span class="math" data-tex="\(v\)">\(v\)</span>, is
+<span class="math math-display" data-tex="\[
+ [A_a(1_K\otimes\theta_{\xi,\eta})v](t)
+ =\int_G\sigma(\alpha_{-t}(a))\,
+       \xi(t)\overline{\eta(r)}v(r)\,dm(r).
+ \tag{58}
+\]">\[
+ [A_a(1_K\otimes\theta_{\xi,\eta})v](t)
+ =\int_G\sigma(\alpha_{-t}(a))\,
+       \xi(t)\overline{\eta(r)}v(r)\,dm(r).
+ \tag{58}
+\]</span>
+This formula has a bounded extension by its norm estimate, so it also determines the operator on every vector.</p>
+<p>On <span class="math" data-tex="\(\operatorname{supp}\xi\)">\(\operatorname{supp}\xi\)</span>, the orbit <span class="math" data-tex="\(t\mapsto\alpha_{-t}(a)\)">\(t\mapsto\alpha_{-t}(a)\)</span> is norm continuous. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> gives a nonnegative finite partition <span class="math" data-tex="\((h_j)\)">\((h_j)\)</span>, equal in sum to one there, and coefficients <span class="math" data-tex="\(a_j\)">\(a_j\)</span> such that
+<span class="math" data-tex="\(\|\alpha_{-t}(a)-\sum_ja_jh_j(t)\|&lt;\varepsilon\)">\(\|\alpha_{-t}(a)-\sum_ja_jh_j(t)\|&lt;\varepsilon\)</span> there. The corresponding kernel operator is
+<span class="math" data-tex="\(\sum_j\sigma(a_j)\otimes\theta_{h_j\xi,\eta}\)">\(\sum_j\sigma(a_j)\otimes\theta_{h_j\xi,\eta}\)</span>.
+For its error <span class="math" data-tex="\(E\)">\(E\)</span>, pointwise vector Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+ \|Ev(t)\|\le\varepsilon|\xi(t)|\,\|\eta\|_2\|v\|_2,
+ \qquad \|E\|\le\varepsilon\|\xi\|_2\|\eta\|_2.
+\]">\[
+ \|Ev(t)\|\le\varepsilon|\xi(t)|\,\|\eta\|_2\|v\|_2,
+ \qquad \|E\|\le\varepsilon\|\xi\|_2\|\eta\|_2.
+\]</span>
+The latter follows by integrating the first square. Taking limits in (57) proves
+<span class="math math-display" data-tex="\[
+ D\subset A\otimes_{\min}\mathcal K(L^2(G)).
+ \tag{59}
+\]">\[
+ D\subset A\otimes_{\min}\mathcal K(L^2(G)).
+ \tag{59}
+\]</span>
+The precise tensor norm will be proved in the next section.</p>
+<p>For the reverse inclusion fix <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(\xi,\eta\in C_c(G)\)">\(\xi,\eta\in C_c(G)\)</span>. At every <span class="math" data-tex="\(t_j\)">\(t_j\)</span> in the compact support of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, choose a neighbourhood <span class="math" data-tex="\(U_j\)">\(U_j\)</span> such that
+<span class="math" data-tex="\(\|\alpha_{t_j-t}(a)-a\|&lt;\varepsilon\)">\(\|\alpha_{t_j-t}(a)-a\|&lt;\varepsilon\)</span> for <span class="math" data-tex="\(t\in U_j\)">\(t\in U_j\)</span>. Finitely many suffice. <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a> supplies nonnegative <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>, subordinate to these sets, with sum one on that support. Each operator below belongs to <span class="math" data-tex="\(D\)">\(D\)</span> by (57), and
+<span class="math math-display" data-tex="\[
+ \sum_j A_{\alpha_{t_j}(a)}
+       (1_K\otimes\theta_{\chi_j\xi,\eta})
+ \longrightarrow \sigma(a)\otimes\theta_{\xi,\eta}
+ \quad\text{in norm}.
+ \tag{60}
+\]">\[
+ \sum_j A_{\alpha_{t_j}(a)}
+       (1_K\otimes\theta_{\chi_j\xi,\eta})
+ \longrightarrow \sigma(a)\otimes\theta_{\xi,\eta}
+ \quad\text{in norm}.
+ \tag{60}
+\]</span>
+Indeed its kernel error at <span class="math" data-tex="\((t,r)\)">\((t,r)\)</span> is
+<span class="math" data-tex="\(\sum_j[\sigma(\alpha_{t_j-t}(a))-\sigma(a)]
+ \chi_j(t)\xi(t)\overline{\eta(r)}\)">\(\sum_j[\sigma(\alpha_{t_j-t}(a))-\sigma(a)]
+ \chi_j(t)\xi(t)\overline{\eta(r)}\)</span>.
+Nonnegativity and the sum-one property bound its norm by
+<span class="math" data-tex="\(\varepsilon|\xi(t)||\eta(r)|\)">\(\varepsilon|\xi(t)||\eta(r)|\)</span>.
+The same Cauchy–Schwarz calculation bounds the operator error by
+<span class="math" data-tex="\(\varepsilon\|\xi\|_2\|\eta\|_2\)">\(\varepsilon\|\xi\|_2\|\eta\|_2\)</span>. This bound is independent of the number of partition pieces. It proves (60) without any unit in <span class="math" data-tex="\(A\)">\(A\)</span>. Rank-one density now gives the reverse of (59).</p>
+<p><a id="l138-minimal-norm"></a></p>
+<h2 id="6-the-minimal-norm-proved-by-finite-corners">6. The minimal norm, proved by finite corners</h2>
+<p>For completeness we verify the spatial completion used in (59). A faithful representation <span class="math" data-tex="\(\rho:A\to B(H_0)\)">\(\rho:A\to B(H_0)\)</span> gives <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> its operator norm on <span class="math" data-tex="\(H_0^n\)">\(H_0^n\)</span>. This is a complete C* algebra: entry norms are at most the matrix norm and that norm is at most the sum of the entry norms; entrywise Cauchy limits therefore give matrix limits. Between two faithful such realizations the entrywise identity is an injective star homomorphism between C* algebras. <a href="OA-FLOW-L24.html#oa-flow.grp.cstarquotients">L24 Lemma 10.1</a> proves that it is isometric. Thus the finite matrix norm is independent of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, including nonunital <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Given finitely many finite-rank operators <span class="math" data-tex="\(T_l\)">\(T_l\)</span> on <span class="math" data-tex="\(L=L^2(G)\)">\(L=L^2(G)\)</span>, take a finite-dimensional <span class="math" data-tex="\(E\subset L\)">\(E\subset L\)</span> containing the ranges of each <span class="math" data-tex="\(T_l\)">\(T_l\)</span> and <span class="math" data-tex="\(T_l^*\)">\(T_l^*\)</span>. Then <span class="math" data-tex="\(T_l=P_ET_lP_E\)">\(T_l=P_ET_lP_E\)</span>. An orthonormal basis of <span class="math" data-tex="\(E\)">\(E\)</span> identifies
+<span class="math" data-tex="\(\sum_l\rho(a_l)\otimes T_l\)">\(\sum_l\rho(a_l)\otimes T_l\)</span>, on <span class="math" data-tex="\(H_0\otimes E\)">\(H_0\otimes E\)</span>, with a matrix in <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>; it is zero on <span class="math" data-tex="\(H_0\otimes E^\perp\)">\(H_0\otimes E^\perp\)</span>. The preceding matrix norm is therefore its operator norm, independently of the faithful coefficient representation.</p>
+<p>This also agrees with a spatial norm formed using <strong>any</strong> faithful representation <span class="math" data-tex="\(\nu:\mathcal K(L)\to B(J)\)">\(\nu:\mathcal K(L)\to B(J)\)</span>. For the matrix units <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>, the corner <span class="math" data-tex="\(\nu(P_E)J\)">\(\nu(P_E)J\)</span> is unitarily <span class="math" data-tex="\(\mathbb C^n\otimes J_0\)">\(\mathbb C^n\otimes J_0\)</span>, where <span class="math" data-tex="\(J_0=\nu(e_{11})J\)">\(J_0=\nu(e_{11})J\)</span>. The unitary sends the <span class="math" data-tex="\(i\)">\(i\)</span>-th coordinate vector tensored with <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\(\nu(e_{i1})w\)">\(\nu(e_{i1})w\)</span>: the matrix-unit products prove its inner-product identity, and <span class="math" data-tex="\(\sum_i\nu(e_{ii})=\nu(P_E)\)">\(\sum_i\nu(e_{ii})=\nu(P_E)\)</span> proves surjectivity. Faithfulness makes <span class="math" data-tex="\(J_0\ne0\)">\(J_0\ne0\)</span>. On this corner, <span class="math" data-tex="\(\nu(e_{ij})\)">\(\nu(e_{ij})\)</span> is the usual matrix unit tensored with the identity. Amplifying an operator by a nonzero Hilbert identity preserves its norm: finite tensor vectors, expressed in an orthonormal basis of the finitely many second-factor vectors, give the upper bound; a single unit second-factor vector gives the lower bound. Density extends the bound to the completed tensor.</p>
+<p>Finally finite-rank operators approximate every <span class="math" data-tex="\(T_l\in\mathcal K(L)\)">\(T_l\in\mathcal K(L)\)</span> in norm. The elementary spatial estimate
+<span class="math" data-tex="\(\|\rho(a)\otimes T\|\le\|a\|\|T\|\)">\(\|\rho(a)\otimes T\|\le\|a\|\|T\|\)</span>
+follows by applying the same finite-vector orthonormal expansion successively to the two factors and extending by completion. Thus the approximation error for a finite sum is bounded by
+<span class="math" data-tex="\(\sum_l\|a_l\|\|T_l-T_l^{(n)}\|\)">\(\sum_l\|a_l\|\|T_l-T_l^{(n)}\|\)</span>.
+This proves independence for all algebraic tensors and their completion. That common spatial norm is precisely <span class="math" data-tex="\(A\otimes_{\min}\mathcal K(L)\)">\(A\otimes_{\min}\mathcal K(L)\)</span>. In particular the faithful <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> used in (58) gives this norm. No maximal/minimal tensor equality or nuclearity theorem was imported. Equations (59)–(60), and the already established faithful double representation, now prove (55) for the full crossed products.</p>
+<p><a id="l138-returned-action"></a></p>
+<h2 id="7-the-surviving-group-action">7. The surviving group action</h2>
+<p>The bidual action is indexed by <span class="math" data-tex="\(s\in G\)">\(s\in G\)</span> through <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3</a>'s evaluation character; its dual convention is again negative. It fixes the first-crossing coefficients and multiplies the second group multiplier <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> by <span class="math" data-tex="\(\overline{\chi(s)}\)">\(\overline{\chi(s)}\)</span>.</p>
+<p>Define <span class="math" data-tex="\((\rho_s\xi)(t)=\xi(t+s)\)">\((\rho_s\xi)(t)=\xi(t+s)\)</span> on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian its Haar modular factor is one, so these are strongly continuous unitaries. On the dense tensor algebra define
+<span class="math math-display" data-tex="\[
+ \widehat{\widehat\alpha}_s
+ \longleftrightarrow
+ \alpha_s\otimes\operatorname{Ad}\rho_s,\qquad
+ (\rho_s\xi)(t)=\xi(t+s).
+ \tag{61}
+\]">\[
+ \widehat{\widehat\alpha}_s
+ \longleftrightarrow
+ \alpha_s\otimes\operatorname{Ad}\rho_s,\qquad
+ (\rho_s\xi)(t)=\xi(t+s).
+ \tag{61}
+\]</span>
+The finite-corner norm proof shows this map is isometric: applying <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> gives the same matrix C* norm, and conjugation by the unitary <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> preserves the spatial norm. Its inverse is the map for <span class="math" data-tex="\(-s\)">\(-s\)</span>. Point-norm continuity holds on elementary tensors, by continuity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and the rank-one formula for the strongly continuous <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and hence on their completion.</p>
+<p>The map fixes <span class="math" data-tex="\(A_a\)">\(A_a\)</span>, since its coefficient at <span class="math" data-tex="\(t\)">\(t\)</span> becomes
+<span class="math" data-tex="\(\sigma(\alpha_s(\alpha_{-(t+s)}(a)))=\sigma(\alpha_{-t}(a))\)">\(\sigma(\alpha_s(\alpha_{-(t+s)}(a)))=\sigma(\alpha_{-t}(a))\)</span>.
+It fixes <span class="math" data-tex="\(\Lambda_r\)">\(\Lambda_r\)</span>, since right and left translations commute. It sends <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> to <span class="math" data-tex="\(\overline{\chi(s)}Q_\chi\)">\(\overline{\chi(s)}Q_\chi\)</span>, because <span class="math" data-tex="\(\overline{\chi(t+s)}=\overline{\chi(s)}\overline{\chi(t)}\)">\(\overline{\chi(t+s)}=\overline{\chi(s)}\overline{\chi(t)}\)</span>. These identities are interpreted on the compact coefficient kernels and integrated products of (56a); both actions are bounded automorphisms, so density proves the asserted equivariance everywhere. The sign agrees with the chosen negative dual action.</p>
+<p>One can verify this without any abstract extension of an automorphism to multipliers. For <span class="math" data-tex="\(f,h\in C_c(G)\)">\(f,h\in C_c(G)\)</span>, the kernel <span class="math" data-tex="\(\sigma(\alpha_{-t}(a))f(t-r)h(r)\)">\(\sigma(\alpha_{-t}(a))f(t-r)h(r)\)</span> is sent to
+<span class="math" data-tex="\(\sigma(\alpha_s\alpha_{-(t+s)}(a))f(t-r)h(r+s)\)">\(\sigma(\alpha_s\alpha_{-(t+s)}(a))f(t-r)h(r+s)\)</span>.
+Uniform compact coefficient approximation from Section 5 justifies applying the tensor action to this kernel. Its coefficient simplifies to <span class="math" data-tex="\(\sigma(\alpha_{-t}(a))\)">\(\sigma(\alpha_{-t}(a))\)</span>. The original bidual action multiplies <span class="math" data-tex="\(g(\chi)\)">\(g(\chi)\)</span> by <span class="math" data-tex="\(\overline{\chi(s)}\)">\(\overline{\chi(s)}\)</span>, whose negative transform is precisely <span class="math" data-tex="\(h(r+s)\)">\(h(r+s)\)</span>. This checks equality on the dense integrated products.</p>
+<p><span id="OA-FLOW.XGAPS.CSTAR.TAKAI"></span><a id="oa-flow.xgaps.cstar.takai"></a></p>
+<p>The duality proof is now complete: Section 3 proves faithfulness of the double representation and the Fourier/shear transform, Sections 4–5 prove both compact-kernel inclusions, Section 6 proves the spatial norm, and Section 7 proves the surviving action. Together they prove (55) and (61) for every stated coefficient algebra and LCA group, with the zero and nonunital cases retained.</p>
+<p><a id="l138-finite-clock"></a></p>
+<p><a id="oa-flow.xgaps.cstar.cyclic"></a></p>
+<h2 id="OA-FLOW.XGAPS.CSTAR.CYCLIC">8. A finite cyclic group, including a nonunital coefficient</h2>
+<p>For <span class="math" data-tex="\(G=\mathbb Z/n\mathbb Z\)">\(G=\mathbb Z/n\mathbb Z\)</span>, take counting Haar measure. Its characters are <span class="math" data-tex="\(\chi_k(r)=e^{2\pi i kr/n}\)">\(\chi_k(r)=e^{2\pi i kr/n}\)</span>, with paired dual mass <span class="math" data-tex="\(1/n\)">\(1/n\)</span> at each <span class="math" data-tex="\(k\)">\(k\)</span>. On the orthonormal counting basis <span class="math" data-tex="\((\delta_r)\)">\((\delta_r)\)</span>,
+<span class="math math-display" data-tex="\[
+ S_s\delta_r=\delta_{r+s},\qquad
+ Q_k\delta_r=e^{-2\pi i kr/n}\delta_r,\qquad
+ p_r=\frac1n\sum_{k=0}^{n-1}e^{2\pi i kr/n}Q_k.
+ \tag{FC1}
+\]">\[
+ S_s\delta_r=\delta_{r+s},\qquad
+ Q_k\delta_r=e^{-2\pi i kr/n}\delta_r,\qquad
+ p_r=\frac1n\sum_{k=0}^{n-1}e^{2\pi i kr/n}Q_k.
+ \tag{FC1}
+\]</span>
+The finite geometric sum is <span class="math" data-tex="\(n\)">\(n\)</span> when its index difference is zero modulo <span class="math" data-tex="\(n\)">\(n\)</span>, and zero otherwise: for <span class="math" data-tex="\(z^n=1\)">\(z^n=1\)</span>, <span class="math" data-tex="\(z\ne1\)">\(z\ne1\)</span>, multiplication of <span class="math" data-tex="\(\sum_{k=0}^{n-1}z^k\)">\(\sum_{k=0}^{n-1}z^k\)</span> by <span class="math" data-tex="\(1-z\)">\(1-z\)</span> gives zero. Thus <span class="math" data-tex="\(p_r\delta_u\)">\(p_r\delta_u\)</span> is <span class="math" data-tex="\(\delta_r\)">\(\delta_r\)</span> if <span class="math" data-tex="\(u=r\)">\(u=r\)</span>, and zero otherwise. It follows directly that
+<span class="math math-display" data-tex="\[
+ E_{ru}=p_rS_{r-u}p_u,\qquad
+ E_{ru}E_{vw}=\delta_{uv}E_{rw},\qquad
+ E_{ru}^*=E_{ur}.
+ \tag{FC2}
+\]">\[
+ E_{ru}=p_rS_{r-u}p_u,\qquad
+ E_{ru}E_{vw}=\delta_{uv}E_{rw},\qquad
+ E_{ru}^*=E_{ur}.
+ \tag{FC2}
+\]</span>
+Using any faithful coefficient representation,
+<span class="math math-display" data-tex="\[
+ A_a=\operatorname{diag}\bigl(\alpha_{-r}(a)\bigr)_r,\qquad
+ A_{\alpha_r(b)}p_rS_{r-u}p_u=b\otimes E_{ru}.
+ \tag{FC3}
+\]">\[
+ A_a=\operatorname{diag}\bigl(\alpha_{-r}(a)\bigr)_r,\qquad
+ A_{\alpha_r(b)}p_rS_{r-u}p_u=b\otimes E_{ru}.
+ \tag{FC3}
+\]</span>
+The second equation reads off row <span class="math" data-tex="\(r\)">\(r\)</span>: its coefficient is
+<span class="math" data-tex="\(\alpha_{-r}(\alpha_r(b))=b\)">\(\alpha_{-r}(\alpha_r(b))=b\)</span>.
+When <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital, the scalar <span class="math" data-tex="\(p_r,S_s,Q_k\)">\(p_r,S_s,Q_k\)</span> act as multipliers; their products with <span class="math" data-tex="\(A_a\)">\(A_a\)</span> in (FC3) are actual algebra elements. Their span is exactly <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>, and the finite-corner norm proof gives its C* norm. This explicitly realizes (55).</p>
+<p>For <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-tex="\(r=1,u=2\)">\(r=1,u=2\)</span>, the diagonal coefficient is
+<span class="math" data-tex="\(\operatorname{diag}(\alpha_1(b),b,\alpha_2(b))\)">\(\operatorname{diag}(\alpha_1(b),b,\alpha_2(b))\)</span>;
+<span class="math" data-tex="\(p_1S_2p_2=E_{12}\)">\(p_1S_2p_2=E_{12}\)</span>, so the product is <span class="math" data-tex="\(bE_{12}\)">\(bE_{12}\)</span>.
+At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, (61) sends it to <span class="math" data-tex="\(\alpha_1(b)E_{01}\)">\(\alpha_1(b)E_{01}\)</span>.
+The illustration shows the selected column, translated row and the coefficient cancellation exactly.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The order-three coefficient correction and surviving action" src="assets/l138-reconstruction/figures/finite-clock-and-shear.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The upper row gives the exact order-three matrices from (FC1)–(FC3). The lower row is the exact shear on <span class="math" data-tex="\((\mathbb Z/3\mathbb Z)^2\)">\((\mathbb Z/3\mathbb Z)^2\)</span>: simultaneous basis translation increments <span class="math" data-tex="\(x,t\)">\(x,t\)</span> by one and fixes <span class="math" data-tex="\(q=x-t\)">\(q=x-t\)</span>. The complete proof retains arbitrary LCA groups. Reproduction source: <a href="assets/l138-reconstruction/render_figures.py">render_figures.py</a>; <a href="assets/l138-reconstruction/figures/finite-clock-and-shear.svg">editable SVG</a>.</p>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, let <span class="math" data-tex="\(A=\mathbb C^2\)">\(A=\mathbb C^2\)</span> and let <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> interchange its two coordinates. The first crossing is <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>: represent <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> by <span class="math" data-tex="\(\operatorname{diag}(a,b)\)">\(\operatorname{diag}(a,b)\)</span> and the group generator by the flip matrix. The four elements <span class="math" data-tex="\(p_0,p_1,p_0S_1,p_1S_1\)">\(p_0,p_1,p_0S_1,p_1S_1\)</span> give the four matrix units. They span the four-dimensional coefficient algebra and are linearly independent in this representation. Its operator norm bounds each matrix entry, while the universal norm is bounded by the sum of the coefficient norms, so the finite-dimensional completion adds no elements. The represented algebra is therefore exactly <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>. Its second crossing is <span class="math" data-tex="\(M_2(\mathbb C^2)\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\)">\(M_2(\mathbb C^2)\cong M_2(\mathbb C)\oplus M_2(\mathbb C)\)</span>, by (55) and the coordinatewise matrix identification.</p>
+<p><a id="l138-exercises"></a></p>
+<p><a id="oa-flow.xgaps.cstar.solutions"></a></p>
+<h2 id="OA-FLOW.XGAPS.CSTAR.SOLUTIONS">9. Checks with complete solutions</h2>
+<p><strong>A.</strong> Compute the surviving action on a finite matrix <span class="math" data-tex="\(bE_{ru}\)">\(bE_{ru}\)</span>.<br/>
+<strong>Solution.</strong> Right translation satisfies <span class="math" data-tex="\(\rho_s\delta_r=\delta_{r-s}\)">\(\rho_s\delta_r=\delta_{r-s}\)</span>. Hence
+<span class="math" data-tex="\(\rho_sE_{ru}\rho_s^*=E_{r-s,u-s}\)">\(\rho_sE_{ru}\rho_s^*=E_{r-s,u-s}\)</span>, and (61) gives
+<span class="math" data-tex="\(\alpha_s(b)E_{r-s,u-s}\)">\(\alpha_s(b)E_{r-s,u-s}\)</span>, with every index modulo <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>B.</strong> Which scalar matrices in (FC3) must belong to the algebra when <span class="math" data-tex="\(A\)">\(A\)</span> has no unit?<br/>
+<strong>Solution.</strong> None is required to be an algebra element by itself. The recovered group actions and scalar projections are bounded multiplier actions. The products <span class="math" data-tex="\(A_{\alpha_r(b)}p_rS_{r-u}p_u=bE_{ru}\)">\(A_{\alpha_r(b)}p_rS_{r-u}p_u=bE_{ru}\)</span> do belong to <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>, because their finitely many entries are in <span class="math" data-tex="\(A\)">\(A\)</span>. Thus the proof constructs the nonunital algebra without adjoining an unwanted identity.</p>
+<p><strong>C.</strong> Check the finite dual Haar mass, and the effect of dropping <span class="math" data-tex="\(1/n\)">\(1/n\)</span> in (FC1).<br/>
+<strong>Solution.</strong> For <span class="math" data-tex="\(f:\mathbb Z/n\mathbb Z\to\mathbb C\)">\(f:\mathbb Z/n\mathbb Z\to\mathbb C\)</span>, character orthogonality gives
+<span class="math math-display" data-tex="\[
+ \frac1n\sum_k\left|\sum_r f(r)e^{-2\pi i kr/n}\right|^2
+ =\sum_r|f(r)|^2.
+\]">\[
+ \frac1n\sum_k\left|\sum_r f(r)e^{-2\pi i kr/n}\right|^2
+ =\sum_r|f(r)|^2.
+\]</span>
+Thus dual mass <span class="math" data-tex="\(1/n\)">\(1/n\)</span> makes the Fourier transform unitary for counting Haar measure. Omitting the factor in <span class="math" data-tex="\(p_r\)">\(p_r\)</span> gives <span class="math" data-tex="\(np_r\)">\(np_r\)</span>, whose square is <span class="math" data-tex="\(n^2p_r\)">\(n^2p_r\)</span>; it is not a projection when <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>. Applying the dual negative transform again gives <span class="math" data-tex="\(f(-r)\)">\(f(-r)\)</span>, with the original counting Haar measure returned.</p>
+<p><a id="l138-free-reading"></a></p>
+<h2 id="10-free-primary-reading">10. Free primary reading</h2>
+<p><a href="https://math.dartmouth.edu/~dana/cpcsa/draft3.1.pdf">Dana P. Williams, <em>Crossed Products of C* Algebras</em>, author draft v3.1</a>, Theorem 7.1 and Lemmas 7.2–7.6, printed pages 190–197 (PDF pages 202–209), explain the negative-character duality convention and the coefficient gauge. The proof above gives its own faithful regular transform and both kernel norm inclusions rather than invoking that theorem. Williams Theorem 7.13, printed pages 199–201 (PDF pages 211–213), is a comparison source for the full/reduced issue, whose programme proof is <a href="OA-FLOW-L25.html#oa-flow.ccov.comparison">L25 Section 7</a>.</p>
+<p><a href="https://arxiv.org/pdf/1006.4975v4">Siegfried Echterhoff, <em>Crossed products and the Mackey–Rieffel–Green machine</em>, arXiv:1006.4975v4</a>, Theorem 6.10, page 31, uses the positive-character dual action. Replacing its character index by the inverse gives (52). Its Proposition 4.5 and Corollary 4.6, pages 11–12, motivate the two full/reduced comparisons; the vector and norm arguments used here are written in L25. Neither free theorem statement is used to prove itself.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-HARMONIC-LATE.html">Previous lesson</a><a href="OA-FLOW-SF.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L138.md">Lesson source</a></nav></main></body></html>

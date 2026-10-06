@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The global reciprocity law · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-global-reciprocity-law.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 16 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed"><summary>What this lesson assumes (8)</summary><ul><li><a href="profinite-groups-and-infinite-galois-theory.html">Profinite groups and infinite Galois theory</a></li><li><a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a></li><li><a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a></li><li><a href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and the existence theorem</a></li><li><a href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics</a></li><li><a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a></li><li><a href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group</a></li><li><a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-global-reciprocity-law">The global reciprocity law</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>A local symbol tells how one completion acts on an abelian extension. The global question is whether the symbols at all completions can be assembled into an invariant of an idèle class. Multiplying them defines a map on idèles immediately. It does not immediately define a map on classes: a principal element appears at every place, and its local contributions must cancel.</p>
+<p>We first inspect that cancellation in two explicit examples. The proof then has two tasks. Construct a map that is already defined on classes, using the abstract reciprocity theorem and the global cyclic norm axiom. Identify it with the local product by comparing one local norm quotient at a time. The identification proves both the principal product law and the exact global norm kernel.</p>
+<p>The abstract theorem is <a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a>, Theorem 5.1. Its arithmetic input here is the cyclic axiom in <a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a>, sections 1–8; the later quadratic-form proof is not used. Local symbols and their explicit cyclotomic convention were proved in lessons 6 and 9. Fixed idèle classes and compact norm-one classes were proved in lessons 13 and 14. The data will use integer degree for function fields and a profinite degree for number fields, so the valuation hypothesis must allow both.</p>
+<h2 id="1-the-cancellation-that-the-theorem-must-explain">1. The cancellation that the theorem must explain</h2>
+<p>Take the principal element <span class="math" data-tex="\(-6\)">\(-6\)</span> in <span class="math" data-tex="\(\mathbf Q(\zeta_5)/\mathbf Q\)">\(\mathbf Q(\zeta_5)/\mathbf Q\)</span>. At 2 and 3 its local symbols act on <span class="math" data-tex="\(\zeta_5\)">\(\zeta_5\)</span> with exponents 2 and 3. At 5 it is a unit, whose exponent is <span class="math" data-tex="\((-6)^{-1}\equiv4\pmod5\)">\((-6)^{-1}\equiv4\pmod5\)</span>. At infinity it is negative, whose exponent is <span class="math" data-tex="\(-1\equiv4\pmod5\)">\(-1\equiv4\pmod5\)</span>. All other finite components are unramified units and act trivially. The total exponent is
+<span class="math math-display" data-tex="\[
+2\cdot3\cdot4\cdot4\equiv1\pmod5.
+\]">\[
+2\cdot3\cdot4\cdot4\equiv1\pmod5.
+\]</span>
+Each ramified or infinite correction matters. Looking only at the prime divisors of 6 would give exponent 1 modulo 5 in this particular case, but it would hide two nontrivial compensating actions. The individual contributions, rather than their coincidental partial product, are what the theorem must organize.</p>
+<p>For a function-field example, take <span class="math" data-tex="\(K=\mathbf F_7(t)\)">\(K=\mathbf F_7(t)\)</span>, a constant extension of degree six, and <span class="math" data-tex="\(a=(t^2+1)/t^2\)">\(a=(t^2+1)/t^2\)</span>. Since <span class="math" data-tex="\(-1\)">\(-1\)</span> is not a square in <span class="math" data-tex="\(\mathbf F_7\)">\(\mathbf F_7\)</span>, the numerator defines a degree-two place. Its valuation is 1, while the degree-one place <span class="math" data-tex="\(t\)">\(t\)</span> has valuation <span class="math" data-tex="\(-2\)">\(-2\)</span>, and infinity has valuation zero. Their constant-field Frobenius exponents add to <span class="math" data-tex="\(2\cdot1+1\cdot(-2)=0\)">\(2\cdot1+1\cdot(-2)=0\)</span>. The product is again the identity. Here cancellation is a degree equation rather than an archimedean sign correction.</p>
+<p>These examples establish the rule only for cyclotomic or constant extensions, using the explicit local results. For arbitrary abelian extensions the principal product law is still to be proved. In particular, we cannot assume a map on <span class="math" data-tex="\(C_K\)">\(C_K\)</span> merely because we have written a finite product on <span class="math" data-tex="\(J_K\)">\(J_K\)</span>.</p>
+<span id="1-the-product-on-idèles" aria-hidden="true"></span><h2 id="2-the-product-on-idèles">2. The product on idèles</h2>
+<p>For a finite abelian extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, choose <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>. The local Galois group is the decomposition group <span class="math" data-tex="\(D_w\subseteq\operatorname{Gal}(L/K)\)">\(D_w\subseteq\operatorname{Gal}(L/K)\)</span>. Since the latter is abelian, changing <span class="math" data-tex="\(w\)">\(w\)</span> conjugates this subgroup and its map trivially. Define
+<span class="math math-display" data-tex="\[
+[x,L/K]=\prod_v\operatorname{rec}_{L_w/K_v}(x_v),
+\qquad x\in J_K.
+\tag{1}
+\]">\[
+[x,L/K]=\prod_v\operatorname{rec}_{L_w/K_v}(x_v),
+\qquad x\in J_K.
+\tag{1}
+\]</span>
+At almost all finite places the extension is unramified and <span class="math" data-tex="\(x_v\)">\(x_v\)</span> is a unit, so the factor is <span class="math" data-tex="\(1\)">\(1\)</span>. The arithmetic convention sends a uniformizer in an unramified extension to residue-field Frobenius <span class="math" data-tex="\(z\mapsto z^{Nv}\)">\(z\mapsto z^{Nv}\)</span>.</p>
+<p>The map is continuous: finitely many local open norm kernels, together with units outside a finite set, give an open subgroup of its kernel. An idèle norm lies in the kernel, because each local factor is a norm from the product of the completions over that place.</p>
+<p><strong>Proposition 16.1.</strong> Suppose <span class="math" data-tex="\(K\subseteq K&#x27;\)">\(K\subseteq K&#x27;\)</span>, <span class="math" data-tex="\(L\subseteq L&#x27;\)">\(L\subseteq L&#x27;\)</span>, and both <span class="math" data-tex="\(L/K\)">\(L/K\)</span> and <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> are finite abelian. Then
+<span class="math math-display" data-tex="\[
+[N_{K&#x27;/K}x,L/K]
+=[x,L&#x27;/K&#x27;]|_L.
+\tag{2}
+\]">\[
+[N_{K&#x27;/K}x,L/K]
+=[x,L&#x27;/K&#x27;]|_L.
+\tag{2}
+\]</span>
+The symbols also commute with conjugation and restriction in towers. Each map (1) is surjective.</p>
+<p><strong>Proof.</strong> The <span class="math" data-tex="\(v\)">\(v\)</span>-component of <span class="math" data-tex="\(N_{K&#x27;/K}x\)">\(N_{K&#x27;/K}x\)</span> is
+<span class="math" data-tex="\(\prod_{v&#x27;\mid v}N_{K&#x27;_{v&#x27;}/K_v}x_{v&#x27;}\)">\(\prod_{v&#x27;\mid v}N_{K&#x27;_{v&#x27;}/K_v}x_{v&#x27;}\)</span>.
+Local norm functoriality, proved in <a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a>, identifies its symbol with the product of the restrictions of the <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span>-symbols. Multiplication over <span class="math" data-tex="\(v\)">\(v\)</span> proves (2). Local conjugation and tower compatibility give the other two identities.</p>
+<p>The image of (1) contains each decomposition group, since local reciprocity is onto and we may vary just that idèle component. The fixed field of the image therefore splits completely at every place of <span class="math" data-tex="\(K\)">\(K\)</span>. Corollary 14.4 says that a nontrivial finite separable extension has infinitely many places failing complete splitting. The fixed field must be <span class="math" data-tex="\(K\)">\(K\)</span>, so the image is the whole Galois group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an infinite abelian extension, define the symbol by these compatible finite quotients. This is equivalently a convergent product of local symbols in the profinite group: in any fixed finite quotient only finitely many factors are nontrivial. At an infinite local extension we use the union of its finite localizations, not an assertion that an algebraic union is complete.</p>
+<span id="2-principal-cyclotomic-symbols" aria-hidden="true"></span><h2 id="3-principal-cyclotomic-and-constant-field-symbols">3. Principal cyclotomic and constant-field symbols</h2>
+<p><strong>Proposition 16.2.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is a number field, <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is a root of unity, then
+<span class="math math-display" data-tex="\[
+[a,K(\zeta)/K]=1.
+\tag{3}
+\]">\[
+[a,K(\zeta)/K]=1.
+\tag{3}
+\]</span>
+For a function field, every principal idèle likewise has trivial symbol in every finite constant extension.</p>
+<p><strong>Proof for number fields.</strong> By (2), restriction of the left side to <span class="math" data-tex="\(\mathbf Q(\zeta)\)">\(\mathbf Q(\zeta)\)</span> equals
+<span class="math" data-tex="\([N_{K/\mathbf Q}a,\mathbf Q(\zeta)/\mathbf Q]\)">\([N_{K/\mathbf Q}a,\mathbf Q(\zeta)/\mathbf Q]\)</span>.
+Restriction is injective on <span class="math" data-tex="\(\operatorname{Gal}(K(\zeta)/K)\)">\(\operatorname{Gal}(K(\zeta)/K)\)</span>, so it suffices to work over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Split the order of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> into prime powers; it suffices to treat order <span class="math" data-tex="\(\ell^m\)">\(\ell^m\)</span>.</p>
+<p>Write <span class="math" data-tex="\(a=u_\ell\ell^{v_\ell(a)}\)">\(a=u_\ell\ell^{v_\ell(a)}\)</span>. The explicit local theorem in <a href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and existence</a>, Corollary 9.5, gives the exponents acting on <span class="math" data-tex="\(\zeta_{\ell^m}\)">\(\zeta_{\ell^m}\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{place}&amp;\text{exponent}\\ \hline
+p\ne\ell,\ \ p\text{ finite}&amp;p^{v_p(a)}\\
+\ell&amp;u_\ell^{-1}\pmod{\ell^m}\\
+\infty&amp;\operatorname{sgn}(a).
+\end{array}
+\tag{4}
+\]">\[
+\begin{array}{c|c}
+\text{place}&amp;\text{exponent}\\ \hline
+p\ne\ell,\ \ p\text{ finite}&amp;p^{v_p(a)}\\
+\ell&amp;u_\ell^{-1}\pmod{\ell^m}\\
+\infty&amp;\operatorname{sgn}(a).
+\end{array}
+\tag{4}
+\]</span>
+Negative valuations use inverse powers modulo <span class="math" data-tex="\(\ell^m\)">\(\ell^m\)</span>. Since
+<span class="math math-display" data-tex="\[
+u_\ell=\operatorname{sgn}(a)\prod_{p\ne\ell}p^{v_p(a)},
+\]">\[
+u_\ell=\operatorname{sgn}(a)\prod_{p\ne\ell}p^{v_p(a)},
+\]</span>
+the product of the exponents in (4) is <span class="math" data-tex="\(1\)">\(1\)</span> in
+<span class="math" data-tex="\((\mathbf Z/\ell^m)^\times\)">\((\mathbf Z/\ell^m)^\times\)</span>. This proves (3), including the real sign.</p>
+<p><strong>Proof for function fields.</strong> Let <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span> be the full constant field of <span class="math" data-tex="\(K\)">\(K\)</span>. In <span class="math" data-tex="\(K_m=K\mathbf F_{q^m}\)">\(K_m=K\mathbf F_{q^m}\)</span>, the local extension at <span class="math" data-tex="\(v\)">\(v\)</span> is unramified, with residue degree <span class="math" data-tex="\(m/\gcd(m,\deg v)\)">\(m/\gcd(m,\deg v)\)</span>. Its uniformizer symbol acts on constants as the <span class="math" data-tex="\(\deg v\)">\(\deg v\)</span>th power of <span class="math" data-tex="\(q\)">\(q\)</span>-Frobenius. Thus the product symbol of a principal element is Frobenius to the power
+<span class="math" data-tex="\(\sum_v\deg(v)v(a)=0\)">\(\sum_v\deg(v)v(a)=0\)</span>, by the product formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here <span class="math" data-tex="\([K_m:K]=m\)">\([K_m:K]=m\)</span>. Indeed an irreducible finite-field polynomial remains irreducible over <span class="math" data-tex="\(K\)">\(K\)</span>: a monic factor would have coefficients in the algebraic constant field as well as in <span class="math" data-tex="\(K\)">\(K\)</span>, hence in <span class="math" data-tex="\(k\)">\(k\)</span>, contradicting irreducibility. Its roots generate the constant extension. This also shows that the full constant field of <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is <span class="math" data-tex="\(\mathbf F_{q^m}\)">\(\mathbf F_{q^m}\)</span>.</p>
+<p>For example, take <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>, <span class="math" data-tex="\(L=\mathbf Q(i)\)">\(L=\mathbf Q(i)\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span> the inverse unit <span class="math" data-tex="\(-1\)">\(-1\)</span> gives complex conjugation, and at infinity the negative sign gives the same automorphism. Every odd place contributes <span class="math" data-tex="\(1\)">\(1\)</span>. The two conjugations multiply to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="4-constructing-a-map-on-idèle-classes">4. Constructing a map on idèle classes</h2>
+<p>The special cases provide exactly the degree direction needed for a map on classes. The remaining input is the cyclic norm axiom, already proved without global reciprocity. It is useful to view these inputs as a checklist: fixed classes, a procyclic Galois degree, a compatible valuation of norm images, and the two cyclic Tate conditions.</p>
+<span id="3-the-module-of-idèle-classes" aria-hidden="true"></span><h3 id="the-module-and-its-fixed-classes">The module and its fixed classes</h3>
+<p>Fix a separable closure of a ground global field <span class="math" data-tex="\(k_0\)">\(k_0\)</span>, and put
+<span class="math math-display" data-tex="\[
+A=\varinjlim_{K/k_0\text{ finite separable}}C_K.
+\tag{5}
+\]">\[
+A=\varinjlim_{K/k_0\text{ finite separable}}C_K.
+\tag{5}
+\]</span>
+The transition maps are the diagonal embeddings. They are injective by lesson 13. Give <span class="math" data-tex="\(A\)">\(A\)</span> the discrete topology for its Galois-module structure; every element is defined over a finite extension, so its stabilizer is open. This does not change the ordinary locally compact topology used on each <span class="math" data-tex="\(C_K\)">\(C_K\)</span>.</p>
+<p>One has <span class="math" data-tex="\(A^{G_K}=C_K\)">\(A^{G_K}=C_K\)</span>. To check this, represent a fixed element in <span class="math" data-tex="\(C_M\)">\(C_M\)</span> with <span class="math" data-tex="\(M/K\)">\(M/K\)</span> finite Galois. Invariance in the direct limit is invariance in <span class="math" data-tex="\(C_M\)">\(C_M\)</span>, by injectivity. The invariant descent <span class="math" data-tex="\(C_M^{\operatorname{Gal}(M/K)}=C_K\)">\(C_M^{\operatorname{Gal}(M/K)}=C_K\)</span> was proved using Hilbert 90 in lesson 13. The group-theoretic module norm is exactly the idèle-class norm, since both are the product of Galois conjugates. Thus the cyclic class field axiom of Theorem 15.1 is the precise axiom required by the abstract theorem.</p>
+<p>What remains is its degree and valuation data.</p>
+<span id="5-the-function-field-valuation" aria-hidden="true"></span><h3 id="integer-degree-for-function-fields">Integer degree for function fields</h3>
+<p>For a function field <span class="math" data-tex="\(k_0\)">\(k_0\)</span> with full constants <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, let <span class="math" data-tex="\(\widetilde{k_0}=k_0\overline{\mathbf F}_q\)">\(\widetilde{k_0}=k_0\overline{\mathbf F}_q\)</span>. Arithmetic constant-field Frobenius supplies
+<span class="math" data-tex="\(d:G_{k_0}\to\widehat{\mathbf Z}\)">\(d:G_{k_0}\to\widehat{\mathbf Z}\)</span>.
+For a finite separable <span class="math" data-tex="\(K/k_0\)">\(K/k_0\)</span>, <span class="math" data-tex="\(f_K\)">\(f_K\)</span> is the degree of its full constant field over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, and <span class="math" data-tex="\(d_K\)">\(d_K\)</span> is Frobenius normalized for those full constants.</p>
+<p>The degree map
+<span class="math math-display" data-tex="\[
+v_K(c)=\deg_K c=\sum_v[\kappa(v):k_K]v(x_v),
+\qquad c=[x]\in C_K,
+\tag{8}
+\]">\[
+v_K(c)=\deg_K c=\sum_v[\kappa(v):k_K]v(x_v),
+\qquad c=[x]\in C_K,
+\tag{8}
+\]</span>
+is well-defined by the product formula. It is onto <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. To prove the last assertion without a point-count estimate, let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> be the greatest common divisor of all place degrees. If a prime <span class="math" data-tex="\(\ell\mid\delta\)">\(\ell\mid\delta\)</span>, every residue field contains the degree-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> constant field. The nontrivial constant extension <span class="math" data-tex="\(K\mathbf F_{|k_K|^\ell}/K\)">\(K\mathbf F_{|k_K|^\ell}/K\)</span> then splits completely at every place, contrary to Corollary 14.4. Hence <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>. Bézout applied to finitely many of the degrees produces an idèle of degree <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For every finite separable <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the local valuation formula for norms gives
+<span class="math math-display" data-tex="\[
+\deg_K(N_{L/K}c)=[k_L:k_K]\deg_L(c).
+\tag{9}
+\]">\[
+\deg_K(N_{L/K}c)=[k_L:k_K]\deg_L(c).
+\tag{9}
+\]</span>
+Indeed the coefficient at <span class="math" data-tex="\(v\)">\(v\)</span> is the sum of
+<span class="math" data-tex="\([\kappa(v):k_K]f(w/v)v_w(x_w)
+=[k_L:k_K][\kappa(w):k_L]v_w(x_w)\)">\([\kappa(v):k_K]f(w/v)v_w(x_w)
+=[k_L:k_K][\kappa(w):k_L]v_w(x_w)\)</span>.
+Here <span class="math" data-tex="\([k_L:k_K]=f_{L/K}\)">\([k_L:k_K]=f_{L/K}\)</span>, the index of the constant-field degree images. Thus the henselian conditions hold with <span class="math" data-tex="\(V=\mathbf Z\subset\widehat{\mathbf Z}\)">\(V=\mathbf Z\subset\widehat{\mathbf Z}\)</span>; surjectivity means onto <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, not onto its profinite completion. By Proposition 16.2 the constant-extension symbol is precisely Frobenius to this integer degree.</p>
+<span id="4-the-number-field-valuation" aria-hidden="true"></span><h3 id="profinite-degree-for-number-fields">Profinite degree for number fields</h3>
+<p>Take <span class="math" data-tex="\(k_0=\mathbf Q\)">\(k_0=\mathbf Q\)</span>. In lesson 1 we proved
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(\mathbf Q(\mu_\infty)/\mathbf Q)
+\simeq\widehat{\mathbf Z}^{\,\times}
+\simeq\widehat{\mathbf Z}\times T,
+\]">\[
+\operatorname{Gal}(\mathbf Q(\mu_\infty)/\mathbf Q)
+\simeq\widehat{\mathbf Z}^{\,\times}
+\simeq\widehat{\mathbf Z}\times T,
+\]</span>
+where <span class="math" data-tex="\(T\)">\(T\)</span> is a product of finite torsion factors. The closure of the finite-order elements is <span class="math" data-tex="\(T\)">\(T\)</span>. It matters that we take the closure: the product <span class="math" data-tex="\(T\)">\(T\)</span> can contain elements of infinite order. Its fixed field <span class="math" data-tex="\(\widetilde{\mathbf Q}\)">\(\widetilde{\mathbf Q}\)</span> has Galois group <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. Choose an isomorphism once, obtaining <span class="math" data-tex="\(d:G_{\mathbf Q}\to\widehat{\mathbf Z}\)">\(d:G_{\mathbf Q}\to\widehat{\mathbf Z}\)</span>.</p>
+<p>For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, set
+<span class="math math-display" data-tex="\[
+f_K=[K\cap\widetilde{\mathbf Q}:\mathbf Q],
+\qquad d_K=f_K^{-1}d|_{G_K},
+\qquad\widetilde K=K\widetilde{\mathbf Q}.
+\]">\[
+f_K=[K\cap\widetilde{\mathbf Q}:\mathbf Q],
+\qquad d_K=f_K^{-1}d|_{G_K},
+\qquad\widetilde K=K\widetilde{\mathbf Q}.
+\]</span>
+Proposition 16.2 lets the product symbol in <span class="math" data-tex="\(\widetilde K/K\)">\(\widetilde K/K\)</span> descend to <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Define
+<span class="math math-display" data-tex="\[
+v_K(c)=d_K[c,\widetilde K/K]\in\widehat{\mathbf Z}.
+\tag{6}
+\]">\[
+v_K(c)=d_K[c,\widetilde K/K]\in\widehat{\mathbf Z}.
+\tag{6}
+\]</span>
+Here <span class="math" data-tex="\(d_K\)">\(d_K\)</span> denotes its induced isomorphism on that procyclic Galois group.</p>
+<p>This map is onto. Proposition 16.1 makes its image onto every finite quotient, hence dense. Split
+<span class="math" data-tex="\(C_K=C_K^1\times\mathbf R_{&gt;0}\)">\(C_K=C_K^1\times\mathbf R_{&gt;0}\)</span>
+using a chosen archimedean component. The positive-real factor is divisible and every finite quotient kills it: take an <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>th root before applying a finite symbol. The image consequently comes from compact <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, is closed, and is all of <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>.</p>
+<p>For every finite extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, norm functoriality gives
+<span class="math math-display" data-tex="\[
+v_K(N_{L/K}c)=f_{L/K}v_L(c),
+\qquad
+f_{L/K}=[d(G_K):d(G_L)].
+\tag{7}
+\]">\[
+v_K(N_{L/K}c)=f_{L/K}v_L(c),
+\qquad
+f_{L/K}=[d(G_K):d(G_L)].
+\tag{7}
+\]</span>
+Since <span class="math" data-tex="\(v_L\)">\(v_L\)</span> is onto, the norm image under <span class="math" data-tex="\(v_K\)">\(v_K\)</span> is exactly <span class="math" data-tex="\(f_{L/K}\widehat{\mathbf Z}\)">\(f_{L/K}\widehat{\mathbf Z}\)</span>. The normalization also gives
+<span class="math" data-tex="\(v_K=f_K^{-1}v_{\mathbf Q}N_{K/\mathbf Q}\)">\(v_K=f_K^{-1}v_{\mathbf Q}N_{K/\mathbf Q}\)</span>.
+These are exactly the henselian valuation conditions of lesson 4, with value group <span class="math" data-tex="\(V=\widehat{\mathbf Z}\)">\(V=\widehat{\mathbf Z}\)</span>; an integer-only condition would be inappropriate here.</p>
+<p><strong>Proposition 16.3.</strong> The Galois module (5), the cyclotomic degree and valuation (6) for number fields, or the constant-field degree and valuation (8) for function fields, form a class field theory in the sense of lessons 4–5.</p>
+<p><strong>Proof.</strong> The invariant-module and norm identifications are those just proved for (5). The degree maps are continuous surjections, with normalized images for finite subfields as in lesson 4. The two valuation constructions above prove the henselian norm-image conditions. Both value groups satisfy <span class="math" data-tex="\(V/nV\simeq\mathbf Z/n\)">\(V/nV\simeq\mathbf Z/n\)</span>. The cyclic axiom is Theorem 15.1. These verify every input to Theorem 5.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="6-abstract-reciprocity-and-its-local-comparison" aria-hidden="true"></span><h2 id="5-comparing-the-maps-on-local-norm-quotients">5. Comparing the maps on local norm quotients</h2>
+<p>The map on classes supplied by the abstract theorem has the correct norm kernel, but that does not yet identify the action of a single completion. The local product is the map whose completion-by-completion behavior we want. For both maps a local norm dies, so the comparison reduces to a finite quotient. The following proof makes every class of that quotient accessible from an extension on which the comparison is already known.</p>
+<p>Apply the abstract theorem. For every finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span> it gives
+<span class="math math-display" data-tex="\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\xrightarrow{\sim}C_K/N_{L/K}C_L.
+\tag{10}
+\]">\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\xrightarrow{\sim}C_K/N_{L/K}C_L.
+\tag{10}
+\]</span>
+Write <span class="math" data-tex="\(\rho_{L/K}\)">\(\rho_{L/K}\)</span> for its inverse on <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. It is continuous because its kernel is the open norm subgroup. Norm, conjugation and tower compatibility are Proposition 5.2.</p>
+<p>For finite subextensions of <span class="math" data-tex="\(\widetilde K/K\)">\(\widetilde K/K\)</span>, its formula is
+<span class="math math-display" data-tex="\[
+\rho_{L/K}(c)=\varphi_{L/K}^{\,v_K(c)\bmod[L:K]}.
+\tag{11}
+\]">\[
+\rho_{L/K}(c)=\varphi_{L/K}^{\,v_K(c)\bmod[L:K]}.
+\tag{11}
+\]</span>
+By the definition of <span class="math" data-tex="\(v_K\)">\(v_K\)</span>, this equals <span class="math" data-tex="\([c,L/K]\)">\([c,L/K]\)</span>. We must extend the comparison to every abelian extension.</p>
+<span id="an-auxiliary-procyclic-extension" aria-hidden="true"></span><h3 id="making-a-local-quotient-accessible-from-a-degree-extension">Making a local quotient accessible from a degree extension</h3>
+<p>At a finite place of a number field, every cyclotomic <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-extension has infinite local degree. If the residue characteristic is <span class="math" data-tex="\(p\)">\(p\)</span>, the <span class="math" data-tex="\(p\)">\(p\)</span>-power cyclotomic local degrees grow without bound by the totally ramified division fields of lesson 8; adjoining the fixed finite completion cannot bound them. If the residue characteristic is <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, the extension is unramified and its Frobenius projects to the <span class="math" data-tex="\(p\)">\(p\)</span>-adic unit <span class="math" data-tex="\(\ell^{f_v}\)">\(\ell^{f_v}\)</span> modulo torsion. This is not torsion, since no positive power of the positive rational integer <span class="math" data-tex="\(\ell^{f_v}&gt;1\)">\(\ell^{f_v}&gt;1\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>. Its closed cyclic image in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> is therefore a nonzero open subgroup. These observations also apply when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, using the finite sign factor.</p>
+<p>For function fields the constant <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-extension has local degree image <span class="math" data-tex="\(\deg(v)\mathbf Z_p\)">\(\deg(v)\mathbf Z_p\)</span>, also nonzero and open. Thus in either case there is a <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-subextension <span class="math" data-tex="\(T/K\)">\(T/K\)</span> of <span class="math" data-tex="\(\widetilde K/K\)">\(\widetilde K/K\)</span> with infinite local degree at the specified finite place.</p>
+<p>Suppose now that <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic of <span class="math" data-tex="\(p\)">\(p\)</span>-power degree, generated by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and its decomposition group at the specified place is the whole group. Put <span class="math" data-tex="\(M=LT\)">\(M=LT\)</span>, and let <span class="math" data-tex="\(D\subseteq\operatorname{Gal}(M/K)\)">\(D\subseteq\operatorname{Gal}(M/K)\)</span> be the decomposition subgroup there. It maps onto <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, and its image in <span class="math" data-tex="\(\operatorname{Gal}(T/K)=\mathbf Z_p\)">\(\operatorname{Gal}(T/K)=\mathbf Z_p\)</span> is open. The image of the kernel of <span class="math" data-tex="\(D\to\operatorname{Gal}(L/K)\)">\(D\to\operatorname{Gal}(L/K)\)</span> is still open, since that kernel has finite index in <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(g\in D\)">\(g\in D\)</span> restricting to <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and adjust it by this kernel so its <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-coordinate is a nonzero positive ordinary integer. This is possible because the allowed coordinates form a coset of an open subgroup <span class="math" data-tex="\(p^b\mathbf Z_p\)">\(p^b\mathbf Z_p\)</span>, and every such coset contains a positive integer. Let <span class="math" data-tex="\(H=\overline{\langle g\rangle}\)">\(H=\overline{\langle g\rangle}\)</span>, and <span class="math" data-tex="\(K&#x27;=M^H\)">\(K&#x27;=M^H\)</span>. The coordinate map on <span class="math" data-tex="\(H\)">\(H\)</span> is injective, with open image, so <span class="math" data-tex="\(H\simeq\mathbf Z_p\)">\(H\simeq\mathbf Z_p\)</span> and <span class="math" data-tex="\([K&#x27;:K]&lt;\infty\)">\([K&#x27;:K]&lt;\infty\)</span>. Also <span class="math" data-tex="\(H\cap\operatorname{Gal}(M/T)=1\)">\(H\cap\operatorname{Gal}(M/T)=1\)</span>, whence
+<span class="math math-display" data-tex="\[
+M=K&#x27;T,\qquad L&#x27;=K&#x27;L\subseteq\widetilde{K&#x27;}.
+\tag{12}
+\]">\[
+M=K&#x27;T,\qquad L&#x27;=K&#x27;L\subseteq\widetilde{K&#x27;}.
+\tag{12}
+\]</span>
+Because <span class="math" data-tex="\(H\subseteq D\)">\(H\subseteq D\)</span>, the chosen place has full decomposition group in <span class="math" data-tex="\(M/K&#x27;\)">\(M/K&#x27;\)</span>. The finite local group for <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> maps onto <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, sending the restriction of <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. This proves the required auxiliary construction, including its local property.</p>
+<h3 id="comparing-at-finite-places">Comparing at finite places</h3>
+<p>For abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, compose <span class="math" data-tex="\(K_v^\times\to C_K\)">\(K_v^\times\to C_K\)</span> with <span class="math" data-tex="\(\rho_{L/K}\)">\(\rho_{L/K}\)</span>, and compare it with local reciprocity followed by <span class="math" data-tex="\(D_v\hookrightarrow\operatorname{Gal}(L/K)\)">\(D_v\hookrightarrow\operatorname{Gal}(L/K)\)</span>. Both maps kill the local norm group: a local norm gives a global idèle norm supported at that place. They therefore factor through the finite local norm quotient <span class="math" data-tex="\(D_v\)">\(D_v\)</span>. It suffices to compare on its prime-power elements.</p>
+<p>Take such an element <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and replace the base by <span class="math" data-tex="\(K_0=L^{\langle\sigma\rangle}\)">\(K_0=L^{\langle\sigma\rangle}\)</span>. At the chosen place <span class="math" data-tex="\(L/K_0\)">\(L/K_0\)</span> has full cyclic decomposition group <span class="math" data-tex="\(\langle\sigma\rangle\)">\(\langle\sigma\rangle\)</span>. Apply the auxiliary construction just proved to get <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> as in (12). Comparison for <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> is already known by (11), because it is cyclotomic or constant. Local reciprocity supplies an element <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> whose local symbol is the lift of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Norm it down to <span class="math" data-tex="\(K_{0,v_0}\)">\(K_{0,v_0}\)</span>, then to <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Global norm functoriality for <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and local norm functoriality give <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> on both sides. Since both maps already factor through <span class="math" data-tex="\(D_v\)">\(D_v\)</span>, this proves their equality. Every element of a finite abelian group is a product of prime-power elements, so the comparison holds on all <span class="math" data-tex="\(K_v^\times\)">\(K_v^\times\)</span>.</p>
+<h3 id="comparing-at-infinite-places">Comparing at infinite places</h3>
+<p>Only a real place becoming complex has nontrivial local group. First take the special extension <span class="math" data-tex="\(F(i)/F\)">\(F(i)/F\)</span> at a real place of a number field <span class="math" data-tex="\(F\)">\(F\)</span>. Proposition 16.2 makes its product symbol a map on <span class="math" data-tex="\(C_F\)">\(C_F\)</span>; it kills norms and is onto, since a negative component at that place maps to conjugation. Its norm quotient has order <span class="math" data-tex="\(2\)">\(2\)</span> by Theorem 15.1. There is just one isomorphism between groups of order <span class="math" data-tex="\(2\)">\(2\)</span>, so this product map is <span class="math" data-tex="\(\rho_{F(i)/F}\)">\(\rho_{F(i)/F}\)</span>.</p>
+<p>For a general complexification, let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> be its conjugation element and pass to <span class="math" data-tex="\(K_0=L^{\langle\sigma\rangle}\)">\(K_0=L^{\langle\sigma\rangle}\)</span>. In <span class="math" data-tex="\(M=L(i)\)">\(M=L(i)\)</span>, extend <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by the chosen complex conjugation, and let <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> be its fixed field. The chosen completion of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> is real, and
+<span class="math math-display" data-tex="\[
+L&#x27;=K&#x27;L=M=K&#x27;(i).
+\]">\[
+L&#x27;=K&#x27;L=M=K&#x27;(i).
+\]</span>
+The equality follows since both <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> are moved by that conjugation and <span class="math" data-tex="\(M/K&#x27;\)">\(M/K&#x27;\)</span> has degree <span class="math" data-tex="\(2\)">\(2\)</span>. Norm functoriality now reduces the comparison to the special case, exactly as above. At real places staying real and at complex places both maps are trivial because the local norm group is all of <span class="math" data-tex="\(K_v^\times\)">\(K_v^\times\)</span>.</p>
+<span id="7-artin-reciprocity" aria-hidden="true"></span><h2 id="6-artin-reciprocity">6. Artin reciprocity</h2>
+<p><strong>Theorem 16.4 (Artin reciprocity).</strong> For every finite abelian extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of global fields, the product (1) induces an isomorphism
+<span class="math math-display" data-tex="\[
+C_K/N_{L/K}C_L\xrightarrow{\sim}\operatorname{Gal}(L/K).
+\tag{13}
+\]">\[
+C_K/N_{L/K}C_L\xrightarrow{\sim}\operatorname{Gal}(L/K).
+\tag{13}
+\]</span>
+In particular
+<span class="math math-display" data-tex="\[
+\prod_v\operatorname{rec}_{L_w/K_v}(a)=1
+\quad(a\in K^\times),
+\tag{14}
+\]">\[
+\prod_v\operatorname{rec}_{L_w/K_v}(a)=1
+\quad(a\in K^\times),
+\tag{14}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+J_K/(K^\times N_{L/K}J_L)\simeq\operatorname{Gal}(L/K).
+\tag{15}
+\]">\[
+J_K/(K^\times N_{L/K}J_L)\simeq\operatorname{Gal}(L/K).
+\tag{15}
+\]</span></p>
+<p><strong>Proof.</strong> Section 5 identifies the product and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on every idèle supported at one place. Finite products of such idèles are dense in the restricted product: a basic neighborhood restricts only finitely many components, with unit conditions on the tail. Both maps are continuous to a finite group, so they agree everywhere on <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. The abstract map factors through <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, proving (14), and has kernel <span class="math" data-tex="\(NC_L\)">\(NC_L\)</span>, proving (13)–(15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an unramified finite place, the global symbol of its idèle uniformizer is its arithmetic Frobenius. Thus this theorem includes the usual Frobenius prescription at primes, as well as every ramified and archimedean component. For nonabelian finite Galois extensions (10) remains valid, and the norm group equals that of the maximal abelian subextension by norm limitation in lesson 5.</p>
+<p>For an infinite abelian extension the map on <span class="math" data-tex="\(C_K\)">\(C_K\)</span> has dense image, because it is onto every finite quotient. Over number fields it is onto: the positive-real factor is killed and the image of compact <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> is closed. Over function fields its constant-field projection is the integer degree subgroup of <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, so it is not onto the infinite constant extension. The next lesson describes the precise topology and the existence correspondence.</p>
+<p>The construction of the abstract number-field degree involved a choice of an isomorphism with <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. The final map is independent of that choice, since the comparison identifies it with the product of the fixed arithmetic local maps.</p>
+<span id="8-quadratic-reciprocity-as-a-product-formula" aria-hidden="true"></span><h2 id="7-quadratic-reciprocity-as-a-product-formula">7. Quadratic reciprocity as a product formula</h2>
+<p>Let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be distinct odd rational primes, and put <span class="math" data-tex="\(p^*=(-1)^{(p-1)/2}p\)">\(p^*=(-1)^{(p-1)/2}p\)</span>. Take <span class="math" data-tex="\(L=\mathbf Q(\sqrt{p^*})\)">\(L=\mathbf Q(\sqrt{p^*})\)</span> and the principal element <span class="math" data-tex="\(q\)">\(q\)</span>. By the explicit Hilbert symbol formulas of <a href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics</a>, its local actions on <span class="math" data-tex="\(\sqrt{p^*}\)">\(\sqrt{p^*}\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+v&amp;\text{multiplying sign}\\ \hline
+q&amp;(p^*/q)\\
+p&amp;(q/p)\\
+2&amp;1\\
+\infty&amp;1.
+\end{array}
+\tag{16}
+\]">\[
+\begin{array}{c|c}
+v&amp;\text{multiplying sign}\\ \hline
+q&amp;(p^*/q)\\
+p&amp;(q/p)\\
+2&amp;1\\
+\infty&amp;1.
+\end{array}
+\tag{16}
+\]</span>
+At <span class="math" data-tex="\(q\)">\(q\)</span> the extension is unramified and Frobenius gives the residue square character. At <span class="math" data-tex="\(p\)">\(p\)</span>, the odd-place Hilbert formula has valuations <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, giving <span class="math" data-tex="\((q/p)\)">\((q/p)\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span>, both entries are odd and <span class="math" data-tex="\(p^*\equiv1\pmod4\)">\(p^*\equiv1\pmod4\)</span>, so the odd-unit <span class="math" data-tex="\(2\)">\(2\)</span>-adic Hilbert formula gives <span class="math" data-tex="\(1\)">\(1\)</span>. At infinity <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. All other places have an unramified unit symbol.</p>
+<p>Theorem 16.4 now gives <span class="math" data-tex="\((p^*/q)(q/p)=1\)">\((p^*/q)(q/p)=1\)</span>. Since
+<span class="math" data-tex="\((-1/q)=(-1)^{(q-1)/2}\)">\((-1/q)=(-1)^{(q-1)/2}\)</span>, this is
+<span class="math math-display" data-tex="\[
+(p/q)(q/p)=(-1)^{(p-1)(q-1)/4}.
+\tag{17}
+\]">\[
+(p/q)(q/p)=(-1)^{(p-1)(q-1)/4}.
+\tag{17}
+\]</span>
+No prior global quadratic reciprocity theorem was used: only the already proved local Hilbert formulas and the global product theorem.</p>
+<span id="9-exercises-and-complete-solutions" aria-hidden="true"></span><h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<h3 id="exercise-1-the-real-sign-easy">Exercise 1 — The real sign (easy)</h3>
+<p>Verify the product formula for <span class="math" data-tex="\(-1\)">\(-1\)</span> in <span class="math" data-tex="\(\mathbf Q(i)/\mathbf Q\)">\(\mathbf Q(i)/\mathbf Q\)</span>.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(2\)">\(2\)</span>, Corollary 9.5 acts on <span class="math" data-tex="\(i\)">\(i\)</span> by the inverse of the unit <span class="math" data-tex="\(-1\)">\(-1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>, hence sends <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(-i\)">\(-i\)</span>. At infinity, <span class="math" data-tex="\(-1\)">\(-1\)</span> gives complex conjugation. At every odd prime the extension is unramified or split and <span class="math" data-tex="\(-1\)">\(-1\)</span> is a unit, so the symbol is trivial. The product is conjugation squared, hence <span class="math" data-tex="\(1\)">\(1\)</span>. Omitting infinity would give the wrong product.</p>
+<h3 id="exercise-2-a-fifth-root-of-unity-medium">Exercise 2 — A fifth root of unity (medium)</h3>
+<p>Verify the product formula for <span class="math" data-tex="\(3\)">\(3\)</span> in <span class="math" data-tex="\(\mathbf Q(\zeta_5)/\mathbf Q\)">\(\mathbf Q(\zeta_5)/\mathbf Q\)</span>.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(3\)">\(3\)</span>, arithmetic Frobenius sends <span class="math" data-tex="\(\zeta_5\)">\(\zeta_5\)</span> to <span class="math" data-tex="\(\zeta_5^3\)">\(\zeta_5^3\)</span>. At <span class="math" data-tex="\(5\)">\(5\)</span>, the unit <span class="math" data-tex="\(3\)">\(3\)</span> acts through its inverse modulo <span class="math" data-tex="\(5\)">\(5\)</span>, which is <span class="math" data-tex="\(2\)">\(2\)</span>. The positive real component is trivial, and every other finite component is an unramified unit. Composing the two nontrivial actions gives exponent <span class="math" data-tex="\(3\cdot2=6\equiv1\pmod5\)">\(3\cdot2=6\equiv1\pmod5\)</span>.</p>
+<h3 id="exercise-3-the-quadratic-law-medium">Exercise 3 — The quadratic law (medium)</h3>
+<p>Derive quadratic reciprocity for distinct odd primes from Theorem 16.4.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(L=\mathbf Q(\sqrt{p^*})\)">\(L=\mathbf Q(\sqrt{p^*})\)</span>, <span class="math" data-tex="\(a=q\)">\(a=q\)</span>, and the four local calculations in (16). The product is <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\((p^*/q)=(q/p)\)">\((p^*/q)=(q/p)\)</span>. Expanding <span class="math" data-tex="\(p^*=(-1)^{(p-1)/2}p\)">\(p^*=(-1)^{(p-1)/2}p\)</span> and evaluating the finite-field character of <span class="math" data-tex="\(-1\)">\(-1\)</span> gives (17). The special choice <span class="math" data-tex="\(p^*\equiv1\pmod4\)">\(p^*\equiv1\pmod4\)</span> makes the <span class="math" data-tex="\(2\)">\(2\)</span>-adic contribution trivial; using <span class="math" data-tex="\(p\)">\(p\)</span> without that sign adjustment would require retaining it.</p>
+<h3 id="exercise-4-verify-the-class-field-theory-data-hard">Exercise 4 — Verify the class field theory data (hard)</h3>
+<p>Prove Proposition 16.3, including its value-group distinction.</p>
+<p><strong>Solution.</strong> Injectivity and invariant descent from lesson 13 identify the discrete union module's <span class="math" data-tex="\(G_K\)">\(G_K\)</span>-invariants with <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, and the coset norm with the idèle norm. Theorem 15.1 supplies both cyclic Tate groups required by the abstract axiom.</p>
+<p>For number fields, take the torsion-closure quotient of the cyclotomic Galois group as the degree map. Proposition 16.2 kills principal elements in its product symbol, so (6) is defined on <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Proposition 16.1 makes its image dense in <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. The divisible positive-real factor maps trivially to every finite quotient, and compact <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> has closed image; the map is onto. Norm compatibility gives precisely <span class="math" data-tex="\(f_{L/K}\widehat{\mathbf Z}\)">\(f_{L/K}\widehat{\mathbf Z}\)</span> as the valuation of the norm image.</p>
+<p>For function fields, take constant Frobenius as the degree map, and use integer idèle degree as valuation. If its image had greatest common divisor <span class="math" data-tex="\(\delta&gt;1\)">\(\delta&gt;1\)</span>, a prime dividing <span class="math" data-tex="\(\delta\)">\(\delta\)</span> would give a nontrivial constant extension split at every place, contradicting lesson 14. Thus the image is <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Local norm valuations yield (9), with <span class="math" data-tex="\(f_{L/K}\)">\(f_{L/K}\)</span> the full-constant-field degree. Both <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> and <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> have quotient <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> by their <span class="math" data-tex="\(n\)">\(n\)</span>-multiples. These verify all hypotheses; falsely requiring the function-field degree to be onto <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, or the number-field valuation to be integer-valued, would not.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The principal cancellation, local comparison and auxiliary procyclic construction are proved here. Number-field cyclotomic degree and function-field constant degree are constructed separately; the permitted profinite valuation image is retained.</p>
+<ul>
+<li><a href="https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf">Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-norm-index-bound-and-hasses-norm-theorem.html">← The norm index bound and Hasse's norm theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="global-existence-and-the-idelic-class-field-correspondence.html">Global existence and the idèlic class field correspondence →</a></span></nav>
+<p class="small source-link"><a href="files/the-global-reciprocity-law.md">Markdown source of this lesson</a> · <a download href="files/the-global-reciprocity-law.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kac-Moody localization and the fundamental local equivalence (GLC II) · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-11.html">Previous lesson</a> · <a href="GL-GLC-13.html">Next lesson</a></nav><aside class="notice">Draft. Self-checked by the writing AI.</aside><article class="lesson"><h1>Kac-Moody localization and the fundamental local equivalence (GLC II)</h1>
+<p>Draft. Self-checked by the writing AI.</p>
+<p>Fix a smooth projective connected curve <span class="math-inline">\(X\)</span> over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero, a connected reductive group <span class="math-inline">\(G\)</span>, its Langlands dual <span class="math-inline">\(\check G\)</span>, a Borel <span class="math-inline">\(B\subset G\)</span> with unipotent radical <span class="math-inline">\(N\)</span>, and a theta characteristic <span class="math-inline">\(\kappa_X^{\otimes2}\simeq\omega_X\)</span>. Write
+<span class="math-display">\[
+S=\operatorname{LS}_{\check G}(X),\qquad
+\mathcal C=D\operatorname{-mod}_{1/2}(\operatorname{Bun}_G),\qquad
+\mathcal D=\operatorname{IndCoh}_{\operatorname{Nilp}}(S),\qquad
+\mathcal A=\operatorname{QCoh}(S).
+\]</span>
+All local systems are de Rham local systems. The stack <span class="math-inline">\(S\)</span> and all fibre products of spectral stacks below are derived. We use cohomological shifts, so <span class="math-inline">\(H^i(M[n])=H^{i+n}(M)\)</span>. A continuous functor preserves colimits. Equivalences between composite functors include naturality and coherent compatibility with the indicated actions.</p>
+<p><a href="GL-GLC-11.html" title="Constructing the Langlands functor (GLC I)">Constructing the Langlands functor (GLC I)</a> constructs the formal coarse functor and bounded lift from specified geometric inputs. This lesson studies their relation to local critical representations. <a href="GL-GLC-08.html" title="Opers, critical level and the Beilinson–Drinfeld construction">Opers, critical level and the Beilinson–Drinfeld construction</a> explains the oper normal forms and the critical central character. The local equivalence, the geometric localization comparisons and the infinite-dimensional sheaf theories used here remain unproved mathematical inputs; the categorical deductions below have complete proofs under their explicit hypotheses.</p>
+<h2>The local and global categories</h2>
+<p>For a point <span class="math-inline">\(x\in X\)</span>, write <span class="math-inline">\(\mathcal D_x=\operatorname{Spec}k[[t]]\)</span> and <span class="math-inline">\(\mathcal D_x^\times=\operatorname{Spec}k((t))\)</span> after choosing a parameter. The notation is independent of that choice when supplied with the coordinate-change comparisons. The critical Kazhdan–Lusztig category is
+<span class="math-display">\[
+\operatorname{KL}(G)_{\mathrm{crit},x}
+=\bigl(\widehat{\mathfrak g}_{\mathrm{crit},x}
+  \operatorname{-mod}\bigr)^{G(\mathcal D_x)}.
+\tag{12.1}
+\]</span>
+The category of smooth critical Kac–Moody modules is equipped with the arc-group action, and the superscript denotes the specified equivariant category. It is not merely a collection of central characters, nor an identification of its derived category with the derived category of an arbitrary chosen heart. The existence of this category, its t-structure and its equivariant and factorization constructions are inputs.</p>
+<p>The Ran prestack assigns to a test scheme <span class="math-inline">\(Y\)</span> the nonempty finite subsets of <span class="math-inline">\(\operatorname{Maps}(Y,X)\)</span>. For a finite collection <span class="math-inline">\(I\)</span> of disjoint points, local data are taken on the corresponding multi-disc. A factorization category supplies equivalences over the disjoint locus between the category for <span class="math-inline">\(I\sqcup J\)</span> and the tensor product of the categories for <span class="math-inline">\(I\)</span> and <span class="math-inline">\(J\)</span>, together with their compatibility on refinements and collisions. A unital structure also specifies insertion of the local vacuum when points are added. Disjoint tensor product data alone do not specify these insertion maps or the behaviour on diagonals.</p>
+<p>Thus <span class="math-inline">\(\operatorname{KL}(G)_{\mathrm{crit},\operatorname{Ran}}\)</span> is the Ran category of local critical representations with these geometric structures. The local-to-global functor is
+<span class="math-display">\[
+\operatorname{Loc}_{G,\mathrm{crit}}:
+\operatorname{KL}(G)_{\mathrm{crit},\operatorname{Ran}}
+\longrightarrow D\operatorname{-mod}_{\mathrm{crit}}(\operatorname{Bun}_G).
+\tag{12.2}
+\]</span>
+It relates the local representation at the marked discs to a critically twisted D-module on the global moduli stack. Its construction uses the level torsors and infinitesimal Hecke groupoid, with compatible vacuum insertion. This geometric construction is not proved here.</p>
+<p>There is a specified identification of the critical twisting with the half twist. Compose (12.2) with that identification and denote the resulting functor to <span class="math-inline">\(\mathcal C\)</span> by <span class="math-inline">\(\operatorname{Loc}_G\)</span>. Retaining this specified comparison is essential: choosing some untwisted realization of <span class="math-inline">\(\mathcal C\)</span> does not establish the required natural Hecke compatibility.</p>
+<p>Use the oper convention with a Borel bundle, an identification of its Cartan bundle with <span class="math-inline">\(\check\rho(\omega_X)=(2\check\rho)(\kappa_X)\)</span>, and a connection on its induced <span class="math-inline">\(\check G\)</span>-bundle satisfying the normalized simple-root transversality condition. In particular, the Cartan identification is part of the data. For a torus it is a fixed trivialization; forgetting it passes from a connection in that trivialization to a local system, and is not an equivalence of the two moduli problems.</p>
+<p>The spectral local object is the space of monodromy-free opers:
+<span class="math-display">\[
+\operatorname{Op}^{\mathrm{mf}}_{\check G,I}
+=\operatorname{Op}_{\check G}(\mathcal D_I^\times)
+\mathbin{\times}_{\operatorname{LS}_{\check G}(\mathcal D_I^\times)}
+\operatorname{LS}_{\check G}(\mathcal D_I).
+\tag{12.3}
+\]</span>
+An object includes a local system on the whole multi-disc, an oper structure on its restriction to the punctured multi-disc, and the comparison between these underlying local systems. The oper reduction may be singular at the marked points even though the local system extends. “Monodromy-free” here means this extension condition with its moduli data. It does not mean that every Laurent coefficient in an oper normal form is regular, or that a complex-analytic monodromy matrix has merely been declared equal to the identity.</p>
+<p>These spaces have infinite type. The category in the critical equivalence is
+<span class="math-display">\[
+\mathcal O=\operatorname{IndCoh}^{*}
+       (\operatorname{Op}^{\mathrm{mf}}_{\check G})_{\operatorname{Ran}}.
+\tag{12.4}
+\]</span>
+The star is part of its definition. There is also a shriek category and a specified duality equivalence
+<span class="math-inline">\(\Theta:\operatorname{IndCoh}^{!}(\operatorname{Op}^{\mathrm{mf}}_{\check G})
+\simeq\operatorname{IndCoh}^{*}(\operatorname{Op}^{\mathrm{mf}}_{\check G})\)</span>.
+Their construction, convergence properties and this duality are not consequences of the finite-type definition of <span class="math-inline">\(\operatorname{IndCoh}\)</span>; they are further geometric inputs.</p>
+<p><strong>A monodromy-free family with a singular oper form.</strong> For <span class="math-inline">\(\check G=\mathbb G_m\)</span>, let <span class="math-inline">\(A=k[\varepsilon]/(\varepsilon^2)\)</span>. In the fixed torus trivialization, a connection is <span class="math-inline">\(d+a(t)\,dt\)</span>. The unit
+<span class="math-display">\[
+u=1+\varepsilon t^{-1}\in A((t))^\times,
+\qquad u^{-1}=1-\varepsilon t^{-1},
+\]</span>
+has logarithmic derivative
+<span class="math-display">\[
+u^{-1}du=-\varepsilon t^{-2}\,dt.
+\]</span>
+Consequently the connection <span class="math-inline">\(d-\varepsilon t^{-2}\,dt\)</span> is isomorphic on the punctured disc to the trivial connection, which extends to the whole disc. It therefore supplies monodromy-free oper data. It is not a regular oper in the given trivialization: its double-pole coefficient is the nonzero element <span class="math-inline">\(-\varepsilon\)</span>. A change of trivialization by a unit of <span class="math-inline">\(A[[t]]\)</span> adds a regular logarithmic derivative and cannot remove that pole. Reducing modulo <span class="math-inline">\(\varepsilon\)</span> gives the regular zero connection. This explicit family shows why a description of field-valued points alone does not describe the entire monodromy-free oper space.</p>
+<p>For the global correspondence put
+<span class="math-display">\[
+\operatorname{Op}^{\mathrm{mf,glob}}_{\check G,I}
+=\operatorname{Op}_{\check G}(X\setminus I)
+\mathbin{\times}_{\operatorname{LS}_{\check G}(X\setminus I)}S.
+\tag{12.5}
+\]</span>
+It parametrizes a local system on <span class="math-inline">\(X\)</span> equipped with an oper reduction on <span class="math-inline">\(X\setminus I\)</span>. Restriction and forgetting the oper give
+<span class="math-display">\[
+\operatorname{Op}^{\mathrm{mf}}_{\check G,I}
+\xleftarrow{\ \mathrm{ev}_I\ }
+\operatorname{Op}^{\mathrm{mf,glob}}_{\check G,I}
+\xrightarrow{\ \mathrm{fr}_I\ }S.
+\tag{12.6}
+\]</span>
+At a fixed <span class="math-inline">\(I\)</span>, the spectral star-Poincaré functor is
+<span class="math-display">\[
+P_{*,I}^{\mathrm{spec}}
+=(\mathrm{fr}_I)^{\operatorname{IndCoh}}_*
+       \circ\mathrm{ev}_I^{*,\operatorname{IndCoh}}.
+\tag{12.7}
+\]</span>
+Here <span class="math-inline">\(\mathrm{ev}_I^{*,\operatorname{IndCoh}}\)</span> is the left adjoint of the indicated IndCoh pushforward from global to local opers. Its existence and its compatibility with the infinite-type categories are inputs. Formula (12.7) is not an unspecified ordinary pullback. Unital globalization produces
+<span class="math-display">\[
+P_*^{\mathrm{spec}}:\mathcal O\longrightarrow\mathcal D.
+\tag{12.8}
+\]</span>
+The corresponding shriek construction uses <span class="math-inline">\(\mathrm{ev}_I^!\)</span> and the shriek local category. Comparing the two requires <span class="math-inline">\(\Theta\)</span> and a graded determinant line; changing a star to a shriek without these data changes the functor.</p>
+<h2>The localization comparison and its normalization</h2>
+<p>Set
+<span class="math-display">\[
+\mathcal W=\operatorname{Bun}_{N,\rho(\omega_X)},\qquad
+\delta_N=\dim\mathcal W,
+\qquad \rho(\omega_X)=(2\rho)(\kappa_X).
+\]</span>
+The dimension is the stack dimension and can be negative. Let <span class="math-inline">\(\ell_N\)</span> be the constant ungraded line supplied by the canonical line of <span class="math-inline">\(\mathcal W\)</span>. Let <span class="math-inline">\(\ell_{G,N}^{1/2}\)</span> be the specified square root of the constant line obtained by restricting the normalized determinant line of <span class="math-inline">\(\operatorname{Bun}_G\)</span> to <span class="math-inline">\(\mathcal W\)</span>. Constancy, the square root and their coherent twist comparisons are geometric inputs. Write
+<span class="math-display">\[
+\ell_0=\ell_{G,N}^{1/2}\otimes\ell_N^{-1},\qquad
+\ell_- =\ell_0[-\delta_N],\qquad
+\ell_+ =\ell_0[\delta_N].
+\tag{12.9}
+\]</span>
+These symbols keep the two shifts visible. In particular <span class="math-inline">\(\ell_+=\ell_-[2\delta_N]\)</span>.</p>
+<p><strong>Geometric statement 12.A (critical local-to-global comparison; not proved here).</strong> There is a specified natural equivalence
+<span class="math-display">\[
+L_G\circ(\operatorname{Loc}_G\otimes\ell_-)
+\simeq P_*^{\mathrm{spec}}\circ\operatorname{FLE}_{G,\mathrm{crit}}
+\tag{12.10}
+\]</span>
+of functors from <span class="math-inline">\(\operatorname{KL}(G)_{\mathrm{crit},\operatorname{Ran}}\)</span> to <span class="math-inline">\(\mathcal D\)</span>.</p>
+<p>The functor <span class="math-inline">\(\operatorname{FLE}_{G,\mathrm{crit}}\)</span> is the critical fundamental local equivalence described below. Statement 12.A is the main theorem of Arinkin, Beraldo, Campbell, Chen, Færgeman, Gaitsgory, Lin, Raskin and Rozenblyum, <a href="https://arxiv.org/abs/2405.03648v3">Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</a>, Introduction and §18.5. It is a comparison of specified functors, not a claim that critical localization is essentially surjective, or that the global Langlands equivalence has already been proved from local data.</p>
+<p>The theorem relates two distinct globalization procedures. One local critical representation can first be localized on <span class="math-inline">\(\operatorname{Bun}_G\)</span> and then sent through <span class="math-inline">\(L_G\)</span>. Alternatively, it can first be turned into an ind-coherent sheaf on local opers and then transported through the global oper correspondence. The normalization (12.9) is necessary for these procedures to agree.</p>
+<h2>The critical fundamental local equivalence</h2>
+<p>Let <span class="math-inline">\(k\)</span> be algebraically closed of characteristic zero, <span class="math-inline">\(X\)</span> a smooth connected curve, and <span class="math-inline">\(G\)</span> connected reductive, with Langlands dual <span class="math-inline">\(\check G\)</span>. Fix the square root of <span class="math-inline">\(\omega_X\)</span> used for half-twisted spherical categories and the <span class="math-inline">\(\rho(\omega_X)\)</span>-twist. At <span class="math-inline">\(x\in X\)</span>, write <span class="math-inline">\(\mathcal O=k[[t]]\)</span>, <span class="math-inline">\(K=k((t))\)</span>, <span class="math-inline">\(LG=G(K)\)</span>, and <span class="math-inline">\(L^+G=G(\mathcal O)\)</span>. Categories are stable presentable DG categories with continuous functors. The critical level is
+<span class="math-display">\[
+\kappa_{\mathrm{crit}}=-\tfrac12\operatorname{Kil}_{\mathfrak g};
+\]</span>
+for a torus it is zero. The spherical representation category is
+<span class="math-display">\[
+\operatorname{KL}(G)_{\mathrm{crit},x}
+=\widehat{\mathfrak g}\operatorname{-mod}_{\mathrm{crit},x}^{L^+G}.
+\]</span>
+Its definition includes strong equivariance and a specified collection of compact objects.</p>
+<p>The principal human source is <em>Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</em>, arXiv:2405.03648v3, by Dima Arinkin, Dario Beraldo, Justin Campbell, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin, and Nick Rozenblyum. Additional inputs are due to Beilinson–Drinfeld, Feigin–Frenkel, Frenkel–Gaitsgory, Campbell–Raskin, and Raskin.</p>
+<p>The arguments below prove formal implications with their hypotheses displayed. The geometric and representation-theoretic hypotheses listed at the end are not proved here. A complete proof of the critical FLE still requires these inputs.</p>
+<h3>The target and the exact theorem</h3>
+<p>Let <span class="math-inline">\(\operatorname{Op}_{\check G,x}^{\mathrm{reg}}\)</span> be opers on the formal disc and <span class="math-inline">\(\operatorname{Op}_{\check G,x}^{\mathrm{mer}}\)</span> opers on the punctured disc. The target is
+<span class="math-display">\[
+Z_x=\operatorname{Op}_{\check G,x}^{\mathrm{mf}}
+:=\operatorname{LS}_{\check G,x}^{\mathrm{reg}}
+\times_{\operatorname{LS}_{\check G,x}^{\mathrm{mer}}}
+\operatorname{Op}_{\check G,x}^{\mathrm{mer}}.
+\tag{F1}
+\]</span>
+An object retains a connection extending across the puncture, an oper structure on its punctured restriction, and the specified identification. The oper reduction need not extend. The square with regular opers in its upper left corner is not Cartesian. Replacing <span class="math-inline">\(Z_x\)</span> by regular opers changes the problem; see GLC II §3.1.</p>
+<p>Over <span class="math-inline">\(\operatorname{Ran}(X)\)</span>, this gives a factorization ind-scheme <span class="math-inline">\(Z\)</span>. The notation <span class="math-inline">\(\operatorname{IndCoh}^{*}(Z)\)</span> refers to GLC II's particular infinite-type construction. The star is part of the category's definition. An unqualified replacement by ordinary QCoh or a finite-type IndCoh theorem is unjustified.</p>
+<p>GLC II Theorem 6.1.4, labelled “critical FLE,” asserts that the canonical functor
+<span class="math-display">\[
+\operatorname{FLE}_{G,\mathrm{crit}}:
+\operatorname{KL}(G)_{\mathrm{crit}}
+\xrightarrow{\sim}\operatorname{IndCoh}^{*}(Z)
+\tag{F2}
+\]</span>
+is an equivalence of factorization categories. Theorem 6.2.2 is the DG equivalence at a fixed point. Corollary 6.6.9 asserts t-exactness at each fixed finite subset of Ran. Theorem 6.4.5 adds derived-Satake compatibility and compatibility of the local pairings.</p>
+<p>Distinguish an equivalence of abelian hearts at a point, an equivalence of DG categories at a point, and an equivalence compatible with families, collisions, factorization, and units. The first alone proves neither of the latter two.</p>
+<h3>DS reduction and construction of the functor</h3>
+<p>The normalized DS functor is the semi-infinite pairing with the character object <span class="math-inline">\(k_\chi\)</span> of <span class="math-inline">\(L\mathfrak n_{\rho(\omega_X)}\)</span>:
+<span class="math-display">\[
+\operatorname{DS}:
+\widehat{\mathfrak g}\operatorname{-mod}_{\mathrm{crit},\rho(\omega_X)}
+\longrightarrow\operatorname{Vect}.
+\]</span>
+GLC II §2.3 defines it through the canonical self-duality of the nilpotent loop Lie algebra. It factors through Whittaker coinvariants:
+<span class="math-display">\[
+\widehat{\mathfrak g}\operatorname{-mod}
+\longrightarrow\operatorname{Whit}_{*}(\widehat{\mathfrak g}\operatorname{-mod})
+\xrightarrow{\overline{\operatorname{DS}}}\operatorname{Vect}.
+\tag{F3}
+\]</span>
+The passage between Whittaker invariants and coinvariants uses a specified equivalence.</p>
+<p>The deep inputs are the factorization Feigin–Frenkel isomorphism, identifying the critical center with functions on regular opers; the center-to-DS-of-vacuum isomorphism; and the birth-of-opers theorem, making the vacuum construction compatible with the naive Satake action and the tautological local system. Their locators are GLC II Theorem 5.1.2, §4.8's theorem “center as DS,” and Theorem 5.2.5, citing Theorem 5.5.3 of Beilinson–Drinfeld’s free author draft, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf">Quantization of Hitchin’s integrable system and Hecke eigensheaves</a>.</p>
+<p>The refined affine Skryabin input is
+<span class="math-display">\[
+\overline{\operatorname{DS}}^{\mathrm{enh,rfnd}}:
+\operatorname{Whit}_{*}
+(\widehat{\mathfrak g}\operatorname{-mod}_{\mathrm{crit},\rho(\omega_X)})
+\xrightarrow{\sim}
+\operatorname{IndCoh}^{*}(\operatorname{Op}_{\check G}^{\mathrm{mer}}).
+\tag{F4}
+\]</span>
+The factorization assertion is GLC II Theorem 4.8.8. Raskin's <em>W-algebras and Whittaker categories</em>, arXiv:1611.04937v1, §5 affine Skryabin theorem, identifies Whittaker objects with the renormalized W-algebra module category and identifies the composite with DS. Its critical specialization is in §7.5. Its pointwise statement does not by itself prove all coherent factorization structures in (F4).</p>
+<p>Set <span class="math-inline">\(Y=\operatorname{Op}_{\check G}^{\mathrm{mer}}\)</span>, <span class="math-inline">\(A=\operatorname{IndCoh}^{!}(Y)\)</span>, and <span class="math-inline">\(B=\operatorname{IndCoh}^{!}(Z)\)</span>. The center action on KL factors through <span class="math-inline">\(B\)</span>; GLC II §§5.3–5.4 construct this action using birth of opers and a coherent coaction. Given that action, spherical forgetfulness, Whittaker projection, and (F4) give an <span class="math-inline">\(A\)</span>-linear functor
+<span class="math-display">\[
+H:\operatorname{KL}(G)_{\mathrm{crit},\rho(\omega_X)}
+\longrightarrow A^\vee=\operatorname{IndCoh}^{*}(Y).
+\]</span>
+It lifts to
+<span class="math-display">\[
+M\longmapsto [b\longmapsto H(b\cdot M)]
+\quad\text{in}\quad\operatorname{Fun}_{A}(B,A^\vee).
+\tag{F5}
+\]</span></p>
+<p>Here is the formal identification used in this construction:
+<span class="math-display">\[
+\operatorname{Fun}_{A}(B,A^\vee)\simeq B^\vee.
+\tag{F6}
+\]</span>
+For unital symmetric monoidal <span class="math-inline">\(A\)</span> and dualizable <span class="math-inline">\(A\)</span>-module <span class="math-inline">\(B\)</span>, regard <span class="math-inline">\(A^\vee\)</span> as continuous linear functionals on <span class="math-inline">\(A\)</span>, with its induced <span class="math-inline">\(A\)</span>-action. Evaluation at <span class="math-inline">\(1_A\)</span> sends an <span class="math-inline">\(A\)</span>-linear functor <span class="math-inline">\(h\)</span> to <span class="math-inline">\(b\mapsto h(b)(1_A)\)</span>. Conversely, a functional <span class="math-inline">\(\lambda:B\to\operatorname{Vect}\)</span> gives
+<span class="math-display">\[
+h_\lambda(b)(a)=\lambda(a\cdot b).
+\]</span>
+Associativity makes this <span class="math-inline">\(A\)</span>-linear. The unit law and linearity identify both composites with the identity, including mapping complexes and coherences. This proves (F6). In this application, the geometric duality <span class="math-inline">\(B^\vee\simeq\operatorname{IndCoh}^{*}(Z)\)</span> is a separate premise, GLC II Lemma 3.5.7.</p>
+<p>Combining (F5) and (F6), then undoing the <span class="math-inline">\(\rho(\omega_X)\)</span>-twist by its tautological equivalence, constructs (F2) without assuming it is an equivalence. Under the conservative pushforward <span class="math-inline">\(i_*:\operatorname{IndCoh}^{*}(Z)\to\operatorname{IndCoh}^{*}(Y)\)</span>, its vacuum-unit map becomes the center-to-DS-of-vacuum map. That is an isomorphism, so conservativity proves that FLE carries the vacuum to <span class="math-inline">\(\mathcal O_{\operatorname{Op}^{\mathrm{reg}}}\)</span>. Upgrading this unit identification to strict unitality requires the coherent criterion in GLC II §6.1.</p>
+<h3>The contribution of affine Skryabin</h3>
+<p>Raskin defines the W-algebra module category as the Ind-completion of the small subcategory of <span class="math-inline">\(D^+(\mathcal W_\kappa\operatorname{-mod}^{\heartsuit})\)</span> generated by generalized vacuum modules <span class="math-inline">\(\mathcal W_\kappa^n\)</span>. This fixes the unbounded category and its compacts. An equivalence of hearts fixes neither.</p>
+<p>His §5 proof uses substantial calculations: adolescent Whittaker approximations and their shifted t-structures; compact generators <span class="math-inline">\(P_n\)</span> in the Whittaker heart; corepresentation
+<span class="math-display">\[
+\Psi^{\mathrm{Whit}}(M)=\operatorname*{colim}_{n}
+\operatorname{RHom}(P_n,M);
+\]</span>
+the calculation <span class="math-inline">\(\Psi^{\mathrm{Whit}}(P_n)=\mathcal W_\kappa^n\)</span> in degree zero; injectivity of the transition maps on degree-zero Homs to heart objects; and reconstruction of the topological W-algebra from the pro-system. Stating affine Skryabin does not prove these calculations.</p>
+<p>The exactness and bounded-below conservativity deductions can be proved explicitly. If <span class="math-inline">\(M\geq0\)</span>, then <span class="math-inline">\(\operatorname{RHom}(P_n,M)\geq0\)</span>, since <span class="math-inline">\(P_n\leq0\)</span>. Filtered colimits preserve this condition in complexes of vector spaces, giving preservation of <span class="math-inline">\(\geq0\)</span>. The source's <span class="math-inline">\(\leq0\)</span> part is generated under colimits and nonnegative cohomological shifts by the <span class="math-inline">\(P_n\)</span>. Their images are in degree zero, so continuity gives preservation of <span class="math-inline">\(\leq0\)</span>.</p>
+<p>For <span class="math-inline">\(M\geq0\)</span> with <span class="math-inline">\(H^0\Psi^{\mathrm{Whit}}(M)=0\)</span>, the spaces <span class="math-inline">\(\operatorname{Hom}(P_n,H^0M)\)</span> inject into the next ones and have zero colimit. Each is zero. Their generating property implies <span class="math-inline">\(H^0M=0\)</span>. Shifting and repeating shows that if <span class="math-inline">\(M\)</span> is bounded below and <span class="math-inline">\(\Psi^{\mathrm{Whit}}(M)=0\)</span>, every cohomology object vanishes. The given identification of the bounded-below category with <span class="math-inline">\(D^+\)</span> of its heart then implies <span class="math-inline">\(M=0\)</span>. This proves the conservativity range in Raskin §5 exactness and conservativity theorem, without silently extending it to all unbounded objects.</p>
+<p>Topological algebra reconstruction and the pro-system calculation produce a bounded-below equivalence. Restrict it to the small thick subcategories generated by <span class="math-inline">\(P_n\)</span> and <span class="math-inline">\(\mathcal W_\kappa^n\)</span>. It is fully faithful there and matches their generators, hence identifies these thick subcategories. Ind-completion gives an equivalence on the specified unbounded categories. This proves the last step of affine Skryabin conditional on the earlier calculations.</p>
+<p>There is a separate finiteness contribution. For a loop-group module category, let
+<span class="math-display">\[
+Q:\operatorname{Sph}(\mathcal C)\longrightarrow
+\operatorname{Whit}_{*}(\mathcal C)
+\]</span>
+be spherical forgetfulness followed by Whittaker projection. Given the clean Whittaker vacuum and the invariant–coinvariant comparison, its right adjoint is convolution with that vacuum followed by spherical averaging. GLC II Lemma 6.3.2 verifies the adjunction; Proposition 6.2.4 uses continuity of its right adjoint.</p>
+<p>For compact <span class="math-inline">\(c\)</span>, an adjunction <span class="math-inline">\(Q\dashv R\)</span>, and a filtered diagram <span class="math-inline">\(d_j\)</span>,
+<span class="math-display">\[
+\operatorname{Maps}(Qc,\operatorname*{colim}_j d_j)
+\simeq\operatorname{Maps}(c,R\operatorname*{colim}_j d_j)
+\simeq\operatorname*{colim}_j\operatorname{Maps}(c,Rd_j)
+\simeq\operatorname*{colim}_j\operatorname{Maps}(Qc,d_j).
+\]</span>
+Thus <span class="math-inline">\(Qc\)</span> is compact. Equation (F4) preserves compactness because it is an equivalence. GLC II Proposition 3.3.5 says <span class="math-inline">\(i_*\)</span> detects compactness as well as conservativity. Since <span class="math-inline">\(i_*\operatorname{FLE}=\overline{\operatorname{DS}}^{\mathrm{enh,rfnd}}Q\)</span>, FLE preserves compactness. Exactness of DS alone would not prove this.</p>
+<h3>Derived Satake and its algebra steps</h3>
+<p>The derived Satake equivalence identifies the prescribed half-twisted, renormalized spherical category with the spectral spherical category:
+<span class="math-display">\[
+S_G\simeq S_{\check G}^{\mathrm{spec}}.
+\tag{F7}
+\]</span>
+At a point the latter is the convolution category
+<span class="math-display">\[
+\operatorname{IndCoh}
+\left(
+\operatorname{LS}^{\mathrm{reg}}_{\check G,x}
+\times_{\operatorname{LS}^{\mathrm{mer}}_{\check G,x}}
+\operatorname{LS}^{\mathrm{reg}}_{\check G,x}
+\right).
+\]</span>
+GLC II §1.7 states (F7) with Casselman–Shalika compatibility. Campbell–Raskin, <em>Langlands duality on the Beilinson–Drinfeld Grassmannian</em>, arXiv:2310.19734v2, §6, proves the factorization version. The naive functor from <span class="math-inline">\(\operatorname{Rep}(\check G)\)</span> into the spherical category is not the DG equivalence (F7).</p>
+<p>Campbell–Raskin §9 reduces equivalence to an isomorphism of monads on <span class="math-inline">\(\operatorname{Rep}(\check G)\)</span>. The geometric monad uses an equivariant-cohomology calculation. The spectral monad uses Koszul duality. Both are
+<span class="math-display">\[
+\operatorname{Sym}(\check{\mathfrak g}[-2])\otimes-.
+\tag{F8}
+\]</span>
+The geometric calculation, monadicity, and compatibility of the actual monad map are deep premises. Abstractly identifying two algebras does not identify the actual map.</p>
+<p>The spectral algebra calculation has an elementary core. For finite-dimensional <span class="math-inline">\(V\)</span>, the derived zero intersection has functions <span class="math-inline">\(B=\operatorname{Sym}(V^*[1])\)</span>, an exterior algebra with generators <span class="math-inline">\(\theta_i\)</span> of degree <span class="math-inline">\(-1\)</span>. A free resolution of the augmentation module is <span class="math-inline">\(P=B[u_1,\ldots,u_r]\)</span>, with <span class="math-inline">\(|u_i|=-2\)</span>, <span class="math-inline">\(du_i=\theta_i\)</span>. In one variable, <span class="math-inline">\(d(u^n)=n\theta u^{n-1}\)</span>, so only degree-zero cohomology <span class="math-inline">\(k\)</span> remains. Tensoring the resolutions proves the result in all dimensions. Applying <span class="math-inline">\(\operatorname{Hom}_B(-,k)\)</span> gives zero differential and symmetric dual generators in degree <span class="math-inline">\(2\)</span>.</p>
+<p>Yoneda multiplication can be checked on this resolution. The <span class="math-inline">\(B\)</span>-linear operators <span class="math-inline">\(D_i=\partial/\partial u_i\)</span> have degree <span class="math-inline">\(2\)</span>, commute with one another, and commute with <span class="math-inline">\(d=\sum_i\theta_iD_i\)</span>. Thus they are chain maps representing the degree-two Ext classes after composition with the augmentation <span class="math-inline">\(P\to k\)</span>. For a multi-index <span class="math-inline">\(\alpha\)</span>, the composite <span class="math-inline">\(D^\alpha\)</span> followed by augmentation evaluates on <span class="math-inline">\(u^\beta\)</span> as zero unless <span class="math-inline">\(\beta=\alpha\)</span>, and then as <span class="math-inline">\(\alpha!\)</span>. These nonzero scalars are invertible in characteristic zero. In each cohomological degree, the resulting classes are therefore a basis of <span class="math-inline">\(\operatorname{Hom}_B(P,k)\)</span>; operator composition gives their polynomial multiplication. Consequently
+<span class="math-display">\[
+\operatorname{RHom}_{B}(k,k)\simeq\operatorname{Sym}(V[-2]).
+\tag{F9}
+\]</span>
+Identifying the actual spectral category and adjunction with this model remains a geometric premise.</p>
+<p>A conditional reduction from invariants to the algebra map is useful. Let <span class="math-inline">\(H\)</span> be connected reductive and let
+<span class="math-display">\[
+\varphi:\operatorname{Sym}(\mathfrak h[-2])
+\longrightarrow\operatorname{Sym}(\mathfrak h[-2])
+\]</span>
+be an <span class="math-inline">\(H\)</span>-equivariant graded algebra map, invertible on the invariant algebra. Use the following representation-theoretic premises: the reductive decomposition <span class="math-inline">\(\mathfrak h=\mathfrak z\oplus\bigoplus_i\mathfrak h_i\)</span>; irreducibility and pairwise nonisomorphism of the nontrivial <span class="math-inline">\(\mathfrak h_i\)</span> as representations of the full group <span class="math-inline">\(H\)</span>; and existence of a nonzero invariant quadratic element <span class="math-inline">\(q_i\in\operatorname{Sym}^2(\mathfrak h_i)^H\)</span> for each simple ideal. These premises, including the usual Casimir construction, are not proved here.</p>
+<p>Its degree-two part is <span class="math-inline">\(f:\mathfrak h\to\mathfrak h\)</span>. A nonzero equivariant map between irreducibles has zero kernel and full image, hence is an isomorphism; no such map exists between the nonisomorphic summands. An equivariant endomorphism of an irreducible has an eigenvalue over <span class="math-inline">\(k\)</span>; the nonzero kernel of its difference from that scalar is invariant, so is the whole representation. Thus <span class="math-inline">\(f\)</span> is scalar <span class="math-inline">\(c_i\)</span> on each <span class="math-inline">\(\mathfrak h_i\)</span> and preserves <span class="math-inline">\(\mathfrak z\)</span>. Degree-two invariants are exactly <span class="math-inline">\(\mathfrak z\)</span>, so <span class="math-inline">\(f|_{\mathfrak z}\)</span> is invertible. Since <span class="math-inline">\(\varphi(q_i)=c_i^2q_i\)</span>, injectivity on invariants forces <span class="math-inline">\(c_i\neq0\)</span>. Thus <span class="math-inline">\(f\)</span> and its symmetric-algebra map are invertible. Applied on cohomology, this proves a quasi-isomorphism. This proves the algebra-map deduction under the stated representation-theoretic premises.</p>
+<p>For the actual Satake map, compatible parabolic diagrams reduce injectivity on invariants to the torus calculation and Chevalley restriction. Each invariant graded piece is finite-dimensional, so injectivity of its endomorphism gives surjectivity. Equation (F9), the preceding algebra argument, and monadicity then prove pointwise Satake conditional on the geometric comparisons. The torus Fourier kernel, Contou–Carrère compatibility, and factorization upgrade remain additional premises.</p>
+<h3>The pointwise critical FLE</h3>
+<p>Set <span class="math-inline">\(\mathcal K=\operatorname{KL}(G)_{\mathrm{crit},x}\)</span>, <span class="math-inline">\(\mathcal E=\operatorname{IndCoh}^{*}(Z_x)\)</span>, and <span class="math-inline">\(\mathcal E_Y=\operatorname{IndCoh}^{*}(Y_x)_{\mathrm{mf}}\)</span>. The last category has set-theoretic support on the monodromy-free locus and includes its formal neighborhood. It is not sheaves on the reduced locus.</p>
+<p>Let <span class="math-inline">\(S=S_{\check G,x}^{\mathrm{spec}}\)</span>, <span class="math-inline">\(S_{\mathrm{temp}}\)</span> its tempered colocalization, and <span class="math-inline">\(B_0=\operatorname{QCoh}(\operatorname{LS}^{\mathrm{reg}}_{\check G,x})\simeq\operatorname{Rep}(\check G)\)</span>. The crucial pointwise comparison is
+<span class="math-display">\[
+\mathcal C_{\mathrm{temp}}\simeq
+\operatorname{Fun}_{A_0}(B_0,B_0\otimes_S\mathcal C),\qquad
+A_0=\operatorname{QCoh}
+((\operatorname{LS}^{\mathrm{mer}}_{\check G,x})^\wedge_{\mathrm{reg}}).
+\tag{F10}
+\]</span>
+It is natural in <span class="math-inline">\(S\)</span>-module categories. GLC II §7.1 obtains it from the identification of <span class="math-inline">\(S_{\mathrm{temp}}\)</span> with <span class="math-inline">\(A_0\)</span>-linear endomorphisms of <span class="math-inline">\(B_0\)</span>, together with required dualizability and rigidity. These geometric identifications are premises here; an arbitrary endomorphism category does not automatically give (F10).</p>
+<p>The Satake-compatible FLE gives a square with upper arrow <span class="math-inline">\(B_0\otimes_S\operatorname{FLE}\)</span> and vertical arrows landing in <span class="math-inline">\(\mathcal E_Y\)</span>. The spectral vertical arrow is an equivalence by Proposition 3.6.5. The geometric one is the refined DS pairing and is fully faithful with the same image by Proposition 7.2.2. Compose with either vertical inverse to see that the upper arrow is an equivalence. Applying (F10) proves
+<span class="math-display">\[
+\mathcal K_{\mathrm{temp}}\xrightarrow{\sim}\mathcal E.
+\tag{F11}
+\]</span>
+The target is tempered by the pointwise base-change presentation in Proposition 3.8.11, transferring the tempered action from <span class="math-inline">\(B_0\)</span>; see Proposition 7.2.4.</p>
+<p>The actions in this square include their left/right conventions. GLC II §1.8 identifies the pairing with <span class="math-inline">\(\operatorname{Whit}_{*}\)</span> through the infinity version of the dual-group FLE, compatible with the Chevalley-twisted Satake functor <span class="math-inline">\(\operatorname{Sat}^{\tau}_G\)</span>. The critical FLE itself is compatible with <span class="math-inline">\(\operatorname{Sat}_G\)</span>. The twist <span class="math-inline">\(\tau\)</span>, which acts by inversion on the torus, belongs to the balanced-action identification; it must be retained when choosing the two module structures. The compatibility in Theorem 6.4.5 is the geometric premise supplying that identification.</p>
+<p>Full faithfulness of the pairing uses the geometric premise that
+<span class="math-display">\[
+\operatorname{Dmod}_{1/2}(\operatorname{Gr}_{G,x})
+\otimes_{S_G}\operatorname{Sph}(\mathcal C)\longrightarrow\mathcal C
+\]</span>
+is fully faithful with a continuous equivariant right adjoint. GLC II §7.3 derives it from ind-properness. Applying Whittaker coinvariants to the unit and counit preserves their triangle identities and the invertible unit, so the Whittaker pairing is fully faithful. This transfer is formal; existence and continuity of the equivariant adjunction are geometric.</p>
+<p>Its image is determined by generators. Weyl modules
+<span class="math-display">\[
+\mathbb V^\lambda_{\mathrm{crit}}
+=\operatorname{ind}^{(\widehat{\mathfrak g},L^+G)_{\mathrm{crit}}}_{L^+G}(V^\lambda)
+\]</span>
+compactly generate KL. The required calculation is
+<span class="math-display">\[
+\operatorname{DS}^{\mathrm{enh,rfnd}}(\mathbb V^\lambda_{\mathrm{crit}})
+=\mathcal O_{\operatorname{Op}^{\lambda\text{-reg}}_{\check G,x}}.
+\tag{F12}
+\]</span>
+GLC II Lemma 7.3.10 attributes this Weyl-module/oper calculation to Frenkel–Gaitsgory. The reduced monodromy-free locus is the disjoint union of these loci, and their structure sheaves generate the formal-support category. The DS calculation and infinite-type support-generation assertion remain premises. Given them, the image proof is complete: the fully faithful functor has a continuous right adjoint, so its image is closed under colimits; it contains the displayed generators, hence equals <span class="math-inline">\(\mathcal E_Y\)</span>. This proves (F11) without assuming full FLE.</p>
+<p>Remove the tempered colocalization by the following complete formal argument. Write
+<span class="math-display">\[
+i:\mathcal K_{\mathrm{temp}}\hookrightarrow\mathcal K,\qquad i\dashv q,
+\]</span>
+with continuous <span class="math-inline">\(q\)</span>. The tempered-action comparison includes its universal property: the <span class="math-inline">\(S\)</span>-linear FLE, whose target is tempered, factors as the equivalence (F11) after <span class="math-inline">\(q\)</span>. Thus (F11) and FLE compactness imply that <span class="math-inline">\(q\)</span> preserves compacts. Continuity of <span class="math-inline">\(q\)</span> implies that <span class="math-inline">\(i\)</span> preserves compacts. For compact <span class="math-inline">\(c\)</span>, the fiber <span class="math-inline">\(a\)</span> of <span class="math-inline">\(iqc\to c\)</span> is therefore compact and satisfies <span class="math-inline">\(qa=0\)</span>.</p>
+<p>The remaining t-structure input is Lemma 7.4.4: the comonad <span class="math-inline">\(iq\)</span> preserves <span class="math-inline">\(\leq0\)</span>, and its counit induces an isomorphism on <span class="math-inline">\(H^0\)</span> of heart objects. Therefore <span class="math-inline">\(q\)</span> is conservative on the heart. FLE is t-exact on bounded objects. If a bounded <span class="math-inline">\(a\)</span> has <span class="math-inline">\(qa=0\)</span>, (F11) gives <span class="math-inline">\(\operatorname{FLE}(a)=0\)</span>, and t-exactness gives <span class="math-inline">\(\operatorname{FLE}(H^ja)=0\)</span> for all <span class="math-inline">\(j\)</span>. By (F11) and heart conservativity, <span class="math-inline">\(H^ja=0\)</span>; bounded cohomology detection gives <span class="math-inline">\(a=0\)</span>. Compact KL objects are bounded, so the counit fiber above vanishes. Both functors are continuous and compacts generate, hence <span class="math-inline">\(iq\simeq\operatorname{Id}\)</span>. Together with <span class="math-inline">\(qi\simeq\operatorname{Id}\)</span>, this proves that <span class="math-inline">\(q\)</span> is an equivalence. Equation (F11) now gives the pointwise DG FLE.</p>
+<p>Agreement on the heart alone would not justify this result: compactness, boundedness of compacts, and the controlled adjunction are all used.</p>
+<h3>T-exactness and the factorization upgrade</h3>
+<p>The chain has no arbitrary extra shift. DS, normalized by the <span class="math-inline">\(\rho(\omega_X)\)</span>-twist, is t-exact on spherical modules; GLC II Lemma 2.3.8 and Frenkel–Gaitsgory's main theorem in <em>Local Geometric Langlands Correspondence: the Spherical Case</em>. Raskin §7.2 gives this as the <span class="math-inline">\(n=0\)</span> case of <span class="math-inline">\(\Psi[-n\Delta]\)</span> on adolescent approximations. Those approximation shifts do not become shifts of critical FLE.</p>
+<p>The naive Satake action of heart representations on critical KL is t-exact, GLC II Corollary 5.4.5, using birth of opers and exact tensoring by tautological vector bundles. This is a specific critical-KL assertion. The coarse functor <span class="math-inline">\(\operatorname{pre\!-\!FLE}\)</span> is computed using the regular representation <span class="math-inline">\(R_{\check G}\)</span>, this Hecke action, and DS. In characteristic zero <span class="math-inline">\(R_{\check G}\)</span> is a filtered union of finite-dimensional representations. Tensoring with it is exact, Hecke action is exact by the preceding premise, and DS on KL is exact. Thus their composition is t-exact, proving the deduction of Lemma 6.6.7.</p>
+<p>Recovering the refined functor uses the bounded-below comparison with modules for <span class="math-inline">\(R_{\check G,\operatorname{Op}}\)</span>, GLC II §4's bounded-below IndCoh comparison proposition. On bounded-below categories this is an equivalence with the prescribed t-structures and lift. The comparison, including the lift on bounded-below inputs, is a geometric premise. It is not an equivalence asserted on every unbounded object.</p>
+<p>Given it, FLE preserves both t-structure halves on bounded-below objects. To extend preservation of <span class="math-inline">\(\leq0\)</span>, use right completeness in the form
+<span class="math-display">\[
+M=\operatorname*{colim}_{n}\tau^{\geq-n}M.
+\]</span>
+For <span class="math-inline">\(M\leq0\)</span>, every truncation is bounded and <span class="math-inline">\(\leq0\)</span>. Continuity and closure of the target's <span class="math-inline">\(\leq0\)</span> under filtered colimits give <span class="math-inline">\(\operatorname{FLE}(M)\leq0\)</span>. Since every <span class="math-inline">\(M\geq0\)</span> is already bounded below, this proves full t-exactness conditional on the stated completeness and bounded-below comparison.</p>
+<p>The factorization upgrade needs a precise descent premise: a compactness-preserving factorization functor from a compactly generated sheaf of categories has a continuous right adjoint compatible with factorization and base change; its unit and counit are detected on configuration strata, then on all field-valued fibers of the one-point stratum. This is the sheaf-of-categories input in Proposition 6.2.6.</p>
+<p>Given it, the proof is complete. On a stratum of <span class="math-inline">\(n\)</span> distinct points, factorization identifies FLE with the tensor product of <span class="math-inline">\(n\)</span> one-point equivalences, so its unit and counit are isomorphisms. Collision strata use fewer distinct points. Conservative descent makes the unit and counit isomorphisms globally. An adjunction with invertible unit and counit is an equivalence. The pointwise theorem must hold over the field extensions occurring in fibers, or an independent local-trivialization and base-change argument must supply that assertion. Checking only closed <span class="math-inline">\(k\)</span>-points does not prove arbitrary family comparison.</p>
+<h3>Why the abelian regular-oper statement is insufficient</h3>
+<p>The Beilinson–Drinfeld regular-center assertion identifies a specified abelian category using the vacuum module over regular opers. The critical FLE has a different derived target. Frenkel–Gaitsgory's <em>Local Geometric Langlands Correspondence: the Spherical Case</em>, arXiv:0711.1132v1, main theorem, asserts t-exactness of DS on its bounded-below derived source and an equivalence of abelian categories with quasi-coherent sheaves on the unramified central support. That support includes the formal neighborhoods of the regular-<span class="math-inline">\(\lambda\)</span> oper loci. The theorem as stated there is not an independent assertion of the entire unbounded factorization equivalence (F2).</p>
+<p>Here is a full algebra calculation showing the problem with dropping ambient directions. Let <span class="math-inline">\(A=k[z]\)</span> and <span class="math-inline">\(M=A/(z)=k\)</span>. The free resolution
+<span class="math-display">\[
+0\longrightarrow A\xrightarrow{\,z\,}A\longrightarrow M\longrightarrow0
+\]</span>
+gives, after applying <span class="math-inline">\(\operatorname{Hom}_A(-,M)\)</span>, a zero-differential two-term complex. Thus
+<span class="math-display">\[
+\operatorname{Ext}_A^0(M,M)=k,\qquad
+\operatorname{Ext}_A^1(M,M)=k,
+\]</span>
+and all other groups vanish. In the category of modules on the reduced point, <span class="math-inline">\(\operatorname{Ext}_k^1(k,k)=0\)</span>. For <span class="math-inline">\(r\)</span> independent normal coordinates, tensor these two-term resolutions. The resulting Hom complex has zero differential and exterior generators in degree one, so its <span class="math-inline">\(j\)</span>-th dimension is <span class="math-inline">\(\binom rj\)</span>. To check multiplication, write the tensor resolution as <span class="math-inline">\(A\otimes\Lambda(e_1,\ldots,e_r)\)</span>, with <span class="math-inline">\(|e_i|=-1\)</span> and <span class="math-inline">\(de_i=z_i\)</span>. Contraction by each <span class="math-inline">\(e_i\)</span> is a degree-one chain operator: it anticommutes with the differential and the other contractions, and its square is zero. Composing ordered contractions with augmentation evaluates nontrivially exactly on the corresponding exterior basis element. These classes form the computed Hom basis and their composites have exterior multiplication. The degree-one normal classes and their exterior products are lost by replacing the ambient formal support with the reduced locus.</p>
+<p>The geometric identification of the Weyl-module self-extensions with the normal-bundle exterior algebra is an additional Frenkel–Gaitsgory calculation, displayed in that paper's introduction and the Weyl-module self-extension proposition. The algebra example proves the mechanism of losing normal extensions; it does not prove that geometric identification. An equivalence of hearts on regular opers therefore supplies too little information to establish the specified DG FLE.</p>
+<h3>Exact premises still requiring proofs</h3>
+<p>The following mathematical inputs are used with the indicated human-source locators. None is supplied by a source name alone.</p>
+<ol>
+<li>The DG Kac–Moody categories, their loop-group actions, specified t-structures, compact generation by Weyl modules, and boundedness of compacts. GLC II §§2.1–2.2 and the proofs in §§6–7 use these inputs. The completeness assumptions in the t-exactness argument also require justification.</li>
+<li>The factorization Feigin–Frenkel theorem, the center-to-DS-of-vacuum calculation, and birth of opers with its Satake compatibility: GLC II Theorems 5.1.2 and 5.2.5 and §4.8. Birth of opers cites Theorem 5.5.3 of Beilinson–Drinfeld’s free author draft, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf">Quantization of Hitchin’s integrable system and Hecke eigensheaves</a>.</li>
+<li>Affine Skryabin's adolescent geometry, shifted t-structures, generalized-vacuum calculations, transition injections, and topological algebra reconstruction. Raskin's <a href="https://arxiv.org/abs/1611.04937v1"><em>W-algebras and Whittaker categories</em></a>, §§5 and 7, provides the pointwise source; GLC II Theorem 4.8.8 is the factorization form. Their final exactness, bounded-below conservativity, and Ind-extension deductions are proved in the affine Skryabin discussion.</li>
+<li>The infinite-type oper geometry: conservative and compactness-detecting pushforward, the relative-Hom duality, formal-support generation, and the pointwise spherical/base-change presentations. The relevant GLC II locators are Proposition 3.3.5, Lemma 3.5.7, and Propositions 3.6.5 and 3.8.11. Finite-type analogies do not prove these assertions.</li>
+<li>The actual derived-Satake monad comparison, its parabolic compatibility, Chevalley restriction, and the torus Fourier and Contou–Carrère calculations: Campbell–Raskin's <a href="https://arxiv.org/abs/2310.19734v2"><em>Langlands duality on the Beilinson–Drinfeld Grassmannian</em></a>, §§6–9. The reductive-decomposition and Casimir premises in the algebra-map argument are also explicit inputs.</li>
+<li>The coherent monodromy-free central action, exact Hecke action, bounded-below refined comparison with its lift, and the critical tempered comonad's <span class="math-inline">\(H^0\)</span> property. See GLC II §§4–5, Corollary 5.4.5, Lemma 6.6.7, Corollary 6.6.9, and Lemma 7.4.4. The formal propagation arguments do not establish the geometric comparisons themselves.</li>
+<li>The equivariant continuous adjunction, clean Whittaker vacuum, DS of Weyl modules, and generation by regular-<span class="math-inline">\(\lambda\)</span> loci. See GLC II Lemma 6.3.2, §§7.2–7.3, and Lemma 7.3.10. The latter attributes the Weyl-module/oper calculation to Frenkel–Gaitsgory. The separate spherical paper's main theorem and Weyl-module self-extension proposition do not replace the complete Weyl-module calculation.</li>
+<li>The coherent compatibility of the factorization actions and pairings, the strict-unit criterion, and the family/base-change/descent input for the factorization right adjoint. See GLC II Theorem 6.4.5, Appendix E Proposition E.10.10, and Proposition 6.2.6.</li>
+</ol>
+<p>The external-fusion paragraph GLC II B.11.14 cannot be used as an established premise. Chen, Fu, Gaitsgory, and Yang explicitly identify its defect in <a href="https://arxiv.org/abs/2511.02916v2"><em>Representations of loop groups as factorization module categories</em></a>, Warning C.9.13: a proposed étale hypercover has transition maps that are not schematic and fails the required surjectivity. Their corrected Lemma C.9.14 has its own hypotheses and proof obligation. The factorization argument above is conditional on valid descent and does not claim that either paragraph supplies its proof here.</p>
+<p>The local theorem proved conditionally above is GLC II Theorem 6.1.4, with pointwise Theorem 6.2.2 and t-exactness Corollary 6.6.9. The global critical-localization identity, global Hecke property, and fundamental diagram (18.14) require the separate global arguments of GLC II. They are not formal corollaries of the torus calculation or the pointwise FLE.</p>
+<h2>Hecke symmetry after extending the oper globally</h2>
+<p>The local spectral action makes the critical category a module for the category of quasi-coherent sheaves on local monodromy-free opers. Global opers give a map to these local opers, so one can extend scalars to global oper data. Write the resulting Ran category as
+<span class="math-display">\[
+\mathcal K^{\mathrm{glob}}
+=\operatorname{KL}(G)_{\mathrm{crit},\operatorname{Ran}}
+\mathbin{\otimes}_{\operatorname{QCoh}(\operatorname{Op}^{\mathrm{mf}}_{\check G})_{\operatorname{Ran}}}
+\operatorname{QCoh}(\operatorname{Op}^{\mathrm{mf,glob}}_{\check G})_{\operatorname{Ran}}.
+\tag{12.11}
+\]</span>
+The relative tensor product here is taken with the specified Ran actions and their convolution and unital conventions. Its construction is an input, rather than the ordinary tensor product of two vector spaces.</p>
+<p><strong>Geometric statement 12.B (critical Hecke property; not proved here).</strong> Critical localization factors through a functor
+<span class="math-display">\[
+\operatorname{Loc}^{\mathrm{Op}}_{G,\mathrm{crit}}:
+\mathcal K^{\mathrm{glob}}
+\longrightarrow D\operatorname{-mod}_{\mathrm{crit}}(\operatorname{Bun}_G)
+\tag{12.12}
+\]</span>
+which is linear for the convolution monoidal category
+<span class="math-inline">\((\operatorname{Rep}(\check G)_{\operatorname{Ran}})^\star\)</span>.
+On the target this is the Hecke action. On the source it is spectral localization to <span class="math-inline">\(\operatorname{QCoh}(S)\)</span>, followed by pullback along the underlying-global-local-system map and the module action. This is GLC II §16.4, the critical Hecke-property corollary, with the scalar extension and globalization constructed in the preceding parts of that section.</p>
+<p>This statement extends the regular-oper construction: the oper can have singularities at <span class="math-inline">\(I\)</span>, while its underlying local system extends over <span class="math-inline">\(X\)</span>. A central character at one disc alone does not supply such a global eigenvalue or the coherent Hecke comparisons.</p>
+<p>The implication from the specified linearity to an eigen relation can be proved directly. Suppose a sheaf category on a spectral space <span class="math-inline">\(Z\)</span> is acted on by <span class="math-inline">\(\operatorname{Rep}(\check G)_{\operatorname{Ran}}\)</span> through a map <span class="math-inline">\(r:Z\to S\)</span>. Fix a point <span class="math-inline">\(z\)</span> and a defined object <span class="math-inline">\(k_z\)</span>, and suppose its action satisfies the specified fibre formula
+<span class="math-display">\[
+a\star k_z\simeq a(r(z))\otimes k_z.
+\tag{12.13}
+\]</span>
+If <span class="math-inline">\(J\)</span> is a continuous linear functor to an automorphic category, then
+<span class="math-display">\[
+a\star J(k_z)
+\simeq J(a\star k_z)
+\simeq J(a(r(z))\otimes k_z)
+\simeq a(r(z))\otimes J(k_z).
+\tag{12.14}
+\]</span>
+The first map is linearity, the second is (12.13), and the third is the specified <span class="math-inline">\(k\)</span>-linear tensor compatibility. The action coherences for the three maps prove the tensor, unit and collision coherences of the eigen relation. Thus (12.14) is a full conditional deduction, not merely an equality in a Grothendieck group. For global opers the eigenvalue is the underlying global local system. The geometric fibre formula, the existence of <span class="math-inline">\(k_z\)</span> in the stated category, and the actual functor (12.12) are not proved by this deduction. Neither is nonvanishing: the zero object also satisfies (12.14).</p>
+<h2>The fundamental diagram</h2>
+<p>Put
+<span class="math-display">\[
+\mathcal V=\operatorname{Rep}(\check G)_{\operatorname{Ran}},\qquad
+\mathcal H=\operatorname{Whit}^{!}(G)_{\operatorname{Ran}}.
+\]</span>
+The geometric Casselman–Shalika equivalence is <span class="math-inline">\(\operatorname{CS}_G:\mathcal H\simeq\mathcal V\)</span>. It is an unproved geometric input here. Let <span class="math-inline">\(\operatorname{coeff}_G:\mathcal C\to\mathcal H\)</span> be the full Ran Whittaker coefficient, and let <span class="math-inline">\(\Gamma^{\mathrm{spec}}:\mathcal A\to\mathcal V\)</span> be the right adjoint of coarse spectral localization. It is a Ran-valued functor, not ordinary global sections to vector spaces. Let
+<span class="math-display">\[
+\Gamma^{\mathrm{spec},\operatorname{IndCoh}}
+=\Gamma^{\mathrm{spec}}\circ\Psi_{\operatorname{Nilp},0}
+       :\mathcal D\longrightarrow\mathcal V.
+\tag{12.15}
+\]</span></p>
+<p><img src="src/figures/fundamental-localization-diagram.svg" alt="The normalized localization and coefficient squares, with each arrow named. The coarse spectral global-sections arrow is fully faithful; its composite with coarsening need not be." /></p>
+<p>The upper square has the specified comparison
+<span class="math-display">\[
+\Gamma^{\mathrm{spec},\operatorname{IndCoh}}L_G
+\simeq\operatorname{CS}_G\operatorname{coeff}_G[2\delta_N].
+\tag{12.16}
+\]</span>
+The lower square is (12.10). These are GLC II §18.3, the Langlands–Whittaker compatibility corollary, and §18.5. The image assertions needed in the argument are that critical localization lands in the tempered automorphic subcategory and that <span class="math-inline">\(P_*^{\mathrm{spec}}\)</span> lands in the zero-support copy of <span class="math-inline">\(\mathcal A\)</span>. They are the tempered-localization proposition in GLC II §18.5 and the zero-support Poincaré proposition in §17, and are not proved here.</p>
+<p>Equation (18.14) of GLC II expresses the outer comparison through the middle categories <span class="math-inline">\(\mathcal C\)</span> and <span class="math-inline">\(\mathcal A\)</span>, before the horizontal Langlands arrow is filled in. With the unshifted coefficient functor its left ascending composite is
+<span class="math-display">\[
+\operatorname{CS}_G\operatorname{coeff}_G
+       (\operatorname{Loc}_G\otimes\ell_+),
+\tag{12.17}
+\]</span>
+and its right ascending composite is
+<span class="math-display">\[
+\Gamma^{\mathrm{spec}}P_*^{\mathrm{spec}}
+       \operatorname{FLE}_{G,\mathrm{crit}}.
+\tag{12.18}
+\]</span>
+Their equivalence has the <span class="math-inline">\(+\delta_N\)</span> shift in (12.17). Indeed, replacing the coefficient in (12.17) by the normalized coefficient <span class="math-inline">\(\operatorname{coeff}_G[2\delta_N]\)</span> changes the preceding localization line to <span class="math-inline">\(\ell_-\)</span>, since
+<span class="math-display">\[
+\operatorname{coeff}_G[2\delta_N]
+       (\operatorname{Loc}_G\otimes\ell_-)
+\simeq\operatorname{coeff}_G
+       (\operatorname{Loc}_G\otimes\ell_+).
+\tag{12.19}
+\]</span>
+The equality follows by adding cohomological shifts and commuting tensoring by the fixed line with a <span class="math-inline">\(k\)</span>-linear functor. It accounts for the apparent change of sign between the outer diagram and the main theorem.</p>
+<h3>Why the outer comparison suffices</h3>
+<p>Here is the exact formal argument. Assume the categorical constructions, natural comparisons and geometric image assertions just stated. Write <span class="math-inline">\(u:\mathcal C_{\mathrm{temp}}\hookrightarrow\mathcal C\)</span> and <span class="math-inline">\(\Xi:\mathcal A\hookrightarrow\mathcal D\)</span> for the specified fully faithful inclusions. Suppose
+<span class="math-display">\[
+L_Gu\simeq\Xi L_{G,\mathrm{temp}},\qquad
+L_{G,\mathrm{coarse}}u\simeq L_{G,\mathrm{temp}},
+\quad
+\operatorname{Loc}_G\simeq u\operatorname{Loc}_{G,\mathrm{temp}},
+\quad P_*^{\mathrm{spec}}\simeq\Xi P_{*,0}^{\mathrm{spec}}.
+\tag{12.20}
+\]</span>
+These are specified functor factorizations and equivalences, not inferences from a statement about objects alone. Assume further that <span class="math-inline">\(\Gamma^{\mathrm{spec}}\)</span> is fully faithful and that the coarse version of (12.16) is given. If (12.17) and (12.18) agree naturally, then
+<span class="math-display">\[
+\begin{aligned}
+\Gamma^{\mathrm{spec}}L_{G,\mathrm{coarse}}
+       (\operatorname{Loc}_G\otimes\ell_-)
+&amp;\simeq\operatorname{CS}_G\operatorname{coeff}_G
+       (\operatorname{Loc}_G\otimes\ell_+)\\
+&amp;\simeq\Gamma^{\mathrm{spec}}P_{*,0}^{\mathrm{spec}}
+       \operatorname{FLE}_{G,\mathrm{crit}}.
+\end{aligned}
+\tag{12.21}
+\]</span>
+Postcomposition with a fully faithful functor is fully faithful on functor categories. To see this, a natural transformation is a compatible family of maps; full faithfulness identifies each of its mapping spaces and all compatibility spaces. Taking the limit imposing these compatibilities gives the same space of transformations. Thus (12.21) lifts uniquely, with its specified coherence, to a natural equivalence of the two functors to <span class="math-inline">\(\mathcal A\)</span>. Using (12.20) and then <span class="math-inline">\(\Xi\)</span> gives (12.10). The same argument backwards shows that (12.10), together with the upper-square comparison, implies the outer comparison. This proves the formal equivalence of the two comparison problems under the stated inputs.</p>
+<p>Full faithfulness is used on <span class="math-inline">\(\mathcal A\)</span>. The composite (12.15) does not inherit full faithfulness merely because its last factor is fully faithful: <span class="math-inline">\(\Psi_{\operatorname{Nilp},0}\)</span> can forget nonzero singular support. Accordingly equality of the two coarse images, without the image factorizations (12.20), would not determine the full nilpotent comparison.</p>
+<p>The remaining outer comparison is geometric. It identifies two pairings into vector spaces. On the automorphic side localization followed by Whittaker coefficient is expressed through factorization homology of the critical centre; on the spectral side global oper pull-push followed by spectral global sections is expressed through factorization homology of functions on regular opers. The Feigin–Frenkel isomorphism and the compatible local pairing comparison identify these expressions. In GLC II these steps are the localization/coefficient theorem in §15, the spectral Poincaré/global-sections theorem in §17.5, and the coarse pairing corollary in §6. These geometric pairing identities, including their unital insertion and homological convergence data, are not proved by the cancellation argument above.</p>
+<h2>Adjoints computed through a localization</h2>
+<p>The commutative squares in the local-to-global construction carry more than objectwise identifications. Their specified natural equivalences allow one to compute adjoints, including their units and counits. The following two mechanisms isolate the formal part of that calculation.</p>
+<p>We work in presentable stable <span class="math-inline">\(k\)</span>-linear categories and use derived mapping complexes. Continuous means preserving all small colimits. We assume the enriched adjunction and Yoneda foundations, stable functor categories, and the existence of the supplied adjoints. For derived module categories we also assume their construction and the derived tensor–Hom adjunction; the explicit resolutions below prove the particular computations being used. When a presentable quotient is used below, its existence is a categorical prerequisite, not a geometric theorem proved here. All comparisons are natural equivalences with their higher coherence data.</p>
+<p>Let
+<span class="math-display">\[
+Q:\mathcal A\longrightarrow\mathcal B,
+\qquad Q\dashv R,
+\]</span>
+be an exact localization with fully faithful right adjoint. Write its unit and counit as
+<span class="math-display">\[
+u:\operatorname{id}_{\mathcal A}\longrightarrow RQ,
+\qquad v:QR\longrightarrow\operatorname{id}_{\mathcal B}.
+\]</span>
+The counit is an equivalence. Indeed, full faithfulness and adjunction identify, naturally in <span class="math-inline">\(b&#x27;\)</span>,
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal B}(b,b&#x27;)
+\simeq\operatorname{Map}_{\mathcal A}(Rb,Rb&#x27;)
+\simeq\operatorname{Map}_{\mathcal B}(QRb,b&#x27;).
+\]</span>
+The resulting comparison is precomposition by <span class="math-inline">\(v_b\)</span>. Yoneda therefore proves that <span class="math-inline">\(v_b\)</span> is an equivalence. An object <span class="math-inline">\(a\in\mathcal A\)</span> is <em>local</em> if its unit <span class="math-inline">\(u_a\)</span> is an equivalence; these are precisely the objects in the image of <span class="math-inline">\(R\)</span>. One direction is immediate from that unit; for the other, the triangle identity gives <span class="math-inline">\(u_{Rb}=(R v_b)^{-1}\)</span>.</p>
+<p>Let <span class="math-inline">\(F:\mathcal B\to\mathcal C\)</span> be continuous and suppose the composite
+<span class="math-inline">\(L=FQ\)</span> has a specified right adjoint
+<span class="math-display">\[
+L\dashv H,\qquad
+\alpha:\operatorname{id}_{\mathcal A}\to HL,
+\qquad \beta:LH\to\operatorname{id}_{\mathcal C}.
+\]</span>
+We do not assume that <span class="math-inline">\(R\)</span> or <span class="math-inline">\(H\)</span> preserves colimits.</p>
+<p><strong>Theorem 12.1 (localization and the right adjoint).</strong> The functor <span class="math-inline">\(H\)</span> takes values in local objects. The functor
+<span class="math-display">\[
+J=QH:\mathcal C\longrightarrow\mathcal B
+\]</span>
+is a right adjoint of <span class="math-inline">\(F\)</span>, with natural comparisons
+<span class="math-display">\[
+H\xrightarrow{\sim}RJ,
+\qquad FQR\xrightarrow{\sim}F.
+\]</span>
+These comparisons identify the given adjunction <span class="math-inline">\(FQ\dashv H\)</span> with the composite of <span class="math-inline">\(Q\dashv R\)</span> and <span class="math-inline">\(F\dashv J\)</span>.</p>
+<p><strong>Proof of locality.</strong> Put <span class="math-inline">\(\mathcal K=\ker Q\)</span>. For <span class="math-inline">\(k\in\mathcal K\)</span>, adjunction gives
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal A}(k,Hc)
+\simeq\operatorname{Map}_{\mathcal C}(FQk,c)=0.
+\]</span>
+For any <span class="math-inline">\(a\)</span>, the cofiber <span class="math-inline">\(z\)</span> of <span class="math-inline">\(u_a:a\to RQa\)</span> belongs to <span class="math-inline">\(\mathcal K\)</span>: the triangle identity says <span class="math-inline">\(v_{Qa}\circ Q(u_a)=\operatorname{id}_{Qa}\)</span>, and <span class="math-inline">\(v_{Qa}\)</span> is an equivalence, so <span class="math-inline">\(Q(u_a)\)</span> is an equivalence. Also
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal A}(k,Rb)
+\simeq\operatorname{Map}_{\mathcal B}(Qk,b)=0.
+\]</span>
+Apply this to <span class="math-inline">\(a=Hc\)</span> and its cofiber <span class="math-inline">\(z\)</span>. Both <span class="math-inline">\(\operatorname{Map}(z,Hc)\)</span> and <span class="math-inline">\(\operatorname{Map}(z,RQHc)\)</span> vanish. Exactness of mapping complexes on the cofiber triangle gives <span class="math-inline">\(\operatorname{Map}(z,z)=0\)</span>. Its identity is therefore zero and <span class="math-inline">\(z=0\)</span>. Thus
+<span class="math-display">\[
+\theta_c:=u_{Hc}:Hc\xrightarrow{\sim}RQHc=RJc
+\]</span>
+is the required natural locality comparison.</p>
+<p><strong>Proof of the adjunction.</strong> For <span class="math-inline">\(b\in\mathcal B\)</span> and <span class="math-inline">\(c\in\mathcal C\)</span>, compute
+<span class="math-display">\[
+\begin{aligned}
+\operatorname{Map}_{\mathcal B}(b,Jc)
+&amp;\simeq\operatorname{Map}_{\mathcal A}(Rb,RJc)\\
+&amp;\simeq\operatorname{Map}_{\mathcal A}(Rb,Hc)\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}(FQRb,c)\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}(Fb,c).
+\end{aligned}
+\]</span>
+The first equivalence uses full faithfulness of <span class="math-inline">\(R\)</span>; the second uses <span class="math-inline">\(\theta\)</span>; the third is the given adjunction; and the last is induced by <span class="math-inline">\(F(v_b)\)</span>. Every equivalence is natural on the full mapping complexes. This constructs <span class="math-inline">\(F\dashv J\)</span>, rather than only an objectwise bijection of Hom sets. The comparison <span class="math-inline">\(FQR\to F\)</span> is exactly <span class="math-inline">\(Fv\)</span>, hence is an equivalence.</p>
+<p>The adjunction <span class="math-inline">\(Q\dashv R\)</span> has the orientation
+<span class="math-inline">\(\operatorname{Map}_{\mathcal A}(a,Rb)\simeq\operatorname{Map}_{\mathcal B}(Qa,b)\)</span>. It does not directly identify <span class="math-inline">\(\operatorname{Map}_{\mathcal A}(Rb,a)\)</span> with <span class="math-inline">\(\operatorname{Map}_{\mathcal B}(b,Qa)\)</span>. In the proof the latter type of comparison became valid only after proving locality and using full faithfulness.</p>
+<p><strong>Units, counits and coherence.</strong> The unit <span class="math-inline">\(s:\operatorname{id}_{\mathcal B}\to JF\)</span> and counit <span class="math-inline">\(t:FJ\to\operatorname{id}_{\mathcal C}\)</span> of the constructed adjunction have the explicit formulas
+<span class="math-display">\[
+s_b=
+QHF(v_b)\circ Q(\alpha_{Rb})\circ v_b^{-1},
+\qquad t_c=\beta_c.
+\]</span>
+The first formula starts at <span class="math-inline">\(b\)</span>, passes through <span class="math-inline">\(QRb\)</span> and <span class="math-inline">\(QHFQRb\)</span>, and ends at <span class="math-inline">\(QHFb\)</span>. Thus each composition has its stated source and target. For its first triangle identity, naturality of <span class="math-inline">\(\beta\)</span> and the triangle for <span class="math-inline">\(L\dashv H\)</span> give
+<span class="math-display">\[
+\begin{aligned}
+t_{Fb}\circ F(s_b)
+&amp;=F(v_b)\circ\beta_{LRb}\circ L(\alpha_{Rb})\circ F(v_b^{-1})\\
+&amp;=\operatorname{id}_{Fb}.
+\end{aligned}
+\]</span>
+For the other triangle, <span class="math-inline">\(Q(\theta_c^{-1})=v_{Jc}\)</span>, again by the localization triangle. Hence <span class="math-inline">\(L(\theta_c^{-1})=F(v_{Jc})\)</span>. Naturality of <span class="math-inline">\(\alpha\)</span> and the triangle for <span class="math-inline">\(H\)</span> give
+<span class="math-display">\[
+\begin{aligned}
+J(t_c)\circ s_{Jc}
+&amp;=Q\bigl(H\beta_c\circ HL(\theta_c^{-1})\circ\alpha_{RJc}\bigr)
+\circ v_{Jc}^{-1}\\
+&amp;=Q\bigl(H\beta_c\circ\alpha_{Hc}\circ\theta_c^{-1}\bigr)
+\circ v_{Jc}^{-1}\\
+&amp;=Q(\theta_c^{-1})\circ v_{Jc}^{-1}
+=\operatorname{id}_{Jc}.
+\end{aligned}
+\]</span></p>
+<p>The unit and counit of the composite adjunction <span class="math-inline">\(FQ\dashv RJ\)</span> are
+<span class="math-display">\[
+a\xrightarrow{u_a}RQa\xrightarrow{R(s_{Qa})}RJFQa,
+\]</span>
+and
+<span class="math-display">\[
+FQRJc\xrightarrow{F(v_{Jc})}FJc\xrightarrow{t_c}c.
+\]</span>
+Under <span class="math-inline">\(\theta:H\simeq RJ\)</span>, these are the given <span class="math-inline">\(\alpha,\beta\)</span>. For the unit the precise comparison is
+<span class="math-display">\[
+\theta_{La}\circ\alpha_a=R(s_{Qa})\circ u_a.
+\]</span>
+Insert the formula for <span class="math-inline">\(s\)</span>; naturality of <span class="math-inline">\(u,\alpha\)</span>, followed by <span class="math-inline">\(v_{Qa}\circ Q(u_a)=\operatorname{id}_{Qa}\)</span>, gives this identity. Equivalently, the composite natural mapping correspondence is the original <span class="math-inline">\(L\dashv H\)</span> correspondence with <span class="math-inline">\(\theta\)</span> inserted. For the counit one checks that
+<span class="math-inline">\(v_{Jc}\circ Q(\theta_c)=\operatorname{id}_{Jc}\)</span>, the triangle identity for <span class="math-inline">\(Q\dashv R\)</span>, so the displayed counit reduces to <span class="math-inline">\(\beta_c\)</span>.</p>
+<p>These are identities with the natural homotopies supplied by the adjunctions. Since the correspondences identify full mapping spaces, taking mates also transports every higher coherence of a specified commutative square. Nothing here discards those coherences by passing to a homotopy category. <span class="math-inline">\(\square\)</span></p>
+<h2>Adjoints computed through a fully faithful inclusion</h2>
+<p>Let <span class="math-inline">\(I:\mathcal C\to\mathcal D\)</span> be fully faithful with a specified left adjoint <span class="math-inline">\(I^L\)</span>. Write
+<span class="math-display">\[
+p:\operatorname{id}_{\mathcal D}\to II^L,
+\qquad q:I^LI\to\operatorname{id}_{\mathcal C}
+\]</span>
+for the unit and counit. Full faithfulness of <span class="math-inline">\(I\)</span> makes <span class="math-inline">\(q\)</span> an equivalence, by the same Yoneda argument as above. Let <span class="math-inline">\(F:\mathcal B\to\mathcal C\)</span>, and fix a natural equivalence
+<span class="math-inline">\(\gamma:IF\xrightarrow{\sim}G\)</span>. Suppose <span class="math-inline">\(G\)</span> has a specified left adjoint
+<span class="math-display">\[
+G^L\dashv G,\qquad
+\eta:\operatorname{id}_{\mathcal D}\to GG^L,
+\qquad \epsilon:G^LG\to\operatorname{id}_{\mathcal B}.
+\]</span></p>
+<p><strong>Theorem 12.2 (inclusion and the left adjoint).</strong> There are canonical comparisons
+<span class="math-display">\[
+F\simeq I^LG,
+\qquad F^L\simeq G^LI.
+\]</span>
+The latter is an adjunction statement with the functor <span class="math-inline">\(G^LI:\mathcal C\to\mathcal B\)</span> on the left of <span class="math-inline">\(F\)</span>.</p>
+<p><strong>Proof.</strong> The reconstruction comparison is
+<span class="math-display">\[
+\kappa:I^LG\xrightarrow{I^L\gamma^{-1}}I^LIF
+\xrightarrow{q_F}F.
+\]</span>
+It is an equivalence. Put <span class="math-inline">\(T=G^LI\)</span>. Then
+<span class="math-display">\[
+\begin{aligned}
+\operatorname{Map}_{\mathcal B}(Tc,b)
+&amp;\simeq\operatorname{Map}_{\mathcal D}(Ic,Gb)\\
+&amp;\simeq\operatorname{Map}_{\mathcal D}(Ic,IFb)\\
+&amp;\simeq\operatorname{Map}_{\mathcal C}(c,Fb).
+\end{aligned}
+\]</span>
+The first equivalence is <span class="math-inline">\(G^L\dashv G\)</span>, the second uses <span class="math-inline">\(\gamma\)</span>, and the third uses full faithfulness. Thus <span class="math-inline">\(T\dashv F\)</span>.</p>
+<p>Its unit <span class="math-inline">\(a_c:c\to FTc\)</span> and counit <span class="math-inline">\(e_b:TFb\to b\)</span> are
+<span class="math-display">\[
+a_c=\kappa_{Tc}\circ I^L(\eta_{Ic})\circ q_c^{-1},
+\qquad
+e_b=\epsilon_b\circ G^L(\gamma_b).
+\]</span>
+Equivalently, full faithfulness characterizes the unit by
+<span class="math-inline">\(I(a_c)=\gamma_{Tc}^{-1}\circ\eta_{Ic}\)</span>. These formulas retain the functorial unit and counit of the supplied adjunction, including their directions.</p>
+<p>For the first triangle,
+<span class="math-display">\[
+e_{Tc}\circ T(a_c)
+=\epsilon_{Tc}\circ G^L(\gamma_{Tc})
+\circ G^L(\gamma_{Tc}^{-1}\circ\eta_{Ic})
+=\operatorname{id}_{Tc}.
+\]</span>
+For the second triangle, apply <span class="math-inline">\(I\)</span>. Naturality of <span class="math-inline">\(\gamma\)</span> and <span class="math-inline">\(\eta\)</span> identifies
+<span class="math-display">\[
+\gamma_b\circ IF(e_b)\circ I(a_{Fb})
+=G(\epsilon_b)\circ\eta_{Gb}\circ\gamma_b
+=\gamma_b.
+\]</span>
+Cancel the equivalence <span class="math-inline">\(\gamma_b\)</span> and use full faithfulness of <span class="math-inline">\(I\)</span>. This gives <span class="math-inline">\(F(e_b)\circ a_{Fb}=\operatorname{id}_{Fb}\)</span>. All these equations stand for the corresponding natural adjunction homotopies. The natural mapping-space equivalence constructs the higher coherences as well. <span class="math-inline">\(\square\)</span></p>
+<p>In particular, one must use the counit <span class="math-inline">\(I^LI\to\operatorname{id}_{\mathcal C}\)</span> to reconstruct <span class="math-inline">\(F\)</span>. The unit <span class="math-inline">\(\operatorname{id}_{\mathcal D}\to II^L\)</span> is generally not an equivalence on every object of <span class="math-inline">\(\mathcal D\)</span>.</p>
+<h2>Commutative squares and composite adjoints</h2>
+<p>Suppose a specified square identifies <span class="math-inline">\(FQ\simeq VU\)</span>, where <span class="math-inline">\(U:\mathcal A\to\mathcal E\)</span> and <span class="math-inline">\(V:\mathcal E\to\mathcal C\)</span> have specified right adjoints. Composition of their natural mapping equivalences gives
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal C}(VU(a),c)
+\simeq\operatorname{Map}_{\mathcal E}(Ua,V^Rc)
+\simeq\operatorname{Map}_{\mathcal A}(a,U^RV^Rc).
+\]</span>
+Thus the square identifies <span class="math-inline">\(H\simeq U^RV^R\)</span>, and Theorem 12.1 gives
+<span class="math-display">\[
+F\simeq VUR,\qquad F^R\simeq QU^RV^R.
+\]</span>
+The right adjoints occur in reverse order. Their unit and counit are the composites obtained from the two adjunctions, transported through the fixed square; Theorem 12.1 identifies them with those of <span class="math-inline">\(F\)</span>.</p>
+<p>Dually, suppose <span class="math-inline">\(IF\simeq VU\)</span>, where now <span class="math-inline">\(U:\mathcal B\to\mathcal E\)</span> and <span class="math-inline">\(V:\mathcal E\to\mathcal D\)</span> have specified left adjoints. The same calculation in the other direction gives
+<span class="math-display">\[
+G^L\simeq U^LV^L,\qquad
+F\simeq I^LVU,\qquad F^L\simeq U^LV^LI.
+\]</span>
+These formulas explain the formal role of the two squares of the fundamental diagram. Applying them to Kac–Moody localization and spectral Poincaré functors requires the actual geometric squares, their normalizations and their adjoints. The formal calculation supplies none of those geometric theorems.</p>
+<p><strong>Why full faithfulness is necessary.</strong> Let <span class="math-inline">\(\mathcal V=\operatorname{Mod}_k\)</span> and take the diagonal functor
+<span class="math-display">\[
+\Delta:\mathcal V\to\mathcal V\oplus\mathcal V,
+\qquad x\longmapsto(x,x).
+\]</span>
+Its left and right adjoints are both finite sum <span class="math-inline">\((x,y)\mapsto x\oplus y\)</span>. All these functors are exact and continuous, but <span class="math-inline">\(\Delta\)</span> is not fully faithful. Its sum adjoint is not fully faithful either: there are no maps from <span class="math-inline">\((k,0)\)</span> to <span class="math-inline">\((0,k)\)</span>, while the images have the nonzero identity map of <span class="math-inline">\(k\)</span>.</p>
+<p>For the localization formula take <span class="math-inline">\(Q=\Delta\)</span> and <span class="math-inline">\(F(x,y)=x\)</span>. Then <span class="math-inline">\(FQ=\operatorname{id}_{\mathcal V}\)</span>, so <span class="math-inline">\(H=\operatorname{id}\)</span>. The proposed <span class="math-inline">\(QH\)</span> is diagonal, whereas <span class="math-inline">\(F^R(c)=(c,0)\)</span>. Also <span class="math-inline">\(FQR(x,y)=x\oplus y\)</span>, which differs from <span class="math-inline">\(F(x,y)=x\)</span>, for example on <span class="math-inline">\((0,k)\)</span>. Thus an exact functor with a right adjoint is insufficient to replace a localization.</p>
+<p>For the inclusion formula take <span class="math-inline">\(I=\Delta\)</span>, <span class="math-inline">\(F=\operatorname{id}_{\mathcal V}\)</span> and <span class="math-inline">\(G=\Delta\)</span>. Then <span class="math-inline">\(I^LG(x)=x\oplus x\)</span> and <span class="math-inline">\(G^LI(x)=x\oplus x\)</span>, while <span class="math-inline">\(F(x)=F^L(x)=x\)</span>. The fully faithful inclusion hypothesis cannot be removed.</p>
+<h2>Ring localization and the distinction between two right adjoints</h2>
+<p>Let <span class="math-inline">\(R_0=k[t]\)</span>, <span class="math-inline">\(S=R_0[t^{-1}]\)</span>, and use unbounded derived module categories. Localization is flat: a finite relation between fractions, or an element becoming zero, can be checked after multiplying by a common power of <span class="math-inline">\(t\)</span>, which proves preservation of short exact sequences. Therefore
+<span class="math-display">\[
+Q(M)=S\otimes_{R_0}^{\mathbb L}M,
+\qquad U(N)=N\text{ regarded as an }R_0\text{-module}
+\]</span>
+are adjoint, <span class="math-inline">\(Q\dashv U\)</span>. The multiplication map <span class="math-inline">\(S\otimes_{R_0}S\to S\)</span> is an isomorphism, because both factors already invert <span class="math-inline">\(t\)</span>. Hence <span class="math-inline">\(QU\simeq\operatorname{id}\)</span>, and <span class="math-inline">\(U\)</span> is fully faithful. Its image consists of modules on which multiplication by <span class="math-inline">\(t\)</span> is an equivalence. The unit <span class="math-inline">\(M\to UQM\)</span> is the localization map.</p>
+<p>Here <span class="math-inline">\(U\)</span> preserves colimits: restriction of scalars computes them on the same underlying complexes. It has a further right adjoint,
+<span class="math-display">\[
+U\dashv C,\qquad C(M)=\operatorname{RHom}_{R_0}(S,M),
+\]</span>
+with the <span class="math-inline">\(S\)</span>-action by precomposition. Its adjunction is the derived tensor–Hom identity
+<span class="math-display">\[
+\operatorname{Map}_{R_0}(UN,M)
+\simeq\operatorname{Map}_S(N,\operatorname{RHom}_{R_0}(S,M)).
+\]</span>
+At the level of module complexes, the correspondence sends <span class="math-inline">\(f\)</span> to the map <span class="math-inline">\(n\mapsto(s\mapsto f(sn))\)</span>, with inverse evaluation at <span class="math-inline">\(s=1\)</span>; its derived version is the assumed tensor–Hom adjunction. Thus <span class="math-inline">\(U\)</span>, being also a left adjoint, preserves colimits. The functor <span class="math-inline">\(C\)</span> is derived coinduction. It must not be confused with the right adjoint <span class="math-inline">\(U\)</span> of localization.</p>
+<p>There is an explicit free resolution of <span class="math-inline">\(S\)</span>:
+<span class="math-display">\[
+0\longrightarrow\bigoplus_{j\ge0}R_0e_j
+\xrightarrow{\ d\ }\bigoplus_{j\ge0}R_0e_j
+\longrightarrow S\longrightarrow0,
+\qquad d(e_j)=e_j-te_{j+1}.
+\]</span>
+The last map sends <span class="math-inline">\(e_j\)</span> to <span class="math-inline">\(t^{-j}\)</span>. The cokernel is the direct-limit presentation of localization. The map <span class="math-inline">\(d\)</span> is injective: in a finitely supported vector in its kernel, the zeroth coefficient is zero, and the successive equations force every coefficient to be zero. Thus the two-term complex in degrees <span class="math-inline">\(-1,0\)</span> resolves <span class="math-inline">\(S\)</span>.</p>
+<p>Applying Hom computes derived Hom, since the terms are free and the complex is bounded. Up to changing the sign of the degree-one term, its differential is
+<span class="math-display">\[
+\prod_{j\ge0}M\longrightarrow\prod_{j\ge0}M,
+\qquad (x_j)\longmapsto(x_j-tx_{j+1}).
+\]</span>
+For an ordinary module this complex occupies degrees <span class="math-inline">\(0,1\)</span>; for a complex <span class="math-inline">\(M\)</span> one uses its corresponding total complex. If <span class="math-inline">\(t\)</span> acts invertibly, a sequence in the kernel is determined by <span class="math-inline">\(x_0\)</span>, with <span class="math-inline">\(x_j=t^{-j}x_0\)</span>. The differential is surjective: given <span class="math-inline">\((a_j)\)</span>, choose <span class="math-inline">\(x_0=0\)</span> and define <span class="math-inline">\(x_{j+1}=t^{-1}(x_j-a_j)\)</span>. Hence <span class="math-inline">\(C(UN)\simeq N\)</span>, with the compatible <span class="math-inline">\(S\)</span>-action. This calculation checks the adjunction and its local-object restriction directly.</p>
+<p>For <span class="math-inline">\(F=\operatorname{id}_{\operatorname{Mod}_S}\)</span>, the composite <span class="math-inline">\(FQ=Q\)</span> has right adjoint <span class="math-inline">\(H=U\)</span>. The formal proposition gives <span class="math-inline">\(F^R=QH=QU\simeq\operatorname{id}\)</span>, exactly as it should.</p>
+<h2>A localization whose right adjoint is not continuous</h2>
+<p>Continuity of <span class="math-inline">\(U\)</span> in the preceding ring example is a special feature. It is absent for a general reflective localization, so it was not an assumption of Theorem 12.1.</p>
+<p>For an explicit example, let <span class="math-inline">\(\mathcal A=\operatorname{Mod}_{R_0}\)</span>, let <span class="math-inline">\(\mathcal K\)</span> be the localizing subcategory generated by <span class="math-inline">\(S=R_0[t^{-1}]\)</span>, and take the presentable stable quotient
+<span class="math-display">\[
+\widehat Q:\mathcal A\longrightarrow\mathcal A/\mathcal K,
+\qquad\widehat Q\dashv\widehat R.
+\]</span>
+Existence of this quotient with fully faithful right adjoint is part of the presentable-localization foundation being assumed. Its local objects are precisely those <span class="math-inline">\(M\)</span> satisfying <span class="math-inline">\(\operatorname{RHom}_{R_0}(S,M)=0\)</span>: mapping out of colimits gives limits, so this condition is equivalent to orthogonality to all of <span class="math-inline">\(\mathcal K\)</span>, and the locality proof above identifies that orthogonality with the image of <span class="math-inline">\(\widehat R\)</span>.</p>
+<p>Every <span class="math-inline">\(M_n=R_0/(t^n)\)</span>, <span class="math-inline">\(n\ge1\)</span>, is local. In the product complex just computed, put <span class="math-inline">\(T(x)_j=tx_{j+1}\)</span>. Since <span class="math-inline">\(T^n=0\)</span> on <span class="math-inline">\(\prod_j M_n\)</span>, the map <span class="math-inline">\(1-T\)</span> has inverse <span class="math-inline">\(1+T+\cdots+T^{n-1}\)</span>. Derived Hom is therefore zero.</p>
+<p>But <span class="math-inline">\(M=\bigoplus_{n\ge1}M_n\)</span> is not local. In <span class="math-inline">\(\prod_{j\ge0}M\)</span>, let <span class="math-inline">\(a_j\)</span> be the class of <span class="math-inline">\(1\)</span> in the summand <span class="math-inline">\(M_{j+1}\)</span>. If <span class="math-inline">\(a=(1-T)x\)</span>, iteration would give
+<span class="math-display">\[
+x_0=\sum_{j=0}^{N-1}t^ja_j+t^Nx_N.
+\]</span>
+Fix <span class="math-inline">\(n\)</span>, and choose <span class="math-inline">\(N\ge n\)</span>. Projection to <span class="math-inline">\(M_n\)</span> kills the last term and leaves <span class="math-inline">\(t^{n-1}\ne0\)</span>. Thus <span class="math-inline">\(x_0\)</span> would have nonzero components in every <span class="math-inline">\(M_n\)</span>, contradicting the finite support required in a direct sum. The product differential is not surjective; its degree-one cohomology, <span class="math-inline">\(H^1\operatorname{RHom}_{R_0}(S,M)\)</span>, is nonzero.</p>
+<p>The coproduct in the quotient category must be represented by the localized coproduct. If <span class="math-inline">\(\widehat R\)</span> preserved this coproduct, its image would be <span class="math-inline">\(M\)</span>, which is not local. Hence <span class="math-inline">\(\widehat R\)</span> is not continuous. Nevertheless Theorem 12.1 and its adjoint identities remain valid. An equivalence <span class="math-inline">\(F\simeq FQ R\)</span> does not require the three displayed factors independently to preserve colimits.</p>
+<h2>Degree-zero equivalences and derived mapping complexes</h2>
+<p>An exact equivalence of abelian categories does induce an equivalence of their ordinary derived categories: apply it termwise to complexes and to its exact inverse, which preserves quasi-isomorphisms. What needs separate proof is that those derived categories identify with the particular DG categories occurring in a geometric statement. Agreement in degree zero does not identify ambient derived mapping complexes.</p>
+<p>Here is an elementary example. Put <span class="math-inline">\(A=k[\varepsilon]/(\varepsilon^2)\)</span>. The abelian category of <span class="math-inline">\(A\)</span>-modules annihilated by <span class="math-inline">\(\varepsilon\)</span> is <span class="math-inline">\(\operatorname{Vect}_k\)</span>. Its simple object <span class="math-inline">\(k\)</span> has <span class="math-inline">\(\operatorname{Hom}_A(k,k)=k\)</span>. In the ambient derived category of <span class="math-inline">\(A\)</span>-modules, however, its self-Ext is nonzero in every nonnegative degree.</p>
+<p>Indeed, the augmentation to <span class="math-inline">\(k\)</span> has the free resolution
+<span class="math-display">\[
+\cdots\xrightarrow{\varepsilon}A\xrightarrow{\varepsilon}A
+\xrightarrow{\varepsilon}A\longrightarrow k\longrightarrow0,
+\]</span>
+with the last free term in degree zero. The square of the differential is zero. The kernel and image of multiplication by <span class="math-inline">\(\varepsilon\)</span> are both <span class="math-inline">\((\varepsilon)\)</span>, and the augmentation has this same kernel, so the resolution is exact.</p>
+<p>This bounded-above free complex computes derived Hom even for unbounded targets. To verify that assertion, let its map to an acyclic complex be given. In degree zero its image lies in cycles; projectivity lifts it through the surjection from the preceding degree onto those cycles. Subtract this first homotopy. In degree <span class="math-inline">\(-1\)</span> the remaining map again lies in cycles and can be lifted. Continue downward. The resulting homotopy is defined in each degree after a finite stage, and contracts the map. Apply the same argument to every shift of the acyclic target; this proves that the Hom complex is acyclic.</p>
+<p>Applying Hom to <span class="math-inline">\(k\)</span>, every differential is zero. More explicitly the dual differential on a homogeneous map <span class="math-inline">\(\phi\)</span> of degree <span class="math-inline">\(n\)</span> is <span class="math-inline">\(-(-1)^n\phi\circ d\)</span>, which vanishes because <span class="math-inline">\(\varepsilon\)</span> acts by zero on <span class="math-inline">\(k\)</span>. Thus
+<span class="math-display">\[
+\operatorname{Ext}^n_A(k,k)=k\quad(n\ge0),
+\qquad \operatorname{Ext}^n_A(k,k)=0\quad(n&lt;0).
+\]</span>
+By contrast, <span class="math-inline">\(k\)</span> is free over the field <span class="math-inline">\(k\)</span>, so its higher self-Ext in <span class="math-inline">\(\operatorname{Mod}_k\)</span> vanishes. The restriction functor <span class="math-inline">\(\operatorname{Mod}_k\to\operatorname{Mod}_A\)</span> agrees with the displayed abelian inclusion in degree zero and is not fully faithful on derived mapping complexes. This explains the need for an actual derived comparison; it proves no geometric Frenkel–Gaitsgory equivalence or failure of such an equivalence.</p>
+<h2>Exercises and complete solutions</h2>
+<p><strong>Exercise 12.1 (easy).</strong> Describe the FLE for a torus.</p>
+<p><strong>Solution 12.1.</strong> Let <span class="math-inline">\(G=T\)</span>. Then <span class="math-inline">\(N=1\)</span>, <span class="math-inline">\(\rho=0\)</span>, and the critical central extension is zero. The current algebra <span class="math-inline">\(\mathfrak t((t))\)</span> is commutative. Whittaker projection is the identity, and ordinary DS is the underlying-vector-space functor. The enhanced functor retains the action of the commutative current algebra and its spectral support; forgetting this action would lose the FLE.</p>
+<p>The oper definition contains an identification of the Cartan bundle with <span class="math-inline">\(\check\rho(\omega_X)\)</span>, GLC II §3.1. For a torus this fixes a trivialization. Accordingly a torus oper is a connection on that fixed trivial bundle:
+<span class="math-display">\[
+d+A(t)\,dt,\qquad A(t)\in\check{\mathfrak t}((t)).
+\tag{F13}
+\]</span>
+Regular opers have <span class="math-inline">\(A(t)\in\check{\mathfrak t}[[t]]\)</span>. The space of such forms is an oper space, while <span class="math-inline">\(\operatorname{LS}^{\mathrm{mer}}_{\check T,x}\)</span> also identifies connections related by gauge transformations. They are different objects.</p>
+<p>Choose the sign convention that gauge transformation by <span class="math-inline">\(g\in\check T(K)\)</span> sends <span class="math-inline">\(A\,dt\)</span> to <span class="math-inline">\(A\,dt-d\log g\)</span>. The monodromy-free condition asks for a disc connection whose punctured restriction is isomorphic to (F13), while retaining the fixed oper trivialization. Over <span class="math-inline">\(k\)</span>, every Laurent unit has the form <span class="math-inline">\(t^\lambda u(t)\)</span>, where
+<span class="math-inline">\(\lambda\in X_*(\check T)=X^*(T)\)</span> and <span class="math-inline">\(u(t)\in\check T(\mathcal O)\)</span>. Hence
+<span class="math-display">\[
+d\log(t^\lambda u(t))
+=\lambda\,\frac{dt}{t}+d\log u(t).
+\]</span>
+The second summand is regular. It follows that a monodromy-free <span class="math-inline">\(k\)</span>-valued oper has no pole of order at least two and has integral residue. Conversely
+<span class="math-display">\[
+A(t)\,dt=\lambda\,\frac{dt}{t}+A_{\mathrm{reg}}(t)\,dt
+\tag{F14}
+\]</span>
+is gauge equivalent by <span class="math-inline">\(t^\lambda\)</span> to a regular connection, so it is monodromy-free. Regular connections themselves are formally trivializable over <span class="math-inline">\(k\)</span>: integrate the regular coefficients term by term and exponentiate the resulting power series of zero constant term. The denominators and the formal exponential exist in characteristic zero. This proves the field-valued classification.</p>
+<p>This does not classify families over nonreduced rings. For <span class="math-inline">\(\check T=\mathbb G_m\)</span>, take <span class="math-inline">\(R=k[\epsilon]/(\epsilon^2)\)</span> and <span class="math-inline">\(g=1+\epsilon/t\in R((t))^\times\)</span>. Then
+<span class="math-display">\[
+g^{-1}=1-\epsilon/t,\qquad
+d\log g=-\epsilon t^{-2}\,dt.
+\]</span>
+The fixed-trivialization oper with <span class="math-inline">\(A\,dt=-\epsilon t^{-2}\,dt\)</span> is monodromy-free, since gauge transformation by <span class="math-inline">\(g\)</span> sends it to zero. It has a nilpotent pole of order two. Thus neither the union of the reduced loci (F14) nor regular opers alone gives the full target (F1). The fiber product and its specified infinite-type category must be retained.</p>
+<p>The elementary spectral coordinates come from the residue pairing, agreeing with GLC II §5.1's tautological torus Feigin–Frenkel normalization,
+<span class="math-display">\[
+\langle h(t),A(t)\,dt\rangle
+=\operatorname{Res}_{t=0}\langle h(t),A(t)\rangle\,dt.
+\tag{F15}
+\]</span>
+If <span class="math-inline">\(A_{\mathrm{reg}}(t)=\sum_{m\geq0}a_mt^m\)</span>, the negative current <span class="math-inline">\(h\,t^{-m-1}\)</span> acts through the coordinate <span class="math-inline">\(\langle h,a_m\rangle\)</span>. The zero current pairs with the residue. For a commutative Lie algebra, its enveloping algebra is its symmetric algebra: this follows directly from the tensor-algebra definition after imposing the relations <span class="math-inline">\(xy-yx=0\)</span>. Decomposing currents into negative, zero and positive powers decomposes that symmetric algebra as their tensor product. Induction from the zero-current character and trivial positive currents therefore leaves a free symmetric algebra in the negative currents. The torus Weyl module induced from a weight <span class="math-inline">\(\lambda\)</span> has zero-current weight <span class="math-inline">\(\lambda\)</span>, zero positive-current action on its inducing line, and freely generated negative-current directions. Under the normalization (F15), its DS image is the structure sheaf on the corresponding reduced residue-<span class="math-inline">\(\lambda\)</span> oper locus. The derived category also retains extensions normal to this locus; the nilpotent example explains why its ambient support cannot be discarded.</p>
+<p>Therefore the torus FLE is the enhanced commutative-current-algebra equivalence
+<span class="math-display">\[
+\operatorname{KL}(T)_{0,x}
+\simeq
+\operatorname{IndCoh}^{*}
+\left(
+\operatorname{LS}^{\mathrm{reg}}_{\check T,x}
+\times_{\operatorname{LS}^{\mathrm{mer}}_{\check T,x}}
+\operatorname{Op}^{\mathrm{mer}}_{\check T,x}
+\right),
+\tag{F16}
+\]</span>
+with no <span class="math-inline">\(\rho\)</span>- or critical-level shift. Its full DG and factorization assertion uses the same completed-category and family premises as the theorem; the residue calculation establishes its coordinates and its Weyl-module normalization, not those premises. For <span class="math-inline">\(T=1\)</span>, the current algebra is zero, both sides are <span class="math-inline">\(\operatorname{Vect}\)</span>, and (F16) is the identity, including its tensor unit.</p>
+<p><strong>Exercise 12.2 (easy).</strong> Draw the fundamental diagram, name every arrow, and explain the shift on localization when the upper coefficient arrow is unshifted.</p>
+<p><strong>Solution 12.2.</strong> The upper row is <span class="math-inline">\(\mathcal H\xrightarrow{\operatorname{CS}_G}\mathcal V\)</span>; the middle row is <span class="math-inline">\(\mathcal C\xrightarrow{L_G}\mathcal D\)</span>; the lower row is <span class="math-inline">\(\operatorname{KL}(G)_{\mathrm{crit},\operatorname{Ran}}\xrightarrow{\operatorname{FLE}_{G,\mathrm{crit}}}\mathcal O\)</span>. Both vertical directions ascend. From the middle to the upper row the left arrow is <span class="math-inline">\(\operatorname{coeff}_G[2\delta_N]\)</span> and the right arrow is <span class="math-inline">\(\Gamma^{\mathrm{spec},\operatorname{IndCoh}}\)</span>. From the lower to the middle row the left arrow is <span class="math-inline">\(\operatorname{Loc}_G\otimes\ell_-\)</span> and the right arrow is <span class="math-inline">\(P_*^{\mathrm{spec}}\)</span>. The lower square states (12.10); the upper square states (12.16). To express GLC II (18.14), replace the middle right category by <span class="math-inline">\(\mathcal A\)</span>, use <span class="math-inline">\(\Gamma^{\mathrm{spec}}\)</span>, omit the middle horizontal arrow, and compare the two outer circuits. Using the unshifted <span class="math-inline">\(\operatorname{coeff}_G\)</span> replaces <span class="math-inline">\(\ell_-\)</span> by <span class="math-inline">\(\ell_+\)</span> exactly as in (12.19). Ordinary <span class="math-inline">\(\Gamma(S,-):\mathcal A\to\operatorname{Vect}\)</span> is a further vacuum evaluation and is not the upper right arrow in this diagram. Finally, the full arrow (12.15) is not the fully faithful arrow used in the proof; that distinction is why the coarse and tempered factorizations were needed.</p>
+<p><strong>Exercise 12.3 (medium).</strong> Prove the formal statement on Verdier quotients and explain the dual inclusion mechanism.</p>
+<p><strong>Solution 12.3.</strong> Let <span class="math-inline">\(Q\dashv R\)</span> have fully faithful <span class="math-inline">\(R\)</span>, let <span class="math-inline">\(F\)</span> be continuous, and let <span class="math-inline">\(H=(FQ)^R\)</span> be the specified right adjoint. For every kernel object <span class="math-inline">\(k\)</span>, the adjunction gives <span class="math-inline">\(\operatorname{Map}(k,Hc)=0\)</span>. The cofiber of <span class="math-inline">\(Hc\to RQHc\)</span> is a kernel object. Mapping from that cofiber into its defining triangle proves that its identity is zero, so <span class="math-inline">\(Hc\simeq RQHc\)</span>. Locality is the needed step before using full faithfulness to write
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal B}(b,QHc)
+\simeq\operatorname{Map}_{\mathcal A}(Rb,Hc)
+\simeq\operatorname{Map}_{\mathcal C}(Fb,c).
+\]</span>
+Hence <span class="math-inline">\(F^R=QH\)</span>, while the localization counit gives <span class="math-inline">\(FQR\simeq F\)</span>. The unit is <span class="math-inline">\(QHF(v_b)\circ Q\alpha_{Rb}\circ v_b^{-1}\)</span>, and the counit is <span class="math-inline">\(\beta\)</span>. Theorem 12.1 verifies their compatibility with the original composite adjunction on all mapping spaces.</p>
+<p>For a fully faithful <span class="math-inline">\(I\)</span> with left adjoint, the equivalence <span class="math-inline">\(IF\simeq G\)</span> gives <span class="math-inline">\(I^LG\simeq I^LIF\simeq F\)</span> by the counit of <span class="math-inline">\(I^L\dashv I\)</span>. If <span class="math-inline">\(G^L\)</span> is specified, then
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal B}(G^LIc,b)
+\simeq\operatorname{Map}_{\mathcal D}(Ic,Gb)
+\simeq\operatorname{Map}_{\mathcal C}(c,Fb),
+\]</span>
+so <span class="math-inline">\(F^L=G^LI\)</span>, with the units and counits given in Theorem 12.2. The diagonal counterexamples show why the full-faithfulness hypotheses are essential, and the second ring example shows why continuity of a localization's right adjoint must not be added without proof.</p>
+<p><strong>Exercise 12.4 (medium).</strong> Explain the role of monodromy-free opers.</p>
+<p><strong>Solution 12.4.</strong> An oper has two pieces of data: its underlying local system and its oper reduction with the prescribed Cartan identification. Spherical equivariance controls extension of the underlying local system across a puncture. It does not force the oper reduction, in the oper trivialization, to extend. The correct moduli object therefore remembers a regular local system together with a meromorphic oper on its punctured restriction and an isomorphism between those restrictions. This is precisely (F1).</p>
+<p>The regular-oper inclusion is only one part of this target. The torus residue-<span class="math-inline">\(\lambda\)</span> examples (F14), for <span class="math-inline">\(\lambda\neq0\)</span>, already show monodromy-free opers that are not regular in the fixed oper trivialization. For a general reductive group, the Weyl-module DS calculation (F12) identifies the other regular-<span class="math-inline">\(\lambda\)</span> loci. Passing to the reduced union would still discard the normal extensions illustrated in the derived normal-direction example, as well as nilpotent families such as the explicit torus example.</p>
+<p>Conversely, using all meromorphic opers would discard the support condition supplied by spherical equivariance. GLC II §§5.3–5.4 construct the monodromy-free central action; §§7.2–7.3 identify the image of the refined DS pairing with its formal-support category. Given those geometric calculations, the generator argument in the pointwise critical FLE discussion proves that the FLE has exactly this target. Thus monodromy-free support expresses the spherical condition while retaining the oper data and its derived deformation directions.</p>
+<p>The analogous global localization and Hecke statement also involves global curves, localization, and the spectral action. Its proof is separate from this local target calculation.</p>
+<p><strong>Exercise 12.5 (hard).</strong> Write a one-page outline of the proof of the critical FLE, distinguishing its formal deductions from its unproved geometric inputs.</p>
+<p><strong>Solution 12.5.</strong> Construct the critical FLE before proving equivalence. The factorization Feigin–Frenkel theorem identifies the critical center with functions on regular opers. Birth of opers and the coherent spectral coaction make the spherical category linear over monodromy-free opers. Compose spherical forgetfulness with Whittaker projection and enhanced DS. Affine Skryabin identifies the Whittaker target with the specified category on meromorphic opers. Relative linear Hom, followed by the geometric duality, refines this functor to <span class="math-inline">\(\operatorname{IndCoh}^{*}(\operatorname{Op}^{\mathrm{mf}})\)</span>.</p>
+<p>Next prove compactness and normalization. The spherical-to-Whittaker functor has a continuous right adjoint, so it preserves compact objects by the adjunction calculation in the compactness argument. Affine Skryabin preserves them, and conservative meromorphic-oper pushforward detects compactness of the refined image. The center-to-DS-of-vacuum calculation and conservative pushforward identify the vacuum with the regular-oper structure sheaf and give the strict-unit normalization once its coherent criterion is supplied.</p>
+<p>At a point, derived Satake identifies the geometric and spectral spherical actions. The spectral pairing with regular local systems is an equivalence onto monodromy-free formal support. The geometric pairing is fully faithful by its equivariant adjunction and ind-properness. Its image contains the DS images of all Weyl modules; the Weyl-oper calculation and formal-support generation show that its image is the entire same target. Satake compatibility identifies these two pairings, and the tempered Morita presentation gives an equivalence on the tempered colocalization of critical KL.</p>
+<p>Remove temperization using compact generators. Both inclusion and projection preserve the relevant compacts; the counit fiber of a compact object is compact and projects to zero. Critical Hecke exactness and exact DS give t-exactness of the coarse FLE; the bounded-below refined comparison and right completeness give refined t-exactness. The tempered comonad is conservative on the heart. Boundedness of compact KL objects then forces the counit fiber to vanish by its cohomology objects. Continuity and compact generation extend this identity to every object, proving the pointwise DG equivalence.</p>
+<p>Finally use compactness to construct the factorization right adjoint. On configuration strata, factorization reduces the unit and counit to tensor products of one-point equivalences. Fiber detection and descent make both globally invertible. This proves the factorization equivalence, provided the family, base-change, and descent inputs hold. The outline's formal deductions are proved in the DS, Skryabin, Satake, temperedness and factorization arguments; its center, birth, Skryabin calculations, derived Satake geometry, Weyl-oper calculation, infinite-type geometry, and coherent family inputs are distinct deep premises.</p>
+<h2>Geometric inputs not proved here</h2>
+<p>The formal adjoint lemmas apply to any categories with the specified localization, inclusion and adjunction data. They do not establish that a particular geometric functor has those properties. In the application to geometric Langlands, the following inputs still require complete proofs.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Mathematical input</th>
+<th>Conclusion it is needed for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The critical Kac–Moody category, its arc-group action, its t-structure and the coordinate-independent factorization construction</td>
+<td>The source and natural structure of the critical FLE</td>
+</tr>
+<tr>
+<td>Feigin–Frenkel duality with its factorization and central-action comparisons; birth of opers</td>
+<td>The construction and central compatibility of the local functor</td>
+</tr>
+<tr>
+<td>Affine Skryabin, derived Satake and geometric Casselman–Shalika with the stated renormalizations</td>
+<td>The Whittaker description, tempered reconstruction and local equivalence</td>
+</tr>
+<tr>
+<td>Compact preservation, the pointwise temperedness argument, and the theorem passing from fibres to factorization categories</td>
+<td>The equivalence over the Ran space, beyond an equivalence at one point</td>
+</tr>
+<tr>
+<td>Infinite-type star and shriek IndCoh, placidity, duality, convergence and the required base-change comparisons</td>
+<td>The actual spectral oper categories, their functors and pairings</td>
+</tr>
+<tr>
+<td>Critical localization, infinitesimal Hecke descent, the half twist and the two constant determinant lines</td>
+<td>The functor <span class="math-inline">\(\operatorname{Loc}_G\)</span>, its normalized global comparison and Hecke property</td>
+</tr>
+<tr>
+<td>The relative scalar extension by global opers, its coherent Hecke action and the spectral fibre comparison</td>
+<td>The geometric eigen relation for localized global oper objects</td>
+</tr>
+<tr>
+<td>Local-to-global unitalization and factorization homology with the required insertion and collision comparisons</td>
+<td>The actual outer fundamental diagram</td>
+</tr>
+<tr>
+<td>The spectral global-sections localization, the spectral Poincaré image theorem and automorphic tempered image theorem</td>
+<td>Cancellation on <span class="math-inline">\(\operatorname{QCoh}(S)\)</span> and passage back to nilpotent <span class="math-inline">\(\operatorname{IndCoh}\)</span></td>
+</tr>
+<tr>
+<td>The geometric localization/coefficient pairing and spectral Poincaré/global-sections pairing, identified through Feigin–Frenkel duality</td>
+<td>The actual commutativity asserted in Statement 12.A</td>
+</tr>
+<tr>
+<td>The stable categorical framework: mapping complexes, adjoints, coherent Yoneda, localization, derived tensor products and the Ind constructions</td>
+<td>The foundations assumed by the complete formal deductions</td>
+</tr>
+</tbody>
+</table></div>
+<p>In particular, the derived calculation does not prove the critical FLE, the torus calculation does not construct the full unbounded infinite-type sheaf theory, and the formal diagram argument does not prove the geometric pairing identities. The distinction is mathematical: each calculation identifies the precise further assertion needed before it can be applied to the actual geometric categories.</p>
+<p>The next stage uses these comparisons to compute adjoints on the cuspidal categories. Essential surjectivity and full faithfulness of the global Langlands functor are additional assertions; local critical localization alone does not establish them.</p>
+<h2>Further reading</h2>
+<p>The main reference is the freely accessible author paper by Dima Arinkin, Dario Beraldo, Justin Campbell, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin and Nick Rozenblyum, <a href="https://arxiv.org/abs/2405.03648v3">Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</a>. Its introduction and §§6–8 develop the local equivalence and duality; §§11–17 construct localization, Hecke and spectral Poincaré comparisons; §18 assembles the fundamental diagram. These references credit the mathematical constructions and supply further reading. They do not replace the missing proofs listed above.</p>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

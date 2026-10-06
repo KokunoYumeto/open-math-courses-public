@@ -1,0 +1,880 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Kasparov's technical
+theorem}\label{kasparovs-technical-theorem}
+
+\emph{Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public
+domain (CC0).}
+
+Constructing a Kasparov product requires combining two operators whose
+errors are compact in different directions. A partition of the identity
+in a multiplier algebra lets us assign one error to one part and the
+other error to the complementary part. The partition must also commute
+modulo the ideal with the operators already present. Kasparov's
+technical theorem supplies exactly this partition.
+
+We prove the theorem, including its graded form, by constructing a
+strict sum of positive operators. The proof includes the required
+convexity argument, the reduction from \(\sigma\)-unital to separable
+data, and the estimates for each error. We also prove the multiplier
+quotient lifting used in a shorter separation argument when no
+commutator control is requested. Finally we use the theorem to extend an
+operator homotopy from an ideal; this is the technical input to the
+comparison of cycle relations.
+
+We use the earlier continuous functional-calculus proofs. Theorem 1.1
+proves its bounded-functional and strong-support inputs locally, using
+the GNS construction of
+\href{KT-KK-05.html\#lemma-3-0a-the-ordinary-spatial-norm}{Lesson 05,
+Lemma 3.0a}. The ideal version of quasicentral approximate identities
+belongs to \emph{Lifting completely positive maps}; Section 1 supplies
+the additional derivating-subspace version needed here. For a countably
+generated Hilbert module, the identification
+\(\mathcal L(E)=M(\mathcal K(E))\) and \(\sigma\)-unitality of
+\(\mathcal K(E)\) are proved in
+\href{KT-KK-05.html\#lemma-2-0-compact-module-operators-and-their-multipliers}{Lesson
+05, Lemma 2.0}.
+
+\subsection{1. Approximate identities with commutator
+control}\label{approximate-identities-with-commutator-control}
+
+An approximate identity means positive contractions \(u_\lambda\) such
+that \(u_\lambda a\to a\) and \(au_\lambda\to a\) in norm for every
+\(a\) in the algebra. A subspace \(\Delta\) of an ambient C*-algebra
+\textbf{derives} a subalgebra \(A\) if \[
+[d,a]\in A\qquad(d\in\Delta,\ a\in A).
+\tag{1.1}
+\] Here the commutator is ordinary until grading is explicitly
+introduced. Deriving is weaker than preserving \(A\) by left and right
+multiplication separately.
+
+\textbf{Theorem 1.1 (convex quasicentrality).} Suppose \(\Delta\)
+derives \(A\). From any positive contractive approximate identity of
+\(A\), finite convex combinations can be chosen to form an approximate
+identity quasicentral for \(\Delta\): \[
+\|[u_\lambda,d]\|\longrightarrow0\qquad(d\in\Delta).
+\tag{1.2}
+\] More precisely every tail of the original approximate identity has
+convex combinations meeting any finite collection of
+approximate-identity and commutator tests. If \(A\) is \(\sigma\)-unital
+and \(\Delta\) is separable, the combinations may be chosen as a
+sequence.
+
+\textbf{Proof.} Write \(C\) for the ambient C*-algebra. First every
+bounded complex linear functional \(f\) on \(C\) is a vector coefficient
+in some Hilbert-space representation of the forced unitization \(C^+\).
+Here is a proof that needs only Hahn--Banach and the GNS construction
+proved in Lesson 05 Lemma 3.0a. The zero functional is immediate;
+normalize a nonzero one to \(\|f\|=1\). In \(M_2(C^+)\) use the unital
+self-adjoint subspace consisting of matrices \[
+\begin{pmatrix}\lambda1&a\\b&\mu1\end{pmatrix},
+\qquad a,b\in C,\quad\lambda,\mu\in\mathbb C.
+\] On it define \[
+F\left(\begin{pmatrix}\lambda1&a\\b&\mu1\end{pmatrix}\right)
+=\tfrac12(\lambda+\mu+f(a)+\overline{f(b^*)}).
+\] This is complex linear and real on self-adjoint matrices. For a
+positive such matrix, \(\lambda,\mu\geq0\) and
+\(\|a\|^2\leq\lambda\mu\). To check that bound when \(\lambda>0\), apply
+the triangular Schur-complement factorization to obtain
+\(a^*a\leq\lambda\mu1\). If \(\lambda=0\), positivity and its square
+root show that the first column is zero, so \(a=0\). Thus \[
+F\left(\begin{pmatrix}\lambda1&a\\a^*&\mu1\end{pmatrix}\right)
+\geq(\lambda+\mu)/2-\|a\|\geq0.
+\] Since \(F(1)=1\), order bounds give real norm one on the self-adjoint
+part of this subspace. Extend it by real Hahn--Banach to a norm-one real
+functional on \(M_2(C^+)_{\rm sa}\), retaining its value one at the
+identity. This extension is positive: for \(0\leq h\leq1\), the bound
+\(\|1-h\|\leq1\) gives \(F(h)=1-F(1-h)\geq0\), and scale for arbitrary
+positive \(h\). Complexification therefore gives a state \(\Psi\) on
+\(M_2(C^+)\).
+
+Let \((\rho,H,\xi)\) be its cyclic GNS representation. Restrict \(\rho\)
+to the diagonal copy of \(C^+\), writing
+\(\pi(c)=\rho(\operatorname{diag}(c,c))\). If \(E_{ij}\) are the scalar
+matrix units, the prescribed off-diagonal value is \[
+f(c)/2=\Psi(E_{12}\operatorname{diag}(c,c))
+=\langle\rho(E_{21})\xi,\pi(c)\xi\rangle\qquad(c\in C).
+\] Rescale the first vector for the original norm of \(f\). This
+establishes the asserted vector-coefficient representation; it uses
+neither a polar decomposition of functionals nor a Jordan decomposition.
+
+For this representation \(\pi\), let \(H_A=\overline{\pi(A)H}\), and let
+\(P\) be its Hilbert-space orthogonal projection. The projection needs
+only the Hilbert-space projection theorem: minimize distance to a closed
+linear subspace, use the parallelogram identity to make a minimizing
+sequence Cauchy, and differentiate the squared distance along each
+subspace direction to get orthogonality. This also proves the resulting
+decomposition and bounded projection. Approximate-identity convergence
+shows \(\pi(e_\lambda)\to P\) strongly: check on \(\pi(a)\eta\) by norm
+convergence \(e_\lambda a\to a\), extend by their dense span and the
+contraction bound, and note that each \(\pi(e_\lambda)\) vanishes on
+\(H_A^\perp\).
+
+The derivating hypothesis also holds for \(d^*\), since
+\([d^*,a]=-[d,a^*]^*\). Both \(\pi(d)\) and \(\pi(d^*)\) preserve
+\(H_A\), because \[
+\pi(d)\pi(a)\eta
+=\pi(a)\pi(d)\eta+\pi([d,a])\eta\in H_A.
+\] Hence \(H_A\) reduces \(\pi(d)\) and \([P,\pi(d)]=0\). Strong
+convergence now gives \(\pi([e_\lambda,d])\to0\) strongly. Testing its
+vector coefficient proves \(f([e_\lambda,d])\to0\) for every bounded
+functional \(f\), which is the claimed weak convergence in \(C\).
+
+Fix \(d_1,\ldots,d_r\). The tuples
+\(([u_\lambda,d_1],\ldots,[u_\lambda,d_r])\) converge weakly to zero in
+the finite direct sum of the ambient algebra. Zero consequently lies in
+the norm-closed convex hull of every tail. Indeed, otherwise
+Hahn--Banach separation would give a bounded linear functional strictly
+separating zero from that convex hull, contradicting weak convergence. A
+finite convex combination in the tail therefore makes every indicated
+commutator smaller than any prescribed positive tolerance.
+
+The approximate-identity and commutator requirements can be imposed in
+one separation step. For finite \(a_1,\ldots,a_s\in A\), adjoin the
+components \(u_\lambda a_j-a_j\) and \(a_j u_\lambda-a_j\) to that
+commutator tuple. These new components tend to zero in norm, while the
+commutator components tend weakly to zero. The enlarged tuple therefore
+has weak limit zero, and zero belongs to the norm-closed convex hull of
+every tail of these enlarged tuples. A single finite convex combination
+makes every component smaller than the chosen tolerance. Its associated
+combination of the \(u_\lambda\) remains a positive contraction, and
+linearity gives exactly the tested approximate-identity and commutator
+errors. Directing these choices by finite tests, tails and tolerances
+proves the net assertion. For a sequence, use a countable approximate
+identity, a countable dense family in \(\Delta\), and progressively all
+previous tests. The uniform bounds \(\|u_\lambda\|\leq1\) and
+\(\|[u_\lambda,d]\|\leq2\|d\|\) extend convergence from the dense family
+to all \(d\). \(\square\)
+
+The same argument works uniformly on a norm-compact set of tests, by
+choosing a finite net in that set.
+
+We need increasing choices whose square-root differences have small
+commutators. A \(\sigma\)-unital algebra has a strictly positive element
+\(h\), equivalently one for which \(hA\) is norm dense. Choose
+continuous functions \(f_n\) on \([0,\|h\|]\), vanishing near zero, with
+\(0\leq f_n\leq1\), such that \[
+e_n=f_n(h),\quad e_{n+1}e_n=e_n,\quad e_n\longrightarrow1
+\quad\hbox{strictly}.
+\tag{1.3}
+\] For example let \(f_n\) vanish below \(2^{-n}\), equal one above
+\(2^{-n+1}\), and increase linearly between, after rescaling \(h\). The
+support condition gives the product equation. Functional calculus and
+density of \(hA\) prove the approximate-identity assertion.
+
+\textbf{Lemma 1.2 (increasing quasicentral choices).} Finite convex
+combinations of the \(e_n\) can be chosen as an approximate identity
+\(v_n\) with \[
+v_nv_{n-1}=v_{n-1},\qquad 0\leq v_{n-1}\leq v_n\leq1,
+\tag{1.4}
+\] while satisfying successively prescribed finite or compact commutator
+tests with a separable derivating subspace. The same assertion holds for
+commutator tests on the images of \(v_n\) in a quotient algebra.
+
+\textbf{Proof.} Having chosen \(v_{n-1}\) as a combination of finitely
+many \(e_j\), choose all indices in the next combination greater than
+their maximum. By (1.3), each new \(e_j\) multiplies every old \(e_i\)
+to \(e_i\) on both sides. Hence the product equation in (1.4) holds. For
+commuting positive contractions it implies \(v_n\geq v_{n-1}\). Theorem
+1.1 provides the desired new finite tests from this tail. Let the
+minimum index tend to infinity to retain the approximate-identity
+property.
+
+For quotient tests apply Theorem 1.1 to the image approximate identity,
+selecting its convex coefficients. Use those same coefficients on the
+original \(e_j\). Their quotient then has exactly the chosen commutator
+bounds, while the original product relation and tail bounds are
+retained. \(\square\)
+
+\textbf{Lemma 1.3 (square-root commutators).} Given \(\varepsilon>0\),
+there is \(\eta>0\) such that, in any C*-algebra, \[
+0\leq a\leq1,\quad\|w\|\leq1,\quad
+\|[a,w]\|<\eta
+\quad\Longrightarrow\quad
+\|[a^{1/2},w]\|<\varepsilon.
+\tag{1.5}
+\]
+
+\textbf{Proof.} Approximate \(t^{1/2}\) uniformly on \([0,1]\) by a
+polynomial \(p(t)=\sum c_kt^k\), to error less than \(\varepsilon/4\).
+The commutator difference between \(a^{1/2}\) and \(p(a)\) has norm at
+most \(\varepsilon/2\). Also \[
+[a^k,w]=\sum_{j=0}^{k-1}a^j[a,w]a^{k-1-j},
+\] so \(\|[p(a),w]\|\leq(\sum k|c_k|)\|[a,w]\|\). Taking \(\eta\) small
+proves (1.5), uniformly in the algebra. \(\square\)
+
+\subsection{2. The separation theorem}\label{the-separation-theorem}
+
+The \textbf{strict topology} of \(M(J)\) tests convergence after
+multiplication by each \(z\in J\), on both sides. A bounded strict
+Cauchy sequence has a strict limit: define its left and right actions on
+\(J\) by the norm limits and pass the double-centralizer identities to
+these limits.
+
+\textbf{Theorem 2.1 (Kasparov's technical theorem).} Let \(J\) be a
+\(\sigma\)-unital C*-algebra. Let \(A_1,A_2\subset M(J)\) be
+\(\sigma\)-unital C*-subalgebras, and let \(\Delta\subset M(J)\) be a
+separable linear subspace. Assume \[
+A_1A_2\subset J,\qquad [\Delta,A_1]\subset A_1.
+\tag{2.1}
+\] There are \(M,N\in M(J)\) satisfying \[
+\begin{gathered}
+0\leq M,N\leq1,\qquad M+N=1,\\
+MA_1\subset J,\qquad NA_2\subset J,\\
+[M,\Delta]\subset J.
+\end{gathered}
+\tag{2.2}
+\]
+
+The identity belongs to the multiplier algebra; the theorem does not
+require either \(A_i\) to contain it.
+
+\textbf{Proof for separable data.} Enlarge \(\Delta\) by its adjoints.
+This still derives \(A_1\), since \([d^*,a]=-[d,a^*]^*\). Choose
+norm-compact sets \(X_1,X_2,Y\), of elements of norm at most one, whose
+linear spans are dense in \(A_1,A_2,\Delta\). Such a set is obtained
+from a bounded dense sequence by multiplying its \(j\)-th term by
+\(1/j\) and adjoining zero. Include adjoints when needed.
+
+Put \(\varepsilon_n=2^{-n}\). By Theorem 1.1 choose positive
+contractions \(u_n\in A_1\) such that \[
+\|u_nx-x\|<\varepsilon_n\quad(x\in X_1),\qquad
+\|[u_n,y]\|<\varepsilon_n\quad(y\in Y).
+\tag{2.3}
+\] They may be chosen as an approximate identity of \(A_1\).
+
+Using Lemmas 1.2--1.3 on \(J\), choose an increasing approximate
+identity \(v_n\in J\), with \(v_0=0\), and set \[
+b_n=(v_n-v_{n-1})^{1/2}.
+\tag{2.4}
+\] Require \[
+\begin{aligned}
+\|(1-v_n)u_jx\|&<\varepsilon_n^4
+&& (x\in X_2,\ 1\leq j\leq n+1),\\
+\|[b_n,w]\|&<\varepsilon_n
+&& (w\in X_1\cup X_2\cup Y).
+\end{aligned}
+\tag{2.5}
+\] The first requirement tests compact subsets of \(J\), because
+\(u_jX_2\subset A_1A_2\subset J\). The second can be arranged
+prospectively: if \(\eta_n\) is the square-root tolerance in Lemma 1.3
+for \(\varepsilon_n\), require the commutators of \(v_n\) to be smaller
+than half both \(\eta_n\) and \(\eta_{n+1}\). Then the commutators of
+\(v_n-v_{n-1}\) are smaller than \(\eta_n\). The multiplier tests derive
+the ideal \(J\), so Lemma 1.2 applies. Include an increasing dense
+family of \(J\)-tests to keep \(v_n\) an approximate identity.
+
+Define partial sums \[
+N_r=\sum_{n=1}^r b_nu_nb_n.
+\tag{2.6}
+\] Each summand is positive and belongs to \(J\). Since \(u_n\leq1\), \[
+0\leq N_s-N_r\leq v_s-v_r\leq1-v_r\qquad(s\geq r),
+\tag{2.7}
+\] and \(N_r\leq v_r\leq1\). For \(z\in J\), \[
+\|(N_s-N_r)z\|^2
+\leq\|z^*(N_s-N_r)z\|
+\leq\|z^*(1-v_r)z\|\longrightarrow0.
+\tag{2.8}
+\] Applying the same argument to \(z^*\) gives convergence on the other
+side. Thus (2.6) converges strictly to a positive contraction
+\(N\in M(J)\). Put \(M=1-N\).
+
+We now prove all three conclusions in (2.2), with norm estimates. For
+\(x\in X_2\) and \(n\geq2\), both \(v_n\) and \(v_{n-1}\) approximate
+\(u_nx\) by the first line of (2.5); this is why that line included
+\(j=n+1\). Thus \[
+\begin{aligned}
+\|(v_n-v_{n-1})u_nx\|&<17\varepsilon_n^4,\\
+\|b_nu_nx\|^2
+&=\|(u_nx)^*(v_n-v_{n-1})(u_nx)\|
+<17\varepsilon_n^4.
+\end{aligned}
+\tag{2.9}
+\] Commuting the last \(b_n\) past \(x\), we obtain \[
+\|b_nu_nb_nx\|
+\leq\sqrt{17}\,\varepsilon_n^2+\varepsilon_n.
+\tag{2.10}
+\] The series \(Nx=\sum b_nu_nb_nx\) is therefore norm-convergent, apart
+from one harmless first term, and all its terms lie in \(J\). Hence
+\(NA_2\subset J\), by density and boundedness.
+
+For \(x\in X_1\), expand the complementary summand: \[
+\begin{gathered}
+(b_n^2-b_nu_nb_n)x\\
+ =b_n(x-u_nx)b_n\\
+ \quad+b_n[b_n,x]\\
+ \quad-b_nu_n[b_n,x].
+\end{gathered}
+\tag{2.11}
+\] Its norm is at most \(3\varepsilon_n\), by (2.3) and (2.5). The
+norm-convergent sum of these elements belongs to \(J\). Strictly, that
+sum is \[
+\left(\sum b_n^2-\sum b_nu_nb_n\right)x=(1-N)x.
+\] Thus \(MA_1\subset J\).
+
+Finally for \(y\in Y\), \[
+[b_nu_nb_n,y]
+=b_nu_n[b_n,y]+b_n[u_n,y]b_n+[b_n,y]u_nb_n,
+\tag{2.12}
+\] of norm at most \(3\varepsilon_n\). Its norm-convergent sum lies in
+\(J\) and equals \([N,y]\) by strict continuity of multiplication by a
+fixed multiplier. Density gives \([N,\Delta]\subset J\), and
+\([M,\Delta]=-[N,\Delta]\). This proves the separable case. \(\square\)
+
+\textbf{Reduction to the stated generality.} Choose strictly positive
+\(h_0\in J\), \(h_1\in A_1\), \(h_2\in A_2\). Inside \(A_1\), begin with
+\(C^*(h_1)\) and repeatedly adjoin commutators with a countable dense
+family of \(\Delta+\Delta^*\). The closed union is a separable
+subalgebra \(B_1\) containing \(h_1\) and derived by \(\Delta\). Put
+\(B_2=C^*(h_2)\).
+
+Inside \(J\), start with the separable algebra generated by \(h_0\) and
+\(B_1B_2\). Repeatedly adjoin its left and right products by
+\(B_1,B_2,\Delta,\Delta^*\). Their closed union \(J_0\) is separable and
+is preserved on both sides by all those multipliers. It contains the
+strictly positive element \(h_0\) of the original \(J\).
+
+There is a canonical embedding \(M(J_0)\subset M(J)\). Here are the
+details that make the reduction legitimate. An approximate identity of
+\(J_0\) is also one for \(J\): it approximates \(h_0\), and the density
+of \(h_0J\) and \(Jh_0\) extends that approximation to every element of
+\(J\). A bounded strict Cauchy family on \(J_0\) is then strict Cauchy
+on \(J\), by first multiplying a \(J\)-test by a fixed
+approximate-identity element of \(J_0\). Consequently the bounded strict
+approximation \(me_\lambda\in J_0\) of a multiplier \(m\in M(J_0)\)
+extends to a multiplier of \(J\). Its multiplication and adjoint are
+preserved by strict limits. Restriction to \(J_0\) proves injectivity
+and identifies every original multiplier preserving \(J_0\) with its
+extension.
+
+Apply the proved separable case to \(J_0,B_1,B_2,\Delta\). Its \(M,N\)
+lie in \(M(J)\), with \(MB_1,NB_2,[M,\Delta]\subset J_0\). If
+\(e_n=f_n(h_1)\) is an approximate identity of \(A_1\), then
+\(e_n\in B_1\), and for \(a\in A_1\), \[
+Ma=\lim_n Me_na\in J.
+\tag{2.13}
+\] Likewise \(NA_2\subset J\), using \(h_2\). The commutator conclusion
+already lies in \(J_0\subset J\). This completes the theorem.
+\(\square\)
+
+\subsection{3. Grading and square roots}\label{grading-and-square-roots}
+
+For graded \(J\), its grading extends to \(M(J)\). A graded subspace
+derives a graded algebra when the graded commutator is in that algebra
+for homogeneous inputs.
+
+\textbf{Theorem 3.1 (graded technical theorem).} In Theorem 2.1, suppose
+\(J,A_1,A_2,\Delta\) are graded and the derivating condition uses graded
+commutators. Then \(M,N\) can be chosen even. All conclusions (2.2)
+hold, with graded commutators.
+
+\textbf{Proof.} A graded \(\sigma\)-unital algebra has an even strictly
+positive element: replace \(h\) by \(h+\gamma(h)\). Here is the
+domination argument. If \(k\ge h\ge0\), set
+\(e_\varepsilon=k(k+\varepsilon)^{-1}\), in the unitization when
+necessary. Functional calculus and order give \[
+0\le(1-e_\varepsilon)h(1-e_\varepsilon)
+\le(1-e_\varepsilon)k(1-e_\varepsilon)
+\le\frac{\varepsilon}{4}1.
+\] The last bound is
+\(\sup_{t\ge0}t\varepsilon^2/(t+\varepsilon)^2=\varepsilon/4\). Hence
+\(\|(1-e_\varepsilon)h\|\to0\), by applying the C*-identity to
+\(h^{1/2}(1-e_\varepsilon)\) and then multiplying by \(h^{1/2}\).
+Density of \(hA\) gives \(e_\varepsilon a\to a\) for every \(a\); taking
+adjoints gives the right convergence. Since \(e_\varepsilon a\in kA\),
+that range is dense. Apply this to \(k=h+\gamma(h)\). Its
+functional-calculus approximate identity is even.
+
+Use the bounded-functional vector representations and Hilbert support
+projections constructed in Theorem 1.1, with an even approximate
+identity. For homogeneous \(d\) and \(a\), the identity
+\(\pi(d)\pi(a)\eta=(-1)^{|d||a|}\pi(a)\pi(d)\eta+\pi([d,a]_{\mathrm{gr}})\eta\)
+shows that \(\overline{\pi(A)H}\) is invariant under \(\pi(d)\); the
+same holds for \(d^*\). Thus this subspace reduces \(\pi(d)\), and its
+projection commutes with it. Represented approximate identities converge
+strongly to that projection. Their commutators with \(d\) therefore
+converge strongly to zero in every such representation;
+vector-coefficient testing gives Banach weak convergence. These are also
+the graded commutators, since the approximate identity is even. The
+convex-separation argument of Theorem 1.1 now gives even convex
+combinations, and the increasing construction and square-root functional
+calculus retain that parity.
+
+In the separable reduction use grading-invariant subalgebras and
+homogeneous dense families, adjoining graded commutators. This keeps
+\(B_1\) invariant and graded-derived. Choose the \(u_n,v_n,b_n\) even.
+Every commutator involving one of them is then ordinary, so each
+estimate (2.3)--(2.12) applies unchanged. The strict sum \(N\) and its
+complement \(M\) are even. Their commutators with homogeneous tests are
+the required graded commutators. \(\square\)
+
+\textbf{Corollary 3.2 (the square-root partition).} Under the hypotheses
+of Theorem 3.1, \[
+\begin{gathered}
+M^{1/2}A_1\subset J,\qquad N^{1/2}A_2\subset J,\\
+[M^{1/2},\Delta]\subset J,\qquad
+[N^{1/2},\Delta]\subset J.
+\end{gathered}
+\tag{3.1}
+\]
+
+\textbf{Proof.} For \(a\in A_1\), \((M^{1/2}a)^*(M^{1/2}a)=a^*Ma\in J\).
+Passing to \(M(J)/J\) shows that \(M^{1/2}a\) has zero quotient norm, so
+it lies in \(J\). The same argument applies to \(N\) and \(A_2\). In the
+quotient, the images of \(M,N\) commute with \(\Delta\). Polynomial
+approximation to the square root preserves that commutation. Lifting
+back gives the two commutator conclusions. \(\square\)
+
+This is the form used to combine product operators:
+\(M^{1/2}F_1+N^{1/2}F_2\). The partition disposes of defects; the next
+lesson must also verify the connection and positivity conditions for
+that product.
+
+\subsection{4. A multiplier lifting bridge and the simpler
+separation}\label{a-multiplier-lifting-bridge-and-the-simpler-separation}
+
+The absence of commutator tests admits another proof. To make that proof
+usable, we supply the needed lifting statement here.
+
+\textbf{Theorem 4.1 (multiplier quotient lifting).} If \(D\) is
+\(\sigma\)-unital and \(I\) is an ideal, the quotient map extends to a
+surjective homomorphism \[
+\widetilde q:M(D)\longrightarrow M(D/I).
+\tag{4.1}
+\] Every positive contraction in the target has a positive contractive
+lift.
+
+\textbf{Proof.} Write \(R=D/I\). Every multiplier \(m_0\) of \(D\)
+preserves \(I\). Indeed, for \(i\in I\) and an approximate identity
+\(a_\lambda\) of \(I\), the elements \((m_0i)a_\lambda\) belong to
+\(I\), since \(m_0i\in D\), and they converge to \(m_0i\), since
+\(ia_\lambda\to i\). Taking adjoints gives the other side. Thus the two
+multiplier actions descend to \(R\). This defines \(\widetilde q\); on
+bounded families it is strictly continuous, because its products with
+\(q(d)\) are the quotients of the products with \(d\).
+
+Take \(0\leq m\leq1\) in \(M(R)\). Begin with the nested approximate
+identity (1.3) in \(D\). Its image is an approximate identity of \(R\).
+The multiplier \(m\) derives \(R\). By Lemma 1.2 choose convex
+combinations \(v_n\in D\), increasing as in (1.4), such that, for
+\(b_n=(v_n-v_{n-1})^{1/2}\), \[
+\|[q(b_n),m]\|<2^{-n}.
+\tag{4.2}
+\] Use Lemma 1.3 to prescribe the commutator tolerances for both
+consecutive \(v_n\), exactly as in (2.5).
+
+For each \(n\), an approximate identity \(w_k\) of \(R\) satisfies \[
+\|(w_k^{1/2}mw_k^{1/2}-m)q(b_n)\|\longrightarrow0.
+\] This follows by approximating \(q(b_n)\) and \(mq(b_n)\) by the same
+approximate identity; square roots are themselves an approximate
+identity. Choose \(k=k(n)\) making the norm less than \(2^{-n}\). Lift
+the positive contraction \(w_k^{1/2}mw_k^{1/2}\in R\) to a positive
+contraction \(a_n\in D\). Such an element lift follows by first lifting
+self-adjointly and then clipping by the continuous function
+\(t\mapsto\min(1,\max(0,t))\).
+
+The positive sum \[
+L=\sum_{n=1}^\infty b_na_nb_n
+\tag{4.3}
+\] converges strictly to a positive contraction in \(M(D)\): its partial
+sums and tails are dominated as in (2.7), and (2.8) proves strict
+convergence. By strict continuity,
+\(\widetilde q(L)=\sum q(b_n)q(a_n)q(b_n)\). The differences \[
+\begin{aligned}
+q(b_n)q(a_n)q(b_n)-q(b_n)mq(b_n),\\
+q(b_n)mq(b_n)-q(b_n)^2m
+\end{aligned}
+\tag{4.4}
+\] belong to \(R\) and each have norm less than \(2^{-n}\), by the
+selection of \(a_n\) and (4.2). Their sums consequently converge in norm
+in \(R\). Meanwhile \(\sum q(b_n)^2m=m\) strictly. Hence
+\(\widetilde q(L)-m\in R\).
+
+Choose a self-adjoint \(d\in D\) with \(q(d)=m-\widetilde q(L)\). Then
+\(L+d\) is a self-adjoint multiplier lifting \(m\). Clipping it to
+\([0,1]\) gives a positive contractive multiplier lift, since functional
+calculus commutes with the quotient and fixes \(m\). Finally every
+multiplier is a linear combination of positive multipliers, by splitting
+its real and imaginary parts into positive and negative parts. This
+proves surjectivity. \(\square\)
+
+\textbf{Corollary 4.2 (separation without commutator tests).} Theorem
+2.1 with \(\Delta=0\) follows from Theorem 4.1.
+
+\textbf{Proof.} Let \(D=C^*(J,A_1,A_2)\subset M(J)\). This algebra is
+\(\sigma\)-unital. To verify that point, add strictly positive elements
+of \(J,A_1,A_2\). The sum is positive and its functional-calculus
+approximate identity approximates each generator algebra; for example
+domination of the strictly positive element \(h_i\) gives
+\(\|(1-e_n)h_i^{1/2}\|\to0\), then density of \(h_iA_i\) gives
+approximation on \(A_i\). Approximation extends to their generated
+algebra.
+
+The quotient is \(q(D)=q(A_1)\oplus q(A_2)\), since these two
+subalgebras are orthogonal. In its multiplier algebra choose the central
+projection \(r=(0,1)\). Theorem 4.1 lifts \(r\) to a positive
+contraction \(M\in M(D)\). Restricting multipliers to the essential
+ideal \(J\) embeds \(M(D)\) in \(M(J)\): multiplication on \(J\)
+determines a multiplier, and essentiality detects its kernel. Put
+\(N=1-M\). Their quotient products with \(q(A_1)\) and \(q(A_2)\) vanish
+in the required order, so \(MA_1,NA_2\subset J\). \(\square\)
+
+This proof has supplied the multiplier lifting, rather than presupposing
+it. It does not produce a multiplier commuting modulo \(J\) with a
+specified \(\Delta\); that additional constraint is the content of the
+series selection in Section 2.
+
+\subsection{5. Extending an operator homotopy from an
+ideal}\label{extending-an-operator-homotopy-from-an-ideal}
+
+Let \(A\) be separable and graded, \(I\subset A\) a graded ideal, and
+\(E\) a countably generated graded Hilbert \(B\)-module. Let
+\(\phi:A\to\mathcal L(E)\) be graded. Write \(K=\mathcal K(E)\) and
+define the two pseudolocal algebras \[
+\begin{aligned}
+C&=\{x:[x,\phi(a)]_{\mathrm{gr}}\in K\ (a\in A)\},\\
+D&=\{x:[x,\phi(i)]_{\mathrm{gr}}\in K\ (i\in I)\}.
+\end{aligned}
+\tag{5.1}
+\] Use homogeneous components in this notation. Their locally compact
+ideals are \[
+\begin{aligned}
+J_A&=\{x\in C:x\phi(a),\phi(a)x\in K\ (a\in A)\},\\
+J_I&=\{x\in D:x\phi(i),\phi(i)x\in K\ (i\in I)\}.
+\end{aligned}
+\tag{5.2}
+\] These are closed graded C*-ideals in the respective algebras, by the
+commutator Leibniz rule and adjoints, as in the quotient formulation of
+the preceding cycle lesson.
+
+\textbf{Lemma 5.1 (pseudolocal decomposition).} One has \(D=C+J_I\).
+Consequently inclusion induces a surjective map \[
+C/J_A\longrightarrow D/J_I.
+\tag{5.3}
+\]
+
+\textbf{Proof.} Take homogeneous \(x\in D\). For homogeneous
+\(a\in A,i\in I\), the graded Leibniz rule gives \[
+[x,\phi(a)]_{\mathrm{gr}}\phi(i)
+=[x,\phi(ai)]_{\mathrm{gr}}
+-(-1)^{|x||a|}\phi(a)[x,\phi(i)]_{\mathrm{gr}}\in K.
+\tag{5.4}
+\] Adjoints give compactness in the other order. Thus the algebra \[
+A_1=C^*(K,\phi(I))
+\] has compact products with \[
+A_2=C^*(K,\{[x,\phi(a)]_{\mathrm{gr}}:a\in A\}).
+\tag{5.5}
+\] Indeed the localized commutators, their adjoints, and their finite
+products annihilate \(\phi(I)\) modulo \(K\), by (5.4), and products
+involving \(K\) are compact.
+
+Both \(A_1,A_2\) are \(\sigma\)-unital: \(K\) is \(\sigma\)-unital, and
+each adjoins a separable set of generators. Explicitly, if \(h_K\) is
+strictly positive in \(K\) and \(s_j\) is a bounded countable generating
+set for the adjoined part, the positive sum \[
+h_K+\sum_j2^{-j}(s_j^*s_j+s_js_j^*)
+\tag{5.6}
+\] has functional-calculus approximate identity converging on \(K\) and
+each \(s_j,s_j^*\), by domination. It therefore approximates the
+generated algebra. Take homogeneous generators to make the sum even.
+
+The separable graded subspace spanned by \(x,x^*,\phi(A)\) derives
+\(A_1\). Commutators with \(K\) remain in \(K\); commutators of
+\(\phi(A)\) with \(\phi(I)\) remain in \(\phi(I)\); and the commutators
+of \(x,x^*\) with \(\phi(I)\) are compact. Apply Theorem 3.1 in
+\(M(K)=\mathcal L(E)\). It gives even \(M,N\) such that \[
+M\phi(I)\subset K,\quad
+N[x,\phi(A)]_{\mathrm{gr}}\subset K,\quad
+[M,x],[M,\phi(A)]\subset K.
+\tag{5.7}
+\] The graded product rule shows \(Nx\in C\). The other part \(Mx\)
+belongs to \(J_I\): commuting \(x\) across \(\phi(i)\) leaves a compact
+error and a factor \(M\phi(i)\), and the same argument with adjoints
+gives the other side. Its pseudolocality for \(I\) follows from the same
+product rule. Thus \(x=Nx+Mx\in C+J_I\).
+
+Decompose an arbitrary \(x\) into its homogeneous parts. This proves the
+equality and the surjectivity in (5.3); the inclusion maps \(J_A\) into
+\(J_I\). \(\square\)
+
+The localized compactness conditions in (5.2) must be stated inside the
+pseudolocal algebras. A one-sided compactness set of arbitrary
+adjointable operators need not itself be a C*-algebra.
+
+\textbf{Lemma 5.2 (lifting an involution path).} For a surjective graded
+homomorphism between unital C*-algebras, a norm-continuous path of odd
+self-adjoint unitaries lifts to such a path, starting at any prescribed
+odd self-adjoint unitary lift.
+
+\textbf{Proof.} First recall an elementary Banach quotient argument.
+Approximate a continuous quotient path by finite polygonal paths,
+retaining its endpoints and with geometrically decreasing uniform
+errors. Lift the differences of consecutive polygonal paths by lifting
+their finitely many vertices to elements of at most twice their quotient
+norm and interpolating. The differences vanish at the endpoints, so
+their lifts can vanish there too. The uniform sum of those correction
+paths converges, giving a lift with prescribed endpoint values.
+
+If instead only the initial value zero is prescribed, and the quotient
+path has norm at most \(\delta\), begin with a polygonal approximation
+of error at most \(\delta/4\). Its vertex lifts have norms at most
+\(2\delta\). Subsequent errors at most \(\delta/2^{n+2}\) yield
+uniformly summable correction lifts of total norm at most \(2\delta\). A
+bound \(8\delta\) therefore holds for the full lift. Contractive
+averaging with the adjoint and grading makes every lift self-adjoint and
+odd when the quotient path has those properties.
+
+Subdivide the involution path until each piece stays within a
+sufficiently small \(\delta\) of its initial value. Lift its difference
+from that initial value by this argument, starting at zero.
+
+Choose the subdivision so these lifted differences have norm less than
+\(1/2\). Adding one to the current self-adjoint unitary lift gives an
+odd self-adjoint invertible path \(h_t\). Replace it by \[
+h_t|h_t|^{-1}.
+\tag{5.8}
+\] It is an odd self-adjoint unitary path. Its quotient is the original
+involution path, because (5.8) fixes a self-adjoint unitary. At the
+start it equals the prescribed lift. Continue from the new endpoint on
+the next subinterval; the resulting finitely many paths glue.
+\(\square\)
+
+For logical independence, the elementary polygonal lifting used here
+needs no result about KK. Its proof is the summable finite-vertex
+correction argument, valid in every Banach quotient; the self-adjoint
+and odd parts are obtained by contractive averaging.
+
+\textbf{Theorem 5.3 (ideal homotopy extension).} Let \((E,\phi,F)\) be a
+cycle over \((A,B)\), with \(A\) separable. Suppose \(F_t\) is a
+norm-continuous operator homotopy for its restriction to \(I\), starting
+with \(F_0=F\). There is an operator homotopy \(G_t\) for the original
+representation of \(A\), with \(G_0=F\), and \[
+(G_t-F_t)\phi(i),\quad\phi(i)(G_t-F_t)\in\mathcal K(E)
+\qquad(t\in[0,1],\ i\in I).
+\tag{5.9}
+\]
+
+\textbf{Proof.} The quotient formulation of cycle conditions identifies
+the images of \(F_t\) in \(D/J_I\) as odd self-adjoint unitaries. The
+image of \(F\) in \(C/J_A\) is one such lift of their initial value. By
+Lemmas 5.1--5.2, lift the whole path to odd self-adjoint unitaries in
+\(C/J_A\). The Banach-space path lifting argument then lifts this to a
+norm-continuous odd path \(G_t\in C\), starting at the original \(F\).
+Self-adjointness is required only modulo \(J_A\), so the prescribed
+\(F\) need not be exactly self-adjoint.
+
+In \(C/J_A\), \(G_t^2=1\) and \(G_t=G_t^*\), so its square and adjoint
+defects are locally compact for all \(a\in A\). Membership in \(C\)
+gives its compact graded commutators. It is therefore the required
+operator homotopy. Its image in \(D/J_I\) equals that of \(F_t\),
+proving (5.9). \(\square\)
+
+\subsection{6. Examples and exercises}\label{examples-and-exercises}
+
+If \(A_2=0\), take \(M=0,N=1\). This meets every condition, including
+all commutators. If \(A_1\subset J\), take \(M=1,N=0\): then
+\(MA_1\subset J\), \(NA_2=0\), and all commutators vanish. The
+interesting case is when the two algebras are only orthogonal after
+passing to the quotient.
+
+For a concrete compact-operator example, take
+\(J=\mathcal K(L^2(S^1))\), the Hardy projection \(P\), and
+multiplication representation \(\pi\) of \(C(S^1)\). Put \[
+A_1=\mathcal K(L^2(S^1))+\mathbb C(1-P),\quad
+A_2=\mathbb CP,\quad \Delta=\pi(C(S^1)).
+\tag{6.1}
+\] These are separable and \(\sigma\)-unital. Their products are
+compact. The compact Hardy commutators show that \(\Delta\) derives
+\(A_1\). Here the explicit partition \(M=P,N=1-P\) already satisfies the
+theorem. The general construction replaces this visible projection when
+no exact geometric projection is available.
+
+\textbf{6.1. Finite-rank quasicentrality.} For a fixed
+\(T\in\mathcal B(H)\), where \(H\) is separable, construct positive
+finite-rank contractions \(u_n\), each a convex combination of
+finite-rank projections from an increasing sequence converging strongly
+to \(1\), such that \(\|[u_n,T]\|\to0\).
+
+\textbf{6.2. Why projections are too restrictive.} Let \(S\) be the
+unilateral shift. Prove that finite-rank projections \(P_n\to1\)
+strongly cannot satisfy \(\|[P_n,S]\|\to0\). Increasingness is not
+needed for this obstruction.
+
+\textbf{6.3. Separation through multiplier lifting.} For \(\Delta=0\),
+form \(D=C^*(J,A_1,A_2)\) and use the central projection in \(M(D/J)\)
+to deduce the technical theorem. Verify the \(\sigma\)-unitality and
+essential-ideal steps.
+
+\textbf{6.4. Even partitions.} Prove the graded theorem, explaining why
+merely averaging an arbitrary ungraded partition is insufficient when
+the given derivating hypothesis is only graded.
+
+\subsection{7. Solutions}\label{solutions}
+
+\textbf{Solution to 6.1.} Let \(p_n\) project onto the first \(n\)
+vectors of an orthonormal basis. They form an approximate identity of
+\(\mathcal K(H)\). The subspace spanned by \(T,T^*\) derives that ideal,
+since multiplication by a bounded operator preserves compactness. Apply
+Theorem 1.1 to successive tails, making the two commutators smaller than
+\(1/n\). The selected convex combinations are positive finite-rank
+contractions. Choosing each tail beyond \(n\) retains strong convergence
+to \(1\), since all projections in the combination fix the first \(n\)
+basis vectors. In particular the commutator with \(T\) tends to zero in
+norm.
+
+\textbf{Solution to 6.2.} Let \(p_0\) project onto the first basis
+vector \(e_0\), so \(SS^*=1-p_0\). For one finite-rank projection \(P\),
+put \(C=PSP\) on the finite-dimensional space \(PH\), and
+\(\delta=\|[P,S]\|\). Its two off-diagonal blocks have norms at most
+\(\delta\). Since \(S^*S=1\), \[
+0\leq P-C^*C=PS^*(1-P)SP,\qquad
+\|P-C^*C\|\leq\delta^2.
+\tag{7.1}
+\] If \(\delta<1\), \(C\) is invertible on \(PH\). Its polar
+decomposition gives \(\|P-CC^*\|=\|P-C^*C\|\leq\delta^2\). But \[
+P-CC^*
+=Pp_0P+PS(1-P)S^*P\geq Pp_0P.
+\tag{7.2}
+\] Hence \(\|Pe_0\|^2=\|Pp_0P\|\leq\delta^2\). Strong convergence
+\(P_ne_0\to e_0\) contradicts \(\delta_n\to0\). This also explains why
+convex positive contractions, rather than projections, appear in the
+technical theorem.
+
+\textbf{Solution to 6.3.} The positive sum of strictly positive elements
+of \(J,A_1,A_2\) is strictly positive in \(D\), by the domination and
+generator argument in Corollary 4.2. The quotient \(D/J\) is the
+orthogonal sum \(q(A_1)\oplus q(A_2)\). Lift its central multiplier
+projection \((0,1)\) by Theorem 4.1 to a positive contraction
+\(M\in M(D)\). The ideal \(J\) is essential in \(D\), since
+\(D\subset M(J)\) and a multiplier annihilating \(J\) is zero. Thus
+restriction embeds \(M(D)\) in \(M(J)\). Quotient multiplication gives
+\(MA_1\subset J\) and \((1-M)A_2\subset J\). Taking \(N=1-M\) proves
+every conclusion; there are no commutator tests.
+
+\textbf{Solution to 6.4.} Graded derivation does not imply ordinary
+derivation on two odd inputs, so one cannot simply invoke the ungraded
+theorem and average its answer. Instead begin with even strictly
+positive elements and even functional-calculus approximate identities.
+Their commutators with homogeneous tests are ordinary commutators and
+graded commutators simultaneously. In each vector-coefficient
+representation used in Theorem 1.1, the represented approximate identity
+tends strongly to the projection onto the closure of the represented
+algebra acting on the Hilbert space. For a homogeneous test and a
+homogeneous algebra element, the graded derivation identity proves
+invariance of this subspace under the test and its adjoint, just as in
+that proof; the sign changes only the first term. Thus the subspace
+reduces the test and its support projection commutes with it. Since the
+approximate identity is even, its ordinary and graded commutators
+coincide. Testing vector coefficients proves the required Banach weak
+convergence and hence the convexity step. Retain evenness through the
+convex combinations, the separable invariant reduction and the square
+roots \(b_n\). All factors used in the estimates are even, so no extra
+signs occur. The resulting positive strict sum and its complement are
+even and satisfy the graded conditions. This verifies each step of
+Theorem 3.1.
+
+\subsection{What this lesson does not
+prove}\label{what-this-lesson-does-not-prove}
+
+Continuous functional calculus, the GNS construction and the
+compact-module multiplier identification are the exact earlier
+prerequisites stated at the beginning. The bounded-functional vector
+representation and the support-projection argument were proved within
+Theorem 1.1. They provide the framework; all convex quasicentrality,
+separation, quotient multiplier lifting and ideal-homotopy extension
+arguments were proved here.
+
+The construction and uniqueness of the Kasparov product, its
+associativity, boundary products and the equivariant technical theorem
+require further proofs in the following lessons. The partition theorem
+alone does not assert them.
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\item
+  B. Blackadar,
+  \href{https://www.bruceblackadar.com/Mathematics/book6.pdf}{\emph{K-Theory
+  for Operator Algebras}, author-posted corrected second edition}. The
+  \href{https://www.bruceblackadar.com/mathpubs.html}{author identifies
+  this freely downloadable version} as a slightly corrected second
+  edition. The source retains its author copyright and the usage terms
+  stated on that page. Sections 12.4 and 14.6 supply the free source
+  comparison for quasicentrality and the strict-series partition. The
+  convex separation, increasing choices, graded construction and
+  multiplier lifting used here are proved in Sections 1--4 above; the
+  proof uses the preceding results identified above.
+\item
+  \href{KT-KK-05.html\#lemma-2-0-compact-module-operators-and-their-multipliers}{Lesson
+  05, Lemma 2.0}, for \(\sigma\)-unitality of \(\mathcal K(E)\),
+  \(\mathcal L(E)=M(\mathcal K(E))\), and bounded strict limits.
+\item
+  \emph{Foundations of von Neumann algebras},
+  \href{https://kokunoyumeto.github.io/open-math-courses/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html}{Continuous
+  functional calculus}, Theorems 5.1 and 6.1.
+\item
+  B. Blackadar,
+  \href{https://www.bruceblackadar.com/Mathematics/Cycr.pdf}{\emph{Operator
+  Algebras}, freely readable corrected author edition dated February 8,
+  2017}, Sections II.6.3--II.6.4, for positive state extension and GNS
+  comparison. Theorem 1.1 gives the complete bounded-functional
+  construction and weak-support proof used here. The proof does not
+  require Jordan decomposition or a universal-bidual theorem. The author
+  retains copyright and the terms stated on the linked author
+  publications page.
+\end{itemize}
+
+\end{document}

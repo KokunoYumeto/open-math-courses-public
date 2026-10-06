@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infinite symmetry groups and Noether&#x27;s second theorem · Symmetries and conservation laws</title>
+<meta name="description" content="A lesson of the course Symmetries and conservation laws. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-SYM/NOE-SYM-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Symmetries and conservation laws</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 3</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="infinite-symmetry-groups-and-noether-s-second-theorem">Infinite symmetry groups and Noether's second theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Public domain (CC0).</em></p>
+<p>A constant phase change of a complex field gives a conserved charge. Allowing the phase to vary at every point requires a gauge field and produces something stronger: a differential identity among the equations of motion themselves. The identity holds for every field configuration, before solving any equations. It also explains why the corresponding current reduces to a surface term on solutions.</p>
+<p>We use the total derivatives, Euler expressions and current convention of <a href="NOE-SYM-01.html">Variational symmetries and Noether's first theorem</a>. Basic references are Noether's <em>Invariant variational problems</em>, §§2, 4 and 6, Compère's thesis, Part I, Chapter 1, §2 and Appendix A, and Barnich, Brandt and Henneaux's <em>Local BRST cohomology in gauge theories</em>, §§5--6. Local statements concern smooth finite-order differential functions on a contractible coordinate and jet domain. Topology and boundary conditions will be stated separately.</p>
+<h2 id="1-why-an-arbitrary-function-is-different-from-a-parameter">1. Why an arbitrary function is different from a parameter</h2>
+<p>Let <span class="math" data-tex="$p=(p^1,\ldots,p^\rho)$">$p=(p^1,\ldots,p^\rho)$</span> be arbitrary smooth functions of <span class="math" data-tex="$x$">$x$</span>. A gauge characteristic has the form</p>
+<span class="math math-display" data-tex="$$
+Q^\alpha[p]=\mathcal D(p)^\alpha
+=\sum_{\beta,J}R^{\alpha J}_\beta(x,u^{(m)})D_Jp^\beta.
+\tag{1.1}
+$$">$$
+Q^\alpha[p]=\mathcal D(p)^\alpha
+=\sum_{\beta,J}R^{\alpha J}_\beta(x,u^{(m)})D_Jp^\beta.
+\tag{1.1}
+$$</span>
+<p>The sum is finite; coefficients can depend on derivatives of the dynamical fields. The operator is linear in <span class="math" data-tex="$p$">$p$</span>, not necessarily in <span class="math" data-tex="$u$">$u$</span>. The formal adjoint is</p>
+<span class="math math-display" data-tex="$$
+(\mathcal D^*f)_\beta=\sum_{\alpha,J}(-D)_J(R^{\alpha J}_\beta f_\alpha).
+\tag{1.2}
+$$">$$
+(\mathcal D^*f)_\beta=\sum_{\alpha,J}(-D)_J(R^{\alpha J}_\beta f_\alpha).
+\tag{1.2}
+$$</span>
+<p>This adjoint reverses integration by parts, rather than referring to a Hilbert-space domain or boundary condition.</p>
+<p>Noether distinguished finite-parameter groups, groups depending on arbitrary functions, and an intermediate case of infinitely many parameters without arbitrary functions. The operative distinction is freedom of the finite jet of <span class="math" data-tex="$p$">$p$</span> at each point. A family of harmonic functions, for example, is constrained by a PDE: its jets are not arbitrary. A conclusion obtained by varying unrestricted <span class="math" data-tex="$p$">$p$</span> cannot be inferred for that family.</p>
+<p>In modern usage (1.1) describes infinitesimal gauge symmetries. The identity theorem below does not by itself prove closure of their brackets, irreducibility of their generators, or integration to a transformation group. Reducible operators can give redundant identities.</p>
+<h2 id="2-integration-by-parts-a-second-time">2. Integration by parts a second time</h2>
+<p>The product rule used for first variation supplies a second boundary term:</p>
+<span class="math math-display" data-tex="$$
+f_\alpha\mathcal D(p)^\alpha
+=p^\beta(\mathcal D^*f)_\beta+D_iK^i(p,f).
+\tag{2.1}
+$$">$$
+f_\alpha\mathcal D(p)^\alpha
+=p^\beta(\mathcal D^*f)_\beta+D_iK^i(p,f).
+\tag{2.1}
+$$</span>
+<p>For each <span class="math" data-tex="$J=(i_1,\ldots,i_r)$">$J=(i_1,\ldots,i_r)$</span> written as the nondecreasing derivative word, one explicit choice is</p>
+<span class="math math-display" data-tex="$$
+K^i(p,f)=\sum_{\alpha,\beta,J\ne\varnothing}\sum_{s=1}^r
+\delta^i_{i_s}(-1)^{s-1}
+D_{i_1}\cdots D_{i_{s-1}}(R^{\alpha J}_\beta f_\alpha)
+D_{i_{s+1}}\cdots D_{i_r}p^\beta.
+\tag{2.2}
+$$">$$
+K^i(p,f)=\sum_{\alpha,\beta,J\ne\varnothing}\sum_{s=1}^r
+\delta^i_{i_s}(-1)^{s-1}
+D_{i_1}\cdots D_{i_{s-1}}(R^{\alpha J}_\beta f_\alpha)
+D_{i_{s+1}}\cdots D_{i_r}p^\beta.
+\tag{2.2}
+$$</span>
+<p>The same telescoping proof applies. Importantly, <span class="math" data-tex="$K$">$K$</span> involves Euler expressions and their total derivatives when <span class="math" data-tex="$f=E(L)$">$f=E(L)$</span>; all of them vanish on jets of smooth solutions.</p>
+<p><strong>Theorem 2.1 (second Noether theorem).</strong> Suppose <span class="math" data-tex="$\operatorname{pr}v_{\mathcal D(p)}L=D_iB^i[p]$">$\operatorname{pr}v_{\mathcal D(p)}L=D_iB^i[p]$</span> holds as a local identity for unrestricted <span class="math" data-tex="$p$">$p$</span>, where <span class="math" data-tex="$B[p]$">$B[p]$</span> is a smooth finite-order differential function of the field and parameter jets. Then</p>
+<span class="math math-display" data-tex="$$
+\mathcal D^*E(L)=0
+\tag{2.3}
+$$">$$
+\mathcal D^*E(L)=0
+\tag{2.3}
+$$</span>
+<p>identically. Conversely, (2.3) implies that <span class="math" data-tex="$\mathcal D(p)$">$\mathcal D(p)$</span> is a divergence symmetry for every <span class="math" data-tex="$p$">$p$</span>, with <span class="math" data-tex="$B[p]=P(\mathcal D(p),L)+K(p,E(L))$">$B[p]=P(\mathcal D(p),L)+K(p,E(L))$</span>.</p>
+<p><em>Proof.</em> First variation and (2.1) give</p>
+<span class="math math-display" data-tex="$$
+p^\beta(\mathcal D^*E(L))_\beta
+=D_i\bigl(B^i[p]-P^i[\mathcal D(p)]-K^i[p,E(L)]\bigr).
+\tag{2.4}
+$$">$$
+p^\beta(\mathcal D^*E(L))_\beta
+=D_i\bigl(B^i[p]-P^i[\mathcal D(p)]-K^i[p,E(L)]\bigr).
+\tag{2.4}
+$$</span>
+<p>Regard <span class="math" data-tex="$p$">$p$</span> as an additional dependent field. Applying its Euler operator to (2.4) annihilates the divergence. The left side has no derivatives of <span class="math" data-tex="$p$">$p$</span>, and its coefficient is independent of <span class="math" data-tex="$p$">$p$</span>, so its Euler derivative is precisely <span class="math" data-tex="$(\mathcal D^*E(L))_\beta$">$(\mathcal D^*E(L))_\beta$</span>. This proves (2.3). Equivalently, if the boundary term is linear and homogeneous in the parameter jets, integrate against compactly supported <span class="math" data-tex="$p$">$p$</span> and use the fundamental lemma. The Euler-operator proof avoids a hidden boundary assumption.</p>
+<p>Conversely, (2.1) with <span class="math" data-tex="$f=E(L)$">$f=E(L)$</span> and (2.3) gives <span class="math" data-tex="$Q[p]\cdot E(L)=\operatorname{Div}K$">$Q[p]\cdot E(L)=\operatorname{Div}K$</span>. First variation now gives the stated <span class="math" data-tex="$B$">$B$</span>. Every equality is an identity on jets, not merely a relation along solutions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A family of separately chosen primitives for each numerical function <span class="math" data-tex="$p$">$p$</span>, with no common local dependence on the parameter jets, is not the hypothesis. In one independent variable every ordinary smooth function has a nonlocal antiderivative; admitting those would make the claimed theorem false.</p>
+<h2 id="3-from-an-identity-to-an-improper-current">3. From an identity to an improper current</h2>
+<p>Fix the current sign</p>
+<span class="math math-display" data-tex="$$
+C[p]=P(\mathcal D(p),L)-B[p],\qquad
+\operatorname{Div}C[p]=-Q[p]\cdot E(L).
+$$">$$
+C[p]=P(\mathcal D(p),L)-B[p],\qquad
+\operatorname{Div}C[p]=-Q[p]\cdot E(L).
+$$</span>
+<p>Equations (2.1) and (2.3) imply</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Div}(C[p]+K[p,E(L)])=0
+\tag{3.1}
+$$">$$
+\operatorname{Div}(C[p]+K[p,E(L)])=0
+\tag{3.1}
+$$</span>
+<p>identically. For n &gt; 1, every identically divergence-free finite-order current has a local antisymmetric superpotential, by Theorem 3.2 below. Applied on the extended jet space that includes <span class="math" data-tex="$p$">$p$</span>, it gives</p>
+<span class="math math-display" data-tex="$$
+C^i[p]=-K^i(p,E(L))+D_jS^{ij}[p].
+\tag{3.2}
+$$">$$
+C^i[p]=-K^i(p,E(L))+D_jS^{ij}[p].
+\tag{3.2}
+$$</span>
+<p>This proves the <strong>improper-law statement</strong>: on solutions, <span class="math" data-tex="$C^i[p]=D_jS^{ij}[p]$">$C^i[p]=D_jS^{ij}[p]$</span>. The current has zero divergence <em>on solutions</em>; it need not have zero divergence identically. It is <span class="math" data-tex="$C+K$">$C+K$</span>, rather than <span class="math" data-tex="$C$">$C$</span>, that is identically divergence-free. On a noncontractible domain a closed horizontal form can have a cohomological obstruction, so this is a local decomposition.</p>
+<p>For <span class="math" data-tex="$n=1$">$n=1$</span>, (3.1) says that <span class="math" data-tex="$C+K$">$C+K$</span> is a constant. There is no antisymmetric two-index superpotential. For currents linear and homogeneous in unrestricted parameter jets, varying those jets forces that constant to be zero, giving <span class="math" data-tex="$C=-K$">$C=-K$</span>. A parameter-independent constant can otherwise be removed by the current-equivalence convention.</p>
+<p>For <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span>, <span class="math" data-tex="$D_iD_jS^{ij}=0$">$D_iD_jS^{ij}=0$</span> because the derivatives commute and <span class="math" data-tex="$S$">$S$</span> is antisymmetric. Such a current may nonetheless yield a nonzero boundary charge. On a spatial domain,</p>
+<span class="math math-display" data-tex="$$
+\int_\Omega C^0\,d^{n-1}x
+=\int_{\partial\Omega}S^{0a}n_a\,dA
+\quad\text{on solutions}.
+\tag{3.3}
+$$">$$
+\int_\Omega C^0\,d^{n-1}x
+=\int_{\partial\Omega}S^{0a}n_a\,dA
+\quad\text{on solutions}.
+\tag{3.3}
+$$</span>
+<p>Whether this integral is finite, invariant under allowed gauge transformations, or independent of the choice of superpotential requires boundary and normalization choices. The adjective improper does not resolve those questions.</p>
+<h3 id="building-a-superpotential-rather-than-assuming-one">Building a superpotential rather than assuming one</h3>
+<p><strong>Lemma 3.1 (operator exactness).</strong> Suppose <span class="math" data-tex="$T^i[h]$">$T^i[h]$</span> are finite-order linear differential operators in an unrestricted test field <span class="math" data-tex="$h$">$h$</span> and <span class="math" data-tex="$D_iT^i[h]=0$">$D_iT^i[h]=0$</span> identically. Their coefficients are arbitrary smooth differential functions. Then <span class="math" data-tex="$T^i[h]=D_jU^{ij}[h]$">$T^i[h]=D_jU^{ij}[h]$</span> for finite-order linear operators <span class="math" data-tex="$U^{ij}=-U^{ji}$">$U^{ij}=-U^{ji}$</span>.</p>
+<p><em>Proof.</em> Treat each component of <span class="math" data-tex="$h$">$h$</span> separately. Let the largest order in <span class="math" data-tex="$h$">$h$</span> be <span class="math" data-tex="$r$">$r$</span>, and let <span class="math" data-tex="$a^i(\zeta)$">$a^i(\zeta)$</span> be the homogeneous polynomial of degree <span class="math" data-tex="$r$">$r$</span> formed from the principal coefficients of <span class="math" data-tex="$T^i$">$T^i$</span>. The coefficient of the derivatives of <span class="math" data-tex="$h$">$h$</span> of order <span class="math" data-tex="$r+1$">$r+1$</span> in <span class="math" data-tex="$D_iT^i[h]=0$">$D_iT^i[h]=0$</span> says <span class="math" data-tex="$\zeta_i a^i(\zeta)=0$">$\zeta_i a^i(\zeta)=0$</span>. For <span class="math" data-tex="$r=0$">$r=0$</span> this forces every coefficient to be zero. For <span class="math" data-tex="$r\ge1$">$r\ge1$</span>, put</p>
+<span class="math math-display" data-tex="$$
+b^{ij}(\zeta)=\frac{\partial_{\zeta_j}a^i-\partial_{\zeta_i}a^j}{r+1}.
+$$">$$
+b^{ij}(\zeta)=\frac{\partial_{\zeta_j}a^i-\partial_{\zeta_i}a^j}{r+1}.
+$$</span>
+<p>Euler's homogeneous-function identity and differentiation of <span class="math" data-tex="$\zeta_ja^j=0$">$\zeta_ja^j=0$</span> give <span class="math" data-tex="$\zeta_jb^{ij}=a^i$">$\zeta_jb^{ij}=a^i$</span>. Replace each monomial <span class="math" data-tex="$\zeta^J$">$\zeta^J$</span> in <span class="math" data-tex="$b^{ij}$">$b^{ij}$</span> by <span class="math" data-tex="$D_Jh$">$D_Jh$</span>, with its coefficient on the left, to form <span class="math" data-tex="$U^{ij}[h]$">$U^{ij}[h]$</span>. Then <span class="math" data-tex="$D_jU^{ij}[h]$">$D_jU^{ij}[h]$</span> has the principal part of <span class="math" data-tex="$T^i[h]$">$T^i[h]$</span>. The difference has order at most <span class="math" data-tex="$r-1$">$r-1$</span> and still has zero divergence because <span class="math" data-tex="$D_iD_jU^{ij}=0$">$D_iD_jU^{ij}=0$</span>. Repeat finitely many times and sum the skew operators. Derivatives of coefficients increase their field-jet order only finitely. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2 (local exactness for currents).</strong> Let <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span>. On a small star-shaped base coordinate ball and an unrestricted jet neighbourhood star-shaped about the jets of a reference section, every smooth finite-order current <span class="math" data-tex="$H$">$H$</span> with <span class="math" data-tex="$D_iH^i=0$">$D_iH^i=0$</span> identically has a smooth finite-order skew superpotential <span class="math" data-tex="$H^i=D_jS^{ij}$">$H^i=D_jS^{ij}$</span>.</p>
+<p><em>Proof.</em> Subtract the reference section from <span class="math" data-tex="$u$">$u$</span>. Linearize the identity: <span class="math" data-tex="$D_iH&#x27;[h]^i=0$">$D_iH&#x27;[h]^i=0$</span> for every test field <span class="math" data-tex="$h$">$h$</span>, because evolutionary differentiation commutes with <span class="math" data-tex="$D_i$">$D_i$</span>. Lemma 3.1 writes <span class="math" data-tex="$H&#x27;[h]^i=D_jU^{ij}[h]$">$H&#x27;[h]^i=D_jU^{ij}[h]$</span>. Evaluate the coefficients at scaled jets <span class="math" data-tex="$\lambda u$">$\lambda u$</span>, set <span class="math" data-tex="$h=u$">$h=u$</span>, and integrate:</p>
+<span class="math math-display" data-tex="$$
+H^i(x,u^{(k)})-H^i(x,0)
+=D_j\int_0^1 U_{\lambda u}^{ij}[u]\,d\lambda.
+$$">$$
+H^i(x,u^{(k)})-H^i(x,0)
+=D_j\int_0^1 U_{\lambda u}^{ij}[u]\,d\lambda.
+$$</span>
+<p>The linearization differentiates with respect to the jet arguments before scaling, so its evaluation on <span class="math" data-tex="$u$">$u$</span> is precisely <span class="math" data-tex="$dH(x,\lambda u^{(k)})/d\lambda$">$dH(x,\lambda u^{(k)})/d\lambda$</span>. Total differentiation commutes with evaluation at scaled jets. The construction is finite and smooth. Set <span class="math" data-tex="$h_0^i(x)=H^i(x,0)$">$h_0^i(x)=H^i(x,0)$</span>; then <span class="math" data-tex="$\partial_ih_0^i=0$">$\partial_ih_0^i=0$</span>. With the ball centred at <span class="math" data-tex="$0$">$0$</span>, put</p>
+<span class="math math-display" data-tex="$$
+S_0^{ij}(x)=\int_0^1t^{n-2}\bigl(x^j h_0^i(tx)-x^i h_0^j(tx)\bigr)\,dt.
+$$">$$
+S_0^{ij}(x)=\int_0^1t^{n-2}\bigl(x^j h_0^i(tx)-x^i h_0^j(tx)\bigr)\,dt.
+$$</span>
+<p>Summing its derivative in <span class="math" data-tex="$j$">$j$</span> gives the integral of <span class="math" data-tex="$d[t^{n-1}h_0^i(tx)]/dt$">$d[t^{n-1}h_0^i(tx)]/dt$</span>, hence <span class="math" data-tex="$h_0^i(x)$">$h_0^i(x)$</span>. The lower endpoint is zero since <span class="math" data-tex="$n&gt;1$">$n&gt;1$</span>. Add <span class="math" data-tex="$S_0$">$S_0$</span> to the preceding integrated skew operator. Restricting an open full jet domain to such a neighbourhood proves local exactness. The same argument includes parameter fields as extra dependent variables. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proves the degree <span class="math" data-tex="$n-1$">$n-1$</span> horizontal lemma used in (3.2). It asserts neither global exactness on a noncontractible bundle nor exactness after imposing field equations. Compère, Appendix A, Theorem 20, and Barnich, Brandt and Henneaux, Theorem 4.2, provide broader accounts.</p>
+<h2 id="4-electromagnetism-and-the-role-of-a-constant-gauge-parameter">4. Electromagnetism and the role of a constant gauge parameter</h2>
+<p>On Minkowski space with signature <span class="math" data-tex="$(-,+,\ldots,+)$">$(-,+,\ldots,+)$</span>, put</p>
+<span class="math math-display" data-tex="$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\qquad L=-\frac14F_{\mu\nu}F^{\mu\nu}.
+$$">$$
+F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu,
+\qquad L=-\frac14F_{\mu\nu}F^{\mu\nu}.
+$$</span>
+<p>Varying the potential gives</p>
+<span class="math math-display" data-tex="$$
+\delta L=-F^{\mu\nu}\partial_\mu\delta A_\nu
+=(\partial_\mu F^{\mu\nu})\delta A_\nu
+-\partial_\mu(F^{\mu\nu}\delta A_\nu).
+$$">$$
+\delta L=-F^{\mu\nu}\partial_\mu\delta A_\nu
+=(\partial_\mu F^{\mu\nu})\delta A_\nu
+-\partial_\mu(F^{\mu\nu}\delta A_\nu).
+$$</span>
+<p>Thus <span class="math" data-tex="$E_A^\nu=\partial_\mu F^{\mu\nu}$">$E_A^\nu=\partial_\mu F^{\mu\nu}$</span> and <span class="math" data-tex="$P^\mu=-F^{\mu\nu}\delta A_\nu$">$P^\mu=-F^{\mu\nu}\delta A_\nu$</span>. The gauge characteristic is <span class="math" data-tex="$Q_\nu[p]=\partial_\nu p$">$Q_\nu[p]=\partial_\nu p$</span>. Since <span class="math" data-tex="$\delta F=0$">$\delta F=0$</span>, <span class="math" data-tex="$B=0$">$B=0$</span>. Its adjoint identity is</p>
+<span class="math math-display" data-tex="$$
+\partial_\nu E_A^\nu=\partial_\nu\partial_\mu F^{\mu\nu}=0,
+\tag{4.1}
+$$">$$
+\partial_\nu E_A^\nu=\partial_\nu\partial_\mu F^{\mu\nu}=0,
+\tag{4.1}
+$$</span>
+<p>with an irrelevant overall minus sign in <span class="math" data-tex="$\mathcal D^*$">$\mathcal D^*$</span>. Directly, interchanging the dummy indices reverses the sign of the expression, while commuting the derivatives leaves it unchanged.</p>
+<p>Here <span class="math" data-tex="$K^\mu=p E_A^\mu$">$K^\mu=p E_A^\mu$</span>. The Noether current is</p>
+<span class="math math-display" data-tex="$$
+C^\mu[p]=-F^{\mu\nu}\partial_\nu p
+=-p E_A^\mu+\partial_\nu(-pF^{\mu\nu}).
+\tag{4.2}
+$$">$$
+C^\mu[p]=-F^{\mu\nu}\partial_\nu p
+=-p E_A^\mu+\partial_\nu(-pF^{\mu\nu}).
+\tag{4.2}
+$$</span>
+<p>Thus <span class="math" data-tex="$S^{\mu\nu}=-pF^{\mu\nu}$">$S^{\mu\nu}=-pF^{\mu\nu}$</span> and <span class="math" data-tex="$\partial_\mu C^\mu=-E_A^\nu\partial_\nu p$">$\partial_\mu C^\mu=-E_A^\nu\partial_\nu p$</span>. For constant <span class="math" data-tex="$p$">$p$</span>, the <em>pure Maxwell gauge transformation</em> is zero, and its current here is zero. Equation (4.2) expresses that zero, on solutions, as a divergence. A nonzero matter charge is not produced by a constant transformation of <span class="math" data-tex="$A$">$A$</span> alone.</p>
+<p>For scalar electrodynamics, choose charge <span class="math" data-tex="$e\ne0$">$e\ne0$</span> and</p>
+<span class="math math-display" data-tex="$$
+\mathscr D_\mu\psi=\partial_\mu\psi-ieA_\mu\psi,
+\qquad L=-\tfrac14F^2-\overline{\mathscr D_\mu\psi}\,\mathscr D^\mu\psi-V(\bar\psi\psi).
+\tag{4.3}
+$$">$$
+\mathscr D_\mu\psi=\partial_\mu\psi-ieA_\mu\psi,
+\qquad L=-\tfrac14F^2-\overline{\mathscr D_\mu\psi}\,\mathscr D^\mu\psi-V(\bar\psi\psi).
+\tag{4.3}
+$$</span>
+<p>Gauge variations are <span class="math" data-tex="$\delta A_\mu=\partial_\mu p$">$\delta A_\mu=\partial_\mu p$</span>, <span class="math" data-tex="$\delta\psi=iep\psi$">$\delta\psi=iep\psi$</span>, <span class="math" data-tex="$\delta\bar\psi=-iep\bar\psi$">$\delta\bar\psi=-iep\bar\psi$</span>. The covariant derivative transforms as <span class="math" data-tex="$\delta(\mathscr D\psi)=iep\mathscr D\psi$">$\delta(\mathscr D\psi)=iep\mathscr D\psi$</span>, so <span class="math" data-tex="$\delta L=0$">$\delta L=0$</span> identically. Define</p>
+<span class="math math-display" data-tex="$$
+j^\mu=ie(\bar\psi\mathscr D^\mu\psi-\psi\overline{\mathscr D^\mu\psi}).
+$$">$$
+j^\mu=ie(\bar\psi\mathscr D^\mu\psi-\psi\overline{\mathscr D^\mu\psi}).
+$$</span>
+<p>The variation of the matter part with respect to <span class="math" data-tex="$A$">$A$</span> is <span class="math" data-tex="$-j^\mu\delta A_\mu$">$-j^\mu\delta A_\mu$</span>, hence</p>
+<span class="math math-display" data-tex="$$
+E_A^\mu=\partial_\nu F^{\nu\mu}-j^\mu.
+\tag{4.4}
+$$">$$
+E_A^\mu=\partial_\nu F^{\nu\mu}-j^\mu.
+\tag{4.4}
+$$</span>
+<p>The scalar boundary terms give <span class="math" data-tex="$p j^\mu$">$p j^\mu$</span>, so the gauge current is</p>
+<span class="math math-display" data-tex="$$
+C^\mu[p]=-F^{\mu\nu}\partial_\nu p+p j^\mu
+=-pE_A^\mu+\partial_\nu(-pF^{\mu\nu}).
+\tag{4.5}
+$$">$$
+C^\mu[p]=-F^{\mu\nu}\partial_\nu p+p j^\mu
+=-pE_A^\mu+\partial_\nu(-pF^{\mu\nu}).
+\tag{4.5}
+$$</span>
+<p>The full Noether identity is</p>
+<span class="math math-display" data-tex="$$
+-\partial_\mu E_A^\mu+ie\psi E_\psi-ie\bar\psi E_{\bar\psi}=0.
+\tag{4.6}
+$$">$$
+-\partial_\mu E_A^\mu+ie\psi E_\psi-ie\bar\psi E_{\bar\psi}=0.
+\tag{4.6}
+$$</span>
+<p>For constant <span class="math" data-tex="$p=1$">$p=1$</span>, the scalar transforms nontrivially and <span class="math" data-tex="$C^\mu=j^\mu$">$C^\mu=j^\mu$</span>. On solutions <span class="math" data-tex="$j^\mu=\partial_\nu F^{\nu\mu}$">$j^\mu=\partial_\nu F^{\nu\mu}$</span>. Writing <span class="math" data-tex="$\mathcal E^a=F^{a0}$">$\mathcal E^a=F^{a0}$</span> yields</p>
+<span class="math math-display" data-tex="$$
+Q_\Omega=\int_\Omega j^0\,d^{n-1}x
+=\int_{\partial\Omega}\mathcal E^a n_a\,dA.
+\tag{4.7}
+$$">$$
+Q_\Omega=\int_\Omega j^0\,d^{n-1}x
+=\int_{\partial\Omega}\mathcal E^a n_a\,dA.
+\tag{4.7}
+$$</span>
+<p>There is no time-derivative term since <span class="math" data-tex="$F^{00}=0$">$F^{00}=0$</span>. The equality requires the potential and fields to be smooth on the domain, or a distributional version of Gauss's theorem when sources are singular. Charge conservation additionally requires zero net spatial matter flux. The factor <span class="math" data-tex="$e$">$e$</span> is included in <span class="math" data-tex="$j$">$j$</span>.</p>
+<h2 id="5-reparametrization-of-a-particle">5. Reparametrization of a particle</h2>
+<p>Let <span class="math" data-tex="$x(t)$">$x(t)$</span> be a regular curve in a Riemannian manifold and <span class="math" data-tex="$v=\dot x\ne0$">$v=\dot x\ne0$</span>. Its length density is</p>
+<span class="math math-display" data-tex="$$
+L(x,v)=\sqrt{g_{\mu\nu}(x)v^\mu v^\nu}.
+$$">$$
+L(x,v)=\sqrt{g_{\mu\nu}(x)v^\mu v^\nu}.
+$$</span>
+<p>It is homogeneous of degree one in <span class="math" data-tex="$v$">$v$</span>. Under the infinitesimal change of parameter generated by <span class="math" data-tex="$\xi=-p(t)$">$\xi=-p(t)$</span> with the same geometric points, its characteristic is <span class="math" data-tex="$Q^\mu=pv^\mu$">$Q^\mu=pv^\mu$</span>. Reparametrization of the density gives the evolutionary identity <span class="math" data-tex="$\operatorname{pr}v_Q(L)=D_t(pL)$">$\operatorname{pr}v_Q(L)=D_t(pL)$</span>. Thus <span class="math" data-tex="$\mathcal D(p)=pv$">$\mathcal D(p)=pv$</span>, <span class="math" data-tex="$\mathcal D^*E=v^\mu E_\mu$">$\mathcal D^*E=v^\mu E_\mu$</span>, and the second theorem gives</p>
+<span class="math math-display" data-tex="$$
+v^\mu E_\mu(L)=0
+\tag{5.1}
+$$">$$
+v^\mu E_\mu(L)=0
+\tag{5.1}
+$$</span>
+<p>identically on the nonzero-velocity domain.</p>
+<p>Here is a direct proof for any degree-one density. Euler's homogeneous-function identity gives <span class="math" data-tex="$v^\mu L_{v^\mu}=L$">$v^\mu L_{v^\mu}=L$</span>. Differentiating along the curve and subtracting the chain rule yields</p>
+<span class="math math-display" data-tex="$$
+v^\mu D_tL_{v^\mu}=v^\mu L_{x^\mu},
+$$">$$
+v^\mu D_tL_{v^\mu}=v^\mu L_{x^\mu},
+$$</span>
+<p>which is (5.1). The first-variation current is <span class="math" data-tex="$P=Q^\mu L_{v^\mu}=pL$">$P=Q^\mu L_{v^\mu}=pL$</span>, so <span class="math" data-tex="$C=P-B=0$">$C=P-B=0$</span> for <span class="math" data-tex="$B=pL$">$B=pL$</span>. The parameter gauge does not supply another independent first integral; it expresses degeneracy of the velocity Hessian.</p>
+<p>For a timelike curve in signature <span class="math" data-tex="$(-,+,\ldots,+)$">$(-,+,\ldots,+)$</span>, use <span class="math" data-tex="$L=\sqrt{-g(v,v)}$">$L=\sqrt{-g(v,v)}$</span> on the timelike cone; the same positive-homogeneity proof applies. The expression <span class="math" data-tex="$\sqrt{g(v,v)}$">$\sqrt{g(v,v)}$</span> without this sign change is not real on that cone. At zero or null velocity these length densities are not smooth, and the statement does not apply there.</p>
+<h2 id="6-diffeomorphism-invariance-and-the-bianchi-identity">6. Diffeomorphism invariance and the Bianchi identity</h2>
+<p>Use the curvature convention</p>
+<span class="math math-display" data-tex="$$
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z,
+\qquad
+\operatorname{Ric}(Y,Z)=\operatorname{tr}\bigl[X\mapsto R(X,Y)Z\bigr].
+\tag{6.1}
+$$">$$
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z,
+\qquad
+\operatorname{Ric}(Y,Z)=\operatorname{tr}\bigl[X\mapsto R(X,Y)Z\bigr].
+\tag{6.1}
+$$</span>
+<p>It makes the unit sphere have positive sectional curvature. With <span class="math" data-tex="$R=g^{\mu\nu}\operatorname{Ric}_{\mu\nu}$">$R=g^{\mu\nu}\operatorname{Ric}_{\mu\nu}$</span> and <span class="math" data-tex="$G_{\mu\nu}=\operatorname{Ric}_{\mu\nu}-\tfrac12Rg_{\mu\nu}$">$G_{\mu\nu}=\operatorname{Ric}_{\mu\nu}-\tfrac12Rg_{\mu\nu}$</span>, the Einstein--Hilbert density is <span class="math" data-tex="$\mathscr L=\sqrt{|\det g|}\,R$">$\mathscr L=\sqrt{|\det g|}\,R$</span>. We derive its first variation to make the Noether identity explicit.</p>
+<p>For a symmetric variation <span class="math" data-tex="$h_{\mu\nu}=\delta g_{\mu\nu}$">$h_{\mu\nu}=\delta g_{\mu\nu}$</span>, differentiation of <span class="math" data-tex="$g^{-1}g=1$">$g^{-1}g=1$</span> and of the determinant gives</p>
+<span class="math math-display" data-tex="$$
+\delta g^{\mu\nu}=-h^{\mu\nu},
+\qquad
+\delta\sqrt{|\det g|}=\tfrac12\sqrt{|\det g|}\,g^{\mu\nu}h_{\mu\nu}.
+$$">$$
+\delta g^{\mu\nu}=-h^{\mu\nu},
+\qquad
+\delta\sqrt{|\det g|}=\tfrac12\sqrt{|\det g|}\,g^{\mu\nu}h_{\mu\nu}.
+$$</span>
+<p>The Levi-Civita variation is the tensor</p>
+<span class="math math-display" data-tex="$$
+\delta\Gamma^\rho_{\mu\nu}
+=\tfrac12g^{\rho\sigma}
+(\nabla_\mu h_{\nu\sigma}+\nabla_\nu h_{\mu\sigma}-\nabla_\sigma h_{\mu\nu}).
+\tag{6.2}
+$$">$$
+\delta\Gamma^\rho_{\mu\nu}
+=\tfrac12g^{\rho\sigma}
+(\nabla_\mu h_{\nu\sigma}+\nabla_\nu h_{\mu\sigma}-\nabla_\sigma h_{\mu\nu}).
+\tag{6.2}
+$$</span>
+<p>To see this, vary <span class="math" data-tex="$\nabla g=0$">$\nabla g=0$</span> and the symmetry of the connection in its lower two indices. The three resulting metric-compatibility equations solve for <span class="math" data-tex="$\delta\Gamma$">$\delta\Gamma$</span> by adding the first two and subtracting the third. Alternatively differentiate the coordinate formula for <span class="math" data-tex="$\Gamma$">$\Gamma$</span>; the extra terms combine to the covariant derivatives in (6.2).</p>
+<p>Varying the coordinate expression for curvature yields the Palatini identity</p>
+<span class="math math-display" data-tex="$$
+\delta\operatorname{Ric}_{\mu\nu}
+=\nabla_\rho\delta\Gamma^\rho_{\mu\nu}
+-\nabla_\nu\delta\Gamma^\rho_{\mu\rho}.
+\tag{6.3}
+$$">$$
+\delta\operatorname{Ric}_{\mu\nu}
+=\nabla_\rho\delta\Gamma^\rho_{\mu\nu}
+-\nabla_\nu\delta\Gamma^\rho_{\mu\rho}.
+\tag{6.3}
+$$</span>
+<p>Indeed the variation of <span class="math" data-tex="$\partial\Gamma+\Gamma\Gamma$">$\partial\Gamma+\Gamma\Gamma$</span> is the covariant exterior derivative of the connection variation; contracting its first and curvature-output indices gives (6.3). This computation uses neither the equations of motion nor a Bianchi identity.</p>
+<p>By <span class="math" data-tex="$\nabla g=0$">$\nabla g=0$</span>, equations (6.2)--(6.3) give</p>
+<span class="math math-display" data-tex="$$
+\delta R=-\operatorname{Ric}^{\mu\nu}h_{\mu\nu}
++\nabla_\rho W^\rho,\qquad
+W^\rho=g^{\mu\nu}\delta\Gamma^\rho_{\mu\nu}
+-g^{\mu\rho}\delta\Gamma^\nu_{\mu\nu}
+=\nabla_\mu h^{\rho\mu}-\nabla^\rho(\operatorname{tr}_g h).
+$$">$$
+\delta R=-\operatorname{Ric}^{\mu\nu}h_{\mu\nu}
++\nabla_\rho W^\rho,\qquad
+W^\rho=g^{\mu\nu}\delta\Gamma^\rho_{\mu\nu}
+-g^{\mu\rho}\delta\Gamma^\nu_{\mu\nu}
+=\nabla_\mu h^{\rho\mu}-\nabla^\rho(\operatorname{tr}_g h).
+$$</span>
+<p>Finally <span class="math" data-tex="$\sqrt{|\det g|}\nabla_\rho W^\rho=\partial_\rho(\sqrt{|\det g|}W^\rho)$">$\sqrt{|\det g|}\nabla_\rho W^\rho=\partial_\rho(\sqrt{|\det g|}W^\rho)$</span>, because <span class="math" data-tex="$\Gamma^\mu_{\mu\rho}=\partial_\rho\log\sqrt{|\det g|}$">$\Gamma^\mu_{\mu\rho}=\partial_\rho\log\sqrt{|\det g|}$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$
+\delta\mathscr L
+=-\sqrt{|\det g|}\,G^{\mu\nu}h_{\mu\nu}
++\partial_\rho(\sqrt{|\det g|}W^\rho).
+\tag{6.4}
+$$">$$
+\delta\mathscr L
+=-\sqrt{|\det g|}\,G^{\mu\nu}h_{\mu\nu}
++\partial_\rho(\sqrt{|\det g|}W^\rho).
+\tag{6.4}
+$$</span>
+<p>Symmetric <span class="math" data-tex="$h$">$h$</span> is contracted over both indices; this fixes the convention without ambiguous factors for off-diagonal independent metric coordinates.</p>
+<p>For a compactly supported vector field <span class="math" data-tex="$\zeta$">$\zeta$</span>, the flow acts by pullback and its metric variation is</p>
+<span class="math math-display" data-tex="$$
+h_{\mu\nu}=(\mathcal L_\zeta g)_{\mu\nu}
+=\nabla_\mu\zeta_\nu+\nabla_\nu\zeta_\mu.
+\tag{6.5}
+$$">$$
+h_{\mu\nu}=(\mathcal L_\zeta g)_{\mu\nu}
+=\nabla_\mu\zeta_\nu+\nabla_\nu\zeta_\mu.
+\tag{6.5}
+$$</span>
+<p>The last equality follows by inserting the coordinate formula for the Lie derivative and using <span class="math" data-tex="$\nabla g=0$">$\nabla g=0$</span>. Since the scalar density pulls back, <span class="math" data-tex="$\delta\mathscr L=\partial_\mu(\zeta^\mu\mathscr L)$">$\delta\mathscr L=\partial_\mu(\zeta^\mu\mathscr L)$</span>. Its action variation is zero for compact support. Equation (6.4) now implies</p>
+<span class="math math-display" data-tex="$$
+0=-2\int\sqrt{|\det g|}\,G^{\mu\nu}\nabla_\mu\zeta_\nu\,d^nx
+=2\int\sqrt{|\det g|}\,(\nabla_\mu G^{\mu\nu})\zeta_\nu\,d^nx.
+$$">$$
+0=-2\int\sqrt{|\det g|}\,G^{\mu\nu}\nabla_\mu\zeta_\nu\,d^nx
+=2\int\sqrt{|\det g|}\,(\nabla_\mu G^{\mu\nu})\zeta_\nu\,d^nx.
+$$</span>
+<p>Metric compatibility allows the integration by parts, and no boundary term remains. The fundamental lemma for arbitrary <span class="math" data-tex="$\zeta_\nu$">$\zeta_\nu$</span> yields the contracted Bianchi identity</p>
+<span class="math math-display" data-tex="$$
+\nabla_\mu G^{\mu\nu}=0.
+\tag{6.6}
+$$">$$
+\nabla_\mu G^{\mu\nu}=0.
+\tag{6.6}
+$$</span>
+<p>The conclusion is valid for every smooth nondegenerate metric of fixed signature. It is an off-equation identity; setting <span class="math" data-tex="$G=0$">$G=0$</span> would make the proof uninformative. A cosmological term contributes a constant multiple of <span class="math" data-tex="$g^{\mu\nu}$">$g^{\mu\nu}$</span> and satisfies the same identity by metric compatibility. With matter, varying all dynamical fields gives an identity involving their Euler expressions as well; the stress tensor is covariantly conserved on matter solutions.</p>
+<h3 id="why-translation-energy-becomes-a-boundary-law">Why translation energy becomes a boundary law</h3>
+<p>In a generally covariant theory with no fixed background structure that breaks diffeomorphism invariance, arbitrary coordinate transformations are gauge symmetries. Coordinate translations are the specialization to constant vector fields in a chart. Applying (3.2) to those parameters shows that their energy-momentum currents are sums of terms proportional to the field equations and their derivatives, and divergences of skew superpotentials. This is the direction of Hilbert's assertion needed here, as proved by Noether in §6.</p>
+<p>A fixed Minkowski background is a different hypothesis: translations are global spacetime symmetries of the matter fields, and their energy current need not be improper. Conversely, a local improper-law representation alone does not prove integration of arbitrary generalized generators to a finite transformation group. Our statement is about the variational identity and the existing diffeomorphism action.</p>
+<h2 id="7-a-regular-mechanical-system-has-no-genuine-parameter-gauge">7. A regular mechanical system has no genuine parameter gauge</h2>
+<p>The free density <span class="math" data-tex="$L=\tfrac12m|\dot q|^2$">$L=\tfrac12m|\dot q|^2$</span>, <span class="math" data-tex="$m&gt;0$">$m&gt;0$</span>, has <span class="math" data-tex="$E=-m\ddot q$">$E=-m\ddot q$</span>. Its acceleration Hessian is invertible, so it has no nontrivial Noether identity after trivial identities are factored out. The qualification is essential: for a skew constant matrix <span class="math" data-tex="$M$">$M$</span>, the expression <span class="math" data-tex="$(ME)\cdot E=0$">$(ME)\cdot E=0$</span> is an identity, and <span class="math" data-tex="$Q[p]=pME$">$Q[p]=pME$</span> is a divergence symmetry that vanishes on solutions. It is a trivial parameter gauge.</p>
+<p>We give the elementary algebra behind the qualification. At each finite order, the prolonged equations <span class="math" data-tex="$D_t^rE_a=-m q_a^{(r+2)}$">$D_t^rE_a=-m q_a^{(r+2)}$</span> are independent coordinates, with <span class="math" data-tex="$t,q,\dot q$">$t,q,\dot q$</span> as unconstrained coordinates. Any linear relation among these equations is a relation among independent coordinate functions <span class="math" data-tex="$z_a$">$z_a$</span>. If <span class="math" data-tex="$\sum_a f_a(z)z_a=0$">$\sum_a f_a(z)z_a=0$</span> locally on a star-shaped coordinate neighbourhood of <span class="math" data-tex="$z=0$">$z=0$</span>, then</p>
+<span class="math math-display" data-tex="$$
+f_a(z)=\sum_b M_{ab}(z)z_b,\qquad M_{ab}=-M_{ba}.
+\tag{7.1}
+$$">$$
+f_a(z)=\sum_b M_{ab}(z)z_b,\qquad M_{ab}=-M_{ba}.
+\tag{7.1}
+$$</span>
+<p>To prove this, differentiating <span class="math" data-tex="$\sum z_af_a=0$">$\sum z_af_a=0$</span> shows <span class="math" data-tex="$f_a(0)=0$">$f_a(0)=0$</span> and
+<span class="math" data-tex="$z_b(\partial_bf_a-\partial_af_b)=(z\cdot\partial)f_a+f_a$">$z_b(\partial_bf_a-\partial_af_b)=(z\cdot\partial)f_a+f_a$</span>. Integrate this identity along <span class="math" data-tex="$tz$">$tz$</span>:</p>
+<span class="math math-display" data-tex="$$
+M_{ab}(z)=\int_0^1t\bigl(\partial_bf_a-\partial_af_b\bigr)(tz)\,dt.
+$$">$$
+M_{ab}(z)=\int_0^1t\bigl(\partial_bf_a-\partial_af_b\bigr)(tz)\,dt.
+$$</span>
+<p>The right side multiplied by <span class="math" data-tex="$z_b$">$z_b$</span> is <span class="math" data-tex="$\int_0^1d[t f_a(tz)]/dt\,dt=f_a(z)$">$\int_0^1d[t f_a(tz)]/dt\,dt=f_a(z)$</span>. If coefficients also depend on unconstrained coordinates, hold them fixed. Consequently every finite-order Noether relation for the free particle is built from skew pairwise cancellations of the equations and their derivatives. Integration by parts translates these into trivial, equation-vanishing gauge characteristics. The proof of this last translation, including general normal systems, is given in the current-symmetry correspondence of the preceding lesson.</p>
+<p>Thus the meaningful conclusion is absence of a <em>nontrivial</em> arbitrary-function gauge, not absence of every identity. The finite point symmetries listed in mechanics do not exhaust all generalized symmetries, and their parameter count alone is not a proof of gauge nondegeneracy.</p>
+<h2 id="8-from-the-current-to-a-stationary-black-hole-first-law">8. From the current to a stationary black-hole first law</h2>
+<p>A local gauge current becomes a boundary charge only after boundary conditions and a surface have been chosen. We now prove the stationary first-law statement behind Wald's Noether-charge construction. This also shows which part comes from the local theorem and which hypotheses belong to the global problem.</p>
+<p>Let <span class="math" data-tex="$M$">$M$</span> be an oriented Lorentzian <span class="math" data-tex="$n$">$n$</span>-manifold, <span class="math" data-tex="$n&gt;2$">$n&gt;2$</span>, and let <span class="math" data-tex="$\phi$">$\phi$</span> include its metric and all dynamical tensor fields. Take a finite-order diffeomorphism-covariant Lagrangian <span class="math" data-tex="$n$">$n$</span>-form <span class="math" data-tex="$\mathbf L$">$\mathbf L$</span>. Fix a local first-variation potential <span class="math" data-tex="$\boldsymbol\Theta$">$\boldsymbol\Theta$</span>, linear in the variation, so that</p>
+<span class="math math-display" data-tex="$$
+\delta\mathbf L=\mathbf E\cdot\delta\phi+d\boldsymbol\Theta(\phi,\delta\phi).
+\tag{8.1}
+$$">$$
+\delta\mathbf L=\mathbf E\cdot\delta\phi+d\boldsymbol\Theta(\phi,\delta\phi).
+\tag{8.1}
+$$</span>
+<p>We require the potential and charge construction to be covariant under the background Killing flow. A covariant potential can be obtained for Lagrangians expressed in tensor fields, curvature and their covariant derivatives: vary every factor, vary the connection through <span class="math" data-tex="$\delta\Gamma$">$\delta\Gamma$</span>, and integrate covariant derivatives off <span class="math" data-tex="$\delta\phi$">$\delta\phi$</span> until only Euler expressions remain. At each step the product rule gives a tensor boundary term; a vector density is the same object as an <span class="math" data-tex="$(n-1)$">$(n-1)$</span>-form. This is the covariant version of the explicit finite integration by parts in the first lesson. A fixed auxiliary connection may also be used if it is preserved by that flow. All choices of potential and boundary counterterms must be kept fixed through the argument.</p>
+<h3 id="the-charge-variation-identity">The charge variation identity</h3>
+<p>For a fixed vector field <span class="math" data-tex="$\xi$">$\xi$</span>, covariance and Cartan's formula give
+<span class="math" data-tex="$\mathcal L_\xi\mathbf L=d(i_\xi\mathbf L)$">$\mathcal L_\xi\mathbf L=d(i_\xi\mathbf L)$</span>. Thus</p>
+<span class="math math-display" data-tex="$$
+\mathbf J_\xi=\boldsymbol\Theta(\phi,\mathcal L_\xi\phi)-i_\xi\mathbf L,
+\qquad d\mathbf J_\xi=-\mathbf E\cdot\mathcal L_\xi\phi.
+\tag{8.2}
+$$">$$
+\mathbf J_\xi=\boldsymbol\Theta(\phi,\mathcal L_\xi\phi)-i_\xi\mathbf L,
+\qquad d\mathbf J_\xi=-\mathbf E\cdot\mathcal L_\xi\phi.
+\tag{8.2}
+$$</span>
+<p>The arbitrary-vector-field identity and §3 produce
+<span class="math" data-tex="$\mathbf J_\xi=d\mathbf Q_\xi$">$\mathbf J_\xi=d\mathbf Q_\xi$</span> on solutions. The construction can be made linear in <span class="math" data-tex="$\xi$">$\xi$</span> and its finitely many derivatives. Here is why a covariant construction exists, rather than merely a chartwise primitive. Integration by parts in <span class="math" data-tex="$\mathbf E\cdot\mathcal L_\xi\phi$">$\mathbf E\cdot\mathcal L_\xi\phi$</span> first adds an equation-proportional current to make <span class="math" data-tex="$\mathbf J_\xi$">$\mathbf J_\xi$</span> identically closed. Apply the symbol argument of §3 to this differential operator in <span class="math" data-tex="$\xi$">$\xi$</span>, using symmetrized covariant derivatives. Its leading symbols are tensors. The formula for <span class="math" data-tex="$b^{ij}$">$b^{ij}$</span> uses tensor symmetrization and contraction and therefore defines a tensor coefficient. Subtracting the divergence of the corresponding skew tensor lowers the operator order. Commutators of covariant derivatives contribute only lower-order curvature terms, which are treated at the next steps. The double divergence of a skew two-tensor is zero: its commutator contracts a symmetric Ricci tensor with a skew tensor. At order zero, the coefficient of each first derivative of the freely chosen <span class="math" data-tex="$\xi$">$\xi$</span> must vanish. This finite recursion gives a global, locally constructed charge form wherever the tensor Lagrangian and potential are defined. It has no parameter-independent remainder because the entire current is linear in <span class="math" data-tex="$\xi$">$\xi$</span>.</p>
+<p>Let <span class="math" data-tex="$\delta\phi$">$\delta\phi$</span> be a tangent to solutions, and define the alternating, bilinear symplectic current by</p>
+<span class="math math-display" data-tex="$$
+\boldsymbol\omega(\phi;\delta_1\phi,\delta_2\phi)
+=\delta_1\boldsymbol\Theta(\phi,\delta_2\phi)
+-\delta_2\boldsymbol\Theta(\phi,\delta_1\phi).
+$$">$$
+\boldsymbol\omega(\phi;\delta_1\phi,\delta_2\phi)
+=\delta_1\boldsymbol\Theta(\phi,\delta_2\phi)
+-\delta_2\boldsymbol\Theta(\phi,\delta_1\phi).
+$$</span>
+<p>The variations commute; equivalently take the exterior derivative in field space. On the background equations, (8.1) and Cartan's formula yield</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\delta\mathbf J_\xi
+&amp;=\delta\boldsymbol\Theta(\phi,\mathcal L_\xi\phi)
+-i_\xi d\boldsymbol\Theta(\phi,\delta\phi)\\
+&amp;=\boldsymbol\omega(\phi;\delta\phi,\mathcal L_\xi\phi)
++d\bigl(i_\xi\boldsymbol\Theta(\phi,\delta\phi)\bigr).
+\end{aligned}
+\tag{8.3}
+$$">$$
+\begin{aligned}
+\delta\mathbf J_\xi
+&amp;=\delta\boldsymbol\Theta(\phi,\mathcal L_\xi\phi)
+-i_\xi d\boldsymbol\Theta(\phi,\delta\phi)\\
+&amp;=\boldsymbol\omega(\phi;\delta\phi,\mathcal L_\xi\phi)
++d\bigl(i_\xi\boldsymbol\Theta(\phi,\delta\phi)\bigr).
+\end{aligned}
+\tag{8.3}
+$$</span>
+<p>For the second line, covariance identifies the variation along the Killing flow of the potential with its Lie derivative. The terms containing <span class="math" data-tex="$\mathcal L_\xi\delta\phi$">$\mathcal L_\xi\delta\phi$</span> cancel; this cancellation is why <span class="math" data-tex="$\omega$">$\omega$</span> is bilinear in the two tangent variations.</p>
+<p>If <span class="math" data-tex="$\mathcal L_\xi\phi=0$">$\mathcal L_\xi\phi=0$</span> on the background, <span class="math" data-tex="$\omega$">$\omega$</span> vanishes. Since the perturbation solves the linearized equations, variation of the equation-proportional part of (8.2) also vanishes. Consequently</p>
+<span class="math math-display" data-tex="$$
+d\bigl(\delta\mathbf Q_\xi-i_\xi\boldsymbol\Theta\bigr)=0.
+\tag{8.4}
+$$">$$
+d\bigl(\delta\mathbf Q_\xi-i_\xi\boldsymbol\Theta\bigr)=0.
+\tag{8.4}
+$$</span>
+<p>This identity holds even when the perturbation is not stationary. It is the conservation law that compares two boundary surfaces.</p>
+<h3 id="global-hypotheses-and-stokes-theorem">Global hypotheses and Stokes' theorem</h3>
+<p>Suppose the background has a smooth bifurcate Killing horizon with compact oriented bifurcation surface <span class="math" data-tex="$B$">$B$</span>, and that a hypersurface <span class="math" data-tex="$\Sigma$">$\Sigma$</span> has boundaries <span class="math" data-tex="$B$">$B$</span> and an asymptotic surface at infinity. Suppose all dynamical fields are smooth at <span class="math" data-tex="$B$">$B$</span> and invariant under the horizon Killing field</p>
+<span class="math math-display" data-tex="$$
+\xi=T+\sum_a\Omega_H^a\Phi_a,
+$$">$$
+\xi=T+\sum_a\Omega_H^a\Phi_a,
+$$</span>
+<p>where <span class="math" data-tex="$T$">$T$</span> is the chosen asymptotic time translation and <span class="math" data-tex="$\Phi_a$">$\Phi_a$</span> the chosen axial generators. Assume the boundary conditions make the following surface variations finite and integrable:</p>
+<span class="math math-display" data-tex="$$
+\delta\mathcal E=\int_\infty
+(\delta\mathbf Q_T-i_T\boldsymbol\Theta),\qquad
+\delta\mathcal J_a=-\int_\infty
+(\delta\mathbf Q_{\Phi_a}-i_{\Phi_a}\boldsymbol\Theta).
+\tag{8.5}
+$$">$$
+\delta\mathcal E=\int_\infty
+(\delta\mathbf Q_T-i_T\boldsymbol\Theta),\qquad
+\delta\mathcal J_a=-\int_\infty
+(\delta\mathbf Q_{\Phi_a}-i_{\Phi_a}\boldsymbol\Theta).
+\tag{8.5}
+$$</span>
+<p>“Integrable” means these one-forms on the allowed solution space are differentials of functions <span class="math" data-tex="$\mathcal E,\mathcal J_a$">$\mathcal E,\mathcal J_a$</span>. It is a hypothesis about the theory and boundary conditions, not a consequence of Noether's theorem. For example, if
+<span class="math" data-tex="$\int_\infty i_T\boldsymbol\Theta=\delta\int_\infty i_T\mathbf B$">$\int_\infty i_T\boldsymbol\Theta=\delta\int_\infty i_T\mathbf B$</span> for a chosen boundary form <span class="math" data-tex="$\mathbf B$">$\mathbf B$</span>, then
+<span class="math" data-tex="$\mathcal E=\int_\infty(\mathbf Q_T-i_T\mathbf B)$">$\mathcal E=\int_\infty(\mathbf Q_T-i_T\mathbf B)$</span> satisfies (8.5). When <span class="math" data-tex="$\Phi_a$">$\Phi_a$</span> is tangent to the integration surface, the pullback of <span class="math" data-tex="$i_{\Phi_a}\Theta$">$i_{\Phi_a}\Theta$</span> is zero, since an alternating <span class="math" data-tex="$(n-1)$">$(n-1)$</span>-form is then evaluated on dependent tangent vectors.</p>
+<p>Orient the boundaries so that Stokes' theorem reads “infinity minus <span class="math" data-tex="$B$">$B$</span>.” Hold <span class="math" data-tex="$\xi$">$\xi$</span>, and hence the background values <span class="math" data-tex="$\Omega_H^a$">$\Omega_H^a$</span>, fixed. Since <span class="math" data-tex="$\xi=0$">$\xi=0$</span> on <span class="math" data-tex="$B$">$B$</span>, integrating (8.4) gives</p>
+<span class="math math-display" data-tex="$$
+\delta\mathcal E-\sum_a\Omega_H^a\delta\mathcal J_a
+=\int_B\delta\mathbf Q_\xi.
+\tag{8.6}
+$$">$$
+\delta\mathcal E-\sum_a\Omega_H^a\delta\mathcal J_a
+=\int_B\delta\mathbf Q_\xi.
+\tag{8.6}
+$$</span>
+<p>There is no <span class="math" data-tex="$\mathcal J_a\delta\Omega_H^a$">$\mathcal J_a\delta\Omega_H^a$</span> term: the charge variation here belongs to a fixed background generator.</p>
+<h3 id="removing-the-killing-field-from-the-horizon-density">Removing the Killing field from the horizon density</h3>
+<p>We next restrict to a smooth family of nearby stationary solutions with such bifurcation surfaces and nonzero surface gravity <span class="math" data-tex="$\kappa$">$\kappa$</span>. The following geometric reduction makes the right side of (8.6) a variation of a local functional.</p>
+<p>The Killing equation implies that every derivative of <span class="math" data-tex="$\xi$">$\xi$</span> of order at least two is determined by curvature, its covariant derivatives, <span class="math" data-tex="$\xi$">$\xi$</span> and <span class="math" data-tex="$\nabla\xi$">$\nabla\xi$</span>. To prove the first step, put
+<span class="math" data-tex="$T_{abc}=\nabla_a\nabla_b\xi_c$">$T_{abc}=\nabla_a\nabla_b\xi_c$</span> and
+<span class="math" data-tex="$K_{abc}=T_{abc}-T_{bac}=-R^d{}_{cab}\xi_d$">$K_{abc}=T_{abc}-T_{bac}=-R^d{}_{cab}\xi_d$</span>, with the curvature convention of §6. Differentiating the Killing equation gives <span class="math" data-tex="$T_{abc}=-T_{acb}$">$T_{abc}=-T_{acb}$</span>. Cycling these two relations yields</p>
+<span class="math math-display" data-tex="$$
+2T_{abc}=K_{abc}+K_{cba}-K_{acb}.
+\tag{8.7}
+$$">$$
+2T_{abc}=K_{abc}+K_{cba}-K_{acb}.
+\tag{8.7}
+$$</span>
+<p>Differentiating (8.7) repeatedly and replacing every resulting second derivative by (8.7) proves the assertion at all finite orders. Thus the charge, which is linear in the Killing field and its derivatives, reduces to a local form linear in <span class="math" data-tex="$\xi$">$\xi$</span> and <span class="math" data-tex="$\nabla\xi$">$\nabla\xi$</span>.</p>
+<p>On <span class="math" data-tex="$B$">$B$</span>, <span class="math" data-tex="$\xi$">$\xi$</span> vanishes. Its derivative kills tangent vectors to <span class="math" data-tex="$B$">$B$</span>, by differentiating this zero restriction, and is skew with respect to the metric by the Killing equation. It therefore acts on the two-dimensional Lorentzian normal plane as a boost,
+<span class="math" data-tex="$\nabla_a\xi_b=\kappa\epsilon_{ab}$">$\nabla_a\xi_b=\kappa\epsilon_{ab}$</span>, where the binormal orientation fixes the sign of <span class="math" data-tex="$\kappa$">$\kappa$</span> and <span class="math" data-tex="$\epsilon_{ab}\epsilon^{ab}=-2$">$\epsilon_{ab}\epsilon^{ab}=-2$</span>. Equation (8.7) shows that <span class="math" data-tex="$\nabla\xi$">$\nabla\xi$</span> is parallel along <span class="math" data-tex="$B$">$B$</span>, since <span class="math" data-tex="$\xi=0$">$\xi=0$</span> there. Hence <span class="math" data-tex="$\kappa$">$\kappa$</span> is constant on each connected component. For simplicity take one component.</p>
+<p>In the reduced charge replace <span class="math" data-tex="$\xi$">$\xi$</span> by zero and <span class="math" data-tex="$\nabla\xi$">$\nabla\xi$</span> by <span class="math" data-tex="$\epsilon$">$\epsilon$</span>. Call the resulting local <span class="math" data-tex="$(n-2)$">$(n-2)$</span>-form <span class="math" data-tex="$\widetilde{\mathbf Q}$">$\widetilde{\mathbf Q}$</span>. Define</p>
+<span class="math math-display" data-tex="$$
+\mathcal S=2\pi\int_B\widetilde{\mathbf Q}.
+\tag{8.8}
+$$">$$
+\mathcal S=2\pi\int_B\widetilde{\mathbf Q}.
+\tag{8.8}
+$$</span>
+<p>For any stationary member, <span class="math" data-tex="$\mathbf Q_\xi|_B=\kappa\widetilde{\mathbf Q}$">$\mathbf Q_\xi|_B=\kappa\widetilde{\mathbf Q}$</span>. Differentiating this equality while allowing <span class="math" data-tex="$\xi$">$\xi$</span> to vary would introduce a <span class="math" data-tex="$\delta\kappa$">$\delta\kappa$</span> term. That is not the variation in (8.6), where <span class="math" data-tex="$\xi$">$\xi$</span> is fixed. We now justify the required identification of neighbouring solutions.</p>
+<p>Identify their bifurcation surfaces smoothly, and identify their oriented, time-oriented normal bundles by Lorentzian isometries. Use their normal exponential maps to identify collars of <span class="math" data-tex="$B$">$B$</span>. An isometry fixing <span class="math" data-tex="$B$">$B$</span> commutes with the exponential map: both sides are geodesics with the same initial point and transformed initial velocity, hence agree by uniqueness of the geodesic equation. Its action on each normal fibre is therefore its derivative at <span class="math" data-tex="$B$">$B$</span>. The normalized generator <span class="math" data-tex="$\widetilde\xi=\xi/\kappa$">$\widetilde\xi=\xi/\kappa$</span> has the same unit boost on those fibres for every member. In these identified collars it is one fixed vector field. This construction is independent of a local normal frame, since oriented Lorentzian frame changes commute with that boost. Extend the identification smoothly to the exterior, using a cutoff to keep the chosen asymptotic coordinates fixed.</p>
+<p>Let <span class="math" data-tex="$\kappa_0$">$\kappa_0$</span> denote the background value. In the collar hold the vector field <span class="math" data-tex="$\xi=\kappa_0\widetilde\xi$">$\xi=\kappa_0\widetilde\xi$</span> fixed while varying the fields. The globally fixed vector field need be Killing only for the background; (8.4) imposes no Killing condition on its perturbed extension away from the collar. Linearity of the charge now gives, with <span class="math" data-tex="$B$">$B$</span> identified,</p>
+<span class="math math-display" data-tex="$$
+\int_B\delta\mathbf Q_\xi
+=\kappa_0\,\delta\int_B\widetilde{\mathbf Q}.
+$$">$$
+\int_B\delta\mathbf Q_\xi
+=\kappa_0\,\delta\int_B\widetilde{\mathbf Q}.
+$$</span>
+<p>Combining this equality with (8.6) proves the stationary first law</p>
+<span class="math math-display" data-tex="$$
+\boxed{\quad
+\delta\mathcal E-\sum_a\Omega_H^a\delta\mathcal J_a
+=\frac{\kappa_0}{2\pi}\,\delta\mathcal S.\quad}
+\tag{8.9}
+$$">$$
+\boxed{\quad
+\delta\mathcal E-\sum_a\Omega_H^a\delta\mathcal J_a
+=\frac{\kappa_0}{2\pi}\,\delta\mathcal S.\quad}
+\tag{8.9}
+$$</span>
+<p>This is Wald's mechanical Noether-charge entropy formula for stationary perturbations, proved here from first variation, the local charge construction, Killing geometry and Stokes' theorem. It includes finite higher-derivative covariant tensor Lagrangians with the stated regularity and boundary hypotheses. The proof establishes neither charge integrability for arbitrary boundary conditions nor a dynamical entropy law or a quantum temperature formula. Those are additional mathematical questions; they are not hidden steps in (8.9). Compère's treatment of exact and asymptotic charges develops such boundary choices in specific theories.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Derive the Maxwell Euler expression and verify (4.1) without imposing Maxwell's equations. Compute the current for a nonconstant gauge parameter and explain what changes for a constant parameter.</p>
+<p><strong>Exercise 9.2 (medium).</strong> For <span class="math" data-tex="$L=\sqrt{g(v,v)}$">$L=\sqrt{g(v,v)}$</span> in positive signature, prove <span class="math" data-tex="$v\cdot E=0$">$v\cdot E=0$</span> directly and from reparametrization. State the velocity domain and show why the current is zero.</p>
+<p><strong>Exercise 9.3 (medium).</strong> In scalar electrodynamics with the conventions (4.3), compute the matter variation with respect to <span class="math" data-tex="$A$">$A$</span>, derive (4.6), and express charge in a ball as an electric flux integral.</p>
+<p><strong>Exercise 9.4 (medium).</strong> For the two-component free particle, construct a trivial arbitrary-function characteristic with a skew matrix, verify its divergence symmetry, and prove that it does not represent a genuine gauge freedom.</p>
+<p><strong>Exercise 9.5 (hard).</strong> Derive (6.6) from an arbitrary compactly supported infinitesimal diffeomorphism, including the Einstein--Hilbert Euler expression and the sign of the integration by parts.</p>
+<h2 id="10-solutions">10. Solutions</h2>
+<p><strong>Solution 9.1.</strong> Differentiating <span class="math" data-tex="$-\tfrac14F^2$">$-\tfrac14F^2$</span> gives <span class="math" data-tex="$-F^{\mu\nu}\partial_\mu\delta A_\nu$">$-F^{\mu\nu}\partial_\mu\delta A_\nu$</span>, hence <span class="math" data-tex="$E_A^\nu=\partial_\mu F^{\mu\nu}$">$E_A^\nu=\partial_\mu F^{\mu\nu}$</span>. The symmetric operator <span class="math" data-tex="$\partial_\mu\partial_\nu$">$\partial_\mu\partial_\nu$</span> contracted with the skew tensor <span class="math" data-tex="$F^{\mu\nu}$">$F^{\mu\nu}$</span> gives zero. For <span class="math" data-tex="$Q_\nu=\partial_\nu p$">$Q_\nu=\partial_\nu p$</span>, the boundary term is <span class="math" data-tex="$P^\mu=-F^{\mu\nu}\partial_\nu p$">$P^\mu=-F^{\mu\nu}\partial_\nu p$</span>, with <span class="math" data-tex="$B=0$">$B=0$</span>. Formula (4.2) follows by the product rule and <span class="math" data-tex="$E_A^\mu=-\partial_\nu F^{\mu\nu}$">$E_A^\mu=-\partial_\nu F^{\mu\nu}$</span>. For constant <span class="math" data-tex="$p$">$p$</span>, <span class="math" data-tex="$Q=0$">$Q=0$</span> and <span class="math" data-tex="$P=0$">$P=0$</span>; there is no charged matter current in this example.</p>
+<p><strong>Solution 9.2.</strong> On <span class="math" data-tex="$v\ne0$">$v\ne0$</span>, <span class="math" data-tex="$L_{v^\mu}=g_{\mu\nu}v^\nu/L$">$L_{v^\mu}=g_{\mu\nu}v^\nu/L$</span> and <span class="math" data-tex="$v^\mu L_{v^\mu}=L$">$v^\mu L_{v^\mu}=L$</span>. Differentiate the latter identity. Subtract <span class="math" data-tex="$D_tL=L_{x^\mu}v^\mu+L_{v^\mu}a^\mu$">$D_tL=L_{x^\mu}v^\mu+L_{v^\mu}a^\mu$</span> to obtain <span class="math" data-tex="$v^\mu(L_{x^\mu}-D_tL_{v^\mu})=0$">$v^\mu(L_{x^\mu}-D_tL_{v^\mu})=0$</span>. For <span class="math" data-tex="$Q=pv$">$Q=pv$</span>, the first variation is <span class="math" data-tex="$p\,\operatorname{pr}v_v L+p&#x27;v^\mu L_{v^\mu}=pD_tL+p&#x27;L=D_t(pL)$">$p\,\operatorname{pr}v_v L+p&#x27;v^\mu L_{v^\mu}=pD_tL+p&#x27;L=D_t(pL)$</span>. Hence the second theorem gives the same identity, and the first current <span class="math" data-tex="$P-B=pL-pL$">$P-B=pL-pL$</span> is zero. For timelike Lorentzian curves change <span class="math" data-tex="$g(v,v)$">$g(v,v)$</span> to <span class="math" data-tex="$-g(v,v)$">$-g(v,v)$</span> and restrict to the timelike cone.</p>
+<p><strong>Solution 9.3.</strong> The variations are <span class="math" data-tex="$\delta\mathscr D_\mu\psi=-ie\psi\,\delta A_\mu$">$\delta\mathscr D_\mu\psi=-ie\psi\,\delta A_\mu$</span> and <span class="math" data-tex="$\delta\overline{\mathscr D_\mu\psi}=ie\bar\psi\,\delta A_\mu$">$\delta\overline{\mathscr D_\mu\psi}=ie\bar\psi\,\delta A_\mu$</span>. Substitution in the kinetic term gives <span class="math" data-tex="$-ie(\bar\psi\mathscr D^\mu\psi-\psi\overline{\mathscr D^\mu\psi})\delta A_\mu=-j^\mu\delta A_\mu$">$-ie(\bar\psi\mathscr D^\mu\psi-\psi\overline{\mathscr D^\mu\psi})\delta A_\mu=-j^\mu\delta A_\mu$</span>. Thus <span class="math" data-tex="$E_A^\mu=\partial_\nu F^{\nu\mu}-j^\mu$">$E_A^\mu=\partial_\nu F^{\nu\mu}-j^\mu$</span>. In the adjoint identity the gauge operator has components <span class="math" data-tex="$(\partial_\mu,ie\psi,-ie\bar\psi)$">$(\partial_\mu,ie\psi,-ie\bar\psi)$</span>, giving <span class="math" data-tex="$-\partial_\mu E_A^\mu+ie\psi E_\psi-ie\bar\psi E_{\bar\psi}=0$">$-\partial_\mu E_A^\mu+ie\psi E_\psi-ie\bar\psi E_{\bar\psi}=0$</span>. On all equations, <span class="math" data-tex="$j^0=\partial_aF^{a0}$">$j^0=\partial_aF^{a0}$</span>; integrating over the ball and applying the divergence theorem gives (4.7). Constant phase charge and local gauge parameter refer to different symmetry families, although <span class="math" data-tex="$p=1$">$p=1$</span> specializes the latter to the former on matter.</p>
+<p><strong>Solution 9.4.</strong> Set <span class="math" data-tex="$M=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)$">$M=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)$</span> and <span class="math" data-tex="$Q[p]=pME$">$Q[p]=pME$</span>. Then <span class="math" data-tex="$Q[p]\cdot E=pE^TME=0$">$Q[p]\cdot E=pE^TME=0$</span> for every jet. First variation gives <span class="math" data-tex="$\operatorname{pr}v_Q L=D_t(m\dot q\cdot Q)$">$\operatorname{pr}v_Q L=D_t(m\dot q\cdot Q)$</span>, so choose that expression as <span class="math" data-tex="$B$">$B$</span> and obtain zero current. The characteristic vanishes on solutions. It is a skew cancellation, not a redundancy among independent acceleration equations. More generally the coordinates <span class="math" data-tex="$q_a^{(r+2)}$">$q_a^{(r+2)}$</span> are independent; equation (7.1) proves that every identity is a skew cancellation after prolongation. There is therefore no nontrivial gauge class.</p>
+<p><strong>Solution 9.5.</strong> Equations (6.2)--(6.4), obtained by varying metric compatibility, curvature and the determinant, give <span class="math" data-tex="$E_g^{\mu\nu}=-\sqrt{|g|}G^{\mu\nu}$">$E_g^{\mu\nu}=-\sqrt{|g|}G^{\mu\nu}$</span>. Under pullback by the flow of <span class="math" data-tex="$\zeta$">$\zeta$</span>, <span class="math" data-tex="$h_{\mu\nu}=\nabla_\mu\zeta_\nu+\nabla_\nu\zeta_\mu$">$h_{\mu\nu}=\nabla_\mu\zeta_\nu+\nabla_\nu\zeta_\mu$</span> and <span class="math" data-tex="$\delta\mathscr L=\partial_\mu(\zeta^\mu\mathscr L)$">$\delta\mathscr L=\partial_\mu(\zeta^\mu\mathscr L)$</span>. Compact support eliminates both boundary terms. Symmetry of <span class="math" data-tex="$G$">$G$</span> gives <span class="math" data-tex="$-2\int\sqrt{|g|}G^{\mu\nu}\nabla_\mu\zeta_\nu$">$-2\int\sqrt{|g|}G^{\mu\nu}\nabla_\mu\zeta_\nu$</span>. Covariant integration by parts changes the sign and produces <span class="math" data-tex="$2\int\sqrt{|g|}(\nabla_\mu G^{\mu\nu})\zeta_\nu$">$2\int\sqrt{|g|}(\nabla_\mu G^{\mu\nu})\zeta_\nu$</span>. The fundamental lemma gives <span class="math" data-tex="$\nabla_\mu G^{\mu\nu}=0$">$\nabla_\mu G^{\mu\nu}=0$</span> for every metric, without using <span class="math" data-tex="$G=0$">$G=0$</span>.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>The first-variation identity and identity-level first theorem are proved in <a href="NOE-SYM-01.html">Variational symmetries and Noether's first theorem</a>. The local superpotential lemma is proved in §3, and the metric variation needed for Bianchi is proved in §6. Smooth manifolds, the Levi-Civita connection, and the divergence theorem are background from the programme's <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D50">Smooth Manifolds and Differential Geometry</a>. Section 8 proves the charge-variation identity and the stationary black-hole first law, including the Killing-jet reduction and the normal-bundle identification needed for the entropy variation. Charge integrability and the stated global boundary conditions are explicit hypotheses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Emmy Noether, <em>Invariante Variationsprobleme</em> (1918), §§2, 4--6. <a href="https://kokunoyumeto.github.io/emmy-noether-en/">English edition</a>; <a href="https://eudml.org/doc/59024">original paper record</a>.</li>
+<li>Geoffrey Compère, <em>Symmetries and conservation laws in Lagrangian gauge theories with applications to the mechanics of black holes and to gravity in three dimensions</em> (2007), Preamble §§1--3, Part I, Chapter 1, §2, and Appendix A, Theorem 20. <a href="https://arxiv.org/abs/0708.3153">Thesis</a>.</li>
+<li>Glenn Barnich, Friedemann Brandt and Marc Henneaux, <em>Local BRST cohomology in gauge theories</em>, Physics Reports <strong>338</strong> (2000), 439--569, Theorem 4.2 and §§5--6. <a href="https://arxiv.org/abs/hep-th/0002245">Article</a>.</li>
+<li>Robert M. Wald, <em>Black hole entropy is Noether charge</em>, Physical Review D <strong>48</strong> (1993), R3427--R3431, equations (3)--(26), especially the fixed-generator variation and stationary horizon normalization. <a href="https://arxiv.org/abs/gr-qc/9307038">Article</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-SYM-01.html">← Variational symmetries and Noether&#x27;s first theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-SYM-03.html">The formal calculus of variations and differential invariants →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-SYM-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-SYM">Repository</a></nav>
+</footer>
+</body>
+</html>

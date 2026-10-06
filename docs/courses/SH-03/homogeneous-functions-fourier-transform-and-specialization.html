@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Homogeneous functions, Fourier transformation and specialization · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/homogeneous-functions-fourier-transform-and-specialization.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Homogeneous functions, Fourier transformation and specialization</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="homogeneous-functions-fourier-transformation-and-specialization">Homogeneous functions, Fourier transformation and specialization</h1>
+<p>Euler integration can retain a direction while discarding the distance along it. That is the setting of the Fourier transform studied here. Its inputs are homogeneous constructible functions on a vector bundle; its kernel is a closed pairing halfspace. Specialization first magnifies a function near a submanifold, then this Fourier transform turns normal directions into conormal directions. A pair of tangent branches will show why the magnified function contains more information than its set of limiting directions.</p>
+<p>This lesson develops homogeneous constructible functions, their Fourier transform and specialization, following the calculus of P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf"><em>Operations on constructible functions</em></a> (1991). Read <a href="constructible-functions-and-euler-integration.html">Constructible functions and Euler integration</a> for the function sheaf, its Grothendieck correspondence, local duality and support conditions. The prerequisite lessons are <a href="../sheaf-proof-readings/SH02-conic-descent.html">transport along a scaling action</a>, <a href="../sheaf-proof-readings/SH02-fourier-sato.html">Fourier kernels as radial averaging</a>, and <a href="../sheaf-proof-readings/SH02-specialization.html">reading a sheaf at the normal scale</a>. Their bounded constructions are explained where used below. <a href="../sheaf-proof-readings/SH03-weak-constructibility-under-sheaf-operations.html">Weak constructibility under sheaf operations</a> and <a href="../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html">Perfect operations and finite microlocal coefficients</a> prove the constructibility and finiteness required for those constructions.</p>
+<h2 id="the-coefficient-and-geometric-setting">The coefficient and geometric setting</h2>
+<p>Work over a field <span class="math" data-tex="\(k\)">\(k\)</span> of characteristic zero. Manifolds and bundles are real analytic, Hausdorff, countable at infinity and of uniformly finite dimension. The input category <span class="math" data-tex="\(D^b_{\mathrm{rc}}(X;k)\)">\(D^b_{\mathrm{rc}}(X;k)\)</span> consists of globally bounded complexes with finite dimensional, constructible stalk cohomology. No uniform bound on all stalk ranks is imposed. Write
+<span class="math math-display" data-tex="\[
+\chi F(x)=\sum_q(-1)^q\dim_k H^q(F)_x,
+\qquad CF(X)=\{\text{integer valued constructible functions on }X\}.
+\qquad\text{(1)}
+\]">\[
+\chi F(x)=\sum_q(-1)^q\dim_k H^q(F)_x,
+\qquad CF(X)=\{\text{integer valued constructible functions on }X\}.
+\qquad\text{(1)}
+\]</span>
+The level partition of a function in <span class="math" data-tex="\(CF(X)\)">\(CF(X)\)</span> is locally finite and subanalytic. Its closed support is the closure of its nonzero locus. Ordinary inverse image of functions is composition. The local duality operation <span class="math" data-tex="\(D_X\)">\(D_X\)</span> and exceptional inverse image are those of the preceding lesson:
+<span class="math math-display" data-tex="\[
+f^!\phi=D_Yf^*D_X\phi\quad(f:Y\longrightarrow X),
+\qquad D_X\chi F=\chi(D_XF).
+\qquad\text{(2)}
+\]">\[
+f^!\phi=D_Yf^*D_X\phi\quad(f:Y\longrightarrow X),
+\qquad D_X\chi F=\chi(D_XF).
+\qquad\text{(2)}
+\]</span>
+In particular <span class="math" data-tex="\(i^!\phi\)">\(i^!\phi\)</span> is a costalk operation when <span class="math" data-tex="\(i\)">\(i\)</span> is an embedding. It usually differs from <span class="math" data-tex="\(i^*\phi\)">\(i^*\phi\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\tau:E\to Z\)">\(\tau:E\to Z\)</span> have constant real rank <span class="math" data-tex="\(n\)">\(n\)</span>, let <span class="math" data-tex="\(i:Z\hookrightarrow E\)">\(i:Z\hookrightarrow E\)</span> be its zero section, and write <span class="math" data-tex="\(E^\times=E\setminus i(Z)\)">\(E^\times=E\setminus i(Z)\)</span>, with inclusion <span class="math" data-tex="\(j\)">\(j\)</span>. A function is <strong>homogeneous</strong> if
+<span class="math math-display" data-tex="\[
+\phi(\lambda v)=\phi(v)\quad(\lambda&gt;0).
+\qquad\text{(3)}
+\]">\[
+\phi(\lambda v)=\phi(v)\quad(\lambda&gt;0).
+\qquad\text{(3)}
+\]</span>
+Denote this group by <span class="math" data-tex="\(CF_{\mathbb R_{&gt;0}}(E)\)">\(CF_{\mathbb R_{&gt;0}}(E)\)</span>. Conic complexes have locally constant cohomology along positive scalar orbits. The SH-02 transport theorem supplies a natural action isomorphism, including the zero section, normalized at scalar one and satisfying the cocycle identity. Restriction only to the punctured bundle would leave the zero coefficient undetermined.</p>
+<h2 id="separate-the-zero-section-from-the-positive-rays">Separate the zero section from the positive rays</h2>
+<p>The positive ray quotient <span class="math" data-tex="\(S_E=E^\times/\mathbb R_{&gt;0}\)">\(S_E=E^\times/\mathbb R_{&gt;0}\)</span> is an analytic manifold. In a bundle chart it is the product of the base with the unit sphere. Normalizing a nonzero vector gives analytic local charts; transitions normalize the analytic linear bundle transitions and are analytic. This construction needs no choice of a global analytic metric. Let <span class="math" data-tex="\(\gamma:E^\times\to S_E\)">\(\gamma:E^\times\to S_E\)</span> be the quotient.</p>
+<p>There is an equivalence
+<span class="math math-display" data-tex="\[
+\gamma^{-1}:D^b_{\mathrm{rc}}(S_E;k)
+ \ \simeq\ D^b_{\mathrm{rc},\mathbb R_{&gt;0}}(E^\times;k),
+\qquad\text{inverse }R\gamma_* .
+\qquad\text{(4)}
+\]">\[
+\gamma^{-1}:D^b_{\mathrm{rc}}(S_E;k)
+ \ \simeq\ D^b_{\mathrm{rc},\mathbb R_{&gt;0}}(E^\times;k),
+\qquad\text{inverse }R\gamma_* .
+\qquad\text{(4)}
+\]</span>
+To prove it, work in a ray chart <span class="math" data-tex="\(S\times\mathbb R_{&gt;0}\)">\(S\times\mathbb R_{&gt;0}\)</span>. Normalized transport identifies a conic complex there with the pullback of its restriction at radius one. Ordinary cohomology of the positive parameter is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero and has no higher terms. The contractible parameter descent theorem therefore identifies both the unit and counit in (4) with isomorphisms. These are the actual adjunction maps, so they agree on chart overlaps. Constructibility is preserved: restrictions to radius one give analytic local sections, while pullback adds a product interval to a subanalytic stratification. Bounds are unchanged. Notice that <span class="math" data-tex="\(R\gamma_!\gamma^{-1}G\simeq G[-1]\)">\(R\gamma_!\gamma^{-1}G\simeq G[-1]\)</span>, since compactly supported cohomology of the positive ray is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. The inverse in (4) is the ordinary image.</p>
+<p>Let <span class="math" data-tex="\(K_{\mathrm{con}}(E)\)">\(K_{\mathrm{con}}(E)\)</span> be the Grothendieck group of the conic constructible bounded category. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha[A]&amp;=[i_*A],&amp;
+\beta[F]&amp;=[R\gamma_*j^{-1}F],\\
+\alpha&#x27;&#x27;[F]&amp;=[i^{-1}F],&amp;
+\beta&#x27;&#x27;[G]&amp;=[j_!\gamma^{-1}G].
+\end{aligned}
+\qquad\text{(5)}
+\]">\[
+\begin{aligned}
+\alpha[A]&amp;=[i_*A],&amp;
+\beta[F]&amp;=[R\gamma_*j^{-1}F],\\
+\alpha&#x27;&#x27;[F]&amp;=[i^{-1}F],&amp;
+\beta&#x27;&#x27;[G]&amp;=[j_!\gamma^{-1}G].
+\end{aligned}
+\qquad\text{(5)}
+\]</span>
+All four functors have the stated constructible bounded domains. The open–closed triangle
+<span class="math math-display" data-tex="\[
+j_!j^{-1}F\longrightarrow F\longrightarrow i_*i^{-1}F
+\xrightarrow{+1}
+\qquad\text{(6)}
+\]">\[
+j_!j^{-1}F\longrightarrow F\longrightarrow i_*i^{-1}F
+\xrightarrow{+1}
+\qquad\text{(6)}
+\]</span>
+and (4) give
+<span class="math math-display" data-tex="\[
+1=\beta&#x27;&#x27;\beta+\alpha\alpha&#x27;&#x27;,\quad
+\beta\beta&#x27;&#x27;=1,\quad\alpha&#x27;&#x27;\alpha=1,\quad
+\beta\alpha=0,\quad\alpha&#x27;&#x27;\beta&#x27;&#x27;=0.
+\qquad\text{(7)}
+\]">\[
+1=\beta&#x27;&#x27;\beta+\alpha\alpha&#x27;&#x27;,\quad
+\beta\beta&#x27;&#x27;=1,\quad\alpha&#x27;&#x27;\alpha=1,\quad
+\beta\alpha=0,\quad\alpha&#x27;&#x27;\beta&#x27;&#x27;=0.
+\qquad\text{(7)}
+\]</span>
+Thus the sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_0(Z)\xrightarrow{\alpha}
+K_{\mathrm{con}}(E)\xrightarrow{\beta}K_0(S_E)\longrightarrow0
+\qquad\text{(8)}
+\]">\[
+0\longrightarrow K_0(Z)\xrightarrow{\alpha}
+K_{\mathrm{con}}(E)\xrightarrow{\beta}K_0(S_E)\longrightarrow0
+\qquad\text{(8)}
+\]</span>
+is split exact. Rank zero has empty ray quotient and reduces to <span class="math" data-tex="\(K_0(E)=K_0(Z)\)">\(K_0(E)=K_0(Z)\)</span>.</p>
+<p>For functions, a homogeneous function is precisely the choice of its value on the zero section and a constructible function on <span class="math" data-tex="\(S_E\)">\(S_E\)</span>, extended along the rays. The angular function is constructible by restriction to the analytic local sections of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>; the converse follows from the local product charts. Extending the angular part by zero at the zero section remains constructible. Locally near a base point the sphere is compact, so only finitely many angular values occur. Subanalytic conic subsets extend across the origin by their radial cone in a relatively compact chart. This is the same local conic subanalytic geometry used by the conic extension theorem.</p>
+<p>Consequently the function sequence corresponding to (8) is split exact. The ordinary Grothendieck theorem already proved in the preceding lesson identifies the groups at <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(S_E\)">\(S_E\)</span>. Its Euler map commutes with (5), because ray descent uses ordinary interval cohomology of Euler value one. The splitting (7) now proves
+<span class="math math-display" data-tex="\[
+\chi:K_{\mathrm{con}}(E)\xrightarrow{\ \sim\ }
+CF_{\mathbb R_{&gt;0}}(E).
+\qquad\text{(9)}
+\]">\[
+\chi:K_{\mathrm{con}}(E)\xrightarrow{\ \sim\ }
+CF_{\mathbb R_{&gt;0}}(E).
+\qquad\text{(9)}
+\]</span>
+This supplies both surjectivity and injectivity. Explicitly, realize the zero and angular functions by bounded complexes <span class="math" data-tex="\(A,B\)">\(A,B\)</span> using the preceding lesson, and take <span class="math" data-tex="\(i_*A\oplus j_!\gamma^{-1}B\)">\(i_*A\oplus j_!\gamma^{-1}B\)</span>. Conversely, a zero Euler class has zero zero-section and angular classes and hence vanishes by (7). Locally infinite stratifications are allowed: each realization is an actual sheaf complex and (6) is one triangle. No infinite sum of Grothendieck classes enters the proof.</p>
+<h2 id="ordinary-and-supported-radial-projection">Ordinary and supported radial projection</h2>
+<p>Conic contraction supplies natural comparisons
+<span class="math math-display" data-tex="\[
+R\tau_*F\simeq i^{-1}F,\qquad R\tau_!F\simeq i^!F.
+\qquad\text{(10)}
+\]">\[
+R\tau_*F\simeq i^{-1}F,\qquad R\tau_!F\simeq i^!F.
+\qquad\text{(10)}
+\]</span>
+The ordinary comparison restricts sections to a germ at zero. The supported comparison includes zero-section support into support proper over the base. Its proof compares the localization triangles for the zero section and a closed disk, then uses disk supports cofinal among proper supports after shrinking the base. Conicity makes the complementary radial restrictions isomorphisms. This gives an exact written proof even though <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is generally nonproper.</p>
+<p>We therefore define the two radial function images by
+<span class="math math-display" data-tex="\[
+\tau_*\phi=i^*\phi,\qquad \tau_!\phi=i^!\phi.
+\qquad\text{(11)}
+\]">\[
+\tau_*\phi=i^*\phi,\qquad \tau_!\phi=i^!\phi.
+\qquad\text{(11)}
+\]</span>
+These operations are defined for all homogeneous constructible functions. They extend the ordinary support-proper Euler image in this particular conic setting.</p>
+<p>Choose an analytic norm in a local bundle trivialization and let <span class="math" data-tex="\(B_\varepsilon\)">\(B_\varepsilon\)</span> be its open fibre ball. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau_!\phi&amp;=\tau_!(\phi\,1_{B_\varepsilon}),\\
+\tau_*\phi&amp;=\tau_!(\phi\,1_{\overline B_\varepsilon}).
+\end{aligned}
+\qquad\text{(12)}
+\]">\[
+\begin{aligned}
+\tau_!\phi&amp;=\tau_!(\phi\,1_{B_\varepsilon}),\\
+\tau_*\phi&amp;=\tau_!(\phi\,1_{\overline B_\varepsilon}).
+\end{aligned}
+\qquad\text{(12)}
+\]</span>
+The right sides are the usual Euler images: their closed coefficient supports are contained in the closed disk bundle, proper over the local base. To prove the first equality, realize <span class="math" data-tex="\(\phi=\chi F\)">\(\phi=\chi F\)</span> conically by (9). At each fibre, the open-ball compact-section comparison identifies <span class="math" data-tex="\(R\Gamma_c(B_\varepsilon;F)\)">\(R\Gamma_c(B_\varepsilon;F)\)</span> with the costalk at zero. The radius can be changed using scalar transport; all radii give the same costalk. Proper-support base change and (10) give the first equality. For the second, the closed-ball ordinary-section comparison identifies <span class="math" data-tex="\(R\Gamma(\overline B_\varepsilon;F)\)">\(R\Gamma(\overline B_\varepsilon;F)\)</span> with the ordinary zero stalk. The closed ball is compact, so this is also its compact-section complex; base change gives the second equality. These are the open and closed ball comparisons proved in <a href="../sheaf-proof-readings/SH03-small-balls-central-fibres-and-supported-cohomology.html">Small balls, central fibres and supported cohomology</a>, now applied to a conic complex.</p>
+<p>Thus (12) is independent of radius and of the local analytic norm, since each side equals the intrinsic operation in (11). The local statements glue. For example,
+<span class="math math-display" data-tex="\[
+\tau_!1_E=(-1)^n1_Z,\qquad \tau_*1_E=1_Z.
+\qquad\text{(13)}
+\]">\[
+\tau_!1_E=(-1)^n1_Z,\qquad \tau_*1_E=1_Z.
+\qquad\text{(13)}
+\]</span>
+An open <span class="math" data-tex="\(n\)">\(n\)</span>-ball has compact Euler value <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>, while a closed ball has value one. Replacing the ball in either line of (12) by the other changes the answer.</p>
+<h2 id="the-halfspace-kernel-and-its-inverse">The halfspace kernel and its inverse</h2>
+<p>Let <span class="math" data-tex="\(\pi:E^*\to Z\)">\(\pi:E^*\to Z\)</span> be the dual bundle. On <span class="math" data-tex="\(E\times_ZE^*\)">\(E\times_ZE^*\)</span> write <span class="math" data-tex="\(p,q\)">\(p,q\)</span> for the projections to <span class="math" data-tex="\(E,E^*\)">\(E,E^*\)</span>, and put
+<span class="math math-display" data-tex="\[
+N=\{(v,\eta):\langle v,\eta\rangle\leq0\}.
+\]">\[
+N=\{(v,\eta):\langle v,\eta\rangle\leq0\}.
+\]</span>
+Let <span class="math" data-tex="\(i_E:E^*\hookrightarrow E\times_ZE^*\)">\(i_E:E^*\hookrightarrow E\times_ZE^*\)</span> set <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. The function <span class="math" data-tex="\((p^*\phi)1_N\)">\((p^*\phi)1_N\)</span> is conic in the <span class="math" data-tex="\(v\)">\(v\)</span> variable, so the supported radial operation of (11) is available. Define
+<span class="math math-display" data-tex="\[
+\widehat\phi=q_!\bigl((p^*\phi)1_N\bigr)
+            =i_E^!\bigl((p^*\phi)1_N\bigr).
+\qquad\text{(14)}
+\]">\[
+\widehat\phi=q_!\bigl((p^*\phi)1_N\bigr)
+            =i_E^!\bigl((p^*\phi)1_N\bigr).
+\qquad\text{(14)}
+\]</span>
+Here <span class="math" data-tex="\(q_!\)">\(q_!\)</span> is this conic operation, not an unsupported extension of the general proper-support function definition to all nonproper maps.</p>
+<p>For a conic representative <span class="math" data-tex="\(F\)">\(F\)</span> define its sheaf transform
+<span class="math math-display" data-tex="\[
+T_EF=Rq_!\bigl(p^{-1}F\otimes k_N\bigr).
+\qquad\text{(15)}
+\]">\[
+T_EF=Rq_!\bigl(p^{-1}F\otimes k_N\bigr).
+\qquad\text{(15)}
+\]</span>
+The conic Grothendieck theorem and perfect constructible operation theorem give
+<span class="math math-display" data-tex="\[
+\chi(T_EF)=\widehat{\chi F}.
+\qquad\text{(16)}
+\]">\[
+\chi(T_EF)=\widehat{\chi F}.
+\qquad\text{(16)}
+\]</span>
+Indeed the kernel complex is conic in <span class="math" data-tex="\(v\)">\(v\)</span>; (10) turns its image into the actual exceptional zero restriction. Equations (1)–(2), tensor multiplicativity and (14) give (16). This also proves that the output is a constructible function. Dilation of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> preserves <span class="math" data-tex="\(N\)">\(N\)</span>, so it is homogeneous in the dual variable. All complexes used in this argument are bounded and have finite stalks; the conic compact cut and constructibility proofs supply those assertions.</p>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> be fibrewise negation. Define the inverse-direction operation by
+<span class="math math-display" data-tex="\[
+\check\psi=(-1)^n a^*\widehat\psi\quad
+(\psi\in CF_{\mathbb R_{&gt;0}}(E^*)).
+\qquad\text{(17)}
+\]">\[
+\check\psi=(-1)^n a^*\widehat\psi\quad
+(\psi\in CF_{\mathbb R_{&gt;0}}(E^*)).
+\qquad\text{(17)}
+\]</span>
+In this formula the hat transforms from <span class="math" data-tex="\(E^*\)">\(E^*\)</span> to <span class="math" data-tex="\(E^{**}=E\)">\(E^{**}=E\)</span>. One can also apply the same formula to functions on <span class="math" data-tex="\(E\)">\(E\)</span>, obtaining the inverse of the dual-to-primal transform.</p>
+<p>The actual sheaf inversion theorem gives
+<span class="math math-display" data-tex="\[
+T_{E^*}T_EF\simeq
+a^{-1}F\otimes\tau^{-1}O_E[-n],
+\qquad\text{(18)}
+\]">\[
+T_{E^*}T_EF\simeq
+a^{-1}F\otimes\tau^{-1}O_E[-n],
+\qquad\text{(18)}
+\]</span>
+where <span class="math" data-tex="\(O_E\)">\(O_E\)</span> is the rank-one orientation local system. Its stalk Euler value is one, even on a nonorientable bundle. Applying (16) twice gives
+<span class="math math-display" data-tex="\[
+\widehat{\widehat\phi}=(-1)^na^*\phi,\qquad
+\check{\widehat\phi}=\phi,\qquad
+\widehat{\check\psi}=\psi.
+\qquad\text{(19)}
+\]">\[
+\widehat{\widehat\phi}=(-1)^na^*\phi,\qquad
+\check{\widehat\phi}=\phi,\qquad
+\widehat{\check\psi}=\psi.
+\qquad\text{(19)}
+\]</span>
+For the last equality use (18) on <span class="math" data-tex="\(E^*\)">\(E^*\)</span> and the fact that simultaneous negation of both pairing variables preserves <span class="math" data-tex="\(N\)">\(N\)</span>, so the transform commutes with the antipode.</p>
+<p>The proof underlying (18) is the written SH-02 radial kernel argument, not a citation to a missing external proof. The right adjoint has the positive-halfspace proper kernel and orientation complex <span class="math" data-tex="\(O_E[n]\)">\(O_E[n]\)</span>. Composing it with (15) gives the intersection of one nonpositive and one nonnegative halfspace in the intermediate dual variable. A localization triangle for the strict halfspace constructs its kernel as the positive scalar relation <span class="math" data-tex="\(v=s w\)">\(v=s w\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, with shift <span class="math" data-tex="\([1]\)">\([1]\)</span>. Compact integration along <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> gives <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span> and cancels that shift. Normalized conic transport then identifies the resulting functor with the identity, including its gluing at zero. Expressing this inverse kernel using the same negative convention adds the antipode and <span class="math" data-tex="\(O_E[n]\)">\(O_E[n]\)</span>; solving for the same-sign square gives (18). The full halfspace triangle, maps and zero-section argument are supplied in the linked Fourier prerequisite.</p>
+<p>As immediate tests,
+<span class="math math-display" data-tex="\[
+\widehat{1_{i(Z)}}=1_{E^*},\qquad
+\widehat{1_E}=(-1)^n1_{0_{E^*}}.
+\qquad\text{(20)}
+\]">\[
+\widehat{1_{i(Z)}}=1_{E^*},\qquad
+\widehat{1_E}=(-1)^n1_{0_{E^*}}.
+\qquad\text{(20)}
+\]</span>
+The first fibre is a point for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. For the second, <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span> gives the open-ball Euler value <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>; a nonzero <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives a closed halfspace cut through an open ball, whose Euler value is zero. This is compatible with (19).</p>
+<h2 id="base-change-and-a-finite-fibre-calculation">Base change and a finite fibre calculation</h2>
+<p>Let <span class="math" data-tex="\(b:Z&#x27;\to Z\)">\(b:Z&#x27;\to Z\)</span> be analytic and form <span class="math" data-tex="\(E&#x27;=Z&#x27;\times_ZE\)">\(E&#x27;=Z&#x27;\times_ZE\)</span>, with induced maps <span class="math" data-tex="\(b_E,b_{E^*}\)">\(b_E,b_{E^*}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\widehat{b_E^*\phi}=b_{E^*}^*\widehat\phi.
+\qquad\text{(21)}
+\]">\[
+\widehat{b_E^*\phi}=b_{E^*}^*\widehat\phi.
+\qquad\text{(21)}
+\]</span>
+To prove this, pull back the product <span class="math" data-tex="\(E\times_ZE^*\)">\(E\times_ZE^*\)</span>. Its two projection squares are cartesian, and its negative pairing subset pulls back to the corresponding subset on <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. Proper-support base change for the sheaf <span class="math" data-tex="\(Rq_!\)">\(Rq_!\)</span>, followed by exact inverse image of the kernel, identifies <span class="math" data-tex="\(b_{E^*}^{-1}T_EF\)">\(b_{E^*}^{-1}T_EF\)</span> with <span class="math" data-tex="\(T_{E&#x27;}b_E^{-1}F\)">\(T_{E&#x27;}b_E^{-1}F\)</span>. Taking (16) proves (21). The map is the actual base-change map; it is compatible with successive pullbacks by cartesian pasting. Properness of <span class="math" data-tex="\(b\)">\(b\)</span> is unnecessary. This is the first base-change identity proved in <a href="../sheaf-proof-readings/SH02-fourier-functoriality.html">Moving Fourier kernels across maps and products</a>.</p>
+<p>In particular the transform can be calculated on each fibre. For a vector space <span class="math" data-tex="\(E\)">\(E\)</span>, (12)–(14) give the finite integral
+<span class="math math-display" data-tex="\[
+\widehat\phi(\eta)=
+\int_E\phi(v)\,
+1_{\{|v|&lt;\varepsilon\}}\,
+1_{\{\langle v,\eta\rangle\leq0\}}\,d\chi .
+\qquad\text{(22)}
+\]">\[
+\widehat\phi(\eta)=
+\int_E\phi(v)\,
+1_{\{|v|&lt;\varepsilon\}}\,
+1_{\{\langle v,\eta\rangle\leq0\}}\,d\chi .
+\qquad\text{(22)}
+\]</span>
+Its closed support lies in a compact closed ball. Thus the preceding lesson's Euler integral applies. Conicity permits any positive radius, although the small-ball proof alone would already suffice for a sufficiently small radius. The norm is analytic in a linear chart and the result is independent of it by (14). The pairing boundary is included; the ball boundary is excluded.</p>
+<h2 id="open-and-closed-convex-cones">Open and closed convex cones</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> now be an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional vector space. For a cone <span class="math" data-tex="\(C\)">\(C\)</span> put
+<span class="math math-display" data-tex="\[
+C^\circ=\{\eta:\langle v,\eta\rangle\geq0
+                  \text{ for every }v\in C\}.
+\]">\[
+C^\circ=\{\eta:\langle v,\eta\rangle\geq0
+                  \text{ for every }v\in C\}.
+\]</span>
+Suppose <span class="math" data-tex="\(U\)">\(U\)</span> is a nonempty open convex subanalytic cone in <span class="math" data-tex="\(E\)">\(E\)</span>. Suppose <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is a closed convex subanalytic cone containing zero and no line. It can have dimension less than <span class="math" data-tex="\(n\)">\(n\)</span>. Then
+<span class="math math-display" data-tex="\[
+\widehat{1_U}=(-1)^n1_{-U^\circ},
+\qquad
+\widehat{1_\gamma}=1_{\operatorname{Int}(\gamma^\circ)}.
+\qquad\text{(23)}
+\]">\[
+\widehat{1_U}=(-1)^n1_{-U^\circ},
+\qquad
+\widehat{1_\gamma}=1_{\operatorname{Int}(\gamma^\circ)}.
+\qquad\text{(23)}
+\]</span></p>
+<p>Here is a direct Euler proof. For the open case let <span class="math" data-tex="\(V=U\cap B_\varepsilon\)">\(V=U\cap B_\varepsilon\)</span>. This is nonempty open convex in <span class="math" data-tex="\(E\)">\(E\)</span>, so its compact Euler value is <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. If <span class="math" data-tex="\(\eta\in-U^\circ\)">\(\eta\in-U^\circ\)</span>, the nonpositive halfspace contains all of <span class="math" data-tex="\(U\)">\(U\)</span>, and (22) gives that value. Otherwise <span class="math" data-tex="\(V\cap\{\langle v,\eta\rangle&gt;0\}\)">\(V\cap\{\langle v,\eta\rangle&gt;0\}\)</span> is nonempty open convex of the same dimension. The orientation trace identifies its compact-section extension into <span class="math" data-tex="\(V\)">\(V\)</span> with an isomorphism in top degree. The localization triangle consequently gives zero for the complementary closed halfspace cut. This proves the first formula, including its polar boundary. For <span class="math" data-tex="\(U=\varnothing\)">\(U=\varnothing\)</span> the transform is zero.</p>
+<p>For the closed case the intersection
+<span class="math math-display" data-tex="\[
+C=\gamma\cap\{\langle v,\eta\rangle\leq0\}
+\]">\[
+C=\gamma\cap\{\langle v,\eta\rangle\leq0\}
+\]</span>
+is a closed pointed cone. It is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> precisely when <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is strictly positive on all nonzero vectors of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, equivalently when <span class="math" data-tex="\(\eta\in\operatorname{Int}(\gamma^\circ)\)">\(\eta\in\operatorname{Int}(\gamma^\circ)\)</span>. The equivalence follows by compactness of <span class="math" data-tex="\(\gamma\cap S^{n-1}\)">\(\gamma\cap S^{n-1}\)</span>: strict positivity has a positive minimum on that set; failure of strict positivity permits an arbitrarily small perturbation of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> violating the polar inequality.</p>
+<p>If <span class="math" data-tex="\(C\ne\{0\}\)">\(C\ne\{0\}\)</span>, choose a linear functional strictly positive on its nonzero vectors. Such a functional exists by finite dimensional convex separation for a closed pointed cone. The intersection <span class="math" data-tex="\(C\cap S^{n-1}\)">\(C\cap S^{n-1}\)</span> is homeomorphic, by radial normalization, to the compact convex level-one section for this functional. It has Euler value one. The closed truncated cone <span class="math" data-tex="\(C\cap\overline B_\varepsilon\)">\(C\cap\overline B_\varepsilon\)</span> contracts radially to its vertex and also has value one. Removing the spherical boundary gives
+<span class="math math-display" data-tex="\[
+\chi_c(C\cap B_\varepsilon)=1-1=0.
+\qquad\text{(24)}
+\]">\[
+\chi_c(C\cap B_\varepsilon)=1-1=0.
+\qquad\text{(24)}
+\]</span>
+If <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span> its value is one. This proves the second formula. For <span class="math" data-tex="\(\gamma=\{0\}\)">\(\gamma=\{0\}\)</span> the polar is all <span class="math" data-tex="\(E^*\)">\(E^*\)</span> and the same answer holds. In rank zero both spaces are points and the formulas reduce to ordinary identity. A cone containing a line is outside this second statement: a vector subspace has nonzero top compact cohomology, so the vanishing argument would fail.</p>
+<h2 id="specialization-is-a-boundary-measurement">Specialization is a boundary measurement</h2>
+<p>Let <span class="math" data-tex="\(M\hookrightarrow X\)">\(M\hookrightarrow X\)</span> be a closed analytic submanifold and let <span class="math" data-tex="\(D_MX\)">\(D_MX\)</span> be its normal deformation. Write
+<span class="math math-display" data-tex="\[
+\Omega=\{t&gt;0\}\xrightarrow{j}D_MX,\quad
+s:T_MX\hookrightarrow D_MX,\quad p:D_MX\to X.
+\]">\[
+\Omega=\{t&gt;0\}\xrightarrow{j}D_MX,\quad
+s:T_MX\hookrightarrow D_MX,\quad p:D_MX\to X.
+\]</span>
+In coordinates <span class="math" data-tex="\(x=(x&#x27;,x&#x27;&#x27;)\)">\(x=(x&#x27;,x&#x27;&#x27;)\)</span> with <span class="math" data-tex="\(M=\{x&#x27;=0\}\)">\(M=\{x&#x27;=0\}\)</span>, deformation coordinates are <span class="math" data-tex="\((v,x&#x27;&#x27;,t)\)">\((v,x&#x27;&#x27;,t)\)</span> and <span class="math" data-tex="\(p(v,x&#x27;&#x27;,t)=(tv,x&#x27;&#x27;)\)">\(p(v,x&#x27;&#x27;,t)=(tv,x&#x27;&#x27;)\)</span>. On the positive chamber <span class="math" data-tex="\(r=p|_\Omega\)">\(r=p|_\Omega\)</span> is the product projection <span class="math" data-tex="\(X\times\mathbb R_{&gt;0}\to X\)">\(X\times\mathbb R_{&gt;0}\to X\)</span>. Define
+<span class="math math-display" data-tex="\[
+\nu_M\phi=-s^!\bigl((p^*\phi)1_\Omega\bigr),
+\qquad
+\mu_M\phi=\widehat{\nu_M\phi}.
+\qquad\text{(25)}
+\]">\[
+\nu_M\phi=-s^!\bigl((p^*\phi)1_\Omega\bigr),
+\qquad
+\mu_M\phi=\widehat{\nu_M\phi}.
+\qquad\text{(25)}
+\]</span>
+These are homogeneous constructible functions on <span class="math" data-tex="\(T_MX\)">\(T_MX\)</span> and <span class="math" data-tex="\(T_M^*X\)">\(T_M^*X\)</span>, respectively.</p>
+<p>We prove the sign and all representative comparisons. For <span class="math" data-tex="\(F\in D^b_{\mathrm{rc}}(X;k)\)">\(F\in D^b_{\mathrm{rc}}(X;k)\)</span> let <span class="math" data-tex="\(H=r^{-1}F\)">\(H=r^{-1}F\)</span> and put
+<span class="math math-display" data-tex="\[
+\nu_MF=s^{-1}Rj_*H.
+\]">\[
+\nu_MF=s^{-1}Rj_*H.
+\]</span>
+The localization triangle for <span class="math" data-tex="\(j_!H\)">\(j_!H\)</span> is
+<span class="math math-display" data-tex="\[
+R\Gamma_{D_MX\setminus\Omega}(j_!H)
+\longrightarrow j_!H\longrightarrow Rj_*H\xrightarrow{+1}.
+\qquad\text{(26)}
+\]">\[
+R\Gamma_{D_MX\setminus\Omega}(j_!H)
+\longrightarrow j_!H\longrightarrow Rj_*H\xrightarrow{+1}.
+\qquad\text{(26)}
+\]</span>
+The first term vanishes on the positive and negative chambers; its support lies on the central fibre. It is therefore <span class="math" data-tex="\(s_*s^!j_!H\)">\(s_*s^!j_!H\)</span>. Ordinary restriction to that fibre kills the middle term, yielding the actual connecting isomorphism
+<span class="math math-display" data-tex="\[
+\nu_MF\simeq s^!j_!H[1].
+\qquad\text{(27)}
+\]">\[
+\nu_MF\simeq s^!j_!H[1].
+\qquad\text{(27)}
+\]</span>
+The shift <span class="math" data-tex="\([1]\)">\([1]\)</span> changes Euler value by a minus sign. Tensor and inverse image give <span class="math" data-tex="\(\chi(j_!H)=(p^*\chi F)1_\Omega\)">\(\chi(j_!H)=(p^*\chi F)1_\Omega\)</span>, and (2) now proves
+<span class="math math-display" data-tex="\[
+\chi(\nu_MF)=\nu_M(\chi F),\qquad
+\chi(\mu_MF)=\mu_M(\chi F).
+\qquad\text{(28)}
+\]">\[
+\chi(\nu_MF)=\nu_M(\chi F),\qquad
+\chi(\mu_MF)=\mu_M(\chi F).
+\qquad\text{(28)}
+\]</span>
+This derivation agrees with the positive-parameter boundary comparison in SH-02. It uses ordinary <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>; using <span class="math" data-tex="\(r^!=r^{-1}[1]\)">\(r^!=r^{-1}[1]\)</span> instead would move the same shift into that input.</p>
+<p>The deformation dilation <span class="math" data-tex="\((v,x&#x27;&#x27;,t)\mapsto(\lambda v,x&#x27;&#x27;,t/\lambda)\)">\((v,x&#x27;&#x27;,t)\mapsto(\lambda v,x&#x27;&#x27;,t/\lambda)\)</span> fixes <span class="math" data-tex="\(p\)">\(p\)</span>, preserves <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, and restricts to positive dilation on the central bundle. Naturality of the operations in (26) makes <span class="math" data-tex="\(\nu_MF\)">\(\nu_MF\)</span> conic. The owned perfect-operation proof shows it is constructible, globally bounded and has finite stalks. Together with (9) and (16), this proves the asserted function domains in (25), their additivity and their dependence only on <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. These are local constructions along <span class="math" data-tex="\(M\)">\(M\)</span>, so restriction to smaller analytic charts is compatible throughout.</p>
+<p>Using <span class="math" data-tex="\(s^!=D_{T_MX}s^*D_{D_MX}\)">\(s^!=D_{T_MX}s^*D_{D_MX}\)</span>, the coordinate expression is
+<span class="math math-display" data-tex="\[
+(\nu_M\phi)(v,x&#x27;&#x27;)=
+-D_{T_MX}\!\left[
+\left.D_{D_MX}
+\bigl(\phi(tv,x&#x27;&#x27;)\,1_{\{t&gt;0\}}\bigr)\right|_{t=0}
+\right](v,x&#x27;&#x27;).
+\qquad\text{(29)}
+\]">\[
+(\nu_M\phi)(v,x&#x27;&#x27;)=
+-D_{T_MX}\!\left[
+\left.D_{D_MX}
+\bigl(\phi(tv,x&#x27;&#x27;)\,1_{\{t&gt;0\}}\bigr)\right|_{t=0}
+\right](v,x&#x27;&#x27;).
+\qquad\text{(29)}
+\]</span>
+Both dualities are taken in their displayed ambient manifolds. Replacing them by duality only in the <span class="math" data-tex="\(t\)">\(t\)</span> variable would discard normal and tangential contributions. Equation (29) is simply (25) in deformation coordinates, so the construction is independent of the chart.</p>
+<p>For any realization whose closed support is <span class="math" data-tex="\(A\)">\(A\)</span>, neighborhoods outside <span class="math" data-tex="\(\overline{r^{-1}A}\)">\(\overline{r^{-1}A}\)</span> give zero sections of <span class="math" data-tex="\(Rj_*H\)">\(Rj_*H\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\nu_M\phi\subset C_M(|\phi|),
+\qquad\text{(30)}
+\]">\[
+\operatorname{supp}\nu_M\phi\subset C_M(|\phi|),
+\qquad\text{(30)}
+\]</span>
+using the support-preserving realization in the preceding lesson. Equality and unit multiplicities do not follow.</p>
+<h2 id="two-tangent-branches-retain-two-nearby-components">Two tangent branches retain two nearby components</h2>
+<p>In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> let
+<span class="math math-display" data-tex="\[
+A_1=\{(x,0):x\geq0\},\quad
+A_2=\{(x,x^2):x\geq0\},\quad A=A_1\cup A_2,
+\quad M=\{0\}.
+\]">\[
+A_1=\{(x,0):x\geq0\},\quad
+A_2=\{(x,x^2):x\geq0\},\quad A=A_1\cup A_2,
+\quad M=\{0\}.
+\]</span>
+The two branches intersect just at the origin. Therefore
+<span class="math math-display" data-tex="\[
+1_A=1_{A_1}+1_{A_2}-1_{\{0\}}.
+\qquad\text{(31)}
+\]">\[
+1_A=1_{A_1}+1_{A_2}-1_{\{0\}}.
+\qquad\text{(31)}
+\]</span>
+Their normal cones at zero are both the closed positive horizontal ray <span class="math" data-tex="\(C\)">\(C\)</span>. This follows directly by rescaling: on the second branch the normal coordinates satisfy <span class="math" data-tex="\(v_y=t v_x^2\)">\(v_y=t v_x^2\)</span>, <span class="math" data-tex="\(v_x\geq0\)">\(v_x\geq0\)</span>, so every finite limit has <span class="math" data-tex="\(v_y=0,v_x\geq0\)">\(v_y=0,v_x\geq0\)</span>, and every such vector is obtained.</p>
+<p>We calculate specialization using actual chamber sections. Near a positive vector <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the lifted first branch is <span class="math" data-tex="\(v_y=0\)">\(v_y=0\)</span>, <span class="math" data-tex="\(v_x\)">\(v_x\)</span> in a small interval around <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. The second is <span class="math" data-tex="\(v_y=t v_x^2\)">\(v_y=t v_x^2\)</span> on the same parameter rectangle. For sufficiently small positive <span class="math" data-tex="\(t\)">\(t\)</span>, both remain in any prescribed transverse neighborhood. Each branch is a contractible rectangle with constant coefficient, and their intersections are empty there. They give two copies of <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero.</p>
+<p>At the zero normal vector choose <span class="math" data-tex="\(0\leq v_x&lt;\delta\)">\(0\leq v_x&lt;\delta\)</span>, <span class="math" data-tex="\(0&lt;t&lt;\varepsilon\)">\(0&lt;t&lt;\varepsilon\)</span> with <span class="math" data-tex="\(\varepsilon\delta^2\)">\(\varepsilon\delta^2\)</span> smaller than the transverse neighborhood width. Each lifted branch again has a contractible parameter rectangle. The two rectangles meet exactly along <span class="math" data-tex="\(v_x=0\)">\(v_x=0\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. For the constant sheaf on the union, the closed-union exact sequence is
+<span class="math math-display" data-tex="\[
+0\longrightarrow k_{\widetilde A}
+\longrightarrow k_{\widetilde A_1}\oplus k_{\widetilde A_2}
+\longrightarrow k_{\widetilde{\{0\}}}\longrightarrow0.
+\qquad\text{(32)}
+\]">\[
+0\longrightarrow k_{\widetilde A}
+\longrightarrow k_{\widetilde A_1}\oplus k_{\widetilde A_2}
+\longrightarrow k_{\widetilde{\{0\}}}\longrightarrow0.
+\qquad\text{(32)}
+\]</span>
+The last map is the difference of the two restrictions. Chamber cohomology gives <span class="math" data-tex="\(k\oplus k\to k\)">\(k\oplus k\to k\)</span>, surjective with diagonal kernel <span class="math" data-tex="\(k\)">\(k\)</span>, and no higher cohomology. These boxes form cofinal normal-deformation neighborhoods; their restrictions preserve the constants and this difference map. Outside <span class="math" data-tex="\(C\)">\(C\)</span> a sufficiently small chamber box misses both branches.</p>
+<p>Thus each branch separately specializes to <span class="math" data-tex="\(1_C\)">\(1_C\)</span>, the intersection specializes to the zero-vector indicator, and additivity in (31) gives
+<span class="math math-display" data-tex="\[
+\nu_0(1_A)=2\,1_C-1_{\{0\}}.
+\qquad\text{(33)}
+\]">\[
+\nu_0(1_A)=2\,1_C-1_{\{0\}}.
+\qquad\text{(33)}
+\]</span>
+The value is two on the positive ray, one at its vertex, and zero elsewhere. The geometric normal cone alone is just <span class="math" data-tex="\(C\)">\(C\)</span>; its indicator would miss the two approaching components.</p>
+<h2 id="a-homogeneous-function-survives-its-own-normal-rescaling">A homogeneous function survives its own normal rescaling</h2>
+<p>For the zero section of a vector bundle,
+<span class="math math-display" data-tex="\[
+\nu_Z\phi=\phi\qquad(\phi\in CF_{\mathbb R_{&gt;0}}(E)).
+\qquad\text{(34)}
+\]">\[
+\nu_Z\phi=\phi\qquad(\phi\in CF_{\mathbb R_{&gt;0}}(E)).
+\qquad\text{(34)}
+\]</span>
+Use a conic representative from (9). The normal deformation is locally <span class="math" data-tex="\(E\times\mathbb R\)">\(E\times\mathbb R\)</span>, with <span class="math" data-tex="\(p(v,t)=tv\)">\(p(v,t)=tv\)</span> on <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Normalized conic transport identifies <span class="math" data-tex="\(p^{-1}F\)">\(p^{-1}F\)</span> on that chamber with the pullback of <span class="math" data-tex="\(F\)">\(F\)</span> from the <span class="math" data-tex="\(v\)">\(v\)</span> coordinate. Product interval descent makes the ordinary chamber image at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> equal to <span class="math" data-tex="\(F\)">\(F\)</span>; no compact integration along <span class="math" data-tex="\(t\)">\(t\)</span> is used. This is the specialization definition preceding (26). The transport and restriction maps glue over bundle charts, proving the sheaf comparison and then (34). In particular no extra rank sign occurs in specialization itself.</p>
+<h2 id="microlocal-hom-at-the-level-of-functions">Microlocal Hom at the level of functions</h2>
+<p>Let <span class="math" data-tex="\(\Delta_X\subset X\times X\)">\(\Delta_X\subset X\times X\)</span> be the diagonal and identify its conormal with <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span> by
+<span class="math" data-tex="\((x,x;\xi,-\xi)\mapsto(x;\xi)\)">\((x,x;\xi,-\xi)\mapsto(x;\xi)\)</span>. Define the bilinear function operation
+<span class="math math-display" data-tex="\[
+\mu\operatorname{hom}(\psi,\phi)
+=\mu_{\Delta_X}(\phi\boxtimes D_X\psi).
+\qquad\text{(35)}
+\]">\[
+\mu\operatorname{hom}(\psi,\phi)
+=\mu_{\Delta_X}(\phi\boxtimes D_X\psi).
+\qquad\text{(35)}
+\]</span>
+For constructible bounded <span class="math" data-tex="\(G,F\)">\(G,F\)</span>, its actual sheaf counterpart is
+<span class="math math-display" data-tex="\[
+\mu\operatorname{hom}(G,F)
+=\mu_{\Delta_X}
+R\mathcal Hom(q_2^{-1}G,q_1^!F).
+\qquad\text{(36)}
+\]">\[
+\mu\operatorname{hom}(G,F)
+=\mu_{\Delta_X}
+R\mathcal Hom(q_2^{-1}G,q_1^!F).
+\qquad\text{(36)}
+\]</span>
+The constructible external-Hom evaluation gives
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(q_2^{-1}G,q_1^!F)
+\simeq F\boxtimes D_XG.
+\qquad\text{(37)}
+\]">\[
+R\mathcal Hom(q_2^{-1}G,q_1^!F)
+\simeq F\boxtimes D_XG.
+\qquad\text{(37)}
+\]</span>
+Its exact written provider is the constructible-factor external-Hom theorem in <a href="../sheaf-proof-readings/SH02-cohomological-biduality.html">Finite local data and sheaf biduality</a>. That theorem tests product neighborhoods, represents the compact-section system of <span class="math" data-tex="\(G\)">\(G\)</span> by a perfect complex, and applies finite-projective evaluation; the other input is allowed in <span class="math" data-tex="\(D^+\)">\(D^+\)</span>. Here both are bounded constructible, so its hypotheses hold. <span class="unlinked">Natural duality for specialization and microlocal Hom</span> explains this evaluation and the diagonal convention.</p>
+<p>Taking the Euler function of (37), applying (28) and then (16), proves
+<span class="math math-display" data-tex="\[
+\chi\bigl(\mu\operatorname{hom}(G,F)\bigr)
+=\mu\operatorname{hom}(\chi G,\chi F).
+\qquad\text{(38)}
+\]">\[
+\chi\bigl(\mu\operatorname{hom}(G,F)\bigr)
+=\mu\operatorname{hom}(\chi G,\chi F).
+\qquad\text{(38)}
+\]</span>
+The exceptional projection <span class="math" data-tex="\(q_1^!\)">\(q_1^!\)</span> is essential to (37): its fibre dualizing complex supplies the ambient dimension shift. Ordinary Hom between two stalks would erase that factor and the boundary information used by specialization.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="descent-along-a-ray-uses-ordinary-cohomology">Descent along a ray uses ordinary cohomology</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>For <span class="math" data-tex="\(\gamma:(0,\infty)\to\{\mathrm{pt}\}\)">\(\gamma:(0,\infty)\to\{\mathrm{pt}\}\)</span>, calculate <span class="math" data-tex="\(R\gamma_*k\)">\(R\gamma_*k\)</span> and <span class="math" data-tex="\(R\gamma_!k\)">\(R\gamma_!k\)</span>. Which induces the angular map in (5)?</p>
+<p><strong>Solution.</strong> The ray is contractible, so ordinary cohomology is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero. It is an oriented open one-manifold, so compact cohomology is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. Their Euler values are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>, respectively. The angular map uses <span class="math" data-tex="\(R\gamma_*\)">\(R\gamma_*\)</span>, yielding value <span class="math" data-tex="\(1\)">\(1\)</span> and no shift. The proper image would negate the angular function.</p>
+<h3 id="a-constant-function-tests-the-cutoff-boundary">A constant function tests the cutoff boundary</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, calculate <span class="math" data-tex="\(\tau_*1\)">\(\tau_*1\)</span>, <span class="math" data-tex="\(\tau_!1\)">\(\tau_!1\)</span>, and both integrals in (12). Repeat in dimension one.</p>
+<p><strong>Solution.</strong> In dimension two ordinary zero restriction is <span class="math" data-tex="\(1\)">\(1\)</span>, and exceptional zero restriction of the constant coefficient has shift <span class="math" data-tex="\([-2]\)">\([-2]\)</span>, hence also Euler value <span class="math" data-tex="\(1\)">\(1\)</span>. The closed disk has Euler value <span class="math" data-tex="\(1\)">\(1\)</span>; the open disk has value <span class="math" data-tex="\((-1)^2=1\)">\((-1)^2=1\)</span>. This particular dimension conceals the distinction. In dimension one the closed interval still has value <span class="math" data-tex="\(1\)">\(1\)</span>, but the open interval has value <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus <span class="math" data-tex="\(\tau_*1=1\)">\(\tau_*1=1\)</span> and <span class="math" data-tex="\(\tau_!1=-1\)">\(\tau_!1=-1\)</span>. Even when the numbers agree, the two corresponding complexes have different degrees.</p>
+<h3 id="fourier-transformation-on-the-four-one-dimensional-rays">Fourier transformation on the four one-dimensional rays</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For the nonpositive pairing on <span class="math" data-tex="\(\mathbb R\times\mathbb R^*\)">\(\mathbb R\times\mathbb R^*\)</span>, transform the indicators of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, <span class="math" data-tex="\((-\infty,0)\)">\((-\infty,0)\)</span>, and <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span>. Check the same-sign square.</p>
+<p><strong>Solution.</strong> Formula (23) gives, in that order,
+<span class="math math-display" data-tex="\[
+-1_{(-\infty,0]},\quad 1_{(0,\infty)},\quad
+-1_{[0,\infty)},\quad 1_{(-\infty,0)}.
+\]">\[
+-1_{(-\infty,0]},\quad 1_{(0,\infty)},\quad
+-1_{[0,\infty)},\quad 1_{(-\infty,0)}.
+\]</span>
+For example the polar of the open positive ray is the closed positive dual ray, and its negative is the closed negative ray; the coefficient is <span class="math" data-tex="\((-1)^1=-1\)">\((-1)^1=-1\)</span>. Transforming <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> twice gives <span class="math" data-tex="\(-1_{(-\infty,0]}\)">\(-1_{(-\infty,0]}\)</span>, which is <span class="math" data-tex="\(-a^*1_{[0,\infty)}\)">\(-a^*1_{[0,\infty)}\)</span>. Transforming the open positive ray twice similarly gives <span class="math" data-tex="\(-1_{(-\infty,0)}\)">\(-1_{(-\infty,0)}\)</span>. The negative rays follow by antipodal symmetry. Thus the endpoints and sign agree with (19).</p>
+<h3 id="a-lower-dimensional-cone-still-has-an-open-polar-locus">A lower dimensional cone still has an open polar locus</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> let <span class="math" data-tex="\(\gamma=\{(x,0):x\geq0\}\)">\(\gamma=\{(x,0):x\geq0\}\)</span>. Compute its transform and the value at a dual vector <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>.</p>
+<p><strong>Solution.</strong> Its polar is <span class="math" data-tex="\(\{(\alpha,\beta):\alpha\geq0\}\)">\(\{(\alpha,\beta):\alpha\geq0\}\)</span>, whose interior is <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. Hence <span class="math" data-tex="\(\widehat{1_\gamma}=1_{\{\alpha&gt;0\}}\)">\(\widehat{1_\gamma}=1_{\{\alpha&gt;0\}}\)</span>. At <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span> the pairing is zero on the whole ray. The truncated intersection is a half-open segment <span class="math" data-tex="\([0,\varepsilon)\)">\([0,\varepsilon)\)</span>, with Euler value <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>. The zero answer at the polar boundary is necessary even though the cone has ambient codimension one.</p>
+<h3 id="angular-monodromy-disappears-only-after-taking-the-euler-function">Angular monodromy disappears only after taking the Euler function</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>On <span class="math" data-tex="\(E=\mathbb R^2\)">\(E=\mathbb R^2\)</span>, take a rank-one local system <span class="math" data-tex="\(L\)">\(L\)</span> on the ray circle <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, with monodromy <span class="math" data-tex="\(-1\)">\(-1\)</span>, and put <span class="math" data-tex="\(F=j_!\gamma^{-1}L\)">\(F=j_!\gamma^{-1}L\)</span>. Find <span class="math" data-tex="\(\chi F\)">\(\chi F\)</span> and <span class="math" data-tex="\(\chi(T_EF)\)">\(\chi(T_EF)\)</span>. Does this determine <span class="math" data-tex="\(T_EF\)">\(T_EF\)</span> as an object?</p>
+<p><strong>Solution.</strong> Every nonzero stalk has rank one and the zero stalk is zero. Thus <span class="math" data-tex="\(\chi F=1_E-1_{\{0\}}\)">\(\chi F=1_E-1_{\{0\}}\)</span>. By (20) and linearity,
+<span class="math math-display" data-tex="\[
+\chi(T_EF)=1_{\{0\}}-1_{E^*}.
+\]">\[
+\chi(T_EF)=1_{\{0\}}-1_{E^*}.
+\]</span>
+It is zero at the dual origin and <span class="math" data-tex="\(-1\)">\(-1\)</span> elsewhere. This determines its Grothendieck class through (9), but not the object. The original <span class="math" data-tex="\(F\)">\(F\)</span> differs from the angular constant coefficient: their restrictions have different monodromy. The Fourier functor is an equivalence, so their transforms differ as objects too. Local Euler values discard that distinction.</p>
+<h3 id="pulling-a-bundle-back-adds-no-fourier-sign">Pulling a bundle back adds no Fourier sign</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a possibly nonorientable real rank-three bundle and <span class="math" data-tex="\(b:Z&#x27;\to Z\)">\(b:Z&#x27;\to Z\)</span> an analytic map. Show that the pullback of its constant function transform is the transform of its pulled-back constant function. Identify the coefficient.</p>
+<p><strong>Solution.</strong> Both are <span class="math" data-tex="\(-1_{0_{E&#x27;^*}}\)">\(-1_{0_{E&#x27;^*}}\)</span> by (20), since the rank is three. Equation (21) proves equality for every homogeneous function, not just this test. Nonorientability changes the orientation local system in (18), but its stalk rank is one. Its Euler coefficient is consequently unchanged. The rank is also unchanged by base pullback; no dimension of <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> enters the sign.</p>
+<h3 id="the-specialization-minus-sign-is-a-boundary-shift">The specialization minus sign is a boundary shift</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Specialize the constant function on <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span> along <span class="math" data-tex="\(M=\{0\}\)">\(M=\{0\}\)</span>, directly using (25). Then microlocalize it.</p>
+<p><strong>Solution.</strong> In the deformation plane the chamber function is <span class="math" data-tex="\(1_{\{t&gt;0\}}\)">\(1_{\{t&gt;0\}}\)</span>. Its central ordinary restriction is zero, but the exceptional central restriction has Euler value <span class="math" data-tex="\(-1\)">\(-1\)</span>: (27) identifies it with the constant normal coefficient shifted by <span class="math" data-tex="\([-1]\)">\([-1]\)</span>. The outer minus in (25) gives <span class="math" data-tex="\(\nu_0(1_{\mathbb R})=1_{\mathbb R_v}\)">\(\nu_0(1_{\mathbb R})=1_{\mathbb R_v}\)</span>. Its one-dimensional Fourier transform is <span class="math" data-tex="\(-1_{\{0\}}\)">\(-1_{\{0\}}\)</span> by (20), so <span class="math" data-tex="\(\mu_0(1_{\mathbb R})=-1_{\{0\}}\)">\(\mu_0(1_{\mathbb R})=-1_{\{0\}}\)</span>. Omitting the boundary minus would reverse this result.</p>
+<h3 id="magnification-distinguishes-one-branch-from-two">Magnification distinguishes one branch from two</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>For <span class="math" data-tex="\(A\)">\(A\)</span> in (31), compute the values of <span class="math" data-tex="\(\nu_0(1_A)\)">\(\nu_0(1_A)\)</span> at the origin, on the positive horizontal ray, and off that ray. Then compute <span class="math" data-tex="\(\mu_0(1_A)\)">\(\mu_0(1_A)\)</span> on the dual plane.</p>
+<p><strong>Solution.</strong> The chamber rectangles and difference map in (32) give values <span class="math" data-tex="\(1,2,0\)">\(1,2,0\)</span>, respectively. Equation (33) gives the whole function. Write <span class="math" data-tex="\((\alpha,\beta)\)">\((\alpha,\beta)\)</span> for the dual coordinates. By (23) and (20) in ambient dimension two,
+<span class="math math-display" data-tex="\[
+\mu_0(1_A)=2\,1_{\{\alpha&gt;0\}}-1_{\mathbb R^{2*}}.
+\]">\[
+\mu_0(1_A)=2\,1_{\{\alpha&gt;0\}}-1_{\mathbb R^{2*}}.
+\]</span>
+Its value is <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> when <span class="math" data-tex="\(\alpha\leq0\)">\(\alpha\leq0\)</span>, including the origin. The subtraction of the vertex before Fourier transformation becomes subtraction of the constant function afterwards.</p>
+<h3 id="a-homogeneous-half-ray-needs-no-specialization-correction">A homogeneous half-ray needs no specialization correction</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(\phi=3\,1_{(0,\infty)}-2\,1_{\{0\}}\)">\(\phi=3\,1_{(0,\infty)}-2\,1_{\{0\}}\)</span> on a normal line. Specialize along its zero section and then apply the Fourier transform.</p>
+<p><strong>Solution.</strong> The function is homogeneous, so (34) gives <span class="math" data-tex="\(\nu_0\phi=\phi\)">\(\nu_0\phi=\phi\)</span>. The ray calculation and (20) then give
+<span class="math math-display" data-tex="\[
+\mu_0\phi=-3\,1_{(-\infty,0]}-2\,1_{\mathbb R_\eta}.
+\]">\[
+\mu_0\phi=-3\,1_{(-\infty,0]}-2\,1_{\mathbb R_\eta}.
+\]</span>
+Here <span class="math" data-tex="\(\mathbb R_\eta\)">\(\mathbb R_\eta\)</span> is the entire dual line, including zero. Thus the value is <span class="math" data-tex="\(-5\)">\(-5\)</span> on the closed negative dual ray and <span class="math" data-tex="\(-2\)">\(-2\)</span> on the positive ray. This computation introduces no normal-rank factor in specialization; its sign comes from Fourier integration.</p>
+<h3 id="an-exceptional-projection-fixes-microlocal-hom-s-coefficient">An exceptional projection fixes microlocal Hom's coefficient</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>For <span class="math" data-tex="\(X=\mathbb R^m\)">\(X=\mathbb R^m\)</span>, calculate <span class="math" data-tex="\(\mu\operatorname{hom}(1_X,1_X)\)">\(\mu\operatorname{hom}(1_X,1_X)\)</span>. Explain why replacing <span class="math" data-tex="\(q_1^!\)">\(q_1^!\)</span> by <span class="math" data-tex="\(q_1^{-1}\)">\(q_1^{-1}\)</span> in (36) gives the wrong coefficient when <span class="math" data-tex="\(m\)">\(m\)</span> is odd.</p>
+<p><strong>Solution.</strong> Duality gives <span class="math" data-tex="\(D_X1_X=(-1)^m1_X\)">\(D_X1_X=(-1)^m1_X\)</span>. Thus the function in (35) before diagonal specialization is <span class="math" data-tex="\((-1)^m1_{X^2}\)">\((-1)^m1_{X^2}\)</span>. It remains constant after specialization; Fourier transformation in the rank-<span class="math" data-tex="\(m\)">\(m\)</span> normal bundle contributes another factor <span class="math" data-tex="\((-1)^m\)">\((-1)^m\)</span> and concentrates it on the zero covectors. The product is <span class="math" data-tex="\(1_{0_X}\)">\(1_{0_X}\)</span>. At the sheaf level <span class="math" data-tex="\(q_1^!k_X\)">\(q_1^!k_X\)</span> contains the fibre orientation and shift <span class="math" data-tex="\([m]\)">\([m]\)</span>. Normal Fourier transformation has the matching orientation and shift <span class="math" data-tex="\([-m]\)">\([-m]\)</span>, so the traces cancel. With the ordinary projection the first factor is absent and the result instead has Euler value <span class="math" data-tex="\((-1)^m1_{0_X}\)">\((-1)^m1_{0_X}\)</span>, incorrect for odd <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf"><em>Operations on constructible functions</em></a>, J. Pure Appl. Algebra 72 (1991), 83–93: homogeneous functions and conic Grothendieck groups, Fourier transformation, specialization and microlocal Hom of constructible functions.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf">Operations on constructible functions</a>, <em>Journal of Pure and Applied Algebra</em> 72 (1991), 83–93, gives context for the sheaf-to-function calculus. No text or proof is imported from that copyrighted article.</li>
+<li>SH-02, conic descent, Fourier kernels, Fourier functoriality, specialization and cohomological biduality; the actual natural comparisons are used with their stated hypotheses.</li>
+</ul>
+<p>Original prose, proofs as organized here, examples and solutions are dedicated to CC0. The integral characteristic-cycle correspondence and the remaining assigned chapters continue in the course.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/homogeneous-functions-fourier-transform-and-specialization.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

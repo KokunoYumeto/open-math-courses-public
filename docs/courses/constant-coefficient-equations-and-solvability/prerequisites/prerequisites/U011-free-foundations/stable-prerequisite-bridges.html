@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Complex scalars and finite algebra — selected programme proofs</title><link rel="stylesheet" href="../../../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../../../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../../../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../../../index.html">Constant-coefficient equations and solvability</a> · <a href="../../index.html">Prerequisites</a> · <a href="../../boundary-flux-and-weak-identities.html">Boundary flux</a> · <a href="../../green-reader-guide.html">Versions, downloads and terms</a></nav><aside class="reader-notice"><p><strong>Green prerequisite selections: AN-02 reader presentation.</strong> Original author entity: AN-03 course-writing task; renewed modifications: AN-03 course-writing task and OpenAI Codex; selection: GPT-6 Astra (OpenAI), Ultra. This HTML presentation: GPT-6.1 Sol (OpenAI), Ultra, October 2026; publisher: AN-02 local course project. This independently written programme presentation carries CC0 1.0 Universal, to the extent rights are held. The complete source, title, history and component dedication remain linked below. <a href="../../green-reader-guide.html#history">History of this reader presentation</a>. All mathematical source text below is complete.</p></aside><h1 id="complex-scalars-and-finite-algebra-selected-programme-proofs">Complex scalars and finite algebra — selected programme proofs</h1>
+<p>These are selected foundation sections from <strong>Polynomial and contour interfaces for stable boundary models</strong>, programme lesson AN03-P002. They retain the section and equation numbers of that earlier lesson. The selection and introductory note were prepared by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026.</p>
+<p>The original course-writing task and OpenAI Codex credits, dedication and history are retained in <a href="notices/TITLE_PAGE.html">the original title page</a>, <a href="notices/HISTORY.html">history</a> and <a href="notices/RIGHTS.html">rights notice</a>. This independently written programme selection carries <strong>CC0 1.0 Universal</strong>. The <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> gives the terms.</p>
+<p>The original notice files describe the original course edition. <a href="SELECTION_HISTORY.html">Selection history</a> describes these excerpts.</p>
+<p>The mathematical entry is natural-number arithmetic with induction, ordinary set theory and countable choice. The real-field construction is in <a href="metric-foundation-bridges.html#12-real-numbers-and-finite-dimensional-topology">the scalar foundations</a>; complex arithmetic and finite algebra are in <a href="stable-prerequisite-bridges.html#10-full-finite-linear-algebra-foundations">the algebra foundations</a>; integration is in <a href="banach-foundation-bridges.html#15-0-constructing-the-measure-without-importing-a-convergence-theorem">the measure foundations</a>.</p>
+<p>This selection supplies: Complex arithmetic, bases, matrices, determinants, elimination, Gram comparisons and finite-dimensional norm bounds.</p>
+<span id="full-finite-linear-algebra-foundations"></span><h2 id="10-full-finite-linear-algebra-foundations">10. Full finite linear-algebra foundations</h2>
+<p>Here are the finite algebra proofs used by the preceding spectral and polynomial arguments. It works over the original field <span class="math" data-tex="\(F=\mathbb R\)">\(F=\mathbb R\)</span> or <span class="math" data-tex="\(F=\mathbb C\)">\(F=\mathbb C\)</span>. Conjugation is the identity in the real case. The scalar entry is the real field with completeness, the complex field formed from it, finite induction and finite sums/products. No spectral decomposition, root theorem, basis-extension theorem, rank-nullity theorem or inner-product representation theorem is assumed below. The complex-root theorem already proved in Polynomial and contour interfaces for stable boundary models is used only when root existence is separately requested in Section 10.10. These are standard foundational results; no novelty is claimed.</p>
+<p>All vectors, coefficient matrices, pivots, signs and inner products in a calculation keep their original values. A new basis gives an explicit coordinate comparison, with both directions and every metric factor retained. In particular, the original Gram residuals and their lengths stay in the calculation when a separately constructed orthonormal comparison basis is given.</p>
+<span id="finite-spanning-sets-exchange-and-basis-extension"></span><h3 id="10-1-finite-spanning-sets-exchange-and-basis-extension">10.1. Finite spanning sets, exchange and basis extension</h3>
+<p>The scalar arithmetic used here is explicit. Real arithmetic is the given ordered-field arithmetic. For complex numbers keep their original pairs and define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(a,b)+(c,d)=(a+c,b+d), \\ 
+(a,b)(c,d)=(ac-bd,ad+bc), \\ 1=(1,0),\quad 0=(0,0),\quad i=(0,1).
+\end{gathered}
+\tag{FA0a}
+\]">\[
+\begin{gathered}
+(a,b)+(c,d)=(a+c,b+d), \\ 
+(a,b)(c,d)=(ac-bd,ad+bc), \\ 1=(1,0),\quad 0=(0,0),\quad i=(0,1).
+\end{gathered}
+\tag{FA0a}
+\]</span>
+Addition is an abelian group coordinatewise. Multiplication is commutative by the real commutative field laws. Expanding either association of three factors gives the same full pair
+<span class="math math-display" data-tex="\[
+((a,b)(c,d))(e,f)=(a,b)((c,d)(e,f))
+=(ace-adf-bcf-bde,acf+ade+bce-bdf).
+\tag{FA0b}
+\]">\[
+((a,b)(c,d))(e,f)=(a,b)((c,d)(e,f))
+=(ace-adf-bcf-bde,acf+ade+bce-bdf).
+\tag{FA0b}
+\]</span>
+All four summands in each coordinate are retained; distributivity follows by the same two-coordinate expansion. The displayed zero and one are the additive and multiplicative identities, and the additive inverse is the pair of the two original negatives. For a nonzero pair, the original real number <span class="math" data-tex="\(a^2+b^2\)">\(a^2+b^2\)</span> is positive. Direct multiplication in either order proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(a,b)^{-1}=\left(\frac{a}{a^2+b^2},-\frac{b}{a^2+b^2}\right), \\  (a,b)(a,b)^{-1}=(a,b)^{-1}(a,b)=(1,0), \\ i^2=(-1,0).
+\end{gathered}
+\tag{FA0c}
+\]">\[
+\begin{gathered}
+(a,b)^{-1}=\left(\frac{a}{a^2+b^2},-\frac{b}{a^2+b^2}\right), \\  (a,b)(a,b)^{-1}=(a,b)^{-1}(a,b)=(1,0), \\ i^2=(-1,0).
+\end{gathered}
+\tag{FA0c}
+\]</span>
+Thus these pairs form a field. The real inclusion <span class="math" data-tex="\(a\mapsto(a,0)\)">\(a\mapsto(a,0)\)</span> preserves both operations, is injective and gives the original real subfield. Conjugation is the actual map <span class="math" data-tex="\((a,b)\mapsto(a,-b)\)">\((a,b)\mapsto(a,-b)\)</span>; the two-coordinate multiplication shows that it preserves products, conjugates sums, and has square the identity. Keeping the original squared modulus <span class="math" data-tex="\(N(a,b)=a^2+b^2\)">\(N(a,b)=a^2+b^2\)</span>, expansion gives
+<span class="math math-display" data-tex="\[
+N((a,b)(c,d))=(ac-bd)^2+(ad+bc)^2
+=a^2c^2-2acbd+b^2d^2+a^2d^2+2adbc+b^2c^2
+=(a^2+b^2)(c^2+d^2).
+\tag{FA0d}
+\]">\[
+N((a,b)(c,d))=(ac-bd)^2+(ad+bc)^2
+=a^2c^2-2acbd+b^2d^2+a^2d^2+2adbc+b^2c^2
+=(a^2+b^2)(c^2+d^2).
+\tag{FA0d}
+\]</span>
+The middle two mixed terms are opposite by the scalar real field laws; no matrix product is being commuted. This supplies the actual complex arithmetic and conjugation used below from the stated real base.</p>
+<p>Finite polynomial arithmetic is equally explicit. For original coefficients <span class="math" data-tex="\(p(z)=\sum_j a_jz^j\)">\(p(z)=\sum_j a_jz^j\)</span>, <span class="math" data-tex="\(q(z)=\sum_k b_kz^k\)">\(q(z)=\sum_k b_kz^k\)</span>, with coefficients zero outside their finite lists, addition has coefficients <span class="math" data-tex="\(a_l+b_l\)">\(a_l+b_l\)</span>, and multiplication has coefficients <span class="math" data-tex="\(\sum_{j+k=l}a_jb_k\)">\(\sum_{j+k=l}a_jb_k\)</span>. Distributivity and associativity follow by retaining the same finite ordered sums: the coefficient of a triple product at <span class="math" data-tex="\(l\)">\(l\)</span> is <span class="math" data-tex="\(\sum_{j+k+t=l}a_jb_kc_t\)">\(\sum_{j+k+t=l}a_jb_kc_t\)</span> under either association. The constant polynomial one is the multiplicative identity, and zero is the additive identity. For nonzero original polynomials of degrees <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, the highest coefficient of their product is the original nonzero product <span class="math" data-tex="\(a_mb_n\)">\(a_mb_n\)</span>, so its degree is <span class="math" data-tex="\(m+n\)">\(m+n\)</span>. These assertions include constant polynomials and the zero polynomial without assigning a degree to zero. Finite induction on the resulting nonnegative degree is the original finite-induction principle. Section 2 uses precisely this arithmetic for division and Bézout.</p>
+<p>A vector space over <span class="math" data-tex="\(F\)">\(F\)</span> has the usual addition and scalar multiplication. The span of a finite list is the set of all of its finite linear combinations, including the empty combination zero. A list is independent when its only zero linear combination has every coefficient zero. A finite-dimensional space means one admitting a finite spanning list; a basis is an independent spanning list. The zero space has the empty basis.</p>
+<p>Let <span class="math" data-tex="\(u_1,\ldots,u_r\)">\(u_1,\ldots,u_r\)</span> be independent and let the original list <span class="math" data-tex="\(b_1,\ldots,b_N\)">\(b_1,\ldots,b_N\)</span> span <span class="math" data-tex="\(V\)">\(V\)</span>. We prove <span class="math" data-tex="\(r\leq N\)">\(r\leq N\)</span> and replace selected original list positions by the actual <span class="math" data-tex="\(u_j\)">\(u_j\)</span> while keeping a spanning list. Suppose a spanning list already has <span class="math" data-tex="\(u_1,\ldots,u_{j-1}\)">\(u_1,\ldots,u_{j-1}\)</span> and <span class="math" data-tex="\(N-j+1\)">\(N-j+1\)</span> remaining original vectors. Write</p>
+<p><span class="math math-display" data-tex="\[
+u_j=\sum_{k&lt;j}a_k u_k+\sum_{b\in L}c_b b.
+\tag{FA1}
+\]">\[
+u_j=\sum_{k&lt;j}a_k u_k+\sum_{b\in L}c_b b.
+\tag{FA1}
+\]</span></p>
+<p>At least one <span class="math" data-tex="\(c_b\ne0\)">\(c_b\ne0\)</span>, because otherwise <span class="math" data-tex="\(u_j\)">\(u_j\)</span> belongs to the span of its independent predecessors. Choose such an actual original <span class="math" data-tex="\(b\)">\(b\)</span>. Solving (FA1) gives</p>
+<p><span class="math math-display" data-tex="\[
+b=c_b^{-1}u_j-\sum_{k&lt;j}c_b^{-1}a_k u_k
+ -\sum_{b&#x27;\in L\setminus\{b\}}c_b^{-1}c_{b&#x27;}b&#x27;.
+\tag{FA2}
+\]">\[
+b=c_b^{-1}u_j-\sum_{k&lt;j}c_b^{-1}a_k u_k
+ -\sum_{b&#x27;\in L\setminus\{b\}}c_b^{-1}c_{b&#x27;}b&#x27;.
+\tag{FA2}
+\]</span></p>
+<p>Both expressions retain their original nonzero coefficient and its inverse. Replacing this <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(u_j\)">\(u_j\)</span> preserves the span in both directions. The operation needs a remaining vector at each step; after <span class="math" data-tex="\(N\)">\(N\)</span> steps there is none, so an independent list cannot have a further member. This proves the bound and the asserted exchange construction without first assuming existence of a basis.</p>
+<p>Now start with any independent list and scan the original finite spanning list in its original order. Append a vector exactly when it is outside the current span. An appended vector preserves independence: a zero combination with nonzero coefficient on the new vector would put it in the preceding span. At the end every original spanning vector is in the resulting span. Thus the list extends to a basis. Starting with the empty list gives existence of a basis. Applying the exchange bound in both directions to two bases proves that they have the same number of vectors. This number is <span class="math" data-tex="\(\dim_F V\)">\(\dim_F V\)</span>.</p>
+<p>Every subspace <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> has a finite basis. Choose a vector outside the current span in <span class="math" data-tex="\(W\)">\(W\)</span> whenever one exists. An independent list in <span class="math" data-tex="\(W\)">\(W\)</span> is also independent in <span class="math" data-tex="\(V\)">\(V\)</span>, so it can never exceed the finite dimension of <span class="math" data-tex="\(V\)">\(V\)</span>. By that bound the construction terminates after at most <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> choices and then spans <span class="math" data-tex="\(W\)">\(W\)</span>. This is only a finite selection. Its actual selected vectors can be extended to a basis of <span class="math" data-tex="\(V\)">\(V\)</span> by the preceding construction.</p>
+<span id="coordinates-matrix-products-and-basis-comparisons"></span><h3 id="10-2-coordinates-matrix-products-and-basis-comparisons">10.2. Coordinates, matrix products and basis comparisons</h3>
+<p>For an ordered original basis <span class="math" data-tex="\(b=(b_1,\ldots,b_n)\)">\(b=(b_1,\ldots,b_n)\)</span>, the map</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+J_b:F^n\longrightarrow V, \\ J_b x=\sum_{j=1}^n x_j b_j
+\end{gathered}
+\tag{FA3}
+\]">\[
+\begin{gathered}
+J_b:F^n\longrightarrow V, \\ J_b x=\sum_{j=1}^n x_j b_j
+\end{gathered}
+\tag{FA3}
+\]</span></p>
+<p>is linear, surjective by span and injective by independence. Its inverse gives the unique original coordinates. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this is the unique map between zero spaces and is a bijection.</p>
+<p>Let <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> be linear, with ordered basis <span class="math" data-tex="\(c=(c_1,\ldots,c_q)\)">\(c=(c_1,\ldots,c_q)\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span>. Define <span class="math" data-tex="\(A_{ij}\)">\(A_{ij}\)</span> by the unique expression <span class="math" data-tex="\(Tb_j=\sum_i A_{ij}c_i\)">\(Tb_j=\sum_i A_{ij}c_i\)</span>. Then</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+T=J_c A J_b^{-1}, \\ (Ax)_i=\sum_{j=1}^n A_{ij}x_j.
+\end{gathered}
+\tag{FA4}
+\]">\[
+\begin{gathered}
+T=J_c A J_b^{-1}, \\ (Ax)_i=\sum_{j=1}^n A_{ij}x_j.
+\end{gathered}
+\tag{FA4}
+\]</span></p>
+<p>This constructs the matrix rather than assuming it. Every matrix conversely defines this linear map. Addition and scalar multiplication of maps are entrywise addition and multiplication of their matrices. If <span class="math" data-tex="\(U:W\to Z\)">\(U:W\to Z\)</span> has matrix <span class="math" data-tex="\(B\)">\(B\)</span> in the actual target basis, finite expansion gives</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+(BA)_{kj}=\sum_{i=1}^q B_{ki}A_{ij}, \\ UT=J_d BA J_b^{-1}.
+\end{gathered}
+\tag{FA5}
+\]">\[
+\begin{gathered}
+(BA)_{kj}=\sum_{i=1}^q B_{ki}A_{ij}, \\ UT=J_d BA J_b^{-1}.
+\end{gathered}
+\tag{FA5}
+\]</span></p>
+<p>The order is <span class="math" data-tex="\(BA\)">\(BA\)</span>. Expanding each finite triple sum and keeping the same ordered summands proves associativity. The coordinate matrix of the identity is <span class="math" data-tex="\(I_n\)">\(I_n\)</span>, with entries <span class="math" data-tex="\(\delta_{ij}\)">\(\delta_{ij}\)</span>. Every empty sum and zero dimension in (FA4)--(FA5) has its literal value; no nonzero-dimensional hypothesis has entered.</p>
+<p>For new bases <span class="math" data-tex="\(b&#x27;_j=\sum_k S_{kj}b_k\)">\(b&#x27;_j=\sum_k S_{kj}b_k\)</span> and <span class="math" data-tex="\(c&#x27;_i=\sum_l R_{li}c_l\)">\(c&#x27;_i=\sum_l R_{li}c_l\)</span>, (FA3) gives <span class="math" data-tex="\(J_{b&#x27;}=J_b S\)">\(J_{b&#x27;}=J_b S\)</span> and <span class="math" data-tex="\(J_{c&#x27;}=J_c R\)">\(J_{c&#x27;}=J_c R\)</span>. Both <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are invertible because the two coordinate maps are bijective. The inverse of a linear bijection is linear: apply the bijection to the two sides of its desired addition and scalar identities, and use injectivity. Matrix multiplication in (FA5) therefore proves</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+x=Sx&#x27;, \\  x&#x27;=S^{-1}x, \\  A&#x27;=R^{-1}AS, \\ J_{c&#x27;}A&#x27;J_{b&#x27;}^{-1}=J_cAJ_b^{-1}.
+\end{gathered}
+\tag{FA6}
+\]">\[
+\begin{gathered}
+x=Sx&#x27;, \\  x&#x27;=S^{-1}x, \\  A&#x27;=R^{-1}AS, \\ J_{c&#x27;}A&#x27;J_{b&#x27;}^{-1}=J_cAJ_b^{-1}.
+\end{gathered}
+\tag{FA6}
+\]</span></p>
+<p>These equalities are the actual coordinate morphisms for the unchanged original map <span class="math" data-tex="\(T\)">\(T\)</span>; they are not replacements of that map. For two inverse linear maps their matrix products in both orders are the corresponding identity matrices. For a square matrix possessing a two-sided matrix inverse, (FA4) conversely gives a linear bijection and its inverse.</p>
+<span id="rank-nullity-quotients-and-direct-sums"></span><h3 id="10-3-rank-nullity-quotients-and-direct-sums">10.3. Rank-nullity, quotients and direct sums</h3>
+<p>Let <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> be any original linear map, and choose the actual basis <span class="math" data-tex="\(k_1,\ldots,k_a\)">\(k_1,\ldots,k_a\)</span> of its kernel. Extend it to <span class="math" data-tex="\(k_1,\ldots,k_a,v_1,\ldots,v_r\)">\(k_1,\ldots,k_a,v_1,\ldots,v_r\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> by Section 10.1. The vectors <span class="math" data-tex="\(Tv_1,\ldots,Tv_r\)">\(Tv_1,\ldots,Tv_r\)</span> are independent: if <span class="math" data-tex="\(T\sum_j t_jv_j=0\)">\(T\sum_j t_jv_j=0\)</span>, that sum is in the span of the <span class="math" data-tex="\(k_i\)">\(k_i\)</span>, and independence of the extended basis forces every <span class="math" data-tex="\(t_j=0\)">\(t_j=0\)</span>. They span <span class="math" data-tex="\(\operatorname{im}T\)">\(\operatorname{im}T\)</span>, because applying <span class="math" data-tex="\(T\)">\(T\)</span> to any original basis expansion discards precisely the kernel summands. Hence</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+\dim V=a+r, \\  \dim\ker T=a, \\ \dim\operatorname{im}T=r.
+\end{gathered}
+\tag{FA7}
+\]">\[
+\begin{gathered}
+\dim V=a+r, \\  \dim\ker T=a, \\ \dim\operatorname{im}T=r.
+\end{gathered}
+\tag{FA7}
+\]</span></p>
+<p>The exact quotient map is <span class="math" data-tex="\(v\mapsto v+\ker T\)">\(v\mapsto v+\ker T\)</span>; the induced map <span class="math" data-tex="\(V/\ker T\to\operatorname{im}T\)">\(V/\ker T\to\operatorname{im}T\)</span>, <span class="math" data-tex="\(v+\ker T\mapsto Tv\)">\(v+\ker T\mapsto Tv\)</span>, is well defined because two representatives differ by a kernel vector. It is injective by the definition of the kernel and surjective by that of the image. Its inverse in the displayed basis is <span class="math" data-tex="\(\sum_j t_jTv_j\mapsto\sum_j t_jv_j+\ker T\)">\(\sum_j t_jTv_j\mapsto\sum_j t_jv_j+\ker T\)</span>, with all original coefficients retained.</p>
+<p>For any subspace <span class="math" data-tex="\(K\subset V\)">\(K\subset V\)</span>, choose a basis of <span class="math" data-tex="\(K\)">\(K\)</span> and extend it to <span class="math" data-tex="\(V\)">\(V\)</span>. The cosets of the added basis vectors form a basis of <span class="math" data-tex="\(V/K\)">\(V/K\)</span>: span follows from the original expansion and independence follows by subtracting an element of <span class="math" data-tex="\(K\)">\(K\)</span>. Therefore <span class="math" data-tex="\(\dim(V/K)=\dim V-\dim K\)">\(\dim(V/K)=\dim V-\dim K\)</span>. The span <span class="math" data-tex="\(L\)">\(L\)</span> of the added vectors has <span class="math" data-tex="\(K\cap L=\{0\}\)">\(K\cap L=\{0\}\)</span>, and every vector has a unique expansion as a sum from <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>. The addition map <span class="math" data-tex="\(K\oplus L\to V\)">\(K\oplus L\to V\)</span> is a bijection with inverse the actual two coordinate projections. In general, the addition map <span class="math" data-tex="\(U\oplus W\to U+W\)">\(U\oplus W\to U+W\)</span> is surjective and has kernel exactly <span class="math" data-tex="\(\{(v,-v):v\in U\cap W\}\)">\(\{(v,-v):v\in U\cap W\}\)</span>. Using (FA7) proves</p>
+<p><span class="math math-display" data-tex="\[
+\dim(U+W)=\dim U+\dim W-\dim(U\cap W).
+\tag{FA8}
+\]">\[
+\dim(U+W)=\dim U+\dim W-\dim(U\cap W).
+\tag{FA8}
+\]</span></p>
+<p>The same coordinate argument iterated proves the finite direct-sum statement: addition from <span class="math" data-tex="\(\bigoplus_j V_j\)">\(\bigoplus_j V_j\)</span> is a bijection precisely when every zero sum from the subspaces has all terms zero and their sum is the target space. Concatenating their actual bases then gives its basis and dimension <span class="math" data-tex="\(\sum_j\dim V_j\)">\(\sum_j\dim V_j\)</span>. This supplies the direct-sum dimensions used by the stable primary decomposition.</p>
+<p>A square map <span class="math" data-tex="\(V\to V\)">\(V\to V\)</span> is injective if and only if it is surjective, by (FA7) and equality of its two original dimensions. A bijection is exactly an invertible matrix under Section 10.2. These assertions include dimension zero.</p>
+<span id="determinants-and-the-full-ordered-elimination-maps"></span><h3 id="10-4-determinants-and-the-full-ordered-elimination-maps">10.4. Determinants and the full ordered elimination maps</h3>
+<p>For an original square matrix <span class="math" data-tex="\(M=(m_{ij})\)">\(M=(m_{ij})\)</span> of size <span class="math" data-tex="\(n\)">\(n\)</span>, define its determinant by the finite full sum</p>
+<p><span class="math math-display" data-tex="\[
+\det M=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+                  \prod_{i=1}^n m_{i,\sigma(i)}.
+\tag{FA9}
+\]">\[
+\det M=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+                  \prod_{i=1}^n m_{i,\sigma(i)}.
+\tag{FA9}
+\]</span></p>
+<p>The sign is <span class="math" data-tex="\((-1)\)">\((-1)\)</span> to the number of inversions. Interchanging two indices changes that parity: for adjacent indices it changes one inversion and interchanging arbitrary indices is an odd number of adjacent exchanges. Thus exchanging two rows, or two columns, changes the sign of (FA9) by relabeling permutations. Identical rows or columns give zero by pairing equal products with opposite signs. Multilinearity in each row and column follows by expanding its single factor in every product. Adding a multiple of another row leaves the determinant unchanged because its additional summand has two identical rows. The identity matrix has determinant one, since every nonidentity permutation has a literal zero factor. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the single empty permutation has the empty product one.</p>
+<p>For arbitrary original square matrices <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, expand every entry of the product before making any comparison:</p>
+<p><span class="math math-display" data-tex="\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+ \left(\prod_{i=1}^n X_{i,k_i}\right)
+ \sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+                  \prod_{i=1}^n Y_{k_i,\sigma(i)}.
+\tag{FA10}
+\]">\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+ \left(\prod_{i=1}^n X_{i,k_i}\right)
+ \sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+                  \prod_{i=1}^n Y_{k_i,\sigma(i)}.
+\tag{FA10}
+\]</span></p>
+<p>If two <span class="math" data-tex="\(k_i\)">\(k_i\)</span>'s agree, exchanging the columns assigned to their two positions pairs the inner permutations without a fixed point, with equal products and opposite signs. The whole inner sum is exactly zero. Every remaining list is <span class="math" data-tex="\(k_i=\tau(i)\)">\(k_i=\tau(i)\)</span> for a permutation <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Reordering its rows gives inner sum <span class="math" data-tex="\(\operatorname{sgn}(\tau)\det Y\)">\(\operatorname{sgn}(\tau)\det Y\)</span>. Indeed the relabeled column permutation is <span class="math" data-tex="\(\sigma\circ\tau^{-1}\)">\(\sigma\circ\tau^{-1}\)</span>, whose sign is <span class="math" data-tex="\(\operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)\)">\(\operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)\)</span>; this follows from the adjacent-exchange sign calculation above. The surviving full sum in (FA10) is therefore <span class="math" data-tex="\(\det X\det Y\)">\(\det X\det Y\)</span>. No summand is discarded without this exact zero calculation. In particular <span class="math" data-tex="\(\det S\det S^{-1}=1\)">\(\det S\det S^{-1}=1\)</span> whenever both inverse products are the identity.</p>
+<p>Here is the exact elimination construction for an original rectangular <span class="math" data-tex="\(q\)">\(q\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> matrix. Scan columns in their original order; for the next pivot choose a nonzero entry in the remaining rows, exchange its row with the next pivot row if necessary, and subtract the full pivot multiple from every lower row. Do not divide the pivot row or replace its pivot by one. Each exchange has an actual permutation matrix with its inverse the same exchange. Each subtraction has matrix <span class="math" data-tex="\(I-cE_{ij}\)">\(I-cE_{ij}\)</span>, where <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, and inverse <span class="math" data-tex="\(I+cE_{ij}\)">\(I+cE_{ij}\)</span>, since <span class="math" data-tex="\(E_{ij}^2=0\)">\(E_{ij}^2=0\)</span>. If <span class="math" data-tex="\(E=E_\ell\cdots E_1\)">\(E=E_\ell\cdots E_1\)</span> is the full ordered product, the echelon matrix is <span class="math" data-tex="\(R=EM\)">\(R=EM\)</span> and <span class="math" data-tex="\(M=E_1^{-1}\cdots E_\ell^{-1}R\)">\(M=E_1^{-1}\cdots E_\ell^{-1}R\)</span>. There are at most <span class="math" data-tex="\(\min(q,n)\)">\(\min(q,n)\)</span> pivots; scan and row count are finite, so the procedure terminates. Every remaining row is zero, since otherwise its first nonzero entry would have supplied a pivot when its column was scanned.</p>
+<p>Write the actual pivot columns as <span class="math" data-tex="\(c_1&lt;\cdots&lt;c_r\)">\(c_1&lt;\cdots&lt;c_r\)</span>, their nonzero original resulting pivots as <span class="math" data-tex="\(d_j=R_{j,c_j}\)">\(d_j=R_{j,c_j}\)</span>, and let <span class="math" data-tex="\(J\)">\(J\)</span> be the nonpivot columns. For arbitrary prescribed original free coordinates <span class="math" data-tex="\(x_k=t_k\)">\(x_k=t_k\)</span>, <span class="math" data-tex="\(k\in J\)">\(k\in J\)</span>, solve backwards by</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+x_{c_j}=-d_j^{-1}\sum_{k&gt;c_j}R_{jk}x_k, \\ j=r,r-1,\ldots,1.
+\end{gathered}
+\tag{FA11}
+\]">\[
+\begin{gathered}
+x_{c_j}=-d_j^{-1}\sum_{k&gt;c_j}R_{jk}x_k, \\ j=r,r-1,\ldots,1.
+\end{gathered}
+\tag{FA11}
+\]</span></p>
+<p>Each later pivot coordinate has already been computed, and earlier coefficients in that row are zero by echelon construction. Every zero row imposes no equation. Hence (FA11) is a linear bijection <span class="math" data-tex="\(F^J\to\ker M\)">\(F^J\to\ker M\)</span>, inverse to the actual free-coordinate projection, because <span class="math" data-tex="\(E\)">\(E\)</span> is invertible. The coordinate vectors of <span class="math" data-tex="\(F^J\)">\(F^J\)</span> give the full kernel basis, with original pivot denominators retained. Thus <span class="math" data-tex="\(\dim\ker M=n-r\)">\(\dim\ker M=n-r\)</span> and <span class="math" data-tex="\(\operatorname{rank}M=r\)">\(\operatorname{rank}M=r\)</span> by (FA7). In particular, the number of pivots is independent of the choices of exchange rows even though the displayed coordinate map can depend on them.</p>
+<p>If <span class="math" data-tex="\(q=n\)">\(q=n\)</span>, there are two cases. For <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>, echelon form has a zero row and determinant zero. Each exchange contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>, and each subtraction contributes one, by (FA9); hence <span class="math" data-tex="\(\det M=0\)">\(\det M=0\)</span> as well, and (FA11) gives a nonzero kernel vector. For <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, all columns are pivot columns, <span class="math" data-tex="\(R\)">\(R\)</span> is upper triangular and its full permutation sum gives <span class="math" data-tex="\(\det R=\prod_j d_j\)">\(\det R=\prod_j d_j\)</span>: every other permutation has a lower-triangular zero factor, proved successively from the last row upwards. If <span class="math" data-tex="\(s\)">\(s\)</span> row exchanges occurred, this gives</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+\det E=(-1)^s, \\ \det M=(-1)^s\prod_{j=1}^n d_j\ne0.
+\end{gathered}
+\tag{FA12}
+\]">\[
+\begin{gathered}
+\det E=(-1)^s, \\ \det M=(-1)^s\prod_{j=1}^n d_j\ne0.
+\end{gathered}
+\tag{FA12}
+\]</span></p>
+<p>For an arbitrary right side <span class="math" data-tex="\(y\)">\(y\)</span>, the exact inverse is found from <span class="math" data-tex="\(z=Ey\)">\(z=Ey\)</span> and</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+x_j=d_j^{-1}\left(z_j-\sum_{k&gt;j}R_{jk}x_k\right), \\  j=n,n-1,\ldots,1, \\ M^{-1}=R^{-1}E.
+\end{gathered}
+\tag{FA13}
+\]">\[
+\begin{gathered}
+x_j=d_j^{-1}\left(z_j-\sum_{k&gt;j}R_{jk}x_k\right), \\  j=n,n-1,\ldots,1, \\ M^{-1}=R^{-1}E.
+\end{gathered}
+\tag{FA13}
+\]</span></p>
+<p>Backward substitution gives a solution and makes it unique. Applying the two compositions to arbitrary vectors proves both inverse identities. Thus a square original matrix is invertible exactly when its original determinant is nonzero, over either field. No eigenvalue-existence theorem enters this proof.</p>
+<p>For later continuity uses, define the cofactor <span class="math" data-tex="\(C_{ij}=(-1)^{i+j}\det M^{(i|j)}\)">\(C_{ij}=(-1)^{i+j}\det M^{(i|j)}\)</span> with the indicated row and column deleted, and <span class="math" data-tex="\(\operatorname{adj}(M)_{ji}=C_{ij}\)">\(\operatorname{adj}(M)_{ji}=C_{ij}\)</span>. In (FA9), group the permutations by the column used by row <span class="math" data-tex="\(i\)">\(i\)</span>. Moving that row/column to their first positions produces the sign <span class="math" data-tex="\((-1)^{i+j}\)">\((-1)^{i+j}\)</span>, giving <span class="math" data-tex="\(\sum_j m_{ij}C_{ij}=\det M\)">\(\sum_j m_{ij}C_{ij}=\det M\)</span>. Replacing this row by a distinct row gives the off-diagonal sum zero by the repeated-row determinant. The column version gives the other product. Consequently</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I_n, \\ M^{-1}=(\det M)^{-1}\operatorname{adj}(M)
+\quad(\det M\ne0).
+\end{gathered}
+\tag{FA14}
+\]">\[
+\begin{gathered}
+M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I_n, \\ M^{-1}=(\det M)^{-1}\operatorname{adj}(M)
+\quad(\det M\ne0).
+\end{gathered}
+\tag{FA14}
+\]</span></p>
+<p>This retains the exact original determinant denominator and every cofactor sign. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the minor is the zero-dimensional determinant one. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the adjugate is the unique empty matrix and both product identities are identities of empty matrices. All determinants and cofactors are finite polynomial expressions, so the inverse is continuous on the actual nonzero-determinant domain by the scalar quotient rule.</p>
+<span id="the-original-inner-product-and-the-full-gram-residuals"></span><h3 id="10-5-the-original-inner-product-and-the-full-gram-residuals">10.5. The original inner product and the full Gram residuals</h3>
+<p>An inner product <span class="math" data-tex="\(h\)">\(h\)</span> is linear in its first variable, conjugate-linear in its second, has <span class="math" data-tex="\(h(v,w)=\overline{h(w,v)}\)">\(h(v,w)=\overline{h(w,v)}\)</span>, and satisfies <span class="math" data-tex="\(h(v,v)&gt;0\)">\(h(v,v)&gt;0\)</span> for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. These are its definition, not a consequence assumed for a different matrix. Let <span class="math" data-tex="\(\|v\|_h=\sqrt{h(v,v)}\)">\(\|v\|_h=\sqrt{h(v,v)}\)</span>. The positive real square root exists from real completeness: the nonempty bounded set <span class="math" data-tex="\(\{t\ge0:t^2\le a\}\)">\(\{t\ge0:t^2\le a\}\)</span> has a supremum for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and continuity of the square shows its square can be neither below nor above <span class="math" data-tex="\(a\)">\(a\)</span>, by a sufficiently small positive increment or decrement. Its strict monotonicity on nonnegative reals proves uniqueness. Zero has square root zero.</p>
+<p>For any chosen original basis <span class="math" data-tex="\(b\)">\(b\)</span>, keep the full matrix</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{jk}=h(b_k,b_j), \\ 
+h(J_bx,J_by)=y^\dagger Hx
+ =\sum_{j,k}\overline{y_j}H_{jk}x_k, \\ H^\dagger=H.
+\end{gathered}
+\tag{FA15}
+\]">\[
+\begin{gathered}
+H_{jk}=h(b_k,b_j), \\ 
+h(J_bx,J_by)=y^\dagger Hx
+ =\sum_{j,k}\overline{y_j}H_{jk}x_k, \\ H^\dagger=H.
+\end{gathered}
+\tag{FA15}
+\]</span></p>
+<p>Here <span class="math" data-tex="\(\dagger\)">\(\dagger\)</span> is conjugate transpose, with entry <span class="math" data-tex="\((M^\dagger)_{jk}=\overline{M_{kj}}\)">\((M^\dagger)_{jk}=\overline{M_{kj}}\)</span>. Formula (FA15) follows by finite expansion and fixes the linear-first convention exactly. If <span class="math" data-tex="\(Hx=0\)">\(Hx=0\)</span>, then <span class="math" data-tex="\(x^\dagger Hx=0\)">\(x^\dagger Hx=0\)</span>, so positivity and the coordinate bijection give <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Therefore <span class="math" data-tex="\(H\)">\(H\)</span> is invertible by Sections 10.3--4. Conversely, any Hermitian matrix with <span class="math" data-tex="\(x^\dagger Hx&gt;0\)">\(x^\dagger Hx&gt;0\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> gives an inner product by (FA15), since the linearity, Hermitian identity and positivity follow entrywise. An inner product exists on any finite vector space by taking the explicitly constructed coordinate formula <span class="math" data-tex="\(h_0(J_bx,J_by)=\sum_j x_j\overline{y_j}\)">\(h_0(J_bx,J_by)=\sum_j x_j\overline{y_j}\)</span>. This existence construction does not replace an already given <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>For a basis <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span>, define its actual residuals inductively, keeping every length and projection factor:</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+r_1=b_1, \\  d_k=h(r_k,r_k), \\ r_j=b_j-\sum_{k&lt;j}\frac{h(b_j,r_k)}{d_k}r_k.
+\end{gathered}
+\tag{FA16}
+\]">\[
+\begin{gathered}
+r_1=b_1, \\  d_k=h(r_k,r_k), \\ r_j=b_j-\sum_{k&lt;j}\frac{h(b_j,r_k)}{d_k}r_k.
+\end{gathered}
+\tag{FA16}
+\]</span></p>
+<p>Assume the earlier residuals are nonzero and mutually orthogonal. Then the displayed formula has defined nonzero denominators. Direct pairing with <span class="math" data-tex="\(r_l\)">\(r_l\)</span>, <span class="math" data-tex="\(l&lt;j\)">\(l&lt;j\)</span>, gives <span class="math" data-tex="\(h(r_j,r_l)=h(b_j,r_l)-h(b_j,r_l)d_l/d_l=0\)">\(h(r_j,r_l)=h(b_j,r_l)-h(b_j,r_l)d_l/d_l=0\)</span>, with all other summands zero by the earlier orthogonality. If <span class="math" data-tex="\(r_j=0\)">\(r_j=0\)</span>, the formula puts <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in the earlier residual span. Each earlier residual lies in the corresponding original initial span, so this contradicts the independence of <span class="math" data-tex="\(b\)">\(b\)</span>. Hence <span class="math" data-tex="\(r_j\ne0\)">\(r_j\ne0\)</span>, <span class="math" data-tex="\(d_j&gt;0\)">\(d_j&gt;0\)</span>, and induction proves all assertions. The converse expressions in (FA16) show equality of the original and residual initial spans at every stage; in particular the residuals are a basis.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the matrix with these actual residual coordinates, <span class="math" data-tex="\(r_j=J_bS e_j\)">\(r_j=J_bS e_j\)</span>. It is upper triangular with diagonal one by (FA16), and <span class="math" data-tex="\(D=\operatorname{diag}(d_1,\ldots,d_n)\)">\(D=\operatorname{diag}(d_1,\ldots,d_n)\)</span>. The exact Gram and determinant comparisons are</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+S^\dagger HS=D, \\  H=(S^{-1})^\dagger DS^{-1}, \\ \det H=\prod_{j=1}^n d_j&gt;0\quad(n&gt;0).
+\end{gathered}
+\tag{FA17}
+\]">\[
+\begin{gathered}
+S^\dagger HS=D, \\  H=(S^{-1})^\dagger DS^{-1}, \\ \det H=\prod_{j=1}^n d_j&gt;0\quad(n&gt;0).
+\end{gathered}
+\tag{FA17}
+\]</span></p>
+<p>The first equality is the full pairing of the actual residuals; the second multiplies by the actual inverses in the stated order. The determinant identity uses multiplicativity, <span class="math" data-tex="\(\det S=1\)">\(\det S=1\)</span>, and <span class="math" data-tex="\(\det S^\dagger=\overline{\det S}\)">\(\det S^\dagger=\overline{\det S}\)</span>. The last conjugate identity follows by conjugating (FA9) and transposing permutations; the inverse permutation has the same sign. In dimension zero the product and <span class="math" data-tex="\(\det H\)">\(\det H\)</span> are both one, and the zero space is its own orthogonal basis.</p>
+<p>The requested orthonormal Gram--Schmidt comparison consists of the explicitly defined vectors <span class="math" data-tex="\(e&#x27;_j=d_j^{-1/2}r_j\)">\(e&#x27;_j=d_j^{-1/2}r_j\)</span>, not a change to any earlier residual. Set <span class="math" data-tex="\(U=S D^{-1/2}\)">\(U=S D^{-1/2}\)</span>. The two coordinate maps and every metric factor are</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{e&#x27;}=J_b U, \\  x=Uz, \\ 
+z=D^{1/2}S^{-1}x, \\ 
+U^\dagger HU=D^{-1/2}S^\dagger HS D^{-1/2}=I_n, \\ \det U=\prod_j d_j^{-1/2}.
+\end{gathered}
+\tag{FA18}
+\]">\[
+\begin{gathered}
+J_{e&#x27;}=J_b U, \\  x=Uz, \\ 
+z=D^{1/2}S^{-1}x, \\ 
+U^\dagger HU=D^{-1/2}S^\dagger HS D^{-1/2}=I_n, \\ \det U=\prod_j d_j^{-1/2}.
+\end{gathered}
+\tag{FA18}
+\]</span></p>
+<p>Thus <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span> is an orthonormal basis for the original <span class="math" data-tex="\(h\)">\(h\)</span>, while the original <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-tex="\(d_j\)">\(d_j\)</span> remain explicit in (FA15)--(FA18). Over the real field all <span class="math" data-tex="\(d_j^{-1/2}\)">\(d_j^{-1/2}\)</span> are positive, so the comparison orientation has the sign of <span class="math" data-tex="\(\det S=1\)">\(\det S=1\)</span>. No arbitrary sign is inserted. The complex determinant is the displayed positive real factor in these original coordinates.</p>
+<p>For an independent list which is not yet a basis, the same induction gives its nonzero orthogonal residuals; extending the original list to a basis by Section 10.1 extends that orthogonal construction. For a subspace with these residuals <span class="math" data-tex="\(r_1,\ldots,r_a\)">\(r_1,\ldots,r_a\)</span>, the exact original projection and its complement are</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+Pv=\sum_{k=1}^a\frac{h(v,r_k)}{d_k}r_k, \\  h(v-Pv,r_k)=0, \\ V=W\oplus W^\perp.
+\end{gathered}
+\tag{FA19}
+\]">\[
+\begin{gathered}
+Pv=\sum_{k=1}^a\frac{h(v,r_k)}{d_k}r_k, \\  h(v-Pv,r_k)=0, \\ V=W\oplus W^\perp.
+\end{gathered}
+\tag{FA19}
+\]</span></p>
+<p>Indeed the residuals span <span class="math" data-tex="\(W\)">\(W\)</span>; the difference is orthogonal to their span by conjugate-linearity, and an element in <span class="math" data-tex="\(W\cap W^\perp\)">\(W\cap W^\perp\)</span> has zero self-pairing and is zero. Pairing gives <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span> and <span class="math" data-tex="\(h(Pv,w)=h(v,Pw)\)">\(h(Pv,w)=h(v,Pw)\)</span>, because each side is the same sum <span class="math" data-tex="\(\sum_k h(v,r_k)h(r_k,w)/d_k\)">\(\sum_k h(v,r_k)h(r_k,w)/d_k\)</span>. These statements also hold for the empty subspace, whose projection is zero.</p>
+<span id="exact-finite-inner-product-bounds-and-the-unchanged-original-norm"></span><h3 id="10-6-exact-finite-inner-product-bounds-and-the-unchanged-original-norm">10.6. Exact finite inner-product bounds and the unchanged original norm</h3>
+<p>For <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, the original residual <span class="math" data-tex="\(v-h(v,w)h(w,w)^{-1}w\)">\(v-h(v,w)h(w,w)^{-1}w\)</span> has squared norm</p>
+<p><span class="math math-display" data-tex="\[
+\left\|v-\frac{h(v,w)}{h(w,w)}w\right\|_h^2
+=\|v\|_h^2-\frac{|h(v,w)|^2}{\|w\|_h^2}\ge0.
+\tag{FA20}
+\]">\[
+\left\|v-\frac{h(v,w)}{h(w,w)}w\right\|_h^2
+=\|v\|_h^2-\frac{|h(v,w)|^2}{\|w\|_h^2}\ge0.
+\tag{FA20}
+\]</span></p>
+<p>Expand its two cross terms using the specified linear-first convention; each is <span class="math" data-tex="\(-|h(v,w)|^2/h(w,w)\)">\(-|h(v,w)|^2/h(w,w)\)</span>, and the last term adds one copy. This proves Cauchy--Schwarz with its actual denominator. If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, the pairing is zero by linearity and the same inequality without division is immediate. The equality case for nonzero <span class="math" data-tex="\(w\)">\(w\)</span> holds exactly when this actual residual is zero, hence when <span class="math" data-tex="\(v\)">\(v\)</span> is a scalar multiple of the actual <span class="math" data-tex="\(w\)">\(w\)</span>. The norm obeys <span class="math" data-tex="\(\|av\|_h=|a|\|v\|_h\)">\(\|av\|_h=|a|\|v\|_h\)</span>, positivity, and the triangle inequality: expand <span class="math" data-tex="\(\|v+w\|_h^2\)">\(\|v+w\|_h^2\)</span>, bound the two real cross terms by <span class="math" data-tex="\(2\|v\|_h\|w\|_h\)">\(2\|v\|_h\|w\|_h\)</span>, and take the nonnegative square root.</p>
+<p>For the full residual basis, orthogonality gives the exact identities</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+v=\sum_{j=1}^n\frac{h(v,r_j)}{d_j}r_j, \\  \|v\|_h^2=\sum_{j=1}^n\frac{|h(v,r_j)|^2}{d_j}, \\ \left\|v-\sum_{j=1}^a\frac{h(v,r_j)}{d_j}r_j\right\|_h^2
+=\|v\|_h^2-\sum_{j=1}^a\frac{|h(v,r_j)|^2}{d_j}.
+\end{gathered}
+\tag{FA21}
+\]">\[
+\begin{gathered}
+v=\sum_{j=1}^n\frac{h(v,r_j)}{d_j}r_j, \\  \|v\|_h^2=\sum_{j=1}^n\frac{|h(v,r_j)|^2}{d_j}, \\ \left\|v-\sum_{j=1}^a\frac{h(v,r_j)}{d_j}r_j\right\|_h^2
+=\|v\|_h^2-\sum_{j=1}^a\frac{|h(v,r_j)|^2}{d_j}.
+\end{gathered}
+\tag{FA21}
+\]</span></p>
+<p>The first equality follows by pairing the difference with every residual in the basis, and positivity. The other two follow by expansion with every original <span class="math" data-tex="\(d_j\)">\(d_j\)</span> retained. These are finite sums; they assume no infinite-dimensional orthonormal expansion.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, set <span class="math" data-tex="\(d_{\min}=\min_jd_j&gt;0\)">\(d_{\min}=\min_jd_j&gt;0\)</span>, <span class="math" data-tex="\(F_S=(\sum_{j,k}|S_{jk}|^2)^{1/2}&gt;0\)">\(F_S=(\sum_{j,k}|S_{jk}|^2)^{1/2}&gt;0\)</span>, and <span class="math" data-tex="\(M_b=(\sum_j\|b_j\|_h^2)^{1/2}&gt;0\)">\(M_b=(\sum_j\|b_j\|_h^2)^{1/2}&gt;0\)</span>. With <span class="math" data-tex="\(x=S a\)">\(x=S a\)</span>, (FA17), finite scalar Cauchy--Schwarz in every row of <span class="math" data-tex="\(S\)">\(S\)</span>, and the original basis triangle inequality give</p>
+<p><span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\sqrt{d_{\min}}}{F_S}|x|_2
+ \le \|J_bx\|_h
+ \le M_b|x|_2, \\ |x|_2^2=\sum_j|x_j|^2.
+\end{gathered}
+\tag{FA22}
+\]">\[
+\begin{gathered}
+\frac{\sqrt{d_{\min}}}{F_S}|x|_2
+ \le \|J_bx\|_h
+ \le M_b|x|_2, \\ |x|_2^2=\sum_j|x_j|^2.
+\end{gathered}
+\tag{FA22}
+\]</span></p>
+<p>For the lower bound, <span class="math" data-tex="\(\|J_bx\|_h^2=\sum_jd_j|a_j|^2\ge d_{\min}|a|_2^2\)">\(\|J_bx\|_h^2=\sum_jd_j|a_j|^2\ge d_{\min}|a|_2^2\)</span>, while <span class="math" data-tex="\(|S a|_2\le F_S|a|_2\)">\(|S a|_2\le F_S|a|_2\)</span>. For the upper bound, <span class="math" data-tex="\(\|\sum_jx_jb_j\|_h\le\sum_j|x_j|\|b_j\|_h\le M_b|x|_2\)">\(\|\sum_jx_jb_j\|_h\le\sum_j|x_j|\|b_j\|_h\le M_b|x|_2\)</span>. Thus both inequalities are for the original <span class="math" data-tex="\(h\)">\(h\)</span>, basis and coordinates; their exact comparison constants are preserved. In dimension zero every vector and norm is zero, so no division by <span class="math" data-tex="\(F_S\)">\(F_S\)</span> is needed. Completeness of the finite original inner-product space follows: (FA22) makes the coordinates of a Cauchy sequence Cauchy in <span class="math" data-tex="\(F\)">\(F\)</span>; their scalar limits give a vector, and the upper inequality proves convergence in the unchanged original norm.</p>
+<p>For <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span>, with <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the same expansion gives the concrete bound</p>
+<p><span class="math math-display" data-tex="\[
+\|Tv\|_{h_W}\le
+\frac{F_S}{\sqrt{d_{\min}}}
+\left(\sum_{j=1}^n\|Tb_j\|_{h_W}^2\right)^{1/2}
+\|v\|_{h_V}.
+\tag{FA23}
+\]">\[
+\|Tv\|_{h_W}\le
+\frac{F_S}{\sqrt{d_{\min}}}
+\left(\sum_{j=1}^n\|Tb_j\|_{h_W}^2\right)^{1/2}
+\|v\|_{h_V}.
+\tag{FA23}
+\]</span></p>
+<p>Every original image <span class="math" data-tex="\(Tb_j\)">\(Tb_j\)</span> occurs in this constant. The bound proves that every finite linear map is continuous. Define its operator norm by <span class="math" data-tex="\(\|T\|=\sup_{v\ne0}\|Tv\|/\|v\|\)">\(\|T\|=\sup_{v\ne0}\|Tv\|/\|v\|\)</span>, with value zero if its domain is zero. This is finite by (FA23). Applying the definition twice to the actual vectors gives <span class="math" data-tex="\(\|UT\|\le\|U\|\|T\|\)">\(\|UT\|\le\|U\|\|T\|\)</span>; the zero-vector cases require no division. Addition and scalar norm identities follow from the original vector norm inequalities, and <span class="math" data-tex="\(\|I_V\|=1\)">\(\|I_V\|=1\)</span> for <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>, zero for <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. In particular all fixed finite coordinate maps and projections in the spectral receiving calculation are bounded on the original spaces, without replacing their norms by coordinate norms.</p>
+<p><a href="stable-prerequisite-bridges.md" download="stable-prerequisite-bridges.md" download="stable-prerequisite-bridges.md">Download this complete exact selected source</a> · <a href="../../stable-prerequisite-bridges.html">Read the existing full foundation alternative</a>.</p></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

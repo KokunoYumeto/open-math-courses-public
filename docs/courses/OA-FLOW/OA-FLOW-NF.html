@@ -1,0 +1,302 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Order-normal positive functionals and ultraweak continuity · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GW.html">Previous lesson</a><a href="OA-FLOW-CV.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-NF.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original finite-functional and GNS normality proof by GPT-6 Astra (OpenAI), Ultra, independently reviewed. The complete later EW proof covers extended-valued weight normality; it is not an input of NF. Human review and formal verification are not asserted.</p><h1 id="order-normal-positive-functionals-and-ultraweak-continuity">Order-normal positive functionals and ultraweak continuity</h1>
+<p><em>Fresh proof, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.</em></p>
+<p>Let <span class="math" data-tex="\(M\subseteq B(K)\)">\(M\subseteq B(K)\)</span> be an arbitrary concrete von Neumann algebra. We prove that a bounded positive functional <span class="math" data-tex="\(f\)">\(f\)</span> preserving bounded increasing positive suprema belongs to its concrete predual. This finite-functional result then proves ultraweak normality of the GNS representation of every normal weight, without requiring semifiniteness. It is not the corresponding characterization of arbitrary extended-valued weights.</p>
+<p>The exact inputs are <a href="OA-FLOW-GW.html#oa-flow.gw.1">GW-1–5</a>, <span class="unlinked">CF-1</span>, <span class="unlinked">CF-4</span>, <span class="unlinked">CF-10</span>, <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0</a>/<a href="OA-FLOW-SF.html#OA-FLOW.SF.SB0">SB-0</a> with <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB1">SB-1–SB-6</a>, <span class="unlinked">FF-4</span>, <a href="OA-FLOW-CP.html#oa-flow.cp.1">CP01–06</a>, <span class="unlinked">ST-2</span> and <a href="OA-FLOW-STC.html#oa-flow.st.coefficient">ST-3 coefficient proof</a>. The latter is used only for a positive functional already known to be ultraweakly continuous by an explicit vector series. It contains exactly the earlier ST coefficient/GNS-normality proof, excluding the later modular application. Thus it introduces no order-normality assumption into the premise. The inverse topology result ST-2 is likewise applied only to an already ultraweakly continuous faithful representation.</p>
+<p>For context, the freely available <a href="https://arxiv.org/pdf/2004.02383v1#page=63">Hiai author notes, Definition 7.1 and Theorem 7.2</a> state broader weight criteria. No implication of that theorem is used here. The proof below instead constructs a faithful concrete vector-series functional on the support, uses a closed sum form to establish uniform absolute continuity on the positive unit ball, and gives an explicit Hahn–Banach approximation in the predual.</p>
+<p><a id="oa-flow.nf.1"></a></p>
+<h2 id="OA-FLOW.NF.1">NF-1. The support of an order-normal bounded positive functional</h2>
+<p>A bounded positive functional is real on self-adjoint elements and satisfies
+<span class="math math-display" data-tex="\[
+|f(y^*x)|^2\leq f(x^*x)f(y^*y).
+\tag{NF1}
+\]">\[
+|f(y^*x)|^2\leq f(x^*x)f(y^*y).
+\tag{NF1}
+\]</span>
+These assertions follow from GW-2, applied to the finite weight <span class="math" data-tex="\(f|_{M_+}\)">\(f|_{M_+}\)</span>. Monotonicity also gives <span class="math" data-tex="\(f(a)\leq\|a\|f(1)\)">\(f(a)\leq\|a\|f(1)\)</span> for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>, and (NF1) implies <span class="math" data-tex="\(\|f\|=f(1)\)">\(\|f\|=f(1)\)</span>.</p>
+<p>Suppose from now on that <span class="math" data-tex="\(f\)">\(f\)</span> is order-normal. If <span class="math" data-tex="\(e,g\)">\(e,g\)</span> are projections with <span class="math" data-tex="\(f(e)=f(g)=0\)">\(f(e)=f(g)=0\)</span>, then <span class="math" data-tex="\(f(e+g)=0\)">\(f(e+g)=0\)</span>. Its spectral projection <span class="math" data-tex="\(1_{[\epsilon,\infty)}(e+g)\)">\(1_{[\epsilon,\infty)}(e+g)\)</span> is at most <span class="math" data-tex="\(\epsilon^{-1}(e+g)\)">\(\epsilon^{-1}(e+g)\)</span>, and hence has zero <span class="math" data-tex="\(f\)">\(f\)</span>-value. As <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span> these increase to <span class="math" data-tex="\(s(e+g)=e\vee g\)">\(s(e+g)=e\vee g\)</span>; order normality gives <span class="math" data-tex="\(f(e\vee g)=0\)">\(f(e\vee g)=0\)</span>. The equality of this support with the join follows from
+<span class="math" data-tex="\(\ker(e+g)=\ker e\cap\ker g\)">\(\ker(e+g)=\ker e\cap\ker g\)</span>, by taking the quadratic form.</p>
+<p>Every family of projections has a join in <span class="math" data-tex="\(M\)">\(M\)</span>: project onto the closed span of its ranges, which is invariant under all unitaries of <span class="math" data-tex="\(M'\)">\(M'\)</span>; SF-0's test puts that projection in <span class="math" data-tex="\(M\)">\(M\)</span>. Finite joins increase to this join, because their ranges have dense union in its range. Let <span class="math" data-tex="\(q\)">\(q\)</span> be the join of all projections with zero <span class="math" data-tex="\(f\)">\(f\)</span>-value. Their finite joins also have zero value, so <span class="math" data-tex="\(f(q)=0\)">\(f(q)=0\)</span>. Put <span class="math" data-tex="\(p=1-q\)">\(p=1-q\)</span>.</p>
+<p>By (NF1), <span class="math" data-tex="\(f(qx)=f(xq)=0\)">\(f(qx)=f(xq)=0\)</span> for all <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>; consequently
+<span class="math math-display" data-tex="\[
+f(x)=f(pxp).
+\tag{NF2}
+\]">\[
+f(x)=f(pxp).
+\tag{NF2}
+\]</span>
+The restriction <span class="math" data-tex="\(f_p\)">\(f_p\)</span> to <span class="math" data-tex="\(pMp\)">\(pMp\)</span> is faithful. If <span class="math" data-tex="\(a\in(pMp)_+\)">\(a\in(pMp)_+\)</span> has zero value, all its positive spectral cutoffs have zero value, so they are at most both <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>, and therefore vanish. Thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. It remains order-normal: an increasing bounded net in the corner has the same supremum in the corner as in <span class="math" data-tex="\(M\)">\(M\)</span>, by its strong limit. If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, the desired theorem is immediate. Otherwise <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span> and <span class="math" data-tex="\(f_p(p)&gt;0\)">\(f_p(p)&gt;0\)</span>.</p>
+<p><a id="oa-flow.nf.2"></a></p>
+<h2 id="OA-FLOW.NF.2">NF-2. A faithful vector-series functional on this support corner</h2>
+<p>Any family of nonzero pairwise orthogonal projections in <span class="math" data-tex="\(pMp\)">\(pMp\)</span> is countable. Indeed, their strictly positive <span class="math" data-tex="\(f_p\)">\(f_p\)</span>-values have every finite sum at most <span class="math" data-tex="\(f_p(p)\)">\(f_p(p)\)</span>. For each positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, there can be only finitely many with value at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>; the union of those finite sets contains the whole family.</p>
+<p>For a nonzero vector <span class="math" data-tex="\(\xi\in pK\)">\(\xi\in pK\)</span>, let <span class="math" data-tex="\(r_\xi\)">\(r_\xi\)</span> project onto <span class="math" data-tex="\(\overline{M'\xi}\)">\(\overline{M'\xi}\)</span>. The space and its orthogonal complement are invariant under the unitaries of <span class="math" data-tex="\(M'\)">\(M'\)</span>, hence <span class="math" data-tex="\(r_\xi\in M\)">\(r_\xi\in M\)</span>; moreover <span class="math" data-tex="\(r_\xi\leq p\)">\(r_\xi\leq p\)</span>, because <span class="math" data-tex="\(p\)">\(p\)</span> commutes with <span class="math" data-tex="\(M'\)">\(M'\)</span>. The functional <span class="math" data-tex="\(x\mapsto\langle x\xi,\xi\rangle\)">\(x\mapsto\langle x\xi,\xi\rangle\)</span> is faithful on <span class="math" data-tex="\(r_\xi M r_\xi\)">\(r_\xi M r_\xi\)</span>: if <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> there has zero value, then <span class="math" data-tex="\(a^{1/2}\xi=0\)">\(a^{1/2}\xi=0\)</span>, and commutation makes <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> zero on the dense set <span class="math" data-tex="\(M'\xi\)">\(M'\xi\)</span> in <span class="math" data-tex="\(r_\xi K\)">\(r_\xi K\)</span>. Thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>Use the maximal principle to select a maximal pairwise orthogonal family of nonzero projections of the form <span class="math" data-tex="\(r_{\xi_j}\)">\(r_{\xi_j}\)</span> contained in <span class="math" data-tex="\(p\)">\(p\)</span>. Their join is <span class="math" data-tex="\(p\)">\(p\)</span>: otherwise a nonzero vector in the complementary subspace gives one more such projection. This family is finite or countable by the preceding paragraph. Normalize each <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> to norm one, and choose strictly positive numbers <span class="math" data-tex="\(c_j\)">\(c_j\)</span> with sum one. Define on <span class="math" data-tex="\(pMp\)">\(pMp\)</span>
+<span class="math math-display" data-tex="\[
+\omega(x)=\sum_j c_j\langle x\xi_j,\xi_j\rangle.
+\tag{NF3}
+\]">\[
+\omega(x)=\sum_j c_j\langle x\xi_j,\xi_j\rangle.
+\tag{NF3}
+\]</span>
+The series defines an element of the concrete predual by CP01–06, or directly by its absolutely summable vector coefficients. It is a state. It is faithful: for positive <span class="math" data-tex="\(x\)">\(x\)</span>, zero value implies <span class="math" data-tex="\(x^{1/2}\xi_j=0\)">\(x^{1/2}\xi_j=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, hence <span class="math" data-tex="\(x^{1/2}\)">\(x^{1/2}\)</span> vanishes on every <span class="math" data-tex="\(r_{\xi_j}K\)">\(r_{\xi_j}K\)</span>, whose ranges span <span class="math" data-tex="\(pK\)">\(pK\)</span>.</p>
+<p>Its GNS representation <span class="math" data-tex="\((\pi,H,\Omega)\)">\((\pi,H,\Omega)\)</span> is faithful and unital, and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is cyclic and separating. Faithfulness follows already from <span class="math" data-tex="\(\|\pi(x)\Omega\|^2=\omega(x^*x)\)">\(\|\pi(x)\Omega\|^2=\omega(x^*x)\)</span>; separation is the same equality. <a href="OA-FLOW-STC.html#oa-flow.st.coefficient">ST-3 coefficient proof</a> proves that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is ultraweakly continuous, since <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is the explicit predual functional (NF3). <span class="unlinked">ST-2</span> proves that <span class="math" data-tex="\(\pi(pMp)\)">\(\pi(pMp)\)</span> is a concrete von Neumann algebra, with ultraweakly continuous inverse. Thus the spectral constructions used below take place inside the exact represented image.</p>
+<p><a id="oa-flow.nf.3"></a></p>
+<h2 id="OA-FLOW.NF.3">NF-3. The summable-sequence closed-form argument</h2>
+<p>We claim that for a sequence <span class="math" data-tex="\(0\leq a_n\leq p\)">\(0\leq a_n\leq p\)</span> in <span class="math" data-tex="\(pMp\)">\(pMp\)</span>,
+<span class="math math-display" data-tex="\[
+\omega(a_n)\longrightarrow0\quad\Longrightarrow\quad f_p(a_n)\longrightarrow0.
+\tag{NF4}
+\]">\[
+\omega(a_n)\longrightarrow0\quad\Longrightarrow\quad f_p(a_n)\longrightarrow0.
+\tag{NF4}
+\]</span>
+It suffices first to treat <span class="math" data-tex="\(\sum_n\omega(a_n)&lt;\infty\)">\(\sum_n\omega(a_n)&lt;\infty\)</span>. Write <span class="math" data-tex="\(A_n=\pi(a_n)\)">\(A_n=\pi(a_n)\)</span> and define
+<span class="math math-display" data-tex="\[
+q(v)=\sum_{n\geq1}\|A_n^{1/2}v\|^2,\qquad
+\mathcal V=\{v\in H:q(v)&lt;\infty\}.
+\tag{NF5}
+\]">\[
+q(v)=\sum_{n\geq1}\|A_n^{1/2}v\|^2,\qquad
+\mathcal V=\{v\in H:q(v)&lt;\infty\}.
+\tag{NF5}
+\]</span>
+The domain is linear; finite-sum Cauchy–Schwarz and passage to increasing partial sums give its quadratic-form identities. It contains <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> by summability. It also contains <span class="math" data-tex="\(\pi(pMp)'\Omega\)">\(\pi(pMp)'\Omega\)</span>, because for a commuting bounded operator <span class="math" data-tex="\(b'\)">\(b'\)</span>,
+<span class="math math-display" data-tex="\[
+q(b'\Omega)\leq\|b'\|^2q(\Omega).
+\]">\[
+q(b'\Omega)\leq\|b'\|^2q(\Omega).
+\]</span>
+This subspace is dense. Indeed its closure projection lies in <span class="math" data-tex="\(\pi(pMp)\)">\(\pi(pMp)\)</span> by the commutant-unitary test and fixes <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>; separation forces that projection to be the identity.</p>
+<p>The form is closed. If <span class="math" data-tex="\(v_k\)">\(v_k\)</span> is Cauchy for <span class="math" data-tex="\(\|v\|^2+q(v)\)">\(\|v\|^2+q(v)\)</span>, let <span class="math" data-tex="\(v\)">\(v\)</span> be its limit in <span class="math" data-tex="\(H\)">\(H\)</span>. Every finite partial sum of <span class="math" data-tex="\(q(v_k-v)\)">\(q(v_k-v)\)</span> is the limit of the corresponding partial sums of <span class="math" data-tex="\(q(v_k-v_l)\)">\(q(v_k-v_l)\)</span>, since each <span class="math" data-tex="\(A_n^{1/2}\)">\(A_n^{1/2}\)</span> is bounded. Thus
+<span class="math math-display" data-tex="\[
+q(v_k-v)\leq\liminf_{l\to\infty}q(v_k-v_l).
+\]">\[
+q(v_k-v)\leq\liminf_{l\to\infty}q(v_k-v_l).
+\]</span>
+The right side tends to zero as <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>. The inequality for <span class="math" data-tex="\(q(v)\)">\(q(v)\)</span> obtained from <span class="math" data-tex="\(v=v_k+(v-v_k)\)">\(v=v_k+(v-v_k)\)</span> makes <span class="math" data-tex="\(v\in\mathcal V\)">\(v\in\mathcal V\)</span>. This proves completeness of the form domain.</p>
+<p>FF-4 supplies its positive self-adjoint representing operator <span class="math" data-tex="\(T\)">\(T\)</span>, with
+<span class="math" data-tex="\(q(v)=\|T^{1/2}v\|^2\)">\(q(v)=\|T^{1/2}v\|^2\)</span> on exactly <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. For a unitary <span class="math" data-tex="\(u'\)">\(u'\)</span> in the commutant, <span class="math" data-tex="\(q(u'v)=q(v)\)">\(q(u'v)=q(v)\)</span>. Uniqueness in FF-4 therefore gives <span class="math" data-tex="\(u'Tu'^*=T\)">\(u'Tu'^*=T\)</span>, including domains, and SF's spectral covariance puts
+<span class="math math-display" data-tex="\[
+r_m=1_{[0,m]}(T)\in\pi(pMp),\qquad r_m\uparrow1_H
+\tag{NF6}
+\]">\[
+r_m=1_{[0,m]}(T)\in\pi(pMp),\qquad r_m\uparrow1_H
+\tag{NF6}
+\]</span>
+strongly. Since the form is densely defined, there is no infinite-domain projection. For every finite <span class="math" data-tex="\(N\)">\(N\)</span> and every <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\left\langle r_m\left(\sum_{n=1}^N A_n\right)r_mv,v\right\rangle
+\leq q(r_mv)\leq m\|r_mv\|^2.
+\tag{NF7}
+\]">\[
+\left\langle r_m\left(\sum_{n=1}^N A_n\right)r_mv,v\right\rangle
+\leq q(r_mv)\leq m\|r_mv\|^2.
+\tag{NF7}
+\]</span>
+Set <span class="math" data-tex="\(e_m=\pi^{-1}(r_m)\)">\(e_m=\pi^{-1}(r_m)\)</span>. The faithful isomorphism preserves order, so <span class="math" data-tex="\(e_m\)">\(e_m\)</span> are projections increasing to <span class="math" data-tex="\(p\)">\(p\)</span>. For clarity, their least upper bound is <span class="math" data-tex="\(p\)">\(p\)</span>: any upper bound maps to an upper bound of all <span class="math" data-tex="\(r_m\)">\(r_m\)</span>, whose supremum is the identity. Transporting (NF7) and applying finite additivity gives
+<span class="math math-display" data-tex="\[
+\sum_{n=1}^N f_p(e_m a_n e_m)\leq m f_p(e_m).
+\tag{NF8}
+\]">\[
+\sum_{n=1}^N f_p(e_m a_n e_m)\leq m f_p(e_m).
+\tag{NF8}
+\]</span>
+For each fixed <span class="math" data-tex="\(m\)">\(m\)</span>, it follows that <span class="math" data-tex="\(f_p(e_m a_n e_m)\to0\)">\(f_p(e_m a_n e_m)\to0\)</span>.</p>
+<p>We also have
+<span class="math math-display" data-tex="\[
+f_p(a_n)\leq
+2f_p(e_m a_n e_m)+2f_p(p-e_m).
+\tag{NF9}
+\]">\[
+f_p(a_n)\leq
+2f_p(e_m a_n e_m)+2f_p(p-e_m).
+\tag{NF9}
+\]</span>
+For a direct operator proof, positivity of
+<span class="math" data-tex="\((a_n^{1/2}e_m-a_n^{1/2}(p-e_m))^*
+ (a_n^{1/2}e_m-a_n^{1/2}(p-e_m))\)">\((a_n^{1/2}e_m-a_n^{1/2}(p-e_m))^*
+ (a_n^{1/2}e_m-a_n^{1/2}(p-e_m))\)</span>
+gives <span class="math" data-tex="\(a_n\leq2e_m a_n e_m+2(p-e_m)a_n(p-e_m)\)">\(a_n\leq2e_m a_n e_m+2(p-e_m)a_n(p-e_m)\)</span>.
+The latter second term is at most <span class="math" data-tex="\(2(p-e_m)\)">\(2(p-e_m)\)</span>; apply <span class="math" data-tex="\(f_p\)">\(f_p\)</span>.
+Since <span class="math" data-tex="\(e_m\uparrow p\)">\(e_m\uparrow p\)</span>, order normality gives <span class="math" data-tex="\(f_p(p-e_m)\to0\)">\(f_p(p-e_m)\to0\)</span>. First choose <span class="math" data-tex="\(m\)">\(m\)</span>, then let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> in (NF9). This proves (NF4) in the summable case.</p>
+<p>In general, if (NF4) failed, select a subsequence with <span class="math" data-tex="\(f_p(a_n)\)">\(f_p(a_n)\)</span> bounded below by one fixed positive number, and refine it so that <span class="math" data-tex="\(\omega(a_n)\leq2^{-n}\)">\(\omega(a_n)\leq2^{-n}\)</span>. The summable case contradicts that lower bound. Thus (NF4) holds for every sequence as asserted.</p>
+<p>Equivalently, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+0\leq a\leq p,\quad \omega(a)&lt;\delta
+\quad\Longrightarrow\quad f_p(a)&lt;\varepsilon.
+\tag{NF10}
+\]">\[
+0\leq a\leq p,\quad \omega(a)&lt;\delta
+\quad\Longrightarrow\quad f_p(a)&lt;\varepsilon.
+\tag{NF10}
+\]</span>
+If this uniform assertion failed, choosing one violating contraction for <span class="math" data-tex="\(\delta=1/n\)">\(\delta=1/n\)</span> would contradict (NF4). This use of sequences does not require the algebra or its Hilbert space to be separable; it establishes a scalar uniform implication.</p>
+<p><a id="oa-flow.nf.4"></a></p>
+<h2 id="OA-FLOW.NF.4">NF-4. Norm approximation by actual predual coefficients</h2>
+<p>Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. By (NF1) and (NF10), there is a <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that for every contraction <span class="math" data-tex="\(x\in pMp\)">\(x\in pMp\)</span>,
+<span class="math math-display" data-tex="\[
+\|\pi(x)\Omega\|&lt;\delta\quad\Longrightarrow\quad |f_p(x)|&lt;\varepsilon.
+\]">\[
+\|\pi(x)\Omega\|&lt;\delta\quad\Longrightarrow\quad |f_p(x)|&lt;\varepsilon.
+\]</span>
+Indeed the squared vector norm is <span class="math" data-tex="\(\omega(x^*x)\)">\(\omega(x^*x)\)</span>, and
+<span class="math" data-tex="\(|f_p(x)|^2\leq f_p(p)f_p(x^*x)\)">\(|f_p(x)|^2\leq f_p(p)f_p(x^*x)\)</span>.
+For all contractions, split according to the preceding inequality or its failure to obtain
+<span class="math math-display" data-tex="\[
+|f_p(x)|\leq\varepsilon+C\|\pi(x)\Omega\|,
+\qquad C=\|f_p\|/\delta.
+\]">\[
+|f_p(x)|\leq\varepsilon+C\|\pi(x)\Omega\|,
+\qquad C=\|f_p\|/\delta.
+\]</span>
+Rescaling gives the homogeneous bound
+<span class="math math-display" data-tex="\[
+|f_p(x)|\leq\varepsilon\|x\|+C\|\pi(x)\Omega\|
+\quad(x\in pMp).
+\tag{NF11}
+\]">\[
+|f_p(x)|\leq\varepsilon\|x\|+C\|\pi(x)\Omega\|
+\quad(x\in pMp).
+\tag{NF11}
+\]</span>
+Apply the complex Hahn–Banach theorem from CF-1 to the functional
+<span class="math" data-tex="\((x,\pi(x)\Omega)\mapsto f_p(x)\)">\((x,\pi(x)\Omega)\mapsto f_p(x)\)</span> on the diagonal linear subspace of <span class="math" data-tex="\(pMp\oplus H\)">\(pMp\oplus H\)</span>, equipped with the norm
+<span class="math" data-tex="\(\varepsilon\|x\|+C\|v\|\)">\(\varepsilon\|x\|+C\|v\|\)</span>.
+Here <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, since <span class="math" data-tex="\(f_p\ne0\)">\(f_p\ne0\)</span>. The extension has the form
+<span class="math math-display" data-tex="\[
+F(x,v)=h_\varepsilon(x)+\langle v,\eta_\varepsilon\rangle,
+\qquad \|h_\varepsilon\|\leq\varepsilon,\quad
+\|\eta_\varepsilon\|\leq C.
+\]">\[
+F(x,v)=h_\varepsilon(x)+\langle v,\eta_\varepsilon\rangle,
+\qquad \|h_\varepsilon\|\leq\varepsilon,\quad
+\|\eta_\varepsilon\|\leq C.
+\]</span>
+The decomposition follows by restricting the extension to the two summands, and the Hilbert representation theorem supplies <span class="math" data-tex="\(\eta_\varepsilon\)">\(\eta_\varepsilon\)</span>. Its restriction to the diagonal says
+<span class="math math-display" data-tex="\[
+\big\|f_p-\big[x\mapsto
+\langle\pi(x)\Omega,\eta_\varepsilon\rangle\big]\big\|
+\leq\varepsilon.
+\tag{NF12}
+\]">\[
+\big\|f_p-\big[x\mapsto
+\langle\pi(x)\Omega,\eta_\varepsilon\rangle\big]\big\|
+\leq\varepsilon.
+\tag{NF12}
+\]</span>
+The bracketed coefficient is ultraweakly continuous because <span class="math" data-tex="\(\pi\)">\(\pi\)</span> already is. CP01–06 prove that the concrete predual is a norm-closed subspace of the bounded dual. Taking <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves <span class="math" data-tex="\(f_p\in(pMp)_*\)">\(f_p\in(pMp)_*\)</span>.</p>
+<p>Finally, compression <span class="math" data-tex="\(x\mapsto pxp\)">\(x\mapsto pxp\)</span> is ultraweakly continuous: substituting it in a vector series replaces its vectors by their <span class="math" data-tex="\(p\)">\(p\)</span>-compressions, preserving the summability bound. Equation (NF2) therefore gives <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span>. This proves the theorem for every bounded order-normal positive functional.</p>
+<p>Conversely, if <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span> is positive, a bounded increasing positive net converges strongly to its supremum by the earlier bounded-operator lemma and hence ultraweakly by BD7. Applying <span class="math" data-tex="\(f\)">\(f\)</span> proves order normality. Thus both directions are now proved, for arbitrary concrete von Neumann algebras.</p>
+<p><a id="oa-flow.nf.5"></a></p>
+<h2 id="OA-FLOW.NF.5">NF-5. The representation of every normal weight is ultraweakly continuous</h2>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be any normal weight, without faithfulness or semifiniteness, and let <span class="math" data-tex="\((H_\varphi,\pi_\varphi,\Lambda_\varphi)\)">\((H_\varphi,\pi_\varphi,\Lambda_\varphi)\)</span> be the GW-3 construction. For <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, the functional
+<span class="math math-display" data-tex="\[
+f_x(a)=\varphi_0(x^*ax)\quad(a\in M)
+\tag{NF13}
+\]">\[
+f_x(a)=\varphi_0(x^*ax)\quad(a\in M)
+\tag{NF13}
+\]</span>
+is well defined and linear, since <span class="math" data-tex="\(x^*ax\in\mathfrak m\)">\(x^*ax\in\mathfrak m\)</span>. It is positive and bounded by <span class="math" data-tex="\(f_x(1)=\varphi(x^*x)\)">\(f_x(1)=\varphi(x^*x)\)</span>. If <span class="math" data-tex="\(0\leq a_i\uparrow a\)">\(0\leq a_i\uparrow a\)</span>, the same conjugated net has supremum <span class="math" data-tex="\(x^*ax\)">\(x^*ax\)</span>; normality of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> gives <span class="math" data-tex="\(f_x(a_i)\uparrow f_x(a)\)">\(f_x(a_i)\uparrow f_x(a)\)</span>. NF-1–4 therefore place <span class="math" data-tex="\(f_x\)">\(f_x\)</span> in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p>Polarization in <span class="math" data-tex="\(\Lambda_\varphi(x)\)">\(\Lambda_\varphi(x)\)</span> gives every mixed coefficient on the dense space <span class="math" data-tex="\(\Lambda_\varphi(N)\)">\(\Lambda_\varphi(N)\)</span> as a finite linear combination of these normal positive functionals. Approximate arbitrary vectors <span class="math" data-tex="\(\xi,\eta\in H_\varphi\)">\(\xi,\eta\in H_\varphi\)</span> in norm by vectors from this dense space. The estimate
+<span class="math math-display" data-tex="\[
+|\langle\pi_\varphi(a)\xi,\eta\rangle
+-\langle\pi_\varphi(a)\xi',\eta'\rangle|
+\leq\|a\|\bigl(\|\xi-\xi'\|\|\eta\|+
+                  \|\xi'\|\|\eta-\eta'\|\bigr)
+\tag{NF14}
+\]">\[
+|\langle\pi_\varphi(a)\xi,\eta\rangle
+-\langle\pi_\varphi(a)\xi',\eta'\rangle|
+\leq\|a\|\bigl(\|\xi-\xi'\|\|\eta\|+
+                  \|\xi'\|\|\eta-\eta'\|\bigr)
+\tag{NF14}
+\]</span>
+shows norm convergence of the corresponding functionals, so CP's closedness places every coefficient in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p>A concrete ultraweak functional on <span class="math" data-tex="\(B(H_\varphi)\)">\(B(H_\varphi)\)</span> is an absolutely summable vector series. Its pullback is a norm-convergent sum of the just proved normal coefficients, with total coefficient-norm bound <span class="math" data-tex="\(\sum_j\|\xi_j\|\|\eta_j\|\)">\(\sum_j\|\xi_j\|\|\eta_j\|\)</span>. It too belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Since those functionals define the target ultraweak topology, <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> is ultraweakly continuous on its entire domain.</p>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is additionally faithful and semifinite, GW-4 proves faithfulness of <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span>; <span class="unlinked">ST-2</span> then proves that its image is a von Neumann algebra and its inverse is ultraweakly continuous. These are precisely the normal representation and topology statements needed before the general finite-star Hilbert-algebra construction. They do not prove closability of its involution, identify opposite-weight implementing vectors, or establish the full extended-valued normality equivalence. The later <a href="OA-FLOW-EW.html#ew-5">extended-valued normality theorem</a> applies to every weight; <span class="unlinked">finite-star closability</span>, <span class="unlinked">fullness</span> and <span class="unlinked">the canonical opposite finite cone</span> apply to faithful n.s.f. weights. They remain separate from the finite-functional proof here.</p>
+<p><a id="oa-flow.nf.6"></a></p>
+<h2 id="OA-FLOW.NF.6">NF-6. Positive maps: the full order-to-topology equivalence</h2>
+<p>Let <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span> be a complex-linear positive map between concrete von Neumann algebras. It is bounded: for self-adjoint <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math" data-tex="\(-\|x\|1\leq x\leq\|x\|1\)">\(-\|x\|1\leq x\leq\|x\|1\)</span> gives
+<span class="math" data-tex="\(\|T(x)\|\leq\|x\|\|T(1)\|\)">\(\|T(x)\|\leq\|x\|\|T(1)\|\)</span>.
+Splitting a general <span class="math" data-tex="\(x\)">\(x\)</span> into its real and imaginary parts yields the sufficient bound
+<span class="math" data-tex="\(\|T(x)\|\leq2\|T(1)\|\|x\|\)">\(\|T(x)\|\leq2\|T(1)\|\|x\|\)</span>.
+No sharp positive-map norm theorem is needed.</p>
+<p>Suppose <span class="math" data-tex="\(T\)">\(T\)</span> preserves bounded increasing positive suprema. If <span class="math" data-tex="\(\omega\in N_*^+\)">\(\omega\in N_*^+\)</span>, the functional <span class="math" data-tex="\(\omega\circ T\)">\(\omega\circ T\)</span> is bounded and positive. It is order-normal: <span class="math" data-tex="\(T(a_i)\uparrow T(a)\)">\(T(a_i)\uparrow T(a)\)</span>, and the already proved converse in NF-4 applies to <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Hence NF-1–4 put <span class="math" data-tex="\(\omega\circ T\)">\(\omega\circ T\)</span> in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p>Every member of <span class="math" data-tex="\(N_*\)">\(N_*\)</span> is a linear combination of four positive members of <span class="math" data-tex="\(N_*\)">\(N_*\)</span>. To include the exact proof, write its CP vector series as
+<span class="math" data-tex="\(g(a)=\sum_j\langle a u_j,v_j\rangle\)">\(g(a)=\sum_j\langle a u_j,v_j\rangle\)</span>, with both vector sequences square summable. For <span class="math" data-tex="\(k=0,1,2,3\)">\(k=0,1,2,3\)</span>, set
+<span class="math math-display" data-tex="\[
+\omega_k(a)=\sum_j
+\langle a(u_j+i^kv_j),u_j+i^kv_j\rangle.
+\]">\[
+\omega_k(a)=\sum_j
+\langle a(u_j+i^kv_j),u_j+i^kv_j\rangle.
+\]</span>
+The squared vector norms have finite sum, so these are bounded positive predual functionals. Direct expansion with the linear-first convention gives
+<span class="math math-display" data-tex="\[
+g=\frac14\sum_{k=0}^3 i^k\omega_k.
+\tag{NF15}
+\]">\[
+g=\frac14\sum_{k=0}^3 i^k\omega_k.
+\tag{NF15}
+\]</span>
+Thus <span class="math" data-tex="\(g\circ T\in M_*\)">\(g\circ T\in M_*\)</span> for every <span class="math" data-tex="\(g\in N_*\)">\(g\in N_*\)</span>, proving that <span class="math" data-tex="\(T\)">\(T\)</span> is ultraweakly continuous on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(T\)">\(T\)</span> is positive and ultraweakly continuous, and <span class="math" data-tex="\(0\leq a_i\uparrow a\)">\(0\leq a_i\uparrow a\)</span>. The bounded-operator strong-limit lemma and BD7 give <span class="math" data-tex="\(a_i\to a\)">\(a_i\to a\)</span> ultraweakly. The increasing positive net <span class="math" data-tex="\(T(a_i)\)">\(T(a_i)\)</span> is bounded above by <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span>, so it has a supremum <span class="math" data-tex="\(b\)">\(b\)</span> and converges to <span class="math" data-tex="\(b\)">\(b\)</span> strongly, hence ultraweakly. Ultraweak continuity also gives convergence to <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span>; vector functionals separate operators, so <span class="math" data-tex="\(b=T(a)\)">\(b=T(a)\)</span>. This proves the converse.</p>
+<p>In particular every order-normal *-representation is ultraweakly continuous, and the topology conclusions of ST-2 apply whenever it is faithful. This general positive-map theorem is independent of the normality equivalence for extended-valued weights: its only scalar normality input is the complete finite-functional proof NF-1–4.</p>
+<p><a id="oa-flow.nf.7"></a></p>
+<h2 id="OA-FLOW.NF.7">NF-7. A closed sum form and norm approximation of a functional</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The tail projections sum to a diagonal unbounded operator; its spectral cutoffs control the tails and give normal coefficient approximants" src="assets/general-weight/assets/normality-mechanism.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>This is an exact commutative example of <a href="OA-FLOW-NF.html#oa-flow.nf.3">NF-3 and NF-4</a>, not a reduction of the general proof to commutative algebras. Let <span class="math" data-tex="\(M=\ell^\infty(\mathbb N)\)">\(M=\ell^\infty(\mathbb N)\)</span> act on <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, and set
+<span class="math math-display" data-tex="\[
+\omega(x)=\sum_{j\geq1}3\,4^{-j}x_j,\qquad
+f(x)=\sum_{j\geq1}2^{-j}x_j,\qquad
+\Omega_j=\sqrt3\,2^{-j}.
+\]">\[
+\omega(x)=\sum_{j\geq1}3\,4^{-j}x_j,\qquad
+f(x)=\sum_{j\geq1}2^{-j}x_j,\qquad
+\Omega_j=\sqrt3\,2^{-j}.
+\]</span>
+Both are faithful states; absolute summability puts them in the concrete predual directly. The vector <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> implements <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and is cyclic and separating: finite coordinate vectors are in <span class="math" data-tex="\(M\Omega\)">\(M\Omega\)</span>, and every coordinate of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is nonzero.</p>
+<p>For the tail projection <span class="math" data-tex="\(a_n=1_{\{j\geq n\}}\)">\(a_n=1_{\{j\geq n\}}\)</span>, summing geometric series gives
+<span class="math math-display" data-tex="\[
+\omega(a_n)=4^{1-n},\qquad f(a_n)=2^{1-n},\qquad
+q(v)=\sum_n\|a_n v\|^2=\sum_j j|v_j|^2.
+\]">\[
+\omega(a_n)=4^{1-n},\qquad f(a_n)=2^{1-n},\qquad
+q(v)=\sum_n\|a_n v\|^2=\sum_j j|v_j|^2.
+\]</span>
+The double nonnegative sums agree because both are suprema of finite subsums. Thus the associated operator is <span class="math" data-tex="\(T=\operatorname{diag}(1,2,3,\ldots)\)">\(T=\operatorname{diag}(1,2,3,\ldots)\)</span>, with exact operator domain <span class="math" data-tex="\(\{v:\sum_j j^2|v_j|^2&lt;\infty\}\)">\(\{v:\sum_j j^2|v_j|^2&lt;\infty\}\)</span> and form domain <span class="math" data-tex="\(\{v:\sum_j j|v_j|^2&lt;\infty\}\)">\(\{v:\sum_j j|v_j|^2&lt;\infty\}\)</span>. The first panel displays only <span class="math" data-tex="\(1\leq n,j\leq8\)">\(1\leq n,j\leq8\)</span>; the construction and the domain formulas are infinite. Its cutoff <span class="math" data-tex="\(r_m=1_{\{j\leq m\}}\)">\(r_m=1_{\{j\leq m\}}\)</span> is exactly <span class="math" data-tex="\(1_{[0,m]}(T)\)">\(1_{[0,m]}(T)\)</span>. Also <span class="math" data-tex="\(q(\Omega)=\sum_n4^{1-n}=4/3\)">\(q(\Omega)=\sum_n4^{1-n}=4/3\)</span>, verifying the summability premise.</p>
+<p>For <span class="math" data-tex="\(m=4\)">\(m=4\)</span>, the middle panel compares <span class="math" data-tex="\(f(a_n)\)">\(f(a_n)\)</span>, <span class="math" data-tex="\(\omega(a_n)\)">\(\omega(a_n)\)</span>, and the precise NF9 upper bound
+<span class="math math-display" data-tex="\[
+2f(r_m a_n r_m)+2f(1-r_m),\qquad
+f(r_m a_n r_m)=
+\begin{cases}2^{1-n}-2^{-m},&amp;n\leq m,\\0,&amp;n&gt;m.\end{cases}
+\]">\[
+2f(r_m a_n r_m)+2f(1-r_m),\qquad
+f(r_m a_n r_m)=
+\begin{cases}2^{1-n}-2^{-m},&amp;n\leq m,\\0,&amp;n&gt;m.\end{cases}
+\]</span>
+The fixed-cutoff bound levels off at <span class="math" data-tex="\(2^{1-m}\)">\(2^{1-m}\)</span>. The proof therefore chooses a sufficiently large cutoff before taking <span class="math" data-tex="\(n\)">\(n\)</span> large; it does not incorrectly claim that one fixed-cutoff estimate tends to zero.</p>
+<p>In the final panel, the coefficient vectors
+<span class="math" data-tex="\((\eta_m)_j=1_{\{j\leq m\}}/\sqrt3\)">\((\eta_m)_j=1_{\{j\leq m\}}/\sqrt3\)</span> give
+<span class="math math-display" data-tex="\[
+f_m(x)=\langle x\Omega,\eta_m\rangle
+=\sum_{j\leq m}2^{-j}x_j,\qquad
+\|f-f_m\|=2^{-m}.
+\]">\[
+f_m(x)=\langle x\Omega,\eta_m\rangle
+=\sum_{j\leq m}2^{-j}x_j,\qquad
+\|f-f_m\|=2^{-m}.
+\]</span>
+The upper bound is the tail sum times <span class="math" data-tex="\(\|x\|_\infty\)">\(\|x\|_\infty\)</span>; taking <span class="math" data-tex="\(x=1\)">\(x=1\)</span> gives equality. Hence these concrete normal coefficients converge in predual norm. The vectors have norm <span class="math" data-tex="\(\sqrt{m/3}\)">\(\sqrt{m/3}\)</span>, and do not converge in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>; boundedness of a common coefficient vector is not required for predual norm approximation. This displays the mechanism behind NF12. The general theorem obtains its approximants by the explicit Hahn–Banach argument, rather than assuming such coordinate formulas.</p>
+<p>The exact plotted formulas and finite sample arrays are retained in <a href="assets/general-weight/render_normality_mechanism.py">render_normality_mechanism.py</a> and <a href="assets/general-weight/normality-figure-numerics.json">normality-figure-numerics.json</a>. Human context is <a href="https://arxiv.org/pdf/2004.02383v1#page=63">Hiai's free author notes, §7.1</a>; no unproved implication from its broader weight theorem is used. Original figure, code and caption: CC0-1.0 to the extent of rights held.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GW.html">Previous lesson</a><a href="OA-FLOW-CV.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-NF.md">Lesson source</a></nav></main></body></html>

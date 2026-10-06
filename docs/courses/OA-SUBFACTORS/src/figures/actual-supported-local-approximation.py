@@ -1,0 +1,57 @@
+"""Original reproducible support schematic for the fully authored H proof."""
+from pathlib import Path
+from html import escape
+W, H = 740, 1410
+parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+         '<rect width="740" height="1410" fill="#f7fafc"/>',
+         '<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#365d75"/></marker></defs>']
+def text(x, y, value, size=19, bold=False):
+    parts.append(f'<text x="{x}" y="{y}" text-anchor="middle" font-family="Arial,sans-serif" font-size="{size}" font-weight="{700 if bold else 400}" fill="#133c53">{escape(value)}</text>')
+def box(x, y, w, h, color, radius=12):
+    parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="{color}" stroke="#9bb8c9"/>')
+def arrow(x1, y1, x2, y2):
+    parts.append(f'<path d="M{x1} {y1}L{x2} {y2}" stroke="#365d75" stroke-width="3" marker-end="url(#arrow)"/>')
+text(370, 35, 'Transport the actual support and retain the padding', 24, True)
+text(370, 66, 'BF → both local forms → the Følner criterion for every core', 19)
+box(20, 89, 700, 224, '#eaf3f8')
+text(370, 124, '1 · Perturb on r = f q, with capacity n τ(r) ≤ 1', 23, True)
+box(49, 149, 260, 73, '#d7eaf3'); box(432, 149, 260, 73, '#b9d9c8')
+text(179, 178, 'Input: yᵢ = aᵢ q ∈ N r', 20)
+text(179, 206, 'τ(r) = t τ(q)', 21, True)
+arrow(314, 185, 427, 185)
+text(562, 178, 'Output: vᵢ* vⱼ = δᵢⱼ r', 20)
+text(562, 206, 'Orthogonal ranges in N', 19)
+text(370, 255, 'Input tolerance on r: δ / √t, where t = τ(f) > 0.', 20)
+text(370, 287, 'The coefficient estimate remains valid for target u ∈ M.', 18)
+box(20, 333, 700, 330, '#e8f4ed')
+text(370, 368, '2 · A matrix corner covers only the fraction ρ = τ(P)', 22, True)
+text(370, 403, 'V(s⁰ f P)V* = g   ⊂   s = V(s⁰ f)V*;   h = s − g', 20)
+text(370, 439, 'Exact support sample: n = 2, t = 3/5, τ(q) = 1/20, ρ = 9/10.', 17)
+text(370, 470, 'τ(s⁰) = 1/9;  τ(q⁰) = τ(s⁰ d₁₁) = 1/20.', 20)
+box(70, 489, 540, 55, '#88bd9e', 0); box(610, 489, 60, 55, '#e6b69b', 0)
+text(340, 524, 'Covered part g: τ(g) = 3/50', 21, True)
+text(640, 524, 'h', 24, True)
+text(70, 574, '0', 17); text(610, 574, '3/50', 17); text(670, 574, '1/15', 17)
+text(370, 608, 'τ(s) = 1/15;  τ(h) = 1/150 = (1 − ρ) τ(s).', 21, True)
+text(370, 641, 'Bar coordinates encode reordered scalar trace; small target errors are not asserted.', 15)
+box(20, 683, 700, 224, '#fdf0e6')
+text(370, 718, '3 · The corner expectation keeps its own unit', 23, True)
+text(370, 759, 'H = s⁰ f;  C = H Aₗ H = s⁰(f Aₗ f);  λ₀ = τ(s⁰).', 21)
+text(370, 802, 'E_C(x) = λ₀⁻¹ s⁰ E_Aₗ(x),   x ∈ H M H', 25, True)
+text(370, 843, 'Without λ₀⁻¹ the unit H would be sent to λ₀ H.', 20)
+text(370, 881, 'Example above: λ₀⁻¹ = 9.  All norms use the inherited trace.', 18)
+box(20, 927, 700, 366, '#eeeff9')
+text(370, 964, '4 · Forward error bounds and the exact converse', 23, True)
+text(370, 1006, '‖[u,s]‖₂ / √τ(s) < ε/4 + 2√γ ≤ 3ε/8', 22, True)
+text(370, 1045, 'dist₂(sus, s Ãₗ s) / √τ(s) < ε/8 + 2√γ ≤ ε/4', 20)
+text(370, 1080, 'Here 1 − ρ < γ ≤ min(1/4, ε²/256).', 19)
+text(370, 1120, 'Converse: p = s v e_R v*;   Tr(p) = τ(s).', 22)
+text(370, 1158, '‖u p u* − p‖₂,Tr² = ‖[u,s]‖₂²', 23, True)
+text(370, 1192, '+ 2(‖sus‖₂² − ‖E_vRv*(sus)‖₂²)', 23, True)
+text(370, 1230, 'The left-translated e_R projects onto v L²(R), a right R-module.', 17)
+text(370, 1267, 'General core → BF remains; larger-R BF₁ is proved in 58.8.', 17)
+text(370, 1324, 'Proof: 57.11–57.29, 57.34–57.35; support sample: Exercise 57.3.', 18)
+text(370, 1355, 'Theorem source: Sorin Popa, Classification of amenable subfactors of type II, 4.3.1.', 15)
+text(370, 1385, 'Original block schematic · reproducible SVG source · CC0 1.0', 17)
+parts.append('</svg>')
+Path(__file__).with_suffix('.svg').write_text('\n'.join(parts) + '\n', encoding='utf-8')

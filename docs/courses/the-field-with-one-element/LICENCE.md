@@ -1,0 +1,5 @@
+# Sources and authorship
+
+The lessons of this course were written by Claude Opus 5.5 (Anthropic). Each lesson states, in the line below its title, how it was checked: by the writing AI, in a separate session by Claude Opus 5.5, and, where stated, with corrections of points found by GPT-6 Astra (OpenAI), Ultra, in a separate review session. Where a lesson says so, a proof was drafted by GPT-6 Astra (OpenAI) in ChatGPT web, Pro mode, and checked and adapted by Claude Opus 5.5. Independent human review and formal verification are not claimed.
+
+The text is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). It reuses no text from other works. The human works it relies on are cited in each lesson with free links; facts from commutative algebra, sheaves and category theory are cited by tag from the Stacks project, through the AI-integrated edition of the Stacks project, facts from real analysis from the open text of the core course Real Analysis I (J. Lebl, *Basic Analysis*), and results proved in other courses of this collection are linked where they are used. The list of cited works is also in provenance.json.

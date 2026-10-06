@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The least prime in a progression: Linnik&#x27;s theorem · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-17.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 17 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-least-prime-in-a-progression-linnik-s-theorem">The least prime in a progression: Linnik's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Dirichlet's theorem guarantees a prime in every reduced progression. It does not give a uniform scale at which the first prime must occur. Linnik's theorem supplies such a scale: one absolute, effectively computable power of the modulus works for every reduced class.</p>
+<p>Three principles enter the proof. A classical zero-free region prevents an ordinary zero from approaching <span class="math" data-tex="\(1\)">\(1\)</span> too closely. A log-free density estimate counts the remaining zeros without a spare power of a logarithm. If one real zero approaches <span class="math" data-tex="\(1\)">\(1\)</span>, an improved density estimate contains its distance from <span class="math" data-tex="\(1\)">\(1\)</span>; this gives Deuring–Heilbronn repulsion and controls the particularly small main term in some residue classes. We prove that density estimate and its repulsion consequence here.</p>
+<p>The inputs are the character identities in <em>Dirichlet characters</em> and <em>Gauss sums</em>, the explicit formula in <em>Counting zeros and the explicit formula for <span class="math" data-tex="\(\psi(x,\chi)\)">\(\psi(x,\chi)\)</span></em>, the classical results in Sections 1–6 of <em>Zero-free regions and the exceptional zero</em>, and the sharp and hybrid sieves in <em>The multiplicative large sieve and bilinear forms with characters</em>. We use the fully analytic effective value bound, Theorem 4.1 of <em>Values of Dirichlet L-functions at <span class="math" data-tex="\(s=1\)">\(s=1\)</span></em>; no ineffective Siegel constant is needed. Chebyshev's bounds and the Mertens estimate used below were proved in <em>Dirichlet's theorem on primes in arithmetic progressions</em> and <em>The Siegel–Walfisz theorem</em>.</p>
+<h2 id="1-the-family-and-the-exceptional-zero">1. The family and the exceptional zero</h2>
+<p>Let <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>, <span class="math" data-tex="\(H=\log(2T)\)">\(H=\log(2T)\)</span>, and consider all primitive characters of conductor at most <span class="math" data-tex="\(T\)">\(T\)</span>, including the principal character of conductor <span class="math" data-tex="\(1\)">\(1\)</span>. The classical region and Page's theorem give an absolute effective <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span> such that the box
+<span class="math math-display" data-tex="\[
+\Re s&gt;1-\frac{a_0}{H},
+\qquad |\Im s|\le T
+\tag{1.1}
+\]">\[
+\Re s&gt;1-\frac{a_0}{H},
+\qquad |\Im s|\le T
+\tag{1.1}
+\]</span>
+contains at most one nontrivial zero among the whole family. If present, it is simple and real, belongs to a real nonprincipal character <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span>, and is denoted by
+<span class="math" data-tex="\(\beta_1=1-\delta\)">\(\beta_1=1-\delta\)</span>, of conductor <span class="math" data-tex="\(d_1\le T\)">\(d_1\le T\)</span>.
+For different real conductors the Page argument uses their common modulus, at most <span class="math" data-tex="\(T^2\)">\(T^2\)</span>; decreasing the effective constant gives (1.1).
+The height restriction is part of this statement.</p>
+<p>Put <span class="math" data-tex="\(E=1\)">\(E=1\)</span> if this zero exists and <span class="math" data-tex="\(E=0\)">\(E=0\)</span> otherwise. Let
+<span class="math math-display" data-tex="\[
+N^*(\sigma,T)=
+\sum_{d\le T}\sum_{\chi\bmod d}^{*}
+\#\{\rho:\Re\rho\ge\sigma,\ |\Im\rho|\le T,\ \rho\ne\beta_1\}.
+\tag{1.2}
+\]">\[
+N^*(\sigma,T)=
+\sum_{d\le T}\sum_{\chi\bmod d}^{*}
+\#\{\rho:\Re\rho\ge\sigma,\ |\Im\rho|\le T,\ \rho\ne\beta_1\}.
+\tag{1.2}
+\]</span>
+Exclusion is by this single zero with its multiplicity one, not by its entire character.
+When <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, the independently analytic bound (6.4) of <em>Zero-free regions and the exceptional zero</em> gives
+<span class="math math-display" data-tex="\[
+\delta\ge c_0d_1^{-1/2}\log^{-4}(2d_1)
+\ge c_1T^{-1/2}H^{-4}.
+\tag{1.3}
+\]">\[
+\delta\ge c_0d_1^{-1/2}\log^{-4}(2d_1)
+\ge c_1T^{-1/2}H^{-4}.
+\tag{1.3}
+\]</span>
+Both constants are effective. The weaker logarithmic power <span class="math" data-tex="\(4\)">\(4\)</span>, rather than the algebraic value bound's power <span class="math" data-tex="\(2\)">\(2\)</span>, is sufficient.</p>
+<p>Our main support theorem is
+<span class="math math-display" data-tex="\[
+N^*(\sigma,T)\le C T^{c(1-\sigma)}
+\quad(1/2\le\sigma\le1),
+\tag{1.4}
+\]">\[
+N^*(\sigma,T)\le C T^{c(1-\sigma)}
+\quad(1/2\le\sigma\le1),
+\tag{1.4}
+\]</span>
+and, if <span class="math" data-tex="\(E=1\)">\(E=1\)</span>,
+<span class="math math-display" data-tex="\[
+N^*(\sigma,T)\le C\delta H T^{c(1-\sigma)}.
+\tag{1.5}
+\]">\[
+N^*(\sigma,T)\le C\delta H T^{c(1-\sigma)}.
+\tag{1.5}
+\]</span>
+The constants <span class="math" data-tex="\(c,C\)">\(c,C\)</span> will be absolute and effective. The extra factor in (1.5) is indispensable.</p>
+<h2 id="2-a-finite-power-sum-lemma">2. A finite power-sum lemma</h2>
+<p><strong>Lemma 2.1.</strong> Suppose <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>, <span class="math" data-tex="\(\max_j|z_j|=R&gt;0\)">\(\max_j|z_j|=R&gt;0\)</span>, and <span class="math" data-tex="\(\ell\ge N\)">\(\ell\ge N\)</span> is an integer. For some integer <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(\ell+1\le k\le2\ell\)">\(\ell+1\le k\le2\ell\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\sum_{j=1}^Nz_j^k\right|
+\ge2(16e)^{-\ell}R^k
+\ge2(50)^{-k}R^k.
+\tag{2.1}
+\]">\[
+\left|\sum_{j=1}^Nz_j^k\right|
+\ge2(16e)^{-\ell}R^k
+\ge2(50)^{-k}R^k.
+\tag{2.1}
+\]</span>
+Repeated values are allowed.</p>
+<p><strong>Proof.</strong> Scale to <span class="math" data-tex="\(R=1\)">\(R=1\)</span>, and first suppose the <span class="math" data-tex="\(z_j\)">\(z_j\)</span> are distinct. We need an elementary polynomial fact: if a real monic polynomial <span class="math" data-tex="\(f\)">\(f\)</span> has degree <span class="math" data-tex="\(N\)">\(N\)</span>, then on any real interval of length <span class="math" data-tex="\(l\)">\(l\)</span>,
+<span class="math math-display" data-tex="\[
+\max |f|\ge2(l/4)^N.
+\tag{2.2}
+\]">\[
+\max |f|\ge2(l/4)^N.
+\tag{2.2}
+\]</span>
+To prove it on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, use <span class="math" data-tex="\(T_N(\cos u)=\cos Nu\)">\(T_N(\cos u)=\cos Nu\)</span>. Its recurrence
+<span class="math" data-tex="\(T_{n+1}=2tT_n-T_{n-1}\)">\(T_{n+1}=2tT_n-T_{n-1}\)</span> shows that its leading coefficient is <span class="math" data-tex="\(2^{N-1}\)">\(2^{N-1}\)</span>.
+At <span class="math" data-tex="\(t_j=\cos(j\pi/N)\)">\(t_j=\cos(j\pi/N)\)</span>, <span class="math" data-tex="\(T_N(t_j)=(-1)^j\)">\(T_N(t_j)=(-1)^j\)</span>.
+If a monic <span class="math" data-tex="\(f\)">\(f\)</span> had supremum less than <span class="math" data-tex="\(2^{1-N}\)">\(2^{1-N}\)</span>, then
+<span class="math" data-tex="\(f-2^{1-N}T_N\)">\(f-2^{1-N}T_N\)</span>, a polynomial of degree at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span>, would change sign in all <span class="math" data-tex="\(N\)">\(N\)</span> intervals between these points. This is impossible. An affine change of variable proves (2.2).</p>
+<p>Apply (2.2) to <span class="math" data-tex="\(f(t)=\prod_j(t-|z_j|)\)">\(f(t)=\prod_j(t-|z_j|)\)</span> on
+<span class="math" data-tex="\([a,1]\)">\([a,1]\)</span>, where <span class="math" data-tex="\(a=\ell/(\ell+N)\)">\(a=\ell/(\ell+N)\)</span>. Some <span class="math" data-tex="\(r\in[a,1]\)">\(r\in[a,1]\)</span> satisfies
+<span class="math math-display" data-tex="\[
+r^\ell\prod_j|r-|z_j||
+\ge2e^{-N}\left(\frac{N}{4(\ell+N)}\right)^N.
+\tag{2.3}
+\]">\[
+r^\ell\prod_j|r-|z_j||
+\ge2e^{-N}\left(\frac{N}{4(\ell+N)}\right)^N.
+\tag{2.3}
+\]</span>
+Here <span class="math" data-tex="\(a^\ell=(1+N/\ell)^{-\ell}\ge e^{-N}\)">\(a^\ell=(1+N/\ell)^{-\ell}\ge e^{-N}\)</span>.
+The product is nonzero and <span class="math" data-tex="\(|z_1|=1\)">\(|z_1|=1\)</span>, so <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>.
+Order the <span class="math" data-tex="\(z_j\)">\(z_j\)</span> by decreasing modulus and let <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span> be the number outside the circle <span class="math" data-tex="\(|z|=r\)">\(|z|=r\)</span>.</p>
+<p>Choose a polynomial <span class="math" data-tex="\(P(z)=\sum_{h=0}^{N-1}b_hz^h\)">\(P(z)=\sum_{h=0}^{N-1}b_hz^h\)</span> with
+<span class="math math-display" data-tex="\[
+P(z_j)=z_j^{-\ell-1}\ (j\le J),
+\qquad P(z_j)=0\ (j&gt;J).
+\]">\[
+P(z_j)=z_j^{-\ell-1}\ (j\le J),
+\qquad P(z_j)=0\ (j&gt;J).
+\]</span>
+Distinct-node interpolation gives existence. In the Newton basis
+<span class="math" data-tex="\(Q_h(z)=\prod_{j\le h}(z-z_j)\)">\(Q_h(z)=\prod_{j\le h}(z-z_j)\)</span>, write
+<span class="math" data-tex="\(P=\sum_{h=0}^{N-1}c_hQ_h\)">\(P=\sum_{h=0}^{N-1}c_hQ_h\)</span>.
+Contour integration, or the usual divided-difference formula, gives
+<span class="math math-display" data-tex="\[
+c_h=-\frac1{2\pi i}\int_{|z|=r}
+\frac{z^{-\ell-1}}{Q_{h+1}(z)}\,dz.
+\tag{2.4}
+\]">\[
+c_h=-\frac1{2\pi i}\int_{|z|=r}
+\frac{z^{-\ell-1}}{Q_{h+1}(z)}\,dz.
+\tag{2.4}
+\]</span>
+For completeness, integrate <span class="math" data-tex="\((P-z^{-\ell-1})/Q_{h+1}\)">\((P-z^{-\ell-1})/Q_{h+1}\)</span> first on a circle containing all nodes. Its integral is <span class="math" data-tex="\(c_h\)">\(c_h\)</span>, because all higher Newton terms are polynomials and all lower terms decay at infinity. Its poles outside <span class="math" data-tex="\(|z|=r\)">\(|z|=r\)</span> are removable by the interpolation conditions. Inside this circle <span class="math" data-tex="\(P/Q_{h+1}\)">\(P/Q_{h+1}\)</span> has only removable singularities at the inside nodes, where <span class="math" data-tex="\(P\)">\(P\)</span> vanishes. This proves (2.4).</p>
+<p>Each <span class="math" data-tex="\(|r-|z_j||\le1\)">\(|r-|z_j||\le1\)</span>, so the partial denominator in (2.4) is at least the product in (2.3). Hence
+<span class="math math-display" data-tex="\[
+|c_h|\le\frac12\left(\frac{4e(\ell+N)}N\right)^N.
+\]">\[
+|c_h|\le\frac12\left(\frac{4e(\ell+N)}N\right)^N.
+\]</span>
+The sum of absolute coefficients of <span class="math" data-tex="\(Q_h\)">\(Q_h\)</span> is at most <span class="math" data-tex="\(2^h\)">\(2^h\)</span>; thus
+<span class="math math-display" data-tex="\[
+\sum_h|b_h|
+\le\frac12\left(\frac{8e(\ell+N)}N\right)^N.
+\tag{2.5}
+\]">\[
+\sum_h|b_h|
+\le\frac12\left(\frac{8e(\ell+N)}N\right)^N.
+\tag{2.5}
+\]</span>
+On the other hand, with <span class="math" data-tex="\(p_k=\sum_jz_j^k\)">\(p_k=\sum_jz_j^k\)</span>,
+<span class="math math-display" data-tex="\[
+J=\sum_jz_j^{\ell+1}P(z_j)
+=\sum_{h=0}^{N-1}b_hp_{\ell+1+h}.
+\]">\[
+J=\sum_jz_j^{\ell+1}P(z_j)
+=\sum_{h=0}^{N-1}b_hp_{\ell+1+h}.
+\]</span>
+Since <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span>, (2.5) gives
+<span class="math math-display" data-tex="\[
+\max_{\ell+1\le k\le\ell+N}|p_k|
+\ge2\left(\frac{N}{8e(\ell+N)}\right)^N
+\ge2(16e)^{-\ell}.
+\]">\[
+\max_{\ell+1\le k\le\ell+N}|p_k|
+\ge2\left(\frac{N}{8e(\ell+N)}\right)^N
+\ge2(16e)^{-\ell}.
+\]</span>
+The last inequality follows because
+<span class="math" data-tex="\(\log(8e(1+y))/y\)">\(\log(8e(1+y))/y\)</span> decreases for <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>, and take <span class="math" data-tex="\(y=\ell/N\)">\(y=\ell/N\)</span>.
+For repeated nodes, approximate by distinct nodes of maximum modulus one and pass to a subsequence with the same <span class="math" data-tex="\(k\)">\(k\)</span> in this finite range. Rescale by <span class="math" data-tex="\(R\)">\(R\)</span>. Finally <span class="math" data-tex="\(16e&lt;50\)">\(16e&lt;50\)</span> and <span class="math" data-tex="\(k\ge\ell\)">\(k\ge\ell\)</span>, giving the second inequality in (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-local-zeros-and-derivatives">3. Local zeros and derivatives</h2>
+<p><strong>Lemma 3.1.</strong> If a character has modulus at most <span class="math" data-tex="\(T^2\)">\(T^2\)</span>, <span class="math" data-tex="\(|v|\le T+2\)">\(|v|\le T+2\)</span>, and <span class="math" data-tex="\(H^{-1}\le\lambda\le2\)">\(H^{-1}\le\lambda\le2\)</span>, then
+<span class="math math-display" data-tex="\[
+\#\{\rho:|\rho-1-iv|\le\lambda\}\ll\lambda H.
+\tag{3.1}
+\]">\[
+\#\{\rho:|\rho-1-iv|\le\lambda\}\ll\lambda H.
+\tag{3.1}
+\]</span>
+The zeros in this formula belong to its primitive factor.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(s=1+\lambda+iv\)">\(s=1+\lambda+iv\)</span>, each counted zero contributes at least
+<span class="math" data-tex="\(1/(5\lambda)\)">\(1/(5\lambda)\)</span> to <span class="math" data-tex="\(\Re(1/(s-\rho))\)">\(\Re(1/(s-\rho))\)</span>: its real displacement is between <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(2\lambda\)">\(2\lambda\)</span>, and its imaginary displacement has magnitude at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.
+The positive-kernel identity in Lemma 1.1 of <em>Zero-free regions and the exceptional zero</em>, together with
+<span class="math math-display" data-tex="\[
+|L&#x27;/L(1+\lambda+iv,\chi)|
+\le-\zeta&#x27;/\zeta(1+\lambda)\ll1+\lambda^{-1},
+\]">\[
+|L&#x27;/L(1+\lambda+iv,\chi)|
+\le-\zeta&#x27;/\zeta(1+\lambda)\ll1+\lambda^{-1},
+\]</span>
+bounds the kernel sum by <span class="math" data-tex="\(O(H+\lambda^{-1})\)">\(O(H+\lambda^{-1})\)</span>. The principal pole obeys the same <span class="math" data-tex="\(O(\lambda^{-1})\)">\(O(\lambda^{-1})\)</span> bound. The result is
+<span class="math" data-tex="\(O(\lambda H+1)=O(\lambda H)\)">\(O(\lambda H+1)=O(\lambda H)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a real exceptional character, we also need
+<span class="math math-display" data-tex="\[
+\frac{L&#x27;}L(1,\chi_1)=\frac1\delta+O(\log(2d_1)).
+\tag{3.2}
+\]">\[
+\frac{L&#x27;}L(1,\chi_1)=\frac1\delta+O(\log(2d_1)).
+\tag{3.2}
+\]</span>
+Here is a derivation with its uniformity exposed. Set <span class="math" data-tex="\(h=a_1/\log(2d_1)\)">\(h=a_1/\log(2d_1)\)</span>, where <span class="math" data-tex="\(a_1&gt;0\)">\(a_1&gt;0\)</span> is a sufficiently small effective constant. Every other zero has
+<span class="math" data-tex="\(|1-\rho|\ge a_2/\log(2d_1)\)">\(|1-\rho|\ge a_2/\log(2d_1)\)</span>, by the classical region and simplicity of the exception.
+At <span class="math" data-tex="\(s=1+h\)">\(s=1+h\)</span> the Euler series bounds <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span> by <span class="math" data-tex="\(O(h^{-1})\)">\(O(h^{-1})\)</span>, and <span class="math" data-tex="\(1/(s-\beta_1)\le h^{-1}\)">\(1/(s-\beta_1)\le h^{-1}\)</span>.
+Subtract the Hadamard logarithmic derivatives at <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(1+h\)">\(1+h\)</span>, after removing <span class="math" data-tex="\(\beta_1\)">\(\beta_1\)</span>.
+For every remaining zero,
+<span class="math math-display" data-tex="\[
+\left|\frac1{1-\rho}-\frac1{1+h-\rho}\right|
+\le C\frac{h}{|1+h-\rho|^2}
+\le C\Re\frac1{1+h-\rho}.
+\]">\[
+\left|\frac1{1-\rho}-\frac1{1+h-\rho}\right|
+\le C\frac{h}{|1+h-\rho|^2}
+\le C\Re\frac1{1+h-\rho}.
+\]</span>
+The first comparison uses <span class="math" data-tex="\(|1+h-\rho|\le(1+a_1/a_2)|1-\rho|\)">\(|1+h-\rho|\le(1+a_1/a_2)|1-\rho|\)</span>; the second uses <span class="math" data-tex="\(\Re(1+h-\rho)\ge h\)">\(\Re(1+h-\rho)\ge h\)</span>.
+The positive-kernel identity bounds the sum by <span class="math" data-tex="\(O(\log(2d_1))\)">\(O(\log(2d_1))\)</span>. The gamma terms are bounded as well. This proves (3.2).</p>
+<p>We will use a derivative consequence of the same local expansion. Fix a sufficiently small effective <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span>. Suppose
+<span class="math math-display" data-tex="\[
+H^{-1}\le r\le r_0,\quad
+w=1+iv,\quad s_0=w+r,
+\]">\[
+H^{-1}\le r\le r_0,\quad
+w=1+iv,\quad s_0=w+r,
+\]</span>
+and a nonexceptional zero <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> of <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> satisfies
+<span class="math" data-tex="\(|\rho_0-w|\le r\)">\(|\rho_0-w|\le r\)</span>, with primitive conductor at most <span class="math" data-tex="\(T\)">\(T\)</span>.
+Define
+<span class="math math-display" data-tex="\[
+f(s)=\frac{L&#x27;}L(s,\chi)
++E\frac{L&#x27;}L(s+\delta,\chi\chi_1).
+\tag{3.3}
+\]">\[
+f(s)=\frac{L&#x27;}L(s,\chi)
++E\frac{L&#x27;}L(s+\delta,\chi\chi_1).
+\tag{3.3}
+\]</span>
+The product character is interpreted at the least common multiple of the moduli, at most <span class="math" data-tex="\(T^2\)">\(T^2\)</span>; its finite Euler factors are retained.
+For <span class="math" data-tex="\(\chi=\chi_1\)">\(\chi=\chi_1\)</span>, the zero pole at <span class="math" data-tex="\(s=\beta_1\)">\(s=\beta_1\)</span> cancels the shifted principal pole at <span class="math" data-tex="\(s=1-\delta\)">\(s=1-\delta\)</span>.
+For principal <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, the classical zeta region permits <span class="math" data-tex="\(r_0\)">\(r_0\)</span> to be chosen so small that a zero this close to <span class="math" data-tex="\(1\)">\(1\)</span> has <span class="math" data-tex="\(|v|&gt;2\)">\(|v|&gt;2\)</span>; hence both relevant poles lie outside the local disc.
+There are no other principal poles in (3.3).</p>
+<p>Set <span class="math" data-tex="\(\lambda=200r\)">\(\lambda=200r\)</span>, decreasing <span class="math" data-tex="\(r_0\)">\(r_0\)</span> so that <span class="math" data-tex="\(\lambda&lt;1/8\)">\(\lambda&lt;1/8\)</span>.
+Let <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span> be the multiset of ordinary zeros <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of the first factor and shifted zeros <span class="math" data-tex="\(\rho&#x27;-\delta\)">\(\rho&#x27;-\delta\)</span> of the second factor with
+<span class="math" data-tex="\(|s_0-z|\le\lambda\)">\(|s_0-z|\le\lambda\)</span>, after the just described cancellation. Lemma 3.1 gives
+<span class="math" data-tex="\(|\mathcal Z|\ll rH\)">\(|\mathcal Z|\ll rH\)</span>. This multiset contains <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>.
+For every integer <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{(-1)^hf^{(h)}(s_0)}{h!}
+=\sum_{z\in\mathcal Z}(s_0-z)^{-h-1}
++O(H\lambda^{-h}).
+\tag{3.4}
+\]">\[
+\frac{(-1)^hf^{(h)}(s_0)}{h!}
+=\sum_{z\in\mathcal Z}(s_0-z)^{-h-1}
++O(H\lambda^{-h}).
+\tag{3.4}
+\]</span></p>
+<p>To justify the error, start with the local expansion of Lemma 1.2 of <em>Zero-free regions and the exceptional zero</em>. In a disc about <span class="math" data-tex="\(s_0\)">\(s_0\)</span> of fixed radius <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, remove all zero poles lying within radius <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The remaining holomorphic function is <span class="math" data-tex="\(O(H)\)">\(O(H)\)</span> there: nearby omitted terms are bounded by their fixed distance, and the far-zero difference and gamma estimates are exactly those in that lemma. Cauchy's formula bounds its <span class="math" data-tex="\(h\)">\(h\)</span>-th normalized derivative by <span class="math" data-tex="\(O(4^hH)\)">\(O(4^hH)\)</span>.
+For omitted zeros at distances <span class="math" data-tex="\(2^j\lambda&lt;|s_0-z|\le2^{j+1}\lambda\)">\(2^j\lambda&lt;|s_0-z|\le2^{j+1}\lambda\)</span>, Lemma 3.1 gives <span class="math" data-tex="\(O(2^j\lambda H)\)">\(O(2^j\lambda H)\)</span> terms, so their total normalized derivative is
+<span class="math math-display" data-tex="\[
+\ll H\lambda^{-h}\sum_{j\ge0}2^{-jh}\ll H\lambda^{-h}.
+\]">\[
+\ll H\lambda^{-h}\sum_{j\ge0}2^{-jh}\ll H\lambda^{-h}.
+\]</span>
+The shifts by <span class="math" data-tex="\(\delta\ll H^{-1}\le r\)">\(\delta\ll H^{-1}\le r\)</span> change only absolute constants in the count. The finite Euler factors are holomorphic on this disc and are <span class="math" data-tex="\(O(H)\)">\(O(H)\)</span> in logarithmic derivative on a slightly larger disc. Thus their derivatives obey the same Cauchy bound. This proves (3.4).</p>
+<h2 id="4-a-hybrid-sieve-with-a-logarithmic-gain">4. A hybrid sieve with a logarithmic gain</h2>
+<p><strong>Lemma 4.1.</strong> Suppose <span class="math" data-tex="\(Q\ge2\)">\(Q\ge2\)</span>, <span class="math" data-tex="\(J\ge1\)">\(J\ge1\)</span>, and <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span> whenever <span class="math" data-tex="\(n\)">\(n\)</span> has a prime factor at most <span class="math" data-tex="\(Q\)">\(Q\)</span>. For a finite Dirichlet polynomial <span class="math" data-tex="\(D(t,\chi)=\sum_na_n\chi(n)n^{-it}\)">\(D(t,\chi)=\sum_na_n\chi(n)n^{-it}\)</span> and any real <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{d\le Q}\log(Q/d)\sum_{\chi\bmod d}^{*}
+\int_A^{A+J}|D(t,\chi)|^2\,dt
+\ll\sum_n|a_n|^2(n+Q^2J).
+\tag{4.1}
+\]">\[
+\sum_{d\le Q}\log(Q/d)\sum_{\chi\bmod d}^{*}
+\int_A^{A+J}|D(t,\chi)|^2\,dt
+\ll\sum_n|a_n|^2(n+Q^2J).
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> First consider coefficients supported on an integer interval of span <span class="math" data-tex="\(M\)">\(M\)</span>, and put <span class="math" data-tex="\(F(\alpha)=\sum_na_ne(n\alpha)\)">\(F(\alpha)=\sum_na_ne(n\alpha)\)</span>.
+All supported indices are coprime to every <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span>. The finite Gauss identity for arbitrary characters gives
+<span class="math math-display" data-tex="\[
+\sum_{\substack{a\bmod q\\(a,q)=1}}|F(a/q)|^2
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}|\tau(\chi)|^2
+\left|\sum_na_n\chi(n)\right|^2.
+\tag{4.2}
+\]">\[
+\sum_{\substack{a\bmod q\\(a,q)=1}}|F(a/q)|^2
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}|\tau(\chi)|^2
+\left|\sum_na_n\chi(n)\right|^2.
+\tag{4.2}
+\]</span>
+If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is induced from <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> of conductor <span class="math" data-tex="\(d\)">\(d\)</span>, the imprimitive Gauss formula gives
+<span class="math" data-tex="\(|\tau(\chi)|^2=d\mu^2(m)\)">\(|\tau(\chi)|^2=d\mu^2(m)\)</span> when <span class="math" data-tex="\(q=dm\)">\(q=dm\)</span> and <span class="math" data-tex="\((d,m)=1\)">\((d,m)=1\)</span>, and zero otherwise.
+Also the supported sums for <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> agree. Summing (4.2) over <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span>, the coefficient of each primitive squared sum is
+<span class="math math-display" data-tex="\[
+\frac d{\varphi(d)}
+\sum_{\substack{m\le Q/d\\(m,d)=1}}\frac{\mu^2(m)}{\varphi(m)}
+\ge\log(Q/d).
+\tag{4.3}
+\]">\[
+\frac d{\varphi(d)}
+\sum_{\substack{m\le Q/d\\(m,d)=1}}\frac{\mu^2(m)}{\varphi(m)}
+\ge\log(Q/d).
+\tag{4.3}
+\]</span></p>
+<p>Here are the details of this lower bound, including its dependence on <span class="math" data-tex="\(d\)">\(d\)</span>.
+For every <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\substack{m\le R\\(m,d)=1}}\frac{\mu^2(m)}{\varphi(m)}
+\ge \sum_{\substack{m\le R\\(m,d)=1}}\frac1m.
+\]">\[
+\sum_{\substack{m\le R\\(m,d)=1}}\frac{\mu^2(m)}{\varphi(m)}
+\ge \sum_{\substack{m\le R\\(m,d)=1}}\frac1m.
+\]</span>
+Indeed, on the squarefree integer <span class="math" data-tex="\(v=\operatorname{rad}(m)\)">\(v=\operatorname{rad}(m)\)</span>,
+<span class="math" data-tex="\(\sum_{\operatorname{rad}(m)=v}1/m=1/\varphi(v)\)">\(\sum_{\operatorname{rad}(m)=v}1/m=1/\varphi(v)\)</span>; restricting <span class="math" data-tex="\(m\le R\)">\(m\le R\)</span> can only decrease this positive sum.
+Write each integer as a product of a <span class="math" data-tex="\(d\)">\(d\)</span>-smooth part and a part coprime to <span class="math" data-tex="\(d\)">\(d\)</span>. Then
+<span class="math math-display" data-tex="\[
+H_{\lfloor R\rfloor}
+\le\prod_{p\mid d}(1-p^{-1})^{-1}
+\sum_{\substack{m\le R\\(m,d)=1}}\frac1m.
+\]">\[
+H_{\lfloor R\rfloor}
+\le\prod_{p\mid d}(1-p^{-1})^{-1}
+\sum_{\substack{m\le R\\(m,d)=1}}\frac1m.
+\]</span>
+Since <span class="math" data-tex="\(H_{\lfloor R\rfloor}\ge\log R\)">\(H_{\lfloor R\rfloor}\ge\log R\)</span>, this proves (4.3).
+The factor <span class="math" data-tex="\(d/\varphi(d)\)">\(d/\varphi(d)\)</span> cannot be dropped from this reasoning.</p>
+<p>The sharp additive large sieve at the reduced fractions <span class="math" data-tex="\(a/q\)">\(a/q\)</span> bounds (4.2), summed over <span class="math" data-tex="\(q\)">\(q\)</span>, by
+<span class="math" data-tex="\((M+Q^2)\sum_n|a_n|^2\)">\((M+Q^2)\sum_n|a_n|^2\)</span>. Thus the primitive character sum with weight <span class="math" data-tex="\(\log(Q/d)\)">\(\log(Q/d)\)</span> has this same interval bound.
+Apply the logarithmic-window inequality (5.2) of <em>The multiplicative large sieve and bilinear forms with characters</em>, with <span class="math" data-tex="\(\tau=e^{1/J}\)">\(\tau=e^{1/J}\)</span>.
+The interval <span class="math" data-tex="\((y,\tau y]\)">\((y,\tau y]\)</span> has span at most <span class="math" data-tex="\((\tau-1)y\)">\((\tau-1)y\)</span>, and retains the rough-support condition.
+Interchanging its positive sum and integral, the contribution of index <span class="math" data-tex="\(n\)">\(n\)</span> is
+<span class="math math-display" data-tex="\[
+J^2\int_{n/\tau}^n\bigl(Q^2+(\tau-1)y\bigr)\frac{dy}y
+\ll Q^2J+n.
+\]">\[
+J^2\int_{n/\tau}^n\bigl(Q^2+(\tau-1)y\bigr)\frac{dy}y
+\ll Q^2J+n.
+\]</span>
+This proves (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-detecting-a-near-1-zero-by-a-prime-polynomial">5. Detecting a near-1 zero by a prime polynomial</h2>
+<p>Fix <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, put <span class="math" data-tex="\(r=c_2(1-\sigma)\)">\(r=c_2(1-\sigma)\)</span>, and take <span class="math" data-tex="\(c_2\ge\max(2,a_0^{-1})\)">\(c_2\ge\max(2,a_0^{-1})\)</span>.
+If <span class="math" data-tex="\(N^*(\sigma,T)&gt;0\)">\(N^*(\sigma,T)&gt;0\)</span>, (1.1) implies <span class="math" data-tex="\(r\ge H^{-1}\)">\(r\ge H^{-1}\)</span>.
+We first treat <span class="math" data-tex="\(r\le r_0\)">\(r\le r_0\)</span>. Choose a large absolute effective <span class="math" data-tex="\(D\)">\(D\)</span>, to be increased below, and set
+<span class="math math-display" data-tex="\[
+P=T^D,\qquad U=P^{1/1000},\qquad V=P^{100}.
+\tag{5.1}
+\]">\[
+P=T^D,\qquad U=P^{1/1000},\qquad V=P^{100}.
+\tag{5.1}
+\]</span>
+For a counted zero <span class="math" data-tex="\(\rho_0=\beta_0+i\gamma_0\)">\(\rho_0=\beta_0+i\gamma_0\)</span>, and every
+<span class="math" data-tex="\(|v-\gamma_0|\le r/2\)">\(|v-\gamma_0|\le r/2\)</span>, we have
+<span class="math" data-tex="\(|\rho_0-(1+iv)|\le r\)">\(|\rho_0-(1+iv)|\le r\)</span>.
+Thus Section 3 applies.</p>
+<p>Choose <span class="math" data-tex="\(\ell=\lceil r\log P\rceil\)">\(\ell=\lceil r\log P\rceil\)</span>. By increasing <span class="math" data-tex="\(D\)">\(D\)</span>, it satisfies
+<span class="math" data-tex="\(\ell\ge|\mathcal Z|\)">\(\ell\ge|\mathcal Z|\)</span> and <span class="math" data-tex="\(\ell\ge C_2rH\)">\(\ell\ge C_2rH\)</span>, with <span class="math" data-tex="\(C_2\)">\(C_2\)</span> large enough for the derivative error below.
+Lemma 2.1 applied to the numbers <span class="math" data-tex="\((s_0-z)^{-1}\)">\((s_0-z)^{-1}\)</span>, <span class="math" data-tex="\(z\in\mathcal Z\)">\(z\in\mathcal Z\)</span>, gives some <span class="math" data-tex="\(h=k-1\)">\(h=k-1\)</span> such that
+<span class="math math-display" data-tex="\[
+\ell\le h\le2\ell-1\le3r\log P,\qquad
+\left|\sum_{z\in\mathcal Z}(s_0-z)^{-h-1}\right|
+\ge2(100r)^{-h-1}.
+\]">\[
+\ell\le h\le2\ell-1\le3r\log P,\qquad
+\left|\sum_{z\in\mathcal Z}(s_0-z)^{-h-1}\right|
+\ge2(100r)^{-h-1}.
+\]</span>
+Here the largest modulus is at least <span class="math" data-tex="\((2r)^{-1}\)">\((2r)^{-1}\)</span>.
+The error in (3.4), divided by this lower bound, is at most a constant times
+<span class="math" data-tex="\(rH\,2^{-h}\)">\(rH\,2^{-h}\)</span>. The choice <span class="math" data-tex="\(\ell\ge C_2rH\)">\(\ell\ge C_2rH\)</span>, with <span class="math" data-tex="\(rH\ge1\)">\(rH\ge1\)</span>, makes it at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\frac{|f^{(h)}(s_0)|}{h!}\ge(100r)^{-h-1}.
+\tag{5.2}
+\]">\[
+\frac{|f^{(h)}(s_0)|}{h!}\ge(100r)^{-h-1}.
+\tag{5.2}
+\]</span>
+The upper bound <span class="math" data-tex="\(3r\log P\)">\(3r\log P\)</span> retains the rounding in <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; no exact unrounded identity for <span class="math" data-tex="\(h\)">\(h\)</span> is being assumed.</p>
+<p>For <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, put <span class="math" data-tex="\(\varpi_h(u)=u^he^{-u}/h!\)">\(\varpi_h(u)=u^he^{-u}/h!\)</span>. Absolute differentiation of the Euler series on <span class="math" data-tex="\(\Re s_0&gt;1\)">\(\Re s_0&gt;1\)</span> gives
+<span class="math math-display" data-tex="\[
+\frac{r^hf^{(h)}(s_0)}{h!}
+=(-1)^{h+1}\sum_{n\ge1}
+\frac{\Lambda(n)\chi(n)}{n^{1+iv}}
+\varpi_h(r\log n)b(n),
+\quad
+b(n)=1+E\chi_1(n)n^{-\delta}.
+\tag{5.3}
+\]">\[
+\frac{r^hf^{(h)}(s_0)}{h!}
+=(-1)^{h+1}\sum_{n\ge1}
+\frac{\Lambda(n)\chi(n)}{n^{1+iv}}
+\varpi_h(r\log n)b(n),
+\quad
+b(n)=1+E\chi_1(n)n^{-\delta}.
+\tag{5.3}
+\]</span>
+We have <span class="math" data-tex="\(|b(n)|\le2\)">\(|b(n)|\le2\)</span> and <span class="math" data-tex="\(0\le\varpi_h(u)\le1\)">\(0\le\varpi_h(u)\le1\)</span>.
+Also <span class="math" data-tex="\(h!\ge(h/e)^h\)">\(h!\ge(h/e)^h\)</span>, for example by integrating <span class="math" data-tex="\(\log t\)">\(\log t\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\varpi_h(u)\le300^{-h}\quad(u\le h/1000),
+\qquad
+\varpi_h(u)\le300^{-h}e^{-u/2}\quad(u\ge20h).
+\tag{5.4}
+\]">\[
+\varpi_h(u)\le300^{-h}\quad(u\le h/1000),
+\qquad
+\varpi_h(u)\le300^{-h}e^{-u/2}\quad(u\ge20h).
+\tag{5.4}
+\]</span>
+For the second inequality, <span class="math" data-tex="\(h(1+\log(u/h))-u/2\)">\(h(1+\log(u/h))-u/2\)</span> decreases for <span class="math" data-tex="\(u\ge2h\)">\(u\ge2h\)</span>, and its value at <span class="math" data-tex="\(20h\)">\(20h\)</span> is less than <span class="math" data-tex="\(-h\log300\)">\(-h\log300\)</span>.</p>
+<p>The indices <span class="math" data-tex="\(n\le U\)">\(n\le U\)</span> lie in the first tail of (5.4), and <span class="math" data-tex="\(n&gt;V\)">\(n&gt;V\)</span> in the second, since <span class="math" data-tex="\(h\le3r\log P\)">\(h\le3r\log P\)</span>.
+Chebyshev and partial summation bound their total by
+<span class="math math-display" data-tex="\[
+\ll300^{-h}(\log P+r^{-1}).
+\]">\[
+\ll300^{-h}(\log P+r^{-1}).
+\]</span>
+Compared with the lower bound <span class="math" data-tex="\(r^h(100r)^{-h-1}\)">\(r^h(100r)^{-h-1}\)</span> in (5.2), this is bounded by a constant times
+<span class="math" data-tex="\((r\log P+1)3^{-h}\)">\((r\log P+1)3^{-h}\)</span>. Since <span class="math" data-tex="\(r\log P\ge D/2\)">\(r\log P\ge D/2\)</span>, increasing <span class="math" data-tex="\(D\)">\(D\)</span> makes it less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span> of that lower bound, uniformly in <span class="math" data-tex="\(T,r\)">\(T,r\)</span>.</p>
+<p>The proper prime powers <span class="math" data-tex="\(U&lt;p^j\le V\)">\(U&lt;p^j\le V\)</span>, <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, contribute at most
+<span class="math math-display" data-tex="\[
+2\sum_{\substack{p^j&gt;U\\j\ge2}}\frac{\log p}{p^j}
+\ll U^{-1/2}=P^{-1/2000}.
+\tag{5.5}
+\]">\[
+2\sum_{\substack{p^j&gt;U\\j\ge2}}\frac{\log p}{p^j}
+\ll U^{-1/2}=P^{-1/2000}.
+\tag{5.5}
+\]</span>
+This follows by partial summation from the previously proved bound
+<span class="math" data-tex="\(\sum_{p^j\le z,j\ge2}\log p\ll\sqrt z\)">\(\sum_{p^j\le z,j\ge2}\log p\ll\sqrt z\)</span>.
+Decrease <span class="math" data-tex="\(r_0\)">\(r_0\)</span> so that <span class="math" data-tex="\(3r_0\log100&lt;1/4000\)">\(3r_0\log100&lt;1/4000\)</span>.
+Then <span class="math" data-tex="\(100^h\le P^{3r\log100}\)">\(100^h\le P^{3r\log100}\)</span>, and (5.5) is also less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span> of the lower bound when <span class="math" data-tex="\(D\)">\(D\)</span> is large. We obtain
+<span class="math math-display" data-tex="\[
+\left|\sum_{U&lt;p\le V}\frac{\log p}{p^{1+iv}}
+\chi(p)b(p)\varpi_h(r\log p)\right|
+\gg\frac1{r100^h}.
+\tag{5.6}
+\]">\[
+\left|\sum_{U&lt;p\le V}\frac{\log p}{p^{1+iv}}
+\chi(p)b(p)\varpi_h(r\log p)\right|
+\gg\frac1{r100^h}.
+\tag{5.6}
+\]</span></p>
+<p>Let
+<span class="math math-display" data-tex="\[
+F(y,v,\chi)=\sum_{U&lt;p\le y}\frac{\log p}{p^{1+iv}}\chi(p)b(p).
+\]">\[
+F(y,v,\chi)=\sum_{U&lt;p\le y}\frac{\log p}{p^{1+iv}}\chi(p)b(p).
+\]</span>
+Partial summation turns (5.6) into a lower bound for the integral of <span class="math" data-tex="\(|F|\)">\(|F|\)</span>.
+The endpoint <span class="math" data-tex="\(F(V,v,\chi)\varpi_h(r\log V)\)">\(F(V,v,\chi)\varpi_h(r\log V)\)</span> is negligible by
+<span class="math" data-tex="\(|F(V,v,\chi)|\ll\log P\)">\(|F(V,v,\chi)|\ll\log P\)</span> and (5.4).
+Moreover,
+<span class="math" data-tex="\(\varpi_h&#x27;=\varpi_{h-1}-\varpi_h\)">\(\varpi_h&#x27;=\varpi_{h-1}-\varpi_h\)</span>, so <span class="math" data-tex="\(|\varpi_h&#x27;|\le1\)">\(|\varpi_h&#x27;|\le1\)</span>.
+Thus
+<span class="math math-display" data-tex="\[
+\int_U^V|F(y,v,\chi)|\frac{dy}y\gg\frac1{r^2\,100^h}.
+\]">\[
+\int_U^V|F(y,v,\chi)|\frac{dy}y\gg\frac1{r^2\,100^h}.
+\]</span>
+Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+\int_U^V|F(y,v,\chi)|^2\frac{dy}y
+\gg\frac1{r^4\,100^{2h}\log P}
+\gg(\log P)^3P^{-C_3r}.
+\tag{5.7}
+\]">\[
+\int_U^V|F(y,v,\chi)|^2\frac{dy}y
+\gg\frac1{r^4\,100^{2h}\log P}
+\gg(\log P)^3P^{-C_3r}.
+\tag{5.7}
+\]</span>
+For the last step write <span class="math" data-tex="\(z=r\log P\)">\(z=r\log P\)</span>: the middle expression is at least
+<span class="math" data-tex="\((\log P)^3z^{-4}P^{-6r\log100}\)">\((\log P)^3z^{-4}P^{-6r\log100}\)</span>.
+Since <span class="math" data-tex="\(z\ge D/2\)">\(z\ge D/2\)</span>, <span class="math" data-tex="\(z^4\le e^z\)">\(z^4\le e^z\)</span> once <span class="math" data-tex="\(D\)">\(D\)</span> is large; take, for example, <span class="math" data-tex="\(C_3=6\log100+1\)">\(C_3=6\log100+1\)</span>.
+This proves (5.7) for each <span class="math" data-tex="\(v\)">\(v\)</span> in an interval of length <span class="math" data-tex="\(r\)">\(r\)</span> about every counted zero, with absolute effective constants.</p>
+<h2 id="6-what-the-exceptional-character-does-to-the-prime-coefficients">6. What the exceptional character does to the prime coefficients</h2>
+<p>When <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, <span class="math" data-tex="\(b(p)=1\)">\(b(p)=1\)</span>. When <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, the stronger estimate needed in (5.7) is
+<span class="math math-display" data-tex="\[
+\sum_{U&lt;p\le V}\frac{|b(p)|^2}{p}\ll\delta\log V.
+\tag{6.1}
+\]">\[
+\sum_{U&lt;p\le V}\frac{|b(p)|^2}{p}\ll\delta\log V.
+\tag{6.1}
+\]</span>
+We prove it rather than assume a character prime number theorem in a power range.</p>
+<p>For <span class="math" data-tex="\(c(n)=(1*\chi_1)(n)\)">\(c(n)=(1*\chi_1)(n)\)</span>, every coefficient is nonnegative and <span class="math" data-tex="\(c\)">\(c\)</span> is multiplicative. If <span class="math" data-tex="\(Z/\log(2Z)\)">\(Z/\log(2Z)\)</span> is sufficiently large compared with <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, a weighted hyperbola calculation gives
+<span class="math math-display" data-tex="\[
+A(Z):=\sum_{n\le Z}\frac{c(n)}n
+=(\log Z+\gamma)L(1,\chi_1)+L&#x27;(1,\chi_1)
++O\!\left(\sqrt{\frac{d_1\log(2Z)}Z}\right).
+\tag{6.2}
+\]">\[
+A(Z):=\sum_{n\le Z}\frac{c(n)}n
+=(\log Z+\gamma)L(1,\chi_1)+L&#x27;(1,\chi_1)
++O\!\left(\sqrt{\frac{d_1\log(2Z)}Z}\right).
+\tag{6.2}
+\]</span></p>
+<p>Here is the calculation. Write <span class="math" data-tex="\(n=ab\)">\(n=ab\)</span>, and split at
+<span class="math" data-tex="\(a\le W=\sqrt{d_1Z\log(2Z)}\)">\(a\le W=\sqrt{d_1Z\log(2Z)}\)</span>, taking <span class="math" data-tex="\(W\le Z\)">\(W\le Z\)</span>.
+The first portion is
+<span class="math" data-tex="\(\sum_{a\le W}\chi_1(a)H_{\lfloor Z/a\rfloor}/a\)">\(\sum_{a\le W}\chi_1(a)H_{\lfloor Z/a\rfloor}/a\)</span>.
+Replace the harmonic number by <span class="math" data-tex="\(\log(Z/a)+\gamma+O(a/Z)\)">\(\log(Z/a)+\gamma+O(a/Z)\)</span>; the total error is <span class="math" data-tex="\(O(W/Z)\)">\(O(W/Z)\)</span>.
+The second portion is
+<span class="math math-display" data-tex="\[
+\sum_{b\le Z/W}\frac1b
+\sum_{W&lt;a\le Z/b}\frac{\chi_1(a)}a.
+\]">\[
+\sum_{b\le Z/W}\frac1b
+\sum_{W&lt;a\le Z/b}\frac{\chi_1(a)}a.
+\]</span>
+Periodicity bounds every partial character sum by <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, so partial summation bounds this portion by
+<span class="math" data-tex="\(O(d_1\log(2Z)/W)\)">\(O(d_1\log(2Z)/W)\)</span>. Extending the first portion to <span class="math" data-tex="\(L(1,\chi_1)\)">\(L(1,\chi_1)\)</span> and <span class="math" data-tex="\(-L&#x27;(1,\chi_1)\)">\(-L&#x27;(1,\chi_1)\)</span> costs the same amount: the tails of
+<span class="math" data-tex="\(\sum\chi_1(a)/a\)">\(\sum\chi_1(a)/a\)</span> and <span class="math" data-tex="\(\sum\chi_1(a)\log a/a\)">\(\sum\chi_1(a)\log a/a\)</span> are
+<span class="math" data-tex="\(O(d_1/W)\)">\(O(d_1/W)\)</span> and <span class="math" data-tex="\(O(d_1\log(2W)/W)\)">\(O(d_1\log(2W)/W)\)</span>.
+The choice of <span class="math" data-tex="\(W\)">\(W\)</span> proves (6.2).</p>
+<p>By (3.2), after decreasing <span class="math" data-tex="\(a_0\)">\(a_0\)</span> in (1.1),
+<span class="math math-display" data-tex="\[
+A(U)\ge\frac{L(1,\chi_1)}{2\delta},
+\qquad
+A(UV)-A(U)\ll L(1,\chi_1)\log V.
+\tag{6.3}
+\]">\[
+A(U)\ge\frac{L(1,\chi_1)}{2\delta},
+\qquad
+A(UV)-A(U)\ll L(1,\chi_1)\log V.
+\tag{6.3}
+\]</span>
+The error terms in (6.2) are absorbed effectively: the analytic value bound gives
+<span class="math" data-tex="\(L(1,\chi_1)\gg T^{-1/2}H^{-2}\)">\(L(1,\chi_1)\gg T^{-1/2}H^{-2}\)</span>, whereas <span class="math" data-tex="\(U=T^{D/1000}\)">\(U=T^{D/1000}\)</span>.
+Increasing <span class="math" data-tex="\(D\)">\(D\)</span> makes <span class="math" data-tex="\(\sqrt{T\log(2U)/U}\)">\(\sqrt{T\log(2U)/U}\)</span> smaller than both
+<span class="math" data-tex="\(L(1,\chi_1)/(4\delta)\)">\(L(1,\chi_1)/(4\delta)\)</span> and a fixed fraction of <span class="math" data-tex="\(L(1,\chi_1)\log V\)">\(L(1,\chi_1)\log V\)</span>, uniformly for <span class="math" data-tex="\(T\ge2\)">\(T\ge2\)</span>.
+For the first inequality, use <span class="math" data-tex="\(\delta\le a_0/H\)">\(\delta\le a_0/H\)</span>; for the second, the constant <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> cancels in the difference. In the main term of the first inequality,
+<span class="math" data-tex="\(L&#x27;/L=1/\delta+O(\log(2d_1))\)">\(L&#x27;/L=1/\delta+O(\log(2d_1))\)</span>, and the latter error is dominated by <span class="math" data-tex="\(1/(4\delta)\)">\(1/(4\delta)\)</span>.</p>
+<p>Products <span class="math" data-tex="\(np\)">\(np\)</span>, with <span class="math" data-tex="\(n\le U&lt;p\le V\)">\(n\le U&lt;p\le V\)</span>, are distinct as <span class="math" data-tex="\(n,p\)">\(n,p\)</span> vary, unless both entries agree: two different primes exceeding <span class="math" data-tex="\(U\)">\(U\)</span> cannot divide an integer <span class="math" data-tex="\(n\le U\)">\(n\le U\)</span>.
+They lie in <span class="math" data-tex="\((U,UV]\)">\((U,UV]\)</span>, and <span class="math" data-tex="\(c(np)=c(n)c(p)\)">\(c(np)=c(n)c(p)\)</span>.
+Nonnegativity therefore gives
+<span class="math math-display" data-tex="\[
+A(U)\sum_{U&lt;p\le V}\frac{1+\chi_1(p)}p
+\le A(UV)-A(U).
+\]">\[
+A(U)\sum_{U&lt;p\le V}\frac{1+\chi_1(p)}p
+\le A(UV)-A(U).
+\]</span>
+Together with (6.3), this proves
+<span class="math math-display" data-tex="\[
+\sum_{U&lt;p\le V}\frac{1+\chi_1(p)}p\ll\delta\log V.
+\tag{6.4}
+\]">\[
+\sum_{U&lt;p\le V}\frac{1+\chi_1(p)}p\ll\delta\log V.
+\tag{6.4}
+\]</span>
+All these primes exceed <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, so <span class="math" data-tex="\(\chi_1(p)=\pm1\)">\(\chi_1(p)=\pm1\)</span>.
+If <span class="math" data-tex="\(\chi_1(p)=1\)">\(\chi_1(p)=1\)</span>, then <span class="math" data-tex="\(|b(p)|^2\le4=2(1+\chi_1(p))\)">\(|b(p)|^2\le4=2(1+\chi_1(p))\)</span>.
+If <span class="math" data-tex="\(\chi_1(p)=-1\)">\(\chi_1(p)=-1\)</span>, then
+<span class="math math-display" data-tex="\[
+|b(p)|^2=(1-p^{-\delta})^2\le\delta\log p,
+\]">\[
+|b(p)|^2=(1-p^{-\delta})^2\le\delta\log p,
+\]</span>
+using <span class="math" data-tex="\((1-e^{-u})^2\le u\)">\((1-e^{-u})^2\le u\)</span> for <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>.
+The elementary bound <span class="math" data-tex="\(\sum_{p\le V}\log p/p\ll\log V\)">\(\sum_{p\le V}\log p/p\ll\log V\)</span>, and (6.4), prove (6.1).</p>
+<p>Thus an exceptional zero makes the prime coefficients of the combined logarithmic derivative small in mean square. This is the source of the factor <span class="math" data-tex="\(\delta H\)">\(\delta H\)</span> in the density theorem.</p>
+<h2 id="7-log-free-density-and-deuring-heilbronn-repulsion">7. Log-free density and Deuring–Heilbronn repulsion</h2>
+<p><strong>Theorem 7.1.</strong> The effective bounds (1.4)–(1.5) hold.</p>
+<p><strong>Proof.</strong> Continue first with <span class="math" data-tex="\(H^{-1}\le r\le r_0\)">\(H^{-1}\le r\le r_0\)</span>.
+Integrate (5.7) over the interval <span class="math" data-tex="\(|v-\gamma_0|\le r/2\)">\(|v-\gamma_0|\le r/2\)</span>, of length <span class="math" data-tex="\(r\)">\(r\)</span>, then sum over counted zeros and primitive characters.
+For any fixed <span class="math" data-tex="\(\chi,v\)">\(\chi,v\)</span>, Lemma 3.1 bounds the number of these intervals covering <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(O(rH)\)">\(O(rH)\)</span>.
+Cancelling <span class="math" data-tex="\(r\)">\(r\)</span> gives
+<span class="math math-display" data-tex="\[
+(\log P)^3P^{-C_3r}N^*(\sigma,T)
+\ll H\int_U^V
+\sum_{d\le T}\sum_\chi^*
+\int_{-T-r}^{T+r}|F(y,v,\chi)|^2\,dv\,\frac{dy}y.
+\tag{7.1}
+\]">\[
+(\log P)^3P^{-C_3r}N^*(\sigma,T)
+\ll H\int_U^V
+\sum_{d\le T}\sum_\chi^*
+\int_{-T-r}^{T+r}|F(y,v,\chi)|^2\,dv\,\frac{dy}y.
+\tag{7.1}
+\]</span>
+The time interval includes both signs of the zero ordinate.</p>
+<p>Take <span class="math" data-tex="\(Q=T^2\)">\(Q=T^2\)</span> in Lemma 4.1. For <span class="math" data-tex="\(d\le T\)">\(d\le T\)</span>,
+<span class="math" data-tex="\(\log(T^2/d)\ge\log T\asymp H\)">\(\log(T^2/d)\ge\log T\asymp H\)</span>.
+Choose <span class="math" data-tex="\(D\)">\(D\)</span> large enough that <span class="math" data-tex="\(U&gt;T^6\)">\(U&gt;T^6\)</span>; every prime in <span class="math" data-tex="\(F\)">\(F\)</span> then exceeds <span class="math" data-tex="\(Q\)">\(Q\)</span>.
+The logarithmic gain cancels the factor <span class="math" data-tex="\(H\)">\(H\)</span> in (7.1), giving
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N^*(\sigma,T)
+&amp;\ll\frac{P^{C_3r}}{(\log P)^3}
+\int_U^V\sum_{U&lt;p\le y}
+\frac{(\log p)^2|b(p)|^2}{p^2}(p+T^5)\frac{dy}y\\
+&amp;\ll\frac{P^{C_3r}}{(\log P)^2}
+\sum_{U&lt;p\le V}\frac{(\log p)^2|b(p)|^2}{p}.
+\end{aligned}
+\tag{7.2}
+\]">\[
+\begin{aligned}
+N^*(\sigma,T)
+&amp;\ll\frac{P^{C_3r}}{(\log P)^3}
+\int_U^V\sum_{U&lt;p\le y}
+\frac{(\log p)^2|b(p)|^2}{p^2}(p+T^5)\frac{dy}y\\
+&amp;\ll\frac{P^{C_3r}}{(\log P)^2}
+\sum_{U&lt;p\le V}\frac{(\log p)^2|b(p)|^2}{p}.
+\end{aligned}
+\tag{7.2}
+\]</span>
+Here the height interval has length <span class="math" data-tex="\(O(T)\)">\(O(T)\)</span>, and <span class="math" data-tex="\(T^5/p&lt;1\)">\(T^5/p&lt;1\)</span>.</p>
+<p>When <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, partial summation from Chebyshev gives
+<span class="math" data-tex="\(\sum_{p\le V}(\log p)^2/p\ll(\log V)^2\ll(\log P)^2\)">\(\sum_{p\le V}(\log p)^2/p\ll(\log V)^2\ll(\log P)^2\)</span>.
+Thus (7.2) is <span class="math" data-tex="\(O(P^{C_3r})\)">\(O(P^{C_3r})\)</span>.
+When <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, (6.1) and <span class="math" data-tex="\(\log p\le100\log P\)">\(\log p\le100\log P\)</span> make it
+<span class="math" data-tex="\(O(\delta\log P\,P^{C_3r})\)">\(O(\delta\log P\,P^{C_3r})\)</span>.
+Since <span class="math" data-tex="\(P=T^D\)">\(P=T^D\)</span> and <span class="math" data-tex="\(r=c_2(1-\sigma)\)">\(r=c_2(1-\sigma)\)</span>, both desired estimates follow in this near-1 range, with exponent <span class="math" data-tex="\(c=DC_3c_2\)">\(c=DC_3c_2\)</span>, or any larger one.</p>
+<p>It remains to cover <span class="math" data-tex="\(r&gt;r_0\)">\(r&gt;r_0\)</span>, including bounded <span class="math" data-tex="\(T\)">\(T\)</span>. The elementary zero count in the explicit-formula lesson gives at most
+<span class="math math-display" data-tex="\[
+\ll T^3H
+\]">\[
+\ll T^3H
+\]</span>
+zeros for the whole primitive family: there are <span class="math" data-tex="\(O(T^2)\)">\(O(T^2)\)</span> characters and <span class="math" data-tex="\(O(TH)\)">\(O(TH)\)</span> zeros per character.
+Increase <span class="math" data-tex="\(c\)">\(c\)</span> until <span class="math" data-tex="\(c r_0/c_2\ge5\)">\(c r_0/c_2\ge5\)</span>.
+If <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, <span class="math" data-tex="\(T^{c(1-\sigma)}\ge T^5\)">\(T^{c(1-\sigma)}\ge T^5\)</span> dominates this count.
+If <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, (1.3) gives
+<span class="math" data-tex="\(\delta H T^{c(1-\sigma)}\gg T^{9/2}H^{-3}\)">\(\delta H T^{c(1-\sigma)}\gg T^{9/2}H^{-3}\)</span>, which also dominates <span class="math" data-tex="\(T^3H\)">\(T^3H\)</span> after increasing an absolute effective constant.
+If <span class="math" data-tex="\(r&lt;H^{-1}\)">\(r&lt;H^{-1}\)</span>, (1.1) says <span class="math" data-tex="\(N^*=0\)">\(N^*=0\)</span>, so nothing remains.
+Every choice of constant was made from effective local estimates, finite power-sum inequalities, the analytic value bound and explicit elementary tails. No Siegel lower constant has entered. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 7.2 (Deuring–Heilbronn).</strong> If <span class="math" data-tex="\(E=1\)">\(E=1\)</span>, every other zero in the family with <span class="math" data-tex="\(\beta\ge1/2\)">\(\beta\ge1/2\)</span>, <span class="math" data-tex="\(|\gamma|\le T\)">\(|\gamma|\le T\)</span>, satisfies
+<span class="math math-display" data-tex="\[
+\beta\le1-\frac{\log(1/(C\delta H))}{c\log T}.
+\tag{7.3}
+\]">\[
+\beta\le1-\frac{\log(1/(C\delta H))}{c\log T}.
+\tag{7.3}
+\]</span>
+When the numerator is nonpositive, this is simply a vacuous bound; the classical region still applies.</p>
+<p><strong>Proof.</strong> Such a zero contributes at least one to <span class="math" data-tex="\(N^*(\beta,T)\)">\(N^*(\beta,T)\)</span>.
+Thus <span class="math" data-tex="\(1\le C\delta H T^{c(1-\beta)}\)">\(1\le C\delta H T^{c(1-\beta)}\)</span>. Take logarithms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-gallagher-s-effective-lower-bound">8. Gallagher's effective lower bound</h2>
+<p>For a fixed modulus <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, let <span class="math" data-tex="\(\delta_q=1\)">\(\delta_q=1\)</span> if its primitive factors of conductors dividing <span class="math" data-tex="\(q\)">\(q\)</span> have no real zero
+<span class="math" data-tex="\(\beta&gt;1-a_0/\log(2q)\)">\(\beta&gt;1-a_0/\log(2q)\)</span>.
+Otherwise let <span class="math" data-tex="\(\delta_q=1-\beta_q\)">\(\delta_q=1-\beta_q\)</span> for that unique simple real zero. Decrease <span class="math" data-tex="\(a_0\)">\(a_0\)</span> once for all so that it is valid both here and in (1.1).</p>
+<p><strong>Theorem 8.1.</strong> There are absolute, effectively computable <span class="math" data-tex="\(\kappa\ge4\)">\(\kappa\ge4\)</span> and <span class="math" data-tex="\(c_*&gt;0\)">\(c_*&gt;0\)</span> such that, for every <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, and <span class="math" data-tex="\(x\ge q^\kappa\)">\(x\ge q^\kappa\)</span>,
+<span class="math math-display" data-tex="\[
+\theta(x;q,b)\ge
+c_*\frac{x}{\varphi(q)}
+\min(1,\delta_q\log x).
+\tag{8.1}
+\]">\[
+\theta(x;q,b)\ge
+c_*\frac{x}{\varphi(q)}
+\min(1,\delta_q\log x).
+\tag{8.1}
+\]</span>
+Consequently the same lower bound holds for <span class="math" data-tex="\(\psi(x;q,b)\)">\(\psi(x;q,b)\)</span>.</p>
+<p><strong>Proof.</strong> We give the choices in an order that preserves effectiveness.
+Fix <span class="math" data-tex="\(B=10\)">\(B=10\)</span>, and choose a small effective <span class="math" data-tex="\(h_0&gt;0\)">\(h_0&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+h_0\le\min(a_0B/2,1/2),
+\qquad Ch_0\le e^{-2c},
+\tag{8.2}
+\]">\[
+h_0\le\min(a_0B/2,1/2),
+\qquad Ch_0\le e^{-2c},
+\tag{8.2}
+\]</span>
+where <span class="math" data-tex="\(C,c\)">\(C,c\)</span> are from Theorem 7.1.
+Choose a large fixed <span class="math" data-tex="\(K\ge\max(2Bc,60)\)">\(K\ge\max(2Bc,60)\)</span>, to be increased below.
+For the moment take <span class="math" data-tex="\(x=Q^K\)">\(x=Q^K\)</span>, <span class="math" data-tex="\(Q\ge q\)">\(Q\ge q\)</span>, and put <span class="math" data-tex="\(T=Q^B\)">\(T=Q^B\)</span>.
+Apply (1.1)–(1.5) at this height <span class="math" data-tex="\(T\)">\(T\)</span>, to the whole larger family of conductors up to <span class="math" data-tex="\(T\)">\(T\)</span>.
+Its exceptional character, when present, need not induce a character modulo <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>The stable explicit formula in Theorem 5.1 of <em>Counting zeros and the explicit formula for <span class="math" data-tex="\(\psi(x,\chi)\)">\(\psi(x,\chi)\)</span></em>, and the proper-prime-power bound <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>, give
+<span class="math math-display" data-tex="\[
+\sum_{d\le Q}\sum_\chi^*
+\left|\theta(x,\chi)-\mathbf1_{\chi=\chi_0}x
++\mathbf1_{\chi=\chi_1}\frac{x^{\beta_1}}{\beta_1}\right|
+\ll
+\sum_{\substack{d\le Q,\ \chi\ {\rm primitive}\\
+|\gamma|\le T,\ \beta\ge1/2,\ \rho\ne\beta_1}}x^\beta
++\mathcal R.
+\tag{8.3}
+\]">\[
+\sum_{d\le Q}\sum_\chi^*
+\left|\theta(x,\chi)-\mathbf1_{\chi=\chi_0}x
++\mathbf1_{\chi=\chi_1}\frac{x^{\beta_1}}{\beta_1}\right|
+\ll
+\sum_{\substack{d\le Q,\ \chi\ {\rm primitive}\\
+|\gamma|\le T,\ \beta\ge1/2,\ \rho\ne\beta_1}}x^\beta
++\mathcal R.
+\tag{8.3}
+\]</span>
+The exceptional term is included only if that character belongs to this smaller family.
+There are <span class="math" data-tex="\(O(Q^2)\)">\(O(Q^2)\)</span> characters and <span class="math" data-tex="\(O(TH)\)">\(O(TH)\)</span> zeros per character.
+For <span class="math" data-tex="\(\beta&lt;1/2\)">\(\beta&lt;1/2\)</span>, the stable quotient satisfies
+<span class="math math-display" data-tex="\[
+\left|\frac{x^\rho-1}{\rho}\right|
+\le\int_1^x u^{\beta-1}\,du\le\sqrt x\log x.
+\]">\[
+\left|\frac{x^\rho-1}{\rho}\right|
+\le\int_1^x u^{\beta-1}\,du\le\sqrt x\log x.
+\]</span>
+For <span class="math" data-tex="\(\beta\ge1/2\)">\(\beta\ge1/2\)</span>, replacing the quotient by <span class="math" data-tex="\(x^\rho/\rho\)">\(x^\rho/\rho\)</span> costs <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> per zero, and <span class="math" data-tex="\(|\rho|^{-1}\le2\)">\(|\rho|^{-1}\le2\)</span>.
+Hence the complete remaining error in (8.3) is bounded by
+<span class="math math-display" data-tex="\[
+\mathcal R\ll K^2x
+\left(Q^{2-B}+Q^{2+B-K/2}\right)\log^2(2Q).
+\tag{8.4}
+\]">\[
+\mathcal R\ll K^2x
+\left(Q^{2-B}+Q^{2+B-K/2}\right)\log^2(2Q).
+\tag{8.4}
+\]</span>
+The first term sums the <span class="math" data-tex="\(xT^{-1}\log^2(Qx)\)">\(xT^{-1}\log^2(Qx)\)</span> errors, and the second covers all low zeros, the constant terms and the removed proper prime powers. The formula's condition <span class="math" data-tex="\(x\ge T\)">\(x\ge T\)</span> holds because <span class="math" data-tex="\(K\ge B\)">\(K\ge B\)</span>.</p>
+<p>For later passage to modulus <span class="math" data-tex="\(q\)">\(q\)</span>, replacing the inducing primitive prime sums by the original character sums costs at most
+<span class="math" data-tex="\(\varphi(q)\log q\le Q\log Q\)">\(\varphi(q)\log q\le Q\log Q\)</span>: each character differs only at primes dividing <span class="math" data-tex="\(q\)">\(q\)</span>, of total weight at most <span class="math" data-tex="\(\log q\)">\(\log q\)</span>. We include this error in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>; (8.4) still holds.</p>
+<p>To bound the zero sum, put <span class="math" data-tex="\(M=\log x-c\log T\ge(\log x)/2\)">\(M=\log x-c\log T\ge(\log x)/2\)</span>.
+If the relevant zeros satisfy <span class="math" data-tex="\(\beta\le1-w\)">\(\beta\le1-w\)</span> and
+<span class="math" data-tex="\(N(\sigma)\le C_4e_0T^{c(1-\sigma)}\)">\(N(\sigma)\le C_4e_0T^{c(1-\sigma)}\)</span>, partial summation of the positive zero count gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum x^\beta
+&amp;\le x^{1/2}N(1/2)
++\log x\int_{1/2}^{1-w}x^\sigma N(\sigma)\,d\sigma\\
+&amp;\le C_5e_0x e^{-Mw}.
+\end{aligned}
+\tag{8.5}
+\]">\[
+\begin{aligned}
+\sum x^\beta
+&amp;\le x^{1/2}N(1/2)
++\log x\int_{1/2}^{1-w}x^\sigma N(\sigma)\,d\sigma\\
+&amp;\le C_5e_0x e^{-Mw}.
+\end{aligned}
+\tag{8.5}
+\]</span>
+Indeed the integral becomes
+<span class="math" data-tex="\(C_4e_0x\log x\int_w^{1/2}e^{-Mu}\,du\)">\(C_4e_0x\log x\int_w^{1/2}e^{-Mu}\,du\)</span>, and
+<span class="math" data-tex="\(\log x/M\le2\)">\(\log x/M\le2\)</span>. If <span class="math" data-tex="\(w&gt;1/2\)">\(w&gt;1/2\)</span>, there are no such zeros and the estimate is automatic.</p>
+<p>There are two cases.</p>
+<p><strong>No deep exception.</strong> Either <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, or <span class="math" data-tex="\(E=1\)">\(E=1\)</span> and <span class="math" data-tex="\(\delta H\ge h_0\)">\(\delta H\ge h_0\)</span>.
+Including the possible exceptional zero, the density is at most
+<span class="math" data-tex="\((C+1)T^{c(1-\sigma)}\)">\((C+1)T^{c(1-\sigma)}\)</span>, and every zero has
+<span class="math math-display" data-tex="\[
+\beta\le1-\frac{\min(a_0,h_0)}H.
+\]">\[
+\beta\le1-\frac{\min(a_0,h_0)}H.
+\]</span>
+Since <span class="math" data-tex="\(H=\log(2Q^B)\le(B+1)\log Q\)">\(H=\log(2Q^B)\le(B+1)\log Q\)</span>, (8.5) bounds their sum by
+<span class="math math-display" data-tex="\[
+C_6x\exp\!\left(-\frac{\min(a_0,h_0)K}{2(B+1)}\right).
+\tag{8.6}
+\]">\[
+C_6x\exp\!\left(-\frac{\min(a_0,h_0)K}{2(B+1)}\right).
+\tag{8.6}
+\]</span>
+Choose <span class="math" data-tex="\(K\)">\(K\)</span> effectively so large that this is less than <span class="math" data-tex="\(x/8\)">\(x/8\)</span>, with the constant in (8.3) included. For <span class="math" data-tex="\(Q\)">\(Q\)</span> above a computable <span class="math" data-tex="\(Q_0(K)\)">\(Q_0(K)\)</span>, (8.4) is also less than <span class="math" data-tex="\(x/8\)">\(x/8\)</span>.
+Character orthogonality therefore gives
+<span class="math" data-tex="\(\theta(x;q,b)\ge x/(2\varphi(q))\)">\(\theta(x;q,b)\ge x/(2\varphi(q))\)</span>.</p>
+<p><strong>Deep exception.</strong> Here <span class="math" data-tex="\(E=1\)">\(E=1\)</span> and <span class="math" data-tex="\(\delta H&lt;h_0\)">\(\delta H&lt;h_0\)</span>.
+By (8.2) and Corollary 7.2, every other zero has
+<span class="math math-display" data-tex="\[
+\beta\le1-\frac2{\log T}.
+\]">\[
+\beta\le1-\frac2{\log T}.
+\]</span>
+Apply (8.5) with <span class="math" data-tex="\(e_0=\delta H\)">\(e_0=\delta H\)</span> and <span class="math" data-tex="\(w=2/\log T\)">\(w=2/\log T\)</span>.
+The zero sum in (8.3) is at most
+<span class="math math-display" data-tex="\[
+C_7\delta(\log x)x e^{-K/B}.
+\tag{8.7}
+\]">\[
+C_7\delta(\log x)x e^{-K/B}.
+\tag{8.7}
+\]</span>
+We used <span class="math" data-tex="\(H\le\log x\)">\(H\le\log x\)</span>, increasing <span class="math" data-tex="\(K\)">\(K\)</span> if needed.
+Moreover, (1.3), now with <span class="math" data-tex="\(T=Q^{10}\)">\(T=Q^{10}\)</span>, and (8.4) give
+<span class="math math-display" data-tex="\[
+\mathcal R\ll K\delta(\log x)x\,Q^{-2}.
+\tag{8.8}
+\]">\[
+\mathcal R\ll K\delta(\log x)x\,Q^{-2}.
+\tag{8.8}
+\]</span>
+For clarity, the first error divided by <span class="math" data-tex="\(\delta x\log x\)">\(\delta x\log x\)</span> is
+<span class="math" data-tex="\(O(KQ^{-3}\log^5(2Q))=O(KQ^{-2})\)">\(O(KQ^{-3}\log^5(2Q))=O(KQ^{-2})\)</span>;
+the second is still smaller since <span class="math" data-tex="\(K\ge60\)">\(K\ge60\)</span>.</p>
+<p>If <span class="math" data-tex="\(d_1\mid q\)">\(d_1\mid q\)</span>, the main term after orthogonality is
+<span class="math" data-tex="\(x-\chi_1(b)x^{\beta_1}/\beta_1\)">\(x-\chi_1(b)x^{\beta_1}/\beta_1\)</span>, before division by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>.
+Its smallest value occurs when <span class="math" data-tex="\(\chi_1(b)=1\)">\(\chi_1(b)=1\)</span>. As <span class="math" data-tex="\(\beta_1&gt;3/4\)">\(\beta_1&gt;3/4\)</span> and <span class="math" data-tex="\(\log x\ge4\)">\(\log x\ge4\)</span>,
+<span class="math math-display" data-tex="\[
+x-\frac{x^{\beta_1}}{\beta_1}
+=\int_{\beta_1}^1
+\frac{x^u(u\log x-1)}{u^2}\,du
+\ge\frac12\delta(\log x)x e^{-\delta\log x}
+\ge\frac12\delta(\log x)x e^{-h_0K/B}.
+\tag{8.9}
+\]">\[
+x-\frac{x^{\beta_1}}{\beta_1}
+=\int_{\beta_1}^1
+\frac{x^u(u\log x-1)}{u^2}\,du
+\ge\frac12\delta(\log x)x e^{-\delta\log x}
+\ge\frac12\delta(\log x)x e^{-h_0K/B}.
+\tag{8.9}
+\]</span>
+Increase <span class="math" data-tex="\(K\)">\(K\)</span> again until the constant in (8.7) obeys
+<span class="math math-display" data-tex="\[
+C_7e^{-K/B}\le\frac18e^{-h_0K/B}.
+\]">\[
+C_7e^{-K/B}\le\frac18e^{-h_0K/B}.
+\]</span>
+This is possible since <span class="math" data-tex="\(h_0\le1/2\)">\(h_0\le1/2\)</span>.
+Then increase the computable <span class="math" data-tex="\(Q_0(K)\)">\(Q_0(K)\)</span> until (8.8), with all constants included, is at most
+<span class="math" data-tex="\(\frac18\delta(\log x)x e^{-h_0K/B}\)">\(\frac18\delta(\log x)x e^{-h_0K/B}\)</span>.
+The error is at most half the lower bound (8.9).
+This gives
+<span class="math math-display" data-tex="\[
+\theta(x;q,b)\ge\frac14e^{-h_0K/B}
+\frac{\delta(\log x)x}{\varphi(q)}.
+\tag{8.10}
+\]">\[
+\theta(x;q,b)\ge\frac14e^{-h_0K/B}
+\frac{\delta(\log x)x}{\varphi(q)}.
+\tag{8.10}
+\]</span>
+This deep zero, if <span class="math" data-tex="\(d_1\mid q\)">\(d_1\mid q\)</span>, is exactly the one defining <span class="math" data-tex="\(\delta_q\)">\(\delta_q\)</span>:
+<span class="math" data-tex="\(\delta&lt;h_0/H\le a_0/\log(2q)\)">\(\delta&lt;h_0/H\le a_0/\log(2q)\)</span> by (8.2).</p>
+<p>If <span class="math" data-tex="\(d_1\nmid q\)">\(d_1\nmid q\)</span>, no exceptional main term occurs at all.
+The same error bound is at most
+<span class="math" data-tex="\(\frac14x(h_0K/B)e^{-h_0K/B}\le x/(4e)\)">\(\frac14x(h_0K/B)e^{-h_0K/B}\le x/(4e)\)</span>.
+Thus <span class="math" data-tex="\(\theta(x;q,b)\ge x/(2\varphi(q))\)">\(\theta(x;q,b)\ge x/(2\varphi(q))\)</span> also in this case.
+Both cases prove (8.1), with
+<span class="math math-display" data-tex="\[
+c_*=\min\left(\frac12,\frac14e^{-h_0K/B}\right),
+\]">\[
+c_*=\min\left(\frac12,\frac14e^{-h_0K/B}\right),
+\]</span>
+whenever <span class="math" data-tex="\(Q=x^{1/K}\ge\max(q,Q_0(K))\)">\(Q=x^{1/K}\ge\max(q,Q_0(K))\)</span>.</p>
+<p>Finally choose the absolute effective exponent
+<span class="math math-display" data-tex="\[
+\kappa\ge
+\max\left(K,\frac{K\log(\max(2,Q_0(K)))}{\log2}\right).
+\tag{8.11}
+\]">\[
+\kappa\ge
+\max\left(K,\frac{K\log(\max(2,Q_0(K)))}{\log2}\right).
+\tag{8.11}
+\]</span>
+For every <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, <span class="math" data-tex="\(x\ge q^\kappa\)">\(x\ge q^\kappa\)</span> ensures both required inequalities for <span class="math" data-tex="\(Q=x^{1/K}\)">\(Q=x^{1/K}\)</span>. This proves the theorem for the full claimed range, not just one chosen value of <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At the no-exception stage, keeping <span class="math" data-tex="\(Q=q\)">\(Q=q\)</span> and writing <span class="math" data-tex="\(u=\log x/\log q\)">\(u=\log x/\log q\)</span> also gives the familiar Gallagher estimate
+<span class="math math-display" data-tex="\[
+\theta(x;q,b)=\frac{x}{\varphi(q)}
+\left(1+O\!\left(e^{-c_8u}+\frac{u^2}{q}\right)\right)
+\tag{8.12}
+\]">\[
+\theta(x;q,b)=\frac{x}{\varphi(q)}
+\left(1+O\!\left(e^{-c_8u}+\frac{u^2}{q}\right)\right)
+\tag{8.12}
+\]</span>
+for <span class="math" data-tex="\(x\ge q^{K_1}\)">\(x\ge q^{K_1}\)</span>, provided the primitive factors of conductors dividing <span class="math" data-tex="\(q\)">\(q\)</span> have no exceptional real zero within <span class="math" data-tex="\(c_9/\log q\)">\(c_9/\log q\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>.
+Here <span class="math" data-tex="\(K_1,c_8,c_9\)">\(K_1,c_8,c_9\)</span> and the error constant are absolute and effective.
+To verify this precise form, their other zeros have classical width at least a constant divided by <span class="math" data-tex="\(\log q\)">\(\log q\)</span> up to height <span class="math" data-tex="\(q^{10}\)">\(q^{10}\)</span>; the possible real zero is excluded by the hypothesis. Use (8.5) with that width and <span class="math" data-tex="\(\log x-c\log(q^{10})\ge(\log x)/2\)">\(\log x-c\log(q^{10})\ge(\log x)/2\)</span>.
+The two errors in (8.4), now with <span class="math" data-tex="\(u\)">\(u\)</span> in place of <span class="math" data-tex="\(K\)">\(K\)</span>, are at most
+<span class="math" data-tex="\(Cx u^2/q\)">\(Cx u^2/q\)</span> once <span class="math" data-tex="\(K_1\ge\max(2Bc,60)\)">\(K_1\ge\max(2Bc,60)\)</span>, since
+<span class="math" data-tex="\(q^{-8}\log^2(2q)\ll q^{-1}\)">\(q^{-8}\log^2(2q)\ll q^{-1}\)</span>.
+The passage to inducing characters has already been included.
+This is the no-exception statement; (8.1) additionally gives the effective lower bound in the exceptional case.</p>
+<h2 id="9-linnik-s-theorem-and-effectiveness">9. Linnik's theorem and effectiveness</h2>
+<p><strong>Theorem 9.1 (Linnik).</strong> There is an absolute, effectively computable <span class="math" data-tex="\(L_0\)">\(L_0\)</span> such that
+<span class="math math-display" data-tex="\[
+p(q,b)\le q^{L_0}
+\qquad(q\ge2,\ (b,q)=1).
+\tag{9.1}
+\]">\[
+p(q,b)\le q^{L_0}
+\qquad(q\ge2,\ (b,q)=1).
+\tag{9.1}
+\]</span></p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(x=q^\kappa\)">\(x=q^\kappa\)</span> in Theorem 8.1. Its right side is strictly positive, because <span class="math" data-tex="\(\delta_q&gt;0\)">\(\delta_q&gt;0\)</span>. Hence the sum of the positive weights <span class="math" data-tex="\(\log p\)">\(\log p\)</span> in this progression is nonzero, so at least one prime occurs below <span class="math" data-tex="\(x\)">\(x\)</span>. We may take <span class="math" data-tex="\(L_0=\kappa\)">\(L_0=\kappa\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The passage from a theorem for prime powers alone needs a little more work. Suppose only the <span class="math" data-tex="\(\psi\)">\(\psi\)</span> version of (8.1) is available. The effective bound (1.3), with conductor at most <span class="math" data-tex="\(q\)">\(q\)</span>, gives
+<span class="math math-display" data-tex="\[
+\min(1,\delta_q\log x)\gg q^{-1/2}\log^{-3}(2q)
+\qquad(x\ge q^\kappa).
+\]">\[
+\min(1,\delta_q\log x)\gg q^{-1/2}\log^{-3}(2q)
+\qquad(x\ge q^\kappa).
+\]</span>
+Since <span class="math" data-tex="\(\varphi(q)\le q\)">\(\varphi(q)\le q\)</span>, the lower bound for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is
+<span class="math" data-tex="\(\gg xq^{-3/2}\log^{-3}(2q)\)">\(\gg xq^{-3/2}\log^{-3}(2q)\)</span>.
+Subtracting the global <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span> contribution of proper prime powers is sufficient at <span class="math" data-tex="\(x=q^L\)">\(x=q^L\)</span> for every fixed
+<span class="math math-display" data-tex="\[
+L&gt;\max(\kappa,3).
+\tag{9.2}
+\]">\[
+L&gt;\max(\kappa,3).
+\tag{9.2}
+\]</span>
+For instance start with <span class="math" data-tex="\(L=\max(\kappa,4)\)">\(L=\max(\kappa,4)\)</span>, and enlarge it effectively to cover a finite, effectively bounded set of small moduli. This explains the extra exponent condition when one starts from <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>All constants in this proof are effective. If a proof first inserted Siegel's lower bound with an unspecified ineffective constant, its finite cutoff could not be computed. Here the exceptionally small factor is retained in the error as well as in the main term, and the elementary effective lower bound is enough for the remaining truncation errors.</p>
+<h2 id="10-the-sharper-conditional-scale-under-grh">10. The sharper conditional scale under GRH</h2>
+<p><strong>Theorem 10.1.</strong> Under GRH for the relevant Dirichlet L-functions,
+<span class="math math-display" data-tex="\[
+p(q,b)\ll\bigl(\varphi(q)\log(2q)\bigr)^2
+\qquad(q\ge2,\ (b,q)=1).
+\tag{10.1}
+\]">\[
+p(q,b)\ll\bigl(\varphi(q)\log(2q)\bigr)^2
+\qquad(q\ge2,\ (b,q)=1).
+\tag{10.1}
+\]</span>
+In particular <span class="math" data-tex="\(p(q,b)\ll_\varepsilon q^{2+\varepsilon}\)">\(p(q,b)\ll_\varepsilon q^{2+\varepsilon}\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> A smooth weight saves one logarithm from the unsmoothed character estimate. For a primitive character, put
+<span class="math math-display" data-tex="\[
+\Psi_1(x,\chi)=\sum_{n\le x}\Lambda(n)\chi(n)(1-n/x).
+\]">\[
+\Psi_1(x,\chi)=\sum_{n\le x}\Lambda(n)\chi(n)(1-n/x).
+\]</span>
+The Mellin identity for <span class="math" data-tex="\((1-u)_+\)">\((1-u)_+\)</span>, proved by taking the two residues at <span class="math" data-tex="\(s=0,-1\)">\(s=0,-1\)</span>, gives
+<span class="math math-display" data-tex="\[
+\Psi_1(x,\chi)=\frac1{2\pi i}\int_{(c)}
+-\frac{L&#x27;}L(s,\chi)\frac{x^s}{s(s+1)}\,ds
+\qquad(c&gt;1).
+\tag{10.2}
+\]">\[
+\Psi_1(x,\chi)=\frac1{2\pi i}\int_{(c)}
+-\frac{L&#x27;}L(s,\chi)\frac{x^s}{s(s+1)}\,ds
+\qquad(c&gt;1).
+\tag{10.2}
+\]</span>
+Interchange with the absolutely convergent Euler series to obtain this identity.
+Shift to <span class="math" data-tex="\(\Re s=-1/2\)">\(\Re s=-1/2\)</span> at the good heights used in the explicit-formula proof. On the horizontal edges <span class="math" data-tex="\(L&#x27;/L=O(\log^2(qT))\)">\(L&#x27;/L=O(\log^2(qT))\)</span> and the kernel is <span class="math" data-tex="\(O(T^{-2})\)">\(O(T^{-2})\)</span>, so they tend to zero for fixed <span class="math" data-tex="\(x\)">\(x\)</span>.
+On the left line the functional equation and its gamma derivative give
+<span class="math" data-tex="\(L&#x27;/L=O(\log(q(|t|+2)))\)">\(L&#x27;/L=O(\log(q(|t|+2)))\)</span>: the reflected Euler logarithmic derivative is on <span class="math" data-tex="\(\Re s=3/2\)">\(\Re s=3/2\)</span>.
+Thus its integral is <span class="math" data-tex="\(O(x^{-1/2}\log(2q))\)">\(O(x^{-1/2}\log(2q))\)</span>.</p>
+<p>The pole at <span class="math" data-tex="\(1\)">\(1\)</span>, when present, has residue <span class="math" data-tex="\(x/2\)">\(x/2\)</span>.
+Each nontrivial zero contributes
+<span class="math" data-tex="\(-x^\rho/[\rho(\rho+1)]\)">\(-x^\rho/[\rho(\rho+1)]\)</span>.
+For an odd nonprincipal character the origin contributes <span class="math" data-tex="\(-L&#x27;/L(0,\chi)\)">\(-L&#x27;/L(0,\chi)\)</span>; for an even nonprincipal character it contributes
+<span class="math" data-tex="\(-\log x+1-b(\chi)\)">\(-\log x+1-b(\chi)\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> as in the explicit-formula lesson.
+Under GRH both constants at the origin are <span class="math" data-tex="\(O(\log(2q))\)">\(O(\log(2q))\)</span>.
+Indeed, at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> every zero in the local logarithmic-derivative expansion has distance at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so <span class="math" data-tex="\(L&#x27;/L(1,\bar\chi)=O(\log(2q))\)">\(L&#x27;/L(1,\bar\chi)=O(\log(2q))\)</span>. The functional equation then gives the stated bound at <span class="math" data-tex="\(0\)">\(0\)</span>, with the simple even zero removed. The conductor-one zeta origin constant is a fixed absolute constant.
+Consequently
+<span class="math math-display" data-tex="\[
+\Psi_1(x,\chi)=\mathbf1_{\chi=\chi_0}\frac x2
+-\sum_\rho\frac{x^\rho}{\rho(\rho+1)}
++O(\log(2qx)).
+\tag{10.3}
+\]">\[
+\Psi_1(x,\chi)=\mathbf1_{\chi=\chi_0}\frac x2
+-\sum_\rho\frac{x^\rho}{\rho(\rho+1)}
++O(\log(2qx)).
+\tag{10.3}
+\]</span>
+The zero series converges absolutely under GRH.
+The local zero count gives
+<span class="math math-display" data-tex="\[
+\sum_\rho\frac1{|\rho(\rho+1)|}\ll\log(2q):
+\]">\[
+\sum_\rho\frac1{|\rho(\rho+1)|}\ll\log(2q):
+\]</span>
+for <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span> the denominators are bounded below, and on successive unit intervals the sum is bounded by
+<span class="math" data-tex="\(\sum_{j\ge1}\log(q(j+2))/j^2\ll\log(2q)\)">\(\sum_{j\ge1}\log(q(j+2))/j^2\ll\log(2q)\)</span>.
+Hence
+<span class="math math-display" data-tex="\[
+\Psi_1(x,\chi)=\mathbf1_{\chi=\chi_0}\frac x2
++O\!\left(\sqrt x\log(2q)+\log(2qx)\right).
+\tag{10.4}
+\]">\[
+\Psi_1(x,\chi)=\mathbf1_{\chi=\chi_0}\frac x2
++O\!\left(\sqrt x\log(2q)+\log(2qx)\right).
+\tag{10.4}
+\]</span></p>
+<p>For an imprimitive character, omitting prime powers at primes dividing <span class="math" data-tex="\(q\)">\(q\)</span> costs at most
+<span class="math" data-tex="\(\omega(q)\log x\ll\log(2q)\log(2x)\)">\(\omega(q)\log x\ll\log(2q)\log(2x)\)</span>.
+Average (10.4) by orthogonality to obtain
+<span class="math math-display" data-tex="\[
+\sum_{\substack{n\le x\\n\equiv b\pmod q}}\Lambda(n)(1-n/x)
+=\frac{x}{2\varphi(q)}
++O\!\left(\sqrt x\log(2q)+\log(2q)\log(2x)\right).
+\tag{10.5}
+\]">\[
+\sum_{\substack{n\le x\\n\equiv b\pmod q}}\Lambda(n)(1-n/x)
+=\frac{x}{2\varphi(q)}
++O\!\left(\sqrt x\log(2q)+\log(2q)\log(2x)\right).
+\tag{10.5}
+\]</span>
+Subtract the proper-prime-power weights, whose total is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>.
+Choose <span class="math" data-tex="\(x=A(\varphi(q)\log(2q))^2\)">\(x=A(\varphi(q)\log(2q))^2\)</span>, with one sufficiently large absolute <span class="math" data-tex="\(A\)">\(A\)</span>.
+Since <span class="math" data-tex="\(\log(2x)\ll\log A+\log(2q)\)">\(\log(2x)\ll\log A+\log(2q)\)</span>, the main term exceeds the two error terms uniformly in <span class="math" data-tex="\(q\)">\(q\)</span> when <span class="math" data-tex="\(A\)">\(A\)</span> is large: its size is
+<span class="math" data-tex="\(A\varphi(q)\log^2(2q)/2\)">\(A\varphi(q)\log^2(2q)/2\)</span>, while the square-root term is <span class="math" data-tex="\(O(\sqrt A\varphi(q)\log^2(2q))\)">\(O(\sqrt A\varphi(q)\log^2(2q))\)</span>, and the last term is <span class="math" data-tex="\(O((1+\log A)\log^2(2q))\)">\(O((1+\log A)\log^2(2q))\)</span>.
+The weighted prime sum is therefore positive, proving (10.1).
+Finally <span class="math" data-tex="\(\varphi(q)\le q\)">\(\varphi(q)\le q\)</span> and <span class="math" data-tex="\(\log^2(2q)\ll_\varepsilon q^\varepsilon\)">\(\log^2(2q)\ll_\varepsilon q^\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="11-least-prime-examples-and-the-necessary-size-of-an-exponent">11. Least-prime examples and the necessary size of an exponent</h2>
+<p>For the class <span class="math" data-tex="\(1\bmod q\)">\(1\bmod q\)</span>, trial division gives the following complete list through <span class="math" data-tex="\(q=50\)">\(q=50\)</span>. Every displayed prime has been checked, and all smaller positive integers in its progression have been checked composite.
+The entry for <span class="math" data-tex="\(q=1\)">\(q=1\)</span> is included as an arithmetic convention; Theorem 9.1 starts at <span class="math" data-tex="\(q=2\)">\(q=2\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(q\)">\(q\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(p(q,1)\)">\(p(q,1)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(q^2\)">\(q^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(16\)">\(16\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(25\)">\(25\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(36\)">\(36\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(29\)">\(29\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(49\)">\(49\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(17\)">\(17\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(64\)">\(64\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(19\)">\(19\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(81\)">\(81\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(100\)">\(100\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(11\)">\(11\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(23\)">\(23\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(121\)">\(121\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(13\)">\(13\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(144\)">\(144\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(13\)">\(13\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(53\)">\(53\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(169\)">\(169\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(14\)">\(14\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(29\)">\(29\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(196\)">\(196\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(15\)">\(15\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(225\)">\(225\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(16\)">\(16\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(17\)">\(17\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(256\)">\(256\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(17\)">\(17\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(103\)">\(103\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(289\)">\(289\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(18\)">\(18\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(19\)">\(19\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(324\)">\(324\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(19\)">\(19\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(191\)">\(191\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(361\)">\(361\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(20\)">\(20\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(41\)">\(41\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(400\)">\(400\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(21\)">\(21\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(43\)">\(43\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(441\)">\(441\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(22\)">\(22\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(23\)">\(23\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(484\)">\(484\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(23\)">\(23\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(47\)">\(47\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(529\)">\(529\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(24\)">\(24\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(73\)">\(73\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(576\)">\(576\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(25\)">\(25\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(101\)">\(101\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(625\)">\(625\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(26\)">\(26\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(53\)">\(53\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(676\)">\(676\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(27\)">\(27\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(109\)">\(109\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(729\)">\(729\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(28\)">\(28\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(29\)">\(29\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(784\)">\(784\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(29\)">\(29\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(59\)">\(59\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(841\)">\(841\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(30\)">\(30\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(900\)">\(900\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(31\)">\(31\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(311\)">\(311\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(961\)">\(961\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(32\)">\(32\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(97\)">\(97\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1024\)">\(1024\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(33\)">\(33\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(67\)">\(67\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1089\)">\(1089\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(34\)">\(34\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(103\)">\(103\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1156\)">\(1156\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(35\)">\(35\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(71\)">\(71\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1225\)">\(1225\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(36\)">\(36\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(37\)">\(37\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1296\)">\(1296\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(37\)">\(37\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(149\)">\(149\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1369\)">\(1369\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(38\)">\(38\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(191\)">\(191\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1444\)">\(1444\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(39\)">\(39\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(79\)">\(79\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1521\)">\(1521\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(40\)">\(40\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(41\)">\(41\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1600\)">\(1600\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(41\)">\(41\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(83\)">\(83\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1681\)">\(1681\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(42\)">\(42\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(43\)">\(43\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1764\)">\(1764\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(43\)">\(43\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(173\)">\(173\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1849\)">\(1849\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(44\)">\(44\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(89\)">\(89\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1936\)">\(1936\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(45\)">\(45\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(181\)">\(181\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2025\)">\(2025\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(46\)">\(46\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(47\)">\(47\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2116\)">\(2116\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(47\)">\(47\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(283\)">\(283\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2209\)">\(2209\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(48\)">\(48\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(97\)">\(97\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2304\)">\(2304\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(49\)">\(49\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(197\)">\(197\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2401\)">\(2401\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(50\)">\(50\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(101\)">\(101\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2500\)">\(2500\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In these finite examples <span class="math" data-tex="\(p(q,1)&lt;q^2\)">\(p(q,1)&lt;q^2\)</span> for <span class="math" data-tex="\(2\le q\le50\)">\(2\le q\le50\)</span>, with largest ratio <span class="math" data-tex="\(7/9\)">\(7/9\)</span>, at <span class="math" data-tex="\(q=3\)">\(q=3\)</span>. This finite check does not prove a uniform quadratic bound.
+At <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the least prime is <span class="math" data-tex="\(2&gt;1^L\)">\(2&gt;1^L\)</span> for every <span class="math" data-tex="\(L\)">\(L\)</span>; this explains the lower restriction <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> in a bound with coefficient exactly <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proposition 11.1.</strong> As <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\max_{(b,q)=1}p(q,b)\ge(1+o(1))\varphi(q)\log q.
+\tag{11.1}
+\]">\[
+\max_{(b,q)=1}p(q,b)\ge(1+o(1))\varphi(q)\log q.
+\tag{11.1}
+\]</span>
+Consequently no absolute exponent <span class="math" data-tex="\(L&lt;1\)">\(L&lt;1\)</span> can satisfy (9.1).</p>
+<p><strong>Proof.</strong> Let the maximum be <span class="math" data-tex="\(P_q\)">\(P_q\)</span>. The <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> reduced classes require distinct primes at most <span class="math" data-tex="\(P_q\)">\(P_q\)</span>, so
+<span class="math" data-tex="\(\pi(P_q)\ge\varphi(q)\)">\(\pi(P_q)\ge\varphi(q)\)</span>.
+The totient estimate <span class="math" data-tex="\(q/\varphi(q)\ll\log(2q)\)">\(q/\varphi(q)\ll\log(2q)\)</span> implies
+<span class="math math-display" data-tex="\[
+\varphi(q)\to\infty,\qquad
+\log\varphi(q)=\log q+O(\log\log(2q)).
+\]">\[
+\varphi(q)\to\infty,\qquad
+\log\varphi(q)=\log q+O(\log\log(2q)).
+\]</span>
+By the ordinary prime number theorem, the <span class="math" data-tex="\(n\)">\(n\)</span>-th prime is
+<span class="math" data-tex="\((1+o(1))n\log n\)">\((1+o(1))n\log n\)</span>. To verify the inversion, compare
+<span class="math" data-tex="\(\pi((1\pm\varepsilon)n\log n)\sim(1\pm\varepsilon)n\)">\(\pi((1\pm\varepsilon)n\log n)\sim(1\pm\varepsilon)n\)</span>, then let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.
+Thus
+<span class="math math-display" data-tex="\[
+P_q\ge p_{\varphi(q)}
+=(1+o(1))\varphi(q)\log\varphi(q)
+=(1+o(1))\varphi(q)\log q.
+\]">\[
+P_q\ge p_{\varphi(q)}
+=(1+o(1))\varphi(q)\log\varphi(q)
+=(1+o(1))\varphi(q)\log q.
+\]</span>
+Moreover <span class="math" data-tex="\(\varphi(q)\log q\gg q\)">\(\varphi(q)\log q\gg q\)</span> by the same totient bound, so <span class="math" data-tex="\(P_q/q^L\to\infty\)">\(P_q/q^L\to\infty\)</span> for any fixed <span class="math" data-tex="\(L&lt;1\)">\(L&lt;1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Numerical refinements of Linnik's exponent require considerably sharper constants than those retained above.
+For precise historical comparison, Xylouris's <a href="https://www.impan.pl/shop/publication/transaction/download/product/83078">2011 article</a> states the exponent <span class="math" data-tex="\(5.18\)">\(5.18\)</span> in Theorem 1.1; the <a href="https://www.mathnet.ru/php/getFT.phtml?jrnid=cheb&amp;paperid=681&amp;what=fullt&amp;option_lang=eng">2018 article <em>Linniks Konstante ist kleiner als 5</em></a> states the exponent <span class="math" data-tex="\(5\)">\(5\)</span> in Theorem 1.
+These statements use <span class="math" data-tex="\(p(q,b)\le Cq^L\)">\(p(q,b)\le Cq^L\)</span> with an effective coefficient <span class="math" data-tex="\(C\)">\(C\)</span>. Absorbing <span class="math" data-tex="\(C\)">\(C\)</span> into a pure power uniformly for <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> changes the exponent; it does not preserve the number <span class="math" data-tex="\(5\)">\(5\)</span>.
+Our proof supplies an effective absolute power, with no optimization of its numerical value. The two sharper numerical analyses are further literature, not estimates used in this proof.</p>
+<h2 id="12-exercises">12. Exercises</h2>
+<ol>
+<li><strong>Medium.</strong> Under GRH, use a smooth explicit formula to prove <span class="math" data-tex="\(p(q,b)\ll_\varepsilon q^{2+\varepsilon}\)">\(p(q,b)\ll_\varepsilon q^{2+\varepsilon}\)</span>. Explain the logarithm saved by the smooth weight.</li>
+<li><strong>Medium.</strong> Explain how an exceptionally small <span class="math" data-tex="\(1-\beta_1\)">\(1-\beta_1\)</span> helps the other character factors, and how this compensates for the small main term in the classes with <span class="math" data-tex="\(\chi_1(b)=1\)">\(\chi_1(b)=1\)</span>.</li>
+<li><strong>Medium.</strong> Prove (11.1) and deduce that a uniform exponent smaller than <span class="math" data-tex="\(1\)">\(1\)</span> is impossible.</li>
+<li><strong>Hard.</strong> Starting only from the <span class="math" data-tex="\(\psi\)">\(\psi\)</span> lower bound in Theorem 8.1, deduce Linnik's theorem and state an explicit condition on the exponent in terms of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Explain how the finite small-modulus adjustment can be computed.</li>
+</ol>
+<h2 id="13-solutions">13. Solutions</h2>
+<ol>
+<li>
+<p>Use the weight <span class="math" data-tex="\((1-n/x)_+\)">\((1-n/x)_+\)</span>, whose Mellin transform is <span class="math" data-tex="\(1/[s(s+1)]\)">\(1/[s(s+1)]\)</span>.
+The contour calculation (10.2)–(10.3) has zero terms <span class="math" data-tex="\(x^\rho/[\rho(\rho+1)]\)">\(x^\rho/[\rho(\rho+1)]\)</span>, rather than <span class="math" data-tex="\(x^\rho/\rho\)">\(x^\rho/\rho\)</span>.
+On GRH the weighted reciprocal sum over all zeros is <span class="math" data-tex="\(O(\log(2q))\)">\(O(\log(2q))\)</span>, because its ordinate tail is summable like
+<span class="math" data-tex="\(\sum_j\log(q(j+2))/j^2\)">\(\sum_j\log(q(j+2))/j^2\)</span>. Thus the averaged character error is
+<span class="math" data-tex="\(O(\sqrt x\log(2q)+\log(2q)\log(2x))\)">\(O(\sqrt x\log(2q)+\log(2q)\log(2x))\)</span>, with main term <span class="math" data-tex="\(x/(2\varphi(q))\)">\(x/(2\varphi(q))\)</span>.
+The total proper-prime-power weight is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>.
+At <span class="math" data-tex="\(x=A(\varphi(q)\log(2q))^2\)">\(x=A(\varphi(q)\log(2q))^2\)</span>, a sufficiently large absolute <span class="math" data-tex="\(A\)">\(A\)</span> makes the prime sum positive. Therefore
+<span class="math" data-tex="\(p(q,b)\ll(\varphi(q)\log(2q))^2\ll_\varepsilon q^{2+\varepsilon}\)">\(p(q,b)\ll(\varphi(q)\log(2q))^2\ll_\varepsilon q^{2+\varepsilon}\)</span>.
+The additional kernel factor <span class="math" data-tex="\(s+1\)">\(s+1\)</span> makes the zero series absolutely convergent; this is the logarithmic saving compared with summing the unsmoothed absolute reciprocals.</p>
+</li>
+<li>
+<p>If a nonexceptional zero has real part <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, then (1.5) gives
+<span class="math" data-tex="\(1\le C\delta H T^{c(1-\beta)}\)">\(1\le C\delta H T^{c(1-\beta)}\)</span>, so
+<span class="math" data-tex="\(1-\beta\ge\log(1/(C\delta H))/(c\log T)\)">\(1-\beta\ge\log(1/(C\delta H))/(c\log T)\)</span>.
+As <span class="math" data-tex="\(\delta\)">\(\delta\)</span> decreases, this forces every other near-1 zero to the left.
+At the coefficient level, the two logarithmic derivatives in (3.3) have prime coefficient
+<span class="math" data-tex="\(b(p)=1+\chi_1(p)p^{-\delta}\)">\(b(p)=1+\chi_1(p)p^{-\delta}\)</span>.
+The positive convolution in Section 6 gives
+<span class="math" data-tex="\(\sum|b(p)|^2/p\ll\delta\log V\)">\(\sum|b(p)|^2/p\ll\delta\log V\)</span>; this is the quantitative mechanism.
+After integration of the zero density, the error is <span class="math" data-tex="\(O(\delta(\log x)x e^{-K/B})\)">\(O(\delta(\log x)x e^{-K/B})\)</span>, whereas the smallest class main term is at least
+<span class="math" data-tex="\(\frac12\delta(\log x)x e^{-h_0K/B}\)">\(\frac12\delta(\log x)x e^{-h_0K/B}\)</span>.
+Since <span class="math" data-tex="\(h_0&lt;1\)">\(h_0&lt;1\)</span>, choosing <span class="math" data-tex="\(K\)">\(K\)</span> sufficiently large makes the error a fixed fraction of the main term, independently of how small <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is.
+For classes with <span class="math" data-tex="\(\chi_1(b)=-1\)">\(\chi_1(b)=-1\)</span>, the exceptional term adds to the principal contribution; for those with <span class="math" data-tex="\(\chi_1(b)=1\)">\(\chi_1(b)=1\)</span>, it subtracts, but the same repulsion controls the error. If its conductor does not divide the modulus, there is no exceptional class term, while the repulsion still helps.</p>
+</li>
+<li>
+<p>Each reduced class has its own least prime, and primes in different classes are distinct. Hence
+<span class="math" data-tex="\(\pi(P_q)\ge\varphi(q)\)">\(\pi(P_q)\ge\varphi(q)\)</span>.
+The ordinary prime number theorem gives
+<span class="math" data-tex="\(P_q\ge(1+o(1))\varphi(q)\log\varphi(q)\)">\(P_q\ge(1+o(1))\varphi(q)\log\varphi(q)\)</span>.
+From <span class="math" data-tex="\(q/\varphi(q)\ll\log(2q)\)">\(q/\varphi(q)\ll\log(2q)\)</span>, we have
+<span class="math" data-tex="\(\log\varphi(q)/\log q\to1\)">\(\log\varphi(q)/\log q\to1\)</span>, giving (11.1).
+The same totient estimate makes its right side at least a fixed positive multiple of <span class="math" data-tex="\(q\)">\(q\)</span>, eventually. For <span class="math" data-tex="\(L&lt;1\)">\(L&lt;1\)</span>, that multiple of <span class="math" data-tex="\(q\)">\(q\)</span> exceeds <span class="math" data-tex="\(q^L\)">\(q^L\)</span> for all sufficiently large <span class="math" data-tex="\(q\)">\(q\)</span>, so a uniform such exponent is impossible.</p>
+</li>
+<li>
+<p>The effective exceptional distance, or <span class="math" data-tex="\(\delta_q=1\)">\(\delta_q=1\)</span> in its absence, gives
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)\ge c_{10}xq^{-3/2}\log^{-3}(2q)
+\quad(x\ge q^\kappa).
+\]">\[
+\psi(x;q,b)\ge c_{10}xq^{-3/2}\log^{-3}(2q)
+\quad(x\ge q^\kappa).
+\]</span>
+Let <span class="math" data-tex="\(C_{10}\sqrt x\)">\(C_{10}\sqrt x\)</span> bound the total proper-prime-power contribution. At <span class="math" data-tex="\(x=q^L\)">\(x=q^L\)</span>, a prime must occur once
+<span class="math math-display" data-tex="\[
+q^{L/2-3/2}\log^{-3}(2q)&gt;C_{10}/c_{10}.
+\tag{13.1}
+\]">\[
+q^{L/2-3/2}\log^{-3}(2q)&gt;C_{10}/c_{10}.
+\tag{13.1}
+\]</span>
+Choose first <span class="math" data-tex="\(L_1=\max(\kappa,4)\)">\(L_1=\max(\kappa,4)\)</span>, so <span class="math" data-tex="\(L_1/2-3/2&gt;0\)">\(L_1/2-3/2&gt;0\)</span>.
+The function on the left eventually increases and tends to infinity.
+All constants are effective, so find a computable <span class="math" data-tex="\(q_0\)">\(q_0\)</span> beyond which (13.1) holds by elementary exponential-versus-polynomial bounds in <span class="math" data-tex="\(\log q\)">\(\log q\)</span>.
+For every <span class="math" data-tex="\(2\le q&lt;q_0\)">\(2\le q&lt;q_0\)</span> and every unit class, enumerate integers in that progression and test primality until its first prime is found. Dirichlet's theorem proves that this finite collection of searches terminates.
+If <span class="math" data-tex="\(M\)">\(M\)</span> is the largest least prime found, take
+<span class="math math-display" data-tex="\[
+L=\max\left(L_1,\frac{\log(\max(2,M))}{\log2}\right),
+\]">\[
+L=\max\left(L_1,\frac{\log(\max(2,M))}{\log2}\right),
+\]</span>
+rounded up if an integer is wanted.
+For small <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(q^L\ge2^L\ge M\)">\(q^L\ge2^L\ge M\)</span>; for large <span class="math" data-tex="\(q\)">\(q\)</span>, increasing <span class="math" data-tex="\(L\)">\(L\)</span> preserves (13.1). This proves (9.1) with a fully effective exponent.
+If one uses the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> lower bound itself, positivity already gives <span class="math" data-tex="\(L=\kappa\)">\(L=\kappa\)</span>, since no prime-power subtraction is then required.</p>
+</li>
+</ol>
+<h2 id="14-proof-scope-and-references">14. Proof scope and references</h2>
+<p>The finite power-sum lemma, logarithmic-gain hybrid sieve, complete near-1 zero detector, positive-convolution prime estimate, both log-free density bounds, Deuring–Heilbronn repulsion, both cases of Gallagher's effective lower bound, Linnik's theorem, the smooth-weight GRH bound and the necessary lower scale are proved here.
+The internal prerequisites in the introduction supply their previously proved exact character, analytic and sieve inputs. This argument does not use the wider Vinogradov–Korobov region or an ineffective Siegel constant.</p>
+<p>The optimized numerical exponents reported in Section 11 are not proved here. Their exact external theorem locators are given there; they play no role in any proof above.
+Koukoulopoulos's Chapter 27 gives another complete route, using sieve and multiplicative-function methods; it is a comparison reference, not an omitted step in the Gallagher route developed here.</p>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, AMS, 2019, author's preliminary version, Chapter 27, Theorems 27.1–27.2, Lemmas 27.4–27.9 and Proposition 27.8, for the alternative sieve organization.</li>
+<li>P. X. Gallagher, “A large sieve density estimate near <span class="math" data-tex="\(\sigma=1\)">\(\sigma=1\)</span>,” <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0011/LOG_0035.pdf"><em>Inventiones Mathematicae</em> 11 (1970), 329–339</a>, for the density method and its prime-distribution consequences.</li>
+<li>T. Xylouris, <a href="https://www.impan.pl/shop/publication/transaction/download/product/83078"><em>On the least prime in an arithmetic progression and estimates for the zeros of Dirichlet L-functions</em></a>, <em>Acta Arithmetica</em> 150 (2011), 65–91, Theorem 1.1, for the stated numerical comparison.</li>
+<li>T. Xylouris, <a href="https://www.mathnet.ru/php/getFT.phtml?jrnid=cheb&amp;paperid=681&amp;what=fullt&amp;option_lang=eng"><em>Linniks Konstante ist kleiner als 5</em></a>, <em>Chebyshevskii Sbornik</em> 19 (2018), 80–94, Theorem 1 and introduction, for the later numerical comparison.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-16.html">← Mean square distribution: the Barban–Davenport–Halberstam theorem</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-17.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

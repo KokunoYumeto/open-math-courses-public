@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finiteness for finite groups in every characteristic · Invariants and finiteness</title>
+<meta name="description" content="A lesson of the course Invariants and finiteness. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-INV/NOE-INV-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Invariants and finiteness</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="finiteness-for-finite-groups-in-every-characteristic">Finiteness for finite groups in every characteristic</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. The writing AI self-checks its own arguments; this evolving lesson has not received independent review. Original exposition, proofs, exercises and diagrams are CC0. Linked sources retain their licences.</em></p>
+<p>Averaging needs division by the group order. A monic polynomial whose roots form a finite orbit needs no division at all. This change of viewpoint proves finite generation in every characteristic, even for an algebra with nilpotents over a Noetherian base ring. It also explains why finding a few invariants can be enough to determine the whole ring.</p>
+<p>All rings are commutative with identity. An algebra is <strong>of finite type</strong> when finitely many elements generate it as an algebra; a module is <strong>finite</strong> when it is finitely generated. An element is <strong>integral</strong> over a subring if it satisfies a monic polynomial over that subring. The field in this lesson can have any characteristic.</p>
+<p>We use the preceding lessons <em>Invariants of finite groups</em> and <em>Polarization and invariants of many vectors</em>. The commutative algebra prerequisites are existing lessons in <em>Commutative algebra for geometry</em>: <a href="../AG-CA/AG-CA-03.html">Noetherian and Artinian rings</a>, Theorem 2.1 and the finite-submodule criterion; and <a href="../AG-CA/AG-CA-05.html">Integral extensions</a>, Theorem 1.2, for transitivity and “integral plus finite type implies finite”. Their proofs are written in the programme. Noether normalization is Corollary 3.2 of <a href="../AG-CA/AG-CA-09.html">Krull dimension and Noether normalization</a>: every finite-type field algebra is finite over a polynomial subalgebra. We prove the additional finite-normalization assertion here, including imperfect fields and inseparable extensions.</p>
+<h2 id="1-a-monic-equation-from-each-orbit">1. A monic equation from each orbit</h2>
+<p>Let a finite group <span class="math" data-tex="\(G\)">\(G\)</span> act on a ring <span class="math" data-tex="\(A\)">\(A\)</span> by automorphisms, and write <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span>. Repeated values in an orbit do not cause a problem: we take one factor for each group element.</p>
+<p><strong>Proposition 1.1 (orbit integrality).</strong> Every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> is integral over <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Form
+<span class="math math-display" data-tex="\[
+P_a(T)=\prod_{g\in G}(T-g(a)).
+\]">\[
+P_a(T)=\prod_{g\in G}(T-g(a)).
+\]</span>
+Every coefficient is fixed by <span class="math" data-tex="\(G\)">\(G\)</span>, since applying an element of the group permutes the factors. The polynomial is monic and <span class="math" data-tex="\(P_a(a)=0\)">\(P_a(a)=0\)</span>, because one factor corresponds to the identity. Thus it is the required integral equation. No cancellation or division was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Integrality by itself is weaker than finite generation. The useful extra fact is that an algebra generated by finitely many integral elements is a finite module. If <span class="math" data-tex="\(a_i\)">\(a_i\)</span> satisfies a monic equation of degree <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, reduction by these equations shows that the products <span class="math" data-tex="\(\prod_i a_i^{e_i}\)">\(\prod_i a_i^{e_i}\)</span>, <span class="math" data-tex="\(0\leq e_i&lt;d_i\)">\(0\leq e_i&lt;d_i\)</span>, span the algebra as a module. We will use this concrete spanning set twice.</p>
+<p><strong>Theorem 1.2 (finite-group finiteness over a Noetherian base).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be Noetherian, let <span class="math" data-tex="\(A\)">\(A\)</span> be a finite-type <span class="math" data-tex="\(R\)">\(R\)</span>-algebra, and let <span class="math" data-tex="\(G\)">\(G\)</span> be a finite group of <span class="math" data-tex="\(R\)">\(R\)</span>-algebra automorphisms. Then <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span> is a finite-type <span class="math" data-tex="\(R\)">\(R\)</span>-algebra and <span class="math" data-tex="\(A\)">\(A\)</span> is finite over <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Choose algebra generators <span class="math" data-tex="\(a_1,\ldots,a_s\)">\(a_1,\ldots,a_s\)</span> for <span class="math" data-tex="\(A/R\)">\(A/R\)</span>. Let <span class="math" data-tex="\(C\subset B\)">\(C\subset B\)</span> be the <span class="math" data-tex="\(R\)">\(R\)</span>-algebra generated by the coefficients of their orbit polynomials <span class="math" data-tex="\(P_{a_i}\)">\(P_{a_i}\)</span>. There are at most <span class="math" data-tex="\(s|G|\)">\(s|G|\)</span> such coefficients. Therefore <span class="math" data-tex="\(C\)">\(C\)</span> is of finite type over <span class="math" data-tex="\(R\)">\(R\)</span>, and is Noetherian by Hilbert basis.</p>
+<p>Each <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is integral over <span class="math" data-tex="\(C\)">\(C\)</span>. The preceding power reduction makes <span class="math" data-tex="\(A=C[a_1,\ldots,a_s]\)">\(A=C[a_1,\ldots,a_s]\)</span> a finite <span class="math" data-tex="\(C\)">\(C\)</span>-module. Now <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> is a <span class="math" data-tex="\(C\)">\(C\)</span>-submodule: multiplication by an element of <span class="math" data-tex="\(C\)">\(C\)</span> preserves invariance. Since <span class="math" data-tex="\(C\)">\(C\)</span> is Noetherian, this submodule is finite. Let <span class="math" data-tex="\(b_1,\ldots,b_r\)">\(b_1,\ldots,b_r\)</span> span it over <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(c_1,\ldots,c_t\)">\(c_1,\ldots,c_t\)</span> generate <span class="math" data-tex="\(C\)">\(C\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>, then
+<span class="math math-display" data-tex="\[
+B=R[c_1,\ldots,c_t,b_1,\ldots,b_r].
+\]">\[
+B=R[c_1,\ldots,c_t,b_1,\ldots,b_r].
+\]</span>
+Indeed, the algebra on the right contains every <span class="math" data-tex="\(C\)">\(C\)</span>-linear combination of the <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, and all its generators lie in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>The same finite <span class="math" data-tex="\(C\)">\(C\)</span>-spanning set for <span class="math" data-tex="\(A\)">\(A\)</span> also spans <span class="math" data-tex="\(A\)">\(A\)</span> over <span class="math" data-tex="\(B\)">\(B\)</span>, since <span class="math" data-tex="\(C\subset B\)">\(C\subset B\)</span>. This proves both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof works when <span class="math" data-tex="\(A\)">\(A\)</span> has zero divisors or nilpotents and when the action has a kernel. Over a field it includes all modular linear actions. It supplies existence of a finite generating set, but its submodule step gives no uniform upper bound on generator degrees as the representation varies.</p>
+<p>The construction can be visualized as a tower. Its finite assertions come from two different mechanisms.</p>
+<figure><img src="figures/integrality-tower.png" alt="Tower of invariant subrings: the orbit coefficients generate C inside B=A fixed by G inside A; monic orbit equations make A finite over C, and Noetherianity makes B finite over C." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The horizontal inclusions are ring inclusions. The curved arrows describe module finiteness over <span class="math" data-tex="\(C\)">\(C\)</span>, rather than maps in the reverse direction. All three rings are over the original base <span class="math" data-tex="\(R\)">\(R\)</span>. Editable diagram.</p>
+<h2 id="2-a-modular-action-computed-without-averaging">2. A modular action computed without averaging</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, and let the cyclic group of order <span class="math" data-tex="\(p\)">\(p\)</span> act on <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span> through
+<span class="math math-display" data-tex="\[
+\sigma(x)=x,\qquad \sigma(y)=y+x.
+\]">\[
+\sigma(x)=x,\qquad \sigma(y)=y+x.
+\]</span>
+Its effective order is <span class="math" data-tex="\(p\)">\(p\)</span>. Set
+<span class="math math-display" data-tex="\[
+z=y^p-x^{p-1}y.
+\]">\[
+z=y^p-x^{p-1}y.
+\]</span>
+The binomial identity in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> shows <span class="math" data-tex="\(\sigma(z)=z\)">\(\sigma(z)=z\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The invariant ring is <span class="math" data-tex="\(k[x,z]\)">\(k[x,z]\)</span>. The ambient polynomial ring is free of rank <span class="math" data-tex="\(p\)">\(p\)</span> over this invariant ring, with basis <span class="math" data-tex="\(1,y,\ldots,y^{p-1}\)">\(1,y,\ldots,y^{p-1}\)</span>.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(x,z\)">\(x,z\)</span> are algebraically independent. A nonzero expression <span class="math" data-tex="\(\sum_{j=0}^d c_j(x)z^j\)">\(\sum_{j=0}^d c_j(x)z^j\)</span>, with <span class="math" data-tex="\(c_d\ne0\)">\(c_d\ne0\)</span>, has <span class="math" data-tex="\(y\)">\(y\)</span>-degree <span class="math" data-tex="\(pd\)">\(pd\)</span> and leading coefficient <span class="math" data-tex="\(c_d(x)\)">\(c_d(x)\)</span>, so it cannot vanish.</p>
+<p>The monic relation <span class="math" data-tex="\(y^p-x^{p-1}y-z=0\)">\(y^p-x^{p-1}y-z=0\)</span> reduces every polynomial to
+<span class="math math-display" data-tex="\[
+f=\sum_{j=0}^{p-1} b_j(x,z)y^j.
+\tag{1}
+\]">\[
+f=\sum_{j=0}^{p-1} b_j(x,z)y^j.
+\tag{1}
+\]</span>
+This representation is unique. The leading <span class="math" data-tex="\(y\)">\(y\)</span>-degrees of <span class="math" data-tex="\(z^a y^j\)">\(z^a y^j\)</span>, for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> and <span class="math" data-tex="\(0\leq j&lt;p\)">\(0\leq j&lt;p\)</span>, are <span class="math" data-tex="\(pa+j\)">\(pa+j\)</span>, all distinct; choose the greatest one in any supposed nonzero relation to obtain a contradiction. This proves the free-module assertion.</p>
+<p>Suppose (1) is invariant. The action fixes every <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. If <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span> is the greatest index with <span class="math" data-tex="\(b_r\ne0\)">\(b_r\ne0\)</span>, then
+<span class="math math-display" data-tex="\[
+\sigma(f)-f=\sum_{j=1}^r b_j\bigl((y+x)^j-y^j\bigr)
+\]">\[
+\sigma(f)-f=\sum_{j=1}^r b_j\bigl((y+x)^j-y^j\bigr)
+\]</span>
+has coefficient <span class="math" data-tex="\(rxb_r\ne0\)">\(rxb_r\ne0\)</span> at <span class="math" data-tex="\(y^{r-1}\)">\(y^{r-1}\)</span>. Here <span class="math" data-tex="\(1\leq r&lt;p\)">\(1\leq r&lt;p\)</span>, and uniqueness of (1) applies to this expression, whose <span class="math" data-tex="\(y\)">\(y\)</span>-degree is less than <span class="math" data-tex="\(p\)">\(p\)</span>. This contradicts invariance. Thus only <span class="math" data-tex="\(b_0\)">\(b_0\)</span> remains, proving the ring assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(k=\mathbb F_p\)">\(k=\mathbb F_p\)</span>, this is the assigned modular example. Over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, replacing <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(y+z\)">\(y+z\)</span> converts a swap of two coordinates into this transvection. The exercise below carries out that conversion.</p>
+<h2 id="3-the-finiteness-criterion-for-subalgebras-of-a-field">3. The finiteness criterion for subalgebras of a field</h2>
+<p>An arbitrary subalgebra of a finite-type algebra need not be of finite type. Noether's criterion identifies an extra condition that restores finiteness. We first supply the field argument needed to use normalization at the full stated generality.</p>
+<p><strong>Lemma 3.1 (relative algebraic closure).</strong> Let <span class="math" data-tex="\(K/F\)">\(K/F\)</span> be a finitely generated field extension. The subfield <span class="math" data-tex="\(L\)">\(L\)</span> of elements of <span class="math" data-tex="\(K\)">\(K\)</span> algebraic over <span class="math" data-tex="\(F\)">\(F\)</span> is finite over <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Choose a transcendence basis <span class="math" data-tex="\(t_1,\ldots,t_r\)">\(t_1,\ldots,t_r\)</span> of <span class="math" data-tex="\(K/F\)">\(K/F\)</span>. Because <span class="math" data-tex="\(K\)">\(K\)</span> is finitely generated as a field, it is finite over <span class="math" data-tex="\(F(t_1,\ldots,t_r)\)">\(F(t_1,\ldots,t_r)\)</span>; write that degree as <span class="math" data-tex="\(N\)">\(N\)</span>. For any finite intermediate extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>, the <span class="math" data-tex="\(t_i\)">\(t_i\)</span> remain algebraically independent over <span class="math" data-tex="\(E\)">\(E\)</span>. Otherwise a polynomial relation with coefficients in the algebraic extension <span class="math" data-tex="\(E\)">\(E\)</span>, followed by transitivity of algebraicity, would contradict independence over <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Moreover
+<span class="math math-display" data-tex="\[
+[E(t_1,\ldots,t_r):F(t_1,\ldots,t_r)]=[E:F].
+\tag{2}
+\]">\[
+[E(t_1,\ldots,t_r):F(t_1,\ldots,t_r)]=[E:F].
+\tag{2}
+\]</span>
+To verify (2), take an <span class="math" data-tex="\(F\)">\(F\)</span>-basis of <span class="math" data-tex="\(E\)">\(E\)</span>. It spans over the rational function field. A rational-function linear relation among its elements clears denominators to a polynomial relation; comparison of the coefficients of the independent monomials in the <span class="math" data-tex="\(t_i\)">\(t_i\)</span> proves independence. Thus <span class="math" data-tex="\([E:F]\leq N\)">\([E:F]\leq N\)</span>, since <span class="math" data-tex="\(E(t_1,\ldots,t_r)\subset K\)">\(E(t_1,\ldots,t_r)\subset K\)</span>.</p>
+<p>The degrees of finite intermediate extensions in <span class="math" data-tex="\(L\)">\(L\)</span> are consequently bounded. Choose one, <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, with maximal degree. For every <span class="math" data-tex="\(a\in L\)">\(a\in L\)</span>, the field <span class="math" data-tex="\(E_0(a)\)">\(E_0(a)\)</span> is finite over <span class="math" data-tex="\(F\)">\(F\)</span>. Maximality and the tower formula force <span class="math" data-tex="\(E_0(a)=E_0\)">\(E_0(a)=E_0\)</span>. Hence <span class="math" data-tex="\(L=E_0\)">\(L=E_0\)</span> is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (finite normalization over a field).</strong> If <span class="math" data-tex="\(R\)">\(R\)</span> is a finite-type domain over any field <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(E/\operatorname{Frac}(R)\)">\(E/\operatorname{Frac}(R)\)</span> is finite, the integral closure of <span class="math" data-tex="\(R\)">\(R\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span> is a finite <span class="math" data-tex="\(R\)">\(R\)</span>-module.</p>
+<p><strong>Proof.</strong> Normalize <span class="math" data-tex="\(R\)">\(R\)</span> over a polynomial subring <span class="math" data-tex="\(P=k[t_1,\ldots,t_d]\)">\(P=k[t_1,\ldots,t_d]\)</span>, using the precise preceding programme theorem identified above. Since <span class="math" data-tex="\(R/P\)">\(R/P\)</span> is finite, <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, <span class="math" data-tex="\(F=\operatorname{Frac}(P)\)">\(F=\operatorname{Frac}(P)\)</span>, is finite. Every element integral over <span class="math" data-tex="\(R\)">\(R\)</span> is integral over <span class="math" data-tex="\(P\)">\(P\)</span>, by transitivity. It is enough to prove that the integral closure of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span> is finite over <span class="math" data-tex="\(P\)">\(P\)</span>. Its submodule consisting of elements integral over <span class="math" data-tex="\(R\)">\(R\)</span> will then be finite over the Noetherian ring <span class="math" data-tex="\(P\)">\(P\)</span>, and the same list will generate it over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>First suppose <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is separable. Choose an <span class="math" data-tex="\(F\)">\(F\)</span>-basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>, scaling its members to make them integral over <span class="math" data-tex="\(P\)">\(P\)</span>. To justify scaling, write an algebraic equation
+<span class="math math-display" data-tex="\[
+v^m+a_1v^{m-1}+\cdots+a_m=0,\qquad a_i\in F,
+\]">\[
+v^m+a_1v^{m-1}+\cdots+a_m=0,\qquad a_i\in F,
+\]</span>
+and choose a common nonzero denominator <span class="math" data-tex="\(c\in P\)">\(c\in P\)</span> for the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Multiplication by <span class="math" data-tex="\(c^m\)">\(c^m\)</span> gives a monic equation for <span class="math" data-tex="\(cv\)">\(cv\)</span>, whose coefficients <span class="math" data-tex="\(c^i a_i\)">\(c^i a_i\)</span> belong to <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The trace pairing of a finite separable extension is nondegenerate. Here are the field details used in that assertion. Distinct homomorphisms to a common overfield are linearly independent as functions: a relation of minimal length, evaluated at <span class="math" data-tex="\(ax\)">\(ax\)</span> and compared with its value at <span class="math" data-tex="\(x\)">\(x\)</span> times one homomorphism's value at <span class="math" data-tex="\(a\)">\(a\)</span>, would give a shorter nonzero relation. A finite separable extension of degree <span class="math" data-tex="\(r\)">\(r\)</span> has <span class="math" data-tex="\(r\)">\(r\)</span> embeddings into an algebraic closure <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>. This follows by adjoining finitely many separable elements successively: each embedding extends in as many ways as there are distinct roots of the next minimal polynomial, and the tower formula multiplies those counts. The same tower, with the Chinese remainder theorem for the distinct linear factors over <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, gives
+<span class="math math-display" data-tex="\[
+E\otimes_F\Omega\cong\Omega^r.
+\]">\[
+E\otimes_F\Omega\cong\Omega^r.
+\]</span>
+Thus the trace is the sum of the embeddings. Their linear independence makes the square matrix <span class="math" data-tex="\(M=(\sigma_i(v_j))\)">\(M=(\sigma_i(v_j))\)</span> invertible over <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>: a row relation on the basis would be a relation on every element of <span class="math" data-tex="\(E\)">\(E\)</span>. The trace matrix <span class="math" data-tex="\(T=(\operatorname{Tr}_{E/F}(v_iv_j))\)">\(T=(\operatorname{Tr}_{E/F}(v_iv_j))\)</span> is <span class="math" data-tex="\(M^{\mathsf t}M\)">\(M^{\mathsf t}M\)</span>, so its determinant <span class="math" data-tex="\(D\)">\(D\)</span> is nonzero.</p>
+<p>For every element <span class="math" data-tex="\(b\)">\(b\)</span> integral over <span class="math" data-tex="\(P\)">\(P\)</span>, all entries <span class="math" data-tex="\(\operatorname{Tr}(bv_j)\)">\(\operatorname{Tr}(bv_j)\)</span> lie in <span class="math" data-tex="\(P\)">\(P\)</span>. Indeed each conjugate of <span class="math" data-tex="\(bv_j\)">\(bv_j\)</span> is integral, their sum is integral, and the trace lies in <span class="math" data-tex="\(F\)">\(F\)</span>. The polynomial ring <span class="math" data-tex="\(P\)">\(P\)</span> is integrally closed, by Proposition 2.3 of the preceding integral-extensions lesson, which also proves polynomial unique factorization. Writing <span class="math" data-tex="\(b=\sum_j c_jv_j\)">\(b=\sum_j c_jv_j\)</span> and solving
+<span class="math math-display" data-tex="\[
+T(c_j)_j=(\operatorname{Tr}(bv_i))_i
+\]">\[
+T(c_j)_j=(\operatorname{Tr}(bv_i))_i
+\]</span>
+by the adjugate formula gives <span class="math" data-tex="\(Dc_j\in P\)">\(Dc_j\in P\)</span>. The integral closure is therefore a <span class="math" data-tex="\(P\)">\(P\)</span>-submodule of the finite free fractional module <span class="math" data-tex="\(\sum_j P(v_j/D)\)">\(\sum_j P(v_j/D)\)</span>. Noetherianity makes it finite.</p>
+<p>Now let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span> and allow <span class="math" data-tex="\(E/F\)">\(E/F\)</span> to be inseparable. Write <span class="math" data-tex="\(E=F(a_1,\ldots,a_s)\)">\(E=F(a_1,\ldots,a_s)\)</span>. For each generator its irreducible minimal polynomial has the form
+<span class="math math-display" data-tex="\[
+m_i(T)=q_i(T^{p^{e_i}}),
+\]">\[
+m_i(T)=q_i(T^{p^{e_i}}),
+\]</span>
+where <span class="math" data-tex="\(q_i\)">\(q_i\)</span> has nonzero derivative and is separable. This follows by repeatedly dividing all positive exponents by <span class="math" data-tex="\(p\)">\(p\)</span> while the derivative is zero; the resulting polynomial is still irreducible. Take <span class="math" data-tex="\(e\geq e_i\)">\(e\geq e_i\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. There is a finite purely inseparable extension <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> such that
+<span class="math math-display" data-tex="\[
+F&#x27;=k&#x27;(t_1^{1/p^e},\ldots,t_d^{1/p^e})
+\]">\[
+F&#x27;=k&#x27;(t_1^{1/p^e},\ldots,t_d^{1/p^e})
+\]</span>
+contains the <span class="math" data-tex="\(p^{e_i}\)">\(p^{e_i}\)</span>-th roots of every coefficient of every <span class="math" data-tex="\(q_i\)">\(q_i\)</span>. In fact the coefficients are rational functions in the <span class="math" data-tex="\(t_j\)">\(t_j\)</span> with finitely many coefficients from <span class="math" data-tex="\(k\)">\(k\)</span>. Adjoin the <span class="math" data-tex="\(p^e\)">\(p^e\)</span>-th roots of just those finitely many elements of <span class="math" data-tex="\(k\)">\(k\)</span>; taking roots of the numerators and denominators then gives the assertion.</p>
+<p>Replace the coefficients of <span class="math" data-tex="\(q_i\)">\(q_i\)</span> by these roots and call the resulting polynomial <span class="math" data-tex="\(\widetilde q_i\)">\(\widetilde q_i\)</span>. It satisfies
+<span class="math math-display" data-tex="\[
+\widetilde q_i(T)^{p^{e_i}}=q_i(T^{p^{e_i}})=m_i(T).
+\]">\[
+\widetilde q_i(T)^{p^{e_i}}=q_i(T^{p^{e_i}})=m_i(T).
+\]</span>
+Hence <span class="math" data-tex="\(\widetilde q_i(a_i)=0\)">\(\widetilde q_i(a_i)=0\)</span>. It is separable: a common root of it and its derivative would, after applying the <span class="math" data-tex="\(p^{e_i}\)">\(p^{e_i}\)</span>-th power, give a common root of <span class="math" data-tex="\(q_i\)">\(q_i\)</span> and <span class="math" data-tex="\(q_i&#x27;\)">\(q_i&#x27;\)</span>. Consequently <span class="math" data-tex="\(E&#x27;=EF&#x27;\)">\(E&#x27;=EF&#x27;\)</span> is separable over <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, since it is generated by elements separable over <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>.</p>
+<p>The ring <span class="math" data-tex="\(P&#x27;=k&#x27;[t_1^{1/p^e},\ldots,t_d^{1/p^e}]\)">\(P&#x27;=k&#x27;[t_1^{1/p^e},\ldots,t_d^{1/p^e}]\)</span> is a polynomial ring with fraction field <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, and is finite over <span class="math" data-tex="\(P\)">\(P\)</span>: combine a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of the finite extension <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> with monomials in the root variables whose exponents are less than <span class="math" data-tex="\(p^e\)">\(p^e\)</span>. The separable case makes the integral closure of <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> in <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> finite over <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>, hence finite over <span class="math" data-tex="\(P\)">\(P\)</span>. Every element of <span class="math" data-tex="\(E\)">\(E\)</span> integral over <span class="math" data-tex="\(P\)">\(P\)</span> belongs to that closure. The closure of <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span> is a <span class="math" data-tex="\(P\)">\(P\)</span>-submodule of this finite module, so it is finite. This finishes all characteristics without assuming that <span class="math" data-tex="\(k\)">\(k\)</span> is perfect or that all its <span class="math" data-tex="\(p\)">\(p\)</span>-th roots form a finite extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite choice of constant roots is essential: one need not adjoin the entire perfect closure of <span class="math" data-tex="\(k\)">\(k\)</span>. The broader Nagata formulation and proof are credited in the references; the argument above supplies the exact finite-normalization proof used here.</p>
+<p><strong>Theorem 3.3 (Noether's finiteness criterion).</strong> Let <span class="math" data-tex="\(K/k\)">\(K/k\)</span> be a finitely generated field extension, and let <span class="math" data-tex="\(S\subset K\)">\(S\subset K\)</span> be a <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebra. Then <span class="math" data-tex="\(S\)">\(S\)</span> is of finite type over <span class="math" data-tex="\(k\)">\(k\)</span> if and only if it contains a finite-type <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebra <span class="math" data-tex="\(R\)">\(R\)</span> over which <span class="math" data-tex="\(S\)">\(S\)</span> is integral.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is of finite type, choose <span class="math" data-tex="\(R=S\)">\(R=S\)</span>. Conversely, suppose <span class="math" data-tex="\(R\)">\(R\)</span> exists. Both rings are domains. Set <span class="math" data-tex="\(F=\operatorname{Frac}(R)\)">\(F=\operatorname{Frac}(R)\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be the relative algebraic closure of <span class="math" data-tex="\(F\)">\(F\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. The extension <span class="math" data-tex="\(K/F\)">\(K/F\)</span> is finitely generated, since a field generating list for <span class="math" data-tex="\(K/k\)">\(K/k\)</span> still generates over <span class="math" data-tex="\(F\)">\(F\)</span>. Lemma 3.1 therefore makes <span class="math" data-tex="\(L/F\)">\(L/F\)</span> finite.</p>
+<p>Every element of <span class="math" data-tex="\(S\)">\(S\)</span> is integral over <span class="math" data-tex="\(R\)">\(R\)</span>, hence algebraic over <span class="math" data-tex="\(F\)">\(F\)</span>; thus <span class="math" data-tex="\(S\subset L\)">\(S\subset L\)</span>. Let <span class="math" data-tex="\(\overline R\)">\(\overline R\)</span> be the integral closure of <span class="math" data-tex="\(R\)">\(R\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>. Lemma 3.2 makes <span class="math" data-tex="\(\overline R\)">\(\overline R\)</span> finite over <span class="math" data-tex="\(R\)">\(R\)</span>. Now <span class="math" data-tex="\(R\subset S\subset\overline R\)">\(R\subset S\subset\overline R\)</span>, and <span class="math" data-tex="\(S\)">\(S\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-submodule. Hilbert basis makes <span class="math" data-tex="\(R\)">\(R\)</span> Noetherian, so <span class="math" data-tex="\(S\)">\(S\)</span> is a finite <span class="math" data-tex="\(R\)">\(R\)</span>-module. Combining module generators for <span class="math" data-tex="\(S/R\)">\(S/R\)</span> with algebra generators for <span class="math" data-tex="\(R/k\)">\(R/k\)</span> gives algebra generators for <span class="math" data-tex="\(S/k\)">\(S/k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof needs both the finite-generation hypothesis on <span class="math" data-tex="\(K/k\)">\(K/k\)</span> and Lemma 3.2. It does not assume that <span class="math" data-tex="\(K\)">\(K\)</span> is algebraic over <span class="math" data-tex="\(k\)">\(k\)</span>, that <span class="math" data-tex="\(S\)">\(S\)</span> is normal, or that <span class="math" data-tex="\(k\)">\(k\)</span> is perfect. Noether's 1926 paper initially treats a restricted positive-characteristic normalization step and then reduces the invariant problem to a suitable coefficient field. The argument above uses the modern normalization theorem to obtain the full criterion in one statement.</p>
+<p>Two examples show why the hypothesis about integrality is substantive.</p>
+<p>For <span class="math" data-tex="\(\operatorname{char}k\ne2\)">\(\operatorname{char}k\ne2\)</span>, the sign action on <span class="math" data-tex="\(A=k[x_1,x_2,\ldots]\)">\(A=k[x_1,x_2,\ldots]\)</span> has all even-total-degree monomials as invariants. Any finite list of polynomial generators uses only finitely many variables, whereas the invariant <span class="math" data-tex="\(x_j^2\)">\(x_j^2\)</span> can use a new one. Thus <span class="math" data-tex="\(A^G\)">\(A^G\)</span> is not of finite type. This does not contradict Theorem 1.2: <span class="math" data-tex="\(A\)">\(A\)</span> itself is not of finite type. The phenomenon is also illustrated in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#example-bad-invariants">Stacks, Tag 03B7</a>.</p>
+<p>The ring
+<span class="math math-display" data-tex="\[
+S=k[x,xy,xy^2,\ldots]\subset k(x,y)
+\]">\[
+S=k[x,xy,xy^2,\ldots]\subset k(x,y)
+\]</span>
+is another non-finite-type subalgebra. Its degree-one part in the <span class="math" data-tex="\(x\)">\(x\)</span>-grading has the infinite basis <span class="math" data-tex="\(xy^j\)">\(xy^j\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>; products of two positive-degree elements have <span class="math" data-tex="\(x\)">\(x\)</span>-degree at least two. Thus finitely many algebra generators cannot span this part. Theorem 3.3 then implies that it cannot be integral over any finite-type <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebra.</p>
+<h2 id="4-a-degree-test-for-a-proposed-invariant-ring">4. A degree test for a proposed invariant ring</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> act linearly on <span class="math" data-tex="\(k^n\)">\(k^n\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> be its image in <span class="math" data-tex="\(\operatorname{GL}_n(k)\)">\(\operatorname{GL}_n(k)\)</span>. The invariant rings for <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> are equal. Write <span class="math" data-tex="\(h=|H|\)">\(h=|H|\)</span>, <span class="math" data-tex="\(A=k[x_1,\ldots,x_n]\)">\(A=k[x_1,\ldots,x_n]\)</span>, and <span class="math" data-tex="\(B=A^H\)">\(B=A^H\)</span>.</p>
+<p>The use of the effective group matters. A trivial group action by a group of order <span class="math" data-tex="\(h&gt;1\)">\(h&gt;1\)</span> has invariant ring <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>. Although <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span> is integral over <span class="math" data-tex="\(k[x^h]\)">\(k[x^h]\)</span>, the degree <span class="math" data-tex="\(h\)">\(h\)</span> does not force equality of these rings.</p>
+<p><strong>Lemma 4.1 (degree of a fixed field).</strong> A finite faithful group <span class="math" data-tex="\(H\)">\(H\)</span> of automorphisms of a field <span class="math" data-tex="\(L\)">\(L\)</span> satisfies
+<span class="math math-display" data-tex="\[
+[L:L^H]=|H|.
+\]">\[
+[L:L^H]=|H|.
+\]</span>
+There is no characteristic restriction.</p>
+<p><strong>Proof.</strong> Distinct field homomorphisms from <span class="math" data-tex="\(L\)">\(L\)</span> to itself are linearly independent as functions with coefficients in <span class="math" data-tex="\(L\)">\(L\)</span>. For otherwise take a nonzero relation with the fewest summands and normalize one coefficient to one. If two homomorphisms in it differ at <span class="math" data-tex="\(a\)">\(a\)</span>, compare the relation evaluated at <span class="math" data-tex="\(ax\)">\(ax\)</span> with the relation at <span class="math" data-tex="\(x\)">\(x\)</span> multiplied by the first homomorphism's value at <span class="math" data-tex="\(a\)">\(a\)</span>. Subtraction gives a nonzero relation with fewer summands, a contradiction.</p>
+<p>It follows that the column vectors <span class="math" data-tex="\((g(x))_{g\in H}\)">\((g(x))_{g\in H}\)</span>, <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>, span <span class="math" data-tex="\(L^h\)">\(L^h\)</span>; a proper span would be annihilated by a nonzero linear functional and give such a relation. Choose <span class="math" data-tex="\(x_1,\ldots,x_h\)">\(x_1,\ldots,x_h\)</span> whose columns form an invertible matrix <span class="math" data-tex="\(M=(g(x_j))\)">\(M=(g(x_j))\)</span>. For any <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>, solve
+<span class="math math-display" data-tex="\[
+\sum_j g(x_j)c_j=g(x)\qquad(g\in H).
+\]">\[
+\sum_j g(x_j)c_j=g(x)\qquad(g\in H).
+\]</span>
+Applying any <span class="math" data-tex="\(\sigma\in H\)">\(\sigma\in H\)</span> permutes the equations and sends <span class="math" data-tex="\(c_j\)">\(c_j\)</span> to <span class="math" data-tex="\(\sigma(c_j)\)">\(\sigma(c_j)\)</span>. Uniqueness of the solution gives <span class="math" data-tex="\(c_j\in L^H\)">\(c_j\in L^H\)</span>. The identity row expresses <span class="math" data-tex="\(x\)">\(x\)</span> in their span. The invertible matrix also shows that the <span class="math" data-tex="\(x_j\)">\(x_j\)</span> are independent over <span class="math" data-tex="\(L^H\)">\(L^H\)</span>. They therefore form a basis of size <span class="math" data-tex="\(h\)">\(h\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (graded rank calculation).</strong> Suppose <span class="math" data-tex="\(f_1,\ldots,f_n\in A\)">\(f_1,\ldots,f_n\in A\)</span> are homogeneous of positive degrees <span class="math" data-tex="\(d_1,\ldots,d_n\)">\(d_1,\ldots,d_n\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> is integral over <span class="math" data-tex="\(C=k[f_1,\ldots,f_n]\)">\(C=k[f_1,\ldots,f_n]\)</span>. Then the <span class="math" data-tex="\(f_i\)">\(f_i\)</span> are algebraically independent and
+<span class="math math-display" data-tex="\[
+[\operatorname{Frac}(A):\operatorname{Frac}(C)]=d_1\cdots d_n.
+\tag{3}
+\]">\[
+[\operatorname{Frac}(A):\operatorname{Frac}(C)]=d_1\cdots d_n.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> The integral extension makes the fraction-field extension algebraic. Since <span class="math" data-tex="\(A\)">\(A\)</span> has transcendence degree <span class="math" data-tex="\(n\)">\(n\)</span>, so does <span class="math" data-tex="\(C\)">\(C\)</span>. Its <span class="math" data-tex="\(n\)">\(n\)</span> generators must consequently be algebraically independent. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is a polynomial ring with variable weights <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span>, being an integral finite-type <span class="math" data-tex="\(C\)">\(C\)</span>-algebra, is a finite graded <span class="math" data-tex="\(C\)">\(C\)</span>-module.</p>
+<p>Let <span class="math" data-tex="\(r\)">\(r\)</span> be its rank over <span class="math" data-tex="\(\operatorname{Frac}(C)\)">\(\operatorname{Frac}(C)\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> homogeneous elements from a finite homogeneous module generating list that form a fraction-field basis. Their span is a graded free submodule
+<span class="math math-display" data-tex="\[
+F=\bigoplus_{j=1}^r C(-a_j)\subset A.
+\]">\[
+F=\bigoplus_{j=1}^r C(-a_j)\subset A.
+\]</span>
+The quotient <span class="math" data-tex="\(Q=A/F\)">\(Q=A/F\)</span> is finite, graded and torsion. There is a nonzero homogeneous <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span> annihilating <span class="math" data-tex="\(Q\)">\(Q\)</span>: first multiply nonzero annihilators of a finite generating list, then take a nonzero homogeneous component, using that the annihilator of a graded module is homogeneous. If <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, no estimate is needed. Otherwise <span class="math" data-tex="\(c\)">\(c\)</span> has positive degree <span class="math" data-tex="\(e\)">\(e\)</span>, and a finite homogeneous generating list gives a surjection from a finite sum of shifts of <span class="math" data-tex="\(C/(c)\)">\(C/(c)\)</span> onto <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, all Hilbert-series coefficients are nonnegative, and
+<span class="math math-display" data-tex="\[
+H_C(t)=\prod_i(1-t^{d_i})^{-1},\qquad
+H_{C/(c)}(t)=(1-t^e)H_C(t).
+\]">\[
+H_C(t)=\prod_i(1-t^{d_i})^{-1},\qquad
+H_{C/(c)}(t)=(1-t^e)H_C(t).
+\]</span>
+The second equality follows from the injective multiplication map by <span class="math" data-tex="\(c\)">\(c\)</span> on the domain <span class="math" data-tex="\(C\)">\(C\)</span>. The finite-sum bound shows <span class="math" data-tex="\(H_Q(t)/H_C(t)\to0\)">\(H_Q(t)/H_C(t)\to0\)</span> as <span class="math" data-tex="\(t\to1^-\)">\(t\to1^-\)</span>. Additivity of dimensions in <span class="math" data-tex="\(0\to F\to A\to Q\to0\)">\(0\to F\to A\to Q\to0\)</span> now gives
+<span class="math math-display" data-tex="\[
+r=\lim_{t\to1^-}\frac{H_A(t)}{H_C(t)}
+=\lim_{t\to1^-}\frac{\prod_i(1-t^{d_i})}{(1-t)^n}
+=\prod_i d_i.
+\]">\[
+r=\lim_{t\to1^-}\frac{H_A(t)}{H_C(t)}
+=\lim_{t\to1^-}\frac{\prod_i(1-t^{d_i})}{(1-t)^n}
+=\prod_i d_i.
+\]</span>
+Rank equals the degree of the fraction-field extension, proving (3). This is a numerical calculation of vector-space dimensions, so it remains valid in positive characteristic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 (degree criterion).</strong> If homogeneous invariants <span class="math" data-tex="\(f_1,\ldots,f_n\)">\(f_1,\ldots,f_n\)</span> satisfy the integrality hypothesis of Lemma 4.2 and <span class="math" data-tex="\(\prod_i\deg f_i=h\)">\(\prod_i\deg f_i=h\)</span>, then
+<span class="math math-display" data-tex="\[
+B=k[f_1,\ldots,f_n].
+\]">\[
+B=k[f_1,\ldots,f_n].
+\]</span></p>
+<p><strong>Proof.</strong> The orbit-denominator argument in <em>Invariants of finite groups</em>, Proposition 5.1, proves <span class="math" data-tex="\(\operatorname{Frac}(B)=\operatorname{Frac}(A)^H\)">\(\operatorname{Frac}(B)=\operatorname{Frac}(A)^H\)</span> in every characteristic. Lemma 4.1 makes its index in <span class="math" data-tex="\(\operatorname{Frac}(A)\)">\(\operatorname{Frac}(A)\)</span> equal to <span class="math" data-tex="\(h\)">\(h\)</span>. Lemma 4.2 gives the same index for <span class="math" data-tex="\(\operatorname{Frac}(C)\)">\(\operatorname{Frac}(C)\)</span>. The tower formula, applied to
+<span class="math math-display" data-tex="\[
+\operatorname{Frac}(C)\subset\operatorname{Frac}(B)\subset\operatorname{Frac}(A),
+\]">\[
+\operatorname{Frac}(C)\subset\operatorname{Frac}(B)\subset\operatorname{Frac}(A),
+\]</span>
+therefore forces the first inclusion to be equality.</p>
+<p>Every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is integral over <span class="math" data-tex="\(C\)">\(C\)</span>, since every element of <span class="math" data-tex="\(A\)">\(A\)</span> is. A polynomial ring over a field is a unique factorization domain and is integrally closed: writing an integral fraction <span class="math" data-tex="\(u/v\)">\(u/v\)</span> in relatively prime form and multiplying its monic equation by <span class="math" data-tex="\(v^m\)">\(v^m\)</span> shows that every prime divisor of <span class="math" data-tex="\(v\)">\(v\)</span> divides <span class="math" data-tex="\(u^m\)">\(u^m\)</span>, a contradiction. Since <span class="math" data-tex="\(C\)">\(C\)</span> is a polynomial ring, <span class="math" data-tex="\(b\in\operatorname{Frac}(C)\)">\(b\in\operatorname{Frac}(C)\)</span> and integrality imply <span class="math" data-tex="\(b\in C\)">\(b\in C\)</span>. Thus <span class="math" data-tex="\(B=C\)">\(B=C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the transvection, the two candidate invariants have degrees <span class="math" data-tex="\(1,p\)">\(1,p\)</span>, and the displayed monic equation proves integrality. Their product is <span class="math" data-tex="\(p=|H|\)">\(p=|H|\)</span>; the degree criterion gives a second proof of the invariant ring.</p>
+<p>For coordinate permutations, let <span class="math" data-tex="\(e_i\)">\(e_i\)</span> be the elementary symmetric functions. Each <span class="math" data-tex="\(x_j\)">\(x_j\)</span> satisfies <span class="math" data-tex="\(\prod_{\ell=1}^n(T-x_\ell)=0\)">\(\prod_{\ell=1}^n(T-x_\ell)=0\)</span>, whose coefficients lie in <span class="math" data-tex="\(k[e_1,\ldots,e_n]\)">\(k[e_1,\ldots,e_n]\)</span>. The degrees are <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span>, with product <span class="math" data-tex="\(n!\)">\(n!\)</span>. The permutation action is faithful (also for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, when the order is one). The criterion therefore proves <span class="math" data-tex="\(k[x_1,\ldots,x_n]^{S_n}=k[e_1,\ldots,e_n]\)">\(k[x_1,\ldots,x_n]^{S_n}=k[e_1,\ldots,e_n]\)</span> over every field, even when the characteristic divides <span class="math" data-tex="\(n!\)">\(n!\)</span>.</p>
+<h2 id="5-binary-linear-forms-over-the-integers">5. Binary linear forms over the integers</h2>
+<p>Characteristic-independent finiteness is different from integral-coefficient invariant theory, where the group itself varies over all base rings. To make the distinction precise, let
+<span class="math math-display" data-tex="\[
+f=ax+by,\qquad g=cx+dy
+\]">\[
+f=ax+by,\qquad g=cx+dy
+\]</span>
+be two binary linear forms. Identify their coefficient columns with a <span class="math" data-tex="\(2\)">\(2\)</span> by <span class="math" data-tex="\(2\)">\(2\)</span> matrix <span class="math" data-tex="\(M\)">\(M\)</span>. Its determinant <span class="math" data-tex="\(\delta=ad-bc\)">\(\delta=ad-bc\)</span> is unchanged by left multiplication by an <span class="math" data-tex="\(\operatorname{SL}_2\)">\(\operatorname{SL}_2\)</span> matrix.</p>
+<p>An <strong>integral invariant</strong> here means a polynomial <span class="math" data-tex="\(F\in\mathbb Z[a,b,c,d]\)">\(F\in\mathbb Z[a,b,c,d]\)</span> whose invariance holds as a polynomial identity for the universal determinant-one matrix. In particular it holds after any base change. This is stronger than testing a finite group of matrices over a finite field.</p>
+<p><strong>Proposition 5.1.</strong> The integral invariants of two binary linear forms are exactly <span class="math" data-tex="\(\mathbb Z[\delta]\)">\(\mathbb Z[\delta]\)</span>.</p>
+<p><strong>Proof.</strong> First work over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. For any invertible <span class="math" data-tex="\(M\)">\(M\)</span>, the matrix
+<span class="math math-display" data-tex="\[
+u=\operatorname{diag}(1,\det M)M^{-1}
+\]">\[
+u=\operatorname{diag}(1,\det M)M^{-1}
+\]</span>
+has determinant one. Invariance gives
+<span class="math math-display" data-tex="\[
+F(M)=F\bigl(\operatorname{diag}(1,\det M)\bigr)=q(\det M),
+\]">\[
+F(M)=F\bigl(\operatorname{diag}(1,\det M)\bigr)=q(\det M),
+\]</span>
+where <span class="math" data-tex="\(q(T)=F(1,0,0,T)\in\mathbb Q[T]\)">\(q(T)=F(1,0,0,T)\in\mathbb Q[T]\)</span>. This equality holds on the nonempty open set <span class="math" data-tex="\(\det M\ne0\)">\(\det M\ne0\)</span>, hence is an identity of polynomials. Indeed, a polynomial vanishing on this open set over an infinite field is zero: multiply its restriction by a suitable power of the determinant, or apply the usual coefficient test for a polynomial on a dense open subset of affine space.</p>
+<p>If the coefficients of <span class="math" data-tex="\(F\)">\(F\)</span> are integers, the same substitution gives <span class="math" data-tex="\(q(T)=F(1,0,0,T)\in\mathbb Z[T]\)">\(q(T)=F(1,0,0,T)\in\mathbb Z[T]\)</span>. The rational identity is then an integral identity, since the integral polynomial ring injects into its rationalization. Conversely <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and its integer polynomials are universally invariant by multiplicativity of determinants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="arbitrary-systems-of-binary-forms">Arbitrary systems of binary forms</h3>
+<p>In unweighted coefficient notation a binary form is
+<span class="math math-display" data-tex="\[
+f_\nu=a_{\nu,0}x^{d_\nu}
++a_{\nu,1}x^{d_\nu-1}y+\cdots+a_{\nu,d_\nu}y^{d_\nu}.
+\]">\[
+f_\nu=a_{\nu,0}x^{d_\nu}
++a_{\nu,1}x^{d_\nu-1}y+\cdots+a_{\nu,d_\nu}y^{d_\nu}.
+\]</span>
+The coefficients of all the forms are independent integer polynomial variables. Let <span class="math" data-tex="\(A_{\mathbb Z}\)">\(A_{\mathbb Z}\)</span> be their polynomial ring. The universal special-linear action is the action induced by substitution in <span class="math" data-tex="\(x,y\)">\(x,y\)</span>; inverse substitution gives the same invariant ring. A polynomial is invariant when its equality under substitution holds in the coordinate ring of the universal determinant-one matrix, rather than just at points over one finite field.</p>
+<p><strong>Theorem 5.2 (Noether's integral binary finiteness theorem).</strong> For every finite list of degrees <span class="math" data-tex="\(d_1,\ldots,d_\mu\)">\(d_1,\ldots,d_\mu\)</span>, the ring
+<span class="math math-display" data-tex="\[
+A_{\mathbb Z}^{\operatorname{SL}_2}
+\]">\[
+A_{\mathbb Z}^{\operatorname{SL}_2}
+\]</span>
+is a finitely generated <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-algebra. It can be generated by invariants homogeneous in the coefficients of each individual form.</p>
+<p><strong>Proof.</strong> Replace each form by a product of independent linear factors:
+<span class="math math-display" data-tex="\[
+f_\nu=\prod_{r=1}^{d_\nu}(u_{\nu r}x+v_{\nu r}y).
+\tag{8}
+\]">\[
+f_\nu=\prod_{r=1}^{d_\nu}(u_{\nu r}x+v_{\nu r}y).
+\tag{8}
+\]</span>
+This defines a homomorphism <span class="math" data-tex="\(\iota\)">\(\iota\)</span> from the coefficient ring to the root-pair polynomial ring <span class="math" data-tex="\(P_{\mathbb Z}=\mathbb Z[u_{\nu r},v_{\nu r}]\)">\(P_{\mathbb Z}=\mathbb Z[u_{\nu r},v_{\nu r}]\)</span>. It is equivariant. Lemma 6.1 of <em>Forms in several variables and Hilbert finiteness</em> proves both injectivity and the following precise description of its image in any given coefficient multidegree <span class="math" data-tex="\(\delta=(\delta_1,\ldots,\delta_\mu)\)">\(\delta=(\delta_1,\ldots,\delta_\mu)\)</span>: it is the space of polynomials symmetric in the <span class="math" data-tex="\(d_\nu\)">\(d_\nu\)</span> pairs of each block <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and of degree <span class="math" data-tex="\(\delta_\nu\)">\(\delta_\nu\)</span> in every pair of that block. Apply that lemma successively to the blocks, using the polynomial ring in the other blocks as its coefficient ring. Uniqueness at every step preserves their symmetries and degrees.</p>
+<p>Let <span class="math" data-tex="\(C\subset P_{\mathbb Z}\)">\(C\subset P_{\mathbb Z}\)</span> be the algebra generated by all two-pair brackets
+<span class="math math-display" data-tex="\[
+[ij]=u_i v_j-v_i u_j,
+\]">\[
+[ij]=u_i v_j-v_i u_j,
+\]</span>
+where <span class="math" data-tex="\(i,j\)">\(i,j\)</span> run through all factor slots in (8). Corollary 4.3 of <em>Polarization and invariants of many vectors</em> proves
+<span class="math math-display" data-tex="\[
+C=P_{\mathbb Z}^{\operatorname{SL}_2}.
+\tag{9}
+\]">\[
+C=P_{\mathbb Z}^{\operatorname{SL}_2}.
+\tag{9}
+\]</span>
+In particular it proves this with integer coefficients; no rational denominator has been left in (9).</p>
+<p>Give <span class="math" data-tex="\(C\)">\(C\)</span> its multigrading by degree in each individual root pair. Let <span class="math" data-tex="\(C_{\rm bal}\)">\(C_{\rm bal}\)</span> be the sum of those multidegree components whose entries are equal within each form block, allowing a different common entry in different blocks. This is a subalgebra. It is generated by the bracket monomials with that degree property: any bracket expression decomposes by these root degrees, and the components not wanted can be discarded because different root multidegrees are independent in <span class="math" data-tex="\(P_{\mathbb Z}\)">\(P_{\mathbb Z}\)</span>.</p>
+<p>There are finitely many bracket variables. An exponent vector <span class="math" data-tex="\(e\in\mathbb N^{\binom D2}\)">\(e\in\mathbb N^{\binom D2}\)</span>, <span class="math" data-tex="\(D=\sum_\nu d_\nu\)">\(D=\sum_\nu d_\nu\)</span>, describes such a monomial. Its degree in a root pair is the sum of exponents on the incident bracket edges. Equality of these degrees within each block is a finite system
+<span class="math math-display" data-tex="\[
+Le=0
+\]">\[
+Le=0
+\]</span>
+with integer coefficients. Gordan's lemma, proved by Dickson's lemma in the first lesson, says the monoid of its nonnegative solutions has finitely many generators. Their bracket monomials therefore generate <span class="math" data-tex="\(C_{\rm bal}\)">\(C_{\rm bal}\)</span> as a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-algebra. Relations or zero brackets do not affect the conclusion: a finite generating set for the monomial algebra still generates its image.</p>
+<p>The finite group
+<span class="math math-display" data-tex="\[
+\Gamma=S_{d_1}\times\cdots\times S_{d_\mu}
+\]">\[
+\Gamma=S_{d_1}\times\cdots\times S_{d_\mu}
+\]</span>
+permutes the root pairs within their blocks. It preserves <span class="math" data-tex="\(C_{\rm bal}\)">\(C_{\rm bal}\)</span>, including bracket signs. Theorem 1.2 of this lesson applies over the Noetherian base <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: since <span class="math" data-tex="\(C_{\rm bal}\)">\(C_{\rm bal}\)</span> is finite type, its fixed ring
+<span class="math" data-tex="\(C_{\rm bal}^{\Gamma}\)">\(C_{\rm bal}^{\Gamma}\)</span> is finite type over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. That theorem uses orbit integrality and a finite module, with no averaging or division by <span class="math" data-tex="\(|\Gamma|\)">\(|\Gamma|\)</span>.</p>
+<p>Finally,
+<span class="math math-display" data-tex="\[
+\iota\bigl(A_{\mathbb Z}^{\operatorname{SL}_2}\bigr)
+=C_{\rm bal}^{\Gamma}.
+\tag{10}
+\]">\[
+\iota\bigl(A_{\mathbb Z}^{\operatorname{SL}_2}\bigr)
+=C_{\rm bal}^{\Gamma}.
+\tag{10}
+\]</span>
+The forward inclusion follows from equivariance, (9), and the degrees and symmetries of the coefficient-to-root substitution. For the reverse inclusion, take a homogeneous component of a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-fixed balanced element; permutations preserve its balanced multidegree, so it is still fixed. The integral root-expression lemma writes it uniquely as <span class="math" data-tex="\(\iota(I)\)">\(\iota(I)\)</span> for a multihomogeneous <span class="math" data-tex="\(I\in A_{\mathbb Z}\)">\(I\in A_{\mathbb Z}\)</span>. Its special-linear invariance implies that of <span class="math" data-tex="\(I\)">\(I\)</span>, by equivariance and injectivity. More explicitly, apply the coefficient-to-root injection over the coordinate ring of the universal special-linear matrix to the difference between <span class="math" data-tex="\(I\)">\(I\)</span> and its transform; the difference has zero image by (9), hence is zero. The lemma permits this coefficient ring because its injectivity proof works over every commutative ring. Summing components gives the reverse inclusion.</p>
+<p>Equation (10) and injectivity identify the two rings. Finite generation of the right side proves the theorem. Taking all coefficient-homogeneous components of a finite generating set gives a finite homogeneous generating set: those components are invariant, and the algebra they generate contains the original generators and is contained in the invariant ring. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(D&lt;2\)">\(D&lt;2\)</span>, there are no brackets and the argument gives only constants, as it should. Degree-zero forms, if present, have trivial coefficient representations; their coefficients can simply be adjoined to the resulting invariant ring.</p>
+<p>Noether's original 1919 proof uses the same three ingredients: integer bracket generation, balanced root degrees, and symmetry within each block. She symmetrizes bracket expressions with a fixed factorial denominator and then proves that adjoining finitely many integral fractions clears that denominator. The proof above combines her root reduction with the finite-group argument developed in her 1926 paper; the Noetherian-base form of that argument removes the need to introduce factorials. Both routes keep the actual integral coefficient lattice.</p>
+<p>That last qualification matters. Replacing <span class="math" data-tex="\(a_{\nu,r}\)">\(a_{\nu,r}\)</span> by <span class="math" data-tex="\(\binom{d_\nu}{r}b_{\nu,r}\)">\(\binom{d_\nu}{r}b_{\nu,r}\)</span> is not an invertible coordinate change over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The binomially weighted lattice used in the first lesson over a characteristic-zero field is a different lattice over the integers. Noether explicitly warns about this in the footnote to the root substitution in Section 2 of her 1919 paper. Theorem 5.2 concerns the unweighted coefficients displayed here and does not silently identify the two integral problems.</p>
+<p>For illustration, a quadratic in this notation is <span class="math" data-tex="\(Ax^2+Bxy+Cy^2\)">\(Ax^2+Bxy+Cy^2\)</span>, and <span class="math" data-tex="\(B^2-4AC\)">\(B^2-4AC\)</span> is integral. In the binomial notation <span class="math" data-tex="\(ax^2+2bxy+cy^2\)">\(ax^2+2bxy+cy^2\)</span>, the primitive integer polynomial <span class="math" data-tex="\(ac-b^2\)">\(ac-b^2\)</span> corresponds to <span class="math" data-tex="\((4AC-B^2)/4\)">\((4AC-B^2)/4\)</span>; it is not an integer polynomial in <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span>. This calculation explains the lattice warning without suggesting that a rational coordinate rescaling preserves integral invariants.</p>
+<h2 id="6-exercises-and-solutions">6. Exercises and solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Prove directly that <span class="math" data-tex="\(k[x,xy,xy^2,\ldots]\)">\(k[x,xy,xy^2,\ldots]\)</span> is not of finite type, and show that it is not integral over any finite-type <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebra.</p>
+<p><strong>Solution.</strong> Every element is a constant plus a polynomial divisible by <span class="math" data-tex="\(x\)">\(x\)</span>. In a finite proposed generating list, retain the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> in each generator and let <span class="math" data-tex="\(W\subset k[y]\)">\(W\subset k[y]\)</span> be their finite-dimensional span. In the algebra they generate, the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> stays in <span class="math" data-tex="\(W\)">\(W\)</span>: products of two terms divisible by <span class="math" data-tex="\(x\)">\(x\)</span> contribute only <span class="math" data-tex="\(x^2\)">\(x^2\)</span> and higher, and constant factors give scalar multiples. But the elements <span class="math" data-tex="\(xy^j\)">\(xy^j\)</span> have all the independent coefficients <span class="math" data-tex="\(y^j\)">\(y^j\)</span>. This is impossible. The ambient field <span class="math" data-tex="\(k(x,y)\)">\(k(x,y)\)</span> is finitely generated over <span class="math" data-tex="\(k\)">\(k\)</span>, so Theorem 3.3 rules out the asserted integrality over any finite-type subalgebra.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Compute <span class="math" data-tex="\(\mathbb F_2[x,y,z]^{C_2}\)">\(\mathbb F_2[x,y,z]^{C_2}\)</span> when the involution fixes <span class="math" data-tex="\(x\)">\(x\)</span> and interchanges <span class="math" data-tex="\(y,z\)">\(y,z\)</span>. Verify module finiteness directly.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(s=y+z\)">\(s=y+z\)</span> and <span class="math" data-tex="\(u=y\)">\(u=y\)</span>, so the ring is <span class="math" data-tex="\(\mathbb F_2[x,s,u]\)">\(\mathbb F_2[x,s,u]\)</span> and the action is <span class="math" data-tex="\(u\mapsto u+s\)">\(u\mapsto u+s\)</span>. Applying the proof of Theorem 2.1 over the domain <span class="math" data-tex="\(\mathbb F_2[x,s]\)">\(\mathbb F_2[x,s]\)</span> gives
+<span class="math math-display" data-tex="\[
+B=\mathbb F_2[x,s,u^2+su]=\mathbb F_2[x,y+z,yz].
+\]">\[
+B=\mathbb F_2[x,s,u^2+su]=\mathbb F_2[x,y+z,yz].
+\]</span>
+For completeness, every element has a unique form <span class="math" data-tex="\(a(x,s,t)+u b(x,s,t)\)">\(a(x,s,t)+u b(x,s,t)\)</span>, <span class="math" data-tex="\(t=u^2+su\)">\(t=u^2+su\)</span>. Its difference under the involution is <span class="math" data-tex="\(sb\)">\(sb\)</span>, which vanishes only if <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, because this is a polynomial domain. The monic equation <span class="math" data-tex="\(u^2+su+t=0\)">\(u^2+su+t=0\)</span> makes the whole ring free over <span class="math" data-tex="\(B\)">\(B\)</span> with basis <span class="math" data-tex="\(1,u\)">\(1,u\)</span>. The three displayed generators are independent by the same leading-<span class="math" data-tex="\(u\)">\(u\)</span>-degree test.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian and the order of a finite automorphism group is a unit in <span class="math" data-tex="\(A\)">\(A\)</span>. Prove that <span class="math" data-tex="\(A^G\)">\(A^G\)</span> is Noetherian using averaging.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span>. The group order and its inverse are fixed, so <span class="math" data-tex="\(\rho=|G|^{-1}\sum_g g\)">\(\rho=|G|^{-1}\sum_g g\)</span> is a <span class="math" data-tex="\(B\)">\(B\)</span>-linear projection. For an ideal <span class="math" data-tex="\(I\subset B\)">\(I\subset B\)</span>,
+<span class="math math-display" data-tex="\[
+IA\cap B=I.
+\]">\[
+IA\cap B=I.
+\]</span>
+One inclusion is immediate. For the other, average an expression <span class="math" data-tex="\(b=\sum_i a_i b_i\)">\(b=\sum_i a_i b_i\)</span>, <span class="math" data-tex="\(b_i\in I\)">\(b_i\in I\)</span>; the result is <span class="math" data-tex="\(b=\sum_i\rho(a_i)b_i\in I\)">\(b=\sum_i\rho(a_i)b_i\in I\)</span>. If an ascending chain of ideals of <span class="math" data-tex="\(B\)">\(B\)</span> is extended to <span class="math" data-tex="\(A\)">\(A\)</span>, Noetherianity makes the extended chain stabilize. Contracting by the equality above makes the original chain stabilize. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is Noetherian. This argument uses invertibility of the order. Theorem 1.2 is a separate modular argument with a finite-type hypothesis over a Noetherian base.</p>
+<p><strong>Exercise 6.4 (hard).</strong> Give a characteristic-zero proof of Theorem 3.3 for <span class="math" data-tex="\(K/k\)">\(K/k\)</span> purely transcendental and <span class="math" data-tex="\(S\)">\(S\)</span> integrally closed that avoids general finiteness of inseparable normalization.</p>
+<p><strong>Solution.</strong> In fact normality of <span class="math" data-tex="\(S\)">\(S\)</span> and pure transcendence of <span class="math" data-tex="\(K/k\)">\(K/k\)</span> are unnecessary in characteristic zero. Normalize the finite-type domain <span class="math" data-tex="\(R\)">\(R\)</span>: the cited programme theorem provides a polynomial subring <span class="math" data-tex="\(P=k[t_1,\ldots,t_d]\subset R\)">\(P=k[t_1,\ldots,t_d]\subset R\)</span> over which <span class="math" data-tex="\(R\)">\(R\)</span> is finite. Integrality is transitive, so <span class="math" data-tex="\(S\)">\(S\)</span> is integral over <span class="math" data-tex="\(P\)">\(P\)</span>. Lemma 3.1 makes <span class="math" data-tex="\(L=\operatorname{Frac}(S)\)">\(L=\operatorname{Frac}(S)\)</span> finite over <span class="math" data-tex="\(F=\operatorname{Frac}(P)\)">\(F=\operatorname{Frac}(P)\)</span>: it lies in the relative algebraic closure of <span class="math" data-tex="\(F\)">\(F\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. Characteristic zero makes <span class="math" data-tex="\(L/F\)">\(L/F\)</span> separable. Thus the chosen transcendence basis followed by this finite algebraic extension is separating.</p>
+<p>Choose an <span class="math" data-tex="\(F\)">\(F\)</span>-basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, multiplying each basis vector by a nonzero element of <span class="math" data-tex="\(P\)">\(P\)</span> so that it is integral over <span class="math" data-tex="\(P\)">\(P\)</span>. Such multiplication is possible: clear the finitely many denominators in an algebraic equation, then scale to turn it into a monic equation for the scaled element. The embedding-matrix argument in the separable part of Lemma 3.2 proves that the trace pairing is nondegenerate, without needing a primitive element. Consequently the trace matrix <span class="math" data-tex="\(T=(\operatorname{Tr}(v_iv_j))\)">\(T=(\operatorname{Tr}(v_iv_j))\)</span> has nonzero determinant <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>For an integral element <span class="math" data-tex="\(b\in L\)">\(b\in L\)</span>, all <span class="math" data-tex="\(\operatorname{Tr}(bv_j)\)">\(\operatorname{Tr}(bv_j)\)</span> belong to <span class="math" data-tex="\(P\)">\(P\)</span>. They are integral over <span class="math" data-tex="\(P\)">\(P\)</span>, since every conjugate of an integral element is integral and integral elements form a ring; they lie in <span class="math" data-tex="\(F\)">\(F\)</span>, and the polynomial ring <span class="math" data-tex="\(P\)">\(P\)</span> is integrally closed. Solving
+<span class="math math-display" data-tex="\[
+T(c_1,\ldots,c_r)^\mathsf{t}
+=(\operatorname{Tr}(bv_1),\ldots,\operatorname{Tr}(bv_r))^\mathsf{t}
+\]">\[
+T(c_1,\ldots,c_r)^\mathsf{t}
+=(\operatorname{Tr}(bv_1),\ldots,\operatorname{Tr}(bv_r))^\mathsf{t}
+\]</span>
+for <span class="math" data-tex="\(b=\sum_i c_iv_i\)">\(b=\sum_i c_iv_i\)</span>, the adjugate formula gives <span class="math" data-tex="\(Dc_i\in P\)">\(Dc_i\in P\)</span>. The integral closure is therefore a <span class="math" data-tex="\(P\)">\(P\)</span>-submodule of the finite free fractional module <span class="math" data-tex="\(\sum_i P(v_i/D)\)">\(\sum_i P(v_i/D)\)</span>. Noetherianity makes it finite. The submodule <span class="math" data-tex="\(S\)">\(S\)</span> is finite as well, and hence of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>. This proves the requested case without the general positive-characteristic theorem.</p>
+<p><strong>Exercise 6.5 (hard).</strong> Prove the degree criterion in every characteristic and apply it to the transvection and coordinate permutations. Explain the faithful-action hypothesis.</p>
+<p><strong>Solution.</strong> Lemma 4.2 computes the fraction-field degree as the product of the proposed generator degrees; Lemma 4.1 computes the fixed-field degree as the effective group order. Their equality forces identical fraction fields. Integrality and normality of the polynomial candidate ring then give identical rings, as in Theorem 4.3. For the transvection use <span class="math" data-tex="\(x,y^p-x^{p-1}y\)">\(x,y^p-x^{p-1}y\)</span>, of degrees <span class="math" data-tex="\(1,p\)">\(1,p\)</span>, with its monic equation. For <span class="math" data-tex="\(S_n\)">\(S_n\)</span> use <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>, of degrees <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span>, and the monic polynomial with roots the coordinates. Both actions are faithful, including the trivial order-one permutation case. For a nonfaithful action replace the group by its image. Without that replacement the trivial action of a group of order <span class="math" data-tex="\(h&gt;1\)">\(h&gt;1\)</span> on <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, with candidate <span class="math" data-tex="\(x^h\)">\(x^h\)</span>, disproves the proposed criterion.</p>
+<h2 id="historical-sources-and-proof-providers">Historical sources and proof providers</h2>
+<p>Noether's 1926 paper, <em>Der Endlichkeitssatz der Invarianten endlicher linearer Gruppen der Charakteristik p</em>, §1, contains the finiteness criterion and its rational-basis argument; §2 applies it to orbit-resolvent coefficients. Its footnote 3 corrects her earlier claim about the ring over which a module basis is obtained. The modern Noetherian-base proof in section 1 above is independent exposition of the same orbit mechanism. The finite-normalization theorem in section 3 is a case of the Nagata results in AI Integrated Stacks Project, credited below; its full independent argument is included here.</p>
+<p>Her 1919 paper, <em>Die Endlichkeit des Systems der ganzzahligen Invarianten binärer Formen</em>, Section 2, fixes the integral coefficient lattice and makes the root substitution; Section 3 proves the integral binary bracket assertion through relations modulo each prime. Theorem 5.2 now gives the full reduction for an arbitrary finite system of binary forms. Its precise bracket provider, Theorem 4.2 and Corollary 4.3 of the polarization lesson, is a written proof over the integers. The five main assigned results and the solved degree criterion are also proved, including the normalization and field arguments in Section 3.</p>
+<ul>
+<li>E. Noether, the two papers just named, Göttingen Nachrichten (1919), 138–156, and (1926), 28–35. <a href="https://github.com/KokunoYumeto/emmy-noether-en">German witnesses and CC0 English edition</a>, works 15 and 29. The historical papers and translations have their own provenance.</li>
+<li>The Stacks project authors, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-characterize-finite-in-terms-of-integral">finite type and integral maps</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-Artin-Tate">Artin–Tate</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#proposition-ubiquity-nagata">Nagata permanence</a>. The linked AI Integrated Stacks Project is an edition containing AI-proposed corrections and additions, unreviewed by the Stacks maintainers, under the original GFDL 1.2.</li>
+<li><em>Commutative algebra for geometry</em>, the exact existing proof-provider lessons identified in the introduction. Their current lesson files contain the prerequisite proofs; they are not hypothetical external references.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-INV-04.html">← Polarization and invariants of many vectors</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/NOE-INV-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-INV">Repository</a></nav>
+</footer>
+</body>
+</html>

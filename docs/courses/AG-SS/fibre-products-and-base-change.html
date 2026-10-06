@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fibre products and base change · Sheaves and schemes</title>
+<meta name="description" content="A lesson of the course Sheaves and schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-SS/fibre-products-and-base-change.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Sheaves and schemes</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="fibre-products-and-base-change">Fibre products and base change</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex at Ultra; writing-AI self-check completed. No independent review is claimed. Original exposition, proofs, exercises and figures: CC0.</em></p>
+<p>A fibre product makes two maps to the same base agree. On test schemes its points are pairs of compatible maps. On affine charts its ring is a tensor product. These descriptions fit together because the compatible-map functor is a Zariski sheaf with affine open charts. They also explain why the underlying points of a scheme fibre product need not be just pairs of underlying points: there can be several ways to combine their residue fields.</p>
+<p>The prerequisites are <a href="affine-schemes.html">Affine schemes</a>, <a href="schemes-gluing-and-immersions.html">Schemes, gluing and immersions</a>, and <a href="the-functor-of-points-and-representability.html">The functor of points and representability</a>. We use their written affine mapping, local-point and representability theorems. Rings and schemes remain arbitrary; no finiteness or reducedness assumption is implicit.</p>
+<h2 id="1-constructing-the-product-over-a-base">1. Constructing the product over a base</h2>
+<p>For maps <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> and <span class="math" data-tex="\(g:Y\to S\)">\(g:Y\to S\)</span>, a <strong>fibre product</strong> is a scheme <span class="math" data-tex="\(P=X\times_S Y\)">\(P=X\times_S Y\)</span> with maps <span class="math" data-tex="\(p:P\to X\)">\(p:P\to X\)</span>, <span class="math" data-tex="\(q:P\to Y\)">\(q:P\to Y\)</span>, such that <span class="math" data-tex="\(fp=gq\)">\(fp=gq\)</span> and, for every test scheme <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(T,P)\cong
+\operatorname{Hom}(T,X)\times_{\operatorname{Hom}(T,S)}\operatorname{Hom}(T,Y).
+\tag{1.1}
+\]">\[
+\operatorname{Hom}(T,P)\cong
+\operatorname{Hom}(T,X)\times_{\operatorname{Hom}(T,S)}\operatorname{Hom}(T,Y).
+\tag{1.1}
+\]</span>
+<p>The bijection sends a map to its two composites. Thus a compatible pair factors through <span class="math" data-tex="\(P\)">\(P\)</span> in exactly one way. Yoneda shows that a fibre product, with its projections, is unique up to a unique isomorphism.</p>
+<p><strong>Theorem 1.1.</strong> Fibre products of schemes exist. In the affine case,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Spec}A\times_{\operatorname{Spec}R}\operatorname{Spec}B
+\cong\operatorname{Spec}(A\otimes_R B).
+\tag{1.2}
+\]">\[
+\operatorname{Spec}A\times_{\operatorname{Spec}R}\operatorname{Spec}B
+\cong\operatorname{Spec}(A\otimes_R B).
+\tag{1.2}
+\]</span>
+<p>If <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span>, <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span>, <span class="math" data-tex="\(W\subset S\)">\(W\subset S\)</span> are open subschemes with <span class="math" data-tex="\(f(U),g(V)\subset W\)">\(f(U),g(V)\subset W\)</span>, the induced map identifies</p>
+<span class="math math-display" data-tex="\[
+U\times_W V\cong p^{-1}U\cap q^{-1}V
+\subset X\times_S Y
+\tag{1.3}
+\]">\[
+U\times_W V\cong p^{-1}U\cap q^{-1}V
+\subset X\times_S Y
+\tag{1.3}
+\]</span>
+<p>as an open subscheme. Compatible affine charts of this form cover the fibre product.</p>
+<p><strong>Proof.</strong> The affine formula is the preceding affine lesson's Corollary 4.2. To recall its essential scope, a map from <em>any</em> test scheme to <span class="math" data-tex="\(\operatorname{Spec}(A\otimes_R B)\)">\(\operatorname{Spec}(A\otimes_R B)\)</span> corresponds to a ring map into its global section ring; tensor universality identifies that with the required two maps. It is therefore a fibre product in all schemes, not just in affine schemes.</p>
+<p>In general define <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> to be the right side of (1.1), with pullback by composition. Compatible local pairs glue separately to maps <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span> and <span class="math" data-tex="\(T\to Y\)">\(T\to Y\)</span>. Their two maps to <span class="math" data-tex="\(S\)">\(S\)</span> agree locally, hence globally by morphism gluing. Uniqueness also holds separately. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is a Zariski sheaf.</p>
+<p>Choose an affine open cover <span class="math" data-tex="\((W_i)\)">\((W_i)\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>, and affine open covers <span class="math" data-tex="\((U_{ij})\)">\((U_{ij})\)</span> of <span class="math" data-tex="\(f^{-1}W_i\)">\(f^{-1}W_i\)</span> and <span class="math" data-tex="\((V_{ik})\)">\((V_{ik})\)</span> of <span class="math" data-tex="\(g^{-1}W_i\)">\(g^{-1}W_i\)</span>. For each triple, compatible pairs factoring through <span class="math" data-tex="\(U_{ij},V_{ik}\)">\(U_{ij},V_{ik}\)</span> form a subfunctor represented by their affine tensor fibre product over <span class="math" data-tex="\(W_i\)">\(W_i\)</span>. For a pair <span class="math" data-tex="\((a,b)\in F(T)\)">\((a,b)\in F(T)\)</span>, its membership open is
+<span class="math" data-tex="\(a^{-1}U_{ij}\cap b^{-1}V_{ik}\)">\(a^{-1}U_{ij}\cap b^{-1}V_{ik}\)</span>.
+Factorization through an open subscheme is determined by this image condition, so this description works after every test map into <span class="math" data-tex="\(T\)">\(T\)</span> and proves openness. These membership opens cover <span class="math" data-tex="\(T\)">\(T\)</span>: first choose a base chart around the common image of a point, then charts around each of its two images. The preceding lesson's Theorem 4.1 now represents <span class="math" data-tex="\(F\)">\(F\)</span>, proving existence and the asserted affine covering.</p>
+<p>To prove (1.3), a map from <span class="math" data-tex="\(T\)">\(T\)</span> into the displayed open on the right is a compatible pair landing in <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>. Their composites into <span class="math" data-tex="\(W\)">\(W\)</span> are equal, because their composites into <span class="math" data-tex="\(S\)">\(S\)</span> are equal and <span class="math" data-tex="\(W\to S\)">\(W\to S\)</span> is a monomorphism. Conversely such a pair defines by (1.1) a map landing in that open. This proves its fibre-product mapping property and hence the canonical isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The scheme <span class="math" data-tex="\(\operatorname{Spec}\mathbb Z\)">\(\operatorname{Spec}\mathbb Z\)</span> is terminal, since there is exactly one unital map from <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> to any global section ring. Ordinary products are fibre products over it. For a specified base <span class="math" data-tex="\(S\)">\(S\)</span>, the product in <span class="math" data-tex="\(S\)">\(S\)</span>-schemes is <span class="math" data-tex="\(\times_S\)">\(\times_S\)</span>.</p>
+<p><strong>Lemma 1.2 (computational identities).</strong> For an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, an ideal <span class="math" data-tex="\(I\subset R\)">\(I\subset R\)</span>, and a multiplicative subset <span class="math" data-tex="\(M\subset R\)">\(M\subset R\)</span>, there are natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+B\otimes_R R[z_1,\ldots,z_n]\cong B[z_1,\ldots,z_n],\qquad
+B\otimes_R(R/I)\cong B/IB,
+\]">\[
+B\otimes_R R[z_1,\ldots,z_n]\cong B[z_1,\ldots,z_n],\qquad
+B\otimes_R(R/I)\cong B/IB,
+\]</span>
+<span class="math math-display" data-tex="\[
+B\otimes_R M^{-1}R\cong M^{-1}B.
+\tag{1.4}
+\]">\[
+B\otimes_R M^{-1}R\cong M^{-1}B.
+\tag{1.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(M^{-1}B\)">\(M^{-1}B\)</span> means localization at the image of <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(IB\)">\(IB\)</span> is the ideal generated by the image of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Proof.</strong> In each case maps from the proposed ring into a commutative ring <span class="math" data-tex="\(C\)">\(C\)</span> correspond to compatible maps from the two tensor factors. A polynomial factor chooses arbitrary images of its variables; a quotient factor forces the image of <span class="math" data-tex="\(I\)">\(I\)</span> to vanish; a localization factor forces the image of <span class="math" data-tex="\(M\)">\(M\)</span> to be invertible. These are exactly the defining properties of the rings on the right. The tensor universal property supplies inverse maps with these prescribed generators and hence the isomorphisms. Explicitly in the quotient case, <span class="math" data-tex="\(b\otimes\bar r\mapsto\overline{br}\)">\(b\otimes\bar r\mapsto\overline{br}\)</span>, with inverse <span class="math" data-tex="\(\bar b\mapsto b\otimes1\)">\(\bar b\mapsto b\otimes1\)</span>; in the localization case, <span class="math" data-tex="\(b\otimes(r/m)\mapsto br/m\)">\(b\otimes(r/m)\mapsto br/m\)</span>, with inverse taking <span class="math" data-tex="\(b/m\)">\(b/m\)</span> to <span class="math" data-tex="\(b\otimes(1/m)\)">\(b\otimes(1/m)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a presentation by variables and equations can be base changed by changing coefficients and retaining those variables and equations. A quotient or localization may yield the zero ring; the corresponding fibre product is then empty.</p>
+<h2 id="2-the-extra-residue-field-information-in-a-point">2. The extra residue-field information in a point</h2>
+<p>For a point <span class="math" data-tex="\(z\in X\times_S Y\)">\(z\in X\times_S Y\)</span>, put <span class="math" data-tex="\(x=p(z)\)">\(x=p(z)\)</span>, <span class="math" data-tex="\(y=q(z)\)">\(y=q(z)\)</span>, <span class="math" data-tex="\(s=f(x)=g(y)\)">\(s=f(x)=g(y)\)</span>. The two projections give compatible embeddings of <span class="math" data-tex="\(\kappa(x)\)">\(\kappa(x)\)</span> and <span class="math" data-tex="\(\kappa(y)\)">\(\kappa(y)\)</span> into <span class="math" data-tex="\(\kappa(z)\)">\(\kappa(z)\)</span>. Their tensor map has a prime kernel. This is the extra datum of the point.</p>
+<p><strong>Theorem 2.1 (points and residue fields).</strong> Points of <span class="math" data-tex="\(X\times_S Y\)">\(X\times_S Y\)</span> correspond bijectively to quadruples</p>
+<span class="math math-display" data-tex="\[
+(x,y,s,\mathfrak r),\qquad f(x)=s=g(y),\quad
+\mathfrak r\in\operatorname{Spec}\bigl(\kappa(x)\otimes_{\kappa(s)}\kappa(y)\bigr).
+\tag{2.1}
+\]">\[
+(x,y,s,\mathfrak r),\qquad f(x)=s=g(y),\quad
+\mathfrak r\in\operatorname{Spec}\bigl(\kappa(x)\otimes_{\kappa(s)}\kappa(y)\bigr).
+\tag{2.1}
+\]</span>
+<p>The residue field of the corresponding point is the fraction field of
+<span class="math" data-tex="\((\kappa(x)\otimes_{\kappa(s)}\kappa(y))/\mathfrak r\)">\((\kappa(x)\otimes_{\kappa(s)}\kappa(y))/\mathfrak r\)</span>.</p>
+<p><strong>Proof.</strong> First work in affine charts <span class="math" data-tex="\(X=\operatorname{Spec}A\)">\(X=\operatorname{Spec}A\)</span>, <span class="math" data-tex="\(Y=\operatorname{Spec}B\)">\(Y=\operatorname{Spec}B\)</span>, <span class="math" data-tex="\(S=\operatorname{Spec}R\)">\(S=\operatorname{Spec}R\)</span>, and write <span class="math" data-tex="\(C=A\otimes_R B\)">\(C=A\otimes_R B\)</span>. Fix primes <span class="math" data-tex="\(\mathfrak p\subset A\)">\(\mathfrak p\subset A\)</span>, <span class="math" data-tex="\(\mathfrak q\subset B\)">\(\mathfrak q\subset B\)</span>, contracting to the same <span class="math" data-tex="\(\mathfrak s\subset R\)">\(\mathfrak s\subset R\)</span>. The primes <span class="math" data-tex="\(P\subset C\)">\(P\subset C\)</span> with these exact contractions contain the images of <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> and <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, and avoid the images of <span class="math" data-tex="\(A\setminus\mathfrak p\)">\(A\setminus\mathfrak p\)</span> and <span class="math" data-tex="\(B\setminus\mathfrak q\)">\(B\setminus\mathfrak q\)</span>. Quotient by the former and localize at the latter. By tensor universality the resulting ring is</p>
+<span class="math math-display" data-tex="\[
+D=\kappa(\mathfrak p)\otimes_{\kappa(\mathfrak s)}\kappa(\mathfrak q).
+\tag{2.2}
+\]">\[
+D=\kappa(\mathfrak p)\otimes_{\kappa(\mathfrak s)}\kappa(\mathfrak q).
+\tag{2.2}
+\]</span>
+<p>Indeed each factor is the fraction field of its prime quotient. The two maps from <span class="math" data-tex="\(R\)">\(R\)</span> kill <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>, and all nonzero elements of <span class="math" data-tex="\(R/\mathfrak s\)">\(R/\mathfrak s\)</span> are already units in both fields, so balancing over <span class="math" data-tex="\(R\)">\(R\)</span> becomes balancing over <span class="math" data-tex="\(\kappa(\mathfrak s)\)">\(\kappa(\mathfrak s)\)</span>.</p>
+<p>Quotient and localization prime correspondence send every such <span class="math" data-tex="\(P\)">\(P\)</span> to a unique prime of <span class="math" data-tex="\(D\)">\(D\)</span>. Conversely any prime of <span class="math" data-tex="\(D\)">\(D\)</span> contracts to zero in each field factor: the induced unital map from a field to the nonzero domain <span class="math" data-tex="\(D/\mathfrak r\)">\(D/\mathfrak r\)</span> is injective. Its contraction to <span class="math" data-tex="\(C\)">\(C\)</span> therefore has exactly <span class="math" data-tex="\(\mathfrak p,\mathfrak q\)">\(\mathfrak p,\mathfrak q\)</span> as contractions. These operations are inverse by the prime-correspondence theorem, not just maps in opposite directions. Moreover, <span class="math" data-tex="\(D/\mathfrak r\)">\(D/\mathfrak r\)</span> is a localization of <span class="math" data-tex="\(C/P\)">\(C/P\)</span>, so they have the same fraction field. This proves the residue-field statement.</p>
+<p>For arbitrary schemes, choose compatible affine charts around <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span>. Their tensor fibre product is an open neighbourhood of every point with these projections, by (1.3). The affine bijection applies there. Its extra prime is intrinsically the kernel of
+<span class="math" data-tex="\(\kappa(x)\otimes_{\kappa(s)}\kappa(y)\to\kappa(z)\)">\(\kappa(x)\otimes_{\kappa(s)}\kappa(y)\to\kappa(z)\)</span>,
+so changing the charts preserves it. Conversely the affine construction from a quadruple produces a point with this kernel; on two choices of charts, restrict to a common compatible affine neighbourhood of <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span>. The same prime-correspondence bijection identifies the produced points there. Thus the construction is independent, surjective and injective globally. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 2.2 (a point that splits).</strong> There is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathbb C\otimes_{\mathbb R}\mathbb C
+\cong\mathbb C[z]/(z^2+1)\cong\mathbb C\times\mathbb C.
+\tag{2.3}
+\]">\[
+\mathbb C\otimes_{\mathbb R}\mathbb C
+\cong\mathbb C[z]/(z^2+1)\cong\mathbb C\times\mathbb C.
+\tag{2.3}
+\]</span>
+<p>The second map evaluates at <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(-i\)">\(-i\)</span>. Its inverse follows from the two comaximal factors <span class="math" data-tex="\(z-i,z+i\)">\(z-i,z+i\)</span>, whose difference <span class="math" data-tex="\(2i\)">\(2i\)</span> is a unit. Consequently the product of the two one-point schemes over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> has two points. Equivalently, the tensor map <span class="math" data-tex="\(a\otimes b\mapsto(ab,a\bar b)\)">\(a\otimes b\mapsto(ab,a\bar b)\)</span> is the isomorphism (2.3), using the first factor as coefficient field.</p>
+<p><strong>Example 2.3 (two generic projections).</strong> On
+<span class="math" data-tex="\(\mathbb A^1_k\times_k\mathbb A^1_k=\operatorname{Spec}k[u,v]\)">\(\mathbb A^1_k\times_k\mathbb A^1_k=\operatorname{Spec}k[u,v]\)</span>,
+the prime <span class="math" data-tex="\((0)\)">\((0)\)</span> and the prime <span class="math" data-tex="\((v-u)\)">\((v-u)\)</span> both contract to <span class="math" data-tex="\((0)\)">\((0)\)</span> in <span class="math" data-tex="\(k[u]\)">\(k[u]\)</span> and in <span class="math" data-tex="\(k[v]\)">\(k[v]\)</span>. They are distinct: one is the generic point of the plane, the other the generic point of the diagonal. Thus the natural map from underlying points to pairs of points is not injective, over every field <span class="math" data-tex="\(k\)">\(k\)</span>. By Theorem 2.1, over that generic pair one sees the different primes in <span class="math" data-tex="\(k(u)\otimes_k k(v)\)">\(k(u)\otimes_k k(v)\)</span>.</p>
+<h2 id="3-fibres-as-schemes">3. Fibres as schemes</h2>
+<p>For <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> and <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, its <strong>scheme-theoretic fibre</strong> is</p>
+<span class="math math-display" data-tex="\[
+X_s=X\times_S\operatorname{Spec}\kappa(s),
+\]">\[
+X_s=X\times_S\operatorname{Spec}\kappa(s),
+\]</span>
+<p>regarded as a scheme over <span class="math" data-tex="\(\kappa(s)\)">\(\kappa(s)\)</span>. The map to <span class="math" data-tex="\(S\)">\(S\)</span> uses the canonical residue-field point, with its identity residue embedding. For a geometric point <span class="math" data-tex="\(\bar s:\operatorname{Spec}\Omega\to S\)">\(\bar s:\operatorname{Spec}\Omega\to S\)</span>, where <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is algebraically closed, the <strong>geometric fibre</strong> is <span class="math" data-tex="\(X_{\bar s}=X\times_S\operatorname{Spec}\Omega\)">\(X_{\bar s}=X\times_S\operatorname{Spec}\Omega\)</span>. It is the base change of <span class="math" data-tex="\(X_s\)">\(X_s\)</span> by the given embedding <span class="math" data-tex="\(\kappa(s)\hookrightarrow\Omega\)">\(\kappa(s)\hookrightarrow\Omega\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> is irreducible, the fibre over its generic point is its <strong>generic fibre</strong>.</p>
+<p><strong>Theorem 3.1 (topology and local rings of a fibre).</strong> The projection <span class="math" data-tex="\(X_s\to X\)">\(X_s\to X\)</span> is a homeomorphism onto the subspace <span class="math" data-tex="\(f^{-1}(s)\)">\(f^{-1}(s)\)</span>. At a point <span class="math" data-tex="\(x\)">\(x\)</span> over <span class="math" data-tex="\(s\)">\(s\)</span>, under this identification,</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{X_s,x}\cong
+\mathcal O_{X,x}/\mathfrak m_s\mathcal O_{X,x}
+\cong\mathcal O_{X,x}\otimes_{\mathcal O_{S,s}}\kappa(s).
+\tag{3.1}
+\]">\[
+\mathcal O_{X_s,x}\cong
+\mathcal O_{X,x}/\mathfrak m_s\mathcal O_{X,x}
+\cong\mathcal O_{X,x}\otimes_{\mathcal O_{S,s}}\kappa(s).
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Choose an affine neighbourhood <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span>, corresponding to <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>, and an affine <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> inside its inverse image. By (1.4), the fibre ring on this chart is</p>
+<span class="math math-display" data-tex="\[
+A\otimes_R\kappa(\mathfrak s)=M^{-1}A/\mathfrak s M^{-1}A,
+\qquad M=R\setminus\mathfrak s.
+\tag{3.2}
+\]">\[
+A\otimes_R\kappa(\mathfrak s)=M^{-1}A/\mathfrak s M^{-1}A,
+\qquad M=R\setminus\mathfrak s.
+\tag{3.2}
+\]</span>
+<p>Its primes correspond exactly to primes <span class="math" data-tex="\(\mathfrak p\subset A\)">\(\mathfrak p\subset A\)</span> contracting to <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>: containment of <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> and avoidance of <span class="math" data-tex="\(M\)">\(M\)</span> give the two inclusions. Localization identifies its spectrum, before quotient, homeomorphically with its image subspace; its distinguished opens are intersections with the opens <span class="math" data-tex="\(D(a)\)">\(D(a)\)</span> of <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>. Quotient then selects a closed subspace in that localization. Hence the resulting topology is precisely the topology induced from <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> on this fibre set.</p>
+<p>Localizing (3.2) at the corresponding prime gives <span class="math" data-tex="\(A_{\mathfrak p}/\mathfrak s A_{\mathfrak p}\)">\(A_{\mathfrak p}/\mathfrak s A_{\mathfrak p}\)</span>. The map <span class="math" data-tex="\(R\to A_{\mathfrak p}\)">\(R\to A_{\mathfrak p}\)</span> extends to <span class="math" data-tex="\(R_{\mathfrak s}\)">\(R_{\mathfrak s}\)</span>, and the extended ideal is exactly <span class="math" data-tex="\(\mathfrak m_s\mathcal O_{X,x}\)">\(\mathfrak m_s\mathcal O_{X,x}\)</span>. This proves (3.1), including its tensor form by the quotient identity. Such affine source charts cover <span class="math" data-tex="\(f^{-1}(s)\)">\(f^{-1}(s)\)</span>, and their fibre charts cover <span class="math" data-tex="\(X_s\)">\(X_s\)</span> by Theorem 1.1. The local homeomorphisms and stalk formulas agree on intersections and give the global assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fibre's topology is the expected fibre topology, but its rings contain more information. Even a fibre consisting of one point can be a field extension or a nonreduced ring.</p>
+<p><strong>Example 3.2 (Gaussian integer fibres).</strong> Write <span class="math" data-tex="\(\mathbb Z[i]=\mathbb Z[z]/(z^2+1)\)">\(\mathbb Z[i]=\mathbb Z[z]/(z^2+1)\)</span>. The fibre over a prime <span class="math" data-tex="\((p)\)">\((p)\)</span> of <span class="math" data-tex="\(\operatorname{Spec}\mathbb Z\)">\(\operatorname{Spec}\mathbb Z\)</span> is <span class="math" data-tex="\(\operatorname{Spec}\mathbb F_p[z]/(z^2+1)\)">\(\operatorname{Spec}\mathbb F_p[z]/(z^2+1)\)</span>. In three cases:</p>
+<ul>
+<li>At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(z^2+1=(z+1)^2\)">\(z^2+1=(z+1)^2\)</span>, so it is one nonreduced point with ring <span class="math" data-tex="\(\mathbb F_2[\delta]/(\delta^2)\)">\(\mathbb F_2[\delta]/(\delta^2)\)</span>.</li>
+<li>At <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, the polynomial has no root in <span class="math" data-tex="\(\mathbb F_3\)">\(\mathbb F_3\)</span>, so it is irreducible of degree two. The fibre is one reduced point with field <span class="math" data-tex="\(\mathbb F_9\)">\(\mathbb F_9\)</span>.</li>
+<li>At <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, the two distinct roots are <span class="math" data-tex="\(2,-2\)">\(2,-2\)</span>, so the fibre ring is <span class="math" data-tex="\(\mathbb F_5\times\mathbb F_5\)">\(\mathbb F_5\times\mathbb F_5\)</span>, giving two reduced points.</li>
+</ul>
+<p>All three rings have vector-space dimension two over the residue field of the base. This dimension does not equal the number of underlying points in the first two cases.</p>
+<p><strong>Example 3.3 (a family of curves).</strong> For
+<span class="math" data-tex="\(X=\operatorname{Spec}k[x,y,t]/(xy-t)\to\operatorname{Spec}k[t]\)">\(X=\operatorname{Spec}k[x,y,t]/(xy-t)\to\operatorname{Spec}k[t]\)</span>,
+the fibre at a <span class="math" data-tex="\(k\)">\(k\)</span>-rational parameter <span class="math" data-tex="\(a\)">\(a\)</span> is
+<span class="math" data-tex="\(\operatorname{Spec}k[x,y]/(xy-a)\)">\(\operatorname{Spec}k[x,y]/(xy-a)\)</span>.
+If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> is a unit with <span class="math" data-tex="\(y=a/x\)">\(y=a/x\)</span>, so the ring is <span class="math" data-tex="\(k[x,x^{-1}]\)">\(k[x,x^{-1}]\)</span>. At <span class="math" data-tex="\(a=0\)">\(a=0\)</span> it is <span class="math" data-tex="\(k[x,y]/(xy)\)">\(k[x,y]/(xy)\)</span>, the union of the two coordinate axes with reduced structure: <span class="math" data-tex="\((x)\cap(y)=(xy)\)">\((x)\cap(y)=(xy)\)</span> by polynomial coefficient comparison, and an intersection of prime ideals is radical. The generic fibre is <span class="math" data-tex="\(\operatorname{Spec}k(t)[x,y]/(xy-t)\cong\operatorname{Spec}k(t)[x,x^{-1}]\)">\(\operatorname{Spec}k(t)[x,y]/(xy-t)\cong\operatorname{Spec}k(t)[x,x^{-1}]\)</span>. This computation uses the generic parameter as a nonzero element of the field, not as an unspecified closed value.</p>
+<figure><img src="figures/xy-fibres.png" alt="Real samples of the fibres xy equals minus one, zero and one." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The real-point loci of three fibres in Example 3.3, with <span class="math" data-tex="\(k=\mathbb R\)">\(k=\mathbb R\)</span>, shown in fixed coordinates on <span class="math" data-tex="\([-3,3]^2\)">\([-3,3]^2\)</span>. The central fibre has the two coordinate axes; each nonzero fibre has equation <span class="math" data-tex="\(xy=a\)">\(xy=a\)</span> and coordinate ring <span class="math" data-tex="\(\mathbb R[x,x^{-1}]\)">\(\mathbb R[x,x^{-1}]\)</span>. This Euclidean plot depicts real-valued points only, not the full scheme space or its Zariski topology.</em></p>
+<h2 id="4-changing-the-base-and-retaining-morphism-properties">4. Changing the base and retaining morphism properties</h2>
+<p>For <span class="math" data-tex="\(S&#x27;\to S\)">\(S&#x27;\to S\)</span>, <strong>base change</strong> sends an <span class="math" data-tex="\(S\)">\(S\)</span>-scheme <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(X_{S&#x27;}=X\times_S S&#x27;\)">\(X_{S&#x27;}=X\times_S S&#x27;\)</span>, with projection to <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. An <span class="math" data-tex="\(S\)">\(S\)</span>-morphism <span class="math" data-tex="\(a:X\to Y\)">\(a:X\to Y\)</span> induces <span class="math" data-tex="\(a_{S&#x27;}:X_{S&#x27;}\to Y_{S&#x27;}\)">\(a_{S&#x27;}:X_{S&#x27;}\to Y_{S&#x27;}\)</span>, by applying (1.1) to its composite with the projection and the shared map to <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. Uniqueness in that property gives functoriality.</p>
+<p>Iterating base change gives a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+(X\times_S S&#x27;)\times_{S&#x27;}S&#x27;&#x27;\cong X\times_S S&#x27;&#x27;.
+\tag{4.1}
+\]">\[
+(X\times_S S&#x27;)\times_{S&#x27;}S&#x27;&#x27;\cong X\times_S S&#x27;&#x27;.
+\tag{4.1}
+\]</span>
+<p>Both sides have, on every test scheme, the same data: a map to <span class="math" data-tex="\(X\)">\(X\)</span> and a compatible map to <span class="math" data-tex="\(S&#x27;&#x27;\)">\(S&#x27;&#x27;\)</span>. The same reasoning identifies <span class="math" data-tex="\(X_{S&#x27;}\)">\(X_{S&#x27;}\)</span> with <span class="math" data-tex="\(X\times_Y Y_{S&#x27;}\)">\(X\times_Y Y_{S&#x27;}\)</span> when studying the base change of <span class="math" data-tex="\(a:X\to Y\)">\(a:X\to Y\)</span>. These identities are isomorphisms respecting the displayed projections, not literal equality of independently constructed objects.</p>
+<p>A property of morphisms is <strong>stable under base change</strong> when the property of <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> implies it for every projection <span class="math" data-tex="\(X\times_Y T\to T\)">\(X\times_Y T\to T\)</span>. It is <strong>stable under composition</strong> when two composable morphisms having it have a composite having it.</p>
+<p><strong>Theorem 4.1.</strong> Surjective morphisms, open immersions and closed immersions are stable under arbitrary base change and under composition. Immersions are also stable under arbitrary base change.</p>
+<p><strong>Proof.</strong> For an open immersion <span class="math" data-tex="\(U\to Y\)">\(U\to Y\)</span> and <span class="math" data-tex="\(T\to Y\)">\(T\to Y\)</span>, formula (1.3) identifies its pullback with the open subscheme given by the inverse image of <span class="math" data-tex="\(U\)">\(U\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span>. Composing two open inclusions again gives an open inclusion with restricted structure sheaf.</p>
+<p>For a closed immersion <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span>, choose an affine <span class="math" data-tex="\(W=\operatorname{Spec}R\)">\(W=\operatorname{Spec}R\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Its restriction over <span class="math" data-tex="\(W\)">\(W\)</span> is a closed immersion with the same local-generation condition on its kernel, so the preceding lesson's Theorem 3.1 identifies it with <span class="math" data-tex="\(\operatorname{Spec}(R/I)\)">\(\operatorname{Spec}(R/I)\)</span>. Cover the inverse image of <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span> by affine opens <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span>. Its pullback there is <span class="math" data-tex="\(\operatorname{Spec}(B/IB)\to\operatorname{Spec}B\)">\(\operatorname{Spec}(B/IB)\to\operatorname{Spec}B\)</span>, a closed immersion. This local description proves the global conditions: the image is the closed inverse image of the original closed subset; the projection is locally a homeomorphism onto that image and these identifications give a global homeomorphism; structure-map surjectivity holds on stalks; its kernel is locally generated by the images of the elements of <span class="math" data-tex="\(I\)">\(I\)</span>. Thus the pullback is a closed immersion. Notice that tensoring <span class="math" data-tex="\(I\hookrightarrow R\)">\(I\hookrightarrow R\)</span> need not stay injective; the new ideal is the <em>image</em> ideal <span class="math" data-tex="\(IB\)">\(IB\)</span>.</p>
+<p>For composition of two closed immersions <span class="math" data-tex="\(Z\to Y\to X\)">\(Z\to Y\to X\)</span>, restrict over an affine <span class="math" data-tex="\(\operatorname{Spec}R\subset X\)">\(\operatorname{Spec}R\subset X\)</span>. The first source is <span class="math" data-tex="\(\operatorname{Spec}(R/I)\)">\(\operatorname{Spec}(R/I)\)</span>, and applying Theorem 3.1 once more makes the next source a quotient spectrum of <span class="math" data-tex="\(R/I\)">\(R/I\)</span>. The composite is consequently the spectrum of a quotient of <span class="math" data-tex="\(R\)">\(R\)</span>. These affine local descriptions give the global closed-immersion conditions as above.</p>
+<p>For surjectivity, let <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> be surjective and take <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>, with image <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>. Choose <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> over <span class="math" data-tex="\(y\)">\(y\)</span>. The algebra
+<span class="math" data-tex="\(\kappa(x)\otimes_{\kappa(y)}\kappa(t)\)">\(\kappa(x)\otimes_{\kappa(y)}\kappa(t)\)</span>
+is nonzero. Indeed choose a basis of the vector space <span class="math" data-tex="\(\kappa(x)\)">\(\kappa(x)\)</span> over <span class="math" data-tex="\(\kappa(y)\)">\(\kappa(y)\)</span> containing <span class="math" data-tex="\(1\)">\(1\)</span>; after tensoring it is a direct sum of copies of <span class="math" data-tex="\(\kappa(t)\)">\(\kappa(t)\)</span>, and <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span> is nonzero. A nonzero unital ring has a maximal ideal, hence a prime. Theorem 2.1 therefore supplies a point of <span class="math" data-tex="\(X\times_Y T\)">\(X\times_Y T\)</span> over <span class="math" data-tex="\(t\)">\(t\)</span>. This proves surjectivity after base change. Composition of surjective maps is surjective on underlying sets.</p>
+<p>Finally an immersion factors as a closed immersion into an open subscheme. Base change this factorization, using (4.1); the two cases just proved remain closed and open immersions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, scheme-theoretic inverse image of an affine closed subscheme cut out by <span class="math" data-tex="\(I\)">\(I\)</span> is cut out after base change by <span class="math" data-tex="\(IB\)">\(IB\)</span>. Intersection of two affine closed subschemes cut out by <span class="math" data-tex="\(I,J\subset R\)">\(I,J\subset R\)</span> is consequently <span class="math" data-tex="\(\operatorname{Spec}R/(I+J)\)">\(\operatorname{Spec}R/(I+J)\)</span>. It records the summed equations, not just their common set of zeros.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Compute <span class="math" data-tex="\(\mathbb Q(i)\otimes_{\mathbb Q}\mathbb Q(i)\)">\(\mathbb Q(i)\otimes_{\mathbb Q}\mathbb Q(i)\)</span>, its spectrum, and its two projections to <span class="math" data-tex="\(\operatorname{Spec}\mathbb Q(i)\)">\(\operatorname{Spec}\mathbb Q(i)\)</span>.</li>
+<li><strong>Easy.</strong> Compute all rational-parameter fibres and the generic fibre of <span class="math" data-tex="\(xy=t\)">\(xy=t\)</span>. Show the zero fibre is reduced and reducible.</li>
+<li><strong>Medium.</strong> Exhibit two different points of <span class="math" data-tex="\(\mathbb A^1_k\times_k\mathbb A^1_k\)">\(\mathbb A^1_k\times_k\mathbb A^1_k\)</span> with the same two projections, for an arbitrary field <span class="math" data-tex="\(k\)">\(k\)</span>.</li>
+<li><strong>Medium.</strong> Prove surjectivity after arbitrary base change directly with the point description. Explain why existence of a pair of points alone is not the proof.</li>
+<li><strong>Medium.</strong> Give a morphism whose scheme-theoretic fibre has one point while a geometric fibre over that point has two. Compute both rings and the map between the fibres.</li>
+<li><strong>Medium.</strong> Pull back the closed subscheme <span class="math" data-tex="\(\operatorname{Spec}k[t]/(t^2)\subset\mathbb A^1_k\)">\(\operatorname{Spec}k[t]/(t^2)\subset\mathbb A^1_k\)</span> along <span class="math" data-tex="\(\mathbb A^1_k\to\mathbb A^1_k\)">\(\mathbb A^1_k\to\mathbb A^1_k\)</span> given by <span class="math" data-tex="\(t=u^3\)">\(t=u^3\)</span>. Compute the ring and ideal. Check that pulling back <span class="math" data-tex="\((t^2)\hookrightarrow k[t]\)">\((t^2)\hookrightarrow k[t]\)</span> along the point <span class="math" data-tex="\(t=0\)">\(t=0\)</span> does not preserve its injection.</li>
+</ol>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>Solution 1.</strong> Using the first copy as coefficient field, the tensor ring is <span class="math" data-tex="\(\mathbb Q(i)[z]/(z^2+1)\)">\(\mathbb Q(i)[z]/(z^2+1)\)</span>. The two roots <span class="math" data-tex="\(i,-i\)">\(i,-i\)</span> give the isomorphism with <span class="math" data-tex="\(\mathbb Q(i)\times\mathbb Q(i)\)">\(\mathbb Q(i)\times\mathbb Q(i)\)</span>. Evaluation has inverse obtained from the two interpolation polynomials <span class="math" data-tex="\((z+i)/(2i)\)">\((z+i)/(2i)\)</span> and <span class="math" data-tex="\((i-z)/(2i)\)">\((i-z)/(2i)\)</span>, which are complementary idempotents. Thus its spectrum consists of two disjoint field points. In the formula <span class="math" data-tex="\(a\otimes b\mapsto(ab,a\bar b)\)">\(a\otimes b\mapsto(ab,a\bar b)\)</span>, the first ring inclusion is <span class="math" data-tex="\(a\mapsto(a,a)\)">\(a\mapsto(a,a)\)</span>, the second <span class="math" data-tex="\(b\mapsto(b,\bar b)\)">\(b\mapsto(b,\bar b)\)</span>. Each point projects to the sole point in each factor, but its second residue-field map is respectively the identity or conjugation.</p>
+<p><strong>Solution 2.</strong> Tensor with <span class="math" data-tex="\(k[t]/(t-a)=k\)">\(k[t]/(t-a)=k\)</span> to obtain <span class="math" data-tex="\(k[x,y]/(xy-a)\)">\(k[x,y]/(xy-a)\)</span>. For <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, sending <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(a/x\)">\(a/x\)</span> identifies this with <span class="math" data-tex="\(k[x,x^{-1}]\)">\(k[x,x^{-1}]\)</span>; its inverse sends <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span> to <span class="math" data-tex="\(y/a\)">\(y/a\)</span>. For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the ideals <span class="math" data-tex="\((x)\)">\((x)\)</span> and <span class="math" data-tex="\((y)\)">\((y)\)</span> in <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span> are prime, and their intersection is <span class="math" data-tex="\((xy)\)">\((xy)\)</span>: divisibility by both variables forces every monomial to contain both. Hence <span class="math" data-tex="\((xy)\)">\((xy)\)</span> is radical, while neither variable is zero modulo it and their product is zero. The fibre is reduced and has two irreducible components. For the generic fibre tensor with <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>; its nonzero parameter gives <span class="math" data-tex="\(k(t)[x,x^{-1}]\)">\(k(t)[x,x^{-1}]\)</span> by the same inverse formulas.</p>
+<p><strong>Solution 3.</strong> In <span class="math" data-tex="\(k[u,v]\)">\(k[u,v]\)</span>, both <span class="math" data-tex="\((0)\)">\((0)\)</span> and <span class="math" data-tex="\((v-u)\)">\((v-u)\)</span> are prime. The second quotient is <span class="math" data-tex="\(k[u]\)">\(k[u]\)</span>, so contraction to either one-variable subring is zero. Their first contractions are also zero. They therefore give distinct points projecting to the same generic pair. The product's underlying set cannot be identified with the product set by its projections. This includes finite fields.</p>
+<p><strong>Solution 4.</strong> For <span class="math" data-tex="\(t\)">\(t\)</span> in the new base, choose <span class="math" data-tex="\(x\)">\(x\)</span> above its old-base image <span class="math" data-tex="\(y\)">\(y\)</span>. The tensor of the two residue fields over <span class="math" data-tex="\(\kappa(y)\)">\(\kappa(y)\)</span> is nonzero by the vector-space basis argument in Theorem 4.1. A maximal ideal exists, so Theorem 2.1 gives a point over <span class="math" data-tex="\((x,t)\)">\((x,t)\)</span>. This makes the new map onto on every point. The pair alone would omit the prime required in the point classification; the nonzero tensor and its prime are what complete the existence argument. This reasoning does not claim uniqueness of the lifted point.</p>
+<p><strong>Solution 5.</strong> Take <span class="math" data-tex="\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)">\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)</span>. Its fibre over the sole base point is <span class="math" data-tex="\(\operatorname{Spec}\mathbb C\)">\(\operatorname{Spec}\mathbb C\)</span>, one point. For the geometric point <span class="math" data-tex="\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)">\(\operatorname{Spec}\mathbb C\to\operatorname{Spec}\mathbb R\)</span>, the geometric fibre has ring <span class="math" data-tex="\(\mathbb C\otimes_{\mathbb R}\mathbb C\cong\mathbb C\times\mathbb C\)">\(\mathbb C\otimes_{\mathbb R}\mathbb C\cong\mathbb C\times\mathbb C\)</span>, hence two points. The projection to the original fibre is induced by the first-factor inclusion <span class="math" data-tex="\(a\mapsto(a,a)\)">\(a\mapsto(a,a)\)</span> under the chosen tensor isomorphism, so both geometric points map to the original point. The new residue field admits two compatible embeddings of the original extension, recorded by the two factors.</p>
+<p><strong>Solution 6.</strong> Formula (1.4) gives <span class="math" data-tex="\(k[u]\otimes_{k[t]}k[t]/(t^2)=k[u]/(u^6)\)">\(k[u]\otimes_{k[t]}k[t]/(t^2)=k[u]/(u^6)\)</span>. Its defining ideal in the new affine line is <span class="math" data-tex="\((u^6)\)">\((u^6)\)</span>, since <span class="math" data-tex="\(t^2\)">\(t^2\)</span> maps to <span class="math" data-tex="\(u^6\)">\(u^6\)</span>. Its sole point is nonreduced, with a nilpotent of order six. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the tensor of the module <span class="math" data-tex="\((t^2)\)">\((t^2)\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\((t^2)/(t^3)\cong k\)">\((t^2)/(t^3)\cong k\)</span>, nonzero. Its map to <span class="math" data-tex="\(k[t]\otimes_{k[t]}k=k\)">\(k[t]\otimes_{k[t]}k=k\)</span> is zero because <span class="math" data-tex="\(t^2\)">\(t^2\)</span> maps to zero. Thus the original injection becomes a noninjective map; its image ideal is zero, as required for this point pullback. Taking the image, rather than identifying the tensor module with an ideal, is essential.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>Affine fibre products use the full arbitrary-test-space mapping proof in the affine lesson. General existence uses the preceding representability criterion, whose openness and sheaf hypotheses are verified here. Point classification uses ordinary quotient and localization prime correspondence from the written internal commutative algebra lessons; the inverse correspondences and residue fields are checked explicitly. Closed-immersion base change and composition use the preceding affine quotient classification and the explicit tensor identities. No flatness, descent, intersection multiplicity or cohomology theorem is assumed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, read in the AI Integrated Stacks Project English edition: <em>Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-fibre-products">Tag 01JM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-fibre-product-affines">Tag 01JQ</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-open-fibre-product">Tag 01JR</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-affine-covering-fibre-product">Tag 01JS</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-points-fibre-product">Tag 01JT</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-base-change-immersion">Tag 01JY</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#lemma-fibre-topological">Tag 01K1</a>; <em>Morphisms of Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#lemma-composition-surjective">Tag 01S0</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#lemma-base-change-surjective">Tag 01S1</a>.</li>
+<li><strong>[Vakil]</strong> Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Sections 10.1–10.4. <a href="https://math.stanford.edu/~vakil/216blog/">Author's book page</a>; <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">consulted public draft</a> (personal viewing and downloading only; no redistribution or derivative works).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-functor-of-points-and-representability.html">← The functor of points and representability</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="properties-of-schemes.html">Properties of schemes →</a></span></nav>
+<p class="small source-link"><a href="src/fibre-products-and-base-change.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-SS">Repository</a></nav>
+</footer>
+</body>
+</html>

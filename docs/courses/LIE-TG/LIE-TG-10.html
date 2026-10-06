@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact transformations and first-order equations · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-10.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="contact-transformations-and-first-order-equations">Contact transformations and first-order equations</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Public domain (CC0).</em></p>
+<p>A first-order equation constrains a point, a function value, and a tangent hyperplane. Contact geometry treats these three pieces together. Its transformations can exchange positions and slopes; its infinitesimal generators are encoded by one function; and its characteristic curves reconstruct a solution from noncharacteristic initial data.</p>
+<p>We work locally with analytic functions over <span class="math" data-tex="$\mathbb K=\mathbb R$">$\mathbb K=\mathbb R$</span> or <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. The analytic flow theorem from <a href="LIE-TG-03.html">One-parameter groups and canonical coordinates</a>, Frobenius from <a href="LIE-TG-04.html">Complete systems and invariants</a>, and the graph-transversality calculation in <a href="LIE-TG-09.html">Prolongation and differential invariants</a> are used. The Euclidean normal-flow examples are real. Our convention is <span class="math" data-tex="$W=\theta(X_W)$">$W=\theta(X_W)$</span> and <span class="math" data-tex="$[X,Y]=XY-YX$">$[X,Y]=XY-YX$</span>. Lie's original characteristic function has the opposite sign; the historical reading at the end makes this difference explicit.</p>
+<h2 id="1-contact-elements-and-contact-transformations">1. Contact elements and contact transformations</h2>
+<p>On <span class="math" data-tex="$J^1(\mathbb K^n,\mathbb K)$">$J^1(\mathbb K^n,\mathbb K)$</span> use coordinates <span class="math" data-tex="$(x^1,\ldots,x^n,z,p_1,\ldots,p_n)$">$(x^1,\ldots,x^n,z,p_1,\ldots,p_n)$</span> and the form</p>
+<span class="math math-display" data-tex="$$
+\theta=dz-\sum_i p_i\,dx^i,\qquad
+d\theta=\sum_i dx^i\wedge dp_i.
+\tag{1.1}
+$$">$$
+\theta=dz-\sum_i p_i\,dx^i,\qquad
+d\theta=\sum_i dx^i\wedge dp_i.
+\tag{1.1}
+$$</span>
+<p>The hyperplane <span class="math" data-tex="$C=\ker\theta$">$C=\ker\theta$</span> is the <strong>contact distribution</strong>. At each point, a basis is <span class="math" data-tex="$E_i=\partial_{x^i}+p_i\partial_z$">$E_i=\partial_{x^i}+p_i\partial_z$</span> together with <span class="math" data-tex="$\partial_{p_i}$">$\partial_{p_i}$</span>. The restriction of <span class="math" data-tex="$d\theta$">$d\theta$</span> to <span class="math" data-tex="$C$">$C$</span> is nondegenerate, since <span class="math" data-tex="$d\theta(E_i,\partial_{p_j})=\delta_{ij}$">$d\theta(E_i,\partial_{p_j})=\delta_{ij}$</span>. Equivalently, <span class="math" data-tex="$\theta\wedge(d\theta)^n$">$\theta\wedge(d\theta)^n$</span> is a nowhere-zero volume form.</p>
+<p>An immersed <span class="math" data-tex="$n$">$n$</span>-dimensional submanifold on which <span class="math" data-tex="$\theta$">$\theta$</span> vanishes is <strong>Legendrian</strong>. On such a submanifold <span class="math" data-tex="$d\theta$">$d\theta$</span> vanishes too, by differentiating the pulled-back zero form. If its projection to <span class="math" data-tex="$x$">$x$</span> is a local diffeomorphism, it is a graph <span class="math" data-tex="$(x,z(x),p(x))$">$(x,z(x),p(x))$</span>, and <span class="math" data-tex="$\theta=0$">$\theta=0$</span> says <span class="math" data-tex="$p_i=\partial_i z$">$p_i=\partial_i z$</span>. Thus it is exactly the first-jet graph of a function. A Legendrian submanifold need not project to a graph.</p>
+<p>A local diffeomorphism <span class="math" data-tex="$\Phi$">$\Phi$</span> is <strong>contact</strong> if</p>
+<span class="math math-display" data-tex="$$
+\Phi^*\theta=\rho\theta,\qquad \rho\ne0.
+\tag{1.2}
+$$">$$
+\Phi^*\theta=\rho\theta,\qquad \rho\ne0.
+\tag{1.2}
+$$</span>
+<p>This condition means that it preserves <span class="math" data-tex="$C$">$C$</span>. It also preserves Legendrian submanifolds, though their projections can become singular.</p>
+<p><strong>Theorem 1.1.</strong> Every prolonged point diffeomorphism is contact on its graph-transverse domain. The Legendre transformation</p>
+<span class="math math-display" data-tex="$$
+\mathcal L(x,z,p)=(p,\,p\cdot x-z,\,x)
+\tag{1.3}
+$$">$$
+\mathcal L(x,z,p)=(p,\,p\cdot x-z,\,x)
+\tag{1.3}
+$$</span>
+<p>is contact and satisfies <span class="math" data-tex="$\mathcal L^2=\mathrm{id}$">$\mathcal L^2=\mathrm{id}$</span>.</p>
+<p><strong>Proof.</strong> Let a point diffeomorphism be <span class="math" data-tex="$(x,z)\mapsto(X(x,z),Z(x,z))$">$(x,z)\mapsto(X(x,z),Z(x,z))$</span>. Put <span class="math" data-tex="$A^j_i=\partial_iX^j+p_iX^j_z$">$A^j_i=\partial_iX^j+p_iX^j_z$</span>. Where <span class="math" data-tex="$A$">$A$</span> is invertible, its prolonged slopes <span class="math" data-tex="$P_j$">$P_j$</span> are the unique solution of</p>
+<span class="math math-display" data-tex="$$
+\partial_iZ+p_iZ_z=\sum_jP_jA^j_i.
+$$">$$
+\partial_iZ+p_iZ_z=\sum_jP_jA^j_i.
+$$</span>
+<p>The form <span class="math" data-tex="$dZ-P_jdX^j$">$dZ-P_jdX^j$</span> has no <span class="math" data-tex="$dp$">$dp$</span> components and annihilates every <span class="math" data-tex="$E_i$">$E_i$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$
+dZ-\sum_jP_jdX^j=\rho\theta,
+\qquad \rho=Z_z-\sum_jP_jX^j_z.
+$$">$$
+dZ-\sum_jP_jdX^j=\rho\theta,
+\qquad \rho=Z_z-\sum_jP_jX^j_z.
+$$</span>
+<p>Use the basis <span class="math" data-tex="$(E_1,\ldots,E_n,\partial_z)$">$(E_1,\ldots,E_n,\partial_z)$</span> in point-space tangent coordinates, and the corresponding transformed basis. The point derivative has block matrix <span class="math" data-tex="$\left(\begin{smallmatrix}A&amp;X_z\\0&amp;\rho\end{smallmatrix}\right)$">$\left(\begin{smallmatrix}A&amp;X_z\\0&amp;\rho\end{smallmatrix}\right)$</span>. Its determinant is <span class="math" data-tex="$\det A\,\rho$">$\det A\,\rho$</span>. Both the point derivative and <span class="math" data-tex="$A$">$A$</span> are invertible, so <span class="math" data-tex="$\rho\ne0$">$\rho\ne0$</span>. Prolonging the inverse point map gives the inverse on this graph chart, establishing a contact diffeomorphism.</p>
+<p>For (1.3), denote its new coordinates by <span class="math" data-tex="$(X,Z,P)$">$(X,Z,P)$</span>. Direct calculation gives</p>
+<span class="math math-display" data-tex="$$
+dZ-\sum_iP_i\,dX^i
+=d(p\cdot x-z)-x\cdot dp
+=p\cdot dx-dz=-\theta.
+$$">$$
+dZ-\sum_iP_i\,dX^i
+=d(p\cdot x-z)-x\cdot dp
+=p\cdot dx-dz=-\theta.
+$$</span>
+<p>Applying (1.3) twice returns <span class="math" data-tex="$(x,x\cdot p-(p\cdot x-z),p)=(x,z,p)$">$(x,x\cdot p-(p\cdot x-z),p)=(x,z,p)$</span>. The point transformation is an exact involution; the sign occurs in its pullback of the form. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The Legendre transformation is generally not a prolonged point map, because its new independent coordinate <span class="math" data-tex="$X=p$">$X=p$</span> depends on the slope. On a function graph it becomes a graph only where the Hessian <span class="math" data-tex="$\partial p/\partial x$">$\partial p/\partial x$</span> is invertible.</p>
+<p>In the plane, an incidence or <strong>directrix equation</strong> <span class="math" data-tex="$\Omega(x,z,X,Z)=0$">$\Omega(x,z,X,Z)=0$</span> supplies another useful description. Suppose <span class="math" data-tex="$\Omega_z\Omega_Z\ne0$">$\Omega_z\Omega_Z\ne0$</span> and the equations</p>
+<span class="math math-display" data-tex="$$
+\Omega=0,\qquad \Omega_x+p\Omega_z=0
+\tag{1.4}
+$$">$$
+\Omega=0,\qquad \Omega_x+p\Omega_z=0
+\tag{1.4}
+$$</span>
+<p>can be solved for <span class="math" data-tex="$(X,Z)$">$(X,Z)$</span> as functions of <span class="math" data-tex="$(x,z,p)$">$(x,z,p)$</span>. Define <span class="math" data-tex="$P=-\Omega_X/\Omega_Z$">$P=-\Omega_X/\Omega_Z$</span>. Differentiating <span class="math" data-tex="$\Omega=0$">$\Omega=0$</span> and using (1.4) gives</p>
+<span class="math math-display" data-tex="$$
+\Omega_z(dz-p\,dx)+\Omega_Z(dZ-P\,dX)=0.
+$$">$$
+\Omega_z(dz-p\,dx)+\Omega_Z(dZ-P\,dX)=0.
+$$</span>
+<p>Thus the resulting map has multiplier <span class="math" data-tex="$\rho=-\Omega_z/\Omega_Z$">$\rho=-\Omega_z/\Omega_Z$</span>. It is a local diffeomorphism: if a tangent vector lies in the kernel of its derivative, the pullback identity forces it into <span class="math" data-tex="$C$">$C$</span>, and the differentiated identity forces it to be orthogonal to all of <span class="math" data-tex="$C$">$C$</span> under <span class="math" data-tex="$d\theta$">$d\theta$</span>. Nondegeneracy on <span class="math" data-tex="$C$">$C$</span> makes that vector zero. The inverse function theorem applies. For <span class="math" data-tex="$\Omega=z+Z-xX$">$\Omega=z+Z-xX$</span>, equations (1.4) give exactly (1.3). These rank and nonvanishing conditions are part of the directrix construction.</p>
+<h2 id="2-one-function-determines-a-contact-vector-field">2. One function determines a contact vector field</h2>
+<p>A vector field <span class="math" data-tex="$X$">$X$</span> is contact when <span class="math" data-tex="$\mathcal L_X\theta=\lambda\theta$">$\mathcal L_X\theta=\lambda\theta$</span> for a function <span class="math" data-tex="$\lambda$">$\lambda$</span>.</p>
+<p><strong>Theorem 2.1 (generating-function bijection).</strong> The map <span class="math" data-tex="$X\mapsto\theta(X)$">$X\mapsto\theta(X)$</span> is a linear bijection from contact vector fields to functions. For any function <span class="math" data-tex="$W$">$W$</span> its inverse is</p>
+<span class="math math-display" data-tex="$$
+X_W=-\sum_iW_{p_i}\partial_{x^i}
++\left(W-\sum_ip_iW_{p_i}\right)\partial_z
++\sum_i(W_{x^i}+p_iW_z)\partial_{p_i}.
+\tag{2.1}
+$$">$$
+X_W=-\sum_iW_{p_i}\partial_{x^i}
++\left(W-\sum_ip_iW_{p_i}\right)\partial_z
++\sum_i(W_{x^i}+p_iW_z)\partial_{p_i}.
+\tag{2.1}
+$$</span>
+<p>Moreover <span class="math" data-tex="$\mathcal L_{X_W}\theta=W_z\theta$">$\mathcal L_{X_W}\theta=W_z\theta$</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$X=a^i\partial_{x^i}+b\partial_z+c_i\partial_{p_i}$">$X=a^i\partial_{x^i}+b\partial_z+c_i\partial_{p_i}$</span> and <span class="math" data-tex="$W=b-p_ia^i$">$W=b-p_ia^i$</span>. Cartan's differentiation formula gives</p>
+<span class="math math-display" data-tex="$$
+\mathcal L_X\theta=dW+\iota_Xd\theta
+=dW+\sum_i(a^i\,dp_i-c_i\,dx^i).
+$$">$$
+\mathcal L_X\theta=dW+\iota_Xd\theta
+=dW+\sum_i(a^i\,dp_i-c_i\,dx^i).
+$$</span>
+<p>Compare coefficients with <span class="math" data-tex="$\lambda(dz-p_i\,dx^i)$">$\lambda(dz-p_i\,dx^i)$</span>. The <span class="math" data-tex="$dz$">$dz$</span> coefficient gives <span class="math" data-tex="$\lambda=W_z$">$\lambda=W_z$</span>; the <span class="math" data-tex="$dp_i$">$dp_i$</span> coefficients give <span class="math" data-tex="$a^i=-W_{p_i}$">$a^i=-W_{p_i}$</span>; and the <span class="math" data-tex="$dx^i$">$dx^i$</span> coefficients give <span class="math" data-tex="$c_i=W_{x^i}+p_iW_z$">$c_i=W_{x^i}+p_iW_z$</span>. Finally <span class="math" data-tex="$b=W+p_ia^i$">$b=W+p_ia^i$</span> gives (2.1). These equations prove uniqueness. Substitution proves existence for every <span class="math" data-tex="$W$">$W$</span> and the displayed Lie derivative. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular <span class="math" data-tex="$X_1=\partial_z$">$X_1=\partial_z$</span>. Adding a constant to a generating function changes its contact field. This differs from ordinary Hamiltonian fields on symplectic phase space, where constants produce zero fields.</p>
+<p>Define the <strong>Lagrange bracket</strong>, also called the contact Jacobi bracket, by</p>
+<span class="math math-display" data-tex="$$
+\{W,V\}_c=X_WV-W_zV.
+\tag{2.2}
+$$">$$
+\{W,V\}_c=X_WV-W_zV.
+\tag{2.2}
+$$</span>
+<p>Explicitly,</p>
+<span class="math math-display" data-tex="$$
+\{W,V\}_c=
+\sum_i(W_{x^i}V_{p_i}-W_{p_i}V_{x^i})
++WV_z-VW_z
++\sum_ip_i(W_zV_{p_i}-W_{p_i}V_z).
+\tag{2.3}
+$$">$$
+\{W,V\}_c=
+\sum_i(W_{x^i}V_{p_i}-W_{p_i}V_{x^i})
++WV_z-VW_z
++\sum_ip_i(W_zV_{p_i}-W_{p_i}V_z).
+\tag{2.3}
+$$</span>
+<p><strong>Theorem 2.2 (bracket and Jacobi identity).</strong> The bracket is antisymmetric, satisfies the Jacobi identity, and obeys</p>
+<span class="math math-display" data-tex="$$
+[X_W,X_V]=X_{\{W,V\}_c}.
+\tag{2.4}
+$$">$$
+[X_W,X_V]=X_{\{W,V\}_c}.
+\tag{2.4}
+$$</span>
+<p><strong>Proof.</strong> The formula for the Lie derivative of a form evaluated on a field gives</p>
+<span class="math math-display" data-tex="$$
+\theta([X_W,X_V])=X_W(\theta(X_V))-(\mathcal L_{X_W}\theta)(X_V)
+=X_WV-W_zV.
+$$">$$
+\theta([X_W,X_V])=X_W(\theta(X_V))-(\mathcal L_{X_W}\theta)(X_V)
+=X_WV-W_zV.
+$$</span>
+<p>The commutator is contact, since</p>
+<span class="math math-display" data-tex="$$
+\mathcal L_{[X_W,X_V]}\theta
+=(X_WV_z-X_VW_z)\theta
+$$">$$
+\mathcal L_{[X_W,X_V]}\theta
+=(X_WV_z-X_VW_z)\theta
+$$</span>
+<p>by the commutator rule for Lie derivatives. Theorem 2.1 therefore proves (2.4). Antisymmetry follows either from (2.3) or the antisymmetry of field commutators and injectivity. Applying (2.4) to the three terms of the Jacobi expression and using the Jacobi identity of differential operators proves that expression is zero, again by injectivity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Unlike a Poisson bracket, (2.2) is not a derivation in each argument for ordinary multiplication. For example <span class="math" data-tex="$\{W,1\}_c=-W_z$">$\{W,1\}_c=-W_z$</span>, and</p>
+<span class="math math-display" data-tex="$$
+\{W,UV\}_c=\{W,U\}_cV+U\{W,V\}_c+W_zUV.
+$$">$$
+\{W,UV\}_c=\{W,U\}_cV+U\{W,V\}_c+W_zUV.
+$$</span>
+<p>For functions independent of <span class="math" data-tex="$z$">$z$</span>, it reduces to the ordinary Poisson bracket</p>
+<span class="math math-display" data-tex="$$
+\{W,V\}_P=\sum_i(W_{x^i}V_{p_i}-W_{p_i}V_{x^i}).
+\tag{2.5}
+$$">$$
+\{W,V\}_P=\sum_i(W_{x^i}V_{p_i}-W_{p_i}V_{x^i}).
+\tag{2.5}
+$$</span>
+<h2 id="3-characteristics-reconstruct-a-solution">3. Characteristics reconstruct a solution</h2>
+<p>Let <span class="math" data-tex="$E=\{F(x,z,p)=0\}$">$E=\{F(x,z,p)=0\}$</span>. From (2.2), <span class="math" data-tex="$\{F,F\}_c=0$">$\{F,F\}_c=0$</span>, hence</p>
+<span class="math math-display" data-tex="$$
+X_FF=F F_z.
+\tag{3.1}
+$$">$$
+X_FF=F F_z.
+\tag{3.1}
+$$</span>
+<p>Thus <span class="math" data-tex="$X_F$">$X_F$</span> is tangent to <span class="math" data-tex="$E$">$E$</span>. Its curves there satisfy</p>
+<span class="math math-display" data-tex="$$
+\dot x^i=-F_{p_i},\qquad
+\dot z=-\sum_ip_iF_{p_i},\qquad
+\dot p_i=F_{x^i}+p_iF_z.
+\tag{3.2}
+$$">$$
+\dot x^i=-F_{p_i},\qquad
+\dot z=-\sum_ip_iF_{p_i},\qquad
+\dot p_i=F_{x^i}+p_iF_z.
+\tag{3.2}
+$$</span>
+<p>Reversing the curve parameter gives the more usual signs in the characteristic equations. On <span class="math" data-tex="$E$">$E$</span>, <span class="math" data-tex="$\theta(X_F)=F=0$">$\theta(X_F)=F=0$</span>. If <span class="math" data-tex="$F_p\ne0$">$F_p\ne0$</span>, the restriction of <span class="math" data-tex="$dF$">$dF$</span> to <span class="math" data-tex="$C$">$C$</span> is nonzero, and nondegeneracy of <span class="math" data-tex="$d\theta|_C$">$d\theta|_C$</span> shows that <span class="math" data-tex="$X_F$">$X_F$</span> spans the one-dimensional kernel of <span class="math" data-tex="$d\theta$">$d\theta$</span> on <span class="math" data-tex="$TE\cap C$">$TE\cap C$</span>. These are the characteristic curves of the equation.</p>
+<p>Let <span class="math" data-tex="$S$">$S$</span> be an analytic hypersurface in <span class="math" data-tex="$x$">$x$</span> space and prescribe <span class="math" data-tex="$z=g$">$z=g$</span> on <span class="math" data-tex="$S$">$S$</span>. A lifted initial datum is <span class="math" data-tex="$(x,g(x),p^0(x))$">$(x,g(x),p^0(x))$</span> with</p>
+<span class="math math-display" data-tex="$$
+p^0|_{TS}=dg,\qquad F(x,g,p^0)=0.
+\tag{3.3}
+$$">$$
+p^0|_{TS}=dg,\qquad F(x,g,p^0)=0.
+\tag{3.3}
+$$</span>
+<p>Let <span class="math" data-tex="$\nu$">$\nu$</span> be a nonzero conormal to <span class="math" data-tex="$S$">$S$</span>. The datum is <strong>noncharacteristic</strong> when</p>
+<span class="math math-display" data-tex="$$
+\sum_i\nu_iF_{p_i}(x,g,p^0)\ne0.
+\tag{3.4}
+$$">$$
+\sum_i\nu_iF_{p_i}(x,g,p^0)\ne0.
+\tag{3.4}
+$$</span>
+<p>This is stronger than <span class="math" data-tex="$F_p\ne0$">$F_p\ne0$</span>: the characteristic base direction must be transverse to this particular <span class="math" data-tex="$S$">$S$</span>. Locally write <span class="math" data-tex="$p^0=\eta+b\nu$">$p^0=\eta+b\nu$</span>, where <span class="math" data-tex="$\eta|_{TS}=dg$">$\eta|_{TS}=dg$</span>. Given a root at a reference point, the derivative of <span class="math" data-tex="$F(x,g,\eta+b\nu)$">$F(x,g,\eta+b\nu)$</span> with respect to <span class="math" data-tex="$b$">$b$</span> is (3.4). The analytic implicit function theorem determines a unique nearby analytic root branch. Different separated roots can give different Cauchy solutions; uniqueness below fixes this branch.</p>
+<p><strong>Theorem 3.1 (noncharacteristic Cauchy problem).</strong> The union of the <span class="math" data-tex="$X_F$">$X_F$</span> characteristics through a lifted analytic datum satisfying (3.3)–(3.4) is the first-jet graph of a unique nearby analytic solution of <span class="math" data-tex="$F(x,z,dz)=0$">$F(x,z,dz)=0$</span> with those initial data and that root branch.</p>
+<p><strong>Proof.</strong> Parametrize <span class="math" data-tex="$S$">$S$</span> by <span class="math" data-tex="$s\in\mathbb K^{n-1}$">$s\in\mathbb K^{n-1}$</span> and let <span class="math" data-tex="$\gamma(s)$">$\gamma(s)$</span> be its lift. The analytic flow <span class="math" data-tex="$\Phi_t$">$\Phi_t$</span> of <span class="math" data-tex="$X_F$">$X_F$</span> exists on a product neighbourhood. Equation (3.1) and uniqueness of the scalar linear ODE for <span class="math" data-tex="$F(\Phi_t\gamma(s))$">$F(\Phi_t\gamma(s))$</span> imply that its value remains zero. Thus <span class="math" data-tex="$\Psi(s,t)=\Phi_t\gamma(s)$">$\Psi(s,t)=\Phi_t\gamma(s)$</span> lies in <span class="math" data-tex="$E$">$E$</span>.</p>
+<p>At <span class="math" data-tex="$t=0$">$t=0$</span> the derivatives of its <span class="math" data-tex="$x$">$x$</span> projection in the <span class="math" data-tex="$s$">$s$</span> directions span <span class="math" data-tex="$TS$">$TS$</span>, and the <span class="math" data-tex="$t$">$t$</span> derivative is <span class="math" data-tex="$-F_p$">$-F_p$</span>. Condition (3.4) makes these <span class="math" data-tex="$n$">$n$</span> directions independent. The inverse function theorem makes the <span class="math" data-tex="$x$">$x$</span> projection of <span class="math" data-tex="$\Psi$">$\Psi$</span> a local analytic diffeomorphism. In particular, <span class="math" data-tex="$\Psi$">$\Psi$</span> is an immersed <span class="math" data-tex="$n$">$n$</span>-manifold.</p>
+<p>The initial lift annihilates <span class="math" data-tex="$\theta$">$\theta$</span> by (3.3). The flow is contact: differentiating <span class="math" data-tex="$\Phi_t^*\theta$">$\Phi_t^*\theta$</span> gives the scalar equation with coefficient <span class="math" data-tex="$F_z\circ\Phi_t$">$F_z\circ\Phi_t$</span>, so its multiplier is the nonzero exponential of the time integral of that coefficient. Consequently the transported <span class="math" data-tex="$s$">$s$</span> directions still annihilate <span class="math" data-tex="$\theta$">$\theta$</span>. The <span class="math" data-tex="$t$">$t$</span> direction does too, since <span class="math" data-tex="$\theta(X_F)=F=0$">$\theta(X_F)=F=0$</span> on <span class="math" data-tex="$E$">$E$</span>. Therefore <span class="math" data-tex="$\Psi$">$\Psi$</span> is Legendrian. Its invertible <span class="math" data-tex="$x$">$x$</span> projection and Section 1 make it <span class="math" data-tex="$(x,z(x),dz(x))$">$(x,z(x),dz(x))$</span>. It lies in <span class="math" data-tex="$E$">$E$</span> and has the required initial value.</p>
+<p>For uniqueness, the first-jet graph <span class="math" data-tex="$L$">$L$</span> of any other nearby solution is Legendrian in <span class="math" data-tex="$E$">$E$</span>. For <span class="math" data-tex="$v\in TL$">$v\in TL$</span>, Cartan's formula gives <span class="math" data-tex="$d\theta(X_F,v)=F_z\theta(v)-dF(v)=0$">$d\theta(X_F,v)=F_z\theta(v)-dF(v)=0$</span>. Inside the symplectic vector space <span class="math" data-tex="$C$">$C$</span>, the <span class="math" data-tex="$n$">$n$</span>-dimensional isotropic space <span class="math" data-tex="$TL$">$TL$</span> is Lagrangian, hence equals its symplectic orthogonal. Since <span class="math" data-tex="$X_F\in C$">$X_F\in C$</span> on <span class="math" data-tex="$E$">$E$</span>, it follows that <span class="math" data-tex="$X_F$">$X_F$</span> is tangent to <span class="math" data-tex="$L$">$L$</span>. Its flow through the initial lift stays in <span class="math" data-tex="$L$">$L$</span>. Uniqueness of the initial normal root forces that lift to be <span class="math" data-tex="$\gamma$">$\gamma$</span>, and uniqueness of the flow forces <span class="math" data-tex="$L$">$L$</span> to coincide with <span class="math" data-tex="$\Psi$">$\Psi$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Multiplying <span class="math" data-tex="$F$">$F$</span> by a nonvanishing function changes <span class="math" data-tex="$X_F|_E$">$X_F|_E$</span> by that same factor. Indeed (2.1) applied to <span class="math" data-tex="$aF$">$aF$</span> gives <span class="math" data-tex="$X_{aF}|_E=aX_F|_E$">$X_{aF}|_E=aX_F|_E$</span>. The unparametrized characteristics and the Cauchy solution depend on the equation hypersurface rather than its chosen defining function.</p>
+<p>A <strong>complete integral</strong> is an <span class="math" data-tex="$n$">$n$</span>-parameter family <span class="math" data-tex="$z=U(x;a)$">$z=U(x;a)$</span> of solutions whose map <span class="math" data-tex="$(x,a)\mapsto(x,U,U_x)$">$(x,a)\mapsto(x,U,U_x)$</span> has rank <span class="math" data-tex="$2n$">$2n$</span>. Equivalently the <span class="math" data-tex="$(n+1)\times n$">$(n+1)\times n$</span> matrix with rows <span class="math" data-tex="$U_a$">$U_a$</span> and <span class="math" data-tex="$U_{x^i a}$">$U_{x^i a}$</span> has rank <span class="math" data-tex="$n$">$n$</span>. The resulting Legendrian graphs locally fill a regular equation hypersurface. An envelope can produce further solutions: replace <span class="math" data-tex="$a_n$">$a_n$</span> by a function <span class="math" data-tex="$h(a_1,\ldots,a_{n-1})$">$h(a_1,\ldots,a_{n-1})$</span>, and solve</p>
+<span class="math math-display" data-tex="$$
+U_{a_i}+U_{a_n}h_{a_i}=0\quad(1\le i&lt;n)
+$$">$$
+U_{a_i}+U_{a_n}h_{a_i}=0\quad(1\le i&lt;n)
+$$</span>
+<p>for the parameters as functions of <span class="math" data-tex="$x$">$x$</span>, wherever the required implicit derivative is invertible. Differentiating <span class="math" data-tex="$z=U(x;a(x))$">$z=U(x;a(x))$</span> then leaves <span class="math" data-tex="$z_x=U_x$">$z_x=U_x$</span>, so the envelope still satisfies <span class="math" data-tex="$F=0$">$F=0$</span>. A full stationary envelope <span class="math" data-tex="$U_a=0$">$U_a=0$</span> has the same property when it defines a graph. Envelopes and their singular projections need separate rank checks; they are not covered automatically by the noncharacteristic theorem.</p>
+<h2 id="4-poisson-s-theorem-and-the-contact-qualification">4. Poisson's theorem and the contact qualification</h2>
+<p>The word “first integral” requires care. An ordinary first integral of <span class="math" data-tex="$X_F$">$X_F$</span> satisfies <span class="math" data-tex="$X_FW=0$">$X_FW=0$</span>. A function commuting with <span class="math" data-tex="$F$">$F$</span> in the contact bracket instead satisfies</p>
+<span class="math math-display" data-tex="$$
+\{F,W\}_c=0\quad\Longleftrightarrow\quad X_FW=F_zW.
+\tag{4.1}
+$$">$$
+\{F,W\}_c=0\quad\Longleftrightarrow\quad X_FW=F_zW.
+\tag{4.1}
+$$</span>
+<p>This is a weighted conservation equation. Ratios of two such functions are ordinary first integrals where the denominator is nonzero. For <span class="math" data-tex="$F_z=0$">$F_z=0$</span>, weighted and ordinary conservation agree.</p>
+<p><strong>Theorem 4.1 (Poisson and contact closure).</strong> For any collection <span class="math" data-tex="$F_1,\ldots,F_r$">$F_1,\ldots,F_r$</span>, the functions satisfying <span class="math" data-tex="$\{F_a,W\}_c=0$">$\{F_a,W\}_c=0$</span> for every <span class="math" data-tex="$a$">$a$</span> are closed under the Lagrange bracket. If every <span class="math" data-tex="$F_a$">$F_a$</span> is independent of <span class="math" data-tex="$z$">$z$</span>, the ordinary common first integrals of the fields <span class="math" data-tex="$X_{F_a}$">$X_{F_a}$</span> therefore have this closure property. For <span class="math" data-tex="$z$">$z$</span>-independent functions throughout, this is Poisson's theorem for (2.5).</p>
+<p>The corresponding assertion holds on a regular common level <span class="math" data-tex="$E=\{F_a=0\}$">$E=\{F_a=0\}$</span> if conservation is interpreted as <span class="math" data-tex="$\{F_a,W\}_c=0$">$\{F_a,W\}_c=0$</span> on <span class="math" data-tex="$E$">$E$</span>. In particular it holds for the weighted characteristic integrals of a regular involutive first-order system.</p>
+<p><strong>Proof.</strong> Jacobi gives</p>
+<span class="math math-display" data-tex="$$
+\{F_a,\{W,V\}_c\}_c
+=\{\{F_a,W\}_c,V\}_c+\{W,\{F_a,V\}_c\}_c.
+\tag{4.2}
+$$">$$
+\{F_a,\{W,V\}_c\}_c
+=\{\{F_a,W\}_c,V\}_c+\{W,\{F_a,V\}_c\}_c.
+\tag{4.2}
+$$</span>
+<p>If the inner brackets vanish identically, both terms on the right vanish. When <span class="math" data-tex="$F_{a,z}=0$">$F_{a,z}=0$</span>, (2.2) identifies the conservation equation with ordinary first-integral conservation, proving the strict-contact case and its Poisson restriction.</p>
+<p>For the assertion on <span class="math" data-tex="$E$">$E$</span>, put <span class="math" data-tex="$G_a=\{F_a,W\}_c$">$G_a=\{F_a,W\}_c$</span> and <span class="math" data-tex="$H_a=\{F_a,V\}_c$">$H_a=\{F_a,V\}_c$</span>. These vanish on <span class="math" data-tex="$E$">$E$</span>. Also <span class="math" data-tex="$X_WF_a=\{W,F_a\}_c+W_zF_a$">$X_WF_a=\{W,F_a\}_c+W_zF_a$</span> vanishes there, so <span class="math" data-tex="$X_W$">$X_W$</span> is tangent to the regular common level; the same holds for <span class="math" data-tex="$X_V$">$X_V$</span>. A tangent field differentiates a function vanishing on <span class="math" data-tex="$E$">$E$</span> to zero on <span class="math" data-tex="$E$">$E$</span>. Thus <span class="math" data-tex="$\{G_a,V\}_c=-\{V,G_a\}_c=-X_VG_a+V_zG_a$">$\{G_a,V\}_c=-\{V,G_a\}_c=-X_VG_a+V_zG_a$</span> and <span class="math" data-tex="$\{W,H_a\}_c=X_WH_a-W_zH_a$">$\{W,H_a\}_c=X_WH_a-W_zH_a$</span> both vanish there. Equation (4.2) proves the level-set assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For the stated geometric system, involutivity means <span class="math" data-tex="$\{F_a,F_b\}_c=0$">$\{F_a,F_b\}_c=0$</span> on <span class="math" data-tex="$E$">$E$</span>, with the <span class="math" data-tex="$dF_a|_C$">$dF_a|_C$</span> independent there. The fields <span class="math" data-tex="$X_{F_a}|_E$">$X_{F_a}|_E$</span> are then independent characteristic directions. Regular defining equations express <span class="math" data-tex="$\{F_a,F_b\}_c=\sum_c b_{ab}^cF_c$">$\{F_a,F_b\}_c=\sum_c b_{ab}^cF_c$</span> locally. Formula (2.1) gives</p>
+<span class="math math-display" data-tex="$$
+[X_{F_a},X_{F_b}]|_E=\sum_c b_{ab}^cX_{F_c}|_E,
+$$">$$
+[X_{F_a},X_{F_b}]|_E=\sum_c b_{ab}^cX_{F_c}|_E,
+$$</span>
+<p>so Frobenius integrates their distribution. The closure theorem concerns functions on an ambient neighbourhood with the specified conservation on <span class="math" data-tex="$E$">$E$</span>; it does not define an unrestricted bracket on arbitrary functions on <span class="math" data-tex="$E$">$E$</span> independent of their extensions.</p>
+<p>The sketch's ordinary-integral claim without the qualification (4.1) is false. Take <span class="math" data-tex="$n=2$">$n=2$</span>, <span class="math" data-tex="$F=z-p_2$">$F=z-p_2$</span>, and work where <span class="math" data-tex="$p_2\ne0$">$p_2\ne0$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+X_F=\partial_{x^2}+z\partial_z+p_1\partial_{p_1}+p_2\partial_{p_2}.
+$$">$$
+X_F=\partial_{x^2}+z\partial_z+p_1\partial_{p_1}+p_2\partial_{p_2}.
+$$</span>
+<p>Both <span class="math" data-tex="$W=x^1$">$W=x^1$</span> and <span class="math" data-tex="$V=p_1/p_2$">$V=p_1/p_2$</span> are ordinary first integrals. Nevertheless</p>
+<span class="math math-display" data-tex="$$
+\{W,V\}_c=\frac1{p_2},\qquad
+X_F\{W,V\}_c=-\frac1{p_2}\ne0.
+\tag{4.3}
+$$">$$
+\{W,V\}_c=\frac1{p_2},\qquad
+X_F\{W,V\}_c=-\frac1{p_2}\ne0.
+\tag{4.3}
+$$</span>
+<p>The failure persists on the regular hypersurface <span class="math" data-tex="$z=p_2$">$z=p_2$</span>, with <span class="math" data-tex="$F_p\ne0$">$F_p\ne0$</span> and a nonzero projected characteristic direction. Even <span class="math" data-tex="$z$">$z$</span>-independence of <span class="math" data-tex="$W,V$">$W,V$</span> alone is insufficient: the defining function <span class="math" data-tex="$F$">$F$</span> itself has <span class="math" data-tex="$F_z=1$">$F_z=1$</span>.</p>
+<h2 id="5-jacobi-s-integration-method-and-function-groups">5. Jacobi's integration method and function groups</h2>
+<p>For <span class="math" data-tex="$z$">$z$</span>-independent functions, work in phase space <span class="math" data-tex="$(x,p)$">$(x,p)$</span> with <span class="math" data-tex="$\omega=\sum_i dx^i\wedge dp_i$">$\omega=\sum_i dx^i\wedge dp_i$</span>. The associated field is <span class="math" data-tex="$A_H=-H_{p_i}\partial_{x^i}+H_{x^i}\partial_{p_i}$">$A_H=-H_{p_i}\partial_{x^i}+H_{x^i}\partial_{p_i}$</span>, with <span class="math" data-tex="$\iota_{A_H}\omega=-dH$">$\iota_{A_H}\omega=-dH$</span> and <span class="math" data-tex="$A_HV=\{H,V\}_P$">$A_HV=\{H,V\}_P$</span>. The contact field <span class="math" data-tex="$X_H$">$X_H$</span> adds the <span class="math" data-tex="$z$">$z$</span> component <span class="math" data-tex="$H-p_iH_{p_i}$">$H-p_iH_{p_i}$</span>.</p>
+<p><strong>Proposition 5.1 (integration from commuting integrals).</strong> Suppose <span class="math" data-tex="$H_1,\ldots,H_n$">$H_1,\ldots,H_n$</span> are independent phase-space functions with <span class="math" data-tex="$\{H_i,H_j\}_P=0$">$\{H_i,H_j\}_P=0$</span>. Each regular common level is Lagrangian. On a level where projection to <span class="math" data-tex="$x$">$x$</span> is invertible, one quadrature gives <span class="math" data-tex="$z=u(x)$">$z=u(x)$</span> with <span class="math" data-tex="$H_i(x,du)=c_i$">$H_i(x,du)=c_i$</span>.</p>
+<p><strong>Proof.</strong> The fields <span class="math" data-tex="$A_{H_i}$">$A_{H_i}$</span> are independent because <span class="math" data-tex="$\omega$">$\omega$</span> is nondegenerate and the <span class="math" data-tex="$dH_i$">$dH_i$</span> are independent. They are tangent to each common level because their pairwise brackets vanish. That level has dimension <span class="math" data-tex="$n$">$n$</span>, so these fields span its tangent space. Moreover <span class="math" data-tex="$\omega(A_{H_i},A_{H_j})=-dH_i(A_{H_j})=0$">$\omega(A_{H_i},A_{H_j})=-dH_i(A_{H_j})=0$</span>. Thus the level is Lagrangian, and the fields commute by the Poisson version of (2.4).</p>
+<p>If the level is a graph <span class="math" data-tex="$p=p(x)$">$p=p(x)$</span>, vanishing of the pulled-back <span class="math" data-tex="$\omega$">$\omega$</span> says the one-form <span class="math" data-tex="$\sum_i p_i(x)dx^i$">$\sum_i p_i(x)dx^i$</span> is closed. On a small star-shaped coordinate neighbourhood it is exact: the integral of that form along a path from a fixed point defines <span class="math" data-tex="$u$">$u$</span>, with path independence following by integrating the closed form over coordinate homotopies. Hence <span class="math" data-tex="$du=p$">$du=p$</span>, and the common-level equations give <span class="math" data-tex="$H_i(x,du)=c_i$">$H_i(x,du)=c_i$</span>. The additive constant of <span class="math" data-tex="$u$">$u$</span> is free. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the local mechanism of Jacobi's method. For <span class="math" data-tex="$F(x,p)=0$">$F(x,p)=0$</span>, finding <span class="math" data-tex="$n-1$">$n-1$</span> additional independent integrals in mutual Poisson involution with <span class="math" data-tex="$F$">$F$</span> supplies the <span class="math" data-tex="$H_i$">$H_i$</span>. Their commuting flows give the level, and the closed one-form gives the solution. Independence and graph transversality are required. The method does not assert that an arbitrarily chosen set of conserved quantities is commuting, or that every common level projects regularly.</p>
+<p>A <strong>function group</strong> in Lie's phase-space terminology consists of independent functions <span class="math" data-tex="$H_1,\ldots,H_r$">$H_1,\ldots,H_r$</span> whose brackets satisfy</p>
+<span class="math math-display" data-tex="$$
+\{H_a,H_b\}_P=B_{ab}(H_1,\ldots,H_r).
+\tag{5.1}
+$$">$$
+\{H_a,H_b\}_P=B_{ab}(H_1,\ldots,H_r).
+\tag{5.1}
+$$</span>
+<p>It includes all functions of these generators. The chain rule shows closure:</p>
+<span class="math math-display" data-tex="$$
+\{f(H),g(H)\}_P=
+\sum_{a,b}f_{h_a}(H)g_{h_b}(H)B_{ab}(H).
+$$">$$
+\{f(H),g(H)\}_P=
+\sum_{a,b}f_{h_a}(H)g_{h_b}(H)B_{ab}(H).
+$$</span>
+<p>Consequently the <span class="math" data-tex="$B_{ab}$">$B_{ab}$</span> define a Poisson bracket on the local parameter image of <span class="math" data-tex="$H$">$H$</span>. Jacobi follows by pulling back its Jacobi expression along the submersion <span class="math" data-tex="$H$">$H$</span>. The fields <span class="math" data-tex="$A_{H_a}$">$A_{H_a}$</span> span an involutive distribution of rank <span class="math" data-tex="$r$">$r$</span>, because <span class="math" data-tex="$A_{B_{ab}(H)}=\sum_c(\partial_cB_{ab})(H)A_{H_c}$">$A_{B_{ab}(H)}=\sum_c(\partial_cB_{ab})(H)A_{H_c}$</span>. Its <span class="math" data-tex="$2n-r$">$2n-r$</span> independent local first integrals form the <strong>polar function group</strong>; Poisson's theorem proves their bracket closure. A distinguished function is a function of <span class="math" data-tex="$H$">$H$</span> commuting with all <span class="math" data-tex="$H_a$">$H_a$</span>, equivalently a Casimir of the parameter Poisson bracket. If <span class="math" data-tex="$B$">$B$</span> has constant rank <span class="math" data-tex="$2s$">$2s$</span>, Frobenius on its Hamiltonian distribution gives <span class="math" data-tex="$r-2s$">$r-2s$</span> independent distinguished functions locally.</p>
+<p>For a concrete example in four-dimensional phase space, <span class="math" data-tex="$H_1=x^1,H_2=p_1$">$H_1=x^1,H_2=p_1$</span> have bracket <span class="math" data-tex="$1$">$1$</span>. All functions of these two variables form a function group with no nonconstant distinguished function. Its polar group consists exactly of functions of <span class="math" data-tex="$x^2,p_2$">$x^2,p_2$</span>, again with their usual Poisson bracket. The two sets commute with one another. Lie's Chapters 8–13 develop the invariant and homogeneous forms of this theory; this description supplies the part used here.</p>
+<h2 id="6-computed-examples">6. Computed examples</h2>
+<p><strong>Clairaut's equation.</strong> In one independent variable let</p>
+<span class="math math-display" data-tex="$$
+F=z-px-f(p)=0.
+$$">$$
+F=z-px-f(p)=0.
+$$</span>
+<p>Equation (2.1) gives</p>
+<span class="math math-display" data-tex="$$
+X_F=(x+f&#x27;(p))\partial_x
++(z-f(p)+pf&#x27;(p))\partial_z,
+\qquad \dot p=0.
+\tag{6.1}
+$$">$$
+X_F=(x+f&#x27;(p))\partial_x
++(z-f(p)+pf&#x27;(p))\partial_z,
+\qquad \dot p=0.
+\tag{6.1}
+$$</span>
+<p>The regular characteristic branches have constant <span class="math" data-tex="$p=c$">$p=c$</span>, giving the complete integral <span class="math" data-tex="$z=cx+f(c)$">$z=cx+f(c)$</span>. Its parameter derivative matrix has rank one because <span class="math" data-tex="$\partial_c z_x=1$">$\partial_c z_x=1$</span>.</p>
+<p>Under the Legendre map, the equation becomes <span class="math" data-tex="$Z=-f(X)$">$Z=-f(X)$</span>, with <span class="math" data-tex="$P$">$P$</span> free. A Legendrian curve in this surface satisfies <span class="math" data-tex="$(-f&#x27;(X)-P)dX=0$">$(-f&#x27;(X)-P)dX=0$</span>. If <span class="math" data-tex="$X$">$X$</span> is constant, its image is the vertical curve <span class="math" data-tex="$X=c,Z=-f(c)$">$X=c,Z=-f(c)$</span>; pulling it back gives <span class="math" data-tex="$z=cx+f(c)$">$z=cx+f(c)$</span>. If <span class="math" data-tex="$X$">$X$</span> varies, it has <span class="math" data-tex="$P=-f&#x27;(X)$">$P=-f&#x27;(X)$</span>, and pulling it back gives the singular envelope</p>
+<span class="math math-display" data-tex="$$
+x=-f&#x27;(p),\qquad z=f(p)-pf&#x27;(p).
+\tag{6.2}
+$$">$$
+x=-f&#x27;(p),\qquad z=f(p)-pf&#x27;(p).
+\tag{6.2}
+$$</span>
+<p>Where <span class="math" data-tex="$f&#x27;&#x27;(p)\ne0$">$f&#x27;&#x27;(p)\ne0$</span>, this is a graph and differentiation gives <span class="math" data-tex="$dz/dx=p$">$dz/dx=p$</span>. For analytic solutions, differentiating the original equation gives <span class="math" data-tex="$(x+f&#x27;(p))p&#x27;=0$">$(x+f&#x27;(p))p&#x27;=0$</span>; the identity theorem yields one of these two branches on a connected small domain. At the envelope <span class="math" data-tex="$F_p=0$">$F_p=0$</span>, the contact characteristic field itself vanishes. It lies outside Theorem 3.1's noncharacteristic domain. Treating all Legendre images as graphs would lose the constant-slope solutions.</p>
+<p><strong>Eikonal characteristics.</strong> Take <span class="math" data-tex="$F=(p_1^2+p_2^2-1)/2$">$F=(p_1^2+p_2^2-1)/2$</span>. On <span class="math" data-tex="$E$">$E$</span>, (3.2) gives</p>
+<span class="math math-display" data-tex="$$
+x(t)=x_0-tp_0,\qquad p(t)=p_0,\qquad z(t)=z_0-t,
+\qquad |p_0|=1.
+\tag{6.3}
+$$">$$
+x(t)=x_0-tp_0,\qquad p(t)=p_0,\qquad z(t)=z_0-t,
+\qquad |p_0|=1.
+\tag{6.3}
+$$</span>
+<p>The base characteristics are straight lines of unit speed. For zero initial value on a regular plane curve, the lifted <span class="math" data-tex="$p_0$">$p_0$</span> is either unit normal. The solution is a local signed distance on the corresponding branch, up to the first failure of the normal-ray projection. Intersections and focal points need a new analysis rather than an extension of the local uniqueness theorem beyond its domain.</p>
+<p><strong>The kinetic generator.</strong> For <span class="math" data-tex="$W=|p|^2/2$">$W=|p|^2/2$</span>, the full contact flow is</p>
+<span class="math math-display" data-tex="$$
+(x,z,p)\longmapsto
+\left(x-tp,\ z-\frac t2|p|^2,\ p\right).
+\tag{6.4}
+$$">$$
+(x,z,p)\longmapsto
+\left(x-tp,\ z-\frac t2|p|^2,\ p\right).
+\tag{6.4}
+$$</span>
+<p>Its phase-space projection is straight geodesic motion. The eikonal defining function in (6.3) is <span class="math" data-tex="$W-1/2$">$W-1/2$</span>, so its contact field is <span class="math" data-tex="$X_W-\tfrac12\partial_z$">$X_W-\tfrac12\partial_z$</span>. It has the same phase-space trajectories and a different <span class="math" data-tex="$z$">$z$</span> transport. This is why the eikonal characteristics and (6.4) have different height rates on <span class="math" data-tex="$|p|=1$">$|p|=1$</span>.</p>
+<p><strong>Parallel curves.</strong> In the plane put <span class="math" data-tex="$W=\sqrt{1+p^2}$">$W=\sqrt{1+p^2}$</span> on the positive real branch. Its flow is</p>
+<span class="math math-display" data-tex="$$
+\Phi_t(x,z,p)=
+\left(x-\frac{tp}{\sqrt{1+p^2}},\
+z+\frac t{\sqrt{1+p^2}},\ p\right).
+\tag{6.5}
+$$">$$
+\Phi_t(x,z,p)=
+\left(x-\frac{tp}{\sqrt{1+p^2}},\
+z+\frac t{\sqrt{1+p^2}},\ p\right).
+\tag{6.5}
+$$</span>
+<p>The point moves distance <span class="math" data-tex="$t$">$t$</span> in its unit normal direction <span class="math" data-tex="$(-p,1)/\sqrt{1+p^2}$">$(-p,1)/\sqrt{1+p^2}$</span>. This is the parallel transformation historically described as dilation along normals. Differentiating (6.5) gives <span class="math" data-tex="$\Phi_t^*\theta=\theta$">$\Phi_t^*\theta=\theta$</span>, since <span class="math" data-tex="$d(1/\sqrt{1+p^2})+p\,d(p/\sqrt{1+p^2})=0$">$d(1/\sqrt{1+p^2})+p\,d(p/\sqrt{1+p^2})=0$</span>. Along an original graph with curvature <span class="math" data-tex="$\kappa=p_x/(1+p^2)^{3/2}$">$\kappa=p_x/(1+p^2)^{3/2}$</span>, its new independent-coordinate derivative is <span class="math" data-tex="$1-t\kappa$">$1-t\kappa$</span>. Thus the offset remains a graph only where that factor is nonzero. On the branch <span class="math" data-tex="$1-t\kappa&gt;0$">$1-t\kappa&gt;0$</span>, its oriented curvature is <span class="math" data-tex="$\kappa/(1-t\kappa)$">$\kappa/(1-t\kappa)$</span>. The contact map remains invertible even when a particular graph develops a singular projection.</p>
+<figure><img src="figures/parallel-curves.png" alt="The original parabola and its normal offsets at distances 0.45 and 1.5; the second offset has two cusp points while the lifted slope still parametrizes its Legendrian curve." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Computed illustration of (6.5).</em> The original curve is <span class="math" data-tex="$(s,s^2/2)$">$(s,s^2/2)$</span> with slope <span class="math" data-tex="$p=s$">$p=s$</span> and curvature <span class="math" data-tex="$(1+s^2)^{-3/2}$">$(1+s^2)^{-3/2}$</span>. Gray segments are its normal displacements. At <span class="math" data-tex="$t=0.45$">$t=0.45$</span> the factor <span class="math" data-tex="$1-t\kappa$">$1-t\kappa$</span> stays positive. At <span class="math" data-tex="$t=1.5$">$t=1.5$</span> the two marked cusps occur at <span class="math" data-tex="$s=\pm\sqrt{1.5^{2/3}-1}$">$s=\pm\sqrt{1.5^{2/3}-1}$</span>, where that factor vanishes. The lifted curve in <span class="math" data-tex="$(X,Z,p)$">$(X,Z,p)$</span> is still regular because <span class="math" data-tex="$dp/ds=1$">$dp/ds=1$</span>. Curves are numerical samples of these exact formulas; the projection criterion is proved above. The reproducible plotting source and vector copy accompany the public source edition.</p>
+<h2 id="7-higher-jets-and-symplectization">7. Higher jets and symplectization</h2>
+<p><strong>Bäcklund's theorem, stated without proof.</strong> For one dependent variable and a finite order <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, every local diffeomorphism of the unrestricted jet space <span class="math" data-tex="$J^k$">$J^k$</span> preserving its Cartan distribution is locally the prolongation of a contact transformation of <span class="math" data-tex="$J^1$">$J^1$</span>, on the relevant graph-transverse domain. For more than one dependent variable the corresponding transformations are prolonged point transformations. This statement is about unrestricted finite jet spaces; it does not classify all symmetries restricted to a particular equation or all transformations of infinite jets. A precise reference is Tryhuk–Chrastinová, <a href="https://www.atlantis-press.com/article/125951023.pdf"><em>On the Mapping of Jet Spaces</em></a>, §3, Theorem 1, printed pp. 296–297.</p>
+<p>For scalar jets the Cartan distribution is the common kernel of <span class="math" data-tex="$du_J-u_{J,i}dx^i$">$du_J-u_{J,i}dx^i$</span> with <span class="math" data-tex="$|J|&lt;k$">$|J|&lt;k$</span>. At <span class="math" data-tex="$k=1$">$k=1$</span> it is the contact distribution of (1.1). At higher order it is not a hyperplane distribution of that same type. The theorem identifies its finite-order transformations through the first contact level.</p>
+<p>Contact geometry also relates precisely to homogeneous symplectic geometry. Add <span class="math" data-tex="$r\in\mathbb R^*$">$r\in\mathbb R^*$</span>, or <span class="math" data-tex="$r\in\mathbb C^*$">$r\in\mathbb C^*$</span> in the complex setting, and set</p>
+<span class="math math-display" data-tex="$$
+\alpha=r\theta,\qquad
+\omega=d\alpha=dr\wedge\theta+r\,d\theta.
+\tag{7.1}
+$$">$$
+\alpha=r\theta,\qquad
+\omega=d\alpha=dr\wedge\theta+r\,d\theta.
+\tag{7.1}
+$$</span>
+<p>This form is symplectic because <span class="math" data-tex="$\omega^{n+1}=(n+1)r^n\,dr\wedge\theta\wedge(d\theta)^n\ne0$">$\omega^{n+1}=(n+1)r^n\,dr\wedge\theta\wedge(d\theta)^n\ne0$</span>. A contact map with multiplier <span class="math" data-tex="$\rho$">$\rho$</span> lifts to</p>
+<span class="math math-display" data-tex="$$
+\widehat\Phi(q,r)=(\Phi(q),r/\rho(q)).
+\tag{7.2}
+$$">$$
+\widehat\Phi(q,r)=(\Phi(q),r/\rho(q)).
+\tag{7.2}
+$$</span>
+<p>Pulling back <span class="math" data-tex="$\alpha$">$\alpha$</span> gives <span class="math" data-tex="$(r/\rho)\Phi^*\theta=r\theta$">$(r/\rho)\Phi^*\theta=r\theta$</span>, so the lift preserves <span class="math" data-tex="$\omega$">$\omega$</span>. It commutes with dilation of <span class="math" data-tex="$r$">$r$</span>. Conversely, a dilation-equivariant map preserving <span class="math" data-tex="$\alpha$">$\alpha$</span> descends to a contact map, by writing its radial component as <span class="math" data-tex="$r$">$r$</span> times a nowhere-zero function and comparing the forms. For positive real symplectization <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, restrict to positive multipliers. The Legendre map has multiplier <span class="math" data-tex="$-1$">$-1$</span>, and (7.2) exchanges the two real components when both signs of <span class="math" data-tex="$r$">$r$</span> are allowed.</p>
+<p>This construction supplies the comparison with the planned Fourier-integral course AN-04, especially “Phase space and generating families” and “Hamilton fields and subprincipal transport,” and the planned microlocal-sheaf course SH-03 on contact transformations and kernels. Those course readers have no registered public link in the course catalogue checked for this edition. The bridge here is the explicit symplectization (7.1)–(7.2).</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Verify the Legendre map in general dimension. Locate exactly the sign in the sketch's phrase “involution up to sign.” For <span class="math" data-tex="$z=f(x)$">$z=f(x)$</span>, state the condition for its transformed Legendrian submanifold to be a graph.</p>
+<p><strong>Exercise 2 (medium).</strong> For <span class="math" data-tex="$n=1$">$n=1$</span>, calculate <span class="math" data-tex="$X_z,X_p,X_{xp}$">$X_z,X_p,X_{xp}$</span> and all three pairwise brackets. Check them both as contact brackets and as vector-field commutators.</p>
+<p><strong>Exercise 3 (medium).</strong> Solve the analytic Clairaut equation using the Legendre transformation, keeping both constant-slope and singular branches. For <span class="math" data-tex="$f(p)=p^2/2$">$f(p)=p^2/2$</span>, find its envelope and determine whether the noncharacteristic existence theorem applies there.</p>
+<p><strong>Exercise 4 (medium).</strong> In two independent variables <span class="math" data-tex="$(x,y)$">$(x,y)$</span>, write <span class="math" data-tex="$p=z_y$">$p=z_y$</span>, <span class="math" data-tex="$q=z_x$">$q=z_x$</span> and solve <span class="math" data-tex="$p^2=z$">$p^2=z$</span> with <span class="math" data-tex="$z(x,0)=g(x)&gt;0$">$z(x,0)=g(x)&gt;0$</span>. Fix the initial root <span class="math" data-tex="$p(x,0)=\varepsilon\sqrt{g(x)}$">$p(x,0)=\varepsilon\sqrt{g(x)}$</span>, where <span class="math" data-tex="$\varepsilon\in\{1,-1\}$">$\varepsilon\in\{1,-1\}$</span>. Calculate the characteristic flow and verify the resulting solution directly.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove the generating-function bijection for arbitrary <span class="math" data-tex="$n$">$n$</span> by comparing coefficients in Cartan's formula. Derive the bracket and its Jacobi identity. Explain, using (4.3), why ordinary characteristic first integrals are not automatically closed under that bracket.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution 1.</strong> Write <span class="math" data-tex="$(X,Z,P)=(p,p\cdot x-z,x)$">$(X,Z,P)=(p,p\cdot x-z,x)$</span>. Then <span class="math" data-tex="$dZ-P\cdot dX=p\cdot dx-dz=-\theta$">$dZ-P\cdot dX=p\cdot dx-dz=-\theta$</span>. A second application has independent coordinate <span class="math" data-tex="$P=x$">$P=x$</span>, slope <span class="math" data-tex="$X=p$">$X=p$</span>, and height <span class="math" data-tex="$P\cdot X-Z=z$">$P\cdot X-Z=z$</span>. Thus <span class="math" data-tex="$\mathcal L^2=\mathrm{id}$">$\mathcal L^2=\mathrm{id}$</span> exactly. The minus sign belongs to the contact-form multiplier. On the graph <span class="math" data-tex="$z=f(x)$">$z=f(x)$</span>, its new base coordinate is <span class="math" data-tex="$X=df(x)$">$X=df(x)$</span>, whose Jacobian is the Hessian of <span class="math" data-tex="$f$">$f$</span>. The inverse function theorem gives a transformed graph precisely where that Hessian is invertible. The contact image exists even when this graph condition fails.</p>
+<p><strong>Solution 2.</strong> Substituting in (2.1) gives</p>
+<span class="math math-display" data-tex="$$
+X_z=z\partial_z+p\partial_p,\qquad
+X_p=-\partial_x,\qquad
+X_{xp}=-x\partial_x+p\partial_p.
+$$">$$
+X_z=z\partial_z+p\partial_p,\qquad
+X_p=-\partial_x,\qquad
+X_{xp}=-x\partial_x+p\partial_p.
+$$</span>
+<p>The contact brackets are <span class="math" data-tex="$\{z,p\}_c=X_zp-p=0$">$\{z,p\}_c=X_zp-p=0$</span>, <span class="math" data-tex="$\{z,xp\}_c=X_z(xp)-xp=0$">$\{z,xp\}_c=X_z(xp)-xp=0$</span>, and <span class="math" data-tex="$\{p,xp\}_c=-\partial_x(xp)=-p$">$\{p,xp\}_c=-\partial_x(xp)=-p$</span>. Hence</p>
+<span class="math math-display" data-tex="$$
+[X_z,X_p]=0,\qquad [X_z,X_{xp}]=0,\qquad
+[X_p,X_{xp}]=-X_p=\partial_x.
+$$">$$
+[X_z,X_p]=0,\qquad [X_z,X_{xp}]=0,\qquad
+[X_p,X_{xp}]=-X_p=\partial_x.
+$$</span>
+<p>Direct coefficient differentiation gives exactly these commutators. For example <span class="math" data-tex="$[-\partial_x,-x\partial_x+p\partial_p]=\partial_x$">$[-\partial_x,-x\partial_x+p\partial_p]=\partial_x$</span>. This also checks the bracket sign fixed in this lesson.</p>
+<p><strong>Solution 3.</strong> The transformed equation is <span class="math" data-tex="$Z=-f(X)$">$Z=-f(X)$</span>. Its Legendrian condition is <span class="math" data-tex="$(-f&#x27;(X)-P)dX=0$">$(-f&#x27;(X)-P)dX=0$</span>. Constant <span class="math" data-tex="$X=c$">$X=c$</span> gives a vertical curve with <span class="math" data-tex="$Z=-f(c)$">$Z=-f(c)$</span> and arbitrary <span class="math" data-tex="$P$">$P$</span>, hence <span class="math" data-tex="$z=cx+f(c)$">$z=cx+f(c)$</span> after applying the involution. The other analytic branch has <span class="math" data-tex="$P=-f&#x27;(X)$">$P=-f&#x27;(X)$</span>; returning to <span class="math" data-tex="$(x,z,p)$">$(x,z,p)$</span> gives (6.2). Differentiating the original Clairaut equation proves exhaustiveness for analytic solution germs: <span class="math" data-tex="$(x+f&#x27;(p))p&#x27;=0$">$(x+f&#x27;(p))p&#x27;=0$</span>, and on a connected analytic germ one factor vanishes identically.</p>
+<p>For <span class="math" data-tex="$f(p)=p^2/2$">$f(p)=p^2/2$</span>, the envelope has <span class="math" data-tex="$p=-x$">$p=-x$</span> and <span class="math" data-tex="$z=-x^2/2$">$z=-x^2/2$</span>. Its derivative is <span class="math" data-tex="$-x=p$">$-x=p$</span>, and substitution gives <span class="math" data-tex="$px+p^2/2=-x^2/2$">$px+p^2/2=-x^2/2$</span>. But <span class="math" data-tex="$F_p=-x-p=0$">$F_p=-x-p=0$</span> there, and (6.1) vanishes on that branch. Theorem 3.1 does not assert uniqueness there. The straight line <span class="math" data-tex="$z=cx+c^2/2$">$z=cx+c^2/2$</span> is tangent to the envelope at <span class="math" data-tex="$x=-c$">$x=-c$</span>, illustrating precisely the degenerate projection and characteristic initial slope.</p>
+<p><strong>Solution 4.</strong> Put <span class="math" data-tex="$F=p^2-z$">$F=p^2-z$</span> and use slopes <span class="math" data-tex="$(q,p)$">$(q,p)$</span> in the order <span class="math" data-tex="$(x,y)$">$(x,y)$</span>. Then <span class="math" data-tex="$F_z=-1$">$F_z=-1$</span>, <span class="math" data-tex="$F_p=2p$">$F_p=2p$</span>, and <span class="math" data-tex="$F_q=F_x=F_y=0$">$F_q=F_x=F_y=0$</span>. Formula (3.2) on <span class="math" data-tex="$E$">$E$</span> yields</p>
+<span class="math math-display" data-tex="$$
+\dot x=0,\quad \dot y=-2p,\quad
+\dot z=-2z,\quad \dot q=-q,\quad\dot p=-p.
+$$">$$
+\dot x=0,\quad \dot y=-2p,\quad
+\dot z=-2z,\quad \dot q=-q,\quad\dot p=-p.
+$$</span>
+<p>From initial coordinate <span class="math" data-tex="$a$">$a$</span> on <span class="math" data-tex="$y=0$">$y=0$</span> and initial slopes <span class="math" data-tex="$q=g&#x27;(a)$">$q=g&#x27;(a)$</span>, <span class="math" data-tex="$p=\varepsilon\sqrt{g(a)}$">$p=\varepsilon\sqrt{g(a)}$</span>, the solution is</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+x&amp;=a,&amp;p&amp;=\varepsilon\sqrt{g(a)}e^{-t},&amp;
+q&amp;=g&#x27;(a)e^{-t},\\
+y&amp;=2\varepsilon\sqrt{g(a)}(e^{-t}-1),&amp;
+z&amp;=g(a)e^{-2t}.
+\end{aligned}
+$$">$$
+\begin{aligned}
+x&amp;=a,&amp;p&amp;=\varepsilon\sqrt{g(a)}e^{-t},&amp;
+q&amp;=g&#x27;(a)e^{-t},\\
+y&amp;=2\varepsilon\sqrt{g(a)}(e^{-t}-1),&amp;
+z&amp;=g(a)e^{-2t}.
+\end{aligned}
+$$</span>
+<p>The <span class="math" data-tex="$y$">$y$</span> derivative at <span class="math" data-tex="$t=0$">$t=0$</span> is nonzero, so eliminate <span class="math" data-tex="$(a,t)$">$(a,t)$</span> to get</p>
+<span class="math math-display" data-tex="$$
+z(x,y)=\left(\sqrt{g(x)}+\frac{\varepsilon y}{2}\right)^2.
+\tag{9.1}
+$$">$$
+z(x,y)=\left(\sqrt{g(x)}+\frac{\varepsilon y}{2}\right)^2.
+\tag{9.1}
+$$</span>
+<p>Its <span class="math" data-tex="$y$">$y$</span> derivative is <span class="math" data-tex="$\varepsilon(\sqrt g+\varepsilon y/2)$">$\varepsilon(\sqrt g+\varepsilon y/2)$</span>, whose square is (9.1). Its <span class="math" data-tex="$x$">$x$</span> derivative is <span class="math" data-tex="$(\sqrt g+\varepsilon y/2)g&#x27;/\sqrt g$">$(\sqrt g+\varepsilon y/2)g&#x27;/\sqrt g$</span>, agreeing with the characteristic <span class="math" data-tex="$q$">$q$</span> after substituting <span class="math" data-tex="$e^{-t}=1+\varepsilon y/(2\sqrt g)$">$e^{-t}=1+\varepsilon y/(2\sqrt g)$</span>. Its initial value is <span class="math" data-tex="$g$">$g$</span>. The positivity of <span class="math" data-tex="$g$">$g$</span> gives a real analytic square-root branch and makes the initial datum noncharacteristic. The result is local near <span class="math" data-tex="$y=0$">$y=0$</span>; this argument makes no uniqueness assertion for initial data where <span class="math" data-tex="$g=0$">$g=0$</span>.</p>
+<p><strong>Solution 5.</strong> If <span class="math" data-tex="$X=a^i\partial_{x^i}+b\partial_z+c_i\partial_{p_i}$">$X=a^i\partial_{x^i}+b\partial_z+c_i\partial_{p_i}$</span> and <span class="math" data-tex="$W=b-p_ia^i$">$W=b-p_ia^i$</span>, then <span class="math" data-tex="$\iota_Xd\theta=a^i dp_i-c_i dx^i$">$\iota_Xd\theta=a^i dp_i-c_i dx^i$</span>. Cartan's formula makes <span class="math" data-tex="$\mathcal L_X\theta=dW+a^i dp_i-c_i dx^i$">$\mathcal L_X\theta=dW+a^i dp_i-c_i dx^i$</span>. Comparison with <span class="math" data-tex="$\lambda\theta$">$\lambda\theta$</span> first gives <span class="math" data-tex="$\lambda=W_z$">$\lambda=W_z$</span>, then <span class="math" data-tex="$a^i=-W_{p_i}$">$a^i=-W_{p_i}$</span>, <span class="math" data-tex="$c_i=W_{x^i}+p_iW_z$">$c_i=W_{x^i}+p_iW_z$</span>, and finally <span class="math" data-tex="$b=W-p_iW_{p_i}$">$b=W-p_iW_{p_i}$</span>. Substitution verifies all components, proving both directions of the bijection for every <span class="math" data-tex="$n$">$n$</span>.</p>
+<p>Evaluation on <span class="math" data-tex="$X_V$">$X_V$</span> gives <span class="math" data-tex="$\theta([X_W,X_V])=X_WV-W_zV$">$\theta([X_W,X_V])=X_WV-W_zV$</span>. Lie derivatives show that the commutator is contact, so the bijection identifies it with the field of that bracket. Its injectivity transfers the operator Jacobi identity to functions. Ordinary conservation would omit the <span class="math" data-tex="$-F_zW$">$-F_zW$</span> term in the commuting condition. For <span class="math" data-tex="$F=z-p_2$">$F=z-p_2$</span>, <span class="math" data-tex="$W=x^1$">$W=x^1$</span> and <span class="math" data-tex="$V=p_1/p_2$">$V=p_1/p_2$</span> are ordinarily conserved by translation in <span class="math" data-tex="$x^2$">$x^2$</span> and simultaneous scaling of <span class="math" data-tex="$z,p$">$z,p$</span>, while their bracket <span class="math" data-tex="$1/p_2$">$1/p_2$</span> scales with weight <span class="math" data-tex="$-1$">$-1$</span>. This proves the claimed failure and explains the corrected weighted statement.</p>
+<h2 id="historical-reading-and-references">Historical reading and references</h2>
+<p>The following selected passages are transcribed from the public-domain German scan, with independent English translations by the writing AI. Formula typography and line breaks are normalized; historical spelling is retained. These selections introduce the three historical topics of this lesson; the remaining assigned section transcription is still being prepared. The scan confirms the printed chapter numbering: Chapter 8 treats function groups; the infinitesimal contact formulas belong to Chapters 14–15.</p>
+<p><strong>Contact elements: Volume II, Chapter 1, §1, printed p. 6.</strong></p>
+<blockquote>
+<p>Wir bezeichnen daher jede Transformation in <span class="math" data-tex="$x,y,y&#x27;$">$x,y,y&#x27;$</span>, welche die Pfaffsche Gleichung:</p>
+<span class="math math-display" data-tex="$$dy-y&#x27;\,dx=0$$">$$dy-y&#x27;\,dx=0$$</span>
+<p>invariant lässt, als eine Berührungstransformation der Ebene <span class="math" data-tex="$x,y$">$x,y$</span>. Die erweiterten Punkttransformationen (4) können einfach als diejenigen Berührungstransformationen charakterisirt werden, welche Linienelemente mit demselben Punkte stets wieder in Linienelemente mit demselben Punkte überführen.</p>
+</blockquote>
+<p><strong>Independent translation.</strong> We therefore call every transformation in <span class="math" data-tex="$x,y,y&#x27;$">$x,y,y&#x27;$</span> that preserves the Pfaffian equation <span class="math" data-tex="$dy-y&#x27;\,dx=0$">$dy-y&#x27;\,dx=0$</span> a contact transformation of the plane <span class="math" data-tex="$x,y$">$x,y$</span>. The prolonged point transformations (4) can be characterized simply as the contact transformations that always send line elements based at the same point to line elements based at the same point.</p>
+<p>The source's <span class="math" data-tex="$y&#x27;$">$y&#x27;$</span> is the slope denoted by <span class="math" data-tex="$p$">$p$</span> here. Its reference (4) is the ordinary point-prolongation formula. The source footnote following “Berührungstransformation” is omitted from this selected definition.</p>
+<p><strong>The geometric integration problem: Volume II, Chapter 4, §23, printed p. 87.</strong> The source has first written an ordinary solution graph as <span class="math" data-tex="$z=F(x)$">$z=F(x)$</span> with <span class="math" data-tex="$p_i=\partial_iF$">$p_i=\partial_iF$</span>. Its generalization is:</p>
+<blockquote>
+<p>Es sollen überhaupt alle <span class="math" data-tex="$(n+1)$">$(n+1)$</span>-gliedrigen Gleichungensysteme:</p>
+<span class="math math-display" data-tex="$$
+\Phi_1(z,x_1\cdots x_n,p_1\cdots p_n)=0,\quad\cdots\quad
+\Phi_{n+1}(z,x_1\cdots x_n,p_1\cdots p_n)=0
+$$">$$
+\Phi_1(z,x_1\cdots x_n,p_1\cdots p_n)=0,\quad\cdots\quad
+\Phi_{n+1}(z,x_1\cdots x_n,p_1\cdots p_n)=0
+$$</span>
+<p>bestimmt werden, welche die Pfaffsche Gleichung: <span class="math" data-tex="$dz-p_1dx_1-\cdots-p_ndx_n=0$">$dz-p_1dx_1-\cdots-p_ndx_n=0$</span> erfüllen und welche dabei die Gleichung:</p>
+<span class="math math-display" data-tex="$$(10&#x27;)\qquad\Phi(z,x_1\cdots x_n,p_1\cdots p_n)=0$$">$$(10&#x27;)\qquad\Phi(z,x_1\cdots x_n,p_1\cdots p_n)=0$$</span>
+<p>umfassen.</p>
+</blockquote>
+<p><strong>Independent translation.</strong> The task is to determine all systems of <span class="math" data-tex="$n+1$">$n+1$</span> equations in <span class="math" data-tex="$(z,x,p)$">$(z,x,p)$</span> that satisfy the Pfaffian equation <span class="math" data-tex="$dz-p_1dx_1-\cdots-p_ndx_n=0$">$dz-p_1dx_1-\cdots-p_ndx_n=0$</span> and also include the equation <span class="math" data-tex="$(10&#x27;)$">$(10&#x27;)$</span>, namely <span class="math" data-tex="$\Phi(z,x,p)=0$">$\Phi(z,x,p)=0$</span>.</p>
+<p>In current language this seeks Legendrian integral submanifolds inside the equation hypersurface; graph solutions are those with regular <span class="math" data-tex="$x$">$x$</span> projection. Theorem 3.1 states the rank and initial-data conditions used for our construction. The source's literature footnote is omitted from this selected problem statement.</p>
+<p><strong>Characteristic functions: Volume II, Chapter 14, §64, Theorem 39, printed p. 253.</strong></p>
+<blockquote>
+<p>Jede infinitesimale Berührungstransformation:</p>
+<span class="math math-display" data-tex="$$
+\zeta\frac{\partial f}{\partial z}
++\sum_{i=1}^n\left(\xi_i\frac{\partial f}{\partial x_i}
++\pi_i\frac{\partial f}{\partial p_i}\right)
+$$">$$
+\zeta\frac{\partial f}{\partial z}
++\sum_{i=1}^n\left(\xi_i\frac{\partial f}{\partial x_i}
++\pi_i\frac{\partial f}{\partial p_i}\right)
+$$</span>
+<p>ist durch die Function:</p>
+<span class="math math-display" data-tex="$$W=p_1\xi_1+\cdots+p_n\xi_n-\zeta,$$">$$W=p_1\xi_1+\cdots+p_n\xi_n-\zeta,$$</span>
+<p>ihre sogenannte charakteristische Function vollständig bestimmt. Andrerseits ist jede beliebige Function <span class="math" data-tex="$W(z,x,p)$">$W(z,x,p)$</span> die charakteristische Function einer ganz bestimmten infinitesimalen Berührungstransformation, welche durch das Symbol:</p>
+<span class="math math-display" data-tex="$$[Wf]-W\frac{\partial f}{\partial z}$$">$$[Wf]-W\frac{\partial f}{\partial z}$$</span>
+<p>dargestellt wird.</p>
+</blockquote>
+<p><strong>Independent translation.</strong> Every infinitesimal contact transformation displayed above is completely determined by the function <span class="math" data-tex="$W=p_1\xi_1+\cdots+p_n\xi_n-\zeta$">$W=p_1\xi_1+\cdots+p_n\xi_n-\zeta$</span>, its characteristic function. Conversely, each arbitrary function <span class="math" data-tex="$W(z,x,p)$">$W(z,x,p)$</span> is the characteristic function of one definite infinitesimal contact transformation, represented by <span class="math" data-tex="$[Wf]-W\,\partial f/\partial z$">$[Wf]-W\,\partial f/\partial z$</span>.</p>
+<p>The bracket symbol in this quotation is Lie's notation. For the displayed field, our form gives <span class="math" data-tex="$\theta(X)=\zeta-p_i\xi_i$">$\theta(X)=\zeta-p_i\xi_i$</span>, so <span class="math" data-tex="$W_{\mathrm{Lie}}=-W_{\mathrm{course}}$">$W_{\mathrm{Lie}}=-W_{\mathrm{course}}$</span>. Converting that sign gives (2.1). The source's following normal-displacement example consequently has the opposite flow parameter from (6.5), while tracing the same parallel curves. The theorem's bibliographic footnote is omitted from this selection.</p>
+<ul>
+<li>Sophus Lie and Friedrich Engel, <a href="https://archive.org/details/theotransformation02liesrich"><em>Theorie der Transformationsgruppen</em>, Volume II</a>, Chapter 1, §§1–3, for contact elements and directrix equations; Chapter 4, §§21–23, especially printed p. 87, for the equation as a Legendrian integration problem; Chapter 7, §§44–46, printed pp. 171–176, for Jacobi and Poisson's theorem; Chapter 8, §47, printed pp. 178–180, for function groups; Chapter 14, §64, Theorem 39, printed p. 253, and Chapter 15 for contact generators and brackets. These are the historical and completeness references actually used.</li>
+<li>Václav Tryhuk and Veronika Chrastinová, <a href="https://www.atlantis-press.com/journals/jnmp/125951023"><em>On the Mapping of Jet Spaces</em></a>, <em>Journal of Nonlinear Mathematical Physics</em> 17 (2010), 293–310, §3, Theorem 1, for the stated finite-order Bäcklund theorem.</li>
+</ul>
+<p>All four assigned theorem topics are proved here, with the first-integral claim corrected by (4.1)–(4.3). Bäcklund's classification is stated with its locator, as permitted.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-09.html">← Prolongation, differential invariants and the projective group</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-11.html">Lie algebras of vector fields on the line and in the plane →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-10.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

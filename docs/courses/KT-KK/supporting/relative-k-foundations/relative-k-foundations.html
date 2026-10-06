@@ -1,0 +1,358 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Relative difference bundles, radial pairs and the planar normalization</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../">Kasparov’s KK-theory</a> · <a href="relative-k-foundations.md">Exact structured source</a></p><article class="lesson">
+<h1 id="relative-difference-bundles-radial-pairs-and-the-planar-normalization">Relative difference bundles, radial pairs and the planar normalization</h1>
+<p>This receiving proof supplies the relative-bundle inputs used by <em>Graded C*-algebras, Clifford algebras and graded Hilbert modules</em>, Section 7, and <em>The Thom isomorphism for a vector bundle</em>. Every space in Sections 0–4 is compact Hausdorff; a closed subspace need not be a cofibration, a CW subcomplex, metrizable, or nonempty. Bundles have finite, locally constant complex rank, which may differ on different components. No relative-excision theorem, Bott-periodicity theorem, or Chern-character theorem is used to prove the relative correspondence.</p>
+<p>For a unital C*-algebra, <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is the Grothendieck group of projections under direct sum and stable projection homotopy. For an ideal <span class="math" data-tex="\(J\)">\(J\)</span>, use the forced unitization and
+<span class="math math-display" data-tex="\[
+K_0(J)=\ker\bigl(K_0(J^+)\longrightarrow K_0(\mathbb C)\bigr).
+\]">\[
+K_0(J)=\ker\bigl(K_0(J^+)\longrightarrow K_0(\mathbb C)\bigr).
+\]</span>
+We use the corresponding stable-unitary definition of <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Matrix positive square roots and their continuous dependence are supplied by the actually earlier <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">continuous functional-calculus lesson</a>, Theorem 5.1. All additional topological, bundle and relative constructions needed below are proved here. In particular an external strong-excision statement is not a proof input.</p>
+<span id="rk-topology"></span>
+<h2 id="0-the-compact-space-extension-tools">0. The compact-space extension tools</h2>
+<h3 id="lemma-rk-0-shrinking-cutoffs-and-matrix-extension">Lemma RK.0. Shrinking, cutoffs and matrix extension</h3>
+<p>On a compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>, finite open covers have continuous subordinate partitions of unity with closed supports inside their members. A continuous real, complex or finite-matrix-valued function on a closed <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> extends to <span class="math" data-tex="\(X\)">\(X\)</span>. The same assertions apply to <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span> and its closed subspaces, including unions with an endpoint slice.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(X\)">\(X\)</span> is normal. For a point <span class="math" data-tex="\(x\)">\(x\)</span> and a closed set <span class="math" data-tex="\(F\)">\(F\)</span> not containing it, choose disjoint neighborhoods of <span class="math" data-tex="\(x\)">\(x\)</span> and each point of <span class="math" data-tex="\(F\)">\(F\)</span>, then intersect the finitely many neighborhoods of <span class="math" data-tex="\(x\)">\(x\)</span> and unite those of <span class="math" data-tex="\(F\)">\(F\)</span>. Compactness gives these finite choices. Applying this point–closed-set separation to every point of one of two disjoint closed sets, then taking a finite union, separates the two sets by disjoint open neighborhoods. In particular, if <span class="math" data-tex="\(K\subset U\)">\(K\subset U\)</span> with <span class="math" data-tex="\(K\)">\(K\)</span> closed and <span class="math" data-tex="\(U\)">\(U\)</span> open, there is an open <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(K\subset V\subset\overline V\subset U\)">\(K\subset V\subset\overline V\subset U\)</span>.</p>
+<p>For completeness the cutoff construction follows from this last inclusion. Given disjoint closed sets <span class="math" data-tex="\(K,F\)">\(K,F\)</span>, successively choose open <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, indexed by dyadic rationals <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, so that <span class="math" data-tex="\(K\subset V_t\)">\(K\subset V_t\)</span>, <span class="math" data-tex="\(\overline V_s\subset V_t\)">\(\overline V_s\subset V_t\)</span> for <span class="math" data-tex="\(s&lt;t\)">\(s&lt;t\)</span>, and <span class="math" data-tex="\(\overline V_t\subset X\setminus F\)">\(\overline V_t\subset X\setminus F\)</span>. At each finite stage insert intermediate sets by the preceding shrinking property. Put <span class="math" data-tex="\(f(x)=\inf\{t:x\in V_t\}\)">\(f(x)=\inf\{t:x\in V_t\}\)</span>, with infimum <span class="math" data-tex="\(1\)">\(1\)</span> for the empty set. Then <span class="math" data-tex="\(f=0\)">\(f=0\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(f=1\)">\(f=1\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>. The identities
+<span class="math" data-tex="\(\{f&lt;a\}=\bigcup_{t&lt;a}V_t\)">\(\{f&lt;a\}=\bigcup_{t&lt;a}V_t\)</span> and
+<span class="math" data-tex="\(\{f&gt;a\}=\bigcup_{t&gt;a}(X\setminus\overline V_t)\)">\(\{f&gt;a\}=\bigcup_{t&gt;a}(X\setminus\overline V_t)\)</span>
+show continuity. Thus <span class="math" data-tex="\(1-f\)">\(1-f\)</span> is a cutoff equal to one on <span class="math" data-tex="\(K\)">\(K\)</span> and zero on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For a finite cover <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, choose, around each point, an open set whose closure lies in some <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, and take a finite subcover <span class="math" data-tex="\(V_j\)">\(V_j\)</span>. Shrink once more to closed sets <span class="math" data-tex="\(K_j\subset V_j\)">\(K_j\subset V_j\)</span> still covering <span class="math" data-tex="\(X\)">\(X\)</span>: choose finitely many smaller neighborhoods inside the <span class="math" data-tex="\(V_j\)">\(V_j\)</span> and group their closures. Cutoffs <span class="math" data-tex="\(b_j\)">\(b_j\)</span> equal to one on <span class="math" data-tex="\(K_j\)">\(K_j\)</span>, with supports inside <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, have positive sum. The functions <span class="math" data-tex="\(b_j/\sum b_j\)">\(b_j/\sum b_j\)</span>, grouped by their containing <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, give the asserted partition.</p>
+<p>Here is the extension argument rather than an appeal to an extension theorem. If <span class="math" data-tex="\(g:Y\to[-M,M]\)">\(g:Y\to[-M,M]\)</span> is continuous, the two closed sets
+<span class="math" data-tex="\(\{g\le -M/3\}\)">\(\{g\le -M/3\}\)</span> and <span class="math" data-tex="\(\{g\ge M/3\}\)">\(\{g\ge M/3\}\)</span> are disjoint closed subsets of <span class="math" data-tex="\(X\)">\(X\)</span>. A cutoff between them gives <span class="math" data-tex="\(h:X\to[-M/3,M/3]\)">\(h:X\to[-M/3,M/3]\)</span>, equal to the indicated endpoint on each set. Then <span class="math" data-tex="\(\|g-h|_Y\|\le 2M/3\)">\(\|g-h|_Y\|\le 2M/3\)</span>. Repeat on the residual function, with <span class="math" data-tex="\(M\)">\(M\)</span> replaced successively by <span class="math" data-tex="\((2/3)^jM\)">\((2/3)^jM\)</span>. The uniformly convergent series of the <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is continuous and extends <span class="math" data-tex="\(g\)">\(g\)</span>. Its norm is at most <span class="math" data-tex="\(M\)">\(M\)</span>. Complex functions are handled by their real and imaginary parts; matrices by their finitely many entries. For self-adjoint matrix data, extend the entries and replace the extension by its average with its adjoint. The cylinder is again compact Hausdorff. To check compactness directly, a finite selection from an open cover covers each compact vertical interval; shrinking its finitely many product neighborhoods gives a neighborhood of the base point whose entire vertical interval is covered by that selection. Finitely many such base neighborhoods cover compact X, giving a finite selection for the cylinder. Hausdorffness follows by separating coordinates. Thus the proof applies also to the stated cylinders and closed unions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-bundle-projection"></span>
+<h2 id="1-bundles-projections-and-cylinder-transport">1. Bundles, projections and cylinder transport</h2>
+<h3 id="lemma-rk-1-the-bundle-projection-correspondence-in-the-required-generality">Lemma RK.1. The bundle–projection correspondence in the required generality</h3>
+<p>Every finite-rank complex bundle over compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span> has a Hermitian metric, an isometric embedding in a finite trivial bundle, and an orthogonal complementary bundle. The Grothendieck group of bundles is naturally <span class="math" data-tex="\(K_0(C(X))\)">\(K_0(C(X))\)</span>. Bundle isomorphism and stable projection homotopy give the same classes; a bundle over <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span> has isomorphic endpoint restrictions.</p>
+<p><strong>Proof.</strong> The local ranks have finitely many values, because their clopen level sets cover a compact space. All constructions below may therefore be made on those finitely many clopen sets and padded to a common finite ambient dimension. Choose a finite trivializing cover and the partition <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> of Lemma RK.0. The sum of the local Hermitian metrics weighted by <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> is a positive Hermitian metric; terms with support inside a chart extend by zero. Continuous Gram–Schmidt gives orthonormal local frames. In those frames the map
+<span class="math math-display" data-tex="\[
+i(v)=\bigl(\sqrt{\rho_j(x)}\,v_j\bigr)_j,\qquad v\in E_x,
+\]">\[
+i(v)=\bigl(\sqrt{\rho_j(x)}\,v_j\bigr)_j,\qquad v\in E_x,
+\]</span>
+is continuous, isometric, and injective. Thus <span class="math" data-tex="\(p(x)=i_xi_x^*\)">\(p(x)=i_xi_x^*\)</span> is a continuous projection in some <span class="math" data-tex="\(M_N(C(X))\)">\(M_N(C(X))\)</span>. Its range is <span class="math" data-tex="\(E_x\)">\(E_x\)</span>, and the range of <span class="math" data-tex="\(1-p(x)\)">\(1-p(x)\)</span> is its orthogonal complement.</p>
+<p>Conversely, if <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> is a continuous projection, its ranges form a bundle. Indeed, near <span class="math" data-tex="\(x_0\)">\(x_0\)</span> one has <span class="math" data-tex="\(\|p(x)-p(x_0)\|&lt;1\)">\(\|p(x)-p(x_0)\|&lt;1\)</span>, and projection from one range to the other is injective in both directions: if <span class="math" data-tex="\(p(x_0)v=v\)">\(p(x_0)v=v\)</span> and <span class="math" data-tex="\(p(x)v=0\)">\(p(x)v=0\)</span>, then <span class="math" data-tex="\(\|v\|\le\|p(x)-p(x_0)\|\|v\|\)">\(\|v\|\le\|p(x)-p(x_0)\|\|v\|\)</span>, so <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. The finite-dimensional ranges have equal dimension and the projected basis at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> is a continuous local frame.</p>
+<p>We record the precise transport used for homotopies. For projections <span class="math" data-tex="\(p,q\)">\(p,q\)</span> with <span class="math" data-tex="\(\|p-q\|&lt;1\)">\(\|p-q\|&lt;1\)</span>, set
+<span class="math math-display" data-tex="\[
+t=qp+(1-q)(1-p),\qquad
+u=t(t^*t)^{-1/2}.
+\]">\[
+t=qp+(1-q)(1-p),\qquad
+u=t(t^*t)^{-1/2}.
+\]</span>
+The two summands send the <span class="math" data-tex="\(p\)">\(p\)</span>-range and its complement into the <span class="math" data-tex="\(q\)">\(q\)</span>-range and its complement. On each the map is bounded below by <span class="math" data-tex="\(1-\|p-q\|\)">\(1-\|p-q\|\)</span>; the same holds for <span class="math" data-tex="\(t^*\)">\(t^*\)</span>. Thus <span class="math" data-tex="\(t\)">\(t\)</span> is invertible, <span class="math" data-tex="\(u\)">\(u\)</span> is unitary, <span class="math" data-tex="\(up=qu\)">\(up=qu\)</span>, and these formulas vary continuously. A projection on <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span> is uniformly continuous in the interval variable in supremum norm: a finite subcover of <span class="math" data-tex="\(X\)">\(X\)</span> proves the uniform assertion from joint continuity. Divide the interval into finitely many segments on which projections are close. Successive transports give a continuous unitary <span class="math" data-tex="\(u_t\)">\(u_t\)</span> with <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span> and <span class="math" data-tex="\(u_tp_0u_t^*=p_t\)">\(u_tp_0u_t^*=p_t\)</span>. This proves cylinder transport after embedding the cylinder bundle in a trivial bundle.</p>
+<p>Two isometric embeddings of the same bundle give the path of isometric embeddings
+<span class="math math-display" data-tex="\[
+i_s=\cos s\,i_0\oplus\sin s\,i_1,\qquad 0\le s\le\pi/2.
+\]">\[
+i_s=\cos s\,i_0\oplus\sin s\,i_1,\qquad 0\le s\le\pi/2.
+\]</span>
+The endpoint projections are the two original ones with zero padding; a path of constant scalar unitaries rearranges their blocks. Changing the metric is harmless: join metrics by their positive convex combination and normalize the embeddings continuously. An isomorphism lets us use the same bundle for this comparison. Conversely projection homotopy gives isomorphic endpoint bundles by the transport just proved. Direct sums of projections are direct sums of bundles. Taking Grothendieck groups proves the assertion about <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, including nonconstant rank and naturality under pullback. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also use the following consequence of the definition of <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. For any unitary <span class="math" data-tex="\(v\)">\(v\)</span> in a unital matrix algebra, <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(vpv^*\)">\(vpv^*\)</span> have equal stable projection classes. With
+<span class="math" data-tex="\(R_s=\begin{psmallmatrix}\cos s&amp;-\sin s\\ \sin s&amp;\cos s\end{psmallmatrix}\)">\(R_s=\begin{psmallmatrix}\cos s&amp;-\sin s\\ \sin s&amp;\cos s\end{psmallmatrix}\)</span>,
+the unitary path
+<span class="math math-display" data-tex="\[
+R_s\begin{pmatrix}v&amp;0\\0&amp;1\end{pmatrix}R_s^*
+\begin{pmatrix}1&amp;0\\0&amp;v^*\end{pmatrix}
+\]">\[
+R_s\begin{pmatrix}v&amp;0\\0&amp;1\end{pmatrix}R_s^*
+\begin{pmatrix}1&amp;0\\0&amp;v^*\end{pmatrix}
+\]</span>
+starts at <span class="math" data-tex="\(\operatorname{diag}(v,v^*)\)">\(\operatorname{diag}(v,v^*)\)</span> and ends at <span class="math" data-tex="\(1\)">\(1\)</span>. Conjugating <span class="math" data-tex="\(p\oplus0\)">\(p\oplus0\)</span> by this path proves the claim. In a finite scalar matrix algebra every unitary is itself path connected to one: diagonalize it and replace each eigenvalue <span class="math" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span> by <span class="math" data-tex="\(e^{it\theta}\)">\(e^{it\theta}\)</span>.</p>
+<span id="rk-unitary-extension"></span>
+<h3 id="lemma-rk-2-extending-a-unitary-which-is-homotopic-to-one">Lemma RK.2. Extending a unitary which is homotopic to one</h3>
+<p>If <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> is closed and <span class="math" data-tex="\(w:Y\to U(N)\)">\(w:Y\to U(N)\)</span> is joined to <span class="math" data-tex="\(1\)">\(1\)</span> by a continuous unitary path, it has a continuous unitary extension <span class="math" data-tex="\(U:X\to U(N)\)">\(U:X\to U(N)\)</span>.</p>
+<p><strong>Proof.</strong> View the path <span class="math" data-tex="\(w_t\)">\(w_t\)</span> in <span class="math" data-tex="\(C(Y,M_N)\)">\(C(Y,M_N)\)</span>; compactness makes it continuous in supremum norm. Choose a finite partition <span class="math" data-tex="\(t_j\)">\(t_j\)</span> with
+<span class="math" data-tex="\(\|w_{t_{j+1}}w_{t_j}^*-1\|&lt;1\)">\(\|w_{t_{j+1}}w_{t_j}^*-1\|&lt;1\)</span>. On this ball the convergent power series for <span class="math" data-tex="\(\log(1+z)\)">\(\log(1+z)\)</span> gives a continuous logarithm of the unitary; equivalently the finite-matrix spectral calculus gives its eigenvalue arguments in <span class="math" data-tex="\((-\pi/2,\pi/2)\)">\((-\pi/2,\pi/2)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+w_{t_{j+1}}w_{t_j}^*=\exp(ih_j)
+\]">\[
+w_{t_{j+1}}w_{t_j}^*=\exp(ih_j)
+\]</span>
+with <span class="math" data-tex="\(h_j\)">\(h_j\)</span> self-adjoint. Extend <span class="math" data-tex="\(h_j\)">\(h_j\)</span> to a self-adjoint matrix <span class="math" data-tex="\(H_j\)">\(H_j\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> by Lemma RK.0. The ordered product
+<span class="math" data-tex="\(U=\exp(iH_{m-1})\cdots\exp(iH_0)\)">\(U=\exp(iH_{m-1})\cdots\exp(iH_0)\)</span>
+restricts to <span class="math" data-tex="\(w\)">\(w\)</span>. The same proof works on any compact cylinder with its closed subspace; it does not assume that an arbitrary unitary on <span class="math" data-tex="\(Y\)">\(Y\)</span> extends. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-difference"></span>
+<h2 id="2-the-complete-relative-difference-bundle-theorem">2. The complete relative difference-bundle theorem</h2>
+<p>Let <span class="math" data-tex="\(\mathcal D(X,Y)\)">\(\mathcal D(X,Y)\)</span> be the group generated by triples
+<span class="math math-display" data-tex="\[
+(E,F,\sigma),\qquad \sigma:E|_Y\longrightarrow F|_Y
+\]">\[
+(E,F,\sigma),\qquad \sigma:E|_Y\longrightarrow F|_Y
+\]</span>
+with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> a specified bundle isomorphism. Impose isomorphism, direct-sum addition, and endpoint equality for triples over the compact cylinder pair. A triple is zero if its comparison extends to an isomorphism over <span class="math" data-tex="\(X\)">\(X\)</span>. These are exactly the difference-bundle relations; comparison data, rather than just equal restriction classes, are required.</p>
+<h3 id="theorem-rk-3-relative-bundles-equal-the-operator-ideal-group">Theorem RK.3. Relative bundles equal the operator ideal group</h3>
+<p>For every compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span> and closed <span class="math" data-tex="\(Y\)">\(Y\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal D(X,Y)\ \cong\ K_0\bigl(C_0(X\setminus Y)\bigr).
+\]">\[
+\mathcal D(X,Y)\ \cong\ K_0\bigl(C_0(X\setminus Y)\bigr).
+\]</span>
+This isomorphism is natural under maps of compact pairs. Its forgetful map to <span class="math" data-tex="\(K_0(C(X))\)">\(K_0(C(X))\)</span> sends the triple to <span class="math" data-tex="\([E]-[F]\)">\([E]-[F]\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(J=C_0(X\setminus Y)\)">\(J=C_0(X\setminus Y)\)</span>. Extension by zero identifies <span class="math" data-tex="\(J\)">\(J\)</span> with
+<span class="math" data-tex="\(\{f\in C(X):f|_Y=0\}\)">\(\{f\in C(X):f|_Y=0\}\)</span>: for a function vanishing at infinity, each set <span class="math" data-tex="\(\{|f|\ge\varepsilon\}\)">\(\{|f|\ge\varepsilon\}\)</span> is compact inside <span class="math" data-tex="\(X\setminus Y\)">\(X\setminus Y\)</span>, so its zero extension is continuous at <span class="math" data-tex="\(Y\)">\(Y\)</span>; the converse follows by compactness of these level sets. If <span class="math" data-tex="\(Y=\varnothing\)">\(Y=\varnothing\)</span>, comparison data are empty and the defining group is the bundle Grothendieck group. Here the forced unitization of the already unital algebra <span class="math" data-tex="\(J=C(X)\)">\(J=C(X)\)</span> is <span class="math" data-tex="\(C(X)\oplus\mathbb C\)">\(C(X)\oplus\mathbb C\)</span>, through <span class="math" data-tex="\((a,\lambda)\mapsto(a+\lambda1,\lambda)\)">\((a,\lambda)\mapsto(a+\lambda1,\lambda)\)</span>; its scalar-kernel group is exactly <span class="math" data-tex="\(K_0(C(X))\)">\(K_0(C(X))\)</span>. Projections and stable homotopies in a direct sum are coordinatewise, proving that kernel assertion. Lemma RK.1 therefore proves the empty-subspace case without representing the forced unitization faithfully inside <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. If <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span>, all groups vanish. Hence assume <span class="math" data-tex="\(Y\ne\varnothing\)">\(Y\ne\varnothing\)</span>. The forced unitization <span class="math" data-tex="\(J^+\)">\(J^+\)</span> is now represented faithfully by the functions on <span class="math" data-tex="\(X\)">\(X\)</span> which are constant on <span class="math" data-tex="\(Y\)">\(Y\)</span>; its scalar map is that constant.</p>
+<p>We first construct a map
+<span class="math" data-tex="\(\Phi:K_0(J)\to\mathcal D(X,Y)\)">\(\Phi:K_0(J)\to\mathcal D(X,Y)\)</span>.
+An element is represented by <span class="math" data-tex="\([p]-[q]\)">\([p]-[q]\)</span> with projections over <span class="math" data-tex="\(J^+\)">\(J^+\)</span> whose scalar projections <span class="math" data-tex="\(p_0,q_0\)">\(p_0,q_0\)</span> have equal rank. Pad them to one matrix size. Choose a constant partial isometry <span class="math" data-tex="\(v_0\)">\(v_0\)</span> from <span class="math" data-tex="\(p_0\)">\(p_0\)</span> to <span class="math" data-tex="\(q_0\)">\(q_0\)</span>, and take
+<span class="math math-display" data-tex="\[
+\Phi([p]-[q])=(\operatorname{ran}p,\operatorname{ran}q,v_0).
+\]">\[
+\Phi([p]-[q])=(\operatorname{ran}p,\operatorname{ran}q,v_0).
+\]</span>
+Different choices of <span class="math" data-tex="\(v_0\)">\(v_0\)</span> differ by a unitary of the common finite-dimensional range, whose unitary group is path connected by the scalar diagonalization above. They are therefore homotopic comparisons. In a projection homotopy the scalar projections are transported continuously by Lemma RK.1, so the scalar comparison can also be chosen continuously. Direct sums give addition; adding the same projection to <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> adds the zero triple with its global identity comparison. These checks are precisely the stable-homotopy and Grothendieck relations defining <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is well defined.</p>
+<p>We construct its inverse explicitly and check all its choices. Give <span class="math" data-tex="\(E,F\)">\(E,F\)</span> metrics and isometric finite embeddings with projections <span class="math" data-tex="\(p,q\in M_N(C(X))\)">\(p,q\in M_N(C(X))\)</span>. The polar comparison
+<span class="math math-display" data-tex="\[
+u=\sigma(\sigma^*\sigma)^{-1/2}
+\]">\[
+u=\sigma(\sigma^*\sigma)^{-1/2}
+\]</span>
+is a unitary from <span class="math" data-tex="\(E|_Y\)">\(E|_Y\)</span> to <span class="math" data-tex="\(F|_Y\)">\(F|_Y\)</span>; its embedded matrix satisfies <span class="math" data-tex="\(u^*u=p|_Y\)">\(u^*u=p|_Y\)</span>, <span class="math" data-tex="\(uu^*=q|_Y\)">\(uu^*=q|_Y\)</span>. The positive factor can be interpolated to one, through invertibles, so replacing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by <span class="math" data-tex="\(u\)">\(u\)</span> is an allowed homotopy. On <span class="math" data-tex="\(Y\)">\(Y\)</span> the matrix
+<span class="math math-display" data-tex="\[
+W=\begin{pmatrix}1-p&amp;u^*\\u&amp;1-q\end{pmatrix}
+\]">\[
+W=\begin{pmatrix}1-p&amp;u^*\\u&amp;1-q\end{pmatrix}
+\]</span>
+is self-adjoint and squares to one: the off-diagonal products vanish since <span class="math" data-tex="\(u=qup\)">\(u=qup\)</span>. It sends the range of <span class="math" data-tex="\(p\oplus0\)">\(p\oplus0\)</span> onto the range of <span class="math" data-tex="\(0\oplus q\)">\(0\oplus q\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\exp\!\left(i\pi t\,\frac{1-W}{2}\right),\qquad 0\le t\le1,
+\]">\[
+\exp\!\left(i\pi t\,\frac{1-W}{2}\right),\qquad 0\le t\le1,
+\]</span>
+is a path from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>. Lemma RK.2 therefore supplies a global unitary lift <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(W\)">\(W\)</span>. Define projections over <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> by
+<span class="math math-display" data-tex="\[
+R=U(p\oplus0)U^*,\qquad S=0\oplus q.
+\]">\[
+R=U(p\oplus0)U^*,\qquad S=0\oplus q.
+\]</span>
+They agree on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The following rebasing unitary uses the global projection <span class="math" data-tex="\(S\)">\(S\)</span>:
+<span class="math math-display" data-tex="\[
+T(S)=\begin{pmatrix}S&amp;1-S\\1-S&amp;-S\end{pmatrix},\qquad
+P=T(S)\bigl(R\oplus(1-S)\bigr)T(S)^*,\qquad
+P_*=\operatorname{diag}(1_{2N},0_{2N}).
+\]">\[
+T(S)=\begin{pmatrix}S&amp;1-S\\1-S&amp;-S\end{pmatrix},\qquad
+P=T(S)\bigl(R\oplus(1-S)\bigr)T(S)^*,\qquad
+P_*=\operatorname{diag}(1_{2N},0_{2N}).
+\]</span>
+One has <span class="math" data-tex="\(T(S)^*=T(S)\)">\(T(S)^*=T(S)\)</span>, <span class="math" data-tex="\(T(S)^2=1\)">\(T(S)^2=1\)</span>, and
+<span class="math" data-tex="\(T(S)(S\oplus(1-S))T(S)^*=P_*\)">\(T(S)(S\oplus(1-S))T(S)^*=P_*\)</span>.
+Consequently <span class="math" data-tex="\(P|_Y=P_*\)">\(P|_Y=P_*\)</span>, so <span class="math" data-tex="\(P-P_*\in M_{4N}(J)\)">\(P-P_*\in M_{4N}(J)\)</span>. Put
+<span class="math math-display" data-tex="\[
+\Psi(E,F,\sigma)=[P]-[P_*]\in K_0(J).
+\]">\[
+\Psi(E,F,\sigma)=[P]-[P_*]\in K_0(J).
+\]</span></p>
+<p>If <span class="math" data-tex="\(U_0,U_1\)">\(U_0,U_1\)</span> lift the same <span class="math" data-tex="\(W\)">\(W\)</span>, the unitary <span class="math" data-tex="\(V=U_1U_0^*\)">\(V=U_1U_0^*\)</span> restricts to one on <span class="math" data-tex="\(Y\)">\(Y\)</span>. It belongs to the matrix unitization of <span class="math" data-tex="\(J\)">\(J\)</span>, and conjugates <span class="math" data-tex="\(R_0\)">\(R_0\)</span> to <span class="math" data-tex="\(R_1\)">\(R_1\)</span>. After rebasing, the corresponding unitary is
+<span class="math" data-tex="\(T(S)(V\oplus1)T(S)^*\)">\(T(S)(V\oplus1)T(S)^*\)</span>, which also restricts to one. Hence the two <span class="math" data-tex="\(P\)">\(P\)</span>'s have equal <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span> classes by the unitary-conjugation path above.</p>
+<p>Embedding choices are joined, after padding, by the isometric-embedding rotation of Lemma RK.1, and metric choices by its metric interpolation. The resulting <span class="math" data-tex="\(p,q,u,W\)">\(p,q,u,W\)</span> are continuous over the compact cylinder. Apply Lemma RK.2 to the pair <span class="math" data-tex="\((X\times[0,1],Y\times[0,1])\)">\((X\times[0,1],Y\times[0,1])\)</span>: the displayed exponential makes the cylinder <span class="math" data-tex="\(W\)">\(W\)</span> homotopic to one. A lift on this cylinder gives a projection path with boundary constantly <span class="math" data-tex="\(P_*\)">\(P_*\)</span>. The preceding lift-independence check identifies its endpoints with any originally chosen lifts. Isomorphic triples are covered by transporting their embeddings through the isomorphisms. A homotopy of triples is covered by embedding the actual cylinder bundles. Direct sums make block sums of all these matrices, after a constant permutation. Zero padding of <span class="math" data-tex="\(p,q\)">\(p,q\)</span> adds zero blocks to <span class="math" data-tex="\(R,S\)">\(R,S\)</span> and identity blocks to <span class="math" data-tex="\(1-S\)">\(1-S\)</span>; after the same constant permutation it therefore adds equal constant projections to <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(P_*\)">\(P_*\)</span>, contributing zero to their difference. This checks the padding used in the embedding rotations. If <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> extends globally, its global polar isometry makes the same <span class="math" data-tex="\(W\)">\(W\)</span> a global unitary; choose <span class="math" data-tex="\(U=W\)">\(U=W\)</span>. Then <span class="math" data-tex="\(R=S\)">\(R=S\)</span>, <span class="math" data-tex="\(P=P_*\)">\(P=P_*\)</span>, and <span class="math" data-tex="\(\Psi=0\)">\(\Psi=0\)</span>. Thus <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> respects every defining relation of <span class="math" data-tex="\(\mathcal D(X,Y)\)">\(\mathcal D(X,Y)\)</span>.</p>
+<p>Here are both inverse checks. For an original triple the map <span class="math" data-tex="\(U\)">\(U\)</span> identifies <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(\operatorname{ran}R\)">\(\operatorname{ran}R\)</span>, while the lower-block embedding identifies <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\operatorname{ran}S\)">\(\operatorname{ran}S\)</span>. On <span class="math" data-tex="\(Y\)">\(Y\)</span>,
+<span class="math math-display" data-tex="\[
+U(e,0)=W(e,0)=(0,ue).
+\]">\[
+U(e,0)=W(e,0)=(0,ue).
+\]</span>
+Thus the comparison of these two range bundles is the identity on their common boundary range. Add their common complement <span class="math" data-tex="\(\operatorname{ran}(1-S)\)">\(\operatorname{ran}(1-S)\)</span>, a zero triple, and conjugate both bundles by <span class="math" data-tex="\(T(S)\)">\(T(S)\)</span>. This is exactly
+<span class="math" data-tex="\((\operatorname{ran}P,\operatorname{ran}P_*,\mathrm{id})\)">\((\operatorname{ran}P,\operatorname{ran}P_*,\mathrm{id})\)</span>.
+It proves <span class="math" data-tex="\(\Phi\Psi(E,F,\sigma)=(E,F,\sigma)\)">\(\Phi\Psi(E,F,\sigma)=(E,F,\sigma)\)</span>, including the specified comparison, not merely its forgetful class.</p>
+<p>Conversely, for <span class="math" data-tex="\([p]-[q]\)">\([p]-[q]\)</span> over <span class="math" data-tex="\(J^+\)">\(J^+\)</span>, the boundary <span class="math" data-tex="\(W\)">\(W\)</span> is a constant matrix. Choose that constant matrix as <span class="math" data-tex="\(U\)">\(U\)</span>. All rebasing matrices then belong to matrix algebras over <span class="math" data-tex="\(J^+\)">\(J^+\)</span>. Within <span class="math" data-tex="\(K_0(J^+)\)">\(K_0(J^+)\)</span>,
+<span class="math math-display" data-tex="\[
+[P]-[P_*]=[R]+[1-S]-[S]-[1-S]=[p]-[q].
+\]">\[
+[P]-[P_*]=[R]+[1-S]-[S]-[1-S]=[p]-[q].
+\]</span>
+The equality uses only unitary conjugation, direct sums and cancellation. Both sides lie in the scalar kernel, proving <span class="math" data-tex="\(\Psi\Phi=1\)">\(\Psi\Phi=1\)</span>. The same computation over <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> gives the forgetful class <span class="math" data-tex="\([p]-[q]=[E]-[F]\)">\([p]-[q]=[E]-[F]\)</span>.</p>
+<p>For a map of compact pairs, pulling back any chosen matrices gives permissible choices for the pulled-back construction. Choice independence proves naturality. This also covers <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span>, where <span class="math" data-tex="\(J=0\)">\(J=0\)</span> and every comparison is already global. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-collapse"></span>
+<h3 id="corollary-rk-3a-quotients-and-compact-support">Corollary RK.3a. Quotients and compact support</h3>
+<p>For nonempty closed <span class="math" data-tex="\(Y\)">\(Y\)</span>, the quotient <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span> is compact Hausdorff and is the one-point compactification of <span class="math" data-tex="\(X\setminus Y\)">\(X\setminus Y\)</span>. Thus
+<span class="math math-display" data-tex="\[
+K_0(C_0(X\setminus Y))
+=\ker\bigl(K_0(C(X/Y))\longrightarrow K_0(\mathbb C)\bigr).
+\]">\[
+K_0(C_0(X\setminus Y))
+=\ker\bigl(K_0(C(X/Y))\longrightarrow K_0(\mathbb C)\bigr).
+\]</span>
+The construction in Theorem RK.3 gives actual bundle differences on this quotient: the matrix <span class="math" data-tex="\(P\)">\(P\)</span>, constant on <span class="math" data-tex="\(Y\)">\(Y\)</span>, descends to a projection on <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span>.</p>
+<p><strong>Proof.</strong> Compactness follows from the quotient map. Two points outside <span class="math" data-tex="\(Y\)">\(Y\)</span> are separated by disjoint neighborhoods which can also avoid <span class="math" data-tex="\(Y\)">\(Y\)</span>. A point outside <span class="math" data-tex="\(Y\)">\(Y\)</span> and the collapsed point are separated by normality between that point and the closed set <span class="math" data-tex="\(Y\)">\(Y\)</span>; taking the complementary closed neighborhood gives saturated separating neighborhoods. This proves Hausdorffness. A neighborhood of the collapsed point has compact complement inside <span class="math" data-tex="\(X\setminus Y\)">\(X\setminus Y\)</span>; conversely the complement of any compact subset of <span class="math" data-tex="\(X\setminus Y\)">\(X\setminus Y\)</span> is such a neighborhood. This is precisely the one-point compactification topology. Functions on the quotient are exactly functions constant on <span class="math" data-tex="\(Y\)">\(Y\)</span>, already identified with <span class="math" data-tex="\(J^+\)">\(J^+\)</span>. The scalar evaluation and projection description now prove the assertion. No good-pair or cofibration hypothesis was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-radial"></span>
+<h2 id="3-radial-disc-sphere-pairs-and-bundle-symbols">3. Radial disc/sphere pairs and bundle symbols</h2>
+<h3 id="theorem-rk-4-the-arbitrary-compact-base-radial-identification">Theorem RK.4. The arbitrary compact-base radial identification</h3>
+<p>Let <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> be a finite-rank real or complex Euclidean bundle over a compact Hausdorff base, with closed unit ball and unit sphere bundles <span class="math" data-tex="\(B(V),S(V)\)">\(B(V),S(V)\)</span>. Then
+<span class="math math-display" data-tex="\[
+v\longmapsto\frac{v}{\sqrt{1+\|v\|^2}}
+\]">\[
+v\longmapsto\frac{v}{\sqrt{1+\|v\|^2}}
+\]</span>
+is a proper homeomorphism
+<span class="math" data-tex="\(V\to B(V)\setminus S(V)\)">\(V\to B(V)\setminus S(V)\)</span>, with inverse
+<span class="math" data-tex="\(w\mapsto w/\sqrt{1-\|w\|^2}\)">\(w\mapsto w/\sqrt{1-\|w\|^2}\)</span>.
+For <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span> it therefore gives
+<span class="math math-display" data-tex="\[
+K_i(C_0(V))\cong K_i(C_0(B(V)\setminus S(V))).
+\]">\[
+K_i(C_0(V))\cong K_i(C_0(B(V)\setminus S(V))).
+\]</span>
+In degree zero Theorem RK.3 identifies the right group with the specified difference-bundle triples for the disc/sphere pair.</p>
+<p><strong>Proof.</strong> A finite isometric bundle embedding, proved over real scalars by exactly the same partition and Gram–Schmidt argument as Lemma RK.1, realizes every bounded ball bundle as the closed subset
+<span class="math" data-tex="\(\{(x,z):p(x)z=z,\ \|z\|\le R\}\)">\(\{(x,z):p(x)z=z,\ \|z\|\le R\}\)</span>
+of a compact <span class="math" data-tex="\(X\)">\(X\)</span> times a finite-dimensional closed ball. Thus it is compact. The sphere is closed in it, and the total vector bundle is locally compact. The two displayed formulas are continuous in each trivialization, preserve the base point, and are inverse by direct substitution. They glue because the norm is intrinsic. A homeomorphism is proper: the inverse sends compact sets to compact sets. Pullback is consequently an isometric *-isomorphism of the vanishing-at-infinity function algebras, giving both group identifications from their definitions. Rank-zero components have empty sphere and identity radial map on their zero bundle; no exception is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-symbol-rules"></span>
+<h3 id="corollary-rk-4a-the-exact-symbol-rules-used-by-the-consumers">Corollary RK.4a. The exact symbol rules used by the consumers</h3>
+<p>For bundles <span class="math" data-tex="\(E^+,E^-\)">\(E^+,E^-\)</span> over <span class="math" data-tex="\(B(V)\)">\(B(V)\)</span>, an isomorphism
+<span class="math" data-tex="\(\sigma:E^+|_{S(V)}\to E^-|_{S(V)}\)">\(\sigma:E^+|_{S(V)}\to E^-|_{S(V)}\)</span> defines an element of <span class="math" data-tex="\(K_0(C_0(V))\)">\(K_0(C_0(V))\)</span>. Its image under restriction to the zero section is
+<span class="math" data-tex="\([s^*E^+]-[s^*E^-]\)">\([s^*E^+]-[s^*E^-]\)</span>. A homotopy through boundary-invertible symbols preserves the class. An everywhere invertible comparison has zero class. Tensoring both bundles and the comparison with a bundle pulled back from <span class="math" data-tex="\(X\)">\(X\)</span> defines the <span class="math" data-tex="\(K^0(X)\)">\(K^0(X)\)</span>-action on these relative symbols.</p>
+<p><strong>Proof.</strong> The first assertion is the preceding theorem followed by RK.3. Forgetting the comparison, then pulling back along the zero section, gives the stated difference by RK.3's forgetful formula and naturality. A boundary-invertible homotopy is an actual triple on the cylinder pair, one of the defining relations. An everywhere invertible comparison is the global extension relation. Tensor product respects isomorphism, sums, cylinder homotopy and global extension, so it descends to the bundle Grothendieck group in each variable. Lemma RK.1 identifies the absolute action with <span class="math" data-tex="\(K_0(C(X))\)">\(K_0(C(X))\)</span>; projection tensor products have precisely the tensor-product range bundles.</p>
+<p>In particular the Clifford symbol <span class="math" data-tex="\(c(v)^+:S^+\to S^-\)">\(c(v)^+:S^+\to S^-\)</span>, with inverse <span class="math" data-tex="\(\|v\|^{-2}c(v)^-\)">\(\|v\|^{-2}c(v)^-\)</span> on the sphere, is such a triple. The ball homotopy in the graded Clifford lesson, equation (7.4), is boundary fixed and ends in an everywhere invertible map; the relative-zero conclusion follows from these relations alone. For a complex line <span class="math" data-tex="\(L\)">\(L\)</span>, the symbol
+<span class="math math-display" data-tex="\[
+(\mathbf1,\pi^*L,\ \lambda\longmapsto\lambda v)
+\]">\[
+(\mathbf1,\pi^*L,\ \lambda\longmapsto\lambda v)
+\]</span>
+on <span class="math" data-tex="\((B(L),S(L))\)">\((B(L),S(L))\)</span> is a specified comparison: at a unit vector <span class="math" data-tex="\(v\)">\(v\)</span> it is a unitary map onto <span class="math" data-tex="\(L_x\)">\(L_x\)</span>. Its zero-section difference is <span class="math" data-tex="\(1-[L]\)">\(1-[L]\)</span>. For <span class="math" data-tex="\(S=\Lambda^*E\)">\(S=\Lambda^*E\)</span> the corresponding zero-section difference is <span class="math" data-tex="\(\sum_j(-1)^j[\Lambda^jE]\)">\(\sum_j(-1)^j[\Lambda^jE]\)</span>. These assertions use the actual comparisons and do not follow just from the two bundles having equal rank. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-low-dimensional-unitaries"></span>
+<h2 id="4-the-elementary-homotopy-calculations-needed-on-the-plane-and-sphere">4. The elementary homotopy calculations needed on the plane and sphere</h2>
+<h3 id="lemma-rk-5-loops-and-two-spheres-in-finite-unitary-groups">Lemma RK.5. Loops and two-spheres in finite unitary groups</h3>
+<p>Every loop <span class="math" data-tex="\(g:S^1\to U(n)\)">\(g:S^1\to U(n)\)</span> is homotopic to
+<span class="math" data-tex="\(\operatorname{diag}(z^k,1,\ldots,1)\)">\(\operatorname{diag}(z^k,1,\ldots,1)\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is the winding of <span class="math" data-tex="\(\det g\)">\(\det g\)</span>; two loops are homotopic exactly when these integers agree. Every map <span class="math" data-tex="\(S^2\to U(n)\)">\(S^2\to U(n)\)</span> is nullhomotopic.</p>
+<p><strong>Proof.</strong> We give the small amount of sphere topology and lifting required by these statements. If <span class="math" data-tex="\(d=1,2\)">\(d=1,2\)</span> and <span class="math" data-tex="\(m&gt;d\)">\(m&gt;d\)</span>, every map <span class="math" data-tex="\(f:S^d\to S^m\)">\(f:S^d\to S^m\)</span> is nullhomotopic. Take a fine finite triangulation of the domain: regular polygon subdivision gives it for <span class="math" data-tex="\(S^1\)">\(S^1\)</span>; subdividing the faces of an octahedron and projecting radially gives arbitrarily small triangles on <span class="math" data-tex="\(S^2\)">\(S^2\)</span>. The radial maps on the finitely many original closed faces have bounded derivatives, so refinement indeed makes their diameters tend to zero. Uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span> makes the values at all vertices of a simplex as close as desired to every value of <span class="math" data-tex="\(f\)">\(f\)</span> on that simplex. Interpolate the vertex values linearly and normalize to length one. Their closeness ensures that no interpolated vector is zero, that the resulting map <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is uniformly close to <span class="math" data-tex="\(f\)">\(f\)</span>, and that normalized straight interpolation from <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is a homotopy. On each simplex the image of <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> lies in the sphere of the real linear span of at most <span class="math" data-tex="\(d+1\)">\(d+1\)</span> vertex vectors. Finitely many such proper subspaces do not cover <span class="math" data-tex="\(\mathbb R^{m+1}\)">\(\mathbb R^{m+1}\)</span>: choose a nonzero linear functional vanishing on each subspace; the product of these functionals is a nonzero polynomial and cannot vanish everywhere. Thus there is a point of <span class="math" data-tex="\(S^m\)">\(S^m\)</span> missed by <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>. Stereographic projection from that point identifies its complement with <span class="math" data-tex="\(\mathbb R^m\)">\(\mathbb R^m\)</span>, where <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> contracts. This proves the assertion. In particular every loop on <span class="math" data-tex="\(S^2\)">\(S^2\)</span> contracts. A free contraction can be made a based contraction by adjoining the path traced by its base point before each loop and the reverse path after it; the final retraced path contracts. Thus <span class="math" data-tex="\(S^2\)">\(S^2\)</span> is simply connected.</p>
+<p>A path into <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> has a continuous real argument: partition its parameter interval into pieces whose images, after division by the initial value, lie in the open semicircle about one, take the continuous argument there, and continue from the preceding endpoint. For a loop, the change in argument is <span class="math" data-tex="\(2\pi k\)">\(2\pi k\)</span>. It is homotopy invariant: for sufficiently nearby loops the same finite partition and argument branches give continuously varying endpoint changes, and the integer-valued change must be constant; a finite subdivision in the homotopy parameter proves the claim. A loop with argument <span class="math" data-tex="\(\theta(t)\)">\(\theta(t)\)</span> is homotopic, through loops, to
+<span class="math" data-tex="\(\exp(i(\theta(0)+2\pi kt))\)">\(\exp(i(\theta(0)+2\pi kt))\)</span>
+by linear interpolation of its argument. A constant scalar factor is joined to one. This proves the loop statement for <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>. For a map <span class="math" data-tex="\(S^2\to U(1)\)">\(S^2\to U(1)\)</span>, continue the argument along paths from a fixed base point. Path independence follows because loops in <span class="math" data-tex="\(S^2\)">\(S^2\)</span> contract and the argument change is invariant during such a contraction. The resulting argument is continuous: on a sufficiently small neighborhood its values are the local argument branch plus a fixed multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Scaling this global argument contracts the map.</p>
+<p>We now reduce higher unitary groups to this scalar case, proving the needed lifting instead of invoking a fibration theorem. For unit vectors <span class="math" data-tex="\(a,b\in\mathbb C^n\)">\(a,b\in\mathbb C^n\)</span> whose range projections <span class="math" data-tex="\(p=aa^*,q=bb^*\)">\(p=aa^*,q=bb^*\)</span> satisfy <span class="math" data-tex="\(\|p-q\|&lt;1\)">\(\|p-q\|&lt;1\)</span>, set
+<span class="math math-display" data-tex="\[
+t(b,a)=ba^*+(1-q)(1-p),\qquad
+C(b,a)=t(b,a)\bigl(t(b,a)^*t(b,a)\bigr)^{-1/2}.
+\]">\[
+t(b,a)=ba^*+(1-q)(1-p),\qquad
+C(b,a)=t(b,a)\bigl(t(b,a)^*t(b,a)\bigr)^{-1/2}.
+\]</span>
+On the line of <span class="math" data-tex="\(a\)">\(a\)</span> the first map sends <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>; on its complement it is the close-projection map into the complement of <span class="math" data-tex="\(b\)">\(b\)</span>. The lower bound and adjoint bound in RK.1 make it invertible. Since <span class="math" data-tex="\(t^*t\,a=a\)">\(t^*t\,a=a\)</span>, the unitary <span class="math" data-tex="\(C(b,a)\)">\(C(b,a)\)</span> sends <span class="math" data-tex="\(a\)">\(a\)</span> exactly to <span class="math" data-tex="\(b\)">\(b\)</span>, and the formula depends continuously on the two vectors.</p>
+<p>Let <span class="math" data-tex="\(g:Z\to U(n)\)">\(g:Z\to U(n)\)</span>, with <span class="math" data-tex="\(Z=S^1\)">\(Z=S^1\)</span> or <span class="math" data-tex="\(S^2\)">\(S^2\)</span> and <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Its first column <span class="math" data-tex="\(a_0:Z\to S^{2n-1}\)">\(a_0:Z\to S^{2n-1}\)</span> contracts to the constant first coordinate vector by the sphere argument, since <span class="math" data-tex="\(2n-1&gt;\dim Z\)">\(2n-1&gt;\dim Z\)</span>. Write this contraction as <span class="math" data-tex="\(a_s\)">\(a_s\)</span>. Uniform continuity in <span class="math" data-tex="\(s\)">\(s\)</span> and a finite partition allow us to construct a homotopy of unitary matrices starting at <span class="math" data-tex="\(g\)">\(g\)</span>: on a segment beginning at <span class="math" data-tex="\(s_j\)">\(s_j\)</span>, left multiply its current value at <span class="math" data-tex="\(s_j\)">\(s_j\)</span> by <span class="math" data-tex="\(C(a_s,a_{s_j})\)">\(C(a_s,a_{s_j})\)</span>. The formulas agree at the segment endpoints and have first column <span class="math" data-tex="\(a_s\)">\(a_s\)</span>. At the end the unitary fixes the first coordinate and is <span class="math" data-tex="\(\operatorname{diag}(1,h)\)">\(\operatorname{diag}(1,h)\)</span>, with <span class="math" data-tex="\(h:Z\to U(n-1)\)">\(h:Z\to U(n-1)\)</span>. Induction reduces it to a scalar map.</p>
+<p>For loops the determinant winding is unchanged during these homotopies and equals the winding of that final scalar loop. Hence the scalar classification proves both existence and uniqueness of the asserted loop normal form; a constant unitary path moves the nontrivial coordinate to the first position. For <span class="math" data-tex="\(Z=S^2\)">\(Z=S^2\)</span>, the scalar endpoint is nullhomotopic by the preceding global-argument proof, giving the second assertion. If a based nullhomotopy of a unitary map is required, replace a homotopy <span class="math" data-tex="\(H_s(x)\)">\(H_s(x)\)</span> by <span class="math" data-tex="\(H_s(x_0)^*H_s(x)\)">\(H_s(x_0)^*H_s(x)\)</span>. When the original map is one at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, this leaves its initial map unchanged and keeps that point fixed throughout. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-planar-bott"></span>
+<h2 id="5-the-actual-planar-projection-and-its-comparison-sign">5. The actual planar projection and its comparison sign</h2>
+<h3 id="theorem-rk-6-planar-relative-normalization">Theorem RK.6. Planar relative normalization</h3>
+<p>Use the complex orientation <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>. The relative triple
+<span class="math math-display" data-tex="\[
+\mathfrak b=(\mathbf1,\mathbf1,z)
+\quad\text{on }(D^2,S^1)
+\]">\[
+\mathfrak b=(\mathbf1,\mathbf1,z)
+\quad\text{on }(D^2,S^1)
+\]</span>
+corresponds, under the radial identification of RK.4, to
+<span class="math math-display" data-tex="\[
+[q]-[P],\qquad
+q(\zeta)=\frac1{1+|\zeta|^2}
+\begin{pmatrix}1&amp;\overline\zeta\\\zeta&amp;|\zeta|^2\end{pmatrix},
+\qquad P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\]">\[
+[q]-[P],\qquad
+q(\zeta)=\frac1{1+|\zeta|^2}
+\begin{pmatrix}1&amp;\overline\zeta\\\zeta&amp;|\zeta|^2\end{pmatrix},
+\qquad P=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}.
+\]</span>
+This is the positive planar Bott class in the stated comparison convention. It generates <span class="math" data-tex="\(K_0(C_0(\mathbb R^2))\cong\mathbb Z\)">\(K_0(C_0(\mathbb R^2))\cong\mathbb Z\)</span>, while <span class="math" data-tex="\(K_1(C_0(\mathbb R^2))=0\)">\(K_1(C_0(\mathbb R^2))=0\)</span>. The comparison <span class="math" data-tex="\(\overline z\)">\(\overline z\)</span> gives its negative.</p>
+<p><strong>Proof.</strong> In the construction of RK.3 take <span class="math" data-tex="\(p=q=1\)">\(p=q=1\)</span>. The boundary involution is
+<span class="math" data-tex="\(\begin{psmallmatrix}0&amp;\overline z\\z&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}0&amp;\overline z\\z&amp;0\end{psmallmatrix}\)</span>.
+On the closed disc the following is an explicit unitary lift:
+<span class="math math-display" data-tex="\[
+U(w)=
+\begin{pmatrix}
+\sqrt{1-|w|^2}&amp;\overline w\\
+w&amp;-\sqrt{1-|w|^2}
+\end{pmatrix}.
+\]">\[
+U(w)=
+\begin{pmatrix}
+\sqrt{1-|w|^2}&amp;\overline w\\
+w&amp;-\sqrt{1-|w|^2}
+\end{pmatrix}.
+\]</span>
+It is self-adjoint and its square is one, including on the boundary. Thus <span class="math" data-tex="\(R=U\operatorname{diag}(1,0)U^*\)">\(R=U\operatorname{diag}(1,0)U^*\)</span> is the range projection of
+<span class="math" data-tex="\((\sqrt{1-|w|^2},w)\)">\((\sqrt{1-|w|^2},w)\)</span>, and <span class="math" data-tex="\(S=P\)">\(S=P\)</span> is constant. The rebasing unitary in RK.3 is also constant, so the resulting relative class is <span class="math" data-tex="\([R]-[P]\)">\([R]-[P]\)</span>. Under
+<span class="math" data-tex="\(\zeta=w/\sqrt{1-|w|^2}\)">\(\zeta=w/\sqrt{1-|w|^2}\)</span>
+its range is <span class="math" data-tex="\(\mathbb C(1,\zeta)\)">\(\mathbb C(1,\zeta)\)</span>, which is exactly the displayed <span class="math" data-tex="\(q(\zeta)\)">\(q(\zeta)\)</span>. This radial identification preserves complex orientation: it preserves angle, and its radial coordinate <span class="math" data-tex="\(r/\sqrt{1-r^2}\)">\(r/\sqrt{1-r^2}\)</span> has positive derivative; the radial and angular Jacobian factors are both positive. At infinity <span class="math" data-tex="\(q\)">\(q\)</span> tends to <span class="math" data-tex="\(P\)">\(P\)</span>, so <span class="math" data-tex="\(q-P\)">\(q-P\)</span> is a matrix over <span class="math" data-tex="\(C_0(\mathbb R^2)\)">\(C_0(\mathbb R^2)\)</span>. This proves the projection formula and its sign by an actual lift.</p>
+<p>We also prove its generating assertion locally. Every bundle on a disc is trivial: a projection for it is homotoped by <span class="math" data-tex="\(p(x)\mapsto p(tx)\)">\(p(x)\mapsto p(tx)\)</span> to its constant central value, and RK.1 transports the bundle along this homotopy. In a disc/sphere triple the two trivial bundles consequently have the same rank, and the comparison is a loop in <span class="math" data-tex="\(GL_n(\mathbb C)\)">\(GL_n(\mathbb C)\)</span>. Its polar homotopy reduces it to <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>. By RK.5 that loop is homotopic to <span class="math" data-tex="\(\operatorname{diag}(z^k,1,\ldots,1)\)">\(\operatorname{diag}(z^k,1,\ldots,1)\)</span>. Its determinant winding is additive on sums and zero for a globally extendible comparison, since a disc extension contracts the loop. Thus winding is a well-defined map of the difference-bundle group to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its normal form proves that it is an isomorphism, taking <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> to one. RK.3 and RK.4 prove the stated <span class="math" data-tex="\(K_0\)">\(K_0\)</span> result, with no Bott theorem as a premise. Inverting or conjugating the scalar comparison changes <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(-k\)">\(-k\)</span>.</p>
+<p>Finally a unitary in the forced unitization of <span class="math" data-tex="\(C_0(\mathbb R^2)\)">\(C_0(\mathbb R^2)\)</span> with scalar part one is a based map from the one-point compactification <span class="math" data-tex="\(S^2\)">\(S^2\)</span> to <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>. RK.5 contracts it through based unitary maps. General scalar parts may be normalized to one by a path of constant scalar matrices. The stable-unitary definition of <span class="math" data-tex="\(K_1\)">\(K_1\)</span> therefore gives zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-line-sign"></span>
+<h3 id="lemma-rk-6a-the-tautological-line-and-first-chern-sign">Lemma RK.6a. The tautological line and first Chern sign</h3>
+<p>The range of the preceding projection on the compactified plane is the tautological line <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\mathbb{CP}^1\)">\(\mathbb{CP}^1\)</span>, using the chart
+<span class="math" data-tex="\(\zeta\mapsto[1:\zeta]\)">\(\zeta\mapsto[1:\zeta]\)</span>. Its first Chern number in the complex orientation is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\mathfrak b=[L]-[1],\qquad
+u=1-[L]=-\mathfrak b
+\]">\[
+\mathfrak b=[L]-[1],\qquad
+u=1-[L]=-\mathfrak b
+\]</span>
+as reduced classes on that sphere. The relative line Thom comparison
+<span class="math" data-tex="\(\lambda\mapsto\lambda v\)">\(\lambda\mapsto\lambda v\)</span> restricts in a unitary fibre frame to <span class="math" data-tex="\(z\)">\(z\)</span>, and therefore has precisely the positive relative class of RK.6, not the class specified by <span class="math" data-tex="\(\overline z\)">\(\overline z\)</span>.</p>
+<p><strong>Proof.</strong> The chart formula already identifies the range with the line spanned by <span class="math" data-tex="\((1,\zeta)\)">\((1,\zeta)\)</span>; at infinity it is the line spanned by <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. On the other chart put <span class="math" data-tex="\(w=1/\zeta\)">\(w=1/\zeta\)</span>, with frame <span class="math" data-tex="\((w,1)\)">\((w,1)\)</span>. Along the equator <span class="math" data-tex="\(|\zeta|=1\)">\(|\zeta|=1\)</span>,
+<span class="math math-display" data-tex="\[
+(1,\zeta)=\zeta(w,1).
+\]">\[
+(1,\zeta)=\zeta(w,1).
+\]</span>
+Thus a vector with northern coefficient <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has southern coefficient <span class="math" data-tex="\(\zeta\lambda\)">\(\zeta\lambda\)</span>. The positively oriented boundary coordinate of the southern complex disc is <span class="math" data-tex="\(w\)">\(w\)</span>, and <span class="math" data-tex="\(\zeta=w^{-1}\)">\(\zeta=w^{-1}\)</span>. The obstruction to extending the northern nonzero section across that disc is therefore the degree <span class="math" data-tex="\(-1\)">\(-1\)</span> of its southern boundary coefficient. This is the first Chern integer of a complex line: equivalently it is the Euler obstruction of its underlying oriented real plane. This convention can be defined directly by that obstruction on the two-cell sphere. It is independent of the frames, because a frame change extending over a disc has boundary degree zero. Tensoring lines adds their boundary degrees, and dualizing reverses them. In particular a line with first Chern class <span class="math" data-tex="\(k h\)">\(k h\)</span> on the complex-oriented sphere, with <span class="math" data-tex="\(\langle h,[S^2]\rangle=1\)">\(\langle h,[S^2]\rangle=1\)</span>, has clutching degree <span class="math" data-tex="\(-k\)">\(-k\)</span>.</p>
+<p>There is also a direct differential check of this same normalization. The unit frame <span class="math" data-tex="\(s=(1,\zeta)/\sqrt{1+|\zeta|^2}\)">\(s=(1,\zeta)/\sqrt{1+|\zeta|^2}\)</span> has unitary connection form
+<span class="math math-display" data-tex="\[
+s^*ds=\frac{i(x\,dy-y\,dx)}{1+x^2+y^2},
+\qquad
+d(s^*ds)=\frac{2i\,dx\wedge dy}{(1+x^2+y^2)^2}.
+\]">\[
+s^*ds=\frac{i(x\,dy-y\,dx)}{1+x^2+y^2},
+\qquad
+d(s^*ds)=\frac{2i\,dx\wedge dy}{(1+x^2+y^2)^2}.
+\]</span>
+With the convention <span class="math" data-tex="\(iF/(2\pi)\)">\(iF/(2\pi)\)</span>, its integral is
+<span class="math" data-tex="\(-\pi^{-1}\int_{\mathbb R^2}(1+|\zeta|^2)^{-2}\,dx\,dy=-1\)">\(-\pi^{-1}\int_{\mathbb R^2}(1+|\zeta|^2)^{-2}\,dx\,dy=-1\)</span>;
+polar coordinates give the integral <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. This is a check of the transition obstruction just computed, not an appeal to a Chern–Weil theorem to identify a bundle.</p>
+<p>The constant projection <span class="math" data-tex="\(P\)">\(P\)</span> has the trivial range line, so the formula for <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> follows. A unitary local fibre frame writes <span class="math" data-tex="\(v=z e\)">\(v=z e\)</span> and <span class="math" data-tex="\(\lambda v=z\lambda e\)">\(\lambda v=z\lambda e\)</span>, giving the stated comparison. Its zero-section difference remains <span class="math" data-tex="\(1-[L]\)">\(1-[L]\)</span>, by RK.4a: the sign of the fibre comparison and the sign of the zero-section difference are different pieces of specified data. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-sphere-ring"></span>
+<h2 id="6-the-integral-sphere-ring-used-by-the-line-bundle-example">6. The integral sphere ring used by the line-bundle example</h2>
+<h3 id="theorem-rk-7-the-groups-and-relation-on-mathbb-cp-1">Theorem RK.7. The groups and relation on <span class="math" data-tex="\(\mathbb{CP}^1\)">\(\mathbb{CP}^1\)</span></h3>
+<p>With <span class="math" data-tex="\(L\)">\(L\)</span> tautological and <span class="math" data-tex="\(u=1-[L]\)">\(u=1-[L]\)</span>,
+<span class="math math-display" data-tex="\[
+K^0(\mathbb{CP}^1)=\mathbb Z[1]\oplus\mathbb Z u,\qquad
+K^1(\mathbb{CP}^1)=0,\qquad u^2=0.
+\]">\[
+K^0(\mathbb{CP}^1)=\mathbb Z[1]\oplus\mathbb Z u,\qquad
+K^1(\mathbb{CP}^1)=0,\qquad u^2=0.
+\]</span>
+Line bundles on this sphere are classified by their first Chern integer. A line <span class="math" data-tex="\(E_k\)">\(E_k\)</span> with <span class="math" data-tex="\(c_1(E_k)=k h\)">\(c_1(E_k)=k h\)</span> satisfies <span class="math" data-tex="\(E_k\cong L^{\otimes(-k)}\)">\(E_k\cong L^{\otimes(-k)}\)</span> and
+<span class="math" data-tex="\([E_k]=[1]+k u\)">\([E_k]=[1]+k u\)</span>.</p>
+<p><strong>Proof.</strong> Write the sphere as two closed discs with a collar of the common circle. A bundle is trivial on each disc by RK.6's disc argument, so their trivializations identify it with a bundle glued by a loop <span class="math" data-tex="\(g:S^1\to GL_n(\mathbb C)\)">\(g:S^1\to GL_n(\mathbb C)\)</span>. Such gluing really is locally trivial near the equator: enlarge each hemisphere into the collar and extend <span class="math" data-tex="\(g\)">\(g\)</span> constantly in the collar's transverse coordinate, giving overlapping product trivializations.</p>
+<p>A homotopy of gluing maps constructs the same bundle over the sphere times an interval, so RK.1 makes its endpoints isomorphic. Changing either disc trivialization multiplies <span class="math" data-tex="\(g\)">\(g\)</span> by a map which extends over that disc; its boundary loop contracts by radial contraction, followed if necessary by a constant matrix path. Thus the gluing homotopy class is unchanged. Conversely an isomorphism of the bundles gives exactly such two trivialization changes. This proves the gluing classification without importing a classification theorem. Polar homotopy and RK.5 show that rank <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> bundles on the sphere are classified by their determinant winding <span class="math" data-tex="\(k\)">\(k\)</span>, and each is isomorphic to the line glued by <span class="math" data-tex="\(z^k\)">\(z^k\)</span> plus <span class="math" data-tex="\(n-1\)">\(n-1\)</span> trivial lines. Rank and winding add under direct sum. Every integer occurs already for a line. Their bundle Grothendieck group is therefore <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, with basis the trivial line and <span class="math" data-tex="\(L-[1]\)">\(L-[1]\)</span>, or equivalently the trivial line and <span class="math" data-tex="\(u\)">\(u\)</span>. For line bundles, RK.6a identifies the first Chern integer as the negative of the gluing winding, proving the stated line classification.</p>
+<p>We prove the ring relation integrally and explicitly. For scalar loops <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, the unitary path
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}f&amp;0\\0&amp;1\end{pmatrix}
+R_t
+\begin{pmatrix}1&amp;0\\0&amp;g\end{pmatrix}
+R_t^*,\qquad 0\le t\le\pi/2,
+\]">\[
+\begin{pmatrix}f&amp;0\\0&amp;1\end{pmatrix}
+R_t
+\begin{pmatrix}1&amp;0\\0&amp;g\end{pmatrix}
+R_t^*,\qquad 0\le t\le\pi/2,
+\]</span>
+starts at <span class="math" data-tex="\(\operatorname{diag}(f,g)\)">\(\operatorname{diag}(f,g)\)</span> and ends at
+<span class="math" data-tex="\(\operatorname{diag}(fg,1)\)">\(\operatorname{diag}(fg,1)\)</span>. Set <span class="math" data-tex="\(f=g=z\)">\(f=g=z\)</span> and use the gluing classification. It gives an actual bundle isomorphism
+<span class="math math-display" data-tex="\[
+L\oplus L\ \cong\ L^{\otimes2}\oplus\mathbf1.
+\]">\[
+L\oplus L\ \cong\ L^{\otimes2}\oplus\mathbf1.
+\]</span>
+Hence <span class="math" data-tex="\(u^2=(1-[L])^2=1-2[L]+[L]^2=0\)">\(u^2=(1-[L])^2=1-2[L]+[L]^2=0\)</span> in the integral bundle ring. There is no rational-injectivity or torsion argument in this proof. Since <span class="math" data-tex="\([L]=1-u\)">\([L]=1-u\)</span> and <span class="math" data-tex="\(u^2=0\)">\(u^2=0\)</span>, its integer positive and negative powers give
+<span class="math" data-tex="\([L]^{-k}=1+ku\)">\([L]^{-k}=1+ku\)</span>, proving the formula for <span class="math" data-tex="\(E_k\)">\(E_k\)</span>.</p>
+<p>The stable-unitary definition of <span class="math" data-tex="\(K^1(\mathbb{CP}^1)\)">\(K^1(\mathbb{CP}^1)\)</span> is the group of stable homotopy classes of maps from this sphere to finite unitary groups. RK.5 makes every such map nullhomotopic, so that group is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-line-classification"></span>
+<h3 id="lemma-rk-7a-the-line-bundle-identifications-valid-on-arbitrary-compact-bases">Lemma RK.7a. The line-bundle identifications valid on arbitrary compact bases</h3>
+<p>Every complex line bundle over a compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span> is a pullback of the tautological line on some finite <span class="math" data-tex="\(\mathbb{CP}^{N-1}\)">\(\mathbb{CP}^{N-1}\)</span>. The classifying map supplied by a finite embedding is independent, up to homotopy after enlarging <span class="math" data-tex="\(N\)">\(N\)</span>, of the embedding. Its tensor and dual bundles have respectively the product and inverse transition functions. In particular none of these assertions says that singular <span class="math" data-tex="\(H^2(X;\mathbb Z)\)">\(H^2(X;\mathbb Z)\)</span> classifies line bundles on an arbitrary compact Hausdorff base.</p>
+<p><strong>Proof.</strong> The finite embedding of RK.1 sends each fibre to a line in <span class="math" data-tex="\(\mathbb C^N\)">\(\mathbb C^N\)</span>. Its projection matrix is continuous, so the associated line is a continuous map into projective space: locally choose a projected coordinate vector which is nonzero and use its coordinate ratios as a projective chart. Pulling back the tautological line gives exactly the original embedded bundle. The orthogonal-sum rotation of RK.1 joins any two such maps after enlarging the ambient dimension. A unitary local frame has transitions in <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>. Tensor frames multiply these scalars; dual frames invert them, and evaluation identifies <span class="math" data-tex="\(L\otimes L^*\)">\(L\otimes L^*\)</span> with the trivial line. This proves precisely the identifications used by the relative line symbols and finite projective-space pullbacks. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="rk-source-scope"></span>
+<h2 id="source-comparison-licence-and-remaining-scope">Source comparison, licence and remaining scope</h2>
+<p>The actually read free primary comparison is A. Hatcher, <em>Vector Bundles &amp; K-Theory</em>, Version 2.2, November 2017: Propositions 1.2–1.4 for metrics, complements and finite embeddings; Theorem 1.6 and the compact-base portion of Proposition 1.7 for cylinder bundles; Example 1.10 and Proposition 1.11 for clutching; Example 1.13 for the integral line relation; Section 2.1's definitions for locally constant rank and bundle group completion. The <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VBpage.html">author's download page</a> identifies the edition and links the <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf">actual free PDF</a>. Its copyright page states author copyright, 2003. No open licence is inferred for that PDF, and its copyright is retained.</p>
+<p>The actual free corrected second edition of B. Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf"><em>K-Theory for Operator Algebras</em></a>, Section 5.4, supplies a comparison of relative-group definitions. That text explicitly omits a proof of strong excision, Theorem 5.4.2. The complete inverse maps, unitary extension, lift-choice checks and injectivity needed in this compact-space setting are proved in RK.0–RK.3 here; the omitted external theorem is not used. The source retains its author copyright and the usage terms on the <a href="https://www.bruceblackadar.com/mathpubs.html">author's publication page</a>.</p>
+<p>This fresh capsule's original text is CC0. Its proofs cover every compact Hausdorff closed pair, all finite-rank Euclidean radial pairs over such bases, the relative symbol relations, the precise planar projection and line sign, the integral <span class="math" data-tex="\(\mathbb{CP}^1\)">\(\mathbb{CP}^1\)</span> groups and ring relation, and the stated finite-projective-space line identification. It does not claim a general coefficient Bott isomorphism, the full Atiyah–Bott–Shapiro theorem, the rational relative Chern-character theorem, the cohomological projective-bundle/splitting theorem, or the cohomological Thom isomorphism. In particular the broader Section 8 character and Todd-factor proof in the Thom consumer still requires eligible, delivered proofs of those cohomological providers. The analytic Thom theorem in that consumer supplies its own later Thom-group computation; it is not a premise of any result here.</p>
+</article></main></body></html>

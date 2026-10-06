@@ -1,0 +1,116 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Norm-controlled density on arbitrary Hilbert spaces · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CI.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-BD.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction by GPT-6 Astra (OpenAI), Ultra; independently owner-reviewed at the exact earlier inputs. Human review and formal verification are not asserted.</p><h1 id="norm-controlled-density-on-arbitrary-hilbert-spaces">Norm-controlled density on arbitrary Hilbert spaces</h1>
+<p><em>Fresh local proof by GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights in this new exposition.</em></p>
+<p>This proof supplies the bounded-density input used by WH-02 and the positive contraction net used by WH-04. The algebra need not be norm closed or unital, and the Hilbert space is arbitrary. The only analytic inputs are the elementary Hilbert facts and the exact spectral calculus in <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0 and SB-1–SB-6</a>. The scalar compact approximation used below is proved explicitly. The earlier Hilbert facts are <a href="OA-FLOW-SF.html#oa-flow.shared-foundations.sf-0">SF-0</a> and <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB0">SB-0</a>; the full spectral-domain proof is <a href="OA-FLOW-SF.html#OA-FLOW.SF.SB1">SB-1–SB-6</a>. Scalar spectral convergence uses <a href="OA-FLOW-SC.html#sc-04">SC-04–05</a>.</p>
+<p>For human mathematical context see <a href="https://math.berkeley.edu/~vfr/MATH20909/VonNeumann2009.pdf#page=32">Jones's author notes, Theorem 5.2.1, printed pp.32–33</a>. The following proof supplies the arbitrary-Hilbert and nonclosed-algebra details, using finite-vector separation and a direct resolvent identity.</p>
+<p><a id="oa-flow.bd.1"></a></p>
+<h2 id="OA-FLOW.BD.1">BD-1. The correct support corner and bicommutant density</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A\subseteq B(H)\)">\(\mathcal A\subseteq B(H)\)</span> be a complex *-subalgebra. Set <span class="math" data-tex="\(H_0=\overline{\mathcal A H}\)">\(H_0=\overline{\mathcal A H}\)</span>, with projection <span class="math" data-tex="\(p\)">\(p\)</span>. This subspace reduces <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is zero on <span class="math" data-tex="\(H_0^\perp\)">\(H_0^\perp\)</span>: orthogonality to every <span class="math" data-tex="\(a^*v\)">\(a^*v\)</span> forces <span class="math" data-tex="\(a w=0\)">\(a w=0\)</span>. Work first on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>, where the representation is nondegenerate. Let <span class="math" data-tex="\(M=(\mathcal A|_{H_0})''\)">\(M=(\mathcal A|_{H_0})''\)</span>.</p>
+<p>For vectors <span class="math" data-tex="\(u_1,\ldots,u_n\)">\(u_1,\ldots,u_n\)</span>, let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the projection onto the closure of
+<span class="math" data-tex="\(\{(au_1,\ldots,au_n):a\in\mathcal A\}\subseteq H_0^n\)">\(\{(au_1,\ldots,au_n):a\in\mathcal A\}\subseteq H_0^n\)</span>.
+The subspace reduces every diagonal <span class="math" data-tex="\(a\)">\(a\)</span>, so <span class="math" data-tex="\(Q\)">\(Q\)</span> commutes with them, and its entries <span class="math" data-tex="\(Q_{ij}\)">\(Q_{ij}\)</span> lie in <span class="math" data-tex="\(\mathcal A'\)">\(\mathcal A'\)</span>. The vector <span class="math" data-tex="\(u=(u_j)\)">\(u=(u_j)\)</span> belongs to its range even without a unit in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Indeed
+<span class="math" data-tex="\(a(I-Q)u=(I-Q)au=0\)">\(a(I-Q)u=(I-Q)au=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>; the common kernel is zero by nondegeneracy in each coordinate. A diagonal <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> commutes with <span class="math" data-tex="\(Q\)">\(Q\)</span>, so <span class="math" data-tex="\(xu\)">\(xu\)</span> is in the same closed orbit. Thus <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is strongly dense in <span class="math" data-tex="\(M\)">\(M\)</span>, hence weakly dense as well. Conversely <span class="math" data-tex="\(M\)">\(M\)</span> is strongly and weakly closed, since commutation with each fixed bounded operator is closed for both topologies. Therefore the closures agree with <span class="math" data-tex="\(M\)">\(M\)</span>. On the original space the closure is <span class="math" data-tex="\(M\oplus0\)">\(M\oplus0\)</span>, with identity <span class="math" data-tex="\(p\)">\(p\)</span>, not necessarily <span class="math" data-tex="\(I_H\)">\(I_H\)</span>.</p>
+<p>Write <span class="math" data-tex="\(B=\overline{\mathcal A}^{\|\cdot\|}\)">\(B=\overline{\mathcal A}^{\|\cdot\|}\)</span> on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. The self-adjoint part <span class="math" data-tex="\(B_{\rm sa}\)">\(B_{\rm sa}\)</span> is weakly dense in <span class="math" data-tex="\(M_{\rm sa}\)">\(M_{\rm sa}\)</span>: take a weakly convergent algebra net and symmetrize it; adjoint is weakly continuous.</p>
+<p>It is also strongly dense. If <span class="math" data-tex="\(x=x^*\)">\(x=x^*\)</span> could not be approximated on a finite tuple <span class="math" data-tex="\((u_j)\)">\((u_j)\)</span>, project its image <span class="math" data-tex="\((xu_j)\)">\((xu_j)\)</span> onto the real closed linear span of <span class="math" data-tex="\(\{(bu_j):b\in B_{\rm sa}\}\)">\(\{(bu_j):b\in B_{\rm sa}\}\)</span> in the real Hilbert space underlying <span class="math" data-tex="\(H_0^n\)">\(H_0^n\)</span>. The nonzero orthogonal difference supplies a functional
+<span class="math" data-tex="\(\operatorname{Re}\sum_j\langle bu_j,v_j\rangle\)">\(\operatorname{Re}\sum_j\langle bu_j,v_j\rangle\)</span>
+vanishing on <span class="math" data-tex="\(B_{\rm sa}\)">\(B_{\rm sa}\)</span> but not at <span class="math" data-tex="\(x\)">\(x\)</span>. This is weakly continuous, contradicting the preceding weak density. The real orthogonal projection is proved by the same parallelogram argument as SF-0; no locally convex separation theorem is used.</p>
+<p><a id="oa-flow.bd.2"></a></p>
+<h2 id="OA-FLOW.BD.2">BD-2. Continuous scalar functions stay in the algebra</h2>
+<p>Here is the precise elementary polynomial approximation needed. For continuous <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the Bernstein polynomials
+<span class="math math-display" data-tex="\[
+B_nf(t)=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}
+\tag{BD1}
+\]">\[
+B_nf(t)=\sum_{k=0}^n f(k/n){n\choose k}t^k(1-t)^{n-k}
+\tag{BD1}
+\]</span>
+converge uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>. The nonnegative coefficients at each <span class="math" data-tex="\(t\)">\(t\)</span> sum to one; their weighted second moment about <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(t(1-t)/n\)">\(t(1-t)/n\)</span>, as follows by differentiating the binomial identity twice. For fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the approximation error is at most
+<span class="math math-display" data-tex="\[
+\sup_{|s-t|\leq\delta}|f(s)-f(t)|
++\frac{2\|f\|_\infty}{4n\delta^2}.
+\tag{BD2}
+\]">\[
+\sup_{|s-t|\leq\delta}|f(s)-f(t)|
++\frac{2\|f\|_\infty}{4n\delta^2}.
+\tag{BD2}
+\]</span>
+This follows by bounding the mass of <span class="math" data-tex="\(|k/n-t|&gt;\delta\)">\(|k/n-t|&gt;\delta\)</span> by the second moment divided by <span class="math" data-tex="\(\delta^2\)">\(\delta^2\)</span>. First use uniform continuity to choose <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, then let <span class="math" data-tex="\(n\)">\(n\)</span> grow. Affine rescaling proves the result on any compact interval.</p>
+<p>If that interval contains zero and <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, subtract each approximating polynomial's value at zero to obtain polynomials with zero constant term, still converging uniformly. Hence for <span class="math" data-tex="\(b=b^*\in B\)">\(b=b^*\in B\)</span> and continuous <span class="math" data-tex="\(f\)">\(f\)</span> on a real interval containing its spectrum and zero, with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, spectral norm estimates give <span class="math" data-tex="\(f(b)\in B\)">\(f(b)\in B\)</span>. This includes the nonunital case. Real <span class="math" data-tex="\(f\)">\(f\)</span> can be approximated by real polynomials.</p>
+<p><a id="oa-flow.bd.3"></a></p>
+<h2 id="OA-FLOW.BD.3">BD-3. Self-adjoint and positive contraction density</h2>
+<p>Suppose <span class="math" data-tex="\(x=x^*\in M\)">\(x=x^*\in M\)</span> and <span class="math" data-tex="\(\|x\|\leq1\)">\(\|x\|\leq1\)</span>. The scalar function
+<span class="math math-display" data-tex="\[
+f(t)=\frac{2t}{1+t^2}
+\]">\[
+f(t)=\frac{2t}{1+t^2}
+\]</span>
+maps <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> bijectively onto itself. Its continuous inverse there is
+<span class="math" data-tex="\(g(s)=s/(1+\sqrt{1-s^2})\)">\(g(s)=s/(1+\sqrt{1-s^2})\)</span>, with <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>. Set <span class="math" data-tex="\(X=g(x)\)">\(X=g(x)\)</span>. Then <span class="math" data-tex="\(X=X^*\in M\)">\(X=X^*\in M\)</span>, <span class="math" data-tex="\(\|X\|\leq1\)">\(\|X\|\leq1\)</span>, and <span class="math" data-tex="\(f(X)=x\)">\(f(X)=x\)</span>. BD-1 gives self-adjoint <span class="math" data-tex="\(Y_\alpha\in B\)">\(Y_\alpha\in B\)</span> with <span class="math" data-tex="\(Y_\alpha\to X\)">\(Y_\alpha\to X\)</span> strongly; no bound on <span class="math" data-tex="\(\|Y_\alpha\|\)">\(\|Y_\alpha\|\)</span> is assumed.</p>
+<p>For either sign, the bounded resolvent identity is
+<span class="math math-display" data-tex="\[
+(Y_\alpha\pm i)^{-1}-(X\pm i)^{-1}
+=(Y_\alpha\pm i)^{-1}(X-Y_\alpha)(X\pm i)^{-1}.
+\tag{BD3}
+\]">\[
+(Y_\alpha\pm i)^{-1}-(X\pm i)^{-1}
+=(Y_\alpha\pm i)^{-1}(X-Y_\alpha)(X\pm i)^{-1}.
+\tag{BD3}
+\]</span>
+Each left resolvent factor has norm at most one. The right side tends strongly to zero, by testing the strong convergence on the fixed vector <span class="math" data-tex="\((X\pm i)^{-1}v\)">\((X\pm i)^{-1}v\)</span>. Since
+<span class="math math-display" data-tex="\[
+f(Y_\alpha)=(Y_\alpha-i)^{-1}+(Y_\alpha+i)^{-1},
+\tag{BD4}
+\]">\[
+f(Y_\alpha)=(Y_\alpha-i)^{-1}+(Y_\alpha+i)^{-1},
+\tag{BD4}
+\]</span>
+we get <span class="math" data-tex="\(f(Y_\alpha)\to x\)">\(f(Y_\alpha)\to x\)</span> strongly. These approximants are self-adjoint contractions and belong to <span class="math" data-tex="\(B\)">\(B\)</span>, by BD-2 and <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. This proves self-adjoint contraction density without bounding the original net.</p>
+<p>For <span class="math" data-tex="\(0\leq x\leq I\)">\(0\leq x\leq I\)</span>, apply that result to <span class="math" data-tex="\(x^{1/2}\)">\(x^{1/2}\)</span>. The resulting self-adjoint contractions <span class="math" data-tex="\(c_\alpha\in B\)">\(c_\alpha\in B\)</span> satisfy <span class="math" data-tex="\(c_\alpha^2\to x\)">\(c_\alpha^2\to x\)</span> strongly: expand the difference and use the common bound. Each square is a positive contraction.</p>
+<p>Now return to the original algebra <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. A self-adjoint contraction <span class="math" data-tex="\(c\in B\)">\(c\in B\)</span> can be approximated in norm within <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> by a self-adjoint <span class="math" data-tex="\(d\in\mathcal A\)">\(d\in\mathcal A\)</span>, by symmetrizing a norm approximant. Then <span class="math" data-tex="\(d/(1+\delta)\)">\(d/(1+\delta)\)</span> is a self-adjoint contraction in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, converging in norm to <span class="math" data-tex="\(c\)">\(c\)</span> as the error decreases. For positive approximation use
+<span class="math math-display" data-tex="\[
+\frac{d^2}{(1+\delta)^2}\in\mathcal A_+,\qquad
+0\leq\frac{d^2}{(1+\delta)^2}\leq I,
+\tag{BD5}
+\]">\[
+\frac{d^2}{(1+\delta)^2}\in\mathcal A_+,\qquad
+0\leq\frac{d^2}{(1+\delta)^2}\leq I,
+\tag{BD5}
+\]</span>
+which converges in norm to <span class="math" data-tex="\(c^2\)">\(c^2\)</span>. Given any finite-vector neighborhood and tolerance, first choose the <span class="math" data-tex="\(B\)">\(B\)</span> approximant and then the norm approximant. Ordering these neighborhoods by refinement produces the required nets in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. In particular positive contractions of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> converge strongly to <span class="math" data-tex="\(I_{H_0}\)">\(I_{H_0}\)</span>, and therefore to <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><a id="oa-flow.bd.4"></a></p>
+<h2 id="OA-FLOW.BD.4">BD-4. Arbitrary contractions and bounded strong-star approximation</h2>
+<p>For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> with <span class="math" data-tex="\(\|x\|\leq1\)">\(\|x\|\leq1\)</span>, the operator
+<span class="math math-display" data-tex="\[
+Z=\begin{pmatrix}0&amp;x\\x^*&amp;0\end{pmatrix}
+\tag{BD6}
+\]">\[
+Z=\begin{pmatrix}0&amp;x\\x^*&amp;0\end{pmatrix}
+\tag{BD6}
+\]</span>
+is a self-adjoint contraction on <span class="math" data-tex="\(H_0\oplus H_0\)">\(H_0\oplus H_0\)</span>. Entrywise approximation shows that the matrix algebra <span class="math" data-tex="\(M_2(\mathcal A)\)">\(M_2(\mathcal A)\)</span> is weakly dense in <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span>. The proof of BD-1–3 therefore gives self-adjoint contraction matrices <span class="math" data-tex="\(Z_\alpha\in M_2(\mathcal A)\)">\(Z_\alpha\in M_2(\mathcal A)\)</span> converging strongly to <span class="math" data-tex="\(Z\)">\(Z\)</span>. Let <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span> be their upper-right entries. Compression between the two summands gives <span class="math" data-tex="\(\|a_\alpha\|\leq1\)">\(\|a_\alpha\|\leq1\)</span>, <span class="math" data-tex="\(a_\alpha\to x\)">\(a_\alpha\to x\)</span> strongly, and, from the lower-left entries, <span class="math" data-tex="\(a_\alpha^*\to x^*\)">\(a_\alpha^*\to x^*\)</span> strongly. Thus the unit ball of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is strong-star dense in the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>All constructions use finite tuples and arbitrary directed neighborhood sets. No separability or sequential density is assumed. Degenerate representations are handled by <span class="math" data-tex="\(p\)">\(p\)</span>; when <span class="math" data-tex="\(\mathcal A=0\)">\(\mathcal A=0\)</span>, <span class="math" data-tex="\(H_0=0\)">\(H_0=0\)</span>, and the zero net gives all assertions.</p>
+<p><a id="oa-flow.bd.5"></a></p>
+<h2 id="OA-FLOW.BD.5">BD-5. What this supplies to the modular route</h2>
+<p>For WH-02, apply BD-4 to its represented C* algebra on the identity corner: every contraction in its bicommutant has a uniformly bounded strong, hence concrete ultraweak, approximating net. For WH-04, apply BD-3 to its nonunital represented right algebra once its nondegeneracy has been proved by the separate Hilbert-algebra density theorem. The net lies in that actual algebra, rather than only in its norm closure.</p>
+<p>Here the concrete ultraweak assertion uses only its defining vector series. Suppose <span class="math" data-tex="\(a_\alpha\to a\)">\(a_\alpha\to a\)</span> strongly and <span class="math" data-tex="\(\sup_\alpha\|a_\alpha\|,\|a\|\leq C\)">\(\sup_\alpha\|a_\alpha\|,\|a\|\leq C\)</span>. For square-summable vector sequences <span class="math" data-tex="\((u_n),(v_n)\)">\((u_n),(v_n)\)</span>, Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+\left|\sum_{n&gt;N}\langle(a_\alpha-a)u_n,v_n\rangle\right|
+\leq2C\left(\sum_{n&gt;N}\|u_n\|^2\right)^{1/2}
+\left(\sum_{n&gt;N}\|v_n\|^2\right)^{1/2}.
+\tag{BD7}
+\]">\[
+\left|\sum_{n&gt;N}\langle(a_\alpha-a)u_n,v_n\rangle\right|
+\leq2C\left(\sum_{n&gt;N}\|u_n\|^2\right)^{1/2}
+\left(\sum_{n&gt;N}\|v_n\|^2\right)^{1/2}.
+\tag{BD7}
+\]</span>
+The bound tends to zero uniformly in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The finite initial sum tends to zero by strong convergence. Thus every defining vector-series functional tends to zero on <span class="math" data-tex="\(a_\alpha-a\)">\(a_\alpha-a\)</span>, for arbitrary nets, which is exactly concrete ultraweak convergence.</p>
+<p>The construction supplies precisely the contraction and positive-contraction conclusions used from OA-FND-KD-07 Theorem 7.1. It does not prove normal-positive-map criteria, predual duality, compactness of dual balls, or Hilbert-algebra right-density. Those remain distinct inputs.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CI.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-BD.md">Lesson source</a></nav></main></body></html>

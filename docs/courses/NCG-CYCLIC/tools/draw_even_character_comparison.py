@@ -1,0 +1,36 @@
+"""Exact maps used in the finite even comparison, with no inferred triangulation."""
+from pathlib import Path
+from PIL import Image,ImageDraw,ImageFont
+root=Path(__file__).resolve().parents[1]
+im=Image.new('RGB',(3200,1370),'#f7f9fb');d=ImageDraw.Draw(im)
+def f(size,b=False):return ImageFont.truetype('C:/Windows/Fonts/'+('segoeuib.ttf' if b else 'seguisym.ttf'),size)
+def txt(x,y,s,size=35,b=False,c='#18394c'):d.text((x,y),s,font=f(size,b),fill=c)
+def arrow(a,b):
+ from math import hypot
+ d.line((a,b),fill='#167e95',width=7);dx,dy=b[0]-a[0],b[1]-a[1];n=hypot(dx,dy);u,v=dx/n,dy/n;p=(b[0]-25*u,b[1]-25*v)
+ d.polygon([b,(p[0]-12*v,p[1]+12*u),(p[0]+12*v,p[1]-12*u)],fill='#167e95')
+txt(95,55,'The even character: two injective comparisons',62,True)
+txt(95,155,'E2–E4 • actual maps, coefficient groups and relative representatives',38)
+for a in [(75,255,1540,1180),(1600,255,3125,1180)]:d.rounded_rectangle(a,radius=25,fill='white',outline='#cad7e0',width=3)
+txt(130,295,'1. Pull back to the finite splitting model',42,True)
+txt(180,440,'P  — finite simplicial model of F(V)',38)
+txt(180,625,'K  — original finite polyhedron',38)
+arrow((255,510),(255,600));txt(295,535,'f = pi composed with h',35)
+txt(150,745,'f*V = direct sum of L_1, ..., L_r',40)
+txt(150,825,'f* C(V) = Σ exp(c_1(L_j)) = f* ch(V)',35)
+txt(150,900,'f*: H*(K; C) → H*(P; C) is injective.',35)
+txt(150,995,'Therefore C(V) = ch(V) in H*(K; C).',38,True)
+txt(150,1080,'h is a homotopy equivalence; no triangulation of F(V) is assumed.',29)
+txt(1655,295,'2. Extend the specified relative class',42,True)
+txt(1660,415,'M = K glued to CL along L; projection constant on CL',33)
+txt(1660,485,'d ≥ 1;  coefficients are C',35)
+txt(1690,620,'H^d(M, CL)',40);txt(2610,620,'H^d(M)',40)
+arrow((2095,657),(2545,657));txt(2190,570,'isomorphism',30)
+arrow((1860,725),(1860,905))
+txt(1910,780,'exact cochain',29);txt(1910,825,'identification',29)
+txt(1690,930,'H^d(K, L)',40)
+txt(1660,1020,'Same image on M gives the same relative class.',35,True)
+txt(1660,1090,'CL contractible; constants restrict onto H^0(CL). Rank handles d = 0.',29)
+txt(100,1220,'Proof sources: CL line descent; WC wedge/cup; N naturality; Hatcher flag and finite-model proofs; R7 cone safeguard.',31)
+txt(100,1280,'Signs: c_1(O(-1))[CP^1] = -1; geometric degree 2m has factor (-1)^m. Odd suspension is proved in A9–A10.',31)
+out=root/'public/assets/even-character-comparison.png';im.save(out);print(str(out))

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normal positive maps and their preadjoints · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-NP.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="normal-positive-maps-and-their-preadjoints">Normal positive maps and their preadjoints</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>For a positive map, preserving increasing suprema is an order property. Ultraweak continuity is a topology property. This unit proves their equivalence and identifies the bounded map on preduals which records both. The proof applies to arbitrary von Neumann algebras and arbitrary bounded increasing nets, without separability, sigma-finiteness, faithfulness or identity preservation.</p>
+<h2 id="objects-and-the-direction-of-the-proof"><span id="oa-mod-np-01"></span><span id="OA-MOD-NP-01"></span>Objects and the direction of the proof</h2>
+<p>Let <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> and <span class="math" data-tex="\(N\subseteq B(K)\)">\(N\subseteq B(K)\)</span> be concrete von Neumann algebras on arbitrary complex Hilbert spaces. Use the preduals constructed in <strong>OA-MOD-CP-06</strong>, so</p>
+<span class="math math-display" data-tex="\[
+M=(M_*)^*,\qquad N=(N_*)^*
+\]">\[
+M=(M_*)^*,\qquad N=(N_*)^*
+\]</span>
+<p>isometrically, with the concrete ultraweak topologies <span class="math" data-tex="\(\sigma(M,M_*)\)">\(\sigma(M,M_*)\)</span> and <span class="math" data-tex="\(\sigma(N,N_*)\)">\(\sigma(N,N_*)\)</span>. Statements transfer along already established concrete von Neumann algebra isomorphisms; no abstract representation theorem is assumed here. Inner products are linear in the first variable. Zero algebras and zero maps are included.</p>
+<p>A bounded complex-linear map <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span> is <strong>positive</strong> when <span class="math" data-tex="\(T(M_+)\subseteq N_+\)">\(T(M_+)\subseteq N_+\)</span>. Say it is <strong>order normal</strong> when</p>
+<span class="math math-display" data-tex="\[
+T(a)=\sup_\alpha T(a_\alpha)
+\quad\text{for every bounded increasing net }0\le a_\alpha\uparrow a.
+\tag{NP.1}
+\]">\[
+T(a)=\sup_\alpha T(a_\alpha)
+\quad\text{for every bounded increasing net }0\le a_\alpha\uparrow a.
+\tag{NP.1}
+\]</span>
+<p>The domain net is indexed by an arbitrary nonempty directed set. Positivity makes the image increasing, and boundedness makes it norm bounded; BK-04 supplies its supremum.</p>
+<p><strong>Why boundedness is automatic here.</strong> Suppose only that <span class="math" data-tex="\(T\)">\(T\)</span> is positive and complex linear. Positive/negative parts from <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a> show that <span class="math" data-tex="\(T(h)\)">\(T(h)\)</span> is self-adjoint for self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>. Apply <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(-\|h\|1_M\le h\le\|h\|1_M\)">\(-\|h\|1_M\le h\le\|h\|1_M\)</span>. Since <span class="math" data-tex="\(T(1_M)\ge0\)">\(T(1_M)\ge0\)</span>, this gives</p>
+<span class="math math-display" data-tex="\[
+-\|h\|\|T1_M\|1_N\le T(h)\le\|h\|\|T1_M\|1_N,
+\qquad \|T(h)\|\le\|T1_M\|\|h\|.
+\]">\[
+-\|h\|\|T1_M\|1_N\le T(h)\le\|h\|\|T1_M\|1_N,
+\qquad \|T(h)\|\le\|T1_M\|\|h\|.
+\]</span>
+<p>For <span class="math" data-tex="\(x=h+ik\)">\(x=h+ik\)</span>, with <span class="math" data-tex="\(h=(x+x^*)/2\)">\(h=(x+x^*)/2\)</span> and <span class="math" data-tex="\(k=(x-x^*)/(2i)\)">\(k=(x-x^*)/(2i)\)</span>, both self-adjoint parts have norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|T(x)\|\le2\|T1_M\|\|x\|.
+\tag{NP.0}
+\]">\[
+\|T(x)\|\le2\|T1_M\|\|x\|.
+\tag{NP.0}
+\]</span>
+<p>This bound suffices to apply the theorems below to every positive complex-linear map between these algebras. It is not asserted to be the optimal norm formula. The zero-domain case gives the zero map directly.</p>
+<p>The exact inputs are:</p>
+<ul>
+<li><strong>The concrete predual and its intrinsic norm and Positive functionals, closed cones and norm closure:</strong> predual duality, identification with the ultraweakly continuous functionals, norm closure of the predual, positive spanning and positivity detection; for a positive functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, <span class="math" data-tex="\(\|\omega\|=\omega(1)\)">\(\|\omega\|=\omega(1)\)</span>.</li>
+<li><strong>The ultraweak convergence needed by finite cutoffs and Bounded increasing positive nets have strong suprema:</strong> concrete ultraweak topology and convergence of bounded increasing positive nets to their suprema.</li>
+<li><strong>The full characterization:</strong> an arbitrary order-normal weight is recovered pointwise on its positive cone as the supremum of its dominated positive ultraweakly continuous functionals.</li>
+<li><strong>The sigma-strong seminorms are vector seminorms:</strong> the sigma-strong seminorms <span class="math" data-tex="\(p_\omega(x)=\omega(x^*x)^{1/2}\)">\(p_\omega(x)=\omega(x^*x)^{1/2}\)</span>, and their comparison with concrete strong topology on explicitly bounded sets.</li>
+</ul>
+<p>This ordering is acyclic. The actual proof of NW-11 uses the finite-domain construction <strong>WG-003–006</strong>, not the representation-normality theorem <strong>WG-007</strong>. Its route from increasing-net normality to domination recovery is NW-02, NW-08 and NW-10. The predual and topology facts used there are constructed in CP without the scalar converse below. The written convex inputs are now in <span class="unlinked">CV1–CV4</span>, and <a href="OA-MOD-NW.html#oa-mod-nw-01">NW01</a> identifies their exact uses. <a href="OA-MOD-NW.html#oa-mod-nw-11">NW11</a> proves the weight theorem; <a href="OA-MOD-CP.html#oa-mod-cp-06">CP06–CP08</a> and <a href="OA-MOD-BK.html#oa-mod-bk-03">BK03–BK04</a> supply the bounded predual and topology facts. These are written programme proofs, not external citations in place of arguments.</p>
+<h2 id="the-scalar-normality-criterion"><span id="OA-MOD-NP-02"></span><span id="oa-mod-np-02"></span>The scalar normality criterion</h2>
+<p><strong>Theorem.</strong> A bounded positive linear functional <span class="math" data-tex="\(\omega:M\to\mathbb C\)">\(\omega:M\to\mathbb C\)</span> preserves bounded increasing positive suprema if and only if <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>, equivalently if and only if it is ultraweakly continuous.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\omega\in M_*^+\)">\(\omega\in M_*^+\)</span>, BK-04 gives <span class="math" data-tex="\(a_\alpha\to a\)">\(a_\alpha\to a\)</span> ultraweakly whenever <span class="math" data-tex="\(0\le a_\alpha\uparrow a\)">\(0\le a_\alpha\uparrow a\)</span> is bounded. Continuity and positivity give <span class="math" data-tex="\(\omega(a_\alpha)\uparrow\omega(a)\)">\(\omega(a_\alpha)\uparrow\omega(a)\)</span>.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(\omega\)">\(\omega\)</span> preserves these suprema. Its restriction to <span class="math" data-tex="\(M_+\)">\(M_+\)</span> is a finite-valued normal weight. By NW-11,</p>
+<span class="math math-display" data-tex="\[
+\omega(a)=\sup\{\psi(a):\psi\in M_*^+,\ 
+\psi(b)\le\omega(b)\text{ for all }b\in M_+\}.
+\tag{NP.2}
+\]">\[
+\omega(a)=\sup\{\psi(a):\psi\in M_*^+,\ 
+\psi(b)\le\omega(b)\text{ for all }b\in M_+\}.
+\tag{NP.2}
+\]</span>
+<p>If <span class="math" data-tex="\(\omega(1)=0\)">\(\omega(1)=0\)</span>, the positive norm formula gives <span class="math" data-tex="\(\omega=0\)">\(\omega=0\)</span>. Otherwise, use (NP.2) only at <span class="math" data-tex="\(a=1\)">\(a=1\)</span> to choose <span class="math" data-tex="\(\psi_n\in M_*^+\)">\(\psi_n\in M_*^+\)</span> with <span class="math" data-tex="\(\psi_n\le\omega\)">\(\psi_n\le\omega\)</span> and</p>
+<span class="math math-display" data-tex="\[
+0\le\omega(1)-\psi_n(1)&lt;1/n.
+\]">\[
+0\le\omega(1)-\psi_n(1)&lt;1/n.
+\]</span>
+<p>The difference is positive, so CP-07 gives</p>
+<span class="math math-display" data-tex="\[
+\|\omega-\psi_n\|=\omega(1)-\psi_n(1)\longrightarrow0.
+\tag{NP.3}
+\]">\[
+\|\omega-\psi_n\|=\omega(1)-\psi_n(1)\longrightarrow0.
+\tag{NP.3}
+\]</span>
+<p>By norm closure from CP-06, <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, and it is positive by hypothesis. ∎</p>
+<p>Neither the family of dominated functionals nor the chosen sequence is asserted to be increasing. A sequence suffices here because it approximates one finite scalar supremum. This does not replace the arbitrary nets in the definition of normality.</p>
+<h2 id="ultraweak-continuity-is-exactly-existence-of-a-preadjoint">Ultraweak continuity is exactly existence of a preadjoint</h2>
+<p>This statement does not require positivity.</p>
+<p><strong>Theorem.</strong> A bounded complex-linear <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span> is ultraweakly continuous if and only if there is a bounded complex-linear map</p>
+<span class="math math-display" data-tex="\[
+T_*:N_*\longrightarrow M_*
+\]">\[
+T_*:N_*\longrightarrow M_*
+\]</span>
+<p>such that</p>
+<span class="math math-display" data-tex="\[
+(T_*\psi)(x)=\psi(Tx)\qquad(\psi\in N_*,\ x\in M).
+\tag{NP.4}
+\]">\[
+(T_*\psi)(x)=\psi(Tx)\qquad(\psi\in N_*,\ x\in M).
+\tag{NP.4}
+\]</span>
+<p>The map is unique, its Banach adjoint is <span class="math" data-tex="\(T\)">\(T\)</span> under the predual identifications, and</p>
+<span class="math math-display" data-tex="\[
+\|T_*\|=\|T\|.
+\tag{NP.5}
+\]">\[
+\|T_*\|=\|T\|.
+\tag{NP.5}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(T\)">\(T\)</span> is ultraweakly continuous, <span class="math" data-tex="\(\psi T\)">\(\psi T\)</span> is an ultraweakly continuous functional on <span class="math" data-tex="\(M\)">\(M\)</span>, hence belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span> by CP-06. Define <span class="math" data-tex="\(T_*\psi=\psi T\)">\(T_*\psi=\psi T\)</span>. This is linear and</p>
+<span class="math math-display" data-tex="\[
+\|T_*\psi\|\le\|T\|\|\psi\|.
+\]">\[
+\|T_*\psi\|\le\|T\|\|\psi\|.
+\]</span>
+<p>Evaluation proves that <span class="math" data-tex="\(T_*^*=T\)">\(T_*^*=T\)</span>.</p>
+<p>Conversely, if (NP.4) holds and <span class="math" data-tex="\(x_\alpha\to x\)">\(x_\alpha\to x\)</span> ultraweakly, then</p>
+<span class="math math-display" data-tex="\[
+\psi(Tx_\alpha)=(T_*\psi)(x_\alpha)
+\longrightarrow(T_*\psi)(x)=\psi(Tx)
+\]">\[
+\psi(Tx_\alpha)=(T_*\psi)(x_\alpha)
+\longrightarrow(T_*\psi)(x)=\psi(Tx)
+\]</span>
+<p>for every <span class="math" data-tex="\(\psi\in N_*\)">\(\psi\in N_*\)</span>. These are exactly the tests for ultraweak convergence in <span class="math" data-tex="\(N\)">\(N\)</span>. There is no norm-bound requirement on this net.</p>
+<p>Two preadjoints agree on evaluation at every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, so they are equal. Finally, isometric duality for <span class="math" data-tex="\(N\)">\(N\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|=\sup_{\psi\in N_*,\,\|\psi\|\le1}|\psi(Tx)|
+\le\|T_*\|\|x\|.
+\]">\[
+\|Tx\|=\sup_{\psi\in N_*,\,\|\psi\|\le1}|\psi(Tx)|
+\le\|T_*\|\|x\|.
+\]</span>
+<p>This proves <span class="math" data-tex="\(\|T\|\le\|T_*\|\)">\(\|T\|\le\|T_*\|\)</span>, completing the norm equality, including zero cases. ∎</p>
+<p>The map <span class="math" data-tex="\(T_*\)">\(T_*\)</span> is the <strong>preadjoint</strong>. It acts on the specified preduals, not on the entire bounded duals <span class="math" data-tex="\(N^*\)">\(N^*\)</span> and <span class="math" data-tex="\(M^*\)">\(M^*\)</span>.</p>
+<h2 id="the-positive-map-equivalence"><span id="OA-MOD-NP-04"></span><span id="oa-mod-np-04"></span>The positive-map equivalence</h2>
+<p><strong>Theorem.</strong> For a bounded positive complex-linear <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> preserves every bounded increasing positive-net supremum.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is ultraweakly continuous.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> has the bounded preadjoint of NP-03.</li>
+</ol>
+<p>The preadjoint is positive and has the same norm as <span class="math" data-tex="\(T\)">\(T\)</span>. Any of these equivalent properties is called <strong>normality</strong>.</p>
+<p><strong>Proof of 1 ⇒ 2.</strong> Let <span class="math" data-tex="\(\psi\in N_*^+\)">\(\psi\in N_*^+\)</span>. CP-07 shows that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> preserves bounded increasing positive suprema. If <span class="math" data-tex="\(a_\alpha\uparrow a\)">\(a_\alpha\uparrow a\)</span>, assumption 1 and this scalar fact give</p>
+<span class="math math-display" data-tex="\[
+\psi(Ta)=\sup_\alpha\psi(Ta_\alpha).
+\]">\[
+\psi(Ta)=\sup_\alpha\psi(Ta_\alpha).
+\]</span>
+<p>Thus <span class="math" data-tex="\(\psi T\)">\(\psi T\)</span> is a bounded positive order-normal functional. NP-02 puts it in <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>.</p>
+<p>Positive predual functionals span <span class="math" data-tex="\(N_*\)">\(N_*\)</span> by CP-07. It follows that <span class="math" data-tex="\(\psi T\in M_*\)">\(\psi T\in M_*\)</span> for every <span class="math" data-tex="\(\psi\in N_*\)">\(\psi\in N_*\)</span>. Every defining ultraweak test on the target therefore pulls back to an ultraweakly continuous test on the source. This proves continuity.</p>
+<p><strong>Proof of 2 ⇒ 1.</strong> Let <span class="math" data-tex="\(0\le a_\alpha\uparrow a\)">\(0\le a_\alpha\uparrow a\)</span> be bounded. BK-04 and continuity give
+<span class="math" data-tex="\(T(a_\alpha)\to T(a)\)">\(T(a_\alpha)\to T(a)\)</span> ultraweakly. Positivity makes <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span> an upper bound. If <span class="math" data-tex="\(y=y^*\in N\)">\(y=y^*\in N\)</span> is another upper bound, then
+<span class="math" data-tex="\(y-T(a_\alpha)\ge0\)">\(y-T(a_\alpha)\ge0\)</span> for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.
+The ultraweakly closed positive cone from CP-07 gives
+<span class="math" data-tex="\(y-T(a)\ge0\)">\(y-T(a)\ge0\)</span>. Thus <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span> is the least upper bound.</p>
+<p>The equivalence of 2 and 3 and the norm assertion are NP-03. For <span class="math" data-tex="\(\psi\in N_*^+\)">\(\psi\in N_*^+\)</span>, composition <span class="math" data-tex="\(\psi T\)">\(\psi T\)</span> is positive, proving positivity of <span class="math" data-tex="\(T_*\)">\(T_*\)</span>. ∎</p>
+<p>This proves <strong>OA-MOD-DEP-NORMAL-MAPS</strong>, relative to the exact prerequisites in NP-01. The order clause is about arbitrary directed nets, and does not require a unit-preserving map or a faithful normal state.</p>
+<h2 id="composition-and-the-converse-construction">Composition and the converse construction</h2>
+<p>If <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span> and <span class="math" data-tex="\(R:N\to P\)">\(R:N\to P\)</span> are normal bounded positive maps, their composite is positive and ultraweakly continuous, hence normal. Evaluation gives</p>
+<span class="math math-display" data-tex="\[
+(RT)_*=T_*R_*,
+\qquad
+(\operatorname{id}_M)_*=\operatorname{id}_{M_*}.
+\tag{NP.6}
+\]">\[
+(RT)_*=T_*R_*,
+\qquad
+(\operatorname{id}_M)_*=\operatorname{id}_{M_*}.
+\tag{NP.6}
+\]</span>
+<p>Indeed, for <span class="math" data-tex="\(\rho\in P_*\)">\(\rho\in P_*\)</span> and <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,
+<span class="math" data-tex="\((T_*R_*\rho)(x)=\rho(R(Tx))\)">\((T_*R_*\rho)(x)=\rho(R(Tx))\)</span>.
+Uniqueness in NP-03 proves the identity. The arrows reverse, and only
+<span class="math" data-tex="\(\|RT\|\le\|R\|\|T\|\)">\(\|RT\|\le\|R\|\|T\|\)</span> is automatic.</p>
+<p>Conversely, a bounded positive linear <span class="math" data-tex="\(S:N_*\to M_*\)">\(S:N_*\to M_*\)</span>, where positivity means preservation of the predual positive cones, determines a unique normal positive map <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span>. For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the functional
+<span class="math" data-tex="\(\psi\mapsto(S\psi)(x)\)">\(\psi\mapsto(S\psi)(x)\)</span> on <span class="math" data-tex="\(N_*\)">\(N_*\)</span> has norm at most <span class="math" data-tex="\(\|S\|\|x\|\)">\(\|S\|\|x\|\)</span>. Duality for <span class="math" data-tex="\(N\)">\(N\)</span> defines <span class="math" data-tex="\(Tx\)">\(Tx\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\psi(Tx)=(S\psi)(x).
+\]">\[
+\psi(Tx)=(S\psi)(x).
+\]</span>
+<p>This defines a bounded linear map, and NP-03 gives ultraweak continuity, <span class="math" data-tex="\(T_*=S\)">\(T_*=S\)</span>, and equality of norms. If <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span> and <span class="math" data-tex="\(\psi\in N_*^+\)">\(\psi\in N_*^+\)</span>, the right side is nonnegative. Positivity detection by the predual gives <span class="math" data-tex="\(Tx\ge0\)">\(Tx\ge0\)</span>, so NP-04 makes <span class="math" data-tex="\(T\)">\(T\)</span> normal.</p>
+<p>This is a correspondence between bounded normal positive maps of the algebras and bounded positive maps in the reverse direction on their preduals. No order-completeness structure on the predual itself is being asserted.</p>
+<h2 id="normal-representations-and-sigma-strong-continuity"><span id="oa-mod-np-06"></span><span id="OA-MOD-NP-06"></span>Normal representations and sigma-strong continuity</h2>
+<p>Let <span class="math" data-tex="\(\pi:M\to N\)">\(\pi:M\to N\)</span> be a complex-linear *-homomorphism. It need not preserve the ambient identity. The element <span class="math" data-tex="\(e=\pi(1_M)\)">\(e=\pi(1_M)\)</span> is a projection and
+<span class="math" data-tex="\(\pi(x)=e\pi(x)e\)">\(\pi(x)=e\pi(x)e\)</span>.
+Positive square-root factorization proves that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is positive. Applying it to <span class="math" data-tex="\(x^*x\le\|x\|^2 1_M\)">\(x^*x\le\|x\|^2 1_M\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+0\le\pi(x)^*\pi(x)=\pi(x^*x)\le\|x\|^2e.
+\]">\[
+0\le\pi(x)^*\pi(x)=\pi(x^*x)\le\|x\|^2e.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is contractive. It has norm one if nonzero, since then <span class="math" data-tex="\(e\)">\(e\)</span> is a nonzero projection; otherwise its norm is zero.</p>
+<p>NP-04 applies: preserving increasing positive suprema, ultraweak continuity and existence of a preadjoint are equivalent for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. If these hold, then for every <span class="math" data-tex="\(\psi\in N_*^+\)">\(\psi\in N_*^+\)</span>,</p>
+<span class="math math-display" data-tex="\[
+p_\psi(\pi(x))^2
+=\psi(\pi(x)^*\pi(x))
+=(\pi_*\psi)(x^*x)
+=p_{\pi_*\psi}(x)^2.
+\tag{NP.7}
+\]">\[
+p_\psi(\pi(x))^2
+=\psi(\pi(x)^*\pi(x))
+=(\pi_*\psi)(x^*x)
+=p_{\pi_*\psi}(x)^2.
+\tag{NP.7}
+\]</span>
+<p>Since <span class="math" data-tex="\(\pi_*\psi\in M_*^+\)">\(\pi_*\psi\in M_*^+\)</span>, this proves sigma-strong continuity on the entire algebra. Applying the same equality to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> proves sigma-strong* continuity. No norm-bound restriction is needed for these two assertions.</p>
+<p>In concrete representations, CP-08 consequently gives strong and strong* continuity on norm-bounded sets. It does not replace the preceding assertions by unrestricted strong-operator continuity. Also,</p>
+<span class="math math-display" data-tex="\[
+\|\pi_*\psi\|=\psi(e)\qquad(\psi\in N_*^+).
+\]">\[
+\|\pi_*\psi\|=\psi(e)\qquad(\psi\in N_*^+).
+\]</span>
+<p>A normal state may therefore pull back to a functional of norm less than one, or zero, when <span class="math" data-tex="\(e\ne1_N\)">\(e\ne1_N\)</span>.</p>
+<p><strong>Isomorphisms of already established von Neumann algebras.</strong> If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a bijective *-homomorphism, both it and its inverse are positive and contractive. They are order isomorphisms on the self-adjoint parts, so they preserve every existing positive supremum: transport any competing upper bound through the inverse. By NP-04 they are ultraweakly continuous, and by (NP.7) they are sigma-strong and sigma-strong* continuous. Their preadjoints are inverse isometries, as follows from (NP.6) and contractivity in both directions. Thus these concrete topologies and preduals agree under such an isomorphism.</p>
+<p>This statement assumes both algebras are already von Neumann algebras. It does not prove that the image of a faithful normal representation is weak operator closed. In particular it is not a substitute for the separate normal-representation image theorem. WG-007's order-net proof for a normal weight's GNS representation may now use NP-04 for its final normality step; WG-007 is a consumer of this theorem, not an input to NP-02.</p>
+<h2 id="a-model-with-arbitrarily-many-normal-observations">A model with arbitrarily many normal observations</h2>
+<p>For an arbitrary set <span class="math" data-tex="\(I\)">\(I\)</span>, represent <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> diagonally on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>. The diagonal algebra is weak operator closed: a weak operator limit has zero off-diagonal coefficients, and its diagonal entries are bounded by the norm of the limiting operator.</p>
+<p>Its concrete predual is <span class="math" data-tex="\(\ell^1(I)\)">\(\ell^1(I)\)</span>, with pairing</p>
+<span class="math math-display" data-tex="\[
+\langle a,b\rangle=\sum_{i\in I}b_i a_i,
+\qquad a\in\ell^\infty(I),\ b\in\ell^1(I).
+\tag{NP.8}
+\]">\[
+\langle a,b\rangle=\sum_{i\in I}b_i a_i,
+\qquad a\in\ell^\infty(I),\ b\in\ell^1(I).
+\tag{NP.8}
+\]</span>
+<p>Here an absolutely summable family means that the supremum of its finite absolute subsums is finite; its support is countable, because for each positive integer <span class="math" data-tex="\(m\)">\(m\)</span> only finitely many coefficients can have magnitude at least <span class="math" data-tex="\(1/m\)">\(1/m\)</span>.</p>
+<p>To verify the predual assertion from CP, restrict a vector-series functional to diagonal operators. Its coefficients are</p>
+<span class="math math-display" data-tex="\[
+b_i=\sum_n \xi_{n,i}\overline{\eta_{n,i}},
+\qquad
+\sum_i|b_i|
+\le\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty.
+\]">\[
+b_i=\sum_n \xi_{n,i}\overline{\eta_{n,i}},
+\qquad
+\sum_i|b_i|
+\le\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty.
+\]</span>
+<p>The absolute bound justifies interchanging the sums. To make this explicit, for finite <span class="math" data-tex="\(F\subseteq I\)">\(F\subseteq I\)</span> and finite <span class="math" data-tex="\(E\subseteq\mathbb N\)">\(E\subseteq\mathbb N\)</span>, Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\in E}\sum_{i\in F}|\xi_{n,i}\overline{\eta_{n,i}}|
+\le\sum_{n\in E}\|\xi_n\|\|\eta_n\|.
+\]">\[
+\sum_{n\in E}\sum_{i\in F}|\xi_{n,i}\overline{\eta_{n,i}}|
+\le\sum_{n\in E}\|\xi_n\|\|\eta_n\|.
+\]</span>
+<p>Taking finite-subsum suprema proves absolute summability on <span class="math" data-tex="\(\mathbb N\times I\)">\(\mathbb N\times I\)</span>. A finite subset with absolute sum within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of the total makes every disjoint finite tail smaller than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; the same estimate controls tails in either order of summation. Thus both iterated sums converge to the same scalar sum. No countability of <span class="math" data-tex="\(I\)">\(I\)</span> is used. Conversely, given <span class="math" data-tex="\(b\in\ell^1(I)\)">\(b\in\ell^1(I)\)</span>, choose
+<span class="math" data-tex="\(\xi_i=b_i/\sqrt{|b_i|}\)">\(\xi_i=b_i/\sqrt{|b_i|}\)</span>, <span class="math" data-tex="\(\eta_i=\sqrt{|b_i|}\)">\(\eta_i=\sqrt{|b_i|}\)</span> where <span class="math" data-tex="\(b_i\ne0\)">\(b_i\ne0\)</span>, and set both to zero otherwise. These are square-summable vectors and give (NP.8) as one vector coefficient. The functional norm is <span class="math" data-tex="\(\sum_i|b_i|\)">\(\sum_i|b_i|\)</span>: the upper bound is immediate, and the reverse bound tests the bounded phases <span class="math" data-tex="\(a_i=\overline{b_i}/|b_i|\)">\(a_i=\overline{b_i}/|b_i|\)</span>, with arbitrary bounded values at zero coefficients. CP-06 now supplies exactly the claimed predual identification.</p>
+<p>Let <span class="math" data-tex="\((\omega_i)_{i\in I}\subseteq M_*^+\)">\((\omega_i)_{i\in I}\subseteq M_*^+\)</span> satisfy
+<span class="math" data-tex="\(C=\sup_i\|\omega_i\|&lt;\infty\)">\(C=\sup_i\|\omega_i\|&lt;\infty\)</span>, with the empty supremum interpreted as zero. Define</p>
+<span class="math math-display" data-tex="\[
+T:M\to\ell^\infty(I),\qquad (Tx)_i=\omega_i(x).
+\]">\[
+T:M\to\ell^\infty(I),\qquad (Tx)_i=\omega_i(x).
+\]</span>
+<p>It is bounded and positive, with <span class="math" data-tex="\(\|T\|=\sup_i\|\omega_i\|\)">\(\|T\|=\sup_i\|\omega_i\|\)</span>, by taking the two independent suprema over <span class="math" data-tex="\(i\)">\(i\)</span> and the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span>. Increasing bounded positive suprema in the diagonal algebra are coordinatewise, so the scalar normality of each <span class="math" data-tex="\(\omega_i\)">\(\omega_i\)</span> proves that <span class="math" data-tex="\(T\)">\(T\)</span> is normal. Its preadjoint is</p>
+<span class="math math-display" data-tex="\[
+T_*b=\sum_{i\in I}b_i\omega_i,
+\tag{NP.9}
+\]">\[
+T_*b=\sum_{i\in I}b_i\omega_i,
+\tag{NP.9}
+\]</span>
+<p>where the sum converges absolutely in the Banach space <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, since
+<span class="math" data-tex="\(\sum_i\|b_i\omega_i\|\le C\sum_i|b_i|\)">\(\sum_i\|b_i\omega_i\|\le C\sum_i|b_i|\)</span>.
+Evaluation proves the formula.</p>
+<p>If every <span class="math" data-tex="\(\omega_i\)">\(\omega_i\)</span> is a state, <span class="math" data-tex="\(T\)">\(T\)</span> preserves the identity. There is no requirement that one of them be faithful, that <span class="math" data-tex="\(I\)">\(I\)</span> be countable, or that their family be norm separable. For nonempty <span class="math" data-tex="\(I\)">\(I\)</span>, the identity map of <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> is obtained by taking the coordinate states, even when <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable.</p>
+<h2 id="three-exercises-with-complete-solutions">Three exercises with complete solutions</h2>
+<p><strong>1. Detecting the identity on the predual.</strong> For normal bounded positive <span class="math" data-tex="\(T:M\to N\)">\(T:M\to N\)</span>, prove</p>
+<span class="math math-display" data-tex="\[
+T(1_M)=1_N
+\quad\Longleftrightarrow\quad
+\|T_*\psi\|=\|\psi\|\quad(\psi\in N_*^+).
+\]">\[
+T(1_M)=1_N
+\quad\Longleftrightarrow\quad
+\|T_*\psi\|=\|\psi\|\quad(\psi\in N_*^+).
+\]</span>
+<p>Give also the corresponding inequality criterion for <span class="math" data-tex="\(T(1_M)\le1_N\)">\(T(1_M)\le1_N\)</span>, and explain the proper-identity case.</p>
+<p><strong>Solution.</strong> Positivity and the scalar norm formula give</p>
+<span class="math math-display" data-tex="\[
+\|T_*\psi\|=\psi(T1_M),\qquad \|\psi\|=\psi(1_N).
+\]">\[
+\|T_*\psi\|=\psi(T1_M),\qquad \|\psi\|=\psi(1_N).
+\]</span>
+<p>Unitality proves equality. Conversely, equality makes every positive predual functional vanish on the self-adjoint element <span class="math" data-tex="\(T1_M-1_N\)">\(T1_M-1_N\)</span>. Vector tests and polarization force it to be zero. The same positivity-detection argument gives</p>
+<span class="math math-display" data-tex="\[
+T1_M\le1_N
+\quad\Longleftrightarrow\quad
+\|T_*\psi\|\le\|\psi\|\quad(\psi\in N_*^+).
+\]">\[
+T1_M\le1_N
+\quad\Longleftrightarrow\quad
+\|T_*\psi\|\le\|\psi\|\quad(\psi\in N_*^+).
+\]</span>
+<p>For <span class="math" data-tex="\(\pi(x)=\operatorname{diag}(x,0)\)">\(\pi(x)=\operatorname{diag}(x,0)\)</span>, a vector state supported in the second summand pulls back to zero; the normal homomorphism preserves the identity of its own image, not that of the full target.</p>
+<p><strong>2. Why multiplicativity was needed for sigma-strong continuity.</strong> On <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(J\)">\(J\)</span> be coordinate conjugation and set
+<span class="math" data-tex="\(\tau(x)=Jx^*J\)">\(\tau(x)=Jx^*J\)</span>. Prove that <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is normal and positive, but is not sigma-strong continuous.</p>
+<p><strong>Solution.</strong> Taking an adjoint and conjugating by <span class="math" data-tex="\(J\)">\(J\)</span> each reverses complex scalars, so their combination is complex linear. The map is isometric. For <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle\tau(x)\xi,\xi\rangle
+=\overline{\langle xJ\xi,J\xi\rangle}\ge0,
+\]">\[
+\langle\tau(x)\xi,\xi\rangle
+=\overline{\langle xJ\xi,J\xi\rangle}\ge0,
+\]</span>
+<p>proving positivity. More generally,</p>
+<span class="math math-display" data-tex="\[
+\langle\tau(x)\xi,\eta\rangle=\langle xJ\eta,J\xi\rangle.
+\]">\[
+\langle\tau(x)\xi,\eta\rangle=\langle xJ\eta,J\xi\rangle.
+\]</span>
+<p>This turns each square-summable vector-series test into another such test, proving ultraweak continuity and hence normality.</p>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, let <span class="math" data-tex="\(x_n=e_{1n}\)">\(x_n=e_{1n}\)</span>, so <span class="math" data-tex="\(x_n\xi=\langle\xi,e_n\rangle e_1\)">\(x_n\xi=\langle\xi,e_n\rangle e_1\)</span>. This norm-one sequence converges strongly to zero, hence sigma-strongly by CP-08. Its transpose is <span class="math" data-tex="\(e_{n1}\)">\(e_{n1}\)</span>, which sends <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(e_n\)">\(e_n\)</span> and is not strongly null. Thus <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is not sigma-strong continuous. It reverses products; it is not a *-homomorphism. NP-06 therefore cannot be extended to all normal positive maps by dropping multiplicativity.</p>
+<p><strong>3. A normal positive map with nonclosed range.</strong> Define
+<span class="math" data-tex="\(T:\ell^\infty(\mathbb N)\to\ell^\infty(\mathbb N)\)">\(T:\ell^\infty(\mathbb N)\to\ell^\infty(\mathbb N)\)</span> by
+<span class="math" data-tex="\((Ta)_n=a_n/n\)">\((Ta)_n=a_n/n\)</span>. Determine its preadjoint and whether its range is norm closed or ultraweakly closed.</p>
+<p><strong>Solution.</strong> Coordinatewise suprema show that <span class="math" data-tex="\(T\)">\(T\)</span> is order normal, and it is positive. Its norm is one by the coordinate <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Under (NP.8),</p>
+<span class="math math-display" data-tex="\[
+(T_*b)_n=b_n/n,\qquad \|T_*\|=1.
+\]">\[
+(T_*b)_n=b_n/n,\qquad \|T_*\|=1.
+\]</span>
+<p>The range contains every finitely supported sequence. Truncations of any bounded sequence converge ultraweakly by absolute summability of every <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> test, so this range is ultraweakly dense. It is proper, since the constant sequence <span class="math" data-tex="\(1\)">\(1\)</span> has no bounded preimage; hence it is not ultraweakly closed.</p>
+<p>It is not norm closed either. The finite truncations of <span class="math" data-tex="\(c_n=n^{-1/2}\)">\(c_n=n^{-1/2}\)</span> lie in the range and converge in supremum norm to <span class="math" data-tex="\(c\)">\(c\)</span>. Its necessary preimage is <span class="math" data-tex="\(n^{1/2}\)">\(n^{1/2}\)</span>, which is unbounded. This example is a positive map, not a representation, and makes no assertion about the separate faithful-normal representation image theorem.</p>
+<h2 id="exact-exports-and-boundaries">Exact exports and boundaries</h2>
+<p>NP-02 closes the bounded scalar order-normal/ultraweak equivalence. NP-03 proves the preadjoint characterization and exact norm for arbitrary bounded linear maps. NP-04 supplies <strong>OA-MOD-DEP-NORMAL-MAPS</strong> and the positive normal-map clause of <strong>OA-MOD-DEP-PREDUAL</strong>. NP-05 proves composition and the converse positive-predual construction. NP-06 gives the representation specialization, sigma-strong(+*) continuity, and transport under isomorphisms between already established concrete von Neumann algebras.</p>
+<p>The proofs use the written CP, BK and NW prerequisites identified in NP01. No universal <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-bidual theorem, normal-representation image-closure theorem, predual uniqueness theorem or spectral theorem is supplied by this unit.</p>
+<p><strong>Related literature.</strong> Uffe Haagerup's <a href="https://doi.org/10.1016/0022-1236(75)90060-9"><em>Normal weights on <span class="math" data-tex="\(W^*\)">\(W^*\)</span>-algebras</em></a>, Corollary 1.9, identifies the scalar order and ultraweak notions. NP02 proves this consequence from the full weight theorem NW11 using approximation at the identity and norm closure of the concrete predual.</p>
+<p>Abraham A. Westerbaan's <a href="https://arxiv.org/abs/1804.02203v2"><em>The Category of Von Neumann Algebras</em>, version 2</a>, Exercise 44 XV and Exercise 45 I, PDF p. 85, give the positive-map equivalence and the transpose phenomenon. His Definition 42 II–III, p. 79, starts with order-normal positive functionals and uses them to define the ultraweak topology. Our CP lessons instead construct the concrete predual from vector-series functionals. The scalar bridge NP02 is therefore proved explicitly here; Exercise 44 XV alone would not supply it under our starting definitions. NP08 develops the transpose hint with the full coefficient calculation and matrix-unit sequence. The preadjoint proofs, arbitrary-index model and three worked solutions are written in full above; these classical results and examples are not claimed as new discoveries.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-BA.html">← Countable amplification and ultraweak bicommutant closure</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-GV.html">The vector retained by a comparison map →</a></span></nav>
+<p class="small source-link"><a href="src/normal-positive-maps.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

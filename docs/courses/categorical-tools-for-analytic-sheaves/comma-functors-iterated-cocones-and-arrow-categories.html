@@ -1,0 +1,755 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comma functors, iterated cocones and arrow categories</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Original exposition, written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort, with complete retained arguments and linked free primary proofs. A separate scoped model check covers the specified arguments, their complete prerequisite interfaces and four exercise solutions. It adds no whole-lesson or whole-course review. Model source and locus reading; no Lean build or human endorsement. Original exposition uses CC0 1.0; linked complete proofs retain their stated terms.</p><h1 id="comma-functors-iterated-cocones-and-arrow-categories">Comma functors, iterated cocones and arrow categories</h1>
+<p>A stage chosen in one diagram may have to be compared with a stage chosen in another. Keeping only the two stages loses the comparison arrow. A comma category keeps all three pieces. Its projections then answer two different questions: whether these linked stages can replace the original index, and whether assembly over the linked stages can be performed one fibre at a time.</p>
+<p>The same construction organizes commuting squares. An arrow between two source objects, together with a square to a fixed target arrow, is a comma object between two ordinary outgoing comma categories. This observation lets us transfer filteredness, cofinality and size bounds to arrow categories.</p>
+<h2 id="1-retain-the-arrow-between-the-two-stages">1. Retain the arrow between the two stages</h2>
+<p>Fix ambient set-categories and functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+I\xrightarrow{\phi}K\xleftarrow{\psi}J.
+\tag{1.1}
+\]">\[
+I\xrightarrow{\phi}K\xleftarrow{\psi}J.
+\tag{1.1}
+\]</span>
+<p>Composition is written from right to left. The category</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.2); horizontal scroll when needed" data-tex="\[
+M=(\phi\downarrow\psi)
+\tag{1.2}
+\]">\[
+M=(\phi\downarrow\psi)
+\tag{1.2}
+\]</span>
+<p>has objects <span class="math" data-tex="\((i,j,u)\)">\((i,j,u)\)</span>, where <span class="math" data-tex="\(u:\phi(i)\to\psi(j)\)">\(u:\phi(i)\to\psi(j)\)</span>. An arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(v,w):(i,j,u)\longrightarrow(i&#x27;,j&#x27;,u&#x27;)
+\]">\[
+(v,w):(i,j,u)\longrightarrow(i&#x27;,j&#x27;,u&#x27;)
+\]</span>
+<p>consists of <span class="math" data-tex="\(v:i\to i&#x27;\)">\(v:i\to i&#x27;\)</span> and <span class="math" data-tex="\(w:j\to j&#x27;\)">\(w:j\to j&#x27;\)</span>, subject to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.3); horizontal scroll when needed" data-tex="\[
+\psi(w)u=u&#x27;\phi(v).
+\tag{1.3}
+\]">\[
+\psi(w)u=u&#x27;\phi(v).
+\tag{1.3}
+\]</span>
+<p>The arrows are the actual pairs in <span class="math" data-tex="\(I,J\)">\(I,J\)</span>, even when their images in <span class="math" data-tex="\(K\)">\(K\)</span> coincide.</p>
+<p>Identities are <span class="math" data-tex="\((1_i,1_j)\)">\((1_i,1_j)\)</span>; successive pairs compose componentwise. The equation survives composition because</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.4); horizontal scroll when needed" data-tex="\[
+\psi(w&#x27;w)u
+=\psi(w&#x27;)\psi(w)u
+=\psi(w&#x27;)u&#x27;\phi(v)
+=u&#x27;&#x27;\phi(v&#x27;v).
+\tag{1.4}
+\]">\[
+\psi(w&#x27;w)u
+=\psi(w&#x27;)\psi(w)u
+=\psi(w&#x27;)u&#x27;\phi(v)
+=u&#x27;&#x27;\phi(v&#x27;v).
+\tag{1.4}
+\]</span>
+<p>The units and associativity are those in <span class="math" data-tex="\(I,J\)">\(I,J\)</span>. These laws give three functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.5); horizontal scroll when needed" data-tex="\[
+p_I:M\to I,\qquad p_J:M\to J,\qquad
+p=(p_I,p_J):M\to I\times J.
+\tag{1.5}
+\]">\[
+p_I:M\to I,\qquad p_J:M\to J,\qquad
+p=(p_I,p_J):M\to I\times J.
+\tag{1.5}
+\]</span>
+<p>Equation (1.3) also says that the arrows <span class="math" data-tex="\(u\)">\(u\)</span> form a natural transformation <span class="math" data-tex="\(\phi p_I\Rightarrow\psi p_J\)">\(\phi p_I\Rightarrow\psi p_J\)</span>.</p>
+<p>The complete existing construction is <a href="zero-maps-components-and-subobjects.html#1-a-category-whose-objects-carry-an-arrow">A category whose objects carry an arrow</a>, together with the general two-functor interface in <a href="finite-diagrams-and-comma-objects.html#3-a-map-between-two-different-functor-images">A map between two different functor images</a>. The later ind-object result in that second section has different hypotheses; we use its general comma definition here.</p>
+<p>Let <span class="math" data-tex="\(\mathrm{Pt}\)">\(\mathrm{Pt}\)</span> be the one-object category with only its identity. A functor <span class="math" data-tex="\(\mathrm{Pt}\to K\)">\(\mathrm{Pt}\to K\)</span> chooses an object <span class="math" data-tex="\(a\)">\(a\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.6); horizontal scroll when needed" data-tex="\[
+(\phi\downarrow a)
+\cong M[I\xrightarrow{\phi}K\xleftarrow{a}\mathrm{Pt}],
+\qquad
+(a\downarrow\psi)
+\cong M[\mathrm{Pt}\xrightarrow{a}K\xleftarrow{\psi}J].
+\tag{1.6}
+\]">\[
+(\phi\downarrow a)
+\cong M[I\xrightarrow{\phi}K\xleftarrow{a}\mathrm{Pt}],
+\qquad
+(a\downarrow\psi)
+\cong M[\mathrm{Pt}\xrightarrow{a}K\xleftarrow{\psi}J].
+\tag{1.6}
+\]</span>
+<p>The first has arrows <span class="math" data-tex="\(v\)">\(v\)</span> satisfying <span class="math" data-tex="\(u&#x27;\phi(v)=u\)">\(u&#x27;\phi(v)=u\)</span>; the second has arrows <span class="math" data-tex="\(w\)">\(w\)</span> satisfying <span class="math" data-tex="\(\psi(w)u=u&#x27;\)">\(\psi(w)u=u&#x27;\)</span>. The inverse assignments insert the unique object and identity of <span class="math" data-tex="\(\mathrm{Pt}\)">\(\mathrm{Pt}\)</span>. When the middle category itself is <span class="math" data-tex="\(\mathrm{Pt}\)">\(\mathrm{Pt}\)</span>, the comma is <span class="math" data-tex="\(I\times J\)">\(I\times J\)</span>: insert the unique connecting arrow and retain each arrow pair.</p>
+<p>We use the native size convention: a category is locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small unless a larger universe is stated. Each Hom set of <span class="math" data-tex="\(M\)">\(M\)</span> is a subset of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.7); horizontal scroll when needed" data-tex="\[
+I(i,i&#x27;)\times J(j,j&#x27;).
+\tag{1.7}
+\]">\[
+I(i,i&#x27;)\times J(j,j&#x27;).
+\tag{1.7}
+\]</span>
+<p>Thus <span class="math" data-tex="\(M\)">\(M\)</span> is locally small. Smallness of its whole object set is a separate question: its objects include choices from the sets <span class="math" data-tex="\(K(\phi(i),\psi(j))\)">\(K(\phi(i),\psi(j))\)</span>. The complete bounds used below are <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">Building sets inside a universe</a>, <a href="universes-and-small-categories.html#3-transporting-the-size-bound">Transporting the size bound</a>, and <a href="universes-and-small-categories.html#4-two-distinct-size-conditions-on-a-category">Two distinct size conditions on a category</a>.</p>
+<p>For a simple picture, take ordered sets as categories. If <span class="math" data-tex="\(\phi,\psi\)">\(\phi,\psi\)</span> are increasing maps, an object of <span class="math" data-tex="\(M\)">\(M\)</span> is a pair <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> for which <span class="math" data-tex="\(\phi(i)\leq\psi(j)\)">\(\phi(i)\leq\psi(j)\)</span>. Its arrows increase both coordinates. The condition on an object still matters, even though every admissible square commutes automatically.</p>
+<h2 id="2-specify-the-comparisons-before-changing-the-comma">2. Specify the comparisons before changing the comma</h2>
+<p>Consider two rows <span class="math" data-tex="\(I_\nu\xrightarrow{\phi_\nu}K_\nu\xleftarrow{\psi_\nu}J_\nu\)">\(I_\nu\xrightarrow{\phi_\nu}K_\nu\xleftarrow{\psi_\nu}J_\nu\)</span>, and functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+F:I_1\to I_2,\qquad H:K_1\to K_2,\qquad G:J_1\to J_2.
+\]">\[
+F:I_1\to I_2,\qquad H:K_1\to K_2,\qquad G:J_1\to J_2.
+\]</span>
+<p>The comparison data are specified natural isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+A: \phi_2F\xRightarrow{\sim}H\phi_1,
+\qquad
+B: \psi_2G\xRightarrow{\sim}H\psi_1.
+\tag{2.1}
+\]">\[
+A: \phi_2F\xRightarrow{\sim}H\phi_1,
+\qquad
+B: \psi_2G\xRightarrow{\sim}H\psi_1.
+\tag{2.1}
+\]</span>
+<p>They determine a functor <span class="math" data-tex="\(\theta:M_1\to M_2\)">\(\theta:M_1\to M_2\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+\theta(i,j,u)=
+\bigl(Fi,Gj,B_j^{-1}H(u)A_i\bigr),
+\qquad
+\theta(v,w)=(Fv,Gw).
+\tag{2.2}
+\]">\[
+\theta(i,j,u)=
+\bigl(Fi,Gj,B_j^{-1}H(u)A_i\bigr),
+\qquad
+\theta(v,w)=(Fv,Gw).
+\tag{2.2}
+\]</span>
+<p>The connecting arrow starts at <span class="math" data-tex="\(\phi_2(Fi)\)">\(\phi_2(Fi)\)</span> and ends at <span class="math" data-tex="\(\psi_2(Gj)\)">\(\psi_2(Gj)\)</span>. In particular, the inverse on <span class="math" data-tex="\(B_j\)">\(B_j\)</span> cannot be omitted.</p>
+<p>The component equations for naturality are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.3); horizontal scroll when needed" data-tex="\[
+A_{i&#x27;}\phi_2(Fv)=H(\phi_1v)A_i,\qquad
+B_{j&#x27;}\psi_2(Gw)=H(\psi_1w)B_j.
+\tag{2.3}
+\]">\[
+A_{i&#x27;}\phi_2(Fv)=H(\phi_1v)A_i,\qquad
+B_{j&#x27;}\psi_2(Gw)=H(\psi_1w)B_j.
+\tag{2.3}
+\]</span>
+<p>For a source arrow satisfying (1.3), they give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\psi_2(Gw)B_j^{-1}H(u)A_i
+&amp;=B_{j&#x27;}^{-1}H(\psi_1w)H(u)A_i\\
+&amp;=B_{j&#x27;}^{-1}H(u&#x27;)H(\phi_1v)A_i\\
+&amp;=B_{j&#x27;}^{-1}H(u&#x27;)A_{i&#x27;}\phi_2(Fv).
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+\psi_2(Gw)B_j^{-1}H(u)A_i
+&amp;=B_{j&#x27;}^{-1}H(\psi_1w)H(u)A_i\\
+&amp;=B_{j&#x27;}^{-1}H(u&#x27;)H(\phi_1v)A_i\\
+&amp;=B_{j&#x27;}^{-1}H(u&#x27;)A_{i&#x27;}\phi_2(Fv).
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>This is the target comma equation. The identity and composition laws follow from those of <span class="math" data-tex="\(F,G\)">\(F,G\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> With the specified invertible comparisons (2.1):</p>
+<ol>
+<li>If <span class="math" data-tex="\(F,G\)">\(F,G\)</span> are faithful, then <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is faithful.</li>
+<li>If <span class="math" data-tex="\(F,G\)">\(F,G\)</span> are fully faithful and <span class="math" data-tex="\(H\)">\(H\)</span> is faithful, then <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is fully faithful.</li>
+<li>If <span class="math" data-tex="\(F,G\)">\(F,G\)</span> are equivalences and <span class="math" data-tex="\(H\)">\(H\)</span> is fully faithful, then <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is an equivalence.</li>
+</ol>
+<p>The complete primary proofs are retained at the pinned Mathlib commit in <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Basic.lean#L233-L298">Comma/Basic, lines 233–298</a>. Its left comparison is <span class="math" data-tex="\(A\)">\(A\)</span>, its right comparison is <span class="math" data-tex="\(B^{-1}\)">\(B^{-1}\)</span>, its two endpoint functors are <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, and its middle functor is <span class="math" data-tex="\(H\)">\(H\)</span>. Its faithful-map proof uses only faithfulness of the endpoints. Its full-map proof requires full endpoints, faithful middle and invertible comparisons; adding faithful endpoints gives part 2. Its essential-image proof uses essentially surjective endpoints and full middle; together with part 2 and <a href="equivalences-and-chosen-representatives.html#1-recognizing-a-reversible-change-of-category">Recognizing a reversible change of category</a>, it gives part 3. This checks the complete hypotheses without adding essential surjectivity of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>There is also an exact composition rule for these comparison data. For successive changes <span class="math" data-tex="\(1\to2\to3\)">\(1\to2\to3\)</span>, write the comparisons as <span class="math" data-tex="\(A_{12},B_{12}\)">\(A_{12},B_{12}\)</span> and <span class="math" data-tex="\(A_{23},B_{23}\)">\(A_{23},B_{23}\)</span>. The composite comparisons have components</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.5); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+(A_{13})_i&amp;=H_{23}((A_{12})_i)(A_{23})_{F_{12}i},\\
+(B_{13})_j&amp;=H_{23}((B_{12})_j)(B_{23})_{G_{12}j}.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+(A_{13})_i&amp;=H_{23}((A_{12})_i)(A_{23})_{F_{12}i},\\
+(B_{13})_j&amp;=H_{23}((B_{12})_j)(B_{23})_{G_{12}j}.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Their domains and codomains are those for <span class="math" data-tex="\(F_{23}F_{12},G_{23}G_{12},H_{23}H_{12}\)">\(F_{23}F_{12},G_{23}G_{12},H_{23}H_{12}\)</span>. Substitution in (2.2) gives the composite induced comma functor, with the usual functor-associativity identifications. The complete whiskering and interchange laws are <a href="natural-transformations-and-composition-of-functors.html#3-compose-comparisons-along-successive-functors">Compose comparisons along successive functors</a>.</p>
+<p>This rule concerns compatible, specified data. It does not imply independence from arbitrary choices of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. For example, with all endpoint categories equal to <span class="math" data-tex="\(\mathrm{Pt}\)">\(\mathrm{Pt}\)</span> and the middle category a one-object group, the comma is discrete on the group elements. Changing a comparison can permute those elements; distinct such permutations need not be naturally isomorphic. Exercise 2 calculates this effect.</p>
+<p>We will use natural-isomorphism invariance of cofinality in its actual comma form. If <span class="math" data-tex="\(\rho:P\Rightarrow Q\)">\(\rho:P\Rightarrow Q\)</span> is invertible, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.6); horizontal scroll when needed" data-tex="\[
+(y\downarrow P)\longrightarrow(y\downarrow Q),
+\qquad (x,s)\longmapsto(x,\rho_xs)
+\tag{2.6}
+\]">\[
+(y\downarrow P)\longrightarrow(y\downarrow Q),
+\qquad (x,s)\longmapsto(x,\rho_xs)
+\tag{2.6}
+\]</span>
+<p>is an isomorphism, with inverse using <span class="math" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span> and the same underlying source arrows. Naturality verifies its triangles. On outgoing commas the corresponding arrow is <span class="math" data-tex="\(s\rho_x^{-1}\)">\(s\rho_x^{-1}\)</span>. Thus the direction of the comparison is fixed before transporting a cofinality assertion.</p>
+<h2 id="3-assemble-a-cocone-one-fibre-at-a-time">3. Assemble a cocone one fibre at a time</h2>
+<p>Return to (1.1), and let <span class="math" data-tex="\(\alpha:M\to C\)">\(\alpha:M\to C\)</span>. For <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+E_j=(\phi\downarrow\psi(j)),\qquad
+\alpha_j(i,u)=\alpha(i,j,u).
+\tag{3.1}
+\]">\[
+E_j=(\phi\downarrow\psi(j)),\qquad
+\alpha_j(i,u)=\alpha(i,j,u).
+\tag{3.1}
+\]</span>
+<p>An arrow <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(E_j\)">\(E_j\)</span> acts by <span class="math" data-tex="\(\alpha(v,1_j)\)">\(\alpha(v,1_j)\)</span>.</p>
+<p><strong>Proposition 3.1.</strong> Suppose every inner actual colimit</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+L_j=\operatorname{colim}_{E_j}\alpha_j
+\]">\[
+L_j=\operatorname{colim}_{E_j}\alpha_j
+\]</span>
+<p>exists in <span class="math" data-tex="\(C\)">\(C\)</span>, with chosen coprojections <span class="math" data-tex="\(\lambda^j_{i,u}\)">\(\lambda^j_{i,u}\)</span>. These objects have a canonical <span class="math" data-tex="\(J\)">\(J\)</span>-diagram structure. Its colimit exists if and only if the actual colimit of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> exists. When they exist, the comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+c:\operatorname{colim}_M\alpha
+\xrightarrow{\sim}\operatorname{colim}_J L
+\tag{3.2}
+\]">\[
+c:\operatorname{colim}_M\alpha
+\xrightarrow{\sim}\operatorname{colim}_J L
+\tag{3.2}
+\]</span>
+<p>is characterized by every original leg:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+c\,b_{i,j,u}=\ell_j\lambda^j_{i,u}.
+\tag{3.3}
+\]">\[
+c\,b_{i,j,u}=\ell_j\lambda^j_{i,u}.
+\tag{3.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> are the respective colimit coprojections.</p>
+<p>We now bind the pointwise universal maps and total assembly from <a href="extending-diagrams-by-universal-maps.html#3-build-the-left-extension">Build the left extension</a> and <a href="extending-diagrams-by-universal-maps.html#7-total-assembly-and-total-compatibility">Total assembly and total compatibility</a> to these fibres. Only the displayed actual inner colimits are assumed; no general cocompleteness assumption is added to <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For <span class="math" data-tex="\(w:j\to j&#x27;\)">\(w:j\to j&#x27;\)</span>, postcomposition sends <span class="math" data-tex="\((i,u)\)">\((i,u)\)</span> to <span class="math" data-tex="\((i,\psi(w)u)\)">\((i,\psi(w)u)\)</span>. There is an actual <span class="math" data-tex="\(M\)">\(M\)</span>-arrow</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(1_i,w):(i,j,u)\to(i,j&#x27;,\psi(w)u).
+\]">\[
+(1_i,w):(i,j,u)\to(i,j&#x27;,\psi(w)u).
+\]</span>
+<p>Define <span class="math" data-tex="\(L(w)\)">\(L(w)\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+L(w)\lambda^j_{i,u}
+=\lambda^{j&#x27;}_{i,\psi(w)u}\,\alpha(1_i,w).
+\tag{3.4}
+\]">\[
+L(w)\lambda^j_{i,u}
+=\lambda^{j&#x27;}_{i,\psi(w)u}\,\alpha(1_i,w).
+\tag{3.4}
+\]</span>
+<p>For a fibre arrow <span class="math" data-tex="\(v\)">\(v\)</span>, the two ways through its square with <span class="math" data-tex="\((1,w)\)">\((1,w)\)</span> are the same <span class="math" data-tex="\(M\)">\(M\)</span>-arrow. Applying <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and the <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span>-cocone equation proves that the right side of (3.4) is a cocone on <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>. Hence the universal factor exists and is unique. Testing every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives <span class="math" data-tex="\(L(1)=1\)">\(L(1)=1\)</span> and <span class="math" data-tex="\(L(w&#x27;w)=L(w&#x27;)L(w)\)">\(L(w&#x27;w)=L(w&#x27;)L(w)\)</span>.</p>
+<p>An <span class="math" data-tex="\(M\)">\(M\)</span>-cocone <span class="math" data-tex="\(a_{i,j,u}:\alpha(i,j,u)\to T\)">\(a_{i,j,u}:\alpha(i,j,u)\to T\)</span> uniquely factors on each fibre:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+a_j\lambda^j_{i,u}=a_{i,j,u}.
+\tag{3.5}
+\]">\[
+a_j\lambda^j_{i,u}=a_{i,j,u}.
+\tag{3.5}
+\]</span>
+<p>Its equations on the arrows <span class="math" data-tex="\((1_i,w)\)">\((1_i,w)\)</span>, together with (3.4), give <span class="math" data-tex="\(a_{j&#x27;}L(w)=a_j\)">\(a_{j&#x27;}L(w)=a_j\)</span>. Conversely a <span class="math" data-tex="\(J\)">\(J\)</span>-cocone <span class="math" data-tex="\(a_j:L_j\to T\)">\(a_j:L_j\to T\)</span> gives the family <span class="math" data-tex="\(a_j\lambda^j_{i,u}\)">\(a_j\lambda^j_{i,u}\)</span>. An arbitrary <span class="math" data-tex="\(M\)">\(M\)</span>-arrow <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> factors as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.6); horizontal scroll when needed" data-tex="\[
+(i,j,u)\xrightarrow{(1_i,w)}
+(i,j&#x27;,\psi(w)u)\xrightarrow{(v,1_{j&#x27;})}
+(i&#x27;,j&#x27;,u&#x27;).
+\tag{3.6}
+\]">\[
+(i,j,u)\xrightarrow{(1_i,w)}
+(i,j&#x27;,\psi(w)u)\xrightarrow{(v,1_{j&#x27;})}
+(i&#x27;,j&#x27;,u&#x27;).
+\tag{3.6}
+\]</span>
+<p>The outer equation handles the first arrow; the fibre equation handles the second. Thus the family is an <span class="math" data-tex="\(M\)">\(M\)</span>-cocone. The constructions (3.5) and this last family are inverse, and postcomposition with <span class="math" data-tex="\(T\to T&#x27;\)">\(T\to T&#x27;\)</span> commutes with them.</p>
+<p>This natural bijection of cocone families proves both directions of actual existence in Proposition 3.1. If the total colimit is given, factor its <span class="math" data-tex="\(b\)">\(b\)</span>-legs on each fibre to obtain <span class="math" data-tex="\(d_j:L_j\to\operatorname{colim}_M\alpha\)">\(d_j:L_j\to\operatorname{colim}_M\alpha\)</span>. They form an outer cocone, and its universal property follows from the same bijection. If the outer colimit is given, its legs <span class="math" data-tex="\(\ell_j\lambda^j_{i,u}\)">\(\ell_j\lambda^j_{i,u}\)</span> supply the total colimit.</p>
+<p>When both are chosen, <span class="math" data-tex="\(d\)">\(d\)</span>, the inverse of (3.2), has</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.7); horizontal scroll when needed" data-tex="\[
+d_j\lambda^j_{i,u}=b_{i,j,u},\qquad d\ell_j=d_j.
+\tag{3.7}
+\]">\[
+d_j\lambda^j_{i,u}=b_{i,j,u},\qquad d\ell_j=d_j.
+\tag{3.7}
+\]</span>
+<p>Equations (3.3) and (3.7) give <span class="math" data-tex="\(dc=1\)">\(dc=1\)</span> on every <span class="math" data-tex="\(b\)">\(b\)</span>-leg. They give <span class="math" data-tex="\(cd=1\)">\(cd=1\)</span> first on every <span class="math" data-tex="\(\ell_j\lambda^j\)">\(\ell_j\lambda^j\)</span>, then on every <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>, and finally on the outer colimit. This identifies the actual comparison, rather than only an isomorphism class.</p>
+<p>For a transformation <span class="math" data-tex="\(z: \alpha\Rightarrow\alpha&#x27;\)">\(z: \alpha\Rightarrow\alpha&#x27;\)</span>, the inner transformation is defined by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.8); horizontal scroll when needed" data-tex="\[
+L(z)_j\lambda^j_{i,u}
+={\lambda&#x27;}^j_{i,u}z_{i,j,u}.
+\tag{3.8}
+\]">\[
+L(z)_j\lambda^j_{i,u}
+={\lambda&#x27;}^j_{i,u}z_{i,j,u}.
+\tag{3.8}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(z\)">\(z\)</span> on <span class="math" data-tex="\((1_i,w)\)">\((1_i,w)\)</span> verifies naturality in <span class="math" data-tex="\(j\)">\(j\)</span>. Identity and composition laws again hold on every leg. If the total and outer colimits exist, their induced maps satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.9); horizontal scroll when needed" data-tex="\[
+\bigl(\operatorname{colim}_J L(z)\bigr)c_\alpha
+=c_{\alpha&#x27;}\bigl(\operatorname{colim}_M z\bigr),
+\tag{3.9}
+\]">\[
+\bigl(\operatorname{colim}_J L(z)\bigr)c_\alpha
+=c_{\alpha&#x27;}\bigl(\operatorname{colim}_M z\bigr),
+\tag{3.9}
+\]</span>
+<p>because both sides have the same value on each <span class="math" data-tex="\(b_{i,j,u}\)">\(b_{i,j,u}\)</span>. This supplies naturality in the original diagram.</p>
+<p>There is a formal version when the inner objects are not represented in <span class="math" data-tex="\(C\)">\(C\)</span>. Write</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+C^\vee=\operatorname{Fun}(C,\mathsf{Set})^{\mathrm{op}},
+\qquad k_C(X)=C(X,-).
+\]">\[
+C^\vee=\operatorname{Fun}(C,\mathsf{Set})^{\mathrm{op}},
+\qquad k_C(X)=C(X,-).
+\]</span>
+<p>For each <span class="math" data-tex="\(j\)">\(j\)</span>, let <span class="math" data-tex="\(Q_j(T)\)">\(Q_j(T)\)</span> be the set of cocones from <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>. The map <span class="math" data-tex="\(w:j\to j&#x27;\)">\(w:j\to j&#x27;\)</span> gives <span class="math" data-tex="\(Q_{j&#x27;}(T)\to Q_j(T)\)">\(Q_{j&#x27;}(T)\to Q_j(T)\)</span> by precomposition with the arrows <span class="math" data-tex="\(\alpha(1_i,w)\)">\(\alpha(1_i,w)\)</span>. Thus these value functors form a <span class="math" data-tex="\(J^{\mathrm{op}}\)">\(J^{\mathrm{op}}\)</span>-diagram in <span class="math" data-tex="\(\operatorname{Fun}(C,\mathsf{Set})\)">\(\operatorname{Fun}(C,\mathsf{Set})\)</span>, or a <span class="math" data-tex="\(J\)">\(J\)</span>-diagram in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>. The same inverse cocone constructions give</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.10); horizontal scroll when needed" data-tex="\[
+\lim_{j\in J^{\mathrm{op}}}Q_j(T)
+\cong \operatorname{Cocone}_M(\alpha,T),
+\tag{3.10}
+\]">\[
+\lim_{j\in J^{\mathrm{op}}}Q_j(T)
+\cong \operatorname{Cocone}_M(\alpha,T),
+\tag{3.10}
+\]</span>
+<p>naturally in <span class="math" data-tex="\(T,\alpha\)">\(T,\alpha\)</span>. In <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>, this is the formal iterated-colimit formula.</p>
+<p>The formal inner leg at <span class="math" data-tex="\((i,u)\)">\((i,u)\)</span> reverses evaluation <span class="math" data-tex="\(Q_j(T)\to C(\alpha(i,j,u),T)\)">\(Q_j(T)\to C(\alpha(i,j,u),T)\)</span>. The formal outer leg reverses restriction <span class="math" data-tex="\(\operatorname{Cocone}_M(\alpha,T)\to Q_j(T)\)">\(\operatorname{Cocone}_M(\alpha,T)\to Q_j(T)\)</span>. Their composite reverses the evaluation <span class="math" data-tex="\(a\mapsto a_{i,j,u}\)">\(a\mapsto a_{i,j,u}\)</span>, which is the original formal <span class="math" data-tex="\(M\)">\(M\)</span>-coprojection. Thus (3.10) retains the same leg identity as (3.3). A transformation <span class="math" data-tex="\(z: \alpha\Rightarrow\alpha&#x27;\)">\(z: \alpha\Rightarrow\alpha&#x27;\)</span> sends a cocone <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> to <span class="math" data-tex="\(a&#x27;z\)">\(a&#x27;z\)</span>, giving <span class="math" data-tex="\(Q_{\alpha&#x27;}\Rightarrow Q_\alpha\)">\(Q_{\alpha&#x27;}\Rightarrow Q_\alpha\)</span>; reversing this arrow gives the formal colimit map in the usual direction. Restriction and evaluation commute with this operation, proving the two naturality squares for the formal comparison.</p>
+<p>The complete formal interface is <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Universal functors before universal objects</a>, with <a href="compatible-families-and-universal-cones.html#3-size-changes-and-opposite-categories">Size changes and opposite categories</a>. The value functors in (3.10) are covariant in <span class="math" data-tex="\(T\)">\(T\)</span>; the opposite on <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span> reverses arrows. Small indices in the chosen universe, or an adequate enlargement, bound the products defining those values. A large index has no automatic <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small cocone set, and transformation sets on a large base may need a further enlargement. A formal colimit need not be represented by an actual <span class="math" data-tex="\(C\)">\(C\)</span>-object.</p>
+<p>In particular, an existing total actual colimit does not supply missing inner actual colimits. Exercise 3 gives a finite example. For empty <span class="math" data-tex="\(J\)">\(J\)</span>, also <span class="math" data-tex="\(M\)">\(M\)</span> is empty: the actual assertion asks for an initial object of <span class="math" data-tex="\(C\)">\(C\)</span>, while the formal cocone-value functor is the constant singleton.</p>
+<h2 id="4-two-different-commas-around-a-projection">4. Two different commas around a projection</h2>
+<p>Fix <span class="math" data-tex="\(j_0\in J\)">\(j_0\in J\)</span>. Put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+E=(\phi\downarrow\psi(j_0)),\qquad Q=(p_J\downarrow j_0).
+\]">\[
+E=(\phi\downarrow\psi(j_0)),\qquad Q=(p_J\downarrow j_0).
+\]</span>
+<p>A <span class="math" data-tex="\(Q\)">\(Q\)</span>-object is <span class="math" data-tex="\((i,j,u,s:j\to j_0)\)">\((i,j,u,s:j\to j_0)\)</span>. An arrow <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> satisfies both the <span class="math" data-tex="\(M\)">\(M\)</span>-square and <span class="math" data-tex="\(s&#x27;w=s\)">\(s&#x27;w=s\)</span>. The fibre inclusion is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+\xi:E\to Q,\qquad
+(i,u)\mapsto(i,j_0,u,1_{j_0}),\quad
+v\mapsto(v,1_{j_0}).
+\tag{4.1}
+\]">\[
+\xi:E\to Q,\qquad
+(i,u)\mapsto(i,j_0,u,1_{j_0}),\quad
+v\mapsto(v,1_{j_0}).
+\tag{4.1}
+\]</span>
+<p>Define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\eta:Q\to E,\qquad
+(i,j,u,s)\mapsto(i,\psi(s)u),\quad
+(v,w)\mapsto v.
+\tag{4.2}
+\]">\[
+\eta:Q\to E,\qquad
+(i,j,u,s)\mapsto(i,\psi(s)u),\quad
+(v,w)\mapsto v.
+\tag{4.2}
+\]</span>
+<p>Indeed, the two source equations give
+<span class="math" data-tex="\(\psi(s&#x27;)u&#x27;\phi(v)=\psi(s&#x27;w)u=\psi(s)u\)">\(\psi(s&#x27;)u&#x27;\phi(v)=\psi(s&#x27;w)u=\psi(s)u\)</span>, the required target equation.</p>
+<p>The full primary adjunction is <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/StructuredArrow/Basic.lean#L1292-L1318">Costructured-arrow projection and inclusion, lines 1292–1318</a>. Its specialization has</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\eta\dashv\xi.
+\tag{4.3}
+\]">\[
+\eta\dashv\xi.
+\tag{4.3}
+\]</span>
+<p>For <span class="math" data-tex="\(q=(i,j,u,s)\)">\(q=(i,j,u,s)\)</span> and <span class="math" data-tex="\(e=(a,t)\)">\(e=(a,t)\)</span>, the natural Hom bijection sends <span class="math" data-tex="\(v:i\to a\)">\(v:i\to a\)</span> satisfying <span class="math" data-tex="\(t\phi(v)=\psi(s)u\)">\(t\phi(v)=\psi(s)u\)</span> to the <span class="math" data-tex="\(Q\)">\(Q\)</span>-arrow <span class="math" data-tex="\((v,s):q\to\xi(e)\)">\((v,s):q\to\xi(e)\)</span>. The inverse forgets the forced second component <span class="math" data-tex="\(s\)">\(s\)</span>. The unit at <span class="math" data-tex="\(q\)">\(q\)</span> is <span class="math" data-tex="\((1_i,s)\)">\((1_i,s)\)</span>; the counit is identity because <span class="math" data-tex="\(\eta\xi=1_E\)">\(\eta\xi=1_E\)</span>. Applying <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to the unit gives identity, and the unit at <span class="math" data-tex="\(\xi(e)\)">\(\xi(e)\)</span> is identity, verifying both triangles. The arrow equations verify naturality.</p>
+<p>Consequently <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the <strong>right adjoint</strong>, is cofinal. We use the full <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Limits/Final.lean#L125-L135">right-adjoint cofinality proof</a>. Calling <span class="math" data-tex="\(\eta\)">\(\eta\)</span> a left adjoint does not give this cofinality conclusion for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>Recall that a functor <span class="math" data-tex="\(P:A\to B\)">\(P:A\to B\)</span> is cofinal when every incoming comma <span class="math" data-tex="\((b\downarrow P)\)">\((b\downarrow P)\)</span> is nonempty and connected. The complete cocone extension, canonical comparison and conditional existence theorem are <a href="change-an-index-without-changing-universal-maps.html#1-connected-comma-categories">Connected comma categories</a> and <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Extend every cocone</a>.</p>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(\psi:J\to K\)">\(\psi:J\to K\)</span> is cofinal, then <span class="math" data-tex="\(p_I:M\to I\)">\(p_I:M\to I\)</span> is cofinal. If <span class="math" data-tex="\(I\)">\(I\)</span> is connected as well, then <span class="math" data-tex="\(M\)">\(M\)</span> is connected.</p>
+<p>These are the full primary <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Final.lean#L99-L131">first-projection and connected-comma results, lines 99–131</a>. Here is their concrete incoming-comma interface. For <span class="math" data-tex="\(i_0\in I\)">\(i_0\in I\)</span>, objects of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+R=(i_0\downarrow p_I)
+\]">\[
+R=(i_0\downarrow p_I)
+\]</span>
+<p>are <span class="math" data-tex="\((i,j,u,r:i_0\to i)\)">\((i,j,u,r:i_0\to i)\)</span>. The category <span class="math" data-tex="\(E_0=(\phi(i_0)\downarrow\psi)\)">\(E_0=(\phi(i_0)\downarrow\psi)\)</span> is nonempty connected. The functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+s:E_0\to R &amp;: (j,z)\mapsto(i_0,j,z,1_{i_0}),\\
+t:R\to E_0 &amp;: (i,j,u,r)\mapsto(j,u\phi(r))
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+s:E_0\to R &amp;: (j,z)\mapsto(i_0,j,z,1_{i_0}),\\
+t:R\to E_0 &amp;: (i,j,u,r)\mapsto(j,u\phi(r))
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>send an arrow respectively to <span class="math" data-tex="\((1_{i_0},w)\)">\((1_{i_0},w)\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span>. The incoming triangle <span class="math" data-tex="\(vr=r&#x27;\)">\(vr=r&#x27;\)</span>, together with the <span class="math" data-tex="\(M\)">\(M\)</span>-square, verifies the second functor. We have <span class="math" data-tex="\(ts=1\)">\(ts=1\)</span>, and <span class="math" data-tex="\((r,1_j)\)">\((r,1_j)\)</span> gives a natural arrow <span class="math" data-tex="\(st(q)\to q\)">\(st(q)\to q\)</span>. Hence every <span class="math" data-tex="\(R\)">\(R\)</span>-object is connected to the image of the nonempty connected <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. This proves the required incoming connectedness. It does not assert that <span class="math" data-tex="\(s\)">\(s\)</span> is cofinal.</p>
+<p>The full canonical component bijection for a cofinal functor, proved in <a href="change-an-index-without-changing-universal-maps.html#4-compose-and-cancel-index-changes">Compose and cancel index changes</a>, now gives <span class="math" data-tex="\(\pi_0(M)\cong\pi_0(I)\)">\(\pi_0(M)\cong\pi_0(I)\)</span>. Connected includes nonempty, so connected <span class="math" data-tex="\(I\)">\(I\)</span> gives connected <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>No filteredness hypothesis was used in Proposition 4.1. For empty <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(M\)">\(M\)</span> is empty and <span class="math" data-tex="\(p_I:\varnothing\to\varnothing\)">\(p_I:\varnothing\to\varnothing\)</span> is cofinal vacuously. This does not make <span class="math" data-tex="\(M\)">\(M\)</span> connected. The comma <span class="math" data-tex="\(Q\)">\(Q\)</span> in (4.1) is outgoing; <span class="math" data-tex="\(R\)">\(R\)</span> in (4.4) is incoming, and their arrow directions are different.</p>
+<h2 id="5-check-an-induced-comma-functor-by-two-cofinal-maps">5. Check an induced comma functor by two cofinal maps</h2>
+<p>Keep the specified data (2.1).</p>
+<p><strong>Theorem 5.1.</strong> Suppose <span class="math" data-tex="\(J_1\)">\(J_1\)</span> is filtered, and <span class="math" data-tex="\(\psi_1,\psi_2,F,G\)">\(\psi_1,\psi_2,F,G\)</span> are cofinal. Then <span class="math" data-tex="\(\theta:M_1\to M_2\)">\(\theta:M_1\to M_2\)</span> is cofinal. In particular this applies when both <span class="math" data-tex="\(J_1,J_2\)">\(J_1,J_2\)</span> are assumed filtered.</p>
+<p>The complete primary theorem and proof are <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Final.lean#L153-L174">Comma.map_final, lines 153–174</a>. We identify its entire incoming comma and both induced cofinal maps, using the complete current <a href="incoming-comma-tests-and-assembly-from-finite-pieces.html#4-four-functors-between-incoming-commas">Four functors between incoming commas</a>.</p>
+<p>First the hypotheses make <span class="math" data-tex="\(J_2,K_1,K_2\)">\(J_2,K_1,K_2\)</span> filtered: apply the full <a href="incoming-comma-tests-and-assembly-from-finite-pieces.html#2-a-local-arrow-test-for-cofinality">local cofinal-arrow theorem</a> to <span class="math" data-tex="\(G,\psi_1,\psi_2\)">\(G,\psi_1,\psi_2\)</span>. Also</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\psi_2G\xRightarrow{B}H\psi_1.
+\]">\[
+\psi_2G\xRightarrow{B}H\psi_1.
+\]</span>
+<p>Composition, the transport (2.6), and cancellation of cofinal functors show that <span class="math" data-tex="\(H\)">\(H\)</span> is cofinal. Neither fullness nor faithfulness of <span class="math" data-tex="\(H,F,G\)">\(H,F,G\)</span> is needed here.</p>
+<p>Fix <span class="math" data-tex="\(a=(i_2,j_2,u_2)\in M_2\)">\(a=(i_2,j_2,u_2)\in M_2\)</span>, and set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+D=(i_2\downarrow F),\quad
+E=(j_2\downarrow G),\quad
+T=(\phi_2(i_2)\downarrow H).
+\tag{5.1}
+\]">\[
+D=(i_2\downarrow F),\quad
+E=(j_2\downarrow G),\quad
+T=(\phi_2(i_2)\downarrow H).
+\tag{5.1}
+\]</span>
+<p>There are functors <span class="math" data-tex="\(P:D\to T\)">\(P:D\to T\)</span> and <span class="math" data-tex="\(Q:E\to T\)">\(Q:E\to T\)</span>:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+P(i,x)&amp;=(\phi_1(i),A_i\phi_2(x)),
+&amp;P(v)&amp;=\phi_1(v),\\
+Q(j,y)&amp;=(\psi_1(j),B_j\psi_2(y)u_2),
+&amp;Q(w)&amp;=\psi_1(w).
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+P(i,x)&amp;=(\phi_1(i),A_i\phi_2(x)),
+&amp;P(v)&amp;=\phi_1(v),\\
+Q(j,y)&amp;=(\psi_1(j),B_j\psi_2(y)u_2),
+&amp;Q(w)&amp;=\psi_1(w).
+\end{aligned}
+\tag{5.2}
+\]</span>
+<p>An object of <span class="math" data-tex="\((a\downarrow\theta)\)">\((a\downarrow\theta)\)</span> consists of <span class="math" data-tex="\((i,j,u)\in M_1\)">\((i,j,u)\in M_1\)</span> and <span class="math" data-tex="\(x:i_2\to Fi,\ y:j_2\to Gj\)">\(x:i_2\to Fi,\ y:j_2\to Gj\)</span>, with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+B_j^{-1}H(u)A_i\phi_2(x)=\psi_2(y)u_2.
+\]">\[
+B_j^{-1}H(u)A_i\phi_2(x)=\psi_2(y)u_2.
+\]</span>
+<p>Equivalently,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+H(u)A_i\phi_2(x)=B_j\psi_2(y)u_2.
+\tag{5.3}
+\]">\[
+H(u)A_i\phi_2(x)=B_j\psi_2(y)u_2.
+\tag{5.3}
+\]</span>
+<p>This says exactly that <span class="math" data-tex="\(u\)">\(u\)</span> is a <span class="math" data-tex="\(T\)">\(T\)</span>-arrow <span class="math" data-tex="\(P(i,x)\to Q(j,y)\)">\(P(i,x)\to Q(j,y)\)</span>. On arrows, both descriptions retain <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> and all three equations</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+F(v)x=x&#x27;,\qquad G(w)y=y&#x27;,\qquad
+\psi_1(w)u=u&#x27;\phi_1(v).
+\tag{5.4}
+\]">\[
+F(v)x=x&#x27;,\qquad G(w)y=y&#x27;,\qquad
+\psi_1(w)u=u&#x27;\phi_1(v).
+\tag{5.4}
+\]</span>
+<p>The assignments are inverse on objects and Hom sets, with unchanged identities and compositions. Thus</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+(a\downarrow\theta)\cong(P\downarrow Q)
+\tag{5.5}
+\]">\[
+(a\downarrow\theta)\cong(P\downarrow Q)
+\tag{5.5}
+\]</span>
+<p>is an isomorphism of whole categories. The full primary inverse functors and comparison isomorphisms are <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/StructuredArrow/CommaMap.lean#L36-L87">StructuredArrow/CommaMap, lines 36–87</a>.</p>
+<p>To see the exact cofinal factors of <span class="math" data-tex="\(Q\)">\(Q\)</span>, first use the chain</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+J_1\xrightarrow{G}J_2\xrightarrow{\psi_2}K_2
+\]">\[
+J_1\xrightarrow{G}J_2\xrightarrow{\psi_2}K_2
+\]</span>
+<p>and <span class="math" data-tex="\(u_2:\phi_2(i_2)\to\psi_2(j_2)\)">\(u_2:\phi_2(i_2)\to\psi_2(j_2)\)</span>. Part 4 of the retained incoming-comma theorem gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.6); horizontal scroll when needed" data-tex="\[
+E\longrightarrow(\phi_2(i_2)\downarrow\psi_2G),
+\qquad
+(j,y)\longmapsto(j,\psi_2(y)u_2),
+\quad w\longmapsto w.
+\tag{5.6}
+\]">\[
+E\longrightarrow(\phi_2(i_2)\downarrow\psi_2G),
+\qquad
+(j,y)\longmapsto(j,\psi_2(y)u_2),
+\quad w\longmapsto w.
+\tag{5.6}
+\]</span>
+<p>Transport by <span class="math" data-tex="\(B\)">\(B\)</span> sends this object to
+<span class="math" data-tex="\((j,B_j\psi_2(y)u_2)\)">\((j,B_j\psi_2(y)u_2)\)</span> in <span class="math" data-tex="\((\phi_2(i_2)\downarrow H\psi_1)\)">\((\phi_2(i_2)\downarrow H\psi_1)\)</span>. Second, part 3 for</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+J_1\xrightarrow{\psi_1}K_1\xrightarrow{H}K_2
+\]">\[
+J_1\xrightarrow{\psi_1}K_1\xrightarrow{H}K_2
+\]</span>
+<p>gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.7); horizontal scroll when needed" data-tex="\[
+(\phi_2(i_2)\downarrow H\psi_1)\longrightarrow T,
+\qquad (j,z)\longmapsto(\psi_1(j),z),
+\quad w\longmapsto\psi_1(w).
+\tag{5.7}
+\]">\[
+(\phi_2(i_2)\downarrow H\psi_1)\longrightarrow T,
+\qquad (j,z)\longmapsto(\psi_1(j),z),
+\quad w\longmapsto\psi_1(w).
+\tag{5.7}
+\]</span>
+<p>Both chains have filtered categories and cofinal functors, as checked above. Both functors are therefore cofinal, and their literal composite, including the specified <span class="math" data-tex="\(B\)">\(B\)</span>-transport, is <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Since <span class="math" data-tex="\(F\)">\(F\)</span> is cofinal, <span class="math" data-tex="\(D\)">\(D\)</span> is nonempty connected. Proposition 4.1 applied to <span class="math" data-tex="\(P: D\to T\leftarrow Q: E\)">\(P: D\to T\leftarrow Q: E\)</span> makes <span class="math" data-tex="\((P\downarrow Q)\)">\((P\downarrow Q)\)</span> connected. By (5.5), every incoming comma of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is connected, proving Theorem 5.1 with the exact maps of the retained primary proof.</p>
+<p>The incoming-comma provider's part 2 uses the chain <span class="math" data-tex="\(I\xrightarrow{1_I}I\xrightarrow{\phi}J\)">\(I\xrightarrow{1_I}I\xrightarrow{\phi}J\)</span>, with <span class="math" data-tex="\(u=1_{\phi(i)}\)">\(u=1_{\phi(i)}\)</span>. That corrected specialization is the current provider; no full-embedding hypothesis is inserted into any of these four comma functors.</p>
+<h2 id="6-filtered-linked-stages-and-all-three-projections">6. Filtered linked stages and all three projections</h2>
+<p><strong>Theorem 6.1.</strong> Suppose <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are filtered and <span class="math" data-tex="\(\psi:J\to K\)">\(\psi:J\to K\)</span> is cofinal, while <span class="math" data-tex="\(\phi:I\to K\)">\(\phi:I\to K\)</span> is arbitrary. Then <span class="math" data-tex="\(M\)">\(M\)</span> is filtered, and each of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.1); horizontal scroll when needed" data-tex="\[
+p_I:M\to I,\qquad p_J:M\to J,\qquad p:M\to I\times J
+\tag{6.1}
+\]">\[
+p_I:M\to I,\qquad p_J:M\to J,\qquad p:M\to I\times J
+\tag{6.1}
+\]</span>
+<p>is cofinal. If <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, then <span class="math" data-tex="\(M\)">\(M\)</span> is cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<p>Filtered means nonempty, admits common receivers for two objects, and post-equalizes every parallel pair. The complete finite-graph criterion and empty-diagram case are <a href="filtered-stages-and-finite-limits.html#1-bring-a-finite-diagram-to-one-object">Bring a finite diagram to one object</a>.</p>
+<p>For every <span class="math" data-tex="\(i\)">\(i\)</span>, cofinal <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with filtered source makes <span class="math" data-tex="\((\phi(i)\downarrow\psi)\)">\((\phi(i)\downarrow\psi)\)</span> filtered by the retained local-arrow theorem. The full primary relative comma proof <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Final.lean#L46-L118">Comma/Final, lines 46–118</a>, specialized with <span class="math" data-tex="\(A=I,B=J,L=\phi,R=\psi\)">\(A=I,B=J,L=\phi,R=\psi\)</span>, supplies all three filtered axioms of <span class="math" data-tex="\(M\)">\(M\)</span>. Its filtered form uses the explicit opposite equivalence</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.2); horizontal scroll when needed" data-tex="\[
+M^{\mathrm{op}}\cong(\psi^{\mathrm{op}}\downarrow\phi^{\mathrm{op}}),
+\tag{6.2}
+\]">\[
+M^{\mathrm{op}}\cong(\psi^{\mathrm{op}}\downarrow\phi^{\mathrm{op}}),
+\tag{6.2}
+\]</span>
+<p>which swaps endpoints and sends each arrow pair to its reversed opposite pair; the full inverse functors and projection comparisons are <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Basic.lean#L509-L547">Comma/Basic, lines 509–547</a>. This is the direct proof retained here; it requires no finite colimits in <span class="math" data-tex="\(I,J,K\)">\(I,J,K\)</span>. Its final specialization is <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Final.lean#L180-L182">isFiltered_of_final, lines 180–182</a>.</p>
+<p>The outgoing comma of this first projection also has a complete concrete description. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, let <span class="math" data-tex="\(q:(1_I\downarrow i)\to I\)">\(q:(1_I\downarrow i)\to I\)</span> forget the arrow to <span class="math" data-tex="\(i\)">\(i\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(p_I\downarrow i)\cong(\phi q\downarrow\psi).
+\]">\[
+(p_I\downarrow i)\cong(\phi q\downarrow\psi).
+\]</span>
+<p>The object <span class="math" data-tex="\(((a,j,u),v:a\to i)\)">\(((a,j,u),v:a\to i)\)</span> maps to <span class="math" data-tex="\(((a,v),j,u)\)">\(((a,v),j,u)\)</span>. An arrow <span class="math" data-tex="\((h,w)\)">\((h,w)\)</span> has exactly the two equations <span class="math" data-tex="\(v&#x27;h=v\)">\(v&#x27;h=v\)</span> and <span class="math" data-tex="\(\psi(w)u=u&#x27;\phi(h)\)">\(\psi(w)u=u&#x27;\phi(h)\)</span> on both sides. The inverse retains these same objects and arrow pairs, so the identification respects identities and every composite.</p>
+<p>The object <span class="math" data-tex="\((i,1_i)\)">\((i,1_i)\)</span> is terminal in <span class="math" data-tex="\((1_I\downarrow i)\)">\((1_I\downarrow i)\)</span>; its one-object inclusion is cofinal because each incoming comma has the unique arrow to that terminal object. Apply Theorem 5.1 with this inclusion, <span class="math" data-tex="\(1_J\)">\(1_J\)</span>, <span class="math" data-tex="\(1_K\)">\(1_K\)</span> and identity comparisons. It gives a cofinal functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(\phi(i)\downarrow\psi)\longrightarrow(\phi q\downarrow\psi),
+\qquad (j,u)\longmapsto((i,1_i),j,u).
+\]">\[
+(\phi(i)\downarrow\psi)\longrightarrow(\phi q\downarrow\psi),
+\qquad (j,u)\longmapsto((i,1_i),j,u).
+\]</span>
+<p>Its source is filtered by the retained local-arrow theorem for the cofinal functor <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with filtered source <span class="math" data-tex="\(J\)">\(J\)</span>. A cofinal image of a filtered category is filtered, by that same complete theorem. Hence every outgoing <span class="math" data-tex="\((p_I\downarrow i)\)">\((p_I\downarrow i)\)</span> is filtered: <span class="math" data-tex="\(p_I\)">\(p_I\)</span> is right exact in the outgoing convention. This proof binds the terminal-stage specialization on whole arrows without requiring finite colimits in <span class="math" data-tex="\(I,J,K\)">\(I,J,K\)</span>.</p>
+<p>Proposition 4.1 gives cofinal <span class="math" data-tex="\(p_I\)">\(p_I\)</span>. The full second-projection proof is the relative result at lines 110–118 of the same primary source, applied to these filtered incoming commas; <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/Mathlib/CategoryTheory/Comma/Final.lean#L193-L195">final_snd, lines 193–195</a> makes the specialization explicit. Its incoming comma at <span class="math" data-tex="\(j_0\)">\(j_0\)</span> has objects <span class="math" data-tex="\((i,j,u,s:j_0\to j)\)">\((i,j,u,s:j_0\to j)\)</span>, and arrows <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> satisfying (1.3) and <span class="math" data-tex="\(ws=s&#x27;\)">\(ws=s&#x27;\)</span>. Thus this theorem concerns the actual <span class="math" data-tex="\(p_J\)">\(p_J\)</span>; it is different from the outgoing comma and right-adjoint fibre inclusion in Section 4.</p>
+<p>The paired projection needs its own argument. Apply Theorem 5.1 to the source row <span class="math" data-tex="\(I\to K\leftarrow J\)">\(I\to K\leftarrow J\)</span> and target row</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.3); horizontal scroll when needed" data-tex="\[
+I\longrightarrow\mathrm{Pt}\longleftarrow J,
+\tag{6.3}
+\]">\[
+I\longrightarrow\mathrm{Pt}\longleftarrow J,
+\tag{6.3}
+\]</span>
+<p>with endpoint functors <span class="math" data-tex="\(1_I,1_J\)">\(1_I,1_J\)</span> and middle functor <span class="math" data-tex="\(K\to\mathrm{Pt}\)">\(K\to\mathrm{Pt}\)</span>. The target right functor <span class="math" data-tex="\(J\to\mathrm{Pt}\)">\(J\to\mathrm{Pt}\)</span> is cofinal: its sole incoming comma is <span class="math" data-tex="\(J\)">\(J\)</span>, which is nonempty connected because it is filtered. Both comparisons are the unique ones. The target comma is <span class="math" data-tex="\(I\times J\)">\(I\times J\)</span>, by (1.6), and the induced map sends <span class="math" data-tex="\((i,j,u)\)">\((i,j,u)\)</span> to <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> to <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span>. It is exactly <span class="math" data-tex="\(p\)">\(p\)</span>. Theorem 5.1 therefore proves the third assertion; separate cofinality of the two component projections was not used as a substitute for this proof.</p>
+<p>For the size assertion, <a href="change-an-index-without-changing-universal-maps.html#5-replace-a-large-index-by-a-small-full-one">Replace a large index by a small full one</a> produces <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small full cofinal subcategories <span class="math" data-tex="\(I&#x27;\subseteq I,\ J&#x27;\subseteq J\)">\(I&#x27;\subseteq I,\ J&#x27;\subseteq J\)</span>. Each inclusion receives an arrow from every object of its ambient category. The full <a href="incoming-comma-tests-and-assembly-from-finite-pieces.html#3-receiving-subcategories-and-incoming-coslices">receiving-subcategory criterion</a> makes <span class="math" data-tex="\(I&#x27;,J&#x27;\)">\(I&#x27;,J&#x27;\)</span> filtered. It uses fullness to lift receiving maps and faithfulness to reflect their equalities; both hold for the full inclusions.</p>
+<p>Set</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.4); horizontal scroll when needed" data-tex="\[
+M&#x27;=(\phi|_{I&#x27;}\downarrow\psi|_{J&#x27;}).
+\tag{6.4}
+\]">\[
+M&#x27;=(\phi|_{I&#x27;}\downarrow\psi|_{J&#x27;}).
+\tag{6.4}
+\]</span>
+<p>The restricted <span class="math" data-tex="\(\psi|_{J&#x27;}\)">\(\psi|_{J&#x27;}\)</span> is cofinal by composition. Theorem 5.1, with the two inclusions, middle identity and identity comparisons, makes <span class="math" data-tex="\(M&#x27;\to M\)">\(M&#x27;\to M\)</span> cofinal. To check that <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> itself is small, its objects are the tagged union</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (6.5); horizontal scroll when needed" data-tex="\[
+\coprod_{(i,j)\in\operatorname{Ob}(I&#x27;)\times\operatorname{Ob}(J&#x27;)}
+K(\phi(i),\psi(j)).
+\tag{6.5}
+\]">\[
+\coprod_{(i,j)\in\operatorname{Ob}(I&#x27;)\times\operatorname{Ob}(J&#x27;)}
+K(\phi(i),\psi(j)).
+\tag{6.5}
+\]</span>
+<p>The index is small, and every summand is small by the default local <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-smallness of <span class="math" data-tex="\(K\)">\(K\)</span>. Each Hom set is a subset of <span class="math" data-tex="\(I&#x27;(i,i&#x27;)\times J&#x27;(j,j&#x27;)\)">\(I&#x27;(i,i&#x27;)\times J&#x27;(j,j&#x27;)\)</span>; the set of all arrows is the small tagged union of these Hom sets over the square of the small object set. The retained universe proofs transport these bounds when the original labels are small only up to bijection. Smallness of the entire object set of <span class="math" data-tex="\(K\)">\(K\)</span> is unnecessary. Removing its local Hom bound would remove the bound on (6.5).</p>
+<p>The nonemptiness assumptions are essential: for empty <span class="math" data-tex="\(I\)">\(I\)</span> and nonempty <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(p_J\)">\(p_J\)</span> need not be cofinal. Theorem 6.1 excludes that case by filteredness.</p>
+<h2 id="7-a-square-to-one-arrow-is-a-comma-object">7. A square to one arrow is a comma object</h2>
+<p>For a category <span class="math" data-tex="\(C\)">\(C\)</span>, let <span class="math" data-tex="\(\operatorname{Mor}(C)\)">\(\operatorname{Mor}(C)\)</span> have arrows <span class="math" data-tex="\(t:X\to X&#x27;\)">\(t:X\to X&#x27;\)</span> as objects. An arrow from <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(t&#x27;:Z\to Z&#x27;\)">\(t&#x27;:Z\to Z&#x27;\)</span> is a square <span class="math" data-tex="\((s,s&#x27;)\)">\((s,s&#x27;)\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+t&#x27;s=s&#x27;t.
+\tag{7.1}
+\]">\[
+t&#x27;s=s&#x27;t.
+\tag{7.1}
+\]</span>
+<p>Its identity and composition are componentwise, as in Section 1. A functor <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+\operatorname{Mor}(F):\operatorname{Mor}(C)\to\operatorname{Mor}(D),
+\quad t\mapsto F(t),\quad(s,s&#x27;)\mapsto(Fs,Fs&#x27;).
+\tag{7.2}
+\]">\[
+\operatorname{Mor}(F):\operatorname{Mor}(C)\to\operatorname{Mor}(D),
+\quad t\mapsto F(t),\quad(s,s&#x27;)\mapsto(Fs,Fs&#x27;).
+\tag{7.2}
+\]</span>
+<p>Functoriality of <span class="math" data-tex="\(F\)">\(F\)</span> carries (7.1) to the target square and preserves the category laws.</p>
+<p>Here <strong>right exact</strong> means that every outgoing comma <span class="math" data-tex="\((F\downarrow Y)\)">\((F\downarrow Y)\)</span> is filtered. <strong>Right small</strong> means that every such outgoing comma is cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. These are comma conditions; we do not assume that <span class="math" data-tex="\(C\)">\(C\)</span> has finite colimits.</p>
+<p><strong>Corollary 7.1.</strong> Let <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> be right exact. Then <span class="math" data-tex="\(\operatorname{Mor}(F)\)">\(\operatorname{Mor}(F)\)</span> is right exact. For each target arrow <span class="math" data-tex="\(f:Y\to Y&#x27;\)">\(f:Y\to Y&#x27;\)</span>, the two endpoint projections and their pair</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.3); horizontal scroll when needed" data-tex="\[
+\begin{gathered}
+(\operatorname{Mor}(F)\downarrow f)\to(F\downarrow Y),\\
+(\operatorname{Mor}(F)\downarrow f)\to(F\downarrow Y&#x27;),\\
+(\operatorname{Mor}(F)\downarrow f)\to
+(F\downarrow Y)\times(F\downarrow Y&#x27;)
+\end{gathered}
+\tag{7.3}
+\]">\[
+\begin{gathered}
+(\operatorname{Mor}(F)\downarrow f)\to(F\downarrow Y),\\
+(\operatorname{Mor}(F)\downarrow f)\to(F\downarrow Y&#x27;),\\
+(\operatorname{Mor}(F)\downarrow f)\to
+(F\downarrow Y)\times(F\downarrow Y&#x27;)
+\end{gathered}
+\tag{7.3}
+\]</span>
+<p>are cofinal. If both endpoint commas are cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, so is the source comma in (7.3). Consequently, if this right exact <span class="math" data-tex="\(F\)">\(F\)</span> is also right small, then <span class="math" data-tex="\(\operatorname{Mor}(F)\)">\(\operatorname{Mor}(F)\)</span> is right small.</p>
+<p>To bind every map in this application, put <span class="math" data-tex="\(C_Y=(F\downarrow Y)\)">\(C_Y=(F\downarrow Y)\)</span> and <span class="math" data-tex="\(C_{Y&#x27;}=(F\downarrow Y&#x27;)\)">\(C_{Y&#x27;}=(F\downarrow Y&#x27;)\)</span>. There is a functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.4); horizontal scroll when needed" data-tex="\[
+f_*:C_Y\to C_{Y&#x27;},\qquad
+(X,a)\mapsto(X,fa),\quad s\mapsto s.
+\tag{7.4}
+\]">\[
+f_*:C_Y\to C_{Y&#x27;},\qquad
+(X,a)\mapsto(X,fa),\quad s\mapsto s.
+\tag{7.4}
+\]</span>
+<p>Its arrow equation is <span class="math" data-tex="\(a_{\rm new}F(s)=a\)">\(a_{\rm new}F(s)=a\)</span>; postcomposition with <span class="math" data-tex="\(f\)">\(f\)</span> preserves it.</p>
+<p>An object of <span class="math" data-tex="\((f_*\downarrow1_{C_{Y&#x27;}})\)">\((f_*\downarrow1_{C_{Y&#x27;}})\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.5); horizontal scroll when needed" data-tex="\[
+\bigl((X,a),(X&#x27;,b),t:X\to X&#x27;\bigr),
+\qquad bF(t)=fa.
+\tag{7.5}
+\]">\[
+\bigl((X,a),(X&#x27;,b),t:X\to X&#x27;\bigr),
+\qquad bF(t)=fa.
+\tag{7.5}
+\]</span>
+<p>This is exactly the outgoing <span class="math" data-tex="\(\operatorname{Mor}(F)\)">\(\operatorname{Mor}(F)\)</span>-comma object given by <span class="math" data-tex="\(t\)">\(t\)</span> and the square <span class="math" data-tex="\((a,b):F(t)\to f\)">\((a,b):F(t)\to f\)</span>. An arrow to <span class="math" data-tex="\((t_{\rm new},a_{\rm new},b_{\rm new})\)">\((t_{\rm new},a_{\rm new},b_{\rm new})\)</span> has</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.6); horizontal scroll when needed" data-tex="\[
+t_{\rm new}s=s&#x27;t,\qquad
+a_{\rm new}F(s)=a,\qquad b_{\rm new}F(s&#x27;)=b.
+\tag{7.6}
+\]">\[
+t_{\rm new}s=s&#x27;t,\qquad
+a_{\rm new}F(s)=a,\qquad b_{\rm new}F(s&#x27;)=b.
+\tag{7.6}
+\]</span>
+<p>These are both the two-functor comma equations and the outgoing arrow-category triangle. The inverse assignments retain <span class="math" data-tex="\(t,a,b\)">\(t,a,b\)</span> and the actual pair <span class="math" data-tex="\((s,s&#x27;)\)">\((s,s&#x27;)\)</span>, hence identities and all composites. We obtain the exact category isomorphism</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.7); horizontal scroll when needed" data-tex="\[
+(\operatorname{Mor}(F)\downarrow f)
+\cong(f_*\downarrow1_{C_{Y&#x27;}}).
+\tag{7.7}
+\]">\[
+(\operatorname{Mor}(F)\downarrow f)
+\cong(f_*\downarrow1_{C_{Y&#x27;}}).
+\tag{7.7}
+\]</span>
+<p>Right exactness makes <span class="math" data-tex="\(C_Y,C_{Y&#x27;}\)">\(C_Y,C_{Y&#x27;}\)</span> filtered; their identity functor is cofinal. Theorem 6.1 applied to (7.7) makes this comma filtered and gives all three projections in (7.3). On objects they are <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, <span class="math" data-tex="\((X&#x27;,b)\)">\((X&#x27;,b)\)</span>, and their ordered pair; on arrows they are <span class="math" data-tex="\(s,s&#x27;\)">\(s,s&#x27;\)</span>, and <span class="math" data-tex="\((s,s&#x27;)\)">\((s,s&#x27;)\)</span>. The target categories are the structured outgoing commas, rather than only <span class="math" data-tex="\(C,C\times C\)">\(C,C\times C\)</span>.</p>
+<p>The same theorem proves cofinal smallness. Local Hom sets of <span class="math" data-tex="\(C_{Y&#x27;}\)">\(C_{Y&#x27;}\)</span> are subsets of Hom sets of <span class="math" data-tex="\(C\)">\(C\)</span>, so the needed local bound is present. If <span class="math" data-tex="\(F\)">\(F\)</span> is right small, the two endpoint hypotheses hold for every <span class="math" data-tex="\(f\)">\(f\)</span>; quantifying over these arrows proves the final assertion. Its right exactness hypothesis remains in force.</p>
+<p>Only the endpoint commas must be filtered; <span class="math" data-tex="\(C\)">\(C\)</span> itself need not be filtered. If <span class="math" data-tex="\(D\)">\(D\)</span> is empty, a functor to it forces <span class="math" data-tex="\(C\)">\(C\)</span> empty, and these assertions are vacuous for the empty arrow categories.</p>
+<h2 id="8-four-graded-exercises-with-full-solutions">8. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-introductory-five-linked-stages">Exercise 1 — introductory: five linked stages</h3>
+<p>Let <span class="math" data-tex="\(I=\{0&lt;1\}\)">\(I=\{0&lt;1\}\)</span>, <span class="math" data-tex="\(J=K=\{0&lt;1&lt;2\}\)">\(J=K=\{0&lt;1&lt;2\}\)</span>, with <span class="math" data-tex="\(\phi\)">\(\phi\)</span> the inclusion and <span class="math" data-tex="\(\psi=1_J\)">\(\psi=1_J\)</span>. List the objects and arrows of <span class="math" data-tex="\(M\)">\(M\)</span>. For an arbitrary <span class="math" data-tex="\(\alpha:M\to C\)">\(\alpha:M\to C\)</span>, compute all three inner colimits, the outer transition arrows, and the total colimit. Identify comparison (3.3).</p>
+<p><strong>Solution.</strong> The objects are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(0,0),(0,1),(1,1),(0,2),(1,2).
+\]">\[
+(0,0),(0,1),(1,1),(0,2),(1,2).
+\]</span>
+<p>There is an arrow <span class="math" data-tex="\((i,j)\to(i&#x27;,j&#x27;)\)">\((i,j)\to(i&#x27;,j&#x27;)\)</span> exactly when <span class="math" data-tex="\(i\leq i&#x27;\)">\(i\leq i&#x27;\)</span> and <span class="math" data-tex="\(j\leq j&#x27;\)">\(j\leq j&#x27;\)</span>. The connecting arrow in <span class="math" data-tex="\(K\)">\(K\)</span> is unique, so (1.3) imposes no further condition on such a pair. The final object is <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>.</p>
+<p>The fibres at <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span> have final objects <span class="math" data-tex="\((0,0),(1,1),(1,2)\)">\((0,0),(1,1),(1,2)\)</span>, respectively. Therefore choose</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+L_0=\alpha(0,0),\quad L_1=\alpha(1,1),\quad
+L_2=\alpha(1,2).
+\]">\[
+L_0=\alpha(0,0),\quad L_1=\alpha(1,1),\quad
+L_2=\alpha(1,2).
+\]</span>
+<p>Their coprojections are the images of the unique arrows to those final objects. Formula (3.4) gives</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+L(0\leq1)=\alpha((0,0)\to(1,1)),\qquad
+L(1\leq2)=\alpha((1,1)\to(1,2)).
+\]">\[
+L(0\leq1)=\alpha((0,0)\to(1,1)),\qquad
+L(1\leq2)=\alpha((1,1)\to(1,2)).
+\]</span>
+<p>The <span class="math" data-tex="\(0\leq2\)">\(0\leq2\)</span> map is their composite by functoriality of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The outer and total colimits are both <span class="math" data-tex="\(\alpha(1,2)\)">\(\alpha(1,2)\)</span>, with legs the images of the arrows to <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>. On every original object the composite <span class="math" data-tex="\(\ell_j\lambda^j_{i,u}\)">\(\ell_j\lambda^j_{i,u}\)</span> is that same image arrow. Thus (3.3) is the identity for these chosen objects. No completeness assumption on <span class="math" data-tex="\(C\)">\(C\)</span> was required: a diagram with a final indexing object has that actual colimit by its cocone universal property.</p>
+<h3 id="exercise-2-intermediate-a-comparison-can-move-an-object">Exercise 2 — intermediate: a comparison can move an object</h3>
+<p>Let every endpoint category be <span class="math" data-tex="\(\mathrm{Pt}\)">\(\mathrm{Pt}\)</span>. Let both middle categories be the one-object category of a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and take <span class="math" data-tex="\(H=1_\Gamma\)">\(H=1_\Gamma\)</span>. A specified comparison (2.1) is a pair of group elements <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Describe its induced comma functor, and compute the composite for two choices <span class="math" data-tex="\((a_1,b_1)\)">\((a_1,b_1)\)</span>, <span class="math" data-tex="\((a_2,b_2)\)">\((a_2,b_2)\)</span>. For <span class="math" data-tex="\(\Gamma=\{1,g\}\)">\(\Gamma=\{1,g\}\)</span> with <span class="math" data-tex="\(g^2=1\)">\(g^2=1\)</span>, compare the choices <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, <span class="math" data-tex="\((g,1)\)">\((g,1)\)</span>.</p>
+<p><strong>Solution.</strong> The comma objects are <span class="math" data-tex="\(u\in\Gamma\)">\(u\in\Gamma\)</span>. Its only endpoint arrow pair is the identity pair, and its equation is <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span>, so the comma category is discrete. Formula (2.2) sends</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+u\longmapsto b^{-1}ua.
+\]">\[
+u\longmapsto b^{-1}ua.
+\]</span>
+<p>This is a bijection, with inverse <span class="math" data-tex="\(v\mapsto bva^{-1}\)">\(v\mapsto bva^{-1}\)</span>, and hence an equivalence of the discrete categories. The composite sends</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+u\longmapsto b_2^{-1}b_1^{-1}ua_1a_2
+=(b_1b_2)^{-1}u(a_1a_2),
+\]">\[
+u\longmapsto b_2^{-1}b_1^{-1}ua_1a_2
+=(b_1b_2)^{-1}u(a_1a_2),
+\]</span>
+<p>which agrees with the specified composite comparisons (2.5).</p>
+<p>In the two-element group, <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> induces the identity and <span class="math" data-tex="\((g,1)\)">\((g,1)\)</span> interchanges the two objects. A natural transformation between those functors would need, at <span class="math" data-tex="\(1\)">\(1\)</span>, an arrow <span class="math" data-tex="\(1\to g\)">\(1\to g\)</span> in a discrete category. There is no such arrow. Thus these two choices do not give naturally isomorphic induced functors, although each is an equivalence. The correct composition rule preserves the specified comparisons; it gives no arbitrary-choice independence.</p>
+<h3 id="exercise-3-advanced-total-assembly-can-exist-before-a-fibre-object">Exercise 3 — advanced: total assembly can exist before a fibre object</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the three-object ordered category with <span class="math" data-tex="\(a&lt;t,\ b&lt;t\)">\(a&lt;t,\ b&lt;t\)</span>, while <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are incomparable. Let <span class="math" data-tex="\(J=K=\{0&lt;1\}\)">\(J=K=\{0&lt;1\}\)</span>, take <span class="math" data-tex="\(\psi=1_J\)">\(\psi=1_J\)</span>, and set <span class="math" data-tex="\(\phi(a)=\phi(b)=0,\ \phi(t)=1\)">\(\phi(a)=\phi(b)=0,\ \phi(t)=1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be the four-object ordered category with objects <span class="math" data-tex="\(A,B,T,S\)">\(A,B,T,S\)</span>, relations <span class="math" data-tex="\(A&lt;T,\ B&lt;T,\ A&lt;S,\ B&lt;S\)">\(A&lt;T,\ B&lt;T,\ A&lt;S,\ B&lt;S\)</span>, and no other nonidentity relations. Define <span class="math" data-tex="\(\alpha:M\to C\)">\(\alpha:M\to C\)</span> by sending both occurrences of <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span>, both occurrences of <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span>, and the occurrence of <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>. Show that the total actual colimit exists but the inner actual colimit at <span class="math" data-tex="\(0\)">\(0\)</span> does not. Calculate the formal comparison between the two fibre values.</p>
+<p><strong>Solution.</strong> The comma objects are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+(a,0),(b,0),(a,1),(b,1),(t,1).
+\]">\[
+(a,0),(b,0),(a,1),(b,1),(t,1).
+\]</span>
+<p>Their arrows increase the <span class="math" data-tex="\(I\)">\(I\)</span>- and <span class="math" data-tex="\(J\)">\(J\)</span>-coordinates. In particular, <span class="math" data-tex="\((t,1)\)">\((t,1)\)</span> is final. The stated assignment is a functor: its only nonidentity values are identities on <span class="math" data-tex="\(A,B\)">\(A,B\)</span> or the arrows <span class="math" data-tex="\(A\to T,B\to T\)">\(A\to T,B\to T\)</span>. Thus its actual total colimit is <span class="math" data-tex="\(T\)">\(T\)</span>, with precisely those terminal-stage legs.</p>
+<p>The fibre at <span class="math" data-tex="\(0\)">\(0\)</span> is the discrete diagram <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Its actual colimit would be their least upper bound in <span class="math" data-tex="\(C\)">\(C\)</span>. Both <span class="math" data-tex="\(T,S\)">\(T,S\)</span> are upper bounds, and they are incomparable; neither <span class="math" data-tex="\(A\)">\(A\)</span> nor <span class="math" data-tex="\(B\)">\(B\)</span> is an upper bound. Hence no least upper bound exists. This does not contradict Proposition 3.1, whose actual assertion assumes every inner colimit.</p>
+<p>The fibre at <span class="math" data-tex="\(1\)">\(1\)</span> has final object <span class="math" data-tex="\(t\)">\(t\)</span>, so its actual colimit is <span class="math" data-tex="\(T\)">\(T\)</span>. Formally, the two covariant value functors are</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+Q_0(X)=C(A,X)\times C(B,X),\qquad Q_1(X)=C(T,X).
+\]">\[
+Q_0(X)=C(A,X)\times C(B,X),\qquad Q_1(X)=C(T,X).
+\]</span>
+<p>The outer transition in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span> is the reversal of</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+Q_1(X)\to Q_0(X),\qquad
+r\mapsto(r\circ(A\to T),\,r\circ(B\to T)).
+\]">\[
+Q_1(X)\to Q_0(X),\qquad
+r\mapsto(r\circ(A\to T),\,r\circ(B\to T)).
+\]</span>
+<p>At <span class="math" data-tex="\(X=S\)">\(X=S\)</span>, this is the unique map from the empty set to a singleton; at <span class="math" data-tex="\(X=T\)">\(X=T\)</span>, it is the unique map between singletons; at <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, both sets are empty. These components are natural by associativity. Since <span class="math" data-tex="\(1\)">\(1\)</span> is final in <span class="math" data-tex="\(J\)">\(J\)</span>, the formal outer colimit is <span class="math" data-tex="\(k_C(T)\)">\(k_C(T)\)</span>. The total is represented while the first fibre is not. This calculates the formal arrow with its correct reversed variance.</p>
+<h3 id="exercise-4-expert-all-three-arrow-projections-and-their-actual-comparison">Exercise 4 — expert: all three arrow projections and their actual comparison</h3>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small set and <span class="math" data-tex="\(C\)">\(C\)</span> its finite-subset ordered category. Let <span class="math" data-tex="\(F:C\to\mathrm{Pt}\)">\(F:C\to\mathrm{Pt}\)</span> be the unique functor. Identify <span class="math" data-tex="\((\operatorname{Mor}(F)\downarrow1_*)\)">\((\operatorname{Mor}(F)\downarrow1_*)\)</span>. Prove filteredness, cofinality of its three projections, and right smallness directly in this example.</p>
+<p>For <span class="math" data-tex="\(\beta:C\times C\to\mathsf{Set}\)">\(\beta:C\times C\to\mathsf{Set}\)</span>, <span class="math" data-tex="\(\beta(A,B)=A\times B\)">\(\beta(A,B)=A\times B\)</span>, identify the canonical cofinal-colimit comparison along the paired projection and its inverse.</p>
+<p><strong>Solution.</strong> Finite subsets form a nonempty filtered poset: <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> is an object, unions give common receivers, and parallel arrows are equal. The outgoing comma <span class="math" data-tex="\((F\downarrow *)\)">\((F\downarrow *)\)</span> is exactly <span class="math" data-tex="\(C\)">\(C\)</span>, so <span class="math" data-tex="\(F\)">\(F\)</span> is right exact. An object of the arrow comma is an inclusion <span class="math" data-tex="\(X\subseteq Y\)">\(X\subseteq Y\)</span>; its square to <span class="math" data-tex="\(1_*\)">\(1_*\)</span> is unique. An arrow to <span class="math" data-tex="\(X&#x27;\subseteq Y&#x27;\)">\(X&#x27;\subseteq Y&#x27;\)</span> exists exactly when <span class="math" data-tex="\(X\subseteq X&#x27;\)">\(X\subseteq X&#x27;\)</span> and <span class="math" data-tex="\(Y\subseteq Y&#x27;\)">\(Y\subseteq Y&#x27;\)</span>. Thus this comma is <span class="math" data-tex="\(\operatorname{Mor}(C)\)">\(\operatorname{Mor}(C)\)</span>, also filtered: a common receiver of two inclusions is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X\cup X&#x27;\subseteq Y\cup Y&#x27;.
+\]">\[
+X\cup X&#x27;\subseteq Y\cup Y&#x27;.
+\]</span>
+<p>It contains <span class="math" data-tex="\(\varnothing\subseteq\varnothing\)">\(\varnothing\subseteq\varnothing\)</span>, and has no unequal parallel arrows.</p>
+<p>For the first projection, its incoming comma at <span class="math" data-tex="\(A\)">\(A\)</span> has an initial object <span class="math" data-tex="\(A\subseteq A\)">\(A\subseteq A\)</span>. For the second projection, its incoming comma at <span class="math" data-tex="\(B\)">\(B\)</span> has an initial object <span class="math" data-tex="\(\varnothing\subseteq B\)">\(\varnothing\subseteq B\)</span>. For the paired projection, an incoming object at <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span> is <span class="math" data-tex="\(X\subseteq Y\)">\(X\subseteq Y\)</span> with <span class="math" data-tex="\(A\subseteq X,\ B\subseteq Y\)">\(A\subseteq X,\ B\subseteq Y\)</span>. Its initial object is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+A\subseteq A\cup B.
+\]">\[
+A\subseteq A\cup B.
+\]</span>
+<p>The unique arrows from these displayed objects obey all incoming triangles. Each incoming comma is therefore nonempty connected, so all three projections are cofinal, with exactly the structured endpoints of (7.3). The set of finite subsets of <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, as are its relation and the object/arrow sets of <span class="math" data-tex="\(\operatorname{Mor}(C)\)">\(\operatorname{Mor}(C)\)</span>. Thus the relevant commas are small, hence cofinally small; both <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\operatorname{Mor}(F)\)">\(\operatorname{Mor}(F)\)</span> are right small.</p>
+<p>The two colimits in the final question are <span class="math" data-tex="\(S\times S\)">\(S\times S\)</span>. For the product index, the class of <span class="math" data-tex="\((s,t)\in A\times B\)">\((s,t)\in A\times B\)</span> maps to <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span>. For the arrow index, the class of <span class="math" data-tex="\((s,t)\in X\times Y\)">\((s,t)\in X\times Y\)</span>, <span class="math" data-tex="\(X\subseteq Y\)">\(X\subseteq Y\)</span>, has the same image. Surjectivity of the second map follows by taking <span class="math" data-tex="\(X=\{s\}\)">\(X=\{s\}\)</span>, <span class="math" data-tex="\(Y=\{s,t\}\)">\(Y=\{s,t\}\)</span>. If two representatives have the same pair, the common receiver given by unions identifies them; the same argument applies to the product index.</p>
+<p>The canonical cofinal comparison sends</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+[X\subseteq Y,(s,t)]\longmapsto[(X,Y),(s,t)].
+\]">\[
+[X\subseteq Y,(s,t)]\longmapsto[(X,Y),(s,t)].
+\]</span>
+<p>Its inverse sends a target class with pair <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> to</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+[\{s\}\subseteq\{s,t\},(s,t)].
+\]">\[
+[\{s\}\subseteq\{s,t\},(s,t)].
+\]</span>
+<p>The union receiver proves independence from every chosen representative and both inverse identities. This comparison agrees with each original coprojection. More generally, for a transformation <span class="math" data-tex="\(\beta\Rightarrow\beta&#x27;\)">\(\beta\Rightarrow\beta&#x27;\)</span>, the two comparison routes agree on every pair-stage leg; the complete cofinal universal-property theorem then gives naturality. If <span class="math" data-tex="\(S\)">\(S\)</span> is empty, all value sets are empty, the index still contains its empty stage, and the same maps are the unique inverse maps of empty sets.</p>
+<h2 id="9-retained-primary-proofs-and-licence">9. Retained primary proofs and licence</h2>
+<p>The primary Mathlib references above are pinned to commit 389347a7c1cfa76f6bd5be2ca35d4cb621610ad3. They contain the complete proofs of the faithful/full/equivalence, cofinality, filteredness and adjunction assertions used here. Mathlib is distributed under its <a href="https://github.com/leanprover-community/mathlib4/blob/389347a7c1cfa76f6bd5be2ca35d4cb621610ad3/LICENSE">Apache-2.0 licence</a>. The links identify the exact proof interfaces specialized in this lesson.</p>
+<p>The prerequisite proofs linked in the lesson supply universal factors, naturality, incoming-comma cofinality, composition and cancellation, filtered finite witnesses, and the exact universe bounds. Actual colimit statements retain their existence hypotheses, and all three projection statements retain their stated filteredness hypotheses.</p>
+</main></body></html>

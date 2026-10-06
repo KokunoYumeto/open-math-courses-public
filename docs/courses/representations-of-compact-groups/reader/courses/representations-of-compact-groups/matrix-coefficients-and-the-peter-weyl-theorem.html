@@ -1,0 +1,357 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Matrix coefficients and the Peter–Weyl theorem</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">Previous lesson</a><a href="fourier-analysis-and-class-functions-on-compact-groups.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="matrix-coefficients-and-the-peter-weyl-theorem">Matrix coefficients and the Peter–Weyl theorem</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>A translation moves a function, while a matrix coefficient records how that function's finite-dimensional orbit moves. This suggests a practical way to find frequencies: first identify finite-dimensional translation spaces, then choose matrix entries inside them. The preceding lesson already supplies complete reducibility. The only new analytic difficulty is that point evaluation is meaningless on a general <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class.</p>
+<p>We resolve that difficulty by continuous smoothing. The smoothed image of a finite-dimensional translation space consists of actual continuous functions, so evaluation makes it a coefficient space. Approximating the identity then gives completeness. Orthogonality determines the normalization, and completeness finally gives uniform approximation and finite matrix models of the group. Continuous convolution kernels will also be studied as compact operators, but that spectral calculation is an application rather than a second decomposition mechanism.</p>
+<p>We use <a href="representations-of-compact-groups-unitarity-complete-reducibility-and-finite-dimension.html">unitarity, complete reducibility and Schur's lemma</a>, regular Haar measure and complex Stone–Weierstrass. All compact groups below are Hausdorff; no countable base is assumed.</p>
+<h2 id="functions-obtained-from-a-representation">Functions obtained from a representation</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be compact Hausdorff, with normalized Haar measure <span class="math" data-tex="\(dg\)">\(dg\)</span>. All Hilbert inner products are linear in the first variable. We impose no separability or metrizability condition.</p>
+<p>For a finite-dimensional unitary representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on <span class="math" data-tex="\(V_\pi\)">\(V_\pi\)</span>, a <strong>matrix coefficient</strong> is a function</p>
+<span class="math math-display" data-tex="\[
+c_{v,w}(g)=\langle\pi(g)v,w\rangle.
+\]">\[
+c_{v,w}(g)=\langle\pi(g)v,w\rangle.
+\]</span>
+<p>Its coefficient space <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span> is the span of these functions. If <span class="math" data-tex="\((e_1,\ldots,e_d)\)">\((e_1,\ldots,e_d)\)</span> is an orthonormal basis, write</p>
+<span class="math math-display" data-tex="\[
+\pi_{ij}(g)=\langle\pi(g)e_j,e_i\rangle,\qquad d=d_\pi.
+\tag{1.1}
+\]">\[
+\pi_{ij}(g)=\langle\pi(g)e_j,e_i\rangle,\qquad d=d_\pi.
+\tag{1.1}
+\]</span>
+<p>Changing the basis only forms linear combinations of the same functions. A unitary intertwiner replaces <span class="math" data-tex="\(v,w\)">\(v,w\)</span> by their images and leaves the functions unchanged. Thus <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span> depends only on the equivalence class of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be the span of the coefficient spaces of all irreducibles. It contains coefficients of every finite-dimensional representation, since such a representation is a finite direct sum of irreducibles. Products belong to <span class="math" data-tex="\(E\)">\(E\)</span>: the product <span class="math" data-tex="\(c_{v,w}^\pi c_{x,y}^\sigma\)">\(c_{v,w}^\pi c_{x,y}^\sigma\)</span> is the coefficient of <span class="math" data-tex="\(v\otimes x,w\otimes y\)">\(v\otimes x,w\otimes y\)</span> in <span class="math" data-tex="\(\pi\otimes\sigma\)">\(\pi\otimes\sigma\)</span>, which is again a finite-dimensional unitary representation. Complex conjugation replaces <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by its conjugate representation on <span class="math" data-tex="\(\overline{V_\pi}\)">\(\overline{V_\pi}\)</span>. The trivial representation supplies the constants. Consequently, <span class="math" data-tex="\(E\)">\(E\)</span> is a conjugation-closed algebra of continuous functions.</p>
+<p>We use the commuting regular actions</p>
+<span class="math math-display" data-tex="\[
+(L_hf)(g)=f(h^{-1}g),\qquad (R_kf)(g)=f(gk).
+\tag{1.2}
+\]">\[
+(L_hf)(g)=f(h^{-1}g),\qquad (R_kf)(g)=f(gk).
+\tag{1.2}
+\]</span>
+<p>Matrix multiplication gives</p>
+<span class="math math-display" data-tex="\[
+L_h\pi_{ij}=\sum_a\pi(h^{-1})_{ia}\pi_{aj},
+\qquad
+R_k\pi_{ij}=\sum_b\pi_{ib}\pi(k)_{bj}.
+\tag{1.3}
+\]">\[
+L_h\pi_{ij}=\sum_a\pi(h^{-1})_{ia}\pi_{aj},
+\qquad
+R_k\pi_{ij}=\sum_b\pi_{ib}\pi(k)_{bj}.
+\tag{1.3}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(j\)">\(j\)</span>, the column space carries <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span> under <span class="math" data-tex="\(L\)">\(L\)</span>, because its transformation matrix is <span class="math" data-tex="\(\pi(h^{-1})^{\mathsf T}=\overline{\pi(h)}\)">\(\pi(h^{-1})^{\mathsf T}=\overline{\pi(h)}\)</span>. For fixed <span class="math" data-tex="\(i\)">\(i\)</span>, the row space carries <span class="math" data-tex="\(\pi\)">\(\pi\)</span> under <span class="math" data-tex="\(R\)">\(R\)</span>. On the circle, the coefficient <span class="math" data-tex="\(g^n\)">\(g^n\)</span> changes by <span class="math" data-tex="\(h^{-n}\)">\(h^{-n}\)</span> on the left and <span class="math" data-tex="\(k^n\)">\(k^n\)</span> on the right. This small example fixes the convention throughout.</p>
+<p>A scalar character supplies one function, whereas a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional irreducible supplies a whole <span class="math" data-tex="\(d^2\)">\(d^2\)</span>-dimensional coefficient space. On the circle, a frequency has only one entry. For a finite nonabelian group, row and column information are distinct. The six functions in the <span class="math" data-tex="\(S_3\)">\(S_3\)</span> exercise below make this distinction explicit: four come from one two-dimensional representation, and two come from scalar representations.</p>
+<h2 id="averaging-removes-all-but-a-scalar">Averaging removes all but a scalar</h2>
+<p id="result-theorem-2-1"><strong>Theorem 2.1 (Schur orthogonality).</strong> Choose one representative and one orthonormal basis for each irreducible class. For coefficients of irreducibles <span class="math" data-tex="\(\pi,\sigma\)">\(\pi,\sigma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int_G\pi_{ij}(g)\overline{\sigma_{kl}(g)}\,dg
+=
+\begin{cases}
+d_\pi^{-1}\delta_{ik}\delta_{jl},&amp;\pi=\sigma,\\
+0,&amp;\pi\not\simeq\sigma.
+\end{cases}
+\tag{2.2}
+\]">\[
+\int_G\pi_{ij}(g)\overline{\sigma_{kl}(g)}\,dg
+=
+\begin{cases}
+d_\pi^{-1}\delta_{ik}\delta_{jl},&amp;\pi=\sigma,\\
+0,&amp;\pi\not\simeq\sigma.
+\end{cases}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> For a linear map <span class="math" data-tex="\(A:V_\sigma\to V_\pi\)">\(A:V_\sigma\to V_\pi\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal A(A)=\int_G\pi(g)A\sigma(g)^*\,dg.
+\]">\[
+\mathcal A(A)=\int_G\pi(g)A\sigma(g)^*\,dg.
+\]</span>
+<p>The integral is an ordinary finite-dimensional integral. Left invariance shows that <span class="math" data-tex="\(\mathcal A(A)\)">\(\mathcal A(A)\)</span> intertwines <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Schur's lemma makes it zero when the representations are inequivalent. When they are the same representative, it is scalar, and taking traces gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal A(A)=\frac{\operatorname{tr}A}{d_\pi}I.
+\]">\[
+\mathcal A(A)=\frac{\operatorname{tr}A}{d_\pi}I.
+\]</span>
+<p>Take <span class="math" data-tex="\(Ax=\langle x,e_l\rangle e_j\)">\(Ax=\langle x,e_l\rangle e_j\)</span>. The <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> entry of the integrand is <span class="math" data-tex="\(\pi_{ij}(g)\overline{\sigma_{kl}(g)}\)">\(\pi_{ij}(g)\overline{\sigma_{kl}(g)}\)</span>. For equal representatives, <span class="math" data-tex="\(\operatorname{tr}A=\delta_{jl}\)">\(\operatorname{tr}A=\delta_{jl}\)</span>, giving (2.2). ∎</p>
+<p>In particular, <span class="math" data-tex="\(\dim E_\pi=d_\pi^2\)">\(\dim E_\pi=d_\pi^2\)</span>, and the functions <span class="math" data-tex="\(\sqrt{d_\pi}\pi_{ij}\)">\(\sqrt{d_\pi}\pi_{ij}\)</span> are orthonormal. Distinct coefficient spaces are orthogonal in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Also the characters <span class="math" data-tex="\(\chi_\pi=\sum_i\pi_{ii}\)">\(\chi_\pi=\sum_i\pi_{ii}\)</span> satisfy <span class="math" data-tex="\(\langle\chi_\pi,\chi_\sigma\rangle=\delta_{\pi\sigma}\)">\(\langle\chi_\pi,\chi_\sigma\rangle=\delta_{\pi\sigma}\)</span>, by summing (2.2). Orthogonality does not yet prove completeness. For that, we must show that no nonzero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function is orthogonal to every coefficient.</p>
+<h2 id="making-a-translation-orbit-evaluable"><span id="smoothing-produces-finite-dimensional-spaces"></span>Making a translation orbit evaluable</h2>
+<p>The complex Stone–Weierstrass theorem says that a unital, conjugation-closed subalgebra of <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> separating points of a compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span> is uniformly dense. We will use it after obtaining point separation. The smoothing argument first needs only regular measure, translations and the representation decomposition already proved.</p>
+<p>Continuous functions are dense in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. To see this, regularity of finite Haar measure gives, for a measurable set <span class="math" data-tex="\(A\)">\(A\)</span>, a compact <span class="math" data-tex="\(K\subset A\)">\(K\subset A\)</span> and an open <span class="math" data-tex="\(U\supset A\)">\(U\supset A\)</span>, up to completion by null sets, with <span class="math" data-tex="\(\mu(U\setminus K)&lt;\varepsilon\)">\(\mu(U\setminus K)&lt;\varepsilon\)</span>. Urysohn's lemma gives <span class="math" data-tex="\(0\leq f\leq1\)">\(0\leq f\leq1\)</span>, equal to one on <span class="math" data-tex="\(K\)">\(K\)</span> and zero outside <span class="math" data-tex="\(U\)">\(U\)</span>. Then <span class="math" data-tex="\(\|f-1_A\|_2^2&lt;\varepsilon\)">\(\|f-1_A\|_2^2&lt;\varepsilon\)</span>. Approximate simple functions this way, and arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions by simple functions.</p>
+<p>Both regular actions are strongly continuous. For a continuous function, compactness gives <span class="math" data-tex="\(\|L_hf-f\|_\infty\to0\)">\(\|L_hf-f\|_\infty\to0\)</span> as <span class="math" data-tex="\(h\to e\)">\(h\to e\)</span>, and likewise for <span class="math" data-tex="\(R\)">\(R\)</span>. Approximation by continuous functions and the fact that translations are isometries prove strong continuity on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>.</p>
+<p>For <span class="math" data-tex="\(\psi\in C(G)\)">\(\psi\in C(G)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(K_\psi f)(x)=\int_G\psi(xy^{-1})f(y)\,dy.
+\tag{3.1}
+\]">\[
+(K_\psi f)(x)=\int_G\psi(xy^{-1})f(y)\,dy.
+\tag{3.1}
+\]</span>
+<p>Cauchy–Schwarz gives <span class="math" data-tex="\(\|K_\psi f\|_\infty\leq\|\psi\|_2\|f\|_2\)">\(\|K_\psi f\|_\infty\leq\|\psi\|_2\|f\|_2\)</span>. The kernel depends continuously on <span class="math" data-tex="\(x\)">\(x\)</span>, uniformly in <span class="math" data-tex="\(y\)">\(y\)</span>, so its output is continuous. Changing variables <span class="math" data-tex="\(z=yh\)">\(z=yh\)</span> shows that</p>
+<span class="math math-display" data-tex="\[
+K_\psi R_h=R_hK_\psi.
+\tag{3.2}
+\]">\[
+K_\psi R_h=R_hK_\psi.
+\tag{3.2}
+\]</span>
+<p>Direct the symmetric identity neighborhoods <span class="math" data-tex="\(U\)">\(U\)</span> by reverse inclusion. Choose a nonnegative continuous function supported in <span class="math" data-tex="\(U\)">\(U\)</span> and positive at <span class="math" data-tex="\(e\)">\(e\)</span>, using compact Hausdorff regularity and Urysohn's lemma. Add its inverse translate <span class="math" data-tex="\(a(g^{-1})\)">\(a(g^{-1})\)</span> and normalize the integral to obtain a continuous, nonnegative, symmetric <span class="math" data-tex="\(\psi_U\)">\(\psi_U\)</span>, supported in <span class="math" data-tex="\(U\)">\(U\)</span>, of integral one. Full support makes the normalizing integral positive. Then</p>
+<span class="math math-display" data-tex="\[
+K_{\psi_U}f=\int_G\psi_U(g)L_gf\,dg,\qquad
+\|K_{\psi_U}f-f\|_2
+\leq\sup_{g\in U}\|L_gf-f\|_2\longrightarrow0.
+\tag{3.6}
+\]">\[
+K_{\psi_U}f=\int_G\psi_U(g)L_gf\,dg,\qquad
+\|K_{\psi_U}f-f\|_2
+\leq\sup_{g\in U}\|L_gf-f\|_2\longrightarrow0.
+\tag{3.6}
+\]</span>
+<p>The Hilbert-space integral exists: the continuous orbit map has compact image, whose closed linear span is separable. This does not assume that the entire Hilbert space is separable. The limit is a net limit.</p>
+<p><strong>Continuous images of finite-dimensional orbits.</strong> Let <span class="math" data-tex="\(W\subset L^2(G)\)">\(W\subset L^2(G)\)</span> be a finite-dimensional right-translation-invariant subspace. For each <span class="math" data-tex="\(U\)">\(U\)</span>, the image <span class="math" data-tex="\(W_U=K_{\psi_U}W\)">\(W_U=K_{\psi_U}W\)</span> is finite dimensional, consists of continuous functions, and is right invariant by (3.2). Its right action is continuous in finite dimension. Continuous representatives are unique, since Haar measure has full support, so evaluation at the identity is a well-defined linear functional <span class="math" data-tex="\(\ell_U\)">\(\ell_U\)</span> on <span class="math" data-tex="\(W_U\)">\(W_U\)</span>. For <span class="math" data-tex="\(f\in W_U\)">\(f\in W_U\)</span>,
+<span class="math math-display" data-tex="\[
+f(g)=\ell_U(R_gf).
+\]">\[
+f(g)=\ell_U(R_gf).
+\]</span>
+This is a coefficient of the representation on <span class="math" data-tex="\(W_U\)">\(W_U\)</span>; its finite-dimensional irreducible decomposition puts it in <span class="math" data-tex="\(E\)">\(E\)</span>. There is no need to evaluate the original elements of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<h2 id="completeness-and-uniform-approximation">Completeness and uniform approximation</h2>
+<p id="result-theorem-4-1"><strong>Theorem 4.1 (Peter–Weyl).</strong> For every compact Hausdorff group:</p>
+<ol>
+<li>The functions <span class="math" data-tex="\(\sqrt{d_\pi}\pi_{ij}\)">\(\sqrt{d_\pi}\pi_{ij}\)</span> form an orthonormal Hilbert basis of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>.</li>
+<li>Irreducible matrix coefficients, and finite-dimensional unitary representations, separate points.</li>
+<li>Their algebra <span class="math" data-tex="\(E\)">\(E\)</span> is uniformly dense in <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span>.</li>
+<li>With the actions (1.2),
+<span class="math math-display" data-tex="\[
+L^2(G)=\widehat{\bigoplus}_{[\pi]\in\widehat G}E_\pi,
+\qquad E_\pi\simeq\bar V_\pi\otimes V_\pi,
+\tag{4.2}
+\]">\[
+L^2(G)=\widehat{\bigoplus}_{[\pi]\in\widehat G}E_\pi,
+\qquad E_\pi\simeq\bar V_\pi\otimes V_\pi,
+\tag{4.2}
+\]</span>
+carrying <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span> on the left and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> on the right. Either regular representation contains every irreducible with multiplicity equal to its dimension.</li>
+</ol>
+<p><strong>Proof.</strong> Apply the preceding lesson's complete reducibility theorem to the right regular representation. Finite sums of its finite-dimensional irreducible invariant spaces are dense in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> lies in one such finite sum <span class="math" data-tex="\(W\)">\(W\)</span>, the continuous-image argument puts every <span class="math" data-tex="\(K_{\psi_U}f\)">\(K_{\psi_U}f\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span>, and (3.6) makes those functions converge to <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus every <span class="math" data-tex="\(W\)">\(W\)</span> lies in the closure of <span class="math" data-tex="\(E\)">\(E\)</span>, and that closure is all <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Schur orthogonality gives the claimed Hilbert basis.</p>
+<p>If <span class="math" data-tex="\(x\ne e\)">\(x\ne e\)</span> but <span class="math" data-tex="\(\pi(x)=I\)">\(\pi(x)=I\)</span> for every irreducible, (1.3) says that <span class="math" data-tex="\(R_x\)">\(R_x\)</span> fixes <span class="math" data-tex="\(E\)">\(E\)</span> pointwise. Density makes it fix all of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. Choose <span class="math" data-tex="\(f\in C(G)\)">\(f\in C(G)\)</span> with <span class="math" data-tex="\(f(e)\ne f(x)\)">\(f(e)\ne f(x)\)</span>. The continuous function <span class="math" data-tex="\(R_xf-f\)">\(R_xf-f\)</span>, zero almost everywhere, would be zero everywhere, a contradiction at <span class="math" data-tex="\(e\)">\(e\)</span>. Thus some <span class="math" data-tex="\(\pi(x)\ne I\)">\(\pi(x)\ne I\)</span>. Apply this to <span class="math" data-tex="\(x=g^{-1}h\)">\(x=g^{-1}h\)</span> to separate any distinct <span class="math" data-tex="\(g,h\)">\(g,h\)</span>; some matrix entry then separates them.</p>
+<p>The algebra <span class="math" data-tex="\(E\)">\(E\)</span> is already unital and conjugation-closed. Point separation now permits Stone–Weierstrass and proves uniform density. Completeness was proved before point separation was used.</p>
+<p>The coefficient basis gives (4.2). Schur orthogonality makes</p>
+<span class="math math-display" data-tex="\[
+\bar w\otimes v\longmapsto
+\sqrt{d_\pi}\,\langle\pi(\,\cdot\,)v,w\rangle
+\tag{4.3}
+\]">\[
+\bar w\otimes v\longmapsto
+\sqrt{d_\pi}\,\langle\pi(\,\cdot\,)v,w\rangle
+\tag{4.3}
+\]</span>
+<p>a unitary map onto <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span>. Formula (1.3) identifies the actions. Its <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span> column spaces are orthogonal copies of <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span> under <span class="math" data-tex="\(L\)">\(L\)</span>, and its <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span> row spaces are orthogonal copies of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> under <span class="math" data-tex="\(R\)">\(R\)</span>. A given <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> thus has left multiplicity <span class="math" data-tex="\(d_{\bar\sigma}=d_\sigma\)">\(d_{\bar\sigma}=d_\sigma\)</span>, in <span class="math" data-tex="\(E_{\bar\sigma}\)">\(E_{\bar\sigma}\)</span>, and right multiplicity <span class="math" data-tex="\(d_\sigma\)">\(d_\sigma\)</span>, in <span class="math" data-tex="\(E_\sigma\)">\(E_\sigma\)</span>. ∎</p>
+<p>An uncountable Hilbert direct sum has its usual meaning: each vector has at most countably many nonzero coordinates, and finite partial sums converge in norm. The theorem does not assert pointwise convergence of arbitrary Fourier series.</p>
+<p id="result-corollary-4-4"><strong>Corollary 4.4.</strong> <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is countable if and only if <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> is separable.</p>
+<p><strong>Proof.</strong> A countable union of finite coefficient bases gives a countable complete orthonormal set. Conversely, every orthonormal set in a separable Hilbert space is countable: disjoint balls of radius less than <span class="math" data-tex="\(\sqrt2/2\)">\(\sqrt2/2\)</span> around its elements contain distinct points of a countable dense set. Choose one unit coefficient from each class. ∎</p>
+<h2 id="why-approximation-can-require-several-irreducible-types">Why approximation can require several irreducible types</h2>
+<p>The span in Peter–Weyl is essential. On the circle, every irreducible is one-dimensional, so a coefficient of a single irreducible has the form <span class="math" data-tex="\(cz^k\)">\(cz^k\)</span>, with <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>. The continuous function <span class="math" data-tex="\(f(z)=1+z\)">\(f(z)=1+z\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\|1+z-cz^k\|_\infty\geq\|1+z-cz^k\|_2\geq1.
+\]">\[
+\|1+z-cz^k\|_\infty\geq\|1+z-cz^k\|_2\geq1.
+\]</span>
+Indeed orthogonality of the circle characters gives squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> distance <span class="math" data-tex="\(1+|1-c|^2\)">\(1+|1-c|^2\)</span> when <span class="math" data-tex="\(k=0\)">\(k=0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(2+|c|^2\)">\(2+|c|^2\)</span> otherwise. Thus coefficients of individual irreducibles, taken as a union, are not uniformly dense.</p>
+<p>The same function is exactly a coefficient of the reducible representation <span class="math" data-tex="\(1\oplus\chi_1\)">\(1\oplus\chi_1\)</span>: with <span class="math" data-tex="\(v=(1,1)\)">\(v=(1,1)\)</span> and <span class="math" data-tex="\(\rho(z)=\operatorname{diag}(1,z)\)">\(\rho(z)=\operatorname{diag}(1,z)\)</span>, it is <span class="math" data-tex="\(\langle\rho(z)v,v\rangle\)">\(\langle\rho(z)v,v\rangle\)</span>. More generally, a finite sum <span class="math" data-tex="\(\sum_j\ell_j(\pi_j(g)v_j)\)">\(\sum_j\ell_j(\pi_j(g)v_j)\)</span> is one coefficient of the direct sum <span class="math" data-tex="\(\bigoplus_j\pi_j\)">\(\bigoplus_j\pi_j\)</span>, using the vector <span class="math" data-tex="\((v_j)_j\)">\((v_j)_j\)</span> and the functional <span class="math" data-tex="\(\sum_j\ell_j\)">\(\sum_j\ell_j\)</span>. Repeated copies are allowed. Uniform approximation therefore uses finite linear combinations of irreducible coefficients, equivalently coefficients of finite-dimensional representations that may be reducible. This also explains why a finite invariant subspace containing a chosen vector need not be irreducible.</p>
+<h2 id="recognizing-the-coefficient-spaces-in-small-examples"><span id="three-concrete-coefficient-systems"></span>Recognizing the coefficient spaces in small examples</h2>
+<p><strong>The circle.</strong> For <span class="math" data-tex="\(G=S^1\)">\(G=S^1\)</span>, the characters <span class="math" data-tex="\(\chi_n(e^{it})=e^{int}\)">\(\chi_n(e^{it})=e^{int}\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, give the usual orthonormal system. Their Laurent polynomials form a unital, conjugation-closed algebra separating points. Stone–Weierstrass and density of continuous functions therefore make these characters complete in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. They are all irreducible classes: an additional class would have a nonzero coefficient orthogonal to a dense subspace. Under <span class="math" data-tex="\(L_h\)">\(L_h\)</span>, <span class="math" data-tex="\(\chi_n\)">\(\chi_n\)</span> carries <span class="math" data-tex="\(\chi_{-n}\)">\(\chi_{-n}\)</span>.</p>
+<p><strong>A finite group.</strong> Haar integration is <span class="math" data-tex="\(|G|^{-1}\sum_{g\in G}\)">\(|G|^{-1}\sum_{g\in G}\)</span>. The complete orthogonal coefficient decomposition gives</p>
+<span class="math math-display" data-tex="\[
+|G|=\sum_{[\pi]\in\widehat G}d_\pi^2.
+\tag{6.1}
+\]">\[
+|G|=\sum_{[\pi]\in\widehat G}d_\pi^2.
+\tag{6.1}
+\]</span>
+<p>There are finitely many classes because their nonzero coefficient spaces are mutually orthogonal in a finite-dimensional space. The map</p>
+<span class="math math-display" data-tex="\[
+\mathbb C[G]\longrightarrow
+\bigoplus_{[\pi]\in\widehat G}\operatorname{End}(V_\pi),
+\qquad
+\sum_g a_g g\longmapsto\left(\sum_g a_g\pi(g)\right)_\pi
+\tag{6.2}
+\]">\[
+\mathbb C[G]\longrightarrow
+\bigoplus_{[\pi]\in\widehat G}\operatorname{End}(V_\pi),
+\qquad
+\sum_g a_g g\longmapsto\left(\sum_g a_g\pi(g)\right)_\pi
+\tag{6.2}
+\]</span>
+<p>is an algebra homomorphism by <span class="math" data-tex="\(\pi(gh)=\pi(g)\pi(h)\)">\(\pi(gh)=\pi(g)\pi(h)\)</span>. If its image is zero, <span class="math" data-tex="\(\sum_g a_gf(g)=0\)">\(\sum_g a_gf(g)=0\)</span> for every coefficient and hence every function on <span class="math" data-tex="\(G\)">\(G\)</span>. Indicators of points force all <span class="math" data-tex="\(a_g=0\)">\(a_g=0\)</span>. Equation (6.1) then gives equal dimensions, proving that (6.2) is an algebra isomorphism. For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the dimensions <span class="math" data-tex="\(1,1,2\)">\(1,1,2\)</span> account for six group elements.</p>
+<p><strong>The defining representation of <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>.</strong> Its matrices are</p>
+<span class="math math-display" data-tex="\[
+g=\begin{pmatrix}a&amp;b\\-\bar b&amp;\bar a\end{pmatrix},
+\qquad |a|^2+|b|^2=1.
+\tag{6.3}
+\]">\[
+g=\begin{pmatrix}a&amp;b\\-\bar b&amp;\bar a\end{pmatrix},
+\qquad |a|^2+|b|^2=1.
+\tag{6.3}
+\]</span>
+<p>A line invariant under all <span class="math" data-tex="\(\operatorname{diag}(e^{it},e^{-it})\)">\(\operatorname{diag}(e^{it},e^{-it})\)</span> must be a coordinate line, since one such matrix has distinct eigenvalues. The element <span class="math" data-tex="\(a=0,b=1\)">\(a=0,b=1\)</span> interchanges these lines. Thus the defining representation is irreducible. Its four entries <span class="math" data-tex="\(a,b,-\bar b,\bar a\)">\(a,b,-\bar b,\bar a\)</span> are orthogonal in <span class="math" data-tex="\(L^2(SU(2))\)">\(L^2(SU(2))\)</span>, each with squared norm <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Multiplication by <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> normalizes them. A later lesson constructs all irreducibles.</p>
+<h2 id="what-continuous-kernels-add">What continuous kernels add</h2>
+<p>Smoothing served above to obtain continuous representatives. The same operators also compress infinite-dimensional analysis into finite-dimensional eigenspaces. This is useful when one wants spectral approximations or Hilbert–Schmidt bounds. The compact self-adjoint spectral theorem says that nonzero eigenspaces are finite dimensional and span the orthogonal complement of the kernel; no separability assumption is needed.</p>
+<p id="result-lemma-3-3"><strong>Lemma 3.3.</strong> <span class="math" data-tex="\(K_\psi\)">\(K_\psi\)</span> is compact. If <span class="math" data-tex="\(\psi(g^{-1})=\overline{\psi(g)}\)">\(\psi(g^{-1})=\overline{\psi(g)}\)</span>, it is self-adjoint.</p>
+<p><strong>Proof.</strong> Finite sums <span class="math" data-tex="\(\sum_\nu a_\nu(x)b_\nu(y)\)">\(\sum_\nu a_\nu(x)b_\nu(y)\)</span> with continuous factors form a unital, conjugation-closed algebra separating points of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>. Stone–Weierstrass therefore approximates <span class="math" data-tex="\(\psi(xy^{-1})\)">\(\psi(xy^{-1})\)</span> uniformly by these kernels. Their operators have range in the finite-dimensional span of their <span class="math" data-tex="\(a_\nu\)">\(a_\nu\)</span>. A uniform kernel error <span class="math" data-tex="\(\delta\)">\(\delta\)</span> gives operator-norm error at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, because the measure has total mass one. Thus <span class="math" data-tex="\(K_\psi\)">\(K_\psi\)</span> is a norm limit of finite-rank operators. The identity <span class="math" data-tex="\(\psi(xy^{-1})=\overline{\psi(yx^{-1})}\)">\(\psi(xy^{-1})=\overline{\psi(yx^{-1})}\)</span>, together with Fubini's theorem, proves self-adjointness. ∎</p>
+<p id="result-lemma-3-4"><strong>Lemma 3.4.</strong> Every nonzero eigenspace of a self-adjoint <span class="math" data-tex="\(K_\psi\)">\(K_\psi\)</span> lies in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, let <span class="math" data-tex="\(N=\ker(K_\psi-\lambda I)\)">\(N=\ker(K_\psi-\lambda I)\)</span>. The compact spectral theorem makes <span class="math" data-tex="\(N\)">\(N\)</span> finite-dimensional; (3.2) makes it invariant under <span class="math" data-tex="\(R\)">\(R\)</span>. The restriction <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> is a continuous unitary representation. Every element of <span class="math" data-tex="\(N\)">\(N\)</span> has a continuous representative since <span class="math" data-tex="\(f=\lambda^{-1}K_\psi f\)">\(f=\lambda^{-1}K_\psi f\)</span>. Such a representative is unique: a nonempty open set has positive Haar measure, because its translates cover <span class="math" data-tex="\(G\)">\(G\)</span> and a finite subcover would otherwise force <span class="math" data-tex="\(\mu(G)=0\)">\(\mu(G)=0\)</span>. A continuous function zero almost everywhere is therefore zero everywhere.</p>
+<p>Evaluation at <span class="math" data-tex="\(e\)">\(e\)</span> consequently defines a linear functional <span class="math" data-tex="\(\ell:N\to\mathbb C\)">\(\ell:N\to\mathbb C\)</span>, continuous by finite dimension. For every <span class="math" data-tex="\(g\)">\(g\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(g)=\ell(R_gf)=\ell(\tau(g)f).
+\tag{3.5}
+\]">\[
+f(g)=\ell(R_gf)=\ell(\tau(g)f).
+\tag{3.5}
+\]</span>
+<p>Finite-dimensional Riesz representation makes this a matrix coefficient of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its irreducible decomposition, proved in the preceding lesson, puts this coefficient in <span class="math" data-tex="\(E\)">\(E\)</span>. ∎</p>
+<p>The continuity step is essential: point evaluation is not defined on arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> equivalence classes.</p>
+<h2 id="a-faithful-representation-detects-the-lie-structure">A faithful representation detects the Lie structure</h2>
+<p>A group has <strong>no small subgroups</strong> if some identity neighborhood contains no subgroup except <span class="math" data-tex="\(\{e\}\)">\(\{e\}\)</span>.</p>
+<p id="result-lemma-5-1"><strong>Lemma 5.1.</strong> Every finite-dimensional real Lie group has no small subgroups.</p>
+<p><strong>Proof.</strong> In positive dimension, choose a norm on its Lie algebra and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> so that <span class="math" data-tex="\(\exp\)">\(\exp\)</span> is injective on <span class="math" data-tex="\(B_r\)">\(B_r\)</span> and is a homeomorphism there onto an identity neighborhood. Set <span class="math" data-tex="\(U=\exp(B_{r/3})\)">\(U=\exp(B_{r/3})\)</span>. If a subgroup inside <span class="math" data-tex="\(U\)">\(U\)</span> contained <span class="math" data-tex="\(h=\exp X\ne e\)">\(h=\exp X\ne e\)</span>, choose the least positive <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(n\|X\|\geq r/3\)">\(n\|X\|\geq r/3\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+r/3\leq n\|X\|&lt;2r/3&lt;r,\qquad h^n=\exp(nX).
+\]">\[
+r/3\leq n\|X\|&lt;2r/3&lt;r,\qquad h^n=\exp(nX).
+\]</span>
+<p>Because <span class="math" data-tex="\(h^n\in U\)">\(h^n\in U\)</span>, it also equals <span class="math" data-tex="\(\exp Y\)">\(\exp Y\)</span> for <span class="math" data-tex="\(\|Y\|&lt;r/3\)">\(\|Y\|&lt;r/3\)</span>, contradicting injectivity on <span class="math" data-tex="\(B_r\)">\(B_r\)</span>. In dimension zero, <span class="math" data-tex="\(\{e\}\)">\(\{e\}\)</span> is itself open. ∎</p>
+<p>Here we import that the Lie exponential is a local diffeomorphism and <span class="math" data-tex="\((\exp X)^n=\exp(nX)\)">\((\exp X)^n=\exp(nX)\)</span>. We also import the closed subgroup theorem: a closed subgroup of a finite-dimensional real Lie group is a Lie subgroup. Its precise statement is [Etingof, Theorem 2.16].</p>
+<p id="result-theorem-5-2"><strong>Theorem 5.2.</strong> A compact Hausdorff group is a finite-dimensional real Lie group if and only if it admits a faithful continuous finite-dimensional representation. Every compact group with no small subgroups has such a representation, which can be chosen unitary.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(U\)">\(U\)</span> containing no nontrivial subgroup. For each <span class="math" data-tex="\(x\notin U\)">\(x\notin U\)</span>, point separation gives an irreducible <span class="math" data-tex="\(\pi_x\)">\(\pi_x\)</span> with <span class="math" data-tex="\(\pi_x(x)\ne I\)">\(\pi_x(x)\ne I\)</span>. The open complements of these kernels cover the compact set <span class="math" data-tex="\(G\setminus U\)">\(G\setminus U\)</span>. A finite subcover gives <span class="math" data-tex="\(\pi_1,\ldots,\pi_m\)">\(\pi_1,\ldots,\pi_m\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\rho=\pi_1\oplus\cdots\oplus\pi_m,\qquad
+\ker\rho=\bigcap_{\nu=1}^m\ker\pi_\nu\subset U.
+\tag{5.3}
+\]">\[
+\rho=\pi_1\oplus\cdots\oplus\pi_m,\qquad
+\ker\rho=\bigcap_{\nu=1}^m\ker\pi_\nu\subset U.
+\tag{5.3}
+\]</span>
+<p>That kernel is a subgroup and hence trivial. If <span class="math" data-tex="\(G\setminus U\)">\(G\setminus U\)</span> is empty, <span class="math" data-tex="\(G\)">\(G\)</span> is trivial and its one-dimensional trivial representation is faithful.</p>
+<p>Lemma 5.1 proves that a compact Lie group meets this condition. Conversely, average an inner product on a faithful finite-dimensional representation, as in the preceding lesson. Its map into <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> is a continuous injection from a compact space to a Hausdorff space, hence a homeomorphism onto its compact, closed image. The closed subgroup theorem gives a Lie subgroup, and therefore the required Lie structure on <span class="math" data-tex="\(G\)">\(G\)</span>. ∎</p>
+<p>This proof uses a finite subcover, without a decreasing sequence of kernels or a countable neighborhood basis.</p>
+<p id="result-corollary-5-4"><strong>Corollary 5.4.</strong> Every compact Hausdorff group is an inverse limit of compact Lie groups.</p>
+<p><strong>Proof.</strong> For each finite set <span class="math" data-tex="\(F\)">\(F\)</span> of irreducible classes, let <span class="math" data-tex="\(G_F\)">\(G_F\)</span> be the image in <span class="math" data-tex="\(\prod_{\pi\in F}U(V_\pi)\)">\(\prod_{\pi\in F}U(V_\pi)\)</span>. This image is compact and closed, hence a Lie subgroup. For <span class="math" data-tex="\(F\subset F&#x27;\)">\(F\subset F&#x27;\)</span>, coordinate projection maps <span class="math" data-tex="\(G_{F&#x27;}\)">\(G_{F&#x27;}\)</span> onto <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. The natural map <span class="math" data-tex="\(G\to\varprojlim_FG_F\)">\(G\to\varprojlim_FG_F\)</span> is injective by point separation. For a compatible family <span class="math" data-tex="\((x_F)\)">\((x_F)\)</span>, the closed fibers <span class="math" data-tex="\(\{g:\pi_F(g)=x_F\}\)">\(\{g:\pi_F(g)=x_F\}\)</span> are nonempty. Any finite collection intersects, by using the fiber for the union of its index sets. Compactness makes their total intersection nonempty, proving surjectivity. The map is continuous and respects multiplication; compactness and the Hausdorff target make it a homeomorphism. ∎</p>
+<h2 id="finite-dimensional-observations-of-a-profinite-group">Finite-dimensional observations of a profinite group</h2>
+<p>An inverse limit need not eventually become one of its finite-dimensional models. A useful extreme case is a <strong>profinite group</strong>: here we use the concrete condition that the compact Hausdorff group has a basis at the identity consisting of open normal subgroups. An inverse limit of finite groups has this property, since the kernels of finite collections of coordinate projections form such a basis in its subspace topology. The argument below needs only the stated basis condition.</p>
+<p id="result-proposition-5-5"><strong>Proposition 5.5 (finite quotient seen by a matrix representation).</strong> Every continuous finite-dimensional complex representation of such a group factors through a finite quotient. In particular this holds for every continuous irreducible representation.</p>
+<p><em>Proof.</em> Unitarize the representation by lesson one, so that it maps into <span class="math" data-tex="\(U(d)\)">\(U(d)\)</span>. By Lemma 5.1 there is an identity neighborhood <span class="math" data-tex="\(V\subset U(d)\)">\(V\subset U(d)\)</span> containing no nontrivial subgroup. Continuity and the assumed basis give an open normal subgroup <span class="math" data-tex="\(N\subset\pi^{-1}(V)\)">\(N\subset\pi^{-1}(V)\)</span>. The subgroup <span class="math" data-tex="\(\pi(N)\)">\(\pi(N)\)</span> lies in <span class="math" data-tex="\(V\)">\(V\)</span>, and hence is trivial. The representation therefore factors continuously through <span class="math" data-tex="\(G/N\)">\(G/N\)</span>. This quotient is compact and discrete, so is finite: its singleton open cover has a finite subcover. Lesson one makes every irreducible finite dimensional. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an arbitrary index set <span class="math" data-tex="\(I\)">\(I\)</span>, consider
+<span class="math math-display" data-tex="\[
+G=\{1,-1\}^{I},\qquad
+N_F=\{x:x_i=1\text{ for every }i\in F\},
+\]">\[
+G=\{1,-1\}^{I},\qquad
+N_F=\{x:x_i=1\text{ for every }i\in F\},
+\]</span>
+where <span class="math" data-tex="\(F\)">\(F\)</span> is finite. The <span class="math" data-tex="\(N_F\)">\(N_F\)</span>'s form the required basis. Every irreducible is a one-dimensional character, since the group is abelian and Schur's lemma makes its commuting operators scalar. Proposition 5.5 says that it depends on finitely many coordinates. On a finite product, a character sends each coordinate generator to <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>; therefore the complete list is
+<span class="math math-display" data-tex="\[
+\chi_F(x)=\prod_{i\in F}x_i,
+\qquad F\subset I\text{ finite}.
+\]">\[
+\chi_F(x)=\prod_{i\in F}x_i,
+\qquad F\subset I\text{ finite}.
+\]</span>
+Distinct finite subsets give distinct characters, as one sees by changing a single coordinate. These are the Walsh characters. Their span contains every function of finitely many coordinates, since the characters of the corresponding finite quotient form a basis. It is uniformly dense in <span class="math" data-tex="\(C(G)\)">\(C(G)\)</span> by Stone–Weierstrass: it contains constants, is closed under products and conjugation, and separates points. Peter–Weyl makes them an orthonormal basis of <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>. If <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable, this basis is uncountable; all expansions still use finite-subset sums and Hilbert summability.</p>
+<p>When <span class="math" data-tex="\(I\)">\(I\)</span> is infinite, no finite-dimensional continuous representation is faithful. Each of its finitely many irreducible summands depends on a finite set, so their union is finite and every other coordinate lies in its kernel. All the characters together nevertheless separate points. This shows precisely why the inverse-limit conclusion is stronger than asking for a single faithful matrix model.</p>
+<p>The additive group <span class="math" data-tex="\(\mathbb Z_p=\varprojlim_k\mathbb Z/p^k\mathbb Z\)">\(\mathbb Z_p=\varprojlim_k\mathbb Z/p^k\mathbb Z\)</span> gives a second example. Its characters are
+<span class="math math-display" data-tex="\[
+\chi_{r,k}(x)=\exp(2\pi i r x_k/p^k),
+\qquad r\in\mathbb Z/p^k\mathbb Z.
+\]">\[
+\chi_{r,k}(x)=\exp(2\pi i r x_k/p^k),
+\qquad r\in\mathbb Z/p^k\mathbb Z.
+\]</span>
+Surjectivity of each coordinate map follows by taking the compatible residues of an integer representing <span class="math" data-tex="\(x_k\)">\(x_k\)</span>. The finite cyclic character classification and Proposition 5.5 prove exhaustion. Two displayed characters agree exactly when their labels <span class="math" data-tex="\(r/p^k\)">\(r/p^k\)</span> agree in <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>, as restriction to the compatible integer <span class="math" data-tex="\(1\)">\(1\)</span> shows. Thus its dual is the subgroup of rational classes with denominator a power of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — direct orthogonality (easy).</strong> Compute the coefficient inner products for the characters of <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span>, and for the trivial, sign and standard representations of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. Verify completeness in both cases.</p>
+<p><strong>Solution.</strong> Parametrize <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span> by <span class="math" data-tex="\(0\leq t&lt;2\pi\)">\(0\leq t&lt;2\pi\)</span>. Its characters <span class="math" data-tex="\(e^{int}\)">\(e^{int}\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}e^{i(n-m)t}\,dt=\delta_{nm}.
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}e^{i(n-m)t}\,dt=\delta_{nm}.
+\]</span>
+<p>When <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span>, evaluation of <span class="math" data-tex="\(e^{i(n-m)t}/(i(n-m))\)">\(e^{i(n-m)t}/(i(n-m))\)</span> at the endpoints gives zero. Completeness follows from the Laurent-polynomial argument in the circle example.</p>
+<p>Write <span class="math" data-tex="\(S_3=\langle r,s:r^3=s^2=e,\ srs=r^{-1}\rangle\)">\(S_3=\langle r,s:r^3=s^2=e,\ srs=r^{-1}\rangle\)</span>, let <span class="math" data-tex="\(\omega=e^{2\pi i/3}\)">\(\omega=e^{2\pi i/3}\)</span>, and take</p>
+<span class="math math-display" data-tex="\[
+\rho(r)=\begin{pmatrix}\omega&amp;0\\0&amp;\omega^{-1}\end{pmatrix},
+\qquad \rho(s)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]">\[
+\rho(r)=\begin{pmatrix}\omega&amp;0\\0&amp;\omega^{-1}\end{pmatrix},
+\qquad \rho(s)=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]</span>
+<p>These satisfy the relations. The eigenlines of <span class="math" data-tex="\(\rho(r)\)">\(\rho(r)\)</span> are swapped by <span class="math" data-tex="\(\rho(s)\)">\(\rho(s)\)</span>, proving irreducibility. On <span class="math" data-tex="\(r^a\)">\(r^a\)</span>, the diagonal entries are <span class="math" data-tex="\(\omega^a,\omega^{-a}\)">\(\omega^a,\omega^{-a}\)</span>, and the off-diagonal entries vanish. On <span class="math" data-tex="\(sr^a\)">\(sr^a\)</span>, the diagonal entries vanish, and the off-diagonal entries are <span class="math" data-tex="\(\omega^{-a},\omega^a\)">\(\omega^{-a},\omega^a\)</span>.</p>
+<p>Every entry has squared norm <span class="math" data-tex="\(3/6=1/2\)">\(3/6=1/2\)</span>. Entries with disjoint parity supports are orthogonal. The two entries on either support are orthogonal because <span class="math" data-tex="\(\sum_{a=0}^2\omega^{2a}=0\)">\(\sum_{a=0}^2\omega^{2a}=0\)</span>. Each entry has zero sum on its support, making it orthogonal to both the trivial and sign characters. Those characters have norm one and mutual inner product <span class="math" data-tex="\((3-3)/6=0\)">\((3-3)/6=0\)</span>. The two characters and four normalized entries form six orthonormal functions in a six-dimensional space, and hence a complete basis. Schur orthogonality excludes further irreducibles.</p>
+<p><strong>Exercise 2 — square-integrable kernels (medium).</strong> For <span class="math" data-tex="\(\psi\in L^2(G)\)">\(\psi\in L^2(G)\)</span>, prove that convolution is Hilbert–Schmidt with</p>
+<span class="math math-display" data-tex="\[
+\|K_\psi\|_{\mathrm{HS}}=\|\psi\|_2.
+\tag{7.1}
+\]">\[
+\|K_\psi\|_{\mathrm{HS}}=\|\psi\|_2.
+\tag{7.1}
+\]</span>
+<p>Do not assume separability.</p>
+<p><strong>Solution.</strong> Define the squared Hilbert–Schmidt norm of <span class="math" data-tex="\(A\)">\(A\)</span> as the supremum of <span class="math" data-tex="\(\sum_{j=1}^m\|Ae_j\|^2\)">\(\sum_{j=1}^m\|Ae_j\|^2\)</span> over finite orthonormal families. For a finite product kernel, orthonormalize the span of the conjugates of its input factors to write</p>
+<span class="math math-display" data-tex="\[
+k(x,y)=\sum_{j=1}^m a_j(x)\overline{e_j(y)},\qquad
+A_kf=\sum_j\langle f,e_j\rangle a_j.
+\]">\[
+k(x,y)=\sum_{j=1}^m a_j(x)\overline{e_j(y)},\qquad
+A_kf=\sum_j\langle f,e_j\rangle a_j.
+\]</span>
+<p>Finite-dimensional Parseval and integration give</p>
+<span class="math math-display" data-tex="\[
+\|A_k\|_{\mathrm{HS}}^2
+=\sum_j\|a_j\|_2^2
+=\int_{G\times G}|k(x,y)|^2\,dx\,dy.
+\tag{7.2}
+\]">\[
+\|A_k\|_{\mathrm{HS}}^2
+=\sum_j\|a_j\|_2^2
+=\int_{G\times G}|k(x,y)|^2\,dx\,dy.
+\tag{7.2}
+\]</span>
+<p>For the first equality, <span class="math" data-tex="\(A_k\)">\(A_k\)</span> vanishes on the orthogonal complement of the input span. Any finite orthonormal family gives a sum bounded by the trace of the positive matrix <span class="math" data-tex="\(A_k^*A_k\)">\(A_k^*A_k\)</span> on this span, while the displayed input basis attains it.</p>
+<p>Hilbert–Schmidt operators are complete in this norm. Indeed, <span class="math" data-tex="\(\|A\|\leq\|A\|_{\mathrm{HS}}\)">\(\|A\|\leq\|A\|_{\mathrm{HS}}\)</span> gives an operator-norm limit for a Cauchy sequence; passing to the limit on each finite orthonormal family retains its Cauchy bound in Hilbert–Schmidt norm. Finite product kernels are dense in <span class="math" data-tex="\(L^2(G\times G)\)">\(L^2(G\times G)\)</span>, by Stone–Weierstrass on continuous functions and regularity of product Haar measure. Thus the isometry (7.2) extends to all square-integrable kernels. The extension is compact, being an operator-norm limit of finite-rank operators.</p>
+<p>For continuous <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, invariance of Haar measure gives</p>
+<span class="math math-display" data-tex="\[
+\int_{G\times G}|\psi(xy^{-1})|^2\,dx\,dy
+=\int_G|\psi(z)|^2\,dz.
+\]">\[
+\int_{G\times G}|\psi(xy^{-1})|^2\,dx\,dy
+=\int_G|\psi(z)|^2\,dz.
+\]</span>
+<p>Approximate arbitrary <span class="math" data-tex="\(\psi\in L^2(G)\)">\(\psi\in L^2(G)\)</span> by continuous functions. Applying this identity to differences constructs <span class="math" data-tex="\(\psi(xy^{-1})\)">\(\psi(xy^{-1})\)</span> as an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernel, independently of the approximation. Its integral operator is convolution by <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, interpreted almost everywhere. Equation (7.2) proves (7.1), without a sum over an uncountable basis.</p>
+<p><strong>Exercise 3 — the left isotypic component (medium).</strong> Show that <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span> is exactly the left <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span>-isotypic subspace, and identify the left <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-isotypic component for any <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<p><strong>Solution.</strong> The column decomposition and orthogonality give <span class="math" data-tex="\(d_\pi\)">\(d_\pi\)</span> copies of <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span> in <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span>. Each other <span class="math" data-tex="\(E_\tau\)">\(E_\tau\)</span> in the complete sum (4.2) contains only <span class="math" data-tex="\(\bar\tau\)">\(\bar\tau\)</span>. Distinct irreducibles have orthogonal isotypic spaces by the preceding lesson. Thus none with <span class="math" data-tex="\(\tau\not\simeq\pi\)">\(\tau\not\simeq\pi\)</span> contributes to the left <span class="math" data-tex="\(\bar\pi\)">\(\bar\pi\)</span>-isotypic space, which is exactly <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span>. Replacing <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by <span class="math" data-tex="\(\bar\sigma\)">\(\bar\sigma\)</span> gives <span class="math" data-tex="\(E_{\bar\sigma}\)">\(E_{\bar\sigma}\)</span>, with multiplicity <span class="math" data-tex="\(d_\sigma\)">\(d_\sigma\)</span>. The conjugate is forced by (1.2).</p>
+<p><strong>Exercise 4 — a faithful matrix model (hard).</strong> Derive a faithful finite-dimensional unitary representation from no small subgroups, without a countable neighborhood basis. Explain where compactness enters, and deduce a Lie structure.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(U\)">\(U\)</span> containing no nontrivial subgroup. For each <span class="math" data-tex="\(x\notin U\)">\(x\notin U\)</span>, point separation gives an irreducible whose kernel misses <span class="math" data-tex="\(x\)">\(x\)</span>. The complements of these closed kernels cover <span class="math" data-tex="\(G\setminus U\)">\(G\setminus U\)</span>. A finite subcover makes the direct-sum representation's kernel a subgroup contained in <span class="math" data-tex="\(U\)">\(U\)</span>, hence trivial. If the complement is empty, the group is trivial. Compactness also makes its injective unitary image closed and the map a homeomorphism onto that image. The closed subgroup theorem now gives a Lie subgroup. The two uses of compactness are the finite subcover and the closed embedded image; neither uses sequences.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Haar and compact spectral theorems are imported in the precise forms and with the locators given in the preceding lesson. Urysohn's lemma, regularity of finite Radon measure, and scalar Fubini and simple-function approximation are analysis prerequisites.</p>
+<p>Stone–Weierstrass is imported from <a href="../function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.html#oa-fnd-sw-09">The Stone–Weierstrass theorem for functions vanishing at infinity, Theorem 10.1</a>, whose compact case is the complex form used here.</p>
+<p>The full internal proof is <a href="../function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.html#oa-fnd-sw-09"><em>The Stone–Weierstrass theorem for functions vanishing at infinity</em>, Theorem 10.1</a>, including its compact form. Its Lemma 6.1, Proposition 6.2, Lemma 7.1 and Lemma 8.1 prove the polynomial and lattice steps, without countability assumptions. The same lesson's Corollary 5.2 provides the Urysohn functions used here. Haar regularity is <a href="../harmonic-analysis-on-locally-compact-groups/haar-measure-on-locally-compact-groups.html#oa-fnd-hm-01"><em>Haar measure on locally compact groups</em>, Theorem 2.2 and Proposition 2.3</a>. The compact spectral application uses the internal Hilbert-space proof identified in lesson 1; it is not a prerequisite for the new completeness argument.</p>
+<p>The Lie facts are <a href="https://math.mit.edu/~etingof/lnlg.pdf">Etingof, Theorem 5.16</a>, for the local exponential map and its one-parameter subgroup property, and Theorem 2.16 of the same lectures, for the closed subgroup theorem. Their proofs belong to Lie-group background. The faithful representation criterion and the inverse-limit result have been proved here.</p>
+<p>Internal proofs are <a href="../DG-FND/local-tools-for-bundles-and-transport.html#section-2"><em>Local tools for bundles and transport</em>, §2</a>, including the exponential construction after Lemma 2.2 and its local inversion from Theorem 1.2; and <a href="../DG-FND/invariant-connections-on-homogeneous-bundles.html#section-1"><em>Invariant connections on homogeneous bundles</em>, Theorem 1.1</a>, for embedded closed subgroups. Their finite-dimensional Lie-group hypotheses apply to the ambient unitary matrix groups in Theorem 5.2 and Corollary 5.4. They impose no countability assumption on the compact group before a faithful matrix model has been obtained.</p>
+<h2 id="references-and-convention-checks">References and convention checks</h2>
+<ul>
+
+<li>C. Gruson and V. Serganova, <em>A Journey Through Representation Theory</em> (2018), Chapter 3, §2: compact-group matrix coefficients. Our proof establishes continuous representatives before evaluation at the identity.</li>
+<li>P. Etingof, <a href="https://math.mit.edu/~etingof/lnlg.pdf"><em>Lie Groups and Lie Algebras</em></a>, Theorem 2.16 for the closed subgroup theorem, §5.3 for the local exponential map, and §§36–37 for comparison with compact Lie and compact topological groups.</li>
+
+</ul>
+<p>The approximation theorems retain their compact Hausdorff hypotheses. The distinctions between <span class="math" data-tex="\(E_\pi\)">\(E_\pi\)</span> and the left <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-isotypic component, and between nets and sequences, are part of the mathematical content.</p>
+<ul>
+<li>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie groups and Lie algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026, §§35–37: matrix coefficients, Peter–Weyl and compact topological groups. The last section imposes a countable base; the proofs here retain arbitrary compact Hausdorff groups and neighborhood nets. This accessible draft supplements the references already used.</li>
+</ul>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §37. Its compact-convolution/eigenfunction proof supplies an alternative proof under a countable-base convention. The finite translation-orbit proof above retains arbitrary compact Hausdorff groups and avoids using compact convolution as a prior density theorem.</p>
+<p>Emmanuel Kowalski, <a href="https://people.math.ethz.ch/~kowalski/representation-theory-2025.pdf"><em>An introduction to the representation theory of groups</em>, author 2025 edition</a>, Example 6.1.3(2)–(3), printed pages 241–242 (accessed 3 October 2026). Its finite-factor and p-adic examples motivate the section on profinite groups. Proposition 5.5 proves the open-normal-basis version, and the Walsh and p-adic classifications are worked out here, including arbitrary index sets.</p>
+<p>Claudio Gorodski, <a href="https://www.ime.usp.br/~gorodski/teaching/mat6001-2025/master04-22-2025.pdf"><em>Lecture Notes on Compact Lie Groups and Their Representations</em>, preliminary version 2, 22 April 2025</a>, §7.1, printed pages 125–129 (accessed 3 October 2026), supplies a useful comparison for Peter–Weyl. The single-irreducible density wording there needs the linear-span qualification demonstrated by the circle example above. Its unrestricted countability assertion is corrected by Corollary 4.4; the own full smoothing and density proof applies to arbitrary compact Hausdorff groups.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-02.provenance.json">Source and result records</a></footer></body></html>

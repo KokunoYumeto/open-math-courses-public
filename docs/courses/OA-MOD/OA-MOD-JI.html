@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementing Jordan symmetries on standard forms · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-JI.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 37 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="implementing-jordan-symmetries-on-standard-forms">Implementing Jordan symmetries on standard forms</h1>
+<p><strong>Independently written mathematical draft.</strong></p>
+<p>A Jordan star isomorphism preserves squares and adjoints, but it can reverse the order of multiplication on part of an algebra. Its standard-form implementation must therefore preserve the positive cone and its vector functionals. Conjugation of the entire left algebra is generally the wrong requirement.</p>
+<p>The source target is Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Exercise IX.1(7). We prove the assertion for arbitrary von Neumann algebras. The central splitting is proved below from Jordan identities and closed invariant subspaces; no classification by type, global faithful state, or external splitting theorem is assumed. The subsequent construction uses the written <a href="OA-MOD-SE.html#oa-mod-se-03">standard-form corners and equivalence Every projection has a faithful cone corner and Patching the unique comparisons</a>, <a href="OA-MOD-VP.html#oa-mod-vp-01">commutant form The commutant sees the same positive cone</a>, and <a href="OA-MOD-JR.html#oa-mod-jr-03">cone implementation uniqueness The valid quadratic identity and the source correction</a>. The elementary operator inputs are <a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary and Finite-vector approximation and the bicommutant</a> and <a href="OA-MOD-NP.html#oa-mod-np-04">normality criterion The positive-map equivalence</a>.</p>
+<p>Throughout, <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are von Neumann algebras, and <span class="math" data-tex="\(\theta:M\to N\)">\(\theta:M\to N\)</span> is a complex-linear bijection preserving adjoints and squares. This is the Jordan star convention. The adjoint requirement is essential, as the last section explains. Inner products are linear in the first variable.</p>
+<h2 id="order-normality-and-two-polynomial-identities">Order, normality and two polynomial identities</h2>
+<p>Write <span class="math" data-tex="\(a\circ b=ab+ba\)">\(a\circ b=ab+ba\)</span>, without a factor of two. Polarization of squares gives</p>
+<span class="math math-display" data-tex="\[
+\theta(a\circ b)=\theta(a)\circ\theta(b).
+\]">\[
+\theta(a\circ b)=\theta(a)\circ\theta(b).
+\]</span>
+<p>Conversely, square preservation follows by putting <span class="math" data-tex="\(b=a\)">\(b=a\)</span>. The inverse map has the same properties: lift any elements of <span class="math" data-tex="\(N\)">\(N\)</span> and apply injectivity to the identities in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The map is unital. Put <span class="math" data-tex="\(q=\theta(1)\)">\(q=\theta(1)\)</span>. Since <span class="math" data-tex="\(1\circ a=2a\)">\(1\circ a=2a\)</span>, surjectivity gives <span class="math" data-tex="\(q\circ y=2y\)">\(q\circ y=2y\)</span> for every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span>. Taking <span class="math" data-tex="\(y=1\)">\(y=1\)</span> gives <span class="math" data-tex="\(q=1\)">\(q=1\)</span>. Every positive element is the square of a self-adjoint element by BK-01. Therefore <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and its inverse are positive. They are inverse order isomorphisms.</p>
+<p>For self-adjoint <span class="math" data-tex="\(a\)">\(a\)</span>, apply the order bounds <span class="math" data-tex="\(-\|a\|1\le a\le\|a\|1\)">\(-\|a\|1\le a\le\|a\|1\)</span>. They show <span class="math" data-tex="\(\|\theta(a)\|\le\|a\|\)">\(\|\theta(a)\|\le\|a\|\)</span>, and applying the inverse gives equality. The decomposition <span class="math" data-tex="\(x=\operatorname{Re}x+i\operatorname{Im}x\)">\(x=\operatorname{Re}x+i\operatorname{Im}x\)</span> consequently gives <span class="math" data-tex="\(\|\theta(x)\|\le2\|x\|\)">\(\|\theta(x)\|\le2\|x\|\)</span>, which suffices for boundedness. A bounded increasing positive net is characterized by its least upper bound in the order. An order bijection preserves that characterization, in both directions; its image net is bounded by the image of the original bound. NP-04 proves normality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(\theta^{-1}\)">\(\theta^{-1}\)</span>.</p>
+<p>Two identities will control multiplication. Direct expansion gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+2aba=a\circ(a\circ b)-a^2\circ b,\\
+[[a,b],c]
+=a\circ(b\circ c)-b\circ(a\circ c).
+\end{gathered}
+\]">\[
+\begin{gathered}
+2aba=a\circ(a\circ b)-a^2\circ b,\\
+[[a,b],c]
+=a\circ(b\circ c)-b\circ(a\circ c).
+\end{gathered}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\theta\)">\(\theta\)</span> preserves the triple product <span class="math" data-tex="\(aba\)">\(aba\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta([[a,b],c])\\
+=[[\theta(a),\theta(b)],\theta(c)].
+\end{gathered}
+\tag{JI.1}
+\]">\[
+\begin{gathered}
+\theta([[a,b],c])\\
+=[[\theta(a),\theta(b)],\theta(c)].
+\end{gathered}
+\tag{JI.1}
+\]</span>
+<p>These statements hold for arbitrary elements, not only self-adjoint ones. They use Jordan products only; they do not assert that <span class="math" data-tex="\(\theta\)">\(\theta\)</span> preserves a single commutator.</p>
+<h2 id="separate-the-two-defects-for-one-pair">Separate the two defects for one pair</h2>
+<p>Fix self-adjoint <span class="math" data-tex="\(a,b\in M\)">\(a,b\in M\)</span>, and abbreviate</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A=\theta(a),\quad B=\theta(b),\\
+d=[a,b],\quad h=\theta(d),\quad k=[A,B].
+\end{gathered}
+\]">\[
+\begin{gathered}
+A=\theta(a),\quad B=\theta(b),\\
+d=[a,b],\quad h=\theta(d),\quad k=[A,B].
+\end{gathered}
+\]</span>
+<p>Both <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> are skew-adjoint. The elementary identity</p>
+<span class="math math-display" data-tex="\[
+[a,b]^2=(a\circ b)^2-2ab^2a-2ba^2b
+\]">\[
+[a,b]^2=(a\circ b)^2-2ab^2a-2ba^2b
+\]</span>
+<p>contains only squares and triple products on its right. Apply JI-01 to it. This proves <span class="math" data-tex="\(h^2=k^2\)">\(h^2=k^2\)</span>. Putting <span class="math" data-tex="\(c=d\)">\(c=d\)</span> in (JI.1) gives <span class="math" data-tex="\([k,h]=0\)">\([k,h]=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+h^2=k^2,\qquad hk=kh.
+\tag{JI.2}
+\]">\[
+h^2=k^2,\qquad hk=kh.
+\tag{JI.2}
+\]</span>
+<p>For <span class="math" data-tex="\(y=\theta(c)\)">\(y=\theta(c)\)</span>, apply (JI.1) twice to <span class="math" data-tex="\([d,[d,c]]\)">\([d,[d,c]]\)</span>. One obtains <span class="math" data-tex="\([k,[k,y]]\)">\([k,[k,y]]\)</span>. Alternatively expand that same expression in the domain as <span class="math" data-tex="\(d^2c-2dcd+cd^2\)">\(d^2c-2dcd+cd^2\)</span>, and use preservation of the Jordan product and the triple product. Its image is <span class="math" data-tex="\(h^2y-2hyh+yh^2\)">\(h^2y-2hyh+yh^2\)</span>. Equation (JI.2) cancels the square terms. Surjectivity of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is used here to obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+hyh=kyk\\
+(y\in N).
+\end{gathered}
+\tag{JI.3}
+\]">\[
+\begin{gathered}
+hyh=kyk\\
+(y\in N).
+\end{gathered}
+\tag{JI.3}
+\]</span>
+<p>Define the multiplicative and reversed defects by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a,b)=\theta(ab)-AB=\tfrac12(h-k),\\
+E(a,b)=\theta(ab)-BA=\tfrac12(h+k).
+\end{gathered}
+\]">\[
+\begin{gathered}
+D(a,b)=\theta(ab)-AB=\tfrac12(h-k),\\
+E(a,b)=\theta(ab)-BA=\tfrac12(h+k).
+\end{gathered}
+\]</span>
+<p>For this fixed pair write them as <span class="math" data-tex="\(D,E\)">\(D,E\)</span>. They are skew-adjoint. Equation (JI.2) gives <span class="math" data-tex="\(DE=ED=0\)">\(DE=ED=0\)</span>, while (JI.3) gives</p>
+<span class="math math-display" data-tex="\[
+DyE+EyD=0\qquad(y\in N).
+\]">\[
+DyE+EyD=0\qquad(y\in N).
+\]</span>
+<p>Multiply the latter identity on the left by <span class="math" data-tex="\(D\)">\(D\)</span>. Since <span class="math" data-tex="\(DE=0\)">\(DE=0\)</span>, this gives <span class="math" data-tex="\(D^2yE=0\)">\(D^2yE=0\)</span>. A skew-adjoint bounded operator satisfies <span class="math" data-tex="\(\ker D^2=\ker D\)">\(\ker D^2=\ker D\)</span>: if <span class="math" data-tex="\(D^2v=0\)">\(D^2v=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|Dv\|^2=\langle D^*Dv,v\rangle
+=-\langle D^2v,v\rangle=0.
+\]">\[
+\|Dv\|^2=\langle D^*Dv,v\rangle
+=-\langle D^2v,v\rangle=0.
+\]</span>
+<p>Apply this to each vector <span class="math" data-tex="\(yE\xi\)">\(yE\xi\)</span>. We have proved the stronger separation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a,b)\,N\,E(a,b)\\
+=\{0\}\\
+(a=a^*,\ b=b^*).
+\end{gathered}
+\tag{JI.4}
+\]">\[
+\begin{gathered}
+D(a,b)\,N\,E(a,b)\\
+=\{0\}\\
+(a=a^*,\ b=b^*).
+\end{gathered}
+\tag{JI.4}
+\]</span>
+<p>The insertion of every <span class="math" data-tex="\(y\in N\)">\(y\in N\)</span> is crucial. The bare equation <span class="math" data-tex="\(DE=0\)">\(DE=0\)</span> would not alone justify the global central decomposition.</p>
+<h2 id="central-supports-and-two-polarization-steps">Central supports and two polarization steps</h2>
+<p>Represent <span class="math" data-tex="\(N\)">\(N\)</span> concretely on its Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>. For <span class="math" data-tex="\(t\in N\)">\(t\in N\)</span>, let <span class="math" data-tex="\(z(t)\)">\(z(t)\)</span> be the orthogonal projection onto</p>
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{span}\{xty:
+x\in N,\ y\in H\}}.
+\]">\[
+\overline{\operatorname{span}\{xty:
+x\in N,\ y\in H\}}.
+\]</span>
+<p>This notation uses <span class="math" data-tex="\(y\)">\(y\)</span> as a Hilbert vector. The subspace is invariant under <span class="math" data-tex="\(N\)">\(N\)</span> and its adjoints. It is also invariant under <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span> and its adjoints, because those operators commute with <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>. The orthogonal projection therefore belongs to <span class="math" data-tex="\(N&#x27;\cap N&#x27;&#x27;=Z(N)\)">\(N&#x27;\cap N&#x27;&#x27;=Z(N)\)</span>, by BK-02. It fixes the range of <span class="math" data-tex="\(t\)">\(t\)</span>. Any central projection fixing that range fixes the whole displayed subspace. Thus <span class="math" data-tex="\(z(t)\)">\(z(t)\)</span> is the least central projection satisfying <span class="math" data-tex="\(z(t)t=t\)">\(z(t)t=t\)</span>; for <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, it is zero.</p>
+<p>If <span class="math" data-tex="\(uNv=\{0\}\)">\(uNv=\{0\}\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> kills the entire subspace defining <span class="math" data-tex="\(z(v)\)">\(z(v)\)</span>, so <span class="math" data-tex="\(uz(v)=0\)">\(uz(v)=0\)</span>. Since <span class="math" data-tex="\(z(v)\)">\(z(v)\)</span> is central, <span class="math" data-tex="\(u=(1-z(v))u\)">\(u=(1-z(v))u\)</span>, whence minimality gives</p>
+<span class="math math-display" data-tex="\[
+z(u)z(v)=0.
+\]">\[
+z(u)z(v)=0.
+\]</span>
+<p>Conversely, that central orthogonality implies <span class="math" data-tex="\(uNv=\{0\}\)">\(uNv=\{0\}\)</span>. No normality assumption on <span class="math" data-tex="\(u\)">\(u\)</span> or <span class="math" data-tex="\(v\)">\(v\)</span> is needed for this central-support argument.</p>
+<p>We now extend (JI.4) to different pairs. Keep <span class="math" data-tex="\(b=b^*\)">\(b=b^*\)</span> fixed. Apply (JI.4) to <span class="math" data-tex="\(a+c,b\)">\(a+c,b\)</span>, where <span class="math" data-tex="\(a,c\)">\(a,c\)</span> are self-adjoint, and subtract its two diagonal versions. Bilinearity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a,b)yE(c,b)\\
++D(c,b)yE(a,b)=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+D(a,b)yE(c,b)\\
++D(c,b)yE(a,b)=0.
+\end{gathered}
+\]</span>
+<p>Multiply by the central projection <span class="math" data-tex="\(z(D(a,b))\)">\(z(D(a,b))\)</span>. The first term is unchanged. The second vanishes, because (JI.4) implies <span class="math" data-tex="\(z(D(a,b))E(a,b)=0\)">\(z(D(a,b))E(a,b)=0\)</span>. Hence <span class="math" data-tex="\(D(a,b)NE(c,b)=\{0\}\)">\(D(a,b)NE(c,b)=\{0\}\)</span> for all self-adjoint <span class="math" data-tex="\(a,c,b\)">\(a,c,b\)</span>.</p>
+<p>Next replace the common second argument by <span class="math" data-tex="\(b+d\)">\(b+d\)</span> and subtract the two diagonal versions of this new conclusion. This gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a,b)yE(c,d)\\
++D(a,d)yE(c,b)=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+D(a,b)yE(c,d)\\
++D(a,d)yE(c,b)=0.
+\end{gathered}
+\]</span>
+<p>Again multiply by <span class="math" data-tex="\(z(D(a,b))\)">\(z(D(a,b))\)</span>. The first term is unchanged, and the second vanishes by the already proved fixed-second-argument conclusion. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(a,b)\,N\,E(c,d)\\
+=\{0\}.
+\end{gathered}
+\tag{JI.5}
+\]">\[
+\begin{gathered}
+D(a,b)\,N\,E(c,d)\\
+=\{0\}.
+\end{gathered}
+\tag{JI.5}
+\]</span>
+<p>whenever <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span> are self-adjoint. In particular every central support of a multiplicative defect is orthogonal to every central support of a reversed defect. Both polarization steps used sums of self-adjoint elements, so the hypotheses of JI-02 were retained throughout.</p>
+<h2 id="split-the-whole-map-along-a-central-projection"><span id="oa-mod-ji-04"></span><span id="OA-MOD-JI-04"></span>Split the whole map along a central projection</h2>
+<p>Let <span class="math" data-tex="\(z\)">\(z\)</span> be the supremum of the central projections <span class="math" data-tex="\(z(D(a,b))\)">\(z(D(a,b))\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> self-adjoint, and set <span class="math" data-tex="\(q=1-z\)">\(q=1-z\)</span>. This supremum exists concretely: take the projection onto the closed span of their ranges. That subspace reduces <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>, so its projection is central; its range characterization proves it is the least upper bound. There is no countability restriction on the family.</p>
+<p>By construction <span class="math" data-tex="\(qD(a,b)=0\)">\(qD(a,b)=0\)</span>. Equation (JI.5) shows that every projection in the defining family annihilates <span class="math" data-tex="\(E(c,d)\)">\(E(c,d)\)</span>. Its range is therefore orthogonal to their closed span, and <span class="math" data-tex="\(zE(c,d)=0\)">\(zE(c,d)=0\)</span>. Complex bilinearity extends both conclusions from self-adjoint pairs to all pairs. We have proved</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q\theta(ab)\\
+=q\theta(a)\theta(b),\\
+(1-q)\theta(ab)\\
+=(1-q)\theta(b)\theta(a).
+\end{gathered}
+\tag{JI.6}
+\]">\[
+\begin{gathered}
+q\theta(ab)\\
+=q\theta(a)\theta(b),\\
+(1-q)\theta(ab)\\
+=(1-q)\theta(b)\theta(a).
+\end{gathered}
+\tag{JI.6}
+\]</span>
+<p>Put <span class="math" data-tex="\(p=\theta^{-1}(q)\)">\(p=\theta^{-1}(q)\)</span>. It is a projection, because the inverse preserves adjoints and squares. For every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, preservation of triple products gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta(pxp+(1-p)x(1-p))\\
+=q\theta(x)q+(1-q)\theta(x)(1-q)\\
+=\theta(x).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\theta(pxp+(1-p)x(1-p))\\
+=q\theta(x)q+(1-q)\theta(x)(1-q)\\
+=\theta(x).
+\end{gathered}
+\]</span>
+<p>The last equality uses centrality of <span class="math" data-tex="\(q\)">\(q\)</span>. Injectivity makes every <span class="math" data-tex="\(x\)">\(x\)</span> block diagonal with respect to <span class="math" data-tex="\(p\)">\(p\)</span>. Multiplying on either side by <span class="math" data-tex="\(p\)">\(p\)</span> proves <span class="math" data-tex="\(px=xp\)">\(px=xp\)</span>. Thus <span class="math" data-tex="\(p\)">\(p\)</span> is central, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta(px)=q\theta(x),\\
+\theta((1-p)x)=(1-q)\theta(x).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\theta(px)=q\theta(x),\\
+\theta((1-p)x)=(1-q)\theta(x).
+\end{gathered}
+\]</span>
+<p>Surjectivity now identifies the restrictions as a normal star isomorphism <span class="math" data-tex="\(Mp\to Nq\)">\(Mp\to Nq\)</span> and a normal star anti-isomorphism <span class="math" data-tex="\(M(1-p)\to N(1-q)\)">\(M(1-p)\to N(1-q)\)</span>. Their inverses are normal by JI-01, or by the same order argument on the corners. The terms may be zero; a zero summand will simply have a zero Hilbert space. We have supplied the complete central splitting needed below.</p>
+<h2 id="implement-the-multiplicative-and-reversed-parts">Implement the multiplicative and reversed parts</h2>
+<p>First let <span class="math" data-tex="\(\alpha:M_1\to M_2\)">\(\alpha:M_1\to M_2\)</span> be a star isomorphism between algebras in arbitrary standard forms <span class="math" data-tex="\((M_i,H_i,J_i,P_i)\)">\((M_i,H_i,J_i,P_i)\)</span>. SE-10 provides the unique complex-linear unitary <span class="math" data-tex="\(V\)">\(V\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+VxV^*=\alpha(x),\\
+VJ_1=J_2V,\quad VP_1=P_2.
+\end{gathered}
+\]">\[
+\begin{gathered}
+VxV^*=\alpha(x),\\
+VJ_1=J_2V,\quad VP_1=P_2.
+\end{gathered}
+\]</span>
+<p>For every <span class="math" data-tex="\(v\in P_1\)">\(v\in P_1\)</span>, algebra intertwining immediately gives <span class="math" data-tex="\(\omega_{Vv}\circ\alpha=\omega_v\)">\(\omega_{Vv}\circ\alpha=\omega_v\)</span>, where <span class="math" data-tex="\(\omega_v(x)=\langle xv,v\rangle\)">\(\omega_v(x)=\langle xv,v\rangle\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(\beta:M_1\to M_2\)">\(\beta:M_1\to M_2\)</span> be a star anti-isomorphism. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi(x)=J_2\beta(x)^*J_2,\\
+\pi(x)\in M_2&#x27;.
+\end{gathered}
+\tag{JI.7}
+\]">\[
+\begin{gathered}
+\pi(x)=J_2\beta(x)^*J_2,\\
+\pi(x)\in M_2&#x27;.
+\end{gathered}
+\tag{JI.7}
+\]</span>
+<p>The adjoint and conjugation each conjugate scalars, so <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is complex-linear. Reversal of multiplication by <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, followed by the adjoint, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi(xy)=J_2\beta(x)^*\beta(y)^*J_2\\
+=\pi(x)\pi(y).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\pi(xy)=J_2\beta(x)^*\beta(y)^*J_2\\
+=\pi(x)\pi(y).
+\end{gathered}
+\]</span>
+<p>It preserves adjoints and is bijective onto <span class="math" data-tex="\(M_2&#x27;\)">\(M_2&#x27;\)</span>, since <span class="math" data-tex="\(J_2M_2J_2=M_2&#x27;\)">\(J_2M_2J_2=M_2&#x27;\)</span>. It and its inverse preserve positive order, so they are normal by JI-01's net argument. VP-01 proves that <span class="math" data-tex="\((M_2&#x27;,H_2,J_2,P_2)\)">\((M_2&#x27;,H_2,J_2,P_2)\)</span> is itself a standard form. Apply SE-10 to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The resulting unitary <span class="math" data-tex="\(V\)">\(V\)</span> maps <span class="math" data-tex="\(P_1\)">\(P_1\)</span> onto <span class="math" data-tex="\(P_2\)">\(P_2\)</span>, intertwines the conjugations, and satisfies <span class="math" data-tex="\(VxV^*=\pi(x)\)">\(VxV^*=\pi(x)\)</span>.</p>
+<p>For <span class="math" data-tex="\(w\in P_2\)">\(w\in P_2\)</span>, use <span class="math" data-tex="\(J_2w=w\)">\(J_2w=w\)</span> and antiunitarity to obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle J_2\beta(x)^*J_2w,w\rangle\\
+=\langle w,\beta(x)^*w\rangle
+=\langle\beta(x)w,w\rangle.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\langle J_2\beta(x)^*J_2w,w\rangle\\
+=\langle w,\beta(x)^*w\rangle
+=\langle\beta(x)w,w\rangle.
+\end{gathered}
+\]</span>
+<p>Consequently this unitary also satisfies <span class="math" data-tex="\(\omega_{Vv}\circ\beta=\omega_v\)">\(\omega_{Vv}\circ\beta=\omega_v\)</span> for every <span class="math" data-tex="\(v\in P_1\)">\(v\in P_1\)</span>. Its algebra intertwining is with the commutant action (JI.7). The required cone-vector identity concerns the original left action, and the displayed calculation is the reason both descriptions agree there.</p>
+<h2 id="assemble-the-cone-unitary-and-prove-canonicity"><span id="oa-mod-ji-06"></span><span id="OA-MOD-JI-06"></span>Assemble the cone unitary and prove canonicity</h2>
+<p>Apply JI-04 to the given <span class="math" data-tex="\(\theta:M_1\to M_2\)">\(\theta:M_1\to M_2\)</span>, obtaining central projections <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. For a central projection in a standard form, the central axiom gives <span class="math" data-tex="\(J_1pJ_1=p\)">\(J_1pJ_1=p\)</span>, so its standard corner projection <span class="math" data-tex="\(pJ_1pJ_1\)">\(pJ_1pJ_1\)</span> is just <span class="math" data-tex="\(p\)">\(p\)</span>. SE-03 therefore gives the standard form of <span class="math" data-tex="\(M_1p\)">\(M_1p\)</span> on <span class="math" data-tex="\(pH_1\)">\(pH_1\)</span>, with cone <span class="math" data-tex="\(pP_1\)">\(pP_1\)</span>; the complementary corner has cone <span class="math" data-tex="\((1-p)P_1\)">\((1-p)P_1\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_1=pH_1\oplus(1-p)H_1,\\
+P_1=pP_1\oplus(1-p)P_1.
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_1=pH_1\oplus(1-p)H_1,\\
+P_1=pP_1\oplus(1-p)P_1.
+\end{gathered}
+\]</span>
+<p>For the cone equality, both central projections preserve the cone by SE-03, and the cone is closed under addition. The same statements hold for <span class="math" data-tex="\(q\)">\(q\)</span> in the second form. Both conjugations preserve these summands.</p>
+<p>JI-05 implements the multiplicative corner by <span class="math" data-tex="\(V_+:pH_1\to qH_2\)">\(V_+:pH_1\to qH_2\)</span> and the antimultiplicative corner by <span class="math" data-tex="\(V_-:(1-p)H_1\to(1-q)H_2\)">\(V_-:(1-p)H_1\to(1-q)H_2\)</span>. On a zero corner take the unique map between zero Hilbert spaces. The direct sum</p>
+<span class="math math-display" data-tex="\[
+U_\theta=V_+\oplus V_-
+\]">\[
+U_\theta=V_+\oplus V_-
+\]</span>
+<p>is a complex-linear surjective unitary. The corner cone equalities give <span class="math" data-tex="\(U_\theta P_1=P_2\)">\(U_\theta P_1=P_2\)</span>, and the corner conjugation identities give <span class="math" data-tex="\(U_\theta J_1=J_2U_\theta\)">\(U_\theta J_1=J_2U_\theta\)</span>.</p>
+<p>Every algebra element is block diagonal for these central decompositions. Write <span class="math" data-tex="\(v=pv+(1-p)v\in P_1\)">\(v=pv+(1-p)v\in P_1\)</span>, use the functional identity of each corner, and add. Orthogonality eliminates cross terms and proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\omega_{U_\theta v}\circ\theta=\omega_v\\
+(v\in P_1).
+\end{gathered}
+\tag{JI.8}
+\]">\[
+\begin{gathered}
+\omega_{U_\theta v}\circ\theta=\omega_v\\
+(v\in P_1).
+\end{gathered}
+\tag{JI.8}
+\]</span>
+<p>Putting <span class="math" data-tex="\(v=U_\theta^{-1}\xi_2\)">\(v=U_\theta^{-1}\xi_2\)</span> gives precisely the source's identity for every <span class="math" data-tex="\(\xi_2\in P_2\)">\(\xi_2\in P_2\)</span> and every <span class="math" data-tex="\(x\in M_1\)">\(x\in M_1\)</span>.</p>
+<p>Uniqueness follows from JR-03. Explicitly, two such cone unitaries send each <span class="math" data-tex="\(v\in P_1\)">\(v\in P_1\)</span> to positive vectors representing the same normal functional on <span class="math" data-tex="\(M_2\)">\(M_2\)</span>; SE-11 makes those vectors equal. The complex span of the cone is dense, so the unitaries agree. In particular the answer is independent of choices in any central splitting, including choices on an abelian summand where the two product orders coincide.</p>
+<p>The identity map has the identity unitary. If <span class="math" data-tex="\(\rho:M_2\to M_3\)">\(\rho:M_2\to M_3\)</span> is another Jordan star isomorphism, the composition of its cone unitary with <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span> maps cones onto cones and satisfies (JI.8) for <span class="math" data-tex="\(\rho\theta\)">\(\rho\theta\)</span>. Uniqueness proves</p>
+<span class="math math-display" data-tex="\[
+U_{\rho\theta}=U_\rho U_\theta,
+\qquad U_{\theta^{-1}}=U_\theta^*.
+\]">\[
+U_{\rho\theta}=U_\rho U_\theta,
+\qquad U_{\theta^{-1}}=U_\theta^*.
+\]</span>
+<p>Finally JR-01/03 applied to <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span> recovers the same Jordan map, since its cone-vector functionals are (JI.8) and such functionals separate algebra elements. Thus, with <span class="math" data-tex="\(j_i(x)=(x+J_ix^*J_i)/2\)">\(j_i(x)=(x+J_ix^*J_i)/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+U_\theta j_1(x)U_\theta^*
+=j_2(\theta(x)).
+\tag{JI.9}
+\]">\[
+U_\theta j_1(x)U_\theta^*
+=j_2(\theta(x)).
+\tag{JI.9}
+\]</span>
+<p>This operator identity holds on the entire Hilbert space. The unsymmetrized identity (JI.8) is asserted on the positive cone, as required. The construction makes no sigma-finiteness or separability assumption.</p>
+<h2 id="two-matrix-checks-distinguish-the-hypotheses">Two matrix checks distinguish the hypotheses</h2>
+<p>Consider <span class="math" data-tex="\(M=M_2(\mathbb C)\oplus M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\oplus M_2(\mathbb C)\)</span> in its direct-sum Hilbert–Schmidt standard form, and define</p>
+<span class="math math-display" data-tex="\[
+\theta(x,y)=(x,y^{\mathsf T}).
+\]">\[
+\theta(x,y)=(x,y^{\mathsf T}).
+\]</span>
+<p>The multiplicative central projection is <span class="math" data-tex="\(p=q=(1,0)\)">\(p=q=(1,0)\)</span>. The cone consists of pairs of positive matrices, the conjugation takes adjoints in both entries, and the canonical unitary is</p>
+<span class="math math-display" data-tex="\[
+U_\theta(s,t)=(s,t^{\mathsf T}).
+\]">\[
+U_\theta(s,t)=(s,t^{\mathsf T}).
+\]</span>
+<p>Transposition preserves the sum of squared matrix-entry moduli, is complex-linear, and commutes with the adjoint operation. It maps positive matrices onto positive matrices. Thus the displayed map is indeed a cone unitary intertwining the conjugations. For positive matrices <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, both sides of (JI.8) equal</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(xs^2)+\operatorname{Tr}(yt^2),
+\]">\[
+\operatorname{Tr}(xs^2)+\operatorname{Tr}(yt^2),
+\]</span>
+<p>by finite trace cyclicity and invariance of trace under transposition. Taking the second algebra entry <span class="math" data-tex="\(y=E_{11}\)">\(y=E_{11}\)</span> and the second Hilbert vector <span class="math" data-tex="\(t=E_{12}\)">\(t=E_{12}\)</span> gives quadratic values one and zero before and after transport, exactly as in JR-03. Thus even this direct sum of two matrix algebras precludes an unsymmetrized all-Hilbert-vector extension.</p>
+<p>The star hypothesis cannot be dropped. Let <span class="math" data-tex="\(D=\operatorname{diag}(2,1)\)">\(D=\operatorname{diag}(2,1)\)</span>, and let <span class="math" data-tex="\(T(x)=DxD^{-1}\)">\(T(x)=DxD^{-1}\)</span> on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>. This is a complex-linear associative isomorphism, hence preserves squares and Jordan products. But the positive matrix</p>
+<span class="math math-display" data-tex="\[
+a=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}
+\]">\[
+a=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}
+\]</span>
+<p>is sent to</p>
+<span class="math math-display" data-tex="\[
+T(a)=\begin{pmatrix}1&amp;2\\ {1/2}&amp;1\end{pmatrix},
+\]">\[
+T(a)=\begin{pmatrix}1&amp;2\\ {1/2}&amp;1\end{pmatrix},
+\]</span>
+<p>which is not self-adjoint and therefore not positive. If a cone unitary satisfied (JI.8) for <span class="math" data-tex="\(T\)">\(T\)</span>, its surjectivity on the cone would make every cone-vector functional nonnegative on <span class="math" data-tex="\(T(a)\)">\(T(a)\)</span>. SE-11 represents every ordinary vector functional by a cone vector; BK-01's positivity criterion would then imply <span class="math" data-tex="\(T(a)\ge0\)">\(T(a)\ge0\)</span>, a contradiction. This explains why the source's Jordan terminology must be read with its operator-algebra star convention.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-JR.html">← Recovering Jordan multiplication from the positive cone</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-PA.html">Positive changes of scale on a standard cone →</a></span></nav>
+<p class="small source-link"><a href="src/jordan-isomorphisms-and-standard-implementation.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

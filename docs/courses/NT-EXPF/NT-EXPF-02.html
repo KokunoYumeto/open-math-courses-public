@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explicit formulas for Dirichlet L-functions and primes in progressions · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="explicit-formulas-for-dirichlet-l-functions-and-primes-in-progressions">Explicit formulas for Dirichlet L-functions and primes in progressions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The zeros of a Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-function measure a signed prime sum. Averaging these identities over characters isolates a residue class. There are two details to retain throughout: the completed function uses the <strong>conductor</strong>, and reflection sends a residue class to its <strong>inverse</strong>. Smoothing then makes the zero sum absolutely convergent and gives the GRH bound for the least prime in a progression. At the end, the same contour argument is applied to Hecke characters, and its local terms are assembled into Weil's idèlic formula.</p>
+<h2 id="1-completion-reflection-and-admissible-functions">1. Completion, reflection and admissible functions</h2>
+<p>We use the conventions of <a href="NT-EXPF-01.html">The explicit formula with general test functions</a>:</p>
+<span class="math math-display" data-tex="\[
+H(s)=\widetilde f(s)=\int_0^\infty f(x)x^s\frac{dx}{x},
+\qquad f^\sharp(x)=x^{-1}f(x^{-1}). \tag{1.1}
+\]">\[
+H(s)=\widetilde f(s)=\int_0^\infty f(x)x^s\frac{dx}{x},
+\qquad f^\sharp(x)=x^{-1}f(x^{-1}). \tag{1.1}
+\]</span>
+<p>The class used for the symmetric zero sums below is the following. Put <span class="math" data-tex="\(F(u)=e^{u/2}f(e^u)\)">\(F(u)=e^{u/2}f(e^u)\)</span>. Away from finitely many jumps, <span class="math" data-tex="\(F\)">\(F\)</span> is continuously differentiable, has finite one-sided derivatives, and, for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|F(u)|+|F&#x27;(u)|\leq C e^{-(1/2+\delta)|u|}.
+\tag{1.2}
+\]">\[
+|F(u)|+|F&#x27;(u)|\leq C e^{-(1/2+\delta)|u|}.
+\tag{1.2}
+\]</span>
+<p>At a jump, <span class="math" data-tex="\(F\)">\(F\)</span> is assigned the average of its one-sided values. The weighted bounded-variation extension proved in the preceding lesson also applies. In particular, every smooth compactly supported <span class="math" data-tex="\(f\)">\(f\)</span>, and the interval test used below, is allowed. Value bounds alone on an otherwise unrestricted piecewise smooth function do not imply the Mellin decay needed here. For that broader class, the iterated cutoff formula of the preceding lesson remains available; we do not interchange its limits.</p>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be primitive of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, and write <span class="math" data-tex="\(\chi(-1)=(-1)^a\)">\(\chi(-1)=(-1)^a\)</span>, <span class="math" data-tex="\(a=0\)">\(a=0\)</span> or (1). Set</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\chi(s)=
+\left(\frac q\pi\right)^{(s+a)/2}
+\Gamma\left(\frac{s+a}{2}\right)L(s,\chi).
+\tag{1.3}
+\]">\[
+\Lambda_\chi(s)=
+\left(\frac q\pi\right)^{(s+a)/2}
+\Gamma\left(\frac{s+a}{2}\right)L(s,\chi).
+\tag{1.3}
+\]</span>
+<p>This is entire, of order one, and satisfies</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\chi(s)=\epsilon_\chi\Lambda_{\bar\chi}(1-s),
+\qquad
+\epsilon_\chi=\frac{\tau(\chi)}{i^a\sqrt q},\quad |\epsilon_\chi|=1.
+\tag{1.4}
+\]">\[
+\Lambda_\chi(s)=\epsilon_\chi\Lambda_{\bar\chi}(1-s),
+\qquad
+\epsilon_\chi=\frac{\tau(\chi)}{i^a\sqrt q},\quad |\epsilon_\chi|=1.
+\tag{1.4}
+\]</span>
+<p>Its zeros are the nontrivial zeros of <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span>. They occur with multiplicity; no critical-line hypothesis is being made. Their reflection <span class="math" data-tex="\(\rho\mapsto1-\rho\)">\(\rho\mapsto1-\rho\)</span> changes <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span>. Conjugation does the same, so <span class="math" data-tex="\(\rho\mapsto1-\bar\rho\)">\(\rho\mapsto1-\bar\rho\)</span> preserves the zeros of the given character.</p>
+<p>The internal prerequisite <em>The functional equation of Dirichlet L-functions</em>, lesson 5 of <em>Dirichlet L-functions and primes in progressions</em>, supplies (1.3)–(1.4), the simple trivial zeros <span class="math" data-tex="\(-a-2j\)">\(-a-2j\)</span>, and the order-one product. Lesson 8, <em>Counting zeros and the explicit formula for ψ(x, χ)</em>, supplies the zero count</p>
+<span class="math math-display" data-tex="\[
+\#\{\rho:|\Im\rho|\leq T\}
+=\frac T\pi\log\frac{qT}{2\pi e}+O(\log(q(T+2))).
+\tag{1.5}
+\]">\[
+\#\{\rho:|\Im\rho|\leq T\}
+=\frac T\pi\log\frac{qT}{2\pi e}+O(\log(q(T+2))).
+\tag{1.5}
+\]</span>
+<p>These are existing planned internal lessons; a published proof version has not been linked here. We use these precise prerequisite statements, while proving the test-function formula and its applications below. The last section additionally uses the existing planned lessons <em>Idèles and the idèle class group</em>, <em>Additive characters, self-dual measures and Poisson summation on the adèles</em>, and <em>Hecke L-functions and the Dedekind zeta function</em> in <em>Adèles, idèles and Tate's thesis</em>.</p>
+<p>For clarity about the contour estimates, (1.5) implies</p>
+<span class="math math-display" data-tex="\[
+\#\{\rho: t\leq|\Im\rho|\leq t+1\}
+\ll\log(q(t+2)). \tag{1.6}
+\]">\[
+\#\{\rho: t\leq|\Im\rho|\leq t+1\}
+\ll\log(q(t+2)). \tag{1.6}
+\]</span>
+<p>Indeed the main term changes by <span class="math" data-tex="\(O(\log(q(t+2)))\)">\(O(\log(q(t+2)))\)</span> on an interval of length one, and the two error terms have that size. In each <span class="math" data-tex="\([T,T+1]\)">\([T,T+1]\)</span> we can therefore select a height whose distance from every zero ordinate is at least <span class="math" data-tex="\(c/\log(q(T+2))\)">\(c/\log(q(T+2))\)</span>. Subtracting the order-one logarithmic derivative at <span class="math" data-tex="\(2+it\)">\(2+it\)</span> from its value at <span class="math" data-tex="\(\sigma+it\)">\(\sigma+it\)</span>, the zeros with ordinate distance greater than one contribute</p>
+<span class="math math-display" data-tex="\[
+O\left(\sum_{j\geq1}
+\frac{\log(q(|t|+j+2))}{j^2}\right)=O(\log(q(|t|+2)))
+\]">\[
+O\left(\sum_{j\geq1}
+\frac{\log(q(|t|+j+2))}{j^2}\right)=O(\log(q(|t|+2)))
+\]</span>
+<p>on any fixed bounded strip. The remaining <span class="math" data-tex="\(O(\log(q(|t|+2)))\)">\(O(\log(q(|t|+2)))\)</span> zeros each contribute <span class="math" data-tex="\(O(\log(q(|t|+2)))\)">\(O(\log(q(|t|+2)))\)</span>. The Euler product at <span class="math" data-tex="\(2+it\)">\(2+it\)</span> and Stirling's formula bound the subtracted value. Thus the logarithmic derivative is <span class="math" data-tex="\(O(\log^2(q(T+2)))\)">\(O(\log^2(q(T+2)))\)</span> at the selected heights. The same choice works for both <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\(\bar\chi\)">\(\bar\chi\)</span>, since their ordinates are negatives of one another.</p>
+<h2 id="2-the-explicit-formula-and-its-two-parities">2. The explicit formula and its two parities</h2>
+<p>Write <span class="math" data-tex="\(\psi_\Gamma=\Gamma&#x27;/\Gamma\)">\(\psi_\Gamma=\Gamma&#x27;/\Gamma\)</span>, reserving <span class="math" data-tex="\(\psi(x,\chi)\)">\(\psi(x,\chi)\)</span> for a prime counting function. Define</p>
+<span class="math math-display" data-tex="\[
+P_\chi(f)=\sum_{n\geq2}\Lambda(n)
+\bigl(\chi(n)f(n)+\bar\chi(n)f^\sharp(n)\bigr),
+\tag{2.1}
+\]">\[
+P_\chi(f)=\sum_{n\geq2}\Lambda(n)
+\bigl(\chi(n)f(n)+\bar\chi(n)f^\sharp(n)\bigr),
+\tag{2.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+A_{q,a}(f)=\log(q/\pi)f(1)+G_a(f), \tag{2.2}
+\]">\[
+A_{q,a}(f)=\log(q/\pi)f(1)+G_a(f), \tag{2.2}
+\]</span>
+<p>where the following two expressions for <span class="math" data-tex="\(G_a\)">\(G_a\)</span> agree:</p>
+<span class="math math-display" data-tex="\[
+G_a(f)=\frac1{2\pi}\lim_{T\to\infty}
+\int_{-T}^{T}
+\Re\psi_\Gamma\left(\frac{1/2+a+it}{2}\right)
+H(1/2+it)\,dt, \tag{2.3}
+\]">\[
+G_a(f)=\frac1{2\pi}\lim_{T\to\infty}
+\int_{-T}^{T}
+\Re\psi_\Gamma\left(\frac{1/2+a+it}{2}\right)
+H(1/2+it)\,dt, \tag{2.3}
+\]</span>
+<span class="math math-display" data-tex="\[
+G_a(f)=-\gamma f(1)+
+\int_0^\infty
+\frac{2e^{-2u}f(1)-e^{-au}\bigl(f(e^u)+f^\sharp(e^u)\bigr)}
+{1-e^{-2u}}\,du. \tag{2.4}
+\]">\[
+G_a(f)=-\gamma f(1)+
+\int_0^\infty
+\frac{2e^{-2u}f(1)-e^{-au}\bigl(f(e^u)+f^\sharp(e^u)\bigr)}
+{1-e^{-2u}}\,du. \tag{2.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is Euler's constant. Near zero, the numerator of (2.4) is <span class="math" data-tex="\(O(u)\)">\(O(u)\)</span>, including when <span class="math" data-tex="\(f\)">\(f\)</span> jumps at <span class="math" data-tex="\(1\)">\(1\)</span>: the sum of the two one-sided limits is <span class="math" data-tex="\(2f(1)\)">\(2f(1)\)</span>. At infinity, (1.2) makes the integral convergent.</p>
+<p><strong>Theorem 2.1.</strong> For a primitive character of conductor <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle
+\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}H(\rho)
+=-P_\chi(f)+A_{q,a}(f).}
+\tag{2.5}
+\]">\[
+\boxed{\displaystyle
+\lim_{T\to\infty}\sum_{|\Im\rho|&lt;T}H(\rho)
+=-P_\chi(f)+A_{q,a}(f).}
+\tag{2.5}
+\]</span>
+<p>There are no pole terms because <span class="math" data-tex="\(\Lambda_\chi\)">\(\Lambda_\chi\)</span> is entire. For the primitive principal character of conductor <span class="math" data-tex="\(1\)">\(1\)</span>, which gives <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the corresponding identity has the additional term <span class="math" data-tex="\(H(0)+H(1)\)">\(H(0)+H(1)\)</span>, and <span class="math" data-tex="\(A_{1,0}=-W_{\mathbb R}\)">\(A_{1,0}=-W_{\mathbb R}\)</span> in the preceding lesson's notation.</p>
+<p><em>Proof.</em> Mellin integration by parts, treating the jumps as atoms of <span class="math" data-tex="\(dF\)">\(dF\)</span>, gives <span class="math" data-tex="\(H(\sigma+it)=O((1+|t|)^{-1})\)">\(H(\sigma+it)=O((1+|t|)^{-1})\)</span> uniformly on a closed strip slightly larger than <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Integrate <span class="math" data-tex="\(H(s)\Lambda_\chi&#x27;/\Lambda_\chi(s)\)">\(H(s)\Lambda_\chi&#x27;/\Lambda_\chi(s)\)</span> round a rectangle with vertical sides <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(1-c\)">\(1-c\)</span>, where <span class="math" data-tex="\(1&lt;c&lt;1+\delta\)">\(1&lt;c&lt;1+\delta\)</span>, and the selected heights from Section 1. The horizontal integrals tend to zero, being <span class="math" data-tex="\(O(\log^2(qT)/T)\)">\(O(\log^2(qT)/T)\)</span>. The functional equation turns the left side into a second right-side integral. Hence the residue theorem gives</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho H(\rho)=\frac1{2\pi i}\int_{(c)}
+\left(H(s)\frac{\Lambda_\chi&#x27;}{\Lambda_\chi}(s)
++H(1-s)\frac{\Lambda_{\bar\chi}&#x27;}{\Lambda_{\bar\chi}}(s)\right)ds.
+\tag{2.6}
+\]">\[
+\sum_\rho H(\rho)=\frac1{2\pi i}\int_{(c)}
+\left(H(s)\frac{\Lambda_\chi&#x27;}{\Lambda_\chi}(s)
++H(1-s)\frac{\Lambda_{\bar\chi}&#x27;}{\Lambda_{\bar\chi}}(s)\right)ds.
+\tag{2.6}
+\]</span>
+<p>All integrals with only <span class="math" data-tex="\(1/t\)">\(1/t\)</span> decay in this proof are symmetric integrals. The inversion and convolution justification for the Dirichlet series is exactly the one proved in Lemma 1.2 and the contour proof of the preceding lesson: the derivative measure has finite weighted variation, and the coefficients <span class="math" data-tex="\(\Lambda(n)n^{-c}\)">\(\Lambda(n)n^{-c}\)</span> are summable. Expanding the Euler logarithmic derivatives therefore gives</p>
+<span class="math math-display" data-tex="\[
+-\sum_n\Lambda(n)\left(\chi(n)f(n)
++\bar\chi(n)n^{-1}f(n^{-1})\right).
+\]">\[
+-\sum_n\Lambda(n)\left(\chi(n)f(n)
++\bar\chi(n)n^{-1}f(n^{-1})\right).
+\]</span>
+<p>The two constants <span class="math" data-tex="\(\tfrac12\log(q/\pi)\)">\(\tfrac12\log(q/\pi)\)</span> give <span class="math" data-tex="\(\log(q/\pi)f(1)\)">\(\log(q/\pi)f(1)\)</span>. Move the gamma integrals to the critical line; no gamma pole lies between the lines in question. Substitution <span class="math" data-tex="\(t\mapsto-t\)">\(t\mapsto-t\)</span> in the reflected integral gives (2.3), since <span class="math" data-tex="\(\psi_\Gamma(\bar z)=\overline{\psi_\Gamma(z)}\)">\(\psi_\Gamma(\bar z)=\overline{\psi_\Gamma(z)}\)</span>.</p>
+<p>To evaluate it, use, for <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi_\Gamma(z)=-\gamma+
+\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}\,dv.
+\tag{2.7}
+\]">\[
+\psi_\Gamma(z)=-\gamma+
+\int_0^\infty\frac{e^{-v}-e^{-zv}}{1-e^{-v}}\,dv.
+\tag{2.7}
+\]</span>
+<p>This identity follows by logarithmically differentiating Euler's gamma product, expanding <span class="math" data-tex="\(1/(1-e^{-v})\)">\(1/(1-e^{-v})\)</span>, and integrating each exponential; the cancellation at zero justifies the passage to the limit. Put <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span>. Fourier inversion for <span class="math" data-tex="\(F\)">\(F\)</span> turns <span class="math" data-tex="\(e^{-(a+1/2)u}\cos(tu)\)">\(e^{-(a+1/2)u}\cos(tu)\)</span> into <span class="math" data-tex="\(\tfrac12e^{-au}(f(e^u)+f^\sharp(e^u))\)">\(\tfrac12e^{-au}(f(e^u)+f^\sharp(e^u))\)</span>, giving (2.4).</p>
+<p>The limiting interchange at a jump is not an appeal to absolute convergence of (2.3). The jump argument in Section 4 of the preceding lesson applies: after subtracting a smooth function with the same value at zero, the singular Fourier kernel is bounded by <span class="math" data-tex="\(C(1+|\log|u||)\)">\(C(1+|\log|u||)\)</span>, integrable against the remaining derivative measure near zero and its exponentially decaying tails. Replacing the di\gamma parameter <span class="math" data-tex="\(1/4\)">\(1/4\)</span> by <span class="math" data-tex="\(3/4\)">\(3/4\)</span> changes its large-<span class="math" data-tex="\(t\)">\(t\)</span> expansion by <span class="math" data-tex="\(O((1+|t|)^{-2})\)">\(O((1+|t|)^{-2})\)</span>, an absolutely integrable change after multiplication by <span class="math" data-tex="\(H\)">\(H\)</span>. This proves the asserted symmetric limit for each parity.</p>
+<p>Finally, passing from the selected heights to arbitrary symmetric heights changes at most <span class="math" data-tex="\(O(\log(qT))\)">\(O(\log(qT))\)</span> terms of size <span class="math" data-tex="\(O(1/T)\)">\(O(1/T)\)</span>. This tends to zero. ∎</p>
+<p>The parity dependence is especially simple:</p>
+<span class="math math-display" data-tex="\[
+\boxed{G_1(f)-G_0(f)=
+\int_0^\infty\frac{f(e^u)+f^\sharp(e^u)}{1+e^{-u}}\,du.}
+\tag{2.8}
+\]">\[
+\boxed{G_1(f)-G_0(f)=
+\int_0^\infty\frac{f(e^u)+f^\sharp(e^u)}{1+e^{-u}}\,du.}
+\tag{2.8}
+\]</span>
+<p>Subtract (2.4) for <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>; the factor <span class="math" data-tex="\(1-e^{-u}\)">\(1-e^{-u}\)</span> cancels. The conductor and parity are separate: the first changes the coefficient of <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span>, while the second changes an actual kernel.</p>
+<h2 id="3-isolating-a-progression">3. Isolating a progression</h2>
+<p>For a character <span class="math" data-tex="\(\chi\bmod q\)">\(\chi\bmod q\)</span>, let <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> be its primitive inducing character of conductor <span class="math" data-tex="\(q_\chi\mid q\)">\(q_\chi\mid q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q}(1-\chi^*(p)p^{-s}). \tag{3.1}
+\]">\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q}(1-\chi^*(p)p^{-s}). \tag{3.1}
+\]</span>
+<p>Factors with <span class="math" data-tex="\(\chi^*(p)=0\)">\(\chi^*(p)=0\)</span> are (1). Their other zeros are not nontrivial zeros of the primitive completed function and must not be put into (2.5). Instead retain the missing Euler terms</p>
+<span class="math math-display" data-tex="\[
+E_\chi(f)=\sum_{p\mid q}\log p\sum_{m\geq1}
+\left(\chi^*(p)^m f(p^m)
++\bar\chi^*(p)^m f^\sharp(p^m)\right).
+\tag{3.2}
+\]">\[
+E_\chi(f)=\sum_{p\mid q}\log p\sum_{m\geq1}
+\left(\chi^*(p)^m f(p^m)
++\bar\chi^*(p)^m f^\sharp(p^m)\right).
+\tag{3.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(P_\chi=P_{\chi^*}-E_\chi\)">\(P_\chi=P_{\chi^*}-E_\chi\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is compactly supported, (3.2) is finite. More generally its absolute value is bounded by the same expression with the character values replaced by <span class="math" data-tex="\(1\)">\(1\)</span>; (1.2) makes each geometric tail convergent.</p>
+<p>Fix <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+S_b(f)=\sum_{n\equiv b\ (q)}\Lambda(n)f(n).
+\]">\[
+S_b(f)=\sum_{n\equiv b\ (q)}\Lambda(n)f(n).
+\]</span>
+<p>Character orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{\varphi(q)}\sum_{\chi\bmod q}\bar\chi(b)P_\chi(f)
+=S_b(f)+S_{b^{-1}}(f^\sharp). \tag{3.3}
+\]">\[
+\frac1{\varphi(q)}\sum_{\chi\bmod q}\bar\chi(b)P_\chi(f)
+=S_b(f)+S_{b^{-1}}(f^\sharp). \tag{3.3}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\bar\chi(b)\chi(n)\)">\(\bar\chi(b)\chi(n)\)</span> averages to the indicator of <span class="math" data-tex="\(n\equiv b\)">\(n\equiv b\)</span>, whereas <span class="math" data-tex="\(\bar\chi(b)\bar\chi(n)=\overline{\chi(bn)}\)">\(\bar\chi(b)\bar\chi(n)=\overline{\chi(bn)}\)</span> averages to the indicator of <span class="math" data-tex="\(n\equiv b^{-1}\)">\(n\equiv b^{-1}\)</span>. The two classes coincide exactly when <span class="math" data-tex="\(b^2\equiv1\bmod q\)">\(b^2\equiv1\bmod q\)</span>.</p>
+<p>For convenience let <span class="math" data-tex="\(Z_\chi(f)=\sum_{\rho\ {\rm of}\ \chi^*}H(\rho)\)">\(Z_\chi(f)=\sum_{\rho\ {\rm of}\ \chi^*}H(\rho)\)</span>, with the symmetric convention, and let <span class="math" data-tex="\(a_\chi\)">\(a_\chi\)</span> be the parity. Combining (2.5) and (3.2)–(3.3) proves the following identity, including the principal character:</p>
+<span class="math math-display" data-tex="\[
+\boxed{\begin{aligned}
+S_b(f)+S_{b^{-1}}(f^\sharp)
+={1\over\varphi(q)}\bigg(&amp;H(0)+H(1)
+-\sum_{\chi\bmod q}\bar\chi(b)Z_\chi(f)\\
+&amp;+\sum_{\chi\bmod q}\bar\chi(b)
+\bigl(A_{q_\chi,a_\chi}(f)-E_\chi(f)\bigr)\bigg).
+\end{aligned}} \tag{3.4}
+\]">\[
+\boxed{\begin{aligned}
+S_b(f)+S_{b^{-1}}(f^\sharp)
+={1\over\varphi(q)}\bigg(&amp;H(0)+H(1)
+-\sum_{\chi\bmod q}\bar\chi(b)Z_\chi(f)\\
+&amp;+\sum_{\chi\bmod q}\bar\chi(b)
+\bigl(A_{q_\chi,a_\chi}(f)-E_\chi(f)\bigr)\bigg).
+\end{aligned}} \tag{3.4}
+\]</span>
+<p>The pole term occurs once, from the character whose primitive conductor is <span class="math" data-tex="\(1\)">\(1\)</span>. Its coefficient is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>A formula with <strong>both</strong> terms in class <span class="math" data-tex="\(b\)">\(b\)</span> is obtained without changing conventions. Split <span class="math" data-tex="\(f=f_++f_-\)">\(f=f_++f_-\)</span>, with <span class="math" data-tex="\(f_+\)">\(f_+\)</span> zero for <span class="math" data-tex="\(x&lt;1\)">\(x&lt;1\)</span>, <span class="math" data-tex="\(f_-\)">\(f_-\)</span> zero for <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, and each assigned half of <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span>. Apply (3.4) to <span class="math" data-tex="\(f_+\)">\(f_+\)</span> and class <span class="math" data-tex="\(b\)">\(b\)</span>, and to <span class="math" data-tex="\(f_-\)">\(f_-\)</span> and class <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span>. Since <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, their left sides add to</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\equiv b\ (q)}\Lambda(n)
+\bigl(f(n)+n^{-1}f(n^{-1})\bigr). \tag{3.5}
+\]">\[
+\sum_{n\equiv b\ (q)}\Lambda(n)
+\bigl(f(n)+n^{-1}f(n^{-1})\bigr). \tag{3.5}
+\]</span>
+<p>Their right sides are the corresponding two displayed right sides of (3.4). This splitting is essential when <span class="math" data-tex="\(b\ne b^{-1}\)">\(b\ne b^{-1}\)</span>. For example, modulo (5), the unsplit reflected term for <span class="math" data-tex="\(b=2\)">\(b=2\)</span> belongs to class (3).</p>
+<h2 id="4-why-one-smoothing-removes-a-logarithm">4. Why one smoothing removes a logarithm</h2>
+<p>The unsmoothed GRH estimate for a prime counting function has a squared logarithm. Applying that estimate directly to the existence of a prime loses a logarithm in the resulting bound. We instead use the triangular weight</p>
+<span class="math math-display" data-tex="\[
+S(X,\chi)=\sum_{n\leq X}\Lambda(n)\chi(n)(1-n/X),
+\qquad X\geq2. \tag{4.1}
+\]">\[
+S(X,\chi)=\sum_{n\leq X}\Lambda(n)\chi(n)(1-n/X),
+\qquad X\geq2. \tag{4.1}
+\]</span>
+<p><strong>Lemma 4.1.</strong> Assume GRH for the primitive function inducing <span class="math" data-tex="\(\chi\bmod q\)">\(\chi\bmod q\)</span>, including <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> for the principal character. With <span class="math" data-tex="\(\delta_\chi=1\)">\(\delta_\chi=1\)</span> for the principal character and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise,</p>
+<span class="math math-display" data-tex="\[
+S(X,\chi)=\delta_\chi X/2
+-\sum_\rho{X^\rho\over\rho(\rho+1)}
++O(\log(q+2)\log X). \tag{4.2}
+\]">\[
+S(X,\chi)=\delta_\chi X/2
+-\sum_\rho{X^\rho\over\rho(\rho+1)}
++O(\log(q+2)\log X). \tag{4.2}
+\]</span>
+<p>The zero sum is over the primitive function, and is absolutely convergent. Its absolute value is <span class="math" data-tex="\(O(\sqrt X\log(q+2))\)">\(O(\sqrt X\log(q+2))\)</span>, with absolute constants.</p>
+<p><em>Proof.</em> Elementary inverse Mellin integration gives</p>
+<span class="math math-display" data-tex="\[
+{1\over2\pi i}\int_{(c)}{y^s\over s(s+1)}\,ds
+=\begin{cases}1-y^{-1},&amp;y&gt;1,\\0,&amp;0&lt;y\leq1,
+\end{cases}\qquad c&gt;0. \tag{4.3}
+\]">\[
+{1\over2\pi i}\int_{(c)}{y^s\over s(s+1)}\,ds
+=\begin{cases}1-y^{-1},&amp;y&gt;1,\\0,&amp;0&lt;y\leq1,
+\end{cases}\qquad c&gt;0. \tag{4.3}
+\]</span>
+<p>Close left for <span class="math" data-tex="\(y&gt;1\)">\(y&gt;1\)</span>, picking the residues at <span class="math" data-tex="\(0,-1\)">\(0,-1\)</span>, and right for <span class="math" data-tex="\(y&lt;1\)">\(y&lt;1\)</span>; the <span class="math" data-tex="\(1/t^2\)">\(1/t^2\)</span> decay kills the horizontal sides. At <span class="math" data-tex="\(y=1\)">\(y=1\)</span>, dominated convergence gives (0). Expanding <span class="math" data-tex="\(-L&#x27;/L\)">\(-L&#x27;/L\)</span> on <span class="math" data-tex="\(c=2\)">\(c=2\)</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+S(X,\chi^*)={1\over2\pi i}\int_{(2)}
+-{L&#x27;\over L}(s,\chi^*){X^s\over s(s+1)}\,ds.
+\tag{4.4}
+\]">\[
+S(X,\chi^*)={1\over2\pi i}\int_{(2)}
+-{L&#x27;\over L}(s,\chi^*){X^s\over s(s+1)}\,ds.
+\tag{4.4}
+\]</span>
+<p>Move the line to <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span>. The good-height estimate of Section 1 kills the horizontal integrals. A nontrivial zero contributes <span class="math" data-tex="\(-X^\rho/(\rho(\rho+1))\)">\(-X^\rho/(\rho(\rho+1))\)</span>. The pole of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> contributes <span class="math" data-tex="\(X/2\)">\(X/2\)</span>. At (0), write</p>
+<span class="math math-display" data-tex="\[
+{L&#x27;\over L}(s,\chi^*)=
+\begin{cases}s^{-1}+c_\chi+O(s),&amp;\chi^*\text{ even and nonprincipal},\\
+c_\chi+O(s),&amp;\chi^*\text{ odd}.
+\end{cases} \tag{4.5}
+\]">\[
+{L&#x27;\over L}(s,\chi^*)=
+\begin{cases}s^{-1}+c_\chi+O(s),&amp;\chi^*\text{ even and nonprincipal},\\
+c_\chi+O(s),&amp;\chi^*\text{ odd}.
+\end{cases} \tag{4.5}
+\]</span>
+<p>The resulting residues are <span class="math" data-tex="\(-\log X+1-c_\chi\)">\(-\log X+1-c_\chi\)</span> and <span class="math" data-tex="\(-c_\chi\)">\(-c_\chi\)</span>, respectively. For <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the residue is <span class="math" data-tex="\(-\log(2\pi)\)">\(-\log(2\pi)\)</span>. There are no other trivial zeros between these lines, and the kernel's pole at <span class="math" data-tex="\(-1\)">\(-1\)</span> is outside.</p>
+<p>Here is a uniform bound for <span class="math" data-tex="\(c_\chi\)">\(c_\chi\)</span>, rather than an unestimated constant hidden in the formula. Subtract the order-one logarithmic derivative at <span class="math" data-tex="\(2\)">\(2\)</span> from the one at <span class="math" data-tex="\(s\)">\(s\)</span>, canceling its exponential constant:</p>
+<span class="math math-display" data-tex="\[
+{L&#x27;\over L}(s)-{L&#x27;\over L}(2)
+=-{1\over2}\left[
+\psi_\Gamma((s+a)/2)-\psi_\Gamma((2+a)/2)\right]
++\sum_\rho\left({1\over s-\rho}-{1\over2-\rho}\right).
+\tag{4.6}
+\]">\[
+{L&#x27;\over L}(s)-{L&#x27;\over L}(2)
+=-{1\over2}\left[
+\psi_\Gamma((s+a)/2)-\psi_\Gamma((2+a)/2)\right]
++\sum_\rho\left({1\over s-\rho}-{1\over2-\rho}\right).
+\tag{4.6}
+\]</span>
+<p>Under GRH, <span class="math" data-tex="\(\rho=1/2+i\gamma\)">\(\rho=1/2+i\gamma\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the summand is bounded by <span class="math" data-tex="\(C/(1+\gamma^2)\)">\(C/(1+\gamma^2)\)</span>. Equation (1.6), summed over unit intervals, bounds its absolute sum by <span class="math" data-tex="\(C\log(q_\chi+2)\)">\(C\log(q_\chi+2)\)</span>. Subtract <span class="math" data-tex="\(1/s\)">\(1/s\)</span> from the gamma term when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>; its remaining constant is absolute. The Euler product bounds <span class="math" data-tex="\(L&#x27;/L(2)\)">\(L&#x27;/L(2)\)</span> absolutely. Thus <span class="math" data-tex="\(|c_\chi|\ll\log(q_\chi+2)\)">\(|c_\chi|\ll\log(q_\chi+2)\)</span>.</p>
+<p>On <span class="math" data-tex="\(\Re s=-1/2\)">\(\Re s=-1/2\)</span>, logarithmic differentiation of the functional equation expresses <span class="math" data-tex="\(L&#x27;/L(s)\)">\(L&#x27;/L(s)\)</span> through the absolutely convergent Euler series at <span class="math" data-tex="\(1-s\)">\(1-s\)</span> and the gamma derivatives. The line avoids all trivial gamma poles, so its size is <span class="math" data-tex="\(O(\log(q_\chi(|t|+2)))\)">\(O(\log(q_\chi(|t|+2)))\)</span>. The remaining integral in (4.4) is consequently <span class="math" data-tex="\(O(X^{-1/2}\log(q_\chi+2))\)">\(O(X^{-1/2}\log(q_\chi+2))\)</span>.</p>
+<p>Also, by (1.6),</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho{1\over|\rho(\rho+1)|}
+\ll\sum_{j\geq0}{\log(q_\chi(j+2))\over1+j^2}
+\ll\log(q_\chi+2). \tag{4.7}
+\]">\[
+\sum_\rho{1\over|\rho(\rho+1)|}
+\ll\sum_{j\geq0}{\log(q_\chi(j+2))\over1+j^2}
+\ll\log(q_\chi+2). \tag{4.7}
+\]</span>
+<p>This proves absolute convergence and the claimed square-root bound. Finally, removing the prime powers at <span class="math" data-tex="\(p\mid q\)">\(p\mid q\)</span> changes (4.1) by at most</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\mid q}\log p\left\lfloor{\log X\over\log p}\right\rfloor
+\leq\omega(q)\log X\ll\log(q+2)\log X.
+\]">\[
+\sum_{p\mid q}\log p\left\lfloor{\log X\over\log p}\right\rfloor
+\leq\omega(q)\log X\ll\log(q+2)\log X.
+\]</span>
+<p>The lemma follows. ∎</p>
+<p><strong>Theorem 4.2.</strong> Under GRH for every Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-function modulo <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, every reduced class <span class="math" data-tex="\(b\bmod q\)">\(b\bmod q\)</span> contains a prime <span class="math" data-tex="\(p\)">\(p\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\boxed{p\ll\bigl(\varphi(q)\log(q+2)\bigr)^2.} \tag{4.8}
+\]">\[
+\boxed{p\ll\bigl(\varphi(q)\log(q+2)\bigr)^2.} \tag{4.8}
+\]</span>
+<p>Thus the power of <span class="math" data-tex="\(\log q\)">\(\log q\)</span> is <strong>two</strong>, not four. The implied constant is absolute.</p>
+<p><em>Proof.</em> Average (4.2) with weight <span class="math" data-tex="\(\bar\chi(b)/\varphi(q)\)">\(\bar\chi(b)/\varphi(q)\)</span>. Orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+S_b(X):=\sum_{n\equiv b\ (q)}\Lambda(n)(1-n/X)_+
+={X\over2\varphi(q)}
++O\bigl(\sqrt X\log(q+2)+\log(q+2)\log X\bigr).
+\tag{4.9}
+\]">\[
+S_b(X):=\sum_{n\equiv b\ (q)}\Lambda(n)(1-n/X)_+
+={X\over2\varphi(q)}
++O\bigl(\sqrt X\log(q+2)+\log(q+2)\log X\bigr).
+\tag{4.9}
+\]</span>
+<p>We must distinguish a prime from a higher prime power. The elementary estimate <span class="math" data-tex="\(\psi(y)\ll y\)">\(\psi(y)\ll y\)</span> suffices. To prove it, for an integer <span class="math" data-tex="\(n\)">\(n\)</span>, every prime power in ((n,2n]) contributes its prime's logarithm to (log\binom{2n}{n}): in the factorial valuation, the term belonging to that power is <span class="math" data-tex="\(1\)">\(1\)</span>, and all the other terms are nonnegative. Hence (psi(2n)-psi(n)\leq2n\log2). Summing at powers of two and enclosing a general (y) between two such powers gives (psi(y)\leq4y\log2). Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{p^m\leq X\\m\geq2}}\log p
+\leq\psi(\sqrt X)+
+\sum_{3\leq m\leq\log_2 X}\psi(X^{1/m})
+\ll\sqrt X+X^{1/3}\log X\ll\sqrt X. \tag{4.10}
+\]">\[
+\sum_{\substack{p^m\leq X\\m\geq2}}\log p
+\leq\psi(\sqrt X)+
+\sum_{3\leq m\leq\log_2 X}\psi(X^{1/m})
+\ll\sqrt X+X^{1/3}\log X\ll\sqrt X. \tag{4.10}
+\]</span>
+<p>Put <span class="math" data-tex="\(L=\log(q+2)\)">\(L=\log(q+2)\)</span> and <span class="math" data-tex="\(X=K\varphi(q)^2L^2\)">\(X=K\varphi(q)^2L^2\)</span>. The main term in (4.9) is <span class="math" data-tex="\(K\varphi(q)L^2/2\)">\(K\varphi(q)L^2/2\)</span>. The square-root error is at most <span class="math" data-tex="\(C\sqrt K\varphi(q)L^2\)">\(C\sqrt K\varphi(q)L^2\)</span>, and the contribution (4.10) is at most <span class="math" data-tex="\(C\sqrt K\varphi(q)L\)">\(C\sqrt K\varphi(q)L\)</span>. Since <span class="math" data-tex="\(\varphi(q)\leq q\)">\(\varphi(q)\leq q\)</span>, the remaining error is at most <span class="math" data-tex="\(C L(\log K+4L)\)">\(C L(\log K+4L)\)</span>. Choose one sufficiently large absolute <span class="math" data-tex="\(K\)">\(K\)</span>: its linear growth dominates both <span class="math" data-tex="\(\sqrt K\)">\(\sqrt K\)</span> and <span class="math" data-tex="\(\log K\)">\(\log K\)</span>, uniformly for <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>. Equation (4.9) then exceeds (4.10). Some positive-weight term must be a prime in the desired class. ∎</p>
+<h2 id="5-the-odd-character-modulo-four-and-prime-squares">5. The odd character modulo four and prime squares</h2>
+<p>Let <span class="math" data-tex="\(\chi_{-4}(n)=0\)">\(\chi_{-4}(n)=0\)</span> for even <span class="math" data-tex="\(n\)">\(n\)</span>, (1) for <span class="math" data-tex="\(n\equiv1\bmod4\)">\(n\equiv1\bmod4\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(n\equiv3\bmod4\)">\(n\equiv3\bmod4\)</span>. It is primitive, odd, and real. Its formula is</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho H(\rho)
+=-\sum_n\Lambda(n)\chi_{-4}(n)
+\bigl(f(n)+f^\sharp(n)\bigr)
++\log(4/\pi)f(1)+G_1(f). \tag{5.1}
+\]">\[
+\sum_\rho H(\rho)
+=-\sum_n\Lambda(n)\chi_{-4}(n)
+\bigl(f(n)+f^\sharp(n)\bigr)
++\log(4/\pi)f(1)+G_1(f). \tag{5.1}
+\]</span>
+<p>For the one-sided triangular weight in (4.1), define</p>
+<span class="math math-display" data-tex="\[
+\Theta_j(X)=\sum_{p\equiv j\ (4)}\log p\,(1-p/X)_+,
+\quad j=1,3.
+\]">\[
+\Theta_j(X)=\sum_{p\equiv j\ (4)}\log p\,(1-p/X)_+,
+\quad j=1,3.
+\]</span>
+<p>Then the exact elementary decomposition is</p>
+<span class="math math-display" data-tex="\[
+S(X,\chi_{-4})=
+\Theta_1(X)-\Theta_3(X)
++\sum_{\substack{p\ {
+m odd},\ m\geq2}}\log p\,
+\chi_{-4}(p)^m(1-p^m/X)_+. \tag{5.2}
+\]">\[
+S(X,\chi_{-4})=
+\Theta_1(X)-\Theta_3(X)
++\sum_{\substack{p\ {
+m odd},\ m\geq2}}\log p\,
+\chi_{-4}(p)^m(1-p^m/X)_+. \tag{5.2}
+\]</span>
+<p>All even exponents have sign <span class="math" data-tex="\(+1\)">\(+1\)</span>, including squares of primes in class (3). Solving (5.2) for <span class="math" data-tex="\(Theta_3-Theta_1\)">\(Theta_3-Theta_1\)</span> therefore produces a <strong>positive square contribution</strong>. The zeros govern the remaining oscillation through (4.2). This explains the direction of the familiar Chebyshev bias without claiming that this finite computation proves a density theorem for the bias.</p>
+<p>At <span class="math" data-tex="\(X=100\)">\(X=100\)</span>, direct finite summation gives the following reproducible values; logarithms are natural:</p>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th style="text-align:right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(S(100,\chi_{-4})\)">\(S(100,\chi_{-4})\)</span></td>
+<td style="text-align:right">-1.493642350</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(Theta_3(100)-Theta_1(100)\)">\(Theta_3(100)-Theta_1(100)\)</span></td>
+<td style="text-align:right">4.099621507</td>
+</tr>
+<tr>
+<td>contribution of <span class="math" data-tex="\(p^2\)">\(p^2\)</span>, <span class="math" data-tex="\(p\)">\(p\)</span> odd</td>
+<td style="text-align:right">3.199229793</td>
+</tr>
+<tr>
+<td>contribution of all higher powers <span class="math" data-tex="\(p^m\)">\(p^m\)</span>, <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span></td>
+<td style="text-align:right">-0.593250636</td>
+</tr>
+</tbody>
+</table>
+<p>The last two rows minus the first equal the second, as (5.2) requires. Squares make a systematic positive contribution; higher odd powers and zeros retain their signs.</p>
+<h2 id="6-hecke-characters-the-same-contour-all-local-factors">6. Hecke characters: the same contour, all local factors</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a number field of degree <span class="math" data-tex="\(d=r_1+2r_2\)">\(d=r_1+2r_2\)</span>, with discriminant <span class="math" data-tex="\(D_k\)">\(D_k\)</span>. A unitary Hecke character is a continuous unitary character of <span class="math" data-tex="\(C_k=\mathbb A_k^\times/k^\times\)">\(C_k=\mathbb A_k^\times/k^\times\)</span>. At a real place write</p>
+<span class="math math-display" data-tex="\[
+\chi_v(x)=\operatorname{sgn}(x)^{a_v}|x|^{i\tau_v};
+\]">\[
+\chi_v(x)=\operatorname{sgn}(x)^{a_v}|x|^{i\tau_v};
+\]</span>
+<p>at a complex place use the local norm <span class="math" data-tex="\(|z|_v=|z|^2\)">\(|z|_v=|z|^2\)</span> and write</p>
+<span class="math math-display" data-tex="\[
+\chi_v(z)=(z/|z|)^{m_v}|z|_v^{i\tau_v}.
+\]">\[
+\chi_v(z)=(z/|z|)^{m_v}|z|_v^{i\tau_v}.
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathfrak f_\chi\)">\(\mathfrak f_\chi\)</span> be its finite conductor, and put</p>
+<span class="math math-display" data-tex="\[
+Q_\chi=|D_k|N\mathfrak f_\chi,
+\qquad
+\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2),
+\quad\Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]">\[
+Q_\chi=|D_k|N\mathfrak f_\chi,
+\qquad
+\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2),
+\quad\Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]</span>
+<p>The archimedean product and completed function are</p>
+<span class="math math-display" data-tex="\[
+G_\chi(s)=
+\prod_{v\ {\rm real}}\Gamma_{\mathbb R}(s+a_v+i\tau_v)
+\prod_{v\ {\rm complex}}\Gamma_{\mathbb C}(s+|m_v|/2+i\tau_v),
+\quad
+\Lambda_\chi(s)=Q_\chi^{s/2}G_\chi(s)L(s,\chi).
+\tag{6.1}
+\]">\[
+G_\chi(s)=
+\prod_{v\ {\rm real}}\Gamma_{\mathbb R}(s+a_v+i\tau_v)
+\prod_{v\ {\rm complex}}\Gamma_{\mathbb C}(s+|m_v|/2+i\tau_v),
+\quad
+\Lambda_\chi(s)=Q_\chi^{s/2}G_\chi(s)L(s,\chi).
+\tag{6.1}
+\]</span>
+<p>For an unramified prime ideal, <span class="math" data-tex="\(\chi(\mathfrak p)\)">\(\chi(\mathfrak p)\)</span> means <span class="math" data-tex="\(\chi_v(\varpi_v)\)">\(\chi_v(\varpi_v)\)</span>; it is set to zero at a ramified prime. Thus</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\prod_{\mathfrak p}(1-\chi(\mathfrak p)(N\mathfrak p)^{-s})^{-1}.
+\]">\[
+L(s,\chi)=\prod_{\mathfrak p}(1-\chi(\mathfrak p)(N\mathfrak p)^{-s})^{-1}.
+\]</span>
+<p>The internal lesson <em>Hecke L-functions and the Dedekind zeta function</em>, lesson 10 of <em>Adèles, idèles and Tate's thesis</em>, proves the continuation and functional equation</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\chi(s)=\epsilon_\chi\Lambda_{\bar\chi}(1-s).
+\tag{6.2}
+\]">\[
+\Lambda_\chi(s)=\epsilon_\chi\Lambda_{\bar\chi}(1-s).
+\tag{6.2}
+\]</span>
+<p>It is an existing planned proof provider. Its Tate-theoretic proof, using lessons 5 and 7–9 of that course, supplies rapid-decay integral representations away from the pole terms. Those representations give order at most one after the poles are removed: splitting the norm integral at <span class="math" data-tex="\(1\)">\(1\)</span>, differentiating under its rapidly decreasing tails, bounds growth by <span class="math" data-tex="\(\exp(C|s|\log(|s|+2))\)">\(\exp(C|s|\log(|s|+2))\)</span>. They also give polynomial growth in bounded strips, by integration by parts in the norm variable. These are the analytic inputs needed for the following contour proof. When <span class="math" data-tex="\(\chi=|\cdot|^{i\tau}\)">\(\chi=|\cdot|^{i\tau}\)</span>, the completed function has poles at <span class="math" data-tex="\(-i\tau,1-i\tau\)">\(-i\tau,1-i\tau\)</span>. Otherwise it is entire. Write <span class="math" data-tex="\(\mathcal P_\chi\)">\(\mathcal P_\chi\)</span> for these poles, with multiplicities.</p>
+<p>We will also need a bound uniform as the archimedean character varies. Set <span class="math" data-tex="\(B=10+\sum_v(|\tau_v|+|m_v|+a_v)\)">\(B=10+\sum_v(|\tau_v|+|m_v|+a_v)\)</span>, with <span class="math" data-tex="\(m_v=0\)">\(m_v=0\)</span> at real places and <span class="math" data-tex="\(a_v=0\)">\(a_v=0\)</span> at complex places. On <span class="math" data-tex="\(\Re s=2\)">\(\Re s=2\)</span>, the Euler product bounds both <span class="math" data-tex="\(|L(s,\chi)|\)">\(|L(s,\chi)|\)</span> and its reciprocal by constants depending only on <span class="math" data-tex="\(k\)">\(k\)</span>. On any fixed line left of zero, (6.2) and Stirling's formula bound <span class="math" data-tex="\(L(s,\chi)\)">\(L(s,\chi)\)</span> by <span class="math" data-tex="\(C_k Q_\chi^{C_k}(B+|\Im s|)^{C_k}\)">\(C_k Q_\chi^{C_k}(B+|\Im s|)^{C_k}\)</span>: the exponential factors in the gamma quotient cancel, and the remaining ratio is a fixed power of its shifted argument. This bound remains uniform at zeros of reciprocal gamma factors, since the quotient is entire there. Remove the possible pole at <span class="math" data-tex="\(1-i\tau\)">\(1-i\tau\)</span> by multiplying <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(s-1+i\tau\)">\(s-1+i\tau\)</span>. The same polynomial bound holds throughout any fixed strip. Indeed divide the pole-removed function by <span class="math" data-tex="\((B+s)^M\)">\((B+s)^M\)</span>, with a sufficiently large fixed <span class="math" data-tex="\(M\)">\(M\)</span> and, if necessary, <span class="math" data-tex="\(B\)">\(B\)</span> enlarged to put <span class="math" data-tex="\(-B\)">\(-B\)</span> outside the strip, and multiply by <span class="math" data-tex="\(e^{\varepsilon s^2}\)">\(e^{\varepsilon s^2}\)</span>. The maximum principle applies on rectangles: the order-one growth bound kills the horizontal sides for each <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and the vertical bounds are uniform. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.</p>
+<p>Jensen's formula in the disk centered at <span class="math" data-tex="\(2+it\)">\(2+it\)</span>, with outer radius <span class="math" data-tex="\(4\)">\(4\)</span> and inner radius <span class="math" data-tex="\(3\)">\(3\)</span>, now bounds zeros in a unit interval. Its center has an absolute lower bound from the Euler product; the removed pole factor has modulus at least <span class="math" data-tex="\(1\)">\(1\)</span> there. The larger disk lies in a fixed strip, so the polynomial estimate gives</p>
+<span class="math math-display" data-tex="\[
+\#\{\rho:t\leq\Im\rho\leq t+1\}
+\ll_k \log Q_\chi+\log(B+|t|+2).
+\tag{6.4}
+\]">\[
+\#\{\rho:t\leq\Im\rho\leq t+1\}
+\ll_k \log Q_\chi+\log(B+|t|+2).
+\tag{6.4}
+\]</span>
+<p>The smaller disk contains that portion of the critical strip. A completed zero is a zero of <span class="math" data-tex="\(L\)">\(L\)</span>, with no larger multiplicity: a gamma pole cancels zeros of <span class="math" data-tex="\(L\)">\(L\)</span>, rather than adding completed zeros. Thus the same estimate counts completed zeros, including possible boundary zeros. This is the uniform input for the character sum in the next section.</p>
+<p><strong>Theorem 6.1 (Hecke explicit formula).</strong> If <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R_+^\times)\)">\(f\in C_c^\infty(\mathbb R_+^\times)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\boxed{\begin{aligned}
+\sum_\rho H(\rho)
+={}&amp;\sum_{\pi\in\mathcal P_\chi}H(\pi)
+-\sum_{\mathfrak p,m\geq1}\log N\mathfrak p
+\left(\chi(\mathfrak p)^m f((N\mathfrak p)^m)
++\bar\chi(\mathfrak p)^m f^\sharp((N\mathfrak p)^m)\right)\\
+&amp;+\log Q_\chi\,f(1)
++\frac1{2\pi}\int_{\mathbb R}
+2\Re\frac{G_\chi&#x27;}{G_\chi}(1/2+it)H(1/2+it)\,dt.
+\end{aligned}} \tag{6.3}
+\]">\[
+\boxed{\begin{aligned}
+\sum_\rho H(\rho)
+={}&amp;\sum_{\pi\in\mathcal P_\chi}H(\pi)
+-\sum_{\mathfrak p,m\geq1}\log N\mathfrak p
+\left(\chi(\mathfrak p)^m f((N\mathfrak p)^m)
++\bar\chi(\mathfrak p)^m f^\sharp((N\mathfrak p)^m)\right)\\
+&amp;+\log Q_\chi\,f(1)
++\frac1{2\pi}\int_{\mathbb R}
+2\Re\frac{G_\chi&#x27;}{G_\chi}(1/2+it)H(1/2+it)\,dt.
+\end{aligned}} \tag{6.3}
+\]</span>
+<p>Both the zero sum and the integral are absolutely convergent. The prime-ideal sum is finite.</p>
+<p><em>Proof.</em> Repeated integration by parts in <span class="math" data-tex="\(u=\log x\)">\(u=\log x\)</span> gives <span class="math" data-tex="\(H(\sigma+it)=O_N((1+|t|)^{-N})\)">\(H(\sigma+it)=O_N((1+|t|)^{-N})\)</span> on every bounded strip. We record why the contour can avoid zeros here as well. The order-one bound above and Jensen's formula give <span class="math" data-tex="\(O_\chi(T\log(T+2))\)">\(O_\chi(T\log(T+2))\)</span> zeros up to height <span class="math" data-tex="\(T\)">\(T\)</span>. At heights in <span class="math" data-tex="\([T,T+1]\)">\([T,T+1]\)</span>, delete intervals of radius <span class="math" data-tex="\(T^{-3}\)">\(T^{-3}\)</span> around the ordinates of the zeros with height at most <span class="math" data-tex="\(2T\)">\(2T\)</span>. Their total length is <span class="math" data-tex="\(O_\chi(T^{-2}\log T)\)">\(O_\chi(T^{-2}\log T)\)</span>, so a remaining height exists. Subtract logarithmic derivatives at a fixed point to the right of the critical strip. The order-one partial fractions and the zero count bound the terms at that height by a polynomial in <span class="math" data-tex="\(T\)">\(T\)</span>; the tail is bounded by the convergent sum of <span class="math" data-tex="\(O(1/|\rho|^2)\)">\(O(1/|\rho|^2)\)</span>. Choosing <span class="math" data-tex="\(N\)">\(N\)</span> larger than that polynomial exponent kills the horizontal integrals. Removed poles are included as negative residues of <span class="math" data-tex="\(\Lambda&#x27;/\Lambda\)">\(\Lambda&#x27;/\Lambda\)</span>.</p>
+<p>Choose the right side farther right than every archimedean shift's pole; all gamma poles have real part at most zero. Use (6.2) to replace the left side by the right-side integral for the dual character, exactly as in (2.6). The Euler expansions give the two finite prime-ideal sums. The constants <span class="math" data-tex="\(\tfrac12\log Q_\chi\)">\(\tfrac12\log Q_\chi\)</span> give <span class="math" data-tex="\(\log Q_\chi f(1)\)">\(\log Q_\chi f(1)\)</span>. Move only the gamma terms to <span class="math" data-tex="\(\Re s=1/2\)">\(\Re s=1/2\)</span>; their poles remain to the left. The dual factors obey <span class="math" data-tex="\(G_{\bar\chi}(\bar s)=\overline{G_\chi(s)}\)">\(G_{\bar\chi}(\bar s)=\overline{G_\chi(s)}\)</span>; changing <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(-t\)">\(-t\)</span> gives the last line of (6.3). Mellin inversion and absolute convergence now justify every step without a jump-limit argument. The zero count and rapid decrease of <span class="math" data-tex="\(H\)">\(H\)</span> give absolute convergence. Compact support bounds <span class="math" data-tex="\(N\mathfrak p^m\)">\(N\mathfrak p^m\)</span> above and below, so there are finitely many prime ideals involved. ∎</p>
+<p>For finite-order characters all <span class="math" data-tex="\(\tau_v=0\)">\(\tau_v=0\)</span>, and the gamma density is even in <span class="math" data-tex="\(t\)">\(t\)</span>. For general unitary characters it need not be even. The real-part expression in (6.3), with the displayed shifts retained, is the appropriate one. Weil's 1952 formula (11) has the same content with its conductor and gamma constants grouped differently.</p>
+<h2 id="7-the-idèlic-formula-and-the-meaning-of-its-principal-values">7. The idèlic formula and the meaning of its principal values</h2>
+<p>This section makes the local normalizations explicit, so that an unspecified principal value cannot conceal a conductor or discriminant. Normalize Haar measure on <span class="math" data-tex="\(C_k^1=\ker|\cdot|\)">\(C_k^1=\ker|\cdot|\)</span> to mass <span class="math" data-tex="\(1\)">\(1\)</span>, and choose a splitting <span class="math" data-tex="\(C_k\simeq C_k^1\times\mathbb R_+^\times\)">\(C_k\simeq C_k^1\times\mathbb R_+^\times\)</span>. Use <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> in the second factor. At a finite place of residue cardinality <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, use multiplicative Haar measure with unit group mass <span class="math" data-tex="\(\log q_v\)">\(\log q_v\)</span>; at a real place use <span class="math" data-tex="\(dx/(2|x|)\)">\(dx/(2|x|)\)</span>; at a complex place use <span class="math" data-tex="\(2\,dr/r\,d\theta/(2\pi)\)">\(2\,dr/r\,d\theta/(2\pi)\)</span>. These local measures are the ones for which volume accumulated through successive norm shells grows as <span class="math" data-tex="\(\log\Lambda\)">\(\log\Lambda\)</span>. They are not the restricted-product measures of unit mass used when forming Tate's zeta integral.</p>
+<p>Fix the standard global additive character obtained from the rational one by the trace. Its real component is <span class="math" data-tex="\(e^{-2\pi ix}\)">\(e^{-2\pi ix}\)</span>, its complex component is <span class="math" data-tex="\(e^{-2\pi i(z+\bar z)}\)">\(e^{-2\pi i(z+\bar z)}\)</span>, and its finite component is trivial on the inverse different <span class="math" data-tex="\(\mathfrak D_v^{-1}\)">\(\mathfrak D_v^{-1}\)</span>. The internal lesson <em>Additive characters, self-dual measures and Poisson summation on the adèles</em> establishes these conductors and self-dual measures.</p>
+<p>For a smooth compactly supported function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(C_k\)">\(C_k\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\widehat h(\chi,s)=\int_{C_k}h(u)\chi(u)|u|^s\,d^*u.
+\tag{7.1}
+\]">\[
+\widehat h(\chi,s)=\int_{C_k}h(u)\chi(u)|u|^s\,d^*u.
+\tag{7.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\chi\)">\(\chi\)</span> runs through the characters of <span class="math" data-tex="\(C_k^1\)">\(C_k^1\)</span>, each extended to be trivial on the chosen norm splitting. Write <span class="math" data-tex="\(\widehat h(s)=\widehat h(1,s)\)">\(\widehat h(s)=\widehat h(1,s)\)</span>. The local test function is the restriction of <span class="math" data-tex="\(h\)">\(h\)</span> along <span class="math" data-tex="\(k_v^\times\to C_k\)">\(k_v^\times\to C_k\)</span>.</p>
+<p>We now define <span class="math" data-tex="\(\int&#x27;\)">\(\int&#x27;\)</span>, rather than leaving a cutoff implicit. At a finite place first take an additive character of conductor <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>. For a compactly supported locally constant test <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(k_v^\times\)">\(k_v^\times\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+W_v(b)=\int_{\mathcal O_v^\times}
+\frac{b(u^{-1})-b(1)}{|1-u|_v}\,d^*u
++\int_{k_v^\times\setminus\mathcal O_v^\times}\frac{b(u^{-1})}{|1-u|_v}\,d^*u.
+\tag{7.2}
+\]">\[
+W_v(b)=\int_{\mathcal O_v^\times}
+\frac{b(u^{-1})-b(1)}{|1-u|_v}\,d^*u
++\int_{k_v^\times\setminus\mathcal O_v^\times}\frac{b(u^{-1})}{|1-u|_v}\,d^*u.
+\tag{7.2}
+\]</span>
+<p>The integrand vanishes in a neighborhood of (1). For the trace character, whose conductor is <span class="math" data-tex="\(\mathfrak D_v^{-1}\)">\(\mathfrak D_v^{-1}\)</span>, replace (7.2) by</p>
+<span class="math math-display" data-tex="\[
+W_v(b)-\operatorname{ord}_v(\mathfrak D_v)\log q_v\,b(1).
+\tag{7.3}
+\]">\[
+W_v(b)-\operatorname{ord}_v(\mathfrak D_v)\log q_v\,b(1).
+\tag{7.3}
+\]</span>
+<p>At an infinite place choose any smooth radial compactly supported <span class="math" data-tex="\(r(|u|_v)\)">\(r(|u|_v)\)</span> with <span class="math" data-tex="\(r(1)=1\)">\(r(1)=1\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+W_v(b)=\int_{k_v^\times}
+\frac{b(u^{-1})-b(1)r(|u|_v^{-1})}{|1-u|_v}\,d^*u
++b(1)C_v(r), \tag{7.4}
+\]">\[
+W_v(b)=\int_{k_v^\times}
+\frac{b(u^{-1})-b(1)r(|u|_v^{-1})}{|1-u|_v}\,d^*u
++b(1)C_v(r), \tag{7.4}
+\]</span>
+<p>where <span class="math" data-tex="\(C_{\mathbb R}(r)=W_{\mathbb R}(r)\)">\(C_{\mathbb R}(r)=W_{\mathbb R}(r)\)</span> is the real-place formula in the preceding lesson, and</p>
+<span class="math math-display" data-tex="\[
+C_{\mathbb C}(r)=2(\log(2\pi)+\gamma)
++\int_0^\infty
+\frac{r(e^u)+e^{-u}r(e^{-u})-2e^{-u}}{1-e^{-u}}\,du.
+\tag{7.5}
+\]">\[
+C_{\mathbb C}(r)=2(\log(2\pi)+\gamma)
++\int_0^\infty
+\frac{r(e^u)+e^{-u}r(e^{-u})-2e^{-u}}{1-e^{-u}}\,du.
+\tag{7.5}
+\]</span>
+<p>The integral in (7.4) is locally absolutely convergent: its numerator is <span class="math" data-tex="\(O(|u-1|)\)">\(O(|u-1|)\)</span>. In two real dimensions this cancels enough of the denominator <span class="math" data-tex="\(|u-1|^2\)">\(|u-1|^2\)</span>. Independence of <span class="math" data-tex="\(r\)">\(r\)</span> follows by subtracting two choices and using the radial kernel computations just below. If an additive character is changed to <span class="math" data-tex="\(x\mapsto\alpha_v(ax)\)">\(x\mapsto\alpha_v(ax)\)</span>, add <span class="math" data-tex="\(\log|a|_v b(1)\)">\(\log|a|_v b(1)\)</span> to these definitions. Globally a change by <span class="math" data-tex="\(a\in k^\times\)">\(a\in k^\times\)</span> changes their sum by zero, by the product formula. Equations (7.2)–(7.5) specify the additive-character-normalized principal value denoted by <span class="math" data-tex="\(\int&#x27;\)">\(\int&#x27;\)</span>.</p>
+<p><strong>Local calculation.</strong> For <span class="math" data-tex="\(b(u)=\bar\chi_v(u)f(|u|_v)\)">\(b(u)=\bar\chi_v(u)f(|u|_v)\)</span>, these distributions equal the prime terms minus the local conductor term at finite places, and minus the gamma-density term at infinite places.</p>
+<p>At an unramified finite place, the unit-shell contribution in (7.2) vanishes. On <span class="math" data-tex="\(|u|_v=q_v^{-m}&lt;1\)">\(|u|_v=q_v^{-m}&lt;1\)</span>, the denominator is <span class="math" data-tex="\(1\)">\(1\)</span>, giving <span class="math" data-tex="\((\log q_v)\chi_v(\varpi_v)^m f(q_v^m)\)">\((\log q_v)\chi_v(\varpi_v)^m f(q_v^m)\)</span>. On <span class="math" data-tex="\(|u|_v=q_v^m&gt;1\)">\(|u|_v=q_v^m&gt;1\)</span>, the denominator is <span class="math" data-tex="\(q_v^m\)">\(q_v^m\)</span>, giving the reflected term. Thus the total is the local summand of <span class="math" data-tex="\(P_\chi(f)\)">\(P_\chi(f)\)</span>.</p>
+<p>Suppose instead that the character has conductor exponent <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. All nonunit shells integrate to zero by unit-character orthogonality. On the units, <span class="math" data-tex="\(f(|u|)=f(1)\)">\(f(|u|)=f(1)\)</span>. Put <span class="math" data-tex="\(U_j=1+\mathfrak p_v^j\)">\(U_j=1+\mathfrak p_v^j\)</span>, <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, and <span class="math" data-tex="\(U_0=\mathcal O_v^\times\)">\(U_0=\mathcal O_v^\times\)</span>. The integral of <span class="math" data-tex="\(\chi_v\)">\(\chi_v\)</span> on <span class="math" data-tex="\(U_j\)">\(U_j\)</span> is zero for <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>, and is <span class="math" data-tex="\(\mu(U_j)\)">\(\mu(U_j)\)</span> for <span class="math" data-tex="\(j\geq n\)">\(j\geq n\)</span>. Since <span class="math" data-tex="\(\mu(U_j)=(\log q_v)q_v^{-j}/(1-q_v^{-1})\)">\(\mu(U_j)=(\log q_v)q_v^{-j}/(1-q_v^{-1})\)</span>, summing the annuli <span class="math" data-tex="\(U_j\setminus U_{j+1}\)">\(U_j\setminus U_{j+1}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathcal O_v^\times}
+\frac{\chi_v(u)-1}{|1-u|_v}\,d^*u=-n\log q_v. \tag{7.6}
+\]">\[
+\int_{\mathcal O_v^\times}
+\frac{\chi_v(u)-1}{|1-u|_v}\,d^*u=-n\log q_v. \tag{7.6}
+\]</span>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, only the first annulus contributes and its value is <span class="math" data-tex="\(-\log q_v\)">\(-\log q_v\)</span>. For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, the first contributes <span class="math" data-tex="\(-\log q_v+\log q_v/(q_v-1)\)">\(-\log q_v+\log q_v/(q_v-1)\)</span>, the <span class="math" data-tex="\(n-2\)">\(n-2\)</span> middle annuli each contribute <span class="math" data-tex="\(-\log q_v\)">\(-\log q_v\)</span>, and the last contributes <span class="math" data-tex="\(-q_v\log q_v/(q_v-1)\)">\(-q_v\log q_v/(q_v-1)\)</span>; their sum is (7.6). Including (7.3) gives <span class="math" data-tex="\(-(n+\operatorname{ord}_v\mathfrak D_v)\log q_v f(1)\)">\(-(n+\operatorname{ord}_v\mathfrak D_v)\log q_v f(1)\)</span>.</p>
+<p>At a real place first set <span class="math" data-tex="\(\tau_v=0\)">\(\tau_v=0\)</span>. Pair the positive and negative half-lines in (7.4). The even kernel is <span class="math" data-tex="\(W_{\mathbb R}(f)=-A_{1,0}(f)\)">\(W_{\mathbb R}(f)=-A_{1,0}(f)\)</span>. Changing to the odd character changes its value by</p>
+<span class="math math-display" data-tex="\[
+-\int_0^\infty\frac{f(e^u)+f^\sharp(e^u)}{1+e^{-u}}\,du,
+\]">\[
+-\int_0^\infty\frac{f(e^u)+f^\sharp(e^u)}{1+e^{-u}}\,du,
+\]</span>
+<p>so (2.8) gives <span class="math" data-tex="\(-A_{1,1}(f)\)">\(-A_{1,1}(f)\)</span>. This is</p>
+<span class="math math-display" data-tex="\[
+-\frac1{2\pi}\int_\mathbb R
+2\Re\frac{\Gamma_{\mathbb R}&#x27;}{\Gamma_{\mathbb R}}(1/2+a_v+it)
+H(1/2+it)\,dt.
+\tag{7.7}
+\]">\[
+-\frac1{2\pi}\int_\mathbb R
+2\Re\frac{\Gamma_{\mathbb R}&#x27;}{\Gamma_{\mathbb R}}(1/2+a_v+it)
+H(1/2+it)\,dt.
+\tag{7.7}
+\]</span>
+<p>A norm twist is obtained by replacing <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> with <span class="math" data-tex="\(x^{-i\tau_v}f(x)\)">\(x^{-i\tau_v}f(x)\)</span>, then changing <span class="math" data-tex="\(t\)">\(t\)</span> in the integral. This inserts <span class="math" data-tex="\(+i\tau_v\)">\(+i\tau_v\)</span> in the gamma argument, as in (6.1).</p>
+<p>At a complex place the angular integral is elementary:</p>
+<span class="math math-display" data-tex="\[
+\int_0^{2\pi}\frac{e^{im\theta}}{1-2r\cos\theta+r^2}\frac{d\theta}{2\pi}
+=\begin{cases}
+r^{|m|}/(1-r^2),&amp;r&lt;1,\\
+r^{-|m|}/(r^2-1),&amp;r&gt;1.
+\end{cases} \tag{7.8}
+\]">\[
+\int_0^{2\pi}\frac{e^{im\theta}}{1-2r\cos\theta+r^2}\frac{d\theta}{2\pi}
+=\begin{cases}
+r^{|m|}/(1-r^2),&amp;r&lt;1,\\
+r^{-|m|}/(r^2-1),&amp;r&gt;1.
+\end{cases} \tag{7.8}
+\]</span>
+<p>Expand the two geometric series for <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> and select the coefficient of <span class="math" data-tex="\(e^{-im\theta}\)">\(e^{-im\theta}\)</span>; the case <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> follows by replacing <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(1/r\)">\(1/r\)</span>. In the definition (7.4), change variables <span class="math" data-tex="\(r=e^{\pm u/2}\)">\(r=e^{\pm u/2}\)</span>. Equation (7.8) and (7.5) give</p>
+<span class="math math-display" data-tex="\[
+W_v(b)=2(\log(2\pi)+\gamma)f(1)
++\int_0^\infty
+\frac{e^{-|m_v|u/2}(f(e^u)+f^\sharp(e^u))-2e^{-u}f(1)}{1-e^{-u}}\,du.
+\tag{7.9}
+\]">\[
+W_v(b)=2(\log(2\pi)+\gamma)f(1)
++\int_0^\infty
+\frac{e^{-|m_v|u/2}(f(e^u)+f^\sharp(e^u))-2e^{-u}f(1)}{1-e^{-u}}\,du.
+\tag{7.9}
+\]</span>
+<p>Using (2.7), now without the change <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span>, this is minus the density for <span class="math" data-tex="\(\Gamma_{\mathbb C}(s+|m_v|/2)\)">\(\Gamma_{\mathbb C}(s+|m_v|/2)\)</span>. Twisting inserts <span class="math" data-tex="\(i\tau_v\)">\(i\tau_v\)</span> as before. These computations also prove the asserted independence of the radial reference <span class="math" data-tex="\(r\)">\(r\)</span>. They identify the local principal values completely, including constants; no general trace formula has been assumed.</p>
+<p><strong>Theorem 7.1 (Weil's idèlic explicit formula).</strong> For <span class="math" data-tex="\(h\in C_c^\infty(C_k)\)">\(h\in C_c^\infty(C_k)\)</span>, with smoothness meaning ordinary smoothness at infinity and local constancy at finite places,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\widehat h(0)+\widehat h(1)
+-\sum_{\chi\in\widehat{C_k^1}}\sum_{\rho\ {\rm of}\ \Lambda_\chi}
+\widehat h(\chi,\rho)
+=\sum_v\int&#x27;_{k_v^\times}
+\frac{h(u^{-1})}{|1-u|_v}\,d^*u.} \tag{7.10}
+\]">\[
+\boxed{\widehat h(0)+\widehat h(1)
+-\sum_{\chi\in\widehat{C_k^1}}\sum_{\rho\ {\rm of}\ \Lambda_\chi}
+\widehat h(\chi,\rho)
+=\sum_v\int&#x27;_{k_v^\times}
+\frac{h(u^{-1})}{|1-u|_v}\,d^*u.} \tag{7.10}
+\]</span>
+<p><em>Proof.</em> First take <span class="math" data-tex="\(h(u)=\bar\chi(u)f(|u|)\)">\(h(u)=\bar\chi(u)f(|u|)\)</span>. Orthogonality on <span class="math" data-tex="\(C_k^1\)">\(C_k^1\)</span> makes every Mellin coefficient vanish except the one for <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, which equals <span class="math" data-tex="\(H(s)\)">\(H(s)\)</span>. Pole terms occur only for the trivial character, since our extensions are trivial on the norm splitting. The finite local computations give <span class="math" data-tex="\(P_\chi(f)-\log Q_\chi f(1)\)">\(P_\chi(f)-\log Q_\chi f(1)\)</span>: the sum of the different exponents is <span class="math" data-tex="\(\log|D_k|\)">\(\log|D_k|\)</span>. The infinite computations give minus the last integral in (6.3). Hence (7.10) for this <span class="math" data-tex="\(h\)">\(h\)</span> is precisely Theorem 6.1, with terms rearranged.</p>
+<p>For a general <span class="math" data-tex="\(h\)">\(h\)</span>, expand on the compact group <span class="math" data-tex="\(C_k^1\)">\(C_k^1\)</span>. At the finite places, compact support and local constancy provide an open subgroup on which <span class="math" data-tex="\(h\)">\(h\)</span> is invariant. The remaining compact quotient is a torus times a finite group: its real torus comes from the archimedean units modulo the unit lattice, and the finite group from the fixed-level ray classes. These structural statements are supplied by <em>Idèles and the idèle class group</em>. Repeated integration by parts on the torus shows that the coefficient functions <span class="math" data-tex="\(f_\chi(t)\)">\(f_\chi(t)\)</span>, with all their norm derivatives, decrease faster than every power of the integer frequency of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; their norm supports lie in one compact interval. Repeated norm integration gives the same rapid decrease in <span class="math" data-tex="\(t=\Im s\)">\(t=\Im s\)</span>.</p>
+<p>To check summability against zeros, use (6.4). The finite conductors are bounded at the fixed level, and <span class="math" data-tex="\(B\)">\(B\)</span> grows at most linearly with the torus frequency. Summing the unit-interval count against <span class="math" data-tex="\((1+|t|)^{-N}\)">\((1+|t|)^{-N}\)</span>, with <span class="math" data-tex="\(N&gt;2\)">\(N&gt;2\)</span>, bounds each zero sum by a constant times <span class="math" data-tex="\(1+\log B\)">\(1+\log B\)</span> times the appropriate rapidly decreasing coefficient seminorm. The gamma densities have the same logarithmic bound by Stirling's formula. These bounds are summable over all torus frequencies, so character expansion may be integrated and summed term by term. Only finitely many finite places have nonzero local terms: outside the different and fixed finite level, the unit term is zero, and a nonunit can meet the norm support only when its residue cardinality lies in a fixed bounded interval. The equality for each Fourier component therefore sums to (7.10). ∎</p>
+<p>The formula is independent of the chosen norm splitting: another extension translates the imaginary coordinates of the zeros and the Mellin coefficient together. This is the adelic formula displayed in Connes's <em>An essay on the Riemann Hypothesis</em>, subsection <em>Weil's explicit formulas</em>. Our proof has explained its normalization through explicit local calculations and the Hecke functional equation.</p>
+<h2 id="8-exercises-with-solutions">8. Exercises with solutions</h2>
+<h3 id="1-checking-the-odd-gamma-factor">1. Checking the odd gamma factor</h3>
+<p>Write <span class="math" data-tex="\(A_{q,1}\)">\(A_{q,1}\)</span> explicitly and check that reflecting the completed function does not change the conductor coefficient.</p>
+<p><strong>Solution.</strong> Equations (2.2) and (2.4) give</p>
+<span class="math math-display" data-tex="\[
+A_{q,1}(f)=(\log(q/\pi)-\gamma)f(1)
++\int_0^\infty
+\frac{2e^{-2u}f(1)-e^{-u}(f(e^u)+f^\sharp(e^u))}{1-e^{-2u}}\,du.
+\]">\[
+A_{q,1}(f)=(\log(q/\pi)-\gamma)f(1)
++\int_0^\infty
+\frac{2e^{-2u}f(1)-e^{-u}(f(e^u)+f^\sharp(e^u))}{1-e^{-2u}}\,du.
+\]</span>
+<p>Logarithmically differentiating (1.3) gives <span class="math" data-tex="\(\tfrac12\log(q/\pi)+\tfrac12\psi_\Gamma((s+1)/2)+L&#x27;/L(s,\chi)\)">\(\tfrac12\log(q/\pi)+\tfrac12\psi_\Gamma((s+1)/2)+L&#x27;/L(s,\chi)\)</span>. Differentiating (1.4) introduces a minus sign and <span class="math" data-tex="\(1-s\)">\(1-s\)</span> on the dual side. Reversing that side of the contour introduces the second minus sign. The two half-conductor constants add, giving exactly <span class="math" data-tex="\(\log(q/\pi)f(1)\)">\(\log(q/\pi)f(1)\)</span>; a root number has zero logarithmic derivative.</p>
+<h3 id="2-recovering-the-unsmoothed-character-formula">2. Recovering the unsmoothed character formula</h3>
+<p>Let <span class="math" data-tex="\(x&gt;1\)">\(x&gt;1\)</span>, and use the interval test <span class="math" data-tex="\(f=1_{[1,x]}\)">\(f=1_{[1,x]}\)</span>, with half endpoint values. Recover the odd and even formulas for <span class="math" data-tex="\(\psi_0(x,\chi)\)">\(\psi_0(x,\chi)\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(H(s)=(x^s-1)/s\)">\(H(s)=(x^s-1)/s\)</span>, and <span class="math" data-tex="\(P_\chi(f)=\psi_0(x,\chi)\)">\(P_\chi(f)=\psi_0(x,\chi)\)</span>. Direct evaluation of (2.4) gives</p>
+<span class="math math-display" data-tex="\[
+A_{q,0}(f)=\tfrac12(\log(q/\pi)-\gamma)-\log x-\tfrac12\log(1-x^{-2}),
+\]">\[
+A_{q,0}(f)=\tfrac12(\log(q/\pi)-\gamma)-\log x-\tfrac12\log(1-x^{-2}),
+\]</span>
+<span class="math math-display" data-tex="\[
+A_{q,1}(f)=\tfrac12(\log(q/\pi)-\gamma)-\log2
++\tfrac12\log\frac{x+1}{x-1}.
+\]">\[
+A_{q,1}(f)=\tfrac12(\log(q/\pi)-\gamma)-\log2
++\tfrac12\log\frac{x+1}{x-1}.
+\]</span>
+<p>For example, in the even case the integrand below <span class="math" data-tex="\(u=\log x\)">\(u=\log x\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>; its remaining tail is <span class="math" data-tex="\(-\tfrac12\log(1-x^{-2})\)">\(-\tfrac12\log(1-x^{-2})\)</span>. This already gives <span class="math" data-tex="\(\psi_0=-\sum_\rho(x^\rho-1)/\rho+A_{q,a}\)">\(\psi_0=-\sum_\rho(x^\rho-1)/\rho+A_{q,a}\)</span>, with the symmetric sum understood as in Theorem 2.1.</p>
+<p>To put the constant in the customary local form, define <span class="math" data-tex="\(c_\chi\)">\(c_\chi\)</span> by (4.5), without imposing GRH. The exact result is</p>
+<span class="math math-display" data-tex="\[
+\boxed{\psi_0(x,\chi)=
+-\sum_\rho\frac{x^\rho}{\rho}-c_\chi
+-(1-a)\log x+
+\begin{cases}
+-\tfrac12\log(1-x^{-2}),&amp;a=0,\\
+\tfrac12\log\frac{x+1}{x-1},&amp;a=1.
+\end{cases}} \tag{8.1}
+\]">\[
+\boxed{\psi_0(x,\chi)=
+-\sum_\rho\frac{x^\rho}{\rho}-c_\chi
+-(1-a)\log x+
+\begin{cases}
+-\tfrac12\log(1-x^{-2}),&amp;a=0,\\
+\tfrac12\log\frac{x+1}{x-1},&amp;a=1.
+\end{cases}} \tag{8.1}
+\]</span>
+<p>Here is a contour verification of the constant, which also avoids assigning a value to a separated zero sum without justification. Invert <span class="math" data-tex="\(-L&#x27;/L(s)\,x^s/s\)">\(-L&#x27;/L(s)\,x^s/s\)</span> on <span class="math" data-tex="\(\Re s=2\)">\(\Re s=2\)</span>. The truncated inverse Mellin integral for <span class="math" data-tex="\(y=x/n\)">\(y=x/n\)</span> tends to <span class="math" data-tex="\(1,0,\tfrac12\)">\(1,0,\tfrac12\)</span> according as <span class="math" data-tex="\(y&gt;1,y&lt;1,y=1\)">\(y&gt;1,y&lt;1,y=1\)</span>. Its error away from (1) is bounded by <span class="math" data-tex="\(C y^2\min(1,(T|\log y|)^{-1})\)">\(C y^2\min(1,(T|\log y|)^{-1})\)</span>, by one integration by parts. The summable coefficients <span class="math" data-tex="\(\Lambda(n)n^{-2}\)">\(\Lambda(n)n^{-2}\)</span>, separating finitely many <span class="math" data-tex="\(n\)">\(n\)</span> near the fixed <span class="math" data-tex="\(x\)">\(x\)</span>, justify inversion with the half weight at equality.</p>
+<p>Shift the rectangle to <span class="math" data-tex="\(-U\)">\(-U\)</span>, with <span class="math" data-tex="\(U\to\infty\)">\(U\to\infty\)</span> avoiding the trivial zeros by distance <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and use the good heights of Section 1. On the bounded central strip the horizontal integrals are <span class="math" data-tex="\(O_x(\log^2(qT)/T)\)">\(O_x(\log^2(qT)/T)\)</span>; farther left, the functional equation and its gamma derivatives give <span class="math" data-tex="\(O(\log(q(|s|+2)))\)">\(O(\log(q(|s|+2)))\)</span>, and the factor <span class="math" data-tex="\(x^{\Re s}\)">\(x^{\Re s}\)</span> is integrable in that direction. Taking <span class="math" data-tex="\(U\asymp T\)">\(U\asymp T\)</span>, the left integral is <span class="math" data-tex="\(O_x(x^{-U}\log(qT))\)">\(O_x(x^{-U}\log(qT))\)</span>, and the remaining horizontal pieces also tend to zero. The residues at nontrivial zeros are <span class="math" data-tex="\(-x^\rho/\rho\)">\(-x^\rho/\rho\)</span>. At (0), (4.5) gives <span class="math" data-tex="\(-c_\chi\)">\(-c_\chi\)</span> for odd parity and <span class="math" data-tex="\(-\log x-c_\chi\)">\(-\log x-c_\chi\)</span> for even parity. At <span class="math" data-tex="\(-a-2j&lt;0\)">\(-a-2j&lt;0\)</span>, the residue is <span class="math" data-tex="\(x^{-a-2j}/(a+2j)\)">\(x^{-a-2j}/(a+2j)\)</span>. Their geometric logarithm sums are exactly the last line of (8.1). Arbitrary symmetric heights follow from (1.6) as before. This proves (8.1) and identifies the constants in the interval-test version.</p>
+<h3 id="3-averaging-and-the-inverse-class">3. Averaging and the inverse class</h3>
+<p>Prove the progression identity and write the missing-Euler-factor correction for the principal character modulo <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Solution.</strong> The two orthogonality calculations in (3.3) prove the progression identity term by term; all prime series are absolutely convergent under (1.2). Substitute <span class="math" data-tex="\(P_\chi=P_{\chi^*}-E_\chi\)">\(P_\chi=P_{\chi^*}-E_\chi\)</span> and Theorem 2.1, adding the pole term for the single conductor-(1) character. This gives exactly (3.4). For the principal character, <span class="math" data-tex="\(\chi^*=1\)">\(\chi^*=1\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+E_{\chi_0}(f)=\sum_{p\mid q}\log p\sum_{m\geq1}
+\bigl(f(p^m)+f^\sharp(p^m)\bigr).
+\]">\[
+E_{\chi_0}(f)=\sum_{p\mid q}\log p\sum_{m\geq1}
+\bigl(f(p^m)+f^\sharp(p^m)\bigr).
+\]</span>
+<p>Its archimedean term is <span class="math" data-tex="\(A_{1,0}\)">\(A_{1,0}\)</span>, not <span class="math" data-tex="\(A_{q,0}\)">\(A_{q,0}\)</span>. Formula (3.5), obtained by the two half-line tests, puts both prime terms in the same desired class.</p>
+<h3 id="4-least-prime-with-higher-powers-excluded">4. Least prime, with higher powers excluded</h3>
+<p>Prove (4.8) from the smoothed explicit formula, explaining why the unsmoothed squared-logarithm error is insufficient for this argument.</p>
+<p><strong>Solution.</strong> The kernel <span class="math" data-tex="\(1/(s(s+1))\)">\(1/(s(s+1))\)</span> makes the zero weights summable, so (4.7) gives error <span class="math" data-tex="\(C\sqrt X\log(q+2)\)">\(C\sqrt X\log(q+2)\)</span>. Averaging gives (4.9). The binomial proof of <span class="math" data-tex="\(\psi(y)\ll y\)">\(\psi(y)\ll y\)</span> and (4.10) bound all higher powers by <span class="math" data-tex="\(C\sqrt X\)">\(C\sqrt X\)</span>. With <span class="math" data-tex="\(X=K\varphi(q)^2\log^2(q+2)\)">\(X=K\varphi(q)^2\log^2(q+2)\)</span>, the main term grows as <span class="math" data-tex="\(K\)">\(K\)</span>, both square-root errors as <span class="math" data-tex="\(\sqrt K\)">\(\sqrt K\)</span>, and the residual local terms as <span class="math" data-tex="\(\log K\)">\(\log K\)</span>. One fixed large <span class="math" data-tex="\(K\)">\(K\)</span> forces a prime contribution. In contrast, an error <span class="math" data-tex="\(\sqrt X\log^2(qX)\)">\(\sqrt X\log^2(qX)\)</span> would require <span class="math" data-tex="\(\sqrt X\gg\varphi(q)\log^2(qX)\)">\(\sqrt X\gg\varphi(q)\log^2(qX)\)</span>, giving a fourth power of the logarithm by this direct comparison. Smoothing is the step that removes the extra logarithm.</p>
+<h2 id="9-proof-dependencies-and-references">9. Proof dependencies and references</h2>
+<p>The new explicit formulas, local principal values, progression identity and least-prime deduction are proved above. Their internal analytic prerequisites are the completed Dirichlet and Hecke functional equations, their growth and zero-count inputs, and the structure and additive normalization of the idèle class group. The exact existing planned providers are identified in Sections 1, 6 and 7; their public proof versions are not asserted to be complete here. A density theorem for Chebyshev bias is not asserted or used.</p>
+<p>The sources consulted for mathematical comparison and credit are:</p>
+<ul>
+<li>A. Weil, <em>Sur les « formules explicites » de la théorie des nombres premiers</em> (1952), beginning of the paper for Hecke characters and gamma factors, and formula (11) for the general explicit formula.</li>
+<li>A. Connes, <em>An essay on the Riemann Hypothesis</em> (2015/2016), subsections <em>Adeles and global fields</em> and <em>Weil's explicit formulas</em>, for the idèlic form and its additive-character normalization.</li>
+<li>The preceding lesson, <em>The explicit formula with general test functions</em>, for Mellin inversion at jumps and the symmetric gamma integral.</li>
+</ul>
+<p>All exposition and proofs in this lesson are independently written. The cited works receive mathematical credit; their expression and licences are not incorporated into this CC0 text.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-01.html">← The explicit formula with general test functions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-03.html">Guinand&#x27;s formula →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

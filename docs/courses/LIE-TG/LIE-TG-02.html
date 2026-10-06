@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The fundamental differential equations · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-fundamental-differential-equations">The fundamental differential equations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>A small change in a group parameter moves every point by the same infinitesimal transformation, evaluated at that point's current position. This is stronger than merely saying that each transformation is differentiable. It separates the dependence on parameters from the dependence on position and is the first step from a transformation group to its Lie algebra.</p>
+<p>We use the definitions and finite-jet parameter test in <a href="LIE-TG-01.html">Transformation groups and their parameters</a>. We assume analytic differentiation and the inverse-function theorem. Basic references are [Lie–Engel I], [Merker], and [Kunzinger]. Throughout, composition is the right-action convention</p>
+<span class="math math-display" data-tex="$$
+f(f(x,a),b)=f(x,m(a,b)).
+\tag{1.1}
+$$">$$
+f(f(x,a),b)=f(x,m(a,b)).
+\tag{1.1}
+$$</span>
+<p>The identity has parameter <span class="math" data-tex="$0$">$0$</span> in the coordinates used in the general proof. A concrete example may have another identity parameter.</p>
+<h2 id="1-a-tangent-vector-at-the-identity-becomes-a-vector-field">1. A tangent vector at the identity becomes a vector field</h2>
+<p>Let <span class="math" data-tex="$a=(a_1,\ldots,a_r)$">$a=(a_1,\ldots,a_r)$</span> be coordinates on the parameter group near its identity. Define</p>
+<span class="math math-display" data-tex="$$
+\xi_j^i(x)=\left.\frac{\partial f_i(x,b)}{\partial b_j}\right|_{b=0},
+\qquad
+X_j=\sum_{i=1}^n\xi_j^i(x)\partial_{x_i}.
+\tag{1.2}
+$$">$$
+\xi_j^i(x)=\left.\frac{\partial f_i(x,b)}{\partial b_j}\right|_{b=0},
+\qquad
+X_j=\sum_{i=1}^n\xi_j^i(x)\partial_{x_i}.
+\tag{1.2}
+$$</span>
+<p>Thus a parameter curve <span class="math" data-tex="$b(t)$">$b(t)$</span> through zero with initial velocity <span class="math" data-tex="$v$">$v$</span> moves <span class="math" data-tex="$x$">$x$</span> with initial velocity <span class="math" data-tex="$\sum_jv_jX_j(x)$">$\sum_jv_jX_j(x)$</span>. A tangent vector at the identity defines a vector field on the whole coordinate neighbourhood of <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>The fields can be pointwise dependent. Three rotation fields on <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span> span only a two-dimensional tangent plane away from zero. Essentiality asks whether a constant combination is the zero field on an open set; it does not ask whether their values at one point are independent.</p>
+<h2 id="2-moving-the-parameter-origin">2. Moving the parameter origin</h2>
+<p>Define a parameter-space vector field <span class="math" data-tex="$B_j$">$B_j$</span> by</p>
+<span class="math math-display" data-tex="$$
+B_j(a)=\left.\frac{\partial m(a,b)}{\partial b_j}\right|_{b=0}
+=\sum_{k=1}^r B^k_j(a)\partial_{a_k}.
+\tag{2.1}
+$$">$$
+B_j(a)=\left.\frac{\partial m(a,b)}{\partial b_j}\right|_{b=0}
+=\sum_{k=1}^r B^k_j(a)\partial_{a_k}.
+\tag{2.1}
+$$</span>
+<p>For fixed <span class="math" data-tex="$a$">$a$</span>, multiplication <span class="math" data-tex="$b\mapsto m(a,b)$">$b\mapsto m(a,b)$</span> is locally invertible: its inverse is multiplication by <span class="math" data-tex="$\iota(a)$">$\iota(a)$</span> on the same side, with domains restricted as needed. Therefore the matrix <span class="math" data-tex="$B(a)=(B^k_j(a))_{k,j}$">$B(a)=(B^k_j(a))_{k,j}$</span> is invertible. At the identity it is the identity matrix.</p>
+<p><strong>Theorem 2.1 (first fundamental theorem).</strong> An analytic local action satisfies</p>
+<span class="math math-display" data-tex="$$
+\frac{\partial f_i}{\partial a_k}(x,a)
+=\sum_{j=1}^r\psi_{kj}(a)\xi_j^i(f(x,a)),
+\qquad
+\psi_{kj}(a)=(B(a)^{-1})^j_k.
+\tag{2.2}
+$$">$$
+\frac{\partial f_i}{\partial a_k}(x,a)
+=\sum_{j=1}^r\psi_{kj}(a)\xi_j^i(f(x,a)),
+\qquad
+\psi_{kj}(a)=(B(a)^{-1})^j_k.
+\tag{2.2}
+$$</span>
+<p>In particular, <span class="math" data-tex="$\psi$">$\psi$</span> is analytic and invertible. Its rows are indexed by the differentiating parameter <span class="math" data-tex="$a_k$">$a_k$</span>; its columns are indexed by the field <span class="math" data-tex="$X_j$">$X_j$</span>.</p>
+<p><strong>Proof.</strong> Differentiate (1.1) with respect to <span class="math" data-tex="$b_j$">$b_j$</span> at <span class="math" data-tex="$b=0$">$b=0$</span>. The left side gives <span class="math" data-tex="$\xi_j^i(f(x,a))$">$\xi_j^i(f(x,a))$</span>. The right side gives</p>
+<span class="math math-display" data-tex="$$
+\sum_k\frac{\partial f_i}{\partial a_k}(x,a)B^k_j(a).
+\tag{2.3}
+$$">$$
+\sum_k\frac{\partial f_i}{\partial a_k}(x,a)B^k_j(a).
+\tag{2.3}
+$$</span>
+<p>For each <span class="math" data-tex="$i$">$i$</span>, solve this matrix equation by multiplying by <span class="math" data-tex="$B^{-1}$">$B^{-1}$</span>. The result is (2.2). Analyticity and invertibility follow from (2.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Equation (2.3) has a geometric meaning. The derivative of the orbit map <span class="math" data-tex="$a\mapsto f(x,a)$">$a\mapsto f(x,a)$</span> carries <span class="math" data-tex="$B_j(a)$">$B_j(a)$</span> to <span class="math" data-tex="$X_j(f(x,a))$">$X_j(f(x,a))$</span>. Every parameter-space velocity can be expressed in the frame <span class="math" data-tex="$B_1,\ldots,B_r$">$B_1,\ldots,B_r$</span>, which explains why the coefficients in (2.2) depend only on <span class="math" data-tex="$a$">$a$</span>.</p>
+<h2 id="3-which-tangent-directions-act-trivially">3. Which tangent directions act trivially?</h2>
+<p><strong>Theorem 3.1.</strong> The fields <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span> are independent over <span class="math" data-tex="$\mathbb K$">$\mathbb K$</span> if and only if the transformation family has <span class="math" data-tex="$r$">$r$</span> essential local parameters. This is independence with constant coefficients.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="$\sum_jv_jX_j=0$">$\sum_jv_jX_j=0$</span> for a nonzero constant vector <span class="math" data-tex="$v$">$v$</span>. Set <span class="math" data-tex="$\chi(a)=\sum_jv_jB_j(a)$">$\chi(a)=\sum_jv_jB_j(a)$</span>. It is a nonzero analytic parameter-space vector field, since the <span class="math" data-tex="$B_j$">$B_j$</span> form a frame. Equation (2.3) gives <span class="math" data-tex="$\chi(f_i(x,a))=0$">$\chi(f_i(x,a))=0$</span> for every <span class="math" data-tex="$i$">$i$</span> and every <span class="math" data-tex="$x$">$x$</span>. The infinitesimal parameter test in the preceding lesson shows that the family can be reduced to fewer parameters on a regular neighbourhood.</p>
+<p>Conversely, suppose the family has fewer than <span class="math" data-tex="$r$">$r$</span> essential parameters. That test supplies a nonzero analytic field <span class="math" data-tex="$\chi=\sum_k\chi_k(a)\partial_{a_k}$">$\chi=\sum_k\chi_k(a)\partial_{a_k}$</span> killing <span class="math" data-tex="$f$">$f$</span>. Write <span class="math" data-tex="$\chi=\sum_jv_j(a)B_j$">$\chi=\sum_jv_j(a)B_j$</span>. At a parameter value <span class="math" data-tex="$a_*$">$a_*$</span> where <span class="math" data-tex="$\chi\ne0$">$\chi\ne0$</span>, the constant numbers <span class="math" data-tex="$v_j(a_*)$">$v_j(a_*)$</span> are not all zero. Equation (2.3) implies</p>
+<span class="math math-display" data-tex="$$
+\sum_jv_j(a_*)X_j(f(x,a_*))=0
+$$">$$
+\sum_jv_j(a_*)X_j(f(x,a_*))=0
+$$</span>
+<p>on an open set. Since <span class="math" data-tex="$f(\cdot,a_*)$">$f(\cdot,a_*)$</span> is a local diffeomorphism, this is a constant linear dependence of the <span class="math" data-tex="$X_j$">$X_j$</span> on its open image. Analytic continuation extends it throughout the connected coordinate neighbourhood where these fields are defined. Hence the fields are dependent. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>There is also a direct rank interpretation. At any parameter value, (2.2) identifies parameter derivatives of the transformation germ with an invertible change of basis of the fields <span class="math" data-tex="$X_j$">$X_j$</span>, followed by evaluation at <span class="math" data-tex="$f(x,a)$">$f(x,a)$</span>. Thus the finite-jet rank of a local action is constant near its identity. The critical-parameter phenomenon of <span class="math" data-tex="$x\mapsto x+ab$">$x\mapsto x+ab$</span> disappears once the effective local group has been given regular coordinates.</p>
+<p>An action is <strong>infinitesimally effective</strong> if the linear map</p>
+<span class="math math-display" data-tex="$$
+T_eG\longrightarrow\{\text{analytic vector fields on }M\},
+\qquad v\longmapsto X_v,
+$$">$$
+T_eG\longrightarrow\{\text{analytic vector fields on }M\},
+\qquad v\longmapsto X_v,
+$$</span>
+<p>is injective. Theorem 3.1 identifies this with essentiality of the parameters. This is a local assertion; a global action can still have a discrete kernel.</p>
+<h2 id="4-the-generator-space-is-intrinsic">4. The generator space is intrinsic</h2>
+<p>Let <span class="math" data-tex="$u$">$u$</span> be other analytic parameter coordinates, with <span class="math" data-tex="$a=a(u)$">$a=a(u)$</span> and identity <span class="math" data-tex="$u=0$">$u=0$</span>. The new generators are</p>
+<span class="math math-display" data-tex="$$
+Y_\ell=\sum_j\left.\frac{\partial a_j}{\partial u_\ell}\right|_{u=0}X_j.
+\tag{4.1}
+$$">$$
+Y_\ell=\sum_j\left.\frac{\partial a_j}{\partial u_\ell}\right|_{u=0}X_j.
+\tag{4.1}
+$$</span>
+<p>The coefficient matrix is constant and invertible. Therefore the vector space</p>
+<span class="math math-display" data-tex="$$
+\mathfrak g_M=\operatorname{span}_{\mathbb K}\{X_1,\ldots,X_r\}
+$$">$$
+\mathfrak g_M=\operatorname{span}_{\mathbb K}\{X_1,\ldots,X_r\}
+$$</span>
+<p>does not depend on parameter coordinates.</p>
+<p>If <span class="math" data-tex="$y=H(x)$">$y=H(x)$</span> is an analytic change of coordinates on <span class="math" data-tex="$M$">$M$</span>, its transformed action is <span class="math" data-tex="$H\circ T_a\circ H^{-1}$">$H\circ T_a\circ H^{-1}$</span>. Differentiating at the identity gives</p>
+<span class="math math-display" data-tex="$$
+\widetilde X_j(H(x))=DH(x)X_j(x),
+\tag{4.2}
+$$">$$
+\widetilde X_j(H(x))=DH(x)X_j(x),
+\tag{4.2}
+$$</span>
+<p>which is exactly the pushforward of a vector field. Equations (4.1) and (4.2) prove the invariance of the generator space and specify how its representatives change.</p>
+<p>For a check on the full differential equations, parameter reparametrization changes <span class="math" data-tex="$\partial_{a_k}$">$\partial_{a_k}$</span> by the parameter Jacobian, while (4.1) changes the generator basis by the Jacobian <strong>at the identity</strong>. These two matrices occur at different points and must not be conflated. Applying both changes to (2.2) gives the same equation in the new coordinates.</p>
+<h2 id="5-computations">5. Computations</h2>
+<p><strong>Example 5.1 (the affine line).</strong> For <span class="math" data-tex="$x&#x27;=\alpha x+\beta$">$x&#x27;=\alpha x+\beta$</span>, the identity is <span class="math" data-tex="$(1,0)$">$(1,0)$</span>. Differentiating there gives</p>
+<span class="math math-display" data-tex="$$
+X_1=x\partial_x,\qquad X_2=\partial_x.
+$$">$$
+X_1=x\partial_x,\qquad X_2=\partial_x.
+$$</span>
+<p>The product from the preceding lesson gives</p>
+<span class="math math-display" data-tex="$$
+B(\alpha,\beta)=\begin{pmatrix}\alpha&amp;0\\\beta&amp;1\end{pmatrix},
+\qquad
+\psi(\alpha,\beta)=\begin{pmatrix}\alpha^{-1}&amp;-\beta/\alpha\\0&amp;1\end{pmatrix}.
+$$">$$
+B(\alpha,\beta)=\begin{pmatrix}\alpha&amp;0\\\beta&amp;1\end{pmatrix},
+\qquad
+\psi(\alpha,\beta)=\begin{pmatrix}\alpha^{-1}&amp;-\beta/\alpha\\0&amp;1\end{pmatrix}.
+$$</span>
+<p>Indeed,</p>
+<span class="math math-display" data-tex="$$
+\partial_\alpha x&#x27;=x=\alpha^{-1}x&#x27;-\beta/\alpha,
+\qquad \partial_\beta x&#x27;=1.
+$$">$$
+\partial_\alpha x&#x27;=x=\alpha^{-1}x&#x27;-\beta/\alpha,
+\qquad \partial_\beta x&#x27;=1.
+$$</span>
+<p>This checks the index order in (2.2).</p>
+<p><strong>Example 5.2 (the projective line).</strong> Use <span class="math" data-tex="$x&#x27;=(\alpha x+\beta)/(\gamma x+1)$">$x&#x27;=(\alpha x+\beta)/(\gamma x+1)$</span> near the identity. The parameter derivatives there give <span class="math" data-tex="$x\partial_x$">$x\partial_x$</span>, <span class="math" data-tex="$\partial_x$">$\partial_x$</span>, and <span class="math" data-tex="$-x^2\partial_x$">$-x^2\partial_x$</span>. Replacing the last parameter by its negative gives the basis</p>
+<span class="math math-display" data-tex="$$
+\partial_x,\quad x\partial_x,\quad x^2\partial_x.
+$$">$$
+\partial_x,\quad x\partial_x,\quad x^2\partial_x.
+$$</span>
+<p>These three fields are independent over constants on every open interval or disc, though their values are always collinear at each point. The family therefore has three essential parameters.</p>
+<p><strong>Example 5.3 (three-dimensional rotations).</strong> A skew matrix <span class="math" data-tex="$A$">$A$</span> gives a curve <span class="math" data-tex="$R(t)=\exp(tA)$">$R(t)=\exp(tA)$</span> through the identity, with velocity field <span class="math" data-tex="$X_A(x)=Ax$">$X_A(x)=Ax$</span>. Rotations about the three coordinate axes give</p>
+<span class="math math-display" data-tex="$$
+X_1=y\partial_z-z\partial_y,\quad
+X_2=z\partial_x-x\partial_z,\quad
+X_3=x\partial_y-y\partial_x.
+$$">$$
+X_1=y\partial_z-z\partial_y,\quad
+X_2=z\partial_x-x\partial_z,\quad
+X_3=x\partial_y-y\partial_x.
+$$</span>
+<p>If <span class="math" data-tex="$c_1X_1+c_2X_2+c_3X_3=0$">$c_1X_1+c_2X_2+c_3X_3=0$</span> as a field, its skew matrix is zero, so each <span class="math" data-tex="$c_i=0$">$c_i=0$</span>. At a nonzero point their values span the plane perpendicular to <span class="math" data-tex="$x$">$x$</span>. At zero they all vanish. Essential parameter dimension is three in all these cases; orbit dimension is a different quantity.</p>
+<p><strong>Example 5.4 (fundamental form without a group).</strong> For <span class="math" data-tex="$0&lt;|a|&lt;1$">$0&lt;|a|&lt;1$</span>, let <span class="math" data-tex="$x&#x27;=ax$">$x&#x27;=ax$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+\partial_a x&#x27;=a^{-1}x&#x27;,\qquad X=x\partial_x.
+$$">$$
+\partial_a x&#x27;=a^{-1}x&#x27;,\qquad X=x\partial_x.
+$$</span>
+<p>This has the separated form (2.2), with an invertible coefficient <span class="math" data-tex="$1/a$">$1/a$</span>, but its given parameter domain has no identity. Fundamental-form equations alone do not imply that the given family contains an identity. The converse theorem later in the course must include an identity normalization or replace the family by its relative transformations.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 1 (introductory).</strong> Use parameters <span class="math" data-tex="$s=\log\alpha$">$s=\log\alpha$</span>, <span class="math" data-tex="$\beta$">$\beta$</span> in the real identity component of the affine group. Compute the generators and <span class="math" data-tex="$\psi$">$\psi$</span>, and compare with Example 5.1.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Choose three one-parameter matrix curves that yield <span class="math" data-tex="$\partial_x$">$\partial_x$</span>, <span class="math" data-tex="$x\partial_x$">$x\partial_x$</span>, and <span class="math" data-tex="$x^2\partial_x$">$x^2\partial_x$</span> in the projective line action. Compute their finite transformations.</p>
+<p><strong>Exercise 3 (intermediate).</strong> For <span class="math" data-tex="$1\le i&lt;j\le3$">$1\le i&lt;j\le3$</span>, derive <span class="math" data-tex="$x_i\partial_{x_j}-x_j\partial_{x_i}$">$x_i\partial_{x_j}-x_j\partial_{x_i}$</span> by differentiating a coordinate-plane rotation. Determine the kernel of their evaluation map at <span class="math" data-tex="$(1,0,0)$">$(1,0,0)$</span>.</p>
+<p><strong>Exercise 4 (intermediate).</strong> Let <span class="math" data-tex="$a=C u+O(|u|^2)$">$a=C u+O(|u|^2)$</span>, where <span class="math" data-tex="$C$">$C$</span> is invertible. Prove that the new generators are the columns of <span class="math" data-tex="$C$">$C$</span> applied to the old basis. Explain why nonlinear terms do not affect this conclusion.</p>
+<p><strong>Exercise 5 (advanced).</strong> Complete the converse direction of Theorem 3.1 without assuming that an inessential parameter direction is nonzero at the identity. Explain why choosing a regular value <span class="math" data-tex="$a_*$">$a_*$</span> is legitimate.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> The transformation is <span class="math" data-tex="$x&#x27;=e^s x+\beta$">$x&#x27;=e^s x+\beta$</span>, with identity <span class="math" data-tex="$(0,0)$">$(0,0)$</span>. The generators remain <span class="math" data-tex="$x\partial_x$">$x\partial_x$</span> and <span class="math" data-tex="$\partial_x$">$\partial_x$</span>. Its derivatives are <span class="math" data-tex="$\partial_sx&#x27;=x&#x27;-\beta$">$\partial_sx&#x27;=x&#x27;-\beta$</span> and <span class="math" data-tex="$\partial_\beta x&#x27;=1$">$\partial_\beta x&#x27;=1$</span>, so</p>
+<span class="math math-display" data-tex="$$
+\psi(s,\beta)=\begin{pmatrix}1&amp;-\beta\\0&amp;1\end{pmatrix}.
+$$">$$
+\psi(s,\beta)=\begin{pmatrix}1&amp;-\beta\\0&amp;1\end{pmatrix}.
+$$</span>
+<p>The first row of Example 5.1 is multiplied by <span class="math" data-tex="$\partial\alpha/\partial s=\alpha$">$\partial\alpha/\partial s=\alpha$</span>, exactly as the chain rule requires.</p>
+<p><strong>Solution 2.</strong> The curves</p>
+<span class="math math-display" data-tex="$$
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix},\qquad
+\begin{pmatrix}e^t&amp;0\\0&amp;1\end{pmatrix},\qquad
+\begin{pmatrix}1&amp;0\\-t&amp;1\end{pmatrix}
+$$">$$
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix},\qquad
+\begin{pmatrix}e^t&amp;0\\0&amp;1\end{pmatrix},\qquad
+\begin{pmatrix}1&amp;0\\-t&amp;1\end{pmatrix}
+$$</span>
+<p>give respectively <span class="math" data-tex="$x+t$">$x+t$</span>, <span class="math" data-tex="$e^t x$">$e^t x$</span>, and <span class="math" data-tex="$x/(1-tx)$">$x/(1-tx)$</span>. Differentiation at zero gives the stated fields. The last transformation is defined only where <span class="math" data-tex="$1-tx\ne0$">$1-tx\ne0$</span>; for a local action take <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$x$">$x$</span> in a suitable product neighbourhood.</p>
+<p><strong>Solution 3.</strong> Rotate the <span class="math" data-tex="$(x_i,x_j)$">$(x_i,x_j)$</span> coordinates by <span class="math" data-tex="$\bigl(\begin{smallmatrix}\cos t&amp;-\sin t\\\sin t&amp;\cos t\end{smallmatrix}\bigr)$">$\bigl(\begin{smallmatrix}\cos t&amp;-\sin t\\\sin t&amp;\cos t\end{smallmatrix}\bigr)$</span>. The velocities are <span class="math" data-tex="$\dot x_i=-x_j$">$\dot x_i=-x_j$</span>, <span class="math" data-tex="$\dot x_j=x_i$">$\dot x_j=x_i$</span>, giving the stated field. At <span class="math" data-tex="$(1,0,0)$">$(1,0,0)$</span> the fields for pairs <span class="math" data-tex="$(1,2)$">$(1,2)$</span> and <span class="math" data-tex="$(1,3)$">$(1,3)$</span> give <span class="math" data-tex="$\partial_{x_2}$">$\partial_{x_2}$</span> and <span class="math" data-tex="$\partial_{x_3}$">$\partial_{x_3}$</span>; the field for <span class="math" data-tex="$(2,3)$">$(2,3)$</span> gives zero. The evaluation kernel is its one-dimensional span, the infinitesimal rotation about the first axis.</p>
+<p><strong>Solution 4.</strong> Differentiate <span class="math" data-tex="$f(x,a(u))$">$f(x,a(u))$</span> at <span class="math" data-tex="$u=0$">$u=0$</span>. The chain rule gives <span class="math" data-tex="$Y_\ell=\sum_jC_{j\ell}X_j$">$Y_\ell=\sum_jC_{j\ell}X_j$</span>. Terms of order two or higher have zero derivative at zero. Since <span class="math" data-tex="$C$">$C$</span> is invertible, this is a change of basis, proving equality of the generator spans.</p>
+<p><strong>Solution 5.</strong> Inessentiality gives an analytic field <span class="math" data-tex="$\chi$">$\chi$</span> killing <span class="math" data-tex="$f$">$f$</span> on a regular parameter neighbourhood by the finite-jet reduction theorem. It may vanish at the identity; choose any <span class="math" data-tex="$a_*$">$a_*$</span> at which it does not vanish. Since <span class="math" data-tex="$B(a_*)$">$B(a_*)$</span> is invertible, the numbers <span class="math" data-tex="$v_j(a_*)$">$v_j(a_*)$</span> in <span class="math" data-tex="$\chi(a_*)=\sum_jv_j(a_*)B_j(a_*)$">$\chi(a_*)=\sum_jv_j(a_*)B_j(a_*)$</span> are not all zero. Equation (2.3) gives a constant combination of <span class="math" data-tex="$X_j$">$X_j$</span> vanishing on the open image of <span class="math" data-tex="$f(\cdot,a_*)$">$f(\cdot,a_*)$</span>. Analytic continuation gives the same identity near the original base point. This is the required constant dependence. The proof uses no assumption about <span class="math" data-tex="$\chi(0)$">$\chi(0)$</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The converse construction of a local group from bracket-closed fields is proved in <a href="LIE-TG-05.html">The second fundamental theorem and the group of parameters</a>. The convergence and existence assertions for analytic flows are treated in <a href="LIE-TG-03.html">One-parameter groups</a>. Neither converse is needed to derive (2.2).</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Michael Kunzinger, <em>Lie Transformation Groups: An Introduction to Symmetry Group Analysis of Differential Equations</em>, 2015, corrected December 2024, Section 3.1. <a href="https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf">Author's text</a>.</li>
+<li>Sophus Lie, with Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume I, 1888, Chapter 2, first fundamental theorem.</li>
+<li>Joël Merker, <em>Theory of Transformation Groups, by S. Lie and F. Engel (Vol. I, 1888): Modern Presentation and English Translation</em>, 2010, chapter on fundamental differential equations. <a href="https://arxiv.org/abs/1003.3202">Author's preprint</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-01.html">← Transformation groups and their parameters</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-03.html">One-parameter groups →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

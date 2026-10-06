@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Weak equations and classical functions</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="weak-equations-and-classical-functions">Weak equations and classical functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Distributional differentiation always exists, but its result need not be an ordinary function. A jump contributes a point mass. In the other direction, a differential equation with a continuous right side can force a distribution to become a classical function. The distinction depends on the equation and its coefficients.</p>
+<p>We use <a href="referenced-prerequisite-statements.html#reference-3d82b1c92a8f">Local data and compatible products</a> for restriction, derivative signs and the product rule, and <a href="tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a> for separated variables. Integration, smooth cutoffs and elementary finite-dimensional linear algebra are prerequisites. The distribution perspective is [Dyatlov 2026], Chapter 3. For systems we use the proved noncommuting matrix transport in <a href="elliptic-hadamard-parametrices.html#AN03-EHP-006">Building a local inverse from radial singularities, “Matrix transport and the order of multiplication”</a>, with an explicit specialization below.</p>
+<h2 id="a-zero-derivative-determines-a-constant">A zero derivative determines a constant</h2>
+<p><strong>Theorem 1.1 (distributional constants).</strong> If <span class="math" data-tex="\(I\subset\mathbb R\)">\(I\subset\mathbb R\)</span> is a nonempty open interval and <span class="math" data-tex="\(u\in\mathcal D&#x27;(I)\)">\(u\in\mathcal D&#x27;(I)\)</span> satisfies <span class="math" data-tex="\(u&#x27;=0\)">\(u&#x27;=0\)</span>, there is a unique scalar <span class="math" data-tex="\(c\)">\(c\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=c\int_I\phi(t)\,dt.
+\tag{1.1}
+\]">\[
+u(\phi)=c\int_I\phi(t)\,dt.
+\tag{1.1}
+\]</span>
+<p>The interval may be unbounded. On a disconnected open set the constant can differ between its interval components.</p>
+<p><strong>Proof.</strong> A test <span class="math" data-tex="\(\psi\in C_c^\infty(I)\)">\(\psi\in C_c^\infty(I)\)</span> with integral zero is the derivative of a test in the same interval. Extend it by zero and put</p>
+<span class="math math-display" data-tex="\[
+\Phi(t)=\int_{-\infty}^t\psi(s)\,ds.
+\]">\[
+\Phi(t)=\int_{-\infty}^t\psi(s)\,ds.
+\]</span>
+<p>It is zero to the left of its support and, because the integral is zero, also zero to its right. The interval hull of the compact support lies compactly inside <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(\Phi\in C_c^\infty(I)\)">\(\Phi\in C_c^\infty(I)\)</span>. Hence <span class="math" data-tex="\(u(\psi)=u(\Phi&#x27;)=-u&#x27;(\Phi)=0\)">\(u(\psi)=u(\Phi&#x27;)=-u&#x27;(\Phi)=0\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(\eta\in C_c^\infty(I)\)">\(\eta\in C_c^\infty(I)\)</span> with integral one. The test <span class="math" data-tex="\(\phi-(\int\phi)\eta\)">\(\phi-(\int\phi)\eta\)</span> has integral zero, so <span class="math" data-tex="\(u(\phi)=u(\eta)\int\phi\)">\(u(\phi)=u(\eta)\int\phi\)</span>. Take <span class="math" data-tex="\(c=u(\eta)\)">\(c=u(\eta)\)</span>. Its uniqueness follows by testing on <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Restriction proves the componentwise statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2 (continuous right side).</strong> If <span class="math" data-tex="\(u\in\mathcal D&#x27;(I)\)">\(u\in\mathcal D&#x27;(I)\)</span> and <span class="math" data-tex="\(u&#x27;=f\)">\(u&#x27;=f\)</span> with <span class="math" data-tex="\(f\in C(I)\)">\(f\in C(I)\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is represented by a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function, and its classical derivative is <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(t_0\in I\)">\(t_0\in I\)</span>. The function <span class="math" data-tex="\(F(t)=\int_{t_0}^t f(s)\,ds\)">\(F(t)=\int_{t_0}^t f(s)\,ds\)</span> is <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, and integration by parts shows its distributional derivative is <span class="math" data-tex="\(f\)">\(f\)</span>. Thus <span class="math" data-tex="\((u-F)&#x27;=0\)">\((u-F)&#x27;=0\)</span>, so Theorem 1.1 gives <span class="math" data-tex="\(u=F+c\)">\(u=F+c\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument rules out hidden point-supported terms when the derivative is prescribed by a continuous function.</p>
+<h2 id="independence-of-one-coordinate">Independence of one coordinate</h2>
+<p><strong>Theorem 2.1 (a constant distributional parameter).</strong> Let <span class="math" data-tex="\(Y\subset\mathbb R^d\)">\(Y\subset\mathbb R^d\)</span> be open and <span class="math" data-tex="\(I\)">\(I\)</span> be a nonempty open interval. If <span class="math" data-tex="\(u\in\mathcal D&#x27;(Y\times I)\)">\(u\in\mathcal D&#x27;(Y\times I)\)</span> satisfies <span class="math" data-tex="\(\partial_tu=0\)">\(\partial_tu=0\)</span>, there is a unique <span class="math" data-tex="\(u_0\in\mathcal D&#x27;(Y)\)">\(u_0\in\mathcal D&#x27;(Y)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=u_0\!\left(x\longmapsto\int_I\phi(x,t)\,dt\right).
+\tag{2.1}
+\]">\[
+u(\phi)=u_0\!\left(x\longmapsto\int_I\phi(x,t)\,dt\right).
+\tag{2.1}
+\]</span>
+<p>Equivalently <span class="math" data-tex="\(u=u_0\otimes1\)">\(u=u_0\otimes1\)</span>, where <span class="math" data-tex="\(1\)">\(1\)</span> is the distribution of integration on <span class="math" data-tex="\(I\)">\(I\)</span>. The same formula equals <span class="math" data-tex="\(\int_Iu_0(\phi(\,\cdot\,,t))\,dt\)">\(\int_Iu_0(\phi(\,\cdot\,,t))\,dt\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\eta\in C_c^\infty(I)\)">\(\eta\in C_c^\infty(I)\)</span> with integral one, and define <span class="math" data-tex="\(u_0(g)=u(g(x)\eta(t))\)">\(u_0(g)=u(g(x)\eta(t))\)</span>. The map <span class="math" data-tex="\(g\mapsto g\otimes\eta\)">\(g\mapsto g\otimes\eta\)</span> is continuous on every test support space, with compact image support. Thus <span class="math" data-tex="\(u_0\)">\(u_0\)</span> is a distribution.</p>
+<p>For <span class="math" data-tex="\(\phi\in\mathcal D(Y\times I)\)">\(\phi\in\mathcal D(Y\times I)\)</span>, its integral <span class="math" data-tex="\(g(x)=\int_I\phi(x,t)\,dt\)">\(g(x)=\int_I\phi(x,t)\,dt\)</span> is smooth and compactly supported in the projection of <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>. Extend tests in <span class="math" data-tex="\(t\)">\(t\)</span> by zero and set</p>
+<span class="math math-display" data-tex="\[
+\Psi(x,t)=\int_{-\infty}^t
+[\phi(x,s)-g(x)\eta(s)]\,ds.
+\tag{2.2}
+\]">\[
+\Psi(x,t)=\int_{-\infty}^t
+[\phi(x,s)-g(x)\eta(s)]\,ds.
+\tag{2.2}
+\]</span>
+<p>The integrand has total integral zero for each <span class="math" data-tex="\(x\)">\(x\)</span>. Therefore <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is zero before and after one compact interval in <span class="math" data-tex="\(I\)">\(I\)</span> containing both <span class="math" data-tex="\(t\)">\(t\)</span>-supports. Its <span class="math" data-tex="\(x\)">\(x\)</span>-support lies in a compact subset of <span class="math" data-tex="\(Y\)">\(Y\)</span>; differentiation under the integral proves smoothness. Hence <span class="math" data-tex="\(\Psi\in\mathcal D(Y\times I)\)">\(\Psi\in\mathcal D(Y\times I)\)</span> and <span class="math" data-tex="\(\partial_t\Psi=\phi-g\otimes\eta\)">\(\partial_t\Psi=\phi-g\otimes\eta\)</span>. Pairing with <span class="math" data-tex="\(u\)">\(u\)</span> gives <span class="math" data-tex="\(u(\phi)=u_0(g)\)">\(u(\phi)=u_0(g)\)</span>.</p>
+<p>Tests <span class="math" data-tex="\(g\otimes\eta\)">\(g\otimes\eta\)</span> give uniqueness. The tensor theorem in the prerequisite identifies (2.1) with <span class="math" data-tex="\(u_0\otimes1\)">\(u_0\otimes1\)</span> and gives its other iterated formula. The parameter pairing has one common compact <span class="math" data-tex="\(x\)">\(x\)</span>-support and compact <span class="math" data-tex="\(t\)">\(t\)</span>-support, so its ordinary integral is well-defined. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2 (a continuous weak derivative is classical).</strong> Let <span class="math" data-tex="\(u,f\)">\(u,f\)</span> be continuous functions on open <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, and suppose <span class="math" data-tex="\(\partial_j u=f\)">\(\partial_j u=f\)</span> as distributions. Then the classical partial derivative <span class="math" data-tex="\(\partial_j u(x)\)">\(\partial_j u(x)\)</span> exists at every point and equals <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>.</p>
+<p>If all first distributional partial derivatives of a continuous <span class="math" data-tex="\(u\)">\(u\)</span> are continuous functions, then <span class="math" data-tex="\(u\in C^1(X)\)">\(u\in C^1(X)\)</span>.</p>
+<p><strong>Proof.</strong> This is local, so work on a box <span class="math" data-tex="\(Y\times I\)">\(Y\times I\)</span> where the distinguished coordinate is <span class="math" data-tex="\(t\)">\(t\)</span>. Fix <span class="math" data-tex="\(t_0\in I\)">\(t_0\in I\)</span> and put</p>
+<span class="math math-display" data-tex="\[
+V(x,t)=\int_{t_0}^t f(x,s)\,ds.
+\]">\[
+V(x,t)=\int_{t_0}^t f(x,s)\,ds.
+\]</span>
+<p>The function is continuous and has continuous classical <span class="math" data-tex="\(t\)">\(t\)</span>-derivative <span class="math" data-tex="\(f\)">\(f\)</span>. Fubini and one-dimensional integration by parts against a compact test show <span class="math" data-tex="\(\partial_tV=f\)">\(\partial_tV=f\)</span> distributionally; no derivative in <span class="math" data-tex="\(x\)">\(x\)</span> is needed.</p>
+<p>The continuous function <span class="math" data-tex="\(w=u-V\)">\(w=u-V\)</span> has zero distributional <span class="math" data-tex="\(t\)">\(t\)</span>-derivative. By Theorem 2.1 it is <span class="math" data-tex="\(u_0\otimes1\)">\(u_0\otimes1\)</span>. The proof identifies <span class="math" data-tex="\(u_0\)">\(u_0\)</span> with the continuous function</p>
+<span class="math math-display" data-tex="\[
+h(x)=\int_I w(x,t)\eta(t)\,dt.
+\]">\[
+h(x)=\int_I w(x,t)\eta(t)\,dt.
+\]</span>
+<p>Thus <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span> give the same distribution. Two continuous functions with that property agree pointwise, by the nonnegative-bump argument in the localization lesson. Hence <span class="math" data-tex="\(u(x,t)=V(x,t)+h(x)\)">\(u(x,t)=V(x,t)+h(x)\)</span>, and its classical <span class="math" data-tex="\(t\)">\(t\)</span>-derivative is <span class="math" data-tex="\(f\)">\(f\)</span> at every point. Covering <span class="math" data-tex="\(X\)">\(X\)</span> proves the assertion. If every partial derivative is continuous, the standard multivariable differentiability criterion gives <span class="math" data-tex="\(C^1\)">\(C^1\)</span> regularity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Continuity of <span class="math" data-tex="\(u\)">\(u\)</span> is a real hypothesis here. The distribution <span class="math" data-tex="\(\delta_0(x)\otimes1(t)\)">\(\delta_0(x)\otimes1(t)\)</span> has zero <span class="math" data-tex="\(t\)">\(t\)</span>-derivative but is not a continuous function.</p>
+<h2 id="first-order-systems-without-commuting-matrices">First-order systems without commuting matrices</h2>
+<p>For a scalar smooth coefficient <span class="math" data-tex="\(a\)">\(a\)</span>, the integrating factor <span class="math" data-tex="\(E(t)=\exp(\int_{t_0}^t a(s)\,ds)\)">\(E(t)=\exp(\int_{t_0}^t a(s)\,ds)\)</span> satisfies <span class="math" data-tex="\(E&#x27;=Ea\)">\(E&#x27;=Ea\)</span>. For matrices the same exponential expression generally fails. We need the order of multiplication fixed.</p>
+<p>The matrix transport result in the linked prerequisite proves this exact statement: on a star-shaped open <span class="math" data-tex="\(V\subset\mathbb R^N\)">\(V\subset\mathbb R^N\)</span> containing zero, any smooth matrix <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span> has a smooth invertible normalized solution</p>
+<span class="math math-display" data-tex="\[
+2(v\cdot\partial_v)S=hS,\qquad S(0)=I.
+\tag{3.1}
+\]">\[
+2(v\cdot\partial_v)S=hS,\qquad S(0)=I.
+\tag{3.1}
+\]</span>
+<p>Its proof uses ordered iterated integrals, with factorial bounds and a separately constructed inverse. It does not assume the matrices commute.</p>
+<p>To obtain the integrating factor we need on <span class="math" data-tex="\(I\)">\(I\)</span>, take <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, <span class="math" data-tex="\(V=I-t_0\)">\(V=I-t_0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+h(v)=2v\,A(t_0+v)^{\mathsf T}.
+\tag{3.2}
+\]">\[
+h(v)=2v\,A(t_0+v)^{\mathsf T}.
+\tag{3.2}
+\]</span>
+<p>This is smooth, vanishes at zero, and <span class="math" data-tex="\(V\)">\(V\)</span> is star-shaped. Equation (3.1) gives <span class="math" data-tex="\(S&#x27;=A(t_0+v)^{\mathsf T}S\)">\(S&#x27;=A(t_0+v)^{\mathsf T}S\)</span> for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, hence at zero too by continuity. Its ordinary transpose, with no complex conjugation, gives</p>
+<span class="math math-display" data-tex="\[
+E(t)=S(t-t_0)^{\mathsf T},\qquad
+E&#x27;=EA,\quad E(t_0)=I.
+\tag{3.3}
+\]">\[
+E(t)=S(t-t_0)^{\mathsf T},\qquad
+E&#x27;=EA,\quad E(t_0)=I.
+\tag{3.3}
+\]</span>
+<p>The matrix <span class="math" data-tex="\(E\)">\(E\)</span> and its inverse are smooth on all of <span class="math" data-tex="\(I\)">\(I\)</span>. This is an exact specialization of the existing transport proof.</p>
+<p><strong>Theorem 3.1 (distributional systems become classical).</strong> Let <span class="math" data-tex="\(A\in C^\infty(I;\mathbb C^{r\times r})\)">\(A\in C^\infty(I;\mathbb C^{r\times r})\)</span>, <span class="math" data-tex="\(f\in C(I;\mathbb C^r)\)">\(f\in C(I;\mathbb C^r)\)</span>, and <span class="math" data-tex="\(u\in\mathcal D&#x27;(I;\mathbb C^r)\)">\(u\in\mathcal D&#x27;(I;\mathbb C^r)\)</span>. If</p>
+<span class="math math-display" data-tex="\[
+u&#x27;+Au=f,
+\tag{3.4}
+\]">\[
+u&#x27;+Au=f,
+\tag{3.4}
+\]</span>
+<p>then <span class="math" data-tex="\(u\)">\(u\)</span> is represented by a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> vector function and satisfies (3.4) classically. With <span class="math" data-tex="\(E\)">\(E\)</span> as in (3.3), every distributional solution has the form</p>
+<span class="math math-display" data-tex="\[
+u(t)=E(t)^{-1}
+\left(c+\int_{t_0}^t E(s)f(s)\,ds\right),
+\qquad c\in\mathbb C^r.
+\tag{3.5}
+\]">\[
+u(t)=E(t)^{-1}
+\left(c+\int_{t_0}^t E(s)f(s)\,ds\right),
+\qquad c\in\mathbb C^r.
+\tag{3.5}
+\]</span>
+<p><strong>Proof.</strong> Apply the distributional product rule entry by entry. Retaining the multiplication order,</p>
+<span class="math math-display" data-tex="\[
+(Eu)&#x27;=Eu&#x27;+E&#x27;u=E(u&#x27;+Au)=Ef.
+\]">\[
+(Eu)&#x27;=Eu&#x27;+E&#x27;u=E(u&#x27;+Au)=Ef.
+\]</span>
+<p>The right side is continuous. Corollary 1.2 applied to each component gives <span class="math" data-tex="\(Eu=c+\int_{t_0}^t Ef\)">\(Eu=c+\int_{t_0}^t Ef\)</span>, a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> vector. Multiplying by the smooth inverse proves (3.5) and the regularity claim. Conversely, classical differentiation of (3.5) gives the equation. The constant is its value at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, because <span class="math" data-tex="\(E(t_0)=I\)">\(E(t_0)=I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This also applies componentwise to open subsets of the line, with one independent constant vector on each interval component.</p>
+<p><strong>Corollary 3.2 (higher-order scalar equations).</strong> Let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, let <span class="math" data-tex="\(a_0,\ldots,a_{m-1}\)">\(a_0,\ldots,a_{m-1}\)</span> be smooth on open <span class="math" data-tex="\(X\subset\mathbb R\)">\(X\subset\mathbb R\)</span>, and let <span class="math" data-tex="\(f\in C(X)\)">\(f\in C(X)\)</span>. If <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+u^{(m)}+\sum_{j=0}^{m-1}a_j u^{(j)}=f,
+\tag{3.6}
+\]">\[
+u^{(m)}+\sum_{j=0}^{m-1}a_j u^{(j)}=f,
+\tag{3.6}
+\]</span>
+<p>then <span class="math" data-tex="\(u\in C^m(X)\)">\(u\in C^m(X)\)</span> and (3.6) holds classically.</p>
+<p><strong>Proof.</strong> Work on an interval component. Set <span class="math" data-tex="\(U=(u,u&#x27;,\ldots,u^{(m-1)})^{\mathsf T}\)">\(U=(u,u&#x27;,\ldots,u^{(m-1)})^{\mathsf T}\)</span>. It satisfies <span class="math" data-tex="\(U&#x27;+AU=F\)">\(U&#x27;+AU=F\)</span>, with <span class="math" data-tex="\(F=(0,\ldots,0,f)^{\mathsf T}\)">\(F=(0,\ldots,0,f)^{\mathsf T}\)</span>, the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> rows of <span class="math" data-tex="\(A\)">\(A\)</span> having a single <span class="math" data-tex="\(-1\)">\(-1\)</span> in their next column, and its last row <span class="math" data-tex="\((a_0,\ldots,a_{m-1})\)">\((a_0,\ldots,a_{m-1})\)</span>. Theorem 3.1 makes every component of <span class="math" data-tex="\(U\)">\(U\)</span> <span class="math" data-tex="\(C^1\)">\(C^1\)</span>.</p>
+<p>The distributional identities <span class="math" data-tex="\(U_j&#x27;=U_{j+1}\)">\(U_j&#x27;=U_{j+1}\)</span> now agree with the classical derivatives of those <span class="math" data-tex="\(C^1\)">\(C^1\)</span> components. Starting with <span class="math" data-tex="\(u=U_1\)">\(u=U_1\)</span>, induction gives <span class="math" data-tex="\(u\in C^m\)">\(u\in C^m\)</span>; its <span class="math" data-tex="\(m\)">\(m\)</span>-th derivative is <span class="math" data-tex="\(U_m&#x27;\)">\(U_m&#x27;\)</span>, which is continuous. The last equation is then classical. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A smooth nonvanishing leading coefficient can be divided out, so the same conclusion holds locally wherever it is nonzero. If it vanishes, singular solutions may remain: <span class="math" data-tex="\(xH&#x27;=x\delta_0=0\)">\(xH&#x27;=x\delta_0=0\)</span>, although <span class="math" data-tex="\(H\)">\(H\)</span> is discontinuous.</p>
+<h2 id="jumps-produce-concentrated-derivatives">Jumps produce concentrated derivatives</h2>
+<p><strong>Theorem 4.1 (derivative across a jump).</strong> Let <span class="math" data-tex="\(a\in X\subset\mathbb R\)">\(a\in X\subset\mathbb R\)</span>, with <span class="math" data-tex="\(X\)">\(X\)</span> open, and let <span class="math" data-tex="\(g\)">\(g\)</span> be <span class="math" data-tex="\(C^1\)">\(C^1\)</span> on <span class="math" data-tex="\(X\setminus\{a\}\)">\(X\setminus\{a\}\)</span>. Suppose its ordinary derivative <span class="math" data-tex="\(v=g&#x27;\)">\(v=g&#x27;\)</span> there is integrable on a neighborhood of <span class="math" data-tex="\(a\)">\(a\)</span>. Then the finite one-sided limits <span class="math" data-tex="\(g(a-)\)">\(g(a-)\)</span>, <span class="math" data-tex="\(g(a+)\)">\(g(a+)\)</span> exist. Any assignment of <span class="math" data-tex="\(g(a)\)">\(g(a)\)</span> gives the same locally integrable distribution, whose derivative is</p>
+<span class="math math-display" data-tex="\[
+g&#x27;=v+[g]_a\delta_a,\qquad
+[g]_a=g(a+)-g(a-).
+\tag{4.1}
+\]">\[
+g&#x27;=v+[g]_a\delta_a,\qquad
+[g]_a=g(a+)-g(a-).
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(b&gt;a\)">\(b&gt;a\)</span> sufficiently close to <span class="math" data-tex="\(a\)">\(a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+g(x)=g(b)-\int_x^b v(s)\,ds,\qquad a&lt;x&lt;b.
+\]">\[
+g(x)=g(b)-\int_x^b v(s)\,ds,\qquad a&lt;x&lt;b.
+\]</span>
+<p>Absolute integrability makes the right side have a finite limit as <span class="math" data-tex="\(x\downarrow a\)">\(x\downarrow a\)</span>. The same argument to the left gives the other limit. In particular <span class="math" data-tex="\(g\)">\(g\)</span> is bounded near <span class="math" data-tex="\(a\)">\(a\)</span>, hence locally integrable; its value at one point does not affect its integrals.</p>
+<p>For a compact smooth test, integrate by parts separately to the left of <span class="math" data-tex="\(a-\varepsilon\)">\(a-\varepsilon\)</span> and to the right of <span class="math" data-tex="\(a+\varepsilon\)">\(a+\varepsilon\)</span>. The outer boundary terms vanish, and</p>
+<span class="math math-display" data-tex="\[
+-\int_{|x-a|&gt;\varepsilon}g(x)\phi&#x27;(x)\,dx
+=\int_{|x-a|&gt;\varepsilon}v(x)\phi(x)\,dx
++g(a+\varepsilon)\phi(a+\varepsilon)
+-g(a-\varepsilon)\phi(a-\varepsilon).
+\]">\[
+-\int_{|x-a|&gt;\varepsilon}g(x)\phi&#x27;(x)\,dx
+=\int_{|x-a|&gt;\varepsilon}v(x)\phi(x)\,dx
++g(a+\varepsilon)\phi(a+\varepsilon)
+-g(a-\varepsilon)\phi(a-\varepsilon).
+\]</span>
+<p>Local boundedness of <span class="math" data-tex="\(g\)">\(g\)</span>, integrability of <span class="math" data-tex="\(v\)">\(v\)</span>, and the one-sided limits justify passage to <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This gives <span class="math" data-tex="\(v(\phi)+[g]_a\phi(a)\)">\(v(\phi)+[g]_a\phi(a)\)</span>, exactly (4.1). The argument is local near <span class="math" data-tex="\(a\)">\(a\)</span>; on the rest of the support ordinary integration by parts applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coefficient is the right limit minus the left limit. The sign is determined by the distributional convention, not by a choice of a value at the discontinuity.</p>
+<p>For a piecewise <span class="math" data-tex="\(C^m\)">\(C^m\)</span> function whose derivatives through order <span class="math" data-tex="\(m-1\)">\(m-1\)</span> have finite one-sided limits and whose ordinary <span class="math" data-tex="\(m\)">\(m\)</span>-th derivative is locally integrable at <span class="math" data-tex="\(a\)">\(a\)</span>, iteration gives</p>
+<span class="math math-display" data-tex="\[
+\partial^m g
+=g_{\mathrm{ordinary}}^{(m)}
++\sum_{l=0}^{m-1}
+[g^{(m-1-l)}]_a\,\delta_a^{(l)}.
+\tag{4.2}
+\]">\[
+\partial^m g
+=g_{\mathrm{ordinary}}^{(m)}
++\sum_{l=0}^{m-1}
+[g^{(m-1-l)}]_a\,\delta_a^{(l)}.
+\tag{4.2}
+\]</span>
+<p>To justify the iteration, Theorem 4.1 applied first to <span class="math" data-tex="\(g\)">\(g\)</span> gives its first jump term. Apply it to the ordinary derivative on each side at each subsequent step. Each previously obtained delta derivative is differentiated once, while the new ordinary derivative contributes its own jump. Induction produces precisely the indices in (4.2). The stated hypotheses ensure all those ordinary derivatives define locally integrable functions.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>No hidden singularity — foundation.</strong> Determine every distributional solution of <span class="math" data-tex="\(u&#x27;+2xu=0\)">\(u&#x27;+2xu=0\)</span> on the line. Explain why the integrating-factor argument also excludes delta terms.</li>
+<li><strong>Two derivative levels — intermediate.</strong> Let <span class="math" data-tex="\(g(x)=0\)">\(g(x)=0\)</span> for <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span> and <span class="math" data-tex="\(g(x)=e^{-x}\)">\(g(x)=e^{-x}\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>. Compute its first and second distributional derivatives. Check each concentrated coefficient from (4.2).</li>
+<li><strong>An unsmoothed transverse variable — intermediate.</strong> On <span class="math" data-tex="\(\mathbb R_x\times\mathbb R_t\)">\(\mathbb R_x\times\mathbb R_t\)</span>, let <span class="math" data-tex="\(u=\delta_0(x)\otimes1(t)\)">\(u=\delta_0(x)\otimes1(t)\)</span>. Prove <span class="math" data-tex="\(\partial_tu=0\)">\(\partial_tu=0\)</span>, but <span class="math" data-tex="\(u\)">\(u\)</span> is not a continuous function. Identify the missing hypothesis if one tries to apply Corollary 2.2.</li>
+<li><strong>A degenerate leading coefficient — foundation.</strong> Verify <span class="math" data-tex="\(xH&#x27;=0\)">\(xH&#x27;=0\)</span> distributionally and explain why this does not contradict Corollary 3.2. Give another distributional solution obtained by adding a constant.</li>
+<li><strong>Matrix order — advanced.</strong> Put <span class="math" data-tex="\(B=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)">\(B=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>, <span class="math" data-tex="\(C=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\)">\(C=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\)</span>, and <span class="math" data-tex="\(A(t)=B+tC\)">\(A(t)=B+tC\)</span>. Let <span class="math" data-tex="\(E&#x27;=EA\)">\(E&#x27;=EA\)</span>, <span class="math" data-tex="\(E(0)=I\)">\(E(0)=I\)</span>. Compare the coefficient of <span class="math" data-tex="\(t^3\)">\(t^3\)</span> in <span class="math" data-tex="\(E(t)\)">\(E(t)\)</span> with that in <span class="math" data-tex="\(\exp(tB+t^2C/2)\)">\(\exp(tB+t^2C/2)\)</span>. Show the difference is <span class="math" data-tex="\((BC-CB)/12\)">\((BC-CB)/12\)</span>, so the naive exponential is not the integrating factor.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> The scalar factor <span class="math" data-tex="\(E(x)=e^{x^2}\)">\(E(x)=e^{x^2}\)</span> has <span class="math" data-tex="\(E&#x27;=2xE\)">\(E&#x27;=2xE\)</span>. The product rule gives <span class="math" data-tex="\((Eu)&#x27;=0\)">\((Eu)&#x27;=0\)</span>, so Theorem 1.1 makes <span class="math" data-tex="\(Eu=c\)">\(Eu=c\)</span>, as a distribution on the whole connected line. Thus <span class="math" data-tex="\(u=ce^{-x^2}\)">\(u=ce^{-x^2}\)</span>, an ordinary smooth function. Conversely these functions solve the equation. The constant theorem applies to arbitrary distributions, including those with possible concentrated terms; none can survive after multiplication by the smooth nonzero factor <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Solution 2.</strong> The jump of <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. Its ordinary derivative is <span class="math" data-tex="\(-He^{-x}\)">\(-He^{-x}\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+g&#x27;=-He^{-x}+\delta_0.
+\]">\[
+g&#x27;=-He^{-x}+\delta_0.
+\]</span>
+<p>The ordinary first derivative has right limit <span class="math" data-tex="\(-1\)">\(-1\)</span> and left limit <span class="math" data-tex="\(0\)">\(0\)</span>, hence jump <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its ordinary derivative away from zero is <span class="math" data-tex="\(He^{-x}\)">\(He^{-x}\)</span>. Differentiate the first formula to get</p>
+<span class="math math-display" data-tex="\[
+g&#x27;&#x27;=He^{-x}-\delta_0+\delta&#x27;_0.
+\]">\[
+g&#x27;&#x27;=He^{-x}-\delta_0+\delta&#x27;_0.
+\]</span>
+<p>Formula (4.2) for <span class="math" data-tex="\(m=2\)">\(m=2\)</span> has <span class="math" data-tex="\([g&#x27;]_0\delta_0+[g]_0\delta&#x27;_0=-\delta_0+\delta&#x27;_0\)">\([g&#x27;]_0\delta_0+[g]_0\delta&#x27;_0=-\delta_0+\delta&#x27;_0\)</span>, verifying both coefficients.</p>
+<p><strong>Solution 3.</strong> On a test, <span class="math" data-tex="\(u(\phi)=\int_{\mathbb R}\phi(0,t)\,dt\)">\(u(\phi)=\int_{\mathbb R}\phi(0,t)\,dt\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+(\partial_tu)(\phi)=-\int_{\mathbb R}\partial_t\phi(0,t)\,dt=0.
+\]">\[
+(\partial_tu)(\phi)=-\int_{\mathbb R}\partial_t\phi(0,t)\,dt=0.
+\]</span>
+<p>It is supported on the line <span class="math" data-tex="\(x=0\)">\(x=0\)</span> and is nonzero. If represented by a continuous function, that function would be zero off this line, because the distribution is zero there, and then zero on the line by continuity. This contradicts a product bump whose value at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>-integral are both one. The missing hypothesis is continuity of <span class="math" data-tex="\(u\)">\(u\)</span>; the right side <span class="math" data-tex="\(f=0\)">\(f=0\)</span> is continuous. Theorem 2.1 allows a distributional transverse coefficient, so there is no contradiction.</p>
+<p><strong>Solution 4.</strong> By (4.1), <span class="math" data-tex="\(H&#x27;=\delta_0\)">\(H&#x27;=\delta_0\)</span>. Smooth multiplication gives <span class="math" data-tex="\((x\delta_0)(\phi)=\delta_0(x\phi)=0\)">\((x\delta_0)(\phi)=\delta_0(x\phi)=0\)</span>, hence <span class="math" data-tex="\(xH&#x27;=0\)">\(xH&#x27;=0\)</span>. The coefficient of the highest derivative is <span class="math" data-tex="\(x\)">\(x\)</span>, which vanishes at zero; Corollary 3.2 has a monic highest derivative, or equivalently applies after division only where the leading coefficient is nonzero. On either half-line <span class="math" data-tex="\(H\)">\(H\)</span> is constant and regular, consistent with that local conclusion. Adding any constant <span class="math" data-tex="\(c\)">\(c\)</span> gives another solution <span class="math" data-tex="\(H+c\)">\(H+c\)</span>.</p>
+<p><strong>Solution 5.</strong> Write <span class="math" data-tex="\(E=I+tE_1+t^2E_2+t^3E_3+O(t^4)\)">\(E=I+tE_1+t^2E_2+t^3E_3+O(t^4)\)</span>, using its smoothness and the differential equation. Comparing coefficients in <span class="math" data-tex="\(E&#x27;=E(B+tC)\)">\(E&#x27;=E(B+tC)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+E_1=B,\qquad
+E_2=\frac{B^2+C}{2},\qquad
+E_3=\frac{B^3}{6}+\frac{CB}{6}+\frac{BC}{3}.
+\]">\[
+E_1=B,\qquad
+E_2=\frac{B^2+C}{2},\qquad
+E_3=\frac{B^3}{6}+\frac{CB}{6}+\frac{BC}{3}.
+\]</span>
+<p>For the exponential, expand <span class="math" data-tex="\(I+R+R^2/2+R^3/6\)">\(I+R+R^2/2+R^3/6\)</span>, where <span class="math" data-tex="\(R=tB+t^2C/2\)">\(R=tB+t^2C/2\)</span>. Its cubic coefficient is <span class="math" data-tex="\(B^3/6+(BC+CB)/4\)">\(B^3/6+(BC+CB)/4\)</span>. The difference is therefore <span class="math" data-tex="\((BC-CB)/12\)">\((BC-CB)/12\)</span>. Here <span class="math" data-tex="\(B^2=0\)">\(B^2=0\)</span>, <span class="math" data-tex="\(BC=\operatorname{diag}(1,0)\)">\(BC=\operatorname{diag}(1,0)\)</span>, and <span class="math" data-tex="\(CB=\operatorname{diag}(0,1)\)">\(CB=\operatorname{diag}(0,1)\)</span>, so it is the nonzero diagonal matrix <span class="math" data-tex="\(\operatorname{diag}(1,-1)/12\)">\(\operatorname{diag}(1,-1)/12\)</span>. This proves failure of the exponential even with smooth polynomial coefficients. The ordered transport construction and the right-sided equation <span class="math" data-tex="\(E&#x27;=EA\)">\(E&#x27;=EA\)</span> are essential.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026, Chapter 3. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li><em>Building a local inverse from radial singularities</em>, “Matrix transport and the order of multiplication.” The ordered-series theorem is used only through (3.1)–(3.3) here. <a href="elliptic-hadamard-parametrices.html#AN03-EHP-006">Course lesson</a>.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/weak-equations-and-classical-functions.md">Editable original Markdown</a>. Source commit a82849e3ecde53b110d492660ec32c0c8aa56943.</p></footer></main></body></html>

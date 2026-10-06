@@ -1,0 +1,1499 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{longtable,booktabs,array}
+% Compatibility with Pandoc's captionless tables on older longtable versions.
+\ifcsname c@none\endcsname\else\newcounter{none}\fi
+\usepackage{graphicx}
+\usepackage[margin=25mm]{geometry}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\setlength{\emergencystretch}{3em}
+\setcounter{secnumdepth}{-1}
+\begin{document}
+\section{The theorem on formal
+functions}\label{the-theorem-on-formal-functions}
+
+\emph{Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort,
+October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra
+effort. Independent portions are public domain (CC0). Appendix Z adapts
+the Stacks project authors' free conductor and strong-transcendence
+proofs and retains GFDL-1.2-or-later. See the
+\href{licensing.html}{course notice} for authorship and component
+terms.}
+
+A fiber remembers a family at one parameter. Its successive
+infinitesimal neighborhoods remember powers of that parameter's maximal
+ideal. Formal functions identifies the inverse limit of their cohomology
+with the completion of a finite cohomology module. The individual
+comparison maps can fail to be isomorphisms; what makes the theorem work
+is a uniform bound on how long their errors persist.
+
+We use \href{proper-morphisms-and-coherent-direct-images.md}{proper
+coherent direct images},
+\href{affine-cohomology-and-serres-criterion.md}{affine cohomology and
+Serre's criterion}, and
+\href{base-change-and-the-grothendieck-complex.md}{flat base change}.
+\href{../AG-CA/AG-CA-19.html\#3-noetherian-exactness-tensoring-and-flatness}{Completion,
+Theorems 3.1--3.3} supplies exact completion of finite modules over
+Noetherian rings and faithful flatness when the completion ideal lies in
+the Jacobson radical, including maximal-ideal completion of a Noetherian
+local ring. The dimension consequences in Section 5 use
+\href{../ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html\#7-the-bound-for-all-finite-type-schemes}{Cohomological
+dimension and the Künneth formula, Lemma 7.1}, the full Noetherian
+topological vanishing proof for arbitrary abelian sheaves. No flatness
+assumption on the coherent sheaf is imposed in this lesson.
+
+\subsection{0. A normality input in the algebraic Zariski Main
+proof}\label{a-normality-input-in-the-algebraic-zariski-main-proof}
+
+The quasi-finite input used in Section 5 has an algebraic Zariski Main
+proof whose supporting coefficient argument requires polynomial
+normality over an arbitrary normal domain. A proof for polynomial rings
+over fields alone would not suffice. We supply the general statement
+here. The valuation existence input is the written
+\href{../AG-GS/prerequisites/AG-MO/valuation-rings-and-separatedness.html}{Valuation
+rings and separatedness, Theorem 2.1}; it gives a valuation ring in a
+specified field dominating a specified local subring, without a
+Noetherian hypothesis or a discrete-value assumption.
+
+\textbf{Lemma 0.1 (polynomial normality).} If \(R\) is an integrally
+closed domain, then \(R[x_1,\ldots,x_n]\) is an integrally closed domain
+for every finite \(n\).
+
+\textbf{Proof.} Put \(F=\operatorname{Frac}R\). First we prove that
+\(R\) is the intersection of all valuation subrings of \(F\) containing
+\(R\). If \(z\in F\setminus R\), then \(z\) is not integral over \(R\).
+In the ring \(R[z^{-1}]\), the element \(z^{-1}\) is not a unit: an
+equation \[
+1=z^{-1}(a_0+a_1z^{-1}+\cdots+a_mz^{-m})
+\] would yield a monic polynomial equation for \(z\) over \(R\), after
+multiplication by \(z^{m+1}\). Choose a maximal ideal containing
+\(z^{-1}\) and localize at it. The earlier valuation theorem gives a
+valuation ring \(V\subset F\) dominating this local ring. Thus
+\(R\subset V\), while \(z^{-1}\) is in its maximal ideal and
+\(z\notin V\). This separates every \(z\notin R\) from the intersection
+and proves the assertion.
+
+For such a valuation ring, let \(v:F^*\to\Gamma\) be its ordered value
+group, with \(V=\{0\}\cup\{a:v(a)\geq0\}\). This group can be
+constructed as \(F^*/V^*\), ordered by divisibility in \(V\). For a
+nonzero polynomial \(h=\sum a_ix^i\in F[x]\), define \[
+w(h)=\min_i v(a_i),
+\] ignoring zero coefficients. We have \(w(hg)=w(h)+w(g)\): divide each
+polynomial by a coefficient of least value. The resulting polynomials
+have coefficients in \(V\) and nonzero reductions in
+\((V/\mathfrak m_V)[x]\); their product has nonzero reduction because
+this polynomial ring over a field is a domain. Also
+\(w(h+g)\geq\min(w(h),w(g))\), with equality when the two values differ.
+Consequently a sum with a unique term of strictly least value cannot
+vanish.
+
+Let \(u\in F(x)\) be integral over \(R[x]\). It is integral over
+\(F[x]\), so \(u\in F[x]\). To justify this last assertion directly,
+write \(u=a/b\) with coprime polynomials in the Euclidean domain
+\(F[x]\). A monic integral equation implies that \(b\) divides \(a^m\).
+Bézout's identity for \(a,b\) forces \(b\) to be a unit. Thus \(u\) is a
+polynomial.
+
+For every valuation ring \(V\) above, write its integral equation as \[
+u^m+c_1(x)u^{m-1}+\cdots+c_m(x)=0,
+\qquad c_i(x)\in R[x]\subset V[x].
+\] If \(w(u)<0\), the term \(u^m\) has value \(m w(u)\), strictly less
+than the value of every other nonzero term, since \(w(c_i)\geq0\). This
+contradicts the least-value property. Hence every coefficient of \(u\)
+belongs to \(V\). The intersection assertion puts all coefficients in
+\(R\), proving that \(R[x]\) is integrally closed. Induction on the
+number of variables proves the lemma. \(\square\)
+
+This proof supplies the polynomial-normality step of the supporting
+algebraic argument. It does not certify all its other inputs; their
+exact earlier proof locations and remaining audit boundaries are
+recorded in the prerequisite record.
+
+\subsection{1. The completion map}\label{the-completion-map}
+
+Let \(A\) be Noetherian, \(I\subset A\) an ideal,
+\(f:X\to\operatorname{Spec}A\) proper, and \(F\) coherent. For
+\(n\geq1\), put \[
+X_n=X\times_A\operatorname{Spec}(A/I^n),\qquad F_n=F|_{X_n}.
+\] The closed immersion \(i_n:X_n\hookrightarrow X\) has
+\(i_{n*}F_n=F/I^nF\). Since closed immersion pushforward is exact and
+has no positive direct images, we may compute \[
+H^q(X_n,F_n)=H^q(X,F/I^nF).
+\] Set \(M^q=H^q(X,F)\), a finite \(A\)-module by proper finiteness. The
+quotient map on sheaves induces \[
+M^q/I^nM^q\longrightarrow H^q(X_n,F_n),
+\] because \(I^n\) annihilates the target. These maps are compatible
+with reduction from \(n+1\) to \(n\). We seek an isomorphism from \[
+\widehat{M^q}=\varprojlim_n M^q/I^nM^q
+\] to the inverse limit of the right-hand terms. Completion here is with
+respect to \(I\); neither \(A\) nor \(M^q\) is assumed complete in
+advance.
+
+The theorem is not a claim that every finite-level map is an
+isomorphism. For example, the extension bundle on \(\mathbf P^1_{k[t]}\)
+with class \(t\) has \(H^0(X,E)=0\), but has a nonzero section on the
+fiber \(t=0\). We will return to its infinitesimal neighborhoods in
+Exercise 7.6.
+
+\subsection{2. All powers at once}\label{all-powers-at-once}
+
+The \textbf{Rees algebra} is \[
+R=\bigoplus_{n\geq0}I^nT^n\subset A[T],\qquad R_0=A.
+\] If \(I=(a_1,\ldots,a_r)\), then \(R\) is generated by the degree-one
+elements \(a_iT\), hence is a quotient of a polynomial algebra in
+finitely many variables over \(A\). It is Noetherian. The symbol \(T\)
+records degree; it need not itself belong to \(R\).
+
+\textbf{Lemma 2.1 (graded cohomological finiteness).} For each
+\(q\geq0\), the graded module \[
+Q^q=\bigoplus_{n\geq0}H^q(X,I^nF)T^n
+\] is finite over \(R\).
+
+\textbf{Proof.} Form \(X_R=X\times_A\operatorname{Spec}R\), with affine
+projection \(\pi:X_R\to X\). On \(X\), the graded sheaf
+\(\bigoplus I^nF\) is a module over \(\mathcal O_X\otimes_A R\): a
+degree-\(d\) element acts by multiplication into the degree shifted by
+\(d\). It is a quotient of \(F\otimes_A R\), by the degreewise maps
+\(F\otimes_A I^n\to I^nF\). The affine module/sheaf correspondence gives
+a coherent sheaf \(G\) on \(X_R\) with \[
+\pi_*G=\bigoplus_{n\geq0}I^nF.
+\] Coherence follows because \(X_R\) is Noetherian and this sheaf is
+locally a finite module, generated by a finite set of degree-zero
+generators of \(F\).
+
+The map \(X_R\to\operatorname{Spec}R\) is proper by base change. Proper
+cohomology finiteness makes \(H^q(X_R,G)\) finite over \(R\). Affine
+pushforward and Leray identify it with \(H^q(X,\pi_*G)\). Finally
+cohomology of quasi-coherent sheaves on the quasi-compact,
+quasi-separated scheme \(X\) commutes with filtered colimits, by the
+third lesson. A direct sum is the filtered colimit of finite partial
+sums, so \[
+H^q(X,\pi_*G)=\bigoplus_{n\geq0}H^q(X,I^nF).
+\] The identifications preserve multiplication and grading. This is the
+asserted finite graded module. \(\square\)
+
+We next extract two consequences. Write \[
+J_n^q=\operatorname{im}\bigl(H^q(X,I^nF)\to M^q\bigr),
+\qquad K_n^q=\ker\bigl(H^q(X,I^nF)\to M^q\bigr).
+\] Both collections respect graded multiplication. Indeed inclusion of
+ideal powers commutes with multiplying a section or cohomology class by
+an element of \(I^d\). Thus \(\bigoplus J_n^qT^n\) is a finite graded
+image module of \(Q^q\), and \(\bigoplus K_n^qT^n\) is a finite graded
+submodule, using Noetherianness of \(R\).
+
+\textbf{Lemma 2.2 (bounds on the image and kernel).} There are integers
+\(c_J,c_K\geq0\) such that \[
+I^nM^q\subset J_n^q\subset I^{n-c_J}M^q\quad(n\geq c_J),
+\] and the transition map \(K_m^q\to K_n^q\) is zero whenever
+\(m\geq n+c_K\).
+
+\textbf{Proof.} Multiplication by an element of \(I^n\) factors as
+\(F\to I^nF\to F\), proving the first inclusion. Choose finitely many
+homogeneous generators of the image module, all in degrees at most
+\(c_J\). The degree-\(n\) part is a sum of \(I^{n-d}J_d^q\) over
+generator degrees \(d\leq c_J\). Each is contained in \(I^{n-c_J}M^q\),
+proving the second inclusion. This is the cohomological analogue of an
+Artin--Rees bound.
+
+Choose homogeneous kernel generators \(k_\ell\in K_{d_\ell}^q\) with
+\(d_\ell\leq c_K\). An element of \(K_m^q\) is a sum of products
+\(a_\ell k_\ell\), with \(a_\ell\in I^{m-d_\ell}\). If \(m\geq n+c_K\),
+each such coefficient is a sum of products \(ba'\), where \(b\in I^n\)
+and \(a'\in I^{m-d_\ell-n}\). Under transition to \(H^q(X,I^nF)\), its
+product with \(k_\ell\) is computed by first including \(I^{d_\ell}F\)
+into \(F\), then multiplying by \(a'\), then by \(b\) into \(I^nF\). The
+initial inclusion sends \(k_\ell\) to zero, by definition of the kernel.
+Hence every product maps to zero. This proves the uniform transition
+bound. \(\square\)
+
+A system whose sufficiently distant transition maps to each fixed term
+are zero is called \textbf{pro-zero}. Its individual terms may be
+nonzero; its inverse limit is zero because each coordinate of a
+compatible family is the image of a distant, necessarily zero,
+transition. Lemma 2.2 supplies this stronger, bounded form of
+disappearance for the kernel system.
+
+\subsection{3. Stabilization of the thickened
+cohomology}\label{stabilization-of-the-thickened-cohomology}
+
+The short exact sequence \(0\to I^nF\to F\to F/I^nF\to0\) gives the
+exact sequence \[
+0\to M^q/J_n^q\longrightarrow H^q(X_n,F_n)\longrightarrow K_n^{q+1}\to0.
+\tag{1}
+\] It is a sequence of inverse systems. The left transitions are
+surjective because \(J_m^q\subset J_n^q\) for \(m\geq n\). The right
+system is pro-zero by Lemma 2.2 in degree \(q+1\).
+
+\textbf{Proposition 3.1 (the Mittag--Leffler bound).} For fixed \(q\),
+choose \(c\) as the kernel bound in degree \(q+1\). Then for
+\(m\geq n+c\), \[
+\operatorname{im}\bigl(H^q(X_m,F_m)\to H^q(X_n,F_n)\bigr)
+=\operatorname{im}\bigl(M^q\to H^q(X_n,F_n)\bigr).
+\] Consequently the thickened-cohomology system is Mittag--Leffler.
+
+\textbf{Proof.} In diagram (1) for indices \(m,n\), the right transition
+is zero. Therefore the middle transition lands in the left submodule
+\(M^q/J_n^q\). It contains all of that submodule: the left transition
+\(M^q/J_m^q\to M^q/J_n^q\) is onto, and these left modules inject into
+the respective middle terms. Thus its image is exactly the claimed
+submodule. The image is independent of all sufficiently large \(m\),
+which is the Mittag--Leffler condition. \(\square\)
+
+We can now take the limit without an unexplained exchange of limits and
+cohomology. If \((u_n)\) is a compatible family of middle classes in
+(1), its images in \(K_n^{q+1}\) form a compatible family in a pro-zero
+system, so are all zero. Thus each \(u_n\) lies in the injective left
+term, with a unique preimage. These preimages are automatically
+compatible. We obtain the canonical identification \[
+\varprojlim_n H^q(X_n,F_n)=\varprojlim_n M^q/J_n^q.
+\tag{2}
+\] This also proves why a transient class on a small thickening need not
+define a class in the inverse limit. Compatibility with every higher
+thickening is a real constraint.
+
+\subsection{4. Global and stalk forms of formal
+functions}\label{global-and-stalk-forms-of-formal-functions}
+
+\textbf{Theorem 4.1 (formal functions).} Under the hypotheses of Section
+1, the canonical maps give an isomorphism \[
+\widehat{H^q(X,F)}\xrightarrow{\sim}\varprojlim_n H^q(X_n,F_n).
+\] It is an isomorphism of \(\widehat A\)-modules and a homeomorphism
+for their inverse-limit topologies.
+
+\textbf{Proof.} Combine (2) with the inclusions from Lemma 2.2: \[
+I^nM^q\subset J_n^q,\qquad J_{n+c_J}^q\subset I^nM^q.
+\] They say that the two descending filtrations \((I^nM^q)\) and
+\((J_n^q)\) are cofinal. The identification (2) also preserves the limit
+topologies: each left term is a discrete submodule of the corresponding
+middle term, and its unique coordinate preimage is continuous on that
+submodule. The first inclusions give the canonical continuous map
+between the inverse limits of the corresponding quotients. The second
+give its inverse by taking the cofinal shifted indices \(n+c_J\). The
+two composites are the usual transitions and hence induce the identity
+on limits. Both maps are continuous for the quotient limit topologies,
+proving the homeomorphism. The maps arise from \(A\)-linear maps at all
+levels, where \(I^n\) annihilates the cohomology of \(F_n\), and so
+preserve the induced \(\widehat A\)-action. \(\square\)
+
+\textbf{Corollary 4.2 (the stalk form).} Let \(f:X\to S\) be proper,
+\(S\) locally Noetherian, \(F\) coherent, and \(s\in S\). Put
+\(A_s=\mathcal O_{S,s}\), with maximal ideal \(\mathfrak m_s\), and \[
+X_n=X\times_S\operatorname{Spec}(A_s/\mathfrak m_s^n),\qquad F_n=F|_{X_n}.
+\] Then \[
+\widehat{(R^qf_*F)_s}\cong\varprojlim_n H^q(X_n,F_n)
+\] as \(\widehat{A_s}\)-modules.
+
+\textbf{Proof.} The canonical map \(\operatorname{Spec}A_s\to S\) is
+flat: on an affine neighborhood it is localization. Flat base change and
+the affine description of quasi-coherent direct images identify the
+stalk with
+\(H^q(X\times_S\operatorname{Spec}A_s,F|_{X\times_S\operatorname{Spec}A_s})\).
+The local ring is Noetherian, the changed morphism proper, and the
+changed sheaf coherent. Apply Theorem 4.1 with ideal \(\mathfrak m_s\).
+Its thickenings are precisely the displayed \(X_n\), since their
+parameter maps factor through \(\operatorname{Spec}A_s\). \(\square\)
+
+\subsection{5. Dimension and finiteness
+consequences}\label{dimension-and-finiteness-consequences}
+
+\textbf{Theorem 5.1 (vanishing above a fiber's dimension).} For the
+morphism of Corollary 4.2, \[
+(R^qf_*F)_s=0\quad\text{if }q>\dim X_s.
+\]
+
+\textbf{Proof.} Each \(X_n\) has the same underlying topological space
+as \(X_s\): the extra ideal is nilpotent and therefore belongs to every
+prime. That space is Noetherian, of finite dimension \(d\), because
+\(X_s\) is of finite type over a field. The Noetherian topological
+vanishing theorem,
+\href{../ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html\#7-the-bound-for-all-finite-type-schemes}{Cohomological
+dimension and the Künneth formula, Lemma 7.1}, gives \(H^q(X_n,F_n)=0\)
+for \(q>d\). Formal functions makes the completed stalk zero. The
+uncompleted stalk is finite by proper coherence. For a finite module
+over a Noetherian local ring, completion preserves the residue-field
+quotient; zero completion implies \(M/\mathfrak mM=0\), and Nakayama
+implies \(M=0\). This proves the assertion. An empty fiber gives empty
+thickenings and the same conclusion in every degree. \(\square\)
+
+The vanishing is a statement about the whole stalk, stronger than a
+statement about its tensor with the residue field. In particular, if all
+fiber dimensions are at most \(d\), then \(R^qf_*F=0\) for \(q>d\),
+without a flatness assumption.
+
+\textbf{Theorem 5.2 (proper with finite fibers is finite).} A proper
+morphism over a locally Noetherian base whose fibers have finitely many
+points is finite.
+
+\textbf{Proof.} Its fibers are finite type over fields. Such schemes
+with finitely many points are zero-dimensional by Noether normalization.
+Indeed an affine chart admits a finite integral surjection onto affine
+space of its dimension; a positive-dimensional affine space over any
+field has infinitely many points, so a finite-point chart cannot have
+positive dimension. Their zero-dimensional coordinate rings are
+finite-dimensional by Noether normalization. Thus Theorem 5.1 makes
+\(R^1f_*G=0\) for every coherent \(G\).
+
+Work over an affine Noetherian neighborhood \(S=\operatorname{Spec}A\).
+Its inverse image \(X\) is Noetherian, separated and quasi-compact. Any
+finite type ideal \(J\subset\mathcal O_X\) is coherent, and Leray over
+the affine base gives \[
+H^1(X,J)=\Gamma(S,R^1f_*J)=0.
+\] Here affine vanishing eliminates the other Leray terms, since the
+direct images are quasi-coherent. The finite-ideal version of Serre's
+affine criterion from the third lesson now implies that \(X\) is affine.
+Its function ring \(H^0(X,\mathcal O_X)\) is a finite \(A\)-module by
+proper cohomology finiteness. Hence \(X\to\operatorname{Spec}A\) is
+finite. This is local on the base and proves the theorem. \(\square\)
+
+A quasi-finite proper morphism over a locally Noetherian base is
+therefore finite. The existing earlier \emph{Zariski's Main Theorem}
+lesson in \emph{Morphisms of schemes} gives another route; the present
+route uses formal functions and the cohomological affine criterion.
+
+\textbf{Corollary 5.3 (a finite fiber has a finite neighborhood).} If
+\(f:X\to S\) is proper, \(S\) is locally Noetherian, and \(X_s\) is a
+finite set, then \(f\) is finite over an open neighborhood of \(s\).
+
+\textbf{Proof.} The quasi-finite locus is open by the existing earlier
+\href{../AG-MO/AG-MO-12.html\#3-from-local-equalities-to-finite-affine-completions}{\emph{Zariski's
+Main Theorem}, Theorem 3.1}. It contains the entire finite fiber: the
+pointwise finite-fiber test is proved in \emph{Quasi-finite morphisms
+and Chevalley}, Theorem 1.1. Its closed complement has closed image in
+\(S\), by properness, and that image misses \(s\). Remove the image. The
+restricted map has only finite fibers, and Theorem 5.2 makes it finite.
+\(\square\)
+
+\textbf{Lemma 5.4 (cartesian nilpotent thickenings).} Let
+\(Y_0\hookrightarrow Y\) be defined by an ideal \(J\) with \(J^N=0\),
+let \(f:X\to Y\), and put \(X_0=X\times_Y Y_0\). If \(f_0:X_0\to Y_0\)
+is of finite type, a closed immersion, or proper, respectively, then so
+is \(f\).
+
+\textbf{Proof.} First a nilpotent thickening \(T\) of an affine scheme
+\(T_0\) is affine. Their topological spaces coincide, so \(T\) is
+quasi-compact and quasi-separated. For every quasi-coherent \(M\) on
+\(T\), its finite filtration by powers of the nilpotent ideal has layers
+which are quasi-coherent on \(T_0\). Affine acyclicity and the
+cohomology sequences give \(H^1(T,M)=0\). The Serre affine criterion
+proved in the affine-cohomology lesson now gives affineness.
+
+Work over an affine of \(Y\), and cover \(X_0\) by finitely many affines
+if \(f_0\) is of finite type. The corresponding open thickenings in
+\(X\) are affine by the preceding argument. On one of them, write the
+ring map \(B\to C\). If \(C/JC\) is generated over \(B/J\) by finitely
+many elements, lift them and let \(D\subset C\) be the \(B\)-subalgebra
+they generate. Then \(C=D+JC\); iteration gives \(C=D+J^NC=D\). This
+proves finite type. If \(f_0\) is a closed immersion, \(X_0\) over this
+affine is affine, hence \(X\) is affine. Surjectivity modulo \(J\) gives
+\(C=\operatorname{im}(B)+JC\); the same iteration makes \(B\to C\)
+surjective, proving closed immersion. These affine conclusions are local
+on the target.
+
+If \(f_0\) is proper, finite type was just proved. Its diagonal is a
+closed immersion; the diagonal of \(f_0\) is the cartesian
+nilpotent-base restriction of the diagonal of \(f\), so the
+closed-immersion result makes \(f\) separated. Finally, after every base
+change, both the source and target have the same underlying spaces as
+their nilpotent-base restrictions. Images of closed subsets are
+therefore closed, because the base change of \(f_0\) is closed. This
+proves universal closedness and hence properness. \(\square\)
+
+\subsection{6. The blow-up of a plane
+point}\label{the-blow-up-of-a-plane-point}
+
+Let \(b:X\to\mathbf A^2_k\) be the blow-up of the origin and
+\(E\cong\mathbf P^1_k\) its exceptional curve. Its two charts are \[
+U=\operatorname{Spec}k[x,v],\quad y=xv,
+\qquad V=\operatorname{Spec}k[u,y],\quad x=uy.
+\] They identify the blow-up with the closed incidence scheme in
+\(\mathbf A^2\times\mathbf P^1\), so \(b\) is projective and proper. Off
+the origin it is an isomorphism. The pulled-back origin ideal
+\(\mathfrak m=(x,y)\) is generated by \(x\) on \(U\) and by \(y\) on
+\(V\), and is the invertible ideal \(J=\mathcal O_X(-E)\). On the
+overlap \(y=vx\), so its conormal restriction is \(\mathcal O_E(1)\).
+Consequently \[
+J^j/J^{j+1}\cong\mathcal O_E(j)\quad(j\geq0).
+\] The positive sign is essential: the normal bundle of \(E\) is
+\(\mathcal O_E(-1)\), whereas the successive ideal layers use its dual.
+
+The thickened fiber \(X_n\) is defined by \(J^n\). For \(n\geq2\), \[
+0\to\mathcal O_E(n-1)\to\mathcal O_{X_n}\to\mathcal O_{X_{n-1}}\to0.
+\] Projective-line cohomology gives \(H^1(E,\mathcal O_E(j))=0\) for
+every \(j\geq0\). The long exact sequences, starting with \(X_1=E\),
+give \(H^1(X_n,\mathcal O_{X_n})=0\) for all \(n\). By formal functions
+and Nakayama, \((R^1b_*\mathcal O_X)_0=0\). Away from zero the morphism
+is an isomorphism, so \[
+R^1b_*\mathcal O_X=0.
+\] All still higher direct images vanish by the fiber-dimension bound,
+because the largest fiber dimension is one.
+
+We can also see the completed degree-zero comparison explicitly. The
+canonical polynomial map \[
+k[x,y]/(x,y)^n\longrightarrow H^0(X_n,\mathcal O_{X_n})
+\] is an isomorphism. For \(n=1\) both sides are \(k\). At the induction
+step, its map on the leftmost ideal layers is \[
+(x,y)^{n-1}/(x,y)^n\xrightarrow{\sim}H^0(E,\mathcal O_E(n-1)),
+\] the monomial basis identification from projective-space cohomology.
+Both the polynomial quotient sequence and the section sequence are short
+exact, the latter because the layer has zero \(H^1\). Induction proves
+the isomorphism. Their limits give \(k[[x,y]]\). The unit map from the
+base local ring to \((b_*\mathcal O_X)_0\) becomes an isomorphism after
+completion. Exactness and faithful flatness of completion for finite
+modules make it an isomorphism before completion; off the origin the
+same holds directly. Thus \(b_*\mathcal O_X=\mathcal O_{\mathbf A^2}\),
+as well as higher vanishing.
+
+\subsection{7. Exercises with solutions}\label{exercises-with-solutions}
+
+\textbf{Exercise 7.1 (easy: completed constants).} State and prove the
+completed-stalk formula for \(f_*\mathcal O_X\) at a point of a locally
+Noetherian base.
+
+\textbf{Solution.} For proper \(f\), Corollary 4.2 in degree zero gives
+\(\widehat{(f_*\mathcal O_X)_s}=\varprojlim_n H^0(X_n,\mathcal O_{X_n})\),
+with \(X_n\) defined over \(\mathcal O_{S,s}/\mathfrak m_s^n\).
+Localization is flat, so identifies the stalk with degree-zero
+cohomology over the local ring; global formal functions for that ring
+and ideal gives the formula. All maps preserve multiplication, since
+they are restriction maps of structure sheaves. Hence it is an
+isomorphism of complete algebras, not only of modules.
+
+\textbf{Exercise 7.2 (medium: the exceptional layers).} Compute the
+ideal layers of the exceptional curve in the plane blow-up and deduce
+\(R^1b_*\mathcal O_X=0\).
+
+\textbf{Solution.} The local ideal frames are \(x\) and \(y\), related
+by \(y=vx\); their restriction has the transition of
+\(\mathcal O_{\mathbf P^1}(1)\). Since the ideal is invertible, its
+\(j\)-th layer is its restricted \(j\)-th tensor power,
+\(\mathcal O_{\mathbf P^1}(j)\). Their \(H^1\) groups vanish for
+\(j\geq0\), so induction on the exact thickening sequences gives zero
+\(H^1\) on every \(X_n\). Formal functions gives zero completed stalk at
+the origin, and finite-module Nakayama gives zero stalk. Off the origin
+the map is an isomorphism, proving the global assertion.
+
+\textbf{Exercise 7.3 (medium: finite fibers).} Derive finiteness of a
+proper morphism with finite fibers using only formal functions, affine
+cohomology and Serre's criterion.
+
+\textbf{Solution.} Every fiber and thickening has dimension zero, so its
+positive cohomology is zero. Formal functions and Nakayama annihilate
+\(R^1f_*J\) for every coherent ideal. Over an affine Noetherian base,
+Leray and affine vanishing give \(H^1(X,J)=0\). The finite-ideal affine
+criterion makes \(X\) affine. Proper finiteness makes its coordinate
+algebra finite over the base algebra, which is exactly finiteness of the
+morphism. This also covers empty fibers.
+
+\textbf{Exercise 7.4 (medium: a uniform dimension bound).} If
+\(\dim X_s\leq d\) for every \(s\), prove \(R^qf_*F=0\) for \(q>d\). Can
+\(\dim X\) replace the fiber calculation in the proof without further
+assumptions?
+
+\textbf{Solution.} Theorem 5.1 kills every stalk in the stated degrees,
+hence kills the sheaf. The proof works on the Noetherian topology of
+each thickened fiber and does not require a dimension bound on the total
+space. A locally Noetherian base can have unbounded or infinite Krull
+dimension, so a total-space bound might be unavailable and would in any
+event miss the sharper relative assertion.
+
+\textbf{Exercise 7.5 (hard: the inverse-limit step).} Prove the
+stabilization and limit claims from (1), without assuming the middle
+transitions are surjective.
+
+\textbf{Solution.} The right transition \(K_m^{q+1}\to K_n^{q+1}\) is
+zero for \(m\geq n+c\), so the middle image lies in \(M^q/J_n^q\). The
+left transition is onto, so the middle image contains this entire
+submodule. Equality proves Mittag--Leffler stabilization. A compatible
+family in the middle maps to a compatible family in the pro-zero right
+system. Each of its right coordinates is the image of a sufficiently
+distant zero transition, so is zero. Each middle coordinate therefore
+has a unique preimage in the injective left term, and uniqueness forces
+compatibility of those preimages. Thus the two limits agree. Finally
+\(I^nM^q\subset J_n^q\) and \(J_{n+c_J}^q\subset I^nM^q\) identify the
+left limit continuously with the adic completion. Every assertion is
+justified without finite-level surjectivity of the middle system.
+
+\textbf{Exercise 7.6 (challenging: transient infinitesimal sections).}
+For the extension with class \(t\) on \(\mathbf P^1_{k[t]}\), compute
+\(H^0\) on every thickening \(B_n=k[t]/(t^n)\), its transition maps, and
+its inverse limit.
+
+\textbf{Solution.} Its Grothendieck complex is \([A\xrightarrow{t}A]\)
+in degrees zero and one. Over \(B_n\), the kernel of multiplication by
+\(t\) is \(k\,t^{n-1}\), including \(k\) when \(n=1\). Reduction
+\(B_{n+1}\to B_n\) sends its kernel generator \(t^n\) to zero. Thus all
+adjacent transitions on degree-zero cohomology are zero, and its inverse
+limit is zero. This agrees with the completion of \(H^0(X,E)=0\),
+although every finite thickening has a nonzero section. In degree one,
+the cokernel is \(k\) at every level and the transitions are identities;
+its limit agrees with the completion of \(A/(t)\). This exhibits both
+the transient error and the persistent cohomology in one family.
+
+\subsection{8. Ampleness near a fiber}\label{ampleness-near-a-fiber}
+
+\textbf{Theorem 8.1.} If \(f:X\to S\) is proper with \(S\) locally
+Noetherian and \(L|_{X_s}\) is ample, then \(L\) is relatively ample
+over an open neighborhood of \(s\).
+
+\textbf{Proof.} Work first over \(A=\mathcal O_{S,s}\), with maximal
+ideal \(\mathfrak m\). Put \(X_n=V(\mathfrak m^n\mathcal O_X)\). The
+layers \(D_n=\mathfrak m^n\mathcal O_X/\mathfrak m^{n+1}\mathcal O_X\)
+form a finite graded module over
+\(\mathcal O_{X_1}\otimes_{A/\mathfrak m}\operatorname{gr}_{\mathfrak m}A\):
+multiplication gives a surjection from that ring onto their direct sum,
+generated in degree zero. The associated graded ring is Noetherian and
+finite type. Apply the Serre vanishing theorem to this finite module on
+the base change of the proper fiber \(X_1\), with the pulled-back ample
+\(L_1\). Affine pushforward and the finite affine-cover complex split
+its cohomology by graded degree. Thus one \(d_0\) gives
+\(H^1(X_1,D_n\otimes L_1^d)=0\) for every \(n\) and every \(d\ge d_0\).
+The exact thickening sequences consequently lift each section of
+\(L_1^d\) successively to all \(X_n\). Formal functions identifies the
+compatible lift with an element of the completion of the finite module
+\(H^0(X,L^d)\). Its reduction modulo \(\mathfrak m\) comes from that
+module itself, so the original section lifts to an actual section on
+\(X\).
+
+Choose \(d\ge d_0\) for which finitely many sections embed the fiber in
+projective space, using the ample embedding lemma in the Serre lesson.
+Lift them as above. The local-base cohomology localization proved in the
+affine lesson represents the finite collection over an affine
+neighborhood of \(s\). Their evaluation cokernel is coherent; its proper
+closed support has closed image missing \(s\). Shrink away from that
+image. They now generate \(L^d\) and define a morphism
+\(h:X\to\mathbf P^r_S\), proper by the closed-graph factorization, whose
+fiber at \(s\) is a closed immersion. The quasi-finite open of \(h\)
+contains all of \(X_s\). Its closed complement has closed image in
+\(S\), since \(X/S\) is proper. Shrinking once more makes \(h\)
+quasi-finite everywhere. Theorem 5.2 makes it finite, checked on affine
+opens of its target. The inverse images of standard affine projective
+charts are now affine; these are exactly the section opens for the
+pulled-back coordinate sections of \(L^d=h^*\mathcal O(1)\). They yield
+an affine basis after allowing all powers of the line bundle. Indeed, on
+one such affine inverse image \(X_{s_i}\), take any principal open
+\(D(a)\). Lemma 1.1 of the Serre lesson extends \(a\) to a section \(t\)
+of a power of \(L^d\), with \(a=t/s_i^b\) on that chart. Multiplying
+\(t\) once more by \(s_i\) forces its nonvanishing open to be contained
+in that chart, and that open is exactly \(D(a)\). These principal opens
+form a basis. Hence \(L^d\) is relatively ample. The positive-power
+criterion proved in the Serre lesson makes \(L\) relatively ample.
+\(\square\)
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}Stacks{]}} The Stacks project authors, \emph{The Stacks
+  project}, in its AI Integrated Stacks Project edition: graded powers
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-cohomology-powers-ideal-times-F}{Tag
+  02O8}; filtration consequences
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-cohomology-powers-ideal-application}{Tag
+  02OA}; Mittag--Leffler
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-ML-cohomology-powers-ideal}{Tag
+  02OB}; formal functions
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-theorem-formal-functions}{Tag
+  02OC}; stalk form
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-formal-functions-stalk}{Tag
+  02OD}.
+\item
+  Dimension bound
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-higher-direct-images-zero-above-dimension-fibre}{Tag
+  02V7}, using the open topological theorem
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html\#cohomology-proposition-vanishing-Noetherian}{Tag
+  02UZ}; finiteness
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-characterize-finite}{Tag
+  02OG}. The additional ampleness proof is
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-ample-on-fibre}{Tag
+  0D2M} and
+  \href{https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html\#coherent-lemma-ample-in-neighbourhood}{Tag
+  0D2N}.
+\item
+  These open reference treatments retain GNU FDL 1.2. The independently
+  authored sections, examples and solutions retain CC0; the adapted
+  Appendix Z retains its stated GFDL-1.2-or-later terms. Sections 2--5
+  prove the assigned formal-functions, vanishing and finiteness results;
+  the completion algebra belongs to the named prerequisite, and Section
+  8 proves the additional ampleness consequence.
+\end{itemize}
+
+\subsection{Appendix Z. Conductor coefficients and strong
+transcendence}\label{appendix-z.-conductor-coefficients-and-strong-transcendence}
+
+This appendix supplies the conductor and strong-transcendence arguments
+used in the algebraic Zariski Main proof. The proofs are written here,
+at the point where this lesson uses that argument. All rings are
+commutative with identity and all ring maps preserve identity.
+``Finite'' means finite as a module. The notation \(R[X]\) denotes a
+polynomial ring in a formal variable; \(R[x]\subset S\) denotes the
+image algebra generated by an element \(x\in S\). No Noetherian
+hypothesis is imposed. Reducedness and the domain hypotheses enter only
+where stated.
+
+\emph{Adapted from The Stacks Project Authors, Johan de Jong and
+contributors, by GPT-6.1 Sol (OpenAI) in Codex at Ultra effort, October
+2026. Copyright (C) 2005--2025 Johan de Jong. This adapted appendix is
+licensed under the GNU Free Documentation License, version 1.2 or any
+later version, with no Invariant Sections, no Front-Cover Texts and no
+Back-Cover Texts. A copy of the license is supplied in
+\url{COPYING-GFDL-1.2.txt}. The lesson's general CC0 notice does not
+replace this appendix's GFDL notice.}
+
+The earlier algebra proofs we use are
+\href{../AG-CA/AG-CA-05.html}{Integral extensions: lying over, going up
+and going down, Theorems 1.1--1.2 and Proposition 1.3}, for the
+determinant test, closure and transitivity of integrality, and finite
+base change; its Theorem 3.2 for lying over and Theorem 4.3 for going
+down over an arbitrary normal domain;
+\href{../AG-CA/AG-CA-02.html}{Localization, local properties and
+support, Section 1 and Theorems 3.1--3.2}, for the fraction zero test,
+prime correspondence and residue-field fibres;
+\href{../AG-CA/AG-CA-01.html}{Spectra of rings, Theorem 1.2, Theorem 5.2
+and Corollary 5.3}, for radicals as intersections of primes, clopen
+subsets and products; and \href{../AG-CA/AG-CA-03.html}{Noetherian and
+Artinian rings, Lemma 4.1 and Theorem 4.2}, for Artinian spectra. The
+pointwise quasi-finite test, including finiteness of the residue
+extension and of the local fibre algebra, is proved in
+\href{../AG-MO/AG-MO-06.html}{Quasi-finite morphisms and Chevalley's
+theorem, Theorem 1.1}. Polynomial normality over an arbitrary normal
+domain is
+\href{the-theorem-on-formal-functions.html\#0-a-normality-input-in-the-algebraic-zariski-main-proof}{Lemma
+0.1 of this lesson}.
+
+\subsubsection{Z.1. Integral closure and
+localization}\label{z.1.-integral-closure-and-localization}
+
+\textbf{Lemma Z.1.} Let \(A\to B\) be a ring map, let \(T\subset A\) be
+multiplicative, and let \(B^{\mathrm{int}}\subset B\) be the subalgebra
+of elements integral over \(A\). The integral closure of \(T^{-1}A\) in
+\(T^{-1}B\) is \(T^{-1}B^{\mathrm{int}}\), viewed as a subring of
+\(T^{-1}B\).
+
+\textbf{Proof.} Localization of the inclusion
+\(B^{\mathrm{int}}\subset B\) is still injective: if a fraction from the
+first ring becomes zero in the second, a member of \(T\) kills its
+numerator already in \(B^{\mathrm{int}}\). A monic equation for
+\(b\in B^{\mathrm{int}}\), divided by the appropriate powers of
+\(s\in T\), gives a monic equation for \(b/s\) over \(T^{-1}A\). This
+proves one inclusion.
+
+For the converse write an integral element as \(z=b/s\), with
+\(b\in B\), \(s\in T\), and choose an equation \[
+z^d+\sum_{i=1}^d \frac{a_i}{t_i}z^{d-i}=0,
+\qquad a_i\in A,\quad t_i\in T.
+\] Put \(t=\prod_i t_i\) and \(y=tb\). Multiplication by \((st)^d\)
+gives, in \(T^{-1}B\), \[
+g(y)=y^d+\sum_{i=1}^d c_i y^{d-i}=0,
+\qquad c_i=a_i s^i t^{\,i-1}\prod_{j\ne i}t_j\in A.
+\] Here and below coefficients act through the given ring map. The
+equation in the localization means that some \(v\in T\) satisfies
+\(v g(y)=0\) in \(B\). Consequently \[
+(vy)^d+\sum_{i=1}^d v^i c_i (vy)^{d-i}
+=v^d g(y)=0
+\] in \(B\). This is a monic equation over \(A\), so
+\(vy\in B^{\mathrm{int}}\), and \(z=vy/(vts)\) belongs to
+\(T^{-1}B^{\mathrm{int}}\). No cancellation or nonzero-divisor
+hypothesis was used. \(\square\)
+
+\subsubsection{Z.2. Removing a monic
+denominator}\label{z.2.-removing-a-monic-denominator}
+
+\textbf{Lemma Z.2.} Let \(\varphi:R[X]\to S\) be a ring map and let
+\(t\in S\) be integral over \(R[X]\). Suppose that for some monic
+\(p\in R[X]\) the element \(t\varphi(p)\) belongs to
+\(\operatorname{im}\varphi\). There is \(q\in R[X]\) such that
+\(t-\varphi(q)\) is integral over \(R\).
+
+\textbf{Proof.} If \(S\) is the zero ring, take \(q=0\), so assume
+otherwise. Choose \(r\in R[X]\) with \(t\varphi(p)=\varphi(r)\).
+Division by a monic polynomial works over every ring: if the current
+dividend has degree at least \(\deg p\), subtract its leading
+coefficient times the appropriate power of \(X\) times \(p\); its degree
+decreases, and finitely many repetitions give \(r=qp+r'\) with
+\(\deg r'<\deg p\). If \(p=1\), take \(q=r\); the difference is zero.
+Otherwise put \(\tau=t-\varphi(q)\). Integral elements form a subalgebra
+by the earlier Theorem 1.2, so \(\tau\) is still integral over \(R[X]\),
+and \[
+\tau\varphi(p)=\varphi(r').
+\] In \(S_\tau\) this becomes \(\varphi(p)-\tau^{-1}\varphi(r')=0\).
+Since \(p\) is monic and \(r'\) has smaller degree, this is a monic
+equation for \(x=\varphi(X)\) over the subring
+\(D=\varphi(R)[1/\tau]\subset S_\tau\). Thus \(D[x]\) is integral over
+\(D\). The original integral equation for \(\tau\), now regarded in
+\(S_\tau\), also shows that \(\tau\) is integral over \(D[x]\).
+Transitivity, proved in the earlier Theorem 1.2, makes \(\tau\) integral
+over \(D\). We can therefore write \[
+\tau^d+\sum_{i<d}\left(\sum_{j=0}^{n_i}
+\frac{\varphi(b_{ij})}{\tau^j}\right)\tau^i=0
+\quad\text{in }S_\tau,
+\qquad b_{ij}\in R.
+\] Choose an integer \(N\) large enough to clear all displayed negative
+powers and to kill the resulting localization error. More explicitly,
+first clear those powers; the resulting element of \(S\) becomes zero in
+\(S_\tau\), so some further power of \(\tau\) kills it. Combining the
+two powers gives \[
+\tau^{d+N}+\sum_{i<d}\sum_{j=0}^{n_i}
+\varphi(b_{ij})\tau^{i+N-j}=0
+\quad\text{in }S.
+\] Every lower exponent is nonnegative and strictly less than \(d+N\).
+This is a monic equation for \(\tau\) over \(R\), even when \(\tau\) is
+a zero divisor. \(\square\)
+
+\subsubsection{Z.3. Clearing a leading
+coefficient}\label{z.3.-clearing-a-leading-coefficient}
+
+\textbf{Lemma Z.3.} Let \(\varphi:R[X]\to S\) be a ring map, let
+\(t\in S\) be integral over \(R[X]\), and let \[
+p=\sum_{i=0}^k a_iX^i\in R[X]
+\] satisfy \(t\varphi(p)\in\operatorname{im}\varphi\). Then there are an
+integer \(n\geq0\) and \(q\in R[X]\) such that
+\(\varphi(a_k)^n t-\varphi(q)\) is integral over \(R\).
+
+\textbf{Proof.} Write \(a=a_k\). If \(a\) is nilpotent in \(R\), choose
+a power \(a^n=0\) and take \(q=0\). Otherwise localize \(R\) at \(a\),
+and \(S\) at \(\varphi(a)\). The polynomial \(p/a\in R_a[X]\) is monic,
+so Lemma Z.2 gives \(q'\in R_a[X]\) for which \(t-\varphi_a(q')\) is
+integral over \(R_a\). Choose \(e\geq0\) and \(q_0\in R[X]\) such that
+\(q_0/1=a^e q'\). Multiplication by \(a^e\) preserves integrality, since
+integral elements form an \(R_a\)-subalgebra. Hence the image in
+\(S_{\varphi(a)}\) of \[
+\delta=\varphi(a)^e t-\varphi(q_0)
+\] is integral over \(R_a\).
+
+By Lemma Z.1, this image can be written as \(c/\varphi(a)^j\), where
+\(c\in S\) is integral over \(R\). Equality of these two fractions means
+that for some \(\ell\geq0\), \[
+\varphi(a)^\ell\bigl(\varphi(a)^j\delta-c\bigr)=0
+\quad\text{in }S.
+\] Thus \(\varphi(a)^{j+\ell}\delta=\varphi(a)^\ell c\) is integral over
+\(R\). Taking \(n=e+j+\ell\) and \(q=a^{j+\ell}q_0\) proves the
+assertion. This last step explicitly clears the possible localization
+error. \(\square\)
+
+\subsubsection{Z.4. The conductor setup}\label{z.4.-the-conductor-setup}
+
+\textbf{Situation Z.4.} Let \(\varphi:R[X]\to S\) be finite, put
+\(A=\varphi(R)\), \(x=\varphi(X)\), and
+\(C=A[x]=\operatorname{im}\varphi\). Assume that \(A\) is integrally
+closed in \(S\): every element of \(S\) integral over \(A\) belongs to
+\(A\). This condition concerns this inclusion; it does not require \(A\)
+to be a domain. Define the conductor \[
+J=\{g\in S:gS\subset C\}.
+\] It is an ideal of \(S\): sums preserve the defining condition, and
+\(hgS\subset gS\) for \(h\in S\). Also \(J\subset C\), by evaluating on
+\(1\).
+
+Choose \(C\)-module generators \(t_1,\ldots,t_r\) of \(S\), adding \(1\)
+if needed. For \(g\in S\), we have \(g\in J\) exactly when \(gt_i\in C\)
+for all \(i\). Indeed, this condition makes every \(C\)-linear
+combination of the \(gt_i\) belong to \(C\). These observations also
+cover the zero ring.
+
+\subsubsection{Z.5. The leading coefficient enters the
+conductor}\label{z.5.-the-leading-coefficient-enters-the-conductor}
+
+\textbf{Lemma Z.5.} In Situation Z.4, let \(u\in S\) and
+\(p=\sum_{i=0}^k a_iX^i\in R[X]\). If \(u\varphi(p)\in J\), there is
+\(m\geq0\) such that \(u\varphi(a_k)^m\in J\).
+
+\textbf{Proof.} For each module generator \(t_i\), the element
+\(ut_i\in S\) is integral over \(R[X]\), because \(S\) is finite over
+\(R[X]\) and the earlier determinant test proves finite algebras
+integral. Moreover \[
+(ut_i)\varphi(p)=(u\varphi(p))t_i\in C.
+\] Lemma Z.3 gives \(n_i\geq0\) and \(q_i\in R[X]\) such that \[
+\varphi(a_k)^{n_i}ut_i-\varphi(q_i)
+\] is integral over \(R\), equivalently over its image \(A\). The
+integral-closedness assumption puts this difference in \(A\subset C\);
+hence \(\varphi(a_k)^{n_i}ut_i\in C\). With \(m=\max_i n_i\),
+multiplication by additional powers of \(\varphi(a_k)\in C\) gives
+\(u\varphi(a_k)^m t_i\in C\) for every \(i\). The generator
+characterization in Situation Z.4 now gives \(u\varphi(a_k)^m\in J\).
+\(\square\)
+
+\subsubsection{Z.6. Every coefficient enters the
+radical}\label{z.6.-every-coefficient-enters-the-radical}
+
+\textbf{Lemma Z.6.} In Situation Z.4, if \(u\varphi(p)\in\sqrt J\),
+where \(u\in S\) and \(p=\sum_{i=0}^k a_iX^i\), then
+\(u\varphi(a_i)\in\sqrt J\) for every \(i\).
+
+\textbf{Proof.} Choose \(N\geq1\) with \(u^N\varphi(p^N)\in J\). The
+coefficient of \(X^{kN}\) in \(p^N\) is \(a_k^N\), so Lemma Z.5 gives \[
+u^N\varphi(a_k)^{Nm}\in J
+\] for some \(m\geq0\). Increase \(m\) to at least \(1\), which is
+allowed because \(J\) is an ideal. Then \[
+(u\varphi(a_k))^{Nm}
+=u^{N(m-1)}\bigl(u^N\varphi(a_k)^{Nm}\bigr)\in J.
+\] Thus \(u\varphi(a_k)\in\sqrt J\). Subtracting the term
+\(u\varphi(a_k)x^k\) from \(u\varphi(p)\) leaves
+\(u\varphi(p-a_kX^k)\in\sqrt J\). Induction on the chosen top index
+\(k\) proves the assertion for all coefficients; for \(k=0\) the first
+step already proves it. \(\square\)
+
+\subsubsection{Z.7. Strong transcendence and the conductor
+quotient}\label{z.7.-strong-transcendence-and-the-conductor-quotient}
+
+\textbf{Definition Z.7.} For an inclusion \(R\subset S\), an element
+\(x\in S\) is \textbf{strongly transcendental over \(R\)} if every
+equation \[
+u\sum_{i=0}^k a_ix^i=0,
+\qquad u\in S,\quad a_i\in R,
+\] implies \(ua_i=0\) for every \(i\). If \(R\subset S\) are domains,
+this is equivalent to ordinary transcendence: the case \(u=1\) gives
+injectivity of \(R[X]\to S\), and conversely a nonzero \(u\) can be
+cancelled in a domain.
+
+In Situation Z.4 put \[
+S_0=S/\sqrt J,\qquad A_0=A/(A\cap\sqrt J)\subset S_0,
+\] and let \(x_0\) be the image of \(x\). Then \(A_0\) and \(S_0\) are
+reduced, \(S_0\) is finite over \(A_0[x_0]\), and \(x_0\) is strongly
+transcendental over \(A_0\).
+
+\textbf{Proof of the assertion.} The displayed map from \(A_0\) is
+injective by its definition. The ring \(S_0\) is reduced because the
+quotient ideal is radical; its subring \(A_0\) is therefore reduced. The
+images of the finite \(C\)-module generators of \(S\) generate \(S_0\)
+over the image \(A_0[x_0]\).
+
+Given a relation \(u_0\sum_i\bar a_i x_0^i=0\), lift \(u_0\) to
+\(u\in S\), the \(\bar a_i\) to \(a_i\in A\), and these coefficients to
+\(r_i\in R\) with \(\varphi(r_i)=a_i\). The relation says
+\(u\varphi(\sum_i r_iX^i)\in\sqrt J\). Lemma Z.6 gives
+\(ua_i\in\sqrt J\) for every \(i\), which is precisely \(u_0\bar a_i=0\)
+in \(S_0\). \(\square\)
+
+\subsubsection{Z.8. Quasi-finiteness in a four-ring
+diagram}\label{z.8.-quasi-finiteness-in-a-four-ring-diagram}
+
+\textbf{Lemma Z.8.} Consider a commutative square of rings \[
+\begin{array}{ccc}
+R&\longrightarrow&S\\
+\downarrow&&\downarrow\\
+R'&\longrightarrow&S'.
+\end{array}
+\] Let \(\mathfrak q'\subset S'\) contract to \(\mathfrak q\subset S\)
+and \(\mathfrak p'\subset R'\); write
+\(\mathfrak p=\mathfrak q\cap R=\mathfrak p'\cap R\). Suppose \(R\to S\)
+is of finite type and the canonical map \(S\otimes_R R'\to S'\) is
+surjective. If \(R\to S\) is quasi-finite at \(\mathfrak q\), then
+\(R'\to S'\) is quasi-finite at \(\mathfrak q'\).
+
+\textbf{Proof.} Put \(k=\kappa(\mathfrak p)\),
+\(k'=\kappa(\mathfrak p')\), \(F=S\otimes_R k\), and
+\(F'=S'\otimes_{R'}k'\). The contractions give field inclusions
+\(k\subset k'\) and \(\kappa(\mathfrak q)\subset\kappa(\mathfrak q')\).
+The fibre prime corresponding to \(\mathfrak q\) is isolated by
+quasi-finiteness, and is closed by the earlier pointwise test. Its
+singleton is consequently clopen in \(\operatorname{Spec}F\).
+
+The clopen-idempotent theorem and product decomposition proved in the
+earlier spectra lesson give \[
+F=F_1\times F_2,
+\] with the singleton as \(\operatorname{Spec}F_1\). The ring \(F_1\)
+has only one prime, which is its unique maximal ideal. Elements outside
+this ideal are units, so localization at it does not change \(F_1\).
+Thus \(F_1\) is the local fibre ring at \(\mathfrak q\), and the earlier
+pointwise test makes \(F_1\) finite-dimensional over \(k\).
+
+Tensoring the assumed surjection with \(k'\) gives a surjection \[
+F\otimes_k k'\longrightarrow F'.
+\] The complementary idempotents of \(F\) give \(F'=F'_1\times F'_2\),
+with surjections \(F_i\otimes_k k'\to F'_i\). In particular \(F'_1\) is
+finite-dimensional over \(k'\). The composite
+\(F\to F'\to\kappa(\mathfrak q')\) factors through
+\(\kappa(\mathfrak q)\): it is induced by the ring map and the
+contraction \(\mathfrak q'\cap S=\mathfrak q\). Therefore it kills the
+\(F_2\) idempotent, just as \(F\to\kappa(\mathfrak q)\) does. The point
+\(\mathfrak q'\) consequently belongs to \(\operatorname{Spec}F'_1\).
+
+A finite-dimensional algebra over a field is Artinian, since a
+descending chain of ideals is a descending chain of vector subspaces.
+The earlier Artinian theorem makes its spectrum a finite set of closed
+points, hence discrete: the complement of each point is a finite union
+of closed points. Thus \(\mathfrak q'\) is isolated in
+\(\operatorname{Spec}F'_1\), and in \(\operatorname{Spec}F'\), because
+this factor is open and closed. Finally \(R'\to S'\) is of finite type:
+\(S'\) is a quotient of the finite type \(R'\)-algebra
+\(S\otimes_R R'\). This verifies both parts of the quasi-finite
+condition. \(\square\)
+
+\subsubsection{Z.9. Passage to a minimal
+prime}\label{z.9.-passage-to-a-minimal-prime}
+
+\textbf{Lemma Z.9.} Let \(R\subset S\) be an inclusion of reduced rings,
+let \(x\in S\) be strongly transcendental over \(R\), and let
+\(\mathfrak q\) be a minimal prime of \(S\). Put
+\(\mathfrak p=R\cap\mathfrak q\). The image of \(x\) in
+\(S/\mathfrak q\) is strongly transcendental over \(R/\mathfrak p\).
+
+\textbf{Proof.} We first justify the local fact used here without a
+Noetherian assumption. The localization \(S_{\mathfrak q}\) is reduced.
+Indeed, if \((y/s)^n=0\), then some \(v\notin\mathfrak q\) satisfies
+\(vy^n=0\); hence \((vy)^n=0\) and reducedness of \(S\) gives \(vy=0\),
+so \(y/s=0\). Prime correspondence identifies the primes of
+\(S_{\mathfrak q}\) with primes of \(S\) contained in \(\mathfrak q\).
+Minimality leaves only \(\mathfrak qS_{\mathfrak q}\). The
+intersection-of-primes description of the nilradical, together with
+reducedness, therefore gives \(\mathfrak qS_{\mathfrak q}=0\). This
+local ring has zero maximal ideal, so is a field.
+
+Now suppose \(u\sum_i a_ix^i\in\mathfrak q\), with \(u\in S\) and
+\(a_i\in R\). This element becomes zero in \(S_{\mathfrak q}\), so there
+is \(v\notin\mathfrak q\) such that \(vu\sum_i a_ix^i=0\) in \(S\).
+Strong transcendence gives \(vua_i=0\) for every \(i\). Since
+\(\mathfrak q\) is prime and \(v\notin\mathfrak q\), we get
+\(ua_i\in\mathfrak q\) for every \(i\). These are exactly the required
+coefficient equalities after quotienting. The induced map
+\(R/\mathfrak p\to S/\mathfrak q\) is an inclusion by the contraction
+defining \(\mathfrak p\). \(\square\)
+
+\subsubsection{Z.10. Transcendence excludes quasi-finite points for
+domains}\label{z.10.-transcendence-excludes-quasi-finite-points-for-domains}
+
+\textbf{Lemma Z.10.} Suppose \(R\subset S\) are domains, \(x\in S\) is
+transcendental over \(R\), and \(S\) is finite over \(R[x]\). Then
+\(R\to S\) is not quasi-finite at any prime of \(S\).
+
+\textbf{Proof.} The map \(R\to S\) is of finite type: the element \(x\),
+together with a finite list of \(R[x]\)-module generators of \(S\),
+generates \(S\) as an \(R\)-algebra.
+
+First assume \(R\) is normal, meaning integrally closed in its fraction
+field. Transcendence identifies \(R[x]\) with \(R[X]\); Lemma 0.1 above
+proves that it is normal. Fix \(\mathfrak q\subset S\), put
+\(\mathfrak p=R\cap\mathfrak q\) and
+\(\mathfrak r=R[x]\cap\mathfrak q\), and suppose for contradiction that
+\(R\to S\) is quasi-finite at \(\mathfrak q\). The earlier pointwise
+test gives a finite field extension
+\(\kappa(\mathfrak p)\subset\kappa(\mathfrak q)\). The intermediate
+field \[
+\kappa(\mathfrak p)\subset\kappa(\mathfrak r)
+\subset\kappa(\mathfrak q)
+\] is therefore finite over \(\kappa(\mathfrak p)\). The containment
+\(\mathfrak pR[x]\subset\mathfrak r\) must be strict: equality would
+give \(\kappa(\mathfrak r)=\kappa(\mathfrak p)(X)\), a transcendental
+extension.
+
+The inclusion \(R[x]\subset S\) is integral, by its finiteness. The
+earlier going-down theorem for an integral inclusion of domains with
+normal base gives a prime \(\mathfrak q_0\subset\mathfrak q\) of \(S\)
+contracting to \(\mathfrak pR[x]\). It is distinct from \(\mathfrak q\),
+because their contractions to \(R[x]\) differ. Both primes contract to
+\(\mathfrak p\) in \(R\), so they are distinct points of the same fibre,
+with \(\mathfrak q_0\) specializing to \(\mathfrak q\). Every open
+containing a point contains its generizations, as is seen on the basic
+opens \(D(f)\). Thus \(\mathfrak q\) cannot be isolated in that fibre.
+This contradicts quasi-finiteness.
+
+For arbitrary \(R\), put \(K=\operatorname{Frac}R\),
+\(L=\operatorname{Frac}S\), let \(R'\) be the integral closure of \(R\)
+in \(K\), and let \(S'\subset L\) be the subring generated by \(S\) and
+\(R'\). These are domains. The ring \(R'\) is normal: an element of
+\(K\) integral over \(R'\) is integral over \(R\) by transitivity, and
+hence belongs to \(R'\). Its fraction field is \(K\), because
+\(R\subset R'\subset K\).
+
+The element \(x\) remains transcendental over \(R'\). Any relation over
+\(R'\subset K\), after multiplying by a common nonzero denominator from
+\(R\), would give a relation over \(R\). By construction
+\(S\otimes_R R'\to S'\) is surjective. If \(t_1,\ldots,t_r\) generate
+\(S\) over \(R[x]\), their images generate \(S'\) over \(R'[x]\): they
+generate the tensor product over \(R[x]\otimes_R R'=R'[X]\), and
+therefore its quotient \(S'\). Hence \(S'\) is finite over \(R'[x]\).
+
+Every element of \(R'\) is integral over \(S\), since its monic equation
+has coefficients in \(R\subset S\). Closure of integral elements under
+algebra generation makes \(S\subset S'\) integral. Lying over, in the
+earlier Theorem 3.2, gives a prime \(\mathfrak q'\subset S'\) above any
+prescribed prime \(\mathfrak q\subset S\). If \(R\to S\) were
+quasi-finite at \(\mathfrak q\), Lemma Z.8 applied to \(R,S,R',S'\)
+would make \(R'\to S'\) quasi-finite at \(\mathfrak q'\), contradicting
+the normal case. This uses neither finiteness of \(R'\) over \(R\) nor
+Noetherianity. \(\square\)
+
+\subsubsection{Z.11. Strong transcendence excludes quasi-finite
+points}\label{z.11.-strong-transcendence-excludes-quasi-finite-points}
+
+\textbf{Lemma Z.11.} Suppose \(R\subset S\) are reduced rings,
+\(x\in S\) is strongly transcendental over \(R\), and \(S\) is finite
+over \(R[x]\). Then \(R\to S\) is not quasi-finite at any prime of
+\(S\).
+
+\textbf{Proof.} Again \(R\to S\) is of finite type. Fix a prime
+\(\mathfrak q\subset S\) and choose a minimal prime
+\(\mathfrak q_0\subset\mathfrak q\). Such a prime exists without
+Noetherianity: order the primes contained in \(\mathfrak q\) by reverse
+inclusion. A nonempty chain has an upper bound given by its
+intersection, which is a proper prime ideal contained in
+\(\mathfrak q\). To check primality, if neither \(a\) nor \(b\) belongs
+to that intersection, choose members of the chain omitting each; the
+smaller of these two prime ideals omits both and therefore omits \(ab\).
+The empty chain is bounded by \(\mathfrak q\). Zorn's lemma now gives a
+minimal prime.
+
+Put \(\mathfrak p_0=R\cap\mathfrak q_0\), \(R_0=R/\mathfrak p_0\), and
+\(S_0=S/\mathfrak q_0\). The induced inclusion \(R_0\subset S_0\) is an
+inclusion of domains. By Lemma Z.9, the image \(x_0\) is strongly
+transcendental, and hence transcendental, over \(R_0\). The quotient
+\(S_0\) remains finite over \(R_0[x_0]\), by the images of the same
+module generators. Lemma Z.10 says that \(R_0\to S_0\) is not
+quasi-finite at \(\mathfrak q/\mathfrak q_0\).
+
+The square \(R,S,R_0,S_0\) satisfies the hypotheses of Lemma Z.8: its
+tensor-product map is surjective, because
+\(S\otimes_R R_0=S/\mathfrak p_0S\) surjects onto \(S/\mathfrak q_0\).
+If \(R\to S\) were quasi-finite at \(\mathfrak q\), that lemma would
+make \(R_0\to S_0\) quasi-finite at \(\mathfrak q/\mathfrak q_0\), a
+contradiction. This proof does not require finitely many minimal primes.
+\(\square\)
+
+\subsubsection{Z.12. The conductor is avoided at a quasi-finite
+point}\label{z.12.-the-conductor-is-avoided-at-a-quasi-finite-point}
+
+\textbf{Corollary Z.12.} In Situation Z.4, if \(A\to S\) is quasi-finite
+at a prime \(\mathfrak q\subset S\), then \(J\not\subset\mathfrak q\).
+
+\textbf{Proof.} Suppose \(J\subset\mathfrak q\). Then
+\(\sqrt J\subset\mathfrak q\). Use the reduced rings
+\(A_0\subset S_0=S/\sqrt J\) and the strongly transcendental element
+\(x_0\) constructed in Z.7. They satisfy the hypotheses of Lemma Z.11,
+so \(A_0\to S_0\) is not quasi-finite at \(\mathfrak q/\sqrt J\).
+
+On the other hand \(A\to S\) is of finite type, because \(S\) is finite
+over \(A[x]\). The square \(A,S,A_0,S_0\) has surjective tensor-product
+map: the quotient \(S/(A\cap\sqrt J)S\) surjects onto \(S/\sqrt J\).
+Lemma Z.8 therefore transfers quasi-finiteness at \(\mathfrak q\) to
+quasi-finiteness at \(\mathfrak q/\sqrt J\), giving the contradiction.
+\(\square\)
+
+For the finite-over-one-generator step of
+\href{../AG-MO/AG-MO-12.html}{Zariski's Main Theorem, Section 2, Lemma
+2.1}, this corollary supplies precisely the conductor element outside
+the chosen prime. Lemma Z.6 supplies the preceding coefficient
+assertion, and Lemma Z.11 supplies the reduced strong-transcendence
+assertion. These are the two supporting arguments required there; the
+earlier lesson contains the separate monogenic argument and the main
+induction.
+
+\textbf{Source and license record.} The arguments adapted here are the
+bodies with Stacks tags 0307, 00PT, 00PV, 00PW (the situation), 00PX,
+00PY, 00PN, 00Q0, 00Q1 and 00Q2, together with the definition labelled
+``definition-strongly-transcendental'', in the
+\href{https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex}{frozen
+AI Integrated Stacks Project algebra source}. Tags identify the adapted
+bodies and their authorship; the mathematical dependencies in this
+appendix are the written proofs above and the exact earlier programme
+lessons identified in its opening paragraph. The source's GFDL
+authorship and license conditions remain attached to this adapted text.
+\clearpage\section*{Copyright and licence of Stacks adaptations}
+The identified Stacks proof adaptations retain the authorship of the Stacks project authors and AI Integrated Stacks Project contributors. Adaptations and added exposition by GPT-6.1 Sol (OpenAI), Codex, Ultra, 5 October 2026. Permission is granted to copy, distribute and/or modify these identified components under the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. Independently authored portions retain their stated CC0 terms. A copy of the licence follows.
+
+\begingroup\footnotesize
+\begin{verbatim}
+		GNU Free Documentation License
+		  Version 1.2, November 2002
+
+
+ Copyright (C) 2000,2001,2002  Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+
+0. PREAMBLE
+
+The purpose of this License is to make a manual, textbook, or other
+functional and useful document "free" in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially.
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+This License is a kind of "copyleft", which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+
+1. APPLICABILITY AND DEFINITIONS
+
+This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The "Document", below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as "you".  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+A "Modified Version" of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+A "Secondary Section" is a named appendix or a front-matter section of
+the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall subject
+(or to related matters) and contains nothing that could fall directly
+within that overall subject.  (Thus, if the Document is in part a
+textbook of mathematics, a Secondary Section may not explain any
+mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+The "Invariant Sections" are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+The "Cover Texts" are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+A "Transparent" copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent.
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not "Transparent" is called "Opaque".
+
+Examples of suitable formats for Transparent copies include plain
+ASCII without markup, Texinfo input format, LaTeX input format, SGML
+or XML using a publicly available DTD, and standard-conforming simple
+HTML, PostScript or PDF designed for human modification.  Examples of
+transparent image formats include PNG, XCF and JPG.  Opaque formats
+include proprietary formats that can be read and edited only by
+proprietary word processors, SGML or XML for which the DTD and/or
+processing tools are not generally available, and the
+machine-generated HTML, PostScript or PDF produced by some word
+processors for output purposes only.
+
+The "Title Page" means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, "Title Page" means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+A section "Entitled XYZ" means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as "Acknowledgements",
+"Dedications", "Endorsements", or "History".)  To "Preserve the Title"
+of such a section when you modify the Document means that it remains a
+section "Entitled XYZ" according to this definition.
+
+The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+
+2. VERBATIM COPYING
+
+You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+
+3. COPYING IN QUANTITY
+
+If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition.
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material.
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+
+4. MODIFICATIONS
+
+You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+A. Use in the Title Page (and on the covers, if any) a title distinct
+   from that of the Document, and from those of previous versions
+   (which should, if there were any, be listed in the History section
+   of the Document).  You may use the same title as a previous version
+   if the original publisher of that version gives permission.
+B. List on the Title Page, as authors, one or more persons or entities
+   responsible for authorship of the modifications in the Modified
+   Version, together with at least five of the principal authors of the
+   Document (all of its principal authors, if it has fewer than five),
+   unless they release you from this requirement.
+C. State on the Title page the name of the publisher of the
+   Modified Version, as the publisher.
+D. Preserve all the copyright notices of the Document.
+E. Add an appropriate copyright notice for your modifications
+   adjacent to the other copyright notices.
+F. Include, immediately after the copyright notices, a license notice
+   giving the public permission to use the Modified Version under the
+   terms of this License, in the form shown in the Addendum below.
+G. Preserve in that license notice the full lists of Invariant Sections
+   and required Cover Texts given in the Document's license notice.
+H. Include an unaltered copy of this License.
+I. Preserve the section Entitled "History", Preserve its Title, and add
+   to it an item stating at least the title, year, new authors, and
+   publisher of the Modified Version as given on the Title Page.  If
+   there is no section Entitled "History" in the Document, create one
+   stating the title, year, authors, and publisher of the Document as
+   given on its Title Page, then add an item describing the Modified
+   Version as stated in the previous sentence.
+J. Preserve the network location, if any, given in the Document for
+   public access to a Transparent copy of the Document, and likewise
+   the network locations given in the Document for previous versions
+   it was based on.  These may be placed in the "History" section.
+   You may omit a network location for a work that was published at
+   least four years before the Document itself, or if the original
+   publisher of the version it refers to gives permission.
+K. For any section Entitled "Acknowledgements" or "Dedications",
+   Preserve the Title of the section, and preserve in the section all
+   the substance and tone of each of the contributor acknowledgements
+   and/or dedications given therein.
+L. Preserve all the Invariant Sections of the Document,
+   unaltered in their text and in their titles.  Section numbers
+   or the equivalent are not considered part of the section titles.
+M. Delete any section Entitled "Endorsements".  Such a section
+   may not be included in the Modified Version.
+N. Do not retitle any existing section to be Entitled "Endorsements"
+   or to conflict in title with any Invariant Section.
+O. Preserve any Warranty Disclaimers.
+
+If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice.
+These titles must be distinct from any other section titles.
+
+You may add a section Entitled "Endorsements", provided it contains
+nothing but endorsements of your Modified Version by various
+parties--for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+
+5. COMBINING DOCUMENTS
+
+You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number.
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+In the combination, you must combine any sections Entitled "History"
+in the various original documents, forming one section Entitled
+"History"; likewise combine any sections Entitled "Acknowledgements",
+and any sections Entitled "Dedications".  You must delete all sections
+Entitled "Endorsements".
+
+
+6. COLLECTIONS OF DOCUMENTS
+
+You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+
+7. AGGREGATION WITH INDEPENDENT WORKS
+
+A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an "aggregate" if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit.
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form.
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+
+8. TRANSLATION
+
+Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4.
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+If a section in the Document is Entitled "Acknowledgements",
+"Dedications", or "History", the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+
+
+9. TERMINATION
+
+You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+
+10. FUTURE REVISIONS OF THIS LICENSE
+
+The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+https://www.gnu.org/copyleft/.
+
+Each version of the License is given a distinguishing version number.
+If the Document specifies that a particular numbered version of this
+License "or any later version" applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+
+
+ADDENDUM: How to use this License for your documents
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+    Copyright (c)  YEAR  YOUR NAME.
+    Permission is granted to copy, distribute and/or modify this document
+    under the terms of the GNU Free Documentation License, Version 1.2
+    or any later version published by the Free Software Foundation;
+    with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+    A copy of the license is included in the section entitled "GNU
+    Free Documentation License".
+
+If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the "with...Texts." line with this:
+
+    with the Invariant Sections being LIST THEIR TITLES, with the
+    Front-Cover Texts being LIST, and with the Back-Cover Texts being LIST.
+
+If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+\end{verbatim}\endgroup
+\end{document}

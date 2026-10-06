@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Isolated phases and local characteristic-cycle indices · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/isolated-phases-and-local-characteristic-cycle-indices.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Isolated phases and local characteristic-cycle indices</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="isolated-phases-and-local-characteristic-cycle-indices">Isolated phases and local characteristic-cycle indices</h1>
+<p>A differential graph can meet a characteristic cycle at a singular or degenerate point. The local number still has a cohomological meaning: it is the Euler characteristic of the sheaf's closed half-space test. We will prove this without replacing the isolated intersection by a transverse one. The proof converts that local test into a compact global calculation while controlling every covector created at the edge of a coordinate ball.</p>
+<p>Use <a href="differential-sections-and-proper-below-euler-indices.html">Differential sections and proper-below Euler indices</a> for the normalized supported intersection and compact-cohomology formula. <a href="../sheaf-proof-readings/SH03-limiting-cotangent-sums-and-characteristic-inverse-images.html#isotropy-of-the-full-limiting-sum">Limiting cotangent sums and characteristic inverse images</a> proves the full limiting-sum isotropy, including unbounded cancellation. <a href="../sheaf-proof-readings/SH03-isotropic-cotangent-transport-and-discrete-critical-values.html#the-microlocal-bertinisard-theorem">Isotropic cotangent transport and discrete critical values</a> supplies the proper critical-value argument. <a href="../sheaf-proof-readings/SH03-small-balls-central-fibres-and-supported-cohomology.html#the-three-comparisons">Small balls, central fibres and supported cohomology</a> proves the actual small-ball restriction to a stalk. <a href="../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html#perfect-inverse-images-tensors-and-internal-hom">Perfect operations and finite microlocal coefficients</a> supplies constructible internal Hom and open cutoffs.</p>
+<p>For the signed ordinary boundary estimate and supported finite-band Morse map, use the exact proofs in <a href="../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-BOUNDARY">Microsupport operations: open boundaries</a> and <a href="../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-MORSE">cohomology between two levels</a>. The curve-selection and singular one-form rules are the explicitly stated inputs and proved consequences in <a href="../sheaf-proof-readings/SH03-subanalytic-sets-and-limiting-tangent-directions.html#one-forms-on-a-singular-set">Subanalytic sets and limiting tangent directions</a>. The underlying subanalytic foundation proofs remain programme obligations; this lesson does not certify their transitive closure.</p>
+<p>Throughout, <span class="math" data-tex="\(X\)">\(X\)</span> is a finite-dimensional real analytic manifold, Hausdorff and countable at infinity, <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero, and <span class="math" data-tex="\(F\in D^b_{\mathbb R\text{-}c}(k_X)\)">\(F\in D^b_{\mathbb R\text{-}c}(k_X)\)</span> has perfect stalks. Complexes are globally bounded. The closed support is <span class="math" data-tex="\(\pi\operatorname{SS}(F)\)">\(\pi\operatorname{SS}(F)\)</span>, which can contain a point where the ordinary stalk vanishes. All cotangent conicity uses positive scalars.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<h2 id="the-local-number-and-the-closed-test">The local number and the closed test</h2>
+<p>Let <span class="math" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>, let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be real analytic near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\sigma_\varphi(x)=(x;d\varphi_x),\qquad
+L_\varphi=\sigma_\varphi(X),\qquad
+p_0=\sigma_\varphi(x_0).
+\qquad\text{(1)}
+\]">\[
+\sigma_\varphi(x)=(x;d\varphi_x),\qquad
+L_\varphi=\sigma_\varphi(X),\qquad
+p_0=\sigma_\varphi(x_0).
+\qquad\text{(1)}
+\]</span>
+<p>After restricting to a neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, assume</p>
+<span class="math math-display" data-tex="\[
+L_\varphi\cap\operatorname{SS}(F)\subset\{p_0\}.
+\qquad\text{(2)}
+\]">\[
+L_\varphi\cap\operatorname{SS}(F)\subset\{p_0\}.
+\qquad\text{(2)}
+\]</span>
+<p>The intersection can be empty. Neither <span class="math" data-tex="\(p_0\neq0\)">\(p_0\neq0\)</span>, a smooth microsupport, a nondegenerate Hessian nor transversality is required. Define the local test complex</p>
+<span class="math math-display" data-tex="\[
+J_{\varphi,x_0}(F)=
+\bigl(R\Gamma_{\{\varphi\geq\varphi(x_0)\}}F\bigr)_{x_0}.
+\qquad\text{(3)}
+\]">\[
+J_{\varphi,x_0}(F)=
+\bigl(R\Gamma_{\{\varphi\geq\varphi(x_0)\}}F\bigr)_{x_0}.
+\qquad\text{(3)}
+\]</span>
+<p>This is sheaf cohomology with a closed support condition, followed by the ordinary stalk. It is not the ordinary stalk of <span class="math" data-tex="\(F\)">\(F\)</span>, and it is not in general the ambient point costalk.</p>
+<p>Recall how the right-hand side below is normalized. The graph section has its canonical supported unit with relative orientation coefficients. Cup it, in that order, with <span class="math" data-tex="\(CC(F)\)">\(CC(F)\)</span>; its support is <span class="math" data-tex="\(L_\varphi\cap\operatorname{SS}(F)\)">\(L_\varphi\cap\operatorname{SS}(F)\)</span>. Use the section comparison to the base dualizing complex, restrict to the isolated base support <span class="math" data-tex="\(\{x_0\}\)">\(\{x_0\}\)</span>, and apply the point trace. Denote this number by
+<span class="math" data-tex="\(\#([\sigma_\varphi]\cap CC(F))_{p_0}\)">\(\#([\sigma_\varphi]\cap CC(F))_{p_0}\)</span>. An empty support gives zero. The subscript records localization of the supported class, rather than a signed count assumed to exist only for transverse smooth manifolds.</p>
+<p><strong>Local index theorem.</strong> Under (2), <span class="math" data-tex="\(J_{\varphi,x_0}(F)\)">\(J_{\varphi,x_0}(F)\)</span> is a bounded finite-dimensional complex and</p>
+<span class="math math-display" data-tex="\[
+\chi\bigl(J_{\varphi,x_0}(F)\bigr)
+=\#\bigl([\sigma_\varphi]\cap CC(F)\bigr)_{p_0}.
+\qquad\text{(4)}
+\]">\[
+\chi\bigl(J_{\varphi,x_0}(F)\bigr)
+=\#\bigl([\sigma_\varphi]\cap CC(F)\bigr)_{p_0}.
+\qquad\text{(4)}
+\]</span>
+<p>Finiteness is already justified independently of the equality: the closed analytic inequality defines a subanalytic set <span class="math" data-tex="\(Z\)">\(Z\)</span>, and
+<span class="math" data-tex="\(R\Gamma_ZF=R\mathcal Hom(k_Z,F)\)">\(R\Gamma_ZF=R\mathcal Hom(k_Z,F)\)</span> is bounded constructible with perfect stalks by the internal-Hom theorem. If <span class="math" data-tex="\(p_0\notin\operatorname{SS}(F)\)">\(p_0\notin\operatorname{SS}(F)\)</span>, the defining microsupport test makes (3) zero, while the intersection support is empty. In dimension zero the assertion is the normalized point trace of the finite coefficient complex. We therefore prove the remaining case in a positive-dimensional coordinate chart.</p>
+<p>Subtract <span class="math" data-tex="\(\varphi(x_0)\)">\(\varphi(x_0)\)</span>, choose coordinates with <span class="math" data-tex="\(x_0=0\)">\(x_0=0\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+\varphi(0)=0,\qquad
+\rho(x)=|x|^2,\qquad
+A=\operatorname{SS}(F).
+\qquad\text{(5)}
+\]">\[
+\varphi(0)=0,\qquad
+\rho(x)=|x|^2,\qquad
+A=\operatorname{SS}(F).
+\qquad\text{(5)}
+\]</span>
+<p>Choose a closed coordinate ball wholly contained in the chart. All geometric carriers used in a critical-value argument will first be restricted over that closed ball, so that the relevant base properness is proved.</p>
+<h2 id="two-radial-exclusions-on-a-punctured-ball">Two radial exclusions on a punctured ball</h2>
+<p>We need a carrier containing both signs of the conormal to the zero phase, even if that level is singular at zero. Put</p>
+<span class="math math-display" data-tex="\[
+Z_0=\{\varphi=0\},\qquad
+B=\operatorname{SS}(k_{Z_0})\cup
+\operatorname{SS}(k_{Z_0})^a.
+\qquad\text{(6)}
+\]">\[
+Z_0=\{\varphi=0\},\qquad
+B=\operatorname{SS}(k_{Z_0})\cup
+\operatorname{SS}(k_{Z_0})^a.
+\qquad\text{(6)}
+\]</span>
+<p>Here <span class="math" data-tex="\(a(x;\xi)=(x;-\xi)\)">\(a(x;\xi)=(x;-\xi)\)</span>. The sheaf <span class="math" data-tex="\(k_{Z_0}\)">\(k_{Z_0}\)</span> is constructible with perfect stalks. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is closed, positive-conic, subanalytic and isotropic. Its base lies in <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>. At a regular point of the level set, the closed-submanifold microsupport calculation includes every <span class="math" data-tex="\(\lambda\,d\varphi_x\)">\(\lambda\,d\varphi_x\)</span>, <span class="math" data-tex="\(\lambda\in\mathbb R\)">\(\lambda\in\mathbb R\)</span>. At a critical point these covectors are zero, and zero belongs to the microsupport over <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+(x;\lambda\,d\varphi_x)\in B
+\quad\text{if }\varphi(x)=0,\quad \lambda\in\mathbb R.
+\qquad\text{(7)}
+\]">\[
+(x;\lambda\,d\varphi_x)\in B
+\quad\text{if }\varphi(x)=0,\quad \lambda\in\mathbb R.
+\qquad\text{(7)}
+\]</span>
+<p>The full limiting-sum theorem makes <span class="math" data-tex="\(A\widehat+B\)">\(A\widehat+B\)</span> a closed conic subanalytic isotropic set. This is available even if the same-base sum is not closed.</p>
+<p>Apply the discrete-critical-value theorem to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, first on <span class="math" data-tex="\(A\)">\(A\)</span>, then on <span class="math" data-tex="\(A\widehat+B\)">\(A\widehat+B\)</span>, restricting both carriers over the fixed closed coordinate ball. Their base projections are compact: a closed conic carrier contains the zero covector above every point in its projection, making that projection closed; it now lies in the compact ball. Hence <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is proper on each projection. The selected radial values form closed locally finite subsets of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Since <span class="math" data-tex="\(\rho\geq0\)">\(\rho\geq0\)</span>, some <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A\cap L_\rho\cap\{0&lt;|x|\leq r_0\}&amp;=\varnothing,\\
+(A\widehat+B)\cap L_\rho
+\cap\{0&lt;|x|\leq r_0\}&amp;=\varnothing.
+\end{aligned}
+\qquad\text{(8)}
+\]">\[
+\begin{aligned}
+A\cap L_\rho\cap\{0&lt;|x|\leq r_0\}&amp;=\varnothing,\\
+(A\widehat+B)\cap L_\rho
+\cap\{0&lt;|x|\leq r_0\}&amp;=\varnothing.
+\end{aligned}
+\qquad\text{(8)}
+\]</span>
+<p>We have not declared an unrestricted cotangent projection proper. The compact base restriction is what permits the theorem. The second exclusion will be used precisely at zero phase on the boundary of the eventual ball.</p>
+<h2 id="positive-phase-excludes-every-nonnegative-radial-multiplier">Positive phase excludes every nonnegative radial multiplier</h2>
+<p>There is <span class="math" data-tex="\(r_1&gt;0\)">\(r_1&gt;0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+0&lt;|x|\leq r_1,\quad \varphi(x)&gt;0,\quad c\geq0
+\quad\Longrightarrow\quad
+(x;c\,d\rho_x+d\varphi_x)\notin A.
+\qquad\text{(9)}
+\]">\[
+0&lt;|x|\leq r_1,\quad \varphi(x)&gt;0,\quad c\geq0
+\quad\Longrightarrow\quad
+(x;c\,d\rho_x+d\varphi_x)\notin A.
+\qquad\text{(9)}
+\]</span>
+<p>The multiplier <span class="math" data-tex="\(c\)">\(c\)</span> has no prescribed upper bound. A proof that treated only a bounded interval of multipliers would not justify the later ordinary-boundary estimate.</p>
+<p><strong>Proof.</strong> Suppose (9) fails at arbitrarily small radii. Normalize each offending pair of coefficients:</p>
+<span class="math math-display" data-tex="\[
+u=\frac{c}{\sqrt{1+c^2}},\qquad
+v=\frac1{\sqrt{1+c^2}}.
+\qquad\text{(10)}
+\]">\[
+u=\frac{c}{\sqrt{1+c^2}},\qquad
+v=\frac1{\sqrt{1+c^2}}.
+\qquad\text{(10)}
+\]</span>
+<p>Positive conicity gives
+<span class="math" data-tex="\((x;u\,d\rho_x+v\,d\varphi_x)\in A\)">\((x;u\,d\rho_x+v\,d\varphi_x)\in A\)</span>.
+Consider the subanalytic set</p>
+<span class="math math-display" data-tex="\[
+\mathcal E=
+\left\{(x,u,v):
+\begin{array}{l}
+x\neq0,\ \varphi(x)&gt;0,\ u\geq0,\ v&gt;0,\\
+u^2+v^2=1,\ (x;u\,d\rho_x+v\,d\varphi_x)\in A
+\end{array}\right\}.
+\qquad\text{(11)}
+\]">\[
+\mathcal E=
+\left\{(x,u,v):
+\begin{array}{l}
+x\neq0,\ \varphi(x)&gt;0,\ u\geq0,\ v&gt;0,\\
+u^2+v^2=1,\ (x;u\,d\rho_x+v\,d\varphi_x)\in A
+\end{array}\right\}.
+\qquad\text{(11)}
+\]</span>
+<p>Membership is an analytic inverse-image condition on <span class="math" data-tex="\(A\)">\(A\)</span>. The coefficient circle is compact. A subsequence of offending points therefore approaches a point <span class="math" data-tex="\((0,u_0,v_0)\)">\((0,u_0,v_0)\)</span> in the closure of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>. Its limit may have <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span>; that is how unbounded original multipliers are retained.</p>
+<p>Curve selection supplies an analytic arc <span class="math" data-tex="\((x(t),u(t),v(t))\)">\((x(t),u(t),v(t))\)</span> through that limit, lying in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> for small <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. The cotangent arc
+<span class="math math-display" data-tex="\[
+q(t)=\bigl(x(t);u(t)d\rho_{x(t)}+v(t)d\varphi_{x(t)}\bigr)
+\]">\[
+q(t)=\bigl(x(t);u(t)d\rho_{x(t)}+v(t)d\varphi_{x(t)}\bigr)
+\]</span>
+lies in <span class="math" data-tex="\(A\)">\(A\)</span>. Isotropy and the singular one-form pullback rule make its canonical one-form zero along the arc, including an arc contained in the singular locus. Consequently</p>
+<span class="math math-display" data-tex="\[
+u(t)\frac{d}{dt}\rho(x(t))
++v(t)\frac{d}{dt}\varphi(x(t))=0.
+\qquad\text{(12)}
+\]">\[
+u(t)\frac{d}{dt}\rho(x(t))
++v(t)\frac{d}{dt}\varphi(x(t))=0.
+\qquad\text{(12)}
+\]</span>
+<p>Both scalar functions are analytic, vanish at zero, and are strictly positive for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Their first nonzero Taylor terms have positive coefficients and positive integer orders. Both derivatives are therefore strictly positive for all sufficiently small positive <span class="math" data-tex="\(t\)">\(t\)</span>. Since <span class="math" data-tex="\(u(t)\geq0\)">\(u(t)\geq0\)</span> and <span class="math" data-tex="\(v(t)&gt;0\)">\(v(t)&gt;0\)</span>, the left side of (12) is strictly positive. This contradiction proves (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normalization proved the required compactness before selecting an arc. It did not discard sequences with <span class="math" data-tex="\(c\to+\infty\)">\(c\to+\infty\)</span>, nor assume that the selected covector lies in the regular part of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="extend-an-actual-small-ball-test-by-ordinary-direct-image">Extend an actual small-ball test by ordinary direct image</h2>
+<p>Set <span class="math" data-tex="\(H=R\Gamma_{\{\varphi\geq0\}}F\)">\(H=R\Gamma_{\{\varphi\geq0\}}F\)</span>. Constructible internal Hom makes <span class="math" data-tex="\(H\)">\(H\)</span> constructible. The small-ball theorem, with its actual restriction map, permits a radius
+<span class="math" data-tex="\(0&lt;r&lt;\min(r_0,r_1)\)">\(0&lt;r&lt;\min(r_0,r_1)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(B_r;H)\xrightarrow{\sim}H_0
+=J_{\varphi,0}(F).
+\qquad\text{(13)}
+\]">\[
+R\Gamma(B_r;H)\xrightarrow{\sim}H_0
+=J_{\varphi,0}(F).
+\qquad\text{(13)}
+\]</span>
+<p>The local version of that theorem first cuts off the coefficient complex in a larger closed ball, so no global properness of the coordinate chart is needed.</p>
+<p>For <span class="math" data-tex="\(j:B_r\hookrightarrow X\)">\(j:B_r\hookrightarrow X\)</span>, use the ordinary extension</p>
+<span class="math math-display" data-tex="\[
+F_r=Rj_*j^{-1}F
+\simeq R\mathcal Hom(k_{B_r},F).
+\qquad\text{(14)}
+\]">\[
+F_r=Rj_*j^{-1}F
+\simeq R\mathcal Hom(k_{B_r},F).
+\qquad\text{(14)}
+\]</span>
+<p>It is bounded constructible with perfect stalks. Its closed support <span class="math" data-tex="\(D_r\)">\(D_r\)</span> lies in <span class="math" data-tex="\(\overline B_r\)">\(\overline B_r\)</span>, hence is compact. Open internal-Hom adjunction, followed by direct-image composition, identifies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+&amp;=R\Gamma\bigl(X;R\mathcal Hom(k_{\{\varphi\geq0\}},Rj_*j^{-1}F)\bigr)\\
+&amp;\simeq R\Gamma\bigl(B_r;
+R\mathcal Hom(k_{\{\varphi\geq0\}\cap B_r},j^{-1}F)\bigr)\\
+&amp;=R\Gamma(B_r;H).
+\end{aligned}
+\qquad\text{(15)}
+\]">\[
+\begin{aligned}
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+&amp;=R\Gamma\bigl(X;R\mathcal Hom(k_{\{\varphi\geq0\}},Rj_*j^{-1}F)\bigr)\\
+&amp;\simeq R\Gamma\bigl(B_r;
+R\mathcal Hom(k_{\{\varphi\geq0\}\cap B_r},j^{-1}F)\bigr)\\
+&amp;=R\Gamma(B_r;H).
+\end{aligned}
+\qquad\text{(15)}
+\]</span>
+<p>These are the adjunction comparisons for this closed test. Together with (13), they identify the supported ambient complex with the local test complex.</p>
+<p>At a boundary point <span class="math" data-tex="\(|x|=r\)">\(|x|=r\)</span>, <span class="math" data-tex="\(d\rho_x\neq0\)">\(d\rho_x\neq0\)</span>. The first exclusion in (8) and positive conicity exclude the positive ray through <span class="math" data-tex="\(d\rho_x\)">\(d\rho_x\)</span> from <span class="math" data-tex="\(A_x\)">\(A_x\)</span>. The ordinary open-boundary theorem thus gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(F_r)_x
+\subset A_x+\mathbb R_{\leq0}\,d\rho_x
+\quad (|x|=r).
+\qquad\text{(16)}
+\]">\[
+\operatorname{SS}(F_r)_x
+\subset A_x+\mathbb R_{\leq0}\,d\rho_x
+\quad (|x|=r).
+\qquad\text{(16)}
+\]</span>
+<p>On the interior <span class="math" data-tex="\(F_r=F\)">\(F_r=F\)</span>, and outside the closed ball it is zero. The sign in (16) belongs to <span class="math" data-tex="\(Rj_*\)">\(Rj_*\)</span>; changing the extension changes that sign.</p>
+<p>Let <span class="math" data-tex="\(C=T^*_{\partial B_r}X\)">\(C=T^*_{\partial B_r}X\)</span>, the full conormal of the analytic sphere. It is closed, conic, subanalytic and isotropic. Define</p>
+<span class="math math-display" data-tex="\[
+\Gamma=
+\bigl(A\cup(A\widehat+C)\bigr)
+\cap\pi^{-1}\overline B_r.
+\qquad\text{(17)}
+\]">\[
+\Gamma=
+\bigl(A\cup(A\widehat+C)\bigr)
+\cap\pi^{-1}\overline B_r.
+\qquad\text{(17)}
+\]</span>
+<p>The finite union and subanalytic subset rules preserve isotropy; the limiting-sum theorem proves the needed closedness and subanalyticity. The ordinary sums in (16) lie in <span class="math" data-tex="\(A\widehat+C\)">\(A\widehat+C\)</span>, so
+<span class="math" data-tex="\(\operatorname{SS}(F_r)\subset\Gamma\)">\(\operatorname{SS}(F_r)\subset\Gamma\)</span>.
+The base projection of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is compact, exactly as in the argument for (8). Apply the discrete-critical-value theorem to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Choose <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\Gamma\cap L_\varphi\cap
+\{0&lt;|\varphi|\leq\epsilon\}=\varnothing.
+\qquad\text{(18)}
+\]">\[
+\Gamma\cap L_\varphi\cap
+\{0&lt;|\varphi|\leq\epsilon\}=\varnothing.
+\qquad\text{(18)}
+\]</span>
+<p>Zero is allowed as a selected value. The two-sided gap will control the negative phase band and the compact support comparison.</p>
+<h2 id="a-supported-morse-map-becomes-compact-cohomology">A supported Morse map becomes compact cohomology</h2>
+<p>Put <span class="math" data-tex="\(U=\{\varphi&gt;-\epsilon\}\)">\(U=\{\varphi&gt;-\epsilon\}\)</span>, and apply the supported finite-band Morse theorem to <span class="math" data-tex="\(\psi=-\varphi\)">\(\psi=-\varphi\)</span> and <span class="math" data-tex="\(F_r\)">\(F_r\)</span>. Properness on support holds because <span class="math" data-tex="\(D_r\)">\(D_r\)</span> is compact. For every <span class="math" data-tex="\(0&lt;t&lt;\epsilon\)">\(0&lt;t&lt;\epsilon\)</span>, the changing band is
+<span class="math math-display" data-tex="\[
+0&lt;\psi\leq t,\qquad\text{equivalently }-t\leq\varphi&lt;0.
+\]">\[
+0&lt;\psi\leq t,\qquad\text{equivalently }-t\leq\varphi&lt;0.
+\]</span>
+The required negative covector is
+<span class="math" data-tex="\(-d\psi=d\varphi\)">\(-d\psi=d\varphi\)</span>. It is excluded from <span class="math" data-tex="\(\operatorname{SS}(F_r)\)">\(\operatorname{SS}(F_r)\)</span> by (18). The actual inclusion-of-supports map is therefore an isomorphism</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+\xrightarrow{\sim}
+R\Gamma_{\{\varphi\geq-t\}}(X;F_r).
+\qquad\text{(19)}
+\]">\[
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+\xrightarrow{\sim}
+R\Gamma_{\{\varphi\geq-t\}}(X;F_r).
+\qquad\text{(19)}
+\]</span>
+<p>To pass to compact support in <span class="math" data-tex="\(U\)">\(U\)</span>, restrict the support family to <span class="math" data-tex="\(D_r\)">\(D_r\)</span>. The sets
+<span class="math math-display" data-tex="\[
+K_t=D_r\cap\{\varphi\geq-t\},\qquad 0&lt;t&lt;\epsilon,
+\]">\[
+K_t=D_r\cap\{\varphi\geq-t\},\qquad 0&lt;t&lt;\epsilon,
+\]</span>
+are compact and lie in <span class="math" data-tex="\(U\)">\(U\)</span>. They are cofinal for compact coefficient supports in <span class="math" data-tex="\(U\)">\(U\)</span>: a compact subset of <span class="math" data-tex="\(D_r\cap U\)">\(D_r\cap U\)</span> has a minimum phase strictly greater than <span class="math" data-tex="\(-\epsilon\)">\(-\epsilon\)</span>, and is contained in some <span class="math" data-tex="\(K_t\)">\(K_t\)</span>. Exact filtered support-family colimits for bounded complexes now give</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+\xrightarrow{\sim}R\Gamma_c(U;F_r|_U).
+\qquad\text{(20)}
+\]">\[
+R\Gamma_{\{\varphi\geq0\}}(X;F_r)
+\xrightarrow{\sim}R\Gamma_c(U;F_r|_U).
+\qquad\text{(20)}
+\]</span>
+<p>The first object maps to the support-family colimit through (19); all those arrows are already isomorphisms. This explains the actual comparison in (20). No equality between ordinary cohomology and compact cohomology on an arbitrary noncompact open set was used.</p>
+<p>The compact Euler index theorem applies on <span class="math" data-tex="\(U\)">\(U\)</span> to the analytic function <span class="math" data-tex="\(\psi=-\varphi:U\to(-\infty,\epsilon)\)">\(\psi=-\varphi:U\to(-\infty,\epsilon)\)</span>. Every closed support sublevel <span class="math" data-tex="\(D_r\cap\{\psi\leq s\}\)">\(D_r\cap\{\psi\leq s\}\)</span>, <span class="math" data-tex="\(s&lt;\epsilon\)">\(s&lt;\epsilon\)</span>, is compact. Moreover
+<span class="math math-display" data-tex="\[
+L_\psi\cap\operatorname{SS}(F_r|_U)^a
+\quad\text{corresponds under the antipode to}\quad
+L_\varphi\cap\operatorname{SS}(F_r|_U).
+\]">\[
+L_\psi\cap\operatorname{SS}(F_r|_U)^a
+\quad\text{corresponds under the antipode to}\quad
+L_\varphi\cap\operatorname{SS}(F_r|_U).
+\]</span>
+The latter is compact: by (18) it has no points with <span class="math" data-tex="\(-\epsilon&lt;\varphi&lt;0\)">\(-\epsilon&lt;\varphi&lt;0\)</span>, so it is the closed graph intersection over the compact set <span class="math" data-tex="\(D_r\cap\{\varphi\geq0\}\)">\(D_r\cap\{\varphi\geq0\}\)</span>. Thus both hypotheses of that theorem are satisfied. It yields</p>
+<span class="math math-display" data-tex="\[
+\chi_c(U;F_r|_U)
+=\#\bigl([\sigma_\varphi]\cap CC(F_r|_U)\bigr).
+\qquad\text{(21)}
+\]">\[
+\chi_c(U;F_r|_U)
+=\#\bigl([\sigma_\varphi]\cap CC(F_r|_U)\bigr).
+\qquad\text{(21)}
+\]</span>
+<p>The positive section on the right follows from <span class="math" data-tex="\(-\psi=\varphi\)">\(-\psi=\varphi\)</span>. No dimension sign is appended to the antipodal comparison.</p>
+<h2 id="exclude-boundary-intersections-in-all-three-phase-regions">Exclude boundary intersections in all three phase regions</h2>
+<p>Inside <span class="math" data-tex="\(B_r\)">\(B_r\)</span>, (2) leaves at most <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. We prove that there is no graph intersection over <span class="math" data-tex="\(\partial B_r\cap U\)">\(\partial B_r\cap U\)</span>.</p>
+<p>If <span class="math" data-tex="\(-\epsilon&lt;\varphi(x)&lt;0\)">\(-\epsilon&lt;\varphi(x)&lt;0\)</span>, (18) excludes it directly.</p>
+<p>If <span class="math" data-tex="\(\varphi(x)&gt;0\)">\(\varphi(x)&gt;0\)</span>, membership of <span class="math" data-tex="\(d\varphi_x\)">\(d\varphi_x\)</span> in the right side of (16) would give</p>
+<span class="math math-display" data-tex="\[
+d\varphi_x=p-c\,d\rho_x,\qquad
+p\in A_x,\quad c\geq0.
+\qquad\text{(22)}
+\]">\[
+d\varphi_x=p-c\,d\rho_x,\qquad
+p\in A_x,\quad c\geq0.
+\qquad\text{(22)}
+\]</span>
+<p>Hence <span class="math" data-tex="\(p=d\varphi_x+c\,d\rho_x\)">\(p=d\varphi_x+c\,d\rho_x\)</span>, contradicting (9).</p>
+<p>Finally suppose <span class="math" data-tex="\(\varphi(x)=0\)">\(\varphi(x)=0\)</span>. In (22), <span class="math" data-tex="\(c=0\)">\(c=0\)</span> would contradict the isolated-intersection hypothesis, since <span class="math" data-tex="\(x\neq0\)">\(x\neq0\)</span>. If <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, then (7) and positive conicity give</p>
+<span class="math math-display" data-tex="\[
+d\rho_x=c^{-1}p-c^{-1}d\varphi_x
+\in A_x+B_x
+\subset (A\widehat+B)_x.
+\qquad\text{(23)}
+\]">\[
+d\rho_x=c^{-1}p-c^{-1}d\varphi_x
+\in A_x+B_x
+\subset (A\widehat+B)_x.
+\qquad\text{(23)}
+\]</span>
+<p>This contradicts the second exclusion in (8). The zero-phase argument needs the negative phase multiple <span class="math" data-tex="\(-c^{-1}d\varphi_x\)">\(-c^{-1}d\varphi_x\)</span>. The symmetric carrier in (6) supplies that exact covector. A graph of <span class="math" data-tex="\(d\varphi\)">\(d\varphi\)</span> alone would not supply all those multiples.</p>
+<p>We have proved</p>
+<span class="math math-display" data-tex="\[
+L_\varphi\cap\operatorname{SS}(F_r|_U)\subset\{p_0\},
+\qquad\text{(24)}
+\]">\[
+L_\varphi\cap\operatorname{SS}(F_r|_U)\subset\{p_0\},
+\qquad\text{(24)}
+\]</span>
+<p>with no new boundary contribution. Near zero, ordinary restriction identifies <span class="math" data-tex="\(F_r|_U\)">\(F_r|_U\)</span> with <span class="math" data-tex="\(F\)">\(F\)</span>; the characteristic cycles and the supported section units consequently agree there. The ordered cup, the section-to-base comparison, localization to <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, and the point trace identify (21) with the local number in (4). Taking Euler characteristics in (13), (15), (20) and (21) proves (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The compact computation is a device for reading the original local supported class. The radial boundary has been checked before forgetting its support, so none of its possible contributions is hidden in an Euler cancellation.</p>
+<h2 id="a-transverse-conormal-intersection-reads-the-negative-hessian">A transverse conormal intersection reads the negative Hessian</h2>
+<p>Let <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> be a closed smooth submanifold for which <span class="math" data-tex="\(k_Y\)">\(k_Y\)</span> is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>-constructible; a closed real analytic submanifold is one instance. Let <span class="math" data-tex="\(x_0\in Y\)">\(x_0\in Y\)</span>, with <span class="math" data-tex="\(d\varphi_{x_0}\in T_Y^*X\)">\(d\varphi_{x_0}\in T_Y^*X\)</span>, and suppose the graph of <span class="math" data-tex="\(d\varphi\)">\(d\varphi\)</span> and the conormal intersect transversely there.</p>
+<p>In coordinates tangent and normal to <span class="math" data-tex="\(Y\)">\(Y\)</span>, their common tangent vectors are exactly the vectors in
+<span class="math" data-tex="\(\ker\operatorname{Hess}_{x_0}(\varphi|_Y)\)">\(\ker\operatorname{Hess}_{x_0}(\varphi|_Y)\)</span>.
+Transversality therefore means that this restricted Hessian is nondegenerate. Let <span class="math" data-tex="\(q\)">\(q\)</span> be its number of negative eigenvalues. The intersection is locally isolated.</p>
+<p>The actual conormal support calculation in <a href="../microlocal-composition-and-pure-sheaves/pure-and-simple-sheaves-from-directional-tests.html#conormal-sheaves-give-the-normalization-explicitly">Pure and simple sheaves from directional tests</a> uses Morse coordinates
+<span class="math" data-tex="\(\varphi|_Y-\varphi(x_0)=|u|^2-|v|^2\)">\(\varphi|_Y-\varphi(x_0)=|u|^2-|v|^2\)</span>, with <span class="math" data-tex="\(\dim v=q\)">\(\dim v=q\)</span>.
+The closed-test triangle compares constants on a small ball in <span class="math" data-tex="\(Y\)">\(Y\)</span> with constants on its negative-phase part. For <span class="math" data-tex="\(q=0\)">\(q=0\)</span> that part is empty. For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> it retracts to <span class="math" data-tex="\(S^{q-1}\)">\(S^{q-1}\)</span>, and the restriction from constants is the augmentation. Its derived fibre is the negative-direction orientation line in degree <span class="math" data-tex="\(q\)">\(q\)</span>, locally identified with <span class="math" data-tex="\(k[-q]\)">\(k[-q]\)</span>. Thus (4) gives</p>
+<span class="math math-display" data-tex="\[
+\#\bigl([\sigma_\varphi]\cap[T_Y^*X]\bigr)_{p_0}
+=(-1)^q.
+\qquad\text{(25)}
+\]">\[
+\#\bigl([\sigma_\varphi]\cap[T_Y^*X]\bigr)_{p_0}
+=(-1)^q.
+\qquad\text{(25)}
+\]</span>
+<p>The conormal fundamental cycle here has the characteristic-cycle normalization of the earlier lessons. There is no independent choice of an extra ambient dimension sign. Finite families of transverse pure intersections, their ordered inertia degrees, and the global Morse inequalities will use this local theorem in the next step.</p>
+<h2 id="examples-and-exercises-with-solutions">Examples and exercises with solutions</h2>
+<h3 id="a-degenerate-phase-can-have-local-number-zero-one-or-minus-one">A degenerate phase can have local number zero, one or minus one</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Take <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, <span class="math" data-tex="\(x_0=0\)">\(x_0=0\)</span>, and <span class="math" data-tex="\(\varphi(t)=a\,t^m\)">\(\varphi(t)=a\,t^m\)</span>, with <span class="math" data-tex="\(a\neq0\)">\(a\neq0\)</span> and integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>. Compute the test complex and local number. Explain why the calculation for <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span> is not a transverse Hessian calculation.</p>
+<p><strong>Solution.</strong> The microsupport is the zero section. Its intersection with <span class="math" data-tex="\(d\varphi=am\,t^{m-1}dt\)">\(d\varphi=am\,t^{m-1}dt\)</span> is exactly the zero covector at zero. The local test triangle is the fibre of the restriction from <span class="math" data-tex="\(k\)">\(k\)</span> on a small interval to cohomology of its negative-phase part. If <span class="math" data-tex="\(m\)">\(m\)</span> is odd, that part is a single half-interval. The restriction <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span> is the identity, so the fibre is zero and the local number is zero.</p>
+<p>If <span class="math" data-tex="\(m\)">\(m\)</span> is even and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, there is no negative-phase part. The test complex is <span class="math" data-tex="\(k\)">\(k\)</span>, giving number <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(m\)">\(m\)</span> is even and <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>, the negative-phase part has two components. The restriction is the diagonal <span class="math" data-tex="\(k\to k\oplus k\)">\(k\to k\oplus k\)</span>; its fibre is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>, giving number <span class="math" data-tex="\(-1\)">\(-1\)</span>. In the last case the closed test is supported only at zero and agrees with the line's point costalk. For <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span>, the Hessian at zero vanishes. These conclusions follow from the actual closed test and the isolated local index theorem, including its degenerate and empty-number cases.</p>
+<h3 id="cubic-tests-distinguish-open-and-closed-rays">Cubic tests distinguish open and closed rays</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(A=k_{[0,\infty)}\)">\(A=k_{[0,\infty)}\)</span> and <span class="math" data-tex="\(B=k_{(0,\infty)}\)">\(B=k_{(0,\infty)}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. At zero compute the local test complexes and numbers for <span class="math" data-tex="\(\varphi=t^3\)">\(\varphi=t^3\)</span> and <span class="math" data-tex="\(\varphi=-t^3\)">\(\varphi=-t^3\)</span>.</p>
+<p><strong>Solution.</strong> Both graphs meet the full microsupport only at the zero covector over zero: away from the endpoint, the only supported covectors are zero and <span class="math" data-tex="\(d\varphi\neq0\)">\(d\varphi\neq0\)</span>. At the endpoint <span class="math" data-tex="\(d\varphi=0\)">\(d\varphi=0\)</span>. The zero covector remains in the closed microsupport of <span class="math" data-tex="\(B\)">\(B\)</span> even though <span class="math" data-tex="\(B_0=0\)">\(B_0=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(t^3\)">\(t^3\)</span>, the closed test side is <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. The complementary negative interval has no coefficients for either sheaf. The support triangles therefore give <span class="math" data-tex="\(J(A)=k\)">\(J(A)=k\)</span> and <span class="math" data-tex="\(J(B)=0\)">\(J(B)=0\)</span>. For <span class="math" data-tex="\(-t^3\)">\(-t^3\)</span>, the complementary positive interval has cohomology <span class="math" data-tex="\(k\)">\(k\)</span>. The closed-ray restriction <span class="math" data-tex="\(A_0=k\to k\)">\(A_0=k\to k\)</span> is the identity, giving <span class="math" data-tex="\(J(A)=0\)">\(J(A)=0\)</span>. The open ray has restriction <span class="math" data-tex="\(B_0=0\to k\)">\(B_0=0\to k\)</span>, whose derived fibre is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. Hence the complete table is</p>
+<table>
+<thead>
+<tr>
+<th>Sheaf</th>
+<th>Cubic positive test</th>
+<th style="text-align:right">Local number</th>
+<th>Cubic negative test</th>
+<th style="text-align:right">Local number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(k_{[0,\infty)}\)">\(k_{[0,\infty)}\)</span></td>
+<td><span class="math" data-tex="\(k\)">\(k\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(k_{(0,\infty)}\)">\(k_{(0,\infty)}\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The table uses the full microsupport, the ordinary stalk and the actual complementary restriction. Replacing the closed support by the nonzero-stalk locus would remove the open-ray endpoint incorrectly.</p>
+<h3 id="a-singular-crossing-retains-its-vertex-correction">A singular crossing retains its vertex correction</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>In <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let <span class="math" data-tex="\(C\)">\(C\)</span> be the union of the coordinate axes, let <span class="math" data-tex="\(F=k_C\)">\(F=k_C\)</span>, and take <span class="math" data-tex="\(\varphi(x,y)=x^2-y^2\)">\(\varphi(x,y)=x^2-y^2\)</span>. Compute the local number at the origin directly from the supported test, and verify it through cycle additivity.</p>
+<p><strong>Solution.</strong> On the punctured horizontal axis, <span class="math" data-tex="\(F\)">\(F\)</span> is the constant sheaf and its microsupport is the horizontal-axis conormal. The differential <span class="math" data-tex="\((2x,-2y)\)">\((2x,-2y)\)</span> belongs to that conormal only when <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. On the punctured vertical axis, the analogous condition forces <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Off <span class="math" data-tex="\(C\)">\(C\)</span> the sheaf vanishes locally. Thus the graph has just the isolated zero-covector intersection at the origin, where the microsupport need not be smooth.</p>
+<p>The stalk <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>. In the negative phase the support consists of the two punctured vertical arms. Their cohomology is <span class="math" data-tex="\(k\oplus k\)">\(k\oplus k\)</span>, and restriction sends a local constant <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\((v,v)\)">\((v,v)\)</span>. The fibre is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>, so the local number is <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>Write <span class="math" data-tex="\(L_x,L_y\)">\(L_x,L_y\)</span> for the two axes. The sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow k_C\longrightarrow
+k_{L_x}\oplus k_{L_y}
+\xrightarrow{(a,b)\mapsto a(0)-b(0)}k_{\{0\}}
+\longrightarrow0
+\qquad\text{(26)}
+\]">\[
+0\longrightarrow k_C\longrightarrow
+k_{L_x}\oplus k_{L_y}
+\xrightarrow{(a,b)\mapsto a(0)-b(0)}k_{\{0\}}
+\longrightarrow0
+\qquad\text{(26)}
+\]</span>
+is exact on every stalk: away from the origin it is the identity on the relevant axis, and at the origin it is the diagonal kernel of the difference map. Additivity gives
+<span class="math" data-tex="\(CC(k_C)=CC(k_{L_x})+CC(k_{L_y})-CC(k_{\{0\}})\)">\(CC(k_C)=CC(k_{L_x})+CC(k_{L_y})-CC(k_{\{0\}})\)</span>.
+The restricted Hessian on <span class="math" data-tex="\(L_x\)">\(L_x\)</span> has <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, giving number <span class="math" data-tex="\(1\)">\(1\)</span>; on <span class="math" data-tex="\(L_y\)">\(L_y\)</span> it has <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, giving <span class="math" data-tex="\(-1\)">\(-1\)</span>. The point sheaf has test <span class="math" data-tex="\(k\)">\(k\)</span> for every phase taking value zero there, so its number is <span class="math" data-tex="\(1\)">\(1\)</span>. The sum <span class="math" data-tex="\(1-1-1=-1\)">\(1-1-1=-1\)</span> agrees with the supported calculation. Omitting the vertex term would give the wrong answer.</p>
+<h3 id="a-zero-local-euler-number-need-not-be-a-zero-local-test">A zero local Euler number need not be a zero local test</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(P=k^2\oplus k^2[1]\)">\(P=k^2\oplus k^2[1]\)</span>, <span class="math" data-tex="\(F=P_{\mathbb R}\)">\(F=P_{\mathbb R}\)</span>, and <span class="math" data-tex="\(\varphi=-t^4\)">\(\varphi=-t^4\)</span>. Compute the local test and characteristic-cycle number at zero.</p>
+<p><strong>Solution.</strong> The full microsupport is the zero section, and the graph of <span class="math" data-tex="\(-4t^3dt\)">\(-4t^3dt\)</span> has just the isolated intersection at zero. The negative-phase complement is the punctured interval. Its coefficient complex is <span class="math" data-tex="\(P\oplus P\)">\(P\oplus P\)</span>, and the map from the stalk <span class="math" data-tex="\(P\)">\(P\)</span> is the diagonal. The split difference sequence of whole complexes makes its derived fibre <span class="math" data-tex="\(P[-1]\)">\(P[-1]\)</span>. It has <span class="math" data-tex="\(k^2\)">\(k^2\)</span> in cohomological degrees zero and one, and is nonzero.</p>
+<p>Its Euler characteristic is <span class="math" data-tex="\(2-2=0\)">\(2-2=0\)</span>. Likewise <span class="math" data-tex="\(CC(F)=\chi(P)[T^*_{\mathbb R}\mathbb R]=0\)">\(CC(F)=\chi(P)[T^*_{\mathbb R}\mathbb R]=0\)</span> by finite coefficient additivity, so its local intersection number is zero. The vanishing is finite graded cancellation. It gives no reason to remove the zero section from the full microsupport or to declare the supported test acyclic.</p>
+<h3 id="extension-by-zero-creates-two-extra-boundary-tests">Extension by zero creates two extra boundary tests</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(F=k_{\mathbb R}\)">\(F=k_{\mathbb R}\)</span>, <span class="math" data-tex="\(B=(-r,r)\)">\(B=(-r,r)\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, and <span class="math" data-tex="\(\varphi=t^2\)">\(\varphi=t^2\)</span>. Compare <span class="math" data-tex="\(Rj_*k_B\)">\(Rj_*k_B\)</span> with <span class="math" data-tex="\(j_!k_B\)">\(j_!k_B\)</span>, where <span class="math" data-tex="\(j:B\hookrightarrow\mathbb R\)">\(j:B\hookrightarrow\mathbb R\)</span>. Compute all graph-test numbers and the compact Euler indices.</p>
+<p><strong>Solution.</strong> Ordinary interval cohomology at the two endpoints gives
+<span class="math" data-tex="\(Rj_*k_B=k_{[-r,r]}\)">\(Rj_*k_B=k_{[-r,r]}\)</span>.
+At <span class="math" data-tex="\(r\)">\(r\)</span>, its microsupport normal is a nonpositive multiple of <span class="math" data-tex="\(dt\)">\(dt\)</span>; at <span class="math" data-tex="\(-r\)">\(-r\)</span>, it is a nonnegative multiple of <span class="math" data-tex="\(dt\)">\(dt\)</span>. The graph differential is respectively <span class="math" data-tex="\(2r\,dt\)">\(2r\,dt\)</span> and <span class="math" data-tex="\(-2r\,dt\)">\(-2r\,dt\)</span>, so neither endpoint contributes. The only graph intersection is the minimum at zero, with supported test <span class="math" data-tex="\(k\)">\(k\)</span> and number <span class="math" data-tex="\(1\)">\(1\)</span>. Its compact Euler characteristic is also <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For <span class="math" data-tex="\(j_!k_B=k_{(-r,r)}\)">\(j_!k_B=k_{(-r,r)}\)</span>, the endpoint normals reverse. Both graph covectors now occur. At either endpoint the ordinary stalk is zero, while the complementary lower-phase interval inside <span class="math" data-tex="\(B\)">\(B\)</span> has cohomology <span class="math" data-tex="\(k\)">\(k\)</span>. The support triangle is the fibre of <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>, namely <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>, giving number <span class="math" data-tex="\(-1\)">\(-1\)</span> at each endpoint. The interior minimum still contributes <span class="math" data-tex="\(1\)">\(1\)</span>. The sum is <span class="math" data-tex="\(1-1-1=-1\)">\(1-1-1=-1\)</span>, equal to <span class="math" data-tex="\(\chi_c(B;k)\)">\(\chi_c(B;k)\)</span>.</p>
+<p>This is why (14) and the negative coefficient in (16) belong to the proof. The exceptional extension has its own valid compact index, with additional boundary contributions; substituting it would not identify that global number with the original local test.</p>
+<h3 id="a-negative-phase-gap-removes-an-artificial-endpoint-contribution">A negative phase gap removes an artificial endpoint contribution</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Take <span class="math" data-tex="\(F=k_{\mathbb R}\)">\(F=k_{\mathbb R}\)</span>, <span class="math" data-tex="\(\varphi=t\)">\(\varphi=t\)</span>, <span class="math" data-tex="\(x_0=0\)">\(x_0=0\)</span>, and <span class="math" data-tex="\(F_r=k_{[-r,r]}\)">\(F_r=k_{[-r,r]}\)</span>. Compare the compact index on <span class="math" data-tex="\(U_\epsilon=\{t&gt;-\epsilon\}\)">\(U_\epsilon=\{t&gt;-\epsilon\}\)</span> when <span class="math" data-tex="\(0&lt;\epsilon&lt;r\)">\(0&lt;\epsilon&lt;r\)</span> and when <span class="math" data-tex="\(\epsilon&gt;r\)">\(\epsilon&gt;r\)</span>. Relate the difference to the phase gap.</p>
+<p><strong>Solution.</strong> For the original sheaf the graph of <span class="math" data-tex="\(dt\)">\(dt\)</span> misses the zero-section microsupport. The local support triangle at zero compares <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(k\)">\(k\)</span> on a negative interval by the identity, so the local test and number vanish.</p>
+<p>For <span class="math" data-tex="\(F_r\)">\(F_r\)</span>, the graph meets the positive conormal at the left endpoint <span class="math" data-tex="\(-r\)">\(-r\)</span>, and misses the negative conormal at the right endpoint <span class="math" data-tex="\(r\)">\(r\)</span>. The left endpoint's test is <span class="math" data-tex="\(k\)">\(k\)</span>, since the closed test side <span class="math" data-tex="\(t\geq-r\)">\(t\geq-r\)</span> locally contains its coefficient support. Its phase value is <span class="math" data-tex="\(-r\)">\(-r\)</span>.</p>
+<p>If <span class="math" data-tex="\(0&lt;\epsilon&lt;r\)">\(0&lt;\epsilon&lt;r\)</span>, the coefficient support in <span class="math" data-tex="\(U_\epsilon\)">\(U_\epsilon\)</span> is <span class="math" data-tex="\((-\epsilon,r]\)">\((-\epsilon,r]\)</span>. Its compact cohomology vanishes: in a slightly larger compact interval, the support triangle removes the left endpoint, and restriction of constants to that endpoint is the identity. The graph has no remaining intersection, and the compact index is zero as required.</p>
+<p>If <span class="math" data-tex="\(\epsilon&gt;r\)">\(\epsilon&gt;r\)</span>, the entire closed interval lies in <span class="math" data-tex="\(U_\epsilon\)">\(U_\epsilon\)</span>. Compact cohomology is <span class="math" data-tex="\(k\)">\(k\)</span>, and the artificial left-endpoint intersection contributes <span class="math" data-tex="\(1\)">\(1\)</span>. The asserted phase gap now fails, because the selected value <span class="math" data-tex="\(-r\)">\(-r\)</span> lies in <span class="math" data-tex="\((-\epsilon,0)\)">\((-\epsilon,0)\)</span>. This larger choice does not satisfy the hypothesis of (19). The discrepancy verifies the role of the negative-band exclusion rather than contradicting the local theorem.</p>
+<h2 id="references-and-the-next-step">References and the next step</h2>
+<p>The index of an isolated analytic phase and the sign of a transverse conormal belong to the local index theory of M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), §4. The argument here keeps the programme's proofs, the actual cutoff and support maps, the compactified multiplier selection, the symmetric zero-phase carrier and all three boundary cases.</p>
+<p>For related complex-analytic developments, David B. Massey's <a href="https://arxiv.org/abs/math/0006185v2">A Little Microlocal Morse Theory</a>, version 2, 18 January 2001, studies isolated vanishing-cycle support and cohomological decompositions with principal-ideal-domain coefficients. Section 5 includes a perturbation and radial-boundary argument. This is further scholarly context; the real-phase proof above uses the exact programme comparisons already named.</p>
+<p>The next step applies this local theorem to a finite set of transverse pure intersections. Their exact ordered three-plane inertia shifts determine the local multiplicities, and the finite sheaf-theoretic Morse filtration supplies the global Euler sum and stronger inequalities. Orientation-valued conormal and graph conventions will be checked together with that calculation.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/isolated-phases-and-local-characteristic-cycle-indices.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

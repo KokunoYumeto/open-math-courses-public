@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dirichlet&#x27;s theorem on primes in arithmetic progressions · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="dirichlet-s-theorem-on-primes-in-arithmetic-progressions">Dirichlet's theorem on primes in arithmetic progressions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Public domain (CC0).</em></p>
+<p>For coprime integers <span class="math" data-tex="\(b,q\)">\(b,q\)</span>, Dirichlet's theorem says that infinitely many primes satisfy <span class="math" data-tex="\(p\equiv b\pmod q\)">\(p\equiv b\pmod q\)</span>. The obstacle is not the character detector from <a href="NT-DIRL-01.html">Dirichlet characters</a>, but a possible zero of an associated series at 1. This lesson removes that obstacle by two positivity arguments, and then obtains both Dirichlet density and a weighted Mertens estimate.</p>
+<p>We use partial summation, locally uniform convergence of holomorphic functions, and unique factorization. Here <span class="math" data-tex="\(\Lambda(p^k)=\log p\)">\(\Lambda(p^k)=\log p\)</span> and <span class="math" data-tex="\(\Lambda(n)=0\)">\(\Lambda(n)=0\)</span> otherwise. The short Chebyshev bound needed for the weighted estimate is proved at its point of use. Basic references for the character method are Koukoulopoulos's book and Sutherland's lectures. The proofs below do not require algebraic number theory or a prime number theorem.</p>
+<h2 id="1-why-a-value-at-1-matters">1. Why a value at 1 matters</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\sum_{n\ge1}\frac{\chi(n)}{n^s},\qquad s=\sigma+it.
+\]">\[
+L(s,\chi)=\sum_{n\ge1}\frac{\chi(n)}{n^s},\qquad s=\sigma+it.
+\]</span>
+<p>For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, absolute convergence and unique factorization give</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=\prod_p(1-\chi(p)p^{-s})^{-1}.
+\tag{1.1}
+\]">\[
+L(s,\chi)=\prod_p(1-\chi(p)p^{-s})^{-1}.
+\tag{1.1}
+\]</span>
+<p>The associated logarithm, normalized by tending to zero as real <span class="math" data-tex="\(s\to+\infty\)">\(s\to+\infty\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+\ell_\chi(s)=\sum_p\sum_{k\ge1}\frac{\chi(p)^k}{k p^{ks}}.
+\tag{1.2}
+\]">\[
+\ell_\chi(s)=\sum_p\sum_{k\ge1}\frac{\chi(p)^k}{k p^{ks}}.
+\tag{1.2}
+\]</span>
+<p>This series converges absolutely on <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, and <span class="math" data-tex="\(L=\exp\ell_\chi\)">\(L=\exp\ell_\chi\)</span>. Thus <span class="math" data-tex="\(L\)">\(L\)</span> has no zero there. Uniformly for real <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, the terms with <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> in (1.2) are bounded in absolute value by <span class="math" data-tex="\(\sum_p\sum_{k\ge2}p^{-k}/k&lt;\infty\)">\(\sum_p\sum_{k\ge2}p^{-k}/k&lt;\infty\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\equiv b\pmod q}p^{-\sigma}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\ell_\chi(\sigma)+O_q(1).
+\tag{1.3}
+\]">\[
+\sum_{p\equiv b\pmod q}p^{-\sigma}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\ell_\chi(\sigma)+O_q(1).
+\tag{1.3}
+\]</span>
+<p>The principal character contributes the divergent logarithm of the zeta function. We need to show that all the other terms stay bounded.</p>
+<h2 id="2-periodicity-gives-continuation">2. Periodicity gives continuation</h2>
+<p>For <span class="math" data-tex="\(\chi\ne\chi_0\)">\(\chi\ne\chi_0\)</span>, a complete period sums to zero by orthogonality. Hence</p>
+<span class="math math-display" data-tex="\[
+A_\chi(x)=\sum_{n\le x}\chi(n),\qquad |A_\chi(x)|\le\varphi(q).
+\]">\[
+A_\chi(x)=\sum_{n\le x}\chi(n),\qquad |A_\chi(x)|\le\varphi(q).
+\]</span>
+<p>Partial summation gives, for <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=s\int_1^\infty A_\chi(u)u^{-s-1}\,du.
+\tag{2.1}
+\]">\[
+L(s,\chi)=s\int_1^\infty A_\chi(u)u^{-s-1}\,du.
+\tag{2.1}
+\]</span>
+<p>More explicitly, the tail after an integer <span class="math" data-tex="\(N\)">\(N\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_{n&gt;N}\chi(n)n^{-s}
+=-A_\chi(N)N^{-s}+s\int_N^\infty A_\chi(u)u^{-s-1}\,du.
+\]">\[
+\sum_{n&gt;N}\chi(n)n^{-s}
+=-A_\chi(N)N^{-s}+s\int_N^\infty A_\chi(u)u^{-s-1}\,du.
+\]</span>
+<p>Its absolute value is at most <span class="math" data-tex="\(\varphi(q)N^{-\sigma}(1+|s|/\sigma)\)">\(\varphi(q)N^{-\sigma}(1+|s|/\sigma)\)</span>. This bound is uniform on every compact subset of <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. The defining series therefore converges there and gives a holomorphic function. Differentiation is justified locally uniformly by the analogous tail estimate with a factor <span class="math" data-tex="\(\log u\)">\(\log u\)</span>.</p>
+<p>For the principal character,</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi_0)=\zeta(s)\prod_{p\mid q}(1-p^{-s}).
+\tag{2.2}
+\]">\[
+L(s,\chi_0)=\zeta(s)\prod_{p\mid q}(1-p^{-s}).
+\tag{2.2}
+\]</span>
+<p>The zeta function has a simple pole at 1 of residue 1, and is holomorphic elsewhere on <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. One can see exactly the continuation needed here from</p>
+<span class="math math-display" data-tex="\[
+\zeta(s)=\frac{s}{s-1}-s\int_1^\infty\{u\}u^{-s-1}\,du.
+\tag{2.3}
+\]">\[
+\zeta(s)=\frac{s}{s-1}-s\int_1^\infty\{u\}u^{-s-1}\,du.
+\tag{2.3}
+\]</span>
+<p>Initially this follows from <span class="math" data-tex="\(\zeta(s)=s\int_1^\infty\lfloor u\rfloor u^{-s-1}\,du\)">\(\zeta(s)=s\int_1^\infty\lfloor u\rfloor u^{-s-1}\,du\)</span> on <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>. The integral with <span class="math" data-tex="\(\{u\}\)">\(\{u\}\)</span> is holomorphic on <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. Thus (2.2) has residue <span class="math" data-tex="\(\prod_{p\mid q}(1-1/p)=\varphi(q)/q\)">\(\prod_{p\mid q}(1-1/p)=\varphi(q)/q\)</span> at 1.</p>
+<h2 id="3-two-different-positivity-arguments">3. Two different positivity arguments</h2>
+<p><strong>Proposition 3.1.</strong> For every real <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_q(\sigma):=\prod_{\chi\bmod q}L(\sigma,\chi)\ge1.
+\]">\[
+P_q(\sigma):=\prod_{\chi\bmod q}L(\sigma,\chi)\ge1.
+\]</span>
+<p><strong>Proof.</strong> Sum (1.2) over the characters and apply the detector to <span class="math" data-tex="\(p^k\)">\(p^k\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+\log P_q(\sigma)
+=\varphi(q)\sum_{\substack{p,k\ge1\\p^k\equiv1\pmod q}}
+\frac1{k p^{k\sigma}}\ge0.
+\]">\[
+\log P_q(\sigma)
+=\varphi(q)\sum_{\substack{p,k\ge1\\p^k\equiv1\pmod q}}
+\frac1{k p^{k\sigma}}\ge0.
+\]</span>
+<p>This logarithm is real, so exponentiation proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nonreal, then <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span>.</p>
+<p><strong>Proof.</strong> The conjugation identity <span class="math" data-tex="\(L(\overline s,\overline\chi)=\overline{L(s,\chi)}\)">\(L(\overline s,\overline\chi)=\overline{L(s,\chi)}\)</span> follows first from the series, then throughout <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> by continuation. If <span class="math" data-tex="\(L(1,\chi)=0\)">\(L(1,\chi)=0\)</span>, the distinct factor <span class="math" data-tex="\(L(s,\overline\chi)\)">\(L(s,\overline\chi)\)</span> also vanishes at 1. All nonprincipal factors are holomorphic there; the principal factor has only a simple pole. The product would consequently tend to zero as <span class="math" data-tex="\(\sigma\downarrow1\)">\(\sigma\downarrow1\)</span>, contradicting Proposition 3.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a real nonprincipal character, the product <span class="math" data-tex="\(\zeta(s)L(s,\chi)\)">\(\zeta(s)L(s,\chi)\)</span> has a different positivity property. Write</p>
+<span class="math math-display" data-tex="\[
+r(n)=\sum_{d\mid n}\chi(d),\qquad
+\zeta(s)L(s,\chi)=\sum_{n\ge1}r(n)n^{-s}\quad(\sigma&gt;1).
+\]">\[
+r(n)=\sum_{d\mid n}\chi(d),\qquad
+\zeta(s)L(s,\chi)=\sum_{n\ge1}r(n)n^{-s}\quad(\sigma&gt;1).
+\]</span>
+<p>The function <span class="math" data-tex="\(r\)">\(r\)</span> is multiplicative. At a prime power,</p>
+<span class="math math-display" data-tex="\[
+r(p^k)=\begin{cases}
+k+1,&amp;\chi(p)=1,\\
+1_{k\text{ even}},&amp;\chi(p)=-1,\\
+1,&amp;\chi(p)=0.
+\end{cases}
+\tag{3.1}
+\]">\[
+r(p^k)=\begin{cases}
+k+1,&amp;\chi(p)=1,\\
+1_{k\text{ even}},&amp;\chi(p)=-1,\\
+1,&amp;\chi(p)=0.
+\end{cases}
+\tag{3.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(r(n)\ge0\)">\(r(n)\ge0\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(r(m^2)\ge1\)">\(r(m^2)\ge1\)</span>.</p>
+<p><strong>Lemma 3.3 (positivity principle).</strong> If a Dirichlet series with nonnegative coefficients converges absolutely for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span> and its sum extends holomorphically to <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>, the series converges at every positive real argument.</p>
+<p><strong>Proof.</strong> Fix a real <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>. Termwise differentiation gives</p>
+<span class="math math-display" data-tex="\[
+(-1)^jF^{(j)}(a)=\sum_n c_n(\log n)^j n^{-a}\ge0.
+\]">\[
+(-1)^jF^{(j)}(a)=\sum_n c_n(\log n)^j n^{-a}\ge0.
+\]</span>
+<p>The disk <span class="math" data-tex="\(|s-a|&lt;a\)">\(|s-a|&lt;a\)</span> lies in the half-plane of holomorphy. For <span class="math" data-tex="\(0&lt;h&lt;a\)">\(0&lt;h&lt;a\)</span>, the Taylor series at <span class="math" data-tex="\(a\)">\(a\)</span>, evaluated at <span class="math" data-tex="\(a-h\)">\(a-h\)</span>, converges. All its terms in the displayed representation are nonnegative, so Tonelli's theorem permits the exchange</p>
+<span class="math math-display" data-tex="\[
+F(a-h)=\sum_{j\ge0}\frac{h^j}{j!}\sum_n c_n(\log n)^j n^{-a}
+=\sum_n c_n n^{-a}e^{h\log n}
+=\sum_n c_n n^{-(a-h)}.
+\]">\[
+F(a-h)=\sum_{j\ge0}\frac{h^j}{j!}\sum_n c_n(\log n)^j n^{-a}
+=\sum_n c_n n^{-a}e^{h\log n}
+=\sum_n c_n n^{-(a-h)}.
+\]</span>
+<p>Choosing <span class="math" data-tex="\(a-h\)">\(a-h\)</span> to be any positive real number proves the claim. This is the form of Landau's positivity theorem needed here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.4 (nonvanishing at 1).</strong> Every nonprincipal Dirichlet character satisfies <span class="math" data-tex="\(L(1,\chi)\ne0\)">\(L(1,\chi)\ne0\)</span>. For a real nonprincipal character, <span class="math" data-tex="\(L(1,\chi)&gt;0\)">\(L(1,\chi)&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Only real characters remain. If <span class="math" data-tex="\(L(1,\chi)=0\)">\(L(1,\chi)=0\)</span>, its zero cancels the only pole of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> on <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. Hence <span class="math" data-tex="\(\zeta(s)L(s,\chi)\)">\(\zeta(s)L(s,\chi)\)</span> is holomorphic on that half-plane. Lemma 3.3 forces its series to converge at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, but</p>
+<span class="math math-display" data-tex="\[
+\sum_n\frac{r(n)}{\sqrt n}\ge\sum_{m\ge1}\frac{r(m^2)}m\ge\sum_{m\ge1}\frac1m=\infty.
+\]">\[
+\sum_n\frac{r(n)}{\sqrt n}\ge\sum_{m\ge1}\frac{r(m^2)}m\ge\sum_{m\ge1}\frac1m=\infty.
+\]</span>
+<p>This contradiction proves nonvanishing. Each Euler factor of <span class="math" data-tex="\(L(\sigma,\chi)\)">\(L(\sigma,\chi)\)</span> is positive for real <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, so continuity and nonvanishing make the limit at 1 positive. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-from-nonvanishing-to-primes">4. From nonvanishing to primes</h2>
+<p>For a nonprincipal character, <span class="math" data-tex="\(L\)">\(L\)</span> has a nonzero value at 1 and is holomorphic near 1. It therefore has a holomorphic logarithm in a small disk about 1. On the real interval immediately to the right of 1, this logarithm and <span class="math" data-tex="\(\ell_\chi\)">\(\ell_\chi\)</span> differ by a constant multiple of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. Thus <span class="math" data-tex="\(\ell_\chi(\sigma)=O_q(1)\)">\(\ell_\chi(\sigma)=O_q(1)\)</span> as <span class="math" data-tex="\(\sigma\downarrow1\)">\(\sigma\downarrow1\)</span>.</p>
+<p>For the principal character, (2.2) gives</p>
+<span class="math math-display" data-tex="\[
+\ell_{\chi_0}(\sigma)=\log\frac1{\sigma-1}+O_q(1).
+\]">\[
+\ell_{\chi_0}(\sigma)=\log\frac1{\sigma-1}+O_q(1).
+\]</span>
+<p>Substitution in (1.3) proves the following theorem.</p>
+<p><strong>Theorem 4.1 (Dirichlet).</strong> If <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{p\equiv b\pmod q}p^{-\sigma}
+=\frac1{\varphi(q)}\log\frac1{\sigma-1}+O_q(1)}
+\qquad(\sigma\downarrow1).
+\]">\[
+\boxed{\sum_{p\equiv b\pmod q}p^{-\sigma}
+=\frac1{\varphi(q)}\log\frac1{\sigma-1}+O_q(1)}
+\qquad(\sigma\downarrow1).
+\]</span>
+<p>In particular there are infinitely many such primes. Their <strong>Dirichlet density</strong>, defined as the limit of the ratio of this sum to <span class="math" data-tex="\(\sum_p p^{-\sigma}\)">\(\sum_p p^{-\sigma}\)</span>, is <span class="math" data-tex="\(1/\varphi(q)\)">\(1/\varphi(q)\)</span>.</p>
+<p>This density weights primes by <span class="math" data-tex="\(p^{-\sigma}\)">\(p^{-\sigma}\)</span>; it does not assert an asymptotic for their unweighted counting function. The latter is proved in the lesson on the prime number theorem for progressions.</p>
+<h3 id="a-weighted-mertens-theorem-without-a-prime-number-theorem">A weighted Mertens theorem without a prime number theorem</h3>
+<p>We first establish the upper bound used in the error term. Every prime <span class="math" data-tex="\(n&lt;p\le2n\)">\(n&lt;p\le2n\)</span> divides <span class="math" data-tex="\(\binom{2n}{n}\)">\(\binom{2n}{n}\)</span>, and <span class="math" data-tex="\(\binom{2n}{n}\le4^n\)">\(\binom{2n}{n}\le4^n\)</span>. Taking logarithms, summing over dyadic intervals, and comparing a real <span class="math" data-tex="\(x\)">\(x\)</span> to the next power of 2 gives <span class="math" data-tex="\(\theta(x)=\sum_{p\le x}\log p\le Cx\)">\(\theta(x)=\sum_{p\le x}\log p\le Cx\)</span> for an absolute <span class="math" data-tex="\(C\)">\(C\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\psi(x)=\sum_{k\le\log x/\log2}\theta(x^{1/k})
+\le Cx+C\frac{\log x}{\log2}\sqrt x\ll x,
+\]">\[
+\psi(x)=\sum_{k\le\log x/\log2}\theta(x^{1/k})
+\le Cx+C\frac{\log x}{\log2}\sqrt x\ll x,
+\]</span>
+<p>since <span class="math" data-tex="\((\log x)/\sqrt x\)">\((\log x)/\sqrt x\)</span> is bounded on <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>. This proves the needed form of Chebyshev's estimate directly.</p>
+<p><strong>Theorem 4.2.</strong> For fixed <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{p\le x\\p\equiv b\pmod q}}\frac{\log p}{p}
+=\frac{\log x}{\varphi(q)}+O_q(1)\qquad(x\ge2).
+\tag{4.1}
+\]">\[
+\sum_{\substack{p\le x\\p\equiv b\pmod q}}\frac{\log p}{p}
+=\frac{\log x}{\varphi(q)}+O_q(1)\qquad(x\ge2).
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(\chi\ne\chi_0\)">\(\chi\ne\chi_0\)</span>. Periodicity and partial summation show</p>
+<span class="math math-display" data-tex="\[
+\sum_{m\le y}\frac{\chi(m)}m=L(1,\chi)+O_q(y^{-1}),
+\qquad
+\sum_{n\le x}\frac{\chi(n)\log n}{n}=O_q(1).
+\]">\[
+\sum_{m\le y}\frac{\chi(m)}m=L(1,\chi)+O_q(y^{-1}),
+\qquad
+\sum_{n\le x}\frac{\chi(n)\log n}{n}=O_q(1).
+\]</span>
+<p>The identity <span class="math" data-tex="\(\log n=\sum_{d\mid n}\Lambda(d)\)">\(\log n=\sum_{d\mid n}\Lambda(d)\)</span>, with complete multiplicativity, now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{n\le x}\frac{\chi(n)\log n}{n}
+&amp;=\sum_{d\le x}\frac{\chi(d)\Lambda(d)}d
+\sum_{m\le x/d}\frac{\chi(m)}m\\
+&amp;=L(1,\chi)\sum_{d\le x}\frac{\chi(d)\Lambda(d)}d
++O_q\left(\frac1x\sum_{d\le x}\Lambda(d)\right).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{n\le x}\frac{\chi(n)\log n}{n}
+&amp;=\sum_{d\le x}\frac{\chi(d)\Lambda(d)}d
+\sum_{m\le x/d}\frac{\chi(m)}m\\
+&amp;=L(1,\chi)\sum_{d\le x}\frac{\chi(d)\Lambda(d)}d
++O_q\left(\frac1x\sum_{d\le x}\Lambda(d)\right).
+\end{aligned}
+\]</span>
+<p>Chebyshev's bound makes the error <span class="math" data-tex="\(O_q(1)\)">\(O_q(1)\)</span>, and Theorem 3.4 lets us divide by <span class="math" data-tex="\(L(1,\chi)\)">\(L(1,\chi)\)</span>. Thus the twisted sum of <span class="math" data-tex="\(\Lambda(d)/d\)">\(\Lambda(d)/d\)</span> is bounded.</p>
+<p>For the untwisted sum, the same divisor identity gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le x}\log n
+=\sum_{d\le x}\Lambda(d)\lfloor x/d\rfloor
+=x\sum_{d\le x}\frac{\Lambda(d)}d+O(x).
+\]">\[
+\sum_{n\le x}\log n
+=\sum_{d\le x}\Lambda(d)\lfloor x/d\rfloor
+=x\sum_{d\le x}\frac{\Lambda(d)}d+O(x).
+\]</span>
+<p>The left side is <span class="math" data-tex="\(x\log x-x+O(\log x)\)">\(x\log x-x+O(\log x)\)</span>, by integral comparison or Stirling's formula. Hence <span class="math" data-tex="\(\sum_{d\le x}\Lambda(d)/d=\log x+O(1)\)">\(\sum_{d\le x}\Lambda(d)/d=\log x+O(1)\)</span>. Restricting to <span class="math" data-tex="\((d,q)=1\)">\((d,q)=1\)</span> deletes only the bounded sum <span class="math" data-tex="\(\sum_{p\mid q}\sum_{k\ge1}(\log p)/p^k\)">\(\sum_{p\mid q}\sum_{k\ge1}(\log p)/p^k\)</span>. Apply the character detector to obtain</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{n\le x\\n\equiv b\pmod q}}\frac{\Lambda(n)}n
+=\frac{\log x}{\varphi(q)}+O_q(1).
+\]">\[
+\sum_{\substack{n\le x\\n\equiv b\pmod q}}\frac{\Lambda(n)}n
+=\frac{\log x}{\varphi(q)}+O_q(1).
+\]</span>
+<p>Finally the terms with <span class="math" data-tex="\(n=p^k\)">\(n=p^k\)</span>, <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, have total weight at most <span class="math" data-tex="\(\sum_p(\log p)/(p(p-1))&lt;\infty\)">\(\sum_p(\log p)/(p(p-1))&lt;\infty\)</span>. Removing them proves (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.3.</strong> For the odd character modulo 4,</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_{-4})=\sum_{k\ge0}\left(\frac1{4k+1}-\frac1{4k+3}\right)
+=\int_0^1\frac{dt}{1+t^2}=\frac\pi4.
+\]">\[
+L(1,\chi_{-4})=\sum_{k\ge0}\left(\frac1{4k+1}-\frac1{4k+3}\right)
+=\int_0^1\frac{dt}{1+t^2}=\frac\pi4.
+\]</span>
+<p>For the character modulo 3,</p>
+<span class="math math-display" data-tex="\[
+L(1,\chi_{-3})
+=\int_0^1\frac{1-t}{1-t^3}\,dt
+=\int_0^1\frac{dt}{1+t+t^2}
+=\frac{\pi}{3\sqrt3}.
+\]">\[
+L(1,\chi_{-3})
+=\int_0^1\frac{1-t}{1-t^3}\,dt
+=\int_0^1\frac{dt}{1+t+t^2}
+=\frac{\pi}{3\sqrt3}.
+\]</span>
+<p>The integral expressions follow by integrating finite geometric sums and taking their limit. The paired summands are positive, so monotone convergence also justifies the exchange directly. These values give explicit instances of the positivity conclusion in Theorem 3.4.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1 (easy).</strong> Evaluate the alternating series <span class="math" data-tex="\(1-1/3+1/5-1/7+\cdots\)">\(1-1/3+1/5-1/7+\cdots\)</span>, carefully justifying its expression as an integral.</p>
+<p><strong>Exercise 5.2 (medium).</strong> Give elementary proofs that each of the classes 1 and 3 modulo 4 contains infinitely many primes.</p>
+<p><strong>Exercise 5.3 (medium).</strong> Explain why the boundedness of the prime-power tail in Theorem 4.2 suffices even though <span class="math" data-tex="\(p^k\equiv b\pmod q\)">\(p^k\equiv b\pmod q\)</span> does not imply <span class="math" data-tex="\(p\equiv b\pmod q\)">\(p\equiv b\pmod q\)</span>. Deduce <span class="math" data-tex="\(\sum_{p\le x,\ p\equiv b(q)}1/p=\varphi(q)^{-1}\log\log x+O_q(1)\)">\(\sum_{p\le x,\ p\equiv b(q)}1/p=\varphi(q)^{-1}\log\log x+O_q(1)\)</span>.</p>
+<p><strong>Exercise 5.4 (hard).</strong> Give a proof of real-character nonvanishing using a weighted Dirichlet hyperbola decomposition, without Lemma 3.3. Apply it to <span class="math" data-tex="\(H(x)=\sum_{n\le x}r(n)/\sqrt n\)">\(H(x)=\sum_{n\le x}r(n)/\sqrt n\)</span>.</p>
+<p><strong>Exercise 5.5 (medium).</strong> Show directly from Euler factors that <span class="math" data-tex="\(\prod_{\chi\bmod q}L(s,\chi)\)">\(\prod_{\chi\bmod q}L(s,\chi)\)</span> has nonnegative Dirichlet-series coefficients.</p>
+<h3 id="solutions">Solutions</h3>
+<p><strong>5.1.</strong> The sum paired in consecutive terms is <span class="math" data-tex="\(\sum_{k\ge0}(1/(4k+1)-1/(4k+3))\)">\(\sum_{k\ge0}(1/(4k+1)-1/(4k+3))\)</span>. Each term equals <span class="math" data-tex="\(\int_0^1t^{4k}(1-t^2)\,dt\)">\(\int_0^1t^{4k}(1-t^2)\,dt\)</span>, whose integrand is nonnegative. Monotone convergence gives the integral of <span class="math" data-tex="\((1-t^2)/(1-t^4)=1/(1+t^2)\)">\((1-t^2)/(1-t^4)=1/(1+t^2)\)</span>. This is <span class="math" data-tex="\(\arctan1=\pi/4\)">\(\arctan1=\pi/4\)</span>. The paired limit agrees with the ordinary alternating-series limit, since its omitted last term tends to zero.</p>
+<p><strong>5.2.</strong> Suppose the primes 3 modulo 4 form a finite list, with product <span class="math" data-tex="\(P\)">\(P\)</span> (take <span class="math" data-tex="\(P=1\)">\(P=1\)</span> for an empty list). The integer <span class="math" data-tex="\(4P-1\)">\(4P-1\)</span> is 3 modulo 4. Its prime factorization must contain a prime 3 modulo 4 to an odd exponent, and no prime in the list divides it. This is a contradiction. For the class 1, let <span class="math" data-tex="\(P\)">\(P\)</span> be the product of its supposed finite list. The odd number <span class="math" data-tex="\((2P)^2+1&gt;1\)">\((2P)^2+1&gt;1\)</span> has a prime divisor <span class="math" data-tex="\(r\)">\(r\)</span>. The class of <span class="math" data-tex="\(2P\)">\(2P\)</span> modulo <span class="math" data-tex="\(r\)">\(r\)</span> has square <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence order 4, so <span class="math" data-tex="\(4\mid r-1\)">\(4\mid r-1\)</span>. But no listed prime divides this number, another contradiction.</p>
+<p><strong>5.3.</strong> The absolute weight of <em>all</em> higher prime powers is bounded independently of <span class="math" data-tex="\(x\)">\(x\)</span>; every subset, whatever its residue condition, has weight at most that bound. Thus deleting exactly the powers in the progression changes the sum by <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. Put <span class="math" data-tex="\(B(x)=\sum_{p\le x,\ p\equiv b(q)}(\log p)/p\)">\(B(x)=\sum_{p\le x,\ p\equiv b(q)}(\log p)/p\)</span>. Partial summation gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{p\le x\\p\equiv b(q)}}\frac1p
+=\frac{B(x)}{\log x}+\int_2^x\frac{B(t)}{t(\log t)^2}\,dt.
+\]">\[
+\sum_{\substack{p\le x\\p\equiv b(q)}}\frac1p
+=\frac{B(x)}{\log x}+\int_2^x\frac{B(t)}{t(\log t)^2}\,dt.
+\]</span>
+<p>Substitute <span class="math" data-tex="\(B(t)=\log t/\varphi(q)+O_q(1)\)">\(B(t)=\log t/\varphi(q)+O_q(1)\)</span>. The error integral is bounded, while the main integral is <span class="math" data-tex="\(\varphi(q)^{-1}(\log\log x-\log\log2)\)">\(\varphi(q)^{-1}(\log\log x-\log\log2)\)</span>. The boundary term is bounded. This proves the assertion, and Theorem 4.2 supplies the weighted estimate used in it.</p>
+<p><strong>5.4.</strong> Suppose <span class="math" data-tex="\(L(1,\chi)=0\)">\(L(1,\chi)=0\)</span>, and write <span class="math" data-tex="\(y=\lfloor\sqrt x\rfloor\)">\(y=\lfloor\sqrt x\rfloor\)</span>, with <span class="math" data-tex="\(x\ge4\)">\(x\ge4\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+C(v)=\sum_{n\le v}\frac{\chi(n)}{\sqrt n},\qquad
+A(v)=\sum_{n\le v}\frac1{\sqrt n}.
+\]">\[
+C(v)=\sum_{n\le v}\frac{\chi(n)}{\sqrt n},\qquad
+A(v)=\sum_{n\le v}\frac1{\sqrt n}.
+\]</span>
+<p>Bounded character partial sums give <span class="math" data-tex="\(C(v)=L(1/2,\chi)+O_q(v^{-1/2})\)">\(C(v)=L(1/2,\chi)+O_q(v^{-1/2})\)</span>. Also <span class="math" data-tex="\(A(v)=2\sqrt v+c+O(v^{-1/2})\)">\(A(v)=2\sqrt v+c+O(v^{-1/2})\)</span> for an absolute constant <span class="math" data-tex="\(c\)">\(c\)</span>; this follows by summing the integrable differences between <span class="math" data-tex="\(n^{-1/2}\)">\(n^{-1/2}\)</span> and its integral on successive unit intervals. The hyperbola identity is</p>
+<span class="math math-display" data-tex="\[
+H(x)=\sum_{a\le y}\frac{C(x/a)}{\sqrt a}
++\sum_{b\le y}\frac{\chi(b)A(x/b)}{\sqrt b}
+-A(y)C(y).
+\]">\[
+H(x)=\sum_{a\le y}\frac{C(x/a)}{\sqrt a}
++\sum_{b\le y}\frac{\chi(b)A(x/b)}{\sqrt b}
+-A(y)C(y).
+\]</span>
+<p>Every pair <span class="math" data-tex="\(ab\le x\)">\(ab\le x\)</span> has <span class="math" data-tex="\(a\le y\)">\(a\le y\)</span> or <span class="math" data-tex="\(b\le y\)">\(b\le y\)</span>, and their intersection is the square <span class="math" data-tex="\(a,b\le y\)">\(a,b\le y\)</span>, which proves the identity. The first sum is <span class="math" data-tex="\(L(1/2,\chi)A(y)+O_q(y/\sqrt x)\)">\(L(1/2,\chi)A(y)+O_q(y/\sqrt x)\)</span>. Subtracting <span class="math" data-tex="\(A(y)C(y)\)">\(A(y)C(y)\)</span> leaves <span class="math" data-tex="\(O_q(1)\)">\(O_q(1)\)</span>. The second sum equals</p>
+<span class="math math-display" data-tex="\[
+2\sqrt x\sum_{b\le y}\frac{\chi(b)}b+cC(y)+O(y/\sqrt x).
+\]">\[
+2\sqrt x\sum_{b\le y}\frac{\chi(b)}b+cC(y)+O(y/\sqrt x).
+\]</span>
+<p>The assumed vanishing and the tail estimate at 1 imply <span class="math" data-tex="\(\sum_{b\le y}\chi(b)/b=O_q(1/y)\)">\(\sum_{b\le y}\chi(b)/b=O_q(1/y)\)</span>, so this too is <span class="math" data-tex="\(O_q(1)\)">\(O_q(1)\)</span>. Thus <span class="math" data-tex="\(H(x)=O_q(1)\)">\(H(x)=O_q(1)\)</span>. But positivity and the squares give <span class="math" data-tex="\(H(x)\ge\sum_{m\le\sqrt x}1/m\to\infty\)">\(H(x)\ge\sum_{m\le\sqrt x}1/m\to\infty\)</span>, a contradiction.</p>
+<p><strong>5.5.</strong> If <span class="math" data-tex="\(p\nmid q\)">\(p\nmid q\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> is the order of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(U_q\)">\(U_q\)</span>, restriction of characters to <span class="math" data-tex="\(\langle p\rangle\)">\(\langle p\rangle\)</span> is onto by the extension lemma. Each <span class="math" data-tex="\(f\)">\(f\)</span>-th root of unity consequently occurs <span class="math" data-tex="\(\varphi(q)/f\)">\(\varphi(q)/f\)</span> times among <span class="math" data-tex="\(\chi(p)\)">\(\chi(p)\)</span>. Hence the Euler factor of the product is</p>
+<span class="math math-display" data-tex="\[
+\prod_{\chi\bmod q}(1-\chi(p)z)^{-1}
+=(1-z^f)^{-\varphi(q)/f}.
+\]">\[
+\prod_{\chi\bmod q}(1-\chi(p)z)^{-1}
+=(1-z^f)^{-\varphi(q)/f}.
+\]</span>
+<p>Its coefficients are nonnegative by the binomial expansion for a positive integral exponent. For <span class="math" data-tex="\(p\mid q\)">\(p\mid q\)</span> the factor is 1. Absolute convergence on <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span> permits multiplication of these series, giving nonnegative global coefficients.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The elementary tools of complex and real analysis are prerequisites. The character results used here are proved in the preceding lesson. All analytic continuation, positivity, nonvanishing, Chebyshev support and progression estimates stated in this lesson have been proved above. No assertion about natural density or uniformity as <span class="math" data-tex="\(q\)">\(q\)</span> grows is made here; those are the subject of later lessons.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Andrew V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2019fa/LectureNotes18.pdf"><em>Dirichlet L-functions, primes in arithmetic progressions</em></a>, MIT 18.785, 2019; for characters, Euler products and the distinction between densities.</li>
+<li>Dimitris Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, Graduate Studies in Mathematics 203, American Mathematical Society, 2019; Chapters 2, 9, 11 and 12.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-01.html">← Dirichlet characters</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-03.html">Gauss sums →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

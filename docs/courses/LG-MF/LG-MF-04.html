@@ -1,0 +1,1115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular forms, lattice functions and Eisenstein series · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="modular-forms-lattice-functions-and-eisenstein-series">Modular forms, lattice functions and Eisenstein series</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A modular form changes predictably when a lattice basis changes. Summing inverse powers of the nonzero lattice points produces the first examples. Their Fourier coefficients turn out to be divisor sums. Weight two is the boundary case: the lattice sum loses absolute convergence, and the correction needed to recover its transformation law depends on the height in the upper half-plane.</p>
+<p>We use <a href="LG-MF-03.html">Modular curves and their genus</a> and elementary complex analysis. The convergence, lattice reindexing, cotangent residues, Bernoulli recurrence and weight-two continuation below form the mathematical derivation. Freely accessible comparison sources are [Voight open book, §§40.1–40.3] and [Stein author PDF, §2.1 and Chapter 5]. No source comparison substitutes for a local proof.</p>
+<p><strong>Lemma 0.1 (analytic consequences used in the series arguments).</strong> Using the Cauchy formula and theorem proved in <a href="LG-MF-01.html">lesson 01</a>, Lemma 0.2, a locally uniform limit of holomorphic functions is holomorphic, a bounded isolated puncture is removable, and a normally convergent holomorphic series can be differentiated term by term.</p>
+<p><em>Proof.</em> On a closed disc strictly inside the domain, uniform convergence on its boundary permits passage to the limit in Cauchy's formula. The resulting integral is holomorphic in its interior, as differentiating the kernel <span class="math" data-tex="\((\zeta-z)^{-1}\)">\((\zeta-z)^{-1}\)</span> on smaller discs is uniformly justified. This also gives convergence of every derivative on smaller discs and proves the differentiation assertion. At a puncture, Cauchy's theorem on an annulus gives the Laurent coefficients
+<span class="math math-display" data-tex="\[
+a_n=\frac1{2\pi i}\int_{|\zeta|=r}
+F(\zeta)\zeta^{-n-1}\,d\zeta,
+\]">\[
+a_n=\frac1{2\pi i}\int_{|\zeta|=r}
+F(\zeta)\zeta^{-n-1}\,d\zeta,
+\]</span>
+independent of the circle radius. The Laurent expansion itself follows by expanding the two Cauchy kernels on the bounding circles into geometric series. If <span class="math" data-tex="\(|F|\le M\)">\(|F|\le M\)</span> near zero, then for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, <span class="math" data-tex="\(|a_{-j}|\le Mr^j\)">\(|a_{-j}|\le Mr^j\)</span>; let <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. All negative coefficients vanish, so the Taylor expansion extends <span class="math" data-tex="\(F\)">\(F\)</span> across zero. The same circle formula gives uniqueness of the Taylor and Laurent coefficients used below. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Throughout,
+<span class="math math-display" data-tex="\[
+z=x+iy\in\mathfrak H,\qquad q=e^{2\pi iz},\qquad
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]">\[
+z=x+iy\in\mathfrak H,\qquad q=e^{2\pi iz},\qquad
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]</span>
+Weights are integers. A sum marked with a prime omits the zero pair or the zero lattice point.</p>
+<h2 id="1-the-slash-operator-and-the-cusp-condition">1. The slash operator and the cusp condition</h2>
+<p>For a real matrix <span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span> of positive determinant, set
+<span class="math math-display" data-tex="\[
+j(\gamma,z)=cz+d.
+\]">\[
+j(\gamma,z)=cz+d.
+\]</span>
+It does not vanish on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. On <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb R)\)">\(\mathrm{SL}_2(\mathbb R)\)</span> define
+<span class="math math-display" data-tex="\[
+(f|_k\gamma)(z)=j(\gamma,z)^{-k}f(\gamma z).
+\]">\[
+(f|_k\gamma)(z)=j(\gamma,z)^{-k}f(\gamma z).
+\]</span></p>
+<p><strong>Proposition 1.1 (the right slash action).</strong> For <span class="math" data-tex="\(\gamma,\delta\in\mathrm{SL}_2(\mathbb R)\)">\(\gamma,\delta\in\mathrm{SL}_2(\mathbb R)\)</span>,
+<span class="math math-display" data-tex="\[
+j(\gamma\delta,z)=j(\gamma,\delta z)j(\delta,z),\qquad
+(f|_k\gamma)|_k\delta=f|_k(\gamma\delta).
+\]">\[
+j(\gamma\delta,z)=j(\gamma,\delta z)j(\delta,z),\qquad
+(f|_k\gamma)|_k\delta=f|_k(\gamma\delta).
+\]</span>
+The slash operators preserve holomorphic functions and act linearly.</p>
+<p><strong>Proof.</strong> Write the bottom row of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> as <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> and
+<span class="math" data-tex="\(\delta=\begin{pmatrix}a&#x27;&amp;b&#x27;\\c&#x27;&amp;d&#x27;\end{pmatrix}\)">\(\delta=\begin{pmatrix}a&#x27;&amp;b&#x27;\\c&#x27;&amp;d&#x27;\end{pmatrix}\)</span>. Then
+<span class="math math-display" data-tex="\[
+j(\gamma,\delta z)j(\delta,z)
+=\left(c\frac{a&#x27;z+b&#x27;}{c&#x27;z+d&#x27;}+d\right)(c&#x27;z+d&#x27;)
+=(ca&#x27;+dc&#x27;)z+cb&#x27;+dd&#x27;,
+\]">\[
+j(\gamma,\delta z)j(\delta,z)
+=\left(c\frac{a&#x27;z+b&#x27;}{c&#x27;z+d&#x27;}+d\right)(c&#x27;z+d&#x27;)
+=(ca&#x27;+dc&#x27;)z+cb&#x27;+dd&#x27;,
+\]</span>
+which is the bottom-row expression for <span class="math" data-tex="\(\gamma\delta\)">\(\gamma\delta\)</span>. Substituting this identity into
+<span class="math math-display" data-tex="\[
+((f|_k\gamma)|_k\delta)(z)
+=j(\delta,z)^{-k}j(\gamma,\delta z)^{-k}f(\gamma\delta z)
+\]">\[
+((f|_k\gamma)|_k\delta)(z)
+=j(\delta,z)^{-k}j(\gamma,\delta z)^{-k}f(\gamma\delta z)
+\]</span>
+proves the action law. The identity matrix acts trivially. Composition with a holomorphic fractional linear map and multiplication by a nowhere vanishing holomorphic factor preserve holomorphy. Linearity follows directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For later Hecke operators, we fix the extension to <span class="math" data-tex="\(\mathrm{GL}_2^+(\mathbb Q)\)">\(\mathrm{GL}_2^+(\mathbb Q)\)</span>:
+<span class="math math-display" data-tex="\[
+(f|_k\gamma)(z)=\det(\gamma)^{\,k-1}j(\gamma,z)^{-k}f(\gamma z).
+\tag{1.1}
+\]">\[
+(f|_k\gamma)(z)=\det(\gamma)^{\,k-1}j(\gamma,z)^{-k}f(\gamma z).
+\tag{1.1}
+\]</span>
+The same computation, together with multiplicativity of the determinant, proves the right action law. This normalization gives
+<span class="math" data-tex="\(f|_k(\lambda I)=\lambda^{k-2}f\)">\(f|_k(\lambda I)=\lambda^{k-2}f\)</span> for positive rational <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. It agrees with the preceding definition on determinant-one matrices.</p>
+<p>Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be any subgroup of finite index in <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span>; we do not require <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span>.</p>
+<p><strong>Definition.</strong> A modular form of weight <span class="math" data-tex="\(k\)">\(k\)</span> for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a holomorphic function <span class="math" data-tex="\(f:\mathfrak H\to\mathbb C\)">\(f:\mathfrak H\to\mathbb C\)</span> such that</p>
+<ol>
+<li><span class="math" data-tex="\(f|_k\gamma=f\)">\(f|_k\gamma=f\)</span> for every <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>;</li>
+<li>for every <span class="math" data-tex="\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)</span>, <span class="math" data-tex="\(f|_k\alpha\)">\(f|_k\alpha\)</span> is bounded on <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>.</li>
+</ol>
+<p>The second condition is holomorphy at the cusps. A cusp form satisfies the stronger condition
+<span class="math" data-tex="\((f|_k\alpha)(x+iy)\to0\)">\((f|_k\alpha)(x+iy)\to0\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>, as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.
+We write <span class="math" data-tex="\(M_k(\Gamma)\)">\(M_k(\Gamma)\)</span> and <span class="math" data-tex="\(S_k(\Gamma)\)">\(S_k(\Gamma)\)</span> for these vector spaces.</p>
+<p>Here is the exact connection with Fourier expansions, including odd weights at irregular cusps.</p>
+<p><strong>Proposition 1.2 (Fourier coordinates at a cusp).</strong> Let <span class="math" data-tex="\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)</span>, and let <span class="math" data-tex="\(h\)">\(h\)</span> be the projective width of the cusp <span class="math" data-tex="\(\alpha\infty\)">\(\alpha\infty\)</span>. Choose a lift <span class="math" data-tex="\(\varepsilon T^h\in\alpha^{-1}\Gamma\alpha\)">\(\varepsilon T^h\in\alpha^{-1}\Gamma\alpha\)</span>, where <span class="math" data-tex="\(\varepsilon\in\{1,-1\}\)">\(\varepsilon\in\{1,-1\}\)</span>. For a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant function of weight <span class="math" data-tex="\(k\)">\(k\)</span>, put <span class="math" data-tex="\(F=f|_k\alpha\)">\(F=f|_k\alpha\)</span>. Then
+<span class="math math-display" data-tex="\[
+F(z+h)=\varepsilon^k F(z).
+\tag{1.2}
+\]">\[
+F(z+h)=\varepsilon^k F(z).
+\tag{1.2}
+\]</span>
+If <span class="math" data-tex="\(\varepsilon^k=1\)">\(\varepsilon^k=1\)</span>, use <span class="math" data-tex="\(W=h\)">\(W=h\)</span>; if <span class="math" data-tex="\(\varepsilon^k=-1\)">\(\varepsilon^k=-1\)</span>, use <span class="math" data-tex="\(W=2h\)">\(W=2h\)</span>. The cusp condition is equivalent to an expansion
+<span class="math math-display" data-tex="\[
+F(z)=\sum_{n\ge0}a_n e^{2\pi inz/W}.
+\tag{1.3}
+\]">\[
+F(z)=\sum_{n\ge0}a_n e^{2\pi inz/W}.
+\tag{1.3}
+\]</span>
+The cusp-form condition is equivalent to <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>. In the second case, all even-index coefficients vanish, so (1.3) consists of positive half-integral powers of <span class="math" data-tex="\(q_h=e^{2\pi iz/h}\)">\(q_h=e^{2\pi iz/h}\)</span>.</p>
+<p><strong>Proof.</strong> The conjugation action and Proposition 1.1 give
+<span class="math" data-tex="\(F|_k(\varepsilon T^h)=F\)">\(F|_k(\varepsilon T^h)=F\)</span>. Since
+<span class="math" data-tex="\(j(\varepsilon T^h,z)=\varepsilon\)">\(j(\varepsilon T^h,z)=\varepsilon\)</span>, this is (1.2). In either case <span class="math" data-tex="\(F\)">\(F\)</span> has period <span class="math" data-tex="\(W\)">\(W\)</span>. Consequently it descends, by the map <span class="math" data-tex="\(q_W=e^{2\pi iz/W}\)">\(q_W=e^{2\pi iz/W}\)</span>, to a holomorphic function on the punctured unit disc. Boundedness for sufficiently large <span class="math" data-tex="\(y\)">\(y\)</span> is boundedness near its puncture. The removable singularity theorem gives precisely the Taylor series (1.3). Conversely that series is bounded near the puncture. Periodicity and continuity on the compact rectangle <span class="math" data-tex="\(0\le x\le W,\ 1\le y\le Y\)">\(0\le x\le W,\ 1\le y\le Y\)</span> extend the bound to all <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>.</p>
+<p>A Taylor series with <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span> tends uniformly to zero as <span class="math" data-tex="\(q_W\to0\)">\(q_W\to0\)</span>; the converse follows by taking its limit. When <span class="math" data-tex="\(W=2h\)">\(W=2h\)</span>, translation by <span class="math" data-tex="\(h\)">\(h\)</span> sends <span class="math" data-tex="\(q_W\)">\(q_W\)</span> to <span class="math" data-tex="\(-q_W\)">\(-q_W\)</span>. Equation (1.2) then says the Taylor series is odd, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Changing a cusp representative replaces <span class="math" data-tex="\(F(z)\)">\(F(z)\)</span> by <span class="math" data-tex="\((\pm1)^{-k}F(z+r)\)">\((\pm1)^{-k}F(z+r)\)</span> for an integer <span class="math" data-tex="\(r\)">\(r\)</span>, after a transformation in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Thus boundedness and vanishing of the constant term are independent of the choice. Finite index also means that only finitely many slash translates must be checked: if <span class="math" data-tex="\(\alpha=\gamma\beta\)">\(\alpha=\gamma\beta\)</span>, with <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, then <span class="math" data-tex="\(f|_k\alpha=f|_k\beta\)">\(f|_k\alpha=f|_k\beta\)</span>.</p>
+<p>If <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span>, invariance gives <span class="math" data-tex="\(f=(-1)^k f\)">\(f=(-1)^k f\)</span>. Hence all odd-weight forms vanish. When <span class="math" data-tex="\(-I\notin\Gamma\)">\(-I\notin\Gamma\)</span>, one must retain the sign in (1.2). For example, the irregular cusp <span class="math" data-tex="\(1/2\)">\(1/2\)</span> of <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span> has projective width one and negative lift; an odd-weight form there has only odd powers of <span class="math" data-tex="\(e^{\pi iz}\)">\(e^{\pi iz}\)</span>, rather than arbitrary integral powers of <span class="math" data-tex="\(e^{2\pi iz}\)">\(e^{2\pi iz}\)</span>.</p>
+<p>Products of forms of weights <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> have weight <span class="math" data-tex="\(k+\ell\)">\(k+\ell\)</span>. A product is a cusp form if either factor is a cusp form. These statements follow from the transformation law and from boundedness, or vanishing, of each slash translate.</p>
+<h2 id="2-functions-on-lattices">2. Functions on lattices</h2>
+<p>A lattice in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is a subgroup
+<span class="math" data-tex="\(\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2\)">\(\Lambda=\mathbb Z\omega_1+\mathbb Z\omega_2\)</span> with <span class="math" data-tex="\(\omega_1,\omega_2\)">\(\omega_1,\omega_2\)</span> linearly independent over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. We can choose the order of the basis so that <span class="math" data-tex="\(\operatorname{Im}(\omega_1/\omega_2)&gt;0\)">\(\operatorname{Im}(\omega_1/\omega_2)&gt;0\)</span>.</p>
+<p><strong>Theorem 2.1 (the lattice dictionary).</strong> Functions <span class="math" data-tex="\(f:\mathfrak H\to\mathbb C\)">\(f:\mathfrak H\to\mathbb C\)</span> satisfying
+<span class="math math-display" data-tex="\[
+f(\gamma z)=j(\gamma,z)^k f(z)\quad
+(\gamma\in\mathrm{SL}_2(\mathbb Z))
+\tag{2.1}
+\]">\[
+f(\gamma z)=j(\gamma,z)^k f(z)\quad
+(\gamma\in\mathrm{SL}_2(\mathbb Z))
+\tag{2.1}
+\]</span>
+correspond bijectively to functions <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> on lattices satisfying
+<span class="math math-display" data-tex="\[
+\Phi(\lambda\Lambda)=\lambda^{-k}\Phi(\Lambda)
+\quad(\lambda\in\mathbb C^\times).
+\tag{2.2}
+\]">\[
+\Phi(\lambda\Lambda)=\lambda^{-k}\Phi(\Lambda)
+\quad(\lambda\in\mathbb C^\times).
+\tag{2.2}
+\]</span>
+The two constructions are
+<span class="math math-display" data-tex="\[
+f(z)=\Phi(\mathbb Zz+\mathbb Z),\qquad
+\Phi(\Lambda)=\omega_2^{-k}f(\omega_1/\omega_2).
+\tag{2.3}
+\]">\[
+f(z)=\Phi(\mathbb Zz+\mathbb Z),\qquad
+\Phi(\Lambda)=\omega_2^{-k}f(\omega_1/\omega_2).
+\tag{2.3}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(z&#x27;=\gamma z\)">\(z&#x27;=\gamma z\)</span>, then
+<span class="math math-display" data-tex="\[
+\mathbb Zz&#x27;+\mathbb Z
+=(cz+d)^{-1}\bigl(\mathbb Z(az+b)+\mathbb Z(cz+d)\bigr)
+=(cz+d)^{-1}(\mathbb Zz+\mathbb Z).
+\]">\[
+\mathbb Zz&#x27;+\mathbb Z
+=(cz+d)^{-1}\bigl(\mathbb Z(az+b)+\mathbb Z(cz+d)\bigr)
+=(cz+d)^{-1}(\mathbb Zz+\mathbb Z).
+\]</span>
+The last equality uses the invertibility of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.
+Homogeneity therefore gives (2.1).</p>
+<p>Conversely, two bases of the same lattice are related by an integral matrix of determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. If both ratios lie in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, the identity
+<span class="math math-display" data-tex="\[
+\operatorname{Im}\frac{a\omega_1+b\omega_2}{c\omega_1+d\omega_2}
+=\frac{\det(\gamma)\operatorname{Im}(\omega_1/\omega_2)}
+ {|c(\omega_1/\omega_2)+d|^2}
+\]">\[
+\operatorname{Im}\frac{a\omega_1+b\omega_2}{c\omega_1+d\omega_2}
+=\frac{\det(\gamma)\operatorname{Im}(\omega_1/\omega_2)}
+ {|c(\omega_1/\omega_2)+d|^2}
+\]</span>
+forces determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>. For <span class="math" data-tex="\(z=\omega_1/\omega_2\)">\(z=\omega_1/\omega_2\)</span>, the new second basis vector is <span class="math" data-tex="\(\omega&#x27;_2=(cz+d)\omega_2\)">\(\omega&#x27;_2=(cz+d)\omega_2\)</span>. Equation (2.1) gives
+<span class="math math-display" data-tex="\[
+(\omega&#x27;_2)^{-k}f(\omega&#x27;_1/\omega&#x27;_2)
+=\omega_2^{-k}(cz+d)^{-k}f(\gamma z)
+=\omega_2^{-k}f(z).
+\]">\[
+(\omega&#x27;_2)^{-k}f(\omega&#x27;_1/\omega&#x27;_2)
+=\omega_2^{-k}(cz+d)^{-k}f(\gamma z)
+=\omega_2^{-k}f(z).
+\]</span>
+Thus (2.3) is well-defined. Scaling both basis vectors proves (2.2), and the two formulas plainly undo one another. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No analytic condition is hidden in this set-theoretic dictionary. The associated function must still be holomorphic on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> and bounded at the cusp to be a modular form. Also, a bare lattice forgets level structure: for a proper subgroup <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, one retains a basis modulo the changes allowed by <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. An arbitrary <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant function need not descend to a function on unmarked lattices.</p>
+<p>Since <span class="math" data-tex="\(-\Lambda=\Lambda\)">\(-\Lambda=\Lambda\)</span>, an odd-degree homogeneous function on bare lattices is zero. The lattice description recovers the odd-weight obstruction for the full modular group.</p>
+<h2 id="3-convergence-and-the-cotangent-identity">3. Convergence and the cotangent identity</h2>
+<p><strong>Lemma 3.1 (lattice sums).</strong> For real <span class="math" data-tex="\(s&gt;2\)">\(s&gt;2\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{(m,n)\ne(0,0)}|mz+n|^{-s}
+\tag{3.1}
+\]">\[
+\sum_{(m,n)\ne(0,0)}|mz+n|^{-s}
+\tag{3.1}
+\]</span>
+converges locally uniformly for <span class="math" data-tex="\(z\in\mathfrak H\)">\(z\in\mathfrak H\)</span>. For each fixed <span class="math" data-tex="\(z\)">\(z\)</span>, it diverges when <span class="math" data-tex="\(s=2\)">\(s=2\)</span>.</p>
+<p><strong>Proof.</strong> The real linear map <span class="math" data-tex="\((m,n)\mapsto mz+n\)">\((m,n)\mapsto mz+n\)</span> is invertible because <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>. Its inverse varies continuously with <span class="math" data-tex="\(z\)">\(z\)</span>. On a compact set <span class="math" data-tex="\(K\subset\mathfrak H\)">\(K\subset\mathfrak H\)</span>, there is therefore <span class="math" data-tex="\(a_K&gt;0\)">\(a_K&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+|mz+n|\ge a_K\max(|m|,|n|).
+\]">\[
+|mz+n|\ge a_K\max(|m|,|n|).
+\]</span>
+The square shell <span class="math" data-tex="\(\max(|m|,|n|)=r\)">\(\max(|m|,|n|)=r\)</span> contains
+<span class="math" data-tex="\((2r+1)^2-(2r-1)^2=8r\)">\((2r+1)^2-(2r-1)^2=8r\)</span> integer pairs. Its contribution is at most
+<span class="math" data-tex="\(8a_K^{-s}r^{1-s}\)">\(8a_K^{-s}r^{1-s}\)</span>, a summable bound when <span class="math" data-tex="\(s&gt;2\)">\(s&gt;2\)</span>.
+For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, the reverse bound
+<span class="math math-display" data-tex="\[
+|mz+n|\le (|z|+1)\max(|m|,|n|)
+\]">\[
+|mz+n|\le (|z|+1)\max(|m|,|n|)
+\]</span>
+makes the shell contribution for <span class="math" data-tex="\(s=2\)">\(s=2\)</span> at least
+<span class="math" data-tex="\(8(|z|+1)^{-2}/r\)">\(8(|z|+1)^{-2}/r\)</span>. The harmonic series diverges. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an integer <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+G_k(\Lambda)=\sum_{\omega\in\Lambda\setminus\{0\}}\omega^{-k},
+\qquad
+G_k(z)=\sum_{(m,n)\ne(0,0)}(mz+n)^{-k}
+\tag{3.2}
+\]">\[
+G_k(\Lambda)=\sum_{\omega\in\Lambda\setminus\{0\}}\omega^{-k},
+\qquad
+G_k(z)=\sum_{(m,n)\ne(0,0)}(mz+n)^{-k}
+\tag{3.2}
+\]</span>
+are absolutely convergent. The second is holomorphic by local uniform convergence. Reindexing the first gives <span class="math" data-tex="\(G_k(\lambda\Lambda)=\lambda^{-k}G_k(\Lambda)\)">\(G_k(\lambda\Lambda)=\lambda^{-k}G_k(\Lambda)\)</span>, so Theorem 2.1 proves its transformation law. Pairing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> and <span class="math" data-tex="\(-\omega\)">\(-\omega\)</span> shows that <span class="math" data-tex="\(G_k=0\)">\(G_k=0\)</span> for odd <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>We next compute its Fourier expansion without importing a sine product.</p>
+<p><strong>Lemma 3.2 (partial fractions of the cotangent).</strong> For <span class="math" data-tex="\(z\notin\mathbb Z\)">\(z\notin\mathbb Z\)</span>,
+<span class="math math-display" data-tex="\[
+\pi\cot(\pi z)=\frac1z+
+\sum_{n\ge1}\left(\frac1{z-n}+\frac1{z+n}\right)
+=\frac1z+\sum_{n\ge1}\frac{2z}{z^2-n^2}.
+\tag{3.3}
+\]">\[
+\pi\cot(\pi z)=\frac1z+
+\sum_{n\ge1}\left(\frac1{z-n}+\frac1{z+n}\right)
+=\frac1z+\sum_{n\ge1}\frac{2z}{z^2-n^2}.
+\tag{3.3}
+\]</span>
+The paired series converges normally away from the integers.</p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> fixed. Integrate
+<span class="math" data-tex="\(\pi\cot(\pi w)/(w^2-z^2)\)">\(\pi\cot(\pi w)/(w^2-z^2)\)</span> around the square with real and imaginary coordinates between <span class="math" data-tex="\(-R\)">\(-R\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span>, where <span class="math" data-tex="\(R=M+1/2\)">\(R=M+1/2\)</span>. On its vertical sides <span class="math" data-tex="\(\cot(\pi w)\)">\(\cot(\pi w)\)</span> is bounded by one in absolute value; on its horizontal sides it is bounded uniformly as <span class="math" data-tex="\(M\to\infty\)">\(M\to\infty\)</span>, using its exponential expression. The denominator has absolute value at least <span class="math" data-tex="\(R^2-|z|^2\)">\(R^2-|z|^2\)</span>, and the perimeter is <span class="math" data-tex="\(8R\)">\(8R\)</span>. The integral therefore tends to zero.</p>
+<p>At an integer <span class="math" data-tex="\(n\)">\(n\)</span>, the residue is <span class="math" data-tex="\(1/(n^2-z^2)\)">\(1/(n^2-z^2)\)</span>. At <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(-z\)">\(-z\)</span>, the two residues sum to <span class="math" data-tex="\(\pi\cot(\pi z)/z\)">\(\pi\cot(\pi z)/z\)</span>. The residue theorem gives
+<span class="math math-display" data-tex="\[
+0=-\frac1{z^2}+\sum_{n\ge1}\frac{2}{n^2-z^2}
++\frac{\pi\cot(\pi z)}z,
+\]">\[
+0=-\frac1{z^2}+\sum_{n\ge1}\frac{2}{n^2-z^2}
++\frac{\pi\cot(\pi z)}z,
+\]</span>
+which rearranges to (3.3). The terms <span class="math" data-tex="\(2z/(z^2-n^2)\)">\(2z/(z^2-n^2)\)</span> are bounded by <span class="math" data-tex="\(C_K/n^2\)">\(C_K/n^2\)</span> on every compact set avoiding the poles. This proves normal convergence and allows termwise differentiation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (Lipschitz formula).</strong> For every integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and <span class="math" data-tex="\(z\in\mathfrak H\)">\(z\in\mathfrak H\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{n\in\mathbb Z}(z+n)^{-k}
+=\frac{(-2\pi i)^k}{(k-1)!}
+ \sum_{r\ge1}r^{k-1}e^{2\pi irz}.
+\tag{3.4}
+\]">\[
+\sum_{n\in\mathbb Z}(z+n)^{-k}
+=\frac{(-2\pi i)^k}{(k-1)!}
+ \sum_{r\ge1}r^{k-1}e^{2\pi irz}.
+\tag{3.4}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, <span class="math" data-tex="\(|q|&lt;1\)">\(|q|&lt;1\)</span> and
+<span class="math math-display" data-tex="\[
+\pi\cot(\pi z)=\pi i\frac{q+1}{q-1}
+=-\pi i-2\pi i\sum_{r\ge1}q^r.
+\]">\[
+\pi\cot(\pi z)=\pi i\frac{q+1}{q-1}
+=-\pi i-2\pi i\sum_{r\ge1}q^r.
+\]</span>
+Differentiate this equality and (3.3) exactly <span class="math" data-tex="\(k-1\)">\(k-1\)</span> times. Both series can be differentiated locally uniformly. The left side becomes
+<span class="math" data-tex="\((-1)^{k-1}(k-1)!\sum_{n\in\mathbb Z}(z+n)^{-k}\)">\((-1)^{k-1}(k-1)!\sum_{n\in\mathbb Z}(z+n)^{-k}\)</span>;
+the right becomes
+<span class="math" data-tex="\(-(2\pi i)^k\sum_{r\ge1}r^{k-1}q^r\)">\(-(2\pi i)^k\sum_{r\ge1}r^{k-1}q^r\)</span>.
+Dividing gives (3.4), including its sign for odd <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-bernoulli-numbers-and-the-fourier-expansion">4. Bernoulli numbers and the Fourier expansion</h2>
+<p>Define the Bernoulli numbers by
+<span class="math math-display" data-tex="\[
+\frac{t}{e^t-1}=\sum_{n\ge0}B_n\frac{t^n}{n!}.
+\tag{4.1}
+\]">\[
+\frac{t}{e^t-1}=\sum_{n\ge0}B_n\frac{t^n}{n!}.
+\tag{4.1}
+\]</span>
+The apparent singularity at zero is removable, and the function is holomorphic for <span class="math" data-tex="\(|t|&lt;2\pi\)">\(|t|&lt;2\pi\)</span>.</p>
+<p><strong>Proposition 4.1 (recurrence and zeta values).</strong> We have <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span>, <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span>, <span class="math" data-tex="\(B_n=0\)">\(B_n=0\)</span> for odd <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, and
+<span class="math math-display" data-tex="\[
+B_n=-\frac1{n+1}\sum_{j=0}^{n-1}\binom{n+1}{j}B_j
+\quad(n\ge1).
+\tag{4.2}
+\]">\[
+B_n=-\frac1{n+1}\sum_{j=0}^{n-1}\binom{n+1}{j}B_j
+\quad(n\ge1).
+\tag{4.2}
+\]</span>
+For every even integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta(k)=-\frac{(2\pi i)^k B_k}{2k!}.
+\tag{4.3}
+\]">\[
+\zeta(k)=-\frac{(2\pi i)^k B_k}{2k!}.
+\tag{4.3}
+\]</span></p>
+<p><strong>Proof.</strong> Multiplying (4.1) by <span class="math" data-tex="\(e^t-1\)">\(e^t-1\)</span> and comparing coefficients first gives <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span>, and then
+<span class="math" data-tex="\(\sum_{j=0}^n\binom{n+1}{j}B_j=0\)">\(\sum_{j=0}^n\binom{n+1}{j}B_j=0\)</span> for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>.
+This proves (4.2) and the rationality of all <span class="math" data-tex="\(B_n\)">\(B_n\)</span>. The function
+<span class="math math-display" data-tex="\[
+\frac{t}{e^t-1}+\frac t2=\frac t2\frac{e^t+1}{e^t-1}
+\]">\[
+\frac{t}{e^t-1}+\frac t2=\frac t2\frac{e^t+1}{e^t-1}
+\]</span>
+is even. Thus <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span> and the remaining odd coefficients vanish.</p>
+<p>For <span class="math" data-tex="\(0&lt;|z|&lt;1\)">\(0&lt;|z|&lt;1\)</span>, substitute <span class="math" data-tex="\(t=2\pi iz\)">\(t=2\pi iz\)</span> into (4.1):
+<span class="math math-display" data-tex="\[
+\pi\cot(\pi z)
+=\pi i+\frac1z\sum_{n\ge0}B_n\frac{(2\pi iz)^n}{n!}
+=\frac1z+\sum_{m\ge1}
+ \frac{B_{2m}(2\pi i)^{2m}}{(2m)!}z^{2m-1}.
+\]">\[
+\pi\cot(\pi z)
+=\pi i+\frac1z\sum_{n\ge0}B_n\frac{(2\pi iz)^n}{n!}
+=\frac1z+\sum_{m\ge1}
+ \frac{B_{2m}(2\pi i)^{2m}}{(2m)!}z^{2m-1}.
+\]</span>
+On the other hand, (3.3) and the geometric series give
+<span class="math math-display" data-tex="\[
+\pi\cot(\pi z)=\frac1z-2\sum_{m\ge1}\zeta(2m)z^{2m-1}.
+\]">\[
+\pi\cot(\pi z)=\frac1z-2\sum_{m\ge1}\zeta(2m)z^{2m-1}.
+\]</span>
+The double sum is absolutely convergent on <span class="math" data-tex="\(|z|\le r&lt;1\)">\(|z|\le r&lt;1\)</span>, because it is bounded by
+<span class="math" data-tex="\(2\sum_{n\ge1}r/[n^2(1-r^2/n^2)]\)">\(2\sum_{n\ge1}r/[n^2(1-r^2/n^2)]\)</span>.
+Comparing coefficients proves (4.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(B_2=1/6\)">\(B_2=1/6\)</span> and <span class="math" data-tex="\(B_4=-1/30\)">\(B_4=-1/30\)</span> give
+<span class="math math-display" data-tex="\[
+\zeta(2)=-\frac{(2\pi i)^2}{2\cdot2!}\frac16=\frac{\pi^2}{6},
+\qquad
+\zeta(4)=-\frac{(2\pi i)^4}{2\cdot4!}\left(-\frac1{30}\right)
+=\frac{\pi^4}{90}.
+\]">\[
+\zeta(2)=-\frac{(2\pi i)^2}{2\cdot2!}\frac16=\frac{\pi^2}{6},
+\qquad
+\zeta(4)=-\frac{(2\pi i)^4}{2\cdot4!}\left(-\frac1{30}\right)
+=\frac{\pi^4}{90}.
+\]</span></p>
+<p>For positive <span class="math" data-tex="\(n\)">\(n\)</span>, write
+<span class="math" data-tex="\(\sigma_r(n)=\sum_{d\mid n,\ d&gt;0}d^r\)">\(\sigma_r(n)=\sum_{d\mid n,\ d&gt;0}d^r\)</span>.</p>
+<p><strong>Theorem 4.2 (the normalized Eisenstein series).</strong> For every even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>,
+<span class="math math-display" data-tex="\[
+G_k(z)=2\zeta(k)+
+\frac{2(2\pi i)^k}{(k-1)!}\sum_{n\ge1}\sigma_{k-1}(n)q^n,
+\tag{4.4}
+\]">\[
+G_k(z)=2\zeta(k)+
+\frac{2(2\pi i)^k}{(k-1)!}\sum_{n\ge1}\sigma_{k-1}(n)q^n,
+\tag{4.4}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+E_k(z):=\frac{G_k(z)}{2\zeta(k)}
+=1-\frac{2k}{B_k}\sum_{n\ge1}\sigma_{k-1}(n)q^n
+\in M_k(\mathrm{SL}_2(\mathbb Z)).
+\tag{4.5}
+\]">\[
+E_k(z):=\frac{G_k(z)}{2\zeta(k)}
+=1-\frac{2k}{B_k}\sum_{n\ge1}\sigma_{k-1}(n)q^n
+\in M_k(\mathrm{SL}_2(\mathbb Z)).
+\tag{4.5}
+\]</span></p>
+<p><strong>Proof.</strong> The row <span class="math" data-tex="\(m=0\)">\(m=0\)</span> of (3.2) contributes <span class="math" data-tex="\(2\zeta(k)\)">\(2\zeta(k)\)</span>.
+Rows <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(-m\)">\(-m\)</span> agree, since <span class="math" data-tex="\(k\)">\(k\)</span> is even. Apply (3.4) to each positive row:
+<span class="math math-display" data-tex="\[
+G_k(z)=2\zeta(k)+
+\frac{2(2\pi i)^k}{(k-1)!}
+\sum_{m\ge1}\sum_{r\ge1}r^{k-1}q^{mr}.
+\]">\[
+G_k(z)=2\zeta(k)+
+\frac{2(2\pi i)^k}{(k-1)!}
+\sum_{m\ge1}\sum_{r\ge1}r^{k-1}q^{mr}.
+\]</span>
+Grouping by <span class="math" data-tex="\(n=mr\)">\(n=mr\)</span> gives the divisor sum in (4.4). The grouping is justified by absolute convergence: if <span class="math" data-tex="\(|q|\le R&lt;1\)">\(|q|\le R&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{r,m\ge1}r^{k-1}R^{mr}
+\le\frac1{1-R}\sum_{r\ge1}r^{k-1}R^r&lt;\infty.
+\]">\[
+\sum_{r,m\ge1}r^{k-1}R^{mr}
+\le\frac1{1-R}\sum_{r\ge1}r^{k-1}R^r&lt;\infty.
+\]</span>
+Division by <span class="math" data-tex="\(2\zeta(k)\)">\(2\zeta(k)\)</span>, followed by (4.3), proves (4.5). We already proved holomorphy and the transformation law. The Fourier series is bounded at infinity, with constant term one. All cusps of the full modular group are equivalent, and every slash translate of <span class="math" data-tex="\(E_k\)">\(E_k\)</span> equals <span class="math" data-tex="\(E_k\)">\(E_k\)</span>, so the cusp condition holds at every cusp. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A useful second description is
+<span class="math math-display" data-tex="\[
+E_k(z)=\frac12
+\sum_{\substack{c,d\in\mathbb Z\\\gcd(c,d)=1}}(cz+d)^{-k}.
+\tag{4.6}
+\]">\[
+E_k(z)=\frac12
+\sum_{\substack{c,d\in\mathbb Z\\\gcd(c,d)=1}}(cz+d)^{-k}.
+\tag{4.6}
+\]</span>
+Indeed every nonzero pair is uniquely <span class="math" data-tex="\(r(c,d)\)">\(r(c,d)\)</span>, where <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> is primitive; consequently <span class="math" data-tex="\(G_k=2\zeta(k)E_k\)">\(G_k=2\zeta(k)E_k\)</span>. The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in (4.6) identifies the two signs of a primitive pair.</p>
+<p>Our <span class="math" data-tex="\(E_k\)">\(E_k\)</span> has constant term one. The coefficient-one normalization used in the free [Stein author PDF, §2.1] is obtained by a direct scalar calculation:
+<span class="math math-display" data-tex="\[
+E_k^{\mathrm{Stein}}=-\frac{B_k}{2k}E_k.
+\]">\[
+E_k^{\mathrm{Stein}}=-\frac{B_k}{2k}E_k.
+\]</span>
+Indeed the coefficient of <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(E_k\)">\(E_k\)</span> is <span class="math" data-tex="\(-2k/B_k\)">\(-2k/B_k\)</span>, because <span class="math" data-tex="\(\sigma_{k-1}(1)=1\)">\(\sigma_{k-1}(1)=1\)</span>; multiplying by <span class="math" data-tex="\(-B_k/(2k)\)">\(-B_k/(2k)\)</span> therefore makes that coefficient one. Throughout this lesson <span class="math" data-tex="\(B_n\)">\(B_n\)</span> means the signed coefficient in (4.1), with <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span>. Both the constant and the sign of every Fourier prefactor follow from that defining series and Proposition 4.1.</p>
+<h2 id="5-the-boundary-case-weight-two">5. The boundary case: weight two</h2>
+<p>The holomorphic series
+<span class="math math-display" data-tex="\[
+E_2(z)=1-24\sum_{n\ge1}\sigma_1(n)q^n
+\tag{5.1}
+\]">\[
+E_2(z)=1-24\sum_{n\ge1}\sigma_1(n)q^n
+\tag{5.1}
+\]</span>
+converges locally uniformly, since <span class="math" data-tex="\(\sigma_1(n)\le n^2\)">\(\sigma_1(n)\le n^2\)</span>. It is periodic, but it is not a modular form of weight two.</p>
+<p>We will prove its transformation law by introducing a convergent lattice sum, continuing the convergence parameter to zero, and keeping track of the constant Fourier coefficient. This also avoids using the discriminant before its construction in the next lesson.</p>
+<p><strong>Lemma 5.1 (Hecke's convergence factor).</strong> For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+H(z,s)=y^s\sum_{(m,n)\ne(0,0)}
+(mz+n)^{-2}|mz+n|^{-2s}.
+\tag{5.2}
+\]">\[
+H(z,s)=y^s\sum_{(m,n)\ne(0,0)}
+(mz+n)^{-2}|mz+n|^{-2s}.
+\tag{5.2}
+\]</span>
+For each <span class="math" data-tex="\(z\)">\(z\)</span>, it extends holomorphically in <span class="math" data-tex="\(s\)">\(s\)</span> to a neighbourhood of zero. Its value there is
+<span class="math math-display" data-tex="\[
+H(z,0)=\frac{\pi^2}{3}
+-8\pi^2\sum_{n\ge1}\sigma_1(n)q^n-\frac{\pi}{y}.
+\tag{5.3}
+\]">\[
+H(z,0)=\frac{\pi^2}{3}
+-8\pi^2\sum_{n\ge1}\sigma_1(n)q^n-\frac{\pi}{y}.
+\tag{5.3}
+\]</span>
+For every <span class="math" data-tex="\(\gamma\in\mathrm{SL}_2(\mathbb Z)\)">\(\gamma\in\mathrm{SL}_2(\mathbb Z)\)</span>,
+<span class="math math-display" data-tex="\[
+H(\gamma z,0)=j(\gamma,z)^2H(z,0).
+\tag{5.4}
+\]">\[
+H(\gamma z,0)=j(\gamma,z)^2H(z,0).
+\tag{5.4}
+\]</span></p>
+<p><strong>Proof.</strong> The absolute value of a summand in (5.2) is
+<span class="math" data-tex="\(y^{\operatorname{Re}s}|mz+n|^{-2-2\operatorname{Re}s}\)">\(y^{\operatorname{Re}s}|mz+n|^{-2-2\operatorname{Re}s}\)</span>.
+Lemma 3.1 proves convergence, locally uniformly in <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> in the stated domain. For <span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, reindex by
+<span class="math" data-tex="\((m,n)\mapsto(ma+nc,mb+nd)\)">\((m,n)\mapsto(ma+nc,mb+nd)\)</span>. The identity
+<span class="math" data-tex="\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\)">\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\)</span> gives
+<span class="math math-display" data-tex="\[
+H(\gamma z,s)=(cz+d)^2H(z,s).
+\tag{5.5}
+\]">\[
+H(\gamma z,s)=(cz+d)^2H(z,s).
+\tag{5.5}
+\]</span>
+The factors <span class="math" data-tex="\(|cz+d|^{2s}\)">\(|cz+d|^{2s}\)</span> from the summands and <span class="math" data-tex="\(|cz+d|^{-2s}\)">\(|cz+d|^{-2s}\)</span> from the height cancel.</p>
+<p>We now construct the continuation explicitly. The row <span class="math" data-tex="\(m=0\)">\(m=0\)</span> contributes
+<span class="math" data-tex="\(2\zeta(2+2s)y^s\)">\(2\zeta(2+2s)y^s\)</span>. The rows <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(-m\)">\(-m\)</span> agree. For <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, periodize
+<span class="math math-display" data-tex="\[
+F_{s,v}(t)=(t+iv)^{-2}(t^2+v^2)^{-s}.
+\]">\[
+F_{s,v}(t)=(t+iv)^{-2}(t^2+v^2)^{-s}.
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, its periodization has Fourier coefficients
+<span class="math math-display" data-tex="\[
+I_r(s,v)=\int_{\mathbb R}F_{s,v}(t)e^{-2\pi irt}\,dt,
+\quad r\in\mathbb Z.
+\tag{5.6}
+\]">\[
+I_r(s,v)=\int_{\mathbb R}F_{s,v}(t)e^{-2\pi irt}\,dt,
+\quad r\in\mathbb Z.
+\tag{5.6}
+\]</span>
+Indeed termwise integration on a period interval unfolds the integral on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The periodization and all its derivatives converge uniformly, so two integrations by parts give absolutely summable Fourier coefficients. To see that the Fourier series equals the function, one may use
+<span class="math math-display" data-tex="\[
+K_M(t)=\frac1M\left|\sum_{j=0}^{M-1}e^{2\pi ijt}\right|^2.
+\]">\[
+K_M(t)=\frac1M\left|\sum_{j=0}^{M-1}e^{2\pi ijt}\right|^2.
+\]</span>
+This kernel is nonnegative, has integral one on a period, and has mass tending to zero outside every neighbourhood of the integers. Uniform continuity therefore makes its convolution with any continuous periodic function tend uniformly to that function. These convolutions are the arithmetic means of its Fourier partial sums. For an absolutely convergent Fourier series the same means tend to its sum, proving the assertion without any additional summation theorem.</p>
+<p>First compute the constant coefficient. The odd part of the integrand integrates to zero, and integration of the derivative of
+<span class="math" data-tex="\(t(t^2+v^2)^{-s-1}\)">\(t(t^2+v^2)^{-s-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+I_0(s,v)=
+\int_{\mathbb R}\frac{t^2-v^2}{(t^2+v^2)^{s+2}}\,dt
+=-\frac{s}{s+1}J(s)v^{-1-2s},
+\quad
+J(s)=\int_{\mathbb R}(1+u^2)^{-s-1}\,du.
+\tag{5.7}
+\]">\[
+I_0(s,v)=
+\int_{\mathbb R}\frac{t^2-v^2}{(t^2+v^2)^{s+2}}\,dt
+=-\frac{s}{s+1}J(s)v^{-1-2s},
+\quad
+J(s)=\int_{\mathbb R}(1+u^2)^{-s-1}\,du.
+\tag{5.7}
+\]</span>
+For clarity, if <span class="math" data-tex="\(A=\int(t^2+v^2)^{-s-1}dt\)">\(A=\int(t^2+v^2)^{-s-1}dt\)</span>, the integrated derivative says
+<span class="math" data-tex="\(\int t^2(t^2+v^2)^{-s-2}dt=A/(2s+2)\)">\(\int t^2(t^2+v^2)^{-s-2}dt=A/(2s+2)\)</span>.
+Subtracting the complementary <span class="math" data-tex="\(v^2\)">\(v^2\)</span> term gives (5.7).
+The boundary term vanishes for <span class="math" data-tex="\(\operatorname{Re}s&gt;-1/2\)">\(\operatorname{Re}s&gt;-1/2\)</span>.
+The integral defining <span class="math" data-tex="\(J\)">\(J\)</span> is holomorphic in that half-plane, and <span class="math" data-tex="\(J(0)=\pi\)">\(J(0)=\pi\)</span>.</p>
+<p>After summing (5.7) over positive <span class="math" data-tex="\(m\)">\(m\)</span>, both signs contribute
+<span class="math math-display" data-tex="\[
+-\frac{2sJ(s)}{s+1}\zeta(1+2s)y^{-1-s}.
+\tag{5.8}
+\]">\[
+-\frac{2sJ(s)}{s+1}\zeta(1+2s)y^{-1-s}.
+\tag{5.8}
+\]</span>
+The pole in this expression cancels. Here is the needed local zeta calculation:
+<span class="math math-display" data-tex="\[
+\zeta(1+u)-\frac1u
+=\sum_{n\ge1}\left(n^{-1-u}
+-\int_n^{n+1}t^{-1-u}\,dt\right).
+\tag{5.9}
+\]">\[
+\zeta(1+u)-\frac1u
+=\sum_{n\ge1}\left(n^{-1-u}
+-\int_n^{n+1}t^{-1-u}\,dt\right).
+\tag{5.9}
+\]</span>
+It holds initially for <span class="math" data-tex="\(\operatorname{Re}u&gt;0\)">\(\operatorname{Re}u&gt;0\)</span>, by summing the integrals from one to infinity. On compact subsets of <span class="math" data-tex="\(\operatorname{Re}u&gt;-1\)">\(\operatorname{Re}u&gt;-1\)</span>, the summands are bounded by a constant times <span class="math" data-tex="\(n^{-2-\operatorname{Re}u}\)">\(n^{-2-\operatorname{Re}u}\)</span>, using the derivative of <span class="math" data-tex="\(t^{-1-u}\)">\(t^{-1-u}\)</span>. Thus the right side is holomorphic there. In particular <span class="math" data-tex="\(u\zeta(1+u)\to1\)">\(u\zeta(1+u)\to1\)</span>. Expression (5.8) consequently has value <span class="math" data-tex="\(-\pi/y\)">\(-\pi/y\)</span> at zero.</p>
+<p>It remains to continue the nonconstant coefficients, with estimates strong enough to sum them. Define
+<span class="math" data-tex="\(\Gamma(a)=\int_0^\infty e^{-t}t^{a-1}dt\)">\(\Gamma(a)=\int_0^\infty e^{-t}t^{a-1}dt\)</span> for <span class="math" data-tex="\(\operatorname{Re}a&gt;0\)">\(\operatorname{Re}a&gt;0\)</span>.
+Integration by parts proves
+<span class="math" data-tex="\(\Gamma(a+1)=a\Gamma(a)\)">\(\Gamma(a+1)=a\Gamma(a)\)</span>, and <span class="math" data-tex="\(\Gamma(1)=1\)">\(\Gamma(1)=1\)</span>.
+Near <span class="math" data-tex="\(s=0\)">\(s=0\)</span> we use <span class="math" data-tex="\(1/\Gamma(s)=s/\Gamma(s+1)\)">\(1/\Gamma(s)=s/\Gamma(s+1)\)</span>, which is holomorphic and has a simple zero. We take a sufficiently small <span class="math" data-tex="\(0&lt;\delta&lt;1/4\)">\(0&lt;\delta&lt;1/4\)</span> so that <span class="math" data-tex="\(\Gamma(s+1)\)">\(\Gamma(s+1)\)</span> and <span class="math" data-tex="\(\Gamma(s+2)\)">\(\Gamma(s+2)\)</span> do not vanish for <span class="math" data-tex="\(|s|\le\delta\)">\(|s|\le\delta\)</span>; this follows from their continuity and their values at zero.</p>
+<p>For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, the elementary Laplace identity
+<span class="math math-display" data-tex="\[
+\lambda^{-a}=\frac1{\Gamma(a)}
+\int_0^\infty t^{a-1}e^{-\lambda t}\,dt
+\quad(\operatorname{Re}\lambda&gt;0)
+\]">\[
+\lambda^{-a}=\frac1{\Gamma(a)}
+\int_0^\infty t^{a-1}e^{-\lambda t}\,dt
+\quad(\operatorname{Re}\lambda&gt;0)
+\]</span>
+follows first for real positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> by substitution, then for complex <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> by holomorphy. Since <span class="math" data-tex="\(t+iv=i(v-it)\)">\(t+iv=i(v-it)\)</span>, it yields
+<span class="math math-display" data-tex="\[
+F_{s,v}(t)=
+-\frac1{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty\int_0^\infty
+a^{s+1}b^{s-1}e^{-v(a+b)}e^{it(a-b)}\,da\,db.
+\tag{5.10}
+\]">\[
+F_{s,v}(t)=
+-\frac1{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty\int_0^\infty
+a^{s+1}b^{s-1}e^{-v(a+b)}e^{it(a-b)}\,da\,db.
+\tag{5.10}
+\]</span>
+The complex powers in these formulas use the real logarithm on positive integration variables and the branch on the right half-plane for <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, put <span class="math" data-tex="\(Q=2\pi r\)">\(Q=2\pi r\)</span>. Formula (5.10) gives
+<span class="math math-display" data-tex="\[
+I_r(s,v)=
+-\frac{2\pi e^{-vQ}}{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty(b+Q)^{s+1}b^{s-1}e^{-2vb}\,db.
+\tag{5.11}
+\]">\[
+I_r(s,v)=
+-\frac{2\pi e^{-vQ}}{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty(b+Q)^{s+1}b^{s-1}e^{-2vb}\,db.
+\tag{5.11}
+\]</span>
+For <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, put <span class="math" data-tex="\(Q=2\pi|r|\)">\(Q=2\pi|r|\)</span>. It gives
+<span class="math math-display" data-tex="\[
+I_r(s,v)=
+-\frac{2\pi e^{-vQ}}{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty a^{s+1}(a+Q)^{s-1}e^{-2va}\,da.
+\tag{5.12}
+\]">\[
+I_r(s,v)=
+-\frac{2\pi e^{-vQ}}{\Gamma(s+2)\Gamma(s)}
+\int_0^\infty a^{s+1}(a+Q)^{s-1}e^{-2va}\,da.
+\tag{5.12}
+\]</span></p>
+<p>We justify this Fourier calculation rather than integrating an oscillatory exponential formally. Insert <span class="math" data-tex="\(e^{-\eta t^2}\)">\(e^{-\eta t^2}\)</span>, <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, into (5.6) before using (5.10). All three integrals are now absolutely convergent, so Fubini applies. The <span class="math" data-tex="\(t\)">\(t\)</span>-integral is
+<span class="math math-display" data-tex="\[
+\sqrt{\frac{\pi}{\eta}}\,
+\exp\!\left(-\frac{(a-b-2\pi r)^2}{4\eta}\right).
+\]">\[
+\sqrt{\frac{\pi}{\eta}}\,
+\exp\!\left(-\frac{(a-b-2\pi r)^2}{4\eta}\right).
+\]</span>
+This Gaussian identity follows by differentiating its Fourier transform in the frequency and integrating by parts; the value at frequency zero is the Gaussian integral, whose square is evaluated in polar coordinates. As <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, the displayed kernels have total mass <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> and concentrate at <span class="math" data-tex="\(a-b=2\pi r\)">\(a-b=2\pi r\)</span>. The convolution of the two one-sided densities in (5.10) is continuous and bounded: the <span class="math" data-tex="\(a\)">\(a\)</span>-density, extended by zero, is bounded and uniformly continuous, and the <span class="math" data-tex="\(b\)">\(b\)</span>-density is integrable. Consequently the approximate-identity limit evaluates that convolution at <span class="math" data-tex="\(2\pi r\)">\(2\pi r\)</span>. On the original side, dominated convergence removes <span class="math" data-tex="\(e^{-\eta t^2}\)">\(e^{-\eta t^2}\)</span> because <span class="math" data-tex="\(F_{s,v}\)">\(F_{s,v}\)</span> is integrable. Solving <span class="math" data-tex="\(a=b+Q\)">\(a=b+Q\)</span> or <span class="math" data-tex="\(b=a+Q\)">\(b=a+Q\)</span> proves (5.11) and (5.12).</p>
+<p>In (5.11), write the integral as
+<span class="math math-display" data-tex="\[
+\frac{Q^{s+1}}s+R(s,Q,v),
+\tag{5.13}
+\]">\[
+\frac{Q^{s+1}}s+R(s,Q,v),
+\tag{5.13}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+R=\int_0^1
+ \bigl((b+Q)^{s+1}e^{-2vb}-Q^{s+1}\bigr)b^{s-1}\,db
++\int_1^\infty(b+Q)^{s+1}b^{s-1}e^{-2vb}\,db.
+\]">\[
+R=\int_0^1
+ \bigl((b+Q)^{s+1}e^{-2vb}-Q^{s+1}\bigr)b^{s-1}\,db
++\int_1^\infty(b+Q)^{s+1}b^{s-1}e^{-2vb}\,db.
+\]</span>
+The subtraction in the first integral removes its singularity at <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, so <span class="math" data-tex="\(R\)">\(R\)</span> is holomorphic for <span class="math" data-tex="\(|s|&lt;\delta\)">\(|s|&lt;\delta\)</span>. Multiplication by <span class="math" data-tex="\(1/\Gamma(s)\)">\(1/\Gamma(s)\)</span> cancels the pole in (5.13). At zero its surviving value is <span class="math" data-tex="\(Q\)">\(Q\)</span>, giving
+<span class="math math-display" data-tex="\[
+I_r(0,v)=-4\pi^2r e^{-2\pi rv}\quad(r&gt;0).
+\tag{5.14}
+\]">\[
+I_r(0,v)=-4\pi^2r e^{-2\pi rv}\quad(r&gt;0).
+\tag{5.14}
+\]</span>
+The integral in (5.12) is already holomorphic near zero, since its small-<span class="math" data-tex="\(a\)">\(a\)</span> behaviour is bounded by a constant times <span class="math" data-tex="\(a^{1-\delta}\)">\(a^{1-\delta}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+I_r(0,v)=0\quad(r&lt;0).
+\tag{5.15}
+\]">\[
+I_r(0,v)=0\quad(r&lt;0).
+\tag{5.15}
+\]</span></p>
+<p>Here are uniform bounds for the continuation. Fix <span class="math" data-tex="\(v_0&gt;0\)">\(v_0&gt;0\)</span>, let <span class="math" data-tex="\(v\ge v_0\)">\(v\ge v_0\)</span>, and recall <span class="math" data-tex="\(Q\ge2\pi\)">\(Q\ge2\pi\)</span>. For <span class="math" data-tex="\(0\le b\le1\)">\(0\le b\le1\)</span>, differentiation in <span class="math" data-tex="\(b\)">\(b\)</span> gives
+<span class="math math-display" data-tex="\[
+\left|(b+Q)^{s+1}e^{-2vb}-Q^{s+1}\right|
+\le C Q^{1+\delta}(1+v)b
+\quad(|s|\le\delta).
+\]">\[
+\left|(b+Q)^{s+1}e^{-2vb}-Q^{s+1}\right|
+\le C Q^{1+\delta}(1+v)b
+\quad(|s|\le\delta).
+\]</span>
+Its integral against <span class="math" data-tex="\(|b^{s-1}|\)">\(|b^{s-1}|\)</span> is at most
+<span class="math" data-tex="\(C Q^{1+\delta}(1+v)/(1-\delta)\)">\(C Q^{1+\delta}(1+v)/(1-\delta)\)</span>.
+For <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span>, use
+<span class="math" data-tex="\((b+Q)^{1+\delta}\le C Q^{1+\delta}(1+b)^{1+\delta}\)">\((b+Q)^{1+\delta}\le C Q^{1+\delta}(1+b)^{1+\delta}\)</span> and <span class="math" data-tex="\(e^{-2vb}\le e^{-2v_0b}\)">\(e^{-2vb}\le e^{-2v_0b}\)</span>.
+The second integral in <span class="math" data-tex="\(R\)">\(R\)</span> is at most <span class="math" data-tex="\(C_{v_0}Q^{1+\delta}\)">\(C_{v_0}Q^{1+\delta}\)</span>.
+Likewise the integral in (5.12) is bounded by
+<span class="math math-display" data-tex="\[
+Q^{\delta-1}\int_0^\infty
+ (a^{1-\delta}+a^{1+\delta})e^{-2v_0a}\,da.
+\]">\[
+Q^{\delta-1}\int_0^\infty
+ (a^{1-\delta}+a^{1+\delta})e^{-2v_0a}\,da.
+\]</span>
+The gamma factors after pole cancellation are bounded on <span class="math" data-tex="\(|s|\le\delta\)">\(|s|\le\delta\)</span>. Together these estimates give, for every nonzero <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+|I_r(s,v)|\le C_{v_0}|r|^{1+\delta}(1+v)e^{-2\pi|r|v}.
+\tag{5.16}
+\]">\[
+|I_r(s,v)|\le C_{v_0}|r|^{1+\delta}(1+v)e^{-2\pi|r|v}.
+\tag{5.16}
+\]</span></p>
+<p>The row with positive <span class="math" data-tex="\(m\)">\(m\)</span> is
+<span class="math" data-tex="\(\sum_r I_r(s,my)e^{2\pi irmx}\)">\(\sum_r I_r(s,my)e^{2\pi irmx}\)</span>.
+On a compact subset of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> is bounded above and bounded below by a positive number. The bound (5.16) makes the double sum over <span class="math" data-tex="\(m\ge1,\ r\ne0\)">\(m\ge1,\ r\ne0\)</span> locally uniformly convergent, even at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>: a polynomial in <span class="math" data-tex="\(m,r\)">\(m,r\)</span> times <span class="math" data-tex="\(e^{-2\pi y_0mr}\)">\(e^{-2\pi y_0mr}\)</span> is summable. Thus the Fourier expression, consisting of the <span class="math" data-tex="\(m=0\)">\(m=0\)</span> term, (5.8), and these nonzero coefficients, gives a holomorphic continuation in <span class="math" data-tex="\(s\)">\(s\)</span>. It agrees with (5.2) for <span class="math" data-tex="\(0&lt;\operatorname{Re}s&lt;\delta\)">\(0&lt;\operatorname{Re}s&lt;\delta\)</span>, where the periodizations and the sums were justified.</p>
+<p>Now <span class="math" data-tex="\(2\zeta(2)=\pi^2/3\)">\(2\zeta(2)=\pi^2/3\)</span>, the constant-row contribution is <span class="math" data-tex="\(-\pi/y\)">\(-\pi/y\)</span>, and (5.14) gives
+<span class="math math-display" data-tex="\[
+2\sum_{m,r\ge1}(-4\pi^2r)e^{2\pi irmz}
+=-8\pi^2\sum_{n\ge1}\sigma_1(n)q^n.
+\]">\[
+2\sum_{m,r\ge1}(-4\pi^2r)e^{2\pi irmz}
+=-8\pi^2\sum_{n\ge1}\sigma_1(n)q^n.
+\]</span>
+This proves (5.3). Finally continue the identity (5.5) in <span class="math" data-tex="\(s\)">\(s\)</span> and evaluate it at zero. This gives (5.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (the transformation law of <span class="math" data-tex="\(E_2\)">\(E_2\)</span>).</strong> The real analytic function
+<span class="math math-display" data-tex="\[
+E_2^*(z)=E_2(z)-\frac3{\pi y}
+\tag{5.17}
+\]">\[
+E_2^*(z)=E_2(z)-\frac3{\pi y}
+\tag{5.17}
+\]</span>
+satisfies
+<span class="math math-display" data-tex="\[
+E_2^*(\gamma z)=(cz+d)^2E_2^*(z)
+\quad(\gamma\in\mathrm{SL}_2(\mathbb Z)).
+\]">\[
+E_2^*(\gamma z)=(cz+d)^2E_2^*(z)
+\quad(\gamma\in\mathrm{SL}_2(\mathbb Z)).
+\]</span>
+The holomorphic function <span class="math" data-tex="\(E_2\)">\(E_2\)</span> satisfies
+<span class="math math-display" data-tex="\[
+E_2(\gamma z)=(cz+d)^2E_2(z)+\frac{6c(cz+d)}{\pi i}.
+\tag{5.18}
+\]">\[
+E_2(\gamma z)=(cz+d)^2E_2(z)+\frac{6c(cz+d)}{\pi i}.
+\tag{5.18}
+\]</span>
+In particular,
+<span class="math math-display" data-tex="\[
+E_2(-1/z)=z^2E_2(z)+\frac{12z}{2\pi i},
+\qquad E_2(z+1)=E_2(z).
+\tag{5.19}
+\]">\[
+E_2(-1/z)=z^2E_2(z)+\frac{12z}{2\pi i},
+\qquad E_2(z+1)=E_2(z).
+\tag{5.19}
+\]</span></p>
+<p><strong>Proof.</strong> Equation (5.3) says <span class="math" data-tex="\(H(z,0)=(\pi^2/3)E_2^*(z)\)">\(H(z,0)=(\pi^2/3)E_2^*(z)\)</span>, so Lemma 5.1 proves the first statement. Put <span class="math" data-tex="\(j=cz+d\)">\(j=cz+d\)</span>. Since
+<span class="math" data-tex="\(\operatorname{Im}(\gamma z)=y/|j|^2\)">\(\operatorname{Im}(\gamma z)=y/|j|^2\)</span>, the first statement rearranges to
+<span class="math math-display" data-tex="\[
+E_2(\gamma z)=j^2E_2(z)+\frac3{\pi y}(|j|^2-j^2).
+\]">\[
+E_2(\gamma z)=j^2E_2(z)+\frac3{\pi y}(|j|^2-j^2).
+\]</span>
+But <span class="math" data-tex="\(\overline j-j=c(\overline z-z)=-2icy\)">\(\overline j-j=c(\overline z-z)=-2icy\)</span>, whence
+<span class="math" data-tex="\(|j|^2-j^2=-2icyj\)">\(|j|^2-j^2=-2icyj\)</span>. The correction is <span class="math" data-tex="\(-6icj/\pi=6cj/(\pi i)\)">\(-6icj/\pi=6cj/(\pi i)\)</span>, proving (5.18). Substitute <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> to obtain (5.19). The nonzero correction for <span class="math" data-tex="\(S\)">\(S\)</span> proves that <span class="math" data-tex="\(E_2\notin M_2(\mathrm{SL}_2(\mathbb Z))\)">\(E_2\notin M_2(\mathrm{SL}_2(\mathbb Z))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are two distinct constructions at weight two. The row-by-row sum
+<span class="math math-display" data-tex="\[
+G_2^{\mathrm{row}}(z)=
+\sum_{n\ne0}n^{-2}
++\sum_{m\ne0}\left(\sum_{n\in\mathbb Z}(mz+n)^{-2}\right)
+\]">\[
+G_2^{\mathrm{row}}(z)=
+\sum_{n\ne0}n^{-2}
++\sum_{m\ne0}\left(\sum_{n\in\mathbb Z}(mz+n)^{-2}\right)
+\]</span>
+converges in the displayed order. By the <span class="math" data-tex="\(k=2\)">\(k=2\)</span> Lipschitz formula it equals
+<span class="math" data-tex="\((\pi^2/3)E_2(z)\)">\((\pi^2/3)E_2(z)\)</span>. The invariantly regularized value is
+<span class="math" data-tex="\(H(z,0)=G_2^{\mathrm{row}}(z)-\pi/y\)">\(H(z,0)=G_2^{\mathrm{row}}(z)-\pi/y\)</span>.
+The absolute lattice sum diverges by Lemma 3.1, so its terms cannot be rearranged as at higher weights. The surviving constant coefficient in (5.8) explains the difference.</p>
+<h2 id="6-worked-examples">6. Worked examples</h2>
+<h3 id="6-1-ten-coefficients-of-e_4-and-e_6">6.1. Ten coefficients of <span class="math" data-tex="\(E_4\)">\(E_4\)</span> and <span class="math" data-tex="\(E_6\)">\(E_6\)</span></h3>
+<p>The Bernoulli recurrence, computed explicitly in Solution 4, gives
+<span class="math" data-tex="\(B_4=-1/30\)">\(B_4=-1/30\)</span> and <span class="math" data-tex="\(B_6=1/42\)">\(B_6=1/42\)</span>. Thus
+<span class="math math-display" data-tex="\[
+E_4=1+240\sum_{n\ge1}\sigma_3(n)q^n,\qquad
+E_6=1-504\sum_{n\ge1}\sigma_5(n)q^n.
+\]">\[
+E_4=1+240\sum_{n\ge1}\sigma_3(n)q^n,\qquad
+E_6=1-504\sum_{n\ge1}\sigma_5(n)q^n.
+\]</span>
+Here are all divisors used to compute their first ten positive-index coefficients. Each divisor is cubed or raised to the fifth power and the results are added.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:left">Positive divisors</th>
+<th style="text-align:right"><span class="math" data-tex="\(\sigma_3(n)\)">\(\sigma_3(n)\)</span></th>
+<th style="text-align:right">Coefficient in <span class="math" data-tex="\(E_4\)">\(E_4\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\sigma_5(n)\)">\(\sigma_5(n)\)</span></th>
+<th style="text-align:right">Coefficient in <span class="math" data-tex="\(E_6\)">\(E_6\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:left">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">240</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(-504\)">\(-504\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:left">1, 2</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">2160</td>
+<td style="text-align:right">33</td>
+<td style="text-align:right"><span class="math" data-tex="\(-16632\)">\(-16632\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:left">1, 3</td>
+<td style="text-align:right">28</td>
+<td style="text-align:right">6720</td>
+<td style="text-align:right">244</td>
+<td style="text-align:right"><span class="math" data-tex="\(-122976\)">\(-122976\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:left">1, 2, 4</td>
+<td style="text-align:right">73</td>
+<td style="text-align:right">17520</td>
+<td style="text-align:right">1057</td>
+<td style="text-align:right"><span class="math" data-tex="\(-532728\)">\(-532728\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:left">1, 5</td>
+<td style="text-align:right">126</td>
+<td style="text-align:right">30240</td>
+<td style="text-align:right">3126</td>
+<td style="text-align:right"><span class="math" data-tex="\(-1575504\)">\(-1575504\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:left">1, 2, 3, 6</td>
+<td style="text-align:right">252</td>
+<td style="text-align:right">60480</td>
+<td style="text-align:right">8052</td>
+<td style="text-align:right"><span class="math" data-tex="\(-4058208\)">\(-4058208\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:left">1, 7</td>
+<td style="text-align:right">344</td>
+<td style="text-align:right">82560</td>
+<td style="text-align:right">16808</td>
+<td style="text-align:right"><span class="math" data-tex="\(-8471232\)">\(-8471232\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:left">1, 2, 4, 8</td>
+<td style="text-align:right">585</td>
+<td style="text-align:right">140400</td>
+<td style="text-align:right">33825</td>
+<td style="text-align:right"><span class="math" data-tex="\(-17047800\)">\(-17047800\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:left">1, 3, 9</td>
+<td style="text-align:right">757</td>
+<td style="text-align:right">181680</td>
+<td style="text-align:right">59293</td>
+<td style="text-align:right"><span class="math" data-tex="\(-29883672\)">\(-29883672\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:left">1, 2, 5, 10</td>
+<td style="text-align:right">1134</td>
+<td style="text-align:right">272160</td>
+<td style="text-align:right">103158</td>
+<td style="text-align:right"><span class="math" data-tex="\(-51991632\)">\(-51991632\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For instance,
+<span class="math" data-tex="\(\sigma_3(6)=1+8+27+216=252\)">\(\sigma_3(6)=1+8+27+216=252\)</span>, while
+<span class="math" data-tex="\(\sigma_5(6)=1+32+243+7776=8052\)">\(\sigma_5(6)=1+32+243+7776=8052\)</span>. Multiplication by <span class="math" data-tex="\(240\)">\(240\)</span> and <span class="math" data-tex="\(-504\)">\(-504\)</span>, respectively, gives the row for <span class="math" data-tex="\(q^6\)">\(q^6\)</span>.</p>
+<h3 id="6-2-rotation-of-the-square-and-hexagonal-lattices">6.2. Rotation of the square and hexagonal lattices</h3>
+<p>Let <span class="math" data-tex="\(\rho=(-1+i\sqrt3)/2\)">\(\rho=(-1+i\sqrt3)/2\)</span>. Multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> preserves the square lattice <span class="math" data-tex="\(\mathbb Z[i]\)">\(\mathbb Z[i]\)</span>, so homogeneity gives
+<span class="math math-display" data-tex="\[
+G_k(\mathbb Z[i])=i^{-k}G_k(\mathbb Z[i]).
+\]">\[
+G_k(\mathbb Z[i])=i^{-k}G_k(\mathbb Z[i]).
+\]</span>
+For <span class="math" data-tex="\(k=6\)">\(k=6\)</span>, the multiplier is <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence <span class="math" data-tex="\(G_6(\mathbb Z[i])=0\)">\(G_6(\mathbb Z[i])=0\)</span>.
+It does not force <span class="math" data-tex="\(G_4\)">\(G_4\)</span> to vanish. In fact <span class="math" data-tex="\(q(i)=e^{-2\pi}&gt;0\)">\(q(i)=e^{-2\pi}&gt;0\)</span>, and every positive-index coefficient of <span class="math" data-tex="\(E_4\)">\(E_4\)</span> is positive. Thus
+<span class="math" data-tex="\(E_4(i)&gt;1\)">\(E_4(i)&gt;1\)</span>, proving <span class="math" data-tex="\(G_4(\mathbb Z[i])\ne0\)">\(G_4(\mathbb Z[i])\ne0\)</span>.</p>
+<p>Multiplication by <span class="math" data-tex="\(\lambda=1+\rho=e^{\pi i/3}\)">\(\lambda=1+\rho=e^{\pi i/3}\)</span> preserves
+<span class="math" data-tex="\(\mathbb Z+\mathbb Z\rho\)">\(\mathbb Z+\mathbb Z\rho\)</span>: it sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1+\rho\)">\(1+\rho\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(-1\)">\(-1\)</span>, using <span class="math" data-tex="\(\rho^2+\rho+1=0\)">\(\rho^2+\rho+1=0\)</span>. Its sixth power is one. For <span class="math" data-tex="\(k=4\)">\(k=4\)</span>, <span class="math" data-tex="\(\lambda^{-4}\ne1\)">\(\lambda^{-4}\ne1\)</span>, so
+<span class="math math-display" data-tex="\[
+G_4(\mathbb Z+\mathbb Z\rho)=0.
+\]">\[
+G_4(\mathbb Z+\mathbb Z\rho)=0.
+\]</span>
+For <span class="math" data-tex="\(k=6\)">\(k=6\)</span>, the multiplier is one.</p>
+<p>We can also prove that the remaining value <span class="math" data-tex="\(G_6\)">\(G_6\)</span> is nonzero without the valence formula. Put <span class="math" data-tex="\(r=e^{-\pi\sqrt3}\)">\(r=e^{-\pi\sqrt3}\)</span>, so <span class="math" data-tex="\(q(\rho)=-r\)">\(q(\rho)=-r\)</span>.
+We have <span class="math" data-tex="\(r&lt;1/100\)">\(r&lt;1/100\)</span>: indeed <span class="math" data-tex="\(\pi&gt;3,\ \sqrt3&gt;5/3\)">\(\pi&gt;3,\ \sqrt3&gt;5/3\)</span>, and the first seven terms of the exponential series give <span class="math" data-tex="\(e^5&gt;100\)">\(e^5&gt;100\)</span>.
+Since
+<span class="math math-display" data-tex="\[
+\sigma_5(n)=n^5\sum_{d\mid n}d^{-5}\le\zeta(5)n^5,
+\qquad
+\zeta(5)&lt;1+\frac1{32}+\int_2^\infty t^{-5}dt=\frac{67}{64},
+\]">\[
+\sigma_5(n)=n^5\sum_{d\mid n}d^{-5}\le\zeta(5)n^5,
+\qquad
+\zeta(5)&lt;1+\frac1{32}+\int_2^\infty t^{-5}dt=\frac{67}{64},
+\]</span>
+and, for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{(n+1)^5r^{n+1}}{n^5r^n}
+\le(3/2)^5r&lt;8r,
+\]">\[
+\frac{(n+1)^5r^{n+1}}{n^5r^n}
+\le(3/2)^5r&lt;8r,
+\]</span>
+the terms from <span class="math" data-tex="\(n=2\)">\(n=2\)</span> onwards obey
+<span class="math math-display" data-tex="\[
+\left|E_6(\rho)-(1+504r)\right|
+\le504\,\frac{67}{64}\frac{32r^2}{1-8r}
+&lt;504r\,\frac{67}{184}&lt;504r.
+\]">\[
+\left|E_6(\rho)-(1+504r)\right|
+\le504\,\frac{67}{64}\frac{32r^2}{1-8r}
+&lt;504r\,\frac{67}{184}&lt;504r.
+\]</span>
+The value is real, because <span class="math" data-tex="\(q(\rho)\)">\(q(\rho)\)</span> and the coefficients are real. Therefore <span class="math" data-tex="\(E_6(\rho)&gt;1\)">\(E_6(\rho)&gt;1\)</span>, and <span class="math" data-tex="\(G_6(\mathbb Z+\mathbb Z\rho)\ne0\)">\(G_6(\mathbb Z+\mathbb Z\rho)\ne0\)</span>.
+The symmetry-forced zeros are exactly the two asserted above; the other two values do not vanish.</p>
+<h3 id="6-3-a-weight-two-value-at-the-square-lattice">6.3. A weight-two value at the square lattice</h3>
+<p>At the fixed point <span class="math" data-tex="\(S(i)=i\)">\(S(i)=i\)</span>, equation (5.19) gives
+<span class="math math-display" data-tex="\[
+E_2(i)=-E_2(i)+\frac6\pi,\qquad E_2(i)=\frac3\pi,
+\qquad E_2^*(i)=0.
+\]">\[
+E_2(i)=-E_2(i)+\frac6\pi,\qquad E_2(i)=\frac3\pi,
+\qquad E_2^*(i)=0.
+\]</span>
+This produces the convergent identity
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}\frac{n}{e^{2\pi n}-1}
+=\sum_{n\ge1}\sigma_1(n)e^{-2\pi n}
+=\frac1{24}-\frac1{8\pi}.
+\]">\[
+\sum_{n\ge1}\frac{n}{e^{2\pi n}-1}
+=\sum_{n\ge1}\sigma_1(n)e^{-2\pi n}
+=\frac1{24}-\frac1{8\pi}.
+\]</span>
+To verify the first equality, expand <span class="math" data-tex="\(1/(e^{2\pi n}-1)\)">\(1/(e^{2\pi n}-1)\)</span> as
+<span class="math" data-tex="\(\sum_{m\ge1}e^{-2\pi mn}\)">\(\sum_{m\ge1}e^{-2\pi mn}\)</span> and group the positive terms by the product <span class="math" data-tex="\(mn\)">\(mn\)</span>. The second follows from (5.1) and the computed value of <span class="math" data-tex="\(E_2(i)\)">\(E_2(i)\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Prove <span class="math" data-tex="\(M_k(\Gamma)=0\)">\(M_k(\Gamma)=0\)</span> for odd <span class="math" data-tex="\(k\)">\(k\)</span> if <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span>. Explain why this argument does not force odd-weight forms for <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span> to vanish.</li>
+<li><strong>Easy.</strong> Derive the Lipschitz formula for every integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> from the cotangent partial fractions, including the sign when <span class="math" data-tex="\(k\)">\(k\)</span> is odd.</li>
+<li><strong>Medium.</strong> Prove local uniform absolute convergence of (3.1) for <span class="math" data-tex="\(s&gt;2\)">\(s&gt;2\)</span>, and divergence for <span class="math" data-tex="\(s=2\)">\(s=2\)</span>. Explain which part of the proof prevents an unrestricted rearrangement at weight two.</li>
+<li><strong>Medium.</strong> Compute <span class="math" data-tex="\(B_k\)">\(B_k\)</span> and <span class="math" data-tex="\(E_k\)">\(E_k\)</span> for <span class="math" data-tex="\(k=4,6,8,10,14\)">\(k=4,6,8,10,14\)</span>, using the defining recurrence rather than a table of Bernoulli numbers.</li>
+<li><strong>Hard.</strong> Starting from the convergent family <span class="math" data-tex="\(H(z,s)\)">\(H(z,s)\)</span>, prove that <span class="math" data-tex="\(E_2^*\)">\(E_2^*\)</span> transforms with weight two. Deduce the transformation law of <span class="math" data-tex="\(E_2\)">\(E_2\)</span> for a general matrix and for <span class="math" data-tex="\(S,T\)">\(S,T\)</span>. Identify the contribution that survives when <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>.</li>
+</ol>
+<h2 id="8-full-solutions">8. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>For <span class="math" data-tex="\(\gamma=-I\)">\(\gamma=-I\)</span>, the point <span class="math" data-tex="\(\gamma z\)">\(\gamma z\)</span> is <span class="math" data-tex="\(z\)">\(z\)</span>, while <span class="math" data-tex="\(j(\gamma,z)=-1\)">\(j(\gamma,z)=-1\)</span>.
+Thus invariance reads <span class="math" data-tex="\(f(z)=(-1)^{-k}f(z)\)">\(f(z)=(-1)^{-k}f(z)\)</span>. If <span class="math" data-tex="\(k\)">\(k\)</span> is odd, this is <span class="math" data-tex="\(f(z)=-f(z)\)">\(f(z)=-f(z)\)</span>, hence <span class="math" data-tex="\(f=0\)">\(f=0\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.
+The matrix <span class="math" data-tex="\(-I\)">\(-I\)</span> is absent from <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span>, since its diagonal entries are <span class="math" data-tex="\(3\)">\(3\)</span>, rather than <span class="math" data-tex="\(1\)">\(1\)</span>, modulo <span class="math" data-tex="\(4\)">\(4\)</span>.
+There is therefore no such global vanishing argument. At its irregular cusp, Proposition 1.2 instead imposes an odd Taylor series in <span class="math" data-tex="\(e^{\pi iz}\)">\(e^{\pi iz}\)</span>; this local condition allows nonzero series.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The normally convergent expression
+<span class="math math-display" data-tex="\[
+\frac1z+\sum_{n\ge1}\left(\frac1{z-n}+\frac1{z+n}\right)
+\]">\[
+\frac1z+\sum_{n\ge1}\left(\frac1{z-n}+\frac1{z+n}\right)
+\]</span>
+equals <span class="math" data-tex="\(\pi\cot(\pi z)\)">\(\pi\cot(\pi z)\)</span> by Lemma 3.2. After <span class="math" data-tex="\(k-1\)">\(k-1\)</span> derivatives, its value is
+<span class="math" data-tex="\((-1)^{k-1}(k-1)!\sum_{n\in\mathbb Z}(z+n)^{-k}\)">\((-1)^{k-1}(k-1)!\sum_{n\in\mathbb Z}(z+n)^{-k}\)</span>.
+For <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, the geometric-series expression for the same cotangent is
+<span class="math" data-tex="\(-\pi i-2\pi i\sum_{r\ge1}e^{2\pi irz}\)">\(-\pi i-2\pi i\sum_{r\ge1}e^{2\pi irz}\)</span>.
+Its <span class="math" data-tex="\(k-1\)">\(k-1\)</span> derivatives equal
+<span class="math" data-tex="\(-(2\pi i)^k\sum_{r\ge1}r^{k-1}e^{2\pi irz}\)">\(-(2\pi i)^k\sum_{r\ge1}r^{k-1}e^{2\pi irz}\)</span>.
+Both differentiations are justified on compact subsets, by normal convergence. Division by <span class="math" data-tex="\((-1)^{k-1}(k-1)!\)">\((-1)^{k-1}(k-1)!\)</span> gives the coefficient
+<span class="math" data-tex="\((-1)^k(2\pi i)^k/(k-1)!=(-2\pi i)^k/(k-1)!\)">\((-1)^k(2\pi i)^k/(k-1)!=(-2\pi i)^k/(k-1)!\)</span>.
+This proves the formula for even and odd <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>On compact <span class="math" data-tex="\(K\subset\mathfrak H\)">\(K\subset\mathfrak H\)</span>, the least expansion factor of the invertible real linear map
+<span class="math" data-tex="\((m,n)\mapsto mz+n\)">\((m,n)\mapsto mz+n\)</span>, measured with the maximum norm on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, has a positive lower bound <span class="math" data-tex="\(a_K\)">\(a_K\)</span>.
+For the shell <span class="math" data-tex="\(\max(|m|,|n|)=r\)">\(\max(|m|,|n|)=r\)</span>, there are <span class="math" data-tex="\(8r\)">\(8r\)</span> terms, each at most
+<span class="math" data-tex="\(a_K^{-s}r^{-s}\)">\(a_K^{-s}r^{-s}\)</span>. The sum is bounded by
+<span class="math" data-tex="\(8a_K^{-s}\sum_{r\ge1}r^{1-s}\)">\(8a_K^{-s}\sum_{r\ge1}r^{1-s}\)</span>, proving uniform convergence when <span class="math" data-tex="\(s&gt;2\)">\(s&gt;2\)</span>.
+At fixed <span class="math" data-tex="\(z\)">\(z\)</span>, each shell instead contributes at least
+<span class="math" data-tex="\(8(|z|+1)^{-2}/r\)">\(8(|z|+1)^{-2}/r\)</span> to the absolute sum at <span class="math" data-tex="\(s=2\)">\(s=2\)</span>, by the upper bound on <span class="math" data-tex="\(|mz+n|\)">\(|mz+n|\)</span>.
+Summing these lower bounds proves divergence.
+Consequently the weight-two complex terms are not absolutely summable. A convergent row-by-row prescription does not authorize arbitrary permutations of all lattice terms.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>First <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span>. Recurrence (4.2) gives <span class="math" data-tex="\(B_1=-1/2\)">\(B_1=-1/2\)</span>, then
+<span class="math" data-tex="\(B_2=-(1+3B_1)/3=1/6\)">\(B_2=-(1+3B_1)/3=1/6\)</span>. All subsequent odd entries vanish by the parity proved in Proposition 4.1.
+For even <span class="math" data-tex="\(n\)">\(n\)</span>, denote the sum in the numerator of (4.2) by <span class="math" data-tex="\(A_n\)">\(A_n\)</span>.
+Successive substitution of the already computed entries gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_4&amp;=1-\frac52+\frac{10}{6}=\frac16,\\
+A_6&amp;=1-\frac72+\frac{21}{6}-\frac{35}{30}=-\frac16,\\
+A_8&amp;=1-\frac92+\frac{36}{6}-\frac{126}{30}+\frac{84}{42}=\frac3{10},\\
+A_{10}&amp;=1-\frac{11}{2}+\frac{55}{6}-\frac{330}{30}
+ +\frac{462}{42}-\frac{165}{30}=-\frac56,\\
+A_{12}&amp;=1-\frac{13}{2}+\frac{78}{6}-\frac{715}{30}
+ +\frac{1716}{42}-\frac{1287}{30}+\frac{286\cdot5}{66}
+ =\frac{691}{210},\\
+A_{14}&amp;=1-\frac{15}{2}+\frac{105}{6}-\frac{1365}{30}
+ +\frac{5005}{42}-\frac{6435}{30}+\frac{3003\cdot5}{66}
+ -\frac{455\cdot691}{2730}=-\frac{35}{2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_4&amp;=1-\frac52+\frac{10}{6}=\frac16,\\
+A_6&amp;=1-\frac72+\frac{21}{6}-\frac{35}{30}=-\frac16,\\
+A_8&amp;=1-\frac92+\frac{36}{6}-\frac{126}{30}+\frac{84}{42}=\frac3{10},\\
+A_{10}&amp;=1-\frac{11}{2}+\frac{55}{6}-\frac{330}{30}
+ +\frac{462}{42}-\frac{165}{30}=-\frac56,\\
+A_{12}&amp;=1-\frac{13}{2}+\frac{78}{6}-\frac{715}{30}
+ +\frac{1716}{42}-\frac{1287}{30}+\frac{286\cdot5}{66}
+ =\frac{691}{210},\\
+A_{14}&amp;=1-\frac{15}{2}+\frac{105}{6}-\frac{1365}{30}
+ +\frac{5005}{42}-\frac{6435}{30}+\frac{3003\cdot5}{66}
+ -\frac{455\cdot691}{2730}=-\frac{35}{2}.
+\end{aligned}
+\]</span>
+For example, the coefficient <span class="math" data-tex="\(455\)">\(455\)</span> in the last line is <span class="math" data-tex="\(\binom{15}{12}\)">\(\binom{15}{12}\)</span>.
+Dividing each <span class="math" data-tex="\(A_n\)">\(A_n\)</span> by <span class="math" data-tex="\(-(n+1)\)">\(-(n+1)\)</span> gives</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(n\)">\(n\)</span></th>
+<th style="text-align:center"><span class="math" data-tex="\(B_n\)">\(B_n\)</span></th>
+<th style="text-align:center"><span class="math" data-tex="\(-2n/B_n\)">\(-2n/B_n\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:center"><span class="math" data-tex="\(-1/30\)">\(-1/30\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(240\)">\(240\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:center"><span class="math" data-tex="\(1/42\)">\(1/42\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(-504\)">\(-504\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:center"><span class="math" data-tex="\(-1/30\)">\(-1/30\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(480\)">\(480\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:center"><span class="math" data-tex="\(5/66\)">\(5/66\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(-264\)">\(-264\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:center"><span class="math" data-tex="\(-691/2730\)">\(-691/2730\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(65520/691\)">\(65520/691\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:center"><span class="math" data-tex="\(7/6\)">\(7/6\)</span></td>
+<td style="text-align:center"><span class="math" data-tex="\(-24\)">\(-24\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The intermediate weight twelve is necessary for computing <span class="math" data-tex="\(B_{14}\)">\(B_{14}\)</span>.
+Substitution into Theorem 4.2 now gives all five requested series:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_4&amp;=1+240\sum_{n\ge1}\sigma_3(n)q^n,\\
+E_6&amp;=1-504\sum_{n\ge1}\sigma_5(n)q^n,\\
+E_8&amp;=1+480\sum_{n\ge1}\sigma_7(n)q^n,\\
+E_{10}&amp;=1-264\sum_{n\ge1}\sigma_9(n)q^n,\\
+E_{14}&amp;=1-24\sum_{n\ge1}\sigma_{13}(n)q^n.
+\end{aligned}
+\]">\[
+\begin{aligned}
+E_4&amp;=1+240\sum_{n\ge1}\sigma_3(n)q^n,\\
+E_6&amp;=1-504\sum_{n\ge1}\sigma_5(n)q^n,\\
+E_8&amp;=1+480\sum_{n\ge1}\sigma_7(n)q^n,\\
+E_{10}&amp;=1-264\sum_{n\ge1}\sigma_9(n)q^n,\\
+E_{14}&amp;=1-24\sum_{n\ge1}\sigma_{13}(n)q^n.
+\end{aligned}
+\]</span>
+In the last line the divisor exponent is thirteen; the equality of its prefactor with that of <span class="math" data-tex="\(E_2\)">\(E_2\)</span> does not make the two series equal.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>For <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>, all terms of <span class="math" data-tex="\(H(z,s)\)">\(H(z,s)\)</span> are absolutely summable. Reindexing the integer pairs under <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> multiplies its complex-power factor by <span class="math" data-tex="\(j(\gamma,z)^2\)">\(j(\gamma,z)^2\)</span>, while the absolute-power factor is cancelled by
+<span class="math" data-tex="\(\operatorname{Im}(\gamma z)^s=y^s|j(\gamma,z)|^{-2s}\)">\(\operatorname{Im}(\gamma z)^s=y^s|j(\gamma,z)|^{-2s}\)</span>.
+Thus <span class="math" data-tex="\(H(\gamma z,s)=j(\gamma,z)^2H(z,s)\)">\(H(\gamma z,s)=j(\gamma,z)^2H(z,s)\)</span>.</p>
+<p>Lemma 5.1 proves the continuation, including the termwise limits of its nonconstant Fourier coefficients. Its constant-row term is
+<span class="math math-display" data-tex="\[
+-\frac{2sJ(s)}{s+1}\zeta(1+2s)y^{-1-s}.
+\]">\[
+-\frac{2sJ(s)}{s+1}\zeta(1+2s)y^{-1-s}.
+\]</span>
+Since <span class="math" data-tex="\(J(0)=\pi\)">\(J(0)=\pi\)</span> and <span class="math" data-tex="\(2s\zeta(1+2s)\to1\)">\(2s\zeta(1+2s)\to1\)</span>, this term tends to <span class="math" data-tex="\(-\pi/y\)">\(-\pi/y\)</span>; it cannot be discarded merely because of the visible factor <span class="math" data-tex="\(s\)">\(s\)</span>.
+The remaining terms give
+<span class="math" data-tex="\(H(z,0)=(\pi^2/3)E_2(z)-\pi/y=(\pi^2/3)E_2^*(z)\)">\(H(z,0)=(\pi^2/3)E_2(z)-\pi/y=(\pi^2/3)E_2^*(z)\)</span>.
+Continuation of the covariance identity proves weight-two covariance for <span class="math" data-tex="\(E_2^*\)">\(E_2^*\)</span>.</p>
+<p>Writing <span class="math" data-tex="\(j=cz+d\)">\(j=cz+d\)</span>, solve that identity for <span class="math" data-tex="\(E_2(\gamma z)\)">\(E_2(\gamma z)\)</span>:
+<span class="math math-display" data-tex="\[
+E_2(\gamma z)=j^2E_2(z)+\frac3{\pi y}j(\overline j-j)
+=j^2E_2(z)-\frac{6icj}{\pi}
+=j^2E_2(z)+\frac{6cj}{\pi i}.
+\]">\[
+E_2(\gamma z)=j^2E_2(z)+\frac3{\pi y}j(\overline j-j)
+=j^2E_2(z)-\frac{6icj}{\pi}
+=j^2E_2(z)+\frac{6cj}{\pi i}.
+\]</span>
+For <span class="math" data-tex="\(S\)">\(S\)</span>, this is <span class="math" data-tex="\(E_2(-1/z)=z^2E_2(z)+12z/(2\pi i)\)">\(E_2(-1/z)=z^2E_2(z)+12z/(2\pi i)\)</span>.
+For <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(c=0,d=1\)">\(c=0,d=1\)</span>, so <span class="math" data-tex="\(E_2(z+1)=E_2(z)\)">\(E_2(z+1)=E_2(z)\)</span>.
+This proves every transformation asserted, with the correction traced to the pole cancellation.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The modular-form arguments are written out, including the cotangent partial fractions, the Bernoulli recurrence and the analytic continuation needed for weight two. Lemma 0.1 supplies the elementary series and puncture consequences of Cauchy's formula. Their derivation is conditional on the analytic foundations named next, so this is not a claim that every theorem dependency has been closed.</p>
+<p>The needed Cauchy, identity, rectangle residue, maximum and power-series facts have an earlier local proof in <a href="LG-MF-01.html">lesson 01</a>, Lemma 0.2; its local inverse consequence supplies branching coordinates. General parameter-dependent dominated integration remains a foundational prerequisite without a verified earlier programme proof locator here. Taylor and Laurent expansions, removable punctures and locally uniform holomorphy are derived from Cauchy's formula in Lemma 0.1. Elementary real integration, linear algebra and compactness also remain foundations. The missing exact proof locators are recorded as residual gaps; free source availability alone does not close them.</p>
+<p>The transformation of the imaginary part is proved in <a href="LG-MF-01.html">The upper half-plane and the modular group</a>, Proposition 1.1. Cusp widths and the irregular cusp of <span class="math" data-tex="\(\Gamma_1(4)\)">\(\Gamma_1(4)\)</span> are established in <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, Section 2 and Proposition 4.1. We use those results as prerequisites. No assertion that <span class="math" data-tex="\(E_2\)">\(E_2\)</span> is modular, no valence formula, and no product formula for the discriminant is imported into the proofs here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Voight open book.</strong> J. Voight, <em>Quaternion Algebras</em>, freely distributed stable post-publication version 1.0.5 (10 January 2024), §§40.1–40.3, especially Lemmas 40.1.3, 40.1.7 and 40.2.16. <a href="https://jvoight.github.io/quat-book-v1.0.5.pdf">Author's stable free PDF</a>.</li>
+<li><strong>Stein author PDF.</strong> W. Stein, <em>Modular Forms: A Computational Approach</em>, freely distributed PDF on the author's website, §2.1 and Chapter 5. <a href="https://wstein.org/books/modform/stein-modform.pdf">Free author PDF</a>.</li>
+<li><strong>Teleman 2003.</strong> C. Teleman, <em>Riemann Surfaces</em>, Lectures 8–9, for lattice and elliptic-function background. <a href="https://math.berkeley.edu/~teleman/math/Riemann.pdf">Author's notes</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-03.html">← Modular curves and their genus</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-05.html">The valence formula and the ring of modular forms of level one →</a></span></nav>
+<p class="small source-link"><a href="src/modular-forms-lattice-functions-and-eisenstein-series.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

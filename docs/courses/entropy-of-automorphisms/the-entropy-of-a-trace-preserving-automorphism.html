@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The entropy of a trace-preserving automorphism · Entropy of automorphisms</title>
+<meta name="description" content="A lesson of the course Entropy of automorphisms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/entropy-of-automorphisms/the-entropy-of-a-trace-preserving-automorphism.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Entropy of automorphisms</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-entropy-of-a-trace-preserving-automorphism">The entropy of a trace-preserving automorphism</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), September 2026, revised October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October revisions are self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>In classical ergodic theory, the Kolmogorov–Sinai entropy of a measure-preserving transformation <span class="math" data-tex="\(T\)">\(T\)</span> of a
+probability space measures how much new information each application of <span class="math" data-tex="\(T\)">\(T\)</span> produces. One takes a finite partition
+<span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, refines it by its images <span class="math" data-tex="\(T^{-1}\mathcal P,\dots,T^{-(k-1)}\mathcal P\)">\(T^{-1}\mathcal P,\dots,T^{-(k-1)}\mathcal P\)</span>, computes the Shannon entropy
+of the common refinement, divides by <span class="math" data-tex="\(k\)">\(k\)</span> and lets <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>. The supremum over all <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> is the entropy
+<span class="math" data-tex="\(h(T)\)">\(h(T)\)</span>. The Bernoulli shift with probability vector <span class="math" data-tex="\((p_1,\dots,p_n)\)">\((p_1,\dots,p_n)\)</span> has entropy <span class="math" data-tex="\(-\sum_jp_j\log p_j\)">\(-\sum_jp_j\log p_j\)</span>, so
+Bernoulli shifts with different entropies are not isomorphic.</p>
+<p>This lesson builds the same invariant for an automorphism <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of a finite von Neumann algebra <span class="math" data-tex="\(R\)">\(R\)</span> that
+preserves a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The motivating problem is the following. Let <span class="math" data-tex="\(M_n\)">\(M_n\)</span> be the algebra
+of <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices with its normalized trace, and form the infinite tensor product
+<span class="math" data-tex="\(R_n=\bigotimes_{\nu\in\mathbb Z}(M_n,\mathrm{tr})\)">\(R_n=\bigotimes_{\nu\in\mathbb Z}(M_n,\mathrm{tr})\)</span>. For every <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> this is the hyperfinite II₁ factor, so all the
+<span class="math" data-tex="\(R_n\)">\(R_n\)</span> are isomorphic. The <em><span class="math" data-tex="\(n\)">\(n\)</span>-shift</em> <span class="math" data-tex="\(S_n\)">\(S_n\)</span> moves each tensor factor one place to the right. Are <span class="math" data-tex="\(S_n\)">\(S_n\)</span> and
+<span class="math" data-tex="\(S_m\)">\(S_m\)</span> conjugate for <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span>? The answer is no, because <span class="math" data-tex="\(S_n\)">\(S_n\)</span> has entropy <span class="math" data-tex="\(\log n\)">\(\log n\)</span> (Corollary 6.3).</p>
+<p>The difficulty is that the classical construction needs the common refinement <span class="math" data-tex="\(\mathcal P\vee\mathcal Q\)">\(\mathcal P\vee\mathcal Q\)</span> of two
+partitions. Its noncommutative analogue would be the algebra generated by two finite-dimensional subalgebras, and that
+algebra is in general infinite-dimensional (Example 2.4). The lesson &quot;Entropy of finite-dimensional subalgebras&quot;
+circumvents this. It does not define a join; instead it defines directly a number <span class="math" data-tex="\(H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k)\)</span> that plays the
+role of the entropy of the join of <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span>, and proves that it has the properties one expects. With this
+number the definition of the entropy of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> copies the classical one:
+<span class="math math-display" data-tex="\[
+H(N,\theta)=\lim_{k\to\infty}\frac1kH(N,\theta(N),\dots,\theta^{k-1}(N)),\qquad
+H(\theta)=\sup_NH(N,\theta),
+\]">\[
+H(N,\theta)=\lim_{k\to\infty}\frac1kH(N,\theta(N),\dots,\theta^{k-1}(N)),\qquad
+H(\theta)=\sup_NH(N,\theta),
+\]</span>
+the supremum being over finite-dimensional subalgebras <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>What the lesson does.</strong></p>
+<ul>
+<li>Section 3 defines <span class="math" data-tex="\(H(\theta)\)">\(H(\theta)\)</span>, proves that it is a conjugacy invariant, and shows that it agrees with the
+Kolmogorov–Sinai entropy when <span class="math" data-tex="\(R\)">\(R\)</span> is abelian.</li>
+<li>Section 4 proves the noncommutative Kolmogorov–Sinai theorem. If finite-dimensional subalgebras
+<span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> have weakly dense union in <span class="math" data-tex="\(R\)">\(R\)</span>, then <span class="math" data-tex="\(H(\theta)=\lim_qH(P_q,\theta)\)">\(H(\theta)=\lim_qH(P_q,\theta)\)</span> for every
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. This is what makes <span class="math" data-tex="\(H(\theta)\)">\(H(\theta)\)</span> computable.</li>
+<li>Section 5 constructs the infinite tensor product <span class="math" data-tex="\(\bigotimes_{\mathbb Z}(B,\psi)\)">\(\bigotimes_{\mathbb Z}(B,\psi)\)</span> of a finite-dimensional
+C*-algebra with a faithful state, and studies the centralizer of the product state. For <span class="math" data-tex="\(B=M_n\)">\(B=M_n\)</span> the centralizer
+is the hyperfinite II₁ factor and the shift restricts to an ergodic automorphism of it, the <em>Bernoulli shift</em>.</li>
+<li>Section 6 computes the entropy of these shifts: it is the von Neumann entropy <span class="math" data-tex="\(-\sum_j\lambda_j\log\lambda_j\)">\(-\sum_j\lambda_j\log\lambda_j\)</span> of
+the state <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, where <span class="math" data-tex="\(\lambda_1,\dots,\lambda_n\)">\(\lambda_1,\dots,\lambda_n\)</span> are the eigenvalues of its density matrix. In particular
+<span class="math" data-tex="\(H(S_n)=\log n\)">\(H(S_n)=\log n\)</span>, and every positive real number is the entropy of some Bernoulli shift of the hyperfinite II₁
+factor.</li>
+<li>Section 7 proves <span class="math" data-tex="\(H(\theta^p)=|p|H(\theta)\)">\(H(\theta^p)=|p|H(\theta)\)</span> when the Kolmogorov–Sinai theorem applies, and the inequality
+<span class="math" data-tex="\(H(\theta^p)\le|p|H(\theta)\)">\(H(\theta^p)\le|p|H(\theta)\)</span> in general.</li>
+<li>Section 8 compares <span class="math" data-tex="\(H\)">\(H\)</span> with the entropy obtained from invariant abelian subalgebras, and explains why
+monotonicity in <span class="math" data-tex="\(N\)">\(N\)</span> is the property that drives the whole theory.</li>
+</ul>
+<p><strong>What is assumed.</strong> The lesson &quot;Entropy of finite-dimensional subalgebras&quot; of this course defines the joint entropy
+and the relative entropy of finite-dimensional subalgebras and proves their properties; Section 1 restates exactly
+what is used. From Course 2 we use one implication of Theorem 1.5 of &quot;Uniqueness of the injective II₁ factor&quot;, to
+identify the Bernoulli shifts as automorphisms of the hyperfinite II₁ factor. Standard operator algebra theory is
+listed in &quot;Results used from other lessons&quot;, with the place where each fact is proved. Classical ergodic
+theory is used only for motivation, and in Sections 3 and 8 to name what the abelian case recovers.</p>
+<p>Basic references are [Connes–Størmer 1975] and [Connes 1994]. The
+lesson &quot;Dynamical entropy of C*-algebras and von Neumann algebras&quot; of this course extends the theory to
+state-preserving automorphisms [Connes–Narnhofer–Thirring 1987].</p>
+<p><strong>Conventions.</strong> Throughout, <span class="math" data-tex="\(R\)">\(R\)</span> is a von Neumann algebra with a faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span> (so <span class="math" data-tex="\(R\)">\(R\)</span> is
+finite). We call <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> a <em>finite tracial algebra</em>. A <em>subalgebra</em> of <span class="math" data-tex="\(R\)">\(R\)</span> is a von Neumann subalgebra containing
+the unit of <span class="math" data-tex="\(R\)">\(R\)</span>. We write <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> for the operator norm and <span class="math" data-tex="\(\|x\|_2=\tau(x^*x)^{1/2}\)">\(\|x\|_2=\tau(x^*x)^{1/2}\)</span>; note <span class="math" data-tex="\(\|x\|_2\le\|x\|\)">\(\|x\|_2\le\|x\|\)</span>.
+An automorphism <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> is <em><span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving</em> if <span class="math" data-tex="\(\tau\circ\theta=\tau\)">\(\tau\circ\theta=\tau\)</span>; these form a group
+<span class="math" data-tex="\(\operatorname{Aut}(R,\tau)\)">\(\operatorname{Aut}(R,\tau)\)</span>. The function <span class="math" data-tex="\(\eta\colon[0,\infty)\to\mathbb R\)">\(\eta\colon[0,\infty)\to\mathbb R\)</span> is <span class="math" data-tex="\(\eta(t)=-t\log t\)">\(\eta(t)=-t\log t\)</span>, with
+<span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>; logarithms are natural. We use the identity
+<span class="math math-display" data-tex="\[
+\eta(st)=s\,\eta(t)+t\,\eta(s)\qquad(s,t\ge0).\tag{0.1}
+\]">\[
+\eta(st)=s\,\eta(t)+t\,\eta(s)\qquad(s,t\ge0).\tag{0.1}
+\]</span>
+For <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span> with <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, <span class="math" data-tex="\(\eta(x)\)">\(\eta(x)\)</span> is defined by functional calculus. The convention <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span> is used
+once, in Theorem 7.2.</p>
+<h2 id="results-used-from-other-lessons">Results used from other lessons</h2>
+<p><strong>(B1) Finite-dimensional C*-algebras.</strong> Every finite-dimensional C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span> is isomorphic to a direct sum
+<span class="math" data-tex="\(\bigoplus_{k=1}^sM_{n_k}\)">\(\bigoplus_{k=1}^sM_{n_k}\)</span> of full matrix algebras. It has a unique trace <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> taking the value
+<span class="math" data-tex="\(1\)">\(1\)</span> on every minimal projection (the sum of the matrix traces). Every positive linear functional <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span> is
+<span class="math" data-tex="\(\psi=\operatorname{Tr}(\rho\,\cdot\,)\)">\(\psi=\operatorname{Tr}(\rho\,\cdot\,)\)</span> for a unique <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span>, the <em>density</em> of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is
+faithful if and only if <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is invertible. For every <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span> there are pairwise orthogonal minimal
+projections <span class="math" data-tex="\(e_1,\dots,e_d\)">\(e_1,\dots,e_d\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>, with <span class="math" data-tex="\(d=\sum_kn_k\)">\(d=\sum_kn_k\)</span> and <span class="math" data-tex="\(\sum_je_j=1\)">\(\sum_je_j=1\)</span>, and numbers <span class="math" data-tex="\(\lambda_j\ge0\)">\(\lambda_j\ge0\)</span> with
+<span class="math" data-tex="\(\rho=\sum_j\lambda_je_j\)">\(\rho=\sum_j\lambda_je_j\)</span> (diagonalize <span class="math" data-tex="\(\rho\)">\(\rho\)</span> in each block). The algebraic tensor product of finitely many
+finite-dimensional C*-algebras is a C*-algebra of finite dimension, and its canonical trace is the tensor product of
+the canonical traces. A nonzero projection <span class="math" data-tex="\(e\)">\(e\)</span> is minimal in <span class="math" data-tex="\(B\)">\(B\)</span> if and only if <span class="math" data-tex="\(eBe=\mathbb Ce\)">\(eBe=\mathbb Ce\)</span>. The structure,
+the matrix units and the minimal projections are proved in <a href="../NCG-FOLIATIONS/companions/af-algebras.html#OA-FND-AF-01">AF-algebras, Section 2</a>, and the traces
+of a multimatrix algebra in Lemma 10.2 there. The densities are the finite-dimensional case of the duality between
+trace-class and bounded operators (<a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-07">Compact and trace-class operators, Section 6</a>), applied in each
+block, and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is diagonalized block by block. For the tensor product, <span class="math" data-tex="\(M_m\otimes M_n\cong M_{mn}\)">\(M_m\otimes M_n\cong M_{mn}\)</span> with
+<span class="math" data-tex="\(\operatorname{Tr}\otimes\operatorname{Tr}=\operatorname{Tr}\)">\(\operatorname{Tr}\otimes\operatorname{Tr}=\operatorname{Tr}\)</span>. If <span class="math" data-tex="\(eBe=\mathbb Ce\)">\(eBe=\mathbb Ce\)</span>, every subprojection of <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(e\)">\(e\)</span>;
+conversely, if <span class="math" data-tex="\(e\)">\(e\)</span> is minimal, the finite-dimensional algebra <span class="math" data-tex="\(eBe\)">\(eBe\)</span> has no projections other than <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>, and it
+is spanned by its projections (Lemma 2.2(1) of the lesson on AF-algebras).</p>
+<p><strong>(B2) Conditional expectations.</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(Q\)">\(Q\)</span> a subalgebra. There is a
+unique map <span class="math" data-tex="\(E_Q\colon R\to Q\)">\(E_Q\colon R\to Q\)</span> with <span class="math" data-tex="\(\tau(E_Q(x)y)=\tau(xy)\)">\(\tau(E_Q(x)y)=\tau(xy)\)</span> for all <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>, <span class="math" data-tex="\(y\in Q\)">\(y\in Q\)</span>. It is a normal unital
+completely positive <span class="math" data-tex="\(Q\)">\(Q\)</span>-bimodule map (<span class="math" data-tex="\(E_Q(axb)=aE_Q(x)b\)">\(E_Q(axb)=aE_Q(x)b\)</span> for <span class="math" data-tex="\(a,b\in Q\)">\(a,b\in Q\)</span>), it satisfies <span class="math" data-tex="\(\tau\circ E_Q=\tau\)">\(\tau\circ E_Q=\tau\)</span>,
+and it is idempotent onto <span class="math" data-tex="\(Q\)">\(Q\)</span>. Proved in <a href="../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html">Integration for a trace, Theorem 9.1</a>; complete
+positivity is <span class="unlinked">Contractive retractions and the algebraic structure of expectations,
+§CE-006</span>. See also <a href="entropy-of-finite-dimensional-subalgebras.html#results-used-from-other-lessons">Entropy of finite-dimensional subalgebras, (B1)</a>.</p>
+<p><strong>(B3) Density theorems.</strong> Let <span class="math" data-tex="\(A_0\subset B(\mathcal H)\)">\(A_0\subset B(\mathcal H)\)</span> be a unital <span class="math" data-tex="\(*\)">\(*\)</span>-algebra. Its weak closure is the bicommutant
+<span class="math" data-tex="\(A_0&#x27;&#x27;\)">\(A_0&#x27;&#x27;\)</span> (the double commutant theorem), and the unit ball of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is strongly dense in the unit ball of <span class="math" data-tex="\(A_0&#x27;&#x27;\)">\(A_0&#x27;&#x27;\)</span>
+(the Kaplansky density theorem). Proved in <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-06">The double commutant theorem, Theorem 4.4</a> and
+<a href="../foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#OA-FND-KD-07">Kaplansky's density theorem and its consequences, Theorem 7.1</a>.</p>
+<p><strong>(B4) Topologies on bounded sets.</strong> Fix a normal positive functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>.
+On bounded subsets of <span class="math" data-tex="\(M\)">\(M\)</span> the map <span class="math" data-tex="\(x\mapsto\omega(x^*x)^{1/2}\)">\(x\mapsto\omega(x^*x)^{1/2}\)</span> is continuous for the strong operator topology. On
+bounded subsets the weak and the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topologies coincide, and the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topology of <span class="math" data-tex="\(M\)">\(M\)</span> does not
+depend on the faithful normal representation. A normal <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strongly continuous (<a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10">Compact and
+trace-class operators, Theorem 9.1(ii)</a>), so <span class="math" data-tex="\(\omega=\sum_n\langle\,\cdot\,\xi_n,\xi_n\rangle\)">\(\omega=\sum_n\langle\,\cdot\,\xi_n,\xi_n\rangle\)</span> with
+<span class="math" data-tex="\(\sum_n\|\xi_n\|^2&lt;\infty\)">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span> (<a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-14">The double commutant theorem, Theorem 10.1</a>), and
+<span class="math" data-tex="\(\omega(x^*x)^{1/2}=(\sum_n\|x\xi_n\|^2)^{1/2}\)">\(\omega(x^*x)^{1/2}=(\sum_n\|x\xi_n\|^2)^{1/2}\)</span> is a <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong seminorm. On bounded sets the strong and
+<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong, and the weak and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topologies agree (<a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-09">Compact and trace-class operators, Lemma
+8.5</a>). Independence of the representation is <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">The universal enveloping von Neumann algebra of a
+C*-algebra, and W*-algebras, Corollary 11.4</a>.</p>
+<p><strong>(B5) Finite factors.</strong> A factor with a faithful normal tracial state is either isomorphic to some <span class="math" data-tex="\(M_n\)">\(M_n\)</span> or of type
+II₁. A II₁ factor has exactly one normal tracial state, so every isomorphism between II₁ factors carries the trace to
+the trace. A von Neumann algebra acting on a separable Hilbert space has separable predual. The first statement
+is <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-10">Projections and types of von Neumann algebras, Corollaries 7.3 and 10.4</a>; uniqueness of the
+trace is <a href="../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html">Integration for a trace, Corollary 7.4</a>. For the last statement, the predual is a quotient
+of the trace class (<a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10">Compact and trace-class operators, Theorem 9.4(a)</a>); finite-rank operators are
+dense in the trace class (Corollary 4.4(c) there), and a rank-one operator <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span> depends continuously on
+<span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> in trace norm, so the finite sums of <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span> with <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> from a countable dense set are
+dense when the Hilbert space is separable.</p>
+<h2 id="1-what-is-used-from-entropy-of-finite-dimensional-subalgebras">1. What is used from &quot;Entropy of finite-dimensional subalgebras&quot;</h2>
+<p>In this section, every result cited by number belongs to the lesson &quot;Entropy of finite-dimensional subalgebras&quot;,
+unless it is marked &quot;of this lesson&quot;.</p>
+<p>Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> let <span class="math" data-tex="\(\mathcal S_k\)">\(\mathcal S_k\)</span> be the set of families
+<span class="math" data-tex="\(x=(x_i)_{i\in\mathbb N^k}\)">\(x=(x_i)_{i\in\mathbb N^k}\)</span> of positive elements of <span class="math" data-tex="\(R\)">\(R\)</span>, only finitely many of them nonzero, with
+<span class="math" data-tex="\(\sum_ix_i=1\)">\(\sum_ix_i=1\)</span>. For <span class="math" data-tex="\(l\in\{1,\dots,k\}\)">\(l\in\{1,\dots,k\}\)</span> and <span class="math" data-tex="\(j\in\mathbb N\)">\(j\in\mathbb N\)</span> the <em><span class="math" data-tex="\(l\)">\(l\)</span>-th marginal</em> is
+<span class="math math-display" data-tex="\[
+x^{(l)}_j=\sum_{i\,:\,i_l=j}x_i .
+\]">\[
+x^{(l)}_j=\sum_{i\,:\,i_l=j}x_i .
+\]</span></p>
+<p><strong>Definition 1.1.</strong> For finite-dimensional subalgebras <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> the <em>joint entropy</em> is
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_k)=\sup_{x\in\mathcal S_k}\Big(\sum_{i\in\mathbb N^k}\eta\big(\tau(x_i)\big)
+-\sum_{l=1}^k\sum_{j\in\mathbb N}\tau\big(\eta(E_{N_l}(x^{(l)}_j))\big)\Big),\tag{1.1}
+\]">\[
+H(N_1,\dots,N_k)=\sup_{x\in\mathcal S_k}\Big(\sum_{i\in\mathbb N^k}\eta\big(\tau(x_i)\big)
+-\sum_{l=1}^k\sum_{j\in\mathbb N}\tau\big(\eta(E_{N_l}(x^{(l)}_j))\big)\Big),\tag{1.1}
+\]</span>
+and for finite-dimensional subalgebras <span class="math" data-tex="\(N,P\)">\(N,P\)</span> the <em>relative entropy</em> is
+<span class="math math-display" data-tex="\[
+H(N\mid P)=\sup_{x\in\mathcal S_1}\sum_{j\in\mathbb N}\Big(\tau\big(\eta(E_P(x_j))\big)-
+\tau\big(\eta(E_N(x_j))\big)\Big).\tag{1.2}
+\]">\[
+H(N\mid P)=\sup_{x\in\mathcal S_1}\sum_{j\in\mathbb N}\Big(\tau\big(\eta(E_P(x_j))\big)-
+\tau\big(\eta(E_N(x_j))\big)\Big).\tag{1.2}
+\]</span></p>
+<p>These are Definition 3.1 and Definition 5.1 (the latter restricted to finite-dimensional <span class="math" data-tex="\(N,P\)">\(N,P\)</span>). There the families
+are indexed by products <span class="math" data-tex="\(I_1\times\dots\times I_k\)">\(I_1\times\dots\times I_k\)</span> of finite sets; this gives the same suprema. A finitely supported
+family indexed by <span class="math" data-tex="\(\mathbb N^k\)">\(\mathbb N^k\)</span> may be restricted to a finite product <span class="math" data-tex="\(I_1\times\dots\times I_k\)">\(I_1\times\dots\times I_k\)</span> containing its
+support, and a family indexed by finite sets <span class="math" data-tex="\(I_l\)">\(I_l\)</span> may be transported to <span class="math" data-tex="\(\mathbb N^k\)">\(\mathbb N^k\)</span> by injections
+<span class="math" data-tex="\(I_l\to\mathbb N\)">\(I_l\to\mathbb N\)</span> and extended by <span class="math" data-tex="\(0\)">\(0\)</span>. Zero entries contribute <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>, and zero marginals contribute
+<span class="math" data-tex="\(\tau\eta(E_{N_l}(0))=0\)">\(\tau\eta(E_{N_l}(0))=0\)</span>.</p>
+<p>That lesson proves the following facts. All algebras below are finite-dimensional subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Facts 1.2.</strong></p>
+<ul>
+<li>(a) <em>Range and symmetry</em> (Remark 3.2(a),(b) and Corollary 4.2). <span class="math" data-tex="\(0\le H(N_1,\dots,N_k)&lt;\infty\)">\(0\le H(N_1,\dots,N_k)&lt;\infty\)</span>, and
+<span class="math" data-tex="\(H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k)\)</span> does not change when the <span class="math" data-tex="\(N_l\)">\(N_l\)</span> are permuted.</li>
+<li>(b) <em>Monotonicity</em> (Proposition 3.3). If <span class="math" data-tex="\(N_l\subset P_l\)">\(N_l\subset P_l\)</span> for all <span class="math" data-tex="\(l\)">\(l\)</span>, then
+<span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)\)">\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)\)</span>.</li>
+<li>(c) <em>Subadditivity</em> (Proposition 3.4). <span class="math" data-tex="\(H(N_1,\dots,N_k,N_{k+1},\dots,N_m)\le H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_m)\)">\(H(N_1,\dots,N_k,N_{k+1},\dots,N_m)\le H(N_1,\dots,N_k)+H(N_{k+1},\dots,N_m)\)</span>
+for <span class="math" data-tex="\(1\le k&lt;m\)">\(1\le k&lt;m\)</span>.</li>
+<li>(d) <em>Merging</em> (Proposition 3.5; for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> also Corollary 3.6(4)). If <span class="math" data-tex="\(N_1,\dots,N_m\subset P\)">\(N_1,\dots,N_m\subset P\)</span>, then for all
+<span class="math" data-tex="\(Q_1,\dots,Q_r\)">\(Q_1,\dots,Q_r\)</span> (<span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>)
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_m,Q_1,\dots,Q_r)\le H(P,Q_1,\dots,Q_r).
+\]">\[
+H(N_1,\dots,N_m,Q_1,\dots,Q_r)\le H(P,Q_1,\dots,Q_r).
+\]</span>
+By (a) the merged algebras may stand anywhere in the list.</li>
+<li>(e) <em>Atoms</em> (Theorem 4.1). If <span class="math" data-tex="\((e_\alpha)_{\alpha}\)">\((e_\alpha)_{\alpha}\)</span> is a family of pairwise orthogonal minimal projections of
+<span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\sum_\alpha e_\alpha=1\)">\(\sum_\alpha e_\alpha=1\)</span>, then <span class="math" data-tex="\(H(N)=\sum_\alpha\eta(\tau(e_\alpha))\)">\(H(N)=\sum_\alpha\eta(\tau(e_\alpha))\)</span>.</li>
+<li>(f) <em>Commuting algebras</em> (Theorem 4.4). If <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> commute pairwise, then the algebra
+<span class="math" data-tex="\((N_1\cup\dots\cup N_k)&#x27;&#x27;\)">\((N_1\cup\dots\cup N_k)&#x27;&#x27;\)</span> is finite-dimensional and <span class="math" data-tex="\(H(N_1,\dots,N_k)=H\big((N_1\cup\dots\cup N_k)&#x27;&#x27;\big)\)">\(H(N_1,\dots,N_k)=H\big((N_1\cup\dots\cup N_k)&#x27;&#x27;\big)\)</span>. We
+use this only for abelian <span class="math" data-tex="\(N_l\)">\(N_l\)</span>.</li>
+<li>(g) <em>Moving the arguments</em> (Proposition 5.3). <span class="math" data-tex="\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)+\sum_{l=1}^kH(N_l\mid P_l)\)">\(H(N_1,\dots,N_k)\le H(P_1,\dots,P_k)+\sum_{l=1}^kH(N_l\mid P_l)\)</span>.</li>
+</ul>
+<p>From (e): a family as in (e) has at most <span class="math" data-tex="\(\dim N\)">\(\dim N\)</span> members, and concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math" data-tex="\(\sum_{\alpha=1}^d\eta(t_\alpha)\le d\,\eta(1/d)=\log d\)">\(\sum_{\alpha=1}^d\eta(t_\alpha)\le d\,\eta(1/d)=\log d\)</span> whenever <span class="math" data-tex="\(\sum_\alpha t_\alpha=1\)">\(\sum_\alpha t_\alpha=1\)</span>. Hence (Corollary 4.2)
+<span class="math math-display" data-tex="\[
+H(N)\le\log\dim N.\tag{1.3}
+\]">\[
+H(N)\le\log\dim N.\tag{1.3}
+\]</span></p>
+<p>The relative entropy has further properties (Proposition 5.2): it vanishes when <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>, increases in <span class="math" data-tex="\(N\)">\(N\)</span>,
+decreases in <span class="math" data-tex="\(P\)">\(P\)</span>, and satisfies a triangle inequality. For commuting <span class="math" data-tex="\(N_1,N_2\)">\(N_1,N_2\)</span>, Theorem 5.5 computes
+<span class="math" data-tex="\(H(N_2\mid N_1)=H\big((N_1\cup N_2)&#x27;&#x27;\big)-H(N_1)\)">\(H(N_2\mid N_1)=H\big((N_1\cup N_2)&#x27;&#x27;\big)-H(N_1)\)</span>; the quantity <span class="math" data-tex="\(H\big((N_1\cup N_2)&#x27;&#x27;\mid N_1\big)\)">\(H\big((N_1\cup N_2)&#x27;&#x27;\mid N_1\big)\)</span> agrees with
+this when <span class="math" data-tex="\(N_1\)">\(N_1\)</span> is abelian, but can be strictly larger otherwise (Example 5.6 there). None of these facts is needed
+below; the only relative-entropy results used are (g), the invariance proved in Lemma 2.1 of this lesson, and the continuity theorem.</p>
+<p>For subalgebras <span class="math" data-tex="\(N,P\)">\(N,P\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> we write <span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span> if for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span> with
+<span class="math" data-tex="\(\|x\|\le1\)">\(\|x\|\le1\)</span> there is <span class="math" data-tex="\(y\in P\)">\(y\in P\)</span> with <span class="math" data-tex="\(\|y\|\le1\)">\(\|y\|\le1\)</span> and <span class="math" data-tex="\(\|x-y\|_2&lt;\delta\)">\(\|x-y\|_2&lt;\delta\)</span> (Definition 6.1).</p>
+<p><strong>Theorem 1.3 (continuity of relative entropy; Theorem 7.3).</strong> For every <span class="math" data-tex="\(n\in\mathbb N\)">\(n\in\mathbb N\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there
+is <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(H(N\mid P)&lt;\varepsilon\)">\(H(N\mid P)&lt;\varepsilon\)</span> for all subalgebras <span class="math" data-tex="\(N,P\)">\(N,P\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\dim N\le n\)">\(\dim N\le n\)</span> and
+<span class="math" data-tex="\(N\overset{\delta}{\subset}P\)">\(N\overset{\delta}{\subset}P\)</span>.</p>
+<p>Lemma 4.1(b) of this lesson, which combines Theorem 1.3 with the Kaplansky density theorem, is Corollary 7.4 of that lesson; we
+include its short proof.</p>
+<h2 id="2-invariance-and-two-elementary-inequalities">2. Invariance and two elementary inequalities</h2>
+<p>The joint entropy is built from <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and the conditional expectations only, so it is invariant under
+trace-preserving isomorphisms.</p>
+<p><strong>Lemma 2.1 (invariance).</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> and <span class="math" data-tex="\((R&#x27;,\tau&#x27;)\)">\((R&#x27;,\tau&#x27;)\)</span> be finite tracial algebras and <span class="math" data-tex="\(\gamma\colon R\to R&#x27;\)">\(\gamma\colon R\to R&#x27;\)</span>
+a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with <span class="math" data-tex="\(\tau&#x27;\circ\gamma=\tau\)">\(\tau&#x27;\circ\gamma=\tau\)</span>.</p>
+<ul>
+<li>(a) For every subalgebra <span class="math" data-tex="\(Q\)">\(Q\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(E_{\gamma(Q)}\circ\gamma=\gamma\circ E_Q\)">\(E_{\gamma(Q)}\circ\gamma=\gamma\circ E_Q\)</span>.</li>
+<li>(b) For finite-dimensional subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span>,
+<span class="math" data-tex="\(H(\gamma(N_1),\dots,\gamma(N_k))=H(N_1,\dots,N_k)\)">\(H(\gamma(N_1),\dots,\gamma(N_k))=H(N_1,\dots,N_k)\)</span> and <span class="math" data-tex="\(H(\gamma(N)\mid\gamma(P))=H(N\mid P)\)">\(H(\gamma(N)\mid\gamma(P))=H(N\mid P)\)</span>, the left sides
+computed in <span class="math" data-tex="\((R&#x27;,\tau&#x27;)\)">\((R&#x27;,\tau&#x27;)\)</span>.</li>
+</ul>
+<p>In particular this holds for every <span class="math" data-tex="\(\gamma\in\operatorname{Aut}(R,\tau)\)">\(\gamma\in\operatorname{Aut}(R,\tau)\)</span>; for automorphisms it is Remark 3.2(c) and
+Proposition 5.2(5) of &quot;Entropy of finite-dimensional subalgebras&quot;. We need it also for isomorphisms between two
+algebras (Proposition 3.3(e)), so we give the proof.</p>
+<p><strong>Proof.</strong> (a) The map <span class="math" data-tex="\(F=\gamma\circ E_Q\circ\gamma^{-1}\)">\(F=\gamma\circ E_Q\circ\gamma^{-1}\)</span> takes values in <span class="math" data-tex="\(\gamma(Q)\)">\(\gamma(Q)\)</span>. For <span class="math" data-tex="\(x&#x27;\in R&#x27;\)">\(x&#x27;\in R&#x27;\)</span> and
+<span class="math" data-tex="\(y&#x27;=\gamma(y)\in\gamma(Q)\)">\(y&#x27;=\gamma(y)\in\gamma(Q)\)</span>,
+<span class="math math-display" data-tex="\[
+\tau&#x27;(F(x&#x27;)y&#x27;)=\tau&#x27;\big(\gamma(E_Q(\gamma^{-1}(x&#x27;))y)\big)=\tau\big(E_Q(\gamma^{-1}(x&#x27;))y\big)
+=\tau(\gamma^{-1}(x&#x27;)y)=\tau&#x27;(x&#x27;y&#x27;).
+\]">\[
+\tau&#x27;(F(x&#x27;)y&#x27;)=\tau&#x27;\big(\gamma(E_Q(\gamma^{-1}(x&#x27;))y)\big)=\tau\big(E_Q(\gamma^{-1}(x&#x27;))y\big)
+=\tau(\gamma^{-1}(x&#x27;)y)=\tau&#x27;(x&#x27;y&#x27;).
+\]</span>
+By the uniqueness in (B2), <span class="math" data-tex="\(F=E_{\gamma(Q)}\)">\(F=E_{\gamma(Q)}\)</span>.</p>
+<p>(b) The map <span class="math" data-tex="\(x\mapsto\gamma(x)=(\gamma(x_i))_i\)">\(x\mapsto\gamma(x)=(\gamma(x_i))_i\)</span> is a bijection of <span class="math" data-tex="\(\mathcal S_k(R)\)">\(\mathcal S_k(R)\)</span> onto <span class="math" data-tex="\(\mathcal S_k(R&#x27;)\)">\(\mathcal S_k(R&#x27;)\)</span>. It
+commutes with taking marginals. Functional calculus commutes with <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphisms, so
+<span class="math" data-tex="\(\eta(E_{\gamma(N_l)}(\gamma(y)))=\gamma(\eta(E_{N_l}(y)))\)">\(\eta(E_{\gamma(N_l)}(\gamma(y)))=\gamma(\eta(E_{N_l}(y)))\)</span> by (a), and <span class="math" data-tex="\(\tau&#x27;\circ\gamma=\tau\)">\(\tau&#x27;\circ\gamma=\tau\)</span>. Hence each term
+of (1.1) for <span class="math" data-tex="\(\gamma(x)\)">\(\gamma(x)\)</span> and <span class="math" data-tex="\(\gamma(N_1),\dots,\gamma(N_k)\)">\(\gamma(N_1),\dots,\gamma(N_k)\)</span> equals the corresponding term for <span class="math" data-tex="\(x\)">\(x\)</span> and
+<span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span>. Taking suprema gives the first equality; (1.2) is treated in the same way. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (adding an algebra).</strong> For finite-dimensional subalgebras <span class="math" data-tex="\(N_1,\dots,N_{k+1}\)">\(N_1,\dots,N_{k+1}\)</span>,
+<span class="math math-display" data-tex="\[
+H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,N_{k+1}).
+\]">\[
+H(N_1,\dots,N_k)\le H(N_1,\dots,N_k,N_{k+1}).
+\]</span></p>
+<p>This is Corollary 3.6(1) of &quot;Entropy of finite-dimensional subalgebras&quot;; the proof is one line.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(x\in\mathcal S_k\)">\(x\in\mathcal S_k\)</span>. Define <span class="math" data-tex="\(y\in\mathcal S_{k+1}\)">\(y\in\mathcal S_{k+1}\)</span> by <span class="math" data-tex="\(y_{(i,1)}=x_i\)">\(y_{(i,1)}=x_i\)</span> and <span class="math" data-tex="\(y_{(i,j)}=0\)">\(y_{(i,j)}=0\)</span> for
+<span class="math" data-tex="\(j\ne1\)">\(j\ne1\)</span>. The terms <span class="math" data-tex="\(\eta(\tau(y_{(i,j)}))\)">\(\eta(\tau(y_{(i,j)}))\)</span> sum to <span class="math" data-tex="\(\sum_i\eta(\tau(x_i))\)">\(\sum_i\eta(\tau(x_i))\)</span>, since <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. For
+<span class="math" data-tex="\(l\le k\)">\(l\le k\)</span> the <span class="math" data-tex="\(l\)">\(l\)</span>-th marginals of <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> agree. The <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-th marginal of <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(j=1\)">\(j=1\)</span> and
+<span class="math" data-tex="\(0\)">\(0\)</span> elsewhere, and <span class="math" data-tex="\(\eta(E_{N_{k+1}}(1))=\eta(1)=0\)">\(\eta(E_{N_{k+1}}(1))=\eta(1)=0\)</span>, <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. So the expression in (1.1) for <span class="math" data-tex="\(y\)">\(y\)</span> equals the
+expression for <span class="math" data-tex="\(x\)">\(x\)</span>. Taking the supremum over <span class="math" data-tex="\(x\)">\(x\)</span> proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3.</strong> If the list <span class="math" data-tex="\(L\)">\(L\)</span> of finite-dimensional subalgebras is obtained from the list <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> by deleting
+some entries, then <span class="math" data-tex="\(H(L)\le H(L&#x27;)\)">\(H(L)\le H(L&#x27;)\)</span>.</p>
+<p><strong>Proof.</strong> By symmetry (Fact 1.2(a)) the deleted entries may be put at the end; apply Lemma 2.2 once per deleted
+entry. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 2.4 (there is no join).</strong> Let <span class="math" data-tex="\(R=L^\infty([0,\pi/2])\otimes M_2\)">\(R=L^\infty([0,\pi/2])\otimes M_2\)</span>, the algebra of bounded measurable
+functions from <span class="math" data-tex="\([0,\pi/2]\)">\([0,\pi/2]\)</span> to <span class="math" data-tex="\(M_2\)">\(M_2\)</span>, with the faithful normal tracial state
+<span class="math" data-tex="\(\tau(f)=\frac2\pi\int_0^{\pi/2}\mathrm{tr}(f(t))\,dt\)">\(\tau(f)=\frac2\pi\int_0^{\pi/2}\mathrm{tr}(f(t))\,dt\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be the constant function
+<span class="math" data-tex="\(\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)</span> and let <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span> be the projection onto the line spanned
+by <span class="math" data-tex="\((\cos t,\sin t)\)">\((\cos t,\sin t)\)</span>. Put <span class="math" data-tex="\(N_1=\mathbb Cp+\mathbb C(1-p)\)">\(N_1=\mathbb Cp+\mathbb C(1-p)\)</span> and <span class="math" data-tex="\(N_2=\mathbb Cq+\mathbb C(1-q)\)">\(N_2=\mathbb Cq+\mathbb C(1-q)\)</span>, two
+two-dimensional abelian subalgebras. Then <span class="math" data-tex="\(pqp\)">\(pqp\)</span> is the function
+<span class="math" data-tex="\(t\mapsto\cos^2t\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)">\(t\mapsto\cos^2t\left(\begin{smallmatrix}1&amp;0\\0&amp;0\end{smallmatrix}\right)\)</span>. Its spectrum is <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, which is
+infinite, so the C*-algebra generated by <span class="math" data-tex="\(pqp\)">\(pqp\)</span>, and with it <span class="math" data-tex="\((N_1\cup N_2)&#x27;&#x27;\)">\((N_1\cup N_2)&#x27;&#x27;\)</span>, is infinite-dimensional. Thus there
+is no finite-dimensional algebra that could serve as <span class="math" data-tex="\(N_1\vee N_2\)">\(N_1\vee N_2\)</span>, although <span class="math" data-tex="\(H(N_1,N_2)\)">\(H(N_1,N_2)\)</span> is defined and, by
+Fact 1.2(c) and (1.3), at most <span class="math" data-tex="\(2\log2\)">\(2\log2\)</span>.</p>
+<h2 id="3-the-entropy-of-an-automorphism">3. The entropy of an automorphism</h2>
+<p><strong>Lemma 3.1 (Fekete's lemma).</strong> Let <span class="math" data-tex="\(a_1,a_2,\dots\)">\(a_1,a_2,\dots\)</span> be real numbers with <span class="math" data-tex="\(a_k\ge0\)">\(a_k\ge0\)</span> and <span class="math" data-tex="\(a_{k+l}\le a_k+a_l\)">\(a_{k+l}\le a_k+a_l\)</span> for
+all <span class="math" data-tex="\(k,l\)">\(k,l\)</span>. Then <span class="math" data-tex="\(\lim_ka_k/k\)">\(\lim_ka_k/k\)</span> exists and equals <span class="math" data-tex="\(\inf_ka_k/k\)">\(\inf_ka_k/k\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, so the inequality holds for <span class="math" data-tex="\(k,l\ge0\)">\(k,l\ge0\)</span>. Fix <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Every <span class="math" data-tex="\(k\)">\(k\)</span> can be written
+<span class="math" data-tex="\(k=qm+r\)">\(k=qm+r\)</span> with <span class="math" data-tex="\(0\le r&lt;m\)">\(0\le r&lt;m\)</span>, and then <span class="math" data-tex="\(a_k\le qa_m+a_r\le qa_m+\max_{r&lt;m}a_r\)">\(a_k\le qa_m+a_r\le qa_m+\max_{r&lt;m}a_r\)</span>. Dividing by <span class="math" data-tex="\(k\)">\(k\)</span> and letting
+<span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> (so <span class="math" data-tex="\(q/k\to1/m\)">\(q/k\to1/m\)</span>) gives <span class="math" data-tex="\(\limsup_ka_k/k\le a_m/m\)">\(\limsup_ka_k/k\le a_m/m\)</span>. Hence
+<span class="math" data-tex="\(\limsup_ka_k/k\le\inf_ma_m/m\le\liminf_ka_k/k\)">\(\limsup_ka_k/k\le\inf_ma_m/m\le\liminf_ka_k/k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 3.2.</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>. For a
+finite-dimensional subalgebra <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> put
+<span class="math math-display" data-tex="\[
+H_k(N,\theta)=H\big(N,\theta(N),\dots,\theta^{k-1}(N)\big).
+\]">\[
+H_k(N,\theta)=H\big(N,\theta(N),\dots,\theta^{k-1}(N)\big).
+\]</span>
+The <em>entropy of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with respect to <span class="math" data-tex="\(N\)">\(N\)</span></em> and the <em>entropy of <span class="math" data-tex="\(\theta\)">\(\theta\)</span></em> are
+<span class="math math-display" data-tex="\[
+H(N,\theta)=\lim_{k\to\infty}\frac1kH_k(N,\theta),\qquad H(\theta)=\sup_NH(N,\theta)\in[0,\infty],
+\]">\[
+H(N,\theta)=\lim_{k\to\infty}\frac1kH_k(N,\theta),\qquad H(\theta)=\sup_NH(N,\theta)\in[0,\infty],
+\]</span>
+the supremum being over all finite-dimensional subalgebras <span class="math" data-tex="\(N\)">\(N\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Using <span class="math" data-tex="\(k+1\)">\(k+1\)</span> algebras <span class="math" data-tex="\(N,\dots,\theta^k(N)\)">\(N,\dots,\theta^k(N)\)</span> and dividing by <span class="math" data-tex="\(k\)">\(k\)</span> gives the same limit, since
+<span class="math" data-tex="\(\frac{k+1}k\to1\)">\(\frac{k+1}k\to1\)</span>.</p>
+<p><strong>Proposition 3.3.</strong> Let <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span> and let <span class="math" data-tex="\(N,P\)">\(N,P\)</span> be finite-dimensional subalgebras.</p>
+<ul>
+<li>(a) The sequence <span class="math" data-tex="\(k\mapsto H_k(N,\theta)\)">\(k\mapsto H_k(N,\theta)\)</span> is subadditive, so the limit defining <span class="math" data-tex="\(H(N,\theta)\)">\(H(N,\theta)\)</span> exists and equals
+<span class="math" data-tex="\(\inf_kH_k(N,\theta)/k\)">\(\inf_kH_k(N,\theta)/k\)</span>. Moreover <span class="math" data-tex="\(0\le H(N,\theta)\le H(N)\le\log\dim N\)">\(0\le H(N,\theta)\le H(N)\le\log\dim N\)</span>.</li>
+<li>(b) If <span class="math" data-tex="\(N\subset P\)">\(N\subset P\)</span>, then <span class="math" data-tex="\(H(N,\theta)\le H(P,\theta)\)">\(H(N,\theta)\le H(P,\theta)\)</span>.</li>
+<li>(c) <span class="math" data-tex="\(H(N,\theta)\le H(P,\theta)+H(N\mid P)\)">\(H(N,\theta)\le H(P,\theta)+H(N\mid P)\)</span>.</li>
+<li>(d) <span class="math" data-tex="\(H(\theta(N),\theta)=H(N,\theta)\)">\(H(\theta(N),\theta)=H(N,\theta)\)</span> and <span class="math" data-tex="\(H(N,\theta^{-1})=H(N,\theta)\)">\(H(N,\theta^{-1})=H(N,\theta)\)</span>. Hence <span class="math" data-tex="\(H(\theta^{-1})=H(\theta)\)">\(H(\theta^{-1})=H(\theta)\)</span>.</li>
+<li>(e) Let <span class="math" data-tex="\(\gamma\colon(R,\tau)\to(R&#x27;,\tau&#x27;)\)">\(\gamma\colon(R,\tau)\to(R&#x27;,\tau&#x27;)\)</span> be a trace-preserving isomorphism and
+<span class="math" data-tex="\(\theta&#x27;=\gamma\theta\gamma^{-1}\)">\(\theta&#x27;=\gamma\theta\gamma^{-1}\)</span>. Then <span class="math" data-tex="\(H(\gamma(N),\theta&#x27;)=H(N,\theta)\)">\(H(\gamma(N),\theta&#x27;)=H(N,\theta)\)</span> and <span class="math" data-tex="\(H(\theta&#x27;)=H(\theta)\)">\(H(\theta&#x27;)=H(\theta)\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) By Fact 1.2(c) and Lemma 2.1 applied to <span class="math" data-tex="\(\theta^k\)">\(\theta^k\)</span>,
+<span class="math math-display" data-tex="\[
+H_{k+l}(N,\theta)\le H_k(N,\theta)+H\big(\theta^k(N),\dots,\theta^{k+l-1}(N)\big)=H_k(N,\theta)+H_l(N,\theta).
+\]">\[
+H_{k+l}(N,\theta)\le H_k(N,\theta)+H\big(\theta^k(N),\dots,\theta^{k+l-1}(N)\big)=H_k(N,\theta)+H_l(N,\theta).
+\]</span>
+The numbers <span class="math" data-tex="\(H_k(N,\theta)\)">\(H_k(N,\theta)\)</span> are finite and nonnegative by Fact 1.2(a), so Lemma 3.1 applies. The infimum is at most
+<span class="math" data-tex="\(H_1(N,\theta)=H(N)\)">\(H_1(N,\theta)=H(N)\)</span>, and <span class="math" data-tex="\(H(N)\le\log\dim N\)">\(H(N)\le\log\dim N\)</span> by (1.3).</p>
+<p>(b) <span class="math" data-tex="\(\theta^j(N)\subset\theta^j(P)\)">\(\theta^j(N)\subset\theta^j(P)\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>; apply Fact 1.2(b), divide by <span class="math" data-tex="\(k\)">\(k\)</span> and let <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>.</p>
+<p>(c) By Fact 1.2(g) and Lemma 2.1,
+<span class="math math-display" data-tex="\[
+H_k(N,\theta)\le H_k(P,\theta)+\sum_{j=0}^{k-1}H\big(\theta^j(N)\mid\theta^j(P)\big)=H_k(P,\theta)+k\,H(N\mid P).
+\]">\[
+H_k(N,\theta)\le H_k(P,\theta)+\sum_{j=0}^{k-1}H\big(\theta^j(N)\mid\theta^j(P)\big)=H_k(P,\theta)+k\,H(N\mid P).
+\]</span>
+Divide by <span class="math" data-tex="\(k\)">\(k\)</span> and let <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span>.</p>
+<p>(d) <span class="math" data-tex="\(H_k(\theta(N),\theta)=H(\theta(N),\dots,\theta^k(N))=H_k(N,\theta)\)">\(H_k(\theta(N),\theta)=H(\theta(N),\dots,\theta^k(N))=H_k(N,\theta)\)</span> by Lemma 2.1. Next, applying
+<span class="math" data-tex="\(\theta^{k-1}\)">\(\theta^{k-1}\)</span> and then symmetry,
+<span class="math math-display" data-tex="\[
+H_k(N,\theta^{-1})=H\big(N,\theta^{-1}(N),\dots,\theta^{-(k-1)}(N)\big)
+=H\big(\theta^{k-1}(N),\dots,\theta(N),N\big)=H_k(N,\theta).
+\]">\[
+H_k(N,\theta^{-1})=H\big(N,\theta^{-1}(N),\dots,\theta^{-(k-1)}(N)\big)
+=H\big(\theta^{k-1}(N),\dots,\theta(N),N\big)=H_k(N,\theta).
+\]</span>
+Taking suprema over <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(H(\theta^{-1})=H(\theta)\)">\(H(\theta^{-1})=H(\theta)\)</span>.</p>
+<p>(e) Since <span class="math" data-tex="\(\theta&#x27;^j(\gamma(N))=\gamma(\theta^j(N))\)">\(\theta&#x27;^j(\gamma(N))=\gamma(\theta^j(N))\)</span>, Lemma 2.1 gives <span class="math" data-tex="\(H_k(\gamma(N),\theta&#x27;)=H_k(N,\theta)\)">\(H_k(\gamma(N),\theta&#x27;)=H_k(N,\theta)\)</span>. As
+<span class="math" data-tex="\(N\mapsto\gamma(N)\)">\(N\mapsto\gamma(N)\)</span> is a bijection between the finite-dimensional subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span> and of <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span>, the suprema
+agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.4.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> be II₁ factors with their unique normal tracial states. If
+<span class="math" data-tex="\(\theta\in\operatorname{Aut}R\)">\(\theta\in\operatorname{Aut}R\)</span>, <span class="math" data-tex="\(\theta&#x27;\in\operatorname{Aut}R&#x27;\)">\(\theta&#x27;\in\operatorname{Aut}R&#x27;\)</span> and <span class="math" data-tex="\(\gamma\colon R\to R&#x27;\)">\(\gamma\colon R\to R&#x27;\)</span> is an isomorphism with
+<span class="math" data-tex="\(\gamma\theta\gamma^{-1}=\theta&#x27;\)">\(\gamma\theta\gamma^{-1}=\theta&#x27;\)</span>, then <span class="math" data-tex="\(H(\theta)=H(\theta&#x27;)\)">\(H(\theta)=H(\theta&#x27;)\)</span>.</p>
+<p><strong>Proof.</strong> Every automorphism of a II₁ factor preserves its trace, and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> carries the trace of <span class="math" data-tex="\(R\)">\(R\)</span> to that
+of <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> (B5). Apply Proposition 3.3(e). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So for a II₁ factor, <span class="math" data-tex="\(H\)">\(H\)</span> is defined on the whole automorphism group and is a conjugacy invariant.</p>
+<p><strong>Example 3.5 (zero entropy).</strong></p>
+<ul>
+<li>(i) If <span class="math" data-tex="\(R\)">\(R\)</span> is finite-dimensional, then <span class="math" data-tex="\(H(\theta)=0\)">\(H(\theta)=0\)</span> for every <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Indeed all <span class="math" data-tex="\(\theta^j(N)\)">\(\theta^j(N)\)</span> lie in
+<span class="math" data-tex="\(R\)">\(R\)</span>, so Fact 1.2(d) with <span class="math" data-tex="\(r=0\)">\(r=0\)</span> gives <span class="math" data-tex="\(H_k(N,\theta)\le H(R)\)">\(H_k(N,\theta)\le H(R)\)</span>, a bound independent of <span class="math" data-tex="\(k\)">\(k\)</span>.</li>
+<li>(ii) If <span class="math" data-tex="\(\theta^p=\mathrm{id}\)">\(\theta^p=\mathrm{id}\)</span> for some <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, then <span class="math" data-tex="\(H(\theta)=0\)">\(H(\theta)=0\)</span>. The list
+<span class="math" data-tex="\(N,\theta(N),\dots,\theta^{k-1}(N)\)">\(N,\theta(N),\dots,\theta^{k-1}(N)\)</span> contains only the <span class="math" data-tex="\(p\)">\(p\)</span> algebras <span class="math" data-tex="\(N,\dots,\theta^{p-1}(N)\)">\(N,\dots,\theta^{p-1}(N)\)</span>, repeated. Merging
+equal entries (Fact 1.2(d) with <span class="math" data-tex="\(P=\theta^t(N)\)">\(P=\theta^t(N)\)</span>, once for each <span class="math" data-tex="\(t\)">\(t\)</span>) gives
+<span class="math" data-tex="\(H_k(N,\theta)\le H(N,\theta(N),\dots,\theta^{p-1}(N))\)">\(H_k(N,\theta)\le H(N,\theta(N),\dots,\theta^{p-1}(N))\)</span> for all <span class="math" data-tex="\(k\ge p\)">\(k\ge p\)</span>. In particular <span class="math" data-tex="\(H(\mathrm{id})=0\)">\(H(\mathrm{id})=0\)</span>.</li>
+</ul>
+<p>The commutative case recovers the classical theory. Let <span class="math" data-tex="\(A\)">\(A\)</span> be an abelian finite tracial algebra. For a
+finite-dimensional subalgebra <span class="math" data-tex="\(Q\subset A\)">\(Q\subset A\)</span>, the minimal projections of <span class="math" data-tex="\(Q\)">\(Q\)</span> are its <em>atoms</em>; they are pairwise
+orthogonal with sum <span class="math" data-tex="\(1\)">\(1\)</span>. Put
+<span class="math math-display" data-tex="\[
+h(Q)=\sum_{e\text{ atom of }Q}\eta(\tau(e)),
+\]">\[
+h(Q)=\sum_{e\text{ atom of }Q}\eta(\tau(e)),
+\]</span>
+and for finite-dimensional <span class="math" data-tex="\(Q_1,Q_2\subset A\)">\(Q_1,Q_2\subset A\)</span> let <span class="math" data-tex="\(Q_1\vee Q_2=(Q_1\cup Q_2)&#x27;&#x27;\)">\(Q_1\vee Q_2=(Q_1\cup Q_2)&#x27;&#x27;\)</span>, again finite-dimensional. If
+<span class="math" data-tex="\(A=L^\infty(X,\mu)\)">\(A=L^\infty(X,\mu)\)</span> with <span class="math" data-tex="\(\tau=\int\cdot\,d\mu\)">\(\tau=\int\cdot\,d\mu\)</span>, the finite-dimensional subalgebras of <span class="math" data-tex="\(A\)">\(A\)</span> correspond to the finite
+measurable partitions of <span class="math" data-tex="\(X\)">\(X\)</span> (up to null sets): the atoms are the indicator functions of the pieces. Under this
+correspondence <span class="math" data-tex="\(\vee\)">\(\vee\)</span> is the common refinement and <span class="math" data-tex="\(h\)">\(h\)</span> is the Shannon entropy of a partition. For a
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving automorphism <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, the <em>Kolmogorov–Sinai entropy</em> is
+<span class="math math-display" data-tex="\[
+h(\theta\mid A)=\sup_{N}\lim_{k\to\infty}\frac1kh\big(N\vee\theta(N)\vee\dots\vee\theta^{k-1}(N)\big),
+\]">\[
+h(\theta\mid A)=\sup_{N}\lim_{k\to\infty}\frac1kh\big(N\vee\theta(N)\vee\dots\vee\theta^{k-1}(N)\big),
+\]</span>
+over finite-dimensional <span class="math" data-tex="\(N\subset A\)">\(N\subset A\)</span>. This is the measure-algebra form of the classical definition; see [Fremlin, Section 385].</p>
+<p><strong>Proposition 3.6 (the commutative case).</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra,
+<span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>, and <span class="math" data-tex="\(A\subset R\)">\(A\subset R\)</span> an abelian subalgebra with <span class="math" data-tex="\(\theta(A)=A\)">\(\theta(A)=A\)</span>. For every finite-dimensional <span class="math" data-tex="\(N\subset A\)">\(N\subset A\)</span> and
+<span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+H_k(N,\theta)=h\big(N\vee\theta(N)\vee\dots\vee\theta^{k-1}(N)\big).
+\]">\[
+H_k(N,\theta)=h\big(N\vee\theta(N)\vee\dots\vee\theta^{k-1}(N)\big).
+\]</span>
+Consequently <span class="math" data-tex="\(h(\theta|_A\mid A)=\sup_{N\subset A}H(N,\theta)\le H(\theta)\)">\(h(\theta|_A\mid A)=\sup_{N\subset A}H(N,\theta)\le H(\theta)\)</span>, with equality if <span class="math" data-tex="\(R=A\)">\(R=A\)</span>.</p>
+<p><strong>Proof.</strong> The algebras <span class="math" data-tex="\(\theta^j(N)\subset A\)">\(\theta^j(N)\subset A\)</span> are abelian and commute. By Fact 1.2(f), <span class="math" data-tex="\(H_k(N,\theta)=H(Q)\)">\(H_k(N,\theta)=H(Q)\)</span> with
+<span class="math" data-tex="\(Q=N\vee\dots\vee\theta^{k-1}(N)\)">\(Q=N\vee\dots\vee\theta^{k-1}(N)\)</span>. The atoms of <span class="math" data-tex="\(Q\)">\(Q\)</span> are minimal projections of <span class="math" data-tex="\(Q\)">\(Q\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span>, so
+<span class="math" data-tex="\(H(Q)=h(Q)\)">\(H(Q)=h(Q)\)</span> by Fact 1.2(e). Divide by <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> and take the supremum over <span class="math" data-tex="\(N\subset A\)">\(N\subset A\)</span>. If <span class="math" data-tex="\(R=A\)">\(R=A\)</span>,
+every finite-dimensional subalgebra lies in <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Note that the right side of Fact 1.2(e) involves only <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\tau|_N\)">\(\tau|_N\)</span>. More generally, although the supremum
+in (1.1) runs over families in all of <span class="math" data-tex="\(R\)">\(R\)</span>, the joint entropy <span class="math" data-tex="\(H(N_1,\dots,N_k)\)">\(H(N_1,\dots,N_k)\)</span> depends only on the algebra
+generated by <span class="math" data-tex="\(N_1,\dots,N_k\)">\(N_1,\dots,N_k\)</span> and on the restriction of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to it: replacing each <span class="math" data-tex="\(x_i\)">\(x_i\)</span> by its conditional
+expectation onto that algebra does not change the expression in (1.1) (Remark 3.2(d) of &quot;Entropy of
+finite-dimensional subalgebras&quot;).</p>
+<h2 id="4-the-kolmogorov-sinai-theorem">4. The Kolmogorov–Sinai theorem</h2>
+<p>The supremum in the definition of <span class="math" data-tex="\(H(\theta)\)">\(H(\theta)\)</span> runs over all finite-dimensional subalgebras. The Kolmogorov–Sinai
+theorem reduces it to one increasing sequence. The two ingredients are Proposition 3.3(c), which bounds
+<span class="math" data-tex="\(H(N,\theta)\)">\(H(N,\theta)\)</span> by <span class="math" data-tex="\(H(P,\theta)\)">\(H(P,\theta)\)</span> up to <span class="math" data-tex="\(H(N\mid P)\)">\(H(N\mid P)\)</span>, and the continuity theorem, which makes <span class="math" data-tex="\(H(N\mid P)\)">\(H(N\mid P)\)</span> small when
+<span class="math" data-tex="\(N\)">\(N\)</span> is almost contained in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>A reference for this section is [Connes–Størmer 1975].</p>
+<p><strong>Lemma 4.1 (approximation).</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span>
+finite-dimensional subalgebras with <span class="math" data-tex="\(\bigcup_qP_q\)">\(\bigcup_qP_q\)</span> weakly dense in <span class="math" data-tex="\(R\)">\(R\)</span>, and fix a finite-dimensional
+subalgebra <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<ul>
+<li>(a) For every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> there is <span class="math" data-tex="\(q_0\)">\(q_0\)</span> with <span class="math" data-tex="\(N\overset{\delta}{\subset}P_q\)">\(N\overset{\delta}{\subset}P_q\)</span> for all <span class="math" data-tex="\(q\ge q_0\)">\(q\ge q_0\)</span>.</li>
+<li>(b) For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(q_0\)">\(q_0\)</span> with <span class="math" data-tex="\(H(N\mid P_q)&lt;\varepsilon\)">\(H(N\mid P_q)&lt;\varepsilon\)</span> for all <span class="math" data-tex="\(q\ge q_0\)">\(q\ge q_0\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) The set <span class="math" data-tex="\(A_0=\bigcup_qP_q\)">\(A_0=\bigcup_qP_q\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-algebra with weak closure <span class="math" data-tex="\(R\)">\(R\)</span>. By the Kaplansky density
+theorem (B3), every <span class="math" data-tex="\(x\)">\(x\)</span> in the unit ball of <span class="math" data-tex="\(R\)">\(R\)</span> is the strong limit of a net in the unit ball of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>; by (B4),
+applied to <span class="math" data-tex="\(\omega=\tau\)">\(\omega=\tau\)</span>, the net converges to <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(\|\cdot\|_2\)">\(\|\cdot\|_2\)</span>. The unit ball of the finite-dimensional
+space <span class="math" data-tex="\(N\)">\(N\)</span> is norm-compact, so it contains a finite set <span class="math" data-tex="\(x_1,\dots,x_m\)">\(x_1,\dots,x_m\)</span> such that every <span class="math" data-tex="\(x\)">\(x\)</span> in the ball has
+<span class="math" data-tex="\(\|x-x_s\|&lt;\delta/2\)">\(\|x-x_s\|&lt;\delta/2\)</span> for some <span class="math" data-tex="\(s\)">\(s\)</span>. Choose <span class="math" data-tex="\(y_s\)">\(y_s\)</span> in the unit ball of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> with <span class="math" data-tex="\(\|x_s-y_s\|_2&lt;\delta/2\)">\(\|x_s-y_s\|_2&lt;\delta/2\)</span>, say
+<span class="math" data-tex="\(y_s\in P_{q_s}\)">\(y_s\in P_{q_s}\)</span>, and let <span class="math" data-tex="\(q_0=\max_sq_s\)">\(q_0=\max_sq_s\)</span>. For <span class="math" data-tex="\(q\ge q_0\)">\(q\ge q_0\)</span> all <span class="math" data-tex="\(y_s\)">\(y_s\)</span> lie in <span class="math" data-tex="\(P_q\)">\(P_q\)</span>, and for <span class="math" data-tex="\(x\)">\(x\)</span> in the unit
+ball of <span class="math" data-tex="\(N\)">\(N\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> as above,
+<span class="math math-display" data-tex="\[
+\|x-y_s\|_2\le\|x-x_s\|+\|x_s-y_s\|_2&lt;\delta .
+\]">\[
+\|x-y_s\|_2\le\|x-x_s\|+\|x_s-y_s\|_2&lt;\delta .
+\]</span>
+(b) Let <span class="math" data-tex="\(n=\dim N\)">\(n=\dim N\)</span>, take <span class="math" data-tex="\(\delta\)">\(\delta\)</span> from Theorem 1.3 for <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and apply (a). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (Kolmogorov–Sinai theorem).</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and
+<span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> finite-dimensional subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span> whose union is weakly dense in <span class="math" data-tex="\(R\)">\(R\)</span>.
+Then for every <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>
+<span class="math math-display" data-tex="\[
+H(\theta)=\lim_{q\to\infty}H(P_q,\theta)=\sup_qH(P_q,\theta).
+\]">\[
+H(\theta)=\lim_{q\to\infty}H(P_q,\theta)=\sup_qH(P_q,\theta).
+\]</span></p>
+<p><em>Reference:</em> [Connes–Størmer 1975, Section 4].</p>
+<p><strong>Proof.</strong> By Proposition 3.3(b) the sequence <span class="math" data-tex="\(H(P_q,\theta)\)">\(H(P_q,\theta)\)</span> is increasing, so its limit is its supremum, and this
+is at most <span class="math" data-tex="\(H(\theta)\)">\(H(\theta)\)</span>. Conversely, let <span class="math" data-tex="\(N\)">\(N\)</span> be finite-dimensional and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. By Lemma 4.1(b) there is
+<span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(H(N\mid P_q)&lt;\varepsilon\)">\(H(N\mid P_q)&lt;\varepsilon\)</span>, and Proposition 3.3(c) gives
+<span class="math math-display" data-tex="\[
+H(N,\theta)\le H(P_q,\theta)+\varepsilon\le\sup_qH(P_q,\theta)+\varepsilon .
+\]">\[
+H(N,\theta)\le H(P_q,\theta)+\varepsilon\le\sup_qH(P_q,\theta)+\varepsilon .
+\]</span>
+Since <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> are arbitrary, <span class="math" data-tex="\(H(\theta)\le\sup_qH(P_q,\theta)\)">\(H(\theta)\le\sup_qH(P_q,\theta)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 4.3 (where the hypothesis holds).</strong> We call a finite tracial algebra with such a sequence <span class="math" data-tex="\((P_q)\)">\((P_q)\)</span>
+<em>approximately finite-dimensional</em>. Examples:</p>
+<ul>
+<li>every finite-dimensional <span class="math" data-tex="\(R\)">\(R\)</span> (take <span class="math" data-tex="\(P_q=R\)">\(P_q=R\)</span>);</li>
+<li>the hyperfinite II₁ factor, which is the weak closure of <span class="math" data-tex="\(M_2\subset M_2\otimes M_2\subset\cdots\)">\(M_2\subset M_2\otimes M_2\subset\cdots\)</span>;</li>
+<li>every abelian <span class="math" data-tex="\(A\)">\(A\)</span> with separable predual: it is generated by a sequence of projections <span class="math" data-tex="\(f_1,f_2,\dots\)">\(f_1,f_2,\dots\)</span>, and
+<span class="math" data-tex="\(P_q\)">\(P_q\)</span>, the algebra generated by <span class="math" data-tex="\(f_1,\dots,f_q\)">\(f_1,\dots,f_q\)</span>, is finite-dimensional;</li>
+<li>the centralizers of product states studied in Section 5 (Theorem 5.7), which include the infinite tensor products
+of finite-dimensional algebras with faithful tracial states.</li>
+</ul>
+<p>Without such a sequence the statement has no content, and the theorem cannot even be formulated. Theorem 4.2 does not
+need <span class="math" data-tex="\(R\)">\(R\)</span> to be a factor, nor of type II₁.</p>
+<p><strong>Remark 4.4 (generators).</strong> In the classical theory one has more: if <span class="math" data-tex="\(N\)">\(N\)</span> generates under <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, that is, the
+algebras <span class="math" data-tex="\(\theta^k(N)\)">\(\theta^k(N)\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>, together generate everything, then <span class="math" data-tex="\(h(\theta)=h(N,\theta)\)">\(h(\theta)=h(N,\theta)\)</span>. The proof
+uses the two-sided windows <span class="math" data-tex="\(N_q=\theta^{-q}(N)\vee\dots\vee\theta^q(N)\)">\(N_q=\theta^{-q}(N)\vee\dots\vee\theta^q(N)\)</span>, which increase to everything. One-sided
+joins <span class="math" data-tex="\(N\vee\theta(N)\vee\dots\vee\theta^q(N)\)">\(N\vee\theta(N)\vee\dots\vee\theta^q(N)\)</span> need not: for the bilateral Bernoulli shift on
+<span class="math" data-tex="\(\{0,1\}^{\mathbb Z}\)">\(\{0,1\}^{\mathbb Z}\)</span>, the partition by the zeroth coordinate generates under all integer powers of the shift, but
+its joins with forward iterates involve only the coordinates on one side of <span class="math" data-tex="\(0\)">\(0\)</span>. Two facts give
+<span class="math" data-tex="\(h(N_q,\theta)=h(N,\theta)\)">\(h(N_q,\theta)=h(N,\theta)\)</span>. First, <span class="math" data-tex="\(h(\theta^{-q}(P),\theta)=h(P,\theta)\)">\(h(\theta^{-q}(P),\theta)=h(P,\theta)\)</span>, because <span class="math" data-tex="\(\theta^{-q}\)">\(\theta^{-q}\)</span> commutes with
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span> and preserves entropy. Second, <span class="math" data-tex="\(h(P\vee\theta(P)\vee\dots\vee\theta^m(P),\theta)=h(P,\theta)\)">\(h(P\vee\theta(P)\vee\dots\vee\theta^m(P),\theta)=h(P,\theta)\)</span>: the join of
+the <span class="math" data-tex="\(\theta^j\)">\(\theta^j\)</span>-images, <span class="math" data-tex="\(0\le j&lt;n\)">\(0\le j&lt;n\)</span>, of this window is <span class="math" data-tex="\(P\vee\theta(P)\vee\dots\vee\theta^{n+m-1}(P)\)">\(P\vee\theta(P)\vee\dots\vee\theta^{n+m-1}(P)\)</span>, and its
+entropy divided by <span class="math" data-tex="\(n\)">\(n\)</span> has the same limit as when divided by <span class="math" data-tex="\(n+m\)">\(n+m\)</span>. Since
+<span class="math" data-tex="\(N_q=\theta^{-q}\big(N\vee\theta(N)\vee\dots\vee\theta^{2q}(N)\big)\)">\(N_q=\theta^{-q}\big(N\vee\theta(N)\vee\dots\vee\theta^{2q}(N)\big)\)</span>, both facts give <span class="math" data-tex="\(h(N_q,\theta)=h(N,\theta)\)">\(h(N_q,\theta)=h(N,\theta)\)</span>,
+and the Kolmogorov–Sinai theorem (the abelian case of Theorem 4.2) gives <span class="math" data-tex="\(h(\theta)=\lim_qh(N_q,\theta)=h(N,\theta)\)">\(h(\theta)=\lim_qh(N_q,\theta)=h(N,\theta)\)</span>.
+In the noncommutative setting the joins need not exist
+(Example 2.4). When the algebras generated by <span class="math" data-tex="\(\theta^{-q}(N),\dots,\theta^q(N)\)">\(\theta^{-q}(N),\dots,\theta^q(N)\)</span> are finite-dimensional, Theorem 4.2
+still applies to them, but computing <span class="math" data-tex="\(H\)">\(H\)</span> of these algebras requires an extra argument. Section 6 supplies it for
+shifts.</p>
+<h2 id="5-infinite-tensor-products-and-centralizers">5. Infinite tensor products and centralizers</h2>
+<p>This section is pure operator algebra; entropy returns in Section 6.</p>
+<h3 id="5-1-the-construction">5.1 The construction</h3>
+<p>Fix a C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span> of finite dimension and a faithful state <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>. Write
+<span class="math" data-tex="\(\psi=\operatorname{Tr}(\rho\,\cdot\,)\)">\(\psi=\operatorname{Tr}(\rho\,\cdot\,)\)</span> with <span class="math" data-tex="\(\rho\)">\(\rho\)</span> invertible (B1), and fix pairwise orthogonal minimal projections
+<span class="math" data-tex="\(e_1,\dots,e_d\)">\(e_1,\dots,e_d\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> with sum <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\rho=\sum_j\lambda_je_j\)">\(\rho=\sum_j\lambda_je_j\)</span>. Then <span class="math" data-tex="\(\lambda_j=\operatorname{Tr}(\rho e_j)=
+\psi(e_j)&gt;0\)">\(\lambda_j=\operatorname{Tr}(\rho e_j)=
+\psi(e_j)&gt;0\)</span> and <span class="math" data-tex="\(\sum_j\lambda_j=1\)">\(\sum_j\lambda_j=1\)</span>. The <em>von Neumann entropy</em> of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is
+<span class="math math-display" data-tex="\[
+S(\psi)=\operatorname{Tr}\eta(\rho)=\sum_{j=1}^d\eta(\lambda_j).\tag{5.1}
+\]">\[
+S(\psi)=\operatorname{Tr}\eta(\rho)=\sum_{j=1}^d\eta(\lambda_j).\tag{5.1}
+\]</span>
+Let <span class="math" data-tex="\(D=\operatorname{span}\{e_1,\dots,e_d\}\)">\(D=\operatorname{span}\{e_1,\dots,e_d\}\)</span>, an abelian subalgebra of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>For a finite interval <span class="math" data-tex="\(I\subset\mathbb Z\)">\(I\subset\mathbb Z\)</span> put <span class="math" data-tex="\(B_I=\bigotimes_{\nu\in I}B\)">\(B_I=\bigotimes_{\nu\in I}B\)</span>, with the product state
+<span class="math" data-tex="\(\psi_I=\bigotimes_{\nu\in I}\psi\)">\(\psi_I=\bigotimes_{\nu\in I}\psi\)</span>, the canonical trace <span class="math" data-tex="\(\operatorname{Tr}_I\)">\(\operatorname{Tr}_I\)</span> and
+<span class="math" data-tex="\(\rho_I=\bigotimes_{\nu\in I}\rho\)">\(\rho_I=\bigotimes_{\nu\in I}\rho\)</span>. Then <span class="math" data-tex="\(\psi_I=\operatorname{Tr}_I(\rho_I\,\cdot\,)\)">\(\psi_I=\operatorname{Tr}_I(\rho_I\,\cdot\,)\)</span> and <span class="math" data-tex="\(\rho_I\)">\(\rho_I\)</span> is invertible. Let
+<span class="math" data-tex="\(D_I=\bigotimes_{\nu\in I}D\subset B_I\)">\(D_I=\bigotimes_{\nu\in I}D\subset B_I\)</span>. For intervals <span class="math" data-tex="\(I\subset J\)">\(I\subset J\)</span>, identify <span class="math" data-tex="\(B_I\)">\(B_I\)</span> with
+<span class="math" data-tex="\(B_I\otimes1\subset B_J=B_I\otimes B_{J\setminus I}\)">\(B_I\otimes1\subset B_J=B_I\otimes B_{J\setminus I}\)</span> (after reordering tensor factors). Then
+<span class="math math-display" data-tex="\[
+\rho_J=\rho_I\otimes \rho_{J\setminus I},\qquad \psi_J(x\otimes1)=\psi_I(x),\qquad D_I\subset D_J .
+\]">\[
+\rho_J=\rho_I\otimes \rho_{J\setminus I},\qquad \psi_J(x\otimes1)=\psi_I(x),\qquad D_I\subset D_J .
+\]</span>
+Let <span class="math" data-tex="\(A=\bigcup_IB_I\)">\(A=\bigcup_IB_I\)</span>, a unital <span class="math" data-tex="\(*\)">\(*\)</span>-algebra in which each <span class="math" data-tex="\(B_I\)">\(B_I\)</span> is a C*-algebra of finite dimension, and let
+<span class="math" data-tex="\(\psi_\infty\)">\(\psi_\infty\)</span> be the state on <span class="math" data-tex="\(A\)">\(A\)</span> that restricts to <span class="math" data-tex="\(\psi_I\)">\(\psi_I\)</span> on each <span class="math" data-tex="\(B_I\)">\(B_I\)</span>.</p>
+<p>Because each <span class="math" data-tex="\(\psi_I\)">\(\psi_I\)</span> is faithful, <span class="math" data-tex="\(\langle a,b\rangle=\psi_\infty(b^*a)\)">\(\langle a,b\rangle=\psi_\infty(b^*a)\)</span> is an inner product on <span class="math" data-tex="\(A\)">\(A\)</span>. Let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>
+be the completion and <span class="math" data-tex="\(\Omega\in\mathcal H\)">\(\Omega\in\mathcal H\)</span> the vector given by <span class="math" data-tex="\(1\in A\)">\(1\in A\)</span>. For <span class="math" data-tex="\(x,a\in B_J\)">\(x,a\in B_J\)</span> we have <span class="math" data-tex="\(x^*x\le\|x\|^21\)">\(x^*x\le\|x\|^21\)</span> in
+the C*-algebra <span class="math" data-tex="\(B_J\)">\(B_J\)</span>, so <span class="math" data-tex="\(\psi_J(a^*x^*xa)\le\|x\|^2\psi_J(a^*a)\)">\(\psi_J(a^*x^*xa)\le\|x\|^2\psi_J(a^*a)\)</span>. Hence left multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> extends to a
+bounded operator <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> with <span class="math" data-tex="\(\|\pi(x)\|\le\|x\|\)">\(\|\pi(x)\|\le\|x\|\)</span>, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism of <span class="math" data-tex="\(A\)">\(A\)</span>.
+It is injective, because <span class="math" data-tex="\(\pi(x)\Omega=0\)">\(\pi(x)\Omega=0\)</span> forces <span class="math" data-tex="\(\psi_J(x^*x)=0\)">\(\psi_J(x^*x)=0\)</span>. We usually write <span class="math" data-tex="\(x\)">\(x\)</span> for <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span>. Define
+<span class="math math-display" data-tex="\[
+M=\pi(A)&#x27;&#x27;,\qquad \varphi(x)=\langle x\Omega,\Omega\rangle\ (x\in M),\qquad M_I=\pi(B_I).
+\]">\[
+M=\pi(A)&#x27;&#x27;,\qquad \varphi(x)=\langle x\Omega,\Omega\rangle\ (x\in M),\qquad M_I=\pi(B_I).
+\]</span>
+The pair <span class="math" data-tex="\((M,\varphi)\)">\((M,\varphi)\)</span> is the <em>infinite tensor product</em> <span class="math" data-tex="\(\bigotimes_{\nu\in\mathbb Z}(B,\psi)\)">\(\bigotimes_{\nu\in\mathbb Z}(B,\psi)\)</span>. The state
+<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is normal, <span class="math" data-tex="\(\varphi\circ\pi=\psi_\infty\)">\(\varphi\circ\pi=\psi_\infty\)</span>, and <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is separable because <span class="math" data-tex="\(A\)">\(A\)</span> has countable dimension.</p>
+<p><strong>Lemma 5.1.</strong></p>
+<ul>
+<li>(a) <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is cyclic for <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Hence <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating for <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is faithful.</li>
+<li>(b) (Product property.) If <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are disjoint finite intervals, <span class="math" data-tex="\(x\in M_I\)">\(x\in M_I\)</span> and <span class="math" data-tex="\(y\in M_J\)">\(y\in M_J\)</span>, then
+<span class="math" data-tex="\(\varphi(xy)=\varphi(x)\varphi(y)\)">\(\varphi(xy)=\varphi(x)\varphi(y)\)</span>.</li>
+<li>(c) (Eigenoperators.) Let <span class="math" data-tex="\(y\in B_I\)">\(y\in B_I\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with <span class="math" data-tex="\(\rho_Iy\rho_I^{-1}=cy\)">\(\rho_Iy\rho_I^{-1}=cy\)</span>. Then
+<span class="math" data-tex="\(\varphi(yw)=c\,\varphi(wy)\)">\(\varphi(yw)=c\,\varphi(wy)\)</span> for all <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) Let <span class="math" data-tex="\(y\in B_I\)">\(y\in B_I\)</span> and put <span class="math" data-tex="\(c_y=\|\rho_I^{-1/2}y\rho_I^{1/2}\|\)">\(c_y=\|\rho_I^{-1/2}y\rho_I^{1/2}\|\)</span>. For an interval <span class="math" data-tex="\(J\supset I\)">\(J\supset I\)</span>,
+<span class="math" data-tex="\(\rho_J^{-1/2}y\rho_J^{1/2}=(\rho_I^{-1/2}y\rho_I^{1/2})\otimes1\)">\(\rho_J^{-1/2}y\rho_J^{1/2}=(\rho_I^{-1/2}y\rho_I^{1/2})\otimes1\)</span> also has norm <span class="math" data-tex="\(c_y\)">\(c_y\)</span>. Writing
+<span class="math" data-tex="\(z=\rho_J^{-1/2}y\rho_J^{1/2}\)">\(z=\rho_J^{-1/2}y\rho_J^{1/2}\)</span> we get <span class="math" data-tex="\(y\rho_Jy^*=\rho_J^{1/2}zz^*\rho_J^{1/2}\le c_y^2\rho_J\)">\(y\rho_Jy^*=\rho_J^{1/2}zz^*\rho_J^{1/2}\le c_y^2\rho_J\)</span>. Hence for <span class="math" data-tex="\(w\in B_J\)">\(w\in B_J\)</span>
+<span class="math math-display" data-tex="\[
+\psi_J(y^*w^*wy)=\operatorname{Tr}_J(wy\rho_Jy^*w^*)\le c_y^2\operatorname{Tr}_J(w\rho_Jw^*)=c_y^2\psi_J(w^*w).
+\]">\[
+\psi_J(y^*w^*wy)=\operatorname{Tr}_J(wy\rho_Jy^*w^*)\le c_y^2\operatorname{Tr}_J(w\rho_Jw^*)=c_y^2\psi_J(w^*w).
+\]</span>
+So <span class="math" data-tex="\(w\Omega\mapsto wy\Omega\)">\(w\Omega\mapsto wy\Omega\)</span> extends to a bounded operator <span class="math" data-tex="\(r(y)\)">\(r(y)\)</span> on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. It commutes with every <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span>,
+<span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, because <span class="math" data-tex="\(x(wy)=(xw)y\)">\(x(wy)=(xw)y\)</span>. Thus <span class="math" data-tex="\(r(y)\in\pi(A)&#x27;=M&#x27;\)">\(r(y)\in\pi(A)&#x27;=M&#x27;\)</span>, and <span class="math" data-tex="\(r(y)\Omega=y\Omega\)">\(r(y)\Omega=y\Omega\)</span>. Therefore
+<span class="math" data-tex="\(M&#x27;\Omega\supset\pi(A)\Omega\)">\(M&#x27;\Omega\supset\pi(A)\Omega\)</span> is dense. If <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> and <span class="math" data-tex="\(x\Omega=0\)">\(x\Omega=0\)</span>, then <span class="math" data-tex="\(xr\Omega=rx\Omega=0\)">\(xr\Omega=rx\Omega=0\)</span> for all
+<span class="math" data-tex="\(r\in M&#x27;\)">\(r\in M&#x27;\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Finally <span class="math" data-tex="\(\varphi(x^*x)=\|x\Omega\|^2\)">\(\varphi(x^*x)=\|x\Omega\|^2\)</span>.</p>
+<p>(b) Let <span class="math" data-tex="\(K\)">\(K\)</span> be an interval containing <span class="math" data-tex="\(I\cup J\)">\(I\cup J\)</span>. In <span class="math" data-tex="\(B_K\)">\(B_K\)</span> the product <span class="math" data-tex="\(xy\)">\(xy\)</span> is the elementary tensor
+<span class="math" data-tex="\(x\otimes y\otimes1\)">\(x\otimes y\otimes1\)</span>, and <span class="math" data-tex="\(\psi_K\)">\(\psi_K\)</span> is a product state, so <span class="math" data-tex="\(\psi_K(xy)=\psi_I(x)\psi_J(y)\)">\(\psi_K(xy)=\psi_I(x)\psi_J(y)\)</span>.</p>
+<p>(c) First let <span class="math" data-tex="\(w\in B_J\)">\(w\in B_J\)</span> with <span class="math" data-tex="\(J\supset I\)">\(J\supset I\)</span>. Then <span class="math" data-tex="\(\rho_Jy\rho_J^{-1}=(\rho_Iy\rho_I^{-1})\otimes1=cy\)">\(\rho_Jy\rho_J^{-1}=(\rho_Iy\rho_I^{-1})\otimes1=cy\)</span>, so
+<span class="math math-display" data-tex="\[
+\psi_J(yw)=\operatorname{Tr}_J(\rho_Jyw)=c\operatorname{Tr}_J(y\rho_Jw)=c\operatorname{Tr}_J(\rho_Jwy)=c\,\psi_J(wy).
+\]">\[
+\psi_J(yw)=\operatorname{Tr}_J(\rho_Jyw)=c\operatorname{Tr}_J(y\rho_Jw)=c\operatorname{Tr}_J(\rho_Jwy)=c\,\psi_J(wy).
+\]</span>
+Both <span class="math" data-tex="\(w\mapsto\varphi(yw)=\langle w\Omega,y^*\Omega\rangle\)">\(w\mapsto\varphi(yw)=\langle w\Omega,y^*\Omega\rangle\)</span> and <span class="math" data-tex="\(w\mapsto\varphi(wy)=\langle wy\Omega,\Omega\rangle\)">\(w\mapsto\varphi(wy)=\langle wy\Omega,\Omega\rangle\)</span> are
+weakly continuous, and <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is weakly dense in <span class="math" data-tex="\(M\)">\(M\)</span> (B3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-2-automorphisms-of-the-tensor-product">5.2 Automorphisms of the tensor product</h3>
+<p><strong>Lemma 5.2 (the shift).</strong> There is an automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(\varphi\circ\alpha=\varphi\)">\(\varphi\circ\alpha=\varphi\)</span> and
+<span class="math" data-tex="\(\alpha(\pi(x))=\pi(s(x))\)">\(\alpha(\pi(x))=\pi(s(x))\)</span> for <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, where <span class="math" data-tex="\(s\)">\(s\)</span> is the automorphism of <span class="math" data-tex="\(A\)">\(A\)</span> that moves the tensor factor at
+site <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to site <span class="math" data-tex="\(\nu+1\)">\(\nu+1\)</span>. In particular <span class="math" data-tex="\(\alpha(M_I)=M_{I+1}\)">\(\alpha(M_I)=M_{I+1}\)</span> and <span class="math" data-tex="\(\alpha(\pi(D_I))=\pi(D_{I+1})\)">\(\alpha(\pi(D_I))=\pi(D_{I+1})\)</span>.</p>
+<p><strong>Proof.</strong> Since all sites carry the same <span class="math" data-tex="\((B,\psi)\)">\((B,\psi)\)</span>, <span class="math" data-tex="\(\psi_\infty\circ s=\psi_\infty\)">\(\psi_\infty\circ s=\psi_\infty\)</span>. So
+<span class="math" data-tex="\(U(a\Omega)=s(a)\Omega\)">\(U(a\Omega)=s(a)\Omega\)</span> defines an isometry with dense range, that is, a unitary on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, with <span class="math" data-tex="\(U\Omega=\Omega\)">\(U\Omega=\Omega\)</span>
+and <span class="math" data-tex="\(U\pi(x)U^*=\pi(s(x))\)">\(U\pi(x)U^*=\pi(s(x))\)</span>. The automorphism <span class="math" data-tex="\(\operatorname{Ad}U\)">\(\operatorname{Ad}U\)</span> of <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span> maps <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> onto <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>, hence
+its weak closure <span class="math" data-tex="\(M\)">\(M\)</span> onto <span class="math" data-tex="\(M\)">\(M\)</span>. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be its restriction. Then
+<span class="math" data-tex="\(\varphi(\alpha(x))=\langle xU^*\Omega,U^*\Omega\rangle=\varphi(x)\)">\(\varphi(\alpha(x))=\langle xU^*\Omega,U^*\Omega\rangle=\varphi(x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3 (permutations).</strong> Let <span class="math" data-tex="\(B=M_n\)">\(B=M_n\)</span>, let <span class="math" data-tex="\(K\)">\(K\)</span> be a finite interval and <span class="math" data-tex="\(g\)">\(g\)</span> a bijection of <span class="math" data-tex="\(K\)">\(K\)</span>. There is a
+unitary <span class="math" data-tex="\(V_g\in B_K\)">\(V_g\in B_K\)</span> that commutes with <span class="math" data-tex="\(\rho_K\)">\(\rho_K\)</span> and satisfies
+<span class="math" data-tex="\(V_g\big(\bigotimes_{\nu\in K}b_\nu\big)V_g^*=\bigotimes_{\nu\in K}b_{g^{-1}(\nu)}\)">\(V_g\big(\bigotimes_{\nu\in K}b_\nu\big)V_g^*=\bigotimes_{\nu\in K}b_{g^{-1}(\nu)}\)</span>. The automorphism
+<span class="math" data-tex="\(\beta=\operatorname{Ad}\pi(V_g)\)">\(\beta=\operatorname{Ad}\pi(V_g)\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> satisfies <span class="math" data-tex="\(\varphi\circ\beta=\varphi\)">\(\varphi\circ\beta=\varphi\)</span>, and
+<span class="math" data-tex="\(\beta(M_I)=M_{g(I)}\)">\(\beta(M_I)=M_{g(I)}\)</span> whenever <span class="math" data-tex="\(I\subset K\)">\(I\subset K\)</span> and <span class="math" data-tex="\(g(I)\)">\(g(I)\)</span> are intervals.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(B_K\)">\(B_K\)</span> is the algebra of operators on <span class="math" data-tex="\((\mathbb C^n)^{\otimes K}\)">\((\mathbb C^n)^{\otimes K}\)</span>. Let <span class="math" data-tex="\(V_g\)">\(V_g\)</span> permute tensor factors
+of vectors, <span class="math" data-tex="\(V_g(\bigotimes_\nu\xi_\nu)=\bigotimes_\nu\xi_{g^{-1}(\nu)}\)">\(V_g(\bigotimes_\nu\xi_\nu)=\bigotimes_\nu\xi_{g^{-1}(\nu)}\)</span>. Then
+<span class="math" data-tex="\(V_g^*(\bigotimes_\nu\zeta_\nu)=\bigotimes_\nu\zeta_{g(\nu)}\)">\(V_g^*(\bigotimes_\nu\zeta_\nu)=\bigotimes_\nu\zeta_{g(\nu)}\)</span>, and a direct evaluation on elementary tensors gives the
+stated formula. Since all tensor factors of <span class="math" data-tex="\(\rho_K=\rho^{\otimes K}\)">\(\rho_K=\rho^{\otimes K}\)</span> are equal, <span class="math" data-tex="\(V_g\rho_KV_g^*=\rho_K\)">\(V_g\rho_KV_g^*=\rho_K\)</span>. For an interval
+<span class="math" data-tex="\(J\supset K\)">\(J\supset K\)</span> and <span class="math" data-tex="\(w\in B_J\)">\(w\in B_J\)</span>, with <span class="math" data-tex="\(V=V_g\otimes1\)">\(V=V_g\otimes1\)</span> commuting with <span class="math" data-tex="\(\rho_J=\rho_K\otimes \rho_{J\setminus K}\)">\(\rho_J=\rho_K\otimes \rho_{J\setminus K}\)</span>,
+<span class="math math-display" data-tex="\[
+\psi_J(VwV^*)=\operatorname{Tr}_J(V^*\rho_JVw)=\psi_J(w).
+\]">\[
+\psi_J(VwV^*)=\operatorname{Tr}_J(V^*\rho_JVw)=\psi_J(w).
+\]</span>
+So the normal functionals <span class="math" data-tex="\(\varphi\circ\beta\)">\(\varphi\circ\beta\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> agree on the weakly dense algebra <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>, hence on
+<span class="math" data-tex="\(M\)">\(M\)</span>. The last statement follows from the formula for <span class="math" data-tex="\(V_g\)">\(V_g\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The next proposition is a zero–one law of Hewitt–Savage type: an element that is fixed by automorphisms moving any
+finite piece of the tensor product off itself is a scalar.</p>
+<p><strong>Proposition 5.4 (asymptotic independence).</strong> Let <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span>. Suppose that for every finite interval <span class="math" data-tex="\(I\)">\(I\)</span> there are
+a finite interval <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> disjoint from <span class="math" data-tex="\(I\)">\(I\)</span> and an automorphism <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(\varphi\circ\beta=\varphi\)">\(\varphi\circ\beta=\varphi\)</span>,
+<span class="math" data-tex="\(\beta(z)=z\)">\(\beta(z)=z\)</span> and <span class="math" data-tex="\(\beta(M_I)\subset M_{I&#x27;}\)">\(\beta(M_I)\subset M_{I&#x27;}\)</span>. Then <span class="math" data-tex="\(z\in\mathbb C1\)">\(z\in\mathbb C1\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. By the Kaplansky density theorem there is <span class="math" data-tex="\(a\in\pi(A)\)">\(a\in\pi(A)\)</span> with <span class="math" data-tex="\(\|a\|\le\|z\|\)">\(\|a\|\le\|z\|\)</span> and
+<span class="math" data-tex="\(\|(z-a)\Omega\|&lt;\varepsilon\)">\(\|(z-a)\Omega\|&lt;\varepsilon\)</span>; say <span class="math" data-tex="\(a\in M_I\)">\(a\in M_I\)</span>. Take <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> for this <span class="math" data-tex="\(I\)">\(I\)</span> and put <span class="math" data-tex="\(a&#x27;=\beta(a)\in
+M_{I&#x27;}\)">\(a&#x27;=\beta(a)\in
+M_{I&#x27;}\)</span>. For <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>, <span class="math" data-tex="\(\|\beta(w)\Omega\|^2=\varphi(\beta(w^*w))=\|w\Omega\|^2\)">\(\|\beta(w)\Omega\|^2=\varphi(\beta(w^*w))=\|w\Omega\|^2\)</span>, so
+<span class="math" data-tex="\(\|(z-a&#x27;)\Omega\|=\|(z-a)\Omega\|&lt;\varepsilon\)">\(\|(z-a&#x27;)\Omega\|=\|(z-a)\Omega\|&lt;\varepsilon\)</span>. Now
+<span class="math math-display" data-tex="\[
+\big|\varphi(z^*z)-\varphi(a^*a&#x27;)\big|=\big|\langle z\Omega,z\Omega\rangle-\langle a&#x27;\Omega,a\Omega\rangle\big|
+\le|\langle(z-a&#x27;)\Omega,z\Omega\rangle|+|\langle a&#x27;\Omega,(z-a)\Omega\rangle|\le2\varepsilon\|z\|.
+\]">\[
+\big|\varphi(z^*z)-\varphi(a^*a&#x27;)\big|=\big|\langle z\Omega,z\Omega\rangle-\langle a&#x27;\Omega,a\Omega\rangle\big|
+\le|\langle(z-a&#x27;)\Omega,z\Omega\rangle|+|\langle a&#x27;\Omega,(z-a)\Omega\rangle|\le2\varepsilon\|z\|.
+\]</span>
+By Lemma 5.1(b) and <span class="math" data-tex="\(\varphi\circ\beta=\varphi\)">\(\varphi\circ\beta=\varphi\)</span>, <span class="math" data-tex="\(\varphi(a^*a&#x27;)=\varphi(a^*)\varphi(\beta(a))=|\varphi(a)|^2\)">\(\varphi(a^*a&#x27;)=\varphi(a^*)\varphi(\beta(a))=|\varphi(a)|^2\)</span>. Also
+<span class="math" data-tex="\(|\varphi(a)-\varphi(z)|\le\|(a-z)\Omega\|&lt;\varepsilon\)">\(|\varphi(a)-\varphi(z)|\le\|(a-z)\Omega\|&lt;\varepsilon\)</span>, and <span class="math" data-tex="\(|\varphi(a)|,|\varphi(z)|\le\|z\|\)">\(|\varphi(a)|,|\varphi(z)|\le\|z\|\)</span>, so
+<span class="math" data-tex="\(\big||\varphi(a)|^2-|\varphi(z)|^2\big|\le2\varepsilon\|z\|\)">\(\big||\varphi(a)|^2-|\varphi(z)|^2\big|\le2\varepsilon\|z\|\)</span>. Hence
+<span class="math" data-tex="\(|\varphi(z^*z)-|\varphi(z)|^2|\le4\varepsilon\|z\|\)">\(|\varphi(z^*z)-|\varphi(z)|^2|\le4\varepsilon\|z\|\)</span> for every <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and
+<span class="math math-display" data-tex="\[
+\|(z-\varphi(z)1)\Omega\|^2=\varphi(z^*z)-|\varphi(z)|^2=0 .
+\]">\[
+\|(z-\varphi(z)1)\Omega\|^2=\varphi(z^*z)-|\varphi(z)|^2=0 .
+\]</span>
+Since <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating (Lemma 5.1(a)), <span class="math" data-tex="\(z=\varphi(z)1\)">\(z=\varphi(z)1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-3-the-centralizer">5.3 The centralizer</h3>
+<p><strong>Definition 5.5.</strong> The <em>centralizer</em> of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is the set <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> of all <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> such that
+<span class="math" data-tex="\(\varphi(xw)=\varphi(wx)\)">\(\varphi(xw)=\varphi(wx)\)</span> for all <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>. For a finite interval <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(F_I\)">\(F_I\)</span> denotes the set of those <span class="math" data-tex="\(x\in B_I\)">\(x\in B_I\)</span>
+with <span class="math" data-tex="\(x\rho_I=\rho_Ix\)">\(x\rho_I=\rho_Ix\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\operatorname{Tr}_I\)">\(\operatorname{Tr}_I\)</span> is a faithful trace, <span class="math" data-tex="\(\psi_I(xy)=\psi_I(yx)\)">\(\psi_I(xy)=\psi_I(yx)\)</span> for all <span class="math" data-tex="\(y\in B_I\)">\(y\in B_I\)</span> if and only if
+<span class="math" data-tex="\(\operatorname{Tr}_I((\rho_Ix-x\rho_I)y)=0\)">\(\operatorname{Tr}_I((\rho_Ix-x\rho_I)y)=0\)</span> for all <span class="math" data-tex="\(y\)">\(y\)</span>, that is, <span class="math" data-tex="\(x\in F_I\)">\(x\in F_I\)</span>. So <span class="math" data-tex="\(F_I\)">\(F_I\)</span> is the centralizer of
+<span class="math" data-tex="\(\psi_I\)">\(\psi_I\)</span> in <span class="math" data-tex="\(B_I\)">\(B_I\)</span>.</p>
+<p><strong>Lemma 5.6.</strong></p>
+<ul>
+<li>(a) <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is a von Neumann algebra on <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, and <span class="math" data-tex="\(\tau=\varphi|_{M_\varphi}\)">\(\tau=\varphi|_{M_\varphi}\)</span> is a faithful normal tracial
+state on it.</li>
+<li>(b) <span class="math" data-tex="\(D_I\subset F_I\)">\(D_I\subset F_I\)</span>, <span class="math" data-tex="\(F_I\subset F_J\)">\(F_I\subset F_J\)</span> for <span class="math" data-tex="\(I\subset J\)">\(I\subset J\)</span>, and <span class="math" data-tex="\(\pi(F_I)\subset M_\varphi\)">\(\pi(F_I)\subset M_\varphi\)</span>.</li>
+<li>(c) <span class="math" data-tex="\(\alpha(M_\varphi)=M_\varphi\)">\(\alpha(M_\varphi)=M_\varphi\)</span>, <span class="math" data-tex="\(\alpha(\pi(F_I))=\pi(F_{I+1})\)">\(\alpha(\pi(F_I))=\pi(F_{I+1})\)</span> and <span class="math" data-tex="\(\alpha(\pi(D_I))=\pi(D_{I+1})\)">\(\alpha(\pi(D_I))=\pi(D_{I+1})\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) For fixed <span class="math" data-tex="\(w\)">\(w\)</span>, the maps <span class="math" data-tex="\(x\mapsto\varphi(xw)=\langle x(w\Omega),\Omega\rangle\)">\(x\mapsto\varphi(xw)=\langle x(w\Omega),\Omega\rangle\)</span> and
+<span class="math" data-tex="\(x\mapsto\varphi(wx)=\langle x\Omega,w^*\Omega\rangle\)">\(x\mapsto\varphi(wx)=\langle x\Omega,w^*\Omega\rangle\)</span> are weakly continuous on <span class="math" data-tex="\(B(\mathcal H)\)">\(B(\mathcal H)\)</span>, so <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is weakly
+closed. It contains <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(x,x&#x27;\in M_\varphi\)">\(x,x&#x27;\in M_\varphi\)</span>, then <span class="math" data-tex="\(\varphi(xx&#x27;w)=\varphi(x&#x27;wx)=\varphi(wxx&#x27;)\)">\(\varphi(xx&#x27;w)=\varphi(x&#x27;wx)=\varphi(wxx&#x27;)\)</span>, and
+<span class="math" data-tex="\(\varphi(x^*w)=\overline{\varphi(w^*x)}=\overline{\varphi(xw^*)}=\varphi(wx^*)\)">\(\varphi(x^*w)=\overline{\varphi(w^*x)}=\overline{\varphi(xw^*)}=\varphi(wx^*)\)</span>. So <span class="math" data-tex="\(M_\varphi\)">\(M_\varphi\)</span> is a von Neumann
+algebra; the state <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is tracial by definition, and normal and faithful by Lemma 5.1(a).</p>
+<p>(b) The elements of <span class="math" data-tex="\(D_I\)">\(D_I\)</span> are linear combinations of tensor products of the <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, which commute with <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, so
+they commute with <span class="math" data-tex="\(\rho_I\)">\(\rho_I\)</span>. If <span class="math" data-tex="\(x\in F_I\)">\(x\in F_I\)</span>, then <span class="math" data-tex="\(x\otimes1\)">\(x\otimes1\)</span> commutes with <span class="math" data-tex="\(\rho_I\otimes \rho_{J\setminus I}=\rho_J\)">\(\rho_I\otimes \rho_{J\setminus I}=\rho_J\)</span>. For
+<span class="math" data-tex="\(x\in F_I\)">\(x\in F_I\)</span>, Lemma 5.1(c) with <span class="math" data-tex="\(c=1\)">\(c=1\)</span> gives <span class="math" data-tex="\(\varphi(xw)=\varphi(wx)\)">\(\varphi(xw)=\varphi(wx)\)</span> for all <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>.</p>
+<p>(c) For <span class="math" data-tex="\(x\in M_\varphi\)">\(x\in M_\varphi\)</span> and <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span>,
+<span class="math" data-tex="\(\varphi(\alpha(x)w)=\varphi(x\alpha^{-1}(w))=\varphi(\alpha^{-1}(w)x)=\varphi(w\alpha(x))\)">\(\varphi(\alpha(x)w)=\varphi(x\alpha^{-1}(w))=\varphi(\alpha^{-1}(w)x)=\varphi(w\alpha(x))\)</span>, so
+<span class="math" data-tex="\(\alpha(M_\varphi)\subset M_\varphi\)">\(\alpha(M_\varphi)\subset M_\varphi\)</span>; the same argument for <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span> gives equality. The shift <span class="math" data-tex="\(s\)">\(s\)</span> carries
+<span class="math" data-tex="\(\rho_I\)">\(\rho_I\)</span> to <span class="math" data-tex="\(\rho_{I+1}\)">\(\rho_{I+1}\)</span> (both are tensor powers of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>), hence <span class="math" data-tex="\(F_I\)">\(F_I\)</span> onto <span class="math" data-tex="\(F_{I+1}\)">\(F_{I+1}\)</span>, and <span class="math" data-tex="\(D_I\)">\(D_I\)</span> onto
+<span class="math" data-tex="\(D_{I+1}\)">\(D_{I+1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.7 (the centralizer is approximately finite-dimensional).</strong> Put <span class="math" data-tex="\(R=M_\varphi\)">\(R=M_\varphi\)</span>, <span class="math" data-tex="\(\tau=\varphi|_R\)">\(\tau=\varphi|_R\)</span> and
+<span class="math" data-tex="\(P_p=\pi(F_{[-p,p]})\)">\(P_p=\pi(F_{[-p,p]})\)</span>. Then <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> are finite-dimensional subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span> and
+<span class="math math-display" data-tex="\[
+R=\Big(\bigcup_pP_p\Big)&#x27;&#x27;.
+\]">\[
+R=\Big(\bigcup_pP_p\Big)&#x27;&#x27;.
+\]</span>
+Moreover, if <span class="math" data-tex="\(E_p\)">\(E_p\)</span> denotes the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving conditional expectation of <span class="math" data-tex="\(R\)">\(R\)</span> onto <span class="math" data-tex="\(P_p\)">\(P_p\)</span>, then
+<span class="math" data-tex="\(\|E_p(x)-x\|_2\to0\)">\(\|E_p(x)-x\|_2\to0\)</span> for every <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>.</p>
+<p><strong>Proof.</strong> The <span class="math" data-tex="\(P_p\)">\(P_p\)</span> are increasing subalgebras of <span class="math" data-tex="\(R\)">\(R\)</span> by Lemma 5.6(b). Let <span class="math" data-tex="\(K\)">\(K\)</span> be the closure of
+<span class="math" data-tex="\(\bigcup_pP_p\Omega\)">\(\bigcup_pP_p\Omega\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> the orthogonal projection onto <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Step 1: vectors orthogonal to <span class="math" data-tex="\(R\Omega\)">\(R\Omega\)</span>.</em> Let <span class="math" data-tex="\(a\in B_{[-p,p]}\)">\(a\in B_{[-p,p]}\)</span> and write <span class="math" data-tex="\(\rho_{[-p,p]}=\sum_\mu\mu G_\mu\)">\(\rho_{[-p,p]}=\sum_\mu\mu G_\mu\)</span> with
+spectral projections <span class="math" data-tex="\(G_\mu\in B_{[-p,p]}\)">\(G_\mu\in B_{[-p,p]}\)</span> (all <span class="math" data-tex="\(\mu&gt;0\)">\(\mu&gt;0\)</span>). Then
+<span class="math math-display" data-tex="\[
+a=\sum_\mu G_\mu aG_\mu+\sum_{\mu\ne\nu}G_\mu aG_\nu .
+\]">\[
+a=\sum_\mu G_\mu aG_\mu+\sum_{\mu\ne\nu}G_\mu aG_\nu .
+\]</span>
+The first sum commutes with <span class="math" data-tex="\(\rho_{[-p,p]}\)">\(\rho_{[-p,p]}\)</span>, so it lies in <span class="math" data-tex="\(F_{[-p,p]}\)">\(F_{[-p,p]}\)</span>. Each <span class="math" data-tex="\(y=G_\mu aG_\nu\)">\(y=G_\mu aG_\nu\)</span> with <span class="math" data-tex="\(\mu\ne\nu\)">\(\mu\ne\nu\)</span>
+satisfies <span class="math" data-tex="\(\rho_{[-p,p]}y\rho_{[-p,p]}^{-1}=(\mu/\nu)y\)">\(\rho_{[-p,p]}y\rho_{[-p,p]}^{-1}=(\mu/\nu)y\)</span>. For such <span class="math" data-tex="\(y\)">\(y\)</span> and any <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>, Lemma 5.1(c) with <span class="math" data-tex="\(w=x^*\)">\(w=x^*\)</span>
+and the centralizer property give
+<span class="math math-display" data-tex="\[
+\varphi(x^*y)=\varphi(yx^*)=\tfrac{\mu}{\nu}\,\varphi(x^*y),
+\]">\[
+\varphi(x^*y)=\varphi(yx^*)=\tfrac{\mu}{\nu}\,\varphi(x^*y),
+\]</span>
+so <span class="math" data-tex="\(\langle y\Omega,x\Omega\rangle=\varphi(x^*y)=0\)">\(\langle y\Omega,x\Omega\rangle=\varphi(x^*y)=0\)</span>. Hence every <span class="math" data-tex="\(a\in\pi(A)\)">\(a\in\pi(A)\)</span> can be written <span class="math" data-tex="\(a=f+y\)">\(a=f+y\)</span> with
+<span class="math" data-tex="\(f\in\bigcup_pP_p\)">\(f\in\bigcup_pP_p\)</span> and <span class="math" data-tex="\(y\Omega\perp R\Omega\)">\(y\Omega\perp R\Omega\)</span>. Since <span class="math" data-tex="\(K\subset\overline{R\Omega}\)">\(K\subset\overline{R\Omega}\)</span>, this gives
+<span class="math" data-tex="\(Qa\Omega=f\Omega\)">\(Qa\Omega=f\Omega\)</span> and <span class="math" data-tex="\((1-Q)a\Omega=y\Omega\perp R\Omega\)">\((1-Q)a\Omega=y\Omega\perp R\Omega\)</span>.</p>
+<p><em>Step 2: <span class="math" data-tex="\(R\Omega\subset K\)">\(R\Omega\subset K\)</span>.</em> Let <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>. As <span class="math" data-tex="\(\pi(A)\Omega\)">\(\pi(A)\Omega\)</span> is dense in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, there are <span class="math" data-tex="\(a_m\in\pi(A)\)">\(a_m\in\pi(A)\)</span> with
+<span class="math" data-tex="\(a_m\Omega\to x\Omega\)">\(a_m\Omega\to x\Omega\)</span>. By Step 1, <span class="math" data-tex="\(\langle(1-Q)a_m\Omega,x\Omega\rangle=0\)">\(\langle(1-Q)a_m\Omega,x\Omega\rangle=0\)</span> for all <span class="math" data-tex="\(m\)">\(m\)</span>. In the limit,
+<span class="math" data-tex="\(\|(1-Q)x\Omega\|^2=\langle(1-Q)x\Omega,x\Omega\rangle=0\)">\(\|(1-Q)x\Omega\|^2=\langle(1-Q)x\Omega,x\Omega\rangle=0\)</span>, so <span class="math" data-tex="\(x\Omega\in K\)">\(x\Omega\in K\)</span>.</p>
+<p><em>Step 3: <span class="math" data-tex="\(R=R_0\)">\(R=R_0\)</span>, where <span class="math" data-tex="\(R_0=(\bigcup_pP_p)&#x27;&#x27;\)">\(R_0=(\bigcup_pP_p)&#x27;&#x27;\)</span>.</em> Since <span class="math" data-tex="\(R\)">\(R\)</span> is weakly closed, <span class="math" data-tex="\(R_0\subset R\)">\(R_0\subset R\)</span>. Let <span class="math" data-tex="\(E\)">\(E\)</span> be the
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving conditional expectation of <span class="math" data-tex="\(R\)">\(R\)</span> onto <span class="math" data-tex="\(R_0\)">\(R_0\)</span> (B2). For <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span> and <span class="math" data-tex="\(r\in R_0\)">\(r\in R_0\)</span>,
+<span class="math math-display" data-tex="\[
+\langle x\Omega-E(x)\Omega,r\Omega\rangle=\tau(r^*x)-\tau(r^*E(x))=\tau(r^*x)-\tau(E(r^*x))=0 .
+\]">\[
+\langle x\Omega-E(x)\Omega,r\Omega\rangle=\tau(r^*x)-\tau(r^*E(x))=\tau(r^*x)-\tau(E(r^*x))=0 .
+\]</span>
+So <span class="math" data-tex="\(E(x)\Omega\)">\(E(x)\Omega\)</span> is the orthogonal projection of <span class="math" data-tex="\(x\Omega\)">\(x\Omega\)</span> onto <span class="math" data-tex="\(\overline{R_0\Omega}\supset K\)">\(\overline{R_0\Omega}\supset K\)</span>. By Step 2,
+<span class="math" data-tex="\(x\Omega\in K\)">\(x\Omega\in K\)</span>, hence <span class="math" data-tex="\(E(x)\Omega=x\Omega\)">\(E(x)\Omega=x\Omega\)</span>, and <span class="math" data-tex="\(x=E(x)\in R_0\)">\(x=E(x)\in R_0\)</span> because <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating.</p>
+<p><em>Step 4: convergence.</em> The same computation, with <span class="math" data-tex="\(P_p\)">\(P_p\)</span> in place of <span class="math" data-tex="\(R_0\)">\(R_0\)</span>, shows that <span class="math" data-tex="\(E_p(x)\Omega=Q_px\Omega\)">\(E_p(x)\Omega=Q_px\Omega\)</span>,
+where <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> is the projection onto the finite-dimensional space <span class="math" data-tex="\(P_p\Omega\)">\(P_p\Omega\)</span>. The <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span> increase to <span class="math" data-tex="\(Q\)">\(Q\)</span>, and
+<span class="math" data-tex="\(Qx\Omega=x\Omega\)">\(Qx\Omega=x\Omega\)</span> by Step 2. Hence <span class="math" data-tex="\(\|E_p(x)-x\|_2=\|Q_px\Omega-x\Omega\|\to0\)">\(\|E_p(x)-x\|_2=\|Q_px\Omega-x\Omega\|\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a trace, then <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is central in <span class="math" data-tex="\(B\)">\(B\)</span>, each <span class="math" data-tex="\(\rho_I\)">\(\rho_I\)</span> is central in <span class="math" data-tex="\(B_I\)">\(B_I\)</span>, and <span class="math" data-tex="\(F_I=B_I\)">\(F_I=B_I\)</span>. Theorem
+5.7 then gives <span class="math" data-tex="\(M_\varphi=M\)">\(M_\varphi=M\)</span>: the product of traces is a trace on the whole tensor product.</p>
+<p><strong>Theorem 5.8 (ergodicity).</strong> The only elements of <span class="math" data-tex="\(M\)">\(M\)</span> fixed by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> are the scalars. In particular the
+restriction <span class="math" data-tex="\(\theta=\alpha|_R\)">\(\theta=\alpha|_R\)</span> is an <em>ergodic</em> automorphism of <span class="math" data-tex="\(R=M_\varphi\)">\(R=M_\varphi\)</span> (its only fixed points in <span class="math" data-tex="\(R\)">\(R\)</span> are
+the scalars), and <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\alpha(z)=z\)">\(\alpha(z)=z\)</span>. For <span class="math" data-tex="\(I=[a,b]\)">\(I=[a,b]\)</span> let <span class="math" data-tex="\(\beta=\alpha^{b-a+1}\)">\(\beta=\alpha^{b-a+1}\)</span>; it preserves <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, fixes <span class="math" data-tex="\(z\)">\(z\)</span>,
+and maps <span class="math" data-tex="\(M_I\)">\(M_I\)</span> onto <span class="math" data-tex="\(M_{I&#x27;}\)">\(M_{I&#x27;}\)</span> with <span class="math" data-tex="\(I&#x27;=I+(b-a+1)\)">\(I&#x27;=I+(b-a+1)\)</span> disjoint from <span class="math" data-tex="\(I\)">\(I\)</span>. Proposition 5.4 gives <span class="math" data-tex="\(z\in\mathbb C1\)">\(z\in\mathbb C1\)</span>.
+By Lemma 5.6(c), <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> restricts to an automorphism <span class="math" data-tex="\(\theta\)">\(\theta\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>, and <span class="math" data-tex="\(\tau\circ\theta=\tau\)">\(\tau\circ\theta=\tau\)</span> because
+<span class="math" data-tex="\(\varphi\circ\alpha=\varphi\)">\(\varphi\circ\alpha=\varphi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.9 (the Bernoulli algebra is the hyperfinite II₁ factor).</strong> Let <span class="math" data-tex="\(B=M_n\)">\(B=M_n\)</span> with <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> a
+faithful state on <span class="math" data-tex="\(M_n\)">\(M_n\)</span>. Then <span class="math" data-tex="\(R=M_\varphi\)">\(R=M_\varphi\)</span> is isomorphic to the hyperfinite II₁ factor. The algebra <span class="math" data-tex="\(M\)">\(M\)</span> is a
+factor as well.</p>
+<p><strong>Proof.</strong> <em>Factor.</em> Let <span class="math" data-tex="\(z\)">\(z\)</span> be in the center of <span class="math" data-tex="\(R\)">\(R\)</span>. Given <span class="math" data-tex="\(I=[a,b]\)">\(I=[a,b]\)</span>, let <span class="math" data-tex="\(I&#x27;=[b+1,2b-a+1]\)">\(I&#x27;=[b+1,2b-a+1]\)</span>, <span class="math" data-tex="\(K=I\cup I&#x27;\)">\(K=I\cup I&#x27;\)</span>,
+and let <span class="math" data-tex="\(g\)">\(g\)</span> be the bijection of <span class="math" data-tex="\(K\)">\(K\)</span> exchanging <span class="math" data-tex="\(a+t\)">\(a+t\)</span> and <span class="math" data-tex="\(b+1+t\)">\(b+1+t\)</span> for <span class="math" data-tex="\(0\le t\le b-a\)">\(0\le t\le b-a\)</span>. By Lemma 5.3,
+<span class="math" data-tex="\(V_g\in F_K\)">\(V_g\in F_K\)</span>, so <span class="math" data-tex="\(\pi(V_g)\in R\)">\(\pi(V_g)\in R\)</span> by Lemma 5.6(b) and commutes with <span class="math" data-tex="\(z\)">\(z\)</span>. Hence <span class="math" data-tex="\(\beta=\operatorname{Ad}\pi(V_g)\)">\(\beta=\operatorname{Ad}\pi(V_g)\)</span>
+fixes <span class="math" data-tex="\(z\)">\(z\)</span>, preserves <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and maps <span class="math" data-tex="\(M_I\)">\(M_I\)</span> onto <span class="math" data-tex="\(M_{I&#x27;}\)">\(M_{I&#x27;}\)</span>. By Proposition 5.4, <span class="math" data-tex="\(z\in\mathbb C1\)">\(z\in\mathbb C1\)</span>. The same
+argument applies to the center of <span class="math" data-tex="\(M\)">\(M\)</span>, which also commutes with <span class="math" data-tex="\(\pi(V_g)\in M\)">\(\pi(V_g)\in M\)</span>.</p>
+<p><em>Type II₁.</em> <span class="math" data-tex="\(R\)">\(R\)</span> contains <span class="math" data-tex="\(\pi(D_I)\)">\(\pi(D_I)\)</span>, of dimension <span class="math" data-tex="\(n^{|I|}\)">\(n^{|I|}\)</span> for every <span class="math" data-tex="\(I\)">\(I\)</span>, so it is infinite-dimensional. It is
+a factor with the faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, so it is of type II₁ (B5). It acts on the separable space
+<span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>, so it has separable predual (B5).</p>
+<p><em>Semidiscrete.</em> The conditional expectations <span class="math" data-tex="\(E_p\colon R\to P_p\)">\(E_p\colon R\to P_p\)</span> are normal unital completely positive maps into
+finite-dimensional C*-algebras (B2); compose with the inclusions <span class="math" data-tex="\(P_p\to R\)">\(P_p\to R\)</span>. For <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>, the sequence
+<span class="math" data-tex="\(E_p(x)\)">\(E_p(x)\)</span> is bounded by <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> and <span class="math" data-tex="\(\|(E_p(x)-x)\Omega\|\to0\)">\(\|(E_p(x)-x)\Omega\|\to0\)</span> (Theorem 5.7). For <span class="math" data-tex="\(r\in M&#x27;\subset R&#x27;\)">\(r\in M&#x27;\subset R&#x27;\)</span> and
+<span class="math" data-tex="\(\zeta\in\mathcal H\)">\(\zeta\in\mathcal H\)</span>,
+<span class="math math-display" data-tex="\[
+\langle(E_p(x)-x)r\Omega,\zeta\rangle=\langle r(E_p(x)-x)\Omega,\zeta\rangle\to0 .
+\]">\[
+\langle(E_p(x)-x)r\Omega,\zeta\rangle=\langle r(E_p(x)-x)\Omega,\zeta\rangle\to0 .
+\]</span>
+Since <span class="math" data-tex="\(M&#x27;\Omega\)">\(M&#x27;\Omega\)</span> is dense (Lemma 5.1(a)) and the sequence is bounded, <span class="math" data-tex="\(E_p(x)\to x\)">\(E_p(x)\to x\)</span> weakly, hence
+<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weakly (B4). Thus <span class="math" data-tex="\(R\)">\(R\)</span> is semidiscrete in the sense of Definition 1.3 of &quot;Uniqueness of the injective II₁
+factor&quot;.</p>
+<p><em>Conclusion.</em> Semidiscreteness is a property of the von Neumann algebra and not of the representation: the maps
+<span class="math" data-tex="\(E_p\)">\(E_p\)</span> and the inclusions are normal, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak convergence does not depend on the faithful normal
+representation (B4). So <span class="math" data-tex="\(R\)">\(R\)</span>, transported to its standard representation on <span class="math" data-tex="\(L^2(R,\tau)\)">\(L^2(R,\tau)\)</span>, is a semidiscrete
+II₁ factor with separable predual. Theorem 1.5 of &quot;Uniqueness of the injective II₁ factor&quot; states that for such a
+factor semidiscreteness (condition (c) there) implies that it is isomorphic to the hyperfinite II₁ factor
+(condition (a) there). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 5.10 (Bernoulli shifts).</strong> Let <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a faithful state on <span class="math" data-tex="\(M_n\)">\(M_n\)</span> whose density
+has eigenvalues <span class="math" data-tex="\(\lambda_1,\dots,\lambda_n\)">\(\lambda_1,\dots,\lambda_n\)</span> (all positive, with sum <span class="math" data-tex="\(1\)">\(1\)</span>). The automorphism <span class="math" data-tex="\(\theta_\psi=\alpha|_R\)">\(\theta_\psi=\alpha|_R\)</span>
+of the hyperfinite II₁ factor <span class="math" data-tex="\(R=M_\varphi\)">\(R=M_\varphi\)</span> is the <em>Bernoulli shift with weights <span class="math" data-tex="\(\lambda_1,\dots,\lambda_n\)">\(\lambda_1,\dots,\lambda_n\)</span></em>. For
+<span class="math" data-tex="\(\psi=\mathrm{tr}\)">\(\psi=\mathrm{tr}\)</span>, the normalized trace, <span class="math" data-tex="\(R=M=\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\)">\(R=M=\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\)</span> and <span class="math" data-tex="\(\theta_\psi\)">\(\theta_\psi\)</span> is the
+<em><span class="math" data-tex="\(n\)">\(n\)</span>-shift</em> <span class="math" data-tex="\(S_n\)">\(S_n\)</span>.</p>
+<p>Up to conjugacy, <span class="math" data-tex="\(\theta_\psi\)">\(\theta_\psi\)</span> depends only on the weights. If <span class="math" data-tex="\(\psi&#x27;=\psi\circ\operatorname{Ad}u\)">\(\psi&#x27;=\psi\circ\operatorname{Ad}u\)</span> for a unitary
+<span class="math" data-tex="\(u\in M_n\)">\(u\in M_n\)</span>, the automorphism of <span class="math" data-tex="\(A\)">\(A\)</span> that applies <span class="math" data-tex="\(\operatorname{Ad}u\)">\(\operatorname{Ad}u\)</span> at every site carries
+<span class="math" data-tex="\(\psi&#x27;_\infty\)">\(\psi&#x27;_\infty\)</span> to <span class="math" data-tex="\(\psi_\infty\)">\(\psi_\infty\)</span> and commutes with the shift. As in the proof of Lemma 5.2 it is implemented by a
+unitary between the two GNS spaces, which carries one centralizer onto the other and intertwines the two shifts.</p>
+<p><strong>Example 5.11 (edge cases).</strong></p>
+<ul>
+<li>If <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, then <span class="math" data-tex="\(M=R=\mathbb C\)">\(M=R=\mathbb C\)</span> and the shift is the identity. This is why <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> is required in Theorem 5.9.</li>
+<li>If <span class="math" data-tex="\(B=\mathbb C^d\)">\(B=\mathbb C^d\)</span> is abelian with weights <span class="math" data-tex="\(p_1,\dots,p_d\)">\(p_1,\dots,p_d\)</span>, then <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a trace, <span class="math" data-tex="\(R=M\)">\(R=M\)</span> is abelian, and
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the classical Bernoulli shift with probability vector <span class="math" data-tex="\((p_1,\dots,p_d)\)">\((p_1,\dots,p_d)\)</span>, written in the language of
+measure algebras. Theorem 5.8 is the classical ergodicity of Bernoulli shifts.</li>
+<li>If <span class="math" data-tex="\(B\)">\(B\)</span> is a direct sum of several matrix algebras and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a trace, <span class="math" data-tex="\(R=M\)">\(R=M\)</span> is not a factor in general. For
+instance, the central projections <span class="math" data-tex="\(z\otimes1\)">\(z\otimes1\)</span> with <span class="math" data-tex="\(z\)">\(z\)</span> central in <span class="math" data-tex="\(B\)">\(B\)</span> at site <span class="math" data-tex="\(0\)">\(0\)</span> lie in the center of <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+</ul>
+<h2 id="6-the-entropy-of-bernoulli-shifts">6. The entropy of Bernoulli shifts</h2>
+<p>We keep the notation of Section 5: <span class="math" data-tex="\(B\)">\(B\)</span> finite-dimensional, <span class="math" data-tex="\(\psi\)">\(\psi\)</span> faithful, <span class="math" data-tex="\(R=M_\varphi\)">\(R=M_\varphi\)</span>, <span class="math" data-tex="\(\tau=\varphi|_R\)">\(\tau=\varphi|_R\)</span>,
+<span class="math" data-tex="\(\theta=\alpha|_R\)">\(\theta=\alpha|_R\)</span>. For a finite interval <span class="math" data-tex="\(I\)">\(I\)</span> and a multi-index <span class="math" data-tex="\(j=(j_\nu)_{\nu\in I}\in\{1,\dots,d\}^I\)">\(j=(j_\nu)_{\nu\in I}\in\{1,\dots,d\}^I\)</span>, put
+<span class="math" data-tex="\(e_j=\bigotimes_{\nu\in I}e_{j_\nu}\in D_I\)">\(e_j=\bigotimes_{\nu\in I}e_{j_\nu}\in D_I\)</span>.</p>
+<p><strong>Lemma 6.1.</strong> For every finite interval <span class="math" data-tex="\(I\)">\(I\)</span>,
+<span class="math math-display" data-tex="\[
+H(\pi(F_I))=H(\pi(D_I))=|I|\,S(\psi).
+\]">\[
+H(\pi(F_I))=H(\pi(D_I))=|I|\,S(\psi).
+\]</span></p>
+<p><strong>Proof.</strong> The projections <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, <span class="math" data-tex="\(j\in\{1,\dots,d\}^I\)">\(j\in\{1,\dots,d\}^I\)</span>, are pairwise orthogonal with sum <span class="math" data-tex="\(1\)">\(1\)</span>. Each is minimal in
+<span class="math" data-tex="\(B_I\)">\(B_I\)</span>, since <span class="math" data-tex="\(e_jB_Ie_j=\bigotimes_\nu e_{j_\nu}Be_{j_\nu}=\mathbb Ce_j\)">\(e_jB_Ie_j=\bigotimes_\nu e_{j_\nu}Be_{j_\nu}=\mathbb Ce_j\)</span> (B1). They lie in <span class="math" data-tex="\(D_I\subset F_I\)">\(D_I\subset F_I\)</span>
+(Lemma 5.6(b)), so they are minimal projections of <span class="math" data-tex="\(D_I\)">\(D_I\)</span> and of <span class="math" data-tex="\(F_I\)">\(F_I\)</span>. By the product property,
+<span class="math" data-tex="\(\tau(\pi(e_j))=\psi_I(e_j)=\prod_{\nu\in I}\lambda_{j_\nu}\)">\(\tau(\pi(e_j))=\psi_I(e_j)=\prod_{\nu\in I}\lambda_{j_\nu}\)</span>. By Fact 1.2(e), both entropies equal
+<span class="math" data-tex="\(\sum_j\eta\big(\prod_\nu\lambda_{j_\nu}\big)\)">\(\sum_j\eta\big(\prod_\nu\lambda_{j_\nu}\big)\)</span>. By induction on <span class="math" data-tex="\(|I|\)">\(|I|\)</span>, this sum is <span class="math" data-tex="\(|I|S(\psi)\)">\(|I|S(\psi)\)</span>: splitting off
+one site and using (0.1) and <span class="math" data-tex="\(\sum_j\lambda_j=1\)">\(\sum_j\lambda_j=1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{j,j&#x27;}\eta(\lambda_j\mu_{j&#x27;})=\sum_{j,j&#x27;}\big(\lambda_j\eta(\mu_{j&#x27;})+\mu_{j&#x27;}\eta(\lambda_j)\big)
+=\sum_{j&#x27;}\eta(\mu_{j&#x27;})+\sum_j\eta(\lambda_j),
+\]">\[
+\sum_{j,j&#x27;}\eta(\lambda_j\mu_{j&#x27;})=\sum_{j,j&#x27;}\big(\lambda_j\eta(\mu_{j&#x27;})+\mu_{j&#x27;}\eta(\lambda_j)\big)
+=\sum_{j&#x27;}\eta(\mu_{j&#x27;})+\sum_j\eta(\lambda_j),
+\]</span>
+where <span class="math" data-tex="\((\mu_{j&#x27;})\)">\((\mu_{j&#x27;})\)</span> are the products over the remaining sites, which also sum to <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (entropy of the tensor shift).</strong> With the notation above,
+<span class="math math-display" data-tex="\[
+H(\theta)=S(\psi)=-\operatorname{Tr}(\rho\log \rho).
+\]">\[
+H(\theta)=S(\psi)=-\operatorname{Tr}(\rho\log \rho).
+\]</span>
+More precisely, <span class="math" data-tex="\(H(\pi(D_{\{0\}}),\theta)=H(P_p,\theta)=S(\psi)\)">\(H(\pi(D_{\{0\}}),\theta)=H(P_p,\theta)=S(\psi)\)</span> for every <span class="math" data-tex="\(p\)">\(p\)</span>, where <span class="math" data-tex="\(P_p=\pi(F_{[-p,p]})\)">\(P_p=\pi(F_{[-p,p]})\)</span>.</p>
+<p><em>Reference:</em> [Connes–Størmer 1975, Section 4].</p>
+<p><strong>Proof.</strong> <em>Lower bound.</em> By Lemma 5.6(c), <span class="math" data-tex="\(\theta^i(\pi(D_{\{0\}}))=\pi(D_{\{i\}})\)">\(\theta^i(\pi(D_{\{0\}}))=\pi(D_{\{i\}})\)</span>. For <span class="math" data-tex="\(0\le i\le k-1\)">\(0\le i\le k-1\)</span> these
+algebras are abelian and commute pairwise, since they all lie in the abelian algebra <span class="math" data-tex="\(\pi(D_{[0,k-1]})\)">\(\pi(D_{[0,k-1]})\)</span>. They
+generate it, because <span class="math" data-tex="\(D_{[0,k-1]}\)">\(D_{[0,k-1]}\)</span> is spanned by the products <span class="math" data-tex="\(e_j\)">\(e_j\)</span> of elements taken at single sites. By Fact
+1.2(f) and Lemma 6.1,
+<span class="math math-display" data-tex="\[
+H_k(\pi(D_{\{0\}}),\theta)=H(\pi(D_{[0,k-1]}))=k\,S(\psi),
+\]">\[
+H_k(\pi(D_{\{0\}}),\theta)=H(\pi(D_{[0,k-1]}))=k\,S(\psi),
+\]</span>
+so <span class="math" data-tex="\(H(\pi(D_{\{0\}}),\theta)=S(\psi)\)">\(H(\pi(D_{\{0\}}),\theta)=S(\psi)\)</span> and <span class="math" data-tex="\(H(\theta)\ge S(\psi)\)">\(H(\theta)\ge S(\psi)\)</span>.</p>
+<p><em>Upper bound.</em> For <span class="math" data-tex="\(0\le i\le k-1\)">\(0\le i\le k-1\)</span>, <span class="math" data-tex="\(\theta^i(P_p)=\pi(F_{[-p+i,p+i]})\subset\pi(F_{[-p,p+k-1]})\)">\(\theta^i(P_p)=\pi(F_{[-p+i,p+i]})\subset\pi(F_{[-p,p+k-1]})\)</span> by Lemma 5.6(b),(c).
+By Fact 1.2(d) with <span class="math" data-tex="\(r=0\)">\(r=0\)</span> and Lemma 6.1,
+<span class="math math-display" data-tex="\[
+H_k(P_p,\theta)\le H(\pi(F_{[-p,p+k-1]}))=(2p+k)\,S(\psi).
+\]">\[
+H_k(P_p,\theta)\le H(\pi(F_{[-p,p+k-1]}))=(2p+k)\,S(\psi).
+\]</span>
+Dividing by <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(H(P_p,\theta)\le S(\psi)\)">\(H(P_p,\theta)\le S(\psi)\)</span>. Since <span class="math" data-tex="\(D_{\{0\}}\subset F_{[-p,p]}\)">\(D_{\{0\}}\subset F_{[-p,p]}\)</span>, Proposition 3.3(b) and the
+lower bound give equality. By Theorem 5.7 the <span class="math" data-tex="\(P_p\)">\(P_p\)</span> increase and their union is weakly dense in <span class="math" data-tex="\(R\)">\(R\)</span>, so Theorem 4.2
+gives <span class="math" data-tex="\(H(\theta)=\lim_pH(P_p,\theta)=S(\psi)\)">\(H(\theta)=\lim_pH(P_p,\theta)=S(\psi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.3 (Bernoulli shifts and the <span class="math" data-tex="\(n\)">\(n\)</span>-shift).</strong></p>
+<ul>
+<li>(a) The Bernoulli shift with weights <span class="math" data-tex="\(\lambda_1,\dots,\lambda_n\)">\(\lambda_1,\dots,\lambda_n\)</span> has entropy <span class="math" data-tex="\(-\sum_{j=1}^n\lambda_j\log\lambda_j\)">\(-\sum_{j=1}^n\lambda_j\log\lambda_j\)</span>.</li>
+<li>(b) The <span class="math" data-tex="\(n\)">\(n\)</span>-shift <span class="math" data-tex="\(S_n\)">\(S_n\)</span> of <span class="math" data-tex="\(\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\)">\(\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\)</span>, which is the hyperfinite II₁ factor, has
+<span class="math" data-tex="\(H(S_n)=\log n\)">\(H(S_n)=\log n\)</span>.</li>
+<li>(c) If <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span>, there is no isomorphism <span class="math" data-tex="\(\gamma\colon\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\to
+\bigotimes_{\mathbb Z}(M_m,\mathrm{tr})\)">\(\gamma\colon\bigotimes_{\mathbb Z}(M_n,\mathrm{tr})\to
+\bigotimes_{\mathbb Z}(M_m,\mathrm{tr})\)</span> with <span class="math" data-tex="\(\gamma S_n\gamma^{-1}=S_m\)">\(\gamma S_n\gamma^{-1}=S_m\)</span>. More generally, Bernoulli shifts with
+different values of <span class="math" data-tex="\(-\sum_j\lambda_j\log\lambda_j\)">\(-\sum_j\lambda_j\log\lambda_j\)</span> are not conjugate.</li>
+</ul>
+<p><strong>Proof.</strong> (a) is Theorem 6.2 with <span class="math" data-tex="\(B=M_n\)">\(B=M_n\)</span>, and Theorem 5.9 identifies <span class="math" data-tex="\(R\)">\(R\)</span>. (b) For <span class="math" data-tex="\(\psi=\mathrm{tr}\)">\(\psi=\mathrm{tr}\)</span> the density
+is <span class="math" data-tex="\(\rho=\frac1n1\)">\(\rho=\frac1n1\)</span>, so <span class="math" data-tex="\(S(\psi)=n\,\eta(1/n)=\log n\)">\(S(\psi)=n\,\eta(1/n)=\log n\)</span>. (c) The algebras are II₁ factors, so Corollary 3.4 applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.4 (tracial tensor shifts).</strong> Let <span class="math" data-tex="\(N_0\)">\(N_0\)</span> be a C*-algebra of finite dimension with a faithful tracial state
+<span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>, let <span class="math" data-tex="\((R,\tau)=\bigotimes_{\mathbb Z}(N_0,\tau_0)\)">\((R,\tau)=\bigotimes_{\mathbb Z}(N_0,\tau_0)\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> the shift. Then <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-preserving and
+<span class="math" data-tex="\(H(S)=H(N_0)\)">\(H(S)=H(N_0)\)</span>, the entropy of the copy of <span class="math" data-tex="\(N_0\)">\(N_0\)</span> at site <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> is a trace, <span class="math" data-tex="\(M_\varphi=M=R\)">\(M_\varphi=M=R\)</span> (remark after Theorem 5.7). By Fact 1.2(e), applied to the
+minimal projections <span class="math" data-tex="\(e_1,\dots,e_d\)">\(e_1,\dots,e_d\)</span> at site <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(H(N_0)=\sum_j\eta(\tau_0(e_j))=S(\tau_0)\)">\(H(N_0)=\sum_j\eta(\tau_0(e_j))=S(\tau_0)\)</span>. Apply Theorem 6.2.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(N_0=\mathbb C^d\)">\(N_0=\mathbb C^d\)</span> this is the classical formula <span class="math" data-tex="\(h=-\sum_jp_j\log p_j\)">\(h=-\sum_jp_j\log p_j\)</span> for Bernoulli shifts (with
+Proposition 3.6). For <span class="math" data-tex="\(N_0=M_n\)">\(N_0=M_n\)</span> it gives again <span class="math" data-tex="\(H(S_n)=\log n\)">\(H(S_n)=\log n\)</span>.</p>
+<p><strong>Corollary 6.5 (all entropies occur).</strong> For every <span class="math" data-tex="\(t\in(0,\infty)\)">\(t\in(0,\infty)\)</span> there is a Bernoulli shift of the hyperfinite
+II₁ factor with entropy <span class="math" data-tex="\(t\)">\(t\)</span>. Hence the hyperfinite II₁ factor has uncountably many pairwise non-conjugate ergodic
+automorphisms.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span> with <span class="math" data-tex="\(\log n&gt;t\)">\(\log n&gt;t\)</span>. For <span class="math" data-tex="\(s\in(0,1/n]\)">\(s\in(0,1/n]\)</span> let <span class="math" data-tex="\(\lambda(s)=(1-(n-1)s,s,\dots,s)\)">\(\lambda(s)=(1-(n-1)s,s,\dots,s)\)</span>; all entries
+are positive because <span class="math" data-tex="\(1-(n-1)s\ge1/n\)">\(1-(n-1)s\ge1/n\)</span>. The function <span class="math" data-tex="\(f(s)=\eta(1-(n-1)s)+(n-1)\eta(s)\)">\(f(s)=\eta(1-(n-1)s)+(n-1)\eta(s)\)</span> is continuous on
+<span class="math" data-tex="\((0,1/n]\)">\((0,1/n]\)</span>, with <span class="math" data-tex="\(f(1/n)=\log n&gt;t\)">\(f(1/n)=\log n&gt;t\)</span> and <span class="math" data-tex="\(f(s)\to\eta(1)=0\)">\(f(s)\to\eta(1)=0\)</span> as <span class="math" data-tex="\(s\to0\)">\(s\to0\)</span>. By the intermediate value theorem
+<span class="math" data-tex="\(f(s)=t\)">\(f(s)=t\)</span> for some <span class="math" data-tex="\(s\)">\(s\)</span>, and the Bernoulli shift with weights <span class="math" data-tex="\(\lambda(s)\)">\(\lambda(s)\)</span> has entropy <span class="math" data-tex="\(t\)">\(t\)</span> by Corollary 6.3(a).
+It is ergodic by Theorem 5.8, and different entropies give non-conjugate shifts by Corollary 3.4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-powers-of-an-automorphism">7. Powers of an automorphism</h2>
+<p><strong>Proposition 7.1.</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>. For every
+finite-dimensional <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, <span class="math" data-tex="\(H(N,\theta^p)\le p\,H(N,\theta)\)">\(H(N,\theta^p)\le p\,H(N,\theta)\)</span>. Consequently
+<span class="math" data-tex="\(H(\theta^p)\le|p|\,H(\theta)\)">\(H(\theta^p)\le|p|\,H(\theta)\)</span> for every <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> The list <span class="math" data-tex="\(N,\theta^p(N),\dots,\theta^{(r-1)p}(N)\)">\(N,\theta^p(N),\dots,\theta^{(r-1)p}(N)\)</span> is obtained from <span class="math" data-tex="\(N,\theta(N),\dots,\theta^{rp-1}(N)\)">\(N,\theta(N),\dots,\theta^{rp-1}(N)\)</span> by
+deleting entries, so by Corollary 2.3
+<span class="math math-display" data-tex="\[
+\frac1rH_r(N,\theta^p)\le p\cdot\frac1{rp}H_{rp}(N,\theta).
+\]">\[
+\frac1rH_r(N,\theta^p)\le p\cdot\frac1{rp}H_{rp}(N,\theta).
+\]</span>
+Letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> gives <span class="math" data-tex="\(H(N,\theta^p)\le pH(N,\theta)\)">\(H(N,\theta^p)\le pH(N,\theta)\)</span>, and taking suprema gives <span class="math" data-tex="\(H(\theta^p)\le pH(\theta)\)">\(H(\theta^p)\le pH(\theta)\)</span>
+for <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(H(\mathrm{id})=0\)">\(H(\mathrm{id})=0\)</span> (Example 3.5). For <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span>, Proposition 3.3(d) gives
+<span class="math" data-tex="\(H(\theta^p)=H(\theta^{-p})\le|p|H(\theta)\)">\(H(\theta^p)=H(\theta^{-p})\le|p|H(\theta)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2 (powers).</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra with finite-dimensional subalgebras
+<span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> whose union is weakly dense. Then <span class="math" data-tex="\(H(\theta^p)=|p|\,H(\theta)\)">\(H(\theta^p)=|p|\,H(\theta)\)</span> for every
+<span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span> and <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span> (with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>).</p>
+<p><strong>Proof.</strong> By Proposition 7.1 and Proposition 3.3(d), it suffices to prove <span class="math" data-tex="\(H(\theta^p)\ge pH(\theta)\)">\(H(\theta^p)\ge pH(\theta)\)</span> for <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>.
+Let <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> be the sequence, fix <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. The algebras
+<span class="math" data-tex="\(\theta^t(P_k)\)">\(\theta^t(P_k)\)</span>, <span class="math" data-tex="\(0\le t\le p-1\)">\(0\le t\le p-1\)</span>, are finite-dimensional, so by Lemma 4.1(b) there is <span class="math" data-tex="\(q\)">\(q\)</span> with
+<span class="math math-display" data-tex="\[
+H(\theta^t(P_k)\mid P_q)&lt;\varepsilon\qquad(0\le t\le p-1).
+\]">\[
+H(\theta^t(P_k)\mid P_q)&lt;\varepsilon\qquad(0\le t\le p-1).
+\]</span>
+Let <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>. For <span class="math" data-tex="\(0\le j\le rp-1\)">\(0\le j\le rp-1\)</span> write <span class="math" data-tex="\(j=sp+t\)">\(j=sp+t\)</span> with <span class="math" data-tex="\(0\le t\le p-1\)">\(0\le t\le p-1\)</span>, and put <span class="math" data-tex="\(N_j=\theta^j(P_k)\)">\(N_j=\theta^j(P_k)\)</span> and
+<span class="math" data-tex="\(Q_j=\theta^{sp}(P_q)\)">\(Q_j=\theta^{sp}(P_q)\)</span>. By Fact 1.2(g) and Lemma 2.1 (applied to <span class="math" data-tex="\(\theta^{sp}\)">\(\theta^{sp}\)</span>),
+<span class="math math-display" data-tex="\[
+H_{rp}(P_k,\theta)=H(N_0,\dots,N_{rp-1})\le H(Q_0,\dots,Q_{rp-1})+\sum_{s=0}^{r-1}\sum_{t=0}^{p-1}
+H(\theta^t(P_k)\mid P_q).
+\]">\[
+H_{rp}(P_k,\theta)=H(N_0,\dots,N_{rp-1})\le H(Q_0,\dots,Q_{rp-1})+\sum_{s=0}^{r-1}\sum_{t=0}^{p-1}
+H(\theta^t(P_k)\mid P_q).
+\]</span>
+The double sum is less than <span class="math" data-tex="\(rp\varepsilon\)">\(rp\varepsilon\)</span>. In the list <span class="math" data-tex="\(Q_0,\dots,Q_{rp-1}\)">\(Q_0,\dots,Q_{rp-1}\)</span> each algebra <span class="math" data-tex="\(\theta^{sp}(P_q)\)">\(\theta^{sp}(P_q)\)</span>
+occurs <span class="math" data-tex="\(p\)">\(p\)</span> times. Merging the copies (Fact 1.2(d), with symmetry) gives
+<span class="math" data-tex="\(H(Q_0,\dots,Q_{rp-1})\le H_r(P_q,\theta^p)\)">\(H(Q_0,\dots,Q_{rp-1})\le H_r(P_q,\theta^p)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\frac1rH_r(P_q,\theta^p)\ge p\cdot\frac1{rp}H_{rp}(P_k,\theta)-p\varepsilon .
+\]">\[
+\frac1rH_r(P_q,\theta^p)\ge p\cdot\frac1{rp}H_{rp}(P_k,\theta)-p\varepsilon .
+\]</span>
+Letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> gives <span class="math" data-tex="\(H(\theta^p)\ge H(P_q,\theta^p)\ge pH(P_k,\theta)-p\varepsilon\)">\(H(\theta^p)\ge H(P_q,\theta^p)\ge pH(P_k,\theta)-p\varepsilon\)</span>. This holds for every
+<span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and <span class="math" data-tex="\(\sup_kH(P_k,\theta)=H(\theta)\)">\(\sup_kH(P_k,\theta)=H(\theta)\)</span> by Theorem 4.2. Hence <span class="math" data-tex="\(H(\theta^p)\ge pH(\theta)\)">\(H(\theta^p)\ge pH(\theta)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Classically the lower bound is immediate: the join <span class="math" data-tex="\(Q=N\vee\theta(N)\vee\dots\vee\theta^{p-1}(N)\)">\(Q=N\vee\theta(N)\vee\dots\vee\theta^{p-1}(N)\)</span> satisfies
+<span class="math" data-tex="\(h(Q,\theta^p)=p\,h(N,\theta)\)">\(h(Q,\theta^p)=p\,h(N,\theta)\)</span>. Noncommutatively <span class="math" data-tex="\(Q\)">\(Q\)</span> need not be finite-dimensional (Example 2.4), and the proof
+above replaces it by a large <span class="math" data-tex="\(P_q\)">\(P_q\)</span> that almost contains <span class="math" data-tex="\(N,\dots,\theta^{p-1}(N)\)">\(N,\dots,\theta^{p-1}(N)\)</span>. This is where the continuity
+theorem is needed.</p>
+<h2 id="8-abelian-entropy-and-the-role-of-monotonicity">8. Abelian entropy and the role of monotonicity</h2>
+<p>Another natural candidate for the entropy of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> uses only abelian subalgebras on which <span class="math" data-tex="\(\theta\)">\(\theta\)</span> acts.</p>
+<p><strong>Definition 8.1.</strong> The <em>abelian entropy</em> of <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span> is
+<span class="math math-display" data-tex="\[
+H_a(\theta)=\sup\{h(\theta|_A\mid A):A\subset R\text{ an abelian subalgebra with }\theta(A)=A\},
+\]">\[
+H_a(\theta)=\sup\{h(\theta|_A\mid A):A\subset R\text{ an abelian subalgebra with }\theta(A)=A\},
+\]</span>
+where <span class="math" data-tex="\(h(\theta|_A\mid A)\)">\(h(\theta|_A\mid A)\)</span> is the Kolmogorov–Sinai entropy of Section 3. (The set is nonempty since <span class="math" data-tex="\(A=\mathbb C1\)">\(A=\mathbb C1\)</span>
+qualifies, with entropy <span class="math" data-tex="\(0\)">\(0\)</span>.)</p>
+<p><strong>Proposition 8.2.</strong></p>
+<ul>
+<li>(a) <span class="math" data-tex="\(H_a(\theta)\le H(\theta)\)">\(H_a(\theta)\le H(\theta)\)</span> for every <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span>.</li>
+<li>(b) For the tensor shifts of Section 6 (in particular for the Bernoulli shifts), <span class="math" data-tex="\(H_a(\theta)=H(\theta)=S(\psi)\)">\(H_a(\theta)=H(\theta)=S(\psi)\)</span>.</li>
+<li>(c) If <span class="math" data-tex="\(A\)">\(A\)</span> is abelian and <span class="math" data-tex="\(\theta(A)=A\)">\(\theta(A)=A\)</span>, then <span class="math" data-tex="\(h(\theta^p|_A\mid A)=|p|\,h(\theta|_A\mid A)\)">\(h(\theta^p|_A\mid A)=|p|\,h(\theta|_A\mid A)\)</span> for every
+<span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span>. Consequently <span class="math" data-tex="\(H_a(\theta^p)\ge|p|\,H_a(\theta)\)">\(H_a(\theta^p)\ge|p|\,H_a(\theta)\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> (a) is Proposition 3.6.</p>
+<p>(b) Let <span class="math" data-tex="\(A=\big(\bigcup_I\pi(D_I)\big)&#x27;&#x27;\)">\(A=\big(\bigcup_I\pi(D_I)\big)&#x27;&#x27;\)</span>, an abelian subalgebra of <span class="math" data-tex="\(R\)">\(R\)</span> (each <span class="math" data-tex="\(\pi(D_I)\subset R\)">\(\pi(D_I)\subset R\)</span>, and the
+<span class="math" data-tex="\(D_I\)">\(D_I\)</span> increase and commute). It is <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-invariant by Lemma 5.6(c). By Proposition 3.6 and Theorem 6.2,
+<span class="math" data-tex="\(h(\theta|_A\mid A)\ge H(\pi(D_{\{0\}}),\theta)=S(\psi)=H(\theta)\)">\(h(\theta|_A\mid A)\ge H(\pi(D_{\{0\}}),\theta)=S(\psi)=H(\theta)\)</span>. Combine with (a).</p>
+<p>(c) Let <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>; <span class="math" data-tex="\(A\)">\(A\)</span> is also <span class="math" data-tex="\(\theta^p\)">\(\theta^p\)</span>-invariant. Proposition 3.6 (for <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and for <span class="math" data-tex="\(\theta^p\)">\(\theta^p\)</span>) and
+Proposition 7.1 give
+<span class="math math-display" data-tex="\[
+h(\theta^p|_A\mid A)=\sup_{N\subset A}H(N,\theta^p)\le p\sup_{N\subset A}H(N,\theta)=p\,h(\theta|_A\mid A).
+\]">\[
+h(\theta^p|_A\mid A)=\sup_{N\subset A}H(N,\theta^p)\le p\sup_{N\subset A}H(N,\theta)=p\,h(\theta|_A\mid A).
+\]</span>
+Conversely, for finite-dimensional <span class="math" data-tex="\(N\subset A\)">\(N\subset A\)</span> let <span class="math" data-tex="\(Q=N\vee\theta(N)\vee\dots\vee\theta^{p-1}(N)\)">\(Q=N\vee\theta(N)\vee\dots\vee\theta^{p-1}(N)\)</span>, which
+is finite-dimensional and contained in <span class="math" data-tex="\(A\)">\(A\)</span>. The algebras <span class="math" data-tex="\(\theta^{sp}(Q)\)">\(\theta^{sp}(Q)\)</span>, <span class="math" data-tex="\(0\le s\le r-1\)">\(0\le s\le r-1\)</span>, generate
+<span class="math" data-tex="\(N\vee\dots\vee\theta^{rp-1}(N)\)">\(N\vee\dots\vee\theta^{rp-1}(N)\)</span>, so by Proposition 3.6
+<span class="math math-display" data-tex="\[
+H_r(Q,\theta^p)=h\big(N\vee\dots\vee\theta^{rp-1}(N)\big)=H_{rp}(N,\theta).
+\]">\[
+H_r(Q,\theta^p)=h\big(N\vee\dots\vee\theta^{rp-1}(N)\big)=H_{rp}(N,\theta).
+\]</span>
+Dividing by <span class="math" data-tex="\(r\)">\(r\)</span> and letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> gives <span class="math" data-tex="\(H(Q,\theta^p)=pH(N,\theta)\)">\(H(Q,\theta^p)=pH(N,\theta)\)</span>, hence
+<span class="math" data-tex="\(h(\theta^p|_A\mid A)\ge p\,h(\theta|_A\mid A)\)">\(h(\theta^p|_A\mid A)\ge p\,h(\theta|_A\mid A)\)</span>. For <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span> use Proposition 3.3(d), and for <span class="math" data-tex="\(p=0\)">\(p=0\)</span> Example 3.5.
+Finally, a <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-invariant abelian algebra is <span class="math" data-tex="\(\theta^p\)">\(\theta^p\)</span>-invariant, so
+<span class="math" data-tex="\(H_a(\theta^p)\ge\sup_Ah(\theta^p|_A\mid A)=|p|H_a(\theta)\)">\(H_a(\theta^p)\ge\sup_Ah(\theta^p|_A\mid A)=|p|H_a(\theta)\)</span>, the supremum over <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-invariant <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 8.3 (why <span class="math" data-tex="\(H\)">\(H\)</span> and not <span class="math" data-tex="\(H_a\)">\(H_a\)</span>).</strong> Two features make the abelian entropy unsatisfactory as a general
+invariant.</p>
+<ul>
+<li>It depends on the existence of large <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-invariant abelian subalgebras. For a general <span class="math" data-tex="\(\theta\)">\(\theta\)</span> it is not
+clear that there are any beyond <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>, and then <span class="math" data-tex="\(H_a(\theta)=0\)">\(H_a(\theta)=0\)</span> says nothing.</li>
+<li>Its behaviour under powers is not controlled from above. An abelian algebra invariant under <span class="math" data-tex="\(\theta^p\)">\(\theta^p\)</span> need not be
+invariant under <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The algebra generated by <span class="math" data-tex="\(A,\theta(A),\dots,\theta^{p-1}(A)\)">\(A,\theta(A),\dots,\theta^{p-1}(A)\)</span> is <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-invariant but
+in general not abelian. So the argument of Proposition 8.2(c) gives only <span class="math" data-tex="\(H_a(\theta^p)\ge|p|H_a(\theta)\)">\(H_a(\theta^p)\ge|p|H_a(\theta)\)</span>.</li>
+</ul>
+<p>By contrast, <span class="math" data-tex="\(H\)">\(H\)</span> needs no invariant subalgebras, and <span class="math" data-tex="\(H(\theta^p)=|p|H(\theta)\)">\(H(\theta^p)=|p|H(\theta)\)</span> whenever the Kolmogorov–Sinai
+theorem applies (Theorem 7.2).</p>
+<p><strong>Remark 8.4 (the role of monotonicity).</strong> The proof of Theorem 4.2 uses two properties of <span class="math" data-tex="\(N\mapsto H(N,\theta)\)">\(N\mapsto H(N,\theta)\)</span>:
+it is increasing (Proposition 3.3(b)), and <span class="math" data-tex="\(H(N,\theta)\le H(P,\theta)+H(N\mid P)\)">\(H(N,\theta)\le H(P,\theta)+H(N\mid P)\)</span> with <span class="math" data-tex="\(H(N\mid P)\)">\(H(N\mid P)\)</span> small when
+<span class="math" data-tex="\(N\)">\(N\)</span> is almost contained in <span class="math" data-tex="\(P\)">\(P\)</span> (Proposition 3.3(c) and Theorem 1.3). Monotonicity is what lets the supremum over
+all <span class="math" data-tex="\(N\)">\(N\)</span> be computed along one increasing sequence; without it, the values <span class="math" data-tex="\(H(P_q,\theta)\)">\(H(P_q,\theta)\)</span> need not approach the
+supremum. Other entropies of automorphisms of von Neumann algebras were proposed at the same time, for
+instance by Emch. For that definition the quantity playing the role of <span class="math" data-tex="\(H(N,\theta)\)">\(H(N,\theta)\)</span> is not increasing in
+<span class="math" data-tex="\(N\)">\(N\)</span> [Connes–Størmer 1975], so the argument of Section 4 does not apply to it, and its values on shifts are not
+computed by the methods of this lesson.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>Exercise 1.</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\)">\(P_1\subset P_2\subset\cdots\)</span> finite-dimensional
+subalgebras whose union is weakly dense. Let <span class="math" data-tex="\(u\in\bigcup_qP_q\)">\(u\in\bigcup_qP_q\)</span> be a unitary. Show that
+<span class="math" data-tex="\(H(\operatorname{Ad}u)=0\)">\(H(\operatorname{Ad}u)=0\)</span>.</p>
+<p><em>Solution.</em> Say <span class="math" data-tex="\(u\in P_{q_0}\)">\(u\in P_{q_0}\)</span>. For <span class="math" data-tex="\(q\ge q_0\)">\(q\ge q_0\)</span>, <span class="math" data-tex="\(u\in P_q\)">\(u\in P_q\)</span>, so <span class="math" data-tex="\(\operatorname{Ad}u\)">\(\operatorname{Ad}u\)</span> maps <span class="math" data-tex="\(P_q\)">\(P_q\)</span> onto itself and
+all algebras in the list <span class="math" data-tex="\(P_q,uP_qu^*,\dots\)">\(P_q,uP_qu^*,\dots\)</span> equal <span class="math" data-tex="\(P_q\)">\(P_q\)</span>. By Fact 1.2(d),
+<span class="math" data-tex="\(H_k(P_q,\operatorname{Ad}u)\le H(P_q)\)">\(H_k(P_q,\operatorname{Ad}u)\le H(P_q)\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(H(P_q,\operatorname{Ad}u)=0\)">\(H(P_q,\operatorname{Ad}u)=0\)</span>. Also
+<span class="math" data-tex="\(\operatorname{Ad}u\)">\(\operatorname{Ad}u\)</span> preserves <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. By Theorem 4.2, <span class="math" data-tex="\(H(\operatorname{Ad}u)=\lim_qH(P_q,\operatorname{Ad}u)=0\)">\(H(\operatorname{Ad}u)=\lim_qH(P_q,\operatorname{Ad}u)=0\)</span>.
+(Note that for <span class="math" data-tex="\(q&lt;q_0\)">\(q&lt;q_0\)</span> the algebras <span class="math" data-tex="\(u^jP_qu^{-j}\)">\(u^jP_qu^{-j}\)</span> can all be different; the Kolmogorov–Sinai theorem lets us
+ignore them.)</p>
+<p><strong>Exercise 2.</strong> Let <span class="math" data-tex="\(N_0=M_2\oplus\mathbb C\)">\(N_0=M_2\oplus\mathbb C\)</span> with the faithful tracial state
+<span class="math" data-tex="\(\tau_0(x\oplus c)=a\,\mathrm{tr}(x)+(1-a)c\)">\(\tau_0(x\oplus c)=a\,\mathrm{tr}(x)+(1-a)c\)</span>, <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, where <span class="math" data-tex="\(\mathrm{tr}\)">\(\mathrm{tr}\)</span> is the normalized trace of <span class="math" data-tex="\(M_2\)">\(M_2\)</span>.
+Compute the entropy of the shift on <span class="math" data-tex="\(\bigotimes_{\mathbb Z}(N_0,\tau_0)\)">\(\bigotimes_{\mathbb Z}(N_0,\tau_0)\)</span> and find its maximum over <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><em>Solution.</em> A maximal family of minimal projections is <span class="math" data-tex="\(e_{11}\oplus0\)">\(e_{11}\oplus0\)</span>, <span class="math" data-tex="\(e_{22}\oplus0\)">\(e_{22}\oplus0\)</span>, <span class="math" data-tex="\(0\oplus1\)">\(0\oplus1\)</span>, with traces
+<span class="math" data-tex="\(a/2,a/2,1-a\)">\(a/2,a/2,1-a\)</span>. By Corollary 6.4,
+<span class="math math-display" data-tex="\[
+H(S)=2\eta(a/2)+\eta(1-a)=a\log2+\eta(a)+\eta(1-a),
+\]">\[
+H(S)=2\eta(a/2)+\eta(1-a)=a\log2+\eta(a)+\eta(1-a),
+\]</span>
+using <span class="math" data-tex="\(2\eta(a/2)=a\log2-a\log a\)">\(2\eta(a/2)=a\log2-a\log a\)</span>. The derivative in <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(\log2-\log a+\log(1-a)=\log\frac{2(1-a)}a\)">\(\log2-\log a+\log(1-a)=\log\frac{2(1-a)}a\)</span>, which
+vanishes at <span class="math" data-tex="\(a=2/3\)">\(a=2/3\)</span>. There the value is <span class="math" data-tex="\(\frac23\log2+\frac23\log\frac32+\frac13\log3=\log3\)">\(\frac23\log2+\frac23\log\frac32+\frac13\log3=\log3\)</span>, the maximum. This
+agrees with (1.3) at the level of one site: three orthogonal minimal projections give at most <span class="math" data-tex="\(\log3\)">\(\log3\)</span>, with equality
+when all three have trace <span class="math" data-tex="\(1/3\)">\(1/3\)</span>.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-tex="\(\theta_\psi\)">\(\theta_\psi\)</span> be the Bernoulli shift of <span class="math" data-tex="\(M_n\)">\(M_n\)</span> with state <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. Show that
+<span class="math" data-tex="\(\theta_\psi^p\)">\(\theta_\psi^p\)</span> is the Bernoulli shift of <span class="math" data-tex="\(M_{n^p}=M_n^{\otimes p}\)">\(M_{n^p}=M_n^{\otimes p}\)</span> with the state <span class="math" data-tex="\(\psi^{\otimes p}\)">\(\psi^{\otimes p}\)</span>, and check
+that Theorem 6.2 and Theorem 7.2 give the same value for <span class="math" data-tex="\(H(\theta_\psi^p)\)">\(H(\theta_\psi^p)\)</span>.</p>
+<p><em>Solution.</em> Group the sites into blocks <span class="math" data-tex="\(\{mp,\dots,mp+p-1\}\)">\(\{mp,\dots,mp+p-1\}\)</span>, <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>. The algebra <span class="math" data-tex="\(A=\bigcup_IB_I\)">\(A=\bigcup_IB_I\)</span> is
+also the union of the algebras built on unions of consecutive blocks. The state <span class="math" data-tex="\(\psi_\infty\)">\(\psi_\infty\)</span> is the product of the
+states <span class="math" data-tex="\(\psi^{\otimes p}\)">\(\psi^{\otimes p}\)</span> on the blocks. So the GNS space, <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(M_\varphi=R\)">\(M_\varphi=R\)</span> are the same for
+<span class="math" data-tex="\((M_n,\psi)\)">\((M_n,\psi)\)</span> and for <span class="math" data-tex="\((M_n^{\otimes p},\psi^{\otimes p})\)">\((M_n^{\otimes p},\psi^{\otimes p})\)</span> with blocks as sites. The block shift is <span class="math" data-tex="\(\alpha^p\)">\(\alpha^p\)</span>, so
+the Bernoulli shift of <span class="math" data-tex="\((M_{n^p},\psi^{\otimes p})\)">\((M_{n^p},\psi^{\otimes p})\)</span> is <span class="math" data-tex="\(\theta_\psi^p\)">\(\theta_\psi^p\)</span>. By Theorem 6.2,
+<span class="math" data-tex="\(H(\theta_\psi^p)=S(\psi^{\otimes p})\)">\(H(\theta_\psi^p)=S(\psi^{\otimes p})\)</span>. The density of <span class="math" data-tex="\(\psi^{\otimes p}\)">\(\psi^{\otimes p}\)</span> is <span class="math" data-tex="\(\rho^{\otimes p}\)">\(\rho^{\otimes p}\)</span>, with eigenvalues the
+products <span class="math" data-tex="\(\lambda_{j_1}\cdots\lambda_{j_p}\)">\(\lambda_{j_1}\cdots\lambda_{j_p}\)</span>, and the computation in Lemma 6.1 gives
+<span class="math" data-tex="\(S(\psi^{\otimes p})=pS(\psi)\)">\(S(\psi^{\otimes p})=pS(\psi)\)</span>. Theorem 7.2 gives <span class="math" data-tex="\(H(\theta_\psi^p)=pH(\theta_\psi)=pS(\psi)\)">\(H(\theta_\psi^p)=pH(\theta_\psi)=pS(\psi)\)</span> as well.</p>
+<p><strong>Exercise 4.</strong> Let <span class="math" data-tex="\((R,\tau)\)">\((R,\tau)\)</span> be a finite tracial algebra and <span class="math" data-tex="\(\theta\in\operatorname{Aut}(R,\tau)\)">\(\theta\in\operatorname{Aut}(R,\tau)\)</span> with
+<span class="math" data-tex="\(\theta^p=\mathrm{id}\)">\(\theta^p=\mathrm{id}\)</span> for some <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>. Explain why Proposition 7.1 does not give <span class="math" data-tex="\(H(\theta)=0\)">\(H(\theta)=0\)</span>,
+why Theorem 7.2 does when <span class="math" data-tex="\(R\)">\(R\)</span> has an approximating sequence, and why Example 3.5(ii) needs no such sequence.</p>
+<p><em>Solution.</em> Example 3.5(ii) gives <span class="math" data-tex="\(H(\theta)=0\)">\(H(\theta)=0\)</span> directly. Proposition 7.1 gives
+<span class="math" data-tex="\(0=H(\mathrm{id})=H(\theta^p)\le pH(\theta)\)">\(0=H(\mathrm{id})=H(\theta^p)\le pH(\theta)\)</span>, which carries no information: the inequality goes the wrong way. If
+<span class="math" data-tex="\(R\)">\(R\)</span> has an approximating sequence, Theorem 7.2 gives <span class="math" data-tex="\(pH(\theta)=H(\theta^p)=0\)">\(pH(\theta)=H(\theta^p)=0\)</span>, another proof. Example 3.5(ii)
+holds for every finite tracial algebra, because merging needs no approximation.</p>
+<p><strong>Exercise 5.</strong> In Example 2.4, show that <span class="math" data-tex="\(H(N_1,N_2)\ge H(N_1)\)">\(H(N_1,N_2)\ge H(N_1)\)</span>, and compute <span class="math" data-tex="\(H(N_1)\)">\(H(N_1)\)</span>.</p>
+<p><em>Solution.</em> By Lemma 2.2, <span class="math" data-tex="\(H(N_1,N_2)\ge H(N_1)\)">\(H(N_1,N_2)\ge H(N_1)\)</span>. The minimal projections of <span class="math" data-tex="\(N_1\)">\(N_1\)</span> are <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(1-p\)">\(1-p\)</span>, each of
+trace <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so <span class="math" data-tex="\(H(N_1)=2\eta(1/2)=\log2\)">\(H(N_1)=2\eta(1/2)=\log2\)</span> by Fact 1.2(e). Together with Example 2.4,
+<span class="math" data-tex="\(\log2\le H(N_1,N_2)\le2\log2\)">\(\log2\le H(N_1,N_2)\le2\log2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Connes–Størmer 1975] A. Connes and E. Størmer, Entropy for automorphisms of II₁ von Neumann algebras, Acta Math.
+134 (1975), no. 3–4, 289–306. Free at https://doi.org/10.1007/BF02392105</li>
+<li>[Connes–Narnhofer–Thirring 1987] A. Connes, H. Narnhofer and W. Thirring, Dynamical entropy of C* algebras and von
+Neumann algebras, Comm. Math. Phys. 112 (1987), no. 4, 691–719. Free at https://alainconnes.org/wp-content/uploads/entropy.pdf</li>
+<li>[Connes 1994] A. Connes, <em>Noncommutative geometry</em>, Academic Press, San Diego, CA, 1994. Free at
+https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf</li>
+<li>[Fremlin] D. H. Fremlin, <em>Measure Theory</em>, Volume 3: Measure Algebras, Torres Fremlin. Free at
+https://www1.essex.ac.uk/maths/people/fremlin/mt.htm</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="entropy-of-finite-dimensional-subalgebras.html">← Entropy of finite-dimensional subalgebras</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="entropy-defect-and-abelian-models.html">Entropy defect and abelian models →</a></span></nav>
+<p class="small source-link"><a href="src/the-entropy-of-a-trace-preserving-automorphism.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/entropy-of-automorphisms">Repository</a></nav>
+</footer>
+</body>
+</html>

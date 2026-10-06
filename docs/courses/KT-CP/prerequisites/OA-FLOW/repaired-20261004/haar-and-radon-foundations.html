@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="ECA90FF299205AD2B20374508D006C0C6A37DFFFC3821E5E84949DD169EF381A">
+<title>Radon representation, qualified products and Haar measure — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-OA-FLOW/repaired-20261004/haar-and-radon-foundations</span></nav>
+<article id="lesson" class="lesson"><h1 id="radon-representation-qualified-products-and-haar-measure">Radon representation, qualified products and Haar measure</h1>
+<p><em>This original exposition and its original figures and reproduction code are dedicated under CC0.</em></p>
+<p>All spaces below are locally compact Hausdorff, abbreviated LCH. Groups are arbitrary LCH topological groups. No second countability, separability, sigma compactness or unimodularity is assumed. A measure takes values in <span class="math" data-tex="$[0,\infty]$">$[0,\infty]$</span>. Integrals, sequential scalar convergence, completion and <span class="math" data-tex="$L^p$">$L^p$</span> use <a href="scalar-measure-convergence-and-calculus.html#sc-01">SC-01</a> and <a href="scalar-measure-convergence-and-calculus.html#sc-03">SC-03</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-04">SC-04</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-05">SC-05</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-06">SC-06</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-07">SC-07</a>. Choice and compactness of arbitrary products use <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.1">CF Section 1</a> and <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.4">CF Section 4</a>. The elementary topology used here is the separately proved <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0.1</a>–<a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0.2</a>: compact cutoffs, finite subordinate partitions and compact shrinking. Product approximation uses <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0</a> and <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.5">CF Section 5</a>. These parts of <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0</a> have no Haar or crossed-product input and must precede this foundation.</p>
+<p>A <strong>Radon measure in the outer regular convention</strong> is a Borel measure finite on compact sets, outer regular on every Borel set, and inner regular on open sets. Its completion adds subsets of its Borel null sets. We construct it directly. The complete locally determined convention is addressed separately in <a href="haar-and-radon-foundations.html#hr-09">HR-09</a>. Neither convention imposes inner regularity on every Borel set in the outer regular version.</p>
+<p>Write <span class="math" data-tex="$f\prec U$">$f\prec U$</span> when <span class="math" data-tex="$f\in C_c(X)$">$f\in C_c(X)$</span>, <span class="math" data-tex="$0\leq f\leq1$">$0\leq f\leq1$</span>, and <span class="math" data-tex="$\operatorname{supp}f\subset U$">$\operatorname{supp}f\subset U$</span>. All functionals on complex function spaces are complex linear. Positivity means a nonnegative real value on every nonnegative function.</p>
+<p><span id="hr-01"></span></p>
+<p><span id="oa-flow.hr.1"></span></p>
+<h2 id="hr-01-from-an-open-valuation-to-an-outer-regular-measure">HR-01. From an open valuation to an outer regular measure</h2>
+<p><strong>Lemma <a href="haar-and-radon-foundations.html#hr-01">HR-01</a>.</strong> Suppose <span class="math" data-tex="$v$">$v$</span> is defined on open subsets of <span class="math" data-tex="$X$">$X$</span>, is monotone, is zero at the empty set, is countably subadditive on open unions, and is additive on two disjoint open sets. Suppose it is locally finite, and, for every open <span class="math" data-tex="$U$">$U$</span> and <span class="math" data-tex="$a&lt;v(U)$">$a&lt;v(U)$</span> with <span class="math" data-tex="$a\geq0$">$a\geq0$</span>, there is a compact <span class="math" data-tex="$K\subset U$">$K\subset U$</span> such that</p>
+<span id="equation-hr-01a"></span><span class="math math-display" data-tex="$$
+v(W)&gt;a\quad\text{for every open }W\supset K.
+\tag{HR-01a}
+$$">$$
+v(W)&gt;a\quad\text{for every open }W\supset K.
+\tag{HR-01a}
+$$</span>
+<p>Then</p>
+<span id="equation-hr-01b"></span><span class="math math-display" data-tex="$$
+\mu^*(E)=\inf_{U\supset E,\ U\ {\rm open}}v(U)
+\tag{HR-01b}
+$$">$$
+\mu^*(E)=\inf_{U\supset E,\ U\ {\rm open}}v(U)
+\tag{HR-01b}
+$$</span>
+<p>is an outer measure; its Borel restriction <span class="math" data-tex="$\mu$">$\mu$</span> is Radon in the outer regular convention. Moreover</p>
+<span id="equation-hr-01c"></span><span class="math math-display" data-tex="$$
+\mu(U)=v(U),\qquad
+\mu(U)=\sup_{K\subset U,\ K\ {\rm compact}}\mu(K).
+\tag{HR-01c}
+$$">$$
+\mu(U)=v(U),\qquad
+\mu(U)=\sup_{K\subset U,\ K\ {\rm compact}}\mu(K).
+\tag{HR-01c}
+$$</span>
+<p><strong>Proof.</strong> Monotonicity and the empty-set value are immediate. For countable subadditivity it suffices to treat a finite sum of individual outer measures or a convergent infinite sum. Given <span class="math" data-tex="$\epsilon&gt;0$">$\epsilon&gt;0$</span>, choose open <span class="math" data-tex="$U_j\supset E_j$">$U_j\supset E_j$</span> with <span class="math" data-tex="$v(U_j)&lt;\mu^*(E_j)+\epsilon2^{-j}$">$v(U_j)&lt;\mu^*(E_j)+\epsilon2^{-j}$</span>. The valuation estimate on their union gives subadditivity on letting <span class="math" data-tex="$\epsilon$">$\epsilon$</span> decrease to zero. When the sum is infinite, the claimed inequality is automatic. If <span class="math" data-tex="$U$">$U$</span> is open, monotonicity gives <span class="math" data-tex="$\mu^*(U)=v(U)$">$\mu^*(U)=v(U)$</span>.</p>
+<p>We verify the splitting criterion of <a href="scalar-measure-convergence-and-calculus.html#sc-01">SC-01</a> for an arbitrary open <span class="math" data-tex="$V$">$V$</span>. Take a subset <span class="math" data-tex="$A$">$A$</span> with <span class="math" data-tex="$\mu^*(A)&lt;\infty$">$\mu^*(A)&lt;\infty$</span>, and open <span class="math" data-tex="$U\supset A$">$U\supset A$</span> with <span class="math" data-tex="$v(U)&lt;\mu^*(A)+\epsilon$">$v(U)&lt;\mu^*(A)+\epsilon$</span>. If <span class="math" data-tex="$v(U\cap V)=0$">$v(U\cap V)=0$</span>, monotonicity gives
+<span class="math" data-tex="$\mu^*(A\cap V)+\mu^*(A\setminus V)\leq v(U)$">$\mu^*(A\cap V)+\mu^*(A\setminus V)\leq v(U)$</span>.
+Otherwise choose <span class="math" data-tex="$a\geq0$">$a\geq0$</span>, <span class="math" data-tex="$a&lt;v(U\cap V)$">$a&lt;v(U\cap V)$</span>, within <span class="math" data-tex="$\epsilon$">$\epsilon$</span> of that finite value, and a compact <span class="math" data-tex="$K\subset U\cap V$">$K\subset U\cap V$</span> satisfying (HR-01a). Shrinking gives an open <span class="math" data-tex="$W$">$W$</span> with
+<span class="math" data-tex="$K\subset W\subset\overline W\subset U\cap V$">$K\subset W\subset\overline W\subset U\cap V$</span>.
+The two disjoint open subsets <span class="math" data-tex="$W$">$W$</span> and <span class="math" data-tex="$U\setminus\overline W$">$U\setminus\overline W$</span> of <span class="math" data-tex="$U$">$U$</span> give</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+v(U)&amp;\geq v(W)+v(U\setminus\overline W)\\
+&amp;&gt;v(U\cap V)-\epsilon+\mu^*(A\setminus V)\\
+&amp;\geq\mu^*(A\cap V)+\mu^*(A\setminus V)-\epsilon.
+\end{aligned}
+$$">$$
+\begin{aligned}
+v(U)&amp;\geq v(W)+v(U\setminus\overline W)\\
+&amp;&gt;v(U\cap V)-\epsilon+\mu^*(A\setminus V)\\
+&amp;\geq\mu^*(A\cap V)+\mu^*(A\setminus V)-\epsilon.
+\end{aligned}
+$$</span>
+<p>Let <span class="math" data-tex="$\epsilon$">$\epsilon$</span> decrease to zero. <a href="scalar-measure-convergence-and-calculus.html#sc-01">SC-01</a> proves that every open set, and hence every Borel set, is measurable for <span class="math" data-tex="$\mu^*$">$\mu^*$</span>; it also proves countable additivity and completeness on the full splitting domain. Our measure <span class="math" data-tex="$\mu$">$\mu$</span> is its Borel restriction. Local finiteness of <span class="math" data-tex="$v$">$v$</span> and a finite neighbourhood cover make every compact set finite.</p>
+<p>For <span class="math" data-tex="$K$">$K$</span> in (HR-01a), <span class="math" data-tex="$\mu(K)=\inf_{W\supset K}v(W)\geq a$">$\mu(K)=\inf_{W\supset K}v(W)\geq a$</span>. Taking the supremum of such <span class="math" data-tex="$a$">$a$</span> gives the inner regularity in (HR-01c). The reverse inequality follows from monotonicity. Formula (HR-01b) is precisely Borel outer regularity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The splitting measure can have additional measurable sets besides the completion of the Borel measure. We use the Borel measure and its completion, without identifying those two sigma algebras.</p>
+<p><span id="hr-02"></span></p>
+<p><span id="oa-flow.hr.2"></span></p>
+<h2 id="hr-02-the-general-riesz-representation-construction">HR-02. The general Riesz representation construction</h2>
+<p><strong>Theorem <a href="haar-and-radon-foundations.html#hr-02">HR-02</a>.</strong> Every positive functional <span class="math" data-tex="$I:C_c(X)\to\mathbb C$">$I:C_c(X)\to\mathbb C$</span> is represented by a unique outer regular Radon measure:</p>
+<span id="equation-hr-02a"></span><span class="math math-display" data-tex="$$
+I(f)=\int_X f\,d\mu\quad(f\in C_c(X)).
+\tag{HR-02a}
+$$">$$
+I(f)=\int_X f\,d\mu\quad(f\in C_c(X)).
+\tag{HR-02a}
+$$</span>
+<p>There is no global supremum-norm boundedness assumption on <span class="math" data-tex="$I$">$I$</span>. Its exact regularity formulae are</p>
+<span id="equation-hr-02b"></span><span class="math math-display" data-tex="$$
+\mu(U)=\sup_{f\prec U}I(f),\qquad
+\mu(K)=\inf_{\substack{g\in C_c(X)\\1_K\leq g}}I(g).
+\tag{HR-02b}
+$$">$$
+\mu(U)=\sup_{f\prec U}I(f),\qquad
+\mu(K)=\inf_{\substack{g\in C_c(X)\\1_K\leq g}}I(g).
+\tag{HR-02b}
+$$</span>
+<p>The second infimum is over nonnegative real functions; <span class="math" data-tex="$1_K\leq g$">$1_K\leq g$</span> includes nonnegativity off <span class="math" data-tex="$K$">$K$</span>.</p>
+<p><strong>Proof.</strong> A real compact continuous function is the difference of its positive and negative parts. Thus its image under <span class="math" data-tex="$I$">$I$</span> is real, and positivity implies order preservation. If <span class="math" data-tex="$g\in C_c(X)$">$g\in C_c(X)$</span> is one on a fixed compact <span class="math" data-tex="$L$">$L$</span>, then</p>
+<span id="equation-hr-02c"></span><span class="math math-display" data-tex="$$
+|I(f)|\leq I(|f|)\leq\|f\|_\infty I(g)
+\quad(\operatorname{supp}f\subset L).
+\tag{HR-02c}
+$$">$$
+|I(f)|\leq I(|f|)\leq\|f\|_\infty I(g)
+\quad(\operatorname{supp}f\subset L).
+\tag{HR-02c}
+$$</span>
+<p>For the first inequality, multiply <span class="math" data-tex="$I(f)$">$I(f)$</span> by a scalar of modulus one making it nonnegative real, take the real part of the same scalar times <span class="math" data-tex="$f$">$f$</span>, and use its pointwise bound by <span class="math" data-tex="$|f|$">$|f|$</span>.</p>
+<p>Define <span class="math" data-tex="$v(U)=\sup_{f\prec U}I(f)$">$v(U)=\sup_{f\prec U}I(f)$</span>, including the zero function. It is monotone and zero on the empty set. For a relatively compact open <span class="math" data-tex="$U$">$U$</span>, take <span class="math" data-tex="$g=1$">$g=1$</span> on <span class="math" data-tex="$\overline U$">$\overline U$</span>; (HR-02c) gives <span class="math" data-tex="$v(U)\leq I(g)&lt;\infty$">$v(U)\leq I(g)&lt;\infty$</span>.</p>
+<p>If <span class="math" data-tex="$f\prec\bigcup_jU_j$">$f\prec\bigcup_jU_j$</span>, a finite subfamily covers its compact support. <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0.2</a> gives nonnegative compact functions <span class="math" data-tex="$h_j$">$h_j$</span> subordinate to that subfamily, with sum one there. Then <span class="math" data-tex="$f=\sum_jfh_j$">$f=\sum_jfh_j$</span>, each <span class="math" data-tex="$fh_j\prec U_j$">$fh_j\prec U_j$</span>, and <span class="math" data-tex="$I(f)\leq\sum_jv(U_j)$">$I(f)\leq\sum_jv(U_j)$</span>. Taking the supremum proves countable open subadditivity. If <span class="math" data-tex="$U,V$">$U,V$</span> are disjoint, sums of functions subordinate to them are still bounded by one, so <span class="math" data-tex="$v(U\cup V)\geq v(U)+v(V)$">$v(U\cup V)\geq v(U)+v(V)$</span>; subadditivity proves equality, including infinite values.</p>
+<p>For <span class="math" data-tex="$a&lt;v(U)$">$a&lt;v(U)$</span>, choose <span class="math" data-tex="$f\prec U$">$f\prec U$</span> with <span class="math" data-tex="$I(f)&gt;a$">$I(f)&gt;a$</span>. Its compact support <span class="math" data-tex="$K$">$K$</span> satisfies (HR-01a), because <span class="math" data-tex="$f\prec W$">$f\prec W$</span> for every open <span class="math" data-tex="$W\supset K$">$W\supset K$</span>. <a href="haar-and-radon-foundations.html#hr-01">HR-01</a> constructs the desired Radon measure and the open-set formula in (HR-02b).</p>
+<p>We first establish the compact formula without assuming representation. If <span class="math" data-tex="$g\geq1_K$">$g\geq1_K$</span> and <span class="math" data-tex="$0&lt;\eta&lt;1$">$0&lt;\eta&lt;1$</span>, then <span class="math" data-tex="$V=\{g&gt;1-\eta\}$">$V=\{g&gt;1-\eta\}$</span> contains <span class="math" data-tex="$K$">$K$</span>. For every <span class="math" data-tex="$h\prec V$">$h\prec V$</span>, <span class="math" data-tex="$(1-\eta)h\leq g$">$(1-\eta)h\leq g$</span>, so</p>
+<span class="math math-display" data-tex="$$
+\mu(K)\leq v(V)\leq I(g)/(1-\eta).
+$$">$$
+\mu(K)\leq v(V)\leq I(g)/(1-\eta).
+$$</span>
+<p>Letting <span class="math" data-tex="$\eta$">$\eta$</span> decrease to zero gives <span class="math" data-tex="$\mu(K)\leq I(g)$">$\mu(K)\leq I(g)$</span>. Conversely, an open neighbourhood <span class="math" data-tex="$U\supset K$">$U\supset K$</span> has a cutoff <span class="math" data-tex="$g\prec U$">$g\prec U$</span> equal to one on <span class="math" data-tex="$K$">$K$</span>. Thus <span class="math" data-tex="$I(g)\leq v(U)$">$I(g)\leq v(U)$</span>. Infima over <span class="math" data-tex="$U$">$U$</span> prove the compact formula.</p>
+<p>Now let <span class="math" data-tex="$f\geq0$">$f\geq0$</span> have compact support <span class="math" data-tex="$K$">$K$</span>, choose <span class="math" data-tex="$g\in C_c(X)$">$g\in C_c(X)$</span>, <span class="math" data-tex="$0\leq g\leq1$">$0\leq g\leq1$</span>, one on <span class="math" data-tex="$K$">$K$</span>, and fix <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>. Choose a positive integer <span class="math" data-tex="$N$">$N$</span> with <span class="math" data-tex="$N\delta\geq\|f\|_\infty$">$N\delta\geq\|f\|_\infty$</span>. For each <span class="math" data-tex="$1\leq j\leq N$">$1\leq j\leq N$</span>, functions <span class="math" data-tex="$h_j\prec\{f&gt;j\delta\}$">$h_j\prec\{f&gt;j\delta\}$</span> satisfy <span class="math" data-tex="$\delta\sum_jh_j\leq f$">$\delta\sum_jh_j\leq f$</span>. Taking their individual functional suprema gives</p>
+<span id="equation-hr-02d"></span><span class="math math-display" data-tex="$$
+I(f)\geq\delta\sum_{j=1}^N\mu(\{f&gt;j\delta\}).
+\tag{HR-02d}
+$$">$$
+I(f)\geq\delta\sum_{j=1}^N\mu(\{f&gt;j\delta\}).
+\tag{HR-02d}
+$$</span>
+<p>The scalar simple function on the right differs below <span class="math" data-tex="$f$">$f$</span> by at most <span class="math" data-tex="$\delta1_K$">$\delta1_K$</span>, so <span class="math" data-tex="$I(f)\geq\int f-\delta\mu(K)$">$I(f)\geq\int f-\delta\mu(K)$</span>.</p>
+<p>For the upper bound, each <span class="math" data-tex="$K_j=\{f\geq j\delta\}$">$K_j=\{f\geq j\delta\}$</span> is compact. By the compact formula choose <span class="math" data-tex="$0\leq k_j\leq1$">$0\leq k_j\leq1$</span>, one on <span class="math" data-tex="$K_j$">$K_j$</span>, with <span class="math" data-tex="$I(k_j)\leq\mu(K_j)+\eta/N$">$I(k_j)\leq\mu(K_j)+\eta/N$</span>. Such bounded cutoffs suffice for the infimum: starting with an open neighbourhood whose valuation is close to <span class="math" data-tex="$\mu(K_j)$">$\mu(K_j)$</span> gives one. Pointwise,
+<span class="math" data-tex="$f\leq\delta g+\delta\sum_jk_j$">$f\leq\delta g+\delta\sum_jk_j$</span>.
+Also <span class="math" data-tex="$\delta\sum_j1_{K_j}\leq f$">$\delta\sum_j1_{K_j}\leq f$</span>. Consequently</p>
+<span class="math math-display" data-tex="$$
+I(f)\leq\delta I(g)+\delta\sum_j\mu(K_j)+\delta\eta
+\leq\delta I(g)+\int f+\delta\eta.
+$$">$$
+I(f)\leq\delta I(g)+\delta\sum_j\mu(K_j)+\delta\eta
+\leq\delta I(g)+\int f+\delta\eta.
+$$</span>
+<p>Let <span class="math" data-tex="$\eta,\delta$">$\eta,\delta$</span> decrease to zero. Representation follows for nonnegative <span class="math" data-tex="$f$">$f$</span>, then for real and complex <span class="math" data-tex="$f$">$f$</span> by linearity. A representing Radon measure has the same open formula, because compact cutoffs give the lower bound and inner open regularity gives equality. Outer regularity then determines it on every Borel set. This proves uniqueness. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Every positive functional <span class="math" data-tex="$I:C_0(X)\to\mathbb C$">$I:C_0(X)\to\mathbb C$</span> is automatically bounded. Indeed, positivity gives <span class="math" data-tex="$|I(f)|\leq I(|f|)$">$|I(f)|\leq I(|f|)$</span> as in (HR-02c). If it were unbounded, choose nonnegative <span class="math" data-tex="$f_n\in C_0(X)$">$f_n\in C_0(X)$</span> with <span class="math" data-tex="$\|f_n\|_\infty\leq2^{-n}$">$\|f_n\|_\infty\leq2^{-n}$</span> and <span class="math" data-tex="$I(f_n)\geq1$">$I(f_n)\geq1$</span>. Their uniformly convergent sum <span class="math" data-tex="$f$">$f$</span> belongs to <span class="math" data-tex="$C_0(X)$">$C_0(X)$</span>: uniform limits are continuous, and the sets where a limit has modulus at least <span class="math" data-tex="$\epsilon$">$\epsilon$</span> lie in the compact corresponding level set of a sufficiently close approximant. Since <span class="math" data-tex="$f\geq\sum_{n=1}^Nf_n$">$f\geq\sum_{n=1}^Nf_n$</span>, positivity would give <span class="math" data-tex="$I(f)\geq N$">$I(f)\geq N$</span> for every <span class="math" data-tex="$N$">$N$</span>, a contradiction.</p>
+<p>Restriction to <span class="math" data-tex="$C_c(X)$">$C_c(X)$</span> therefore gives a finite measure, since <span class="math" data-tex="$\mu(X)=\sup_{f\prec X}I(f)\leq\|I\|$">$\mu(X)=\sup_{f\prec X}I(f)\leq\|I\|$</span>. Compact cutoffs show <span class="math" data-tex="$C_c(X)$">$C_c(X)$</span> uniformly dense in <span class="math" data-tex="$C_0(X)$">$C_0(X)$</span>: cut off a function on the compact set where its modulus is at least <span class="math" data-tex="$\epsilon$">$\epsilon$</span>. Boundedness and finite-measure integration extend (HR-02a) to <span class="math" data-tex="$C_0(X)$">$C_0(X)$</span>. The same cutoffs and the bound <span class="math" data-tex="$|I(f)|\leq\int|f|$">$|I(f)|\leq\int|f|$</span> show</p>
+<span id="equation-hr-02e"></span><span class="math math-display" data-tex="$$
+\|I\|=\mu(X).
+\tag{HR-02e}
+$$">$$
+\|I\|=\mu(X).
+\tag{HR-02e}
+$$</span>
+<p>Thus arbitrary positive functionals on <span class="math" data-tex="$C_0(X)$">$C_0(X)$</span>, without an assumed continuity hypothesis, correspond exactly to finite positive outer regular Radon measures, with the displayed norm/mass identity.</p>
+<p><span id="hr-03"></span></p>
+<p><span id="oa-flow.hr.3"></span></p>
+<h2 id="hr-03-finite-set-regularity-densities-and-l-p-approximation">HR-03. Finite-set regularity, densities and <span class="math" data-tex="$L^p$">$L^p$</span> approximation</h2>
+<p><strong>Proposition <a href="haar-and-radon-foundations.html#hr-03">HR-03</a>.</strong> An outer regular Radon measure is inner regular on every Borel set of finite measure, and on every sigma-finite Borel set. Each sigma-finite Borel set is a countable union of compact sets modulo a Borel null set. The same approximation conclusions hold for its completion.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$E$">$E$</span> be Borel with finite measure. Choose open <span class="math" data-tex="$U\supset E$">$U\supset E$</span> with <span class="math" data-tex="$\mu(U)&lt;\mu(E)+\epsilon$">$\mu(U)&lt;\mu(E)+\epsilon$</span>, compact <span class="math" data-tex="$K\subset U$">$K\subset U$</span> with <span class="math" data-tex="$\mu(K)&gt;\mu(U)-\epsilon$">$\mu(K)&gt;\mu(U)-\epsilon$</span>, and open <span class="math" data-tex="$V\supset U\setminus E$">$V\supset U\setminus E$</span> with <span class="math" data-tex="$\mu(V)&lt;\mu(U\setminus E)+\epsilon$">$\mu(V)&lt;\mu(U\setminus E)+\epsilon$</span>. The compact <span class="math" data-tex="$C=K\setminus V$">$C=K\setminus V$</span> lies in <span class="math" data-tex="$E$">$E$</span>, and</p>
+<span id="equation-hr-03a"></span><span class="math math-display" data-tex="$$
+\mu(C)\geq\mu(K)-\mu(V)&gt;\mu(E)-2\epsilon.
+\tag{HR-03a}
+$$">$$
+\mu(C)\geq\mu(K)-\mu(V)&gt;\mu(E)-2\epsilon.
+\tag{HR-03a}
+$$</span>
+<p>Finite subtraction is valid because <span class="math" data-tex="$\mu(U)&lt;\infty$">$\mu(U)&lt;\infty$</span>. This proves finite-set inner regularity. A sigma-finite set is an increasing union of finite-measure Borel sets; SC-04's measure continuity and compact approximations prove its inner regularity. For each finite piece choose countably many compact subsets with errors tending to zero and take their union. Their union is contained in the original set, and the remaining Borel set is null. A completed measurable set differs from a Borel set by a subset of a Borel null set; a Borel subset with the same measure is obtained by removing that null superset, so the same conclusions follow.</p>
+<p>SC-07 supplies simple functions of finite-measure sets approximating any <span class="math" data-tex="$L^p$">$L^p$</span> function, <span class="math" data-tex="$1\leq p&lt;\infty$">$1\leq p&lt;\infty$</span>. For a finite-measure Borel <span class="math" data-tex="$E$">$E$</span>, choose compact <span class="math" data-tex="$K\subset E\subset U$">$K\subset E\subset U$</span> with <span class="math" data-tex="$\mu(U\setminus K)&lt;\epsilon$">$\mu(U\setminus K)&lt;\epsilon$</span>, and a compact cutoff <span class="math" data-tex="$h=1$">$h=1$</span> on <span class="math" data-tex="$K$">$K$</span>, subordinate to <span class="math" data-tex="$U$">$U$</span>. Then</p>
+<span id="equation-hr-03b"></span><span class="math math-display" data-tex="$$
+|1_E-h|^p\leq1_{U\setminus K}.
+\tag{HR-03b}
+$$">$$
+|1_E-h|^p\leq1_{U\setminus K}.
+\tag{HR-03b}
+$$</span>
+<p>This proves density of <span class="math" data-tex="$C_c(X)$">$C_c(X)$</span> in finite-exponent <span class="math" data-tex="$L^p(\mu)$">$L^p(\mu)$</span>. Completion gives Borel representatives of measurable functions: replace the sets in a sequence of simple approximants by Borel sets and discard the countable union of their null discrepancies. SC-07's finite level sets and the first paragraph show that every finite-exponent class has a Borel representative with a sigma compact carrier.</p>
+<p>We also need the exact finite-density statement. If <span class="math" data-tex="$w\geq0$">$w\geq0$</span> is Borel and <span class="math" data-tex="$\int w\,d\mu&lt;\infty$">$\int w\,d\mu&lt;\infty$</span>, then <span class="math" data-tex="$\nu(E)=\int_Ew\,d\mu$">$\nu(E)=\int_Ew\,d\mu$</span> is a finite outer regular Radon measure. Approximate <span class="math" data-tex="$w$">$w$</span> in <span class="math" data-tex="$L^1(\mu)$">$L^1(\mu)$</span> by nonnegative simple functions <span class="math" data-tex="$\sum_jc_j1_{E_j}$">$\sum_jc_j1_{E_j}$</span> with <span class="math" data-tex="$\mu(E_j)&lt;\infty$">$\mu(E_j)&lt;\infty$</span>, using SC-07. Each restricted finite measure <span class="math" data-tex="$\mu(E_j\cap\,\cdot\,)$">$\mu(E_j\cap\,\cdot\,)$</span> is inner regular by the finite-set result. To see its outer regularity at a Borel <span class="math" data-tex="$B$">$B$</span>, choose compact <span class="math" data-tex="$C\subset E_j\setminus B$">$C\subset E_j\setminus B$</span> whose measure is close to that finite set's measure; <span class="math" data-tex="$X\setminus C$">$X\setminus C$</span> contains <span class="math" data-tex="$B$">$B$</span>, with arbitrarily small excess in the restricted measure. Finite sums retain both approximations. The <span class="math" data-tex="$L^1$">$L^1$</span> error bounds the difference of the two measures on every Borel set uniformly; transferring compact and open approximants with this bound proves regularity of <span class="math" data-tex="$\nu$">$\nu$</span>. This argument does not assert outer regularity for arbitrary nonintegrable densities.</p>
+<p>If <span class="math" data-tex="$w$">$w$</span> is continuous and strictly positive, possibly nonintegrable, <span class="math" data-tex="$w\,\mu$">$w\,\mu$</span> is also outer regular Radon. It is finite on compact sets. If its value at <span class="math" data-tex="$E$">$E$</span> is finite, partition <span class="math" data-tex="$E$">$E$</span> into countably many Borel level pieces on which <span class="math" data-tex="$w$">$w$</span> is bounded below and above. Each piece is <span class="math" data-tex="$\mu$">$\mu$</span>-finite, so it has open supersets, inside the corresponding open upper-bound region for <span class="math" data-tex="$w$">$w$</span>, with weighted excess less than <span class="math" data-tex="$\epsilon2^{-j}$">$\epsilon2^{-j}$</span>. Their union proves weighted outer regularity; when the value is infinite it is automatic. Finite-set compact approximation on these pieces gives inner regularity on finite sets. For an open <span class="math" data-tex="$U$">$U$</span>, the integral of <span class="math" data-tex="$w1_U$">$w1_U$</span> is the supremum of the integrals over finite unions of such finite-measure pieces lying in compact subsets: truncate <span class="math" data-tex="$w$">$w$</span>, and use compact approximation of the open sets <span class="math" data-tex="$\{w&gt;t\}\cap U$">$\{w&gt;t\}\cap U$</span> at finitely many positive levels as in (HR-02d). This proves inner regularity on open sets. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="hr-04"></span></p>
+<p><span id="oa-flow.hr.4"></span></p>
+<h2 id="hr-04-a-compact-content-construction">HR-04. A compact-content construction</h2>
+<p><strong>Lemma <a href="haar-and-radon-foundations.html#hr-04">HR-04</a>.</strong> Suppose a nonnegative finite function <span class="math" data-tex="$c$">$c$</span> on compact subsets of <span class="math" data-tex="$X$">$X$</span> is zero on the empty set, monotone, subadditive on finite unions, and additive on disjoint compact unions. Suppose <span class="math" data-tex="$c$">$c$</span> is bounded on the compact subsets of some neighbourhood of each point. Define</p>
+<span id="equation-hr-04a"></span><span class="math math-display" data-tex="$$
+v(U)=\sup_{K\subset U,\ K\ {\rm compact}}c(K).
+\tag{HR-04a}
+$$">$$
+v(U)=\sup_{K\subset U,\ K\ {\rm compact}}c(K).
+\tag{HR-04a}
+$$</span>
+<p>Then <a href="haar-and-radon-foundations.html#hr-01">HR-01</a> applies and gives an outer regular Radon measure. Its compact values satisfy</p>
+<span id="equation-hr-04b"></span><span class="math math-display" data-tex="$$
+\mu(K)=\inf_{U\supset K,\ U\ {\rm open}}\
+\sup_{L\subset U,\ L\ {\rm compact}}c(L)\geq c(K).
+\tag{HR-04b}
+$$">$$
+\mu(K)=\inf_{U\supset K,\ U\ {\rm open}}\
+\sup_{L\subset U,\ L\ {\rm compact}}c(L)\geq c(K).
+\tag{HR-04b}
+$$</span>
+<p>No countable additivity of <span class="math" data-tex="$c$">$c$</span> is assumed.</p>
+<p><strong>Proof.</strong> A compact <span class="math" data-tex="$K$">$K$</span> covered by finitely many opens <span class="math" data-tex="$U_j$">$U_j$</span> is covered by compact subsets <span class="math" data-tex="$K_j\subset K\cap U_j$">$K_j\subset K\cap U_j$</span>: shrink a finite neighbourhood refinement inside the <span class="math" data-tex="$U_j$">$U_j$</span>, and intersect its compact closures with <span class="math" data-tex="$K$">$K$</span>. Thus <span class="math" data-tex="$c(K)\leq\sum_jc(K_j)\leq\sum_jv(U_j)$">$c(K)\leq\sum_jc(K_j)\leq\sum_jv(U_j)$</span>. Every compact subset of a countable open union has such a finite subcover, proving countable subadditivity of <span class="math" data-tex="$v$">$v$</span>. For disjoint opens, disjoint compact approximants and finite disjoint additivity of <span class="math" data-tex="$c$">$c$</span> prove the reverse inequality, so <span class="math" data-tex="$v$">$v$</span> is additive there. The local boundedness gives local finiteness. If <span class="math" data-tex="$c(K)&gt;a$">$c(K)&gt;a$</span>, every open <span class="math" data-tex="$W\supset K$">$W\supset K$</span> has <span class="math" data-tex="$v(W)\geq c(K)&gt;a$">$v(W)\geq c(K)&gt;a$</span>; this proves (HR-01a). <a href="haar-and-radon-foundations.html#hr-01">HR-01</a> gives the measure and the formula. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="hr-05"></span></p>
+<p><span id="oa-flow.hr.5"></span></p>
+<h2 id="hr-05-the-radon-product-without-a-product-borel-assumption">HR-05. The Radon product, without a product-Borel assumption</h2>
+<p><strong>Theorem <a href="haar-and-radon-foundations.html#hr-05">HR-05</a>.</strong> If <span class="math" data-tex="$\mu,\nu$">$\mu,\nu$</span> are outer regular Radon measures on <span class="math" data-tex="$X,Y$">$X,Y$</span>, there is a unique such measure <span class="math" data-tex="$\pi=\mu\widehat\times\nu$">$\pi=\mu\widehat\times\nu$</span> on the full Borel sigma algebra of <span class="math" data-tex="$X\times Y$">$X\times Y$</span> such that, for <span class="math" data-tex="$F\in C_c(X\times Y)$">$F\in C_c(X\times Y)$</span>,</p>
+<span id="equation-hr-05a"></span><span class="math math-display" data-tex="$$
+\int F\,d\pi=\int_X\!\int_Y F(x,y)\,d\nu(y)\,d\mu(x)
+=\int_Y\!\int_X F(x,y)\,d\mu(x)\,d\nu(y).
+\tag{HR-05a}
+$$">$$
+\int F\,d\pi=\int_X\!\int_Y F(x,y)\,d\nu(y)\,d\mu(x)
+=\int_Y\!\int_X F(x,y)\,d\mu(x)\,d\nu(y).
+\tag{HR-05a}
+$$</span>
+<p><strong>Proof.</strong> The compact support has compact coordinate projections. The inner integral is continuous, has compact support in the first projection, and satisfies a supremum-norm estimate using the finite measure of the second projection. Continuity follows from a finite product-neighbourhood cover of a compact set: the slices of a continuous function change uniformly there when the first coordinate changes. Thus the first iterated integral defines a positive linear functional on <span class="math" data-tex="$C_c(X\times Y)$">$C_c(X\times Y)$</span>. Compact-support product approximation from <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0</a> proves equality with the second iterated integral: equality holds for finite sums of products, and the errors are bounded by their uniform error times the product of two finite compact measures. <a href="haar-and-radon-foundations.html#hr-02">HR-02</a> supplies <span class="math" data-tex="$\pi$">$\pi$</span>, and its uniqueness proves symmetry. No claim about the equality of sigma algebras is used.</p>
+<p>Two scalar approximation facts will be useful. For nonnegative lower semicontinuous <span class="math" data-tex="$h$">$h$</span>,</p>
+<span id="equation-hr-05b"></span><span class="math math-display" data-tex="$$
+\int h\,d\mu=\sup\left\{\int f\,d\mu: f\in C_c(X),\ 0\leq f\leq h\right\}.
+\tag{HR-05b}
+$$">$$
+\int h\,d\mu=\sup\left\{\int f\,d\mu: f\in C_c(X),\ 0\leq f\leq h\right\}.
+\tag{HR-05b}
+$$</span>
+<p>Indeed, at finitely many positive levels <span class="math" data-tex="$j\delta$">$j\delta$</span>, choose cutoffs subordinate to <span class="math" data-tex="$\{h&gt;j\delta\}$">$\{h&gt;j\delta\}$</span> whose integrals approach the measures of those open sets. Their sum times <span class="math" data-tex="$\delta$">$\delta$</span> lies below <span class="math" data-tex="$h$">$h$</span>. The resulting lower sums approach the integral by SC-04 and SC-05; truncation handles infinite integrals. Conversely, if <span class="math" data-tex="$h$">$h$</span> is bounded, nonnegative, upper semicontinuous and supported in a compact <span class="math" data-tex="$K$">$K$</span>, then there are nonnegative <span class="math" data-tex="$f\in C_c(X)$">$f\in C_c(X)$</span>, <span class="math" data-tex="$f\geq h$">$f\geq h$</span>, whose integrals approach <span class="math" data-tex="$\int h$">$\int h$</span>. The positive-level sets <span class="math" data-tex="$\{h\geq j\delta\}$">$\{h\geq j\delta\}$</span> are compact. Choose cutoffs one on each, with integrals close to their measures by (HR-02b), and add <span class="math" data-tex="$\delta g$">$\delta g$</span> with <span class="math" data-tex="$g=1$">$g=1$</span> on <span class="math" data-tex="$K$">$K$</span>. The same upper-sum argument as <a href="haar-and-radon-foundations.html#hr-02">HR-02</a> proves the assertion. All cutoffs can be chosen in a fixed relatively compact neighbourhood of <span class="math" data-tex="$K$">$K$</span>.</p>
+<p>For open <span class="math" data-tex="$W\subset X\times Y$">$W\subset X\times Y$</span>, the function <span class="math" data-tex="$h(x)=\nu(W_x)$">$h(x)=\nu(W_x)$</span> is lower semicontinuous. If <span class="math" data-tex="$h(x)&gt;a$">$h(x)&gt;a$</span>, choose compact <span class="math" data-tex="$L\subset W_x$">$L\subset W_x$</span> with measure exceeding <span class="math" data-tex="$a$">$a$</span>; finitely many rectangles in <span class="math" data-tex="$W$">$W$</span> give a neighbourhood <span class="math" data-tex="$V$">$V$</span> of <span class="math" data-tex="$x$">$x$</span> with <span class="math" data-tex="$V\times L\subset W$">$V\times L\subset W$</span>. We claim</p>
+<span id="equation-hr-05c"></span><span class="math math-display" data-tex="$$
+\pi(W)=\int\nu(W_x)\,d\mu(x).
+\tag{HR-05c}
+$$">$$
+\pi(W)=\int\nu(W_x)\,d\mu(x).
+\tag{HR-05c}
+$$</span>
+<p>The inequality from left to right follows by integrating every <span class="math" data-tex="$F\prec W$">$F\prec W$</span> in (HR-05a) and taking its supremum. For the reverse inequality, take <span class="math" data-tex="$0\leq f\in C_c(X)$">$0\leq f\in C_c(X)$</span>, <span class="math" data-tex="$f\leq h$">$f\leq h$</span>, and its compact support <span class="math" data-tex="$K$">$K$</span>. At each point <span class="math" data-tex="$x\in K$">$x\in K$</span>, choose <span class="math" data-tex="$g_x\prec W_x$">$g_x\prec W_x$</span> with <span class="math" data-tex="$\int g_x\,d\nu&gt;f(x)-\epsilon$">$\int g_x\,d\nu&gt;f(x)-\epsilon$</span>, using the open formula of <a href="haar-and-radon-foundations.html#hr-02">HR-02</a>. If <span class="math" data-tex="$f(x)=0$">$f(x)=0$</span>, the zero function suffices. Compactness of <span class="math" data-tex="$\operatorname{supp}g_x$">$\operatorname{supp}g_x$</span> gives a neighbourhood <span class="math" data-tex="$V_x$">$V_x$</span> where all these slices remain inside <span class="math" data-tex="$W$">$W$</span>; shrink <span class="math" data-tex="$V_x$">$V_x$</span> further so that <span class="math" data-tex="$f(z)&lt;f(x)+\epsilon$">$f(z)&lt;f(x)+\epsilon$</span>. A finite subordinate partition <span class="math" data-tex="$(a_j)$">$(a_j)$</span>, with sum one on <span class="math" data-tex="$K$">$K$</span> and at most one everywhere, gives
+<span class="math" data-tex="$F(z,y)=\sum_ja_j(z)g_{x_j}(y)\prec W$">$F(z,y)=\sum_ja_j(z)g_{x_j}(y)\prec W$</span>.
+Its inner integral is at least <span class="math" data-tex="$f(z)-2\epsilon$">$f(z)-2\epsilon$</span> on <span class="math" data-tex="$K$">$K$</span>, and nonnegative elsewhere. Therefore <span class="math" data-tex="$\pi(W)\geq\int f-2\epsilon\mu(K)$">$\pi(W)\geq\int f-2\epsilon\mu(K)$</span>. Use (HR-05b) and let <span class="math" data-tex="$\epsilon$">$\epsilon$</span> decrease to zero.</p>
+<p>For compact <span class="math" data-tex="$C\subset X\times Y$">$C\subset X\times Y$</span>, the function <span class="math" data-tex="$h_C(x)=\nu(C_x)$">$h_C(x)=\nu(C_x)$</span> is upper semicontinuous, bounded and compactly supported. To prove upper semicontinuity at <span class="math" data-tex="$x$">$x$</span>, choose an open <span class="math" data-tex="$O\supset C_x$">$O\supset C_x$</span> with <span class="math" data-tex="$\nu(O)$">$\nu(O)$</span> arbitrarily close to <span class="math" data-tex="$\nu(C_x)$">$\nu(C_x)$</span>. The projection of the compact set <span class="math" data-tex="$C\setminus(X\times O)$">$C\setminus(X\times O)$</span> is closed and omits <span class="math" data-tex="$x$">$x$</span>; nearby slices are therefore contained in <span class="math" data-tex="$O$">$O$</span>. The assertion outside the compact first projection follows in the same way. Each slice is compact, so its value is finite.</p>
+<p>If <span class="math" data-tex="$F\in C_c(X\times Y)$">$F\in C_c(X\times Y)$</span> and <span class="math" data-tex="$F\geq1_C$">$F\geq1_C$</span>, (HR-05a) gives <span class="math" data-tex="$\int h_C\,d\mu\leq\int F\,d\pi$">$\int h_C\,d\mu\leq\int F\,d\pi$</span>. The compact formula of <a href="haar-and-radon-foundations.html#hr-02">HR-02</a> gives <span class="math" data-tex="$\int h_C\,d\mu\leq\pi(C)$">$\int h_C\,d\mu\leq\pi(C)$</span>.
+For the other inequality take <span class="math" data-tex="$f\in C_c(X)$">$f\in C_c(X)$</span>, <span class="math" data-tex="$f\geq h_C$">$f\geq h_C$</span>, with integral within <span class="math" data-tex="$\epsilon$">$\epsilon$</span> of that of <span class="math" data-tex="$h_C$">$h_C$</span>. At each <span class="math" data-tex="$x$">$x$</span> in the first projection <span class="math" data-tex="$K$">$K$</span> of <span class="math" data-tex="$C$">$C$</span>, choose an open relatively compact <span class="math" data-tex="$O_x\supset C_x$">$O_x\supset C_x$</span> with <span class="math" data-tex="$\nu(O_x)&lt;h_C(x)+\delta$">$\nu(O_x)&lt;h_C(x)+\delta$</span>, and a cutoff <span class="math" data-tex="$g_x=1$">$g_x=1$</span> on a smaller open neighbourhood of <span class="math" data-tex="$C_x$">$C_x$</span>, with support in <span class="math" data-tex="$O_x$">$O_x$</span>. Compact projection separation gives a neighbourhood <span class="math" data-tex="$V_x$">$V_x$</span> such that <span class="math" data-tex="$g_x=1$">$g_x=1$</span> on <span class="math" data-tex="$C_z$">$C_z$</span> for <span class="math" data-tex="$z\in V_x$">$z\in V_x$</span>. Shrink it so that <span class="math" data-tex="$f(z)&gt;f(x)-\delta$">$f(z)&gt;f(x)-\delta$</span>. Choose all <span class="math" data-tex="$V_x$">$V_x$</span> within a fixed relatively compact neighbourhood <span class="math" data-tex="$P$">$P$</span> of <span class="math" data-tex="$K$">$K$</span>. A finite partition <span class="math" data-tex="$(a_j)$">$(a_j)$</span> yields <span class="math" data-tex="$F(z,y)=\sum_ja_j(z)g_{x_j}(y)$">$F(z,y)=\sum_ja_j(z)g_{x_j}(y)$</span>, equal to one on <span class="math" data-tex="$C$">$C$</span>, and</p>
+<span class="math math-display" data-tex="$$
+\int F(z,y)\,d\nu(y)\leq f(z)+2\delta1_{\overline P}(z).
+$$">$$
+\int F(z,y)\,d\nu(y)\leq f(z)+2\delta1_{\overline P}(z).
+$$</span>
+<p>The estimate follows from <span class="math" data-tex="$\int g_{x_j}\leq h_C(x_j)+\delta\leq f(x_j)+\delta&lt;f(z)+2\delta$">$\int g_{x_j}\leq h_C(x_j)+\delta\leq f(x_j)+\delta&lt;f(z)+2\delta$</span> wherever <span class="math" data-tex="$a_j(z)\neq0$">$a_j(z)\neq0$</span>, and <span class="math" data-tex="$\sum a_j\leq1$">$\sum a_j\leq1$</span>. Hence
+<span class="math" data-tex="$\pi(C)\leq\int h_C+\epsilon+2\delta\mu(\overline P)$">$\pi(C)\leq\int h_C+\epsilon+2\delta\mu(\overline P)$</span>.
+Let <span class="math" data-tex="$\epsilon,\delta$">$\epsilon,\delta$</span> decrease to zero. We have proved</p>
+<span id="equation-hr-05d"></span><span class="math math-display" data-tex="$$
+\pi(C)=\int\nu(C_x)\,d\mu(x).
+\tag{HR-05d}
+$$">$$
+\pi(C)=\int\nu(C_x)\,d\mu(x).
+\tag{HR-05d}
+$$</span>
+<p>Now let <span class="math" data-tex="$E$">$E$</span> be Borel and <span class="math" data-tex="$\pi(E)&lt;\infty$">$\pi(E)&lt;\infty$</span>. Choose increasing compact <span class="math" data-tex="$C_n\subset E$">$C_n\subset E$</span> and decreasing open <span class="math" data-tex="$W_n\supset E$">$W_n\supset E$</span>, with
+<span class="math" data-tex="$\pi(C_n)\to\pi(E)$">$\pi(C_n)\to\pi(E)$</span> and <span class="math" data-tex="$\pi(W_n)\to\pi(E)$">$\pi(W_n)\to\pi(E)$</span>.
+Their section measures are Borel by the preceding semicontinuity arguments. MCT applies to the compact sequence and DCT to the open sequence, whose first member has integrable section measure. Thus</p>
+<span class="math math-display" data-tex="$$
+\nu\!\left(\bigcup_n(C_n)_x\right)
+\leq\nu(E_x)\leq\lim_n\nu((W_n)_x)
+$$">$$
+\nu\!\left(\bigcup_n(C_n)_x\right)
+\leq\nu(E_x)\leq\lim_n\nu((W_n)_x)
+$$</span>
+<p>has equal outer bounds for <span class="math" data-tex="$\mu$">$\mu$</span>-almost every <span class="math" data-tex="$x$">$x$</span>. Every <span class="math" data-tex="$E_x$">$E_x$</span> is Borel, because the slice inclusion is continuous. It follows that its measure agrees almost everywhere with a Borel function and</p>
+<span id="equation-hr-05e"></span><span class="math math-display" data-tex="$$
+\pi(E)=\int\nu(E_x)\,d\mu(x).
+\tag{HR-05e}
+$$">$$
+\pi(E)=\int\nu(E_x)\,d\mu(x).
+\tag{HR-05e}
+$$</span>
+<p>In particular a <span class="math" data-tex="$\pi$">$\pi$</span>-null Borel set has null slices almost everywhere. A sigma-finite Borel <span class="math" data-tex="$E$">$E$</span> is a disjoint countable union of finite-measure Borel sets, so section additivity and MCT extend (HR-05e) to it.</p>
+<p>For a nonnegative Borel function <span class="math" data-tex="$F$">$F$</span> vanishing off a sigma-finite Borel carrier, apply (HR-05e) to its simple approximants on a countable finite-measure partition of that carrier, and then apply MCT twice. This proves Tonelli and measurability of its section integrals modulo a Borel null set. For a complex integrable function, SC-07 puts its nonzero set on a sigma-finite carrier; apply the nonnegative result to its absolute value and the positive and negative parts of its real and imaginary parts. The slices are integrable almost everywhere, their integrals are integrable, and (HR-05a) follows. Completion introduces no new obstruction: replace a completed function by a Borel representative; the null-slice conclusion just proved handles the discrepancy.</p>
+<p>For finite-measure Borel <span class="math" data-tex="$A,B$">$A,B$</span>, open supersets with measures decreasing to their finite values and compact subsets with measures increasing to them give
+<span class="math" data-tex="$\pi(A\times B)=\mu(A)\nu(B)$">$\pi(A\times B)=\mu(A)\nu(B)$</span>.
+For compact products the equality follows directly from (HR-05d); for open products it follows from (HR-05c). Countable disjoint finite-measure decompositions extend the rectangle formula to sigma-finite <span class="math" data-tex="$A,B$">$A,B$</span>, including <span class="math" data-tex="$0\cdot\infty=0$">$0\cdot\infty=0$</span>, and prove that such rectangles are sigma finite for <span class="math" data-tex="$\pi$">$\pi$</span>. These are the qualified rectangles used later. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proof includes open and compact section formulae even without a sigma-finite support assumption. Its general Borel Tonelli statement requires the stated carrier, and it does not replace the Radon product by an unrestricted ordinary product.</p>
+<p><strong>Corollary <a href="haar-and-radon-foundations.html#hr-05">HR-05</a>.1 (scalar Hilbert tensor).</strong> There is a unitary</p>
+<span id="equation-hr-05f"></span><span class="math math-display" data-tex="$$
+L^2(X,\mu)\otimes L^2(Y,\nu)\longrightarrow L^2(X\times Y,\pi),
+\qquad f\otimes g\longmapsto[(x,y)\mapsto f(x)g(y)].
+\tag{HR-05f}
+$$">$$
+L^2(X,\mu)\otimes L^2(Y,\nu)\longrightarrow L^2(X\times Y,\pi),
+\qquad f\otimes g\longmapsto[(x,y)\mapsto f(x)g(y)].
+\tag{HR-05f}
+$$</span>
+<p>Here both factor measures and the product may be completed. First define the rule on compact continuous functions. Formula (HR-05a) factors their inner products, so <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0.3</a> and <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.10">CF Hilbert completion</a> give an isometry. <a href="haar-and-radon-foundations.html#hr-03">HR-03</a> makes those functions dense in each factor and in the product's <span class="math" data-tex="$L^2$">$L^2$</span> space. Compact-support product approximation from <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0</a>, with its common compact support and finite product measure, makes their finite products dense in the latter space. Hence the isometry is onto. For arbitrary <span class="math" data-tex="$L^2$">$L^2$</span> representatives, their sigma-finite carriers have a sigma-finite product by the qualified rectangle result. Tonelli applied to <span class="math" data-tex="$|f(x)g(y)|^2$">$|f(x)g(y)|^2$</span>, and null-slice independence of representatives, give the same formula and norm as the continuous approximation. This proves the stated identification without a product-Borel equality.</p>
+<p><span id="hr-06"></span></p>
+<p><span id="oa-flow.hr.6"></span></p>
+<h2 id="hr-06-haar-existence-from-normalized-finite-covers">HR-06. Haar existence from normalized finite covers</h2>
+<p><strong>Theorem <a href="haar-and-radon-foundations.html#hr-06">HR-06</a>.</strong> Every LCH group has a nonzero outer regular Radon left Haar measure.</p>
+<p><strong>Proof.</strong> Fix a relatively compact open neighbourhood <span class="math" data-tex="$V_0$">$V_0$</span> of the identity. For an open identity neighbourhood <span class="math" data-tex="$U$">$U$</span> and a relatively compact set <span class="math" data-tex="$A$">$A$</span>, let <span class="math" data-tex="$N(A,U)$">$N(A,U)$</span> be the smallest number of left translates of <span class="math" data-tex="$U$">$U$</span> covering <span class="math" data-tex="$A$">$A$</span>. This is a finite integer: translates cover the compact closure of <span class="math" data-tex="$A$">$A$</span>, and compactness gives a finite subcover. It is zero exactly for the empty set. Covering <span class="math" data-tex="$A$">$A$</span> by translates of <span class="math" data-tex="$V_0$">$V_0$</span>, then covering <span class="math" data-tex="$V_0$">$V_0$</span> by translates of <span class="math" data-tex="$U$">$U$</span>, gives</p>
+<span id="equation-hr-06a"></span><span class="math math-display" data-tex="$$
+N(A,U)\leq N(A,V_0)N(V_0,U).
+\tag{HR-06a}
+$$">$$
+N(A,U)\leq N(A,V_0)N(V_0,U).
+\tag{HR-06a}
+$$</span>
+<p>The functions</p>
+<span id="equation-hr-06b"></span><span class="math math-display" data-tex="$$
+c_U(A)=\frac{N(A,U)}{N(V_0,U)}
+\tag{HR-06b}
+$$">$$
+c_U(A)=\frac{N(A,U)}{N(V_0,U)}
+\tag{HR-06b}
+$$</span>
+<p>are monotone, invariant under left translation, finitely subadditive, and bounded by <span class="math" data-tex="$N(A,V_0)$">$N(A,V_0)$</span>; <span class="math" data-tex="$c_U(V_0)=1$">$c_U(V_0)=1$</span>.</p>
+<p>Let the identity neighbourhoods be directed by reverse inclusion. Their tails have the finite-intersection property. <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.4">CF Section 4</a> extends their filter to an ultrafilter <span class="math" data-tex="$\mathcal U$">$\mathcal U$</span>. Every bounded scalar family <span class="math" data-tex="$c_U(A)$">$c_U(A)$</span> has an ultrafilter limit in its compact interval; put <span class="math" data-tex="$c(A)=\lim_{\mathcal U}c_U(A)$">$c(A)=\lim_{\mathcal U}c_U(A)$</span>. Scalar sums, inequalities and constants pass to such limits by continuity and their elementary closedness. Thus <span class="math" data-tex="$c$">$c$</span> retains monotonicity, subadditivity, translation invariance, <span class="math" data-tex="$c(V_0)=1$">$c(V_0)=1$</span>, and the same bound.</p>
+<p>It is additive on disjoint compact sets. Given disjoint compact <span class="math" data-tex="$K,L$">$K,L$</span>, the compact <span class="math" data-tex="$K^{-1}L$">$K^{-1}L$</span> omits the identity. Choose an identity neighbourhood <span class="math" data-tex="$W$">$W$</span> with <span class="math" data-tex="$W^{-1}W\cap K^{-1}L=\varnothing$">$W^{-1}W\cap K^{-1}L=\varnothing$</span>, using continuity of multiplication and inversion. No left translate of <span class="math" data-tex="$U\subset W$">$U\subset W$</span> meets both <span class="math" data-tex="$K$">$K$</span> and <span class="math" data-tex="$L$">$L$</span>. In any minimal finite cover of <span class="math" data-tex="$K\cup L$">$K\cup L$</span> by such translates, assign the members meeting <span class="math" data-tex="$K$">$K$</span> and those meeting <span class="math" data-tex="$L$">$L$</span> to their respective sets; these subfamilies are disjoint and cover them. Consequently</p>
+<span id="equation-hr-06c"></span><span class="math math-display" data-tex="$$
+N(K\cup L,U)=N(K,U)+N(L,U)\quad(U\subset W).
+\tag{HR-06c}
+$$">$$
+N(K\cup L,U)=N(K,U)+N(L,U)\quad(U\subset W).
+\tag{HR-06c}
+$$</span>
+<p>The ultrafilter contains this tail. Its limit gives disjoint compact additivity.</p>
+<p>On the compact subsets of a relatively compact open <span class="math" data-tex="$O$">$O$</span>, the common bound <span class="math" data-tex="$N(O,V_0)$">$N(O,V_0)$</span> gives local boundedness. <a href="haar-and-radon-foundations.html#hr-04">HR-04</a> now constructs an outer regular Radon measure <span class="math" data-tex="$\mu$">$\mu$</span>. The compact content, the resulting open valuation, and its outer measure are all left invariant, because left multiplication is a homeomorphism permuting compact and open approximants. Thus <span class="math" data-tex="$\mu$">$\mu$</span> is left invariant on every Borel set. Also
+<span class="math" data-tex="$\mu(\overline V_0)\geq c(\overline V_0)\geq c(V_0)=1$">$\mu(\overline V_0)\geq c(\overline V_0)\geq c(V_0)=1$</span>,
+so it is nonzero.</p>
+<p>Every nonempty open set has positive measure. Otherwise finitely many translates of a null open set would cover every compact set; all compact sets would be null. Inner regularity on open sets would then force <span class="math" data-tex="$\mu(G)=0$">$\mu(G)=0$</span>, a contradiction. This also proves that every nonzero nonnegative compact continuous function has a strictly positive integral: it exceeds a positive constant on a nonempty open subset. Haar measure can therefore be normalized by prescribing such a function's integral. Completing <span class="math" data-tex="$\mu$">$\mu$</span> preserves invariance, since translates preserve Borel null sets. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="hr-07"></span></p>
+<p><span id="oa-flow.hr.7"></span></p>
+<h2 id="hr-07-haar-uniqueness-on-arbitrary-groups">HR-07. Haar uniqueness on arbitrary groups</h2>
+<p><strong>Theorem <a href="haar-and-radon-foundations.html#hr-07">HR-07</a>.</strong> Two nonzero outer regular Radon left Haar measures <span class="math" data-tex="$\mu,\nu$">$\mu,\nu$</span> on the same LCH group are positive scalar multiples.</p>
+<p><strong>Proof.</strong> Fix a nonempty relatively compact open set <span class="math" data-tex="$E$">$E$</span>, so both <span class="math" data-tex="$\mu(E)$">$\mu(E)$</span> and <span class="math" data-tex="$\nu(E)$">$\nu(E)$</span> are finite and positive. For <span class="math" data-tex="$\epsilon\in(0,1)$">$\epsilon\in(0,1)$</span>, inner regularity gives a compact <span class="math" data-tex="$K\subset E$">$K\subset E$</span> with <span class="math" data-tex="$\mu(K)&gt;(1-\epsilon)\mu(E)$">$\mu(K)&gt;(1-\epsilon)\mu(E)$</span>. Compactness and multiplication continuity give an open <span class="math" data-tex="$H\supset K$">$H\supset K$</span> and a symmetric relatively compact identity neighbourhood <span class="math" data-tex="$V$">$V$</span> with <span class="math" data-tex="$HV\subset E$">$HV\subset E$</span>: for each point of <span class="math" data-tex="$K$">$K$</span> take product neighbourhoods inside <span class="math" data-tex="$E$">$E$</span>, retain finitely many, and intersect their identity neighbourhoods with their inverses.</p>
+<p>For every symmetric identity neighbourhood <span class="math" data-tex="$U\subset V$">$U\subset V$</span>, consider the open set</p>
+<span id="equation-hr-07a"></span><span class="math math-display" data-tex="$$
+W=\{(x,y)\in E\times E:x^{-1}y\in U\}.
+\tag{HR-07a}
+$$">$$
+W=\{(x,y)\in E\times E:x^{-1}y\in U\}.
+\tag{HR-07a}
+$$</span>
+<p>Its Radon product measure is finite, and <a href="haar-and-radon-foundations.html#hr-05">HR-05</a> permits both iterated integrals. For <span class="math" data-tex="$x\in H$">$x\in H$</span>, its <span class="math" data-tex="$y$">$y$</span>-section contains <span class="math" data-tex="$xU$">$xU$</span>. For <span class="math" data-tex="$y\in E$">$y\in E$</span>, its <span class="math" data-tex="$x$">$x$</span>-section is contained in <span class="math" data-tex="$yU$">$yU$</span>, since <span class="math" data-tex="$U=U^{-1}$">$U=U^{-1}$</span>. Left invariance gives</p>
+<span id="equation-hr-07b"></span><span class="math math-display" data-tex="$$
+(1-\epsilon)\mu(E)\nu(U)
+\leq \mu(H)\nu(U)
+\leq(\mu\widehat\times\nu)(W)
+\leq\mu(U)\nu(E).
+\tag{HR-07b}
+$$">$$
+(1-\epsilon)\mu(E)\nu(U)
+\leq \mu(H)\nu(U)
+\leq(\mu\widehat\times\nu)(W)
+\leq\mu(U)\nu(E).
+\tag{HR-07b}
+$$</span>
+<p>Interchanging the measures gives, on a possibly smaller symmetric identity neighbourhood,</p>
+<span id="equation-hr-07c"></span><span class="math math-display" data-tex="$$
+(1-\epsilon)\frac{\mu(E)}{\nu(E)}
+\leq\frac{\mu(U)}{\nu(U)}
+\leq\frac{1}{1-\epsilon}\frac{\mu(E)}{\nu(E)}.
+\tag{HR-07c}
+$$">$$
+(1-\epsilon)\frac{\mu(E)}{\nu(E)}
+\leq\frac{\mu(U)}{\nu(U)}
+\leq\frac{1}{1-\epsilon}\frac{\mu(E)}{\nu(E)}.
+\tag{HR-07c}
+$$</span>
+<p>Both denominators are positive. Thus the net of these neighbourhood ratios has limit <span class="math" data-tex="$\mu(E)/\nu(E)$">$\mu(E)/\nu(E)$</span>. The net is independent of <span class="math" data-tex="$E$">$E$</span>, so all nonempty relatively compact opens have the same ratio <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>.</p>
+<p>For any open <span class="math" data-tex="$O$">$O$</span>, every compact <span class="math" data-tex="$K\subset O$">$K\subset O$</span> lies in a relatively compact open <span class="math" data-tex="$E\subset O$">$E\subset O$</span>, by finite shrinking. The already proved equality on <span class="math" data-tex="$E$">$E$</span>, together with inner regularity, gives <span class="math" data-tex="$\mu(O)\leq c\nu(O)$">$\mu(O)\leq c\nu(O)$</span>. Interchanging the measures gives equality, including infinite values. Borel outer regularity gives <span class="math" data-tex="$\mu=c\nu$">$\mu=c\nu$</span> on every Borel set, and their completions correspond. No sequence of neighbourhoods or countable exhaustion of the group was used. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The inversion image <span class="math" data-tex="$E\mapsto\mu(E^{-1})$">$E\mapsto\mu(E^{-1})$</span> is a right Haar measure: inversion is a homeomorphism and <span class="math" data-tex="$(Es)^{-1}=s^{-1}E^{-1}$">$(Es)^{-1}=s^{-1}E^{-1}$</span>. Right Haar uniqueness follows by applying left Haar uniqueness to these inversion images. The modular function and its normalization identities are then derived in the later <a href="group-representations-and-completions.html#oa-flow.grp.translations">L24 Section 3</a> from this theorem. For an abelian group, right and left translates coincide, so that modular function is identically one.</p>
+<p><strong>Corollary <a href="haar-and-radon-foundations.html#hr-07">HR-07</a>.1 (product changes of variables).</strong> A homeomorphism <span class="math" data-tex="$T:X\to Y$">$T:X\to Y$</span> transports an outer regular Radon measure to another such measure: inverse images preserve Borel sets and compactness, and homeomorphisms transport open and compact approximants. Its integrals obey substitution, first for indicators, then simple functions and SC convergence. In particular, for left Haar measure on <span class="math" data-tex="$G$">$G$</span>, both</p>
+<span id="equation-hr-07d"></span><span class="math math-display" data-tex="$$
+(s,t)\longmapsto(s,st),\qquad (s,t)\longmapsto(st,t)
+\tag{HR-07d}
+$$">$$
+(s,t)\longmapsto(s,st),\qquad (s,t)\longmapsto(st,t)
+\tag{HR-07d}
+$$</span>
+<p>are homeomorphisms of <span class="math" data-tex="$G\times G$">$G\times G$</span>; the first preserves <span class="math" data-tex="$\mu\widehat\times\mu$">$\mu\widehat\times\mu$</span>. Indeed, for <span class="math" data-tex="$F\in C_c(G\times G)$">$F\in C_c(G\times G)$</span>, left invariance in the second variable gives
+<span class="math" data-tex="$\int F(s,st)\,dt\,ds=\int F(s,u)\,du\,ds$">$\int F(s,st)\,dt\,ds=\int F(s,u)\,du\,ds$</span>.
+<a href="haar-and-radon-foundations.html#hr-02">HR-02</a> uniqueness for the transported Radon measure proves equality on all Borel sets. Its inverse and finite iterates preserve sigma-finite carriers. For abelian <span class="math" data-tex="$G$">$G$</span>, the second map is also measure preserving, by left invariance in the first variable. For nonabelian <span class="math" data-tex="$G$">$G$</span>, its weighted right-translation formula is derived using the later <a href="group-representations-and-completions.html#oa-flow.grp.translations">L24 continuous modular function</a>; no unweighted assertion for that second map is made. Coordinate flips preserve the symmetric Radon product by (HR-05a) and uniqueness.</p>
+<p><span id="hr-08"></span></p>
+<p><span id="oa-flow.hr.8"></span></p>
+<h2 id="hr-08-open-sigma-compact-cosets-and-the-outer-regular-convention">HR-08. Open sigma compact cosets and the outer regular convention</h2>
+<p>Choose a compact symmetric identity neighbourhood <span class="math" data-tex="$C$">$C$</span>, and let <span class="math" data-tex="$H=\bigcup_{n\geq1}C^n$">$H=\bigcup_{n\geq1}C^n$</span>. Finite compact products and continuity give compact <span class="math" data-tex="$C^n$">$C^n$</span>; symmetry makes <span class="math" data-tex="$H$">$H$</span> a subgroup. It is open because it contains an identity neighbourhood and its translates around every point, and closed because its complement is a union of open cosets. Its left cosets <span class="math" data-tex="$D$">$D$</span> are open, closed and sigma compact. A compact subset meets only finitely many cosets, by their open cover.</p>
+<p>Restriction of <span class="math" data-tex="$\mu_o=\mu$">$\mu_o=\mu$</span> to a coset is sigma finite and Radon there. Borel subsets of a coset are Borel in <span class="math" data-tex="$G$">$G$</span>, because the coset is open and closed. Any Borel subset <span class="math" data-tex="$E$">$E$</span> meeting uncountably many cosets has <span class="math" data-tex="$\mu_o(E)=\infty$">$\mu_o(E)=\infty$</span>. Indeed, an open <span class="math" data-tex="$U\supset E$">$U\supset E$</span> has a positive-measure open section in every such coset. Among uncountably many positive section measures there are arbitrarily large finite families bounded below by a common <span class="math" data-tex="$1/n$">$1/n$</span>: otherwise their union over <span class="math" data-tex="$n$">$n$</span> would be countable. Finite additivity gives <span class="math" data-tex="$\mu_o(U)=\infty$">$\mu_o(U)=\infty$</span>, and outer regularity gives the assertion for <span class="math" data-tex="$E$">$E$</span>.</p>
+<p>It follows that an outer-measure finite or sigma-finite Borel set lies in countably many cosets. Conversely every Borel subset of countably many cosets is sigma finite. On such a set the measure is the countable sum of the section measures. Hence</p>
+<span id="equation-hr-08a"></span><span class="math math-display" data-tex="$$
+G\text{ is sigma compact}
+\ \Longleftrightarrow\ \mu_o\text{ is sigma finite}
+\ \Longleftrightarrow\ \text{there are countably many cosets}.
+\tag{HR-08a}
+$$">$$
+G\text{ is sigma compact}
+\ \Longleftrightarrow\ \mu_o\text{ is sigma finite}
+\ \Longleftrightarrow\ \text{there are countably many cosets}.
+\tag{HR-08a}
+$$</span>
+<p>For the forward implication, compact sets have finite measure and meet finitely many cosets; the reverse implication uses the countable compact covers of the cosets. These statements concern the outer regular convention.</p>
+<p><span id="hr-09"></span></p>
+<p><span id="oa-flow.hr.9"></span></p>
+<h2 id="hr-09-complete-locally-determined-haar-measure-and-finite-exponent-classes">HR-09. Complete locally determined Haar measure and finite-exponent classes</h2>
+<p>Complete the sigma-finite restriction on each coset <span class="math" data-tex="$D$">$D$</span>, obtaining <span class="math" data-tex="$\mu_D$">$\mu_D$</span>. Define a sigma algebra and a measure by</p>
+<span id="equation-hr-09a"></span><span class="math math-display" data-tex="$$
+\Sigma_\ell=\{E\subset G:E\cap D\text{ is }\mu_D\text{-measurable for every }D\},
+\qquad
+\mu_\ell(E)=\sup_{J\ {\rm finite}}\sum_{D\in J}\mu_D(E\cap D).
+\tag{HR-09a}
+$$">$$
+\Sigma_\ell=\{E\subset G:E\cap D\text{ is }\mu_D\text{-measurable for every }D\},
+\qquad
+\mu_\ell(E)=\sup_{J\ {\rm finite}}\sum_{D\in J}\mu_D(E\cap D).
+\tag{HR-09a}
+$$</span>
+<p>Countable additivity follows because the two suprema in a sum of nonnegative numbers over cosets and integers commute: any finite collection of pairs is contained in a product of finite subsets, and products are finite collections. Coset completeness proves completeness. It is locally determined: if a subset meets every measurable finite-measure set in a measurable set, intersect it with a countable compact exhaustion of each coset to prove its coset sections measurable. Left translation permutes cosets and preserves their completed measures, so preserves <span class="math" data-tex="$\Sigma_\ell$">$\Sigma_\ell$</span> and <span class="math" data-tex="$\mu_\ell$">$\mu_\ell$</span>.</p>
+<p>The measure is finite on compact sets and agrees with <span class="math" data-tex="$\mu_o$">$\mu_o$</span> on compact sets, open sets, and outer-regular sigma-finite Borel sets. For the open sets, compact inner approximation and finite coset subsums prove equality. Completed coset inner regularity and finite subsums also prove compact inner regularity on every set in <span class="math" data-tex="$\Sigma_\ell$">$\Sigma_\ell$</span>. In particular</p>
+<span id="equation-hr-09b"></span><span class="math math-display" data-tex="$$
+\mu_\ell(E)=\sup_{K\ {\rm compact}}\mu_o(E\cap K)
+\quad(E\in\Sigma_\ell),
+\tag{HR-09b}
+$$">$$
+\mu_\ell(E)=\sup_{K\ {\rm compact}}\mu_o(E\cap K)
+\quad(E\in\Sigma_\ell),
+\tag{HR-09b}
+$$</span>
+<p>where compact intersections are measured in the completed finite Radon restriction. The reverse inequality is monotonicity; for the forward one, approximate a finite collection of coset sections by compact subsets and take their finite union.</p>
+<p>The convention is intrinsic. A set belongs to <span class="math" data-tex="$\Sigma_\ell$">$\Sigma_\ell$</span> exactly when its intersection with every compact set is measurable in that compact's completed Radon restriction. One direction follows because a compact set meets finitely many cosets; the other follows by countable compact exhaustion on each coset. Similarly a set is <span class="math" data-tex="$\mu_\ell$">$\mu_\ell$</span>-null exactly when all its compact intersections are <span class="math" data-tex="$\mu_o$">$\mu_o$</span>-null. Thus changing <span class="math" data-tex="$H$">$H$</span> leaves the sigma algebra, measure and compact-local null ideal unchanged.</p>
+<p>For <span class="math" data-tex="$1\leq p&lt;\infty$">$1\leq p&lt;\infty$</span>, restriction of globally completed Borel representatives defines an isometric bijection</p>
+<span id="equation-hr-09c"></span><span class="math math-display" data-tex="$$
+L^p(G,\mu_o)\cong L^p(G,\mu_\ell).
+\tag{HR-09c}
+$$">$$
+L^p(G,\mu_o)\cong L^p(G,\mu_\ell).
+\tag{HR-09c}
+$$</span>
+<p>To see that it is well defined, every globally integrable function has a sigma compact carrier modulo a global null set by <a href="haar-and-radon-foundations.html#hr-03">HR-03</a>. The measures agree on that carrier, and every global null set is null on each coset. Its section integrals therefore have the same finite sum and norm. Apply this also to differences to obtain injectivity.</p>
+<p>Conversely, for <span class="math" data-tex="$f\in L^p(\mu_\ell)$">$f\in L^p(\mu_\ell)$</span>, the sum of the nonnegative coset integrals of <span class="math" data-tex="$|f|^p$">$|f|^p$</span> is finite. Only countably many are positive: for each <span class="math" data-tex="$n$">$n$</span>, only finitely many can be at least <span class="math" data-tex="$1/n$">$1/n$</span>. On those countably many cosets choose Borel representatives, available by completion, and set the function to zero elsewhere. The resulting function is globally Borel, is supported in a sigma compact open union of cosets, and differs from <span class="math" data-tex="$f$">$f$</span> by a <span class="math" data-tex="$\mu_\ell$">$\mu_\ell$</span>-null function. Its integral for <span class="math" data-tex="$\mu_o$">$\mu_o$</span> is the same, proving surjectivity.</p>
+<p>For <span class="math" data-tex="$L^\infty(\mu_\ell)$">$L^\infty(\mu_\ell)$</span>, measurable representatives and essential bounds are taken coset by coset, modulo compact-local null sets. We do not identify this space with global <span class="math" data-tex="$L^\infty(\mu_o)$">$L^\infty(\mu_o)$</span>. The present proof also makes no duality or von Neumann-algebra claim requiring Radon–Nikodym.</p>
+<p><span id="hr-10"></span></p>
+<p><span id="oa-flow.hr.10"></span></p>
+<h2 id="hr-10-exact-scope-illustrations-and-free-reading">HR-10. Exact scope illustrations and free reading</h2>
+<p>For <span class="math" data-tex="$G=\mathbb R\times D$">$G=\mathbb R\times D$</span> with an uncountable discrete additive group <span class="math" data-tex="$D$">$D$</span>, use Lebesgue measure on each open coset <span class="math" data-tex="$\mathbb R\times\{d\}$">$\mathbb R\times\{d\}$</span>. They give the unique Haar normalization whose integral on a compact scalar function is the finite sum of its line integrals. The closed set <span class="math" data-tex="$S=\{0\}\times D$">$S=\{0\}\times D$</span> has null intersections with every compact set, since a compact set meets finitely many cosets. Hence <span class="math" data-tex="$\mu_\ell(S)=0$">$\mu_\ell(S)=0$</span>.</p>
+<p>Every open neighbourhood of <span class="math" data-tex="$S$">$S$</span> contains a positive-length interval on each of uncountably many lines. Arbitrarily many of these have lengths bounded below by a common <span class="math" data-tex="$1/n$">$1/n$</span>, so its measure is infinite. Outer regularity gives <span class="math" data-tex="$\mu_o(S)=\infty$">$\mu_o(S)=\infty$</span>. A finite-exponent <span class="math" data-tex="$\mu_\ell$">$\mu_\ell$</span> class nevertheless uses only countably many nonzero coset classes; (HR-09c) sends it to a global Borel representative on those cosets. This is an exact general example, not a countable model of the theorem.</p>
+<p>For the right-hand example in the figure choose countably many distinct <span class="math" data-tex="$d_j\in D$">$d_j\in D$</span>, and set</p>
+<span id="equation-hr-10a"></span><span class="math math-display" data-tex="$$
+f(x,d_j)=2^{-j/2}1_{[0,1]}(x)\quad(j\geq1),\qquad
+f=0\quad\text{on all other cosets}.
+\tag{HR-10a}
+$$">$$
+f(x,d_j)=2^{-j/2}1_{[0,1]}(x)\quad(j\geq1),\qquad
+f=0\quad\text{on all other cosets}.
+\tag{HR-10a}
+$$</span>
+<p>The countable union of these interval sections is Borel and sigma compact. Both measures give its squared norm <span class="math" data-tex="$\sum_{j\geq1}2^{-j}=1$">$\sum_{j\geq1}2^{-j}=1$</span>: the first <span class="math" data-tex="$n$">$n$</span> terms sum to <span class="math" data-tex="$1-2^{-n}$">$1-2^{-n}$</span>, and MCT gives the limit. The tail from <span class="math" data-tex="$j=5$">$j=5$</span> has squared mass <span class="math" data-tex="$1/16$">$1/16$</span>. It is an aggregate of infinitely many cosets, rather than one extra coset.</p>
+<p><img class="course-figure" style="max-width:100%;height:auto" loading="lazy" decoding="async" src="../../src/OA-FLOW/repaired-20261004/figures/haar-reconstruction/figures/haar-conventions.png" alt="Finite projection of the Haar conventions and an exact countable L2 example" data-asset-sha256="B27D47BF80C1B4168A42090A76E275C746291AC58257BC85C3FF8DAEA5C7EBFE"></p>
+<p>The left panel displays four cosets only. The green sample intervals have lengths <span class="math" data-tex="$1,1/2,3/2,3/4$">$1,1/2,3/2,3/4$</span>; they illustrate positive open sections, and the uncountability conclusion is proved above. The right panel gives exactly (HR-10a). Reproduction source: <a href="../../src/OA-FLOW/repaired-20261004/figures/haar-reconstruction/render_figure.py">render_figure.py</a>; <a href="../../src/OA-FLOW/repaired-20261004/figures/haar-reconstruction/figures/haar-conventions.svg">editable SVG</a>.</p>
+<p>Free primary comparison sources are D. H. Fremlin's <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt.htm">author's freely accessible copyleft text</a>: <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap43.pdf">Chapter 43, 436J</a>, positive <span class="math" data-tex="$C_c$">$C_c$</span> representation; <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap41.pdf">Chapter 41, 416I–416M and 417</a>, compact regularity and Radon products; and <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap44.pdf">Chapter 44, 441C–441E and 442A–442C</a>, finite covers, existence and uniqueness of invariant measures. Fremlin's Radon convention is complete and locally determined. <a href="haar-and-radon-foundations.html#hr-01">HR-01</a>–<a href="haar-and-radon-foundations.html#hr-09">HR-09</a> explicitly construct the outer regular Borel convention and its separate locally determined version, rather than conflating their raw measurable sets. All intermediate measure constructions, representation, carrier qualifications and normalization arguments used here are proved above; the citations do not replace programme proofs.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../../index.html">Course contents</a> <a href="../../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../../src/OA-FLOW/repaired-20261004/haar-and-radon-foundations.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effective Cartier divisors and invertible sheaves · Morphisms of schemes</title>
+<meta name="description" content="A lesson of the course Morphisms of schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/effective-cartier-divisors-and-invertible-sheaves.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Morphisms of schemes</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="effective-cartier-divisors-and-invertible-sheaves">Effective Cartier divisors and invertible sheaves</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>A hypersurface has one equation locally. To behave as a divisor, that equation must also act injectively: it must not annihilate part of the ambient scheme. Effective Cartier divisors package these two requirements. Their equations can change by units from one neighborhood to another, so the natural global object is an invertible ideal sheaf. Dualizing that ideal gives a line bundle with a distinguished section.</p>
+<p>We use ideals defining closed subschemes and invertible modules from the planned lessons <em>Closed subschemes and scheme-theoretic images</em>, <em>Quasi-coherent, coherent and locally free modules</em>, and <em>Quasi-coherent sheaves on schemes</em> of <em>Sheaves and schemes</em>. For Noetherian assertions we use <a href="../AG-CA/AG-CA-04.html">Associated primes and primary decomposition</a>, Theorems 1.2, 2.2 and 3.1, and <a href="../AG-CA/AG-CA-11.html">Dimension theory of Noetherian local rings</a>, Theorem 3.1. The affineness locality theorem is in <a href="AG-MO-05.html">Affine, integral and finite morphisms</a>, and section extension for ample sheaves is in <a href="ample-invertible-sheaves.html">Ample invertible sheaves</a>. Schemes need not be reduced, Noetherian or separated unless stated.</p>
+<h2 id="1-a-local-equation-that-does-not-annihilate">1. A local equation that does not annihilate</h2>
+<p>A closed subscheme <span class="math" data-tex="\(D\subset X\)">\(D\subset X\)</span> is an <strong>effective Cartier divisor</strong> if its ideal sheaf <span class="math" data-tex="\(\mathcal I_D\)">\(\mathcal I_D\)</span> is invertible as an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module. This includes the empty divisor, whose ideal is <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>.</p>
+<p><strong>Theorem 1.1 (local characterization).</strong> A closed subscheme is an effective Cartier divisor precisely when, on a suitable affine open cover <span class="math" data-tex="\(U=\operatorname{Spec}A\)">\(U=\operatorname{Spec}A\)</span>, its ideal is <span class="math" data-tex="\((f)\)">\((f)\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span> a nonzerodivisor of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Trivialize the invertible ideal on a sufficiently small affine neighborhood. Its generator maps to an element <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span>, and the ideal inclusion is multiplication <span class="math" data-tex="\(A\xrightarrow{f}A\)">\(A\xrightarrow{f}A\)</span>. This is injective, so <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor. Conversely, multiplication by a nonzerodivisor identifies <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\((f)\)">\((f)\)</span>. These identifications show that the ideal sheaf is locally free of rank one. Away from <span class="math" data-tex="\(D\)">\(D\)</span>, it is already the full structure sheaf. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-characterize-effective-Cartier-divisor">Stacks, Tag 01WS</a>. One must permit a sufficiently fine cover. An invertible ideal on an affine scheme need not be globally principal.</p>
+<p>Two nonzerodivisor generators of the same ideal differ by a unit. If <span class="math" data-tex="\(f=ag\)">\(f=ag\)</span> and <span class="math" data-tex="\(g=bf\)">\(g=bf\)</span>, then <span class="math" data-tex="\((1-ab)f=0\)">\((1-ab)f=0\)</span>; cancellation gives <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span>. This elementary observation makes local equations compatible.</p>
+<p><strong>Proposition 1.2 (complement).</strong> The open immersion <span class="math" data-tex="\(j:X\setminus D\to X\)">\(j:X\setminus D\to X\)</span> is affine, and the complement is schematically dense: <span class="math" data-tex="\(\mathcal O_X\to j_*\mathcal O_{X\setminus D}\)">\(\mathcal O_X\to j_*\mathcal O_{X\setminus D}\)</span> is injective. In particular, when <span class="math" data-tex="\(X\)">\(X\)</span> is affine, so is <span class="math" data-tex="\(X\setminus D\)">\(X\setminus D\)</span>.</p>
+<p><strong>Proof.</strong> On an affine neighborhood with equation <span class="math" data-tex="\(f\)">\(f\)</span>, the complement is <span class="math" data-tex="\(D(f)=\operatorname{Spec}A_f\)">\(D(f)=\operatorname{Spec}A_f\)</span>. Affineness of a morphism is local on the target, so these local descriptions prove that <span class="math" data-tex="\(j\)">\(j\)</span> is affine. Because <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor, <span class="math" data-tex="\(A\to A_f\)">\(A\to A_f\)</span> is injective. The sheaf map is therefore injective locally and hence globally. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-complement-effective-Cartier-divisor">Stacks, Tag 07ZU</a>. The argument does not assume a single global equation. A nonzerodivisor may lie in many maximal ideals; schematic density concerns the absence of a function supported only on the divisor.</p>
+<p>Define the <strong>sum</strong> <span class="math" data-tex="\(D+E\)">\(D+E\)</span> by the product ideal <span class="math" data-tex="\(\mathcal I_D\mathcal I_E\)">\(\mathcal I_D\mathcal I_E\)</span>. Locally its equation is <span class="math" data-tex="\(fg\)">\(fg\)</span>. A product of two nonzerodivisors is a nonzerodivisor, so this is again effective Cartier. The multiplication map</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_D\otimes\mathcal I_E
+\longrightarrow\mathcal I_{D+E}
+\tag{1.1}
+\]">\[
+\mathcal I_D\otimes\mathcal I_E
+\longrightarrow\mathcal I_{D+E}
+\tag{1.1}
+\]</span>
+<p>is an isomorphism: locally it sends the free generator <span class="math" data-tex="\(f\otimes g\)">\(f\otimes g\)</span> to the free generator <span class="math" data-tex="\(fg\)">\(fg\)</span>. Sums are associative and commutative. They add multiplicities, rather than merely taking set-theoretic unions: on the affine line, <span class="math" data-tex="\(V(t)+V(t)=V(t^2)\)">\(V(t)+V(t)=V(t^2)\)</span>.</p>
+<p>For <span class="math" data-tex="\(h:X&#x27;\to X\)">\(h:X&#x27;\to X\)</span>, the <strong>pullback</strong> <span class="math" data-tex="\(h^*D\)">\(h^*D\)</span> is defined as an effective Cartier divisor when the inverse-image closed subscheme is effective Cartier. By Theorem 1.1 this happens exactly when the local pulled-back equations remain nonzerodivisors. In that case <span class="math" data-tex="\(\mathcal I_{h^*D}\cong h^*\mathcal I_D\)">\(\mathcal I_{h^*D}\cong h^*\mathcal I_D\)</span>, because both are locally generated freely by <span class="math" data-tex="\(h^\sharp(f)\)">\(h^\sharp(f)\)</span>. If the pullbacks of <span class="math" data-tex="\(D,E\)">\(D,E\)</span> are defined, their product equation proves</p>
+<span class="math math-display" data-tex="\[
+h^*(D+E)=h^*D+h^*E.
+\]">\[
+h^*(D+E)=h^*D+h^*E.
+\]</span>
+<p>Flat maps always allow pullback: tensor the injection given by multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> with the flat source algebra. A dominant map of integral schemes also allows it, since a nonzero equation remains nonzero in the source domain. An arbitrary map need not. Pulling <span class="math" data-tex="\(V(t)\subset\mathbb A^1\)">\(V(t)\subset\mathbb A^1\)</span> back along the zero point gives the entire point, defined by zero, whose ideal is not a rank-one free module. See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-pullback-effective-Cartier-defined">Stacks, Tags 02OO</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-pullback-effective-Cartier-divisors-additive">01WW</a>.</p>
+<h2 id="2-the-line-bundle-and-its-canonical-section">2. The line bundle and its canonical section</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X(-D)=\mathcal I_D,
+\qquad
+\mathcal O_X(D)=\mathcal I_D^\vee
+=\mathcal Hom(\mathcal I_D,\mathcal O_X).
+\]">\[
+\mathcal O_X(-D)=\mathcal I_D,
+\qquad
+\mathcal O_X(D)=\mathcal I_D^\vee
+=\mathcal Hom(\mathcal I_D,\mathcal O_X).
+\]</span>
+<p>Dualizing the inclusion <span class="math" data-tex="\(\mathcal I_D\hookrightarrow\mathcal O_X\)">\(\mathcal I_D\hookrightarrow\mathcal O_X\)</span> gives a canonical section <span class="math" data-tex="\(1_D\)">\(1_D\)</span> of <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is a local equation and <span class="math" data-tex="\(e\)">\(e\)</span> is the dual frame characterized by <span class="math" data-tex="\(e(f)=1\)">\(e(f)=1\)</span>, this section is <span class="math" data-tex="\(fe\)">\(fe\)</span>. Thus its local coefficient is the equation of the divisor, not a unit. The notation <span class="math" data-tex="\(1_D\)">\(1_D\)</span> will later mean the rational function one in a fractional realization of this line bundle.</p>
+<p>A section <span class="math" data-tex="\(s\)">\(s\)</span> of an invertible sheaf <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is <strong>regular</strong> when multiplication by it defines an injection <span class="math" data-tex="\(\mathcal O_X\to\mathcal L\)">\(\mathcal O_X\to\mathcal L\)</span>. In a frame <span class="math" data-tex="\(e\)">\(e\)</span>, write <span class="math" data-tex="\(s=fe\)">\(s=fe\)</span>; regularity means exactly that <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor. Its <strong>zero scheme</strong> <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span> is defined by the image of</p>
+<span class="math math-display" data-tex="\[
+\mathcal L^{-1}\longrightarrow\mathcal O_X,
+\qquad \lambda\longmapsto\lambda(s).
+\tag{2.1}
+\]">\[
+\mathcal L^{-1}\longrightarrow\mathcal O_X,
+\qquad \lambda\longmapsto\lambda(s).
+\tag{2.1}
+\]</span>
+<p>Locally this image is <span class="math" data-tex="\((f)\)">\((f)\)</span>. A regular section is allowed to vanish at points. Regular means injective multiplication, rather than nowhere-vanishing value.</p>
+<p><strong>Theorem 2.1 (divisor–section correspondence).</strong> Effective Cartier divisors on <span class="math" data-tex="\(X\)">\(X\)</span> correspond bijectively to isomorphism classes of pairs <span class="math" data-tex="\((\mathcal L,s)\)">\((\mathcal L,s)\)</span> consisting of an invertible sheaf and a regular global section. The correspondence is</p>
+<span class="math math-display" data-tex="\[
+D\longmapsto(\mathcal O_X(D),1_D),
+\qquad(\mathcal L,s)\longmapsto Z(s).
+\]">\[
+D\longmapsto(\mathcal O_X(D),1_D),
+\qquad(\mathcal L,s)\longmapsto Z(s).
+\]</span>
+<p>For a regular section, there is a unique isomorphism <span class="math" data-tex="\(\mathcal O_X(Z(s))\to\mathcal L\)">\(\mathcal O_X(Z(s))\to\mathcal L\)</span> carrying the canonical section to <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Proof.</strong> The preceding local calculation makes <span class="math" data-tex="\(1_D\)">\(1_D\)</span> regular and gives <span class="math" data-tex="\(Z(1_D)=D\)">\(Z(1_D)=D\)</span>. Conversely, for regular <span class="math" data-tex="\(s=fe\)">\(s=fe\)</span>, map (2.1) identifies <span class="math" data-tex="\(\mathcal L^{-1}\)">\(\mathcal L^{-1}\)</span> with the ideal <span class="math" data-tex="\((f)\)">\((f)\)</span>. The ideal is invertible, hence defines an effective Cartier divisor <span class="math" data-tex="\(D\)">\(D\)</span>. Dualizing that identification gives <span class="math" data-tex="\(\mathcal O_X(D)\cong\mathcal L\)">\(\mathcal O_X(D)\cong\mathcal L\)</span>, carrying <span class="math" data-tex="\(1_D\)">\(1_D\)</span> to <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>For uniqueness, compare two such isomorphisms in a frame. Their difference multiplies the image of the local regular section by some coefficient <span class="math" data-tex="\(a\)">\(a\)</span>. If they have the same value on the section, then <span class="math" data-tex="\(af=0\)">\(af=0\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzerodivisor; thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The local uniqueness glues. Finally an isomorphism of pairs preserves the evaluation ideal (2.1), so passage to isomorphism classes is legitimate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The statement is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-characterize-OD">Stacks, Tag 01X0</a>; the frame argument above supplies its proof. Dualizing (1.1) gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X(D+E)\cong\mathcal O_X(D)\otimes\mathcal O_X(E),
+\qquad 1_{D+E}\longleftrightarrow1_D\otimes1_E.
+\tag{2.2}
+\]">\[
+\mathcal O_X(D+E)\cong\mathcal O_X(D)\otimes\mathcal O_X(E),
+\qquad 1_{D+E}\longleftrightarrow1_D\otimes1_E.
+\tag{2.2}
+\]</span>
+<p>The same local frames prove compatibility with every defined pullback. There is also an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O_X
+\xrightarrow{1_D}\mathcal O_X(D)
+\longrightarrow i_*\bigl(\mathcal O_X(D)|_D\bigr)
+\longrightarrow0,
+\tag{2.3}
+\]">\[
+0\longrightarrow\mathcal O_X
+\xrightarrow{1_D}\mathcal O_X(D)
+\longrightarrow i_*\bigl(\mathcal O_X(D)|_D\bigr)
+\longrightarrow0,
+\tag{2.3}
+\]</span>
+<p>where <span class="math" data-tex="\(i:D\hookrightarrow X\)">\(i:D\hookrightarrow X\)</span>. Locally it is the sequence <span class="math" data-tex="\(0\to A\xrightarrow{f}A\to A/(f)\to0\)">\(0\to A\xrightarrow{f}A\to A/(f)\to0\)</span> in the frame <span class="math" data-tex="\(e\)">\(e\)</span>. Its last invertible module on <span class="math" data-tex="\(D\)">\(D\)</span> is the normal line bundle of this effective Cartier embedding.</p>
+<h2 id="3-meromorphic-functions-and-denominators">3. Meromorphic functions and denominators</h2>
+<p>For an open <span class="math" data-tex="\(U\)">\(U\)</span>, let <span class="math" data-tex="\(\mathcal S(U)\)">\(\mathcal S(U)\)</span> consist of regular sections of <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>: their germs are nonzerodivisors at every point of <span class="math" data-tex="\(U\)">\(U\)</span>. These sets restrict and multiply. Define <span class="math" data-tex="\(\mathcal K_X\)">\(\mathcal K_X\)</span> as the sheafification of</p>
+<span class="math math-display" data-tex="\[
+U\longmapsto\mathcal S(U)^{-1}\mathcal O_X(U).
+\tag{3.1}
+\]">\[
+U\longmapsto\mathcal S(U)^{-1}\mathcal O_X(U).
+\tag{3.1}
+\]</span>
+<p>The natural inclusion <span class="math" data-tex="\(\mathcal O_X\hookrightarrow\mathcal K_X\)">\(\mathcal O_X\hookrightarrow\mathcal K_X\)</span> is injective. A meromorphic section of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is a section of <span class="math" data-tex="\(\mathcal L\otimes\mathcal K_X\)">\(\mathcal L\otimes\mathcal K_X\)</span>; it is regular meromorphic if the induced multiplication <span class="math" data-tex="\(\mathcal K_X\to\mathcal L\otimes\mathcal K_X\)">\(\mathcal K_X\to\mathcal L\otimes\mathcal K_X\)</span> is injective. These are the conventions of <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-definition-sheaf-meromorphic-functions">Stacks, Tags 01X2</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-definition-regular-meromorphic-section">02OX</a>.</p>
+<p>For arbitrary schemes, a germ of <span class="math" data-tex="\(\mathcal K_X\)">\(\mathcal K_X\)</span> need not be every fraction in the total quotient ring of the local ring. A local nonzerodivisor need not extend to a nonzerodivisor on a neighborhood. Definition (3.1) retains that distinction.</p>
+<p>For an integral scheme, the distinction disappears: <span class="math" data-tex="\(\mathcal K_X\)">\(\mathcal K_X\)</span> is the constant sheaf of the function field <span class="math" data-tex="\(K(X)\)">\(K(X)\)</span>. On a nonempty affine <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>, all nonzero elements of the domain are regular denominators and their localization is <span class="math" data-tex="\(\operatorname{Frac}(A)\)">\(\operatorname{Frac}(A)\)</span>. These fields identify on all nonempty overlaps. A nonzero meromorphic section of an invertible sheaf then gives a basis at the generic point, and is regular meromorphic.</p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> now be integral and let <span class="math" data-tex="\(s\)">\(s\)</span> be such a section. Its <strong>ideal of denominators</strong> is</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_s(U)=\{a\in\mathcal O_X(U):as\in\mathcal L(U)\}.
+\tag{3.2}
+\]">\[
+\mathcal I_s(U)=\{a\in\mathcal O_X(U):as\in\mathcal L(U)\}.
+\tag{3.2}
+\]</span>
+<p>It is a quasi-coherent ideal. To check this, trivialize <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> on <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> and write <span class="math" data-tex="\(s=a/b\)">\(s=a/b\)</span> with <span class="math" data-tex="\(a,b\ne0\)">\(a,b\ne0\)</span>. The ideal is <span class="math" data-tex="\(I=(b):(a)\)">\(I=(b):(a)\)</span>. For <span class="math" data-tex="\(c/f^n\in A_f\)">\(c/f^n\in A_f\)</span> satisfying <span class="math" data-tex="\((c/f^n)(a/b)\in A_f\)">\((c/f^n)(a/b)\in A_f\)</span>, clearing a power of <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(f^mca\in bA\)">\(f^mca\in bA\)</span> for some <span class="math" data-tex="\(m\)">\(m\)</span>; thus <span class="math" data-tex="\(c/f^n\in I_f\)">\(c/f^n\in I_f\)</span>. The converse is immediate. This localization identity proves quasi-coherence. Both maps</p>
+<span class="math math-display" data-tex="\[
+\mathcal I_s\hookrightarrow\mathcal O_X,
+\qquad \mathcal I_s\xrightarrow{s}\mathcal L
+\]">\[
+\mathcal I_s\hookrightarrow\mathcal O_X,
+\qquad \mathcal I_s\xrightarrow{s}\mathcal L
+\]</span>
+<p>are injective. Locally the first image contains <span class="math" data-tex="\(bA\)">\(bA\)</span>, and the second contains <span class="math" data-tex="\(aA\)">\(aA\)</span>, so their cokernels vanish off the respective proper closed sets. The more general regular-meromorphic statement, with its complete proof, is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-regular-meromorphic-ideal-denominators">Stacks, Tag 02P0</a>. A denominator ideal need not be invertible; clearing poles and having a Cartier divisor are different requirements.</p>
+<h2 id="4-cartier-divisors-and-the-picard-group">4. Cartier divisors and the Picard group</h2>
+<p>The sheaves <span class="math" data-tex="\(\mathcal O_X^*\)">\(\mathcal O_X^*\)</span> and <span class="math" data-tex="\(\mathcal K_X^*\)">\(\mathcal K_X^*\)</span> consist of units. Define the <strong>Cartier divisor group</strong> by</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CaDiv}(X)
+=\Gamma(X,\mathcal K_X^*/\mathcal O_X^*),
+\tag{4.1}
+\]">\[
+\operatorname{CaDiv}(X)
+=\Gamma(X,\mathcal K_X^*/\mathcal O_X^*),
+\tag{4.1}
+\]</span>
+<p>where the quotient is a quotient <strong>sheaf</strong>. Thus a Cartier divisor can be represented on an open cover by invertible meromorphic functions <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, with <span class="math" data-tex="\(f_i/f_j\in\mathcal O_X^*\)">\(f_i/f_j\in\mathcal O_X^*\)</span> on overlaps. Local representatives may require refinements; a Cartier divisor need not come from one global meromorphic function. The group operation multiplies representatives and is written additively. A global <span class="math" data-tex="\(h\in\Gamma(X,\mathcal K_X^*)\)">\(h\in\Gamma(X,\mathcal K_X^*)\)</span> gives the <strong>principal divisor</strong> <span class="math" data-tex="\(\operatorname{div}(h)\)">\(\operatorname{div}(h)\)</span>. Quotienting by these defines the Cartier class group <span class="math" data-tex="\(\operatorname{CaCl}(X)\)">\(\operatorname{CaCl}(X)\)</span>.</p>
+<p>The fractional modules <span class="math" data-tex="\(f_i^{-1}\mathcal O_{U_i}\subset\mathcal K_X|_{U_i}\)">\(f_i^{-1}\mathcal O_{U_i}\subset\mathcal K_X|_{U_i}\)</span> agree on overlaps and define an invertible sheaf <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span>. Multiplication of fractions gives <span class="math" data-tex="\(\mathcal O_X(D+E)\cong\mathcal O_X(D)\otimes\mathcal O_X(E)\)">\(\mathcal O_X(D+E)\cong\mathcal O_X(D)\otimes\mathcal O_X(E)\)</span>. For a principal divisor, <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> is a global frame, so this construction induces a homomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CaCl}(X)\longrightarrow\operatorname{Pic}(X).
+\tag{4.2}
+\]">\[
+\operatorname{CaCl}(X)\longrightarrow\operatorname{Pic}(X).
+\tag{4.2}
+\]</span>
+<p>An effective Cartier divisor gives (4.1) by its regular local equations, which become units in <span class="math" data-tex="\(\mathcal K_X\)">\(\mathcal K_X\)</span>. Its fractional realization agrees with Section 2: the frame dual to <span class="math" data-tex="\(f_i\)">\(f_i\)</span> corresponds to <span class="math" data-tex="\(1/f_i\)">\(1/f_i\)</span>, and the canonical section corresponds to the rational function one.</p>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is integral, (4.2) is an isomorphism. More precisely, Cartier divisors map onto <span class="math" data-tex="\(\operatorname{Pic}(X)\)">\(\operatorname{Pic}(X)\)</span>, and the kernel consists exactly of principal divisors.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> be invertible. Choose a nonzero element <span class="math" data-tex="\(s\in\mathcal L_\eta\)">\(s\in\mathcal L_\eta\)</span>, where <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is the generic point. Since <span class="math" data-tex="\(\mathcal K_X\)">\(\mathcal K_X\)</span> is the constant function-field sheaf, this determines a global nonzero meromorphic section. In local frames <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, write <span class="math" data-tex="\(s=f_i e_i\)">\(s=f_i e_i\)</span>, with <span class="math" data-tex="\(f_i\in K(X)^*\)">\(f_i\in K(X)^*\)</span>. On overlaps the frame changes by a unit, so <span class="math" data-tex="\(f_i/f_j\)">\(f_i/f_j\)</span> is a unit. These functions define a Cartier divisor <span class="math" data-tex="\(D\)">\(D\)</span>. The local maps <span class="math" data-tex="\(f_i^{-1}\mathcal O_{U_i}\to\mathcal L|_{U_i}\)">\(f_i^{-1}\mathcal O_{U_i}\to\mathcal L|_{U_i}\)</span>, sending <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(qs\)">\(qs\)</span>, are isomorphisms and agree on overlaps. Hence <span class="math" data-tex="\(\mathcal O_X(D)\cong\mathcal L\)">\(\mathcal O_X(D)\cong\mathcal L\)</span>, proving surjectivity.</p>
+<p>Suppose now <span class="math" data-tex="\(\mathcal O_X(D)\cong\mathcal O_X\)">\(\mathcal O_X(D)\cong\mathcal O_X\)</span>. The image of the global frame one is a section <span class="math" data-tex="\(h\)">\(h\)</span> of the fractional module <span class="math" data-tex="\(\mathcal O_X(D)\subset\mathcal K_X\)">\(\mathcal O_X(D)\subset\mathcal K_X\)</span>. It is a nonzero element of <span class="math" data-tex="\(K(X)\)">\(K(X)\)</span>. On each representative open, equality of frames gives <span class="math" data-tex="\(h=u_i/f_i\)">\(h=u_i/f_i\)</span> for a unit <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. Thus <span class="math" data-tex="\(f_i=u_i/h\)">\(f_i=u_i/h\)</span>; modulo units the divisor is <span class="math" data-tex="\(\operatorname{div}(h^{-1})\)">\(\operatorname{div}(h^{-1})\)</span>. Conversely every principal divisor gives a trivial line bundle as observed above. The construction is additive, so passage to the quotient proves the isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No Noetherian, normal or separated hypothesis enters this proof. Integralness provides the common field and its nonzero generic frame. On a nonintegral scheme, one must first establish an appropriate meromorphic trivialization; the proof should not be transferred merely by replacing a field symbol by a total quotient ring.</p>
+<h2 id="5-associated-points-and-effective-representatives">5. Associated points and effective representatives</h2>
+<p><strong>Theorem 5.1.</strong> On a locally Noetherian scheme, a section of an invertible sheaf is regular if and only if it does not vanish at any associated point. An effective Cartier divisor therefore contains no associated point. At the generic point <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of each of its irreducible components,</p>
+<span class="math math-display" data-tex="\[
+\dim\mathcal O_{X,\xi}=1.
+\]">\[
+\dim\mathcal O_{X,\xi}=1.
+\]</span>
+<p><strong>Proof.</strong> On an affine trivializing open, regularity of <span class="math" data-tex="\(s=fe\)">\(s=fe\)</span> is injectivity of multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>. The zero-divisor theorem identifies its failure with membership of <span class="math" data-tex="\(f\)">\(f\)</span> in an associated prime. Membership is exactly vanishing of the section in the residue field at that associated point. Associated primes localize, so this affine criterion gives the scheme statement.</p>
+<p>For the dimension assertion, choose an affine neighborhood where the divisor is <span class="math" data-tex="\(V(f)\)">\(V(f)\)</span>. Its component generic point corresponds to a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> minimal over <span class="math" data-tex="\((f)\)">\((f)\)</span>. The principal ideal theorem gives <span class="math" data-tex="\(\dim A_{\mathfrak p}\le1\)">\(\dim A_{\mathfrak p}\le1\)</span>. This dimension cannot be zero: then the maximal ideal of <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span> would be its only prime, hence its nilradical, and <span class="math" data-tex="\(f\)">\(f\)</span> in it would be nilpotent. In a nonzero ring a nilpotent element cannot act injectively. But a localization of a nonzerodivisor remains a nonzerodivisor. Thus the dimension is one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-regular-section-associated-points">Stacks, Tags 0AYL</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-effective-Cartier-codimension-1">0BCN</a>. In a scheme with embedded associated points, avoiding only component generic points is insufficient. For instance, in <span class="math" data-tex="\(k[t,\epsilon]/(\epsilon^2,t\epsilon)\)">\(k[t,\epsilon]/(\epsilon^2,t\epsilon)\)</span>, the element <span class="math" data-tex="\(t\)">\(t\)</span> misses the generic point but kills <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>; its zero scheme is not effective Cartier.</p>
+<p><strong>Theorem 5.2 (differences of effective divisors).</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is Noetherian and admits an ample invertible sheaf, every invertible <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> is <span class="math" data-tex="\(\mathcal O_X(D-E)\)">\(\mathcal O_X(D-E)\)</span> for effective Cartier divisors <span class="math" data-tex="\(D,E\)">\(D,E\)</span>. They can be chosen to avoid any prescribed finite set of points. If <span class="math" data-tex="\(X\)">\(X\)</span> is quasi-affine, one may take <span class="math" data-tex="\(E\)">\(E\)</span> empty.</p>
+<p>The exact complete open proof is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/divisors.html#divisors-lemma-quasi-projective-Noetherian-pic-effective-Cartier">Stacks, Tag 0AYM</a>. Its construction fits our earlier results as follows. The associated set is finite, so adjoin it to the prescribed finite set. For an ample <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, choose a section <span class="math" data-tex="\(a\)">\(a\)</span> of some positive power with an affine nonvanishing open containing that set; the full finite-set argument is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-lemma-ample-finite-set-in-principal-affine">Stacks, Tag 09NV</a>. On this affine open choose a section of <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> nonvanishing at the set. The precise quasi-affine selection lemma, including its proof by finite-point induction, is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-lemma-quasi-affine-invertible-nonvanishing-section">Stacks, Tag 0F20</a>. It also proves the quasi-affine case directly.</p>
+<p>In the general case, the section-extension lemma of the ample lesson extends that chosen section after multiplying by <span class="math" data-tex="\(a^r\)">\(a^r\)</span>, with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> chosen sufficiently large. The resulting global section of <span class="math" data-tex="\(\mathcal N\otimes\mathcal A^{mr}\)">\(\mathcal N\otimes\mathcal A^{mr}\)</span> and the section <span class="math" data-tex="\(a^r\)">\(a^r\)</span> of <span class="math" data-tex="\(\mathcal A^{mr}\)">\(\mathcal A^{mr}\)</span> avoid every associated point, so are regular by Theorem 5.1. Their zero schemes are <span class="math" data-tex="\(D,E\)">\(D,E\)</span>; Theorem 2.1 gives <span class="math" data-tex="\(\mathcal N\cong\mathcal O_X(D-E)\)">\(\mathcal N\cong\mathcal O_X(D-E)\)</span>. This proof does not assume an infinite residue field when selecting a section.</p>
+<h2 id="6-examples-and-exercises">6. Examples and exercises</h2>
+<p>A hyperplane <span class="math" data-tex="\(H=V(X_0)\subset\mathbb P^n_k\)">\(H=V(X_0)\subset\mathbb P^n_k\)</span>, for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, is effective Cartier. On each affine chart, its equation is either a coordinate or a unit; these are nonzerodivisors. The homogeneous section <span class="math" data-tex="\(X_0\)">\(X_0\)</span> of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is regular and has zero scheme <span class="math" data-tex="\(H\)">\(H\)</span>, hence <span class="math" data-tex="\(\mathcal O(H)\cong\mathcal O(1)\)">\(\mathcal O(H)\cong\mathcal O(1)\)</span>. Every closed point on a regular integral finite-type curve is effective Cartier: at that point its maximal ideal is generated by a DVR uniformizer, and away from it the ideal is the full structure sheaf. The residue field need not equal the ground field.</p>
+<p><strong>Exercise 6.1 (easy).</strong> Show that <span class="math" data-tex="\(V(f)\subset\mathbb A^n_k\)">\(V(f)\subset\mathbb A^n_k\)</span> is effective Cartier for every nonzero polynomial <span class="math" data-tex="\(f\)">\(f\)</span>. What happens if <span class="math" data-tex="\(f\)">\(f\)</span> is a nonzero constant?</p>
+<p><strong>Solution.</strong> The polynomial ring is a domain, so multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> is injective and its principal ideal is free of rank one. Apply Theorem 1.1. A nonzero constant is a unit and defines the empty effective divisor. The zero polynomial instead defines the entire nonempty affine scheme and is not a regular equation.</p>
+<p><strong>Exercise 6.2 (easy).</strong> Establish (2.2) with its canonical sections, and compute <span class="math" data-tex="\(\mathcal O(H_1+H_2)\)">\(\mathcal O(H_1+H_2)\)</span> for two hyperplanes of <span class="math" data-tex="\(\mathbb P^n_k\)">\(\mathbb P^n_k\)</span>.</p>
+<p><strong>Solution.</strong> With local equations <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, use the dual frames <span class="math" data-tex="\(1/f,1/g\)">\(1/f,1/g\)</span>. Multiplication identifies their tensor product with the frame <span class="math" data-tex="\(1/(fg)\)">\(1/(fg)\)</span>. The sections <span class="math" data-tex="\(f(1/f)\)">\(f(1/f)\)</span> and <span class="math" data-tex="\(g(1/g)\)">\(g(1/g)\)</span> multiply to <span class="math" data-tex="\(fg(1/(fg))\)">\(fg(1/(fg))\)</span>, the canonical section of the sum. These identifications agree with changes of generators by units and glue. Since each hyperplane has line bundle <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>, the sum has <span class="math" data-tex="\(\mathcal O(2)\)">\(\mathcal O(2)\)</span>, even if the two hyperplanes coincide; then the zero scheme records multiplicity two.</p>
+<p><strong>Exercise 6.3 (medium).</strong> In the cone <span class="math" data-tex="\(X=\operatorname{Spec}k[x,y,z]/(xy-z^2)\)">\(X=\operatorname{Spec}k[x,y,z]/(xy-z^2)\)</span>, show that the ruling <span class="math" data-tex="\(L=V(x,z)\)">\(L=V(x,z)\)</span> is not effective Cartier at the vertex.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be this graded ring, <span class="math" data-tex="\(\mathfrak m=(x,y,z)\)">\(\mathfrak m=(x,y,z)\)</span>, and <span class="math" data-tex="\(I=(x,z)\)">\(I=(x,z)\)</span>. The degree-one part of <span class="math" data-tex="\(A\)">\(A\)</span> has basis <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>, because the relation is homogeneous of degree two. The ideal <span class="math" data-tex="\(\mathfrak m I\)">\(\mathfrak m I\)</span> has no degree-one part, so the classes of <span class="math" data-tex="\(x,z\)">\(x,z\)</span> are linearly independent in <span class="math" data-tex="\(I/\mathfrak m I\)">\(I/\mathfrak m I\)</span>, and they generate it. Localization gives <span class="math" data-tex="\(I_{\mathfrak m}/\mathfrak m I_{\mathfrak m}\cong k^2\)">\(I_{\mathfrak m}/\mathfrak m I_{\mathfrak m}\cong k^2\)</span>. A principal module over the local ring would have a quotient generated by one vector; an invertible ideal would have a one-dimensional quotient. Thus this ideal is not invertible. This argument works in characteristic two as well.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Explain how changing the chosen generic section of a line bundle affects the Cartier divisor in Theorem 4.1, and prove that its Cartier class is independent of this choice.</p>
+<p><strong>Solution.</strong> Two nonzero generic sections differ by a unique <span class="math" data-tex="\(h\in K(X)^*\)">\(h\in K(X)^*\)</span>, since the generic fibre is one-dimensional. If <span class="math" data-tex="\(s=f_i e_i\)">\(s=f_i e_i\)</span>, then <span class="math" data-tex="\(hs=(hf_i)e_i\)">\(hs=(hf_i)e_i\)</span>. The resulting divisors differ by <span class="math" data-tex="\(\operatorname{div}(h)\)">\(\operatorname{div}(h)\)</span>. Their classes are therefore equal, and their fractional line bundles are identified by multiplication by <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span>. Conversely, if a Cartier divisor gives a trivial line bundle, its global frame in the fractional realization is a nonzero rational function, and the local equations differ from its inverse by units. Hence the divisor is principal. Together with the generic-section construction, this proves <span class="math" data-tex="\(\operatorname{CaCl}(X)\cong\operatorname{Pic}(X)\)">\(\operatorname{CaCl}(X)\cong\operatorname{Pic}(X)\)</span>.</p>
+<p><strong>Exercise 6.5 (medium).</strong> Prove that the complement of an effective Cartier divisor on an affine scheme is affine, without assuming its ideal is principal on the entire scheme.</p>
+<p><strong>Solution.</strong> Take an affine cover trivializing the ideal. Over every member its complement is a principal open, and its map to that member is affine. Target locality for affine morphisms makes the full complement immersion affine. An affine morphism to an affine scheme has affine source, by relative Spec or the characterization proved in the affine-morphism lesson. This establishes the result for arbitrary invertible ideals. Replacing the cover by the assertion that every invertible ideal of the original affine coordinate ring is principal would introduce a false premise.</p>
+<h2 id="references-and-proof-dependencies">References and proof dependencies</h2>
+<p>The central characterizations, pullback rule, divisor–section correspondence, Cartier-class comparison and associated-point assertions are proved above. The supplemental effective-difference theorem uses the exact complete open proofs linked in Section 5 and the preceding ample-sheaf lesson. The Stacks project authors, <em>The Stacks project</em>, are consulted in the AI Integrated Stacks Project edition at commit <code>565b10e987aba5969b21145a0833f42d69f96790</code>; the linked expression retains GNU FDL 1.2 and is not reproduced here.</p>
+<p>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, draft of 27 July 2024, §§9.5, 15.4 and 15.6, provides the alternative geometric viewpoint through equations, rational sections and line bundles. The next lesson uses effective Cartier divisors to formulate the universal property of blowing up; the final lesson compares Cartier classes with codimension-one cycles on a normal scheme.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="rational-maps-and-birational-morphisms.html">← Rational maps and birational morphisms</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="blowing-up.html">Blowing up →</a></span></nav>
+<p class="small source-link"><a href="src/effective-cartier-divisors-and-invertible-sheaves.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-MO">Repository</a></nav>
+</footer>
+</body>
+</html>

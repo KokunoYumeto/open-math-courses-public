@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fixed-support derivatives and logarithmic Fourier graphs</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="fixed-support-derivatives-and-logarithmic-fourier-graphs">Fixed-support derivatives and logarithmic Fourier graphs</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A fixed cutoff costs only a fixed number of derivatives, even when the derivative being estimated has high order. We first make that fact quantitative. We then move a Fourier inverse through a logarithmic complex graph, deriving its exact boundary flux and the decay that removes it.</p>
+<p><a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Theorems 1.1–2.1 and Section 7, proves the Fourier results with the normalization used here. <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a>, Section 13.10, constructs smooth cutoffs. <a href="prerequisites/boundary-flux-and-weak-identities.html">Boundary flux and weak identities</a>, Theorem 2.1, proves the complex-linear flux formula.</p>
+<p>Keep <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat v(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}v(x)\,dx,
+\\
+\qquad
+\|v\|_{H^n}=(2\pi)^{-n/2}
+\|\langle\xi\rangle^n\widehat v(\xi)\|_2,
+\\
+\qquad \langle\xi\rangle=(1+|\xi|^2)^{1/2}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+\widehat v(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}v(x)\,dx,
+\\
+\qquad
+\|v\|_{H^n}=(2\pi)^{-n/2}
+\|\langle\xi\rangle^n\widehat v(\xi)\|_2,
+\\
+\qquad \langle\xi\rangle=(1+|\xi|^2)^{1/2}.
+\end{gathered}
+\tag{1}
+\]</span>
+<p>Dimension zero uses its one-point Lebesgue measure of mass 1 and the identity Fourier transform.</p>
+<p>Grubb’s notes and Melrose’s course develop the Fourier and Sobolev background. The fixed-cutoff estimate and the complete graph deformation are proved below with the Fourier normalization displayed here.</p>
+<h2 id="a-fixed-cutoff-and-high-derivatives">A fixed cutoff and high derivatives</h2>
+<p><strong>Lemma 1.1 (an explicit integer Sobolev bound).</strong> For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_n^2=2^n+\frac{2^{2n}}{1-2^{-n}}.
+\\
+\qquad
+\|v\|_\infty\le (2\pi)^{-n/2}A_n\|v\|_{H^n}.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+A_n^2=2^n+\frac{2^{2n}}{1-2^{-n}}.
+\\
+\qquad
+\|v\|_\infty\le (2\pi)^{-n/2}A_n\|v\|_{H^n}.
+\end{gathered}
+\tag{2}
+\]</span>
+<p>The inequality holds for compact smooth <span class="math" data-tex="\(v\)">\(v\)</span>, and by the full completed Fourier theorem for every <span class="math" data-tex="\(H^n\)">\(H^n\)</span> element, with its continuous representative.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(|\xi|\le1\)">\(|\xi|\le1\)</span>, the integral of <span class="math" data-tex="\(\langle\xi\rangle^{-2n}\)">\(\langle\xi\rangle^{-2n}\)</span> is at most the volume <span class="math" data-tex="\(2^n\)">\(2^n\)</span> of the enclosing cube. On the shell <span class="math" data-tex="\(2^j&lt;|\xi|\le2^{j+1}\)">\(2^j&lt;|\xi|\le2^{j+1}\)</span>, <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, this integrand is at most <span class="math" data-tex="\(2^{-2nj}\)">\(2^{-2nj}\)</span>, whereas the enclosing cube has volume <span class="math" data-tex="\(2^{n(j+2)}\)">\(2^{n(j+2)}\)</span>. Summing the geometric series gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb R^n}\langle\xi\rangle^{-2n}\,d\xi
+\\
+\le 2^n+2^{2n}\sum_{j=0}^{\infty}2^{-nj}=A_n^2.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\int_{\mathbb R^n}\langle\xi\rangle^{-2n}\,d\xi
+\\
+\le 2^n+2^{2n}\sum_{j=0}^{\infty}2^{-nj}=A_n^2.
+\end{gathered}
+\tag{3}
+\]</span>
+<p>Cauchy–Schwarz therefore gives <span class="math" data-tex="\(\|\widehat v\|_1\le A_n\|\langle\xi\rangle^n\widehat v\|_2\)">\(\|\widehat v\|_1\le A_n\|\langle\xi\rangle^n\widehat v\|_2\)</span>. The exact Fourier inverse integral, with coefficient <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, proves (2). For a general <span class="math" data-tex="\(H^n\)">\(H^n\)</span> element the same weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> argument makes its Fourier transform an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function; the completed-space result in <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> Section 7 inverse and ordinary-integral agreement identify it with the displayed inverse integral. Dominated convergence makes that integral continuous and proves the bound. No pointwise inversion is assumed for a general <span class="math" data-tex="\(L^2\)">\(L^2\)</span> element. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2 (the constant is independent of the high derivative).</strong> Let <span class="math" data-tex="\(K\subset U\subset\mathbb R^n\)">\(K\subset U\subset\mathbb R^n\)</span>, with <span class="math" data-tex="\(K\)">\(K\)</span> compact and <span class="math" data-tex="\(U\)">\(U\)</span> open, and choose one <span class="math" data-tex="\(\chi\in C_c^\infty(U)\)">\(\chi\in C_c^\infty(U)\)</span> equal to 1 near <span class="math" data-tex="\(K\)">\(K\)</span>. There is a constant <span class="math" data-tex="\(C_\chi\)">\(C_\chi\)</span> such that for every smooth <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> and every multi-index <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_K|D^\gamma u|
+\\
+\le C_\chi\sum_{|\alpha|\\
+\le n}
+\|D^{\gamma+\alpha}u\|_{L^2(\operatorname{supp}\chi)}.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+\sup_K|D^\gamma u|
+\\
+\le C_\chi\sum_{|\alpha|\\
+\le n}
+\|D^{\gamma+\alpha}u\|_{L^2(\operatorname{supp}\chi)}.
+\end{gathered}
+\tag{4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(C_\chi\)">\(C_\chi\)</span> does not depend on <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p><strong>Proof.</strong> The actual cutoff construction provides a smooth plateau in each ball of a finite cover of <span class="math" data-tex="\(K\)">\(K\)</span> by balls compactly contained in <span class="math" data-tex="\(U\)">\(U\)</span>. Choose their smaller balls to cover <span class="math" data-tex="\(K\)">\(K\)</span>, and set <span class="math" data-tex="\(\chi=1-\prod_j(1-\chi_j)\)">\(\chi=1-\prod_j(1-\chi_j)\)</span>. It has compact support in the union of the larger balls and is 1 on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The multinomial theorem and Plancherel give the exact integer norm identity</p>
+<span class="math math-display" data-tex="\[
+\|v\|_{H^n}^2
+=\sum_{|\beta|\le n}
+\frac{n!}{(n-|\beta|)!\,\beta!}\,\|D^\beta v\|_2^2.
+\tag{5}
+\]">\[
+\|v\|_{H^n}^2
+=\sum_{|\beta|\le n}
+\frac{n!}{(n-|\beta|)!\,\beta!}\,\|D^\beta v\|_2^2.
+\tag{5}
+\]</span>
+<p>Indeed the coefficients are exactly those of <span class="math" data-tex="\((1+\xi_1^2+\cdots+\xi_n^2)^n\)">\((1+\xi_1^2+\cdots+\xi_n^2)^n\)</span>, including the constant term. Apply this to <span class="math" data-tex="\(v=\chi D^\gamma u\)">\(v=\chi D^\gamma u\)</span>. The product rule is</p>
+<span class="math math-display" data-tex="\[
+D^\beta(\chi D^\gamma u)
+=\sum_{\delta\le\beta}\binom{\beta}{\delta}
+(D^\delta\chi)D^{\gamma+\beta-\delta}u.
+\tag{6}
+\]">\[
+D^\beta(\chi D^\gamma u)
+=\sum_{\delta\le\beta}\binom{\beta}{\delta}
+(D^\delta\chi)D^{\gamma+\beta-\delta}u.
+\tag{6}
+\]</span>
+<p>Only derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> up to order <span class="math" data-tex="\(|\beta|\le n\)">\(|\beta|\le n\)</span> occur. Their finitely many supremum norms and the finitely many binomial coefficients depend on the fixed cutoff and dimension, independently of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Each factor involving <span class="math" data-tex="\(u\)">\(u\)</span> is one of the terms on the right of (4). Thus (5) bounds <span class="math" data-tex="\(\|\chi D^\gamma u\|_{H^n}\)">\(\|\chi D^\gamma u\|_{H^n}\)</span> by a fixed <span class="math" data-tex="\(C_\chi&#x27;\)">\(C_\chi&#x27;\)</span> times that sum. Formula (2), and <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-tex="\(K\)">\(K\)</span>, give (4). Dimension zero is the one-point identity with <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, where <span class="math" data-tex="\(U\)">\(U\)</span> is nonempty; an empty <span class="math" data-tex="\(K\)">\(K\)</span> has a zero left side. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the precise estimate needed by the anisotropic-derivative lesson Theorem 1.1. It does not introduce factorial or binomial factors depending on the high order <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The real-analytic extension and polydisk estimate are Lemmas 3.1 and 1.1 of <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>.</p>
+<h2 id="decay-of-a-compact-test-transform">Decay of a compact test transform</h2>
+<p><strong>Lemma 2.1 (Fourier–Laplace bound).</strong> If <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span> has support in a fixed compact <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(R_K=\max(1,\sup_{x\in K}|x|)\)">\(R_K=\max(1,\sup_{x\in K}|x|)\)</span>, taking <span class="math" data-tex="\(R_K=1\)">\(R_K=1\)</span> for empty <span class="math" data-tex="\(K\)">\(K\)</span>. Its Fourier–Laplace transform is entire, and for every nonnegative integer <span class="math" data-tex="\(N\)">\(N\)</span> there is <span class="math" data-tex="\(C_{K,N}\)">\(C_{K,N}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat\phi(\zeta)|
+\le C_{K,N}\|\phi\|_{C^N}
+\langle\operatorname{Re}\zeta\rangle^{-N}
+e^{R_K|\operatorname{Im}\zeta|}
+\\
+\quad(\zeta\in\mathbb C^n).
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+|\widehat\phi(\zeta)|
+\le C_{K,N}\|\phi\|_{C^N}
+\langle\operatorname{Re}\zeta\rangle^{-N}
+e^{R_K|\operatorname{Im}\zeta|}
+\\
+\quad(\zeta\in\mathbb C^n).
+\end{gathered}
+\tag{7}
+\]</span>
+<p><strong>Proof.</strong> The integral defining the transform and each fixed complex derivative can be taken over one enclosing compact ball. Its integrand is entire in <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, with bounded derivatives on every compact parameter set. Differentiation under the compact integral, or its uniformly convergent exponential series, proves that the transform is entire.</p>
+<p>Write <span class="math" data-tex="\(r=|\operatorname{Re}\zeta|\)">\(r=|\operatorname{Re}\zeta|\)</span>. For <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> set <span class="math" data-tex="\(v=\operatorname{Re}\zeta/r\)">\(v=\operatorname{Re}\zeta/r\)</span>, a real unit vector. Integration by parts in that direction, with no boundary term because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is compactly supported, gives</p>
+<span class="math math-display" data-tex="\[
+\widehat\phi(\zeta)
+=(iv\cdot\zeta)^{-N}
+\int e^{-ix\cdot\zeta}\partial_v^N\phi(x)\,dx.
+\tag{8}
+\]">\[
+\widehat\phi(\zeta)
+=(iv\cdot\zeta)^{-N}
+\int e^{-ix\cdot\zeta}\partial_v^N\phi(x)\,dx.
+\tag{8}
+\]</span>
+<p>The real part of <span class="math" data-tex="\(v\cdot\zeta\)">\(v\cdot\zeta\)</span> is <span class="math" data-tex="\(r\)">\(r\)</span>, so <span class="math" data-tex="\(|v\cdot\zeta|\ge r\)">\(|v\cdot\zeta|\ge r\)</span>. Also <span class="math" data-tex="\(|e^{-ix\cdot\zeta}|\le e^{R_K|\operatorname{Im}\zeta|}\)">\(|e^{-ix\cdot\zeta}|\le e^{R_K|\operatorname{Im}\zeta|}\)</span>, and expanding the directional derivative gives <span class="math" data-tex="\(\|\partial_v^N\phi\|_\infty\le n^{N/2}\|\phi\|_{C^N}\)">\(\|\partial_v^N\phi\|_\infty\le n^{N/2}\|\phi\|_{C^N}\)</span>, where the norm includes every derivative of order at most <span class="math" data-tex="\(N\)">\(N\)</span>. The enclosing ball has fixed finite volume, so these bounds prove (7) for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, after comparing <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(\langle r\rangle\)">\(\langle r\rangle\)</span>. For <span class="math" data-tex="\(r\le1\)">\(r\le1\)</span> use the zeroth-order integral bound and <span class="math" data-tex="\(\langle r\rangle^{-N}\ge2^{-N/2}\)">\(\langle r\rangle^{-N}\ge2^{-N/2}\)</span>. Dimension zero is evaluation at the point and the estimate with constant 1. A zero test and an empty support cause no exception. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-graph-flux-identity">The graph flux identity</h2>
+<p>Fix <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, a real vector <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and a real smooth scalar <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Z_s(\xi)=\xi+is\tau(\xi)\nu,\\
+\qquad
+J_s(\xi)=\det D_\xi Z_s
+=1+is\,\nu\cdot\nabla\tau(\xi),\\
+\qquad 0\le s\le1.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+Z_s(\xi)=\xi+is\tau(\xi)\nu,\\
+\qquad
+J_s(\xi)=\det D_\xi Z_s
+=1+is\,\nu\cdot\nabla\tau(\xi),\\
+\qquad 0\le s\le1.
+\end{gathered}
+\tag{9}
+\]</span>
+<p><strong>Lemma 3.1 (finite-ball graph deformation).</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is holomorphic on a neighborhood of the image of <span class="math" data-tex="\([0,1]\times\overline{B_R}\)">\([0,1]\times\overline{B_R}\)</span> under <span class="math" data-tex="\(Z_s\)">\(Z_s\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{B_R}F(Z_1(\xi))J_1(\xi)\,d\xi
+\\
+-\int_{B_R}F(\xi)\,d\xi
+\quad=
+\\
+\int_0^1\int_{|\xi|=R}
+i\tau(\xi)F(Z_s(\xi))\,\nu\cdot n_R(\xi)\,dS(\xi)\,ds,
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\int_{B_R}F(Z_1(\xi))J_1(\xi)\,d\xi
+\\
+-\int_{B_R}F(\xi)\,d\xi
+\quad=
+\\
+\int_0^1\int_{|\xi|=R}
+i\tau(\xi)F(Z_s(\xi))\,\nu\cdot n_R(\xi)\,dS(\xi)\,ds,
+\end{gathered}
+\tag{10}
+\]</span>
+<p>where <span class="math" data-tex="\(n_R=\xi/R\)">\(n_R=\xi/R\)</span> is the outward real normal. All products are complex-linear, without conjugation.</p>
+<p><strong>Proof.</strong> The matrix is <span class="math" data-tex="\(I+is\nu\otimes\nabla\tau\)">\(I+is\nu\otimes\nabla\tau\)</span>. Expand its determinant by multilinearity in the columns. Terms with two replaced columns are zero because those columns are parallel to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>; the linear terms sum to <span class="math" data-tex="\(is\nu\cdot\nabla\tau\)">\(is\nu\cdot\nabla\tau\)</span>. This proves (9), including its sign.</p>
+<p>Put <span class="math" data-tex="\(G_s=F(Z_s)\)">\(G_s=F(Z_s)\)</span>. The holomorphic chain rule gives</p>
+<span class="math math-display" data-tex="\[
+\partial_s(G_sJ_s)
+=\operatorname{div}_\xi\big(i\tau(\xi)\nu G_s(\xi)\big).
+\tag{11}
+\]">\[
+\partial_s(G_sJ_s)
+=\operatorname{div}_\xi\big(i\tau(\xi)\nu G_s(\xi)\big).
+\tag{11}
+\]</span>
+<p>For completeness, let <span class="math" data-tex="\(q=\nu\cdot\nabla\tau\)">\(q=\nu\cdot\nabla\tau\)</span> and <span class="math" data-tex="\(L=\sum_l\nu_l(\partial_{z_l}F)(Z_s)\)">\(L=\sum_l\nu_l(\partial_{z_l}F)(Z_s)\)</span>. The left side is <span class="math" data-tex="\(i\tau L(1+isq)+iqG_s\)">\(i\tau L(1+isq)+iqG_s\)</span>. On the right, differentiating <span class="math" data-tex="\(\tau\)">\(\tau\)</span> gives <span class="math" data-tex="\(iqG_s\)">\(iqG_s\)</span>; differentiating <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(i\tau\sum_{j,l}\nu_jF_l(\delta_{lj}+is\nu_l\partial_j\tau)=i\tau L(1+isq)\)">\(i\tau\sum_{j,l}\nu_jF_l(\delta_{lj}+is\nu_l\partial_j\tau)=i\tau L(1+isq)\)</span>. Thus the two sides agree directly. The coordinate Cauchy–Riemann equations are exactly what removes anti-holomorphic derivative terms.</p>
+<p>Multiply the vector field on the right by a compact smooth cutoff equal to 1 on a neighborhood of <span class="math" data-tex="\(\overline{B_R}\)">\(\overline{B_R}\)</span>. Its divergence on the ball and its values on the sphere are unchanged. <a href="prerequisites/boundary-flux-and-weak-identities.html">Boundary flux and weak identities</a> Theorem 2.1 applies to this compact C¹ complex vector field and gives its integral as the right-hand sphere flux. The fundamental theorem of calculus in <span class="math" data-tex="\(s\)">\(s\)</span>, followed by integration over the compact ball, proves (10). Fubini is justified by continuity on the compact product. In dimension one this is the signed two-endpoint flux, with normals <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> and counting measure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In differential-form language, <span class="math" data-tex="\(F(z)\,dz_1\wedge\cdots\wedge dz_n\)">\(F(z)\,dz_1\wedge\cdots\wedge dz_n\)</span> is closed: its anti-holomorphic derivatives vanish and each holomorphic derivative wedges with a repeated <span class="math" data-tex="\(dz_j\)">\(dz_j\)</span>. Its pulled-back endpoint coefficient is <span class="math" data-tex="\(G_sJ_s\)">\(G_sJ_s\)</span>. Formula (11) identifies its lateral coefficient explicitly as <span class="math" data-tex="\(i\tau\nu G_s\)">\(i\tau\nu G_s\)</span>. Thus (10) proves the particular Stokes deformation that the logarithmic-inverse lesson actually uses, with its complete boundary coefficient and orientation; no general Stokes theorem on a cylinder with corners is an additional premise.</p>
+<p><strong>Theorem 3.2 (logarithmic graph inversion).</strong> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be nonnegative and smooth with <span class="math" data-tex="\(\|\nabla\tau\|_\infty&lt;\infty\)">\(\|\nabla\tau\|_\infty&lt;\infty\)</span> and</p>
+<span class="math math-display" data-tex="\[
+0\le\tau(\xi)\le a\log\langle\xi\rangle+b
+\quad(a,b\ge0).
+\tag{12}
+\]">\[
+0\le\tau(\xi)\le a\log\langle\xi\rangle+b
+\quad(a,b\ge0).
+\tag{12}
+\]</span>
+<p>For every compact smooth test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathbb R^n}
+\widehat\phi(-Z_1(\xi))J_1(\xi)\,d\xi
+\\
+=\int_{\mathbb R^n}\widehat\phi(-\xi)\,d\xi
+\\
+=(2\pi)^n\phi(0).
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+\int_{\mathbb R^n}
+\widehat\phi(-Z_1(\xi))J_1(\xi)\,d\xi
+\\
+=\int_{\mathbb R^n}\widehat\phi(-\xi)\,d\xi
+\\
+=(2\pi)^n\phi(0).
+\end{gathered}
+\tag{13}
+\]</span>
+<p>Both integrals are absolutely convergent. The scale used in the logarithmic-inverse lesson,
+<span class="math" data-tex="\(\tau(\xi)=\delta^{-1}\log(2+\delta\langle\xi\rangle)\)">\(\tau(\xi)=\delta^{-1}\log(2+\delta\langle\xi\rangle)\)</span>, satisfies the hypotheses for every fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> Use (7) with <span class="math" data-tex="\(F(z)=\widehat\phi(-z)\)">\(F(z)=\widehat\phi(-z)\)</span>. Since <span class="math" data-tex="\(\operatorname{Re}Z_s=\xi\)">\(\operatorname{Re}Z_s=\xi\)</span> and <span class="math" data-tex="\(|\operatorname{Im}Z_s|\le|\nu|\tau\)">\(|\operatorname{Im}Z_s|\le|\nu|\tau\)</span>, uniformly for <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|F(Z_s(\xi))|
+\\
+\le C_{K,N}&#x27;\|\phi\|_{C^N}
+\langle\xi\rangle^{-N+aR_K|\nu|}.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+|F(Z_s(\xi))|
+\\
+\le C_{K,N}&#x27;\|\phi\|_{C^N}
+\langle\xi\rangle^{-N+aR_K|\nu|}.
+\end{gathered}
+\tag{14}
+\]</span>
+<p>The constant includes <span class="math" data-tex="\(e^{bR_K|\nu|}\)">\(e^{bR_K|\nu|}\)</span>. Also <span class="math" data-tex="\(|J_s|\le1+|\nu|\|\nabla\tau\|_\infty\)">\(|J_s|\le1+|\nu|\|\nabla\tau\|_\infty\)</span>. Choose <span class="math" data-tex="\(N&gt;aR_K|\nu|+n\)">\(N&gt;aR_K|\nu|+n\)</span>. Integrability follows, for example from dyadic shells exactly as in (3) with exponent <span class="math" data-tex="\(N-aR_K|\nu|&gt;n\)">\(N-aR_K|\nu|&gt;n\)</span>.</p>
+<p>The sphere flux in (10) has absolute value at most a constant times</p>
+<span class="math math-display" data-tex="\[
+(a\log\langle R\rangle+b)
+R^{n-1}\langle R\rangle^{-N+aR_K|\nu|}.
+\tag{15}
+\]">\[
+(a\log\langle R\rangle+b)
+R^{n-1}\langle R\rangle^{-N+aR_K|\nu|}.
+\tag{15}
+\]</span>
+<p>Indeed the sphere area is its fixed unit-sphere area times <span class="math" data-tex="\(R^{n-1}\)">\(R^{n-1}\)</span>, and <span class="math" data-tex="\(|\nu\cdot n_R|\le|\nu|\)">\(|\nu\cdot n_R|\le|\nu|\)</span>. The fixed area is finite by its finite compact smooth graph cover; in <span class="math" data-tex="\(n=1\)">\(n=1\)</span> it is 2. The chosen <span class="math" data-tex="\(N\)">\(N\)</span> makes (15) tend to zero. Letting <span class="math" data-tex="\(R\)">\(R\)</span> tend to infinity in (10) is therefore valid by absolute convergence and gives the first equality in (13). The full written Fourier inverse at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, with the change of variable <span class="math" data-tex="\(\xi\mapsto-\xi\)">\(\xi\mapsto-\xi\)</span>, gives the second equality and its coefficient.</p>
+<p>For the scale in the logarithmic-inverse lesson,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nabla\tau(\xi)=
+\frac{\xi}{\langle\xi\rangle(2+\delta\langle\xi\rangle)},
+\\
+\qquad
+|\nabla\tau|\le\tfrac12,\\
+\qquad
+\tau\le\delta^{-1}\log\langle\xi\rangle+
+\delta^{-1}\log(2+\delta).
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+\nabla\tau(\xi)=
+\frac{\xi}{\langle\xi\rangle(2+\delta\langle\xi\rangle)},
+\\
+\qquad
+|\nabla\tau|\le\tfrac12,\\
+\qquad
+\tau\le\delta^{-1}\log\langle\xi\rangle+
+\delta^{-1}\log(2+\delta).
+\end{gathered}
+\tag{16}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\(\langle\xi\rangle\ge1\)">\(\langle\xi\rangle\ge1\)</span>, hence <span class="math" data-tex="\(2+\delta\langle\xi\rangle\le(2+\delta)\langle\xi\rangle\)">\(2+\delta\langle\xi\rangle\le(2+\delta)\langle\xi\rangle\)</span>. Thus take <span class="math" data-tex="\(a=\delta^{-1}\)">\(a=\delta^{-1}\)</span>, <span class="math" data-tex="\(b=\delta^{-1}\log(2+\delta)\)">\(b=\delta^{-1}\log(2+\delta)\)</span>. In dimension zero there is no graph deformation and (13) is the identity <span class="math" data-tex="\(\widehat\phi(0)=\phi(0)\)">\(\widehat\phi(0)=\phi(0)\)</span>; the exact scalar <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is immaterial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If a compact low-frequency weight <span class="math" data-tex="\(\chi_{\rm low}\)">\(\chi_{\rm low}\)</span> is subtracted, the remaining correction</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(x)\\
+=-(2\pi)^{-n}\int
+\chi_{\rm low}(\xi)e^{ix\cdot Z_1(\xi)}J_1(\xi)\,d\xi
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+H(x)\\
+=-(2\pi)^{-n}\int
+\chi_{\rm low}(\xi)e^{ix\cdot Z_1(\xi)}J_1(\xi)\,d\xi
+\end{gathered}
+\tag{17}
+\]</span>
+<p>is entire in <span class="math" data-tex="\(x\in\mathbb C^n\)">\(x\in\mathbb C^n\)</span>. On its fixed compact frequency support <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> and <span class="math" data-tex="\(J_1\)">\(J_1\)</span> are bounded. The exponential series and all fixed derivative series converge uniformly there on every compact complex <span class="math" data-tex="\(x\)">\(x\)</span>-set, bounded by an ordinary exponential majorant. Integration preserves these series. This verifies the remainder used in the logarithmic-inverse lesson without assuming analyticity of the smooth graph function <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (intermediate: high derivative).</strong> In <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, expand (5)–(6) for <span class="math" data-tex="\(v=\chi D^j u\)">\(v=\chi D^j u\)</span>, and exhibit a constant independent of <span class="math" data-tex="\(j\)">\(j\)</span> in (4).</p>
+<p><strong>Solution 1.</strong> Here <span class="math" data-tex="\(\|v\|_{H^1}^2=\|v\|_2^2+\|Dv\|_2^2\)">\(\|v\|_{H^1}^2=\|v\|_2^2+\|Dv\|_2^2\)</span>, while <span class="math" data-tex="\(Dv=(D\chi)D^j u+\chi D^{j+1}u\)">\(Dv=(D\chi)D^j u+\chi D^{j+1}u\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v\|_{H^1}\\
+\le(\|\chi\|_\infty+\|D\chi\|_\infty)\|D^j u\|_{L^2(\operatorname{supp}\chi)}
+\\
++\|\chi\|_\infty\|D^{j+1}u\|_{L^2(\operatorname{supp}\chi)}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|v\|_{H^1}\\
+\le(\|\chi\|_\infty+\|D\chi\|_\infty)\|D^j u\|_{L^2(\operatorname{supp}\chi)}
+\\
++\|\chi\|_\infty\|D^{j+1}u\|_{L^2(\operatorname{supp}\chi)}
+\end{gathered}
+\]</span>.
+Formula (2) has <span class="math" data-tex="\(A_1^2=2+4/(1-1/2)=10\)">\(A_1^2=2+4/(1-1/2)=10\)</span>. Multiplying the larger of these two coefficients by <span class="math" data-tex="\(\sqrt{10/(2\pi)}\)">\(\sqrt{10/(2\pi)}\)</span> gives a valid <span class="math" data-tex="\(C_\chi\)">\(C_\chi\)</span>, independently of <span class="math" data-tex="\(j\)">\(j\)</span>. There is no differentiation of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> <span class="math" data-tex="\(j\)">\(j\)</span> times, since the high derivative is taken before introducing the cutoff.</p>
+<p><strong>Exercise 2 (basic: graph orientation).</strong> Take <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(\nu=1\)">\(\nu=1\)</span>, a positive constant <span class="math" data-tex="\(\tau=c\)">\(\tau=c\)</span>, and <span class="math" data-tex="\(F(z)=z\)">\(F(z)=z\)</span>. Check (10) on <span class="math" data-tex="\((-R,R)\)">\((-R,R)\)</span>, including the two endpoint signs. Explain why this example does not satisfy the decay premise needed for (13).</p>
+<p><strong>Solution 2.</strong> The determinant is 1. The left side is
+<span class="math" data-tex="\(\int_{-R}^R[(\xi+ic)-\xi]\,d\xi=2icR\)">\(\int_{-R}^R[(\xi+ic)-\xi]\,d\xi=2icR\)</span>.
+At each <span class="math" data-tex="\(s\)">\(s\)</span>, the signed endpoint flux is
+<span class="math" data-tex="\(ic[(R+isc)-(-R+isc)]=2icR\)">\(ic[(R+isc)-(-R+isc)]=2icR\)</span>;
+integration over <span class="math" data-tex="\(s\in[0,1]\)">\(s\in[0,1]\)</span> gives the same answer. The <span class="math" data-tex="\(s\)">\(s\)</span>-dependent terms cancel because the outward endpoint normals have opposite signs. This holomorphic <span class="math" data-tex="\(F\)">\(F\)</span> grows instead of having arbitrarily strong real-frequency decay; its lateral flux need not vanish as <span class="math" data-tex="\(R\)">\(R\)</span> grows. 3.2 is asserted for compact-test Fourier–Laplace transforms, not arbitrary entire functions.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+</ul>
+</main></body></html>

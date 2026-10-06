@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Flat connections and infinitesimal holonomy</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main id="main"><nav aria-label="Chapter contents"><ul><li><a style="display:block" href="#part-a">A. What the curvature derivatives generate</a></li><li><a style="display:block" href="#part-b">B. When infinitesimal information determines holonomy</a></li><li><a style="display:block" href="#part-c">C. Three tests on a circle bundle</a></li><li><a style="display:block" href="#part-d">D. Covering spaces with all lifting prerequisites</a></li><li><a style="display:block" href="#part-e">E. Flat transport and representation classification</a></li><li><a style="display:block" href="#part-f">F. Covers, circles and tori</a></li></ul></nav><article class="lesson"><h1 id="flat-connections-and-infinitesimal-holonomy">Flat connections and infinitesimal holonomy</h1>
+<p>Curvature derivatives, nearby loops and global transport contain different information. We construct infinitesimal and local holonomy, prove when constant dimension or analyticity makes them agree with restricted holonomy, and compute three smooth circle-bundle tests. For flat connections we then prove the covering-space prerequisites and classify bundles by representations of the fundamental group, including disconnected structure groups. Worked circle and torus examples keep the representation distinct from its inverse transport multiplier.</p>
+<p>Use the complete earlier programme proofs in <a href="curvature-and-holonomy-groups.html">Curvature and holonomy groups</a>, <a href="reduction-and-the-holonomy-theorem.html">Reduction and the holonomy theorem</a>, <a href="connections-and-parallel-transport.html">Connections and parallel transport</a>, <a href="principal-bundles-and-associated-bundles.html">Principal bundles and associated bundles</a>, and <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>. Each named locator identifies a complete programme proof. Human construction sources are the exact free versions credited in the chapter.</p>
+<h2 id="part-a">A. What the curvature derivatives generate</h2>
+<p>Let <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> be a smooth principal bundle with finite-dimensional structure Lie group <span class="math" data-tex="\(G\)">\(G\)</span>, connection form <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and curvature <span class="math" data-tex="\(\Omega=d\omega+\tfrac12[\omega,\omega]\)">\(\Omega=d\omega+\tfrac12[\omega,\omega]\)</span>. The base is connected, Hausdorff and second countable. Paths are finitely piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span>; their homotopies are continuous and fix their endpoints. These are the conventions of Curvature C.2–C.5. All subgroup topologies below are their intrinsic Lie-group topologies, which need not equal their subspace topologies in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p id="lemma-a-1"><strong>Lemma A.1 (integrating a subalgebra).</strong> For every Lie subalgebra <span class="math" data-tex="\(\mathfrak k\subseteq\mathfrak g\)">\(\mathfrak k\subseteq\mathfrak g\)</span>, the subgroup
+<span class="math math-display" data-tex="\[
+ K=\langle\exp(tX):t\in\mathbb R,\ X\in\mathfrak k\rangle
+ \tag{A.1}
+\]">\[
+ K=\langle\exp(tX):t\in\mathbb R,\ X\in\mathfrak k\rangle
+ \tag{A.1}
+\]</span>
+has a connected, Hausdorff, second-countable immersed Lie-group structure with Lie algebra <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>. It is the unique connected immersed subgroup with this Lie algebra, including its smooth structure. If <span class="math" data-tex="\(\mathfrak k\subseteq\mathfrak l\)">\(\mathfrak k\subseteq\mathfrak l\)</span>, the corresponding inclusion <span class="math" data-tex="\(K\to L\)">\(K\to L\)</span> is a smooth injective immersion.</p>
+<p><strong>Proof.</strong> The adjoint calculation in Curvature A.3 gives
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}\operatorname{Ad}(\exp(tX))Y
+   =[X,\operatorname{Ad}(\exp(tX))Y].
+ \tag{A.2}
+\]">\[
+ \frac{d}{dt}\operatorname{Ad}(\exp(tX))Y
+   =[X,\operatorname{Ad}(\exp(tX))Y].
+ \tag{A.2}
+\]</span>
+For <span class="math" data-tex="\(X,Y\in\mathfrak k\)">\(X,Y\in\mathfrak k\)</span>, solve this linear equation first in the finite-dimensional space <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>, and then include that solution in <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Uniqueness in Local tools 2.1 identifies it with (A.2). A linear equation extends over each compact time interval: it is a matrix equation with continuous coefficient, covered by Local tools 2.2 on the general linear group, acting on the initial vector. Applying the argument to <span class="math" data-tex="\(-t\)">\(-t\)</span> proves that <span class="math" data-tex="\(\operatorname{Ad}(\exp(tX))\)">\(\operatorname{Ad}(\exp(tX))\)</span> preserves <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span> in both directions. Every element of <span class="math" data-tex="\(K\)">\(K\)</span> therefore preserves <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>.</p>
+<p>Apply the smooth-family subgroup construction of Curvature C.1 to the curves <span class="math" data-tex="\(t\mapsto\exp(tX)\)">\(t\mapsto\exp(tX)\)</span>, <span class="math" data-tex="\(X\in\mathfrak k\)">\(X\in\mathfrak k\)</span>. In that proof the dimension is the maximum rank of the finite word maps. The right logarithmic derivative of a product <span class="math" data-tex="\(ab\)">\(ab\)</span> is
+<span class="math math-display" data-tex="\[
+ d(ab)(ab)^{-1}=da\,a^{-1}
+              +\operatorname{Ad}(a)(db\,b^{-1}),
+ \tag{A.3}
+\]">\[
+ d(ab)(ab)^{-1}=da\,a^{-1}
+              +\operatorname{Ad}(a)(db\,b^{-1}),
+ \tag{A.3}
+\]</span>
+where the displayed notation means right translation of tangent vectors, also for a nonmatrix group. The translation calculation proving this identity is Curvature G.3, equation (G.9). Each factor and inverse factor in our word maps has logarithmic derivatives in <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>. Formula (A.3) and the preceding adjoint invariance put all word-map derivatives in a translate of <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>. Their ranks are at most <span class="math" data-tex="\(d=\dim\mathfrak k\)">\(d=\dim\mathfrak k\)</span>.</p>
+<p>For a basis <span class="math" data-tex="\(X_1,\ldots,X_d\)">\(X_1,\ldots,X_d\)</span>, the map
+<span class="math math-display" data-tex="\[
+ (t_1,\ldots,t_d)\longmapsto
+       \exp(t_1X_1)\cdots\exp(t_dX_d)
+ \tag{A.4}
+\]">\[
+ (t_1,\ldots,t_d)\longmapsto
+       \exp(t_1X_1)\cdots\exp(t_dX_d)
+ \tag{A.4}
+\]</span>
+has differential <span class="math" data-tex="\((t_j)\mapsto\sum_jt_jX_j\)">\((t_j)\mapsto\sum_jt_jX_j\)</span> at zero, by Local tools 2.3. Its rank is <span class="math" data-tex="\(d\)">\(d\)</span>. Curvature C.1 now provides the claimed topology, group operations, countability and injective immersion, with tangent algebra exactly <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, every generator is the identity and this is the one-point group.</p>
+<p>Suppose another connected immersed subgroup <span class="math" data-tex="\(L\)">\(L\)</span> has the same algebra. Its one-parameter subgroup with tangent <span class="math" data-tex="\(X\)">\(X\)</span> maps to <span class="math" data-tex="\(\exp_G(tX)\)">\(\exp_G(tX)\)</span>, by uniqueness of the invariant ODE; hence (A.1) is contained in <span class="math" data-tex="\(L\)">\(L\)</span>. The product (A.4), regarded as a map into <span class="math" data-tex="\(L\)">\(L\)</span>, has invertible differential at zero. Local tools 1.2 makes its image contain an open identity neighbourhood in <span class="math" data-tex="\(L\)">\(L\)</span>. The subgroup generated by that neighbourhood is open; its other cosets are open as well, so it is also closed. Connectedness makes it all of <span class="math" data-tex="\(L\)">\(L\)</span>. Thus <span class="math" data-tex="\(L=K\)">\(L=K\)</span> as sets. The same product (A.4) is an inverse-function chart in both groups, proving that their identity charts, and then all their translated charts, have the same smooth structure. Finally, if <span class="math" data-tex="\(\mathfrak k\subseteq\mathfrak l\)">\(\mathfrak k\subseteq\mathfrak l\)</span>, (A.4) and all its translates are smooth into <span class="math" data-tex="\(L\)">\(L\)</span>, with injective differential. They are charts on <span class="math" data-tex="\(K\)">\(K\)</span>, which proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose coordinates <span class="math" data-tex="\(x^1,\ldots,x^n\)">\(x^1,\ldots,x^n\)</span> on an open set <span class="math" data-tex="\(U\)">\(U\)</span>. Write <span class="math" data-tex="\(E_i\)">\(E_i\)</span> for the horizontal lift of <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> and put <span class="math" data-tex="\(F_{ij}=\Omega(E_i,E_j)\)">\(F_{ij}=\Omega(E_i,E_j)\)</span>. For a word <span class="math" data-tex="\(I=(i_1,\ldots,i_r)\)">\(I=(i_1,\ldots,i_r)\)</span>, let
+<span class="math math-display" data-tex="\[
+ F_{I;ij}=E_{i_r}\cdots E_{i_1}F_{ij},\qquad
+ J_k(p)=\operatorname{span}_{\mathbb R}
+       \{F_{I;ij}(p):0\leq |I|\leq k\},\qquad
+ J(p)=\bigcup_{k\geq0}J_k(p).
+ \tag{A.5}
+\]">\[
+ F_{I;ij}=E_{i_r}\cdots E_{i_1}F_{ij},\qquad
+ J_k(p)=\operatorname{span}_{\mathbb R}
+       \{F_{I;ij}(p):0\leq |I|\leq k\},\qquad
+ J(p)=\bigcup_{k\geq0}J_k(p).
+ \tag{A.5}
+\]</span>
+For the empty word this means <span class="math" data-tex="\(F_{ij}\)">\(F_{ij}\)</span>. The derivatives in (A.5) act componentwise on the <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued functions; they are not ordinary derivatives of an arbitrarily chosen gauge's coefficients. The increasing union is a vector subspace. At a fixed point it equals some finite <span class="math" data-tex="\(J_k(p)\)">\(J_k(p)\)</span>, since a basis of the union uses finitely many words. An equality between two consecutive <span class="math" data-tex="\(J_k(p)\)">\(J_k(p)\)</span>'s alone need not imply that all later ones agree.</p>
+<p id="lemma-a-2"><strong>Lemma A.2 (coordinate independence and equivariance of the jets).</strong> Each <span class="math" data-tex="\(J_k\)">\(J_k\)</span>, and hence <span class="math" data-tex="\(J\)">\(J\)</span>, is independent of the coordinate chart. Equivalently, it is spanned by curvature values and their at most <span class="math" data-tex="\(k\)">\(k\)</span> successive derivatives along arbitrary smooth horizontal vector fields. Moreover
+<span class="math math-display" data-tex="\[
+ J_k(pa)=\operatorname{Ad}(a^{-1})J_k(p),\qquad
+ J(pa)=\operatorname{Ad}(a^{-1})J(p).
+ \tag{A.6}
+\]">\[
+ J_k(pa)=\operatorname{Ad}(a^{-1})J_k(p),\qquad
+ J(pa)=\operatorname{Ad}(a^{-1})J(p).
+ \tag{A.6}
+\]</span></p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span>, every horizontal field has a unique expression <span class="math" data-tex="\(X=\sum_i c_iE_i\)">\(X=\sum_i c_iE_i\)</span> with smooth real coefficients: the coefficients are the coordinate components of <span class="math" data-tex="\(d\pi(X)\)">\(d\pi(X)\)</span>. They may depend on the point of the total space. Thus
+<span class="math" data-tex="\(\Omega(X,Y)=\sum_{i,j}c_id_jF_{ij}\)">\(\Omega(X,Y)=\sum_{i,j}c_id_jF_{ij}\)</span>.
+Applying a horizontal derivative to a smooth linear combination of words of length at most <span class="math" data-tex="\(k\)">\(k\)</span> gives, by the product rule, a smooth linear combination of words of length at most <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. Induction proves that every arbitrary-horizontal expression of order at most <span class="math" data-tex="\(k\)">\(k\)</span> has its value in the space (A.5). Conversely the coordinate lifts themselves are permitted arbitrary horizontal fields, so the spans are equal. This intrinsic characterization proves coordinate independence on every overlap.</p>
+<p>The horizontal lifts satisfy <span class="math" data-tex="\((R_a)_*E_i=E_i\)">\((R_a)_*E_i=E_i\)</span>, by the connection's equivariance and uniqueness of a horizontal vector with given projection. Curvature equivariance, proved in Curvature A.4, gives <span class="math" data-tex="\(F_{ij}(pa)=\operatorname{Ad}(a^{-1})F_{ij}(p)\)">\(F_{ij}(pa)=\operatorname{Ad}(a^{-1})F_{ij}(p)\)</span>. If a function <span class="math" data-tex="\(f\)">\(f\)</span> obeys this identity, differentiating it along the invariant <span class="math" data-tex="\(E_i\)">\(E_i\)</span> shows that <span class="math" data-tex="\(E_if\)">\(E_if\)</span> obeys it too. Induction proves it for every word in (A.5), and taking spans proves (A.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="lemma-a-3"><strong>Lemma A.3 (the jet space is a Lie algebra).</strong> For all nonnegative integers <span class="math" data-tex="\(r,s\)">\(r,s\)</span>,
+<span class="math math-display" data-tex="\[
+ [J_r(p),J_s(p)]\subseteq J_{r+s+2}(p).
+ \tag{A.7}
+\]">\[
+ [J_r(p),J_s(p)]\subseteq J_{r+s+2}(p).
+ \tag{A.7}
+\]</span>
+In particular <span class="math" data-tex="\(J(p)\)">\(J(p)\)</span> is a Lie subalgebra. Define the <em>infinitesimal holonomy group</em> <span class="math" data-tex="\(H^{\mathrm{inf}}_p\)">\(H^{\mathrm{inf}}_p\)</span> to be its connected immersed subgroup, supplied by A.1.</p>
+<p><strong>Proof.</strong> An equivariant function <span class="math" data-tex="\(f:P\to\mathfrak g\)">\(f:P\to\mathfrak g\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ (A^*f)(p)=-[A,f(p)],
+ \tag{A.8}
+\]">\[
+ (A^*f)(p)=-[A,f(p)],
+ \tag{A.8}
+\]</span>
+because <span class="math" data-tex="\(f(p\exp(tA))=\operatorname{Ad}(\exp(-tA))f(p)\)">\(f(p\exp(tA))=\operatorname{Ad}(\exp(-tA))f(p)\)</span>, whose derivative is (A.2). The same pointwise formula holds for a vertical vector whose coefficient <span class="math" data-tex="\(A\)">\(A\)</span> varies with the point: a directional derivative uses its value at that point only.</p>
+<p>The coordinate fields commute downstairs, so <span class="math" data-tex="\([E_i,E_j]\)">\([E_i,E_j]\)</span> is vertical. The curvature identity in Curvature A.4 gives <span class="math" data-tex="\(\omega([E_i,E_j])=-F_{ij}\)">\(\omega([E_i,E_j])=-F_{ij}\)</span>. Consequently, for every equivariant <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+ [F_{ij},f]=E_iE_jf-E_jE_if.
+ \tag{A.9}
+\]">\[
+ [F_{ij},f]=E_iE_jf-E_jE_if.
+ \tag{A.9}
+\]</span>
+There is no factor of two with our stated curvature convention.</p>
+<p>Let <span class="math" data-tex="\(\mathcal M_k\)">\(\mathcal M_k\)</span> be the smooth-function module generated by the coordinate words of length at most <span class="math" data-tex="\(k\)">\(k\)</span>. Horizontal coordinate differentiation sends <span class="math" data-tex="\(\mathcal M_k\)">\(\mathcal M_k\)</span> into <span class="math" data-tex="\(\mathcal M_{k+1}\)">\(\mathcal M_{k+1}\)</span>, by the product rule. For a word <span class="math" data-tex="\(f\)">\(f\)</span> of length <span class="math" data-tex="\(s\)">\(s\)</span>, (A.9) says <span class="math" data-tex="\([F_{ij},f]\in\mathcal M_{s+2}\)">\([F_{ij},f]\in\mathcal M_{s+2}\)</span>. Suppose for every word <span class="math" data-tex="\(g\)">\(g\)</span> of length at most <span class="math" data-tex="\(r\)">\(r\)</span> and every word <span class="math" data-tex="\(f\)">\(f\)</span> of length at most <span class="math" data-tex="\(s\)">\(s\)</span> that <span class="math" data-tex="\([g,f]\in\mathcal M_{r+s+2}\)">\([g,f]\in\mathcal M_{r+s+2}\)</span>, for every <span class="math" data-tex="\(s\)">\(s\)</span>. A word of length <span class="math" data-tex="\(r+1\)">\(r+1\)</span> is <span class="math" data-tex="\(E_ag\)">\(E_ag\)</span>, and the componentwise bilinearity of the Lie bracket gives
+<span class="math math-display" data-tex="\[
+ [E_ag,f]=E_a[g,f]-[g,E_af].
+ \tag{A.10}
+\]">\[
+ [E_ag,f]=E_a[g,f]-[g,E_af].
+ \tag{A.10}
+\]</span>
+The first term belongs to <span class="math" data-tex="\(\mathcal M_{r+s+3}\)">\(\mathcal M_{r+s+3}\)</span> by the product rule; the second does by the induction hypothesis with <span class="math" data-tex="\(s+1\)">\(s+1\)</span>. This proves the induction. Taking values at <span class="math" data-tex="\(p\)">\(p\)</span> and finite real linear combinations proves (A.7). Closure of the increasing union under brackets follows immediately. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a connected open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x=\pi(p)\)">\(x=\pi(p)\)</span>, denote by <span class="math" data-tex="\(H^0(U,p)\)">\(H^0(U,p)\)</span> the restricted holonomy group of the connection restricted to <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span>. Restricted means that the loop contracts <strong>inside <span class="math" data-tex="\(U\)">\(U\)</span></strong>. Set
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{loc}}_p=\bigcap_{U\ni x}H^0(U,p).
+ \tag{A.11}
+\]">\[
+ H^{\mathrm{loc}}_p=\bigcap_{U\ni x}H^0(U,p).
+ \tag{A.11}
+\]</span>
+On a convex coordinate ball, every loop contracts inside that ball, so full and restricted holonomy there coincide.</p>
+<p id="lemma-a-4"><strong>Lemma A.4 (stabilization and local comparison).</strong> There is a connected neighbourhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> such that
+<span class="math math-display" data-tex="\[
+ H^0(V,p)=H^{\mathrm{loc}}_p=H^0(U_0,p)
+ \tag{A.12}
+\]">\[
+ H^0(V,p)=H^{\mathrm{loc}}_p=H^0(U_0,p)
+ \tag{A.12}
+\]</span>
+for every connected open <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(x\in V\subseteq U_0\)">\(x\in V\subseteq U_0\)</span>. Thus local holonomy is a connected immersed subgroup. If <span class="math" data-tex="\(q\)">\(q\)</span> is reachable from <span class="math" data-tex="\(p\)">\(p\)</span> by a horizontal path over <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, then
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{loc}}_q\subseteq H^{\mathrm{loc}}_p.
+ \tag{A.13}
+\]">\[
+ H^{\mathrm{loc}}_q\subseteq H^{\mathrm{loc}}_p.
+ \tag{A.13}
+\]</span>
+Its dimension, regarded as a function on the base, is upper semicontinuous: near <span class="math" data-tex="\(x\)">\(x\)</span> it is at most its value at <span class="math" data-tex="\(x\)">\(x\)</span>. Changing <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(pa\)">\(pa\)</span> conjugates the group by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> Take coordinate balls <span class="math" data-tex="\(U_j\)">\(U_j\)</span> centred at <span class="math" data-tex="\(x\)">\(x\)</span>, with radii decreasing to zero. They form a neighbourhood basis: every neighbourhood contains a sufficiently small ball. This basis property, rather than just an intersection consisting of <span class="math" data-tex="\(x\)">\(x\)</span>, is needed here. Curvature C.5 makes each <span class="math" data-tex="\(H^0(U_j,p)\)">\(H^0(U_j,p)\)</span> a connected immersed group. The inclusion for nested balls is smooth: each of the identity-containing smooth generating maps into the smaller restricted group in the proof of C.5 also belongs to the generating family for the larger one, and the word charts in C.1 are therefore smooth into the larger group. Its differential is injective after inclusion into <span class="math" data-tex="\(G\)">\(G\)</span>. Their Lie algebras consequently form a decreasing sequence of vector subspaces.</p>
+<p>The dimensions are nonnegative integers. Choose an index <span class="math" data-tex="\(j_0\)">\(j_0\)</span> attaining their minimum. For <span class="math" data-tex="\(j\geq j_0\)">\(j\geq j_0\)</span>, inclusion and equality of dimensions give equality of Lie algebras, and A.1 gives equality of connected groups with their smooth structures. The intersection over this basis equals the intersection in (A.11): every connected neighbourhood contains one of the balls, and restriction gives the necessary subgroup inclusion. Set <span class="math" data-tex="\(U_0=U_{j_0}\)">\(U_0=U_{j_0}\)</span>. For an arbitrary <span class="math" data-tex="\(V\)">\(V\)</span> as in (A.12), choose <span class="math" data-tex="\(U_j\subseteq V\)">\(U_j\subseteq V\)</span> with <span class="math" data-tex="\(j\geq j_0\)">\(j\geq j_0\)</span>. The inclusions
+<span class="math" data-tex="\(H^0(U_j,p)\subseteq H^0(V,p)\subseteq H^0(U_0,p)\)">\(H^0(U_j,p)\subseteq H^0(V,p)\subseteq H^0(U_0,p)\)</span>
+have equal outside groups, proving (A.12).</p>
+<p>Apply the change-of-base assertion of Curvature C.5 inside <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. For the indicated horizontal endpoint <span class="math" data-tex="\(q\)">\(q\)</span>, it gives <span class="math" data-tex="\(H^0(U_0,q)=H^0(U_0,p)\)">\(H^0(U_0,q)=H^0(U_0,p)\)</span>. Definition (A.11) then proves (A.13). Radial transport of <span class="math" data-tex="\(p\)">\(p\)</span> supplies such a frame over every point of <span class="math" data-tex="\(U_0\)">\(U_0\)</span>; every other frame over the same point is its right translate. The frame-conjugacy formula in C.5 holds for each neighbourhood and hence for their intersection. Conjugation preserves dimension, so (A.13) proves the claimed upper semicontinuity and also that dimension is a well-defined function on the base. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-a-5"><strong>Theorem A.5 (inclusions and generation).</strong> At every frame,
+<span class="math math-display" data-tex="\[
+ J(p)\subseteq\mathfrak h^{\mathrm{loc}}_p
+       \subseteq\mathfrak h^0_p,\qquad
+ H^{\mathrm{inf}}_p\subseteq H^{\mathrm{loc}}_p\subseteq H^0_p.
+ \tag{A.14}
+\]">\[
+ J(p)\subseteq\mathfrak h^{\mathrm{loc}}_p
+       \subseteq\mathfrak h^0_p,\qquad
+ H^{\mathrm{inf}}_p\subseteq H^{\mathrm{loc}}_p\subseteq H^0_p.
+ \tag{A.14}
+\]</span>
+If <span class="math" data-tex="\(P(p)\)">\(P(p)\)</span> denotes all horizontal endpoints reachable from <span class="math" data-tex="\(p\)">\(p\)</span>, then
+<span class="math math-display" data-tex="\[
+ \mathfrak h^0_p
+   =\operatorname{span}_{q\in P(p)}J(q)
+   =\operatorname{span}_{q\in P(p)}\mathfrak h^{\mathrm{loc}}_q.
+ \tag{A.15}
+\]">\[
+ \mathfrak h^0_p
+   =\operatorname{span}_{q\in P(p)}J(q)
+   =\operatorname{span}_{q\in P(p)}\mathfrak h^{\mathrm{loc}}_q.
+ \tag{A.15}
+\]</span>
+The group <span class="math" data-tex="\(H^0_p\)">\(H^0_p\)</span> is generated by the <span class="math" data-tex="\(H^{\mathrm{inf}}_q\)">\(H^{\mathrm{inf}}_q\)</span>, and also by the <span class="math" data-tex="\(H^{\mathrm{loc}}_q\)">\(H^{\mathrm{loc}}_q\)</span>, for <span class="math" data-tex="\(q\in P(p)\)">\(q\in P(p)\)</span>. All the spans are algebraic finite-dimensional spans; no closure is taken.</p>
+<p><strong>Proof.</strong> Curvature G.3 applied on each neighbourhood gives <span class="math" data-tex="\(J_0(p)\subseteq\operatorname{Lie}H^0(U,p)\)">\(J_0(p)\subseteq\operatorname{Lie}H^0(U,p)\)</span>. Use a stabilized neighbourhood from A.4 to obtain <span class="math" data-tex="\(J_0(p)\subseteq\mathfrak h^{\mathrm{loc}}_p\)">\(J_0(p)\subseteq\mathfrak h^{\mathrm{loc}}_p\)</span>. Inductively suppose that all words of length at most <span class="math" data-tex="\(k\)">\(k\)</span> take their values in the local holonomy algebra at their point. For such a word <span class="math" data-tex="\(f\)">\(f\)</span>, let <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> be a short integral curve of <span class="math" data-tex="\(E_i\)">\(E_i\)</span> starting at <span class="math" data-tex="\(p\)">\(p\)</span>, lying over the stabilized <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. By induction and (A.13),
+<span class="math math-display" data-tex="\[
+ f(p(t))\in J_k(p(t))\subseteq
+ \mathfrak h^{\mathrm{loc}}_{p(t)}\subseteq
+ \mathfrak h^{\mathrm{loc}}_p.
+ \tag{A.16}
+\]">\[
+ f(p(t))\in J_k(p(t))\subseteq
+ \mathfrak h^{\mathrm{loc}}_{p(t)}\subseteq
+ \mathfrak h^{\mathrm{loc}}_p.
+ \tag{A.16}
+\]</span>
+The derivative at zero also lies in this fixed vector subspace. Explicitly, extend its basis to a basis of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>; projection onto the complementary coordinates annihilates the entire curve and therefore its derivative, by Local tools 0.2–0.3. That derivative is <span class="math" data-tex="\(E_if(p)\)">\(E_if(p)\)</span>. This proves the induction and the first inclusion in (A.14). Restriction of loops gives the second Lie-algebra inclusion as in A.4, and A.1 gives the group inclusions.</p>
+<p>For <span class="math" data-tex="\(q\in P(p)\)">\(q\in P(p)\)</span>, Curvature C.5 identifies <span class="math" data-tex="\(H^0_q\)">\(H^0_q\)</span> with <span class="math" data-tex="\(H^0_p\)">\(H^0_p\)</span> as represented subgroups of <span class="math" data-tex="\(G\)">\(G\)</span>. Thus both spans in (A.15) are contained in <span class="math" data-tex="\(\mathfrak h^0_p\)">\(\mathfrak h^0_p\)</span>. Conversely Curvature G.3 says that the curvature values at all these <span class="math" data-tex="\(q\)">\(q\)</span>'s span <span class="math" data-tex="\(\mathfrak h^0_p\)">\(\mathfrak h^0_p\)</span>, and each is in <span class="math" data-tex="\(J_0(q)\subseteq J(q)\)">\(J_0(q)\subseteq J(q)\)</span>. This proves (A.15).</p>
+<p>Choose a basis <span class="math" data-tex="\(X_1,\ldots,X_d\)">\(X_1,\ldots,X_d\)</span> of <span class="math" data-tex="\(\mathfrak h^0_p\)">\(\mathfrak h^0_p\)</span> from the union of the spaces <span class="math" data-tex="\(J(q)\)">\(J(q)\)</span>. Such a choice exists: successively select a member outside the span already chosen until that span is all of (A.15), which takes at most <span class="math" data-tex="\(\dim\mathfrak g\)">\(\dim\mathfrak g\)</span> steps. Each curve <span class="math" data-tex="\(\exp(tX_i)\)">\(\exp(tX_i)\)</span> lies in its corresponding <span class="math" data-tex="\(H^{\mathrm{inf}}_q\)">\(H^{\mathrm{inf}}_q\)</span>. Their product map has invertible derivative into <span class="math" data-tex="\(H^0_p\)">\(H^0_p\)</span>, so Local tools 1.2 puts an open identity neighbourhood in the subgroup they generate. The open-coset argument in A.1 and connectedness of <span class="math" data-tex="\(H^0_p\)">\(H^0_p\)</span> make this subgroup the whole group. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the connected group is the identity group and the conclusion holds as well. The local groups contain these infinitesimal groups and lie in <span class="math" data-tex="\(H^0_p\)">\(H^0_p\)</span>; hence they too generate it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The human construction source is Hideki Ozeki, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D679899223A1E8A85B5F7D4802C0C866/S002776300000012Xa.pdf/infinitesimal-holonomy-groups-of-bundle-connections.pdf"><em>Infinitesimal Holonomy Groups of Bundle Connections</em>, the freely accessible full paper, Nagoya Mathematical Journal 10 (1956), 105–123</a>, Sections 3–4. The subgroup construction and curvature-generation prerequisites are supplied by the exact earlier programme proofs named above. Our normalization of exterior differentiation gives (A.9). No onward reference in that paper substitutes for a proof here.</p>
+<p>New exposition and proof details: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. No source prose, page image or source PDF is reproduced in the reading edition.</p>
+<h2 id="part-b">B. When infinitesimal information determines holonomy</h2>
+<p id="theorem-b-1"><strong>Theorem B.1 (constant infinitesimal dimension).</strong> If <span class="math" data-tex="\(\dim J\)">\(\dim J\)</span> is constant on a neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>, then
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q
+ \tag{B.1}
+\]">\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q
+ \tag{B.1}
+\]</span>
+at every frame over a sufficiently small neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>. If <span class="math" data-tex="\(\dim J\)">\(\dim J\)</span> is constant on the connected base, then at every frame
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q=H^0_q.
+ \tag{B.2}
+\]">\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q=H^0_q.
+ \tag{B.2}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose the constant dimension near <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Choose finitely many coordinate jet functions <span class="math" data-tex="\(f_1,\ldots,f_d\)">\(f_1,\ldots,f_d\)</span> from (A.5) whose values at a chosen frame <span class="math" data-tex="\(p\)">\(p\)</span> form a basis of <span class="math" data-tex="\(J(p)\)">\(J(p)\)</span>. Choose a local smooth section through <span class="math" data-tex="\(p\)">\(p\)</span>, using a principal-bundle chart and a constant right translation. Put these functions in the columns of <span class="math" data-tex="\(F\)">\(F\)</span>. Extend their values at <span class="math" data-tex="\(p\)">\(p\)</span> to a basis of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, by Local tools 0.2, and define a fixed linear map <span class="math" data-tex="\(L:\mathfrak g\to\mathbb R^d\)">\(L:\mathfrak g\to\mathbb R^d\)</span> taking the first <span class="math" data-tex="\(d\)">\(d\)</span> basis vectors to the coordinate basis and all remaining ones to zero. Then <span class="math" data-tex="\(LF(p)=I\)">\(LF(p)=I\)</span>. Along the local section, <span class="math" data-tex="\(LF\)">\(LF\)</span> stays invertible after the base neighbourhood is shrunk, by continuity and Local tools 0.4. Thus the columns of <span class="math" data-tex="\(F\)">\(F\)</span> remain independent there. Equation (A.6) and invertibility of the adjoint action make them independent at every frame over that neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span>. Constant dimension makes them a basis of <span class="math" data-tex="\(J(q)\)">\(J(q)\)</span> there.</p>
+<p>Each <span class="math" data-tex="\(E_if_j\)">\(E_if_j\)</span> is another jet function, so
+<span class="math math-display" data-tex="\[
+ E_iF=F C_i
+ \tag{B.3}
+\]">\[
+ E_iF=F C_i
+ \tag{B.3}
+\]</span>
+for a unique <span class="math" data-tex="\(d\times d\)">\(d\times d\)</span> matrix of coefficients <span class="math" data-tex="\(C_i(q)\)">\(C_i(q)\)</span>. These coefficients are smooth on <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span>. To check this without making an invariant-inner-product assumption, fix any basis of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, put the Euclidean inner product on its coordinate space, and use
+<span class="math math-display" data-tex="\[
+ C_i=(F^{T}F)^{-1}F^{T}(E_iF).
+ \tag{B.4}
+\]">\[
+ C_i=(F^{T}F)^{-1}F^{T}(E_iF).
+ \tag{B.4}
+\]</span>
+The Gram matrix is invertible: <span class="math" data-tex="\(v^TF^TFv=|Fv|^2&gt;0\)">\(v^TF^TFv=|Fv|^2&gt;0\)</span> for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, because the columns are independent. Its inverse is smooth by Local tools 0.4. Formula (B.4) recovers the unique coefficients because the columns of <span class="math" data-tex="\(E_iF\)">\(E_iF\)</span> lie in the image of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Along a horizontal curve <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span>, write its velocity on each <span class="math" data-tex="\(C^1\)">\(C^1\)</span> piece as <span class="math" data-tex="\(\sum_i v_i(t)E_i\)">\(\sum_i v_i(t)E_i\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \frac{d}{dt}F(q(t))=F(q(t))C(t),\qquad
+ C(t)=\sum_i v_i(t)C_i(q(t)).
+ \tag{B.5}
+\]">\[
+ \frac{d}{dt}F(q(t))=F(q(t))C(t),\qquad
+ C(t)=\sum_i v_i(t)C_i(q(t)).
+ \tag{B.5}
+\]</span>
+The coefficient is continuous on each closed piece, with finite one-sided endpoint values. Local tools 2.2 on <span class="math" data-tex="\(\mathrm{GL}(d,\mathbb R)\)">\(\mathrm{GL}(d,\mathbb R)\)</span> solves <span class="math" data-tex="\(B'=-C(t)B\)">\(B'=-C(t)B\)</span>, <span class="math" data-tex="\(B(0)=I\)">\(B(0)=I\)</span>, over the entire path interval, passing the invertible endpoint matrix to the next piece. The product rule gives <span class="math" data-tex="\((F(q(t))B(t))'=0\)">\((F(q(t))B(t))'=0\)</span> on each piece. Continuity at their junctions gives
+<span class="math math-display" data-tex="\[
+ F(q(t))B(t)=F(q(0)),\qquad J(q(t))=J(q(0)).
+ \tag{B.6}
+\]">\[
+ F(q(t))B(t)=F(q(0)),\qquad J(q(t))=J(q(0)).
+ \tag{B.6}
+\]</span>
+The last equality follows because <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> is invertible. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the same equality of zero spaces is immediate and no matrix equation is needed.</p>
+<p>For any connected smaller coordinate ball <span class="math" data-tex="\(V\subset U\)">\(V\subset U\)</span>, and any initial frame <span class="math" data-tex="\(q\)">\(q\)</span> over <span class="math" data-tex="\(V\)">\(V\)</span>, all curvature values at horizontal endpoints reachable within <span class="math" data-tex="\(V\)">\(V\)</span> now lie in the fixed space <span class="math" data-tex="\(J(q)\)">\(J(q)\)</span>, by (B.6). Curvature G.3 applied to the restricted bundle over <span class="math" data-tex="\(V\)">\(V\)</span> gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Lie}H^0(V,q)\subseteq J(q)
+      \subseteq\mathfrak h^{\mathrm{loc}}_q
+      \subseteq\operatorname{Lie}H^0(V,q).
+ \tag{B.7}
+\]">\[
+ \operatorname{Lie}H^0(V,q)\subseteq J(q)
+      \subseteq\mathfrak h^{\mathrm{loc}}_q
+      \subseteq\operatorname{Lie}H^0(V,q).
+ \tag{B.7}
+\]</span>
+Here the middle inclusion is A.5, and the last is restriction to a neighbourhood in (A.11), with the smooth-inclusion argument of A.4. Equality follows throughout. A.1 proves equality of the connected groups, including (B.1).</p>
+<p>For the global assertion, cover a horizontal path's compact projected image by neighbourhoods on which the preceding basis construction works. The finite-cover subdivision argument of Curvature C.3 divides its time interval into finitely many subintervals lying in those neighbourhoods; refine also at its finitely many corners. Applying (B.6) successively shows that <span class="math" data-tex="\(J\)">\(J\)</span> is the same represented subspace at every horizontal endpoint of the path. Curvature G.3 on the whole connected base therefore gives <span class="math" data-tex="\(\mathfrak h^0_p\subseteq J(p)\)">\(\mathfrak h^0_p\subseteq J(p)\)</span>. Combine this with (A.14), and apply A.1 again, to obtain (B.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-b-2"><strong>Theorem B.2 (the analytic infinitesimal holonomy theorem).</strong> Suppose the Lie group, principal bundle and connection are real analytic. Then on a connected base,
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p=H^0_p
+ \tag{B.8}
+\]">\[
+ H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p=H^0_p
+ \tag{B.8}
+\]</span>
+for every frame. Analytic means locally represented by an absolutely convergent real power series. No constancy of the jet rank is assumed.</p>
+<p><strong>Proof.</strong> We first recall the exact internal analytic prerequisites. Curvature I.1 proves termwise differentiation, analytic composition and analytic matrix inversion by absolute coefficient estimates. It also proves that solutions of analytic finite-dimensional ODEs are analytic in time wherever defined, including dependence on initial data and analytic parameters. This is a convergent-power-series proof within the programme, not an appeal to an external existence theorem.</p>
+<p>Here is the one-variable identity principle that will be needed. If a real analytic scalar function on a connected open interval has all derivatives zero at one point, its Taylor expansion makes it zero near that point. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of points at which all of its derivatives vanish. Every derivative is continuous, so <span class="math" data-tex="\(S\)">\(S\)</span> is closed relative to the interval. The convergent Taylor series makes it open as well: about each point of <span class="math" data-tex="\(S\)">\(S\)</span>, the function is identically zero, and so are all its derivatives. The interval is connected by the intermediate value theorem, Local tools 0.0. Thus the nonempty set <span class="math" data-tex="\(S\)">\(S\)</span> is the whole interval. Apply this coordinatewise for a vector-valued function.</p>
+<p>Choose analytic coordinates on a convex ball <span class="math" data-tex="\(U\)">\(U\)</span> centred at <span class="math" data-tex="\(x\)">\(x\)</span>, with <span class="math" data-tex="\(x\)">\(x\)</span> represented by zero, and fix <span class="math" data-tex="\(p\in P_x\)">\(p\in P_x\)</span>. The horizontal coordinate lifts <span class="math" data-tex="\(E_i\)">\(E_i\)</span> and curvature components <span class="math" data-tex="\(F_{ij}\)">\(F_{ij}\)</span> are analytic. In a local analytic trivialization this follows directly by solving for the horizontal group velocity from the analytic connection coefficients; the solution is a linear combination of analytic right-invariant vector fields. Curvature is formed from their coefficients, derivatives and brackets, which are analytic by I.1. Thus every coordinate jet function in (A.5) is analytic on <span class="math" data-tex="\(\pi^{-1}U\)">\(\pi^{-1}U\)</span>.</p>
+<p>Fix any <span class="math" data-tex="\(v\in U\)">\(v\in U\)</span>. The line <span class="math" data-tex="\(t\mapsto tv\)">\(t\mapsto tv\)</span> lies in <span class="math" data-tex="\(U\)">\(U\)</span> for <span class="math" data-tex="\(t\)">\(t\)</span> in a connected open interval <span class="math" data-tex="\(I\)">\(I\)</span> containing <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Its horizontal lift <span class="math" data-tex="\(q(t)\)">\(q(t)\)</span>, with <span class="math" data-tex="\(q(0)=p\)">\(q(0)=p\)</span>, exists on <span class="math" data-tex="\(I\)">\(I\)</span>: Curvature C.2 gives the lift over each compact subinterval, and uniqueness makes these lifts agree on overlaps. It is an integral curve of the analytic field
+<span class="math math-display" data-tex="\[
+ E_v=\sum_i v^iE_i.
+ \tag{B.9}
+\]">\[
+ E_v=\sum_i v^iE_i.
+ \tag{B.9}
+\]</span>
+By I.1 the lift is analytic near each time, hence throughout <span class="math" data-tex="\(I\)">\(I\)</span>. For any coordinate jet function <span class="math" data-tex="\(f\)">\(f\)</span>, the function <span class="math" data-tex="\(g_f(t)=f(q(t))\)">\(g_f(t)=f(q(t))\)</span> is analytic, and repeated use of the chain rule gives
+<span class="math math-display" data-tex="\[
+ g_f^{(m)}(t)=(E_v^m f)(q(t))\in J(q(t)).
+ \tag{B.10}
+\]">\[
+ g_f^{(m)}(t)=(E_v^m f)(q(t))\in J(q(t)).
+ \tag{B.10}
+\]</span>
+Indeed <span class="math" data-tex="\(E_v\)">\(E_v\)</span> has constant coefficients in the <span class="math" data-tex="\(E_i\)">\(E_i\)</span>'s, so its <span class="math" data-tex="\(m\)">\(m\)</span>-fold expansion is a finite linear combination of words of <span class="math" data-tex="\(m\)">\(m\)</span> further horizontal derivatives. Commutativity of the <span class="math" data-tex="\(E_i\)">\(E_i\)</span>'s is not needed for this expansion.</p>
+<p>Project <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> linearly onto a complement of <span class="math" data-tex="\(J(p)\)">\(J(p)\)</span>, which exists by Local tools 0.2. Formula (B.10) makes every derivative at zero of the projected <span class="math" data-tex="\(g_f\)">\(g_f\)</span> vanish. The identity principle just proved makes that projection zero on all of <span class="math" data-tex="\(I\)">\(I\)</span>. This works separately for every <span class="math" data-tex="\(f\)">\(f\)</span>; no common Taylor radius for an infinite family is required. Hence <span class="math" data-tex="\(J(q(t))\subseteq J(p)\)">\(J(q(t))\subseteq J(p)\)</span> for every <span class="math" data-tex="\(t\in I\)">\(t\in I\)</span>. Fixing any such <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, project instead onto a complement of <span class="math" data-tex="\(J(q(t_0))\)">\(J(q(t_0))\)</span>. Formula (B.10) makes every derivative vanish at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, and the same identity principle, evaluated at zero, gives the reverse inclusion. We have proved
+<span class="math math-display" data-tex="\[
+ J(q(t))=J(p)\quad(t\in I).
+ \tag{B.11}
+\]">\[
+ J(q(t))=J(p)\quad(t\in I).
+ \tag{B.11}
+\]</span></p>
+<p>Every point of <span class="math" data-tex="\(U\)">\(U\)</span> is the endpoint of one of these radial paths. Equation (A.6) identifies all other frames over that point with adjoint transforms of its radial endpoint, preserving dimension. Thus <span class="math" data-tex="\(\dim J\)">\(\dim J\)</span> is constant on <span class="math" data-tex="\(U\)">\(U\)</span>. This proves local constancy at every base point. The locus where this dimension equals its value at a fixed point is open, and its complement is the union of the other such open loci; connectedness of the base makes the complement empty. The global part of B.1 now proves (B.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-b-3"><strong>Theorem B.3 (stability and singular points).</strong> The dimension of <span class="math" data-tex="\(J\)">\(J\)</span> is lower semicontinuous on the base: near any point it is at least its value there. If <span class="math" data-tex="\(H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p\)">\(H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p\)</span> at one frame, there is a connected neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of its base point such that for every horizontal endpoint <span class="math" data-tex="\(q\)">\(q\)</span> reachable from <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span>,
+<span class="math math-display" data-tex="\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q
+       =H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p.
+ \tag{B.12}
+\]">\[
+ H^{\mathrm{inf}}_q=H^{\mathrm{loc}}_q
+       =H^{\mathrm{inf}}_p=H^{\mathrm{loc}}_p.
+ \tag{B.12}
+\]</span>
+For each of the two dimension functions, the points where it is not locally constant form a closed set with empty interior. The singular set for local holonomy is contained in the singular set for infinitesimal holonomy.</p>
+<p><strong>Proof.</strong> Choose finitely many jet values independent at <span class="math" data-tex="\(p\)">\(p\)</span> and use the fixed linear left inverse along a local section constructed in the first paragraph of B.1. Independence persists nearby, and adjoint equivariance gives the same lower bound in every frame over those points. This proves lower semicontinuity without assuming locally constant rank.</p>
+<p>Suppose equality holds at <span class="math" data-tex="\(p\)">\(p\)</span>, and put <span class="math" data-tex="\(d=\dim J(p)=\dim H^{\mathrm{loc}}_p\)">\(d=\dim J(p)=\dim H^{\mathrm{loc}}_p\)</span>. On a sufficiently small neighbourhood, the preceding lower bound and the upper bound in A.4, together with A.5, give
+<span class="math math-display" data-tex="\[
+ d\leq\dim J(q)\leq\dim H^{\mathrm{loc}}_q\leq d.
+ \tag{B.13}
+\]">\[
+ d\leq\dim J(q)\leq\dim H^{\mathrm{loc}}_q\leq d.
+ \tag{B.13}
+\]</span>
+All dimensions therefore equal <span class="math" data-tex="\(d\)">\(d\)</span>. Shrink to a connected coordinate ball on which the basis argument (B.3)–(B.6) applies. It makes <span class="math" data-tex="\(J(q)=J(p)\)">\(J(q)=J(p)\)</span> at every horizontal endpoint reachable within that ball. B.1 identifies these infinitesimal groups with the local groups, and A.1 identifies connected groups with the same algebra. This proves (B.12).</p>
+<p>The set on which an integer-valued dimension function is locally constant is open, so its complement is closed. To see density for <span class="math" data-tex="\(\dim J\)">\(\dim J\)</span>, take any nonempty open base set. The finitely many possible values lie between zero and <span class="math" data-tex="\(\dim\mathfrak g\)">\(\dim\mathfrak g\)</span>; choose a point attaining the largest value occurring in this set. Lower semicontinuity gives a smaller open neighbourhood inside the set on which the value is at least that largest value, and therefore equals it. For <span class="math" data-tex="\(\dim H^{\mathrm{loc}}\)">\(\dim H^{\mathrm{loc}}\)</span>, choose instead a point attaining the smallest value, and use upper semicontinuity from A.4. In either case every nonempty open set contains a smaller open set of local constancy, proving that the singular set has empty interior. Finally, if <span class="math" data-tex="\(\dim J\)">\(\dim J\)</span> is constant on a neighbourhood, B.1 makes the two dimension functions equal there; thus the local-holonomy dimension is also locally constant. Taking the contrapositive gives the asserted containment of singular sets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The human source is Ozeki's <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D679899223A1E8A85B5F7D4802C0C866/S002776300000012Xa.pdf/infinitesimal-holonomy-groups-of-bundle-connections.pdf">freely accessible full paper</a>, Section 5 and Proposition 2 in Section 4. The coefficient ODE, analytic continuation and all prerequisites used above have their complete proofs here or at the exact programme locators stated above. New exposition and proof details: GPT-6 Astra (OpenAI), October 2026, CC0 1.0.</p>
+<h2 id="part-c">C. Three tests on a circle bundle</h2>
+<p>These examples separate a curvature value, all curvature derivatives, nearby holonomy, and holonomy from distant loops. Work on <span class="math" data-tex="\(\mathbb R^2\times U(1)\)">\(\mathbb R^2\times U(1)\)</span> with real coordinates <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, and write <span class="math" data-tex="\(i\mathbb R\)">\(i\mathbb R\)</span> for the circle Lie algebra.</p>
+<p id="exercise-c-1"><strong>Exercise C.1 (rectangles and the first nonzero jet).</strong> For a smooth real function <span class="math" data-tex="\(f\)">\(f\)</span>, take the local connection form <span class="math" data-tex="\(A=i f(x)\,dy\)">\(A=i f(x)\,dy\)</span>. Compute its curvature, the transport around a rectangle, and the jet algebra at <span class="math" data-tex="\((a,0,1)\)">\((a,0,1)\)</span>. Apply the result to <span class="math" data-tex="\(f(x)=x^3\)">\(f(x)=x^3\)</span> at the origin.</p>
+<p><strong>Solution.</strong> The abelian structure equation, Curvature A.7, and the transport calculation in Connections E.1 give
+<span class="math math-display" data-tex="\[
+ F=i f'(x)\,dx\wedge dy,\qquad
+ g(c)=\exp\left(-\int_c A\right).
+ \tag{C.1}
+\]">\[
+ F=i f'(x)\,dx\wedge dy,\qquad
+ g(c)=\exp\left(-\int_c A\right).
+ \tag{C.1}
+\]</span>
+Traverse the four sides in the order
+<span class="math math-display" data-tex="\[
+ (a,0)\longrightarrow(a+h,0)\longrightarrow(a+h,b)
+       \longrightarrow(a,b)\longrightarrow(a,0).
+ \tag{C.2}
+\]">\[
+ (a,0)\longrightarrow(a+h,0)\longrightarrow(a+h,b)
+       \longrightarrow(a,b)\longrightarrow(a,0).
+ \tag{C.2}
+\]</span>
+The horizontal sides contribute zero. The upward right side contributes <span class="math" data-tex="\(ibf(a+h)\)">\(ibf(a+h)\)</span>, and the downward left side contributes <span class="math" data-tex="\(-ibf(a)\)">\(-ibf(a)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ g(c)=\exp\bigl(-ib(f(a+h)-f(a))\bigr).
+ \tag{C.3}
+\]">\[
+ g(c)=\exp\bigl(-ib(f(a+h)-f(a))\bigr).
+ \tag{C.3}
+\]</span>
+This formula includes negative <span class="math" data-tex="\(b\)">\(b\)</span> or <span class="math" data-tex="\(h\)">\(h\)</span>, with the indicated traversal convention.</p>
+<p>Because the adjoint action of the circle is trivial, all the curvature jet functions here depend only on the base. A horizontal derivative of a base function is its derivative in the projected direction. The only possibly nonzero coordinate words are therefore the repeated <span class="math" data-tex="\(x\)">\(x\)</span>-derivatives of <span class="math" data-tex="\(if'(x)\)">\(if'(x)\)</span>; any word with a <span class="math" data-tex="\(y\)">\(y\)</span>-derivative vanishes. Consequently
+<span class="math math-display" data-tex="\[
+ J(a,0,1)=\operatorname{span}_{\mathbb R}
+                 \{i f^{(m+1)}(a):m\geq0\}.
+ \tag{C.4}
+\]">\[
+ J(a,0,1)=\operatorname{span}_{\mathbb R}
+                 \{i f^{(m+1)}(a):m\geq0\}.
+ \tag{C.4}
+\]</span></p>
+<p>For <span class="math" data-tex="\(f=x^3\)">\(f=x^3\)</span>, the curvature coefficient is <span class="math" data-tex="\(3ix^2\)">\(3ix^2\)</span>. At zero it and its first <span class="math" data-tex="\(x\)">\(x\)</span>-derivative vanish, while its second <span class="math" data-tex="\(x\)">\(x\)</span>-derivative is <span class="math" data-tex="\(6i\)">\(6i\)</span>. The first nonzero curvature jet therefore has derivative order two, and <span class="math" data-tex="\(J(0,0,1)=i\mathbb R\)">\(J(0,0,1)=i\mathbb R\)</span>. Lemma A.1 makes the infinitesimal group the circle; A.5 then makes local and restricted holonomy the circle as well. Alternatively, (C.3) with <span class="math" data-tex="\(a=0,h=1\)">\(a=0,h=1\)</span> gives every value <span class="math" data-tex="\(e^{-ib}\)">\(e^{-ib}\)</span> as <span class="math" data-tex="\(b\)">\(b\)</span> varies; the circle parametrization and its surjectivity are proved in Connections E.1. The plane is simply connected by its linear contraction, so full and restricted holonomy agree. This also exhibits <span class="math" data-tex="\(J_0=J_1=0\)">\(J_0=J_1=0\)</span> but <span class="math" data-tex="\(J_2=i\mathbb R\)">\(J_2=i\mathbb R\)</span>: a temporary plateau of the jet spaces cannot terminate their definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="exercise-c-2"><strong>Exercise C.2 (all jets vanish, but every neighbourhood has holonomy).</strong> Let
+<span class="math math-display" data-tex="\[
+ \psi(x)=\begin{cases}e^{-1/x^2},&amp;x\ne0,\\0,&amp;x=0,\end{cases}
+ \qquad f(x)=\int_0^x\psi(s)\,ds,
+ \qquad A=if(x)\,dy.
+ \tag{C.5}
+\]">\[
+ \psi(x)=\begin{cases}e^{-1/x^2},&amp;x\ne0,\\0,&amp;x=0,\end{cases}
+ \qquad f(x)=\int_0^x\psi(s)\,ds,
+ \qquad A=if(x)\,dy.
+ \tag{C.5}
+\]</span>
+Show that the infinitesimal holonomy at the origin is trivial, while its local and restricted holonomy are <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>.</p>
+<p><strong>Solution.</strong> Local tools 0.5 proves that <span class="math" data-tex="\(\eta(t)=e^{-1/t^2}\)">\(\eta(t)=e^{-1/t^2}\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, extended by zero for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span>, is smooth with every derivative zero at zero. We have <span class="math" data-tex="\(\psi(x)=\eta(x)+\eta(-x)\)">\(\psi(x)=\eta(x)+\eta(-x)\)</span>. The chain rule therefore proves smoothness and the vanishing of every derivative of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> at zero. The fundamental theorem of calculus, Local tools 0.3, gives <span class="math" data-tex="\(f'=\psi\)">\(f'=\psi\)</span> and smoothness of <span class="math" data-tex="\(f\)">\(f\)</span>. Formula (C.4) makes <span class="math" data-tex="\(J(0,0,1)=0\)">\(J(0,0,1)=0\)</span>, so its connected group is the identity group.</p>
+<p>In every coordinate ball about the origin choose a point <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span> with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. Its curvature coefficient <span class="math" data-tex="\(i\psi(a)\)">\(i\psi(a)\)</span> is nonzero. It is reachable from the initial frame by the horizontal lift of the axis segment, which stays inside the ball; along that segment the group coordinate is constant because <span class="math" data-tex="\(dy=0\)">\(dy=0\)</span>. Curvature G.3 applied on the ball says that its restricted holonomy algebra contains <span class="math" data-tex="\(i\psi(a)\)">\(i\psi(a)\)</span>, hence is all of <span class="math" data-tex="\(i\mathbb R\)">\(i\mathbb R\)</span>. The connected group is <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> by A.1 and Connections E.1. Every such ball has this same group, so A.4 gives <span class="math" data-tex="\(H^{\mathrm{loc}}=U(1)\)">\(H^{\mathrm{loc}}=U(1)\)</span>. A.5 gives restricted holonomy <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> as well. Thus equality in the analytic theorem B.2 fails for this smooth connection. In particular the connection is not analytic at the origin: if <span class="math" data-tex="\(\psi\)">\(\psi\)</span> were analytic there, its zero Taylor series would make it vanish near zero, contradicting <span class="math" data-tex="\(\psi(a)&gt;0\)">\(\psi(a)&gt;0\)</span> for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="exercise-c-3"><strong>Exercise C.3 (equality at a point does not determine distant holonomy).</strong> Using the same <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, put
+<span class="math math-display" data-tex="\[
+ \chi(x)=\eta(x-2)\eta(3-x),\qquad
+ f(x)=\int_0^x\chi(s)\,ds,
+ \qquad A=if(x)\,dy.
+ \tag{C.6}
+\]">\[
+ \chi(x)=\eta(x-2)\eta(3-x),\qquad
+ f(x)=\int_0^x\chi(s)\,ds,
+ \qquad A=if(x)\,dy.
+ \tag{C.6}
+\]</span>
+Compute the three groups at the origin and explain why this does not contradict B.3.</p>
+<p><strong>Solution.</strong> The product and chain rules make <span class="math" data-tex="\(\chi\)">\(\chi\)</span> smooth. It is zero for <span class="math" data-tex="\(x\leq2\)">\(x\leq2\)</span> and for <span class="math" data-tex="\(x\geq3\)">\(x\geq3\)</span>, and strictly positive for <span class="math" data-tex="\(2&lt;x&lt;3\)">\(2&lt;x&lt;3\)</span>, by the positivity proved for the exponential in Local tools 0.5. For <span class="math" data-tex="\(x&lt;2\)">\(x&lt;2\)</span>, <span class="math" data-tex="\(f(x)=0\)">\(f(x)=0\)</span>, since the whole integration interval from zero to <span class="math" data-tex="\(x\)">\(x\)</span> lies where <span class="math" data-tex="\(\chi=0\)">\(\chi=0\)</span>. Thus the connection form and curvature vanish on the open half-plane <span class="math" data-tex="\(x&lt;2\)">\(x&lt;2\)</span>. All its jets at the origin are zero. Every loop in a sufficiently small ball about the origin has transport <span class="math" data-tex="\(\exp(-\int A)=1\)">\(\exp(-\int A)=1\)</span>; hence <span class="math" data-tex="\(H^{\mathrm{inf}}=H^{\mathrm{loc}}=\{1\}\)">\(H^{\mathrm{inf}}=H^{\mathrm{loc}}=\{1\}\)</span> there.</p>
+<p>At <span class="math" data-tex="\(a=5/2\)">\(a=5/2\)</span> the curvature <span class="math" data-tex="\(i\chi(a)\,dx\wedge dy\)">\(i\chi(a)\,dx\wedge dy\)</span> is nonzero. Its frame reached along the axis is horizontal from the origin, so Curvature G.3 makes global restricted holonomy <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>. One can check this with literal loops as well. Continuity and positivity of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on an interval about, for example, <span class="math" data-tex="\(9/4\)">\(9/4\)</span> give a positive lower bound on a smaller closed interval, by Local tools 0.1. The integral <span class="math" data-tex="\(f(5/2)\)">\(f(5/2)\)</span> is therefore positive. Formula (C.3) with <span class="math" data-tex="\(a=0,h=5/2\)">\(a=0,h=5/2\)</span> gives <span class="math" data-tex="\(\exp(-ibf(5/2))\)">\(\exp(-ibf(5/2))\)</span>, which ranges over the circle as <span class="math" data-tex="\(b\)">\(b\)</span> ranges over the real line. These rectangles are contractible in the plane.</p>
+<p>The equality of infinitesimal and local holonomy does persist throughout a neighbourhood of the origin, exactly as B.3 states. The loops detecting the distant strip <span class="math" data-tex="\(2&lt;x&lt;3\)">\(2&lt;x&lt;3\)</span> leave that neighbourhood. The three cases can be compared without taking any closure:</p>
+<div aria-label="Comparison of the three holonomy examples" class="table-scroll" role="region" style="overflow-x:auto;max-width:100%" tabindex="0"><table>
+<thead>
+<tr>
+<th>Curvature coefficient in the chosen gauge</th>
+<th><span class="math" data-tex="\(H^{\mathrm{inf}}\)">\(H^{\mathrm{inf}}\)</span> at the origin</th>
+<th><span class="math" data-tex="\(H^{\mathrm{loc}}\)">\(H^{\mathrm{loc}}\)</span> at the origin</th>
+<th><span class="math" data-tex="\(H^0\)">\(H^0\)</span> at the origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(3ix^2\)">\(3ix^2\)</span>, from C.1</td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, first detected at order two</td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span></td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(i\psi(x)\)">\(i\psi(x)\)</span>, from C.2</td>
+<td><span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>, every jet is zero</td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span></td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(i\chi(x)\)">\(i\chi(x)\)</span>, from C.3</td>
+<td><span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span></td>
+<td><span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span></td>
+<td><span class="math" data-tex="\(U(1)\)">\(U(1)\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>The table refers to all curvature derivatives in C.2 and C.3, rather than a finite numerical approximation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These calculations use the complete abelian-transport proof in Connections E.1, the smooth flat factor in Local tools 0.5, and the programme's curvature-generation theorem, with the exact locators given in each solution. New exposition and examples: GPT-6 Astra (OpenAI), October 2026, CC0 1.0.</p>
+<h2 id="part-d">D. Covering spaces with all lifting prerequisites</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a connected, Hausdorff, second-countable smooth manifold, and fix <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. Paths and their endpoint-fixed homotopies in this part are continuous. Write <span class="math" data-tex="\(\lambda*\mu\)">\(\lambda*\mu\)</span> for traversal of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> followed by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, with half the parameter interval assigned to each. Curvature C.4 proves the path-class group laws, including cancellation of a path followed by its reverse. A covering map <span class="math" data-tex="\(p:E\to M\)">\(p:E\to M\)</span> is a surjective continuous map for which every point has an open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> whose inverse image is a disjoint union of open sets, each mapped homeomorphically onto <span class="math" data-tex="\(U\)">\(U\)</span>. These open sets are its sheets over <span class="math" data-tex="\(U\)">\(U\)</span>. A smooth covering has smooth inverse branches in manifold charts.</p>
+<p id="lemma-d-1"><strong>Lemma D.1 (path and square lifting).</strong> A path in <span class="math" data-tex="\(M\)">\(M\)</span>, together with one point over its initial endpoint, has a unique continuous lift to <span class="math" data-tex="\(E\)">\(E\)</span>. A homotopy of paths has a unique lift once its bottom-edge lift is given. An endpoint-fixed homotopy lifts with fixed endpoints. The induced map on based fundamental groups is injective. For a smooth covering, lifts of piecewise smooth paths are piecewise smooth.</p>
+<p><strong>Proof.</strong> Pull an evenly covered open cover back to the compact parameter interval. The finite subdivision argument in Curvature C.3 gives a subdivision such that each closed subinterval maps into one of these sets. Choose the inverse branch through the given starting point on the first subinterval, then the branch through the endpoint already obtained on each successive one. The resulting finitely many continuous pieces agree at their endpoints and define a continuous lift. For uniqueness, on any such subinterval two lifts agreeing at its start must use the same sheet: a continuous path lying over the evenly covered set cannot move between its disjoint open sheets, since an interval is connected by Local 0.0. They are therefore equal on the subinterval. Induction gives uniqueness on the whole interval. Applying smooth inverse branches to smooth pieces proves the last assertion.</p>
+<p>For a homotopy <span class="math" data-tex="\(F:[0,1]^2\to M\)">\(F:[0,1]^2\to M\)</span>, pull back an evenly covered cover. The same finite-cover grid argument in Curvature C.3 supplies a finite rectangular grid such that each closed cell maps into one evenly covered set. Begin at the bottom left, and fill cells from left to right in each row, then rows from bottom to top. For each cell, select the inverse branch through its already assigned bottom-left corner and apply it to <span class="math" data-tex="\(F\)">\(F\)</span> throughout that cell. It agrees with the previously assigned bottom edge and, when present, left edge: those are lifts of the same edge path with the same starting value, so path uniqueness applies. The same argument gives agreement wherever completed cells meet. The glued map is continuous: for a closed set in the target, its inverse image in each of the finitely many closed cells is closed in that cell, hence in the square, and their finite union is closed. Uniqueness follows by lifting each vertical path from its prescribed bottom endpoint. A constant base path lifts constantly, again by uniqueness. Hence fixed left and right endpoints downstairs give constant left and right edges upstairs.</p>
+<p>Finally, suppose a based loop upstairs projects to a loop with an endpoint-fixed null homotopy. Lift that homotopy starting with the given loop. Its two side edges are constant, and its top edge lifts a constant path and is constant. It is a based contraction of the original loop. This proves injectivity on fundamental groups. No assertion about simple connectedness of the base was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-d-2"><strong>Theorem D.2 (the smooth universal cover).</strong> There is a connected, simply connected, Hausdorff, second-countable smooth manifold <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> and a smooth covering <span class="math" data-tex="\(q:\widetilde M\to M\)">\(q:\widetilde M\to M\)</span>. Put <span class="math" data-tex="\(\Gamma=\pi_1(M,x)\)">\(\Gamma=\pi_1(M,x)\)</span>, with multiplication in traversal order. The group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> acts freely on the left on <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> by deck transformations, transitively on every fibre, and every deck transformation is obtained this way.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> to be the set of endpoint-fixed homotopy classes <span class="math" data-tex="\([\lambda]\)">\([\lambda]\)</span> of paths starting at <span class="math" data-tex="\(x\)">\(x\)</span>, and put <span class="math" data-tex="\(q[\lambda]=\lambda(1)\)">\(q[\lambda]=\lambda(1)\)</span>. Connectedness of a manifold implies path connectedness by the coordinate-ball argument in Curvature C.4, so <span class="math" data-tex="\(q\)">\(q\)</span> is onto. Let <span class="math" data-tex="\(z_0\)">\(z_0\)</span> be the constant-path class.</p>
+<p>For a coordinate ball <span class="math" data-tex="\(U\)">\(U\)</span> whose coordinate image is convex and for a path <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> ending at <span class="math" data-tex="\(y\in U\)">\(y\in U\)</span>, define
+<span class="math math-display" data-tex="\[
+ S(U,[\lambda])=\{[\lambda*\eta]:\eta(0)=y,\ \eta([0,1])\subset U\}.
+ \tag{D.1}
+\]">\[
+ S(U,[\lambda])=\{[\lambda*\eta]:\eta(0)=y,\ \eta([0,1])\subset U\}.
+ \tag{D.1}
+\]</span>
+Two paths inside <span class="math" data-tex="\(U\)">\(U\)</span> with the same endpoints are homotopic with endpoints fixed, by linearly interpolating their coordinate values. There is such a path to every endpoint in <span class="math" data-tex="\(U\)">\(U\)</span>. Thus the restriction of <span class="math" data-tex="\(q\)">\(q\)</span> to (D.1) is bijective onto <span class="math" data-tex="\(U\)">\(U\)</span>. If two sets (D.1) for the same <span class="math" data-tex="\(U\)">\(U\)</span> meet, concatenation with paths inside <span class="math" data-tex="\(U\)">\(U\)</span> and cancellation show that they are identical. They therefore partition <span class="math" data-tex="\(q^{-1}(U)\)">\(q^{-1}(U)\)</span>.</p>
+<p>Declare all sets (D.1) to be a basis. To verify the intersection condition, choose a class in an intersection of sheets over <span class="math" data-tex="\(U,V\)">\(U,V\)</span>, and a smaller convex coordinate ball <span class="math" data-tex="\(W\)">\(W\)</span> around its endpoint inside <span class="math" data-tex="\(U\cap V\)">\(U\cap V\)</span>. Concatenation shows that the sheet over <span class="math" data-tex="\(W\)">\(W\)</span> through that class lies in the intersection. This also proves that <span class="math" data-tex="\(q\)">\(q\)</span> restricted to each sheet over <span class="math" data-tex="\(U\)">\(U\)</span> is a homeomorphism: inverse images of smaller coordinate balls are unions of such sheets, and the sheet's own smaller basic sets project to open sets. Consequently <span class="math" data-tex="\(q\)">\(q\)</span> is a covering.</p>
+<p>The space is Hausdorff. Classes with distinct endpoints can be separated by inverse images of disjoint base neighbourhoods. Distinct classes with the same endpoint lie in distinct, disjoint sheets over a sufficiently small common coordinate ball. Give each sheet the coordinates of its base ball. Coordinate changes on overlapping sheets are restrictions of base coordinate changes, so these charts define a smooth structure for which <span class="math" data-tex="\(q\)">\(q\)</span> is a local diffeomorphism.</p>
+<p>Here second countability must not be omitted. Curvature C.4 proves that <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is countable. Fix a path <span class="math" data-tex="\(\lambda_y\)">\(\lambda_y\)</span> from <span class="math" data-tex="\(x\)">\(x\)</span> to any given <span class="math" data-tex="\(y\)">\(y\)</span>. The map
+<span class="math math-display" data-tex="\[
+ \Gamma\longrightarrow q^{-1}(y),\qquad
+ [\alpha]\longmapsto[\alpha*\lambda_y]
+ \tag{D.2}
+\]">\[
+ \Gamma\longrightarrow q^{-1}(y),\qquad
+ [\alpha]\longmapsto[\alpha*\lambda_y]
+ \tag{D.2}
+\]</span>
+is bijective; its inverse sends <span class="math" data-tex="\([\mu]\)">\([\mu]\)</span> to <span class="math" data-tex="\([\mu*\lambda_y^{-1}]\)">\([\mu*\lambda_y^{-1}]\)</span>, by the cancellation identities. A countable family of convex coordinate balls covers <span class="math" data-tex="\(M\)">\(M\)</span>, by Local 3.A applied to the coordinate-ball cover. Each has countably many sheets because one of its fibres is countable. Each sheet has a countable basis by pulling back the countable basis of the base manifold restricted to that ball. The union of these countably many countable bases is a countable basis for <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>.</p>
+<p>For a path <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, set <span class="math" data-tex="\(\lambda_t(s)=\lambda(ts)\)">\(\lambda_t(s)=\lambda(ts)\)</span>. Then <span class="math" data-tex="\(t\mapsto[\lambda_t]\)">\(t\mapsto[\lambda_t]\)</span> is a continuous path from <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to <span class="math" data-tex="\([\lambda]\)">\([\lambda]\)</span>. Indeed, near any <span class="math" data-tex="\(t_0\)">\(t_0\)</span> choose a convex coordinate ball containing the short segment of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> between <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. Cancellation and reparameterization identify <span class="math" data-tex="\([\lambda_t]\)">\([\lambda_t]\)</span> with the class obtained from <span class="math" data-tex="\([\lambda_{t_0}]\)">\([\lambda_{t_0}]\)</span> by appending that segment, reversed when <span class="math" data-tex="\(t&lt;t_0\)">\(t&lt;t_0\)</span>. In that sheet the endpoint map is a homeomorphism, so continuity follows from continuity of <span class="math" data-tex="\(\lambda(t)\)">\(\lambda(t)\)</span>. This proves path connectedness. If <span class="math" data-tex="\(c\)">\(c\)</span> is a loop in <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> based at <span class="math" data-tex="\(z_0\)">\(z_0\)</span> and <span class="math" data-tex="\(\gamma=q\circ c\)">\(\gamma=q\circ c\)</span>, uniqueness in D.1 gives <span class="math" data-tex="\(c(t)=[\gamma_t]\)">\(c(t)=[\gamma_t]\)</span>. Since <span class="math" data-tex="\(c(1)=z_0\)">\(c(1)=z_0\)</span>, the definition of path classes says that <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has an endpoint-fixed null homotopy. D.1 lifts it to a contraction of <span class="math" data-tex="\(c\)">\(c\)</span>. Loops based elsewhere can be moved to <span class="math" data-tex="\(z_0\)">\(z_0\)</span> using a path and its reverse, with the cancellation homotopies from Curvature C.4. Thus <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> is simply connected.</p>
+<p>For <span class="math" data-tex="\(a=[\alpha]\in\Gamma\)">\(a=[\alpha]\in\Gamma\)</span> define
+<span class="math math-display" data-tex="\[
+ D_a[\lambda]=[\alpha*\lambda].
+ \tag{D.3}
+\]">\[
+ D_a[\lambda]=[\alpha*\lambda].
+ \tag{D.3}
+\]</span>
+This is independent of representatives, sends sheets to sheets with the same endpoint coordinates, and satisfies <span class="math" data-tex="\(D_aD_b=D_{ab}\)">\(D_aD_b=D_{ab}\)</span>. It is a smooth deck transformation with inverse <span class="math" data-tex="\(D_{a^{-1}}\)">\(D_{a^{-1}}\)</span>. If it fixes <span class="math" data-tex="\([\lambda]\)">\([\lambda]\)</span>, appending <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> proves <span class="math" data-tex="\(a=e\)">\(a=e\)</span>, so the action is free. Given two classes <span class="math" data-tex="\([\lambda],[\mu]\)">\([\lambda],[\mu]\)</span> with the same endpoint, <span class="math" data-tex="\(a=[\mu*\lambda^{-1}]\)">\(a=[\mu*\lambda^{-1}]\)</span> sends the first to the second. Hence it is transitive on fibres. A deck transformation is determined by its value at <span class="math" data-tex="\(z_0\)">\(z_0\)</span>: for a path starting there, its image must be the unique lift of the same projected path with that assigned initial value. Every possible value over <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(D_a z_0\)">\(D_a z_0\)</span>, so (D.3) gives all deck transformations. Finally, if <span class="math" data-tex="\(S\)">\(S\)</span> is one sheet over a convex coordinate ball, then <span class="math" data-tex="\(D_aS\)">\(D_aS\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> are disjoint unless <span class="math" data-tex="\(a=e\)">\(a=e\)</span>: an intersection would make the two sheets equal, hence fix their unique point over each base point, contrary to freeness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-d-3"><strong>Theorem D.3 (subgroup covers and the universal property).</strong> For every subgroup <span class="math" data-tex="\(K\leq\Gamma\)">\(K\leq\Gamma\)</span>, the left-orbit space <span class="math" data-tex="\(M_K=K\backslash\widetilde M\)">\(M_K=K\backslash\widetilde M\)</span> is a connected smooth covering of <span class="math" data-tex="\(M\)">\(M\)</span>, with a canonical point over <span class="math" data-tex="\(x\)">\(x\)</span>. The image of its fundamental group in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is exactly <span class="math" data-tex="\(K\)">\(K\)</span>. Every connected smooth covering of <span class="math" data-tex="\(M\)">\(M\)</span>, with a chosen point over <span class="math" data-tex="\(x\)">\(x\)</span>, is isomorphic to precisely this construction for its image subgroup. Normality of <span class="math" data-tex="\(K\)">\(K\)</span> is not required.</p>
+<p><strong>Proof.</strong> Give the orbit space its quotient topology, and let <span class="math" data-tex="\(r:\widetilde M\to M_K\)">\(r:\widetilde M\to M_K\)</span> be the projection. It is open, since for an open <span class="math" data-tex="\(O\)">\(O\)</span> the inverse image of <span class="math" data-tex="\(r(O)\)">\(r(O)\)</span> is the open union <span class="math" data-tex="\(\bigcup_{k\in K}D_kO\)">\(\bigcup_{k\in K}D_kO\)</span>. Over a convex coordinate ball <span class="math" data-tex="\(U\)">\(U\)</span>, the disjoint sheets of <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> are permuted by <span class="math" data-tex="\(K\)">\(K\)</span>. The image of any one sheet under <span class="math" data-tex="\(r\)">\(r\)</span> is open and maps homeomorphically onto <span class="math" data-tex="\(U\)">\(U\)</span>; images from distinct orbits of sheets are disjoint. These are the covering charts for <span class="math" data-tex="\(p_K:M_K\to M\)">\(p_K:M_K\to M\)</span>. Their base coordinate changes provide the smooth structure. Distinct points with different base points separate downstairs; distinct points over the same point separate in these disjoint sheets. Thus <span class="math" data-tex="\(M_K\)">\(M_K\)</span> is Hausdorff. Images under the open map <span class="math" data-tex="\(r\)">\(r\)</span> of a countable basis form a countable basis: lift a point of any open set and choose a basis neighbourhood within its inverse image. The quotient is therefore second countable. It is connected as the continuous image of the path-connected <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>. The disjoint union <span class="math" data-tex="\(r^{-1}(r(S))=\coprod_{k\in K}D_kS\)">\(r^{-1}(r(S))=\coprod_{k\in K}D_kS\)</span>, with each restriction a homeomorphism, also proves that <span class="math" data-tex="\(r\)">\(r\)</span> itself is a smooth covering.</p>
+<p>Let the base point of <span class="math" data-tex="\(M_K\)">\(M_K\)</span> be <span class="math" data-tex="\(r(z_0)\)">\(r(z_0)\)</span>. A loop <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span> lifts from this point to a path ending at <span class="math" data-tex="\(r([\alpha])\)">\(r([\alpha])\)</span>. This endpoint equals <span class="math" data-tex="\(r(z_0)\)">\(r(z_0)\)</span> exactly when <span class="math" data-tex="\([\alpha]\in K\)">\([\alpha]\in K\)</span>. A loop downstairs lies in the image of the induced fundamental-group map exactly when its lift is a loop: one implication projects that lift, and the other follows from path uniqueness. D.1 makes this map injective. Its image is therefore precisely <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For completeness let <span class="math" data-tex="\(p_C:C\to M\)">\(p_C:C\to M\)</span> be any connected smooth covering and choose <span class="math" data-tex="\(c_0\)">\(c_0\)</span> over <span class="math" data-tex="\(x\)">\(x\)</span>. Define <span class="math" data-tex="\(\Phi([\lambda])\)">\(\Phi([\lambda])\)</span> to be the endpoint of the lift of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> from <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. D.1 makes this independent of the representative. On a sheet over a convex ball it is the inverse branch of <span class="math" data-tex="\(p_C\)">\(p_C\)</span> through the endpoint already assigned, composed with <span class="math" data-tex="\(q\)">\(q\)</span>. Hence <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is smooth and a local diffeomorphism. The coordinate-ball path argument proves that <span class="math" data-tex="\(C\)">\(C\)</span> is path connected. Projecting a path from <span class="math" data-tex="\(c_0\)">\(c_0\)</span> to any specified point of <span class="math" data-tex="\(C\)">\(C\)</span> proves that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is onto.</p>
+<p>Put <span class="math" data-tex="\(K=(p_C)_*\pi_1(C,c_0)\)">\(K=(p_C)_*\pi_1(C,c_0)\)</span>. If <span class="math" data-tex="\(\Phi([\lambda])=\Phi([\mu])\)">\(\Phi([\lambda])=\Phi([\mu])\)</span>, the lift of <span class="math" data-tex="\(\lambda*\mu^{-1}\)">\(\lambda*\mu^{-1}\)</span> is a loop at <span class="math" data-tex="\(c_0\)">\(c_0\)</span>, so <span class="math" data-tex="\([\lambda*\mu^{-1}]\in K\)">\([\lambda*\mu^{-1}]\in K\)</span>. Conversely membership in <span class="math" data-tex="\(K\)">\(K\)</span> makes that lift a loop, and reversal and uniqueness force the two endpoints to coincide. Thus the fibres of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> are exactly the <span class="math" data-tex="\(K\)">\(K\)</span>-orbits in <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>, by (D.3). The induced map <span class="math" data-tex="\(M_K\to C\)">\(M_K\to C\)</span> is a bijective local diffeomorphism, whose local smooth inverses form its global inverse. It is the desired based covering isomorphism. Equality of image subgroups is necessary for any based isomorphism and sufficient by this construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Free construction source.</strong> Allen Hatcher's author-hosted, freely downloadable electronic <em>Algebraic Topology</em>, <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf">Chapter 1</a>, printed pages 29–31 and Section 1.3, supplies the covering-space construction and lifting method. The author's <a href="https://pi.math.cornell.edu/~hatcher/AT/ATpage.html">electronic-edition page</a> identifies this free edition. The proofs above include the smooth, separation and countability details required here. Every lifting and covering claim used here is proved above.</p>
+<h2 id="part-e">E. Flat transport and representation classification</h2>
+<p>Continue with the connected manifold and based universal cover of Part D. Let <span class="math" data-tex="\(G\)">\(G\)</span> be a finite-dimensional Lie group, not necessarily connected, and let <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> be a smooth right principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle with connection <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. A bundle isomorphism in this part covers the identity of <span class="math" data-tex="\(M\)">\(M\)</span>, commutes with the right <span class="math" data-tex="\(G\)">\(G\)</span>-action, and preserves the connection.</p>
+<p id="theorem-e-1"><strong>Theorem E.1 (flat transport, product sections and the inverse convention).</strong> Suppose <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is flat. For <span class="math" data-tex="\(p\in P_x\)">\(p\in P_x\)</span>, define <span class="math" data-tex="\(g_p(\alpha)\in G\)">\(g_p(\alpha)\in G\)</span> by <span class="math" data-tex="\(T_\alpha(p)=p g_p(\alpha)\)">\(T_\alpha(p)=p g_p(\alpha)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \rho_p:\Gamma\longrightarrow G,\qquad
+ \rho_p([\alpha])=g_p(\alpha)^{-1}
+ \tag{E.1}
+\]">\[
+ \rho_p:\Gamma\longrightarrow G,\qquad
+ \rho_p([\alpha])=g_p(\alpha)^{-1}
+ \tag{E.1}
+\]</span>
+is a well-defined group homomorphism. Changing the frame to <span class="math" data-tex="\(p b\)">\(p b\)</span> replaces <span class="math" data-tex="\(\rho_p\)">\(\rho_p\)</span> by <span class="math" data-tex="\(b^{-1}\rho_p b\)">\(b^{-1}\rho_p b\)</span>. The full holonomy group, as a subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>, is <span class="math" data-tex="\(\rho_p(\Gamma)\)">\(\rho_p(\Gamma)\)</span>; its intrinsic holonomy topology is discrete. If <span class="math" data-tex="\(M\)">\(M\)</span> is simply connected, parallel transport from <span class="math" data-tex="\(p\)">\(p\)</span> gives a global horizontal section and a connection-preserving isomorphism with the product bundle carrying the product connection.</p>
+<p><strong>Proof.</strong> Every continuous path has a piecewise smooth representative in its endpoint-fixed homotopy class. To see this, subdivide into segments contained in convex coordinate balls, replace each segment by the coordinate straight segment with the same endpoints, and interpolate linearly in the ball. The finite-subdivision argument and the gluing of the resulting homotopies are the same as in Curvature C.4; they do not require that the two endpoints coincide.</p>
+<p>Curvature G.6 proves that flatness is equivalent to trivial restricted holonomy and that transports along endpoint-fixed homotopic piecewise smooth paths agree. Its proof uses the curvature-generation theorem, not an external topological assumption. Thus transport defines a function on the continuous path classes just described. In particular (E.1) is well-defined on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>The order in (E.1) is essential. Equivariance of transport, proved in Connections C.2 and extended to piecewise paths in Curvature C.2, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ T_{\alpha*\beta}(p)
+ &amp;=T_\beta(T_\alpha(p))
+ =T_\beta(p g_p(\alpha))\\
+ &amp;=p g_p(\beta)g_p(\alpha).
+ \end{aligned}
+ \tag{E.2}
+\]">\[
+ \begin{aligned}
+ T_{\alpha*\beta}(p)
+ &amp;=T_\beta(T_\alpha(p))
+ =T_\beta(p g_p(\alpha))\\
+ &amp;=p g_p(\beta)g_p(\alpha).
+ \end{aligned}
+ \tag{E.2}
+\]</span>
+Inverting (E.2) gives <span class="math" data-tex="\(\rho_p(ab)=\rho_p(a)\rho_p(b)\)">\(\rho_p(ab)=\rho_p(a)\rho_p(b)\)</span> when <span class="math" data-tex="\(ab\)">\(ab\)</span> means first traverse <span class="math" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-tex="\(b\)">\(b\)</span>. Also
+<span class="math math-display" data-tex="\[
+ T_\alpha(p b)=p g_p(\alpha)b
+              =(p b)(b^{-1}g_p(\alpha)b),
+ \tag{E.3}
+\]">\[
+ T_\alpha(p b)=p g_p(\alpha)b
+              =(p b)(b^{-1}g_p(\alpha)b),
+ \tag{E.3}
+\]</span>
+which proves the frame-change formula. The full holonomy subgroup consists of the <span class="math" data-tex="\(g_p(\alpha)\)">\(g_p(\alpha)\)</span>. The image of a homomorphism is a subgroup and is closed under inversion, so this set equals <span class="math" data-tex="\(\rho_p(\Gamma)\)">\(\rho_p(\Gamma)\)</span>. Curvature C.5 gives full holonomy its intrinsic Lie-group topology with open identity component equal to restricted holonomy. Here that component is the identity alone, so every singleton is open. This is an intrinsic discreteness assertion; the image may be dense in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>To make the product assertion explicit, when <span class="math" data-tex="\(M\)">\(M\)</span> is simply connected set <span class="math" data-tex="\(\sigma(y)=T_\lambda(p)\)">\(\sigma(y)=T_\lambda(p)\)</span>, where <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is any piecewise smooth path from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. Two such paths are endpoint-fixed homotopic: concatenate one with the reverse of the other, contract the resulting loop, and use the path identities of Curvature C.4. Hence <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is well-defined. Near any point use one fixed path to the centre of a convex coordinate ball followed by the radial segments in that ball. Smooth parameter dependence of transport, Curvature C.2, proves that <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is smooth there. For a smooth curve <span class="math" data-tex="\(c\)">\(c\)</span> in that ball, path independence gives <span class="math" data-tex="\(\sigma(c(t))\)">\(\sigma(c(t))\)</span> by transporting <span class="math" data-tex="\(\sigma(c(0))\)">\(\sigma(c(0))\)</span> along <span class="math" data-tex="\(c\)">\(c\)</span>. Therefore its tangent vector is horizontal. Curves realize every tangent vector in a chart, so <span class="math" data-tex="\(\sigma^*\omega=0\)">\(\sigma^*\omega=0\)</span>. Principal Bundles A.2 shows that
+<span class="math math-display" data-tex="\[
+ M\times G\longrightarrow P,\qquad (y,g)\longmapsto\sigma(y)g
+ \tag{E.4}
+\]">\[
+ M\times G\longrightarrow P,\qquad (y,g)\longmapsto\sigma(y)g
+ \tag{E.4}
+\]</span>
+is a principal-bundle isomorphism. The local expression for a connection, Connections A.3, pulls <span class="math" data-tex="\(\omega\)">\(\omega\)</span> back to the left Maurer–Cartan form on the <span class="math" data-tex="\(G\)">\(G\)</span>-factor because the section potential vanishes. This is exactly the product connection. This repeats the construction in Curvature G.6 to fix its compatibility with our monodromy convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-e-2"><strong>Theorem E.2 (classification including disconnected groups).</strong> Connection-preserving isomorphism classes of flat principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundles over <span class="math" data-tex="\(M\)">\(M\)</span> correspond bijectively to conjugacy classes of homomorphisms <span class="math" data-tex="\(\rho:\Gamma\to G\)">\(\rho:\Gamma\to G\)</span>. With a chosen frame over <span class="math" data-tex="\(x\)">\(x\)</span>, the correspondence is with homomorphisms themselves, and isomorphisms must preserve that frame. No closedness condition on <span class="math" data-tex="\(\rho(\Gamma)\)">\(\rho(\Gamma)\)</span> is imposed.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, use the following left action on the product over the universal cover:
+<span class="math math-display" data-tex="\[
+ a\cdot(z,g)=(D_a z,\rho(a)g),\qquad
+ P_\rho=\Gamma\backslash(\widetilde M\times G).
+ \tag{E.5}
+\]">\[
+ a\cdot(z,g)=(D_a z,\rho(a)g),\qquad
+ P_\rho=\Gamma\backslash(\widetilde M\times G).
+ \tag{E.5}
+\]</span>
+It is an action because <span class="math" data-tex="\(D_aD_b=D_{ab}\)">\(D_aD_b=D_{ab}\)</span> and <span class="math" data-tex="\(\rho(ab)=\rho(a)\rho(b)\)">\(\rho(ab)=\rho(a)\rho(b)\)</span>. It commutes with the right action <span class="math" data-tex="\((z,g)b=(z,gb)\)">\((z,g)b=(z,gb)\)</span>. We construct the smooth bundle explicitly, without invoking a quotient-manifold theorem.</p>
+<p>Choose a convex coordinate ball <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span> and one sheet <span class="math" data-tex="\(S\subset\widetilde M\)">\(S\subset\widetilde M\)</span> over it. Every orbit over <span class="math" data-tex="\(U\)">\(U\)</span> meets <span class="math" data-tex="\(S\times G\)">\(S\times G\)</span> exactly once: the action on the cover is free and transitive on each fibre by D.2. The quotient map is open, since the saturation of an open set is a union of its translates. Consequently its restriction to <span class="math" data-tex="\(S\times G\)">\(S\times G\)</span> is a homeomorphism onto the part of <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span>. Using <span class="math" data-tex="\(S\cong U\)">\(S\cong U\)</span> gives a trivialization by <span class="math" data-tex="\(U\times G\)">\(U\times G\)</span>.</p>
+<p>On an overlap of two such charts, the chosen cover sections satisfy <span class="math" data-tex="\(s_V(y)=D_a s_U(y)\)">\(s_V(y)=D_a s_U(y)\)</span> locally for one fixed <span class="math" data-tex="\(a\in\Gamma\)">\(a\in\Gamma\)</span>. Indeed at a chosen point there is one such <span class="math" data-tex="\(a\)">\(a\)</span>, and on a sufficiently small common convex ball both sections are inverse branches through the corresponding point, so they agree there after applying <span class="math" data-tex="\(D_a\)">\(D_a\)</span>. In the quotient,
+<span class="math math-display" data-tex="\[
+ [s_V(y),g_V]=[s_U(y),\rho(a)^{-1}g_V].
+ \tag{E.6}
+\]">\[
+ [s_V(y),g_V]=[s_U(y),\rho(a)^{-1}g_V].
+ \tag{E.6}
+\]</span>
+Thus the coordinate change from the <span class="math" data-tex="\(U\)">\(U\)</span>-coordinate to the <span class="math" data-tex="\(V\)">\(V\)</span>-coordinate is <span class="math" data-tex="\(g_V=\rho(a)g_U\)">\(g_V=\rho(a)g_U\)</span>, a constant left translation on each sufficiently small overlap. The charts therefore define a smooth principal bundle. To check the manifold conditions, different base points separate downstairs, and points over a common base point separate in one chart <span class="math" data-tex="\(U\times G\)">\(U\times G\)</span>. A countable base cover, together with countable bases in these product charts, gives second countability. This also checks the topology of (E.5), rather than assigning a possibly different topology to the same set.</p>
+<p>On <span class="math" data-tex="\(\widetilde M\times G\)">\(\widetilde M\times G\)</span>, let the connection form be the left Maurer–Cartan form <span class="math" data-tex="\(\theta^L_g=(L_{g^{-1}})_*\)">\(\theta^L_g=(L_{g^{-1}})_*\)</span> on the second factor. Each transformation (E.5) preserves this form, since its action on that factor is a constant left translation. Hence the chart forms agree and give a connection on <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span>. Its horizontal spaces lift to <span class="math" data-tex="\(T\widetilde M\times\{0\}\)">\(T\widetilde M\times\{0\}\)</span>. In every chosen sheet chart its section potential is zero, so Curvature A.7 gives zero curvature. At the frame <span class="math" data-tex="\(p_\rho=[z_0,e]\)">\(p_\rho=[z_0,e]\)</span>, a loop <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> lifts horizontally to the class of <span class="math" data-tex="\((\widetilde\alpha(t),e)\)">\((\widetilde\alpha(t),e)\)</span>, where <span class="math" data-tex="\(\widetilde\alpha\)">\(\widetilde\alpha\)</span> is its cover lift. Its endpoint is
+<span class="math math-display" data-tex="\[
+ [D_a z_0,e]=[z_0,\rho(a)^{-1}],\qquad a=[\alpha].
+ \tag{E.7}
+\]">\[
+ [D_a z_0,e]=[z_0,\rho(a)^{-1}],\qquad a=[\alpha].
+ \tag{E.7}
+\]</span>
+The actual transport multiplier is <span class="math" data-tex="\(\rho(a)^{-1}\)">\(\rho(a)^{-1}\)</span>. E.1 therefore recovers exactly <span class="math" data-tex="\(\rho\)">\(\rho\)</span> from this model.</p>
+<p>Conversely, let <span class="math" data-tex="\((P,\omega,p)\)">\((P,\omega,p)\)</span> be flat and put <span class="math" data-tex="\(\rho=\rho_p\)">\(\rho=\rho_p\)</span>. For a path class <span class="math" data-tex="\(z=[\lambda]\)">\(z=[\lambda]\)</span>, define
+<span class="math math-display" data-tex="\[
+ F(z,g)=T_\lambda(p)g.
+ \tag{E.8}
+\]">\[
+ F(z,g)=T_\lambda(p)g.
+ \tag{E.8}
+\]</span>
+Use any piecewise smooth representative, whose existence and independence are proved in E.1. If <span class="math" data-tex="\(a=[\alpha]\)">\(a=[\alpha]\)</span>, equivariance and traversal order give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F(D_a z,\rho(a)g)
+ &amp;=T_{\alpha*\lambda}(p)\rho(a)g\\
+ &amp;=T_\lambda(p)g_p(\alpha)\rho(a)g
+ =F(z,g).
+ \end{aligned}
+ \tag{E.9}
+\]">\[
+ \begin{aligned}
+ F(D_a z,\rho(a)g)
+ &amp;=T_{\alpha*\lambda}(p)\rho(a)g\\
+ &amp;=T_\lambda(p)g_p(\alpha)\rho(a)g
+ =F(z,g).
+ \end{aligned}
+ \tag{E.9}
+\]</span>
+Thus <span class="math" data-tex="\(F\)">\(F\)</span> descends to a right-equivariant map <span class="math" data-tex="\(\overline F:P_\rho\to P\)">\(\overline F:P_\rho\to P\)</span> carrying <span class="math" data-tex="\(p_\rho\)">\(p_\rho\)</span> to <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>We check all smooth and connection assertions locally. Choose a sheet over a convex ball <span class="math" data-tex="\(U\)">\(U\)</span>, a path representing its point over the centre, and then the radial paths to points of <span class="math" data-tex="\(U\)">\(U\)</span>. Their transported endpoints define a smooth section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. All paths within <span class="math" data-tex="\(U\)">\(U\)</span> between specified endpoints are homotopic there. The curve argument in E.1 therefore makes this section horizontal. In the sheet chart, (E.8) becomes <span class="math" data-tex="\((y,g)\mapsto\sigma(y)g\)">\((y,g)\mapsto\sigma(y)g\)</span>, a smooth bundle trivialization with smooth inverse by Principal Bundles A.2. These local descriptions prove that <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> is a global isomorphism and carries the product chart connection to <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. This proves existence and uniqueness of the based model.</p>
+<p>Finally, suppose <span class="math" data-tex="\(\rho'=b^{-1}\rho b\)">\(\rho'=b^{-1}\rho b\)</span>. The map
+<span class="math math-display" data-tex="\[
+ P_\rho\longrightarrow P_{\rho'},\qquad
+ [z,g]\longmapsto[z,b^{-1}g]
+ \tag{E.10}
+\]">\[
+ P_\rho\longrightarrow P_{\rho'},\qquad
+ [z,g]\longmapsto[z,b^{-1}g]
+ \tag{E.10}
+\]</span>
+is well-defined, because <span class="math" data-tex="\(b^{-1}\rho(a)=\rho'(a)b^{-1}\)">\(b^{-1}\rho(a)=\rho'(a)b^{-1}\)</span>. Its inverse uses left multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>; constant left translation preserves the product connection, so it is a connection-preserving isomorphism. Conversely an isomorphism <span class="math" data-tex="\(\Psi:P\to P'\)">\(\Psi:P\to P'\)</span> sends a frame <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(p'b\)">\(p'b\)</span> for a unique <span class="math" data-tex="\(b\in G\)">\(b\in G\)</span>. It commutes with transport: applying its differential to a horizontal lift gives a horizontal lift with the prescribed initial point, and transport uniqueness identifies them. Formula (E.3) then gives <span class="math" data-tex="\(\rho_p=b^{-1}\rho_{p'}b\)">\(\rho_p=b^{-1}\rho_{p'}b\)</span>. If it preserves specified frames, <span class="math" data-tex="\(b=e\)">\(b=e\)</span>, and the homomorphisms agree. This proves both classifications. Every step applies to disconnected <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Free construction source.</strong> Peter W. Michor's freely available <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript of <em>Topics in Differential Geometry</em></a>, Section 19.7(8) gives the flat-cover and associated-representation construction. We use that exact author version. Part D proves the covering prerequisites, and E.1–E.2 supply the connection, smoothness and convention checks explicitly; the manuscript is not a substitute for any of these proofs.</p>
+<h2 id="part-f">F. Covers, circles and tori</h2>
+<p id="exercise-f-1"><strong>Exercise F.1 (prescribing holonomy by a covering).</strong> Let <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> be flat, with based representation <span class="math" data-tex="\(\rho:\Gamma\to G\)">\(\rho:\Gamma\to G\)</span>. Determine the holonomy of its pullback to the universal cover. More generally, for a subgroup <span class="math" data-tex="\(N\leq\rho(\Gamma)\)">\(N\leq\rho(\Gamma)\)</span>, construct a connected covering on which the pullback has full holonomy exactly <span class="math" data-tex="\(N\)">\(N\)</span>. Do not assume that <span class="math" data-tex="\(N\)">\(N\)</span> is normal or closed in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Solution.</strong> First take any smooth based map <span class="math" data-tex="\(f:(B,b)\to(M,x)\)">\(f:(B,b)\to(M,x)\)</span> from a connected manifold. The pullback connection is flat: its curvature is the pullback of curvature, as proved in Reduction B.1. In the pullback bundle the connection form is the pullback of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by the projection to <span class="math" data-tex="\(P\)">\(P\)</span>. Thus a tangent vector to a pair has zero connection form exactly when its <span class="math" data-tex="\(P\)">\(P\)</span>-component does. The pair of <span class="math" data-tex="\(c\)">\(c\)</span> with the original horizontal lift of <span class="math" data-tex="\(f\circ c\)">\(f\circ c\)</span> is consequently horizontal and has the required initial value; uniqueness of transport identifies it as the pullback lift. At the frame <span class="math" data-tex="\((b,p)\)">\((b,p)\)</span>, its transport multiplier is therefore <span class="math" data-tex="\(g_p(f\circ c)\)">\(g_p(f\circ c)\)</span>, so its representation is
+<span class="math math-display" data-tex="\[
+ \rho_{f^*P}=\rho\circ f_*.
+ \tag{F.1}
+\]">\[
+ \rho_{f^*P}=\rho\circ f_*.
+ \tag{F.1}
+\]</span>
+Here <span class="math" data-tex="\(f_*[c]=[f\circ c]\)">\(f_*[c]=[f\circ c]\)</span> is well-defined because composition with <span class="math" data-tex="\(f\)">\(f\)</span> carries an endpoint-fixed homotopy to one of the same kind, and it preserves concatenation. E.1 gives full holonomy <span class="math" data-tex="\(\rho(f_*\pi_1(B,b))\)">\(\rho(f_*\pi_1(B,b))\)</span>.</p>
+<p>For the universal cover <span class="math" data-tex="\(q:\widetilde M\to M\)">\(q:\widetilde M\to M\)</span>, D.2 proves <span class="math" data-tex="\(\pi_1(\widetilde M,z_0)=\{e\}\)">\(\pi_1(\widetilde M,z_0)=\{e\}\)</span>. Thus the pullback has trivial full holonomy and, by E.1, has a global horizontal section and the product connection. For the prescribed subgroup put <span class="math" data-tex="\(K=\rho^{-1}(N)\)">\(K=\rho^{-1}(N)\)</span>. It is a subgroup because <span class="math" data-tex="\(\rho\)">\(\rho\)</span> preserves multiplication and inverses. The covering <span class="math" data-tex="\(p_K:M_K\to M\)">\(p_K:M_K\to M\)</span> of D.3 has fundamental-group image exactly <span class="math" data-tex="\(K\)">\(K\)</span>. Its pullback holonomy is <span class="math" data-tex="\(\rho(K)=N\)">\(\rho(K)=N\)</span>: inclusion in <span class="math" data-tex="\(N\)">\(N\)</span> is the definition of <span class="math" data-tex="\(K\)">\(K\)</span>, and for each <span class="math" data-tex="\(n\in N\subset\rho(\Gamma)\)">\(n\in N\subset\rho(\Gamma)\)</span> any preimage under <span class="math" data-tex="\(\rho\)">\(\rho\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>. This uses neither normality nor ambient closedness. The equality describes the actual holonomy subgroup, with its discrete intrinsic topology from E.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="exercise-f-2"><strong>Exercise F.2 (all circle monodromies and a disconnected example).</strong> Classify flat principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundles with connection over a circle. For <span class="math" data-tex="\(G=\{1,-1\}\)">\(G=\{1,-1\}\)</span>, identify the bundle associated with nontrivial monodromy and its associated real line bundle.</p>
+<p><strong>Solution.</strong> Use the smooth circle <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, with covering
+<span class="math math-display" data-tex="\[
+ Q:\mathbb R\longrightarrow U(1),\qquad Q(t)=e^{2\pi i t}.
+ \tag{F.2}
+\]">\[
+ Q:\mathbb R\longrightarrow U(1),\qquad Q(t)=e^{2\pi i t}.
+ \tag{F.2}
+\]</span>
+Connections E.1 proves that this parametrization has period exactly one, is onto, and has smooth inverse branches on proper short arcs; equivalently these are the quotient charts of Local 6.3. Thus (F.2) is a smooth covering. The line is simply connected: the linear homotopy contracts every based loop while fixing its endpoints. Its deck transformations are exactly the integer translations. Indeed translations are deck transformations; any deck transformation sends <span class="math" data-tex="\(0\)">\(0\)</span> to one of the integers in <span class="math" data-tex="\(Q^{-1}(1)\)">\(Q^{-1}(1)\)</span>, and D.1 determines it everywhere by lifts of paths from zero.</p>
+<p>A based circle loop lifts from zero to a path with an integer endpoint. Homotopy lifting in D.1 makes that endpoint a class invariant. The lift of a concatenation first ends at the first integer, then follows the integer translate of the second lift, so endpoints add. Every integer <span class="math" data-tex="\(n\)">\(n\)</span> occurs using <span class="math" data-tex="\(t\mapsto Q(nt)\)">\(t\mapsto Q(nt)\)</span>. A loop whose lifted endpoint is zero lifts to a loop in the line, where a linear contraction projects to a based contraction downstairs. Conversely a contracted loop has endpoint zero by D.1. This proves <span class="math" data-tex="\(\pi_1(U(1),1)\cong\mathbb Z\)">\(\pi_1(U(1),1)\cong\mathbb Z\)</span>, including injectivity and the group law.</p>
+<p>Every homomorphism <span class="math" data-tex="\(\mathbb Z\to G\)">\(\mathbb Z\to G\)</span> is determined by the element <span class="math" data-tex="\(h=\rho(1)\)">\(h=\rho(1)\)</span>, with <span class="math" data-tex="\(\rho(n)=h^n\)">\(\rho(n)=h^n\)</span>. E.2 therefore gives conjugacy classes of elements of <span class="math" data-tex="\(G\)">\(G\)</span>, with model
+<span class="math math-display" data-tex="\[
+ P_h=\mathbb Z\backslash(\mathbb R\times G),
+ \qquad n\cdot(t,g)=(t+n,h^n g).
+ \tag{F.3}
+\]">\[
+ P_h=\mathbb Z\backslash(\mathbb R\times G),
+ \qquad n\cdot(t,g)=(t+n,h^n g).
+ \tag{F.3}
+\]</span>
+Its actual transport around the positive generator multiplies the initial frame by <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span>, while its representation takes that generator to <span class="math" data-tex="\(h\)">\(h\)</span>. Its full holonomy is the cyclic subgroup generated by <span class="math" data-tex="\(h\)">\(h\)</span>. This remains true for disconnected <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>For <span class="math" data-tex="\(G=\{1,-1\}\)">\(G=\{1,-1\}\)</span> and <span class="math" data-tex="\(h=-1\)">\(h=-1\)</span>, the map
+<span class="math math-display" data-tex="\[
+ [t,\varepsilon]\longmapsto\varepsilon e^{\pi i t}
+ \tag{F.4}
+\]">\[
+ [t,\varepsilon]\longmapsto\varepsilon e^{\pi i t}
+ \tag{F.4}
+\]</span>
+identifies (F.3) with a circle covering a circle by <span class="math" data-tex="\(z\mapsto z^2\)">\(z\mapsto z^2\)</span>. It is well-defined since adding <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(t\)">\(t\)</span> and multiplying <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> by <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span> leaves (F.4) unchanged. It is onto by circle parametrization. If two values agree, squaring them shows that their <span class="math" data-tex="\(t\)">\(t\)</span>-coordinates differ by an integer; the equality then gives exactly the corresponding sign relation in (F.3), so it is injective. On short arcs it and its inverse are the smooth inverse-branch coordinates already proved for (F.2). It is therefore a covering isomorphism. This total space is connected, whereas the product principal bundle has the two disjoint components <span class="math" data-tex="\(U(1)\times\{1\}\)">\(U(1)\times\{1\}\)</span> and <span class="math" data-tex="\(U(1)\times\{-1\}\)">\(U(1)\times\{-1\}\)</span>. Hence the principal bundle is nontrivial.</p>
+<p>For the sign representation of this group on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the associated-bundle construction of Principal Bundles B.1 gives
+<span class="math math-display" data-tex="\[
+ L=\mathbb Z\backslash(\mathbb R\times\mathbb R),
+ \qquad n\cdot(t,v)=(t+n,(-1)^n v).
+ \tag{F.5}
+\]">\[
+ L=\mathbb Z\backslash(\mathbb R\times\mathbb R),
+ \qquad n\cdot(t,v)=(t+n,(-1)^n v).
+ \tag{F.5}
+\]</span>
+To verify this description directly, send the associated class represented by <span class="math" data-tex="\(([t,\varepsilon],v)\)">\(([t,\varepsilon],v)\)</span> to <span class="math" data-tex="\([t,\varepsilon v]\)">\([t,\varepsilon v]\)</span>. Both the principal-group identification and the integer identification preserve this value, and choosing <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span> gives the inverse. The local product charts show smoothness and linearity on fibres. Formula (F.5) is the Möbius real line bundle. A continuous section, pulled back to the line, is a continuous function <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(t+1)=-f(t)\)">\(f(t+1)=-f(t)\)</span>. If <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, it already vanishes; otherwise its values at zero and one have opposite signs, so Local 0.0 forces a zero between them. Thus this bundle has no nowhere-zero continuous section. A product real line bundle has the constant section of value one, and a bundle isomorphism preserves its nonvanishing. This proves nontriviality without using a classification theorem for line bundles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="exercise-f-3"><strong>Exercise F.3 (the torus and all circle-group classes).</strong> Classify flat principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundles with connection over the two-torus. For <span class="math" data-tex="\(G=U(1)\)">\(G=U(1)\)</span>, give product-bundle connection forms representing every class and determine their exact parameter identifications and transport multipliers.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(T^2=U(1)\times U(1)\)">\(T^2=U(1)\times U(1)\)</span>, with covering
+<span class="math math-display" data-tex="\[
+ Q_2:\mathbb R^2\longrightarrow T^2,\qquad
+ Q_2(u,v)=(e^{2\pi i u},e^{2\pi i v}).
+ \tag{F.6}
+\]">\[
+ Q_2:\mathbb R^2\longrightarrow T^2,\qquad
+ Q_2(u,v)=(e^{2\pi i u},e^{2\pi i v}).
+ \tag{F.6}
+\]</span>
+Products of the short-arc inverse branches in F.2 are evenly covered product neighbourhoods, with sheets their integer translates. The plane is simply connected by the linear contraction of loops. The lift of a based loop in <span class="math" data-tex="\(T^2\)">\(T^2\)</span> ends at an integer pair. Exactly the endpoint, concatenation, surjectivity and contraction arguments in F.2, now in two coordinates, prove
+<span class="math math-display" data-tex="\[
+ \pi_1(T^2,(1,1))\cong\mathbb Z^2.
+ \tag{F.7}
+\]">\[
+ \pi_1(T^2,(1,1))\cong\mathbb Z^2.
+ \tag{F.7}
+\]</span>
+In particular there is no unproved product formula for fundamental groups behind (F.7).</p>
+<p>A homomorphism from <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> is determined by <span class="math" data-tex="\(h_1=\rho(1,0)\)">\(h_1=\rho(1,0)\)</span> and <span class="math" data-tex="\(h_2=\rho(0,1)\)">\(h_2=\rho(0,1)\)</span>. They commute because the two generators commute. Conversely any commuting pair defines <span class="math" data-tex="\(\rho(m,n)=h_1^m h_2^n\)">\(\rho(m,n)=h_1^m h_2^n\)</span>; commuting allows reordering the factors and proves the homomorphism law. By E.2 the general classification is therefore commuting pairs in <span class="math" data-tex="\(G\)">\(G\)</span>, modulo simultaneous conjugation.</p>
+<p>For the circle group, every pair commutes and conjugation has no effect. Connections E.1 provides real arguments, so write <span class="math" data-tex="\(h_1=e^{2\pi i\alpha}\)">\(h_1=e^{2\pi i\alpha}\)</span>, <span class="math" data-tex="\(h_2=e^{2\pi i\beta}\)">\(h_2=e^{2\pi i\beta}\)</span>. Each argument is determined modulo an integer. The invariant forms <span class="math" data-tex="\(du,dv\)">\(du,dv\)</span> on the plane descend to smooth forms <span class="math" data-tex="\(\vartheta_1,\vartheta_2\)">\(\vartheta_1,\vartheta_2\)</span> on the torus: define them using a local inverse branch of (F.6); any other such branch differs locally by an integer translation, which leaves these forms unchanged. They are closed because in each branch chart they are differentials of coordinates. On the product principal circle bundle choose the section potential
+<span class="math math-display" data-tex="\[
+ A=2\pi i(\alpha\vartheta_1+\beta\vartheta_2).
+ \tag{F.8}
+\]">\[
+ A=2\pi i(\alpha\vartheta_1+\beta\vartheta_2).
+ \tag{F.8}
+\]</span>
+The reconstruction formula for a connection from its potential, Connections A.3, defines this globally, and Curvature A.7 gives <span class="math" data-tex="\(F=dA=0\)">\(F=dA=0\)</span>, since the circle Lie algebra is abelian.</p>
+<p>For a piecewise smooth based loop with lift ending at <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span>, the fundamental theorem of calculus along its lifted pieces gives integrals <span class="math" data-tex="\(m,n\)">\(m,n\)</span> for <span class="math" data-tex="\(\vartheta_1,\vartheta_2\)">\(\vartheta_1,\vartheta_2\)</span>. Connections E.1 therefore gives
+<span class="math math-display" data-tex="\[
+ g(m,n)=e^{-2\pi i(\alpha m+\beta n)},\qquad
+ \rho(m,n)=e^{2\pi i(\alpha m+\beta n)}.
+ \tag{F.9}
+\]">\[
+ g(m,n)=e^{-2\pi i(\alpha m+\beta n)},\qquad
+ \rho(m,n)=e^{2\pi i(\alpha m+\beta n)}.
+ \tag{F.9}
+\]</span>
+Every circle-valued homomorphism is obtained. E.2 consequently proves that every flat principal circle bundle with connection on this torus is isomorphic to one of these product-bundle connections; in particular its underlying principal bundle is trivial. Two parameter pairs give isomorphic connections exactly when their two generator values agree, namely
+<span class="math math-display" data-tex="\[
+ (\alpha',\beta')-(\alpha,\beta)\in\mathbb Z^2.
+ \tag{F.10}
+\]">\[
+ (\alpha',\beta')-(\alpha,\beta)\in\mathbb Z^2.
+ \tag{F.10}
+\]</span>
+One may also see the integer identifications directly. For integers <span class="math" data-tex="\(k,l\)">\(k,l\)</span>, the function <span class="math" data-tex="\(h(Q_2(u,v))=e^{2\pi i(ku+lv)}\)">\(h(Q_2(u,v))=e^{2\pi i(ku+lv)}\)</span> is well-defined, since integer translations do not change it. Its logarithmic differential is <span class="math" data-tex="\(h^{-1}dh=2\pi i(k\vartheta_1+l\vartheta_2)\)">\(h^{-1}dh=2\pi i(k\vartheta_1+l\vartheta_2)\)</span>. The section-change formula in Connections A.3 changes (F.8) by this form. Necessity of the integer condition follows from the two holonomy generator values in (F.9), not just from this construction of sufficient changes. The classes are thus parametrized by two phases, with full holonomy the subgroup they generate and transport the inverse of the displayed representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Construction and proof sources.</strong> These exercises use the complete programme proofs identified above and Parts D–E. The covering-space and flat-representation constructions are drawn from the exact free author editions of Hatcher and Michor credited there. In particular the nontrivial sign bundle, the subgroup-cover assertion without normality, and both directions of the torus classification are proved here rather than delegated to a reference.</p>
+</article><footer><p><a href="src/flat-connections-and-infinitesimal-holonomy.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0. Human construction sources are credited in each part.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

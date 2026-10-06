@@ -1,0 +1,238 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The simple outer group of the hyperfinite factor · Open Mathematics Courses</title><meta name="description" content="The simple outer group of the hyperfinite factor: lesson draft with 5 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>This draft supplies the local subgroup argument, explicit periodic matrix pair and tracial product construction. Its classification, tensor-absorption and hyperfinite-uniqueness prerequisites are not all proved in this selection. The simplicity proof is conditional on the exact preceding results stated in the lesson.</p></aside><article class="lesson"><h1 id="the-simple-outer-group-of-the-hyperfinite-factor">The simple outer group of the hyperfinite factor</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026; this revision is author self-checked under the stated prerequisites. Original text is public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>The classification of individual automorphisms has a group consequence. Every nontrivial normal subgroup of the outer automorphism group of the hyperfinite II₁ factor contains an aperiodic class. That class, together with tensor absorption, forces all finite-period classes into the subgroup. The result is algebraic simplicity, with no closure assumption on the subgroup.</p>
+<p>The finite step is concrete: two unitaries whose conjugations have order <span class="math">\(p\)</span> can have a commutator with no scalar power. Repeating this pair along an infinite tracial product gives two periodic automorphisms with an aperiodic commutator.</p>
+<p>Prerequisites are <a href="classifying-finite-cyclic-automorphisms.html">Classifying finite cyclic automorphisms</a>, <a href="finite-outer-period-and-obstruction.html">Finite outer period and obstruction</a>, and <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix eigenvectors and tensor absorption</a>. We use their exact classification and absorption statements, including their stated general tensor-splitting prerequisite. The published results <span class="math">\(\operatorname{Aut}(R)=\overline{\operatorname{Inn}}R\)</span> and <span class="math">\(\operatorname{Ct}(R)=\operatorname{Inn}R\)</span> were identified in <a href="comparing-asymptotically-aperiodic-automorphisms.html">Comparing asymptotically aperiodic automorphisms</a>. Thus outer and asymptotic periods agree on <span class="math">\(R\)</span>.</p>
+<p>The normal-subgroup argument follows [Takesaki III], Corollary XVII.3.21. We first construct its periodic matrix pair and the tracial product on which it acts, then assemble the implications for a normal subgroup. The explicit angle, tail tests and operator foundations are proved here. [Connes periodic] and [Connes outer] supply the underlying automorphism-classification history. All tensor products below are spatial von Neumann algebra tensor products, and <span class="math">\(R\)</span> has its normalized trace.</p>
+<h2 id="1-the-conjugacy-classes">1. The conjugacy classes</h2>
+<p>Let <span class="math">\(q:\operatorname{Aut}(R)\to\operatorname{Out}(R)\)</span> be the quotient by inner automorphisms. Two elements <span class="math">\(q(\alpha),q(\beta)\)</span> are conjugate exactly when <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> are outer conjugate: the equality</p>
+<div class="equation"><div class="math math-display">\[
+q(\beta)=q(\rho)q(\alpha)q(\rho)^{-1}
+
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>means <span class="math">\(\beta=\operatorname{Ad}u\circ\rho\alpha\rho^{-1}\)</span> for some unitary <span class="math">\(u\)</span>.</p>
+<p><strong>Theorem 1.1 (class labels).</strong> The conjugacy classes in <span class="math">\(\operatorname{Out}(R)\)</span> are indexed by</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\{(p,\gamma):p\geq1,\ \gamma\in\mathbb T,\ \gamma^p=1\}
+\\\text{and one additional label }0.
+\end{gathered}
+
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Here <span class="math">\(p\)</span> is the finite positive outer period, <span class="math">\(\gamma\)</span> is the obstruction at that period, and <span class="math">\(0\)</span> is the aperiodic class. The label <span class="math">\((1,1)\)</span> is the identity class. There are countably infinitely many classes.</p>
+<p><em>Proof.</em> Corollary 5.2 of the cyclic classification lesson supplies exactly this classification: every finite pair is realized, pairs agree precisely under outer conjugacy, and all outer-period-zero automorphisms are outer conjugate. The aperiodic product model supplies the additional class. Equation (1.1) passes from automorphisms to the quotient group.</p>
+<p>For each <span class="math">\(p\)</span>, there are exactly <span class="math">\(p\)</span> choices of <span class="math">\(\gamma\)</span>, namely the <span class="math">\(p\)</span>-th roots of unity. A countable union of finite sets, with one extra element, is countable. The realized pairs <span class="math">\((p,1)\)</span> for all positive <span class="math">\(p\)</span> give infinitely many distinct classes. <span class="math">\(\square\)</span></p>
+<p>Write <span class="math">\(\sigma_p\)</span> for the genuine cyclic product model of outer period <span class="math">\(p\)</span> and obstruction <span class="math">\(1\)</span>, and <span class="math">\(\sigma_0\)</span> for a fixed aperiodic model. In particular <span class="math">\(\sigma_1=\mathrm{id}\)</span>.</p>
+<h3 id="11-the-tensor-innerness-test">1.1. The tensor-innerness test</h3>
+<p>We record the precise factor argument consumed in Lemmas 1.2 and 3.1. If <span class="math">\(P\)</span> is a factor, <span class="math">\(\rho\in\operatorname{Aut}(P)\)</span>, and a nonzero <span class="math">\(a\in P\)</span> satisfies</p>
+<div class="equation"><div class="math math-display">\[
+ax=\rho(x)a\qquad(x\in P),
+
+\]</div><span class="equation-tag">(F1)</span></div>
+<p>then <span class="math">\(a^*a\)</span> commutes with <span class="math">\(P\)</span>, and <span class="math">\(aa^*\)</span> commutes with <span class="math">\(\rho(P)=P\)</span>. Both are scalar. Their equal nonzero operator norms show that both scalars equal some <span class="math">\(c&gt;0\)</span>. Therefore <span class="math">\(c^{-1/2}a\)</span> is a unitary implementing <span class="math">\(\rho\)</span>. This also proves the factor-intertwiner assertion used in the Fourier calculation below.</p>
+<p>If <span class="math">\(\rho\otimes\sigma=\operatorname{Ad}W\)</span> on <span class="math">\(P\overline\otimes Q\)</span>, its restriction to <span class="math">\(P\otimes1\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+W(x\otimes1)=(\rho(x)\otimes1)W.
+
+\]</div><span class="equation-tag">(F2)</span></div>
+<p>Some normal slice <span class="math">\(a=(\mathrm{id}\otimes\omega)(W)\)</span> is nonzero: product vector functionals separate the operators in a spatial tensor product. Slicing (F2) gives (F1), so <span class="math">\(\rho\)</span> is inner. Repeating on the other tensor leg proves innerness of <span class="math">\(\sigma\)</span> when <span class="math">\(Q\)</span> is a factor. Conversely, tensoring two implementing unitaries implements their tensor action. These statements include tensor powers by induction.</p>
+<p><strong>Lemma 1.2 (an identity tensor leg).</strong> For any automorphism <span class="math">\(\alpha\)</span> of <span class="math">\(R\)</span>, the automorphism <span class="math">\(\alpha\otimes\mathrm{id}_R\)</span>, transported to <span class="math">\(R\)</span> by any normal isomorphism <span class="math">\(R\overline\otimes R\cong R\)</span>, is outer conjugate to <span class="math">\(\alpha\)</span>.</p>
+<p><em>Proof.</em> The slice criterion for inner tensor actions says that <span class="math">\(\alpha^k\otimes\mathrm{id}\)</span> is inner only if <span class="math">\(\alpha^k\)</span> is inner. The reverse implication is implemented by <span class="math">\(u\otimes1\)</span>. Thus both actions have the same outer period. If that period is <span class="math">\(p&gt;0\)</span>, an implementer <span class="math">\(u\)</span> of <span class="math">\(\alpha^p\)</span> gives the implementer <span class="math">\(u\otimes1\)</span> of the tensor power, with the same obstruction phase. Theorem 1.1 gives outer conjugacy. If the period is zero, both actions belong to the unique aperiodic class. <span class="math">\(\square\)</span></p>
+<p>The choice of the identification with <span class="math">\(R\)</span> cannot change membership in a normal subgroup: two choices differ by an automorphism and hence act on the outer group by conjugation.</p>
+<h2 id="2-a-periodic-pair-with-an-aperiodic-commutator">2. A periodic pair with an aperiodic commutator</h2>
+<p>Fix <span class="math">\(p\geq2\)</span>, and put</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\lambda=e^{2\pi i/p},\\
+U=\begin{pmatrix}1&amp;0\\0&amp;\lambda\end{pmatrix},\\
+T_t=\begin{pmatrix}\cos t&amp;-\sin t\\\sin t&amp;\cos t\end{pmatrix},
+\\ V_t=T_tUT_t^*.
+\end{gathered}
+
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>Both <span class="math">\(U\)</span> and <span class="math">\(V_t\)</span> have <span class="math">\(p\)</span>-th power <span class="math">\(1\)</span>, and none of their first <span class="math">\(p-1\)</span> powers is scalar. Define their commutator</p>
+<div class="equation"><div class="math math-display">\[
+W_t=UV_tU^*V_t^*.
+
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p><strong>Lemma 2.1 (the commutator angle).</strong> For <span class="math">\(0\leq t\leq\pi/4\)</span>, the eigenvalues of <span class="math">\(W_t\)</span> are <span class="math">\(e^{i\omega_p(t)}\)</span> and <span class="math">\(e^{-i\omega_p(t)}\)</span>, where</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\cos\omega_p(t)
+=1-2\sin^4(\pi/p)\sin^2(2t),
+\\
+\omega_p(t)=2\arcsin\bigl(\sin^2(\pi/p)\sin(2t)\bigr).
+\end{gathered}
+
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p><em>Proof.</em> Write <span class="math">\(c=\cos t\)</span>, <span class="math">\(s=\sin t\)</span>. Direct multiplication gives</p>
+<div class="equation"><div class="math math-display">\[
+V_t=\begin{pmatrix}
+c^2+\lambda s^2&amp;(1-\lambda)cs\\
+(1-\lambda)cs&amp;s^2+\lambda c^2
+\end{pmatrix}.
+
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>The squared modulus of each off-diagonal entry is</p>
+<div class="equation"><div class="math math-display">\[
+b=|1-\lambda|^2c^2s^2
+=\sin^2(\pi/p)\sin^2(2t).
+\]</div></div>
+<p>Each diagonal entry has squared modulus <span class="math">\(1-b\)</span>, since <span class="math">\(V_t\)</span> is unitary. Conjugation by <span class="math">\(U\)</span> multiplies the upper off-diagonal entry by <span class="math">\(\overline\lambda\)</span> and the lower one by <span class="math">\(\lambda\)</span>. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\operatorname{Tr}(W_t)
+&amp;=2(1-b)+(\lambda+\overline\lambda)b\\
+&amp;=2\bigl(1-2\sin^4(\pi/p)\sin^2(2t)\bigr).
+\end{aligned}
+
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>The determinant of a commutator is <span class="math">\(1\)</span>. A two-dimensional unitary of determinant <span class="math">\(1\)</span> has reciprocal eigenvalues, so its half trace is <span class="math">\(\cos\omega\)</span> for a unique <span class="math">\(\omega\in[0,\pi]\)</span>. The identity <span class="math">\(\cos(2\arcsin x)=1-2x^2\)</span> gives the second formula in (2.3), with its asserted range. <span class="math">\(\square\)</span></p>
+<p>Choose the exact irrational phase</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\omega_p=\frac{\pi}{\sqrt2\,p^2},
+\\
+t_p=\frac12\arcsin\left(
+\sqrt{\frac{1-\cos\omega_p}{2\sin^4(\pi/p)}}\right).
+\end{gathered}
+
+\]</div><span class="equation-tag">(2.6)</span></div>
+<p>This is a valid choice with <span class="math">\(0&lt;t_p&lt;\pi/4\)</span>. To check the range, concavity of sine on <span class="math">\([0,\pi/2]\)</span> gives <span class="math">\(\sin(\pi/p)\geq2/p\)</span>, while <span class="math">\(\arcsin x\geq x\)</span> on <span class="math">\([0,1]\)</span>. Hence</p>
+<div class="equation"><div class="math math-display">\[
+2\arcsin\bigl(\sin^2(\pi/p)\bigr)
+\geq\frac8{p^2}
+&gt;\frac{\pi}{\sqrt2\,p^2}=\omega_p.
+
+\]</div><span class="equation-tag">(2.7)</span></div>
+<p>The left side is the maximum angle in (2.3). Since cosine is strictly decreasing on <span class="math">\([0,\pi]\)</span>, the fraction under the square root in (2.6) lies strictly between zero and one. Substitution in (2.3) gives the desired angle <span class="math">\(\omega_p\)</span>.</p>
+<p>For every nonzero integer <span class="math">\(k\)</span>, the eigenvalue ratio of <span class="math">\(W_{t_p}^k\)</span> is <span class="math">\(e^{2ik\omega_p}\ne1\)</span>, because <span class="math">\(\omega_p/\pi=1/(\sqrt2\,p^2)\)</span> is irrational. Thus</p>
+<div class="equation"><div class="math math-display">\[
+W_{t_p}^k\notin\mathbb T1\qquad(k\ne0).
+
+\]</div><span class="equation-tag">(2.8)</span></div>
+<p><img src="figures/periodic-pair-commutator.svg" alt="Commutator angles for three periodic matrix pairs"></p>
+<p><em>Figure 2.1.</em> The exact curves in (2.3) for <span class="math">\(p=2,3,5\)</span>, with points at the choices (2.6). Each input pair still satisfies <span class="math">\(U^p=V_t^p=1\)</span>. The selected commutator eigenvalues have ratio <span class="math">\(e^{2i\omega_p}\)</span> of infinite order, as proved in (2.8). These are finite-matrix angles; the infinite-product argument comes next. <a href="figures/periodic-pair-commutator.svg">Full-size figure</a>.</p>
+<h3 id="21-constructing-the-tracial-product-and-its-actions">2.1. Constructing the tracial product and its actions</h3>
+<p>Here are the operator foundations for the passage from matrices to <span class="math">\(R\)</span>. Put <span class="math">\(A_n=M_2^{\otimes n}\)</span>, embed <span class="math">\(A_n\)</span> in <span class="math">\(A_{n+1}\)</span> by <span class="math">\(x\mapsto x\otimes1\)</span>, and let <span class="math">\(A_{\mathrm{loc}}=\bigcup_n A_n\)</span>. The normalized matrix traces are compatible. Complete <span class="math">\(A_{\mathrm{loc}}\)</span> in their inner product to obtain a Hilbert space <span class="math">\(H\)</span> with unit vector <span class="math">\(\Omega=1\)</span>. Left and right multiplication by <span class="math">\(a\in A_{\mathrm{loc}}\)</span> are bounded, because</p>
+<div class="equation"><div class="math math-display">\[
+\|ax\|_2\leq\|a\|\|x\|_2,
+\qquad \|xa\|_2\leq\|a\|\|x\|_2.
+
+\]</div><span class="equation-tag">(F3)</span></div>
+<p>They commute. Let <span class="math">\(R\)</span> be the von Neumann algebra generated by the left multiplications. Since the right multiplications commute with <span class="math">\(R\)</span> and their orbit of <span class="math">\(\Omega\)</span> is dense, <span class="math">\(\Omega\)</span> is separating for <span class="math">\(R\)</span>. Thus <span class="math">\(\tau(x)=\langle x\Omega,\Omega\rangle\)</span> is a faithful normal state. It is tracial: for each local <span class="math">\(a\)</span>, the identity <span class="math">\(\tau(ax)=\tau(xa)\)</span> holds first for local <span class="math">\(x\)</span> and then for every <span class="math">\(x\in R\)</span> by ultraweak continuity and density. For fixed <span class="math">\(x\)</span>, the same argument extends from local <span class="math">\(a\)</span> to all <span class="math">\(a\in R\)</span>.</p>
+<p>To verify that <span class="math">\(R\)</span> is a factor, let <span class="math">\(P_n\)</span> project onto <span class="math">\(H_n=A_n\Omega\)</span>. This subspace reduces right multiplication by <span class="math">\(A_n\)</span>. Consequently <span class="math">\(P_nx|_{H_n}\)</span>, for <span class="math">\(x\in R\)</span>, commutes with the right regular matrix algebra and is left multiplication by a unique element <span class="math">\(E_n(x)\in A_n\)</span>. Compression shows that <span class="math">\(E_n\)</span> is normal, unital and completely positive; it fixes <span class="math">\(A_n\)</span>, is <span class="math">\(A_n\)</span>-bimodular, and preserves <span class="math">\(\tau\)</span>. Moreover,</p>
+<div class="equation"><div class="math math-display">\[
+E_n(x)\Omega=P_nx\Omega\longrightarrow x\Omega.
+
+\]</div><span class="equation-tag">(F4)</span></div>
+<p>If <span class="math">\(x\in Z(R)\)</span>, bimodularity makes <span class="math">\(E_n(x)\)</span> central in the full matrix algebra <span class="math">\(A_n\)</span>, so <span class="math">\(E_n(x)=\tau(x)1\)</span>. Equation (F4) and separation by <span class="math">\(\Omega\)</span> imply <span class="math">\(x=\tau(x)1\)</span>. The algebra is infinite dimensional, finite, and generated by its increasing matrix algebras. It is the tracial hyperfinite <span class="math">\(\mathrm{II}_1\)</span> product model. Identifying any other separable hyperfinite <span class="math">\(\mathrm{II}_1\)</span> factor with this model uses the uniqueness prerequisite retained by the preceding classification lessons.</p>
+<p>For any fixed <span class="math">\(D\in\mathcal U(M_2)\)</span>, simultaneous conjugation by <span class="math">\(D\)</span> in the finitely many occupied coordinates preserves the local trace. The map</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+T_D(x\Omega)=\left(\bigotimes\operatorname{Ad}D\right)(x)\Omega,
+\\ x\in A_{\mathrm{loc}},
+\end{gathered}
+
+\]</div><span class="equation-tag">(F5)</span></div>
+<p>is isometric and has inverse <span class="math">\(T_{D^*}\)</span>; it therefore extends to a unitary on <span class="math">\(H\)</span>. Its conjugation sends each local left multiplication to the prescribed local image. It follows that <span class="math">\(T_DRT_D^*=R\)</span>, proving normality and surjectivity of the product automorphism. Equality and composition of these automorphisms can be tested on the local algebra by normality. This proves the extension used in Proposition 2.2, and (F4) supplies its finite-tensor <span class="math">\(L^2\)</span> approximation.</p>
+<p>This construction uses the GNS mechanism in [Peterson, Theorem 4.1.6], with the factor and product-action checks written explicitly above. It does not require an infinite-product theorem as an additional unexplained input.</p>
+<p><strong>Proposition 2.2.</strong> On the tracial product <span class="math">\(R=\overline{\bigotimes}_{n\geq1}(M_2,\operatorname{tr}_2)\)</span>, the actions</p>
+<div class="equation"><div class="math math-display">\[
+A=\bigotimes_{n\geq1}\operatorname{Ad}U,
+\qquad B=\bigotimes_{n\geq1}\operatorname{Ad}V_{t_p}
+
+\]</div><span class="equation-tag">(2.9)</span></div>
+<p>have outer period <span class="math">\(p\)</span> and obstruction <span class="math">\(1\)</span>. Their commutator <span class="math">\(ABA^{-1}B^{-1}\)</span> has outer period zero.</p>
+<p><em>Proof.</em> The construction (F3)–(F5), with <span class="math">\(D=U\)</span> and <span class="math">\(D=V_{t_p}\)</span>, gives these normal product automorphisms and their inverses. They satisfy <span class="math">\(A^p=B^p=\mathrm{id}\)</span>.</p>
+<p>We check that no earlier power is inner. Let <span class="math">\(x_n\)</span> be the matrix entry <span class="math">\(e_{01}\)</span> in coordinate <span class="math">\(n\)</span>, with identities elsewhere. For any fixed finite tensor, it commutes with <span class="math">\(x_n\)</span> for all sufficiently large <span class="math">\(n\)</span>. Approximating an arbitrary fixed <span class="math">\(y\in R\)</span> in the tracial <span class="math">\(2\)</span>-norm by finite tensors, and using</p>
+<div class="equation"><div class="math math-display">\[
+\|[x_n,y]\|_2\leq2\|y-y_0\|_2
+\]</div></div>
+<p>once <span class="math">\([x_n,y_0]=0\)</span>, proves that <span class="math">\((x_n)\)</span> is central. For <span class="math">\(1\leq j&lt;p\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\|A^j(x_n)-x_n\|_2
+=\frac{|\lambda^{-j}-1|}{\sqrt2}&gt;0.
+
+\]</div><span class="equation-tag">(2.10)</span></div>
+<p>An inner automorphism <span class="math">\(\operatorname{Ad}w\)</span> moves a bounded central sequence by a quantity tending to zero in <span class="math">\(2\)</span>-norm, since
+<span class="math">\(\|wx_nw^*-x_n\|_2=\|[w,x_n]\|_2\)</span>.
+Thus <span class="math">\(A^j\)</span> is outer. Replace <span class="math">\(e_{01}\)</span> by <span class="math">\(T_{t_p}e_{01}T_{t_p}^*\)</span> to prove the same assertion for <span class="math">\(B^j\)</span>. Their outer periods are exactly <span class="math">\(p\)</span>, and their identity <span class="math">\(p\)</span>-th powers have obstruction <span class="math">\(1\)</span>.</p>
+<p>Composition on finite tensors gives</p>
+<div class="equation"><div class="math math-display">\[
+ABA^{-1}B^{-1}
+=\bigotimes_{n\geq1}\operatorname{Ad}W_{t_p}.
+
+\]</div><span class="equation-tag">(2.11)</span></div>
+<p>Choose a normalized matrix entry between the two eigenvectors of <span class="math">\(W_{t_p}\)</span>, and move it to coordinate <span class="math">\(n\)</span>. This again gives a bounded central sequence. Its displacement under the <span class="math">\(k\)</span>-th power of (2.11) has <span class="math">\(2\)</span>-norm <span class="math">\(|e^{2ik\omega_p}-1|/\sqrt2&gt;0\)</span> for every fixed nonzero <span class="math">\(k\)</span>. Hence no such power is inner, proving outer period zero. <span class="math">\(\square\)</span></p>
+<p>No uniform lower bound over all <span class="math">\(k\)</span> is needed. For each fixed power, its positive displacement rules out innerness of that power.</p>
+<h2 id="3-what-a-finite-period-element-forces">3. What a finite-period element forces</h2>
+<p>Let <span class="math">\(N\)</span> be a normal subgroup of <span class="math">\(\operatorname{Out}(R)\)</span>, and put <span class="math">\(G=q^{-1}(N)\)</span>. Then <span class="math">\(G\)</span> is a normal subgroup of <span class="math">\(\operatorname{Aut}(R)\)</span> containing all inner automorphisms. It is saturated under outer conjugacy: if <span class="math">\(\alpha\in G\)</span> and <span class="math">\(\beta=\operatorname{Ad}u\circ\rho\alpha\rho^{-1}\)</span>, then <span class="math">\(\beta\in G\)</span>.</p>
+<p>When we work on <span class="math">\(R^{\overline\otimes s}\)</span>, fix an isomorphism to <span class="math">\(R\)</span> and transport <span class="math">\(G\)</span> along it. The preceding observation makes every claim about membership independent of this choice.</p>
+<p><strong>Lemma 3.1 (remove the phase by tensoring).</strong> Suppose <span class="math">\(G\)</span> contains an automorphism with finite outer period <span class="math">\(p&gt;1\)</span> and obstruction <span class="math">\(\gamma\)</span>. Then it contains the class of <span class="math">\(\sigma_p\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math">\(\alpha\)</span> be the given automorphism. On <span class="math">\(R^{\overline\otimes p}\)</span>, each action that applies <span class="math">\(\alpha\)</span> in one tensor coordinate and the identity in all other coordinates has the same outer period and phase as <span class="math">\(\alpha\)</span>, by repeated application of Lemma 1.2 and tensor permutation. Hence every one of these <span class="math">\(p\)</span> actions lies in <span class="math">\(G\)</span>. Their product is <span class="math">\(\alpha^{\otimes p}\)</span>.</p>
+<p>The slice criterion rules out every positive inner power smaller than <span class="math">\(p\)</span>, while the <span class="math">\(p\)</span>-th power is inner. The tensor obstruction formula gives</p>
+<div class="equation"><div class="math math-display">\[
+p_o(\alpha^{\otimes p})=p,
+\qquad \operatorname{Ob}(\alpha^{\otimes p})=\gamma^p=1.
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>Theorem 1.1 identifies this action with the outer-conjugacy class of <span class="math">\(\sigma_p\)</span>. Saturation puts that class in <span class="math">\(G\)</span>. <span class="math">\(\square\)</span></p>
+<p>This is a tensor product of copies of the action, not its <span class="math">\(p\)</span>-th power on one factor. The latter has trivial outer class and supplies no new element of <span class="math">\(N\)</span>.</p>
+<p><strong>Lemma 3.2 (all phases at one period).</strong> If <span class="math">\(G\)</span> contains <span class="math">\(\sigma_p\)</span>, with <span class="math">\(p&gt;1\)</span>, it contains every automorphism of outer period <span class="math">\(p\)</span>.</p>
+<p><em>Proof.</em> Use the crossed-product realization from Section 4 of the obstruction lesson. Choose an aperiodic automorphism <span class="math">\(a\)</span> on a coefficient copy of <span class="math">\(R\)</span>, and set</p>
+<div class="equation"><div class="math math-display">\[
+P=R\rtimes_{a^p}\mathbb Z\cong R,
+\qquad VxV^*=a^p(x).
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>The extension <span class="math">\(\widetilde a\)</span> satisfies <span class="math">\(\widetilde a(x)=a(x)\)</span>, <span class="math">\(\widetilde a(V)=V\)</span>, and <span class="math">\(\widetilde a^{\,p}=\operatorname{Ad}V\)</span>. The Fourier argument already proved there gives outer period <span class="math">\(p\)</span> and obstruction <span class="math">\(1\)</span>. Thus <span class="math">\(\widetilde a\in G\)</span>.</p>
+<p>Put <span class="math">\(\lambda=e^{2\pi i/p}\)</span>, and let <span class="math">\(d\)</span> fix the coefficient factor and send <span class="math">\(V\)</span> to <span class="math">\(\lambda V\)</span>. We check that <span class="math">\(d\)</span>, too, has outer period <span class="math">\(p\)</span>. First,</p>
+<div class="equation"><div class="math math-display">\[
+R&#39;\cap P=\mathbb C1.
+
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>Indeed, if <span class="math">\(z\)</span> commutes with every coefficient <span class="math">\(x\in R\)</span>, its Fourier coefficient <span class="math">\(z_m=E(V^{-m}z)\)</span> satisfies <span class="math">\(z_mx=a^{-pm}(x)z_m\)</span>. For <span class="math">\(m\ne0\)</span>, a nonzero intertwiner would implement the outer automorphism <span class="math">\(a^{-pm}\)</span>, by the factor-intertwiner calculation (F1). Hence those coefficients vanish. The zeroth coefficient is scalar; Fourier uniqueness proves (3.3).</p>
+<p>If <span class="math">\(d^j=\operatorname{Ad}w\)</span>, then <span class="math">\(d^j\)</span> fixes <span class="math">\(R\)</span> pointwise, so <span class="math">\(w\in R&#39;\cap P\)</span> and the action is the identity. But <span class="math">\(d^j(V)=\lambda^jV\)</span>, which is unequal to <span class="math">\(V\)</span> for <span class="math">\(1\leq j&lt;p\)</span>. This proves the claimed outer period. Since <span class="math">\(d^p=\mathrm{id}\)</span>, its obstruction is <span class="math">\(1\)</span>, and <span class="math">\(d\in G\)</span>.</p>
+<p>For any <span class="math">\(\gamma^p=1\)</span>, choose <span class="math">\(k\)</span> with <span class="math">\(\gamma=\lambda^k\)</span>. The commuting product</p>
+<div class="equation"><div class="math math-display">\[
+d^k\widetilde a
+
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p>lies in <span class="math">\(G\)</span>. The realization theorem gives it outer period <span class="math">\(p\)</span> and obstruction <span class="math">\(\gamma\)</span>: its <span class="math">\(p\)</span>-th power is <span class="math">\(\operatorname{Ad}V\)</span>, and it sends <span class="math">\(V\)</span> to <span class="math">\(\gamma V\)</span>. By Theorem 1.1 and saturation, <span class="math">\(G\)</span> contains the entire class for each possible phase at period <span class="math">\(p\)</span>. <span class="math">\(\square\)</span></p>
+<h2 id="4-simplicity">4. Simplicity</h2>
+<p><strong>Theorem 4.1.</strong> The group <span class="math">\(\operatorname{Out}(R)\)</span> is simple: its only normal subgroups are the identity subgroup and the entire group.</p>
+<p><em>Proof.</em> Suppose <span class="math">\(N\)</span> is nontrivial, and keep <span class="math">\(G=q^{-1}(N)\)</span>. Choose <span class="math">\(\alpha\in G\)</span> with nontrivial outer class. It cannot have outer period one, because that would make it inner. If it has finite outer period <span class="math">\(p&gt;1\)</span>, Lemma 3.1 puts <span class="math">\(\sigma_p\)</span> in <span class="math">\(G\)</span>. Both actions <span class="math">\(A,B\)</span> from Proposition 2.2 are outer conjugate to <span class="math">\(\sigma_p\)</span>, so both lie in <span class="math">\(G\)</span>. Their commutator lies in <span class="math">\(G\)</span> and is aperiodic. If <span class="math">\(\alpha\)</span> was already aperiodic, this step is unnecessary. In either case, <span class="math">\(G\)</span> contains the unique aperiodic class, represented by <span class="math">\(\sigma_0\)</span>.</p>
+<p>Now fix any <span class="math">\(p&gt;1\)</span>. Tensor absorption for asymptotic period zero gives</p>
+<div class="equation"><div class="math math-display">\[
+\sigma_0\sim\sigma_p\otimes\sigma_0,
+\qquad \sigma_0\sim\mathrm{id}_R\otimes\sigma_0,
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>where <span class="math">\(\sim\)</span> means outer conjugacy and the second relation is Lemma 1.2. The first relation is the absorption theorem with <span class="math">\(p\mid0\)</span>; the model coordinates may be flipped. Thus both actions on the right belong to the transported <span class="math">\(G\)</span>. Their product with the inverse of the second is exactly</p>
+<div class="equation"><div class="math math-display">\[
+(\sigma_p\otimes\sigma_0)
+(\mathrm{id}_R\otimes\sigma_0)^{-1}
+=\sigma_p\otimes\mathrm{id}_R.
+
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>Lemma 1.2 puts <span class="math">\(\sigma_p\)</span> in <span class="math">\(G\)</span>. Lemma 3.2 then supplies every phase at that period. This works for every <span class="math">\(p&gt;1\)</span>. The period-one class is already in <span class="math">\(G\)</span>, because it consists of inner automorphisms; the aperiodic class was obtained above. Theorem 1.1 therefore accounts for every automorphism, so <span class="math">\(G=\operatorname{Aut}(R)\)</span> and <span class="math">\(N=\operatorname{Out}(R)\)</span>. <span class="math">\(\square\)</span></p>
+<p>Only finitely many subgroup operations are used to pass from a specified element to each specified class. The proof never takes a limit inside <span class="math">\(N\)</span>, so it applies equally to nonclosed normal subgroups.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 5.1 (introductory: count the finite labels).</strong> How many conjugacy classes have outer period at most four? Include the identity, and exclude the aperiodic class.</p>
+<p><em>Solution.</em> At period <span class="math">\(p\)</span> there are <span class="math">\(p\)</span> roots of unity and hence <span class="math">\(p\)</span> classes. The total is <span class="math">\(1+2+3+4=10\)</span>. The period-one term is the identity class.</p>
+<p><strong>Exercise 5.2 (intermediate: a tensor power and an ordinary power).</strong> Suppose <span class="math">\(\alpha\)</span> has outer period three and obstruction <span class="math">\(e^{2\pi i/3}\)</span>. Determine the outer period and obstruction of <span class="math">\(\alpha\otimes\alpha\otimes\alpha\)</span>. Compare its outer class with that of <span class="math">\(\alpha^3\)</span>.</p>
+<p><em>Solution.</em> The tensor slice criterion gives outer period three, and the tensor phase is <span class="math">\((e^{2\pi i/3})^3=1\)</span>. The tensor action is therefore in the class of <span class="math">\(\sigma_3\)</span>, which is nontrivial. The ordinary third power <span class="math">\(\alpha^3\)</span> is inner by the definition of outer period, so its outer class is the identity.</p>
+<p><strong>Exercise 5.3 (intermediate: involutions).</strong> For <span class="math">\(p=2\)</span>, simplify the angle formula for <span class="math">\(0\leq t\leq\pi/4\)</span>, and compute the rotation in (2.6).</p>
+<p><em>Solution.</em> Here <span class="math">\(\sin^2(\pi/2)=1\)</span>, so <span class="math">\(\omega_2(t)=2\arcsin(\sin2t)=4t\)</span>. The chosen angle is <span class="math">\(\omega_2=\pi/(4\sqrt2)\)</span>; hence <span class="math">\(t_2=\pi/(16\sqrt2)\)</span>. Two involutions with this relative rotation have a commutator with eigenvalue ratio <span class="math">\(e^{i\pi/(2\sqrt2)}\)</span>, which has infinite order.</p>
+<p><strong>Exercise 5.4 (advanced: the inverse class).</strong> Show that every element of <span class="math">\(\operatorname{Out}(R)\)</span> is conjugate to its inverse. Explain why this does not make the group abelian.</p>
+<p><em>Solution.</em> For finite outer period, inversion preserves that period and preserves the obstruction, by Proposition 3.3 of the obstruction lesson with <span class="math">\(r=-1\)</span>. Theorem 1.1 gives the same conjugacy class. For outer period zero, the inverse is also aperiodic, so the unique aperiodic class gives the result. Conjugacy to the inverse allows a conjugating element depending on the given element; it does not say the element equals its inverse. In fact Proposition 2.2 gives two elements whose commutator is aperiodic and hence nontrivial in the quotient, so the group is nonabelian.</p>
+<p><strong>Exercise 5.5 (advanced: the center).</strong> Prove that the center of <span class="math">\(\operatorname{Out}(R)\)</span> is trivial using the results of this lesson.</p>
+<p><em>Solution.</em> The center is a normal subgroup. Simplicity makes it either trivial or the entire group. The latter would make the group abelian, contradicted by the nontrivial commutator in Proposition 2.2. Therefore the center is trivial.</p>
+<h2 id="references">References</h2>
+<p>[Connes periodic] Alain Connes, <em>Periodic automorphisms of the hyperfinite factor of type II₁</em>, Acta Scientiarum Mathematicarum 39 (1977), 39–66. Its introduction and Section 1 explain the outer-period and obstruction labels used here. <a href="https://alainconnes.org/wp-content/uploads/szego.pdf">Open original text</a>.</p>
+<p>[Connes outer] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. Used for the aperiodic comparison and tensor absorption mechanisms in the prerequisites. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Takesaki III] Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Springer, 2003, Corollary XVII.3.21. <a href="https://doi.org/10.1007/978-3-662-10453-8">Publisher edition</a>. This is the source of the normal-subgroup strategy; the present lesson develops the matrix pair, product-factor construction, tensor-innerness test and all five solved exercises explicitly.</p>
+<p>[Peterson] Jesse Peterson, <em>Notes on von Neumann algebras</em>, April 5, 2013, Theorem 4.1.6, printed/PDF page 57. <a href="https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf#page=57">Open notes</a>. The GNS construction supplies the Hilbert-space foundation for (F3)–(F5).</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/the-simple-outer-group-of-the-hyperfinite-factor.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

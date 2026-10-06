@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oscillatory Cauchy kernels and exact evolution · Fourier-integral operators</title>
+<meta name="description" content="A lesson of the course Fourier-integral operators. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AN-04/oscillatory-cauchy-kernels-and-exact-evolution.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Fourier-integral operators</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="oscillatory-cauchy-kernels-and-exact-evolution">Oscillatory Cauchy kernels and exact evolution</h1>
+<p>An oscillatory kernel describes the exact Cauchy evolution of a scalar homogeneous principal direction, including arbitrary complex finite-matrix lower terms. We construct its short-time phase and full ordinary amplitude, normalize the initial kernel, and correct every smooth residual with the ordered evolution. Finite-time composition retains the canonical graph, Maslov data and every wavefront direction, even when one mixed phase no longer covers the graph.</p>
+<p>The analytic provider is <a href="first-order-systems-and-ordered-evolution.html">First-order systems and ordered evolution</a>, Sections 1–4, especially (SY13) and (SY18)–(SY29). The exact stationary remainder is Sections 5–6 of <span class="unlinked">Stationary phase and critical manifolds</span>. We use Sections 2–3 and 5–7 of <a href="reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.html">Graph operators, continuity and Egorov</a>, Sections 2–3 of <a href="reconstructions/20261005-restored-compact-tube/compact-homogeneous-characteristic-tubes.html">One canonical tube along a compact characteristic</a>, Sections 1–9 of <a href="reconstructions/20261005-restored-analytic-composition/clean-composition-of-fourier-integral-operators.html">Clean composition of Fourier-integral operators</a>, and Sections 6–7 of <a href="reconstructions/20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.html">Gaussian lines and invariant symbols</a>. All are written programme proofs; the parameter, support and ordinary lower-term receiving arguments are supplied here. Hörmander III, §23.1, and IV, §§25.2–25.3, provide the Cauchy and graph-calculus mathematical context.</p>
+<h2 id="1-the-equation-and-derivatives-in-both-evolution-parameters">1. The equation and derivatives in both evolution parameters</h2>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be a compact time interval and let <span class="math" data-tex="\(K=\mathbb C^N\)">\(K=\mathbb C^N\)</span>. Write
+<span class="math math-display" data-tex="\[
+ \mathcal H^s=H^s(\mathbb R^n;\mathbb C^N),\qquad
+ P=\partial_t+A(t),\qquad
+ a(t,x,\xi)=i b(t,x,\xi)I_N+c(t,x,\xi). \tag{CE1}
+\]">\[
+ \mathcal H^s=H^s(\mathbb R^n;\mathbb C^N),\qquad
+ P=\partial_t+A(t),\qquad
+ a(t,x,\xi)=i b(t,x,\xi)I_N+c(t,x,\xi). \tag{CE1}
+\]</span>
+Here <span class="math" data-tex="\(b\)">\(b\)</span> is real and ordinary order one, <span class="math" data-tex="\(c\)">\(c\)</span> is an arbitrary complex matrix symbol of order zero, and all time derivatives form bounded ordinary symbol families on <span class="math" data-tex="\(J\)">\(J\)</span>. Assume <span class="math" data-tex="\(b\)">\(b\)</span> has a real homogeneous degree-one principal part <span class="math" data-tex="\(b_1\)">\(b_1\)</span>, with <span class="math" data-tex="\(b-\chi_0b_1\in S^0\)">\(b-\chi_0b_1\in S^0\)</span> for a cutoff <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> zero near zero and one at large frequency. Its uniform bounds and every time derivative are those stated in Section 2. Left quantization and <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> retain the course convention. The operator adjoint can differ from pointwise adjoint quantization by an order-zero term.</p>
+<p>The Hermitian real parts of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(-a\)">\(-a\)</span> are uniformly bounded below, since they are respectively the real parts of <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(-c\)">\(-c\)</span>. The systems theorem therefore gives both time directions, with unique consistent evolution
+<span class="math math-display" data-tex="\[
+ U(t,r):\mathcal H^s\longrightarrow\mathcal H^s,\qquad
+ U(t,q)U(q,r)=U(t,r),\qquad
+ U(r,r)=I. \tag{CE2}
+\]">\[
+ U(t,r):\mathcal H^s\longrightarrow\mathcal H^s,\qquad
+ U(t,q)U(q,r)=U(t,r),\qquad
+ U(r,r)=I. \tag{CE2}
+\]</span>
+For each real <span class="math" data-tex="\(s\)">\(s\)</span> one has, after increasing a finite nonnegative constant,
+<span class="math math-display" data-tex="\[
+ \|U(t,r)\|_{\mathcal H^s\to\mathcal H^s}
+       \leq e^{C_s|t-r|}\qquad(t,r\in J). \tag{CE3}
+\]">\[
+ \|U(t,r)\|_{\mathcal H^s\to\mathcal H^s}
+       \leq e^{C_s|t-r|}\qquad(t,r\in J). \tag{CE3}
+\]</span>
+This is a Sobolev norm estimate. It does not assert operator-norm continuity of the two-parameter family.</p>
+<p>We need the initial-time derivative on sufficiently regular vectors. For <span class="math" data-tex="\(h\in\mathcal H^{s+1}\)">\(h\in\mathcal H^{s+1}\)</span>, the integrated equation and strong coefficient continuity give
+<span class="math math-display" data-tex="\[
+ \frac{U(r+\varepsilon,r)h-h}{\varepsilon}
+       \longrightarrow -A(r)h\quad\hbox{in }\mathcal H^s. \tag{CE4}
+\]">\[
+ \frac{U(r+\varepsilon,r)h-h}{\varepsilon}
+       \longrightarrow -A(r)h\quad\hbox{in }\mathcal H^s. \tag{CE4}
+\]</span>
+The statement holds from either side because both directions are available. To verify it, write the quotient as the average of
+<span class="math" data-tex="\(-A(q)U(q,r)h\)">\(-A(q)U(q,r)h\)</span> over the oriented interval from <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(r+\varepsilon\)">\(r+\varepsilon\)</span>. Joint strong continuity of <span class="math" data-tex="\(U\)">\(U\)</span> at order <span class="math" data-tex="\(s+1\)">\(s+1\)</span>, boundedness of <span class="math" data-tex="\(A(q):\mathcal H^{s+1}\to\mathcal H^s\)">\(A(q):\mathcal H^{s+1}\to\mathcal H^s\)</span>, and strong continuity of its fixed-vector action imply convergence of the integrand in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>.</p>
+<p>Integrating the equation from its initial time <span class="math" data-tex="\(r+\varepsilon\)">\(r+\varepsilon\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span> gives
+<span class="math math-display" data-tex="\[
+ U(r,r+\varepsilon)h-h
+       =-\int_{r+\varepsilon}^{r}
+          A(q)U(q,r+\varepsilon)h\,dq
+       =\int_r^{r+\varepsilon}
+          A(q)U(q,r+\varepsilon)h\,dq. \tag{CE5}
+\]">\[
+ U(r,r+\varepsilon)h-h
+       =-\int_{r+\varepsilon}^{r}
+          A(q)U(q,r+\varepsilon)h\,dq
+       =\int_r^{r+\varepsilon}
+          A(q)U(q,r+\varepsilon)h\,dq. \tag{CE5}
+\]</span>
+Thus its quotient tends to <span class="math" data-tex="\(+A(r)h\)">\(+A(r)h\)</span>. By (CE2),
+<span class="math math-display" data-tex="\[
+ U(t,r+\varepsilon)h-U(t,r)h
+       =U(t,r)\bigl(U(r,r+\varepsilon)h-h\bigr).
+\]">\[
+ U(t,r+\varepsilon)h-U(t,r)h
+       =U(t,r)\bigl(U(r,r+\varepsilon)h-h\bigr).
+\]</span>
+The outer operator is bounded on <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \partial_r U(t,r)h=U(t,r)A(r)h,\qquad
+ \partial_t U(t,r)h=-A(t)U(t,r)h, \tag{CE6}
+\]">\[
+ \partial_r U(t,r)h=U(t,r)A(r)h,\qquad
+ \partial_t U(t,r)h=-A(t)U(t,r)h, \tag{CE6}
+\]</span>
+as strong derivatives in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> for <span class="math" data-tex="\(h\in\mathcal H^{s+1}\)">\(h\in\mathcal H^{s+1}\)</span>. The final-time derivative also follows directly from the equation. The coefficient belongs on the right in the first formula and on the left in the second.</p>
+<p>These formulas imply smooth dependence with a finite spatial-order loss for every finite derivative. More precisely, for a total of <span class="math" data-tex="\(j\)">\(j\)</span> time derivatives, <span class="math" data-tex="\(U(t,r)h\)">\(U(t,r)h\)</span> is jointly <span class="math" data-tex="\(C^j\)">\(C^j\)</span> in <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> when <span class="math" data-tex="\(h\in\mathcal H^{s+j}\)">\(h\in\mathcal H^{s+j}\)</span>. Proceed by induction. At a differentiation step (CE6) introduces at most one order-one coefficient; differentiating an existing coefficient introduces a time derivative of an order-one symbol. Uniform mapping bounds control all finite products between the required Sobolev spaces. Joint strong continuity of each product follows by adding its fixed-vector and varying-vector differences, one factor at a time. Thus the derivatives supplied inductively are continuous in both parameters.</p>
+<p>For smooth vectors this statement holds at every order. It also holds for a smooth <span class="math" data-tex="\(\mathcal H^\infty\)">\(\mathcal H^\infty\)</span>-valued parameter family: apply the product rule at any chosen finite Sobolev order, after choosing enough higher spatial orders. No assertion about differentiating <span class="math" data-tex="\(U\)">\(U\)</span> in operator norm on one fixed <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span> is needed.</p>
+<h2 id="2-a-homogeneous-phase-on-one-short-time-interval">2. A homogeneous phase on one short time interval</h2>
+<p>Make the principal-symbol hypothesis precise. The function <span class="math" data-tex="\(b_1(t,x,\xi)\)">\(b_1(t,x,\xi)\)</span> is real, smooth for <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, positively homogeneous of degree one, and has uniform ordinary symbol bounds for <span class="math" data-tex="\(|\xi|\geq1\)">\(|\xi|\geq1\)</span>, including all time derivatives on <span class="math" data-tex="\(J\)">\(J\)</span>. Let <span class="math" data-tex="\(\chi_0(\xi)\)">\(\chi_0(\xi)\)</span> be zero near zero and one for <span class="math" data-tex="\(|\xi|\geq2\)">\(|\xi|\geq2\)</span>. Assume <span class="math" data-tex="\(b-\chi_0b_1\in S^0\)">\(b-\chi_0b_1\in S^0\)</span>, and set <span class="math" data-tex="\(C=c+i(b-\chi_0b_1)I_N\)">\(C=c+i(b-\chi_0b_1)I_N\)</span>. The exact full operator is <span class="math" data-tex="\(i\operatorname{Op}(\chi_0b_1)+\operatorname{Op}(C)\)">\(i\operatorname{Op}(\chi_0b_1)+\operatorname{Op}(C)\)</span>, with <span class="math" data-tex="\(C\in S^0\)">\(C\in S^0\)</span>. No homogeneous expansion of <span class="math" data-tex="\(C\)">\(C\)</span> is imposed. Choose the eventual amplitude's bounded-frequency cutoff sufficiently large that all stationary covectors in (CE8) lie where <span class="math" data-tex="\(\chi_0=1\)">\(\chi_0=1\)</span>; its initial low-frequency difference is smoothing.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ \dot X=b_{1,\xi}(q,X,\Xi),\qquad
+ \dot\Xi=-b_{1,x}(q,X,\Xi),\qquad
+ (X,\Xi)(r)=(y,\eta). \tag{CE7}
+\]">\[
+ \dot X=b_{1,\xi}(q,X,\Xi),\qquad
+ \dot\Xi=-b_{1,x}(q,X,\Xi),\qquad
+ (X,\Xi)(r)=(y,\eta). \tag{CE7}
+\]</span>
+The smooth flow and parameter theorem is the one received in Sections 2–3 of <a href="reconstructions/20261005-restored-compact-tube/compact-homogeneous-characteristic-tubes.html">One canonical tube along a compact characteristic</a>. Here the uniform global symbol bounds give its entire finite-time domain. Indeed <span class="math" data-tex="\(|\dot X|\leq C\)">\(|\dot X|\leq C\)</span> and <span class="math" data-tex="\(|\dot\Xi|\leq C|\Xi|\)">\(|\dot\Xi|\leq C|\Xi|\)</span>. Gronwall, also applied with the time direction reversed, gives
+<span class="math math-display" data-tex="\[
+ |X(q)-y|\leq C|q-r|,\qquad
+ e^{-C|q-r|}|\eta|\leq|\Xi(q)|\leq e^{C|q-r|}|\eta|. \tag{CE8}
+\]">\[
+ |X(q)-y|\leq C|q-r|,\qquad
+ e^{-C|q-r|}|\eta|\leq|\Xi(q)|\leq e^{C|q-r|}|\eta|. \tag{CE8}
+\]</span>
+The trajectory stays in a bounded spatial ball and a compact annulus away from zero on every finite interval. Local existence can therefore be continued through the interval; a finite endpoint could not leave every compact subset of the coefficient domain. Homogeneity and uniqueness show that <span class="math" data-tex="\(X\)">\(X\)</span> has degree zero and <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> degree one in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>For clarity, the uniform derivative bounds needed next are also part of this receiving application. Set <span class="math" data-tex="\(\lambda=|\eta|\)">\(\lambda=|\eta|\)</span>, <span class="math" data-tex="\(\theta=\eta/\lambda\)">\(\theta=\eta/\lambda\)</span>, and <span class="math" data-tex="\(\zeta=\Xi/\lambda\)">\(\zeta=\Xi/\lambda\)</span>. The equations for <span class="math" data-tex="\((X,\zeta)\)">\((X,\zeta)\)</span> are independent of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; (CE8) confines <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to a fixed compact annulus. Their coefficients and all derivatives are uniformly bounded there, even as <span class="math" data-tex="\(y\)">\(y\)</span> varies in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Differentiating their integral equations gives a linear variational equation for the highest derivative and finite products of already bounded lower derivatives. Gronwall proves every <span class="math" data-tex="\(y,\theta,t,r\)">\(y,\theta,t,r\)</span> derivative by induction. Passing from finitely many sphere charts to <span class="math" data-tex="\(\eta\)">\(\eta\)</span> derivatives costs <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> each time. Hence all derivatives of <span class="math" data-tex="\(X-y\)">\(X-y\)</span> have degree-zero symbol bounds, and those of <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> have degree-one bounds. This argument also proves uniform bounds for the inverse flow.</p>
+<p>The variational equation at <span class="math" data-tex="\(q=r\)">\(q=r\)</span> has <span class="math" data-tex="\(X_y=I\)">\(X_y=I\)</span> and <span class="math" data-tex="\(\Xi_y=0\)">\(\Xi_y=0\)</span>. Its integrated form therefore gives
+<span class="math math-display" data-tex="\[
+ \sup_{y,\eta\ne0}\|X_y(t,r,y,\eta)-I\|
+       \leq C_1|t-r|. \tag{CE9}
+\]">\[
+ \sup_{y,\eta\ne0}\|X_y(t,r,y,\eta)-I\|
+       \leq C_1|t-r|. \tag{CE9}
+\]</span>
+Choose one <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, independent of <span class="math" data-tex="\(r,y,\eta\)">\(r,y,\eta\)</span>, so that the right side is below <span class="math" data-tex="\(1/2\)">\(1/2\)</span> when <span class="math" data-tex="\(|t-r|&lt;\varepsilon\)">\(|t-r|&lt;\varepsilon\)</span>. For fixed <span class="math" data-tex="\(t,r,\eta\)">\(t,r,\eta\)</span>, the map <span class="math" data-tex="\(y\mapsto X(t,r,y,\eta)\)">\(y\mapsto X(t,r,y,\eta)\)</span> is globally invertible. To prove surjectivity and uniqueness, write <span class="math" data-tex="\(X=y+G(y)\)">\(X=y+G(y)\)</span>; (CE9) makes <span class="math" data-tex="\(G\)">\(G\)</span> Lipschitz with constant below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The equation <span class="math" data-tex="\(X=x\)">\(X=x\)</span> is the contraction equation <span class="math" data-tex="\(y=x-G(y)\)">\(y=x-G(y)\)</span> on the complete space <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Its unique fixed point depends smoothly on parameters by the inverse-function theorem and the uniform invertibility of <span class="math" data-tex="\(X_y\)">\(X_y\)</span>. Denote it by <span class="math" data-tex="\(Y(t,r,x,\eta)\)">\(Y(t,r,x,\eta)\)</span>, and put
+<span class="math math-display" data-tex="\[
+ \Xi_*(t,r,x,\eta)
+       =\Xi(t,r,Y(t,r,x,\eta),\eta).
+\]">\[
+ \Xi_*(t,r,x,\eta)
+       =\Xi(t,r,Y(t,r,x,\eta),\eta).
+\]</span>
+Implicit differentiation and the preceding estimates give every degree-zero bound for <span class="math" data-tex="\(Y-x\)">\(Y-x\)</span>, and every degree-one bound for <span class="math" data-tex="\(\Xi_*\)">\(\Xi_*\)</span>, on compact spatial sets. The determinant of <span class="math" data-tex="\(Y_x=X_y^{-1}\)">\(Y_x=X_y^{-1}\)</span> is positive: it is continuous, never zero and equals one on the diagonal.</p>
+<p>Define the action with its moving initial point,
+<span class="math math-display" data-tex="\[
+ S(t,r,x,\eta)=Y\cdot\eta+
+       \int_r^t\bigl(\Xi(q)\cdot\dot X(q)
+                       -b_1(q,X(q),\Xi(q))\bigr)\,dq. \tag{CE10}
+\]">\[
+ S(t,r,x,\eta)=Y\cdot\eta+
+       \int_r^t\bigl(\Xi(q)\cdot\dot X(q)
+                       -b_1(q,X(q),\Xi(q))\bigr)\,dq. \tag{CE10}
+\]</span>
+The trajectory here starts at <span class="math" data-tex="\((Y,\eta)\)">\((Y,\eta)\)</span> and ends at <span class="math" data-tex="\((x,\Xi_*)\)">\((x,\Xi_*)\)</span>. Euler's identity makes the integrand zero, so <span class="math" data-tex="\(S=Y\cdot\eta\)">\(S=Y\cdot\eta\)</span>. We keep the action formula to verify all derivatives and their signs. For a variation of a trajectory at fixed integration variable, integration by parts gives
+<span class="math math-display" data-tex="\[
+ \delta\!\int(\Xi\cdot\dot X-b_1)\,dq
+       =[\Xi\cdot\delta X]_r^t,
+\]">\[
+ \delta\!\int(\Xi\cdot\dot X-b_1)\,dq
+       =[\Xi\cdot\delta X]_r^t,
+\]</span>
+since the two interior coefficients are exactly the two equations in (CE7). When the endpoints vary, the resulting boundary terms are <span class="math" data-tex="\(\Xi_*\cdot dx-b_1(t,x,\Xi_*)dt\)">\(\Xi_*\cdot dx-b_1(t,x,\Xi_*)dt\)</span> and <span class="math" data-tex="\(-\eta\cdot dY+b_1(r,Y,\eta)dr\)">\(-\eta\cdot dY+b_1(r,Y,\eta)dr\)</span>. Adding <span class="math" data-tex="\(d(Y\cdot\eta)\)">\(d(Y\cdot\eta)\)</span> cancels the <span class="math" data-tex="\(dY\)">\(dY\)</span> term. Thus
+<span class="math math-display" data-tex="\[
+ dS=\Xi_*\cdot dx+Y\cdot d\eta
+       -b_1(t,x,\Xi_*)dt+b_1(r,Y,\eta)dr. \tag{CE11}
+\]">\[
+ dS=\Xi_*\cdot dx+Y\cdot d\eta
+       -b_1(t,x,\Xi_*)dt+b_1(r,Y,\eta)dr. \tag{CE11}
+\]</span>
+In particular
+<span class="math math-display" data-tex="\[
+ S_x=\Xi_*,\quad S_\eta=Y,\quad
+ S_t+b_1(t,x,S_x)=0,\quad
+ S(r,r,x,\eta)=x\cdot\eta. \tag{CE12}
+\]">\[
+ S_x=\Xi_*,\quad S_\eta=Y,\quad
+ S_t+b_1(t,x,S_x)=0,\quad
+ S(r,r,x,\eta)=x\cdot\eta. \tag{CE12}
+\]</span>
+The mixed Hessian satisfies <span class="math" data-tex="\(S_{\eta x}=Y_x\)">\(S_{\eta x}=Y_x\)</span>, so it is invertible, with uniform inverse bounds. The phase
+<span class="math math-display" data-tex="\[
+ \Phi(t,r,x,y,\eta)=S(t,r,x,\eta)-y\cdot\eta \tag{CE13}
+\]">\[
+ \Phi(t,r,x,y,\eta)=S(t,r,x,\eta)-y\cdot\eta \tag{CE13}
+\]</span>
+is real, homogeneous and nondegenerate. Its critical equation is <span class="math" data-tex="\(Y-y=0\)">\(Y-y=0\)</span>; its derivative in <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(-I\)">\(-I\)</span>. On that set its output and input kernel covectors are respectively <span class="math" data-tex="\(\Xi_*\)">\(\Xi_*\)</span> and <span class="math" data-tex="\(-\eta\)">\(-\eta\)</span>. It therefore parametrizes exactly the graph of (CE7), with the input reflection convention of the kernel calculus.</p>
+<p>On each compact output set all derivatives of <span class="math" data-tex="\(S\)">\(S\)</span> obey the degree-one phase estimates. More uniformly, <span class="math" data-tex="\(S-x\cdot\eta=(Y-x)\cdot\eta\)">\(S-x\cdot\eta=(Y-x)\cdot\eta\)</span> has those bounds globally in <span class="math" data-tex="\(x\)">\(x\)</span>. The short-time construction works in all normalized covector directions at once. It does not require a single generating phase for arbitrary long times.</p>
+<h2 id="3-ordered-amplitudes-and-every-ordinary-remainder">3. Ordered amplitudes and every ordinary remainder</h2>
+<p>Choose a matrix symbol <span class="math" data-tex="\(\beta(x,\eta)\in S^0\)">\(\beta(x,\eta)\in S^0\)</span>, with compact base support. Quantize it with fixed compact input localization equal to one near that base support, and a kernel cutoff equal to one near the diagonal; call the resulting proper operator <span class="math" data-tex="\(B\)">\(B\)</span>. The eventual full-kernel application uses <span class="math" data-tex="\(\beta=\chi(x)I_N\)">\(\beta=\chi(x)I_N\)</span>, so <span class="math" data-tex="\(B\)">\(B\)</span> can be taken to be multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Bounded-frequency differences are included in the initial smoothing error.</p>
+<p>Write <span class="math" data-tex="\(T(v)\)">\(T(v)\)</span> for the integral with phase (CE13), normalization <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, and matrix left amplitude <span class="math" data-tex="\(v(t,r,x,\eta)\)">\(v(t,r,x,\eta)\)</span>. We now construct <span class="math" data-tex="\(v\)">\(v\)</span>; a homogeneous expansion of the lower coefficient <span class="math" data-tex="\(C\)">\(C\)</span> would be an unjustified extra hypothesis.</p>
+<p><strong>The full amplitude action.</strong> Acting with <span class="math" data-tex="\(P\)">\(P\)</span> on the integral, remove <span class="math" data-tex="\(e^{iS}\)">\(e^{iS}\)</span> from its output amplitude. The eikonal equation cancels its order-one multiplication term. Its order-preserving transport part is
+<span class="math math-display" data-tex="\[
+ \mathcal L v=\partial_tv+w\cdot\partial_xv+d\,v,\qquad
+ w=b_{1,\xi}(t,x,S_x),\qquad
+ d=C(t,x,S_x)+\frac12\sum_{j,k}
+          b_{1,\xi_j\xi_k}(t,x,S_x)S_{x_jx_k}I_N. \tag{CE14}
+\]">\[
+ \mathcal L v=\partial_tv+w\cdot\partial_xv+d\,v,\qquad
+ w=b_{1,\xi}(t,x,S_x),\qquad
+ d=C(t,x,S_x)+\frac12\sum_{j,k}
+          b_{1,\xi_j\xi_k}(t,x,S_x)S_{x_jx_k}I_N. \tag{CE14}
+\]</span>
+The remaining full amplitude action, denoted <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, maps <span class="math" data-tex="\(S^a\)">\(S^a\)</span> to <span class="math" data-tex="\(S^{a-1}\)">\(S^{a-1}\)</span>, with all finite differentiated remainder bounds uniform in <span class="math" data-tex="\(t,r\)">\(t,r\)</span>. Thus the full action is <span class="math" data-tex="\(\mathcal T=\mathcal L+\mathcal E\)">\(\mathcal T=\mathcal L+\mathcal E\)</span>, modulo amplitudes of arbitrarily negative order and the separated-support smooth terms handled below.</p>
+<p>Here is the precise stationary-phase application proving this statement. For the near-diagonal part of an ordinary symbol <span class="math" data-tex="\(q\)">\(q\)</span>, the amplitude before removing its phase is
+<span class="math math-display" data-tex="\[
+ (2\pi)^{-n}\iint
+  e^{i((x-z)\cdot\xi+S(z,\eta)-S(x,\eta))}
+       q(t,x,\xi)v(t,r,z,\eta)\,dz\,d\xi. \tag{CE15}
+\]">\[
+ (2\pi)^{-n}\iint
+  e^{i((x-z)\cdot\xi+S(z,\eta)-S(x,\eta))}
+       q(t,x,\xi)v(t,r,z,\eta)\,dz\,d\xi. \tag{CE15}
+\]</span>
+Put <span class="math" data-tex="\(\eta=\lambda\theta\)">\(\eta=\lambda\theta\)</span>, <span class="math" data-tex="\(\xi=\lambda\zeta\)">\(\xi=\lambda\zeta\)</span>. The unique critical point is <span class="math" data-tex="\(z=x,\ \zeta=S_x(t,r,x,\theta)\)">\(z=x,\ \zeta=S_x(t,r,x,\theta)\)</span>. Its Hessian in <span class="math" data-tex="\((z,\zeta)\)">\((z,\zeta)\)</span> is
+<span class="math math-display" data-tex="\[
+ \begin{pmatrix}S_{zz}&amp;-I\\-I&amp;0\end{pmatrix};
+\]">\[
+ \begin{pmatrix}S_{zz}&amp;-I\\-I&amp;0\end{pmatrix};
+\]</span>
+it has determinant of absolute value one and signature zero, as is seen by replacing <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> by <span class="math" data-tex="\(\zeta-\tfrac12S_{zz}z\)">\(\zeta-\tfrac12S_{zz}z\)</span> in its quadratic form. The critical value is zero. Bounds (CE8) keep the stationary <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> uniformly away from zero. Use a fixed compact neighborhood of that critical point in the normalized variables; all parameters then meet Sections 5–6 of <span class="unlinked">Stationary phase and critical manifolds</span>.</p>
+<p>The symbol-parameter remainder there applies to <span class="math" data-tex="\(q(t,x,\lambda\zeta)v(t,r,z,\lambda\theta)\)">\(q(t,x,\lambda\zeta)v(t,r,z,\lambda\theta)\)</span> directly. It does not require this amplitude to be classical. Each stationary coefficient loses one <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> order. Its full remainder, after any fixed <span class="math" data-tex="\(\lambda,\theta,x,t,r\)">\(\lambda,\theta,x,t,r\)</span> derivatives, loses the prescribed number of orders. Changing back from radial/angular derivatives gives the corresponding ordinary <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-symbol estimates.</p>
+<p>The first two coefficients can also be read directly by Taylor expansion at <span class="math" data-tex="\(z=x\)">\(z=x\)</span>. With <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the contribution of <span class="math" data-tex="\(i b_1\)">\(i b_1\)</span> through order zero is
+<span class="math math-display" data-tex="\[
+ i b_1(t,x,S_x)v+
+      b_{1,\xi}(t,x,S_x)\cdot\partial_xv+
+      \frac12\sum_{j,k}b_{1,\xi_j\xi_k}(t,x,S_x)
+                              S_{x_jx_k}v. \tag{CE16}
+\]">\[
+ i b_1(t,x,S_x)v+
+      b_{1,\xi}(t,x,S_x)\cdot\partial_xv+
+      \frac12\sum_{j,k}b_{1,\xi_j\xi_k}(t,x,S_x)
+                              S_{x_jx_k}v. \tag{CE16}
+\]</span>
+The full <span class="math" data-tex="\(C\)">\(C\)</span> contributes <span class="math" data-tex="\(C(t,x,S_x)v\)">\(C(t,x,S_x)v\)</span> through order zero; each of its other coefficients loses at least one order. The time derivative contributes <span class="math" data-tex="\(iS_tv+\partial_tv\)">\(iS_tv+\partial_tv\)</span>. This proves (CE14) with its sign. The half-density identification agrees with the supporting calculation in Sections 6–7 of <a href="reconstructions/20261005-restored-subprincipal-transport/hamilton-fields-and-subprincipal-transport.html">Hamilton fields and subprincipal transport</a>; here the full ordinary matrix coefficient remains in its displayed left-multiplication order.</p>
+<p>The normalized tails in (CE15) require an estimate as well. On bounded <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> away from the critical point, at least one of the <span class="math" data-tex="\(z,\zeta\)">\(z,\zeta\)</span> phase gradients has a uniform positive lower bound. The nonstationary integration operator of the stationary-phase lesson gains an arbitrary power of <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>; any fixed parameter derivatives consume only finitely many such powers. For <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span> large, the <span class="math" data-tex="\(z\)">\(z\)</span> gradient is <span class="math" data-tex="\(-\zeta+S_z(z,\theta)\)">\(-\zeta+S_z(z,\theta)\)</span>, comparable to <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span>. Repeated <span class="math" data-tex="\(z\)">\(z\)</span> integration first makes the <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> integral absolutely convergent, including all symbol and parameter derivatives, and gives any required <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> power. Near <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>, the critical covector is excluded by (CE8); use the same nonstationary argument, separating bounded physical <span class="math" data-tex="\(\xi\)">\(\xi\)</span> where necessary. Each such contribution has every prescribed lower symbol order. These estimates justify the compact stationary calculation and its full remainder.</p>
+<p>Every finite stationary coefficient is a differential expression in <span class="math" data-tex="\(v\)">\(v\)</span> at the same <span class="math" data-tex="\((x,\eta)\)">\((x,\eta)\)</span>. Its support is therefore inside the closed support of <span class="math" data-tex="\(v\)">\(v\)</span>. Support-preserving symbol sums provide full residual representatives with that same support, modulo <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>. All corrections below consequently remain over the fixed transported support of <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Separated physical kernel pieces are smooth with the global output bounds proved at the end of this section.</p>
+<p><strong>The leading matrix and density.</strong> The characteristic curves of <span class="math" data-tex="\(w\)">\(w\)</span>, with fixed initial <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, are <span class="math" data-tex="\(x=X(t,r,y,\eta)\)">\(x=X(t,r,y,\eta)\)</span>. Put
+<span class="math math-display" data-tex="\[
+ \rho(t,r,x,\eta)=\det(Y_x)^{1/2},\qquad
+ H=C(t,X,\Xi)-\tfrac12\operatorname{tr}
+                       b_{1,x\xi}(t,X,\Xi)I_N. \tag{CE17}
+\]">\[
+ \rho(t,r,x,\eta)=\det(Y_x)^{1/2},\qquad
+ H=C(t,X,\Xi)-\tfrac12\operatorname{tr}
+                       b_{1,x\xi}(t,X,\Xi)I_N. \tag{CE17}
+\]</span>
+The positive square root is well defined on the short-time interval. Along a characteristic, Jacobi's determinant identity gives
+<span class="math" data-tex="\(\dot\rho=-\tfrac12(\operatorname{div}_x w)\rho\)">\(\dot\rho=-\tfrac12(\operatorname{div}_x w)\rho\)</span>.
+The chain rule gives
+<span class="math math-display" data-tex="\[
+ \operatorname{div}_x w
+  =\operatorname{tr}b_{1,x\xi}
+     +\sum_{j,k}b_{1,\xi_j\xi_k}S_{x_jx_k}.
+\]">\[
+ \operatorname{div}_x w
+  =\operatorname{tr}b_{1,x\xi}
+     +\sum_{j,k}b_{1,\xi_j\xi_k}S_{x_jx_k}.
+\]</span>
+Thus <span class="math" data-tex="\(\mathcal L(\rho M)=\rho(\dot M+HM)\)">\(\mathcal L(\rho M)=\rho(\dot M+HM)\)</span>. Let
+<span class="math math-display" data-tex="\[
+ \dot M=-HM,\qquad M(r,r,y,\eta)=I_N,\qquad
+ \dot M^{-1}=M^{-1}H. \tag{CE18}
+\]">\[
+ \dot M=-HM,\qquad M(r,r,y,\eta)=I_N,\qquad
+ \dot M^{-1}=M^{-1}H. \tag{CE18}
+\]</span>
+The ordered finite-matrix existence, inverse and parameter proofs used in GT3–GT8 of Section 7 of <a href="reconstructions/20261005-restored-graph-egorov/graph-operators-continuity-and-egorov.html">Graph operators, continuity and Egorov</a> apply to this coefficient along each characteristic. It is uniformly order zero: an <span class="math" data-tex="\(x\)">\(x\)</span> derivative of the flow frequency costs one <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span>, canceled by a frequency derivative of <span class="math" data-tex="\(C\)">\(C\)</span>; each <span class="math" data-tex="\(\eta\)">\(\eta\)</span> derivative loses one order. The homogeneous scalar correction in <span class="math" data-tex="\(H\)">\(H\)</span> has the same bounds. The coefficient and every time derivative are uniform on the fixed interval.</p>
+<p>For completeness, differentiating the ordered equation gives the highest parameter derivative its same left coefficient <span class="math" data-tex="\(H\)">\(H\)</span>, with forcing equal to finite products of a differentiated <span class="math" data-tex="\(H\)">\(H\)</span> and lower derivatives of <span class="math" data-tex="\(M\)">\(M\)</span>. Their frequency weights add to the required total negative derivative count. Variation of constants and induction prove every <span class="math" data-tex="\(S^0\)">\(S^0\)</span> bound for <span class="math" data-tex="\(M\)">\(M\)</span>. Differentiating <span class="math" data-tex="\(MM^{-1}=I_N\)">\(MM^{-1}=I_N\)</span> gives every inverse bound with the products in their actual order. The undifferentiated estimates are
+<span class="math math-display" data-tex="\[
+ \|M\|+\|M^{-1}\|\leq2e^{C|t-r|}. \tag{CE19}
+\]">\[
+ \|M\|+\|M^{-1}\|\leq2e^{C|t-r|}. \tag{CE19}
+\]</span>
+Time and mixed derivatives follow from (CE18). The density <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and its inverse are homogeneous order zero, uniformly bounded with all derivatives, by (CE9). Set
+<span class="math math-display" data-tex="\[
+ v_0(t,r,x,\eta)
+       =\rho(t,r,x,\eta)M(t,r,Y,\eta)\beta(Y,\eta).
+                                                        \tag{CE20}
+\]">\[
+ v_0(t,r,x,\eta)
+       =\rho(t,r,x,\eta)M(t,r,Y,\eta)\beta(Y,\eta).
+                                                        \tag{CE20}
+\]</span>
+It lies in <span class="math" data-tex="\(S^0\)">\(S^0\)</span>, solves <span class="math" data-tex="\(\mathcal Lv_0=0\)">\(\mathcal Lv_0=0\)</span>, and equals <span class="math" data-tex="\(\beta(x,\eta)\)">\(\beta(x,\eta)\)</span> on the diagonal.</p>
+<p><strong>Correct the full ordinary residual.</strong> Suppose <span class="math" data-tex="\(v^{[j-1]}=v_0+\cdots+v_{j-1}\)">\(v^{[j-1]}=v_0+\cdots+v_{j-1}\)</span> has full residual <span class="math" data-tex="\(f_j\in S^{-j}\)">\(f_j\in S^{-j}\)</span>, for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, with a support-preserving representative as just described. Solve along the same characteristics, with zero initial value,
+<span class="math math-display" data-tex="\[
+ v_j(t,r,X,\eta)
+  =-\rho(t,r,X,\eta)M(t,r,y,\eta)
+       \int_r^t M(q,r,y,\eta)^{-1}
+           \rho(q,r,X(q),\eta)^{-1}
+           f_j(q,r,X(q),\eta)\,dq. \tag{CE21}
+\]">\[
+ v_j(t,r,X,\eta)
+  =-\rho(t,r,X,\eta)M(t,r,y,\eta)
+       \int_r^t M(q,r,y,\eta)^{-1}
+           \rho(q,r,X(q),\eta)^{-1}
+           f_j(q,r,X(q),\eta)\,dq. \tag{CE21}
+\]</span>
+The integral is oriented for <span class="math" data-tex="\(t&lt;r\)">\(t&lt;r\)</span>. Differentiating in <span class="math" data-tex="\(t\)">\(t\)</span> proves <span class="math" data-tex="\(\mathcal Lv_j=-f_j\)">\(\mathcal Lv_j=-f_j\)</span>, with all factors kept in order. Every differentiated integrand has order <span class="math" data-tex="\(-j\)">\(-j\)</span>, by the bounds for <span class="math" data-tex="\(\rho,M\)">\(\rho,M\)</span>, the homogeneous flow and <span class="math" data-tex="\(f_j\)">\(f_j\)</span>; the finite integration interval and its endpoint derivatives preserve that order. Hence <span class="math" data-tex="\(v_j\in S^{-j}\)">\(v_j\in S^{-j}\)</span> and <span class="math" data-tex="\(v_j(r,r)=0\)">\(v_j(r,r)=0\)</span>. The new residual is <span class="math" data-tex="\(\mathcal Ev_j\)">\(\mathcal Ev_j\)</span>, modulo <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span>, and therefore belongs to <span class="math" data-tex="\(S^{-j-1}\)">\(S^{-j-1}\)</span>. Starting with <span class="math" data-tex="\(f_1=\mathcal Ev_0\)">\(f_1=\mathcal Ev_0\)</span> proves the induction at every order.</p>
+<p>Use parameter-aware support-preserving summation:
+<span class="math math-display" data-tex="\[
+ v=v_0+\sum_{j\geq1}(1-\vartheta(\eta/R_j))v_j,\qquad
+ v-v^{[j]}\in S^{-j-1}. \tag{CE22}
+\]">\[
+ v=v_0+\sum_{j\geq1}(1-\vartheta(\eta/R_j))v_j,\qquad
+ v-v^{[j]}\in S^{-j-1}. \tag{CE22}
+\]</span>
+Here <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> equals one near zero. Choose increasing radii to bound the first <span class="math" data-tex="\(j\)">\(j\)</span> spatial, frequency and time-parameter derivatives of the <span class="math" data-tex="\(j\)">\(j\)</span>-th tail in order <span class="math" data-tex="\(-j+1\)">\(-j+1\)</span> by <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. Compact parameter sets and the one common spatial support supply these seminorms; a diagonal choice treats all derivatives. For every fixed order the high-index tails are summable in that order, while the finitely many bounded-frequency differences are smoothing. These estimates prove every asserted differentiated remainder. The radii are independent of <span class="math" data-tex="\(t,r\)">\(t,r\)</span>, so every correction still vanishes on <span class="math" data-tex="\(t=r\)">\(t=r\)</span>.</p>
+<p>The full amplitude action is order preserving after eikonal cancellation. For every <span class="math" data-tex="\(j\)">\(j\)</span>, applying its finite differentiated remainder bounds to <span class="math" data-tex="\(v-v^{[j]}\)">\(v-v^{[j]}\)</span>, and using the already corrected partial residual, shows that <span class="math" data-tex="\(\mathcal Tv\in S^{-j-1}\)">\(\mathcal Tv\in S^{-j-1}\)</span>. Thus the actual residual is smoothing to every order. This is an asymptotic sum in decreasing ordinary symbol orders; neither a homogeneous lower-symbol expansion nor convergence of an operator Neumann series is asserted.</p>
+<p><strong>Proper localization and the global output estimate.</strong> The input base support of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is compact. Bounds (CE8) place all transported amplitude supports in one compact output set for the whole short-time parameter domain. Multiply by an input cutoff equal to one near that initial compact set and retain a near-diagonal proper representative of <span class="math" data-tex="\(B\)">\(B\)</span>. When <span class="math" data-tex="\(y\)">\(y\)</span> is outside that set, the phase gradient <span class="math" data-tex="\(\Phi_\eta=Y-y\)">\(\Phi_\eta=Y-y\)</span> is bounded away from zero on the amplitude support. Integration by parts gives a smooth discarded kernel, with every derivative and arbitrarily high inverse-frequency gain. The resulting <span class="math" data-tex="\(V=T(v)\)">\(V=T(v)\)</span>, with this input cutoff, has compact support in both spatial variables and is uniformly order-zero graph bounded on every Sobolev scale by Sections 3 and 5 of the graph lesson. Smooth-vector parameter differentiation gives finite-order graph operators, and strong continuity follows from the same finite-seminorm bounds and density.</p>
+<p>At the initial slice the phase is exactly <span class="math" data-tex="\((x-y)\cdot\eta\)">\((x-y)\cdot\eta\)</span>, and the amplitude is <span class="math" data-tex="\(\beta\)">\(\beta\)</span> modulo the fixed bounded-frequency cutoff. Therefore <span class="math" data-tex="\(V(r,r)-B=S(r)\)">\(V(r,r)-B=S(r)\)</span> has a compact smooth kernel, with every parameter derivative.</p>
+<p>Inside a slightly larger compact output set, the full amplitude calculation makes <span class="math" data-tex="\(PV\)">\(PV\)</span> a smooth kernel with all parameter derivatives. Outside it, only the nonlocal tail of <span class="math" data-tex="\(A V\)">\(A V\)</span> remains. The kernel of a uniform ordinary PDO, away from its spatial diagonal, has bounds
+<span class="math math-display" data-tex="\[
+ |\partial_x^\alpha\partial_z^\gamma K_A(x,z)|
+       \leq C_{\alpha\gamma L}|x-z|^{-L}
+       \quad(|x-z|\geq\delta&gt;0),                         \tag{CE23}
+\]">\[
+ |\partial_x^\alpha\partial_z^\gamma K_A(x,z)|
+       \leq C_{\alpha\gamma L}|x-z|^{-L}
+       \quad(|x-z|\geq\delta&gt;0),                         \tag{CE23}
+\]</span>
+for every <span class="math" data-tex="\(L\)">\(L\)</span>: integrate the Fourier kernel by parts in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> enough times that the differentiated order-one symbol is integrable, and then enough additional times to obtain the prescribed spatial power. The same proof includes all time derivatives. Here <span class="math" data-tex="\(z\)">\(z\)</span> ranges in the compact output support of <span class="math" data-tex="\(V\)">\(V\)</span>. In the resulting <span class="math" data-tex="\(z\)">\(z\)</span> integral, <span class="math" data-tex="\(S_z\)">\(S_z\)</span> is comparable to <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> by (CE8). Repeated <span class="math" data-tex="\(z\)">\(z\)</span> integration gains arbitrary inverse powers of <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span>; (CE23) simultaneously retains arbitrary decay in the exterior <span class="math" data-tex="\(x\)">\(x\)</span>. Each fixed <span class="math" data-tex="\(x,y,t,r\)">\(x,y,t,r\)</span> derivative consumes only finitely many such powers. Consequently the complete residual <span class="math" data-tex="\(R=PV\)">\(R=PV\)</span> has a kernel rapidly decreasing in <span class="math" data-tex="\(x\)">\(x\)</span>, compactly supported in <span class="math" data-tex="\(y\)">\(y\)</span>, with all differentiated bounds.</p>
+<p>These are genuine global output estimates. Fourier transformation and integration by parts in both spatial variables make the residual kernel's two-frequency transform rapidly decreasing. Cauchy–Schwarz with Sobolev weights then proves <span class="math" data-tex="\(R(t,r)\chi:H^{-M}\to H^k\)">\(R(t,r)\chi:H^{-M}\to H^k\)</span> for every <span class="math" data-tex="\(M,k\)">\(M,k\)</span>, and the same bound for every parameter derivative; it also applies to <span class="math" data-tex="\(S(r)\chi\)">\(S(r)\chi\)</span>. Smooth dependence in these norms follows by the same estimates applied to Taylor's parameter remainder. Thus <span class="math" data-tex="\(S,R\)">\(S,R\)</span> satisfy exactly the correction hypothesis below.</p>
+<p>The reduced graph symbol in the natural symplectic half-volume frame is
+<span class="math math-display" data-tex="\[
+ v_0|\det S_{x\eta}|^{-1/2}=M(t,r,Y,\eta)\beta(Y,\eta),
+                                                        \tag{CE24}
+\]">\[
+ v_0|\det S_{x\eta}|^{-1/2}=M(t,r,Y,\eta)\beta(Y,\eta),
+                                                        \tag{CE24}
+\]</span>
+since <span class="math" data-tex="\(|\det S_{x\eta}|^{1/2}=\rho\)">\(|\det S_{x\eta}|^{1/2}=\rho\)</span>. This is the density conversion proved in Section 2 of the graph lesson. Where <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has an order-zero inverse, (CE19) and the derivative estimates give every inverse bound for this symbol. It is elliptic in the ordinary symbol sense; pointwise invertibility alone has not been substituted for ellipticity.</p>
+<h2 id="4-exact-correction-of-a-smoothing-residual">4. Exact correction of a smoothing residual</h2>
+<p>Fix an ordinary order-zero matrix operator <span class="math" data-tex="\(B\)">\(B\)</span>, bounded on every <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>. A compactly localized conic test is the eventual application. Suppose a constructed family <span class="math" data-tex="\(V(t,r)\)">\(V(t,r)\)</span> has the following <strong>precise</strong> properties on a neighborhood of the diagonal in <span class="math" data-tex="\(J^2\)">\(J^2\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(V(t,r)\)">\(V(t,r)\)</span> is strongly continuous <span class="math" data-tex="\(\mathcal H^s\to\mathcal H^s\)">\(\mathcal H^s\to\mathcal H^s\)</span>, for every real <span class="math" data-tex="\(s\)">\(s\)</span>, with uniform bounds on compact parameter sets. On smooth vectors it is differentiable in <span class="math" data-tex="\(t\)">\(t\)</span>, and its equation is consistent on the full Sobolev distribution scale.</li>
+<li>The initial family and the residual are
+<span class="math math-display" data-tex="\[
+V(r,r)=B+S(r),\qquad
+(\partial_t+A(t))V(t,r)=R(t,r). \tag{CE25}
+\]">\[
+V(r,r)=B+S(r),\qquad
+(\partial_t+A(t))V(t,r)=R(t,r). \tag{CE25}
+\]</span></li>
+<li>For every <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R^n)\)">\(\chi\in C_c^\infty(\mathbb R^n)\)</span>, every nonnegative integer <span class="math" data-tex="\(M\)">\(M\)</span>, and every real <span class="math" data-tex="\(k\)">\(k\)</span>, the operators
+<span class="math math-display" data-tex="\[
+S(r)\chi,\quad R(t,r)\chi:
+    \mathcal H^{-M}\longrightarrow\mathcal H^k \tag{CE26}
+\]">\[
+S(r)\chi,\quad R(t,r)\chi:
+    \mathcal H^{-M}\longrightarrow\mathcal H^k \tag{CE26}
+\]</span>
+are bounded and depend smoothly on the displayed parameters in these operator norms. All finite parameter derivatives obey the same bounds on compact parameter sets.</li>
+</ol>
+<p>Condition 3 includes the global output norm needed by the energy correction. A smooth kernel known only locally in its two spatial variables need not have it. In the oscillatory construction, proper spatial localization and the off-diagonal symbol estimates must prove this condition, rather than silently identify every locally smooth kernel with a global Sobolev smoothing operator.</p>
+<p>For compactly supported <span class="math" data-tex="\(\phi\in\mathcal H^s\)">\(\phi\in\mathcal H^s\)</span>, initially take smooth data and put
+<span class="math math-display" data-tex="\[
+ W(t,r)\phi=V(t,r)\phi-U(t,r)S(r)\phi
+       -\int_r^t U(t,q)R(q,r)\phi\,dq. \tag{CE27}
+\]">\[
+ W(t,r)\phi=V(t,r)\phi-U(t,r)S(r)\phi
+       -\int_r^t U(t,q)R(q,r)\phi\,dq. \tag{CE27}
+\]</span>
+Choose one compactly supported <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one on the data support. Condition (CE26) supplies all the needed bounds for <span class="math" data-tex="\(S(r)\phi\)">\(S(r)\phi\)</span> and <span class="math" data-tex="\(R(q,r)\phi\)">\(R(q,r)\phi\)</span>. The integral is Bochner in any desired output Sobolev space. For <span class="math" data-tex="\(t&lt;r\)">\(t&lt;r\)</span>, the integral is oriented; its sign is already contained in the limits. A conclusion for arbitrary globally supported data would additionally require the corresponding global smoothing bounds.</p>
+<p>The exact Duhamel verification in the systems lesson shows that applying <span class="math" data-tex="\(P\)">\(P\)</span> to the last integral gives <span class="math" data-tex="\(R(t,r)\phi\)">\(R(t,r)\phi\)</span>. The middle term is homogeneous. At <span class="math" data-tex="\(t=r\)">\(t=r\)</span>, the integral vanishes, and (CE25) cancels <span class="math" data-tex="\(S(r)\phi\)">\(S(r)\phi\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ P W(\,\cdot\,,r)\phi=0,\qquad
+ W(r,r)\phi=B\phi. \tag{CE28}
+\]">\[
+ P W(\,\cdot\,,r)\phi=0,\qquad
+ W(r,r)\phi=B\phi. \tag{CE28}
+\]</span>
+By uniqueness in the systems theorem, <span class="math" data-tex="\(W(t,r)\phi=U(t,r)B\phi\)">\(W(t,r)\phi=U(t,r)B\phi\)</span>. Density and the uniform Sobolev bounds extend the identity to every compactly supported datum in its applicable <span class="math" data-tex="\(\mathcal H^s\)">\(\mathcal H^s\)</span>. Every compactly supported distribution has some finite negative Sobolev order: its finite distributional order bounds its Fourier transform by a polynomial, and a sufficiently negative weighted square integral is finite. Thus
+<span class="math math-display" data-tex="\[
+ U(t,r)B-V(t,r)
+       =-U(t,r)S(r)
+          -\int_r^t U(t,q)R(q,r)\,dq \tag{CE29}
+\]">\[
+ U(t,r)B-V(t,r)
+       =-U(t,r)S(r)
+          -\int_r^t U(t,q)R(q,r)\,dq \tag{CE29}
+\]</span>
+is an identity on all compactly supported distributional data. A statement that only <span class="math" data-tex="\(PV\)">\(PV\)</span> is smoothing would have missed the independent initial correction <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Here is the full kernel regularity conclusion. Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> have compact support. The right side of (CE29), after right multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, maps <span class="math" data-tex="\(\mathcal H^{-M}\)">\(\mathcal H^{-M}\)</span> into <span class="math" data-tex="\(\mathcal H^k\)">\(\mathcal H^k\)</span> for every <span class="math" data-tex="\(M,k\)">\(M,k\)</span>. Indeed its norm is bounded by the uniform <span class="math" data-tex="\(\mathcal H^k\)">\(\mathcal H^k\)</span> evolution bound times the smoothing norms in (CE26), with the length of the time interval for the integral. Increasing <span class="math" data-tex="\(k\)">\(k\)</span> arbitrarily retains the bound; no derivatives are charged to the original datum beyond its one fixed finite negative order.</p>
+<p>To see that these bounds give an actual jointly smooth spatial kernel, consider the column data <span class="math" data-tex="\(\chi(y)\delta_y e_\ell\)">\(\chi(y)\delta_y e_\ell\)</span>, <span class="math" data-tex="\(1\leq\ell\leq N\)">\(1\leq\ell\leq N\)</span>. A localized map <span class="math" data-tex="\(y\mapsto\delta_y\)">\(y\mapsto\delta_y\)</span> is <span class="math" data-tex="\(C^m\)">\(C^m\)</span> into <span class="math" data-tex="\(H^{-M}\)">\(H^{-M}\)</span> whenever <span class="math" data-tex="\(M&gt;n/2+m\)">\(M&gt;n/2+m\)</span>. Its derivative of order <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is <span class="math" data-tex="\((-1)^{|\alpha|}\partial_x^\alpha\delta_y\)">\((-1)^{|\alpha|}\partial_x^\alpha\delta_y\)</span>; Fourier differentiation and the integrability of <span class="math" data-tex="\(\langle\xi\rangle^{-2M+2|\alpha|}\)">\(\langle\xi\rangle^{-2M+2|\alpha|}\)</span> prove the assertion, including difference quotients by dominated convergence. For any prescribed finite number of <span class="math" data-tex="\(y\)">\(y\)</span> derivatives, choose such an <span class="math" data-tex="\(M\)">\(M\)</span> and apply (CE29). Its output is <span class="math" data-tex="\(C^m\)">\(C^m\)</span> in <span class="math" data-tex="\(y\)">\(y\)</span>, with values in every <span class="math" data-tex="\(\mathcal H^k\)">\(\mathcal H^k\)</span>.</p>
+<p>For a prescribed number <span class="math" data-tex="\(d\)">\(d\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> derivatives, choose <span class="math" data-tex="\(k&gt;n/2+d\)">\(k&gt;n/2+d\)</span>. Fourier Cauchy–Schwarz gives continuous evaluation of all those derivatives in <span class="math" data-tex="\(x\)">\(x\)</span>; the integrability of <span class="math" data-tex="\(\langle\xi\rangle^{-2k+2d}\)">\(\langle\xi\rangle^{-2k+2d}\)</span> proves the bound. It also gives their continuity in <span class="math" data-tex="\(x\)">\(x\)</span>, by dominated convergence of the Fourier integral. Since <span class="math" data-tex="\(m,d\)">\(m,d\)</span> were arbitrary, the columns define a smooth kernel in <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>.</p>
+<p>This is the distribution kernel of the operator, not merely a family of point tests. For a compactly supported smooth input <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, its vector distribution is the Bochner integral of <span class="math" data-tex="\(\delta_y\phi(y)\)">\(\delta_y\phi(y)\)</span> in a sufficiently negative Sobolev space. Fourier testing verifies the identity. Applying the bounded smoothing operator commutes with that integral, giving the kernel action. The resulting identity extends to compact distributions by continuity. We have proved
+<span class="math math-display" data-tex="\[
+ K_{U(t,r)B}-K_{V(t,r)}
+       \in C^\infty(\mathbb R^n_x\times\mathbb R^n_y)
+       \quad\hbox{locally in }y. \tag{CE30}
+\]">\[
+ K_{U(t,r)B}-K_{V(t,r)}
+       \in C^\infty(\mathbb R^n_x\times\mathbb R^n_y)
+       \quad\hbox{locally in }y. \tag{CE30}
+\]</span>
+No assumption of exact proper support for <span class="math" data-tex="\(U\)">\(U\)</span> is hidden here. A nonlocal smoothing part of <span class="math" data-tex="\(A\)">\(A\)</span> can create smooth spatial tails in the exact evolution.</p>
+<p>The kernel is smooth in <span class="math" data-tex="\(t,r\)">\(t,r\)</span> as well. For the first term of (CE29), all parameter derivatives of <span class="math" data-tex="\(S(r)\chi\)">\(S(r)\chi\)</span> have arbitrarily high spatial output regularity; (CE6) and its inductive derivatives consume only finitely many of those orders. For the integral, an <span class="math" data-tex="\(r\)">\(r\)</span> derivative differentiates <span class="math" data-tex="\(R(q,r)\)">\(R(q,r)\)</span> and its lower endpoint:
+<span class="math math-display" data-tex="\[
+ \partial_r\!\int_r^t U(t,q)R(q,r)\chi\,dq
+   =-U(t,r)R(r,r)\chi
+     +\int_r^t U(t,q)\partial_rR(q,r)\chi\,dq. \tag{CE31}
+\]">\[
+ \partial_r\!\int_r^t U(t,q)R(q,r)\chi\,dq
+   =-U(t,r)R(r,r)\chi
+     +\int_r^t U(t,q)\partial_rR(q,r)\chi\,dq. \tag{CE31}
+\]</span>
+A <span class="math" data-tex="\(t\)">\(t\)</span> derivative differentiates the upper endpoint and <span class="math" data-tex="\(U(t,q)\)">\(U(t,q)\)</span>; (CE6) applies to its smoothing output. Repetition gives only finite sums of smoothing endpoint terms and Bochner integrals with arbitrarily high output order. The uniform bounds allow every differentiation by difference quotients and dominated convergence. The preceding <span class="math" data-tex="\(\delta_y\)">\(\delta_y\)</span> argument then proves smoothness of the kernel jointly in all four variables, up to one-sided derivatives at endpoints of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<h2 id="5-the-exact-local-graph-and-its-symbol">5. The exact local graph and its symbol</h2>
+<p>The family <span class="math" data-tex="\(V(t,r)\)">\(V(t,r)\)</span> constructed in Sections 2–3 is an ordinary order-zero Fourier-integral family on the canonical graph of the Hamilton flow of <span class="math" data-tex="\(b_1\)">\(b_1\)</span>, localized by <span class="math" data-tex="\(B\)">\(B\)</span>. Formula (CE30) therefore identifies the exact localized evolution with this kernel modulo a jointly smooth kernel. Its reduced symbol is (CE24), with all ordinary inverse bounds wherever the initial symbol is elliptic. This is an actual construction with the initial and global-output estimates required for correction.</p>
+<p>The kernel covector convention is
+<span class="math math-display" data-tex="\[
+ C_{t,r}&#x27;=
+ \bigl\{(x,\xi;y,-\eta):
+             (x,\xi)=\kappa_{t,r}(y,\eta)\bigr\}. \tag{CE32}
+\]">\[
+ C_{t,r}&#x27;=
+ \bigl\{(x,\xi;y,-\eta):
+             (x,\xi)=\kappa_{t,r}(y,\eta)\bigr\}. \tag{CE32}
+\]</span>
+The sign on the input covector is the kernel sign. The Hamilton flow itself sends <span class="math" data-tex="\((y,\eta)\)">\((y,\eta)\)</span> to <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span>, without that minus sign. The graph-operator calculus supplies containment. Its proved two-sided elliptic inverse and the actual inverse-symbol bounds of Section 3 supply the converse; the full matching argument is given in Section 6. A mere class membership statement would not establish that converse.</p>
+<p>The phase sign, full ordinary matrix transport, every differentiated residual, initial normalization and global smoothing bounds have been proved above. We next assemble them over the finite time interval using actual graph composition. The scalar-principal matrix hypothesis in (CE1) remains explicit throughout.</p>
+<h2 id="6-assemble-the-exact-graph-over-a-finite-time-interval">6. Assemble the exact graph over a finite time interval</h2>
+<p>For every short interval, Section 3 constructs <span class="math" data-tex="\(V\)">\(V\)</span> with the initial and residual bounds of Section 4. Consequently
+<span class="math math-display" data-tex="\[
+ U(t,r)B=V(t,r)+Q(t,r), \tag{CE33}
+\]">\[
+ U(t,r)B=V(t,r)+Q(t,r), \tag{CE33}
+\]</span>
+where <span class="math" data-tex="\(Q\)">\(Q\)</span> has a jointly smooth kernel and every localized input-to-global-output smoothing estimate proved there. This already proves that the exact localized evolution is an order-zero graph FIO. Where <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is elliptic its reduced symbol is (CE24), modulo one lower order. The matrix inverse bounds proved there are essential for the next equality statement.</p>
+<p>We explain finite-time assembly on full compact input sets, so directions on the covector axes are not missed by an angular-only argument. Choose <span class="math" data-tex="\(B_0=\chi(y)I_N\)">\(B_0=\chi(y)I_N\)</span>, with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> compactly supported. The preceding short-time construction works in all directions of the unit sphere. Divide the interval between <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> into finitely many pieces shorter than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, in its actual time direction. Fix this division on a slightly larger parameter neighborhood when smooth dependence on the two endpoints is needed. Denote intermediate times by <span class="math" data-tex="\(t_j\)">\(t_j\)</span>.</p>
+<p>Inductively suppose
+<span class="math math-display" data-tex="\[
+ U(t_j,r)B_0=F_j+Q_j, \tag{CE34}
+\]">\[
+ U(t_j,r)B_0=F_j+Q_j, \tag{CE34}
+\]</span>
+where <span class="math" data-tex="\(F_j\)">\(F_j\)</span> is a compactly supported order-zero FIO for <span class="math" data-tex="\(\kappa_{t_j,r}\)">\(\kappa_{t_j,r}\)</span>, and <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> maps compact-input distributions into every global Sobolev order, with the corresponding parameter bounds. At the first step this is (CE33).</p>
+<p>Choose a compact multiplication cutoff <span class="math" data-tex="\(B_j\)">\(B_j\)</span> equal to identity near the entire output support of <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, uniformly on the fixed parameter neighborhood. Then <span class="math" data-tex="\(B_jF_j=F_j\)">\(B_jF_j=F_j\)</span> exactly. Apply (CE33) to the next short step and this <span class="math" data-tex="\(B_j\)">\(B_j\)</span>. Writing <span class="math" data-tex="\(U_j=U(t_{j+1},t_j)\)">\(U_j=U(t_{j+1},t_j)\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+ U(t_{j+1},r)B_0
+   =U_jB_jF_j+U_jQ_j
+   =V_jF_j+Q&#x27;_jF_j+U_jQ_j.
+\]">\[
+ U(t_{j+1},r)B_0
+   =U_jB_jF_j+U_jQ_j
+   =V_jF_j+Q&#x27;_jF_j+U_jQ_j.
+\]</span>
+Set <span class="math" data-tex="\(F_{j+1}=V_jF_j\)">\(F_{j+1}=V_jF_j\)</span>. Both factors are proper with compact spatial supports. Their graphs match at exactly one intermediate covector, so the proved clean composition theorem has excess zero and gives an order-zero FIO for
+<span class="math" data-tex="\(\kappa_{t_{j+1},t_j}\circ\kappa_{t_j,r}=\kappa_{t_{j+1},r}\)">\(\kappa_{t_{j+1},t_j}\circ\kappa_{t_j,r}=\kappa_{t_{j+1},r}\)</span>.</p>
+<p>The other two terms have the asserted full smoothing bounds. For <span class="math" data-tex="\(Q&#x27;_jF_j\)">\(Q&#x27;_jF_j\)</span>, proper order-zero graph mapping first sends a compact-input <span class="math" data-tex="\(H^{-M}\)">\(H^{-M}\)</span> datum into <span class="math" data-tex="\(H^{-M}\)">\(H^{-M}\)</span> on a fixed compact intermediate support; the <span class="math" data-tex="\(Q&#x27;_j\)">\(Q&#x27;_j\)</span> bounds then send it into arbitrary <span class="math" data-tex="\(H^k\)">\(H^k\)</span>. Parameter derivatives of <span class="math" data-tex="\(F_j\)">\(F_j\)</span> have only finite order, absorbed by choosing a sufficiently low intermediate Sobolev order before using the smoothing estimate. For <span class="math" data-tex="\(U_jQ_j\)">\(U_jQ_j\)</span>, the uniform evolution bound at every output order preserves arbitrary smoothing; its time-parameter derivatives consume only finitely many of the available orders. The delta-column proof of Section 4 turns these bounds into a jointly smooth kernel for the new error. This completes the induction, including both time orientations.</p>
+<p>At each composition the principal symbols are multiplied in their actual bundle-map order, with the compatible Maslov factors and half densities contracted by the proved composition law. Every step begins with the identity phase frame. Subsequent phase changes use the Gaussian/Maslov transition law of the programme. There is no assertion that one mixed generating phase exists through a long-time caustic, or that a closed Hamilton orbit has trivial Maslov holonomy. A finite sequence of compatible graph representations supplies the complete class.</p>
+<p>All intermediate supports are compact: the amplitude constructions and the finite sequence give that assertion directly, while (CE8) confines the canonical base images of the initial compact set. Frequency lengths along the whole finite trajectory remain comparable by (CE8). The graph relation is closed in the full punctured product cotangent space and has no limiting point on either axis. Indeed normalize the input covector; over a compact input base set its direction lies on the compact unit sphere, and its output length stays between the two positive bounds in (CE8). A convergent base/covector sequence therefore has its limit on the same continuous graph.</p>
+<p>We now prove every graph wavefront direction, rather than infer equality from membership in a class. At any prescribed initial covector choose <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near its base point. All intermediate multiplication cutoffs are one on the matched supports. The leading graph symbol of <span class="math" data-tex="\(F_j\)">\(F_j\)</span> is therefore a product of the invertible ordered transport matrices in their compatible symbol frames. Their inverse symbols satisfy the order-zero bounds on the fixed cone: each finite product preserves those bounds, with the inverse factors in reverse order. Thus the graph parametrix theorem of Section 6 of the graph lesson gives a local inverse near the specified matched point.</p>
+<p>If the kernel of <span class="math" data-tex="\(F_j\)">\(F_j\)</span> lacked that graph wavefront direction, shrink its input and output cones to isolate the unique matching point. The wavefront composition bound with that inverse would then omit the corresponding diagonal direction. But their product equals the identity modulo smoothing there, and the identity kernel has every nonzero diagonal direction: its local Fourier transform in the normal coordinate <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is a nondecaying constant. This is a contradiction. Since <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is smooth, it cannot remove a direction of <span class="math" data-tex="\(F_j\)">\(F_j\)</span>. Containment was already supplied by the kernel class. Varying the input cutoff gives the complete matrix-kernel statement
+<span class="math math-display" data-tex="\[
+ \operatorname{WF}(K_{U(t,r)})
+   =\{(x,\xi;y,-\eta):(x,\xi)=\kappa_{t,r}(y,\eta),
+                                  \ \eta\ne0\}. \tag{CE35}
+\]">\[
+ \operatorname{WF}(K_{U(t,r)})
+   =\{(x,\xi;y,-\eta):(x,\xi)=\kappa_{t,r}(y,\eta),
+                                  \ \eta\ne0\}. \tag{CE35}
+\]</span>
+The wavefront set of a matrix kernel is the union of its entries' wavefront sets; it is not asserted that every entry has every direction.</p>
+<p>For compactly supported vector data this also gives exact spatial propagation. Containment follows from the graph mapping theorem after (CE34). For the converse, use the reversed evolution <span class="math" data-tex="\(U(r,t)\)">\(U(r,t)\)</span>. The forward construction writes the solution as a compact-output graph action plus a global <span class="math" data-tex="\(H^\infty\)">\(H^\infty\)</span> correction. The reversed evolution preserves the latter smooth term by its bounds at every Sobolev order. It acts on the compact-output graph term by its reversed graph construction. Applying its wavefront containment to the identity <span class="math" data-tex="\(U(r,t)U(t,r)\phi=\phi\)">\(U(r,t)U(t,r)\phi=\phi\)</span> proves the reverse inclusion. Hence
+<span class="math" data-tex="\(\operatorname{WF}(U(t,r)\phi)=\kappa_{t,r}(\operatorname{WF}\phi)\)">\(\operatorname{WF}(U(t,r)\phi)=\kappa_{t,r}(\operatorname{WF}\phi)\)</span>
+for compactly supported distributional data. This argument uses the global regularity of the correction; merely knowing its kernel is locally smooth would not justify the reversal on its possibly noncompact spatial tail.</p>
+<p>The result proved here has a scalar homogeneous principal direction and arbitrary ordinary finite-matrix order-zero lower terms. General Hermitian matrix principal symbols with separated branches or crossings still require their own diagonalization/projector and polarization constructions. Those remain part of the unfinished full course; the present analytic and oscillatory construction is not substituted for them.</p>
+<h2 id="7-examples-and-exercises-with-complete-solutions">7. Examples and exercises with complete solutions</h2>
+<h3 id="7-1-a-smooth-initial-defect-that-the-equation-cannot-see">7.1. A smooth initial defect that the equation cannot see</h3>
+<p>Let <span class="math" data-tex="\(A(t)=0\)">\(A(t)=0\)</span> and let <span class="math" data-tex="\(S\)">\(S\)</span> be a nonzero smooth-kernel operator with compact support in both spatial variables. Take <span class="math" data-tex="\(B=I\)">\(B=I\)</span> and <span class="math" data-tex="\(V(t,r)=I+S\)">\(V(t,r)=I+S\)</span>. Compute the residual, the exact evolution and the necessary correction.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(U(t,r)=I\)">\(U(t,r)=I\)</span>, <span class="math" data-tex="\(PV=0\)">\(PV=0\)</span>, and <span class="math" data-tex="\(R=0\)">\(R=0\)</span>. However <span class="math" data-tex="\(V(r,r)=I+S\)">\(V(r,r)=I+S\)</span>. The residual correction alone would leave the wrong initial datum. Formula (CE29) gives <span class="math" data-tex="\(U-V=-S\)">\(U-V=-S\)</span>, so <span class="math" data-tex="\(W=V-US=I\)">\(W=V-US=I\)</span>. Every Sobolev mapping condition for <span class="math" data-tex="\(S\)">\(S\)</span> follows by repeated differentiation of its compact smooth kernel and Fourier decay. Thus this example satisfies the lemma exactly and demonstrates why the initial smoothing term must be retained. ∎</p>
+<h3 id="7-2-noncommuting-coefficients-and-the-initial-time-derivative">7.2. Noncommuting coefficients and the initial-time derivative</h3>
+<p>On <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, let the bounded time coefficient be <span class="math" data-tex="\(C_1\)">\(C_1\)</span> on one interval and <span class="math" data-tex="\(C_2\)">\(C_2\)</span> on a later interval. Work away from the junction, or replace the switch by smooth pulses with disjoint time supports and the same pulse integrals. Suppose
+<span class="math math-display" data-tex="\[
+ C_1=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+ C_2=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]">\[
+ C_1=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+ C_2=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}.
+\]</span>
+For constant pieces of lengths <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, compute the evolution product and compare <span class="math" data-tex="\(U C_1\)">\(U C_1\)</span> with <span class="math" data-tex="\(C_1U\)">\(C_1U\)</span>. Explain the order in (CE6).</p>
+<p><strong>Solution.</strong> The later interval acts last, so
+<span class="math math-display" data-tex="\[
+ U=e^{-bC_2}e^{-aC_1}
+   =(I-bC_2)(I-aC_1)
+   =\begin{pmatrix}1&amp;-a\\-b&amp;1+ab\end{pmatrix}. \tag{CE36}
+\]">\[
+ U=e^{-bC_2}e^{-aC_1}
+   =(I-bC_2)(I-aC_1)
+   =\begin{pmatrix}1&amp;-a\\-b&amp;1+ab\end{pmatrix}. \tag{CE36}
+\]</span>
+The nilpotent squares vanish. For smooth disjoint pulses the same expression holds with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> their integrals, since within each pulse the coefficient is one fixed matrix times a scalar function. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+ UC_1=\begin{pmatrix}0&amp;1\\0&amp;-b\end{pmatrix},\qquad
+ C_1U=\begin{pmatrix}-b&amp;1+ab\\0&amp;0\end{pmatrix}. \tag{CE37}
+\]">\[
+ UC_1=\begin{pmatrix}0&amp;1\\0&amp;-b\end{pmatrix},\qquad
+ C_1U=\begin{pmatrix}-b&amp;1+ab\\0&amp;0\end{pmatrix}. \tag{CE37}
+\]</span>
+They differ when <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>. Moving the initial time within the first piece differentiates the rightmost factor, giving <span class="math" data-tex="\(+UC_1\)">\(+UC_1\)</span>, exactly as (CE6). Moving the final time within the later piece gives <span class="math" data-tex="\(-C_2U\)">\(-C_2U\)</span>. Each coefficient is ordinary order zero, so the full two-sided systems theorem applies; this finite model does not assert that an arbitrary forward accretive order-one system can be reversed. ∎</p>
+<h3 id="7-3-variable-speed-the-covector-sign-and-the-delta-weight">7.3. Variable speed, the covector sign and the delta weight</h3>
+<p>Consider on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with <span class="math" data-tex="\(N\)">\(N\)</span> components,
+<span class="math math-display" data-tex="\[
+ \partial_tu+\tanh(x)\partial_xu+C(t,x)u=0, \tag{CE38}
+\]">\[
+ \partial_tu+\tanh(x)\partial_xu+C(t,x)u=0, \tag{CE38}
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> is a smooth bounded matrix multiplication coefficient with all spatial and time derivatives bounded on the finite interval. Compute the exact phase, ordered amplitude and cotangent flow. For delta data at <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, retain the actual delta coefficient. Explain the half-density factor in the general construction.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(d=t-r\)">\(d=t-r\)</span>. Solving <span class="math" data-tex="\(\dot X=\tanh X\)">\(\dot X=\tanh X\)</span> by differentiating <span class="math" data-tex="\(\sinh X\)">\(\sinh X\)</span> gives
+<span class="math math-display" data-tex="\[
+ X(t,r,y)=\operatorname{arsinh}(e^d\sinh y),\qquad
+ Y(t,r,x)=\operatorname{arsinh}(e^{-d}\sinh x),\qquad
+ J_X=\partial_yX=\frac{e^d\cosh y}{\cosh X}&gt;0. \tag{CE39}
+\]">\[
+ X(t,r,y)=\operatorname{arsinh}(e^d\sinh y),\qquad
+ Y(t,r,x)=\operatorname{arsinh}(e^{-d}\sinh x),\qquad
+ J_X=\partial_yX=\frac{e^d\cosh y}{\cosh X}&gt;0. \tag{CE39}
+\]</span>
+Both maps exist for every finite positive or negative <span class="math" data-tex="\(d\)">\(d\)</span>. The base displacement is bounded by <span class="math" data-tex="\(|d|\)">\(|d|\)</span>, since <span class="math" data-tex="\(|\tanh X|\leq1\)">\(|\tanh X|\leq1\)</span>. The covector equation is <span class="math" data-tex="\(\dot\Xi=-\operatorname{sech}^2(X)\Xi\)">\(\dot\Xi=-\operatorname{sech}^2(X)\Xi\)</span>, so <span class="math" data-tex="\(\Xi=\eta/J_X\)">\(\Xi=\eta/J_X\)</span>. Equivalently
+<span class="math" data-tex="\(\Xi=e^{-d}\eta\cosh X/\cosh y\)">\(\Xi=e^{-d}\eta\cosh X/\cosh y\)</span>, which is the inverse transpose of the full base derivative. The phase is <span class="math" data-tex="\(S=Y(x)\eta\)">\(S=Y(x)\eta\)</span>, with input kernel covector <span class="math" data-tex="\(-\eta\)">\(-\eta\)</span>.</p>
+<p>Along the characteristic starting at <span class="math" data-tex="\(y\)">\(y\)</span>, let <span class="math" data-tex="\(W_C\)">\(W_C\)</span> solve the ordered equation
+<span class="math" data-tex="\(\dot W_C=-C(q,X(q,r,y))W_C,\ W_C(r)=I_N\)">\(\dot W_C=-C(q,X(q,r,y))W_C,\ W_C(r)=I_N\)</span>.
+Its inverse and all derivatives have the finite-interval bounds already proved. Set <span class="math" data-tex="\(W(t,r,x)=W_C(t,r,Y(t,r,x))\)">\(W(t,r,x)=W_C(t,r,Y(t,r,x))\)</span>. The exact solution and kernel are
+<span class="math math-display" data-tex="\[
+ u(t,x)=W(t,r,x)\phi(Y(t,r,x)),\qquad
+ K_U(t,r,x,y)=W(t,r,x)\delta(y-Y(t,r,x)). \tag{CE40}
+\]">\[
+ u(t,x)=W(t,r,x)\phi(Y(t,r,x)),\qquad
+ K_U(t,r,x,y)=W(t,r,x)\delta(y-Y(t,r,x)). \tag{CE40}
+\]</span>
+Differentiate along each characteristic to verify the equation and initial trace, keeping <span class="math" data-tex="\(C W_C\)">\(C W_C\)</span> in its displayed order. This differential operator has no higher oscillatory remainder; the phase and the frequency-independent amplitude <span class="math" data-tex="\(W\)">\(W\)</span> give its exact integral. The two-sided energy theorem and smooth approximation extend the identity to the Sobolev distribution scale.</p>
+<p>Here <span class="math" data-tex="\(b_1=\tanh(x)\xi\)">\(b_1=\tanh(x)\xi\)</span>, so <span class="math" data-tex="\(b_{1,\xi\xi}=0\)">\(b_{1,\xi\xi}=0\)</span> and the left-amplitude transport equation is exactly
+<span class="math" data-tex="\(\partial_tW+\tanh(x)\partial_xW+CW=0\)">\(\partial_tW+\tanh(x)\partial_xW+CW=0\)</span>.
+Nevertheless its reduced graph symbol is not simply that left amplitude. The density is <span class="math" data-tex="\(\rho=J_X^{-1/2}\)">\(\rho=J_X^{-1/2}\)</span>, while the ordered coefficient in (CE17) is
+<span class="math" data-tex="\(H=C-\tfrac12\operatorname{sech}^2X\,I_N\)">\(H=C-\tfrac12\operatorname{sech}^2X\,I_N\)</span>.
+The scalar part commutes with the matrix coefficient, giving <span class="math" data-tex="\(M=J_X^{1/2}W_C\)">\(M=J_X^{1/2}W_C\)</span> along the curve. Consequently <span class="math" data-tex="\(\rho M=W_C\)">\(\rho M=W_C\)</span>, precisely the left amplitude in (CE40), and the reduced graph coefficient is <span class="math" data-tex="\(W/\rho\)">\(W/\rho\)</span>. This checks the sign of the density correction without assuming that <span class="math" data-tex="\(C\)">\(C\)</span> commutes with itself at different times.</p>
+<p>For <span class="math" data-tex="\(\phi=e\,\delta_{y_0}\)">\(\phi=e\,\delta_{y_0}\)</span>, where <span class="math" data-tex="\(e\in\mathbb C^N\)">\(e\in\mathbb C^N\)</span> is nonzero, the one-dimensional delta change gives
+<span class="math math-display" data-tex="\[
+ u(t,x)=J_X(t,r,y_0)\,W_C(t,r,y_0)e\,
+                  \delta(x-X(t,r,y_0)).
+\]">\[
+ u(t,x)=J_X(t,r,y_0)\,W_C(t,r,y_0)e\,
+                  \delta(x-X(t,r,y_0)).
+\]</span>
+The Jacobian factor is required: <span class="math" data-tex="\(\delta(Y(x)-y_0)=J_X\,\delta(x-X(y_0))\)">\(\delta(Y(x)-y_0)=J_X\,\delta(x-X(y_0))\)</span>. Its derivative agrees with the amplitude equation for a moving delta, since <span class="math" data-tex="\(\dot J_X=\operatorname{sech}^2(X)J_X\)">\(\dot J_X=\operatorname{sech}^2(X)J_X\)</span>. Invertibility of <span class="math" data-tex="\(W_C\)">\(W_C\)</span> prevents the vector coefficient from vanishing. Thus both nonzero spatial covector directions occur at the front, and the exact one-dimensional Sobolev threshold is <span class="math" data-tex="\(s&lt;-1/2\)">\(s&lt;-1/2\)</span>. When <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, the delta weight is <span class="math" data-tex="\(J_X\)">\(J_X\)</span>, not one. ∎</p>
+<figure><img src="figures/fio-cauchy-variable-speed.svg" alt="Exact variable-speed fronts and their transported positive covectors" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The two panels show (CE39) for <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, <span class="math" data-tex="\(0\leq t\leq2\)">\(0\leq t\leq2\)</span> and <span class="math" data-tex="\(y=-1,0,1\)">\(y=-1,0,1\)</span>. The upper panel uses the exact base positions; the lower uses the exact cotangent section <span class="math" data-tex="\(\eta=1,\ \xi=1/J_X\)">\(\eta=1,\ \xi=1/J_X\)</span>. They are positive covectors throughout, while the kernel input covector is <span class="math" data-tex="\(-1\)">\(-1\)</span>. For delta data the weight is <span class="math" data-tex="\(J_X W_Ce\)">\(J_X W_Ce\)</span>, as proved above; the plotted curve describes its position, not a unit delta weight. The center front remains at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, although its cotangent length decreases as <span class="math" data-tex="\(e^{-t}\)">\(e^{-t}\)</span>.</p>
+<p>References: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III</em>, Springer, §23.1; <em>The Analysis of Linear Partial Differential Operators IV</em>, Springer, §§25.2–25.3, particularly the graph half-volume and continuity discussion on. These references give mathematical context and attribution. The complete arguments used here are written above or in the exact preceding programme sections linked in the introduction.</p>
+<p>Author: GPT-6.1 Sol (OpenAI), Ultra. Author mathematical self-check completed. Original teaching text and figure: CC0-1.0. Private preparation; public coverage has not yet been registered.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="first-order-systems-and-ordered-evolution.html">← First-order systems and ordered evolution</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/oscillatory-cauchy-kernels-and-exact-evolution.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AN-04">Repository</a></nav>
+</footer>
+</body>
+</html>

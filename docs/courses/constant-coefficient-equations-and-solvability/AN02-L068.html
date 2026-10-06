@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Supported fundamental solutions and test estimates</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="supported-fundamental-solutions-and-test-estimates">Supported fundamental solutions and test estimates</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A fundamental distribution supported at nonnegative time yields an estimate using only negative-time derivatives of the transposed test. An ordinary fixed-support distribution bound initially measures derivatives on a full neighborhood. We reduce that bound to the half-space by extending the negative-time test with a finite reflection formula. The matching coefficients supply exactly as many boundary derivatives as the distribution's order requires.</p>
+<p>Read <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, <a href="AN02-L067.html">Global supported solvability on countably many scales</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="finite-order-tests-and-flat-boundary-functions">Finite-order tests and flat boundary functions</h2>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be a compact distribution with a bound
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|T(\phi)|\le C\max_{|\alpha|\le M}
+                     \sup_{\mathbb R^n}|\partial^\alpha\phi|,
+                                 \\
+\qquad\phi\in C_c^\infty.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+|T(\phi)|\le C\max_{|\alpha|\le M}
+                     \sup_{\mathbb R^n}|\partial^\alpha\phi|,
+                                 \\
+\qquad\phi\in C_c^\infty.
+\end{gathered}
+\tag{1}
+\]</span>
+Every compact distribution has such a bound: insert one compact cutoff equal to one near its support and apply its fixed-compact distributional continuity estimate to the cut-off test, using the product rule.</p>
+<p>This <span class="math" data-tex="\(T\)">\(T\)</span> has a unique extension to <span class="math" data-tex="\(C_c^M\)">\(C_c^M\)</span>, compatible on functions with a common compact support. To prove it, convolve a compact <span class="math" data-tex="\(C^M\)">\(C^M\)</span> function <span class="math" data-tex="\(w\)">\(w\)</span> with smooth unit-mass compact mollifiers. Each derivative through order <span class="math" data-tex="\(M\)">\(M\)</span> converges uniformly to that derivative of <span class="math" data-tex="\(w\)">\(w\)</span>, by uniform continuity and the support radius tending to zero. The mollified functions are smooth and have one common compact support for sufficiently small radii. Estimate(1) makes their distributional values Cauchy. The same bound proves independence of the approximants and continuity of the extension in the uniform <span class="math" data-tex="\(C^M\)">\(C^M\)</span> norm. It agrees with the original <span class="math" data-tex="\(T\)">\(T\)</span> on smooth functions.</p>
+<p>If <span class="math" data-tex="\(\operatorname{supp}T\subset\{t\le0\}\)">\(\operatorname{supp}T\subset\{t\le0\}\)</span>, that extension kills every compact <span class="math" data-tex="\(C^M\)">\(C^M\)</span> function vanishing on <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>. Here is the finite-regularity boundary argument. All its derivatives through order <span class="math" data-tex="\(M\)">\(M\)</span> vanish at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Taylor's formula with the continuous highest derivative, uniformly over the compact tangential support, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{0\le t\le2\varepsilon}
+       |\partial^\alpha w(x,t)|
+                  =o(\varepsilon^{M-|\alpha|})
+                         \\
+\quad(|\alpha|\le M).
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+\sup_{0\le t\le2\varepsilon}
+       |\partial^\alpha w(x,t)|
+                  =o(\varepsilon^{M-|\alpha|})
+                         \\
+\quad(|\alpha|\le M).
+\end{gathered}
+\tag{2}
+\]</span>
+For <span class="math" data-tex="\(|\alpha|=M\)">\(|\alpha|=M\)</span>, this means <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. For smaller orders, repeated integration of the highest normal derivative with zero boundary values gives the displayed power and little-oh bound, including mixed derivatives.</p>
+<p>Choose a smooth <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> which is zero at <span class="math" data-tex="\(s\le1\)">\(s\le1\)</span> and one at <span class="math" data-tex="\(s\ge2\)">\(s\ge2\)</span>. The compact <span class="math" data-tex="\(C^M\)">\(C^M\)</span> functions <span class="math" data-tex="\(\sigma(t/\varepsilon)w\)">\(\sigma(t/\varepsilon)w\)</span> converge to <span class="math" data-tex="\(w\)">\(w\)</span> in <span class="math" data-tex="\(C^M\)">\(C^M\)</span>: every product-rule term has a factor <span class="math" data-tex="\(\varepsilon^{-j}\)">\(\varepsilon^{-j}\)</span> multiplying a derivative of order <span class="math" data-tex="\(|\alpha|-j\)">\(|\alpha|-j\)</span> in(2), and is <span class="math" data-tex="\(o(\varepsilon^{M-|\alpha|})\)">\(o(\varepsilon^{M-|\alpha|})\)</span>. They have support in <span class="math" data-tex="\(t\ge\varepsilon\)">\(t\ge\varepsilon\)</span>. Mollifying each with a radius below <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> approximates it by smooth tests supported in positive time, where <span class="math" data-tex="\(T\)">\(T\)</span> vanishes. Hence its extended value on each is zero, and continuity gives <span class="math" data-tex="\(T(w)=0\)">\(T(w)=0\)</span>. No measure representation or infinite-order extension theorem is used.</p>
+<h2 id="a-finite-reflection-extension-from-the-negative-half-space">A finite reflection extension from the negative half-space</h2>
+<p>For <span class="math" data-tex="\(j=1,\ldots,M+1\)">\(j=1,\ldots,M+1\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_j=\prod_{\substack{1\le\ell\le M+1\\\ell\ne j}}
+                 \frac{1+\ell}{\ell-j},\\
+\qquad
+                      \sum_{j=1}^{M+1}a_j(-j)^r=1
+                                          \\
+\quad(0\le r\le M).
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+a_j=\prod_{\substack{1\le\ell\le M+1\\\ell\ne j}}
+                 \frac{1+\ell}{\ell-j},\\
+\qquad
+                      \sum_{j=1}^{M+1}a_j(-j)^r=1
+                                          \\
+\quad(0\le r\le M).
+\end{gathered}
+\tag{3}
+\]</span>
+The product for <span class="math" data-tex="\(M=0\)">\(M=0\)</span> is one. To prove the identities, the Lagrange polynomials
+<span class="math" data-tex="\(L_j(z)=\prod_{\ell\ne j}(z+\ell)/(\ell-j)\)">\(L_j(z)=\prod_{\ell\ne j}(z+\ell)/(\ell-j)\)</span>
+are one at <span class="math" data-tex="\(-j\)">\(-j\)</span> and zero at the other nodes. For any polynomial <span class="math" data-tex="\(b\)">\(b\)</span> of degree at most <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(b-\sum_j b(-j)L_j\)">\(b-\sum_j b(-j)L_j\)</span> has <span class="math" data-tex="\(M+1\)">\(M+1\)</span> distinct zeros and degree at most <span class="math" data-tex="\(M\)">\(M\)</span>, hence vanishes identically. The finite-root argument here is elementary: if <span class="math" data-tex="\(q(a)=0\)">\(q(a)=0\)</span>, the identities <span class="math" data-tex="\(z^r-a^r=(z-a)\sum_{\ell=0}^{r-1}z^{r-1-\ell}a^\ell\)">\(z^r-a^r=(z-a)\sum_{\ell=0}^{r-1}z^{r-1-\ell}a^\ell\)</span> factor <span class="math" data-tex="\(q(z)=q(z)-q(a)\)">\(q(z)=q(z)-q(a)\)</span> by <span class="math" data-tex="\(z-a\)">\(z-a\)</span>. At every other distinct root the quotient also vanishes. Repetition would make a nonzero polynomial with <span class="math" data-tex="\(M+1\)">\(M+1\)</span> roots have degree at least <span class="math" data-tex="\(M+1\)">\(M+1\)</span>, a contradiction. Evaluate the resulting interpolation identity at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> and take <span class="math" data-tex="\(b(z)=z^r\)">\(b(z)=z^r\)</span>. This proves(3), including the zeroth moment.</p>
+<p>Given <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span>, set
+<span class="math math-display" data-tex="\[
+ W\phi(x,t)=
+ \begin{cases}
+   \phi(x,t),&amp;t\le0,\\
+   \displaystyle\sum_{j=1}^{M+1}a_j\phi(x,-jt),&amp;t&gt;0.
+ \end{cases}
+ \tag{4}
+\]">\[
+ W\phi(x,t)=
+ \begin{cases}
+   \phi(x,t),&amp;t\le0,\\
+   \displaystyle\sum_{j=1}^{M+1}a_j\phi(x,-jt),&amp;t&gt;0.
+ \end{cases}
+ \tag{4}
+\]</span>
+This is compactly supported and <span class="math" data-tex="\(C^M\)">\(C^M\)</span>. Compactness follows from the finite number of reflected compact supports. For each normal derivative through order <span class="math" data-tex="\(M\)">\(M\)</span>, the two traces match by(3); tangential derivatives preserve the same identities. Thus all mixed derivatives through total order <span class="math" data-tex="\(M\)">\(M\)</span> match continuously. With a constant depending only on <span class="math" data-tex="\(M\)">\(M\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\max_{|\alpha|\le M}\sup|\partial^\alpha W\phi|
+       \\
+\le A_M\max_{|\alpha|\le M}
+                   \sup_{t\le0}|\partial^\alpha\phi|.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\max_{|\alpha|\le M}\sup|\partial^\alpha W\phi|
+       \\
+\le A_M\max_{|\alpha|\le M}
+                   \sup_{t\le0}|\partial^\alpha\phi|.
+\end{gathered}
+\tag{5}
+\]</span>
+For example take <span class="math" data-tex="\(A_M=\max(1,\sum_j|a_j|(M+1)^M)\)">\(A_M=\max(1,\sum_j|a_j|(M+1)^M)\)</span>. Every normal derivative of a reflected term gains a factor <span class="math" data-tex="\((-j)^r\)">\((-j)^r\)</span>, and its evaluation remains at negative time. The traces at time zero obey the same bound by continuity.</p>
+<p>When <span class="math" data-tex="\(T\)">\(T\)</span> is supported in <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span>, <span class="math" data-tex="\(\phi-W\phi\)">\(\phi-W\phi\)</span> is a compact <span class="math" data-tex="\(C^M\)">\(C^M\)</span> function vanishing there. The preceding flat-boundary argument and(1),(5) give the support-sensitive estimate
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|T(\phi)|\\
+=|T(W\phi)|
+      \\
+\le CA_M\max_{|\alpha|\le M}
+                    \sup_{t\le0}|\partial^\alpha\phi|.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+|T(\phi)|\\
+=|T(W\phi)|
+      \\
+\le CA_M\max_{|\alpha|\le M}
+                    \sup_{t\le0}|\partial^\alpha\phi|.
+\end{gathered}
+\tag{6}
+\]</span>
+Only a finite number of boundary jets has been matched. An arbitrary <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> reflection extension is unnecessary.</p>
+<h2 id="from-a-supported-fundamental-solution-to-the-test-estimate">From a supported fundamental solution to the test estimate</h2>
+<p>Suppose <span class="math" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span>, <span class="math" data-tex="\(\operatorname{supp}E\subset H=\{t\ge0\}\)">\(\operatorname{supp}E\subset H=\{t\ge0\}\)</span>. No global temperedness or finite global order of <span class="math" data-tex="\(E\)">\(E\)</span> is assumed. Fix the compact neighborhood <span class="math" data-tex="\(K=\overline{B(0,1)}\)">\(K=\overline{B(0,1)}\)</span>, and choose a smooth compact <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>. The compact distribution <span class="math" data-tex="\(T=\chi\check E\)">\(T=\chi\check E\)</span> has support in <span class="math" data-tex="\(t\le0\)">\(t\le0\)</span> and some finite order <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For every <span class="math" data-tex="\(u\in C_c^\infty\)">\(u\in C_c^\infty\)</span> with support in <span class="math" data-tex="\(K\)">\(K\)</span>, differentiation does not enlarge its support. Reflection and transposition therefore give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(0)=\check E(P(D)u)=T(P(D)u),\\
+\qquad
+ |u(0)|\le C&#x27;\sum_{|\alpha|\le M}
+                     \sup_{t\le0}|D^\alpha P(D)u|.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+u(0)=\check E(P(D)u)=T(P(D)u),\\
+\qquad
+ |u(0)|\le C&#x27;\sum_{|\alpha|\le M}
+                     \sup_{t\le0}|D^\alpha P(D)u|.
+\end{gathered}
+\tag{7}
+\]</span>
+The first equality follows from <span class="math" data-tex="\(P(-D)\check E=\delta_0\)">\(P(-D)\check E=\delta_0\)</span>. The cutoff is one on the entire support of <span class="math" data-tex="\(P(D)u\)">\(P(D)u\)</span>. Apply(6) to this test; ordinary derivatives and <span class="math" data-tex="\(D\)">\(D\)</span>-derivatives have identical absolute values. This is the exact clause(ii) of <a href="AN02-L069.html">the five-way theorem</a>, obtained from clause(i).</p>
+<h2 id="a-fixed-compact-observation-set-away-from-the-origin">A fixed compact observation set away from the origin</h2>
+<p>Assume the estimate in(7) is given, with its compact neighborhood and derivative bound. Choose <span class="math" data-tex="\(\theta\in C_c^\infty(\operatorname{int}K)\)">\(\theta\in C_c^\infty(\operatorname{int}K)\)</span> equal to one near zero, and let
+<span class="math math-display" data-tex="\[
+          K&#x27;=\{t\le0\}\cap\operatorname{supp}d\theta.
+ \tag{8}
+\]">\[
+          K&#x27;=\{t\le0\}\cap\operatorname{supp}d\theta.
+ \tag{8}
+\]</span>
+It is compact and does not contain zero. Every positive-order derivative of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is supported in <span class="math" data-tex="\(\operatorname{supp}d\theta\)">\(\operatorname{supp}d\theta\)</span>, since it is a derivative of at least one first-order derivative and differentiation preserves support.</p>
+<p>For a global smooth homogeneous solution <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span>, apply(7) to <span class="math" data-tex="\(\theta u\)">\(\theta u\)</span>. The exact finite product formula is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)(\theta u)=
+       \sum_{0&lt;|\beta|\le m}
+                  \frac{D^\beta\theta}{\beta!}
+                                    P^{(\beta)}(D)u,
+                         \\
+\qquad m=\deg P.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+P(D)(\theta u)=
+       \sum_{0&lt;|\beta|\le m}
+                  \frac{D^\beta\theta}{\beta!}
+                                    P^{(\beta)}(D)u,
+                         \\
+\qquad m=\deg P.
+\end{gathered}
+\tag{9}
+\]</span>
+To verify it, expand every monomial operator by the ordinary product rule; its multinomial coefficient is exactly the coefficient in <span class="math" data-tex="\(P^{(\beta)}/\beta!\)">\(P^{(\beta)}/\beta!\)</span>. The zero-index term is <span class="math" data-tex="\(\theta P(D)u=0\)">\(\theta P(D)u=0\)</span>. Derivatives of order above <span class="math" data-tex="\(m\)">\(m\)</span> are absent.</p>
+<p>If <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, differentiating the right side through order <span class="math" data-tex="\(M\)">\(M\)</span> uses derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> through at most <span class="math" data-tex="\(M+m-1\)">\(M+m-1\)</span>. All cutoff coefficients and their derivatives are fixed and supported in <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> on the negative half-space. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|u(0)|\le C&#x27;&#x27;\sum_{|\gamma|\le M+m-1}
+                           \sup_{K&#x27;}|D^\gamma u|,
+          \\
+\qquad u\in C^\infty(\mathbb R^n),\ P(D)u=0.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+|u(0)|\le C&#x27;&#x27;\sum_{|\gamma|\le M+m-1}
+                           \sup_{K&#x27;}|D^\gamma u|,
+          \\
+\qquad u\in C^\infty(\mathbb R^n),\ P(D)u=0.
+\end{gathered}
+\tag{10}
+\]</span>
+This is the full finite compact observation estimate needed to test the later analytic-root family. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, every homogeneous solution is zero and the assertion is immediate. No growth condition on the global smooth <span class="math" data-tex="\(u\)">\(u\)</span> is needed, because <span class="math" data-tex="\(\theta u\)">\(\theta u\)</span> is compact.</p>
+<h2 id="the-full-frequency-and-tangential-root-conditions">The full-frequency and tangential root conditions</h2>
+<p>For the unit normal <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>, the clause(iii) allows the base frequency to vary in all <span class="math" data-tex="\(n\)">\(n\)</span> complex coordinates, not just the tangential <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>. Its root is a displacement <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> along <span class="math" data-tex="\(N\)">\(N\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(z,s+\sigma(z,s))=0,\\
+\qquad
+ \sup_{B_n((c,b),A_1)}\operatorname{Im}\sigma\ge A_2,
+                       \\
+\quad c\in\mathbb R^d,\ b\in\mathbb R.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+P(z,s+\sigma(z,s))=0,\\
+\qquad
+ \sup_{B_n((c,b),A_1)}\operatorname{Im}\sigma\ge A_2,
+                       \\
+\quad c\in\mathbb R^d,\ b\in\mathbb R.
+\end{gathered}
+\tag{11}
+\]</span>
+This condition, with some radius and height, is equivalent to(<a href="AN02-L065.html">equation 1 in Local supported solutions with the exact symbol gain</a>), with some radius and height. If <span class="math" data-tex="\(r(z)\)">\(r(z)\)</span> is an analytic tangential normal root on <span class="math" data-tex="\(B_d(c,A_1)\)">\(B_d(c,A_1)\)</span>, then <span class="math" data-tex="\(\sigma(z,s)=r(z)-s\)">\(\sigma(z,s)=r(z)-s\)</span> is a full-frequency displacement root on <span class="math" data-tex="\(B_n((c,b),A_1)\)">\(B_n((c,b),A_1)\)</span>. Projection stays in the tangential ball and <span class="math" data-tex="\(|\operatorname{Im}s|&lt;A_1\)">\(|\operatorname{Im}s|&lt;A_1\)</span>. Hence(11) implies
+<span class="math math-display" data-tex="\[
+ \sup_{B_d(c,A_1)}\operatorname{Im}r\ge A_2-A_1.
+ \tag{12}
+\]">\[
+ \sup_{B_d(c,A_1)}\operatorname{Im}r\ge A_2-A_1.
+ \tag{12}
+\]</span>
+Conversely, if(<a href="AN02-L065.html">equation 1 in Local supported solutions with the exact symbol gain</a>) holds with radius <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and height <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, any full displacement root restricts at the real center value <span class="math" data-tex="\(s=b\)">\(s=b\)</span> to the analytic tangential root <span class="math" data-tex="\(r(z)=b+\sigma(z,b)\)">\(r(z)=b+\sigma(z,b)\)</span> on the same tangential ball. Its imaginary supremum is at least <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, so the full displacement root has supremum at least <span class="math" data-tex="\(B_2\)">\(B_2\)</span> as well. This proves the reverse condition with that height. No simplicity or nonvanishing leading coefficient is used. In dimension <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the section is one real center point and the same argument is just the scalar root-height shift. The results proved with(<a href="AN02-L065.html">equation 1 in Local supported solutions with the exact symbol gain</a>) therefore receive the clause(iii) with an explicit change of height, not an assumption that its two coordinate formulations are literally identical.</p>
+<h2 id="the-other-two-elementary-logical-implications">The other two elementary logical implications</h2>
+<p>Clause(iv) of <a href="AN02-L069.html">the five-way theorem</a>, if assumed, implies clause(v) without an additional Holmgren assumption. For finite-order <span class="math" data-tex="\(f\)">\(f\)</span> of order <span class="math" data-tex="\(M_0\)">\(M_0\)</span>, the direct Fourier estimate(<a href="AN02-L067.html">equation 18 in Global supported solvability on countably many scales</a>) puts it in <span class="math" data-tex="\(B^{\rm loc}_{2,\langle\xi\rangle^{-r}}\)">\(B^{\rm loc}_{2,\langle\xi\rangle^{-r}}\)</span>, <span class="math" data-tex="\(r=M_0+n+1\)">\(r=M_0+n+1\)</span>. Clause(iv) gives a supported solution in <span class="math" data-tex="\(B^{\rm loc}_{2,\langle\xi\rangle^{-r}S_P}\)">\(B^{\rm loc}_{2,\langle\xi\rangle^{-r}S_P}\)</span>. The strictly positive constant lower bound of <span class="math" data-tex="\(S_P\)">\(S_P\)</span> and the explicit norm test(<a href="AN02-L067.html">equation 19 in Global supported solvability on countably many scales</a>) give one uniform finite distributional order for that solution. These two Fourier computations depend only on the weighted-space formulas, not on the global existence theorem or its planned Holmgren theorem.</p>
+<p>Clause(v) implies clause(i) by taking the finite-order datum <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. This proves the elementary chain(iv) to(v) to(i) to(ii). The implication(ii) to(iii) is proved in <a href="AN02-L069.html">Analytic root barriers and supported solvability</a>.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> Compute the reflection coefficients for <span class="math" data-tex="\(M=1\)">\(M=1\)</span>. Show that they match value and first derivative, but need not produce a <span class="math" data-tex="\(C^2\)">\(C^2\)</span> extension.</p>
+<p><strong>Solution.</strong> The coefficients are <span class="math" data-tex="\(a_1=3,a_2=-2\)">\(a_1=3,a_2=-2\)</span>. Their zeroth and first moments are <span class="math" data-tex="\(3-2=1\)">\(3-2=1\)</span> and <span class="math" data-tex="\(3(-1)-2(-2)=1\)">\(3(-1)-2(-2)=1\)</span>. Thus <span class="math" data-tex="\(W\phi(t)=3\phi(-t)-2\phi(-2t)\)">\(W\phi(t)=3\phi(-t)-2\phi(-2t)\)</span> at positive time has the same value and first derivative as <span class="math" data-tex="\(\phi\)">\(\phi\)</span> at zero. If <span class="math" data-tex="\(\phi(t)=t^2\)">\(\phi(t)=t^2\)</span> near zero, the negative side is <span class="math" data-tex="\(t^2\)">\(t^2\)</span>, while the positive side is <span class="math" data-tex="\((3-8)t^2=-5t^2\)">\((3-8)t^2=-5t^2\)</span>. Its second derivative has traces <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(-10\)">\(-10\)</span>; the extension is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> and is not <span class="math" data-tex="\(C^2\)">\(C^2\)</span>. The second moment is <span class="math" data-tex="\(-5\)">\(-5\)</span>, so no second-jet matching was asserted.</p>
+<p><strong>Exercise 2 (intermediate).</strong> For <span class="math" data-tex="\(P(s)=s-i\)">\(P(s)=s-i\)</span> and <span class="math" data-tex="\(u\in C_c^\infty((-1,1))\)">\(u\in C_c^\infty((-1,1))\)</span>, derive the supported test estimate with no derivatives of <span class="math" data-tex="\(P(D)u\)">\(P(D)u\)</span>.</p>
+<p><strong>Solution.</strong> Its retarded fundamental kernel is <span class="math" data-tex="\(E(t)=iH(t)e^{-t}\)">\(E(t)=iH(t)e^{-t}\)</span>, so <span class="math" data-tex="\(\check E(t)=iH(-t)e^t\)">\(\check E(t)=iH(-t)e^t\)</span>. Direct integration gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{-\infty}^0 i e^t(D_t-i)u(t)\,dt
+       \\
+=\int_{-\infty}^0 e^t(u&#x27;+u)\,dt\\
+=u(0).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{-\infty}^0 i e^t(D_t-i)u(t)\,dt
+       \\
+=\int_{-\infty}^0 e^t(u&#x27;+u)\,dt\\
+=u(0).
+\end{gathered}
+\]</span>
+The integrand is the derivative of <span class="math" data-tex="\(e^tu(t)\)">\(e^tu(t)\)</span>, and the compact support kills its lower endpoint. Therefore
+<span class="math" data-tex="\(|u(0)|\le(1-e^{-1})\sup_{t\le0}|(D_t-i)u(t)|\)">\(|u(0)|\le(1-e^{-1})\sup_{t\le0}|(D_t-i)u(t)|\)</span>.
+The weight integral is over <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span>. This illustrates order zero in(7); using a higher order is allowed but unnecessary for this kernel.</p>
+<p><strong>Exercise 3 (advanced).</strong> For <span class="math" data-tex="\(P(D)=D_t^2+D_x\)">\(P(D)=D_t^2+D_x\)</span>, compute the cutoff commutator on a homogeneous solution and verify the largest derivative order in(10).</p>
+<p><strong>Solution.</strong> The product rule gives
+<span class="math" data-tex="\(P(D)(\theta u)=2(D_t\theta)D_tu+
+(D_t^2\theta)u+(D_x\theta)u\)">\(P(D)(\theta u)=2(D_t\theta)D_tu+
+(D_t^2\theta)u+(D_x\theta)u\)</span>,
+after the term <span class="math" data-tex="\(\theta P(D)u\)">\(\theta P(D)u\)</span> is removed. Every term is supported in the fixed derivative support of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Applying any <span class="math" data-tex="\(D^\alpha\)">\(D^\alpha\)</span>, <span class="math" data-tex="\(|\alpha|\le M\)">\(|\alpha|\le M\)</span>, gives derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> through at most <span class="math" data-tex="\(M+1\)">\(M+1\)</span>, because only the first summand initially contains one derivative of <span class="math" data-tex="\(u\)">\(u\)</span>. The other summands use at most <span class="math" data-tex="\(M\)">\(M\)</span>. Here <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, so <span class="math" data-tex="\(M+m-1=M+1\)">\(M+m-1=M+1\)</span>, exactly(10). The constants involve finitely many derivatives of the fixed cutoff and do not depend on the particular homogeneous solution.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,384 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trace coreflections and balanced nonabelian categories</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="trace-coreflections-and-balanced-nonabelian-categories">Trace coreflections and balanced nonabelian categories</h1>
+<p>A chosen object can generate a useful full subcategory without generating the ambient category. Colimits survive inside that subcategory, while a kernel retains only the part reached by the chosen object. This lesson describes that change for an arbitrary cocomplete abelian category. It then computes a category in which every monomorphism is strict and every monomorphism that is also an epimorphism is invertible, yet a strict epimorphism has a pullback that is not even an epimorphism.</p>
+<p>Use <a href="coimages-images-and-composition-of-quotients.html">Coimages, images and composition of quotients</a> for strict morphisms and the ordinary module interface, and <a href="ideal-generated-modules-and-nonstrict-quotients.html">Ideal-generated modules and nonstrict quotients</a> for the polynomial ideal calculations. We retain the standard additive and abelian framework of the Stacks Project: <a href="https://stacks.math.columbia.edu/tag/0104">additive categories</a>, <a href="https://stacks.math.columbia.edu/tag/0106">kernels, cokernels, images and coimages</a>, and <a href="https://stacks.math.columbia.edu/tag/0109">abelian categories</a>. All Hom sets and coproduct indices below are small in a fixed universe.</p>
+<h2 id="1-the-part-of-an-object-reached-by-a-probe">1. The part of an object reached by a probe</h2>
+<p>Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be a locally small cocomplete abelian category, and fix any object <span class="math" data-tex="\(G\)">\(G\)</span>. Say that <span class="math" data-tex="\(Z\)">\(Z\)</span> is <em><span class="math" data-tex="\(G\)">\(G\)</span>-generated</em> if some small coproduct of copies of <span class="math" data-tex="\(G\)">\(G\)</span> admits an epimorphism onto <span class="math" data-tex="\(Z\)">\(Z\)</span>. Write <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> for the full subcategory of these objects and <span class="math" data-tex="\(I:\mathsf C_G\to\mathsf C\)">\(I:\mathsf C_G\to\mathsf C\)</span> for inclusion.</p>
+<p>For <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, take the evaluation morphism whose component at <span class="math" data-tex="\(h:G\to X\)">\(h:G\to X\)</span> is <span class="math" data-tex="\(h\)">\(h\)</span>, and factor it through its ambient image:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G^{(\operatorname{Hom}_{\mathsf C}(G,X))}
+\longrightarrow T_GX
+\xrightarrow{\,\varepsilon_X\,}X.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+G^{(\operatorname{Hom}_{\mathsf C}(G,X))}
+\longrightarrow T_GX
+\xrightarrow{\,\varepsilon_X\,}X.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The first arrow is an epimorphism and <span class="math" data-tex="\(\varepsilon_X\)">\(\varepsilon_X\)</span> is a monomorphism. The object <span class="math" data-tex="\(T_GX\)">\(T_GX\)</span> is called the <em>trace of <span class="math" data-tex="\(G\)">\(G\)</span> in <span class="math" data-tex="\(X\)">\(X\)</span></em>. This definition uses no finite-presentation or projectivity hypothesis on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> The trace defines an additive right adjoint <span class="math" data-tex="\(T_G:\mathsf C\to\mathsf C_G\)">\(T_G:\mathsf C\to\mathsf C_G\)</span> to <span class="math" data-tex="\(I\)">\(I\)</span>. Its counit is the monomorphism <span class="math" data-tex="\(\varepsilon_X\)">\(\varepsilon_X\)</span>. Its unit is an isomorphism, so <span class="math" data-tex="\(T_G\)">\(T_G\)</span> is idempotent up to the canonical isomorphism.</p>
+<p><strong>Proof.</strong> The epimorphism in (1.1) proves <span class="math" data-tex="\(T_GX\in\mathsf C_G\)">\(T_GX\in\mathsf C_G\)</span>. Let <span class="math" data-tex="\(Z\in\mathsf C_G\)">\(Z\in\mathsf C_G\)</span>, choose an epimorphism <span class="math" data-tex="\(p:G^{(J)}\to Z\)">\(p:G^{(J)}\to Z\)</span>, and take <span class="math" data-tex="\(a:Z\to X\)">\(a:Z\to X\)</span>. Every component of <span class="math" data-tex="\(ap\)">\(ap\)</span> is one of the maps used in evaluation, so it factors through <span class="math" data-tex="\(\varepsilon_X\)">\(\varepsilon_X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(c:X\to\operatorname{Coker}\varepsilon_X\)">\(c:X\to\operatorname{Coker}\varepsilon_X\)</span> be the ambient cokernel. Then <span class="math" data-tex="\(cap=0\)">\(cap=0\)</span>, whence <span class="math" data-tex="\(ca=0\)">\(ca=0\)</span> because <span class="math" data-tex="\(p\)">\(p\)</span> is an epimorphism. In the abelian category, the image monomorphism <span class="math" data-tex="\(\varepsilon_X\)">\(\varepsilon_X\)</span> is a kernel of <span class="math" data-tex="\(c\)">\(c\)</span>. Thus <span class="math" data-tex="\(a\)">\(a\)</span> factors uniquely as <span class="math" data-tex="\(\varepsilon_X\bar a\)">\(\varepsilon_X\bar a\)</span>. This gives the natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C_G}(Z,T_GX)
+\\
+\simeq\operatorname{Hom}_{\mathsf C}(IZ,X).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C_G}(Z,T_GX)
+\\
+\simeq\operatorname{Hom}_{\mathsf C}(IZ,X).
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, define <span class="math" data-tex="\(T_Gf\)">\(T_Gf\)</span> by
+<span class="math" data-tex="\(\varepsilon_Y T_Gf=f\varepsilon_X\)">\(\varepsilon_Y T_Gf=f\varepsilon_X\)</span>, using the factorization just proved. Uniqueness gives identities, composition and naturality. It also gives additivity: after composition with the monomorphism <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span>, both <span class="math" data-tex="\(T_G(f+g)\)">\(T_G(f+g)\)</span> and <span class="math" data-tex="\(T_Gf+T_Gg\)">\(T_Gf+T_Gg\)</span> equal <span class="math" data-tex="\((f+g)\varepsilon_X\)">\((f+g)\varepsilon_X\)</span>.</p>
+<p>When <span class="math" data-tex="\(Z\)">\(Z\)</span> is generated, apply the factorization to <span class="math" data-tex="\(\operatorname{id}_Z\)">\(\operatorname{id}_Z\)</span>. It produces <span class="math" data-tex="\(\eta_Z:Z\to T_GZ\)">\(\eta_Z:Z\to T_GZ\)</span> with <span class="math" data-tex="\(\varepsilon_Z\eta_Z=\operatorname{id}_Z\)">\(\varepsilon_Z\eta_Z=\operatorname{id}_Z\)</span>. Monicity of <span class="math" data-tex="\(\varepsilon_Z\)">\(\varepsilon_Z\)</span> then gives <span class="math" data-tex="\(\eta_Z\varepsilon_Z=\operatorname{id}_{T_GZ}\)">\(\eta_Z\varepsilon_Z=\operatorname{id}_{T_GZ}\)</span>. These maps are the unit and counit on generated objects. Since <span class="math" data-tex="\(T_GX\)">\(T_GX\)</span> is itself generated, applying this observation to it proves idempotence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X\in\mathsf C_G
+\\
+\Longleftrightarrow\quad
+\varepsilon_X\text{ is an isomorphism}.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+X\in\mathsf C_G
+\\
+\Longleftrightarrow\quad
+\varepsilon_X\text{ is an isomorphism}.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(G=0\)">\(G=0\)</span>, the trace is always zero and <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is the zero category; the construction and adjunction still apply.</p>
+<h2 id="2-which-kernels-and-colimits-survive">2. Which kernels and colimits survive</h2>
+<p><strong>Theorem 2.1.</strong> The category <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is additive and has all small colimits and all finite limits. Inclusion creates small colimits. For <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> between generated objects, let <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> be its ambient kernel and cokernel. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Ker}_{\mathsf C_G}f=T_GK,
+\\
+\operatorname{Coker}_{\mathsf C_G}f=Q.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Ker}_{\mathsf C_G}f=T_GK,
+\\
+\operatorname{Coker}_{\mathsf C_G}f=Q.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The kernel arrow is <span class="math" data-tex="\(T_GK\to K\to X\)">\(T_GK\to K\to X\)</span>; the cokernel arrow is the ambient one.</p>
+<p><strong>Proof.</strong> Quotients of generated objects are generated, by composing their generating epimorphisms. Small coproducts of generated objects are also generated: take the coproduct of their generating maps. A coproduct of epimorphisms is an epimorphism, since equality of two maps after that coproduct implies equality on each target summand by cancellation.</p>
+<p>Every small colimit in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is a coequalizer of two maps between small coproducts of diagram objects. Its coequalizer arrow is an epimorphism, so its target is generated when all diagram objects are generated. Fullness then retains the entire universal property inside <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>. This includes the empty colimit.</p>
+<p>Hom groups and bilinear composition restrict from <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Finite ambient direct sums remain generated and retain their product and coproduct properties, so <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is additive.</p>
+<p>The object <span class="math" data-tex="\(Q\)">\(Q\)</span> is a quotient of <span class="math" data-tex="\(Y\)">\(Y\)</span>, hence generated, and its cokernel property restricts by fullness. If <span class="math" data-tex="\(a:Z\to X\)">\(a:Z\to X\)</span>, with <span class="math" data-tex="\(Z\)">\(Z\)</span> generated, satisfies <span class="math" data-tex="\(fa=0\)">\(fa=0\)</span>, it factors uniquely through the ambient <span class="math" data-tex="\(K\)">\(K\)</span>. Theorem 1.1 factors that map uniquely through <span class="math" data-tex="\(T_GK\)">\(T_GK\)</span>. This is exactly the kernel property in <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>.</p>
+<p>More generally, suppose an ambient limit <span class="math" data-tex="\(L\)">\(L\)</span> of a diagram of generated objects exists. A cone from any generated <span class="math" data-tex="\(Z\)">\(Z\)</span> gives a unique map <span class="math" data-tex="\(Z\to L\)">\(Z\to L\)</span>, and (1.2) gives a unique map <span class="math" data-tex="\(Z\to T_GL\)">\(Z\to T_GL\)</span>. Composing the trace inclusion with the ambient projections therefore exhibits <span class="math" data-tex="\(T_GL\)">\(T_GL\)</span> as the intrinsic limit. Ambient finite limits exist by the abelian framework, proving the remaining assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The last statement is conditional for an arbitrary small diagram: cocompleteness of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> was assumed, whereas existence of all ambient small limits was not. Nor does Theorem 1.1 alone say that trace commutes with filtered colimits. The finitely presented module result in the prerequisite supplies additional hypotheses for that conclusion.</p>
+<h2 id="3-strictness-measures-the-missing-part-of-a-kernel">3. Strictness measures the missing part of a kernel</h2>
+<p>We first check that the additive definitions match the kernel-pair and self-pushout definitions in the strictness prerequisite.</p>
+<p>In any additive category with kernels and cokernels, let <span class="math" data-tex="\(i:K\to X\)">\(i:K\to X\)</span> be the kernel of <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>. Its kernel pair is <span class="math" data-tex="\(X\oplus K\)">\(X\oplus K\)</span>, with projections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_1(u,k)=u,\\ p_2(u,k)=u+i(k).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+p_1(u,k)=u,\\ p_2(u,k)=u+i(k).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>This is notation for biproduct morphisms. Given maps <span class="math" data-tex="\(a,b:Z\to X\)">\(a,b:Z\to X\)</span> with <span class="math" data-tex="\(fa=fb\)">\(fa=fb\)</span>, their difference <span class="math" data-tex="\(b-a\)">\(b-a\)</span> factors uniquely through <span class="math" data-tex="\(i\)">\(i\)</span>, giving the unique map to (3.1). A map out of <span class="math" data-tex="\(X\)">\(X\)</span> equalizes <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> precisely when it kills <span class="math" data-tex="\(i\)">\(i\)</span>. Consequently their coequalizer is <span class="math" data-tex="\(\operatorname{Coker}i\)">\(\operatorname{Coker}i\)</span>, the additive coimage.</p>
+<p>Dually, if <span class="math" data-tex="\(q:Y\to Q\)">\(q:Y\to Q\)</span> is the cokernel of <span class="math" data-tex="\(f\)">\(f\)</span>, its self-pushout is <span class="math" data-tex="\(Y\oplus Q\)">\(Y\oplus Q\)</span>, with maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+j_1(y)=(y,0),\\ j_2(y)=(y,q(y)).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+j_1(y)=(y,0),\\ j_2(y)=(y,q(y)).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>Indeed, for <span class="math" data-tex="\(a,b:Y\to Z\)">\(a,b:Y\to Z\)</span> satisfying <span class="math" data-tex="\(af=bf\)">\(af=bf\)</span>, the difference <span class="math" data-tex="\(b-a\)">\(b-a\)</span> factors uniquely through <span class="math" data-tex="\(q\)">\(q\)</span>. The map from <span class="math" data-tex="\(Y\oplus Q\)">\(Y\oplus Q\)</span> with components <span class="math" data-tex="\(a\)">\(a\)</span> and that factor is the required unique pushout map. The equalizer of <span class="math" data-tex="\(j_1,j_2\)">\(j_1,j_2\)</span> is <span class="math" data-tex="\(\operatorname{Ker}q\)">\(\operatorname{Ker}q\)</span>, the additive image. Thus the canonical coimage-to-image map in either convention is the same map. Call <span class="math" data-tex="\(f\)">\(f\)</span> <em>strict</em> when this map is invertible.</p>
+<p><strong>Theorem 3.1.</strong> For every morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> of <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>, let <span class="math" data-tex="\(K=\operatorname{Ker}_{\mathsf C}f\)">\(K=\operatorname{Ker}_{\mathsf C}f\)</span> and <span class="math" data-tex="\(J=\operatorname{Im}_{\mathsf C}f\)">\(J=\operatorname{Im}_{\mathsf C}f\)</span>. There are canonical identifications</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Im}_{\mathsf C_G}f=J,
+\\
+\operatorname{Coim}_{\mathsf C_G}f=X/T_GK,
+\\
+f\text{ is strict in }\mathsf C_G
+\\
+\Longleftrightarrow\quad K\in\mathsf C_G.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\operatorname{Im}_{\mathsf C_G}f=J,
+\\
+\operatorname{Coim}_{\mathsf C_G}f=X/T_GK,
+\\
+f\text{ is strict in }\mathsf C_G
+\\
+\Longleftrightarrow\quad K\in\mathsf C_G.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(X/T_GK\)">\(X/T_GK\)</span> means the ambient cokernel of <span class="math" data-tex="\(T_GK\to K\to X\)">\(T_GK\to K\to X\)</span>.</p>
+<p><strong>Proof.</strong> The ambient image <span class="math" data-tex="\(J\)">\(J\)</span> is an epimorphic image of the generated <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(J\in\mathsf C_G\)">\(J\in\mathsf C_G\)</span>. By (2.1), the intrinsic cokernel of <span class="math" data-tex="\(f\)">\(f\)</span> is its ambient cokernel. Taking the intrinsic kernel of that cokernel gives <span class="math" data-tex="\(T_GJ\)">\(T_GJ\)</span>. Since <span class="math" data-tex="\(J\)">\(J\)</span> is generated, that trace is <span class="math" data-tex="\(J\)">\(J\)</span>. This proves the first formula.</p>
+<p>The intrinsic kernel of <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(T_GK\)">\(T_GK\)</span>. Cokernels are ambient, giving the second formula. The abelian coimage-image isomorphism identifies <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(X/K\)">\(X/K\)</span>. Hence the canonical map in (3.3) is the ambient quotient comparison</p>
+<span class="math math-display" data-tex="\[
+X/T_GK\longrightarrow X/K.
+\tag{3.4}
+\]">\[
+X/T_GK\longrightarrow X/K.
+\tag{3.4}
+\]</span>
+<p>It is an epimorphism with ambient kernel <span class="math" data-tex="\(K/T_GK\)">\(K/T_GK\)</span>. By the abelian mono-epi criterion, (3.4) is invertible exactly when that kernel vanishes, equivalently when <span class="math" data-tex="\(T_GK\to K\)">\(T_GK\to K\)</span> is invertible. Formula (1.3) proves the stated criterion. Fullness makes ambient and intrinsic invertibility identical for these objects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The criterion applies to arbitrary morphisms, including zero maps. It implies that <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is abelian exactly when every ambient kernel of a morphism between its objects is generated: the additive category already has kernels and cokernels, and the remaining abelian condition is invertibility of every coimage-image map.</p>
+<h2 id="4-a-balanced-category-with-a-nonstrict-quotient">4. A balanced category with a nonstrict quotient</h2>
+<p>Fix any field <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(A=k[x,y]\)">\(A=k[x,y]\)</span>, and put <span class="math" data-tex="\(\mathfrak a=(x,y)\)">\(\mathfrak a=(x,y)\)</span> and <span class="math" data-tex="\(\overline k=A/\mathfrak a\)">\(\overline k=A/\mathfrak a\)</span>. Take <span class="math" data-tex="\(G=\mathfrak a\)">\(G=\mathfrak a\)</span> in the ambient category of ordinary <span class="math" data-tex="\(A\)">\(A\)</span>-modules. Denote the resulting generated category by <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>.</p>
+<p>The prerequisite proves that every map <span class="math" data-tex="\(\mathfrak a\to A\)">\(\mathfrak a\to A\)</span> is multiplication by a unique polynomial, and that the same polynomials give <span class="math" data-tex="\(\operatorname{End}_A(\mathfrak a)=A\)">\(\operatorname{End}_A(\mathfrak a)=A\)</span>. Therefore inclusion <span class="math" data-tex="\(\mathfrak a\hookrightarrow A\)">\(\mathfrak a\hookrightarrow A\)</span> induces a bijection on <span class="math" data-tex="\(\operatorname{Hom}_A(\mathfrak a,-)\)">\(\operatorname{Hom}_A(\mathfrak a,-)\)</span>, despite being noninvertible. The functor on all ambient modules is not conservative. It is not faithful either: the nonzero quotient <span class="math" data-tex="\(A\to\overline k\)">\(A\to\overline k\)</span> and the zero map become equal after every map <span class="math" data-tex="\(\mathfrak a\to A\)">\(\mathfrak a\to A\)</span>, since each such map has image in <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>. In particular <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> is not a detecting generator for the ambient category.</p>
+<p>There is nevertheless a weaker detection property on <em>all</em> ambient modules:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_A(\mathfrak a,M)=0
+\\
+\Longrightarrow\quad M=0.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_A(\mathfrak a,M)=0
+\\
+\Longrightarrow\quad M=0.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>To check the exact scope, take <span class="math" data-tex="\(0\ne m\in M\)">\(0\ne m\in M\)</span>. If <span class="math" data-tex="\(\mathfrak a m\ne0\)">\(\mathfrak a m\ne0\)</span>, multiplication <span class="math" data-tex="\(a\mapsto am\)">\(a\mapsto am\)</span> gives a nonzero map <span class="math" data-tex="\(\mathfrak a\to M\)">\(\mathfrak a\to M\)</span>. If <span class="math" data-tex="\(\mathfrak a m=0\)">\(\mathfrak a m=0\)</span>, the map <span class="math" data-tex="\(\overline k\to M\)">\(\overline k\to M\)</span>, <span class="math" data-tex="\(1\mapsto m\)">\(1\mapsto m\)</span>, is injective because a nonzero field scalar cannot annihilate <span class="math" data-tex="\(m\)">\(m\)</span>. Compose it with the surjection <span class="math" data-tex="\(\mathfrak a\to\overline k\)">\(\mathfrak a\to\overline k\)</span> sending <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> to zero, verified from the ideal presentation in the prerequisite. This again gives a nonzero map. Thus (4.1) holds. As a result,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_{\mathfrak a}M=0\quad\Longrightarrow\quad M=0,
+\\ T_{\mathfrak a}A=\mathfrak a.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+T_{\mathfrak a}M=0\quad\Longrightarrow\quad M=0,
+\\ T_{\mathfrak a}A=\mathfrak a.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The equality follows by summing the images <span class="math" data-tex="\(t\mathfrak a\)">\(t\mathfrak a\)</span>, including <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. The trace implication follows because every probe map factors through the trace.</p>
+<p>The prerequisite also proves that every module annihilated by <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> belongs to <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>: for each of its elements <span class="math" data-tex="\(m\)">\(m\)</span>, use the map <span class="math" data-tex="\(x\mapsto m,\ y\mapsto0\)">\(x\mapsto m,\ y\mapsto0\)</span>, and take the coproduct of these maps. In particular <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span> is a nonzero object of <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> A morphism of <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> is a monomorphism or epimorphism exactly when it is one in the ambient module category. Every monomorphism of <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> is strict. The category is balanced: a morphism that is both mono and epi is invertible.</p>
+<p><strong>Proof.</strong> In an additive category with kernels, a morphism is mono exactly when its kernel is zero. Indeed, a zero kernel forces every difference killed by the morphism to vanish. Conversely, monicity makes the kernel arrow zero; its universal property then forces the identity of the kernel object to be zero, making that object zero. The dual argument applies to cokernels and epis.</p>
+<p>The intrinsic kernel of <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(T_{\mathfrak a}(\ker f)\)">\(T_{\mathfrak a}(\ker f)\)</span>. By (4.2), it vanishes exactly when the ambient kernel vanishes. The intrinsic cokernel is already the ambient one, so its vanishing also agrees in both categories. Ordinary module monos and epis are injective and surjective respectively. A mono has ambient kernel zero, which is generated, and Theorem 3.1 makes it strict. Finally, an ambient injective surjective module map is invertible, and its inverse is a morphism in the full subcategory. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Balancedness does not make every morphism strict. Consider the quotient
+<span class="math" data-tex="\(u:\mathfrak a\to\mathfrak a/(Ax)\)">\(u:\mathfrak a\to\mathfrak a/(Ax)\)</span>. Its target is generated because it is a quotient of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>. Its ambient kernel is <span class="math" data-tex="\(Ax\simeq A\)">\(Ax\simeq A\)</span>, under multiplication by <span class="math" data-tex="\(x\)">\(x\)</span>, so its intrinsic kernel is <span class="math" data-tex="\(x\mathfrak a\)">\(x\mathfrak a\)</span>. The complete intrinsic factorization is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Ker}_{\mathsf C_0}u=x\mathfrak a,
+\\
+\operatorname{Coim}_{\mathsf C_0}u
+=\mathfrak a/(x\mathfrak a),
+\\
+\operatorname{Im}_{\mathsf C_0}u
+=\mathfrak a/(Ax).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\operatorname{Ker}_{\mathsf C_0}u=x\mathfrak a,
+\\
+\operatorname{Coim}_{\mathsf C_0}u
+=\mathfrak a/(x\mathfrak a),
+\\
+\operatorname{Im}_{\mathsf C_0}u
+=\mathfrak a/(Ax).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>The canonical map between the last two objects has ambient kernel
+<span class="math" data-tex="\(Ax/(x\mathfrak a)\simeq\overline k\ne0\)">\(Ax/(x\mathfrak a)\simeq\overline k\ne0\)</span>. It is not invertible. Thus this balanced additive category with kernels and cokernels is not abelian.</p>
+<h2 id="5-a-strict-epimorphism-whose-pullback-loses-epimorphy">5. A strict epimorphism whose pullback loses epimorphy</h2>
+<p>Consider</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v:\mathfrak a\longrightarrow\mathfrak a/\mathfrak a^2,
+\\
+w:\overline k\longrightarrow\mathfrak a/\mathfrak a^2,
+\\ w(1)=x\bmod\mathfrak a^2.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+v:\mathfrak a\longrightarrow\mathfrak a/\mathfrak a^2,
+\\
+w:\overline k\longrightarrow\mathfrak a/\mathfrak a^2,
+\\ w(1)=x\bmod\mathfrak a^2.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>The second map is <span class="math" data-tex="\(A\)">\(A\)</span>-linear because <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> annihilates the class of <span class="math" data-tex="\(x\)">\(x\)</span>. All these objects are generated. The ambient kernel of <span class="math" data-tex="\(v\)">\(v\)</span> is the square ideal <span class="math" data-tex="\(\mathfrak a^2\)">\(\mathfrak a^2\)</span>, which is generated by images of multiplication maps <span class="math" data-tex="\(\mathfrak a\to\mathfrak a^2\)">\(\mathfrak a\to\mathfrak a^2\)</span>. Theorem 3.1 therefore makes <span class="math" data-tex="\(v\)">\(v\)</span> a strict epimorphism.</p>
+<p>Its ambient pullback along <span class="math" data-tex="\(w\)">\(w\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=\{(b,c)\in\mathfrak a\oplus\overline k:
+\\
+b\bmod\mathfrak a^2=cx\bmod\mathfrak a^2\}.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+P=\{(b,c)\in\mathfrak a\oplus\overline k:
+\\
+b\bmod\mathfrak a^2=cx\bmod\mathfrak a^2\}.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Projection onto <span class="math" data-tex="\(b\)">\(b\)</span> identifies this module with
+<span class="math" data-tex="\(J=Ax+\mathfrak a^2=(x,y^2)\)">\(J=Ax+\mathfrak a^2=(x,y^2)\)</span>. Indeed, the displayed condition says exactly that the degree-one part of <span class="math" data-tex="\(b\)">\(b\)</span> is a scalar multiple of <span class="math" data-tex="\(x\)">\(x\)</span>, and that scalar uniquely determines <span class="math" data-tex="\(c\)">\(c\)</span>. Under this identification the map <span class="math" data-tex="\(P\to\overline k\)">\(P\to\overline k\)</span> is the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> in that degree-one part.</p>
+<p>Every map <span class="math" data-tex="\(\mathfrak a\to J\)">\(\mathfrak a\to J\)</span>, composed with <span class="math" data-tex="\(J\hookrightarrow A\)">\(J\hookrightarrow A\)</span>, is multiplication by a polynomial <span class="math" data-tex="\(t\)">\(t\)</span>. It lands in <span class="math" data-tex="\(J\)">\(J\)</span> exactly when <span class="math" data-tex="\(t\mathfrak a\subset J\)">\(t\mathfrak a\subset J\)</span>. Write <span class="math" data-tex="\((J:\mathfrak a)\)">\((J:\mathfrak a)\)</span> for those polynomials. The condition <span class="math" data-tex="\(tx\in J\)">\(tx\in J\)</span> is automatic. Reducing <span class="math" data-tex="\(ty\in J\)">\(ty\in J\)</span> modulo <span class="math" data-tex="\(x\)">\(x\)</span> says that <span class="math" data-tex="\(y\bar t\)">\(y\bar t\)</span> is divisible by <span class="math" data-tex="\(y^2\)">\(y^2\)</span> in <span class="math" data-tex="\(k[y]\)">\(k[y]\)</span>. Cancellation gives divisibility of <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span> by <span class="math" data-tex="\(y\)">\(y\)</span>, so <span class="math" data-tex="\(t\in(x,y)=\mathfrak a\)">\(t\in(x,y)=\mathfrak a\)</span>. Conversely <span class="math" data-tex="\(t\in\mathfrak a\)">\(t\in\mathfrak a\)</span> gives <span class="math" data-tex="\(t\mathfrak a\subset\mathfrak a^2\subset J\)">\(t\mathfrak a\subset\mathfrak a^2\subset J\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+(J:\mathfrak a)=\mathfrak a,\qquad
+T_{\mathfrak a}J=\mathfrak a^2.
+\tag{5.3}
+\]">\[
+(J:\mathfrak a)=\mathfrak a,\qquad
+T_{\mathfrak a}J=\mathfrak a^2.
+\tag{5.3}
+\]</span>
+<p>The intrinsic pullback is the trace of (5.2), by Theorem 2.1. Its two structural maps are thus inclusion <span class="math" data-tex="\(\mathfrak a^2\hookrightarrow\mathfrak a\)">\(\mathfrak a^2\hookrightarrow\mathfrak a\)</span> and the zero map <span class="math" data-tex="\(\mathfrak a^2\to\overline k\)">\(\mathfrak a^2\to\overline k\)</span>. They form the actual pullback square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+\mathfrak a^2&amp;\xrightarrow{\,0\,}&amp;\overline k\\
+\big\downarrow&amp;&amp;\big\downarrow{\scriptstyle w}\\
+\mathfrak a&amp;\xrightarrow{\,v\,}&amp;\mathfrak a/\mathfrak a^2.
+\end{array}
+\tag{5.4}
+\]">\[
+\begin{array}{ccc}
+\mathfrak a^2&amp;\xrightarrow{\,0\,}&amp;\overline k\\
+\big\downarrow&amp;&amp;\big\downarrow{\scriptstyle w}\\
+\mathfrak a&amp;\xrightarrow{\,v\,}&amp;\mathfrak a/\mathfrak a^2.
+\end{array}
+\tag{5.4}
+\]</span>
+<p>Its top arrow is not an epimorphism: the identity and zero endomorphisms of the nonzero <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span> agree after it. This is a failure of pullback stability for strict epimorphisms. It coexists with the exact filtered-colimit and filtered base-change properties proved for <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> in the prerequisite; those concern a different comparison.</p>
+<p>In particular <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> is not quasi-abelian: pullback stability of strict epimorphisms is one of the defining axioms in <a href="https://www.numdam.org/item/10.24033/msmf.389.pdf">Schneiders, Definition 1.1.3</a>.</p>
+<p>The signs in (5.2) matter. As a kernel in ambient modules, the pullback is <span class="math" data-tex="\(\ker(v-w)\)">\(\ker(v-w)\)</span>. A kernel of <span class="math" data-tex="\(v+w\)">\(v+w\)</span> describes an isomorphic object only after negating the <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span> coordinate, with the corresponding change to its projection.</p>
+<h2 id="6-graded-exercises-with-complete-solutions">6. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 — Foundation: combine two probes.</strong> For objects <span class="math" data-tex="\(G,H\)">\(G,H\)</span> in a locally small cocomplete abelian category, prove that <span class="math" data-tex="\(T_{G\oplus H}X\)">\(T_{G\oplus H}X\)</span> is the sum of the subobjects <span class="math" data-tex="\(T_GX\)">\(T_GX\)</span> and <span class="math" data-tex="\(T_HX\)">\(T_HX\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>. Show that <span class="math" data-tex="\(\mathsf C_{G\oplus H}\)">\(\mathsf C_{G\oplus H}\)</span> is the smallest full subcategory closed under isomorphisms, small coproducts and ambient quotients and containing both <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Solution.</strong> Interpret the sum as the ambient image of
+<span class="math" data-tex="\(T_GX\oplus T_HX\to X\)">\(T_GX\oplus T_HX\to X\)</span>. A map <span class="math" data-tex="\(G\oplus H\to X\)">\(G\oplus H\to X\)</span> has two components. Each component lands in the corresponding trace, so every such map lands in their sum. Hence the trace of <span class="math" data-tex="\(G\oplus H\)">\(G\oplus H\)</span> is contained in that sum. Conversely, a map <span class="math" data-tex="\(G\to X\)">\(G\to X\)</span> extends to <span class="math" data-tex="\(G\oplus H\)">\(G\oplus H\)</span> by zero on <span class="math" data-tex="\(H\)">\(H\)</span>; a map from <span class="math" data-tex="\(H\)">\(H\)</span> extends by zero on <span class="math" data-tex="\(G\)">\(G\)</span>. Thus both traces, and therefore their sum, lie in <span class="math" data-tex="\(T_{G\oplus H}X\)">\(T_{G\oplus H}X\)</span>. The two subobject inclusions prove equality.</p>
+<p>The generated category is closed under coproducts and quotients by Theorem 2.1 and under isomorphisms by its definition. It contains <span class="math" data-tex="\(G,H\)">\(G,H\)</span>, since the projections from <span class="math" data-tex="\(G\oplus H\)">\(G\oplus H\)</span> onto them are split epimorphisms. Any subcategory with the stated closure and containing <span class="math" data-tex="\(G,H\)">\(G,H\)</span> contains <span class="math" data-tex="\(G\oplus H\)">\(G\oplus H\)</span>, all its small coproducts, and all their epimorphic images. Those are exactly the generated objects, proving minimality. Zero objects or zero probes cause no exception; the empty coproduct is included.</p>
+<p><strong>Exercise 2 — Intermediate: an idempotent probe and failure of balancedness.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be any unital ring, <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, and <span class="math" data-tex="\(P=Re\)">\(P=Re\)</span> as a left module. Set <span class="math" data-tex="\(L=ReR\)">\(L=ReR\)</span>, the two-sided ideal of finite sums of terms <span class="math" data-tex="\(res\)">\(res\)</span>. Prove</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(P,M)\simeq eM,
+\\ T_PM=LM,
+\\
+M\in\mathsf C_P\Longleftrightarrow LM=M,
+\\
+f\text{ strict in }\mathsf C_P
+\\
+\Longleftrightarrow L\ker_Rf=\ker_Rf.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(P,M)\simeq eM,
+\\ T_PM=LM,
+\\
+M\in\mathsf C_P\Longleftrightarrow LM=M,
+\\
+f\text{ strict in }\mathsf C_P
+\\
+\Longleftrightarrow L\ker_Rf=\ker_Rf.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>Now let <span class="math" data-tex="\(R\)">\(R\)</span> be the ring of lower triangular three-by-three matrices over a field, take <span class="math" data-tex="\(e=e_{11}\)">\(e=e_{11}\)</span>, and consider
+<span class="math" data-tex="\(f:Re_{11}\to Re_{11}/ke_{31}\)">\(f:Re_{11}\to Re_{11}/ke_{31}\)</span>. Prove that this is a mono and epi in <span class="math" data-tex="\(\mathsf C_P\)">\(\mathsf C_P\)</span> and is not invertible.</p>
+<p><strong>Solution.</strong> A homomorphism <span class="math" data-tex="\(h:Re\to M\)">\(h:Re\to M\)</span> is determined by <span class="math" data-tex="\(m=h(e)\)">\(m=h(e)\)</span>, and <span class="math" data-tex="\(em=h(e^2)=m\)">\(em=h(e^2)=m\)</span>. Conversely <span class="math" data-tex="\(m=em\)">\(m=em\)</span> defines <span class="math" data-tex="\(h_m(re)=rm\)">\(h_m(re)=rm\)</span>. This is well-defined: if <span class="math" data-tex="\(re=r&#x27;e\)">\(re=r&#x27;e\)</span>, then <span class="math" data-tex="\((r-r&#x27;)m=(r-r&#x27;)em=0\)">\((r-r&#x27;)m=(r-r&#x27;)em=0\)</span>. These assignments are inverse and natural.</p>
+<p>The images of these maps sum to <span class="math" data-tex="\(R(eM)\)">\(R(eM)\)</span>. This is <span class="math" data-tex="\(LM\)">\(LM\)</span>: each term <span class="math" data-tex="\(resm\)">\(resm\)</span> lies in <span class="math" data-tex="\(R(eM)\)">\(R(eM)\)</span>, and each <span class="math" data-tex="\(rem\)">\(rem\)</span> is obtained with <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. The generated-object criterion follows from (1.3). Apply Theorem 3.1 to the ambient kernel for the strictness criterion. No commutation of ring coefficients has been used.</p>
+<p>For the matrix example, <span class="math" data-tex="\(P\)">\(P\)</span> is the space of first columns. Left multiplication sends <span class="math" data-tex="\(e_{31}\)">\(e_{31}\)</span> to a scalar multiple of <span class="math" data-tex="\(e_{31}\)">\(e_{31}\)</span>, so <span class="math" data-tex="\(ke_{31}\)">\(ke_{31}\)</span> is a submodule. The source and its quotient belong to <span class="math" data-tex="\(\mathsf C_P\)">\(\mathsf C_P\)</span>; the quotient map is an intrinsic epi. But <span class="math" data-tex="\(e_{11}(ke_{31})=0\)">\(e_{11}(ke_{31})=0\)</span>, so the Hom description gives <span class="math" data-tex="\(T_P(ke_{31})=0\)">\(T_P(ke_{31})=0\)</span>. Its intrinsic kernel is zero, making it a mono by the additive kernel criterion. Its ambient kernel is the nonzero <span class="math" data-tex="\(ke_{31}\)">\(ke_{31}\)</span>, so it cannot have a module inverse and is not invertible in the full subcategory.</p>
+<p>Thus generated subcategories need not be balanced. The weak zero-detection property (4.1), which gave balancedness for the polynomial ideal probe, fails here on <span class="math" data-tex="\(ke_{31}\)">\(ke_{31}\)</span>.</p>
+<p><strong>Exercise 3 — Advanced: strict pullback failures in every degree.</strong> Keep <span class="math" data-tex="\(A=k[x,y]\)">\(A=k[x,y]\)</span> and <span class="math" data-tex="\(\mathfrak a=(x,y)\)">\(\mathfrak a=(x,y)\)</span>. Let <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, and take a nonzero homogeneous polynomial <span class="math" data-tex="\(p\)">\(p\)</span> of degree <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_d:\mathfrak a\to\mathfrak a/\mathfrak a^d,
+\\
+w_p:\overline k\to\mathfrak a/\mathfrak a^d,
+\\ w_p(1)=p\bmod\mathfrak a^d.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+v_d:\mathfrak a\to\mathfrak a/\mathfrak a^d,
+\\
+w_p:\overline k\to\mathfrak a/\mathfrak a^d,
+\\ w_p(1)=p\bmod\mathfrak a^d.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Prove that <span class="math" data-tex="\(v_d\)">\(v_d\)</span> is a strict epi, calculate the ambient and intrinsic pullbacks along <span class="math" data-tex="\(w_p\)">\(w_p\)</span>, and show that the intrinsic projection onto <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span> is zero.</p>
+<p><strong>Solution.</strong> Every positive ideal power is generated by <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, as proved by the degree-monomial multiplication maps in the prerequisite. Hence the kernel <span class="math" data-tex="\(\mathfrak a^d\)">\(\mathfrak a^d\)</span> of <span class="math" data-tex="\(v_d\)">\(v_d\)</span> is generated, making <span class="math" data-tex="\(v_d\)">\(v_d\)</span> strict. Multiplication by <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> takes <span class="math" data-tex="\(p\)">\(p\)</span> into <span class="math" data-tex="\(\mathfrak a^d\)">\(\mathfrak a^d\)</span>, so <span class="math" data-tex="\(w_p\)">\(w_p\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Since <span class="math" data-tex="\(p\)">\(p\)</span> is nonzero of degree <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, its class is nonzero.</p>
+<p>The ambient pullback identifies by first projection with
+<span class="math" data-tex="\(J_p=Ap+\mathfrak a^d\)">\(J_p=Ap+\mathfrak a^d\)</span>. Modulo <span class="math" data-tex="\(\mathfrak a^d\)">\(\mathfrak a^d\)</span>, a polynomial multiple of <span class="math" data-tex="\(p\)">\(p\)</span> is just its constant coefficient times <span class="math" data-tex="\(p\)">\(p\)</span>. That coefficient is uniquely determined, because the class of <span class="math" data-tex="\(p\)">\(p\)</span> is nonzero. It is the second pullback projection to <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span>.</p>
+<p>We claim</p>
+<span class="math math-display" data-tex="\[
+(J_p:\mathfrak a)=\mathfrak a^{d-1}.
+\tag{6.3}
+\]">\[
+(J_p:\mathfrak a)=\mathfrak a^{d-1}.
+\tag{6.3}
+\]</span>
+<p>Suppose a nonzero <span class="math" data-tex="\(t\)">\(t\)</span> lies in the left side, and let <span class="math" data-tex="\(t_j\)">\(t_j\)</span> be its lowest nonzero homogeneous component. If <span class="math" data-tex="\(j&lt;d-2\)">\(j&lt;d-2\)</span>, the nonzero component <span class="math" data-tex="\(xt_j\)">\(xt_j\)</span> has degree less than <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, whereas <span class="math" data-tex="\(J_p\)">\(J_p\)</span> has no components in those degrees. This is impossible. If <span class="math" data-tex="\(j=d-2\)">\(j=d-2\)</span>, membership of both <span class="math" data-tex="\(xt\)">\(xt\)</span> and <span class="math" data-tex="\(yt\)">\(yt\)</span> gives
+<span class="math" data-tex="\(xt_j=cp\)">\(xt_j=cp\)</span> and <span class="math" data-tex="\(yt_j=c&#x27;p\)">\(yt_j=c&#x27;p\)</span> for scalars <span class="math" data-tex="\(c,c&#x27;\)">\(c,c&#x27;\)</span>. Multiply the first equation by <span class="math" data-tex="\(y\)">\(y\)</span> and the second by <span class="math" data-tex="\(x\)">\(x\)</span>, obtaining
+<span class="math" data-tex="\((cy-c&#x27;x)p=0\)">\((cy-c&#x27;x)p=0\)</span>. The polynomial ring is a domain and <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>; independence of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> then gives <span class="math" data-tex="\(c=c&#x27;=0\)">\(c=c&#x27;=0\)</span>, contradicting <span class="math" data-tex="\(t_j\ne0\)">\(t_j\ne0\)</span>. Therefore all components of <span class="math" data-tex="\(t\)">\(t\)</span> have degree at least <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Conversely, any <span class="math" data-tex="\(t\in\mathfrak a^{d-1}\)">\(t\in\mathfrak a^{d-1}\)</span> satisfies <span class="math" data-tex="\(t\mathfrak a\subset\mathfrak a^d\subset J_p\)">\(t\mathfrak a\subset\mathfrak a^d\subset J_p\)</span>. This proves (6.3), including <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<p>The multiplication description of maps <span class="math" data-tex="\(\mathfrak a\to A\)">\(\mathfrak a\to A\)</span> now gives
+<span class="math" data-tex="\(T_{\mathfrak a}J_p=\mathfrak a\mathfrak a^{d-1}=\mathfrak a^d\)">\(T_{\mathfrak a}J_p=\mathfrak a\mathfrak a^{d-1}=\mathfrak a^d\)</span>.
+Thus the intrinsic pullback is <span class="math" data-tex="\(\mathfrak a^d\)">\(\mathfrak a^d\)</span>, with inclusion into <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> and zero projection onto <span class="math" data-tex="\(\overline k\)">\(\overline k\)</span>. That projection is not epi. The argument works over every field and for every nonzero homogeneous <span class="math" data-tex="\(p\)">\(p\)</span> specified in the question.</p>
+<p><strong>Exercise 4 — Expert: an extension condition and its limits.</strong> In the setting of Theorem 1.1, suppose <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is closed under ambient extensions: if an ambient short exact sequence has both end objects in <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>, then its middle object is also in <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>. Prove that every pullback of a strict epimorphism in <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is a strict epimorphism. Does this stability imply ambient extension closure?</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(q:X\to Y\)">\(q:X\to Y\)</span> be a strict epi in <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>, and let <span class="math" data-tex="\(a:Z\to Y\)">\(a:Z\to Y\)</span> be another morphism there. Intrinsic epis are ambient epis in every <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span>: their intrinsic cokernels are ambient cokernels, and zero cokernel characterizes epimorphy in the additive and abelian settings. By Theorem 3.1, the ambient kernel <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span> is generated.</p>
+<p>Form the ambient pullback <span class="math" data-tex="\(P=X\times_Y Z\)">\(P=X\times_Y Z\)</span>. We retain <a href="https://stacks.math.columbia.edu/tag/05PK">Stacks, Lemma 12.5.14</a> for stability of ambient epimorphisms under pullback, and <a href="https://stacks.math.columbia.edu/tag/08N3">Lemma 12.5.12</a> for the induced kernel isomorphism. These exact interfaces give the ambient short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K\longrightarrow P
+\longrightarrow Z\longrightarrow0.
+\tag{6.4}
+\]">\[
+0\longrightarrow K\longrightarrow P
+\longrightarrow Z\longrightarrow0.
+\tag{6.4}
+\]</span>
+<p>Extension closure makes <span class="math" data-tex="\(P\)">\(P\)</span> generated. Thus its trace is itself, so this ambient pullback is the intrinsic pullback with the same projections. Its projection onto <span class="math" data-tex="\(Z\)">\(Z\)</span> is an epi with generated ambient kernel <span class="math" data-tex="\(K\)">\(K\)</span>. Theorem 3.1 makes it strict, as required.</p>
+<p>The converse fails. Let <span class="math" data-tex="\(R=k[\epsilon]/(\epsilon^2)\)">\(R=k[\epsilon]/(\epsilon^2)\)</span> and <span class="math" data-tex="\(G=R/(\epsilon)\)">\(G=R/(\epsilon)\)</span>. A <span class="math" data-tex="\(G\)">\(G\)</span>-generated module is annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Conversely, an annihilated module is a <span class="math" data-tex="\(k\)">\(k\)</span>-vector space, and copies of <span class="math" data-tex="\(G=k\)">\(G=k\)</span> indexed by its elements surject onto it. Thus <span class="math" data-tex="\(\mathsf C_G\)">\(\mathsf C_G\)</span> is precisely the full category of modules annihilated by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, equivalently ordinary <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Its intrinsic kernels, cokernels and pullbacks are the vector-space ones, all morphisms are strict, and epis remain epis under pullback.</p>
+<p>But the ambient short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k
+\xrightarrow{\,1\mapsto\epsilon\,}R
+\longrightarrow k\longrightarrow0
+\tag{6.5}
+\]">\[
+0\longrightarrow k
+\xrightarrow{\,1\mapsto\epsilon\,}R
+\longrightarrow k\longrightarrow0
+\tag{6.5}
+\]</span>
+<p>has generated ends and a middle object that is not generated, since <span class="math" data-tex="\(\epsilon\cdot1\ne0\)">\(\epsilon\cdot1\ne0\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span>. Its trace is the proper ideal <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>: maps from <span class="math" data-tex="\(k\)">\(k\)</span> land in the annihilator of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, which is that ideal, and every element of the ideal is reached. Hence ambient extension closure is sufficient for the asserted strict pullback stability and is not necessary.</p>
+<p>Self-checked; no independent review has occurred. Original exposition and exercise text are dedicated to the public domain under CC0 1.0.</p>
+</main></body></html>

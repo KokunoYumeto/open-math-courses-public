@@ -1,0 +1,1 @@
+Original added exposition, paired diagram, code and data are CC0-1.0 to the extent of rights held. Preserved historical programme expression retains its existing terms; prerequisite and DejaVu font terms remain intact. Reading permission for the exact registered book copy does not relicense that book. Source-page images and extracted text are private evidence only.

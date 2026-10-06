@@ -1,0 +1,443 @@
+# Complex analytic spaces and analytification
+
+*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Analytic prerequisite integration by GPT-6 Astra (OpenAI), Codex, Ultra. The linked analytic bridge was written and self-checked by Claude Opus 5.5; a full independent review is not claimed. Independently authored material is CC0; the preparation-and-division component below retains Demailly's OpenContent permission.*
+
+An equation with complex coefficients defines both a scheme and a space of complex points. The second space has many more open sets and functions: small balls are open, and convergent power series are allowed. Nevertheless, at a complex point the two local rings have exactly the same formal completion. This is the local reason that passing from algebraic coherent sheaves to analytic coherent sheaves preserves exact sequences. The next lesson will explain why projectivity turns this local comparison into a global equivalence.
+
+Throughout, \(X\) is a scheme locally of finite type over \(\mathbf C\). It may have nilpotents, be nonseparated, and have infinitely many affine charts. A **variety** will still mean a reduced separated scheme of finite type. Analytification retains the entire structure sheaf, including nilpotents. For nonseparated schemes we allow analytic locally ringed spaces whose underlying space is non-Hausdorff; Hausdorffness and global second countability are stated only with hypotheses that imply them.
+
+## 1. Analytic equations and their sheaves
+
+For an open set \(W\subset\mathbf C^n\), let \(\mathcal O_W\) be the sheaf of holomorphic functions. Iterated Cauchy integrals on polydiscs give Taylor expansions; see Holomorphic functions of several variables, Theorems 1.2 and 2.1 for the integral and coefficient proofs. Demailly's freely available *Complex Analytic and Differential Geometry* is additional reading. At the origin its stalk is
+
+\[
+H_n=\mathbf C\{z_1,\ldots,z_n\},
+\]
+
+the ring of power series converging in some neighbourhood of zero. Its maximal ideal is \((z_1,\ldots,z_n)\). A germ with nonzero constant term has a convergent reciprocal after shrinking the neighbourhood; every other germ belongs to that ideal.
+
+An **analytic subset** \(A\subset W\) is locally the common zero set of finitely many holomorphic functions. Its vanishing ideal sheaf \(\mathcal I_A\) consists of all germs vanishing on \(A\), and its reduced structure sheaf is
+
+\[
+\mathcal O_A=(\mathcal O_W/\mathcal I_A)|_A.
+\]
+
+It embeds in the sheaf of continuous complex-valued functions on \(A\). For the general construction choose a coherent ideal \(\mathcal J\subset\mathcal O_W\), put \(A=V(\mathcal J)\), and use the **quotient model**
+
+\[
+\bigl(A,(\mathcal O_W/\mathcal J)|_A\bigr).
+\]
+
+We retain \(\mathcal J\), rather than replacing it by \(\mathcal I_A\). A complex analytic locally ringed space is a space locally isomorphic to such models, with residue field \(\mathbf C\) at every point. A Hausdorff such space is a complex space in the usual separated convention. For example, \(\mathcal O_{\mathbf C}/(z^2)\) gives a one-point model with ring \(\mathbf C[\epsilon]/(\epsilon^2)\), whereas its reduced model has ring \(\mathbf C\).
+
+An analytic morphism is locally given by holomorphic coordinate representatives whose substitution carries the target defining ideal into the source defining ideal. The representatives determine a pullback on holomorphic germs and on their quotient sheaves. This includes the images of nilpotent sections: a continuous point map alone does not specify such a morphism. To check independence of representatives, telescope one coordinate at a time in a convergent power series to obtain
+
+\[
+F(u)-F(v)=\sum_j(u_j-v_j)G_j(u,v)
+\]
+
+with holomorphic \(G_j\) near \((c,c)\). Thus coordinate representatives congruent modulo the source ideal give the same pullback. A local homomorphism of these germ rings is determined by its coordinate images: it preserves maximal-ideal powers, Taylor truncation determines the map modulo every such power, and Krull intersection in the Noetherian target ring makes the resulting equality exact. This also explains the equivalence with morphisms of locally ringed spaces over \(\mathbf C\).
+
+A module is **coherent** if it is locally finitely generated and the relations among every finite family of sections are locally finitely generated. Finite generation at one stalk is weaker than coherence on a neighbourhood. That distinction is the content of Oka's theorem.
+
+**Analytic foundation and reading order.** Preparation and division are proved in Section 2. After that argument, read the following local analytic results in *Complex analytic spaces and coherent sheaves*, then return to Section 3. Their proofs concern analytic germs and coherent sheaves, not GAGA, so none presupposes the comparison theorem that this course will prove. Jean-Pierre Demailly's freely available [*Complex Analytic and Differential Geometry*](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf), together with the human sources credited in the bridge, supplies further reading. The prerequisite and proof guide records the exact scope and the remaining dependencies.
+
+* [Preparation and division, Section 2 below](#2-local-analytic-algebra): if a germ is regular of order \(r\) in the last variable, it is a unit times a monic degree-\(r\) polynomial in that variable whose other coefficients vanish at the origin. Division has a unique polynomial remainder of degree less than \(r\).
+* Coherence of holomorphic functions, Theorem 2.1: \(\mathcal O_W\) is coherent. Oka's theorem uses division to reduce analytic relations to finitely many polynomial coefficient relations in one fewer variable, and proves that the generators work near the point as well as at it.
+* The local analytic Nullstellensatz, Theorem 5.1: for an ideal \(J\subset H_n\), the ideal of germs vanishing on its zero germ is \(\sqrt J\).
+* Coherence of analytic ideal sheaves, Theorem 1.1: \(\mathcal I_A\) is coherent for every analytic subset. Cartan's theorem constructs uniform local equations using finite projections and coefficient interpolation; the statement includes singular analytic subsets.
+
+The first coherence result is sufficient for quotient models by any finitely generated analytic ideal; the Nullstellensatz and Cartan's theorem additionally identify their reductions and vanishing ideals. The bridge's Cartan's coherence theorem and complex spaces, Definition 3.1 and Theorem 3.2 expressly includes arbitrary coherent ideals. Here is the module argument, so passage to a nonreduced quotient introduces no new coherence assumption.
+
+**Proposition 1.1 (coherence on quotient models).** The structure sheaf of every quotient model is coherent. Its coherent modules are exactly its locally finitely presented modules. Kernels, images, cokernels, extensions, tensor products and internal Hom of coherent modules are coherent. If \(i:A\hookrightarrow W\) is the model inclusion, a module on the model is coherent exactly when its pushforward is coherent over \(\mathcal O_W\).
+
+**Proof.** First work over a coherent ring sheaf \(\mathcal R\). A finite type submodule of a coherent module is coherent, because its relations are the same relations as in the larger module. For a morphism \(\mathcal F\to\mathcal G\) of coherent modules, choose local generators \(f_j\) of \(\mathcal F\). The finitely many local generators of the relations among their images in \(\mathcal G\) give, by taking the corresponding combinations of the \(f_j\), generators of the kernel. The image is of finite type in \(\mathcal G\), and both kernel and image are therefore coherent. To prove coherence of the cokernel, lift any finite family of its sections locally to \(\mathcal G\) and adjoin generators of the image. Relations among this enlarged family in \(\mathcal G\) project onto the required relations in the cokernel, giving finite generation. For an extension, lift generators of the quotient and adjoin generators of the submodule. Relations first give relations in the quotient; lift their finite generators, and then impose the finitely generated relations among the resulting sections in the submodule. This proves coherence of extensions, and in particular of finite direct sums and finite free modules.
+
+Consequently a finite presentation has coherent cokernel. Conversely, generators of a coherent module and generators of their relations give a finite presentation. Tensoring two finite presentations gives a finite presentation of their tensor product. Applying internal Hom to a presentation of \(\mathcal F\) realizes \(\mathcal Hom(\mathcal F,\mathcal G)\) as a kernel between finite sums of \(\mathcal G\), proving its coherence and the identification of its stalk with the Hom of the stalks.
+
+Now take \(\mathcal R=\mathcal O_W\) and \(\mathcal B=\mathcal R/\mathcal J\). Oka's theorem and the kernel and cokernel statements make \(\mathcal J\) and \(\mathcal B\) coherent over \(\mathcal R\). A module coherent over \(\mathcal R\) and annihilated by \(\mathcal J\) is coherent over \(\mathcal B\): the kernel of any map \(\mathcal B^q\to\mathcal M\) is coherent over \(\mathcal R\), and its finite generators also generate it over \(\mathcal B\). In particular \(\mathcal B\) is a coherent ring sheaf. In the other direction a finite presentation over \(\mathcal B\) is a cokernel between coherent \(\mathcal R\)-modules, hence coherent over \(\mathcal R\). Finally \(\mathcal B\) vanishes off the closed set \(A\). Restriction to \(A\) and pushforward along \(i\) identify such sheaves and their stalks; off \(A\) all stalks are zero. The preceding equivalence therefore gives the assertion on the model. \(\square\)
+
+## 2. Local analytic algebra
+
+**Preparation and division.** Write \(z=(z',w)\). Suppose the holomorphic germ \(f\) satisfies \(f(0,w)=w^r v(w)\), with \(v(0)\ne0\). Then, uniquely,
+
+\[
+f=uP,\qquad
+P=w^r+a_1(z')w^{r-1}+\cdots+a_r(z'),\qquad a_j(0)=0,
+\]
+
+where \(u\) is an invertible holomorphic germ. Every holomorphic germ \(g\) has a unique expression \(g=fq+R\), where \(R\) is a polynomial in \(w\) of degree less than \(r\), with holomorphic coefficients in \(z'\).
+
+**Source and reuse.** This complete germ-level proof adapts Demailly, II, Theorems 2.1 and 2.3, pp. 79–81, which credit C. L. Siegel's contour argument. It is distributed under Demailly's [explicit OpenContent permission](https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html), with that authorship retained. GPT-6.1 Sol at Ultra effort reorganized the argument, made root multiplicities and germ uniqueness explicit, and checked its use in Lemma 2.1. Demailly also proves uniform bounded-function estimates; those stronger estimates are not needed here. This component is not included in the CC0 dedication of the independent lesson material.
+
+**Proof.** The case \(r=0\) is division by a unit, with \(P=1\) and \(R=0\). For \(r>0\), choose a small circle \(|\zeta|=\rho\) on which \(f(0,\zeta)\ne0\), enclosing no zero other than zero. After shrinking the \(z'\)-polydisc, \(f(z',\zeta)\) remains nonzero in an annulus around that circle. Define
+
+\[
+s_k(z')=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\zeta^k\frac{\partial f/\partial w(z',\zeta)}{f(z',\zeta)}\,d\zeta.
+\]
+
+The scalar tools used here have complete earlier proofs in Cauchy's theorem for cycles and its consequences: Lemma 0.1 proves interchange of continuous integrals, Theorems 2.2–2.3 prove the disc integral theorem and formula, and Theorems 3.2, 3.4 and 3.7 prove Taylor expansion, Morera's theorem and isolatedness of zeros. These results concern scalar holomorphic functions and do not require an operator-algebra theorem.
+
+The integrand is jointly continuous on the parameter polydisc times the circle and holomorphic in each parameter coordinate. Its derivative numerator is holomorphic by the polydisc Taylor theorem. Interchange a triangle integral in one parameter coordinate with the circle integral, using Lemma 0.1(3); the triangle integral is zero by Cauchy's theorem. Morera's theorem, Theorem 3.4, proves that each \(s_k\) is holomorphic in every parameter coordinate. Joint continuity and the bridge's definition of holomorphy make it holomorphic on the parameter polydisc.
+
+For fixed \(z'\), the zeros in the closed disc are finite: they are isolated by Theorem 3.7, none lies near the boundary, and an infinite subset of the remaining compact disc would have an accumulation point. At a zero \(b\) of multiplicity \(m_b\), Taylor factorization gives \(f=(w-b)^{m_b}h\), with \(h(b)\ne0\), and therefore
+
+\[
+\frac{f_w}{f}=\frac{m_b}{w-b}+\frac{h'}h.
+\]
+
+Subtract \(\sum_b m_b/(w-b)\) from \(f_w/f\). The resulting function extends holomorphically over every zero and throughout a slightly larger disc. Its integral, also after multiplication by \(w^k\), is zero by Theorem 2.2. Cauchy's formula applied to the polynomial \(w^k\) gives
+
+\[
+s_k(z')=\sum_b m_b b^k\qquad(k\geq0).
+\]
+
+Here the term for \(k=0\) is \(m_b\), including when \(b=0\). Thus \(s_0\) counts the zeros inside the circle, and \(s_k\) sums their \(k\)-th powers with multiplicity. The integer \(s_0\) is continuous on the connected parameter polydisc, hence constantly \(r\). Denote those roots with repetition by \(b_1,\ldots,b_r\); individual roots need not depend holomorphically on \(z'\).
+
+Their elementary symmetric functions do: Newton's identities express them recursively by \(c_0=1\) and
+
+\[
+k c_k=\sum_{j=1}^k(-1)^{j-1}c_{k-j}s_j.
+\]
+
+To verify these identities, use the formal polynomial \(E(t)=\prod_{\ell=1}^r(1+b_\ell t)=\sum_kc_kt^k\). Its constant term is one, so formal division gives
+
+\[
+\frac{E'(t)}{E(t)}=\sum_\ell\frac{b_\ell}{1+b_\ell t}
+=\sum_{j\geq1}(-1)^{j-1}s_jt^{j-1}.
+\]
+
+Multiply by \(E(t)\) and compare coefficients of \(t^{k-1}\). Thus the recursion requires no choice of holomorphic individual roots.
+
+The polynomial \(P=\sum_{k=0}^r(-1)^k c_k w^{r-k}\) consequently has holomorphic coefficients and exactly the same zeros, with multiplicities, as \(f\) in the disc. At \(z'=0\), it is \(w^r\). For each fixed \(z'\), both \(f/P\) and \(P/f\) have removable singularities inside the circle. Their Cauchy integral representations using their boundary values show that the extensions are jointly holomorphic in \((z',w)\). They are inverse to one another. This proves preparation. Any other monic polynomial of the stated form has the same small roots, so equals \(P\); the unit is then determined.
+
+For division by \(P\), choose a smaller circle inside a representative of the germ \(g\), and shrink the \(z'\)-polydisc so all roots remain inside it. Write its radius again as \(\rho\), and put
+
+\[
+Q(z',w)=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{g(z',\zeta)}{P(z',\zeta)(\zeta-w)}\,d\zeta.
+\]
+
+Cauchy's formula gives
+
+\[
+g-PQ=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{g(z',\zeta)}{P(z',\zeta)}
+\frac{P(z',\zeta)-P(z',w)}{\zeta-w}\,d\zeta.
+\]
+
+The final divided difference is a polynomial in \(w\) of degree at most \(r-1\), so this integral is the required \(R\). All coefficients and \(Q\) are holomorphic. For \(f=uP\), take \(q=Q/u\). If two divisions exist, their remainder difference is divisible by \(P\); it therefore vanishes at its \(r\) roots with their multiplicities. A polynomial of degree less than \(r\) with that property is zero. The quotient difference is then zero. For germ uniqueness, shrink once more so all roots lie in a neighbourhood on which both representations exist. \(\square\)
+
+**Lemma 2.1.** The ring \(H_n\) is Noetherian, and its maximal-adic completion is \(\mathbf C[[z_1,\ldots,z_n]]\).
+
+**Proof.** Induct on \(n\), beginning with \(H_0=\mathbf C\). For a nonzero ideal \(J\), choose a nonzero \(f\in J\). A linear coordinate change makes its first nonzero homogeneous part nonzero on the last coordinate axis. Preparation then supplies a monic Weierstrass polynomial \(P\in J\). Division identifies \(H_n/(P)\), as an \(H_{n-1}\)-module, with the free module of polynomial remainders of degrees \(0,\ldots,r-1\). By induction it is Noetherian. The image of \(J\) is finitely generated in this quotient, so lifts of these generators together with \(P\) generate \(J\). The zero ideal causes no difficulty.
+
+Modulo \((z)^m\), Taylor truncation identifies \(H_n/(z)^m\) with polynomials of total degree less than \(m\). Taking the inverse limit gives the full formal power-series ring. A convergent germ with every Taylor coefficient zero is zero, so the Taylor map is injective. \(\square\)
+
+For any ideal \(J\subset H_n\), exact finite-module completion gives
+
+\[
+\widehat{H_n/J}=\mathbf C[[z]]/J\mathbf C[[z]].
+\]
+
+The precise earlier proof is Completion, Theorem 3.1: over a Noetherian ring, Artin–Rees compares the induced and intrinsic filtrations on a finite submodule, compatible lifts make inverse limits exact, and a finite presentation identifies completed modules with tensor products. Its Theorem 3.2 then proves flatness of completion by the ideal criterion, with faithful flatness for maximal-ideal completion of a local ring. These statements apply to \(H_n\), which Lemma 2.1 has just proved Noetherian; they require no reducedness.
+
+**Lemma 2.2 (holomorphic inverse and implicit functions).** A holomorphic map between open subsets of \(\mathbf C^n\) whose derivative is invertible at a point has a holomorphic inverse on smaller neighbourhoods. If \(r\) equations have Jacobian rank \(r\), their zero set is locally a complex manifold of dimension \(n-r\).
+
+**Proof.** Translate the point and make a linear change so the map is \(F(z)=z+g(z)\), where \(g(0)=0\) and \(dg(0)=0\). On a sufficiently small closed ball, \(\|dg\|\leq c<1\). For \(w\) in a smaller ball, the map \(z\mapsto w-g(z)\) maps the first ball into itself and is a contraction. Its successive iterates converge uniformly, with a geometric bound, to the unique solution \(z(w)\). The iterates are holomorphic in \(w\), and local uniform convergence preserves holomorphicity by Cauchy's formula. The estimate also gives injectivity of \(F\) on the first ball. For the implicit statement, add complementary coordinates to the given equations so that the combined map has invertible derivative, and apply the inverse statement. \(\square\)
+
+Local analytic dimension is the Krull dimension of the local analytic algebra. Local finite parametrization, Theorem 4.1, and Dimension of analytic germs, Theorem 5.4, give the finite-projection proof: after adapted linear coordinates, an irreducible germ is finite over a polydisc of the dimension of its local ring and is a finite covering away from a discriminant. This also treats dimension component by component.
+
+## 3. Constructing analytification with the full ideal
+
+For a finite type affine scheme \(X=\operatorname{Spec}(\mathbf C[z]/J)\), give \(X(\mathbf C)=V(J)\subset\mathbf C^n\) its ordinary topology and the quotient sheaf
+
+\[
+\mathcal O_{X^{\mathrm{an}}}
+=\bigl(\mathcal O_{\mathbf C^n}/J\mathcal O_{\mathbf C^n}\bigr)|_{V(J)}.
+\]
+
+The polynomial ideal \(J\) is finitely generated, so its image ideal is coherent by Oka and Proposition 1.1. This is a quotient model for every \(J\), including nonradical ideals. Its stalk at \(x\) is \(\mathbf C\{z-x\}/J\mathbf C\{z-x\}\). The zero set specifies the points and topology; the ideal specifies the entire local ring. For reduced schemes the following additional argument recovers the reduced construction.
+
+**Lemma 3.1.** For a radical algebraic ideal \(J\) and a complex point \(x\), its extension to the ambient convergent local ring is radical and equals the analytic vanishing ideal of its zero germ.
+
+**Proof.** Translate \(x\) to zero and put
+
+\[
+R=\mathbf C[z]_{(z)},\qquad H=\mathbf C\{z\},\qquad S=\mathbf C[[z]].
+\]
+
+Both ambient completions are \(S\). We prove directly that the completion of every reduced finite type complex algebra at a complex point is reduced. This avoids requiring a theorem about arbitrary Nagata rings.
+
+*A domain over a polynomial ring.* Let \(E\) be a finite type complex domain. The earlier programme proof Krull dimension and Noether normalization, Corollary 3.2, gives a finite inclusion \(D=\mathbf C[u_1,\ldots,u_d]\subset E\). Write \(K=\operatorname{Frac}D\) and \(L=\operatorname{Frac}E\). Localizing the finite \(D\)-module \(E\) at \(D\setminus\{0\}\) gives a finite-dimensional domain over \(K\), hence a field, namely \(L\). Thus \(L/K\) is finite.
+
+In characteristic zero every irreducible polynomial is separable: its derivative is nonzero and has smaller degree, so the greatest common divisor with the polynomial is one. We also record the primitive-element step. For two separable generators \(\alpha,\beta\), list the roots \(\alpha_i,\beta_j\) of their minimal polynomials in an algebraic closure. Choose \(c\in\mathbf C\) avoiding the finitely many values for which distinct pairs have equal sums \(\alpha_i+c\beta_j\). For \(\gamma=\alpha+c\beta\), the polynomials \(f(\gamma-cT)\) and \(g(T)\), over \(K(\gamma)\), have exactly the one common root \(\beta\). Their monic greatest common divisor is \(T-\beta\), so the Euclidean algorithm shows \(\beta\in K(\gamma)\), and then \(\alpha\in K(\gamma)\). Repeating with the finite algebra generators of \(E\) produces \(\theta\in E\) with \(L=K(\theta)\).
+
+Let \(P\in K[T]\) be its monic minimal polynomial. Every algebra generator of \(E\) is a polynomial in \(\theta\) over \(K\). Clearing their finitely many denominators, the coefficients of \(P\), and a Bezout identity for \(P,P'\), gives a nonzero \(h\in D\) such that
+
+\[
+E_h=D_h[T]/(P),\qquad
+U P+V P'=1\quad\text{in }D_h[T].
+\]
+
+The quotient equality follows from monic division: a remainder of degree less than \(\deg P\) cannot vanish at \(\theta\) unless all its coefficients are zero. The Bezout identity is possible because \(P\) is separable.
+
+*Complete the polynomial base.* Let \(x\) be a complex point of \(\operatorname{Spec}E\), and let its contraction in \(D\) be \(q=(u_1-a_1,\ldots,u_d-a_d)\). Put \(D_q=T_0\) and
+
+\[
+C_0=\widehat{T_0}=\mathbf C[[u-a]].
+\]
+
+The ring \(C_0\) is a domain: the lowest nonzero homogeneous parts of two nonzero series have nonzero product. As a finite torsion-free \(D\)-module, \(E\) embeds in \(D^r\) for some \(r\): choose a \(K\)-basis of \(L\), write a finite generating list of \(E\) in that basis, and multiply all coordinates by one common nonzero denominator. Localize this injection at \(q\) and tensor with the flat completion \(C_0\). The resulting finite algebra
+
+\[
+B_0=E\otimes_D C_0
+\]
+
+embeds as a \(C_0\)-module in \(C_0^r\), so is torsion-free. Its localization at \(h\) is \(C_0[1/h][T]/(P)\). This monic quotient is free over the domain \(C_0[1/h]\), so it embeds into its scalar extension to \(F=\operatorname{Frac}C_0\). The Bezout identity makes \(P\) squarefree over \(F\); factoring it into distinct irreducibles and using Chinese remainders identifies \(F[T]/(P)\) with a finite product of fields. Hence \((B_0)_h\) is reduced. A nilpotent of \(B_0\) must therefore be annihilated by some power of \(h\). The polynomial \(h\) is nonzero in \(C_0\), and torsion-freeness makes that nilpotent zero. Thus \(B_0\) is reduced.
+
+*Separate the completed points.* The finite \(T_0\)-algebra \(E_q\) has finitely many maximal ideals \(m_1,\ldots,m_s\), all above \(q\). Here is the integral field test involved in the contraction assertion. If a domain \(A_0\) has an integral extension which is a field, the inverse of any nonzero \(a\in A_0\) satisfies a monic equation; multiply that equation by \(a^{n-1}\) to express \(a^{-1}\) in \(A_0\). Hence \(A_0\) is a field. Apply this to the inclusion of \(T_0/(m_i\cap T_0)\) in \(E_q/m_i\). Since \(T_0\) is local, the contraction must be \(q\). The maximal ideals therefore correspond to those of the finite-dimensional complex fibre algebra. That algebra is Artinian, since every strict descending chain of ideals lowers its vector-space dimension. The exact Artinian radical and decomposition argument is Noetherian and Artinian rings, Lemma 4.1 and Theorem 4.2. If \(N=\bigcap_i m_i\), nilpotence of the radical of the fibre gives
+
+\[
+N^e\subset qE_q\subset N
+\]
+
+for some \(e\). These filtrations are cofinal. The ideals \(m_i^k\) are pairwise comaximal: if \(a+b=1\) with \(a\in m_i,b\in m_j\), expansion of \((a+b)^{2k-1}\) puts one in \(m_i^k+m_j^k\). Chinese remainders and \(N^k=\bigcap_i m_i^k\) consequently give
+
+\[
+B_0=\widehat{E_q}_{\,qE_q}
+\cong\varprojlim_k E_q/N^k
+\cong\prod_i\varprojlim_k E_q/m_i^k
+\cong\prod_i\widehat{E_{m_i}}.
+\]
+
+The first equality is finite-module completion, and the last holds because every element outside \(m_i\) is already a unit modulo \(m_i^k\). A factor of a reduced product ring is reduced. In particular \(\widehat{E_x}\) is reduced.
+
+For a general reduced finite type algebra \(E\), its finitely many minimal primes have zero intersection, giving an injection \(E\hookrightarrow\prod_i E/p_i\). Finiteness and the nilradical assertion are proved in Noetherian and Artinian rings, Proposition 2.2. Localize at the chosen complex point and use exact completion on these finite modules. The completed ring embeds in a finite product of reduced completed domain rings, with zero factors omitted. It is therefore reduced as well.
+
+Apply this conclusion to \(\mathbf C[z]/J\). Exact completion identifies \(\widehat{R/JR}\) with \(S/JS\), so that ring is reduced. The completion of \(H/JH\) is the same quotient. Faithful flatness of local completion embeds the Noetherian local ring \(H/JH\) into it, making \(H/JH\) reduced. The earlier analytic Nullstellensatz now identifies the vanishing ideal with \(\sqrt{JH}=JH\). \(\square\)
+
+**Theorem 3.2.** Every scheme locally of finite type over \(\mathbf C\) has an analytification, uniquely characterized by these finite type affine quotient charts. Scheme morphisms induce analytic morphisms, compatibly with identities and composition. Analytification commutes with products over \(\mathbf C\), open immersions and closed immersions, including their full defining ideals. It therefore commutes with locally closed immersions. A separated scheme has Hausdorff analytification; a finite type scheme has second countable analytification.
+
+**Proof.** We check presentations, localizations, maps and gluing separately, without making an ideal radical.
+
+*Adding coordinates.* Suppose \(A=\mathbf C[z]/J\) and \(g_1,\ldots,g_m\in\mathbf C[z]\). Adding the coordinate classes \(g_j\) gives the presentation
+
+\[
+A=\mathbf C[z,t]/(J,t_1-g_1(z),\ldots,t_m-g_m(z)).
+\]
+
+Its point set is the graph of \(g\), with a homeomorphism to \(V(J)\). At \((x,g(x))\), substitution \(t=g(z)\) gives
+
+\[
+\frac{\mathbf C\{z-x,t-g(x)\}}{(J,t-g(z))}
+\ \cong\ \frac{\mathbf C\{z-x\}}{J}.
+\]
+
+Indeed, for every holomorphic germ \(F\), the divided-difference identity of Section 1 writes \(F(z,t)-F(z,g(z))\) in the ideal \((t-g(z))\). This proves both the kernel assertion and the inverse substitution. The germ maps come from sheaf maps on the graph, so the sheaves are isomorphic. Given two finite polynomial presentations of the same algebra, each coordinate class is a polynomial in the other list. The combined list is obtained by adding coordinates to either list. These graph isomorphisms thus give a canonical isomorphism between the two analytic quotient charts. The isomorphism fixes every element of \(A\); substitution shows that using three presentations gives the cocycle identity.
+
+*Principal opens.* For \(h\in A\), represented by a polynomial, a presentation of \(A_h\) is \(\mathbf C[z,v]/(J,vh-1)\). Its points map homeomorphically to \(\{h\ne0\}\subset V(J)\), an ordinary open subset. There \(h\) is an analytic unit. Substitution \(v=1/h\), with the same divided-difference argument, identifies the quotient sheaf with the restriction of the original chart sheaf. Changing the representative of \(h\) modulo \(J\) has no effect on these sheaf maps. Since principal opens form a basis of the Zariski topology of an affine scheme, this verifies compatibility with arbitrary open overlaps.
+
+*Maps.* A map \(\operatorname{Spec}A\to\operatorname{Spec}(\mathbf C[y]/K)\) sends each \(y_j\) to a class represented by a polynomial \(g_j(z)\). The relations give \(K(g(z))\subset J\). Holomorphic substitution therefore gives a map between the analytic quotient charts. Two choices of polynomial representatives differ by elements of \(J\), so the divided-difference identity proves equality of their pullbacks on every holomorphic germ, including nilpotents in the quotient. Fractional coordinates are handled on principal opens by the preceding calculation. Substitution is associative, so this construction respects composition and identities.
+
+*Gluing.* Cover \(X\) by affine opens of finite type over \(\mathbf C\). On an overlap, principal opens inside these charts and the just-constructed regular transition maps give inverse analytic isomorphisms of the quotient sheaves. They agree on smaller principal opens, and the substitution cocycle is exactly the algebraic cocycle. The ordinary chart topologies and their sheaves consequently glue. This argument allows infinitely many charts and requires no separation assumption. Each stalk is the local analytic quotient already specified. Applying the map construction on source and target charts glues every scheme morphism. A different affine cover has a common refinement; the same canonical transition maps give a unique isomorphism compatible with all quotient charts. This is the asserted uniqueness.
+
+*Products.* If \(A=\mathbf C[z]/J\) and \(B=\mathbf C[t]/K\), then
+
+\[
+A\otimes_{\mathbf C}B=\mathbf C[z,t]/(J(z),K(t)).
+\]
+
+Its points have the product topology on \(V(J)\times V(K)\). The analytic product has precisely the quotient model by the sum of these two ideals in the disjoint coordinate variables: given two analytic maps from a quotient model, combine their coordinate representatives; the two ideal-containment conditions are exactly the condition for this combined map. The combined coordinate list is unique, by the germ substitution rule, establishing the product universal property and the canonical isomorphism. Gluing product charts proves the assertion for all locally finite type schemes. Notice that this uses convergent series in both variable lists, rather than an uncompleted tensor product of analytic stalk rings.
+
+*Immersions and ideals.* An open immersion is restriction, by the principal-open calculation. For a closed immersion with ideal \(I\subset A\), choose polynomial representatives \(\widetilde I\) in the ambient ring. Its chart is the quotient by \((J,\widetilde I)\), and its analytic sheaf is the quotient of the original analytic sheaf by \(I\mathcal O_{X^{\mathrm{an}}}\). Thus the ideal and all its powers are retained. The support is closed because it is the common zero set of the chosen generators. The constructions agree on overlaps, so the same conclusion holds for every closed immersion and, by restriction, for locally closed immersions.
+
+Finally, on any product of affine chart domains the inverse image of the diagonal of \(X(\mathbf C)\) is the point set of the algebraic diagonal. If \(X\) is separated, that diagonal is a closed immersion, so the analytic diagonal is closed in every such product by the preceding calculation. Hence the glued space is Hausdorff. If \(X\) is of finite type, finitely many affine charts suffice, and the union of their countable bases is a countable basis. Neither conclusion is imposed for a general \(X\). \(\square\)
+
+**Corollary 3.3 (reduction).** There is a canonical identification
+
+\[
+(X_{\mathrm{red}})^{\mathrm{an}}=(X^{\mathrm{an}})_{\mathrm{red}}.
+\]
+
+For reduced \(X\), the quotient construction is the reduced analytic construction, and every reduced locally closed subvariety has its usual induced reduced analytic structure.
+
+**Proof.** In a polynomial chart put \(J_0=\sqrt J\). Lemma 3.1 shows that \(J_0H\) is radical. It contains \(JH\), so \(\sqrt{JH}\subset J_0H\). Conversely, each element of \(J_0\) has a power in \(J\), so \(J_0H\subset\sqrt{JH}\). These inclusions prove equality. The local analytic Nullstellensatz identifies that radical with the vanishing ideal of the common zero set. Passing to quotients and gluing proves the assertions. \(\square\)
+
+There is a morphism of locally ringed spaces \(a:X^{\mathrm{an}}\to X\), taking a complex point to its closed scheme point and taking regular functions to holomorphic functions. Zariski opens pull back to ordinary opens, because their complements are algebraic zero sets. The ordinary topology is finer: it contains small balls that need not be Zariski open.
+
+## 4. The comparison at a point
+
+**Theorem 4.1.** Let \(X\) be any scheme locally of finite type over \(\mathbf C\), and let \(x\in X(\mathbf C)\). The local map
+
+\[
+A=\mathcal O_{X,x}\longrightarrow B=\mathcal O_{X^{\mathrm{an}},x}
+\]
+
+is faithfully flat, with residue field \(\mathbf C\), and induces an isomorphism \(\widehat A\cong\widehat B\). It identifies every maximal-ideal residue quotient. Consequently the dimensions and regularity of the two local rings agree, including when \(X\) has nilpotents.
+
+**Proof.** Translate \(x\) to zero in a finite type affine chart and put
+
+\[
+R=\mathbf C[z]_{(z)},\qquad H=\mathbf C\{z\},\qquad
+S=\mathbf C[[z]].
+\]
+
+The quotient construction itself, without Lemma 3.1 and without reduction, gives \(A=R/JR\) and \(B=H/JH\). Both are Noetherian. If \(\mathfrak m\) and \(\mathfrak n\) are their maximal ideals, then, for every \(k\geq1\), polynomial and Taylor truncation give the compatible isomorphisms
+
+\[
+A/\mathfrak m^k
+\ \cong\ \mathbf C[z]/(J+(z)^k)
+\ \cong\ B/\mathfrak n^k.
+\]
+
+A polynomial denominator with nonzero constant term has a truncated geometric-series inverse. Every convergent multiplier of a generator of \(J\) can also be truncated modulo \((z)^k\). Thus both the ambient rings and the image ideals agree in these quotients. Taking inverse limits, or applying exact finite-module completion to the ambient quotients, yields
+
+\[
+\widehat A=S/JS=\widehat B,
+\]
+
+and the map induced by \(A\to B\) is the identity on this common quotient. In particular \(\mathfrak mB=\mathfrak n\) and the residue field is \(\mathbf C\).
+
+By Completion, Theorems 3.1–3.2, maximal-ideal completion of a Noetherian local ring is faithfully flat. For clarity, the logical route is exact completion on finite modules, then injectivity of \(I\otimes\widehat A\to\widehat A\) for every finite ideal, then the flatness criterion proved in Tor and flat modules, Theorem 2.1. The nonzero residue quotient proves faithfulness; the full criterion is Faithful flatness, Theorem 1.1. All these inputs have precisely the Noetherian or module hypotheses just stated.
+
+Write \(C\) for the common completion. It is flat over \(A\) and faithfully flat over \(B\). Given an injection of arbitrary \(A\)-modules \(M'\to M\), let \(K\) be the kernel after tensoring with \(B\). Flatness over \(B\) identifies \(C\otimes_BK\) with the kernel after tensoring with \(C\); flatness over \(A\) makes that kernel zero. Faithfulness over \(B\) makes \(K=0\). Hence \(B\) is flat over \(A\). This descent uses arbitrary modules, so establishes flatness, not only exactness on finite modules.
+
+It is faithfully flat because it is a local flat map. Explicitly, for \(0\ne m\in M\), its cyclic submodule \(Am=A/I\) has \(I\subset\mathfrak m\), so \(B/IB\) surjects onto \(B/\mathfrak n=\mathbf C\) and is nonzero. Flatness embeds this tensor of the cyclic submodule into \(B\otimes_AM\). Thus tensoring with \(B\) detects every nonzero module. Moreover the map \(M\to M\otimes_AB\) becomes a split injection after tensoring once more with \(B\), the retraction multiplying the two \(B\)-factors. Faithful flatness reflects injectivity, so the original map is injective. Taking \(M=A\) and \(M=A/I\) proves \(A\hookrightarrow B\) and \(IB\cap A=I\) for every ideal.
+
+A Noetherian local ring and its completion have the same dimension and the same cotangent space over the residue field; the exact earlier proof is Completion, Theorem 4.1. It compares the lengths of the identical residue quotients, hence the degrees of their Hilbert–Samuel polynomials, and the first graded pieces of their maximal ideals. The common quotients above therefore give equal dimensions and cotangent dimensions for \(A\) and \(B\). Regularity is the equality of these two numbers, proving the assertion. \(\square\)
+
+A Zariski dense open \(U\subset X\) is also ordinarily dense in \(X^{\mathrm{an}}\). First suppose \(X\) reduced. If \(Z=X\setminus U\), with its reduced structure, contained an analytic neighbourhood of \(x\), its relative analytic vanishing ideal at \(x\) would be zero. Lemma 3.1 identifies that ideal with the extended algebraic ideal, and faithful flatness contracts it to zero. The finite algebraic ideal then vanishes on a Zariski neighbourhood of \(x\), so that neighbourhood lies in \(Z\), contradicting density. For arbitrary \(X\), apply the reduced argument to \(X_{\mathrm{red}}\); Corollary 3.3 identifies both underlying analytic point spaces. This reduction is necessary: nilpotent germs vanish at every point but need not be zero in the unreduced structure sheaf.
+
+**Proposition 4.2 (finite isomorphisms are detected analytically).** Let \(f:Z\to X\) be a finite morphism between schemes locally of finite type over \(\mathbf C\). If \(f^{\mathrm{an}}\) is an analytic isomorphism, then \(f\) is an isomorphism.
+
+**Proof.** Work over a finite type affine open of \(X\). For a complex point \(x\), let \(A=\mathcal O_{X,x}\) and \(D=(f_*\mathcal O_Z)_x\), a finite \(A\)-algebra. The fibre is a finite \(\mathbf C\)-scheme; its closed points have residue field \(\mathbf C\) and are exactly the analytic points above \(x\). The analytic isomorphism gives exactly one such point \(z\). Every maximal ideal of the integral algebra \(D\) lies above the maximal ideal of \(A\). Thus \(D\) is local, with maximal ideal \(\mathfrak q\), and \(D=\mathcal O_{Z,z}\). The finite-dimensional local fibre algebra \(D/\mathfrak m_AD\) is Artinian, so its maximal ideal is nilpotent. Hence \(\mathfrak q^e\subset\mathfrak m_AD\subset\mathfrak q\) for some \(e\), and these two ideal-adic filtrations are cofinal.
+
+Exact finite-module completion consequently identifies
+
+\[
+D\otimes_A\widehat A=\widehat D_{\mathfrak m_AD}
+=\widehat D_{\mathfrak q}.
+\]
+
+Theorem 4.1 is functorial for local maps, since its identifications are Taylor truncations of the original ring maps. The analytic stalk isomorphism therefore says that \(\widehat A\to\widehat D_{\mathfrak q}\) is an isomorphism. Faithful flatness of \(A\to\widehat A\) detects that the finite \(A\)-module map \(A\to D\) is an isomorphism. The kernel and cokernel of \(\mathcal O_X\to f_*\mathcal O_Z\) are coherent and vanish at every complex point. On a finite type affine chart any nonempty closed support has a complex point, so both vanish. Finally a finite morphism is the relative spectrum of its finite algebra \(f_*\mathcal O_Z\); this algebra has just been identified with \(\mathcal O_X\). Thus \(f\) is an isomorphism. \(\square\)
+
+A merely bijective continuous map need not preserve local rings; the cusp below shows why the ring hypothesis in this proposition matters.
+
+## 5. Coherent modules and compactness
+
+Define
+
+\[
+\mathcal F^{\mathrm{an}}
+=\mathcal O_{X^{\mathrm{an}}}\otimes_{a^{-1}\mathcal O_X}a^{-1}\mathcal F.
+\]
+
+**Proposition 5.1.** For every scheme \(X\) locally of finite type over \(\mathbf C\), analytification is exact and faithful on coherent modules, preserves coherence, and commutes with tensor products and internal Hom of coherent modules. It commutes with pullback along scheme morphisms and with pushforward along closed immersions. If \(\mathcal I\subset\mathcal O_X\) is a coherent ideal, then \(\mathcal I^{\mathrm{an}}\) identifies with the ideal it generates in \(\mathcal O_{X^{\mathrm{an}}}\), and
+
+\[
+(\mathcal O_X/\mathcal I)^{\mathrm{an}}
+=\mathcal O_{X^{\mathrm{an}}}/\mathcal I^{\mathrm{an}}.
+\]
+
+These assertions retain arbitrary nilpotents and ideal powers.
+
+**Proof.** The analytic stalk is \(B\otimes_A\mathcal F_x\), where \(A\to B\) is Theorem 4.1. Flatness proves exactness; it even proves exactness for arbitrary module sheaves, without a coherence assumption. A coherent algebraic sheaf has a finite presentation on each sufficiently small affine chart because that chart is Noetherian. Its analytification has the same finite matrix presentation over the coherent analytic quotient sheaf. Proposition 1.1 makes its cokernel coherent, including on nonreduced models. Tensor compatibility is associativity of tensor products.
+
+For internal Hom, use a presentation \(A^r\to A^s\to M\to0\). Then \(\operatorname{Hom}_A(M,N)\) is the kernel of \(N^s\to N^r\). Flatness preserves that kernel, giving
+
+\[
+B\otimes_A\operatorname{Hom}_A(M,N)
+\cong\operatorname{Hom}_B(B\otimes_A M,B\otimes_A N).
+\]
+
+The sheaf map is therefore an isomorphism on all analytic stalks; the identification of stalk Hom with module Hom follows from that same finite presentation, rather than from a general assertion about arbitrary sheaves. If \(\mathcal F^{\mathrm{an}}=0\), faithful flatness makes \(\mathcal F_x=0\) at every complex point. A nonzero coherent module restricted to some finite type affine chart has nonempty closed support there. Such a support has a maximal ideal, and the algebraic Nullstellensatz gives a complex point. Hence \(\mathcal F=0\). If a coherent-module morphism analytifies to zero, apply this argument to its coherent image, using exactness. This proves faithfulness even when \(X\) is not quasi-compact.
+
+For \(f:X\to Y\), the definitions of \(f^*\) and analytification give
+
+\[
+(f^*\mathcal G)^{\mathrm{an}}
+\cong(f^{\mathrm{an}})^*(\mathcal G^{\mathrm{an}}),
+\]
+
+by associativity along the commuting diagram of algebraic and analytic local ring maps. These maps commute because they were all constructed by the same coordinate substitutions. No flatness of \(f\) is needed for this right-exact tensor identity.
+
+For a closed immersion \(i:Y\hookrightarrow X\), write \(A\to A/I\) in a chart and \(B\to B/IB\) in its analytification. At a complex point of \(Y\) the two candidate pushforward stalks are canonically
+
+\[
+B\otimes_A M
+\ \cong\ (B/IB)\otimes_{A/I}M,
+\]
+
+where \(M\) is the stalk on \(Y\). Outside the closed set both stalks vanish. These natural stalk maps prove \((i_*\mathcal F)^{\mathrm{an}}\cong i^{\mathrm{an}}_*(\mathcal F^{\mathrm{an}})\). Finally, tensor \(0\to\mathcal I\to\mathcal O_X\to\mathcal O_X/\mathcal I\to0\). Exactness identifies its first image with the generated ideal and its cokernel with the displayed quotient. On stalks the extended ideal of \(I^k\) is \((IB)^k\), so powers are retained as well. \(\square\)
+
+**Proposition 5.2.** If \(X\) is a projective scheme over \(\mathbf C\), then \(X^{\mathrm{an}}\) is compact, whether or not \(X\) is reduced.
+
+**Proof.** The map from the unit sphere in \(\mathbf C^{n+1}\) to complex projective space, sending a unit vector to its line, is continuous and surjective. Thus \(\mathbf P^n(\mathbf C)\) is compact. It is Hausdorff, for instance by identifying a line with its orthogonal rank-one projection matrix. A closed immersion \(X\hookrightarrow\mathbf P^n\) analytifies to a closed analytic quotient model by Theorem 3.2. Its underlying point set is consequently closed and compact. Nilpotents change its sheaf, while this compactness proof concerns its point set. \(\square\)
+
+**Proposition 5.3 (properness and compactness).** A separated scheme \(X\) of finite type over \(\mathbf C\) is proper if and only if \(X^{\mathrm{an}}\) is compact.
+
+**Proof.** First take \(X\) reduced. The exact earlier programme input is *Projective morphisms and Chow's lemma*, Theorem 4.1, in *Morphisms of schemes*. Its proof constructs a proper surjection \(\pi:V\to X\) with an immersion \(V\hookrightarrow\mathbf P^n_{\mathbf C}\). Its hypotheses hold here: \(\operatorname{Spec}\mathbf C\) is Noetherian, and \(X\) is separated and of finite type. In this affine-base case the affine chart embeddings simply come from finite sets of algebra generators. The proof takes the schematic closure of a common dense affine-chart intersection in a product of projective spaces; it glues the inverse images of the affine charts and proves properness on that target cover. It uses neither analytification nor proper coherent direct images. Replace \(V\) by its reduction and let \(Y\) be its reduced closure in projective space. Then \(V\) is open and dense in the projective reduced scheme \(Y\), which need not be irreducible.
+
+The graph \(V\to X\times Y\) is closed. To check this, \(V\) is proper over \(X\), \(X\times Y\) is separated over \(X\), and any \(X\)-map from the former to the latter is proper: factor it as its closed graph followed by the base change of \(V\to X\). The graph map here is also a locally closed immersion because \(V\hookrightarrow Y\) is an open immersion. Its image is therefore closed, and is the graph with its induced reduced structure.
+
+If \(X\) is proper, composition makes \(V\) proper over \(\mathbf C\). Its immersion into projective space is proper by the same graph factorization, hence has closed image. Thus \(V=Y\). Proposition 5.2 makes \(V^{\mathrm{an}}\) compact. The map \(\pi^{\mathrm{an}}\) is surjective: for each complex point of \(X\), its nonempty finite type fibre has a closed point with residue field \(\mathbf C\). Its continuous image \(X^{\mathrm{an}}\) is compact.
+
+Conversely, assume \(X^{\mathrm{an}}\) compact. The analytic graph is a closed subset of \(X^{\mathrm{an}}\times Y^{\mathrm{an}}\) by Theorem 3.2. This product is compact, so projection makes \(V^{\mathrm{an}}\) compact and hence closed in the Hausdorff space \(Y^{\mathrm{an}}\). Section 4 makes it dense there. Consequently \(V(\mathbf C)=Y(\mathbf C)\). A nonempty closed subset of the finite type scheme \(Y\) has a complex point, so the complement of \(V\) is empty and \(V=Y\). A proper surjective image of a proper scheme is universally closed: after any base change, the image in the base of a closed subset of the target is the image of its closed inverse image in the proper source. The assumed finite type and separation of \(X\) now make it proper.
+
+For a general \(X\), the closed immersion \(X_{\mathrm{red}}\hookrightarrow X\) is surjective after every base change: its locally nilpotent ideal stays locally nilpotent. The same inverse-image argument shows that \(X\) is universally closed exactly when \(X_{\mathrm{red}}\) is; the reverse implication also follows by composition with that closed immersion. Since \(X\) is already separated and of finite type, properness of the two schemes is equivalent. Corollary 3.3 identifies their underlying analytic spaces. Applying the reduced result proves the assertion. \(\square\)
+
+## 6. Points, nilpotents and singularities
+
+Affine space analytifies to \(\mathbf C^n\), with all holomorphic functions on ordinary open subsets. The projective line analytifies to the Riemann sphere, whose two standard coordinates are related by \(w=1/z\).
+
+The double point \(\operatorname{Spec}\mathbf C[\epsilon]/(\epsilon^2)\) analytifies to a one-point space with ring \(\mathbf C\{z\}/(z^2)=\mathbf C[\epsilon]/(\epsilon^2)\). The identity and the map sending \(\epsilon\) to \(2\epsilon\) induce the same map of point sets but different analytic ring maps. This is why retaining the defining ideal is essential. Likewise, gluing two copies of \(\mathbf A^1\) along \(D(z)\) produces two analytic copies of \(\mathbf C\) glued along \(\mathbf C^*\): every neighbourhood of either origin meets every neighbourhood of the other. Its analytification is non-Hausdorff, as permitted by the nonseparated construction. An uncountable disjoint union of complex points is locally of finite type and has discrete uncountable analytification, so global second countability would also exclude schemes covered by Theorem 3.2.
+
+For the cuspidal cubic \(y^2=x^3\), the parametrization \(t\mapsto(t^2,t^3)\) is a continuous bijection \(\mathbf C\to X^{\mathrm{an}}\). Away from the origin its inverse is \(y/x\), and at the origin continuity follows from \(|t|^2=|x|\). It is a homeomorphism. It is not an analytic isomorphism: at the cusp the local ring is
+
+\[
+\mathbf C\{x,y\}/(y^2-x^3),
+\]
+
+of dimension one and cotangent dimension two. The relation has no linear term. This agrees with the algebraic singularity by Theorem 4.1. Moreover, substituting \((t^2,t^3)\) into a convergent germ never produces a linear term in \(t\), so the inverse parameter is not holomorphic at the cusp.
+
+Finally, \(\exp:\mathbf C\to\mathbf C^*\) is holomorphic. An algebraic morphism \(\mathbf A^1\to\mathbf G_m\) would send the invertible coordinate of \(\mathbf G_m\) to a unit in \(\mathbf C[z]\). All such units are nonzero constants. Thus the exponential is not algebraic. Faithfulness of analytification does not imply fullness on nonproper varieties.
+
+## 7. Exercises with solutions
+
+**Exercise 7.1 (easy).** Identify the analytification of affine space and explain why algebraic regular functions do not exhaust its global analytic functions.
+
+**Solution.** The ideal is zero in the chart construction, so the underlying space is \(\mathbf C^n\) and its sheaf is \(\mathcal O_{\mathbf C^n}\). For \(n\geq1\), the entire function \(e^{z_1}\) is not polynomial: its derivatives of every order in \(z_1\) are nonzero, whereas sufficiently high derivatives of a polynomial vanish.
+
+**Exercise 7.2 (easy).** Prove compactness of \(\mathbf P^n(\mathbf C)\), including \(n=0\).
+
+**Solution.** Every complex line meets the unit sphere. The quotient map from that compact sphere is continuous and surjective, so its image is compact. When \(n=0\), the quotient is one point. The projection-matrix description in Proposition 5.2 also verifies Hausdorffness.
+
+**Exercise 7.3 (medium).** Compute the completions at zero of \(\mathbf C[z]_{(z)}\) and \(\mathbf C\{z\}\), and the map between them.
+
+**Solution.** Modulo \((z)^m\), both rings consist of the same polynomials of total degree less than \(m\). In the algebraic localization a denominator with nonzero constant term has a finite geometric-series inverse modulo \((z)^m\). In the analytic ring Taylor truncation gives the same inverse. Their compatible quotients therefore have inverse limit \(\mathbf C[[z]]\), and the induced completion map is the identity on every coefficient.
+
+**Exercise 7.4 (medium).** Explain both exactness and detection of zero for coherent modules under analytification. Then compute the analytification of \(X=\operatorname{Spec}\mathbf C[t]/(t^3)\), its reduction and its maximal-ideal quotients. Show that the closed double point \(Y\hookrightarrow X\) defined by \((t^2)\) retains its ideal after analytification.
+
+**Solution.** At a complex point tensor with the faithfully flat local algebra \(B\). Flatness preserves an exact sequence, so every analytic stalk sequence is exact. Faithfulness implies that a finite algebraic stalk with zero tensor is zero. If a coherent algebraic module were nonzero, its closed support would contain a complex point, contradicting this detection. Applying this to the coherent image of a morphism proves detection of zero morphisms as well.
+
+The point set is \(\{0\}\), and Taylor division gives \(\mathcal O_{X^{\mathrm{an}},0}=\mathbf C\{t\}/(t^3)=\mathbf C[t]/(t^3)\). Its reduction is the one-point ring \(\mathbf C\). The quotients by the first, second and third powers of the maximal ideal have bases \(1\), then \(1,t\), then \(1,t,t^2\); all later quotients equal the last one. The ideal of \(Y^{\mathrm{an}}\) is the nonzero one-dimensional ideal generated by \(t^2\), and the quotient is \(\mathbf C[t]/(t^2)\). Replacing that ideal by the set-theoretic vanishing ideal \((t)\) would incorrectly replace the double point by its reduction.
+
+**Exercise 7.5 (medium).** Prove that no nonconstant algebraic morphism \(\mathbf A^1\to\mathbf G_m\) exists. Why does this not prohibit nonconstant holomorphic maps?
+
+**Solution.** A ring map \(\mathbf C[u,u^{-1}]\to\mathbf C[z]\) must send \(u\) to a polynomial unit, which is constant by degree additivity in a product equal to one. Analytically, a nowhere-zero entire function can be nonconstant; \(e^z\) and its reciprocal are both entire. The analytic function ring has additional units.
+
+**Exercise 7.6 (harder).** A homeomorphism need not remove a singularity. Verify this on the cuspidal parametrization and locate the failed inverse function.
+
+**Solution.** The inverse is continuous off the cusp by the quotient \(y/x\), and at the cusp by \(|t|=|x|^{1/2}\). The derivative of the parametrization at zero is zero, so Lemma 2.2 does not apply. More decisively, the analytic cusp ring embeds into \(\mathbf C\{t\}\) by substitution, but its image has no term of degree one. Hence it cannot contain the inverse coordinate \(t\). Its cotangent dimension is two, whereas that of \(\mathbf C\{t\}\) is one; the homeomorphism is not an isomorphism of locally ringed spaces.
+
+## 8. Proof providers and further reading
+
+The definitions and comparison follow the mathematical framework of J.-P. Serre, [*Géométrie algébrique et géométrie analytique*](https://www.numdam.org/item/AIF_1956__6__1_0/), Annales de l'Institut Fourier 6 (1956), 1–42, freely readable through Numdam. The article is credited as the historical source; the proofs used here are the ones supplied in this course and the specified openly reusable sources.
+
+The primary freely reusable human treatment is Demailly's [*Complex Analytic and Differential Geometry*](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf), version of 21 June 2012. Preparation and division here adapt II, Theorems 2.1 and 2.3, pp. 79–81, with Demailly's credit to Siegel's contour argument and the author's [custom OpenContent permission](https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html). That permission and authorship remain attached to this component. The bridge's Oka proof, Theorem 2.1 and Lemma 2.2, develops the polynomial-relation reduction from Demailly II, Theorem 3.19 and Lemma 3.20. Its local-parametrization and Nullstellensatz proof develops adapted coordinates, the primitive element and the discriminant before proving Theorem 5.1 for every ideal of the convergent ring; its Cartan proof develops the parameter-dependent interpolation before treating the general quotient models. These are the actual programme arguments used in Section 1, with their exact theorem locations linked there.
+
+The algebraic inputs have earlier programme proofs in *Commutative algebra for geometry*: **Completion**, Theorems 3.1–3.3 and 4.1; **Tor and flat modules**, Theorem 2.1; **Faithful flatness**, Theorems 1.1 and 2.2; **Noetherian and Artinian rings**, Proposition 2.2, Lemma 4.1 and Theorem 4.2; and **Krull dimension and Noether normalization**, Corollary 3.2. The complex-point assertions use **The Nullstellensatz and Jacobson rings**, Theorems 1.3 and 2.1, and closed support uses **Localization, local properties and support**, Theorem 5.1 and Proposition 6.1. The domain and semilocal-completion arguments needed to pass from reduced algebraic charts to reduced analytic charts are written out in Lemma 3.1. The properness criterion uses the actual earlier proof of **Projective morphisms and Chow's lemma**, Theorem 4.1, over the Noetherian base \(\operatorname{Spec}\mathbf C\). Sections 3–5 establish the full nonreduced construction and local comparison for locally finite type schemes, and the finite-isomorphism detection used in the next lesson.
+
+The [AI Integrated Stacks Project GAGA chapter](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-proposition-analytification) is additional comparison reading for its reduced-variety treatment. Its local and global statements carry that convention; the nonreduced statements proved here use the explicit quotient and completion arguments above. Exact provider identities and consumer hypotheses are recorded in the prerequisite record. Independently authored teaching material is CC0; Demailly's credited preparation-and-division component retains his OpenContent terms, and linked programme components retain their stated terms.

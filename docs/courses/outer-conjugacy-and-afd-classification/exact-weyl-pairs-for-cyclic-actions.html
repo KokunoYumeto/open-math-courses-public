@@ -1,0 +1,338 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Exact Weyl pairs for cyclic actions · Open Mathematics Courses</title><meta name="description" content="Exact Weyl pairs for cyclic actions: lesson draft with 5 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>One fixed shift works for the entire finite-order implementing sequence, with all factor types and prescribed faithful-state tolerance retained. The between-partition equivalence gap is repaired. Actual source, organization, exercises and direct proofs are compared; standard-form, factor trace/dimension and other transitive inputs remain explicit.</p></aside><article class="lesson"><h1 id="exact-weyl-pairs-for-cyclic-actions">Exact Weyl pairs for cyclic actions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026, with writing-AI self-checking. New original text is public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>A clock and a cyclic shift generate a full matrix algebra. For a cyclic action on a factor, we want the clock to be fixed by the action and the shift to be an eigenvector. We also want the clock's inner automorphism to approximate the given action.</p>
+<p>The difficulty is exactness. Approximate implementation gives an approximate commutation relation. Correcting spectral projections gives exact relations, but initially produces a different shift for each clock. We therefore make two corrections: first align the clock projections, then use fixed unitaries to identify all the shifts with one chosen shift. The second correction is what gives a single matrix generator together with an entire implementing sequence.</p>
+<p>The fixed-shift conclusion is [Takesaki III], Lemma XVII.3.19; its preceding Lemmas XVII.3.17–3.18 supply finite-order implementers and cyclic absorption. Here one tensor construction balances the clock spectra in every factor type, and Section 5 explicitly keeps one shift throughout the implementing sequence. [Connes], Theorem 2.3.1, supplies the earlier absorption framework.</p>
+<p>The immediate prerequisites are <a href="exact-implementers-for-cyclic-actions.html">Exact implementers for cyclic actions</a>, Theorem 4.2 and Proposition 5.1, and the product models in Section 5 of <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix eigenvectors and tensor absorption</a>. The implementer proof uses Proposition 6.3 of that lesson for absorption with the original action, before removing the ordinary finite-action cocycle. We use <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>: Section 5, (C4), makes the fixed algebra a factor; Sections 7–8, (F1)–(F7) and (I1)–(I2), prove that a fixed projection finite in that algebra is finite in the ambient algebra. Section 9, (K1), compares full infinite projections in a countably decomposable factor, and Section 11 checks exactly the finite, type II-infinite and type III cases used below. That lesson supplies the unrestricted finite-action proof and states its trace, standard-form and topology foundations. [Takesaki II], Proposition XI.2.26, is the finite-action source. Its printed proof treats the sigma-finite case and leaves arbitrary cardinality to the reader; the local prerequisite supplies that additional comparison explicitly. Strong stability and its general tensor-splitting interface remain prerequisites as in the preceding lessons. For bounded strong-star convergence, the faithful-state criterion and predual commutators we use <a href="bounded-topology-and-tracial-representations.html">Bounded ultrastrong topology and the semifinite tracial representation</a>, Theorem 3A.4 and Lemma 3A.5.</p>
+<p>The projection and multiplier arguments needed here are written below. [Ando–Haagerup], Section 3.1, gives the modern ultraproduct context; our moving-sequence estimates use ordinary limits. All convergence of inner automorphisms below is in the predual <span class="math">\(u\)</span>-topology.</p>
+<h2 id="1-the-exact-relation-we-seek">1. The exact relation we seek</h2>
+<p>Let <span class="math">\(M\)</span> be a strongly stable factor with separable predual. Assume</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\theta\in\overline{\operatorname{Inn}}M,
+\\
+\theta^p=\mathrm{id},\\
+p_a(\theta)=p\geq2,
+\\
+\lambda=e^{2\pi i/p}.
+\end{gathered}
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>Write <span class="math">\(Q=M^\theta\)</span>. Every power <span class="math">\(\theta^j\)</span>, <span class="math">\(0&lt;j&lt;p\)</span>, is outer: an inner power would act trivially on the asymptotic centralizer, contrary to <span class="math">\(p_a(\theta)=p\)</span>. In a factor, a nonzero intertwiner for an automorphism has scalar absolute values and polar part implementing that automorphism, so outerness gives freeness in the finite-action prerequisite. Its fixed-center formula (C4) makes <span class="math">\(Q\)</span> a factor. A faithful normal state of <span class="math">\(M\)</span> restricts to one on <span class="math">\(Q\)</span>, so it is countably decomposable. For a normal positive functional <span class="math">\(\varphi\)</span>, use</p>
+<div class="equation"><div class="math math-display">\[
+\|x\|_\varphi^\sharp
+=\bigl(\varphi(x^*x)+\varphi(xx^*)\bigr)^{1/2}.
+\]</div></div>
+<p><strong>Theorem 1.1 (a fixed shift and exact clocks).</strong> Suppose <span class="math">\(w\in\mathcal U(M)\)</span> satisfies</p>
+<div class="equation"><div class="math math-display">\[
+\theta(w)=\lambda w,\qquad w^p=1.
+
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Given a faithful normal state <span class="math">\(\varphi\)</span> and <span class="math">\(\varepsilon&gt;0\)</span>, there are a unitary <span class="math">\(v\)</span> and unitaries <span class="math">\(u_n\in Q\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\|v-w\|_\varphi^\sharp&lt;\varepsilon,
+\qquad \theta(v)=\lambda v,\qquad v^p=1,\\
+&amp;u_n^p=1,\qquad u_nvu_n^*=\lambda v,\\
+&amp;\operatorname{Ad}u_n\longrightarrow\theta.
+\end{aligned}
+
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>The unitary <span class="math">\(v\)</span> is the same for every <span class="math">\(n\)</span>.</p>
+<p>The Weyl relation in (1.3) says <span class="math">\(u_nv=\lambda vu_n\)</span>. In the standard matrix model, <span class="math">\(u_n\)</span> is the diagonal clock and <span class="math">\(v\)</span> advances one basis vector around a cycle. The case <span class="math">\(p=1\)</span> is separate and immediate: <span class="math">\(\theta=\mathrm{id}\)</span>, and both generators can be <span class="math">\(1\)</span>.</p>
+<p><img src="figures/cyclic-weyl-pair.svg" alt="The three basis vectors of the finite clock and shift model, with the shift advancing the cycle and the clock multiplying by successive cube roots of unity."></p>
+<p><em>Finite model for <span class="math">\(p=3\)</span>.</em> The arrows show <span class="math">\(v\xi_j=\xi_{j+1}\)</span>, with indices modulo three; the labels give <span class="math">\(u\xi_j=\lambda^j\xi_j\)</span>. Applying the two operators in opposite orders differs by exactly <span class="math">\(\lambda\)</span>. This represents the full matrix algebra in (6.2), rather than a choice of a basis for the ambient factor. Open the <a href="figures/cyclic-weyl-pair.svg">full-size diagram</a> to inspect its labels. The <a href="figures/draw_cyclic_weyl_pair.py">editable plotting source</a> reproduces both image formats using Matplotlib.</p>
+<h2 id="2-matching-nearby-projection-partitions">2. Matching nearby projection partitions</h2>
+<p>We need a matching lemma valid for moving projections in a countably decomposable factor. Equivalence of corresponding projections is part of its hypothesis.</p>
+<p><strong>Lemma 2.1.</strong> Let <span class="math">\(A\)</span> be a countably decomposable factor. For a fixed integer <span class="math">\(d\)</span>, let <span class="math">\((e_{j,n})_{j=1}^d\)</span> and <span class="math">\((f_{j,n})_{j=1}^d\)</span> be projection partitions of <span class="math">\(1\)</span>. Suppose</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+e_{j,n}\sim_A f_{j,n},\\
+e_{j,n}-f_{j,n}\longrightarrow0
+\\
+\text{strongly-star}
+\end{gathered}
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>for each <span class="math">\(j\)</span>. There are unitaries <span class="math">\(b_n\to1\)</span> strongly-star with</p>
+<div class="equation"><div class="math math-display">\[
+b_ne_{j,n}b_n^*=f_{j,n}\quad(1\leq j\leq d).
+
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p><em>Proof.</em> Fix a faithful normal state <span class="math">\(\rho\)</span> on <span class="math">\(A\)</span>. We first complete a single near partial isometry. Suppress <span class="math">\(j,n\)</span>, put <span class="math">\(x=fe\)</span>, and write <span class="math">\(x=t|x|\)</span>, with initial and final projections <span class="math">\(r\leq e\)</span>, <span class="math">\(s\leq f\)</span>. The positive element <span class="math">\((e-f)^2\)</span> commutes with both projections. Hence</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+e-e f e\leq(e-f)^2,\\
+f-f e f\leq(e-f)^2.
+\end{gathered}
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p>Functional calculus gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+e-r\leq e-e f e,
+\\
+f-s\leq f-f e f,
+\\
+\begin{cases}
+(t-x)^*(t-x)\leq e-e f e,\\
+(t-x)(t-x)^*\leq f-f e f.
+\end{cases}
+\end{gathered}
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>For example, on <span class="math">\(eAe\)</span>, the scalar inequality <span class="math">\((1-a)^2\leq1-a^2\)</span>, <span class="math">\(0\leq a\leq1\)</span>, bounds the polar-part error; the kernel projection is also bounded by <span class="math">\(1-|x|^2\)</span>. Equations (2.3)–(2.4) show that the support defects and <span class="math">\(t-x\)</span> tend strongly-star to zero.</p>
+<p>If <span class="math">\(e\)</span> and <span class="math">\(f\)</span> are finite, cancellation in their projection dimension, using <span class="math">\(e\sim f\)</span> and <span class="math">\(r\sim s\)</span>, gives <span class="math">\(e-r\sim f-s\)</span>. More explicitly, (NP6) makes <span class="math">\(g=e\vee f\)</span> finite. The corner <span class="math">\(gAg\)</span> is a finite factor; its faithful normalized trace assigns equal values to the two residual projections. Central comparison (NP2), followed by faithfulness of that trace on the unmatched remainder, gives their equivalence. If <span class="math">\(e,f\)</span> are infinite but <span class="math">\(r\)</span> is finite, the two complements are infinite and hence equivalent in a countably decomposable factor. In either case extend <span class="math">\(t\)</span> by a partial isometry from <span class="math">\(e-r\)</span> onto <span class="math">\(f-s\)</span>. The added term tends strongly-star to zero because both support defects do.</p>
+<p>In the remaining case <span class="math">\(r\)</span> is infinite. Split it into countably many orthogonal infinite projections. The finite normal functional</p>
+<div class="equation"><div class="math math-display">\[
+h\longmapsto\rho(h)+\rho(tht^*)\quad(h\in rAr)
+\]</div></div>
+<p>has arbitrarily small values on members of this partition. Choose an infinite <span class="math">\(h\leq r\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\rho(h)+\rho(tht^*)&lt;1/n.
+
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>The projections <span class="math">\(e-r+h\)</span> and <span class="math">\(f-s+tht^*\)</span> are both infinite and are equivalent. Complete <span class="math">\(t(r-h)\)</span> by a partial isometry <span class="math">\(a\)</span> between them. Then <span class="math">\(T=t(r-h)+a\)</span> has initial projection <span class="math">\(e\)</span> and final projection <span class="math">\(f\)</span>. Moreover</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|th\|_\rho^{\sharp,2}=\rho(h)+\rho(tht^*),
+\\
+\|a\|_\rho^{\sharp,2}
+=\rho(e-r+h)+\rho(f-s+tht^*).
+\end{gathered}
+\]</div></div>
+<p>Thus <span class="math">\(T-t\to0\)</span> strongly-star. These choices can be made at every index, whether its projections are finite or infinite. Zero projections require only the zero partial isometry.</p>
+<p>Apply this construction to every pair in (2.1), obtaining <span class="math">\(T_{j,n}\)</span> with their prescribed full supports and
+<span class="math">\(T_{j,n}-f_{j,n}e_{j,n}\to0\)</span> strongly-star. Orthogonality makes</p>
+<div class="equation"><div class="math math-display">\[
+b_n=\sum_{j=1}^dT_{j,n}
+\]</div></div>
+<p>unitary and gives (2.2). Finally put <span class="math">\(y=fe-e=(f-e)e\)</span>. Both squared errors are controlled even though <span class="math">\(e\)</span> moves:</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+y^*y=e-efe\leq(e-f)^2,\\
+yy^*=(f-e)e(f-e)\leq(e-f)^2.
+\end{gathered}
+\]</div></div>
+<p>Thus <span class="math">\(f_{j,n}e_{j,n}-e_{j,n}\to0\)</span> strongly-star. Sum over the fixed finite set of indices to obtain <span class="math">\(b_n\to1\)</span>. <span class="math">\(\square\)</span></p>
+<p>Both support estimates in (2.4) matter. A small initial support alone would not control the adjoint of the added partial isometry.</p>
+<h2 id="3-balancing-every-clock-spectrum">3. Balancing every clock spectrum</h2>
+<p>The approximate implementing clocks must have equivalent spectral projections in the fixed factor. A cyclic tensor factor arranges this exactly.</p>
+<p><strong>Lemma 3.1.</strong> Under (1.1), there are <span class="math">\(a_n\in Q\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+a_n^p=1,\qquad\operatorname{Ad}a_n\to\theta,
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>whose <span class="math">\(p\)</span> spectral projections are nonzero and mutually equivalent in <span class="math">\(Q\)</span>.</p>
+<p><em>Proof.</em> Proposition 5.1 of the exact-implementer lesson gives a normal isomorphism <span class="math">\(\Xi:M\to M\overline\otimes R\)</span> satisfying <span class="math">\(\Xi\circ\theta=(\theta\otimes\sigma_p)\circ\Xi\)</span>. Thus it conjugates <span class="math">\((M,\theta)\)</span> to</p>
+<div class="equation"><div class="math math-display">\[
+(M\overline\otimes R,\ \theta\otimes\sigma_p).
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>Construct the clocks there and pull them back by <span class="math">\(\Xi^{-1}\)</span>. This map carries the fixed algebra onto <span class="math">\(Q\)</span>, preserves spectral projections and partial-isometry equivalence, and transports <span class="math">\(u\)</span>-convergence through the isometric predual maps. Choose <span class="math">\(d_n\in\mathcal U(Q)\)</span> with <span class="math">\(d_n^p=1\)</span> and <span class="math">\(\operatorname{Ad}d_n\to\theta\)</span>, by Theorem 4.2 of that lesson. In the first <span class="math">\(n\)</span> coordinates of the model factor put</p>
+<div class="equation"><div class="math math-display">\[
+c_n=c_p\otimes\cdots\otimes c_p\otimes1\otimes1\otimes\cdots.
+\]</div></div>
+<p>Then <span class="math">\(c_n^p=1\)</span>, <span class="math">\(\sigma_p(c_n)=c_n\)</span>, and <span class="math">\(\operatorname{Ad}c_n\to\sigma_p\)</span>. Its spectral projections <span class="math">\(F_{k,n}\)</span>, with eigenvalues <span class="math">\(\lambda^k\)</span>, all have trace <span class="math">\(1/p\)</span>: the first clock coordinate alone has uniformly distributed eigenvalues, and multiplication by the remaining clock coordinates preserves this distribution.</p>
+<p>Set <span class="math">\(a_n=d_n\otimes c_n\)</span>. Product normal functionals and their norm density show that their inner automorphisms converge in the <span class="math">\(u\)</span>-topology to <span class="math">\(\theta\otimes\sigma_p\)</span>. If <span class="math">\(E_{j,n}\)</span> are the spectral projections of <span class="math">\(d_n\)</span>, then those of <span class="math">\(a_n\)</span> are</p>
+<div class="equation"><div class="math math-display">\[
+P_{k,n}=\sum_{j\in\mathbb Z/p\mathbb Z}
+E_{j,n}\otimes F_{k-j,n}.
+
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>They are fixed, and each is nonzero since some <span class="math">\(E_{j,n}\ne0\)</span>.</p>
+<p>If the ambient factor is finite, its normalized trace gives every <span class="math">\(P_{k,n}\)</span> trace <span class="math">\(1/p\)</span>. Restricting that trace to the fixed factor proves equivalence there. If the ambient factor is type <span class="math">\(\mathrm{II}_\infty\)</span>, its semifinite trace gives</p>
+<div class="equation"><div class="math math-display">\[
+(\tau\otimes\tau_R)(P_{k,n})
+=\frac1p\sum_j\tau(E_{j,n})=\infty.
+
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p>Thus these are infinite ambient projections. If the ambient factor is type <span class="math">\(\mathrm{III}\)</span>, their nonzero projections are likewise infinite. In both cases, fixed-corner finiteness transfer makes them infinite in the fixed factor: a finite fixed corner would be finite in the ambient algebra. That fixed algebra is a countably decomposable factor, so its infinite projections are equivalent. Strong stability excludes type <span class="math">\(\mathrm{I}\)</span> factors, since tensoring a type <span class="math">\(\mathrm{I}\)</span> factor with <span class="math">\(R\)</span> changes its type.</p>
+<p>This proves the claim in (3.2), hence on the original factor by conjugacy. <span class="math">\(\square\)</span></p>
+<p>The tensor factor in this proof provides equal spectral sizes even in the infinite-trace case. No reduction through an infinite matrix corner is needed.</p>
+<h2 id="4-correcting-an-approximate-weyl-relation">4. Correcting an approximate Weyl relation</h2>
+<p>Fix <span class="math">\(w\)</span> from (1.2) and clocks <span class="math">\(a_n\)</span> from Lemma 3.1. Let <span class="math">\(\alpha=\operatorname{Ad}w|_Q\)</span>; it is an automorphism of <span class="math">\(Q\)</span>, since <span class="math">\(\theta(w)=\lambda w\)</span>.</p>
+<p>Approximate implementation gives</p>
+<div class="equation"><div class="math math-display">\[
+a_nwa_n^*\longrightarrow\lambda w
+\quad\text{strongly-star}.
+\]</div></div>
+<p>To transfer this to a relation with the varying <span class="math">\(a_n\)</span>, multiplication needs justification. An implementing unitary sequence normalizes the bounded strong-star null ideal: its inner automorphisms and their inverses converge on each normal functional, so their transported positive functionals form a norm relatively compact set. Evaluating a bounded null sequence uniformly on such a set still tends to zero. Here is the needed estimate explicitly. If <span class="math">\(r_n\to0\)</span> strongly-star and <span class="math">\(\|r_n\|\leq L\)</span>, then for every positive normal <span class="math">\(\rho\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+&amp;\rho((r_na_n)^*(r_na_n))\\
+&amp;\leq L^2\|\rho\circ\operatorname{Ad}(a_n^*)
+-\rho\circ\theta^{-1}\|\\
+&amp;\quad+(\rho\circ\theta^{-1})(r_n^*r_n)
+\longrightarrow0.
+\end{aligned}
+\]</div></div>
+<p>The other square has value <span class="math">\(\rho(r_nr_n^*)\)</span>. Using the inverse implementing sequence and adjoints proves the corresponding left-multiplication assertion. A fixed normal automorphism preserves this null ideal and its two-sided multiplier algebra. This proves precisely the moving-functional assertion needed here.</p>
+<p>We may therefore multiply on the right by <span class="math">\(a_n\)</span> and by the fixed <span class="math">\(w^*\)</span>, obtaining</p>
+<div class="equation"><div class="math math-display">\[
+\alpha(a_n)-\overline\lambda a_n\longrightarrow0
+\quad\text{strongly-star}.
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>For an order-<span class="math">\(p\)</span> unitary its <span class="math">\(j\)</span>-th spectral projection is the polynomial</p>
+<div class="equation"><div class="math math-display">\[
+P_j(a)=\frac1p\sum_{r=0}^{p-1}\lambda^{-jr}a^r.
+
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>Set <span class="math">\(A_n=\alpha(a_n)\)</span> and <span class="math">\(B_n=\overline\lambda a_n\)</span>. Both sequences multiply the null ideal into itself on either side: for <span class="math">\(A_n\)</span>, conjugate the already proved assertion by the fixed inner automorphism <span class="math">\(\operatorname{Ad}w\)</span>. For every fixed positive integer <span class="math">\(r\)</span>, the noncommutative telescope is</p>
+<div class="equation"><div class="math math-display">\[
+A_n^r-B_n^r
+=\sum_{l=0}^{r-1}A_n^l(A_n-B_n)B_n^{r-1-l}.
+\]</div></div>
+<p>Each summand is strongly-star null by (4.1) and the multiplier property. Applying (4.2), with <span class="math">\(P_j(B_n)=P_{j+1}(a_n)\)</span>, yields</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\alpha(P_j(a_n))-P_{j+1}(a_n)\longrightarrow0
+\\
+\text{strongly-star}.
+\end{gathered}
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>All corresponding projections are equivalent in <span class="math">\(Q\)</span>. To check this comparison across the two partitions, first suppose <span class="math">\(Q\)</span> is finite. Lemma 3.1 gives trace <span class="math">\(1/p\)</span> to every <span class="math">\(P_j(a_n)\)</span>, and <span class="math">\(\alpha\)</span> preserves the normalized trace. If <span class="math">\(Q\)</span> is infinite, those <span class="math">\(p\)</span> equivalent projections are all infinite: otherwise their finite sum would make <span class="math">\(1_Q\)</span> finite, by (NP6). Their <span class="math">\(\alpha\)</span>-images are infinite as well, and (K1) compares any two in this countably decomposable factor. Lemma 2.1 gives <span class="math">\(b_n\in\mathcal U(Q)\)</span>, <span class="math">\(b_n\to1\)</span> strongly-star, with</p>
+<div class="equation"><div class="math math-display">\[
+b_n\alpha(P_j(a_n))b_n^*=P_{j+1}(a_n).
+
+\]</div><span class="equation-tag">(4.4)</span></div>
+<p>Put <span class="math">\(z_n=b_nw\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\theta(z_n)=\lambda z_n,
+\\
+z_na_nz_n^*=\overline\lambda a_n,
+\\
+z_n\longrightarrow w.
+\end{gathered}
+\]</div><span class="equation-tag">(4.5)</span></div>
+<p>The second relation implies that <span class="math">\(z_n^p\)</span> commutes with <span class="math">\(a_n\)</span>. Since <span class="math">\(\theta(z_n^p)=z_n^p\)</span>, use the principal Borel root from the preceding lesson and set</p>
+<div class="equation"><div class="math math-display">\[
+v_n=z_nf_p(z_n^p)^*.
+
+\]</div><span class="equation-tag">(4.6)</span></div>
+<p>These unitaries satisfy</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+v_n^p=1,\\
+\theta(v_n)=\lambda v_n,
+\\
+a_nv_na_n^*=\lambda v_n.
+\end{gathered}
+\]</div><span class="equation-tag">(4.7)</span></div>
+<p>The Borel factor commutes with both <span class="math">\(z_n\)</span> and <span class="math">\(a_n\)</span>, which proves all three assertions.</p>
+<p>Here the root also tends strongly-star to <span class="math">\(1\)</span>. Indeed <span class="math">\(z_n^p\to w^p=1\)</span>, and <span class="math">\(f_p\)</span> is continuous in a fixed neighborhood of <span class="math">\(1\)</span>. For clarity, write <span class="math">\(t_n=z_n^p\)</span> and choose <span class="math">\(0&lt;\eta&lt;1\)</span>. Spectral calculus gives</p>
+<div class="equation"><div class="math math-display">\[
+1_{\{|z-1|\geq\eta\}}(t_n)
+\leq\eta^{-2}(t_n-1)^*(t_n-1).
+\]</div></div>
+<p>Its value under every positive normal functional tends to zero. Choose a continuous function <span class="math">\(g\)</span> on the circle, bounded by <span class="math">\(1\)</span>, equal to <span class="math">\(f_p\)</span> on <span class="math">\(\{|z-1|&lt;\eta\}\)</span>. Then <span class="math">\(g(t_n)\to g(1)=1\)</span> strongly-star, by uniform Laurent approximation and bounded multiplication continuity. The normal operator <span class="math">\(f_p(t_n)-g(t_n)\)</span> has both squared absolute values bounded by four times that spectral projection. This proves strong-star convergence of the Borel root despite its discontinuity away from <span class="math">\(1\)</span>. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+v_n\longrightarrow w\quad\text{strongly-star}.
+
+\]</div><span class="equation-tag">(4.8)</span></div>
+<p>The limiting spectral point is <span class="math">\(1\)</span>, separated from the root's cut. This is a different situation from applying that root to an arbitrary central sequence near <span class="math">\(-1\)</span>.</p>
+<h2 id="5-keeping-one-shift-for-every-clock">5. Keeping one shift for every clock</h2>
+<p>Choose <span class="math">\(n_0\)</span> so large that <span class="math">\(v=v_{n_0}\)</span> obeys the required <span class="math">\(\varphi\)</span>-seminorm bound. We now conjugate every pair in (4.7) so that its shift becomes exactly <span class="math">\(v\)</span>.</p>
+<p>Let <span class="math">\(e_n\)</span>, <span class="math">\(e\)</span> and <span class="math">\(e_0\)</span> be the spectral projections at eigenvalue <span class="math">\(1\)</span> of <span class="math">\(v_n\)</span>, <span class="math">\(w\)</span> and <span class="math">\(v\)</span>, respectively. Formula (4.2) shows <span class="math">\(e_n\to e\)</span> strongly-star. For any order-<span class="math">\(p\)</span> unitary <span class="math">\(t\)</span> with <span class="math">\(\theta(t)=\lambda t\)</span>, the projections</p>
+<div class="equation"><div class="math math-display">\[
+e(t),\ \theta(e(t)),\ldots,\theta^{p-1}(e(t))
+
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>are a partition of <span class="math">\(1\)</span>. Their respective eigenvalues for <span class="math">\(t\)</span> are <span class="math">\(1,\lambda^{-1},\ldots,\lambda^{-(p-1)}\)</span>. The automorphism <span class="math">\(\theta\)</span> cyclically permutes these projections. If one were zero, all would be zero, contradicting their sum <span class="math">\(1\)</span>.</p>
+<p>These projections are equivalent in the ambient factor. In the finite case their traces are all <span class="math">\(1/p\)</span>. In the type <span class="math">\(\mathrm{II}_\infty\)</span> case, <span class="math">\(\theta\)</span> preserves the semifinite trace: its positive trace multiplier has <span class="math">\(p\)</span>-th power one. All the projections in (5.1) have equal trace and their sum has infinite trace, so each has infinite trace. In type <span class="math">\(\mathrm{III}\)</span>, every nonzero projection is equivalent to every other in the countably decomposable factor. These observations also give equivalence between the corresponding projections for <span class="math">\(v_n,w,v\)</span>.</p>
+<p>Lemma 2.1 applied to the two partitions for <span class="math">\(v_n\)</span> and <span class="math">\(w\)</span> gives <span class="math">\(d_n\to1\)</span> strongly-star with <span class="math">\(d_ne_nd_n^*=e\)</span>. Choose a fixed partial isometry <span class="math">\(r\)</span> from <span class="math">\(e\)</span> onto <span class="math">\(e_0\)</span>, and define</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+r_n=r d_n e_n,\\
+c_n=\sum_{j=0}^{p-1}\theta^j(r_n),
+\\
+c=\sum_{j=0}^{p-1}\theta^j(r).
+\end{gathered}
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>The endpoint identities are</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+r_n^*r_n=e_n,\\
+r_nr_n^*=e_0,
+\\
+r_n\longrightarrow r
+\\
+\text{strongly-star}.
+\end{gathered}
+\]</div></div>
+<p>Indeed <span class="math">\(d_ne_nd_n^*=e\)</span>, <span class="math">\(r^*r=e\)</span>, <span class="math">\(rr^*=e_0\)</span>, and <span class="math">\(d_n\to1\)</span>, <span class="math">\(e_n\to e\)</span>; bounded multiplication gives the limit. The initial projections of the summands in <span class="math">\(c_n\)</span> form the partition for <span class="math">\(v_n\)</span>; the final projections form the partition for <span class="math">\(v\)</span>. Thus <span class="math">\(c_n\)</span> is unitary. The same argument makes <span class="math">\(c\)</span> unitary. Cyclic permutation of the summands gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\theta(c_n)=c_n,\\
+\theta(c)=c,\\
+c_n\longrightarrow c\\
+\text{strongly-star},
+\\
+c_nv_nc_n^*=v.
+\end{gathered}
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>The final equality follows from the specified eigenvalues in (5.1).</p>
+<p>Set <span class="math">\(u_n=c_na_nc_n^*\)</span>. They belong to <span class="math">\(Q\)</span>, have order dividing <span class="math">\(p\)</span>, and (4.7) gives <span class="math">\(u_nvu_n^*=\lambda v\)</span>. Convergence of the unitary conjugations in (5.3) and the topological group law give</p>
+<div class="equation"><div class="math math-display">\[
+\operatorname{Ad}u_n
+\longrightarrow\operatorname{Ad}c\circ\theta\circ\operatorname{Ad}(c^*)
+=\theta,
+\]</div></div>
+<p>because <span class="math">\(c\)</span> is fixed by <span class="math">\(\theta\)</span>. This proves Theorem 1.1. <span class="math">\(\square\)</span></p>
+<p>The convergence <span class="math">\(c_n\to c\)</span> is essential here. Arbitrary conjugators identifying the shifts could destroy the limit of the inner automorphisms.</p>
+<h2 id="6-central-shifts-and-the-generated-matrix-algebra">6. Central shifts and the generated matrix algebra</h2>
+<p><strong>Corollary 6.1.</strong> Under (1.1), there are unitaries <span class="math">\(v_k,u_k\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\theta(v_k)=\lambda v_k,
+\\
+\theta(u_k)=u_k,
+\\
+v_k^p=u_k^p=1,
+\\
+u_kv_ku_k^*=\lambda v_k,
+\end{gathered}
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>where <span class="math">\((v_k)\)</span> is central and <span class="math">\(\operatorname{Ad}u_k\to\theta\)</span>.</p>
+<p><em>Proof.</em> In (3.2), choose the shift matrix <span class="math">\(s_p\)</span> in a single coordinate moving farther out in <span class="math">\(R\)</span>. It has <span class="math">\(s_p^p=1\)</span> and <span class="math">\(\sigma_p(s_p)=\lambda s_p\)</span>. The resulting <span class="math">\(w_k=1\otimes s_p\)</span> are central, by finite tensor tests and norm density of product normal functionals. Transporting by the fixed conjugacy gives such a central sequence on <span class="math">\(M\)</span>.</p>
+<p>Apply Theorem 1.1 to each <span class="math">\(w_k\)</span>, choosing <span class="math">\(\|v_k-w_k\|_\varphi^\sharp&lt;1/k\)</span> for one faithful state. Bounded strong-star convergence to zero of this difference makes its commutators with every normal functional tend to zero, by Cauchy–Schwarz and decomposition into positive functionals. Thus <span class="math">\((v_k)\)</span> remains central. From the implementing sequence attached to this particular <span class="math">\(v_k\)</span>, choose <span class="math">\(u_k\)</span> so that the first <span class="math">\(k\)</span> tests from a norm-dense predual family approximate <span class="math">\(\theta\)</span> within <span class="math">\(1/k\)</span>. Uniform boundedness extends these tests to all of <span class="math">\(M_*\)</span>. Equations (6.1) remain exact. <span class="math">\(\square\)</span></p>
+<p>For any pair <span class="math">\((u,v)\)</span> in (6.1), let</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+q_j=\frac1p\sum_{r=0}^{p-1}\lambda^{-jr}u^r,
+\\
+E_{ij}=v^i q_0 v^{-j}
+\\
+(0\leq i,j&lt;p).
+\end{gathered}
+\]</div><span class="equation-tag">(6.2)</span></div>
+<p>The Weyl relation gives <span class="math">\(v q_jv^*=q_{j+1}\)</span>. Hence <span class="math">\(E_{ij}^*=E_{ji}\)</span>, <span class="math">\(E_{ij}E_{kl}=\delta_{jk}E_{il}\)</span> and <span class="math">\(\sum_iE_{ii}=1\)</span>. In particular these are nonzero matrix units and generate a unital copy of <span class="math">\(M_p\)</span>. Their action is</p>
+<div class="equation"><div class="math math-display">\[
+\theta(E_{ij})=\lambda^{i-j}E_{ij}
+=uE_{ij}u^*.
+
+\]</div><span class="equation-tag">(6.3)</span></div>
+<p>This is the finite matrix piece used in cyclic tensor extraction. The corollary does not say that the clocks <span class="math">\(u_k\)</span> are central on all of <span class="math">\(M\)</span>: their inner automorphisms approximate <span class="math">\(\theta\)</span>, which may be nontrivial.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (introductory: the direction of the cycle).</strong> Suppose <span class="math">\(uvu^*=\lambda v\)</span> and <span class="math">\(u^p=v^p=1\)</span>. If <span class="math">\(q_j\)</span> is the <span class="math">\(\lambda^j\)</span>-spectral projection of <span class="math">\(u\)</span>, determine <span class="math">\(v q_jv^*\)</span>.</p>
+<p><em>Solution.</em> Rearranging the Weyl relation gives <span class="math">\(vuv^*=\overline\lambda u\)</span>. The <span class="math">\(\lambda^j\)</span>-spectral projection of <span class="math">\(\overline\lambda u\)</span> is <span class="math">\(q_{j+1}\)</span>. Thus <span class="math">\(v q_jv^*=q_{j+1}\)</span>. Equivalently <span class="math">\(v\)</span> carries a <span class="math">\(\lambda^j\)</span>-eigenvector of <span class="math">\(u\)</span> to a <span class="math">\(\lambda^{j+1}\)</span>-eigenvector.</p>
+<p><strong>Exercise 7.2 (intermediate: why the tensor clock balances traces).</strong> In a finite factor, let <span class="math">\(d^p=1\)</span> have spectral projection traces <span class="math">\(t_0,\ldots,t_{p-1}\)</span>. Let <span class="math">\(c^p=1\)</span> in a second finite factor have all spectral projection traces <span class="math">\(1/p\)</span>. Compute every spectral projection trace of <span class="math">\(d\otimes c\)</span>, including when some <span class="math">\(t_j=0\)</span>.</p>
+<p><em>Solution.</em> Its <span class="math">\(k\)</span>-th projection is <span class="math">\(\sum_jE_j\otimes F_{k-j}\)</span>, an orthogonal sum. Its trace is <span class="math">\(\sum_jt_j/p=1/p\)</span>, since <span class="math">\(\sum_jt_j=1\)</span>. Vanishing terms do not change the result. This is the finite version of (3.3)–(3.4).</p>
+<p><strong>Exercise 7.3 (intermediate: both supports in polar completion).</strong> Let <span class="math">\(a\)</span> be a partial isometry from <span class="math">\(e\)</span> onto <span class="math">\(f\)</span>. Compute <span class="math">\(\|a\|_\rho^\sharp\)</span>. Explain the two terms in (2.5).</p>
+<p><em>Solution.</em> Since <span class="math">\(a^*a=e\)</span> and <span class="math">\(aa^*=f\)</span>, the square of the seminorm is <span class="math">\(\rho(e)+\rho(f)\)</span>. For the removed piece <span class="math">\(th\)</span>, its initial projection is <span class="math">\(h\)</span> and its final projection is <span class="math">\(tht^*\)</span>. Their sum of masses controls both <span class="math">\(th\)</span> and its adjoint. Controlling only <span class="math">\(\rho(h)\)</span> would leave the final support uncontrolled.</p>
+<p><strong>Exercise 7.4 (advanced: one shift requires convergent conjugators).</strong> Assume <span class="math">\(\operatorname{Ad}a_n\to\theta\)</span>, <span class="math">\(\theta(c_n)=c_n\)</span>, and <span class="math">\(c_n\to c\)</span> strongly-star with <span class="math">\(c\)</span> unitary. Prove <span class="math">\(\operatorname{Ad}(c_na_nc_n^*)\to\theta\)</span>. Identify the step unavailable if the <span class="math">\(c_n\)</span> have no limit.</p>
+<p><em>Solution.</em> Strong-star convergence of unitaries gives <span class="math">\(\operatorname{Ad}c_n\to\operatorname{Ad}c\)</span> in the predual topology. The group law gives the limit <span class="math">\(\operatorname{Ad}c\circ\theta\circ\operatorname{Ad}(c^*)\)</span>. Normality of <span class="math">\(\theta\)</span> and strong-star convergence imply <span class="math">\(\theta(c)=c\)</span>, so this limit equals <span class="math">\(\theta\)</span>. Without convergence, one cannot pass to fixed limiting outer factors in this product of automorphisms; pointwise convergence on functionals need not be uniform on their varying conjugates.</p>
+<p><strong>Exercise 7.5 (advanced: recover all matrix entries).</strong> Verify the product rule and action formula in (6.2)–(6.3). Show that the clock has every <span class="math">\(p\)</span>-th root of unity in its spectrum.</p>
+<p><em>Solution.</em> The relation <span class="math">\(v q_jv^*=q_{j+1}\)</span> makes all the <span class="math">\(q_j\)</span> equivalent and their sum is <span class="math">\(1\)</span>. None can be zero: if one were zero, cyclic permutation would make every one zero. Also <span class="math">\(q_0v^m q_0=0\)</span> unless <span class="math">\(m=0\)</span> modulo <span class="math">\(p\)</span>. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+E_{ij}E_{kl}&amp;=v^i q_0v^{k-j}q_0v^{-l}\\
+&amp;=\delta_{jk}v^i q_0v^{-l}=\delta_{jk}E_{il}.
+\end{aligned}
+\]</div></div>
+<p>Adjoints and the diagonal sum are immediate. The projection <span class="math">\(q_0\)</span>, being a polynomial in the fixed <span class="math">\(u\)</span>, is fixed. Applying <span class="math">\(\theta\)</span> to the two powers of <span class="math">\(v\)</span> contributes <span class="math">\(\lambda^{i-j}\)</span>. Conjugation by <span class="math">\(u\)</span> contributes exactly the same phase. Thus the generated full matrix algebra is invariant, with the stated inner action.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'École Normale Supérieure, série 4, 8 (1975), 383–419. Used for the central-sequence and tensor-absorption framework. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Takesaki II] Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Encyclopaedia of Mathematical Sciences 125, Springer, 2003, Proposition XI.2.26, pp.347–348. Proposition XI.2.26 is the source of the finite-action fixed-center and coboundary argument. Its proof explicitly treats sigma-finite algebras and leaves the unrestricted cardinal comparison to the reader. The fixed-center, invariant-corner finiteness and countably decomposable projection comparisons used here are proved in <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>, Sections 2, 5 and 7–11. <a href="https://link.springer.com/book/10.1007/978-3-662-10451-4">Publisher record</a>.</p>
+<p>[Ando–Haagerup] Hiroshi Ando and Uffe Haagerup, <em>Ultraproducts of von Neumann algebras</em>, Journal of Functional Analysis 266 (2014), 6842–6913. Used for the bounded null-ideal multiplier formulation of central sequences. <a href="https://arxiv.org/abs/1212.5457v3">Open author version, v3</a>.</p>
+<p>[Takesaki III] Masamichi Takesaki, <em>Theory of Operator Algebras III</em>, Springer, 2003. Lemma XVII.3.19; the preceding Lemmas XVII.3.17–3.18 are on pages 285–286. The source states a single shift with an entire implementing sequence. Sections 3 and 5 here give the balanced tensor clocks and convergent fixed conjugators used to realize that full conclusion. <a href="https://doi.org/10.1007/978-3-662-10453-8">Publisher edition</a>.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/exact-weyl-pairs-for-cyclic-actions.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

@@ -1,0 +1,212 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bounded strip comparison from scalar proofs · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CP.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-AS.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original complete reconstruction by GPT-6 Astra (OpenAI), Ultra; reader integration by GPT-6.1 Sol (OpenAI), Ultra. Independently owner reviewed at exact earlier written programme proofs. General dual-Banach-space and weak-star isometry-group hypotheses are retained; no algebra, positivity or faithful-weight premise is added. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.AS.1">Bounded strip comparison from scalar proofs</h1>
+<p><em>Fresh local reconstruction, GPT-6 Astra (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.</em></p>
+<p>This proof supplies only the analytic comparison needed for operator-valued weight transport. All dual spaces below have a specified predual. A group of isometries means a group of complex-linear surjective isometries whose individual maps are weak-star continuous and whose real orbits are weak-star continuous. No algebra or positivity property of that group is assumed.</p>
+<p>The exact earlier written proofs are <a href="OA-FLOW-SF.html#oa-flow.sf.sf4">SF4 scalar Cauchy, maximum, Morera, identity and zero-edge proofs</a>; <span class="unlinked">FF2 scalar Fourier transform and Plancherel</span>; <a href="OA-FLOW-CP.html#oa-flow.cp.1">CP1</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.2">CP2</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.3">CP3</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.5">CP5</a>, <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a> for the concrete predual and its dual; <span class="unlinked">scalar interchange</span>, <a href="OA-FLOW-SC.html#sc-04">SC4 monotone convergence</a> and <a href="OA-FLOW-SC.html#sc-05">SC5 dominated convergence</a> for the scalar integrals. The transform convention is <span class="math" data-tex="\(\widehat p(s)=(2\pi)^{-1/2}\int p(x)e^{-isx}\,dx\)">\(\widehat p(s)=(2\pi)^{-1/2}\int p(x)e^{-isx}\,dx\)</span>, as fixed in <span class="unlinked">FF2</span>. The proofs below do not import three-lines, Carlson, Paley–Wiener, Stone, or a theorem about closed analytic generators.</p>
+<p>The development source for the exponential kernel and the comparison question is F. Hiai, <a href="https://arxiv.org/pdf/2004.02383v1">free author manuscript, arXiv:2004.02383v1</a>, printed pp. 75–77. The bounded-half-plane zero argument below replaces its printed Carlson footnote; only the stronger horizontal-band bound proved here is used.</p>
+<p><a id="oa-flow.as.1"></a><a id="as-1"></a></p>
+<h2 id="as1-two-elementary-analytic-bounds">AS1. Two elementary analytic bounds</h2>
+<p>Let <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, and let <span class="math" data-tex="\(f\)">\(f\)</span> be scalar, continuous on <span class="math" data-tex="\(-h\leq\operatorname{Im}z\leq0\)">\(-h\leq\operatorname{Im}z\leq0\)</span>, holomorphic inside, with a finite bound <span class="math" data-tex="\(M\)">\(M\)</span> on the entire strip. If both boundary lines have modulus at most <span class="math" data-tex="\(C\)">\(C\)</span>, then</p>
+<p><a id="equation-as1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ |f(z)|\leq C\qquad(-h\leq\operatorname{Im}z\leq0).                 \tag{AS1}
+\]">\[
+ |f(z)|\leq C\qquad(-h\leq\operatorname{Im}z\leq0).                 \tag{AS1}
+\]</span>
+Indeed, multiply by <span class="math" data-tex="\(e^{-\varepsilon z^2}\)">\(e^{-\varepsilon z^2}\)</span>, not by a function growing in the horizontal direction. On the horizontal sides of the rectangle <span class="math" data-tex="\([-R,R]\times[-h,0]\)">\([-R,R]\times[-h,0]\)</span> the modulus is at most <span class="math" data-tex="\(Ce^{\varepsilon h^2}\)">\(Ce^{\varepsilon h^2}\)</span>; on the vertical sides it is at most <span class="math" data-tex="\(Me^{-\varepsilon R^2+\varepsilon h^2}\)">\(Me^{-\varepsilon R^2+\varepsilon h^2}\)</span>. <a href="OA-FLOW-SF.html#oa-flow.sf.sf4">SF4</a> maximum modulus, followed by <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, gives
+<span class="math math-display" data-tex="\[
+ |f(z)e^{-\varepsilon z^2}|\leq Ce^{\varepsilon h^2}.
+\]">\[
+ |f(z)e^{-\varepsilon z^2}|\leq Ce^{\varepsilon h^2}.
+\]</span>
+Now let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Translation gives the same statement on every horizontal strip. This argument needs the finite bound on the whole strip; a bound on the two edges alone is not the premise.</p>
+<p>We also need the following zero statement:</p>
+<p><a id="equation-as2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{gathered}
+ g\text{ holomorphic and bounded on }\operatorname{Im}z&gt;0,\qquad
+ g(in)=0\quad(n=1,2,\ldots)\\
+ \Longrightarrow\quad g=0.                                      \tag{AS2}
+ \end{gathered}
+\]">\[
+ \begin{gathered}
+ g\text{ holomorphic and bounded on }\operatorname{Im}z&gt;0,\qquad
+ g(in)=0\quad(n=1,2,\ldots)\\
+ \Longrightarrow\quad g=0.
+ \end{gathered}\tag{AS2}
+\]</span>
+If <span class="math" data-tex="\(g\neq0\)">\(g\neq0\)</span>, the identity theorem gives a noninteger <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span> with <span class="math" data-tex="\(g(iy)\neq0\)">\(g(iy)\neq0\)</span>. Set
+<span class="math math-display" data-tex="\[
+ H(w)=g\!\left(iy\,\frac{1+w}{1-w}\right),\qquad |w|&lt;1.
+\]">\[
+ H(w)=g\!\left(iy\,\frac{1+w}{1-w}\right),\qquad |w|&lt;1.
+\]</span>
+The displayed map has positive imaginary part <span class="math" data-tex="\(y(1-|w|^2)/|1-w|^2\)">\(y(1-|w|^2)/|1-w|^2\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is bounded by some <span class="math" data-tex="\(M\)">\(M\)</span>. It vanishes at
+<span class="math math-display" data-tex="\[
+ a_n=\frac{n-y}{n+y}\in(-1,1),\qquad n\geq1.
+\]">\[
+ a_n=\frac{n-y}{n+y}\in(-1,1),\qquad n\geq1.
+\]</span>
+For any finite selection of these zeros, divide <span class="math" data-tex="\(H\)">\(H\)</span> by the product of the factors
+<span class="math math-display" data-tex="\[
+ B_{a_n}(w)=\frac{w-a_n}{1-a_nw}.
+\]">\[
+ B_{a_n}(w)=\frac{w-a_n}{1-a_nw}.
+\]</span>
+The quotient has removable singularities at the selected zeros. The maximum principle on <span class="math" data-tex="\(|w|\leq r\)">\(|w|\leq r\)</span>, followed by <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>, bounds its modulus by <span class="math" data-tex="\(M\)">\(M\)</span>, because each finite product has boundary modulus tending uniformly to <span class="math" data-tex="\(1\)">\(1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ |H(0)|\leq M\prod_{n=1}^{N}|a_n|.
+\]">\[
+ |H(0)|\leq M\prod_{n=1}^{N}|a_n|.
+\]</span>
+The finite factors are nonzero. For <span class="math" data-tex="\(n&gt;y\)">\(n&gt;y\)</span>,
+<span class="math math-display" data-tex="\[
+ \log a_n=\log\!\left(1-\frac{2y}{n+y}\right)
+ \leq-\frac{2y}{n+y},
+\]">\[
+ \log a_n=\log\!\left(1-\frac{2y}{n+y}\right)
+ \leq-\frac{2y}{n+y},
+\]</span>
+so the product tends to zero. This contradicts <span class="math" data-tex="\(H(0)\neq0\)">\(H(0)\neq0\)</span>, proving (<a href="OA-FLOW-AS.html#equation-as2">AS2</a>). The disk maximum principle here has the same elementary proof as <a href="OA-FLOW-SF.html#oa-flow.sf.sf4">SF4</a>'s rectangle version: the local power series makes <span class="math" data-tex="\(|H|^2\)">\(|H|^2\)</span> twice differentiable with nonnegative Laplacian; adding <span class="math" data-tex="\(\varepsilon|w|^2\)">\(\varepsilon|w|^2\)</span> excludes an interior maximum on a closed disk, and then <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives the boundary maximum.</p>
+<p>It follows in particular that an entire <span class="math" data-tex="\(f\)">\(f\)</span> satisfying</p>
+<p><a id="equation-as3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ |f(z)|\leq K e^{c|\operatorname{Im}z|},\qquad f(in)=0\quad(n\geq1),       \tag{AS3}
+\]">\[
+ |f(z)|\leq K e^{c|\operatorname{Im}z|},\qquad f(in)=0\quad(n\geq1),       \tag{AS3}
+\]</span>
+vanishes: <span class="math" data-tex="\(e^{icz}f(z)\)">\(e^{icz}f(z)\)</span> is bounded in the upper half-plane, so (<a href="OA-FLOW-AS.html#equation-as2">AS2</a>) applies there and the identity theorem finishes. The horizontal-band exponent, rather than a radial exponential bound, is essential to this proof.</p>
+<p><a id="oa-flow.as.2"></a><a id="as-2"></a></p>
+<h2 id="OA-FLOW.AS.2">AS2. Weak-star analytic maps and integration</h2>
+<p>For a dual Banach space <span class="math" data-tex="\(X=E^*\)">\(X=E^*\)</span>, a bounded weak-star continuous function of a real variable can be integrated against any <span class="math" data-tex="\(L^1\)">\(L^1\)</span> scalar kernel: its value is the functional
+<span class="math math-display" data-tex="\[
+ e\longmapsto \int k(s)\langle F(s),e\rangle\,ds,\qquad e\in E.
+\]">\[
+ e\longmapsto \int k(s)\langle F(s),e\rangle\,ds,\qquad e\in E.
+\]</span>
+This defines an element of <span class="math" data-tex="\(X\)">\(X\)</span>, of norm at most <span class="math" data-tex="\(\int|k(s)|\,\|F(s)\|\,ds\)">\(\int|k(s)|\,\|F(s)\|\,ds\)</span>. The same construction defines circle integrals for weak-star continuous, norm-bounded curves.</p>
+<p>A locally norm-bounded weak-star holomorphic map is norm holomorphic. To see this without an additional vector-valued theorem, take a closed circle of radius <span class="math" data-tex="\(r\)">\(r\)</span> in its domain, use the preceding integrals to form its Cauchy coefficients <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, and apply the scalar circle formula to every <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>. If the bound on the circle is <span class="math" data-tex="\(M\)">\(M\)</span>, then <span class="math" data-tex="\(\|A_n\|\leq Mr^{-n}\)">\(\|A_n\|\leq Mr^{-n}\)</span>. The norm-convergent power series on every smaller disk equals the original map after pairing with all <span class="math" data-tex="\(e\)">\(e\)</span>, hence equals it in <span class="math" data-tex="\(X\)">\(X\)</span>. The same argument proves the norm Cauchy formula. Scalar continuity on a closed strip, uniform norm bounds, and scalar holomorphy inside are sufficient for every use of this observation below.</p>
+<p>For bounded scalar functions, two adjacent closed-strip holomorphic functions that agree on the shared line glue holomorphically across it. Subdivide a small rectangle meeting the line into upper and lower rectangles with a gap of width <span class="math" data-tex="\(2\delta\)">\(2\delta\)</span>. Their boundary integrals vanish; continuity makes the gap contributions cancel as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. <a href="OA-FLOW-SF.html#oa-flow.sf.sf4">SF4</a> Morera applies. Testing by every <span class="math" data-tex="\(e\)">\(e\)</span>, and then using the preceding local norm bounds, proves the corresponding assertion for dual-valued maps.</p>
+<p><a id="oa-flow.as.3"></a><a id="as-3"></a></p>
+<h2 id="OA-FLOW.AS.3">AS3. A dense class with a horizontal exponential bound</h2>
+<p>Let <span class="math" data-tex="\((\alpha_t)_{t\in\mathbb R}\)">\((\alpha_t)_{t\in\mathbb R}\)</span> be a group of isometries of <span class="math" data-tex="\(X=E^*\)">\(X=E^*\)</span> in the opening sense. An element <span class="math" data-tex="\(a\)">\(a\)</span> is called exponential here if its orbit is the restriction of a norm-entire map <span class="math" data-tex="\(A:\mathbb C\to X\)">\(A:\mathbb C\to X\)</span> satisfying</p>
+<p><a id="equation-as4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A(t)=\alpha_t(a),\qquad
+ \|A(z)\|\leq K e^{c|\operatorname{Im}z|}                           \tag{AS4}
+\]">\[
+ A(t)=\alpha_t(a),\qquad
+ \|A(z)\|\leq K e^{c|\operatorname{Im}z|}                           \tag{AS4}
+\]</span>
+for finite <span class="math" data-tex="\(K,c\geq0\)">\(K,c\geq0\)</span>. Such an extension is unique by scalar identity. It satisfies <span class="math" data-tex="\(A(z+t)=\alpha_t(A(z))\)">\(A(z+t)=\alpha_t(A(z))\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>: both sides are weak-star holomorphic and agree when <span class="math" data-tex="\(z\)">\(z\)</span> is real. In particular <span class="math" data-tex="\(A(z_0)\)">\(A(z_0)\)</span> is exponential, with extension <span class="math" data-tex="\(z\mapsto A(z+z_0)\)">\(z\mapsto A(z+z_0)\)</span>.</p>
+<p>For <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span> put</p>
+<p><a id="equation-as5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ p_R(x)=R^{-1/2}1_{[-R/2,R/2]}(x),\qquad
+ q_R(z)=\widehat p_R(z)^2
+       =\frac{1-\cos(Rz)}{\pi Rz^2},\quad q_R(0)=\frac R{2\pi}.     \tag{AS5}
+\]">\[
+ p_R(x)=R^{-1/2}1_{[-R/2,R/2]}(x),\qquad
+ q_R(z)=\widehat p_R(z)^2
+       =\frac{1-\cos(Rz)}{\pi Rz^2},\quad q_R(0)=\frac R{2\pi}.     \tag{AS5}
+\]</span>
+The apparent singularity is removable by the scalar power series. Direct integration of <span class="math" data-tex="\(p_R\)">\(p_R\)</span> gives
+<span class="math math-display" data-tex="\[
+ \widehat p_R(z)=\sqrt{\frac2{\pi R}}\,\frac{\sin(Rz/2)}z.
+\]">\[
+ \widehat p_R(z)=\sqrt{\frac2{\pi R}}\,\frac{\sin(Rz/2)}z.
+\]</span>
+Since <span class="math" data-tex="\(p_R\in L^1\cap L^2\)">\(p_R\in L^1\cap L^2\)</span>, <span class="unlinked">FF2</span> gives</p>
+<p><a id="equation-as6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ q_R(s)\geq0,\quad \int_{\mathbb R}q_R(s)\,ds=1,\quad
+ \int_{|s|&gt;\delta}q_R(s)\,ds\leq\frac4{\pi R\delta}\quad(\delta&gt;0).
+                                                                    \tag{AS6}
+\]">\[
+ q_R(s)\geq0,\quad \int_{\mathbb R}q_R(s)\,ds=1,\quad
+ \int_{|s|&gt;\delta}q_R(s)\,ds\leq\frac4{\pi R\delta}\quad(\delta&gt;0).
+                                                                    \tag{AS6}
+\]</span>
+The last bound uses <span class="math" data-tex="\(1-\cos(Rs)\leq2\)">\(1-\cos(Rs)\leq2\)</span>. For every real <span class="math" data-tex="\(v\)">\(v\)</span>, apply <span class="unlinked">FF2</span> to the compactly supported function <span class="math" data-tex="\(p_R(x)e^{vx}\)">\(p_R(x)e^{vx}\)</span>; its Fourier transform is the same directly evaluated integral <span class="math" data-tex="\(\widehat p_R(s+iv)\)">\(\widehat p_R(s+iv)\)</span>. Therefore</p>
+<p><a id="equation-as7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{split}
+ \int_{\mathbb R}|q_R(s+iv)|\,ds
+ &amp;=\int_{\mathbb R}|\widehat p_R(s+iv)|^2\,ds\\
+ &amp;=\frac1R\int_{-R/2}^{R/2}e^{2vx}\,dx
+ =\frac{\sinh(Rv)}{Rv}\leq e^{R|v|},                              \tag{AS7}
+ \end{split}
+\]">\[
+ \begin{split}
+ \int_{\mathbb R}|q_R(s+iv)|\,ds
+ &amp;=\int_{\mathbb R}|\widehat p_R(s+iv)|^2\,ds\\
+ &amp;=\frac1R\int_{-R/2}^{R/2}e^{2vx}\,dx
+ =\frac{\sinh(Rv)}{Rv}\leq e^{R|v|},
+ \end{split}\tag{AS7}
+\]</span>
+where the ratio is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(v=0\)">\(v=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(a\in X\)">\(a\in X\)</span>, define the weak-star integral</p>
+<p><a id="equation-as8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A_R(z)=\int_{\mathbb R}q_R(s-z)\alpha_s(a)\,ds,\qquad a_R=A_R(0).
+                                                                    \tag{AS8}
+\]">\[
+ A_R(z)=\int_{\mathbb R}q_R(s-z)\alpha_s(a)\,ds,\qquad a_R=A_R(0).
+                                                                    \tag{AS8}
+\]</span>
+On each compact set of <span class="math" data-tex="\(z\)">\(z\)</span>'s the kernel is bounded by <span class="math" data-tex="\(C/(1+s^2)\)">\(C/(1+s^2)\)</span>: for large <span class="math" data-tex="\(|s|\)">\(|s|\)</span> this follows from (<a href="OA-FLOW-AS.html#equation-as5">AS5</a>), and on the remaining compact set it follows from removal of the singularity. Cauchy estimates on slightly larger compact sets give the same integrable domination for each local Taylor coefficient and its remainder. Thus <span class="math" data-tex="\(z\mapsto q_R(\,\cdot-z)\)">\(z\mapsto q_R(\,\cdot-z)\)</span> is holomorphic in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and (<a href="OA-FLOW-AS.html#equation-as8">AS8</a>) is norm entire. Change of variable and weak-star continuity of <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> give</p>
+<p><a id="equation-as9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A_R(t)=\alpha_t(a_R),\qquad
+ \|A_R(z)\|\leq\|a\|e^{R|\operatorname{Im}z|}.                    \tag{AS9}
+\]">\[
+ A_R(t)=\alpha_t(a_R),\qquad
+ \|A_R(z)\|\leq\|a\|e^{R|\operatorname{Im}z|}.                    \tag{AS9}
+\]</span>
+Finally (<a href="OA-FLOW-AS.html#equation-as6">AS6</a>), continuity at zero of <span class="math" data-tex="\(s\mapsto\langle\alpha_s(a),e\rangle\)">\(s\mapsto\langle\alpha_s(a),e\rangle\)</span>, and its uniform bound prove <span class="math" data-tex="\(\langle a_R,e\rangle\to\langle a,e\rangle\)">\(\langle a_R,e\rangle\to\langle a,e\rangle\)</span> for every <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>. Hence the exponential elements are weak-star dense. Also <span class="math" data-tex="\(\|a_R\|\leq\|a\|\)">\(\|a_R\|\leq\|a\|\)</span>; no unbounded approximation is being used.</p>
+<p><a id="oa-flow.as.4"></a><a id="as-4"></a></p>
+<h2 id="OA-FLOW.AS.4">AS4. Comparison from one-strip continuations</h2>
+<p>Let <span class="math" data-tex="\(Y\subset X\)">\(Y\subset X\)</span> be a weak-star closed subspace, with its inherited predual topology. Let <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\gamma_t\)">\(\gamma_t\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> be groups as above. Suppose that for every norm-entire <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>-orbit <span class="math" data-tex="\(A(z)=\gamma_z(a)\)">\(A(z)=\gamma_z(a)\)</span> there is an <span class="math" data-tex="\(X\)">\(X\)</span>-valued function <span class="math" data-tex="\(B_a\)">\(B_a\)</span> on the closed lower unit strip that is weak-star continuous, holomorphic inside, bounded on the whole strip, and satisfies</p>
+<p><a id="equation-as10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ B_a(t)=\alpha_t(a),\qquad
+ B_a(t-i)=\alpha_t(\gamma_{-i}(a))\quad(t\in\mathbb R).             \tag{AS10}
+\]">\[
+ B_a(t)=\alpha_t(a),\qquad
+ B_a(t-i)=\alpha_t(\gamma_{-i}(a))\quad(t\in\mathbb R).             \tag{AS10}
+\]</span>
+Then</p>
+<p><a id="equation-as11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_t(y)=\gamma_t(y)\qquad(y\in Y,\ t\in\mathbb R).             \tag{AS11}
+\]">\[
+ \alpha_t(y)=\gamma_t(y)\qquad(y\in Y,\ t\in\mathbb R).             \tag{AS11}
+\]</span></p>
+<p>Fix an exponential <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>, and write its entire extension as <span class="math" data-tex="\(A(z)\)">\(A(z)\)</span>, with bound (<a href="OA-FLOW-AS.html#equation-as4">AS4</a>). For every integer <span class="math" data-tex="\(k\)">\(k\)</span>, apply (<a href="OA-FLOW-AS.html#equation-as10">AS10</a>) to <span class="math" data-tex="\(a_k=A(ik)\)">\(a_k=A(ik)\)</span>, whose entire orbit is <span class="math" data-tex="\(A(z+ik)\)">\(A(z+ik)\)</span>. Put</p>
+<p><a id="equation-as12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ F(z)=B_{a_k}(z-ik)
+ \quad\text{on }k-1\leq\operatorname{Im}z\leq k.                 \tag{AS12}
+\]">\[
+ F(z)=B_{a_k}(z-ik)
+ \quad\text{on }k-1\leq\operatorname{Im}z\leq k.                 \tag{AS12}
+\]</span>
+At the shared line of adjacent strips both definitions equal <span class="math" data-tex="\(\alpha_t(a_k)\)">\(\alpha_t(a_k)\)</span>, so <a href="OA-FLOW-AS.html#oa-flow.as.2">AS2</a> glues them. For <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>, <a href="OA-FLOW-AS.html#oa-flow.as.1">AS1</a> bounds its scalar values on the strip by
+<span class="math math-display" data-tex="\[
+ |\langle F(z),e\rangle|
+ \leq \max(\|a_k\|,\|a_{k-1}\|)\,\|e\|.
+\]">\[
+ |\langle F(z),e\rangle|
+ \leq \max(\|a_k\|,\|a_{k-1}\|)\,\|e\|.
+\]</span>
+Duality therefore gives <span class="math" data-tex="\(\|F(z)\|\leq K e^{c(|\operatorname{Im}z|+1)}\)">\(\|F(z)\|\leq K e^{c(|\operatorname{Im}z|+1)}\)</span>. The function <span class="math" data-tex="\(F\)">\(F\)</span> is norm entire by <a href="OA-FLOW-AS.html#oa-flow.as.2">AS2</a>, satisfies <span class="math" data-tex="\(F(t)=\alpha_t(y)\)">\(F(t)=\alpha_t(y)\)</span>, and <span class="math" data-tex="\(F(ik)=A(ik)\)">\(F(ik)=A(ik)\)</span> for all integers <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>For every <span class="math" data-tex="\(e\)">\(e\)</span>, the scalar function <span class="math" data-tex="\(\langle F(z)-A(z),e\rangle\)">\(\langle F(z)-A(z),e\rangle\)</span> satisfies (<a href="OA-FLOW-AS.html#equation-as3">AS3</a>), with possibly a larger constant <span class="math" data-tex="\(K\)">\(K\)</span>. <a href="OA-FLOW-AS.html#oa-flow.as.1">AS1</a>'s half-plane zero proof shows that it is zero. Thus <span class="math" data-tex="\(F=A\)">\(F=A\)</span>, proving (<a href="OA-FLOW-AS.html#equation-as11">AS11</a>) on all exponential elements. By <a href="OA-FLOW-AS.html#oa-flow.as.3">AS3</a> those elements are weak-star dense in <span class="math" data-tex="\(Y\)">\(Y\)</span>, and the individual maps <span class="math" data-tex="\(\alpha_t,\gamma_t\)">\(\alpha_t,\gamma_t\)</span> are weak-star continuous. This proves (<a href="OA-FLOW-AS.html#equation-as11">AS11</a>) for every <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>The theorem uses a bounded continuation separately for each entire element and each of its imaginary translates. It does not assume, or claim to prove, a general closed analytic-generator calculus. That narrower statement is sufficient for the modular and cocycle applications.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-CP.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-AS.md">Lesson source</a></nav></main></body></html>

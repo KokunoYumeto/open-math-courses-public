@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compatible jets on closed sets</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="compatible-jets-on-closed-sets">Compatible jets on closed sets</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Prescribing a function and its derivatives on a closed set is more than assigning numbers at its points. Nearby assignments must fit one Taylor expansion to the required order. Whitney's extension theorem says that this compatibility is exactly what is needed. The proof glues local Taylor polynomials at a scale comparable to the distance from the set. Its estimate then describes what a finite-order distribution supported on that set can measure.</p>
+<p>The prerequisites are <a href="jets-supported-distributions-and-local-operators.html">Jets, supported distributions and local operators</a>, <a href="referenced-prerequisite-statements.html#reference-ab841328a79b">When a kernel is smooth</a>, Taylor's formula, smooth mollifiers and elementary Euclidean distance geometry. We prove the extension construction and its bounds, including the partition used in the gluing. References are the original paper [Whitney 1934], the jet perspective of [Kolář–Michor–Slovák 1993], and the distribution background in [Dyatlov 2026].</p>
+<h2 id="the-information-between-two-points">The information between two points</h2>
+<p>Fix a nonempty compact set <span class="math" data-tex="\(F\subset\mathbb R^n\)">\(F\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and an integer <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>. A jet of order <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span> is a family of continuous scalar functions <span class="math" data-tex="\(f_\alpha:F\to\mathbb C\)">\(f_\alpha:F\to\mathbb C\)</span>, indexed by <span class="math" data-tex="\(|\alpha|\le k\)">\(|\alpha|\le k\)</span>. The intended meaning is <span class="math" data-tex="\(f_\alpha=\partial^\alpha f|_F\)">\(f_\alpha=\partial^\alpha f|_F\)</span>, but no extension is assumed yet. At <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, form the polynomial</p>
+<span class="math math-display" data-tex="\[
+P_a(x)=\sum_{|\alpha|\le k}
+\frac{f_\alpha(a)}{\alpha!}(x-a)^\alpha.
+\tag{1.1}
+\]">\[
+P_a(x)=\sum_{|\alpha|\le k}
+\frac{f_\alpha(a)}{\alpha!}(x-a)^\alpha.
+\tag{1.1}
+\]</span>
+<p>For <span class="math" data-tex="\(a,b\in F\)">\(a,b\in F\)</span>, <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, define the normalized remainder</p>
+<span class="math math-display" data-tex="\[
+R_\alpha(a,b)=
+\frac{f_\alpha(a)-\partial^\alpha P_b(a)}
+{|a-b|^{k-|\alpha|}}.
+\tag{1.2}
+\]">\[
+R_\alpha(a,b)=
+\frac{f_\alpha(a)-\partial^\alpha P_b(a)}
+{|a-b|^{k-|\alpha|}}.
+\tag{1.2}
+\]</span>
+<p>On the diagonal put <span class="math" data-tex="\(R_\alpha(a,a)=0\)">\(R_\alpha(a,a)=0\)</span>. The Whitney compatibility condition is that each <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> is continuous on <span class="math" data-tex="\(F\times F\)">\(F\times F\)</span>, including that diagonal value. Equivalently,</p>
+<span class="math math-display" data-tex="\[
+\omega(r)=\max_{|\alpha|\le k}
+\sup_{\substack{a,b\in F\\0&lt;|a-b|\le r}}
+|R_\alpha(a,b)|\longrightarrow0
+\quad(r\downarrow0).
+\tag{1.3}
+\]">\[
+\omega(r)=\max_{|\alpha|\le k}
+\sup_{\substack{a,b\in F\\0&lt;|a-b|\le r}}
+|R_\alpha(a,b)|\longrightarrow0
+\quad(r\downarrow0).
+\tag{1.3}
+\]</span>
+<p>The supremum over an empty set is zero. Continuity away from the diagonal already follows from the continuity of the <span class="math" data-tex="\(f_\alpha\)">\(f_\alpha\)</span>. Compactness makes continuity at all diagonal points equivalent to the uniform condition (1.3). For <span class="math" data-tex="\(|\alpha|=k\)">\(|\alpha|=k\)</span>, the denominator in (1.2) is one, so this part of the condition is simply continuity of the top jet values.</p>
+<p>Write <span class="math" data-tex="\(W^k(F)\)">\(W^k(F)\)</span> for these compatible jets, with norm</p>
+<span class="math math-display" data-tex="\[
+\|f\|_{W^k(F)}
+=\sum_{|\alpha|\le k}\sup_F|f_\alpha|
++\sum_{|\alpha|\le k}\sup_{F\times F}|R_\alpha|.
+\tag{1.4}
+\]">\[
+\|f\|_{W^k(F)}
+=\sum_{|\alpha|\le k}\sup_F|f_\alpha|
++\sum_{|\alpha|\le k}\sup_{F\times F}|R_\alpha|.
+\tag{1.4}
+\]</span>
+<p>This is a norm because its first sum detects every component. The second sum is finite by continuity on the compact product. When <span class="math" data-tex="\(F\)">\(F\)</span> is a single point, that sum is zero, and any finite jet is compatible.</p>
+<p>Every <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function on a neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span> gives a compatible jet. Indeed Taylor's formula for each <span class="math" data-tex="\(\partial^\alpha f\)">\(\partial^\alpha f\)</span> gives its remainder as <span class="math" data-tex="\(o(|a-b|^{k-|\alpha|})\)">\(o(|a-b|^{k-|\alpha|})\)</span>, uniformly for nearby points of <span class="math" data-tex="\(F\)">\(F\)</span>. The uniformity uses continuity of the order-<span class="math" data-tex="\(k\)">\(k\)</span> derivatives on a compact neighborhood. Segments between sufficiently close points stay in that neighborhood. For <span class="math" data-tex="\(|\alpha|=k\)">\(|\alpha|=k\)</span>, ordinary continuity supplies the assertion.</p>
+<p>We will prove the converse with a bounded linear extension. The word linear refers to the entire family of assigned jet values.</p>
+<h2 id="a-partition-whose-scale-follows-the-distance">A partition whose scale follows the distance</h2>
+<p>Put <span class="math" data-tex="\(\Omega=\mathbb R^n\setminus F\)">\(\Omega=\mathbb R^n\setminus F\)</span> and <span class="math" data-tex="\(d(x)=\operatorname{dist}(x,F)\)">\(d(x)=\operatorname{dist}(x,F)\)</span>. We need cutoffs on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> whose derivatives grow only like powers of <span class="math" data-tex="\(d(x)^{-1}\)">\(d(x)^{-1}\)</span>. Fixed-size cutoffs would not resolve the small gaps near <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Lemma 2.1 (a distance-adapted partition).</strong> There is a countable locally finite smooth partition <span class="math" data-tex="\(1=\sum_Q\psi_Q\)">\(1=\sum_Q\psi_Q\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with <span class="math" data-tex="\(0\le\psi_Q\le1\)">\(0\le\psi_Q\le1\)</span>, and points <span class="math" data-tex="\(a_Q\in F\)">\(a_Q\in F\)</span>, such that:</p>
+<ol>
+<li>At each point at most <span class="math" data-tex="\(N_n\)">\(N_n\)</span> functions have nonzero support there.</li>
+<li>Each support is compact in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, its diameter is at most twice its distance from <span class="math" data-tex="\(F\)">\(F\)</span>, and
+<span class="math math-display" data-tex="\[
+|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
+\tag{2.1}
+\]">\[
+|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
+\tag{2.1}
+\]</span></li>
+<li>If <span class="math" data-tex="\(x\in\operatorname{supp}\psi_Q\)">\(x\in\operatorname{supp}\psi_Q\)</span>, then
+<span class="math math-display" data-tex="\[
+|x-a_Q|\le C_n d(x).
+\tag{2.2}
+\]">\[
+|x-a_Q|\le C_n d(x).
+\tag{2.2}
+\]</span></li>
+</ol>
+<p>The constants depend on dimension and derivative order, not on a smoothness assumption about <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Use the usual dyadic grid of cubes, with side lengths <span class="math" data-tex="\(2^j\)">\(2^j\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. Select maximal cubes <span class="math" data-tex="\(Q\)">\(Q\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+4\operatorname{diam}Q\le\operatorname{dist}(Q,F).
+\tag{2.3}
+\]">\[
+4\operatorname{diam}Q\le\operatorname{dist}(Q,F).
+\tag{2.3}
+\]</span>
+<p>Distances and diameters here refer to the closed cube. Every point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is contained in sufficiently small admissible cubes. The chain of parents cannot remain admissible forever: a fixed point of <span class="math" data-tex="\(F\)">\(F\)</span> bounds the distance of any parent containing <span class="math" data-tex="\(x\)">\(x\)</span> from <span class="math" data-tex="\(F\)">\(F\)</span>, while its diameter tends to infinity. Hence every small admissible cube is contained in a maximal one. Maximal dyadic cubes have disjoint interiors and their closed cubes cover <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>.</p>
+<p>Let <span class="math" data-tex="\(D_Q=\operatorname{diam}Q=\sqrt n\,\ell_Q\)">\(D_Q=\operatorname{diam}Q=\sqrt n\,\ell_Q\)</span>, where <span class="math" data-tex="\(\ell_Q\)">\(\ell_Q\)</span> is the side length. Its parent has diameter <span class="math" data-tex="\(2D_Q\)">\(2D_Q\)</span> and fails (2.3). A point of the parent is at distance at most <span class="math" data-tex="\(2D_Q\)">\(2D_Q\)</span> from a point of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+4D_Q\le\operatorname{dist}(Q,F)&lt;10D_Q.
+\tag{2.4}
+\]">\[
+4D_Q\le\operatorname{dist}(Q,F)&lt;10D_Q.
+\tag{2.4}
+\]</span>
+<p>Let <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span> be the concentric cube with side length <span class="math" data-tex="\(9\ell_Q/8\)">\(9\ell_Q/8\)</span>. Every point of <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span> lies at distance at most <span class="math" data-tex="\(D_Q/16\)">\(D_Q/16\)</span> from <span class="math" data-tex="\(Q\)">\(Q\)</span>. Consequently, on <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{63}{16}D_Q\le d(x)&lt;\frac{177}{16}D_Q.
+\tag{2.5}
+\]">\[
+\frac{63}{16}D_Q\le d(x)&lt;\frac{177}{16}D_Q.
+\tag{2.5}
+\]</span>
+<p>The upper bound uses the diameter of <span class="math" data-tex="\(Q\)">\(Q\)</span> in addition to (2.4). In particular <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span> stays away from <span class="math" data-tex="\(F\)">\(F\)</span>, and its diameter <span class="math" data-tex="\(9D_Q/8\)">\(9D_Q/8\)</span> is less than twice its distance from <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>If several enlarged cubes contain one point <span class="math" data-tex="\(x\)">\(x\)</span>, (2.5) makes all their side lengths comparable to <span class="math" data-tex="\(d(x)\)">\(d(x)\)</span>. Their disjoint original interiors lie in a ball about <span class="math" data-tex="\(x\)">\(x\)</span> of radius at most a dimensional constant times <span class="math" data-tex="\(d(x)\)">\(d(x)\)</span>, and each has volume at least a dimensional constant times <span class="math" data-tex="\(d(x)^n\)">\(d(x)^n\)</span>. Comparing volumes bounds their number by an integer <span class="math" data-tex="\(N_n\)">\(N_n\)</span>. The same estimates prove local finiteness: on a compact subset of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span> has a positive minimum and a finite maximum, so only finitely many dyadic scales and cube centers can occur.</p>
+<p>Choose one nonnegative smooth bump <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, equal to one on <span class="math" data-tex="\([-1/2,1/2]^n\)">\([-1/2,1/2]^n\)</span>, supported in <span class="math" data-tex="\((-9/16,9/16)^n\)">\((-9/16,9/16)^n\)</span>, and at most one. For the center <span class="math" data-tex="\(c_Q\)">\(c_Q\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\eta_Q(x)=\eta((x-c_Q)/\ell_Q),\qquad
+S(x)=\sum_Q\eta_Q(x),\qquad
+\psi_Q(x)=\frac{\eta_Q(x)}{S(x)}.
+\]">\[
+\eta_Q(x)=\eta((x-c_Q)/\ell_Q),\qquad
+S(x)=\sum_Q\eta_Q(x),\qquad
+\psi_Q(x)=\frac{\eta_Q(x)}{S(x)}.
+\]</span>
+<p>The original cubes cover <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, so <span class="math" data-tex="\(1\le S\le N_n\)">\(1\le S\le N_n\)</span>. Derivatives of <span class="math" data-tex="\(\eta_Q\)">\(\eta_Q\)</span> have bounds <span class="math" data-tex="\(C_\beta\ell_Q^{-|\beta|}\)">\(C_\beta\ell_Q^{-|\beta|}\)</span>. At each point, the overlap and scale estimates give <span class="math" data-tex="\(|\partial^\beta S|\le C_{n,\beta}d^{-|\beta|}\)">\(|\partial^\beta S|\le C_{n,\beta}d^{-|\beta|}\)</span>. Repeated differentiation of <span class="math" data-tex="\(1/S\)">\(1/S\)</span>, using <span class="math" data-tex="\(S\ge1\)">\(S\ge1\)</span>, gives the same type of bound for its derivatives. The product rule proves (2.1). These quotients are a nonnegative smooth partition, with supports contained in <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span>, so they satisfy the stated diameter and overlap properties.</p>
+<p>For each center <span class="math" data-tex="\(c_Q\)">\(c_Q\)</span>, choose a nearest point <span class="math" data-tex="\(a_Q\in F\)">\(a_Q\in F\)</span>, once and for all. Such a point exists by compactness. Equations (2.4)–(2.5), and the diameter of <span class="math" data-tex="\(Q^*\)">\(Q^*\)</span>, bound <span class="math" data-tex="\(|x-a_Q|\)">\(|x-a_Q|\)</span> by a dimensional constant times <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span>, hence by a constant times <span class="math" data-tex="\(d(x)\)">\(d(x)\)</span>. This proves (2.2). All choices depend on <span class="math" data-tex="\(F\)">\(F\)</span>, not on the jet to be extended. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="comparing-taylor-polynomials-before-gluing">Comparing Taylor polynomials before gluing</h2>
+<p>Here is the estimate that makes the partition work. Since <span class="math" data-tex="\(P_a-P_b\)">\(P_a-P_b\)</span> is a polynomial of degree at most <span class="math" data-tex="\(k\)">\(k\)</span>, its Taylor expansion at <span class="math" data-tex="\(a\)">\(a\)</span> is exact:</p>
+<span class="math math-display" data-tex="\[
+\partial^\gamma(P_a-P_b)(x)
+=\sum_{|\delta|\le k-|\gamma|}
+\frac{\partial^{\gamma+\delta}(P_a-P_b)(a)}{\delta!}
+(x-a)^\delta.
+\tag{3.1}
+\]">\[
+\partial^\gamma(P_a-P_b)(x)
+=\sum_{|\delta|\le k-|\gamma|}
+\frac{\partial^{\gamma+\delta}(P_a-P_b)(a)}{\delta!}
+(x-a)^\delta.
+\tag{3.1}
+\]</span>
+<p>The coefficient in the numerator is
+<span class="math math-display" data-tex="\[
+\partial^{\gamma+\delta}(P_a-P_b)(a)
+=R_{\gamma+\delta}(a,b)
+|a-b|^{k-|\gamma|-|\delta|}.
+\]">\[
+\partial^{\gamma+\delta}(P_a-P_b)(a)
+=R_{\gamma+\delta}(a,b)
+|a-b|^{k-|\gamma|-|\delta|}.
+\]</span></p>
+<p>If <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, the difference is zero. Otherwise (3.1) gives</p>
+<span class="math math-display" data-tex="\[
+|\partial^\gamma(P_a-P_b)(x)|
+\le C_{n,k}\omega(|a-b|)
+(|a-b|+|x-a|)^{k-|\gamma|}.
+\tag{3.2}
+\]">\[
+|\partial^\gamma(P_a-P_b)(x)|
+\le C_{n,k}\omega(|a-b|)
+(|a-b|+|x-a|)^{k-|\gamma|}.
+\tag{3.2}
+\]</span>
+<p>Replacing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-tex="\(\|f\|_{W^k(F)}\)">\(\|f\|_{W^k(F)}\)</span> gives a corresponding bounded estimate at all distances. Most importantly, if <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are both within <span class="math" data-tex="\(A r\)">\(A r\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|\partial^\gamma(P_a-P_b)(x)|
+\le C_{n,k,A}\omega(2Ar)r^{k-|\gamma|}.
+\tag{3.3}
+\]">\[
+|\partial^\gamma(P_a-P_b)(x)|
+\le C_{n,k,A}\omega(2Ar)r^{k-|\gamma|}.
+\tag{3.3}
+\]</span>
+<p>The factors from derivatives of the partition will consume powers of <span class="math" data-tex="\(r\)">\(r\)</span>; the exponent in (3.3) supplies exactly those powers.</p>
+<p><strong>Theorem 3.1 (bounded extension of compatible jets).</strong> There is a linear map</p>
+<span class="math math-display" data-tex="\[
+E:W^k(F)\longrightarrow C_c^k(\mathbb R^n)
+\]">\[
+E:W^k(F)\longrightarrow C_c^k(\mathbb R^n)
+\]</span>
+<p>such that</p>
+<span class="math math-display" data-tex="\[
+\partial^\alpha(Ef)|_F=f_\alpha
+\quad(|\alpha|\le k),\qquad
+\|Ef\|_{C^k}\le C_{n,k}\|f\|_{W^k(F)}.
+\tag{3.4}
+\]">\[
+\partial^\alpha(Ef)|_F=f_\alpha
+\quad(|\alpha|\le k),\qquad
+\|Ef\|_{C^k}\le C_{n,k}\|f\|_{W^k(F)}.
+\tag{3.4}
+\]</span>
+<p>Its outputs have support in one fixed compact neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>. Together with necessity above, this characterizes exactly the finite jets which come from <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions.</p>
+<p><strong>Proof.</strong> First define</p>
+<span class="math math-display" data-tex="\[
+v(x)=\sum_Q\psi_Q(x)P_{a_Q}(x)
+\quad(x\notin F),\qquad
+v(x)=f_0(x)\quad(x\in F).
+\tag{3.5}
+\]">\[
+v(x)=\sum_Q\psi_Q(x)P_{a_Q}(x)
+\quad(x\notin F),\qquad
+v(x)=f_0(x)\quad(x\in F).
+\tag{3.5}
+\]</span>
+<p>Off <span class="math" data-tex="\(F\)">\(F\)</span>, the sum is locally finite and smooth. For <span class="math" data-tex="\(x\notin F\)">\(x\notin F\)</span>, choose a nearest <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>. Every active <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> lies within <span class="math" data-tex="\(C_n d(x)\)">\(C_n d(x)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(|a-a_Q|\le C&#x27;_n d(x)\)">\(|a-a_Q|\le C&#x27;_n d(x)\)</span>. Subtract <span class="math" data-tex="\(P_a\)">\(P_a\)</span> before differentiating. The identity <span class="math" data-tex="\(\sum\psi_Q=1\)">\(\sum\psi_Q=1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\partial^\gamma v(x)-\partial^\gamma P_a(x)
+=\sum_Q\sum_{\beta\le\gamma}\binom\gamma\beta
+(\partial^\beta\psi_Q)(x)
+\partial^{\gamma-\beta}(P_{a_Q}-P_a)(x).
+\tag{3.6}
+\]">\[
+\partial^\gamma v(x)-\partial^\gamma P_a(x)
+=\sum_Q\sum_{\beta\le\gamma}\binom\gamma\beta
+(\partial^\beta\psi_Q)(x)
+\partial^{\gamma-\beta}(P_{a_Q}-P_a)(x).
+\tag{3.6}
+\]</span>
+<p>The differentiated partition costs <span class="math" data-tex="\(d^{-|\beta|}\)">\(d^{-|\beta|}\)</span>, while (3.3) supplies <span class="math" data-tex="\(d^{k-|\gamma|+|\beta|}\)">\(d^{k-|\gamma|+|\beta|}\)</span>. The overlap is bounded. Hence, through order <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial^\gamma v(x)-\partial^\gamma P_a(x)|
+\le C_{n,k}\omega(C_n d(x))d(x)^{k-|\gamma|}.
+\tag{3.7}
+\]">\[
+|\partial^\gamma v(x)-\partial^\gamma P_a(x)|
+\le C_{n,k}\omega(C_n d(x))d(x)^{k-|\gamma|}.
+\tag{3.7}
+\]</span>
+<p>Each off-set derivative has a continuous trace <span class="math" data-tex="\(f_\gamma\)">\(f_\gamma\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>. For precision, fix <span class="math" data-tex="\(b\in F\)">\(b\in F\)</span>, write <span class="math" data-tex="\(r=|x-b|\)">\(r=|x-b|\)</span>, and observe that <span class="math" data-tex="\(d(x)\le r\)">\(d(x)\le r\)</span> and <span class="math" data-tex="\(|a-b|\le2r\)">\(|a-b|\le2r\)</span>. Combining (3.7) with (3.2) for <span class="math" data-tex="\(P_a-P_b\)">\(P_a-P_b\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\partial^\gamma v(x)-\partial^\gamma P_b(x)
+=o(r^{k-|\gamma|})\quad(x\notin F,\ x\to b).
+\tag{3.8}
+\]">\[
+\partial^\gamma v(x)-\partial^\gamma P_b(x)
+=o(r^{k-|\gamma|})\quad(x\notin F,\ x\to b).
+\tag{3.8}
+\]</span>
+<p>The little-oh is uniform in <span class="math" data-tex="\(b\)">\(b\)</span>, by (1.3). If <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span>, define <span class="math" data-tex="\(v_\gamma(x)=f_\gamma(x)\)">\(v_\gamma(x)=f_\gamma(x)\)</span>, and define <span class="math" data-tex="\(v_\gamma=\partial^\gamma v\)">\(v_\gamma=\partial^\gamma v\)</span> off <span class="math" data-tex="\(F\)">\(F\)</span>. Formula (1.2) gives the same estimate (3.8) for <span class="math" data-tex="\(v_\gamma(x)\)">\(v_\gamma(x)\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>. In particular every <span class="math" data-tex="\(v_\gamma\)">\(v_\gamma\)</span> is continuous globally.</p>
+<p>These continuous functions are the actual derivatives of <span class="math" data-tex="\(v\)">\(v\)</span>. For <span class="math" data-tex="\(|\gamma|&lt;k\)">\(|\gamma|&lt;k\)</span>, Taylor expansion of <span class="math" data-tex="\(\partial^\gamma P_b\)">\(\partial^\gamma P_b\)</span> at <span class="math" data-tex="\(b\)">\(b\)</span>, with (3.8) on both parts of the domain, gives</p>
+<span class="math math-display" data-tex="\[
+v_\gamma(b+h)
+=f_\gamma(b)+
+\sum_{j=1}^n f_{\gamma+e_j}(b)h_j+o(|h|).
+\tag{3.9}
+\]">\[
+v_\gamma(b+h)
+=f_\gamma(b)+
+\sum_{j=1}^n f_{\gamma+e_j}(b)h_j+o(|h|).
+\tag{3.9}
+\]</span>
+<p>Terms of polynomial degree at least two are <span class="math" data-tex="\(O(|h|^2)\)">\(O(|h|^2)\)</span>; when no such terms exist there is nothing to discard. Thus <span class="math" data-tex="\(v_\gamma\)">\(v_\gamma\)</span> is differentiable at every <span class="math" data-tex="\(b\in F\)">\(b\in F\)</span> and has gradient given by the next traces. Off <span class="math" data-tex="\(F\)">\(F\)</span> this derivative identity already holds. Starting with <span class="math" data-tex="\(v_0=v\)">\(v_0=v\)</span> and using (3.9) successively proves <span class="math" data-tex="\(v\in C^k\)">\(v\in C^k\)</span> and <span class="math" data-tex="\(\partial^\gamma v=v_\gamma\)">\(\partial^\gamma v=v_\gamma\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the continuity part alone proves the assertion.</p>
+<p>It remains to make the extension compact and bounded. Choose a nonnegative integral-one mollifier supported in the ball of radius <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and convolve it with the indicator of the open one-neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>. The resulting smooth function <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> equals one on the <span class="math" data-tex="\(3/4\)">\(3/4\)</span>-neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>, vanishes outside its closed <span class="math" data-tex="\(5/4\)">\(5/4\)</span>-neighborhood, and has derivative bounds depending only on dimension and derivative degree. Put <span class="math" data-tex="\(Ef=\zeta v\)">\(Ef=\zeta v\)</span>. Its traces on <span class="math" data-tex="\(F\)">\(F\)</span> are unchanged and its support lies in that fixed compact neighborhood.</p>
+<p>On this support, <span class="math" data-tex="\(d(x)\le5/4\)">\(d(x)\le5/4\)</span>. Equations (3.6)–(3.7), with <span class="math" data-tex="\(\omega\le\|f\|_{W^k(F)}\)">\(\omega\le\|f\|_{W^k(F)}\)</span>, bound every derivative of <span class="math" data-tex="\(v\)">\(v\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span> by that norm times a constant depending only on <span class="math" data-tex="\(n,k\)">\(n,k\)</span>. The polynomial term is bounded too: <span class="math" data-tex="\(|x-a|=d(x)\le5/4\)">\(|x-a|=d(x)\le5/4\)</span>, and its coefficients are the bounded jet values at <span class="math" data-tex="\(a\)">\(a\)</span>. The product rule with the fixed derivative bounds of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> proves (3.4). On <span class="math" data-tex="\(F\)">\(F\)</span> the same bound follows from the prescribed traces. The partition, its selected points and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> are fixed independently of <span class="math" data-tex="\(f\)">\(f\)</span>, so (3.5) and multiplication by <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> define a linear map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction does not presume that <span class="math" data-tex="\(F\)">\(F\)</span> is a manifold or that its complement has regular boundary. The gaps may have many different scales. It is their distance from <span class="math" data-tex="\(F\)">\(F\)</span>, together with Taylor compatibility, that controls the derivatives of the extension.</p>
+<h2 id="what-a-distribution-on-the-closed-set-can-measure">What a distribution on the closed set can measure</h2>
+<p><strong>Corollary 4.1 (the full jet norm on a support).</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be a compactly supported distribution of order at most <span class="math" data-tex="\(k\)">\(k\)</span>, with support contained in <span class="math" data-tex="\(F\)">\(F\)</span>. For every <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|u(\phi)|\le C_u
+\left(
+\sum_{|\alpha|\le k}\sup_F|\partial^\alpha\phi|
++\sum_{|\alpha|\le k}
+\sup_{\substack{a,b\in F\\a\ne b}}
+\frac{|\partial^\alpha\phi(a)-
+\sum_{|\beta|\le k-|\alpha|}
+\partial^{\alpha+\beta}\phi(b)(a-b)^\beta/\beta!|}
+{|a-b|^{k-|\alpha|}}
+\right).
+\tag{4.1}
+\]">\[
+|u(\phi)|\le C_u
+\left(
+\sum_{|\alpha|\le k}\sup_F|\partial^\alpha\phi|
++\sum_{|\alpha|\le k}
+\sup_{\substack{a,b\in F\\a\ne b}}
+\frac{|\partial^\alpha\phi(a)-
+\sum_{|\beta|\le k-|\alpha|}
+\partial^{\alpha+\beta}\phi(b)(a-b)^\beta/\beta!|}
+{|a-b|^{k-|\alpha|}}
+\right).
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> The restrictions of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> form a compatible jet <span class="math" data-tex="\(f\)">\(f\)</span>. Extend it by Theorem 3.1. All derivatives of <span class="math" data-tex="\(\phi-Ef\)">\(\phi-Ef\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span> vanish on <span class="math" data-tex="\(F\)">\(F\)</span>, hence on <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. The flat-jet theorem in the jet lesson proves <span class="math" data-tex="\(u(\phi)=u(Ef)\)">\(u(\phi)=u(Ef)\)</span>. The distribution's order estimate and (3.4) bound this by <span class="math" data-tex="\(C_u\|f\|_{W^k(F)}\)">\(C_u\|f\|_{W^k(F)}\)</span>, which is exactly (4.1). Arbitrary noncompact <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions are legitimate tests for the compact distribution by the pairing already proved in that lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The second sum cannot always be omitted. Here is an explicit first-order example. On the line, for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+a_j=2^{-j},\qquad b_j=a_j+2^{-3j},\qquad
+F=\{0\}\cup\{a_j,b_j:j\ge2\}.
+\]">\[
+a_j=2^{-j},\qquad b_j=a_j+2^{-3j},\qquad
+F=\{0\}\cup\{a_j,b_j:j\ge2\}.
+\]</span>
+<p>This is compact, and every nonzero point is isolated. Define</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=\sum_{j\ge2}2^{-j}
+\frac{\phi(b_j)-\phi(a_j)}{b_j-a_j}.
+\tag{4.2}
+\]">\[
+u(\phi)=\sum_{j\ge2}2^{-j}
+\frac{\phi(b_j)-\phi(a_j)}{b_j-a_j}.
+\tag{4.2}
+\]</span>
+<p>The mean value integral bounds the absolute value of the <span class="math" data-tex="\(j\)">\(j\)</span>-th term by <span class="math" data-tex="\(2^{-j}\sup_{[0,1/2]}|\phi&#x27;|\)">\(2^{-j}\sup_{[0,1/2]}|\phi&#x27;|\)</span>. Thus the series converges and defines a compact distribution of order at most one, with support exactly <span class="math" data-tex="\(F\)">\(F\)</span>. To see equality of supports, a test confined near one isolated point detects its nonzero coefficient. Every neighborhood of zero contains such a point, so zero lies in the support too.</p>
+<p>For a fixed <span class="math" data-tex="\(j\)">\(j\)</span>, choose a smooth bump <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span>, with <span class="math" data-tex="\(0\le\phi_j\le1\)">\(0\le\phi_j\le1\)</span>, equal to one near <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, and supported in a tiny interval containing no other point of <span class="math" data-tex="\(F\)">\(F\)</span>. Then every positive-order derivative of <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span> vanishes on <span class="math" data-tex="\(F\)">\(F\)</span>, its value is one at <span class="math" data-tex="\(b_j\)">\(b_j\)</span> and zero at all other points, and</p>
+<span class="math math-display" data-tex="\[
+u(\phi_j)=\frac{2^{-j}}{2^{-3j}}=2^{2j}.
+\tag{4.3}
+\]">\[
+u(\phi_j)=\frac{2^{-j}}{2^{-3j}}=2^{2j}.
+\tag{4.3}
+\]</span>
+<p>The jet-value sum through order one on <span class="math" data-tex="\(F\)">\(F\)</span> is only one. No constant can bound all these pairings by that sum. Also <span class="math" data-tex="\(\|\phi_j\|_\infty\le1\)">\(\|\phi_j\|_\infty\le1\)</span>, so <span class="math" data-tex="\(u\)">\(u\)</span> has exact order one rather than zero. The normalized remainder between <span class="math" data-tex="\(a_j\)">\(a_j\)</span> and <span class="math" data-tex="\(b_j\)">\(b_j\)</span> has size <span class="math" data-tex="\(2^{3j}\)">\(2^{3j}\)</span>, which is precisely the information absent from the jet-value sum. The series (4.2) converges as a series of paired differences; splitting it into two divergent atomic sums would lose this cancellation.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: the order-zero condition).</strong> Show that <span class="math" data-tex="\(W^0(F)\)">\(W^0(F)\)</span> consists of all continuous functions on <span class="math" data-tex="\(F\)">\(F\)</span>. Prove that its norm is equivalent to the supremum norm, and explain how Theorem 3.1 supplies a bounded linear compactly supported continuous extension.</p>
+<p><strong>Exercise 2 (intermediate: reproducing a polynomial).</strong> On the interval <span class="math" data-tex="\(F=[-1,1]\)">\(F=[-1,1]\)</span>, prescribe <span class="math" data-tex="\(f_0(a)=a^2\)">\(f_0(a)=a^2\)</span>, <span class="math" data-tex="\(f_1(a)=2a\)">\(f_1(a)=2a\)</span>, <span class="math" data-tex="\(f_2(a)=2\)">\(f_2(a)=2\)</span>. Verify compatibility for <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, compute the normalized remainders, and determine the extension before the final cutoff in (3.5). What remains true after that cutoff?</p>
+<p><strong>Exercise 3 (intermediate: incompatible assignments).</strong> On <span class="math" data-tex="\(F=\{0\}\cup\{2^{-j}:j\ge1\}\)">\(F=\{0\}\cup\{2^{-j}:j\ge1\}\)</span>, prescribe <span class="math" data-tex="\(f_0(a)=a\)">\(f_0(a)=a\)</span> and <span class="math" data-tex="\(f_1(a)=0\)">\(f_1(a)=0\)</span>. Show that both assigned functions are continuous on <span class="math" data-tex="\(F\)">\(F\)</span>, but that the jet is not compatible for <span class="math" data-tex="\(k=1\)">\(k=1\)</span>. Prove directly that no <span class="math" data-tex="\(C^1\)">\(C^1\)</span> extension could have those traces.</p>
+<p><strong>Exercise 4 (advanced: finite and infinite closed supports).</strong> Prove that, on a fixed finite set <span class="math" data-tex="\(F\)">\(F\)</span>, the norm (1.4) is bounded by a constant times the first jet-value sum alone. Deduce the corresponding bound for every order-at-most-<span class="math" data-tex="\(k\)">\(k\)</span> distribution supported in <span class="math" data-tex="\(F\)">\(F\)</span>. Compare this with (4.2) and identify the geometric quantity that ceases to be bounded uniformly.</p>
+<p><strong>Exercise 5 (advanced: completeness and a projection).</strong> Prove that <span class="math" data-tex="\(W^k(F)\)">\(W^k(F)\)</span> is complete for (1.4). Let <span class="math" data-tex="\(C_b^k(\mathbb R^n)\)">\(C_b^k(\mathbb R^n)\)</span> denote the functions with bounded continuous derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span>, with their global derivative supremum norm. Show that jet restriction <span class="math" data-tex="\(R:C_b^k\to W^k(F)\)">\(R:C_b^k\to W^k(F)\)</span> is bounded, and that <span class="math" data-tex="\(ER\)">\(ER\)</span> is a bounded projection on <span class="math" data-tex="\(C_b^k\)">\(C_b^k\)</span>, whose kernel consists exactly of functions with all these jets zero on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> There is only <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, and <span class="math" data-tex="\(R_0(a,b)=f_0(a)-f_0(b)\)">\(R_0(a,b)=f_0(a)-f_0(b)\)</span>, with diagonal value zero. A continuous function on compact <span class="math" data-tex="\(F\)">\(F\)</span> is uniformly continuous, so the compatibility condition holds. Conversely membership already requires continuity of the component. The remainder supremum is at most <span class="math" data-tex="\(2\sup_F|f_0|\)">\(2\sup_F|f_0|\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\sup_F|f_0|\le\|f\|_{W^0(F)}
+\le3\sup_F|f_0|.
+\]">\[
+\sup_F|f_0|\le\|f\|_{W^0(F)}
+\le3\sup_F|f_0|.
+\]</span>
+<p>The theorem with <span class="math" data-tex="\(k=0\)">\(k=0\)</span> gives a continuous compactly supported extension, linear in the assigned values, with supremum controlled by this norm. This is a statement about continuous extension; differentiability is not asserted at order zero.</p>
+<p><strong>Solution 2.</strong> At every <span class="math" data-tex="\(a\in[-1,1]\)">\(a\in[-1,1]\)</span>, the polynomial <span class="math" data-tex="\(P_a(x)=a^2+2a(x-a)+(x-a)^2\)">\(P_a(x)=a^2+2a(x-a)+(x-a)^2\)</span> equals <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Thus every difference of Taylor polynomials is zero and all normalized remainders vanish. The jet is compatible. The partition sum off <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(v(x)=x^2\sum_Q\psi_Q(x)=x^2\)">\(v(x)=x^2\sum_Q\psi_Q(x)=x^2\)</span>, and it has that same value on <span class="math" data-tex="\(F\)">\(F\)</span>. After the final cutoff the extension is <span class="math" data-tex="\(\zeta(x)x^2\)">\(\zeta(x)x^2\)</span>; it still equals the polynomial throughout the neighborhood where <span class="math" data-tex="\(\zeta=1\)">\(\zeta=1\)</span>, including all its prescribed jets on <span class="math" data-tex="\(F\)">\(F\)</span>, but it is now compactly supported.</p>
+<p><strong>Solution 3.</strong> Both components are continuous on this set, including at zero. However <span class="math" data-tex="\(P_0(x)=0\)">\(P_0(x)=0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+R_0(2^{-j},0)=
+\frac{2^{-j}}{2^{-j}}=1.
+\]">\[
+R_0(2^{-j},0)=
+\frac{2^{-j}}{2^{-j}}=1.
+\]</span>
+<p>It does not tend to the diagonal value zero. If a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> extension <span class="math" data-tex="\(g\)">\(g\)</span> existed, it would satisfy <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(g&#x27;(0)=0\)">\(g&#x27;(0)=0\)</span> and <span class="math" data-tex="\(g(2^{-j})=2^{-j}\)">\(g(2^{-j})=2^{-j}\)</span>. Its difference quotients at zero along this sequence would equal one, contradicting <span class="math" data-tex="\(g&#x27;(0)=0\)">\(g&#x27;(0)=0\)</span>. Continuity of separately assigned derivatives is therefore weaker than Taylor compatibility.</p>
+<p><strong>Solution 4.</strong> For a singleton, the remainder sum is zero. Otherwise let <span class="math" data-tex="\(\delta=\min_{a\ne b\in F}|a-b|&gt;0\)">\(\delta=\min_{a\ne b\in F}|a-b|&gt;0\)</span> and <span class="math" data-tex="\(D=\max_{a,b\in F}|a-b|\)">\(D=\max_{a,b\in F}|a-b|\)</span>. Every numerator in (1.2) is bounded by a fixed finite sum of jet suprema times powers of <span class="math" data-tex="\(D\)">\(D\)</span>; every denominator is at least the corresponding power of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. There are finitely many multi-indices, so <span class="math" data-tex="\(\|f\|_{W^k(F)}\le C_{F,k}\sum_{|\alpha|\le k}\sup_F|f_\alpha|\)">\(\|f\|_{W^k(F)}\le C_{F,k}\sum_{|\alpha|\le k}\sup_F|f_\alpha|\)</span>. The compatibility condition is automatic because off-diagonal pairs do not approach the diagonal. Corollary 4.1 gives the claimed distribution bound. In the infinite example there is no positive minimum separation: <span class="math" data-tex="\(b_j-a_j=2^{-3j}\to0\)">\(b_j-a_j=2^{-3j}\to0\)</span>. Its tests have uniformly bounded jet values on <span class="math" data-tex="\(F\)">\(F\)</span>, yet the remainders divided by that separation grow. Finite-set constants cannot be carried over uniformly to those pairs.</p>
+<p><strong>Solution 5.</strong> Let <span class="math" data-tex="\(f^{(j)}\)">\(f^{(j)}\)</span> be Cauchy in (1.4). Each component <span class="math" data-tex="\(f_\alpha^{(j)}\)">\(f_\alpha^{(j)}\)</span> converges uniformly on <span class="math" data-tex="\(F\)">\(F\)</span> to a continuous <span class="math" data-tex="\(f_\alpha\)">\(f_\alpha\)</span>. Each remainder <span class="math" data-tex="\(R_\alpha^{(j)}\)">\(R_\alpha^{(j)}\)</span> converges uniformly on <span class="math" data-tex="\(F\times F\)">\(F\times F\)</span> to a continuous function <span class="math" data-tex="\(A_\alpha\)">\(A_\alpha\)</span>, zero on the diagonal. For <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, pass to the limit in the finite expression (1.2). It gives <span class="math" data-tex="\(A_\alpha(a,b)=R_\alpha(a,b)\)">\(A_\alpha(a,b)=R_\alpha(a,b)\)</span> for the limiting jet. Thus that jet is compatible, and all its component and remainder differences tend to zero in supremum norm. This is completeness.</p>
+<p>Taylor's formula on the whole line segment from <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> bounds (1.2), for a restricted <span class="math" data-tex="\(g\in C_b^k\)">\(g\in C_b^k\)</span>, by a constant times the global suprema of its derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span>. For top derivatives the bound is twice their supremum. Compatibility follows from uniform continuity on a compact neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>, as in the necessity argument. Hence <span class="math" data-tex="\(\|Rg\|_{W^k(F)}\le C_{n,k}\|g\|_{C^k}\)">\(\|Rg\|_{W^k(F)}\le C_{n,k}\|g\|_{C^k}\)</span>. Theorem 3.1 makes <span class="math" data-tex="\(E\)">\(E\)</span> bounded into <span class="math" data-tex="\(C_b^k\)">\(C_b^k\)</span>, and <span class="math" data-tex="\(RE\)">\(RE\)</span> is the identity on <span class="math" data-tex="\(W^k(F)\)">\(W^k(F)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+(ER)^2=E(RE)R=ER.
+\]">\[
+(ER)^2=E(RE)R=ER.
+\]</span>
+<p>If <span class="math" data-tex="\(Rg=0\)">\(Rg=0\)</span>, then <span class="math" data-tex="\(ERg=0\)">\(ERg=0\)</span>. If <span class="math" data-tex="\(ERg=0\)">\(ERg=0\)</span>, apply <span class="math" data-tex="\(R\)">\(R\)</span> and use <span class="math" data-tex="\(RE=\mathrm{id}\)">\(RE=\mathrm{id}\)</span> to obtain <span class="math" data-tex="\(Rg=0\)">\(Rg=0\)</span>. This identifies the kernel and proves the projection assertion. Completeness and the projection are consequences of the full remainder norm; they do not justify replacing that norm by pointwise jet values on an arbitrary closed set.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Whitney 1934] Hassler Whitney, <em>Analytic extensions of differentiable functions defined in closed sets</em>, Transactions of the American Mathematical Society 36 (1934), 63–89. <a href="https://www.ams.org/journals/tran/1934-036-01/S0002-9947-1934-1501735-3/S0002-9947-1934-1501735-3.pdf">Full text</a>.</li>
+<li>[Kolář–Michor–Slovák 1993] Ivan Kolář, Peter W. Michor and Jan Slovák, <em>Natural Operations in Differential Geometry</em>, Springer-Verlag, 1993. <a href="https://www.mat.univie.ac.at/~michor/kmsbookh.pdf">Open electronic edition</a>.</li>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/compatible-jets-on-closed-sets.md">Editable original Markdown</a>. Source commit 66eb8662ca94c02d91c0bf5cd4b190d04d3a024b.</p></footer></main></body></html>

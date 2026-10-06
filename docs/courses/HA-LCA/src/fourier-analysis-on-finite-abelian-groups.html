@@ -1,0 +1,485 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="e143c7d8feb489c4a7bb3c45020f7d32c4903863f1153ca346758e88f303a2ec"><title>Fourier analysis on finite abelian groups</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="fourier-analysis-on-finite-abelian-groups.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="fourier-analysis-on-finite-abelian-groups">Fourier analysis on finite abelian groups</h1>
+<p><strong>Lesson HA-LCA-01.</strong> This lesson proves finite character duality, Fourier formulas, Poisson summation, uncertainty and Gauss-sum identities. Self-checked by the writing AI.</p>
+<p>Written by GPT-6 Astra (OpenAI), Ultra, 4 October 2026. The exposition and proofs below are newly written; the free source readings are identified at the end. Earlier programme proofs retain their own stated licences.</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is a finite abelian group, written additively, and <span class="math" data-tex="\(N=|G|\)">\(N=|G|\)</span>. Its topology is discrete. A character is a homomorphism <span class="math" data-tex="\(\chi:G\to\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\chi:G\to\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span>; characters form the group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> under pointwise multiplication. Write
+<span class="math math-display" data-tex="\[
+ \widehat f(\chi)=\sum_{x\in G}f(x)\overline{\chi(x)},\qquad
+ (f*g)(x)=\sum_{y\in G}f(y)g(x-y).                       \tag{1}
+\]">\[
+ \widehat f(\chi)=\sum_{x\in G}f(x)\overline{\chi(x)},\qquad
+ (f*g)(x)=\sum_{y\in G}f(y)g(x-y).                       \tag{1}
+\]</span>
+Thus the measure on <span class="math" data-tex="\(G\)">\(G\)</span> is counting measure. The inverse transform will put mass <span class="math" data-tex="\(1/N\)">\(1/N\)</span> at each point of the dual.</p>
+<p>Only the elementary real and complex analysis proved in the <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-1-1">Banach-algebra prerequisite, Lemmas 1.1–1.3</a>, is imported. In particular, that reading constructs <span class="math" data-tex="\(\exp(it)\)">\(\exp(it)\)</span>, a quarter-period <span class="math" data-tex="\(\alpha=\pi/2\)">\(\alpha=\pi/2\)</span> with <span class="math" data-tex="\(\exp(i\alpha)=i\)">\(\exp(i\alpha)=i\)</span>, and its positive cosine on <span class="math" data-tex="\([0,\alpha)\)">\([0,\alpha)\)</span>. All finite group and polynomial facts required below are proved here.</p>
+<h2 id="0-roots-and-finite-groups">0. Roots and finite groups</h2>
+<p><a id="ha-lca-01-lemma-0-0"></a>
+<strong>Lemma 0.0.</strong> A subgroup's order divides the finite group's order, and the order of each element divides the group's order.</p>
+<p><strong>Proof.</strong> For a subgroup <span class="math" data-tex="\(H\le G\)">\(H\le G\)</span>, its cosets partition <span class="math" data-tex="\(G\)">\(G\)</span>: intersecting cosets coincide by subtracting a shared element. Translation is a bijection from <span class="math" data-tex="\(H\)">\(H\)</span> to each coset. Consequently
+<span class="math math-display" data-tex="\[
+ |G|=|H|\,|G/H|.
+\]">\[
+ |G|=|H|\,|G/H|.
+\]</span>
+If <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>, some positive multiple is zero because two members of the list <span class="math" data-tex="\(0,x,2x,\ldots\)">\(0,x,2x,\ldots\)</span> coincide. The least such positive integer <span class="math" data-tex="\(d\)">\(d\)</span> is its order; division with remainder shows that <span class="math" data-tex="\(kx=0\)">\(kx=0\)</span> exactly when <span class="math" data-tex="\(d\mid k\)">\(d\mid k\)</span>. Its generated subgroup has <span class="math" data-tex="\(d\)">\(d\)</span> elements, so <span class="math" data-tex="\(d\mid N\)">\(d\mid N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-lemma-0-1"></a>
+<strong>Lemma 0.1.</strong> Put <span class="math" data-tex="\(E(t)=\exp(2\pi it)\)">\(E(t)=\exp(2\pi it)\)</span>. Then <span class="math" data-tex="\(E(\mathbb R)=\mathbb T\)">\(E(\mathbb R)=\mathbb T\)</span>, its kernel is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and every <span class="math" data-tex="\(w\in\mathbb T\)">\(w\in\mathbb T\)</span> has exactly <span class="math" data-tex="\(n\)">\(n\)</span> distinct <span class="math" data-tex="\(n\)">\(n\)</span>-th roots. The <span class="math" data-tex="\(n\)">\(n\)</span>-th roots of one form the cyclic group
+<span class="math" data-tex="\(\mu_n=\{E(k/n):0\le k&lt;n\}\)">\(\mu_n=\{E(k/n):0\le k&lt;n\}\)</span>. Every finite subgroup of <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> is cyclic.</p>
+<p><strong>Proof.</strong> In the earlier construction, <span class="math" data-tex="\(s(t)=\operatorname{Im}\exp(it)\)">\(s(t)=\operatorname{Im}\exp(it)\)</span> has derivative <span class="math" data-tex="\(c(t)&gt;0\)">\(c(t)&gt;0\)</span> on <span class="math" data-tex="\([0,\alpha)\)">\([0,\alpha)\)</span>. The integral of this positive derivative on any nondegenerate subinterval is positive. Thus <span class="math" data-tex="\(s\)">\(s\)</span> increases continuously from zero to one on <span class="math" data-tex="\([0,\alpha]\)">\([0,\alpha]\)</span>. The identity <span class="math" data-tex="\(c^2+s^2=1\)">\(c^2+s^2=1\)</span> and <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span> show that this path reaches each point of the closed first quadrant of the circle exactly once. Multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> supplies the other quadrants. The same sign information shows that <span class="math" data-tex="\(\exp(it)=1\)">\(\exp(it)=1\)</span> only at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> in <span class="math" data-tex="\(0\le t&lt;4\alpha\)">\(0\le t&lt;4\alpha\)</span>. Periodicity now gives both assertions about <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>If <span class="math" data-tex="\(w=E(t)\)">\(w=E(t)\)</span>, the solutions of <span class="math" data-tex="\(z^n=w\)">\(z^n=w\)</span> are exactly <span class="math" data-tex="\(E((t+k)/n)\)">\(E((t+k)/n)\)</span>, <span class="math" data-tex="\(0\le k&lt;n\)">\(0\le k&lt;n\)</span>, because every <span class="math" data-tex="\(z\)">\(z\)</span> is an <span class="math" data-tex="\(E(u)\)">\(E(u)\)</span> and <span class="math" data-tex="\(nu-t\in\mathbb Z\)">\(nu-t\in\mathbb Z\)</span>. They are distinct by the kernel assertion.</p>
+<p>Let <span class="math" data-tex="\(S\le\mathbb T\)">\(S\le\mathbb T\)</span> have <span class="math" data-tex="\(m\)">\(m\)</span> elements. The coset argument above gives <span class="math" data-tex="\(z^m=1\)">\(z^m=1\)</span> for every <span class="math" data-tex="\(z\in S\)">\(z\in S\)</span>, so <span class="math" data-tex="\(S\le\mu_m\)">\(S\le\mu_m\)</span>. Under <span class="math" data-tex="\(k\mapsto E(k/m)\)">\(k\mapsto E(k/m)\)</span>, the inverse image of <span class="math" data-tex="\(S\)">\(S\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is a subgroup containing <span class="math" data-tex="\(m\mathbb Z\)">\(m\mathbb Z\)</span>. Choose its smallest positive element <span class="math" data-tex="\(d\)">\(d\)</span>. Division with remainder makes every member a multiple of <span class="math" data-tex="\(d\)">\(d\)</span>; in particular <span class="math" data-tex="\(d\mid m\)">\(d\mid m\)</span>. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is generated by <span class="math" data-tex="\(E(d/m)\)">\(E(d/m)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="1-extending-and-counting-characters">1. Extending and counting characters</h2>
+<p><a id="ha-lca-01-theorem-1-1"></a>
+<strong>Theorem 1.1.</strong> Every character of <span class="math" data-tex="\(H\le G\)">\(H\le G\)</span> extends to <span class="math" data-tex="\(G\)">\(G\)</span>, and it has exactly <span class="math" data-tex="\(|G/H|\)">\(|G/H|\)</span> extensions. In particular <span class="math" data-tex="\(|\widehat G|=N\)">\(|\widehat G|=N\)</span>, and characters separate points.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(y\notin H\)">\(y\notin H\)</span>, and let <span class="math" data-tex="\(d\)">\(d\)</span> be the order of <span class="math" data-tex="\(y+H\)">\(y+H\)</span> in <span class="math" data-tex="\(G/H\)">\(G/H\)</span>. Every element of <span class="math" data-tex="\(H+\mathbb Zy\)">\(H+\mathbb Zy\)</span> is <span class="math" data-tex="\(h+ky\)">\(h+ky\)</span>. Choose <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span> with <span class="math" data-tex="\(z^d=\chi(dy)\)">\(z^d=\chi(dy)\)</span>, and set
+<span class="math math-display" data-tex="\[
+ \widetilde\chi(h+ky)=\chi(h)z^k.
+\]">\[
+ \widetilde\chi(h+ky)=\chi(h)z^k.
+\]</span>
+If <span class="math" data-tex="\(h+ky=h&#x27;+k&#x27;y\)">\(h+ky=h&#x27;+k&#x27;y\)</span>, then <span class="math" data-tex="\(k-k&#x27;=qd\)">\(k-k&#x27;=qd\)</span> for an integer <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(h&#x27;-h=qdy\)">\(h&#x27;-h=qdy\)</span>. Hence
+<span class="math" data-tex="\(\chi(h&#x27;)z^{k&#x27;}=\chi(h)\chi(dy)^qz^{k&#x27;}=\chi(h)z^k\)">\(\chi(h&#x27;)z^{k&#x27;}=\chi(h)\chi(dy)^qz^{k&#x27;}=\chi(h)z^k\)</span>.
+The definition is independent of the expression, and addition of two expressions proves its homomorphism law. Every extension must have this form, determined by its value <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(y\)">\(y\)</span>. Lemma 0.1 gives exactly <span class="math" data-tex="\(d\)">\(d\)</span> choices.</p>
+<p>Adjoin elements until reaching <span class="math" data-tex="\(G\)">\(G\)</span>. The process stops because the subgroup size strictly increases. The product of the successive indices telescopes to <span class="math" data-tex="\(|G/H|\)">\(|G/H|\)</span>, and each extension at one stage has exactly the next index many extensions. This proves the count and existence. Taking <span class="math" data-tex="\(H=\{0\}\)">\(H=\{0\}\)</span> proves <span class="math" data-tex="\(|\widehat G|=N\)">\(|\widehat G|=N\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> of order <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, the character <span class="math" data-tex="\(kx\mapsto E(k/d)\)">\(kx\mapsto E(k/d)\)</span> of <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span> extends to <span class="math" data-tex="\(G\)">\(G\)</span> and is nontrivial at <span class="math" data-tex="\(x\)">\(x\)</span>. Apply this to <span class="math" data-tex="\(x-y\)">\(x-y\)</span> to separate any two distinct points. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-theorem-1-2"></a>
+<strong>Theorem 1.2.</strong> Every finite abelian group is a product of cyclic groups. Its dual is isomorphic to it, with the isomorphism depending on the chosen cyclic coordinates.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(G\ne\{0\}\)">\(G\ne\{0\}\)</span>, and choose <span class="math" data-tex="\(a\)">\(a\)</span> of largest possible order <span class="math" data-tex="\(m\)">\(m\)</span>. Extend the character <span class="math" data-tex="\(ka\mapsto E(k/m)\)">\(ka\mapsto E(k/m)\)</span> to a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>, using Theorem 1.1. Its finite image is cyclic by Lemma 0.1 and contains <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>. Choose <span class="math" data-tex="\(b\in G\)">\(b\in G\)</span> whose character value generates that image. The order of <span class="math" data-tex="\(\chi(b)\)">\(\chi(b)\)</span> is at most the order of <span class="math" data-tex="\(b\)">\(b\)</span>, hence at most <span class="math" data-tex="\(m\)">\(m\)</span>, while the image already has at least <span class="math" data-tex="\(m\)">\(m\)</span> elements. Thus its image is exactly <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K=\ker\chi\)">\(K=\ker\chi\)</span>. The intersection <span class="math" data-tex="\(K\cap\langle a\rangle\)">\(K\cap\langle a\rangle\)</span> is zero. For any <span class="math" data-tex="\(x\)">\(x\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\chi(x)=\chi(ja)\)">\(\chi(x)=\chi(ja)\)</span>; then <span class="math" data-tex="\(x-ja\in K\)">\(x-ja\in K\)</span>. Consequently
+<span class="math" data-tex="\((k,ja)\mapsto k+ja\)">\((k,ja)\mapsto k+ja\)</span> is a bijective homomorphism <span class="math" data-tex="\(K\times\langle a\rangle\to G\)">\(K\times\langle a\rangle\to G\)</span>. Since <span class="math" data-tex="\(|K|=N/m&lt;N\)">\(|K|=N/m&lt;N\)</span>, induction on group size gives the cyclic decomposition, including the empty product for the trivial group.</p>
+<p>For <span class="math" data-tex="\(\mathbb Z/n\mathbb Z\)">\(\mathbb Z/n\mathbb Z\)</span>, the characters are exactly
+<span class="math" data-tex="\(\chi_k(x)=E(kx/n)\)">\(\chi_k(x)=E(kx/n)\)</span>: their value at <span class="math" data-tex="\(1\)">\(1\)</span> is an <span class="math" data-tex="\(n\)">\(n\)</span>-th root of one and determines all values. The rule <span class="math" data-tex="\(k\mapsto\chi_k\)">\(k\mapsto\chi_k\)</span> is a bijective homomorphism. For <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span>, restriction to the two axes gives a bijection
+<span class="math math-display" data-tex="\[
+ \widehat{A\times B}\longrightarrow\widehat A\times\widehat B,
+ \quad \chi\longmapsto(\chi|_A,\chi|_B);
+\]">\[
+ \widehat{A\times B}\longrightarrow\widehat A\times\widehat B,
+ \quad \chi\longmapsto(\chi|_A,\chi|_B);
+\]</span>
+its inverse sends <span class="math" data-tex="\((\eta,\theta)\)">\((\eta,\theta)\)</span> to <span class="math" data-tex="\((a,b)\mapsto\eta(a)\theta(b)\)">\((a,b)\mapsto\eta(a)\theta(b)\)</span>. Both maps preserve multiplication. Applying these maps to the chosen decomposition proves <span class="math" data-tex="\(\widehat G\cong G\)">\(\widehat G\cong G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-theorem-1-3"></a>
+<strong>Theorem 1.3.</strong> Evaluation gives a canonical isomorphism
+<span class="math math-display" data-tex="\[
+ \alpha_G:G\longrightarrow\widehat{\widehat G},\qquad
+ \alpha_G(x)(\chi)=\chi(x).
+\]">\[
+ \alpha_G:G\longrightarrow\widehat{\widehat G},\qquad
+ \alpha_G(x)(\chi)=\chi(x).
+\]</span></p>
+<p><strong>Proof.</strong> Pointwise multiplication shows that each evaluation is a character, and the character law shows that <span class="math" data-tex="\(\alpha_G\)">\(\alpha_G\)</span> is a homomorphism. Its kernel is zero by separation. Theorem 1.1 applied twice gives <span class="math" data-tex="\(|\widehat{\widehat G}|=|G|\)">\(|\widehat{\widehat G}|=|G|\)</span>, so the injection is surjective. No choices enter its definition. More precisely, if <span class="math" data-tex="\(u:G\to K\)">\(u:G\to K\)</span> is a homomorphism and <span class="math" data-tex="\(\widehat u(\eta)=\eta\circ u\)">\(\widehat u(\eta)=\eta\circ u\)</span>, then
+<span class="math" data-tex="\(\alpha_G(x)(\widehat u(\eta))=\eta(u(x))=\alpha_K(u(x))(\eta)\)">\(\alpha_G(x)(\widehat u(\eta))=\eta(u(x))=\alpha_K(u(x))(\eta)\)</span>.
+This is the naturality assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-orthogonality-and-exact-transform-formulas">2. Orthogonality and exact transform formulas</h2>
+<p><a id="ha-lca-01-theorem-2-1"></a>
+<strong>Theorem 2.1.</strong> The characters form an orthonormal basis for functions on <span class="math" data-tex="\(G\)">\(G\)</span>, with inner product <span class="math" data-tex="\(N^{-1}\sum_x f(x)\overline{g(x)}\)">\(N^{-1}\sum_x f(x)\overline{g(x)}\)</span>. Explicitly,
+<span class="math math-display" data-tex="\[
+ \sum_x\chi(x)\overline{\psi(x)}=N\,1_{\{\chi=\psi\}},\qquad
+ \sum_\chi\chi(x)\overline{\chi(y)}=N\,1_{\{x=y\}}.       \tag{2}
+\]">\[
+ \sum_x\chi(x)\overline{\psi(x)}=N\,1_{\{\chi=\psi\}},\qquad
+ \sum_\chi\chi(x)\overline{\chi(y)}=N\,1_{\{x=y\}}.       \tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> If a character <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is nontrivial, choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\theta(a)\ne1\)">\(\theta(a)\ne1\)</span>. Translating the sum gives
+<span class="math" data-tex="\(\sum_x\theta(x)=\theta(a)\sum_x\theta(x)\)">\(\sum_x\theta(x)=\theta(a)\sum_x\theta(x)\)</span>, so it is zero. For the trivial character the sum is <span class="math" data-tex="\(N\)">\(N\)</span>. Taking <span class="math" data-tex="\(\theta=\chi\overline\psi\)">\(\theta=\chi\overline\psi\)</span> proves the first formula. If <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>, separation gives <span class="math" data-tex="\(\eta(x-y)\ne1\)">\(\eta(x-y)\ne1\)</span>. Multiplying each dual index by <span class="math" data-tex="\(\eta\)">\(\eta\)</span> shows that the second sum equals <span class="math" data-tex="\(\eta(x-y)\)">\(\eta(x-y)\)</span> times itself, so is zero; at <span class="math" data-tex="\(x=y\)">\(x=y\)</span> it has <span class="math" data-tex="\(N\)">\(N\)</span> terms equal to one.</p>
+<p>The second formula gives
+<span class="math" data-tex="\(\delta_y(x)=N^{-1}\sum_\chi\overline{\chi(y)}\chi(x)\)">\(\delta_y(x)=N^{-1}\sum_\chi\overline{\chi(y)}\chi(x)\)</span>.
+Every function is <span class="math" data-tex="\(\sum_y f(y)\delta_y\)">\(\sum_y f(y)\delta_y\)</span>, so characters span. The first formula proves orthonormality and linear independence: inner product with each character recovers its coefficient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-theorem-2-2"></a>
+<strong>Theorem 2.2.</strong> With convention (1),
+<span class="math math-display" data-tex="\[
+ f(x)=\frac1N\sum_\chi\widehat f(\chi)\chi(x),\qquad
+ \sum_x f(x)\overline{g(x)}
+   =\frac1N\sum_\chi\widehat f(\chi)\overline{\widehat g(\chi)}, \tag{3}
+\]">\[
+ f(x)=\frac1N\sum_\chi\widehat f(\chi)\chi(x),\qquad
+ \sum_x f(x)\overline{g(x)}
+   =\frac1N\sum_\chi\widehat f(\chi)\overline{\widehat g(\chi)}, \tag{3}
+\]</span>
+and <span class="math" data-tex="\(\widehat{f*g}=\widehat f\,\widehat g\)">\(\widehat{f*g}=\widehat f\,\widehat g\)</span>. In particular
+<span class="math" data-tex="\(\sum_x|f(x)|^2=N^{-1}\sum_\chi|\widehat f(\chi)|^2\)">\(\sum_x|f(x)|^2=N^{-1}\sum_\chi|\widehat f(\chi)|^2\)</span>.</p>
+<p><strong>Proof.</strong> Substitute the delta expansion from Theorem 2.1 in <span class="math" data-tex="\(f=\sum_y f(y)\delta_y\)">\(f=\sum_y f(y)\delta_y\)</span>, interchange the finite sums, and obtain inversion. Substitute inversion for <span class="math" data-tex="\(f,g\)">\(f,g\)</span> into their inner product; (2) eliminates unequal characters and gives the second identity. Finally set <span class="math" data-tex="\(z=x-y\)">\(z=x-y\)</span> to obtain
+<span class="math math-display" data-tex="\[
+ \widehat{f*g}(\chi)
+ =\sum_{y,z} f(y)g(z)\overline{\chi(y+z)}
+ =\left(\sum_y f(y)\overline{\chi(y)}\right)
+  \left(\sum_z g(z)\overline{\chi(z)}\right).
+\]">\[
+ \widehat{f*g}(\chi)
+ =\sum_{y,z} f(y)g(z)\overline{\chi(y+z)}
+ =\left(\sum_y f(y)\overline{\chi(y)}\right)
+  \left(\sum_z g(z)\overline{\chi(z)}\right).
+\]</span>
+Every interchange is finite. Formula (3) identifies the dual Haar measure here: each dual point has mass <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. This is the finite case of the dual normalization constructed later for general LCA groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-proposition-2-3"></a>
+<strong>Proposition 2.3.</strong> Let <span class="math" data-tex="\(\tau_a f(x)=f(x-a)\)">\(\tau_a f(x)=f(x-a)\)</span>, <span class="math" data-tex="\(M_\eta f(x)=\eta(x)f(x)\)">\(M_\eta f(x)=\eta(x)f(x)\)</span>, and <span class="math" data-tex="\(f^*(x)=\overline{f(-x)}\)">\(f^*(x)=\overline{f(-x)}\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \widehat{\tau_a f}(\chi)=\overline{\chi(a)}\widehat f(\chi),
+ \qquad
+ \widehat{M_\eta f}(\chi)=\widehat f(\chi\eta^{-1}),
+ \qquad
+ \widehat{f^*}(\chi)=\overline{\widehat f(\chi)}.          \tag{4}
+\]">\[
+ \widehat{\tau_a f}(\chi)=\overline{\chi(a)}\widehat f(\chi),
+ \qquad
+ \widehat{M_\eta f}(\chi)=\widehat f(\chi\eta^{-1}),
+ \qquad
+ \widehat{f^*}(\chi)=\overline{\widehat f(\chi)}.          \tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> In the first sum put <span class="math" data-tex="\(y=x-a\)">\(y=x-a\)</span>, extracting <span class="math" data-tex="\(\overline{\chi(a)}\)">\(\overline{\chi(a)}\)</span>. In the second combine <span class="math" data-tex="\(\eta(x)\overline{\chi(x)}=\overline{(\chi\eta^{-1})(x)}\)">\(\eta(x)\overline{\chi(x)}=\overline{(\chi\eta^{-1})(x)}\)</span>. In the third put <span class="math" data-tex="\(y=-x\)">\(y=-x\)</span> and conjugate the finite sum. These substitutions give precisely (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-example-2-4"></a>
+<strong>Example 2.4.</strong> On <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span>, the transform and its inverse, in order <span class="math" data-tex="\(0,1,2,3\)">\(0,1,2,3\)</span>, are
+<span class="math math-display" data-tex="\[
+ F=\begin{pmatrix}
+ 1&amp;1&amp;1&amp;1\\
+ 1&amp;-i&amp;-1&amp;i\\
+ 1&amp;-1&amp;1&amp;-1\\
+ 1&amp;i&amp;-1&amp;-i
+ \end{pmatrix},
+ \qquad F^{-1}=\tfrac14\overline F.                     \tag{5}
+\]">\[
+ F=\begin{pmatrix}
+ 1&amp;1&amp;1&amp;1\\
+ 1&amp;-i&amp;-1&amp;i\\
+ 1&amp;-1&amp;1&amp;-1\\
+ 1&amp;i&amp;-1&amp;-i
+ \end{pmatrix},
+ \qquad F^{-1}=\tfrac14\overline F.                     \tag{5}
+\]</span></p>
+<p><strong>Verification.</strong> The entry in row <span class="math" data-tex="\(k\)">\(k\)</span>, column <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(E(-kx/4)\)">\(E(-kx/4)\)</span>, giving the matrix. The geometric sums in (2) give <span class="math" data-tex="\(\overline F F=4I\)">\(\overline F F=4I\)</span>. For <span class="math" data-tex="\(f=1_{\{0,2\}}\)">\(f=1_{\{0,2\}}\)</span>, the vector <span class="math" data-tex="\((1,0,1,0)\)">\((1,0,1,0)\)</span> has transform <span class="math" data-tex="\((2,0,2,0)\)">\((2,0,2,0)\)</span>; multiplication by <span class="math" data-tex="\(\overline F/4\)">\(\overline F/4\)</span> returns <span class="math" data-tex="\(f\)">\(f\)</span>. Plancherel is <span class="math" data-tex="\(2=(4+4)/4\)">\(2=(4+4)/4\)</span>. Direct overlap gives <span class="math" data-tex="\(f*f=2f\)">\(f*f=2f\)</span>, whose transform <span class="math" data-tex="\((4,0,4,0)\)">\((4,0,4,0)\)</span> is the square of <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>. Translation by <span class="math" data-tex="\(1\)">\(1\)</span> gives transform <span class="math" data-tex="\((2,0,-2,0)\)">\((2,0,-2,0)\)</span>; modulation by <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> gives transform <span class="math" data-tex="\((0,2,0,2)\)">\((0,2,0,2)\)</span>, checking both signs in (4).</p>
+<p>This example also checks the subgroup formulas below directly. For <span class="math" data-tex="\(H=\{0,2\}\)">\(H=\{0,2\}\)</span>, trivial restriction means <span class="math" data-tex="\(\chi_k(2)=(-1)^k=1\)">\(\chi_k(2)=(-1)^k=1\)</span>, so <span class="math" data-tex="\(H^\perp=\{\chi_0,\chi_2\}\)">\(H^\perp=\{\chi_0,\chi_2\}\)</span>; its annihilator consists of the even points again. Reduction modulo two identifies <span class="math" data-tex="\(G/H\)">\(G/H\)</span> with <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, while restriction of <span class="math" data-tex="\(\chi_k\)">\(\chi_k\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> depends exactly on <span class="math" data-tex="\(k\bmod2\)">\(k\bmod2\)</span>. For the same <span class="math" data-tex="\(f\)">\(f\)</span>, the two sides of Poisson summation are <span class="math" data-tex="\(2\,1_H(x)\)">\(2\,1_H(x)\)</span> and <span class="math" data-tex="\(\tfrac12(2+2(-1)^x)\)">\(\tfrac12(2+2(-1)^x)\)</span>, respectively, and agree at all four points. Its two support sizes give equality <span class="math" data-tex="\(2\cdot2=4\)">\(2\cdot2=4\)</span> in uncertainty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-example-2-5"></a>
+<strong>Example 2.5.</strong> On <span class="math" data-tex="\(G=(\mathbb Z/2)^n\)">\(G=(\mathbb Z/2)^n\)</span>, the characters are
+<span class="math" data-tex="\(\chi_a(x)=(-1)^{a\cdot x}\)">\(\chi_a(x)=(-1)^{a\cdot x}\)</span>, where <span class="math" data-tex="\(a\cdot x=\sum_j a_jx_j\)">\(a\cdot x=\sum_j a_jx_j\)</span> is computed modulo two. Its transform is the Walsh–Hadamard transform.</p>
+<p><strong>Verification.</strong> The cyclic formula and product restriction in Theorem 1.2 give these characters, one for each <span class="math" data-tex="\(a\)">\(a\)</span>. Thus
+<span class="math" data-tex="\(\widehat f(a)=\sum_x(-1)^{a\cdot x}f(x)\)">\(\widehat f(a)=\sum_x(-1)^{a\cdot x}f(x)\)</span>, with inverse <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> times the same matrix. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this is the one-by-one identity. Exercise 6.2 verifies the matrix square directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-subgroups-quotients-and-periodization">3. Subgroups, quotients and periodization</h2>
+<p>Define the annihilator
+<span class="math" data-tex="\(H^\perp=\{\chi\in\widehat G:\chi(h)=1\text{ for all }h\in H\}\)">\(H^\perp=\{\chi\in\widehat G:\chi(h)=1\text{ for all }h\in H\}\)</span>.</p>
+<p><a id="ha-lca-01-theorem-3-1"></a>
+<strong>Theorem 3.1.</strong> There are canonical isomorphisms
+<span class="math math-display" data-tex="\[
+ \widehat{G/H}\cong H^\perp,\qquad
+ \widehat G/H^\perp\cong\widehat H,\qquad
+ (H^\perp)^\perp=H,                                    \tag{6}
+\]">\[
+ \widehat{G/H}\cong H^\perp,\qquad
+ \widehat G/H^\perp\cong\widehat H,\qquad
+ (H^\perp)^\perp=H,                                    \tag{6}
+\]</span>
+where the last identity uses evaluation to identify the double dual with <span class="math" data-tex="\(G\)">\(G\)</span>. In particular <span class="math" data-tex="\(|H^\perp|=N/|H|\)">\(|H^\perp|=N/|H|\)</span>.</p>
+<p><strong>Proof.</strong> Composition with the quotient map embeds <span class="math" data-tex="\(\widehat{G/H}\)">\(\widehat{G/H}\)</span> into <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> with image <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span>. Indeed a character trivial on <span class="math" data-tex="\(H\)">\(H\)</span> defines <span class="math" data-tex="\(\eta(x+H)=\chi(x)\)">\(\eta(x+H)=\chi(x)\)</span>, independently of the representative, giving the inverse. Restriction <span class="math" data-tex="\(\widehat G\to\widehat H\)">\(\widehat G\to\widehat H\)</span> is onto by Theorem 1.1 and has kernel <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span>. Its fibers are precisely the cosets of that kernel: two characters have the same restriction exactly when their quotient lies in <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span>. Thus it gives the second bijective homomorphism.</p>
+<p>Every <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> is annihilated by <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span>. If <span class="math" data-tex="\(x\notin H\)">\(x\notin H\)</span>, Theorem 1.1 applied to <span class="math" data-tex="\(G/H\)">\(G/H\)</span> gives a character nontrivial at <span class="math" data-tex="\(x+H\)">\(x+H\)</span>; its pullback is in <span class="math" data-tex="\(H^\perp\)">\(H^\perp\)</span> and is nontrivial at <span class="math" data-tex="\(x\)">\(x\)</span>. This proves the last identity. The cardinality follows from the first isomorphism and Theorem 1.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-theorem-3-2"></a>
+<strong>Theorem 3.2 (finite Poisson summation).</strong> For every <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{h\in H}f(x+h)
+   =\frac{|H|}{N}\sum_{\chi\in H^\perp}\widehat f(\chi)\chi(x).
+                                                               \tag{7}
+\]">\[
+ \sum_{h\in H}f(x+h)
+   =\frac{|H|}{N}\sum_{\chi\in H^\perp}\widehat f(\chi)\chi(x).
+                                                               \tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Insert inversion for each summand on the left. The inner sum <span class="math" data-tex="\(\sum_{h\in H}\chi(h)\)">\(\sum_{h\in H}\chi(h)\)</span> is <span class="math" data-tex="\(|H|\)">\(|H|\)</span> when <span class="math" data-tex="\(\chi\in H^\perp\)">\(\chi\in H^\perp\)</span>, and zero otherwise by (2) on <span class="math" data-tex="\(H\)">\(H\)</span>. This gives (7).</p>
+<p>It is also inversion on the quotient: the function <span class="math" data-tex="\(P f(x+H)=\sum_{h\in H}f(x+h)\)">\(P f(x+H)=\sum_{h\in H}f(x+h)\)</span> is well-defined, and for a quotient character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> its transform is <span class="math" data-tex="\(\widehat f(\eta\circ q)\)">\(\widehat f(\eta\circ q)\)</span>, because the cosets partition <span class="math" data-tex="\(G\)">\(G\)</span>. The quotient has <span class="math" data-tex="\(N/|H|\)">\(N/|H|\)</span> elements, so its inversion factor is exactly <span class="math" data-tex="\(|H|/N\)">\(|H|/N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-example-3-3"></a>
+<strong>Example 3.3.</strong> In <span class="math" data-tex="\(\mathbb Z/6\)">\(\mathbb Z/6\)</span>, take <span class="math" data-tex="\(H=\{0,3\}\)">\(H=\{0,3\}\)</span>. Then <span class="math" data-tex="\(H^\perp=\{\chi_0,\chi_2,\chi_4\}\)">\(H^\perp=\{\chi_0,\chi_2,\chi_4\}\)</span>, and <span class="math" data-tex="\(G/H\cong\mathbb Z/3\)">\(G/H\cong\mathbb Z/3\)</span>.</p>
+<p><strong>Verification.</strong> Since <span class="math" data-tex="\(\chi_k(3)=(-1)^k\)">\(\chi_k(3)=(-1)^k\)</span>, trivial restriction is equivalent to even <span class="math" data-tex="\(k\)">\(k\)</span>. Reduction modulo three has kernel <span class="math" data-tex="\(H\)">\(H\)</span>, and its fibers are exactly the three cosets. For <span class="math" data-tex="\(f=\delta_0\)">\(f=\delta_0\)</span>, all Fourier coefficients are one, so the right side of (7) is
+<span class="math math-display" data-tex="\[
+ \frac13\left(1+E(x/3)+E(2x/3)\right).
+\]">\[
+ \frac13\left(1+E(x/3)+E(2x/3)\right).
+\]</span>
+It is one for <span class="math" data-tex="\(x\in\{0,3\}\)">\(x\in\{0,3\}\)</span> and zero otherwise by the finite geometric sum; these are exactly the values of <span class="math" data-tex="\(\delta_0(x)+\delta_0(x+3)\)">\(\delta_0(x)+\delta_0(x+3)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-uncertainty-and-the-prime-order-refinement">4. Uncertainty and the prime-order refinement</h2>
+<p>For a function on a finite set, its support is the set where it is nonzero.</p>
+<p><a id="ha-lca-01-theorem-4-1"></a>
+<strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, then
+<span class="math math-display" data-tex="\[
+ |\operatorname{supp}f|\,|\operatorname{supp}\widehat f|\ge N. \tag{8}
+\]">\[
+ |\operatorname{supp}f|\,|\operatorname{supp}\widehat f|\ge N. \tag{8}
+\]</span>
+Subgroup indicators attain equality.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(s=|\operatorname{supp}f|\)">\(s=|\operatorname{supp}f|\)</span>, <span class="math" data-tex="\(t=|\operatorname{supp}\widehat f|\)">\(t=|\operatorname{supp}\widehat f|\)</span> and <span class="math" data-tex="\(M=\max_x|f(x)|&gt;0\)">\(M=\max_x|f(x)|&gt;0\)</span>. For nonnegative numbers <span class="math" data-tex="\(b_1,\ldots,b_t\)">\(b_1,\ldots,b_t\)</span>,
+<span class="math math-display" data-tex="\[
+ t\sum_jb_j^2-\left(\sum_jb_j\right)^2
+   =\sum_{i&lt;j}(b_i-b_j)^2\ge0.
+\]">\[
+ t\sum_jb_j^2-\left(\sum_jb_j\right)^2
+   =\sum_{i&lt;j}(b_i-b_j)^2\ge0.
+\]</span>
+Using this inequality, inversion and Plancherel gives
+<span class="math math-display" data-tex="\[
+ M\le\frac1N\sum_\chi|\widehat f(\chi)|
+ \le\frac{\sqrt t}{N}\left(\sum_\chi|\widehat f(\chi)|^2\right)^{1/2}
+ =\sqrt{\frac tN}\left(\sum_x|f(x)|^2\right)^{1/2}
+ \le\sqrt{\frac{st}{N}}\,M.
+\]">\[
+ M\le\frac1N\sum_\chi|\widehat f(\chi)|
+ \le\frac{\sqrt t}{N}\left(\sum_\chi|\widehat f(\chi)|^2\right)^{1/2}
+ =\sqrt{\frac tN}\left(\sum_x|f(x)|^2\right)^{1/2}
+ \le\sqrt{\frac{st}{N}}\,M.
+\]</span>
+Cancel <span class="math" data-tex="\(M\)">\(M\)</span>. For <span class="math" data-tex="\(f=1_H\)">\(f=1_H\)</span>, orthogonality on <span class="math" data-tex="\(H\)">\(H\)</span> gives
+<span class="math" data-tex="\(\widehat f=|H|1_{H^\perp}\)">\(\widehat f=|H|1_{H^\perp}\)</span>; the support sizes have product
+<span class="math" data-tex="\(|H|(N/|H|)=N\)">\(|H|(N/|H|)=N\)</span>. Exercise 6.3 proves the full equality characterization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The stronger prime-order theorem requires an algebraic fact about roots of unity. We supply its algebraic prerequisites here.</p>
+<p><a id="ha-lca-01-lemma-4-2"></a>
+<strong>Lemma 4.2 (polynomial and determinant tools).</strong>
+For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, the ring <span class="math" data-tex="\(\mathbb F_p=\mathbb Z/p\mathbb Z\)">\(\mathbb F_p=\mathbb Z/p\mathbb Z\)</span> is a field, and
+<span class="math" data-tex="\(\Phi_p(X)=1+X+\cdots+X^{p-1}\)">\(\Phi_p(X)=1+X+\cdots+X^{p-1}\)</span> is irreducible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> is an integer polynomial in finitely many variables and <span class="math" data-tex="\(\omega_j^p=1\)">\(\omega_j^p=1\)</span>, then
+<span class="math math-display" data-tex="\[
+ P(\omega_1,\ldots,\omega_n)=0
+ \quad\Longrightarrow\quad p\mid P(1,\ldots,1).          \tag{9}
+\]">\[
+ P(\omega_1,\ldots,\omega_n)=0
+ \quad\Longrightarrow\quad p\mid P(1,\ldots,1).          \tag{9}
+\]</span>
+Polynomial division, the root bound, the Vandermonde identity and inversion of a matrix with nonzero determinant all hold over any field.</p>
+<p><strong>Proof.</strong> We give the elementary algebra used in this statement. For integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span> not both zero, choose the smallest positive integer <span class="math" data-tex="\(d=ua+vb\)">\(d=ua+vb\)</span> among their positive integer linear combinations. Division with remainder of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> by <span class="math" data-tex="\(d\)">\(d\)</span> shows that both remainders are zero, by minimality. Thus <span class="math" data-tex="\(d\)">\(d\)</span> divides both <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and every common divisor divides <span class="math" data-tex="\(d\)">\(d\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> is prime and <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, this gcd is one, so <span class="math" data-tex="\(ua+vp=1\)">\(ua+vp=1\)</span>. Reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives an inverse to every nonzero residue. This proves the field assertion and also that a prime dividing a product of integers divides one factor.</p>
+<p>Division of a polynomial by one with invertible leading coefficient is performed by canceling its leading term repeatedly; the degree strictly decreases, so the procedure terminates with a unique lower-degree remainder. Division by <span class="math" data-tex="\(X-a\)">\(X-a\)</span> has remainder equal to evaluation at <span class="math" data-tex="\(a\)">\(a\)</span>. A nonzero polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> over a field has at most <span class="math" data-tex="\(d\)">\(d\)</span> roots: factor out <span class="math" data-tex="\(X-a\)">\(X-a\)</span> at a root and use induction, since a different root remains a root of the quotient. The same division algorithm gives a polynomial gcd and a linear-combination expression for it: apply successive divisions until the nonzero remainders end and substitute backward.</p>
+<p>An integer polynomial is primitive when the gcd of its coefficients is one. The product of two primitive integer polynomials is primitive. Otherwise some prime divides every product coefficient; reducing modulo that prime would multiply two nonzero polynomials to zero over a field. That is impossible because the product's leading coefficient is the product of the two nonzero leading coefficients. A prime divisor exists for every integer greater than one by choosing its smallest divisor greater than one.</p>
+<p>Every rational polynomial is a rational constant times a primitive integer polynomial, by clearing denominators and dividing the coefficient gcd. Therefore a factorization of a primitive integer polynomial over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> yields a factorization over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, up to signs: write it as <span class="math" data-tex="\(qAB\)">\(qAB\)</span> with <span class="math" data-tex="\(A,B\)">\(A,B\)</span> primitive and <span class="math" data-tex="\(q=u/v\)">\(q=u/v\)</span> in lowest terms. The integrality of all coefficients forces <span class="math" data-tex="\(v\)">\(v\)</span> to divide their gcd, which is one, and primitivity then forces <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>. For a monic polynomial its integer factors have leading coefficients with product one and can both be chosen monic.</p>
+<p>Consider
+<span class="math math-display" data-tex="\[
+ \Phi_p(X+1)=\frac{(X+1)^p-1}{X}.
+\]">\[
+ \Phi_p(X+1)=\frac{(X+1)^p-1}{X}.
+\]</span>
+Its leading coefficient is one, every other coefficient is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, and its constant coefficient is <span class="math" data-tex="\(p\)">\(p\)</span>, not divisible by <span class="math" data-tex="\(p^2\)">\(p^2\)</span>. Indeed the intermediate binomial coefficients <span class="math" data-tex="\(\binom pj\)">\(\binom pj\)</span>, <span class="math" data-tex="\(0&lt;j&lt;p\)">\(0&lt;j&lt;p\)</span>, are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>: multiply by <span class="math" data-tex="\(j!\)">\(j!\)</span>, whose residue is invertible modulo <span class="math" data-tex="\(p\)">\(p\)</span>, and use the falling product beginning with <span class="math" data-tex="\(p\)">\(p\)</span>. If this polynomial had two monic integer factors of positive degree, reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> would make their product <span class="math" data-tex="\(X^{p-1}\)">\(X^{p-1}\)</span>. Each reduced factor must be a power of <span class="math" data-tex="\(X\)">\(X\)</span>: its least nonzero degree and its greatest degree add under multiplication, and for their product those two degrees are equal. Both factors' constant coefficients would consequently be divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, contrary to the constant coefficient <span class="math" data-tex="\(p\)">\(p\)</span> of their product. The preceding primitive-polynomial argument rules out a rational factorization too. Substitution <span class="math" data-tex="\(X\mapsto X-1\)">\(X\mapsto X-1\)</span> proves the irreducibility of <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span>.</p>
+<p>Set <span class="math" data-tex="\(\zeta=E(1/p)\)">\(\zeta=E(1/p)\)</span>. It is not one and satisfies <span class="math" data-tex="\(\Phi_p(\zeta)=0\)">\(\Phi_p(\zeta)=0\)</span>, by the geometric sum. If a rational polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span> vanishes at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, divide it by <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span>. A nonzero remainder of smaller degree would have gcd one with the irreducible <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span>; the polynomial gcd identity evaluated at <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> would give <span class="math" data-tex="\(1=0\)">\(1=0\)</span>. Thus the remainder is zero. If <span class="math" data-tex="\(Q\)">\(Q\)</span> has integer coefficients, division by the monic <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span> has integer quotient. For (9), write <span class="math" data-tex="\(\omega_j=\zeta^{k_j}\)">\(\omega_j=\zeta^{k_j}\)</span>, <span class="math" data-tex="\(0\le k_j&lt;p\)">\(0\le k_j&lt;p\)</span>, and apply this to <span class="math" data-tex="\(Q(X)=P(X^{k_1},\ldots,X^{k_n})\)">\(Q(X)=P(X^{k_1},\ldots,X^{k_n})\)</span>. Since <span class="math" data-tex="\(Q(1)=\Phi_p(1)A(1)=pA(1)\)">\(Q(1)=\Phi_p(1)A(1)=pA(1)\)</span> for an integer polynomial <span class="math" data-tex="\(A\)">\(A\)</span>, (9) follows.</p>
+<p>For clarity, the matrix facts used below also follow from finite algebra. Define the determinant by its signed sum over permutations. This formula is multilinear in the rows or columns and changes sign when two of them are interchanged; paired permutations make it zero when two rows coincide. Expansion along a row groups the same permutation terms by the chosen column. Consequently the cofactor matrix transposed, <span class="math" data-tex="\(\operatorname{adj}(M)\)">\(\operatorname{adj}(M)\)</span>, satisfies
+<span class="math" data-tex="\(M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I\)">\(M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I\)</span>: diagonal entries are row expansions, and off-diagonal entries are determinants with a repeated row or column. Thus <span class="math" data-tex="\((\det M)^{-1}\operatorname{adj}(M)\)">\((\det M)^{-1}\operatorname{adj}(M)\)</span> is an inverse whenever <span class="math" data-tex="\(\det M\ne0\)">\(\det M\ne0\)</span>.</p>
+<p>Finally,
+<span class="math math-display" data-tex="\[
+ \det(z_i^{j-1})_{i,j=1}^n=\prod_{i&lt;j}(z_j-z_i).        \tag{10}
+\]">\[
+ \det(z_i^{j-1})_{i,j=1}^n=\prod_{i&lt;j}(z_j-z_i).        \tag{10}
+\]</span>
+Here is a polynomial proof which works over the integers and hence every field. The determinant vanishes when <span class="math" data-tex="\(z_i=z_j\)">\(z_i=z_j\)</span>, so division by the monic linear polynomial <span class="math" data-tex="\(z_j-z_i\)">\(z_j-z_i\)</span> shows divisibility by that factor. Divide out the factors one at a time. On a new diagonal, the product of previously removed, different factors remains a nonzero polynomial, so the quotient still vanishes there and can be divided again. Polynomial rings over an integral domain are integral domains, by induction on variables and comparison of leading coefficients in the last variable. This justifies that cancellation on each diagonal. The determinant and the product both have degree <span class="math" data-tex="\(n(n-1)/2\)">\(n(n-1)/2\)</span>, so their quotient is constant. The coefficient of <span class="math" data-tex="\(z_1^0z_2^1\cdots z_n^{n-1}\)">\(z_1^0z_2^1\cdots z_n^{n-1}\)</span> is one in each: in the determinant it is the identity permutation, and in the product it is forced successively by the required powers of <span class="math" data-tex="\(z_1,z_2,\ldots\)">\(z_1,z_2,\ldots\)</span>. This proves (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-lemma-4-3"></a>
+<strong>Lemma 4.3 (prime Fourier minors).</strong> If <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> and <span class="math" data-tex="\(r_1,\ldots,r_n\)">\(r_1,\ldots,r_n\)</span> are distinct residues modulo a prime <span class="math" data-tex="\(p\)">\(p\)</span>, where <span class="math" data-tex="\(1\le n\le p\)">\(1\le n\le p\)</span>, then
+<span class="math math-display" data-tex="\[
+ \det\bigl(E(x_i r_j/p)\bigr)_{i,j=1}^n\ne0.           \tag{11}
+\]">\[
+ \det\bigl(E(x_i r_j/p)\bigr)_{i,j=1}^n\ne0.           \tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> Choose the representatives <span class="math" data-tex="\(0\le r_j&lt;p\)">\(0\le r_j&lt;p\)</span>. In the integer polynomial ring put
+<span class="math math-display" data-tex="\[
+ D(z)=\det(z_i^{r_j}),\qquad
+ V(z)=\prod_{i&lt;j}(z_j-z_i).
+\]">\[
+ D(z)=\det(z_i^{r_j}),\qquad
+ V(z)=\prod_{i&lt;j}(z_j-z_i).
+\]</span>
+The diagonal-division argument in Lemma 4.2 applies to the alternating polynomial <span class="math" data-tex="\(D\)">\(D\)</span>, giving <span class="math" data-tex="\(D=VP\)">\(D=VP\)</span> with <span class="math" data-tex="\(P\)">\(P\)</span> an integer polynomial. We compute <span class="math" data-tex="\(P(1,\ldots,1)\)">\(P(1,\ldots,1)\)</span> by setting <span class="math" data-tex="\(z_i=1+u_i\)">\(z_i=1+u_i\)</span>. The product <span class="math" data-tex="\(V(1+u)=V(u)\)">\(V(1+u)=V(u)\)</span> is homogeneous of degree <span class="math" data-tex="\(d=n(n-1)/2\)">\(d=n(n-1)/2\)</span>, with coefficient one at <span class="math" data-tex="\(u_1^0u_2^1\cdots u_n^{n-1}\)">\(u_1^0u_2^1\cdots u_n^{n-1}\)</span>. Therefore that coefficient in <span class="math" data-tex="\(D(1+u)\)">\(D(1+u)\)</span> equals <span class="math" data-tex="\(P(1,\ldots,1)\)">\(P(1,\ldots,1)\)</span>. Expansion of each row by the binomial formula gives
+<span class="math math-display" data-tex="\[
+ P(1,\ldots,1)=\det\left(\binom{r_j}{i-1}\right)_{i,j=1}^n.
+\]">\[
+ P(1,\ldots,1)=\det\left(\binom{r_j}{i-1}\right)_{i,j=1}^n.
+\]</span>
+The polynomial <span class="math" data-tex="\(\binom Xk=X(X-1)\cdots(X-k+1)/k!\)">\(\binom Xk=X(X-1)\cdots(X-k+1)/k!\)</span> has degree <span class="math" data-tex="\(k\)">\(k\)</span> and leading coefficient <span class="math" data-tex="\(1/k!\)">\(1/k!\)</span>. Replacing each row by its monomial leading term using the preceding lower-degree rows is a triangular row change with these diagonal coefficients. Multilinearity, and vanishing when two rows coincide, therefore gives
+<span class="math math-display" data-tex="\[
+ \left(\prod_{k=0}^{n-1}k!\right)P(1,\ldots,1)
+   =\prod_{j&lt;\ell}(r_\ell-r_j).                         \tag{12}
+\]">\[
+ \left(\prod_{k=0}^{n-1}k!\right)P(1,\ldots,1)
+   =\prod_{j&lt;\ell}(r_\ell-r_j).                         \tag{12}
+\]</span>
+This is (10) applied to the transposed power matrix; transposition preserves the permutation formula for a determinant.</p>
+<p>No factor on the right of (12) vanishes modulo <span class="math" data-tex="\(p\)">\(p\)</span>, since the <span class="math" data-tex="\(r_j\)">\(r_j\)</span>'s are distinct. No factorial on the left vanishes modulo <span class="math" data-tex="\(p\)">\(p\)</span>, since <span class="math" data-tex="\(n-1&lt;p\)">\(n-1&lt;p\)</span>. Thus <span class="math" data-tex="\(p\nmid P(1,\ldots,1)\)">\(p\nmid P(1,\ldots,1)\)</span>. By (9), <span class="math" data-tex="\(P(E(x_1/p),\ldots,E(x_n/p))\ne0\)">\(P(E(x_1/p),\ldots,E(x_n/p))\ne0\)</span>. The corresponding <span class="math" data-tex="\(V\)">\(V\)</span> is nonzero because its arguments are distinct. Hence <span class="math" data-tex="\(D\)">\(D\)</span> is nonzero there, proving (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-theorem-4-4"></a>
+<strong>Theorem 4.4 (sharp prime uncertainty).</strong> On <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span>, for <span class="math" data-tex="\(p\)">\(p\)</span> prime and <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+ |\operatorname{supp}f|+|\operatorname{supp}\widehat f|\ge p+1. \tag{13}
+\]">\[
+ |\operatorname{supp}f|+|\operatorname{supp}\widehat f|\ge p+1. \tag{13}
+\]</span>
+Conversely, any nonempty sets <span class="math" data-tex="\(A,B\subseteq\mathbb Z/p\)">\(A,B\subseteq\mathbb Z/p\)</span> with <span class="math" data-tex="\(|A|+|B|\ge p+1\)">\(|A|+|B|\ge p+1\)</span> are the exact supports of some <span class="math" data-tex="\(f,\widehat f\)">\(f,\widehat f\)</span>.</p>
+<p><strong>Proof.</strong> If (13) failed and <span class="math" data-tex="\(s=|\operatorname{supp}f|\)">\(s=|\operatorname{supp}f|\)</span>, at least <span class="math" data-tex="\(s\)">\(s\)</span> frequencies would have zero transform. Restrict to any <span class="math" data-tex="\(s\)">\(s\)</span> of them. The resulting homogeneous system in the <span class="math" data-tex="\(s\)">\(s\)</span> nonzero-position values of <span class="math" data-tex="\(f\)">\(f\)</span> has a nonzero determinant by Lemma 4.3, using <span class="math" data-tex="\(-x_i\)">\(-x_i\)</span> to match the sign in (1). Lemma 4.2 makes the matrix invertible, forcing <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, a contradiction.</p>
+<p>First suppose <span class="math" data-tex="\(|A|+|B|=p+1\)">\(|A|+|B|=p+1\)</span>. Choose <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> and let <span class="math" data-tex="\(C=B^c\cup\{b\}\)">\(C=B^c\cup\{b\}\)</span>, so <span class="math" data-tex="\(|C|=|A|\)">\(|C|=|A|\)</span>. The matrix carrying a function supported in <span class="math" data-tex="\(A\)">\(A\)</span> to its transform restricted to <span class="math" data-tex="\(C\)">\(C\)</span> is invertible. Prescribe value one at <span class="math" data-tex="\(b\)">\(b\)</span> and zero on <span class="math" data-tex="\(B^c\)">\(B^c\)</span>; it has a unique solution. Its supports are contained in <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, it is nonzero, and (13) forces equality with both sets.</p>
+<p>If <span class="math" data-tex="\(|A|+|B|&gt;p+1\)">\(|A|+|B|&gt;p+1\)</span>, set <span class="math" data-tex="\(a&#x27;=p+1-|B|\ge1\)">\(a&#x27;=p+1-|B|\ge1\)</span>. For each <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, choose <span class="math" data-tex="\(A_x\subset A\)">\(A_x\subset A\)</span> of size <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span>, and use the just-proved case to obtain <span class="math" data-tex="\(f_x\)">\(f_x\)</span> with exact supports <span class="math" data-tex="\(A_x,B\)">\(A_x,B\)</span>. Enumerate these functions as <span class="math" data-tex="\(f_0,\ldots,f_{m-1}\)">\(f_0,\ldots,f_{m-1}\)</span> and form <span class="math" data-tex="\(F_t=\sum_{j=0}^{m-1}t^j f_j\)">\(F_t=\sum_{j=0}^{m-1}t^j f_j\)</span>. At any point of <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(F_t\)">\(F_t\)</span> is a nonzero polynomial in <span class="math" data-tex="\(t\)">\(t\)</span>, since at least one coefficient is nonzero. At any frequency of <span class="math" data-tex="\(B\)">\(B\)</span>, its transform is also a nonzero polynomial, while both functions vanish outside the intended sets. Each of the finitely many nonzero polynomials has finitely many roots by Lemma 4.2. Choose <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span> outside their union. Then <span class="math" data-tex="\(F_t,\widehat F_t\)">\(F_t,\widehat F_t\)</span> have exactly the desired supports. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-corollary-4-5"></a>
+<strong>Corollary 4.5 (Cauchy–Davenport).</strong> For nonempty <span class="math" data-tex="\(A,B\subseteq\mathbb Z/p\)">\(A,B\subseteq\mathbb Z/p\)</span>,
+<span class="math math-display" data-tex="\[
+ |A+B|\ge\min(|A|+|B|-1,p).                             \tag{14}
+\]">\[
+ |A+B|\ge\min(|A|+|B|-1,p).                             \tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(a=p+1-|A|\)">\(a=p+1-|A|\)</span>, <span class="math" data-tex="\(b=p+1-|B|\)">\(b=p+1-|B|\)</span>, and <span class="math" data-tex="\(r=\max(a+b-p,1)\)">\(r=\max(a+b-p,1)\)</span>. These integers satisfy <span class="math" data-tex="\(1\le r\le\min(a,b)\)">\(1\le r\le\min(a,b)\)</span>. Choose sets <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> of sizes <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with intersection of size <span class="math" data-tex="\(r\)">\(r\)</span>; for example use the integer intervals
+<span class="math" data-tex="\(X=\{0,\ldots,a-1\}\)">\(X=\{0,\ldots,a-1\}\)</span> and <span class="math" data-tex="\(Y=\{a-r,\ldots,a-r+b-1\}\)">\(Y=\{a-r,\ldots,a-r+b-1\}\)</span> inside <span class="math" data-tex="\(\{0,\ldots,p-1\}\)">\(\{0,\ldots,p-1\}\)</span>.
+Theorem 4.4 supplies functions with exact support pairs <span class="math" data-tex="\((A,X)\)">\((A,X)\)</span> and <span class="math" data-tex="\((B,Y)\)">\((B,Y)\)</span>. Their convolution is supported in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>, and its Fourier support is exactly <span class="math" data-tex="\(X\cap Y\)">\(X\cap Y\)</span>, by multiplication of the two transforms. This intersection is nonempty, so inversion makes the convolution nonzero. Applying (13) to it yields
+<span class="math math-display" data-tex="\[
+ |A+B|\ge p+1-r
+ =p+1-\max(p+2-|A|-|B|,1)
+ =\min(|A|+|B|-1,p).
+\]">\[
+ |A+B|\ge p+1-r
+ =p+1-\max(p+2-|A|-|B|,1)
+ =\min(|A|+|B|-1,p).
+\]</span>
+This proves (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-example-4-6"></a>
+<strong>Example 4.6.</strong> On <span class="math" data-tex="\(\mathbb Z/5\)">\(\mathbb Z/5\)</span>, <span class="math" data-tex="\(f=\delta_0-\delta_1\)">\(f=\delta_0-\delta_1\)</span> has support sizes <span class="math" data-tex="\(2,4\)">\(2,4\)</span>, attaining (13). On <span class="math" data-tex="\(\mathbb Z/4\)">\(\mathbb Z/4\)</span>, the function <span class="math" data-tex="\(1_{\{0,2\}}\)">\(1_{\{0,2\}}\)</span> has support sizes <span class="math" data-tex="\(2,2\)">\(2,2\)</span>, so the prime conclusion fails.</p>
+<p><strong>Verification.</strong> In the first case <span class="math" data-tex="\(\widehat f(k)=1-E(-k/5)\)">\(\widehat f(k)=1-E(-k/5)\)</span>, which vanishes only at <span class="math" data-tex="\(k=0\)">\(k=0\)</span> by Lemma 0.1. The second calculation is Example 2.4. Its Fourier submatrix with both row and column sets <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span> consists of ones, so even the nonzero-minor assertion fails in that composite group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-multiplicative-characters-and-gauss-sums">5. Multiplicative characters and Gauss sums</h2>
+<p>A Dirichlet character modulo <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span> means a character of the finite abelian unit group <span class="math" data-tex="\((\mathbb Z/m)^\times\)">\((\mathbb Z/m)^\times\)</span>, extended by zero on nonunits. This extension is multiplicative: a product is a unit exactly when both factors are units. Indeed an inverse to <span class="math" data-tex="\(ab\)">\(ab\)</span> gives an inverse to <span class="math" data-tex="\(a\)">\(a\)</span> and to <span class="math" data-tex="\(b\)">\(b\)</span> in this commutative ring, and conversely their inverses multiply. Additive characters of <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>, such as <span class="math" data-tex="\(a\mapsto E(a/m)\)">\(a\mapsto E(a/m)\)</span>, are different functions on a different group.</p>
+<p><a id="ha-lca-01-lemma-5-1"></a>
+<strong>Lemma 5.1.</strong> For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the nonzero squares form a subgroup <span class="math" data-tex="\(Q\)">\(Q\)</span> of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> of index two. The function
+<span class="math math-display" data-tex="\[
+ \lambda(a)=
+ \begin{cases}
+ 0,&amp;a=0,\\
+ 1,&amp;a\in Q,\\
+ -1,&amp;a\in\mathbb F_p^\times\setminus Q
+ \end{cases}
+\]">\[
+ \lambda(a)=
+ \begin{cases}
+ 0,&amp;a=0,\\
+ 1,&amp;a\in Q,\\
+ -1,&amp;a\in\mathbb F_p^\times\setminus Q
+ \end{cases}
+\]</span>
+restricts to a nontrivial character of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>, called the quadratic character.</p>
+<p><strong>Proof.</strong> Lemma 4.2 proves that <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> is a field. Squaring is a homomorphism on its abelian unit group, so its image <span class="math" data-tex="\(Q\)">\(Q\)</span> is a subgroup. The kernel is <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, because <span class="math" data-tex="\(x^2-1=(x-1)(x+1)\)">\(x^2-1=(x-1)(x+1)\)</span>, a field has no zero divisors, and <span class="math" data-tex="\(p\)">\(p\)</span> odd makes these two elements distinct. Each fiber of a homomorphism is a coset of its kernel, as in Theorem 3.1, so <span class="math" data-tex="\(|Q|=(p-1)/2\)">\(|Q|=(p-1)/2\)</span>. The quotient has two elements and is cyclic; sending its identity to <span class="math" data-tex="\(1\)">\(1\)</span> and its other element to <span class="math" data-tex="\(-1\)">\(-1\)</span> is an isomorphism with <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>. Composing with the quotient map gives exactly the stated character. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-proposition-5-2"></a>
+<strong>Proposition 5.2.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be prime, <span class="math" data-tex="\(\zeta=E(1/p)\)">\(\zeta=E(1/p)\)</span>, and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> a nontrivial character of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>. Then
+<span class="math math-display" data-tex="\[
+ g(\chi)=\sum_{a\ne0}\chi(a)\zeta^a
+ \quad\hbox{satisfies}\quad |g(\chi)|^2=p.               \tag{15}
+\]">\[
+ g(\chi)=\sum_{a\ne0}\chi(a)\zeta^a
+ \quad\hbox{satisfies}\quad |g(\chi)|^2=p.               \tag{15}
+\]</span>
+For <span class="math" data-tex="\(p\)">\(p\)</span> odd, <span class="math" data-tex="\(g(\lambda)^2=\lambda(-1)p\)">\(g(\lambda)^2=\lambda(-1)p\)</span>. For the trivial character on the unit group, the sum is <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>Proof.</strong> Because multiplication by a nonzero residue is a bijection, substitute <span class="math" data-tex="\(a=tb\)">\(a=tb\)</span> in the expanded square:
+<span class="math math-display" data-tex="\[
+ |g(\chi)|^2
+ =\sum_{t\ne0}\chi(t)\sum_{b\ne0}\zeta^{b(t-1)}.
+\]">\[
+ |g(\chi)|^2
+ =\sum_{t\ne0}\chi(t)\sum_{b\ne0}\zeta^{b(t-1)}.
+\]</span>
+For <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, the inner sum is <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. For <span class="math" data-tex="\(t\ne1\)">\(t\ne1\)</span>, its version including <span class="math" data-tex="\(b=0\)">\(b=0\)</span> is zero by additive character orthogonality, so it is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Multiplicative character orthogonality gives <span class="math" data-tex="\(\sum_{t\ne0}\chi(t)=0\)">\(\sum_{t\ne0}\chi(t)=0\)</span>. Hence the square is
+<span class="math" data-tex="\((p-1)-\sum_{t\ne0,1}\chi(t)=(p-1)-(0-1)=p\)">\((p-1)-\sum_{t\ne0,1}\chi(t)=(p-1)-(0-1)=p\)</span>.</p>
+<p>For the real character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, conjugation and the substitution <span class="math" data-tex="\(a=-b\)">\(a=-b\)</span> give
+<span class="math math-display" data-tex="\[
+ \overline{g(\lambda)}
+   =\sum_{a\ne0}\lambda(a)\zeta^{-a}
+   =\lambda(-1)\sum_{b\ne0}\lambda(b)\zeta^b
+   =\lambda(-1)g(\lambda).
+\]">\[
+ \overline{g(\lambda)}
+   =\sum_{a\ne0}\lambda(a)\zeta^{-a}
+   =\lambda(-1)\sum_{b\ne0}\lambda(b)\zeta^b
+   =\lambda(-1)g(\lambda).
+\]</span>
+Multiply by <span class="math" data-tex="\(g(\lambda)\)">\(g(\lambda)\)</span> and use (15); since <span class="math" data-tex="\(\lambda(-1)^2=1\)">\(\lambda(-1)^2=1\)</span>, the asserted square follows. Finally <span class="math" data-tex="\(\sum_{a\ne0}\zeta^a=-1\)">\(\sum_{a\ne0}\zeta^a=-1\)</span>, because the full geometric sum is zero. This last value explains why (15) requires a nontrivial multiplicative character. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-example-5-3"></a>
+<strong>Example 5.3.</strong> For <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, the quadratic Gauss sum is <span class="math" data-tex="\(+\sqrt5\)">\(+\sqrt5\)</span>.</p>
+<p><strong>Verification.</strong> The quadratic character, in order <span class="math" data-tex="\(0,1,2,3,4\)">\(0,1,2,3,4\)</span>, is <span class="math" data-tex="\((0,1,-1,-1,1)\)">\((0,1,-1,-1,1)\)</span>. Put <span class="math" data-tex="\(\zeta=E(1/5)\)">\(\zeta=E(1/5)\)</span> and <span class="math" data-tex="\(u=\zeta+\zeta^{-1}\)">\(u=\zeta+\zeta^{-1}\)</span>. The geometric identity gives
+<span class="math" data-tex="\(u^2+u-1=0\)">\(u^2+u-1=0\)</span>. Also <span class="math" data-tex="\(u=2\cos(2\pi/5)&gt;0\)">\(u=2\cos(2\pi/5)&gt;0\)</span>: the angle lies strictly between zero and <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>, where the earlier exponential construction proved positive cosine. Therefore
+<span class="math math-display" data-tex="\[
+ g(\lambda)=\zeta+\zeta^4-\zeta^2-\zeta^3=2u+1&gt;0,
+ \qquad (2u+1)^2=5.
+\]">\[
+ g(\lambda)=\zeta+\zeta^4-\zeta^2-\zeta^3=2u+1&gt;0,
+ \qquad (2u+1)^2=5.
+\]</span>
+The positive real square root is unique, so this is <span class="math" data-tex="\(+\sqrt5\)">\(+\sqrt5\)</span>, fixing the sign left open by (15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><a id="ha-lca-01-exercise-6-1"></a>
+<strong>Exercise 6.1.</strong> List all characters of <span class="math" data-tex="\(\mathbb Z/2\times\mathbb Z/4\)">\(\mathbb Z/2\times\mathbb Z/4\)</span> and give an isomorphism with its dual.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(a=0,1\)">\(a=0,1\)</span> and <span class="math" data-tex="\(b=0,1,2,3\)">\(b=0,1,2,3\)</span>, set
+<span class="math" data-tex="\(\chi_{a,b}(x,y)=(-1)^{ax}i^{by}\)">\(\chi_{a,b}(x,y)=(-1)^{ax}i^{by}\)</span>.
+These eight characters are distinguished by their values at <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Every character must send those generators to a square root of one and a fourth root of one, respectively; the homomorphism law therefore forces exactly one displayed formula. Multiplication adds <span class="math" data-tex="\(a\)">\(a\)</span> modulo two and <span class="math" data-tex="\(b\)">\(b\)</span> modulo four. Thus <span class="math" data-tex="\((a,b)\mapsto\chi_{a,b}\)">\((a,b)\mapsto\chi_{a,b}\)</span> is the required isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-exercise-6-2"></a>
+<strong>Exercise 6.2.</strong> For <span class="math" data-tex="\(H_n=((-1)^{a\cdot x})_{a,x\in(\mathbb Z/2)^n}\)">\(H_n=((-1)^{a\cdot x})_{a,x\in(\mathbb Z/2)^n}\)</span>, prove <span class="math" data-tex="\(H_n^2=2^nI\)">\(H_n^2=2^nI\)</span>.</p>
+<p><strong>Solution.</strong> Its <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>-entry after squaring is
+<span class="math math-display" data-tex="\[
+ \sum_x(-1)^{a\cdot x+x\cdot b}
+ =\prod_{j=1}^n\left(1+(-1)^{a_j+b_j}\right).
+\]">\[
+ \sum_x(-1)^{a\cdot x+x\cdot b}
+ =\prod_{j=1}^n\left(1+(-1)^{a_j+b_j}\right).
+\]</span>
+Distributing the product yields the sum over all binary coordinates, justifying the factorization. Each factor is two when the corresponding coordinates agree and zero otherwise. The product is <span class="math" data-tex="\(2^n\)">\(2^n\)</span> exactly when <span class="math" data-tex="\(a=b\)">\(a=b\)</span>; for <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the empty product is one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-exercise-6-3"></a>
+<strong>Exercise 6.3.</strong> Prove that equality in (8) holds exactly for
+<span class="math math-display" data-tex="\[
+ f(x)=c\,\chi_0(x)1_{a+H}(x),
+ \qquad c\ne0,\quad a\in G,\quad H\le G,\quad\chi_0\in\widehat G. \tag{16}
+\]">\[
+ f(x)=c\,\chi_0(x)1_{a+H}(x),
+ \qquad c\ne0,\quad a\in G,\quad H\le G,\quad\chi_0\in\widehat G. \tag{16}
+\]</span>
+Equivalently, these are nonzero scalar multiples of translates of modulated subgroup indicators.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(S=\operatorname{supp}f\)">\(S=\operatorname{supp}f\)</span>, <span class="math" data-tex="\(T=\operatorname{supp}\widehat f\)">\(T=\operatorname{supp}\widehat f\)</span>, <span class="math" data-tex="\(s=|S|\)">\(s=|S|\)</span>, <span class="math" data-tex="\(t=|T|\)">\(t=|T|\)</span>, and suppose <span class="math" data-tex="\(st=N\)">\(st=N\)</span>. The chain in Theorem 4.1 begins and ends with the same positive number <span class="math" data-tex="\(M\)">\(M\)</span>, so every inequality in it is an equality. The last inequality implies <span class="math" data-tex="\(|f(x)|=M\)">\(|f(x)|=M\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, because the nonnegative defects <span class="math" data-tex="\(M^2-|f(x)|^2\)">\(M^2-|f(x)|^2\)</span> sum to zero. The preceding finite-square identity implies that <span class="math" data-tex="\(|\widehat f(\chi)|\)">\(|\widehat f(\chi)|\)</span> is constant, say <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For any <span class="math" data-tex="\(x\in S\)">\(x\in S\)</span>, the triangle inequality in inversion is also an equality. Its nonzero summands <span class="math" data-tex="\(\widehat f(\chi)\chi(x)\)">\(\widehat f(\chi)\chi(x)\)</span> consequently all have the same phase. To verify this equality condition, rotate their nonzero sum to the positive real axis. For each summand, its real part is at most its modulus, and the sum of these nonnegative differences is zero. Every real part equals the corresponding modulus, so every summand is a positive real number after the rotation. Since their moduli all equal <span class="math" data-tex="\(b\)">\(b\)</span>, inversion gives
+<span class="math math-display" data-tex="\[
+ \widehat f(\chi)\chi(x)=\frac Nt f(x)\qquad(\chi\in T,\ x\in S).
+\]">\[
+ \widehat f(\chi)\chi(x)=\frac Nt f(x)\qquad(\chi\in T,\ x\in S).
+\]</span>
+Fix <span class="math" data-tex="\(a\in S\)">\(a\in S\)</span> and <span class="math" data-tex="\(\chi_0\in T\)">\(\chi_0\in T\)</span>. Dividing the identity at <span class="math" data-tex="\(x\)">\(x\)</span> by the one at <span class="math" data-tex="\(a\)">\(a\)</span> shows that
+<span class="math" data-tex="\((\chi\chi_0^{-1})(x-a)=1\)">\((\chi\chi_0^{-1})(x-a)=1\)</span> for every <span class="math" data-tex="\(x\in S,\chi\in T\)">\(x\in S,\chi\in T\)</span>.
+Let <span class="math" data-tex="\(H\)">\(H\)</span> be the subgroup generated by <span class="math" data-tex="\(S-a\)">\(S-a\)</span>. Multiplicativity extends this equality to all of <span class="math" data-tex="\(H\)">\(H\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ S\subseteq a+H,\qquad T\subseteq\chi_0H^\perp.
+\]">\[
+ S\subseteq a+H,\qquad T\subseteq\chi_0H^\perp.
+\]</span>
+Theorem 3.1 gives <span class="math" data-tex="\(t\le N/|H|\)">\(t\le N/|H|\)</span>, while <span class="math" data-tex="\(s\le|H|\)">\(s\le|H|\)</span>. Since <span class="math" data-tex="\(st=N\)">\(st=N\)</span>, both inequalities are equalities; thus <span class="math" data-tex="\(S=a+H\)">\(S=a+H\)</span> and <span class="math" data-tex="\(T=\chi_0H^\perp\)">\(T=\chi_0H^\perp\)</span>.
+The same divided identity, now at <span class="math" data-tex="\(\chi=\chi_0\)">\(\chi=\chi_0\)</span>, yields
+<span class="math" data-tex="\(f(x)=f(a)\chi_0(x-a)\)">\(f(x)=f(a)\chi_0(x-a)\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, which is (16) with
+<span class="math" data-tex="\(c=f(a)/\chi_0(a)\)">\(c=f(a)/\chi_0(a)\)</span>.</p>
+<p>Conversely <span class="math" data-tex="\(1_H\)">\(1_H\)</span> attains equality by Theorem 4.1. Translation permutes its support and multiplies its transform by nonzero phases; modulation preserves its support and translates its Fourier support, by (4). A nonzero scalar changes neither support. All functions (16) therefore attain equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-exercise-6-4"></a>
+<strong>Exercise 6.4.</strong> For <span class="math" data-tex="\(p\)">\(p\)</span> odd, show that <span class="math" data-tex="\(x^2=a\)">\(x^2=a\)</span> in <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> has <span class="math" data-tex="\(1+\lambda(a)\)">\(1+\lambda(a)\)</span> solutions. Deduce
+<span class="math math-display" data-tex="\[
+ \sum_{x\in\mathbb F_p}E(x^2/p)=g(\lambda).
+\]">\[
+ \sum_{x\in\mathbb F_p}E(x^2/p)=g(\lambda).
+\]</span></p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the field property gives the unique root zero, and <span class="math" data-tex="\(1+\lambda(0)=1\)">\(1+\lambda(0)=1\)</span>. A nonsquare has no roots by definition. If <span class="math" data-tex="\(a=y^2\ne0\)">\(a=y^2\ne0\)</span>, its roots are <span class="math" data-tex="\(y,-y\)">\(y,-y\)</span>, which are distinct because <span class="math" data-tex="\(p\)">\(p\)</span> is odd; any other root <span class="math" data-tex="\(x\)">\(x\)</span> would satisfy <span class="math" data-tex="\((x-y)(x+y)=0\)">\((x-y)(x+y)=0\)</span> and thus coincide with one of them. This proves the count in all cases. Grouping the displayed sum by <span class="math" data-tex="\(a=x^2\)">\(a=x^2\)</span> gives
+<span class="math math-display" data-tex="\[
+ \sum_x E(x^2/p)=\sum_a(1+\lambda(a))E(a/p)
+ =0+\sum_{a\ne0}\lambda(a)E(a/p).
+\]">\[
+ \sum_x E(x^2/p)=\sum_a(1+\lambda(a))E(a/p)
+ =0+\sum_{a\ne0}\lambda(a)E(a/p).
+\]</span>
+The zero is additive character orthogonality, and the last sum is <span class="math" data-tex="\(g(\lambda)\)">\(g(\lambda)\)</span>. For <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, Example 5.3 gives the explicit value <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-01-exercise-6-5"></a>
+<strong>Exercise 6.5.</strong> Let <span class="math" data-tex="\(A\subseteq\mathbb Z/p\)">\(A\subseteq\mathbb Z/p\)</span> with <span class="math" data-tex="\(|A|=\alpha p\)">\(|A|=\alpha p\)</span>. Prove that the number of ordered triples <span class="math" data-tex="\((a,b,c)\in A^3\)">\((a,b,c)\in A^3\)</span> with <span class="math" data-tex="\(a+b=c\)">\(a+b=c\)</span> is <span class="math" data-tex="\(\alpha^3p^2+E\)">\(\alpha^3p^2+E\)</span>, where
+<span class="math math-display" data-tex="\[
+ |E|\le\alpha p\max_{\chi\ne1}|\widehat{1_A}(\chi)|.
+\]">\[
+ |E|\le\alpha p\max_{\chi\ne1}|\widehat{1_A}(\chi)|.
+\]</span></p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(f=1_A\)">\(f=1_A\)</span>. The count is
+<span class="math" data-tex="\(T=\sum_c(f*f)(c)f(c)\)">\(T=\sum_c(f*f)(c)f(c)\)</span>.
+The inner-product and convolution identities (3) give
+<span class="math math-display" data-tex="\[
+ T=\frac1p\sum_\chi \widehat f(\chi)^2
+                           \overline{\widehat f(\chi)}.
+\]">\[
+ T=\frac1p\sum_\chi \widehat f(\chi)^2
+                           \overline{\widehat f(\chi)}.
+\]</span>
+At the trivial character <span class="math" data-tex="\(\widehat f(1)=|A|=\alpha p\)">\(\widehat f(1)=|A|=\alpha p\)</span>, giving the term <span class="math" data-tex="\(\alpha^3p^2\)">\(\alpha^3p^2\)</span>. If <span class="math" data-tex="\(M=\max_{\chi\ne1}|\widehat f(\chi)|\)">\(M=\max_{\chi\ne1}|\widehat f(\chi)|\)</span>, the other terms satisfy
+<span class="math math-display" data-tex="\[
+ |E|\le\frac Mp\sum_{\chi\ne1}|\widehat f(\chi)|^2
+ =\frac Mp\bigl(p|A|-|A|^2\bigr)
+ =M\alpha(1-\alpha)p\le M\alpha p.
+\]">\[
+ |E|\le\frac Mp\sum_{\chi\ne1}|\widehat f(\chi)|^2
+ =\frac Mp\bigl(p|A|-|A|^2\bigr)
+ =M\alpha(1-\alpha)p\le M\alpha p.
+\]</span>
+Plancherel justifies the equality in the middle. Empty <span class="math" data-tex="\(A\)">\(A\)</span> and full <span class="math" data-tex="\(A\)">\(A\)</span> are included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="reading-and-continuation">Reading and continuation</h2>
+<p>The free readings for this reconstruction are Keith Conrad's <a href="https://kconrad.math.uconn.edu/blurbs/grouptheory/charthyshort.pdf"><em>Characters of finite abelian groups (short version)</em></a>, §§3–5, and <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/Gauss-Jacobi-sums.pdf"><em>Gauss and Jacobi sums on finite fields and <span class="math" data-tex="\(\mathbb Z/m\mathbb Z\)">\(\mathbb Z/m\mathbb Z\)</span></em></a>, Theorem 2.2 and Corollary 2.3; and Terence Tao's <a href="https://arxiv.org/pdf/math/0308286v6"><em>An uncertainty principle for cyclic groups of prime order</em>, arXiv version 6</a>, §1. These references provide mathematical reading material. They do not replace any proof in this programme.</p>
+<p>All the stated results and five exercises are proved above, with elementary exponential facts supplied by the exact earlier reading. The next lesson develops the topology of characters on general locally compact abelian groups.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

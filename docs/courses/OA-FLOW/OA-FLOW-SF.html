@@ -1,0 +1,438 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Operator foundations: spectral domains, normal topology and scalar analysis · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L138.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-SF.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction by GPT-6 Astra (OpenAI), Ultra; independent review and reader preparation by GPT-6.1 Sol (OpenAI), Ultra. Root independently reviewed the added supporting proofs and spectral bridge, correcting the distance cutoff in the measure-uniqueness argument. Earlier programme inputs remain under review. Human review and formal verification are not asserted.</p><h1 id="operator-foundations-spectral-domains-normal-topology-and-scalar-analysis">Operator foundations: spectral domains, normal topology and scalar analysis</h1>
+<p><em>Original exposition and illustration sources are dedicated under CC0-1.0 to the extent of any rights held. Independently reviewed at the stated earlier inputs.</em></p>
+<p>The two candidates use the following precise foundational boundary: Hilbert completeness and elementary set theory with the maximal principle; scalar Borel measure/integration with monotone and dominated convergence. The spectral multiplication theorem, including its full domains on arbitrary Hilbert spaces, is proved in SB-1–SB-6 below. Concrete von Neumann algebras are characterized by the bicommutant property. Normal functionals mean the continuous functionals for the concrete ultraweak vector-series topology. The lemmas below prove orthogonal projection, the required scalar contour facts, and the extra arbitrary-Hilbert, vector-integral, intrinsic-topology and strip arguments. The scalar-measure inputs are proved in the earlier SC lesson; the maximal principle follows from the earlier CF Section 1 at its explicit choice convention.</p>
+<p>The spectral statement used here is proved below through a unitary calculus and explicit scalar measure construction. For the concrete algebra definition see <a href="https://math.berkeley.edu/~vfr/MATH20909/VonNeumann2009.pdf#page=12">Jones's author notes, Theorem 3.2.2 and Corollary 3.2.3, printed 12</a>. The concrete topology terminology agrees with <a href="https://noncommutativeanalysis.wordpress.com/2017/06/05/introduction-to-von-neumann-algebras-lecture-7-von-neumann-algebras-as-dual-spaces-various-topologies/">Shalit's author lecture, Definitions 8–10</a>. No theorem about positive extensions is used below.</p>
+<p><a id="oa-flow.shared-foundations.sf-0"></a></p>
+<h2 id="OA-FLOW.SF.SF0"><span id="oa-flow.sf.sf0"></span>SF-0. Two elementary Hilbert facts</h2>
+<p><a id="oa-flow.sf0.projection"></a></p>
+<p>For a closed subspace <span class="math" data-tex="\(N\)">\(N\)</span> and a vector <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(d\)">\(d\)</span> be the distance from <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(N\)">\(N\)</span>. Choose <span class="math" data-tex="\(y_n\)">\(y_n\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\|x-y_n\|^2\leq d^2+1/n\)">\(\|x-y_n\|^2\leq d^2+1/n\)</span>. The parallelogram identity gives <span class="math" data-tex="\(\|y_n-y_m\|^2\leq2/n+2/m\)">\(\|y_n-y_m\|^2\leq2/n+2/m\)</span> because their midpoint lies in <span class="math" data-tex="\(N\)">\(N\)</span>. Completeness and closedness give a limit <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> attaining the distance. Variation of <span class="math" data-tex="\(y\)">\(y\)</span> by a real and then a purely imaginary multiple of any vector in <span class="math" data-tex="\(N\)">\(N\)</span> shows <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is orthogonal to <span class="math" data-tex="\(N\)">\(N\)</span>. This proves the unique orthogonal projection and the corresponding orthogonal decomposition used below.</p>
+<p><a id="oa-flow.sf0.closed-adjoint"></a></p>
+<p>The adjoint of a densely defined operator is closed. If <span class="math" data-tex="\(v_n\)">\(v_n\)</span> tends to <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(A^*v_n\)">\(A^*v_n\)</span> tends to <span class="math" data-tex="\(w\)">\(w\)</span>, pair the adjoint identity with every <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> and pass to the limit; the resulting identity is exactly <span class="math" data-tex="\(v\in D(A^*),\ A^*v=w\)">\(v\in D(A^*),\ A^*v=w\)</span>. In particular a self-adjoint operator is closed. These are complete local proofs, not additional imports.</p>
+<p><a id="oa-flow.sf0.commutant-unitaries"></a></p>
+<p><strong>Commutant-unitary test.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be bounded and commute with every unitary of <span class="math" data-tex="\(M'\)">\(M'\)</span>. Since <span class="math" data-tex="\(M\)">\(M\)</span> is closed under adjoints, taking adjoints of its commutation identities shows that <span class="math" data-tex="\(M'\)">\(M'\)</span> is closed under adjoints as well. For a bounded self-adjoint <span class="math" data-tex="\(b\in M'\)">\(b\in M'\)</span>, the norm-convergent series for <span class="math" data-tex="\(e^{itb}\)">\(e^{itb}\)</span> belongs to <span class="math" data-tex="\(M'\)">\(M'\)</span>: each partial sum commutes with <span class="math" data-tex="\(M\)">\(M\)</span>, and so does its norm limit. Taking adjoints termwise gives <span class="math" data-tex="\((e^{itb})^*=e^{-itb}\)">\((e^{itb})^*=e^{-itb}\)</span>; multiplying the absolutely convergent series and using the binomial identity gives <span class="math" data-tex="\(e^{itb}e^{-itb}=1\)">\(e^{itb}e^{-itb}=1\)</span>, so it is unitary. Its norm difference quotient tends to <span class="math" data-tex="\(ib\)">\(ib\)</span>, as follows by bounding the exponential-series remainder after its linear term by <span class="math" data-tex="\(O(t^2\|b\|^2)\)">\(O(t^2\|b\|^2)\)</span>. Differentiate <span class="math" data-tex="\(Te^{itb}=e^{itb}T\)">\(Te^{itb}=e^{itb}T\)</span> in operator norm at zero to obtain <span class="math" data-tex="\(Tb=bT\)">\(Tb=bT\)</span>. Every <span class="math" data-tex="\(x\in M'\)">\(x\in M'\)</span> is <span class="math" data-tex="\(b+ic\)">\(b+ic\)</span> for the bounded self-adjoint elements <span class="math" data-tex="\(b=(x+x^*)/2\)">\(b=(x+x^*)/2\)</span>, <span class="math" data-tex="\(c=(x-x^*)/(2i)\)">\(c=(x-x^*)/(2i)\)</span> of <span class="math" data-tex="\(M'\)">\(M'\)</span>. Hence <span class="math" data-tex="\(Tx=xT\)">\(Tx=xT\)</span> for all of <span class="math" data-tex="\(M'\)">\(M'\)</span>, and the bicommutant definition gives <span class="math" data-tex="\(T\in M\)">\(T\in M\)</span>.</p>
+<h2 id="OA-FLOW.SF.SB0"><span id="oa-flow.sf.sb0"></span>SB-0. Exact inputs and conventions</h2>
+<p>The maximal principle follows from the explicit axiom-of-choice convention by the proof in <span class="unlinked">CF Section 1</span>. The scalar-measure proof inputs below retain their separate obligations.</p>
+<p>We use complex Hilbert spaces with the inner product linear in the first variable, their defining completeness, elementary real/complex arithmetic and metric compactness, and the maximal principle. Orthogonal projection and the closedness of adjoints are proved in SF-0 above. A bounded adjoint can be constructed from the Hilbert representation fact as follows. For a nonzero continuous linear functional, project onto its closed kernel; its orthogonal complement is one-dimensional, since subtracting a suitable multiple of one nonzero complementary vector puts any other vector in the kernel. Evaluating on that vector gives the unique representing vector, with the same norm. Apply this separately to the bounded functional <span class="math" data-tex="\(x\mapsto\langle Tx,y\rangle\)">\(x\mapsto\langle Tx,y\rangle\)</span> to obtain <span class="math" data-tex="\(T^*y\)">\(T^*y\)</span>, its linearity and boundedness, and the adjoint identity. We use no independent spectral theorem in this Hilbert input.</p>
+<p>The scalar inputs are complete earlier proofs in <a href="OA-FLOW-SC.html">Scalar measure, convergence and calculus</a>, with the following exact section bindings:</p>
+<ul>
+<li><a href="OA-FLOW-SC.html#sc-01">SC-01–02</a>: the outer-measure theorem, Borel Lebesgue measure and interval length/translation/scaling.</li>
+<li><a href="OA-FLOW-SC.html#sc-03">SC-03–05</a> and <a href="OA-FLOW-SC.html#sc-07">SC-07</a>: simple integration, continuity of measures, monotone convergence, countable nonnegative sums, and scalar dominated convergence.</li>
+<li><a href="OA-FLOW-SC.html#sc-00">SC-00</a> and <a href="OA-FLOW-SC.html#sc-06">SC-06–07</a>: Hölder, Minkowski, completeness of <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, simple approximation, and the linear-first <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Hilbert structure. Their proofs use only the preceding scalar results; no Hilbert spectral theorem occurs.</li>
+<li><a href="OA-FLOW-SC.html#sc-00">SC-00</a>, <a href="OA-FLOW-SC.html#sc-02">SC-02</a>, <a href="OA-FLOW-SC.html#sc-05">SC-05</a> and <a href="OA-FLOW-SC.html#sc-08">SC-08–09</a>: the equality of continuous Lebesgue and Riemann integrals, the fundamental theorem and one-variable substitution, with proofs of the elementary differential facts used there.</li>
+</ul>
+<p>These complete scalar proof bodies precede this lesson, at the explicit CF Section 1 and primitive conventions. The substantive spectral and operator steps needed below are proved here. No Tonelli theorem, general Stone–Weierstrass theorem, Gelfand theorem, or Banach algebra spectral-radius theorem is an input.</p>
+<p>Write <span class="math" data-tex="\(\mathbb T=\{z:|z|=1\}\)">\(\mathbb T=\{z:|z|=1\}\)</span>. Normalized circle integration means <span class="math" data-tex="\(\int_{-\pi}^{\pi}F(e^{it})\,dt/(2\pi)\)">\(\int_{-\pi}^{\pi}F(e^{it})\,dt/(2\pi)\)</span>, using the scalar measure just specified. The elementary exponential/trigonometric identities may be defined by their absolutely convergent power series; uniform convergence of those series and of their derivative series on compact intervals gives the usual derivatives. The scalar fundamental theorem therefore gives
+<span class="math math-display" data-tex="\[
+\int_{-\pi}^{\pi} e^{ikt}\,\frac{dt}{2\pi}=\begin{cases}1,&amp;k=0,\\0,&amp;k\in\mathbb Z\setminus\{0\}.\end{cases}
+\tag{SB0}
+\]">\[
+\int_{-\pi}^{\pi} e^{ikt}\,\frac{dt}{2\pi}=\begin{cases}1,&amp;k=0,\\0,&amp;k\in\mathbb Z\setminus\{0\}.\end{cases}
+\tag{SB0}
+\]</span>
+Integrals of squared norms of the finite vector polynomials below mean their finite scalar inner-product expansions; no vector integration theorem is required.</p>
+<h2 id="OA-FLOW.SF.SB1"><span id="oa-flow.sf.sb1"></span>SB-1. Continuous calculus of a unitary from finite orbit polynomials</h2>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be any unitary on any Hilbert space. For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, define the vector polynomial
+<span class="math math-display" data-tex="\[
+W_Nx(z)=N^{-1/2}\sum_{k=0}^{N-1}z^kU^{-k}x.
+\tag{SB1}
+\]">\[
+W_Nx(z)=N^{-1/2}\sum_{k=0}^{N-1}z^kU^{-k}x.
+\tag{SB1}
+\]</span>
+Expanding its squared norm and using (SB0) gives <span class="math" data-tex="\(\|W_Nx\|_2=\|x\|\)">\(\|W_Nx\|_2=\|x\|\)</span>. The space of these finite vector polynomials has the integral inner product. It satisfies Cauchy–Schwarz by the nonnegativity of <span class="math" data-tex="\(\|F-aG\|_2^2\)">\(\|F-aG\|_2^2\)</span>, and hence the triangle inequality; no completion of that space is needed. The two endpoints of the finite sum give
+<span class="math math-display" data-tex="\[
+W_NUx-zW_Nx=N^{-1/2}(Ux-z^NU^{-(N-1)}x),
+\qquad \|W_NUx-zW_Nx\|_2\leq 2N^{-1/2}\|x\|.
+\tag{SB2}
+\]">\[
+W_NUx-zW_Nx=N^{-1/2}(Ux-z^NU^{-(N-1)}x),
+\qquad \|W_NUx-zW_Nx\|_2\leq 2N^{-1/2}\|x\|.
+\tag{SB2}
+\]</span>
+Multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> is an isometry in this norm. Telescoping (SB2) proves, for every positive integer <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+\|W_NU^rx-z^rW_Nx\|_2\leq 2rN^{-1/2}\|x\|.
+\]">\[
+\|W_NU^rx-z^rW_Nx\|_2\leq 2rN^{-1/2}\|x\|.
+\]</span>
+Apply (SB2) to <span class="math" data-tex="\(U^{-1}x\)">\(U^{-1}x\)</span>, rearrange and multiply by <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> to obtain the corresponding estimate for <span class="math" data-tex="\(r=-1\)">\(r=-1\)</span>; telescoping gives the same bound with <span class="math" data-tex="\(|r|\)">\(|r|\)</span> for every integer <span class="math" data-tex="\(r\)">\(r\)</span>. Therefore, if <span class="math" data-tex="\(p(z)=\sum_{r=-d}^{d}c_rz^r\)">\(p(z)=\sum_{r=-d}^{d}c_rz^r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|p(U)x\|
+&amp;=\|W_Np(U)x\|_2\\
+&amp;\leq\|pW_Nx\|_2+\frac{2}{\sqrt N}\sum_r|r c_r|\,\|x\|\\
+&amp;\leq\left(\|p\|_{C(\mathbb T)}+\frac{2}{\sqrt N}\sum_r|r c_r|\right)\|x\|.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|p(U)x\|
+&amp;=\|W_Np(U)x\|_2\\
+&amp;\leq\|pW_Nx\|_2+\frac{2}{\sqrt N}\sum_r|r c_r|\,\|x\|\\
+&amp;\leq\left(\|p\|_{C(\mathbb T)}+\frac{2}{\sqrt N}\sum_r|r c_r|\right)\|x\|.
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>. We have proved the exact inequality
+<span class="math math-display" data-tex="\[
+\|p(U)\|\leq\sup_{z\in\mathbb T}|p(z)|.
+\tag{SB3}
+\]">\[
+\|p(U)\|\leq\sup_{z\in\mathbb T}|p(z)|.
+\tag{SB3}
+\]</span>
+In particular, no choice of a Laurent-polynomial representation of a function changes its operator value.</p>
+<p>Here is the needed uniform approximation proof. Put
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac1N\left|\sum_{k=0}^{N-1}e^{ikt}\right|^2.
+\]">\[
+K_N(t)=\frac1N\left|\sum_{k=0}^{N-1}e^{ikt}\right|^2.
+\]</span>
+It is a nonnegative trigonometric polynomial and its normalized integral is one, by (SB0). For <span class="math" data-tex="\(0&lt;\delta\leq|t|\leq\pi\)">\(0&lt;\delta\leq|t|\leq\pi\)</span>, the geometric-series identity gives
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac{\sin^2(Nt/2)}{N\sin^2(t/2)}\leq\frac1{N\sin^2(\delta/2)}.
+\tag{SB4}
+\]">\[
+K_N(t)=\frac{\sin^2(Nt/2)}{N\sin^2(t/2)}\leq\frac1{N\sin^2(\delta/2)}.
+\tag{SB4}
+\]</span>
+For continuous <span class="math" data-tex="\(f\)">\(f\)</span> on the circle, define
+<span class="math math-display" data-tex="\[
+f_N(e^{it})=\int_{-\pi}^{\pi}K_N(s)f(e^{i(t-s)})\,\frac{ds}{2\pi}.
+\]">\[
+f_N(e^{it})=\int_{-\pi}^{\pi}K_N(s)f(e^{i(t-s)})\,\frac{ds}{2\pi}.
+\]</span>
+Expanding the finite trigonometric sum and changing variables over a full period shows that <span class="math" data-tex="\(f_N\)">\(f_N\)</span> is a Laurent polynomial in <span class="math" data-tex="\(e^{it}\)">\(e^{it}\)</span>. A change of the initial point of a full-period integral follows by splitting the interval and translating one piece; thus it uses only the scalar substitution already bound in SB-0. Uniform continuity, positivity and unit mass of the kernel give
+<span class="math math-display" data-tex="\[
+\|f_N-f\|_\infty\leq\omega_f(\delta)+\frac{2\|f\|_\infty}{N\sin^2(\delta/2)},
+\tag{SB5}
+\]">\[
+\|f_N-f\|_\infty\leq\omega_f(\delta)+\frac{2\|f\|_\infty}{N\sin^2(\delta/2)},
+\tag{SB5}
+\]</span>
+where <span class="math" data-tex="\(\omega_f(\delta)=\sup_{t,|s|\leq\delta}|f(e^{i(t-s)})-f(e^{it})|\)">\(\omega_f(\delta)=\sup_{t,|s|\leq\delta}|f(e^{i(t-s)})-f(e^{it})|\)</span>. First make <span class="math" data-tex="\(\delta\)">\(\delta\)</span> small, then <span class="math" data-tex="\(N\)">\(N\)</span> large. Thus Laurent polynomials are uniformly dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>, with a proved approximation procedure.</p>
+<p>For any uniformly approximating polynomials <span class="math" data-tex="\(p_n\to f\)">\(p_n\to f\)</span>, (SB3) makes <span class="math" data-tex="\(p_n(U)\)">\(p_n(U)\)</span> norm Cauchy. Completeness of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> follows directly here: an operator-norm Cauchy sequence has a limit at each vector by Hilbert completeness; the pointwise limit is linear and bounded, and the uniform Cauchy bound gives convergence in operator norm. Define <span class="math" data-tex="\(\rho_U(f)\)">\(\rho_U(f)\)</span> to be that limit. The result is independent of the approximation. Polynomial multiplication and conjugation, the bounds and continuity of bounded operator multiplication show that
+<span class="math math-display" data-tex="\[
+\rho_U:C(\mathbb T)\longrightarrow B(H)
+\]">\[
+\rho_U:C(\mathbb T)\longrightarrow B(H)
+\]</span>
+is a contractive unital *-homomorphism taking the coordinate <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(U\)">\(U\)</span>. If <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, its ordinary continuous square root satisfies <span class="math" data-tex="\(\rho_U(f)=\rho_U(\sqrt f)^*\rho_U(\sqrt f)\geq0\)">\(\rho_U(f)=\rho_U(\sqrt f)^*\rho_U(\sqrt f)\geq0\)</span>. This finishes the continuous unitary calculus. Its injectivity on the whole circle is neither claimed nor needed.</p>
+<h2 id="OA-FLOW.SF.SB2"><span id="oa-flow.sf.sb2"></span>SB-2. A compact metric positive functional has a representing measure</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be compact metric and let <span class="math" data-tex="\(L:C(K,\mathbb R)\to\mathbb R\)">\(L:C(K,\mathbb R)\to\mathbb R\)</span> be positive and real-linear. Put <span class="math" data-tex="\(c=L(1)\geq0\)">\(c=L(1)\geq0\)</span>. Since <span class="math" data-tex="\(-\|f\|_\infty1\leq f\leq\|f\|_\infty1\)">\(-\|f\|_\infty1\leq f\leq\|f\|_\infty1\)</span>, positivity gives <span class="math" data-tex="\(|L(f)|\leq c\|f\|_\infty\)">\(|L(f)|\leq c\|f\|_\infty\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, <span class="math" data-tex="\(L=0\)">\(L=0\)</span> and the zero measure works. The following construction also covers that case.</p>
+<p>For an open <span class="math" data-tex="\(O\subseteq K\)">\(O\subseteq K\)</span>, set
+<span class="math math-display" data-tex="\[
+m(O)=\sup\{L(f):f\in C(K,\mathbb R),\ 0\leq f\leq1,\ \operatorname{supp}f\subseteq O\}.
+\tag{SB6}
+\]">\[
+m(O)=\sup\{L(f):f\in C(K,\mathbb R),\ 0\leq f\leq1,\ \operatorname{supp}f\subseteq O\}.
+\tag{SB6}
+\]</span>
+The support is closed, hence compact; the zero function is allowed. We have <span class="math" data-tex="\(m(K)=c\)">\(m(K)=c\)</span>, <span class="math" data-tex="\(m(\varnothing)=0\)">\(m(\varnothing)=0\)</span>, monotonicity, and <span class="math" data-tex="\(m(O)\leq c\)">\(m(O)\leq c\)</span>.</p>
+<p>We supply the finite partition needed for countable subadditivity. Suppose a compact <span class="math" data-tex="\(C\)">\(C\)</span> is covered by open sets <span class="math" data-tex="\(O_j\)">\(O_j\)</span>. At every <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span>, choose a metric ball whose closed double-radius ball lies in one of the <span class="math" data-tex="\(O_j\)">\(O_j\)</span>; a finite collection of the smaller balls covers <span class="math" data-tex="\(C\)">\(C\)</span>. Continuous distance bumps equal to one on the smaller closed balls and zero outside the larger balls have supports in their assigned <span class="math" data-tex="\(O_j\)">\(O_j\)</span>. Group them by <span class="math" data-tex="\(j\)">\(j\)</span>, obtaining finitely many <span class="math" data-tex="\(b_j\geq0\)">\(b_j\geq0\)</span>, supported in <span class="math" data-tex="\(O_j\)">\(O_j\)</span>, with <span class="math" data-tex="\(b=\sum b_j&gt;0\)">\(b=\sum b_j&gt;0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. Compactness bounds <span class="math" data-tex="\(b\)">\(b\)</span> below by a positive number on <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(0\leq f\leq1\)">\(0\leq f\leq1\)</span> has support <span class="math" data-tex="\(C\)">\(C\)</span>, put <span class="math" data-tex="\(f_j=fb_j/b\)">\(f_j=fb_j/b\)</span> where <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, and zero where <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. These functions are continuous: near the zero set of <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, because that set is disjoint from the compact support of <span class="math" data-tex="\(f\)">\(f\)</span>. They satisfy <span class="math" data-tex="\(0\leq f_j\leq1\)">\(0\leq f_j\leq1\)</span>, <span class="math" data-tex="\(\operatorname{supp}f_j\subseteq O_j\)">\(\operatorname{supp}f_j\subseteq O_j\)</span>, and <span class="math" data-tex="\(\sum f_j=f\)">\(\sum f_j=f\)</span>.</p>
+<p>Apply this to any test function supported in <span class="math" data-tex="\(O=\bigcup_{j\geq1}O_j\)">\(O=\bigcup_{j\geq1}O_j\)</span>, using a finite subcover of its support. We obtain
+<span class="math math-display" data-tex="\[
+m(O)\leq\sum_{j\geq1}m(O_j).
+\tag{SB7}
+\]">\[
+m(O)\leq\sum_{j\geq1}m(O_j).
+\tag{SB7}
+\]</span>
+For disjoint open <span class="math" data-tex="\(O,V\)">\(O,V\)</span>, tests <span class="math" data-tex="\(f,g\)">\(f,g\)</span> for them satisfy <span class="math" data-tex="\(f+g\leq1\)">\(f+g\leq1\)</span> and have union support in <span class="math" data-tex="\(O\cup V\)">\(O\cup V\)</span>. Taking independent suprema gives <span class="math" data-tex="\(m(O\cup V)\geq m(O)+m(V)\)">\(m(O\cup V)\geq m(O)+m(V)\)</span>. The reverse inequality is (SB7). The same argument gives finite superadditivity on pairwise disjoint open sets.</p>
+<p>For every subset <span class="math" data-tex="\(A\subseteq K\)">\(A\subseteq K\)</span>, define
+<span class="math math-display" data-tex="\[
+\mu^*(A)=\inf_{O\supseteq A,\ O\text{ open}}m(O).
+\tag{SB8}
+\]">\[
+\mu^*(A)=\inf_{O\supseteq A,\ O\text{ open}}m(O).
+\tag{SB8}
+\]</span>
+This is an outer measure: to bound a countable union, choose each open cover within <span class="math" data-tex="\(\varepsilon2^{-j}\)">\(\varepsilon2^{-j}\)</span> of its infimum, unite them, apply (SB7), and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Its value on an open set is <span class="math" data-tex="\(m(O)\)">\(m(O)\)</span>, by monotonicity and the permitted choice of <span class="math" data-tex="\(O\)">\(O\)</span> itself. Moreover it is additive on sets at positive distance. Indeed, disjoint small metric neighborhoods of two such sets, intersected with any common open cover, and finite superadditivity give the lower bound by their two outer measures. Subadditivity gives the reverse inequality.</p>
+<p>We prove that every closed <span class="math" data-tex="\(F\)">\(F\)</span> is measurable for this outer measure; this is the only extra issue beyond SB-0's outer-measure theorem. For arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>, put
+<span class="math math-display" data-tex="\[
+B=A\setminus F,\quad B_n=A\cap\{x:d(x,F)\geq2^{-n}\},\quad C_n=B_{n+1}\setminus B_n\quad(n\geq1).
+\]">\[
+B=A\setminus F,\quad B_n=A\cap\{x:d(x,F)\geq2^{-n}\},\quad C_n=B_{n+1}\setminus B_n\quad(n\geq1).
+\]</span>
+For <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span>, measurability is immediate; otherwise the distance is the ordinary distance function. We have <span class="math" data-tex="\(B_n\uparrow B\)">\(B_n\uparrow B\)</span>. Within either parity of <span class="math" data-tex="\(n\)">\(n\)</span>, any finite collection of the shells <span class="math" data-tex="\(C_n\)">\(C_n\)</span> is pairwise separated by positive distances: the function <span class="math" data-tex="\(d(\cdot,F)\)">\(d(\cdot,F)\)</span> is 1-Lipschitz and the corresponding nonadjacent distance intervals have a positive gap. Repeated separated additivity and the bound <span class="math" data-tex="\(\mu^*(K)=c\)">\(\mu^*(K)=c\)</span> show that each of the two series <span class="math" data-tex="\(\sum_{n\text{ even}}\mu^*(C_n)\)">\(\sum_{n\text{ even}}\mu^*(C_n)\)</span>, <span class="math" data-tex="\(\sum_{n\text{ odd}}\mu^*(C_n)\)">\(\sum_{n\text{ odd}}\mu^*(C_n)\)</span> is finite. Since
+<span class="math math-display" data-tex="\[
+B=B_N\cup\bigcup_{n\geq N}C_n,
+\]">\[
+B=B_N\cup\bigcup_{n\geq N}C_n,
+\]</span>
+subadditivity gives <span class="math" data-tex="\(\mu^*(B)\leq\mu^*(B_N)+\sum_{n\geq N}\mu^*(C_n)\)">\(\mu^*(B)\leq\mu^*(B_N)+\sum_{n\geq N}\mu^*(C_n)\)</span>. The tail tends to zero, so <span class="math" data-tex="\(\mu^*(B_N)\to\mu^*(B)\)">\(\mu^*(B_N)\to\mu^*(B)\)</span>. The sets <span class="math" data-tex="\(A\cap F\)">\(A\cap F\)</span> and <span class="math" data-tex="\(B_N\)">\(B_N\)</span> are separated, whence
+<span class="math math-display" data-tex="\[
+\mu^*(A)\geq\mu^*(A\cap F)+\mu^*(B_N).
+\]">\[
+\mu^*(A)\geq\mu^*(A\cap F)+\mu^*(B_N).
+\]</span>
+Pass to the limit. This is the required Carathéodory inequality for <span class="math" data-tex="\(F\)">\(F\)</span>. Closed sets and their complements therefore are measurable, as are all Borel sets by SB-0, Theorem 1.1. Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the Borel restriction of this finite measure.</p>
+<p>It is outer regular by (SB8). For Borel <span class="math" data-tex="\(B\)">\(B\)</span>, apply outer regularity to <span class="math" data-tex="\(K\setminus B\)">\(K\setminus B\)</span>, choose an open <span class="math" data-tex="\(O\supseteq K\setminus B\)">\(O\supseteq K\setminus B\)</span> with measure excess less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and put <span class="math" data-tex="\(F=K\setminus O\)">\(F=K\setminus O\)</span>. This compact set lies in <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(\mu(B\setminus F)&lt;\varepsilon\)">\(\mu(B\setminus F)&lt;\varepsilon\)</span>. Thus the precise compact inner regularity needed for continuous density is proved, and <span class="math" data-tex="\(\mu(K)=c\)">\(\mu(K)=c\)</span>.</p>
+<p>We now prove representation, rather than leave it implicit in the measure construction. If <span class="math" data-tex="\(0\leq g\leq1\)">\(0\leq g\leq1\)</span> is continuous and is zero off an open set <span class="math" data-tex="\(O\)">\(O\)</span>, the functions <span class="math" data-tex="\(g_n=(g-1/n)_+\)">\(g_n=(g-1/n)_+\)</span> have compact supports in <span class="math" data-tex="\(O\)">\(O\)</span>, satisfy <span class="math" data-tex="\(0\leq g_n\leq1\)">\(0\leq g_n\leq1\)</span>, and converge uniformly to <span class="math" data-tex="\(g\)">\(g\)</span>. Hence
+<span class="math math-display" data-tex="\[
+L(g)\leq m(O)=\mu(O).
+\tag{SB9}
+\]">\[
+L(g)\leq m(O)=\mu(O).
+\tag{SB9}
+\]</span>
+Fix continuous <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and an integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(f\leq m\delta\)">\(f\leq m\delta\)</span>. For <span class="math" data-tex="\(0\leq j&lt;m\)">\(0\leq j&lt;m\)</span>, put
+<span class="math math-display" data-tex="\[
+h_j=\min(1,(f/\delta-j)_+).
+\]">\[
+h_j=\min(1,(f/\delta-j)_+).
+\]</span>
+Pointwise <span class="math" data-tex="\(f=\delta\sum_{j=0}^{m-1}h_j\)">\(f=\delta\sum_{j=0}^{m-1}h_j\)</span>. Each <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is zero off <span class="math" data-tex="\(\{f&gt;j\delta\}\)">\(\{f&gt;j\delta\}\)</span>, and equals one on <span class="math" data-tex="\(\{f&gt;(j+1)\delta\}\)">\(\{f&gt;(j+1)\delta\}\)</span>. Consequently (SB9), and testing every function in (SB6) for the latter open set, give
+<span class="math math-display" data-tex="\[
+\mu(f&gt;(j+1)\delta)\leq L(h_j)\leq\mu(f&gt;j\delta).
+\tag{SB10}
+\]">\[
+\mu(f&gt;(j+1)\delta)\leq L(h_j)\leq\mu(f&gt;j\delta).
+\tag{SB10}
+\]</span>
+The scalar simple function <span class="math" data-tex="\(s_\delta=\delta\sum_{j=1}^{m}1_{\{f&gt;j\delta\}}\)">\(s_\delta=\delta\sum_{j=1}^{m}1_{\{f&gt;j\delta\}}\)</span> satisfies <span class="math" data-tex="\(s_\delta\leq f\leq s_\delta+\delta\)">\(s_\delta\leq f\leq s_\delta+\delta\)</span>. The lower and upper sums from (SB10) differ by at most <span class="math" data-tex="\(\delta\mu(K)\)">\(\delta\mu(K)\)</span>. Both <span class="math" data-tex="\(L(f)\)">\(L(f)\)</span> and <span class="math" data-tex="\(\int f\,d\mu\)">\(\int f\,d\mu\)</span> therefore lie in the same interval of length at most <span class="math" data-tex="\(\delta\mu(K)\)">\(\delta\mu(K)\)</span>. Let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. This proves <span class="math" data-tex="\(L(f)=\int f\,d\mu\)">\(L(f)=\int f\,d\mu\)</span>. Positive and negative parts give every real continuous <span class="math" data-tex="\(f\)">\(f\)</span>; real and imaginary parts give the corresponding complex-linear identity.</p>
+<p>Finally, this measure is unique among finite Borel measures with the integral identity. For open <span class="math" data-tex="\(O\ne K\)">\(O\ne K\)</span>, the continuous functions <span class="math" data-tex="\(a_n(x)=\min(1,n\,d(x,K\setminus O))\)">\(a_n(x)=\min(1,n\,d(x,K\setminus O))\)</span> increase to <span class="math" data-tex="\(1_O\)">\(1_O\)</span>; for <span class="math" data-tex="\(O=K\)">\(O=K\)</span>, take one. Monotone convergence determines the measure of every open set from its continuous integrals. To see that this determines all Borel sets, use the following explicit pi-lambda argument. For two finite measures of equal total mass, their agreement class is closed under complements and countable disjoint unions. The smallest such class containing the open sets is closed under intersections: first fix an open set and apply the class property to sets whose intersection with it lies in the class; then fix an arbitrary member and repeat. In both steps, complements use differences of nested members, which follow from the class property. Because open sets are intersection-closed, both applications contain the open sets. Closure under intersections and complements gives disjointization of arbitrary countable unions, so the class is the Borel sigma-algebra. Uniqueness follows.</p>
+<h2 id="OA-FLOW.SF.SB3"><span id="oa-flow.sf.sb3"></span>SB-3. The actual multiplication representation</h2>
+<p>Apply SB-2 to <span class="math" data-tex="\(L_x(f)=\langle\rho_U(f)x,x\rangle\)">\(L_x(f)=\langle\rho_U(f)x,x\rangle\)</span> for real <span class="math" data-tex="\(f\in C(\mathbb T)\)">\(f\in C(\mathbb T)\)</span>. Positivity follows from SB-1. Let <span class="math" data-tex="\(\mu_x^0\)">\(\mu_x^0\)</span> be the resulting finite regular Borel measure. On the cyclic space <span class="math" data-tex="\(H_x=\overline{\rho_U(C(\mathbb T))x}\)">\(H_x=\overline{\rho_U(C(\mathbb T))x}\)</span>, the map
+<span class="math math-display" data-tex="\[
+C(\mathbb T)\longrightarrow H_x,\qquad f\longmapsto\rho_U(f)x
+\]">\[
+C(\mathbb T)\longrightarrow H_x,\qquad f\longmapsto\rho_U(f)x
+\]</span>
+has squared norm <span class="math" data-tex="\(\int |f|^2\,d\mu_x^0\)">\(\int |f|^2\,d\mu_x^0\)</span>. Continuous functions are dense in <span class="math" data-tex="\(L^2(\mu_x^0)\)">\(L^2(\mu_x^0)\)</span>: for a Borel set <span class="math" data-tex="\(B\)">\(B\)</span>, the regularity proved in SB-2 gives compact <span class="math" data-tex="\(F\subseteq B\subseteq O\)">\(F\subseteq B\subseteq O\)</span> with <span class="math" data-tex="\(\mu_x^0(O\setminus F)&lt;\varepsilon\)">\(\mu_x^0(O\setminus F)&lt;\varepsilon\)</span>. When <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(K\setminus O\)">\(K\setminus O\)</span> are nonempty, the continuous function
+<span class="math math-display" data-tex="\[
+a(y)=\frac{d(y,K\setminus O)}{d(y,F)+d(y,K\setminus O)}
+\]">\[
+a(y)=\frac{d(y,K\setminus O)}{d(y,F)+d(y,K\setminus O)}
+\]</span>
+is between zero and one, is one on <span class="math" data-tex="\(F\)">\(F\)</span>, and zero off <span class="math" data-tex="\(O\)">\(O\)</span>. For <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span>, take zero; for nonempty <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(O=K\)">\(O=K\)</span>, take one. In every case <span class="math" data-tex="\(\|a-1_B\|_2^2\leq\mu_x^0(O\setminus F)\)">\(\|a-1_B\|_2^2\leq\mu_x^0(O\setminus F)\)</span>. Linear combinations approximate simple functions, and the exact simple approximation in SB-0 gives all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Its completeness, also proved there, extends the map to a unitary onto <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. Multiplication on the dense continuous functions proves that <span class="math" data-tex="\(U|_{H_x}\)">\(U|_{H_x}\)</span> becomes multiplication by <span class="math" data-tex="\(z\)">\(z\)</span>, and that every <span class="math" data-tex="\(\rho_U(f)\)">\(\rho_U(f)\)</span> becomes multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Each <span class="math" data-tex="\(H_x\)">\(H_x\)</span> reduces <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(U^*\)">\(U^*\)</span>. A maximal family of nonzero orthogonal such spaces fills <span class="math" data-tex="\(H\)">\(H\)</span>, since a nonzero vector in its orthogonal complement would generate another member. Uniting the cyclic unitaries yields
+<span class="math math-display" data-tex="\[
+H\cong\bigoplus_{j\in J}L^2(\mu_j),\qquad U\cong\bigoplus_{j\in J}M_z.
+\tag{SB11}
+\]">\[
+H\cong\bigoplus_{j\in J}L^2(\mu_j),\qquad U\cong\bigoplus_{j\in J}M_z.
+\tag{SB11}
+\]</span>
+There is no restriction on <span class="math" data-tex="\(J\)">\(J\)</span>. A vector in this Hilbert sum has at most countably many nonzero components: for each <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, finitely many squared norms exceed <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, and the union of these sets contains every nonzero component. Coordinate completeness and a supremum over finite sums show that the direct sum is complete. The zero Hilbert space uses the empty sum.</p>
+<p>For bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span> on the circle define <span class="math" data-tex="\(\Phi(f)=\bigoplus_j M_f\)">\(\Phi(f)=\bigoplus_j M_f\)</span> in (SB11), and set <span class="math" data-tex="\(E(B)=\Phi(1_B)\)">\(E(B)=\Phi(1_B)\)</span>. These give a unital *-homomorphism and projections with strong countable additivity. More explicitly, if <span class="math" data-tex="\(v=(v_j)\)">\(v=(v_j)\)</span>, the finite measure
+<span class="math math-display" data-tex="\[
+\mu_v(B)=\sum_j\int_B|v_j|^2\,d\mu_j
+\]">\[
+\mu_v(B)=\sum_j\int_B|v_j|^2\,d\mu_j
+\]</span>
+has total mass <span class="math" data-tex="\(\|v\|^2\)">\(\|v\|^2\)</span>. Only countably many terms are nonzero. The identity for simple functions, followed by monotone convergence, gives
+<span class="math math-display" data-tex="\[
+\|\Phi(f)v\|^2=\int|f|^2\,d\mu_v.
+\tag{SB12}
+\]">\[
+\|\Phi(f)v\|^2=\int|f|^2\,d\mu_v.
+\tag{SB12}
+\]</span>
+This proves strong countable additivity and bounded pointwise sequential convergence by scalar dominated convergence. For uniqueness of the Borel extension, continuous distance functions approximate open indicators, the pi-lambda argument in SB-2 gives all Borel indicators, and uniform simple approximation gives every bounded Borel function. Explicitly, partition a bounded square containing the range into finitely many Borel grid cells of side <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, and replace each value by one corner of its cell. The level sets are Borel and the error is at most <span class="math" data-tex="\(\sqrt2/n\)">\(\sqrt2/n\)</span>. Consequently neither the projections nor the calculus depend on the chosen cyclic decomposition.</p>
+<h2 id="OA-FLOW.SF.SB4"><span id="oa-flow.sf.sb4"></span>SB-4. Exact unbounded domains and the self-adjoint theorem</h2>
+<p>For clarity, here is how the full domain and Cayley steps apply without any general normal continuous-calculus import. For a finite-valued Borel <span class="math" data-tex="\(f\)">\(f\)</span>, define <span class="math" data-tex="\(f(E)v=(fv_j)_j\)">\(f(E)v=(fv_j)_j\)</span> exactly on
+<span class="math math-display" data-tex="\[
+D(f(E))=\left\{v:\int|f|^2\,d\mu_v&lt;\infty\right\}.
+\tag{SB13}
+\]">\[
+D(f(E))=\left\{v:\int|f|^2\,d\mu_v&lt;\infty\right\}.
+\tag{SB13}
+\]</span>
+Cutoffs <span class="math" data-tex="\(P_n=E(|f|\leq n)\)">\(P_n=E(|f|\leq n)\)</span> have <span class="math" data-tex="\(P_n\to I\)">\(P_n\to I\)</span> strongly and <span class="math" data-tex="\(P_nH\subseteq D(f(E))\)">\(P_nH\subseteq D(f(E))\)</span>. If <span class="math" data-tex="\(v_m\to v\)">\(v_m\to v\)</span>, <span class="math" data-tex="\(f(E)v_m\to w\)">\(f(E)v_m\to w\)</span>, bounded cutoff multiplication gives <span class="math" data-tex="\(\Phi(f1_{|f|\leq n})v=P_nw\)">\(\Phi(f1_{|f|\leq n})v=P_nw\)</span>; monotone convergence proves (SB13), and <span class="math" data-tex="\(P_n\to I\)">\(P_n\to I\)</span> identifies the image as <span class="math" data-tex="\(w\)">\(w\)</span>. This proves closedness. The adjoint pairing first gives <span class="math" data-tex="\(\bar f(E)\subseteq f(E)^*\)">\(\bar f(E)\subseteq f(E)^*\)</span>. Conversely the adjoint pairing tested on <span class="math" data-tex="\(P_nH\)">\(P_nH\)</span> gives <span class="math" data-tex="\(\Phi(\bar f1_{|f|\leq n})v=P_nw\)">\(\Phi(\bar f1_{|f|\leq n})v=P_nw\)</span>; the same squared-integral bound gives the reverse adjoint inclusion, including domains.</p>
+<p>The vector measure of an existing image <span class="math" data-tex="\(g(E)v\)">\(g(E)v\)</span> is <span class="math" data-tex="\(|g|^2\mu_v\)">\(|g|^2\mu_v\)</span>, first on indicators and then for all nonnegative integrands. Thus
+<span class="math math-display" data-tex="\[
+D(f(E)g(E))=D(g(E))\cap D((fg)(E)),\qquad f(E)g(E)=(fg)(E)
+\tag{SB14}
+\]">\[
+D(f(E)g(E))=D(g(E))\cap D((fg)(E)),\qquad f(E)g(E)=(fg)(E)
+\tag{SB14}
+\]</span>
+on that domain. The cutoffs <span class="math" data-tex="\(E(|f|\leq n,|g|\leq n)\)">\(E(|f|\leq n,|g|\leq n)\)</span> approximate each vector of <span class="math" data-tex="\(D((fg)(E))\)">\(D((fg)(E))\)</span> in its graph norm; hence the closure of the product is <span class="math" data-tex="\((fg)(E)\)">\((fg)(E)\)</span>. The identical argument with the majorant <span class="math" data-tex="\(1+|f+g|^2\)">\(1+|f+g|^2\)</span> proves the sum closure. These arguments also construct integrals and their rules for an arbitrary given strongly countably additive projection measure: first take orthogonal finite simple sums, derive their squared-norm identity, then use uniform approximation and the same cutoffs. No spectral theorem is needed to compare two such measures.</p>
+<p>For a self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span>, closedness and
+<span class="math math-display" data-tex="\[
+\|(A\pm i)v\|^2=\|Av\|^2+\|v\|^2
+\]">\[
+\|(A\pm i)v\|^2=\|Av\|^2+\|v\|^2
+\]</span>
+show that <span class="math" data-tex="\(A\pm i\)">\(A\pm i\)</span> have closed ranges. Their orthogonal complements are <span class="math" data-tex="\(\ker(A\mp i)=0\)">\(\ker(A\mp i)=0\)</span>, by the adjoint definition, so both ranges are all of <span class="math" data-tex="\(H\)">\(H\)</span>. Put <span class="math" data-tex="\(R=(A+i)^{-1}\)">\(R=(A+i)^{-1}\)</span> and <span class="math" data-tex="\(U=I-2iR\)">\(U=I-2iR\)</span>. The displayed identity and the surjectivity of <span class="math" data-tex="\(A-i\)">\(A-i\)</span> show that <span class="math" data-tex="\(U=(A-i)(A+i)^{-1}\)">\(U=(A-i)(A+i)^{-1}\)</span> is unitary. Moreover <span class="math" data-tex="\(I-U=2iR\)">\(I-U=2iR\)</span> is injective, so its multiplication model has <span class="math" data-tex="\(E_U(\{1\})=0\)">\(E_U(\{1\})=0\)</span>.</p>
+<p>On the circle minus 1 put <span class="math" data-tex="\(a(z)=i(1+z)/(1-z)\)">\(a(z)=i(1+z)/(1-z)\)</span>, and assign <span class="math" data-tex="\(a(1)=0\)">\(a(1)=0\)</span>. It is real-valued, so <span class="math" data-tex="\(B=a(E_U)\)">\(B=a(E_U)\)</span> is self-adjoint by the adjoint proof above. The function <span class="math" data-tex="\((a+i)^{-1}\)">\((a+i)^{-1}\)</span> maps every vector into <span class="math" data-tex="\(D(B)\)">\(D(B)\)</span>, because <span class="math" data-tex="\(|a/(a+i)|\leq1\)">\(|a/(a+i)|\leq1\)</span>. Its two products with <span class="math" data-tex="\(B+i\)">\(B+i\)</span> are identities on their full appropriate domains by (SB14). Since the exceptional projection is zero,
+<span class="math math-display" data-tex="\[
+(B+i)^{-1}=(I-U)/(2i)=R.
+\]">\[
+(B+i)^{-1}=(I-U)/(2i)=R.
+\]</span>
+Equality of these inverses implies equality of their ranges and inverse actions: <span class="math" data-tex="\(D(B)=\operatorname{Ran}R=D(A)\)">\(D(B)=\operatorname{Ran}R=D(A)\)</span> and <span class="math" data-tex="\(B=A\)">\(B=A\)</span>. Push the circle projection measure forward under <span class="math" data-tex="\(a\)">\(a\)</span> to get <span class="math" data-tex="\(E_A\)">\(E_A\)</span> on the real line. The change-of-variables identity follows first on indicators, then on simple functions, then by monotone convergence; it therefore gives exactly the domain (SB13) for the coordinate and for every Borel function of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For uniqueness, any other projection measure representing <span class="math" data-tex="\(A\)">\(A\)</span> with this full domain gives the same Cayley operator <span class="math" data-tex="\(U\)">\(U\)</span>, by the arbitrary-projection-measure version of the cutoff rules above. Push it forward under <span class="math" data-tex="\(c(t)=(t-i)/(t+i)\)">\(c(t)=(t-i)/(t+i)\)</span>. Its integrals of Laurent polynomials are the corresponding polynomials of <span class="math" data-tex="\(U,U^*\)">\(U,U^*\)</span>; (SB5) gives agreement with <span class="math" data-tex="\(\rho_U\)">\(\rho_U\)</span> on every continuous function on the entire circle. Bounded pointwise convergence and the proved open-set/pi-lambda argument give agreement on all Borel sets. The map <span class="math" data-tex="\(c\)">\(c\)</span> is a homeomorphism from the real line onto the circle minus 1, with inverse <span class="math" data-tex="\(a\)">\(a\)</span>; neither pushforward has an atom at 1. Thus the two real-line projection measures agree. This uses uniform approximation on the whole circle, and requires neither a spectral-mapping theorem nor a support-on-operator-spectrum argument.</p>
+<p>If <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span>, a nonzero vector in <span class="math" data-tex="\(E_A([-n,-1/n])H\)">\(E_A([-n,-1/n])H\)</span> would lie in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> and have negative quadratic value. These intervals cover the negative half-line, so its spectral projection is zero. If <span class="math" data-tex="\(A\)">\(A\)</span> is bounded, the squared-integral identity on a band where <span class="math" data-tex="\(|t|\geq\|A\|+\varepsilon\)">\(|t|\geq\|A\|+\varepsilon\)</span> contradicts <span class="math" data-tex="\(\|Av\|\leq\|A\|\|v\|\)">\(\|Av\|\leq\|A\|\|v\|\)</span> unless that band's projection is zero. A countable union of bounded such bands proves <span class="math" data-tex="\(E_A(\{|t|&gt;\|A\|\})=0\)">\(E_A(\{|t|&gt;\|A\|\})=0\)</span>. This also gives the bounded square roots and their norm bounds used in SB-6. The zero projection at a point is the corresponding kernel, from (SB13); thus positive injectivity means <span class="math" data-tex="\(E_A(\{0\})=0\)">\(E_A(\{0\})=0\)</span>, not a positive lower bound. Inverse powers and <span class="math" data-tex="\(\log A\)">\(\log A\)</span> are defined on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> with arbitrary finite values on the null projection at zero. In particular
+<span class="math math-display" data-tex="\[
+D(A^z)=\{v:\int_0^\infty t^{2\operatorname{Re}z}\,d\mu_v^A(t)&lt;\infty\}.
+\tag{SB15}
+\]">\[
+D(A^z)=\{v:\int_0^\infty t^{2\operatorname{Re}z}\,d\mu_v^A(t)&lt;\infty\}.
+\tag{SB15}
+\]</span>
+For <span class="math" data-tex="\(|t^{is}|=1\)">\(|t^{is}|=1\)</span>, bounded multiplication gives the unitary group law, and dominated convergence with bound 4 gives strong continuity. The same domain identity gives its domain preservation. Spectral bands <span class="math" data-tex="\([1/n,n]\)">\([1/n,n]\)</span> are full graph cores for every power: the omitted integral of <span class="math" data-tex="\(1+t^{2\operatorname{Re}z}\)">\(1+t^{2\operatorname{Re}z}\)</span> tends to zero. On a fixed band, the power series for <span class="math" data-tex="\(exp(w\log t)\)">\(exp(w\log t)\)</span> and each differentiated series converge uniformly on compact <span class="math" data-tex="\(w\)">\(w\)</span>-sets. This proves operator-norm entire dependence there. These are exactly the spectral facts used by the two reconstructed lessons.</p>
+<h2 id="OA-FLOW.SF.SB5"><span id="oa-flow.sf.sb5"></span>SB-5. Retaining the separable reduction without weakening generality</h2>
+<p>The proof just given already applies on an arbitrary Hilbert space. It can also supply precisely the separable theorem used in the current SF-1, leaving that lemma's reducing-subspace argument intact. A countable orbit under <span class="math" data-tex="\(R=(A+i)^{-1}\)">\(R=(A+i)^{-1}\)</span> and <span class="math" data-tex="\(R^*=(A-i)^{-1}\)">\(R^*=(A-i)^{-1}\)</span> spans a separable reducing space. The resolvent adjoint equality follows by pairing the two inverse equations; their commutation follows by subtracting those equations, giving the resolvent identity. A maximal orthogonal collection of these spaces fills <span class="math" data-tex="\(H\)">\(H\)</span>. Its projections <span class="math" data-tex="\(P_j\)">\(P_j\)</span> commute with <span class="math" data-tex="\(R,R^*\)">\(R,R^*\)</span>, preserve <span class="math" data-tex="\(\operatorname{Ran}R=D(A)\)">\(\operatorname{Ran}R=D(A)\)</span>, and commute there with <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(AR=I-iR\)">\(AR=I-iR\)</span>.</p>
+<p>On <span class="math" data-tex="\(P_jH\)">\(P_jH\)</span>, the restriction <span class="math" data-tex="\(A_j\)">\(A_j\)</span> is densely defined because its two imaginary resolvents have dense ranges: the adjoint of either restricted resolvent is the other, whose kernel is zero. The restriction is symmetric, and both imaginary shifts are onto. To check self-adjointness, for <span class="math" data-tex="\(v\in D(A_j^*)\)">\(v\in D(A_j^*)\)</span> solve <span class="math" data-tex="\((A_j-i)w=(A_j^*-i)v\)">\((A_j-i)w=(A_j^*-i)v\)</span>. The difference <span class="math" data-tex="\(v-w\)">\(v-w\)</span> is in <span class="math" data-tex="\(\ker(A_j^*-i)=\operatorname{Ran}(A_j+i)^\perp=0\)">\(\ker(A_j^*-i)=\operatorname{Ran}(A_j+i)^\perp=0\)</span>. Thus the domains agree.</p>
+<p>Apply SB-1–4 to <span class="math" data-tex="\(A_j\)">\(A_j\)</span>. If a single scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> multiplication space is wanted in the separable theorem, its orthogonal family of nonzero cyclic spaces is countable: disjoint radius-<span class="math" data-tex="\(1/3\)">\(1/3\)</span> balls about one unit vector from each meet distinct members of a fixed countable dense set. A countable sum of the finite measure spaces is a sigma-finite scalar space with multiplication coordinate <span class="math" data-tex="\(a(z)\)">\(a(z)\)</span>. It can be made finite without changing the multiplication model: choose positive constants <span class="math" data-tex="\(w_j=2^{-j}/(1+\mu_j(\mathbb T))\)">\(w_j=2^{-j}/(1+\mu_j(\mathbb T))\)</span>; replace <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span> by <span class="math" data-tex="\(w_j\mu_j\)">\(w_j\mu_j\)</span> and a vector function by <span class="math" data-tex="\(w_j^{-1/2}\)">\(w_j^{-1/2}\)</span> times itself. The norm and multiplication identities are unchanged. For a finite family use the same formula; the zero space is separate. This verifies the usual separable multiplication formulation rather than only asserting a projection measure.</p>
+<p>Finally the full sum domain is
+<span class="math math-display" data-tex="\[
+D(A)=\{(v_j):v_j\in D(A_j),\ \sum_j\|A_jv_j\|^2&lt;\infty\}.
+\tag{SB16}
+\]">\[
+D(A)=\{(v_j):v_j\in D(A_j),\ \sum_j\|A_jv_j\|^2&lt;\infty\}.
+\tag{SB16}
+\]</span>
+One inclusion follows by commuting <span class="math" data-tex="\(P_j\)">\(P_j\)</span> through <span class="math" data-tex="\(A\)">\(A\)</span>. Conversely a vector and its proposed image have square-summable components and hence countable support. Finite partial sums converge in both coordinates of the graph; closedness of <span class="math" data-tex="\(A\)">\(A\)</span> proves the reverse inclusion. This establishes arbitrary-Hilbert scope without assuming a countable decomposition of the whole space.</p>
+<h2 id="OA-FLOW.SF.SB6"><span id="oa-flow.sf.sb6"></span>SB-6. Borel conventions, affiliation and normal transport</h2>
+<p>The input to <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span> is a pointwise Borel function, finite except possibly on a Borel set of spectral projection zero, where a finite value is chosen. Functions have the same calculus precisely when <span class="math" data-tex="\(E_A(\{f\ne g\})=0\)">\(E_A(\{f\ne g\})=0\)</span>. One direction follows from (SB13). For the other, if the two closed operators agree, cut to the sets where <span class="math" data-tex="\(|f|,|g|\leq n\)">\(|f|,|g|\leq n\)</span> and <span class="math" data-tex="\(|f-g|\geq1/m\)">\(|f-g|\geq1/m\)</span>. Every vector in such a spectral subspace lies in both domains; the squared-norm identity forces that projection to be zero. Taking the countable union proves the claim. Equality modulo ordinary Lebesgue-null sets on the real line is not a valid convention for an arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>In a scalar summand <span class="math" data-tex="\(L^2(\mu_j)\)">\(L^2(\mu_j)\)</span>, functions and multipliers are identified modulo <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span>-null sets. If completed scalar measures are used, every completion-measurable function has a Borel representative: approximate it by measurable simple functions, replace each of the finitely many level sets by a Borel set differing within a Borel null set, and unite the exceptional sets over the sequence. Outside that Borel null union the resulting Borel simple functions converge to the original function. Their convergence set is Borel by the countable Cauchy criterion; define the limit there and zero elsewhere. This proves the representative statement without identifying the completed sigma-algebra with the Borel sigma-algebra.</p>
+<p>For a unitary <span class="math" data-tex="\(W:H\to K\)">\(W:H\to K\)</span>, the conjugated projections <span class="math" data-tex="\(WE_A(B)W^{-1}\)">\(WE_A(B)W^{-1}\)</span> are strongly countably additive and represent <span class="math" data-tex="\(WAW^{-1}\)">\(WAW^{-1}\)</span> on <span class="math" data-tex="\(WD(A)\)">\(WD(A)\)</span>, by simple integrals and graph cutoffs. Spectral uniqueness proves covariance. For antiunitary <span class="math" data-tex="\(W\)">\(W\)</span>, the same argument applies to real functions; general scalar coefficients are conjugated. Thus domains transport and <span class="math" data-tex="\(Wf(A)W^{-1}=\bar f(WAW^{-1})\)">\(Wf(A)W^{-1}=\bar f(WAW^{-1})\)</span> in the antiunitary case. This proves the covariance premise noted but not bound in the original SF-1.</p>
+<p>Here a concrete von Neumann algebra is specified by <span class="math" data-tex="\(M=M''\)">\(M=M''\)</span>. Suppose every unitary <span class="math" data-tex="\(v\in M'\)">\(v\in M'\)</span> preserves <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> and commutes with <span class="math" data-tex="\(A\)">\(A\)</span> there. Covariance gives commutation of <span class="math" data-tex="\(v\)">\(v\)</span> with every <span class="math" data-tex="\(E_A(B)\)">\(E_A(B)\)</span>. To pass from these unitaries to all of <span class="math" data-tex="\(M'\)">\(M'\)</span>, let <span class="math" data-tex="\(b\in M'\)">\(b\in M'\)</span>, write <span class="math" data-tex="\(b=s+it\)">\(b=s+it\)</span> with bounded self-adjoint <span class="math" data-tex="\(s,t\in M'\)">\(s,t\in M'\)</span>, and scale each nonzero part to a contraction <span class="math" data-tex="\(q\)">\(q\)</span>. The just-proved bounded self-adjoint calculus gives <span class="math" data-tex="\(r=(I-q^2)^{1/2}\)">\(r=(I-q^2)^{1/2}\)</span>, commuting with <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(u=q+ir\)">\(u=q+ir\)</span> is unitary with <span class="math" data-tex="\(q=(u+u^*)/2\)">\(q=(u+u^*)/2\)</span>. Moreover <span class="math" data-tex="\(r\in M'\)">\(r\in M'\)</span>: each <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> commutes with <span class="math" data-tex="\(q\)">\(q\)</span>; hence it commutes with its resolvents, their Laurent polynomials, their continuous limits from SB-1, and their bounded Borel limits from SB-3. Thus <span class="math" data-tex="\(u\in M'\)">\(u\in M'\)</span>. Each <span class="math" data-tex="\(b\)">\(b\)</span> is a linear combination of four such unitaries, so <span class="math" data-tex="\(E_A(B)\in(M')'=M\)">\(E_A(B)\in(M')'=M\)</span>.</p>
+<p>Conversely, if every spectral projection lies in <span class="math" data-tex="\(M\)">\(M\)</span>, a unitary in <span class="math" data-tex="\(M'\)">\(M'\)</span> commutes with bounded simple integrals and with their uniform limits. The squared-integral domain test, or its increasing bounded truncations, shows preservation of <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>; graph cutoffs show commutation with its action. This proves the two affiliation definitions equivalent. Bounded Borel functions of an affiliated self-adjoint operator lie in <span class="math" data-tex="\(M\)">\(M\)</span>, by the same simple approximation.</p>
+<p>For completeness, a bounded operator commuting with a unitary <span class="math" data-tex="\(U,U^*\)">\(U,U^*\)</span> commutes first with its Laurent polynomials, then its continuous calculus, then open projections, all Borel projections by the pi-lambda argument, and finally every bounded Borel function. This is the commutation used in the preceding paragraph and does not require a Fuglede theorem.</p>
+<p>Let <span class="math" data-tex="\(\pi:M\to B(K)\)">\(\pi:M\to B(K)\)</span> be a normal unital representation, where normal means continuous for the concrete ultraweak topology generated by the tests <span class="math" data-tex="\(x\mapsto\sum_j\langle x\xi_j,\eta_j\rangle\)">\(x\mapsto\sum_j\langle x\xi_j,\eta_j\rangle\)</span> with <span class="math" data-tex="\(\sum_j\|\xi_j\|^2,\sum_j\|\eta_j\|^2&lt;\infty\)">\(\sum_j\|\xi_j\|^2,\sum_j\|\eta_j\|^2&lt;\infty\)</span>. For uniformly bounded strongly convergent operators, each such test converges: finitely many terms converge and the absolute tail is bounded uniformly by the operator bound times <span class="math" data-tex="\(\sum_{j&gt;N}\|\xi_j\|\|\eta_j\|\)">\(\sum_{j&gt;N}\|\xi_j\|\|\eta_j\|\)</span>, which tends to zero by scalar Cauchy–Schwarz. Thus if <span class="math" data-tex="\(E_n\uparrow E\)">\(E_n\uparrow E\)</span> are spectral projections, strong convergence and their uniform bound imply ultraweak convergence, and normality gives <span class="math" data-tex="\(\pi(E_n)\to\pi(E)\)">\(\pi(E_n)\to\pi(E)\)</span> ultraweakly. Since these are increasing projections,
+<span class="math math-display" data-tex="\[
+\|(\pi(E)-\pi(E_n))\eta\|^2=\langle(\pi(E)-\pi(E_n))\eta,\eta\rangle\longrightarrow0.
+\]">\[
+\|(\pi(E)-\pi(E_n))\eta\|^2=\langle(\pi(E)-\pi(E_n))\eta,\eta\rangle\longrightarrow0.
+\]</span>
+Disjoint sums now give strong countable additivity of <span class="math" data-tex="\(B\mapsto\pi(E_A(B))\)">\(B\mapsto\pi(E_A(B))\)</span>. Its total projection is <span class="math" data-tex="\(I\)">\(I\)</span>, and zero projections remain zero. This defines the transported self-adjoint operator and all its domains by (SB13). Uniform simple approximation proves the transport identity for bounded Borel functions. A unital *-homomorphism is contractive here without an additional import: for <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the square root of the positive operator <span class="math" data-tex="\(\|x\|^2I-x^*x\)">\(\|x\|^2I-x^*x\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span> by the bounded self-adjoint calculus just proved; applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(\pi(x)^*\pi(x)\leq\|x\|^2I\)">\(\pi(x)^*\pi(x)\leq\|x\|^2I\)</span>. In a degenerate representation apply the same argument on the support <span class="math" data-tex="\(\pi(1)K\)">\(\pi(1)K\)</span>. No equality of unbounded products is inferred without its squared-integral domain test.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="The spectral proof route and its full-domain test" src="assets/operator-spectral/assets/spectral-route.png" style="display:block;width:1280px;max-width:none"/></p>
+<p><em>Proof map, not a spectral plot. SB-1 controls each finite orbit polynomial by a scalar circle norm; SB-2 constructs its scalar measures; SB-3 makes the unitary multiplication; SB-4 recovers the entire graph of <span class="math" data-tex="\(A\)">\(A\)</span> through the equal resolvents. The bottom formula is the exact domain test, including unbounded functions. Source and rendering script are retained beside this candidate.</em></p>
+<p><a id="oa-flow.shared-foundations.sf-1"></a></p>
+<h2 id="OA-FLOW.SF.SF1"><span id="oa-flow.sf.sf1"></span>SF-1. Spectral domains, reducing sums and covariance</h2>
+<p><a id="oa-flow.sf1.resolvents"></a></p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be self-adjoint on an arbitrary Hilbert space. The identity</p>
+<p><span class="math math-display" data-tex="\[
+\|(A\pm i)v\|^2=\|Av\|^2+\|v\|^2
+\]">\[
+\|(A\pm i)v\|^2=\|Av\|^2+\|v\|^2
+\]</span></p>
+<p>gives closed range, using closedness of <span class="math" data-tex="\(A\)">\(A\)</span>. Its orthogonal complement is the kernel of <span class="math" data-tex="\(A\)">\(A\)</span> with the opposite imaginary shift, hence zero. Therefore <span class="math" data-tex="\(R=(A+i)^{-1},\quad R^*=(A-i)^{-1}\)">\(R=(A+i)^{-1},\quad R^*=(A-i)^{-1}\)</span> are bounded and everywhere defined; their resolvent identity shows they commute.</p>
+<p><a id="oa-flow.sf1.reducing-sums"></a></p>
+<p>Given a vector, its countable orbit under all monomials in <span class="math" data-tex="\(R\text{ and }R^*\)">\(R\text{ and }R^*\)</span> spans a separable reducing subspace. A maximal orthogonal family of these subspaces fills the whole Hilbert space: the orthogonal complement, if nonzero, would contain another orbit. Let the resulting projections be <span class="math" data-tex="\(P_j\)">\(P_j\)</span>. They commute with both resolvents and consequently preserve <span class="math" data-tex="\(D(A)=\operatorname{Ran}R\)">\(D(A)=\operatorname{Ran}R\)</span> and commute with <span class="math" data-tex="\(A\)">\(A\)</span> there, because <span class="math" data-tex="\(AR=1-iR\)">\(AR=1-iR\)</span>. The restriction <span class="math" data-tex="\(A_j\)">\(A_j\)</span> is densely defined, symmetric and has both imaginary resolvents everywhere defined on <span class="math" data-tex="\(P_jH\)">\(P_jH\)</span>. It is self-adjoint: if <span class="math" data-tex="\(v\)">\(v\)</span> is in its adjoint domain, solve <span class="math" data-tex="\((A_j-i)w=(A_j^*-i)v\)">\((A_j-i)w=(A_j^*-i)v\)</span> and use <span class="math" data-tex="\(\ker(A_j^*-i)=\operatorname{Ran}(A_j+i)^\perp=\{0\}\)">\(\ker(A_j^*-i)=\operatorname{Ran}(A_j+i)^\perp=\{0\}\)</span> to conclude <span class="math" data-tex="\(v=w\)">\(v=w\)</span>.</p>
+<p><a id="oa-flow.sf1.full-domains"></a></p>
+<p>Apply the separable multiplication theorem proved in SB-1–SB-5 above to each restriction. The complete domain of their orthogonal sum is</p>
+<p><a id="oa-flow.eq.sf1"></a></p>
+<p><span class="math math-display" data-tex="\[
+D(A)=\{v=(v_j):v_j\in D(A_j),\ \sum_j\|A_jv_j\|^2&lt;\infty\}.
+\tag{SF1}
+\]">\[
+D(A)=\{v=(v_j):v_j\in D(A_j),\ \sum_j\|A_jv_j\|^2&lt;\infty\}.
+\tag{SF1}
+\]</span></p>
+<p>The forward inclusion uses <span class="math" data-tex="\(P_jA=AP_j\)">\(P_jA=AP_j\)</span>. For the reverse inclusion, each vector has at most countably many nonzero components; its finite sums and their <span class="math" data-tex="\(A\)">\(A\)</span>-images converge, so closedness gives membership in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. This countability concerns one vector, not the dimension of the Hilbert space.</p>
+<p><a id="oa-flow.sf1.spectral-calculus"></a></p>
+<p>The direct sum of the spectral measures is strongly countably additive, as follows by applying the squared Hilbert norm to each vector and summing its countable components. For every Borel function <span class="math" data-tex="\(f\)">\(f\)</span>, finite off a set of spectral projection zero, its multiplication calculus has exactly</p>
+<p><a id="oa-flow.eq.sf2"></a></p>
+<p><span class="math math-display" data-tex="\[
+D(f(A))=\{v:\int |f|^2\,d\mu_v^A&lt;\infty\},\qquad
+\|f(A)v\|^2=\int |f|^2\,d\mu_v^A,
+\quad \mu_v^A(E)=\langle E_A(E)v,v\rangle.
+\tag{SF2}
+\]">\[
+D(f(A))=\{v:\int |f|^2\,d\mu_v^A&lt;\infty\},\qquad
+\|f(A)v\|^2=\int |f|^2\,d\mu_v^A,
+\quad \mu_v^A(E)=\langle E_A(E)v,v\rangle.
+\tag{SF2}
+\]</span></p>
+<p>All measures <span class="math" data-tex="\(\mu_v^A\)">\(\mu_v^A\)</span> are finite. In particular <span class="math" data-tex="\(e^{itA}\)">\(e^{itA}\)</span> is a strongly continuous unitary group, preserves <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, and has derivative <span class="math" data-tex="\(iAe^{itA}v\)">\(iAe^{itA}v\)</span> there: use <span class="math" data-tex="\(|(e^{itx}-1)/t|\leq|x|\)">\(|(e^{itx}-1)/t|\leq|x|\)</span> and dominated convergence in (SF2). Every limit here has a real or complex metric parameter, so applying scalar dominated convergence along sequences suffices.</p>
+<p><a id="oa-flow.sf1.affiliation"></a></p>
+<p>For self-adjoint operators we use the spectral-projection definition of affiliation: every <span class="math" data-tex="\(E_A(E)\)">\(E_A(E)\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. Finite Borel simple functions and uniform approximation then put every bounded spectral function in <span class="math" data-tex="\(M\)">\(M\)</span>. A unitary in <span class="math" data-tex="\(M'\)">\(M'\)</span> commutes with those functions and all spectral projections; (SF2) shows that it preserves <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, and graph cutoffs give commutation with <span class="math" data-tex="\(A\)">\(A\)</span> there. Thus all domain commutations needed below are proved from this definition. SB-6 proves that this is equivalent to commutant invariance of the full unbounded graph, using the locally proved spectral covariance. For positive injective <span class="math" data-tex="\(A\)">\(A\)</span>, zero has spectral projection zero; logarithms and inverse powers are consequently meaningful through (SF2), even when zero belongs to the spectrum.</p>
+<p><a id="oa-flow.sf1.normal-transport"></a></p>
+<p>For positive injective <span class="math" data-tex="\(A\)">\(A\)</span> put <span class="math" data-tex="\(e_n=1_{[1/n,n]}(A)\)">\(e_n=1_{[1/n,n]}(A)\)</span>. Then <span class="math" data-tex="\(e_n\)">\(e_n\)</span> increases strongly to 1, and for <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, <span class="math" data-tex="\(e_nv\)">\(e_nv\)</span> converges to <span class="math" data-tex="\(v\)">\(v\)</span> together with <span class="math" data-tex="\(Ae_nv\)">\(Ae_nv\)</span>. This is its full graph core. A normal unital representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> transports the spectral projections to a strongly countably additive spectral measure. Indeed, for disjoint Borel sets <span class="math" data-tex="\(E_j\)">\(E_j\)</span>, put <span class="math" data-tex="\(p=E_A(\bigcup_jE_j)\)">\(p=E_A(\bigcup_jE_j)\)</span> and <span class="math" data-tex="\(p_n=\sum_{j=1}^nE_A(E_j)\)">\(p_n=\sum_{j=1}^nE_A(E_j)\)</span>. The spectral measure gives <span class="math" data-tex="\(p_n\to p\)">\(p_n\to p\)</span> strongly, and these projections have norm at most one. Every defining ultraweak vector-series test tends to zero on <span class="math" data-tex="\(p-p_n\)">\(p-p_n\)</span>: its finite head converges by strong convergence, and Cauchy–Schwarz bounds its tail uniformly by <span class="math" data-tex="\((\sum_{j&gt;N}\|\xi_j\|^2)^{1/2}(\sum_{j&gt;N}\|\eta_j\|^2)^{1/2}\)">\((\sum_{j&gt;N}\|\xi_j\|^2)^{1/2}(\sum_{j&gt;N}\|\eta_j\|^2)^{1/2}\)</span>. Normality therefore gives <span class="math" data-tex="\(\pi(p_n)\to\pi(p)\)">\(\pi(p_n)\to\pi(p)\)</span> ultraweakly. Their images are projections with <span class="math" data-tex="\(\pi(p_n)\leq\pi(p)\)">\(\pi(p_n)\leq\pi(p)\)</span>, so</p>
+<p><span class="math math-display" data-tex="\[
+ \|(\pi(p)-\pi(p_n))\eta\|^2
+ =\langle(\pi(p)-\pi(p_n))\eta,\eta\rangle\longrightarrow0.
+\]">\[
+ \|(\pi(p)-\pi(p_n))\eta\|^2
+ =\langle(\pi(p)-\pi(p_n))\eta,\eta\rangle\longrightarrow0.
+\]</span></p>
+<p>Thus <span class="math" data-tex="\(\pi(p)=\sum_j\pi(E_A(E_j))\)">\(\pi(p)=\sum_j\pi(E_A(E_j))\)</span> strongly. Total projection <span class="math" data-tex="\(1\)">\(1\)</span> and zero kernel are preserved because <span class="math" data-tex="\(\pi(1)=1\)">\(\pi(1)=1\)</span> and <span class="math" data-tex="\(\pi(E_A(\{0\}))=\pi(0)=0\)">\(\pi(E_A(\{0\}))=\pi(0)=0\)</span>. Uniform approximation of bounded Borel functions by finite Borel simple functions proves transport of every bounded spectral function. These facts do not assert that a normal representation preserves unbounded products without checking their domains.</p>
+<p><a id="oa-flow.shared-foundations.sf-2"></a></p>
+<h2 id="OA-FLOW.SF.SF2"><span id="oa-flow.sf.sf2"></span>SF-2. Bounded concrete convergence and every normal functional</h2>
+<p>In the concrete ultraweak topology, the defining linear tests have the form</p>
+<p><span class="math math-display" data-tex="\[
+f(x)=\sum_j\langle x\xi_j,\eta_j\rangle,
+\qquad \sum_j\|\xi_j\|^2&lt;\infty,\quad\sum_j\|\eta_j\|^2&lt;\infty.
+\]">\[
+f(x)=\sum_j\langle x\xi_j,\eta_j\rangle,
+\qquad \sum_j\|\xi_j\|^2&lt;\infty,\quad\sum_j\|\eta_j\|^2&lt;\infty.
+\]</span></p>
+<p><a id="oa-flow.sf2.normal-functional-series"></a></p>
+<p>Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be any continuous linear functional on <span class="math" data-tex="\(M\)">\(M\)</span> for that topology. Finitely many defining tests control <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on a neighborhood of zero. Their common kernel is contained in <span class="math" data-tex="\(\ker\omega\)">\(\ker\omega\)</span>: otherwise scalar multiples of a vector in that kernel contradict the neighborhood bound. Hence <span class="math" data-tex="\(\omega\)">\(\omega\)</span> factors linearly through their finite-dimensional joint range. Extending that finite-dimensional linear functional gives a finite linear combination of the defining tests. Concatenating the series proves</p>
+<p><a id="oa-flow.eq.sf3"></a></p>
+<p><span class="math math-display" data-tex="\[
+\omega(x)=\sum_j\langle x\alpha_j,\beta_j\rangle,
+\qquad \sum_j\|\alpha_j\|\,\|\beta_j\|&lt;\infty.
+\tag{SF3}
+\]">\[
+\omega(x)=\sum_j\langle x\alpha_j,\beta_j\rangle,
+\qquad \sum_j\|\alpha_j\|\,\|\beta_j\|&lt;\infty.
+\tag{SF3}
+\]</span></p>
+<p><a id="oa-flow.sf2.bounded-strong-transfer"></a></p>
+<p>This uses no positive extension of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. If <span class="math" data-tex="\(\|z_r\|\leq C\)">\(\|z_r\|\leq C\)</span> and <span class="math" data-tex="\(z_r\)">\(z_r\)</span> tends strongly to zero, then</p>
+<p><a id="oa-flow.eq.sf4"></a></p>
+<p><span class="math math-display" data-tex="\[
+\omega(z_r^*z_r)=\sum_j\langle z_r\alpha_j,z_r\beta_j\rangle.
+\tag{SF4}
+\]">\[
+\omega(z_r^*z_r)=\sum_j\langle z_r\alpha_j,z_r\beta_j\rangle.
+\tag{SF4}
+\]</span></p>
+<p>The first <span class="math" data-tex="\(N\)">\(N\)</span> terms tend to zero and the remaining absolute sum is bounded by <span class="math" data-tex="\(C^2\)">\(C^2\)</span> times the tail in (SF3), uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>. For <span class="math" data-tex="\(\omega\)">\(\omega\)</span> positive this proves its defining <span class="math" data-tex="\(\sigma\text{-strong}\)">\(\sigma\text{-strong}\)</span> seminorm tends to zero. If <span class="math" data-tex="\(z_r^*\)">\(z_r^*\)</span> also tends strongly to zero, repeat for <span class="math" data-tex="\(z_r^*\)">\(z_r^*\)</span> to obtain the <span class="math" data-tex="\(\sigma\text{-strong-*}\)">\(\sigma\text{-strong-*}\)</span> assertion. This works for arbitrary nets with the stated uniform bound. It never infers uniform boundedness merely from convergence of an arbitrary net.</p>
+<p><a id="oa-flow.sf2.normal-representation-transfer"></a></p>
+<p>An intrinsic limit transfers to any normal representation: each vector seminorm there is given by a normal positive functional on <span class="math" data-tex="\(M\)">\(M\)</span>. If the representation has support <span class="math" data-tex="\(p=\pi(1)\)">\(p=\pi(1)\)</span>, spectral unitaries on <span class="math" data-tex="\(pH\)">\(pH\)</span> are extended by <span class="math" data-tex="\(1-p\)">\(1-p\)</span>; their differences and derivatives are zero on the complement. This covers the degenerate case.</p>
+<p><a id="oa-flow.shared-foundations.sf-3"></a></p>
+<h2 id="OA-FLOW.SF.SF3"><span id="oa-flow.sf.sf3"></span>SF-3. Continuous vector integrals without global separability</h2>
+<p><a id="oa-flow.sf3.compact-vector-integral"></a></p>
+<p>For a norm-continuous Hilbert-valued function <span class="math" data-tex="\(F\)">\(F\)</span> on a compact interval, uniform continuity makes its tagged Riemann sums Cauchy: pass to a common refinement and bound the difference by the interval length times the two oscillation bounds. Completeness defines the integral, linearity follows from the sums, and its norm is bounded by the integral of <span class="math" data-tex="\(\|F\|\)">\(\|F\|\)</span>. Every bounded linear functional commutes with this integral. Oriented integrals have</p>
+<p><a id="oa-flow.eq.sf5"></a></p>
+<p><span class="math math-display" data-tex="\[
+\left\|\frac1h\int_t^{t+h}F(r)\,dr-F(t)\right\|
+\leq\sup_{r\text{ between }t\text{ and }t+h}\|F(r)-F(t)\|.
+\tag{SF5}
+\]">\[
+\left\|\frac1h\int_t^{t+h}F(r)\,dr-F(t)\right\|
+\leq\sup_{r\text{ between }t\text{ and }t+h}\|F(r)-F(t)\|.
+\tag{SF5}
+\]</span></p>
+<p><a id="oa-flow.sf3.vector-ftc"></a></p>
+<p>Subtracting the integral curve from a curve with continuous norm derivative and applying scalar inner products proves the vector fundamental theorem. No countability of the Hilbert space is involved.</p>
+<p><a id="oa-flow.sf3.improper-vector-integral"></a></p>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> is bounded continuous on the real line and <span class="math" data-tex="\(p\)">\(p\)</span> is a continuous integrable scalar function, the compact integrals of <span class="math" data-tex="\(pF\)">\(pF\)</span> converge as the interval expands: the norm of a tail is at most <span class="math" data-tex="\(\sup\|F\|\)">\(\sup\|F\|\)</span> times the scalar <span class="math" data-tex="\(L^1\)">\(L^1\)</span> tail. This defines the improper vector integrals used below. Their integral norm bound and interchange with inner products follow by the same limit. A general vector Bochner integration theorem is unnecessary.</p>
+<p><a id="oa-flow.shared-foundations.sf-4"></a></p>
+<h2 id="OA-FLOW.SF.SF4"><span id="oa-flow.sf.sf4"></span>SF-4. Scalar analytic facts used for strips</h2>
+<p>Here holomorphic means complex differentiable at every interior point; continuity of the derivative is not assumed. We give the contour arguments needed in the candidates. Free author treatments of the scalar background are <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_9.html#Thmthmx1">Vizeff, Lecture 9</a> and <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_11.html#Thmthmx3">Lecture 11</a>. We use positive contour orientation and denominator <span class="math" data-tex="\(w-z\)">\(w-z\)</span> consistently.</p>
+<p><a id="oa-flow.sf4.rectangle-cauchy"></a></p>
+<p><strong>Rectangle Cauchy theorem.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on a neighborhood of a closed rectangle <span class="math" data-tex="\(R\)">\(R\)</span>, and let <span class="math" data-tex="\(I(R)\)">\(I(R)\)</span> be its boundary integral. Subdivide <span class="math" data-tex="\(R\)">\(R\)</span> into four congruent rectangles. Their interior edges cancel, so one child has integral modulus at least <span class="math" data-tex="\(|I(R)|/4\)">\(|I(R)|/4\)</span>. Continue with that child. The nested rectangles <span class="math" data-tex="\(R_n\)">\(R_n\)</span> have diameter and perimeter respectively <span class="math" data-tex="\(d/2^n\)">\(d/2^n\)</span> and <span class="math" data-tex="\(l/2^n\)">\(l/2^n\)</span> and share a limiting point <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. Differentiability there gives <span class="math" data-tex="\(f(z)=f(z_0)+f'(z_0)(z-z_0)+o(|z-z_0|)\)">\(f(z)=f(z_0)+f'(z_0)(z-z_0)+o(|z-z_0|)\)</span>. The constant and linear terms integrate to zero by direct primitives. Consequently <span class="math" data-tex="\(|I(R_n)|\leq\varepsilon_n dl/4^n\)">\(|I(R_n)|\leq\varepsilon_n dl/4^n\)</span>, where <span class="math" data-tex="\(\varepsilon_n\)">\(\varepsilon_n\)</span> tends to zero. The selection inequality implies <span class="math" data-tex="\(|I(R)|\leq\varepsilon_n dl\)">\(|I(R)|\leq\varepsilon_n dl\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, hence <span class="math" data-tex="\(I(R)=0\)">\(I(R)=0\)</span>. This proof needs no continuous derivative and applies also to rectangles chosen within a larger open domain.</p>
+<p><a id="oa-flow.sf4.cauchy-formula"></a></p>
+<p><strong>Integral formula and power series.</strong> Let <span class="math" data-tex="\(z\)">\(z\)</span> lie inside <span class="math" data-tex="\(R\)">\(R\)</span>. Remove a sufficiently small axis-parallel square centered at <span class="math" data-tex="\(z\)">\(z\)</span>. Its complement in <span class="math" data-tex="\(R\)">\(R\)</span> is the union of four rectangles with disjoint interiors; the previous result applied to <span class="math" data-tex="\(f(w)/(w-z)\)">\(f(w)/(w-z)\)</span> and cancellation of all shared edges show that the positively oriented outer integral equals the positively oriented small-square integral. On a square of half-side <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the integral of <span class="math" data-tex="\(1/(w-z)\)">\(1/(w-z)\)</span> is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>: the right side has parametrization <span class="math" data-tex="\(w-z=\rho(1+it),\ -1\leq t\leq1\)">\(w-z=\rho(1+it),\ -1\leq t\leq1\)</span>, whose integral is <span class="math" data-tex="\(i\pi/2\)">\(i\pi/2\)</span>, and the other three sides give the same result by rotation. The integral of <span class="math" data-tex="\((f(w)-f(z))/(w-z)\)">\((f(w)-f(z))/(w-z)\)</span> is bounded by 8 times the maximum of <span class="math" data-tex="\(|f(w)-f(z)|\)">\(|f(w)-f(z)|\)</span> on that square and tends to zero. Thus</p>
+<p><a id="oa-flow.eq.sf6"></a></p>
+<p><span class="math math-display" data-tex="\[
+f(z)=\frac1{2\pi i}\int_{\partial R}\frac{f(w)}{w-z}\,dw.
+\tag{SF6}
+\]">\[
+f(z)=\frac1{2\pi i}\int_{\partial R}\frac{f(w)}{w-z}\,dw.
+\tag{SF6}
+\]</span></p>
+<p><a id="oa-flow.sf4.power-series"></a></p>
+<p>For <span class="math" data-tex="\(R\)">\(R\)</span> centered at <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, geometric expansion of the kernel is uniform when <span class="math" data-tex="\(|z-z_0|\)">\(|z-z_0|\)</span> is smaller than the distance from <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to its boundary. Termwise integration gives the local power series, with coefficients bounded by the contour length times <span class="math" data-tex="\(\sup|f|\)">\(\sup|f|\)</span> divided by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> times the corresponding power of that distance. In particular derivatives of holomorphic functions are holomorphic. Integrating the power series on a smaller circle, and then geometrically expanding its Cauchy kernel, gives the circle Cauchy formula and the sharper coefficient bound <span class="math" data-tex="\(\sup_{\mathrm{circle}}|f|/r^n\)">\(\sup_{\mathrm{circle}}|f|/r^n\)</span>. For a circle inside a horizontal strip, one may first choose a slightly larger centered rectangle still in the strip, so every circle used in the candidates is covered. The first nonzero power-series coefficient makes a zero isolated; this proves the identity theorem on connected domains by the usual open-and-closed propagation of zero neighborhoods.</p>
+<p><a id="oa-flow.sf4.maximum"></a></p>
+<p>Here are the additional consequences needed, with proofs. A real harmonic function <span class="math" data-tex="\(q\)">\(q\)</span> continuous on a closed rectangle has its maximum on the boundary. Add <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> times the squared Euclidean norm of the coordinate. The result has strictly positive Laplacian, so an interior maximum, whose Hessian has nonpositive trace, is impossible. Let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero. For a holomorphic <span class="math" data-tex="\(f\)">\(f\)</span> the same proof applies to <span class="math" data-tex="\(|f|^2\)">\(|f|^2\)</span>, whose Laplacian is <span class="math" data-tex="\(4|f'|^2\geq0\)">\(4|f'|^2\geq0\)</span>. This gives the rectangle modulus maximum principle.</p>
+<p><a id="oa-flow.sf4.morera"></a></p>
+<p>If a continuous function on a disk has zero integrals around all sufficiently small axis-parallel rectangles, it is holomorphic. Indeed integrate it from the disk center first horizontally and then vertically. Rectangle cancellation makes local changes of this path harmless. The increment along a two-segment path from <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(z+h\)">\(z+h\)</span> is <span class="math" data-tex="\(hf(z)\)">\(hf(z)\)</span> plus an error bounded by <span class="math" data-tex="\(\sqrt{2}\,|h|\)">\(\sqrt{2}\,|h|\)</span> times the oscillation of <span class="math" data-tex="\(f\)">\(f\)</span> nearby. The primitive therefore has derivative <span class="math" data-tex="\(f\)">\(f\)</span>; Cauchy's formula shows its derivative is holomorphic. This is the local rectangular Morera argument, also developed in <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_11.html#Thmthmx2">Vizeff, Lecture 11, version 2</a>.</p>
+<p><a id="oa-flow.sf4.zero-edge"></a></p>
+<p>In particular, a holomorphic function below a real interval, continuous and zero on that interval, extends holomorphically by zero across it. For a crossing rectangle, cut a distance <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> away from the interval. The integrals on the two sides vanish; continuity and the zero trace remove the intervening pieces as <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tends to zero. The preceding rectangle criterion applies, and the local identity theorem makes the extension zero. This proves uniqueness from a real boundary interval without presupposing a strip uniqueness theorem.</p>
+<p>These lemmas and the candidates are new local proof text. They establish the displayed consequences of the explicitly retained scalar, spectral and Hilbert foundations; they do not certify every ancestor of those foundations.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L138.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-SF.md">Lesson source</a></nav></main></body></html>

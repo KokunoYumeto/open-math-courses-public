@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Multiplicative group cohomology and change of topology · Hilbert and Picard schemes, deformations and representability</title>
+<meta content="The all-degree comparison for multiplicative-group cohomology, its strict-local proof, and the relative Picard obstruction sequence." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/AG-HP--multiplicative-group-cohomology-and-change-of-topology.html" rel="canonical"/>
+
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer="" id="MathJax-script" src="../runtime/mathjax/tex-chtml-full.js"></script>
+
+<meta content="bd8d01d9ad72696143568a82782f2dc37e8409161fea2ba139267f62c17c6260" name="reader-source-sha256"/><link href="../runtime/site.css" rel="stylesheet"/><style>.lesson mjx-assistive-mml { width: 1px !important; height: 1px !important; }</style></head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../index.html">Open Mathematics Courses</a>
+<nav aria-label="Main" class="primary-nav">
+<a href="../../../index.html#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../../index.html">All courses</a> <span aria-hidden="true">›</span> <a href="../index.html">ℓ-adic cohomology and trace formulas</a> <span aria-hidden="true">›</span> <span>Supporting proof</span></nav>
+<aside aria-label="About this lesson" class="notice"><p>Mathematical exposition written by AI. Sources and exact earlier proofs are identified below.</p></aside>
+<article class="lesson"><h1 id="multiplicative-group-cohomology-and-change-of-topology">Multiplicative group cohomology and change of topology</h1>
+<p><em>Mathematical exposition by GPT-6 Astra (OpenAI), Ultra, October 2026. Original exposition dedicated to CC0. Mathematical sources and earlier proof providers are identified below.</em></p>
+<p>For a scheme <span class="math" data-tex="\(Y\)">\(Y\)</span>, the sheaf <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> assigns to a <span class="math" data-tex="\(Y\)">\(Y\)</span>-scheme <span class="math" data-tex="\(U\)">\(U\)</span> the group <span class="math" data-tex="\(\Gamma(U,\mathcal O_U)^\times\)">\(\Gamma(U,\mathcal O_U)^\times\)</span>. Passing from étale covers to flat covers does not change its cohomology. The result holds in every degree, including over nonreduced and non-Noetherian schemes.</p>
+<p><strong id="theorem-1">Theorem 1.</strong> For every scheme <span class="math" data-tex="\(Y\)">\(Y\)</span> and integer <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, the canonical comparison is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+H^n(Y_{\mathrm{\acute et}},\mathbf G_m)
+\longrightarrow H^n((\mathrm{Sch}/Y)_{\mathrm{fppf}},\mathbf G_m).
+\tag{1}
+\]">\[
+H^n(Y_{\mathrm{\acute et}},\mathbf G_m)
+\longrightarrow H^n((\mathrm{Sch}/Y)_{\mathrm{fppf}},\mathbf G_m).
+\tag{1}
+\]</span>
+<p>These maps commute with pullback along every morphism of schemes.</p>
+<p>The coefficient on the right is the <strong>represented</strong> multiplicative group. It is not generally the inverse image of the small étale sheaf on the left. For example, over an algebraically closed field <span class="math" data-tex="\(k\)">\(k\)</span>, the small étale sheaf corresponds to the group <span class="math" data-tex="\(k^\times\)">\(k^\times\)</span>; its inverse image gives locally constant <span class="math" data-tex="\(k^\times\)">\(k^\times\)</span>-valued sections. The represented group on <span class="math" data-tex="\(\operatorname{Spec}k[t,t^{-1}]\)">\(\operatorname{Spec}k[t,t^{-1}]\)</span> also contains the nonconstant unit <span class="math" data-tex="\(t\)">\(t\)</span>. The proof keeps these coefficients distinct.</p>
+<p>We use the programme's universe convention for sites. Cohomology means the right derived functors of sections of abelian sheaves. Empty schemes have zero abelian cohomology. Exact earlier arguments are linked in the final section; each invocation below identifies the result needed, rather than referring to an entire course.</p>
+<h2 id="smooth-lifting-and-finite-covers">Smooth lifting and finite covers</h2>
+<p><strong id="lemma-2">Lemma 2.</strong> Let <span class="math" data-tex="\((A,\mathfrak m,k)\)">\((A,\mathfrak m,k)\)</span> be henselian local. If <span class="math" data-tex="\(X\to\operatorname{Spec}A\)">\(X\to\operatorname{Spec}A\)</span> is smooth, every specified <span class="math" data-tex="\(k\)">\(k\)</span>-point of <span class="math" data-tex="\(X_k\)">\(X_k\)</span> lifts to an <span class="math" data-tex="\(A\)">\(A\)</span>-point. If <span class="math" data-tex="\(k\)">\(k\)</span> is separably closed, every nonempty smooth <span class="math" data-tex="\(k\)">\(k\)</span>-scheme has a <span class="math" data-tex="\(k\)">\(k\)</span>-point.</p>
+<p><strong>Proof.</strong> By the smooth-coordinate theorem <a href="#provider-p1">[P1]</a>, an affine neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of the specified point <span class="math" data-tex="\(x\)">\(x\)</span> admits an étale map <span class="math" data-tex="\(U\to\mathbb A_A^d\)">\(U\to\mathbb A_A^d\)</span>. Lift the coordinates of its image from <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span>, obtaining a section <span class="math" data-tex="\(a:\operatorname{Spec}A\to\mathbb A_A^d\)">\(a:\operatorname{Spec}A\to\mathbb A_A^d\)</span>. The pullback</p>
+<span class="math math-display" data-tex="\[
+W=U\times_{\mathbb A_A^d,a}\operatorname{Spec}A
+\longrightarrow\operatorname{Spec}A
+\]">\[
+W=U\times_{\mathbb A_A^d,a}\operatorname{Spec}A
+\longrightarrow\operatorname{Spec}A
+\]</span>
+<p>is affine and étale and has the specified residue point. The henselian section criterion <a href="#provider-p2">[P2, Theorem 1.2]</a> supplies a section through that point. Its composite with <span class="math" data-tex="\(W\to U\to X\)">\(W\to U\to X\)</span> is the required lift. There is no assertion of uniqueness for a smooth lift.</p>
+<p>For the second assertion choose a nonempty étale coordinate chart <span class="math" data-tex="\(U\to\mathbb A_k^d\)">\(U\to\mathbb A_k^d\)</span>. Its image is nonempty open by openness of flat locally finitely presented maps <a href="#provider-p3">[P3]</a>. It contains a nonempty principal open <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span>. A separably closed field is infinite: every finite field has a proper finite separable extension. Induction on the number of variables, using the root bound in one variable, shows that a nonzero polynomial over an infinite field does not vanish on every tuple. Hence <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span> has a <span class="math" data-tex="\(k\)">\(k\)</span>-point. The nonempty fibre of <span class="math" data-tex="\(U\)">\(U\)</span> there is affine étale of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>, so its algebra is a nonzero finite product of finite separable field extensions. These extensions equal <span class="math" data-tex="\(k\)">\(k\)</span>, giving a point of <span class="math" data-tex="\(U\)">\(U\)</span>. The case <span class="math" data-tex="\(d=0\)">\(d=0\)</span> is included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong id="lemma-3">Lemma 3.</strong> Every fppf cover of the spectrum of a henselian local ring <span class="math" data-tex="\(A\)">\(A\)</span> has a refinement by a surjective finite locally free morphism <span class="math" data-tex="\(\operatorname{Spec}B\to\operatorname{Spec}A\)">\(\operatorname{Spec}B\to\operatorname{Spec}A\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(s\)">\(s\)</span> be the closed point. The flat quasi-finite refinement theorem <a href="#provider-p4">[P4]</a> gives a flat, locally finitely presented, locally quasi-finite map <span class="math" data-tex="\(T\to\operatorname{Spec}A\)">\(T\to\operatorname{Spec}A\)</span>, with a point over <span class="math" data-tex="\(s\)">\(s\)</span>, which factors through one member of the cover. The elementary étale neighbourhood theorem <a href="#provider-p5">[P5, Theorem 4.2]</a> gives an étale neighbourhood <span class="math" data-tex="\((U,u)\to(\operatorname{Spec}A,s)\)">\((U,u)\to(\operatorname{Spec}A,s)\)</span>, with <span class="math" data-tex="\(k(u)=k(s)\)">\(k(u)=k(s)\)</span>, and an open <span class="math" data-tex="\(V\subset T\times_AU\)">\(V\subset T\times_AU\)</span> finite over <span class="math" data-tex="\(U\)">\(U\)</span> and meeting the fibre over <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>The map <span class="math" data-tex="\(V\to U\)">\(V\to U\)</span> remains flat and locally finitely presented. A finite flat morphism of finite presentation is finite locally free. Its image is open and contains <span class="math" data-tex="\(u\)">\(u\)</span>. Restrict <span class="math" data-tex="\(U\)">\(U\)</span> to this image and then to an affine neighbourhood of <span class="math" data-tex="\(u\)">\(u\)</span>. The resulting finite locally free morphism is surjective. By <a href="#provider-p2">[P2, Theorem 1.2]</a>, the marked residue point gives a section <span class="math" data-tex="\(\sigma:\operatorname{Spec}A\to U\)">\(\sigma:\operatorname{Spec}A\to U\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+V\times_{U,\sigma}\operatorname{Spec}A\longrightarrow\operatorname{Spec}A
+\]">\[
+V\times_{U,\sigma}\operatorname{Spec}A\longrightarrow\operatorname{Spec}A
+\]</span>
+<p>is the required finite locally free surjection and still factors through the selected cover member. Both the residue-field equality and the marked point are needed for the section. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-schemes-of-cochains-and-cocycles">The schemes of cochains and cocycles</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be local and <span class="math" data-tex="\(B\)">\(B\)</span> a faithfully flat finite free <span class="math" data-tex="\(R\)">\(R\)</span>-algebra. For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span> put</p>
+<span class="math math-display" data-tex="\[
+D_n=B^{\otimes_R(n+1)},\qquad
+C^n(A)=(A\otimes_RD_n)^\times
+\]">\[
+D_n=B^{\otimes_R(n+1)},\qquad
+C^n(A)=(A\otimes_RD_n)^\times
+\]</span>
+<p>for every <span class="math" data-tex="\(R\)">\(R\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(\partial_i:D_n\to D_{n+1}\)">\(\partial_i:D_n\to D_{n+1}\)</span> inserts <span class="math" data-tex="\(1\)">\(1\)</span> in position <span class="math" data-tex="\(i\)">\(i\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\delta_n(u)=\prod_{i=0}^{n+1}\partial_i(u)^{(-1)^i},
+\qquad Z^n=\ker(\delta_n).
+\tag{2}
+\]">\[
+\delta_n(u)=\prod_{i=0}^{n+1}\partial_i(u)^{(-1)^i},
+\qquad Z^n=\ker(\delta_n).
+\tag{2}
+\]</span>
+<p>The insertions commute in the cosimplicial order, so consecutive coboundaries have value <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong id="lemma-4">Lemma 4.</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\delta_{n-1}:C^{n-1}\longrightarrow Z^n
+\tag{3}
+\]">\[
+\delta_{n-1}:C^{n-1}\longrightarrow Z^n
+\tag{3}
+\]</span>
+<p>is a smooth surjective morphism of finitely presented affine <span class="math" data-tex="\(R\)">\(R\)</span>-schemes.</p>
+<p><strong>Proof.</strong> Choose a basis of the finite free algebra <span class="math" data-tex="\(D_n\)">\(D_n\)</span>. For an element <span class="math" data-tex="\(x\)">\(x\)</span> let <span class="math" data-tex="\(m_x\)">\(m_x\)</span> denote its multiplication matrix. The element is a unit exactly when <span class="math" data-tex="\(\det(m_x)\)">\(\det(m_x)\)</span> is a unit: if the matrix is invertible, its inverse applied to <span class="math" data-tex="\(1\)">\(1\)</span> is an inverse of <span class="math" data-tex="\(x\)">\(x\)</span>; the converse follows by multiplying by <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>. Thus <span class="math" data-tex="\(C^n\)">\(C^n\)</span> is the principal open defined by this determinant in affine space. The inverse coordinates are given by the adjugate matrix. All insertions, inverses and products in (2) are morphisms. Consequently <span class="math" data-tex="\(Z^n\)">\(Z^n\)</span> is the affine fibre over the identity, cut out by finitely many equations. The map (3) is finitely presented: a finite presentation for its source over <span class="math" data-tex="\(R\)">\(R\)</span>, together with equations specifying the images of finitely many generators of its target algebra, gives a finite presentation over that algebra.</p>
+<p>To prove formal smoothness, let <span class="math" data-tex="\(A\)">\(A\)</span> be an <span class="math" data-tex="\(R\)">\(R\)</span>-algebra and <span class="math" data-tex="\(J\subset A\)">\(J\subset A\)</span> satisfy <span class="math" data-tex="\(J^2=0\)">\(J^2=0\)</span>. Suppose</p>
+<span class="math math-display" data-tex="\[
+z\in Z^n(A),\qquad
+\bar v\in C^{n-1}(A/J),\qquad
+\delta(\bar v)=\bar z.
+\]">\[
+z\in Z^n(A),\qquad
+\bar v\in C^{n-1}(A/J),\qquad
+\delta(\bar v)=\bar z.
+\]</span>
+<p>Units lift across a square-zero ideal. Indeed, lift a unit and its inverse; their product is <span class="math" data-tex="\(1+j\)">\(1+j\)</span>, whose inverse is <span class="math" data-tex="\(1-j\)">\(1-j\)</span>. Choose a lift <span class="math" data-tex="\(v_0\in C^{n-1}(A)\)">\(v_0\in C^{n-1}(A)\)</span>. Write <span class="math" data-tex="\(D_i(A)=A\otimes_RD_i\)">\(D_i(A)=A\otimes_RD_i\)</span>. Since this is flat over <span class="math" data-tex="\(A\)">\(A\)</span>, the kernel of its reduction modulo <span class="math" data-tex="\(J\)">\(J\)</span> is</p>
+<span class="math math-display" data-tex="\[
+J\otimes_AD_i(A)=JD_i(A).
+\]">\[
+J\otimes_AD_i(A)=JD_i(A).
+\]</span>
+<p>Hence <span class="math" data-tex="\(z/\delta(v_0)=1+w\)">\(z/\delta(v_0)=1+w\)</span> for a unique <span class="math" data-tex="\(w\in JD_n(A)\)">\(w\in JD_n(A)\)</span>. In a square-zero ideal multiplication of such units is addition, and inversion is negation. The equation <span class="math" data-tex="\(\delta(1+w)=1\)">\(\delta(1+w)=1\)</span> therefore says that <span class="math" data-tex="\(w\)">\(w\)</span> is an additive Amitsur cocycle with coefficient module <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>The additive Amitsur complex is exact for every module under a faithfully flat map <a href="#provider-p6">[P6, Lemma 4.1]</a>. Apply it to <span class="math" data-tex="\(A\to A\otimes_RB\)">\(A\to A\otimes_RB\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span>. There is <span class="math" data-tex="\(t\in JD_{n-1}(A)\)">\(t\in JD_{n-1}(A)\)</span> with <span class="math" data-tex="\(d(t)=w\)">\(d(t)=w\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+v=v_0(1+t),\qquad
+\delta(v)=\delta(v_0)(1+d(t))=z.
+\tag{4}
+\]">\[
+v=v_0(1+t),\qquad
+\delta(v)=\delta(v_0)(1+d(t))=z.
+\tag{4}
+\]</span>
+<p>This proves the square-zero lifting property. Finite presentation and formal smoothness give smoothness <a href="#provider-p1">[P1]</a>. Notice that the coefficient ideal <span class="math" data-tex="\(J\)">\(J\)</span> has remained in every tensor term.</p>
+<p>For surjectivity take a geometric point <span class="math" data-tex="\(z:\operatorname{Spec}K\to Z^n\)">\(z:\operatorname{Spec}K\to Z^n\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is algebraically closed. The finite <span class="math" data-tex="\(K\)">\(K\)</span>-algebra <span class="math" data-tex="\(B_K\)">\(B_K\)</span> is nonzero by faithful flatness. A maximal ideal has residue field finite over <span class="math" data-tex="\(K\)">\(K\)</span>, hence equal to <span class="math" data-tex="\(K\)">\(K\)</span>; this gives an augmentation <span class="math" data-tex="\(\varepsilon:B_K\to K\)">\(\varepsilon:B_K\to K\)</span>. Applying it to the first tensor factor defines <span class="math" data-tex="\(h_i:C^i(K)\to C^{i-1}(K)\)">\(h_i:C^i(K)\to C^{i-1}(K)\)</span>. The insertion identities give</p>
+<span class="math math-display" data-tex="\[
+h_{i+1}(\delta_i(u))\,\delta_{i-1}(h_i(u))=u.
+\tag{5}
+\]">\[
+h_{i+1}(\delta_i(u))\,\delta_{i-1}(h_i(u))=u.
+\tag{5}
+\]</span>
+<p>The first insertion gives <span class="math" data-tex="\(u\)">\(u\)</span>; each other insertion pairs with the corresponding insertion after <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, with opposite exponent. This verifies (5), including its signs. Since <span class="math" data-tex="\(\delta_n(z)=1\)">\(\delta_n(z)=1\)</span>, equation (5) gives <span class="math" data-tex="\(\delta_{n-1}(h_n(z))=z\)">\(\delta_{n-1}(h_n(z))=z\)</span>. Every geometric fibre of (3) is nonempty. Thus the map is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="vanishing-over-a-strictly-henselian-local-ring">Vanishing over a strictly henselian local ring</h2>
+<p><strong id="proposition-5">Proposition 5.</strong> For every strictly henselian local ring <span class="math" data-tex="\(R\)">\(R\)</span> and every <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^q((\mathrm{Sch}/\operatorname{Spec}R)_{\mathrm{fppf}},\mathbf G_m)=0.
+\tag{6}
+\]">\[
+H^q((\mathrm{Sch}/\operatorname{Spec}R)_{\mathrm{fppf}},\mathbf G_m)=0.
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> First take a finite locally free surjective cover <span class="math" data-tex="\(\operatorname{Spec}B\to\operatorname{Spec}R\)">\(\operatorname{Spec}B\to\operatorname{Spec}R\)</span>. Over a local ring its algebra is finite free. For any positive-degree cocycle <span class="math" data-tex="\(z\in Z^n(R)\)">\(z\in Z^n(R)\)</span>, the fibre</p>
+<span class="math math-display" data-tex="\[
+X_z=C^{n-1}\times_{Z^n,z}\operatorname{Spec}R
+\]">\[
+X_z=C^{n-1}\times_{Z^n,z}\operatorname{Spec}R
+\]</span>
+<p>is smooth and surjective by Lemma 4. Its closed fibre is nonempty smooth over the separably closed residue field. Lemma 2 gives a residue point and then lifts it to an <span class="math" data-tex="\(R\)">\(R\)</span>-point. Such a point is exactly a cochain <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\delta(v)=z\)">\(\delta(v)=z\)</span>. Thus all positive Čech groups of every such cover vanish.</p>
+<p>To pass to derived cohomology, consider simultaneously all schemes finite over <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>. A finite algebra over a henselian local ring is a finite product of henselian local rings <a href="#provider-p2">[P2, Theorem 2.2 and Proposition 3.1]</a>. Each factor's residue field is finite over the separably closed residue field <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>, and is again separably closed. Here is the field argument. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, remove the largest common <span class="math" data-tex="\(p\)">\(p\)</span>-power from the exponents of an irreducible polynomial over <span class="math" data-tex="\(k\)">\(k\)</span>; its remaining polynomial is separable, so is linear. Every algebraic element over <span class="math" data-tex="\(k\)">\(k\)</span> therefore has a <span class="math" data-tex="\(p\)">\(p\)</span>-power in <span class="math" data-tex="\(k\)">\(k\)</span>. An algebraic closure of a finite extension <span class="math" data-tex="\(L/k\)">\(L/k\)</span> is consequently purely inseparable over <span class="math" data-tex="\(L\)">\(L\)</span>, excluding nontrivial finite separable extensions of <span class="math" data-tex="\(L\)">\(L\)</span>. In characteristic zero the assertion is immediate.</p>
+<p>Every factor is therefore strictly henselian. By Lemma 3, any fppf cover of a finite <span class="math" data-tex="\(R\)">\(R\)</span>-scheme refines factor by factor to finite locally free surjections. Their finite disjoint union gives a refining family. Different members may map to different members of the original cover; a single-member factorization over a disconnected base is not required. Its positive Čech groups vanish by the preceding argument on each factor. Units on a finite disjoint union form the product of the unit groups, so finite products preserve this exactness.</p>
+<p>Every member of these families and every iterated overlap is finite over <span class="math" data-tex="\(R\)">\(R\)</span>. The simultaneous Čech-to-derived criterion <a href="#provider-p7">[P7, Theorem 4.1]</a> therefore applies to this class of objects and its cofinal class of covers. Its proof uses local effacement and the Čech spectral sequence, inducting simultaneously on all objects and degrees. In particular it does not assume that one chosen covering object is already derived-acyclic. Taking the object <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> gives (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="continuity-with-the-represented-coefficient">Continuity with the represented coefficient</h2>
+<p><strong id="proposition-6">Proposition 6.</strong> If <span class="math" data-tex="\(A=\operatorname{colim}_i A_i\)">\(A=\operatorname{colim}_i A_i\)</span> is a filtered colimit of rings, then for every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span> the canonical map is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_i H^q_{\mathrm{fppf}}(\operatorname{Spec}A_i,\mathbf G_m)
+\longrightarrow H^q_{\mathrm{fppf}}(\operatorname{Spec}A,\mathbf G_m).
+\tag{7}
+\]">\[
+\operatorname{colim}_i H^q_{\mathrm{fppf}}(\operatorname{Spec}A_i,\mathbf G_m)
+\longrightarrow H^q_{\mathrm{fppf}}(\operatorname{Spec}A,\mathbf G_m).
+\tag{7}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span> have all affine schemes finitely presented over <span class="math" data-tex="\(A\)">\(A\)</span> as objects, all <span class="math" data-tex="\(A\)">\(A\)</span>-morphisms as arrows, and finite jointly surjective flat finitely presented families as covers. Its objects need not themselves be flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Products are given by tensor products. If two maps to <span class="math" data-tex="\(\operatorname{Spec}C\)">\(\operatorname{Spec}C\)</span> are compared, choose finitely many algebra generators <span class="math" data-tex="\(c_r\)">\(c_r\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>; their equalizer is cut out by the finitely many differences of their images. Thus finite limits remain in <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span>.</p>
+<p>Any fppf cover of an object of <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span> has a finite affine refinement there: take affine opens in the covering schemes and use openness <a href="#provider-p3">[P3]</a> and quasi-compactness of the target to select finitely many images covering it. This assertion concerns covers of objects of <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span>, not every object of the big site.</p>
+<p>The inclusion of <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span> into the big fppf site preserves covers and finite limits. By <a href="#provider-p8">[P8, Theorem 2.1]</a>, restriction of sheaves has an exact left adjoint, and therefore preserves injectives. Restriction is also exact: kernels are computed on sections, and an epimorphism lifts a section locally; the preceding finite refinement puts that lifting cover in <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span>. Restrict an injective resolution and evaluate at the common terminal object. It follows that</p>
+<span class="math math-display" data-tex="\[
+H^q_{\mathrm{fppf}}(\operatorname{Spec}A,F)=H^q(\mathcal C_A,F|_{\mathcal C_A})
+\tag{8}
+\]">\[
+H^q_{\mathrm{fppf}}(\operatorname{Spec}A,F)=H^q(\mathcal C_A,F|_{\mathcal C_A})
+\tag{8}
+\]</span>
+<p>canonically. No equivalence of the two whole topoi is asserted.</p>
+<p>Suppose first the index set is directed. Base change gives the compatible sites <span class="math" data-tex="\(\mathcal C_{A_i}\)">\(\mathcal C_{A_i}\)</span>. A finitely presented algebra over <span class="math" data-tex="\(A\)">\(A\)</span> descends because it has finitely many coefficients and relations. A map descends by choosing the images of its finitely many generators, and its relation equations hold at a sufficiently late stage. Equality of two maps is tested on those same generators and also holds eventually. This proves the equivalence of the colimit category with <span class="math" data-tex="\(\mathcal C_A\)">\(\mathcal C_A\)</span>.</p>
+<p>A finite fppf cover descends as a finite family of finitely presented algebras. Finite-presentation flatness descent <a href="#provider-p9">[P9, the flatness lemma]</a> makes its members flat at one later stage. Their image is then a quasi-compact open union</p>
+<span class="math math-display" data-tex="\[
+D(g_1)\cup\cdots\cup D(g_r)\subseteq\operatorname{Spec}B_i.
+\]">\[
+D(g_1)\cup\cdots\cup D(g_r)\subseteq\operatorname{Spec}B_i.
+\]</span>
+<p>Its base change to <span class="math" data-tex="\(B=B_i\otimes_{A_i}A\)">\(B=B_i\otimes_{A_i}A\)</span> is surjective, so <span class="math" data-tex="\(1=\sum_r b_rg_r\)">\(1=\sum_r b_rg_r\)</span> for finitely many <span class="math" data-tex="\(b_r\in B\)">\(b_r\in B\)</span>. This equation and its coefficients hold at a later stage. The descended family is therefore surjective there. Morphisms of finite covering families and their equalities descend by the generator argument. These statements verify the site-limit hypotheses in <a href="#provider-p10">[P10]</a>, not just the underlying-category identification.</p>
+<p>On <span class="math" data-tex="\(\mathcal C_{A_i}\)">\(\mathcal C_{A_i}\)</span>, the coefficient <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> is represented by <span class="math" data-tex="\(\operatorname{Spec}A_i[x,y]/(xy-1)\)">\(\operatorname{Spec}A_i[x,y]/(xy-1)\)</span>. Its sheaf condition follows by applying additive faithfully flat descent <a href="#provider-p6">[P6]</a> both to a unit and to its inverse. The canonical inverse-image functor carries this representing object to its base change: adjunction and Yoneda identify maps out of the pullback with evaluation on the base-changed object; multiplication and inversion are respected. Explicitly, on a descended algebra <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, the limit coefficient has sections</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_{j\geq i}(B_i\otimes_{A_i}A_j)^\times
+=(B_i\otimes_{A_i}A)^\times.
+\tag{9}
+\]">\[
+\operatorname{colim}_{j\geq i}(B_i\otimes_{A_i}A_j)^\times
+=(B_i\otimes_{A_i}A)^\times.
+\tag{9}
+\]</span>
+<p>A unit and its inverse descend together and their product becomes <span class="math" data-tex="\(1\)">\(1\)</span> at a finite stage; equality also becomes true at a finite stage. This proves both directions of (9) and identifies the actual unit maps, rather than choosing abstract group isomorphisms.</p>
+<p>The cohomology theorem for limits of these sites <a href="#provider-p11">[P11]</a> now gives (7), using (8) at each stage and (9) for its coefficient. For completeness, the transition in its compatible-injective construction is the adjunction counit</p>
+<span class="math math-display" data-tex="\[
+f_a^{-1}f_{a\circ b,*}I
+=f_a^{-1}f_{a,*}f_{b,*}I
+\longrightarrow f_{b,*}I
+\tag{10}
+\]">\[
+f_a^{-1}f_{a\circ b,*}I
+=f_a^{-1}f_{a,*}f_{b,*}I
+\longrightarrow f_{b,*}I
+\tag{10}
+\]</span>
+<p>for arrows <span class="math" data-tex="\(a:j\to i\)">\(a:j\to i\)</span> and <span class="math" data-tex="\(b:k\to j\)">\(b:k\to j\)</span> and a sheaf <span class="math" data-tex="\(I\)">\(I\)</span> on the site at <span class="math" data-tex="\(k\)">\(k\)</span>. Both sides are on the site at <span class="math" data-tex="\(j\)">\(j\)</span>. The inverse-image prefix is <span class="math" data-tex="\(f_a^{-1}\)">\(f_a^{-1}\)</span>, not <span class="math" data-tex="\(f_b^{-1}\)">\(f_b^{-1}\)</span>.</p>
+<p>For a general small filtered category, the cofinal directed-set theorem <a href="#provider-p12">[P12]</a> supplies one directed system preserving colimits of every diagram on that category. Apply it to both the ring diagram and its cohomology groups. A skeleton alone would not give this directed-set reduction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="pointed-neighbourhoods-and-strict-localization">Pointed neighbourhoods and strict localization</h2>
+<p><strong id="lemma-7">Lemma 7.</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be any ring, <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> a prime, and <span class="math" data-tex="\(k(\mathfrak p)\subseteq K\)">\(k(\mathfrak p)\subseteq K\)</span> a chosen separable algebraic closure. Index étale <span class="math" data-tex="\(R\)">\(R\)</span>-algebras <span class="math" data-tex="\(S\)">\(S\)</span> by compatible evaluations <span class="math" data-tex="\(e:S\to K\)">\(e:S\to K\)</span>, with arrows preserving the evaluations. With <span class="math" data-tex="\(\mathfrak q=\ker e\)">\(\mathfrak q=\ker e\)</span>, this category is filtered and</p>
+<span class="math math-display" data-tex="\[
+L=\operatorname{colim}_{(S,e)}S
+\cong(R_{\mathfrak p})^{sh}
+\cong\operatorname{colim}_{(S,e)}S_{\mathfrak q}
+\tag{11}
+\]">\[
+L=\operatorname{colim}_{(S,e)}S
+\cong(R_{\mathfrak p})^{sh}
+\cong\operatorname{colim}_{(S,e)}S_{\mathfrak q}
+\tag{11}
+\]</span>
+<p>canonically with the specified residue field.</p>
+<p><strong>Proof.</strong> Evaluation extends to <span class="math" data-tex="\(S\otimes_Rk(\mathfrak p)\)">\(S\otimes_Rk(\mathfrak p)\)</span>, a finite product of finite separable fields. It selects a factor with an embedding into <span class="math" data-tex="\(K\)">\(K\)</span>, equivalently a prime over <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> and an embedding of its residue field. The image <span class="math" data-tex="\(e(S)\)">\(e(S)\)</span> need not itself be a field when <span class="math" data-tex="\(R\)">\(R\)</span> is not local.</p>
+<p>The category contains <span class="math" data-tex="\(R\to K\)">\(R\to K\)</span>. Tensor products, evaluated by multiplication in <span class="math" data-tex="\(K\)">\(K\)</span>, give common targets. For parallel pointed maps <span class="math" data-tex="\(u,v:S\to T\)">\(u,v:S\to T\)</span>, put <span class="math" data-tex="\(D=S\otimes_RS\)">\(D=S\otimes_RS\)</span> and</p>
+<span class="math math-display" data-tex="\[
+W=T\otimes_D S,
+\quad D\to T:\ s\otimes t\longmapsto u(s)v(t),
+\quad D\to S:\ s\otimes t\longmapsto st.
+\]">\[
+W=T\otimes_D S,
+\quad D\to T:\ s\otimes t\longmapsto u(s)v(t),
+\quad D\to S:\ s\otimes t\longmapsto st.
+\]</span>
+<p>The last map is étale, by the maps-between-étale-algebras result specified in <a href="#provider-p2">[P2]</a>. Hence <span class="math" data-tex="\(T\to W\)">\(T\to W\)</span> and <span class="math" data-tex="\(R\to W\)">\(R\to W\)</span> are étale. The evaluations agree on <span class="math" data-tex="\(D\)">\(D\)</span>, so induce <span class="math" data-tex="\(W\to K\)">\(W\to K\)</span>. The relations in <span class="math" data-tex="\(W\)">\(W\)</span> identify <span class="math" data-tex="\(u(s)\)">\(u(s)\)</span> with <span class="math" data-tex="\(v(s)\)">\(v(s)\)</span>, giving an equalizing arrow. This proves filteredness.</p>
+<p>The induced evaluation <span class="math" data-tex="\(L\to K\)">\(L\to K\)</span> is onto. For <span class="math" data-tex="\(\alpha\in K\)">\(\alpha\in K\)</span>, lift the coefficients of its monic separable minimal polynomial to <span class="math" data-tex="\(R_t\)">\(R_t\)</span> for one <span class="math" data-tex="\(t\notin\mathfrak p\)">\(t\notin\mathfrak p\)</span>, obtained by clearing their finitely many denominators. If <span class="math" data-tex="\(f\)">\(f\)</span> is the lifted polynomial, then</p>
+<span class="math math-display" data-tex="\[
+(R_t[T]/(f))_{f'}\longrightarrow K,\qquad T\longmapsto\alpha
+\]">\[
+(R_t[T]/(f))_{f'}\longrightarrow K,\qquad T\longmapsto\alpha
+\]</span>
+<p>is a pointed étale algebra representing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Every element of <span class="math" data-tex="\(L\)">\(L\)</span> with nonzero evaluation becomes a unit: represent it by <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span> and use the pointed principal localization <span class="math" data-tex="\(S_s\)">\(S_s\)</span>. No element of the evaluation kernel is a unit. The kernel is therefore the unique maximal ideal, and the residue field is <span class="math" data-tex="\(K\)">\(K\)</span>. Every <span class="math" data-tex="\(t\in R\setminus\mathfrak p\)">\(t\in R\setminus\mathfrak p\)</span> becomes a unit, giving a local map <span class="math" data-tex="\(R_{\mathfrak p}\to L\)">\(R_{\mathfrak p}\to L\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P\in L[T]\)">\(P\in L[T]\)</span> be monic with simple residue root <span class="math" data-tex="\(\alpha\in K\)">\(\alpha\in K\)</span>. Represent its coefficients at one stage <span class="math" data-tex="\((S,e)\)">\((S,e)\)</span> by a monic <span class="math" data-tex="\(Q\)">\(Q\)</span>. The pointed algebra <span class="math" data-tex="\((S[T]/(Q))_{Q'}\)">\((S[T]/(Q))_{Q'}\)</span>, evaluated at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, gives a root in <span class="math" data-tex="\(L\)">\(L\)</span> with that residue. This construction does not require <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to lie in the previous stage's residue field. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is strictly henselian.</p>
+<p>Let <span class="math" data-tex="\(H=(R_{\mathfrak p})^{sh}\)">\(H=(R_{\mathfrak p})^{sh}\)</span> be the construction in <a href="#provider-p2">[P2, Theorem 5.1]</a>. For every <span class="math" data-tex="\((S,e)\)">\((S,e)\)</span>, the section criterion applied to the étale <span class="math" data-tex="\(R_{\mathfrak p}\)">\(R_{\mathfrak p}\)</span>-algebra <span class="math" data-tex="\(S\otimes_RR_{\mathfrak p}\)">\(S\otimes_RR_{\mathfrak p}\)</span> gives a unique map to <span class="math" data-tex="\(H\)">\(H\)</span> with the specified residue evaluation. These maps are compatible by uniqueness and induce a local map <span class="math" data-tex="\(f:L\to H\)">\(f:L\to H\)</span>. Conversely the strict-henselization universal property gives a local map <span class="math" data-tex="\(g:H\to L\)">\(g:H\to L\)</span> inducing the identity of <span class="math" data-tex="\(K\)">\(K\)</span>. The same property gives <span class="math" data-tex="\(fg=\mathrm{id}_H\)">\(fg=\mathrm{id}_H\)</span>. The maps <span class="math" data-tex="\(gf\)">\(gf\)</span> and <span class="math" data-tex="\(\mathrm{id}_L\)">\(\mathrm{id}_L\)</span> agree on every <span class="math" data-tex="\(S\)">\(S\)</span>: after localizing the base they are two lifts of the same evaluation to the henselian ring <span class="math" data-tex="\(L\)">\(L\)</span>, so the section criterion makes them equal. Hence <span class="math" data-tex="\(gf=\mathrm{id}_L\)">\(gf=\mathrm{id}_L\)</span>.</p>
+<p>Finally, every pointed arrow <span class="math" data-tex="\(S\to T\)">\(S\to T\)</span> pulls back the marked prime of <span class="math" data-tex="\(T\)">\(T\)</span> to that of <span class="math" data-tex="\(S\)">\(S\)</span>, so induces a map of their localizations. The maps <span class="math" data-tex="\(S\to L\)">\(S\to L\)</span> invert all elements outside <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, giving compatible maps <span class="math" data-tex="\(S_{\mathfrak q}\to L\)">\(S_{\mathfrak q}\to L\)</span>. They induce an inverse to <span class="math" data-tex="\(\operatorname{colim}S\to\operatorname{colim}S_{\mathfrak q}\)">\(\operatorname{colim}S\to\operatorname{colim}S_{\mathfrak q}\)</span>: one composite fixes every element from <span class="math" data-tex="\(S\)">\(S\)</span>, and the other fixes such elements and their inverted denominators. This proves (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-comparison-and-its-naturality">The comparison and its naturality</h2>
+<p><strong id="proof-theorem-1">Proof of Theorem 1.</strong> Viewing an étale <span class="math" data-tex="\(Y\)">\(Y\)</span>-scheme as a <span class="math" data-tex="\(Y\)">\(Y\)</span>-scheme preserves covers and finite limits and defines a morphism of topoi</p>
+<span class="math math-display" data-tex="\[
+\epsilon_Y:(\mathrm{Sch}/Y)_{\mathrm{fppf}}
+\longrightarrow Y_{\mathrm{\acute et}}.
+\]">\[
+\epsilon_Y:(\mathrm{Sch}/Y)_{\mathrm{fppf}}
+\longrightarrow Y_{\mathrm{\acute et}}.
+\]</span>
+<p>Its direct image of the represented <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> is the small étale unit sheaf, by evaluation on each étale object. By the higher-direct-image calculation <a href="#provider-p11">[P11]</a>, <span class="math" data-tex="\(R^q\epsilon_{Y,*}\mathbf G_m\)">\(R^q\epsilon_{Y,*}\mathbf G_m\)</span> is the sheafification of</p>
+<span class="math math-display" data-tex="\[
+U\longmapsto H^q_{\mathrm{fppf}}(U,\mathbf G_m).
+\]">\[
+U\longmapsto H^q_{\mathrm{fppf}}(U,\mathbf G_m).
+\]</span>
+<p>Sheafification does not change stalks <a href="#provider-p8">[P8]</a>. Fix a geometric point <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span> of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Affine pointed étale neighbourhoods inside a fixed affine neighbourhood of its underlying point are cofinal: restrict to that affine base, then choose an affine open containing the marked point; do the same after fibre products to refine finite sets of arrows. Their coordinate rings have colimit <span class="math" data-tex="\(\mathcal O_{Y,\bar y}^{sh}\)">\(\mathcal O_{Y,\bar y}^{sh}\)</span> by Lemma 7. If the geometric point has values in a larger algebraically closed field, its finite étale residue extensions land in the separable algebraic closure of <span class="math" data-tex="\(k(y)\)">\(k(y)\)</span> inside that field; this is the chosen residue field used in Lemma 7.</p>
+<p>Proposition 6 now identifies the stalk canonically as</p>
+<span class="math math-display" data-tex="\[
+(R^q\epsilon_{Y,*}\mathbf G_m)_{\bar y}
+=H^q_{\mathrm{fppf}}(\operatorname{Spec}\mathcal O_{Y,\bar y}^{sh},\mathbf G_m).
+\tag{12}
+\]">\[
+(R^q\epsilon_{Y,*}\mathbf G_m)_{\bar y}
+=H^q_{\mathrm{fppf}}(\operatorname{Spec}\mathcal O_{Y,\bar y}^{sh},\mathbf G_m).
+\tag{12}
+\]</span>
+<p>For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> it is zero by Proposition 5. To make the detection step explicit, a section whose every geometric germ is zero vanishes on an étale neighbourhood of every point. These neighbourhoods cover its domain, so the sheaf separatedness axiom makes the section zero. Thus every positive higher direct image vanishes. In degree zero the direct image is exactly <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>. The canonical map</p>
+<span class="math math-display" data-tex="\[
+\mathbf G_m\longrightarrow R\epsilon_{Y,*}\mathbf G_m
+\]">\[
+\mathbf G_m\longrightarrow R\epsilon_{Y,*}\mathbf G_m
+\]</span>
+<p>is therefore a quasi-isomorphism. Leray <a href="#provider-p7">[P7, Theorem 8.1]</a> identifies derived sections on the right with the fppf derived sections on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Taking degree <span class="math" data-tex="\(n\)">\(n\)</span> proves (1), without a global affineness or quasi-compactness assumption on <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>For naturality, if <span class="math" data-tex="\(g:X\to Y\)">\(g:X\to Y\)</span>, an étale object <span class="math" data-tex="\(U\)">\(U\)</span> pulls back to <span class="math" data-tex="\(U\times_YX\)">\(U\times_YX\)</span> whether it is first viewed in the small étale or the big fppf site. These identical object maps give the square of geometric morphisms. Its coefficient maps are induced by ring pullback:</p>
+<span class="math math-display" data-tex="\[
+g_{\mathrm{\acute et}}^{-1}\mathbf G_{m,Y}\longrightarrow\mathbf G_{m,X},
+\qquad
+g_{\mathrm{fppf}}^{-1}\mathbf G_{m,Y}\longrightarrow\mathbf G_{m,X}.
+\]">\[
+g_{\mathrm{\acute et}}^{-1}\mathbf G_{m,Y}\longrightarrow\mathbf G_{m,X},
+\qquad
+g_{\mathrm{fppf}}^{-1}\mathbf G_{m,Y}\longrightarrow\mathbf G_{m,X}.
+\]</span>
+<p>The latter is the represented base-change identification; the former is not asserted to be an isomorphism. The derived base-change map is constructed from the square and the adjunction counit <a href="#provider-p7">[P7, Section 9]</a>. Its compatibility with the identity <span class="math" data-tex="\(\epsilon_*\mathbf G_m=\mathbf G_m\)">\(\epsilon_*\mathbf G_m=\mathbf G_m\)</span> says that both composites send a unit on <span class="math" data-tex="\(U\)">\(U\)</span> to its image on <span class="math" data-tex="\(U\times_YX\)">\(U\times_YX\)</span>. The unit and counit identities consequently give the same derived comparison map. Taking cohomology yields the commuting square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+H^n_{\mathrm{\acute et}}(Y,\mathbf G_m)&amp;\longrightarrow&amp;H^n_{\mathrm{fppf}}(Y,\mathbf G_m)\\
+\downarrow g^*&amp;&amp;\downarrow g^*\\
+H^n_{\mathrm{\acute et}}(X,\mathbf G_m)&amp;\longrightarrow&amp;H^n_{\mathrm{fppf}}(X,\mathbf G_m).
+\end{array}
+\tag{13}
+\]">\[
+\begin{array}{ccc}
+H^n_{\mathrm{\acute et}}(Y,\mathbf G_m)&amp;\longrightarrow&amp;H^n_{\mathrm{fppf}}(Y,\mathbf G_m)\\
+\downarrow g^*&amp;&amp;\downarrow g^*\\
+H^n_{\mathrm{\acute et}}(X,\mathbf G_m)&amp;\longrightarrow&amp;H^n_{\mathrm{fppf}}(X,\mathbf G_m).
+\end{array}
+\tag{13}
+\]</span>
+<p>This uses the canonical maps of the square, not a separate assertion that all base-change morphisms are invertible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-relative-picard-comparison">The relative Picard comparison</h2>
+<p><strong id="corollary-8">Corollary 8.</strong> Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> satisfy the universal condition
+<span class="math" data-tex="\(\mathcal O_T\xrightarrow{\sim}(f_T)_*\mathcal O_{X_T}\)">\(\mathcal O_T\xrightarrow{\sim}(f_T)_*\mathcal O_{X_T}\)</span> for every <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span>. The étale and fppf relative Picard sheaves agree, and their obstruction sequences agree naturally:</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\operatorname{Pic}(T)
+\longrightarrow\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S}(T)
+\longrightarrow H^2_{\mathrm{\acute et}}(T,\mathbf G_m)
+\longrightarrow H^2_{\mathrm{\acute et}}(X_T,\mathbf G_m).
+\tag{14}
+\]">\[
+0\longrightarrow\operatorname{Pic}(T)
+\longrightarrow\operatorname{Pic}(X_T)
+\longrightarrow\operatorname{Pic}_{X/S}(T)
+\longrightarrow H^2_{\mathrm{\acute et}}(T,\mathbf G_m)
+\longrightarrow H^2_{\mathrm{\acute et}}(X_T,\mathbf G_m).
+\tag{14}
+\]</span>
+<p><strong>Proof.</strong> The line-bundle/torsor correspondence and the two Leray five-term rows are proved in <a href="#provider-p13">[P13, Theorem 3.1]</a>. The morphism from the étale relative Picard sheaf to its fppf sheafification gives a map of these rows. The four terms other than the relative Picard term have canonical isomorphisms: the two Picard groups use the same line bundles, and the two degree-two terms use Theorem 1. Theorem 1 also gives compatibility with the pullbacks in these rows.</p>
+<p>Here is the middle-term argument. If an étale relative class maps to zero, its boundary is zero; it is therefore the image of <span class="math" data-tex="\(b\in\operatorname{Pic}(X_T)\)">\(b\in\operatorname{Pic}(X_T)\)</span>. Below, <span class="math" data-tex="\(b\)">\(b\)</span> comes from <span class="math" data-tex="\(\operatorname{Pic}(T)\)">\(\operatorname{Pic}(T)\)</span>, so it does above as well, and the original class is zero. Conversely lift the boundary of an fppf relative class through the isomorphism on <span class="math" data-tex="\(H^2(T,\mathbf G_m)\)">\(H^2(T,\mathbf G_m)\)</span>. Its image in <span class="math" data-tex="\(H^2(X_T,\mathbf G_m)\)">\(H^2(X_T,\mathbf G_m)\)</span> is zero, so exactness gives an étale relative class with that boundary. The difference downstairs has zero boundary and comes from <span class="math" data-tex="\(\operatorname{Pic}(X_T)\)">\(\operatorname{Pic}(X_T)\)</span>; that same line bundle corrects the lift. Thus the relative map is bijective for every <span class="math" data-tex="\(T\)">\(T\)</span>, naturally. This proves the sheaf comparison and (14). The argument uses Theorem 1 first; it is not a proof of Theorem 1 from a Picard comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="sources-and-exact-earlier-proofs">Sources and exact earlier proofs</h2>
+<p>The comparison is Grothendieck's theorem. The proof uses his strict-local method, specialized to the represented multiplicative group: <a href="https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/DixExp.pdf#page=145"><em>Le groupe de Brauer III</em>, Appendix 11, especially Theorem 11.7</a>. The following links identify the exact earlier programme and fork arguments used here.</p>
+<ul>
+<li><strong id="provider-p1">[P1] Smooth coordinates and the lifting criterion.</strong> <span class="unlinked"><em>Smooth morphisms</em>, definition, Theorem 4.1 and Theorem 5.2</span>.</li>
+<li><strong id="provider-p2">[P2] Henselian sections and strict henselization.</strong> <span class="unlinked"><em>Henselian local rings and henselization</em>, Theorem 1.2, Theorem 2.2, Proposition 3.1 and Theorem 5.1</span>. The opening prerequisite paragraph identifies the earlier étale-algebra results used in the diagonal and root-algebra constructions.</li>
+<li><strong id="provider-p3">[P3] Flatness and openness.</strong> <span class="unlinked"><em>Flat morphisms</em>, Proposition 2.1, Lemma 3.1 and Theorem 3.2</span>.</li>
+<li><strong id="provider-p4">[P4] Flat quasi-finite refinements.</strong> <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/more-morphisms.tex#L6588">AI Integrated Stacks, <code>more-morphisms.tex</code>, the two flat quasi-finite domination lemmas</a>, following the explicit Cohen–Macaulay slicing argument at lines 6317–6586.</li>
+<li><strong id="provider-p5">[P5] The finite neighbourhood.</strong> <span class="unlinked"><em>Étale neighbourhoods, henselization and quasi-finite morphisms</em>, Lemma 4.1 and Theorem 4.2</span>.</li>
+<li><strong id="provider-p6">[P6] Additive faithfully flat exactness.</strong> <span class="unlinked"><em>Topologies on schemes</em>, Lemma 4.1</span>.</li>
+<li><strong id="provider-p7">[P7] Derived cohomology on sites.</strong> <span class="unlinked"><em>Cohomology on sites</em>, Proposition 2.1, Theorem 3.2, Theorem 4.1, Theorem 8.1 and Section 9</span>.</li>
+<li><strong id="provider-p8">[P8] Site morphisms and stalks.</strong> <span class="unlinked"><em>Topoi, morphisms and points</em>, Theorem 2.1 and the stalk/sheafification argument</span>.</li>
+<li><strong id="provider-p9">[P9] Eventual flatness.</strong> <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L48990">AI Integrated Stacks, <code>algebra.tex</code>, finite-presentation flatness descent</a>. Its local model, eventual Tor vanishing and open-flat-locus arguments are at lines 33804–33859, 34105–34145 and 34801–34905 respectively.</li>
+<li><strong id="provider-p10">[P10] Limits of sites and coefficients.</strong> <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/sites.tex#L3767">AI Integrated Stacks, <code>sites.tex</code>, site construction, inverse images and compatible coefficients</a>, through line 3994.</li>
+<li><strong id="provider-p11">[P11] Higher direct images and continuity.</strong> <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/sites-cohomology.tex#L746">AI Integrated Stacks, <code>sites-cohomology.tex</code>, higher direct images</a> and <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/sites-cohomology.tex#L2854">the compatible-system and cohomology-limit proofs</a>. Formula (10) specifies the counit used in that construction.</li>
+<li><strong id="provider-p12">[P12] A cofinal directed set.</strong> <a href="https://github.com/KokunoYumeto/unofficial-ai-integrated-stacks-project/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L2711">AI Integrated Stacks, <code>categories.tex</code>, the directed-category-system lemma</a>, through line 2848.</li>
+<li><strong id="provider-p13">[P13] Picard sheaves and their Leray rows.</strong> <span class="unlinked"><em>The Picard functor and the Picard scheme of a curve</em>, Section 3</span>. Only its line-bundle interpretation and construction of the two rows enter Corollary 8; its use of the topology comparison is supplied by Theorem 1 here, not imported as a premise.</li>
+</ul>
+</article>
+<nav aria-label="Lessons" class="pager"><a href="AG-HP--the-picard-functor-and-the-picard-scheme-of-a-curve.html">The Picard functor</a> <a href="../index.html">Course contents</a> </nav>
+<p class="small source-link"><a download="" href="../src/support/AG-HP--multiplicative-group-cohomology-and-change-of-topology.md">Editable Markdown source of this proof</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-HP">Repository</a></nav>
+</footer>
+</body>
+</html>

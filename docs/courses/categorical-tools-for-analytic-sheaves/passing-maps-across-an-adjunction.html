@@ -1,0 +1,624 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Passing maps across an adjunction</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="passing-maps-across-an-adjunction">Passing maps across an adjunction</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text: CC0.</em></p>
+<p>A map out of a free object is determined by what it does before the free construction. A map into a space of functions is determined by evaluating those functions. An adjunction puts these two patterns in one language. Its correspondence must commute with changes of both the source and the target. The resulting unit and counit record the universal maps, and two short equations make the correspondence reversible.</p>
+<p>We begin with universal arrows, then recover and recognize the correspondence, compare adjoints, and calculate its effect on functions and modules. Use <a href="points-fibres-and-universal-representations.html#4-representatives-in-a-diagram">Points, fibres and universal representations</a> for represented Hom families and their unique compatible comparisons; use <a href="natural-transformations-and-composition-of-functors.html#2-change-the-values-of-a-diagram">Natural transformations and composition of functors</a> for natural lifting and the component criterion. Basic references are [Stacks, Adjoints], <a href="equivalences-and-chosen-representatives.html#1-recognizing-a-reversible-change-of-category">Equivalences and chosen representatives</a>, and <a href="locally-nilpotent-operators-and-coinduced-duals.html#1-evaluation-represents-a-linear-dual">Locally nilpotent operators and coinduced duals</a>.</p>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Categories have ambient sets of objects and <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small Hom sets, interpreted with the Hom encoding in <a href="points-fibres-and-universal-representations.html#1-size-and-the-two-directions-of-points">Points, fibres and universal representations, Section 1</a>. They need not be essentially small. Natural transformations and choices indexed by all objects live in the ambient setting; choose a larger universe when a functor category is required as a small object. We use ambient choice for representing objects. All rings are unital, all modules are unital, and the ground ring <span class="math" data-tex="\(k\)">\(k\)</span> in Section 5 is commutative.</p>
+<h2 id="1-a-best-arrow-to-a-target">1. A best arrow to a target</h2>
+<p>Let <span class="math" data-tex="\(L:C\to D\)">\(L:C\to D\)</span>. For <span class="math" data-tex="\(Y\in D\)">\(Y\in D\)</span>, the comma category <span class="math" data-tex="\(L\downarrow Y\)">\(L\downarrow Y\)</span> has objects <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span> with <span class="math" data-tex="\(a:LX\to Y\)">\(a:LX\to Y\)</span>. An arrow <span class="math" data-tex="\((X,a)\to(X&#x27;,a&#x27;)\)">\((X,a)\to(X&#x27;,a&#x27;)\)</span> is an arrow <span class="math" data-tex="\(t:X\to X&#x27;\)">\(t:X\to X&#x27;\)</span> satisfying <span class="math" data-tex="\(a&#x27; L(t)=a\)">\(a&#x27; L(t)=a\)</span>. Identities and composites obey this condition by the functor laws.</p>
+<p>A terminal object <span class="math" data-tex="\((RY,\varepsilon_Y)\)">\((RY,\varepsilon_Y)\)</span> in this category says exactly that every <span class="math" data-tex="\(a:LX\to Y\)">\(a:LX\to Y\)</span> factors uniquely as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+LX\xrightarrow{L(b)}LRY
+\xrightarrow{\varepsilon_Y}Y,\\
+b:X\longrightarrow RY.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+LX\xrightarrow{L(b)}LRY
+\xrightarrow{\varepsilon_Y}Y,\\
+b:X\longrightarrow RY.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The arrow <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span> therefore represents all maps to <span class="math" data-tex="\(Y\)">\(Y\)</span> whose source has the form <span class="math" data-tex="\(LX\)">\(LX\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> The following conditions on <span class="math" data-tex="\(L\)">\(L\)</span> are equivalent:</p>
+<ol>
+<li>
+<p>There is a functor <span class="math" data-tex="\(R:D\to C\)">\(R:D\to C\)</span> and bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_{X,Y}:\operatorname{Hom}_D(LX,Y)\\
+\longrightarrow\operatorname{Hom}_C(X,RY)
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\Phi_{X,Y}:\operatorname{Hom}_D(LX,Y)\\
+\longrightarrow\operatorname{Hom}_C(X,RY)
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>natural in both variables.</p>
+</li>
+<li>
+<p>Every presheaf <span class="math" data-tex="\(X\mapsto\operatorname{Hom}_D(LX,Y)\)">\(X\mapsto\operatorname{Hom}_D(LX,Y)\)</span> is representable.</p>
+</li>
+<li>
+<p>Every <span class="math" data-tex="\(L\downarrow Y\)">\(L\downarrow Y\)</span> has a terminal object.</p>
+</li>
+</ol>
+<p><strong>Proof interface and specialization.</strong> Conditions 2 and 1 are exactly the complete represented-Hom-family construction in <a href="points-fibres-and-universal-representations.html#4-representatives-in-a-diagram">Points, fibres and universal representations, Section 4</a>. Its construction includes the identity and composition laws for <span class="math" data-tex="\(R\)">\(R\)</span>, both-variable naturality, and compatible uniqueness. The element category of the presheaf in condition 2 has objects <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span> and arrows <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(a&#x27;L(t)=a\)">\(a&#x27;L(t)=a\)</span>, so it is precisely <span class="math" data-tex="\(L\downarrow Y\)">\(L\downarrow Y\)</span>. The complete terminal-universal-element criterion in <a href="solution-sets-and-universal-representations.html#1-universal-elements-and-variance">Solution sets and universal representations, Section 1</a> gives 2 if and only if 3. These arguments use the stated size conventions and ambient choices, and require no essential smallness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For intuition, chosen terminal objects directly determine <span class="math" data-tex="\(R\)">\(R\)</span> on arrows. Given <span class="math" data-tex="\(v:Y\to Y&#x27;\)">\(v:Y\to Y&#x27;\)</span>, terminality in <span class="math" data-tex="\(L\downarrow Y&#x27;\)">\(L\downarrow Y&#x27;\)</span> gives the unique <span class="math" data-tex="\(R(v):RY\to RY&#x27;\)">\(R(v):RY\to RY&#x27;\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_{Y&#x27;}L(R(v))=v\varepsilon_Y.
+\tag{1.3}
+\]">\[
+\varepsilon_{Y&#x27;}L(R(v))=v\varepsilon_Y.
+\tag{1.3}
+\]</span>
+<p>The identity and composite satisfy this same characterization, proving the functor laws. Thus choices at separate objects become a coherent functor because their arrow maps are uniquely forced.</p>
+<p>We call (1.2) an <strong>adjunction</strong>, write <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span>, and call <span class="math" data-tex="\(L\)">\(L\)</span> the left adjoint and <span class="math" data-tex="\(R\)">\(R\)</span> the right adjoint. The bifunctors have domain <span class="math" data-tex="\(C^{\mathrm{op}}\times D\)">\(C^{\mathrm{op}}\times D\)</span>. In concrete terms, for <span class="math" data-tex="\(u:X&#x27;\to X\)">\(u:X&#x27;\to X\)</span>, <span class="math" data-tex="\(v:Y\to Y&#x27;\)">\(v:Y\to Y&#x27;\)</span>, and <span class="math" data-tex="\(f:LX\to Y\)">\(f:LX\to Y\)</span>, naturality is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_{X&#x27;,Y&#x27;}(v f L(u))\\
+=R(v)\,\Phi_{X,Y}(f)\,u.
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+\Phi_{X&#x27;,Y&#x27;}(v f L(u))\\
+=R(v)\,\Phi_{X,Y}(f)\,u.
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>An arbitrary collection of objectwise bijections need not satisfy (1.4). Applying the theorem to opposite categories gives the left-adjoint criterion for a fixed right adjoint, with initial universal arrows in place of terminal ones.</p>
+<h2 id="2-the-two-maps-that-reverse-the-correspondence">2. The two maps that reverse the correspondence</h2>
+<p>Given <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, define its <strong>unit</strong> <span class="math" data-tex="\(\eta:1_C\Rightarrow RL\)">\(\eta:1_C\Rightarrow RL\)</span> and <strong>counit</strong> <span class="math" data-tex="\(\varepsilon:LR\Rightarrow1_D\)">\(\varepsilon:LR\Rightarrow1_D\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta_X=\Phi_{X,LX}(1_{LX}),\\
+\varepsilon_Y=\Phi^{-1}_{RY,Y}(1_{RY}).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\eta_X=\Phi_{X,LX}(1_{LX}),\\
+\varepsilon_Y=\Phi^{-1}_{RY,Y}(1_{RY}).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p><strong>Proposition 2.1.</strong> These are natural transformations. For <span class="math" data-tex="\(f:LX\to Y\)">\(f:LX\to Y\)</span> and <span class="math" data-tex="\(b:X\to RY\)">\(b:X\to RY\)</span>, the full correspondence is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_{X,Y}(f)=R(f)\eta_X,\\
+\Phi^{-1}_{X,Y}(b)=\varepsilon_YL(b).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\Phi_{X,Y}(f)=R(f)\eta_X,\\
+\Phi^{-1}_{X,Y}(b)=\varepsilon_YL(b).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>They satisfy both triangle identities:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon_{LX}L(\eta_X)=1_{LX},\\
+R(\varepsilon_Y)\eta_{RY}=1_{RY}.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\varepsilon_{LX}L(\eta_X)=1_{LX},\\
+R(\varepsilon_Y)\eta_{RY}=1_{RY}.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> In (1.4), take the map <span class="math" data-tex="\(1_{LX}\)">\(1_{LX}\)</span> and postcompose by <span class="math" data-tex="\(f\)">\(f\)</span>. This gives the first formula in (2.2). Apply naturality of the inverse bijection to <span class="math" data-tex="\(1_{RY}\)">\(1_{RY}\)</span>, precomposed by <span class="math" data-tex="\(b\)">\(b\)</span>, for the second.</p>
+<p>For <span class="math" data-tex="\(u:X\to X&#x27;\)">\(u:X\to X&#x27;\)</span>, the two ways to transpose <span class="math" data-tex="\(L(u)\)">\(L(u)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+RL(u)\eta_X=\eta_{X&#x27;}u.
+\tag{2.4}
+\]">\[
+RL(u)\eta_X=\eta_{X&#x27;}u.
+\tag{2.4}
+\]</span>
+<p>For <span class="math" data-tex="\(v:Y\to Y&#x27;\)">\(v:Y\to Y&#x27;\)</span>, the two ways to inverse-transpose <span class="math" data-tex="\(R(v)\)">\(R(v)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+v\varepsilon_Y=\varepsilon_{Y&#x27;}LR(v).
+\tag{2.5}
+\]">\[
+v\varepsilon_Y=\varepsilon_{Y&#x27;}LR(v).
+\tag{2.5}
+\]</span>
+<p>These are exactly the naturality squares of the unit and counit. Finally, inverse-transpose <span class="math" data-tex="\(\eta_X=\Phi(1_{LX})\)">\(\eta_X=\Phi(1_{LX})\)</span> using (2.2); the result is the first identity in (2.3). Transpose <span class="math" data-tex="\(\varepsilon_Y=\Phi^{-1}(1_{RY})\)">\(\varepsilon_Y=\Phi^{-1}(1_{RY})\)</span> for the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equations (2.2) also identify two useful Hom squares. The map induced by <span class="math" data-tex="\(R\)">\(R\)</span> on <span class="math" data-tex="\(\operatorname{Hom}_D(Y,Y&#x27;)\)">\(\operatorname{Hom}_D(Y,Y&#x27;)\)</span>, followed by inverse transposition, is <span class="math" data-tex="\(v\mapsto v\varepsilon_Y\)">\(v\mapsto v\varepsilon_Y\)</span>. The map induced by <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(\operatorname{Hom}_C(X,X&#x27;)\)">\(\operatorname{Hom}_C(X,X&#x27;)\)</span>, followed by transposition, is <span class="math" data-tex="\(u\mapsto\eta_{X&#x27;}u\)">\(u\mapsto\eta_{X&#x27;}u\)</span>. Both are statements about the specified adjunction, including its specified maps.</p>
+<p>The following diagram shows the two excursions in (2.3). Each row starts and ends at the same object, and its composite is the identity. The rows belong to different categories.</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c}
+\text{in }D:\\
+LX\xrightarrow{L(\eta_X)}LRLX
+\xrightarrow{\varepsilon_{LX}}LX\\[4pt]
+\text{in }C:\\
+RY\xrightarrow{\eta_{RY}}RLRY
+\xrightarrow{R(\varepsilon_Y)}RY
+\end{array}
+\tag{2.6}
+\]">\[
+\begin{array}{c}
+\text{in }D:\\
+LX\xrightarrow{L(\eta_X)}LRLX
+\xrightarrow{\varepsilon_{LX}}LX\\[4pt]
+\text{in }C:\\
+RY\xrightarrow{\eta_{RY}}RLRY
+\xrightarrow{R(\varepsilon_Y)}RY
+\end{array}
+\tag{2.6}
+\]</span>
+<p><em>Figure 2.1. The unit followed by the appropriate counit returns the original object and every map carried by it. The editable diagram is the displayed formula itself; it asserts exact identities, with no geometric approximation.</em></p>
+<p><strong>Theorem 2.2.</strong> Conversely, let <span class="math" data-tex="\(L:C\to D\)">\(L:C\to D\)</span>, <span class="math" data-tex="\(R:D\to C\)">\(R:D\to C\)</span>, and natural transformations <span class="math" data-tex="\(\eta:1_C\Rightarrow RL\)">\(\eta:1_C\Rightarrow RL\)</span>, <span class="math" data-tex="\(\varepsilon:LR\Rightarrow1_D\)">\(\varepsilon:LR\Rightarrow1_D\)</span> satisfy (2.3). Formula (2.2) defines an adjunction. Recovering its unit and counit by (2.1) returns exactly the given transformations.</p>
+<p><strong>Proof interface with the general formulas.</strong> Retain the complete two-inverse calculation following (5.2) in <a href="descent-through-replacement-objects.html#5-universal-localization-of-the-identity-forces-reflection">Descent through replacement objects, Section 5</a>. That calculation uses only naturality and the two triangle identities: substitute <span class="math" data-tex="\(Q=L\)">\(Q=L\)</span>, <span class="math" data-tex="\(H=R\)">\(H=R\)</span>. Its localization hypotheses establish those identities earlier in that lesson; they are not used in this calculation once the identities are assumed. Explicitly, its two composites become</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varepsilon_YLR(f)L(\eta_X)
+\\=f\varepsilon_{LX}L(\eta_X)=f,\\
+R(\varepsilon_Y)RL(b)\eta_X
+\\=R(\varepsilon_Y)\eta_{RY}b=b.
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+\varepsilon_YLR(f)L(\eta_X)
+\\=f\varepsilon_{LX}L(\eta_X)=f,\\
+R(\varepsilon_Y)RL(b)\eta_X
+\\=R(\varepsilon_Y)\eta_{RY}b=b.
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>For completeness, naturality of the forward map in both variables follows from</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(v f L(u))\eta_{X&#x27;}
+\\=R(v)R(f)RL(u)\eta_{X&#x27;}\\
+=R(v)R(f)\eta_X u
+\end{gathered}
+\tag{2.8}
+\]">\[
+\begin{gathered}
+R(v f L(u))\eta_{X&#x27;}
+\\=R(v)R(f)RL(u)\eta_{X&#x27;}\\
+=R(v)R(f)\eta_X u
+\end{gathered}
+\tag{2.8}
+\]</span>
+<p>for <span class="math" data-tex="\(u:X&#x27;\to X\)">\(u:X&#x27;\to X\)</span>. The inverse family is natural because the forward family is a natural family of bijections; alternatively (2.5) gives it directly. At identity maps, (2.2) gives <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span> and <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span>, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-when-an-adjoint-retains-all-maps">3. When an adjoint retains all maps</h2>
+<p><strong>Theorem 3.1.</strong> For a specified adjunction <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(L\)">\(L\)</span> is fully faithful if and only if its unit <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is invertible.</li>
+<li><span class="math" data-tex="\(R\)">\(R\)</span> is fully faithful if and only if its counit <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is invertible.</li>
+<li>The following are equivalent: <span class="math" data-tex="\(L\)">\(L\)</span> is an equivalence; <span class="math" data-tex="\(R\)">\(R\)</span> is an equivalence; both are fully faithful; both specified transformations are invertible. In this case <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are quasi-inverse equivalences.</li>
+</ol>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(X,X&#x27;\in C\)">\(X,X&#x27;\in C\)</span>, compose the Hom map induced by <span class="math" data-tex="\(L\)">\(L\)</span> with the adjunction bijection:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(X,X&#x27;)
+\\
+\xrightarrow{L}\operatorname{Hom}_D(LX,LX&#x27;)\\
+\xrightarrow{\Phi}\operatorname{Hom}_C(X,RLX&#x27;).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(X,X&#x27;)
+\\
+\xrightarrow{L}\operatorname{Hom}_D(LX,LX&#x27;)\\
+\xrightarrow{\Phi}\operatorname{Hom}_C(X,RLX&#x27;).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>By (2.4), this composite sends <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(\eta_{X&#x27;}t\)">\(\eta_{X&#x27;}t\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is fully faithful, postcomposition by <span class="math" data-tex="\(\eta_{X&#x27;}\)">\(\eta_{X&#x27;}\)</span> is bijective for every <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(\eta_{X&#x27;}\)">\(\eta_{X&#x27;}\)</span> is invertible by the complete incoming-probe criterion in <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points, fibres and universal representations, Section 2</a>. Conversely, an invertible <span class="math" data-tex="\(\eta_{X&#x27;}\)">\(\eta_{X&#x27;}\)</span> makes this composite bijective; <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is bijective, so the first arrow in (3.1) is bijective.</p>
+<p>For <span class="math" data-tex="\(Y,Y&#x27;\in D\)">\(Y,Y&#x27;\in D\)</span>, the corresponding composite is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(Y,Y&#x27;)
+\\
+\xrightarrow{R}\operatorname{Hom}_C(RY,RY&#x27;)\\
+\xrightarrow{\Phi^{-1}}
+\operatorname{Hom}_D(LRY,Y&#x27;).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(Y,Y&#x27;)
+\\
+\xrightarrow{R}\operatorname{Hom}_C(RY,RY&#x27;)\\
+\xrightarrow{\Phi^{-1}}
+\operatorname{Hom}_D(LRY,Y&#x27;).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>It sends <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(v\varepsilon_Y\)">\(v\varepsilon_Y\)</span>. The complete outgoing-probe criterion proves assertion 2, in both directions.</p>
+<p>Thus both adjoints are fully faithful exactly when both transformations are invertible, and those transformations exhibit quasi-inverses. Conversely, suppose <span class="math" data-tex="\(L\)">\(L\)</span> is an equivalence. The complete equivalence criterion in <a href="equivalences-and-chosen-representatives.html#1-recognizing-a-reversible-change-of-category">Equivalences and chosen representatives, Theorem 1.1</a> makes <span class="math" data-tex="\(L\)">\(L\)</span> fully faithful and essentially surjective. Hence <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is invertible. The first triangle identity makes <span class="math" data-tex="\(\varepsilon_{LX}=L(\eta_X)^{-1}\)">\(\varepsilon_{LX}=L(\eta_X)^{-1}\)</span> invertible. For arbitrary <span class="math" data-tex="\(Y\)">\(Y\)</span>, choose an isomorphism <span class="math" data-tex="\(t:LX\to Y\)">\(t:LX\to Y\)</span>. Naturality gives</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_Y=t\varepsilon_{LX}(LR(t))^{-1},
+\tag{3.3}
+\]">\[
+\varepsilon_Y=t\varepsilon_{LX}(LR(t))^{-1},
+\tag{3.3}
+\]</span>
+<p>so <span class="math" data-tex="\(\varepsilon_Y\)">\(\varepsilon_Y\)</span> is invertible too. The argument with opposite categories treats an equivalence <span class="math" data-tex="\(R\)">\(R\)</span>. This proves all implications, including empty categories. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Any specified quasi-inverse <span class="math" data-tex="\(G\)">\(G\)</span> of an equivalence <span class="math" data-tex="\(F\)">\(F\)</span> can serve as both its left and its right adjoint. Use the complete coherent-comparison construction in <a href="equivalences-and-chosen-representatives.html#2-coherent-comparisons-and-detecting-natural-isomorphisms">Equivalences and chosen representatives, Section 2</a> to obtain <span class="math" data-tex="\(\alpha:GF\Rightarrow1\)">\(\alpha:GF\Rightarrow1\)</span>, <span class="math" data-tex="\(\beta:FG\Rightarrow1\)">\(\beta:FG\Rightarrow1\)</span> with <span class="math" data-tex="\(F\alpha=\beta F\)">\(F\alpha=\beta F\)</span> and <span class="math" data-tex="\(\alpha G=G\beta\)">\(\alpha G=G\beta\)</span>. The pair <span class="math" data-tex="\((\alpha^{-1},\beta)\)">\((\alpha^{-1},\beta)\)</span> gives <span class="math" data-tex="\(F\dashv G\)">\(F\dashv G\)</span> by Theorem 2.2. The pair <span class="math" data-tex="\((\beta^{-1},\alpha)\)">\((\beta^{-1},\alpha)\)</span> gives <span class="math" data-tex="\(G\dashv F\)">\(G\dashv F\)</span>. No compatibility of initially arbitrary quasi-inverse comparisons is assumed.</p>
+<p><strong>Proposition 3.2.</strong> Suppose <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> has adjoints <span class="math" data-tex="\(A\dashv F\dashv B\)">\(A\dashv F\dashv B\)</span>. Then <span class="math" data-tex="\(A\)">\(A\)</span> is fully faithful if and only if <span class="math" data-tex="\(B\)">\(B\)</span> is fully faithful.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(a\colon1_D\Rightarrow FA\)">\(a\colon1_D\Rightarrow FA\)</span>, <span class="math" data-tex="\(b\colon AF\Rightarrow1_C\)">\(b\colon AF\Rightarrow1_C\)</span> for the first unit and counit, and <span class="math" data-tex="\(c\colon1_C\Rightarrow BF\)">\(c\colon1_C\Rightarrow BF\)</span>, <span class="math" data-tex="\(d\colon FB\Rightarrow1_D\)">\(d\colon FB\Rightarrow1_D\)</span> for the second. Successive transpositions give a bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T:\operatorname{Hom}_D(X,FBY)
+\\
+\longrightarrow\operatorname{Hom}_D(FAX,Y),\\
+T(h)=d_Y F(b_{BY}A(h)).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+T:\operatorname{Hom}_D(X,FBY)
+\\
+\longrightarrow\operatorname{Hom}_D(FAX,Y),\\
+T(h)=d_Y F(b_{BY}A(h)).
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>Naturality of <span class="math" data-tex="\(a\)">\(a\)</span>, followed by the first triangle identity for <span class="math" data-tex="\(A\dashv F\)">\(A\dashv F\)</span>, gives the exact square identity</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T(h)a_X
+&amp;=d_YF(b_{BY})FA(h)a_X\\
+&amp;=d_YF(b_{BY})a_{FBY}h\\
+&amp;=d_Yh.
+\end{aligned}
+\tag{3.5}
+\]">\[
+\begin{aligned}
+T(h)a_X
+&amp;=d_YF(b_{BY})FA(h)a_X\\
+&amp;=d_YF(b_{BY})a_{FBY}h\\
+&amp;=d_Yh.
+\end{aligned}
+\tag{3.5}
+\]</span>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is fully faithful, each <span class="math" data-tex="\(a_X\)">\(a_X\)</span> is invertible by Theorem 3.1. In (3.5), <span class="math" data-tex="\(T\)">\(T\)</span> and precomposition by <span class="math" data-tex="\(a_X\)">\(a_X\)</span> are bijections, so postcomposition by <span class="math" data-tex="\(d_Y\)">\(d_Y\)</span> is bijective for all <span class="math" data-tex="\(X\)">\(X\)</span>. Incoming probes make <span class="math" data-tex="\(d_Y\)">\(d_Y\)</span> invertible; Theorem 3.1 makes <span class="math" data-tex="\(B\)">\(B\)</span> fully faithful. If <span class="math" data-tex="\(B\)">\(B\)</span> is fully faithful, postcomposition by <span class="math" data-tex="\(d_Y\)">\(d_Y\)</span> is bijective. The same identity and bijectivity of <span class="math" data-tex="\(T\)">\(T\)</span> show that precomposition by <span class="math" data-tex="\(a_X\)">\(a_X\)</span> is bijective for every <span class="math" data-tex="\(Y\)">\(Y\)</span>. Outgoing probes make <span class="math" data-tex="\(a_X\)">\(a_X\)</span> invertible, hence <span class="math" data-tex="\(A\)">\(A\)</span> fully faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two outer adjoints need not be isomorphic. Exercise 1 gives a three-element ordered category where both are fully faithful but choose different objects.</p>
+<p>There is also a recognition test that begins with a proposed universal arrow.</p>
+<p><strong>Proposition 3.3.</strong> Let <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> be fully faithful, <span class="math" data-tex="\(G:D\to C\)">\(G:D\to C\)</span>, and <span class="math" data-tex="\(a\colon1_D\Rightarrow FG\)">\(a\colon1_D\Rightarrow FG\)</span> natural. Suppose <span class="math" data-tex="\(aF\)">\(aF\)</span> and <span class="math" data-tex="\(Ga\)">\(Ga\)</span> are invertible. Then <span class="math" data-tex="\(G\dashv F\)">\(G\dashv F\)</span>, with unit <span class="math" data-tex="\(a\)">\(a\)</span> and an invertible counit <span class="math" data-tex="\(b\colon GF\Rightarrow1_C\)">\(b\colon GF\Rightarrow1_C\)</span>.</p>
+<p><strong>Proof.</strong> The complete fully faithful postcomposition-lifting result in <a href="natural-transformations-and-composition-of-functors.html#2-change-the-values-of-a-diagram">Natural transformations, Theorem 2.2</a> uniquely lifts <span class="math" data-tex="\((aF)^{-1}\)">\((aF)^{-1}\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+F(b_X)=a_{FX}^{-1}.
+\tag{3.6}
+\]">\[
+F(b_X)=a_{FX}^{-1}.
+\tag{3.6}
+\]</span>
+<p>It is a natural isomorphism, since its image is componentwise invertible and a fully faithful functor reflects isomorphisms. Equation (3.6) is the first triangle <span class="math" data-tex="\(F(b_X)a_{FX}=1_{FX}\)">\(F(b_X)a_{FX}=1_{FX}\)</span>.</p>
+<p>The other triangle does not follow just by cancelling <span class="math" data-tex="\(a_Y\)">\(a_Y\)</span>, which need not be invertible. Instead, naturality of <span class="math" data-tex="\(a\)">\(a\)</span> for <span class="math" data-tex="\(a_Y\)">\(a_Y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+FG(a_Y)a_Y=a_{FGY}a_Y.
+\tag{3.7}
+\]">\[
+FG(a_Y)a_Y=a_{FGY}a_Y.
+\tag{3.7}
+\]</span>
+<p>Apply <span class="math" data-tex="\(G\)">\(G\)</span>, and cancel the invertible <span class="math" data-tex="\(G(a_Y)\)">\(G(a_Y)\)</span> on the right. The result is <span class="math" data-tex="\(GFG(a_Y)=G(a_{FGY})\)">\(GFG(a_Y)=G(a_{FGY})\)</span>. Applying <span class="math" data-tex="\(G\)">\(G\)</span> to the first triangle at <span class="math" data-tex="\(X=GY\)">\(X=GY\)</span> now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+GF(b_{GY})GFG(a_Y)=1_{GFGY},\\
+GF(b_{GY}G(a_Y))=1_{GFGY}.
+\end{gathered}
+\tag{3.8}
+\]">\[
+\begin{gathered}
+GF(b_{GY})GFG(a_Y)=1_{GFGY},\\
+GF(b_{GY}G(a_Y))=1_{GFGY}.
+\end{gathered}
+\tag{3.8}
+\]</span>
+<p>The natural isomorphism <span class="math" data-tex="\(b\colon GF\Rightarrow1_C\)">\(b\colon GF\Rightarrow1_C\)</span> makes <span class="math" data-tex="\(GF\)">\(GF\)</span> faithful: conjugating <span class="math" data-tex="\(GF(t)\)">\(GF(t)\)</span> by the components of <span class="math" data-tex="\(b\)">\(b\)</span> recovers <span class="math" data-tex="\(t\)">\(t\)</span>. Therefore (3.8) implies <span class="math" data-tex="\(b_{GY}G(a_Y)=1_{GY}\)">\(b_{GY}G(a_Y)=1_{GY}\)</span>, the second triangle. Theorem 2.2 finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-compose-correspondences-and-compare-adjoints">4. Compose correspondences and compare adjoints</h2>
+<p>Let <span class="math" data-tex="\(L:C\to D\)">\(L:C\to D\)</span>, <span class="math" data-tex="\(R:D\to C\)">\(R:D\to C\)</span>, <span class="math" data-tex="\(L&#x27;:D\to E\)">\(L&#x27;:D\to E\)</span>, <span class="math" data-tex="\(R&#x27;:E\to D\)">\(R&#x27;:E\to D\)</span>, with specified adjunctions <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span> and <span class="math" data-tex="\(L&#x27;\dashv R&#x27;\)">\(L&#x27;\dashv R&#x27;\)</span>. Composing their natural bijections gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_E(L&#x27;LX,Z)
+\\
+\simeq\operatorname{Hom}_D(LX,R&#x27;Z)\\
+\simeq\operatorname{Hom}_C(X,RR&#x27;Z).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_E(L&#x27;LX,Z)
+\\
+\simeq\operatorname{Hom}_D(LX,R&#x27;Z)\\
+\simeq\operatorname{Hom}_C(X,RR&#x27;Z).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\(L&#x27;L\dashv RR&#x27;\)">\(L&#x27;L\dashv RR&#x27;\)</span>. Each step respects a map in either variable, so the composite does too. If <span class="math" data-tex="\(\eta&#x27;,\varepsilon&#x27;\)">\(\eta&#x27;,\varepsilon&#x27;\)</span> denote the second pair of maps, transposing the identities in (4.1), using (2.2), yields the precise composite maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta&#x27;&#x27;_X=R(\eta&#x27;_{LX})\eta_X,\\
+\varepsilon&#x27;&#x27;_Z
+=\varepsilon&#x27;_Z L&#x27;(\varepsilon_{R&#x27;Z}).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\eta&#x27;&#x27;_X=R(\eta&#x27;_{LX})\eta_X,\\
+\varepsilon&#x27;&#x27;_Z
+=\varepsilon&#x27;_Z L&#x27;(\varepsilon_{R&#x27;Z}).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>These are the unit and counit of the specified composite correspondence, so Proposition 2.1 proves their naturality and both triangles. For three adjunctions, both parenthesizations apply the same three Hom bijections in the same order. Hence the adjunction bijections, units and counits agree literally after the usual associative identification of functor composition.</p>
+<p>Next fix adjunctions <span class="math" data-tex="\(L_i\dashv R_i\)">\(L_i\dashv R_i\)</span> between <span class="math" data-tex="\(C,D\)">\(C,D\)</span>, for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>. A transformation <span class="math" data-tex="\(\alpha:L_1\Rightarrow L_2\)">\(\alpha:L_1\Rightarrow L_2\)</span> gives a transformation in the reverse direction, <span class="math" data-tex="\(\alpha^*:R_2\Rightarrow R_1\)">\(\alpha^*:R_2\Rightarrow R_1\)</span>, called its <strong>right mate</strong>.</p>
+<p><strong>Theorem 4.1.</strong> The two rules below are inverse bijections between natural transformations:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(L_1,L_2)
+\simeq\operatorname{Nat}(R_2,R_1),\\
+\alpha^*_Y
+=R_1(\varepsilon_{2,Y})
+R_1(\alpha_{R_2Y})\eta_{1,R_2Y},\\
+\beta_{*,X}
+=\varepsilon_{1,L_2X}
+L_1(\beta_{L_2X})L_1(\eta_{2,X}).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(L_1,L_2)
+\simeq\operatorname{Nat}(R_2,R_1),\\
+\alpha^*_Y
+=R_1(\varepsilon_{2,Y})
+R_1(\alpha_{R_2Y})\eta_{1,R_2Y},\\
+\beta_{*,X}
+=\varepsilon_{1,L_2X}
+L_1(\beta_{L_2X})L_1(\eta_{2,X}).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>These transformations need not be invertible. Taking mates reverses vertical composition and takes identities to identities.</p>
+<p><strong>Proof.</strong> Precomposition by <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span> defines a map from <span class="math" data-tex="\(\operatorname{Hom}_D(L_2X,Y)\)">\(\operatorname{Hom}_D(L_2X,Y)\)</span> to <span class="math" data-tex="\(\operatorname{Hom}_D(L_1X,Y)\)">\(\operatorname{Hom}_D(L_1X,Y)\)</span>, natural in <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>. Conjugating by the two adjunction bijections gives a natural map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_C(X,R_2Y)
+\\
+\longrightarrow\operatorname{Hom}_C(X,R_1Y).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_C(X,R_2Y)
+\\
+\longrightarrow\operatorname{Hom}_C(X,R_1Y).
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>The complete Yoneda lifting result in <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points, fibres and universal representations, Section 2</a> gives a unique <span class="math" data-tex="\(\beta_Y:R_2Y\to R_1Y\)">\(\beta_Y:R_2Y\to R_1Y\)</span> inducing it. Naturality in <span class="math" data-tex="\(Y\)">\(Y\)</span>, followed by faithfulness of the same embedding, makes the <span class="math" data-tex="\(\beta_Y\)">\(\beta_Y\)</span> natural. Evaluate (4.4) at <span class="math" data-tex="\(X=R_2Y\)">\(X=R_2Y\)</span>, <span class="math" data-tex="\(1_{R_2Y}\)">\(1_{R_2Y}\)</span>. Its inverse transpose is <span class="math" data-tex="\(\varepsilon_{2,Y}\)">\(\varepsilon_{2,Y}\)</span>; precomposition gives <span class="math" data-tex="\(\varepsilon_{2,Y}\alpha_{R_2Y}\)">\(\varepsilon_{2,Y}\alpha_{R_2Y}\)</span>; transposing by (2.2) gives the formula for <span class="math" data-tex="\(\alpha^*\)">\(\alpha^*\)</span>.</p>
+<p>Conversely, postcomposition by any natural <span class="math" data-tex="\(\beta:R_2\Rightarrow R_1\)">\(\beta:R_2\Rightarrow R_1\)</span>, conjugated back by the bijections, defines a map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(L_2X,Y)
+\\
+\longrightarrow\operatorname{Hom}_D(L_1X,Y)
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(L_2X,Y)
+\\
+\longrightarrow\operatorname{Hom}_D(L_1X,Y)
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>natural in both variables. The covariant Yoneda lifting result in that same section uniquely represents it by an arrow <span class="math" data-tex="\(\alpha_X:L_1X\to L_2X\)">\(\alpha_X:L_1X\to L_2X\)</span>. Naturality in <span class="math" data-tex="\(X\)">\(X\)</span> again gives a natural transformation. Evaluate at <span class="math" data-tex="\(Y=L_2X\)">\(Y=L_2X\)</span>, <span class="math" data-tex="\(1_{L_2X}\)">\(1_{L_2X}\)</span>. Transposition gives <span class="math" data-tex="\(\eta_{2,X}\)">\(\eta_{2,X}\)</span>, postcomposition gives <span class="math" data-tex="\(\beta_{L_2X}\eta_{2,X}\)">\(\beta_{L_2X}\eta_{2,X}\)</span>, and inverse transposition gives the formula for <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span>.</p>
+<p>The two constructions are inverse: conjugating a Hom map by bijections and conjugating back returns the same Hom map; the two fully faithful Yoneda embeddings make equality of those Hom maps equality of the represented transformations. This verifies both inverse assertions, rather than just one component formula. Composing two precomposition maps reverses the order of their representing arrows on the right. Faithfulness then gives <span class="math" data-tex="\((\alpha&#x27;\alpha)^*=\alpha^*(\alpha&#x27;)^*\)">\((\alpha&#x27;\alpha)^*=\alpha^*(\alpha&#x27;)^*\)</span>; the identity Hom map is represented by the identity transformation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The defining identity can also be written as a counit square:</p>
+<span class="math math-display" data-tex="\[
+\varepsilon_{1,Y}L_1(\alpha^*_Y)
+=\varepsilon_{2,Y}\alpha_{R_2Y}.
+\tag{4.6}
+\]">\[
+\varepsilon_{1,Y}L_1(\alpha^*_Y)
+=\varepsilon_{2,Y}\alpha_{R_2Y}.
+\tag{4.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\alpha^*_Y\)">\(\alpha^*_Y\)</span> is the transpose under <span class="math" data-tex="\(L_1\dashv R_1\)">\(L_1\dashv R_1\)</span> of the right side. This proves (4.6) directly and fixes every source and target. In the inverse formula (4.3), the last arrow has source <span class="math" data-tex="\(L_1R_1L_2X\)">\(L_1R_1L_2X\)</span> and target <span class="math" data-tex="\(L_2X\)">\(L_2X\)</span>; it is a counit.</p>
+<p><strong>Corollary 4.2.</strong> A right adjoint, together with its specified adjunction, is unique up to a unique compatible natural isomorphism. The same holds for a left adjoint.</p>
+<p><strong>Proof interface.</strong> The complete compatible-uniqueness result for represented Hom families in <a href="points-fibres-and-universal-representations.html#4-representatives-in-a-diagram">Points, fibres and universal representations, Section 4</a> already proves the right-adjoint statement. With a fixed <span class="math" data-tex="\(L=L_1=L_2\)">\(L=L_1=L_2\)</span>, Theorem 4.1 identifies its comparison <span class="math" data-tex="\(R_2\to R_1\)">\(R_2\to R_1\)</span> with the mate of <span class="math" data-tex="\(1_L\)">\(1_L\)</span>. The reverse comparison is its inverse, because mates reverse composition. The compatibility is (4.6); it characterizes the comparison uniquely by the adjunction and Yoneda. Opposite categories give the left-adjoint statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There may be several natural automorphisms of the bare functor. On abelian groups, <span class="math" data-tex="\(1_{\mathsf{Ab}}\)">\(1_{\mathsf{Ab}}\)</span> has both the identity automorphism and the automorphism <span class="math" data-tex="\(m\mapsto-m\)">\(m\mapsto-m\)</span>; they differ on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Both are isomorphisms between the same functor and itself, but only the identity is compatible with two copies of the identity adjunction. One can also specify the adjunction whose Hom bijection sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(-f\)">\(-f\)</span>. Its unit and counit are both minus the identity, and (2.3) still holds. Specifying the correspondence matters.</p>
+<h2 id="5-evaluation-scalar-extension-and-coinduction">5. Evaluation, scalar extension and coinduction</h2>
+<h3 id="5-1-functions-of-two-arguments">5.1 Functions of two arguments</h3>
+<p>Fix a set <span class="math" data-tex="\(K\)">\(K\)</span>. The functors <span class="math" data-tex="\(L_K(X)=X\times K\)">\(L_K(X)=X\times K\)</span> and <span class="math" data-tex="\(R_K(Z)=Z^K=\operatorname{Hom}_{\mathsf{Set}}(K,Z)\)">\(R_K(Z)=Z^K=\operatorname{Hom}_{\mathsf{Set}}(K,Z)\)</span> act on arrows by product with <span class="math" data-tex="\(1_K\)">\(1_K\)</span> and by postcomposition. Identities and composites follow pointwise.</p>
+<p>Currying and evaluation are inverse maps:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(X\times K,Z)
+\simeq\operatorname{Hom}(X,Z^K),\\
+f\longmapsto[x\mapsto(k\mapsto f(x,k))],\\
+g\longmapsto[(x,k)\mapsto g(x)(k)].
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(X\times K,Z)
+\simeq\operatorname{Hom}(X,Z^K),\\
+f\longmapsto[x\mapsto(k\mapsto f(x,k))],\\
+g\longmapsto[(x,k)\mapsto g(x)(k)].
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Both composites recover each value, proving bijectivity. Precompose by <span class="math" data-tex="\(u:X&#x27;\to X\)">\(u:X&#x27;\to X\)</span>, postcompose by <span class="math" data-tex="\(v:Z\to Z&#x27;\)">\(v:Z\to Z&#x27;\)</span>, or precompose the function argument by <span class="math" data-tex="\(w:K&#x27;\to K\)">\(w:K&#x27;\to K\)</span>; evaluation at <span class="math" data-tex="\(x&#x27;,k&#x27;\)">\(x&#x27;,k&#x27;\)</span> gives <span class="math" data-tex="\(v(f(u(x&#x27;),w(k&#x27;)))\)">\(v(f(u(x&#x27;),w(k&#x27;)))\)</span> by either route. Thus the bijection is natural in <span class="math" data-tex="\(X,Z\)">\(X,Z\)</span> and contravariantly compatible with a change of <span class="math" data-tex="\(K\)">\(K\)</span>. In particular <span class="math" data-tex="\(L_K\dashv R_K\)">\(L_K\dashv R_K\)</span>.</p>
+<p>Its unit sends <span class="math" data-tex="\(x\)">\(x\)</span> to the function <span class="math" data-tex="\(k\mapsto(x,k)\)">\(k\mapsto(x,k)\)</span>. Its counit is evaluation <span class="math" data-tex="\((h,k)\mapsto h(k)\)">\((h,k)\mapsto h(k)\)</span>. These formulas include <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, with the unique empty function, and all empty <span class="math" data-tex="\(X,Z\)">\(X,Z\)</span>. Exercise 2 checks the triangles and the fully faithful cases.</p>
+<h3 id="5-2-tensoring-over-a-central-ground-ring">5.2 Tensoring over a central ground ring</h3>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a possibly noncommutative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra, with <span class="math" data-tex="\(k\)">\(k\)</span> acting centrally, and let <span class="math" data-tex="\(K\)">\(K\)</span> be any <span class="math" data-tex="\(k\)">\(k\)</span>-module. Give <span class="math" data-tex="\(N\otimes_k K\)">\(N\otimes_k K\)</span> the left <span class="math" data-tex="\(R\)">\(R\)</span>-action <span class="math" data-tex="\(r(n\otimes t)=rn\otimes t\)">\(r(n\otimes t)=rn\otimes t\)</span>. Give <span class="math" data-tex="\(\operatorname{Hom}_k(K,M)\)">\(\operatorname{Hom}_k(K,M)\)</span> the left <span class="math" data-tex="\(R\)">\(R\)</span>-action <span class="math" data-tex="\((rh)(t)=r h(t)\)">\((rh)(t)=r h(t)\)</span>. Centrality makes this action preserve <span class="math" data-tex="\(k\)">\(k\)</span>-linearity. The action identities follow from those on <span class="math" data-tex="\(M\)">\(M\)</span>. A module map in <span class="math" data-tex="\(N\)">\(N\)</span> tensors with <span class="math" data-tex="\(1_K\)">\(1_K\)</span>, and a module map in <span class="math" data-tex="\(M\)">\(M\)</span> postcomposes; the universal property and pointwise composition give the two functor laws.</p>
+<p>The complete balanced tensor and internal-Hom constructions in <a href="ring-actions-and-tensor-hom-in-abelian-categories.html#5-which-infinite-operations-are-actually-needed">Operators, matrix relations and internal tensor–Hom, Sections 5 and 6</a>, with their ordinary-module identifications in <a href="hom-tensor-and-the-exactness-of-module-limits.html#1-hom-and-tensor-keep-different-ends-of-a-sequence">Hom, tensor and the exactness of module limits, Section 1</a>, provide the underlying tensor and Hom objects. Currying gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(N\otimes_k K,M)\\
+\simeq\operatorname{Hom}_R
+(N,\operatorname{Hom}_k(K,M)).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(N\otimes_k K,M)\\
+\simeq\operatorname{Hom}_R
+(N,\operatorname{Hom}_k(K,M)).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>Here is the exact specialization of the balanced-map correspondence. A map <span class="math" data-tex="\(f\)">\(f\)</span> on the left gives <span class="math" data-tex="\(g(n)(t)=f(n\otimes t)\)">\(g(n)(t)=f(n\otimes t)\)</span>; <span class="math" data-tex="\(k\)">\(k\)</span>-balance proves <span class="math" data-tex="\(g(n)\)">\(g(n)\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear, and <span class="math" data-tex="\(f(rn\otimes t)=r f(n\otimes t)\)">\(f(rn\otimes t)=r f(n\otimes t)\)</span> proves <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(R\)">\(R\)</span>-linear. Conversely, for <span class="math" data-tex="\(g\)">\(g\)</span> on the right, the map <span class="math" data-tex="\((n,t)\mapsto g(n)(t)\)">\((n,t)\mapsto g(n)(t)\)</span> is biadditive and <span class="math" data-tex="\(k\)">\(k\)</span>-balanced, hence factors uniquely through <span class="math" data-tex="\(N\otimes_k K\)">\(N\otimes_k K\)</span>. Its <span class="math" data-tex="\(R\)">\(R\)</span>-linearity holds on pure tensors, which generate the tensor module. These rules are inverse on pure tensors and on each evaluated value. Precomposition, postcomposition, and a <span class="math" data-tex="\(k\)">\(k\)</span>-linear map <span class="math" data-tex="\(K&#x27;\to K\)">\(K&#x27;\to K\)</span> commute with the same evaluation formula. This is the adjunction <span class="math" data-tex="\(-\otimes_k K\dashv\operatorname{Hom}_k(K,-)\)">\(-\otimes_k K\dashv\operatorname{Hom}_k(K,-)\)</span> on left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. No finite generation, projectivity or flatness of <span class="math" data-tex="\(K\)">\(K\)</span> is needed.</p>
+<p>The unit sends <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(t\mapsto n\otimes t\)">\(t\mapsto n\otimes t\)</span>. The counit sends <span class="math" data-tex="\(h\otimes t\)">\(h\otimes t\)</span> to <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>. These are the module versions of the two maps in Section 5.1.</p>
+<h3 id="5-3-both-adjoints-of-forgetting-scalars">5.3 Both adjoints of forgetting scalars</h3>
+<p>Let <span class="math" data-tex="\(U:R\text{-}\mathsf{Mod}\to k\text{-}\mathsf{Mod}\)">\(U:R\text{-}\mathsf{Mod}\to k\text{-}\mathsf{Mod}\)</span> forget the <span class="math" data-tex="\(R\)">\(R\)</span>-action. Define <span class="math" data-tex="\(E(K)=R\otimes_k K\)">\(E(K)=R\otimes_k K\)</span>. The left <span class="math" data-tex="\(R\)">\(R\)</span>-action is on the first factor. Restricting an <span class="math" data-tex="\(R\)">\(R\)</span>-linear map to <span class="math" data-tex="\(1\otimes K\)">\(1\otimes K\)</span>, and extending a <span class="math" data-tex="\(k\)">\(k\)</span>-linear map by multiplication, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(EK,M)
+\\
+\simeq\operatorname{Hom}_k(K,UM),\\
+f\longmapsto[t\mapsto f(1\otimes t)],\\
+\lambda\longmapsto[r\otimes t\mapsto r\lambda(t)].
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(EK,M)
+\\
+\simeq\operatorname{Hom}_k(K,UM),\\
+f\longmapsto[t\mapsto f(1\otimes t)],\\
+\lambda\longmapsto[r\otimes t\mapsto r\lambda(t)].
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>The extension is balanced because the <span class="math" data-tex="\(k\)">\(k\)</span>-action is central and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear. Restriction recovers <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span>-linearity recovers <span class="math" data-tex="\(f\)">\(f\)</span> on each <span class="math" data-tex="\(r\otimes t\)">\(r\otimes t\)</span>. Both rules commute with maps of <span class="math" data-tex="\(K,M\)">\(K,M\)</span>, proving <span class="math" data-tex="\(E\dashv U\)">\(E\dashv U\)</span>. Its unit is <span class="math" data-tex="\(t\mapsto1\otimes t\)">\(t\mapsto1\otimes t\)</span>; its counit is multiplication <span class="math" data-tex="\(r\otimes m\mapsto rm\)">\(r\otimes m\mapsto rm\)</span>.</p>
+<p>For the other adjoint, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(V)=\operatorname{Hom}_k(R,V),\\
+(a\xi)(r)=\xi(ra).
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+D(V)=\operatorname{Hom}_k(R,V),\\
+(a\xi)(r)=\xi(ra).
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The order <span class="math" data-tex="\(ra\)">\(ra\)</span> is essential. It gives <span class="math" data-tex="\(a(b\xi)(r)=\xi(rab)=((ab)\xi)(r)\)">\(a(b\xi)(r)=\xi(rab)=((ab)\xi)(r)\)</span>, and the identity acts trivially. Postcomposition by a <span class="math" data-tex="\(k\)">\(k\)</span>-linear map in <span class="math" data-tex="\(V\)">\(V\)</span> gives an <span class="math" data-tex="\(R\)">\(R\)</span>-linear map and preserves functor composition.</p>
+<p>The complete evaluation and inverse proof in <a href="locally-nilpotent-operators-and-coinduced-duals.html#1-evaluation-represents-a-linear-dual">Locally nilpotent operators and coinduced duals, Proposition 1.1</a> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_R(M,DV)
+\\
+\simeq\operatorname{Hom}_k(UM,V),\\
+h\longmapsto[m\mapsto h(m)(1)],\\
+\lambda\longmapsto\\
+[m\mapsto(r\mapsto\lambda(rm))].
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_R(M,DV)
+\\
+\simeq\operatorname{Hom}_k(UM,V),\\
+h\longmapsto[m\mapsto h(m)(1)],\\
+\lambda\longmapsto\\
+[m\mapsto(r\mapsto\lambda(rm))].
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>Its proof applies to this arbitrary central ground ring and arbitrary target module, and verifies <span class="math" data-tex="\(R\)">\(R\)</span>-linearity, both inverses and both-variable naturality. Thus <span class="math" data-tex="\(U\dashv D\)">\(U\dashv D\)</span>. The unit at <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(m\mapsto(r\mapsto rm)\)">\(m\mapsto(r\mapsto rm)\)</span>; the counit at <span class="math" data-tex="\(V\)">\(V\)</span> is evaluation <span class="math" data-tex="\(\xi\mapsto\xi(1)\)">\(\xi\mapsto\xi(1)\)</span>.</p>
+<p>We have <span class="math" data-tex="\(E\dashv U\dashv D\)">\(E\dashv U\dashv D\)</span>. Proposition 3.2 compares full faithfulness of the two outer functors; it does not identify them. Exercise 3 makes the noncommutative order in <span class="math" data-tex="\(D\)">\(D\)</span> concrete.</p>
+<h2 id="6-four-exercises-with-full-solutions">6. Four exercises with full solutions</h2>
+<h3 id="exercise-1-two-different-fully-faithful-adjoints">Exercise 1 — two different fully faithful adjoints</h3>
+<p><em>Introductory.</em> Regard the chains <span class="math" data-tex="\(C=\{0&lt;1&lt;2\}\)">\(C=\{0&lt;1&lt;2\}\)</span> and <span class="math" data-tex="\(D=\{0&lt;1\}\)">\(D=\{0&lt;1\}\)</span> as categories. Let <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> send <span class="math" data-tex="\(0,1\)">\(0,1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, and <span class="math" data-tex="\(2\)">\(2\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Find <span class="math" data-tex="\(A\dashv F\dashv B\)">\(A\dashv F\dashv B\)</span>, list their units and counits, and decide which functors are fully faithful. Are <span class="math" data-tex="\(A,B\)">\(A,B\)</span> naturally isomorphic?</p>
+<p><strong>Solution.</strong> Define <span class="math" data-tex="\(A(0)=0,A(1)=2\)">\(A(0)=0,A(1)=2\)</span>, and <span class="math" data-tex="\(B(0)=1,B(1)=2\)">\(B(0)=1,B(1)=2\)</span>. These functions are monotone, hence define functors. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(A(d)\le c\)">\(A(d)\le c\)</span> and <span class="math" data-tex="\(d\le F(c)\)">\(d\le F(c)\)</span> both hold for every <span class="math" data-tex="\(c\)">\(c\)</span>. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, both hold exactly when <span class="math" data-tex="\(c=2\)">\(c=2\)</span>. This proves <span class="math" data-tex="\(A\dashv F\)">\(A\dashv F\)</span>, since each Hom set in a poset is either empty or a singleton. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(F(c)\le d\)">\(F(c)\le d\)</span> and <span class="math" data-tex="\(c\le B(d)\)">\(c\le B(d)\)</span> both hold exactly for <span class="math" data-tex="\(c=0,1\)">\(c=0,1\)</span>. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, both hold for all <span class="math" data-tex="\(c\)">\(c\)</span>. This proves <span class="math" data-tex="\(F\dashv B\)">\(F\dashv B\)</span>. Naturality is automatic here: all existing parallel arrows are equal.</p>
+<p>For <span class="math" data-tex="\(A\dashv F\)">\(A\dashv F\)</span>, the unit <span class="math" data-tex="\(d\to FA(d)\)">\(d\to FA(d)\)</span> is the identity at each <span class="math" data-tex="\(d\)">\(d\)</span>. Its counit <span class="math" data-tex="\(AF(c)\to c\)">\(AF(c)\to c\)</span> is respectively <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span>, <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, <span class="math" data-tex="\(2\to2\)">\(2\to2\)</span>. For <span class="math" data-tex="\(F\dashv B\)">\(F\dashv B\)</span>, the unit <span class="math" data-tex="\(c\to BF(c)\)">\(c\to BF(c)\)</span> is <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, <span class="math" data-tex="\(1\to1\)">\(1\to1\)</span>, <span class="math" data-tex="\(2\to2\)">\(2\to2\)</span>. Its counit <span class="math" data-tex="\(FB(d)\to d\)">\(FB(d)\to d\)</span> is the identity at each <span class="math" data-tex="\(d\)">\(d\)</span>. Both triangles are identities because their starting and ending objects agree and the categories are thin.</p>
+<p>The maps <span class="math" data-tex="\(A,B\)">\(A,B\)</span> preserve and reflect order, so both are fully faithful. The functor <span class="math" data-tex="\(F\)">\(F\)</span> is faithful because its source Hom sets have at most one element. It is not full: <span class="math" data-tex="\(\operatorname{Hom}_C(1,0)\)">\(\operatorname{Hom}_C(1,0)\)</span> is empty, while <span class="math" data-tex="\(\operatorname{Hom}_D(F1,F0)\)">\(\operatorname{Hom}_D(F1,F0)\)</span> has one element. Finally, <span class="math" data-tex="\(A(0)=0\)">\(A(0)=0\)</span> and <span class="math" data-tex="\(B(0)=1\)">\(B(0)=1\)</span> are not isomorphic in the poset <span class="math" data-tex="\(C\)">\(C\)</span>. Thus there is no natural isomorphism <span class="math" data-tex="\(A\simeq B\)">\(A\simeq B\)</span>, despite their common full faithfulness.</p>
+<h3 id="exercise-2-when-cartesian-adjoints-lose-no-maps">Exercise 2 — when cartesian adjoints lose no maps</h3>
+<p><em>Intermediate.</em> For any set <span class="math" data-tex="\(K\)">\(K\)</span>, verify both triangles for <span class="math" data-tex="\(X\times K\dashv Z^K\)">\(X\times K\dashv Z^K\)</span>. Determine exactly when its left adjoint, and exactly when its right adjoint, is fully faithful. Include <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>.</p>
+<p><strong>Solution.</strong> The first triangle sends <span class="math" data-tex="\((x,k)\)">\((x,k)\)</span> first to <span class="math" data-tex="\((\eta_X(x),k)\)">\((\eta_X(x),k)\)</span>, then evaluates the function <span class="math" data-tex="\(\eta_X(x):t\mapsto(x,t)\)">\(\eta_X(x):t\mapsto(x,t)\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span>. The output is <span class="math" data-tex="\((x,k)\)">\((x,k)\)</span>. The second triangle sends <span class="math" data-tex="\(h:K\to Z\)">\(h:K\to Z\)</span> to <span class="math" data-tex="\(k\mapsto(h,k)\)">\(k\mapsto(h,k)\)</span>, then postcomposes this function with evaluation. At <span class="math" data-tex="\(k\)">\(k\)</span>, the result is <span class="math" data-tex="\(h(k)\)">\(h(k)\)</span>, so the output is <span class="math" data-tex="\(h\)">\(h\)</span>. For empty <span class="math" data-tex="\(K\)">\(K\)</span>, the first equality is an equality of empty functions and the second an equality on the one-element function set. Neither requires a point of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>If the right adjoint is fully faithful, the counit at the singleton <span class="math" data-tex="\(Z=1\)">\(Z=1\)</span> must be invertible. It is <span class="math" data-tex="\(1^K\times K\to1\)">\(1^K\times K\to1\)</span>, canonically <span class="math" data-tex="\(K\to1\)">\(K\to1\)</span>, so <span class="math" data-tex="\(K\)">\(K\)</span> must have exactly one element. For such <span class="math" data-tex="\(K\)">\(K\)</span>, evaluation is a bijection for every <span class="math" data-tex="\(Z\)">\(Z\)</span>, so the right adjoint is fully faithful.</p>
+<p>For the left adjoint, the unit at <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span> sends <span class="math" data-tex="\(x\)">\(x\)</span> to the constant function <span class="math" data-tex="\(k\mapsto(x,k)\)">\(k\mapsto(x,k)\)</span> in <span class="math" data-tex="\((X\times K)^K\)">\((X\times K)^K\)</span>. If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, its target has one element, so it is not injective. If <span class="math" data-tex="\(K\)">\(K\)</span> has two distinct elements <span class="math" data-tex="\(k_0,k_1\)">\(k_0,k_1\)</span>, the function taking <span class="math" data-tex="\(k_0\)">\(k_0\)</span> to <span class="math" data-tex="\((0,k_0)\)">\((0,k_0)\)</span>, and every other <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\((1,k)\)">\((1,k)\)</span>, lies outside the image; it is not one of the two constant-in-the-first-coordinate functions. Thus the unit is not surjective. If <span class="math" data-tex="\(K\)">\(K\)</span> is a singleton, every function <span class="math" data-tex="\(K\to X\times K\)">\(K\to X\times K\)</span> is uniquely of the required form, for every <span class="math" data-tex="\(X\)">\(X\)</span>. Theorem 3.1 shows that the left adjoint is fully faithful exactly in this case too.</p>
+<h3 id="exercise-3-a-matrix-algebra-checks-the-coinduced-action">Exercise 3 — a matrix algebra checks the coinduced action</h3>
+<p><em>Advanced.</em> Take <span class="math" data-tex="\(k=\mathbb F_2\)">\(k=\mathbb F_2\)</span>, <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span>, and <span class="math" data-tex="\(V=k\)">\(V=k\)</span>. Let <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> be the matrix units and <span class="math" data-tex="\(\xi_{ab}\in D(k)\)">\(\xi_{ab}\in D(k)\)</span> the coordinate functional with <span class="math" data-tex="\(\xi_{ab}(E_{cd})=\delta_{ac}\delta_{bd}\)">\(\xi_{ab}(E_{cd})=\delta_{ac}\delta_{bd}\)</span>. Compute the action of <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> on <span class="math" data-tex="\(\xi_{ab}\)">\(\xi_{ab}\)</span>. Show concretely why replacing <span class="math" data-tex="\(\xi(ra)\)">\(\xi(ra)\)</span> by <span class="math" data-tex="\(\xi(ar)\)">\(\xi(ar)\)</span> in (5.4) fails as a left action. Finally verify both triangles for <span class="math" data-tex="\(U\dashv D\)">\(U\dashv D\)</span> on elements.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(E_{cd}E_{ij}=\delta_{di}E_{cj}\)">\(E_{cd}E_{ij}=\delta_{di}E_{cj}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(E_{ij}\xi_{ab})(E_{cd})
+=\delta_{di}\delta_{ac}\delta_{bj},\\
+E_{ij}\xi_{ab}=\delta_{bj}\xi_{ai}.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+(E_{ij}\xi_{ab})(E_{cd})
+=\delta_{di}\delta_{ac}\delta_{bj},\\
+E_{ij}\xi_{ab}=\delta_{bj}\xi_{ai}.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>In particular <span class="math" data-tex="\(E_{12}\xi_{22}=\xi_{21}\)">\(E_{12}\xi_{22}=\xi_{21}\)</span>. The order is visible in the coordinate indices.</p>
+<p>For the proposed wrong rule, write <span class="math" data-tex="\(B_a\xi(r)=\xi(ar)\)">\(B_a\xi(r)=\xi(ar)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+B_aB_b\xi(r)=\xi(bar)=B_{ba}\xi(r).
+\tag{6.2}
+\]">\[
+B_aB_b\xi(r)=\xi(bar)=B_{ba}\xi(r).
+\tag{6.2}
+\]</span>
+<p>Set <span class="math" data-tex="\(a=E_{12}\)">\(a=E_{12}\)</span>, <span class="math" data-tex="\(b=E_{21}\)">\(b=E_{21}\)</span>, <span class="math" data-tex="\(\xi=\xi_{11}\)">\(\xi=\xi_{11}\)</span>, <span class="math" data-tex="\(r=E_{11}\)">\(r=E_{11}\)</span>. Since <span class="math" data-tex="\(ba=E_{22}\)">\(ba=E_{22}\)</span> but <span class="math" data-tex="\(ab=E_{11}\)">\(ab=E_{11}\)</span>, we get</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(B_aB_b\xi)(r)=0,\\
+(B_{ab}\xi)(r)=1.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+(B_aB_b\xi)(r)=0,\\
+(B_{ab}\xi)(r)=1.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>The left-action identity fails. For the correct rule <span class="math" data-tex="\(A_a\xi(r)=\xi(ra)\)">\(A_a\xi(r)=\xi(ra)\)</span>, one instead has <span class="math" data-tex="\(A_aA_b\xi(r)=\xi(rab)=A_{ab}\xi(r)\)">\(A_aA_b\xi(r)=\xi(rab)=A_{ab}\xi(r)\)</span>.</p>
+<p>For any <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the unit sends <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(h_m:r\mapsto rm\)">\(h_m:r\mapsto rm\)</span>. Forget its action and apply the counit, evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>; the result is <span class="math" data-tex="\(m\)">\(m\)</span>. For any <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\xi\in D(V)\)">\(\xi\in D(V)\)</span>, the unit at <span class="math" data-tex="\(D(V)\)">\(D(V)\)</span> sends <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to <span class="math" data-tex="\(r\mapsto r\xi\)">\(r\mapsto r\xi\)</span>. Apply <span class="math" data-tex="\(D\)">\(D\)</span> to the counit by postcomposing with evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>. At <span class="math" data-tex="\(r\)">\(r\)</span>, the resulting function has value <span class="math" data-tex="\((r\xi)(1)=\xi(r)\)">\((r\xi)(1)=\xi(r)\)</span>. Thus it returns <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, proving the other triangle. These computations apply to arbitrary <span class="math" data-tex="\(k,R,V\)">\(k,R,V\)</span>, beyond the finite matrix example.</p>
+<h3 id="exercise-4-a-transformation-reverses-its-parameter-map">Exercise 4 — a transformation reverses its parameter map</h3>
+<p><em>Advanced.</em> Let <span class="math" data-tex="\(u:K\to H\)">\(u:K\to H\)</span> be a function. For the cartesian adjunctions, take <span class="math" data-tex="\(\alpha_X=1_X\times u:X\times K\to X\times H\)">\(\alpha_X=1_X\times u:X\times K\to X\times H\)</span>. Compute its right mate and recover <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with the inverse formula. For <span class="math" data-tex="\(K=\{a,b\}\)">\(K=\{a,b\}\)</span>, <span class="math" data-tex="\(H=\{c\}\)">\(H=\{c\}\)</span>, and <span class="math" data-tex="\(Z=\{0,1\}\)">\(Z=\{0,1\}\)</span>, decide whether the mate is invertible. Check how the mate behaves for a second parameter map <span class="math" data-tex="\(v:H\to J\)">\(v:H\to J\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(L_1=-\times K\)">\(L_1=-\times K\)</span>, <span class="math" data-tex="\(R_1=(-)^K\)">\(R_1=(-)^K\)</span>, <span class="math" data-tex="\(L_2=-\times H\)">\(L_2=-\times H\)</span>, <span class="math" data-tex="\(R_2=(-)^H\)">\(R_2=(-)^H\)</span>. Apply the first formula in (4.3) to <span class="math" data-tex="\(f:H\to Z\)">\(f:H\to Z\)</span>. The unit sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(k\mapsto(f,k)\)">\(k\mapsto(f,k)\)</span>. Applying <span class="math" data-tex="\(R_1(\alpha_{R_2Z})\)">\(R_1(\alpha_{R_2Z})\)</span> sends this to <span class="math" data-tex="\(k\mapsto(f,u(k))\)">\(k\mapsto(f,u(k))\)</span>. Postcomposing with the second counit, evaluation, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha^*_Z(f)=f\circ u:\\
+K\to Z.
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+\alpha^*_Z(f)=f\circ u:\\
+K\to Z.
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>For the inverse formula, start with <span class="math" data-tex="\((x,k)\in X\times K\)">\((x,k)\in X\times K\)</span>. Applying <span class="math" data-tex="\(L_1(\eta_{2,X})\)">\(L_1(\eta_{2,X})\)</span> gives <span class="math" data-tex="\((h\mapsto(x,h),k)\)">\((h\mapsto(x,h),k)\)</span>. Applying <span class="math" data-tex="\(L_1(\alpha^*_{L_2X})\)">\(L_1(\alpha^*_{L_2X})\)</span> gives <span class="math" data-tex="\((t\mapsto(x,u(t)),k)\)">\((t\mapsto(x,u(t)),k)\)</span>. Evaluation with the first counit returns <span class="math" data-tex="\((x,u(k))\)">\((x,u(k))\)</span>. This recovers <span class="math" data-tex="\(\alpha_X\)">\(\alpha_X\)</span> on every element, including the empty-domain cases.</p>
+<p>For the stated finite sets, <span class="math" data-tex="\(Z^H\)">\(Z^H\)</span> has two functions and <span class="math" data-tex="\(Z^K\)">\(Z^K\)</span> has four. Precomposition sends the two functions to <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, respectively. It is injective and not surjective, so this mate is not invertible. The original <span class="math" data-tex="\(\alpha_1:K\to H\)">\(\alpha_1:K\to H\)</span>, identified at <span class="math" data-tex="\(X=1\)">\(X=1\)</span>, is surjective and not injective.</p>
+<p>For <span class="math" data-tex="\(v:H\to J\)">\(v:H\to J\)</span>, the composite left transformation uses <span class="math" data-tex="\(v u\)">\(v u\)</span>. Its right mate sends <span class="math" data-tex="\(f:J\to Z\)">\(f:J\to Z\)</span> to <span class="math" data-tex="\(f v u\)">\(f v u\)</span>, which is first the mate for <span class="math" data-tex="\(v\)">\(v\)</span> and then the mate for <span class="math" data-tex="\(u\)">\(u\)</span>. This is exactly the reversal of vertical composition in Theorem 4.1, not a reversal of function composition inside the evaluated expression.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li><strong>[Stacks, Adjoints]</strong> The Stacks Project authors, <em>Categories</em>, “Adjoints.” The consulted structured source is the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L3493-L3780">pinned categories chapter</a>; its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a> is GFDL 1.2 or later. The fully faithful criterion also has an <a href="https://stacks.math.columbia.edu/tag/07RB">official statement and proof</a>. The linked source retains its licence; no source expression is incorporated into this lesson.</li>
+<li><strong>[Universal representations]</strong> <a href="points-fibres-and-universal-representations.html#4-representatives-in-a-diagram">Points, fibres and universal representations</a> and <a href="solution-sets-and-universal-representations.html#1-universal-elements-and-variance">Solution sets and universal representations</a>, complete proofs of the representation and universal-arrow interfaces used in Section 1.</li>
+<li><strong>[Coherent comparisons]</strong> <a href="natural-transformations-and-composition-of-functors.html#2-change-the-values-of-a-diagram">Natural transformations and composition of functors</a> and <a href="equivalences-and-chosen-representatives.html#2-coherent-comparisons-and-detecting-natural-isomorphisms">Equivalences and chosen representatives</a>, complete proofs of natural lifting and coherent quasi-inverses.</li>
+<li><strong>[Module constructions]</strong> <a href="ring-actions-and-tensor-hom-in-abelian-categories.html#5-which-infinite-operations-are-actually-needed">Operators, matrix relations and internal tensor–Hom</a>, <a href="hom-tensor-and-the-exactness-of-module-limits.html#1-hom-and-tensor-keep-different-ends-of-a-sequence">Hom, tensor and the exactness of module limits</a>, and <a href="locally-nilpotent-operators-and-coinduced-duals.html#1-evaluation-represents-a-linear-dual">Locally nilpotent operators and coinduced duals</a>, complete balanced-tensor and arbitrary-ground-ring coinduction interfaces.</li>
+</ul>
+</main></body></html>

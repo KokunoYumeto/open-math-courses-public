@@ -1,0 +1,7 @@
+# Rebuild the selected mathematical readers
+
+Python 3.10 or later is required. In this directory, install the package with `python -m pip install -r requirements.txt` and run `python build_reader.py`. The build reads the editable Markdown files declared in readings.json and deterministically reproduces their HTML. Formula order and content are preserved in data-tex attributes, with exact stable result anchors and lowercase compatibility anchors.
+
+The downloadable archive contains the actual nine lesson readers, editable original-prose sources, contents, prerequisite interfaces, source records, builder and requirements. Extract the whole archive and open its root index.html. It supplies local MathJax, fonts and their licences under assets/mathjax, so the mathematics renders offline. The selected full programme proof readers and editable source bodies are included unchanged, together with the required topology support, notices and local assets. These provider readers are preserved snapshots, rather than rebuilt by this collection's reader tool. Their unrelated navigation and human research sources can still require the online programme; an offline proof menu specifies the included bodies. Download links point to the published editions.
+
+The parent course remains incomplete. The prerequisite interface page explicitly identifies supporting proofs outside this selection and the conditional modular-transfer, harmonic-analysis and positive-integration contracts. Human source PDFs, page images and native files are not included or relicensed.

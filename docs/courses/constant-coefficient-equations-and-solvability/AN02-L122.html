@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compact Fourier division and multiplicity-sensitive annihilators</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="compact-fourier-division-and-multiplicity-sensitive-annihilators">Compact Fourier division and multiplicity-sensitive annihilators</h1>
+<p><em>Learner orientation written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026; CC0. The complete formal proof below is the independently reviewed, course-owner-admitted CF042 proof by GPT-6.1 Sol (OpenAI), Ultra. Its Fourier and Cauchy entries keep their stated scope.</em></p>
+<p>A differential equation can have a solution without having a <strong>compactly supported</strong> solution. This lesson gives an exact test for the compact problem. Transform the compact data, divide by the symbol, and ask whether the quotient extends to an entire function. The proof then controls its growth and constructs the compact inverse. The growth step matters: holomorphic continuation alone is not a statement about the support of a distribution.</p>
+<p>The same theorem explains a useful obstruction test. Compact data have a compact transpose inverse precisely when they pair to zero with every homogeneous exponential-polynomial solution. A repeated characteristic root requires polynomial factors in those test solutions. Testing only plane waves can miss the obstruction.</p>
+<p>The full proof, all three worked examples, all six exercises with complete solutions, and the three exact diagrams follow this orientation. The original proof download retains every original byte. The later reproduction guide includes all original renderer, geometry, PNG and SVG files.</p>
+<h2 id="what-to-keep-straight-before-starting">What to keep straight before starting</h2>
+<p>We use <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span>, and a distribution pairs <strong>linearly</strong> with its test; no complex conjugation is inserted. A compact distribution can be applied to any smooth function by first multiplying it by a cutoff which equals one near its support. Its Fourier–Laplace transform is</p>
+<span class="math math-display" data-tex="\[
+ F_u(z)=u(e^{-ix\cdot z}),\qquad z\in\mathbb C^n.
+\]">\[
+ F_u(z)=u(e^{-ix\cdot z}),\qquad z\in\mathbb C^n.
+\]</span>
+<p>Under this convention, applying <span class="math" data-tex="\(Q(D)\)">\(Q(D)\)</span> multiplies the transform by <span class="math" data-tex="\(Q(z)\)">\(Q(z)\)</span>. Formal transposition changes <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> to <span class="math" data-tex="\(P(-D)\)">\(P(-D)\)</span>, so the compact transpose problem uses the divisor <span class="math" data-tex="\(P(-z)\)">\(P(-z)\)</span>. These signs agree with CF1–CF2 in the complete proof. They are not optional changes of notation in the annihilator argument.</p>
+<p>The support hull is the ordinary convex hull <span class="math" data-tex="\(\operatorname{ch}\operatorname{supp}u\)">\(\operatorname{ch}\operatorname{supp}u\)</span>. It remembers where a distribution can act, rather than where it fails to be smooth. The latter question belongs to singular support and requires another theorem.</p>
+<p>For a nonempty compact convex carrier <span class="math" data-tex="\(K\)">\(K\)</span>, the support indicator is</p>
+<span class="math math-display" data-tex="\[
+ H_K(y)=\sup_{x\in K}x\cdot y.
+\]">\[
+ H_K(y)=\sup_{x\in K}x\cdot y.
+\]</span>
+<p>It may be negative. For a point carrier <span class="math" data-tex="\(K=\{a\}\)">\(K=\{a\}\)</span>, it is exactly <span class="math" data-tex="\(a\cdot y\)">\(a\cdot y\)</span>; replacing this by an absolute value would lose the position of the point. The compact-growth criterion retains that exact indicator. Zero distributions, whose supports are empty, are treated separately without assigning an indicator to the empty set.</p>
+<h2 id="a-double-root-gives-the-first-obstruction">A double root gives the first obstruction</h2>
+<p>Take <span class="math" data-tex="\(P(z)=z^2\)">\(P(z)=z^2\)</span> in one dimension. The homogeneous equation <span class="math" data-tex="\(D^2h=0\)">\(D^2h=0\)</span> has both <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> as solutions. A plane exponential at its only characteristic frequency tests just the first of them.</p>
+<p>For <span class="math" data-tex="\(\mu=D\delta\)">\(\mu=D\delta\)</span>, the compact transform is <span class="math" data-tex="\(F_\mu(z)=z\)">\(F_\mu(z)=z\)</span>. The constant moment vanishes, but</p>
+<span class="math math-display" data-tex="\[
+ \mu(x)=i,\qquad \frac{F_\mu(z)}{P(-z)}=\frac1z.
+\]">\[
+ \mu(x)=i,\qquad \frac{F_\mu(z)}{P(-z)}=\frac1z.
+\]</span>
+<p>The missing linear moment is the pole in the quotient. There is no compact transpose inverse. In contrast, <span class="math" data-tex="\(\mu=D^2\delta\)">\(\mu=D^2\delta\)</span> has transform <span class="math" data-tex="\(z^2\)">\(z^2\)</span>; both moments vanish, the quotient is one, and the inverse is <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. <a href="#figure-cf-c">Figure CF-C</a>, Example CF7.2 and Solution 5 retain the exact factors and the corresponding several-variable exceptional-center example.</p>
+<h2 id="follow-four-mechanisms-through-the-proof">Follow four mechanisms through the proof</h2>
+<p>First, compact support gives a growth estimate</p>
+<span class="math math-display" data-tex="\[
+ |F(z)|\le C(1+|z|)^N e^{H_K(\operatorname{Im}z)}.
+\]">\[
+ |F(z)|\le C(1+|z|)^N e^{H_K(\operatorname{Im}z)}.
+\]</span>
+<p>The cutoff in CF6 shrinks as <span class="math" data-tex="\((1+|z|)^{-1}\)">\((1+|z|)^{-1}\)</span>. Derivatives of the cutoff cost powers of <span class="math" data-tex="\(1+|z|\)">\(1+|z|\)</span>, but derivatives of the exponential use the remaining derivative orders. The total stays at the original finite order <span class="math" data-tex="\(N\)">\(N\)</span>. This is why CF7 has <span class="math" data-tex="\(N\)">\(N\)</span>, rather than an extra copy of that order.</p>
+<p>The converse starts with the inverse distribution on real frequencies. For a test lying strictly beyond a supporting plane of <span class="math" data-tex="\(K\)">\(K\)</span>, shift frequency by <span class="math" data-tex="\(it\eta\)">\(it\eta\)</span>, where <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is the unit supporting direction. The transform of the test decays faster in that direction than the data transform grows. The difference is the strict positive separation gap. CF10–CF13 justify the shift and its boundary limits before taking <span class="math" data-tex="\(t\)">\(t\)</span> to infinity. <a href="#figure-cf-a">Figure CF-A</a> has the exact gap <span class="math" data-tex="\(3/4\)">\(3/4\)</span> for its displayed carrier and test disk.</p>
+<p>Second, division uses one real direction <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on which the highest homogeneous part of the symbol is nonzero. Every complex center <span class="math" data-tex="\(z\)">\(z\)</span> then gives a one-variable polynomial <span class="math" data-tex="\(Q(z+t\theta)\)">\(Q(z+t\theta)\)</span> of the same degree and the same nonzero leading coefficient. Small forbidden intervals around the root moduli have total length at most one half. They cannot fill the radius interval <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>, so one circle avoids every root by a controlled distance. Repeated roots count repeatedly in the product. CF14–CF19 turn this circle into a bound for the entire quotient with the <strong>same carrier and polynomial order</strong>. <a href="#figure-cf-b">Figure CF-B</a> keeps both roots of modulus one visible and distinguishes its stronger example-specific bound from the universal one.</p>
+<p>Third, the converse compact-growth theorem constructs the inverse. Its support lies in the convex hull of the data support. Locality of the differential operator puts the data support inside the inverse support. These two inclusions, together with uniqueness of the compact inverse, give equality of the ordinary support hulls. A compact homogeneous solution must be zero; a nonzero constant symbol is scalar division. CF4.1 proves each of these statements, including the empty-support case.</p>
+<p>Fourth, annihilator conditions force the entire quotient. At <strong>every</strong> complex center, each root of the line polynomial is tested through its full multiplicity. Differentiating the negative exponential produces polynomial factors in the spatial variable, precisely the homogeneous tests in CF23. Their vanishing pairings give all required derivative zeros of the numerator. This proves removability on every line, including special lines with extra multiplicity. CF25 then uses a fixed local circle to prove <strong>joint</strong> holomorphy and to glue the local extensions. The proof does not stop at generic lines or merely separate analyticity.</p>
+<h2 id="the-finite-rectangle-calculation-in-the-support-proof">The finite rectangle calculation in the support proof</h2>
+<p>CF11 uses a contour identity on a finite rectangle before estimating its vertical sides. The needed identity follows directly from the coordinate fundamental theorem of calculus and the Cauchy–Riemann equations; it does not require a completed general relative-boundary Green theorem.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be <span class="math" data-tex="\(C^1\)">\(C^1\)</span> and holomorphic near the rectangle <span class="math" data-tex="\([-R,R]\times[0,t]\)">\([-R,R]\times[0,t]\)</span>, and write its complex variable as <span class="math" data-tex="\(s+iv\)">\(s+iv\)</span>. Counterclockwise traversal gives</p>
+<span class="math math-display" data-tex="\[
+ \int_{-R}^{R}\bigl(H(s,0)-H(s,t)\bigr)\,ds
+ +i\int_0^t\bigl(H(R,v)-H(-R,v)\bigr)\,dv.
+\]">\[
+ \int_{-R}^{R}\bigl(H(s,0)-H(s,t)\bigr)\,ds
+ +i\int_0^t\bigl(H(R,v)-H(-R,v)\bigr)\,dv.
+\]</span>
+<p>Apply the one-coordinate fundamental theorem to the two differences and use Fubini on this compact rectangle. The result is</p>
+<span class="math math-display" data-tex="\[
+ \int_{-R}^{R}\int_0^t
+ \bigl(-\partial_vH+i\partial_sH\bigr)\,dv\,ds=0,
+\]">\[
+ \int_{-R}^{R}\int_0^t
+ \bigl(-\partial_vH+i\partial_sH\bigr)\,dv\,ds=0,
+\]</span>
+<p>because <span class="math" data-tex="\(\partial_vH=i\partial_sH\)">\(\partial_vH=i\partial_sH\)</span>. In CF11, <span class="math" data-tex="\(H\)">\(H\)</span> is the entire product of the data transform and the reflected test transform, with the other real coordinates fixed. CF12 controls the integrated vertical sides; only after this finite equality is established is the limit <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> taken. The strict requirement <span class="math" data-tex="\(2M&gt;N+n\)">\(2M&gt;N+n\)</span> makes the horizontal integrals and their tails integrable and makes the integrated side contributions vanish.</p>
+<p>The calculation above supplies this finite rectangle step, not its general Green, weak-equation or regularity claims. The formal proof retains the declared Fourier inversion, Cauchy, compact parameter integration and identity-principle entries, with their lower provider scope.</p>
+<h2 id="what-this-lesson-supplies-to-the-approximation-lessons">What this lesson supplies to the approximation lessons</h2>
+<p><a href="AN02-L010.html">Approximation and global solvability from support geometry</a> uses two compact Fourier inputs. CF5.1 supplies its entry (3): annihilation of all exponential-polynomial homogeneous solutions gives the unique compact transpose inverse. CF4.1 supplies an additional proof of its ordinary-hull entry (2). The valid AN-01 <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, Corollary 4.3, remains another proof of that hull statement.</p>
+<p>If the compact data lie in an open convex set, their compact convex hull also lies there. The inverse therefore stays inside that set. The approximation lesson still needs its cutoff and mollification receiver before pairing with nonsmooth solutions; this lesson does not permit a direct distributional pairing with an arbitrary nonsmooth function.</p>
+<p><a href="AN02-L011.html">Choosing polynomial and exponential approximants</a> receives the <strong>entire</strong> exponential-polynomial annihilator and compact-growth division statements, with divisor <span class="math" data-tex="\(P(-z)\)">\(P(-z)\)</span>. Its local polynomial-annihilator equivalence near zero remains a separate planned input. Formal local divisibility has not been turned into convergence of an analytic germ. The compact singular-support hull theorem also remains separate, as do general projective topology, component constancy and completion of the course.</p>
+<p>Read the complete proof next. Sections 2–5 prove the growth, division, inverse and annihilator theorems. Section 6 states the receiver limits and dimension-zero case. Sections 7–8 contain every worked example and complete exercise solution. Section 9 retains the original human-source credit and exact approved HI locators. No part of that formal argument is replaced by this orientation.</p>
+<hr />
+<h2 id="complete-formal-proof-compact-fourier-division-and-multiplicity-sensitive-annihilators">Complete formal proof: Compact Fourier division and multiplicity-sensitive annihilators</h2>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original explanatory text and figures: CC0. Compare Hörmander I, Theorems 7.3.1–7.3.2 and Lemma 7.3.7, with exact locators below.</em></p>
+<p>This module proves the compact inverse needed by the approximation lessons. It includes the growth-to-support argument, so an entire quotient is not mistaken for a compact distribution before its growth is checked. A real line through frequency space gives both a uniform division bound and all multiplicity conditions. The ordinary support hull is preserved; no assertion about the singular-support hull is made here.</p>
+<h3 id="1-conventions-and-exact-entry-facts">1. Conventions and exact entry facts</h3>
+<p>Let <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span>, and use complex-linear distribution pairings. For a compact distribution <span class="math" data-tex="\(u\)">\(u\)</span>, define
+<span class="math math-display" data-tex="\[
+ F_u(z)=u(e^{-ix\cdot z}),\qquad z\in\mathbb C^n.
+ \tag{CF1}
+\]">\[
+ F_u(z)=u(e^{-ix\cdot z}),\qquad z\in\mathbb C^n.
+ \tag{CF1}
+\]</span>
+A compact distribution acts on an arbitrary smooth function by inserting a cutoff equal to one near its support. Different such cutoffs give the same value. Consequently
+<span class="math math-display" data-tex="\[
+ F_{Q(D)u}(z)=Q(z)F_u(z),\qquad
+ (P(-D)v)(h)=v(P(D)h).
+ \tag{CF2}
+\]">\[
+ F_{Q(D)u}(z)=Q(z)F_u(z),\qquad
+ (P(-D)v)(h)=v(P(D)h).
+ \tag{CF2}
+\]</span>
+The minus sign in the second identity is the formal transpose; there is no complex conjugation.</p>
+<p>The specific Fourier input is <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Theorem 1.1: Fourier inversion on the monomial Schwartz space with negative-exponential forward transform and positive-exponential inverse coefficient <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>. That entire proof, including its Gaussian regularization and two-sided inverse, was inspected. We use its continuity and integration-by-parts identities. <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, Lemmas 1.1–1.2 and its indicated disk Cauchy provider, supplies the Cauchy formula, compact parameter integration and local power series. Elementary finite polynomial factorization, smooth cutoffs, finite-order continuity of distributions, absolutely integrable Fubini, finite-dimensional compactness and the coordinate integration-by-parts rule are the other entries. We prove each new support, division and annihilator step below.</p>
+<p>For a nonempty compact convex <span class="math" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span>, put
+<span class="math math-display" data-tex="\[
+ H_K(y)=\sup_{x\in K}x\cdot y,\qquad
+ K_r=\{x:\operatorname{dist}(x,K)\leq r\}.
+ \tag{CF3}
+\]">\[
+ H_K(y)=\sup_{x\in K}x\cdot y,\qquad
+ K_r=\{x:\operatorname{dist}(x,K)\leq r\}.
+ \tag{CF3}
+\]</span>
+Then <span class="math" data-tex="\(H_K(y+y&#x27;)\leq H_K(y)+H_K(y&#x27;)\)">\(H_K(y+y&#x27;)\leq H_K(y)+H_K(y&#x27;)\)</span> and <span class="math" data-tex="\(H_{K_r}(y)=H_K(y)+r|y|\)">\(H_{K_r}(y)=H_K(y)+r|y|\)</span>. The latter follows by adding the closed radius-<span class="math" data-tex="\(r\)">\(r\)</span> ball to <span class="math" data-tex="\(K\)">\(K\)</span> and maximizing the two linear terms separately. These definitions allow <span class="math" data-tex="\(K\)">\(K\)</span> to be a point or to have empty interior. Empty distribution support is treated as the zero-distribution case, without defining an indicator for the empty set.</p>
+<h3 id="2-the-compact-support-growth-criterion">2. The compact-support growth criterion</h3>
+<p><strong>Theorem CF2.1.</strong> An entire function <span class="math" data-tex="\(F\)">\(F\)</span> is the Fourier–Laplace transform of a distribution supported in <span class="math" data-tex="\(K\)">\(K\)</span> if and only if, for some nonnegative integer <span class="math" data-tex="\(N\)">\(N\)</span> and constant <span class="math" data-tex="\(C\)">\(C\)</span>,
+<span class="math math-display" data-tex="\[
+ |F(z)|\leq C(1+|z|)^N e^{H_K(\operatorname{Im}z)}
+ \qquad(z\in\mathbb C^n).
+ \tag{CF4}
+\]">\[
+ |F(z)|\leq C(1+|z|)^N e^{H_K(\operatorname{Im}z)}
+ \qquad(z\in\mathbb C^n).
+ \tag{CF4}
+\]</span>
+The distribution is unique. In the forward direction <span class="math" data-tex="\(N\)">\(N\)</span> may be chosen to be a finite distribution order on a fixed compact neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof, from support to growth.</strong> Continuity of <span class="math" data-tex="\(u\)">\(u\)</span> on tests supported in a fixed compact neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span> gives
+<span class="math math-display" data-tex="\[
+ |u(\psi)|\leq C_0\max_{|\alpha|\leq N}\sup_x|\partial^\alpha\psi(x)|
+ \tag{CF5}
+\]">\[
+ |u(\psi)|\leq C_0\max_{|\alpha|\leq N}\sup_x|\partial^\alpha\psi(x)|
+ \tag{CF5}
+\]</span>
+there: a continuous linear functional is bounded by finitely many defining derivative seminorms, and their maximum order is <span class="math" data-tex="\(N\)">\(N\)</span>. Choose a nonnegative smooth mollifier <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, supported in the unit ball and with integral one. For <span class="math" data-tex="\(0&lt;r\leq1\)">\(0&lt;r\leq1\)</span>, convolve the indicator of <span class="math" data-tex="\(K_{r/2}\)">\(K_{r/2}\)</span> with <span class="math" data-tex="\(\rho_{r/4}\)">\(\rho_{r/4}\)</span>. The resulting <span class="math" data-tex="\(\chi_r\)">\(\chi_r\)</span> equals one on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>, has support in <span class="math" data-tex="\(K_{3r/4}\)">\(K_{3r/4}\)</span>, satisfies <span class="math" data-tex="\(0\leq\chi_r\leq1\)">\(0\leq\chi_r\leq1\)</span>, and obeys
+<span class="math math-display" data-tex="\[
+ \sup|\partial^\beta\chi_r|\leq C_\beta r^{-|\beta|}.
+ \tag{CF6}
+\]">\[
+ \sup|\partial^\beta\chi_r|\leq C_\beta r^{-|\beta|}.
+ \tag{CF6}
+\]</span>
+Indeed each derivative falls on the mollifier, whose derivative has the indicated <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bound. If <span class="math" data-tex="\(\operatorname{dist}(x,K)&lt;r/4\)">\(\operatorname{dist}(x,K)&lt;r/4\)</span>, the convolution only samples points in <span class="math" data-tex="\(K_{r/2}\)">\(K_{r/2}\)</span>, giving value one. A fixed cutoff already shows that (CF1) is entire: the exponential and each of its parameter derivatives converge in every smooth seminorm on that compact support on bounded parameter sets, and (CF5) permits differentiation of the pairing.</p>
+<p>Set <span class="math" data-tex="\(r=(1+|z|)^{-1}\)">\(r=(1+|z|)^{-1}\)</span> and <span class="math" data-tex="\(y=\operatorname{Im}z\)">\(y=\operatorname{Im}z\)</span>. The finite Leibniz rule applied to <span class="math" data-tex="\(\chi_r e^{-ix\cdot z}\)">\(\chi_r e^{-ix\cdot z}\)</span> gives, for <span class="math" data-tex="\(|\alpha|\leq N\)">\(|\alpha|\leq N\)</span>,
+<span class="math math-display" data-tex="\[
+ |\partial^\alpha(\chi_r e^{-ix\cdot z})|
+ \leq C_\alpha
+ \sum_{\beta\leq\alpha}r^{-|\beta|}|z|^{|\alpha|-|\beta|}
+ e^{H_K(y)+r|y|}
+ \leq C&#x27;_\alpha(1+|z|)^N e^{H_K(y)}.
+ \tag{CF7}
+\]">\[
+ |\partial^\alpha(\chi_r e^{-ix\cdot z})|
+ \leq C_\alpha
+ \sum_{\beta\leq\alpha}r^{-|\beta|}|z|^{|\alpha|-|\beta|}
+ e^{H_K(y)+r|y|}
+ \leq C&#x27;_\alpha(1+|z|)^N e^{H_K(y)}.
+ \tag{CF7}
+\]</span>
+Here <span class="math" data-tex="\(r|y|\leq1\)">\(r|y|\leq1\)</span>, and the harmless factor <span class="math" data-tex="\(e\)">\(e\)</span> is absorbed into the constant. The derivative order remains <span class="math" data-tex="\(N\)">\(N\)</span>; the cutoff and exponential derivative orders add to <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>, rather than each contributing a separate <span class="math" data-tex="\(N\)">\(N\)</span>. Equations (CF5)–(CF7) prove (CF4).</p>
+<p><strong>Proof, from growth to support.</strong> The restriction <span class="math" data-tex="\(F|_{\mathbb R^n}\)">\(F|_{\mathbb R^n}\)</span> has polynomial growth. Define its inverse Fourier distribution by
+<span class="math math-display" data-tex="\[
+ u(\phi)=(2\pi)^{-n}\int_{\mathbb R^n}
+ F(\xi)\widehat\phi(-\xi)\,d\xi,
+ \qquad\phi\in\mathcal S(\mathbb R^n).
+ \tag{CF8}
+\]">\[
+ u(\phi)=(2\pi)^{-n}\int_{\mathbb R^n}
+ F(\xi)\widehat\phi(-\xi)\,d\xi,
+ \qquad\phi\in\mathcal S(\mathbb R^n).
+ \tag{CF8}
+\]</span>
+This integral is absolutely convergent. A weighted supremum seminorm of <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span>, with exponent larger than <span class="math" data-tex="\(N+n\)">\(N+n\)</span>, bounds it. Fourier continuity from the specified Theorem 1.1 therefore makes <span class="math" data-tex="\(u\)">\(u\)</span> tempered and, upon restriction to compact tests, a distribution.</p>
+<p>Fix a real unit vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> have compact support in a strict supporting halfspace
+<span class="math math-display" data-tex="\[
+ x\cdot\eta\geq a&gt;H_K(\eta)
+ \quad(x\in\operatorname{supp}\phi),\qquad
+ \delta=a-H_K(\eta)&gt;0.
+ \tag{CF9}
+\]">\[
+ x\cdot\eta\geq a&gt;H_K(\eta)
+ \quad(x\in\operatorname{supp}\phi),\qquad
+ \delta=a-H_K(\eta)&gt;0.
+ \tag{CF9}
+\]</span>
+For every integer <span class="math" data-tex="\(M\geq0\)">\(M\geq0\)</span>, integration by parts in <span class="math" data-tex="\(x\)">\(x\)</span> yields
+<span class="math math-display" data-tex="\[
+ |\widehat\phi(-\xi-it\eta)|
+ \leq C_M(1+t)^{2M}(1+|\xi|^2)^{-M}e^{-ta},
+ \qquad t\geq0.
+ \tag{CF10}
+\]">\[
+ |\widehat\phi(-\xi-it\eta)|
+ \leq C_M(1+t)^{2M}(1+|\xi|^2)^{-M}e^{-ta},
+ \qquad t\geq0.
+ \tag{CF10}
+\]</span>
+To see every factor, write the transform as the integral of <span class="math" data-tex="\(\phi(x)e^{-t x\cdot\eta}e^{ix\cdot\xi}\)">\(\phi(x)e^{-t x\cdot\eta}e^{ix\cdot\xi}\)</span>. Apply <span class="math" data-tex="\((1-\Delta_x)^M\)">\((1-\Delta_x)^M\)</span> to the first two factors and integrate the last factor by parts. Each derivative of the exponential contributes at most <span class="math" data-tex="\(t\)">\(t\)</span>; the total derivative order is at most <span class="math" data-tex="\(2M\)">\(2M\)</span>. Compact support and (CF9) give the displayed exponential bound.</p>
+<p>Choose <span class="math" data-tex="\(2M&gt;N+n\)">\(2M&gt;N+n\)</span>. The integral in (CF8) is unchanged when its plane is translated to <span class="math" data-tex="\(\mathbb R^n+it\eta\)">\(\mathbb R^n+it\eta\)</span>:
+<span class="math math-display" data-tex="\[
+ u(\phi)=(2\pi)^{-n}\int_{\mathbb R^n}
+ F(\xi+it\eta)\widehat\phi(-\xi-it\eta)\,d\xi.
+ \tag{CF11}
+\]">\[
+ u(\phi)=(2\pi)^{-n}\int_{\mathbb R^n}
+ F(\xi+it\eta)\widehat\phi(-\xi-it\eta)\,d\xi.
+ \tag{CF11}
+\]</span>
+Here is a direct justification of that translation. Use real orthogonal coordinates with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> the first unit vector; the coordinate Jacobian has absolute value one. For fixed remaining real coordinates, apply the one-variable complex Green identity to the entire product <span class="math" data-tex="\(F(z)\widehat\phi(-z)\)">\(F(z)\widehat\phi(-z)\)</span> on the rectangle with first coordinate real part <span class="math" data-tex="\(-R\)">\(-R\)</span> to <span class="math" data-tex="\(R\)">\(R\)</span> and imaginary part <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(t\)">\(t\)</span>. Its closed contour integral is zero. For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, (CF4) and the integration-by-parts estimate uniform on <span class="math" data-tex="\(0\leq s\leq t\)">\(0\leq s\leq t\)</span> bound the product by
+<span class="math math-display" data-tex="\[
+ C_t(1+|\xi|)^{N-2M}.
+ \tag{CF12}
+\]">\[
+ C_t(1+|\xi|)^{N-2M}.
+ \tag{CF12}
+\]</span>
+Integrating a vertical side over the other <span class="math" data-tex="\(n-1\)">\(n-1\)</span> real coordinates gives a bound of order <span class="math" data-tex="\((1+R)^{N-2M+n-1}\)">\((1+R)^{N-2M+n-1}\)</span>, times a constant depending on the fixed height <span class="math" data-tex="\(t\)">\(t\)</span>. This tends to zero. Both horizontal integrals are absolutely integrable and their truncated tails tend to zero. Fubini and this bound pass the rectangle identity to (CF11). No contour through polynomial zeros, variable contour or unstated large-sphere boundary is involved.</p>
+<p>On the displaced plane, (CF4), (CF10), positive homogeneity of <span class="math" data-tex="\(H_K\)">\(H_K\)</span>, and <span class="math" data-tex="\(1+|\xi+it\eta|\leq(1+t)(1+|\xi|)\)">\(1+|\xi+it\eta|\leq(1+t)(1+|\xi|)\)</span> give
+<span class="math math-display" data-tex="\[
+ |u(\phi)|\leq C&#x27;_M(1+t)^{N+2M}e^{-t\delta}
+ \int_{\mathbb R^n}(1+|\xi|)^{N-2M}\,d\xi.
+ \tag{CF13}
+\]">\[
+ |u(\phi)|\leq C&#x27;_M(1+t)^{N+2M}e^{-t\delta}
+ \int_{\mathbb R^n}(1+|\xi|)^{N-2M}\,d\xi.
+ \tag{CF13}
+\]</span>
+The integral is finite, and the right side tends to zero as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>. Thus <span class="math" data-tex="\(u(\phi)=0\)">\(u(\phi)=0\)</span>.</p>
+<p>Every point <span class="math" data-tex="\(q\notin K\)">\(q\notin K\)</span> has a neighborhood in a halfspace of the form (CF9). For completeness, let <span class="math" data-tex="\(x_0\in K\)">\(x_0\in K\)</span> minimize <span class="math" data-tex="\(|q-x|\)">\(|q-x|\)</span>. For <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, differentiating the squared distance along <span class="math" data-tex="\(x_0+s(x-x_0)\)">\(x_0+s(x-x_0)\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, at its minimum gives <span class="math" data-tex="\((q-x_0)\cdot(x-x_0)\leq0\)">\((q-x_0)\cdot(x-x_0)\leq0\)</span>. Therefore <span class="math" data-tex="\(\eta=(q-x_0)/|q-x_0|\)">\(\eta=(q-x_0)/|q-x_0|\)</span> satisfies <span class="math" data-tex="\(H_K(\eta)=x_0\cdot\eta&lt;q\cdot\eta\)">\(H_K(\eta)=x_0\cdot\eta&lt;q\cdot\eta\)</span>. Shrink a neighborhood of <span class="math" data-tex="\(q\)">\(q\)</span> to retain a positive gap. A test supported outside <span class="math" data-tex="\(K\)">\(K\)</span> has a finite cover by these neighborhoods and a smooth finite partition into tests supported in their strict halfspaces. Each part pairs to zero, so <span class="math" data-tex="\(\operatorname{supp}u\subset K\)">\(\operatorname{supp}u\subset K\)</span>.</p>
+<p>The Fourier transform of the distribution (CF8) is the regular distribution given by <span class="math" data-tex="\(F\)">\(F\)</span> on real frequencies, by the two-sided Schwartz inverse. Since <span class="math" data-tex="\(u\)">\(u\)</span> now has compact support, its entire transform (CF1) has that same restriction. Two continuous functions representing the same distribution agree pointwise. Entire functions agreeing on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> agree everywhere: fix all but one coordinate real, use the one-variable identity principle, and repeat coordinate by coordinate. Thus (CF1) is the original <span class="math" data-tex="\(F\)">\(F\)</span>. The same inverse formula proves uniqueness. This completes Theorem CF2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<figure id="figure-cf-a"><a href="reproduce/L122/figures/support-plane-decay.png" title="Open full-size figure"><img src="reproduce/L122/figures/support-plane-decay.png" alt="A supporting plane and the strictly separated test support" class="course-figure" width="1539" height="718" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="support-plane-decay" data-asset-sha256="DE80AEE0D866B22928A13E21F850BCE353390B6290CCA92A871A887A45511D19"></a><br><a href="reproduce/L122/figures/support-plane-decay.png">Open full-size figure</a></figure>
+<p><strong>Figure CF-A.</strong> The exact two-dimensional instance is <span class="math" data-tex="\(K=[-1,1]\times[-1/2,1/2]\)">\(K=[-1,1]\times[-1/2,1/2]\)</span>, <span class="math" data-tex="\(\eta=(1,0)\)">\(\eta=(1,0)\)</span>, and a test supported in the closed radius-<span class="math" data-tex="\(1/4\)">\(1/4\)</span> disk centered at <span class="math" data-tex="\((2,0)\)">\((2,0)\)</span>. Then <span class="math" data-tex="\(H_K(\eta)=1\)">\(H_K(\eta)=1\)</span>, <span class="math" data-tex="\(a=7/4\)">\(a=7/4\)</span>, and <span class="math" data-tex="\(\delta=3/4\)">\(\delta=3/4\)</span>. Translating frequency by <span class="math" data-tex="\(it\eta\)">\(it\eta\)</span> yields the proved polynomial factor times <span class="math" data-tex="\(e^{-3t/4}\)">\(e^{-3t/4}\)</span> in (CF13). The disk illustrates the test carrier; no particular nonzero test filling its boundary is assumed. Reproducible coordinates and the plot source accompany this module.</p>
+<h3 id="3-a-bounded-complex-displacement-for-polynomial-division">3. A bounded complex displacement for polynomial division</h3>
+<p><strong>Lemma CF3.1 (a uniformly safe radius).</strong> Let <span class="math" data-tex="\(p(t)=c\prod_{j=1}^m(t-a_j)\)">\(p(t)=c\prod_{j=1}^m(t-a_j)\)</span>, with <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> and <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>. Repeated roots are listed with multiplicity. Put <span class="math" data-tex="\(\varepsilon_m=1/(4m)\)">\(\varepsilon_m=1/(4m)\)</span>. There is an <span class="math" data-tex="\(r\in[1,2]\)">\(r\in[1,2]\)</span> such that
+<span class="math math-display" data-tex="\[
+ |p(t)|\geq |c|\varepsilon_m^m
+ \quad\text{for every }|t|=r.
+ \tag{CF14}
+\]">\[
+ |p(t)|\geq |c|\varepsilon_m^m
+ \quad\text{for every }|t|=r.
+ \tag{CF14}
+\]</span>
+If <span class="math" data-tex="\(g\)">\(g\)</span> is entire, then
+<span class="math math-display" data-tex="\[
+ |g(0)|\leq |c|^{-1}\varepsilon_m^{-m}
+ \sup_{|t|\leq2}|p(t)g(t)|.
+ \tag{CF15}
+\]">\[
+ |g(0)|\leq |c|^{-1}\varepsilon_m^{-m}
+ \sup_{|t|\leq2}|p(t)g(t)|.
+ \tag{CF15}
+\]</span></p>
+<p><strong>Proof.</strong> Exclude the open real intervals <span class="math" data-tex="\((|a_j|-\varepsilon_m,|a_j|+\varepsilon_m)\)">\((|a_j|-\varepsilon_m,|a_j|+\varepsilon_m)\)</span>. Their total length, counted even with overlaps or repeated roots, is at most <span class="math" data-tex="\(2m\varepsilon_m=1/2\)">\(2m\varepsilon_m=1/2\)</span>. They cannot cover the length-one interval <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>. Choose a remaining <span class="math" data-tex="\(r\)">\(r\)</span>. Then <span class="math" data-tex="\(\bigl|r-|a_j|\bigr|\geq\varepsilon_m\)">\(\bigl|r-|a_j|\bigr|\geq\varepsilon_m\)</span>, so the reverse triangle inequality gives <span class="math" data-tex="\(|t-a_j|\geq\varepsilon_m\)">\(|t-a_j|\geq\varepsilon_m\)</span> on the whole circle. Multiplication proves (CF14). The circle Cauchy formula bounds <span class="math" data-tex="\(|g(0)|\)">\(|g(0)|\)</span> by its supremum on that circle; replace <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(pg/p\)">\(pg/p\)</span> there and use (CF14). This proves (CF15). The choice of <span class="math" data-tex="\(r\)">\(r\)</span> need not depend continuously on the roots, because only the uniform bound is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem CF3.2 (division keeps the same convex support bound).</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be a nonzero polynomial and suppose <span class="math" data-tex="\(F\)">\(F\)</span> satisfies (CF4). If <span class="math" data-tex="\(G=F/Q\)">\(G=F/Q\)</span> extends to an entire function, then
+<span class="math math-display" data-tex="\[
+ |G(z)|\leq C_Q(1+|z|)^N e^{H_K(\operatorname{Im}z)}
+ \tag{CF16}
+\]">\[
+ |G(z)|\leq C_Q(1+|z|)^N e^{H_K(\operatorname{Im}z)}
+ \tag{CF16}
+\]</span>
+with the same <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>. The constant may depend on <span class="math" data-tex="\(Q,K,N,C\)">\(Q,K,N,C\)</span>.</p>
+<p><strong>Proof.</strong> A constant <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span> is immediate. Otherwise let its total degree be <span class="math" data-tex="\(m\)">\(m\)</span> and its highest homogeneous part be <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span>. Choose a real unit vector <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with <span class="math" data-tex="\(c=Q_m(\theta)\ne0\)">\(c=Q_m(\theta)\ne0\)</span>. Such a real vector exists: a polynomial zero on all real coordinates has all its coefficients zero, by successive one-variable polynomial identities. For every complex <span class="math" data-tex="\(z\)">\(z\)</span>, the one-variable polynomial
+<span class="math math-display" data-tex="\[
+ p_z(t)=Q(z+t\theta)
+ \tag{CF17}
+\]">\[
+ p_z(t)=Q(z+t\theta)
+ \tag{CF17}
+\]</span>
+has degree <span class="math" data-tex="\(m\)">\(m\)</span> and leading coefficient <span class="math" data-tex="\(c\)">\(c\)</span>, independent of <span class="math" data-tex="\(z\)">\(z\)</span>. Apply Lemma CF3.1 to <span class="math" data-tex="\(g_z(t)=G(z+t\theta)\)">\(g_z(t)=G(z+t\theta)\)</span>. Put <span class="math" data-tex="\(R_{K,\theta}=\sup_{x\in K}|x\cdot\theta|\)">\(R_{K,\theta}=\sup_{x\in K}|x\cdot\theta|\)</span>. If <span class="math" data-tex="\(|t|\leq2\)">\(|t|\leq2\)</span>, then
+<span class="math math-display" data-tex="\[
+ 1+|z+t\theta|\leq3(1+|z|),\qquad
+ H_K(\operatorname{Im}z+(\operatorname{Im}t)\theta)
+ \leq H_K(\operatorname{Im}z)+2R_{K,\theta}.
+ \tag{CF18}
+\]">\[
+ 1+|z+t\theta|\leq3(1+|z|),\qquad
+ H_K(\operatorname{Im}z+(\operatorname{Im}t)\theta)
+ \leq H_K(\operatorname{Im}z)+2R_{K,\theta}.
+ \tag{CF18}
+\]</span>
+Since <span class="math" data-tex="\(p_z g_z=F(z+t\theta)\)">\(p_z g_z=F(z+t\theta)\)</span>, (CF4), (CF15) and (CF18) prove (CF16), for example with
+<span class="math math-display" data-tex="\[
+ C_Q=C\,|c|^{-1}(4m)^m3^N e^{2R_{K,\theta}}.
+ \tag{CF19}
+\]">\[
+ C_Q=C\,|c|^{-1}(4m)^m3^N e^{2R_{K,\theta}}.
+ \tag{CF19}
+\]</span>
+This is a proved bound, not a numerical estimate for finitely many centers. In particular no separation of the multivariable zero set from real frequencies is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<figure id="figure-cf-b"><a href="reproduce/L122/figures/safe-division-circle.png" title="Open full-size figure"><img src="reproduce/L122/figures/safe-division-circle.png" alt="A root-avoiding circle and its allowable radius interval" class="course-figure" width="1513" height="763" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="safe-division-circle" data-asset-sha256="213E9E794D6CB9541563527F7D4F5252BCF848A6D968404D88B705B38C645673"></a><br><a href="reproduce/L122/figures/safe-division-circle.png">Open full-size figure</a></figure>
+<p><strong>Figure CF-B.</strong> For <span class="math" data-tex="\(p(t)=(t+1)(t-1)(t-2)\)">\(p(t)=(t+1)(t-1)(t-2)\)</span>, the roots are <span class="math" data-tex="\(-1,1,2\)">\(-1,1,2\)</span>, the degree is three, and <span class="math" data-tex="\(\varepsilon_3=1/12\)">\(\varepsilon_3=1/12\)</span>. The radius <span class="math" data-tex="\(r=3/2\)">\(r=3/2\)</span> is outside every excluded root-modulus interval. All three distances on the circle are at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, giving <span class="math" data-tex="\(|p|\geq1/8\)">\(|p|\geq1/8\)</span>; the general lemma gives the weaker but uniform bound <span class="math" data-tex="\(1/1728\)">\(1/1728\)</span>. The radius diagram keeps the two distinct roots of modulus one visible as a repeated interval, rather than silently dropping their multiplicity. The circle lies in the radius-two disk used in (CF15).</p>
+<h3 id="4-compact-inverses-and-equality-of-ordinary-support-hulls">4. Compact inverses and equality of ordinary support hulls</h3>
+<p><strong>Theorem CF4.1.</strong> For <span class="math" data-tex="\(f\in\mathcal E&#x27;(\mathbb R^n)\)">\(f\in\mathcal E&#x27;(\mathbb R^n)\)</span> and nonzero polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(F_f/Q\)">\(F_f/Q\)</span> extends to an entire function.</li>
+<li>There is a compact distribution <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(Q(D)v=f\)">\(Q(D)v=f\)</span>.</li>
+</ol>
+<p>The solution is unique. If <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, it satisfies
+<span class="math math-display" data-tex="\[
+ \operatorname{ch}\operatorname{supp}v
+ =\operatorname{ch}\operatorname{supp}f.
+ \tag{CF20}
+\]">\[
+ \operatorname{ch}\operatorname{supp}v
+ =\operatorname{ch}\operatorname{supp}f.
+ \tag{CF20}
+\]</span>
+If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, then <span class="math" data-tex="\(v=0\)">\(v=0\)</span> and both supports are empty.</p>
+<p><strong>Proof.</strong> Condition 2 gives <span class="math" data-tex="\(F_f=QF_v\)">\(F_f=QF_v\)</span>, so its quotient has the entire extension <span class="math" data-tex="\(F_v\)">\(F_v\)</span>. Conversely assume 1, first with <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>. The set <span class="math" data-tex="\(K=\operatorname{ch}\operatorname{supp}f\)">\(K=\operatorname{ch}\operatorname{supp}f\)</span> is compact. To check this, a convex combination with more than <span class="math" data-tex="\(n+1\)">\(n+1\)</span> positive coefficients <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> has an affine dependence <span class="math" data-tex="\(\sum_j c_jx_j=0\)">\(\sum_j c_jx_j=0\)</span>, <span class="math" data-tex="\(\sum_j c_j=0\)">\(\sum_j c_j=0\)</span>, with some <span class="math" data-tex="\(c_j&gt;0\)">\(c_j&gt;0\)</span>. Subtract <span class="math" data-tex="\(t c_j\)">\(t c_j\)</span> from every coefficient, where <span class="math" data-tex="\(t=\min_{c_j&gt;0}\lambda_j/c_j\)">\(t=\min_{c_j&gt;0}\lambda_j/c_j\)</span>. All coefficients remain nonnegative, their sum and represented point are unchanged, and one positive coefficient becomes zero. Repeat until at most <span class="math" data-tex="\(n+1\)">\(n+1\)</span> remain. The convex hull is therefore the image of the compact product of <span class="math" data-tex="\((n+1)\)">\((n+1)\)</span> copies of the nonempty support and the closed finite simplex, padding shorter combinations with zero coefficients. The forward part of Theorem CF2.1 bounds <span class="math" data-tex="\(F_f\)">\(F_f\)</span> by (CF4) for this <span class="math" data-tex="\(K\)">\(K\)</span>. Theorem CF3.2 gives the identical support type for the entire quotient. The converse part of CF2.1 supplies <span class="math" data-tex="\(v\)">\(v\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, and (CF2) with Fourier injectivity gives <span class="math" data-tex="\(Q(D)v=f\)">\(Q(D)v=f\)</span>.</p>
+<p>If two compact solutions exist, their difference <span class="math" data-tex="\(w\)">\(w\)</span> has <span class="math" data-tex="\(QF_w=0\)">\(QF_w=0\)</span>. On the open set <span class="math" data-tex="\(Q\ne0\)">\(Q\ne0\)</span>, <span class="math" data-tex="\(F_w=0\)">\(F_w=0\)</span>; its entire extension is zero by the identity principle, so <span class="math" data-tex="\(w=0\)">\(w=0\)</span>. When <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, this argument says the only solution is zero; it also shows that the unique entire extension of its quotient is zero.</p>
+<p>Differential operators are local: a test supported away from <span class="math" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span> and each of its derivatives pair to zero with <span class="math" data-tex="\(v\)">\(v\)</span>. Thus <span class="math" data-tex="\(\operatorname{supp}f\subset\operatorname{supp}v\)">\(\operatorname{supp}f\subset\operatorname{supp}v\)</span>. Combined with <span class="math" data-tex="\(\operatorname{supp}v\subset\operatorname{ch}\operatorname{supp}f\)">\(\operatorname{supp}v\subset\operatorname{ch}\operatorname{supp}f\)</span>, this proves (CF20). In particular every compact <span class="math" data-tex="\(v\)">\(v\)</span> obeys the ordinary hull identity for <span class="math" data-tex="\(Q(D)v\)">\(Q(D)v\)</span>, including its homogeneous and scalar cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This supplies an additive internal proof of the ordinary differential support-hull statement already available in <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, Corollary 4.3. That existing argument remains useful; the present proof does not replace it or infer the corresponding singular-support identity.</p>
+<h3 id="5-multiplicities-detected-by-exponential-polynomial-solutions">5. Multiplicities detected by exponential-polynomial solutions</h3>
+<p>For nonzero <span class="math" data-tex="\(P\)">\(P\)</span>, an exponential-polynomial solution means
+<span class="math math-display" data-tex="\[
+ h(x)=e^{ix\cdot z}A(x),\qquad A\in\mathbb C[x_1,\ldots,x_n],
+ \qquad P(D)h=0.
+ \tag{CF21}
+\]">\[
+ h(x)=e^{ix\cdot z}A(x),\qquad A\in\mathbb C[x_1,\ldots,x_n],
+ \qquad P(D)h=0.
+ \tag{CF21}
+\]</span>
+Equivalently <span class="math" data-tex="\(P(D+z)A=0\)">\(P(D+z)A=0\)</span>, by the finite product rule. No restriction to constant <span class="math" data-tex="\(A\)">\(A\)</span>, real <span class="math" data-tex="\(z\)">\(z\)</span>, simple roots, or a square-free <span class="math" data-tex="\(P\)">\(P\)</span> is made.</p>
+<p><strong>Theorem CF5.1.</strong> For compact <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\mu(h)=0\)">\(\mu(h)=0\)</span> for every solution in (CF21).</li>
+<li><span class="math" data-tex="\(F_\mu(z)/P(-z)\)">\(F_\mu(z)/P(-z)\)</span> has an entire extension.</li>
+<li>There is a unique compact <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(P(-D)v=\mu\)">\(P(-D)v=\mu\)</span>.</li>
+</ol>
+<p>For nonzero <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the ordinary support hulls of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> agree. For zero <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, both distributions vanish.</p>
+<p><strong>Proof that 1 implies 2.</strong> Write <span class="math" data-tex="\(Q(z)=P(-z)\)">\(Q(z)=P(-z)\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> is a nonzero constant, its homogeneous solution space is zero and <span class="math" data-tex="\(F_\mu/Q\)">\(F_\mu/Q\)</span> is automatically entire. Otherwise choose the same kind of real noncharacteristic unit direction <span class="math" data-tex="\(\theta\)">\(\theta\)</span> as in (CF17). Fix an arbitrary complex center <span class="math" data-tex="\(z\)">\(z\)</span>; the polynomial <span class="math" data-tex="\(q_z(t)=P(-z-t\theta)\)">\(q_z(t)=P(-z-t\theta)\)</span> has fixed positive degree and nonzero constant leading coefficient. Let <span class="math" data-tex="\(t_0\)">\(t_0\)</span> be a root of order <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Start with the exact identity
+<span class="math math-display" data-tex="\[
+ P(D)e^{-ix\cdot(z+t\theta)}
+ =q_z(t)e^{-ix\cdot(z+t\theta)}.
+ \tag{CF22}
+\]">\[
+ P(D)e^{-ix\cdot(z+t\theta)}
+ =q_z(t)e^{-ix\cdot(z+t\theta)}.
+ \tag{CF22}
+\]</span>
+Differentiate it <span class="math" data-tex="\(j\)">\(j\)</span> times with respect to <span class="math" data-tex="\(t\)">\(t\)</span>, for <span class="math" data-tex="\(0\leq j&lt;k\)">\(0\leq j&lt;k\)</span>, and evaluate at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. Every derivative of <span class="math" data-tex="\(q_z\)">\(q_z\)</span> appearing on the right has order at most <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span> and is zero there. Hence
+<span class="math math-display" data-tex="\[
+ h_j(x)=(-i x\cdot\theta)^j e^{-ix\cdot(z+t_0\theta)}
+ \quad\text{satisfies}\quad P(D)h_j=0,
+ \qquad 0\leq j&lt;k.
+ \tag{CF23}
+\]">\[
+ h_j(x)=(-i x\cdot\theta)^j e^{-ix\cdot(z+t_0\theta)}
+ \quad\text{satisfies}\quad P(D)h_j=0,
+ \qquad 0\leq j&lt;k.
+ \tag{CF23}
+\]</span>
+Each is a member of (CF21), at frequency <span class="math" data-tex="\(-z-t_0\theta\)">\(-z-t_0\theta\)</span>. Annihilation and differentiation of the compact pairing give
+<span class="math math-display" data-tex="\[
+ \frac{d^j}{dt^j}F_\mu(z+t\theta)\bigg|_{t=t_0}
+ =\mu(h_j)=0,\qquad j&lt;k.
+ \tag{CF24}
+\]">\[
+ \frac{d^j}{dt^j}F_\mu(z+t\theta)\bigg|_{t=t_0}
+ =\mu(h_j)=0,\qquad j&lt;k.
+ \tag{CF24}
+\]</span>
+The one-variable power series consequently divides by the full root power <span class="math" data-tex="\((t-t_0)^k\)">\((t-t_0)^k\)</span>. All roots are finite in number; thus <span class="math" data-tex="\(F_\mu(z+t\theta)/q_z(t)\)">\(F_\mu(z+t\theta)/q_z(t)\)</span> is entire as a function of <span class="math" data-tex="\(t\)">\(t\)</span>, for every center <span class="math" data-tex="\(z\)">\(z\)</span>. This includes accidental higher multiplicities on special parameter lines; no generic-root argument omits them.</p>
+<p>We still have to prove joint, rather than just linewise, analyticity. Fix <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, and choose a positive circle <span class="math" data-tex="\(|t|=r\)">\(|t|=r\)</span> with <span class="math" data-tex="\(Q(z_0+t\theta)\ne0\)">\(Q(z_0+t\theta)\ne0\)</span> on its boundary. Such a radius exists because that line polynomial has finitely many zeros. Its positive boundary minimum persists for <span class="math" data-tex="\(z\)">\(z\)</span> near <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. In that neighborhood define
+<span class="math math-display" data-tex="\[
+ J(z)=\frac{1}{2\pi i}\int_{|t|=r}
+ \frac{F_\mu(z+t\theta)}{Q(z+t\theta)}\,\frac{dt}{t}.
+ \tag{CF25}
+\]">\[
+ J(z)=\frac{1}{2\pi i}\int_{|t|=r}
+ \frac{F_\mu(z+t\theta)}{Q(z+t\theta)}\,\frac{dt}{t}.
+ \tag{CF25}
+\]</span>
+Compact contour differentiation makes <span class="math" data-tex="\(J\)">\(J\)</span> holomorphic in all coordinates of <span class="math" data-tex="\(z\)">\(z\)</span>. The entire line quotient just proved and the circle Cauchy formula show <span class="math" data-tex="\(J(z)=F_\mu(z)/Q(z)\)">\(J(z)=F_\mu(z)/Q(z)\)</span> wherever <span class="math" data-tex="\(Q(z)\ne0\)">\(Q(z)\ne0\)</span>. That set is dense, since a nonzero polynomial cannot vanish on a complex open set. Continuity gives <span class="math" data-tex="\(QJ=F_\mu\)">\(QJ=F_\mu\)</span> throughout the neighborhood. These local extensions agree on overlaps, first on the dense zero-free set and then everywhere by continuity. They assemble to the required entire extension. This proves 1 implies 2.</p>
+<p>Theorem CF4.1, applied to <span class="math" data-tex="\(Q(z)=P(-z)\)">\(Q(z)=P(-z)\)</span>, proves the equivalence of 2 and 3, including uniqueness and the hull equality. Finally 3 implies 1 by the exact transpose pairing:
+<span class="math math-display" data-tex="\[
+ \mu(h)=(P(-D)v)(h)=v(P(D)h)=0.
+ \tag{CF26}
+\]">\[
+ \mu(h)=(P(-D)v)(h)=v(P(D)h)=0.
+ \tag{CF26}
+\]</span>
+Both pairings make sense because the distributions are compact and <span class="math" data-tex="\(h\)">\(h\)</span> is globally smooth. Inserting a cutoff equal to one near the compact support proves the identity without boundary terms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<figure id="figure-cf-c"><a href="reproduce/L122/figures/double-root-moments.png" title="Open full-size figure"><img src="reproduce/L122/figures/double-root-moments.png" alt="A double characteristic root needs two annihilator conditions" class="course-figure" width="1425" height="653" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="double-root-moments" data-asset-sha256="E5E91661169E54574FA80D28104F44BCC118DB5AFDDA9E7028B1916914297463"></a><br><a href="reproduce/L122/figures/double-root-moments.png">Open full-size figure</a></figure>
+<p><strong>Figure CF-C.</strong> For <span class="math" data-tex="\(P(z)=z^2\)">\(P(z)=z^2\)</span> in one variable and <span class="math" data-tex="\(\mu=D\delta\)">\(\mu=D\delta\)</span>, the transform is <span class="math" data-tex="\(F_\mu(z)=z\)">\(F_\mu(z)=z\)</span>. The constant solution gives <span class="math" data-tex="\(\mu(1)=F_\mu(0)=0\)">\(\mu(1)=F_\mu(0)=0\)</span>, but the linear solution gives <span class="math" data-tex="\(\mu(x)=i\ne0\)">\(\mu(x)=i\ne0\)</span>, equivalently <span class="math" data-tex="\(F&#x27;_\mu(0)=1\)">\(F&#x27;_\mu(0)=1\)</span>. The quotient <span class="math" data-tex="\(z/z^2=1/z\)">\(z/z^2=1/z\)</span> has a pole and no compact inverse exists. In contrast <span class="math" data-tex="\(\mu=D^2\delta\)">\(\mu=D^2\delta\)</span> has transform <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, both moments vanish, and its transpose inverse is <span class="math" data-tex="\(v=\delta\)">\(v=\delta\)</span>. The diagram displays the exact moments and the <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> factors, not a numerical root multiplicity test.</p>
+<h3 id="6-exact-receiving-statements-and-remaining-boundaries">6. Exact receiving statements and remaining boundaries</h3>
+<p>Theorem CF5.1 supplies entry (3) of <a href="AN02-L010.html">Approximation and global solvability from support geometry</a>: a compact functional annihilating every exponential-polynomial solution has a unique compact transpose inverse. Theorem CF4.1 also supplies its ordinary support-hull entry (2). If the original compact carrier lies in an open convex <span class="math" data-tex="\(X\)">\(X\)</span>, its compact convex hull lies in <span class="math" data-tex="\(X\)">\(X\)</span>, so this inverse is actually in <span class="math" data-tex="\(\mathcal E&#x27;(X)\)">\(\mathcal E&#x27;(X)\)</span>. The subsequent cutoff/mollification argument of that lesson, Lemma 2.1, remains the needed receiver for nonsmooth solutions; we do not pair a compact distribution with an arbitrary nonsmooth solution directly.</p>
+<p>For <a href="AN02-L011.html">Choosing polynomial and exponential approximants</a>, Section 2, this module proves the entire exponential-polynomial annihilator equivalence and compact Fourier division, with exactly the divisor <span class="math" data-tex="\(P(-z)\)">\(P(-z)\)</span> and ordinary hull equality. Its <strong>local polynomial-annihilator equivalence near zero</strong> is a separate statement and is not proved here. In particular formal divisibility alone has not been promoted to convergence of a local analytic quotient.</p>
+<p>For <a href="AN02-L012.html">Singular supports and distribution data</a>, this does not supply its compact <strong>singular-support</strong> hull equality. Ordinary support and singular support need different estimates.</p>
+<p>Dimension zero is harmless and separate: the coordinate space is one point with mass one, its distributions are complex scalars, and a nonzero polynomial in no variables is a nonzero scalar. Fourier inversion is the identity, division is scalar division, and the homogeneous solution space is zero. A nonzero scalar distribution has the single point as both support hulls. None of the positive-dimensional line, halfspace or annulus constructions is asserted in that case.</p>
+<h3 id="7-worked-examples">7. Worked examples</h3>
+<p><strong>Example CF7.1 (a translated point carrier).</strong> In one dimension, let <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>, <span class="math" data-tex="\(b\in\mathbb C\)">\(b\in\mathbb C\)</span>, <span class="math" data-tex="\(v=\delta_a\)">\(v=\delta_a\)</span>, and <span class="math" data-tex="\(Q(z)=z-b\)">\(Q(z)=z-b\)</span>. Then
+<span class="math math-display" data-tex="\[
+ F_v(z)=e^{-iaz},\qquad
+ f=(D-b)\delta_a,\qquad F_f(z)=(z-b)e^{-iaz}.
+ \tag{CF27}
+\]">\[
+ F_v(z)=e^{-iaz},\qquad
+ f=(D-b)\delta_a,\qquad F_f(z)=(z-b)e^{-iaz}.
+ \tag{CF27}
+\]</span>
+Its entire quotient is <span class="math" data-tex="\(e^{-iaz}\)">\(e^{-iaz}\)</span>. Here <span class="math" data-tex="\(K=\{a\}\)">\(K=\{a\}\)</span>, so <span class="math" data-tex="\(H_K(y)=ay\)">\(H_K(y)=ay\)</span>, even when this is negative. The upper bound <span class="math" data-tex="\(|e^{-ia(\xi+iy)}|=e^{ay}\)">\(|e^{-ia(\xi+iy)}|=e^{ay}\)</span> is exact; replacing <span class="math" data-tex="\(H_K\)">\(H_K\)</span> by an absolute value would lose the location of the carrier. Theorem CF4.1 recovers <span class="math" data-tex="\(v=\delta_a\)">\(v=\delta_a\)</span> and the identical singleton hull. The distribution <span class="math" data-tex="\(f\)">\(f\)</span> is nonzero and supported at that point.</p>
+<p><strong>Example CF7.2 (a double root).</strong> Set <span class="math" data-tex="\(P(z)=z^2\)">\(P(z)=z^2\)</span>, <span class="math" data-tex="\(\mu=D\delta\)">\(\mu=D\delta\)</span>. Its annihilation of the only plane-wave frequency <span class="math" data-tex="\(z=0\)">\(z=0\)</span> tests just the constant solution. But <span class="math" data-tex="\(x\)">\(x\)</span> is also a homogeneous solution, and
+<span class="math math-display" data-tex="\[
+ (D\delta)(1)=0,\qquad (D\delta)(x)=i,
+ \qquad F_{D\delta}(z)=z.
+ \tag{CF28}
+\]">\[
+ (D\delta)(1)=0,\qquad (D\delta)(x)=i,
+ \qquad F_{D\delta}(z)=z.
+ \tag{CF28}
+\]</span>
+The pole of <span class="math" data-tex="\(1/z\)">\(1/z\)</span> rules out a compact transpose inverse. With <span class="math" data-tex="\(\mu=D^2\delta\)">\(\mu=D^2\delta\)</span>, by contrast, the transform is <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, the quotient is one and <span class="math" data-tex="\(v=\delta\)">\(v=\delta\)</span>. This is the exact obstruction drawn in Figure CF-C.</p>
+<p><strong>Example CF7.3 (a root circle with a uniform bound).</strong> For the polynomial in Figure CF-B, the three reverse-triangle lower bounds on <span class="math" data-tex="\(|t|=3/2\)">\(|t|=3/2\)</span> are respectively <span class="math" data-tex="\(1/2,1/2,1/2\)">\(1/2,1/2,1/2\)</span>. Therefore every entire <span class="math" data-tex="\(g\)">\(g\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ |g(0)|\leq8\max_{|t|=3/2}|(t+1)(t-1)(t-2)g(t)|.
+ \tag{CF29}
+\]">\[
+ |g(0)|\leq8\max_{|t|=3/2}|(t+1)(t-1)(t-2)g(t)|.
+ \tag{CF29}
+\]</span>
+The universal degree-three estimate obtained without knowledge of those roots has the larger constant <span class="math" data-tex="\(12^3=1728\)">\(12^3=1728\)</span>. Both are valid; the stronger value eight belongs to this particular example, not to every degree-three polynomial.</p>
+<h3 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h3>
+<p><strong>Exercise 1 (basic: the transpose sign).</strong> Let <span class="math" data-tex="\(P(z)=z-b\)">\(P(z)=z-b\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, where <span class="math" data-tex="\(b\in\mathbb C\)">\(b\in\mathbb C\)</span>. Put <span class="math" data-tex="\(\mu=P(-D)\delta\)">\(\mu=P(-D)\delta\)</span>. Compute its transform and its pairing with <span class="math" data-tex="\(h(x)=e^{ibx}\)">\(h(x)=e^{ibx}\)</span>. Identify its compact transpose inverse.</p>
+<p><strong>Solution 1.</strong> The transpose is <span class="math" data-tex="\(-D-b\)">\(-D-b\)</span>, so <span class="math" data-tex="\(\mu=-D\delta-b\delta\)">\(\mu=-D\delta-b\delta\)</span> and <span class="math" data-tex="\(F_\mu(z)=-z-b=P(-z)\)">\(F_\mu(z)=-z-b=P(-z)\)</span>. Because <span class="math" data-tex="\((D\delta)(h)=i h&#x27;(0)\)">\((D\delta)(h)=i h&#x27;(0)\)</span> and <span class="math" data-tex="\(h&#x27;(0)=ib\)">\(h&#x27;(0)=ib\)</span>,
+<span class="math math-display" data-tex="\[
+ \mu(h)=-i(ib)-b=b-b=0.
+ \tag{CF30}
+\]">\[
+ \mu(h)=-i(ib)-b=b-b=0.
+ \tag{CF30}
+\]</span>
+The entire quotient by <span class="math" data-tex="\(P(-z)\)">\(P(-z)\)</span> is one. Thus the inverse is <span class="math" data-tex="\(v=\delta\)">\(v=\delta\)</span>, uniquely by CF4.1. Using <span class="math" data-tex="\(P(z)\)">\(P(z)\)</span> as the divisor would put its zero at the wrong frequency unless a special value of <span class="math" data-tex="\(b\)">\(b\)</span> hid the sign.</p>
+<p><strong>Exercise 2 (basic: a nonzero constant symbol).</strong> Explain CF5.1 when <span class="math" data-tex="\(P=c\ne0\)">\(P=c\ne0\)</span>. Include <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span> and positive-dimensional support hulls.</p>
+<p><strong>Solution 2.</strong> The equation <span class="math" data-tex="\(ch=0\)">\(ch=0\)</span> has only the zero solution, so every compact <span class="math" data-tex="\(\mu\)">\(\mu\)</span> satisfies its annihilation condition. Its transform divided by <span class="math" data-tex="\(c\)">\(c\)</span> is entire. The unique inverse is <span class="math" data-tex="\(v=\mu/c\)">\(v=\mu/c\)</span>, and multiplication by a nonzero scalar preserves support. For zero <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, the inverse is zero and both supports are empty. For nonzero <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, their compact convex hulls agree. There is no characteristic root or annulus construction in this case.</p>
+<p><strong>Exercise 3 (intermediate: explicit exclusion intervals).</strong> Let <span class="math" data-tex="\(p(t)=2(t-i)^2(t-4)\)">\(p(t)=2(t-i)^2(t-4)\)</span>. Use Lemma CF3.1 to give a universal lower bound on some circle of radius in <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>. Then check the radius <span class="math" data-tex="\(3/2\)">\(3/2\)</span> directly and give a better bound there.</p>
+<p><strong>Solution 3.</strong> The degree is three and <span class="math" data-tex="\(\varepsilon_3=1/12\)">\(\varepsilon_3=1/12\)</span>. Counting the repeated root twice, the excluded intervals have total length at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; a safe radius exists with <span class="math" data-tex="\(|p|\geq2/1728=1/864\)">\(|p|\geq2/1728=1/864\)</span>. At radius <span class="math" data-tex="\(3/2\)">\(3/2\)</span>, each of the two distances to <span class="math" data-tex="\(i\)">\(i\)</span> is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, while the distance to <span class="math" data-tex="\(4\)">\(4\)</span> is at least <span class="math" data-tex="\(5/2\)">\(5/2\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ |p(t)|\geq2(1/2)^2(5/2)=5/4
+ \quad(|t|=3/2).
+ \tag{CF31}
+\]">\[
+ |p(t)|\geq2(1/2)^2(5/2)=5/4
+ \quad(|t|=3/2).
+ \tag{CF31}
+\]</span>
+The repeated factor contributes twice; treating it as only one factor would produce an unjustified bound. The exact angular minimum may be larger, but this proved bound suffices.</p>
+<p><strong>Exercise 4 (intermediate: a strict support plane).</strong> Let <span class="math" data-tex="\(K=[-2,2]\times[-1,1]\)">\(K=[-2,2]\times[-1,1]\)</span>. A test is supported in the closed disk of radius <span class="math" data-tex="\(1/3\)">\(1/3\)</span> centered at <span class="math" data-tex="\((3,0)\)">\((3,0)\)</span>. Use <span class="math" data-tex="\(\eta=(1,0)\)">\(\eta=(1,0)\)</span> to identify the decay exponent in the displaced-plane proof and deduce that the inverse distribution pairs to zero with this test.</p>
+<p><strong>Solution 4.</strong> Here <span class="math" data-tex="\(H_K(\eta)=2\)">\(H_K(\eta)=2\)</span>, and every point in the disk has first coordinate at least <span class="math" data-tex="\(a=3-1/3=8/3\)">\(a=3-1/3=8/3\)</span>. The gap is <span class="math" data-tex="\(\delta=8/3-2=2/3\)">\(\delta=8/3-2=2/3\)</span>. The product on the translated frequency plane therefore has integral bounded by a fixed constant times <span class="math" data-tex="\((1+t)^{N+2M}e^{-2t/3}\)">\((1+t)^{N+2M}e^{-2t/3}\)</span>, with <span class="math" data-tex="\(2M&gt;N+2\)">\(2M&gt;N+2\)</span>. This tends to zero. Since the integral is the same for every finite displacement, the original pairing is zero. The conclusion follows for any smooth test with carrier in that disk, without needing a formula for the test.</p>
+<p><strong>Exercise 5 (advanced: a special line with higher multiplicity).</strong> Let <span class="math" data-tex="\(P(z_1,z_2)=z_1^2-z_2\)">\(P(z_1,z_2)=z_1^2-z_2\)</span> and <span class="math" data-tex="\(\theta=(1,0)\)">\(\theta=(1,0)\)</span>. At the center <span class="math" data-tex="\(z=(0,0)\)">\(z=(0,0)\)</span>, write down the line roots and the two homogeneous exponential-polynomial solutions used by (CF23). Explain why a proof restricted to simple line roots would miss one of these conditions.</p>
+<p><strong>Solution 5.</strong> The line polynomial is <span class="math" data-tex="\(q_0(t)=P(-t,0)=t^2\)">\(q_0(t)=P(-t,0)=t^2\)</span>. Its root <span class="math" data-tex="\(t_0=0\)">\(t_0=0\)</span> has order two. The two functions are <span class="math" data-tex="\(h_0=1\)">\(h_0=1\)</span> and <span class="math" data-tex="\(h_1=-i x_1\)">\(h_1=-i x_1\)</span>. Directly, <span class="math" data-tex="\((D_1^2-D_2)1=0\)">\((D_1^2-D_2)1=0\)</span> and <span class="math" data-tex="\((D_1^2-D_2)(-i x_1)=0\)">\((D_1^2-D_2)(-i x_1)=0\)</span>. Thus annihilation requires <span class="math" data-tex="\(F_\mu(0,0)=0\)">\(F_\mu(0,0)=0\)</span> and <span class="math" data-tex="\(\partial_{z_1}F_\mu(0,0)=0\)">\(\partial_{z_1}F_\mu(0,0)=0\)</span>. For nearby centers with nonzero second coordinate the two line roots are simple, but that does not justify dropping the second condition at the exceptional double-root center. The all-center argument (CF22)–(CF25) retains it and provides joint holomorphy there.</p>
+<p><strong>Exercise 6 (advanced: what the hull identity does not say).</strong> A nonzero smooth compact function <span class="math" data-tex="\(v\)">\(v\)</span> can have a large ordinary support and empty singular support. Apply CF4.1 to <span class="math" data-tex="\(Q(D)v\)">\(Q(D)v\)</span>, and explain why this does not prove the general compact singular-support hull identity. Also identify the remaining local input in the polynomial approximation criterion.</p>
+<p><strong>Solution 6.</strong> The ordinary identity gives <span class="math" data-tex="\(\operatorname{ch}\operatorname{supp}Q(D)v=\operatorname{ch}\operatorname{supp}v\)">\(\operatorname{ch}\operatorname{supp}Q(D)v=\operatorname{ch}\operatorname{supp}v\)</span>. Since both <span class="math" data-tex="\(v\)">\(v\)</span> and its differential image are smooth, both singular supports are empty in this example. This tests only a trivial singular-support case. The growth bound (CF4) controls ordinary support; it provides no rapid-decay characterization of singular carriers for a general compact distribution. A separate singular-support estimate is needed for that theorem. The polynomial approximation criterion also needs the equivalence between annihilating polynomial solutions and analytic divisibility of the transform near zero. Entire divisibility obtained from all exponential-polynomial solutions is a different assumption and does not establish that local equivalence.</p>
+<h3 id="9-source-correspondence-and-reproducibility">9. Source correspondence and reproducibility</h3>
+<p>The mathematical source is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition, Springer, 2003 reprint of the 1990 edition. Theorem 7.3.1, printed pp.181–182, gives the compact support growth criterion; Theorem 7.3.2 and Lemma 7.3.3, printed pp.182–183, give the polynomial division criterion; Definition 7.3.5 and Lemma 7.3.7, printed pp.185–186, give the multiplicity-sensitive annihilator class and argument. <a href="https://link.springer.com/book/10.1007/978-3-642-61497-2">Publisher record</a>.</p>
+<p>This is independently written mathematical exposition. The bounded-radius division proof (CF14)–(CF19) uses explicit excluded intervals; the support proof (CF9)–(CF13) writes the displaced-plane boundary estimates, and (CF22)–(CF25) checks every line, including its multiple roots. No book image, distinctive prose, exercise sequence or book structure is included. The local native page crosswalk and authorized-copy checks remain private evidence. The original figure source and coordinate ledger are included separately so every illustrated radius, support plane, moment, sign and bound can be reproduced.</p>
+<p><a href="reproduce-AN02-L122.html">Reproduction guide, exact original proof, renderer, geometry, native figures, credits and terms</a> · <a href="src/compact-fourier-division-and-multiplicity-sensitive-annihilators.md" download="compact-fourier-division-and-multiplicity-sensitive-annihilators.md">Download the complete learner and formal source</a> · <a href="reproduce/L122/compact-fourier-division-proof.md" download="compact-fourier-division-proof.md">Download the exact full original formal proof</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

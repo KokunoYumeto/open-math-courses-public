@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Representations of Weil groups · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/representations-of-weil-groups.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="representations-of-weil-groups">Representations of Weil groups</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Weil group allows Frobenius to act by an arbitrary invertible matrix while keeping inertia compact. This separates two kinds of information: a finite inertia action and the eigenvalues, or Jordan blocks, of Frobenius. We prove how that separation controls irreducibility and semisimplicity, then compute the determinant of induction and classify the representations at a real place.</p>
+<p>We assume <a href="frobenius-elements-and-determination-by-traces.html">Frobenius elements and determination by traces</a> and basic finite-group representation theory over a field of characteristic zero. Section 0 proves the local reciprocity theorem needed below. The local reciprocity and Weil-group statements used here are recalled precisely in §1. All representations in §§2–5 are finite-dimensional complex representations. For a nonarchimedean Weil group, “smooth” means that every vector has an open stabilizer. At an archimedean place we use continuous representations in the usual complex topology.</p>
+<h2 id="0-local-norm-foundations-in-both-characteristics">0. Local norm foundations in both characteristics</h2>
+<p>The finite reciprocity input in §1 has a source chain that must be verified independently of the Weil-group topology. We first reconstruct the local norm facts needed by that chain, including the characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> unit argument. Write <span class="math" data-tex="\(R=\mathcal O_F\)">\(R=\mathcal O_F\)</span>. All local fields and valuations here are those constructed in the first lesson.</p>
+<p><strong>Lemma 0.1 (normal bases and Hilbert 90).</strong> If <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is finite Galois with group <span class="math" data-tex="\(G\)">\(G\)</span>, there is an <span class="math" data-tex="\(a\in L\)">\(a\in L\)</span> such that <span class="math" data-tex="\(\{\sigma a\mid\sigma\in G\}\)">\(\{\sigma a\mid\sigma\in G\}\)</span> is an <span class="math" data-tex="\(F\)">\(F\)</span>-basis. Every multiplicative cocycle <span class="math" data-tex="\(c_{\sigma\tau}=c_\sigma\sigma(c_\tau)\)">\(c_{\sigma\tau}=c_\sigma\sigma(c_\tau)\)</span> in <span class="math" data-tex="\(L^\times\)">\(L^\times\)</span> has the form <span class="math" data-tex="\(c_\sigma=b/\sigma b\)">\(c_\sigma=b/\sigma b\)</span> for some <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>.</p>
+<p><strong>Proof.</strong> Choose a primitive element <span class="math" data-tex="\(t\)">\(t\)</span>, using the separable primitive-element proof of the first lesson, and let <span class="math" data-tex="\(d=|G|\)">\(d=|G|\)</span>. For variables <span class="math" data-tex="\(X_0,\ldots,X_{d-1}\)">\(X_0,\ldots,X_{d-1}\)</span>, put <span class="math" data-tex="\(a(X)=\sum_jX_jt^j\)">\(a(X)=\sum_jX_jt^j\)</span>. The linear forms <span class="math" data-tex="\(\sigma a(X)\)">\(\sigma a(X)\)</span>, over <span class="math" data-tex="\(L\)">\(L\)</span>, are independent: their coefficient matrix is the Vandermonde matrix on the distinct conjugates <span class="math" data-tex="\(\sigma t\)">\(\sigma t\)</span>. The polynomial <span class="math" data-tex="\(\det(z_{\sigma\tau})_{\sigma,\tau\in G}\)">\(\det(z_{\sigma\tau})_{\sigma,\tau\in G}\)</span> in independent variables <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span> is nonzero, since setting <span class="math" data-tex="\(z_1=1\)">\(z_1=1\)</span> and all other variables zero makes a permutation matrix. Substitute <span class="math" data-tex="\(z_\rho=\rho a(X)\)">\(z_\rho=\rho a(X)\)</span>; the invertible linear change just noted preserves nonvanishing. A nonzero polynomial over <span class="math" data-tex="\(L\)">\(L\)</span> does not vanish on every <span class="math" data-tex="\(F^d\)">\(F^d\)</span>, since <span class="math" data-tex="\(F\)">\(F\)</span> is infinite: induct on the number of variables and use the finite bound on roots in one variable. Choose <span class="math" data-tex="\(X_j\in F\)">\(X_j\in F\)</span> where the determinant is nonzero. Any <span class="math" data-tex="\(F\)">\(F\)</span>-linear relation among the conjugates of <span class="math" data-tex="\(a(X)\)">\(a(X)\)</span> would, after applying all <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, lie in this invertible matrix's kernel. There is no such relation.</p>
+<p>Distinct field automorphisms are linearly independent as maps, by the first lesson's minimal-relation proof. Hence some <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span> gives <span class="math" data-tex="\(b=\sum_{\tau\in G}c_\tau\tau x\ne0\)">\(b=\sum_{\tau\in G}c_\tau\tau x\ne0\)</span>. The cocycle identity gives <span class="math" data-tex="\(\sigma b=c_\sigma^{-1}b\)">\(\sigma b=c_\sigma^{-1}b\)</span>, proving the formula. In a cyclic extension with generator <span class="math" data-tex="\(s\)">\(s\)</span>, an element <span class="math" data-tex="\(c\)">\(c\)</span> of norm one gives such a cocycle by <span class="math" data-tex="\(c_{s^i}=c\,s(c)\cdots s^{i-1}(c)\)">\(c_{s^i}=c\,s(c)\cdots s^{i-1}(c)\)</span>; the norm-one condition makes it well defined at exponent <span class="math" data-tex="\(d\)">\(d\)</span>. Thus the norm-one elements are exactly the quotients <span class="math" data-tex="\(b/sb\)">\(b/sb\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.2 (the cyclic cohomology calculation used below).</strong> Let <span class="math" data-tex="\(C=\langle s\rangle\)">\(C=\langle s\rangle\)</span> have order <span class="math" data-tex="\(d\)">\(d\)</span>, acting on an abelian group <span class="math" data-tex="\(M\)">\(M\)</span>, written additively. Put <span class="math" data-tex="\(D=s-1\)">\(D=s-1\)</span> and <span class="math" data-tex="\(N=1+s+\cdots+s^{d-1}\)">\(N=1+s+\cdots+s^{d-1}\)</span>, and define
+<span class="math math-display" data-tex="\[
+T^0(M)=\ker D/\operatorname{im}N,\qquad
+T^1(M)=\ker N/\operatorname{im}D.
+\tag{0N1}
+\]">\[
+T^0(M)=\ker D/\operatorname{im}N,\qquad
+T^1(M)=\ker N/\operatorname{im}D.
+\tag{0N1}
+\]</span>
+For a short exact sequence, these two groups have an exact, repeating six-term sequence. If both are finite, put <span class="math" data-tex="\(h(M)=|T^0(M)|/|T^1(M)|\)">\(h(M)=|T^0(M)|/|T^1(M)|\)</span>. Then <span class="math" data-tex="\(h(B)=h(A)h(Q)\)">\(h(B)=h(A)h(Q)\)</span> for <span class="math" data-tex="\(0\to A\to B\to Q\to0\)">\(0\to A\to B\to Q\to0\)</span>, whenever two of the three quotients are defined. A finite <span class="math" data-tex="\(M\)">\(M\)</span> has <span class="math" data-tex="\(h(M)=1\)">\(h(M)=1\)</span>, and an induced module <span class="math" data-tex="\(\mathbf Z[C]\otimes M_0\)">\(\mathbf Z[C]\otimes M_0\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> permuting its factors, has both groups zero.</p>
+<p><strong>Proof.</strong> The operators obey <span class="math" data-tex="\(DN=ND=0\)">\(DN=ND=0\)</span>; alternate them in a two-periodic complex with every term <span class="math" data-tex="\(M\)">\(M\)</span>. A short exact sequence of groups gives a termwise exact sequence of these complexes. A closed element of <span class="math" data-tex="\(Q\)">\(Q\)</span> lifts to <span class="math" data-tex="\(B\)">\(B\)</span>; its differential lies in <span class="math" data-tex="\(A\)">\(A\)</span>, giving the connecting map. A different lift changes that element by a boundary, and applying the differential twice gives zero. This defines the six-term sequence. Exactness can be checked directly: a lift whose connecting element is a boundary can be corrected to a closed lift; a closed element mapping to a boundary can be corrected by a lifted preimage to lie in <span class="math" data-tex="\(A\)">\(A\)</span>. These two corrections at either parity prove exactness everywhere.</p>
+<p>For finite <span class="math" data-tex="\(M\)">\(M\)</span>, the identities <span class="math" data-tex="\(|\ker D||\operatorname{im}D|=|M|=|\ker N||\operatorname{im}N|\)">\(|\ker D||\operatorname{im}D|=|M|=|\ker N||\operatorname{im}N|\)</span> give <span class="math" data-tex="\(h(M)=1\)">\(h(M)=1\)</span>. For the short exact sequence, take the alternating product of orders in the six-term sequence: writing each order as the product of its adjacent image orders makes all image factors cancel. If only two pairs of groups are known finite, exactness first makes the third pair finite. On the induced module, invariants are constant tuples, every such tuple is a norm, and a tuple of coordinate sum zero is a successive-difference tuple. Thus (0N1) vanishes. These arguments apply also to multiplicative groups, interpreting <span class="math" data-tex="\(D\)">\(D\)</span> as a quotient and <span class="math" data-tex="\(N\)">\(N\)</span> as a product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.3 (unit calculation without a characteristic restriction).</strong> In a cyclic local extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, <span class="math" data-tex="\(h(\mathcal O_L^\times)=1\)">\(h(\mathcal O_L^\times)=1\)</span>. In fact there is an open invariant subgroup <span class="math" data-tex="\(V\subset\mathcal O_L^\times\)">\(V\subset\mathcal O_L^\times\)</span> with <span class="math" data-tex="\(T^0(V)=T^1(V)=0\)">\(T^0(V)=T^1(V)=0\)</span>.</p>
+<p><strong>Proof.</strong> Scale the normal basis of Lemma 0.1 by an element of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> so that its elements lie in <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>. Let <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span> be their <span class="math" data-tex="\(R\)">\(R\)</span>-span. It is an invariant free lattice isomorphic to <span class="math" data-tex="\(R[C]\)">\(R[C]\)</span>. There is an <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span> with <span class="math" data-tex="\(\pi^n\mathcal O_L\subset\Lambda&#x27;\subset\mathcal O_L\)">\(\pi^n\mathcal O_L\subset\Lambda&#x27;\subset\mathcal O_L\)</span>, where <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a uniformizer of <span class="math" data-tex="\(F\)">\(F\)</span>: express a finite integral basis in this <span class="math" data-tex="\(F\)">\(F\)</span>-basis and clear its denominators. Put <span class="math" data-tex="\(\Lambda=\pi^{n+1}\Lambda&#x27;\)">\(\Lambda=\pi^{n+1}\Lambda&#x27;\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Lambda\Lambda\subset\pi^{2n+2}\mathcal O_L
+\subset\pi^{n+2}\Lambda&#x27;=\pi\Lambda.
+\tag{0N2}
+\]">\[
+\Lambda\Lambda\subset\pi^{2n+2}\mathcal O_L
+\subset\pi^{n+2}\Lambda&#x27;=\pi\Lambda.
+\tag{0N2}
+\]</span>
+Consequently <span class="math" data-tex="\(V_i=1+\pi^i\Lambda\)">\(V_i=1+\pi^i\Lambda\)</span>, <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>, is a group. For the inverse use the convergent series <span class="math" data-tex="\((1+x)^{-1}=1-x+x^2-\cdots\)">\((1+x)^{-1}=1-x+x^2-\cdots\)</span>, with <span class="math" data-tex="\(x^j\in\pi^{j-1}\Lambda\)">\(x^j\in\pi^{j-1}\Lambda\)</span>; the finite lattice is complete and closed. Multiplication modulo <span class="math" data-tex="\(V_{i+1}\)">\(V_{i+1}\)</span> is addition, and
+<span class="math math-display" data-tex="\[
+V_i/V_{i+1}\simeq\Lambda/\pi\Lambda\simeq k_F[C]
+\tag{0N3}
+\]">\[
+V_i/V_{i+1}\simeq\Lambda/\pi\Lambda\simeq k_F[C]
+\tag{0N3}
+\]</span>
+as <span class="math" data-tex="\(C\)">\(C\)</span>-modules. Lemma 0.2 makes the alternating <span class="math" data-tex="\(D,N\)">\(D,N\)</span> complex exact on each quotient.</p>
+<p>It is exact on <span class="math" data-tex="\(V=V_0\)">\(V=V_0\)</span> as well. Given a closed element at either parity, reduce it in <span class="math" data-tex="\(V_i/V_{i+1}\)">\(V_i/V_{i+1}\)</span>, express that reduction as a boundary there, and lift its preimage to <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. Subtract the boundary, in additive group notation, to leave a closed error in <span class="math" data-tex="\(V_{i+1}\)">\(V_{i+1}\)</span>. Starting at <span class="math" data-tex="\(i=0\)">\(i=0\)</span> and repeating, the preimages converge in <span class="math" data-tex="\(V\)">\(V\)</span>, since <span class="math" data-tex="\(V=\varprojlim V/V_i\)">\(V=\varprojlim V/V_i\)</span>. The maps <span class="math" data-tex="\(D,N\)">\(D,N\)</span> are continuous, so the limit has boundary equal to the original element. This proves both vanishings without using a logarithm or exponential.</p>
+<p>The subgroup <span class="math" data-tex="\(V\)">\(V\)</span> is open, and the unit group is compact by the first lesson's residue-digit description, so <span class="math" data-tex="\(\mathcal O_L^\times/V\)">\(\mathcal O_L^\times/V\)</span> is finite. Lemma 0.2 then identifies the two cohomology groups of the units with those of this finite quotient and proves their quotient of orders is one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 0.4 (cyclic norm index and openness).</strong> For a cyclic extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>, in either characteristic,
+<span class="math math-display" data-tex="\[
+[F^\times:N_{L/F}L^\times]=d.
+\tag{0N4}
+\]">\[
+[F^\times:N_{L/F}L^\times]=d.
+\tag{0N4}
+\]</span>
+For every finite separable extension the norm subgroup contains an open neighborhood of one.</p>
+<p><strong>Proof.</strong> The valuation gives a short exact sequence
+<span class="math" data-tex="\(1\to\mathcal O_L^\times\to L^\times\to\mathbf Z\to0\)">\(1\to\mathcal O_L^\times\to L^\times\to\mathbf Z\to0\)</span>, with trivial action on <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Here <span class="math" data-tex="\(T^0(\mathbf Z)=\mathbf Z/d\mathbf Z\)">\(T^0(\mathbf Z)=\mathbf Z/d\mathbf Z\)</span>, <span class="math" data-tex="\(T^1(\mathbf Z)=0\)">\(T^1(\mathbf Z)=0\)</span>, so its quotient is <span class="math" data-tex="\(d\)">\(d\)</span>. Lemmas 0.2–0.3 give <span class="math" data-tex="\(h(L^\times)=d\)">\(h(L^\times)=d\)</span>. Lemma 0.1 makes <span class="math" data-tex="\(T^1(L^\times)=0\)">\(T^1(L^\times)=0\)</span>. Hence <span class="math" data-tex="\(T^0(L^\times)=F^\times/NL^\times\)">\(T^0(L^\times)=F^\times/NL^\times\)</span> has order <span class="math" data-tex="\(d\)">\(d\)</span>, proving (0N4).</p>
+<p>For a general finite separable extension, nondegeneracy of trace was proved in the first lesson, so choose <span class="math" data-tex="\(t\in L\)">\(t\in L\)</span> with <span class="math" data-tex="\(\operatorname{Tr}_{L/F}t=1\)">\(\operatorname{Tr}_{L/F}t=1\)</span>. The norm polynomial is
+<span class="math" data-tex="\(N(1+tX)=1+X+\sum_{j=2}^{[L:F]}c_jX^j\)">\(N(1+tX)=1+X+\sum_{j=2}^{[L:F]}c_jX^j\)</span>, with <span class="math" data-tex="\(c_j\in F\)">\(c_j\in F\)</span>: its linear coefficient is the sum of conjugates of <span class="math" data-tex="\(t\)">\(t\)</span>. Choose <span class="math" data-tex="\(a\)">\(a\)</span> so large that every <span class="math" data-tex="\(\pi^{a(j-1)}c_j\)">\(\pi^{a(j-1)}c_j\)</span> is in <span class="math" data-tex="\(\pi R\)">\(\pi R\)</span>. For any <span class="math" data-tex="\(y\in R\)">\(y\in R\)</span>, the equation
+<span class="math math-display" data-tex="\[
+X+\sum_{j=2}^{[L:F]}\pi^{a(j-1)}c_jX^j=y
+\tag{0N5}
+\]">\[
+X+\sum_{j=2}^{[L:F]}\pi^{a(j-1)}c_jX^j=y
+\tag{0N5}
+\]</span>
+has a solution in <span class="math" data-tex="\(R\)">\(R\)</span>, by the first lesson's Hensel proof, since it reduces to <span class="math" data-tex="\(X=y\)">\(X=y\)</span> with derivative one. Its norm is <span class="math" data-tex="\(N(1+t\pi^aX)=1+\pi^ay\)">\(N(1+t\pi^aX)=1+\pi^ay\)</span>, so every <span class="math" data-tex="\(1+\pi^aR\)">\(1+\pi^aR\)</span> element is a norm. This proves openness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The all-characteristic unit construction can be compared with <a href="https://www.math.ucla.edu/~sharifi/notes/algnum-ch09.html">Sharifi's free author notes, <em>Algebraic Number Theory</em>, §9.1, Lemma 9.1.3 and Proposition 9.1.4</a>. The cyclic complexes, inverse-limit correction and norm-index proof used here are written above. Lemmas 0.5–0.6 and Theorem 0.7 construct finite reciprocity and functoriality, and §0C proves cofinality and completion. These additional proofs are required because (0N4) alone does not construct a reciprocity homomorphism.</p>
+<h3 id="0a-the-finite-cohomology-calculation">0A. The finite cohomology calculation</h3>
+<p>We now construct finite local reciprocity from the norm calculation. The coefficient group <span class="math" data-tex="\(A\)">\(A\)</span> in the next lemma is written additively; later <span class="math" data-tex="\(A=L^\times\)">\(A=L^\times\)</span> is written multiplicatively.</p>
+<p><strong>Lemma 0.5 (cochains, transfer and the low-degree kernel).</strong> Finite-group cohomology has restriction, inflation and corestriction. For <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cor}_H^G\operatorname{Res}_H^G=[G:H].
+\tag{0C1}
+\]">\[
+\operatorname{Cor}_H^G\operatorname{Res}_H^G=[G:H].
+\tag{0C1}
+\]</span>
+<p>Positive groups are killed by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. For <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>, if <span class="math" data-tex="\(H^1(H,A)=0\)">\(H^1(H,A)=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^2(G/H,A^H)\xrightarrow{\mathrm{Inf}}H^2(G,A)
+\xrightarrow{\mathrm{Res}}H^2(H,A)
+\tag{0C2}
+\]">\[
+0\longrightarrow H^2(G/H,A^H)\xrightarrow{\mathrm{Inf}}H^2(G,A)
+\xrightarrow{\mathrm{Res}}H^2(H,A)
+\tag{0C2}
+\]</span>
+<p>is exact. Cup products commute with inflation, restriction, coefficient connecting maps and satisfy the projection formula for corestriction. Corestriction on <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is the coefficient norm. On <span class="math" data-tex="\(H^1(H,\mathbf Q/\mathbf Z)\)">\(H^1(H,\mathbf Q/\mathbf Z)\)</span>, with trivial coefficients, it sends a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to <span class="math" data-tex="\(\chi\circ\operatorname{Ver}_H^G\)">\(\chi\circ\operatorname{Ver}_H^G\)</span>.</p>
+<p><strong>Proof.</strong> Here are the constructions and the identities needed below. The homogeneous bar resolution has <span class="math" data-tex="\(P_r=\mathbf Z[G^{r+1}]\)">\(P_r=\mathbf Z[G^{r+1}]\)</span>, diagonal left action, boundary the alternating sum omitting a coordinate, and augmentation <span class="math" data-tex="\(P_0\to\mathbf Z\)">\(P_0\to\mathbf Z\)</span>. Its square is zero because each pair of omissions occurs twice with opposite signs. It is exact on underlying abelian groups: insertion of 1 at the beginning is a contraction, with <span class="math" data-tex="\(ds+sd=1\)">\(ds+sd=1\)</span>. Each <span class="math" data-tex="\(P_r\)">\(P_r\)</span> is free over <span class="math" data-tex="\(\mathbf Z[G]\)">\(\mathbf Z[G]\)</span>, since every diagonal orbit has a unique representative with first coordinate 1. Define cohomology by <span class="math" data-tex="\(\operatorname{Hom}_G(P_\bullet,A)\)">\(\operatorname{Hom}_G(P_\bullet,A)\)</span>. Equivalently use functions <span class="math" data-tex="\(f:G^r\to A\)">\(f:G^r\to A\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+(df)(g_1,\ldots,g_{r+1})=g_1f(g_2,\ldots,g_{r+1})
++\sum_{i=1}^r(-1)^if(g_1,\ldots,g_ig_{i+1},\ldots,g_{r+1})
++(-1)^{r+1}f(g_1,\ldots,g_r).
+\tag{0C3}
+\]">\[
+(df)(g_1,\ldots,g_{r+1})=g_1f(g_2,\ldots,g_{r+1})
++\sum_{i=1}^r(-1)^if(g_1,\ldots,g_ig_{i+1},\ldots,g_{r+1})
++(-1)^{r+1}f(g_1,\ldots,g_r).
+\tag{0C3}
+\]</span>
+<p>The identification evaluates a homogeneous cochain on <span class="math" data-tex="\((1,g_1,g_1g_2,\ldots,g_1\cdots g_r)\)">\((1,g_1,g_1g_2,\ldots,g_1\cdots g_r)\)</span>; its inverse sends <span class="math" data-tex="\((h_0,\ldots,h_r)\)">\((h_0,\ldots,h_r)\)</span> to <span class="math" data-tex="\(h_0f(h_0^{-1}h_1,\ldots,h_{r-1}^{-1}h_r)\)">\(h_0f(h_0^{-1}h_1,\ldots,h_{r-1}^{-1}h_r)\)</span>. These formulas intertwine the boundaries. Short exact coefficient sequences give long exact sequences by the lift-and-correct argument of Lemma 0.2, since the bar terms are free.</p>
+<p>The same <span class="math" data-tex="\(P_\bullet\)">\(P_\bullet\)</span>, restricted to <span class="math" data-tex="\(H\)">\(H\)</span>, is a free <span class="math" data-tex="\(H\)">\(H\)</span>-resolution of <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. It computes <span class="math" data-tex="\(H\)">\(H\)</span>-cohomology: between it and the <span class="math" data-tex="\(H\)">\(H\)</span>-bar resolution, construct augmentation-preserving chain maps inductively, lifting each basis element's boundary through the next surjective boundary in the exact target. Two such maps are chain homotopic by the same induction on their difference. Thus the comparison is canonical on cohomology. Restriction views a <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant cochain as <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant. If <span class="math" data-tex="\(\alpha:P_r\to A\)">\(\alpha:P_r\to A\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant, define</p>
+<span class="math math-display" data-tex="\[
+(T\alpha)(x)=\sum_{t\in G/H}t\alpha(t^{-1}x).
+\tag{0C4}
+\]">\[
+(T\alpha)(x)=\sum_{t\in G/H}t\alpha(t^{-1}x).
+\tag{0C4}
+\]</span>
+<p>Changing <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(th\)">\(th\)</span> leaves its summand unchanged. Reindexing cosets proves <span class="math" data-tex="\(G\)">\(G\)</span>-equivariance; the boundary commutes with (0C4). This defines corestriction. For a <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant cochain every summand is the original cochain, proving (0C1) already on complexes. Restriction to the trivial group has zero positive cohomology, by the contraction above, so (0C1) kills positive cohomology by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. In degree zero (0C4) is <span class="math" data-tex="\(\sum_t ta\)">\(\sum_t ta\)</span>, namely the norm in multiplicative notation.</p>
+<p>For cup products split a homogeneous tuple at its common coordinate: <span class="math" data-tex="\((g_0,\ldots,g_{r+s})\mapsto(g_0,\ldots,g_r)\otimes(g_r,\ldots,g_{r+s})\)">\((g_0,\ldots,g_{r+s})\mapsto(g_0,\ldots,g_r)\otimes(g_r,\ldots,g_{r+s})\)</span>. Omissions on either side give the Leibniz rule; the two terms at the common coordinate cancel. Consequently it descends to cohomology. Restriction and inflation commute with this formula. Lifting a cocycle through a coefficient surjection and applying its boundary proves compatibility with connecting maps, with sign <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span> for the second factor whenever the corresponding tensor coefficient sequence is exact. For an <span class="math" data-tex="\(H\)">\(H\)</span>-cochain <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>-cochain <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, each summand in (0C4) applied to their cup product is</p>
+<span class="math math-display" data-tex="\[
+t\alpha(t^{-1}g_0,\ldots,t^{-1}g_r)
+\otimes t\beta(t^{-1}g_r,\ldots,t^{-1}g_{r+s})
+=t\alpha(t^{-1}g_0,\ldots,t^{-1}g_r)\otimes\beta(g_r,\ldots,g_{r+s}).
+\]">\[
+t\alpha(t^{-1}g_0,\ldots,t^{-1}g_r)
+\otimes t\beta(t^{-1}g_r,\ldots,t^{-1}g_{r+s})
+=t\alpha(t^{-1}g_0,\ldots,t^{-1}g_r)\otimes\beta(g_r,\ldots,g_{r+s}).
+\]</span>
+<p>Summing proves the projection formula, without a flatness assumption on coefficients. Below the connecting map is for <span class="math" data-tex="\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)">\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)</span>; its commutation with restriction and corestriction follows directly from their cochain maps. No tensor-exactness assertion is needed for that commutation.</p>
+<p>Write <span class="math" data-tex="\(gt_i=t_{g(i)}h_i(g)\)">\(gt_i=t_{g(i)}h_i(g)\)</span> for left <span class="math" data-tex="\(H\)">\(H\)</span>-coset representatives. The product of the <span class="math" data-tex="\(h_i(g)\)">\(h_i(g)\)</span>, in <span class="math" data-tex="\(H^{\mathrm{ab}}\)">\(H^{\mathrm{ab}}\)</span>, is independent of representatives: replacing <span class="math" data-tex="\(t_i\)">\(t_i\)</span> by <span class="math" data-tex="\(t_ik_i\)">\(t_ik_i\)</span> changes the factors by <span class="math" data-tex="\(k_{g(i)}^{-1}h_i(g)k_i\)">\(k_{g(i)}^{-1}h_i(g)k_i\)</span>, whose extra products cancel. For <span class="math" data-tex="\(gg&#x27;\)">\(gg&#x27;\)</span>, reindexing the factors gives their two products, so this is the homomorphism <span class="math" data-tex="\(\operatorname{Ver}\)">\(\operatorname{Ver}\)</span>. To compute (0C4) on a character, take right-coset representatives <span class="math" data-tex="\(t_i^{-1}\)">\(t_i^{-1}\)</span>, write <span class="math" data-tex="\(x=h(x)r(x)\)">\(x=h(x)r(x)\)</span>, and represent the character by the homogeneous <span class="math" data-tex="\(H\)">\(H\)</span>-cochain <span class="math" data-tex="\(\chi(h(x_1))-\chi(h(x_0))\)">\(\chi(h(x_1))-\chi(h(x_0))\)</span>. At <span class="math" data-tex="\((1,g)\)">\((1,g)\)</span>, (0C4) sums <span class="math" data-tex="\(\chi(h(t_i^{-1}g))\)">\(\chi(h(t_i^{-1}g))\)</span>. Inverting <span class="math" data-tex="\(t_i^{-1}g=h r\)">\(t_i^{-1}g=h r\)</span> expresses the left-coset permutation for <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>; the sum is <span class="math" data-tex="\(-\chi(\operatorname{Ver}(g^{-1}))=\chi(\operatorname{Ver}(g))\)">\(-\chi(\operatorname{Ver}(g^{-1}))=\chi(\operatorname{Ver}(g))\)</span>. This proves the stated character formula.</p>
+<p>For (0C2) we give a low-degree argument. A normalized 2-cocycle <span class="math" data-tex="\(c\)">\(c\)</span> defines an extension <span class="math" data-tex="\(A\times G\)">\(A\times G\)</span> by <span class="math" data-tex="\((a,g)(b,h)=(a+gb+c(g,h),gh)\)">\((a,g)(b,h)=(a+gb+c(g,h),gh)\)</span>; its cocycle identity is exactly associativity. A section of any such extension recovers <span class="math" data-tex="\(c\)">\(c\)</span>, and changing the section adds a coboundary. A cocycle can be normalized by its value at the identity; thus this description covers every class. Vanishing of a restriction means the extension splits over <span class="math" data-tex="\(H\)">\(H\)</span>. Fix its splitting <span class="math" data-tex="\(H\to\widetilde G\)">\(H\to\widetilde G\)</span>. Any lift of <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> conjugates it, with its argument conjugated back by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>, to another splitting over <span class="math" data-tex="\(H\)">\(H\)</span>; their difference is a 1-cocycle. The hypothesis <span class="math" data-tex="\(H^1(H,A)=0\)">\(H^1(H,A)=0\)</span> permits correcting that lift by an element of <span class="math" data-tex="\(A\)">\(A\)</span> to normalize the fixed splitting. Its normalizer therefore maps onto <span class="math" data-tex="\(G\)">\(G\)</span>, has kernel <span class="math" data-tex="\(A^H\)">\(A^H\)</span>, and contains the split <span class="math" data-tex="\(H\)">\(H\)</span> as a normal subgroup. Quotienting by it gives an extension of <span class="math" data-tex="\(G/H\)">\(G/H\)</span> by <span class="math" data-tex="\(A^H\)">\(A^H\)</span>. Inflating that extension and then extending its coefficient kernel to <span class="math" data-tex="\(A\)">\(A\)</span> recovers the original extension: the normalizer and <span class="math" data-tex="\(A\)">\(A\)</span> together exhaust it and intersect in <span class="math" data-tex="\(A^H\)">\(A^H\)</span>. This proves exactness at the middle. If an inflated extension splits over <span class="math" data-tex="\(G\)">\(G\)</span>, correct its splitting by an element of <span class="math" data-tex="\(A\)">\(A\)</span> so it agrees with the canonical splitting on <span class="math" data-tex="\(H\)">\(H\)</span>, again using <span class="math" data-tex="\(H^1(H,A)=0\)">\(H^1(H,A)=0\)</span>. It then descends to a splitting of that quotient extension. This proves injectivity. All constructions commute with field embeddings and with their induced coefficient maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.6 (the local invariant, without using reciprocity).</strong> Put</p>
+<span class="math math-display" data-tex="\[
+B(F)=H^2_{\mathrm{cont}}(G_F,(F^s)^\times).
+\]">\[
+B(F)=H^2_{\mathrm{cont}}(G_F,(F^s)^\times).
+\]</span>
+<p>There is a canonical isomorphism <span class="math" data-tex="\(\operatorname{inv}_F:B(F)\simeq\mathbf Q/\mathbf Z\)">\(\operatorname{inv}_F:B(F)\simeq\mathbf Q/\mathbf Z\)</span>. Its normalization on an unramified cyclic extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, with arithmetic Frobenius generator and parameter <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>, is <span class="math" data-tex="\(v_F(a)/n\)">\(v_F(a)/n\)</span>. For finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, restriction multiplies invariants by <span class="math" data-tex="\([E:F]\)">\([E:F]\)</span>, and corestriction preserves them. A finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span> has relative group <span class="math" data-tex="\(H^2(\operatorname{Gal}(L/F),L^\times)\)">\(H^2(\operatorname{Gal}(L/F),L^\times)\)</span> exactly the subgroup <span class="math" data-tex="\(\frac1d\mathbf Z/\mathbf Z\)">\(\frac1d\mathbf Z/\mathbf Z\)</span>.</p>
+<p><strong>Proof.</strong> For a cyclic group the free resolution alternating <span class="math" data-tex="\(s-1\)">\(s-1\)</span> and <span class="math" data-tex="\(1+\cdots+s^{n-1}\)">\(1+\cdots+s^{n-1}\)</span> is exact: coefficient comparison in <span class="math" data-tex="\(\mathbf Z[C]\)">\(\mathbf Z[C]\)</span> says that a difference-zero element is a multiple of the norm, and a coefficient-sum-zero element is a successive difference. Resolution comparison, proved in Lemma 0.5, makes this compute ordinary cohomology too. In particular <span class="math" data-tex="\(H^2(C,L^\times)=F^\times/NL^\times\)">\(H^2(C,L^\times)=F^\times/NL^\times\)</span>, of order <span class="math" data-tex="\(n\)">\(n\)</span> by Proposition 0.4; <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span> by Hilbert 90.</p>
+<p>For arbitrary finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, the order of this relative <span class="math" data-tex="\(H^2\)">\(H^2\)</span> divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. First suppose <span class="math" data-tex="\(G\)">\(G\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group and induct on its order, using a normal subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of index <span class="math" data-tex="\(p\)">\(p\)</span>. Such a subgroup exists: the class equation gives a nontrivial center, Cauchy's argument gives a central subgroup of order <span class="math" data-tex="\(p\)">\(p\)</span>, and induction on the quotient gives an order-<span class="math" data-tex="\(p\)">\(p\)</span> quotient, unless <span class="math" data-tex="\(G\)">\(G\)</span> itself has order <span class="math" data-tex="\(p\)">\(p\)</span>. Cauchy's argument is the cyclic permutation of tuples <span class="math" data-tex="\((x_1,\ldots,x_p)\)">\((x_1,\ldots,x_p)\)</span> with product one: there are <span class="math" data-tex="\(|G|^{p-1}\)">\(|G|^{p-1}\)</span> tuples, nonfixed orbits have size <span class="math" data-tex="\(p\)">\(p\)</span>, and fixed tuples are <span class="math" data-tex="\((x,\ldots,x)\)">\((x,\ldots,x)\)</span> with <span class="math" data-tex="\(x^p=1\)">\(x^p=1\)</span>. Divisibility by <span class="math" data-tex="\(p\)">\(p\)</span> forces a nonidentity such <span class="math" data-tex="\(x\)">\(x\)</span>. Hilbert 90 and (0C2) make the degree-two restriction kernel have order <span class="math" data-tex="\(p\)">\(p\)</span>; its image has order dividing <span class="math" data-tex="\(|H|\)">\(|H|\)</span> by induction. The asserted bound follows.</p>
+<p>For a general <span class="math" data-tex="\(G\)">\(G\)</span>, use a Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup <span class="math" data-tex="\(P\)">\(P\)</span>. For completeness, take a maximal <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup and let it act on <span class="math" data-tex="\(G/P\)">\(G/P\)</span>. Its fixed cosets are <span class="math" data-tex="\(N_G(P)/P\)">\(N_G(P)/P\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> divided <span class="math" data-tex="\([G:P]\)">\([G:P]\)</span>, orbit counting and Cauchy's argument in <span class="math" data-tex="\(N_G(P)/P\)">\(N_G(P)/P\)</span> would produce a larger <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup, a contradiction. Thus the index is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Equation (0C1) makes restriction injective on the <span class="math" data-tex="\(p\)">\(p\)</span>-primary part of <span class="math" data-tex="\(H^2\)">\(H^2\)</span>; the <span class="math" data-tex="\(p\)">\(p\)</span>-group bound makes that part finite of order dividing <span class="math" data-tex="\(|P|\)">\(|P|\)</span>. The <span class="math" data-tex="\(|G|\)">\(|G|\)</span>-annihilation in Lemma 0.5 permits primary decomposition, so the whole order divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F_n/F\)">\(F_n/F\)</span> be the unramified degree-<span class="math" data-tex="\(n\)">\(n\)</span> extension of the first lesson. Its unit norms are onto: the cyclic norm index is <span class="math" data-tex="\(n\)">\(n\)</span>, while the valuation of a norm is <span class="math" data-tex="\(n\)">\(n\)</span> times the valuation, so that index is already accounted for by valuations. Norm-one units are quotients <span class="math" data-tex="\(b/sb\)">\(b/sb\)</span> by Hilbert 90, and multiplying <span class="math" data-tex="\(b\)">\(b\)</span> by a base-field uniformizer power makes it a unit. Thus units have zero cyclic <span class="math" data-tex="\(H^1,H^2\)">\(H^1,H^2\)</span>. Valuation identifies the relative degree-two group with <span class="math" data-tex="\(H^2(C_n,\mathbf Z)=\mathbf Z/n\mathbf Z\)">\(H^2(C_n,\mathbf Z)=\mathbf Z/n\mathbf Z\)</span>. The carry cocycle for the parameter <span class="math" data-tex="\(a\)">\(a\)</span> has invariant <span class="math" data-tex="\(v_F(a)/n\)">\(v_F(a)/n\)</span>. Equivalently the boundary for <span class="math" data-tex="\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)">\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)</span> identifies it with the character of arithmetic Frobenius of that value. Averaging kills positive cohomology of rational coefficients, justifying that boundary identification. Inflation preserves the character's value, so the union of unramified relative groups is <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>.</p>
+<p>For any finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, this unramified invariant is multiplied on restriction by <span class="math" data-tex="\(ef=[E:F]\)">\(ef=[E:F]\)</span>: residue Frobenius becomes its <span class="math" data-tex="\(f\)">\(f\)</span>-th power, and the normalized valuation cocycle is multiplied by the ramification index <span class="math" data-tex="\(e\)">\(e\)</span>. These two operations commute with the boundary just described.</p>
+<p>Now take arbitrary Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Every unramified class in <span class="math" data-tex="\(\frac1d\mathbf Z/\mathbf Z\)">\(\frac1d\mathbf Z/\mathbf Z\)</span> restricts to zero over <span class="math" data-tex="\(L\)">\(L\)</span>, by that multiplication calculation. In the finite compositum <span class="math" data-tex="\(LF_d/F\)">\(LF_d/F\)</span>, (0C2) and Hilbert 90 place it in <span class="math" data-tex="\(H^2(G,L^\times)\)">\(H^2(G,L^\times)\)</span>. This embeds a subgroup of order <span class="math" data-tex="\(d\)">\(d\)</span>; the previously proved bound forces equality. Continuous cocycles have finite image and factor through a finite quotient after adjoining their finitely many coefficients. To justify the factorization, each fibre of a continuous function from a profinite finite product to a discrete set is compact and open; finitely many coset boxes cover those fibres, and the intersection of their open normal subgroups gives a common finite quotient. Enlarge the fixed field to contain the coefficients. Hilbert 90 and (0C2) make all these relative inflations injective. Taking their directed union therefore proves <span class="math" data-tex="\(B(F)=\mathbf Q/\mathbf Z\)">\(B(F)=\mathbf Q/\mathbf Z\)</span>, and the restriction formula now applies to every class. Finally restriction <span class="math" data-tex="\(B(F)\to B(E)\)">\(B(F)\to B(E)\)</span> is onto, since multiplication by <span class="math" data-tex="\([E:F]\)">\([E:F]\)</span> on <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span> is onto. Write <span class="math" data-tex="\(c=\operatorname{Res}b\)">\(c=\operatorname{Res}b\)</span> and apply (0C1); this proves <span class="math" data-tex="\(\operatorname{inv}_F(\operatorname{Cor}c)=\operatorname{inv}_E(c)\)">\(\operatorname{inv}_F(\operatorname{Cor}c)=\operatorname{inv}_E(c)\)</span>. No reciprocity theorem was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="0b-finite-reciprocity-and-its-functoriality">0B. Finite reciprocity and its functoriality</h3>
+<p><strong>Theorem 0.7 (finite abelian reciprocity).</strong> There is a canonical continuous dense homomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{rec}^{\mathrm{ar}}_F:F^\times\longrightarrow G_F^{\mathrm{ab}}
+\tag{0C5}
+\]">\[
+\operatorname{rec}^{\mathrm{ar}}_F:F^\times\longrightarrow G_F^{\mathrm{ab}}
+\tag{0C5}
+\]</span>
+<p>whose projection to each finite abelian <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is onto with kernel <span class="math" data-tex="\(N_{L/F}L^\times\)">\(N_{L/F}L^\times\)</span>. On an unramified quotient it sends a uniformizer to arithmetic Frobenius. For every finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{rec}^{\mathrm{ar}}_F(N_{E/F}x)
+=\operatorname{incl}\bigl(\operatorname{rec}^{\mathrm{ar}}_E(x)\bigr),
+\qquad
+\operatorname{rec}^{\mathrm{ar}}_E(a)
+=\operatorname{Ver}_{G_E}^{G_F}\bigl(\operatorname{rec}^{\mathrm{ar}}_F(a)\bigr).
+\tag{0C6}
+\]">\[
+\operatorname{rec}^{\mathrm{ar}}_F(N_{E/F}x)
+=\operatorname{incl}\bigl(\operatorname{rec}^{\mathrm{ar}}_E(x)\bigr),
+\qquad
+\operatorname{rec}^{\mathrm{ar}}_E(a)
+=\operatorname{Ver}_{G_E}^{G_F}\bigl(\operatorname{rec}^{\mathrm{ar}}_F(a)\bigr).
+\tag{0C6}
+\]</span>
+<p>Here <span class="math" data-tex="\(x\in E^\times,a\in F^\times\)">\(x\in E^\times,a\in F^\times\)</span>. Field conjugation commutes with reciprocity. For finite abelian <span class="math" data-tex="\(L,M/F\)">\(L,M/F\)</span>, <span class="math" data-tex="\(NL^\times\subseteq NM^\times\)">\(NL^\times\subseteq NM^\times\)</span> exactly when <span class="math" data-tex="\(M\subseteq L\)">\(M\subseteq L\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\chi:G_F\to\mathbf Q/\mathbf Z\)">\(\chi:G_F\to\mathbf Q/\mathbf Z\)</span> be a finite continuous character. Its boundary <span class="math" data-tex="\(\delta\chi\)">\(\delta\chi\)</span> is represented by the integer cocycle obtained from any rational lifts: <span class="math" data-tex="\(\widetilde\chi(g)+\widetilde\chi(h)-\widetilde\chi(gh)\)">\(\widetilde\chi(g)+\widetilde\chi(h)-\widetilde\chi(gh)\)</span>. Sending an integer <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(a^r\)">\(a^r\)</span>, for <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>, defines its parameter class <span class="math" data-tex="\(a\cup\delta\chi\in B(F)\)">\(a\cup\delta\chi\in B(F)\)</span>. It is independent of lifts, and additive in <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and multiplicative in <span class="math" data-tex="\(a\)">\(a\)</span>. Define reciprocity by</p>
+<span class="math math-display" data-tex="\[
+\chi\bigl(\operatorname{rec}^{\mathrm{ar}}_F(a)\bigr)
+=\operatorname{inv}_F(a\cup\delta\chi).
+\tag{0C7}
+\]">\[
+\chi\bigl(\operatorname{rec}^{\mathrm{ar}}_F(a)\bigr)
+=\operatorname{inv}_F(a\cup\delta\chi).
+\tag{0C7}
+\]</span>
+<p>This defines compatible elements in every finite abelian quotient. Here is the finite duality justification. Characters of a subgroup into <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span> extend to a finite abelian group: when adjoining a generator <span class="math" data-tex="\(b\)">\(b\)</span> whose first multiple in the subgroup is <span class="math" data-tex="\(nb\)">\(nb\)</span>, choose a value whose <span class="math" data-tex="\(n\)">\(n\)</span>-fold multiple is the prescribed value of <span class="math" data-tex="\(nb\)">\(nb\)</span>. Divisibility of <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span> permits the choice. Induction and the cyclic calculation show that there are exactly <span class="math" data-tex="\(|A|\)">\(|A|\)</span> characters of a finite abelian <span class="math" data-tex="\(A\)">\(A\)</span>, and they separate its points. Evaluation therefore identifies <span class="math" data-tex="\(A\)">\(A\)</span> with its double dual.</p>
+<p>For a character of order <span class="math" data-tex="\(n\)">\(n\)</span>, choose the generator <span class="math" data-tex="\(s\)">\(s\)</span> of its cyclic quotient with <span class="math" data-tex="\(\chi(s)=1/n\)">\(\chi(s)=1/n\)</span>. In the extension representing <span class="math" data-tex="\(a\cup\delta\chi\)">\(a\cup\delta\chi\)</span>, a lift <span class="math" data-tex="\(S\)">\(S\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span> satisfies <span class="math" data-tex="\(S^n=a\)">\(S^n=a\)</span>: multiplying the rational-lift carry cocycle around the <span class="math" data-tex="\(n\)">\(n\)</span> powers gives that relation. Replacing <span class="math" data-tex="\(S\)">\(S\)</span> by <span class="math" data-tex="\(bS\)">\(bS\)</span> replaces <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(N_{L/F}(b)a\)">\(N_{L/F}(b)a\)</span>, and every cyclic extension class is obtained this way, by the cyclic resolution in Lemma 0.6. Thus the parameter map is precisely <span class="math" data-tex="\(F^\times/NL^\times\simeq\frac1n\mathbf Z/\mathbf Z\)">\(F^\times/NL^\times\simeq\frac1n\mathbf Z/\mathbf Z\)</span>. A nonzero character therefore gives a nonzero function of <span class="math" data-tex="\(a\)">\(a\)</span>. For a finite abelian quotient <span class="math" data-tex="\(A\)">\(A\)</span>, the map in (0C7) consequently has image all of <span class="math" data-tex="\(A\)">\(A\)</span>: otherwise a nonzero character of its quotient by that image would vanish on every <span class="math" data-tex="\(a\)">\(a\)</span>, a contradiction.</p>
+<p>Norms from an abelian <span class="math" data-tex="\(L/F\)">\(L/F\)</span> lie in the projection kernel. Indeed (0C4) and the projection formula give</p>
+<span class="math math-display" data-tex="\[
+(N_{L/F}x)\cup\delta\chi
+=\operatorname{Cor}_{L/F}\bigl(x\cup\operatorname{Res}_{L/F}\delta\chi\bigr)=0
+\]">\[
+(N_{L/F}x)\cup\delta\chi
+=\operatorname{Cor}_{L/F}\bigl(x\cup\operatorname{Res}_{L/F}\delta\chi\bigr)=0
+\]</span>
+<p>for every character of <span class="math" data-tex="\(\operatorname{Gal}(L/F)\)">\(\operatorname{Gal}(L/F)\)</span>. The norm quotient has order at most <span class="math" data-tex="\([L:F]\)">\([L:F]\)</span>: take a tower of cyclic prime-degree extensions, using a subgroup series of the finite abelian Galois group, and apply Proposition 0.4 at each step. Such a series exists by Cauchy's argument and induction on the abelian quotient. Norm transitivity follows by grouping the conjugates in the norm product. At a tower step <span class="math" data-tex="\(L/M/F\)">\(L/M/F\)</span>, the quotient of <span class="math" data-tex="\(N_{M/F}M^\times\)">\(N_{M/F}M^\times\)</span> by <span class="math" data-tex="\(N_{L/F}L^\times\)">\(N_{L/F}L^\times\)</span> is an image of <span class="math" data-tex="\(M^\times/N_{L/M}L^\times\)">\(M^\times/N_{L/M}L^\times\)</span>, so its index is at most <span class="math" data-tex="\([L:M]\)">\([L:M]\)</span>. Induction gives the bound. Surjectivity already makes the reciprocity kernel have index exactly <span class="math" data-tex="\([L:F]\)">\([L:F]\)</span>, hence the two kernels agree. Proposition 0.4 proves openness of that kernel, and thus continuity. The compatible finite surjections prove density of (0C5).</p>
+<p>For the norm identity in (0C6), test on any finite character of <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Corestriction preserves invariants by Lemma 0.6, and its projection formula changes the parameter <span class="math" data-tex="\(x\)">\(x\)</span> into <span class="math" data-tex="\(N_{E/F}x\)">\(N_{E/F}x\)</span>; (0C7) gives equality. For the transfer identity test on a finite character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(G_E\)">\(G_E\)</span>. Since <span class="math" data-tex="\(a\)">\(a\)</span> is a base-field parameter,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_E(a\cup\delta\chi)
+=\operatorname{inv}_F\bigl(a\cup\delta(\operatorname{Cor}\chi)\bigr).
+\]">\[
+\operatorname{inv}_E(a\cup\delta\chi)
+=\operatorname{inv}_F\bigl(a\cup\delta(\operatorname{Cor}\chi)\bigr).
+\]</span>
+<p>Lemma 0.5 identifies <span class="math" data-tex="\(\operatorname{Cor}\chi\)">\(\operatorname{Cor}\chi\)</span> with <span class="math" data-tex="\(\chi\circ\operatorname{Ver}\)">\(\chi\circ\operatorname{Ver}\)</span>, proving the second identity. These operations and the unramified invariant are preserved by the valued field isomorphisms in Galois conjugation, proving conjugation compatibility. For unramified characters (0C7) is <span class="math" data-tex="\(\chi(\operatorname{Frob}_{\mathrm{ar}})v_F(a)\)">\(\chi(\operatorname{Frob}_{\mathrm{ar}})v_F(a)\)</span>, by the carry-cocycle calculation, so it gives the stated normalization.</p>
+<p>Finally take the compositum <span class="math" data-tex="\(LM\)">\(LM\)</span>. Its reciprocity map is onto. The inverse images of the two projection kernels are respectively <span class="math" data-tex="\(NL^\times,NM^\times\)">\(NL^\times,NM^\times\)</span>, by what was just proved. Inclusion of norm groups therefore is exactly inclusion of those Galois kernels; taking fixed fields reverses it and gives <span class="math" data-tex="\(M\subseteq L\)">\(M\subseteq L\)</span>. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These proofs use the finite cochains and transfer construction in <a href="https://www.math.ucla.edu/~sharifi/notes/groupcoh-ch01.html">Sharifi's free <em>Group and Galois Cohomology</em>, §§1.2–1.5, 1.8–1.9</a>, the unramified invariant calculation in <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">Milne's free <em>Class Field Theory</em>, III§§1–2</a>, and the character and norm-group framework in <a href="https://www.math.ucla.edu/~sharifi/notes/algnum-ch08.html">Sharifi's free <em>Algebraic Number Theory</em>, §8.1–§8.2</a>. Every used cohomological and reciprocity identity has been constructed above. The finite abelian norm calculation avoids assuming the negative-degree Tate cup-product theorem. The formal-module cofinality argument in §0C will identify the completed multiplicative group with the whole abelian Galois group; finite surjectivity alone is not that identification.</p>
+<h3 id="0c-formal-modules-and-abelian-cofinality">0C. Formal modules and abelian cofinality</h3>
+<p><strong>Lemma 0.8A (integral formal modules, in both characteristics).</strong> Put <span class="math" data-tex="\(R=\mathcal O_F\)">\(R=\mathcal O_F\)</span>, choose a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and write <span class="math" data-tex="\(q=|R/\pi R|\)">\(q=|R/\pi R|\)</span>. Let <span class="math" data-tex="\(\mathcal F_\pi\)">\(\mathcal F_\pi\)</span> consist of the series
+<span class="math math-display" data-tex="\[
+f(X)\in R[[X]],\qquad f(X)=\pi X+O(X^2),\qquad f(X)\equiv X^q\pmod\pi.
+\tag{0LT1}
+\]">\[
+f(X)\in R[[X]],\qquad f(X)=\pi X+O(X^2),\qquad f(X)\equiv X^q\pmod\pi.
+\tag{0LT1}
+\]</span>
+Every <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span> admits a unique commutative formal group law <span class="math" data-tex="\(F_f\)">\(F_f\)</span> for which <span class="math" data-tex="\(f\)">\(f\)</span> is an endomorphism. There are integral scalar endomorphisms <span class="math" data-tex="\([a]_f=aX+O(X^2)\)">\([a]_f=aX+O(X^2)\)</span> for all <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>, satisfying <span class="math" data-tex="\([a+b]_f=F_f([a]_f,[b]_f)\)">\([a+b]_f=F_f([a]_f,[b]_f)\)</span>, <span class="math" data-tex="\([ab]_f=[a]_f\circ[b]_f\)">\([ab]_f=[a]_f\circ[b]_f\)</span>, and <span class="math" data-tex="\([\pi]_f=f\)">\([\pi]_f=f\)</span>. For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span>, their formal modules are canonically isomorphic by an integral series with linear coefficient one.</p>
+<p><strong>Proof.</strong> We give the coefficient construction. For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span> and a linear form <span class="math" data-tex="\(L\)">\(L\)</span> in any finite number of variables, seek <span class="math" data-tex="\(H=L+O(\text{degree }2)\)">\(H=L+O(\text{degree }2)\)</span> with
+<span class="math math-display" data-tex="\[
+f(H(X_1,\ldots,X_r))=H(g(X_1),\ldots,g(X_r)).
+\tag{0LT2}
+\]">\[
+f(H(X_1,\ldots,X_r))=H(g(X_1),\ldots,g(X_r)).
+\tag{0LT2}
+\]</span>
+Suppose this holds through degree <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, and let <span class="math" data-tex="\(E_d\)">\(E_d\)</span> be the degree-<span class="math" data-tex="\(d\)">\(d\)</span> part of the left side minus the right side. Modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, that difference is <span class="math" data-tex="\(\overline H^{q}-\overline H(X_1^q,\ldots,X_r^q)=0\)">\(\overline H^{q}-\overline H(X_1^q,\ldots,X_r^q)=0\)</span>: coefficients lie in <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Adding a homogeneous <span class="math" data-tex="\(C_d\)">\(C_d\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> changes the error to <span class="math" data-tex="\(E_d+(\pi-\pi^d)C_d\)">\(E_d+(\pi-\pi^d)C_d\)</span>. Since <span class="math" data-tex="\(\pi^{d-1}-1\)">\(\pi^{d-1}-1\)</span> is a unit, the unique correction
+<span class="math math-display" data-tex="\[
+C_d=-\frac{E_d}{\pi(1-\pi^{d-1})}
+\tag{0LT3}
+\]">\[
+C_d=-\frac{E_d}{\pi(1-\pi^{d-1})}
+\tag{0LT3}
+\]</span>
+is integral. Induction gives a unique series. All compositions are defined coefficient by coefficient because their constant terms vanish.</p>
+<p>Take <span class="math" data-tex="\(f=g\)">\(f=g\)</span> and <span class="math" data-tex="\(L=X+Y\)">\(L=X+Y\)</span> to obtain <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. Swapping variables gives another solution with the same linear form, hence commutativity. The two associative composites have linear form <span class="math" data-tex="\(X+Y+Z\)">\(X+Y+Z\)</span> and satisfy (0LT2), hence coincide. Substitution <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span> gives the unique solution with linear term <span class="math" data-tex="\(X\)">\(X\)</span>, namely <span class="math" data-tex="\(X\)">\(X\)</span>; thus the identity is zero. The equation <span class="math" data-tex="\(F_f(X,i(X))=0\)">\(F_f(X,i(X))=0\)</span> determines each coefficient of <span class="math" data-tex="\(i=-X+O(X^2)\)">\(i=-X+O(X^2)\)</span> successively with coefficient one, proving the inverse axiom. In particular
+<span class="math" data-tex="\(F_f(X,Y)=X+Y+XYC(X,Y)\)">\(F_f(X,Y)=X+Y+XYC(X,Y)\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> integral.</p>
+<p>Apply (0LT2) with linear term <span class="math" data-tex="\(aX\)">\(aX\)</span> to obtain <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span>. The series <span class="math" data-tex="\([a]_f(F_f(X,Y))\)">\([a]_f(F_f(X,Y))\)</span> and <span class="math" data-tex="\(F_f([a]_f(X),[a]_f(Y))\)">\(F_f([a]_f(X),[a]_f(Y))\)</span> have the same linear form and intertwining equation, so are equal. The same uniqueness proves the stated addition and composition identities, <span class="math" data-tex="\([1]_f=X\)">\([1]_f=X\)</span>, and <span class="math" data-tex="\([\pi]_f=f\)">\([\pi]_f=f\)</span>. For two choices of <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, the solution of <span class="math" data-tex="\(gH=Hf\)">\(gH=Hf\)</span> with linear coefficient one is a homomorphism by the same two-variable comparison. Reversing <span class="math" data-tex="\(f,g\)">\(f,g\)</span> constructs its inverse. A series with unit linear coefficient also has an integral compositional inverse directly: the degree-<span class="math" data-tex="\(d\)">\(d\)</span> inverse coefficient is determined by a linear equation with that unit coefficient. Finally, these series converge on the maximal ideal of every finite extension, since an integral degree-<span class="math" data-tex="\(d\)">\(d\)</span> term has valuation tending to infinity there. The identities therefore give actual <span class="math" data-tex="\(R\)">\(R\)</span>-module laws on those ideals, compatible with Galois action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.8B (division fields and their exact degrees).</strong> For <span class="math" data-tex="\(f(X)=\pi X+X^q\)">\(f(X)=\pi X+X^q\)</span>, let <span class="math" data-tex="\(\Lambda_n\)">\(\Lambda_n\)</span> be the roots of <span class="math" data-tex="\(f^{\circ n}\)">\(f^{\circ n}\)</span> and let <span class="math" data-tex="\(F_{\pi,n}=F(\Lambda_n)\)">\(F_{\pi,n}=F(\Lambda_n)\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Lambda_n\simeq R/\pi^nR,\qquad
+\operatorname{Gal}(F_{\pi,n}/F)\simeq(R/\pi^nR)^\times,
+\qquad [F_{\pi,n}:F]=(q-1)q^{n-1}=:D_n.
+\tag{0LT4}
+\]">\[
+\Lambda_n\simeq R/\pi^nR,\qquad
+\operatorname{Gal}(F_{\pi,n}/F)\simeq(R/\pi^nR)^\times,
+\qquad [F_{\pi,n}:F]=(q-1)q^{n-1}=:D_n.
+\tag{0LT4}
+\]</span>
+The extension is totally ramified. Every primitive point is a uniformizer and generates it, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a norm from it. These assertions also hold for any <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, using the canonical comparison of Lemma 0.8A.</p>
+<p><strong>Proof.</strong> The iterate is monic of degree <span class="math" data-tex="\(q^n\)">\(q^n\)</span>, reduces to <span class="math" data-tex="\(X^{q^n}\)">\(X^{q^n}\)</span>, and has zero constant term. Every nonzero root has positive valuation: if its valuation were negative the leading term would be uniquely smallest, and if zero the leading term would be a unit while every other coefficient is in <span class="math" data-tex="\(\pi R\)">\(\pi R\)</span>. At any such argument <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math" data-tex="\(f&#x27;(x)=\pi+q x^{q-1}\)">\(f&#x27;(x)=\pi+q x^{q-1}\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span> times a unit, because <span class="math" data-tex="\(q\in\pi R\)">\(q\in\pi R\)</span>; in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> its second term is zero. The chain rule therefore shows that all roots of every iterate are distinct, including zero.</p>
+<p>Choose <span class="math" data-tex="\(\lambda_1\ne0\)">\(\lambda_1\ne0\)</span> with <span class="math" data-tex="\(f(\lambda_1)=0\)">\(f(\lambda_1)=0\)</span>, and <span class="math" data-tex="\(f(\lambda_n)=\lambda_{n-1}\)">\(f(\lambda_n)=\lambda_{n-1}\)</span>. The primitive roots, those not killed by <span class="math" data-tex="\(f^{\circ(n-1)}\)">\(f^{\circ(n-1)}\)</span>, are precisely the roots of the monic polynomial
+<span class="math math-display" data-tex="\[
+P_n(X)=\frac{f^{\circ n}(X)}{f^{\circ(n-1)}(X)}
+=\pi+\bigl(f^{\circ(n-1)}(X)\bigr)^{q-1}.
+\tag{0LT5}
+\]">\[
+P_n(X)=\frac{f^{\circ n}(X)}{f^{\circ(n-1)}(X)}
+=\pi+\bigl(f^{\circ(n-1)}(X)\bigr)^{q-1}.
+\tag{0LT5}
+\]</span>
+Its degree is <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, reduction is <span class="math" data-tex="\(X^{D_n}\)">\(X^{D_n}\)</span>, and constant term is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Thus it is Eisenstein. Here is the needed irreducibility argument: any monic factors over <span class="math" data-tex="\(F\)">\(F\)</span> have integral coefficients, since their roots are integral and <span class="math" data-tex="\(R\)">\(R\)</span> is integrally closed by the valuation criterion; reduction makes their constant terms divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> if both factors have positive degree. Their product would then have constant term divisible by <span class="math" data-tex="\(\pi^2\)">\(\pi^2\)</span>, a contradiction. Consequently <span class="math" data-tex="\([F(\lambda_n):F]=D_n\)">\([F(\lambda_n):F]=D_n\)</span>. In (0LT5), a positive root valuation <span class="math" data-tex="\(r\)">\(r\)</span> can cancel the constant term only when <span class="math" data-tex="\(D_nr=1\)">\(D_nr=1\)</span>: every intermediate term has valuation at least <span class="math" data-tex="\(1+jr&gt;1\)">\(1+jr&gt;1\)</span>. Hence the ramification index is at least <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, and the degree formula of the first lesson, Proposition 0E.1 makes it exactly <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, with residue degree one; <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> is a uniformizer.</p>
+<p>The <span class="math" data-tex="\(q^n\)">\(q^n\)</span> distinct roots form an <span class="math" data-tex="\(R\)">\(R\)</span>-module by Lemma 0.8A. A primitive <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> generates it: its annihilator is <span class="math" data-tex="\(\pi^nR\)">\(\pi^nR\)</span>, for if <span class="math" data-tex="\(a=\pi^k b\)">\(a=\pi^k b\)</span>, <span class="math" data-tex="\(k&lt;n\)">\(k&lt;n\)</span>, <span class="math" data-tex="\([b]_f\)">\([b]_f\)</span> is invertible and <span class="math" data-tex="\([\pi^k]_f(\lambda_n)\ne0\)">\([\pi^k]_f(\lambda_n)\ne0\)</span>. This gives <span class="math" data-tex="\(q^n\)">\(q^n\)</span> distinct scalar multiples, exhausting the roots. Integral power series evaluated at <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> lie in the complete field <span class="math" data-tex="\(F(\lambda_n)\)">\(F(\lambda_n)\)</span>, so all roots lie there. Galois automorphisms commute with the series, by continuity and fixed coefficients; their action injects into <span class="math" data-tex="\((R/\pi^nR)^\times\)">\((R/\pi^nR)^\times\)</span>. Both its size and the field degree are <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, proving equality and (0LT4). The constant term of the minimal polynomial yields <span class="math" data-tex="\(N(-\lambda_n)=\pi\)">\(N(-\lambda_n)=\pi\)</span>, proving the norm assertion even when <span class="math" data-tex="\(q=2,n=1\)">\(q=2,n=1\)</span> and the field is <span class="math" data-tex="\(F\)">\(F\)</span>. Canonical integral comparison maps evaluate in the same finite complete fields and preserve primitive points, which proves the assertion for arbitrary <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 0.8C (uniformizer comparison and the explicit symbol).</strong> Put <span class="math" data-tex="\(F_\pi=\bigcup_n F_{\pi,n}\)">\(F_\pi=\bigcup_n F_{\pi,n}\)</span>, and let <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span> be the maximal unramified extension proved in the first lesson. For <span class="math" data-tex="\(a=u\pi^m\)">\(a=u\pi^m\)</span>, <span class="math" data-tex="\(u\in R^\times\)">\(u\in R^\times\)</span>, the prescription
+<span class="math math-display" data-tex="\[
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)|_{F^{\mathrm{nr}}}
+=\operatorname{Frob}_{\mathrm{ar}}^{m},\qquad
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)(\lambda)=[u^{-1}]_f(\lambda)
+\quad(\lambda\in\Lambda_n)
+\tag{0LT6}
+\]">\[
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)|_{F^{\mathrm{nr}}}
+=\operatorname{Frob}_{\mathrm{ar}}^{m},\qquad
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)(\lambda)=[u^{-1}]_f(\lambda)
+\quad(\lambda\in\Lambda_n)
+\tag{0LT6}
+\]</span>
+defines a continuous homomorphism on <span class="math" data-tex="\(F^{\mathrm{nr}}F_\pi/F\)">\(F^{\mathrm{nr}}F_\pi/F\)</span>. This compositum and homomorphism are independent of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The geometric convention is its inverse. This statement constructs the symbol on these explicit fields; identifying the compositum with every abelian extension still uses the finite-reciprocity and norm argument specified below.</p>
+<p><strong>Proof.</strong> Each finite division field is totally ramified, and each finite unramified field has residue degree equal to its degree. Their intersection is <span class="math" data-tex="\(F\)">\(F\)</span>; their compositum has the direct-product Galois action. Lemma 0.8B and the unramified inverse limit therefore define (0LT6), including continuity.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the valuation ring of <span class="math" data-tex="\(\widehat{F^{\mathrm{nr}}}\)">\(\widehat{F^{\mathrm{nr}}}\)</span>, and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> its arithmetic Frobenius. The value group remains <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, its uniformizer is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, its residue field is <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>, and Frobenius extends as an isometry. These assertions follow by approximating a nonzero completion element closer than its absolute value by an element of the unramified union; it then has the same valuation and residue. On <span class="math" data-tex="\(S\)">\(S\)</span>, the maps <span class="math" data-tex="\(x\mapsto\phi x-x\)">\(x\mapsto\phi x-x\)</span> and <span class="math" data-tex="\(x\mapsto\phi x/x\)">\(x\mapsto\phi x/x\)</span> on units are onto. For the first, solve <span class="math" data-tex="\(\bar x^q-\bar x=\bar c\)">\(\bar x^q-\bar x=\bar c\)</span> in the algebraically closed residue field and correct one <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-adic digit at a time: adding <span class="math" data-tex="\(\pi^j t\)">\(\pi^j t\)</span> changes the error digit by <span class="math" data-tex="\(\bar t^q-\bar t\)">\(\bar t^q-\bar t\)</span>. For the second, first solve <span class="math" data-tex="\(\bar x^{q-1}=\bar c\ne0\)">\(\bar x^{q-1}=\bar c\ne0\)</span>, then multiply by <span class="math" data-tex="\(1+\pi^j t\)">\(1+\pi^j t\)</span>, whose Frobenius ratio changes that digit by the same additive expression. Completeness gives solutions. The fixed ring is <span class="math" data-tex="\(R\)">\(R\)</span>: subtract a residue representative in <span class="math" data-tex="\(R\)">\(R\)</span> from a fixed element, divide by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and repeat to approximate it by elements of the complete ring <span class="math" data-tex="\(R\)">\(R\)</span>. Thus the respective kernels are <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, choose <span class="math" data-tex="\(\varepsilon\in S^\times\)">\(\varepsilon\in S^\times\)</span> with <span class="math" data-tex="\(\phi\varepsilon=u\varepsilon\)">\(\phi\varepsilon=u\varepsilon\)</span>, and put <span class="math" data-tex="\(g(X)=\pi&#x27;X+X^q\)">\(g(X)=\pi&#x27;X+X^q\)</span>. We construct an integral <span class="math" data-tex="\(\theta=\varepsilon X+O(X^2)\)">\(\theta=\varepsilon X+O(X^2)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+g\circ\theta=(\phi\theta)\circ f.
+\tag{0LT7}
+\]">\[
+g\circ\theta=(\phi\theta)\circ f.
+\tag{0LT7}
+\]</span>
+If <span class="math" data-tex="\(E_d\)">\(E_d\)</span> is its degree-<span class="math" data-tex="\(d\)">\(d\)</span> error, then <span class="math" data-tex="\(E_d\in\pi S\)">\(E_d\in\pi S\)</span>: modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the two composites are <span class="math" data-tex="\(\theta(X)^q\)">\(\theta(X)^q\)</span> and <span class="math" data-tex="\((\phi\theta)(X^q)\)">\((\phi\theta)(X^q)\)</span>. Adding <span class="math" data-tex="\(cX^d\)">\(cX^d\)</span> changes the error by <span class="math" data-tex="\(\pi&#x27;c-\pi^d\phi c\)">\(\pi&#x27;c-\pi^d\phi c\)</span>. For <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>, put <span class="math" data-tex="\(\alpha=\pi^d/\pi&#x27;\)">\(\alpha=\pi^d/\pi&#x27;\)</span>, of positive valuation. The unique correction is
+<span class="math math-display" data-tex="\[
+c=\sum_{j\geq0}\alpha^j\phi^j(-E_d/\pi&#x27;),
+\tag{0LT8}
+\]">\[
+c=\sum_{j\geq0}\alpha^j\phi^j(-E_d/\pi&#x27;),
+\tag{0LT8}
+\]</span>
+which converges in <span class="math" data-tex="\(S\)">\(S\)</span>. Uniqueness follows because <span class="math" data-tex="\(c=\alpha\phi c\)">\(c=\alpha\phi c\)</span> forces an indefinitely increasing valuation. This same coefficient argument works for several variables with a prescribed linear form satisfying <span class="math" data-tex="\(\pi&#x27;L=\pi\phi L\)">\(\pi&#x27;L=\pi\phi L\)</span>.</p>
+<p>The two series <span class="math" data-tex="\(\theta(F_f(X,Y))\)">\(\theta(F_f(X,Y))\)</span> and <span class="math" data-tex="\(F_g(\theta X,\theta Y)\)">\(F_g(\theta X,\theta Y)\)</span> have linear form <span class="math" data-tex="\(\varepsilon(X+Y)\)">\(\varepsilon(X+Y)\)</span> and satisfy the multivariable equation (0LT7); uniqueness identifies them. For the same reason, <span class="math" data-tex="\(\theta\circ[a]_f=[a]_g\circ\theta\)">\(\theta\circ[a]_f=[a]_g\circ\theta\)</span> for every <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>. Finally, <span class="math" data-tex="\(\phi\theta\)">\(\phi\theta\)</span> and <span class="math" data-tex="\(\theta\circ[u]_f\)">\(\theta\circ[u]_f\)</span> both satisfy (0LT7), with linear coefficient <span class="math" data-tex="\(u\varepsilon\)">\(u\varepsilon\)</span>; hence
+<span class="math math-display" data-tex="\[
+\phi\theta=\theta\circ[u]_f.
+\tag{0LT9}
+\]">\[
+\phi\theta=\theta\circ[u]_f.
+\tag{0LT9}
+\]</span>
+The unit linear coefficient gives an integral inverse, so <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a formal-module isomorphism. Iterating (0LT7) gives <span class="math" data-tex="\(g^{\circ n}\theta=(\phi^n\theta)f^{\circ n}\)">\(g^{\circ n}\theta=(\phi^n\theta)f^{\circ n}\)</span>, so it bijects their level-<span class="math" data-tex="\(n\)">\(n\)</span> torsion.</p>
+<p>This equality over the completion descends to the algebraic fields. Indeed, a subfield <span class="math" data-tex="\(E\subset F^{\mathrm{sep}}\)">\(E\subset F^{\mathrm{sep}}\)</span> is closed in <span class="math" data-tex="\(F^{\mathrm{sep}}\)">\(F^{\mathrm{sep}}\)</span>: its fixing subgroup preserves valuation and is continuous, so it fixes every limit lying in <span class="math" data-tex="\(F^{\mathrm{sep}}\)">\(F^{\mathrm{sep}}\)</span>; the fixed-field theorem of the first lesson puts that limit in <span class="math" data-tex="\(E\)">\(E\)</span>. A value <span class="math" data-tex="\(\theta(\lambda)\)">\(\theta(\lambda)\)</span> is a limit in <span class="math" data-tex="\(F^{\mathrm{nr}}F_{\pi,n}\)">\(F^{\mathrm{nr}}F_{\pi,n}\)</span> and is algebraic, since it is a root of <span class="math" data-tex="\(g^{\circ n}\)">\(g^{\circ n}\)</span>. Thus it belongs to that field. The inverse argument gives
+<span class="math" data-tex="\(F^{\mathrm{nr}}F_{\pi,n}=F^{\mathrm{nr}}F_{\pi&#x27;,n}\)">\(F^{\mathrm{nr}}F_{\pi,n}=F^{\mathrm{nr}}F_{\pi&#x27;,n}\)</span>.</p>
+<p>For the symbols, (0LT6) makes <span class="math" data-tex="\(\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\)">\(\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\)</span> act as Frobenius on coefficients and as <span class="math" data-tex="\([u^{-1}]_f\)">\([u^{-1}]_f\)</span> on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Equations (0LT7)–(0LT9) give
+<span class="math math-display" data-tex="\[
+\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([u^{-1}]_f\lambda)=\theta(\lambda).
+\tag{0LT10}
+\]">\[
+\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([u^{-1}]_f\lambda)=\theta(\lambda).
+\tag{0LT10}
+\]</span>
+This agrees with <span class="math" data-tex="\(\operatorname{Art}^{\mathrm{ar}}_{\pi&#x27;}(\pi&#x27;)\)">\(\operatorname{Art}^{\mathrm{ar}}_{\pi&#x27;}(\pi&#x27;)\)</span>, which fixes its division field and acts as Frobenius on the unramified field. The same comparison works for any other prime element in place of <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>; prime elements generate <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, since every unit is a ratio of two prime elements. Hence the two homomorphisms agree everywhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 0.9 (cofinality, completion and existence).</strong> The explicit compositum of Lemma 0.8C is <span class="math" data-tex="\(F^{\mathrm{ab}}\)">\(F^{\mathrm{ab}}\)</span>, and its explicit arithmetic symbol equals Theorem 0.7's reciprocity map. Consequently</p>
+<span class="math math-display" data-tex="\[
+\widehat{F^\times}_{\mathrm{open}}
+=\widehat{\mathbf Z}\times R^\times
+\xrightarrow{\ \sim\ }G_F^{\mathrm{ab}}
+\tag{0LT11}
+\]">\[
+\widehat{F^\times}_{\mathrm{open}}
+=\widehat{\mathbf Z}\times R^\times
+\xrightarrow{\ \sim\ }G_F^{\mathrm{ab}}
+\tag{0LT11}
+\]</span>
+<p>is a topological isomorphism. Completion here is over the open subgroups of finite index. Every such subgroup <span class="math" data-tex="\(U\subset F^\times\)">\(U\subset F^\times\)</span> is the norm group of a unique finite abelian extension.</p>
+<p><strong>Proof.</strong> First compare the two symbols on the explicit fields. Lemma 0.8B proves that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a norm from <span class="math" data-tex="\(F_{\pi,n}\)">\(F_{\pi,n}\)</span>. Theorem 0.7 therefore makes <span class="math" data-tex="\(\operatorname{rec}^{\mathrm{ar}}_F(\pi)\)">\(\operatorname{rec}^{\mathrm{ar}}_F(\pi)\)</span> fix that field at every level; on the unramified field it is arithmetic Frobenius. This is the explicit symbol of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>For a unit <span class="math" data-tex="\(u\)">\(u\)</span>, put <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>. Reciprocity of <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span> fixes <span class="math" data-tex="\(F_{\pi&#x27;,n}\)">\(F_{\pi&#x27;,n}\)</span> for the same norm reason. In the common unramified compositum in Lemma 0.8C it acts by <span class="math" data-tex="\(\phi\)">\(\phi\)</span> on coefficients. Its action on <span class="math" data-tex="\(\Lambda_n\)">\(\Lambda_n\)</span> is some scalar <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span>, by Lemma 0.8B. Apply it to <span class="math" data-tex="\(\theta(\lambda)\)">\(\theta(\lambda)\)</span>, a primitive <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>-division point:</p>
+<span class="math math-display" data-tex="\[
+\theta(\lambda)
+=\operatorname{rec}^{\mathrm{ar}}_F(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([a]_f\lambda)
+=\theta([ua]_f\lambda).
+\]">\[
+\theta(\lambda)
+=\operatorname{rec}^{\mathrm{ar}}_F(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([a]_f\lambda)
+=\theta([ua]_f\lambda).
+\]</span>
+<p>The integral inverse of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and the annihilator of the primitive point give <span class="math" data-tex="\(ua=1\pmod{\pi^n}\)">\(ua=1\pmod{\pi^n}\)</span>. Since reciprocity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> fixes <span class="math" data-tex="\(\Lambda_n\)">\(\Lambda_n\)</span>, reciprocity of <span class="math" data-tex="\(u=\pi&#x27;/\pi\)">\(u=\pi&#x27;/\pi\)</span> is <span class="math" data-tex="\([u^{-1}]_f\)">\([u^{-1}]_f\)</span> there. Units and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> generate <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, so the two symbols agree on every division level and unramified level.</p>
+<p>Let <span class="math" data-tex="\(B/F\)">\(B/F\)</span> be any finite abelian extension. Its norm subgroup <span class="math" data-tex="\(U_B\)">\(U_B\)</span> is open and of finite index by Theorem 0.7 and Proposition 0.4. Thus some <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> gives <span class="math" data-tex="\(1+\pi^nR\subset U_B\)">\(1+\pi^nR\subset U_B\)</span>, and some <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> gives <span class="math" data-tex="\(\pi^m\in U_B\)">\(\pi^m\in U_B\)</span>: in the finite quotient, a positive power of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is identity. Set <span class="math" data-tex="\(C=F_mF_{\pi,n}\)">\(C=F_mF_{\pi,n}\)</span>, with <span class="math" data-tex="\(F_m/F\)">\(F_m/F\)</span> unramified of degree <span class="math" data-tex="\(m\)">\(m\)</span>. The agreement of symbols just proved shows that its reciprocity kernel is exactly</p>
+<span class="math math-display" data-tex="\[
+U_C=\pi^{m\mathbf Z}(1+\pi^nR).
+\tag{0LT12}
+\]">\[
+U_C=\pi^{m\mathbf Z}(1+\pi^nR).
+\tag{0LT12}
+\]</span>
+<p>Indeed the unramified component detects valuation modulo <span class="math" data-tex="\(m\)">\(m\)</span>, and the division component detects the unit modulo <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span>. Theorem 0.7 identifies this kernel with <span class="math" data-tex="\(N_{C/F}C^\times\)">\(N_{C/F}C^\times\)</span>. It is contained in <span class="math" data-tex="\(U_B\)">\(U_B\)</span>. The proved norm/field containment in that theorem consequently gives <span class="math" data-tex="\(B\subset C\)">\(B\subset C\)</span>. Every finite abelian extension lies in the explicit compositum, proving <span class="math" data-tex="\(F^{\mathrm{ab}}=F^{\mathrm{nr}}F_\pi\)">\(F^{\mathrm{ab}}=F^{\mathrm{nr}}F_\pi\)</span>.</p>
+<p>The same argument for any open finite-index subgroup proves that the groups (0LT12) are cofinal among them. Their quotients are
+<span class="math" data-tex="\(\mathbf Z/m\mathbf Z\times(R/\pi^nR)^\times\)">\(\mathbf Z/m\mathbf Z\times(R/\pi^nR)^\times\)</span>. Taking inverse limits gives the left side of (0LT11): a compatible system of residue units lifts uniquely to a unit by completeness of <span class="math" data-tex="\(R\)">\(R\)</span>, and conversely every unit supplies such a system. Lemma 0.8B gives the division-field inverse limit <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>, while the first lesson gives the unramified inverse limit <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. Their disjointness at each finite level gives the right side. The symbol acts as the identity on the valuation coordinate and inverse on the scalar unit coordinate, hence is bijective and continuous. Both inverse limits are compact Hausdorff groups, so it is a homeomorphism. To justify the last topological implication, a continuous bijection from a compact space to a Hausdorff space takes closed sets to compact, hence closed, sets; its inverse is continuous.</p>
+<p>Finally an arbitrary open finite-index <span class="math" data-tex="\(U\)">\(U\)</span> contains some <span class="math" data-tex="\(U_C\)">\(U_C\)</span> of (0LT12). In the finite abelian group <span class="math" data-tex="\(\operatorname{Gal}(C/F)\)">\(\operatorname{Gal}(C/F)\)</span>, let <span class="math" data-tex="\(H\)">\(H\)</span> be the image of <span class="math" data-tex="\(U\)">\(U\)</span> and put <span class="math" data-tex="\(M=C^H\)">\(M=C^H\)</span>. Finite reciprocity and its exact norm kernels give <span class="math" data-tex="\(N_{M/F}M^\times=U\)">\(N_{M/F}M^\times=U\)</span>. The norm/field containment theorem gives uniqueness. This proves the existence assertion as well as cofinality, without using Hasse–Arf or abelian conductor integrality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The formal-module construction and uniformizer comparison come from the actually read free Milne I§§2–3 material; their integral recurrences, division degrees and completion descent were proved in Lemmas 0.8A–0.8C. The finite invariant, exact abelian norm kernels and functoriality were proved separately in Lemmas 0.5–0.6 and Theorem 0.7. Combining them above supplies the full local prerequisite before the Weil-group quotient uses it.</p>
+<h2 id="1-the-group-and-the-reciprocity-convention">1. The group and the reciprocity convention</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field with residue field <span class="math" data-tex="\(k_F\)">\(k_F\)</span> of cardinality <span class="math" data-tex="\(q\)">\(q\)</span>. Its absolute Galois group has an exact sequence
+<span class="math math-display" data-tex="\[
+1\longrightarrow I_F\longrightarrow G_F\longrightarrow
+\operatorname{Gal}(\bar k_F/k_F)\simeq\widehat{\mathbb Z}
+\longrightarrow1.
+\]">\[
+1\longrightarrow I_F\longrightarrow G_F\longrightarrow
+\operatorname{Gal}(\bar k_F/k_F)\simeq\widehat{\mathbb Z}
+\longrightarrow1.
+\]</span>
+The <strong>Weil group</strong> <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is the inverse image of the subgroup of integral powers of Frobenius. Give inertia its profinite topology and make it an open subgroup of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. The quotient <span class="math" data-tex="\(W_F/I_F\simeq\mathbb Z\)">\(W_F/I_F\simeq\mathbb Z\)</span> is discrete. A geometric Frobenius lift <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> induces the inverse of <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span> on the residue field. Write
+<span class="math math-display" data-tex="\[
+v:W_F\longrightarrow\mathbb Z,\qquad v(\Phi)=1,
+\qquad \|w\|=q^{-v(w)}.
+\]">\[
+v:W_F\longrightarrow\mathbb Z,\qquad v(\Phi)=1,
+\qquad \|w\|=q^{-v(w)}.
+\]</span>
+The definition gives a group topology, but density by itself does not identify a profinite completion. We prove both assertions before extending any representation.</p>
+<p><strong>Proposition 1.1 (topology and finite quotients).</strong> The Weil group is the locally compact group <span class="math" data-tex="\(I_F\rtimes\mathbb Z\)">\(I_F\rtimes\mathbb Z\)</span>, with the integer factor discrete. Its inclusion in <span class="math" data-tex="\(G_F\)">\(G_F\)</span> is continuous and dense, and its topology is strictly finer than the subspace topology. Every continuous homomorphism from <span class="math" data-tex="\(W_F\)">\(W_F\)</span> to a finite group extends uniquely and continuously to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Consequently the profinite completion of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, taken over its open normal subgroups of finite index, is <span class="math" data-tex="\(G_F\)">\(G_F\)</span>.</p>
+<p><strong>Proof.</strong> First, powers of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> make sense for every <span class="math" data-tex="\(t\in\widehat{\mathbb Z}\)">\(t\in\widehat{\mathbb Z}\)</span>. In a finite quotient <span class="math" data-tex="\(G_F/U\)">\(G_F/U\)</span>, reduce <span class="math" data-tex="\(t\)">\(t\)</span> modulo the order of the image of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and take that power. The resulting elements are compatible as <span class="math" data-tex="\(U\)">\(U\)</span> varies, so their inverse limit defines a continuous homomorphism <span class="math" data-tex="\(t\mapsto\Phi^t\)">\(t\mapsto\Phi^t\)</span>. Its residue degree is <span class="math" data-tex="\(t\)">\(t\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+I_F\rtimes\widehat{\mathbb Z}\longrightarrow G_F,
+\qquad (i,t)\longmapsto i\Phi^t
+\]">\[
+I_F\rtimes\widehat{\mathbb Z}\longrightarrow G_F,
+\qquad (i,t)\longmapsto i\Phi^t
+\]</span>
+is a continuous bijection: the inverse sends <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\((g\Phi^{-v(g)},v(g))\)">\((g\Phi^{-v(g)},v(g))\)</span>, where the degree here has values in <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>. Compactness of the domain and the Hausdorff property of the target make this a homeomorphism.</p>
+<p>Restricting to integral degrees gives <span class="math" data-tex="\(W_F=I_F\rtimes\mathbb Z\)">\(W_F=I_F\rtimes\mathbb Z\)</span>. Multiplication and inversion are continuous because conjugation by each <span class="math" data-tex="\(\Phi^n\)">\(\Phi^n\)</span> is a continuous automorphism of inertia and the integer coordinate is discrete. Inertia is compact and open, so this group is locally compact. The inclusion is continuous on each open inertia coset. Density follows from density of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>. On the other hand, every identity neighborhood in <span class="math" data-tex="\(G_F\)">\(G_F\)</span> contains <span class="math" data-tex="\(\Phi^n\)">\(\Phi^n\)</span> for some positive integer <span class="math" data-tex="\(n\)">\(n\)</span>: take an open normal subgroup inside the neighborhood and let <span class="math" data-tex="\(n\)">\(n\)</span> be the order of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> in its finite quotient. This power has nonzero residue degree and is outside inertia. Thus inertia is not open in the subspace topology.</p>
+<p>Let <span class="math" data-tex="\(f:W_F\to Q\)">\(f:W_F\to Q\)</span> be continuous, with <span class="math" data-tex="\(Q\)">\(Q\)</span> finite and discrete, and put <span class="math" data-tex="\(J=\ker(f)\cap I_F\)">\(J=\ker(f)\cap I_F\)</span>. It is open and closed in inertia and normal in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. It is also normal in <span class="math" data-tex="\(G_F\)">\(G_F\)</span>: for fixed <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, the closed set of <span class="math" data-tex="\(g\)">\(g\)</span> satisfying <span class="math" data-tex="\(gjg^{-1}\in J\)">\(gjg^{-1}\in J\)</span> contains the dense subgroup <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, and applying the same argument to inverses gives equality under conjugation. Hence <span class="math" data-tex="\(H=I_F/J\)">\(H=I_F/J\)</span> is a finite group with a continuous <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>-action. Some positive integer <span class="math" data-tex="\(m\)">\(m\)</span> kills that action and satisfies <span class="math" data-tex="\(f(\Phi)^m=1\)">\(f(\Phi)^m=1\)</span>. In the splitting above, the formula
+<span class="math math-display" data-tex="\[
+\widetilde f(i\Phi^t)=f(i)\,f(\Phi)^{\,t\bmod m}
+\]">\[
+\widetilde f(i\Phi^t)=f(i)\,f(\Phi)^{\,t\bmod m}
+\]</span>
+is well defined and continuous. It is multiplicative: the required conjugation identity holds for integer exponents by the homomorphism property of <span class="math" data-tex="\(f\)">\(f\)</span>, and holds for profinite exponents by continuity of the action on the finite group <span class="math" data-tex="\(H\)">\(H\)</span>. It agrees with <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Two continuous extensions agree on a dense subgroup and therefore everywhere.</p>
+<p>Every finite continuous quotient of <span class="math" data-tex="\(G_F\)">\(G_F\)</span> restricts to a surjective quotient of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, by density. Conversely the construction just made extends every finite continuous quotient of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> and preserves its image. These constructions are compatible with quotient maps and inverse to one another. Taking their inverse limits proves the completion assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (finite extensions).</strong> For a finite separable extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> of residue degree <span class="math" data-tex="\(f\)">\(f\)</span>, an embedding in the chosen separable closure identifies <span class="math" data-tex="\(W_E\)">\(W_E\)</span> with <span class="math" data-tex="\(G_E\cap W_F\)">\(G_E\cap W_F\)</span>. This subgroup is open in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, has index <span class="math" data-tex="\([E:F]\)">\([E:F]\)</span>, and satisfies <span class="math" data-tex="\(v_F|_{W_E}=f v_E\)">\(v_F|_{W_E}=f v_E\)</span>.</p>
+<p><strong>Proof.</strong> The action on the algebraic residue field identifies the image of <span class="math" data-tex="\(G_E\)">\(G_E\)</span> inside <span class="math" data-tex="\(G_F/I_F\)">\(G_F/I_F\)</span> with <span class="math" data-tex="\(f\widehat{\mathbb Z}\)">\(f\widehat{\mathbb Z}\)</span>: an arithmetic Frobenius for the residue field of <span class="math" data-tex="\(E\)">\(E\)</span> is the <span class="math" data-tex="\(f\)">\(f\)</span>-th power of one for <span class="math" data-tex="\(F\)">\(F\)</span>, and the same statement holds for their inverses. If an integer <span class="math" data-tex="\(n\)">\(n\)</span> lies in <span class="math" data-tex="\(f\widehat{\mathbb Z}\)">\(f\widehat{\mathbb Z}\)</span>, its reduction modulo <span class="math" data-tex="\(f\)">\(f\)</span> is zero, so <span class="math" data-tex="\(n\in f\mathbb Z\)">\(n\in f\mathbb Z\)</span>. Thus membership in <span class="math" data-tex="\(G_E\cap W_F\)">\(G_E\cap W_F\)</span> is exactly the Weil condition for <span class="math" data-tex="\(E\)">\(E\)</span>, and the degree formula follows. The intersection is open since <span class="math" data-tex="\(G_E\)">\(G_E\)</span> is open in <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Density of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> makes its action transitive on the finite coset set <span class="math" data-tex="\(G_F/G_E\)">\(G_F/G_E\)</span>, and its stabilizer is precisely that intersection. Its index is therefore <span class="math" data-tex="\([G_F:G_E]=[E:F]\)">\([G_F:G_E]=[E:F]\)</span>. The inertia topology and the discrete degree topology agree with the Weil topology defined over <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The local reciprocity input is now proved here. Theorem 0.9 identifies the open finite-index completion
+<span class="math math-display" data-tex="\[
+\widehat{F^\times}_{\mathrm{open}}
+=\widehat{\mathbf Z}\times\mathcal O_F^\times
+\simeq G_F^{\mathrm{ab}},
+\]">\[
+\widehat{F^\times}_{\mathrm{open}}
+=\widehat{\mathbf Z}\times\mathcal O_F^\times
+\simeq G_F^{\mathrm{ab}},
+\]</span>
+with arithmetic normalization. Theorem 0.7 proves its norm, conjugation and transfer identities for every finite separable extension. The additional passage from Galois reciprocity to Weil reciprocity is proved next.</p>
+<p><strong>Theorem 1.3 (geometric Weil reciprocity).</strong> Inverting arithmetic reciprocity induces a topological isomorphism
+<span class="math math-display" data-tex="\[
+\operatorname{Art}_F:F^\times\overset\sim\longrightarrow W_F^{\mathrm{ab}}.
+\]">\[
+\operatorname{Art}_F:F^\times\overset\sim\longrightarrow W_F^{\mathrm{ab}}.
+\]</span>
+Here <span class="math" data-tex="\(W_F^{\mathrm{ab}}=W_F/\overline{[W_F,W_F]}\)">\(W_F^{\mathrm{ab}}=W_F/\overline{[W_F,W_F]}\)</span> is the maximal Hausdorff abelian quotient. Units map onto the image of inertia and <span class="math" data-tex="\(v(\operatorname{Art}_F(x))=v_F(x)\)">\(v(\operatorname{Art}_F(x))=v_F(x)\)</span>, where <span class="math" data-tex="\(v\)">\(v\)</span> uses geometric Frobenius. Consequently <span class="math" data-tex="\(\|\operatorname{Art}_F(x)\|=|x|_F\)">\(\|\operatorname{Art}_F(x)\|=|x|_F\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(D=\overline{[G_F,G_F]}\)">\(D=\overline{[G_F,G_F]}\)</span>, with closure in <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Since the degree quotient is abelian, <span class="math" data-tex="\(D\subset I_F\)">\(D\subset I_F\)</span>. Every commutator of elements of <span class="math" data-tex="\(G_F\)">\(G_F\)</span> is a limit of commutators of elements of the dense subgroup <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, by continuity of multiplication and inversion. The same holds for finite products of commutators. Hence the closure of <span class="math" data-tex="\([W_F,W_F]\)">\([W_F,W_F]\)</span> in <span class="math" data-tex="\(G_F\)">\(G_F\)</span> is <span class="math" data-tex="\(D\)">\(D\)</span>. All these commutators lie in inertia, whose topology agrees in both groups; the closure in <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is therefore also <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(W_F/D\)">\(W_F/D\)</span> embeds in <span class="math" data-tex="\(G_F/D=G_F^{\mathrm{ab}}\)">\(G_F/D=G_F^{\mathrm{ab}}\)</span> as the inverse image of integral degrees. Under the earlier completion theorem, that subgroup is exactly the image of <span class="math" data-tex="\(F^\times=\varpi^{\mathbb Z}\mathcal O_F^\times\)">\(F^\times=\varpi^{\mathbb Z}\mathcal O_F^\times\)</span>. Inverting arithmetic reciprocity makes a positive valuation have geometric degree <span class="math" data-tex="\(+1\)">\(+1\)</span>. This proves the asserted group isomorphism and its unit and degree assertions.</p>
+<p>For topology, the image <span class="math" data-tex="\(I_F/D\)">\(I_F/D\)</span> is compact and open in <span class="math" data-tex="\(W_F/D\)">\(W_F/D\)</span>. Its reciprocity map from the compact group <span class="math" data-tex="\(\mathcal O_F^\times\)">\(\mathcal O_F^\times\)</span> is a continuous bijection onto a Hausdorff group, hence a homeomorphism. Both <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> and <span class="math" data-tex="\(W_F/D\)">\(W_F/D\)</span> are disjoint unions of open translates of these unit subgroups, indexed by the integers. Translation transports that homeomorphism to each coset, proving continuity of the isomorphism and its inverse everywhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Fix a uniformizer <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>. We henceforth choose the geometric lift <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to represent <span class="math" data-tex="\(\operatorname{Art}_F(\varpi)\)">\(\operatorname{Art}_F(\varpi)\)</span> in <span class="math" data-tex="\(W_F^{\mathrm{ab}}\)">\(W_F^{\mathrm{ab}}\)</span>. This class does have degree one, so such a lift exists. An arbitrary degree-one lift need not represent the same abelian class: changing a lift by inertia can change that class. Propositions 1.1–1.2 hold for every lift; this choice makes
+<span class="math math-display" data-tex="\[
+\operatorname{Art}_F(\varpi)=\Phi\quad\text{modulo closed commutators}
+\]">\[
+\operatorname{Art}_F(\varpi)=\Phi\quad\text{modulo closed commutators}
+\]</span>
+valid whenever we evaluate ramified characters. A source using arithmetic reciprocity uses the inverse map: its multiplicative character corresponding to a fixed Weil character is the inverse of ours. In the earlier Galois lessons, arithmetic Frobenius is the inverse of geometric Frobenius, up to inertia. We will keep that distinction visible in local Euler factors.</p>
+<p>For a finite separable extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, Proposition 1.2 supplies the subgroup and degree normalization used in induction. The local reciprocity functoriality that we use is
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+F^\times&amp;\hookrightarrow&amp;E^\times\\
+\operatorname{Art}_F\downarrow&amp;&amp;\downarrow\operatorname{Art}_E\\
+W_F^{\mathrm{ab}}&amp;\xrightarrow{\operatorname{Ver}_{E/F}}&amp;W_E^{\mathrm{ab}},
+\end{array}
+\tag{1}
+\]">\[
+\begin{array}{ccc}
+F^\times&amp;\hookrightarrow&amp;E^\times\\
+\operatorname{Art}_F\downarrow&amp;&amp;\downarrow\operatorname{Art}_E\\
+W_F^{\mathrm{ab}}&amp;\xrightarrow{\operatorname{Ver}_{E/F}}&amp;W_E^{\mathrm{ab}},
+\end{array}
+\tag{1}
+\]</span>
+where the bottom arrow is transfer. Inclusion of Weil groups corresponds instead to the norm <span class="math" data-tex="\(E^\times\to F^\times\)">\(E^\times\to F^\times\)</span>. These are different functorialities.</p>
+<p>For completeness, these compatibilities pass from the earlier finite reciprocity symbols to the displayed Weil maps as follows. Form inverse limits over finite Galois extensions containing <span class="math" data-tex="\(E\)">\(E\)</span>. The norm identity identifies inclusion <span class="math" data-tex="\(G_E\to G_F\)">\(G_E\to G_F\)</span> on abelianizations with the field norm; the transfer identity identifies inclusion <span class="math" data-tex="\(F^\times\to E^\times\)">\(F^\times\to E^\times\)</span> with group transfer. The coset formula for transfer is unchanged on the dense Weil subgroups: Proposition 1.2 identifies their finite coset sets, and each factor <span class="math" data-tex="\(h_i(g)\)">\(h_i(g)\)</span> in that formula is the same element before passing to the Galois completion. Finally <span class="math" data-tex="\(W_E^{\mathrm{ab}}\)">\(W_E^{\mathrm{ab}}\)</span> injects into <span class="math" data-tex="\(G_E^{\mathrm{ab}}\)">\(G_E^{\mathrm{ab}}\)</span> by the proof of Theorem 1.3, so equality after completion is already equality in the Weil abelianization. This proves (1) and the norm assertion for Weil groups. Inversion to geometric reciprocity preserves both diagrams, since norm and transfer are homomorphisms between abelian groups.</p>
+<p>The free texts [Deligne 1973, §§2.2–2.3] and [Getz–Hahn, §12.1] provide comparison conventions. The topology and extension proofs are Propositions 1.1–1.2, the Weil reciprocity proof is Theorem 1.3, and finite reciprocity and its completion are proved above in Theorems 0.7 and 0.9.</p>
+<h2 id="2-finite-inertia-and-finite-image-after-a-twist">2. Finite inertia and finite image after a twist</h2>
+<p><strong>Lemma 2.1.</strong> A smooth finite-dimensional representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is trivial on an open subgroup of <span class="math" data-tex="\(I_F\)">\(I_F\)</span>. Consequently <span class="math" data-tex="\(H=\rho(I_F)\)">\(H=\rho(I_F)\)</span> is finite.</p>
+<p><strong>Proof.</strong> Choose a basis <span class="math" data-tex="\(e_1,\ldots,e_d\)">\(e_1,\ldots,e_d\)</span>. The intersection of their stabilizers is open and fixes every vector. Its intersection with <span class="math" data-tex="\(I_F\)">\(I_F\)</span> lies in the kernel. An open subgroup of a compact group has finite index, so the image of inertia is finite. Conversely an action trivial on an open subgroup of inertia is smooth, since that subgroup is also open in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(T=\rho(\Phi)\)">\(T=\rho(\Phi)\)</span>. Conjugation by <span class="math" data-tex="\(T\)">\(T\)</span> gives an automorphism of the finite group <span class="math" data-tex="\(H\)">\(H\)</span>, so for some positive integer <span class="math" data-tex="\(m\)">\(m\)</span>,
+<span class="math math-display" data-tex="\[
+T^m h=hT^m\qquad(h\in H).
+\tag{2}
+\]">\[
+T^m h=hT^m\qquad(h\in H).
+\tag{2}
+\]</span>
+It also commutes with <span class="math" data-tex="\(T\)">\(T\)</span>, hence with the entire image of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>.</p>
+<p><strong>Theorem 2.2 (finite image after an unramified twist).</strong> Every irreducible smooth complex representation of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is an unramified twist of a finite-image representation. The latter extends continuously to a finite-image representation of <span class="math" data-tex="\(G_F\)">\(G_F\)</span>.</p>
+<p><strong>Proof.</strong> Here is the scalar argument, including the needed form of Schur's lemma. An operator <span class="math" data-tex="\(A\)">\(A\)</span> commuting with an irreducible complex representation has an eigenvalue <span class="math" data-tex="\(a\)">\(a\)</span>. Its nonzero eigenspace <span class="math" data-tex="\(\ker(A-a)\)">\(\ker(A-a)\)</span> is invariant, hence is the whole representation. Thus <span class="math" data-tex="\(A=a\,1\)">\(A=a\,1\)</span>. Applying this to the invertible operator <span class="math" data-tex="\(T^m\)">\(T^m\)</span> in (2) gives <span class="math" data-tex="\(T^m=a\,1\)">\(T^m=a\,1\)</span>, with <span class="math" data-tex="\(a\in\mathbb C^\times\)">\(a\in\mathbb C^\times\)</span>. Choose <span class="math" data-tex="\(c\in\mathbb C^\times\)">\(c\in\mathbb C^\times\)</span> with <span class="math" data-tex="\(c^m=a^{-1}\)">\(c^m=a^{-1}\)</span>, and define the unramified character <span class="math" data-tex="\(\eta_c(w)=c^{v(w)}\)">\(\eta_c(w)=c^{v(w)}\)</span>. For <span class="math" data-tex="\(\rho&#x27;=\rho\otimes\eta_c\)">\(\rho&#x27;=\rho\otimes\eta_c\)</span>, inertia still has image <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(\rho&#x27;(\Phi)=cT\)">\(\rho&#x27;(\Phi)=cT\)</span> has order dividing <span class="math" data-tex="\(m\)">\(m\)</span>. The image consists of the elements <span class="math" data-tex="\(h(cT)^j\)">\(h(cT)^j\)</span>, with <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> and <span class="math" data-tex="\(0\le j&lt;m\)">\(0\le j&lt;m\)</span>, so it is finite.</p>
+<p>The kernel of <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span> is open and has finite index in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Proposition 1.1 therefore extends this finite quotient to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. This extension is unique because <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is dense in <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Finally <span class="math" data-tex="\(\rho=\rho&#x27;\otimes\eta_c^{-1}\)">\(\rho=\rho&#x27;\otimes\eta_c^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Every unramified character is <span class="math" data-tex="\(\eta_c\)">\(\eta_c\)</span> for some <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, since it factors through the infinite cyclic quotient. It can also be written <span class="math" data-tex="\(\|\cdot\|^s\)">\(\|\cdot\|^s\)</span>: choose <span class="math" data-tex="\(s\in\mathbb C\)">\(s\in\mathbb C\)</span> with <span class="math" data-tex="\(q^{-s}=c\)">\(q^{-s}=c\)</span>, and define <span class="math" data-tex="\(q^{-sv}=\exp(-sv\log q)\)">\(q^{-sv}=\exp(-sv\log q)\)</span>. Different choices of <span class="math" data-tex="\(s\)">\(s\)</span> differing by <span class="math" data-tex="\(2\pi i/\log q\)">\(2\pi i/\log q\)</span> give the same character. Such a character need not have finite image or extend to <span class="math" data-tex="\(G_F\)">\(G_F\)</span> with the usual complex topology. For example <span class="math" data-tex="\(\|\Phi\|=q^{-1}\)">\(\|\Phi\|=q^{-1}\)</span> has infinite image, whereas a continuous complex representation of the profinite group <span class="math" data-tex="\(G_F\)">\(G_F\)</span> has finite image by the first lesson.</p>
+<p>The theorem is stated over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> so that Schur's lemma gives a scalar and the required root exists. For an absolutely irreducible representation over an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic coefficient field, the same argument works after a finite coefficient extension containing the root. An irreducible representation over a non-algebraically closed field need not be absolutely irreducible; that qualification must be checked before using the scalar argument.</p>
+<h2 id="3-the-semisimplicity-criterion">3. The semisimplicity criterion</h2>
+<p><strong>Theorem 3.1.</strong> A smooth complex representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is semisimple if and only if <span class="math" data-tex="\(\rho(\Phi)\)">\(\rho(\Phi)\)</span> is a semisimple linear operator. This condition holds for one geometric Frobenius lift if and only if it holds for every such lift.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is semisimple, it is a direct sum of irreducibles. Theorem 2.2 expresses each summand as a finite-image representation times a scalar unramified character. A finite-order complex matrix is diagonalizable because its minimal polynomial divides <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span>, which has distinct roots in characteristic zero. Thus Frobenius is semisimple on every summand.</p>
+<p>Conversely suppose <span class="math" data-tex="\(T\)">\(T\)</span> is semisimple. Choose <span class="math" data-tex="\(m\)">\(m\)</span> as in (2). The eigenspace decomposition
+<span class="math math-display" data-tex="\[
+V=\bigoplus_a V_a,\qquad V_a=\ker(T^m-a)
+\]">\[
+V=\bigoplus_a V_a,\qquad V_a=\ker(T^m-a)
+\]</span>
+is preserved by <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>, hence by <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Each <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. On <span class="math" data-tex="\(V_a\)">\(V_a\)</span>, twist by <span class="math" data-tex="\(\eta_c\)">\(\eta_c\)</span> with <span class="math" data-tex="\(c^m=a^{-1}\)">\(c^m=a^{-1}\)</span>. The resulting representation has finite image by the same finite-set calculation as in Theorem 2.2. Maschke's averaging argument makes it semisimple: if <span class="math" data-tex="\(U\)">\(U\)</span> is invariant, average any projection <span class="math" data-tex="\(V_a\to U\)">\(V_a\to U\)</span> over the finite image to obtain an equivariant projection. Twisting back preserves invariant direct summands. Therefore every <span class="math" data-tex="\(V_a\)">\(V_a\)</span>, and hence <span class="math" data-tex="\(V\)">\(V\)</span>, is semisimple.</p>
+<p>The proof applies to any Frobenius lift: each has degree one and normalizes the same finite inertia image. Once one lift is semisimple, the representation is semisimple, so the first implication makes every lift semisimple. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 3.2.</strong> The action
+<span class="math math-display" data-tex="\[
+\rho(w)=\begin{pmatrix}1&amp;v(w)\\0&amp;1\end{pmatrix}
+\]">\[
+\rho(w)=\begin{pmatrix}1&amp;v(w)\\0&amp;1\end{pmatrix}
+\]</span>
+is smooth and unramified. Its Frobenius matrix is a nonidentity unipotent matrix, so the representation is not semisimple. More explicitly, <span class="math" data-tex="\(\mathbb Ce_1\)">\(\mathbb Ce_1\)</span> is invariant, but any complementary line spanned by <span class="math" data-tex="\(ae_1+e_2\)">\(ae_1+e_2\)</span> is moved to the line spanned by <span class="math" data-tex="\((a+1)e_1+e_2\)">\((a+1)e_1+e_2\)</span>. There is no invariant complement. Its trace is constantly two; semisimplification loses this extension.</p>
+<h2 id="4-induction-and-its-determinant">4. Induction and its determinant</h2>
+<p>For an open subgroup <span class="math" data-tex="\(J\subset W\)">\(J\subset W\)</span> of finite index and a representation <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>, one model of induction is
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_J^W U=\mathbb C[W]\otimes_{\mathbb C[J]}U.
+\]">\[
+\operatorname{Ind}_J^W U=\mathbb C[W]\otimes_{\mathbb C[J]}U.
+\]</span>
+Choose representatives <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> for the left cosets <span class="math" data-tex="\(W/J\)">\(W/J\)</span>. This is the direct sum of the spaces <span class="math" data-tex="\(x_i\otimes U\)">\(x_i\otimes U\)</span>. Its dimension is <span class="math" data-tex="\(n\dim U\)">\(n\dim U\)</span>; finite index removes any issue of compact support. When <span class="math" data-tex="\(U\)">\(U\)</span> is smooth, the induced representation is smooth: finitely many conjugates of open stabilizers give an open subgroup fixing any specified vector.</p>
+<p>Frobenius reciprocity follows directly from the tensor description. A <span class="math" data-tex="\(W\)">\(W\)</span>-linear map out of induction is determined by <span class="math" data-tex="\(u\mapsto A(1\otimes u)\)">\(u\mapsto A(1\otimes u)\)</span>, which must be <span class="math" data-tex="\(J\)">\(J\)</span>-linear; a <span class="math" data-tex="\(J\)">\(J\)</span>-linear map <span class="math" data-tex="\(b:U\to V|_J\)">\(b:U\to V|_J\)</span> extends by <span class="math" data-tex="\(x\otimes u\mapsto xb(u)\)">\(x\otimes u\mapsto xb(u)\)</span>. These constructions are inverse.</p>
+<p>For two finite-index subgroups <span class="math" data-tex="\(J,K\)">\(J,K\)</span>, splitting the tensor model by the double cosets <span class="math" data-tex="\(K\backslash W/J\)">\(K\backslash W/J\)</span> gives Mackey's formula
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_K^W\operatorname{Ind}_J^W U
+\simeq\bigoplus_{x\in K\backslash W/J}
+\operatorname{Ind}_{K\cap xJx^{-1}}^K U^x,
+\tag{3}
+\]">\[
+\operatorname{Res}_K^W\operatorname{Ind}_J^W U
+\simeq\bigoplus_{x\in K\backslash W/J}
+\operatorname{Ind}_{K\cap xJx^{-1}}^K U^x,
+\tag{3}
+\]</span>
+where <span class="math" data-tex="\(h\in K\cap xJx^{-1}\)">\(h\in K\cap xJx^{-1}\)</span> acts on <span class="math" data-tex="\(U^x\)">\(U^x\)</span> as <span class="math" data-tex="\(x^{-1}hx\)">\(x^{-1}hx\)</span>. To see the isomorphism on one summand, send <span class="math" data-tex="\(k\otimes u\)">\(k\otimes u\)</span> to <span class="math" data-tex="\(kx\otimes u\)">\(kx\otimes u\)</span>. The tensor relation is respected precisely because of that action. Distinct double cosets give disjoint sets of left-coset summands, so the resulting sum is bijective. Thus the familiar finite-group formulas apply here without a finiteness assumption on <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Theorem 4.1 (determinant and transfer).</strong> For <span class="math" data-tex="\(E/F\)">\(E/F\)</span> finite separable and <span class="math" data-tex="\(U\)">\(U\)</span> a smooth representation of <span class="math" data-tex="\(W_E\)">\(W_E\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>,
+<span class="math math-display" data-tex="\[
+\det\operatorname{Ind}_{W_E}^{W_F}U
+=\left(\det\operatorname{Ind}_{W_E}^{W_F}1\right)^d
+\left(\det U\circ\operatorname{Ver}_{E/F}\right).
+\tag{4}
+\]">\[
+\det\operatorname{Ind}_{W_E}^{W_F}U
+=\left(\det\operatorname{Ind}_{W_E}^{W_F}1\right)^d
+\left(\det U\circ\operatorname{Ver}_{E/F}\right).
+\tag{4}
+\]</span>
+For <span class="math" data-tex="\(E/F\)">\(E/F\)</span> quadratic and a character <span class="math" data-tex="\(\chi:E^\times\to\mathbb C^\times\)">\(\chi:E^\times\to\mathbb C^\times\)</span>, identified with a Weil character by geometric reciprocity,
+<span class="math math-display" data-tex="\[
+\det\operatorname{Ind}_{W_E}^{W_F}\chi
+=\omega_{E/F}\,\chi|_{F^\times}.
+\tag{5}
+\]">\[
+\det\operatorname{Ind}_{W_E}^{W_F}\chi
+=\omega_{E/F}\,\chi|_{F^\times}.
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(g\in W_F\)">\(g\in W_F\)</span>, write
+<span class="math math-display" data-tex="\[
+gx_i=x_{\sigma_g(i)}h_i(g),\qquad h_i(g)\in W_E.
+\]">\[
+gx_i=x_{\sigma_g(i)}h_i(g),\qquad h_i(g)\in W_E.
+\]</span>
+On the induced space, <span class="math" data-tex="\(g\)">\(g\)</span> permutes <span class="math" data-tex="\(n\)">\(n\)</span> blocks of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and its map on block <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(U(h_i(g))\)">\(U(h_i(g))\)</span>. Permuting such blocks has determinant <span class="math" data-tex="\(\operatorname{sgn}(\sigma_g)^d\)">\(\operatorname{sgn}(\sigma_g)^d\)</span>: a transposition exchanges <span class="math" data-tex="\(d\)">\(d\)</span> pairs of basis vectors and has sign <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\det(g\mid\operatorname{Ind}U)
+=\operatorname{sgn}(\sigma_g)^d\prod_i\det U(h_i(g)).
+\tag{6}
+\]">\[
+\det(g\mid\operatorname{Ind}U)
+=\operatorname{sgn}(\sigma_g)^d\prod_i\det U(h_i(g)).
+\tag{6}
+\]</span>
+The transfer is the class of <span class="math" data-tex="\(\prod_i h_i(g)\)">\(\prod_i h_i(g)\)</span> in <span class="math" data-tex="\(W_E^{\mathrm{ab}}\)">\(W_E^{\mathrm{ab}}\)</span>. For completeness, the identity
+<span class="math math-display" data-tex="\[
+h_i(gg&#x27;)=h_{\sigma_{g&#x27;}(i)}(g)h_i(g&#x27;)
+\]">\[
+h_i(gg&#x27;)=h_{\sigma_{g&#x27;}(i)}(g)h_i(g&#x27;)
+\]</span>
+shows that this product is a homomorphism after abelianizing. Replacing representatives by <span class="math" data-tex="\(x_i a_i\)">\(x_i a_i\)</span> changes the factors to <span class="math" data-tex="\(a_{\sigma_g(i)}^{-1}h_i(g)a_i\)">\(a_{\sigma_g(i)}^{-1}h_i(g)a_i\)</span>; the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>'s cancel in the abelianized product. Thus transfer is independent of the representatives. Any character of <span class="math" data-tex="\(W_E\)">\(W_E\)</span>, including <span class="math" data-tex="\(\det U\)">\(\det U\)</span>, evaluates that product as the product in (6). The permutation sign is <span class="math" data-tex="\(\det\operatorname{Ind}1\)">\(\det\operatorname{Ind}1\)</span>. This proves (4).</p>
+<p>In degree two the permutation sign is the nontrivial character of <span class="math" data-tex="\(W_F/W_E\)">\(W_F/W_E\)</span>, namely <span class="math" data-tex="\(\omega_{E/F}\)">\(\omega_{E/F}\)</span>. By (1), transfer corresponds to the inclusion <span class="math" data-tex="\(F^\times\hookrightarrow E^\times\)">\(F^\times\hookrightarrow E^\times\)</span>, which gives (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.2 (unramified quadratic induction).</strong> Suppose <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is unramified quadratic. Take <span class="math" data-tex="\(\Phi_E=\Phi_F^2\)">\(\Phi_E=\Phi_F^2\)</span> and an unramified character with <span class="math" data-tex="\(\chi(\Phi_E)=a\)">\(\chi(\Phi_E)=a\)</span>. On the coset basis <span class="math" data-tex="\(1\otimes1,\Phi_F\otimes1\)">\(1\otimes1,\Phi_F\otimes1\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}\chi(\Phi_F)=
+\begin{pmatrix}0&amp;a\\1&amp;0\end{pmatrix},
+\qquad \det(X-\operatorname{Ind}\chi(\Phi_F))=X^2-a.
+\]">\[
+\operatorname{Ind}\chi(\Phi_F)=
+\begin{pmatrix}0&amp;a\\1&amp;0\end{pmatrix},
+\qquad \det(X-\operatorname{Ind}\chi(\Phi_F))=X^2-a.
+\]</span>
+The determinant is <span class="math" data-tex="\(-a\)">\(-a\)</span>. Formula (5) gives the same answer: <span class="math" data-tex="\(\omega_{E/F}(\varpi_F)=-1\)">\(\omega_{E/F}(\varpi_F)=-1\)</span>, while <span class="math" data-tex="\(\varpi_F\)">\(\varpi_F\)</span> is also a uniformizer of <span class="math" data-tex="\(E\)">\(E\)</span>, so <span class="math" data-tex="\(\chi(\varpi_F)=a\)">\(\chi(\varpi_F)=a\)</span>. The representation splits into the two unramified characters whose Frobenius values are the roots <span class="math" data-tex="\(\pm\sqrt a\)">\(\pm\sqrt a\)</span>. Induction from a quadratic extension is therefore not automatically irreducible.</p>
+<p>More generally Mackey's formula gives <span class="math" data-tex="\(\operatorname{Res}_{W_E}\operatorname{Ind}\chi=\chi\oplus\chi^\sigma\)">\(\operatorname{Res}_{W_E}\operatorname{Ind}\chi=\chi\oplus\chi^\sigma\)</span>, where <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the nontrivial automorphism. If <span class="math" data-tex="\(\chi\ne\chi^\sigma\)">\(\chi\ne\chi^\sigma\)</span>, these distinct character spaces are exchanged by an element outside <span class="math" data-tex="\(W_E\)">\(W_E\)</span>, and any invariant subspace is a sum of character spaces; no single one is stable. Thus the induction is irreducible. If the characters agree, the outside operator has scalar nonzero square and diagonalizes, yielding two invariant lines. This also computes the quadratic irreducibility criterion.</p>
+<h2 id="5-the-real-weil-group">5. The real Weil group</h2>
+<p>The archimedean Weil groups are
+<span class="math math-display" data-tex="\[
+W_{\mathbb C}=\mathbb C^\times,\qquad
+W_{\mathbb R}=\mathbb C^\times\sqcup j\mathbb C^\times,
+\qquad j^2=-1,\quad jzj^{-1}=\bar z.
+\tag{7}
+\]">\[
+W_{\mathbb C}=\mathbb C^\times,\qquad
+W_{\mathbb R}=\mathbb C^\times\sqcup j\mathbb C^\times,
+\qquad j^2=-1,\quad jzj^{-1}=\bar z.
+\tag{7}
+\]</span>
+Here <span class="math" data-tex="\(-1\)">\(-1\)</span> on the right is in <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>. The abelianization is <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span>, with <span class="math" data-tex="\(z\mapsto |z|^2\)">\(z\mapsto |z|^2\)</span> and <span class="math" data-tex="\(j\mapsto-1\)">\(j\mapsto-1\)</span>. Indeed the commutators <span class="math" data-tex="\(\bar z/z\)">\(\bar z/z\)</span> exhaust the unit circle; quotienting by them makes <span class="math" data-tex="\(j^2=1\)">\(j^2=1\)</span>, leaving a positive real factor and an order-two sign.</p>
+<p>Every continuous character of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> has the form
+<span class="math math-display" data-tex="\[
+\omega_{a,n}(re^{i\theta})=r^a e^{in\theta},
+\qquad a\in\mathbb C,\quad n\in\mathbb Z,
+\tag{8}
+\]">\[
+\omega_{a,n}(re^{i\theta})=r^a e^{in\theta},
+\qquad a\in\mathbb C,\quad n\in\mathbb Z,
+\tag{8}
+\]</span>
+where <span class="math" data-tex="\(r^a=\exp(a\log r)\)">\(r^a=\exp(a\log r)\)</span>. One proof separates <span class="math" data-tex="\(\mathbb C^\times=\mathbb R_{&gt;0}\times S^1\)">\(\mathbb C^\times=\mathbb R_{&gt;0}\times S^1\)</span>. A continuous character of the first factor lifts along the exponential map to an additive function of <span class="math" data-tex="\(\log r\)">\(\log r\)</span>, hence is <span class="math" data-tex="\(r^a\)">\(r^a\)</span>. A character of the circle lifts to <span class="math" data-tex="\(e^{ib\theta}\)">\(e^{ib\theta}\)</span>; periodicity and its compact image force <span class="math" data-tex="\(b\in\mathbb Z\)">\(b\in\mathbb Z\)</span>. Define <span class="math" data-tex="\(\omega^\sigma(z)=\omega(\bar z)\)">\(\omega^\sigma(z)=\omega(\bar z)\)</span>. This conjugates the argument, not the value or the coefficient <span class="math" data-tex="\(a\)">\(a\)</span>: <span class="math" data-tex="\(\omega_{a,n}^\sigma=\omega_{a,-n}\)">\(\omega_{a,n}^\sigma=\omega_{a,-n}\)</span>.</p>
+<p><strong>Theorem 5.1 (complete real classification).</strong> The irreducible continuous finite-dimensional complex representations of <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span> are:</p>
+<ol>
+<li>The characters corresponding to <span class="math" data-tex="\(x\mapsto\operatorname{sgn}(x)^\epsilon|x|^t\)">\(x\mapsto\operatorname{sgn}(x)^\epsilon|x|^t\)</span> on <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span>, for <span class="math" data-tex="\(\epsilon\in\{0,1\}\)">\(\epsilon\in\{0,1\}\)</span> and <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span>.</li>
+<li>The two-dimensional representations <span class="math" data-tex="\(\operatorname{Ind}_{\mathbb C^\times}^{W_{\mathbb R}}\omega_{a,n}\)">\(\operatorname{Ind}_{\mathbb C^\times}^{W_{\mathbb R}}\omega_{a,n}\)</span>, for <span class="math" data-tex="\(a\in\mathbb C\)">\(a\in\mathbb C\)</span> and <span class="math" data-tex="\(n\in\mathbb Z\setminus\{0\}\)">\(n\in\mathbb Z\setminus\{0\}\)</span>.</li>
+</ol>
+<p>Two representations in the second list are isomorphic exactly when their characters are equal or exchanged by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>; equivalently their parameters are <span class="math" data-tex="\((a,n)\)">\((a,n)\)</span> and <span class="math" data-tex="\((a,\pm n)\)">\((a,\pm n)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be irreducible. A commuting family of complex matrices has a common eigenvector: take an eigenspace of one nonscalar member, which is preserved by every member, and repeat on that smaller space. If every member is scalar, any vector works. Apply this to the action of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>, obtaining <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> with <span class="math" data-tex="\(zv=\omega(z)v\)">\(zv=\omega(z)v\)</span>. The eigenvalue <span class="math" data-tex="\(\omega(z)\)">\(\omega(z)\)</span> is multiplicative, and is continuous by the continuity of the action and any linear functional taking <span class="math" data-tex="\(v\)">\(v\)</span> to one. Thus <span class="math" data-tex="\(\omega\)">\(\omega\)</span> has form (8).</p>
+<p>The vector <span class="math" data-tex="\(jv\)">\(jv\)</span> has character <span class="math" data-tex="\(\omega^\sigma\)">\(\omega^\sigma\)</span>, because <span class="math" data-tex="\(zj=j\bar z\)">\(zj=j\bar z\)</span>. The span of <span class="math" data-tex="\(v,jv\)">\(v,jv\)</span> is stable under <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>, since <span class="math" data-tex="\(j(jv)=\omega(-1)v\)">\(j(jv)=\omega(-1)v\)</span>. Irreducibility makes it all of <span class="math" data-tex="\(V\)">\(V\)</span>, so <span class="math" data-tex="\(\dim V\le2\)">\(\dim V\le2\)</span>.</p>
+<p>If <span class="math" data-tex="\(\omega=\omega^\sigma\)">\(\omega=\omega^\sigma\)</span>, then <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, and <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> acts by scalars on this span. The operator <span class="math" data-tex="\(j\)">\(j\)</span> has square <span class="math" data-tex="\(\omega(-1)=1\)">\(\omega(-1)=1\)</span>, so it has an eigenline stable under the whole group. Irreducibility forces dimension one; <span class="math" data-tex="\(j\)">\(j\)</span> acts by <span class="math" data-tex="\((-1)^\epsilon\)">\((-1)^\epsilon\)</span>. Since <span class="math" data-tex="\(\omega_{a,0}(z)=|z|^a\)">\(\omega_{a,0}(z)=|z|^a\)</span>, its character on <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span> is <span class="math" data-tex="\(\operatorname{sgn}(x)^\epsilon|x|^{a/2}\)">\(\operatorname{sgn}(x)^\epsilon|x|^{a/2}\)</span>. This gives list 1.</p>
+<p>If <span class="math" data-tex="\(\omega\ne\omega^\sigma\)">\(\omega\ne\omega^\sigma\)</span>, the two vectors are independent. In their basis the action is
+<span class="math math-display" data-tex="\[
+z\longmapsto\begin{pmatrix}\omega(z)&amp;0\\0&amp;\omega(\bar z)\end{pmatrix},
+\qquad j\longmapsto\begin{pmatrix}0&amp;(-1)^n\\1&amp;0\end{pmatrix}.
+\tag{9}
+\]">\[
+z\longmapsto\begin{pmatrix}\omega(z)&amp;0\\0&amp;\omega(\bar z)\end{pmatrix},
+\qquad j\longmapsto\begin{pmatrix}0&amp;(-1)^n\\1&amp;0\end{pmatrix}.
+\tag{9}
+\]</span>
+These matrices satisfy (7). Their only possible invariant lines under <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> are the two coordinate lines, which <span class="math" data-tex="\(j\)">\(j\)</span> exchanges. Hence they form an irreducible representation, and the usual coset model identifies it with the induction in list 2.</p>
+<p>An isomorphism restricts to an isomorphism of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>-representations, so the unordered pairs <span class="math" data-tex="\(\{\omega,\omega^\sigma\}\)">\(\{\omega,\omega^\sigma\}\)</span> must coincide. Conversely replacing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-tex="\(\omega^\sigma\)">\(\omega^\sigma\)</span> just exchanges the two character lines, giving an isomorphism. This proves the criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One often writes (8) as <span class="math" data-tex="\(z^p\bar z^q\)">\(z^p\bar z^q\)</span>, with <span class="math" data-tex="\(p-q=n\in\mathbb Z\)">\(p-q=n\in\mathbb Z\)</span> and <span class="math" data-tex="\(p+q=a\)">\(p+q=a\)</span>. For arbitrary complex <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, the individual powers can be multivalued; the notation means the single-valued polar expression <span class="math" data-tex="\(r^{p+q}e^{i(p-q)\theta}\)">\(r^{p+q}e^{i(p-q)\theta}\)</span>. The condition for induction to be irreducible is <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>. The parameters need not be integers: integrality is an additional algebraicity condition, not part of the continuous classification.</p>
+<h3 id="5a-constructing-the-discrete-series-and-its-parameter">5A. Constructing the discrete series and its parameter</h3>
+<p>The weight shift in the next example requires a proof on the real representation side. We give it for every integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, including the endpoint <span class="math" data-tex="\(k=2\)">\(k=2\)</span>. Here a discrete series is an irreducible unitary representation occurring as a closed subrepresentation of the regular <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-representation, with the centre removed when it acts by a unitary character.</p>
+<p><strong>Proposition 5.2 (the lowest-weight construction).</strong> There is a unitary discrete series <span class="math" data-tex="\(D_k\)">\(D_k\)</span> of <span class="math" data-tex="\(\mathrm{GL}_2(\mathbb R)\)">\(\mathrm{GL}_2(\mathbb R)\)</span>, trivial on positive scalar matrices, whose rotation weights are
+<span class="math math-display" data-tex="\[
+ k,k+2,k+4,\ldots\quad\text{and}\quad-k,-k-2,-k-4,\ldots,
+\]">\[
+ k,k+2,k+4,\ldots\quad\text{and}\quad-k,-k-2,-k-4,\ldots,
+\]</span>
+each with multiplicity one. Its central character is <span class="math" data-tex="\(\operatorname{sgn}^k\)">\(\operatorname{sgn}^k\)</span>. Its normalized infinitesimal parameters are <span class="math" data-tex="\(\{(k-1)/2,-(k-1)/2\}\)">\(\{(k-1)/2,-(k-1)/2\}\)</span>. The lowest-weight module on either connected component is uniquely determined by that lowest weight.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\mathbb D=\{z:|z|&lt;1\}\)">\(\mathbb D=\{z:|z|&lt;1\}\)</span>, and let <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> be the holomorphic functions with norm
+<span class="math math-display" data-tex="\[
+ \|f\|_k^2=\frac{k-1}{\pi}\int_{\mathbb D}|f(z)|^2(1-|z|^2)^{k-2}\,dA(z).
+ \tag{9A}
+\]">\[
+ \|f\|_k^2=\frac{k-1}{\pi}\int_{\mathbb D}|f(z)|^2(1-|z|^2)^{k-2}\,dA(z).
+ \tag{9A}
+\]</span>
+For <span class="math" data-tex="\(f(z)=\sum a_nz^n\)">\(f(z)=\sum a_nz^n\)</span>, angular orthogonality on each smaller circle, followed by monotone convergence of the sum of nonnegative terms, gives
+<span class="math math-display" data-tex="\[
+ \|f\|_k^2=\sum_{n\ge0}|a_n|^2 b_n,
+ \qquad b_n=(k-1)\int_0^1t^n(1-t)^{k-2}\,dt
+       =\frac{n!(k-1)!}{(n+k-1)!}.
+ \tag{9B}
+\]">\[
+ \|f\|_k^2=\sum_{n\ge0}|a_n|^2 b_n,
+ \qquad b_n=(k-1)\int_0^1t^n(1-t)^{k-2}\,dt
+       =\frac{n!(k-1)!}{(n+k-1)!}.
+ \tag{9B}
+\]</span>
+The integral formula follows by repeated integration by parts, with the last integral <span class="math" data-tex="\(\int_0^1t^n\,dt=1/(n+1)\)">\(\int_0^1t^n\,dt=1/(n+1)\)</span>; it holds for <span class="math" data-tex="\(k=2\)">\(k=2\)</span> as well. Conversely a sequence with finite weighted square sum defines a holomorphic function: Cauchy–Schwarz bounds its series uniformly on each disk <span class="math" data-tex="\(|z|\le r&lt;1\)">\(|z|\le r&lt;1\)</span>, since <span class="math" data-tex="\(b_n^{-1}\)">\(b_n^{-1}\)</span> grows polynomially. Thus (9B) identifies <span class="math" data-tex="\(\mathcal H_k\)">\(\mathcal H_k\)</span> with a complete weighted sequence space, and polynomials are dense. Differentiating the geometric series <span class="math" data-tex="\(k-1\)">\(k-1\)</span> times gives
+<span class="math math-display" data-tex="\[
+ K_w(z)=(1-\bar wz)^{-k}=\sum_{n\ge0} b_n^{-1}\bar w^{,n}z^n.
+\]">\[
+ K_w(z)=(1-\bar wz)^{-k}=\sum_{n\ge0} b_n^{-1}\bar w^{,n}z^n.
+\]</span>
+With inner product linear in its first argument, (9B) proves <span class="math" data-tex="\(\langle f,K_w\rangle=f(w)\)">\(\langle f,K_w\rangle=f(w)\)</span>, including boundedness of evaluation.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+ g=\begin{pmatrix}\alpha&amp;\beta\\\bar\beta&amp;\bar\alpha\end{pmatrix}
+ \in\mathrm{SU}(1,1),\qquad |\alpha|^2-|\beta|^2=1.
+\]">\[
+ g=\begin{pmatrix}\alpha&amp;\beta\\\bar\beta&amp;\bar\alpha\end{pmatrix}
+ \in\mathrm{SU}(1,1),\qquad |\alpha|^2-|\beta|^2=1.
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+ (\pi_k(g)f)(z)=(\alpha-\bar\beta z)^{-k}
+ f\left(\frac{\bar\alpha z-\beta}{\alpha-\bar\beta z}\right).
+ \tag{9C}
+\]">\[
+ (\pi_k(g)f)(z)=(\alpha-\bar\beta z)^{-k}
+ f\left(\frac{\bar\alpha z-\beta}{\alpha-\bar\beta z}\right).
+ \tag{9C}
+\]</span>
+The denominator has no zero in the disk, because <span class="math" data-tex="\(|\alpha|&gt;|\beta|\)">\(|\alpha|&gt;|\beta|\)</span>; integer <span class="math" data-tex="\(k\)">\(k\)</span> makes the expression single-valued. Matrix multiplication gives the multiplicative denominator identity for successive fractional transformations. Since the argument is <span class="math" data-tex="\(g^{-1}z\)">\(g^{-1}z\)</span>, that identity proves <span class="math" data-tex="\(\pi_k(g)\pi_k(h)=\pi_k(gh)\)">\(\pi_k(g)\pi_k(h)=\pi_k(gh)\)</span>.</p>
+<p>For <span class="math" data-tex="\(u=g^{-1}z\)">\(u=g^{-1}z\)</span>, direct expansion and differentiation give
+<span class="math math-display" data-tex="\[
+ 1-|u|^2=\frac{1-|z|^2}{|\alpha-\bar\beta z|^2},\qquad
+ dA(u)=|\alpha-\bar\beta z|^{-4}dA(z).
+\]">\[
+ 1-|u|^2=\frac{1-|z|^2}{|\alpha-\bar\beta z|^2},\qquad
+ dA(u)=|\alpha-\bar\beta z|^{-4}dA(z).
+\]</span>
+Substitution in (9A) proves unitarity. The action is strongly continuous: for polynomials and <span class="math" data-tex="\(g\)">\(g\)</span> near the identity the denominator is bounded away from zero on the whole closed disk, so dominated convergence applies in (9A); density and unitarity extend continuity to all vectors.</p>
+<p>The compact subgroup <span class="math" data-tex="\(h_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta})\)">\(h_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta})\)</span> acts on <span class="math" data-tex="\(z^n\)">\(z^n\)</span> by <span class="math" data-tex="\(e^{-i(k+2n)\theta}\)">\(e^{-i(k+2n)\theta}\)</span>. Differentiating (9C) on the two one-parameter subgroups with <span class="math" data-tex="\(\beta=\sinh t\)">\(\beta=\sinh t\)</span> and <span class="math" data-tex="\(\beta=i\sinh t\)">\(\beta=i\sinh t\)</span>, respectively, gives
+<span class="math math-display" data-tex="\[
+ E+F,\qquad-i(E-F),\qquad
+ E=z^2\partial_z+kz,\quad F=-\partial_z.
+\]">\[
+ E+F,\qquad-i(E-F),\qquad
+ E=z^2\partial_z+kz,\quad F=-\partial_z.
+\]</span>
+These derivatives exist in the Hilbert norm on every polynomial, by the same bounded-denominator argument. If a nonzero closed invariant subspace contains a function with a nonzero <span class="math" data-tex="\(n\)">\(n\)</span>-th Taylor coefficient, averaging its rotations against the corresponding character puts <span class="math" data-tex="\(z^n\)">\(z^n\)</span> in that subspace. Applying the two derivatives and their complex linear combinations then puts
+<span class="math" data-tex="\(Fz^n=-nz^{n-1}\)">\(Fz^n=-nz^{n-1}\)</span> and <span class="math" data-tex="\(Ez^n=(n+k)z^{n+1}\)">\(Ez^n=(n+k)z^{n+1}\)</span> in it. Repeated application reaches every monomial. Their density proves irreducibility and also the asserted multiplicity-one weights on this component.</p>
+<p>We prove that this representation actually occurs discretely. Every <span class="math" data-tex="\(g\)">\(g\)</span> is uniquely
+<span class="math math-display" data-tex="\[
+ g=g_wh_\theta,\qquad
+ g_w=(1-|w|^2)^{-1/2}
+       \begin{pmatrix}1&amp;w\\\bar w&amp;1\end{pmatrix},
+ \qquad w=\beta/\bar\alpha.
+\]">\[
+ g=g_wh_\theta,\qquad
+ g_w=(1-|w|^2)^{-1/2}
+       \begin{pmatrix}1&amp;w\\\bar w&amp;1\end{pmatrix},
+ \qquad w=\beta/\bar\alpha.
+\]</span>
+The measure <span class="math" data-tex="\(dA(w)/(1-|w|^2)^2\)">\(dA(w)/(1-|w|^2)^2\)</span> is invariant under the disk action, by the two change-of-variable identities above. Consequently
+<span class="math" data-tex="\(dg=dA(w)/(1-|w|^2)^2\,d\theta/(2\pi)\)">\(dg=dA(w)/(1-|w|^2)^2\,d\theta/(2\pi)\)</span> is a left Haar measure: left multiplication changes <span class="math" data-tex="\(w\)">\(w\)</span> by that disk action and changes the compact fibre coordinate by a rotation depending on <span class="math" data-tex="\(w\)">\(w\)</span>, which preserves its angular measure. Formula (9C) gives
+<span class="math math-display" data-tex="\[
+ \pi_k(g)1=\alpha^{-k}K_w,
+ \qquad |\langle f,\pi_k(g)1\rangle|^2
+       =(1-|w|^2)^k|f(w)|^2.
+\]">\[
+ \pi_k(g)1=\alpha^{-k}K_w,
+ \qquad |\langle f,\pi_k(g)1\rangle|^2
+       =(1-|w|^2)^k|f(w)|^2.
+\]</span>
+It follows exactly, for every <span class="math" data-tex="\(f\in\mathcal H_k\)">\(f\in\mathcal H_k\)</span>, that
+<span class="math math-display" data-tex="\[
+ \int_{\mathrm{SU}(1,1)}|\langle f,\pi_k(g)1\rangle|^2\,dg
+ =\frac{\pi}{k-1}\|f\|_k^2.
+ \tag{9D}
+\]">\[
+ \int_{\mathrm{SU}(1,1)}|\langle f,\pi_k(g)1\rangle|^2\,dg
+ =\frac{\pi}{k-1}\|f\|_k^2.
+ \tag{9D}
+\]</span>
+The coefficient map <span class="math" data-tex="\(f\mapsto\langle f,\pi_k(g)1\rangle\)">\(f\mapsto\langle f,\pi_k(g)1\rangle\)</span> intertwines <span class="math" data-tex="\(\pi_k\)">\(\pi_k\)</span> with left translation, since unitarity gives
+<span class="math" data-tex="\(\langle\pi_k(h)f,\pi_k(g)1\rangle=
+\langle f,\pi_k(h^{-1}g)1\rangle\)">\(\langle\pi_k(h)f,\pi_k(g)1\rangle=
+\langle f,\pi_k(h^{-1}g)1\rangle\)</span>.
+Equation (9D) makes its image closed and its kernel zero. This supplies the discrete occurrence, including <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, without an imported orthogonality or globalization theorem.</p>
+<p>To pass to the full real group, the Cayley matrix
+<span class="math" data-tex="\(C=2^{-1/2}\begin{pmatrix}1&amp;i\\1&amp;-i\end{pmatrix}\)">\(C=2^{-1/2}\begin{pmatrix}1&amp;i\\1&amp;-i\end{pmatrix}\)</span>
+conjugates <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb R)\)">\(\mathrm{SL}_2(\mathbb R)\)</span> to <span class="math" data-tex="\(\mathrm{SU}(1,1)\)">\(\mathrm{SU}(1,1)\)</span>. This is checked by multiplying the matrices; it takes a real rotation to <span class="math" data-tex="\(h_\theta\)">\(h_\theta\)</span>. Let <span class="math" data-tex="\(j_0=\operatorname{diag}(1,-1)\)">\(j_0=\operatorname{diag}(1,-1)\)</span>. On <span class="math" data-tex="\(\mathcal H_k\oplus\mathcal H_k\)">\(\mathcal H_k\oplus\mathcal H_k\)</span>, define the action of <span class="math" data-tex="\(h\in\mathrm{SL}_2(\mathbb R)\)">\(h\in\mathrm{SL}_2(\mathbb R)\)</span> by
+<span class="math math-display" data-tex="\[
+ \pi_k(ChC^{-1})\oplus\pi_k(Cj_0hj_0C^{-1}),
+\]">\[
+ \pi_k(ChC^{-1})\oplus\pi_k(Cj_0hj_0C^{-1}),
+\]</span>
+let <span class="math" data-tex="\(j_0\)">\(j_0\)</span> exchange the summands, and let positive scalars act trivially. Every positive-determinant matrix is uniquely a positive scalar times an element of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb R)\)">\(\mathrm{SL}_2(\mathbb R)\)</span>, and a negative-determinant matrix becomes such a matrix after multiplication by <span class="math" data-tex="\(j_0\)">\(j_0\)</span>. The identities <span class="math" data-tex="\(j_0^2=1\)">\(j_0^2=1\)</span> and its displayed conjugation verify that these rules define a representation of <span class="math" data-tex="\(\mathrm{GL}_2(\mathbb R)\)">\(\mathrm{GL}_2(\mathbb R)\)</span>. Its two rotation spectra are the two lists in the statement. Rotation projections, the ladder operators, and the interchange of summands prove full irreducibility. The two coefficient embeddings (9D), on the two components of the group modulo positive scalars, give a closed regular-representation embedding of the direct sum with this action. Quotienting also by the finite central subgroup <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, with central character retained, proves the required discrete occurrence modulo the full centre. Finally <span class="math" data-tex="\(-1=h_\pi\)">\(-1=h_\pi\)</span> acts by <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span>; hence the central character is <span class="math" data-tex="\(\operatorname{sgn}^k\)">\(\operatorname{sgn}^k\)</span>.</p>
+<p>Here is the weight and infinitesimal calculation, with its uniqueness argument. Put <span class="math" data-tex="\(H=k+2z\partial_z\)">\(H=k+2z\partial_z\)</span>. The polynomial operators satisfy
+<span class="math math-display" data-tex="\[
+ [H,E]=2E,\quad[H,F]=-2F,\quad[E,F]=H.
+\]">\[
+ [H,E]=2E,\quad[H,F]=-2F,\quad[E,F]=H.
+\]</span>
+Thus the operator <span class="math" data-tex="\(\Omega=H^2-2H+4EF\)">\(\Omega=H^2-2H+4EF\)</span> commutes with all three, by expanding these commutators. On the vector 1, <span class="math" data-tex="\(F1=0\)">\(F1=0\)</span> and <span class="math" data-tex="\(H1=k\)">\(H1=k\)</span>, so <span class="math" data-tex="\(\Omega=k(k-2)\)">\(\Omega=k(k-2)\)</span> on every monomial generated by <span class="math" data-tex="\(E\)">\(E\)</span>. More generally, in any lowest-weight module with vector <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(Hv=kv\)">\(Hv=kv\)</span>, <span class="math" data-tex="\(Fv=0\)">\(Fv=0\)</span>, induction using <span class="math" data-tex="\([F,E]=-H\)">\([F,E]=-H\)</span> gives
+<span class="math math-display" data-tex="\[
+ H E^nv=(k+2n)E^nv,\qquad
+ F E^nv=-n(k+n-1)E^{n-1}v.
+ \tag{9E}
+\]">\[
+ H E^nv=(k+2n)E^nv,\qquad
+ F E^nv=-n(k+n-1)E^{n-1}v.
+ \tag{9E}
+\]</span>
+No <span class="math" data-tex="\(E^nv\)">\(E^nv\)</span> vanishes: applying <span class="math" data-tex="\(F\)">\(F\)</span> would contradict the preceding nonzero vector. Any word in <span class="math" data-tex="\(H,E,F\)">\(H,E,F\)</span> can be reordered, using the three commutators, into a sum of words <span class="math" data-tex="\(E^aH^bF^c\)">\(E^aH^bF^c\)</span>: interchange an inverted adjacent pair, and the commutator term has shorter length, giving induction first on length and then on inversions. Therefore the module generated by <span class="math" data-tex="\(v\)">\(v\)</span> is exactly the span of <span class="math" data-tex="\(E^nv\)">\(E^nv\)</span>. Equations (9E) determine it uniquely. For a unitary realization, <span class="math" data-tex="\(E^*=-F\)">\(E^*=-F\)</span>; this follows either from differentiating the two real unitary one-parameter groups above or from (9B). Hence
+<span class="math" data-tex="\(\|E^nv\|^2=n(k+n-1)\|E^{n-1}v\|^2\)">\(\|E^nv\|^2=n(k+n-1)\|E^{n-1}v\|^2\)</span>, fixing its Hilbert completion up to the norm of <span class="math" data-tex="\(v\)">\(v\)</span>. Its finite-weight vectors are analytic for these real generators: their iterated norms are bounded by <span class="math" data-tex="\(A^r(n+r)!/n!\)">\(A^r(n+r)!/n!\)</span> for a fixed <span class="math" data-tex="\(A\)">\(A\)</span>, so their exponential series converge for small <span class="math" data-tex="\(|t|\)">\(|t|\)</span>. The ladder intertwiner consequently intertwines those local one-parameter groups, and then the connected group they generate. This also proves uniqueness of the unitary lowest-weight realization.</p>
+<p>For the rank-one Lie algebra we normalize an infinitesimal parameter <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, modulo sign, by <span class="math" data-tex="\(\Omega=4\lambda^2-1\)">\(\Omega=4\lambda^2-1\)</span>. This fixes the usual half-root shift explicitly. The value just computed is
+<span class="math" data-tex="\(k(k-2)=(k-1)^2-1\)">\(k(k-2)=(k-1)^2-1\)</span>; taking the positive parameter gives <span class="math" data-tex="\(\lambda=(k-1)/2\)">\(\lambda=(k-1)/2\)</span>. Positive scalars act trivially, so the two <span class="math" data-tex="\(\mathfrak{gl}_2\)">\(\mathfrak{gl}_2\)</span> parameters have sum zero and are <span class="math" data-tex="\(\{\lambda,-\lambda\}\)">\(\{\lambda,-\lambda\}\)</span>. This proves every assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The disk action (9C) can be compared with [Gazeau–del Olmo–Pejhan, §II, equations (7)–(9)] at <span class="math" data-tex="\(2\eta=k\)">\(2\eta=k\)</span>; its construction, unitarity and discrete occurrence have been proved above. The normalized real dictionary is recorded in [Kaletha–Horawa, §7, pp.78–80]. Those free sources fix the conventions; neither supplies a missing proof in the preceding argument.</p>
+<p><strong>Example 5.3 (the discrete-series parameter, with the shift proved).</strong> For the family just constructed, the normalized real correspondence sends
+<span class="math math-display" data-tex="\[
+ D_k\longleftrightarrow\operatorname{Ind}_{\mathbb C^\times}^{W_{\mathbb R}}
+ \omega_{0,k-1},\qquad k\ge2.
+ \tag{9F}
+\]">\[
+ D_k\longleftrightarrow\operatorname{Ind}_{\mathbb C^\times}^{W_{\mathbb R}}
+ \omega_{0,k-1},\qquad k\ge2.
+ \tag{9F}
+\]</span>
+We verify this instance of the dictionary explicitly. An irreducible real Weil representation has form <span class="math" data-tex="\(\operatorname{Ind}\omega_{a,n}\)">\(\operatorname{Ind}\omega_{a,n}\)</span>, by Theorem 5.1, with unordered complex exponents <span class="math" data-tex="\(\{(a+n)/2,(a-n)/2\}\)">\(\{(a+n)/2,(a-n)/2\}\)</span>. These are the normalized infinitesimal data on the Weil side. Its determinant has real character <span class="math" data-tex="\(|x|^a\operatorname{sgn}(x)^{n+1}\)">\(|x|^a\operatorname{sgn}(x)^{n+1}\)</span>, as follows immediately from (9). Matching the trivial positive central character forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, since <span class="math" data-tex="\(r^a=1\)">\(r^a=1\)</span> for every positive <span class="math" data-tex="\(r\)">\(r\)</span> only when <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Matching the infinitesimal data computed in Proposition 5.2 then forces <span class="math" data-tex="\(|n|=k-1\)">\(|n|=k-1\)</span>. The two choices of sign are isomorphic by Theorem 5.1. Conversely every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> gives the constructed discrete series <span class="math" data-tex="\(D_{n+1}\)">\(D_{n+1}\)</span>; its lowest-weight uniqueness and the Weil isomorphism criterion prove that this is a bijection on these families. This is the explicit normalized correspondence used in the example, with its existence and uniqueness verified on both sides.</p>
+<p>Restriction to <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> therefore has characters <span class="math" data-tex="\((z/|z|)^{k-1}\)">\((z/|z|)^{k-1}\)</span> and its inverse. Formula (9) gives <span class="math" data-tex="\(j^2=(-1)^{k-1}\)">\(j^2=(-1)^{k-1}\)</span>, <span class="math" data-tex="\(\det(j)=(-1)^k\)">\(\det(j)=(-1)^k\)</span>, and determinant <span class="math" data-tex="\(\operatorname{sgn}^k\)">\(\operatorname{sgn}^k\)</span>, agreeing with the calculated central character. Twisting <span class="math" data-tex="\(D_k\)">\(D_k\)</span> by <span class="math" data-tex="\(|\det|^t\)">\(|\det|^t\)</span> adds <span class="math" data-tex="\(t\)">\(t\)</span> to each infinitesimal exponent and changes the positive central character to <span class="math" data-tex="\(|x|^{2t}\)">\(|x|^{2t}\)</span>; the same calculation gives <span class="math" data-tex="\(\operatorname{Ind}\omega_{2t,k-1}\)">\(\operatorname{Ind}\omega_{2t,k-1}\)</span>. Thus a cohomological normalization may include this explicitly specified radial twist.</p>
+<p>For general <span class="math" data-tex="\(\omega_{a,n}\)">\(\omega_{a,n}\)</span>, the determinant of (9) on <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\(|z|^{2a}\)">\(|z|^{2a}\)</span>, and on <span class="math" data-tex="\(j\)">\(j\)</span> it is <span class="math" data-tex="\((-1)^{n+1}\)">\((-1)^{n+1}\)</span>. Thus its real character is <span class="math" data-tex="\(|x|^a\operatorname{sgn}(x)^{n+1}\)">\(|x|^a\operatorname{sgn}(x)^{n+1}\)</span>, consistent with the transfer formula.</p>
+<h2 id="6-the-global-group-and-its-characters">6. The global group and its characters</h2>
+<p>For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, write <span class="math" data-tex="\(C_K=\mathbb A_K^\times/K^\times\)">\(C_K=\mathbb A_K^\times/K^\times\)</span>, with its quotient topology. The required global construction has an actual earlier programme proof: <em>Class field theory</em>, <em>Brauer groups, fundamental classes, and class field towers</em>, Theorem 24.6 and §7, “Relative Weil groups and their transition maps.” Theorem 24.6 proves the global class-formation hypotheses; §7 proves the relative extensions, their tower quotients, the topology of the absolute group, and local-to-global compatibility. We specify those inputs because a free account stating existence would not supply this proof.</p>
+<p>Here is precisely the resulting earlier theorem, in the geometric convention used in this lesson. There is a locally compact group <span class="math" data-tex="\(W_K\)">\(W_K\)</span> with a continuous dense map to <span class="math" data-tex="\(G_K\)">\(G_K\)</span> and an open quotient map
+<span class="math math-display" data-tex="\[
+p_K:W_K\longrightarrow C_K,
+\qquad\ker p_K=\overline{[W_K,W_K]}.
+\]">\[
+p_K:W_K\longrightarrow C_K,
+\qquad\ker p_K=\overline{[W_K,W_K]}.
+\]</span>
+For each place <span class="math" data-tex="\(v\)">\(v\)</span>, the construction supplies a continuous map <span class="math" data-tex="\(W_{K_v}\to W_K\)">\(W_{K_v}\to W_K\)</span>, after compatible choices of places in finite extensions. On Hausdorff abelianizations it is the single-place idèle map <span class="math" data-tex="\(K_v^\times\to C_K\)">\(K_v^\times\to C_K\)</span>, and the maps to Galois groups commute. Changes of compatible choices give the corresponding conjugacy ambiguity. If the earlier construction is written with arithmetic reciprocity, compose every multiplicative abelianization map with inversion to obtain these geometric maps.</p>
+<p>The proof in the specified earlier §7 proceeds through relative groups
+<span class="math math-display" data-tex="\[
+1\longrightarrow C_L\longrightarrow W_{L/K}
+\longrightarrow\operatorname{Gal}(L/K)\longrightarrow1
+\]">\[
+1\longrightarrow C_L\longrightarrow W_{L/K}
+\longrightarrow\operatorname{Gal}(L/K)\longrightarrow1
+\]</span>
+defined by the fundamental class. Its transfer calculation proves <span class="math" data-tex="\(W_{L/K}^{\mathrm{ab}}\simeq C_K\)">\(W_{L/K}^{\mathrm{ab}}\simeq C_K\)</span>. For a tower <span class="math" data-tex="\(M/L/K\)">\(M/L/K\)</span>, quotienting by the closed commutators in the inverse image of <span class="math" data-tex="\(\operatorname{Gal}(M/L)\)">\(\operatorname{Gal}(M/L)\)</span> gives <span class="math" data-tex="\(W_{L/K}\)">\(W_{L/K}\)</span>; the transition restricts to the norm <span class="math" data-tex="\(C_M\to C_L\)">\(C_M\to C_L\)</span> and has compact kernel. Compatible inverse limits are therefore locally compact with surjective projections. The same §7 proves that their map to <span class="math" data-tex="\(C_K\)">\(C_K\)</span> is open and that its kernel is exactly the closure of commutators, by lifting finite-level products of commutators. Finally its local fundamental-class and double-coset transfer calculations prove the single-place diagram. These are the earlier proved steps being used here, including the topological assertions needed for continuous characters.</p>
+<p><strong>Proposition 6.1 (global one-dimensional representations).</strong> Composition with <span class="math" data-tex="\(p_K\)">\(p_K\)</span> is a bijection from continuous idele-class characters <span class="math" data-tex="\(C_K\to\mathbb C^\times\)">\(C_K\to\mathbb C^\times\)</span> to continuous one-dimensional complex representations of <span class="math" data-tex="\(W_K\)">\(W_K\)</span>. Under this bijection, restriction at <span class="math" data-tex="\(v\)">\(v\)</span> corresponds to restricting the idele-class character along <span class="math" data-tex="\(K_v^\times\to C_K\)">\(K_v^\times\to C_K\)</span>.</p>
+<p><strong>Proof.</strong> A one-dimensional representation is a homomorphism <span class="math" data-tex="\(\rho:W_K\to\mathbb C^\times\)">\(\rho:W_K\to\mathbb C^\times\)</span>. Since the target is abelian, it kills every commutator. Since the target is Hausdorff and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is continuous, its kernel is closed; it therefore kills their closure. The earlier theorem identifies that closure with <span class="math" data-tex="\(\ker p_K\)">\(\ker p_K\)</span>. There is consequently a unique homomorphism <span class="math" data-tex="\(\chi:C_K\to\mathbb C^\times\)">\(\chi:C_K\to\mathbb C^\times\)</span> with <span class="math" data-tex="\(\rho=\chi\circ p_K\)">\(\rho=\chi\circ p_K\)</span>, because <span class="math" data-tex="\(p_K\)">\(p_K\)</span> is surjective.</p>
+<p>This homomorphism is continuous, not merely algebraically defined. For every open subset <span class="math" data-tex="\(U\subset\mathbb C^\times\)">\(U\subset\mathbb C^\times\)</span>,
+<span class="math math-display" data-tex="\[
+\chi^{-1}(U)=p_K\bigl(\rho^{-1}(U)\bigr).
+\]">\[
+\chi^{-1}(U)=p_K\bigl(\rho^{-1}(U)\bigr).
+\]</span>
+The right side is open because <span class="math" data-tex="\(p_K\)">\(p_K\)</span> is an open quotient map. Conversely a continuous character composed with the continuous map <span class="math" data-tex="\(p_K\)">\(p_K\)</span> is a continuous representation. Surjectivity of <span class="math" data-tex="\(p_K\)">\(p_K\)</span> proves injectivity of this correspondence. The earlier local-to-global diagram says that both restrictions are the composition of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with the same map <span class="math" data-tex="\(K_v^\times\to C_K\)">\(K_v^\times\to C_K\)</span>; this proves the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The local subgroup description of §1 and this global extension construction are different constructions. Only the stated global theorem and Proposition 6.1 are used subsequently; their proof providers are the earlier programme argument and the proof just given.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Classify the smooth characters of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> trivial on inertia. When does such a character have finite image?</p>
+<p><strong>Solution.</strong> It factors through <span class="math" data-tex="\(v:W_F\to\mathbb Z\)">\(v:W_F\to\mathbb Z\)</span>, so it is uniquely <span class="math" data-tex="\(w\mapsto c^{v(w)}\)">\(w\mapsto c^{v(w)}\)</span>, where <span class="math" data-tex="\(c\)">\(c\)</span> is its value at <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. Every <span class="math" data-tex="\(c\in\mathbb C^\times\)">\(c\in\mathbb C^\times\)</span> gives a smooth character because its kernel contains the open subgroup <span class="math" data-tex="\(I_F\)">\(I_F\)</span>. Its image is finite exactly when <span class="math" data-tex="\(c\)">\(c\)</span> is a root of unity: finite image makes some positive power of <span class="math" data-tex="\(c\)">\(c\)</span> equal to one, and the converse is immediate. The norm character has <span class="math" data-tex="\(c=q^{-1}\)">\(c=q^{-1}\)</span>, so its image is infinite.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Prove Theorem 2.2, including extension of the finite-image twist to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Explain why smoothness alone does not force semisimplicity.</p>
+<p><strong>Solution.</strong> Lemma 2.1 makes the inertia image finite. A power <span class="math" data-tex="\(T^m\)">\(T^m\)</span> of Frobenius commutes with that image and with <span class="math" data-tex="\(T\)">\(T\)</span>. Irreducibility and Schur's lemma make it <span class="math" data-tex="\(a\,1\)">\(a\,1\)</span>. Twisting by <span class="math" data-tex="\(c^{v(w)}\)">\(c^{v(w)}\)</span>, with <span class="math" data-tex="\(c^m=a^{-1}\)">\(c^m=a^{-1}\)</span>, makes the Frobenius matrix have finite order. The image is contained in the finite set <span class="math" data-tex="\(\{h(cT)^j:h\in H,0\le j&lt;m\}\)">\(\{h(cT)^j:h\in H,0\le j&lt;m\}\)</span>. Proposition 1.1 extends the finite quotient continuously to <span class="math" data-tex="\(G_F\)">\(G_F\)</span>. Example 3.2 is smooth but has a nonsplit invariant line and nonsemisimple Frobenius. Irreducibility was used in the scalar step and cannot be omitted.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Classify the irreducible continuous representations of <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span>. For <span class="math" data-tex="\(\omega_{2i,3}(re^{i\theta})=r^{2i}e^{3i\theta}\)">\(\omega_{2i,3}(re^{i\theta})=r^{2i}e^{3i\theta}\)</span>, give the dimension, determinant, and the character inducing the same representation after conjugation.</p>
+<p><strong>Solution.</strong> The common-eigenvector argument in Theorem 5.1 bounds the dimension by two. A conjugation-invariant character has angular exponent zero and yields the one-dimensional characters <span class="math" data-tex="\(\operatorname{sgn}^\epsilon|\cdot|^t\)">\(\operatorname{sgn}^\epsilon|\cdot|^t\)</span>. A character with nonzero angular exponent has two distinct weight lines interchanged by <span class="math" data-tex="\(j\)">\(j\)</span>, giving the irreducible induction and the unordered-pair isomorphism criterion. In the requested example, <span class="math" data-tex="\(n=3\ne0\)">\(n=3\ne0\)</span>, so the dimension is two; (9) has <span class="math" data-tex="\(j^2=-1\)">\(j^2=-1\)</span> and determinant <span class="math" data-tex="\(+1\)">\(+1\)</span> on <span class="math" data-tex="\(j\)">\(j\)</span>. The determinant on <span class="math" data-tex="\(\mathbb R^\times\)">\(\mathbb R^\times\)</span> is <span class="math" data-tex="\(|x|^{2i}\operatorname{sgn}(x)^4=|x|^{2i}\)">\(|x|^{2i}\operatorname{sgn}(x)^4=|x|^{2i}\)</span>. The other inducing character is <span class="math" data-tex="\(\omega_{2i,-3}\)">\(\omega_{2i,-3}\)</span>, with the same radial exponent, not <span class="math" data-tex="\(\omega_{-2i,-3}\)">\(\omega_{-2i,-3}\)</span>.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Prove (4) for an arbitrary finite-index subgroup, and specialize it to a quadratic extension. Explain the sign in Example 4.2 without choosing a square root of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Solution.</strong> With left-coset representatives, the matrix of <span class="math" data-tex="\(g\)">\(g\)</span> is a block permutation followed by the maps <span class="math" data-tex="\(U(h_i(g))\)">\(U(h_i(g))\)</span>. A block transposition has determinant <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>, so its determinant is <span class="math" data-tex="\(\operatorname{sgn}(\sigma_g)^d\prod_i\det U(h_i(g))\)">\(\operatorname{sgn}(\sigma_g)^d\prod_i\det U(h_i(g))\)</span>. The abelianized product is transfer, by the multiplication and representative-change calculations in Theorem 4.1. This proves the general formula. In index two the permutation sign is the quadratic quotient character, and local reciprocity identifies transfer with inclusion, yielding <span class="math" data-tex="\(\omega_{E/F}\chi|_{F^\times}\)">\(\omega_{E/F}\chi|_{F^\times}\)</span>. For the unramified example, Frobenius exchanges two cosets, so the permutation contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>; the product of the two one-dimensional block maps is <span class="math" data-tex="\(a\)">\(a\)</span>. Thus the determinant is <span class="math" data-tex="\(-a\)">\(-a\)</span>, independently of a choice of its square root.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Lemmas 0.1–0.6 and Theorem 0.7 prove finite local reciprocity and all its norm, transfer and conjugation identities in both characteristics. Lemmas 0.8A–0.8C construct the formal modules, and Theorem 0.9 proves maximal-abelian cofinality, completion and existence. Propositions 1.1–1.2 prove the Weil topology, profinite completion and finite-extension subgroup assertions. Theorem 1.3 passes from the completion proved in Theorem 0.9 to Weil reciprocity, and the paragraph after (1) passes the identities of Theorem 0.7 to Weil groups. The free research locators provide material for these written proofs and fix conventions. The archimedean group presentations are [Deligne 1973, §2.2.5] or [Getz–Hahn, Examples 12.5–12.6]; their representation classification is proved here. The scalar form of Schur's lemma is proved inside Theorem 2.2; the averaging proof of Maschke's theorem was supplied in §3. Proposition 5.2 constructs the discrete series, proves its discrete occurrence and lowest-weight uniqueness, and computes its central and infinitesimal data. Example 5.3 verifies the corresponding real Weil parameter on that family by the proved classifications and explicit normalized data. The global construction, including the open abelian quotient and the local-to-global diagram, uses the actual earlier proof in <em>Brauer groups, fundamental classes, and class field towers</em>, Theorem 24.6 and §7. Proposition 6.1 proves the continuous character correspondence from those topological conclusions. The exact accessible public edition and the transitive free-source provenance of that global programme provider remain subject to the course revision check.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>R. Sharifi, <a href="https://www.math.ucla.edu/~sharifi/notes/algnum-ch09.html"><em>Algebraic Number Theory</em>, free author lecture notes, §9.1</a>, for the unit lattice construction in both characteristics; Lemmas 0.1–0.3 and Proposition 0.4 supply the complete local arguments used here.</li>
+<li>R. Sharifi, <a href="https://www.math.ucla.edu/~sharifi/notes/groupcoh-ch01.html"><em>Group and Galois Cohomology</em>, free author lecture notes, §§1.2–1.5 and 1.8–1.9</a>, for finite cochains, transfer and cup products, constructed in Lemma 0.5; and <a href="https://www.math.ucla.edu/~sharifi/notes/algnum-ch08.html"><em>Algebraic Number Theory</em>, §§8.1–8.2</a>, for character and norm-group formulations, proved in Theorem 0.7.</li>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf"><em>Class Field Theory</em>, free author course notes</a>, I§§2–3 and III§§1–2, for formal modules and the unramified invariant calculation. Lemma 0.6, Lemmas 0.8A–0.8C and Theorem 0.9 supply the constructions and proofs used here.</li>
+<li>[Deligne 1973] Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, freely readable author-institution copy</a>, 1973, §§2.2–2.5. The geometric reciprocity normalization and transfer diagrams are §§2.3–2.3.2; the determinant of induction also appears in §1.2.</li>
+<li>[Getz–Hahn] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em>, free author draft of 22 April 2022</a>, §§12.1 and 12.3. Section numbers refer to that draft.</li>
+<li>[Gazeau–del Olmo–Pejhan] Jean-Pierre Gazeau, Mariano A. del Olmo and Hamed Pejhan, <a href="https://arxiv.org/abs/2504.03901"><em>The Holomorphic Discrete Series of SU(1,1): Orthogonality Relations and Tensor Products</em>, free arXiv preprint</a>, §II, equations (7)–(9).</li>
+<li>[Kaletha–Horawa] Tasho Kaletha, notes by Aleksander Horawa, <a href="https://people.maths.ox.ac.uk/horawa/math_679.pdf"><em>Math 679: Automorphic Forms</em>, freely available lecture notes</a>, §7, pp.78–80, for the real infinitesimal and discrete-parameter conventions.</li>
+<li>[Blasius 2006] Don Blasius, <em>Hilbert modular forms and the Ramanujan conjecture</em>, §1.2. <a href="https://arxiv.org/abs/math/0511007">Author's preprint</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-adic-tate-module-of-an-elliptic-curve.html">← The ℓ-adic Tate module of an elliptic curve</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="conductors-of-weil-group-representations.html">Conductors of Weil-group representations →</a></span></nav>
+<p class="small source-link"><a href="src/representations-of-weil-groups.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="5bd7f675716289c5512ef2ff4d2daff2d9bb6882a0953f28bffb551b51daa582"><title>The Poisson summation formula</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="the-poisson-summation-formula.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="the-poisson-summation-formula">The Poisson summation formula</h1>
+<p><strong>Lesson HA-LCA-11.</strong> Self-checked by the writing AI.</p>
+<p>Poisson summation is Fourier inversion after averaging over a closed subgroup. The measures and the meaning of that average matter. We retain arbitrary locally compact Hausdorff abelian groups and the full complete Haar domains used in the preceding lessons.</p>
+<p>Write <span class="math" data-tex="\(E(t)=e^{2\pi it}\)">\(E(t)=e^{2\pi it}\)</span>. Our Fourier transform uses the conjugate of the character:
+<span class="math" data-tex="\(\widehat f(\gamma)=\int f(x)\overline{\gamma(x)}\,dx\)">\(\widehat f(\gamma)=\int f(x)\overline{\gamma(x)}\,dx\)</span>.
+The general inversion theorem is <a href="the-pontryagin-duality-theorem.html#ha-lca-09-theorem-4-1">HA-LCA-09, Theorem 4.1</a>. Closed-subgroup duality, quotient integration and all three dual measure normalizations are <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-theorem-2-1">HA-LCA-10, Theorems 2.1 and 4.1, Proposition 5.1</a>.</p>
+<p>Free sources used for this lesson are David Applebaum, <a href="https://arxiv.org/pdf/1602.01252v2"><em>Probabilistic Trace and Poisson Summation Formulae on Locally Compact Abelian Groups</em>, §2 and §5.1</a>, version 4 February 2016, together with his <a href="https://eprints.whiterose.ac.uk/id/eprint/106772/12/ProbTracecorrigendum1.pdf">free author corrigendum</a>; Thomas Fidler and Otmar Scherzer, <a href="https://csc.univie.ac.at/files/SIP_lecture_notes_SS2012.pdf"><em>An Introduction to Signal and Image Processing</em>, Theorem 2.2</a>, 14 June 2012; and Keith Conrad, <a href="https://kconrad.math.uconn.edu/blurbs/gradnumthy/characterQ.pdf"><em>The Character Group of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span></em>, §§2–4</a>. Quotient integration derives from the preceding lesson's reconstruction of D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex"><em>Measure Theory</em>, §§443P–Q</a>. Every result used from these sources is proved here or in the linked earlier lessons.</p>
+<p>Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the <a href="../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's copyright 2001 and original notices are retained in the <span class="unlinked">unchanged volume 4 source package</span>. The other works are linked, not reproduced.</p>
+<h2 id="1-inversion-on-a-quotient">1. Inversion on a quotient</h2>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be a closed subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>, put <span class="math" data-tex="\(Q=G/H\)">\(Q=G/H\)</span>, and write <span class="math" data-tex="\(q:G\to Q\)">\(q:G\to Q\)</span>. Fix Haar measures <span class="math" data-tex="\(dx,dh,dz\)">\(dx,dh,dz\)</span> so that
+<span class="math math-display" data-tex="\[
+ \int_G f(x)\,dx=\int_Q\int_H f(x+h)\,dh\,dz,\qquad z=q(x),
+ \tag{1}
+\]">\[
+ \int_G f(x)\,dx=\int_Q\int_H f(x+h)\,dh\,dz,\qquad z=q(x),
+ \tag{1}
+\]</span>
+on <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. Put <span class="math" data-tex="\(A=H^\perp\subseteq\widehat G\)">\(A=H^\perp\subseteq\widehat G\)</span>, identified with <span class="math" data-tex="\(\widehat Q\)">\(\widehat Q\)</span>. On <span class="math" data-tex="\(A\)">\(A\)</span> use the Haar measure <span class="math" data-tex="\(da\)">\(da\)</span> dual to <span class="math" data-tex="\(dz\)">\(dz\)</span>, not an independently selected normalization.</p>
+<p><a id="ha-lca-11-lemma-1-0"></a>
+<strong>Lemma 1.0 — Null sets under the quotient map.</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is Haar-null in the full completed domain of <span class="math" data-tex="\(Q\)">\(Q\)</span>, then <span class="math" data-tex="\(q^{-1}(N)\)">\(q^{-1}(N)\)</span> is Haar-null in the full domain of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(U\subseteq G\)">\(U\subseteq G\)</span> be relatively compact and open. Its compact image <span class="math" data-tex="\(q(\overline U)\)">\(q(\overline U)\)</span> is contained in an open sigma-compact subgroup <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(Q\)">\(Q\)</span>: adjoining a compact identity neighbourhood and taking finite sums and differences gives such a subgroup, by <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1">the general Haar reading, Lemma 1.1</a>. On <span class="math" data-tex="\(J\)">\(J\)</span>, the full Haar domain is the completion of the sigma-compact Borel Haar measure. Thus <span class="math" data-tex="\(N\cap J\)">\(N\cap J\)</span> is contained in a Borel null set <span class="math" data-tex="\(N_0\subseteq J\)">\(N_0\subseteq J\)</span>, which is also Borel in <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Apply HA-LCA-10, Theorem 4.1, to the Borel function
+<span class="math" data-tex="\(1_U(x)1_{N_0}(q(x))\)">\(1_U(x)1_{N_0}(q(x))\)</span>. It has finite integral and is zero outside a relatively compact set, so its representative satisfies the theorem's condition. Its coset integral is
+<span class="math math-display" data-tex="\[
+ 1_{N_0}(z)\,dh\{h:x+h\in U\}.
+\]">\[
+ 1_{N_0}(z)\,dh\{h:x+h\in U\}.
+\]</span>
+The second factor is finite for every coset, since its section is contained in a compact subset of <span class="math" data-tex="\(H\)">\(H\)</span>. Consequently the integral over <span class="math" data-tex="\(Q\)">\(Q\)</span> is zero. Hence <span class="math" data-tex="\(U\cap q^{-1}(N)\)">\(U\cap q^{-1}(N)\)</span>, a subset of a Haar-null Borel set, is measurable and null.</p>
+<p>Choose an open sigma-compact subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>. Each of its cosets has a countable cover by relatively compact open sets, so its intersection with <span class="math" data-tex="\(q^{-1}(N)\)">\(q^{-1}(N)\)</span> is null by the preceding paragraph. The full Haar domain and measure are the completed sum over these open cosets, as proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">the general Haar reading, Theorem 3.1</a>. All component measures are zero; their sum is zero, even if there are uncountably many components. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-theorem-1-1"></a>
+<strong>Theorem 1.1 — Poisson summation for a closed subgroup.</strong> Let <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, and let
+<span class="math" data-tex="\(F=P_1f\in L^1(Q)\)">\(F=P_1f\in L^1(Q)\)</span> be the averaging contraction of HA-LCA-10, Theorem 4.1. Then, at every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat F(a)=\widehat f(a).
+ \tag{2}
+\]">\[
+ \widehat F(a)=\widehat f(a).
+ \tag{2}
+\]</span>
+If <span class="math" data-tex="\(\widehat f|_A\in L^1(A,da)\)">\(\widehat f|_A\in L^1(A,da)\)</span>, then <span class="math" data-tex="\(F\)">\(F\)</span> has the continuous representative
+<span class="math math-display" data-tex="\[
+ F^\circ(q(x))=\int_A\widehat f(a)a(x)\,da.
+ \tag{3}
+\]">\[
+ F^\circ(q(x))=\int_A\widehat f(a)a(x)\,da.
+ \tag{3}
+\]</span>
+For a Borel representative <span class="math" data-tex="\(f_0\)">\(f_0\)</span> zero outside an open sigma-compact subgroup, the formula
+<span class="math math-display" data-tex="\[
+ \int_H f_0(x+h)\,dh
+       =\int_A\widehat f(a)a(x)\,da
+ \tag{4}
+\]">\[
+ \int_H f_0(x+h)\,dh
+       =\int_A\widehat f(a)a(x)\,da
+ \tag{4}
+\]</span>
+holds for almost every coset and for almost every <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>. Every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class has such an <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is sigma-compact, every completed-measurable representative is permitted. If the actual coset integrals exist absolutely everywhere and give a continuous function on <span class="math" data-tex="\(Q\)">\(Q\)</span>, equality holds everywhere for that function. In particular this last conclusion applies to <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> whenever the transform restriction is integrable.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(f_j\in C_c(G)\)">\(f_j\in C_c(G)\)</span> with <span class="math" data-tex="\(\|f_j-f\|_1\to0\)">\(\|f_j-f\|_1\to0\)</span>, using <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-5-1">the general Haar reading, Lemma 5.1</a>. Averaging is a contraction, so <span class="math" data-tex="\(Pf_j\to F\)">\(Pf_j\to F\)</span> in <span class="math" data-tex="\(L^1(Q)\)">\(L^1(Q)\)</span>. The integral definition gives the uniform bound
+<span class="math" data-tex="\(\|\widehat u\|_\infty\le\|u\|_1\)">\(\|\widehat u\|_\infty\le\|u\|_1\)</span> on each group. Thus <span class="math" data-tex="\(\widehat{Pf_j}\to\widehat F\)">\(\widehat{Pf_j}\to\widehat F\)</span> uniformly, and <span class="math" data-tex="\(\widehat f_j|_A\to\widehat f|_A\)">\(\widehat f_j|_A\to\widehat f|_A\)</span> uniformly. The <span class="math" data-tex="\(C_c\)">\(C_c\)</span> identity
+<span class="math" data-tex="\(\widehat{Pf_j}=\widehat f_j|_A\)">\(\widehat{Pf_j}=\widehat f_j|_A\)</span> is <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-lemma-5-0">HA-LCA-10, Lemma 5.0</a>. Passing to the limit proves (2) at every point.</p>
+<p>Under the extra integrability hypothesis, general inversion on the LCA group <span class="math" data-tex="\(Q\)">\(Q\)</span>, HA-LCA-09, Theorem 4.1, gives exactly (3), continuous and equal to <span class="math" data-tex="\(F\)">\(F\)</span> almost everywhere. The character <span class="math" data-tex="\(a\)">\(a\)</span> kills <span class="math" data-tex="\(H\)">\(H\)</span>, so the integral depends only on <span class="math" data-tex="\(q(x)\)">\(q(x)\)</span>. The representative assertions and the almost-everywhere existence of the absolute coset integrals are precisely HA-LCA-10, Theorem 4.1. Combine its exceptional quotient null set with the inversion exceptional set and apply Lemma 1.0 to obtain the assertion on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>If the actual average is continuous, it and <span class="math" data-tex="\(F^\circ\)">\(F^\circ\)</span> are two continuous representatives of the same <span class="math" data-tex="\(L^1(Q)\)">\(L^1(Q)\)</span> class. Their difference vanishes everywhere: a nonzero continuous value would persist on an open set, which has positive Haar measure. For <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, continuity and compact support of the average are HA-LCA-10, Lemma 3.1.</p>
+<p>For later use, every continuous integrable function on <span class="math" data-tex="\(G\)">\(G\)</span> also satisfies the required support condition. Indeed, fix an open sigma-compact subgroup <span class="math" data-tex="\(J\)">\(J\)</span>. A coset on which <span class="math" data-tex="\(f\)">\(f\)</span> is nonzero has strictly positive integral of <span class="math" data-tex="\(|f|\)">\(|f|\)</span>, by continuity and full support. There can be only countably many such cosets: those with mass greater than <span class="math" data-tex="\(1/n\)">\(1/n\)</span> are finite for each <span class="math" data-tex="\(n\)">\(n\)</span>. Adjoining one representative from each to <span class="math" data-tex="\(J\)">\(J\)</span> generates an open sigma-compact subgroup containing the nonzero set of <span class="math" data-tex="\(f\)">\(f\)</span>. Thus the continuous functions used below are legitimate representatives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The representative condition is essential on arbitrary groups. <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-example-4-0">HA-LCA-10, Example 4.0</a> proves that a Borel representative of zero on <span class="math" data-tex="\(\mathbb R_d\times\mathbb R\)">\(\mathbb R_d\times\mathbb R\)</span> can have every coset integral equal to one. Equation (2), being an identity on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> classes, has no such ambiguity.</p>
+<p><a id="ha-lca-11-proposition-1-2"></a>
+<strong>Proposition 1.2 — Convolution tests on a lattice.</strong> Let <span class="math" data-tex="\(L\le G\)">\(L\le G\)</span> be discrete and cocompact. Give <span class="math" data-tex="\(L\)">\(L\)</span> counting measure and let <span class="math" data-tex="\(c=dz(G/L)\)">\(c=dz(G/L)\)</span> for the quotient measure in (1). Then <span class="math" data-tex="\(A=L^\perp\)">\(A=L^\perp\)</span> is discrete with <span class="math" data-tex="\(da=c^{-1}\)">\(da=c^{-1}\)</span> times counting measure. For <span class="math" data-tex="\(u,v\in C_c(G)\)">\(u,v\in C_c(G)\)</span> and <span class="math" data-tex="\(f=u*\widetilde v\)">\(f=u*\widetilde v\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{\ell\in L}f(x+\ell)
+ =\frac1c\sum_{a\in A}\widehat u(a)\overline{\widehat v(a)}a(x)
+ \quad(x\in G).
+ \tag{5}
+\]">\[
+ \sum_{\ell\in L}f(x+\ell)
+ =\frac1c\sum_{a\in A}\widehat u(a)\overline{\widehat v(a)}a(x)
+ \quad(x\in G).
+ \tag{5}
+\]</span>
+The left sum is finite at each point; the right sum is absolutely and uniformly convergent. The conclusion extends to every finite linear combination of these convolutions.</p>
+<p><strong>Proof.</strong> The discrete subgroup is closed by <a href="the-pontryagin-duality-theorem.html#ha-lca-09-lemma-1-2">HA-LCA-09, Lemma 1.2</a>. Subgroup duality identifies <span class="math" data-tex="\(A\)">\(A\)</span> with the dual of the compact quotient. Compact-discrete duality and <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-3">HA-LCA-07, Proposition 3.3</a> give discreteness and point mass <span class="math" data-tex="\(1/c\)">\(1/c\)</span>.</p>
+<p>The averages <span class="math" data-tex="\(Pu,Pv\)">\(Pu,Pv\)</span> are continuous on the compact quotient, hence in <span class="math" data-tex="\(L^2(Q)\)">\(L^2(Q)\)</span>. By (2) and <a href="the-plancherel-theorem.html#ha-lca-08-theorem-1-1">HA-LCA-08, Theorem 1.1</a>,
+<span class="math math-display" data-tex="\[
+ \frac1c\sum_{a\in A}|\widehat u(a)|^2=\|Pu\|_2^2,\qquad
+ \frac1c\sum_{a\in A}|\widehat v(a)|^2=\|Pv\|_2^2.
+\]">\[
+ \frac1c\sum_{a\in A}|\widehat u(a)|^2=\|Pu\|_2^2,\qquad
+ \frac1c\sum_{a\in A}|\widehat v(a)|^2=\|Pv\|_2^2.
+\]</span>
+Cauchy–Schwarz, first for finite subsets and then taking their supremum, gives
+<span class="math math-display" data-tex="\[
+ \frac1c\sum_{a\in A}|\widehat u(a)\overline{\widehat v(a)}|
+ \le\|Pu\|_2\|Pv\|_2&lt;\infty.
+ \tag{6}
+\]">\[
+ \frac1c\sum_{a\in A}|\widehat u(a)\overline{\widehat v(a)}|
+ \le\|Pu\|_2\|Pv\|_2&lt;\infty.
+ \tag{6}
+\]</span>
+An absolutely summable family has countable support: for each <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many terms exceed <span class="math" data-tex="\(1/n\)">\(1/n\)</span> in absolute value. Its finite-subset tails control the sup norm of the character series, proving absolute uniform convergence.</p>
+<p>The function <span class="math" data-tex="\(f\)">\(f\)</span> is in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, supported in <span class="math" data-tex="\(\operatorname{supp}u-\operatorname{supp}v\)">\(\operatorname{supp}u-\operatorname{supp}v\)</span>, and its transform is the product in (5), by <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-theorem-3-1">HA-LCA-03, Theorem 3.1</a>. Apply Theorem 1.1 and (6). The intersection of <span class="math" data-tex="\(L\)">\(L\)</span> with any compact set is finite: it is a closed compact discrete space, whose singleton cover has a finite subcover. This proves the left-side finiteness. Finite linear combinations preserve all conclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-integer-periods-and-euclidean-lattices">2. Integer periods and Euclidean lattices</h2>
+<p><a id="ha-lca-11-lemma-2-0"></a>
+<strong>Lemma 2.0 — Decay and lattice sums.</strong> For <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and <span class="math" data-tex="\(s&gt;d\)">\(s&gt;d\)</span>, <span class="math" data-tex="\((1+\|x\|)^{-s}\)">\((1+\|x\|)^{-s}\)</span> is integrable on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. If <span class="math" data-tex="\(M\)">\(M\)</span> is invertible and <span class="math" data-tex="\(B\subset\mathbb R^d\)">\(B\subset\mathbb R^d\)</span> is bounded, then
+<span class="math math-display" data-tex="\[
+ \sum_{k\in\mathbb Z^d}\sup_{x\in B}(1+\|x+Mk\|)^{-s}&lt;\infty.
+ \tag{7}
+\]">\[
+ \sum_{k\in\mathbb Z^d}\sup_{x\in B}(1+\|x+Mk\|)^{-s}&lt;\infty.
+ \tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Split the complement of the unit ball into the regions
+<span class="math" data-tex="\(2^j\le\|x\|&lt;2^{j+1}\)">\(2^j\le\|x\|&lt;2^{j+1}\)</span>, <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>. The volume of each region is at most that of its enclosing cube, <span class="math" data-tex="\((2^{j+2})^d\)">\((2^{j+2})^d\)</span>; the integrand is at most <span class="math" data-tex="\(2^{-js}\)">\(2^{-js}\)</span>. The resulting series is a constant times <span class="math" data-tex="\(\sum_j2^{-j(s-d)}\)">\(\sum_j2^{-j(s-d)}\)</span>, which converges by the finite geometric sum formula. The unit ball has finite volume and bounded integrand.</p>
+<p>There is <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> with <span class="math" data-tex="\(\|Mk\|\ge b\|k\|\)">\(\|Mk\|\ge b\|k\|\)</span>: each coordinate of <span class="math" data-tex="\(M^{-1}y\)">\(M^{-1}y\)</span> is a finite linear combination of the coordinates of <span class="math" data-tex="\(y\)">\(y\)</span>, giving <span class="math" data-tex="\(\|M^{-1}y\|\le b^{-1}\|y\|\)">\(\|M^{-1}y\|\le b^{-1}\|y\|\)</span> by Cauchy–Schwarz. If <span class="math" data-tex="\(\|x\|\le R\)">\(\|x\|\le R\)</span>, then
+<span class="math" data-tex="\(\|x+Mk\|\ge b\|k\|-R\ge b\|k\|/2\)">\(\|x+Mk\|\ge b\|k\|-R\ge b\|k\|/2\)</span> once <span class="math" data-tex="\(\|k\|\ge2R/b\)">\(\|k\|\ge2R/b\)</span>.
+There are at most <span class="math" data-tex="\((2^{j+2}+1)^d\)">\((2^{j+2}+1)^d\)</span> integer points in the shell <span class="math" data-tex="\(2^j\le\|k\|&lt;2^{j+1}\)">\(2^j\le\|k\|&lt;2^{j+1}\)</span>, by enclosing it in a cube and counting coordinate choices. The same geometric series bounds the shell sums, uniformly over <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>. The finitely many remaining terms are at most one each. This proves (7). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-corollary-2-1"></a>
+<strong>Corollary 2.1 — Classical Poisson summation.</strong> Suppose <span class="math" data-tex="\(f\in L^1(\mathbb R)\cap C(\mathbb R)\)">\(f\in L^1(\mathbb R)\cap C(\mathbb R)\)</span> and
+<span class="math math-display" data-tex="\[
+ \sum_{n\in\mathbb Z}\sup_{0\le x\le1}|f(x+n)|&lt;\infty,
+ \qquad
+ \sum_{n\in\mathbb Z}|\widehat f(n)|&lt;\infty.
+ \tag{8}
+\]">\[
+ \sum_{n\in\mathbb Z}\sup_{0\le x\le1}|f(x+n)|&lt;\infty,
+ \qquad
+ \sum_{n\in\mathbb Z}|\widehat f(n)|&lt;\infty.
+ \tag{8}
+\]</span>
+Then, for every real <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{n\in\mathbb Z}f(x+n)
+       =\sum_{n\in\mathbb Z}\widehat f(n)E(nx).
+ \tag{9}
+\]">\[
+ \sum_{n\in\mathbb Z}f(x+n)
+       =\sum_{n\in\mathbb Z}\widehat f(n)E(nx).
+ \tag{9}
+\]</span>
+The first series converges absolutely and uniformly on each compact interval. The second converges absolutely and uniformly on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Proof.</strong> The tails of the first series on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> are bounded by the corresponding tails of the first nonnegative sum in (8). Thus it is uniformly convergent and its sum is continuous there. A compact interval is covered by finitely many integer translates of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; shifting the summation index proves the same assertion on that interval. Absolute convergence permits reindexing, so the sum is one-periodic and descends to a continuous function on <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span>.</p>
+<p>For Lebesgue measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and counting measure on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the quotient has mass one and its dual <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> has counting measure, by <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-example-6-2">HA-LCA-10, Example 6.2</a>. The second condition in (8) is precisely the transform-restriction hypothesis of Theorem 1.1. That theorem gives (9) everywhere. The sup norm of each dual-series term is <span class="math" data-tex="\(|\widehat f(n)|\)">\(|\widehat f(n)|\)</span>; summable tails give the last convergence assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-corollary-2-2"></a>
+<strong>Corollary 2.2 — Poisson summation on a Euclidean lattice.</strong> Let <span class="math" data-tex="\(\Lambda=M\mathbb Z^d\)">\(\Lambda=M\mathbb Z^d\)</span>, where <span class="math" data-tex="\(M\)">\(M\)</span> is invertible, put <span class="math" data-tex="\(v=|\det M|\)">\(v=|\det M|\)</span>, and let <span class="math" data-tex="\(\Lambda^*=M^{-T}\mathbb Z^d\)">\(\Lambda^*=M^{-T}\mathbb Z^d\)</span>. Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is continuous and, for some <span class="math" data-tex="\(C,\delta&gt;0\)">\(C,\delta&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+ |f(x)|+|\widehat f(x)|\le C(1+\|x\|)^{-d-\delta}.
+ \tag{10}
+\]">\[
+ |f(x)|+|\widehat f(x)|\le C(1+\|x\|)^{-d-\delta}.
+ \tag{10}
+\]</span>
+Then, for every <span class="math" data-tex="\(x\in\mathbb R^d\)">\(x\in\mathbb R^d\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{\lambda\in\Lambda}f(x+\lambda)
+ =\frac1v\sum_{\xi\in\Lambda^*}\widehat f(\xi)E(x\cdot\xi).
+ \tag{11}
+\]">\[
+ \sum_{\lambda\in\Lambda}f(x+\lambda)
+ =\frac1v\sum_{\xi\in\Lambda^*}\widehat f(\xi)E(x\cdot\xi).
+ \tag{11}
+\]</span>
+The first series converges absolutely and uniformly on compact sets, and the second absolutely and uniformly on all of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 2.0 makes <span class="math" data-tex="\(f\)">\(f\)</span> integrable and the first series locally uniformly absolutely convergent. It therefore defines a continuous <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-periodic function. The same lemma with <span class="math" data-tex="\(M^{-T}\)">\(M^{-T}\)</span> makes the transform values summable on <span class="math" data-tex="\(\Lambda^*\)">\(\Lambda^*\)</span>.</p>
+<p>HA-LCA-10, Example 6.2, proves both the annihilator formula <span class="math" data-tex="\(\Lambda^\perp=\Lambda^*\)">\(\Lambda^\perp=\Lambda^*\)</span> and the quotient mass <span class="math" data-tex="\(v\)">\(v\)</span>, when <span class="math" data-tex="\(dx\)">\(dx\)</span> is self-dual Lebesgue measure and the lattice has counting measure. The quotient is compact: the image of the compact parallelepiped <span class="math" data-tex="\(M[0,1]^d\)">\(M[0,1]^d\)</span> covers it. Thus its dual measure is <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> times counting measure, by HA-LCA-07, Proposition 3.3. Substitution into Theorem 1.1 gives (11) and the stated convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-example-2-3"></a>
+<strong>Example 2.3 — Point values require a hypothesis.</strong> The decay bound (10), without continuity of <span class="math" data-tex="\(f\)">\(f\)</span>, does not imply (11) at every point.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, take <span class="math" data-tex="\(f=1_{\{0\}}\)">\(f=1_{\{0\}}\)</span>. Singletons have Lebesgue measure zero: enclose the origin in cubes of arbitrarily small positive volume. Hence <span class="math" data-tex="\(\widehat f=0\)">\(\widehat f=0\)</span>, and (10) holds with <span class="math" data-tex="\(C=1\)">\(C=1\)</span> for any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. At <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, the left side of (11) is one, while the right side is zero. This counterexample also explains why an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class alone cannot specify values on a lattice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-example-2-4"></a>
+<strong>Example 2.4 — Square and hexagonal lattices.</strong> The square lattice <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> is self-dual with covolume one. For the hexagonal lattice generated by <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and <span class="math" data-tex="\((1/2,\sqrt3/2)\)">\((1/2,\sqrt3/2)\)</span>,
+<span class="math math-display" data-tex="\[
+ M=\begin{pmatrix}1&amp;1/2\\0&amp;\sqrt3/2\end{pmatrix},
+ \quad
+ M^{-T}=\begin{pmatrix}1&amp;0\\-1/\sqrt3&amp;2/\sqrt3\end{pmatrix},
+ \quad v=\frac{\sqrt3}{2}.
+ \tag{12}
+\]">\[
+ M=\begin{pmatrix}1&amp;1/2\\0&amp;\sqrt3/2\end{pmatrix},
+ \quad
+ M^{-T}=\begin{pmatrix}1&amp;0\\-1/\sqrt3&amp;2/\sqrt3\end{pmatrix},
+ \quad v=\frac{\sqrt3}{2}.
+ \tag{12}
+\]</span>
+Thus the coefficient in its Poisson formula is <span class="math" data-tex="\(2/\sqrt3\)">\(2/\sqrt3\)</span>.</p>
+<p><strong>Proof.</strong> The identity matrix gives the square assertions by HA-LCA-10, Example 6.2. For (12), multiplication verifies <span class="math" data-tex="\(M^TM^{-T}=I\)">\(M^TM^{-T}=I\)</span>; the two-by-two determinant is <span class="math" data-tex="\(\sqrt3/2\)">\(\sqrt3/2\)</span>. A frequency <span class="math" data-tex="\((\xi_1,\xi_2)\)">\((\xi_1,\xi_2)\)</span> annihilates the displayed generators exactly when
+<span class="math" data-tex="\(\xi_1\in\mathbb Z\)">\(\xi_1\in\mathbb Z\)</span> and <span class="math" data-tex="\((\xi_1+\sqrt3\,\xi_2)/2\in\mathbb Z\)">\((\xi_1+\sqrt3\,\xi_2)/2\in\mathbb Z\)</span>.
+Writing these two integers as <span class="math" data-tex="\(m,n\)">\(m,n\)</span> gives
+<span class="math" data-tex="\((\xi_1,\xi_2)=(m,(2n-m)/\sqrt3)=M^{-T}(m,n)\)">\((\xi_1,\xi_2)=(m,(2n-m)/\sqrt3)=M^{-T}(m,n)\)</span>.
+This checks the dual basis and the constant directly. Corollary 2.2 applies to any <span class="math" data-tex="\(f\)">\(f\)</span> satisfying its hypotheses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-theta-and-the-circle-heat-kernel">3. Theta and the circle heat kernel</h2>
+<p><a id="ha-lca-11-example-3-1"></a>
+<strong>Example 3.1 — The theta transformation.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, define
+<span class="math" data-tex="\(\theta(t)=\sum_{n\in\mathbb Z}e^{-\pi t n^2}\)">\(\theta(t)=\sum_{n\in\mathbb Z}e^{-\pi t n^2}\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \theta(1/t)=\sqrt t\,\theta(t).
+ \tag{13}
+\]">\[
+ \theta(1/t)=\sqrt t\,\theta(t).
+ \tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> The Gaussian calculation proved in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-example-5-2">HA-LCA-03, Example 5.2</a> is
+<span class="math math-display" data-tex="\[
+ \widehat{\,e^{-\pi t x^2}\,}(\xi)
+        =t^{-1/2}e^{-\pi \xi^2/t}.
+ \tag{14}
+\]">\[
+ \widehat{\,e^{-\pi t x^2}\,}(\xi)
+        =t^{-1/2}e^{-\pi \xi^2/t}.
+ \tag{14}
+\]</span>
+Both functions decay faster than any prescribed inverse power. Indeed, the exponential series gives <span class="math" data-tex="\(e^u\ge u^N/N!\)">\(e^u\ge u^N/N!\)</span> for <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>; use a sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>, and use boundedness on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. The periodization and dual sums therefore converge as in Lemma 2.0. Corollary 2.1 at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> gives
+<span class="math" data-tex="\(\theta(t)=t^{-1/2}\theta(1/t)\)">\(\theta(t)=t^{-1/2}\theta(1/t)\)</span>, which is (13). Applying the product Gaussian transform, <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-proposition-3-2">HA-LCA-07, Proposition 3.2</a>, proves the corresponding identity on <span class="math" data-tex="\(\mathbb Z^d\)">\(\mathbb Z^d\)</span>, and Corollary 2.2 supplies the covolume factor for any full lattice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-example-3-2"></a>
+<strong>Example 3.2 — The heat kernel of <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span>.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+ K_t(x)=\sum_{k\in\mathbb Z}\frac{e^{-(x+k)^2/(4t)}}{\sqrt{4\pi t}}
+       =\sum_{n\in\mathbb Z}e^{-4\pi^2n^2t}E(nx).
+ \tag{15}
+\]">\[
+ K_t(x)=\sum_{k\in\mathbb Z}\frac{e^{-(x+k)^2/(4t)}}{\sqrt{4\pi t}}
+       =\sum_{n\in\mathbb Z}e^{-4\pi^2n^2t}E(nx).
+ \tag{15}
+\]</span>
+It is positive, has integral one over a period, satisfies
+<span class="math" data-tex="\(\partial_tK_t=\partial_x^2K_t\)">\(\partial_tK_t=\partial_x^2K_t\)</span> and <span class="math" data-tex="\(K_s*K_t=K_{s+t}\)">\(K_s*K_t=K_{s+t}\)</span>, and for every continuous one-periodic <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+ \|K_t*F-F\|_\infty\longrightarrow0\quad(t\downarrow0).
+ \tag{16}
+\]">\[
+ \|K_t*F-F\|_\infty\longrightarrow0\quad(t\downarrow0).
+ \tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Apply (14) with parameter <span class="math" data-tex="\(1/(4\pi t)\)">\(1/(4\pi t)\)</span>, including the prefactor in (15). Its transform is <span class="math" data-tex="\(e^{-4\pi^2t\xi^2}\)">\(e^{-4\pi^2t\xi^2}\)</span>. Corollary 2.1 proves (15). The positive Gaussian summands make <span class="math" data-tex="\(K_t&gt;0\)">\(K_t&gt;0\)</span>. Monotone convergence and the tiling of the line by intervals of length one give
+<span class="math" data-tex="\(\int_0^1K_t(x)\,dx=\int_\mathbb R(4\pi t)^{-1/2}e^{-x^2/(4t)}\,dx=1\)">\(\int_0^1K_t(x)\,dx=\int_\mathbb R(4\pi t)^{-1/2}e^{-x^2/(4t)}\,dx=1\)</span>.</p>
+<p>On each region <span class="math" data-tex="\(t\ge\varepsilon&gt;0\)">\(t\ge\varepsilon&gt;0\)</span>, multiplying the Fourier terms by any fixed power of <span class="math" data-tex="\(n\)">\(n\)</span> still gives a uniformly summable family. To see this, absorb that power into <span class="math" data-tex="\(e^{-2\pi^2\varepsilon n^2}\)">\(e^{-2\pi^2\varepsilon n^2}\)</span> using the exponential-series estimate in Example 3.1; the remaining Gaussian terms are summable. Thus the series of every fixed <span class="math" data-tex="\(x\)">\(x\)</span>-derivative and <span class="math" data-tex="\(t\)">\(t\)</span>-derivative converge uniformly there. The rule permitting these differentiations follows from the fundamental theorem of calculus already proved in <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-1">the real-variable reading, Lemmas 1.1–1.3</a>: integrate the uniformly convergent derivative series on a compact interval, pass the limit through its finite integral, and recover the original uniformly convergent series at one endpoint. Repeat for each derivative. Both <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> and <span class="math" data-tex="\(\partial_x^2\)">\(\partial_x^2\)</span> multiply the <span class="math" data-tex="\(n\)">\(n\)</span>-th term by <span class="math" data-tex="\(-4\pi^2n^2\)">\(-4\pi^2n^2\)</span>, proving the equation.</p>
+<p>The Fourier coefficients of <span class="math" data-tex="\(K_s*K_t\)">\(K_s*K_t\)</span> are the products of those of <span class="math" data-tex="\(K_s,K_t\)">\(K_s,K_t\)</span>, hence those of <span class="math" data-tex="\(K_{s+t}\)">\(K_{s+t}\)</span>. The convolution identity and uniqueness are HA-LCA-03, Theorem 3.1, and <a href="the-pontryagin-duality-theorem.html#ha-lca-09-corollary-4-2">HA-LCA-09, Corollary 4.2</a>. All these functions are continuous, so the equality is everywhere.</p>
+<p>Finally let <span class="math" data-tex="\(0&lt;\eta&lt;1/2\)">\(0&lt;\eta&lt;1/2\)</span>. On the circle, the mass of <span class="math" data-tex="\(K_t\)">\(K_t\)</span> outside the <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-neighbourhood of zero is at most the real Gaussian mass over <span class="math" data-tex="\(|y|\ge\eta\)">\(|y|\ge\eta\)</span>, since lifting that circle set to the line yields a subset of <span class="math" data-tex="\(\{|y|\ge\eta\}\)">\(\{|y|\ge\eta\}\)</span>. This mass is at most
+<span class="math math-display" data-tex="\[
+ e^{-\eta^2/(8t)}
+ \int_\mathbb R\frac{e^{-y^2/(8t)}}{\sqrt{4\pi t}}\,dy
+       =\sqrt2\,e^{-\eta^2/(8t)}\longrightarrow0.
+ \tag{17}
+\]">\[
+ e^{-\eta^2/(8t)}
+ \int_\mathbb R\frac{e^{-y^2/(8t)}}{\sqrt{4\pi t}}\,dy
+       =\sqrt2\,e^{-\eta^2/(8t)}\longrightarrow0.
+ \tag{17}
+\]</span>
+Uniform translation continuity of continuous functions on the compact circle is <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1">the general Haar reading, Lemma 1.1</a>. Split the convolution difference into the <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-neighbourhood, where <span class="math" data-tex="\(|F(x-y)-F(x)|\)">\(|F(x-y)-F(x)|\)</span> is uniformly small, and its complement, bounded by <span class="math" data-tex="\(2\|F\|_\infty\)">\(2\|F\|_\infty\)</span> times (17). This proves (16). For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, differentiation under the compact convolution integral is justified by the derivative bounds above, so <span class="math" data-tex="\(K_t*F\)">\(K_t*F\)</span> solves the heat equation with this initial limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-rational-series-finite-groups-and-rational-adèles">4. A rational series, finite groups and rational adèles</h2>
+<p><a id="ha-lca-11-example-4-0"></a>
+<strong>Example 4.0 — Summing a rational series.</strong> For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{n\in\mathbb Z}\frac1{n^2+a^2}
+       =\frac{\pi}{a}\coth(\pi a),\qquad
+ \coth u=\frac{e^u+e^{-u}}{e^u-e^{-u}}\quad(u&gt;0).
+ \tag{18}
+\]">\[
+ \sum_{n\in\mathbb Z}\frac1{n^2+a^2}
+       =\frac{\pi}{a}\coth(\pi a),\qquad
+ \coth u=\frac{e^u+e^{-u}}{e^u-e^{-u}}\quad(u&gt;0).
+ \tag{18}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f(x)=e^{-2\pi a|x|}\)">\(f(x)=e^{-2\pi a|x|}\)</span>. Its transform, proved by integrating the two exponential half-lines in <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-example-5-2">HA-LCA-03, Example 5.2</a>, is
+<span class="math math-display" data-tex="\[
+ \widehat f(\xi)=\frac{a}{\pi(a^2+\xi^2)}.
+ \tag{19}
+\]">\[
+ \widehat f(\xi)=\frac{a}{\pi(a^2+\xi^2)}.
+ \tag{19}
+\]</span>
+The periodization condition in (8) follows from
+<span class="math" data-tex="\(|x+n|\ge|n|-1\)">\(|x+n|\ge|n|-1\)</span> on <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span> and a convergent geometric series. The transform values are summable, since for <span class="math" data-tex="\(|n|\ge1\)">\(|n|\ge1\)</span> they are at most <span class="math" data-tex="\(a/(\pi n^2)\)">\(a/(\pi n^2)\)</span>, and dyadic shells give <span class="math" data-tex="\(\sum_{n\ge1}n^{-2}&lt;\infty\)">\(\sum_{n\ge1}n^{-2}&lt;\infty\)</span> as in Lemma 2.0. Formula (9) at zero gives
+<span class="math math-display" data-tex="\[
+ \frac a\pi\sum_{n\in\mathbb Z}\frac1{n^2+a^2}
+ =1+2\sum_{n=1}^\infty e^{-2\pi an}
+ =\frac{1+e^{-2\pi a}}{1-e^{-2\pi a}}
+ =\coth(\pi a).
+\]">\[
+ \frac a\pi\sum_{n\in\mathbb Z}\frac1{n^2+a^2}
+ =1+2\sum_{n=1}^\infty e^{-2\pi an}
+ =\frac{1+e^{-2\pi a}}{1-e^{-2\pi a}}
+ =\coth(\pi a).
+\]</span>
+This proves (18). In particular the Fourier convention in (19) has the factor <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> in the original exponential; replacing it by a different convention changes the calculation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-example-4-1"></a>
+<strong>Example 4.1 — Finite groups.</strong> For a finite abelian group <span class="math" data-tex="\(G\)">\(G\)</span>, a subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, and counting measures on both, the quotient has counting measure and
+<span class="math math-display" data-tex="\[
+ \sum_{h\in H}f(x+h)
+ =\frac{|H|}{|G|}\sum_{a\in H^\perp}\widehat f(a)a(x),
+ \qquad
+ \widehat f(a)=\sum_{y\in G}f(y)\overline{a(y)}.
+ \tag{20}
+\]">\[
+ \sum_{h\in H}f(x+h)
+ =\frac{|H|}{|G|}\sum_{a\in H^\perp}\widehat f(a)a(x),
+ \qquad
+ \widehat f(a)=\sum_{y\in G}f(y)\overline{a(y)}.
+ \tag{20}
+\]</span></p>
+<p><strong>Proof.</strong> The cosets partition <span class="math" data-tex="\(G\)">\(G\)</span>, so counting measure satisfies (1), with quotient mass <span class="math" data-tex="\(|G|/|H|\)">\(|G|/|H|\)</span>. The dual quotient measure is therefore <span class="math" data-tex="\(|H|/|G|\)">\(|H|/|G|\)</span> times counting measure, giving (20) from Theorem 1.1. There are no convergence questions because all sets are finite.</p>
+<p>One can also check the identity directly by <a href="fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-3-1">HA-LCA-01, Theorem 3.1</a>. That theorem gives <span class="math" data-tex="\(|H^\perp|=|G|/|H|\)">\(|H^\perp|=|G|/|H|\)</span> and says the sum of its characters at <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is <span class="math" data-tex="\(|H^\perp|\)">\(|H^\perp|\)</span> if <span class="math" data-tex="\(x-y\in H\)">\(x-y\in H\)</span>, zero otherwise. Insert the finite definition of <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> in the right side of (20) and interchange two finite sums. The coefficient of <span class="math" data-tex="\(f(y)\)">\(f(y)\)</span> is exactly the indicator of <span class="math" data-tex="\(x-y\in H\)">\(x-y\in H\)</span>. This recovers the finite Poisson formula with the present counting convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To give an actual adelic instance of Theorem 1.1, we now prove its needed group, measure and test-function facts. Only the rational field is considered. The <span class="math" data-tex="\(p\)">\(p\)</span>-adic fields, rings, characters and their self-dual Haar measures are already constructed in <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-example-6-4">HA-LCA-10, Example 6.4</a>. Write
+<span class="math" data-tex="\(\psi_p(x)=E(\{x\}_p)\)">\(\psi_p(x)=E(\{x\}_p)\)</span> for the character with kernel <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>.</p>
+<p><a id="ha-lca-11-lemma-4-2"></a>
+<strong>Lemma 4.2 — The rational adelic lattice.</strong> Put
+<span class="math math-display" data-tex="\[
+ K=\prod_p\mathbb Z_p,\qquad
+ \mathbb A_f=\{(x_p)_p:x_p\in\mathbb Q_p,\ x_p\in\mathbb Z_p
+                         \text{ for all but finitely many }p\},
+ \qquad
+ \mathbb A=\mathbb R\times\mathbb A_f.
+ \tag{21}
+\]">\[
+ K=\prod_p\mathbb Z_p,\qquad
+ \mathbb A_f=\{(x_p)_p:x_p\in\mathbb Q_p,\ x_p\in\mathbb Z_p
+                         \text{ for all but finitely many }p\},
+ \qquad
+ \mathbb A=\mathbb R\times\mathbb A_f.
+ \tag{21}
+\]</span>
+Give <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> the restricted-product topology: an identity-neighbourhood basis consists of
+<span class="math" data-tex="\(\prod_{p\in S}U_p\times\prod_{p\notin S}\mathbb Z_p\)">\(\prod_{p\in S}U_p\times\prod_{p\notin S}\mathbb Z_p\)</span>, with <span class="math" data-tex="\(S\)">\(S\)</span> finite and <span class="math" data-tex="\(U_p\)">\(U_p\)</span> identity neighbourhoods in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. These are LCA groups, <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span> is sigma-compact, and the diagonal copy of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is discrete and cocompact. For Haar measure
+<span class="math math-display" data-tex="\[
+ dx=dx_\infty\,du,\qquad du(K)=1,
+ \tag{22}
+\]">\[
+ dx=dx_\infty\,du,\qquad du(K)=1,
+ \tag{22}
+\]</span>
+and counting measure on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the quotient <span class="math" data-tex="\(\mathbb A/\mathbb Q\)">\(\mathbb A/\mathbb Q\)</span> has mass one. The set
+<span class="math math-display" data-tex="\[
+ \mathcal F=[0,1)\times K
+ \tag{23}
+\]">\[
+ \mathcal F=[0,1)\times K
+ \tag{23}
+\]</span>
+contains exactly one representative of every rational coset.</p>
+<p><strong>Proof.</strong> The restricted tuples form a group under coordinatewise addition, since the union of two finite sets of nonintegral coordinates is finite. The displayed neighbourhoods give a Hausdorff group topology: choose smaller coordinate neighbourhoods for addition and inversion at the finitely many designated coordinates; elsewhere <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is already a subgroup. Any two different tuples are separated in a coordinate where they differ. This topology restricts to the product topology on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The group <span class="math" data-tex="\(K\)">\(K\)</span> is compact by <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-4-1">the Banach reading, Lemma 4.1</a> and compactness of every <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. It is open in <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>, so <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> is locally compact. For every positive integer <span class="math" data-tex="\(D\)">\(D\)</span>, multiplication by <span class="math" data-tex="\(D\)">\(D\)</span> is a homeomorphism of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>: it and its inverse act continuously in each coordinate and alter the integrality condition at only the finitely many primes dividing <span class="math" data-tex="\(D\)">\(D\)</span>. Therefore <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span> is compact and open.</p>
+<p>Every tuple belongs to some <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span>: choose <span class="math" data-tex="\(D\)">\(D\)</span> with sufficiently large powers of the finitely many primes at which the tuple is nonintegral. Moreover the sets <span class="math" data-tex="\(n!^{-1}K\)">\(n!^{-1}K\)</span> are increasing and cover <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>, since every <span class="math" data-tex="\(D\)">\(D\)</span> divides some factorial. Thus <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>, and hence its product with <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, is sigma-compact. Every compact subset of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> is contained in one <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span>, by a finite subcover. The sets <span class="math" data-tex="\(DK\)">\(DK\)</span>, <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span>, form an identity-neighbourhood basis: a large enough power at each of the finitely many specified primes fits inside the prescribed <span class="math" data-tex="\(U_p\)">\(U_p\)</span>.</p>
+<p>We use the elementary rational fact
+<span class="math math-display" data-tex="\[
+ \mathbb Q\cap\bigcap_p\mathbb Z_p=\mathbb Z.
+ \tag{24}
+\]">\[
+ \mathbb Q\cap\bigcap_p\mathbb Z_p=\mathbb Z.
+ \tag{24}
+\]</span>
+Here intersections mean membership under the embeddings of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> in the local fields. To prove it, write a rational as <span class="math" data-tex="\(a/b\)">\(a/b\)</span> with coprime integers and <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. If <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span>, it has a prime divisor; removing prime factors repeatedly terminates because the remaining positive integer decreases. A prime dividing <span class="math" data-tex="\(b\)">\(b\)</span> cannot divide <span class="math" data-tex="\(a\)">\(a\)</span>, by Bézout's identity from HA-LCA-01, Lemma 4.2. The valuation at that prime is negative, contradicting membership in its <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. The reverse inclusion is immediate. This argument also shows that each rational is integral at all but finitely many primes, so the diagonal embedding lies in <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>.</p>
+<p>The neighbourhood <span class="math" data-tex="\((-1/2,1/2)\times K\)">\((-1/2,1/2)\times K\)</span> meets the diagonal rationals only at zero by (24); hence they form a discrete subgroup. This subgroup is closed by HA-LCA-09, Lemma 1.2.</p>
+<p>For an arbitrary <span class="math" data-tex="\(x\in\mathbb A\)">\(x\in\mathbb A\)</span>, form the finite rational sum <span class="math" data-tex="\(r=\sum_p\{x_p\}_p\)">\(r=\sum_p\{x_p\}_p\)</span>. For each prime <span class="math" data-tex="\(p\)">\(p\)</span>, the summand <span class="math" data-tex="\(\{x_p\}_p\)">\(\{x_p\}_p\)</span> removes the nonintegral part of <span class="math" data-tex="\(x_p\)">\(x_p\)</span>, whereas every other summand has denominator a power of a different prime and is therefore in <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. Thus <span class="math" data-tex="\(x_p-r\in\mathbb Z_p\)">\(x_p-r\in\mathbb Z_p\)</span> for all <span class="math" data-tex="\(p\)">\(p\)</span>. Choose the integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(0\le x_\infty-r-m&lt;1\)">\(0\le x_\infty-r-m&lt;1\)</span>. Then <span class="math" data-tex="\(x-(r+m)\in\mathcal F\)">\(x-(r+m)\in\mathcal F\)</span>. If two points of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> differ by a diagonal rational, its finite coordinates put it in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by (24), and its real coordinate has absolute value less than one. It is zero. This proves the assertion about representatives, and also the disjoint Borel tiling
+<span class="math math-display" data-tex="\[
+ \mathbb A=\bigsqcup_{q\in\mathbb Q}(q+\mathcal F).
+ \tag{25}
+\]">\[
+ \mathbb A=\bigsqcup_{q\in\mathbb Q}(q+\mathcal F).
+ \tag{25}
+\]</span>
+The compact set <span class="math" data-tex="\([0,1]\times K\)">\([0,1]\times K\)</span> maps onto <span class="math" data-tex="\(\mathbb A/\mathbb Q\)">\(\mathbb A/\mathbb Q\)</span>, proving cocompactness.</p>
+<p>Normalize Haar measure on <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> by <span class="math" data-tex="\(du(K)=1\)">\(du(K)=1\)</span>; this is possible since <span class="math" data-tex="\(K\)">\(K\)</span> is nonempty, open and compact. Product Haar measure with Lebesgue measure is (22), by <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-lemma-3-0">HA-LCA-07, Lemma 3.0</a>. The set <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> has mass one. Its finite restricted measure is Radon, and so is its pushforward <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to the quotient, by <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-4-1">HA-LCA-03, Lemma 4.1</a> and <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1">the product reading, Proposition 3.1</a>. For <span class="math" data-tex="\(f\in C_c(\mathbb A)\)">\(f\in C_c(\mathbb A)\)</span>, the countable tiling and translation invariance give
+<span class="math math-display" data-tex="\[
+ \int_\mathbb A f(x)\,dx
+ =\int_\mathcal F\sum_{q\in\mathbb Q}f(x+q)\,dx
+ =\int_{\mathbb A/\mathbb Q}Pf\,d\rho.
+ \tag{26}
+\]">\[
+ \int_\mathbb A f(x)\,dx
+ =\int_\mathcal F\sum_{q\in\mathbb Q}f(x+q)\,dx
+ =\int_{\mathbb A/\mathbb Q}Pf\,d\rho.
+ \tag{26}
+\]</span>
+Absolute integrability follows by first doing the calculation for <span class="math" data-tex="\(|f|\)">\(|f|\)</span>, using monotone convergence on the countable tiling. The quotient measure of Weil's formula has the same integrals in (26); the surjectivity of <span class="math" data-tex="\(P:C_c(\mathbb A)\to C_c(\mathbb A/\mathbb Q)\)">\(P:C_c(\mathbb A)\to C_c(\mathbb A/\mathbb Q)\)</span> identifies it with <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Its mass is one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-lemma-4-3"></a>
+<strong>Lemma 4.3 — Adelic self-duality and the rational annihilator.</strong> The pairing
+<span class="math math-display" data-tex="\[
+ \langle x,y\rangle_{\mathbb A}
+ =E(x_\infty y_\infty)\prod_p\overline{\psi_p(x_p y_p)}
+ \tag{27}
+\]">\[
+ \langle x,y\rangle_{\mathbb A}
+ =E(x_\infty y_\infty)\prod_p\overline{\psi_p(x_p y_p)}
+ \tag{27}
+\]</span>
+identifies <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span> topologically with its dual. The Haar measure (22) is self-dual for this pairing, and
+<span class="math math-display" data-tex="\[
+ \mathbb Q^\perp=\mathbb Q
+ \quad\text{inside }\mathbb A.
+ \tag{28}
+\]">\[
+ \mathbb Q^\perp=\mathbb Q
+ \quad\text{inside }\mathbb A.
+ \tag{28}
+\]</span></p>
+<p><strong>Proof.</strong> For two restricted tuples, all but finitely many local products are integral; hence the product in (27) is finite. First consider its finite-place part
+<span class="math" data-tex="\(\langle u,v\rangle_f=\prod_p\overline{\psi_p(u_pv_p)}\)">\(\langle u,v\rangle_f=\prod_p\overline{\psi_p(u_pv_p)}\)</span>.
+For fixed <span class="math" data-tex="\(v\in D^{-1}K\)">\(v\in D^{-1}K\)</span>, it is trivial when <span class="math" data-tex="\(u\in DK\)">\(u\in DK\)</span>, so it is a continuous character. If <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, test a tuple supported only at a coordinate where <span class="math" data-tex="\(v_p\ne0\)">\(v_p\ne0\)</span>, and use the nondegeneracy proved in HA-LCA-10, Example 6.4. Thus the parameter map into <span class="math" data-tex="\(\widehat{\mathbb A_f}\)">\(\widehat{\mathbb A_f}\)</span> is injective.</p>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be any continuous character of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>. Its restriction to the <span class="math" data-tex="\(p\)">\(p\)</span>-th coordinate copy of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> has the form
+<span class="math" data-tex="\(u_p\mapsto\overline{\psi_p(u_pv_p)}\)">\(u_p\mapsto\overline{\psi_p(u_pv_p)}\)</span> for a unique <span class="math" data-tex="\(v_p\)">\(v_p\)</span>, by that same earlier example (replace its parameter by its negative). Continuity gives some subgroup <span class="math" data-tex="\(DK\)">\(DK\)</span> whose image under <span class="math" data-tex="\(\chi\)">\(\chi\)</span> lies in <span class="math" data-tex="\(\{z:|z-1|&lt;1\}\)">\(\{z:|z-1|&lt;1\}\)</span>. The small-arc lemma, <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-1-2">HA-LCA-02, Lemma 1.2</a>, makes that image trivial. For every prime not dividing <span class="math" data-tex="\(D\)">\(D\)</span>, the coordinate copy of <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> lies in <span class="math" data-tex="\(DK\)">\(DK\)</span>, so <span class="math" data-tex="\(v_p\in\mathbb Z_p\)">\(v_p\in\mathbb Z_p\)</span> by the local annihilator formula. Consequently <span class="math" data-tex="\(v\in\mathbb A_f\)">\(v\in\mathbb A_f\)</span>.</p>
+<p>Tuples with finitely many nonzero coordinates are dense in <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>. Given a tuple and a basic neighbourhood of it, match its finitely many designated coordinates and its finitely many nonintegral coordinates; set the other coordinates to zero. The resulting tuple is in that neighbourhood. On these finite tuples, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and the character with parameter <span class="math" data-tex="\(v\)">\(v\)</span> agree by multiplication of the coordinate characters. Continuity and density prove agreement everywhere. This proves surjectivity.</p>
+<p>It also gives the explicit annihilator identities
+<span class="math math-display" data-tex="\[
+ (DK)^\perp=D^{-1}K,\qquad (D^{-1}K)^\perp=DK
+ \quad(D\ge1).
+ \tag{29}
+\]">\[
+ (DK)^\perp=D^{-1}K,\qquad (D^{-1}K)^\perp=DK
+ \quad(D\ge1).
+ \tag{29}
+\]</span>
+Indeed, testing one coordinate at a time reduces them to
+<span class="math" data-tex="\((p^m\mathbb Z_p)^\perp=p^{-m}\mathbb Z_p\)">\((p^m\mathbb Z_p)^\perp=p^{-m}\mathbb Z_p\)</span>, already proved; integer factors coprime to <span class="math" data-tex="\(p\)">\(p\)</span> are units. Conversely those coordinate conditions make every local product integral.</p>
+<p>For compact-open continuity of the parameter map, a compact set of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> lies in some <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span>, and all parameters in <span class="math" data-tex="\(DK\)">\(DK\)</span> give characters identically one there. For inverse continuity, the image of <span class="math" data-tex="\(DK\)">\(DK\)</span> is exactly
+<span class="math math-display" data-tex="\[
+ \left\{\chi:\sup_{u\in D^{-1}K}|\chi(u)-1|&lt;1\right\}.
+ \tag{30}
+\]">\[
+ \left\{\chi:\sup_{u\in D^{-1}K}|\chi(u)-1|&lt;1\right\}.
+ \tag{30}
+\]</span>
+The equality follows from (29) and the small-arc lemma applied to the image of the entire subgroup <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span>. This is an open set in the dual since <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span> is compact. The sets <span class="math" data-tex="\(DK\)">\(DK\)</span> form a neighbourhood basis, proving the inverse continuity.</p>
+<p>The measure <span class="math" data-tex="\(du\)">\(du\)</span> is self-dual for this finite-place identification. To see the constant, <span class="math" data-tex="\(1_K\in C_c(\mathbb A_f)\)">\(1_K\in C_c(\mathbb A_f)\)</span> is its own autocorrelation, since <span class="math" data-tex="\(du(K)=1\)">\(du(K)=1\)</span>, so it has positive type. Its Fourier transform is <span class="math" data-tex="\(1_K\)">\(1_K\)</span> under the identification: a character integral over <span class="math" data-tex="\(K\)">\(K\)</span> is one when it is trivial, and otherwise is zero by translating the integral by a point where the character is not one. The annihilator of <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(K\)">\(K\)</span>. The transported dual measure is <span class="math" data-tex="\(c\,du\)">\(c\,du\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, by Haar uniqueness. The <span class="math" data-tex="\(B^1\)">\(B^1\)</span> inversion formula, <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1">HA-LCA-07, Theorem 2.1</a>, at zero gives <span class="math" data-tex="\(1=c\,du(K)=c\)">\(1=c\,du(K)=c\)</span>. Thus <span class="math" data-tex="\(c=1\)">\(c=1\)</span>.</p>
+<p>Real self-duality and finite-product duality, proved in HA-LCA-02, Theorem 3.1 and Proposition 4.1, now give precisely the topological identification (27). The product normalization of HA-LCA-07, Lemma 3.0, gives the self-duality of (22).</p>
+<p>It remains to compute the rational annihilator, rather than assume it from a number-theory result. For rational <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+ r-\sum_p\{r\}_p\in\mathbb Z.
+ \tag{31}
+\]">\[
+ r-\sum_p\{r\}_p\in\mathbb Z.
+ \tag{31}
+\]</span>
+The sum is finite. Its difference from <span class="math" data-tex="\(r\)">\(r\)</span> belongs to every <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>: the <span class="math" data-tex="\(p\)">\(p\)</span>-summand removes the fractional part at <span class="math" data-tex="\(p\)">\(p\)</span>, and all other summands are <span class="math" data-tex="\(p\)">\(p\)</span>-integral. Apply (24). For rational <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, (31) with <span class="math" data-tex="\(rs\)">\(rs\)</span> gives <span class="math" data-tex="\(\langle r,s\rangle_{\mathbb A}=1\)">\(\langle r,s\rangle_{\mathbb A}=1\)</span>. This proves <span class="math" data-tex="\(\mathbb Q\subseteq\mathbb Q^\perp\)">\(\mathbb Q\subseteq\mathbb Q^\perp\)</span>.</p>
+<p>Conversely take <span class="math" data-tex="\(y\in\mathbb Q^\perp\)">\(y\in\mathbb Q^\perp\)</span>. Subtract its unique rational translate to put it in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, using Lemma 4.2; subtracting a rational preserves the annihilator property. Call the resulting tuple <span class="math" data-tex="\(z\)">\(z\)</span>. Testing against the rational <span class="math" data-tex="\(1\)">\(1\)</span> in (27) gives <span class="math" data-tex="\(E(z_\infty)=1\)">\(E(z_\infty)=1\)</span>, since each <span class="math" data-tex="\(z_p\in\mathbb Z_p\)">\(z_p\in\mathbb Z_p\)</span>. As <span class="math" data-tex="\(0\le z_\infty&lt;1\)">\(0\le z_\infty&lt;1\)</span>, this forces <span class="math" data-tex="\(z_\infty=0\)">\(z_\infty=0\)</span>. Testing against <span class="math" data-tex="\(1/p^n\)">\(1/p^n\)</span> then gives <span class="math" data-tex="\(\psi_p(z_p/p^n)=1\)">\(\psi_p(z_p/p^n)=1\)</span>: all other local factors are one because their denominators are units. Hence <span class="math" data-tex="\(z_p\in p^n\mathbb Z_p\)">\(z_p\in p^n\mathbb Z_p\)</span> for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, so <span class="math" data-tex="\(z_p=0\)">\(z_p=0\)</span> by the compatible-residue construction. This holds for every <span class="math" data-tex="\(p\)">\(p\)</span>. Therefore <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, and <span class="math" data-tex="\(y\)">\(y\)</span> was rational. This proves (28). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-lemma-4-4"></a>
+<strong>Lemma 4.4 — A concrete adelic test space.</strong> Let <span class="math" data-tex="\(\mathcal S(\mathbb R)\)">\(\mathcal S(\mathbb R)\)</span> be the space of smooth functions <span class="math" data-tex="\(g\)">\(g\)</span> for which
+<span class="math" data-tex="\(\sup_x(1+|x|)^m|g^{(j)}(x)|&lt;\infty\)">\(\sup_x(1+|x|)^m|g^{(j)}(x)|&lt;\infty\)</span> for all nonnegative integers <span class="math" data-tex="\(m,j\)">\(m,j\)</span>. Let <span class="math" data-tex="\(\mathcal D(\mathbb A_f)\)">\(\mathcal D(\mathbb A_f)\)</span> be the locally constant compactly supported functions. Both spaces are preserved by their Fourier transforms. The finite linear span
+<span class="math math-display" data-tex="\[
+ \mathcal S(\mathbb A)
+ =\operatorname{span}\{\,g(x_\infty)v(x_f):
+                   g\in\mathcal S(\mathbb R),\
+                   v\in\mathcal D(\mathbb A_f)\,\}
+ \tag{32}
+\]">\[
+ \mathcal S(\mathbb A)
+ =\operatorname{span}\{\,g(x_\infty)v(x_f):
+                   g\in\mathcal S(\mathbb R),\
+                   v\in\mathcal D(\mathbb A_f)\,\}
+ \tag{32}
+\]</span>
+is preserved by the Fourier transform for (27). For every member <span class="math" data-tex="\(f\)">\(f\)</span>, the rational periodization
+<span class="math" data-tex="\(\sum_{q\in\mathbb Q}f(x+q)\)">\(\sum_{q\in\mathbb Q}f(x+q)\)</span> converges absolutely and uniformly on each compact subset of <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>, and <span class="math" data-tex="\(\sum_{q\in\mathbb Q}|\widehat f(q)|&lt;\infty\)">\(\sum_{q\in\mathbb Q}|\widehat f(q)|&lt;\infty\)</span>.</p>
+<p><strong>Proof.</strong> First consider the real factor. The decay conditions make every polynomial times every derivative of <span class="math" data-tex="\(g\)">\(g\)</span> integrable, using Lemma 2.0 in dimension one. Differentiation under the integral, as justified in <a href="../prerequisites/src/real-variable-calculations.html#ha-lca-pre-real-lemma-1-4">the real-variable reading, Lemma 1.4</a>, gives
+<span class="math math-display" data-tex="\[
+ \frac{d^j}{d\xi^j}\widehat g(\xi)
+   =\int_\mathbb R(-2\pi ix)^j g(x)E(-x\xi)\,dx.
+ \tag{33}
+\]">\[
+ \frac{d^j}{d\xi^j}\widehat g(\xi)
+   =\int_\mathbb R(-2\pi ix)^j g(x)E(-x\xi)\,dx.
+ \tag{33}
+\]</span>
+The same integrable bounds give continuity of these derivatives by dominated convergence. Repeated integration by parts on finite intervals, followed by their limit to the whole line, gives
+<span class="math math-display" data-tex="\[
+ (2\pi i\xi)^N\frac{d^j}{d\xi^j}\widehat g(\xi)
+  =\int_\mathbb R
+       \frac{d^N}{dx^N}\bigl[(-2\pi ix)^jg(x)\bigr]E(-x\xi)\,dx.
+ \tag{34}
+\]">\[
+ (2\pi i\xi)^N\frac{d^j}{d\xi^j}\widehat g(\xi)
+  =\int_\mathbb R
+       \frac{d^N}{dx^N}\bigl[(-2\pi ix)^jg(x)\bigr]E(-x\xi)\,dx.
+ \tag{34}
+\]</span>
+All boundary terms vanish by rapid decay, and the integrals are absolutely convergent. Repeated product differentiation expresses the derivative in (34) as a finite sum of polynomial multiples of derivatives of <span class="math" data-tex="\(g\)">\(g\)</span>; this follows by induction from the product rule. Its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm bounds the right side uniformly in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. For <span class="math" data-tex="\(|\xi|\ge1\)">\(|\xi|\ge1\)</span>, divide by <span class="math" data-tex="\(|2\pi\xi|^N\)">\(|2\pi\xi|^N\)</span>; for <span class="math" data-tex="\(|\xi|\le1\)">\(|\xi|\le1\)</span>, use (33). Since <span class="math" data-tex="\(N\)">\(N\)</span> is arbitrary, these are exactly all the Schwartz bounds for <span class="math" data-tex="\(\widehat g\)">\(\widehat g\)</span>.</p>
+<p>Next let <span class="math" data-tex="\(v\in\mathcal D(\mathbb A_f)\)">\(v\in\mathcal D(\mathbb A_f)\)</span>. Each point of its support has a coset neighbourhood on which <span class="math" data-tex="\(v\)">\(v\)</span> is constant. Its support is the nonzero set, since local constancy at any zero supplies a zero neighbourhood. Compactness therefore gives a finite cover of the support by such cosets. Choose <span class="math" data-tex="\(D\)">\(D\)</span> divisible by the finitely many integers defining their compact open subgroups. The subgroup <span class="math" data-tex="\(DK\)">\(DK\)</span> lies in each of them. Refining to <span class="math" data-tex="\(DK\)">\(DK\)</span>-cosets, of which only finitely many meet this compact support, expresses <span class="math" data-tex="\(v\)">\(v\)</span> as a finite linear combination of indicators <span class="math" data-tex="\(1_{a+DK}\)">\(1_{a+DK}\)</span>. These cosets also show global invariance under translation by <span class="math" data-tex="\(DK\)">\(DK\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(K/DK\)">\(K/DK\)</span> has exactly <span class="math" data-tex="\(D\)">\(D\)</span> elements. Indeed, if <span class="math" data-tex="\(D=\prod_{p\mid D}p^{m_p}\)">\(D=\prod_{p\mid D}p^{m_p}\)</span>, its quotient coordinates are the finite rings <span class="math" data-tex="\(\mathbb Z_p/p^{m_p}\mathbb Z_p\)">\(\mathbb Z_p/p^{m_p}\mathbb Z_p\)</span>, of sizes <span class="math" data-tex="\(p^{m_p}\)">\(p^{m_p}\)</span>, and all other factors vanish; the coordinate map is onto and has kernel <span class="math" data-tex="\(DK\)">\(DK\)</span>. Thus <span class="math" data-tex="\(du(DK)=1/D\)">\(du(DK)=1/D\)</span>. Character integration over this compact subgroup and (29) give
+<span class="math math-display" data-tex="\[
+ \widehat{1_{a+DK}}(y)
+  =\frac1D\,\overline{\langle a,y\rangle_f}\,
+                1_{D^{-1}K}(y).
+ \tag{35}
+\]">\[
+ \widehat{1_{a+DK}}(y)
+  =\frac1D\,\overline{\langle a,y\rangle_f}\,
+                1_{D^{-1}K}(y).
+ \tag{35}
+\]</span>
+Every finite-place character is locally constant, since the proof of Lemma 4.3 shows that it kills some <span class="math" data-tex="\(EK\)">\(EK\)</span>. Consequently (35) is locally constant and compactly supported. Linearity proves Fourier stability of <span class="math" data-tex="\(\mathcal D(\mathbb A_f)\)">\(\mathcal D(\mathbb A_f)\)</span>.</p>
+<p>Each tensor in (32) is continuous and in <span class="math" data-tex="\(L^1(\mathbb A)\)">\(L^1(\mathbb A)\)</span>. The absolutely integrable product formula, or the sigma-finite Fubini theorem <a href="../prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-4-4">in the integration reading, Theorem 4.4</a>, yields
+<span class="math math-display" data-tex="\[
+ \widehat{g\otimes v}=\widehat g\otimes\widehat v.
+ \tag{36}
+\]">\[
+ \widehat{g\otimes v}=\widehat g\otimes\widehat v.
+ \tag{36}
+\]</span>
+Here the product Haar normalization is exactly (22); sigma-compactness was proved in Lemma 4.2. The preceding two stability arguments prove the assertion about (32).</p>
+<p>For the convergence assertions, it is enough to treat one tensor. Let <span class="math" data-tex="\(C\subset\mathbb A\)">\(C\subset\mathbb A\)</span> be compact. Its real projection is bounded, say <span class="math" data-tex="\(|x_\infty|\le R\)">\(|x_\infty|\le R\)</span>, and its finite-place projection is contained in some <span class="math" data-tex="\(E^{-1}K\)">\(E^{-1}K\)</span>. The support of <span class="math" data-tex="\(v\)">\(v\)</span> is contained in some <span class="math" data-tex="\(D^{-1}K\)">\(D^{-1}K\)</span>. If <span class="math" data-tex="\(v(x_f+q)\ne0\)">\(v(x_f+q)\ne0\)</span> for <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span> and rational <span class="math" data-tex="\(q\)">\(q\)</span>, then
+<span class="math math-display" data-tex="\[
+ q\in D^{-1}K+E^{-1}K\subseteq(DE)^{-1}K.
+ \]">\[
+ q\in D^{-1}K+E^{-1}K\subseteq(DE)^{-1}K.
+ \]</span>
+By (24), these rational numbers are all in <span class="math" data-tex="\((DE)^{-1}\mathbb Z\)">\((DE)^{-1}\mathbb Z\)</span>. Thus the periodization on <span class="math" data-tex="\(C\)">\(C\)</span> is bounded termwise by the lattice sum
+<span class="math math-display" data-tex="\[
+ \|v\|_\infty
+ \sum_{k\in\mathbb Z}\sup_{|t|\le R}|g(t+k/(DE))|,
+ \tag{37}
+\]">\[
+ \|v\|_\infty
+ \sum_{k\in\mathbb Z}\sup_{|t|\le R}|g(t+k/(DE))|,
+ \tag{37}
+\]</span>
+which converges by the Schwartz bound and Lemma 2.0. This proves absolute uniform convergence on <span class="math" data-tex="\(C\)">\(C\)</span>. Each summand is continuous; a compact neighbourhood of any point makes the sum continuous there. Apply the same argument to <span class="math" data-tex="\(\widehat g\otimes\widehat v\)">\(\widehat g\otimes\widehat v\)</span>, now at the singleton <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, using (36) and the two stability assertions. This proves summability of the rational transform values. Finite linear combinations preserve all the properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-proposition-4-5"></a>
+<strong>Proposition 4.5 — Rational adelic Poisson summation.</strong> For <span class="math" data-tex="\(f\in\mathcal S(\mathbb A)\)">\(f\in\mathcal S(\mathbb A)\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{q\in\mathbb Q}f(x+q)
+ =\sum_{q\in\mathbb Q}\widehat f(q)\langle x,q\rangle_{\mathbb A}
+ \quad(x\in\mathbb A).
+ \tag{38}
+\]">\[
+ \sum_{q\in\mathbb Q}f(x+q)
+ =\sum_{q\in\mathbb Q}\widehat f(q)\langle x,q\rangle_{\mathbb A}
+ \quad(x\in\mathbb A).
+ \tag{38}
+\]</span>
+In particular,
+<span class="math math-display" data-tex="\[
+ \sum_{q\in\mathbb Q}f(q)=\sum_{q\in\mathbb Q}\widehat f(q).
+ \tag{39}
+\]">\[
+ \sum_{q\in\mathbb Q}f(q)=\sum_{q\in\mathbb Q}\widehat f(q).
+ \tag{39}
+\]</span>
+Both sides converge absolutely; the primal sum is locally uniformly convergent and the dual sum is uniformly convergent on <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 4.2 supplies a closed discrete rational subgroup and quotient Haar mass one. Lemma 4.3 identifies its annihilator with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> using the precise pairing (27), and fixes the self-dual measure. The measure on that annihilator dual to the quotient is counting measure, by HA-LCA-07, Proposition 3.3. Lemma 4.4 makes the actual periodization continuous, absolutely convergent, and invariant under <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> by reindexing; it descends continuously through the quotient map. It also makes the transform restriction integrable for counting measure. Theorem 1.1 therefore gives (38) at every point. Put <span class="math" data-tex="\(x=0\)">\(x=0\)</span> to obtain (39). The bounds in Lemma 4.4 give primal local uniform convergence, and the summable coefficients on the right, whose characters have modulus one, give global uniform convergence. No further adelic duality or number-theory theorem is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><a id="ha-lca-11-exercise-5-1"></a>
+<strong>Exercise 5.1 — A three-digit theta check.</strong> Verify (13) at <span class="math" data-tex="\(t=2\)">\(t=2\)</span> from a few terms and bound the omitted tails.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>, the tail after the terms with <span class="math" data-tex="\(|n|\le N\)">\(|n|\le N\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ 0&lt;2\sum_{n=N+1}^\infty e^{-\pi t n^2}
+ \le \frac{2e^{-\pi t(N+1)^2}}
+                {1-e^{-\pi t(2N+3)}}.
+ \tag{40}
+\]">\[
+ 0&lt;2\sum_{n=N+1}^\infty e^{-\pi t n^2}
+ \le \frac{2e^{-\pi t(N+1)^2}}
+                {1-e^{-\pi t(2N+3)}}.
+ \tag{40}
+\]</span>
+Indeed consecutive squared indices differ by <span class="math" data-tex="\(2n+1\ge2N+3\)">\(2n+1\ge2N+3\)</span> once <span class="math" data-tex="\(n\ge N+1\)">\(n\ge N+1\)</span>; each successive summand is at most <span class="math" data-tex="\(e^{-\pi t(2N+3)}\)">\(e^{-\pi t(2N+3)}\)</span> times the preceding one. Sum the resulting geometric majorant.</p>
+<p>For <span class="math" data-tex="\(\theta(2)\)">\(\theta(2)\)</span>, take <span class="math" data-tex="\(N=1\)">\(N=1\)</span>:
+<span class="math math-display" data-tex="\[
+ 1+2e^{-2\pi}\approx1.003734885463416.
+ \]">\[
+ 1+2e^{-2\pi}\approx1.003734885463416.
+ \]</span>
+The bound (40) is less than <span class="math" data-tex="\(2.433\times10^{-11}\)">\(2.433\times10^{-11}\)</span>. For <span class="math" data-tex="\(\theta(1/2)\)">\(\theta(1/2)\)</span>, take <span class="math" data-tex="\(N=3\)">\(N=3\)</span>:
+<span class="math math-display" data-tex="\[
+ 1+2(e^{-\pi/2}+e^{-2\pi}+e^{-9\pi/2})
+       \approx1.419495488059443,
+ \]">\[
+ 1+2(e^{-\pi/2}+e^{-2\pi}+e^{-9\pi/2})
+       \approx1.419495488059443,
+ \]</span>
+and its tail bound is again less than <span class="math" data-tex="\(2.434\times10^{-11}\)">\(2.434\times10^{-11}\)</span>.
+Multiplying the first approximation by <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> gives
+<span class="math" data-tex="\(1.419495488049368\)">\(1.419495488049368\)</span>, with its omitted-tail bound multiplied by <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. The two error intervals overlap, as required by (13), and both values round to <span class="math" data-tex="\(1.419\)">\(1.419\)</span> at three decimal places. The exact bound (40), not the closeness of rounded numbers alone, explains why these few terms suffice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-exercise-5-2"></a>
+<strong>Exercise 5.2 — A rational series by periodization.</strong> Derive (18) from Corollary 2.1 and verify its hypotheses.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(f(x)=e^{-2\pi a|x|}\)">\(f(x)=e^{-2\pi a|x|}\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, whose transform is (19). It is continuous and integrable. On <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>,
+<span class="math math-display" data-tex="\[
+ |f(x+n)|\le e^{2\pi a}e^{-2\pi a|n|}.
+ \]">\[
+ |f(x+n)|\le e^{2\pi a}e^{-2\pi a|n|}.
+ \]</span>
+The right side is summable by a two-sided geometric series. For <span class="math" data-tex="\(|n|\ge1\)">\(|n|\ge1\)</span>,
+<span class="math" data-tex="\(|\widehat f(n)|\le a/(\pi n^2)\)">\(|\widehat f(n)|\le a/(\pi n^2)\)</span>; the <span class="math" data-tex="\(n=0\)">\(n=0\)</span> value is <span class="math" data-tex="\(1/(\pi a)\)">\(1/(\pi a)\)</span>, so all transform values are summable. Both conditions in (8) hold.</p>
+<p>Poisson summation at zero therefore gives
+<span class="math math-display" data-tex="\[
+ \frac a\pi\sum_{n\in\mathbb Z}(a^2+n^2)^{-1}
+ =1+\frac{2e^{-2\pi a}}{1-e^{-2\pi a}}
+ =\frac{e^{\pi a}+e^{-\pi a}}{e^{\pi a}-e^{-\pi a}}.
+ \]">\[
+ \frac a\pi\sum_{n\in\mathbb Z}(a^2+n^2)^{-1}
+ =1+\frac{2e^{-2\pi a}}{1-e^{-2\pi a}}
+ =\frac{e^{\pi a}+e^{-\pi a}}{e^{\pi a}-e^{-\pi a}}.
+ \]</span>
+Multiply by <span class="math" data-tex="\(\pi/a\)">\(\pi/a\)</span>. Every sum used here is absolutely convergent by the verified bounds, and the denominator is positive since <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. This proves the formula for the entire stated range of <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-exercise-5-3"></a>
+<strong>Exercise 5.3 — Recover the lattice constant.</strong> Prove Corollary 2.2 from Theorem 1.1, and identify the roles of continuity and covolume.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(dx\)">\(dx\)</span> self-dual Lebesgue measure and counting measure on <span class="math" data-tex="\(\Lambda=M\mathbb Z^d\)">\(\Lambda=M\mathbb Z^d\)</span>, <a href="subgroups-quotients-and-annihilators.html#ha-lca-10-example-6-2">HA-LCA-10, Example 6.2</a> gives quotient mass <span class="math" data-tex="\(v=|\det M|\)">\(v=|\det M|\)</span>. Its dual group is <span class="math" data-tex="\(\Lambda^*=M^{-T}\mathbb Z^d\)">\(\Lambda^*=M^{-T}\mathbb Z^d\)</span>. The Haar measure dual to a compact group's measure of mass <span class="math" data-tex="\(v\)">\(v\)</span> assigns each dual point mass <span class="math" data-tex="\(1/v\)">\(1/v\)</span>, by HA-LCA-07, Proposition 3.3. Hence the right integral in (4) is exactly
+<span class="math" data-tex="\(v^{-1}\sum_{\xi\in\Lambda^*}\widehat f(\xi)E(x\cdot\xi)\)">\(v^{-1}\sum_{\xi\in\Lambda^*}\widehat f(\xi)E(x\cdot\xi)\)</span>.</p>
+<p>The decay estimate with exponent <span class="math" data-tex="\(d+\delta&gt;d\)">\(d+\delta&gt;d\)</span> gives <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, compact-local uniform convergence of its lattice periodization, and summability of the dual values, all by Lemma 2.0. Continuity of <span class="math" data-tex="\(f\)">\(f\)</span> then makes the actual periodization continuous, so Theorem 1.1 upgrades almost-everywhere equality to equality at every point. This gives every assertion of Corollary 2.2. If continuity is omitted, Example 2.3 shows that the numerical pointwise formula can fail even under arbitrary decay. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-11-exercise-5-4"></a>
+<strong>Exercise 5.4 — Sampling a band-limited function.</strong> Suppose <span class="math" data-tex="\(f\in L^2(\mathbb R)\cap C(\mathbb R)\)">\(f\in L^2(\mathbb R)\cap C(\mathbb R)\)</span>, and its Plancherel transform is zero almost everywhere off <span class="math" data-tex="\(I=[-1/2,1/2]\)">\(I=[-1/2,1/2]\)</span>. Prove
+<span class="math math-display" data-tex="\[
+ f(x)=\sum_{n\in\mathbb Z}f(n)\operatorname{sinc}(x-n),
+ \qquad
+ \operatorname{sinc}(y)=
+ \begin{cases}
+ \sin(\pi y)/(\pi y),&amp;y\ne0,\\
+ 1,&amp;y=0,
+ \end{cases}
+ \tag{41}
+\]">\[
+ f(x)=\sum_{n\in\mathbb Z}f(n)\operatorname{sinc}(x-n),
+ \qquad
+ \operatorname{sinc}(y)=
+ \begin{cases}
+ \sin(\pi y)/(\pi y),&amp;y\ne0,\\
+ 1,&amp;y=0,
+ \end{cases}
+ \tag{41}
+\]</span>
+with convergence in <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span> and uniformly on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(g=\mathcal F_2 f\)">\(g=\mathcal F_2 f\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is supported on a set of length one, Cauchy–Schwarz gives
+<span class="math" data-tex="\(\|g\|_1\le\|g\|_2\)">\(\|g\|_1\le\|g\|_2\)</span>. Thus <span class="math" data-tex="\(g\in L^1\cap L^2\)">\(g\in L^1\cap L^2\)</span>. By <a href="the-plancherel-theorem.html#ha-lca-08-lemma-2-2">HA-LCA-08, Lemma 2.2</a>, its inverse integral is the inverse Plancherel transform and is continuous:
+<span class="math math-display" data-tex="\[
+ f(x)=\int_I g(\xi)E(x\xi)\,d\xi.
+ \tag{42}
+\]">\[
+ f(x)=\int_I g(\xi)E(x\xi)\,d\xi.
+ \tag{42}
+\]</span>
+Initially this equals <span class="math" data-tex="\(f\)">\(f\)</span> almost everywhere; both sides are continuous, so Haar full support gives equality everywhere.</p>
+<p>The functions <span class="math" data-tex="\(e_n(\xi)=E(-n\xi)\)">\(e_n(\xi)=E(-n\xi)\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, are a complete orthonormal basis of <span class="math" data-tex="\(L^2(I)\)">\(L^2(I)\)</span>. This is the circle Fourier basis of <a href="the-plancherel-theorem.html#ha-lca-08-corollary-4-1">HA-LCA-08, Corollary 4.1</a>, with the endpoints identified; changing the values at those two null points does not alter the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space. Its coefficient for <span class="math" data-tex="\(g\)">\(g\)</span> is
+<span class="math math-display" data-tex="\[
+ \langle g,e_n\rangle=\int_I g(\xi)E(n\xi)\,d\xi=f(n).
+ \tag{43}
+\]">\[
+ \langle g,e_n\rangle=\int_I g(\xi)E(n\xi)\,d\xi=f(n).
+ \tag{43}
+\]</span>
+The Hilbert expansion and Parseval theorem, proved in <a href="../prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-theorem-4-2">the Hilbert reading, Theorem 4.2</a>, therefore give
+<span class="math math-display" data-tex="\[
+ \sum_{n\in\mathbb Z}|f(n)|^2=\|g\|_2^2=\|f\|_2^2,\qquad
+ g=\lim_{F}\sum_{n\in F}f(n)e_n
+        \quad\text{in }L^2(I).
+ \tag{44}
+\]">\[
+ \sum_{n\in\mathbb Z}|f(n)|^2=\|g\|_2^2=\|f\|_2^2,\qquad
+ g=\lim_{F}\sum_{n\in F}f(n)e_n
+        \quad\text{in }L^2(I).
+ \tag{44}
+\]</span>
+Here <span class="math" data-tex="\(F\)">\(F\)</span> runs through finite subsets of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, ordered by inclusion; symmetric partial sums are a particular convergent sequence.</p>
+<p>Extend each finite sum by zero off <span class="math" data-tex="\(I\)">\(I\)</span>. Its inverse integral is
+<span class="math math-display" data-tex="\[
+ S_F(x)=\sum_{n\in F}f(n)\int_{-1/2}^{1/2}E((x-n)\xi)\,d\xi
+       =\sum_{n\in F}f(n)\operatorname{sinc}(x-n).
+ \tag{45}
+\]">\[
+ S_F(x)=\sum_{n\in F}f(n)\int_{-1/2}^{1/2}E((x-n)\xi)\,d\xi
+       =\sum_{n\in F}f(n)\operatorname{sinc}(x-n).
+ \tag{45}
+\]</span>
+For <span class="math" data-tex="\(x\ne n\)">\(x\ne n\)</span>, integrate the exponential and subtract its two endpoint values to obtain the sine quotient; for <span class="math" data-tex="\(x=n\)">\(x=n\)</span>, the integral is one. The inverse integral agrees with inverse Plancherel on each such finite sum. Unitarity and (44) give
+<span class="math math-display" data-tex="\[
+ \|f-S_F\|_2
+ =\left\|g-\sum_{n\in F}f(n)e_n\right\|_{L^2(I)}
+ =\left(\sum_{n\notin F}|f(n)|^2\right)^{1/2}\longrightarrow0.
+ \tag{46}
+\]">\[
+ \|f-S_F\|_2
+ =\left\|g-\sum_{n\in F}f(n)e_n\right\|_{L^2(I)}
+ =\left(\sum_{n\notin F}|f(n)|^2\right)^{1/2}\longrightarrow0.
+ \tag{46}
+\]</span>
+Moreover (42) and (45), followed by Cauchy–Schwarz on the interval of length one, give the uniform bound
+<span class="math math-display" data-tex="\[
+ \sup_{x\in\mathbb R}|f(x)-S_F(x)|
+ \le\int_I\left|g-\sum_{n\in F}f(n)e_n\right|\,d\xi
+ \le\left(\sum_{n\notin F}|f(n)|^2\right)^{1/2}\longrightarrow0.
+ \tag{47}
+\]">\[
+ \sup_{x\in\mathbb R}|f(x)-S_F(x)|
+ \le\int_I\left|g-\sum_{n\in F}f(n)e_n\right|\,d\xi
+ \le\left(\sum_{n\notin F}|f(n)|^2\right)^{1/2}\longrightarrow0.
+ \tag{47}
+\]</span>
+This proves both required convergences, with an explicit error bound and no pointwise Fourier-series assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="scope">Scope</h2>
+<p>The closed-subgroup formula holds for arbitrary LCA groups with the exact representative condition required by their full Haar domains. The lattice, Gaussian, heat-kernel, finite, rational-series and sampling assertions have complete proofs. The rational adelic example includes the construction, topology, self-dual measure, rational annihilator and test-function estimates it uses. Number-field generalizations and zeta functional equations are not asserted here.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

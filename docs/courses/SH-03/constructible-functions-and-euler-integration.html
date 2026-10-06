@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constructible functions and Euler integration · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/constructible-functions-and-euler-integration.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Constructible functions and Euler integration</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded relative to the prerequisites below; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="constructible-functions-and-euler-integration">Constructible functions and Euler integration</h1>
+<p>The Euler characteristic of each stalk turns a constructible complex into an integer-valued function. We prove that this gives exactly its Grothendieck class, including on a noncompact manifold with infinitely many strata. Compactly supported cohomology then defines integration, and point-supported cohomology defines duality. These two operations retain the difference between an open endpoint and a closed endpoint.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded relative to the prerequisites below; not independently reviewed. New original text is public domain (CC0).</em></p>
+<p>Use <a href="../sheaf-proof-readings/SH03-constructible-sheaves-on-a-triangulation.html">Constructible sheaves on a triangulation</a> for face models and bounded constructible categories, <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html">Perfect coefficients on compact fibres</a> for finite proper images, <a href="../sheaf-proof-readings/SH03-small-balls-central-fibres-and-supported-cohomology.html">Small balls, central fibres and supported cohomology</a> for the actual local contraction maps, and <a href="../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html">Constructible costalks and Verdier duality</a> for perfect costalks and evaluation biduality. <a href="../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html">Perfect operations and finite microlocal coefficients</a> proves exceptional inverse-image and internal-Hom closure; <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html">Duality maps for constructible inverse and direct images</a> proves their normalized duality comparisons. The geometric prerequisite is locally finite compatible subanalytic triangulation, subordinate to an open cover when required, with a uniform dimension bound. Its lower Boolean, regularity and triangulation proofs are owned SH-03 foundations still being completed; the present proof is relative to that exact geometric input. Ordinary and proper-support adjunction, localization and composition are the standing sheaf-operation prerequisites.</p>
+<p>P. Schapira's <a href="https://webusers.imj-prg.fr/~pierre.schapira/ResPapers/ConstFct.pdf">Operations on constructible functions</a>, <em>Journal of Pure and Applied Algebra</em> <strong>72</strong> (1991), 83–93, gives the calculus of constructible functions and Euler integration in §§2–3. The arguments below use the programme lessons linked here and explicitly treat locally finite strata, support and coefficient finiteness.</p>
+<h2 id="locally-finite-values-and-a-sheaf-of-rings">Locally finite values and a sheaf of rings</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a real analytic manifold, Hausdorff and countable at infinity, of uniformly bounded finite dimension. A function <span class="math" data-tex="\(\varphi:X\to\mathbb Z\)">\(\varphi:X\to\mathbb Z\)</span> is <strong>constructible</strong> if every level set is subanalytic and the family of nonempty level sets is locally finite. Write <span class="math" data-tex="\(CF(X)\)">\(CF(X)\)</span> for these functions and</p>
+<span class="math math-display" data-tex="\[
+|\varphi|=\overline{\{x:\varphi(x)\ne0\}}
+\qquad\text{(1)}
+\]">\[
+|\varphi|=\overline{\{x:\varphi(x)\ne0\}}
+\qquad\text{(1)}
+\]</span>
+<p>for their closed support. A constructible function can be unbounded on a noncompact manifold. Local finiteness means that near every point only finitely many integer values occur.</p>
+<p>Compatible stratification makes this equivalent to being constant on the pieces of a locally finite subanalytic stratification. Indeed, refine the locally finite family of level sets by a compatible stratification. Conversely, near a point only finitely many strata occur; their constant values give finitely many local level sets, each a finite union of subanalytic pieces. Subanalyticity is local, so each global level set is subanalytic.</p>
+<p>Pointwise addition and multiplication preserve constructibility. Near a point choose finite common refinements of the two level partitions. Each refined piece has one pair of values, so both outputs have finitely many local values and subanalytic level sets. The constant function <span class="math" data-tex="\(1\)">\(1\)</span> is the unit.</p>
+<p>Restriction to an open set preserves these conditions. Functions agreeing on overlaps glue uniquely, and the two constructibility conditions can be checked locally. Thus</p>
+<span class="math math-display" data-tex="\[
+U\longmapsto CF(U)
+\quad\text{is a sheaf of commutative rings, denoted }\mathcal{CF}_X.
+\qquad\text{(2)}
+\]">\[
+U\longmapsto CF(U)
+\quad\text{is a sheaf of commutative rings, denoted }\mathcal{CF}_X.
+\qquad\text{(2)}
+\]</span>
+<h2 id="closed-simplices-give-compact-generators">Closed simplices give compact generators</h2>
+<p>Take a locally finite subanalytic triangulation compatible with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and write <span class="math" data-tex="\(m_\sigma\)">\(m_\sigma\)</span> for its value on the open simplex <span class="math" data-tex="\(\sigma^\circ\)">\(\sigma^\circ\)</span>. Closed simplices are compact, subanalytic and contractible. For every simplex,</p>
+<span class="math math-display" data-tex="\[
+1_{\sigma^\circ}
+=\sum_{\tau\leq\sigma}
+(-1)^{\dim\sigma-\dim\tau}1_{\overline\tau}.
+\qquad\text{(3)}
+\]">\[
+1_{\sigma^\circ}
+=\sum_{\tau\leq\sigma}
+(-1)^{\dim\sigma-\dim\tau}1_{\overline\tau}.
+\qquad\text{(3)}
+\]</span>
+<p>To check (3), evaluate at a point of <span class="math" data-tex="\(\rho^\circ\)">\(\rho^\circ\)</span>. If <span class="math" data-tex="\(\rho\not\leq\sigma\)">\(\rho\not\leq\sigma\)</span>, all terms vanish. Otherwise the sum over <span class="math" data-tex="\(\rho\leq\tau\leq\sigma\)">\(\rho\leq\tau\leq\sigma\)</span> is
+<span class="math" data-tex="\((1-1)^{\dim\sigma-\dim\rho}\)">\((1-1)^{\dim\sigma-\dim\rho}\)</span>, equal to one precisely when <span class="math" data-tex="\(\rho=\sigma\)">\(\rho=\sigma\)</span>.</p>
+<p>Every simplex has finitely many cofaces in a locally finite triangulation. Regrouping the locally finite function sums therefore gives</p>
+<span class="math math-display" data-tex="\[
+\varphi=\sum_\tau c_\tau1_{\overline\tau},
+\qquad
+c_\tau=\sum_{\sigma\geq\tau}
+(-1)^{\dim\sigma-\dim\tau}m_\sigma.
+\qquad\text{(4)}
+\]">\[
+\varphi=\sum_\tau c_\tau1_{\overline\tau},
+\qquad
+c_\tau=\sum_{\sigma\geq\tau}
+(-1)^{\dim\sigma-\dim\tau}m_\sigma.
+\qquad\text{(4)}
+\]</span>
+<p>Both sums are locally finite. This proves the compact contractible generator description. Conversely, any locally finite sum of integer multiples of indicators of compact subanalytic sets is constructible: near a point it is a finite sum, whose level sets are finite Boolean combinations. Contractibility is needed for the later integral normalization, rather than for this converse.</p>
+<p>For compactly supported <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, only finitely many nonzero open-simplex values occur: the closed support meets finitely many simplices. Its representation (4) can therefore be chosen finite.</p>
+<h2 id="extension-from-an-arbitrary-closed-set">Extension from an arbitrary closed set</h2>
+<p>The sheaf <span class="math" data-tex="\(\mathcal{CF}_X\)">\(\mathcal{CF}_X\)</span> is <strong>soft</strong>: every section of its restriction to a closed subset <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> extends to <span class="math" data-tex="\(X\)">\(X\)</span>. The subset <span class="math" data-tex="\(K\)">\(K\)</span> itself need not be subanalytic.</p>
+<p><strong>Proof.</strong> A section on <span class="math" data-tex="\(K\)">\(K\)</span> has, near each point of <span class="math" data-tex="\(K\)">\(K\)</span>, a constructible representative on an open neighborhood <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span>. Choose a countable locally finite family of compact subanalytic coordinate balls <span class="math" data-tex="\(C_\alpha\subset U_\alpha\)">\(C_\alpha\subset U_\alpha\)</span> whose interiors cover <span class="math" data-tex="\(K\)">\(K\)</span>. Such a family is obtained by a locally finite refinement and shrinking of the open cover <span class="math" data-tex="\(\{U_\alpha,X\setminus K\}\)">\(\{U_\alpha,X\setminus K\}\)</span>, retaining only balls meeting <span class="math" data-tex="\(K\)">\(K\)</span>. Compact coordinate balls can be chosen inside each refined open set; finite coverings of compact layers of an exhaustion keep the resulting family locally finite.</p>
+<p>Let <span class="math" data-tex="\(\varphi_\alpha\)">\(\varphi_\alpha\)</span> be the representative on <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span>. In the chosen enumeration put</p>
+<span class="math math-display" data-tex="\[
+P_\alpha=C_\alpha\setminus\bigcup_{\beta&lt;\alpha}C_\beta,
+\qquad
+\widetilde\varphi(x)=
+\begin{cases}
+\varphi_\alpha(x),&amp;x\in P_\alpha,\\
+0,&amp;x\notin\bigcup_\alpha C_\alpha.
+\end{cases}
+\qquad\text{(5)}
+\]">\[
+P_\alpha=C_\alpha\setminus\bigcup_{\beta&lt;\alpha}C_\beta,
+\qquad
+\widetilde\varphi(x)=
+\begin{cases}
+\varphi_\alpha(x),&amp;x\in P_\alpha,\\
+0,&amp;x\notin\bigcup_\alpha C_\alpha.
+\end{cases}
+\qquad\text{(5)}
+\]</span>
+<p>Near any point, only finitely many balls and representatives are involved. Their Boolean pieces and level sets are subanalytic, so (5) is constructible. At <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, shrink to a neighborhood meeting only the finitely many balls relevant there; balls in this list not containing <span class="math" data-tex="\(x\)">\(x\)</span> can be excluded because they are closed. For every remaining ball, its representative has the prescribed germ at <span class="math" data-tex="\(x\)">\(x\)</span>. The finitely many representatives hence agree with one representative on a smaller neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span>. One of the balls contains <span class="math" data-tex="\(x\)">\(x\)</span> in its interior, so that neighborhood lies in their union. Formula (5) has the prescribed germ there. It therefore extends the original section on <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Softness asserts extension of germs on a closed set. Extension by assigning zero directly on its complement can fail constructibility when that closed set is arbitrary.</p>
+<h2 id="euler-functions-respect-triangles-and-tensor-products">Euler functions respect triangles and tensor products</h2>
+<p>For the rest of the lesson, <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero. Put
+<span class="math" data-tex="\(\mathcal D_X=D^b_{\mathbb R\text{-}c}(k_X)\)">\(\mathcal D_X=D^b_{\mathbb R\text{-}c}(k_X)\)</span>: complexes are globally bounded and have finite-dimensional cohomology stalks on a locally finite subanalytic stratification. For <span class="math" data-tex="\(F\in\mathcal D_X\)">\(F\in\mathcal D_X\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\chi_X(F)(x)=\sum_q(-1)^q\dim_k H^q(F_x).
+\qquad\text{(6)}
+\]">\[
+\chi_X(F)(x)=\sum_q(-1)^q\dim_k H^q(F_x).
+\qquad\text{(6)}
+\]</span>
+<p>This function is constructible. A common stratification for the finitely many cohomology sheaves makes all ranks locally constant; refinement into connected pieces makes them constant. All pointwise sums below are finite:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\chi_X(F\oplus G)&amp;=\chi_X(F)+\chi_X(G),\\
+\chi_X(F\otimes_k^LG)&amp;=\chi_X(F)\chi_X(G),\\
+\chi_X(F[r])&amp;=(-1)^r\chi_X(F).
+\end{aligned}
+\qquad\text{(7)}
+\]">\[
+\begin{aligned}
+\chi_X(F\oplus G)&amp;=\chi_X(F)+\chi_X(G),\\
+\chi_X(F\otimes_k^LG)&amp;=\chi_X(F)\chi_X(G),\\
+\chi_X(F[r])&amp;=(-1)^r\chi_X(F).
+\end{aligned}
+\qquad\text{(7)}
+\]</span>
+<p>The tensor identity follows from the finite Künneth formula over <span class="math" data-tex="\(k\)">\(k\)</span>. For a distinguished triangle <span class="math" data-tex="\(F&#x27;\to F\to F&#x27;&#x27;\xrightarrow{+1}\)">\(F&#x27;\to F\to F&#x27;&#x27;\xrightarrow{+1}\)</span>, its finite stalk cohomology sequence gives</p>
+<span class="math math-display" data-tex="\[
+\chi_X(F)=\chi_X(F&#x27;)+\chi_X(F&#x27;&#x27;).
+\qquad\text{(8)}
+\]">\[
+\chi_X(F)=\chi_X(F&#x27;)+\chi_X(F&#x27;&#x27;).
+\qquad\text{(8)}
+\]</span>
+<p>Indeed, break that sequence into kernels and images. Each image contributes in two adjacent terms with opposite signs and cancels.</p>
+<p>Let <span class="math" data-tex="\(K_0(\mathcal D_X)\)">\(K_0(\mathcal D_X)\)</span> be generated by object classes, with the relations supplied by these triangles. Then (6) induces a ring homomorphism</p>
+<span class="math math-display" data-tex="\[
+\chi_X:K_0(\mathcal D_X)\longrightarrow CF(X).
+\qquad\text{(9)}
+\]">\[
+\chi_X:K_0(\mathcal D_X)\longrightarrow CF(X).
+\qquad\text{(9)}
+\]</span>
+<p>The analogous Grothendieck group of constructible sheaves in degree zero is the same group. To prove this directly, send a bounded complex to
+<span class="math" data-tex="\(\sum_q(-1)^q[H^qF]\)">\(\sum_q(-1)^q[H^qF]\)</span> in the abelian Grothendieck group. Kernels and images in its triangle sequence prove this additive. Successive truncation triangles give the inverse identity in <span class="math" data-tex="\(K_0(\mathcal D_X)\)">\(K_0(\mathcal D_X)\)</span>; a sheaf in degree zero maps back to its own class. This argument uses the bounded constructible <span class="math" data-tex="\(t\)">\(t\)</span>-structure and does not require choosing a global complex of locally constant sheaves.</p>
+<h2 id="every-function-has-a-bounded-realization-with-its-support">Every function has a bounded realization with its support</h2>
+<p><strong>Theorem.</strong> The homomorphism (9) is an isomorphism.</p>
+<p><strong>Surjectivity.</strong> Choose a compatible triangulation and its open simplices. Let <span class="math" data-tex="\(k_{\sigma^\circ}\)">\(k_{\sigma^\circ}\)</span> denote constant coefficients extended by zero through their locally closed inclusion. Form the two sheaves</p>
+<span class="math math-display" data-tex="\[
+A=\bigoplus_{m_\sigma&gt;0}k_{\sigma^\circ}^{\,m_\sigma},
+\qquad
+B=\bigoplus_{m_\sigma&lt;0}k_{\sigma^\circ}^{\,-m_\sigma},
+\qquad F_\varphi=A\oplus B[1].
+\qquad\text{(10)}
+\]">\[
+A=\bigoplus_{m_\sigma&gt;0}k_{\sigma^\circ}^{\,m_\sigma},
+\qquad
+B=\bigoplus_{m_\sigma&lt;0}k_{\sigma^\circ}^{\,-m_\sigma},
+\qquad F_\varphi=A\oplus B[1].
+\qquad\text{(10)}
+\]</span>
+<p>The families of closed simplices are locally finite. Thus these are locally finite sheaf sums, with finite stalks; locally each is a finite constructible sum. The complex is globally bounded in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, even if the ranks are unbounded globally. Its Euler function is <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and its closed sheaf support is exactly <span class="math" data-tex="\(|\varphi|\)">\(|\varphi|\)</span>. This last statement follows by taking the closure of its nonzero stalk locus, which is exactly <span class="math" data-tex="\(\{\varphi\ne0\}\)">\(\{\varphi\ne0\}\)</span>.</p>
+<p>The sums in (10) construct actual sheaves. They do not assert the existence of an infinite sum of classes in a Grothendieck group.</p>
+<p><strong>Injectivity.</strong> Every group element is the class of one object: use finite direct sums for positive integer coefficients, and <span class="math" data-tex="\(G[1]\)">\(G[1]\)</span> for a negative copy of <span class="math" data-tex="\([G]\)">\([G]\)</span>. It is enough to prove <span class="math" data-tex="\([F]=0\)">\([F]=0\)</span> when <span class="math" data-tex="\(\chi_X(F)=0\)">\(\chi_X(F)=0\)</span>.</p>
+<p>Choose a compatible locally finite triangulation on which every <span class="math" data-tex="\(H^qF\)">\(H^qF\)</span> is constant on open simplices. Let <span class="math" data-tex="\(X_{\leq d}\)">\(X_{\leq d}\)</span> be its closed <span class="math" data-tex="\(d\)">\(d\)</span>-skeleton, <span class="math" data-tex="\(X_{\leq-1}=\varnothing\)">\(X_{\leq-1}=\varnothing\)</span>, and
+<span class="math" data-tex="\(U_d=X_{\leq d}\setminus X_{\leq d-1}\)">\(U_d=X_{\leq d}\setminus X_{\leq d-1}\)</span>. Write <span class="math" data-tex="\(j_d:U_d\hookrightarrow X_{\leq d}\)">\(j_d:U_d\hookrightarrow X_{\leq d}\)</span> and <span class="math" data-tex="\(i_d:X_{\leq d}\hookrightarrow X\)">\(i_d:X_{\leq d}\hookrightarrow X\)</span>. Put <span class="math" data-tex="\(F_d=i_d^{-1}F\)">\(F_d=i_d^{-1}F\)</span>. Localization on <span class="math" data-tex="\(X_{\leq d}\)">\(X_{\leq d}\)</span>, followed by closed direct image, gives</p>
+<span class="math math-display" data-tex="\[
+(i_d)_*j_{d!}j_d^{-1}F_d
+\longrightarrow (i_d)_*F_d
+\longrightarrow (i_{d-1})_*F_{d-1}
+\xrightarrow{+1}.
+\qquad\text{(11)}
+\]">\[
+(i_d)_*j_{d!}j_d^{-1}F_d
+\longrightarrow (i_d)_*F_d
+\longrightarrow (i_{d-1})_*F_{d-1}
+\xrightarrow{+1}.
+\qquad\text{(11)}
+\]</span>
+<p>If <span class="math" data-tex="\(n\)">\(n\)</span> is the uniform dimension bound, iterate this only <span class="math" data-tex="\(n+1\)">\(n+1\)</span> times and then use bounded cohomological truncation on each <span class="math" data-tex="\(U_d\)">\(U_d\)</span>:</p>
+<span class="math math-display" data-tex="\[
+[F]=\sum_{d=0}^{n}\ \sum_q(-1)^q
+[(i_d)_*j_{d!}(H^qF)|_{U_d}].
+\qquad\text{(12)}
+\]">\[
+[F]=\sum_{d=0}^{n}\ \sum_q(-1)^q
+[(i_d)_*j_{d!}(H^qF)|_{U_d}].
+\qquad\text{(12)}
+\]</span>
+<p>These are finite sums of classes. Each <span class="math" data-tex="\(U_d\)">\(U_d\)</span> is a disjoint union of open <span class="math" data-tex="\(d\)">\(d\)</span>-simplices. On one such simplex, the constant sheaves
+<span class="math" data-tex="\(\bigoplus_{q\text{ even}}H^qF\)">\(\bigoplus_{q\text{ even}}H^qF\)</span> and
+<span class="math" data-tex="\(\bigoplus_{q\text{ odd}}H^qF\)">\(\bigoplus_{q\text{ odd}}H^qF\)</span>
+have equal finite rank because <span class="math" data-tex="\(\chi_X(F)=0\)">\(\chi_X(F)=0\)</span>. Choose an isomorphism there. The choices combine into a sheaf isomorphism on their disjoint union <span class="math" data-tex="\(U_d\)">\(U_d\)</span>. Its extension by <span class="math" data-tex="\(j_{d!}\)">\(j_{d!}\)</span> and <span class="math" data-tex="\((i_d)_*\)">\((i_d)_*\)</span> cancels the even and odd terms of (12). Every <span class="math" data-tex="\(d\)">\(d\)</span>-term is zero, proving injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof works in the full subcategory whose objects have closed support contained in a fixed closed subanalytic set <span class="math" data-tex="\(C\)">\(C\)</span>. Take the triangulation compatible with <span class="math" data-tex="\(C\)">\(C\)</span>; all skeleton triangles and truncations retain that support. Thus it also gives</p>
+<span class="math math-display" data-tex="\[
+K_0(\mathcal D_{X,C})
+\simeq\{\varphi\in CF(X):|\varphi|\subset C\}.
+\qquad\text{(13)}
+\]">\[
+K_0(\mathcal D_{X,C})
+\simeq\{\varphi\in CF(X):|\varphi|\subset C\}.
+\qquad\text{(13)}
+\]</span>
+<p>In particular, there is an identical statement for compact closed support, using finite unions of such compact supports for any finite collection of representatives and relations.</p>
+<h2 id="products-and-ordinary-inverse-image">Products and ordinary inverse image</h2>
+<p>For real analytic <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> and functions on <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+f^*\varphi=\varphi\circ f,\qquad
+(\varphi\boxtimes\psi)(x,y)=\varphi(x)\psi(y).
+\qquad\text{(14)}
+\]">\[
+f^*\varphi=\varphi\circ f,\qquad
+(\varphi\boxtimes\psi)(x,y)=\varphi(x)\psi(y).
+\qquad\text{(14)}
+\]</span>
+<p>The subanalytic inverse-image property and locally finite level partitions prove constructibility of <span class="math" data-tex="\(f^*\varphi\)">\(f^*\varphi\)</span>; products use finite local common partitions. The stalk and external tensor formulas give</p>
+<span class="math math-display" data-tex="\[
+f^*\chi_X(F)=\chi_Y(f^{-1}F),\qquad
+\chi_{X\times Y}(F\boxtimes G)=\chi_X(F)\boxtimes\chi_Y(G).
+\qquad\text{(15)}
+\]">\[
+f^*\chi_X(F)=\chi_Y(f^{-1}F),\qquad
+\chi_{X\times Y}(F\boxtimes G)=\chi_X(F)\boxtimes\chi_Y(G).
+\qquad\text{(15)}
+\]</span>
+<p>Ordinary inverse image is a ring homomorphism, with <span class="math" data-tex="\((f\circ g)^*=g^*f^*\)">\((f\circ g)^*=g^*f^*\)</span>. There is no dimension sign in it.</p>
+<h2 id="integration-with-compact-closed-support">Integration with compact closed support</h2>
+<p>For <span class="math" data-tex="\(\varphi\in CF(X)\)">\(\varphi\in CF(X)\)</span> with compact <span class="math" data-tex="\(|\varphi|\)">\(|\varphi|\)</span>, choose the realization (10), which has compact closed support. Define</p>
+<span class="math math-display" data-tex="\[
+\int_X\varphi\,d\chi
+=\chi\bigl(R\Gamma_c(X;F_\varphi)\bigr).
+\qquad\text{(16)}
+\]">\[
+\int_X\varphi\,d\chi
+=\chi\bigl(R\Gamma_c(X;F_\varphi)\bigr).
+\qquad\text{(16)}
+\]</span>
+<p>That section complex is perfect by compact constructible finiteness. Compact and ordinary global sections agree for this representative.</p>
+<p>The number is independent of the representative <strong>within the compact-support category</strong>. Two compactly supported representatives with the same Euler function have the same class by (13); their finite triangles remain supported in a compact union. The exact functor <span class="math" data-tex="\(R\Gamma_c\)">\(R\Gamma_c\)</span> takes this category to perfect coefficient complexes, whose Euler characteristic is additive. It gives the same integer for both classes. A representative with a noncompact closed support requires its own finiteness check before taking a global Euler characteristic.</p>
+<p>For a finite expression by relatively compact locally closed subanalytic sets,</p>
+<span class="math math-display" data-tex="\[
+\varphi=\sum_\alpha a_\alpha1_{S_\alpha},
+\qquad
+\int_X\varphi\,d\chi
+=\sum_\alpha a_\alpha\chi_c(S_\alpha;k).
+\qquad\text{(17)}
+\]">\[
+\varphi=\sum_\alpha a_\alpha1_{S_\alpha},
+\qquad
+\int_X\varphi\,d\chi
+=\sum_\alpha a_\alpha\chi_c(S_\alpha;k).
+\qquad\text{(17)}
+\]</span>
+<p>This follows by representing each indicator by <span class="math" data-tex="\(k_{S_\alpha}\)">\(k_{S_\alpha}\)</span>, whose closed support is compact, and using proper-support composition for its inclusion. On an open <span class="math" data-tex="\(d\)">\(d\)</span>-simplex,
+<span class="math" data-tex="\(R\Gamma_c(\sigma^\circ;k)=k[-d]\)">\(R\Gamma_c(\sigma^\circ;k)=k[-d]\)</span>, so the finite open-cell formula is
+<span class="math" data-tex="\(\sum_\sigma(-1)^{\dim\sigma}m_\sigma\)">\(\sum_\sigma(-1)^{\dim\sigma}m_\sigma\)</span>. On a compact contractible closed simplex the cohomology is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero, so (4) gives instead <span class="math" data-tex="\(\sum_\tau c_\tau\)">\(\sum_\tau c_\tau\)</span>. These agree by (3) and (17).</p>
+<h2 id="direct-image-integrates-the-fibres">Direct image integrates the fibres</h2>
+<p>Let <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span> be real analytic and assume it is proper on the closed support <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span> of <span class="math" data-tex="\(\psi\in CF(Y)\)">\(\psi\in CF(Y)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+(f_!\psi)(x)
+=\int_{f^{-1}(x)}\psi|_{f^{-1}(x)}\,d\chi.
+\qquad\text{(18)}
+\]">\[
+(f_!\psi)(x)
+=\int_{f^{-1}(x)}\psi|_{f^{-1}(x)}\,d\chi.
+\qquad\text{(18)}
+\]</span>
+<p>A singular fibre is treated as a subanalytic subset: its integral is equivalently the ambient integral on <span class="math" data-tex="\(Y\)">\(Y\)</span> after multiplying by <span class="math" data-tex="\(1_{f^{-1}(x)}\)">\(1_{f^{-1}(x)}\)</span>. Its nonzero closed support is compact by support properness.</p>
+<p>Choose (10) on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The proper-on-support theorem and proper-support base change give</p>
+<span class="math math-display" data-tex="\[
+Rf_!F_\psi\in\mathcal D_X,\qquad
+(Rf_!F_\psi)_x
+\simeq R\Gamma_c(f^{-1}(x);F_\psi|_{f^{-1}(x)}),
+\quad
+f_!\psi=\chi_X(Rf_!F_\psi).
+\qquad\text{(19)}
+\]">\[
+Rf_!F_\psi\in\mathcal D_X,\qquad
+(Rf_!F_\psi)_x
+\simeq R\Gamma_c(f^{-1}(x);F_\psi|_{f^{-1}(x)}),
+\quad
+f_!\psi=\chi_X(Rf_!F_\psi).
+\qquad\text{(19)}
+\]</span>
+<p>In particular (18) is constructible. Equation (13), applied on the support-proper subcategory, makes (19) independent of the chosen representative with that support. The closed support of the output is contained in the closed subanalytic proper image <span class="math" data-tex="\(f(|\psi|)\)">\(f(|\psi|)\)</span>. Locally on <span class="math" data-tex="\(X\)">\(X\)</span>, this defines the sheaf morphism <span class="math" data-tex="\(f_!\mathcal{CF}_Y\to\mathcal{CF}_X\)">\(f_!\mathcal{CF}_Y\to\mathcal{CF}_X\)</span> on sections with support proper over that neighborhood.</p>
+<p>Proper-support composition and projection yield, whenever their supports satisfy these conditions,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g_!(f_!\psi)&amp;=(g\circ f)_!\psi,\\
+f_!(\psi\,f^*\varphi)&amp;=(f_!\psi)\varphi.
+\end{aligned}
+\qquad\text{(20)}
+\]">\[
+\begin{aligned}
+g_!(f_!\psi)&amp;=(g\circ f)_!\psi,\\
+f_!(\psi\,f^*\varphi)&amp;=(f_!\psi)\varphi.
+\end{aligned}
+\qquad\text{(20)}
+\]</span>
+<p>For the first identity it suffices to require <span class="math" data-tex="\(f\)">\(f\)</span> proper on <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> proper on <span class="math" data-tex="\(f(|\psi|)\)">\(f(|\psi|)\)</span>. One can also assume directly that <span class="math" data-tex="\(g\circ f\)">\(g\circ f\)</span> is proper on <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span>; then <span class="math" data-tex="\(f\)">\(f\)</span> is proper there, and <span class="math" data-tex="\(g\)">\(g\)</span> is proper on its image. For example, the inverse image in <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span> of a compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> is a closed subset of the compact inverse image of <span class="math" data-tex="\(g(K)\)">\(g(K)\)</span>; the same argument over a compact subset of the final target proves properness on the image. The sheaf projection formula proves the second identity through (7), (15) and (19). Tensoring with <span class="math" data-tex="\(f^{-1}F_\varphi\)">\(f^{-1}F_\varphi\)</span> keeps support inside <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span>.</p>
+<h2 id="duality-is-an-open-ball-euler-integral">Duality is an open-ball Euler integral</h2>
+<p>Define an additive operation on constructible functions by</p>
+<span class="math math-display" data-tex="\[
+D_X\varphi=\chi_X(D_XF),\qquad \chi_X(F)=\varphi,
+\quad D_XF=R\mathcal Hom(F,\omega_X).
+\qquad\text{(21)}
+\]">\[
+D_X\varphi=\chi_X(D_XF),\qquad \chi_X(F)=\varphi,
+\quad D_XF=R\mathcal Hom(F,\omega_X).
+\qquad\text{(21)}
+\]</span>
+<p>Duality is a contravariant exact functor preserving constructibility. Reversing a triangle preserves its additive relation, so it induces a homomorphism on <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. The isomorphism (9) therefore proves (21) independent of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For a sufficiently small coordinate ball <span class="math" data-tex="\(B(x,\epsilon)\)">\(B(x,\epsilon)\)</span>, the written costalk and small-ball comparisons give</p>
+<span class="math math-display" data-tex="\[
+(D_XF)_x\simeq (i_x^!F)^\vee,\qquad
+i_x^!F\simeq R\Gamma_c(B(x,\epsilon);F).
+\qquad\text{(22)}
+\]">\[
+(D_XF)_x\simeq (i_x^!F)^\vee,\qquad
+i_x^!F\simeq R\Gamma_c(B(x,\epsilon);F).
+\qquad\text{(22)}
+\]</span>
+<p>The complexes are perfect. Coefficient dual reverses degrees and preserves their Euler characteristic. Hence</p>
+<span class="math math-display" data-tex="\[
+(D_X\varphi)(x)
+=\int_X1_{B(x,\epsilon)}\varphi\,d\chi
+\qquad(0&lt;\epsilon\ll1).
+\qquad\text{(23)}
+\]">\[
+(D_X\varphi)(x)
+=\int_X1_{B(x,\epsilon)}\varphi\,d\chi
+\qquad(0&lt;\epsilon\ll1).
+\qquad\text{(23)}
+\]</span>
+<p>The cutoff has compact closed support. The comparisons in (22) prove that this integer is stable and independent of the coordinate chart. They also prove that it depends only on the germ of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Thus <span class="math" data-tex="\(D_X\)">\(D_X\)</span> is an endomorphism of the sheaf of abelian groups <span class="math" data-tex="\(\mathcal{CF}_X\)">\(\mathcal{CF}_X\)</span>.</p>
+<p>Actual constructible biduality gives <span class="math" data-tex="\(D_X^2\varphi=\varphi\)">\(D_X^2\varphi=\varphi\)</span>. On an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional component, <span class="math" data-tex="\(D_X1_X=(-1)^n1_X\)">\(D_X1_X=(-1)^n1_X\)</span>, because the orientation line in <span class="math" data-tex="\(\omega_X=\operatorname{or}_X[n]\)">\(\omega_X=\operatorname{or}_X[n]\)</span> has rank one. No global orientation is required.</p>
+<p>For <span class="math" data-tex="\(f\)">\(f\)</span> proper on <span class="math" data-tex="\(|\psi|\)">\(|\psi|\)</span>, the realization (10) and its dual have that same closed support, by biduality. Both proper images are constructible. The normalized dual-sections comparison and equality <span class="math" data-tex="\(Rf_*=Rf_!\)">\(Rf_*=Rf_!\)</span> on these supports give</p>
+<span class="math math-display" data-tex="\[
+f_!D_Y\psi=D_Xf_!\psi.
+\qquad\text{(24)}
+\]">\[
+f_!D_Y\psi=D_Xf_!\psi.
+\qquad\text{(24)}
+\]</span>
+<p>This applies in particular to a compactly supported function and the map to a point:
+<span class="math" data-tex="\(\int_X D_X\varphi\,d\chi=\int_X\varphi\,d\chi\)">\(\int_X D_X\varphi\,d\chi=\int_X\varphi\,d\chi\)</span>.</p>
+<h2 id="the-boundary-euler-formula">The boundary Euler formula</h2>
+<p>Let <span class="math" data-tex="\(Z\subset X\)">\(Z\subset X\)</span> be locally closed and subanalytic. Suppose that, at every <span class="math" data-tex="\(x\in\overline Z\)">\(x\in\overline Z\)</span>, there is a cofinal system of open neighborhoods <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(U\cap Z\)">\(U\cap Z\)</span> homeomorphic to <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, for one fixed <span class="math" data-tex="\(d\)">\(d\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+D_X1_Z=(-1)^d1_{\overline Z}.
+\qquad\text{(25)}
+\]">\[
+D_X1_Z=(-1)^d1_{\overline Z}.
+\qquad\text{(25)}
+\]</span>
+<p>Here is the local argument, including boundary points. On these neighborhoods,
+<span class="math" data-tex="\(R\Gamma_c(U;k_Z)=R\Gamma_c(U\cap Z;k)=k[-d]\)">\(R\Gamma_c(U;k_Z)=R\Gamma_c(U\cap Z;k)=k[-d]\)</span>, after an orientation choice. At interior points the condition makes <span class="math" data-tex="\(Z\)">\(Z\)</span> a topological <span class="math" data-tex="\(d\)">\(d\)</span>-manifold. Between nested members of the cofinal system, extension of compact support is the top orientation map for an open inclusion of two copies of <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. It sends a local orientation generator to the same generator: choose a small ball contained in both and use its local class. Hence it is an isomorphism. The compact-section neighborhood system is consequently represented by <span class="math" data-tex="\(k[-d]\)">\(k[-d]\)</span>. The cohomological constructibility comparison identifies its representative with <span class="math" data-tex="\(i_x^!k_Z\)">\(i_x^!k_Z\)</span>, proving Euler value <span class="math" data-tex="\((-1)^d\)">\((-1)^d\)</span>. Outside <span class="math" data-tex="\(\overline Z\)">\(\overline Z\)</span> a neighborhood is disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span>, giving zero. This proves (25).</p>
+<p>If <span class="math" data-tex="\(\overline Z\)">\(\overline Z\)</span> is compact with <span class="math" data-tex="\(\chi(\overline Z;k)=1\)">\(\chi(\overline Z;k)=1\)</span>, duality-invariant integration gives
+<span class="math" data-tex="\(\chi_c(Z;k)=(-1)^d\)">\(\chi_c(Z;k)=(-1)^d\)</span>. Since
+<span class="math" data-tex="\(1_{\overline Z}=1_Z+1_{\overline Z\setminus Z}\)">\(1_{\overline Z}=1_Z+1_{\overline Z\setminus Z}\)</span>, we obtain</p>
+<span class="math math-display" data-tex="\[
+\chi_c(\overline Z\setminus Z;k)=1-(-1)^d.
+\qquad\text{(26)}
+\]">\[
+\chi_c(\overline Z\setminus Z;k)=1-(-1)^d.
+\qquad\text{(26)}
+\]</span>
+<p>This includes the usual boundary Euler characteristic of a closed ball.</p>
+<h2 id="exceptional-inverse-image-and-internal-hom">Exceptional inverse image and internal Hom</h2>
+<p>For <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+f^!\varphi=D_Y(f^*D_X\varphi),\qquad
+\operatorname{hom}_X(\psi,\varphi)
+=D_X(\psi\,D_X\varphi).
+\qquad\text{(27)}
+\]">\[
+f^!\varphi=D_Y(f^*D_X\varphi),\qquad
+\operatorname{hom}_X(\psi,\varphi)
+=D_X(\psi\,D_X\varphi).
+\qquad\text{(27)}
+\]</span>
+<p>The written evaluation and tensor–Hom comparisons give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^!\chi_X(F)&amp;=\chi_Y(f^!F),\\
+\operatorname{hom}_X(\chi_X(G),\chi_X(F))
+&amp;=\chi_X(R\mathcal Hom(G,F)).
+\end{aligned}
+\qquad\text{(28)}
+\]">\[
+\begin{aligned}
+f^!\chi_X(F)&amp;=\chi_Y(f^!F),\\
+\operatorname{hom}_X(\chi_X(G),\chi_X(F))
+&amp;=\chi_X(R\mathcal Hom(G,F)).
+\end{aligned}
+\qquad\text{(28)}
+\]</span>
+<p>For the first, use <span class="math" data-tex="\(f^!F\simeq D_Yf^{-1}D_XF\)">\(f^!F\simeq D_Yf^{-1}D_XF\)</span>; for the second use
+<span class="math" data-tex="\(R\mathcal Hom(G,F)\simeq D_X(G\otimes D_XF)\)">\(R\mathcal Hom(G,F)\simeq D_X(G\otimes D_XF)\)</span>.
+All inputs and outputs are bounded constructible, so (9) applies. At a smooth submersion of relative dimension <span class="math" data-tex="\(r\)">\(r\)</span>, the exceptional orientation line has rank one and shift <span class="math" data-tex="\(r\)">\(r\)</span>, giving <span class="math" data-tex="\(f^!\varphi=(-1)^rf^*\varphi\)">\(f^!\varphi=(-1)^rf^*\varphi\)</span>. At a critical map, (27) retains the full duality operation. Internal Hom also retains boundary information; its ordinary stalk need not be the Hom of the two ordinary stalks.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="infinitely-many-values-without-an-infinite-group-sum">Infinitely many values without an infinite group sum</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(\varphi(n)=n\)">\(\varphi(n)=n\)</span> for <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span> and let <span class="math" data-tex="\(\varphi=0\)">\(\varphi=0\)</span> off the integers. Show that it is constructible, realize it by a bounded complex, and explain why its Euler integral is not supplied by (16).</p>
+<p><strong>Solution.</strong> The integer set is closed and locally finite, so each nonzero level set is a point. The zero level is <span class="math" data-tex="\(\mathbb R\setminus(\mathbb Z\setminus\{0\})\)">\(\mathbb R\setminus(\mathbb Z\setminus\{0\})\)</span>, which is subanalytic and includes the integer zero. Any small bounded neighborhood meets finitely many integers. Let <span class="math" data-tex="\(A=\bigoplus_{n&gt;0}k_{\{n\}}^n\)">\(A=\bigoplus_{n&gt;0}k_{\{n\}}^n\)</span> and <span class="math" data-tex="\(B=\bigoplus_{n&lt;0}k_{\{n\}}^{-n}\)">\(B=\bigoplus_{n&lt;0}k_{\{n\}}^{-n}\)</span>. The actual sheaf complex <span class="math" data-tex="\(A\oplus B[1]\)">\(A\oplus B[1]\)</span> has finite stalks and Euler function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, in the same two global degrees as (10). Its closed support is noncompact, and its compact-section cohomology contains infinite-dimensional direct sums. There is no finite Euler characteristic for that complex. The construction creates one Grothendieck class; it uses no infinite sum of classes.</p>
+<h3 id="equal-classes-can-retain-different-monodromy">Equal classes can retain different monodromy</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be the rank-one local system on a circle with monodromy <span class="math" data-tex="\(-1\)">\(-1\)</span>, over the characteristic-zero field <span class="math" data-tex="\(k\)">\(k\)</span>. Compare it with <span class="math" data-tex="\(k_{S^1}\)">\(k_{S^1}\)</span> as a sheaf, as a Grothendieck class, and under integration.</p>
+<p><strong>Solution.</strong> The two sheaves are not isomorphic, because their monodromy maps differ. Both Euler functions are <span class="math" data-tex="\(1\)">\(1\)</span>, so (9) gives <span class="math" data-tex="\([L]=[k_{S^1}]\)">\([L]=[k_{S^1}]\)</span>. A cell cut with one vertex and one open edge writes each class as <span class="math" data-tex="\([k_{\mathrm{vertex}}]+[k_{\mathrm{open\ edge}}]\)">\([k_{\mathrm{vertex}}]+[k_{\mathrm{open\ edge}}]\)</span>, using one localization triangle. The circle cochain complex for <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\([k\xrightarrow{-2}k]\)">\([k\xrightarrow{-2}k]\)</span> in degrees zero and one, hence acyclic. The constant sheaf has <span class="math" data-tex="\(k\)">\(k\)</span> in both cohomology degrees. Both global Euler characteristics are zero, as is <span class="math" data-tex="\(\int_{S^1}1\,d\chi=1-1\)">\(\int_{S^1}1\,d\chi=1-1\)</span>. Equality of classes preserves this additive measurement, while allowing different monodromy and cohomology.</p>
+<h3 id="a-weighted-interval">A weighted interval</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Compute the Euler integrals of the open, closed and half-open unit intervals. Then integrate
+<span class="math" data-tex="\(\varphi=3\,1_{[0,1]}-2\,1_{(0,1)}+4\,1_{\{0\}}\)">\(\varphi=3\,1_{[0,1]}-2\,1_{(0,1)}+4\,1_{\{0\}}\)</span>.</p>
+<p><strong>Solution.</strong> The open interval has compact cohomology <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>, hence integral <span class="math" data-tex="\(-1\)">\(-1\)</span>. The closed interval is contractible and compact, giving <span class="math" data-tex="\(1\)">\(1\)</span>. The half-open interval is the closed interval minus one endpoint, giving <span class="math" data-tex="\(0\)">\(0\)</span>. The weighted integral is <span class="math" data-tex="\(3+2+4=9\)">\(3+2+4=9\)</span>. Equivalently the function has values <span class="math" data-tex="\(7\)">\(7\)</span> at zero, <span class="math" data-tex="\(1\)">\(1\)</span> in the interior and <span class="math" data-tex="\(3\)">\(3\)</span> at one; its open-cell sum is <span class="math" data-tex="\(7-1+3=9\)">\(7-1+3=9\)</span>.</p>
+<h3 id="duality-exchanges-interval-endpoints">Duality exchanges interval endpoints</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, calculate <span class="math" data-tex="\(D1_{(0,1)}\)">\(D1_{(0,1)}\)</span>, <span class="math" data-tex="\(D1_{[0,1]}\)">\(D1_{[0,1]}\)</span> and <span class="math" data-tex="\(D1_{\{0\}}\)">\(D1_{\{0\}}\)</span> using (23).</p>
+<p><strong>Solution.</strong> At an interior point of either interval, the small intersection is an open interval, giving <span class="math" data-tex="\(-1\)">\(-1\)</span>. For the open interval at an endpoint, that intersection is again an open interval, so its value is <span class="math" data-tex="\(-1\)">\(-1\)</span>. For the closed interval at an endpoint, the intersection is half-open, whose integral is zero. Outside the closed interval it is empty. Thus <span class="math" data-tex="\(D1_{(0,1)}=-1_{[0,1]}\)">\(D1_{(0,1)}=-1_{[0,1]}\)</span> and <span class="math" data-tex="\(D1_{[0,1]}=-1_{(0,1)}\)">\(D1_{[0,1]}=-1_{(0,1)}\)</span>. A point remains a point with coefficient one. Applying <span class="math" data-tex="\(D\)">\(D\)</span> twice restores each function. Their integrals are also preserved. For the weighted function of the previous exercise, <span class="math" data-tex="\(D\varphi=-3\,1_{(0,1)}+2\,1_{[0,1]}+4\,1_{\{0\}}\)">\(D\varphi=-3\,1_{(0,1)}+2\,1_{[0,1]}+4\,1_{\{0\}}\)</span>, again with integral <span class="math" data-tex="\(9\)">\(9\)</span>.</p>
+<h3 id="a-branch-point-in-a-proper-image">A branch point in a proper image</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(f(t)=t^2:\mathbb R\to\mathbb R\)">\(f(t)=t^2:\mathbb R\to\mathbb R\)</span> and <span class="math" data-tex="\(\psi=1_{[-1,1]}\)">\(\psi=1_{[-1,1]}\)</span>. Calculate <span class="math" data-tex="\(f_!\psi\)">\(f_!\psi\)</span> and verify (24) at zero and at the image endpoints.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(x=0\)">\(x=0\)</span> the fibre contains one included point. For <span class="math" data-tex="\(0&lt;x\leq1\)">\(0&lt;x\leq1\)</span> it contains two, and outside <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> it contains none. Hence <span class="math" data-tex="\(f_!\psi=2\,1_{[0,1]}-1_{\{0\}}\)">\(f_!\psi=2\,1_{[0,1]}-1_{\{0\}}\)</span>, whose integral is <span class="math" data-tex="\(2-1=1\)">\(2-1=1\)</span>. Since <span class="math" data-tex="\(D\psi=-1_{(-1,1)}\)">\(D\psi=-1_{(-1,1)}\)</span>, its direct image is <span class="math" data-tex="\(-2\,1_{(0,1)}-1_{\{0\}}\)">\(-2\,1_{(0,1)}-1_{\{0\}}\)</span>: the value at zero is <span class="math" data-tex="\(-1\)">\(-1\)</span>, while at one it is zero. Duality of the first formula gives precisely this same function. The branch point contributes one fibre point, and the source endpoints disappear in the dual; these facts account for both endpoint values.</p>
+<h3 id="ordinary-and-exceptional-restriction-have-different-signs">Ordinary and exceptional restriction have different signs</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(i:\{0\}\hookrightarrow\mathbb R\)">\(i:\{0\}\hookrightarrow\mathbb R\)</span>, calculate <span class="math" data-tex="\(i^*1_{\mathbb R}\)">\(i^*1_{\mathbb R}\)</span>, <span class="math" data-tex="\(i^!1_{\mathbb R}\)">\(i^!1_{\mathbb R}\)</span> and <span class="math" data-tex="\(i^!1_{\{0\}}\)">\(i^!1_{\{0\}}\)</span>. Is exceptional restriction always <span class="math" data-tex="\(-i^*\)">\(-i^*\)</span> for this embedding?</p>
+<p><strong>Solution.</strong> Ordinary restriction gives <span class="math" data-tex="\(1\)">\(1\)</span>. Since <span class="math" data-tex="\(D_{\mathbb R}1_{\mathbb R}=-1_{\mathbb R}\)">\(D_{\mathbb R}1_{\mathbb R}=-1_{\mathbb R}\)</span> and point duality is the identity, (27) gives <span class="math" data-tex="\(i^!1_{\mathbb R}=-1\)">\(i^!1_{\mathbb R}=-1\)</span>. This is the Euler characteristic of the constant-sheaf costalk <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. But <span class="math" data-tex="\(D_{\mathbb R}1_{\{0\}}=1_{\{0\}}\)">\(D_{\mathbb R}1_{\{0\}}=1_{\{0\}}\)</span>, so <span class="math" data-tex="\(i^!1_{\{0\}}=1\)">\(i^!1_{\{0\}}=1\)</span>, the point-supported sheaf's own costalk. Thus the sign formula for an ambient locally constant coefficient does not extend to every constructible function across the point.</p>
+<h3 id="internal-hom-sees-the-boundary">Internal Hom sees the boundary</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Take <span class="math" data-tex="\(G=k_{[0,\infty)}\)">\(G=k_{[0,\infty)}\)</span> and <span class="math" data-tex="\(F=k_{\mathbb R}\)">\(F=k_{\mathbb R}\)</span>. Calculate the Euler function of <span class="math" data-tex="\(R\mathcal Hom(G,F)\)">\(R\mathcal Hom(G,F)\)</span> and compare its value at zero with <span class="math" data-tex="\(\dim_k\operatorname{Hom}(G_0,F_0)\)">\(\dim_k\operatorname{Hom}(G_0,F_0)\)</span>.</p>
+<p><strong>Solution.</strong> Small-ball calculation gives <span class="math" data-tex="\(D1_{[0,\infty)}=-1_{(0,\infty)}\)">\(D1_{[0,\infty)}=-1_{(0,\infty)}\)</span> and <span class="math" data-tex="\(D1_{\mathbb R}=-1_{\mathbb R}\)">\(D1_{\mathbb R}=-1_{\mathbb R}\)</span>. Formula (27) yields
+<span class="math" data-tex="\(\operatorname{hom}(1_{[0,\infty)},1_{\mathbb R})
+=D(-1_{[0,\infty)})=1_{(0,\infty)}\)">\(\operatorname{hom}(1_{[0,\infty)},1_{\mathbb R})
+=D(-1_{[0,\infty)})=1_{(0,\infty)}\)</span>.
+Its value at zero is zero, while both ordinary stalks are <span class="math" data-tex="\(k\)">\(k\)</span> and their vector-space Hom has dimension one. Internal Hom is a sheaf of local morphisms and derived local extensions, so its stalk is not computed by taking just those two stalks. Here closed-support localization also calculates its boundary stalk as the fibre of the identity restriction <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>, hence as zero.</p>
+<h3 id="euler-characteristic-of-a-ball-boundary">Euler characteristic of a ball boundary</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be the open unit ball in <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, with <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Derive the Euler characteristic of its boundary using duality.</p>
+<p><strong>Solution.</strong> At every point of its closed ball, the small open intersection with <span class="math" data-tex="\(Z\)">\(Z\)</span> is homeomorphic to <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, so (25) gives <span class="math" data-tex="\(D1_Z=(-1)^d1_{\overline Z}\)">\(D1_Z=(-1)^d1_{\overline Z}\)</span>. The closed ball has Euler characteristic one, and duality preserves the integral. Thus <span class="math" data-tex="\(\chi_c(Z)=(-1)^d\)">\(\chi_c(Z)=(-1)^d\)</span>. Subtract its indicator from that of the closed ball to obtain <span class="math" data-tex="\(\chi(\partial Z)=1-(-1)^d\)">\(\chi(\partial Z)=1-(-1)^d\)</span>. It is zero for even <span class="math" data-tex="\(d\)">\(d\)</span> and two for odd <span class="math" data-tex="\(d\)">\(d\)</span>; in dimension one this counts the two endpoints.</p>
+<h3 id="a-zero-function-with-a-noncompact-representative">A zero function with a noncompact representative</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(a:\mathbb R\to\{\mathrm{pt}\}\)">\(a:\mathbb R\to\{\mathrm{pt}\}\)</span>, let <span class="math" data-tex="\(J:\mathbb Z\hookrightarrow\mathbb R\)">\(J:\mathbb Z\hookrightarrow\mathbb R\)</span>, and put <span class="math" data-tex="\(G=J_*k_{\mathbb Z}\oplus J_*k_{\mathbb Z}[1]\)">\(G=J_*k_{\mathbb Z}\oplus J_*k_{\mathbb Z}[1]\)</span>. Its Euler function is zero. Explain why (16) does not calculate its integral by taking the Euler characteristic of <span class="math" data-tex="\(Ra_!G\)">\(Ra_!G\)</span>.</p>
+<p><strong>Solution.</strong> At an integer the two finite stalks contribute <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>, and elsewhere both are zero. The function zero has the compactly supported representative <span class="math" data-tex="\(0\)">\(0\)</span>, giving integral zero. However <span class="math" data-tex="\(G\)">\(G\)</span> has the noncompact closed support <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The compact-section complex of <span class="math" data-tex="\(J_*k_{\mathbb Z}\)">\(J_*k_{\mathbb Z}\)</span> is the infinite-dimensional vector space <span class="math" data-tex="\(\bigoplus_{\mathbb Z}k\)">\(\bigoplus_{\mathbb Z}k\)</span> in degree zero; its shifted copy is in degree minus one. Neither coefficient dimension is finite, so their signed difference is not a defined Euler characteristic. Equality of the class with zero in the full Grothendieck group does not make this nonproper image a perfect complex. The compact-support version (13) is the reason (16) is well-defined.</p>
+<p>The next lesson treats positive-homogeneous functions, Fourier–Sato transformation and specialization. These operations lead to the correspondence with integral Lagrangian cycles.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/constructible-functions-and-euler-integration.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reconstructing a weight from a modular cocycle · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CX.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 70 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="reconstructing-a-weight-from-a-modular-cocycle">Reconstructing a weight from a modular cocycle</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A cocycle specifies how a second modular motion differs from a first. Recovering a weight requires more than recognizing the resulting automorphisms: different weights can have the same modular group. We construct the missing GNS map, prove its full Hilbert-algebra axioms, and identify its relative operator on the entire mixed finite domain. The construction works on an arbitrary von Neumann algebra.</p>
+<p>The mathematical antecedent is Takesaki, <em>Theory of Operator Algebras II</em>, VIII.3, Theorem 3.8 and its analytic-domain lemmas. Theorem 3.7 in that edition is the chain rule. The proof below organizes the reconstruction around a general analytic-core lemma and a conjugation identity. In particular it gives the approximation argument for the complete relative graph explicitly.</p>
+<h2 id="the-reconstruction-problem-and-its-inputs"><span id="oa-mod-cx-01"></span><span id="OA-MOD-CX-01"></span>The reconstruction problem and its inputs</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a von Neumann algebra and let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a faithful normal semifinite weight. Use its faithful normal GNS representation to regard <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+\Lambda=\Lambda_\varphi,\qquad
+S_\varphi=J\Delta^{1/2},\qquad
+\sigma_t=\sigma_t^\varphi.
+\tag{CX.1}
+\]">\[
+\Lambda=\Lambda_\varphi,\qquad
+S_\varphi=J\Delta^{1/2},\qquad
+\sigma_t=\sigma_t^\varphi.
+\tag{CX.1}
+\]</span>
+<p>Inner products are linear in the first variable. The finite left ideal is
+<span class="math" data-tex="\(\mathfrak n=\{x:\varphi(x^*x)&lt;\infty\}\)">\(\mathfrak n=\{x:\varphi(x^*x)&lt;\infty\}\)</span>. All Hilbert spaces, projection families and directed sets are arbitrary.</p>
+<p>A <strong>unitary modular cocycle</strong> is a family <span class="math" data-tex="\(u_t\in\mathcal U(M)\)">\(u_t\in\mathcal U(M)\)</span> such that <span class="math" data-tex="\(t\mapsto u_t\)">\(t\mapsto u_t\)</span> is strongly continuous and</p>
+<span class="math math-display" data-tex="\[
+u_{s+t}=u_s\sigma_s(u_t)\qquad(s,t\in\mathbb R).
+\tag{CX.2}
+\]">\[
+u_{s+t}=u_s\sigma_s(u_t)\qquad(s,t\in\mathbb R).
+\tag{CX.2}
+\]</span>
+<p>Strong continuity is intrinsic here: on a uniformly bounded set the faithful normal representation preserves the sigma-strong topology. Taking <span class="math" data-tex="\(s=t=0\)">\(s=t=0\)</span> gives <span class="math" data-tex="\(u_0=1\)">\(u_0=1\)</span>, and the identity with <span class="math" data-tex="\(-t\)">\(-t\)</span> gives the inverse formulas. Unitarity also implies strong continuity of the adjoints.</p>
+<p>We will prove that there is a unique faithful normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with</p>
+<span class="math math-display" data-tex="\[
+[D\psi:D\varphi]_t=u_t.
+\tag{CX.3}
+\]">\[
+[D\psi:D\varphi]_t=u_t.
+\tag{CX.3}
+\]</span>
+<p>The cocycle on the left is the balanced-matrix cocycle of SI-14. Thus its meaning is already fixed independently of the construction to follow.</p>
+<p>The exact inputs are:</p>
+<ul>
+<li>Completing the two multiplication domains through Fullness and recovery of the original weight, the full correspondence between left Hilbert algebras and faithful normal semifinite weights, including their finite ideals and actual GNS maps;</li>
+<li>The commutant and the integral orbit identity through The opposite structure of a Tomita algebra, the modular commutant theorem, analytic finite algebra, and identification of the modular powers of a Tomita algebra;</li>
+<li>Contractive approximation from a nonunital algebra and HAP-07, bounded strong* approximation of operators and bounded strong approximation of an individual left-bounded GNS vector;</li>
+<li>Finite positive cutoffs characterize semifiniteness, finite positive contraction nets, and CP-06, the complete norming predual;</li>
+<li>Consequences for GNS maps and sums of weights's GNS graph theorem, for sigma-strong convergence of algebra elements and weak convergence of GNS vectors;</li>
+<li>Unbounded measurable functions and SK-07–09, spectral domains and transported functional calculus;</li>
+<li>Gaussian normalization and its Fourier transform and MA-04, MA-06, MA-08–09 and MA-14–16, Fourier uniqueness, the hyperbolic integral kernel, strip bounds, analytic continuation and Gaussian integrals;</li>
+<li>Ordinary relative GNS maps are a specialization and SI-14, the closed ordinary relative graph and the spatial formula for the already defined cocycle; SC-10's injectivity of the numerator-to-spatial-derivative map.</li>
+</ul>
+<p>The proof does not presume a faithful state, a countable decomposition, a common natural-cone realization, or the converse being proved. No action or crossed-product cocycle theorem is used.</p>
+<h2 id="an-analytic-unitary-core-determines-all-powers">An analytic unitary core determines all powers</h2>
+<p>We first isolate a Hilbert-space argument that will be used twice.</p>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(V_t\)">\(V_t\)</span> be a strongly continuous unitary group on a Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>. Suppose a dense linear subspace <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> has maps <span class="math" data-tex="\(V_z:\mathcal D\to\mathcal D\)">\(V_z:\mathcal D\to\mathcal D\)</span>, <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, which form an algebraic group, agree with <span class="math" data-tex="\(V_t\)">\(V_t\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>, and make <span class="math" data-tex="\(z\mapsto V_z\xi\)">\(z\mapsto V_z\xi\)</span> norm-entire for every <span class="math" data-tex="\(\xi\in\mathcal D\)">\(\xi\in\mathcal D\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+P=\overline{V_{-i/2}|_{\mathcal D}}
+\tag{CX.4}
+\]">\[
+P=\overline{V_{-i/2}|_{\mathcal D}}
+\tag{CX.4}
+\]</span>
+<p>is positive, injective and self-adjoint, and</p>
+<span class="math math-display" data-tex="\[
+V_t=P^{2it},\qquad
+V_z\xi=P^{2iz}\xi.
+\tag{CX.5}
+\]">\[
+V_t=P^{2it},\qquad
+V_z\xi=P^{2iz}\xi.
+\tag{CX.5}
+\]</span>
+<p>Every vector of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> belongs to every real-power domain of <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a core for each power separately and for each finite sum of their graph norms.</p>
+<p><strong>Proof.</strong> Analytic continuation of the real unitary adjoint identity gives</p>
+<span class="math math-display" data-tex="\[
+\langle V_z\xi,\eta\rangle
+=\langle\xi,V_{-\bar z}\eta\rangle
+\quad(\xi,\eta\in\mathcal D).
+\tag{CX.6}
+\]">\[
+\langle V_z\xi,\eta\rangle
+=\langle\xi,V_{-\bar z}\eta\rangle
+\quad(\xi,\eta\in\mathcal D).
+\tag{CX.6}
+\]</span>
+<p>The two sides are scalar-entire in <span class="math" data-tex="\(z\)">\(z\)</span>, and agree for real <span class="math" data-tex="\(z\)">\(z\)</span>, which justifies this continuation without introducing an unbounded adjoint informally. The group law and real unitarity show that the norm of <span class="math" data-tex="\(V_{t+is}\xi\)">\(V_{t+is}\xi\)</span> equals the norm of <span class="math" data-tex="\(V_{is}\xi\)">\(V_{is}\xi\)</span>. It is therefore bounded on every finite horizontal strip.</p>
+<p>For <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>, the operator <span class="math" data-tex="\(L_a=V_{-ia}|_{\mathcal D}\)">\(L_a=V_{-ia}|_{\mathcal D}\)</span> is symmetric by (CX.6), and</p>
+<span class="math math-display" data-tex="\[
+\langle L_a\xi,\xi\rangle
+=\|V_{-ia/2}\xi\|^2\geq0.
+\tag{CX.7}
+\]">\[
+\langle L_a\xi,\xi\rangle
+=\|V_{-ia/2}\xi\|^2\geq0.
+\tag{CX.7}
+\]</span>
+<p>Apply the vector contour identity MA-15 to the entire group <span class="math" data-tex="\(z\mapsto V_{az}\)">\(z\mapsto V_{az}\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+\xi=\int_{\mathbb R}
+\frac{(I+V_{-ia})V_{at+ia/2}\xi}
+{e^{\pi t}+e^{-\pi t}}\,dt .
+\tag{CX.8}
+\]">\[
+\xi=\int_{\mathbb R}
+\frac{(I+V_{-ia})V_{at+ia/2}\xi}
+{e^{\pi t}+e^{-\pi t}}\,dt .
+\tag{CX.8}
+\]</span>
+<p>The preceding horizontal bounds make this a norm integral. Its finite Riemann sums lie in <span class="math" data-tex="\((I+L_a)\mathcal D\)">\((I+L_a)\mathcal D\)</span>, so that range is dense.</p>
+<p>Here are the closed-operator details. Let <span class="math" data-tex="\(L=\overline{L_a}\)">\(L=\overline{L_a}\)</span>. It is positive symmetric, and
+<span class="math" data-tex="\(\|(I+L)\xi\|\geq\|\xi\|\)">\(\|(I+L)\xi\|\geq\|\xi\|\)</span>. Closedness of <span class="math" data-tex="\(L\)">\(L\)</span> makes the range of <span class="math" data-tex="\(I+L\)">\(I+L\)</span> closed: if the images are Cauchy, both the vectors and their <span class="math" data-tex="\(L\)">\(L\)</span>-images are Cauchy. Its dense range is consequently all of <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(\eta\in D(L^*)\)">\(\eta\in D(L^*)\)</span>, take
+<span class="math" data-tex="\(\xi=(I+L)^{-1}(I+L^*)\eta\)">\(\xi=(I+L)^{-1}(I+L^*)\eta\)</span>. The difference <span class="math" data-tex="\(\eta-\xi\)">\(\eta-\xi\)</span> belongs to
+<span class="math" data-tex="\(\ker(I+L^*)=\operatorname{ran}(I+L)^\perp=0\)">\(\ker(I+L^*)=\operatorname{ran}(I+L)^\perp=0\)</span>. Hence <span class="math" data-tex="\(L=L^*\)">\(L=L^*\)</span>.</p>
+<p>In particular (CX.4) is positive self-adjoint. Its range is dense, since <span class="math" data-tex="\(V_{-i/2}\mathcal D=\mathcal D\)">\(V_{-i/2}\mathcal D=\mathcal D\)</span>, and therefore its kernel is zero. Flipping the graph on this invariant domain shows</p>
+<span class="math math-display" data-tex="\[
+\overline{V_{i/2}|_{\mathcal D}}=P^{-1}.
+\tag{CX.9}
+\]">\[
+\overline{V_{i/2}|_{\mathcal D}}=P^{-1}.
+\tag{CX.9}
+\]</span>
+<p>Indeed the closure of the flipped graph of <span class="math" data-tex="\(P|_{\mathcal D}\)">\(P|_{\mathcal D}\)</span> is the graph of <span class="math" data-tex="\(P^{-1}\)">\(P^{-1}\)</span>.</p>
+<p>We still have to identify the real group. For <span class="math" data-tex="\(s\in\mathbb R\)">\(s\in\mathbb R\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+T_s=\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}V_t\,dt.
+\]">\[
+T_s=\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}V_t\,dt.
+\]</span>
+<p>The second contour identity in MA-15 gives</p>
+<span class="math math-display" data-tex="\[
+T_s(e^{-s/2}P+e^{s/2}P^{-1})\xi=\xi
+\quad(\xi\in\mathcal D)
+\tag{CX.10}
+\]">\[
+T_s(e^{-s/2}P+e^{s/2}P^{-1})\xi=\xi
+\quad(\xi\in\mathcal D)
+\tag{CX.10}
+\]</span>
+<p>and proves that the range of the displayed expression on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is dense. The positive self-adjoint spectral operator</p>
+<span class="math math-display" data-tex="\[
+D_s=e^{-s/2}P+e^{s/2}P^{-1},
+\qquad D(D_s)=D(P)\cap D(P^{-1}),
+\]">\[
+D_s=e^{-s/2}P+e^{s/2}P^{-1},
+\qquad D(D_s)=D(P)\cap D(P^{-1}),
+\]</span>
+<p>has spectral function at least two. Thus <span class="math" data-tex="\(D_s^{-1}\)">\(D_s^{-1}\)</span> is bounded, and (CX.10), on its dense range, identifies</p>
+<span class="math math-display" data-tex="\[
+T_s=D_s^{-1}
+=\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}P^{2it}\,dt,
+\tag{CX.11}
+\]">\[
+T_s=D_s^{-1}
+=\int_{\mathbb R}\frac{e^{-ist}}{2\cosh(\pi t)}P^{2it}\,dt,
+\tag{CX.11}
+\]</span>
+<p>where the last identity is MA-06 applied to <span class="math" data-tex="\(P^2\)">\(P^2\)</span>. Fourier uniqueness MA-04 on each continuous scalar matrix coefficient, after division by <span class="math" data-tex="\(2\cosh(\pi t)\)">\(2\cosh(\pi t)\)</span>, yields <span class="math" data-tex="\(V_t=P^{2it}\)">\(V_t=P^{2it}\)</span>. MA-09 recognizes the given entire continuation and its domains, proving (CX.5). The earlier essential self-adjointness of every <span class="math" data-tex="\(L_a\)">\(L_a\)</span> then shows that its closure is <span class="math" data-tex="\(P^{2a}\)">\(P^{2a}\)</span>.</p>
+<p>For the simultaneous core assertion, let <span class="math" data-tex="\(g_r(s)=\exp(-(\log s)^2/r)\)">\(g_r(s)=\exp(-(\log s)^2/r)\)</span> on <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. The Gaussian transform MA-03 makes <span class="math" data-tex="\(g_r(P)\)">\(g_r(P)\)</span> a Gaussian average of <span class="math" data-tex="\(V_t\)">\(V_t\)</span>. For <span class="math" data-tex="\(\xi\in\mathcal D\)">\(\xi\in\mathcal D\)</span>, that average need not itself have been assumed to belong to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>; instead approximate its integral by finite Riemann sums of <span class="math" data-tex="\(V_t\xi\)">\(V_t\xi\)</span>. These converge in every selected power graph norm, since on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> the power commutes with <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, and each corresponding orbit has an integrable Gaussian bound. For an arbitrary vector in the common domain of finitely many powers, <span class="math" data-tex="\(g_r(P)\)">\(g_r(P)\)</span> tends to the identity in their combined graph norm by scalar dominated convergence. For fixed <span class="math" data-tex="\(r\)">\(r\)</span>, every <span class="math" data-tex="\(P^a g_r(P)\)">\(P^a g_r(P)\)</span> in that finite list is bounded, so approximate the original Hilbert vector by vectors of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> before using the Riemann sums. These two approximations prove density in the required graph norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Averaging corollary.</strong> Suppose instead that a dense linear subspace <span class="math" data-tex="\(\mathcal F\subseteq K\)">\(\mathcal F\subseteq K\)</span> is invariant under every <span class="math" data-tex="\(V_t\)">\(V_t\)</span> and under</p>
+<span class="math math-display" data-tex="\[
+V(f)=\int_{\mathbb R}f(t)V_t\,dt\qquad(f\in L^1(\mathbb R)).
+\tag{CX.11a}
+\]">\[
+V(f)=\int_{\mathbb R}f(t)V_t\,dt\qquad(f\in L^1(\mathbb R)).
+\tag{CX.11a}
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal F_{\mathrm{an}}\)">\(\mathcal F_{\mathrm{an}}\)</span> consist of the vectors in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> with a Hilbert-norm entire orbit whose entire extension stays in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Then <span class="math" data-tex="\(\mathcal F_{\mathrm{an}}\)">\(\mathcal F_{\mathrm{an}}\)</span> is a core for every closed complex-time operator of the group.</p>
+<p>To prove this, for <span class="math" data-tex="\(\xi\in\mathcal F\)">\(\xi\in\mathcal F\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\xi_r(z)=\sqrt{r/\pi}\int_{\mathbb R}e^{-r(t-z)^2}V_t\xi\,dt.
+\tag{CX.11b}
+\]">\[
+\xi_r(z)=\sqrt{r/\pi}\int_{\mathbb R}e^{-r(t-z)^2}V_t\xi\,dt.
+\tag{CX.11b}
+\]</span>
+<p>For every <span class="math" data-tex="\(z\)">\(z\)</span>, the scalar kernel belongs to <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, so <span class="math" data-tex="\(\xi_r(z)\in\mathcal F\)">\(\xi_r(z)\in\mathcal F\)</span> by the assumed invariance. The kernel is <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-norm entire: on compact sets of <span class="math" data-tex="\(z\)">\(z\)</span>, all its derivatives have an integrable Gaussian bound. Thus (CX.11b) is Hilbert-norm entire. Real translation gives its actual orbit, and complex translations give the extensions of its translated vectors. Hence <span class="math" data-tex="\(\xi_r(0)\in\mathcal F_{\mathrm{an}}\)">\(\xi_r(0)\in\mathcal F_{\mathrm{an}}\)</span>, this analytic space is invariant under all complex translations, and <span class="math" data-tex="\(\xi_r(0)\to\xi\)">\(\xi_r(0)\to\xi\)</span>. It is dense in <span class="math" data-tex="\(K\)">\(K\)</span>. Apply the lemma to this space. If <span class="math" data-tex="\(V_z=P^{2iz}\)">\(V_z=P^{2iz}\)</span> and <span class="math" data-tex="\(z=t+is\)">\(z=t+is\)</span>, then <span class="math" data-tex="\(D(V_z)=D(P^{-2s})\)">\(D(V_z)=D(P^{-2s})\)</span>, and multiplication by the unitary <span class="math" data-tex="\(P^{2it}\)">\(P^{2it}\)</span> preserves the graph norm. The real-power core assertion therefore proves the claim for every complex parameter, including its exact domain.</p>
+<p>No norm-continuous action on an additional Banach graph space was assumed. If <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> has such a norm and satisfies <span class="math" data-tex="\(\|V(f)\xi\|_{\mathcal F}\leq C_\xi\|f\|_1\)">\(\|V(f)\xi\|_{\mathcal F}\leq C_\xi\|f\|_1\)</span>, the same <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-kernel argument makes (CX.11b) entire in that stronger norm as well. This covers that interpretation of an <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>-valued entire extension without confusing it with operator-norm continuity of every real orbit.</p>
+<h2 id="two-identities-on-the-full-finite-left-ideal"><span id="oa-mod-cx-03"></span><span id="OA-MOD-CX-03"></span>Two identities on the full finite left ideal</h2>
+<p>We need identities for every <span class="math" data-tex="\(x\in\mathfrak n\)">\(x\in\mathfrak n\)</span>, not only for vectors in the finite analytic algebra.</p>
+<p><strong>Symmetry identity.</strong> For <span class="math" data-tex="\(x,y\in\mathfrak n\)">\(x,y\in\mathfrak n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+JxJ\Lambda(y)=yJ\Lambda(x).
+\tag{CX.12}
+\]">\[
+JxJ\Lambda(y)=yJ\Lambda(x).
+\tag{CX.12}
+\]</span>
+<p><strong>Proof.</strong> On the full finite-star Hilbert algebra, MF-05–06 identifies <span class="math" data-tex="\(JxJ\)">\(JxJ\)</span> with right multiplication by <span class="math" data-tex="\(J\Lambda(x)\)">\(J\Lambda(x)\)</span>. Its bounded multiplication identity gives (CX.12). For a general <span class="math" data-tex="\(x\in\mathfrak n\)">\(x\in\mathfrak n\)</span>, HAP-07 and WH-11 give finite-star <span class="math" data-tex="\(x_n\)">\(x_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\Lambda(x_n)\to\Lambda(x),\qquad
+x_n\to x\ \hbox{strongly},\qquad
+\|x_n\|\leq\|x\|.
+\]">\[
+\Lambda(x_n)\to\Lambda(x),\qquad
+x_n\to x\ \hbox{strongly},\qquad
+\|x_n\|\leq\|x\|.
+\]</span>
+<p>For finite-star <span class="math" data-tex="\(y\)">\(y\)</span>, pass to the limit in the two sides of (CX.12). Approximate a general <span class="math" data-tex="\(y\in\mathfrak n\)">\(y\in\mathfrak n\)</span> in the same way; the two limits use, respectively, norm convergence of <span class="math" data-tex="\(\Lambda(y_n)\)">\(\Lambda(y_n)\)</span> and strong convergence of <span class="math" data-tex="\(y_n\)">\(y_n\)</span> on the fixed vector <span class="math" data-tex="\(J\Lambda(x)\)">\(J\Lambda(x)\)</span>. This proves the full assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An element <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> is <strong>entire for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span></strong> if its real orbit extends to an operator-norm entire map <span class="math" data-tex="\(z\mapsto\sigma_z(a)\)">\(z\mapsto\sigma_z(a)\)</span>. This is equivalent to a sigma-weak-entire extension. To see that the weaker convention suffices, let <span class="math" data-tex="\(F\)">\(F\)</span> take values in <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span>, with <span class="math" data-tex="\(z\mapsto\omega(F(z))\)">\(z\mapsto\omega(F(z))\)</span> entire for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>. On any compact disc <span class="math" data-tex="\(K\)">\(K\)</span>, each of these scalar functions is bounded. The closed sets</p>
+<span class="math math-display" data-tex="\[
+E_n=\{\omega\in M_*:\sup_{z\in K}|\omega(F(z))|\leq n\}
+\]">\[
+E_n=\{\omega\in M_*:\sup_{z\in K}|\omega(F(z))|\leq n\}
+\]</span>
+<p>cover the Banach space <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. At least one has interior. The complete-metric fact used here has a short proof: if all the closed sets had empty interior, choose nested nonempty closed balls, with radii tending to zero, each contained in the preceding ball's interior and avoiding the next closed set. Completeness gives a point in every ball, contrary to the cover. An interior ball in one <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, and differences of its points, now give a common bound <span class="math" data-tex="\(\sup_{z\in K}\|F(z)\|&lt;\infty\)">\(\sup_{z\in K}\|F(z)\|&lt;\infty\)</span>, since the predual is norming. On a circle of radius <span class="math" data-tex="\(R\)">\(R\)</span>, the scalar Cauchy coefficients therefore define elements <span class="math" data-tex="\(A_k\in(M_*)^*=M\)">\(A_k\in(M_*)^*=M\)</span> with <span class="math" data-tex="\(\|A_k\|\leq C R^{-k}\)">\(\|A_k\|\leq C R^{-k}\)</span>. Their norm-convergent power series agrees with <span class="math" data-tex="\(F\)">\(F\)</span> against every predual test, hence agrees in <span class="math" data-tex="\(M\)">\(M\)</span>. This proves norm holomorphy. Norm-entire maps are plainly sigma-weak-entire.</p>
+<p>For an entire element, the group law, multiplicativity and
+<span class="math" data-tex="\(\sigma_z(a)^*=\sigma_{\bar z}(a^*)\)">\(\sigma_z(a)^*=\sigma_{\bar z}(a^*)\)</span> follow by analytic continuation, initially in one variable and then in the other.</p>
+<p><strong>Right multiplier lemma.</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is entire for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(x\in\mathfrak n\)">\(x\in\mathfrak n\)</span>, then <span class="math" data-tex="\(xa\in\mathfrak n\)">\(xa\in\mathfrak n\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\Lambda(xa)=J\sigma_{-i/2}(a^*)J\Lambda(x).
+\tag{CX.13}
+\]">\[
+\Lambda(xa)=J\sigma_{-i/2}(a^*)J\Lambda(x).
+\tag{CX.13}
+\]</span>
+<p>In particular</p>
+<span class="math math-display" data-tex="\[
+\|\Lambda(xa)\|\leq\|\sigma_{-i/2}(a^*)\|\,\|\Lambda(x)\|.
+\tag{CX.14}
+\]">\[
+\|\Lambda(xa)\|\leq\|\sigma_{-i/2}(a^*)\|\,\|\Lambda(x)\|.
+\tag{CX.14}
+\]</span>
+<p><strong>Proof.</strong> First suppose that <span class="math" data-tex="\(a\)">\(a\)</span> is the bounded left multiplier of a vector in MF-07's finite analytic algebra. On that algebra, MF-11's right multiplication formula and
+<span class="math" data-tex="\(J\Lambda(a)=\Lambda(\sigma_{-i/2}(a^*))\)">\(J\Lambda(a)=\Lambda(\sigma_{-i/2}(a^*))\)</span>
+give exactly (CX.13). Approximate an arbitrary <span class="math" data-tex="\(\Lambda(x)\)">\(\Lambda(x)\)</span>, <span class="math" data-tex="\(x\in\mathfrak n\)">\(x\in\mathfrak n\)</span>, by bounded left multipliers of finite analytic vectors, in Hilbert norm and strongly in <span class="math" data-tex="\(M\)">\(M\)</span>. Such approximation follows by HAP-07, followed for each finite-star approximant by MF-08's Gaussian approximation. The operator norms remain bounded. Products with the fixed <span class="math" data-tex="\(a\)">\(a\)</span> converge strongly, while the right side of (CX.13) converges in norm. NW-12 proves both membership of the limit in <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> and the asserted formula.</p>
+<p>To remove the finite-vector condition on <span class="math" data-tex="\(a\)">\(a\)</span>, first fix <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and use the Gaussian average</p>
+<span class="math math-display" data-tex="\[
+a_r=\sqrt{r/\pi}\int_{\mathbb R}e^{-rt^2}\sigma_t(a)\,dt.
+\tag{CX.15}
+\]">\[
+a_r=\sqrt{r/\pi}\int_{\mathbb R}e^{-rt^2}\sigma_t(a)\,dt.
+\tag{CX.15}
+\]</span>
+<p>For this intermediate step <span class="math" data-tex="\(a\)">\(a\)</span> could be any bounded element of <span class="math" data-tex="\(M\)">\(M\)</span>. The integral is a strong* operator integral. For every complex <span class="math" data-tex="\(z\)">\(z\)</span> its continuation is obtained by replacing the kernel by <span class="math" data-tex="\(e^{-r(t-z)^2}\)">\(e^{-r(t-z)^2}\)</span>, with operator norm at most <span class="math" data-tex="\(e^{r(\operatorname{Im}z)^2}\|a\|\)">\(e^{r(\operatorname{Im}z)^2}\|a\|\)</span>.</p>
+<p>HAP-05 applied to the finite analytic algebra supplies a net of its multipliers <span class="math" data-tex="\(a_j\)">\(a_j\)</span>, uniformly bounded by <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, tending strongly* to <span class="math" data-tex="\(a\)">\(a\)</span>. For fixed <span class="math" data-tex="\(r,z\)">\(r,z\)</span>, the Gaussian averages <span class="math" data-tex="\((a_j)_r(z)\)">\((a_j)_r(z)\)</span> converge strongly* to <span class="math" data-tex="\(a_r(z)\)">\(a_r(z)\)</span>, with a uniform bound. To justify this assertion for nets, cut the integral to a compact interval. A uniformly bounded net of operators converging strongly converges uniformly on any compact set of test vectors. Apply this to the continuous compact orbits <span class="math" data-tex="\(\Delta^{-it}\xi\)">\(\Delta^{-it}\xi\)</span>, then integrate; the Gaussian tail has a bound independent of <span class="math" data-tex="\(j\)">\(j\)</span>. The adjoints are handled with the conjugate Gaussian kernel. This proof does not apply a sequence-only dominated-convergence principle to an arbitrary net.</p>
+<p>The averages <span class="math" data-tex="\((a_j)_r\)">\((a_j)_r\)</span> remain finite analytic multipliers by MF-08 and its power bounds. The formula already proved for them passes to <span class="math" data-tex="\(a_r\)">\(a_r\)</span> by NW-12, using strong convergence of <span class="math" data-tex="\(x(a_j)_r\)">\(x(a_j)_r\)</span> and of
+<span class="math" data-tex="\(J\sigma_{-i/2}((a_j)_r^*)J\)">\(J\sigma_{-i/2}((a_j)_r^*)J\)</span> on <span class="math" data-tex="\(\Lambda(x)\)">\(\Lambda(x)\)</span>.</p>
+<p>Finally assume that <span class="math" data-tex="\(a\)">\(a\)</span> is entire. Its norm-continuous orbit and that of the fixed element <span class="math" data-tex="\(\sigma_{-i/2}(a^*)\)">\(\sigma_{-i/2}(a^*)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+a_r\to a,\qquad
+\sigma_{-i/2}(a_r^*)\to\sigma_{-i/2}(a^*)
+\quad\hbox{in operator norm}.
+\]">\[
+a_r\to a,\qquad
+\sigma_{-i/2}(a_r^*)\to\sigma_{-i/2}(a^*)
+\quad\hbox{in operator norm}.
+\]</span>
+<p>For the second equality, analytic continuation of (CX.15) is also the Gaussian average of the orbit of <span class="math" data-tex="\(\sigma_{-i/2}(a^*)\)">\(\sigma_{-i/2}(a^*)\)</span>. This follows by a contour shift, or by uniqueness of the entire continuation of the commuting Gaussian and real-translation operations. Finite horizontal strips are uniformly bounded because
+<span class="math" data-tex="\(\|\sigma_{t+is}(a)\|=\|\sigma_{is}(a)\|\)">\(\|\sigma_{t+is}(a)\|=\|\sigma_{is}(a)\|\)</span>.
+Pass once more through the GNS graph theorem. This proves (CX.13–14) on the full stated domain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="three-motions-and-their-analytic-domains">Three motions and their analytic domains</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\alpha_t(x)=u_t\sigma_t(x)u_t^*,\qquad
+\rho_t(x)=u_t\sigma_t(x),\qquad
+V_t=u_t\Delta^{it}.
+\tag{CX.16}
+\]">\[
+\alpha_t(x)=u_t\sigma_t(x)u_t^*,\qquad
+\rho_t(x)=u_t\sigma_t(x),\qquad
+V_t=u_t\Delta^{it}.
+\tag{CX.16}
+\]</span>
+<p>The first is a strongly* continuous group of normal *-automorphisms of <span class="math" data-tex="\(M\)">\(M\)</span>. The second is a group of linear isometries of <span class="math" data-tex="\(M\)">\(M\)</span>, continuous in the strong* topology on each orbit. The third is a strongly continuous unitary group on <span class="math" data-tex="\(H\)">\(H\)</span>. Every group law follows by inserting (CX.2); no commutation of <span class="math" data-tex="\(u_t\)">\(u_t\)</span> with <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is asserted.</p>
+<p>The real identities</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_t(bxa)&amp;=\alpha_t(b)\rho_t(x)\sigma_t(a),\\
+\sigma_t(x^*y)&amp;=\rho_t(x)^*\rho_t(y),\\
+\alpha_t(xy^*)&amp;=\rho_t(x)\rho_t(y)^*
+\end{aligned}
+\tag{CX.17}
+\]">\[
+\begin{aligned}
+\rho_t(bxa)&amp;=\alpha_t(b)\rho_t(x)\sigma_t(a),\\
+\sigma_t(x^*y)&amp;=\rho_t(x)^*\rho_t(y),\\
+\alpha_t(xy^*)&amp;=\rho_t(x)\rho_t(y)^*
+\end{aligned}
+\tag{CX.17}
+\]</span>
+<p>will also be used at complex parameters, with conjugated parameters wherever a star occurs. Since <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> preserves <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\rho_t(\mathfrak n)=\mathfrak n,\qquad
+\Lambda(\rho_t(x))=V_t\Lambda(x),\qquad
+\|\Lambda(\rho_t(x))\|=\|\Lambda(x)\|.
+\tag{CX.18}
+\]">\[
+\rho_t(\mathfrak n)=\mathfrak n,\qquad
+\Lambda(\rho_t(x))=V_t\Lambda(x),\qquad
+\|\Lambda(\rho_t(x))\|=\|\Lambda(x)\|.
+\tag{CX.18}
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal A,\mathcal B,\mathcal C\)">\(\mathcal A,\mathcal B,\mathcal C\)</span> be the entire elements for <span class="math" data-tex="\(\sigma,\alpha,\rho\)">\(\sigma,\alpha,\rho\)</span>, respectively, with operator-norm entire continuations. The first two are *-algebras and the third is a linear space. Each is sigma-strong* dense in <span class="math" data-tex="\(M\)">\(M\)</span>: Gaussian averages of any orbit are entire and tend to the original element. The norm integral construction uses the Gaussian kernel in <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>, interpreted as a strong* operator integral before differentiating in operator norm.</p>
+<p>Complex continuation of (CX.17) gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal B\mathcal C\mathcal A\subseteq\mathcal C,\qquad
+\mathcal C^*\mathcal C\subseteq\mathcal A,\qquad
+\mathcal C\mathcal C^*\subseteq\mathcal B,
+\tag{CX.19}
+\]">\[
+\mathcal B\mathcal C\mathcal A\subseteq\mathcal C,\qquad
+\mathcal C^*\mathcal C\subseteq\mathcal A,\qquad
+\mathcal C\mathcal C^*\subseteq\mathcal B,
+\tag{CX.19}
+\]</span>
+<p>and, for <span class="math" data-tex="\(x,y\in\mathcal C\)">\(x,y\in\mathcal C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sigma_z(x^*y)=\rho_{\bar z}(x)^*\rho_z(y),
+\qquad
+\alpha_z(xy^*)=\rho_z(x)\rho_{\bar z}(y)^*.
+\tag{CX.20}
+\]">\[
+\sigma_z(x^*y)=\rho_{\bar z}(x)^*\rho_z(y),
+\qquad
+\alpha_z(xy^*)=\rho_z(x)\rho_{\bar z}(y)^*.
+\tag{CX.20}
+\]</span>
+<p>For example the second expression is norm-entire in <span class="math" data-tex="\(z\)">\(z\)</span>, agrees with the real orbit and therefore is its unique entire extension. The complex group identities follow by applying uniqueness successively in the parameters.</p>
+<p>The domain used for reconstruction is</p>
+<span class="math math-display" data-tex="\[
+\mathcal E=\{x\in\mathcal C:
+\rho_z(x)\in\mathfrak n\text{ for every }z\in\mathbb C\}.
+\tag{CX.21}
+\]">\[
+\mathcal E=\{x\in\mathcal C:
+\rho_z(x)\in\mathfrak n\text{ for every }z\in\mathbb C\}.
+\tag{CX.21}
+\]</span>
+<p>The GNS vector map <span class="math" data-tex="\(z\mapsto\Lambda(\rho_z(x))\)">\(z\mapsto\Lambda(\rho_z(x))\)</span> is norm-entire for every <span class="math" data-tex="\(x\in\mathcal E\)">\(x\in\mathcal E\)</span>. This implication deserves a proof.</p>
+<p>For a right-bounded vector <span class="math" data-tex="\(\theta\)">\(\theta\)</span> in the full right Hilbert algebra, let <span class="math" data-tex="\(R_\theta\)">\(R_\theta\)</span> be its bounded right multiplier. WH's mixed multiplication identity gives</p>
+<span class="math math-display" data-tex="\[
+R_\theta\Lambda(\rho_z(x))=\rho_z(x)\theta.
+\tag{CX.22}
+\]">\[
+R_\theta\Lambda(\rho_z(x))=\rho_z(x)\theta.
+\tag{CX.22}
+\]</span>
+<p>Consequently all scalar tests against vectors <span class="math" data-tex="\(R_\theta^*\eta\)">\(R_\theta^*\eta\)</span> are entire and bounded on finite horizontal strips. The linear span of these test vectors is dense: its orthogonal complement is the common kernel of the right multipliers, which is zero by nondegeneracy of the full right algebra.</p>
+<p>For real <span class="math" data-tex="\(t,s\)">\(t,s\)</span>, (CX.18) and the complex group law give</p>
+<span class="math math-display" data-tex="\[
+\Lambda(\rho_{t+is}(x))=V_t\Lambda(\rho_{is}(x)).
+\tag{CX.23}
+\]">\[
+\Lambda(\rho_{t+is}(x))=V_t\Lambda(\rho_{is}(x)).
+\tag{CX.23}
+\]</span>
+<p>Fix two imaginary levels <span class="math" data-tex="\(s_0&lt;s_1\)">\(s_0&lt;s_1\)</span>. On each boundary the dense scalar tests in (CX.22) have bound
+<span class="math" data-tex="\(\|\Lambda(\rho_{is_j}(x))\|\)">\(\|\Lambda(\rho_{is_j}(x))\|\)</span> times the test-vector norm. Apply the bounded-strip maximum principle to each test. Taking the supremum over the dense test space proves the same maximum norm bound for the GNS vectors throughout the strip. Thus they are locally norm bounded. Approximation of arbitrary test vectors, followed by the Cauchy coefficient argument of MA-14, proves norm holomorphy. This supplies the analytic GNS conclusion from exactly the membership requirement in (CX.21).</p>
+<p>The domain <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> is invariant under every <span class="math" data-tex="\(\rho_z\)">\(\rho_z\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal B\mathcal E\mathcal A\subseteq\mathcal E.
+\tag{CX.24}
+\]">\[
+\mathcal B\mathcal E\mathcal A\subseteq\mathcal E.
+\tag{CX.24}
+\]</span>
+<p>Indeed (CX.17) at complex parameters uses left-ideal covariance and the full right multiplier lemma (CX.13) for the factor <span class="math" data-tex="\(\sigma_z(a)\)">\(\sigma_z(a)\)</span>. All domains are therefore present; it would not suffice here to know right multiplication only on the finite-star algebra.</p>
+<p>There is also a two-sided *-ideal on the reference side:</p>
+<span class="math math-display" data-tex="\[
+\mathcal J_0=\operatorname{span}\{x^*y:x,y\in\mathcal E\}
+\quad\text{is an ideal of }\mathcal A.
+\tag{CX.24a}
+\]">\[
+\mathcal J_0=\operatorname{span}\{x^*y:x,y\in\mathcal E\}
+\quad\text{is an ideal of }\mathcal A.
+\tag{CX.24a}
+\]</span>
+<p>Right multiplication by <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span> acts on the second factor through <span class="math" data-tex="\(\mathcal E\mathcal A\subseteq\mathcal E\)">\(\mathcal E\mathcal A\subseteq\mathcal E\)</span>; left multiplication is the adjoint of the same assertion for <span class="math" data-tex="\(a^*\)">\(a^*\)</span>. Taking adjoints interchanges the two factors. Formula (CX.20) also makes this ideal invariant under every <span class="math" data-tex="\(\sigma_z\)">\(\sigma_z\)</span>. The corresponding ideal on the other side is constructed next.</p>
+<h2 id="gaussian-elements-supply-all-required-densities">Gaussian elements supply all required densities</h2>
+<p>For <span class="math" data-tex="\(x\in\mathfrak n\)">\(x\in\mathfrak n\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+x_r=\sqrt{r/\pi}\int_{\mathbb R}e^{-rt^2}\rho_t(x)\,dt .
+\tag{CX.25}
+\]">\[
+x_r=\sqrt{r/\pi}\int_{\mathbb R}e^{-rt^2}\rho_t(x)\,dt .
+\tag{CX.25}
+\]</span>
+<p>For every complex <span class="math" data-tex="\(z\)">\(z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_z(x_r)&amp;=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-r(t-z)^2}\rho_t(x)\,dt,\\
+\Lambda(\rho_z(x_r))&amp;=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-r(t-z)^2}V_t\Lambda(x)\,dt.
+\end{aligned}
+\tag{CX.26}
+\]">\[
+\begin{aligned}
+\rho_z(x_r)&amp;=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-r(t-z)^2}\rho_t(x)\,dt,\\
+\Lambda(\rho_z(x_r))&amp;=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-r(t-z)^2}V_t\Lambda(x)\,dt.
+\end{aligned}
+\tag{CX.26}
+\]</span>
+<p>The first integral is a strong* operator integral and the second is a Hilbert norm integral. To prove their compatibility, use the same finite Riemann sums. They lie in the graph of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, are uniformly bounded in operator norm by the scalar absolute-integral bound, and converge in the two stated topologies. NW-12 puts the limiting pair in that graph. Thus <span class="math" data-tex="\(x_r\in\mathcal E\)">\(x_r\in\mathcal E\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\|\rho_z(x_r)\|\leq e^{r(\operatorname{Im}z)^2}\|x\|,
+\qquad
+\|\Lambda(\rho_z(x_r))\|
+\leq e^{r(\operatorname{Im}z)^2}\|\Lambda(x)\|.
+\tag{CX.27}
+\]">\[
+\|\rho_z(x_r)\|\leq e^{r(\operatorname{Im}z)^2}\|x\|,
+\qquad
+\|\Lambda(\rho_z(x_r))\|
+\leq e^{r(\operatorname{Im}z)^2}\|\Lambda(x)\|.
+\tag{CX.27}
+\]</span>
+<p>Differentiation of the Gaussian under its locally uniform integrable bounds proves norm-entire dependence in each norm.</p>
+<p>As <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+x_r\to x\ \hbox{strongly*},\qquad
+\Lambda(x_r)\to\Lambda(x)\ \hbox{in norm},\qquad
+\|x_r\|\leq\|x\|.
+\tag{CX.28}
+\]">\[
+x_r\to x\ \hbox{strongly*},\qquad
+\Lambda(x_r)\to\Lambda(x)\ \hbox{in norm},\qquad
+\|x_r\|\leq\|x\|.
+\tag{CX.28}
+\]</span>
+<p>The first limit uses strong* continuity of the orbit on each test vector; the second uses strong continuity of <span class="math" data-tex="\(V_t\)">\(V_t\)</span>. Both are the ordinary approximate-identity estimate for a positive Gaussian of integral one.</p>
+<p>It follows that <span class="math" data-tex="\(\Lambda(\mathcal E)\)">\(\Lambda(\mathcal E)\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>. There is also a net <span class="math" data-tex="\(e_j\in\mathcal E\)">\(e_j\in\mathcal E\)</span>, <span class="math" data-tex="\(\|e_j\|\leq1\)">\(\|e_j\|\leq1\)</span>, tending strongly* to <span class="math" data-tex="\(1\)">\(1\)</span>. To construct it, take the finite positive contractions <span class="math" data-tex="\(f_i\to1\)">\(f_i\to1\)</span> from WG-008, and approximate each <span class="math" data-tex="\(f_i\)">\(f_i\)</span> by (CX.25) on each prescribed finite set of strong* tests to any prescribed tolerance. Direct the finite test sets and tolerances, and choose the two successive approximations. This is a bounded net; no countable strong* dense set is presumed.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\mathcal I=\operatorname{span}\{xy^*:x,y\in\mathcal E\}.
+\tag{CX.29}
+\]">\[
+\mathcal I=\operatorname{span}\{xy^*:x,y\in\mathcal E\}.
+\tag{CX.29}
+\]</span>
+<p>It is a *-ideal of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and is stable under every <span class="math" data-tex="\(\alpha_z\)">\(\alpha_z\)</span>, by (CX.20) and (CX.24). It is in particular a *-algebra. Its represented operator algebra is nondegenerate and has bicommutant <span class="math" data-tex="\(M\)">\(M\)</span>. For detail, <span class="math" data-tex="\(e_je_j^*\in\mathcal I\)">\(e_je_j^*\in\mathcal I\)</span> tends strongly to <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(b\in\mathcal B\)">\(b\in\mathcal B\)</span>, then <span class="math" data-tex="\(be_je_j^*\in\mathcal I\)">\(be_je_j^*\in\mathcal I\)</span> and tends strongly to <span class="math" data-tex="\(b\)">\(b\)</span>. The strong closure of <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> therefore contains the sigma-strong* dense algebra <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and equals <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="constructing-the-new-gns-map">Constructing the new GNS map</h2>
+<p>For a finite sum in <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, propose</p>
+<span class="math math-display" data-tex="\[
+\eta\!\left(\sum_{k=1}^n x_ky_k^*\right)
+=\sum_{k=1}^n x_kJ\Lambda(\rho_{-i/2}(y_k)).
+\tag{CX.30}
+\]">\[
+\eta\!\left(\sum_{k=1}^n x_ky_k^*\right)
+=\sum_{k=1}^n x_kJ\Lambda(\rho_{-i/2}(y_k)).
+\tag{CX.30}
+\]</span>
+<p>The map is well-defined, linear and injective, and its range is dense in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof of well-definedness.</strong> Write <span class="math" data-tex="\(r(x)=\rho_{-i/2}(x)\)">\(r(x)=\rho_{-i/2}(x)\)</span>. If
+<span class="math" data-tex="\(z=\sum_kx_ky_k^*\)">\(z=\sum_kx_ky_k^*\)</span>, expand the squared norm of the proposed vector. Antiunitarity of <span class="math" data-tex="\(J\)">\(J\)</span>, followed by (CX.13), gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left\|\sum_kx_kJ\Lambda(r(y_k))\right\|^2
+&amp;=\sum_{j,k}
+\langle\Lambda(r(y_j)),
+Jx_j^*x_kJ\Lambda(r(y_k))\rangle\\
+&amp;=\sum_{j,k}
+\langle\Lambda(r(y_j)),
+\Lambda(r(y_k)\sigma_{-i/2}(x_k^*x_j))\rangle\\
+&amp;=\sum_j\langle\Lambda(r(y_j)),\Lambda(r(z^*x_j))\rangle .
+\end{aligned}
+\tag{CX.31}
+\]">\[
+\begin{aligned}
+\left\|\sum_kx_kJ\Lambda(r(y_k))\right\|^2
+&amp;=\sum_{j,k}
+\langle\Lambda(r(y_j)),
+Jx_j^*x_kJ\Lambda(r(y_k))\rangle\\
+&amp;=\sum_{j,k}
+\langle\Lambda(r(y_j)),
+\Lambda(r(y_k)\sigma_{-i/2}(x_k^*x_j))\rangle\\
+&amp;=\sum_j\langle\Lambda(r(y_j)),\Lambda(r(z^*x_j))\rangle .
+\end{aligned}
+\tag{CX.31}
+\]</span>
+<p>The analytic element <span class="math" data-tex="\(x_k^*x_j\)">\(x_k^*x_j\)</span> belongs to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, by (CX.19). The last product uses the first identity of (CX.17). Moreover <span class="math" data-tex="\(z^*x_j\in\mathcal E\)">\(z^*x_j\in\mathcal E\)</span>, by (CX.24). Thus every term has its stated finite domain. If <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, the final sum is zero. Applying this to the difference of two presentations proves well-definedness. Linearity now follows from the formula, noting that <span class="math" data-tex="\(y\mapsto J\Lambda(r(y))\)">\(y\mapsto J\Lambda(r(y))\)</span> is conjugate-linear, as is <span class="math" data-tex="\(y\mapsto y^*\)">\(y\mapsto y^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in\mathcal B\)">\(b\in\mathcal B\)</span> and <span class="math" data-tex="\(z\in\mathcal I\)">\(z\in\mathcal I\)</span>, the formula gives</p>
+<span class="math math-display" data-tex="\[
+\eta(bz)=b\eta(z),\qquad
+\eta(zb)=J\alpha_{-i/2}(b^*)J\eta(z).
+\tag{CX.32}
+\]">\[
+\eta(bz)=b\eta(z),\qquad
+\eta(zb)=J\alpha_{-i/2}(b^*)J\eta(z).
+\tag{CX.32}
+\]</span>
+<p>For the second identity it is enough to set <span class="math" data-tex="\(z=xy^*\)">\(z=xy^*\)</span>, write <span class="math" data-tex="\(zb=x(b^*y)^*\)">\(zb=x(b^*y)^*\)</span>, and use
+<span class="math" data-tex="\(\rho_{-i/2}(b^*y)=\alpha_{-i/2}(b^*)\rho_{-i/2}(y)\)">\(\rho_{-i/2}(b^*y)=\alpha_{-i/2}(b^*)\rho_{-i/2}(y)\)</span>.
+Conjugation by <span class="math" data-tex="\(J\)">\(J\)</span> puts the bounded factor in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, so it commutes with <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(y\in\mathcal E\)">\(y\in\mathcal E\)</span>, the contractions of CX-05 give</p>
+<span class="math math-display" data-tex="\[
+\eta(e_jy^*)\to J\Lambda(\rho_{-i/2}(y)).
+\tag{CX.33}
+\]">\[
+\eta(e_jy^*)\to J\Lambda(\rho_{-i/2}(y)).
+\tag{CX.33}
+\]</span>
+<p>The vectors on the right form a dense set because <span class="math" data-tex="\(\rho_{-i/2}\mathcal E=\mathcal E\)">\(\rho_{-i/2}\mathcal E=\mathcal E\)</span> and <span class="math" data-tex="\(\Lambda(\mathcal E)\)">\(\Lambda(\mathcal E)\)</span> is dense. Hence <span class="math" data-tex="\(\eta(\mathcal I)\)">\(\eta(\mathcal I)\)</span> is dense. Finally, if <span class="math" data-tex="\(\eta(z)=0\)">\(\eta(z)=0\)</span>, apply (CX.32) with <span class="math" data-tex="\(b\in\mathcal I\)">\(b\in\mathcal I\)</span>. It gives <span class="math" data-tex="\(z\eta(b)=\eta(zb)=0\)">\(z\eta(b)=\eta(zb)=0\)</span>. Density of the range forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. This proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-conjugation-identity-makes-a-hilbert-algebra">The conjugation identity makes a Hilbert algebra</h2>
+<p>Transfer multiplication and adjoint from <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> to
+<span class="math" data-tex="\(\mathcal H_0=\eta(\mathcal I)\)">\(\mathcal H_0=\eta(\mathcal I)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\eta(z)\eta(w)=\eta(zw),\qquad
+\eta(z)^\sharp=\eta(z^*).
+\tag{CX.34}
+\]">\[
+\eta(z)\eta(w)=\eta(zw),\qquad
+\eta(z)^\sharp=\eta(z^*).
+\tag{CX.34}
+\]</span>
+<p>These operations are well-defined by injectivity. Left multiplication by <span class="math" data-tex="\(\eta(z)\)">\(\eta(z)\)</span> is exactly the bounded operator <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span>; its adjoint is left multiplication by <span class="math" data-tex="\(\eta(z^*)\)">\(\eta(z^*)\)</span>, using the Hilbert inner product.</p>
+<p>Define the complex algebraic action</p>
+<span class="math math-display" data-tex="\[
+W_z\eta(b)=\eta(\alpha_z(b)),\qquad b\in\mathcal I.
+\tag{CX.35}
+\]">\[
+W_z\eta(b)=\eta(\alpha_z(b)),\qquad b\in\mathcal I.
+\tag{CX.35}
+\]</span>
+<p>For <span class="math" data-tex="\(b=xy^*\)">\(b=xy^*\)</span>, formula (CX.30) becomes</p>
+<span class="math math-display" data-tex="\[
+W_z\eta(xy^*)
+=\rho_z(x)J\Lambda(\rho_{\bar z-i/2}(y)).
+\tag{CX.36}
+\]">\[
+W_z\eta(xy^*)
+=\rho_z(x)J\Lambda(\rho_{\bar z-i/2}(y)).
+\tag{CX.36}
+\]</span>
+<p>This is norm-entire: the first factor is operator-norm entire, and the two conjugations in the second factor turn its antiholomorphic parameter into a holomorphic vector. For real <span class="math" data-tex="\(t\)">\(t\)</span>, it is the restriction of the explicit unitary</p>
+<span class="math math-display" data-tex="\[
+K_t=u_tJu_tJ\Delta^{it}.
+\tag{CX.37}
+\]">\[
+K_t=u_tJu_tJ\Delta^{it}.
+\tag{CX.37}
+\]</span>
+<p>Indeed insert <span class="math" data-tex="\(\rho_t(x)=u_t\sigma_t(x)\)">\(\rho_t(x)=u_t\sigma_t(x)\)</span> and
+<span class="math" data-tex="\(\Lambda(\rho_{t-i/2}(y))=u_t\Delta^{it}\Lambda(\rho_{-i/2}(y))\)">\(\Lambda(\rho_{t-i/2}(y))=u_t\Delta^{it}\Lambda(\rho_{-i/2}(y))\)</span>
+in (CX.36), and commute the <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>-factor <span class="math" data-tex="\(Ju_tJ\)">\(Ju_tJ\)</span> past the <span class="math" data-tex="\(M\)">\(M\)</span>-factor <span class="math" data-tex="\(\sigma_t(x)\)">\(\sigma_t(x)\)</span>. The cocycle law proves that <span class="math" data-tex="\(K_sK_t=K_{s+t}\)">\(K_sK_t=K_{s+t}\)</span>; <span class="math" data-tex="\(J\Delta^{it}=\Delta^{it}J\)">\(J\Delta^{it}=\Delta^{it}J\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> commutes with <span class="math" data-tex="\(JMJ\)">\(JMJ\)</span> in that calculation. The group is strongly continuous.</p>
+<p>The decisive imaginary-time identity is</p>
+<span class="math math-display" data-tex="\[
+W_{-i/2}\eta(b)=J\eta(b^*)\qquad(b\in\mathcal I).
+\tag{CX.38}
+\]">\[
+W_{-i/2}\eta(b)=J\eta(b^*)\qquad(b\in\mathcal I).
+\tag{CX.38}
+\]</span>
+<p>For <span class="math" data-tex="\(b=xy^*\)">\(b=xy^*\)</span>, the left side of (CX.38) is
+<span class="math" data-tex="\(\rho_{-i/2}(x)J\Lambda(y)\)">\(\rho_{-i/2}(x)J\Lambda(y)\)</span>.
+The right side is
+<span class="math" data-tex="\(JyJ\Lambda(\rho_{-i/2}(x))\)">\(JyJ\Lambda(\rho_{-i/2}(x))\)</span>.
+These are equal by the full-domain symmetry (CX.12). Linearity gives the identity for every finite sum.</p>
+<p>Apply CX-02 to <span class="math" data-tex="\(K_t\)">\(K_t\)</span> on the dense invariant space <span class="math" data-tex="\(\mathcal H_0\)">\(\mathcal H_0\)</span>. The positive self-adjoint operator</p>
+<span class="math math-display" data-tex="\[
+Q=\overline{W_{-i/2}|_{\mathcal H_0}}
+\]">\[
+Q=\overline{W_{-i/2}|_{\mathcal H_0}}
+\]</span>
+<p>is injective, and (CX.38) gives</p>
+<span class="math math-display" data-tex="\[
+S_0\eta(b)=\eta(b^*)=JW_{-i/2}\eta(b),\qquad
+\overline{S_0}=JQ.
+\tag{CX.39}
+\]">\[
+S_0\eta(b)=\eta(b^*)=JW_{-i/2}\eta(b),\qquad
+\overline{S_0}=JQ.
+\tag{CX.39}
+\]</span>
+<p>Thus the involution is closable. Its closed graph is invariant under interchange of its two coordinates, since the initial graph has that property; hence its closure is an involution on its actual range domain.</p>
+<p>Products are dense in <span class="math" data-tex="\(H\)">\(H\)</span>. If <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is orthogonal to all <span class="math" data-tex="\(\eta(zw)=z\eta(w)\)">\(\eta(zw)=z\eta(w)\)</span>, then <span class="math" data-tex="\(z^*\xi=0\)">\(z^*\xi=0\)</span> for every <span class="math" data-tex="\(z\in\mathcal I\)">\(z\in\mathcal I\)</span>, because <span class="math" data-tex="\(\eta(\mathcal I)\)">\(\eta(\mathcal I)\)</span> is dense. Nondegeneracy of <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> gives <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. We have now verified every left Hilbert-algebra axiom: dense vector space, bounded left multiplication, its adjoint identity, dense products and closable involution.</p>
+<p>The closed involution has polar conjugation <span class="math" data-tex="\(J\)">\(J\)</span> and positive part <span class="math" data-tex="\(Q\)">\(Q\)</span>, literally on the present Hilbert space. No standard-form identification has been inserted. The algebraic action <span class="math" data-tex="\(W_z\)">\(W_z\)</span> has the adjoint and star identities obtained by continuation from real <span class="math" data-tex="\(t\)">\(t\)</span>. Equation (CX.38) gives its modular inner-product identity; equivalently, (CX.39) and CX-02 identify its modular data directly:</p>
+<span class="math math-display" data-tex="\[
+\Delta_0=Q^2,\qquad \Delta_0^{it}=K_t.
+\tag{CX.40}
+\]">\[
+\Delta_0=Q^2,\qquad \Delta_0^{it}=K_t.
+\tag{CX.40}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mathcal H_0\)">\(\mathcal H_0\)</span> is a Tomita algebra, and is a graph core for every real modular power by CX-02.</p>
+<h2 id="the-weight-obtained-from-the-completed-algebra">The weight obtained from the completed algebra</h2>
+<p>Apply WH's full Hilbert-algebra-to-weight construction to <span class="math" data-tex="\(\mathcal H_0\)">\(\mathcal H_0\)</span>. Its generated left von Neumann algebra is <span class="math" data-tex="\(\mathcal I&#x27;&#x27;=M\)">\(\mathcal I&#x27;&#x27;=M\)</span>. It supplies a faithful normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, on this very algebra, whose GNS Hilbert space can be identified with <span class="math" data-tex="\(H\)">\(H\)</span> and whose GNS map satisfies</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\psi(z)=\eta(z)\qquad(z\in\mathcal I).
+\tag{CX.41}
+\]">\[
+\Lambda_\psi(z)=\eta(z)\qquad(z\in\mathcal I).
+\tag{CX.41}
+\]</span>
+<p>Here the assertion includes <span class="math" data-tex="\(\mathcal I\subseteq
+\mathfrak n_\psi\cap\mathfrak n_\psi^*\)">\(\mathcal I\subseteq
+\mathfrak n_\psi\cap\mathfrak n_\psi^*\)</span>, the precise finite-domain identities of WH, and normality for arbitrary increasing positive nets. There is no finiteness assertion about <span class="math" data-tex="\(\psi(1)\)">\(\psi(1)\)</span>.</p>
+<p>The full completion retains the closed involution and generated algebra. MF and (CX.40) therefore give</p>
+<span class="math math-display" data-tex="\[
+J_\psi=J,\qquad
+\Delta_\psi^{it}=K_t,\qquad
+\sigma_t^\psi=\alpha_t.
+\tag{CX.42}
+\]">\[
+J_\psi=J,\qquad
+\Delta_\psi^{it}=K_t,\qquad
+\sigma_t^\psi=\alpha_t.
+\tag{CX.42}
+\]</span>
+<p>The last identity follows because the factor <span class="math" data-tex="\(Ju_tJ\)">\(Ju_tJ\)</span> in (CX.37) commutes with <span class="math" data-tex="\(M\)">\(M\)</span>. It includes invariance of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on the entire positive cone, finite or infinite.</p>
+<p>A second exact finite-domain statement is</p>
+<span class="math math-display" data-tex="\[
+\mathcal E^*\subseteq\mathfrak n_\psi,\qquad
+\Lambda_\psi(y^*)=J\Lambda(\rho_{-i/2}(y))
+\quad(y\in\mathcal E).
+\tag{CX.43}
+\]">\[
+\mathcal E^*\subseteq\mathfrak n_\psi,\qquad
+\Lambda_\psi(y^*)=J\Lambda(\rho_{-i/2}(y))
+\quad(y\in\mathcal E).
+\tag{CX.43}
+\]</span>
+<p>To prove it, use <span class="math" data-tex="\(e_j\in\mathcal E\)">\(e_j\in\mathcal E\)</span> from CX-05. Then <span class="math" data-tex="\(e_jy^*\in\mathcal I\)">\(e_jy^*\in\mathcal I\)</span>, these elements are uniformly bounded and tend strongly to <span class="math" data-tex="\(y^*\)">\(y^*\)</span>, and their GNS vectors, by (CX.33) and (CX.41), converge in norm to the stated vector. The GNS graph theorem NW-12 applies to <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. It proves membership as well as the vector equality. This is the point where the finite mixed domain of the forthcoming relative operator becomes concrete.</p>
+<p>Knowing only the final modular automorphism identity in (CX.42) would not yet prove reconstruction of the prescribed cocycle. We identify the relative operator next.</p>
+<h2 id="the-entire-mixed-relative-graph-is-recovered">The entire mixed relative graph is recovered</h2>
+<p>SI-12 constructs the densely defined closed relative map</p>
+<span class="math math-display" data-tex="\[
+T=\overline{T_0},\qquad
+T_0\Lambda(x)=\Lambda_\psi(x^*),\quad
+x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*.
+\tag{CX.44}
+\]">\[
+T=\overline{T_0},\qquad
+T_0\Lambda(x)=\Lambda_\psi(x^*),\quad
+x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*.
+\tag{CX.44}
+\]</span>
+<p>The source and target are the two specified GNS Hilbert spaces; the identification (CX.41) now places both on <span class="math" data-tex="\(H\)">\(H\)</span>. We will show that <span class="math" data-tex="\(\Lambda(\mathcal E)\)">\(\Lambda(\mathcal E)\)</span> is a core for this full operator. Merely showing that it is dense in <span class="math" data-tex="\(H\)">\(H\)</span> would not suffice.</p>
+<p>For a mixed finite element <span class="math" data-tex="\(x\)">\(x\)</span>, (CX.18) shows that <span class="math" data-tex="\(\rho_t(x)\in\mathfrak n_\varphi\)">\(\rho_t(x)\in\mathfrak n_\varphi\)</span>. On the other side,</p>
+<span class="math math-display" data-tex="\[
+\rho_t(x)^*=u_t^*\alpha_t(x^*)\in\mathfrak n_\psi,
+\tag{CX.45}
+\]">\[
+\rho_t(x)^*=u_t^*\alpha_t(x^*)\in\mathfrak n_\psi,
+\tag{CX.45}
+\]</span>
+<p>because <span class="math" data-tex="\(\alpha=\sigma^\psi\)">\(\alpha=\sigma^\psi\)</span> preserves that ideal. Its two GNS orbit vectors are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda(\rho_t(x))&amp;=V_t\Lambda(x),\\
+\Lambda_\psi(\rho_t(x)^*)&amp;=u_t^*\Delta_\psi^{it}\Lambda_\psi(x^*).
+\end{aligned}
+\tag{CX.46}
+\]">\[
+\begin{aligned}
+\Lambda(\rho_t(x))&amp;=V_t\Lambda(x),\\
+\Lambda_\psi(\rho_t(x)^*)&amp;=u_t^*\Delta_\psi^{it}\Lambda_\psi(x^*).
+\end{aligned}
+\tag{CX.46}
+\]</span>
+<p>Both are strongly continuous unitary orbits. In fact <span class="math" data-tex="\(u_t^*\)">\(u_t^*\)</span> is an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-cocycle, since</p>
+<span class="math math-display" data-tex="\[
+u_s^*\alpha_s(u_t^*)=\sigma_s(u_t^*)u_s^*=u_{s+t}^*,
+\]">\[
+u_s^*\alpha_s(u_t^*)=\sigma_s(u_t^*)u_s^*=u_{s+t}^*,
+\]</span>
+<p>so the unitaries in the second line form a group.</p>
+<p>Take the Gaussian <span class="math" data-tex="\(x_r\)">\(x_r\)</span> from (CX.25), using this mixed <span class="math" data-tex="\(x\)">\(x\)</span>. It belongs to <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, by CX-05. Applying the GNS graph theorem for both weights to the same Riemann sums gives, in addition to (CX.26),</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\psi(x_r^*)
+=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-rt^2}u_t^*\Delta_\psi^{it}\Lambda_\psi(x^*)\,dt.
+\tag{CX.47}
+\]">\[
+\Lambda_\psi(x_r^*)
+=\sqrt{r/\pi}\int_{\mathbb R}
+e^{-rt^2}u_t^*\Delta_\psi^{it}\Lambda_\psi(x^*)\,dt.
+\tag{CX.47}
+\]</span>
+<p>The scalar Gaussian here is real; taking adjoints of the finite sums therefore introduces no parameter ambiguity. The two strongly continuous unitary orbits give</p>
+<span class="math math-display" data-tex="\[
+\Lambda(x_r)\to\Lambda(x),\qquad
+\Lambda_\psi(x_r^*)\to\Lambda_\psi(x^*)
+\quad\hbox{in norm}.
+\tag{CX.48}
+\]">\[
+\Lambda(x_r)\to\Lambda(x),\qquad
+\Lambda_\psi(x_r^*)\to\Lambda_\psi(x^*)
+\quad\hbox{in norm}.
+\tag{CX.48}
+\]</span>
+<p>Thus every pair in the initial graph (CX.44) is a norm limit of graph pairs with <span class="math" data-tex="\(x_r\in\mathcal E\)">\(x_r\in\mathcal E\)</span>. Since that initial graph is itself a core for <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(\Lambda(\mathcal E)\)">\(\Lambda(\mathcal E)\)</span> is a core for <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>On this smaller graph, (CX.43) gives</p>
+<span class="math math-display" data-tex="\[
+T\Lambda(y)=J\Lambda(\rho_{-i/2}(y))
+\qquad(y\in\mathcal E).
+\tag{CX.49}
+\]">\[
+T\Lambda(y)=J\Lambda(\rho_{-i/2}(y))
+\qquad(y\in\mathcal E).
+\tag{CX.49}
+\]</span>
+<p>Apply CX-02 to the unitary group <span class="math" data-tex="\(V_t=u_t\Delta^{it}\)">\(V_t=u_t\Delta^{it}\)</span> on
+<span class="math" data-tex="\(\mathcal D=\Lambda(\mathcal E)\)">\(\mathcal D=\Lambda(\mathcal E)\)</span>. Its complex action is the norm-entire GNS continuation proved in CX-04; faithfulness of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, (CX.21) and its translation invariance make this an algebraic group on <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. We obtain a positive injective self-adjoint <span class="math" data-tex="\(P\)">\(P\)</span> with</p>
+<span class="math math-display" data-tex="\[
+P=\overline{\Lambda(y)\mapsto
+\Lambda(\rho_{-i/2}(y))},\qquad
+V_t=P^{2it}.
+\tag{CX.50}
+\]">\[
+P=\overline{\Lambda(y)\mapsto
+\Lambda(\rho_{-i/2}(y))},\qquad
+V_t=P^{2it}.
+\tag{CX.50}
+\]</span>
+<p>Taking graph closures in (CX.49), using the just proved core assertion, yields the exact operator identities</p>
+<span class="math math-display" data-tex="\[
+T=JP,\qquad T^*T=P^2,\qquad
+(T^*T)^{it}=u_t\Delta^{it}.
+\tag{CX.51}
+\]">\[
+T=JP,\qquad T^*T=P^2,\qquad
+(T^*T)^{it}=u_t\Delta^{it}.
+\tag{CX.51}
+\]</span>
+<p>In particular <span class="math" data-tex="\(D(T)=D(P)\)">\(D(T)=D(P)\)</span>. Equality here follows from equality of graph closures on a demonstrated common core. It is not inferred from agreement of coefficient formulas on a merely dense vector set.</p>
+<h2 id="existence-uniqueness-and-the-prescribed-cocycle"><span id="OA-MOD-CX-10"></span><span id="oa-mod-cx-10"></span>Existence, uniqueness and the prescribed cocycle</h2>
+<p><strong>Theorem.</strong> Every unitary modular cocycle satisfying (CX.2) is the balanced-matrix cocycle of a unique faithful normal semifinite weight:</p>
+<span class="math math-display" data-tex="\[
+[D\psi:D\varphi]_t=u_t\qquad(t\in\mathbb R).
+\tag{CX.52}
+\]">\[
+[D\psi:D\varphi]_t=u_t\qquad(t\in\mathbb R).
+\tag{CX.52}
+\]</span>
+<p>Its modular group is <span class="math" data-tex="\(x\mapsto u_t\sigma_t^\varphi(x)u_t^*\)">\(x\mapsto u_t\sigma_t^\varphi(x)u_t^*\)</span>.</p>
+<p><strong>Proof of existence.</strong> Represent <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>, and put the opposite weight <span class="math" data-tex="\(\varphi^{\mathrm{opp}}\)">\(\varphi^{\mathrm{opp}}\)</span> on its commutant, as in SI-02. The ordinary relative identification SI-12 gives</p>
+<span class="math math-display" data-tex="\[
+\frac{d\psi}{d\varphi^{\mathrm{opp}}}=T^*T=P^2,\qquad
+\frac{d\varphi}{d\varphi^{\mathrm{opp}}}=\Delta.
+\tag{CX.53}
+\]">\[
+\frac{d\psi}{d\varphi^{\mathrm{opp}}}=T^*T=P^2,\qquad
+\frac{d\varphi}{d\varphi^{\mathrm{opp}}}=\Delta.
+\tag{CX.53}
+\]</span>
+<p>The latter is the same identification with identical weights and the ordinary closed Tomita map. SI-14's spatial formula for the balanced-matrix cocycle and (CX.51) now give</p>
+<span class="math math-display" data-tex="\[
+[D\psi:D\varphi]_t
+=P^{2it}\Delta^{-it}
+=u_t.
+\]">\[
+[D\psi:D\varphi]_t
+=P^{2it}\Delta^{-it}
+=u_t.
+\]</span>
+<p>The construction in CX-08 already proves faithfulness, normality and semifiniteness without a state reduction.</p>
+<p><strong>Proof of uniqueness.</strong> If another faithful normal semifinite weight <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has the same cocycle, SI-14 with the same commutant reference implies</p>
+<span class="math math-display" data-tex="\[
+\left(\frac{d\chi}{d\varphi^{\mathrm{opp}}}\right)^{it}
+=u_t\Delta^{it}
+=\left(\frac{d\psi}{d\varphi^{\mathrm{opp}}}\right)^{it}
+\quad(t\in\mathbb R).
+\tag{CX.54}
+\]">\[
+\left(\frac{d\chi}{d\varphi^{\mathrm{opp}}}\right)^{it}
+=u_t\Delta^{it}
+=\left(\frac{d\psi}{d\varphi^{\mathrm{opp}}}\right)^{it}
+\quad(t\in\mathbb R).
+\tag{CX.54}
+\]</span>
+<p>Equality of these unitary groups implies equality of their positive injective self-adjoint operators. Here is an explicit spectral-calculus justification. For such an operator <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(L=\log A\)">\(L=\log A\)</span>, with its spectral domain. The scalar integral and bounded functional calculus give</p>
+<span class="math math-display" data-tex="\[
+(L-iI)^{-1}=i\int_0^\infty e^{-t}A^{-it}\,dt.
+\tag{CX.54a}
+\]">\[
+(L-iI)^{-1}=i\int_0^\infty e^{-t}A^{-it}\,dt.
+\tag{CX.54a}
+\]</span>
+<p>The integral is strong and norm bounded by one. The scalar identity is <span class="math" data-tex="\(i\int_0^\infty e^{-t}e^{-it\lambda}\,dt=(\lambda-i)^{-1}\)">\(i\int_0^\infty e^{-t}e^{-it\lambda}\,dt=(\lambda-i)^{-1}\)</span>, for real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Thus the group determines this resolvent, its range <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span>, and <span class="math" data-tex="\(L\)">\(L\)</span> on that range. It determines <span class="math" data-tex="\(A=\exp L\)">\(A=\exp L\)</span>, with the full spectral domain. SC-10's injectivity of the spatial derivative in its normal numerator therefore gives <span class="math" data-tex="\(\chi=\psi\)">\(\chi=\psi\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, including infinite values. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The zero algebra causes no exception: its unique weight and identity unitary family satisfy the statements with zero Hilbert space. On every nonzero algebra, no finite total mass is required.</p>
+<h2 id="a-formula-that-determines-the-reconstructed-finite-values">A formula that determines the reconstructed finite values</h2>
+<p>The construction gives an explicit dense-domain measurement. For <span class="math" data-tex="\(x,y\in\mathcal E\)">\(x,y\in\mathcal E\)</span>, both adjoints belong to <span class="math" data-tex="\(\mathfrak n_\psi\)">\(\mathfrak n_\psi\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\psi(xy^*)
+=\left\langle
+\Lambda(\rho_{-i/2}(x)),
+\Lambda(\rho_{-i/2}(y))
+\right\rangle .
+\tag{CX.55}
+\]">\[
+\psi(xy^*)
+=\left\langle
+\Lambda(\rho_{-i/2}(x)),
+\Lambda(\rho_{-i/2}(y))
+\right\rangle .
+\tag{CX.55}
+\]</span>
+<p>The left side means the linear extension of the weight to <span class="math" data-tex="\(\mathfrak m_\psi\)">\(\mathfrak m_\psi\)</span>, whose membership follows from <span class="math" data-tex="\(xy^*=(x^*)^*y^*\)">\(xy^*=(x^*)^*y^*\)</span>. For detail,</p>
+<span class="math math-display" data-tex="\[
+\psi(xy^*)=
+\langle\Lambda_\psi(y^*),\Lambda_\psi(x^*)\rangle
+=\langle J\Lambda(\rho_{-i/2}(y)),
+J\Lambda(\rho_{-i/2}(x))\rangle,
+\]">\[
+\psi(xy^*)=
+\langle\Lambda_\psi(y^*),\Lambda_\psi(x^*)\rangle
+=\langle J\Lambda(\rho_{-i/2}(y)),
+J\Lambda(\rho_{-i/2}(x))\rangle,
+\]</span>
+<p>which is (CX.55) by antiunitarity. In particular</p>
+<span class="math math-display" data-tex="\[
+\psi(xx^*)=\|\Lambda(\rho_{-i/2}(x))\|^2.
+\tag{CX.56}
+\]">\[
+\psi(xx^*)=\|\Lambda(\rho_{-i/2}(x))\|^2.
+\tag{CX.56}
+\]</span>
+<p>The formula explains why real-time implementation alone loses information. Replacing <span class="math" data-tex="\(u_t\)">\(u_t\)</span> by <span class="math" data-tex="\(c^{it}u_t\)">\(c^{it}u_t\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, preserves <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>, while its analytic value at <span class="math" data-tex="\(-i/2\)">\(-i/2\)</span> is multiplied by <span class="math" data-tex="\(\sqrt c\)">\(\sqrt c\)</span>. Formula (CX.56) therefore multiplies the new weight by <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>More generally the full mixed domain is described by the relative graph:</p>
+<span class="math math-display" data-tex="\[
+\overline{\{(\Lambda_\varphi(x),\Lambda_\psi(x^*)):
+x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*\}}
+=\{(\xi,JP\xi):\xi\in D(P)\}.
+\tag{CX.57}
+\]">\[
+\overline{\{(\Lambda_\varphi(x),\Lambda_\psi(x^*)):
+x\in\mathfrak n_\varphi\cap\mathfrak n_\psi^*\}}
+=\{(\xi,JP\xi):\xi\in D(P)\}.
+\tag{CX.57}
+\]</span>
+<p>The closure is in the product Hilbert norm. It does not assert that every vector of <span class="math" data-tex="\(D(P)\)">\(D(P)\)</span> equals one bounded GNS element. That distinction matters for unbounded weights.</p>
+<h2 id="an-arbitrary-cardinality-example-with-noncommuting-densities">An arbitrary-cardinality example with noncommuting densities</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any index set. Choose positive invertible finite matrices <span class="math" data-tex="\(h_i,k_i\in M_2(\mathbb C)\)">\(h_i,k_i\in M_2(\mathbb C)\)</span> and set</p>
+<span class="math math-display" data-tex="\[
+M=\prod_{i\in I}M_2(\mathbb C),\quad
+\varphi(a)=\sum_i\operatorname{Tr}(h_i a_i),\quad
+\psi(a)=\sum_i\operatorname{Tr}(k_i a_i)
+\quad(a\geq0).
+\tag{CX.58}
+\]">\[
+M=\prod_{i\in I}M_2(\mathbb C),\quad
+\varphi(a)=\sum_i\operatorname{Tr}(h_i a_i),\quad
+\psi(a)=\sum_i\operatorname{Tr}(k_i a_i)
+\quad(a\geq0).
+\tag{CX.58}
+\]</span>
+<p>The sums are suprema of finite subsums. Each is faithful and normal; arbitrary positive increasing suprema commute with these finite subsums. Finite central block cuts belong to the finite definition algebra and converge strongly to <span class="math" data-tex="\(1\)">\(1\)</span>, proving semifiniteness. The matrices need no common upper or lower spectral bound.</p>
+<p>The standard GNS realization is the Hilbert direct sum of Hilbert–Schmidt spaces,</p>
+<span class="math math-display" data-tex="\[
+H=\bigoplus_i\operatorname{HS}(\mathbb C^2),\qquad
+\Lambda_\varphi(x)=(x_i h_i^{1/2})_i,\qquad
+J(Z_i)=(Z_i^*)_i.
+\]">\[
+H=\bigoplus_i\operatorname{HS}(\mathbb C^2),\qquad
+\Lambda_\varphi(x)=(x_i h_i^{1/2})_i,\qquad
+J(Z_i)=(Z_i^*)_i.
+\]</span>
+<p>The family</p>
+<span class="math math-display" data-tex="\[
+(u_t)_i=k_i^{it}h_i^{-it}
+\tag{CX.59}
+\]">\[
+(u_t)_i=k_i^{it}h_i^{-it}
+\tag{CX.59}
+\]</span>
+<p>is unitary, strongly continuous and satisfies the <span class="math" data-tex="\(\sigma^\varphi\)">\(\sigma^\varphi\)</span>-cocycle law. For strong continuity, first truncate the square-summable family of Hilbert vectors to finitely many blocks; the tail is controlled uniformly in <span class="math" data-tex="\(t\)">\(t\)</span> by the unitary norm. On the finite truncation ordinary finite-dimensional continuity applies. This proves continuity for an arbitrary index set, without selecting a countable family that separates <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For the two groups in the proof,</p>
+<span class="math math-display" data-tex="\[
+(V_tZ)_i=k_i^{it}Z_i h_i^{-it},\qquad
+(K_tZ)_i=k_i^{it}Z_i k_i^{-it}.
+\tag{CX.60}
+\]">\[
+(V_tZ)_i=k_i^{it}Z_i h_i^{-it},\qquad
+(K_tZ)_i=k_i^{it}Z_i k_i^{-it}.
+\tag{CX.60}
+\]</span>
+<p>On finite block vectors the positive half operator is</p>
+<span class="math math-display" data-tex="\[
+(PZ)_i=k_i^{1/2}Z_i h_i^{-1/2}.
+\tag{CX.61}
+\]">\[
+(PZ)_i=k_i^{1/2}Z_i h_i^{-1/2}.
+\tag{CX.61}
+\]</span>
+<p>Its full domain is the set of <span class="math" data-tex="\(Z\in H\)">\(Z\in H\)</span> for which the right side is square summable. This follows by diagonalizing the positive left and right matrix multipliers on each block, and taking their self-adjoint Hilbert direct sum. Finite block truncations converge in that graph norm. Thus <span class="math" data-tex="\(T=JP\)">\(T=JP\)</span> gives exactly the mixed adjoint map, and (CX.56) recovers <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Noncommuting <span class="math" data-tex="\(h_i,k_i\)">\(h_i,k_i\)</span> generally make <span class="math" data-tex="\(u_t\)">\(u_t\)</span> fail the untwisted unitary-group law even on a single block.</p>
+<h2 id="problems-with-full-solutions">Problems with full solutions</h2>
+<p><strong>Problem 1. Detect the weight scale.</strong> For a faithful normal semifinite <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, let <span class="math" data-tex="\(u_t=e^{iat}1\)">\(u_t=e^{iat}1\)</span> with <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>. Find the reconstructed weight and both operators <span class="math" data-tex="\(V_t,K_t\)">\(V_t,K_t\)</span>.</p>
+<p><strong>Solution.</strong> The family is a cocycle because its values are scalar and form a unitary group. Its analytic scalar at <span class="math" data-tex="\(z=-i/2\)">\(z=-i/2\)</span> is <span class="math" data-tex="\(e^{a/2}\)">\(e^{a/2}\)</span>. Equations (CX.55–56), or uniqueness applied to the scalar transport of SI-14, give
+<span class="math" data-tex="\(\psi=e^a\varphi\)">\(\psi=e^a\varphi\)</span>. We have</p>
+<span class="math math-display" data-tex="\[
+V_t=e^{iat}\Delta_\varphi^{it},\qquad
+K_t=e^{iat}e^{-iat}\Delta_\varphi^{it}
+=\Delta_\varphi^{it}.
+\]">\[
+V_t=e^{iat}\Delta_\varphi^{it},\qquad
+K_t=e^{iat}e^{-iat}\Delta_\varphi^{it}
+=\Delta_\varphi^{it}.
+\]</span>
+<p>The first group records the scale through the relative operator; the second implements the unchanged modular automorphisms.</p>
+<p><strong>Problem 2. Check the imaginary-time sign without assuming a trace.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let
+<span class="math" data-tex="\(\varphi(a)=\operatorname{Tr}(ha)\)">\(\varphi(a)=\operatorname{Tr}(ha)\)</span>,
+<span class="math" data-tex="\(\psi(a)=\operatorname{Tr}(ka)\)">\(\psi(a)=\operatorname{Tr}(ka)\)</span>,
+where <span class="math" data-tex="\(h,k&gt;0\)">\(h,k&gt;0\)</span> need not commute. Compute <span class="math" data-tex="\(\rho_{-i/2}(x)\)">\(\rho_{-i/2}(x)\)</span>, and verify (CX.56).</p>
+<p><strong>Solution.</strong> The real motion is
+<span class="math" data-tex="\(\rho_t(x)=k^{it}xh^{-it}\)">\(\rho_t(x)=k^{it}xh^{-it}\)</span>, so its entire continuation gives</p>
+<span class="math math-display" data-tex="\[
+\rho_{-i/2}(x)=k^{1/2}xh^{-1/2}.
+\]">\[
+\rho_{-i/2}(x)=k^{1/2}xh^{-1/2}.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\Lambda_\varphi(\rho_{-i/2}(x))=k^{1/2}x,\qquad
+\|\Lambda_\varphi(\rho_{-i/2}(x))\|_{\mathrm{HS}}^2
+=\operatorname{Tr}(x^*kx)
+=\operatorname{Tr}(kxx^*)=\psi(xx^*).
+\]">\[
+\Lambda_\varphi(\rho_{-i/2}(x))=k^{1/2}x,\qquad
+\|\Lambda_\varphi(\rho_{-i/2}(x))\|_{\mathrm{HS}}^2
+=\operatorname{Tr}(x^*kx)
+=\operatorname{Tr}(kxx^*)=\psi(xx^*).
+\]</span>
+<p>Changing the sign of the imaginary parameter would replace both half powers and would not give this weight in general.</p>
+<p><strong>Problem 3. The relative domain can be proper even with scalar cocycles on each block.</strong> In (CX.58), take <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span>, <span class="math" data-tex="\(h_n=I_2\)">\(h_n=I_2\)</span>, <span class="math" data-tex="\(k_n=n^2I_2\)">\(k_n=n^2I_2\)</span>. Determine <span class="math" data-tex="\(D(P)\)">\(D(P)\)</span>, <span class="math" data-tex="\(D(P^2)\)">\(D(P^2)\)</span>, and a vector in the first but not the second.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(PZ=(nZ_n)_n\)">\(PZ=(nZ_n)_n\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+D(P)=\{Z:\sum_n n^2\|Z_n\|_{\mathrm{HS}}^2&lt;\infty\},\qquad
+D(P^2)=\{Z:\sum_n n^4\|Z_n\|_{\mathrm{HS}}^2&lt;\infty\}.
+\]">\[
+D(P)=\{Z:\sum_n n^2\|Z_n\|_{\mathrm{HS}}^2&lt;\infty\},\qquad
+D(P^2)=\{Z:\sum_n n^4\|Z_n\|_{\mathrm{HS}}^2&lt;\infty\}.
+\]</span>
+<p>For <span class="math" data-tex="\(Z_n=n^{-2}E_{11}\)">\(Z_n=n^{-2}E_{11}\)</span>, the first sum is <span class="math" data-tex="\(\sum_n n^{-2}&lt;\infty\)">\(\sum_n n^{-2}&lt;\infty\)</span> and the second is <span class="math" data-tex="\(\sum_n1=\infty\)">\(\sum_n1=\infty\)</span>. All <span class="math" data-tex="\(u_t\)">\(u_t\)</span> are bounded unitaries, yet their reconstructed relative operator is unbounded with a proper domain.</p>
+<p><strong>Problem 4. Why density alone was insufficient.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(A\)">\(A\)</span> be the positive self-adjoint operator <span class="math" data-tex="\((A\xi)_n=n\xi_n\)">\((A\xi)_n=n\xi_n\)</span>, with its square-summability domain. Let <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> consist of the finitely supported sequences whose coordinates sum to zero. Show that <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> is Hilbert-norm dense but is not a core for <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Solution.</strong> For a fixed basis vector <span class="math" data-tex="\(e_k\)">\(e_k\)</span> and <span class="math" data-tex="\(N&gt;k\)">\(N&gt;k\)</span>, the vector</p>
+<span class="math math-display" data-tex="\[
+e_k-\frac1N\sum_{n=N+1}^{2N}e_n
+\]">\[
+e_k-\frac1N\sum_{n=N+1}^{2N}e_n
+\]</span>
+<p>belongs to <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> and has distance <span class="math" data-tex="\(N^{-1/2}\)">\(N^{-1/2}\)</span> from <span class="math" data-tex="\(e_k\)">\(e_k\)</span>. Thus every basis vector lies in its Hilbert closure. On <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, however, the series
+<span class="math" data-tex="\(\ell(\xi)=\sum_n\xi_n\)">\(\ell(\xi)=\sum_n\xi_n\)</span> converges absolutely and satisfies</p>
+<span class="math math-display" data-tex="\[
+|\ell(\xi)|\leq
+\left(\sum_{n=1}^\infty n^{-2}\right)^{1/2}\|A\xi\|.
+\]">\[
+|\ell(\xi)|\leq
+\left(\sum_{n=1}^\infty n^{-2}\right)^{1/2}\|A\xi\|.
+\]</span>
+<p>It is therefore continuous in the graph norm. It vanishes on <span class="math" data-tex="\(\mathcal D_0\)">\(\mathcal D_0\)</span> and on its graph closure, but <span class="math" data-tex="\(\ell(e_k)=1\)">\(\ell(e_k)=1\)</span>. That graph closure is a proper subspace of <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. Agreement with a densely defined restriction therefore cannot identify the full operator. CX-09 instead approximates both entries of every mixed finite graph pair, and only then takes the already specified relative graph closure.</p>
+<h2 id="scope-and-further-uses">Scope and further uses</h2>
+<p>The construction proves the inverse theorem for arbitrary strongly continuous unitary cocycles of an NSF weight. It supplies the full analytic right multiplier lemma, dense operator and GNS domains, a faithful normal semifinite reconstructed weight, its exact relative graph, and uniqueness of the weight. Every invocation of the infinite weight is either on its positive cone or on an explicitly verified finite linear domain.</p>
+<p>An operator-to-spatial-weight converse can now produce a unitary cocycle in a support corner and apply CX-10 there. That application still has to specify the corner algebra, its faithful reference weight and the comparison of spatial operators. The present theorem does not silently extend a weight through an unspecified quotient. Partial-isometry cocycles, operator-valued weights, crossed-product dual weights and action cohomology retain their separate statements and ownership.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Fusion over a common spectral point</span></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Recovering a weight from spatial energy →</span></span></nav>
+<p class="small source-link"><a href="src/weight-cocycle-reconstruction.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

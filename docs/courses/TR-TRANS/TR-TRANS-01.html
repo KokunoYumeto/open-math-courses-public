@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algebraic and transcendental numbers; Liouville&#x27;s theorem · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="algebraic-and-transcendental-numbers-liouville-s-theorem">Algebraic and transcendental numbers; Liouville's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>How close can a rational number get to a specified real number? A small denominator makes an approximation inexpensive; a small error makes it accurate. Algebraic numbers impose a limit on how these two advantages can occur together. The reason is arithmetic: a nonzero integer has absolute value at least one.</p>
+<p>We first turn that observation into an explicit bound. We then build numbers that violate every such bound, and compare the resulting exceptional set with what happens for almost every real number. No transcendence theorem is assumed. The prerequisites are finite-dimensional linear algebra, real calculus and elementary Lebesgue measure. The continued-fraction section develops the approximation estimates and proves Euler's expansion of <span class="math" data-tex="\(e\)">\(e\)</span> before using it in an exercise.</p>
+<p>Basic references are Waldschmidt's open notes on Diophantine approximation, irrationality and transcendence, Evertse's lecture notes <em>Diophantine Approximation</em>, Soundararajan's notes <em>Transcendental Number Theory</em>, and Cohn's note on the continued fraction of <span class="math" data-tex="\(e\)">\(e\)</span>. Their roles are, respectively, exponent conventions, continued fractions and comparison with later approximation theorems; the explicit arithmetic bound; Liouville's mean-value argument; and Euler's expansion of <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<h2 id="1-an-integer-hidden-in-an-approximation">1. An integer hidden in an approximation</h2>
+<p>Take <span class="math" data-tex="\(\alpha=\sqrt2\)">\(\alpha=\sqrt2\)</span>. For integers <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(p-q\sqrt2)(p+q\sqrt2)=p^2-2q^2\in\mathbb Z\setminus\{0\}.
+\]">\[
+(p-q\sqrt2)(p+q\sqrt2)=p^2-2q^2\in\mathbb Z\setminus\{0\}.
+\]</span>
+<p>If <span class="math" data-tex="\(|\alpha-p/q|&lt;1\)">\(|\alpha-p/q|&lt;1\)</span>, then <span class="math" data-tex="\(|\alpha+p/q|&lt;2\sqrt2+1\)">\(|\alpha+p/q|&lt;2\sqrt2+1\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\left|\sqrt2-\frac pq\right|
+=\frac{|p^2-2q^2|}{q^2|p/q+\sqrt2|}
+&gt;\frac1{(2\sqrt2+1)q^2}.
+\]">\[
+\left|\sqrt2-\frac pq\right|
+=\frac{|p^2-2q^2|}{q^2|p/q+\sqrt2|}
+&gt;\frac1{(2\sqrt2+1)q^2}.
+\]</span>
+<p>If the error is at least one, the same lower bound is immediate. This is a bound for every rational approximation, including negative numerators and unreduced fractions. Its constant is explicit. The exponent two will turn out to be sharp.</p>
+<p>The argument has two ingredients: a polynomial relation for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and the nonvanishing of that polynomial at a rational number. We now identify the numbers for which those ingredients are available.</p>
+<h3 id="definition-1-1-algebraicity-and-size">Definition 1.1. Algebraicity and size</h3>
+<p>A complex number <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is <strong>algebraic</strong> if <span class="math" data-tex="\(P(\alpha)=0\)">\(P(\alpha)=0\)</span> for a nonzero polynomial <span class="math" data-tex="\(P\in\mathbb Q[X]\)">\(P\in\mathbb Q[X]\)</span>. Otherwise it is <strong>transcendental</strong>. Its monic minimal polynomial in <span class="math" data-tex="\(\mathbb Q[X]\)">\(\mathbb Q[X]\)</span> is the monic polynomial of least degree vanishing at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Division with remainder proves that it is irreducible and unique.</p>
+<p>Clearing denominators and removing the common divisor of the coefficients gives a unique primitive minimal polynomial</p>
+<span class="math math-display" data-tex="\[
+P_\alpha(X)=a_dX^d+\cdots+a_0\in\mathbb Z[X],\qquad a_d&gt;0.
+\]">\[
+P_\alpha(X)=a_dX^d+\cdots+a_0\in\mathbb Z[X],\qquad a_d&gt;0.
+\]</span>
+<p>Here <strong>primitive</strong> means that the coefficients have greatest common divisor one. The <strong>degree</strong> of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is <span class="math" data-tex="\(d\)">\(d\)</span>; its <strong>conjugates</strong> are the roots of <span class="math" data-tex="\(P_\alpha\)">\(P_\alpha\)</span>. They are distinct, since an irreducible polynomial in characteristic zero is relatively prime to its derivative. The <strong>naive height</strong> is</p>
+<span class="math math-display" data-tex="\[
+H(\alpha)=\max_{0\leq k\leq d}|a_k|.
+\]">\[
+H(\alpha)=\max_{0\leq k\leq d}|a_k|.
+\]</span>
+<p>This height depends on the primitive normalization. It is different from the logarithmic Weil height developed in <em>Heights of algebraic numbers</em>.</p>
+<h3 id="proposition-1-2-finite-dimensional-arithmetic">Proposition 1.2. Finite-dimensional arithmetic</h3>
+<p>A complex number <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is algebraic if and only if <span class="math" data-tex="\(\mathbb Q[\alpha]\)">\(\mathbb Q[\alpha]\)</span> is finite-dimensional over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The algebraic numbers form a subfield <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span> of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Every root in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> of a nonzero polynomial with algebraic coefficients is algebraic over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. In particular, <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span> is algebraically closed.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has minimal polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span>, division by that polynomial shows that <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{d-1}\)">\(1,\alpha,\ldots,\alpha^{d-1}\)</span> span <span class="math" data-tex="\(\mathbb Q[\alpha]\)">\(\mathbb Q[\alpha]\)</span>, and minimality shows that they are independent. Conversely, finite dimension forces a linear dependence among sufficiently many powers of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>A finite-dimensional subalgebra of a field is a field: for a nonzero element <span class="math" data-tex="\(u\)">\(u\)</span>, multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> is an injective linear endomorphism, hence surjective; some element therefore maps to one. Thus <span class="math" data-tex="\(\mathbb Q[\alpha]=\mathbb Q(\alpha)\)">\(\mathbb Q[\alpha]=\mathbb Q(\alpha)\)</span>.</p>
+<p>For finitely many algebraic numbers <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_s\)">\(\alpha_1,\ldots,\alpha_s\)</span>, adjoin them successively. Each still satisfies its polynomial over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so each step has finite degree. The tower law makes <span class="math" data-tex="\(\mathbb Q(\alpha_1,\ldots,\alpha_s)\)">\(\mathbb Q(\alpha_1,\ldots,\alpha_s)\)</span> finite over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Here the finite tower law follows by taking a basis <span class="math" data-tex="\((u_i)\)">\((u_i)\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and a basis <span class="math" data-tex="\((v_j)\)">\((v_j)\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>: the products <span class="math" data-tex="\(u_iv_j\)">\(u_iv_j\)</span> span <span class="math" data-tex="\(L\)">\(L\)</span>, and their independence follows by first collecting the coefficients of each <span class="math" data-tex="\(v_j\)">\(v_j\)</span>, then those of each <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. Every element of this field is algebraic by the first part. This proves closure under addition, subtraction, multiplication and division by nonzero elements.</p>
+<p>Finally, let <span class="math" data-tex="\(u\)">\(u\)</span> be a root of a nonzero polynomial whose coefficients lie in <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>. The finitely many coefficients generate a finite extension <span class="math" data-tex="\(K/\mathbb Q\)">\(K/\mathbb Q\)</span>. The relation makes <span class="math" data-tex="\(K(u)/K\)">\(K(u)/K\)</span> finite, hence <span class="math" data-tex="\(K(u)/\mathbb Q\)">\(K(u)/\mathbb Q\)</span> finite. Thus <span class="math" data-tex="\(u\)">\(u\)</span> is algebraic.</p>
+<p>To supply the needed complex root existence, let <span class="math" data-tex="\(P\)">\(P\)</span> be a nonconstant complex polynomial. Since <span class="math" data-tex="\(|P(z)|\to\infty\)">\(|P(z)|\to\infty\)</span> as <span class="math" data-tex="\(|z|\to\infty\)">\(|z|\to\infty\)</span>, its modulus has a global minimum at some <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. If <span class="math" data-tex="\(P(z_0)=c_0\neq0\)">\(P(z_0)=c_0\neq0\)</span>, write <span class="math" data-tex="\(P(z_0+w)=c_0+c_kw^k+O(w^{k+1})\)">\(P(z_0+w)=c_0+c_kw^k+O(w^{k+1})\)</span>, with <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> the first nonzero higher coefficient. Choose a complex <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(c_ku^k/c_0=-1\)">\(c_ku^k/c_0=-1\)</span>, using polar coordinates. For small positive <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|P(z_0+tu)/c_0|\leq1-t^k+Ct^{k+1}&lt;1,
+\]">\[
+|P(z_0+tu)/c_0|\leq1-t^k+Ct^{k+1}&lt;1,
+\]</span>
+<p>contradicting minimality. Hence <span class="math" data-tex="\(P\)">\(P\)</span> has a complex root; division and induction give its full factorization. Applied to polynomials over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>, the preceding paragraph puts every root in <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The subfield assertion is also [Stacks, Tag 09GI]. The argument here is given independently because it is the algebraic mechanism used throughout the course.</p>
+<h3 id="theorem-1-3-liouville-s-explicit-obstruction">Theorem 1.3. Liouville's explicit obstruction</h3>
+<p>Let <span class="math" data-tex="\(\alpha\in\mathbb R\)">\(\alpha\in\mathbb R\)</span> be algebraic of degree <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. For every <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span> and <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\alpha-\frac pq\right|
+&gt;\frac1{d^2H(\alpha)(1+|\alpha|)^{d-1}q^d}.
+\]">\[
+\left|\alpha-\frac pq\right|
+&gt;\frac1{d^2H(\alpha)(1+|\alpha|)^{d-1}q^d}.
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(P=P_\alpha\)">\(P=P_\alpha\)</span> and <span class="math" data-tex="\(H=H(\alpha)\)">\(H=H(\alpha)\)</span>. Since <span class="math" data-tex="\(P\)">\(P\)</span> is irreducible and has degree at least two, it has no rational root. Consequently,</p>
+<span class="math math-display" data-tex="\[
+q^dP(p/q)=\sum_{k=0}^d a_kp^kq^{d-k}
+\]">\[
+q^dP(p/q)=\sum_{k=0}^d a_kp^kq^{d-k}
+\]</span>
+<p>is a nonzero integer, giving <span class="math" data-tex="\(|P(p/q)|\geq q^{-d}\)">\(|P(p/q)|\geq q^{-d}\)</span>.</p>
+<p>Put <span class="math" data-tex="\(R=1+|\alpha|&gt;1\)">\(R=1+|\alpha|&gt;1\)</span>. If <span class="math" data-tex="\(|\alpha-p/q|\geq1\)">\(|\alpha-p/q|\geq1\)</span>, the proposed right-hand side is at most <span class="math" data-tex="\(1/d^2&lt;1\)">\(1/d^2&lt;1\)</span>, so the result holds. Otherwise the segment between <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(p/q\)">\(p/q\)</span> lies in <span class="math" data-tex="\((-R,R)\)">\((-R,R)\)</span>. On that segment,</p>
+<span class="math math-display" data-tex="\[
+|P&#x27;(t)|\leq H\sum_{k=1}^d k|t|^{k-1}
+\leq H R^{d-1}\frac{d(d+1)}2
+&lt;d^2H R^{d-1}.
+\]">\[
+|P&#x27;(t)|\leq H\sum_{k=1}^d k|t|^{k-1}
+\leq H R^{d-1}\frac{d(d+1)}2
+&lt;d^2H R^{d-1}.
+\]</span>
+<p>The mean value theorem gives</p>
+<span class="math math-display" data-tex="\[
+q^{-d}\leq |P(p/q)-P(\alpha)|
+&lt;d^2H R^{d-1}|p/q-\alpha|,
+\]">\[
+q^{-d}\leq |P(p/q)-P(\alpha)|
+&lt;d^2H R^{d-1}|p/q-\alpha|,
+\]</span>
+<p>which proves the strict inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Soundararajan, Theorem 1, proves Liouville's theorem by the same mean-value argument. Evertse, Chapter 6, Theorem 6.1, gives the explicit constant <span class="math" data-tex="\(2^{1-d}M(\alpha)^{-1}\)">\(2^{1-d}M(\alpha)^{-1}\)</span>, where <span class="math" data-tex="\(M(\alpha)\)">\(M(\alpha)\)</span> is the Mahler measure and a reduced fraction <span class="math" data-tex="\(p/q\)">\(p/q\)</span> is measured by <span class="math" data-tex="\(\max(|p|,q)\)">\(\max(|p|,q)\)</span>.</p>
+<p>For <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, <span class="math" data-tex="\(P=X^2-2\)">\(P=X^2-2\)</span> and <span class="math" data-tex="\(H=2\)">\(H=2\)</span>, so this gives <span class="math" data-tex="\(1/[8(1+\sqrt2)q^2]\)">\(1/[8(1+\sqrt2)q^2]\)</span>. The factorization at the start gives a better constant. For non-real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, every real rational satisfies <span class="math" data-tex="\(|\alpha-p/q|\geq|\operatorname{Im}\alpha|&gt;0\)">\(|\alpha-p/q|\geq|\operatorname{Im}\alpha|&gt;0\)</span>; approximation on the real line is therefore already separated by a fixed positive distance.</p>
+<h2 id="2-why-exponent-two-is-unavoidable">2. Why exponent two is unavoidable</h2>
+<p>Liouville's theorem excludes very accurate approximations. A complementary argument constructs approximations for every real number.</p>
+<h3 id="theorem-1-4-dirichlet-s-finite-and-infinite-forms">Theorem 1.4. Dirichlet's finite and infinite forms</h3>
+<p>For a real <span class="math" data-tex="\(x\)">\(x\)</span> and an integer <span class="math" data-tex="\(Q\geq1\)">\(Q\geq1\)</span>, there are integers <span class="math" data-tex="\(p,q\)">\(p,q\)</span> with <span class="math" data-tex="\(1\leq q\leq Q\)">\(1\leq q\leq Q\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|qx-p|\leq\frac1{Q+1}.
+\]">\[
+|qx-p|\leq\frac1{Q+1}.
+\]</span>
+<p>If <span class="math" data-tex="\(x\)">\(x\)</span> is irrational, the inequality is strict and there are infinitely many distinct reduced rationals <span class="math" data-tex="\(p/q\)">\(p/q\)</span> with</p>
+<span class="math math-display" data-tex="\[
+0&lt;|x-p/q|&lt;q^{-2}.
+\]">\[
+0&lt;|x-p/q|&lt;q^{-2}.
+\]</span>
+<p><strong>Proof.</strong> Place the <span class="math" data-tex="\(Q+1\)">\(Q+1\)</span> fractional parts <span class="math" data-tex="\(\{kx\}\)">\(\{kx\}\)</span>, <span class="math" data-tex="\(0\leq k\leq Q\)">\(0\leq k\leq Q\)</span>, on a circle of circumference one. Coincident points immediately give <span class="math" data-tex="\(qx-p=0\)">\(qx-p=0\)</span>. Otherwise the <span class="math" data-tex="\(Q+1\)">\(Q+1\)</span> circular gaps have positive lengths summing to one, so a gap has length at most <span class="math" data-tex="\(1/(Q+1)\)">\(1/(Q+1)\)</span>.</p>
+<p>The two endpoints of this gap come from indices <span class="math" data-tex="\(j,k\)">\(j,k\)</span>. Their difference, adjusted by an integer if the gap crosses zero, has the form <span class="math" data-tex="\(\pm(qx-p)\)">\(\pm(qx-p)\)</span>, where <span class="math" data-tex="\(q=|j-k|\in\{1,\ldots,Q\}\)">\(q=|j-k|\in\{1,\ldots,Q\}\)</span>. This proves the bound.</p>
+<p>Equality can hold only if every gap has length <span class="math" data-tex="\(1/(Q+1)\)">\(1/(Q+1)\)</span>. Since the set contains zero, it would then consist of the multiples of <span class="math" data-tex="\(1/(Q+1)\)">\(1/(Q+1)\)</span>; in particular <span class="math" data-tex="\(\{x\}\)">\(\{x\}\)</span> would be rational. Thus irrational <span class="math" data-tex="\(x\)">\(x\)</span> gives a strict inequality.</p>
+<p>For each <span class="math" data-tex="\(Q\)">\(Q\)</span>, divide the bound by <span class="math" data-tex="\(q\)">\(q\)</span>. Since <span class="math" data-tex="\(q\leq Q\)">\(q\leq Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|x-p/q|&lt;\frac1{q(Q+1)}&lt;\frac1{q^2}.
+\]">\[
+|x-p/q|&lt;\frac1{q(Q+1)}&lt;\frac1{q^2}.
+\]</span>
+<p>Reducing a fraction can only lower its denominator and preserves this inequality. The resulting reduced denominators are unbounded: otherwise the rationals within distance one of <span class="math" data-tex="\(x\)">\(x\)</span> would lie in a finite set, whose nonzero distances from <span class="math" data-tex="\(x\)">\(x\)</span> have a positive minimum, whereas the constructed errors tend to zero as <span class="math" data-tex="\(Q\to\infty\)">\(Q\to\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img src="figures/dirichlet-circle.png" alt="Seven fractional parts for sqrt(2), labelled by their indices, on a unit circle. The highlighted gap from index 0 to index 5 has length 5 sqrt(2) minus 7." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Seven points, seven gaps. For <span class="math" data-tex="\(x=\sqrt2\)">\(x=\sqrt2\)</span> and <span class="math" data-tex="\(Q=6\)">\(Q=6\)</span>, the highlighted gap gives <span class="math" data-tex="\(|5\sqrt2-7|\approx0.0711&lt;1/7\)">\(|5\sqrt2-7|\approx0.0711&lt;1/7\)</span>. The plotted coordinates are numerical; the circle-gap argument above is exact.</em></p>
+<p>Editable vector figure.</p>
+<p>The non-strict sign in the finite form is necessary: <span class="math" data-tex="\(x=1/2\)">\(x=1/2\)</span>, <span class="math" data-tex="\(Q=1\)">\(Q=1\)</span> gives error exactly <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Combining Dirichlet with Theorem 1.3 shows that a real quadratic irrational can be approximated to order <span class="math" data-tex="\(q^{-2}\)">\(q^{-2}\)</span> infinitely often, but never with arbitrarily small multiples of that order. Such numbers are <strong>badly approximable</strong>.</p>
+<h2 id="3-constructing-numbers-with-no-algebraic-obstruction">3. Constructing numbers with no algebraic obstruction</h2>
+<h3 id="definition-1-5-liouville-numbers">Definition 1.5. Liouville numbers</h3>
+<p>A real irrational <span class="math" data-tex="\(x\)">\(x\)</span> is a <strong>Liouville number</strong> if, for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, some integers <span class="math" data-tex="\(p,q\)">\(p,q\)</span> with <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+0&lt;|x-p/q|&lt;q^{-n}.
+\]">\[
+0&lt;|x-p/q|&lt;q^{-n}.
+\]</span>
+<p>Equivalently, for each fixed <span class="math" data-tex="\(n\)">\(n\)</span> there are infinitely many distinct reduced fractions satisfying this inequality. To see this, apply the definition with exponents tending to infinity. For bounded reduced denominators, only finitely many fractions lie within distance one of <span class="math" data-tex="\(x\)">\(x\)</span>, and their positive errors cannot tend to zero. Reduction preserves the upper bound. A reduced denominator one cannot persist either, since <span class="math" data-tex="\(x\)">\(x\)</span> has positive distance from the nearest integer.</p>
+<p>The explicit irrationality requirement can also be omitted: if <span class="math" data-tex="\(x=A/B\)">\(x=A/B\)</span> is rational in lowest terms and <span class="math" data-tex="\(p/q\neq x\)">\(p/q\neq x\)</span>, then <span class="math" data-tex="\(|x-p/q|\geq1/(Bq)\)">\(|x-p/q|\geq1/(Bq)\)</span>. For <span class="math" data-tex="\(n\)">\(n\)</span> large enough that <span class="math" data-tex="\(2^{n-1}\geq B\)">\(2^{n-1}\geq B\)</span>, no <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span> can meet the defining inequality.</p>
+<h3 id="proposition-1-6-the-factorial-construction">Proposition 1.6. The factorial construction</h3>
+<p>For every integer base <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span>, the number</p>
+<span class="math math-display" data-tex="\[
+L_b=\sum_{n=1}^{\infty}b^{-n!}
+\]">\[
+L_b=\sum_{n=1}^{\infty}b^{-n!}
+\]</span>
+<p>is a Liouville number, hence transcendental.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+q_j=b^{j!},\qquad p_j=q_j\sum_{n=1}^j b^{-n!}\in\mathbb Z.
+\]">\[
+q_j=b^{j!},\qquad p_j=q_j\sum_{n=1}^j b^{-n!}\in\mathbb Z.
+\]</span>
+<p>The tail is positive. The exponents after <span class="math" data-tex="\((j+1)!\)">\((j+1)!\)</span> increase by at least one, and many integers are skipped, so</p>
+<span class="math math-display" data-tex="\[
+0&lt;L_b-p_j/q_j
+&lt;\frac{b^{-(j+1)!}}{1-b^{-1}}
+\leq2q_j^{-(j+1)}.
+\]">\[
+0&lt;L_b-p_j/q_j
+&lt;\frac{b^{-(j+1)!}}{1-b^{-1}}
+\leq2q_j^{-(j+1)}.
+\]</span>
+<p>If <span class="math" data-tex="\(L_b=A/B\)">\(L_b=A/B\)</span> were rational, its positive distance from the distinct truncation would be at least <span class="math" data-tex="\(1/(Bq_j)\)">\(1/(Bq_j)\)</span>, contradicting this estimate for large <span class="math" data-tex="\(j\)">\(j\)</span>. Thus <span class="math" data-tex="\(L_b\)">\(L_b\)</span> is irrational. For a prescribed <span class="math" data-tex="\(n\)">\(n\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> so large that <span class="math" data-tex="\(j+1&gt;n\)">\(j+1&gt;n\)</span> and <span class="math" data-tex="\(2&lt;q_j^{j+1-n}\)">\(2&lt;q_j^{j+1-n}\)</span>. This gives the Liouville inequality.</p>
+<p>Finally, an algebraic irrational of degree <span class="math" data-tex="\(d\)">\(d\)</span> would satisfy Theorem 1.3 with a positive fixed constant. The tail estimates with arbitrarily large exponents contradict that lower bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the familiar decimal example <span class="math" data-tex="\(L_{10}=0.110001000000000000000001\ldots\)">\(L_{10}=0.110001000000000000000001\ldots\)</span>, and the binary example <span class="math" data-tex="\(L_2\)">\(L_2\)</span>. It also makes clear why long runs of zero digits are useful: the next nonzero digit can be put much farther away than the denominator of the preceding truncation suggests.</p>
+<h2 id="4-exponents-constants-and-typical-numbers">4. Exponents, constants and typical numbers</h2>
+<h3 id="definition-1-7-irrationality-exponent">Definition 1.7. Irrationality exponent</h3>
+<p>For irrational <span class="math" data-tex="\(x\in\mathbb R\)">\(x\in\mathbb R\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mu(x)=\sup\{u\in\mathbb R:|x-p/q|&lt;q^{-u}
+\text{ for infinitely many distinct reduced }p/q\}.
+\]">\[
+\mu(x)=\sup\{u\in\mathbb R:|x-p/q|&lt;q^{-u}
+\text{ for infinitely many distinct reduced }p/q\}.
+\]</span>
+<p>It is also the infimum of the numbers <span class="math" data-tex="\(u\)">\(u\)</span> for which there exists a constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+|x-p/q|&gt;c q^{-u}\qquad(p\in\mathbb Z,\ q\geq1).
+\]">\[
+|x-p/q|&gt;c q^{-u}\qquad(p\in\mathbb Z,\ q\geq1).
+\]</span>
+<p><strong>Proof of equivalence.</strong> If <span class="math" data-tex="\(u&gt;\mu(x)\)">\(u&gt;\mu(x)\)</span>, there are only finitely many reduced fractions violating <span class="math" data-tex="\(|x-p/q|\geq q^{-u}\)">\(|x-p/q|\geq q^{-u}\)</span>. Their errors are nonzero. Choose <span class="math" data-tex="\(c\)">\(c\)</span> smaller than one and smaller than each of their error-times-<span class="math" data-tex="\(q^u\)">\(q^u\)</span> values. This gives the strict lower bound for all reduced fractions. Since <span class="math" data-tex="\(u&gt;\mu(x)\geq2\)">\(u&gt;\mu(x)\geq2\)</span>, unreduced denominators only decrease its right-hand side.</p>
+<p>Conversely, a uniform lower bound with exponent <span class="math" data-tex="\(u\)">\(u\)</span> rules out infinitely many approximations of any exponent <span class="math" data-tex="\(v&gt;u\)">\(v&gt;u\)</span>, because <span class="math" data-tex="\(q^{-v}&lt;c q^{-u}\)">\(q^{-v}&lt;c q^{-u}\)</span> for all large <span class="math" data-tex="\(q\)">\(q\)</span>. Thus <span class="math" data-tex="\(\mu(x)\leq u\)">\(\mu(x)\leq u\)</span>. Taking the appropriate infimum proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The infimum need not be attained. A number can have <span class="math" data-tex="\(\mu(x)=2\)">\(\mu(x)=2\)</span> without being badly approximable. An <strong>effective irrationality measure</strong> additionally provides a computable positive lower-bound constant; its infimum is the effective irrationality exponent. A proof of finiteness of exceptions does not by itself compute that constant.</p>
+<h3 id="theorem-1-8-the-universal-and-metric-exponents">Theorem 1.8. The universal and metric exponents</h3>
+<p>Every irrational real number satisfies <span class="math" data-tex="\(\mu(x)\geq2\)">\(\mu(x)\geq2\)</span>, and <span class="math" data-tex="\(\mu(x)=2\)">\(\mu(x)=2\)</span> for Lebesgue-almost every real number. For a real algebraic irrational of degree <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(\mu(x)\leq d\)">\(\mu(x)\leq d\)</span>. For a real quadratic irrational, <span class="math" data-tex="\(\mu(x)=2\)">\(\mu(x)=2\)</span>, with an effective lower bound at exponent two. Liouville numbers have <span class="math" data-tex="\(\mu(x)=\infty\)">\(\mu(x)=\infty\)</span>.</p>
+<p><strong>Proof.</strong> Dirichlet gives the universal lower bound. Liouville gives the algebraic upper bound, and the quadratic conclusion follows by combining them. Definition 1.5 is exactly the condition that the supremum be infinite.</p>
+<p>For the metric statement, fix <span class="math" data-tex="\(u&gt;2\)">\(u&gt;2\)</span> and an interval <span class="math" data-tex="\([-B,B]\)">\([-B,B]\)</span>, with <span class="math" data-tex="\(B\geq1\)">\(B\geq1\)</span>. At denominator <span class="math" data-tex="\(q\)">\(q\)</span>, the intervals</p>
+<span class="math math-display" data-tex="\[
+(p/q-q^{-u},p/q+q^{-u})
+\]">\[
+(p/q-q^{-u},p/q+q^{-u})
+\]</span>
+<p>that meet <span class="math" data-tex="\([-B,B]\)">\([-B,B]\)</span> have at most <span class="math" data-tex="\(2(B+1)q+1\)">\(2(B+1)q+1\)</span> relevant numerators. Their total length is at most <span class="math" data-tex="\(C_Bq^{1-u}\)">\(C_Bq^{1-u}\)</span>, for a constant <span class="math" data-tex="\(C_B\)">\(C_B\)</span> independent of <span class="math" data-tex="\(q\)">\(q\)</span>. The sum over <span class="math" data-tex="\(q\)">\(q\)</span> converges. For every <span class="math" data-tex="\(N\)">\(N\)</span>, the points belonging to infinitely many of these intervals lie in their union over <span class="math" data-tex="\(q\geq N\)">\(q\geq N\)</span>, whose measure is at most <span class="math" data-tex="\(C_B\sum_{q\geq N}q^{1-u}\to0\)">\(C_B\sum_{q\geq N}q^{1-u}\to0\)</span>. This is the elementary Borel-Cantelli argument.</p>
+<p>Apply it for <span class="math" data-tex="\(u=2+1/k\)">\(u=2+1/k\)</span>, <span class="math" data-tex="\(k=1,2,\ldots\)">\(k=1,2,\ldots\)</span>, and for integral <span class="math" data-tex="\(B\)">\(B\)</span>. Outside a countable union of null sets, <span class="math" data-tex="\(\mu(x)\leq2\)">\(\mu(x)\leq2\)</span>. Remove the countable rational set and apply Dirichlet to get equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\alpha=\sqrt[3]2\)">\(\alpha=\sqrt[3]2\)</span>, the following table separates proved results from later or cited ones. Each upper bound means a uniform positive constant is allowed.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Permitted lower-bound exponent</th>
+<th>Status here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Liouville</td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td>Proved in Theorem 1.3, with an explicit constant</td>
+</tr>
+<tr>
+<td>Thue</td>
+<td><span class="math" data-tex="\(5/2+\varepsilon\)">\(5/2+\varepsilon\)</span>, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span></td>
+<td>Follows from the later Roth theorem; historical statements in Waldschmidt, §4.1.3, Theorem 42, and Evertse, Chapter 6, §6.1</td>
+</tr>
+<tr>
+<td>Roth</td>
+<td><span class="math" data-tex="\(2+\varepsilon\)">\(2+\varepsilon\)</span>, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span></td>
+<td>Proved later in <em>Rational approximation to algebraic numbers III: Roth's theorem and its consequences</em></td>
+</tr>
+</tbody>
+</table>
+<p>Thue's and Roth's statements do not provide an effective lower-bound constant by the arguments developed later. The later course on linear forms in logarithms develops effective improvements. None of these statements replaces <span class="math" data-tex="\(2+\varepsilon\)">\(2+\varepsilon\)</span> by a guaranteed uniform exponent-two bound for a cubic irrational.</p>
+<h3 id="theorem-1-9-existence-and-the-size-of-the-exceptional-set">Theorem 1.9. Existence and the size of the exceptional set</h3>
+<p>The algebraic numbers are countable. The transcendental real numbers form an uncountable set of full Lebesgue measure. The Liouville numbers form a dense <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> of measure zero.</p>
+<p><strong>Proof.</strong> For each degree bound, integer polynomials correspond to finite tuples of integers, a countable set. A countable union over degree is still countable. Each nonzero polynomial has finitely many roots, so their union, <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>, is countable. Each singleton has measure zero; countable subadditivity makes the algebraic real numbers a null set. Since <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is uncountable, their complement is uncountable and has full measure.</p>
+<p>For the topology of Liouville numbers, set</p>
+<span class="math math-display" data-tex="\[
+U_{n,N}=\bigcup_{q\geq N}\ \bigcup_{p\in\mathbb Z}
+(p/q-q^{-n},p/q+q^{-n}),\qquad n\geq1,\ N\geq2.
+\]">\[
+U_{n,N}=\bigcup_{q\geq N}\ \bigcup_{p\in\mathbb Z}
+(p/q-q^{-n},p/q+q^{-n}),\qquad n\geq1,\ N\geq2.
+\]</span>
+<p>These sets are open. They are dense because rationals with denominators <span class="math" data-tex="\(q\geq N\)">\(q\geq N\)</span>, allowing unreduced representations, are dense. The set of irrationals is also a countable intersection of open dense sets: <span class="math" data-tex="\(\mathbb R\setminus\mathbb Q=\bigcap_{r\in\mathbb Q}(\mathbb R\setminus\{r\})\)">\(\mathbb R\setminus\mathbb Q=\bigcap_{r\in\mathbb Q}(\mathbb R\setminus\{r\})\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathcal L=(\mathbb R\setminus\mathbb Q)\cap
+\bigcap_{n\geq1,N\geq2}U_{n,N}
+\]">\[
+\mathcal L=(\mathbb R\setminus\mathbb Q)\cap
+\bigcap_{n\geq1,N\geq2}U_{n,N}
+\]</span>
+<p>is a <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span>. Here is the completeness argument proving density. List all the open dense sets occurring in the intersection as <span class="math" data-tex="\(V_1,V_2,\ldots\)">\(V_1,V_2,\ldots\)</span>. Inside any prescribed nonempty open interval, choose a closed interval <span class="math" data-tex="\(I_1\)">\(I_1\)</span> of positive length contained in <span class="math" data-tex="\(V_1\)">\(V_1\)</span>. Having chosen <span class="math" data-tex="\(I_n\)">\(I_n\)</span>, choose a closed interval <span class="math" data-tex="\(I_{n+1}\)">\(I_{n+1}\)</span> of positive length inside <span class="math" data-tex="\(\operatorname{int}(I_n)\cap V_{n+1}\)">\(\operatorname{int}(I_n)\cap V_{n+1}\)</span>, with length at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. Density and openness permit each choice. Completeness of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> gives a point in all the nested closed intervals. It belongs to every <span class="math" data-tex="\(V_n\)">\(V_n\)</span> and to the initial interval. This proves density, the real-line form of Baire's argument.</p>
+<p>The equality with <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> follows from Definition 1.5 and its infinite-approximation form. Indeed, membership gives arbitrarily large denominators; for an irrational, bounded reduced denominators cannot realize errors tending to zero.</p>
+<p>Every Liouville number has infinitely many approximations of exponent three. The convergent-tail measure argument in Theorem 1.8, with <span class="math" data-tex="\(u=3\)">\(u=3\)</span>, shows that this set is null on every bounded interval, hence on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no conflict between density and measure zero, or between being a dense <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> and having measure zero. Measure and Baire category test different notions of smallness. Algebraic numbers are countable; Liouville numbers are much larger but still null.</p>
+<h2 id="5-continued-fractions-as-an-approximation-microscope">5. Continued fractions as an approximation microscope</h2>
+<p>This section supplies a way to recognize large irrationality exponents without using digit expansions. Write an infinite simple continued fraction as</p>
+<span class="math math-display" data-tex="\[
+x=[a_0;a_1,a_2,\ldots],\qquad a_0\in\mathbb Z,\quad a_j\in\mathbb Z_{&gt;0}\ (j\geq1).
+\]">\[
+x=[a_0;a_1,a_2,\ldots],\qquad a_0\in\mathbb Z,\quad a_j\in\mathbb Z_{&gt;0}\ (j\geq1).
+\]</span>
+<p>Its convergents <span class="math" data-tex="\(p_n/q_n=[a_0;\ldots,a_n]\)">\(p_n/q_n=[a_0;\ldots,a_n]\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+p_{-1}=1,\ p_0=a_0,\quad q_{-1}=0,\ q_0=1,
+\qquad p_n=a_np_{n-1}+p_{n-2},\quad q_n=a_nq_{n-1}+q_{n-2}.
+\]">\[
+p_{-1}=1,\ p_0=a_0,\quad q_{-1}=0,\ q_0=1,
+\qquad p_n=a_np_{n-1}+p_{n-2},\quad q_n=a_nq_{n-1}+q_{n-2}.
+\]</span>
+<p>The recurrence follows by composing the fractional-linear maps <span class="math" data-tex="\(t\mapsto a_j+1/t\)">\(t\mapsto a_j+1/t\)</span>. Taking determinants gives</p>
+<span class="math math-display" data-tex="\[
+p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1}.
+\]">\[
+p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1}.
+\]</span>
+<p>Thus adjacent convergents differ by <span class="math" data-tex="\(1/(q_nq_{n-1})\)">\(1/(q_nq_{n-1})\)</span>, in alternating directions. The denominators grow at least as fast as Fibonacci numbers after the initial indices; the successive differences are summable, so the convergents have a limit. The complete tail <span class="math" data-tex="\(t_{n+1}=[a_{n+1};a_{n+2},\ldots]\)">\(t_{n+1}=[a_{n+1};a_{n+2},\ldots]\)</span> lies strictly between <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> and <span class="math" data-tex="\(a_{n+1}+1\)">\(a_{n+1}+1\)</span>, and the same fractional-linear identity gives</p>
+<span class="math math-display" data-tex="\[
+x=\frac{p_nt_{n+1}+p_{n-1}}{q_nt_{n+1}+q_{n-1}},\qquad
+\left|x-\frac{p_n}{q_n}\right|
+=\frac1{q_n(q_nt_{n+1}+q_{n-1})}.
+\]">\[
+x=\frac{p_nt_{n+1}+p_{n-1}}{q_nt_{n+1}+q_{n-1}},\qquad
+\left|x-\frac{p_n}{q_n}\right|
+=\frac1{q_n(q_nt_{n+1}+q_{n-1})}.
+\]</span>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\frac1{(a_{n+1}+2)q_n^2}
+&lt;\left|x-\frac{p_n}{q_n}\right|
+&lt;\frac1{a_{n+1}q_n^2}.
+\]">\[
+\frac1{(a_{n+1}+2)q_n^2}
+&lt;\left|x-\frac{p_n}{q_n}\right|
+&lt;\frac1{a_{n+1}q_n^2}.
+\]</span>
+<p>These formulas also prove that the limit is irrational. If it were a fixed rational <span class="math" data-tex="\(A/B\)">\(A/B\)</span>, a distinct convergent would have error at least <span class="math" data-tex="\(1/(Bq_n)\)">\(1/(Bq_n)\)</span>, contradicting the upper bound for arbitrarily large <span class="math" data-tex="\(q_n\)">\(q_n\)</span>. No convergent equals the limit, by the displayed exact formula.</p>
+<h3 id="lemma-1-10-controlling-all-rational-approximations">Lemma 1.10. Controlling all rational approximations</h3>
+<p>Put <span class="math" data-tex="\(\epsilon_n=q_nx-p_n\)">\(\epsilon_n=q_nx-p_n\)</span>. If <span class="math" data-tex="\(0&lt;q&lt;q_{n+1}\)">\(0&lt;q&lt;q_{n+1}\)</span>, then for every integer <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|qx-p|\geq|\epsilon_n|.
+\]">\[
+|qx-p|\geq|\epsilon_n|.
+\]</span>
+<p>Consequently, if <span class="math" data-tex="\(q_n\leq q&lt;q_{n+1}\)">\(q_n\leq q&lt;q_{n+1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|x-p/q|&gt;\frac1{(a_{n+1}+2)q^2}.
+\]">\[
+|x-p/q|&gt;\frac1{(a_{n+1}+2)q^2}.
+\]</span>
+<p><strong>Proof.</strong> The determinant of the integer column vectors <span class="math" data-tex="\((p_n,q_n)\)">\((p_n,q_n)\)</span> and <span class="math" data-tex="\((p_{n+1},q_{n+1})\)">\((p_{n+1},q_{n+1})\)</span> is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Express <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> uniquely as an integer combination with coefficients <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, positivity of <span class="math" data-tex="\(q\)">\(q\)</span> forces <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>, and the first inequality follows. If <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, the condition <span class="math" data-tex="\(q&lt;q_{n+1}\)">\(q&lt;q_{n+1}\)</span> forces <span class="math" data-tex="\(a\leq-1\)">\(a\leq-1\)</span>; if <span class="math" data-tex="\(b\leq-1\)">\(b\leq-1\)</span>, positivity of <span class="math" data-tex="\(q\)">\(q\)</span> forces <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>. Since <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> and <span class="math" data-tex="\(\epsilon_{n+1}\)">\(\epsilon_{n+1}\)</span> have opposite signs, in either remaining case the summands in <span class="math" data-tex="\(a\epsilon_n+b\epsilon_{n+1}\)">\(a\epsilon_n+b\epsilon_{n+1}\)</span> have the same sign and its magnitude is at least <span class="math" data-tex="\(|\epsilon_n|\)">\(|\epsilon_n|\)</span>.</p>
+<p>The exact error formula gives</p>
+<span class="math math-display" data-tex="\[
+|\epsilon_n|&gt;\frac1{q_n+q_{n+1}}.
+\]">\[
+|\epsilon_n|&gt;\frac1{q_n+q_{n+1}}.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(q\)">\(q\)</span>, use <span class="math" data-tex="\(q_{n+1}=a_{n+1}q_n+q_{n-1}\)">\(q_{n+1}=a_{n+1}q_n+q_{n-1}\)</span> and <span class="math" data-tex="\(q_{n-1}\leq q_n\leq q\)">\(q_{n-1}\leq q_n\leq q\)</span>, and obtain the second inequality. Initial repeated denominators can be bypassed by taking <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>; finitely many small <span class="math" data-tex="\(q\)">\(q\)</span> never affect an irrationality exponent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(a_{n+1}\geq q_n^n\)">\(a_{n+1}\geq q_n^n\)</span> for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, the convergent upper bound is smaller than <span class="math" data-tex="\(q_n^{-n-2}\)">\(q_n^{-n-2}\)</span>. The number is Liouville. Conversely, if for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> one has <span class="math" data-tex="\(a_{n+1}+2\leq q_n^\eta\)">\(a_{n+1}+2\leq q_n^\eta\)</span> for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, Lemma 1.10 gives <span class="math" data-tex="\(\mu(x)\leq2+\eta\)">\(\mu(x)\leq2+\eta\)</span>. Dirichlet then gives <span class="math" data-tex="\(\mu(x)=2\)">\(\mu(x)=2\)</span>. This distinction explains why unbounded partial quotients alone do not imply a large irrationality exponent.</p>
+<h3 id="theorem-1-11-euler-s-exponential-example">Theorem 1.11. Euler's exponential example</h3>
+<p>The continued fraction of <span class="math" data-tex="\(e\)">\(e\)</span> is</p>
+<span class="math math-display" data-tex="\[
+e=[2;1,2,1,1,4,1,1,6,1,\ldots],\qquad
+a_{3k-2}=a_{3k}=1,\quad a_{3k-1}=2k\quad(k\geq1).
+\]">\[
+e=[2;1,2,1,1,4,1,1,6,1,\ldots],\qquad
+a_{3k-2}=a_{3k}=1,\quad a_{3k-1}=2k\quad(k\geq1).
+\]</span>
+<p><strong>Proof.</strong> We first identify a simpler fraction. For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+A_n=\frac1{n!}\int_0^1x^n(1-x)^ne^x\,dx,\qquad
+B_n=\frac1{n!}\int_0^1x^{n+1}(1-x)^ne^x\,dx.
+\]">\[
+A_n=\frac1{n!}\int_0^1x^n(1-x)^ne^x\,dx,\qquad
+B_n=\frac1{n!}\int_0^1x^{n+1}(1-x)^ne^x\,dx.
+\]</span>
+<p>They are positive, and <span class="math" data-tex="\(0&lt;A_{n+1}/A_n\leq1/[4(n+1)]&lt;1\)">\(0&lt;A_{n+1}/A_n\leq1/[4(n+1)]&lt;1\)</span>. The bound follows by multiplying the integrand by <span class="math" data-tex="\(x(1-x)/(n+1)\leq1/[4(n+1)]\)">\(x(1-x)/(n+1)\leq1/[4(n+1)]\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, integrate the derivatives of <span class="math" data-tex="\(x^n(1-x)^n/n!\)">\(x^n(1-x)^n/n!\)</span> and <span class="math" data-tex="\(x^{n+1}(1-x)^n/n!\)">\(x^{n+1}(1-x)^n/n!\)</span> against <span class="math" data-tex="\(e^x\)">\(e^x\)</span>. Their boundary terms vanish. The first derivative is <span class="math" data-tex="\((1-2x)x^{n-1}(1-x)^{n-1}/(n-1)!\)">\((1-2x)x^{n-1}(1-x)^{n-1}/(n-1)!\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+A_n+A_{n-1}=2B_{n-1}.
+\]">\[
+A_n+A_{n-1}=2B_{n-1}.
+\]</span>
+<p>For the second derivative, use</p>
+<span class="math math-display" data-tex="\[
+\frac{d}{dx}\frac{x^{n+1}(1-x)^n}{n!}
+=(n+1)\frac{x^n(1-x)^n}{n!}
+-\frac{x^{n+1}(1-x)^{n-1}}{(n-1)!}.
+\]">\[
+\frac{d}{dx}\frac{x^{n+1}(1-x)^n}{n!}
+=(n+1)\frac{x^n(1-x)^n}{n!}
+-\frac{x^{n+1}(1-x)^{n-1}}{(n-1)!}.
+\]</span>
+<p>The last integral is <span class="math" data-tex="\(B_{n-1}-nA_n\)">\(B_{n-1}-nA_n\)</span>, because <span class="math" data-tex="\(x^2=x-x(1-x)\)">\(x^2=x-x(1-x)\)</span>. Integration by parts therefore gives <span class="math" data-tex="\((2n+1)A_n=B_{n-1}-B_n\)">\((2n+1)A_n=B_{n-1}-B_n\)</span>. Eliminate the <span class="math" data-tex="\(B\)">\(B\)</span>'s to obtain</p>
+<span class="math math-display" data-tex="\[
+A_{n-1}=(4n+2)A_n+A_{n+1}\qquad(n\geq1).
+\]">\[
+A_{n-1}=(4n+2)A_n+A_{n+1}\qquad(n\geq1).
+\]</span>
+<p>Direct integration gives <span class="math" data-tex="\(A_0=e-1\)">\(A_0=e-1\)</span>, <span class="math" data-tex="\(B_0=1\)">\(B_0=1\)</span>, and <span class="math" data-tex="\(A_1=3-e\)">\(A_1=3-e\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\frac{e+1}{e-1}=2+\frac{A_1}{A_0},\qquad
+\frac{A_{n-1}}{A_n}=4n+2+\frac{A_{n+1}}{A_n}.
+\]">\[
+\frac{e+1}{e-1}=2+\frac{A_1}{A_0},\qquad
+\frac{A_{n-1}}{A_n}=4n+2+\frac{A_{n+1}}{A_n}.
+\]</span>
+<p>Every last quotient lies strictly between zero and one. These are exactly the successive integer parts and remainders of the simple continued-fraction algorithm. Hence</p>
+<span class="math math-display" data-tex="\[
+t:=\frac{e+1}{e-1}=[2;6,10,14,\ldots].
+\]">\[
+t:=\frac{e+1}{e-1}=[2;6,10,14,\ldots].
+\]</span>
+<p>Let <span class="math" data-tex="\(r_n/s_n\)">\(r_n/s_n\)</span> be its convergents. Thus <span class="math" data-tex="\(r_0=2,s_0=1\)">\(r_0=2,s_0=1\)</span>, <span class="math" data-tex="\(r_1=13,s_1=6\)">\(r_1=13,s_1=6\)</span>, and for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> each sequence satisfies <span class="math" data-tex="\(u_n=(4n+2)u_{n-1}+u_{n-2}\)">\(u_n=(4n+2)u_{n-1}+u_{n-2}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be the limit of the continued fraction asserted for <span class="math" data-tex="\(e\)">\(e\)</span>, and let its convergent numerators and denominators be <span class="math" data-tex="\(P_j,Q_j\)">\(P_j,Q_j\)</span>. For either sequence <span class="math" data-tex="\(u_j=P_j\)">\(u_j=P_j\)</span> or <span class="math" data-tex="\(u_j=Q_j\)">\(u_j=Q_j\)</span>, its recurrence over the next three digits <span class="math" data-tex="\(2n,1,1\)">\(2n,1,1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+u_{3n+1}=(4n+1)u_{3n-2}+2u_{3n-3}.
+\]">\[
+u_{3n+1}=(4n+1)u_{3n-2}+2u_{3n-3}.
+\]</span>
+<p>The two preceding digits equal one, so <span class="math" data-tex="\(2u_{3n-3}=u_{3n-2}+u_{3n-5}\)">\(2u_{3n-3}=u_{3n-2}+u_{3n-5}\)</span>. The subsequences <span class="math" data-tex="\(u_{3n+1}\)">\(u_{3n+1}\)</span> therefore satisfy the same recurrence <span class="math" data-tex="\(U_n=(4n+2)U_{n-1}+U_{n-2}\)">\(U_n=(4n+2)U_{n-1}+U_{n-2}\)</span> for <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Their initial values are <span class="math" data-tex="\(P_1=3,Q_1=1,P_4=19,Q_4=7\)">\(P_1=3,Q_1=1,P_4=19,Q_4=7\)</span>. They agree with <span class="math" data-tex="\(r_n+s_n\)">\(r_n+s_n\)</span> and <span class="math" data-tex="\(r_n-s_n\)">\(r_n-s_n\)</span>, respectively. Uniqueness of a sequence from its two initial values and recurrence gives</p>
+<span class="math math-display" data-tex="\[
+\frac{P_{3n+1}}{Q_{3n+1}}=\frac{r_n+s_n}{r_n-s_n}.
+\]">\[
+\frac{P_{3n+1}}{Q_{3n+1}}=\frac{r_n+s_n}{r_n-s_n}.
+\]</span>
+<p>Pass to the limit. Since <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E=\frac{t+1}{t-1}=e.
+\]">\[
+E=\frac{t+1}{t-1}=e.
+\]</span>
+<p>This proves the expansion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> Cohn proves Euler's expansion with integrals of the same kind. Waldschmidt, Course 12, §7.1, derives the expansion of <span class="math" data-tex="\((e+1)/(e-1)\)">\((e+1)/(e-1)\)</span> and passes to Euler's expansion of <span class="math" data-tex="\(e\)">\(e\)</span> by the same elimination of convergent indices.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — a binary construction.</strong> For <span class="math" data-tex="\(L_2=\sum_{n\geq1}2^{-n!}\)">\(L_2=\sum_{n\geq1}2^{-n!}\)</span>, exhibit integer numerators and denominators, a positive tail bound, and approximations of every prescribed exponent. Prove irrationality before applying Liouville's theorem.</p>
+</li>
+<li>
+<p><strong>Easy — a sharper quadratic constant.</strong> Show that, for every <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span> and <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, <span class="math" data-tex="\(|\sqrt3-p/q|&gt;1/[(2\sqrt3+1)q^2]\)">\(|\sqrt3-p/q|&gt;1/[(2\sqrt3+1)q^2]\)</span>. Compare this with the bound from the naive height.</p>
+</li>
+<li>
+<p><strong>Medium — continuously many choices.</strong> For each sequence <span class="math" data-tex="\((c_n)_{n\geq2}\in\{1,2\}^{\mathbb N}\)">\((c_n)_{n\geq2}\in\{1,2\}^{\mathbb N}\)</span>, let <span class="math" data-tex="\(x_c=\sum_{n\geq2}c_n10^{-n!}\)">\(x_c=\sum_{n\geq2}c_n10^{-n!}\)</span>. Prove that every <span class="math" data-tex="\(x_c\)">\(x_c\)</span> is Liouville and that different sequences give different numbers. Deduce that the Liouville set has the cardinality of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium — rational affine changes.</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> is Liouville, <span class="math" data-tex="\(r\in\mathbb Q\setminus\{0\}\)">\(r\in\mathbb Q\setminus\{0\}\)</span> and <span class="math" data-tex="\(s\in\mathbb Q\)">\(s\in\mathbb Q\)</span>, prove that <span class="math" data-tex="\(rx+s\)">\(rx+s\)</span> is Liouville. Use this to give a density proof independent of Baire's theorem.</p>
+</li>
+<li>
+<p><strong>Medium — a metric proof.</strong> For a fixed bounded interval, estimate the measure of the points admitting infinitely many approximations with error less than <span class="math" data-tex="\(q^{-2-\eta}\)">\(q^{-2-\eta}\)</span>. Then deduce <span class="math" data-tex="\(\mu(x)=2\)">\(\mu(x)=2\)</span> almost everywhere. Explain why a countable family of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s suffices.</p>
+</li>
+<li>
+<p><strong>Hard — the exponent of <span class="math" data-tex="\(e\)">\(e\)</span>.</strong> Use Euler's expansion proved in Theorem 1.11:</p>
+</li>
+</ol>
+<span class="math math-display" data-tex="\[
+e=[2;1,2,1,1,4,1,1,6,1,\ldots],\qquad
+a_{3k-2}=a_{3k}=1,\quad a_{3k-1}=2k.
+\]">\[
+e=[2;1,2,1,1,4,1,1,6,1,\ldots],\qquad
+a_{3k-2}=a_{3k}=1,\quad a_{3k-1}=2k.
+\]</span>
+<p>Prove that <span class="math" data-tex="\(\mu(e)=2\)">\(\mu(e)=2\)</span>. Your argument must bound all rational approximations, not just the convergents.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> Take <span class="math" data-tex="\(q_j=2^{j!}\)">\(q_j=2^{j!}\)</span> and <span class="math" data-tex="\(p_j=\sum_{n=1}^j2^{j!-n!}\)">\(p_j=\sum_{n=1}^j2^{j!-n!}\)</span>. Proposition 1.6 gives <span class="math" data-tex="\(0&lt;L_2-p_j/q_j&lt;2q_j^{-j-1}\)">\(0&lt;L_2-p_j/q_j&lt;2q_j^{-j-1}\)</span>. If <span class="math" data-tex="\(L_2=A/B\)">\(L_2=A/B\)</span>, the positive error is at least <span class="math" data-tex="\(1/(Bq_j)\)">\(1/(Bq_j)\)</span>, a contradiction as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>. For a target exponent <span class="math" data-tex="\(u\)">\(u\)</span>, choose <span class="math" data-tex="\(j+1&gt;u\)">\(j+1&gt;u\)</span> and <span class="math" data-tex="\(q_j^{j+1-u}&gt;2\)">\(q_j^{j+1-u}&gt;2\)</span>. This yields <span class="math" data-tex="\(0&lt;L_2-p_j/q_j&lt;q_j^{-u}\)">\(0&lt;L_2-p_j/q_j&lt;q_j^{-u}\)</span>, so <span class="math" data-tex="\(L_2\)">\(L_2\)</span> is Liouville and transcendental. The last summand in <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is one and the others are even for <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, so these fractions are already reduced.</p>
+<p><strong>2.</strong> The integer <span class="math" data-tex="\(p^2-3q^2\)">\(p^2-3q^2\)</span> is nonzero. If the error is less than one, <span class="math" data-tex="\(|p/q+\sqrt3|&lt;2\sqrt3+1\)">\(|p/q+\sqrt3|&lt;2\sqrt3+1\)</span>, and factorization gives the asserted strict bound. Otherwise the right-hand side is less than one. The minimal polynomial <span class="math" data-tex="\(X^2-3\)">\(X^2-3\)</span> has height three, so Theorem 1.3 gives the weaker constant <span class="math" data-tex="\(1/[12(1+\sqrt3)]\)">\(1/[12(1+\sqrt3)]\)</span>.</p>
+<p><strong>3.</strong> The truncation with denominator <span class="math" data-tex="\(10^{j!}\)">\(10^{j!}\)</span> has positive error smaller than <span class="math" data-tex="\(4\cdot10^{-(j+1)!}\)">\(4\cdot10^{-(j+1)!}\)</span>, by summing a geometric upper bound for the remaining digits. The argument in Proposition 1.6 first excludes rationality and then yields every exponent. If two sequences first differ at index <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, their first differing contribution has magnitude <span class="math" data-tex="\(10^{-k!}\)">\(10^{-k!}\)</span>, while the sum of all later possible differences is smaller than <span class="math" data-tex="\(2\cdot10^{-(k+1)!}&lt;10^{-k!}\)">\(2\cdot10^{-(k+1)!}&lt;10^{-k!}\)</span>. They cannot cancel. Thus the map from binary sequences is injective. Binary sequences have cardinality continuum, and <span class="math" data-tex="\(\mathcal L\subset\mathbb R\)">\(\mathcal L\subset\mathbb R\)</span>, proving the claim.</p>
+<p><strong>4.</strong> Choose integers <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>, <span class="math" data-tex="\(a\neq0\)">\(a\neq0\)</span>, with <span class="math" data-tex="\(r=a/b\)">\(r=a/b\)</span> and <span class="math" data-tex="\(s=c/b\)">\(s=c/b\)</span>. For an approximation <span class="math" data-tex="\(p/q\)">\(p/q\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>, approximate <span class="math" data-tex="\(rx+s\)">\(rx+s\)</span> by <span class="math" data-tex="\((ap+cq)/(bq)\)">\((ap+cq)/(bq)\)</span>. The new error is <span class="math" data-tex="\((|a|/b)|x-p/q|\)">\((|a|/b)|x-p/q|\)</span>. Its reduced denominator <span class="math" data-tex="\(Q\)">\(Q\)</span> is at most <span class="math" data-tex="\(bq\)">\(bq\)</span>. For a target exponent <span class="math" data-tex="\(n\)">\(n\)</span>, use infinitely many approximations to <span class="math" data-tex="\(x\)">\(x\)</span> of exponent <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. For large <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{|a|}{b}q^{-n-1}&lt;b^{-n}q^{-n}\leq Q^{-n}.
+\]">\[
+\frac{|a|}{b}q^{-n-1}&lt;b^{-n}q^{-n}\leq Q^{-n}.
+\]</span>
+<p>The transformed number is irrational: otherwise solving the affine equation would make <span class="math" data-tex="\(x\)">\(x\)</span> rational. Its approximating reduced denominators are unbounded, so eventually <span class="math" data-tex="\(Q\geq2\)">\(Q\geq2\)</span>. This proves the claim. Fix one Liouville number, for example <span class="math" data-tex="\(L_{10}\)">\(L_{10}\)</span>; its rational translates form a dense set of Liouville numbers because <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is dense.</p>
+<p><strong>5.</strong> In <span class="math" data-tex="\([-B,B]\)">\([-B,B]\)</span>, for each <span class="math" data-tex="\(q\)">\(q\)</span> there are <span class="math" data-tex="\(O_B(q)\)">\(O_B(q)\)</span> numerators whose intervals of radius <span class="math" data-tex="\(q^{-2-\eta}\)">\(q^{-2-\eta}\)</span> meet the interval. The total measure over denominators <span class="math" data-tex="\(q\geq N\)">\(q\geq N\)</span> is <span class="math" data-tex="\(O_B(\sum_{q\geq N}q^{-1-\eta})\)">\(O_B(\sum_{q\geq N}q^{-1-\eta})\)</span>, tending to zero. The limsup set is contained in every such tail union and is null. Apply this for <span class="math" data-tex="\(\eta=1/k\)">\(\eta=1/k\)</span> and for <span class="math" data-tex="\(B\in\mathbb N\)">\(B\in\mathbb N\)</span>; both operations are countable. If <span class="math" data-tex="\(\mu(x)&gt;2\)">\(\mu(x)&gt;2\)</span>, then <span class="math" data-tex="\(\mu(x)&gt;2+1/k\)">\(\mu(x)&gt;2+1/k\)</span> for some <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(x\)">\(x\)</span> lies in one of the null exceptional sets. Outside them and the rational set, Dirichlet gives equality.</p>
+<p><strong>6.</strong> Euler's formula gives <span class="math" data-tex="\(a_{n+1}\leq2(n+1)\)">\(a_{n+1}\leq2(n+1)\)</span>. The recurrence implies <span class="math" data-tex="\(q_{n+2}\geq2q_n\)">\(q_{n+2}\geq2q_n\)</span>, hence <span class="math" data-tex="\(q_n\geq2^{(n-1)/2}\)">\(q_n\geq2^{(n-1)/2}\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Therefore, for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, eventually <span class="math" data-tex="\(2(n+1)+2\leq q_n^\eta\)">\(2(n+1)+2\leq q_n^\eta\)</span>. Given a large denominator <span class="math" data-tex="\(q\)">\(q\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(q_n\leq q&lt;q_{n+1}\)">\(q_n\leq q&lt;q_{n+1}\)</span>. Lemma 1.10 yields</p>
+<span class="math math-display" data-tex="\[
+|e-p/q|&gt;\frac1{(a_{n+1}+2)q^2}
+\geq\frac1{q_n^\eta q^2}\geq q^{-2-\eta}.
+\]">\[
+|e-p/q|&gt;\frac1{(a_{n+1}+2)q^2}
+\geq\frac1{q_n^\eta q^2}\geq q^{-2-\eta}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mu(e)\leq2+\eta\)">\(\mu(e)\leq2+\eta\)</span> for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, while Dirichlet gives <span class="math" data-tex="\(\mu(e)\geq2\)">\(\mu(e)\geq2\)</span>. The linear growth of the partial quotients causes no increase in the exponent because the denominators grow exponentially.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Thue's and Roth's approximation theorems orient the exponent comparison. The complete proof for every real algebraic irrational and every positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is <a href="TR-TRANS-12.html">Roth's theorem and its consequences</a>, Theorem 12.1. Roth's bound implies the weaker Thue exponent because <span class="math" data-tex="\(d/2+1&gt;2\)">\(d/2+1&gt;2\)</span> for <span class="math" data-tex="\(d\ge3\)">\(d\ge3\)</span>. The explicit Liouville bound, field arguments, complex root existence, topology and measure arguments, and continued-fraction results used here, including Euler's expansion, are proved in this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Waldschmidt.</strong> M. Waldschmidt, <em>Diophantine approximation, irrationality and transcendence</em>, IMPA course notes, Course 4 (2010), §4.1.2 on quadratic bounds and §4.1.3, Theorem 42 on Thue's exponent. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours4.pdf">Open notes</a>.</li>
+<li><strong>Stacks.</strong> The Stacks project, <em>Fields</em>, Tag 09GI, algebraic elements form a subextension. <a href="https://stacks.math.columbia.edu/tag/09GI">Official theorem</a>. The AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers; it retains the same tags. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-algebraic-elements">AI Integrated Stacks Project, algebraic elements</a>.</li>
+<li><strong>Evertse.</strong> J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-6.pdf"><em>Diophantine Approximation</em>, Chapter 6: Approximation of algebraic numbers by rationals</a>, Leiden course notes, §6.1, Theorem 6.1 and its explicit constant, and the exponents of Thue, Siegel, Gel'fond and Dyson, and Roth.</li>
+<li><strong>Soundararajan.</strong> K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §1, Theorems 1–4: the theorems of Liouville, Thue, Roth and Dirichlet.</li>
+<li><strong>Cohn.</strong> H. Cohn, <a href="https://arxiv.org/abs/math/0601660v3"><em>A short proof of the simple continued fraction expansion of e</em></a>, arXiv:math/0601660v3, 2006, also in <em>American Mathematical Monthly</em> 113 (2006): Euler's expansion of <span class="math" data-tex="\(e\)">\(e\)</span> by a variant of Hermite's integral method.</li>
+<li><strong>Waldschmidt, continued fractions.</strong> M. Waldschmidt, <em>Diophantine approximation, irrationality and transcendence</em>, IMPA course notes (2010): Course 5, §6.2, and Course 8, §6.4, on simple continued fractions and best approximations; Course 12, §7.1, on the continued fractions of <span class="math" data-tex="\((e+1)/(e-1)\)">\((e+1)/(e-1)\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span>. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours5.pdf">Course 5</a>, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours8.pdf">Course 8</a>, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours12.pdf">Course 12</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-02.html">Heights of algebraic numbers →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Cauchy's theorem for cycles and its consequences · Foundations of von Neumann algebras</title>
+<meta content="A lesson of the course Foundations of von Neumann algebras. Draft, written by AI; English only for now." name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<link href="../../assets/site.css" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer="" id="MathJax-script" src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav aria-label="Main" class="primary-nav">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav aria-label="Breadcrumb" class="crumbs"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Foundations of von Neumann algebras</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 20</span></nav>
+<article class="lesson"><h1 id="cauchy-s-theorem-for-cycles-and-its-consequences">Cauchy's theorem for cycles and its consequences</h1>
+<p><em>Originally written and self-checked by Claude Opus 5.5 (Anthropic), October 2026. GPT-6.1 Sol (OpenAI), at the Ultra setting, read and self-checked the full lesson and all four solutions, supplied the elementary integration proofs and corrected the edge cases, October 2026. Public domain (CC0).</em></p>
+<p>This lesson proves the complex analysis that the operator-algebra lessons use. It covers:</p>
+<ul>
+<li>the index of a cycle;</li>
+<li>Goursat's theorem and Cauchy's theorem in convex sets;</li>
+<li>power series: holomorphic functions are analytic, with Cauchy's estimates;</li>
+<li>Liouville's theorem, Morera's theorem, Weierstrass's convergence theorem, the maximum modulus principle and the identity theorem;</li>
+<li>Cauchy's theorem and integral formula for cycles, with Dixon's proof;</li>
+<li>cycles that surround a compact set inside an open set;</li>
+<li>the same theorems for functions with values in a Banach space.</li>
+</ul>
+<p>The lesson uses <a href="hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-02">Hahn–Banach separation and uniform boundedness</a>. Lemma 0.1 below proves the elementary real and Banach-valued integration facts required here: Riemann integration on intervals, the fundamental theorem and chain rule, rectangle interchange, and differentiation of parameter integrals. The later complex-analysis proofs require no other integration theorem. The scalar exponential, its exact period and continuous local angles are proved in <span class="unlinked">The complex exponential and the circle, Theorems 2–4 and Proposition 6</span>. The earlier scalar limit, compactness and calculus proofs are in <span class="unlinked">Real analysis on closed intervals, Theorems 3–6, 8 and 12–13</span>.</p>
+<h2 id="conventions">Conventions</h2>
+<p><em>Holomorphic functions.</em> <span class="math" data-tex="\(U\)">\(U\)</span> denotes an open subset of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. A function <span class="math" data-tex="\(f:U\to\mathbb C\)">\(f:U\to\mathbb C\)</span> is <em>holomorphic</em> if it is complex differentiable at every point of <span class="math" data-tex="\(U\)">\(U\)</span>. No continuity of <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is assumed. <span class="math" data-tex="\(D(c,r)\)">\(D(c,r)\)</span> is the open disc and <span class="math" data-tex="\(\bar D(c,r)\)">\(\bar D(c,r)\)</span> the closed disc of radius <span class="math" data-tex="\(r\)">\(r\)</span> about <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><em>Paths and cycles.</em></p>
+<ul>
+<li>A <em>path</em> is a piecewise continuously differentiable map <span class="math" data-tex="\(\gamma:[a,b]\to\mathbb C\)">\(\gamma:[a,b]\to\mathbb C\)</span>. It is <em>closed</em> if <span class="math" data-tex="\(\gamma(a)=\gamma(b)\)">\(\gamma(a)=\gamma(b)\)</span>. Its image is <span class="math" data-tex="\(\gamma^*\)">\(\gamma^*\)</span>, and its length is <span class="math" data-tex="\(\ell(\gamma)=\int_a^b|\gamma&#x27;|\)">\(\ell(\gamma)=\int_a^b|\gamma&#x27;|\)</span>.</li>
+<li><span class="math" data-tex="\([z,w]\)">\([z,w]\)</span> is the segment <span class="math" data-tex="\(t\mapsto z+t(w-z)\)">\(t\mapsto z+t(w-z)\)</span>, <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>.</li>
+<li>For a closed triangle <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> with vertices <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, <span class="math" data-tex="\(\partial\Delta\)">\(\partial\Delta\)</span> is the closed path <span class="math" data-tex="\([a,b]+[b,c]+[c,a]\)">\([a,b]+[b,c]+[c,a]\)</span>.</li>
+<li><span class="math" data-tex="\(\partial D(c,r)\)">\(\partial D(c,r)\)</span> is the circle <span class="math" data-tex="\(t\mapsto c+re^{it}\)">\(t\mapsto c+re^{it}\)</span>, <span class="math" data-tex="\(t\in[0,2\pi]\)">\(t\in[0,2\pi]\)</span>.</li>
+<li>A <em>cycle</em> <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a finite family of closed paths, read as a formal sum. <span class="math" data-tex="\(\Gamma^*\)">\(\Gamma^*\)</span> is the union of their images, and <span class="math" data-tex="\(\ell(\Gamma)\)">\(\ell(\Gamma)\)</span> is the sum of their lengths.</li>
+</ul>
+<p><em>Integrals.</em> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a Banach space. Lemma 0.1 below proves existence and the norm, bounded-map and uniform-limit properties of the Riemann integral of a continuous <span class="math" data-tex="\(F:[a,b]\to X\)">\(F:[a,b]\to X\)</span>. For a continuous <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(\gamma^*\)">\(\gamma^*\)</span>,
+<span class="math math-display" data-tex="\[
+\int_\gamma F(\lambda)\,d\lambda=\int_a^bF(\gamma(t))\gamma&#x27;(t)\,dt ,
+\]">\[
+\int_\gamma F(\lambda)\,d\lambda=\int_a^bF(\gamma(t))\gamma&#x27;(t)\,dt ,
+\]</span>
+taken piece by piece. The integral over a cycle is the sum over its paths, and <span class="math" data-tex="\(\|\int_\Gamma F\|\leq\ell(\Gamma)\sup_{\Gamma^*}\|F\|\)">\(\|\int_\Gamma F\|\leq\ell(\Gamma)\sup_{\Gamma^*}\|F\|\)</span>.</p>
+<p><em>Primitives.</em> If a scalar function <span class="math" data-tex="\(F\)">\(F\)</span> is continuous on an open set containing <span class="math" data-tex="\(\gamma^*\)">\(\gamma^*\)</span> and has a primitive <span class="math" data-tex="\(G\)">\(G\)</span> there, meaning <span class="math" data-tex="\(G\)">\(G\)</span> is holomorphic with <span class="math" data-tex="\(G&#x27;=F\)">\(G&#x27;=F\)</span>, then <span class="math" data-tex="\(\int_\gamma F=G(\gamma(b))-G(\gamma(a))\)">\(\int_\gamma F=G(\gamma(b))-G(\gamma(a))\)</span>. This follows from the chain rule <span class="math" data-tex="\((G\circ\gamma)&#x27;=F(\gamma)\gamma&#x27;\)">\((G\circ\gamma)&#x27;=F(\gamma)\gamma&#x27;\)</span> and the fundamental theorem of calculus on each piece. In particular <span class="math" data-tex="\(\int_\gamma F=0\)">\(\int_\gamma F=0\)</span> when <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is closed. Every polynomial has a primitive.</p>
+<h3 id="OA-FND-CT-07"><span id="oa-fnd-ct-07"></span>Elementary integration tools</h3>
+<p>The following tools apply to functions with values in any real or complex Banach space <span class="math" data-tex="\(X\)">\(X\)</span>. They supply the integration facts used throughout this lesson and in the Banach-algebra lesson.</p>
+<p><strong>Lemma 0.1</strong> (Intervals, rectangles and parameters).</p>
+<ol>
+<li>A continuous <span class="math" data-tex="\(F:[a,b]\to X\)">\(F:[a,b]\to X\)</span> has a Riemann integral. It is linear, commutes with bounded linear maps, satisfies <span class="math" data-tex="\(\|\int_a^b F\|\leq\int_a^b\|F\|\)">\(\|\int_a^b F\|\leq\int_a^b\|F\|\)</span>, and respects uniform limits.</li>
+<li>The function <span class="math" data-tex="\(P(t)=\int_a^t F(s)\,ds\)">\(P(t)=\int_a^t F(s)\,ds\)</span> has derivative <span class="math" data-tex="\(P&#x27;(t)=F(t)\)">\(P&#x27;(t)=F(t)\)</span> in the interior, with one-sided derivatives at the endpoints. If <span class="math" data-tex="\(G\)">\(G\)</span> is continuously differentiable, then <span class="math" data-tex="\(\int_a^bG&#x27;(t)\,dt=G(b)-G(a)\)">\(\int_a^bG&#x27;(t)\,dt=G(b)-G(a)\)</span>. The chain rule and substitution hold for continuously differentiable real paths; a holomorphic primitive with continuous derivative satisfies the same chain rule along a piecewise continuously differentiable complex path.</li>
+<li>For continuous <span class="math" data-tex="\(F:[a,b]\times[c,d]\to X\)">\(F:[a,b]\times[c,d]\to X\)</span>, the two iterated Riemann integrals agree.</li>
+<li>Suppose <span class="math" data-tex="\(K(t,s)\)">\(K(t,s)\)</span> and its partial derivative <span class="math" data-tex="\(\partial_tK(t,s)\)">\(\partial_tK(t,s)\)</span> are continuous on a rectangle. Then <span class="math" data-tex="\(t\mapsto\int_c^dK(t,s)\,ds\)">\(t\mapsto\int_c^dK(t,s)\,ds\)</span> is differentiable, with derivative <span class="math" data-tex="\(\int_c^d\partial_tK(t,s)\,ds\)">\(\int_c^d\partial_tK(t,s)\,ds\)</span>. When both variables range over <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, the moving-endpoint integral satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{d}{dt}\int_a^tK(t,s)\,ds
+\\
+=K(t,t)+\int_a^t\partial_tK(t,s)\,ds .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{d}{dt}\int_a^tK(t,s)\,ds
+\\
+=K(t,t)+\int_a^t\partial_tK(t,s)\,ds .
+\end{gathered}
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> <em>Compactness and uniform continuity.</em> A closed bounded interval or rectangle is compact. To see the finite-cover statement directly, if an open cover has no finite subcover, bisect each coordinate interval and choose a resulting closed box still having no finite subcover. Continue with nested boxes. Completeness of the real numbers gives a common point, and the diameters tend to zero. A member of the cover containing that point contains every sufficiently small box, a contradiction. A continuous map on such a box is bounded and uniformly continuous. For the latter claim, given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose for each <span class="math" data-tex="\(x\)">\(x\)</span> a radius <span class="math" data-tex="\(r_x&gt;0\)">\(r_x&gt;0\)</span> such that <span class="math" data-tex="\(\|F(y)-F(x)\|&lt;\varepsilon/2\)">\(\|F(y)-F(x)\|&lt;\varepsilon/2\)</span> when <span class="math" data-tex="\(|y-x|&lt;2r_x\)">\(|y-x|&lt;2r_x\)</span> within the box. Finitely many balls <span class="math" data-tex="\(B(x_j,r_{x_j})\)">\(B(x_j,r_{x_j})\)</span> cover it. If <span class="math" data-tex="\(|y-z|&lt;\min_jr_{x_j}\)">\(|y-z|&lt;\min_jr_{x_j}\)</span>, choose a ball containing <span class="math" data-tex="\(y\)">\(y\)</span>; both <span class="math" data-tex="\(y,z\)">\(y,z\)</span> are within <span class="math" data-tex="\(2r_{x_j}\)">\(2r_{x_j}\)</span> of its centre, giving <span class="math" data-tex="\(\|F(y)-F(z)\|&lt;\varepsilon\)">\(\|F(y)-F(z)\|&lt;\varepsilon\)</span>.</p>
+<p><em>Riemann sums.</em> Assume <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>; a degenerate interval has integral zero. Write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(F;\mathcal P)\\
+=\sum_j(t_j-t_{j-1})F(\xi_j),
+\\
+t_{j-1}\\
+\leq\xi_j\\
+\leq t_j,
+\end{gathered}
+\]">\[
+\begin{gathered}
+S(F;\mathcal P)\\
+=\sum_j(t_j-t_{j-1})F(\xi_j),
+\\
+t_{j-1}\\
+\leq\xi_j\\
+\leq t_j,
+\end{gathered}
+\]</span>
+for a tagged partition, and let its mesh be the largest <span class="math" data-tex="\(t_j-t_{j-1}\)">\(t_j-t_{j-1}\)</span>. Put <span class="math" data-tex="\(\omega(\delta)=\sup\{\|F(u)-F(v)\|:|u-v|\leq\delta\}\)">\(\omega(\delta)=\sup\{\|F(u)-F(v)\|:|u-v|\leq\delta\}\)</span>, so <span class="math" data-tex="\(\omega(\delta)\to0\)">\(\omega(\delta)\to0\)</span>. If a partition of mesh at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is refined, expanding each original summand over its subintervals shows that its sum differs from any tagged refined sum by at most <span class="math" data-tex="\((b-a)\omega(\delta)\)">\((b-a)\omega(\delta)\)</span>. Two partitions of mesh at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span> have a common refinement, so their sums differ by at most <span class="math" data-tex="\(2(b-a)\omega(\delta)\)">\(2(b-a)\omega(\delta)\)</span>. Sums along uniform partitions therefore converge by completeness of <span class="math" data-tex="\(X\)">\(X\)</span>; comparison with those sums shows that all tagged sums tend to the same limit as their meshes tend to zero. This defines <span class="math" data-tex="\(\int_a^bF\)">\(\int_a^bF\)</span>. Passing the finite-sum identities to the limit proves linearity and commutation with bounded maps. The finite-sum estimate
+<span class="math" data-tex="\(\|S(F;\mathcal P)\|\leq\sum_j(t_j-t_{j-1})\|F(\xi_j)\|\)">\(\|S(F;\mathcal P)\|\leq\sum_j(t_j-t_{j-1})\|F(\xi_j)\|\)</span>
+gives the stated norm bound. In particular, a uniform change of size at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span> changes the integral by at most <span class="math" data-tex="\((b-a)\eta\)">\((b-a)\eta\)</span>, which proves the uniform-limit assertion. Splitting a partition at an interior point proves additivity over adjacent intervals. Define reversed integrals by changing sign.</p>
+<p><em>The fundamental theorem and the chain rule.</em> For interior <span class="math" data-tex="\(t\)">\(t\)</span> and nonzero small <span class="math" data-tex="\(h\)">\(h\)</span>, the norm of
+<span class="math" data-tex="\((P(t+h)-P(t))/h-F(t)\)">\((P(t+h)-P(t))/h-F(t)\)</span>
+is at most <span class="math" data-tex="\(\sup_{s\text{ between }t,t+h}\|F(s)-F(t)\|\)">\(\sup_{s\text{ between }t,t+h}\|F(s)-F(t)\|\)</span>, which tends to zero. This also gives the endpoint derivatives. To prove the converse, first recall the scalar mean value theorem: a continuous real function on an interval attains its extrema; if its endpoint values agree and it is not constant, some extremum is interior and its derivative is zero, since the two one-sided difference quotients have opposite signs. This is Rolle's theorem. Subtracting the line joining the endpoints gives the mean value theorem. Thus a scalar function with zero derivative is constant.</p>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> has continuous derivative <span class="math" data-tex="\(F\)">\(F\)</span>, the function <span class="math" data-tex="\(G-P\)">\(G-P\)</span> has zero derivative. Compose it with each bounded linear functional on <span class="math" data-tex="\(X\)">\(X\)</span>; in the complex case apply the real mean value theorem to both real and imaginary parts. These scalar functions are constant, and <a href="hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html#oa-fnd-hb-02">Hahn–Banach separation, Corollary 2.3 of the first lesson</a>, shows that <span class="math" data-tex="\(G-P\)">\(G-P\)</span> itself is constant. This gives the converse fundamental theorem. For a differentiable real function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, inserting
+<span class="math" data-tex="\(\phi(t+h)-\phi(t)=\phi&#x27;(t)h+o(|h|)\)">\(\phi(t+h)-\phi(t)=\phi&#x27;(t)h+o(|h|)\)</span>
+into the differentiability expansion of <span class="math" data-tex="\(G\)">\(G\)</span> proves <span class="math" data-tex="\((G\circ\phi)&#x27;=(G&#x27;\circ\phi)\phi&#x27;\)">\((G\circ\phi)&#x27;=(G&#x27;\circ\phi)\phi&#x27;\)</span>. The same calculation with complex increments proves the chain rule for a holomorphic <span class="math" data-tex="\(G\)">\(G\)</span> along a differentiable complex path. Continuity of the displayed derivative permits the fundamental theorem on each path piece. Real substitution follows by applying this chain rule to the primitive <span class="math" data-tex="\(P(u)=\int_{u_0}^uF(v)\,dv\)">\(P(u)=\int_{u_0}^uF(v)\,dv\)</span>. No monotonicity of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is needed for the oriented identity.</p>
+<p><em>Rectangles.</em> Joint uniform continuity makes <span class="math" data-tex="\(x\mapsto\int_c^dF(x,y)\,dy\)">\(x\mapsto\int_c^dF(x,y)\,dy\)</span> continuous, since the norm of a difference is at most <span class="math" data-tex="\((d-c)\sup_y\|F(x,y)-F(x&#x27;,y)\|\)">\((d-c)\sup_y\|F(x,y)-F(x&#x27;,y)\|\)</span>; the analogous statement holds in the other variable. Approximate <span class="math" data-tex="\(F\)">\(F\)</span> by the function constant on each cell of a rectangular grid, using a value of <span class="math" data-tex="\(F\)">\(F\)</span> at a corner of that cell. Give boundary points a consistent half-open-cell convention, with the final cells closed at the outer boundary. For grid mesh <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the uniform error is at most the modulus of continuity at <span class="math" data-tex="\(\sqrt2\delta\)">\(\sqrt2\delta\)</span>. A one-variable step function with <span class="math" data-tex="\(m\)">\(m\)</span> division points is Riemann integrable: in a partition of mesh <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, intervals meeting those points have total length at most <span class="math" data-tex="\(2m\eta\)">\(2m\eta\)</span>; all other summands give exactly the appropriate constant times length. The error on the exceptional intervals tends to zero, since the finitely many values are bounded. Each iterated integral of the rectangular step function is consequently the same finite sum
+<span class="math" data-tex="\(\sum_{i,j}(t_i-t_{i-1})(s_j-s_{j-1})F(t_{i-1},s_{j-1})\)">\(\sum_{i,j}(t_i-t_{i-1})(s_j-s_{j-1})F(t_{i-1},s_{j-1})\)</span>.
+Both iterated integrals of <span class="math" data-tex="\(F\)">\(F\)</span> differ from this sum by at most the area of the rectangle times that modulus, which tends to zero. This proves (3), including its Banach-valued version.</p>
+<p><em>Parameters.</em> Fix an interior parameter <span class="math" data-tex="\(t\)">\(t\)</span>. The fundamental theorem, applied with <span class="math" data-tex="\(s\)">\(s\)</span> fixed, gives
+<span class="math math-display" data-tex="\[
+\frac{K(t+h,s)-K(t,s)}{h}
+=\frac1h\int_t^{t+h}\partial_tK(u,s)\,du .
+\]">\[
+\frac{K(t+h,s)-K(t,s)}{h}
+=\frac1h\int_t^{t+h}\partial_tK(u,s)\,du .
+\]</span>
+Joint uniform continuity of <span class="math" data-tex="\(\partial_tK\)">\(\partial_tK\)</span> makes the right side converge to <span class="math" data-tex="\(\partial_tK(t,s)\)">\(\partial_tK(t,s)\)</span> uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>. The uniform-limit assertion in (1) permits integration in <span class="math" data-tex="\(s\)">\(s\)</span>, proving the fixed-endpoint formula. For <span class="math" data-tex="\(J(t)=\int_a^tK(t,s)\,ds\)">\(J(t)=\int_a^tK(t,s)\,ds\)</span>, subtract to obtain
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J(t+h)-J(t)
+\\
+=\int_a^t\big(K(t+h,s)-K(t,s)\big)\,ds
+\\
++\int_t^{t+h}K(t+h,s)\,ds .
+\end{gathered}
+\]">\[
+\begin{gathered}
+J(t+h)-J(t)
+\\
+=\int_a^t\big(K(t+h,s)-K(t,s)\big)\,ds
+\\
++\int_t^{t+h}K(t+h,s)\,ds .
+\end{gathered}
+\]</span>
+After division by <span class="math" data-tex="\(h\)">\(h\)</span>, the first term has the limit already proved and the second tends to <span class="math" data-tex="\(K(t,t)\)">\(K(t,t)\)</span> by joint continuity. This proves (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-CT-01"><span id="oa-fnd-ct-01"></span>1. The index of a cycle</h2>
+<p>For a cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and <span class="math" data-tex="\(z\notin\Gamma^*\)">\(z\notin\Gamma^*\)</span>, the <em>index</em> is
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_\Gamma(z)=\frac1{2\pi i}\int_\Gamma\frac{d\lambda}{\lambda-z}.
+\]">\[
+\operatorname{Ind}_\Gamma(z)=\frac1{2\pi i}\int_\Gamma\frac{d\lambda}{\lambda-z}.
+\]</span></p>
+<p><strong>Lemma 1.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(\operatorname{Ind}_\Gamma\)">\(\operatorname{Ind}_\Gamma\)</span> takes integer values on <span class="math" data-tex="\(\mathbb C\setminus\Gamma^*\)">\(\mathbb C\setminus\Gamma^*\)</span>, is constant on each connected component, and is <span class="math" data-tex="\(0\)">\(0\)</span> on the unbounded component.</li>
+<li>For the circle <span class="math" data-tex="\(\partial D(c,r)\)">\(\partial D(c,r)\)</span>, the index is <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(D(c,r)\)">\(D(c,r)\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> outside <span class="math" data-tex="\(\bar D(c,r)\)">\(\bar D(c,r)\)</span>.</li>
+<li>For the positively oriented boundary <span class="math" data-tex="\(\partial Q\)">\(\partial Q\)</span> of a closed square <span class="math" data-tex="\(Q\)">\(Q\)</span>, the index is <span class="math" data-tex="\(1\)">\(1\)</span> on the interior of <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> outside <span class="math" data-tex="\(Q\)">\(Q\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <em>Integer values.</em> Let <span class="math" data-tex="\(\gamma:[a,b]\to\mathbb C\)">\(\gamma:[a,b]\to\mathbb C\)</span> be a closed path and <span class="math" data-tex="\(z\notin\gamma^*\)">\(z\notin\gamma^*\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(t)\\
+=\int_a^t\frac{\gamma&#x27;(s)}{\gamma(s)-z}\,ds,\\
+F(t)\\
+=e^{-h(t)}(\gamma(t)-z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+h(t)\\
+=\int_a^t\frac{\gamma&#x27;(s)}{\gamma(s)-z}\,ds,\\
+F(t)\\
+=e^{-h(t)}(\gamma(t)-z).
+\end{gathered}
+\]</span>
+Wherever <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is differentiable, <span class="math" data-tex="\(F&#x27;=e^{-h}\big(-h&#x27;(\gamma-z)+\gamma&#x27;\big)=0\)">\(F&#x27;=e^{-h}\big(-h&#x27;(\gamma-z)+\gamma&#x27;\big)=0\)</span>. <span class="math" data-tex="\(F\)">\(F\)</span> is continuous, so it is constant. Since <span class="math" data-tex="\(\gamma(b)=\gamma(a)\neq z\)">\(\gamma(b)=\gamma(a)\neq z\)</span>, <span class="math" data-tex="\(F(b)=F(a)\)">\(F(b)=F(a)\)</span> gives <span class="math" data-tex="\(e^{-h(b)}=1\)">\(e^{-h(b)}=1\)</span>. So <span class="math" data-tex="\(h(b)/(2\pi i)\)">\(h(b)/(2\pi i)\)</span> is an integer. The index of a cycle is a sum of such integers.</p>
+<p><em>Constancy.</em> Let <span class="math" data-tex="\(d(z)=\operatorname{dist}(z,\Gamma^*)\)">\(d(z)=\operatorname{dist}(z,\Gamma^*)\)</span>. For <span class="math" data-tex="\(z,w\notin\Gamma^*\)">\(z,w\notin\Gamma^*\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\operatorname{Ind}_\Gamma(z)-\operatorname{Ind}_\Gamma(w)|\\
+=\frac1{2\pi}\Big|\int_\Gamma\frac{(z-w)\,d\lambda}{(\lambda-z)(\lambda-w)}\Big|\\
+\leq\frac{\ell(\Gamma)|z-w|}{2\pi d(z)d(w)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\operatorname{Ind}_\Gamma(z)-\operatorname{Ind}_\Gamma(w)|\\
+=\frac1{2\pi}\Big|\int_\Gamma\frac{(z-w)\,d\lambda}{(\lambda-z)(\lambda-w)}\Big|\\
+\leq\frac{\ell(\Gamma)|z-w|}{2\pi d(z)d(w)} .
+\end{gathered}
+\]</span>
+So the index is continuous. A continuous integer-valued function is constant on connected sets. Also <span class="math" data-tex="\(|\operatorname{Ind}_\Gamma(z)|\leq\ell(\Gamma)/(2\pi d(z))&lt;1\)">\(|\operatorname{Ind}_\Gamma(z)|\leq\ell(\Gamma)/(2\pi d(z))&lt;1\)</span> for <span class="math" data-tex="\(d(z)\)">\(d(z)\)</span> large, so the index vanishes far out, hence on the unbounded component.</p>
+<p>(2) At the centre, <span class="math" data-tex="\(\frac1{2\pi i}\int_0^{2\pi}\frac{ire^{it}}{re^{it}}\,dt=1\)">\(\frac1{2\pi i}\int_0^{2\pi}\frac{ire^{it}}{re^{it}}\,dt=1\)</span>. The open disc is connected, and the complement of the closed disc is connected and unbounded. Apply (1).</p>
+<p>(3) After a translation and a scaling, which do not change the index, <span class="math" data-tex="\(Q=[-1,1]^2\)">\(Q=[-1,1]^2\)</span> with centre <span class="math" data-tex="\(0\)">\(0\)</span>. Multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> maps each side of <span class="math" data-tex="\(\partial Q\)">\(\partial Q\)</span> onto the next one and leaves <span class="math" data-tex="\(d\lambda/\lambda\)">\(d\lambda/\lambda\)</span> unchanged. So the four sides contribute equally. On the right side, <span class="math" data-tex="\(\lambda=1+it\)">\(\lambda=1+it\)</span> with <span class="math" data-tex="\(t\in[-1,1]\)">\(t\in[-1,1]\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{-1}^1\frac{i\,dt}{1+it}\\
+=\int_{-1}^1\frac{t+i}{1+t^2}\,dt\\
+=i\int_{-1}^1\frac{dt}{1+t^2}\\
+=\frac{i\pi}2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{-1}^1\frac{i\,dt}{1+it}\\
+=\int_{-1}^1\frac{t+i}{1+t^2}\,dt\\
+=i\int_{-1}^1\frac{dt}{1+t^2}\\
+=\frac{i\pi}2 .
+\end{gathered}
+\]</span>
+So the index at <span class="math" data-tex="\(0\)">\(0\)</span> is <span class="math" data-tex="\(4\cdot\frac{i\pi}2/(2\pi i)=1\)">\(4\cdot\frac{i\pi}2/(2\pi i)=1\)</span>, and it is <span class="math" data-tex="\(1\)">\(1\)</span> on the connected interior.</p>
+<p>The complement of <span class="math" data-tex="\(Q\)">\(Q\)</span> is connected: the ray from <span class="math" data-tex="\(0\)">\(0\)</span> through a point outside <span class="math" data-tex="\(Q\)">\(Q\)</span> leaves the convex set <span class="math" data-tex="\(Q\)">\(Q\)</span> for good. It is unbounded, so it lies in the unbounded component, where the index is <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-CT-02"><span id="oa-fnd-ct-02"></span>2. Cauchy's theorem in convex sets</h2>
+<p><strong>Theorem 2.1</strong> (Goursat). Let <span class="math" data-tex="\(V\)">\(V\)</span> be open, <span class="math" data-tex="\(p\in V\)">\(p\in V\)</span>, and <span class="math" data-tex="\(f:V\to\mathbb C\)">\(f:V\to\mathbb C\)</span> continuous on <span class="math" data-tex="\(V\)">\(V\)</span> and holomorphic on <span class="math" data-tex="\(V\setminus\{p\}\)">\(V\setminus\{p\}\)</span>. Then <span class="math" data-tex="\(\int_{\partial\Delta}f=0\)">\(\int_{\partial\Delta}f=0\)</span> for every closed triangle <span class="math" data-tex="\(\Delta\subseteq V\)">\(\Delta\subseteq V\)</span>.</p>
+<p><strong>Proof.</strong> If the vertices are collinear, the three segments go back and forth along one segment, and the integrals cancel. Let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be nondegenerate, with diameter <span class="math" data-tex="\(d\)">\(d\)</span> and perimeter <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><em>Case 1: <span class="math" data-tex="\(p\notin\Delta\)">\(p\notin\Delta\)</span>.</em> Let <span class="math" data-tex="\(c=|\int_{\partial\Delta}f|\)">\(c=|\int_{\partial\Delta}f|\)</span>.</p>
+<ul>
+<li>The midpoints of the sides cut <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> into four triangles. Oriented like <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, their boundary integrals add up to <span class="math" data-tex="\(\int_{\partial\Delta}f\)">\(\int_{\partial\Delta}f\)</span>, because the inner edges cancel. So one of them, <span class="math" data-tex="\(\Delta_1\)">\(\Delta_1\)</span>, has <span class="math" data-tex="\(|\int_{\partial\Delta_1}f|\geq c/4\)">\(|\int_{\partial\Delta_1}f|\geq c/4\)</span>.</li>
+<li>Repeating this gives closed triangles <span class="math" data-tex="\(\Delta\supseteq\Delta_1\supseteq\Delta_2\supseteq\cdots\)">\(\Delta\supseteq\Delta_1\supseteq\Delta_2\supseteq\cdots\)</span> with <span class="math" data-tex="\(|\int_{\partial\Delta_n}f|\geq c/4^n\)">\(|\int_{\partial\Delta_n}f|\geq c/4^n\)</span>, diameter <span class="math" data-tex="\(d/2^n\)">\(d/2^n\)</span> and perimeter <span class="math" data-tex="\(\ell/2^n\)">\(\ell/2^n\)</span>.</li>
+<li>They have a common point <span class="math" data-tex="\(z_0\in\Delta\)">\(z_0\in\Delta\)</span>, and <span class="math" data-tex="\(z_0\neq p\)">\(z_0\neq p\)</span>. Write <span class="math" data-tex="\(R(z)\)">\(R(z)\)</span> for <span class="math" data-tex="\(f(z)-f(z_0)-f&#x27;(z_0)(z-z_0)\)">\(f(z)-f(z_0)-f&#x27;(z_0)(z-z_0)\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(z)-f(z_0)-f&#x27;(z_0)(z-z_0)|\\
+\leq\varepsilon|z-z_0|\\
+(|z-z_0|&lt;\delta).
+\end{gathered}
+\]">\[
+\begin{gathered}
+|f(z)-f(z_0)-f&#x27;(z_0)(z-z_0)|\\
+\leq\varepsilon|z-z_0|\\
+(|z-z_0|&lt;\delta).
+\end{gathered}
+\]</span></li>
+<li>The function <span class="math" data-tex="\(f(z_0)+f&#x27;(z_0)(z-z_0)\)">\(f(z_0)+f&#x27;(z_0)(z-z_0)\)</span> is a polynomial, so its integral over <span class="math" data-tex="\(\partial\Delta_n\)">\(\partial\Delta_n\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>. Once <span class="math" data-tex="\(d/2^n&lt;\delta\)">\(d/2^n&lt;\delta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac c{4^n}\\
+\leq\Big|\int_{\partial\Delta_n}R(z)\,dz\Big|\\
+\leq\frac\ell{2^n}\cdot\varepsilon\frac d{2^n} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac c{4^n}\\
+\leq\Big|\int_{\partial\Delta_n}R(z)\,dz\Big|\\
+\leq\frac\ell{2^n}\cdot\varepsilon\frac d{2^n} .
+\end{gathered}
+\]</span></li>
+<li>So <span class="math" data-tex="\(c\leq\varepsilon\ell d\)">\(c\leq\varepsilon\ell d\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and <span class="math" data-tex="\(c=0\)">\(c=0\)</span>.</li>
+</ul>
+<p><em>Case 2: <span class="math" data-tex="\(p\)">\(p\)</span> is a vertex.</em> Let the vertices be <span class="math" data-tex="\(p,b,e\)">\(p,b,e\)</span>. Choose <span class="math" data-tex="\(b&#x27;\in[p,b]\)">\(b&#x27;\in[p,b]\)</span> and <span class="math" data-tex="\(e&#x27;\in[p,e]\)">\(e&#x27;\in[p,e]\)</span> near <span class="math" data-tex="\(p\)">\(p\)</span>, different from <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<ul>
+<li><span class="math" data-tex="\(\int_{\partial\Delta}f\)">\(\int_{\partial\Delta}f\)</span> is the sum of the boundary integrals over the triangles <span class="math" data-tex="\((p,b&#x27;,e&#x27;)\)">\((p,b&#x27;,e&#x27;)\)</span>, <span class="math" data-tex="\((b&#x27;,b,e)\)">\((b&#x27;,b,e)\)</span> and <span class="math" data-tex="\((b&#x27;,e,e&#x27;)\)">\((b&#x27;,e,e&#x27;)\)</span>.</li>
+<li>The last two do not contain <span class="math" data-tex="\(p\)">\(p\)</span>, so their integrals vanish by Case 1.</li>
+<li>The first is at most <span class="math" data-tex="\(\ell(\partial(p,b&#x27;,e&#x27;))\max_\Delta|f|\)">\(\ell(\partial(p,b&#x27;,e&#x27;))\max_\Delta|f|\)</span> in absolute value. This tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(b&#x27;,e&#x27;\to p\)">\(b&#x27;,e&#x27;\to p\)</span>.</li>
+</ul>
+<p><em>Case 3: <span class="math" data-tex="\(p\in\Delta\)">\(p\in\Delta\)</span> is not a vertex.</em> Cut <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> into the three triangles with vertex <span class="math" data-tex="\(p\)">\(p\)</span> and the sides of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> as opposite sides. Their boundary integrals add up to <span class="math" data-tex="\(\int_{\partial\Delta}f\)">\(\int_{\partial\Delta}f\)</span>, and each vanishes by Case 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2</strong> (Cauchy's theorem in a convex set). Let <span class="math" data-tex="\(V\)">\(V\)</span> be convex and open, <span class="math" data-tex="\(p\in V\)">\(p\in V\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> continuous on <span class="math" data-tex="\(V\)">\(V\)</span> and holomorphic on <span class="math" data-tex="\(V\setminus\{p\}\)">\(V\setminus\{p\}\)</span>. Fix <span class="math" data-tex="\(a\in V\)">\(a\in V\)</span> and put <span class="math" data-tex="\(F(z)=\int_{[a,z]}f\)">\(F(z)=\int_{[a,z]}f\)</span>. Then <span class="math" data-tex="\(F\)">\(F\)</span> is holomorphic on <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(F&#x27;=f\)">\(F&#x27;=f\)</span>. Hence <span class="math" data-tex="\(\int_\gamma f=0\)">\(\int_\gamma f=0\)</span> for every closed path <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(z,z+h\in V\)">\(z,z+h\in V\)</span>, the triangle with vertices <span class="math" data-tex="\(a,z,z+h\)">\(a,z,z+h\)</span> lies in <span class="math" data-tex="\(V\)">\(V\)</span>, by convexity. By Theorem 2.1, <span class="math" data-tex="\(F(z+h)-F(z)=\int_{[z,z+h]}f\)">\(F(z+h)-F(z)=\int_{[z,z+h]}f\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Big|\frac{F(z+h)-F(z)}h-f(z)\Big|\\
+=\Big|\frac1h\int_{[z,z+h]}(f(w)-f(z))\,dw\Big|\\
+\leq\max_{w\in[z,z+h]}|f(w)-f(z)|\to0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Big|\frac{F(z+h)-F(z)}h-f(z)\Big|\\
+=\Big|\frac1h\int_{[z,z+h]}(f(w)-f(z))\,dw\Big|\\
+\leq\max_{w\in[z,z+h]}|f(w)-f(z)|\to0 .
+\end{gathered}
+\]</span>
+The last claim follows from the Conventions on primitives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3</strong> (Cauchy's formula in a convex set). Let <span class="math" data-tex="\(V\)">\(V\)</span> be convex and open, <span class="math" data-tex="\(f\)">\(f\)</span> holomorphic on <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> a closed path in <span class="math" data-tex="\(V\)">\(V\)</span>, and <span class="math" data-tex="\(z\in V\setminus\gamma^*\)">\(z\in V\setminus\gamma^*\)</span>. Then
+<span class="math math-display" data-tex="\[
+f(z)\operatorname{Ind}_\gamma(z)=\frac1{2\pi i}\int_\gamma\frac{f(w)}{w-z}\,dw .
+\]">\[
+f(z)\operatorname{Ind}_\gamma(z)=\frac1{2\pi i}\int_\gamma\frac{f(w)}{w-z}\,dw .
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(g(w)=(f(w)-f(z))/(w-z)\)">\(g(w)=(f(w)-f(z))/(w-z)\)</span> for <span class="math" data-tex="\(w\neq z\)">\(w\neq z\)</span>, and <span class="math" data-tex="\(g(z)=f&#x27;(z)\)">\(g(z)=f&#x27;(z)\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> is continuous on <span class="math" data-tex="\(V\)">\(V\)</span> and holomorphic on <span class="math" data-tex="\(V\setminus\{z\}\)">\(V\setminus\{z\}\)</span>. By Theorem 2.2, <span class="math" data-tex="\(\int_\gamma g=0\)">\(\int_\gamma g=0\)</span>, which is the formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-CT-03"><span id="oa-fnd-ct-03"></span>3. Power series and their consequences</h2>
+<p><strong>Lemma 3.1</strong> (Power series). Let <span class="math" data-tex="\(c\in\mathbb C\)">\(c\in\mathbb C\)</span>, <span class="math" data-tex="\(0&lt;R\leq\infty\)">\(0&lt;R\leq\infty\)</span>, and let <span class="math" data-tex="\(a_n\in\mathbb C\)">\(a_n\in\mathbb C\)</span> satisfy <span class="math" data-tex="\(\sum_n|a_n|\rho^n&lt;\infty\)">\(\sum_n|a_n|\rho^n&lt;\infty\)</span> for every <span class="math" data-tex="\(0&lt;\rho&lt;R\)">\(0&lt;\rho&lt;R\)</span>. Then:</p>
+<ul>
+<li><span class="math" data-tex="\(f(z)=\sum_na_n(z-c)^n\)">\(f(z)=\sum_na_n(z-c)^n\)</span> is holomorphic on <span class="math" data-tex="\(D(c,R)\)">\(D(c,R)\)</span>, with <span class="math" data-tex="\(f&#x27;(z)=\sum_{n\geq1}na_n(z-c)^{n-1}\)">\(f&#x27;(z)=\sum_{n\geq1}na_n(z-c)^{n-1}\)</span>;</li>
+<li>the coefficients of <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> satisfy the same hypothesis.</li>
+</ul>
+<p>Consequently <span class="math" data-tex="\(f\)">\(f\)</span> has derivatives of all orders, and <span class="math" data-tex="\(a_n=f^{(n)}(c)/n!\)">\(a_n=f^{(n)}(c)/n!\)</span>.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and fix <span class="math" data-tex="\(0&lt;\rho&lt;\rho&#x27;&lt;R\)">\(0&lt;\rho&lt;\rho&#x27;&lt;R\)</span>.</p>
+<ul>
+<li><em>The derived coefficients.</em> <span class="math" data-tex="\(n|a_n|\rho^{n-1}\leq|a_n|\rho&#x27;^n\cdot\frac n\rho(\rho/\rho&#x27;)^n\)">\(n|a_n|\rho^{n-1}\leq|a_n|\rho&#x27;^n\cdot\frac n\rho(\rho/\rho&#x27;)^n\)</span>, and <span class="math" data-tex="\(n(\rho/\rho&#x27;)^n\to0\)">\(n(\rho/\rho&#x27;)^n\to0\)</span>. So <span class="math" data-tex="\(\sum_{n\geq1}n|a_n|\rho^{n-1}&lt;\infty\)">\(\sum_{n\geq1}n|a_n|\rho^{n-1}&lt;\infty\)</span>. In the same way <span class="math" data-tex="\(\sum_{n\geq2}n^2|a_n|\rho^{n-2}&lt;\infty\)">\(\sum_{n\geq2}n^2|a_n|\rho^{n-2}&lt;\infty\)</span>.</li>
+<li><em>An estimate.</em> The constant term has zero difference quotient and the <span class="math" data-tex="\(n=1\)">\(n=1\)</span> term has zero derivative remainder. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and <span class="math" data-tex="\(|z|,|w|\leq\rho\)">\(|z|,|w|\leq\rho\)</span> with <span class="math" data-tex="\(z\neq w\)">\(z\neq w\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{z^n-w^n}{z-w}-nw^{n-1}\\
+=\sum_{k=0}^{n-1}w^k\big(z^{n-1-k}-w^{n-1-k}\big).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{z^n-w^n}{z-w}-nw^{n-1}\\
+=\sum_{k=0}^{n-1}w^k\big(z^{n-1-k}-w^{n-1-k}\big).
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(|z^m-w^m|\leq m\rho^{m-1}|z-w|\)">\(|z^m-w^m|\leq m\rho^{m-1}|z-w|\)</span>, its absolute value is at most <span class="math" data-tex="\(n^2\rho^{n-2}|z-w|\)">\(n^2\rho^{n-2}|z-w|\)</span>.</li>
+<li><em>The derivative.</em> So
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Big|\frac{f(z)-f(w)}{z-w}-\sum_{n\geq1}na_nw^{n-1}\Big|\\
+\leq|z-w|\sum_{n\geq2}n^2|a_n|\rho^{n-2},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Big|\frac{f(z)-f(w)}{z-w}-\sum_{n\geq1}na_nw^{n-1}\Big|\\
+\leq|z-w|\sum_{n\geq2}n^2|a_n|\rho^{n-2},
+\end{gathered}
+\]</span>
+which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(z\to w\)">\(z\to w\)</span>.</li>
+<li>Repeating, <span class="math" data-tex="\(f\)">\(f\)</span> has derivatives of all orders. Evaluating the series of <span class="math" data-tex="\(f^{(n)}\)">\(f^{(n)}\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> gives <span class="math" data-tex="\(f^{(n)}(0)=n!a_n\)">\(f^{(n)}(0)=n!a_n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p><strong>Theorem 3.2</strong> (Holomorphic functions are analytic). Let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on <span class="math" data-tex="\(U\supseteq D(c,R)\)">\(U\supseteq D(c,R)\)</span>. Then
+<span class="math math-display" data-tex="\[
+f(z)=\sum_na_n(z-c)^n\qquad(z\in D(c,R)),
+\]">\[
+f(z)=\sum_na_n(z-c)^n\qquad(z\in D(c,R)),
+\]</span>
+with <span class="math" data-tex="\(\sum_n|a_n|\rho^n&lt;\infty\)">\(\sum_n|a_n|\rho^n&lt;\infty\)</span> for every <span class="math" data-tex="\(0&lt;\rho&lt;R\)">\(0&lt;\rho&lt;R\)</span>. For every <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_n\\
+=\frac{f^{(n)}(c)}{n!}\\
+=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{f(w)}{(w-c)^{n+1}}\,dw,\\
+|a_n|\\
+\leq\frac{M(r)}{r^n},
+\end{gathered}
+\]">\[
+\begin{gathered}
+a_n\\
+=\frac{f^{(n)}(c)}{n!}\\
+=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{f(w)}{(w-c)^{n+1}}\,dw,\\
+|a_n|\\
+\leq\frac{M(r)}{r^n},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(M(r)=\max_{|w-c|=r}|f(w)|\)">\(M(r)=\max_{|w-c|=r}|f(w)|\)</span> (<em>Cauchy's estimates</em>). In particular <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is holomorphic, and <span class="math" data-tex="\(f\)">\(f\)</span> has derivatives of all orders.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(|z-c|&lt;r\)">\(|z-c|&lt;r\)</span>. The disc <span class="math" data-tex="\(D(c,R)\)">\(D(c,R)\)</span> is convex, and the index of <span class="math" data-tex="\(\partial D(c,r)\)">\(\partial D(c,r)\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> (Lemma 1.1). By Theorem 2.3,
+<span class="math math-display" data-tex="\[
+f(z)=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{f(w)}{w-z}\,dw .
+\]">\[
+f(z)=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{f(w)}{w-z}\,dw .
+\]</span>
+For <span class="math" data-tex="\(|w-c|=r\)">\(|w-c|=r\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1{w-z}=\sum_n\frac{(z-c)^n}{(w-c)^{n+1}},
+\]">\[
+\frac1{w-z}=\sum_n\frac{(z-c)^n}{(w-c)^{n+1}},
+\]</span>
+uniformly in <span class="math" data-tex="\(w\)">\(w\)</span>, because <span class="math" data-tex="\(|z-c|/r&lt;1\)">\(|z-c|/r&lt;1\)</span>. Integrating term by term gives <span class="math" data-tex="\(f(z)=\sum_na_n(r)(z-c)^n\)">\(f(z)=\sum_na_n(r)(z-c)^n\)</span>, with <span class="math" data-tex="\(a_n(r)\)">\(a_n(r)\)</span> the integral in the statement and <span class="math" data-tex="\(|a_n(r)|\leq M(r)r^{-n}\)">\(|a_n(r)|\leq M(r)r^{-n}\)</span>. This series converges absolutely for <span class="math" data-tex="\(|z-c|&lt;r\)">\(|z-c|&lt;r\)</span>. By Lemma 3.1, <span class="math" data-tex="\(a_n(r)=f^{(n)}(c)/n!\)">\(a_n(r)=f^{(n)}(c)/n!\)</span>, which does not depend on <span class="math" data-tex="\(r\)">\(r\)</span>. Since <span class="math" data-tex="\(r&lt;R\)">\(r&lt;R\)</span> is arbitrary, the expansion holds on <span class="math" data-tex="\(D(c,R)\)">\(D(c,R)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3</strong> (Liouville). A bounded holomorphic function <span class="math" data-tex="\(f:\mathbb C\to\mathbb C\)">\(f:\mathbb C\to\mathbb C\)</span> is constant.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(|f|\leq M\)">\(|f|\leq M\)</span>, Cauchy's estimates at <span class="math" data-tex="\(c=0\)">\(c=0\)</span> give <span class="math" data-tex="\(|a_n|\leq M/r^n\)">\(|a_n|\leq M/r^n\)</span> for every <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. So <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.4</strong> (Morera). Let <span class="math" data-tex="\(f\)">\(f\)</span> be continuous on <span class="math" data-tex="\(U\)">\(U\)</span>, with <span class="math" data-tex="\(\int_{\partial\Delta}f=0\)">\(\int_{\partial\Delta}f=0\)</span> for every closed triangle <span class="math" data-tex="\(\Delta\subseteq U\)">\(\Delta\subseteq U\)</span>. Then <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic.</p>
+<p><strong>Proof.</strong> On each disc <span class="math" data-tex="\(D(c,r)\subseteq U\)">\(D(c,r)\subseteq U\)</span>, the function <span class="math" data-tex="\(F(z)=\int_{[c,z]}f\)">\(F(z)=\int_{[c,z]}f\)</span> satisfies <span class="math" data-tex="\(F&#x27;=f\)">\(F&#x27;=f\)</span>, by the proof of Theorem 2.2, which used only the vanishing of triangle integrals. So <span class="math" data-tex="\(F\)">\(F\)</span> is holomorphic, and by Theorem 3.2 so is <span class="math" data-tex="\(F&#x27;=f\)">\(F&#x27;=f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.5</strong> (Weierstrass). Let <span class="math" data-tex="\(f_n\)">\(f_n\)</span> be holomorphic on <span class="math" data-tex="\(U\)">\(U\)</span>, and let <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> uniformly on every compact subset of <span class="math" data-tex="\(U\)">\(U\)</span>. Then <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(f\)">\(f\)</span> is continuous. For a closed triangle <span class="math" data-tex="\(\Delta\subseteq U\)">\(\Delta\subseteq U\)</span>, <span class="math" data-tex="\(\int_{\partial\Delta}f=\lim_n\int_{\partial\Delta}f_n=0\)">\(\int_{\partial\Delta}f=\lim_n\int_{\partial\Delta}f_n=0\)</span>, because the convergence is uniform on the compact set <span class="math" data-tex="\(\partial\Delta\)">\(\partial\Delta\)</span>. Apply Morera's theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.6</strong> (Maximum modulus). Let <span class="math" data-tex="\(f\)">\(f\)</span> be continuous on the closed unit disc <span class="math" data-tex="\(\bar D=\bar D(0,1)\)">\(\bar D=\bar D(0,1)\)</span> and holomorphic on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\max_{\bar D}|f|=\max_{|z|=1}|f(z)| .
+\]">\[
+\max_{\bar D}|f|=\max_{|z|=1}|f(z)| .
+\]</span>
+In particular, if <span class="math" data-tex="\(f=0\)">\(f=0\)</span> on the unit circle, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M=\max_{\bar D}|f|\)">\(M=\max_{\bar D}|f|\)</span>, attained at <span class="math" data-tex="\(c\)">\(c\)</span>. Suppose <span class="math" data-tex="\(|c|&lt;1\)">\(|c|&lt;1\)</span>, and put <span class="math" data-tex="\(r_0=1-|c|\)">\(r_0=1-|c|\)</span>.</p>
+<ul>
+<li><em>Mean values.</em> For <span class="math" data-tex="\(0&lt;\rho&lt;r_0\)">\(0&lt;\rho&lt;r_0\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic on the disc <span class="math" data-tex="\(D(c,r_0)\)">\(D(c,r_0)\)</span>. Theorem 3.2 at the centre, with <span class="math" data-tex="\(a_0=f(c)\)">\(a_0=f(c)\)</span>, gives
+<span class="math math-display" data-tex="\[
+f(c)=\frac1{2\pi}\int_0^{2\pi}f(c+\rho e^{it})\,dt .
+\]">\[
+f(c)=\frac1{2\pi}\int_0^{2\pi}f(c+\rho e^{it})\,dt .
+\]</span></li>
+<li>So <span class="math" data-tex="\(M=|f(c)|\leq\frac1{2\pi}\int_0^{2\pi}|f(c+\rho e^{it})|\,dt\leq M\)">\(M=|f(c)|\leq\frac1{2\pi}\int_0^{2\pi}|f(c+\rho e^{it})|\,dt\leq M\)</span>. The integrand is continuous and at most <span class="math" data-tex="\(M\)">\(M\)</span>, so it equals <span class="math" data-tex="\(M\)">\(M\)</span> everywhere: <span class="math" data-tex="\(|f|=M\)">\(|f|=M\)</span> on the circle <span class="math" data-tex="\(|z-c|=\rho\)">\(|z-c|=\rho\)</span>.</li>
+<li>Let <span class="math" data-tex="\(\rho\to r_0\)">\(\rho\to r_0\)</span>. By continuity on <span class="math" data-tex="\(\bar D\)">\(\bar D\)</span>, <span class="math" data-tex="\(|f|=M\)">\(|f|=M\)</span> at every point with <span class="math" data-tex="\(|z-c|=r_0\)">\(|z-c|=r_0\)</span>. One of these points lies on the unit circle: <span class="math" data-tex="\(c+r_0c/|c|\)">\(c+r_0c/|c|\)</span> if <span class="math" data-tex="\(c\neq0\)">\(c\neq0\)</span>, and any point of the circle if <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p><strong>Theorem 3.7</strong> (Identity theorem). Let <span class="math" data-tex="\(U\)">\(U\)</span> be connected and <span class="math" data-tex="\(f\)">\(f\)</span> holomorphic on <span class="math" data-tex="\(U\)">\(U\)</span>. If the zeros of <span class="math" data-tex="\(f\)">\(f\)</span> have an accumulation point in <span class="math" data-tex="\(U\)">\(U\)</span>, then <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. In particular, two holomorphic functions on <span class="math" data-tex="\(U\)">\(U\)</span> that agree on a nonempty open subset agree everywhere.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be the set of <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span> with <span class="math" data-tex="\(f^{(n)}(z)=0\)">\(f^{(n)}(z)=0\)</span> for every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>.</p>
+<ul>
+<li><span class="math" data-tex="\(Z\)">\(Z\)</span> is closed in <span class="math" data-tex="\(U\)">\(U\)</span>, because each <span class="math" data-tex="\(f^{(n)}\)">\(f^{(n)}\)</span> is continuous (Theorem 3.2).</li>
+<li><span class="math" data-tex="\(Z\)">\(Z\)</span> is open: if <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span> and <span class="math" data-tex="\(D(z,r)\subseteq U\)">\(D(z,r)\subseteq U\)</span>, the Taylor expansion of Theorem 3.2 shows <span class="math" data-tex="\(f=0\)">\(f=0\)</span> on <span class="math" data-tex="\(D(z,r)\)">\(D(z,r)\)</span>, so all derivatives vanish there.</li>
+<li>Let <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span> be an accumulation point of zeros, and suppose <span class="math" data-tex="\(a\notin Z\)">\(a\notin Z\)</span>. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the least <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(f^{(n)}(a)\neq0\)">\(f^{(n)}(a)\neq0\)</span>. By Theorem 3.2, <span class="math" data-tex="\(f(z)=(z-a)^mg(z)\)">\(f(z)=(z-a)^mg(z)\)</span> near <span class="math" data-tex="\(a\)">\(a\)</span>, where <span class="math" data-tex="\(g(z)=\sum_{n\geq m}a_n(z-a)^{n-m}\)">\(g(z)=\sum_{n\geq m}a_n(z-a)^{n-m}\)</span> is continuous with <span class="math" data-tex="\(g(a)=a_m\neq0\)">\(g(a)=a_m\neq0\)</span>. So <span class="math" data-tex="\(f\)">\(f\)</span> has no zeros near <span class="math" data-tex="\(a\)">\(a\)</span> other than <span class="math" data-tex="\(a\)">\(a\)</span>, a contradiction. Hence <span class="math" data-tex="\(a\in Z\)">\(a\in Z\)</span>.</li>
+<li>So <span class="math" data-tex="\(Z\)">\(Z\)</span> is nonempty, open and closed in the connected set <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(Z=U\)">\(Z=U\)</span>.</li>
+</ul>
+<p>For the last claim, apply this to the difference of the two functions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FND-CT-04"><span id="oa-fnd-ct-04"></span>4. Cauchy's theorem for cycles</h2>
+<p><strong>Lemma 4.1.</strong> The image of a path has empty interior. So does <span class="math" data-tex="\(\Gamma^*\)">\(\Gamma^*\)</span> for a cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Hence <span class="math" data-tex="\(U\setminus\Gamma^*\neq\varnothing\)">\(U\setminus\Gamma^*\neq\varnothing\)</span> for every nonempty open <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> <em>One path.</em> Let <span class="math" data-tex="\(\gamma:[a,b]\to\mathbb C\)">\(\gamma:[a,b]\to\mathbb C\)</span> be a path, and <span class="math" data-tex="\(L=\sup|\gamma&#x27;|\)">\(L=\sup|\gamma&#x27;|\)</span> over its pieces. Then <span class="math" data-tex="\(|\gamma(s)-\gamma(t)|\leq L|s-t|\)">\(|\gamma(s)-\gamma(t)|\leq L|s-t|\)</span>. If <span class="math" data-tex="\(a=b\)">\(a=b\)</span> or <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, the image is a single point and has empty interior. Otherwise <span class="math" data-tex="\(L(b-a)&gt;0\)">\(L(b-a)&gt;0\)</span>. Suppose <span class="math" data-tex="\(\gamma^*\)">\(\gamma^*\)</span> contains a closed square <span class="math" data-tex="\(Q\)">\(Q\)</span> of side <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<ul>
+<li>Cut <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> into <span class="math" data-tex="\(N\)">\(N\)</span> equal intervals. Their images are <span class="math" data-tex="\(N\)">\(N\)</span> sets of diameter at most <span class="math" data-tex="\(\varepsilon=L(b-a)/N\)">\(\varepsilon=L(b-a)/N\)</span>, and they cover <span class="math" data-tex="\(Q\)">\(Q\)</span>.</li>
+<li>Let <span class="math" data-tex="\(M=\lfloor\sigma/(2\varepsilon)\rfloor\)">\(M=\lfloor\sigma/(2\varepsilon)\rfloor\)</span>, and take <span class="math" data-tex="\(N\)">\(N\)</span> so large that <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span>. The <span class="math" data-tex="\((M+1)^2\)">\((M+1)^2\)</span> grid points of <span class="math" data-tex="\(Q\)">\(Q\)</span> with spacing <span class="math" data-tex="\(\sigma/M\)">\(\sigma/M\)</span> are at mutual distance at least <span class="math" data-tex="\(\sigma/M\geq2\varepsilon&gt;\varepsilon\)">\(\sigma/M\geq2\varepsilon&gt;\varepsilon\)</span>. So each of the <span class="math" data-tex="\(N\)">\(N\)</span> sets contains at most one of them, and <span class="math" data-tex="\(N\geq(M+1)^2&gt;(\sigma N/(2L(b-a)))^2\)">\(N\geq(M+1)^2&gt;(\sigma N/(2L(b-a)))^2\)</span>.</li>
+<li>This fails for large <span class="math" data-tex="\(N\)">\(N\)</span>.</li>
+</ul>
+<p><em>A cycle.</em> Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> consist of <span class="math" data-tex="\(\gamma_1,\dots,\gamma_m\)">\(\gamma_1,\dots,\gamma_m\)</span>, and suppose a nonempty open set <span class="math" data-tex="\(W\)">\(W\)</span> lies in <span class="math" data-tex="\(\Gamma^*\)">\(\Gamma^*\)</span>. Then <span class="math" data-tex="\(W\setminus\gamma_1^*\)">\(W\setminus\gamma_1^*\)</span> is open, because <span class="math" data-tex="\(\gamma_1^*\)">\(\gamma_1^*\)</span> is compact. It is nonempty, because <span class="math" data-tex="\(\gamma_1^*\)">\(\gamma_1^*\)</span> has empty interior. It lies in <span class="math" data-tex="\(\gamma_2^*\cup\dots\cup\gamma_m^*\)">\(\gamma_2^*\cup\dots\cup\gamma_m^*\)</span>. Repeating, we reach a nonempty open set inside a single <span class="math" data-tex="\(\gamma_k^*\)">\(\gamma_k^*\)</span>, which is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2</strong> (Cauchy's theorem for cycles). Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be a cycle in <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(\alpha)=0\)">\(\operatorname{Ind}_\Gamma(\alpha)=0\)</span> for every <span class="math" data-tex="\(\alpha\notin U\)">\(\alpha\notin U\)</span>, and let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on <span class="math" data-tex="\(U\)">\(U\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)\operatorname{Ind}_\Gamma(z)\\
+=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw\\
+(z\in U\setminus\Gamma^*),
+\\
+\text{and}\\
+\int_\Gamma f(w)\,dw\\
+=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(z)\operatorname{Ind}_\Gamma(z)\\
+=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw\\
+(z\in U\setminus\Gamma^*),
+\\
+\text{and}\\
+\int_\Gamma f(w)\,dw\\
+=0 .
+\end{gathered}
+\]</span></p>
+<p><em>Reference:</em> The Dixon argument for a closed curve is presented in <a href="https://ocw.mit.edu/courses/18-112-functions-of-a-complex-variable-fall-2008/8793d412fa0da2a4183539f5d8f7e3fd_lecture13.pdf">MIT OCW Lecture 13, by Zuoqin Wang for Sigurdur Helgason’s course</a>. The proof below includes the finite-cycle formulation.</p>
+<p><strong>Proof.</strong> <em>Step 1: a continuous difference quotient.</em> Define <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(U\times U\)">\(U\times U\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varphi(z,w)\\
+=\frac{f(w)-f(z)}{w-z}\\
+(z\neq w),\\
+\varphi(z,z)\\
+=f&#x27;(z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varphi(z,w)\\
+=\frac{f(w)-f(z)}{w-z}\\
+(z\neq w),\\
+\varphi(z,z)\\
+=f&#x27;(z).
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is continuous at points with <span class="math" data-tex="\(z\neq w\)">\(z\neq w\)</span>. Let <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span> and <span class="math" data-tex="\(D(a,r)\subseteq U\)">\(D(a,r)\subseteq U\)</span>.</p>
+<ul>
+<li><span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> is holomorphic, hence continuous (Theorem 3.2), and <span class="math" data-tex="\(f\)">\(f\)</span> is a primitive of <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>.</li>
+<li>So for <span class="math" data-tex="\(z,w\in D(a,r)\)">\(z,w\in D(a,r)\)</span>, <span class="math" data-tex="\(f(w)-f(z)=\int_{[z,w]}f&#x27;\)">\(f(w)-f(z)=\int_{[z,w]}f&#x27;\)</span>, which gives
+<span class="math math-display" data-tex="\[
+\varphi(z,w)=\int_0^1f&#x27;\big(z+t(w-z)\big)\,dt .
+\]">\[
+\varphi(z,w)=\int_0^1f&#x27;\big(z+t(w-z)\big)\,dt .
+\]</span>
+This also holds for <span class="math" data-tex="\(z=w\)">\(z=w\)</span>.</li>
+<li>As <span class="math" data-tex="\((z,w)\to(a,a)\)">\((z,w)\to(a,a)\)</span>, the integrand tends to <span class="math" data-tex="\(f&#x27;(a)\)">\(f&#x27;(a)\)</span> uniformly in <span class="math" data-tex="\(t\)">\(t\)</span>. So <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is continuous at <span class="math" data-tex="\((a,a)\)">\((a,a)\)</span>.</li>
+</ul>
+<p><em>Step 2: a holomorphic function on <span class="math" data-tex="\(U\)">\(U\)</span>.</em> Put
+<span class="math math-display" data-tex="\[
+g(z)=\frac1{2\pi i}\int_\Gamma\varphi(z,w)\,dw\qquad(z\in U).
+\]">\[
+g(z)=\frac1{2\pi i}\int_\Gamma\varphi(z,w)\,dw\qquad(z\in U).
+\]</span></p>
+<ul>
+<li><span class="math" data-tex="\(g\)">\(g\)</span> is continuous, because <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is uniformly continuous on <span class="math" data-tex="\(K\times\Gamma^*\)">\(K\times\Gamma^*\)</span> for each compact <span class="math" data-tex="\(K\subseteq U\)">\(K\subseteq U\)</span>.</li>
+<li>Let <span class="math" data-tex="\(\Delta\subseteq U\)">\(\Delta\subseteq U\)</span> be a closed triangle. After parametrizing <span class="math" data-tex="\(\partial\Delta\)">\(\partial\Delta\)</span> and the paths of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, the double integral is an iterated integral of a continuous function on finitely many rectangles. Exchanging the order of integration gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\partial\Delta}g(z)\,dz\\
+=\frac1{2\pi i}\int_\Gamma\Big(\int_{\partial\Delta}\varphi(z,w)\,dz\Big)dw .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_{\partial\Delta}g(z)\,dz\\
+=\frac1{2\pi i}\int_\Gamma\Big(\int_{\partial\Delta}\varphi(z,w)\,dz\Big)dw .
+\end{gathered}
+\]</span></li>
+<li>For fixed <span class="math" data-tex="\(w\)">\(w\)</span>, <span class="math" data-tex="\(z\mapsto\varphi(z,w)\)">\(z\mapsto\varphi(z,w)\)</span> is continuous on <span class="math" data-tex="\(U\)">\(U\)</span> and holomorphic on <span class="math" data-tex="\(U\setminus\{w\}\)">\(U\setminus\{w\}\)</span>. By Goursat's theorem 2.1, the inner integral is <span class="math" data-tex="\(0\)">\(0\)</span>.</li>
+<li>By Morera's theorem, <span class="math" data-tex="\(g\)">\(g\)</span> is holomorphic on <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+</ul>
+<p><em>Step 3: an entire function.</em> Let <span class="math" data-tex="\(V_0=\{z\notin\Gamma^*:\operatorname{Ind}_\Gamma(z)=0\}\)">\(V_0=\{z\notin\Gamma^*:\operatorname{Ind}_\Gamma(z)=0\}\)</span>. It is open by Lemma 1.1. It contains <span class="math" data-tex="\(\mathbb C\setminus U\)">\(\mathbb C\setminus U\)</span> by hypothesis, so <span class="math" data-tex="\(U\cup V_0=\mathbb C\)">\(U\cup V_0=\mathbb C\)</span>. Put
+<span class="math math-display" data-tex="\[
+g_1(z)=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw\qquad(z\in V_0).
+\]">\[
+g_1(z)=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw\qquad(z\in V_0).
+\]</span></p>
+<ul>
+<li><span class="math" data-tex="\(g_1\)">\(g_1\)</span> is holomorphic on <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, by the argument of Step 2 applied to the continuous function <span class="math" data-tex="\((z,w)\mapsto f(w)/(w-z)\)">\((z,w)\mapsto f(w)/(w-z)\)</span> on <span class="math" data-tex="\(V_0\times\Gamma^*\)">\(V_0\times\Gamma^*\)</span>, which is holomorphic in <span class="math" data-tex="\(z\)">\(z\)</span>.</li>
+<li>For <span class="math" data-tex="\(z\in U\cap V_0\)">\(z\in U\cap V_0\)</span>, <span class="math" data-tex="\(g(z)=g_1(z)-f(z)\operatorname{Ind}_\Gamma(z)=g_1(z)\)">\(g(z)=g_1(z)-f(z)\operatorname{Ind}_\Gamma(z)=g_1(z)\)</span>.</li>
+<li>So <span class="math" data-tex="\(G=g\)">\(G=g\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(G=g_1\)">\(G=g_1\)</span> on <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is a well-defined holomorphic function on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</li>
+</ul>
+<p><em>Step 4: <span class="math" data-tex="\(G=0\)">\(G=0\)</span>.</em> Choose <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(\Gamma^*\subseteq D(0,R)\)">\(\Gamma^*\subseteq D(0,R)\)</span>. The set <span class="math" data-tex="\(\{|z|&gt;R\}\)">\(\{|z|&gt;R\}\)</span> is connected and unbounded, so it lies in the unbounded component of <span class="math" data-tex="\(\mathbb C\setminus\Gamma^*\)">\(\mathbb C\setminus\Gamma^*\)</span>, and hence in <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. There
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|G(z)|\\
+=|g_1(z)|\\
+\leq\frac{\ell(\Gamma)\max_{\Gamma^*}|f|}{2\pi(|z|-R)}\to0\\
+(|z|\to\infty).
+\end{gathered}
+\]">\[
+\begin{gathered}
+|G(z)|\\
+=|g_1(z)|\\
+\leq\frac{\ell(\Gamma)\max_{\Gamma^*}|f|}{2\pi(|z|-R)}\to0\\
+(|z|\to\infty).
+\end{gathered}
+\]</span>
+So <span class="math" data-tex="\(G\)">\(G\)</span> is bounded: it is continuous on a large closed disc and small outside it. By Liouville's theorem, <span class="math" data-tex="\(G\)">\(G\)</span> is constant, and the constant is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><em>Step 5: conclusion.</em> For <span class="math" data-tex="\(z\in U\setminus\Gamma^*\)">\(z\in U\setminus\Gamma^*\)</span>,
+<span class="math math-display" data-tex="\[
+0=g(z)=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw-f(z)\operatorname{Ind}_\Gamma(z).
+\]">\[
+0=g(z)=\frac1{2\pi i}\int_\Gamma\frac{f(w)}{w-z}\,dw-f(z)\operatorname{Ind}_\Gamma(z).
+\]</span>
+This is the formula. If <span class="math" data-tex="\(U=\varnothing\)">\(U=\varnothing\)</span> there is nothing to prove. Otherwise choose <span class="math" data-tex="\(z\in U\setminus\Gamma^*\)">\(z\in U\setminus\Gamma^*\)</span> (Lemma 4.1), and apply the formula to the holomorphic function <span class="math" data-tex="\(w\mapsto(w-z)f(w)\)">\(w\mapsto(w-z)f(w)\)</span>, which vanishes at <span class="math" data-tex="\(z\)">\(z\)</span>:
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_\Gamma f(w)\,dw=0\cdot\operatorname{Ind}_\Gamma(z)=0 .\qquad\square
+\]">\[
+\frac1{2\pi i}\int_\Gamma f(w)\,dw=0\cdot\operatorname{Ind}_\Gamma(z)=0 .\qquad\square
+\]</span></p>
+<h2 id="OA-FND-CT-05"><span id="oa-fnd-ct-05"></span>5. Cycles that surround a compact set</h2>
+<p>A cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> <em>surrounds</em> a compact set <span class="math" data-tex="\(K\)">\(K\)</span> in an open set <span class="math" data-tex="\(U\supseteq K\)">\(U\supseteq K\)</span> if</p>
+<ul>
+<li><span class="math" data-tex="\(\Gamma^*\subseteq U\setminus K\)">\(\Gamma^*\subseteq U\setminus K\)</span>,</li>
+<li><span class="math" data-tex="\(\operatorname{Ind}_\Gamma=1\)">\(\operatorname{Ind}_\Gamma=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and</li>
+<li><span class="math" data-tex="\(\operatorname{Ind}_\Gamma=0\)">\(\operatorname{Ind}_\Gamma=0\)</span> on <span class="math" data-tex="\(\mathbb C\setminus U\)">\(\mathbb C\setminus U\)</span>.</li>
+</ul>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(K\subseteq U\)">\(K\subseteq U\)</span> with <span class="math" data-tex="\(K\)">\(K\)</span> compact and <span class="math" data-tex="\(U\)">\(U\)</span> open. Some cycle made of finitely many oriented segments surrounds <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, the empty cycle will do. Otherwise choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with <span class="math" data-tex="\(2\delta&lt;\operatorname{dist}(K,\mathbb C\setminus U)\)">\(2\delta&lt;\operatorname{dist}(K,\mathbb C\setminus U)\)</span>; any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> if <span class="math" data-tex="\(U=\mathbb C\)">\(U=\mathbb C\)</span>.</p>
+<p><em>The squares.</em> Consider the grid of closed squares <span class="math" data-tex="\([j\delta,(j+1)\delta]\times[k\delta,(k+1)\delta]\)">\([j\delta,(j+1)\delta]\times[k\delta,(k+1)\delta]\)</span>, <span class="math" data-tex="\(j,k\in\mathbb Z\)">\(j,k\in\mathbb Z\)</span>. Let <span class="math" data-tex="\(Q_1,\dots,Q_m\)">\(Q_1,\dots,Q_m\)</span> be those that meet <span class="math" data-tex="\(K\)">\(K\)</span>; there are finitely many, since <span class="math" data-tex="\(K\)">\(K\)</span> is bounded. Each <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> has diameter <span class="math" data-tex="\(\delta\sqrt2&lt;2\delta\)">\(\delta\sqrt2&lt;2\delta\)</span>, so it lies in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><em>The edges.</em> List the oriented edges of the positively oriented boundaries <span class="math" data-tex="\(\partial Q_1,\dots,\partial Q_m\)">\(\partial Q_1,\dots,\partial Q_m\)</span>. An edge shared by two of the <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> occurs twice, with opposite orientations. Remove all these pairs, and let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the remaining oriented edges.</p>
+<ul>
+<li>(a) For every continuous <span class="math" data-tex="\(F\)">\(F\)</span> on the union of the edges, <span class="math" data-tex="\(\sum_{e\in\mathcal E}\int_eF=\sum_i\int_{\partial Q_i}F\)">\(\sum_{e\in\mathcal E}\int_eF=\sum_i\int_{\partial Q_i}F\)</span>, because the removed pairs contribute opposite amounts.</li>
+<li>(b) Every <span class="math" data-tex="\(e\in\mathcal E\)">\(e\in\mathcal E\)</span> lies in <span class="math" data-tex="\(U\setminus K\)">\(U\setminus K\)</span>. Indeed, <span class="math" data-tex="\(e\)">\(e\)</span> is an edge of exactly one <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, so <span class="math" data-tex="\(e\subseteq U\)">\(e\subseteq U\)</span>. The grid square on the other side of <span class="math" data-tex="\(e\)">\(e\)</span> is not among the <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, so it does not meet <span class="math" data-tex="\(K\)">\(K\)</span>, and it contains <span class="math" data-tex="\(e\)">\(e\)</span>.</li>
+<li>(c) At every grid vertex, as many edges of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> end as start. This holds for the boundary of each square, hence for the full list, and removing a pair of opposite edges preserves it.</li>
+</ul>
+<p><em>A cycle.</em> By (c), <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> splits into closed paths. Start with any edge and keep following unused edges. At a vertex other than the starting one, more edges have arrived than have left, so by (c) an unused edge leaves it. Since there are finitely many edges, the walk returns to the starting vertex and closes a path. Remove its edges; (c) still holds; repeat. Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the resulting cycle. By (b), <span class="math" data-tex="\(\Gamma^*\subseteq U\setminus K\)">\(\Gamma^*\subseteq U\setminus K\)</span>.</p>
+<p><em>Index off <span class="math" data-tex="\(U\)">\(U\)</span>.</em> Let <span class="math" data-tex="\(\alpha\notin U\)">\(\alpha\notin U\)</span>. Then <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> lies in no <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, so <span class="math" data-tex="\(\operatorname{Ind}_{\partial Q_i}(\alpha)=0\)">\(\operatorname{Ind}_{\partial Q_i}(\alpha)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span> (Lemma 1.1(3)). By (a), <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(\alpha)=\sum_i\operatorname{Ind}_{\partial Q_i}(\alpha)=0\)">\(\operatorname{Ind}_\Gamma(\alpha)=\sum_i\operatorname{Ind}_{\partial Q_i}(\alpha)=0\)</span>.</p>
+<p><em>Index on <span class="math" data-tex="\(K\)">\(K\)</span>.</em></p>
+<ul>
+<li>Let <span class="math" data-tex="\(w\)">\(w\)</span> be an interior point of some <span class="math" data-tex="\(Q_{i_0}\)">\(Q_{i_0}\)</span>. It lies in no other <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>, so by (a) and Lemma 1.1(3), <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(w)=1\)">\(\operatorname{Ind}_\Gamma(w)=1\)</span>.</li>
+<li>Let <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>. It lies in some grid square, which meets <span class="math" data-tex="\(K\)">\(K\)</span>, so it is some <span class="math" data-tex="\(Q_{i_0}\)">\(Q_{i_0}\)</span>. By (b), <span class="math" data-tex="\(z\notin\Gamma^*\)">\(z\notin\Gamma^*\)</span>. Interior points <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(Q_{i_0}\)">\(Q_{i_0}\)</span> with <span class="math" data-tex="\(|w-z|&lt;\operatorname{dist}(z,\Gamma^*)\)">\(|w-z|&lt;\operatorname{dist}(z,\Gamma^*)\)</span> exist, and the segment <span class="math" data-tex="\([z,w]\)">\([z,w]\)</span> misses <span class="math" data-tex="\(\Gamma^*\)">\(\Gamma^*\)</span>. So <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> lie in one component of <span class="math" data-tex="\(\mathbb C\setminus\Gamma^*\)">\(\mathbb C\setminus\Gamma^*\)</span>, and <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(z)=\operatorname{Ind}_\Gamma(w)=1\)">\(\operatorname{Ind}_\Gamma(z)=\operatorname{Ind}_\Gamma(w)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<h2 id="OA-FND-CT-06"><span id="oa-fnd-ct-06"></span>6. Functions with values in a Banach space</h2>
+<p><strong>Theorem 6.1.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be a Banach space and <span class="math" data-tex="\(g:U\to X\)">\(g:U\to X\)</span> a map such that <span class="math" data-tex="\(\varphi\circ g\)">\(\varphi\circ g\)</span> is holomorphic for every <span class="math" data-tex="\(\varphi\in X^*\)">\(\varphi\in X^*\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(g\)">\(g\)</span> is continuous; it is even Lipschitz on a neighbourhood of each point.</li>
+<li>For every cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(\alpha)=0\)">\(\operatorname{Ind}_\Gamma(\alpha)=0\)</span> for all <span class="math" data-tex="\(\alpha\notin U\)">\(\alpha\notin U\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_\Gamma g(w)\,dw\\
+=0,\\
+g(z)\operatorname{Ind}_\Gamma(z)\\
+=\frac1{2\pi i}\int_\Gamma\frac{g(w)}{w-z}\,dw\\
+(z\in U\setminus\Gamma^*).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_\Gamma g(w)\,dw\\
+=0,\\
+g(z)\operatorname{Ind}_\Gamma(z)\\
+=\frac1{2\pi i}\int_\Gamma\frac{g(w)}{w-z}\,dw\\
+(z\in U\setminus\Gamma^*).
+\end{gathered}
+\]</span></li>
+<li>On each disc <span class="math" data-tex="\(D(c,R)\subseteq U\)">\(D(c,R)\subseteq U\)</span>, <span class="math" data-tex="\(g(z)=\sum_na_n(z-c)^n\)">\(g(z)=\sum_na_n(z-c)^n\)</span> with <span class="math" data-tex="\(a_n\in X\)">\(a_n\in X\)</span> and <span class="math" data-tex="\(\sum_n\|a_n\|\rho^n&lt;\infty\)">\(\sum_n\|a_n\|\rho^n&lt;\infty\)</span> for <span class="math" data-tex="\(\rho&lt;R\)">\(\rho&lt;R\)</span>. In particular the difference quotients <span class="math" data-tex="\((g(z+h)-g(z))/h\)">\((g(z+h)-g(z))/h\)</span> converge in norm as <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>.</li>
+<li>(<em>Liouville.</em>) If <span class="math" data-tex="\(U=\mathbb C\)">\(U=\mathbb C\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> is bounded, then <span class="math" data-tex="\(g\)">\(g\)</span> is constant.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Fix <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span> and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-tex="\(\bar D(a,2r)\subseteq U\)">\(\bar D(a,2r)\subseteq U\)</span>. By compactness, <span class="math" data-tex="\(D(a,2r+\varepsilon)\subseteq U\)">\(D(a,2r+\varepsilon)\subseteq U\)</span> for some <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>; this disc is convex. Let <span class="math" data-tex="\(C=\partial D(a,2r)\)">\(C=\partial D(a,2r)\)</span>, <span class="math" data-tex="\(\varphi\in X^*\)">\(\varphi\in X^*\)</span>, and <span class="math" data-tex="\(z\neq z&#x27;\)">\(z\neq z&#x27;\)</span> in <span class="math" data-tex="\(D(a,r)\)">\(D(a,r)\)</span>.</p>
+<ul>
+<li>By Theorem 2.3 for <span class="math" data-tex="\(\varphi\circ g\)">\(\varphi\circ g\)</span>, with index <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varphi(g(z))-\varphi(g(z&#x27;))\\
+=\frac{z-z&#x27;}{2\pi i}\int_C\frac{\varphi(g(w))}{(w-z)(w-z&#x27;)}\,dw .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\varphi(g(z))-\varphi(g(z&#x27;))\\
+=\frac{z-z&#x27;}{2\pi i}\int_C\frac{\varphi(g(w))}{(w-z)(w-z&#x27;)}\,dw .
+\end{gathered}
+\]</span></li>
+<li>On <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(|w-z|\geq r\)">\(|w-z|\geq r\)</span> and <span class="math" data-tex="\(|w-z&#x27;|\geq r\)">\(|w-z&#x27;|\geq r\)</span>. With <span class="math" data-tex="\(M_\varphi=\max_C|\varphi\circ g|\)">\(M_\varphi=\max_C|\varphi\circ g|\)</span>, which is finite because <span class="math" data-tex="\(\varphi\circ g\)">\(\varphi\circ g\)</span> is continuous, we get
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{|\varphi(g(z))-\varphi(g(z&#x27;))|}{|z-z&#x27;|}\\
+\leq\frac{4\pi r}{2\pi}\cdot\frac{M_\varphi}{r^2}\\
+=\frac{2M_\varphi}r .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{|\varphi(g(z))-\varphi(g(z&#x27;))|}{|z-z&#x27;|}\\
+\leq\frac{4\pi r}{2\pi}\cdot\frac{M_\varphi}{r^2}\\
+=\frac{2M_\varphi}r .
+\end{gathered}
+\]</span></li>
+<li>So the set of quotients <span class="math" data-tex="\((g(z)-g(z&#x27;))/(z-z&#x27;)\)">\((g(z)-g(z&#x27;))/(z-z&#x27;)\)</span>, for <span class="math" data-tex="\(z\neq z&#x27;\)">\(z\neq z&#x27;\)</span> in <span class="math" data-tex="\(D(a,r)\)">\(D(a,r)\)</span>, is bounded under every <span class="math" data-tex="\(\varphi\in X^*\)">\(\varphi\in X^*\)</span>. By the first lesson, Corollary 4.3(2), it is norm bounded. So <span class="math" data-tex="\(g\)">\(g\)</span> is Lipschitz on <span class="math" data-tex="\(D(a,r)\)">\(D(a,r)\)</span>.</li>
+</ul>
+<p>(2) By (1) the integrals exist. For every <span class="math" data-tex="\(\varphi\in X^*\)">\(\varphi\in X^*\)</span>, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> passes through the integrals, and Theorem 4.2 for <span class="math" data-tex="\(\varphi\circ g\)">\(\varphi\circ g\)</span> gives the two identities after <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is applied. Bounded functionals separate the points of <span class="math" data-tex="\(X\)">\(X\)</span> (the first lesson, Corollary 2.3(2)).</p>
+<p>(3) Let <span class="math" data-tex="\(0&lt;r&lt;R\)">\(0&lt;r&lt;R\)</span> and <span class="math" data-tex="\(|z-c|&lt;r\)">\(|z-c|&lt;r\)</span>. The cycle <span class="math" data-tex="\(\partial D(c,r)\)">\(\partial D(c,r)\)</span> has index <span class="math" data-tex="\(0\)">\(0\)</span> off <span class="math" data-tex="\(\bar D(c,r)\subseteq U\)">\(\bar D(c,r)\subseteq U\)</span>. By (2),
+<span class="math math-display" data-tex="\[
+g(z)=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{g(w)}{w-z}\,dw .
+\]">\[
+g(z)=\frac1{2\pi i}\int_{\partial D(c,r)}\frac{g(w)}{w-z}\,dw .
+\]</span>
+Expanding as in the proof of Theorem 3.2 gives <span class="math" data-tex="\(g(z)=\sum_na_n(z-c)^n\)">\(g(z)=\sum_na_n(z-c)^n\)</span>, with <span class="math" data-tex="\(\|a_n\|\leq\max_{|w-c|=r}\|g(w)\|/r^n\)">\(\|a_n\|\leq\max_{|w-c|=r}\|g(w)\|/r^n\)</span>. The <span class="math" data-tex="\(a_n\)">\(a_n\)</span> do not depend on <span class="math" data-tex="\(r\)">\(r\)</span>, because <span class="math" data-tex="\(\varphi(a_n)=(\varphi\circ g)^{(n)}(c)/n!\)">\(\varphi(a_n)=(\varphi\circ g)^{(n)}(c)/n!\)</span> for every <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The proof of Lemma 3.1 works verbatim with norms in place of absolute values, so the difference quotients converge in norm.</p>
+<p>(4) Each <span class="math" data-tex="\(\varphi\circ g\)">\(\varphi\circ g\)</span> is bounded and holomorphic on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, hence constant. So <span class="math" data-tex="\(\varphi(g(z)-g(0))=0\)">\(\varphi(g(z)-g(0))=0\)</span> for every <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and <span class="math" data-tex="\(g(z)=g(0)\)">\(g(z)=g(0)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1</strong> (medium; The fundamental theorem of algebra). Show that every nonconstant polynomial <span class="math" data-tex="\(p\)">\(p\)</span> has a complex root.</p>
+<p><em>Solution.</em> Write <span class="math" data-tex="\(p(z)=c_dz^d+\dots+c_0\)">\(p(z)=c_dz^d+\dots+c_0\)</span> with <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> and <span class="math" data-tex="\(c_d\neq0\)">\(c_d\neq0\)</span>. Then <span class="math" data-tex="\(|p(z)|\geq|c_d||z|^d/2\)">\(|p(z)|\geq|c_d||z|^d/2\)</span> for large <span class="math" data-tex="\(|z|\)">\(|z|\)</span>, so <span class="math" data-tex="\(|p(z)|\to\infty\)">\(|p(z)|\to\infty\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> had no root, <span class="math" data-tex="\(1/p\)">\(1/p\)</span> would be holomorphic on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. It would be bounded: continuous on a large closed disc and small outside. By Liouville's theorem it would be constant, and then so would <span class="math" data-tex="\(p\)">\(p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2</strong> (easy; The condition on the index). Let <span class="math" data-tex="\(U=\mathbb C\setminus\{0\}\)">\(U=\mathbb C\setminus\{0\}\)</span>, <span class="math" data-tex="\(f(z)=1/z\)">\(f(z)=1/z\)</span>, and let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the unit circle. Compute <span class="math" data-tex="\(\int_\Gamma f\)">\(\int_\Gamma f\)</span>, and say which hypothesis of Theorem 4.2 fails.</p>
+<p><em>Solution.</em> <span class="math" data-tex="\(\int_\Gamma dz/z=2\pi i\operatorname{Ind}_\Gamma(0)=2\pi i\neq0\)">\(\int_\Gamma dz/z=2\pi i\operatorname{Ind}_\Gamma(0)=2\pi i\neq0\)</span>. The hypothesis that fails is <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(\alpha)=0\)">\(\operatorname{Ind}_\Gamma(\alpha)=0\)</span> for <span class="math" data-tex="\(\alpha\notin U\)">\(\alpha\notin U\)</span>: the point <span class="math" data-tex="\(0\)">\(0\)</span> is not in <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(\operatorname{Ind}_\Gamma(0)=1\)">\(\operatorname{Ind}_\Gamma(0)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3</strong> (medium; Schwarz's lemma). Let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span> with <span class="math" data-tex="\(|f|\leq1\)">\(|f|\leq1\)</span> and <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. Show that <span class="math" data-tex="\(|f(z)|\leq|z|\)">\(|f(z)|\leq|z|\)</span> for all <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(|f&#x27;(0)|\leq1\)">\(|f&#x27;(0)|\leq1\)</span>.</p>
+<p><em>Solution.</em></p>
+<ul>
+<li>By Theorem 3.2, <span class="math" data-tex="\(f(z)=\sum_{n\geq1}a_nz^n\)">\(f(z)=\sum_{n\geq1}a_nz^n\)</span> on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span>. So <span class="math" data-tex="\(g(z)=\sum_{n\geq0}a_{n+1}z^n\)">\(g(z)=\sum_{n\geq0}a_{n+1}z^n\)</span> is holomorphic on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span> (Lemma 3.1), with <span class="math" data-tex="\(f(z)=zg(z)\)">\(f(z)=zg(z)\)</span> and <span class="math" data-tex="\(g(0)=f&#x27;(0)\)">\(g(0)=f&#x27;(0)\)</span>.</li>
+<li>For <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, the function <span class="math" data-tex="\(z\mapsto g(rz)\)">\(z\mapsto g(rz)\)</span> is holomorphic on <span class="math" data-tex="\(D(0,1/r)\supseteq\bar D(0,1)\)">\(D(0,1/r)\supseteq\bar D(0,1)\)</span>. By Theorem 3.6, <span class="math" data-tex="\(|g(rz)|\leq\max_{|w|=1}|g(rw)|\leq1/r\)">\(|g(rz)|\leq\max_{|w|=1}|g(rw)|\leq1/r\)</span> for <span class="math" data-tex="\(|z|\leq1\)">\(|z|\leq1\)</span>.</li>
+<li>Letting <span class="math" data-tex="\(r\to1\)">\(r\to1\)</span> gives <span class="math" data-tex="\(|g|\leq1\)">\(|g|\leq1\)</span> on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p><strong>Exercise 4</strong> (medium; Polynomials converging on the circle). Let <span class="math" data-tex="\(p_n\)">\(p_n\)</span> be polynomials that converge uniformly on the unit circle <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. Show that they converge uniformly on <span class="math" data-tex="\(\bar D(0,1)\)">\(\bar D(0,1)\)</span>, and that the limit <span class="math" data-tex="\(G\)">\(G\)</span> is continuous on <span class="math" data-tex="\(\bar D(0,1)\)">\(\bar D(0,1)\)</span> and holomorphic on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span>. Show that <span class="math" data-tex="\(G=0\)">\(G=0\)</span> if <span class="math" data-tex="\(G=0\)">\(G=0\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>.</p>
+<p><em>Solution.</em></p>
+<ul>
+<li>By Theorem 3.6 applied to <span class="math" data-tex="\(p_n-p_m\)">\(p_n-p_m\)</span>, <span class="math" data-tex="\(\max_{\bar D}|p_n-p_m|=\max_{\mathbb T}|p_n-p_m|\)">\(\max_{\bar D}|p_n-p_m|=\max_{\mathbb T}|p_n-p_m|\)</span>. So <span class="math" data-tex="\((p_n)\)">\((p_n)\)</span> is uniformly Cauchy on <span class="math" data-tex="\(\bar D\)">\(\bar D\)</span>, and its uniform limit <span class="math" data-tex="\(G\)">\(G\)</span> is continuous there.</li>
+<li><span class="math" data-tex="\(G\)">\(G\)</span> is holomorphic on <span class="math" data-tex="\(D(0,1)\)">\(D(0,1)\)</span> by Corollary 3.5.</li>
+<li>If <span class="math" data-tex="\(G=0\)">\(G=0\)</span> on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, then <span class="math" data-tex="\(G=0\)">\(G=0\)</span> by Theorem 3.6. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<h2 id="where-this-leads">Where this leads</h2>
+<p><a href="banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html">Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory</a> defines <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span> holomorphic near the spectrum of <span class="math" data-tex="\(x\)">\(x\)</span> as an integral over a cycle that surrounds the spectrum. Theorem 5.1 provides the cycle, and Theorems 4.2 and 6.1 show that the result does not depend on it. Exercise 4 is the step used in Example 3.4 of the lesson on C*-algebras. Liouville's theorem is used in <a href="kaplansky-s-density-theorem-and-its-consequences.html">Kaplansky's density theorem and its consequences</a>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>É. Goursat, <a href="https://www.ams.org/journals/tran/1900-001-01/S0002-9947-1900-1500519-7/S0002-9947-1900-1500519-7.pdf">&quot;Sur la définition générale des fonctions analytiques, d'après Cauchy&quot;</a>, <em>Transactions of the American Mathematical Society</em> 1 (1900), 14–16.</li>
+</ul>
+<p>The proofs are written here in our own words.</p>
+<p><em>Freely accessible reading:</em> <a href="https://ocw.mit.edu/courses/18-112-functions-of-a-complex-variable-fall-2008/8793d412fa0da2a4183539f5d8f7e3fd_lecture13.pdf">Zuoqin Wang; course instructor Sigurdur Helgason, <em>MIT OCW 18.112 Lecture 13</em>, Lecture 13, printed pp. 1–4</a> gives a route through Dixon’s closed-curve proof; the finite-cycle proof and local inputs are included here. The lesson includes its own complete proofs at the stated hypotheses; references to human sources do not imply permission to adapt their expression.</p>
+<p>For an alternative grid proof, see <a href="https://matematika.cuni.cz/dl/cerny/cauchy.pdf">I. Černý, expanded author presentation (2012), pp. 1–5</a>. Its rectangular formula is an input; the local integral results are proved in this lesson.</p>
+<p class="lesson-source"><a href="src/cauchy-s-theorem-for-cycles-and-its-consequences.md">Editable lesson source</a> · <a href="source-notices.html">Sources and component licences</a></p></article>
+<nav aria-label="Lessons" class="pager"><span class="pager-prev"><a href="hilbert-spaces-and-compact-operators.html" rel="prev">← Hilbert spaces and compact operators</a></span><a href="./">Course contents</a><span class="pager-next"><a href="banach-algebras-spectrum-holomorphic-functional-calculus-and-gelfand-theory.html" rel="next">Banach algebras, spectrum, holomorphic functional calculus and Gelfand theory →</a></span></nav>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

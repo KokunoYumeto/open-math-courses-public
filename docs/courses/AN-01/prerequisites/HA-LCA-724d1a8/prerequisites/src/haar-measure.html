@@ -1,0 +1,439 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="b0993ca756deab4bb8f3af07eff6b2eacb2f243e5e9a9a1c34a07752f6f6e91f"><title>Haar measure on arbitrary locally compact abelian groups</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="haar-measure.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="haar-measure-on-arbitrary-locally-compact-abelian-groups">Haar measure on arbitrary locally compact abelian groups</h1>
+<p><strong>Programme reading HA-LCA-PRE-HAAR.</strong> We construct Haar measure, including its measurable domain, before using its analytic consequences. The group <span class="math" data-tex="\(G\)">\(G\)</span> is Hausdorff, locally compact and abelian, written additively. No separability, metrizability or sigma-compactness of <span class="math" data-tex="\(G\)">\(G\)</span> is assumed.</p>
+<p>The source material is Terence Tao's freely accessible <a href="https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/">254A, Notes 3, §1</a>, dated 27 September 2011, for the normalized covering-functional construction and the open sigma-compact subgroup reduction; and D. H. Fremlin's <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt441.tex">§441</a>, version of 3 January 2006, copyright 1997, for the unrestricted invariant-measure setting. We supply the representation and extension arguments below instead of importing either source's earlier theorems.</p>
+<p>The combined prerequisite material is under the <a href="../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's original notices and source are retained in the <span class="unlinked">volume 4 source package</span>. The proofs below use mathematical ideas from the cited free notes with new exposition; the notes themselves are not republished here.</p>
+<p>Our earlier proofs are in <a href="finite-radon-representation.html">finite Radon representation</a>, <a href="banach-spectrum.html">Banach spectra and compact products</a>, <a href="finite-radon-products.html">finite Radon products</a>, and <a href="integration-and-l1.html">integration and <span class="math" data-tex="\(L^1\)">\(L^1\)</span></a>. Each invocation below identifies the result needed.</p>
+<h2 id="1-compact-control-of-translations">1. Compact control of translations</h2>
+<p>Put <span class="math" data-tex="\(L_af(x)=f(x-a)\)">\(L_af(x)=f(x-a)\)</span>.</p>
+<a id="ha-lca-pre-haar-lemma-1-1"></a>
+<h3 id="lemma-1-1-small-neighbourhoods-open-subgroups-and-uniform-continuity">Lemma 1.1. Small neighbourhoods, open subgroups and uniform continuity</h3>
+<p>There is an open and closed sigma-compact subgroup <span class="math" data-tex="\(H\subseteq G\)">\(H\subseteq G\)</span>. It has compact sets <span class="math" data-tex="\(K_n\)">\(K_n\)</span> with
+<span class="math math-display" data-tex="\[
+ K_n\subseteq\operatorname{int}_H K_{n+1},\qquad
+ H=\bigcup_nK_n.
+\]">\[
+ K_n\subseteq\operatorname{int}_H K_{n+1},\qquad
+ H=\bigcup_nK_n.
+\]</span>
+Every compact subset of <span class="math" data-tex="\(G\)">\(G\)</span> meets only finitely many cosets of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>,
+<span class="math math-display" data-tex="\[
+ \sup_x|f(x+a)-f(x)|\longrightarrow0\quad(a\to0).
+\]">\[
+ \sup_x|f(x+a)-f(x)|\longrightarrow0\quad(a\to0).
+\]</span>
+The supports of these differences, for <span class="math" data-tex="\(a\)">\(a\)</span> in a sufficiently small fixed neighbourhood of zero, all lie in one compact set.</p>
+<p><strong>Proof.</strong> Translations are homeomorphisms, with inverse translation by the negative element. Inversion is also a homeomorphism. Continuity of subtraction at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> shows that for each neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of zero there is a symmetric open neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V+V\subseteq U\)">\(V+V\subseteq U\)</span>: intersect sufficiently small neighbourhoods in the two coordinates and their negatives. By the compact-neighbourhood shrinking proved in the finite-Radon reading, Lemma 1.3, such a <span class="math" data-tex="\(V\)">\(V\)</span> may be chosen with compact closure.</p>
+<p>Fix symmetric open <span class="math" data-tex="\(V\ni0\)">\(V\ni0\)</span> with compact closure <span class="math" data-tex="\(K\)">\(K\)</span>. Then
+<span class="math math-display" data-tex="\[
+ H=\bigcup_{n\ge1}nV=\bigcup_{n\ge1}nK.
+\]">\[
+ H=\bigcup_{n\ge1}nV=\bigcup_{n\ge1}nK.
+\]</span>
+For the second equality, <span class="math" data-tex="\(K\subseteq V+V\)">\(K\subseteq V+V\)</span>: if <span class="math" data-tex="\(x\in\overline V\)">\(x\in\overline V\)</span>, the neighbourhood <span class="math" data-tex="\(x+V\)">\(x+V\)</span> meets <span class="math" data-tex="\(V\)">\(V\)</span>, giving <span class="math" data-tex="\(x\in V-V=V+V\)">\(x\in V-V=V+V\)</span>. Thus each <span class="math" data-tex="\(nK\subseteq2nV\)">\(nK\subseteq2nV\)</span>. Finite products of compact spaces and continuous images are compact, as proved in the earlier readings, so <span class="math" data-tex="\(nK\)">\(nK\)</span> is compact. The set <span class="math" data-tex="\(H\)">\(H\)</span> is a subgroup because <span class="math" data-tex="\(V=-V\)">\(V=-V\)</span> and the sum of two finite sums is another finite sum. It is open, and its other cosets are open; their union is its complement, making <span class="math" data-tex="\(H\)">\(H\)</span> closed. With <span class="math" data-tex="\(K_n=nK\)">\(K_n=nK\)</span>, every point of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> has its translate of <span class="math" data-tex="\(V\)">\(V\)</span> inside <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span>, so <span class="math" data-tex="\(K_n\subseteq\operatorname{int}K_{n+1}\)">\(K_n\subseteq\operatorname{int}K_{n+1}\)</span>. The open cosets form a disjoint cover of <span class="math" data-tex="\(G\)">\(G\)</span>; compactness of a set gives a finite subcover and hence the finite-coset assertion.</p>
+<p>For uniform continuity let <span class="math" data-tex="\(C=\operatorname{supp}f\)">\(C=\operatorname{supp}f\)</span>, and fix a relatively compact neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> of zero. If <span class="math" data-tex="\(a\in W\)">\(a\in W\)</span> and <span class="math" data-tex="\(f(x+a)-f(x)\ne0\)">\(f(x+a)-f(x)\ne0\)</span>, then
+<span class="math math-display" data-tex="\[
+ x\in C\cup(C-\overline W)=:D,
+\]">\[
+ x\in C\cup(C-\overline W)=:D,
+\]</span>
+a compact set. The continuous function <span class="math" data-tex="\((a,x)\mapsto f(x+a)-f(x)\)">\((a,x)\mapsto f(x+a)-f(x)\)</span> vanishes for <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The compact-parameter uniformity proved in the finite-Radon reading, Lemma 1.6, makes its supremum on <span class="math" data-tex="\(D\)">\(D\)</span> tend to zero. Outside <span class="math" data-tex="\(D\)">\(D\)</span> it is already zero. This proves both assertions without a sequential assumption on <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-an-invariant-positive-functional">2. An invariant positive functional</h2>
+<p>Write <span class="math" data-tex="\(C_c(G)^+\)">\(C_c(G)^+\)</span> for the nonnegative real members of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, including zero. Fix <span class="math" data-tex="\(b\in C_c(G)^+\setminus\{0\}\)">\(b\in C_c(G)^+\setminus\{0\}\)</span>, whose existence follows from the compact cutoff lemma. For <span class="math" data-tex="\(g\in C_c(G)^+\setminus\{0\}\)">\(g\in C_c(G)^+\setminus\{0\}\)</span>, define
+<span class="math math-display" data-tex="\[
+ (f:g)=\inf\left\{\sum_{j=1}^m c_j:
+       f\le\sum_{j=1}^m c_jL_{a_j}g,\quad c_j\ge0,\ a_j\in G\right\},
+ \qquad (0:g)=0.
+\]">\[
+ (f:g)=\inf\left\{\sum_{j=1}^m c_j:
+       f\le\sum_{j=1}^m c_jL_{a_j}g,\quad c_j\ge0,\ a_j\in G\right\},
+ \qquad (0:g)=0.
+\]</span></p>
+<a id="ha-lca-pre-haar-lemma-2-1"></a>
+<h3 id="lemma-2-1-covering-costs-and-approximate-additivity">Lemma 2.1. Covering costs and approximate additivity</h3>
+<p>For <span class="math" data-tex="\(f,g\ne0\)">\(f,g\ne0\)</span>, <span class="math" data-tex="\(0&lt;(f:g)&lt;\infty\)">\(0&lt;(f:g)&lt;\infty\)</span>. Covering costs are monotone and positively homogeneous in <span class="math" data-tex="\(f\)">\(f\)</span>, translation invariant in <span class="math" data-tex="\(f\)">\(f\)</span>, and subadditive in <span class="math" data-tex="\(f\)">\(f\)</span>. For nonzero <span class="math" data-tex="\(g,h\)">\(g,h\)</span>,
+<span class="math math-display" data-tex="\[
+ (f:g)\le(f:h)(h:g).
+\]">\[
+ (f:g)\le(f:h)(h:g).
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ A_g(f)=\frac{(f:g)}{(b:g)}
+ \quad\hbox{satisfies}\quad
+ 0\le A_g(f)\le(f:b),\qquad A_g(b)=1.                 \tag{2.1}
+\]">\[
+ A_g(f)=\frac{(f:g)}{(b:g)}
+ \quad\hbox{satisfies}\quad
+ 0\le A_g(f)\le(f:b),\qquad A_g(b)=1.                 \tag{2.1}
+\]</span>
+For any fixed <span class="math" data-tex="\(f_1,f_2\in C_c(G)^+\)">\(f_1,f_2\in C_c(G)^+\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of zero such that
+<span class="math math-display" data-tex="\[
+ 0\le A_g(f_1)+A_g(f_2)-A_g(f_1+f_2)&lt;\varepsilon       \tag{2.2}
+\]">\[
+ 0\le A_g(f_1)+A_g(f_2)-A_g(f_1+f_2)&lt;\varepsilon       \tag{2.2}
+\]</span>
+whenever <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span> is supported in <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> Some open set has <span class="math" data-tex="\(g&gt;c&gt;0\)">\(g&gt;c&gt;0\)</span>. Translates of this set cover <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>; finitely many suffice. Giving each of the corresponding translates of <span class="math" data-tex="\(g\)">\(g\)</span> coefficient <span class="math" data-tex="\(\|f\|_\infty/c\)">\(\|f\|_\infty/c\)</span> covers <span class="math" data-tex="\(f\)">\(f\)</span>. Conversely, evaluating any cover at a point <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(f(x)&gt;0\)">\(f(x)&gt;0\)</span> gives <span class="math" data-tex="\(\sum_jc_j\ge f(x)/\|g\|_\infty&gt;0\)">\(\sum_jc_j\ge f(x)/\|g\|_\infty&gt;0\)</span>.</p>
+<p>Order and homogeneity follow directly by inclusion or scaling of covers. Translating a cover and then using the inverse translation proves invariance. Combining two covers and taking their infima proves subadditivity. For the multiplicative inequality, replace each translate of <span class="math" data-tex="\(h\)">\(h\)</span> in a cover of <span class="math" data-tex="\(f\)">\(f\)</span> by the corresponding translate of a cover of <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(g\)">\(g\)</span>. The total cost is the product of the two costs. Approximate their finite infima and let both errors tend to zero. This proves the inequality, and (2.1) follows by taking <span class="math" data-tex="\(h=b\)">\(h=b\)</span>.</p>
+<p>For (2.2), put <span class="math" data-tex="\(f=f_1+f_2\)">\(f=f_1+f_2\)</span>. If <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, there is nothing to prove. Choose <span class="math" data-tex="\(v\in C_c(G)^+\)">\(v\in C_c(G)^+\)</span> equal to one on <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, with <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span>. Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, to be decreased below, and define
+<span class="math math-display" data-tex="\[
+ r_i(x)=\frac{f_i(x)}{f(x)+\delta}\quad(i=1,2).
+\]">\[
+ r_i(x)=\frac{f_i(x)}{f(x)+\delta}\quad(i=1,2).
+\]</span>
+These are in <span class="math" data-tex="\(C_c(G)^+\)">\(C_c(G)^+\)</span>, satisfy <span class="math" data-tex="\(r_i\le v\)">\(r_i\le v\)</span> and <span class="math" data-tex="\(r_1+r_2\le1\)">\(r_1+r_2\le1\)</span>, and obey <span class="math" data-tex="\(f_i=r_if+\delta r_i\)">\(f_i=r_if+\delta r_i\)</span>. Given <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, Lemma 1.1 supplies a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> with
+<span class="math math-display" data-tex="\[
+ |r_i(a+u)-r_i(a)|&lt;\eta
+ \quad(a\in G,\ u\in U,\ i=1,2).
+\]">\[
+ |r_i(a+u)-r_i(a)|&lt;\eta
+ \quad(a\in G,\ u\in U,\ i=1,2).
+\]</span>
+If <span class="math" data-tex="\(g\)">\(g\)</span> is supported in <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(f\le\sum_jc_jL_{a_j}g\)">\(f\le\sum_jc_jL_{a_j}g\)</span>, multiplying by <span class="math" data-tex="\(r_i\)">\(r_i\)</span> gives
+<span class="math math-display" data-tex="\[
+ f_i\le\sum_j c_j\bigl(r_i(a_j)+\eta\bigr)L_{a_j}g+\delta r_i.
+\]">\[
+ f_i\le\sum_j c_j\bigl(r_i(a_j)+\eta\bigr)L_{a_j}g+\delta r_i.
+\]</span>
+By monotonicity and subadditivity of the covering cost,
+<span class="math math-display" data-tex="\[
+ A_g(f_1)+A_g(f_2)
+ \le (1+2\eta)\frac{\sum_jc_j}{(b:g)}
+       +\delta\bigl(A_g(r_1)+A_g(r_2)\bigr).
+\]">\[
+ A_g(f_1)+A_g(f_2)
+ \le (1+2\eta)\frac{\sum_jc_j}{(b:g)}
+       +\delta\bigl(A_g(r_1)+A_g(r_2)\bigr).
+\]</span>
+Take the infimum over the covers of <span class="math" data-tex="\(f\)">\(f\)</span>, and use (2.1) and <span class="math" data-tex="\(r_i\le v\)">\(r_i\le v\)</span>. The excess over <span class="math" data-tex="\(A_g(f)\)">\(A_g(f)\)</span> is at most
+<span class="math math-display" data-tex="\[
+ 2\eta(f:b)+2\delta(v:b).
+\]">\[
+ 2\eta(f:b)+2\delta(v:b).
+\]</span>
+First choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and then <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> so this is less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The resulting <span class="math" data-tex="\(U\)">\(U\)</span> works for all such <span class="math" data-tex="\(g\)">\(g\)</span>. The lower bound in (2.2) is subadditivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-haar-theorem-2-2"></a>
+<h3 id="theorem-2-2-existence-of-a-normalized-invariant-integral">Theorem 2.2. Existence of a normalized invariant integral</h3>
+<p>There is a positive real linear functional <span class="math" data-tex="\(I:C_c(G;\mathbb R)\to\mathbb R\)">\(I:C_c(G;\mathbb R)\to\mathbb R\)</span> with
+<span class="math math-display" data-tex="\[
+ I(b)=1,\qquad I(L_af)=I(f)\quad(a\in G).
+\]">\[
+ I(b)=1,\qquad I(L_af)=I(f)\quad(a\in G).
+\]</span>
+It extends complex-linearly to <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. For each compact <span class="math" data-tex="\(K\)">\(K\)</span>, there is a finite constant <span class="math" data-tex="\(M_K\)">\(M_K\)</span> such that
+<span class="math math-display" data-tex="\[
+ |I(f)|\le M_K\|f\|_\infty
+ \quad\hbox{if }\operatorname{supp}f\subseteq K.
+\]">\[
+ |I(f)|\le M_K\|f\|_\infty
+ \quad\hbox{if }\operatorname{supp}f\subseteq K.
+\]</span></p>
+<p><strong>Proof.</strong> For each <span class="math" data-tex="\(f\in C_c(G)^+\)">\(f\in C_c(G)^+\)</span>, the interval <span class="math" data-tex="\([0,(f:b)]\)">\([0,(f:b)]\)</span> is compact; for <span class="math" data-tex="\(f=0\)">\(f=0\)</span> it is the singleton <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. The arbitrary-product compactness proved in the Banach reading, Lemma 4.1, makes
+<span class="math math-display" data-tex="\[
+ P=\prod_{f\in C_c(G)^+}[0,(f:b)]
+\]">\[
+ P=\prod_{f\in C_c(G)^+}[0,(f:b)]
+\]</span>
+compact. Each <span class="math" data-tex="\(A_g\)">\(A_g\)</span> is a point of <span class="math" data-tex="\(P\)">\(P\)</span>. For a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of zero, let <span class="math" data-tex="\(F_U\)">\(F_U\)</span> be the closure in <span class="math" data-tex="\(P\)">\(P\)</span> of the points <span class="math" data-tex="\(A_g\)">\(A_g\)</span> with <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span> supported in <span class="math" data-tex="\(U\)">\(U\)</span>. Cutoffs make this set nonempty. Finite intersections of neighbourhoods show that the closed sets <span class="math" data-tex="\(F_U\)">\(F_U\)</span> have the finite intersection property. Their intersection is nonempty: otherwise their open complements would cover compact <span class="math" data-tex="\(P\)">\(P\)</span> and a finite subcover would contradict that property.</p>
+<p>Choose <span class="math" data-tex="\(A\in\bigcap_UF_U\)">\(A\in\bigcap_UF_U\)</span>. The normalization, homogeneity and translation-invariance equalities for <span class="math" data-tex="\(A_g\)">\(A_g\)</span> are closed conditions on finitely many coordinates, so hold for <span class="math" data-tex="\(A\)">\(A\)</span>. For each <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span>, (2.2) gives arbitrarily small closed bounds on its additivity defect throughout an appropriate <span class="math" data-tex="\(F_U\)">\(F_U\)</span>. Therefore <span class="math" data-tex="\(A(f_1+f_2)=A(f_1)+A(f_2)\)">\(A(f_1+f_2)=A(f_1)+A(f_2)\)</span>.</p>
+<p>For real <span class="math" data-tex="\(f\)">\(f\)</span>, define <span class="math" data-tex="\(I(f)=A(f^+)-A(f^-)\)">\(I(f)=A(f^+)-A(f^-)\)</span>. This is independent of a decomposition <span class="math" data-tex="\(f=p-q\)">\(f=p-q\)</span> with <span class="math" data-tex="\(p,q\ge0\)">\(p,q\ge0\)</span>: another such decomposition gives <span class="math" data-tex="\(p+q&#x27;=p&#x27;+q\)">\(p+q&#x27;=p&#x27;+q\)</span>, and additivity of <span class="math" data-tex="\(A\)">\(A\)</span> equates their values. This proves real linearity, positivity and translation invariance. Extend by <span class="math" data-tex="\(I(f)=I(\Re f)+iI(\Im f)\)">\(I(f)=I(\Re f)+iI(\Im f)\)</span>; the identities for multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> give complex linearity.</p>
+<p>Choose a cutoff <span class="math" data-tex="\(v\ge0\)">\(v\ge0\)</span> equal to one on <span class="math" data-tex="\(K\)">\(K\)</span>. For real <span class="math" data-tex="\(f\)">\(f\)</span> supported in <span class="math" data-tex="\(K\)">\(K\)</span>, order gives <span class="math" data-tex="\(|I(f)|\le\|f\|_\infty I(v)\)">\(|I(f)|\le\|f\|_\infty I(v)\)</span>. For complex <span class="math" data-tex="\(f\)">\(f\)</span>, rotate <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span> by a scalar of modulus one so its real part is <span class="math" data-tex="\(|I(f)|\)">\(|I(f)|\)</span>. Positivity applied to that real part gives the same bound. Thus <span class="math" data-tex="\(M_K=I(v)\)">\(M_K=I(v)\)</span> works. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-representing-the-integral-on-a-sigma-compact-space">3. Representing the integral on a sigma-compact space</h2>
+<a id="ha-lca-pre-haar-theorem-3-1"></a>
+<h3 id="theorem-3-1-positive-c_c-representation-on-a-sigma-compact-space">Theorem 3.1. Positive <span class="math" data-tex="\(C_c\)">\(C_c\)</span> representation on a sigma-compact space</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be sigma-compact, locally compact and Hausdorff, and let <span class="math" data-tex="\(I\)">\(I\)</span> be a positive real linear functional on <span class="math" data-tex="\(C_c(X;\mathbb R)\)">\(C_c(X;\mathbb R)\)</span>. There is a unique Borel measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, finite on compact sets, inner regular on all Borel sets and outer regular on all Borel sets, such that
+<span class="math math-display" data-tex="\[
+ I(f)=\int_X f\,d\mu\quad(f\in C_c(X;\mathbb R)).
+\]">\[
+ I(f)=\int_X f\,d\mu\quad(f\in C_c(X;\mathbb R)).
+\]</span>
+It is sigma-finite. Complexification gives the same identity for complex <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p><strong>Proof.</strong> First obtain a compact exhaustion <span class="math" data-tex="\(K_n\subseteq\operatorname{int}K_{n+1}\)">\(K_n\subseteq\operatorname{int}K_{n+1}\)</span>. Starting with a countable compact cover <span class="math" data-tex="\(C_n\)">\(C_n\)</span>, use finitely many relatively compact open neighbourhoods to cover <span class="math" data-tex="\(C_1\)">\(C_1\)</span>; their compact closures have compact union <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Inductively cover <span class="math" data-tex="\(K_n\cup C_{n+1}\)">\(K_n\cup C_{n+1}\)</span> by finitely many relatively compact open neighbourhoods and take their compact closures as <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span>. This proves the required properties.</p>
+<p>Choose <span class="math" data-tex="\(u_n\in C_c(X)\)">\(u_n\in C_c(X)\)</span>, <span class="math" data-tex="\(0\le u_n\le1\)">\(0\le u_n\le1\)</span>, equal to one on <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, with support in <span class="math" data-tex="\(\operatorname{int}K_{n+1}\)">\(\operatorname{int}K_{n+1}\)</span>. Set
+<span class="math math-display" data-tex="\[
+ a_n=\frac{2^{-n}}{1+I(u_n)},\qquad
+ w=\sum_{n\ge1}a_nu_n.
+\]">\[
+ a_n=\frac{2^{-n}}{1+I(u_n)},\qquad
+ w=\sum_{n\ge1}a_nu_n.
+\]</span>
+The series converges uniformly, because <span class="math" data-tex="\(a_n\le2^{-n}\)">\(a_n\le2^{-n}\)</span>. The finite-Radon reading, Lemma 1.5, proves that its limit belongs to <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. At each point some <span class="math" data-tex="\(u_n=1\)">\(u_n=1\)</span>, so <span class="math" data-tex="\(w&gt;0\)">\(w&gt;0\)</span> everywhere.</p>
+<p>Define <span class="math" data-tex="\(J(f)=I(wf)\)">\(J(f)=I(wf)\)</span> for real <span class="math" data-tex="\(f\in C_c(X)\)">\(f\in C_c(X)\)</span>. Although <span class="math" data-tex="\(w\)">\(w\)</span> need not be compactly supported, <span class="math" data-tex="\(wf\)">\(wf\)</span> is. On functions supported in a fixed compact set <span class="math" data-tex="\(K\)">\(K\)</span>, positivity bounds <span class="math" data-tex="\(I\)">\(I\)</span> by <span class="math" data-tex="\(I(v)\|\cdot\|_\infty\)">\(I(v)\|\cdot\|_\infty\)</span>, where <span class="math" data-tex="\(v\)">\(v\)</span> is a cutoff equal to one on <span class="math" data-tex="\(K\)">\(K\)</span>. Thus uniform convergence of the partial sums of <span class="math" data-tex="\(wf\)">\(wf\)</span> permits
+<span class="math math-display" data-tex="\[
+ |J(f)|\le\sum_n a_n|I(u_nf)|
+          \le\|f\|_\infty\sum_na_nI(u_n)\le\|f\|_\infty.
+\]">\[
+ |J(f)|\le\sum_n a_n|I(u_nf)|
+          \le\|f\|_\infty\sum_na_nI(u_n)\le\|f\|_\infty.
+\]</span>
+The real functional <span class="math" data-tex="\(J\)">\(J\)</span> extends uniquely and positively to <span class="math" data-tex="\(C_0(X;\mathbb R)\)">\(C_0(X;\mathbb R)\)</span>: <span class="math" data-tex="\(C_c\)">\(C_c\)</span> is uniformly dense by the finite-Radon reading, Lemma 1.5, and nonnegative approximants preserve positivity. Its positive representation theorem, Theorem 3.1, gives a finite positive Radon measure <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\(J(f)=\int f\,d\rho\)">\(J(f)=\int f\,d\rho\)</span>.</p>
+<p>Use the nonnegative integral already constructed in the integration reading to define
+<span class="math math-display" data-tex="\[
+ \mu(E)=\int_E w^{-1}\,d\rho\qquad(E\text{ Borel}).
+\]">\[
+ \mu(E)=\int_E w^{-1}\,d\rho\qquad(E\text{ Borel}).
+\]</span>
+The positive series rule proves countable additivity. On every compact <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> has a positive lower bound: finitely many neighbourhoods on which <span class="math" data-tex="\(w&gt;w(x)/2\)">\(w&gt;w(x)/2\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-tex="\(\mu K&lt;\infty\)">\(\mu K&lt;\infty\)</span>. Weighted integration gives
+<span class="math math-display" data-tex="\[
+ \int h\,d\mu=\int h/w\,d\rho\quad(h\ge0\text{ Borel}),
+\]">\[
+ \int h\,d\mu=\int h/w\,d\rho\quad(h\ge0\text{ Borel}),
+\]</span>
+first for indicators, then simple functions, then increasing limits. The four-part complex definition gives the same identity for integrable functions. If <span class="math" data-tex="\(f\in C_c(X)\)">\(f\in C_c(X)\)</span>, then <span class="math" data-tex="\(f/w\in C_c(X)\)">\(f/w\in C_c(X)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \int f\,d\mu=\int f/w\,d\rho=J(f/w)=I(f).
+\]">\[
+ \int f\,d\mu=\int f/w\,d\rho=J(f/w)=I(f).
+\]</span></p>
+<p>For inner regularity, put <span class="math" data-tex="\(E_n=\{w\ge1/n\}\)">\(E_n=\{w\ge1/n\}\)</span>. Each <span class="math" data-tex="\(E_n\)">\(E_n\)</span> is compact and they increase to <span class="math" data-tex="\(X\)">\(X\)</span>. The finite measure <span class="math" data-tex="\(\mu_n(B)=\mu(B\cap E_n)\)">\(\mu_n(B)=\mu(B\cap E_n)\)</span> is bounded above by <span class="math" data-tex="\(n\rho\)">\(n\rho\)</span>, hence Radon by Lemma 1.2 of the finite-product reading. Monotone convergence gives <span class="math" data-tex="\(\mu(B)=\lim_n\mu_n(B)\)">\(\mu(B)=\lim_n\mu_n(B)\)</span>. A compact subset <span class="math" data-tex="\(C\subseteq B\)">\(C\subseteq B\)</span> approximating <span class="math" data-tex="\(\mu_n(B)\)">\(\mu_n(B)\)</span> satisfies <span class="math" data-tex="\(\mu(C)\ge\mu_n(C)\)">\(\mu(C)\ge\mu_n(C)\)</span>. Taking suprema proves inner regularity of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on every Borel <span class="math" data-tex="\(B\)">\(B\)</span>, including sets of infinite measure.</p>
+<p>For outer regularity, fix Borel <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. The finite restriction <span class="math" data-tex="\(\mu_{K_{n+1}}\)">\(\mu_{K_{n+1}}\)</span> is Radon by compact localization in the finite-product reading, Corollary 2.3. Choose open <span class="math" data-tex="\(W_n\supseteq B\cap K_n\)">\(W_n\supseteq B\cap K_n\)</span> such that
+<span class="math math-display" data-tex="\[
+ \mu_{K_{n+1}}\bigl(W_n\setminus(B\cap K_n)\bigr)
+       &lt;\varepsilon 2^{-n}.
+\]">\[
+ \mu_{K_{n+1}}\bigl(W_n\setminus(B\cap K_n)\bigr)
+       &lt;\varepsilon 2^{-n}.
+\]</span>
+Then <span class="math" data-tex="\(V_n=W_n\cap\operatorname{int}K_{n+1}\)">\(V_n=W_n\cap\operatorname{int}K_{n+1}\)</span> contains <span class="math" data-tex="\(B\cap K_n\)">\(B\cap K_n\)</span> and <span class="math" data-tex="\(\mu(V_n\setminus B)&lt;\varepsilon2^{-n}\)">\(\mu(V_n\setminus B)&lt;\varepsilon2^{-n}\)</span>. The open union <span class="math" data-tex="\(V=\bigcup_nV_n\)">\(V=\bigcup_nV_n\)</span> contains <span class="math" data-tex="\(B\)">\(B\)</span>, with <span class="math" data-tex="\(\mu(V\setminus B)&lt;\varepsilon\)">\(\mu(V\setminus B)&lt;\varepsilon\)</span>. This proves outer regularity at finite-measure <span class="math" data-tex="\(B\)">\(B\)</span>; at infinite-measure <span class="math" data-tex="\(B\)">\(B\)</span>, every superset already has infinite measure. The compact exhaustion and local finiteness give sigma-finiteness.</p>
+<p>Finally every such representing measure has, for open <span class="math" data-tex="\(U\)">\(U\)</span>,
+<span class="math math-display" data-tex="\[
+ \mu(U)=\sup\{I(f):f\in C_c(X),\ 0\le f\le1,\
+                                      \operatorname{supp}f\subseteq U\}.
+\]">\[
+ \mu(U)=\sup\{I(f):f\in C_c(X),\ 0\le f\le1,\
+                                      \operatorname{supp}f\subseteq U\}.
+\]</span>
+The upper bound is integration; compact inner approximation and cutoffs give the lower bound. Outer regularity then determines <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on every Borel set, proving uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-existence-uniqueness-and-inversion-on-the-open-subgroup">4. Existence, uniqueness and inversion on the open subgroup</h2>
+<a id="ha-lca-pre-haar-theorem-4-1"></a>
+<h3 id="theorem-4-1-sigma-compact-abelian-haar-measure">Theorem 4.1. Sigma-compact abelian Haar measure</h3>
+<p>A sigma-compact locally compact Hausdorff abelian group <span class="math" data-tex="\(H\)">\(H\)</span> has a nonzero translation-invariant Borel measure <span class="math" data-tex="\(\mu_H\)">\(\mu_H\)</span> that is finite on compact sets and inner and outer regular. Every nonempty open set has positive measure. Any two such nonzero invariant measures are positive scalar multiples. Inversion preserves each such measure. All these assertions extend to its ordinary completion.</p>
+<p><strong>Proof.</strong> Apply Theorem 2.2 on <span class="math" data-tex="\(H\)">\(H\)</span>, then Theorem 3.1. For <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>, the measure <span class="math" data-tex="\(E\mapsto\mu_H(E+a)\)">\(E\mapsto\mu_H(E+a)\)</span> is again locally finite and inner and outer regular, because translation is a homeomorphism. The change-of-variables formula for this image follows first on indicators and then by simple approximation, as in the integration reading, Lemma 2.5. Invariance of <span class="math" data-tex="\(I\)">\(I\)</span> makes this measure represent the same functional; Theorem 3.1 gives equality. Nontriviality follows from <span class="math" data-tex="\(\int b\,d\mu_H=1\)">\(\int b\,d\mu_H=1\)</span>.</p>
+<p>For any nonzero such measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, inner regularity supplies compact <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(\mu K&gt;0\)">\(\mu K&gt;0\)</span>. If <span class="math" data-tex="\(U\)">\(U\)</span> is nonempty open, its translates cover <span class="math" data-tex="\(K\)">\(K\)</span>, and a finite subcover and translation invariance give <span class="math" data-tex="\(\mu K\le m\mu U\)">\(\mu K\le m\mu U\)</span>. Thus <span class="math" data-tex="\(\mu U&gt;0\)">\(\mu U&gt;0\)</span>. A nonnegative nonzero member of <span class="math" data-tex="\(C_c(H)\)">\(C_c(H)\)</span> is bounded below by a positive constant on some nonempty open set, so its integral is strictly positive.</p>
+<p>We prove inversion and uniqueness without assuming either in a change of variables. For two such measures <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span>, and <span class="math" data-tex="\(f,g\in C_c(H)\)">\(f,g\in C_c(H)\)</span>, apply compactly supported Fubini from the finite-product reading, Corollary 2.3, to <span class="math" data-tex="\(f(x+y)g(y)\)">\(f(x+y)g(y)\)</span>. This kernel has compact support: <span class="math" data-tex="\(y\)">\(y\)</span> belongs to <span class="math" data-tex="\(\operatorname{supp}g\)">\(\operatorname{supp}g\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(\operatorname{supp}f-\operatorname{supp}g\)">\(\operatorname{supp}f-\operatorname{supp}g\)</span>. Integrating first in <span class="math" data-tex="\(x\)">\(x\)</span> gives
+<span class="math math-display" data-tex="\[
+ \iint f(x+y)g(y)\,d\mu(x)\,d\nu(y)=I_\mu(f)I_\nu(g).
+\]">\[
+ \iint f(x+y)g(y)\,d\mu(x)\,d\nu(y)=I_\mu(f)I_\nu(g).
+\]</span>
+In the other order, for fixed <span class="math" data-tex="\(x\)">\(x\)</span> substitute <span class="math" data-tex="\(z=x+y\)">\(z=x+y\)</span>, which uses only translation invariance of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The kernel <span class="math" data-tex="\(f(z)g(z-x)\)">\(f(z)g(z-x)\)</span> also has compact support. Interchange its two integrals, and in its <span class="math" data-tex="\(x\)">\(x\)</span>-integral translate <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(z\)">\(z\)</span>. The result is
+<span class="math math-display" data-tex="\[
+ I_\mu(f)I_\nu(g)=I_\nu(f)I_\mu(g^-),
+ \qquad g^-(x)=g(-x).                                  \tag{4.1}
+\]">\[
+ I_\mu(f)I_\nu(g)=I_\nu(f)I_\mu(g^-),
+ \qquad g^-(x)=g(-x).                                  \tag{4.1}
+\]</span>
+Set <span class="math" data-tex="\(\nu=\mu\)">\(\nu=\mu\)</span>, and take nonnegative nonzero <span class="math" data-tex="\(f\)">\(f\)</span>. Its integral is positive, so (4.1) gives <span class="math" data-tex="\(I_\mu(g)=I_\mu(g^-)\)">\(I_\mu(g)=I_\mu(g^-)\)</span> for all <span class="math" data-tex="\(g\in C_c(H)\)">\(g\in C_c(H)\)</span>. The inverted measure <span class="math" data-tex="\(E\mapsto\mu(-E)\)">\(E\mapsto\mu(-E)\)</span> has the same regularity and the same <span class="math" data-tex="\(C_c\)">\(C_c\)</span> integrals. Theorem 3.1 gives <span class="math" data-tex="\(\mu(-E)=\mu(E)\)">\(\mu(-E)=\mu(E)\)</span>.</p>
+<p>Now (4.1) becomes <span class="math" data-tex="\(I_\mu(f)I_\nu(g)=I_\nu(f)I_\mu(g)\)">\(I_\mu(f)I_\nu(g)=I_\nu(f)I_\mu(g)\)</span>. Fix nonnegative nonzero <span class="math" data-tex="\(g\)">\(g\)</span>; both integrals are positive. Hence <span class="math" data-tex="\(I_\nu=cI_\mu\)">\(I_\nu=cI_\mu\)</span>, where <span class="math" data-tex="\(c=I_\nu(g)/I_\mu(g)&gt;0\)">\(c=I_\nu(g)/I_\mu(g)&gt;0\)</span>, and Theorem 3.1 proves <span class="math" data-tex="\(\nu=c\mu\)">\(\nu=c\mu\)</span>.</p>
+<p>Ordinary completion is constructed in the integration reading, Lemma 1.1. Translation and inversion preserve Borel null sets, so preserve their subsets, the completed domain and the completed measure. Completed sets retain inner regularity: remove a Borel null envelope from a Borel representative, and approximate the remaining Borel set by compact subsets. They retain outer regularity by adding that null envelope and using Borel outer regularity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-measure-and-its-domain-on-the-whole-group">5. The measure and its domain on the whole group</h2>
+<p>Fix an open sigma-compact subgroup <span class="math" data-tex="\(H\)">\(H\)</span> from Lemma 1.1 and a Haar measure <span class="math" data-tex="\(\mu_H\)">\(\mu_H\)</span> from Theorem 4.1. Choose one representative <span class="math" data-tex="\(r\)">\(r\)</span> for each coset in <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, and denote the set of representatives by <span class="math" data-tex="\(R\)">\(R\)</span>. For <span class="math" data-tex="\(E\subseteq G\)">\(E\subseteq G\)</span>, write <span class="math" data-tex="\(E_r=(E-r)\cap H\)">\(E_r=(E-r)\cap H\)</span>. Let
+<span class="math math-display" data-tex="\[
+ \Sigma_G=\{E\subseteq G:E_r
+               \text{ is measurable for the ordinary completion of }\mu_H
+               \text{ for every }r\in R\},
+ \qquad
+ \mu(E)=\sum_{r\in R}\mu_H(E_r).                        \tag{5.1}
+\]">\[
+ \Sigma_G=\{E\subseteq G:E_r
+               \text{ is measurable for the ordinary completion of }\mu_H
+               \text{ for every }r\in R\},
+ \qquad
+ \mu(E)=\sum_{r\in R}\mu_H(E_r).                        \tag{5.1}
+\]</span>
+For a family of nonnegative numbers, the sum over an arbitrary index set is the supremum of its sums over finite subsets.</p>
+<a id="ha-lca-pre-haar-theorem-5-1"></a>
+<h3 id="theorem-5-1-arbitrary-group-haar-measure">Theorem 5.1. Arbitrary-group Haar measure</h3>
+<p>Formula (5.1) defines a complete, translation- and inversion-invariant measure on <span class="math" data-tex="\(\Sigma_G\)">\(\Sigma_G\)</span>. Its domain contains every Borel subset of <span class="math" data-tex="\(G\)">\(G\)</span>; it is finite on compact sets and inner regular on every measurable set. Every nonempty open set has positive measure.</p>
+<p>The measure is locally determined: if a set has measurable intersection with every measurable set of finite measure, then it belongs to <span class="math" data-tex="\(\Sigma_G\)">\(\Sigma_G\)</span>. In fact, measurable intersections with every compact set already suffice for membership in <span class="math" data-tex="\(\Sigma_G\)">\(\Sigma_G\)</span>. If a measurable set has null intersection with every compact set, it is null. We do not require global outer regularity on arbitrary <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Among nonzero translation-invariant Borel measures finite on compact sets and inner regular on all Borel sets, this measure is unique up to a positive scalar. Its domain (5.1) is equivalently the complete locally determined extension of its Borel restriction.</p>
+<p><strong>Proof.</strong> Each coset is open and closed and is homeomorphic to <span class="math" data-tex="\(H\)">\(H\)</span>, so Borel sets have Borel sections <span class="math" data-tex="\(E_r\)">\(E_r\)</span>. The section definition makes <span class="math" data-tex="\(\Sigma_G\)">\(\Sigma_G\)</span> a sigma-algebra. Countable additivity of (5.1) follows by interchanging the sum over <span class="math" data-tex="\(R\)">\(R\)</span> with a nonnegative countable sum. To verify the interchange, both orders equal the supremum of sums over finite subsets of <span class="math" data-tex="\(R\times\mathbb N\)">\(R\times\mathbb N\)</span>; finite subsets lie in finite rectangles, and increasing partial sums exhaust the countable coordinate. A set is null exactly when every section is null, so completeness follows from completeness on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Changing a representative within its coset translates the section by an element of <span class="math" data-tex="\(H\)">\(H\)</span>, and does not change measurability or measure. Translation by any <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span> permutes the cosets; its map on each section is a translation within <span class="math" data-tex="\(H\)">\(H\)</span>. Thus it preserves <span class="math" data-tex="\(\Sigma_G\)">\(\Sigma_G\)</span> and (5.1). Inversion also permutes the cosets and on each section is inversion followed by a translation in <span class="math" data-tex="\(H\)">\(H\)</span>. Theorem 4.1 proves its invariance.</p>
+<p>A compact set meets only finitely many cosets by Lemma 1.1, and has a compact section in each. It therefore has finite measure. For a measurable <span class="math" data-tex="\(E\)">\(E\)</span>, the supremum of finite sums in (5.1), followed by compact inner approximation in each of the finitely many selected sections, proves
+<span class="math math-display" data-tex="\[
+ \mu(E)=\sup\{\mu K:K\subseteq E,\ K\text{ compact}\}.
+\]">\[
+ \mu(E)=\sup\{\mu K:K\subseteq E,\ K\text{ compact}\}.
+\]</span>
+This argument also applies when <span class="math" data-tex="\(\mu E=\infty\)">\(\mu E=\infty\)</span>: to exceed any prescribed finite bound, first choose an appropriate finite sum and then compact approximations. A nonempty open set meets some coset in a nonempty open set, which has positive <span class="math" data-tex="\(\mu_H\)">\(\mu_H\)</span>-measure.</p>
+<p>Let now <span class="math" data-tex="\(E\subseteq G\)">\(E\subseteq G\)</span> have measurable intersections with all finite-measure measurable sets, or just with all compact sets. In each coset, use the translated compact exhaustion <span class="math" data-tex="\(r+K_n\)">\(r+K_n\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>. Every <span class="math" data-tex="\(E\cap(r+K_n)\)">\(E\cap(r+K_n)\)</span> is measurable by hypothesis; the union over <span class="math" data-tex="\(n\)">\(n\)</span> proves that <span class="math" data-tex="\(E_r\)">\(E_r\)</span> is completed-measurable in <span class="math" data-tex="\(H\)">\(H\)</span>. Hence <span class="math" data-tex="\(E\in\Sigma_G\)">\(E\in\Sigma_G\)</span>. The null assertion follows either by the same countable exhaustion on each coset or directly from inner regularity.</p>
+<p>For uniqueness let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be another nonzero invariant Borel measure with the stated compact finiteness and full inner regularity. A compact set of positive <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-measure exists. Its finite covering by translates of any nonempty open set proves that every such open set has positive <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-measure. In particular, <span class="math" data-tex="\(\nu|_H\ne0\)">\(\nu|_H\ne0\)</span>. Its restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is sigma-finite and inner regular. It is also outer regular: the compact-exhaustion argument in the proof of Theorem 3.1 uses only local finiteness and inner regularity, and therefore applies to this restriction. Theorem 4.1 gives <span class="math" data-tex="\(\nu|_H=c\mu_H\)">\(\nu|_H=c\mu_H\)</span>. Translation invariance and the finite-coset property give <span class="math" data-tex="\(\nu K=c\mu K\)">\(\nu K=c\mu K\)</span> for every compact <span class="math" data-tex="\(K\subseteq G\)">\(K\subseteq G\)</span>. Full inner regularity now gives equality on every Borel set.</p>
+<p>For the domain assertion, start with the ordinary completion of the Borel measure, and declare <span class="math" data-tex="\(E\)">\(E\)</span> locally measurable when its intersection with each completed measurable finite-measure set is completed measurable. Such an <span class="math" data-tex="\(E\)">\(E\)</span> has completed-measurable sections by the compact exhaustions, so belongs to (5.1). In the other direction, if <span class="math" data-tex="\(E\in\Sigma_G\)">\(E\in\Sigma_G\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> is Borel of finite measure, only countably many sections of <span class="math" data-tex="\(F\)">\(F\)</span> have positive measure: for each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, only finitely many can have measure at least <span class="math" data-tex="\(1/m\)">\(1/m\)</span>. On their union <span class="math" data-tex="\(E\cap F\)">\(E\cap F\)</span> has a Borel representative modulo a null set, since the union has countably many sigma-compact cosets.</p>
+<p>The residual part of <span class="math" data-tex="\(F\)">\(F\)</span> is Borel and null: remove that countable union of open-and-closed cosets from <span class="math" data-tex="\(F\)">\(F\)</span>. Any subset of it is in the ordinary completion. The null exceptions within the countably many selected cosets have a Borel null envelope by ordinary completion in each coset. Thus <span class="math" data-tex="\(E\cap F\)">\(E\cap F\)</span> is in the ordinary completion on <span class="math" data-tex="\(G\)">\(G\)</span>. Replacing a completed finite-measure <span class="math" data-tex="\(F\)">\(F\)</span> by a Borel representative and a Borel null envelope gives the same conclusion. This proves the claimed equivalence of domains. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-haar-lemma-5-2"></a>
+<h3 id="lemma-5-2-l-1-functions-on-the-completed-locally-determined-domain">Lemma 5.2. <span class="math" data-tex="\(L^1\)">\(L^1\)</span> functions on the completed locally determined domain</h3>
+<p>Every <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> class for (5.1) has an everywhere finite Borel representative zero outside a sigma-compact subset of <span class="math" data-tex="\(G\)">\(G\)</span>. The integration reading's <span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density theorem therefore applies to this <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> is complete.</p>
+<p><strong>Proof.</strong> For an integrable measurable <span class="math" data-tex="\(f\)">\(f\)</span>, the level sets
+<span class="math" data-tex="\(E_m=\{|f|\ge1/m\}\)">\(E_m=\{|f|\ge1/m\}\)</span> have finite measure by the integration reading, Lemma 2.3. Inner regularity in Theorem 5.1 supplies compact <span class="math" data-tex="\(C_{m,k}\subseteq E_m\)">\(C_{m,k}\subseteq E_m\)</span> with
+<span class="math" data-tex="\(\mu(E_m\setminus C_{m,k})&lt;1/k\)">\(\mu(E_m\setminus C_{m,k})&lt;1/k\)</span>. Their countable union <span class="math" data-tex="\(S\)">\(S\)</span> contains the nonzero set of <span class="math" data-tex="\(f\)">\(f\)</span> up to a null set.</p>
+<p>Every compact <span class="math" data-tex="\(C_{m,k}\)">\(C_{m,k}\)</span> meets finitely many cosets. Thus <span class="math" data-tex="\(S\)">\(S\)</span> lies in a countable union <span class="math" data-tex="\(T\)">\(T\)</span> of cosets, and <span class="math" data-tex="\(T\)">\(T\)</span> is open, closed and sigma-compact. The countable disjoint union of the completed measures on these cosets is the ordinary completion of their Borel sum: choose a Borel representative and a Borel null envelope on each coset and take their countable unions. Lemma 1.1 of the integration reading consequently supplies an everywhere finite Borel representative of <span class="math" data-tex="\(f1_S\)">\(f1_S\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>. Multiplying it by <span class="math" data-tex="\(1_S\)">\(1_S\)</span> and extending by zero off <span class="math" data-tex="\(T\)">\(T\)</span> gives the required global Borel representative, still zero off <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>The Borel restriction of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is finite on compact sets and inner regular on finite-measure Borel sets by Theorem 5.1. Theorem 3.1 of the integration reading now approximates this representative by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Completeness for the full domain follows directly from that reading's Theorem 2.4, which applies to every measure space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-translation-and-the-l-1-algebra">6. Translation and the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> algebra</h2>
+<p>The free-source comparisons for this section are Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex">§443, 14 January 2013</a>, 443G, and <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt444.tex">§444, 23 July 2007 / 4 June 2013</a>, 444O and 444R. The earlier proofs of integration and product measures give the required complex and arbitrary-LCA versions below.</p>
+<a id="ha-lca-pre-haar-lemma-6-1"></a>
+<h3 id="lemma-6-1-continuity-of-translations-in-l-1">Lemma 6.1. Continuity of translations in <span class="math" data-tex="\(L^1\)">\(L^1\)</span></h3>
+<p>Each <span class="math" data-tex="\(L_a\)">\(L_a\)</span> is an isometry of <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|L_af-f\|_1\longrightarrow0\quad(a\to0).
+\]">\[
+ \|L_af-f\|_1\longrightarrow0\quad(a\to0).
+\]</span>
+The map <span class="math" data-tex="\((a,f)\mapsto L_af\)">\((a,f)\mapsto L_af\)</span> is jointly continuous from <span class="math" data-tex="\(G\times L^1(\mu)\)">\(G\times L^1(\mu)\)</span> to <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 5.1 and the integration reading's change-of-variables Lemma 2.5 give the isometry, including well-definedness on almost-everywhere classes. For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, Lemma 1.1 puts all sufficiently small translation differences in a fixed compact set <span class="math" data-tex="\(D\)">\(D\)</span>, with their uniform norms tending to zero. Thus
+<span class="math" data-tex="\(\|L_af-f\|_1\le\mu(D)\|L_af-f\|_\infty\to0\)">\(\|L_af-f\|_1\le\mu(D)\|L_af-f\|_\infty\to0\)</span>.
+For general <span class="math" data-tex="\(f\)">\(f\)</span>, choose <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span> with <span class="math" data-tex="\(\|f-h\|_1&lt;\varepsilon\)">\(\|f-h\|_1&lt;\varepsilon\)</span>, using Lemma 5.2. Then
+<span class="math math-display" data-tex="\[
+ \|L_af-f\|_1\le2\varepsilon+\|L_ah-h\|_1.
+\]">\[
+ \|L_af-f\|_1\le2\varepsilon+\|L_ah-h\|_1.
+\]</span>
+This proves continuity at zero. The group law and the isometry give continuity at any <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Finally
+<span class="math math-display" data-tex="\[
+ \|L_af-L_{a_0}f_0\|_1
+ \le\|f-f_0\|_1+\|L_{a-a_0}f_0-f_0\|_1,
+\]">\[
+ \|L_af-L_{a_0}f_0\|_1
+ \le\|f-f_0\|_1+\|L_{a-a_0}f_0-f_0\|_1,
+\]</span>
+which proves joint continuity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-haar-theorem-6-2"></a>
+<h3 id="theorem-6-2-the-commutative-banach-star-algebra-l-1-g">Theorem 6.2. The commutative Banach star algebra <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span></h3>
+<p>For <span class="math" data-tex="\(f,g\in L^1(\mu)\)">\(f,g\in L^1(\mu)\)</span>, the integral
+<span class="math math-display" data-tex="\[
+ (f*g)(x)=\int_G f(y)g(x-y)\,d\mu(y)                    \tag{6.1}
+\]">\[
+ (f*g)(x)=\int_G f(y)g(x-y)\,d\mu(y)                    \tag{6.1}
+\]</span>
+exists absolutely for almost every <span class="math" data-tex="\(x\)">\(x\)</span>. It defines a class in <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span>, independent of representatives, with
+<span class="math math-display" data-tex="\[
+ \|f*g\|_1\le\|f\|_1\|g\|_1.
+\]">\[
+ \|f*g\|_1\le\|f\|_1\|g\|_1.
+\]</span>
+Together with <span class="math" data-tex="\(f^*(x)=\overline{f(-x)}\)">\(f^*(x)=\overline{f(-x)}\)</span>, convolution makes <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> a commutative Banach star algebra:
+<span class="math math-display" data-tex="\[
+ (f*g)*h=f*(g*h),\quad
+ (f*g)^*=g^**f^*,\quad
+ \|f^*\|_1=\|f\|_1,\quad f^{**}=f.
+\]">\[
+ (f*g)*h=f*(g*h),\quad
+ (f*g)^*=g^**f^*,\quad
+ \|f^*\|_1=\|f\|_1,\quad f^{**}=f.
+\]</span>
+For <span class="math" data-tex="\(f,g\in C_c(G)\)">\(f,g\in C_c(G)\)</span>, their convolution is in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> and
+<span class="math" data-tex="\(\operatorname{supp}(f*g)\subseteq\operatorname{supp}f+\operatorname{supp}g\)">\(\operatorname{supp}(f*g)\subseteq\operatorname{supp}f+\operatorname{supp}g\)</span>.
+Furthermore
+<span class="math math-display" data-tex="\[
+ L_a(f*g)=(L_af)*g=f*(L_ag).                            \tag{6.2}
+\]">\[
+ L_a(f*g)=(L_af)*g=f*(L_ag).                            \tag{6.2}
+\]</span></p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(f,g\in C_c(G)\)">\(f,g\in C_c(G)\)</span>. Each section in (6.1) is integrable. Lemma 1.1 gives
+<span class="math math-display" data-tex="\[
+ |(f*g)(x+a)-(f*g)(x)|
+ \le\|f\|_1\sup_z|g(z+a)-g(z)|\longrightarrow0.
+\]">\[
+ |(f*g)(x+a)-(f*g)(x)|
+ \le\|f\|_1\sup_z|g(z+a)-g(z)|\longrightarrow0.
+\]</span>
+The support inclusion follows because the integrand is zero unless <span class="math" data-tex="\(y\in\operatorname{supp}f\)">\(y\in\operatorname{supp}f\)</span> and <span class="math" data-tex="\(x-y\in\operatorname{supp}g\)">\(x-y\in\operatorname{supp}g\)</span>; their sum is compact and closed. The nonnegative continuous kernel <span class="math" data-tex="\(|f(y)g(x-y)|\)">\(|f(y)g(x-y)|\)</span> has compact support in <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>. Compactly supported Fubini and translation invariance give
+<span class="math math-display" data-tex="\[
+ \|f*g\|_1
+ \le\int_G|f(y)|\left(\int_G|g(x-y)|\,d\mu(x)\right)d\mu(y)
+ =\|f\|_1\|g\|_1.                                      \tag{6.3}
+\]">\[
+ \|f*g\|_1
+ \le\int_G|f(y)|\left(\int_G|g(x-y)|\,d\mu(x)\right)d\mu(y)
+ =\|f\|_1\|g\|_1.                                      \tag{6.3}
+\]</span>
+Substitution <span class="math" data-tex="\(y\mapsto x-y\)">\(y\mapsto x-y\)</span>, using both translation and inversion invariance, gives commutativity.</p>
+<p>For <span class="math" data-tex="\(f,g,h\in C_c(G)\)">\(f,g,h\in C_c(G)\)</span> and fixed <span class="math" data-tex="\(x\)">\(x\)</span>, expand <span class="math" data-tex="\(((f*g)*h)(x)\)">\(((f*g)*h)(x)\)</span>, interchange its two integrals, and substitute <span class="math" data-tex="\(z=t-y\)">\(z=t-y\)</span> in the integral originally indexed by <span class="math" data-tex="\(t\)">\(t\)</span>. The result is
+<span class="math math-display" data-tex="\[
+ \iint f(y)g(z)h(x-y-z)\,d\mu(z)\,d\mu(y)
+   =\bigl(f*(g*h)\bigr)(x).
+\]">\[
+ \iint f(y)g(z)h(x-y-z)\,d\mu(z)\,d\mu(y)
+   =\bigl(f*(g*h)\bigr)(x).
+\]</span>
+Every interchange is justified by compactly supported continuous Fubini: before substitution the variables lie in the compact sets supplied by <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, <span class="math" data-tex="\(\operatorname{supp}g\)">\(\operatorname{supp}g\)</span> and their sum; afterwards they lie in their compact product. Conjugating (6.1) at <span class="math" data-tex="\(-x\)">\(-x\)</span> and substituting <span class="math" data-tex="\(y=-z\)">\(y=-z\)</span> gives <span class="math" data-tex="\((f*g)^*=f^**g^*\)">\((f*g)^*=f^**g^*\)</span>; commutativity puts the factors in the displayed reversed order. The same substitutions prove (6.2). Inversion invariance proves <span class="math" data-tex="\(\|f^*\|_1=\|f\|_1\)">\(\|f^*\|_1=\|f\|_1\)</span>; applying the formula twice proves <span class="math" data-tex="\(f^{**}=f\)">\(f^{**}=f\)</span>.</p>
+<p>For general <span class="math" data-tex="\(f,g\in L^1\)">\(f,g\in L^1\)</span>, choose <span class="math" data-tex="\(f_n,g_n\in C_c(G)\)">\(f_n,g_n\in C_c(G)\)</span> converging in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, by Lemma 5.2. The estimate
+<span class="math math-display" data-tex="\[
+ \|f_n*g_n-f_m*g_m\|_1
+ \le\|f_n-f_m\|_1\|g_n\|_1+\|f_m\|_1\|g_n-g_m\|_1
+\]">\[
+ \|f_n*g_n-f_m*g_m\|_1
+ \le\|f_n-f_m\|_1\|g_n\|_1+\|f_m\|_1\|g_n-g_m\|_1
+\]</span>
+shows that the products form a Cauchy sequence. Completeness of <span class="math" data-tex="\(L^1\)">\(L^1\)</span> gives a limit independent of the approximants, by the same estimate comparing two choices. This extends convolution bilinearly with (6.3). The isometric involution also passes to the limit. Associativity, commutativity, the star identity and (6.2) pass to the limit in these bounded operations. For associativity, for example, the error in replacing an input of a triple product is bounded by its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> error times the two other norms; convergent approximating sequences have bounded norms.</p>
+<p>It remains to verify the integral formula (6.1) for these limits without a global sigma-finiteness assumption. By Lemma 5.2 choose finite Borel representatives supported on sigma-compact sets <span class="math" data-tex="\(S_f,S_g\)">\(S_f,S_g\)</span>. The set <span class="math" data-tex="\(T=S_f+S_g\)">\(T=S_f+S_g\)</span> is sigma-compact: write it as a countable union of compact sums. The restrictions of the Borel measure to <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(S_f\)">\(S_f\)</span>, regarded as measures on <span class="math" data-tex="\(G\)">\(G\)</span> that vanish outside those sets, are sigma-finite, finite on compact sets and inner regular on finite-measure Borel sets. For the last assertion, a finite-measure set under the restriction is the intersection with its restricting set, and inner regularity of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> supplies compact subsets of that intersection.</p>
+<p>The kernel <span class="math" data-tex="\(f(y)g(x-y)\)">\(f(y)g(x-y)\)</span> is Borel and zero off <span class="math" data-tex="\(T\times S_f\)">\(T\times S_f\)</span>. Theorem 4.4 of the integration reading applies to these two restricted measures. For <span class="math" data-tex="\(y\in S_f\)">\(y\in S_f\)</span>, the function <span class="math" data-tex="\(x\mapsto g(x-y)\)">\(x\mapsto g(x-y)\)</span> is supported in <span class="math" data-tex="\(y+S_g\subseteq T\)">\(y+S_g\subseteq T\)</span>, and its unrestricted integral norm equals <span class="math" data-tex="\(\|g\|_1\)">\(\|g\|_1\)</span>. Thus the absolute double integral is
+<span class="math math-display" data-tex="\[
+ \int_{S_f}|f(y)|\int_T|g(x-y)|\,d\mu(x)\,d\mu(y)
+ =\|f\|_1\|g\|_1.
+\]">\[
+ \int_{S_f}|f(y)|\int_T|g(x-y)|\,d\mu(x)\,d\mu(y)
+ =\|f\|_1\|g\|_1.
+\]</span>
+Fubini supplies a Borel section integral on <span class="math" data-tex="\(T\)">\(T\)</span> outside a null set, and it is zero off <span class="math" data-tex="\(T\)">\(T\)</span>. Defining it to be zero on the exceptional set makes an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> representative satisfying (6.3). The same bound applied to differences proves that this bilinear integral construction is continuous in both <span class="math" data-tex="\(L^1\)">\(L^1\)</span> inputs. It agrees with the already defined convolution on <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, hence on all of <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by density.</p>
+<p>Finally take any other finite measurable representatives <span class="math" data-tex="\(f&#x27;,g&#x27;\)">\(f&#x27;,g&#x27;\)</span> of the two classes. There are measurable null sets <span class="math" data-tex="\(N_f,N_g\)">\(N_f,N_g\)</span> outside which they agree with the Borel representatives. For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the two integrands agree except on
+<span class="math" data-tex="\(N_f\cup(x-N_g)\)">\(N_f\cup(x-N_g)\)</span>, a measurable null set by Theorem 5.1. Both sections are measurable because translation and inversion preserve the full measurable domain. Their absolute integrability and integrals therefore agree for that <span class="math" data-tex="\(x\)">\(x\)</span>. This proves representative independence for (6.1), as well as its almost-everywhere existence on the full domain. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-haar-corollary-6-3"></a>
+<h3 id="corollary-6-3-a-symmetric-approximate-identity-of-norm-one">Corollary 6.3. A symmetric approximate identity of norm one</h3>
+<p>For every open neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of zero there is <span class="math" data-tex="\(e_U\in C_c(G)\)">\(e_U\in C_c(G)\)</span> with
+<span class="math math-display" data-tex="\[
+ e_U\ge0,\quad e_U^*=e_U,\quad
+ \operatorname{supp}e_U\subseteq U,\quad
+ \int e_U\,d\mu=\|e_U\|_1=1.
+\]">\[
+ e_U\ge0,\quad e_U^*=e_U,\quad
+ \operatorname{supp}e_U\subseteq U,\quad
+ \int e_U\,d\mu=\|e_U\|_1=1.
+\]</span>
+With neighbourhoods directed by reverse inclusion, these functions satisfy
+<span class="math math-display" data-tex="\[
+ e_U*f\longrightarrow f\quad\hbox{in }L^1(G)
+ \qquad(f\in L^1(G)).
+\]">\[
+ e_U*f\longrightarrow f\quad\hbox{in }L^1(G)
+ \qquad(f\in L^1(G)).
+\]</span>
+For <span class="math" data-tex="\(h\in C_0(G)\)">\(h\in C_0(G)\)</span>, the convolution <span class="math" data-tex="\(e_U*h\)">\(e_U*h\)</span> belongs to <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> and converges uniformly to <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(v\in C_c(G)\)">\(v\in C_c(G)\)</span>, <span class="math" data-tex="\(0\le v\le1\)">\(0\le v\le1\)</span>, with <span class="math" data-tex="\(v(0)=1\)">\(v(0)=1\)</span> and support in <span class="math" data-tex="\(U\cap(-U)\)">\(U\cap(-U)\)</span>. Put <span class="math" data-tex="\(w(x)=v(x)+v(-x)\)">\(w(x)=v(x)+v(-x)\)</span>. This is symmetric, nonnegative and supported in <span class="math" data-tex="\(U\)">\(U\)</span>; its integral is finite and positive by compact finiteness and positivity on nonempty open sets. Define <span class="math" data-tex="\(e_U=w/\int w\)">\(e_U=w/\int w\)</span>. Inversion invariance proves every displayed property.</p>
+<p>For <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span>, use a Borel representative supported on a sigma-compact set <span class="math" data-tex="\(S\)">\(S\)</span>. Put <span class="math" data-tex="\(K=\operatorname{supp}e_U\)">\(K=\operatorname{supp}e_U\)</span>, which contains zero, and <span class="math" data-tex="\(T=S+K\)">\(T=S+K\)</span>, which is sigma-compact and contains <span class="math" data-tex="\(S\)">\(S\)</span>. Apply positive Fubini, Theorem 4.4 of the integration reading, to the restrictions of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, and to the Borel kernel
+<span class="math" data-tex="\(e_U(y)|f(x-y)-f(x)|\)">\(e_U(y)|f(x-y)-f(x)|\)</span>. It vanishes off <span class="math" data-tex="\(T\times K\)">\(T\times K\)</span>. The resulting estimate is
+<span class="math math-display" data-tex="\[
+ \begin{split}
+ \|e_U*f-f\|_1
+ &amp;\le\int_K e_U(y)\,\|L_yf-f\|_1\,d\mu(y)\\
+ &amp;\le\sup_{y\in U}\|L_yf-f\|_1.
+ \end{split}
+\]">\[
+ \begin{split}
+ \|e_U*f-f\|_1
+ &amp;\le\int_K e_U(y)\,\|L_yf-f\|_1\,d\mu(y)\\
+ &amp;\le\sup_{y\in U}\|L_yf-f\|_1.
+ \end{split}
+\]</span>
+The first line also proves that the required iterated integrals are finite, since <span class="math" data-tex="\(\|L_yf-f\|_1\le2\|f\|_1\)">\(\|L_yf-f\|_1\le2\|f\|_1\)</span>. Lemma 6.1 makes the last supremum tend to zero as <span class="math" data-tex="\(U\)">\(U\)</span> shrinks. This is a neighbourhood net, with no countable neighbourhood basis assumed.</p>
+<p>For <span class="math" data-tex="\(h\in C_0(G)\)">\(h\in C_0(G)\)</span>, the pointwise integral defining <span class="math" data-tex="\(e_U*h\)">\(e_U*h\)</span> exists and has norm at most <span class="math" data-tex="\(\|h\|_\infty\)">\(\|h\|_\infty\)</span>. Approximate <span class="math" data-tex="\(h\)">\(h\)</span> uniformly by <span class="math" data-tex="\(h_n\in C_c(G)\)">\(h_n\in C_c(G)\)</span>, using the finite-Radon reading, Lemma 1.5. Theorem 6.2 gives <span class="math" data-tex="\(e_U*h_n\in C_c(G)\)">\(e_U*h_n\in C_c(G)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|e_U*h_n-e_U*h\|_\infty\le\|h_n-h\|_\infty.
+\]">\[
+ \|e_U*h_n-e_U*h\|_\infty\le\|h_n-h\|_\infty.
+\]</span>
+Since <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span> is uniformly closed by that same earlier lemma, <span class="math" data-tex="\(e_U*h\in C_0(G)\)">\(e_U*h\in C_0(G)\)</span>. Uniform approximation and Lemma 1.1 also show
+<span class="math math-display" data-tex="\[
+ \|L_yh-h\|_\infty
+ \le2\|h-h_n\|_\infty+\|L_yh_n-h_n\|_\infty\longrightarrow0
+ \quad(y\to0).
+\]">\[
+ \|L_yh-h\|_\infty
+ \le2\|h-h_n\|_\infty+\|L_yh_n-h_n\|_\infty\longrightarrow0
+ \quad(y\to0).
+\]</span>
+Finally
+<span class="math" data-tex="\(\|e_U*h-h\|_\infty\le\sup_{y\in U}\|L_yh-h\|_\infty\)">\(\|e_U*h-h\|_\infty\le\sup_{y\in U}\|L_yh-h\|_\infty\)</span>,
+which proves uniform convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

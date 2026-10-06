@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Herbrand quotient of the idèle class group · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-herbrand-quotient-of-the-idele-class-group.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a></li><li><a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-09">Dirichlet&#x27;s unit theorem</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-03">Idèles and the idèle class group</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-01">Absolute values, valuations and Ostrowski&#x27;s theorem</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-herbrand-quotient-of-the-idèle-class-group">The Herbrand quotient of the idèle class group</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>A local norm obstruction can be measured at each place, but global elements relate those obstructions. Which part survives after principal idèles are removed? For a cyclic extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, the answer is a ratio of two finite cohomological defects equal to <span class="math" data-tex="\(n\)">\(n\)</span>. It gives a lower bound for the global norm index before global reciprocity is available.</p>
+<p>We begin with a calculation in which all the places and units can be seen. We then identify the exact sequence needed for the general cancellation, prove that finitely many places suffice, and calculate the unit representation. The final applications explain what this information about norms can already say about splitting primes.</p>
+<p>The definitions and fixed-class descent are <a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a>. Herbrand-quotient multiplicativity and lattice comparison are <a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a>. Number-field unit lattices are the written <em>Dirichlet's unit theorem</em>, Theorems 9.2 and 9.4 of <em>Number fields</em>, and <em>Idèles and the idèle class group</em>, Corollary 3.4 of <em>Adèles and L-functions</em>. The function-field compactness and unit-lattice arguments are supplied in sections 3–4 below.</p>
+<p>Throughout, <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic of degree <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>, and <span class="math" data-tex="\(n_v=[L_w:K_v]\)">\(n_v=[L_w:K_v]\)</span> for a choice of <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-14">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-a-calculation-with-six-constant-field-automorphisms">1. A calculation with six constant-field automorphisms</h2>
+<p>Take <span class="math" data-tex="\(K=\mathbf F_2(t)\)">\(K=\mathbf F_2(t)\)</span>, <span class="math" data-tex="\(L=\mathbf F_{64}(t)\)">\(L=\mathbf F_{64}(t)\)</span>, and let <span class="math" data-tex="\(S\)">\(S\)</span> consist of the places defined by
+<span class="math math-display" data-tex="\[
+t,\qquad t^2+t+1,\qquad t^3+t+1.
+\]">\[
+t,\qquad t^2+t+1,\qquad t^3+t+1.
+\]</span>
+The second polynomial has no root in <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>; neither does the cubic, so they are irreducible. Their residue degrees are 1, 2 and 3. In a constant extension of degree six, a place of degree <span class="math" data-tex="\(d\)">\(d\)</span> has <span class="math" data-tex="\(\gcd(6,d)\)">\(\gcd(6,d)\)</span> places above it, each with local degree <span class="math" data-tex="\(6/\gcd(6,d)\)">\(6/\gcd(6,d)\)</span>. This follows by factoring the finite-field tensor product, or by the orbits of the sixth iterate of binary Frobenius on its roots. The three decomposition-group orders are therefore 6, 3 and 2.</p>
+<p>There are six places of <span class="math" data-tex="\(L\)">\(L\)</span> above <span class="math" data-tex="\(S\)">\(S\)</span>, all rational over <span class="math" data-tex="\(\mathbf F_{64}\)">\(\mathbf F_{64}\)</span>. Write them as <span class="math" data-tex="\(t-a_1,\ldots,t-a_6\)">\(t-a_1,\ldots,t-a_6\)</span>. An <span class="math" data-tex="\(S\)">\(S\)</span>-unit has divisor supported there, and the product formula says that its six exponents sum to zero. Conversely every such exponent vector is realized by a product of the ratios <span class="math" data-tex="\((t-a_j)/(t-a_6)\)">\((t-a_j)/(t-a_6)\)</span>. Thus, modulo the finite constant units, the unit lattice is exactly the augmentation kernel of the permutation lattice on these six places. The group permutes them in orbits of sizes 1, 2 and 3.</p>
+<p>For a cyclic group, a permutation orbit with stabilizer of order <span class="math" data-tex="\(m\)">\(m\)</span> has Herbrand quotient <span class="math" data-tex="\(m\)">\(m\)</span>. Consequently this permutation lattice has quotient <span class="math" data-tex="\(6\cdot3\cdot2=36\)">\(6\cdot3\cdot2=36\)</span>. Its trivial augmentation target has quotient 6, so its kernel has quotient 6. Finite constant units have quotient 1 even when their order is not prime to six. The <span class="math" data-tex="\(S\)">\(S\)</span>-idèle quotient is 36 by the local computation of lesson 13. To check that these places suffice, let <span class="math" data-tex="\(P\)">\(P\)</span> be any monic irreducible polynomial over <span class="math" data-tex="\(\mathbf F_{64}\)">\(\mathbf F_{64}\)</span>. Its function has divisor <span class="math" data-tex="\([P]-\deg(P)[\infty]\)">\([P]-\deg(P)[\infty]\)</span>. Subtracting such principal divisors from an arbitrary divisor leaves its degree times <span class="math" data-tex="\([\infty]\)">\([\infty]\)</span>. The divisor of <span class="math" data-tex="\(t-a_1\)">\(t-a_1\)</span> is <span class="math" data-tex="\([t-a_1]-[\infty]\)">\([t-a_1]-[\infty]\)</span>, so the remaining class can be represented at this place in <span class="math" data-tex="\(S\)">\(S\)</span>. In particular every degree-zero divisor is principal. Applied to the finite valuation support of an idèle, this gives <span class="math" data-tex="\(J_L=L^\times J_L^S\)">\(J_L=L^\times J_L^S\)</span>. Dividing the two quotients gives
+<span class="math math-display" data-tex="\[
+h(G,C_L)=36/6=6.
+\]">\[
+h(G,C_L)=36/6=6.
+\]</span>
+The infinite product of local factors has disappeared from the calculation. The principal elements removed a sum-zero lattice; the one trivial direction they did not remove is responsible for the extension degree.</p>
+<h2 id="2-the-three-modules-that-have-to-be-compared">2. The three modules that have to be compared</h2>
+<p>For finite <span class="math" data-tex="\(S\)">\(S\)</span>, let <span class="math" data-tex="\(J_L^S\)">\(J_L^S\)</span> allow arbitrary components above <span class="math" data-tex="\(S\)">\(S\)</span> and units elsewhere, and let <span class="math" data-tex="\(E_{L,S}=L^\times\cap J_L^S\)">\(E_{L,S}=L^\times\cap J_L^S\)</span>. Once <span class="math" data-tex="\(S\)">\(S\)</span> is large enough that <span class="math" data-tex="\(J_L=L^\times J_L^S\)">\(J_L=L^\times J_L^S\)</span>, these groups fit into
+<span class="math math-display" data-tex="\[
+1\longrightarrow E_{L,S}\longrightarrow J_L^S\longrightarrow C_L\longrightarrow1.
+\]">\[
+1\longrightarrow E_{L,S}\longrightarrow J_L^S\longrightarrow C_L\longrightarrow1.
+\]</span>
+The calculation to be proved is
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+\text{module}&amp;\text{Herbrand quotient}&amp;\text{reason}\\\hline
+J_L^S&amp;\prod_{v\in S}n_v&amp;\text{local norms and induced modules}\\
+E_{L,S}&amp;n^{-1}\prod_{v\in S}n_v&amp;\text{the sum-zero logarithmic lattice}\\
+C_L&amp;n&amp;\text{the exact cyclic hexagon}.
+\end{array}
+\]">\[
+\begin{array}{c|c|c}
+\text{module}&amp;\text{Herbrand quotient}&amp;\text{reason}\\\hline
+J_L^S&amp;\prod_{v\in S}n_v&amp;\text{local norms and induced modules}\\
+E_{L,S}&amp;n^{-1}\prod_{v\in S}n_v&amp;\text{the sum-zero logarithmic lattice}\\
+C_L&amp;n&amp;\text{the exact cyclic hexagon}.
+\end{array}
+\]</span>
+The first line is Proposition 13.4. The second is Proposition 14.2 below. Multiplicativity gives the third only after both groups have finite Tate defects. We therefore need to prove the choice of <span class="math" data-tex="\(S\)">\(S\)</span>, the full-lattice assertion and that finiteness; the table itself is not a substitute for those arguments.</p>
+<p>Adding a finite unramified place of local degree <span class="math" data-tex="\(m\)">\(m\)</span> to a permissible set <span class="math" data-tex="\(S\)">\(S\)</span> multiplies both numerator and denominator by <span class="math" data-tex="\(m\)">\(m\)</span>. For the idèles this is the newly unrestricted local factor; for the units it is the additional orbit in the permutation representation. The global answer is unchanged. This is a useful check that the result describes <span class="math" data-tex="\(C_L\)">\(C_L\)</span>, rather than the auxiliary set of places.</p>
+<span id="1-compactness-and-a-finite-set-of-places" aria-hidden="true"></span><h2 id="3-compactness-and-a-finite-set-of-places">3. Compactness and a finite set of places</h2>
+<p>For a global field <span class="math" data-tex="\(F\)">\(F\)</span>, normalize the finite absolute values by
+<span class="math" data-tex="\(|x|_w=q_w^{-v_w(x)}\)">\(|x|_w=q_w^{-v_w(x)}\)</span>, and the real and complex ones by ordinary modulus and its square. The product formula makes
+<span class="math math-display" data-tex="\[
+|x|=\prod_w|x_w|_w,\qquad
+C_F^1=\ker\bigl(|\cdot|:C_F\to\mathbf R_{&gt;0}\bigr)
+\tag{1}
+\]">\[
+|x|=\prod_w|x_w|_w,\qquad
+C_F^1=\ker\bigl(|\cdot|:C_F\to\mathbf R_{&gt;0}\bigr)
+\tag{1}
+\]</span>
+well-defined. For number fields <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span> is compact by the full box argument in <em>Adèles and L-functions</em>, Theorem 3.3. The norm has a continuous section at any archimedean place, so <span class="math" data-tex="\(C_F=C_F^1\times\mathbf R_{&gt;0}\)">\(C_F=C_F^1\times\mathbf R_{&gt;0}\)</span> after choosing that section.</p>
+<h3 id="the-function-field-compactness-argument">The function-field compactness argument</h3>
+<p>We give the additional support for <span class="math" data-tex="\(F\)">\(F\)</span> a function field over its full constant field <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span>.</p>
+<p>First <span class="math" data-tex="\(F\)">\(F\)</span> has a separating rational parameter <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(F/k(t)\)">\(F/k(t)\)</span> is finite separable. Here is the elementary characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> justification. For any rational parameter <span class="math" data-tex="\(u\)">\(u\)</span>, Frobenius and the degree formula give
+<span class="math" data-tex="\([F:F^p]=p\)">\([F:F^p]=p\)</span>: both <span class="math" data-tex="\([F:k(u)]\)">\([F:k(u)]\)</span> and <span class="math" data-tex="\([F^p:k(u)^p]\)">\([F^p:k(u)^p]\)</span> are the same, while <span class="math" data-tex="\([k(u):k(u)^p]=p\)">\([k(u):k(u)^p]=p\)</span>. Choose <span class="math" data-tex="\(t\notin F^p\)">\(t\notin F^p\)</span>. Then <span class="math" data-tex="\(F=F^p(t)\)">\(F=F^p(t)\)</span>. A finite extension of a one-variable field over a perfect field is inseparable only if it contains the <span class="math" data-tex="\(p\)">\(p\)</span>th root of that field's rational parameter. To verify this criterion, take its maximal separable subfield <span class="math" data-tex="\(E\)">\(E\)</span>. It too satisfies <span class="math" data-tex="\([E:E^p]=p\)">\([E:E^p]=p\)</span>, and <span class="math" data-tex="\(t\notin E^p\)">\(t\notin E^p\)</span>, since a separable extension cannot contain the nontrivial purely inseparable element <span class="math" data-tex="\(t^{1/p}\)">\(t^{1/p}\)</span>. Hence <span class="math" data-tex="\(E=E^p(t)\)">\(E=E^p(t)\)</span> and <span class="math" data-tex="\(E^{1/p}=E(t^{1/p})\)">\(E^{1/p}=E(t^{1/p})\)</span>. A nontrivial finite purely inseparable extension of <span class="math" data-tex="\(E\)">\(E\)</span> contains <span class="math" data-tex="\(E^{1/p}\)">\(E^{1/p}\)</span>: if an element has minimal purely inseparable exponent <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, its <span class="math" data-tex="\(p^{r-1}\)">\(p^{r-1}\)</span> power generates a degree-<span class="math" data-tex="\(p\)">\(p\)</span> extension, which is the entire degree-<span class="math" data-tex="\(p\)">\(p\)</span> field <span class="math" data-tex="\(E^{1/p}\)">\(E^{1/p}\)</span>. This proves the criterion. Since <span class="math" data-tex="\(t\)">\(t\)</span> is not a <span class="math" data-tex="\(p\)">\(p\)</span>th power in <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(F/k(t)\)">\(F/k(t)\)</span> is separable.</p>
+<p>For <span class="math" data-tex="\(E=k(t)\)">\(E=k(t)\)</span>, partial fractions and the polynomial Chinese remainder theorem give a compact set of additive representatives for <span class="math" data-tex="\(\mathbb A_E/E\)">\(\mathbb A_E/E\)</span>:
+<span class="math math-display" data-tex="\[
+D_E=\prod_{P\text{ finite}}\mathcal O_P
+       \times t^{-1}k[[t^{-1}]].
+\tag{2}
+\]">\[
+D_E=\prod_{P\text{ finite}}\mathcal O_P
+       \times t^{-1}k[[t^{-1}]].
+\tag{2}
+\]</span>
+Indeed, finitely many finite principal parts can be removed by a rational function with poles only at those irreducible polynomials <span class="math" data-tex="\(P\)">\(P\)</span>. Subtract a polynomial to remove the nonnegative powers of <span class="math" data-tex="\(t\)">\(t\)</span> at infinity. The remainder lies in (2). Also <span class="math" data-tex="\(E\cap D_E=0\)">\(E\cap D_E=0\)</span>: a rational function integral at every finite place is a polynomial, and one vanishing at infinity is zero. Since <span class="math" data-tex="\(D_E\)">\(D_E\)</span> is open, <span class="math" data-tex="\(E\)">\(E\)</span> is discrete; since it is compact and supplies representatives, the quotient is compact.</p>
+<p>An <span class="math" data-tex="\(E\)">\(E\)</span>-basis of <span class="math" data-tex="\(F\)">\(F\)</span> identifies <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span> topologically with <span class="math" data-tex="\(\mathbb A_E^{[F:E]}\)">\(\mathbb A_E^{[F:E]}\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(E^{[F:E]}\)">\(E^{[F:E]}\)</span>. To check the tail topology, take an integral primitive basis and exclude its denominators and discriminant. Outside those finitely many primes it is an integral basis of the local product: the trace-pairing matrix has unit determinant, so the coordinates of any integral element are integral. At the remaining finitely many completions it is a vector-space isomorphism. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is discrete in <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span>, and <span class="math" data-tex="\(\mathbb A_F/F\)">\(\mathbb A_F/F\)</span> is compact.</p>
+<p>The function-field product formula also follows from this rational parameter: local determinant norms give
+<span class="math math-display" data-tex="\[
+\prod_{w\mid v}|a|_w=|N_{F/E}(a)|_v.
+\]">\[
+\prod_{w\mid v}|a|_w=|N_{F/E}(a)|_v.
+\]</span>
+The rational formula is just equality of the degree of a polynomial with the sum of the degrees of its prime factors, including the opposite valuation at infinity. Multiplying the displayed norm formula proves the product formula for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Give <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span> additive Haar measure and let <span class="math" data-tex="\(c\)">\(c\)</span> be the finite positive volume of its compact quotient by the discrete subgroup <span class="math" data-tex="\(F\)">\(F\)</span>. For an idèle <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, the compact open box <span class="math" data-tex="\(B_\beta=\prod_w\beta_w\mathcal O_w\)">\(B_\beta=\prod_w\beta_w\mathcal O_w\)</span> has volume <span class="math" data-tex="\(b|\beta|\)">\(b|\beta|\)</span>, where <span class="math" data-tex="\(b=\operatorname{vol}(B_1)&gt;0\)">\(b=\operatorname{vol}(B_1)&gt;0\)</span>. If this volume exceeds <span class="math" data-tex="\(c\)">\(c\)</span>, there are two distinct box elements differing by a nonzero element of <span class="math" data-tex="\(F\)">\(F\)</span>. For clarity, integration of <span class="math" data-tex="\(\sum_{a\in F}\mathbf1_{B_\beta}(x+a)\)">\(\sum_{a\in F}\mathbf1_{B_\beta}(x+a)\)</span> over the quotient gives <span class="math" data-tex="\(\operatorname{vol}(B_\beta)\)">\(\operatorname{vol}(B_\beta)\)</span>. If every coset met the box at most once, that integral would be at most <span class="math" data-tex="\(c\)">\(c\)</span>. The integration identity follows by partitioning into local slices on which the discrete quotient is injective. Since the box is an additive subgroup, their difference belongs to the box. Thus
+<span class="math math-display" data-tex="\[
+|\beta|&gt;c/b\quad\Longrightarrow\quad
+0\ne a\in F,\quad |a|_w\leq|\beta_w|_w\ \text{for every }w.
+\tag{3}
+\]">\[
+|\beta|&gt;c/b\quad\Longrightarrow\quad
+0\ne a\in F,\quad |a|_w\leq|\beta_w|_w\ \text{for every }w.
+\tag{3}
+\]</span></p>
+<p>The norm-one idèles are closed in <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span>, and their additive and idèle subspace topologies agree. We include the topology check needed to use (3). For a norm-one idèle, constrain finitely many coordinates to have product absolute value less than 2 and leave integral tails. A new tail nonunit costs a factor at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so a norm-one element in that additive neighborhood must still have unit tails. This proves equality of the two topologies. To prove closedness, a zero component, or infinitely many tail nonunits, allows a finite coordinate product less than 1, excluding norm one. For an idèle of norm <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span>, the same argument works. For norm <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, include all places with <span class="math" data-tex="\(q_w\leq2d\)">\(q_w\leq2d\)</span> and constrain the finite product to lie between 1 and <span class="math" data-tex="\(2d\)">\(2d\)</span>; a tail nonunit then forces the total below 1, and a unit tail leaves it above 1. There are only finitely many such places: each lies over a prime of <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> of bounded residue degree, and that rational field has only finitely many irreducible polynomials of bounded degree.</p>
+<p>Choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(|\eta|&gt;c/b\)">\(|\eta|&gt;c/b\)</span>. Apply (3) to <span class="math" data-tex="\(\eta x^{-1}\)">\(\eta x^{-1}\)</span> for <span class="math" data-tex="\(x\in J_F^1\)">\(x\in J_F^1\)</span>. The resulting <span class="math" data-tex="\(a x\)">\(a x\)</span> is still norm one and belongs to the fixed compact box <span class="math" data-tex="\(B_\eta\)">\(B_\eta\)</span>. Its intersection with <span class="math" data-tex="\(J_F^1\)">\(J_F^1\)</span> is compact by the topology check. Every norm-one class has a representative there, proving compactness of <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>.</p>
+<h3 id="choosing-s">Choosing <span class="math" data-tex="\(S\)">\(S\)</span></h3>
+<p>For either kind of global field, <span class="math" data-tex="\(C_F/\operatorname{image}(J_F^S)\)">\(C_F/\operatorname{image}(J_F^S)\)</span> is finite when <span class="math" data-tex="\(S\)">\(S\)</span> is finite, contains infinity, and is nonempty. The image is open. In a number field it has the full norm image because of an archimedean component, so the quotient is an image of compact <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>, and is discrete, hence finite. In a function field the norm image is a subgroup of <span class="math" data-tex="\(q^{\mathbf Z}\)">\(q^{\mathbf Z}\)</span>; the norm image of <span class="math" data-tex="\(J_F^S\)">\(J_F^S\)</span> contains a nonzero power of <span class="math" data-tex="\(q\)">\(q\)</span>, so it has finite index in the full norm image. Each of finitely many norm cosets is then accounted for by a compact norm-one quotient. Again the discrete quotient is finite.</p>
+<p>Take representatives of this finite quotient and enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to include their nonunit components. The enlarged set satisfies <span class="math" data-tex="\(J_F=F^\times J_F^S\)">\(J_F=F^\times J_F^S\)</span>. Applying this to <span class="math" data-tex="\(F=K,L\)">\(F=K,L\)</span>, and taking the finite images of the needed places of <span class="math" data-tex="\(L\)">\(L\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>, we can choose a single finite <span class="math" data-tex="\(S\)">\(S\)</span> containing ramification and infinity with
+<span class="math math-display" data-tex="\[
+J_K=K^\times J_K^S,\qquad J_L=L^\times J_L^S.
+\tag{4}
+\]">\[
+J_K=K^\times J_K^S,\qquad J_L=L^\times J_L^S.
+\tag{4}
+\]</span>
+For function fields keep <span class="math" data-tex="\(S\)">\(S\)</span> nonempty. Define
+<span class="math math-display" data-tex="\[
+E_{L,S}=L^\times\cap J_L^S
+=\{a\in L^\times:v_w(a)=0\text{ for }w\notin S_L\}.
+\]">\[
+E_{L,S}=L^\times\cap J_L^S
+=\{a\in L^\times:v_w(a)=0\text{ for }w\notin S_L\}.
+\]</span>
+Equation (4) gives the exact sequence of <span class="math" data-tex="\(G\)">\(G\)</span>-modules
+<span class="math math-display" data-tex="\[
+1\longrightarrow E_{L,S}\longrightarrow J_L^S
+\longrightarrow C_L\longrightarrow1.
+\tag{5}
+\]">\[
+1\longrightarrow E_{L,S}\longrightarrow J_L^S
+\longrightarrow C_L\longrightarrow1.
+\tag{5}
+\]</span></p>
+<span id="2-the-s--unit-representation" aria-hidden="true"></span><h2 id="4-the-s--unit-representation">4. The <span class="math" data-tex="\(S\)">\(S\)</span>-unit representation</h2>
+<p>The logarithm map
+<span class="math math-display" data-tex="\[
+\ell:E_{L,S}\longrightarrow
+H=\left\{(x_w)_{w\in S_L}\in\mathbf R^{S_L}:
+                         \sum_w x_w=0\right\},
+\quad a\longmapsto(\log|a|_w)_w
+\tag{6}
+\]">\[
+\ell:E_{L,S}\longrightarrow
+H=\left\{(x_w)_{w\in S_L}\in\mathbf R^{S_L}:
+                         \sum_w x_w=0\right\},
+\quad a\longmapsto(\log|a|_w)_w
+\tag{6}
+\]</span>
+has finite kernel <span class="math" data-tex="\(\mu_L\)">\(\mu_L\)</span>, and its image is a full lattice in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For number fields this is the written <span class="math" data-tex="\(S\)">\(S\)</span>-logarithmic theorem cited above. In function fields, here is the proof from section 3. The group <span class="math" data-tex="\(J_L^{S,1}/E_{L,S}\)">\(J_L^{S,1}/E_{L,S}\)</span> identifies with the image of <span class="math" data-tex="\(J_L^{S,1}\)">\(J_L^{S,1}\)</span> in compact <span class="math" data-tex="\(C_L^1\)">\(C_L^1\)</span>. It is an open subgroup, hence closed of finite index and compact. The local valuation map sends <span class="math" data-tex="\(J_L^{S,1}\)">\(J_L^{S,1}\)</span> onto the discrete lattice
+<span class="math math-display" data-tex="\[
+\Delta=\left\{(-m_w\log q_w)_w:m_w\in\mathbf Z,\
+                            \sum_w m_w\log q_w=0\right\}.
+\]">\[
+\Delta=\left\{(-m_w\log q_w)_w:m_w\in\mathbf Z,\
+                            \sum_w m_w\log q_w=0\right\}.
+\]</span>
+Since all <span class="math" data-tex="\(q_w\)">\(q_w\)</span> are powers of the full constant-field cardinality, <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> spans <span class="math" data-tex="\(H\)">\(H\)</span>. Its kernel is the compact product of all local unit groups. Compactness of the preceding quotient makes <span class="math" data-tex="\(\Delta/\ell(E_{L,S})\)">\(\Delta/\ell(E_{L,S})\)</span> finite, so the logarithmic image is a full lattice. Its kernel on principal elements is finite, being the intersection of a discrete closed subgroup with that compact product. It consists exactly of the constants <span class="math" data-tex="\(k_L^\times\)">\(k_L^\times\)</span>, or equivalently the roots of unity: a finite-order element is algebraic over the finite constant field, and every nonzero constant is a unit everywhere. This proves (6) with all its assertions in this case, too.</p>
+<p>The action on logarithms is a permutation:
+<span class="math math-display" data-tex="\[
+\ell(g a)_w=\ell(a)_{g^{-1}w}.
+\tag{7}
+\]">\[
+\ell(g a)_w=\ell(a)_{g^{-1}w}.
+\tag{7}
+\]</span>
+There is no extra residue-degree factor: the normalized absolute value is transported by the isomorphism <span class="math" data-tex="\(L_{g^{-1}w}\to L_w\)">\(L_{g^{-1}w}\to L_w\)</span>.</p>
+<h3 id="proposition-14-2-the-s--unit-quotient">Proposition 14.2. The <span class="math" data-tex="\(S\)">\(S\)</span>-unit quotient</h3>
+<p>For cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+h(G,E_{L,S})=\frac1n\prod_{v\in S}n_v.
+\tag{8}
+\]">\[
+h(G,E_{L,S})=\frac1n\prod_{v\in S}n_v.
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> Finite torsion has Herbrand quotient 1, so we may replace <span class="math" data-tex="\(E_{L,S}\)">\(E_{L,S}\)</span> by its logarithmic lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Adjoin the trivial lattice <span class="math" data-tex="\(\mathbf Z e\)">\(\mathbf Z e\)</span>, <span class="math" data-tex="\(e=(1,\ldots,1)\)">\(e=(1,\ldots,1)\)</span>, to form <span class="math" data-tex="\(\Lambda\oplus\mathbf Z e\)">\(\Lambda\oplus\mathbf Z e\)</span>. Its real representation is the full permutation space <span class="math" data-tex="\(\mathbf R^{S_L}\)">\(\mathbf R^{S_L}\)</span>. The lattice comparison theorem in lesson 2 therefore gives the same Herbrand quotient as the permutation lattice
+<span class="math math-display" data-tex="\[
+P=\mathbf Z^{S_L}
+=\bigoplus_{v\in S}\mathbf Z[G/G_w].
+\]">\[
+P=\mathbf Z^{S_L}
+=\bigoplus_{v\in S}\mathbf Z[G/G_w].
+\]</span>
+That comparison does not require the two lattices to have rational coordinates in a common real embedding. Their integral representations are real-isomorphic; the rational commuting-map equations consequently have a real solution with nonzero determinant. The determinant is a nonzero polynomial on that rational solution space, so it has a rational nonzero value. Clearing denominators gives an equivariant injection with finite cokernel, exactly the argument proved in lesson 2.</p>
+<p>The explicit induced cyclic calculation in lesson 13 gives
+<span class="math" data-tex="\(h(G,\mathbf Z[G/G_w])=h(G_w,\mathbf Z)=|G_w|=n_v\)">\(h(G,\mathbf Z[G/G_w])=h(G_w,\mathbf Z)=|G_w|=n_v\)</span>.
+The trivial lattice <span class="math" data-tex="\(\mathbf Z e\)">\(\mathbf Z e\)</span> has quotient <span class="math" data-tex="\(n\)">\(n\)</span>. Multiplicativity now gives
+<span class="math math-display" data-tex="\[
+n\,h(G,E_{L,S})=h(G,\Lambda\oplus\mathbf Z e)
+              =h(G,P)=\prod_{v\in S}n_v,
+\]">\[
+n\,h(G,E_{L,S})=h(G,\Lambda\oplus\mathbf Z e)
+              =h(G,P)=\prod_{v\in S}n_v,
+\]</span>
+proving (8). ∎</p>
+<span id="3-the-quotient-of-the-idèle-class-group" aria-hidden="true"></span><h2 id="5-the-quotient-of-the-idèle-class-group">5. The quotient of the idèle class group</h2>
+<h3 id="theorem-14-1-the-degree-survives">Theorem 14.1. The degree survives</h3>
+<p>For every cyclic extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of global fields,
+<span class="math math-display" data-tex="\[
+h(G,C_L)=n.
+\tag{9}
+\]">\[
+h(G,C_L)=n.
+\tag{9}
+\]</span>
+Both Tate groups defining this quotient are finite.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(S\)">\(S\)</span> as in (4). Proposition 13.4 gives
+<span class="math" data-tex="\(h(G,J_L^S)=\prod_{v\in S}n_v\)">\(h(G,J_L^S)=\prod_{v\in S}n_v\)</span>; Proposition 14.2 gives (8), with finite Tate groups. Apply the full exact cyclic hexagon and its quotient multiplicativity to (5). This gives finiteness for the third module, and
+<span class="math math-display" data-tex="\[
+h(G,C_L)=\frac{h(G,J_L^S)}{h(G,E_{L,S})}
+        =\frac{\prod_{v\in S}n_v}{(\prod_{v\in S}n_v)/n}=n.
+\]">\[
+h(G,C_L)=\frac{h(G,J_L^S)}{h(G,E_{L,S})}
+        =\frac{\prod_{v\in S}n_v}{(\prod_{v\in S}n_v)/n}=n.
+\]</span>
+No Herbrand quotient of the unrestricted idèle group is used. ∎</p>
+<h3 id="corollary-14-3-the-norm-index-is-at-least-the-degree">Corollary 14.3. The norm index is at least the degree</h3>
+<p>For cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+[C_K:N_{L/K}C_L]
+=n\,|\widehat H^{-1}(G,C_L)|\geq n.
+\tag{10}
+\]">\[
+[C_K:N_{L/K}C_L]
+=n\,|\widehat H^{-1}(G,C_L)|\geq n.
+\tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> Proposition 13.2 identifies <span class="math" data-tex="\(C_L^G=C_K\)">\(C_L^G=C_K\)</span>, and the module norm is the idèle-class norm. Thus degree zero is <span class="math" data-tex="\(C_K/N C_L\)">\(C_K/N C_L\)</span>. Equation (9) says that the size of this finite group is <span class="math" data-tex="\(n\)">\(n\)</span> times the size of degree minus one. ∎</p>
+<p>The later norm inequality will show equality and kill the remaining Tate group. Equation (10) alone makes no such assertion.</p>
+<span id="4-primes-cannot-all-split" aria-hidden="true"></span><h2 id="6-primes-cannot-all-split">6. Primes cannot all split</h2>
+<p>We use the fully proved weak approximation theorem of <em>Local fields</em>, <em>Absolute values, valuations and Ostrowski's theorem</em>, Theorem 5.2. Its hypothesis is a finite list of pairwise inequivalent nontrivial absolute values on any field; it therefore applies to both global-field cases here. Density of the field in its individual completions turns its original field-valued targets into arbitrary completion-valued targets.</p>
+<p><strong>Lemma.</strong> A nontrivial cyclic extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> has infinitely many finite places that do not split completely.</p>
+<p><strong>Proof.</strong> Suppose only finitely many finite places fail to split, and include these and infinity in a finite set <span class="math" data-tex="\(T\)">\(T\)</span>. Given <span class="math" data-tex="\(x\in J_K\)">\(x\in J_K\)</span>, each local norm image at a place of <span class="math" data-tex="\(T\)">\(T\)</span> is open. Weak approximation chooses <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> close enough to <span class="math" data-tex="\(x_v\)">\(x_v\)</span> that <span class="math" data-tex="\(x_v/a\)">\(x_v/a\)</span> is a local norm for every <span class="math" data-tex="\(v\in T\)">\(v\in T\)</span>. Choose the neighborhoods to exclude zero. Outside <span class="math" data-tex="\(T\)">\(T\)</span>, complete splitting makes the local norm surjective. Proposition 13.3 then says <span class="math" data-tex="\(x/a\in N J_L\)">\(x/a\in N J_L\)</span>. Thus every idèle class is a norm, giving <span class="math" data-tex="\([C_K:N C_L]=1\)">\([C_K:N C_L]=1\)</span>, contrary to (10) and <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>. ∎</p>
+<p>There is a stronger conclusion for cyclic extensions of prime-power degree: infinitely many finite places are <strong>inert</strong>, meaning they are unramified and have just one place above them. To prove it, let <span class="math" data-tex="\(G\)">\(G\)</span> have order <span class="math" data-tex="\(\ell^r&gt;1\)">\(\ell^r&gt;1\)</span> and let <span class="math" data-tex="\(H\)">\(H\)</span> be its unique subgroup of index <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Every proper subgroup is contained in <span class="math" data-tex="\(H\)">\(H\)</span>. If only finitely many places were inert, every other unramified place would have proper decomposition group and would therefore split completely in the degree-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> field <span class="math" data-tex="\(L^H/K\)">\(L^H/K\)</span>. This contradicts the preceding lemma for that field.</p>
+<p>Inertness and failure of complete splitting are different conditions. For a noncyclic Galois extension, an unramified decomposition group is cyclic, so it cannot equal the whole group. There are consequently no inert unramified places, although Corollary 14.4 below gives infinitely many places that fail to split completely. Only the finitely many ramified places can remain a single place for another reason.</p>
+<h3 id="corollary-14-4-complete-splitting-detects-the-field">Corollary 14.4. Complete splitting detects the field</h3>
+<p>If almost all finite places of <span class="math" data-tex="\(K\)">\(K\)</span> split completely in a finite separable extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, then <span class="math" data-tex="\(M=K\)">\(M=K\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be its Galois closure. At a completely split place of <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, its primitive-element polynomial splits into linear factors over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, by the local decomposition (2) of lesson 13. Its splitting field therefore embeds in <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Since <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is Galois, all the completions of <span class="math" data-tex="\(L\)">\(L\)</span> above <span class="math" data-tex="\(v\)">\(v\)</span> have degree one. Thus almost all places of <span class="math" data-tex="\(K\)">\(K\)</span> split completely in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>If <span class="math" data-tex="\(L\ne K\)">\(L\ne K\)</span>, its finite group contains an element of prime order: take any nonidentity element of order <span class="math" data-tex="\(m\)">\(m\)</span>, a prime <span class="math" data-tex="\(\ell\mid m\)">\(\ell\mid m\)</span>, and its <span class="math" data-tex="\(m/\ell\)">\(m/\ell\)</span> power. Let <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> be the fixed field of that order-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> subgroup. Then <span class="math" data-tex="\(L/K&#x27;\)">\(L/K&#x27;\)</span> is a nontrivial cyclic extension. Every place of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> above a completely split place of <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is completely split in <span class="math" data-tex="\(L/K&#x27;\)">\(L/K&#x27;\)</span>; only finitely many places of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> lie above the exceptional finite set. This contradicts the lemma. Hence <span class="math" data-tex="\(L=K\)">\(L=K\)</span> and <span class="math" data-tex="\(M=K\)">\(M=K\)</span>. ∎</p>
+<p>Taking the contrapositive gives infinitely many nonsplit primes in every nontrivial finite separable extension. The proof uses a cyclic extension over an intermediate base field, so it also works when the original Galois group has no nontrivial cyclic quotient.</p>
+<p><strong>Separating cyclic extensions.</strong> Let <span class="math" data-tex="\(L_1,\ldots,L_r\)">\(L_1,\ldots,L_r\)</span> be cyclic extensions of the same prime degree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and put <span class="math" data-tex="\(M=L_2\cdots L_r\)">\(M=L_2\cdots L_r\)</span>. If <span class="math" data-tex="\(L_1\not\subset M\)">\(L_1\not\subset M\)</span>, there are infinitely many finite primes of <span class="math" data-tex="\(K\)">\(K\)</span> that split completely in <span class="math" data-tex="\(M\)">\(M\)</span> and are inert in <span class="math" data-tex="\(L_1\)">\(L_1\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(E=L_1M\)">\(E=L_1M\)</span>. The hypothesis makes <span class="math" data-tex="\(E/M\)">\(E/M\)</span> cyclic of degree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. It has infinitely many inert primes by the prime-power conclusion above. Exclude those over the finitely many primes ramified in <span class="math" data-tex="\(E/K\)">\(E/K\)</span>. At a remaining prime <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, the decomposition group <span class="math" data-tex="\(D\)">\(D\)</span> in <span class="math" data-tex="\(\operatorname{Gal}(E/K)\)">\(\operatorname{Gal}(E/K)\)</span> is cyclic. This Galois group embeds in a product of groups of order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so every nonidentity element has order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; hence <span class="math" data-tex="\(|D|\leq\ell\)">\(|D|\leq\ell\)</span>. If its image in <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span> were nontrivial, <span class="math" data-tex="\(D\cap\operatorname{Gal}(E/M)\)">\(D\cap\operatorname{Gal}(E/M)\)</span> would be trivial, contradicting the selected prime's inertness in <span class="math" data-tex="\(E/M\)">\(E/M\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> maps trivially to the group of <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, which makes <span class="math" data-tex="\(v\)">\(v\)</span> completely split in <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(D=\operatorname{Gal}(E/M)\)">\(D=\operatorname{Gal}(E/M)\)</span> maps nontrivially to <span class="math" data-tex="\(\operatorname{Gal}(L_1/K)\)">\(\operatorname{Gal}(L_1/K)\)</span>, making <span class="math" data-tex="\(v\)">\(v\)</span> inert in <span class="math" data-tex="\(L_1\)">\(L_1\)</span>. Infinitely many primes of <span class="math" data-tex="\(M\)">\(M\)</span> lie over infinitely many primes of <span class="math" data-tex="\(K\)">\(K\)</span>, since every fiber is finite. ∎</p>
+<p>Pairwise intersections <span class="math" data-tex="\(L_i\cap L_j=K\)">\(L_i\cap L_j=K\)</span> do not imply the hypothesis just used. For example, <span class="math" data-tex="\(\mathbf Q(\sqrt6)\)">\(\mathbf Q(\sqrt6)\)</span>, <span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span>, and <span class="math" data-tex="\(\mathbf Q(\sqrt3)\)">\(\mathbf Q(\sqrt3)\)</span> have pairwise intersection <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, but the first is contained in the compositum of the latter two. Away from ramification, splitting in both latter fields forces splitting in the first. The required condition is independence of the first field from the <strong>whole</strong> compositum.</p>
+<span id="5-the-gaussian-example" aria-hidden="true"></span><h2 id="7-returning-to-a-number-field-example">7. Returning to a number-field example</h2>
+<p>For <span class="math" data-tex="\(L=\mathbf Q(i)\)">\(L=\mathbf Q(i)\)</span>, <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span>, take <span class="math" data-tex="\(S=\{2,\infty\}\)">\(S=\{2,\infty\}\)</span>. The Gaussian integers are Euclidean, as proved in <em>Idèles and the idèle class group</em>, so all their ideal classes are trivial and this <span class="math" data-tex="\(S\)">\(S\)</span> satisfies (4). Both local degrees are 2. Thus
+<span class="math math-display" data-tex="\[
+h(G,J_L^S)=4,\qquad h(G,E_{L,S})=2,\qquad h(G,C_L)=2.
+\tag{11}
+\]">\[
+h(G,J_L^S)=4,\qquad h(G,E_{L,S})=2,\qquad h(G,C_L)=2.
+\tag{11}
+\]</span>
+Concretely <span class="math" data-tex="\(E_{L,S}=\mu_4(1+i)^{\mathbf Z}\)">\(E_{L,S}=\mu_4(1+i)^{\mathbf Z}\)</span>. To verify this description, an <span class="math" data-tex="\(S\)">\(S\)</span>-unit's Gaussian fractional ideal is supported only on <span class="math" data-tex="\(1+i\)">\(1+i\)</span>; dividing by the corresponding power leaves a Gaussian unit, which is in <span class="math" data-tex="\(\mu_4\)">\(\mu_4\)</span>. Conjugation sends <span class="math" data-tex="\(1+i\)">\(1+i\)</span> to <span class="math" data-tex="\(1-i=-i(1+i)\)">\(1-i=-i(1+i)\)</span>, so it acts trivially on the infinite cyclic quotient by torsion. That quotient has Herbrand quotient 2. The explicit computation in lesson 13 gives <span class="math" data-tex="\([C_{\mathbf Q}:N C_{\mathbf Q(i)}]=2\)">\([C_{\mathbf Q}:N C_{\mathbf Q(i)}]=2\)</span>, consistent with (10), and in this example <span class="math" data-tex="\(\widehat H^{-1}(G,C_L)=0\)">\(\widehat H^{-1}(G,C_L)=0\)</span>.</p>
+<span id="6-exercises-with-solutions" aria-hidden="true"></span><h2 id="8-exercises-with-solutions">8. Exercises with solutions</h2>
+<h3 id="exercise-1-permutation-and-augmentation-lattices-easy">Exercise 1. Permutation and augmentation lattices — easy</h3>
+<p>Let <span class="math" data-tex="\(G=C_6\)">\(G=C_6\)</span> act on three orbits with stabilizers of orders 6, 3 and 2. Compute the Herbrand quotient of their permutation lattice and its augmentation kernel. Then give the formula for one orbit <span class="math" data-tex="\(G/H\)">\(G/H\)</span> in a cyclic group of order <span class="math" data-tex="\(n\)">\(n\)</span>, and for the augmentation kernel of the regular lattice.</p>
+<p><strong>Solution.</strong> The three-orbit permutation quotient is <span class="math" data-tex="\(6\cdot3\cdot2=36\)">\(6\cdot3\cdot2=36\)</span>. Its augmentation is onto a trivial integer lattice of quotient 6, so the kernel has quotient 6, exactly the unit calculation in section 1. In general an orbit lattice is induced from the trivial <span class="math" data-tex="\(H\)">\(H\)</span>-module <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Its invariant norm quotient has order <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, and its degree-minus-one group is zero, by the twisted-cycle calculation, so the quotient is <span class="math" data-tex="\(|H|\)">\(|H|\)</span>. For the regular lattice <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The augmentation is surjective, and its target is a trivial lattice of quotient <span class="math" data-tex="\(n\)">\(n\)</span>. Multiplicativity gives <span class="math" data-tex="\(h\)">\(h\)</span> of the augmentation kernel equal to <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, including <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, when the kernel is zero.</p>
+<h3 id="exercise-2-quadratic-fields-directly-medium">Exercise 2. Quadratic fields directly — medium</h3>
+<p>For quadratic <span class="math" data-tex="\(L/\mathbf Q\)">\(L/\mathbf Q\)</span>, prove (8) directly from the plus and minus eigenspaces of conjugation.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(s\)">\(s\)</span> places in <span class="math" data-tex="\(S\)">\(S\)</span> split and <span class="math" data-tex="\(t\)">\(t\)</span> not split. A split place contributes a swapped pair of coordinates to <span class="math" data-tex="\(\mathbf R^{S_L}\)">\(\mathbf R^{S_L}\)</span>; a nonsplit place contributes one fixed coordinate. The plus eigenspace has dimension <span class="math" data-tex="\(s+t\)">\(s+t\)</span>, and the minus eigenspace dimension <span class="math" data-tex="\(s\)">\(s\)</span>. Removing the trivial sum line gives dimensions <span class="math" data-tex="\(a=s+t-1\)">\(a=s+t-1\)</span> and <span class="math" data-tex="\(b=s\)">\(b=s\)</span> for the unit representation. By integral lattice comparison, its quotient equals that of <span class="math" data-tex="\(a\)">\(a\)</span> trivial lattices and <span class="math" data-tex="\(b\)">\(b\)</span> sign lattices. A trivial rank-one lattice for a group of order 2 has quotient 2; a sign lattice has invariants zero, norm zero and <span class="math" data-tex="\((\sigma-1)\mathbf Z=2\mathbf Z\)">\((\sigma-1)\mathbf Z=2\mathbf Z\)</span>, hence quotient <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Finite torsion contributes 1. Consequently <span class="math" data-tex="\(h(E_{L,S})=2^{a-b}=2^{t-1}\)">\(h(E_{L,S})=2^{a-b}=2^{t-1}\)</span>. Exactly the <span class="math" data-tex="\(t\)">\(t\)</span> nonsplit local degrees are 2, so this is <span class="math" data-tex="\((\prod n_v)/2\)">\((\prod n_v)/2\)</span>. This includes both real and imaginary quadratic fields.</p>
+<h3 id="exercise-3-arbitrary-extensions-medium">Exercise 3. Arbitrary extensions — medium</h3>
+<p>Deduce Corollary 14.4 from the norm inequality without assuming the Galois group has a cyclic quotient.</p>
+<p><strong>Solution.</strong> Complete splitting in <span class="math" data-tex="\(M\)">\(M\)</span> makes its defining separable polynomial split over the completion, hence makes its Galois closure <span class="math" data-tex="\(L\)">\(L\)</span> split there too. If <span class="math" data-tex="\(L\ne K\)">\(L\ne K\)</span>, choose a prime-order subgroup of <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, with fixed field <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. Almost all places of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> split in the nontrivial cyclic extension <span class="math" data-tex="\(L/K&#x27;\)">\(L/K&#x27;\)</span>. Weak approximation at the finitely many exceptional places then makes every <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>-idèle class a norm: local norm groups are open there, and all other local norms are surjective. This gives norm index 1, violating (10) for that cyclic extension. Therefore <span class="math" data-tex="\(L=K\)">\(L=K\)</span>.</p>
+<h3 id="exercise-4-the-general-unit-calculation-hard">Exercise 4. The general unit calculation — hard</h3>
+<p>Show why enlarging a permissible set of places cannot change the quotient in Theorem 14.1. Your argument should prove (8) and explain why a real logarithmic lattice suffices for integral cohomology.</p>
+<p><strong>Solution.</strong> Remove the finite torsion of <span class="math" data-tex="\(E_{L,S}\)">\(E_{L,S}\)</span>; its quotient is the full logarithmic lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in the sum-zero hyperplane. Adjoin a trivial rank-one lattice. The resulting real representation is the permutation representation on <span class="math" data-tex="\(S_L\)">\(S_L\)</span>. To compare integral lattices, solve the intertwining matrix equations over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. A real isomorphism gives a point where the determinant polynomial is nonzero; a nonzero polynomial over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> cannot vanish at every rational point, as follows by induction on its number of variables. A rational invertible intertwiner therefore exists. Clearing denominators embeds one lattice in the other with finite cokernel, which has quotient 1. Thus the Herbrand quotients agree. Decompose the permutation lattice into <span class="math" data-tex="\(\mathbf Z[G/G_w]\)">\(\mathbf Z[G/G_w]\)</span>, one for each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>. Their quotients are <span class="math" data-tex="\(|G_w|=n_v\)">\(|G_w|=n_v\)</span> by Exercise 1. The adjoined trivial line has quotient <span class="math" data-tex="\(n\)">\(n\)</span>; divide by it to obtain (8). Adding a place of local degree <span class="math" data-tex="\(m\)">\(m\)</span> inserts its permutation orbit, so (8) multiplies the unit quotient by <span class="math" data-tex="\(m\)">\(m\)</span>. Proposition 13.4 multiplies the idèle quotient by the same factor. Their ratio, and hence <span class="math" data-tex="\(h(G,C_L)\)">\(h(G,C_L)\)</span>, remains <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The local induced-module quotients and the proved S-unit representation give the idèle-class Herbrand quotient. The function-field compactness and lattice argument and the constant-field example are written separately with their full hypotheses.</p>
+<ul>
+<li><a href="https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf">Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt</a>.</li>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="ideles-in-extensions-and-their-cohomology.html">← Idèles in extensions and their cohomology</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem →</a></span></nav>
+<p class="small source-link"><a href="files/the-herbrand-quotient-of-the-idele-class-group.md">Markdown source of this lesson</a> · <a download href="files/the-herbrand-quotient-of-the-idele-class-group.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

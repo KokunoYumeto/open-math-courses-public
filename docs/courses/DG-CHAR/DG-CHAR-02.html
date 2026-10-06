@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projective tangent bundles and their obstructions · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-02.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="projective-tangent-bundles-and-their-obstructions">Projective tangent bundles and their obstructions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored material dedicated under CC0, except explicitly marked CC BY 4.0 adaptations.</em></p>
+<p>This chapter asks three different geometric questions. Can a tangent bundle have a frame? How much normal rank would an immersion need? Can the manifold occur as a boundary? A characteristic class enters each question in a different way: as a class of the tangent bundle, as a coefficient of its multiplicative inverse, or as a number evaluated on a fundamental class. Keeping those three operations separate prevents a vanishing calculation from being mistaken for a construction.</p>
+<p>The first calculation identifies the tangent bundle of real projective space. We then use its inverse class to test normal rank, before returning to the stronger problem of constructing actual frames. The final part constructs fundamental classes and uses them to test boundaries. Every test has its own hypotheses and its own conclusion.</p>
+<p>We use singular homology and cohomology with coefficients in <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>, except in the explicit real algebras. A smooth manifold is Hausdorff and second countable. “Closed” means compact without boundary. The preceding <a href="DG-CHAR-01.html">bundle chapter</a> proves metrics, complements and bundle constructions; the <a href="DG-CHAR-06.html">Thom chapter</a> proves the chain, excision and Mayer–Vietoris facts used below. The <a href="DG-CHAR-08.html">Gysin chapter</a> proves
+<span class="math math-display" data-tex="\[
+H^*(\mathbb {RP}^{n};\mathbb F _2)=\mathbb F _2[a]/(a^{n+1}),\qquad a=w_1(\gamma).
+\]">\[
+H^*(\mathbb {RP}^{n};\mathbb F _2)=\mathbb F _2[a]/(a^{n+1}),\qquad a=w_1(\gamma).
+\]</span>
+Here <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is the tautological real line bundle. The <a href="DG-CHAR-05.html">squares chapter</a> constructs the Stiefel–Whitney classes and proves their axioms, including the Whitney product formula. These are proved inputs, rather than hypotheses about a hypothetical system of classes.</p>
+<h3 id="a-rotation-group-supplies-a-starting-example">A rotation group supplies a starting example</h3>
+<p><em>This marked subsection adapts the rotation-group example in David Michael Roberts, Algebraic Topology (2019), Lecture 19, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Copyright © David Michael Roberts 2019. <a href="https://github.com/DavidMichaelRoberts/AlgebraicTopology2019/blob/b947ad2e9f9e301bfe24590a9db653bc54fa1a53/Notes.tex#L3690">LaTeX source, pinned revision</a>. The AI adaptation adds the tangent-frame calculation and its Cayley-chart justification; this whole marked subsection retains CC BY 4.0 and its disclaimer of warranties. The <a href="https://creativecommons.org/licenses/by/4.0/legalcode.en">complete licence</a> is also retained with the course.</em></p>
+<p>Roberts's example presents the two-to-one map from unit quaternions to rotations in three dimensions. The quotient identifies <span class="math" data-tex="\(\mathbb {RP}^3\)">\(\mathbb {RP}^3\)</span> with <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>; the complete quaternion and smooth-inverse calculations below establish that identification. There is also a direct way to see why the rotation group has a tangent frame, which gives us a concrete target for the projective calculation.</p>
+<p>Let <span class="math" data-tex="\(A_1,A_2,A_3\)">\(A_1,A_2,A_3\)</span> be a basis of the real skew-symmetric three-by-three matrices. At <span class="math" data-tex="\(R\in SO(3)\)">\(R\in SO(3)\)</span>, put
+<span class="math math-display" data-tex="\[
+X_i(R)=RA_i\qquad(1\leq i\leq3).
+\]">\[
+X_i(R)=RA_i\qquad(1\leq i\leq3).
+\]</span>
+These are smooth, linearly independent tangent vectors. Here is a local verification that includes the tangent-space claim. For a small skew-symmetric matrix <span class="math" data-tex="\(A\)">\(A\)</span>, the Cayley expression
+<span class="math math-display" data-tex="\[
+C(A)=(I-A)^{-1}(I+A)
+\]">\[
+C(A)=(I-A)^{-1}(I+A)
+\]</span>
+is orthogonal: transposing and using commutation of the two polynomials in <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(C(A)^TC(A)=I\)">\(C(A)^TC(A)=I\)</span>. Its determinant is one because <span class="math" data-tex="\(\det(I+A)=\det(I-A)\)">\(\det(I+A)=\det(I-A)\)</span>. Near the identity its inverse is <span class="math" data-tex="\((R-I)(R+I)^{-1}\)">\((R-I)(R+I)^{-1}\)</span>, which is skew-symmetric when <span class="math" data-tex="\(R^TR=I\)">\(R^TR=I\)</span>. Thus it gives a smooth chart on <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>, with derivative <span class="math" data-tex="\(D C_0(A)=2A\)">\(D C_0(A)=2A\)</span>. Left multiplication by <span class="math" data-tex="\(R\)">\(R\)</span> gives a chart at <span class="math" data-tex="\(R\)">\(R\)</span>. The curve <span class="math" data-tex="\(R C(tA_i/2)\)">\(R C(tA_i/2)\)</span> has derivative <span class="math" data-tex="\(RA_i\)">\(RA_i\)</span>, and these three derivatives form a basis of the tangent space. This proves the frame assertion.</p>
+<p>The later projective calculation must therefore be compatible with a trivial tangent bundle in dimension three. It will also explain why the analogous class calculation rules out a frame in dimension four. The rotation example supplies an actual frame; the obstruction test supplies a reason why a frame cannot exist in other cases.</p>
+<p><em>End of the CC BY 4.0 adaptation. The remaining independently authored material retains CC0.</em></p>
+<h2 id="1-the-tangent-bundle-as-a-bundle-of-linear-maps">1. The tangent bundle as a bundle of linear maps</h2>
+<p>At a line <span class="math" data-tex="\(L\subset\mathbb R^{n+1}\)">\(L\subset\mathbb R^{n+1}\)</span>, nearby lines are the graphs of maps <span class="math" data-tex="\(A:L\to L^\perp\)">\(A:L\to L^\perp\)</span>. These are the Grassmannian charts proved in the <a href="DG-CHAR-03.html">classification chapter</a>. Differentiating the graph coordinate at <span class="math" data-tex="\(A=0\)">\(A=0\)</span> identifies
+<span class="math math-display" data-tex="\[
+T_L\mathbb {RP}^{n}=\operatorname {Hom}(L,L^\perp).
+\tag{1.1}
+\]">\[
+T_L\mathbb {RP}^{n}=\operatorname {Hom}(L,L^\perp).
+\tag{1.1}
+\]</span>
+This identification is intrinsic: a curve of lines, represented by a nonzero curve <span class="math" data-tex="\(x(t)\)">\(x(t)\)</span>, is sent to the map taking <span class="math" data-tex="\(x(0)\)">\(x(0)\)</span> to the orthogonal projection of <span class="math" data-tex="\(x&#x27;(0)\)">\(x&#x27;(0)\)</span> onto <span class="math" data-tex="\(L^\perp\)">\(L^\perp\)</span>. Replacing <span class="math" data-tex="\(x(t)\)">\(x(t)\)</span> by <span class="math" data-tex="\(c(t)x(t)\)">\(c(t)x(t)\)</span> multiplies both its input and projected output by <span class="math" data-tex="\(c(0)\)">\(c(0)\)</span>; the term <span class="math" data-tex="\(c&#x27;(0)x(0)\)">\(c&#x27;(0)x(0)\)</span> projects to zero. Thus the map does not depend on the representative. The graph charts show smooth dependence and give the inverse on each tangent space. Consequently
+<span class="math math-display" data-tex="\[
+T\mathbb {RP}^{n}\cong\operatorname {Hom}(\gamma,\gamma^\perp).
+\]">\[
+T\mathbb {RP}^{n}\cong\operatorname {Hom}(\gamma,\gamma^\perp).
+\]</span></p>
+<p><span id="DG-CHAR-02.theorem-1.1"></span><strong>Theorem 1.1.</strong> For every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+T\mathbb {RP}^{n}\oplus\varepsilon^1\cong(n+1)\gamma,
+\qquad
+w(T\mathbb {RP}^{n})=(1+a)^{n+1}.
+\tag{1.2}
+\]">\[
+T\mathbb {RP}^{n}\oplus\varepsilon^1\cong(n+1)\gamma,
+\qquad
+w(T\mathbb {RP}^{n})=(1+a)^{n+1}.
+\tag{1.2}
+\]</span></p>
+<p><strong>Proof.</strong> The identity of each line gives a canonical frame of <span class="math" data-tex="\(\operatorname {Hom}(\gamma,\gamma)\)">\(\operatorname {Hom}(\gamma,\gamma)\)</span>. Distributivity of <span class="math" data-tex="\(\operatorname {Hom}\)">\(\operatorname {Hom}\)</span>, followed by <span class="math" data-tex="\(\gamma\oplus\gamma^\perp=\varepsilon^{n+1}\)">\(\gamma\oplus\gamma^\perp=\varepsilon^{n+1}\)</span>, gives
+<span class="math math-display" data-tex="\[
+T\mathbb {RP}^{n}\oplus\varepsilon^1
+\cong\operatorname {Hom}(\gamma,\varepsilon^{n+1})
+\cong(n+1)\gamma^*.
+\]">\[
+T\mathbb {RP}^{n}\oplus\varepsilon^1
+\cong\operatorname {Hom}(\gamma,\varepsilon^{n+1})
+\cong(n+1)\gamma^*.
+\]</span>
+The Euclidean metric identifies the real line <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with its dual by <span class="math" data-tex="\(v\mapsto\langle v,-\rangle\)">\(v\mapsto\langle v,-\rangle\)</span>. The Whitney formula and <span class="math" data-tex="\(w(\gamma)=1+a\)">\(w(\gamma)=1+a\)</span> now give (1.2). For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the tangent bundle has rank zero and both sides of the bundle formula have rank one. ∎</p>
+<p>Write <span class="math" data-tex="\(N=\sum_{j\in J}2^j\)">\(N=\sum_{j\in J}2^j\)</span> in binary. In characteristic two,
+<span class="math math-display" data-tex="\[
+(1+t)^N=\prod_{j\in J}(1+t^{2^j}).
+\tag{1.3}
+\]">\[
+(1+t)^N=\prod_{j\in J}(1+t^{2^j}).
+\tag{1.3}
+\]</span>
+Indeed, squaring a polynomial doubles its exponents and leaves its coefficients fixed; iterate this identity and multiply the binary factors. Each exponent obtained by choosing a subset of <span class="math" data-tex="\(J\)">\(J\)</span> occurs exactly once, because binary expansion is unique.</p>
+<p><span id="DG-CHAR-02.corollary-1.2"></span><strong>Corollary 1.2.</strong> The total class <span class="math" data-tex="\(w(T\mathbb {RP}^{n})\)">\(w(T\mathbb {RP}^{n})\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span> if and only if <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is a power of two.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(n+1=2^j\)">\(n+1=2^j\)</span>, (1.3) gives <span class="math" data-tex="\(1+a^{n+1}=1\)">\(1+a^{n+1}=1\)</span> in the truncated ring. If its binary expansion has at least two terms, the smallest term <span class="math" data-tex="\(2^j\)">\(2^j\)</span> is strictly less than <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. The coefficient of <span class="math" data-tex="\(a^{2^j}\)">\(a^{2^j}\)</span> is one, and this power survives. ∎</p>
+<p>This is a necessary condition for parallelizability: a trivial tangent bundle has total class one. The converse has not been proved by this calculation. In particular it provides no tangent frame on <span class="math" data-tex="\(\mathbb {RP}^{15}\)">\(\mathbb {RP}^{15}\)</span>.</p>
+<h2 id="3-normal-bundles-and-immersion-bounds">3. Normal bundles and immersion bounds</h2>
+<p>The completed graded ring <span class="math" data-tex="\(\prod_{i\geq0}H^i(X;\mathbb F _2)\)">\(\prod_{i\geq0}H^i(X;\mathbb F _2)\)</span> permits infinite series. Multiplication in each degree is a finite sum. An element <span class="math" data-tex="\(1+b_1+b_2+\cdots\)">\(1+b_1+b_2+\cdots\)</span>, with <span class="math" data-tex="\(b_i\)">\(b_i\)</span> in degree <span class="math" data-tex="\(i\)">\(i\)</span>, has a unique inverse <span class="math" data-tex="\(1+c_1+c_2+\cdots\)">\(1+c_1+c_2+\cdots\)</span>, determined recursively by
+<span class="math math-display" data-tex="\[
+c_m=\sum_{i=1}^m b_i c_{m-i},\qquad c_0=1.
+\tag{3.1}
+\]">\[
+c_m=\sum_{i=1}^m b_i c_{m-i},\qquad c_0=1.
+\tag{3.1}
+\]</span>
+The degree-<span class="math" data-tex="\(m\)">\(m\)</span> coefficient of their product is then zero for <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. Uniqueness follows by the same recursion. This convention avoids requiring an infinite series to lie in the direct-sum cohomology ring. On a finite-dimensional projective space all sufficiently high degrees vanish, so the inverse is a finite polynomial.</p>
+<p>Suppose <span class="math" data-tex="\(f:M^n\to\mathbb R^{n+k}\)">\(f:M^n\to\mathbb R^{n+k}\)</span> is an immersion, meaning that every derivative <span class="math" data-tex="\(D f_x\)">\(D f_x\)</span> is injective. A nonzero <span class="math" data-tex="\(n\)">\(n\)</span>-minor stays nonzero locally, and solving in those columns gives local frames of its image. Thus <span class="math" data-tex="\(D f(TM)\)">\(D f(TM)\)</span> is a smooth subbundle of the trivial bundle. Its orthogonal complement <span class="math" data-tex="\(\nu_f\)">\(\nu_f\)</span> has rank <span class="math" data-tex="\(k\)">\(k\)</span>, even if the image of <span class="math" data-tex="\(f\)">\(f\)</span> has self-intersections. The derivative and complement give
+<span class="math math-display" data-tex="\[
+TM\oplus\nu_f\cong\varepsilon^{n+k},\qquad
+w(\nu_f)=w(TM)^{-1}.
+\tag{3.2}
+\]">\[
+TM\oplus\nu_f\cong\varepsilon^{n+k},\qquad
+w(\nu_f)=w(TM)^{-1}.
+\tag{3.2}
+\]</span>
+Consequently the component of the inverse in every degree greater than <span class="math" data-tex="\(k\)">\(k\)</span> must vanish. This is the Whitney duality restriction for immersions.</p>
+<p><span id="DG-CHAR-02.theorem-3.1"></span><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(N=2^r\)">\(N=2^r\)</span>, <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, and <span class="math" data-tex="\(\mathbb {RP}^{N}\)">\(\mathbb {RP}^{N}\)</span> immerses in <span class="math" data-tex="\(\mathbb R^{N+k}\)">\(\mathbb R^{N+k}\)</span>, then <span class="math" data-tex="\(k\geq N-1\)">\(k\geq N-1\)</span>.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="\(\mathbb F _2[a]/(a^{N+1})\)">\(\mathbb F _2[a]/(a^{N+1})\)</span>,
+<span class="math math-display" data-tex="\[
+w(T\mathbb {RP}^{N})^{-1}
+=(1+a)^{N-1}
+=1+a+\cdots+a^{N-1}.
+\]">\[
+w(T\mathbb {RP}^{N})^{-1}
+=(1+a)^{N-1}
+=1+a+\cdots+a^{N-1}.
+\]</span>
+For the first equality, multiply by <span class="math" data-tex="\((1+a)^{N+1}\)">\((1+a)^{N+1}\)</span>: the result is <span class="math" data-tex="\((1+a)^{2N}=1+a^{2N}=1\)">\((1+a)^{2N}=1+a^{2N}=1\)</span>, since <span class="math" data-tex="\(2N\geq N+1\)">\(2N\geq N+1\)</span>. For the second, all the binary digits of <span class="math" data-tex="\(N-1\)">\(N-1\)</span> are one, so (1.3) contains every exponent from zero to <span class="math" data-tex="\(N-1\)">\(N-1\)</span>. The surviving nonzero class <span class="math" data-tex="\(a^{N-1}\)">\(a^{N-1}\)</span> in the normal bundle forces its rank to be at least <span class="math" data-tex="\(N-1\)">\(N-1\)</span>. If <span class="math" data-tex="\(N=1\)">\(N=1\)</span> this says <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, as it should. ∎</p>
+<p>In particular <span class="math" data-tex="\(w(T\mathbb {RP}^4)=1+a+a^4\)">\(w(T\mathbb {RP}^4)=1+a+a^4\)</span> and its inverse is <span class="math" data-tex="\(1+a+a^2+a^3\)">\(1+a+a^2+a^3\)</span>. An immersion therefore requires ambient dimension at least seven. The proof gives a necessary bound; constructing an immersion is a separate problem.</p>
+<h3 id="reading-the-inverse-class-as-a-rank-budget">Reading the inverse class as a rank budget</h3>
+<p>For any <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, let <span class="math" data-tex="\(m\)">\(m\)</span> be the least power of two with <span class="math" data-tex="\(m\geq n+1\)">\(m\geq n+1\)</span>. In the ring <span class="math" data-tex="\(\mathbb F _2[a]/(a^{n+1})\)">\(\mathbb F _2[a]/(a^{n+1})\)</span>, the tangent formula gives
+<span class="math math-display" data-tex="\[
+w(T\mathbb {RP}^{n})^{-1}=(1+a)^{m-n-1}.
+\tag{R.1}
+\]">\[
+w(T\mathbb {RP}^{n})^{-1}=(1+a)^{m-n-1}.
+\tag{R.1}
+\]</span>
+Indeed its product with <span class="math" data-tex="\((1+a)^{n+1}\)">\((1+a)^{n+1}\)</span> is <span class="math" data-tex="\((1+a)^m=1+a^m=1\)">\((1+a)^m=1+a^m=1\)</span>. This is also the unique inverse produced by recursion (3.1). If <span class="math" data-tex="\(m=n+1\)">\(m=n+1\)</span>, its exponent is zero. Otherwise <span class="math" data-tex="\(m/2&lt;n+1&lt;m\)">\(m/2&lt;n+1&lt;m\)</span>, so <span class="math" data-tex="\(0&lt;m-n-1\leq n\)">\(0&lt;m-n-1\leq n\)</span>. The leading coefficient of the displayed polynomial is one and survives truncation. An immersion in <span class="math" data-tex="\(\mathbb R^{n+k}\)">\(\mathbb R^{n+k}\)</span> therefore requires
+<span class="math math-display" data-tex="\[
+k\geq m-n-1.
+\tag{R.2}
+\]">\[
+k\geq m-n-1.
+\tag{R.2}
+\]</span>
+This proves a bound for every projective dimension; Theorem 3.1 is its power-of-two specialization. It asserts no existence of an immersion at the bound.</p>
+<p>For <span class="math" data-tex="\(n=9\)">\(n=9\)</span>, the next binary power is <span class="math" data-tex="\(m=16\)">\(m=16\)</span>. The inverse is
+<span class="math" data-tex="\((1+a)^6=1+a^2+a^4+a^6\)">\((1+a)^6=1+a^2+a^4+a^6\)</span>, so six normal directions are necessary. For <span class="math" data-tex="\(n=10\)">\(n=10\)</span>, the same binary power gives
+<span class="math" data-tex="\((1+a)^5=1+a+a^4+a^5\)">\((1+a)^5=1+a+a^4+a^5\)</span>, so the necessary normal rank drops to five. The dimensions increased, but this particular obstruction became weaker: its size is controlled by the binary gap to the next power. Both calculations require an ambient dimension of at least fifteen, by this test alone.</p>
+<p>For <span class="math" data-tex="\(n=15\)">\(n=15\)</span>, the gap is zero and the inverse class is one. This test supplies no positive lower bound on normal rank. The tangent class is also one, but neither calculation constructs a frame. To construct one we need geometric data, such as the bilinear multiplication in the next part. To obstruct a boundary we need evaluation on a fundamental class, supplied in the final part. These are three distinct uses of the same characteristic data.</p>
+<h2 id="2-bilinear-multiplication-gives-actual-frames">2. Bilinear multiplication gives actual frames</h2>
+<p><span id="DG-CHAR-02.theorem-2.1"></span><strong>Theorem 2.1.</strong> Suppose <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and a real bilinear map
+<span class="math math-display" data-tex="\[
+B:\mathbb R^n\times\mathbb R^n\longrightarrow\mathbb R^n
+\]">\[
+B:\mathbb R^n\times\mathbb R^n\longrightarrow\mathbb R^n
+\]</span>
+satisfies <span class="math" data-tex="\(B(x,y)=0\Rightarrow x=0\text{ or }y=0\)">\(B(x,y)=0\Rightarrow x=0\text{ or }y=0\)</span>. Then <span class="math" data-tex="\(\mathbb {RP}^{n-1}\)">\(\mathbb {RP}^{n-1}\)</span> is parallelizable and <span class="math" data-tex="\(n\)">\(n\)</span> is a power of two. Neither associativity nor an identity element is required.</p>
+<p><strong>Proof.</strong> Fix a nonzero vector <span class="math" data-tex="\(b_0\)">\(b_0\)</span> and complete it to a basis <span class="math" data-tex="\(b_0,\ldots,b_{n-1}\)">\(b_0,\ldots,b_{n-1}\)</span>. The linear map <span class="math" data-tex="\(C(x)=B(x,b_0)\)">\(C(x)=B(x,b_0)\)</span> is injective and therefore invertible. It induces a smooth diffeomorphism
+<span class="math math-display" data-tex="\[
+h:\mathbb {RP}^{n-1}\longrightarrow\mathbb {RP}^{n-1},\qquad h(L)=C(L),
+\]">\[
+h:\mathbb {RP}^{n-1}\longrightarrow\mathbb {RP}^{n-1},\qquad h(L)=C(L),
+\]</span>
+whose inverse is induced by <span class="math" data-tex="\(C^{-1}\)">\(C^{-1}\)</span>. Put <span class="math" data-tex="\(\eta_L=C(L)\)">\(\eta_L=C(L)\)</span>. For <span class="math" data-tex="\(1\leq i&lt;n\)">\(1\leq i&lt;n\)</span>, define a linear map
+<span class="math math-display" data-tex="\[
+A_i(L):\eta_L\longrightarrow\eta_L^\perp,
+\qquad C(x)\longmapsto\operatorname {proj}_{\eta_L^\perp}B(x,b_i),\quad x\in L.
+\tag{2.1}
+\]">\[
+A_i(L):\eta_L\longrightarrow\eta_L^\perp,
+\qquad C(x)\longmapsto\operatorname {proj}_{\eta_L^\perp}B(x,b_i),\quad x\in L.
+\tag{2.1}
+\]</span>
+It is well-defined and linear because <span class="math" data-tex="\(C|_L\)">\(C|_L\)</span> is invertible. Local nonzero sections of <span class="math" data-tex="\(L\)">\(L\)</span> show that it depends smoothly on <span class="math" data-tex="\(L\)">\(L\)</span>. If a linear combination of these maps is zero, then, for a fixed nonzero <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>,
+<span class="math math-display" data-tex="\[
+B\left(x,\sum_{i=1}^{n-1}t_i b_i\right)\in\mathbb R B(x,b_0).
+\]">\[
+B\left(x,\sum_{i=1}^{n-1}t_i b_i\right)\in\mathbb R B(x,b_0).
+\]</span>
+The map <span class="math" data-tex="\(y\mapsto B(x,y)\)">\(y\mapsto B(x,y)\)</span> is invertible. Hence <span class="math" data-tex="\(\sum_{i\geq1}t_i b_i\in\mathbb R b_0\)">\(\sum_{i\geq1}t_i b_i\in\mathbb R b_0\)</span>, forcing every <span class="math" data-tex="\(t_i=0\)">\(t_i=0\)</span>. The <span class="math" data-tex="\(A_i\)">\(A_i\)</span> therefore form a frame of <span class="math" data-tex="\(h^*T\mathbb {RP}^{n-1}\)">\(h^*T\mathbb {RP}^{n-1}\)</span>, by (1.1). Transport this frame through <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span>; the tangent bundle itself is trivial. Corollary 1.2 gives the claim about <span class="math" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the empty frame trivializes the zero-dimensional tangent bundle. ∎</p>
+<p>There is a shorter proof of the numerical restriction alone. The fibrewise map
+<span class="math math-display" data-tex="\[
+\gamma\otimes\varepsilon^n\longrightarrow\varepsilon^n,
+\qquad x\otimes y\longmapsto B(x,y)
+\]">\[
+\gamma\otimes\varepsilon^n\longrightarrow\varepsilon^n,
+\qquad x\otimes y\longmapsto B(x,y)
+\]</span>
+is an isomorphism over <span class="math" data-tex="\(\mathbb {RP}^{n-1}\)">\(\mathbb {RP}^{n-1}\)</span>. Thus <span class="math" data-tex="\(n\gamma\)">\(n\gamma\)</span> is trivial and <span class="math" data-tex="\((1+a)^n=1\)">\((1+a)^n=1\)</span>. The binary argument again makes <span class="math" data-tex="\(n\)">\(n\)</span> a power of two. This shorter argument gives stable triviality; (2.1) supplies the actual tangent frame.</p>
+<h3 id="normed-examples-in-dimensions-four-and-eight">Normed examples in dimensions four and eight</h3>
+<p>For completeness we construct the two algebras that give the required examples. On <span class="math" data-tex="\(\mathbb H=\mathbb C^2\)">\(\mathbb H=\mathbb C^2\)</span>, define
+<span class="math math-display" data-tex="\[
+(a,b)(c,d)=(ac-\overline d\,b,\; da+b\overline c),
+\quad \overline{(a,b)}=(\overline a,-b),
+\quad |(a,b)|^2=|a|^2+|b|^2.
+\tag{2.2}
+\]">\[
+(a,b)(c,d)=(ac-\overline d\,b,\; da+b\overline c),
+\quad \overline{(a,b)}=(\overline a,-b),
+\quad |(a,b)|^2=|a|^2+|b|^2.
+\tag{2.2}
+\]</span>
+The real-linear injection
+<span class="math math-display" data-tex="\[
+M(a,b)=\begin{pmatrix}a&amp;-b\\\overline b&amp;\overline a\end{pmatrix}
+\]">\[
+M(a,b)=\begin{pmatrix}a&amp;-b\\\overline b&amp;\overline a\end{pmatrix}
+\]</span>
+satisfies <span class="math" data-tex="\(M(qr)=M(q)M(r)\)">\(M(qr)=M(q)M(r)\)</span>, as multiplication of its four entries verifies. Also <span class="math" data-tex="\(M(\overline q)=M(q)^*\)">\(M(\overline q)=M(q)^*\)</span> and <span class="math" data-tex="\(M(q)^*M(q)=|q|^2 I\)">\(M(q)^*M(q)=|q|^2 I\)</span>. Matrix associativity proves associativity of (2.2), and the last identity proves
+<span class="math math-display" data-tex="\[
+|qr|=|q|\,|r|.
+\]">\[
+|qr|=|q|\,|r|.
+\]</span>
+The unit is <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Conjugation reverses multiplication, by taking matrix adjoints. Define <span class="math" data-tex="\(\operatorname {Re}(q)=\tfrac12\operatorname {tr}M(q)\)">\(\operatorname {Re}(q)=\tfrac12\operatorname {tr}M(q)\)</span>. The trace is real here, and matrix trace gives <span class="math" data-tex="\(\operatorname {Re}(pq)=\operatorname {Re}(qp)\)">\(\operatorname {Re}(pq)=\operatorname {Re}(qp)\)</span>. Moreover <span class="math" data-tex="\(\operatorname {Re}(q\overline r)\)">\(\operatorname {Re}(q\overline r)\)</span> is the ordinary Euclidean inner product; this follows immediately by expanding (2.2).</p>
+<p>Now put <span class="math" data-tex="\(\mathbb O=\mathbb H^2\)">\(\mathbb O=\mathbb H^2\)</span>, with multiplication, conjugation and squared norm given by the same formulas (2.2), interpreted in <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>. The multiplication is real bilinear and has unit <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Its norm is multiplicative even though we make no associativity assertion for <span class="math" data-tex="\(\mathbb O\)">\(\mathbb O\)</span>. To see this, expand the squared norms of <span class="math" data-tex="\(ac-\overline d b\)">\(ac-\overline d b\)</span> and <span class="math" data-tex="\(da+b\overline c\)">\(da+b\overline c\)</span>. Their diagonal terms add to
+<span class="math math-display" data-tex="\[
+(|a|^2+|b|^2)(|c|^2+|d|^2).
+\]">\[
+(|a|^2+|b|^2)(|c|^2+|d|^2).
+\]</span>
+Their cross terms are
+<span class="math math-display" data-tex="\[
+-2\operatorname {Re}(ac\overline b d)
+\quad\text{and}\quad
+2\operatorname {Re}(da c\overline b).
+\]">\[
+-2\operatorname {Re}(ac\overline b d)
+\quad\text{and}\quad
+2\operatorname {Re}(da c\overline b).
+\]</span>
+They cancel, since quaternion multiplication is associative and its real part is invariant under cyclic rearrangement. Thus <span class="math" data-tex="\(|xy|=|x|\,|y|\)">\(|xy|=|x|\,|y|\)</span> in <span class="math" data-tex="\(\mathbb O\)">\(\mathbb O\)</span>. Both algebras have no zero divisors, and Theorem 2.1 yields frames on <span class="math" data-tex="\(\mathbb {RP}^3\)">\(\mathbb {RP}^3\)</span> and <span class="math" data-tex="\(\mathbb {RP}^7\)">\(\mathbb {RP}^7\)</span>.</p>
+<p>These frames can be written directly. In either algebra, take an orthonormal real basis <span class="math" data-tex="\(1,e_1,\ldots,e_{n-1}\)">\(1,e_1,\ldots,e_{n-1}\)</span>. Polarizing norm multiplicativity in the second factor gives
+<span class="math math-display" data-tex="\[
+\langle xy,xz\rangle=|x|^2\langle y,z\rangle.
+\]">\[
+\langle xy,xz\rangle=|x|^2\langle y,z\rangle.
+\]</span>
+At <span class="math" data-tex="\(L=\mathbb R x\)">\(L=\mathbb R x\)</span>, the maps <span class="math" data-tex="\(x\mapsto xe_i\)">\(x\mapsto xe_i\)</span> belong to <span class="math" data-tex="\(\operatorname {Hom}(L,L^\perp)\)">\(\operatorname {Hom}(L,L^\perp)\)</span>, and their outputs are pairwise orthogonal nonzero vectors. Real bilinearity makes these linear maps independent of the choice of generator of <span class="math" data-tex="\(L\)">\(L\)</span>. They form the promised smooth frames.</p>
+<h3 id="why-the-four-dimensional-example-is-so-3">Why the four-dimensional example is <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span></h3>
+<p>Let <span class="math" data-tex="\(\operatorname {Im}\mathbb H\)">\(\operatorname {Im}\mathbb H\)</span> be the three-dimensional space of quaternions with real part zero. Each unit quaternion defines
+<span class="math math-display" data-tex="\[
+R_q(v)=qv\overline q\quad(v\in\operatorname {Im}\mathbb H).
+\]">\[
+R_q(v)=qv\overline q\quad(v\in\operatorname {Im}\mathbb H).
+\]</span>
+Norm multiplicativity and cyclic invariance of the real part show that <span class="math" data-tex="\(R_q\)">\(R_q\)</span> is orthogonal and preserves this space. Its determinant is <span class="math" data-tex="\(+1\)">\(+1\)</span>: it depends continuously on <span class="math" data-tex="\(q\)">\(q\)</span>, the unit sphere <span class="math" data-tex="\(S^3\)">\(S^3\)</span> is path connected, and <span class="math" data-tex="\(R_1=I\)">\(R_1=I\)</span>. The map <span class="math" data-tex="\(q\mapsto R_q\)">\(q\mapsto R_q\)</span> is a group homomorphism. Its kernel is <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, since direct multiplication with the three imaginary coordinate units shows that a quaternion commuting with all of them is real.</p>
+<p>It is onto. Every matrix in <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> has a unit fixed vector: its nonreal eigenvalues occur in conjugate pairs, its real eigenvalues are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and its determinant is one. On the perpendicular plane it acts by a rotation through some angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Directly from (2.2), multiplication of imaginary vectors has the form <span class="math" data-tex="\(uv=-\langle u,v\rangle+u\times v\)">\(uv=-\langle u,v\rangle+u\times v\)</span>, using the oriented orthonormal basis of imaginary coordinate units. Expanding the conjugation by
+<span class="math" data-tex="\(q=\cos(\theta/2)+u\sin(\theta/2)\)">\(q=\cos(\theta/2)+u\sin(\theta/2)\)</span> fixes the axis <span class="math" data-tex="\(u\)">\(u\)</span> and rotates its perpendicular plane by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Hence it gives the specified matrix.</p>
+<p>We obtain a continuous bijection <span class="math" data-tex="\(\mathbb {RP}^3=S^3/\{\pm1\}\to SO(3)\)">\(\mathbb {RP}^3=S^3/\{\pm1\}\to SO(3)\)</span>, which is a homeomorphism because its source is compact and its target Hausdorff. It is also a diffeomorphism. Near the identity matrix, its inverse chooses the representative with positive real coordinate:
+<span class="math math-display" data-tex="\[
+q_0=\frac{\sqrt{1+\operatorname {tr}R}}2,
+\qquad
+(q_1,q_2,q_3)=\frac{(R_{32}-R_{23},R_{13}-R_{31},R_{21}-R_{12})}{4q_0}.
+\]">\[
+q_0=\frac{\sqrt{1+\operatorname {tr}R}}2,
+\qquad
+(q_1,q_2,q_3)=\frac{(R_{32}-R_{23},R_{13}-R_{31},R_{21}-R_{12})}{4q_0}.
+\]</span>
+These are smooth wherever <span class="math" data-tex="\(q_0&gt;0\)">\(q_0&gt;0\)</span>, and the conjugation formula verifies them. Group translations provide smooth inverse charts at every other point.</p>
+<h2 id="4-fundamental-classes-from-finite-chart-gluing">4. Fundamental classes from finite chart gluing</h2>
+<p>We now supply the homological foundation for characteristic numbers. This section uses the fully proved singular-chain excision, relative Mayer–Vietoris and sphere homology from the <a href="DG-CHAR-06.html">Thom chapter</a>. No CW structure on the manifold is needed.</p>
+<p>For a manifold <span class="math" data-tex="\(M\)">\(M\)</span> without boundary and <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, excision and a chart give
+<span class="math math-display" data-tex="\[
+H_i(M,M-\{x\})=H_i(\mathbb R^d,\mathbb R^d-\{0\})
+=\begin{cases}\mathbb F _2&amp;i=d,\\0&amp;i\ne d.\end{cases}
+\tag{4.1}
+\]">\[
+H_i(M,M-\{x\})=H_i(\mathbb R^d,\mathbb R^d-\{0\})
+=\begin{cases}\mathbb F _2&amp;i=d,\\0&amp;i\ne d.\end{cases}
+\tag{4.1}
+\]</span>
+The unique nonzero local class will be denoted <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span>. The local values of a relative chain can be compared on a small closed ball avoiding the compact support of its boundary. The same chain defines a class relative to that ball, and the ball's top relative group maps isomorphically to the local group at every one of its points. Its local values are therefore constant there. For a class relative to a compact set, apply this comparison at the points of that set where its local values are defined.</p>
+<p><span id="DG-CHAR-02.lemma-4.1"></span><strong>Lemma 4.1.</strong> If <span class="math" data-tex="\(K\subset M^d\)">\(K\subset M^d\)</span> is compact, then <span class="math" data-tex="\(H_i(M,M-K)=0\)">\(H_i(M,M-K)=0\)</span> for <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>. There is a unique class <span class="math" data-tex="\(\mu_K\in H_d(M,M-K)\)">\(\mu_K\in H_d(M,M-K)\)</span> restricting to <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> at every <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>. More generally a top-degree relative class whose restriction is zero at every point of <span class="math" data-tex="\(K\)">\(K\)</span> is zero.</p>
+<p><strong>Proof.</strong> Start with a nonempty compact convex set <span class="math" data-tex="\(P\subset\mathbb R^d\)">\(P\subset\mathbb R^d\)</span>. For any <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>, both <span class="math" data-tex="\(\mathbb R^d-P\)">\(\mathbb R^d-P\)</span> and <span class="math" data-tex="\(\mathbb R^d-\{x\}\)">\(\mathbb R^d-\{x\}\)</span> retract onto a sufficiently large sphere centered at <span class="math" data-tex="\(x\)">\(x\)</span>. The homotopy moves each radius linearly to the sphere's radius. Convexity ensures that a point outside <span class="math" data-tex="\(P\)">\(P\)</span> remains outside when moving outward; a point beyond the large sphere remains outside when moving inward to that sphere. Thus inclusion of these complements is a homotopy equivalence, and
+<span class="math" data-tex="\(H_i(\mathbb R^d,\mathbb R^d-P)\to H_i(\mathbb R^d,\mathbb R^d-\{x\})\)">\(H_i(\mathbb R^d,\mathbb R^d-P)\to H_i(\mathbb R^d,\mathbb R^d-\{x\})\)</span>
+is an isomorphism. This proves the lemma for <span class="math" data-tex="\(P\)">\(P\)</span>. The empty set has zero relative groups and requires the zero class. When <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the chart is a point and the same assertion follows directly.</p>
+<p>Suppose the assertions hold for compact sets <span class="math" data-tex="\(A,B,A\cap B\)">\(A,B,A\cap B\)</span>. Relative Mayer–Vietoris, applied to the open complements, gives
+<span class="math math-display" data-tex="\[
+0\longrightarrow H_d(M,M-(A\cup B))
+\longrightarrow H_d(M,M-A)\oplus H_d(M,M-B)
+\longrightarrow H_d(M,M-(A\cap B)).
+\tag{4.2}
+\]">\[
+0\longrightarrow H_d(M,M-(A\cup B))
+\longrightarrow H_d(M,M-A)\oplus H_d(M,M-B)
+\longrightarrow H_d(M,M-(A\cap B)).
+\tag{4.2}
+\]</span>
+The initial zero comes from the vanishing group in degree <span class="math" data-tex="\(d+1\)">\(d+1\)</span>. Higher-degree exact segments prove the same vanishing for <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>. The two prescribed classes agree on the intersection by uniqueness, hence lift by exactness to a class on the union. The injection proves uniqueness and detection by point restrictions. Induction now proves the lemma for finite unions of compact convex sets in one chart: intersections of their constituent sets are still compact convex sets, and the empty intersections cause no problem.</p>
+<p>For an arbitrary compact <span class="math" data-tex="\(K\)">\(K\)</span> in a chart, represent a relative class by a finite chain <span class="math" data-tex="\(z\)">\(z\)</span> in that chart, with <span class="math" data-tex="\(\partial z\)">\(\partial z\)</span> supported away from <span class="math" data-tex="\(K\)">\(K\)</span>; excision permits this representative. The compact support of <span class="math" data-tex="\(\partial z\)">\(\partial z\)</span> has positive distance from <span class="math" data-tex="\(K\)">\(K\)</span>, unless it is empty, in which case any sufficiently small radius works. Cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many closed balls centered in <span class="math" data-tex="\(K\)">\(K\)</span>, with radius small enough to avoid <span class="math" data-tex="\(\partial z\)">\(\partial z\)</span>. Their union <span class="math" data-tex="\(P\)">\(P\)</span> contains <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(z\)">\(z\)</span> defines a class relative to <span class="math" data-tex="\(P\)">\(P\)</span>. The proved vanishing for <span class="math" data-tex="\(P\)">\(P\)</span> gives vanishing for <span class="math" data-tex="\(K\)">\(K\)</span> in degrees above <span class="math" data-tex="\(d\)">\(d\)</span>. In degree <span class="math" data-tex="\(d\)">\(d\)</span>, if the class has zero local value on <span class="math" data-tex="\(K\)">\(K\)</span>, its restriction to each chosen ball is zero: its value at the center is zero and point restriction on that ball is an isomorphism. Detection for the union makes the class relative to <span class="math" data-tex="\(P\)">\(P\)</span> zero, and therefore the original class is zero. Finally a closed ball containing <span class="math" data-tex="\(K\)">\(K\)</span> gives a top class whose image relative to <span class="math" data-tex="\(K\)">\(K\)</span> has all local values one. We may use a chart with image <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>; every ordinary coordinate ball is diffeomorphic to <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>.</p>
+<p>For general compact <span class="math" data-tex="\(K\)">\(K\)</span>, choose finitely many smaller chart neighbourhoods covering it, with closures contained in their charts. The compact sets <span class="math" data-tex="\(K_j=K\cap\overline V_j\)">\(K_j=K\cap\overline V_j\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>. Induct on the number of charts using (4.2). The intersection of the last piece with the previous union is a union of fewer compact chart pieces, so the same induction applies there. This proves all assertions. ∎</p>
+<p><span id="DG-CHAR-02.corollary-4.2"></span><strong>Corollary 4.2.</strong> Every closed <span class="math" data-tex="\(d\)">\(d\)</span>-manifold has a unique class <span class="math" data-tex="\([M]\in H_d(M;\mathbb F _2)\)">\([M]\in H_d(M;\mathbb F _2)\)</span> with local value one at every point, and it has no homology in degrees greater than <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> Apply Lemma 4.1 with <span class="math" data-tex="\(K=M\)">\(K=M\)</span>. For a disconnected compact manifold the finitely many open components are compact, and the class is the sum of their fundamental classes. ∎</p>
+<h3 id="a-collar-and-the-relative-class">A collar and the relative class</h3>
+<p>We record a collar construction to handle the boundary without an unstated geometric premise. Let <span class="math" data-tex="\(W\)">\(W\)</span> be a compact <span class="math" data-tex="\(d\)">\(d\)</span>-manifold with boundary <span class="math" data-tex="\(M\)">\(M\)</span>. Attach the external product <span class="math" data-tex="\(M\times[0,1]\)">\(M\times[0,1]\)</span> along <span class="math" data-tex="\(M\times\{0\}\)">\(M\times\{0\}\)</span>, obtaining <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. Boundary charts show that this is again a manifold with boundary, whose boundary is <span class="math" data-tex="\(M\times\{1\}\)">\(M\times\{1\}\)</span>.</p>
+<p>Choose a finite partition of unity <span class="math" data-tex="\(\phi_1,\ldots,\phi_s\)">\(\phi_1,\ldots,\phi_s\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, each supported compactly inside a boundary coordinate patch. Such functions exist by the partition proof in the bundle chapter. Write <span class="math" data-tex="\(\psi_j=\sum_{i\leq j}\phi_i\)">\(\psi_j=\sum_{i\leq j}\phi_i\)</span>. Let <span class="math" data-tex="\(W_j\)">\(W_j\)</span> be <span class="math" data-tex="\(W\)">\(W\)</span> together with the external segments of lengths <span class="math" data-tex="\(\psi_j(x)\)">\(\psi_j(x)\)</span>. In the <span class="math" data-tex="\(j\)">\(j\)</span>-th patch, half-space coordinates give an internal product with heights <span class="math" data-tex="\(-1\leq t\leq0\)">\(-1\leq t\leq0\)</span>, and the attached collar gives heights <span class="math" data-tex="\(0\leq t\leq\psi_{j-1}(x)\)">\(0\leq t\leq\psi_{j-1}(x)\)</span>. Stretch this combined interval by
+<span class="math math-display" data-tex="\[
+(x,t)\longmapsto
+\left(x,-1+(t+1)\frac{1+\psi_j(x)}{1+\psi_{j-1}(x)}\right).
+\tag{4.3}
+\]">\[
+(x,t)\longmapsto
+\left(x,-1+(t+1)\frac{1+\psi_j(x)}{1+\psi_{j-1}(x)}\right).
+\tag{4.3}
+\]</span>
+Outside this patch and below height <span class="math" data-tex="\(-1\)">\(-1\)</span>, take the identity. The map agrees with the identity at height <span class="math" data-tex="\(-1\)">\(-1\)</span> and wherever <span class="math" data-tex="\(\phi_j=0\)">\(\phi_j=0\)</span>; compact containment of its support therefore makes the definitions continuous at the sides of the patch. Reversing the ratio gives a continuous inverse. Thus it is a homeomorphism <span class="math" data-tex="\(W_{j-1}\to W_j\)">\(W_{j-1}\to W_j\)</span>. Their composition identifies <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> and sends its boundary to <span class="math" data-tex="\(M\times\{1\}\)">\(M\times\{1\}\)</span>. Pulling back the evident product neighbourhood there gives a collar of <span class="math" data-tex="\(M\)">\(M\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span>. Rescale it as <span class="math" data-tex="\(c:M\times[0,2]\to W\)">\(c:M\times[0,2]\to W\)</span>, with boundary height zero and with an open product neighbourhood at all heights below two.</p>
+<p>Set <span class="math" data-tex="\(N=W-M\)">\(N=W-M\)</span> and <span class="math" data-tex="\(K=W-c(M\times[0,1))\)">\(K=W-c(M\times[0,1))\)</span>. This is a compact subset of <span class="math" data-tex="\(N\)">\(N\)</span>. Replacing <span class="math" data-tex="\(M\)">\(M\)</span> by its open collar neighbourhood in a relative homology pair induces an isomorphism, because the collar retracts onto <span class="math" data-tex="\(M\)">\(M\)</span> and the long exact sequences of pairs apply. Excision of <span class="math" data-tex="\(M\)">\(M\)</span> then gives
+<span class="math math-display" data-tex="\[
+H_d(W,M)\cong H_d(N,N-K).
+\tag{4.4}
+\]">\[
+H_d(W,M)\cong H_d(N,N-K).
+\tag{4.4}
+\]</span>
+Lemma 4.1 supplies the right-hand class with local value one on <span class="math" data-tex="\(K\)">\(K\)</span>. Transport it through (4.4) to define <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span>. Its local values at interior points form a locally constant function, by the small-ball argument preceding Lemma 4.1. Every component of <span class="math" data-tex="\(N\)">\(N\)</span> meets <span class="math" data-tex="\(K\)">\(K\)</span>: collar points join their height-one points by a vertical interval, and points outside the collar already lie in <span class="math" data-tex="\(K\)">\(K\)</span>. Thus all interior local values are one. Conversely these values determine the relative class, by (4.4) and the detection assertion of the lemma.</p>
+<p><span id="DG-CHAR-02.lemma-4.3"></span><strong>Lemma 4.3.</strong> The connecting map sends <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span> to <span class="math" data-tex="\([M]\)">\([M]\)</span>:
+<span class="math math-display" data-tex="\[
+\partial[W,M]=[M]\in H_{d-1}(M;\mathbb F _2).
+\tag{4.5}
+\]">\[
+\partial[W,M]=[M]\in H_{d-1}(M;\mathbb F _2).
+\tag{4.5}
+\]</span></p>
+<p><strong>Proof.</strong> Check local value at any point of <span class="math" data-tex="\(M\)">\(M\)</span>. In its boundary chart take a product box <span class="math" data-tex="\(Q=D^{d-1}\times[0,1]\)">\(Q=D^{d-1}\times[0,1]\)</span>, with its bottom face in <span class="math" data-tex="\(M\)">\(M\)</span>. Let <span class="math" data-tex="\(C=W-\operatorname {int}_W Q\)">\(C=W-\operatorname {int}_W Q\)</span>; here the relative interior in <span class="math" data-tex="\(W\)">\(W\)</span> includes the interior of the bottom face. There is a commutative square
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+H_d(W,M)&amp;\longrightarrow&amp;H_d(W,M\cup C)\\
+\partial\downarrow&amp;&amp;\downarrow\partial_{\rm triple}\\
+H_{d-1}(M)&amp;\longrightarrow&amp;H_{d-1}(M,M\cap C).
+\end{array}
+\]">\[
+\begin{array}{ccc}
+H_d(W,M)&amp;\longrightarrow&amp;H_d(W,M\cup C)\\
+\partial\downarrow&amp;&amp;\downarrow\partial_{\rm triple}\\
+H_{d-1}(M)&amp;\longrightarrow&amp;H_{d-1}(M,M\cap C).
+\end{array}
+\]</span>
+At the chain level, both routes take the boundary of the same relative chain and then discard its part in <span class="math" data-tex="\(C\)">\(C\)</span>. On the right, excision identifies the groups with <span class="math" data-tex="\(H_d(Q,\partial Q)\)">\(H_d(Q,\partial Q)\)</span> and <span class="math" data-tex="\(H_{d-1}(D^{d-1},\partial D^{d-1})\)">\(H_{d-1}(D^{d-1},\partial D^{d-1})\)</span>. One may first enlarge <span class="math" data-tex="\(C\)">\(C\)</span> a little beyond the top and side faces: coordinate collars retract these enlarged pairs onto the displayed box pairs, and ordinary open-set excision then applies. The top class maps to the generator of <span class="math" data-tex="\(H_d(Q,\partial Q)\)">\(H_d(Q,\partial Q)\)</span>, since restriction to an interior point is an isomorphism for this box and the original local value is one. The triple connecting homomorphism is represented by taking the chain boundary. After ignoring the top and side faces, this boundary restricts to the generator of
+<span class="math" data-tex="\(H_{d-1}(D^{d-1},\partial D^{d-1})\)">\(H_{d-1}(D^{d-1},\partial D^{d-1})\)</span> on the bottom face. Explicitly, represent a box by the sum of the standard simplices obtained by ordering its coordinates; internal faces cancel in pairs over <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>, and its bottom face occurs once with its own such sum. This is also the interval external-product computation proved in the Thom chapter. Naturality of the pair and triple connecting maps shows that this bottom-face class is the restriction of <span class="math" data-tex="\(\partial[W,M]\)">\(\partial[W,M]\)</span>. Its local value is therefore one at every boundary point. Corollary 4.2 and its detection assertion imply (4.5). The case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> uses a point as the bottom face and has exactly the same interval boundary computation. Empty boundary means both sides of (4.5) are zero. ∎</p>
+<h2 id="5-characteristic-numbers-vanish-on-boundaries">5. Characteristic numbers vanish on boundaries</h2>
+<p>For a closed <span class="math" data-tex="\(n\)">\(n\)</span>-manifold and nonnegative integers <span class="math" data-tex="\(r_1,\ldots,r_n\)">\(r_1,\ldots,r_n\)</span> with <span class="math" data-tex="\(\sum i r_i=n\)">\(\sum i r_i=n\)</span>, define the Stiefel–Whitney number
+<span class="math math-display" data-tex="\[
+\left\langle\prod_{i=1}^{n}w_i(TM)^{r_i},[M]\right\rangle\in\mathbb F _2.
+\tag{5.1}
+\]">\[
+\left\langle\prod_{i=1}^{n}w_i(TM)^{r_i},[M]\right\rangle\in\mathbb F _2.
+\tag{5.1}
+\]</span>
+The pairing evaluates a cocycle on a cycle. It is independent of representatives, because cocycles vanish on boundaries and coboundaries vanish on cycles. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the empty product evaluates to the parity of the number of points.</p>
+<p><span id="DG-CHAR-02.theorem-5.1"></span><strong>Theorem 5.1.</strong> If <span class="math" data-tex="\(M=\partial W\)">\(M=\partial W\)</span> for a compact smooth manifold <span class="math" data-tex="\(W\)">\(W\)</span>, every number (5.1) is zero.</p>
+<p><strong>Proof.</strong> Along the boundary, the differential of its inclusion identifies <span class="math" data-tex="\(TM\)">\(TM\)</span> as a subbundle of <span class="math" data-tex="\(TW|_M\)">\(TW|_M\)</span>. Boundary coordinates provide local outward-pointing transverse vectors. A smooth partition of unity combines them into a global outward-pointing vector: in a boundary coordinate its normal component has the same strictly negative sign for every term, so it cannot vanish or become tangent. The smooth bump and metric constructions in the bundle chapter apply to boundary charts by restricting their Euclidean bumps to the half-space. Orthogonally projecting the vector off <span class="math" data-tex="\(TM\)">\(TM\)</span>, using such a metric, gives a nowhere-zero normal vector. Therefore
+<span class="math math-display" data-tex="\[
+TW|_M\cong TM\oplus\varepsilon^1.
+\]">\[
+TW|_M\cong TM\oplus\varepsilon^1.
+\]</span>
+Naturality and Whitney imply <span class="math" data-tex="\(w_i(TM)=\iota^*w_i(TW)\)">\(w_i(TM)=\iota^*w_i(TW)\)</span>. The degree-<span class="math" data-tex="\(n\)">\(n\)</span> product in (5.1) is thus <span class="math" data-tex="\(\iota^*b\)">\(\iota^*b\)</span> for a class <span class="math" data-tex="\(b\in H^n(W)\)">\(b\in H^n(W)\)</span>. By (4.5) and exactness of the pair sequence,
+<span class="math math-display" data-tex="\[
+\iota_*[M]=\iota_*\partial[W,M]=0.
+\]">\[
+\iota_*[M]=\iota_*\partial[W,M]=0.
+\]</span>
+Evaluation is natural, so
+<span class="math" data-tex="\(\langle\iota^*b,[M]\rangle=\langle b,\iota_*[M]\rangle=0\)">\(\langle\iota^*b,[M]\rangle=\langle b,\iota_*[M]\rangle=0\)</span>.
+This proves the theorem in every dimension, including zero. ∎</p>
+<p>On <span class="math" data-tex="\(\mathbb {RP}^n\)">\(\mathbb {RP}^n\)</span>, the nonzero top class <span class="math" data-tex="\(a^n\)">\(a^n\)</span> evaluates to one: top homology has its fundamental generator by Corollary 4.2, and field cohomology is its dual by the universal-coefficient proof in the Thom chapter. Hence every characteristic number is computed by taking the coefficient of <span class="math" data-tex="\(a^n\)">\(a^n\)</span> in its product of classes.</p>
+<p>If <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> is even, then <span class="math" data-tex="\(w_n=(n+1)a^n=a^n\)">\(w_n=(n+1)a^n=a^n\)</span>, so <span class="math" data-tex="\(\mathbb {RP}^n\)">\(\mathbb {RP}^n\)</span> cannot bound a compact smooth manifold. If <span class="math" data-tex="\(n\)">\(n\)</span> is odd, <span class="math" data-tex="\((1+a)^{n+1}\)">\((1+a)^{n+1}\)</span> contains only even powers; all odd-index classes vanish. Every product of total odd degree contains an odd-index factor, so all its characteristic numbers vanish. Theorem 5.1 proves only the implication from bounding to vanishing; a general converse belongs to the later Thom-bordism argument.</p>
+<p>For these odd projective spaces a filling is available directly. Regard <span class="math" data-tex="\(\mathbb R^{2k}\)">\(\mathbb R^{2k}\)</span> as <span class="math" data-tex="\(\mathbb C^k\)">\(\mathbb C^k\)</span> and let <span class="math" data-tex="\(L=\gamma_{\mathbb C}^{\otimes2}\)">\(L=\gamma_{\mathbb C}^{\otimes2}\)</span> over <span class="math" data-tex="\(\mathbb {CP}^{k-1}\)">\(\mathbb {CP}^{k-1}\)</span>. The map from the unit sphere <span class="math" data-tex="\(S^{2k-1}\)">\(S^{2k-1}\)</span> to <span class="math" data-tex="\(S(L)\)">\(S(L)\)</span>, sending a unit vector <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(v\otimes v\)">\(v\otimes v\)</span> in the fibre over <span class="math" data-tex="\(\mathbb Cv\)">\(\mathbb Cv\)</span>, identifies exactly <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(-v\)">\(-v\)</span>. Every unit square tensor has these two square roots, and local complex-line coordinates give smooth inverse charts after this quotient. Thus
+<span class="math math-display" data-tex="\[
+S(L)\cong\mathbb {RP}^{2k-1}.
+\]">\[
+S(L)\cong\mathbb {RP}^{2k-1}.
+\]</span>
+The disk bundle <span class="math" data-tex="\(D(L)\)">\(D(L)\)</span> is a compact smooth manifold with this boundary. This supplies a filling without invoking the general converse.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><span id="DG-CHAR-02.exercise-6.1"></span><strong>Exercise 6.1 — Easy.</strong> Compute the total classes of <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span> and <span class="math" data-tex="\(\mathbb {RP}^5\)">\(\mathbb {RP}^5\)</span>, and determine which is orientable.</p>
+<p><strong>Solution.</strong> Formula (1.3), with truncation in degrees five and six respectively, gives
+<span class="math math-display" data-tex="\[
+w(\mathbb {RP}^4)=1+a+a^4,\qquad
+w(\mathbb {RP}^5)=1+a^2+a^4.
+\]">\[
+w(\mathbb {RP}^4)=1+a+a^4,\qquad
+w(\mathbb {RP}^5)=1+a^2+a^4.
+\]</span>
+The first determinant line has nonzero <span class="math" data-tex="\(w_1=a\)">\(w_1=a\)</span>, so <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span> is nonorientable. The second has <span class="math" data-tex="\(w_1=0\)">\(w_1=0\)</span>. The determinant-line criterion and the real-line classification proved in the preceding chapters give orientability of <span class="math" data-tex="\(\mathbb {RP}^5\)">\(\mathbb {RP}^5\)</span>. These spaces have the explicit CW structures already proved. An explicit nonzero field on <span class="math" data-tex="\(\mathbb {RP}^5\)">\(\mathbb {RP}^5\)</span> is the linear map <span class="math" data-tex="\(x\mapsto Jx\)">\(x\mapsto Jx\)</span> from <span class="math" data-tex="\(\mathbb Rx\)">\(\mathbb Rx\)</span> to its perpendicular complement, where <span class="math" data-tex="\(J\)">\(J\)</span> is multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>. It does not trivialize the whole tangent bundle, whose <span class="math" data-tex="\(w_2\)">\(w_2\)</span> is nonzero.</p>
+<p><span id="DG-CHAR-02.exercise-6.2"></span><strong>Exercise 6.2 — Medium.</strong> Prove Whitney duality for an immersion and compute the complete normal-class restrictions for immersions of <span class="math" data-tex="\(\mathbb {RP}^9\)">\(\mathbb {RP}^9\)</span>.</p>
+<p><strong>Solution.</strong> The derivative and its orthogonal complement give (3.2); uniqueness of (3.1) proves the duality assertion. For <span class="math" data-tex="\(n=9\)">\(n=9\)</span>,
+<span class="math math-display" data-tex="\[
+w(T\mathbb {RP}^9)=(1+a)^{10}=1+a^2+a^8
+\]">\[
+w(T\mathbb {RP}^9)=(1+a)^{10}=1+a^2+a^8
+\]</span>
+in the ring truncated at <span class="math" data-tex="\(a^{10}\)">\(a^{10}\)</span>. Its inverse is
+<span class="math math-display" data-tex="\[
+1+a^2+a^4+a^6,
+\]">\[
+1+a^2+a^4+a^6,
+\]</span>
+as multiplication cancels every positive coefficient through degree nine. Thus a normal bundle requires rank at least six, and every such immersion requires ambient dimension at least fifteen. No existence follows from the class calculation.</p>
+<p><span id="DG-CHAR-02.exercise-6.3"></span><strong>Exercise 6.3 — Medium.</strong> Recover the power-of-two restriction from stable bundles alone, then explain what establishes the stronger frame conclusion.</p>
+<p><strong>Solution.</strong> Bilinearity defines the isomorphism <span class="math" data-tex="\(n\gamma\to\varepsilon^n\)">\(n\gamma\to\varepsilon^n\)</span> described after Theorem 2.1. The lowest nonzero binary bit of <span class="math" data-tex="\(n\)">\(n\)</span>, if smaller than <span class="math" data-tex="\(n\)">\(n\)</span>, gives a surviving positive coefficient of <span class="math" data-tex="\((1+a)^n\)">\((1+a)^n\)</span>; hence <span class="math" data-tex="\(n\)">\(n\)</span> is a power of two. Stable tangent triviality by itself supplies no cancellation of the added line. For the actual frame use the projective diffeomorphism induced by <span class="math" data-tex="\(x\mapsto B(x,b_0)\)">\(x\mapsto B(x,b_0)\)</span> and the projected maps (2.1); their independence follows from injectivity of left multiplication by each nonzero <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><span id="DG-CHAR-02.exercise-6.4"></span><strong>Exercise 6.4 — Medium.</strong> If a rank-<span class="math" data-tex="\(m\)">\(m\)</span> bundle on a paracompact Hausdorff base admits <span class="math" data-tex="\(k\)">\(k\)</span> everywhere independent sections, show that its classes in degrees greater than <span class="math" data-tex="\(m-k\)">\(m-k\)</span> vanish. Deduce a bound on the number of independent fields on <span class="math" data-tex="\(\mathbb {RP}^n\)">\(\mathbb {RP}^n\)</span> when <span class="math" data-tex="\(n+1=2^r u\)">\(n+1=2^r u\)</span>, with <span class="math" data-tex="\(u&gt;1\)">\(u&gt;1\)</span> odd.</p>
+<p><strong>Solution.</strong> A metric is available on the paracompact Hausdorff base. The sections span a trivial rank-<span class="math" data-tex="\(k\)">\(k\)</span> subbundle: in any local frame an invertible <span class="math" data-tex="\(k\)">\(k\)</span>-minor stays invertible on a neighbourhood and gives coordinates on their image. Its orthogonal complement has rank <span class="math" data-tex="\(m-k\)">\(m-k\)</span>. The Whitney formula identifies the bundle's total class with that of this complement, whose classes above degree <span class="math" data-tex="\(m-k\)">\(m-k\)</span> vanish by the rank axiom.</p>
+<p>For the projective space put <span class="math" data-tex="\(N=n+1=2^r u\)">\(N=n+1=2^r u\)</span>. Formula (1.3) says that the exponents with nonzero coefficient in <span class="math" data-tex="\((1+a)^N\)">\((1+a)^N\)</span> are exactly the sums of subsets of the one-bits of <span class="math" data-tex="\(N\)">\(N\)</span>. The smallest one-bit is <span class="math" data-tex="\(2^r\)">\(2^r\)</span>. Every proper subset omits a sum of at least <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, and omitting just that bit gives the largest proper exponent
+<span class="math math-display" data-tex="\[
+q=N-2^r=n+1-2^r.
+\]">\[
+q=N-2^r=n+1-2^r.
+\]</span>
+Since <span class="math" data-tex="\(u&gt;1\)">\(u&gt;1\)</span> is odd, <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>; also <span class="math" data-tex="\(q\leq n\)">\(q\leq n\)</span>. Its coefficient is one, so
+<span class="math math-display" data-tex="\[
+w_q(T\mathbb {RP}^n)=a^q\ne0
+\]">\[
+w_q(T\mathbb {RP}^n)=a^q\ne0
+\]</span>
+in <span class="math" data-tex="\(\mathbb F_2[a]/(a^{n+1})\)">\(\mathbb F_2[a]/(a^{n+1})\)</span>. If there are <span class="math" data-tex="\(k\)">\(k\)</span> independent tangent fields, the general rank assertion gives <span class="math" data-tex="\(q\leq n-k\)">\(q\leq n-k\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+k\leq n-q=2^r-1.
+\]">\[
+k\leq n-q=2^r-1.
+\]</span>
+This is a necessary bound on the number of independent fields.</p>
+<p>The lowest one-bit also has nonzero coefficient. Since <span class="math" data-tex="\(2^r\leq n\)">\(2^r\leq n\)</span>, the same rank argument gives <span class="math" data-tex="\(n-k\geq2^r\)">\(n-k\geq2^r\)</span>, or <span class="math" data-tex="\(k\leq n-2^r\)">\(k\leq n-2^r\)</span>. This remains a valid weaker bound; using the largest surviving degree above improves it.</p>
+<p><span id="DG-CHAR-02.exercise-6.5"></span><strong>Exercise 6.5 — Hard.</strong> Prove the boundary-number theorem directly at the chain level, and explain its consequence for two disjoint copies of a manifold.</p>
+<p><strong>Solution.</strong> Choose a relative fundamental chain <span class="math" data-tex="\(c\)">\(c\)</span> for <span class="math" data-tex="\((W,M)\)">\((W,M)\)</span>, so <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span> is a chain in <span class="math" data-tex="\(M\)">\(M\)</span> representing <span class="math" data-tex="\([M]\)">\([M]\)</span>, by Lemma 4.3. Choose a cocycle <span class="math" data-tex="\(\beta\)">\(\beta\)</span> representing the extending characteristic product in <span class="math" data-tex="\(W\)">\(W\)</span>. Its restriction to <span class="math" data-tex="\(M\)">\(M\)</span> is a representative of the desired product. Its evaluation is
+<span class="math math-display" data-tex="\[
+\beta(\partial c)=(\delta\beta)(c)=0.
+\]">\[
+\beta(\partial c)=(\delta\beta)(c)=0.
+\]</span>
+This proves Theorem 5.1 using the fully constructed relative class. For <span class="math" data-tex="\(M\sqcup M\)">\(M\sqcup M\)</span>, each number adds the same value twice and is zero in <span class="math" data-tex="\(\mathbb F _2\)">\(\mathbb F _2\)</span>; the cylinder <span class="math" data-tex="\(M\times[0,1]\)">\(M\times[0,1]\)</span> supplies its filling. Conversely, the vanishing for an arbitrary manifold has not yet produced a filling.</p>
+<p><span id="DG-CHAR-02.exercise-6.6"></span><strong>Exercise 6.6 — Hard.</strong> Verify the explicit odd-projective filling and determine the characteristic numbers of <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>.</p>
+<p><strong>Solution.</strong> On a unit local frame <span class="math" data-tex="\(e\)">\(e\)</span> of the tautological complex line, a unit vector is <span class="math" data-tex="\(ze\)">\(ze\)</span>, <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>, and its square is <span class="math" data-tex="\(z^2(e\otimes e)\)">\(z^2(e\otimes e)\)</span>. The map <span class="math" data-tex="\(z\mapsto z^2\)">\(z\mapsto z^2\)</span> has precisely the two preimages <span class="math" data-tex="\(z,-z\)">\(z,-z\)</span>. On arcs shorter than a semicircle it has a smooth inverse, so its quotient induces a diffeomorphism of the unit circle bundles claimed in Section5. The base is compact and disk fibres are compact; finitely many bundle charts and smaller compact base sets show the disk bundle is compact. Fibre boundary charts and interior charts make it a smooth manifold with boundary equal to its unit bundle. For <span class="math" data-tex="\(\mathbb {RP}^4\)">\(\mathbb {RP}^4\)</span>, the degree-four products are
+<span class="math" data-tex="\(w_4,w_3w_1,w_2^2,w_2w_1^2,w_1^4\)">\(w_4,w_3w_1,w_2^2,w_2w_1^2,w_1^4\)</span>.
+Their evaluations are respectively <span class="math" data-tex="\(1,0,0,0,1\)">\(1,0,0,0,1\)</span>, because <span class="math" data-tex="\(w=1+a+a^4\)">\(w=1+a+a^4\)</span> and <span class="math" data-tex="\(\langle a^4,[\mathbb {RP}^4]\rangle=1\)">\(\langle a^4,[\mathbb {RP}^4]\rangle=1\)</span>. In particular this space does not bound.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Freely accessible comparisons are Allen Hatcher, <em>Vector Bundles and K-Theory</em>, version 2.2 (2017), <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf">author PDF</a>, Section 1.1, for projective tangent stabilization and the normed-algebra frame examples, and his <em>Algebraic Topology</em>, <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf">author PDF</a>, Lemma 3.27 and Proposition 3.42, for compact-set fundamental classes and collars. The graph-coordinate identification, full bilinear-frame argument, inverse-class bounds and local boundary-chain calculation are proved here.</p>
+<p>John Milnor's <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf">1957 lectures, with notes by James Stasheff</a>, Chapters II–III, give further reading on tangent bundles and vector fields. The stabilization, bilinear-frame restriction, inverse-class bounds and boundary-number arguments are proved here. David Michael Roberts's freely available <a href="https://github.com/DavidMichaelRoberts/AlgebraicTopology2019"><em>Algebraic Topology</em> notes</a> (2019), Lecture 19, are the source of the marked CC BY 4.0 rotation-group adaptation; its attribution and component licence are retained.</p>
+<p>The class tests are necessary conditions for a frame or immersion, with actual frames proved in the stated bilinear-algebra cases. The boundary-number implication is proved here in full; its all-dimensional converse is proved in the separate <a href="DG-CHAR-13E.html">unoriented-bordism companion</a>. No classification of all parallelizable projective spaces or construction of an immersion from a vanishing class is asserted. This edition was checked by the writing AI; independent review remains separate.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-05.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-04.html">Next chapter</a></nav><p><a href="projective-tangent-bundles-and-obstructions.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

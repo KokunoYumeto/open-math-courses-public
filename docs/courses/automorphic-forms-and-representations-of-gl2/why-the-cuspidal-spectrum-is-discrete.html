@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why the cuspidal spectrum is discrete · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/why-the-cuspidal-spectrum-is-discrete.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="why-the-cuspidal-spectrum-is-discrete">Why the cuspidal spectrum is discrete</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Author self-check complete. Public domain (CC0).</em></p>
+<p>The modular surface has a cusp of finite area and unbounded height. Finite area alone does not make its convolution operators compact. What supplies compactness on cusp forms is cancellation: the part of the kernel that survives at great height has a constant Fourier term, and a cusp form integrates to zero against that term. We will construct a bounded replacement kernel, prove its quantitative decay, and use positive compact operators to obtain a discrete representation spectrum with finite multiplicities.</p>
+<p>We use the adèles, determinant decomposition, principal congruence components and Haar measures from Adèles for GL₂ and strong approximation. The distinction between a function and a section with central character is as in <a href="from-modular-forms-to-adelic-functions.html">From modular forms to adelic functions</a>. We assume the Hilbert-space spectral theorem, elementary Fourier analysis on a circle and on the real line, and the construction of an operator from a closed nonnegative quadratic form. Short proofs of the compactness and local regularity facts needed below are included. Section 4 proves arithmetic finiteness for rational GL₂ at fixed finite level, compact type and cofinite enveloping-centre ideal, including uniform local estimates, cusp Fourier decay and the fixed-weight compact resolvent. It then derives the smoothing and rapid-decay statements used in the automorphic-module lesson.</p>
+<p>All Hilbert-space assertions have a fixed <strong>unitary</strong> central character <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+X=G(\mathbb Q)Z(\mathbb A)\backslash G(\mathbb A),\qquad G=\mathrm{GL}_2,
+\qquad H=L^2(X,\omega).
+\]">\[
+X=G(\mathbb Q)Z(\mathbb A)\backslash G(\mathbb A),\qquad G=\mathrm{GL}_2,
+\qquad H=L^2(X,\omega).
+\]</span>
+<p>An element of <span class="math" data-tex="\(H\)">\(H\)</span> is represented on the rational quotient with <span class="math" data-tex="\(u(gz)=\omega(z)u(g)\)">\(u(gz)=\omega(z)u(g)\)</span>. Its absolute value descends to <span class="math" data-tex="\(X\)">\(X\)</span>. The preceding lesson on adèles gives <span class="math" data-tex="\(\operatorname{vol}(X)=\pi/3\)">\(\operatorname{vol}(X)=\pi/3\)</span> for our measures. For
+<span class="math" data-tex="\(f\in C_c^\infty(G(\mathbb A))=C_c^\infty(G(\mathbb R))\otimes C_c^\infty(G(\mathbb A_f))\)">\(f\in C_c^\infty(G(\mathbb A))=C_c^\infty(G(\mathbb R))\otimes C_c^\infty(G(\mathbb A_f))\)</span>, an algebraic tensor product, put</p>
+<span class="math math-display" data-tex="\[
+R(f)u(g)=\int_{G(\mathbb A)}f(t)u(gt)\,dt.
+\tag{1.1}
+\]">\[
+R(f)u(g)=\int_{G(\mathbb A)}f(t)u(gt)\,dt.
+\tag{1.1}
+\]</span>
+<p>A finite linear combination of decomposable kernels suffices throughout.</p>
+<h2 id="1-the-cuspidal-hilbert-space-and-cusp-coordinates">1. The cuspidal Hilbert space and cusp coordinates</h2>
+<p>Let <span class="math" data-tex="\(n(t)=\begin{pmatrix}1&amp;t\\ 0&amp;1\end{pmatrix}\)">\(n(t)=\begin{pmatrix}1&amp;t\\ 0&amp;1\end{pmatrix}\)</span>. The constant term is initially a locally square-integrable function on <span class="math" data-tex="\(G(\mathbb A)\)">\(G(\mathbb A)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+C_Nu(g)=\int_{\mathbb Q\backslash\mathbb A}u(n(t)g)\,dt.
+\tag{1.2}
+\]">\[
+C_Nu(g)=\int_{\mathbb Q\backslash\mathbb A}u(n(t)g)\,dt.
+\tag{1.2}
+\]</span>
+<p>The additive quotient has volume one. For measurable functions this equation is understood almost everywhere, or equivalently as an equation of distributions. Define <span class="math" data-tex="\(H_{\rm cusp}=\ker C_N\)">\(H_{\rm cusp}=\ker C_N\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> This is a closed, right-invariant subspace of <span class="math" data-tex="\(H\)">\(H\)</span>. Constant terms commute with right convolution. If <span class="math" data-tex="\(u\in H_{\rm cusp}\)">\(u\in H_{\rm cusp}\)</span>, then <span class="math" data-tex="\(R(f)u\)">\(R(f)u\)</span> is smooth and its constant term vanishes everywhere.</p>
+<p><strong>Proof.</strong> Choose the compact representative set <span class="math" data-tex="\([0,1]\times\widehat{\mathbb Z}\)">\([0,1]\times\widehat{\mathbb Z}\)</span> for the additive quotient, allowing the measure-zero duplication at its boundary. If <span class="math" data-tex="\(B\)">\(B\)</span> is a compact subset of the central quotient of the adelic group, the products <span class="math" data-tex="\(n(t)B\)">\(n(t)B\)</span> lie in a compact subset. On such a set the pullback of an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function on <span class="math" data-tex="\(X\)">\(X\)</span> has its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm bounded by a constant times its quotient norm. Indeed the rational projective group is discrete, and only finitely many of its translates of a compact set can meet that set: their ratios lie in a fixed compact set intersected with that discrete group. One can also check discreteness directly with the integral primitive matrices used below; near the identity their finite determinant is a unit and their real entries isolate the identity.</p>
+<p>Cauchy–Schwarz in (1.2), followed by integration over <span class="math" data-tex="\(B\)">\(B\)</span>, consequently gives
+<span class="math" data-tex="\(\|C_Nu\|_{L^2(B)}\leq c_B\|u\|_H\)">\(\|C_Nu\|_{L^2(B)}\leq c_B\|u\|_H\)</span>.
+The intersection of the kernels of these local bounded maps, over a compact exhaustion, is closed. Right translations commute with the integral, so it is invariant. For compactly supported convolution, Fubini gives</p>
+<span class="math math-display" data-tex="\[
+C_N(R(f)u)(g)=\int f(t)C_Nu(gt)\,dt.
+\tag{1.3}
+\]">\[
+C_N(R(f)u)(g)=\int f(t)C_Nu(gt)\,dt.
+\tag{1.3}
+\]</span>
+<p>Local square integrability and the compact domains justify this identity first against compact test functions and then almost everywhere. Convolution by <span class="math" data-tex="\(f\)">\(f\)</span> is smooth at infinity and has an open finite stabilizer. To see its smooth representative directly, periodize its compact kernel on the rational quotient: on compact coordinate sets the periodized sum and each differentiated sum are finite, and their rows are square integrable. Differentiation and local Sobolev bounds therefore give a smooth representative. Its constant term is smooth; if it vanishes almost everywhere it vanishes everywhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 — reduction and cusp charts.</strong> Modulo the centre and the rational group, representatives lie in a Siegel set with bounded unipotent coordinate, compact finite coordinate and real height <span class="math" data-tex="\(y\geq\sqrt3/2\)">\(y\geq\sqrt3/2\)</span>. At every fixed finite level, a finite cover of the quotient consists of finitely many congruence surfaces with their compact rotation fibres. Each such surface has a compact core and finitely many cusp regions</p>
+<span class="math math-display" data-tex="\[
+\sigma\{x+iy:0\leq x&lt;w,\ y&gt;Y_0\},\qquad \sigma\in\mathrm{SL}_2(\mathbb Z),
+\tag{1.4}
+\]">\[
+\sigma\{x+iy:0\leq x&lt;w,\ y&gt;Y_0\},\qquad \sigma\in\mathrm{SL}_2(\mathbb Z),
+\tag{1.4}
+\]</span>
+<p>where <span class="math" data-tex="\(w\)">\(w\)</span> is a positive integer. On a sufficiently deep principal congruence cover one may take <span class="math" data-tex="\(w=M\)">\(w=M\)</span> at every cusp.</p>
+<p><strong>Proof.</strong> The level-one determinant decomposition leaves a real positive matrix and a finite maximal compact factor. Remove its positive scalar and write the real matrix as</p>
+<span class="math math-display" data-tex="\[
+s(x+iy)r(\theta),\qquad
+s(x+iy)=\begin{pmatrix}\sqrt y&amp;x/\sqrt y\\ 0&amp;1/\sqrt y\end{pmatrix}.
+\]">\[
+s(x+iy)r(\theta),\qquad
+s(x+iy)=\begin{pmatrix}\sqrt y&amp;x/\sqrt y\\ 0&amp;1/\sqrt y\end{pmatrix}.
+\]</span>
+<p>The modular fundamental region established in the prerequisite has <span class="math" data-tex="\(|x|\leq1/2\)">\(|x|\leq1/2\)</span> and <span class="math" data-tex="\(y\geq\sqrt3/2\)">\(y\geq\sqrt3/2\)</span>. This proves the level-one assertion; it uses that prerequisite reduction rather than repeating its classical proof.</p>
+<p>An open finite level contains a principal <span class="math" data-tex="\(K(M)\)">\(K(M)\)</span> after intersecting with the maximal compact. The principal determinant components from the first lesson are finite and their real groups are <span class="math" data-tex="\(\Gamma(M)\)">\(\Gamma(M)\)</span>. A finite-index congruence subgroup has a fundamental set made from finitely many translates of the modular region. Their portions below any fixed cusp height form a compact core. Group the remaining translates by the rational cusp to which they carry infinity; the integral translations within each group give a strip whose width is the translation stabilizer. There are finitely many groups. The congruence condition makes that width a positive integer. For <span class="math" data-tex="\(\Gamma(M)\)">\(\Gamma(M)\)</span>, normality under <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> and the condition <span class="math" data-tex="\(n(w)\equiv I\pmod M\)">\(n(w)\equiv I\pmod M\)</span> give width <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>These sufficiently high strips are disjoint in the quotient. If a matrix relating two strip representatives has nonzero lower-left entry <span class="math" data-tex="\(c\)">\(c\)</span>, then
+<span class="math" data-tex="\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\leq1/(c^2y)\)">\(\operatorname{Im}(\gamma z)=y/|cz+d|^2\leq1/(c^2y)\)</span>.
+It cannot take two points of height greater than one to each other. Matrices with <span class="math" data-tex="\(c=0\)">\(c=0\)</span> are exactly the cusp stabilizers already used to select the width. Compact rotations supply the remaining real coordinate. Quotienting by finite scalar units identifies finitely many pieces, possibly with unitary character phases. Lifting to the finite cover gives ordinary congruence functions, with these finite identifications imposed afterwards. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a cusp function at finite level, its integral over the <span class="math" data-tex="\(x\)">\(x\)</span>-coordinate in each chart is zero, at each fixed <span class="math" data-tex="\(y\)">\(y\)</span> and rotation. This is the full adelic condition (1.2), not only a test at the cusp infinity of the level-one component. To verify it, choose <span class="math" data-tex="\(D\)">\(D\)</span> with the conjugated finite unipotents <span class="math" data-tex="\(n(D\widehat{\mathbb Z})\)">\(n(D\widehat{\mathbb Z})\)</span> in the level stabilizer, and use the additive fundamental set <span class="math" data-tex="\([0,D)\times D\widehat{\mathbb Z}\)">\([0,D)\times D\widehat{\mathbb Z}\)</span>. Its integral is the real period average. Passing to a principal cover or a larger period retains the zero average.</p>
+<h2 id="2-the-arithmetic-shape-of-the-convolution-kernel">2. The arithmetic shape of the convolution kernel</h2>
+<p>We give the finite-place details before the Fourier estimate. They ensure that the argument applies to all finite levels and central characters.</p>
+<p>Integrate the kernel against the centre:</p>
+<span class="math math-display" data-tex="\[
+F_\omega(t)=\int_{Z(\mathbb A)}f(zt)\omega(z)\,dz.
+\tag{2.1}
+\]">\[
+F_\omega(t)=\int_{Z(\mathbb A)}f(zt)\omega(z)\,dz.
+\tag{2.1}
+\]</span>
+<p>It satisfies <span class="math" data-tex="\(F_\omega(zt)=\omega(z)^{-1}F_\omega(t)\)">\(F_\omega(zt)=\omega(z)^{-1}F_\omega(t)\)</span>, and is supported on a compact subset of the projective adelic group. Formula (1.1) is consequently represented by the periodized kernel</p>
+<span class="math math-display" data-tex="\[
+K_f(g,h)=\sum_{\gamma\in G(\mathbb Q)/Z(\mathbb Q)}F_\omega(g^{-1}\gamma h).
+\tag{2.2}
+\]">\[
+K_f(g,h)=\sum_{\gamma\in G(\mathbb Q)/Z(\mathbb Q)}F_\omega(g^{-1}\gamma h).
+\tag{2.2}
+\]</span>
+<p>The central equivariance in the two variables makes <span class="math" data-tex="\(K_f(g,h)u(h)\)">\(K_f(g,h)u(h)\)</span> well defined under the quotient integration. For a decomposable <span class="math" data-tex="\(f\)">\(f\)</span>, (2.1) separates into its real and finite central integrals. Both integrals are absolutely convergent on their compact intersections with central fibres.</p>
+<p>Choose a principal level <span class="math" data-tex="\(K(M)\)">\(K(M)\)</span>, with <span class="math" data-tex="\(M\geq3\)">\(M\geq3\)</span>, under which the finite kernel is bi-invariant, and sufficiently deep that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is trivial on scalar units congruent to one modulo <span class="math" data-tex="\(M\)">\(M\)</span>. Such a level exists by local constancy and compact support. The operator factors through the orthogonal projection onto the <span class="math" data-tex="\(K(M)\)">\(K(M)\)</span>-fixed space. The finite cover in Lemma 1.2 has finitely many components; the extra finite scalar identifications are finite averages with character coefficients of absolute value one. We may prove estimates on the cover and then apply those finite averages.</p>
+<p><strong>Lemma 2.1 — primitive matrices.</strong> On this cover, each matrix entry of (2.2) is a sum of kernels of the following form. Represent a rational projective matrix by a primitive integer matrix
+<span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, unique up to sign, and put <span class="math" data-tex="\(D=\det\gamma\ne0\)">\(D=\det\gamma\ne0\)</span>. Only finitely many positive or negative integers <span class="math" data-tex="\(D\)">\(D\)</span> contribute. Its real argument can be normalized to <span class="math" data-tex="\(\gamma/\sqrt{|D|}\)">\(\gamma/\sqrt{|D|}\)</span>; the remaining coefficient <span class="math" data-tex="\(\kappa(\gamma)\)">\(\kappa(\gamma)\)</span> is bounded and depends locally constantly on its finite entries. After choosing cusp coordinates, these assertions still hold. For <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the pairs <span class="math" data-tex="\((a,d)\)">\((a,d)\)</span> are finite in number and the coefficient as a function of the integer <span class="math" data-tex="\(b\)">\(b\)</span> is periodic modulo some positive integer <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> Clear denominators and divide the common integer content to obtain the primitive representative. At every prime at least one entry is a unit. A compact subset of the finite projective group has bounded Cartan distance at a finite set of primes, and lies in the projective maximal compact at all remaining primes. In elementary matrix terms, normalize a local representative so that its largest entry has absolute value one. Its determinant then has valuation bounded on that compact set. This assertion follows by taking a compact lift in finitely many projective coordinate charts and using continuity of the determinant and inverse. For our primitive integer representative the normalization is already in place. Therefore</p>
+<span class="math math-display" data-tex="\[
+v_p(D)=0\quad(p\notin S),\qquad 0\leq v_p(D)\leq e_p\quad(p\in S)
+\tag{2.3}
+\]">\[
+v_p(D)=0\quad(p\notin S),\qquad 0\leq v_p(D)\leq e_p\quad(p\in S)
+\tag{2.3}
+\]</span>
+<p>for a fixed finite set <span class="math" data-tex="\(S\)">\(S\)</span> and fixed integers <span class="math" data-tex="\(e_p\)">\(e_p\)</span>. Thus <span class="math" data-tex="\(|D|\)">\(|D|\)</span> divides a fixed integer. The finite component representatives can be taken in <span class="math" data-tex="\(G(\widehat{\mathbb Z})\)">\(G(\widehat{\mathbb Z})\)</span>; multiplying by them or by integral cusp matrices preserves the minimum entry valuation and changes the determinant only by a finite unit. Hence the same argument applies in every component and cusp chart.</p>
+<p>At infinity replacing <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> by <span class="math" data-tex="\(\gamma/\sqrt{|D|}\)">\(\gamma/\sqrt{|D|}\)</span> changes the central integral by the scalar <span class="math" data-tex="\(\omega_\infty(\sqrt{|D|})^{-1}\)">\(\omega_\infty(\sqrt{|D|})^{-1}\)</span>. It has absolute value one and depends only on one of the finitely many <span class="math" data-tex="\(D\)">\(D\)</span>. Absorb it into the finite coefficient. Boundedness of that coefficient follows from continuity on the compact set of finite integral matrices with the indicated determinants; their inverses have bounded denominators by (2.3).</p>
+<p>When <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the equation <span class="math" data-tex="\(ad=D\)">\(ad=D\)</span> gives finitely many integer pairs, with <span class="math" data-tex="\(a,d\ne0\)">\(a,d\ne0\)</span>. For a fixed pair, allowing <span class="math" data-tex="\(b\in\widehat{\mathbb Z}\)">\(b\in\widehat{\mathbb Z}\)</span> gives a compact family of finite invertible matrices. The locally constant coefficient on this family is constant on cosets of <span class="math" data-tex="\(L\widehat{\mathbb Z}\)">\(L\widehat{\mathbb Z}\)</span> for some <span class="math" data-tex="\(L\)">\(L\)</span>. The condition that the matrix be primitive is <span class="math" data-tex="\(\gcd(a,b,d)=1\)">\(\gcd(a,b,d)=1\)</span>, which is also periodic in <span class="math" data-tex="\(b\)">\(b\)</span>. Enlarge <span class="math" data-tex="\(L\)">\(L\)</span> to include that condition. Choosing one sign, for example <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, changes neither finiteness nor periodicity. These observations prove the lemma, including the unitary phases from finite scalar identifications. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On compact portions of two real components the sum (2.2) is uniformly finite: normalized real support bounds all entries of <span class="math" data-tex="\(\gamma/\sqrt{|D|}\)">\(\gamma/\sqrt{|D|}\)</span>, and the determinant list is finite. Thus its kernel and its real derivatives are uniformly bounded there.</p>
+<h2 id="3-the-basic-estimate-with-the-constant-mode-removed">3. The basic estimate, with the constant mode removed</h2>
+<p><strong>Theorem 3.1 — GL₂ basic estimate.</strong> For every <span class="math" data-tex="\(f\in C_c^\infty(G(\mathbb A))\)">\(f\in C_c^\infty(G(\mathbb A))\)</span>, its restriction to <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span> has a measurable modified kernel <span class="math" data-tex="\(\widetilde K_f\)">\(\widetilde K_f\)</span> bounded on the product of Siegel sets. In cusp coordinates, for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\widetilde K_f(g,h)|\leq C_{f,A}\,y(g)^{-A}
+\quad\text{when }y(g)\text{ is sufficiently large}.
+\tag{3.1}
+\]">\[
+|\widetilde K_f(g,h)|\leq C_{f,A}\,y(g)^{-A}
+\quad\text{when }y(g)\text{ is sufficiently large}.
+\tag{3.1}
+\]</span>
+<p>In the high rows its support has <span class="math" data-tex="\(c_f y(g)\leq y(h)\leq C_f y(g)\)">\(c_f y(g)\leq y(h)\leq C_f y(g)\)</span>. It represents <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span> on cusp functions; its removed part integrates to zero against them. Consequently</p>
+<span class="math math-display" data-tex="\[
+|R(f)u(g)|\leq C&#x27;_{f,A}\,y(g)^{-A}\|u\|_2
+\qquad(u\in H_{\rm cusp}).
+\tag{3.2}
+\]">\[
+|R(f)u(g)|\leq C&#x27;_{f,A}\,y(g)^{-A}\|u\|_2
+\qquad(u\in H_{\rm cusp}).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Work on the finite principal cover just constructed; finite sums and unitary averages will preserve all bounds. Choose coordinates in a row cusp and a column cusp, conjugating by their integral cusp matrices. Put <span class="math" data-tex="\(g=s(x+iy)r(\theta)\)">\(g=s(x+iy)r(\theta)\)</span>, <span class="math" data-tex="\(h=s(x&#x27;+iy&#x27;)r(\theta&#x27;)\)">\(h=s(x&#x27;+iy&#x27;)r(\theta&#x27;)\)</span>, with bounded strip coordinates and <span class="math" data-tex="\(y,y&#x27;\geq y_0&gt;0\)">\(y,y&#x27;\geq y_0&gt;0\)</span>. Compact real projective support gives a uniform bound <span class="math" data-tex="\(C\)">\(C\)</span> on the entries of the normalized argument, after removing the rotations. Its lower-left entry is</p>
+<span class="math math-display" data-tex="\[
+\frac{c\sqrt{yy&#x27;}}{\sqrt{|D|}}.
+\tag{3.3}
+\]">\[
+\frac{c\sqrt{yy&#x27;}}{\sqrt{|D|}}.
+\tag{3.3}
+\]</span>
+<p>Since <span class="math" data-tex="\(c\)">\(c\)</span> is an integer and <span class="math" data-tex="\(|D|\)">\(|D|\)</span> ranges over a finite set, a sufficiently high row <span class="math" data-tex="\(y\)">\(y\)</span> forces <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, for every <span class="math" data-tex="\(y&#x27;\geq y_0\)">\(y&#x27;\geq y_0\)</span>. With <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, the diagonal entries are
+<span class="math" data-tex="\(a\sqrt{y&#x27;/y}/\sqrt{|D|}\)">\(a\sqrt{y&#x27;/y}/\sqrt{|D|}\)</span> and <span class="math" data-tex="\(d\sqrt{y/y&#x27;}/\sqrt{|D|}\)">\(d\sqrt{y/y&#x27;}/\sqrt{|D|}\)</span>.
+The nonzero integers <span class="math" data-tex="\(a,d\)">\(a,d\)</span>, again in a finite list, force <span class="math" data-tex="\(y&#x27;/y\)">\(y&#x27;/y\)</span> into a fixed compact subinterval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. In particular a sufficiently high row can meet only the full strip part of a column cusp. Conversely, a bounded row cannot meet columns of arbitrarily great height: (3.3) first forces <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and then the diagonal bounds exclude such columns. Thus all the remaining bounded rows have their kernel supported in bounded columns, where the preceding compact-region count applies.</p>
+<p>It remains to treat a high row. Fix <span class="math" data-tex="\(D,a,d\)">\(D,a,d\)</span>, a residue class <span class="math" data-tex="\(b=r+Lm\)">\(b=r+Lm\)</span> from Lemma 2.1, and the two rotations. Put <span class="math" data-tex="\(\rho=\sqrt{y&#x27;/y}\)">\(\rho=\sqrt{y&#x27;/y}\)</span>, which varies in a compact interval. The real kernel as a function of the upper-right entry has the form</p>
+<span class="math math-display" data-tex="\[
+h_\rho(v)=F_{\infty,\omega}\left(
+r(-\theta)\begin{pmatrix}a\rho/\sqrt{|D|}&amp;v\\0&amp;d/(\rho\sqrt{|D|})\end{pmatrix}r(\theta&#x27;)
+\right).
+\]">\[
+h_\rho(v)=F_{\infty,\omega}\left(
+r(-\theta)\begin{pmatrix}a\rho/\sqrt{|D|}&amp;v\\0&amp;d/(\rho\sqrt{|D|})\end{pmatrix}r(\theta&#x27;)
+\right).
+\]</span>
+<p>These are smooth functions supported in a fixed bounded <span class="math" data-tex="\(v\)">\(v\)</span>-interval. All their <span class="math" data-tex="\(v\)">\(v\)</span>-derivatives are bounded uniformly in <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and the rotations, since the parameters range over compact sets. The upper-right entry of <span class="math" data-tex="\(g^{-1}(\gamma/\sqrt{|D|})h\)">\(g^{-1}(\gamma/\sqrt{|D|})h\)</span> is
+<span class="math" data-tex="\((a x&#x27;+b-dx)/\sqrt{|D|yy&#x27;}\)">\((a x&#x27;+b-dx)/\sqrt{|D|yy&#x27;}\)</span>.
+Define</p>
+<span class="math math-display" data-tex="\[
+Q=\frac{\sqrt{|D|yy&#x27;}}{L},\qquad t=\frac{a x&#x27;+r-dx}{L}.
+\]">\[
+Q=\frac{\sqrt{|D|yy&#x27;}}{L},\qquad t=\frac{a x&#x27;+r-dx}{L}.
+\]</span>
+<p>The sum along this progression is its constant finite coefficient times</p>
+<span class="math math-display" data-tex="\[
+\sum_{m\in\mathbb Z}h_\rho\left(\frac{m+t}{Q}\right)
+=Q\sum_{n\in\mathbb Z}\widehat h_\rho(nQ)e^{2\pi int},
+\quad
+\widehat h_\rho(\xi)=\int_\mathbb R h_\rho(v)e^{-2\pi i\xi v}\,dv.
+\tag{3.4}
+\]">\[
+\sum_{m\in\mathbb Z}h_\rho\left(\frac{m+t}{Q}\right)
+=Q\sum_{n\in\mathbb Z}\widehat h_\rho(nQ)e^{2\pi int},
+\quad
+\widehat h_\rho(\xi)=\int_\mathbb R h_\rho(v)e^{-2\pi i\xi v}\,dv.
+\tag{3.4}
+\]</span>
+<p>This is ordinary real Poisson summation. For completeness, periodize the smooth compactly supported function of <span class="math" data-tex="\((m+t)/Q\)">\((m+t)/Q\)</span> as a smooth one-periodic function of <span class="math" data-tex="\(t\)">\(t\)</span>. Integration over one period, followed by the substitution <span class="math" data-tex="\(v=(m+t)/Q\)">\(v=(m+t)/Q\)</span>, gives its <span class="math" data-tex="\(n\)">\(n\)</span>-th Fourier coefficient <span class="math" data-tex="\(Q\widehat h_\rho(nQ)\)">\(Q\widehat h_\rho(nQ)\)</span>. Repeated integration by parts makes that Fourier series absolutely and uniformly convergent, proving (3.4).</p>
+<p>For every integer <span class="math" data-tex="\(B\geq0\)">\(B\geq0\)</span>, integration by parts and the uniform derivative bounds give
+<span class="math" data-tex="\(|\widehat h_\rho(\xi)|\leq C_B(1+|\xi|)^{-B}\)">\(|\widehat h_\rho(\xi)|\leq C_B(1+|\xi|)^{-B}\)</span>.
+For <span class="math" data-tex="\(B&gt;1\)">\(B&gt;1\)</span> and <span class="math" data-tex="\(Q\geq1\)">\(Q\geq1\)</span>, the nonzero modes in (3.4) consequently satisfy</p>
+<span class="math math-display" data-tex="\[
+\left|Q\sum_{n\ne0}\widehat h_\rho(nQ)e^{2\pi int}\right|
+\leq C_B Q^{1-B}\sum_{n\ne0}|n|^{-B}.
+\tag{3.5}
+\]">\[
+\left|Q\sum_{n\ne0}\widehat h_\rho(nQ)e^{2\pi int}\right|
+\leq C_B Q^{1-B}\sum_{n\ne0}|n|^{-B}.
+\tag{3.5}
+\]</span>
+<p>Both frequency signs occur. Cuspidality has removed only the zero frequency. Because <span class="math" data-tex="\(Q\)">\(Q\)</span> is comparable to <span class="math" data-tex="\(y\)">\(y\)</span>, (3.5) is <span class="math" data-tex="\(O_B(y^{1-B})\)">\(O_B(y^{1-B})\)</span>.</p>
+<p>The omitted zero mode is <span class="math" data-tex="\(Q\widehat h_\rho(0)\)">\(Q\widehat h_\rho(0)\)</span>. It is independent of <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, even when the finite coefficient depends on the residue class <span class="math" data-tex="\(r\)">\(r\)</span>. Integrating it against a cusp function over the complete column strip therefore gives zero at each fixed <span class="math" data-tex="\(y&#x27;,\theta&#x27;\)">\(y&#x27;,\theta&#x27;\)</span>. Subtract these zero modes in high rows, and leave the original kernel in the bounded rows. The high-row support remains in the same height-ratio interval: outside it the real kernel is zero for every upper-right parameter, so its Fourier transform is zero as well. The sum has finitely many determinant, diagonal, residue and component choices. Equations (3.5) and the bounded-row count prove (3.1), with any requested <span class="math" data-tex="\(A\)">\(A\)</span> obtained by increasing <span class="math" data-tex="\(B\)">\(B\)</span>. This constructs the asserted measurable kernel. The cutoff between high and bounded rows need not be smooth; no derivative of that cutoff is used.</p>
+<p>On the cover the quotient volume is finite. Cauchy–Schwarz in the column variable gives (3.2). Finite scalar averages and the finite-level projection are bounded finite sums and preserve the kernel bound; transporting the result back to <span class="math" data-tex="\(X\)">\(X\)</span> gives a bounded kernel representative there. All central-character factors used in this transport have absolute value one. For a general algebraic tensor sum, add its finitely many estimates. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same construction works with every differentiated compact kernel. It therefore controls all real derivatives of <span class="math" data-tex="\(R(f)u\)">\(R(f)u\)</span>. It also works on a moderate-growth cusp function before square integrability is known. If such a function is <span class="math" data-tex="\(O((y&#x27;)^r)\)">\(O((y&#x27;)^r)\)</span> on the relevant strips, the high-row integral has <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> comparable to <span class="math" data-tex="\(y\)">\(y\)</span>. Its column measure is <span class="math" data-tex="\(O(y^{-1})\)">\(O(y^{-1})\)</span>, since the density is <span class="math" data-tex="\(dx&#x27;\,dy&#x27;/(y&#x27;)^2\)">\(dx&#x27;\,dy&#x27;/(y&#x27;)^2\)</span> and the strip width and rotations are bounded. Multiplying this measure by (3.5) and the growth bound gives <span class="math" data-tex="\(O(y^{r-B})\)">\(O(y^{r-B})\)</span>. Thus convolution of a moderate-growth cusp function is rapidly decreasing as well. These integrals converge on each height window, and the subtracted zero-mode integrals are exactly zero; this argument does not assume the function was already in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<h2 id="4-arithmetic-finiteness-and-rapid-decay">4. Arithmetic finiteness and rapid decay</h2>
+<p>An automorphic form here is smooth, finite under the real maximal compact and a finite compact open, finite under the centre of the enveloping algebra, and of polynomial group growth. A cusp form additionally has (1.2) zero for every <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Lemma — uniform local elliptic bounds.</strong> On a rotation weight <span class="math" data-tex="\(k\)">\(k\)</span>, the Casimir is
+<span class="math math-display" data-tex="\[
+\Delta_k=-y^2(\partial_x^2+\partial_y^2)+iky\partial_x.
+\]">\[
+\Delta_k=-y^2(\partial_x^2+\partial_y^2)+iky\partial_x.
+\]</span>
+If a smooth function <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(P(\Delta_k)f=0\)">\(P(\Delta_k)f=0\)</span>, for a fixed nonzero polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(|f(x,y)|\leq Cy^N\)">\(|f(x,y)|\leq Cy^N\)</span> in a cusp, then every derivative formed from <span class="math" data-tex="\(y\partial_x,y\partial_y\)">\(y\partial_x,y\partial_y\)</span> has the same polynomial exponent there, with a constant depending on the derivative.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(d=\deg P\)">\(d=\deg P\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the equation forces <span class="math" data-tex="\(f=0\)">\(f=0\)</span>; otherwise <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. At height <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, use <span class="math" data-tex="\(u=(x-x_0)/y_0,\ v=y/y_0\)">\(u=(x-x_0)/y_0,\ v=y/y_0\)</span>. On a fixed box with <span class="math" data-tex="\(1/2&lt;v&lt;2\)">\(1/2&lt;v&lt;2\)</span>, the operator becomes
+<span class="math math-display" data-tex="\[
+-v^2(\partial_u^2+\partial_v^2)+ikv\partial_u.
+\]">\[
+-v^2(\partial_u^2+\partial_v^2)+ikv\partial_u.
+\]</span>
+All its coefficients and their derivatives are bounded independently of <span class="math" data-tex="\(x_0,y_0\)">\(x_0,y_0\)</span>; the principal symbol of <span class="math" data-tex="\(P(\Delta_k)\)">\(P(\Delta_k)\)</span>, of order <span class="math" data-tex="\(2d\)">\(2d\)</span>, is a nonzero constant times <span class="math" data-tex="\(v^{2d}|\xi|^{2d}\)">\(v^{2d}|\xi|^{2d}\)</span>, bounded away from zero on the unit frequency sphere.</p>
+<p>Here are the interior estimates needed for this observation. For a compactly supported function in a Euclidean box, the Fourier transform gives
+<span class="math math-display" data-tex="\[
+\|h\|_{H^{r+2d}}
+\leq C_r(\|(-\Delta_{\mathrm E})^dh\|_{H^r}+\|h\|_2).
+\]">\[
+\|h\|_{H^{r+2d}}
+\leq C_r(\|(-\Delta_{\mathrm E})^dh\|_{H^r}+\|h\|_2).
+\]</span>
+It also gives
+<span class="math" data-tex="\(\|h\|_{H^{r+2d-1}}\leq\epsilon\|h\|_{H^{r+2d}}+C_{\epsilon,r}\|h\|_2\)">\(\|h\|_{H^{r+2d-1}}\leq\epsilon\|h\|_{H^{r+2d}}+C_{\epsilon,r}\|h\|_2\)</span>:
+split the frequency integral at a sufficiently large radius. Freeze the principal coefficients on small boxes. Their oscillation multiplies the highest norm by an arbitrarily small constant, which is absorbed in the left side of the first estimate. Lower-order terms, derivatives of coefficients and cutoff commutators are absorbed using the second estimate. Nested cutoffs give the interior <span class="math" data-tex="\(H^{2d}\)">\(H^{2d}\)</span> estimate from the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm and the equation; applying the same calculation to successive derivatives gives all interior Sobolev orders. To spell out the cutoff step, for nested boxes <span class="math" data-tex="\(B_b\supset B_a\)">\(B_b\supset B_a\)</span> this calculation gives, on solutions, <span class="math" data-tex="\(N(B_a)\leq\theta N(B_b)+C_\theta(b-a)^{-A}\|f\|_{L^2(B)}\)">\(N(B_a)\leq\theta N(B_b)+C_\theta(b-a)^{-A}\|f\|_{L^2(B)}\)</span>, where <span class="math" data-tex="\(N\)">\(N\)</span> is the desired Sobolev norm and <span class="math" data-tex="\(A\)">\(A\)</span> is fixed. Take increasing boxes with gaps proportional to <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span> and closure still inside <span class="math" data-tex="\(B\)">\(B\)</span>, and choose <span class="math" data-tex="\(\theta&lt;2^{-A}\)">\(\theta&lt;2^{-A}\)</span>. Iteration sums a convergent geometric series; the remaining outer norm is multiplied by <span class="math" data-tex="\(\theta^j\)">\(\theta^j\)</span> and tends to zero because <span class="math" data-tex="\(f\)">\(f\)</span> is smooth on that fixed closure. This gives the claimed interior bound at each order. The boxes, coefficient bounds and constants are uniform here. Fourier Cauchy–Schwarz then bounds any derivative at their centers by <span class="math" data-tex="\(C_r\|f\|_{L^2}\)">\(C_r\|f\|_{L^2}\)</span> on the larger box, since <span class="math" data-tex="\(H^s\)">\(H^s\)</span> controls <span class="math" data-tex="\(r\)">\(r\)</span> derivatives for <span class="math" data-tex="\(s&gt;r+1\)">\(s&gt;r+1\)</span> in two dimensions.</p>
+<p>The given pointwise growth bounds that rescaled <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm by <span class="math" data-tex="\(C&#x27;y_0^N\)">\(C&#x27;y_0^N\)</span>. Scaled derivatives at the center are precisely the indicated hyperbolic derivatives, up to lower-order terms with bounded coefficients. This proves the claim. The calculation takes place on the upper-half-plane lift, so the shrinking injectivity radius of a cusp does not affect it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma — the nonconstant cusp modes.</strong> Under the hypotheses of the preceding lemma, the nonzero Fourier modes of <span class="math" data-tex="\(f\)">\(f\)</span>, and all their real derivatives, decrease faster than every power of <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>Proof.</strong> Factor <span class="math" data-tex="\(P\)">\(P\)</span> into powers of its distinct roots. Bézout identities for those coprime powers split <span class="math" data-tex="\(f\)">\(f\)</span> into a finite sum of functions satisfying <span class="math" data-tex="\((\Delta_k-\lambda)^d f=0\)">\((\Delta_k-\lambda)^d f=0\)</span>. They are polynomial differential expressions in the original <span class="math" data-tex="\(f\)">\(f\)</span>, so the preceding lemma gives polynomial growth for them and their derivatives.</p>
+<p>For one such function put <span class="math" data-tex="\(f_j=(\Delta_k-\lambda)^jf\)">\(f_j=(\Delta_k-\lambda)^jf\)</span>, <span class="math" data-tex="\(0\leq j&lt;d\)">\(0\leq j&lt;d\)</span>, with <span class="math" data-tex="\(f_d=0\)">\(f_d=0\)</span>. In a cusp of width <span class="math" data-tex="\(w\)">\(w\)</span>, expand in <span class="math" data-tex="\(e^{2\pi inx/w}\)">\(e^{2\pi inx/w}\)</span>. If <span class="math" data-tex="\(a_{j,n}(y)\)">\(a_{j,n}(y)\)</span> is the coefficient, set
+<span class="math math-display" data-tex="\[
+t=\log y,\qquad u_{j,n}(t)=e^{-t/2}a_{j,n}(e^t),
+\qquad \kappa_n=2\pi n/w.
+\]">\[
+t=\log y,\qquad u_{j,n}(t)=e^{-t/2}a_{j,n}(e^t),
+\qquad \kappa_n=2\pi n/w.
+\]</span>
+Direct differentiation of the Fourier equation gives
+<span class="math math-display" data-tex="\[
+-u_{j,n}&#x27;&#x27;+
+\left(\tfrac14+\kappa_n^2e^{2t}-k\kappa_ne^t\right)u_{j,n}
+=\lambda u_{j,n}+u_{j+1,n}.
+\]">\[
+-u_{j,n}&#x27;&#x27;+
+\left(\tfrac14+\kappa_n^2e^{2t}-k\kappa_ne^t\right)u_{j,n}
+=\lambda u_{j,n}+u_{j+1,n}.
+\]</span>
+For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, write <span class="math" data-tex="\(u_n=(u_{0,n},\ldots,u_{d-1,n})\)">\(u_n=(u_{0,n},\ldots,u_{d-1,n})\)</span> and <span class="math" data-tex="\(r_n=\|u_n\|\)">\(r_n=\|u_n\|\)</span>. Wherever <span class="math" data-tex="\(r_n&gt;0\)">\(r_n&gt;0\)</span>, differentiating its norm and using Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+r_n&#x27;&#x27;\geq
+\left(\tfrac14+\kappa_n^2e^{2t}
+             -k\kappa_ne^t-|\lambda|-1\right)r_n.
+\]">\[
+r_n&#x27;&#x27;\geq
+\left(\tfrac14+\kappa_n^2e^{2t}
+             -k\kappa_ne^t-|\lambda|-1\right)r_n.
+\]</span>
+The shift matrix has norm at most one. Choose <span class="math" data-tex="\(Y=e^{t_0}\)">\(Y=e^{t_0}\)</span> sufficiently large, independently of <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, so the coefficient is at least <span class="math" data-tex="\(\kappa_n^2e^{2t}/2\)">\(\kappa_n^2e^{2t}/2\)</span>. Choose a fixed <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> small enough that both
+<span class="math math-display" data-tex="\[
+h_\pm(t)=\exp(\pm a|\kappa_n|(e^t-Y))
+\]">\[
+h_\pm(t)=\exp(\pm a|\kappa_n|(e^t-Y))
+\]</span>
+satisfy <span class="math" data-tex="\(h_\pm&#x27;&#x27;\leq \kappa_n^2e^{2t}h_\pm/2\)">\(h_\pm&#x27;&#x27;\leq \kappa_n^2e^{2t}h_\pm/2\)</span> for <span class="math" data-tex="\(t\geq t_0\)">\(t\geq t_0\)</span>. This is immediate from their second derivatives once <span class="math" data-tex="\(a^2&lt;1/2\)">\(a^2&lt;1/2\)</span> and the minimum <span class="math" data-tex="\(|\kappa_n|Y\)">\(|\kappa_n|Y\)</span> is large.</p>
+<p>On <span class="math" data-tex="\([t_0,T]\)">\([t_0,T]\)</span>, compare <span class="math" data-tex="\(r_n\)">\(r_n\)</span> with
+<span class="math" data-tex="\(r_n(t_0)h_-(t)+\eta_T h_+(t)\)">\(r_n(t_0)h_-(t)+\eta_T h_+(t)\)</span>, where
+<span class="math" data-tex="\(\eta_T=r_n(T)/h_+(T)\)">\(\eta_T=r_n(T)/h_+(T)\)</span>. At both endpoints the latter is at least <span class="math" data-tex="\(r_n\)">\(r_n\)</span>. A positive interior maximum of their difference is impossible: there <span class="math" data-tex="\(r_n&gt;0\)">\(r_n&gt;0\)</span>, and the two differential inequalities force its second derivative to be strictly positive. Polynomial growth gives <span class="math" data-tex="\(\eta_T\to0\)">\(\eta_T\to0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|u_{j,n}(t)|
+\leq r_n(t_0)\exp(-a|\kappa_n|(e^t-Y)).
+\]">\[
+|u_{j,n}(t)|
+\leq r_n(t_0)\exp(-a|\kappa_n|(e^t-Y)).
+\]</span>
+The Fourier coefficients at the fixed height <span class="math" data-tex="\(Y\)">\(Y\)</span> are bounded uniformly in <span class="math" data-tex="\(n\)">\(n\)</span>. Summing this geometric bound shows that the nonconstant part of <span class="math" data-tex="\(f\)">\(f\)</span> is <span class="math" data-tex="\(O(y^{1/2}e^{-cy})\)">\(O(y^{1/2}e^{-cy})\)</span> for <span class="math" data-tex="\(y\geq2Y\)">\(y\geq2Y\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. It satisfies the same polynomial differential equation: averaging in <span class="math" data-tex="\(x\)">\(x\)</span> commutes with <span class="math" data-tex="\(\Delta_k\)">\(\Delta_k\)</span>. Applying the local estimates to this nonconstant part on boxes with comparable heights proves rapid decrease of every scaled derivative. Rotation derivatives multiply a weight vector by a fixed integer, and all real group derivatives are combinations of these scaled derivatives. This proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma — the compact cuspidal resolvent at a fixed weight.</strong> At a fixed finite level, unitary central character and rotation weight <span class="math" data-tex="\(k\)">\(k\)</span>, the cuspidal realization of <span class="math" data-tex="\(\Delta_k\)">\(\Delta_k\)</span> is self-adjoint, bounded below, and has compact resolvent. Each polynomial <span class="math" data-tex="\(P\)">\(P\)</span> has a finite-dimensional kernel there.</p>
+<p><strong>Proof.</strong> Work on the finite principal-congruence cover of Lemma 1.2. Let <span class="math" data-tex="\(H,S,J_0\)">\(H,S,J_0\)</span> be the real special-linear generators in the modular-lift lesson, with <span class="math" data-tex="\(J_0\)">\(J_0\)</span> the rotation derivative. Integration by parts gives the nonnegative form
+<span class="math math-display" data-tex="\[
+q_k(u)=\tfrac14(\|R(H)u\|_2^2+\|R(S)u\|_2^2).
+\]">\[
+q_k(u)=\tfrac14(\|R(H)u\|_2^2+\|R(S)u\|_2^2).
+\]</span>
+Its differential operator is <span class="math" data-tex="\(\Delta_k+k^2/4\)">\(\Delta_k+k^2/4\)</span>: the Casimir is
+<span class="math" data-tex="\(-\tfrac14(R(H)^2+R(S)^2-R(J_0)^2)\)">\(-\tfrac14(R(H)^2+R(S)^2-R(J_0)^2)\)</span>, and <span class="math" data-tex="\(R(J_0)u=iku\)">\(R(J_0)u=iku\)</span>.
+In cusp coordinates the form is the integral of
+<span class="math math-display" data-tex="\[
+|y\partial_yf|^2+
+|y\partial_xf-ikf/2|^2
+\]">\[
+|y\partial_yf|^2+
+|y\partial_xf-ikf/2|^2
+\]</span>
+against <span class="math" data-tex="\(dx\,dy/y^2\)">\(dx\,dy/y^2\)</span>. Its norm, after adjoining a constant times <span class="math" data-tex="\(\|f\|_2^2\)">\(\|f\|_2^2\)</span>, is equivalent to the ordinary first-derivative form norm.</p>
+<p>The cusp projection commutes with the unitary right group action, hence with its closed real generators and their domains. It preserves the fixed level and weight. Thus restricting this closed form to the cusp space gives a reducing closed form. Its domain is dense: the compact approximate identities, followed by weight projection, have smooth cusp images rapidly decreasing with all derivatives by Section 3. This uses only that section's <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernel estimate, not arithmetic finiteness.</p>
+<p>Zero cusp average gives the circle Poincaré estimate
+<span class="math math-display" data-tex="\[
+\int_{y&gt;R}|f|^2\,\frac{dx\,dy}{y^2}
+\leq \frac{w^2}{4\pi^2R^2}
+             \int_{y&gt;R}|\partial_xf|^2\,dx\,dy.
+\]">\[
+\int_{y&gt;R}|f|^2\,\frac{dx\,dy}{y^2}
+\leq \frac{w^2}{4\pi^2R^2}
+             \int_{y&gt;R}|\partial_xf|^2\,dx\,dy.
+\]</span>
+Consequently a bounded form ball has uniformly small cusp tails. On a compact core, cut off in finitely many coordinate charts and extend to Euclidean tori. Bounded first-derivative norms make the sum of squared Fourier coefficients outside a frequency ball uniformly small; the coefficients inside it lie in a bounded finite-dimensional set. This proves compactness on the core, and the tail estimate proves compactness of the full form embedding. Finite components, unitary identifications and character phases preserve it.</p>
+<p>The form resolvent maps a Hilbert unit ball to a bounded form ball, by Riesz representation. It is therefore compact and self-adjoint. The compact spectral theorem gives finite-dimensional eigenspaces and no finite accumulation of eigenvalues. Subtracting <span class="math" data-tex="\(k^2/4\)">\(k^2/4\)</span> gives the asserted operator <span class="math" data-tex="\(\Delta_k\)">\(\Delta_k\)</span>. The reducing-form argument, or integration against compact coordinate tests, identifies it with the stated differential operator. A polynomial has only finitely many roots, so its kernel is the finite sum of the corresponding eigenspaces. This extends the weight-zero argument in Section 6 without a representation-theoretic admissibility assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem — arithmetic finiteness for GL₂ over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</strong> Fix a compact open finite level <span class="math" data-tex="\(J\)">\(J\)</span>, a finite packet of real compact types, and a cofinite ideal <span class="math" data-tex="\(I\)">\(I\)</span> in the enveloping centre. The space of automorphic forms fixed by <span class="math" data-tex="\(J\)">\(J\)</span>, of those types, and annihilated by <span class="math" data-tex="\(I\)">\(I\)</span>, is finite dimensional.</p>
+<p><strong>Proof.</strong> A principal congruence cover gives finitely many real congruence components and cusps. The type packet gives finitely many rotation weights. Cofiniteness of <span class="math" data-tex="\(I\)">\(I\)</span> supplies a nonzero polynomial in the scalar real derivative and one in the Casimir: powers of either generator are linearly dependent modulo <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>We first remove the scalar direction. The positive central variable satisfies a fixed constant-coefficient ordinary differential equation. Its solutions are finite sums <span class="math" data-tex="\(e^{\lambda t}t^j\)">\(e^{\lambda t}t^j\)</span>, with finitely many <span class="math" data-tex="\(\lambda,j\)">\(\lambda,j\)</span>. Finitely many evaluations in that variable recover their coefficient functions through an invertible evaluation matrix; linear independence of the exponential polynomials supplies such a matrix. Those coefficient functions retain smoothness, finite level and polynomial growth, and satisfy the fixed Casimir polynomial. The compact central action factors through a finite quotient at the fixed level, so it also gives only finitely many character choices. Extend each coefficient from the norm-one slice using that compact unitary character and trivial positive scalar action. These finite reductions are injective. It therefore suffices to prove finiteness for a fixed unitary central character, component and rotation weight.</p>
+<p>Let <span class="math" data-tex="\(P(\Delta_k)f=0\)">\(P(\Delta_k)f=0\)</span>. At a cusp, the zero Fourier coefficient satisfies
+<span class="math math-display" data-tex="\[
+P(-y^2\,d^2/dy^2)a_0(y)=0.
+\]">\[
+P(-y^2\,d^2/dy^2)a_0(y)=0.
+\]</span>
+This ordinary equation has order <span class="math" data-tex="\(2\deg P\)">\(2\deg P\)</span>, with nonzero leading coefficient for <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>. Its solution space is finite dimensional; equivalently, after <span class="math" data-tex="\(t=\log y\)">\(t=\log y\)</span>, it is a constant-coefficient equation. Map <span class="math" data-tex="\(f\)">\(f\)</span> to this solution at each of the finitely many cusps.</p>
+<p>The kernel of this map has zero constant terms. This is the full adelic cuspidal condition: use the period realization of the unipotent integral in Lemma 1.2 at each rational cusp and component. A zero solution in the cusp interval is zero for all positive heights by uniqueness of the ordinary equation, so the integral vanishes for every group argument. The nonconstant-mode lemma then makes <span class="math" data-tex="\(f\)">\(f\)</span> and all its real derivatives rapidly decreasing. They belong to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and integration by parts, with cutoffs whose tails tend to zero, puts <span class="math" data-tex="\(f\)">\(f\)</span> in the domain of every required power of the cuspidal operator. Thus <span class="math" data-tex="\(P(\Delta_k)f=0\)">\(P(\Delta_k)f=0\)</span> holds in its self-adjoint realization. The compact-resolvent lemma makes this kernel finite dimensional.</p>
+<p>The image of the constant-term map lies in a finite sum of finite-dimensional ordinary solution spaces, and its kernel is finite dimensional. Choosing lifts of a basis of its image proves that its domain is finite dimensional. Reassemble the finitely many weights, components and central coefficient functions. This proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the rational GL₂ arithmetic finiteness statement used in this course. Harish-Chandra's general theorem, in the formulation of Getz–Hahn, Theorem 6.3.2, remains the original reference; the complete specialized proof needed here has been supplied above.</p>
+<p><strong>Lemma 4.1 — a reproducing kernel.</strong> Every automorphic form <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is fixed by some smooth compact convolution: <span class="math" data-tex="\(\phi=R(f_0)\phi\)">\(\phi=R(f_0)\phi\)</span>. All its real derivatives have a common polynomial-growth exponent.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\phi\)">\(\phi\)</span> in the finite-dimensional space <span class="math" data-tex="\(E\)">\(E\)</span> supplied by the arithmetic-finiteness theorem just proved. Take a smooth real approximate identity averaged under conjugation by the real compact group, and at finite places the normalized characteristic function of <span class="math" data-tex="\(J\)">\(J\)</span>. Call these kernels <span class="math" data-tex="\(h_n\)">\(h_n\)</span>. Convolution preserves the given compact types because it commutes with compact translations; it preserves <span class="math" data-tex="\(J\)">\(J\)</span>-invariance by bi-<span class="math" data-tex="\(J\)">\(J\)</span>-invariance, and preserves the central ideal because central differential operators commute with convolution. It preserves moderate growth since its integration variable ranges over a compact set and the group height is submultiplicative. These verifications show <span class="math" data-tex="\(R(h_n)E\subset E\)">\(R(h_n)E\subset E\)</span> without first assuming bounds on derivatives of elements of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>The restrictions <span class="math" data-tex="\(R(h_n)|_E\)">\(R(h_n)|_E\)</span> converge to the identity. Indeed finitely many point evaluations separate the finite-dimensional function space <span class="math" data-tex="\(E\)">\(E\)</span>; approximate-identity convergence at those points proves convergence of every entry of its matrix. Choose <span class="math" data-tex="\(n\)">\(n\)</span> for which <span class="math" data-tex="\(A=R(h_n)|_E\)">\(A=R(h_n)|_E\)</span> is invertible. Cayley–Hamilton expresses <span class="math" data-tex="\(A^{-1}=q(A)\)">\(A^{-1}=q(A)\)</span> as a polynomial. Then <span class="math" data-tex="\(\phi=Aq(A)\phi\)">\(\phi=Aq(A)\phi\)</span>, a finite linear combination of positive convolution powers of <span class="math" data-tex="\(h_n\)">\(h_n\)</span> applied to <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Their sum is a smooth compact <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, proving the identity.</p>
+<p>Differentiating that identity differentiates its compact kernel. Each real differential operator <span class="math" data-tex="\(D\)">\(D\)</span> gives <span class="math" data-tex="\(D\phi=R(f_D)\phi\)">\(D\phi=R(f_D)\phi\)</span> with a smooth compact <span class="math" data-tex="\(f_D\)">\(f_D\)</span>. Its growth is bounded by the original exponent of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, with a new constant depending on <span class="math" data-tex="\(D\)">\(D\)</span>. This also proves stability under Lie differentiation: its compact type packet is finite by the finite adjoint orbit of a differential operator, and the same central ideal annihilates it. Constant terms commute with these derivatives by compact-domain integration. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 — rapid decay.</strong> Every automorphic cusp form is rapidly decreasing on every Siegel set in the central-normalized slice. Every real derivative has the same property. In particular a cusp form with fixed unitary central character belongs to <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span>.</p>
+<p><strong>Proof for unitary central character.</strong> Apply Lemma 4.1 to <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and the moderate-growth version of Theorem 3.1 to <span class="math" data-tex="\(R(f_0)\phi=\phi\)">\(R(f_0)\phi=\phi\)</span>. Its exponent <span class="math" data-tex="\(r\)">\(r\)</span> is fixed, whereas <span class="math" data-tex="\(B\)">\(B\)</span> can be increased arbitrarily. Thus <span class="math" data-tex="\(|\phi(g)|\leq C_Ay(g)^{-A}\)">\(|\phi(g)|\leq C_Ay(g)^{-A}\)</span> for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> on the Siegel set. Applying the same kernel argument to <span class="math" data-tex="\(f_D\)">\(f_D\)</span> proves the derivative assertion. The bound on a compact core is automatic. Absolute square integrability follows from finite quotient volume, or directly from the cusp density. Its constant term is zero by assumption, so it lies in <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span>.</p>
+<p><strong>Reduction for the general central-finite case.</strong> We include this step so that rapid decay is not restricted silently to unitary forms. The compact part of <span class="math" data-tex="\(\mathbb A^\times/\mathbb Q^\times\)">\(\mathbb A^\times/\mathbb Q^\times\)</span> is <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span>, by the idèle decomposition in the modular-lift lesson. Its central action on a finite-level form factors through a finite quotient. Decompose into its finitely many character spaces. Along the positive real scalar <span class="math" data-tex="\(e^tI\)">\(e^tI\)</span>, the central-finiteness condition is a constant-coefficient differential equation <span class="math" data-tex="\(p(\partial_t)\phi=0\)">\(p(\partial_t)\phi=0\)</span>. Its solutions are finite sums of <span class="math" data-tex="\(e^{\lambda t}t^j\)">\(e^{\lambda t}t^j\)</span>, with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> a root of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> below its multiplicity. This assertion follows by successively solving <span class="math" data-tex="\((\partial_t-\lambda)u=0\)">\((\partial_t-\lambda)u=0\)</span> and its powers, or by the usual factorization of a constant-coefficient equation.</p>
+<p>Put <span class="math" data-tex="\(\delta(g)=|\det g|_{\mathbb A}^{1/2}&gt;0\)">\(\delta(g)=|\det g|_{\mathbb A}^{1/2}&gt;0\)</span>, and <span class="math" data-tex="\(g^1=g/\delta(g)I_\infty\)">\(g^1=g/\delta(g)I_\infty\)</span>. The product formula makes this construction rational-invariant. On the norm-one slice we can therefore write</p>
+<span class="math math-display" data-tex="\[
+\phi(g)=\sum_{\lambda,j}\delta(g)^\lambda\bigl(\log\delta(g)\bigr)^j b_{\lambda,j}(g^1).
+\tag{4.1}
+\]">\[
+\phi(g)=\sum_{\lambda,j}\delta(g)^\lambda\bigl(\log\delta(g)\bigr)^j b_{\lambda,j}(g^1).
+\tag{4.1}
+\]</span>
+<p>The coefficient functions can be obtained from finitely many evaluations at positive central scalars by an invertible exponential-polynomial evaluation matrix. Such a matrix exists because the distinct exponential-polynomial solutions are linearly independent. Hence they retain smoothness, finite compact type, polynomial growth and cuspidality. The latter follows also because unipotent multiplication has determinant norm one. A nonzero polynomial <span class="math" data-tex="\(q(\Omega)\)">\(q(\Omega)\)</span> belongs to the original cofinite central ideal: powers of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> are linearly dependent modulo that ideal. Central evaluations commute with <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, so the same polynomial annihilates every coefficient. This is the required cofinite special-linear infinitesimal ideal.</p>
+<p>Extend a coefficient to the whole group by
+<span class="math" data-tex="\(\delta(g)^{i\operatorname{Im}\lambda}b_{\lambda,j}(g^1)\)">\(\delta(g)^{i\operatorname{Im}\lambda}b_{\lambda,j}(g^1)\)</span>.
+It now has a fixed unitary central character: the finite-unit character already has finite order, and the positive scalar has the indicated purely imaginary exponent. It is an automorphic cusp form; its central derivative is scalar and its special-linear central ideal is cofinite. Polynomial growth is preserved because both <span class="math" data-tex="\(\delta(g)\)">\(\delta(g)\)</span> and its inverse are bounded by powers of the matrix-and-inverse group height. Apply the unitary case just proved to each coefficient. On the Siegel representatives of Section 1, <span class="math" data-tex="\(\delta(g)=1\)">\(\delta(g)=1\)</span>, so (4.1) is a finite sum of rapidly decreasing coefficients. This proves the general case. Derivatives are automorphic cusp forms by Lemma 4.1, so the same reasoning proves their rapid decrease. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Fourier estimate in Section 3 treats all smooth cusp functions and both nonzero frequency signs. Holomorphicity is not an assumption there. For a holomorphic cusp expansion <span class="math" data-tex="\(\sum a_ne^{2\pi inz/w}\)">\(\sum a_ne^{2\pi inz/w}\)</span>, a bound at height <span class="math" data-tex="\(y_0\)">\(y_0\)</span> gives <span class="math" data-tex="\(|a_n|\leq C e^{2\pi ny_0/w}\)">\(|a_n|\leq C e^{2\pi ny_0/w}\)</span>, not a bound on <span class="math" data-tex="\(a_n\)">\(a_n\)</span> itself. At heights greater than <span class="math" data-tex="\(y_0\)">\(y_0\)</span>, the resulting geometric series does give exponential decay. This special argument explains the holomorphic case but does not replace the proof for Maass forms.</p>
+<h2 id="5-compact-convolution-and-the-representation-spectrum">5. Compact convolution and the representation spectrum</h2>
+<p><strong>Theorem 5.1.</strong> Every <span class="math" data-tex="\(R(f)|_{H_{\rm cusp}}\)">\(R(f)|_{H_{\rm cusp}}\)</span>, for <span class="math" data-tex="\(f\in C_c^\infty(G(\mathbb A))\)">\(f\in C_c^\infty(G(\mathbb A))\)</span>, is Hilbert–Schmidt, and hence compact.</p>
+<p><strong>Proof.</strong> The modified kernel of Theorem 3.1 is bounded on the finite-volume quotient, after its finite-level identifications. Its square integral on the product is finite. An integral operator with such a kernel is Hilbert–Schmidt: for an orthonormal basis <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span>, Parseval in the column variable gives</p>
+<span class="math math-display" data-tex="\[
+\sum_j\|Te_j\|_2^2
+=\int_X\sum_j|\langle K(x,\cdot),\overline{e_j}\rangle|^2dx
+=\int_{X\times X}|K(x,y)|^2dx\,dy.
+\tag{5.1}
+\]">\[
+\sum_j\|Te_j\|_2^2
+=\int_X\sum_j|\langle K(x,\cdot),\overline{e_j}\rangle|^2dx
+=\int_{X\times X}|K(x,y)|^2dx\,dy.
+\tag{5.1}
+\]</span>
+<p>One may first use finite partial sums and then monotone convergence. If the kernel has been constructed on the finite principal cover, apply its finite averages and restrict to the closed subspace representing <span class="math" data-tex="\(H\)">\(H\)</span>. These bounded finite identifications preserve the Hilbert–Schmidt property. The finite-level projection extends the operator by zero on its orthogonal complement, so it is Hilbert–Schmidt on the full cuspidal space as well. Compactness follows by approximating the square-integrable kernel by finite sums of product functions, whose operators have finite rank; their operator norm error is bounded by their kernel <span class="math" data-tex="\(L^2\)">\(L^2\)</span> error. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 — discreteness and finite multiplicity.</strong> The right regular representation has a Hilbert direct sum decomposition</p>
+<span class="math math-display" data-tex="\[
+H_{\rm cusp}=\widehat\bigoplus_\pi m(\pi)\,\mathcal H_\pi,
+\qquad m(\pi)&lt;\infty,
+\tag{5.2}
+\]">\[
+H_{\rm cusp}=\widehat\bigoplus_\pi m(\pi)\,\mathcal H_\pi,
+\qquad m(\pi)&lt;\infty,
+\tag{5.2}
+\]</span>
+<p>into irreducible unitary adelic representations with central character <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p><strong>Proof.</strong> Choose a compact smooth approximate identity <span class="math" data-tex="\(h_n\)">\(h_n\)</span> on the group, with shrinking support and integral one. At finite places use normalized compact-open averages. Right convolution converges strongly to the identity in any strongly continuous unitary representation: integrate <span class="math" data-tex="\(\|R(t)v-v\|\)">\(\|R(t)v-v\|\)</span> over its shrinking support. Put <span class="math" data-tex="\(T_n=R(h_n)^*R(h_n)\)">\(T_n=R(h_n)^*R(h_n)\)</span>. It too converges strongly to the identity. It is positive and compact on <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span>, since its convolution kernel is again smooth compact. Positivity guarantees a nonzero eigenvalue when its restriction to a nonzero invariant closed subspace is nonzero.</p>
+<p>Let <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span> be such a subspace. Some <span class="math" data-tex="\(T_n|_W\)">\(T_n|_W\)</span> is nonzero. Choose a positive eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and its nonzero finite-dimensional eigenspace <span class="math" data-tex="\(E_\lambda\subset W\)">\(E_\lambda\subset W\)</span>. Among the nonzero intersections of <span class="math" data-tex="\(E_\lambda\)">\(E_\lambda\)</span> with closed invariant subspaces of <span class="math" data-tex="\(W\)">\(W\)</span>, choose one <span class="math" data-tex="\(M\)">\(M\)</span> of smallest dimension. Pick <span class="math" data-tex="\(0\ne v\in M\)">\(0\ne v\in M\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be the closed invariant space generated by <span class="math" data-tex="\(v\)">\(v\)</span>. It is contained in the subspace that supplied <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(P\cap E_\lambda\)">\(P\cap E_\lambda\)</span> is nonzero; minimality therefore gives <span class="math" data-tex="\(P\cap E_\lambda=M\)">\(P\cap E_\lambda=M\)</span>.</p>
+<p>If <span class="math" data-tex="\(Q\)">\(Q\)</span> is a closed invariant subspace of <span class="math" data-tex="\(P\)">\(P\)</span>, its orthogonal complement is invariant by unitarity. Their orthogonal projections commute with all group operators, hence with <span class="math" data-tex="\(T_n\)">\(T_n\)</span> and its spectral projections. Consequently
+<span class="math" data-tex="\(M=(Q\cap E_\lambda)\oplus(Q^\perp\cap E_\lambda)\)">\(M=(Q\cap E_\lambda)\oplus(Q^\perp\cap E_\lambda)\)</span>.
+Every nonzero summand has dimension at least <span class="math" data-tex="\(\dim M\)">\(\dim M\)</span>, so exactly one is nonzero and it is all of <span class="math" data-tex="\(M\)">\(M\)</span>. The cyclic vector <span class="math" data-tex="\(v\)">\(v\)</span> lies in that summand, forcing <span class="math" data-tex="\(P\)">\(P\)</span> to lie in the corresponding subspace. Thus <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span> or <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span>. This proves that every nonzero invariant closed subspace contains an irreducible one.</p>
+<p>Choose a maximal orthogonal family of irreducible closed subspaces. The orthogonal complement of their Hilbert sum would, if nonzero, contain another irreducible one, a contradiction. Their sum is all of <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span>. Separability makes the family countable.</p>
+<p>Finally fix an irreducible <span class="math" data-tex="\(\pi\)">\(\pi\)</span> that occurs. Some positive compact <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is nonzero on it, and has a positive eigenvalue there. In every equivalent copy it has that same eigenvalue. Infinitely many copies would give an infinite-dimensional eigenspace of the compact <span class="math" data-tex="\(T_n\)">\(T_n\)</span> on <span class="math" data-tex="\(H_{\rm cusp}\)">\(H_{\rm cusp}\)</span>, which is impossible. This proves <span class="math" data-tex="\(m(\pi)&lt;\infty\)">\(m(\pi)&lt;\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument does not assume that the convolution operators commute. It uses a positive compact approximate identity and the invariant orthogonal complements supplied by unitarity. The statement concerns the cuspidal restriction. The zero mode that we removed is present in the full regular space; the Eisenstein-series lesson will identify the continuous spectrum it produces.</p>
+<h2 id="6-the-modular-laplacian-as-an-example">6. The modular Laplacian as an example</h2>
+<p>With trivial central character, at level one and real rotation type zero, cusp vectors are functions on <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\backslash\mathbb H\)">\(\mathrm{SL}_2(\mathbb Z)\backslash\mathbb H\)</span> with zero horocycle averages. Their nonnegative Laplacian is</p>
+<span class="math math-display" data-tex="\[
+\Delta=-y^2(\partial_x^2+\partial_y^2),\qquad
+q(u)=\int\bigl(|u_x|^2+|u_y|^2\bigr)\,dx\,dy.
+\tag{6.1}
+\]">\[
+\Delta=-y^2(\partial_x^2+\partial_y^2),\qquad
+q(u)=\int\bigl(|u_x|^2+|u_y|^2\bigr)\,dx\,dy.
+\tag{6.1}
+\]</span>
+<p><strong>Proposition 6.1.</strong> On this cuspidal subspace the Laplacian has compact resolvent. It has an orthonormal basis of smooth cusp eigenfunctions, with finite-dimensional eigenspaces and eigenvalues tending to infinity if the space is infinite dimensional. A nonzero cusp eigenfunction has positive eigenvalue.</p>
+<p><strong>Proof.</strong> At a cusp of width <span class="math" data-tex="\(w\)">\(w\)</span>, the zero-average circle Poincaré inequality follows immediately from its Fourier coefficients:
+<span class="math" data-tex="\(\int_0^w|u|^2dx\leq(w/2\pi)^2\int_0^w|u_x|^2dx\)">\(\int_0^w|u|^2dx\leq(w/2\pi)^2\int_0^w|u_x|^2dx\)</span>.
+Therefore</p>
+<span class="math math-display" data-tex="\[
+\int_{y&gt;Y}|u|^2\frac{dx\,dy}{y^2}
+\leq\frac{w^2}{4\pi^2Y^2}\int_{y&gt;Y}|u_x|^2dx\,dy
+\leq\frac{w^2}{4\pi^2Y^2}q(u).
+\tag{6.2}
+\]">\[
+\int_{y&gt;Y}|u|^2\frac{dx\,dy}{y^2}
+\leq\frac{w^2}{4\pi^2Y^2}\int_{y&gt;Y}|u_x|^2dx\,dy
+\leq\frac{w^2}{4\pi^2Y^2}q(u).
+\tag{6.2}
+\]</span>
+<p>A bounded set in the form norm <span class="math" data-tex="\(\|u\|_2^2+q(u)\)">\(\|u\|_2^2+q(u)\)</span> thus has uniformly small tails. On the compact core its <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norms in finitely many coordinate charts are bounded, and its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> restrictions are precompact. To see this last assertion without an extra compactness theorem, insert chart cutoffs and expand on fixed coordinate boxes in Fourier series. The <span class="math" data-tex="\(H^1\)">\(H^1\)</span> bound controls the sum of squared Fourier coefficients weighted by <span class="math" data-tex="\(1+|n|^2\)">\(1+|n|^2\)</span>, so the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> tail beyond <span class="math" data-tex="\(|n|&gt;R\)">\(|n|&gt;R\)</span> is <span class="math" data-tex="\(O(R^{-2})\)">\(O(R^{-2})\)</span>. The finitely many remaining coefficients have a convergent subsequence. Finite charts and then (6.2) give a convergent subsequence globally. Finite orbifold points can be treated on their finite smooth covers.</p>
+<p>The restricted Dirichlet form is closed and densely defined. Closedness follows from the closedness of weak first derivatives in the full form domain. Density follows, for example, by the approximate identities of Section 5 projected to rotation type zero: their smooth cusp outputs are rapidly decreasing by Section 3, with all derivatives, and hence have finite form norm.</p>
+<p>We must also identify its operator with the differential Laplacian, rather than infer this from tests restricted to cusp functions. Let <span class="math" data-tex="\(P_c\)">\(P_c\)</span> be the orthogonal projection onto the full adelic cuspidal space. Right invariance and unitarity imply that <span class="math" data-tex="\(P_c\)">\(P_c\)</span> commutes with every right group translation and with the finite-level and rotation projections. It commutes with the closed infinitesimal generators too: apply it to the difference quotients defining a generator. For
+<span class="math" data-tex="\(H=\operatorname{diag}(1,-1)\)">\(H=\operatorname{diag}(1,-1)\)</span> and <span class="math" data-tex="\(S=\begin{pmatrix}0&amp;1\\ 1&amp;0\end{pmatrix}\)">\(S=\begin{pmatrix}0&amp;1\\ 1&amp;0\end{pmatrix}\)</span>, the type-zero Dirichlet form, viewed on the rotation bundle, is</p>
+<span class="math math-display" data-tex="\[
+q(u)=\tfrac14\bigl(\|R(H)u\|_2^2+\|R(S)u\|_2^2\bigr).
+\tag{6.3}
+\]">\[
+q(u)=\tfrac14\bigl(\|R(H)u\|_2^2+\|R(S)u\|_2^2\bigr).
+\tag{6.3}
+\]</span>
+<p>At rotation zero the two fields are <span class="math" data-tex="\(2y\partial_y\)">\(2y\partial_y\)</span> and <span class="math" data-tex="\(2y\partial_x\)">\(2y\partial_x\)</span>; changing rotation rotates this pair orthogonally, so (6.3) holds after integration over the normalized rotation fibre. Its weak-derivative domain is precisely the usual first-order form domain in (6.1). Commutation with these generators shows that <span class="math" data-tex="\(P_c\)">\(P_c\)</span> preserves that domain and that its range and kernel are orthogonal for both the norm and the form. Thus the restricted form is a reducing part of the full form. If a cusp vector satisfies a weak eigenfunction equation against cusp form-domain tests, it satisfies the same equation against every full form-domain test: decompose that test by <span class="math" data-tex="\(P_c\)">\(P_c\)</span>, and use form orthogonality for the complementary part. Compactly supported coordinate tests are among these tests. The associated operator is consequently the differential cusp Laplacian.</p>
+<p>By Riesz representation in the form Hilbert space, its resolvent <span class="math" data-tex="\((\Delta+1)^{-1}\)">\((\Delta+1)^{-1}\)</span> maps the unit ball of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to a bounded form ball. The embedding just proved compact makes that resolvent compact. The compact self-adjoint spectral theorem gives the asserted eigenbasis and finite eigenspaces.</p>
+<p>We check smoothness of the weak eigenfunctions locally. On a rectangle in <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> away from <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, the equation is the distributional equation
+<span class="math" data-tex="\((\partial_x^2+\partial_y^2)u=-\lambda y^{-2}u\)">\((\partial_x^2+\partial_y^2)u=-\lambda y^{-2}u\)</span>.
+Initially <span class="math" data-tex="\(u\)">\(u\)</span> is locally <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. For a compact cutoff <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, the Euclidean Laplacian of <span class="math" data-tex="\(\eta u\)">\(\eta u\)</span> is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, by the product rule and this equation. The Euclidean Fourier transform then gives <span class="math" data-tex="\(\eta u\in H^2\)">\(\eta u\in H^2\)</span>, since <span class="math" data-tex="\((1+|\xi|^2)^2\)">\((1+|\xi|^2)^2\)</span> is bounded by a constant times <span class="math" data-tex="\(1+|\xi|^4\)">\(1+|\xi|^4\)</span>. Repeating with nested cutoffs, smooth multiplication by <span class="math" data-tex="\(y^{-2}\)">\(y^{-2}\)</span> and the product rule improves local regularity by one derivative at every step. All local Sobolev orders are obtained. Fourier Cauchy–Schwarz makes <span class="math" data-tex="\(H^m\)">\(H^m\)</span> embed into <span class="math" data-tex="\(C^r\)">\(C^r\)</span> when <span class="math" data-tex="\(m&gt;r+1\)">\(m&gt;r+1\)</span> in two dimensions, so <span class="math" data-tex="\(u\)">\(u\)</span> is smooth. Its zero average persists from the closed cuspidal condition.</p>
+<p>If <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, the form equation gives <span class="math" data-tex="\(q(u)=0\)">\(q(u)=0\)</span>, so both derivatives vanish and <span class="math" data-tex="\(u\)">\(u\)</span> is constant on the connected modular surface. A constant with zero cusp average is zero. Thus nonzero cusp eigenfunctions have positive eigenvalue. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The tail inequality also isolates the role of cuspidality: without the zero-average hypothesis a function constant in <span class="math" data-tex="\(x\)">\(x\)</span> has no <span class="math" data-tex="\(x\)">\(x\)</span>-derivative, and (6.2) does not control its escaping mass. The full spectral analysis will retain that channel rather than discard it.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 — Hilbert–Schmidt compactness.</strong> Let <span class="math" data-tex="\(K\in L^2(Y\times Y)\)">\(K\in L^2(Y\times Y)\)</span> on a separable <span class="math" data-tex="\(L^2\)">\(L^2\)</span> measure space. Prove that its integral operator is compact. Prove the same assertion for a restriction to a closed invariant subspace.</p>
+<p><strong>Solution 7.1.</strong> Finite sums <span class="math" data-tex="\(K_m(x,y)=\sum_{j=1}^{r_m}a_j(x)b_j(y)\)">\(K_m(x,y)=\sum_{j=1}^{r_m}a_j(x)b_j(y)\)</span> are dense in the product <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space. This follows by approximating measurable functions by rectangular simple functions, or from the product orthonormal basis. Their integral operators have finite-dimensional ranges. Cauchy–Schwarz in <span class="math" data-tex="\(y\)">\(y\)</span>, followed by integration in <span class="math" data-tex="\(x\)">\(x\)</span>, gives <span class="math" data-tex="\(\|T_K-T_{K_m}\|_{\rm op}\leq\|K-K_m\|_2\)">\(\|T_K-T_{K_m}\|_{\rm op}\leq\|K-K_m\|_2\)</span>. Thus <span class="math" data-tex="\(T_K\)">\(T_K\)</span> is an operator-norm limit of finite-rank operators and is compact. For a closed invariant subspace <span class="math" data-tex="\(V\)">\(V\)</span>, restrict these operators and, if necessary, compose with its orthogonal projection: the finite ranks remain finite and the same norm convergence holds. Formula (5.1), or an orthonormal basis of <span class="math" data-tex="\(V\)">\(V\)</span> extended to one of the ambient space, also proves the Hilbert–Schmidt bound for the restriction.</p>
+<p><strong>Exercise 7.2 — Siegel representatives.</strong> Deduce a Siegel set for the rational adelic quotient from the positive-real determinant decomposition and the modular fundamental region. Then explain why a deeper finite level requires only finitely many additional cusp charts.</p>
+<p><strong>Solution 7.2.</strong> Write <span class="math" data-tex="\(g=\gamma g_\infty k_f\)">\(g=\gamma g_\infty k_f\)</span> with <span class="math" data-tex="\(\gamma\in G(\mathbb Q)\)">\(\gamma\in G(\mathbb Q)\)</span>, <span class="math" data-tex="\(g_\infty\)">\(g_\infty\)</span> of positive determinant and <span class="math" data-tex="\(k_f\)">\(k_f\)</span> in the finite maximal compact. Divide <span class="math" data-tex="\(g_\infty\)">\(g_\infty\)</span> by its positive scalar square root of the determinant and use its Iwasawa coordinates <span class="math" data-tex="\(s(x+iy)r(\theta)\)">\(s(x+iy)r(\theta)\)</span>. An integral rational special-linear matrix reduces <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span> to the prerequisite fundamental region, so <span class="math" data-tex="\(|x|\leq1/2\)">\(|x|\leq1/2\)</span>, <span class="math" data-tex="\(y\geq\sqrt3/2\)">\(y\geq\sqrt3/2\)</span>. Rotations and the finite maximal compact are compact. These representatives give the required Siegel set. A compact open level contains <span class="math" data-tex="\(K(M)\)">\(K(M)\)</span>; the determinant classes modulo <span class="math" data-tex="\(\det K(M)\)">\(\det K(M)\)</span> are finite, and its real components have <span class="math" data-tex="\(\Gamma(M)\)">\(\Gamma(M)\)</span>. Finitely many cosets of that congruence group in the modular group give finitely many translates of the region. Grouping their upper ends by rational cusp gives precisely the strips of Lemma 1.2, and the truncated parts give a compact core.</p>
+<p><strong>Exercise 7.3 — constant terms and convolution.</strong> For a smooth cusp function, show <span class="math" data-tex="\(C_N(R(f)\phi)=R(f)(C_N\phi)\)">\(C_N(R(f)\phi)=R(f)(C_N\phi)\)</span>. Explain the correct domain of the constant term and extend the identity to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> cusp vectors.</p>
+<p><strong>Solution 7.3.</strong> Substitute (1.1) into (1.2). The unipotent quotient and the support of <span class="math" data-tex="\(f\)">\(f\)</span> are compact, so the smooth integrand is absolutely integrable at each fixed <span class="math" data-tex="\(g\)">\(g\)</span>. Fubini gives
+<span class="math" data-tex="\(\int f(t)\int_{\mathbb Q\backslash\mathbb A}\phi(n(s)gt)ds\,dt\)">\(\int f(t)\int_{\mathbb Q\backslash\mathbb A}\phi(n(s)gt)ds\,dt\)</span>, the required identity. The constant term is a function on the appropriate unipotent quotient, or on the group with its left-unipotent invariance; it is not an ordinary function on the original rational quotient obtained from a global left-unipotent group action. For an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector, the local bounds in Lemma 1.1 justify Fubini after integration against a compact test function. Thus the identity holds as a distribution, and the convolution has a smooth representative whose constant term is everywhere zero.</p>
+<p><strong>Exercise 7.4 — prove the basic estimate.</strong> Work on a principal congruence cover. Starting with a primitive rational projective matrix and a compact smooth kernel, prove the determinant bound, eliminate nonzero lower-left entries in a high row, and estimate the periodized upper-right sum after removing its zero mode. State the conclusion for arbitrary finite level and unitary central character.</p>
+<p><strong>Solution 7.4.</strong> The primitive integer representative has minimum entry valuation zero at every prime. Compact finite projective support bounds its determinant valuations, and gives valuation zero outside a fixed finite set. Hence its determinant <span class="math" data-tex="\(D\)">\(D\)</span> belongs to a finite list. In cusp coordinates the lower-left entry of the normalized real argument is <span class="math" data-tex="\(c\sqrt{yy&#x27;}/\sqrt{|D|}\)">\(c\sqrt{yy&#x27;}/\sqrt{|D|}\)</span>. Since <span class="math" data-tex="\(c\in\mathbb Z\)">\(c\in\mathbb Z\)</span>, <span class="math" data-tex="\(y&#x27;\geq y_0&gt;0\)">\(y&#x27;\geq y_0&gt;0\)</span>, and real support bounds that entry, all sufficiently large <span class="math" data-tex="\(y\)">\(y\)</span> force <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Now <span class="math" data-tex="\(ad=D\)">\(ad=D\)</span>, so <span class="math" data-tex="\(a,d\)">\(a,d\)</span> have finitely many possibilities. Bounding both diagonal entries makes <span class="math" data-tex="\(y&#x27;/y\)">\(y&#x27;/y\)</span> range over a compact interval. The finite coefficient of <span class="math" data-tex="\(b\)">\(b\)</span> is periodic modulo <span class="math" data-tex="\(L\)">\(L\)</span>, by local constancy on the compact family <span class="math" data-tex="\(b\in\widehat{\mathbb Z}\)">\(b\in\widehat{\mathbb Z}\)</span> and the periodic primitivity condition.</p>
+<p>On each progression <span class="math" data-tex="\(b=r+Lm\)">\(b=r+Lm\)</span>, write the real sum as <span class="math" data-tex="\(\sum_m h((m+t)/Q)\)">\(\sum_m h((m+t)/Q)\)</span>, where <span class="math" data-tex="\(Q=\sqrt{|D|yy&#x27;}/L\)">\(Q=\sqrt{|D|yy&#x27;}/L\)</span> is comparable to <span class="math" data-tex="\(y\)">\(y\)</span>. Poisson summation gives <span class="math" data-tex="\(Q\sum_n\widehat h(nQ)e^{2\pi int}\)">\(Q\sum_n\widehat h(nQ)e^{2\pi int}\)</span>. The zero term is independent of the column strip coordinate and integrates to zero against a cusp form. The derivative bounds of the compact smooth family give <span class="math" data-tex="\(|\widehat h(\xi)|\leq C_B(1+|\xi|)^{-B}\)">\(|\widehat h(\xi)|\leq C_B(1+|\xi|)^{-B}\)</span>, uniformly in the height ratio and rotations. Thus the remainder is bounded by <span class="math" data-tex="\(C_BQ^{1-B}\sum_{n\ne0}|n|^{-B}\)">\(C_BQ^{1-B}\sum_{n\ne0}|n|^{-B}\)</span>, for <span class="math" data-tex="\(B&gt;1\)">\(B&gt;1\)</span>. Increasing <span class="math" data-tex="\(B\)">\(B\)</span> gives every inverse power of <span class="math" data-tex="\(y\)">\(y\)</span>. Bounded rows meet only bounded columns, where the arithmetic sum is uniformly finite. This proves the bounded modified kernel on the whole fundamental set.</p>
+<p>For arbitrary finite level, choose a common principal level fixing the finite kernel on both sides and the finite scalar character. There are finitely many real components and scalar identifications. Summing their estimates and averaging their unitary character phases gives the same bound. By Cauchy–Schwarz it implies <span class="math" data-tex="\(|R(f)u(g)|\leq C_A y(g)^{-A}\|u\|_2\)">\(|R(f)u(g)|\leq C_A y(g)^{-A}\|u\|_2\)</span>; by square-integrating the bounded kernel it implies the Hilbert–Schmidt property. These steps supply the full GL₂ argument, including the finite-place and central-character hypotheses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations</em>, draft of 22 April 2022, §§6.2–6.3, 9.2–9.4 and 9.6–9.7. The <a href="https://sites.duke.edu/jgetz/graduate-text/">author's graduate-text page</a> provides the reference. The general reductive-group basic estimate uses Fourier analysis on unipotent radicals. Here the proof is specialized to primitive GL₂ matrices and real arithmetic progressions.</li>
+<li>P. Deligne, <em>Formes modulaires et représentations de GL(2)</em> (1973), §1.3, for the relation between all classical cusp expansions and the adelic constant term.</li>
+<li>The prerequisite adèlic lesson, Theorems 4.1–4.2 and Section 5, for rational determinant decomposition, congruence components and finite quotient volume. The modular fundamental-domain proof belongs to the modular-form prerequisite identified there.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="automorphic-forms-modules-and-hilbert-constituents.html">← Automorphic forms, modules and Hilbert constituents</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="smooth-local-representations-and-the-hecke-module-dictionary.html">Smooth local representations and the Hecke-module dictionary →</a></span></nav>
+<p class="small source-link"><a href="src/why-the-cuspidal-spectrum-is-discrete.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

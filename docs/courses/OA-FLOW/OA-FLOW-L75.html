@@ -1,0 +1,953 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conditional measures for arbitrary Borel maps · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L74.html">Previous lesson</a><a href="OA-FLOW-L42.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L75.md">Lesson source</a></nav><h1 id="OA-FLOW.KERNEL.SETTING">Conditional measures for arbitrary Borel maps</h1>
+<p><em>Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.</em></p>
+<p>A conditional measure describes the distribution inside a fibre. Its construction must produce a countably additive measure for each retained base point, and the resulting measures must depend measurably on that point. We construct them by sampling a conditional distribution function with one uniform variable. This also lets us separate two different operations: making an infinite measure finite, and choosing the measure on the base.</p>
+<p>The <a href="OA-FLOW-L69.html#oa-flow.orbits.conditional">Haar-class orbit kernels</a> used an available orbit measure. Here the map is arbitrary: no group action, reference measure on its fibres, or choice of one point from each fibre is assumed. The result applies to standard Borel spaces, meaning measurable spaces isomorphic to Polish spaces with their Borel sigma-algebras. All kernels below act on Borel sets. Completions enter only when taking equivalence classes of functions.</p>
+<p>We use the earlier construction of <a href="OA-FLOW-SC.html#sc-02">Lebesgue measure and its translation rule</a>, <a href="OA-FLOW-SC.html#sc-07">scalar L2 completeness</a>, <a href="OA-FLOW-SC.html#sc-04">measure continuity and monotone convergence</a>, <a href="OA-FLOW-SC.html#sc-05">integral convergence estimates</a>, and <span class="unlinked">the Hilbert Cauchy–Schwarz inequality</span>. Borel coding and finite densities are linked at the precise points where they enter.</p>
+<p><a id="oa-flow.kernel.setting"></a></p>
+<h2 id="disintegrating-a-borel-probability">Disintegrating a Borel probability</h2>
+<p>Let <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> be standard Borel spaces, let <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> be Borel, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a Borel probability on <span class="math" data-tex="\(X\)">\(X\)</span>. Set <span class="math" data-tex="\(\nu=p_*\mu\)">\(\nu=p_*\mu\)</span>. We use the underlying Borel sigma-algebras in constructing kernels.</p>
+<p>A <strong>Borel probability kernel</strong> <span class="math" data-tex="\(y\mapsto\mu_y\)">\(y\mapsto\mu_y\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> assigns a countably additive Borel probability <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> to every <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>, and makes <span class="math" data-tex="\(y\mapsto\mu_y(A)\)">\(y\mapsto\mu_y(A)\)</span> Borel for every Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>.</p>
+<p><strong>Probability-disintegration theorem.</strong> There is a Borel probability kernel on <span class="math" data-tex="\(X\)">\(X\)</span> and a single Borel set <span class="math" data-tex="\(Y_*\subseteq Y\)">\(Y_*\subseteq Y\)</span>, with <span class="math" data-tex="\(\nu(Y_*)=1\)">\(\nu(Y_*)=1\)</span>, such that
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \mu_y(p^{-1}\{y\})&amp;=1 &amp;&amp;(y\in Y_*),\\
+ \mu(A\cap p^{-1}(D))
+   &amp;=\int_D\mu_y(A)\,d\nu(y)
+       &amp;&amp;(A\in\mathcal B(X),\ D\in\mathcal B(Y)).
+ \end{aligned}
+ \tag{P1}
+\]">\[
+ \begin{aligned}
+ \mu_y(p^{-1}\{y\})&amp;=1 &amp;&amp;(y\in Y_*),\\
+ \mu(A\cap p^{-1}(D))
+   &amp;=\int_D\mu_y(A)\,d\nu(y)
+       &amp;&amp;(A\in\mathcal B(X),\ D\in\mathcal B(Y)).
+ \end{aligned}
+ \tag{P1}
+\]</span>
+Any two such kernels agree as whole Borel measures on one common conull Borel subset of <span class="math" data-tex="\(Y\)">\(Y\)</span>. The kernel also satisfies
+<span class="math math-display" data-tex="\[
+ \int_X F(p(x),x)\,d\mu(x)
+ =
+ \int_Y\int_X F(y,x)\,d\mu_y(x)\,d\nu(y)
+ \quad(F:Y\times X\to[0,\infty]\text{ Borel}).
+ \tag{P2}
+\]">\[
+ \int_X F(p(x),x)\,d\mu(x)
+ =
+ \int_Y\int_X F(y,x)\,d\mu_y(x)\,d\nu(y)
+ \quad(F:Y\times X\to[0,\infty]\text{ Borel}).
+ \tag{P2}
+\]</span>
+For extra Borel parameters the inner integral is jointly Borel. We will construct the kernel as the pushforward of ordinary Lebesgue probability by a jointly Borel map <span class="math" data-tex="\(Y\times(0,1)\to X\)">\(Y\times(0,1)\to X\)</span>.</p>
+<p>Neither surjectivity of <span class="math" data-tex="\(p\)">\(p\)</span> nor a section of <span class="math" data-tex="\(p\)">\(p\)</span> is assumed. A probability on <span class="math" data-tex="\(X\)">\(X\)</span> makes <span class="math" data-tex="\(X\)">\(X\)</span> nonempty, so fix one point <span class="math" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>; it will supply harmless values on discarded base sets. All statements about concentration use the explicit common set <span class="math" data-tex="\(Y_*\)">\(Y_*\)</span>, whereas each <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> is a probability for every <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><span id="OA-FLOW.KERNEL.INTEGRATION"></span><a id="oa-flow.kernel.integration"></a></p>
+<h2 id="parameter-integrals-for-a-probability-kernel">Parameter integrals for a probability kernel</h2>
+<p>We first give the elementary measure argument used throughout the construction. A family of subsets of a set <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a <strong>lambda-system</strong> if it contains <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, is closed under relative differences <span class="math" data-tex="\(B\setminus A\)">\(B\setminus A\)</span> when <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span> are in the family, and is closed under countable disjoint unions. A <strong>pi-system</strong> is closed under finite intersections. A lambda-system containing a pi-system contains its generated sigma-algebra.</p>
+<p>Here is a proof of the last assertion. Include <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> in the pi-system if necessary, and let <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> be the smallest lambda-system containing it. For a member <span class="math" data-tex="\(P\)">\(P\)</span> of the pi-system, the sets <span class="math" data-tex="\(A\in\mathcal L\)">\(A\in\mathcal L\)</span> for which <span class="math" data-tex="\(A\cap P\in\mathcal L\)">\(A\cap P\in\mathcal L\)</span> form a lambda-system: the whole-space test uses <span class="math" data-tex="\(P\in\mathcal L\)">\(P\in\mathcal L\)</span>, nested differences remain nested after intersection, and intersections preserve disjoint unions. This lambda-system contains the pi-system, so it contains <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>. Now fix any <span class="math" data-tex="\(A\in\mathcal L\)">\(A\in\mathcal L\)</span> and repeat the argument with the sets <span class="math" data-tex="\(B\in\mathcal L\)">\(B\in\mathcal L\)</span> such that <span class="math" data-tex="\(A\cap B\in\mathcal L\)">\(A\cap B\in\mathcal L\)</span>. The first step shows that this family contains the pi-system. Hence <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is closed under all finite intersections. It is closed under complements by the difference property. Replace an arbitrary countable union by its successive disjoint differences; finite intersections and complements put those differences in <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, so the union belongs to <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>. Thus <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> is a sigma-algebra. In particular, two finite measures with the same total mass and agreeing on a generating pi-system agree everywhere.</p>
+<p>Suppose <span class="math" data-tex="\(K_y\)">\(K_y\)</span> is any Borel probability kernel on a standard Borel space <span class="math" data-tex="\(E\)">\(E\)</span>, with parameter <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>. If <span class="math" data-tex="\(T\)">\(T\)</span> is another standard Borel space and <span class="math" data-tex="\(f:T\times Y\times E\to[0,\infty]\)">\(f:T\times Y\times E\to[0,\infty]\)</span> is Borel, then
+<span class="math math-display" data-tex="\[
+ (t,y)\longmapsto
+        \int_E f(t,y,x)\,dK_y(x)
+ \quad\hbox{is Borel}.
+ \tag{P3}
+\]">\[
+ (t,y)\longmapsto
+        \int_E f(t,y,x)\,dK_y(x)
+ \quad\hbox{is Borel}.
+ \tag{P3}
+\]</span>
+Indeed the Borel structure of these products is the product sigma-algebra: realize the spaces as Borel subspaces of Polish spaces and use their countable bases. Every section of a product-measurable set is measurable; the sets with that property form a sigma-algebra containing rectangles.</p>
+<p>For a Borel subset <span class="math" data-tex="\(C\subseteq (T\times Y)\times E\)">\(C\subseteq (T\times Y)\times E\)</span>, consider the function <span class="math" data-tex="\(K_y(C_{t,y})\)">\(K_y(C_{t,y})\)</span>. The sets <span class="math" data-tex="\(C\)">\(C\)</span> for which this function is Borel form a lambda-system. Its whole-space value is one, nested differences subtract finite measurable functions, and disjoint unions give sums by countable additivity. A rectangle <span class="math" data-tex="\(B\times A\)">\(B\times A\)</span> has value <span class="math" data-tex="\(1_B(t,y)K_y(A)\)">\(1_B(t,y)K_y(A)\)</span>, so all rectangles belong. The preceding pi–lambda proof gives the assertion for every Borel <span class="math" data-tex="\(C\)">\(C\)</span>. Nonnegative simple approximation and monotone convergence prove (P3). This is the <a href="OA-FLOW-L69.html#oa-flow.orbits.integration">parameter-integration argument used in L69</a>, now with an explicitly varying probability kernel. The proof works for arbitrary measurable parameter spaces with their product sigma-algebras as well.</p>
+<p>Bounded complex integrands follow by real and imaginary parts. For a Borel complex integrand with finite integral of its absolute value, the same conclusion holds on that Borel finiteness set, with a chosen value such as zero on its complement.</p>
+<p>If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a finite Borel measure on <span class="math" data-tex="\(Y\)">\(Y\)</span>, the formula
+<span class="math math-display" data-tex="\[
+ \Lambda(C)=\int_YK_y(C_y)\,d\rho(y),
+ \qquad C\in\mathcal B(Y\times E),
+ \tag{P4}
+\]">\[
+ \Lambda(C)=\int_YK_y(C_y)\,d\rho(y),
+ \qquad C\in\mathcal B(Y\times E),
+ \tag{P4}
+\]</span>
+defines a finite measure. Countable additivity follows by applying countable additivity in every fiber and then scalar monotone convergence. For every nonnegative Borel <span class="math" data-tex="\(f\)">\(f\)</span>, simple approximation gives
+<span class="math" data-tex="\(\int f\,d\Lambda=\int_Y\int_Ef(y,x)\,dK_y(x)\,d\rho(y)\)">\(\int f\,d\Lambda=\int_Y\int_Ef(y,x)\,dK_y(x)\,d\rho(y)\)</span>.
+The same argument defines the mixture on <span class="math" data-tex="\(E\)">\(E\)</span> by <span class="math" data-tex="\(\int K_y(A)\,d\rho(y)\)">\(\int K_y(A)\,d\rho(y)\)</span>. In the special case of a fixed probability on <span class="math" data-tex="\(E\)">\(E\)</span>, (P3) is ordinary Borel parameter integration. We will use it with Lebesgue measure on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. The limiting integral arguments here use <a href="OA-FLOW-SC.html#sc-04">scalar monotone convergence</a>.</p>
+<p><span id="OA-FLOW.KERNEL.CODING"></span><a id="oa-flow.kernel.coding"></a></p>
+<h2 id="one-real-coordinate-and-countably-many-derivatives">One real coordinate and countably many derivatives</h2>
+<p>We need a Borel isomorphism
+<span class="math math-display" data-tex="\[
+ c:X\longrightarrow B,\qquad B\subseteq[0,1]\text{ Borel}.
+ \tag{P5}
+\]">\[
+ c:X\longrightarrow B,\qquad B\subseteq[0,1]\text{ Borel}.
+ \tag{P5}
+\]</span>
+Here are its exact inputs. A standard Borel space has a countable Borel family <span class="math" data-tex="\((U_n)\)">\((U_n)\)</span> that generates its sigma-algebra and separates its points, obtained from a countable basis in a Polish realization. Define
+<span class="math math-display" data-tex="\[
+ c(x)=\sum_{n\ge1}2\,3^{-n}1_{U_n}(x).
+ \tag{P6}
+\]">\[
+ c(x)=\sum_{n\ge1}2\,3^{-n}1_{U_n}(x).
+ \tag{P6}
+\]</span>
+Partial sums prove Borel measurability. If two codes first differ at position <span class="math" data-tex="\(n\)">\(n\)</span>, the difference in that term is <span class="math" data-tex="\(2\,3^{-n}\)">\(2\,3^{-n}\)</span>, while the sum of all subsequent possible differences is <span class="math" data-tex="\(3^{-n}\)">\(3^{-n}\)</span>. Thus the codes are distinct. The <a href="../NCG-FOLIATIONS/companions/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-06">Borel image and inverse theorem, Theorem 4.3(5)</a> makes <span class="math" data-tex="\(B=c(X)\)">\(B=c(X)\)</span> Borel and <span class="math" data-tex="\(c^{-1}:B\to X\)">\(c^{-1}:B\to X\)</span> Borel. This applies to finite and countable spaces too; the <a href="../NCG-FOLIATIONS/companions/polish-spaces-and-standard-borel-spaces.html#oa-fnd-pb-07">standard Borel isomorphism theorem</a> explicitly includes those cases. In particular <span class="math" data-tex="\(c(A)\)">\(c(A)\)</span> is Borel in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> for every Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>.</p>
+<p>The sets
+<span class="math math-display" data-tex="\[
+ A_r=\{x:c(x)\le r\},\qquad r\in\mathbb Q,
+ \tag{P7}
+\]">\[
+ A_r=\{x:c(x)\le r\},\qquad r\in\mathbb Q,
+ \tag{P7}
+\]</span>
+form a countable pi-system containing <span class="math" data-tex="\(X\)">\(X\)</span>, and generate <span class="math" data-tex="\(\mathcal B(X)\)">\(\mathcal B(X)\)</span>. Rational half-lines generate the Borel sets of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and (P5) transfers that assertion to <span class="math" data-tex="\(X\)">\(X\)</span>. Choose also a countable point-separating Borel family <span class="math" data-tex="\((D_n)\)">\((D_n)\)</span> for <span class="math" data-tex="\(Y\)">\(Y\)</span>, for later use.</p>
+<p>For each rational <span class="math" data-tex="\(r\)">\(r\)</span> define a finite Borel measure on <span class="math" data-tex="\(Y\)">\(Y\)</span> by
+<span class="math math-display" data-tex="\[
+ \lambda_r(D)=\mu(A_r\cap p^{-1}(D)),
+ \qquad 0\le\lambda_r\le\nu.
+ \tag{P8}
+\]">\[
+ \lambda_r(D)=\mu(A_r\cap p^{-1}(D)),
+ \qquad 0\le\lambda_r\le\nu.
+ \tag{P8}
+\]</span>
+The <span class="unlinked">finite Radon–Nikodym proof from Hilbert representation</span> gives a Borel function <span class="math" data-tex="\(a_r\)">\(a_r\)</span> with
+<span class="math math-display" data-tex="\[
+ \lambda_r(D)=\int_Da_r(y)\,d\nu(y),
+ \qquad 0\le a_r(y)\le1.
+ \tag{P9}
+\]">\[
+ \lambda_r(D)=\int_Da_r(y)\,d\nu(y),
+ \qquad 0\le a_r(y)\le1.
+ \tag{P9}
+\]</span>
+To justify the last bound, a nonnegative density greater than one on a positive-measure set would give <span class="math" data-tex="\(\lambda_r(D)&gt;\nu(D)\)">\(\lambda_r(D)&gt;\nu(D)\)</span> on some set where it exceeds <span class="math" data-tex="\(1+1/n\)">\(1+1/n\)</span>. Clip the Borel density to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; this changes it only on a null set. The cited finite-density proof applies directly on the Borel sigma-algebra. If <span class="math" data-tex="\(L^2\)">\(L^2\)</span> is taken after completion, its measurable representatives have Borel versions by the simple-approximation argument in the completion section below.</p>
+<p>We will repeatedly use the elementary uniqueness test: two real integrable Borel functions having equal integrals over all Borel sets agree almost everywhere. If their difference is positive on a positive-measure set, one of its sets where it is at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span> has positive measure, contradicting its zero integral there; apply the same argument to the negative difference.</p>
+<p>For <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>, the inequality <span class="math" data-tex="\(\lambda_r\le\lambda_s\)">\(\lambda_r\le\lambda_s\)</span> gives <span class="math" data-tex="\(a_r\le a_s\)">\(a_r\le a_s\)</span> almost everywhere by that sign test. Also <span class="math" data-tex="\(a_r=0\)">\(a_r=0\)</span> almost everywhere for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, and <span class="math" data-tex="\(a_r=1\)">\(a_r=1\)</span> almost everywhere for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>. We can enforce all of these relations on one Borel conull set because the rational indices and their pairs are countable.</p>
+<p>Right continuity needs a further countable condition. For each rational <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math" data-tex="\(A_{r+1/n}\downarrow A_r\)">\(A_{r+1/n}\downarrow A_r\)</span>. Continuity from above of the finite measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> gives, for every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>,
+<span class="math math-display" data-tex="\[
+ \lambda_{r+1/n}(D)\longrightarrow\lambda_r(D).
+ \tag{P10}
+\]">\[
+ \lambda_{r+1/n}(D)\longrightarrow\lambda_r(D).
+ \tag{P10}
+\]</span>
+This continuity follows from monotone convergence on the increasing complements inside the finite-measure set <span class="math" data-tex="\(A_{r+1}\cap p^{-1}(D)\)">\(A_{r+1}\cap p^{-1}(D)\)</span>.
+Outside the null set just removed, <span class="math" data-tex="\(a_{r+1/n}\)">\(a_{r+1/n}\)</span> decreases as <span class="math" data-tex="\(n\)">\(n\)</span> increases and remains in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Its limit is <span class="math" data-tex="\(\inf_n a_{r+1/n}\)">\(\inf_n a_{r+1/n}\)</span>. Apply monotone convergence to <span class="math" data-tex="\(1-a_{r+1/n}\)">\(1-a_{r+1/n}\)</span> on any Borel <span class="math" data-tex="\(D\)">\(D\)</span>, disregarding that fixed null set, and subtract from <span class="math" data-tex="\(\nu(D)\)">\(\nu(D)\)</span>. This proves convergence of their density integrals to the integral of their infimum. Equation (P10) and the uniqueness test then prove
+<span class="math" data-tex="\(a_r=\inf_n a_{r+1/n}\)">\(a_r=\inf_n a_{r+1/n}\)</span> almost everywhere. This argument uses only one chosen decreasing sequence for each rational <span class="math" data-tex="\(r\)">\(r\)</span>. Monotonicity implies that this infimum also equals <span class="math" data-tex="\(\inf_{s\in\mathbb Q,\ s&gt;r}a_s\)">\(\inf_{s\in\mathbb Q,\ s&gt;r}a_s\)</span>.</p>
+<p>Let <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> be the Borel set where all the preceding countably many conditions hold. It has measure one. With <span class="math" data-tex="\(b_0=c(x_0)\)">\(b_0=c(x_0)\)</span>, define for every <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>
+<span class="math math-display" data-tex="\[
+ F_r(y)=
+ \begin{cases}
+  a_r(y),&amp;y\in Y_0,\\
+  1_{\{b_0\le r\}},&amp;y\notin Y_0.
+ \end{cases}
+ \tag{P11}
+\]">\[
+ F_r(y)=
+ \begin{cases}
+  a_r(y),&amp;y\in Y_0,\\
+  1_{\{b_0\le r\}},&amp;y\notin Y_0.
+ \end{cases}
+ \tag{P11}
+\]</span>
+These functions are Borel, have the same density identities (P9), and now satisfy everywhere
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ 0\le F_r\le1,\qquad F_r\le F_s\quad(r&lt;s),\\
+ F_r=0\quad(r&lt;0),\qquad F_r=1\quad(r\ge1),\qquad
+ F_r=\inf_{\substack{s\in\mathbb Q\\s&gt;r}}F_s.
+ \end{gathered}
+ \tag{P12}
+\]">\[
+ \begin{gathered}
+ 0\le F_r\le1,\qquad F_r\le F_s\quad(r&lt;s),\\
+ F_r=0\quad(r&lt;0),\qquad F_r=1\quad(r\ge1),\qquad
+ F_r=\inf_{\substack{s\in\mathbb Q\\s&gt;r}}F_s.
+ \end{gathered}
+ \tag{P12}
+\]</span>
+Thus every base point has a consistent rational distribution function.</p>
+<p><span id="OA-FLOW.KERNEL.QUANTILE"></span><a id="oa-flow.kernel.quantile"></a></p>
+<h2 id="a-jointly-borel-quantile-makes-genuine-probability-measures">A jointly Borel quantile makes genuine probability measures</h2>
+<p>Extend the rational data by
+<span class="math math-display" data-tex="\[
+ F(y,t)=\inf_{\substack{r\in\mathbb Q\\r&gt;t}}F_r(y),
+ \qquad y\in Y,\ t\in\mathbb R.
+ \tag{P13}
+\]">\[
+ F(y,t)=\inf_{\substack{r\in\mathbb Q\\r&gt;t}}F_r(y),
+ \qquad y\in Y,\ t\in\mathbb R.
+ \tag{P13}
+\]</span>
+For each <span class="math" data-tex="\(y\)">\(y\)</span> this function is nondecreasing, equals zero for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, equals one for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, and has <span class="math" data-tex="\(F(y,r)=F_r(y)\)">\(F(y,r)=F_r(y)\)</span> at every rational <span class="math" data-tex="\(r\)">\(r\)</span>. It is right-continuous. In fact, if <span class="math" data-tex="\(t_n\downarrow t\)">\(t_n\downarrow t\)</span>, monotonicity gives <span class="math" data-tex="\(F(y,t_n)\ge F(y,t)\)">\(F(y,t_n)\ge F(y,t)\)</span>; for every rational <span class="math" data-tex="\(r&gt;t\)">\(r&gt;t\)</span>, eventually <span class="math" data-tex="\(t_n&lt;r\)">\(t_n&lt;r\)</span>, whence <span class="math" data-tex="\(F(y,t_n)\le F_r(y)\)">\(F(y,t_n)\le F_r(y)\)</span>. Taking the limit and then the infimum in <span class="math" data-tex="\(r\)">\(r\)</span> proves convergence to <span class="math" data-tex="\(F(y,t)\)">\(F(y,t)\)</span>. Joint Borel measurability follows from
+<span class="math math-display" data-tex="\[
+ \{(y,t):F(y,t)&lt;a\}
+ =
+ \bigcup_{r\in\mathbb Q}
+   \{(y,t):t&lt;r,\ F_r(y)&lt;a\},
+ \qquad a\in\mathbb R.
+ \tag{P14}
+\]">\[
+ \{(y,t):F(y,t)&lt;a\}
+ =
+ \bigcup_{r\in\mathbb Q}
+   \{(y,t):t&lt;r,\ F_r(y)&lt;a\},
+ \qquad a\in\mathbb R.
+ \tag{P14}
+\]</span></p>
+<p>For <span class="math" data-tex="\(0&lt;u&lt;1\)">\(0&lt;u&lt;1\)</span>, define
+<span class="math math-display" data-tex="\[
+ Q(y,u)=\inf\{r\in\mathbb Q:F_r(y)\ge u\}.
+ \tag{P15}
+\]">\[
+ Q(y,u)=\inf\{r\in\mathbb Q:F_r(y)\ge u\}.
+ \tag{P15}
+\]</span>
+The set in this infimum is nonempty, because it contains every rational <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, and contains no rational <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. Hence <span class="math" data-tex="\(Q(y,u)\in[0,1]\)">\(Q(y,u)\in[0,1]\)</span>. Its strict sublevel sets are
+<span class="math math-display" data-tex="\[
+ \{(y,u):Q(y,u)&lt;a\}
+ =
+ \bigcup_{\substack{r\in\mathbb Q\\r&lt;a}}
+       \{(y,u):u\le F_r(y)\}.
+ \tag{P16}
+\]">\[
+ \{(y,u):Q(y,u)&lt;a\}
+ =
+ \bigcup_{\substack{r\in\mathbb Q\\r&lt;a}}
+       \{(y,u):u\le F_r(y)\}.
+ \tag{P16}
+\]</span>
+An infimum is less than <span class="math" data-tex="\(a\)">\(a\)</span> exactly when some member of the set is less than <span class="math" data-tex="\(a\)">\(a\)</span>. Each set on the right is Borel. Thus <span class="math" data-tex="\(Q:Y\times(0,1)\to[0,1]\)">\(Q:Y\times(0,1)\to[0,1]\)</span> is jointly Borel.</p>
+<p>Its closed sublevels satisfy the exact equivalence
+<span class="math math-display" data-tex="\[
+ Q(y,u)\le t\quad\Longleftrightarrow\quad u\le F(y,t).
+ \tag{P17}
+\]">\[
+ Q(y,u)\le t\quad\Longleftrightarrow\quad u\le F(y,t).
+ \tag{P17}
+\]</span>
+For the forward implication, take a rational <span class="math" data-tex="\(r&gt;t\)">\(r&gt;t\)</span>. Since the infimum in (P15) is less than <span class="math" data-tex="\(r\)">\(r\)</span>, some member <span class="math" data-tex="\(s&lt;r\)">\(s&lt;r\)</span> satisfies <span class="math" data-tex="\(F_s(y)\ge u\)">\(F_s(y)\ge u\)</span>. Monotonicity gives <span class="math" data-tex="\(F_r(y)\ge u\)">\(F_r(y)\ge u\)</span>. This holds for every rational <span class="math" data-tex="\(r&gt;t\)">\(r&gt;t\)</span>, so <span class="math" data-tex="\(F(y,t)\ge u\)">\(F(y,t)\ge u\)</span>. Conversely, if <span class="math" data-tex="\(u\le F(y,t)\)">\(u\le F(y,t)\)</span>, every rational <span class="math" data-tex="\(r&gt;t\)">\(r&gt;t\)</span> satisfies <span class="math" data-tex="\(F_r(y)\ge u\)">\(F_r(y)\ge u\)</span> and belongs to the set in (P15). Its infimum is at most <span class="math" data-tex="\(t\)">\(t\)</span>. This proof also covers <span class="math" data-tex="\(t=0,1\)">\(t=0,1\)</span> and all possible atoms of the distribution.</p>
+<p>Let <span class="math" data-tex="\(du\)">\(du\)</span> be Lebesgue probability on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and set
+<span class="math math-display" data-tex="\[
+ \kappa_y(E)=\int_0^1 1_E(Q(y,u))\,du,
+ \qquad E\in\mathcal B([0,1]).
+ \tag{P18}
+\]">\[
+ \kappa_y(E)=\int_0^1 1_E(Q(y,u))\,du,
+ \qquad E\in\mathcal B([0,1]).
+ \tag{P18}
+\]</span>
+For each <span class="math" data-tex="\(y\)">\(y\)</span>, this is the pushforward of an actual probability measure. In particular, if the <span class="math" data-tex="\(E_j\)">\(E_j\)</span> are disjoint, their inverse images under <span class="math" data-tex="\(Q(y,\cdot)\)">\(Q(y,\cdot)\)</span> are disjoint, and countable additivity of Lebesgue measure gives countable additivity of <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span>. No extension of a finitely additive prescription is being used. Joint Borel measurability of <span class="math" data-tex="\(Q\)">\(Q\)</span> and the fixed-probability case of (P3) make <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> a Borel probability kernel.</p>
+<p>Equation (P17) gives, for every real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+ \kappa_y([0,1]\cap(-\infty,t])
+ =\int_0^1 1_{\{u\le F(y,t)\}}\,du=F(y,t).
+ \tag{P19}
+\]">\[
+ \kappa_y([0,1]\cap(-\infty,t])
+ =\int_0^1 1_{\{u\le F(y,t)\}}\,du=F(y,t).
+ \tag{P19}
+\]</span>
+The length of the interval in this integral is <span class="math" data-tex="\(F(y,t)\)">\(F(y,t)\)</span>, including values zero and one. For rational <span class="math" data-tex="\(r\)">\(r\)</span>, (P9), (P11) and (P19) imply the localized identity
+<span class="math math-display" data-tex="\[
+ \mu(\{x:c(x)\in E\}\cap p^{-1}(D))
+ =\int_D\kappa_y(E)\,d\nu(y)
+ \tag{P20}
+\]">\[
+ \mu(\{x:c(x)\in E\}\cap p^{-1}(D))
+ =\int_D\kappa_y(E)\,d\nu(y)
+ \tag{P20}
+\]</span>
+when <span class="math" data-tex="\(E=[0,1]\cap(-\infty,r]\)">\(E=[0,1]\cap(-\infty,r]\)</span>, for every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>.</p>
+<p>To obtain (P20) for every Borel <span class="math" data-tex="\(E\subseteq[0,1]\)">\(E\subseteq[0,1]\)</span>, fix an arbitrary Borel <span class="math" data-tex="\(D\)">\(D\)</span>. Both sides, as functions of <span class="math" data-tex="\(E\)">\(E\)</span>, are finite measures of total mass <span class="math" data-tex="\(\nu(D)\)">\(\nu(D)\)</span>. The right side is a measure by (P4), or directly by countable additivity in each fiber and monotone convergence. They agree on the generating pi-system of rational half-lines. The finite-measure uniqueness argument above gives equality for all Borel <span class="math" data-tex="\(E\)">\(E\)</span>. Since <span class="math" data-tex="\(D\)">\(D\)</span> was arbitrary, (P20) holds for every pair <span class="math" data-tex="\(E,D\)">\(E,D\)</span>. This is an identity of integrated measures; it introduces no exceptional set depending on <span class="math" data-tex="\(E\)">\(E\)</span> or <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Because <span class="math" data-tex="\(c(x)\in B\)">\(c(x)\in B\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, (P20) with <span class="math" data-tex="\(E=B\)">\(E=B\)</span> and <span class="math" data-tex="\(D=Y\)">\(D=Y\)</span> gives <span class="math" data-tex="\(\int_Y\kappa_y(B)\,d\nu(y)=1\)">\(\int_Y\kappa_y(B)\,d\nu(y)=1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ Y_B=\{y:\kappa_y(B)=1\}
+ \quad\hbox{is Borel and }\nu(Y_B)=1.
+ \tag{P21}
+\]">\[
+ Y_B=\{y:\kappa_y(B)=1\}
+ \quad\hbox{is Borel and }\nu(Y_B)=1.
+ \tag{P21}
+\]</span>
+The return to <span class="math" data-tex="\(X\)">\(X\)</span> can itself be made as one Borel randomization:
+<span class="math math-display" data-tex="\[
+ \mathcal Q(y,u)=
+ \begin{cases}
+ c^{-1}(Q(y,u)),&amp;y\in Y_B\text{ and }Q(y,u)\in B,\\
+ x_0,&amp;\text{otherwise}.
+ \end{cases}
+ \tag{P22}
+\]">\[
+ \mathcal Q(y,u)=
+ \begin{cases}
+ c^{-1}(Q(y,u)),&amp;y\in Y_B\text{ and }Q(y,u)\in B,\\
+ x_0,&amp;\text{otherwise}.
+ \end{cases}
+ \tag{P22}
+\]</span>
+Its defining condition is Borel. On that condition it is a composition of Borel maps; off it the map is constant. Thus <span class="math" data-tex="\(\mathcal Q:Y\times(0,1)\to X\)">\(\mathcal Q:Y\times(0,1)\to X\)</span> is Borel. Put <span class="math" data-tex="\(\mu_y=(\mathcal Q(y,\cdot))_*du\)">\(\mu_y=(\mathcal Q(y,\cdot))_*du\)</span>. These are countably additive probabilities for every <span class="math" data-tex="\(y\)">\(y\)</span>, and (P3) makes them a Borel kernel. More explicitly,
+<span class="math math-display" data-tex="\[
+ \mu_y(A)=
+ \begin{cases}
+ \kappa_y(c(A)),&amp;y\in Y_B,\\
+ 1_A(x_0),&amp;y\notin Y_B
+ \end{cases}
+ \qquad(A\in\mathcal B(X)).
+ \tag{P23}
+\]">\[
+ \mu_y(A)=
+ \begin{cases}
+ \kappa_y(c(A)),&amp;y\in Y_B,\\
+ 1_A(x_0),&amp;y\notin Y_B
+ \end{cases}
+ \qquad(A\in\mathcal B(X)).
+ \tag{P23}
+\]</span>
+On <span class="math" data-tex="\(Y_B\)">\(Y_B\)</span>, the discarded set where <span class="math" data-tex="\(Q(y,u)\notin B\)">\(Q(y,u)\notin B\)</span> has Lebesgue measure zero, which proves this formula. The set <span class="math" data-tex="\(c(A)\)">\(c(A)\)</span> is Borel by (P5). Applying (P20) to it and using <span class="math" data-tex="\(\nu(Y\setminus Y_B)=0\)">\(\nu(Y\setminus Y_B)=0\)</span> gives
+<span class="math math-display" data-tex="\[
+ \int_D\mu_y(A)\,d\nu(y)
+ =\mu(A\cap p^{-1}(D))
+ \quad(A\in\mathcal B(X),\ D\in\mathcal B(Y)).
+ \tag{P24}
+\]">\[
+ \int_D\mu_y(A)\,d\nu(y)
+ =\mu(A\cap p^{-1}(D))
+ \quad(A\in\mathcal B(X),\ D\in\mathcal B(Y)).
+ \tag{P24}
+\]</span>
+The localized integral assertion of the theorem is proved.</p>
+<p><span id="OA-FLOW.KERNEL.CONCENTRATION"></span><a id="oa-flow.kernel.concentration"></a></p>
+<h2 id="concentration-on-one-common-set-of-fibers">Concentration on one common set of fibers</h2>
+<p>Use the countable point-separating family <span class="math" data-tex="\((D_n)\)">\((D_n)\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span> chosen above. Set <span class="math" data-tex="\(A=p^{-1}(D_n)\)">\(A=p^{-1}(D_n)\)</span> in (P24). For every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_D\mu_y(p^{-1}(D_n))\,d\nu(y)
+ =\nu(D\cap D_n)
+ =\int_D1_{D_n}(y)\,d\nu(y).
+ \tag{P25}
+\]">\[
+ \int_D\mu_y(p^{-1}(D_n))\,d\nu(y)
+ =\nu(D\cap D_n)
+ =\int_D1_{D_n}(y)\,d\nu(y).
+ \tag{P25}
+\]</span>
+The integrands are Borel and lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The uniqueness test therefore gives equality almost everywhere for each <span class="math" data-tex="\(n\)">\(n\)</span>. Define
+<span class="math math-display" data-tex="\[
+ Y_*=
+ Y_B\cap\bigcap_{n\ge1}
+ \{y:\mu_y(p^{-1}(D_n))=1_{D_n}(y)\}.
+ \tag{P26}
+\]">\[
+ Y_*=
+ Y_B\cap\bigcap_{n\ge1}
+ \{y:\mu_y(p^{-1}(D_n))=1_{D_n}(y)\}.
+ \tag{P26}
+\]</span>
+It is one Borel conull set.</p>
+<p>For a fixed <span class="math" data-tex="\(y\in Y_*\)">\(y\in Y_*\)</span>, let <span class="math" data-tex="\(E_n(y)=p^{-1}(D_n)\)">\(E_n(y)=p^{-1}(D_n)\)</span> if <span class="math" data-tex="\(y\in D_n\)">\(y\in D_n\)</span>, and let <span class="math" data-tex="\(E_n(y)=X\setminus p^{-1}(D_n)\)">\(E_n(y)=X\setminus p^{-1}(D_n)\)</span> otherwise. Each <span class="math" data-tex="\(E_n(y)\)">\(E_n(y)\)</span> has <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>-measure one. Countable additivity implies that their intersection has measure one, because the union of their null complements is null. Point separation gives the exact set identity
+<span class="math math-display" data-tex="\[
+ \bigcap_{n\ge1}E_n(y)=\{x:p(x)=y\}=p^{-1}\{y\}.
+ \tag{P27}
+\]">\[
+ \bigcap_{n\ge1}E_n(y)=\{x:p(x)=y\}=p^{-1}\{y\}.
+ \tag{P27}
+\]</span>
+Indeed membership means that <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> have the same membership in every <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, which forces equality. This proves the concentration in (P1), simultaneously for all <span class="math" data-tex="\(y\in Y_*\)">\(y\in Y_*\)</span>. In particular <span class="math" data-tex="\(Y_*\subseteq p(X)\)">\(Y_*\subseteq p(X)\)</span>; no Borel-image assertion about the entire set <span class="math" data-tex="\(p(X)\)">\(p(X)\)</span> was needed.</p>
+<p>We can now prove the full integration statement (P2). From (P24) with <span class="math" data-tex="\(D=Y\)">\(D=Y\)</span>, simple approximation and monotone convergence give
+<span class="math math-display" data-tex="\[
+ \int_Xg(x)\,d\mu(x)
+ =\int_Y\int_Xg(x)\,d\mu_y(x)\,d\nu(y)
+ \quad(g:X\to[0,\infty]\text{ Borel}).
+ \tag{P28}
+\]">\[
+ \int_Xg(x)\,d\mu(x)
+ =\int_Y\int_Xg(x)\,d\mu_y(x)\,d\nu(y)
+ \quad(g:X\to[0,\infty]\text{ Borel}).
+ \tag{P28}
+\]</span>
+For a nonnegative Borel <span class="math" data-tex="\(F(y,x)\)">\(F(y,x)\)</span>, put <span class="math" data-tex="\(g(x)=F(p(x),x)\)">\(g(x)=F(p(x),x)\)</span>, which is Borel. When <span class="math" data-tex="\(y\in Y_*\)">\(y\in Y_*\)</span>, concentration gives <span class="math" data-tex="\(F(y,x)=g(x)\)">\(F(y,x)=g(x)\)</span> for <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>-almost every <span class="math" data-tex="\(x\)">\(x\)</span>. Integrating (P28) proves (P2). All inner integrals are Borel by (P3). Both sides allow the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>, so this argument imposes no hidden integrability restriction.</p>
+<p>The same construction also makes the set
+<span class="math" data-tex="\(\{(y,u):p(\mathcal Q(y,u))=y\}\)">\(\{(y,u):p(\mathcal Q(y,u))=y\}\)</span> Borel. Equality of two points of <span class="math" data-tex="\(Y\)">\(Y\)</span> is the countable intersection of the conditions that their memberships in every <span class="math" data-tex="\(D_n\)">\(D_n\)</span> agree. For each <span class="math" data-tex="\(y\in Y_*\)">\(y\in Y_*\)</span>, this set's section has Lebesgue measure one by (P27). Thus the quantile construction represents the conditional laws by one genuinely joint Borel map, with the asserted fiber concentration.</p>
+<p><span id="OA-FLOW.KERNEL.UNIQUENESS"></span><a id="oa-flow.kernel.uniqueness"></a></p>
+<h2 id="uniqueness-of-the-whole-conditional-measure">Uniqueness of the whole conditional measure</h2>
+<p>Suppose <span class="math" data-tex="\(y\mapsto\widetilde\mu_y\)">\(y\mapsto\widetilde\mu_y\)</span> is another Borel probability kernel satisfying the localized identity (P24). For each rational <span class="math" data-tex="\(r\)">\(r\)</span>, both Borel functions <span class="math" data-tex="\(\mu_y(A_r)\)">\(\mu_y(A_r)\)</span> and <span class="math" data-tex="\(\widetilde\mu_y(A_r)\)">\(\widetilde\mu_y(A_r)\)</span> have the same integrals on every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>. Hence they agree almost everywhere. The countable intersection
+<span class="math math-display" data-tex="\[
+ Y_{\mathrm{eq}}
+ =\bigcap_{r\in\mathbb Q}
+       \{y:\mu_y(A_r)=\widetilde\mu_y(A_r)\}
+ \tag{P29}
+\]">\[
+ Y_{\mathrm{eq}}
+ =\bigcap_{r\in\mathbb Q}
+       \{y:\mu_y(A_r)=\widetilde\mu_y(A_r)\}
+ \tag{P29}
+\]</span>
+is Borel and conull. For each fixed <span class="math" data-tex="\(y\)">\(y\)</span> in it, the two probabilities agree on the countable generating pi-system (P7). The finite-measure uniqueness principle from the integration section therefore gives
+<span class="math math-display" data-tex="\[
+ \mu_y(A)=\widetilde\mu_y(A)
+ \quad\hbox{for every Borel }A\subseteq X
+ \quad(y\in Y_{\mathrm{eq}}).
+ \tag{P30}
+\]">\[
+ \mu_y(A)=\widetilde\mu_y(A)
+ \quad\hbox{for every Borel }A\subseteq X
+ \quad(y\in Y_{\mathrm{eq}}).
+ \tag{P30}
+\]</span>
+The exceptional set is independent of <span class="math" data-tex="\(A\)">\(A\)</span>. Intersecting it with the two kernels' concentration sets, if desired, retains one Borel conull set for all conclusions.</p>
+<p>The common alternate formulation assumes only that the second kernel is concentrated on <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span> on a conull set and that
+<span class="math" data-tex="\(\mu(A)=\int\widetilde\mu_y(A)\,d\nu(y)\)">\(\mu(A)=\int\widetilde\mu_y(A)\,d\nu(y)\)</span>.
+It implies the localized hypothesis used above. On that concentration set, for every Borel <span class="math" data-tex="\(A,D\)">\(A,D\)</span>,
+<span class="math math-display" data-tex="\[
+ \widetilde\mu_y(A\cap p^{-1}(D))
+       =1_D(y)\widetilde\mu_y(A).
+ \tag{P31}
+\]">\[
+ \widetilde\mu_y(A\cap p^{-1}(D))
+       =1_D(y)\widetilde\mu_y(A).
+ \tag{P31}
+\]</span>
+Integrate this identity and use the mixture formula for the single Borel set <span class="math" data-tex="\(A\cap p^{-1}(D)\)">\(A\cap p^{-1}(D)\)</span>. Thus uniqueness as whole Borel measures holds under either formulation.</p>
+<p><span id="OA-FLOW.KERNEL.COMPLETION"></span><a id="oa-flow.kernel.completion"></a></p>
+<h2 id="borel-kernels-and-completed-measure-spaces">Borel kernels and completed measure spaces</h2>
+<p>The construction has given a kernel on <span class="math" data-tex="\(\mathcal B(X)\)">\(\mathcal B(X)\)</span>, with Borel dependence on the original Borel base. Completion does not change any of the integral identities for fixed measurable classes, but its use must be stated precisely.</p>
+<p>First, a function measurable for the completion of a finite Borel measure has a Borel version. For a nonnegative function, choose a sequence of finite-valued measurable functions converging to it, for instance its truncated dyadic approximations. Each of the countably many measurable sets used by these simple functions differs from a Borel set by a subset of a Borel null set, by the definition of completion. Replace all those sets by their Borel versions and take the countable union <span class="math" data-tex="\(N\)">\(N\)</span> of their Borel null carriers. Off <span class="math" data-tex="\(N\)">\(N\)</span>, the resulting Borel simple functions have the same pointwise limit as the original sequence. Their pointwise upper limit is Borel; define it to be zero on <span class="math" data-tex="\(N\)">\(N\)</span>. This is the required Borel version, with infinite values allowed when appropriate. Apply the argument to real and imaginary positive and negative parts for a finite complex function, and set the value to zero on any Borel null set where those differences are not finite. The same proof applies to <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>If <span class="math" data-tex="\(N\subseteq X\)">\(N\subseteq X\)</span> is a Borel <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-null set, (P28) gives
+<span class="math math-display" data-tex="\[
+ \int_Y\mu_y(N)\,d\nu(y)=0,\qquad
+ \mu_y(N)=0\quad\text{for }\nu\text{-almost every }y.
+ \tag{P32}
+\]">\[
+ \int_Y\mu_y(N)\,d\nu(y)=0,\qquad
+ \mu_y(N)=0\quad\text{for }\nu\text{-almost every }y.
+ \tag{P32}
+\]</span>
+The good set <span class="math" data-tex="\(\{y:\mu_y(N)=0\}\)">\(\{y:\mu_y(N)=0\}\)</span> is Borel. If <span class="math" data-tex="\(f_0,f_1\)">\(f_0,f_1\)</span> are two Borel versions of the same completed measurable function, their disagreement is contained in such a Borel null set. Hence their integrals against <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> agree almost everywhere whenever those integrals are defined. For a nonnegative completed function use either Borel version in (P28); (P32) makes the resulting extended-valued base function well defined modulo <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null sets. For a complex <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> function, (P28) applied to its absolute value makes its conditional absolute integral finite almost everywhere, and the complex integrals give a well-defined <span class="math" data-tex="\(L^1(\nu)\)">\(L^1(\nu)\)</span> class.</p>
+<p>More explicitly, if <span class="math" data-tex="\(E\)">\(E\)</span> belongs to the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-completion, choose Borel sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span> with
+<span class="math" data-tex="\(A\subseteq E\subseteq B\)">\(A\subseteq E\subseteq B\)</span> and <span class="math" data-tex="\(\mu(B\setminus A)=0\)">\(\mu(B\setminus A)=0\)</span>. For every <span class="math" data-tex="\(y\)">\(y\)</span> in the Borel conull set supplied by (P32) for <span class="math" data-tex="\(N=B\setminus A\)">\(N=B\setminus A\)</span>, the set <span class="math" data-tex="\(E\)">\(E\)</span> belongs to the completion of <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>, and
+<span class="math math-display" data-tex="\[
+ \overline{\mu_y}(E)=\mu_y(A)=\mu_y(B).
+ \tag{P33}
+\]">\[
+ \overline{\mu_y}(E)=\mu_y(A)=\mu_y(B).
+ \tag{P33}
+\]</span>
+Here the bar denotes completion of that individual measure. This assertion is for the specified <span class="math" data-tex="\(E\)">\(E\)</span>; its conull set may depend on <span class="math" data-tex="\(E\)">\(E\)</span>. The theorem does not require a single Borel kernel defined on all subsets added by the completion of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>Likewise, if <span class="math" data-tex="\(D\)">\(D\)</span> is in the <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-completion, choose a Borel <span class="math" data-tex="\(D_0\)">\(D_0\)</span> whose symmetric difference with it is contained in a Borel <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set <span class="math" data-tex="\(N_Y\)">\(N_Y\)</span>. Since <span class="math" data-tex="\(\mu(p^{-1}(N_Y))=\nu(N_Y)=0\)">\(\mu(p^{-1}(N_Y))=\nu(N_Y)=0\)</span>, the set <span class="math" data-tex="\(p^{-1}(D)\)">\(p^{-1}(D)\)</span> is in the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-completion and agrees there with <span class="math" data-tex="\(p^{-1}(D_0)\)">\(p^{-1}(D_0)\)</span>. The localized identities therefore extend to such fixed completed sets and to fixed completed function classes by choosing Borel versions. Joint parameter statements such as (P3), and the kernel itself, retain their explicit underlying-Borel meaning.</p>
+<p><span id="OA-FLOW.KERNEL.PROBABILITY"></span><a id="oa-flow.kernel.probability"></a></p>
+<h2 id="the-completed-probability-disintegration-theorem">The completed probability disintegration theorem</h2>
+<p>For any Borel map <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> of standard Borel spaces and Borel probability <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, put <span class="math" data-tex="\(\nu=p_*\mu\)">\(\nu=p_*\mu\)</span>. The jointly Borel map <span class="math" data-tex="\(\mathcal Q:Y\times(0,1)\to X\)">\(\mathcal Q:Y\times(0,1)\to X\)</span> in (P22) produces a Borel probability kernel <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> at every base point. Its localized identity holds for every pair of Borel sets, and its measures are concentrated on <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span> on one Borel <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-conull set. Any other kernel with these properties agrees as a whole measure on one common conull set. Every nonnegative jointly Borel integrand satisfies (P2), with extra-parameter measurability (P3).</p>
+<p>The complete proof is the <a href="#oa-flow.kernel.coding">rational-density construction</a>, the <a href="#oa-flow.kernel.quantile">joint quantile and return map</a>, <a href="#oa-flow.kernel.concentration">concentration and full integration</a>, and <a href="#oa-flow.kernel.uniqueness">whole-measure uniqueness</a>. The <a href="#oa-flow.kernel.integration">kernel integration proof</a> supplies parameter measurability throughout. The <a href="#oa-flow.kernel.completion">completion argument</a> gives precisely the corresponding statements for fixed completed classes. Thus the construction proves all assertions of (P1)–(P2), with no restriction on the fibres or on the image of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><span id="OA-FLOW.KERNEL.SIGMAFINITE"></span><a id="oa-flow.kernel.sigmafinite"></a></p>
+<h2 id="sigma-finite-measures-and-a-finite-normalization">Sigma-finite measures and a finite normalization</h2>
+<p>Let <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> be standard Borel spaces, let <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> be Borel, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a nonzero sigma-finite Borel measure on <span class="math" data-tex="\(X\)">\(X\)</span>. We construct a disintegration without assuming that <span class="math" data-tex="\(p_*\mu\)">\(p_*\mu\)</span> is sigma-finite. Kernels are defined on the Borel sets; completed equivalence classes are handled by Borel representatives.</p>
+<p>Choose a countable Borel partition <span class="math" data-tex="\((E_j)_{j\ge1}\)">\((E_j)_{j\ge1}\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(\mu(E_j)&lt;\infty\)">\(\mu(E_j)&lt;\infty\)</span>. Such a partition is obtained by taking successive differences of a finite-measure exhaustion. Put
+<span class="math math-display" data-tex="\[
+ \widetilde w(x)=\sum_{j\ge1}
+       \frac{2^{-j}}{1+\mu(E_j)}1_{E_j}(x),\qquad
+ Z=\int_X\widetilde w\,d\mu,\qquad w=Z^{-1}\widetilde w.
+ \tag{S1}
+\]">\[
+ \widetilde w(x)=\sum_{j\ge1}
+       \frac{2^{-j}}{1+\mu(E_j)}1_{E_j}(x),\qquad
+ Z=\int_X\widetilde w\,d\mu,\qquad w=Z^{-1}\widetilde w.
+ \tag{S1}
+\]</span>
+The function <span class="math" data-tex="\(\widetilde w\)">\(\widetilde w\)</span> is Borel, strictly positive and finite at every point. Its integral is at most <span class="math" data-tex="\(\sum_j2^{-j}=1\)">\(\sum_j2^{-j}=1\)</span> and is positive because <span class="math" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span>. Thus <span class="math" data-tex="\(w\)">\(w\)</span> is bounded, strictly positive and finite everywhere, with <span class="math" data-tex="\(\int_Xw\,d\mu=1\)">\(\int_Xw\,d\mu=1\)</span>. The argument below applies to any such positive finite Borel normalization, whether or not it is bounded.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+ \rho=w\mu,\qquad \nu_0=p_*\rho.
+ \tag{S2}
+\]">\[
+ \rho=w\mu,\qquad \nu_0=p_*\rho.
+ \tag{S2}
+\]</span>
+These are probabilities. Apply the <a href="#oa-flow.kernel.probability">probability disintegration theorem</a> to <span class="math" data-tex="\((X,\rho,p)\)">\((X,\rho,p)\)</span>. It gives a Borel probability kernel <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> with mixture <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and a Borel <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span>-conull set on which <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> is concentrated on <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span>.</p>
+<p>Define, for every Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>,
+<span class="math math-display" data-tex="\[
+ \mu_y(A)=\int_X\frac{1_A(x)}{w(x)}\,d\kappa_y(x).
+ \tag{S3}
+\]">\[
+ \mu_y(A)=\int_X\frac{1_A(x)}{w(x)}\,d\kappa_y(x).
+ \tag{S3}
+\]</span>
+For each <span class="math" data-tex="\(y\)">\(y\)</span>, this is a measure: countable additivity follows from monotone convergence applied to disjoint sums of indicators. The <a href="#oa-flow.kernel.integration">kernel integration theorem</a> shows that <span class="math" data-tex="\(y\mapsto\mu_y(A)\)">\(y\mapsto\mu_y(A)\)</span> is Borel, with the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> permitted. In fact every one of these measures is sigma-finite, with the same explicit exhaustion:
+<span class="math math-display" data-tex="\[
+ X_n=\{x:w(x)\ge1/n\},\qquad
+ X_n\uparrow X,\qquad \mu_y(X_n)\le n\kappa_y(X_n)\le n.
+ \tag{S4}
+\]">\[
+ X_n=\{x:w(x)\ge1/n\},\qquad
+ X_n\uparrow X,\qquad \mu_y(X_n)\le n\kappa_y(X_n)\le n.
+ \tag{S4}
+\]</span>
+There is no exceptional set in (S4). Since <span class="math" data-tex="\(0&lt;w&lt;\infty\)">\(0&lt;w&lt;\infty\)</span>, <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> and <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> have exactly the same null sets. Hence the retained fibres have the required support. Integration of a nonnegative simple function, followed by monotone convergence, also gives the normalization
+<span class="math math-display" data-tex="\[
+ \int_X w(x)\,d\mu_y(x)=1\qquad(y\in Y).
+ \tag{S5}
+\]">\[
+ \int_X w(x)\,d\mu_y(x)=1\qquad(y\in Y).
+ \tag{S5}
+\]</span></p>
+<p>For Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span> and <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>, the localized probability identity, applied first to simple functions and then to <span class="math" data-tex="\(1_A/w\)">\(1_A/w\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_D\mu_y(A)\,d\nu_0(y)
+ &amp;=\int_{p^{-1}D}\frac{1_A(x)}{w(x)}\,d\rho(x)\\
+ &amp;=\mu(A\cap p^{-1}D).
+ \end{aligned}
+ \tag{S6}
+\]">\[
+ \begin{aligned}
+ \int_D\mu_y(A)\,d\nu_0(y)
+ &amp;=\int_{p^{-1}D}\frac{1_A(x)}{w(x)}\,d\rho(x)\\
+ &amp;=\mu(A\cap p^{-1}D).
+ \end{aligned}
+ \tag{S6}
+\]</span>
+Both sides may be infinite. Every step uses nonnegative integration, so no subtraction of infinite values occurs.</p>
+<p>More generally, for every nonnegative Borel function <span class="math" data-tex="\(F:Y\times X\to[0,\infty]\)">\(F:Y\times X\to[0,\infty]\)</span>,
+<span class="math math-display" data-tex="\[
+ \int_Y\int_X F(y,x)\,d\mu_y(x)\,d\nu_0(y)
+       =\int_X F(p(x),x)\,d\mu(x).
+ \tag{S7}
+\]">\[
+ \int_Y\int_X F(y,x)\,d\mu_y(x)\,d\nu_0(y)
+       =\int_X F(p(x),x)\,d\mu(x).
+ \tag{S7}
+\]</span>
+Indeed the inner integral equals <span class="math" data-tex="\(\int_X F(y,x)/w(x)\,d\kappa_y(x)\)">\(\int_X F(y,x)/w(x)\,d\kappa_y(x)\)</span>, first for simple functions and then by monotone convergence. The probability-kernel integration theorem therefore makes it Borel in <span class="math" data-tex="\(y\)">\(y\)</span>. For that probability kernel, the analogous identity follows from its localized indicator identity by the rectangle class argument and nonnegative simple approximation. Apply that identity to <span class="math" data-tex="\(F(y,x)/w(x)\)">\(F(y,x)/w(x)\)</span> and use (S3). This proves (S7) in its full parameter-dependent form. For a complex Borel <span class="math" data-tex="\(F\)">\(F\)</span> whose corresponding absolute-value integral is finite, apply the nonnegative result to its positive and negative real and imaginary parts. In particular (S6) is a disintegration of the entire measure, rather than only of a prescribed finite family of sets.</p>
+<p>The probabilities in (S2) and the sigma-finite measures in (S3) have different roles. The base measure is the pushforward of a chosen finite normalization. The conditional measures recover the original, possibly infinite, mass.</p>
+<p><span id="OA-FLOW.KERNEL.NORMALIZATION"></span><a id="oa-flow.kernel.normalization"></a></p>
+<h2 id="uniqueness-and-change-of-normalization">Uniqueness and change of normalization</h2>
+<p>The normalization in (S5) fixes the base as well as the conditional measures. To prove this, suppose that <span class="math" data-tex="\(\tau_y\)">\(\tau_y\)</span> is a Borel measure kernel and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is a sigma-finite Borel measure on <span class="math" data-tex="\(Y\)">\(Y\)</span>, with</p>
+<ul>
+<li><span class="math" data-tex="\(\tau_y\)">\(\tau_y\)</span> concentrated on <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span> for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost every <span class="math" data-tex="\(y\)">\(y\)</span>;</li>
+<li><span class="math" data-tex="\(\mu(A)=\int_Y\tau_y(A)\,d\nu(y)\)">\(\mu(A)=\int_Y\tau_y(A)\,d\nu(y)\)</span> for every Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span>;</li>
+<li><span class="math" data-tex="\(\int_Xw\,d\tau_y=1\)">\(\int_Xw\,d\tau_y=1\)</span> for <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost every <span class="math" data-tex="\(y\)">\(y\)</span>.</li>
+</ul>
+<p>The mixture identity extends to all nonnegative Borel functions by simple approximation. Fibre support and normalization therefore imply, for every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nu(D)
+ &amp;=\int_Y\int_X1_D(p(x))w(x)\,d\tau_y(x)\,d\nu(y)\\
+ &amp;=\int_{p^{-1}D}w\,d\mu=\nu_0(D).
+ \end{aligned}
+ \tag{S8}
+\]">\[
+ \begin{aligned}
+ \nu(D)
+ &amp;=\int_Y\int_X1_D(p(x))w(x)\,d\tau_y(x)\,d\nu(y)\\
+ &amp;=\int_{p^{-1}D}w\,d\mu=\nu_0(D).
+ \end{aligned}
+ \tag{S8}
+\]</span>
+Thus <span class="math" data-tex="\(\nu=\nu_0\)">\(\nu=\nu_0\)</span>. The normalizing condition also implies sigma-finiteness of <span class="math" data-tex="\(\tau_y\)">\(\tau_y\)</span> on its conull set, since the sets <span class="math" data-tex="\(X_n\)">\(X_n\)</span> from (S4) have <span class="math" data-tex="\(\tau_y\)">\(\tau_y\)</span>-mass at most <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>The kernel
+<span class="math math-display" data-tex="\[
+ \widetilde\kappa_y(A)=\int_Aw\,d\tau_y
+ \tag{S9}
+\]">\[
+ \widetilde\kappa_y(A)=\int_Aw\,d\tau_y
+ \tag{S9}
+\]</span>
+is a probability kernel on that conull set. On its Borel null complement choose any fixed point mass on <span class="math" data-tex="\(X\)">\(X\)</span>, which is nonempty because <span class="math" data-tex="\(\mu\ne0\)">\(\mu\ne0\)</span>. Its mixture is <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and it has the same fibre support. The uniqueness part of the probability theorem gives <span class="math" data-tex="\(\widetilde\kappa_y=\kappa_y\)">\(\widetilde\kappa_y=\kappa_y\)</span> as measures on all Borel sets, on one common conull set. Multiplying these equal measures by the Borel density <span class="math" data-tex="\(w^{-1}\)">\(w^{-1}\)</span> gives <span class="math" data-tex="\(\tau_y=\mu_y\)">\(\tau_y=\mu_y\)</span> there. This proves normalized uniqueness, including uniqueness of the base.</p>
+<p>If the base has already been fixed as <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> and the entire localized identity (S6) is assumed, the normalization is automatic. Its extension to <span class="math" data-tex="\(w\)">\(w\)</span> gives <span class="math" data-tex="\(\int_D\int_Xw\,d\tau_y\,d\nu_0=\nu_0(D)\)">\(\int_D\int_Xw\,d\tau_y\,d\nu_0=\nu_0(D)\)</span> for every <span class="math" data-tex="\(D\)">\(D\)</span>; testing the measurable sets where the inner function is above or below one proves that it equals one almost everywhere.</p>
+<p>Now choose another strictly positive finite Borel function <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\int_Xv\,d\mu=1\)">\(\int_Xv\,d\mu=1\)</span>, and define
+<span class="math math-display" data-tex="\[
+ r(y)=\int_Xv(x)\,d\mu_y(x)
+     =\int_X\frac{v(x)}{w(x)}\,d\kappa_y(x).
+ \tag{S10}
+\]">\[
+ r(y)=\int_Xv(x)\,d\mu_y(x)
+     =\int_X\frac{v(x)}{w(x)}\,d\kappa_y(x).
+ \tag{S10}
+\]</span>
+This function is Borel and strictly positive: the integrand in the last integral is everywhere positive and <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> has mass one. Formula (S7) gives <span class="math" data-tex="\(\int_Yr\,d\nu_0=1\)">\(\int_Yr\,d\nu_0=1\)</span>, so <span class="math" data-tex="\(r&lt;\infty\)">\(r&lt;\infty\)</span> almost everywhere. On the Borel conull set where <span class="math" data-tex="\(0&lt;r&lt;\infty\)">\(0&lt;r&lt;\infty\)</span>, put
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nu_v&amp;=r\nu_0=p_*(v\mu),\\
+ \mu_y^{\,v}&amp;=r(y)^{-1}\mu_y,\\
+ \kappa_y^{\,v}(A)
+   &amp;=r(y)^{-1}\int_Av\,d\mu_y
+     =\int_A\frac{v(x)}{r(y)w(x)}\,d\kappa_y(x).
+ \end{aligned}
+ \tag{S11}
+\]">\[
+ \begin{aligned}
+ \nu_v&amp;=r\nu_0=p_*(v\mu),\\
+ \mu_y^{\,v}&amp;=r(y)^{-1}\mu_y,\\
+ \kappa_y^{\,v}(A)
+   &amp;=r(y)^{-1}\int_Av\,d\mu_y
+     =\int_A\frac{v(x)}{r(y)w(x)}\,d\kappa_y(x).
+ \end{aligned}
+ \tag{S11}
+\]</span>
+The base equality follows by applying (S7) to <span class="math" data-tex="\(1_D(y)v(x)\)">\(1_D(y)v(x)\)</span>. Thus <span class="math" data-tex="\(\nu_v\)">\(\nu_v\)</span> and <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> have the same null sets. On the common conull set, <span class="math" data-tex="\(\kappa_y^{\,v}\)">\(\kappa_y^{\,v}\)</span> has mass one, <span class="math" data-tex="\(\int_Xv\,d\mu_y^{\,v}=1\)">\(\int_Xv\,d\mu_y^{\,v}=1\)</span>, and the two kernels have the original fibre support. On the discarded set choose <span class="math" data-tex="\(\kappa_y^{\,v}=\delta_{x_0}\)">\(\kappa_y^{\,v}=\delta_{x_0}\)</span> and <span class="math" data-tex="\(\mu_y^{\,v}=v(x_0)^{-1}\delta_{x_0}\)">\(\mu_y^{\,v}=v(x_0)^{-1}\delta_{x_0}\)</span>, for a fixed <span class="math" data-tex="\(x_0\in X\)">\(x_0\in X\)</span>. These choices make whole-base Borel kernels and preserve their normalization. Each <span class="math" data-tex="\(\mu_y^{\,v}\)">\(\mu_y^{\,v}\)</span> is sigma-finite; alternatively its sets <span class="math" data-tex="\(\{v\ge1/n\}\)">\(\{v\ge1/n\}\)</span> have mass at most <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For every Borel <span class="math" data-tex="\(A,D\)">\(A,D\)</span>, cancellation of the positive finite scalar on the conull set yields
+<span class="math math-display" data-tex="\[
+ \int_D\mu_y^{\,v}(A)\,d\nu_v(y)
+      =\int_D\mu_y(A)\,d\nu_0(y)
+      =\mu(A\cap p^{-1}D).
+ \tag{S12}
+\]">\[
+ \int_D\mu_y^{\,v}(A)\,d\nu_v(y)
+      =\int_D\mu_y(A)\,d\nu_0(y)
+      =\mu(A\cap p^{-1}D).
+ \tag{S12}
+\]</span>
+The same formula with <span class="math" data-tex="\(v1_A\)">\(v1_A\)</span> proves that <span class="math" data-tex="\(\kappa_y^{\,v}\)">\(\kappa_y^{\,v}\)</span> disintegrates <span class="math" data-tex="\(v\mu\)">\(v\mu\)</span>. The probability theorem's uniqueness identifies it with any independently constructed probability disintegration of that measure. Thus (S11) is the exact normalization-change formula, on one conull set as an equality of measures, including their infinite values.</p>
+<p>More generally, if <span class="math" data-tex="\(s:Y\to(0,\infty)\)">\(s:Y\to(0,\infty)\)</span> is finite and Borel, then
+<span class="math math-display" data-tex="\[
+ d\widehat\nu=s\,d\nu_0,\qquad
+ \widehat\mu_y=s(y)^{-1}\mu_y,
+ \qquad \int_Xw\,d\widehat\mu_y=s(y)^{-1}.
+ \tag{S13}
+\]">\[
+ d\widehat\nu=s\,d\nu_0,\qquad
+ \widehat\mu_y=s(y)^{-1}\mu_y,
+ \qquad \int_Xw\,d\widehat\mu_y=s(y)^{-1}.
+ \tag{S13}
+\]</span>
+The measure <span class="math" data-tex="\(\widehat\nu\)">\(\widehat\nu\)</span> is sigma-finite, since <span class="math" data-tex="\(\{s\le n\}\)">\(\{s\le n\}\)</span> has measure at most <span class="math" data-tex="\(n\)">\(n\)</span>; these sets cover <span class="math" data-tex="\(Y\)">\(Y\)</span>. The same cancellation proves the localized mixture identity for <span class="math" data-tex="\((\widehat\nu,\widehat\mu_y)\)">\((\widehat\nu,\widehat\mu_y)\)</span>. The last formula shows exactly how this base change affects the fixed <span class="math" data-tex="\(w\)">\(w\)</span>-normalization.</p>
+<p><span id="OA-FLOW.KERNEL.PUSHFORWARD"></span><a id="oa-flow.kernel.pushforward"></a></p>
+<h2 id="when-the-original-pushforward-is-a-suitable-base">When the original pushforward is a suitable base</h2>
+<p>Suppose now that <span class="math" data-tex="\(\theta=p_*\mu\)">\(\theta=p_*\mu\)</span> is sigma-finite. It is nonzero. Choose a strictly positive finite Borel function <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(\int_Yb\,d\theta=1\)">\(\int_Yb\,d\theta=1\)</span>, using the construction in (S1) on <span class="math" data-tex="\(Y\)">\(Y\)</span>, and take
+<span class="math math-display" data-tex="\[
+ w=b\circ p,\qquad \rho=(b\circ p)\mu,
+ \qquad \nu_0=b\theta.
+ \tag{S14}
+\]">\[
+ w=b\circ p,\qquad \rho=(b\circ p)\mu,
+ \qquad \nu_0=b\theta.
+ \tag{S14}
+\]</span>
+On every retained fibre, <span class="math" data-tex="\(w(x)=b(y)\)">\(w(x)=b(y)\)</span> for <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>-almost every <span class="math" data-tex="\(x\)">\(x\)</span>. The normalization (S5) gives <span class="math" data-tex="\(b(y)\mu_y(X)=1\)">\(b(y)\mu_y(X)=1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \lambda_y=b(y)\mu_y=\kappa_y,
+ \qquad \lambda_y(X)=1,
+ \qquad
+ \mu(A\cap p^{-1}D)=\int_D\lambda_y(A)\,d\theta(y).
+ \tag{S15}
+\]">\[
+ \lambda_y=b(y)\mu_y=\kappa_y,
+ \qquad \lambda_y(X)=1,
+ \qquad
+ \mu(A\cap p^{-1}D)=\int_D\lambda_y(A)\,d\theta(y).
+ \tag{S15}
+\]</span>
+Here equality with <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> follows from <span class="math" data-tex="\(\kappa_y=w\mu_y\)">\(\kappa_y=w\mu_y\)</span> and the fibre support. Taking <span class="math" data-tex="\(\lambda_y=\kappa_y\)">\(\lambda_y=\kappa_y\)</span> everywhere provides a whole-base probability kernel, with the support assertion outside one <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-null set; <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> have the same null sets. Probability-kernel uniqueness is retained over the sigma-finite base: multiply it by <span class="math" data-tex="\(b\)">\(b\)</span>, use the finite probability theorem, and then cancel <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>.</p>
+<p>Conversely, if a mixture of probability kernels supported on the fibres represents <span class="math" data-tex="\(\mu\)">\(\mu\)</span> over a sigma-finite base <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, applying the mixture to <span class="math" data-tex="\(p^{-1}D\)">\(p^{-1}D\)</span> gives <span class="math" data-tex="\(p_*\mu(D)=\theta(D)\)">\(p_*\mu(D)=\theta(D)\)</span>. Thus sigma-finiteness of the pushforward is necessary for such a probability disintegration over a sigma-finite base. It is not automatic from sigma-finiteness of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>If <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>, no positive normalization can have integral one. Use instead the zero measure on <span class="math" data-tex="\(Y\)">\(Y\)</span> and the zero kernel <span class="math" data-tex="\(\mu_y=0\)">\(\mu_y=0\)</span>. All mixture identities hold, and every zero conditional measure is sigma-finite. Assertions required only almost everywhere on this zero base are vacuous. If probability fibres are desired, restrict to the empty conull base; this also handles <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span>, where a probability measure on <span class="math" data-tex="\(X\)">\(X\)</span> does not exist. If <span class="math" data-tex="\(Y=\varnothing\)">\(Y=\varnothing\)</span> and a map <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> is given, then <span class="math" data-tex="\(X=\varnothing\)">\(X=\varnothing\)</span> necessarily. These cases require no choice of a nonexistent point mass.</p>
+<p><span id="OA-FLOW.KERNEL.EXAMPLE"></span><a id="oa-flow.kernel.example"></a></p>
+<h2 id="fractional-part-probabilities-become-counting-measures">Fractional part: probabilities become counting measures</h2>
+<p>Let <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span> with Lebesgue measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, let <span class="math" data-tex="\(Y=[0,1)\)">\(Y=[0,1)\)</span>, and put
+<span class="math math-display" data-tex="\[
+ p(x)=x-\lfloor x\rfloor,\qquad
+ x=y+n\quad(y\in[0,1),\ n\in\mathbb Z).
+ \tag{E1}
+\]">\[
+ p(x)=x-\lfloor x\rfloor,\qquad
+ x=y+n\quad(y\in[0,1),\ n\in\mathbb Z).
+ \tag{E1}
+\]</span>
+The half-open partition <span class="math" data-tex="\(\mathbb R=\coprod_{n\in\mathbb Z}[n,n+1)\)">\(\mathbb R=\coprod_{n\in\mathbb Z}[n,n+1)\)</span> makes this representation unique, including at integers. The map <span class="math" data-tex="\(p\)">\(p\)</span> is Borel because it is continuous on each partition piece.</p>
+<p>Choose
+<span class="math math-display" data-tex="\[
+ a_n=\frac{2^{-|n|}}3,\qquad w(y+n)=a_n,
+ \qquad
+ \sum_{n\in\mathbb Z}a_n
+   =\frac13\left(1+2\sum_{n\ge1}2^{-n}\right)=1.
+ \tag{E2}
+\]">\[
+ a_n=\frac{2^{-|n|}}3,\qquad w(y+n)=a_n,
+ \qquad
+ \sum_{n\in\mathbb Z}a_n
+   =\frac13\left(1+2\sum_{n\ge1}2^{-n}\right)=1.
+ \tag{E2}
+\]</span>
+The function <span class="math" data-tex="\(w\)">\(w\)</span> is positive, finite and Borel. Nonnegative integration on the half-open partition gives <span class="math" data-tex="\(\int_\mathbb Rw(x)\,dx=\sum_na_n=1\)">\(\int_\mathbb Rw(x)\,dx=\sum_na_n=1\)</span>. For every Borel <span class="math" data-tex="\(D\subseteq[0,1)\)">\(D\subseteq[0,1)\)</span>, translation invariance of Lebesgue measure gives
+<span class="math math-display" data-tex="\[
+ \nu_0(D)=\int_{p^{-1}D}w(x)\,dx
+          =\sum_na_n\,|D|=|D|.
+ \tag{E3}
+\]">\[
+ \nu_0(D)=\int_{p^{-1}D}w(x)\,dx
+          =\sum_na_n\,|D|=|D|.
+ \tag{E3}
+\]</span>
+Thus the normalized base is ordinary Lebesgue probability on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>.</p>
+<p>Define for every <span class="math" data-tex="\(y\in[0,1)\)">\(y\in[0,1)\)</span>
+<span class="math math-display" data-tex="\[
+ \kappa_y=\sum_{n\in\mathbb Z}a_n\delta_{y+n},
+ \qquad
+ \mu_y=\sum_{n\in\mathbb Z}\delta_{y+n}.
+ \tag{E4}
+\]">\[
+ \kappa_y=\sum_{n\in\mathbb Z}a_n\delta_{y+n},
+ \qquad
+ \mu_y=\sum_{n\in\mathbb Z}\delta_{y+n}.
+ \tag{E4}
+\]</span>
+For each Borel <span class="math" data-tex="\(A\subseteq\mathbb R\)">\(A\subseteq\mathbb R\)</span>, the functions <span class="math" data-tex="\(1_A(y+n)\)">\(1_A(y+n)\)</span> are Borel. Their nonnegative sums show that both displayed families are Borel kernels. The first has total mass one. The second is counting measure on the complete fibre <span class="math" data-tex="\(y+\mathbb Z\)">\(y+\mathbb Z\)</span>, is infinite on that fibre, and is sigma-finite: its restriction to the points with <span class="math" data-tex="\(|n|\le N\)">\(|n|\le N\)</span> has mass <span class="math" data-tex="\(2N+1\)">\(2N+1\)</span>. Division of the mass <span class="math" data-tex="\(a_n\)">\(a_n\)</span> by <span class="math" data-tex="\(w(y+n)=a_n\)">\(w(y+n)=a_n\)</span> gives exactly the second kernel, as in (S3).</p>
+<p>For every nonnegative Borel <span class="math" data-tex="\(f\)">\(f\)</span> and Borel <span class="math" data-tex="\(D\subseteq[0,1)\)">\(D\subseteq[0,1)\)</span>, countable additivity, Tonelli and translation of the integration variable give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_D\int_\mathbb R f(x)\,d\mu_y(x)\,dy
+ &amp;=\sum_{n\in\mathbb Z}\int_D f(y+n)\,dy\\
+ &amp;=\int_{p^{-1}D}f(x)\,dx.
+ \end{aligned}
+ \tag{E5}
+\]">\[
+ \begin{aligned}
+ \int_D\int_\mathbb R f(x)\,d\mu_y(x)\,dy
+ &amp;=\sum_{n\in\mathbb Z}\int_D f(y+n)\,dy\\
+ &amp;=\int_{p^{-1}D}f(x)\,dx.
+ \end{aligned}
+ \tag{E5}
+\]</span>
+Replacing the summands by <span class="math" data-tex="\(a_nf(y+n)\)">\(a_nf(y+n)\)</span> proves the corresponding identity for <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> and <span class="math" data-tex="\(w\mu\)">\(w\mu\)</span>. Also <span class="math" data-tex="\(\int w\,d\mu_y=\sum_na_n=1\)">\(\int w\,d\mu_y=\sum_na_n=1\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>. Thus all parts of the normalized disintegration are verified directly in this example.</p>
+<p>The original pushforward behaves differently:
+<span class="math math-display" data-tex="\[
+ (p_*\mu)(D)=\sum_{n\in\mathbb Z}|D|
+ =\begin{cases}
+ 0,&amp;|D|=0,\\
+ +\infty,&amp;|D|&gt;0.
+ \end{cases}
+ \tag{E6}
+\]">\[
+ (p_*\mu)(D)=\sum_{n\in\mathbb Z}|D|
+ =\begin{cases}
+ 0,&amp;|D|=0,\\
+ +\infty,&amp;|D|&gt;0.
+ \end{cases}
+ \tag{E6}
+\]</span>
+It is not sigma-finite. If countably many sets of finite <span class="math" data-tex="\(p_*\mu\)">\(p_*\mu\)</span>-measure covered <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, each would have Lebesgue measure zero by (E6), and their union would still be Lebesgue-null. This contradicts the Lebesgue measure one of <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Notice that each individual fibre is countable and hence <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-null; the infinite conditional counting measure is nevertheless the correct measure on that fibre.</p>
+<p>We can change both the normalization and its resulting base. Put
+<span class="math math-display" data-tex="\[
+ b_n=\frac{3^{-|n|}}2,
+ \qquad
+ c(y)=\begin{cases}
+ \tfrac12,&amp;0\le y&lt;\tfrac12,\\
+ \tfrac32,&amp;\tfrac12\le y&lt;1,
+ \end{cases}
+ \qquad v(y+n)=c(y)b_n.
+ \tag{E7}
+\]">\[
+ b_n=\frac{3^{-|n|}}2,
+ \qquad
+ c(y)=\begin{cases}
+ \tfrac12,&amp;0\le y&lt;\tfrac12,\\
+ \tfrac32,&amp;\tfrac12\le y&lt;1,
+ \end{cases}
+ \qquad v(y+n)=c(y)b_n.
+ \tag{E7}
+\]</span>
+The geometric sum is <span class="math" data-tex="\(\sum_nb_n=\tfrac12(1+2\cdot\tfrac12)=1\)">\(\sum_nb_n=\tfrac12(1+2\cdot\tfrac12)=1\)</span>, and <span class="math" data-tex="\(\int_0^1c(y)\,dy=\tfrac14+\tfrac34=1\)">\(\int_0^1c(y)\,dy=\tfrac14+\tfrac34=1\)</span>. Hence <span class="math" data-tex="\(v\)">\(v\)</span> is another strictly positive finite Borel function of integral one on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Its function (S10) is
+<span class="math math-display" data-tex="\[
+ r(y)=\int v\,d\mu_y=\sum_nc(y)b_n=c(y).
+ \tag{E8}
+\]">\[
+ r(y)=\int v\,d\mu_y=\sum_nc(y)b_n=c(y).
+ \tag{E8}
+\]</span>
+The complete change-of-normalization formulas are therefore
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ d\nu_v(y)&amp;=c(y)\,dy,\\
+ \kappa_y^{\,v}&amp;=\sum_nb_n\delta_{y+n},\\
+ \mu_y^{\,v}&amp;=c(y)^{-1}\sum_n\delta_{y+n}
+ =\begin{cases}
+ 2\displaystyle\sum_n\delta_{y+n},&amp;0\le y&lt;\tfrac12,\\
+ \tfrac23\displaystyle\sum_n\delta_{y+n},&amp;\tfrac12\le y&lt;1.
+ \end{cases}
+ \end{aligned}
+ \tag{E9}
+\]">\[
+ \begin{aligned}
+ d\nu_v(y)&amp;=c(y)\,dy,\\
+ \kappa_y^{\,v}&amp;=\sum_nb_n\delta_{y+n},\\
+ \mu_y^{\,v}&amp;=c(y)^{-1}\sum_n\delta_{y+n}
+ =\begin{cases}
+ 2\displaystyle\sum_n\delta_{y+n},&amp;0\le y&lt;\tfrac12,\\
+ \tfrac23\displaystyle\sum_n\delta_{y+n},&amp;\tfrac12\le y&lt;1.
+ \end{cases}
+ \end{aligned}
+ \tag{E9}
+\]</span>
+For example, at each point <span class="math" data-tex="\(y+n\)">\(y+n\)</span>, formula (S11) changes the old probability mass by
+<span class="math math-display" data-tex="\[
+ \frac{v(y+n)}{r(y)w(y+n)}a_n
+       =\frac{c(y)b_n}{c(y)a_n}a_n=b_n.
+ \tag{E10}
+\]">\[
+ \frac{v(y+n)}{r(y)w(y+n)}a_n
+       =\frac{c(y)b_n}{c(y)a_n}a_n=b_n.
+ \tag{E10}
+\]</span>
+Moreover <span class="math" data-tex="\(\int v\,d\mu_y^{\,v}=\sum_nb_n=1\)">\(\int v\,d\mu_y^{\,v}=\sum_nb_n=1\)</span>. Multiplication of the conditional mass <span class="math" data-tex="\(c(y)^{-1}\)">\(c(y)^{-1}\)</span> by the base density <span class="math" data-tex="\(c(y)\)">\(c(y)\)</span> recovers exactly (E5). All these equalities hold at every base point, including <span class="math" data-tex="\(y=1/2\)">\(y=1/2\)</span> with the convention in (E7).</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Geometric probability masses on a fractional-part fibre become unit counting masses after division by the normalizing density; a second normalization rescales base and fibre reciprocally." src="assets/conditional-kernels/fractional-part-disintegration.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 75.1. The displayed fibre is <span class="math" data-tex="\(y+\mathbb Z\)">\(y+\mathbb Z\)</span> at <span class="math" data-tex="\(y=1/4\)">\(y=1/4\)</span>. Five atoms are shown; the arrows continue the whole infinite fibre. The probability tails beyond those five atoms each have mass <span class="math" data-tex="\(1/12\)">\(1/12\)</span>, so the displayed probability is not a finite truncation renormalized to one. Dividing each mass by <span class="math" data-tex="\(w(y+n)=a_n\)">\(w(y+n)=a_n\)</span> gives unit counting mass at every integer translate, as in (E4). The lower panel gives the exact base density and reciprocal conditional masses for (E7)–(E9).</em></p>
+<p><strong>Problem.</strong> In the second normalization, what are the masses of the point <span class="math" data-tex="\(y+2\)">\(y+2\)</span> at <span class="math" data-tex="\(y=1/4\)">\(y=1/4\)</span> and <span class="math" data-tex="\(y=3/4\)">\(y=3/4\)</span>, for the probability kernel and for the kernel representing Lebesgue measure? How do the base densities compensate?</p>
+<p><strong>Solution.</strong> In both probability kernels, the point has mass <span class="math" data-tex="\(b_2=1/18\)">\(b_2=1/18\)</span>. In <span class="math" data-tex="\(\mu_y^{\,v}\)">\(\mu_y^{\,v}\)</span>, it has mass <span class="math" data-tex="\(2\)">\(2\)</span> at <span class="math" data-tex="\(y=1/4\)">\(y=1/4\)</span> and <span class="math" data-tex="\(2/3\)">\(2/3\)</span> at <span class="math" data-tex="\(y=3/4\)">\(y=3/4\)</span>. The respective base densities are <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and <span class="math" data-tex="\(3/2\)">\(3/2\)</span>, whose products with those conditional masses are both one. These are density values at the indicated base points, not positive masses of singleton base sets. The base measure remains nonatomic.</p>
+<p><span id="OA-FLOW.KERNEL.COMPOSITION"></span><a id="oa-flow.kernel.composition"></a></p>
+<h2 id="composing-conditional-measures">Composing conditional measures</h2>
+<p>Let <span class="math" data-tex="\(X,Y,Z\)">\(X,Y,Z\)</span> be standard Borel spaces, let <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> and <span class="math" data-tex="\(q:Y\to Z\)">\(q:Y\to Z\)</span> be Borel, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a probability on <span class="math" data-tex="\(X\)">\(X\)</span>. Put <span class="math" data-tex="\(\nu=p_*\mu\)">\(\nu=p_*\mu\)</span> and <span class="math" data-tex="\(\eta=q_*\nu\)">\(\eta=q_*\nu\)</span>. Apply <a href="#oa-flow.kernel.probability">the probability theorem</a> to obtain kernels <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> for <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(\nu_z\)">\(\nu_z\)</span> for <span class="math" data-tex="\(q\)">\(q\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \rho_z(A)=\int_Y\mu_y(A)\,d\nu_z(y),\qquad A\in\mathcal B(X).
+ \tag{T1}
+\]">\[
+ \rho_z(A)=\int_Y\mu_y(A)\,d\nu_z(y),\qquad A\in\mathcal B(X).
+ \tag{T1}
+\]</span>
+For each <span class="math" data-tex="\(z\)">\(z\)</span>, this is a probability: the value at <span class="math" data-tex="\(X\)">\(X\)</span> is one, and countable additivity follows by applying monotone convergence to a disjoint union inside the integral. The value in (T1) is Borel in <span class="math" data-tex="\(z\)">\(z\)</span> by <a href="#oa-flow.kernel.integration">kernel integration</a>. Thus <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a Borel probability kernel.</p>
+<p>For every Borel <span class="math" data-tex="\(A\subseteq X\)">\(A\subseteq X\)</span> and <span class="math" data-tex="\(E\subseteq Z\)">\(E\subseteq Z\)</span>, the localized identities for the two original kernels give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_E\rho_z(A)\,d\eta(z)
+ &amp;=\int_{q^{-1}E}\mu_y(A)\,d\nu(y)\\
+ &amp;=\mu\bigl(A\cap(q\circ p)^{-1}E\bigr).
+ \end{aligned}
+ \tag{T2}
+\]">\[
+ \begin{aligned}
+ \int_E\rho_z(A)\,d\eta(z)
+ &amp;=\int_{q^{-1}E}\mu_y(A)\,d\nu(y)\\
+ &amp;=\mu\bigl(A\cap(q\circ p)^{-1}E\bigr).
+ \end{aligned}
+ \tag{T2}
+\]</span>
+The first equality holds for the bounded Borel function <span class="math" data-tex="\(y\mapsto\mu_y(A)\)">\(y\mapsto\mu_y(A)\)</span>, by simple approximation of the localized identity for <span class="math" data-tex="\(\nu_z\)">\(\nu_z\)</span>. No interchange of signed or undefined integrals is involved.</p>
+<p>The fibre support can be checked on one common set. Let <span class="math" data-tex="\(N\subseteq Y\)">\(N\subseteq Y\)</span> be a Borel <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set outside which <span class="math" data-tex="\(\mu_y(p^{-1}\{y\})=1\)">\(\mu_y(p^{-1}\{y\})=1\)</span>. Since
+<span class="math math-display" data-tex="\[
+ \int_Z\nu_z(N)\,d\eta(z)=\nu(N)=0,
+ \tag{T3}
+\]">\[
+ \int_Z\nu_z(N)\,d\eta(z)=\nu(N)=0,
+ \tag{T3}
+\]</span>
+the Borel condition <span class="math" data-tex="\(\nu_z(N)=0\)">\(\nu_z(N)=0\)</span> holds off one <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-null set. Intersect it with the Borel conull set on which <span class="math" data-tex="\(\nu_z(q^{-1}\{z\})=1\)">\(\nu_z(q^{-1}\{z\})=1\)</span>. For each retained <span class="math" data-tex="\(z\)">\(z\)</span>, almost every <span class="math" data-tex="\(y\)">\(y\)</span> under <span class="math" data-tex="\(\nu_z\)">\(\nu_z\)</span> lies in <span class="math" data-tex="\(q^{-1}\{z\}\setminus N\)">\(q^{-1}\{z\}\setminus N\)</span>. For each such <span class="math" data-tex="\(y\)">\(y\)</span>, the inclusion
+<span class="math" data-tex="\(p^{-1}\{y\}\subseteq(q\circ p)^{-1}\{z\}\)">\(p^{-1}\{y\}\subseteq(q\circ p)^{-1}\{z\}\)</span>
+forces <span class="math" data-tex="\(\mu_y((q\circ p)^{-1}\{z\})=1\)">\(\mu_y((q\circ p)^{-1}\{z\})=1\)</span>. Equation (T1) therefore gives
+<span class="math math-display" data-tex="\[
+ \rho_z((q\circ p)^{-1}\{z\})=1.
+ \tag{T4}
+\]">\[
+ \rho_z((q\circ p)^{-1}\{z\})=1.
+ \tag{T4}
+\]</span>
+Together with (T2), this proves that <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a conditional probability kernel for <span class="math" data-tex="\(q\circ p\)">\(q\circ p\)</span>. The <a href="#oa-flow.kernel.uniqueness">whole-measure uniqueness theorem</a> identifies it with any other such kernel on one conull set, simultaneously for all Borel <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><span id="OA-FLOW.KERNEL.EXPECTATION"></span><a id="oa-flow.kernel.expectation"></a></p>
+<h2 id="conditional-averaging-and-the-tower-identity">Conditional averaging and the tower identity</h2>
+<p>For a nonnegative Borel function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, define
+<span class="math math-display" data-tex="\[
+ (T_pf)(y)=\int_X f(x)\,d\mu_y(x).
+ \tag{T5}
+\]">\[
+ (T_pf)(y)=\int_X f(x)\,d\mu_y(x).
+ \tag{T5}
+\]</span>
+It is Borel, and its integral is <span class="math" data-tex="\(\int_X f\,d\mu\)">\(\int_X f\,d\mu\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is complex and integrable, then <span class="math" data-tex="\(T_p|f|\)">\(T_p|f|\)</span> is finite almost everywhere; define <span class="math" data-tex="\(T_pf\)">\(T_pf\)</span> by its absolutely convergent integral there and set it to zero on the exceptional Borel set. This represents a well-defined element of <span class="math" data-tex="\(L^1(Y,\nu)\)">\(L^1(Y,\nu)\)</span>. Indeed, if two Borel versions of <span class="math" data-tex="\(f\)">\(f\)</span> agree <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-almost everywhere, integrating the absolute value of their difference shows that their kernel integrals agree <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost everywhere. The pointwise triangle inequality gives
+<span class="math math-display" data-tex="\[
+ \|T_pf\|_{L^1(\nu)}\leq\|f\|_{L^1(\mu)}.
+ \tag{T6}
+\]">\[
+ \|T_pf\|_{L^1(\nu)}\leq\|f\|_{L^1(\mu)}.
+ \tag{T6}
+\]</span>
+For each Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>, simple approximation, followed by the positive and negative parts, proves
+<span class="math math-display" data-tex="\[
+ \int_D T_pf\,d\nu=\int_{p^{-1}D}f\,d\mu.
+ \tag{T7}
+\]">\[
+ \int_D T_pf\,d\nu=\int_{p^{-1}D}f\,d\mu.
+ \tag{T7}
+\]</span>
+Thus <span class="math" data-tex="\((T_pf)\circ p\)">\((T_pf)\circ p\)</span> is conditional expectation onto the sigma-algebra <span class="math" data-tex="\(p^{-1}\mathcal B(Y)\)">\(p^{-1}\mathcal B(Y)\)</span>: it is measurable for that sigma-algebra and has the defining integral on every member. The same representative gives conditional expectation for its completion, since changing an integration set by a null set changes neither integral. The existence of Borel versions for the completed equivalence classes is justified in <a href="#oa-flow.kernel.completion">the completion discussion</a>.</p>
+<p>If <span class="math" data-tex="\(b\)">\(b\)</span> is a bounded Borel function on <span class="math" data-tex="\(Y\)">\(Y\)</span>, fibre support gives, for almost every <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+ T_p\bigl((b\circ p)f\bigr)(y)=b(y)T_pf(y).
+ \tag{T8}
+\]">\[
+ T_p\bigl((b\circ p)f\bigr)(y)=b(y)T_pf(y).
+ \tag{T8}
+\]</span>
+Here the function <span class="math" data-tex="\(b\circ p\)">\(b\circ p\)</span> is the constant <span class="math" data-tex="\(b(y)\)">\(b(y)\)</span> on the full-measure subset <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span> of that fibre. This proves the multiplication rule directly. The essential <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> bound follows in the same way from integrating the null set on which a chosen version exceeds its bound. For <span class="math" data-tex="\(f\in L^2(\mu)\)">\(f\in L^2(\mu)\)</span>, Cauchy–Schwarz in the probability <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>, followed by integration, gives
+<span class="math math-display" data-tex="\[
+ |T_pf(y)|^2\leq T_p(|f|^2)(y),\qquad
+ \|T_pf\|_{L^2(\nu)}\leq\|f\|_{L^2(\mu)}.
+ \tag{T9}
+\]">\[
+ |T_pf(y)|^2\leq T_p(|f|^2)(y),\qquad
+ \|T_pf\|_{L^2(\nu)}\leq\|f\|_{L^2(\mu)}.
+ \tag{T9}
+\]</span>
+The exceptional set where the right side is infinite is null. These estimates apply to completed <span class="math" data-tex="\(L^p\)">\(L^p\)</span> classes through their Borel versions, without asserting that every subset of a globally null set has been added to every fibre sigma-algebra.</p>
+<p>Finally (T1) and nonnegative simple approximation give the tower identity
+<span class="math math-display" data-tex="\[
+ \int_Xf\,d\rho_z
+ =\int_Y\left(\int_Xf\,d\mu_y\right)d\nu_z(y),
+ \qquad T_{q\circ p}f=T_q(T_pf)
+ \quad\text{in }L^1(Z,\eta).
+ \tag{T10}
+\]">\[
+ \int_Xf\,d\rho_z
+ =\int_Y\left(\int_Xf\,d\mu_y\right)d\nu_z(y),
+ \qquad T_{q\circ p}f=T_q(T_pf)
+ \quad\text{in }L^1(Z,\eta).
+ \tag{T10}
+\]</span>
+For nonnegative Borel <span class="math" data-tex="\(f\)">\(f\)</span>, the first equality is valid for every <span class="math" data-tex="\(z\)">\(z\)</span>, with extended nonnegative values, when <span class="math" data-tex="\(T_pf\)">\(T_pf\)</span> is the pointwise integral. For integrable complex <span class="math" data-tex="\(f\)">\(f\)</span>, apply it first to <span class="math" data-tex="\(|f|\)">\(|f|\)</span>; the resulting finite integral almost everywhere justifies subtraction and complex linearity. Replacing the pointwise integral by its chosen <span class="math" data-tex="\(L^1\)">\(L^1\)</span> representative changes the answer only on an <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-null set, because <span class="math" data-tex="\(\nu_z\)">\(\nu_z\)</span> gives zero mass to any fixed <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set for almost every <span class="math" data-tex="\(z\)">\(z\)</span>, as in (T3). This proves the identity for the full integrable class.</p>
+<p><span id="OA-FLOW.KERNEL.EXERCISES"></span><a id="oa-flow.kernel.exercises"></a></p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>1. Conditional masses and a tower.</strong> Give <span class="math" data-tex="\(X=\{a,b,c,d\}\)">\(X=\{a,b,c,d\}\)</span> masses <span class="math" data-tex="\(1/6,1/3,1/4,1/4\)">\(1/6,1/3,1/4,1/4\)</span>, respectively. Let <span class="math" data-tex="\(p\)">\(p\)</span> send <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(c,d\)">\(c,d\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Compute its conditional probabilities and the conditional average of <span class="math" data-tex="\(f(a)=0,f(b)=3,f(c)=2,f(d)=4\)">\(f(a)=0,f(b)=3,f(c)=2,f(d)=4\)</span>. Then send both base points to a single point.</p>
+<p><strong>Solution.</strong> Both fibres have mass <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Dividing the original masses by that fibre mass gives
+<span class="math math-display" data-tex="\[
+ \mu_0=\tfrac13\delta_a+\tfrac23\delta_b,\qquad
+ \mu_1=\tfrac12\delta_c+\tfrac12\delta_d.
+ \tag{X1}
+\]">\[
+ \mu_0=\tfrac13\delta_a+\tfrac23\delta_b,\qquad
+ \mu_1=\tfrac12\delta_c+\tfrac12\delta_d.
+ \tag{X1}
+\]</span>
+These probabilities satisfy the localized identity by summing the indicated atoms, for every pair of subsets. The averages are <span class="math" data-tex="\(T_pf(0)=2\)">\(T_pf(0)=2\)</span> and <span class="math" data-tex="\(T_pf(1)=3\)">\(T_pf(1)=3\)</span>. The conditional measure for the map to a single point is <span class="math" data-tex="\(\mu\)">\(\mu\)</span> itself. The tower average is <span class="math" data-tex="\((2+3)/2=5/2\)">\((2+3)/2=5/2\)</span>, equal to
+<span class="math" data-tex="\(0/6+3/3+2/4+4/4\)">\(0/6+3/3+2/4+4/4\)</span>.</p>
+<p><strong>2. Why fibre support must be simultaneous.</strong> Suppose a probability kernel satisfies the localized identity for a Borel map <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span>. Let <span class="math" data-tex="\((D_n)\)">\((D_n)\)</span> be a countable family of Borel sets separating points of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Derive fibre support without taking a union over all Borel subsets of <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(g_n(y)=\mu_y(p^{-1}D_n)\)">\(g_n(y)=\mu_y(p^{-1}D_n)\)</span>. Localization gives <span class="math" data-tex="\(\int_D g_n\,d\nu=\nu(D\cap D_n)\)">\(\int_D g_n\,d\nu=\nu(D\cap D_n)\)</span> for every Borel <span class="math" data-tex="\(D\)">\(D\)</span>. Uniqueness of finite densities yields <span class="math" data-tex="\(g_n=1_{D_n}\)">\(g_n=1_{D_n}\)</span> almost everywhere. Discard the countable union of these Borel null sets. For any remaining <span class="math" data-tex="\(y\)">\(y\)</span>, all sets
+<span class="math math-display" data-tex="\[
+ A_{n,y}=\begin{cases}p^{-1}D_n,&amp;y\in D_n,\\
+ X\setminus p^{-1}D_n,&amp;y\notin D_n\end{cases}
+ \tag{X2}
+\]">\[
+ A_{n,y}=\begin{cases}p^{-1}D_n,&amp;y\in D_n,\\
+ X\setminus p^{-1}D_n,&amp;y\notin D_n\end{cases}
+ \tag{X2}
+\]</span>
+have <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>-mass one. Their countable intersection has mass one, and point separation makes it exactly <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span>. The same exceptional set works for every fibre-support assertion.</p>
+<p><strong>3. Recovering an infinite measure from a probability.</strong> In the fractional-part example, let <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span> be Borel on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Explain why removing the geometric masses gives the full Lebesgue integral, even if that integral is infinite.</p>
+<p><strong>Solution.</strong> At the point <span class="math" data-tex="\(y+n\)">\(y+n\)</span>, the conditional probability mass is <span class="math" data-tex="\(a_n=2^{-|n|}/3\)">\(a_n=2^{-|n|}/3\)</span> and the normalizing function is <span class="math" data-tex="\(w(y+n)=a_n\)">\(w(y+n)=a_n\)</span>. Weighting by <span class="math" data-tex="\(w^{-1}\)">\(w^{-1}\)</span> therefore gives mass one. Consequently the integral is
+<span class="math math-display" data-tex="\[
+ \int_0^1\sum_{n\in\mathbb Z}f(y+n)\,dy
+ =\sum_{n\in\mathbb Z}\int_{[n,n+1)}f(x)\,dx
+ =\int_{\mathbb R}f(x)\,dx.
+ \tag{X3}
+\]">\[
+ \int_0^1\sum_{n\in\mathbb Z}f(y+n)\,dy
+ =\sum_{n\in\mathbb Z}\int_{[n,n+1)}f(x)\,dx
+ =\int_{\mathbb R}f(x)\,dx.
+ \tag{X3}
+\]</span>
+Monotone convergence for finite partial sums justifies both the sum and the infinite value; the half-open intervals form a disjoint partition of the real line. No finite measure is attributed to a whole counting fibre.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L74.html">Previous lesson</a><a href="OA-FLOW-L42.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L75.md">Lesson source</a></nav></main></body></html>

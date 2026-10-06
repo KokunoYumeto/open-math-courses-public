@@ -1,0 +1,41 @@
+"""Exact energy absorption and norm recovery; original diagram, CC0."""
+from pathlib import Path
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.patches import FancyBboxPatch,FancyArrowPatch
+import numpy as np
+plt.rcParams.update({'font.family':'DejaVu Sans','mathtext.fontset':'dejavusans','font.size':11})
+fig=plt.figure(figsize=(14,10),dpi=150,facecolor='#fffdfa')
+fig.text(.045,.955,'The weighted energy pays for the commutators',fontsize=20,weight='bold',color='#193249')
+fig.text(.045,.917,'Exact operator split and proved bounds; the adjustable parameter is fixed before the frequency limit',fontsize=11.5,color='#4b5867')
+ax=fig.add_axes([.045,.34,.52,.50]);ax.set_xlim(0,1);ax.set_ylim(0,1);ax.axis('off')
+def box(x,y,w,h,lines,color='#eaf3f8'):
+ ax.add_patch(FancyBboxPatch((x,y),w,h,boxstyle='round,pad=0.012',facecolor=color,edgecolor='#587a92',lw=1.4))
+ for j,line in enumerate(lines):ax.text(x+w/2,y+h*(1-(j+1)/(len(lines)+1)),line,ha='center',va='center',fontsize=12,color='#193249')
+def arrow(a,b):ax.add_patch(FancyArrowPatch(a,b,arrowstyle='-|>',mutation_scale=14,lw=1.4,color='#587a92'))
+box(.26,.82,.48,.15,[r'$U=H_\lambda u,\quad f=PU$'])
+box(.015,.49,.44,.21,[r'$U_1=(I-\Psi)U$',r'$PU_1=(I-\Psi)f-g$'])
+box(.545,.49,.44,.21,[r'$U_2=\Psi U$',r'$PU_2=\Psi f+g$'])
+arrow((.38,.81),(.23,.71));arrow((.63,.81),(.76,.71))
+box(.015,.17,.44,.19,[r'$N_1=\sum_a\|m_a\varphi_aU_1\|^2$'])
+box(.545,.17,.44,.19,[r'$N_2=\sum_j\|M_j\Phi_jU_2\|^2$'])
+arrow((.23,.48),(.23,.37));arrow((.76,.48),(.76,.37))
+ax.text(.5,.085,r'$N=N_1+N_2,\qquad g=[P,\Psi]U$',ha='center',fontsize=12,color='#193249')
+fig.text(.057,.335,'The split is exact; the two components are not assumed orthogonal.',fontsize=10,color='#4b5867')
+plot=fig.add_axes([.66,.46,.29,.34],facecolor='#fffdfa')
+theta=np.linspace(0,.9,181);plot.plot(theta,1/(1-theta),color='#4389b7',lw=2.5)
+plot.axvspan(0,.5,color='#e5f1e9',alpha=.8);plot.axvline(.5,color='#497a64',ls='--',lw=1.3)
+plot.plot([.5],[2],'o',color='#193249');plot.annotate(r'$\theta=1/2:\ (1-\theta)^{-1}=2$',(.5,2),xytext=(.19,5.3),fontsize=10,arrowprops={'arrowstyle':'->','color':'#497a64'})
+plot.set_xlim(0,.9);plot.set_ylim(0,10.5);plot.set_xticks([0,.25,.5,.75]);plot.set_xlabel(r'$\theta=K/\rho^{2\alpha}$');plot.set_ylabel(r'$(1-\theta)^{-1}$');plot.grid(alpha=.18)
+plot.set_title('Exact absorption factor',fontsize=13,weight='bold',pad=15)
+for s in plot.spines.values():s.set_color('#bdc7ce')
+fig.text(.802,.368,r'$(\rho^{2\alpha}-K)N\leq KF$',ha='center',fontsize=13,color='#193249')
+fig.text(.802,.337,r'$F=\|f\|^2+\|u\|^2$',ha='center',fontsize=11,color='#4b5867')
+patch=FancyBboxPatch((.045,.10),.91,.17,transform=fig.transFigure,boxstyle='round,pad=0.008',facecolor='#f4f7f8',edgecolor='#587a92',lw=1.3);fig.add_artist(patch)
+fig.text(.5,.228,'The bracket scales and operator reconstruction recover the original norm',ha='center',fontsize=12,weight='bold',color='#193249')
+fig.text(.5,.181,r'$\lambda^{-4\alpha}\|U\|^2\leq2C_Rc^{-2}\rho^{2\alpha}N+4C_R\lambda^{2-4\alpha}\|u\|^2$',ha='center',fontsize=14,color='#193249')
+fig.text(.5,.135,r'$\alpha=1/(k+1),\quad k\geq1,\quad 2-4\alpha=2(k-1)/(k+1)\geq0$',ha='center',fontsize=12,color='#193249')
+fig.text(.045,.061,'Proof: Theorem1.1; Sections2–5,(2.2),(4.1)–(4.4),(5.2). The curve is scalar algebra;no numerical symbol or proof constant is assigned.',fontsize=9,color='#4b5867')
+fig.text(.045,.035,'Hörmander IV,Proposition27.6.1,printed212,217–218. Original diagram and reproducible source;CC0.',fontsize=9,color='#4b5867')
+fig.savefig(Path(__file__).with_name('energy-absorption-and-norm-recovery.png'),dpi=150)

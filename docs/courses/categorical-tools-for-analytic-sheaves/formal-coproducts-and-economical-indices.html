@@ -1,0 +1,357 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formal coproducts and economical indices</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="formal-coproducts-and-economical-indices">Formal coproducts and economical indices</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0. Self-checked; no independent review.</em></p>
+<p>Two representables have a coproduct in presheaves, but that formal coproduct has no representing object. An arbitrary category can nevertheless be replaced by a cofinal poset with very short chains. A second construction freely adds the incoming-arrow summands to an object family; its colimit is the coproduct of that entire family. The three constructions require careful attention to tags, identities and structural maps.</p>
+<p>Compose from right to left. Category data lie in ambient set theory. Fix a working Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, with all closure and relabelling proofs retained from <a href="universes-and-small-categories.html#1-smallness-is-invariant-under-relabelling">Universes and small categories, Sections 1–3</a>. The presheaf assertion requires locally small Hom values, using their established encodings; the entire object set of its base need not be small. The poset construction is conditional on the ambient category data being sets and is small when the original category is small. The incoming-arrow construction uses a small index and a value category with all small colimits.</p>
+<p>Retain the complete Yoneda identity-evaluation inverse and naturality in <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points and representations, Section 2</a>, the full arbitrary-base pointwise presheaf factors in <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">Colimits as connected components, Section 4</a>, and all chosen cocone factors and discrete coproduct laws in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families, Section 2</a>. Every use below preserves the specified universal family.</p>
+<h2 id="1-a-formal-coproduct-of-representables">1. A formal coproduct of representables</h2>
+<p>Let <span class="math" data-tex="\(X,Y\in C\)">\(X,Y\in C\)</span>, and write <span class="math" data-tex="\(h_X(T)=C(T,X)\)">\(h_X(T)=C(T,X)\)</span>. In <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>, form
+<span class="math math-display" data-tex="\[
+P=h_X\amalg h_Y.
+\tag{1.1}
+\]">\[
+P=h_X\amalg h_Y.
+\tag{1.1}
+\]</span>
+The entire pointwise colimit proof supplies its values and restrictions:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(T)=\{(0,f):f:T\to X\}\\
+\amalg\{(1,g):g:T\to Y\},\\
+P(a)(0,f)=(0,fa),\\
+P(a)(1,g)=(1,ga)\\
+(a:T&#x27;\to T).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+P(T)=\{(0,f):f:T\to X\}\\
+\amalg\{(1,g):g:T\to Y\},\\
+P(a)(0,f)=(0,fa),\\
+P(a)(1,g)=(1,ga)\\
+(a:T&#x27;\to T).
+\end{gathered}
+\tag{1.2}
+\]</span>
+Here the two displayed families have disjoint tags; the outer union notation retains that convention. Each presheaf map out of <span class="math" data-tex="\(P\)">\(P\)</span> is uniquely a pair of maps out of <span class="math" data-tex="\(h_X,h_Y\)">\(h_X,h_Y\)</span>, by its components and their naturality. Restrictions preserve the tags even when <span class="math" data-tex="\(X=Y\)">\(X=Y\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> The presheaf <span class="math" data-tex="\(P\)">\(P\)</span> is not representable.</p>
+<p><strong>Proof using every identity map.</strong> Suppose <span class="math" data-tex="\(\sigma:h_Z\to P\)">\(\sigma:h_Z\to P\)</span> is an isomorphism. The value
+<span class="math" data-tex="\(\sigma_Z(1_Z)\)">\(\sigma_Z(1_Z)\)</span> belongs to one of the two tagged families. If it is <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>, then <span class="math" data-tex="\(b:Z\to X\)">\(b:Z\to X\)</span>. For any <span class="math" data-tex="\(a:T\to Z\)">\(a:T\to Z\)</span>, naturality at <span class="math" data-tex="\(a\)">\(a\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sigma_T(a)
+&amp;=P(a)\sigma_Z(1_Z)\\
+&amp;=(0,ba).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\sigma_T(a)
+&amp;=P(a)\sigma_Z(1_Z)\\
+&amp;=(0,ba).
+\end{aligned}
+\tag{1.3}
+\]</span>
+This is precisely the full Yoneda inverse applied to the chosen identity value. Thus every element in the image of <span class="math" data-tex="\(\sigma_T\)">\(\sigma_T\)</span> has tag <span class="math" data-tex="\(0\)">\(0\)</span>. At <span class="math" data-tex="\(T=Y\)">\(T=Y\)</span>, the element <span class="math" data-tex="\((1,1_Y)\)">\((1,1_Y)\)</span> exists and cannot belong to that image. This contradicts the surjectivity of the isomorphism component <span class="math" data-tex="\(\sigma_Y\)">\(\sigma_Y\)</span>.</p>
+<p>If the chosen identity value has tag <span class="math" data-tex="\(1\)">\(1\)</span>, the same naturality formula makes every image have tag <span class="math" data-tex="\(1\)">\(1\)</span>, while <span class="math" data-tex="\((0,1_X)\)">\((0,1_X)\)</span> at <span class="math" data-tex="\(T=X\)">\(T=X\)</span> has no preimage. This gives the other contradiction. Both cases exclude every <span class="math" data-tex="\(Z\)">\(Z\)</span> and every representing isomorphism. No assumption that Hom sets between distinct objects are nonempty enters the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An ordinary coproduct of <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>, if one exists, has its different Hom property in the target variable. It does not identify (1.1) with a represented presheaf. For the category with one object and its identity, the ordinary coproduct is that object, whereas (1.1) is a two-element presheaf. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, no <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> exist and the assertion has no instances.</p>
+<h2 id="2-a-cofinal-poset-with-two-object-copies">2. A cofinal poset with two object copies</h2>
+<p>For an ambient category <span class="math" data-tex="\(C\)">\(C\)</span>, form the disjointly tagged set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Ob}R=
+\{\langle f\rangle:f\in\operatorname{Mor}C\}\\
+\amalg
+\{X_0,X_1:X\in\operatorname{Ob}C\}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Ob}R=
+\{\langle f\rangle:f\in\operatorname{Mor}C\}\\
+\amalg
+\{X_0,X_1:X\in\operatorname{Ob}C\}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+An arrow node and either object copy are different elements, including when <span class="math" data-tex="\(f=1_X\)">\(f=1_X\)</span>. Give this set the reflexive relation with additional inequalities, for each <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>,
+<span class="math math-display" data-tex="\[
+\langle f\rangle\le X_0,
+\qquad
+\langle f\rangle\le Y_1.
+\tag{2.2}
+\]">\[
+\langle f\rangle\le X_0,
+\qquad
+\langle f\rangle\le Y_1.
+\tag{2.2}
+\]</span>
+There are no other inequalities.</p>
+<p><strong>Lemma 2.1.</strong> This is a poset, and its associated category admits a functor <span class="math" data-tex="\(\pi:R\to C\)">\(\pi:R\to C\)</span> sending
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi(X_0)=\pi(X_1)=X,\\
+\pi(\langle f:X\to Y\rangle)=X,\\
+\pi(\langle f\rangle\to X_0)=1_X,\\
+\pi(\langle f\rangle\to Y_1)=f.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\pi(X_0)=\pi(X_1)=X,\\
+\pi(\langle f:X\to Y\rangle)=X,\\
+\pi(\langle f\rangle\to X_0)=1_X,\\
+\pi(\langle f\rangle\to Y_1)=f.
+\end{gathered}
+\tag{2.3}
+\]</span></p>
+<p><strong>Proof of all relation and functor laws.</strong> Reflexivity was inserted explicitly. Every nonidentity comparison starts at an arrow node and ends at an object copy, so two nonidentity comparisons cannot compose. Thus transitivity adds nothing, and no pair of opposite nonidentity comparisons exists; antisymmetry follows. In particular, the category has just its identities and the two declared edges per arrow node. Their targets remain different for an endomorphism, since <span class="math" data-tex="\(X_0\ne X_1\)">\(X_0\ne X_1\)</span>. Each assigned edge in (2.3) has the required domain and codomain. Assigning each identity to the identity of its image preserves identities. Every composable pair includes an identity, so the identity laws in <span class="math" data-tex="\(C\)">\(C\)</span> prove preservation of every composition. This proves the entire functor construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> The functor <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is cofinal.</p>
+<p><strong>Proof with explicit comma paths.</strong> Use the full incoming-comma construction and nonempty connected convention from <a href="change-an-index-without-changing-universal-maps.html#1-connected-comma-categories">Change an index, Section 1</a>. Fix <span class="math" data-tex="\(Z\in C\)">\(Z\in C\)</span>. In <span class="math" data-tex="\((Z\downarrow\pi)\)">\((Z\downarrow\pi)\)</span>, write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_n(X,q)=(X_n,q:Z\to X),\\
+A(f,q)=(\langle f:X\to Y\rangle,\\
+q:Z\to X).
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+U_n(X,q)=(X_n,q:Z\to X),\\
+A(f,q)=(\langle f:X\to Y\rangle,\\
+q:Z\to X).
+\end{gathered}
+\tag{2.4}
+\]</span>
+The comma equations give exactly the two arrows
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(f,q)\longrightarrow U_0(X,q),\\
+A(f,q)\longrightarrow U_1(Y,fq).
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+A(f,q)\longrightarrow U_0(X,q),\\
+A(f,q)\longrightarrow U_1(Y,fq).
+\end{gathered}
+\tag{2.5}
+\]</span>
+Their maps are the identity and <span class="math" data-tex="\(f\)">\(f\)</span> from (2.3). All remaining comma arrows are identities, since the index has no other nonidentity edges.</p>
+<p>The object <span class="math" data-tex="\(U_0(Z,1_Z)\)">\(U_0(Z,1_Z)\)</span> supplies nonemptiness. For every <span class="math" data-tex="\(q:Z\to X\)">\(q:Z\to X\)</span>, the following is a valid zigzag:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_0(Z,1_Z)\longleftarrow A(q,1_Z)\\
+\longrightarrow U_1(X,q)\\
+\longleftarrow A(1_X,q)
+\longrightarrow U_0(X,q).
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+U_0(Z,1_Z)\longleftarrow A(q,1_Z)\\
+\longrightarrow U_1(X,q)\\
+\longleftarrow A(1_X,q)
+\longrightarrow U_0(X,q).
+\end{gathered}
+\tag{2.6}
+\]</span>
+Each arrow is an instance of (2.5), and every comma equation has the displayed composite <span class="math" data-tex="\(q\)">\(q\)</span>. Thus either object copy over any <span class="math" data-tex="\(q\)">\(q\)</span> is connected to the common object. A general <span class="math" data-tex="\(A(f,q)\)">\(A(f,q)\)</span> is connected to <span class="math" data-tex="\(U_0(X,q)\)">\(U_0(X,q)\)</span> by the first arrow in (2.5). We have exhausted all comma objects, so this category is connected as well as nonempty. This holds for every <span class="math" data-tex="\(Z\)">\(Z\)</span>, proving cofinality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The full cocone factors can also be written without a path choice.</strong> Let <span class="math" data-tex="\(D:C\to B\)">\(D:C\to B\)</span>. For an <span class="math" data-tex="\(R\)">\(R\)</span>-cocone <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(D\pi\)">\(D\pi\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>, its identity-node edges give
+<span class="math math-display" data-tex="\[
+b_{X_0}=b_{\langle1_X\rangle}=b_{X_1}.
+\tag{2.7}
+\]">\[
+b_{X_0}=b_{\langle1_X\rangle}=b_{X_1}.
+\tag{2.7}
+\]</span>
+Its edges at <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> then give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_{Y_0}D(f)&amp;=b_{Y_1}D(f)\\
+&amp;=b_{\langle f\rangle}\\
+&amp;=b_{X_0}.
+\end{aligned}
+\tag{2.8}
+\]">\[
+\begin{aligned}
+b_{Y_0}D(f)&amp;=b_{Y_1}D(f)\\
+&amp;=b_{\langle f\rangle}\\
+&amp;=b_{X_0}.
+\end{aligned}
+\tag{2.8}
+\]</span>
+Hence <span class="math" data-tex="\(a_X=b_{X_0}\)">\(a_X=b_{X_0}\)</span> is a <span class="math" data-tex="\(C\)">\(C\)</span>-cocone of <span class="math" data-tex="\(D\)">\(D\)</span>. Conversely restrict any such <span class="math" data-tex="\(a\)">\(a\)</span> by setting <span class="math" data-tex="\(b_p=a_{\pi p}\)">\(b_p=a_{\pi p}\)</span>. The <span class="math" data-tex="\(C\)">\(C\)</span>-cocone equation proves both required edge equations. Starting with <span class="math" data-tex="\(a\)">\(a\)</span>, extension of its restriction is <span class="math" data-tex="\(a\)">\(a\)</span>. Starting with <span class="math" data-tex="\(b\)">\(b\)</span>, (2.7) and the first edge at <span class="math" data-tex="\(f\)">\(f\)</span> recover both object copies and every arrow node. Thus the two operations are inverse on entire cocones. Postcomposing the target map, or precomposing the component maps of a diagram transformation, commutes with both formulas. The correspondence is natural in <span class="math" data-tex="\(D,W\)">\(D,W\)</span>.</p>
+<p>Consequently either chosen colimit of <span class="math" data-tex="\(D\)">\(D\)</span> or <span class="math" data-tex="\(D\pi\)">\(D\pi\)</span> gives the other by the complete representing-cocone proof in <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index, Section 2</a>. If their legs are <span class="math" data-tex="\(c_X,d_p\)">\(c_X,d_p\)</span>, the specified comparisons satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e:\operatorname{colim}_R D\pi
+\to\operatorname{colim}_C D,\\
+e d_p=c_{\pi p},\\
+x:\operatorname{colim}_C D
+\to\operatorname{colim}_R D\pi,\\
+x c_X=d_{X_0}.
+\end{gathered}
+\tag{2.9}
+\]">\[
+\begin{gathered}
+e:\operatorname{colim}_R D\pi
+\to\operatorname{colim}_C D,\\
+e d_p=c_{\pi p},\\
+x:\operatorname{colim}_C D
+\to\operatorname{colim}_R D\pi,\\
+x c_X=d_{X_0}.
+\end{gathered}
+\tag{2.9}
+\]</span>
+The second family is compatible by (2.8) for <span class="math" data-tex="\(d\)">\(d\)</span>. At every <span class="math" data-tex="\(c_X\)">\(c_X\)</span>, <span class="math" data-tex="\(ex c_X=c_X\)">\(ex c_X=c_X\)</span>. At either object-copy leg, (2.7) gives <span class="math" data-tex="\(xe d_{X_n}=d_{X_n}\)">\(xe d_{X_n}=d_{X_n}\)</span>; at every arrow-node leg, the first edge gives <span class="math" data-tex="\(xe d_{\langle f\rangle}=d_{X_0}=d_{\langle f\rangle}\)">\(xe d_{\langle f\rangle}=d_{X_0}=d_{\langle f\rangle}\)</span>. Universal uniqueness proves both inverse identities and the retained leg laws prove naturality.</p>
+<p>This poset has <span class="math" data-tex="\(|\operatorname{Mor}C|+2|\operatorname{Ob}C|\)">\(|\operatorname{Mor}C|+2|\operatorname{Ob}C|\)</span> objects and one identity at each of them, plus two nonidentity edges per original arrow. The full small finite-union and transported encoding proof therefore bounds its objects and arrows when <span class="math" data-tex="\(C\)">\(C\)</span> is small, and the same formulas give finiteness when <span class="math" data-tex="\(C\)">\(C\)</span> is finite. It need not be directed. If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, <span class="math" data-tex="\(R\)">\(R\)</span> is empty, cofinality is vacuous, and the cocone correspondence is the empty one; a colimit then exists exactly when the value category supplies the corresponding initial object.</p>
+<h2 id="3-an-incoming-arrow-coproduct-diagram">3. An incoming-arrow coproduct diagram</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be small, let <span class="math" data-tex="\(B\)">\(B\)</span> admit small colimits, and let <span class="math" data-tex="\(A_i\in B\)">\(A_i\in B\)</span> be an object for each <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>. No maps between these objects are needed yet. For each incoming arrow <span class="math" data-tex="\(a:k\to i\)">\(a:k\to i\)</span>, give a chosen coproduct its summand map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Psi A(i)=\coprod_{a:k\to i} A_k,\\
+\iota_a^i:A_k\to\Psi A(i).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\Psi A(i)=\coprod_{a:k\to i} A_k,\\
+\iota_a^i:A_k\to\Psi A(i).
+\end{gathered}
+\tag{3.1}
+\]</span>
+The family is indexed by the actual arrows, including identities. Distinct arrows retain distinct summands even if their domains and codomains agree. Smallness of <span class="math" data-tex="\(I\)">\(I\)</span> bounds this incoming-arrow set as a subset of its small morphism set, by the full universe subset and encoding proof.</p>
+<p>For <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>, the entire coproduct universal property gives the unique map with
+<span class="math math-display" data-tex="\[
+\Psi A(s)\iota_a^i=\iota_{sa}^j.
+\tag{3.2}
+\]">\[
+\Psi A(s)\iota_a^i=\iota_{sa}^j.
+\tag{3.2}
+\]</span>
+Both <span class="math" data-tex="\(\Psi A(1_i)\)">\(\Psi A(1_i)\)</span> and the identity have the same composite with every <span class="math" data-tex="\(\iota_a^i\)">\(\iota_a^i\)</span>. For successive <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, both <span class="math" data-tex="\(\Psi A(t)\Psi A(s)\)">\(\Psi A(t)\Psi A(s)\)</span> and <span class="math" data-tex="\(\Psi A(ts)\)">\(\Psi A(ts)\)</span> have composite <span class="math" data-tex="\(\iota_{tsa}\)">\(\iota_{tsa}\)</span> on each summand. Coproduct uniqueness proves both functor laws.</p>
+<p><strong>Proposition 3.1 (the full free-diagram factor).</strong> For a diagram <span class="math" data-tex="\(E:I\to B\)">\(E:I\to B\)</span>, there are inverse assignments
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(\Psi A,E)\\
+\simeq\prod_{k\in\operatorname{Ob}I}B(A_k,E(k)),\\
+v\longmapsto
+(v_k\iota_{1_k}^k)_k.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(\Psi A,E)\\
+\simeq\prod_{k\in\operatorname{Ob}I}B(A_k,E(k)),\\
+v\longmapsto
+(v_k\iota_{1_k}^k)_k.
+\end{gathered}
+\tag{3.3}
+\]</span>
+The right side is the ambient set of component families; use a larger universe if necessary.</p>
+<p><strong>Proof on all summands, with both naturalities.</strong> Given maps <span class="math" data-tex="\(z_k:A_k\to E(k)\)">\(z_k:A_k\to E(k)\)</span>, define <span class="math" data-tex="\(v_i\)">\(v_i\)</span> by the unique coproduct factor with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_i\iota_a^i=E(a)z_k\\
+(a:k\to i).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+v_i\iota_a^i=E(a)z_k\\
+(a:k\to i).
+\end{gathered}
+\tag{3.4}
+\]</span>
+For <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>, the composites of <span class="math" data-tex="\(E(s)v_i\)">\(E(s)v_i\)</span> and <span class="math" data-tex="\(v_j\Psi A(s)\)">\(v_j\Psi A(s)\)</span> with <span class="math" data-tex="\(\iota_a^i\)">\(\iota_a^i\)</span> are both <span class="math" data-tex="\(E(sa)z_k\)">\(E(sa)z_k\)</span>. Uniqueness makes <span class="math" data-tex="\(v\)">\(v\)</span> natural. Evaluating at <span class="math" data-tex="\(1_k\)">\(1_k\)</span> recovers <span class="math" data-tex="\(z_k\)">\(z_k\)</span>, because <span class="math" data-tex="\(E(1_k)=1\)">\(E(1_k)=1\)</span>. Conversely, for natural <span class="math" data-tex="\(v\)">\(v\)</span>, its square at <span class="math" data-tex="\(a:k\to i\)">\(a:k\to i\)</span> and (3.2) give
+<span class="math math-display" data-tex="\[
+v_i\iota_a^i=E(a)v_k\iota_{1_k}^k.
+\tag{3.5}
+\]">\[
+v_i\iota_a^i=E(a)v_k\iota_{1_k}^k.
+\tag{3.5}
+\]</span>
+Thus reconstruction from its identity-summand values gives exactly the original <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, on every summand; uniqueness proves the other inverse equation.</p>
+<p>A family map <span class="math" data-tex="\(h_k:A&#x27;_k\to A_k\)">\(h_k:A&#x27;_k\to A_k\)</span> induces the unique natural <span class="math" data-tex="\(\Psi h\)">\(\Psi h\)</span> with
+<span class="math" data-tex="\((\Psi h)_i\iota&#x27;{}^i_a=\iota^i_a h_k\)">\((\Psi h)_i\iota&#x27;{}^i_a=\iota^i_a h_k\)</span>. Testing summands proves naturality and both functor laws in <span class="math" data-tex="\(h\)">\(h\)</span>. For a diagram transformation <span class="math" data-tex="\(r:E\to E&#x27;\)">\(r:E\to E&#x27;\)</span>, the two routes applied to <span class="math" data-tex="\(v\Psi h\)">\(v\Psi h\)</span> and <span class="math" data-tex="\(rv\)">\(rv\)</span> respectively give the families <span class="math" data-tex="\(z_kh_k\)">\(z_kh_k\)</span> and <span class="math" data-tex="\(r_kz_k\)">\(r_kz_k\)</span>. Conversely (3.4) gives their factors, since
+<span class="math" data-tex="\(r_iE(a)=E&#x27;(a)r_k\)">\(r_iE(a)=E&#x27;(a)r_k\)</span>. These are both-variable naturality squares for (3.3), with their specified inverse assignments. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(I_{\mathrm d}\)">\(I_{\mathrm d}\)</span> be the discrete category on <span class="math" data-tex="\(\operatorname{Ob}I\)">\(\operatorname{Ob}I\)</span>, and let <span class="math" data-tex="\(\delta:I_{\mathrm d}\to I\)">\(\delta:I_{\mathrm d}\to I\)</span> be the identity on objects. Then <span class="math" data-tex="\(A\)">\(A\)</span> is a diagram on <span class="math" data-tex="\(I_{\mathrm d}\)">\(I_{\mathrm d}\)</span>, and (3.3) says precisely that <span class="math" data-tex="\(\Psi A\)">\(\Psi A\)</span> is its left Kan extension along <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. In the complete incoming-comma construction of <a href="extending-diagrams-by-universal-maps.html#3-build-the-left-extension">Extending diagrams, Section 3</a>, <span class="math" data-tex="\((\delta\downarrow i)\)">\((\delta\downarrow i)\)</span> is literally discrete on the arrows <span class="math" data-tex="\(a:k\to i\)">\(a:k\to i\)</span>: its only candidate morphisms come from identities, and their triangle equation forces the same <span class="math" data-tex="\(k,a\)">\(k,a\)</span>. Its colimit is therefore the coproduct (3.1), with exactly the maps (3.2). The full retained Kan factor proof agrees with (3.3)–(3.5).</p>
+<p><strong>Theorem 3.2.</strong> If <span class="math" data-tex="\(P=\coprod_k A_k\)">\(P=\coprod_k A_k\)</span>, with legs <span class="math" data-tex="\(j_k:A_k\to P\)">\(j_k:A_k\to P\)</span>, then <span class="math" data-tex="\(P\)">\(P\)</span> is the colimit of <span class="math" data-tex="\(\Psi A\)">\(\Psi A\)</span>, with the cocone defined by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_i\iota_a^i=j_k\\
+(a:k\to i).
+\end{gathered}
+\tag{3.6}
+\]">\[
+\begin{gathered}
+c_i\iota_a^i=j_k\\
+(a:k\to i).
+\end{gathered}
+\tag{3.6}
+\]</span></p>
+<p><strong>Proof of the complete cocone property.</strong> Equation (3.2) makes <span class="math" data-tex="\(c_j\Psi A(s)\)">\(c_j\Psi A(s)\)</span> and <span class="math" data-tex="\(c_i\)">\(c_i\)</span> agree on every original summand, so <span class="math" data-tex="\(c\)">\(c\)</span> is compatible. Given a cocone <span class="math" data-tex="\(b_i:\Psi A(i)\to W\)">\(b_i:\Psi A(i)\to W\)</span>, set
+<span class="math math-display" data-tex="\[
+z_k=b_k\iota_{1_k}^k.
+\tag{3.7}
+\]">\[
+z_k=b_k\iota_{1_k}^k.
+\tag{3.7}
+\]</span>
+Its cocone equation at <span class="math" data-tex="\(a:k\to i\)">\(a:k\to i\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_i\iota_a^i
+&amp;=b_i\Psi A(a)\iota_{1_k}^k\\
+&amp;=b_k\iota_{1_k}^k=z_k.
+\end{aligned}
+\tag{3.8}
+\]">\[
+\begin{aligned}
+b_i\iota_a^i
+&amp;=b_i\Psi A(a)\iota_{1_k}^k\\
+&amp;=b_k\iota_{1_k}^k=z_k.
+\end{aligned}
+\tag{3.8}
+\]</span>
+There is a unique coproduct factor <span class="math" data-tex="\(f:P\to W\)">\(f:P\to W\)</span> with <span class="math" data-tex="\(fj_k=z_k\)">\(fj_k=z_k\)</span>. Equations (3.6) and (3.8) show <span class="math" data-tex="\(fc_i=b_i\)">\(fc_i=b_i\)</span> on every summand, hence as arrows. If <span class="math" data-tex="\(g\)">\(g\)</span> also factors <span class="math" data-tex="\(b\)">\(b\)</span>, then
+<span class="math" data-tex="\(gj_k=gc_k\iota_{1_k}^k=b_k\iota_{1_k}^k=z_k\)">\(gj_k=gc_k\iota_{1_k}^k=b_k\iota_{1_k}^k=z_k\)</span>, so coproduct uniqueness gives <span class="math" data-tex="\(g=f\)">\(g=f\)</span>. This proves the colimit with its actual legs. Postcomposition in <span class="math" data-tex="\(W\)">\(W\)</span> commutes with (3.7) and the factor formulas, giving the full natural target correspondence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the original diagram <span class="math" data-tex="\(D:I\to B\)">\(D:I\to B\)</span>, take <span class="math" data-tex="\(A_i=D(i)\)">\(A_i=D(i)\)</span> to obtain the incoming-arrow diagram <span class="math" data-tex="\(\Psi D\)">\(\Psi D\)</span>. A transformation <span class="math" data-tex="\(z:D\to D&#x27;\)">\(z:D\to D&#x27;\)</span> induces the just-defined maps <span class="math" data-tex="\(\Psi z\)">\(\Psi z\)</span> and the coproduct map <span class="math" data-tex="\(Pz\)">\(Pz\)</span> with <span class="math" data-tex="\(Pz\,j_k=j&#x27;_kz_k\)">\(Pz\,j_k=j&#x27;_kz_k\)</span>. Testing every <span class="math" data-tex="\(\iota_a\)">\(\iota_a\)</span> gives
+<span class="math math-display" data-tex="\[
+Pz\,c_i=c&#x27;_i(\Psi z)_i.
+\tag{3.9}
+\]">\[
+Pz\,c_i=c&#x27;_i(\Psi z)_i.
+\tag{3.9}
+\]</span>
+Thus the colimit–coproduct comparison is natural in the original diagram. The construction of <span class="math" data-tex="\(\Psi D\)">\(\Psi D\)</span> uses its object values; its original arrow maps instead define the natural counit <span class="math" data-tex="\(\varepsilon_i:\Psi D(i)\to D(i)\)">\(\varepsilon_i:\Psi D(i)\to D(i)\)</span> by
+<span class="math" data-tex="\(\varepsilon_i\iota_a^i=D(a)\)">\(\varepsilon_i\iota_a^i=D(a)\)</span>. The functor law <span class="math" data-tex="\(D(sa)=D(s)D(a)\)">\(D(sa)=D(s)D(a)\)</span> proves that counit is natural. It can impose new identifications on the colimit, as the examples show.</p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is empty, <span class="math" data-tex="\(P\)">\(P\)</span> is the empty coproduct, an initial object of <span class="math" data-tex="\(B\)">\(B\)</span>. Both the family and diagram in (3.3) are empty, so there is one component family and one transformation. The cocone factor proof says exactly that this initial object is the empty colimit. All required small coproducts and colimits exist by the original hypothesis; no filteredness or nonemptiness is inserted.</p>
+<h2 id="4-four-graded-exercises-with-full-solutions">4. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-compare-the-two-coproduct-properties">Exercise 1 — compare the two coproduct properties</h3>
+<p><em>Introductory.</em> Let <span class="math" data-tex="\(C=\mathsf{Pt}\)">\(C=\mathsf{Pt}\)</span>, the category with one object <span class="math" data-tex="\(t\)">\(t\)</span> and its identity. Compute its ordinary coproduct <span class="math" data-tex="\(t\amalg t\)">\(t\amalg t\)</span>, the presheaf coproduct <span class="math" data-tex="\(h_t\amalg h_t\)">\(h_t\amalg h_t\)</span>, and the comparison induced by the ordinary coprojections. Verify both universal properties and explain why the comparison cannot be invertible.</p>
+<p><strong>Solution.</strong> The only object <span class="math" data-tex="\(t\)">\(t\)</span>, with both coprojections its identity, is the ordinary coproduct. For its only target, there is one pair of maps out of <span class="math" data-tex="\(t\)">\(t\)</span> and one map out of the candidate coproduct, and the factor assignment is the unique bijection. A presheaf on <span class="math" data-tex="\(\mathsf{Pt}\)">\(\mathsf{Pt}\)</span> is a set, with its identity action. Thus <span class="math" data-tex="\(h_t\)">\(h_t\)</span> is a singleton and its formal coproduct has the two tags <span class="math" data-tex="\((0,1_t),(1,1_t)\)">\((0,1_t),(1,1_t)\)</span>. For any target presheaf <span class="math" data-tex="\(W\)">\(W\)</span>, a map out of this coproduct uniquely specifies its independent values at the two tags, exactly a pair of maps from the singleton. This is its full universal property. The comparison to <span class="math" data-tex="\(h_{t\amalg t}=h_t\)">\(h_{t\amalg t}=h_t\)</span> sends both tags to <span class="math" data-tex="\(1_t\)">\(1_t\)</span>, by the ordinary identity coprojections. It is not injective and therefore not invertible.</p>
+<h3 id="exercise-2-keep-all-incoming-summands">Exercise 2 — keep all incoming summands</h3>
+<p><em>Intermediate.</em> Let <span class="math" data-tex="\(I=\{0&lt;1\}\)">\(I=\{0&lt;1\}\)</span>. Let <span class="math" data-tex="\(D(0)=\{a,b\}\)">\(D(0)=\{a,b\}\)</span>, <span class="math" data-tex="\(D(1)=\{c,d\}\)">\(D(1)=\{c,d\}\)</span>, with both <span class="math" data-tex="\(a,b\)">\(a,b\)</span> sent to <span class="math" data-tex="\(c\)">\(c\)</span>. Compute <span class="math" data-tex="\(\Psi D\)">\(\Psi D\)</span>, its colimit cocone, its counit to <span class="math" data-tex="\(D\)">\(D\)</span>, and the induced map to <span class="math" data-tex="\(\operatorname{colim}D\)">\(\operatorname{colim}D\)</span>. Show every universal factor.</p>
+<p><strong>Solution.</strong> There is one incoming arrow at <span class="math" data-tex="\(0\)">\(0\)</span> and two at <span class="math" data-tex="\(1\)">\(1\)</span>. Hence <span class="math" data-tex="\(\Psi D(0)=\{a,b\}\)">\(\Psi D(0)=\{a,b\}\)</span> and
+<span class="math" data-tex="\(\Psi D(1)=\{(0,a),(0,b),(1,c),(1,d)\}\)">\(\Psi D(1)=\{(0,a),(0,b),(1,c),(1,d)\}\)</span>, with <span class="math" data-tex="\(\Psi D(0\to1)\)">\(\Psi D(0\to1)\)</span> the injection into the first two points. The tags <span class="math" data-tex="\(0,1\)">\(0,1\)</span> here specify the domains of the two incoming arrows. Its terminal index <span class="math" data-tex="\(1\)">\(1\)</span> makes its colimit the displayed four-element set: any cocone is determined by its component from that value, and its component from stage <span class="math" data-tex="\(0\)">\(0\)</span> is the composite with the injection. This gives the unique factor to every target, including an empty target when such a cocone does not exist.</p>
+<p>The coproduct <span class="math" data-tex="\(P=D(0)\amalg D(1)\)">\(P=D(0)\amalg D(1)\)</span> has those same four elements. The cocone <span class="math" data-tex="\(c_1\)">\(c_1\)</span> is the identity and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> injects <span class="math" data-tex="\(a,b\)">\(a,b\)</span> into their tags, as (3.6) states. The counit at <span class="math" data-tex="\(0\)">\(0\)</span> is the identity on <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; at <span class="math" data-tex="\(1\)">\(1\)</span> it sends <span class="math" data-tex="\((0,a),(0,b),(1,c)\)">\((0,a),(0,b),(1,c)\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>, and <span class="math" data-tex="\((1,d)\)">\((1,d)\)</span> to <span class="math" data-tex="\(d\)">\(d\)</span>. Its square commutes on both original points. The colimit of <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(\{c,d\}\)">\(\{c,d\}\)</span>, again by the terminal index and the full endpoint factor. The induced colimit map has exactly those counit values, so it makes the two original points <span class="math" data-tex="\(a,b\)">\(a,b\)</span> coincide with the <span class="math" data-tex="\(c\)">\(c\)</span> point while retaining <span class="math" data-tex="\(d\)">\(d\)</span>. Thus the colimit of the free diagram is the entire object coproduct; the counit is responsible for the additional relations.</p>
+<h3 id="exercise-3-a-group-is-replaced-by-a-short-poset">Exercise 3 — a group is replaced by a short poset</h3>
+<p><em>Advanced.</em> Let <span class="math" data-tex="\(C\)">\(C\)</span> have one object <span class="math" data-tex="\(t\)">\(t\)</span> and the group <span class="math" data-tex="\(\{1,g\}\)">\(\{1,g\}\)</span>, <span class="math" data-tex="\(g^2=1\)">\(g^2=1\)</span>. List the poset <span class="math" data-tex="\(R\)">\(R\)</span>, its functor <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and every object and nonidentity arrow of <span class="math" data-tex="\((t\downarrow\pi)\)">\((t\downarrow\pi)\)</span>. For the action diagram on <span class="math" data-tex="\(\{a,b\}\)">\(\{a,b\}\)</span> where <span class="math" data-tex="\(g\)">\(g\)</span> swaps the two points, compute the two colimits and their comparison factors.</p>
+<p><strong>Solution.</strong> The poset has four objects <span class="math" data-tex="\(\langle1\rangle,\langle g\rangle,t_0,t_1\)">\(\langle1\rangle,\langle g\rangle,t_0,t_1\)</span>. Each arrow node is below each object copy, giving four nonidentity edges; there are also four identities. Every object maps to <span class="math" data-tex="\(t\)">\(t\)</span>. Both edges to <span class="math" data-tex="\(t_0\)">\(t_0\)</span> map to <span class="math" data-tex="\(1\)">\(1\)</span>. The edges to <span class="math" data-tex="\(t_1\)">\(t_1\)</span> map respectively to <span class="math" data-tex="\(1,g\)">\(1,g\)</span>. These assignments satisfy all composition laws since there are no composable nonidentity edges.</p>
+<p>The comma has four upper objects <span class="math" data-tex="\(U_0(t,1),U_0(t,g),U_1(t,1),U_1(t,g)\)">\(U_0(t,1),U_0(t,g),U_1(t,1),U_1(t,g)\)</span>, and four lower objects <span class="math" data-tex="\(A(1,1),A(1,g),A(g,1),A(g,g)\)">\(A(1,1),A(1,g),A(g,1),A(g,g)\)</span>. For each <span class="math" data-tex="\(f,q\in\{1,g\}\)">\(f,q\in\{1,g\}\)</span>, its two nonidentity edges go to <span class="math" data-tex="\(U_0(t,q)\)">\(U_0(t,q)\)</span> and <span class="math" data-tex="\(U_1(t,fq)\)">\(U_1(t,fq)\)</span>. These eight edges are all of its nonidentity arrows, together with the eight identities. The underlying graph is an eight-vertex cycle, so there is one component. The explicit paths of (2.6) can alternatively verify every vertex's connection to <span class="math" data-tex="\(U_0(t,1)\)">\(U_0(t,1)\)</span>.</p>
+<p>In the original action, an invariant map to any set <span class="math" data-tex="\(W\)">\(W\)</span> must take <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to the same value; conversely any such map is invariant. Its unique factor is from a singleton, so the original colimit is a singleton. In the restricted diagram, all four index values have two points. The identity-node edges identify both object-copy values point by point, and the <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span> edges then identify <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span>. Thus all eight tagged points lie in one class. A restricted cocone is determined by one value, by those same edge equations, and factors uniquely from the singleton. Both colimits have their one point, <span class="math" data-tex="\(e,x\)">\(e,x\)</span> fix that point, and the complete factor formulas of (2.7)–(2.9) recover all four original cocone components.</p>
+<h3 id="exercise-4-free-an-action-without-applying-it-to-the-values">Exercise 4 — free an action without applying it to the values</h3>
+<p><em>Challenge.</em> For the same two-element group <span class="math" data-tex="\(I\)">\(I\)</span>, let <span class="math" data-tex="\(D(t)=\{a,b\}\)">\(D(t)=\{a,b\}\)</span> with <span class="math" data-tex="\(g\)">\(g\)</span> swapping <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Compute <span class="math" data-tex="\(\Psi D\)">\(\Psi D\)</span>, all its action maps, its colimit and counit. Verify directly the correspondence (3.3) for every equivariant target <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Solution.</strong> The only value of <span class="math" data-tex="\(\Psi D\)">\(\Psi D\)</span> has four points <span class="math" data-tex="\((1,a),(1,b),(g,a),(g,b)\)">\((1,a),(1,b),(g,a),(g,b)\)</span>. Postcomposition by <span class="math" data-tex="\(g\)">\(g\)</span> exchanges the labels <span class="math" data-tex="\(1,g\)">\(1,g\)</span> while retaining <span class="math" data-tex="\(a\)">\(a\)</span> or <span class="math" data-tex="\(b\)">\(b\)</span>. The identity fixes all four points, and applying this label exchange twice gives the identity, so every functor law is checked.</p>
+<p>Its two quotient classes are <span class="math" data-tex="\(\{(1,a),(g,a)\}\)">\(\{(1,a),(g,a)\}\)</span> and <span class="math" data-tex="\(\{(1,b),(g,b)\}\)">\(\{(1,b),(g,b)\}\)</span>. An invariant cocone function is exactly a choice of one value for each class, so it factors uniquely from the two-element set <span class="math" data-tex="\(\{a,b\}\)">\(\{a,b\}\)</span>. The cocone forgets the arrow label, and the coproduct over the single object is <span class="math" data-tex="\(D(t)=\{a,b\}\)">\(D(t)=\{a,b\}\)</span>, as Theorem 3.2 asserts.</p>
+<p>The counit sends <span class="math" data-tex="\((s,x)\)">\((s,x)\)</span> to <span class="math" data-tex="\(D(s)x\)">\(D(s)x\)</span>, so its values at <span class="math" data-tex="\((1,a),(1,b),(g,a),(g,b)\)">\((1,a),(1,b),(g,a),(g,b)\)</span> are <span class="math" data-tex="\(a,b,b,a\)">\(a,b,b,a\)</span>. It intertwines the <span class="math" data-tex="\(g\)">\(g\)</span> actions because <span class="math" data-tex="\(D(gs)=D(g)D(s)\)">\(D(gs)=D(g)D(s)\)</span>. The colimit of <span class="math" data-tex="\(D\)">\(D\)</span> is a singleton, and the induced colimit map sends both free classes to that point.</p>
+<p>For any diagram <span class="math" data-tex="\(E\)">\(E\)</span> on this group and any function <span class="math" data-tex="\(z:\{a,b\}\to E(t)\)">\(z:\{a,b\}\to E(t)\)</span>, define <span class="math" data-tex="\(v(s,x)=E(s)z(x)\)">\(v(s,x)=E(s)z(x)\)</span>. Then
+<span class="math" data-tex="\(v(gs,x)=E(g)v(s,x)\)">\(v(gs,x)=E(g)v(s,x)\)</span>, proving equivariance. Its values at <span class="math" data-tex="\((1,x)\)">\((1,x)\)</span> are <span class="math" data-tex="\(z(x)\)">\(z(x)\)</span>. Conversely, equivariance of <span class="math" data-tex="\(v\)">\(v\)</span> forces <span class="math" data-tex="\(v(g,x)=E(g)v(1,x)\)">\(v(g,x)=E(g)v(1,x)\)</span>, so the identity-label values uniquely determine every component. These two assignments are inverse, even for empty values, and postcomposition by any equivariant target map preserves them. Precomposition by any function of the free family likewise acts on <span class="math" data-tex="\(z\)">\(z\)</span> before the same formula. This verifies the full factor correspondence on these actual objects.</p>
+<h2 id="5-references-and-retained-proof-interfaces">5. References and retained proof interfaces</h2>
+<ul>
+<li><strong>Schapira.</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 2.1 and 2.7, for coproducts and ind-objects.</li>
+<li><strong>[Stacks, Categories].</strong> The pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L540-L566">Yoneda identity-evaluation lemma and proof</a> and <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L1720-L1776">cofinal definition and comparison declaration</a> were compared with the full owned interfaces. The owned proofs supply all inverse and naturality checks used above; the pinned cofinal comparison's proof is omitted. These linked sources retain GFDL 1.2 or later under their <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a>. No source expression is incorporated.</li>
+<li><strong>Owned proofs.</strong> The full pointwise presheaf coproduct, Yoneda identity factors, small coproduct and cofinal cocone factors, and incoming-comma Kan extension proofs are linked at their uses. Their exact provider versions retain their existing attribution and licences.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norm continuity of relative modular time · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-RC.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 98 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="norm-continuity-of-relative-modular-time">Norm continuity of relative modular time</h1>
+<p>A small change of a positive normal functional changes its cone vector in norm. The relative Tomita operators then converge on one common graph core. This lesson follows that change through resolvents, logarithms and imaginary powers to the cocycle and modular automorphism group. A spectral cutoff makes the passage uniform on bounded time intervals, even when the reference weight is infinite at the identity.</p>
+<p>The source theorem is M. Takesaki, <em>Theory of Operator Algebras II</em>, IX.1.19. Both governing pages have been consulted. The arguments and solutions below are independently written by GPT-6.1 Sol (OpenAI), Ultra effort, October 2026, under CC0. The existing natural-cone, relative-GNS and spectral-calculus lessons retain their proof ownership.</p>
+<h2 id="the-theorem-with-its-hypotheses-retained"><span id="oa-mod-rc-01"></span><span id="OA-MOD-RC-01"></span>The theorem, with its hypotheses retained</h2>
+<p>Let <span class="math" data-tex="\((M,H,J,P)\)">\((M,H,J,P)\)</span> be a standard form. Suppose that <span class="math" data-tex="\((\varphi_i)\)">\((\varphi_i)\)</span> is a net of faithful positive normal functionals with faithful positive normal limit <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and that</p>
+<span class="math math-display" data-tex="\[
+\|\varphi_i-\varphi\|\longrightarrow0.
+\tag{RC.1}
+\]">\[
+\|\varphi_i-\varphi\|\longrightarrow0.
+\tag{RC.1}
+\]</span>
+<p>Fix a faithful normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. All GNS maps below use the common standard coordinates from <a href="OA-MOD-CL.html#oa-mod-cl-02">canonical L2</a>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_i&amp;=\Delta_{\varphi_i,\psi},\\
+A&amp;=\Delta_{\varphi,\psi},\\
+D&amp;=\Delta_\psi.
+\end{aligned}
+\tag{RC.2}
+\]">\[
+\begin{aligned}
+A_i&amp;=\Delta_{\varphi_i,\psi},\\
+A&amp;=\Delta_{\varphi,\psi},\\
+D&amp;=\Delta_\psi.
+\end{aligned}
+\tag{RC.2}
+\]</span>
+<p>These are positive injective self-adjoint operators. For every finite <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>, every <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>, every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, and every <span class="math" data-tex="\(f\in M_*\)">\(f\in M_*\)</span>, we prove:</p>
+<ol>
+<li><span class="math" data-tex="\(A_i\to A\)">\(A_i\to A\)</span>, <span class="math" data-tex="\(A_i^{1/2}\to A^{1/2}\)">\(A_i^{1/2}\to A^{1/2}\)</span>, and <span class="math" data-tex="\(\log A_i\to\log A\)">\(\log A_i\to\log A\)</span> in the strong resolvent sense.</li>
+<li>The cocycles <span class="math" data-tex="\(c_i(t)=[D\varphi_i:D\psi]_t\)">\(c_i(t)=[D\varphi_i:D\psi]_t\)</span> converge to <span class="math" data-tex="\(c(t)=[D\varphi:D\psi]_t\)">\(c(t)=[D\varphi:D\psi]_t\)</span> uniformly for <span class="math" data-tex="\(|t|\le T\)">\(|t|\le T\)</span> in the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong* topology.</li>
+<li>The modular groups satisfy</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|(\sigma_t^{\varphi_i}(x)-\sigma_t^\varphi(x))\eta\|\\
+\longrightarrow0,
+\end{gathered}
+\tag{RC.3}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|(\sigma_t^{\varphi_i}(x)-\sigma_t^\varphi(x))\eta\|\\
+\longrightarrow0,
+\end{gathered}
+\tag{RC.3}
+\]</span>
+<p>also with <span class="math" data-tex="\(x^*\)">\(x^*\)</span> in place of <span class="math" data-tex="\(x\)">\(x\)</span>, and the stronger predual assertion</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|f\circ\sigma_t^{\varphi_i}-f\circ\sigma_t^\varphi\|\\
+\longrightarrow0.
+\end{gathered}
+\tag{RC.4}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|f\circ\sigma_t^{\varphi_i}-f\circ\sigma_t^\varphi\|\\
+\longrightarrow0.
+\end{gathered}
+\tag{RC.4}
+\]</span>
+<p>Their inverses satisfy the same assertions.</p>
+<p>The source states these conclusions for a sequence on a <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite algebra. The existence of the faithful finite functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> already supplies a faithful normal state after normalization; hence that hypothesis is retained automatically. No separability of <span class="math" data-tex="\(H\)">\(H\)</span> follows or is assumed. The index set here may be any directed set. No order relation between the <span class="math" data-tex="\(\varphi_i\)">\(\varphi_i\)</span>, no uniform spectral gap, and no finiteness of <span class="math" data-tex="\(\psi(1)\)">\(\psi(1)\)</span> are required. The zero algebra is immediate; work below with <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>.</p>
+<h2 id="one-fixed-graph-core-controls-the-square-roots">One fixed graph core controls the square roots</h2>
+<p>Write <span class="math" data-tex="\(\xi_\nu\in P\)">\(\xi_\nu\in P\)</span> for the vector of a positive normal functional <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The <span class="unlinked">cone-vector norm estimate</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\xi_{\varphi_i}-\xi_\varphi\|\\
+\le \|\varphi_i-\varphi\|^{1/2}\longrightarrow0.
+\end{gathered}
+\tag{RC.5}
+\]">\[
+\begin{gathered}
+\|\xi_{\varphi_i}-\xi_\varphi\|\\
+\le \|\varphi_i-\varphi\|^{1/2}\longrightarrow0.
+\end{gathered}
+\tag{RC.5}
+\]</span>
+<p>Because <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is bounded, its finite left ideal is all of <span class="math" data-tex="\(M\)">\(M\)</span>. Moreover its standard GNS map is
+<span class="math" data-tex="\(\eta_\nu(y)=y\xi_\nu\)">\(\eta_\nu(y)=y\xi_\nu\)</span>: the finite identity vector is the cone vector by the finite-projection argument in <span class="unlinked">Every normal positive functional has a cone vector</span>, with support <span class="math" data-tex="\(1\)">\(1\)</span>, and left multiplication gives the formula.</p>
+<p>Consequently the full mixed relative core in <span class="unlinked">One Hilbert space for all n.s.f. GNS maps</span> is the same for every numerator:</p>
+<span class="math math-display" data-tex="\[
+\mathcal E=\eta_\psi(\mathfrak n_\psi).
+\tag{RC.6}
+\]">\[
+\mathcal E=\eta_\psi(\mathfrak n_\psi).
+\tag{RC.6}
+\]</span>
+<p>It is not merely dense in <span class="math" data-tex="\(H\)">\(H\)</span>. SF-08 and SF-13 prove that it is a graph core for the closure of the initial relative Tomita map and hence for its positive square-root factor. For <span class="math" data-tex="\(y\in\mathfrak n_\psi\)">\(y\in\mathfrak n_\psi\)</span>, that factor satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J A_i^{1/2}\eta_\psi(y)&amp;=y^*\xi_{\varphi_i},\\
+J A^{1/2}\eta_\psi(y)&amp;=y^*\xi_\varphi.
+\end{aligned}
+\tag{RC.7}
+\]">\[
+\begin{aligned}
+J A_i^{1/2}\eta_\psi(y)&amp;=y^*\xi_{\varphi_i},\\
+J A^{1/2}\eta_\psi(y)&amp;=y^*\xi_\varphi.
+\end{aligned}
+\tag{RC.7}
+\]</span>
+<p>The graph norms agree because <span class="math" data-tex="\(J\)">\(J\)</span> is antiunitary. In particular every vector of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> belongs to every square-root domain, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(A_i^{1/2}-A^{1/2})\eta_\psi(y)\|\\
+\le\|y\|\,\|\varphi_i-\varphi\|^{1/2}.
+\end{gathered}
+\tag{RC.8}
+\]">\[
+\begin{gathered}
+\|(A_i^{1/2}-A^{1/2})\eta_\psi(y)\|\\
+\le\|y\|\,\|\varphi_i-\varphi\|^{1/2}.
+\end{gathered}
+\tag{RC.8}
+\]</span>
+<p>The graph-core convergence theorem in <a href="OA-MOD-SK.html#oa-mod-sk-09">Convergence and cutoffs</a> now proves strong resolvent convergence of the square roots. It applies to arbitrary nets and requires a core only for the limiting operator.</p>
+<p>That same theorem supplies bounded continuous functional calculus under strong resolvent convergence. For a nonreal <span class="math" data-tex="\(z\)">\(z\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+s\longmapsto(s^2-z)^{-1}
+\tag{RC.9}
+\]">\[
+s\longmapsto(s^2-z)^{-1}
+\tag{RC.9}
+\]</span>
+<p>is bounded and continuous on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Applied to the square roots, it proves
+<span class="math" data-tex="\((A_i-z)^{-1}\to(A-z)^{-1}\)">\((A_i-z)^{-1}\to(A-z)^{-1}\)</span> strongly. Thus <span class="math" data-tex="\(A_i\to A\)">\(A_i\to A\)</span> in the strong resolvent sense as well. Applying <span class="math" data-tex="\(s\mapsto(1+s^2)^{-1}\)">\(s\mapsto(1+s^2)^{-1}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B_i=(1+A_i)^{-1},\\
+B=(1+A)^{-1},\\
+B_i\longrightarrow B\quad\hbox{strongly}.
+\end{gathered}
+\tag{RC.10}
+\]">\[
+\begin{gathered}
+B_i=(1+A_i)^{-1},\\
+B=(1+A)^{-1},\\
+B_i\longrightarrow B\quad\hbox{strongly}.
+\end{gathered}
+\tag{RC.10}
+\]</span>
+<p>All these bounded operators are positive contractions. The identification of the relative operators with spatial derivatives is the complete mixed-graph theorem <span class="unlinked">Ordinary relative GNS maps are a specialization</span>, transported through the common standard-form comparisons. No changing GNS Hilbert spaces are identified by notation alone.</p>
+<h2 id="remove-both-spectral-endpoints-before-taking-time-suprema">Remove both spectral endpoints before taking time suprema</h2>
+<p>We apply the spectral cutoff mechanism of <a href="OA-MOD-QF.html#oa-mod-qf-08">Logarithms and imaginary powers</a> to (RC.10). In that lesson order supplies resolvent convergence and injectivity. Here the relative graph supplies convergence, and faithfulness supplies injectivity. The remaining argument uses just those two facts, as the following details show.</p>
+<p>There is no spectral atom of <span class="math" data-tex="\(B\)">\(B\)</span> at zero: <span class="math" data-tex="\((1+A)^{-1}\)">\((1+A)^{-1}\)</span> has zero kernel. Its spectral projection at one is the kernel projection of <span class="math" data-tex="\(A\)">\(A\)</span>, which is also zero. The same statements hold for every <span class="math" data-tex="\(B_i\)">\(B_i\)</span>. On <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\ell(s)=\log\frac{1-s}{s}.
+\tag{RC.11}
+\]">\[
+\ell(s)=\log\frac{1-s}{s}.
+\tag{RC.11}
+\]</span>
+<p>For any nonreal <span class="math" data-tex="\(z\)">\(z\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h_z(s)=(\ell(s)-z)^{-1},\\
+h_z(0)=h_z(1)=0
+\end{gathered}
+\tag{RC.12}
+\]">\[
+\begin{gathered}
+h_z(s)=(\ell(s)-z)^{-1},\\
+h_z(0)=h_z(1)=0
+\end{gathered}
+\tag{RC.12}
+\]</span>
+<p>is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The endpoint values follow from
+<span class="math" data-tex="\(\ell(s)\to+\infty\)">\(\ell(s)\to+\infty\)</span> as <span class="math" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span> and
+<span class="math" data-tex="\(\ell(s)\to-\infty\)">\(\ell(s)\to-\infty\)</span> as <span class="math" data-tex="\(s\uparrow1\)">\(s\uparrow1\)</span>. The bounded continuous-calculus theorem in SK-09 and (RC.10) give
+<span class="math" data-tex="\(h_z(B_i)\to h_z(B)\)">\(h_z(B_i)\to h_z(B)\)</span> strongly. By the exact Borel-calculus domains in <a href="OA-MOD-SK.html#oa-mod-sk-05">Unbounded measurable functions and Changes of variable, powers, and actual ranges</a>, these operators are the resolvents of <span class="math" data-tex="\(\log A_i\)">\(\log A_i\)</span> and <span class="math" data-tex="\(\log A\)">\(\log A\)</span>. This proves the logarithm assertion. No value of the logarithm is assigned to a nonzero kernel.</p>
+<p>For the time-uniform conclusion, fix <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Since its spectral measure for <span class="math" data-tex="\(B\)">\(B\)</span> has no endpoint mass, choose
+<span class="math" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span> continuous, supported in a compact subinterval of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\|(1-\chi(B))\eta\|&lt;\varepsilon.
+\tag{RC.13}
+\]">\[
+\|(1-\chi(B))\eta\|&lt;\varepsilon.
+\tag{RC.13}
+\]</span>
+<p>Successively wider interior cutoffs tend to one on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>; scalar dominated convergence proves this choice for the fixed limiting measure. Strong convergence of <span class="math" data-tex="\(\chi(B_i)\)">\(\chi(B_i)\)</span> then gives, eventually,</p>
+<span class="math math-display" data-tex="\[
+\|(1-\chi(B_i))\eta\|&lt;2\varepsilon.
+\tag{RC.14}
+\]">\[
+\|(1-\chi(B_i))\eta\|&lt;2\varepsilon.
+\tag{RC.14}
+\]</span>
+<p>This is one cutoff followed by an eventual net bound, not dominated convergence applied to an arbitrary net of measures.</p>
+<p>Set <span class="math" data-tex="\(F_t(s)=\chi(s)e^{it\ell(s)}\)">\(F_t(s)=\chi(s)e^{it\ell(s)}\)</span> on the interior and zero at the endpoints. For
+<span class="math" data-tex="\(L=\sup_{\operatorname{supp}\chi}|\ell|&lt;\infty\)">\(L=\sup_{\operatorname{supp}\chi}|\ell|&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|F_t-F_r\|_\infty\le L|t-r|.
+\tag{RC.15}
+\]">\[
+\|F_t-F_r\|_\infty\le L|t-r|.
+\tag{RC.15}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(r\)">\(r\)</span>, continuous calculus gives
+<span class="math" data-tex="\(F_r(B_i)\eta\to F_r(B)\eta\)">\(F_r(B_i)\eta\to F_r(B)\eta\)</span>. Choose a finite mesh in <span class="math" data-tex="\([-T,T]\)">\([-T,T]\)</span>. The mesh errors tend to zero at one common eventual index, while (RC.15) bounds the two interpolation errors by <span class="math" data-tex="\(2L|t-r|\|\eta\|\)">\(2L|t-r|\|\eta\|\)</span>. First refine the mesh and then take that eventual index. It follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|(F_t(B_i)-F_t(B))\eta\|\\
+\longrightarrow0.
+\end{gathered}
+\tag{RC.16}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}
+\|(F_t(B_i)-F_t(B))\eta\|\\
+\longrightarrow0.
+\end{gathered}
+\tag{RC.16}
+\]</span>
+<p>Outside the cutoff, the imaginary powers have norm one. Equations (RC.13–14) therefore give an eventual error at most <span class="math" data-tex="\(3\varepsilon\)">\(3\varepsilon\)</span>, besides the term in (RC.16). Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves</p>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\le T}
+\|(A_i^{it}-A^{it})\eta\|\longrightarrow0.
+\tag{RC.17}
+\]">\[
+\sup_{|t|\le T}
+\|(A_i^{it}-A^{it})\eta\|\longrightarrow0.
+\tag{RC.17}
+\]</span>
+<p>The same proof, or replacement of <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span>, gives the adjoint assertion. Spectrum may accumulate at zero; faithfulness removes the atom, not the accumulation.</p>
+<p>We shall use one finite-cover consequence. If <span class="math" data-tex="\(\|E_i(t)\|\le2\)">\(\|E_i(t)\|\le2\)</span> and
+<span class="math" data-tex="\(\sup_{|t|\le T}\|E_i(t)\zeta\|\to0\)">\(\sup_{|t|\le T}\|E_i(t)\zeta\|\to0\)</span> for each fixed <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, then the convergence is uniform also over any norm-compact set <span class="math" data-tex="\(L_0\)">\(L_0\)</span> of vectors. A finite <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-net <span class="math" data-tex="\(\zeta_1,\ldots,\zeta_m\)">\(\zeta_1,\ldots,\zeta_m\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{\zeta\in L_0,\,|t|\le T}\|E_i(t)\zeta\|\\
+\le 2\delta+\\
+\max_{1\le k\le m}\sup_{|t|\le T}\|E_i(t)\zeta_k\|.
+\end{gathered}
+\tag{RC.18}
+\]">\[
+\begin{gathered}
+\sup_{\zeta\in L_0,\,|t|\le T}\|E_i(t)\zeta\|\\
+\le 2\delta+\\
+\max_{1\le k\le m}\sup_{|t|\le T}\|E_i(t)\zeta_k\|.
+\end{gathered}
+\tag{RC.18}
+\]</span>
+<p>Directedness handles the finitely many eventual indices. Then let <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>.</p>
+<h2 id="cocycles-modular-groups-and-the-predual">Cocycles, modular groups and the predual</h2>
+<p>The exact spatial formula in <span class="unlinked">The balanced-matrix cocycle is independent of the reference</span>, with the opposite of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> as the fixed commutant reference, is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_i(t)&amp;=A_i^{it}D^{-it},\\
+c(t)&amp;=A^{it}D^{-it}.
+\end{aligned}
+\tag{RC.19}
+\]">\[
+\begin{aligned}
+c_i(t)&amp;=A_i^{it}D^{-it},\\
+c(t)&amp;=A^{it}D^{-it}.
+\end{aligned}
+\tag{RC.19}
+\]</span>
+<p>These are unitaries in <span class="math" data-tex="\(M\)">\(M\)</span>, not merely bounded operators in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. The family <span class="math" data-tex="\(\{D^{-it}\eta:|t|\le T\}\)">\(\{D^{-it}\eta:|t|\le T\}\)</span> is norm compact by strong continuity and compactness of the time interval. Apply (RC.17–18) to that family. This proves compact-time strong convergence of the cocycles.</p>
+<p>For their adjoints, unitarity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|(c_i(t)^*-c(t)^*)\eta\|\\
+=\|(c(t)-c_i(t))c(t)^*\eta\|.
+\end{gathered}
+\tag{RC.20}
+\]">\[
+\begin{gathered}
+\|(c_i(t)^*-c(t)^*)\eta\|\\
+=\|(c(t)-c_i(t))c(t)^*\eta\|.
+\end{gathered}
+\tag{RC.20}
+\]</span>
+<p>The vectors <span class="math" data-tex="\(c(t)^*\eta\)">\(c(t)^*\eta\)</span> form a norm-compact set, so the same finite-cover argument proves compact-time strong* convergence. In standard form, each positive normal functional <span class="math" data-tex="\(g\)">\(g\)</span> has a cone vector <span class="math" data-tex="\(\xi_g\)">\(\xi_g\)</span>, and its <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong seminorm is</p>
+<span class="math math-display" data-tex="\[
+g(a^*a)^{1/2}=\|a\xi_g\|.
+\tag{RC.21}
+\]">\[
+g(a^*a)^{1/2}=\|a\xi_g\|.
+\tag{RC.21}
+\]</span>
+<p>Thus the strong* assertions just proved imply precisely the claimed <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong* assertions, with uniformity for each fixed seminorm.</p>
+<p>For modular groups put <span class="math" data-tex="\(V_i(t)=A_i^{it}\)">\(V_i(t)=A_i^{it}\)</span>, <span class="math" data-tex="\(V(t)=A^{it}\)">\(V(t)=A^{it}\)</span>. <span class="unlinked">The two modular actions and the relative conjugation</span> identifies
+<span class="math" data-tex="\(\sigma_t^{\varphi_i}=\operatorname{Ad}V_i(t)\)">\(\sigma_t^{\varphi_i}=\operatorname{Ad}V_i(t)\)</span> and
+<span class="math" data-tex="\(\sigma_t^\varphi=\operatorname{Ad}V(t)\)">\(\sigma_t^\varphi=\operatorname{Ad}V(t)\)</span>. For fixed <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(V_i(t)xV_i(t)^*\\
+-V(t)xV(t)^*)\eta\\
+=V_i(t)x(V_i(t)^*-V(t)^*)\eta\\
++(V_i(t)-V(t))xV(t)^*\eta.
+\end{gathered}
+\tag{RC.22}
+\]">\[
+\begin{gathered}
+(V_i(t)xV_i(t)^*\\
+-V(t)xV(t)^*)\eta\\
+=V_i(t)x(V_i(t)^*-V(t)^*)\eta\\
++(V_i(t)-V(t))xV(t)^*\eta.
+\end{gathered}
+\tag{RC.22}
+\]</span>
+<p>The first term is controlled by <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> times the adjoint version of (RC.17). The vectors <span class="math" data-tex="\(xV(t)^*\eta\)">\(xV(t)^*\eta\)</span> form a compact set, so (RC.18) controls the second. This proves (RC.3). Apply the same argument to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> to obtain strong* convergence and hence <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-strong* convergence. Replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> proves the inverse statements.</p>
+<p>Finally the complete predual construction <a href="OA-MOD-CP.html#oa-mod-cp-04">Every tensor vector is a summable vector series through The concrete predual and its intrinsic norm</a> writes each normal functional as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(x)=\sum_{k\ge1}\langle x\xi_k,\eta_k\rangle,\\
+\sum_k\|\xi_k\|\|\eta_k\|&lt;\infty.
+\end{gathered}
+\tag{RC.23}
+\]">\[
+\begin{gathered}
+f(x)=\sum_{k\ge1}\langle x\xi_k,\eta_k\rangle,\\
+\sum_k\|\xi_k\|\|\eta_k\|&lt;\infty.
+\end{gathered}
+\tag{RC.23}
+\]</span>
+<p>For a single pair, the unit-ball estimate used in <span class="unlinked">Increasing weights and the automorphism topology</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\omega_{\xi,\eta}\circ\operatorname{Ad}V_i(t)\\
+-\omega_{\xi,\eta}\circ\operatorname{Ad}V(t)\|\\
+\le
+\|(V_i(t)^*-V(t)^*)\xi\|\,\|\eta\|\\
++\|\xi\|\,\|(V_i(t)^*-V(t)^*)\eta\|.
+\end{gathered}
+\tag{RC.24}
+\]">\[
+\begin{gathered}
+\|\omega_{\xi,\eta}\circ\operatorname{Ad}V_i(t)\\
+-\omega_{\xi,\eta}\circ\operatorname{Ad}V(t)\|\\
+\le
+\|(V_i(t)^*-V(t)^*)\xi\|\,\|\eta\|\\
++\|\xi\|\,\|(V_i(t)^*-V(t)^*)\eta\|.
+\end{gathered}
+\tag{RC.24}
+\]</span>
+<p>It follows by adding and subtracting the coefficient with vectors <span class="math" data-tex="\(V(t)^*\xi\)">\(V(t)^*\xi\)</span> and <span class="math" data-tex="\(V_i(t)^*\eta\)">\(V_i(t)^*\eta\)</span>, and using the unit-ball bound on <span class="math" data-tex="\(x\)">\(x\)</span>. A finite initial part of (RC.23) tends to zero uniformly in time by (RC.17). The tail is bounded uniformly by twice the sum of its vector-norm products, since automorphisms are isometries. Choose the tail first and then the eventual index for the finite part. This proves (RC.4), for general normal functionals and arbitrary nets, with the inverse assertion again obtained by <span class="math" data-tex="\(-t\)">\(-t\)</span>.</p>
+<h2 id="four-problems-with-complete-solutions">Four problems with complete solutions</h2>
+<p>For the exact compact-time errors, write the phase envelope as</p>
+<span class="math math-display" data-tex="\[
+F(r)=\begin{cases}
+2\sin(r/2),&amp;0\le r\le\pi,\\
+2,&amp;r\ge\pi.
+\end{cases}
+\]">\[
+F(r)=\begin{cases}
+2\sin(r/2),&amp;0\le r\le\pi,\\
+2,&amp;r\ge\pi.
+\end{cases}
+\]</span>
+<p>Thus <span class="math" data-tex="\(F(r)=2\sin(\min\{r/2,\pi/2\})\)">\(F(r)=2\sin(\min\{r/2,\pi/2\})\)</span> for <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>. The two formulas agree at <span class="math" data-tex="\(r=\pi\)">\(r=\pi\)</span>.</p>
+<p><strong>Problem 1: a scalar clock.</strong> On <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, let
+<span class="math" data-tex="\(\varphi_i(z)=a_i z\)">\(\varphi_i(z)=a_i z\)</span>, <span class="math" data-tex="\(\varphi(z)=az\)">\(\varphi(z)=az\)</span>, and <span class="math" data-tex="\(\psi(z)=bz\)">\(\psi(z)=bz\)</span> on positive scalars, where <span class="math" data-tex="\(a_i\to a&gt;0\)">\(a_i\to a&gt;0\)</span> and <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. Find the exact compact-time cocycle error.</p>
+<p><strong>Solution.</strong> The relative operators are the positive scalars <span class="math" data-tex="\(a_i/b\)">\(a_i/b\)</span> and <span class="math" data-tex="\(a/b\)">\(a/b\)</span>. After cancelling the common unit-modulus factor, the error at <span class="math" data-tex="\(t\)">\(t\)</span> is
+<span class="math" data-tex="\(|e^{it\delta_i}-1|\)">\(|e^{it\delta_i}-1|\)</span>, with <span class="math" data-tex="\(\delta_i=\log(a_i/a)\)">\(\delta_i=\log(a_i/a)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}|c_i(t)-c(t)|\\
+=F(T|\delta_i|)\\
+\le T|\delta_i|.
+\end{gathered}
+\tag{RC.25}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}|c_i(t)-c(t)|\\
+=F(T|\delta_i|)\\
+\le T|\delta_i|.
+\end{gathered}
+\tag{RC.25}
+\]</span>
+<p>The equality follows from <span class="math" data-tex="\(|e^{ir}-1|=2|\sin(r/2)|\)">\(|e^{ir}-1|=2|\sin(r/2)|\)</span>: the maximum increases up to phase <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, after which that phase is already in the interval. Continuity of the scalar logarithm proves convergence. All modular automorphisms of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> are the identity.</p>
+<p><strong>Problem 2: a noncommuting numerator and a different reference.</strong> In the Hilbert–Schmidt standard form of <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d&amp;=\operatorname{diag}(2,5),\\
+k&amp;=\operatorname{diag}(3,7),\\
+u_s&amp;=\begin{pmatrix}\cos s&amp;-\sin s\\
+\sin s&amp;\cos s\end{pmatrix},\\
+d_s&amp;=u_sdu_s^*.
+\end{aligned}
+\tag{RC.26}
+\]">\[
+\begin{aligned}
+d&amp;=\operatorname{diag}(2,5),\\
+k&amp;=\operatorname{diag}(3,7),\\
+u_s&amp;=\begin{pmatrix}\cos s&amp;-\sin s\\
+\sin s&amp;\cos s\end{pmatrix},\\
+d_s&amp;=u_sdu_s^*.
+\end{aligned}
+\tag{RC.26}
+\]</span>
+<p>Use <span class="math" data-tex="\(\varphi_s(x)=\operatorname{Tr}(d_sx)\)">\(\varphi_s(x)=\operatorname{Tr}(d_sx)\)</span>, <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(dx)\)">\(\varphi(x)=\operatorname{Tr}(dx)\)</span>, and <span class="math" data-tex="\(\psi(x)=\operatorname{Tr}(kx)\)">\(\psi(x)=\operatorname{Tr}(kx)\)</span>.</p>
+<p><strong>Solution.</strong> The cone vectors are <span class="math" data-tex="\(d_s^{1/2}\)">\(d_s^{1/2}\)</span> and <span class="math" data-tex="\(d^{1/2}\)">\(d^{1/2}\)</span>. Their relative operators act by
+<span class="math" data-tex="\(A_s z=d_szk^{-1}\)">\(A_s z=d_szk^{-1}\)</span>, <span class="math" data-tex="\(Az=dzk^{-1}\)">\(Az=dzk^{-1}\)</span>; these are positive on the Hilbert–Schmidt space because the commuting left and right positive actions have positive product. The cocycles and groups are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_s(t)&amp;=d_s^{it}k^{-it},\\
+c(t)&amp;=d^{it}k^{-it},\\
+\sigma_t^{\varphi_s}(x)&amp;=d_s^{it}xd_s^{-it}.
+\end{aligned}
+\tag{RC.27}
+\]">\[
+\begin{aligned}
+c_s(t)&amp;=d_s^{it}k^{-it},\\
+c(t)&amp;=d^{it}k^{-it},\\
+\sigma_t^{\varphi_s}(x)&amp;=d_s^{it}xd_s^{-it}.
+\end{aligned}
+\tag{RC.27}
+\]</span>
+<p>The self-adjoint trace-zero matrix <span class="math" data-tex="\(d_s-d\)">\(d_s-d\)</span> has eigenvalues
+<span class="math" data-tex="\(\pm3|\sin s|\)">\(\pm3|\sin s|\)</span>, so
+<span class="math" data-tex="\(\|\varphi_s-\varphi\|=6|\sin s|\)">\(\|\varphi_s-\varphi\|=6|\sin s|\)</span>.
+The two-phase matrix calculation in <a href="OA-MOD-OC.html#oa-mod-oc-11">An explicit cocycle and its compact-time error</a>, with phase ratio <span class="math" data-tex="\(e^{it\log(5/2)}\)">\(e^{it\log(5/2)}\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}\|c_s(t)-c(t)\|\\
+=|\sin s|\,F(T\log(5/2)).
+\end{gathered}
+\tag{RC.28}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}\|c_s(t)-c(t)\|\\
+=|\sin s|\,F(T\log(5/2)).
+\end{gathered}
+\tag{RC.28}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(k^{-it}\)">\(k^{-it}\)</span> preserves the norm; this is why the different reference does not change that error. Conjugation gives a modular-group error at most <span class="math" data-tex="\(2\|x\|\)">\(2\|x\|\)</span> times (RC.28). In this finite matrix example convergence is in operator norm.</p>
+<p><strong>Problem 3: loss of faithfulness.</strong> With trace reference on <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, take numerator densities <span class="math" data-tex="\(d_n=\operatorname{diag}(1,1/n)\)">\(d_n=\operatorname{diag}(1,1/n)\)</span> and limit <span class="math" data-tex="\(d_0=\operatorname{diag}(1,0)\)">\(d_0=\operatorname{diag}(1,0)\)</span>.</p>
+<p><strong>Solution.</strong> The functional norm difference is <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. The spatial operators <span class="math" data-tex="\(A_n=L_{d_n}\)">\(A_n=L_{d_n}\)</span> converge to <span class="math" data-tex="\(A_0=L_{d_0}\)">\(A_0=L_{d_0}\)</span> in operator norm and hence in the strong resolvent sense. But <span class="math" data-tex="\(A_0\)">\(A_0\)</span> has a kernel. If its imaginary powers are extended by zero on that kernel, their zero-time value is left multiplication by <span class="math" data-tex="\(d_0\)">\(d_0\)</span>, while <span class="math" data-tex="\(A_n^{i0}=1\)">\(A_n^{i0}=1\)</span>. On the unit Hilbert–Schmidt vector <span class="math" data-tex="\(E_{22}\)">\(E_{22}\)</span> the difference has norm one. Thus the full-space unitary conclusion fails even at time zero. At the fixed time <span class="math" data-tex="\(t=\pi/\log2\)">\(t=\pi/\log2\)</span>, the subsequences <span class="math" data-tex="\(n=2^{2m}\)">\(n=2^{2m}\)</span> and <span class="math" data-tex="\(n=2^{2m+1}\)">\(n=2^{2m+1}\)</span> give <span class="math" data-tex="\(A_n^{it}E_{22}=E_{22}\)">\(A_n^{it}E_{22}=E_{22}\)</span> and <span class="math" data-tex="\(-E_{22}\)">\(-E_{22}\)</span>, respectively. There is no strong limit there either. The faithful-limit hypothesis cannot be removed by a resolvent argument.</p>
+<p><strong>Problem 4: strong continuity is weaker than operator-norm continuity.</strong> Let <span class="math" data-tex="\(M=\ell^\infty(\mathbb N)\)">\(M=\ell^\infty(\mathbb N)\)</span>, let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be counting weight, and put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varphi(x)&amp;=\sum_{j\ge1}2^{-j}x_j,\\
+\varphi_n(x)&amp;=\varphi(x)+2^{-n}x_n\\
+&amp;(x\ge0).
+\end{aligned}
+\tag{RC.29}
+\]">\[
+\begin{aligned}
+\varphi(x)&amp;=\sum_{j\ge1}2^{-j}x_j,\\
+\varphi_n(x)&amp;=\varphi(x)+2^{-n}x_n\\
+&amp;(x\ge0).
+\end{aligned}
+\tag{RC.29}
+\]</span>
+<p>Find the cocycle difference in the standard representation on <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>.</p>
+<p><strong>Solution.</strong> These are faithful normal finite functionals,
+<span class="math" data-tex="\(\|\varphi_n-\varphi\|=2^{-n}\)">\(\|\varphi_n-\varphi\|=2^{-n}\)</span>, and the reference is n.s.f. with
+<span class="math" data-tex="\(\psi(1)=\infty\)">\(\psi(1)=\infty\)</span>. The relative operators multiply by <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>, with the <span class="math" data-tex="\(n\)">\(n\)</span>-th value doubled for <span class="math" data-tex="\(A_n\)">\(A_n\)</span>. Their spectra accumulate at zero but have no kernel. The cocycle ratio <span class="math" data-tex="\(c_n(t)c(t)^*\)">\(c_n(t)c(t)^*\)</span> multiplies the <span class="math" data-tex="\(n\)">\(n\)</span>-th coordinate by <span class="math" data-tex="\(2^{it}\)">\(2^{it}\)</span> and all other coordinates by one. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|t|\le T}\|(c_n(t)-c(t))\eta\|\\
+\le 2|\eta_n|\longrightarrow0,\\
+\sup_{|t|\le T}\|c_n(t)-c(t)\|\\
+=F(T\log2).
+\end{gathered}
+\tag{RC.30}
+\]">\[
+\begin{gathered}
+\sup_{|t|\le T}\|(c_n(t)-c(t))\eta\|\\
+\le 2|\eta_n|\longrightarrow0,\\
+\sup_{|t|\le T}\|c_n(t)-c(t)\|\\
+=F(T\log2).
+\end{gathered}
+\tag{RC.30}
+\]</span>
+<p>The second value is independent of <span class="math" data-tex="\(n\)">\(n\)</span> and positive when <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. Hence operator-norm convergence is not a general conclusion of this theorem. The functionals are not an increasing sequence, and the proof did not use monotonicity. Both modular groups are trivial because the algebra is abelian.</p>
+<figure><img src="assets/relative-continuity-mechanism.png" alt="A cutoff avoids the zero and infinite spectral endpoints; an exact diagonal example separates strong and operator-norm cocycle convergence." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure RC.1.</strong> The left panel plots the logarithmic coordinate in (RC.11) and one admissible piecewise linear cutoff, zero outside [1/8,7/8] and one on [1/4,3/4]. The proof in RC-03 chooses its cutoff for the particular vector and error; this illustration does not select it for every vector. In Problem 4, take the unit vector with coordinates eta_j = sqrt(3) times 2^(-j), and T = pi/log(2). The right panel then plots the exact compact-time errors: 2 in operator norm and 2 sqrt(3) times 2^(-n) on that vector. The full proofs remain in RC-03–05. The original plotting source accompanies the figure.</p>
+<p>For an accessible account of the spectral step, see F. Hiai, <em>Concise lectures on selected topics of von Neumann algebras</em>, arXiv:2004.02383v1 (2020), Appendix A, Lemma A.4, pages 144–146. Its sequence argument provides further reading; the net and compact-time proof above retains the internal SK and QF providers. <a href="https://arxiv.org/abs/2004.02383">Read the lecture notes</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-OC.html">← Compact-time continuity along automorphism orbits</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-UZ.html">Forced C*-unitization →</a></span></nav>
+<p class="small source-link"><a href="src/relative-modular-continuity.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

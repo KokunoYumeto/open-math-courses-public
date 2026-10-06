@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Dimension theory of Noetherian local rings</title><link href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-11.html" rel="canonical"/><link href="../../assets/site.css" rel="stylesheet"/><style>.math:not(.math-display){overflow:visible}body{overflow-wrap:anywhere}main{max-width:74rem;margin:auto;padding:1.2rem}nav{margin:1rem 0}.math-display{overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer="" src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main id="main"><nav><a href="index.html">Contents</a> · <a href="prerequisites.html">Prerequisites</a> · <a href="src/dimension-theory-of-noetherian-local-rings.md">Editable source</a> · <a href="licence.html">Attribution and licences</a></nav><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra. English. GFDL-1.2-or-later.</p><article class="lesson"><h1 id="dimension-theory-of-noetherian-local-rings">Dimension theory of Noetherian local rings</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Combined edition under GNU FDL 1.2 or later; original material retains its CC0 dedication.</em></p>
+<p>A prime chain measures how many successive specializations a space permits. A Hilbert–Samuel function measures how quickly its infinitesimal neighborhoods grow. A system of parameters measures how many equations are needed to isolate the closed point. For a Noetherian local ring, these three measurements agree. This is the bridge from the counting arguments of the preceding lesson to Krull’s height theorems.</p>
+<p>We use the length and growth results of <a href="AG-CA-10.html">Graded modules and Hilbert–Samuel functions</a>, and the chain conventions of <a href="AG-CA-09.html">Krull dimension and Noether normalization</a>. Earlier tools used explicitly are finite prime filtrations and prime avoidance, Nakayama’s lemma, and going down for flat maps. All rings are commutative with identity. A local ring has one maximal ideal and is nonzero; it is not assumed Noetherian merely by being called local. A finite module means a finitely generated module.</p>
+<p>For a Noetherian local ring <span class="math" data-tex="\((R,\mathfrak m,\kappa)\)">\((R,\mathfrak m,\kappa)\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+H_M(n)=\ell_R(M/\mathfrak m^nM),\qquad d(M)=\deg P_M,
+\tag{1}
+\]">\[
+H_M(n)=\ell_R(M/\mathfrak m^nM),\qquad d(M)=\deg P_M,
+\tag{1}
+\]</span>
+<p>where <span class="math" data-tex="\(P_M(n)=H_M(n)\)">\(P_M(n)=H_M(n)\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>. The preceding lesson proves existence, a finite degree for nonzero finite <span class="math" data-tex="\(M\)">\(M\)</span>, and independence of the ideal of definition. Put <span class="math" data-tex="\(d(0)=-\infty\)">\(d(0)=-\infty\)</span>. Dimension of an empty spectrum or support is also <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<h2 id="1-growth-bounds-every-prime-chain"><span id="section-1"></span>1. Growth bounds every prime chain</h2>
+<p>We first extract the precise consequence of leading-coefficient additivity that makes the dimension argument work.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(M\neq0\)">\(M\neq0\)</span> be finite over a Noetherian local ring. If <span class="math" data-tex="\(x\in\mathfrak m\)">\(x\in\mathfrak m\)</span> acts injectively on <span class="math" data-tex="\(M\)">\(M\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+d(M/xM)&lt;d(M).
+\tag{2}
+\]">\[
+d(M/xM)&lt;d(M).
+\tag{2}
+\]</span>
+<p><strong>Proof.</strong> Nakayama’s lemma, Theorem 4.2 of <em>Localization, local properties and support</em>, gives <span class="math" data-tex="\(M/xM\neq0\)">\(M/xM\neq0\)</span>. The exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M\xrightarrow{x}M\longrightarrow M/xM\longrightarrow0
+\]">\[
+0\longrightarrow M\xrightarrow{x}M\longrightarrow M/xM\longrightarrow0
+\]</span>
+<p>and Theorem 6.1 of the preceding lesson give <span class="math" data-tex="\(d(M/xM)\leq d(M)\)">\(d(M/xM)\leq d(M)\)</span>. If equality held, its top-coefficient formula (17), with the ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, would say</p>
+<span class="math math-display" data-tex="\[
+e_{\mathfrak m}(M)=e_{\mathfrak m}(M)+e_{\mathfrak m}(M/xM).
+\]">\[
+e_{\mathfrak m}(M)=e_{\mathfrak m}(M)+e_{\mathfrak m}(M/xM).
+\]</span>
+<p>The last multiplicity is strictly positive, a contradiction. Thus (2) holds. In particular, an injective such <span class="math" data-tex="\(x\)">\(x\)</span> cannot occur on a nonzero module of degree zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(B=R/J\)">\(B=R/J\)</span>, its maximal ideal is <span class="math" data-tex="\(\mathfrak m/J\)">\(\mathfrak m/J\)</span>, and its Hilbert–Samuel quotients are the same modules whether viewed over <span class="math" data-tex="\(R\)">\(R\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span>. Their submodule lattices, simple factors and lengths agree. Consequently the degree <span class="math" data-tex="\(d_R(B)\)">\(d_R(B)\)</span> in (1) equals the ring degree <span class="math" data-tex="\(d(B)\)">\(d(B)\)</span>. We will use this identification for every local quotient.</p>
+<p><strong>Proposition 1.2.</strong> Every Noetherian local ring satisfies</p>
+<span class="math math-display" data-tex="\[
+\dim R\leq d(R)&lt;\infty.
+\tag{3}
+\]">\[
+\dim R\leq d(R)&lt;\infty.
+\tag{3}
+\]</span>
+<p><strong>Proof.</strong> Induct on the nonnegative integer <span class="math" data-tex="\(d(R)\)">\(d(R)\)</span>, simultaneously for all Noetherian local rings. When it is zero, Corollary 6.2 of the preceding lesson says that <span class="math" data-tex="\(R\)">\(R\)</span> has finite length. It is Artinian, so all its primes are maximal by Theorem 4.2 of <em>Noetherian and Artinian rings</em>. Its unique prime is therefore <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and its dimension is zero.</p>
+<p>Suppose the assertion is known for smaller degrees. Consider any strict chain</p>
+<span class="math math-display" data-tex="\[
+\mathfrak p_0\subsetneq\mathfrak p_1\subsetneq\cdots\subsetneq\mathfrak p_l
+\tag{4}
+\]">\[
+\mathfrak p_0\subsetneq\mathfrak p_1\subsetneq\cdots\subsetneq\mathfrak p_l
+\tag{4}
+\]</span>
+<p>in <span class="math" data-tex="\(R\)">\(R\)</span>. A chain of length zero already satisfies the desired bound. For <span class="math" data-tex="\(l\geq1\)">\(l\geq1\)</span>, put <span class="math" data-tex="\(B=R/\mathfrak p_0\)">\(B=R/\mathfrak p_0\)</span>. This is a nonzero Noetherian local domain. The degree maximum theorem applied to <span class="math" data-tex="\(0\to\mathfrak p_0\to R\to B\to0\)">\(0\to\mathfrak p_0\to R\to B\to0\)</span> gives <span class="math" data-tex="\(d(B)\leq d(R)\)">\(d(B)\leq d(R)\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(x\in\mathfrak p_1\setminus\mathfrak p_0\)">\(x\in\mathfrak p_1\setminus\mathfrak p_0\)</span>. Its image in <span class="math" data-tex="\(B\)">\(B\)</span> is nonzero, belongs to the maximal ideal, and acts injectively because <span class="math" data-tex="\(B\)">\(B\)</span> is a domain. Lemma 1.1 shows that</p>
+<span class="math math-display" data-tex="\[
+C=R/(\mathfrak p_0+(x))\quad\text{satisfies}\quad d(C)&lt;d(B)\leq d(R).
+\]">\[
+C=R/(\mathfrak p_0+(x))\quad\text{satisfies}\quad d(C)&lt;d(B)\leq d(R).
+\]</span>
+<p>The ring <span class="math" data-tex="\(C\)">\(C\)</span> is nonzero since its defining ideal lies in <span class="math" data-tex="\(\mathfrak p_1\)">\(\mathfrak p_1\)</span>. The induction hypothesis applies to <span class="math" data-tex="\(C\)">\(C\)</span>. The images of <span class="math" data-tex="\(\mathfrak p_1,\ldots,\mathfrak p_l\)">\(\mathfrak p_1,\ldots,\mathfrak p_l\)</span> form a strict chain in <span class="math" data-tex="\(C\)">\(C\)</span> of length <span class="math" data-tex="\(l-1\)">\(l-1\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+l-1\leq\dim C\leq d(C)\leq d(R)-1,
+\]">\[
+l-1\leq\dim C\leq d(C)\leq d(R)-1,
+\]</span>
+<p>so <span class="math" data-tex="\(l\leq d(R)\)">\(l\leq d(R)\)</span>. Taking the supremum over all finite chains proves (3). No finite-dimensionality assumption entered the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, every prime of a Noetherian ring has finite height: apply (3) to <span class="math" data-tex="\(R_{\mathfrak p}\)">\(R_{\mathfrak p}\)</span>, whose dimension is <span class="math" data-tex="\(\operatorname{ht}\mathfrak p\)">\(\operatorname{ht}\mathfrak p\)</span>. The whole ring can nevertheless have infinite dimension if these finite heights are unbounded.</p>
+<h2 id="2-dimension-growth-and-parameter-count"><span id="section-2"></span>2. Dimension, growth and parameter count</h2>
+<p>An <em>ideal of definition</em> of <span class="math" data-tex="\((R,\mathfrak m)\)">\((R,\mathfrak m)\)</span> is an ideal <span class="math" data-tex="\(I\)">\(I\)</span> with <span class="math" data-tex="\(\sqrt I=\mathfrak m\)">\(\sqrt I=\mathfrak m\)</span>. In the Noetherian local case, this is equivalent to</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m^a\subseteq I\subseteq\mathfrak m
+\quad\text{for some }a\geq1.
+\tag{5}
+\]">\[
+\mathfrak m^a\subseteq I\subseteq\mathfrak m
+\quad\text{for some }a\geq1.
+\tag{5}
+\]</span>
+<p>This characterization and finiteness of <span class="math" data-tex="\(\ell_R(R/I)\)">\(\ell_R(R/I)\)</span> are proved at the start of <a href="AG-CA-10.html#4-from-an-ideal-filtration-to-a-graded-module">Section 4 of the preceding lesson</a>, using Proposition 2.2 and Theorem 4.2 of <a href="AG-CA-03.html">Noetherian and Artinian rings</a>. Let <span class="math" data-tex="\(\delta(R)\)">\(\delta(R)\)</span> be the least number of elements that generate an ideal of definition. It is finite because <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is finitely generated. The ideal <span class="math" data-tex="\((0)\)">\((0)\)</span> is generated by the empty list.</p>
+<p><strong>Theorem 2.1 (local dimension theorem).</strong> For every Noetherian local ring,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\dim R=d(R)=\delta(R).}
+\tag{6}
+\]">\[
+\boxed{\dim R=d(R)=\delta(R).}
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> The Hilbert–Samuel degree bound in Theorem 4.2 of the preceding lesson says that an ideal of definition generated by <span class="math" data-tex="\(r\)">\(r\)</span> elements gives <span class="math" data-tex="\(d(R)\leq r\)">\(d(R)\leq r\)</span>. Thus <span class="math" data-tex="\(d(R)\leq\delta(R)\)">\(d(R)\leq\delta(R)\)</span>. Proposition 1.2 gives <span class="math" data-tex="\(\dim R\leq d(R)\)">\(\dim R\leq d(R)\)</span>.</p>
+<p>It remains to construct an ideal of definition with at most <span class="math" data-tex="\(D=\dim R\)">\(D=\dim R\)</span> generators. We can now induct on the finite integer <span class="math" data-tex="\(D\)">\(D\)</span>. If <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, the only prime is <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, so <span class="math" data-tex="\(\sqrt{(0)}=\mathfrak m\)">\(\sqrt{(0)}=\mathfrak m\)</span>, and the empty list works.</p>
+<p>Suppose <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>. There are finitely many minimal primes <span class="math" data-tex="\(\mathfrak q_1,\ldots,\mathfrak q_s\)">\(\mathfrak q_1,\ldots,\mathfrak q_s\)</span>, by Proposition 2.2 of <em>Noetherian and Artinian rings</em>. None equals <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>: if <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> were minimal, every prime contained in it would equal it, giving dimension zero. Finite prime avoidance, proved in Solution 8.5 of <em>Associated primes and primary decomposition</em>, therefore supplies</p>
+<span class="math math-display" data-tex="\[
+x\in\mathfrak m\setminus\bigcup_{j=1}^s\mathfrak q_j.
+\tag{7}
+\]">\[
+x\in\mathfrak m\setminus\bigcup_{j=1}^s\mathfrak q_j.
+\tag{7}
+\]</span>
+<p>Every chain in <span class="math" data-tex="\(R/xR\)">\(R/xR\)</span> corresponds to a chain in <span class="math" data-tex="\(R\)">\(R\)</span> whose bottom prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> contains <span class="math" data-tex="\(x\)">\(x\)</span>. Choose a minimal prime <span class="math" data-tex="\(\mathfrak q\subseteq\mathfrak p\)">\(\mathfrak q\subseteq\mathfrak p\)</span>. Such a prime exists by Lemma 4.2 of <em>Spectra of rings</em>. Since <span class="math" data-tex="\(x\notin\mathfrak q\)">\(x\notin\mathfrak q\)</span>, the containment <span class="math" data-tex="\(\mathfrak q\subsetneq\mathfrak p\)">\(\mathfrak q\subsetneq\mathfrak p\)</span> is strict. Prepending it extends the chain by one. Thus</p>
+<span class="math math-display" data-tex="\[
+\dim(R/xR)\leq D-1.
+\tag{8}
+\]">\[
+\dim(R/xR)\leq D-1.
+\tag{8}
+\]</span>
+<p>By induction, the quotient has an ideal of definition generated by at most <span class="math" data-tex="\(D-1\)">\(D-1\)</span> elements. Lift these generators to <span class="math" data-tex="\(R\)">\(R\)</span> and adjoin <span class="math" data-tex="\(x\)">\(x\)</span>. The resulting ideal has radical <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, as follows directly from the quotient prime correspondence, and has at most <span class="math" data-tex="\(D\)">\(D\)</span> generators. Hence <span class="math" data-tex="\(\delta(R)\leq\dim R\)">\(\delta(R)\leq\dim R\)</span>. The three inequalities yield (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument is useful because it gives an existence theorem over every residue field. Choosing parameters requires avoiding finitely many prime ideals, rather than choosing a generic scalar from an infinite field.</p>
+<p><strong>Corollary 2.2 (the module dimension promised by the growth theory).</strong> For every finite module <span class="math" data-tex="\(M\)">\(M\)</span> over a Noetherian local ring,</p>
+<span class="math math-display" data-tex="\[
+d(M)=\dim\operatorname{Supp}M.
+\tag{9}
+\]">\[
+d(M)=\dim\operatorname{Supp}M.
+\tag{9}
+\]</span>
+<p>For <span class="math" data-tex="\(M\neq0\)">\(M\neq0\)</span>, this also equals <span class="math" data-tex="\(\dim(R/\operatorname{ann}_R M)\)">\(\dim(R/\operatorname{ann}_R M)\)</span>.</p>
+<p><strong>Proof.</strong> The zero case is our convention. For <span class="math" data-tex="\(M\neq0\)">\(M\neq0\)</span>, Theorem 2.2 of <em>Associated primes and primary decomposition</em> gives a finite prime filtration whose successive factors are <span class="math" data-tex="\(R/\mathfrak p_i\)">\(R/\mathfrak p_i\)</span>. Repeated use of the degree maximum theorem gives</p>
+<span class="math math-display" data-tex="\[
+d(M)=\max_i d(R/\mathfrak p_i)=\max_i\dim(R/\mathfrak p_i),
+\]">\[
+d(M)=\max_i d(R/\mathfrak p_i)=\max_i\dim(R/\mathfrak p_i),
+\]</span>
+<p>the second equality being Theorem 2.1. Localization of each exact sequence shows that
+<span class="math" data-tex="\(\operatorname{Supp}M=\bigcup_iV(\mathfrak p_i)\)">\(\operatorname{Supp}M=\bigcup_iV(\mathfrak p_i)\)</span>. A finite closed union has dimension the maximum of its members’ dimensions, as proved in Section 1 of <em>Krull dimension and Noether normalization</em>. This proves (9). The support of a finite module is <span class="math" data-tex="\(V(\operatorname{ann}M)\)">\(V(\operatorname{ann}M)\)</span>, by Proposition 6.1 of <em>Localization, local properties and support</em>, giving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-how-much-can-one-equation-cut"><span id="section-3"></span>3. How much can one equation cut?</h2>
+<p><strong>Theorem 3.1 (Krull’s height theorem).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be Noetherian, let <span class="math" data-tex="\(J=(f_1,\ldots,f_r)\)">\(J=(f_1,\ldots,f_r)\)</span>, and let <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> be a prime minimal among those containing <span class="math" data-tex="\(J\)">\(J\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ht}\mathfrak p\leq r.
+\tag{10}
+\]">\[
+\operatorname{ht}\mathfrak p\leq r.
+\tag{10}
+\]</span>
+<p>For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, this is Krull’s principal ideal theorem. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, it says that minimal primes have height zero.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(A=R_{\mathfrak p}\)">\(A=R_{\mathfrak p}\)</span>. Primes of <span class="math" data-tex="\(A\)">\(A\)</span> containing <span class="math" data-tex="\(JA\)">\(JA\)</span> correspond to primes of <span class="math" data-tex="\(R\)">\(R\)</span> between <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Minimality leaves only <span class="math" data-tex="\(\mathfrak pA\)">\(\mathfrak pA\)</span>. Thus <span class="math" data-tex="\(JA\)">\(JA\)</span> is an ideal of definition, with at most <span class="math" data-tex="\(r\)">\(r\)</span> generators. By Theorem 2.1 and the height–localization identity,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ht}\mathfrak p=\dim A=\delta(A)\leq r.
+\]">\[
+\operatorname{ht}\mathfrak p=\dim A=\delta(A)\leq r.
+\]</span>
+<p>This includes the empty generating list. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also an interval version: if <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> is minimal over <span class="math" data-tex="\(\mathfrak p+(f_1,\ldots,f_r)\)">\(\mathfrak p+(f_1,\ldots,f_r)\)</span>, apply the theorem in <span class="math" data-tex="\(R/\mathfrak p\)">\(R/\mathfrak p\)</span> to obtain <span class="math" data-tex="\(\operatorname{ht}(\mathfrak q/\mathfrak p)\leq r\)">\(\operatorname{ht}(\mathfrak q/\mathfrak p)\leq r\)</span>. Without additional hypotheses, do not replace this interval height by <span class="math" data-tex="\(\operatorname{ht}\mathfrak q-\operatorname{ht}\mathfrak p\)">\(\operatorname{ht}\mathfrak q-\operatorname{ht}\mathfrak p\)</span>.</p>
+<p><strong>Theorem 3.2 (one equation in a local ring).</strong> If <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian local and <span class="math" data-tex="\(x\in\mathfrak m\)">\(x\in\mathfrak m\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\dim(R/xR)\geq\dim R-1.
+\tag{11}
+\]">\[
+\dim(R/xR)\geq\dim R-1.
+\tag{11}
+\]</span>
+<p>If <span class="math" data-tex="\(x\)">\(x\)</span> belongs to no minimal prime of <span class="math" data-tex="\(R\)">\(R\)</span>, then equality holds. In particular, equality holds when <span class="math" data-tex="\(x\)">\(x\)</span> is a nonzerodivisor.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(e=\dim(R/xR)\)">\(e=\dim(R/xR)\)</span>. By Theorem 2.1, choose <span class="math" data-tex="\(e\)">\(e\)</span> generators of an ideal of definition in the quotient. Their lifts, together with <span class="math" data-tex="\(x\)">\(x\)</span>, generate an ideal of definition of <span class="math" data-tex="\(R\)">\(R\)</span>. Therefore <span class="math" data-tex="\(\dim R=\delta(R)\leq e+1\)">\(\dim R=\delta(R)\leq e+1\)</span>, proving (11).</p>
+<p>If <span class="math" data-tex="\(x\)">\(x\)</span> avoids every minimal prime, the chain-prepending argument proving (8) gives <span class="math" data-tex="\(e\leq\dim R-1\)">\(e\leq\dim R-1\)</span>. This proves equality. Finally, minimal primes of a Noetherian ring are associated to its ring module, by Theorem 3.2 of <em>Associated primes and primary decomposition</em>. Its Theorem 1.2 says that the union of associated primes is the set of zero divisors. A nonzerodivisor consequently avoids every minimal prime. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both the properness condition <span class="math" data-tex="\(x\in\mathfrak m\)">\(x\in\mathfrak m\)</span> and the avoidance condition matter. A unit gives the zero quotient. An element lying in a minimal prime can leave a whole component uncut. For example, in <span class="math" data-tex="\(k[x,y]_{(x,y)}/(xy)\)">\(k[x,y]_{(x,y)}/(xy)\)</span>, quotienting by <span class="math" data-tex="\(x\)">\(x\)</span> leaves <span class="math" data-tex="\(k[y]_{(y)}\)">\(k[y]_{(y)}\)</span>, so dimension stays one.</p>
+<h2 id="4-parameters-and-embedding-dimension"><span id="section-4"></span>4. Parameters and embedding dimension</h2>
+<p>A <em>system of parameters</em> of a Noetherian local ring of dimension <span class="math" data-tex="\(D\)">\(D\)</span> is a list <span class="math" data-tex="\(x_1,\ldots,x_D\in\mathfrak m\)">\(x_1,\ldots,x_D\in\mathfrak m\)</span> whose ideal has radical <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Theorem 2.1 proves that such lists exist. In dimension zero the empty list is a system of parameters.</p>
+<p><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(x_1,\ldots,x_D\)">\(x_1,\ldots,x_D\)</span> is a system of parameters, then for every <span class="math" data-tex="\(0\leq i\leq D\)">\(0\leq i\leq D\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\dim\bigl(R/(x_1,\ldots,x_i)\bigr)=D-i.
+\tag{12}
+\]">\[
+\dim\bigl(R/(x_1,\ldots,x_i)\bigr)=D-i.
+\tag{12}
+\]</span>
+<p>More generally, a list of <span class="math" data-tex="\(i\)">\(i\)</span> elements of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, where <span class="math" data-tex="\(i\leq D\)">\(i\leq D\)</span>, extends to a system of parameters exactly when its quotient has dimension <span class="math" data-tex="\(D-i\)">\(D-i\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(B=R/(x_1,\ldots,x_i)\)">\(B=R/(x_1,\ldots,x_i)\)</span> and <span class="math" data-tex="\(e=\dim B\)">\(e=\dim B\)</span>. The remaining <span class="math" data-tex="\(D-i\)">\(D-i\)</span> parameters give an ideal of definition in <span class="math" data-tex="\(B\)">\(B\)</span>, so <span class="math" data-tex="\(e\leq D-i\)">\(e\leq D-i\)</span>. Conversely, lift an <span class="math" data-tex="\(e\)">\(e\)</span>-element system of parameters of <span class="math" data-tex="\(B\)">\(B\)</span> and adjoin the first <span class="math" data-tex="\(i\)">\(i\)</span> elements. Its radical is <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, hence <span class="math" data-tex="\(D=\delta(R)\leq i+e\)">\(D=\delta(R)\leq i+e\)</span>. This proves (12).</p>
+<p>For any list of <span class="math" data-tex="\(i\)">\(i\)</span> elements, the same lifting argument gives <span class="math" data-tex="\(e\geq D-i\)">\(e\geq D-i\)</span>. If equality holds, the lifted <span class="math" data-tex="\(e\)">\(e\)</span>-element list completes it to a system of parameters. The converse follows from (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <em>embedding dimension</em> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{embdim}R=\dim_\kappa(\mathfrak m/\mathfrak m^2).
+\tag{13}
+\]">\[
+\operatorname{embdim}R=\dim_\kappa(\mathfrak m/\mathfrak m^2).
+\tag{13}
+\]</span>
+<p>It measures the number of independent first-order directions at the closed point.</p>
+<p><strong>Proposition 4.2.</strong> The embedding dimension is the minimum number of generators of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\dim R\leq\operatorname{embdim}R.
+\tag{14}
+\]">\[
+\dim R\leq\operatorname{embdim}R.
+\tag{14}
+\]</span>
+<p><strong>Proof.</strong> Any generating list of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> maps to a spanning list of <span class="math" data-tex="\(\mathfrak m/\mathfrak m^2\)">\(\mathfrak m/\mathfrak m^2\)</span>. Conversely, choose lifts <span class="math" data-tex="\(u_1,\ldots,u_e\)">\(u_1,\ldots,u_e\)</span> of a vector-space basis and put <span class="math" data-tex="\(J=(u_1,\ldots,u_e)\)">\(J=(u_1,\ldots,u_e)\)</span>. The relation <span class="math" data-tex="\(\mathfrak m=J+\mathfrak m^2\)">\(\mathfrak m=J+\mathfrak m^2\)</span> says that the finite module <span class="math" data-tex="\(\mathfrak m/J\)">\(\mathfrak m/J\)</span> equals its product with <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Nakayama makes it zero. Thus the lifts generate <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, proving the minimum assertion. Since <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> itself is an ideal of definition, Theorem 2.1 gives (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A Noetherian local ring is <em>regular</em> when equality holds in (14). A minimum generating list of its maximal ideal is then called a <em>regular system of parameters</em>. In dimension zero this definition says precisely that the ring is a field: embedding dimension zero makes <span class="math" data-tex="\(\mathfrak m=0\)">\(\mathfrak m=0\)</span> by Nakayama. We will prove the stronger structural properties of regular local rings in <em>Regular local rings</em>.</p>
+<h2 id="5-base-dimension-and-fibre-dimension"><span id="section-5"></span>5. Base dimension and fibre dimension</h2>
+<p><strong>Theorem 5.1 (local dimension formula).</strong> Let <span class="math" data-tex="\(R\to S\)">\(R\to S\)</span> be a map of Noetherian rings. For <span class="math" data-tex="\(\mathfrak q\in\operatorname{Spec}S\)">\(\mathfrak q\in\operatorname{Spec}S\)</span> contracting to <span class="math" data-tex="\(\mathfrak p\in\operatorname{Spec}R\)">\(\mathfrak p\in\operatorname{Spec}R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\dim S_{\mathfrak q}\leq
+\dim R_{\mathfrak p}+\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).
+\tag{15}
+\]">\[
+\dim S_{\mathfrak q}\leq
+\dim R_{\mathfrak p}+\dim(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}).
+\tag{15}
+\]</span>
+<p>Equality holds if the map satisfies going down, in particular if it is flat. No finite-type assumption is required.</p>
+<p><strong>Proof of the upper bound.</strong> Replace the rings by the local map <span class="math" data-tex="\((A,\mathfrak m)\to(B,\mathfrak n)=(R_{\mathfrak p},\mathfrak pR_{\mathfrak p})\to(S_{\mathfrak q},\mathfrak qS_{\mathfrak q})\)">\((A,\mathfrak m)\to(B,\mathfrak n)=(R_{\mathfrak p},\mathfrak pR_{\mathfrak p})\to(S_{\mathfrak q},\mathfrak qS_{\mathfrak q})\)</span>. The ring <span class="math" data-tex="\(C=B/\mathfrak mB\)">\(C=B/\mathfrak mB\)</span> is nonzero Noetherian local. Put <span class="math" data-tex="\(d=\dim A\)">\(d=\dim A\)</span> and <span class="math" data-tex="\(e=\dim C\)">\(e=\dim C\)</span>. Choose base parameters <span class="math" data-tex="\(x_1,\ldots,x_d\)">\(x_1,\ldots,x_d\)</span> and lift fibre parameters <span class="math" data-tex="\(\bar y_1,\ldots,\bar y_e\)">\(\bar y_1,\ldots,\bar y_e\)</span> to <span class="math" data-tex="\(y_j\in\mathfrak n\)">\(y_j\in\mathfrak n\)</span>. Consider</p>
+<span class="math math-display" data-tex="\[
+K=(x_1,\ldots,x_d,y_1,\ldots,y_e)B.
+\tag{16}
+\]">\[
+K=(x_1,\ldots,x_d,y_1,\ldots,y_e)B.
+\tag{16}
+\]</span>
+<p>If a prime of <span class="math" data-tex="\(B\)">\(B\)</span> contains <span class="math" data-tex="\(K\)">\(K\)</span>, it contains <span class="math" data-tex="\(\mathfrak mB\)">\(\mathfrak mB\)</span>: some <span class="math" data-tex="\(\mathfrak m^a\)">\(\mathfrak m^a\)</span> lies in the base parameter ideal, so the image of every element of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has a power in that prime. In <span class="math" data-tex="\(C\)">\(C\)</span>, the prime then contains all the fibre parameters and hence is the maximal ideal. Its inverse image is <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>. Thus <span class="math" data-tex="\(\sqrt K=\mathfrak n\)">\(\sqrt K=\mathfrak n\)</span>. Theorem 2.1 gives <span class="math" data-tex="\(\dim B\leq d+e\)">\(\dim B\leq d+e\)</span>, which is (15).</p>
+<p><strong>Proof of equality with going down.</strong> Since all three local dimensions are finite, their supremal chain lengths are attained. Choose a length-<span class="math" data-tex="\(e\)">\(e\)</span> chain in <span class="math" data-tex="\(C\)">\(C\)</span> ending at its maximal ideal; a chain of maximum length must end there. Its inverse image in <span class="math" data-tex="\(B\)">\(B\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak q_0\subsetneq\cdots\subsetneq\mathfrak q_e=\mathfrak n.
+\]">\[
+\mathfrak q_0\subsetneq\cdots\subsetneq\mathfrak q_e=\mathfrak n.
+\]</span>
+<p>Every member contracts to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, because it contains <span class="math" data-tex="\(\mathfrak mB\)">\(\mathfrak mB\)</span>. Choose a length-<span class="math" data-tex="\(d\)">\(d\)</span> chain <span class="math" data-tex="\(\mathfrak p_0\subsetneq\cdots\subsetneq\mathfrak p_d=\mathfrak m\)">\(\mathfrak p_0\subsetneq\cdots\subsetneq\mathfrak p_d=\mathfrak m\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>. Starting at <span class="math" data-tex="\(\mathfrak q_0\)">\(\mathfrak q_0\)</span>, repeated going down lifts this base chain below it. The lifted inclusions are strict since the contractions differ. Append the original fibre chain. The combined chain in <span class="math" data-tex="\(B\)">\(B\)</span> has length <span class="math" data-tex="\(d+e\)">\(d+e\)</span>, so <span class="math" data-tex="\(\dim B\geq d+e\)">\(\dim B\geq d+e\)</span>.</p>
+<p>Going down passes to the indicated localizations by prime correspondence. Flat maps satisfy it by Theorem 6.3 of <em>Tor and flat modules</em>, and their localizations remain flat. This proves the equality claims. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fibre term is the dimension of the local ring at the selected point of <span class="math" data-tex="\(\operatorname{Spec}(S\otimes_R\kappa(\mathfrak p))\)">\(\operatorname{Spec}(S\otimes_R\kappa(\mathfrak p))\)</span>. Elements outside <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> are already inverted in <span class="math" data-tex="\(S_{\mathfrak q}\)">\(S_{\mathfrak q}\)</span>, so this fibre’s local ring is exactly <span class="math" data-tex="\(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}\)">\(S_{\mathfrak q}/\mathfrak pS_{\mathfrak q}\)</span>.</p>
+<h2 id="6-polynomial-rings-over-noetherian-bases"><span id="section-6"></span>6. Polynomial rings over Noetherian bases</h2>
+<p><strong>Theorem 6.1.</strong> For any Noetherian ring <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\dim R[T_1,\ldots,T_n]=\dim R+n.
+\tag{17}
+\]">\[
+\dim R[T_1,\ldots,T_n]=\dim R+n.
+\tag{17}
+\]</span>
+<p>Here <span class="math" data-tex="\(\infty+n=\infty\)">\(\infty+n=\infty\)</span> and <span class="math" data-tex="\(-\infty+n=-\infty\)">\(-\infty+n=-\infty\)</span>, so the statement includes rings of infinite dimension and the zero ring.</p>
+<p><strong>Proof.</strong> First consider one variable. For an arbitrary ring <span class="math" data-tex="\(R\)">\(R\)</span>, any strict chain <span class="math" data-tex="\(\mathfrak p_0\subsetneq\cdots\subsetneq\mathfrak p_l\)">\(\mathfrak p_0\subsetneq\cdots\subsetneq\mathfrak p_l\)</span> extends to</p>
+<span class="math math-display" data-tex="\[
+\mathfrak p_0R[T]\subsetneq\cdots\subsetneq\mathfrak p_lR[T]
+\subsetneq\mathfrak p_lR[T]+(T).
+\tag{18}
+\]">\[
+\mathfrak p_0R[T]\subsetneq\cdots\subsetneq\mathfrak p_lR[T]
+\subsetneq\mathfrak p_lR[T]+(T).
+\tag{18}
+\]</span>
+<p>Every extended ideal is prime because its quotient is <span class="math" data-tex="\((R/\mathfrak p_i)[T]\)">\((R/\mathfrak p_i)[T]\)</span>, a domain. The last quotient is <span class="math" data-tex="\(R/\mathfrak p_l\)">\(R/\mathfrak p_l\)</span>, also a domain. Strictness of the extended inclusions follows by contracting to <span class="math" data-tex="\(R\)">\(R\)</span>, and the last one is strict because <span class="math" data-tex="\(T\notin\mathfrak p_lR[T]\)">\(T\notin\mathfrak p_lR[T]\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\dim R[T]\geq\dim R+1
+\tag{19}
+\]">\[
+\dim R[T]\geq\dim R+1
+\tag{19}
+\]</span>
+<p>for every ring, interpreting unbounded finite chains and the empty spectrum as above.</p>
+<p>Now let <span class="math" data-tex="\(R\)">\(R\)</span> be Noetherian. Hilbert’s basis theorem makes <span class="math" data-tex="\(R[T]\)">\(R[T]\)</span> Noetherian. It is free over <span class="math" data-tex="\(R\)">\(R\)</span>, with basis <span class="math" data-tex="\(1,T,T^2,\ldots\)">\(1,T,T^2,\ldots\)</span>, hence flat. For a prime <span class="math" data-tex="\(P\)">\(P\)</span> above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, Theorem 5.1 gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ht}P=\operatorname{ht}\mathfrak p+
+\dim\bigl(\kappa(\mathfrak p)[T]_{\bar P}\bigr)
+\leq\operatorname{ht}\mathfrak p+1.
+\tag{20}
+\]">\[
+\operatorname{ht}P=\operatorname{ht}\mathfrak p+
+\dim\bigl(\kappa(\mathfrak p)[T]_{\bar P}\bigr)
+\leq\operatorname{ht}\mathfrak p+1.
+\tag{20}
+\]</span>
+<p>The fibre identification follows by first localizing <span class="math" data-tex="\(R\)">\(R\)</span> at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, reducing modulo <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and then localizing at the corresponding fibre prime <span class="math" data-tex="\(\bar P\)">\(\bar P\)</span>. A polynomial ring in one variable over a field is a PID: its zero prime has height zero and its nonzero primes have height one. This justifies both the inequality and the fact that the last dimension is either zero or one. For <span class="math" data-tex="\(P=\mathfrak pR[T]+(T)\)">\(P=\mathfrak pR[T]+(T)\)</span>, it is one.</p>
+<p>Taking suprema of (20) gives <span class="math" data-tex="\(\dim R[T]\leq\dim R+1\)">\(\dim R[T]\leq\dim R+1\)</span>; together with (19) this gives equality. This step does not require a prime of height <span class="math" data-tex="\(\dim R\)">\(\dim R\)</span> when <span class="math" data-tex="\(\dim R=\infty\)">\(\dim R=\infty\)</span>. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, both spectra are empty and the formula is immediate. Iterating the one-variable result proves (17), with each intermediate ring Noetherian. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-four-local-calculations"><span id="section-7"></span>7. Four local calculations</h2>
+<p><strong>Formal plane.</strong> The ring <span class="math" data-tex="\(A=k[[x,y]]\)">\(A=k[[x,y]]\)</span> is Noetherian by the coefficientwise formal-series argument in Solution 7.3 of <em>Noetherian and Artinian rings</em>, iterated from <span class="math" data-tex="\(k\)">\(k\)</span>. A series is a unit exactly when its constant coefficient is nonzero: the inverse is obtained by a geometric-series expansion in the ideal <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is local with maximal ideal <span class="math" data-tex="\(\mathfrak n=(x,y)\)">\(\mathfrak n=(x,y)\)</span>.</p>
+<p>The ideal <span class="math" data-tex="\(\mathfrak n^j\)">\(\mathfrak n^j\)</span> consists exactly of series with no monomial of total degree below <span class="math" data-tex="\(j\)">\(j\)</span>. Indeed, distribute the monomials of such a series among the finitely many degree-<span class="math" data-tex="\(j\)">\(j\)</span> monomials that divide them; each group is that monomial times a series. Consequently the degree-<span class="math" data-tex="\(j\)">\(j\)</span> layer has basis <span class="math" data-tex="\(x^jy^0,\ldots,x^0y^j\)">\(x^jy^0,\ldots,x^0y^j\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\ell_A(A/\mathfrak n^n)=\sum_{j=0}^{n-1}(j+1)=\frac{n(n+1)}2.
+\tag{21}
+\]">\[
+\ell_A(A/\mathfrak n^n)=\sum_{j=0}^{n-1}(j+1)=\frac{n(n+1)}2.
+\tag{21}
+\]</span>
+<p>Theorem 2.1 gives <span class="math" data-tex="\(\dim A=2\)">\(\dim A=2\)</span>. The degree-one layer has basis <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, so the embedding dimension is two. The ring is regular, with parameters <span class="math" data-tex="\(x,y\)">\(x,y\)</span>.</p>
+<p><strong>Cusp and node.</strong> For <span class="math" data-tex="\(k[x,y]_{(x,y)}/(y^2-x^3)\)">\(k[x,y]_{(x,y)}/(y^2-x^3)\)</span>, and for <span class="math" data-tex="\(k[x,y]_{(x,y)}/(y^2-x^2)\)">\(k[x,y]_{(x,y)}/(y^2-x^2)\)</span>, Theorem 7.1 of the preceding lesson computes
+<span class="math" data-tex="\(H(n)=2n-1\)">\(H(n)=2n-1\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Their dimension is one by (6). Each equation lies in <span class="math" data-tex="\((x,y)^2\)">\((x,y)^2\)</span>, so imposing it introduces no relation in <span class="math" data-tex="\((x,y)/(x,y)^2\)">\((x,y)/(x,y)^2\)</span>; the embedding dimension stays two. Neither ring is regular. The second equation describes the usual two distinct tangent branches when <span class="math" data-tex="\(\operatorname{char}k\neq2\)">\(\operatorname{char}k\neq2\)</span>. In characteristic two the same dimension calculation holds, but the equation is a square and does not describe that node.</p>
+<p><strong>Quadric surface.</strong> Put</p>
+<span class="math math-display" data-tex="\[
+B=\bigl(k[x,y,z]/(xy-z^2)\bigr)_{(x,y,z)}.
+\tag{22}
+\]">\[
+B=\bigl(k[x,y,z]/(xy-z^2)\bigr)_{(x,y,z)}.
+\tag{22}
+\]</span>
+<p>Monic division in <span class="math" data-tex="\(z\)">\(z\)</span> makes <span class="math" data-tex="\(k[x,y,z]/(xy-z^2)\)">\(k[x,y,z]/(xy-z^2)\)</span> a free <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span>-module with basis <span class="math" data-tex="\(1,z\)">\(1,z\)</span>. Thus the local map <span class="math" data-tex="\(k[x,y]_{(x,y)}\to B\)">\(k[x,y]_{(x,y)}\to B\)</span> is flat, by base change and localization. The base dimension is two by the field polynomial height formula of the preceding dimension lesson. Its closed fibre is <span class="math" data-tex="\(k[z]/(z^2)\)">\(k[z]/(z^2)\)</span>, already local and Artinian, so has dimension zero. Theorem 5.1 gives <span class="math" data-tex="\(\dim B=2\)">\(\dim B=2\)</span>.</p>
+<p>The quotient by <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is <span class="math" data-tex="\(k[z]/(z^2)\)">\(k[z]/(z^2)\)</span>, so <span class="math" data-tex="\(x,y\)">\(x,y\)</span> is a system of parameters. The quotient by <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span> is <span class="math" data-tex="\(k[y]_{(y)}\)">\(k[y]_{(y)}\)</span>, of dimension one. Thus <span class="math" data-tex="\(x,z\)">\(x,z\)</span> fails to isolate the closed point and is not a system of parameters.</p>
+<p><strong>Arithmetic surface.</strong> Let <span class="math" data-tex="\(p\)">\(p\)</span> be a prime integer and put</p>
+<span class="math math-display" data-tex="\[
+A=\mathbb Z_{(p)}[x]_{(p,x)}.
+\tag{23}
+\]">\[
+A=\mathbb Z_{(p)}[x]_{(p,x)}.
+\tag{23}
+\]</span>
+<p>The base <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span> has the chain <span class="math" data-tex="\((0)\subsetneq(p)\)">\((0)\subsetneq(p)\)</span> and dimension one. The map to <span class="math" data-tex="\(A\)">\(A\)</span> is flat, and the closed fibre is <span class="math" data-tex="\(\mathbb F_p[x]_{(x)}\)">\(\mathbb F_p[x]_{(x)}\)</span>, also of dimension one. Therefore <span class="math" data-tex="\(\dim A=2\)">\(\dim A=2\)</span>. Its maximal ideal is generated by <span class="math" data-tex="\(p,x\)">\(p,x\)</span>, so (14) forces its embedding dimension to be exactly two. It is regular with regular parameters <span class="math" data-tex="\(p,x\)">\(p,x\)</span>.</p>
+<h2 id="8-a-noncatenary-noetherian-local-ring"><span id="section-8"></span>8. A noncatenary Noetherian local ring</h2>
+<p>The height theorem gives a finite bound on prime chains in a Noetherian local ring. It does not make every saturated chain between fixed endpoints have the same length. We construct the counterexample, following Nagata's example as presented in AI Integrated Stacks Project, and supply the verifications needed for this conclusion.</p>
+<p><strong>Lemma 8.1 (two local branches).</strong> There is a Noetherian semilocal domain <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(k=\mathbb Q\)">\(k=\mathbb Q\)</span> with exactly two maximal ideals <span class="math" data-tex="\(\mathfrak m_B,\mathfrak n_B\)">\(\mathfrak m_B,\mathfrak n_B\)</span>, residue field <span class="math" data-tex="\(k\)">\(k\)</span> at both, and local dimensions one and two respectively.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(z=\sum_{i\ge1}a_i x^i\in k[[x]]\)">\(z=\sum_{i\ge1}a_i x^i\in k[[x]]\)</span> transcendental over <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span>. Such a series exists: <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span> and its set of polynomials are countable, so the elements of <span class="math" data-tex="\(k((x))\)">\(k((x))\)</span> algebraic over it form a countable set, whereas binary coefficient sequences give an uncountable subset of <span class="math" data-tex="\(xk[[x]]\)">\(xk[[x]]\)</span>, by Cantor's diagonal argument. Put</p>
+<span class="math math-display" data-tex="\[
+z_j=x^{-j}\left(z-\sum_{i&lt;j}a_i x^i\right),
+\qquad R=k[x,z_1,z_2,\ldots]\subset k[[x]].
+\tag{17a}
+\]">\[
+z_j=x^{-j}\left(z-\sum_{i&lt;j}a_i x^i\right),
+\qquad R=k[x,z_1,z_2,\ldots]\subset k[[x]].
+\tag{17a}
+\]</span>
+<p>The relations are <span class="math" data-tex="\(z_j=a_j+xz_{j+1}\)">\(z_j=a_j+xz_{j+1}\)</span>, and <span class="math" data-tex="\(z=xz_1\)">\(z=xz_1\)</span>. Each <span class="math" data-tex="\(k[x,z_j]\)">\(k[x,z_j]\)</span> is a polynomial ring in two independent elements, by transcendence of <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> is their increasing union with the indicated substitutions. Modulo <span class="math" data-tex="\(x\)">\(x\)</span>, every <span class="math" data-tex="\(z_j\)">\(z_j\)</span> becomes <span class="math" data-tex="\(a_j\)">\(a_j\)</span>, so <span class="math" data-tex="\(\mathfrak m=(x)\)">\(\mathfrak m=(x)\)</span> is maximal with residue <span class="math" data-tex="\(k\)">\(k\)</span>. The local ring <span class="math" data-tex="\(R_{\mathfrak m}\)">\(R_{\mathfrak m}\)</span> embeds in <span class="math" data-tex="\(k[[x]]\)">\(k[[x]]\)</span>. A nonzero element whose constant term is zero lies in <span class="math" data-tex="\(xR_{\mathfrak m}\)">\(xR_{\mathfrak m}\)</span>, while a nonzero constant term makes it a unit. Dividing repeatedly by <span class="math" data-tex="\(x\)">\(x\)</span> ends after its finite power-series order. Thus every nonzero element is <span class="math" data-tex="\(x^v\)">\(x^v\)</span> times a unit, and every ideal is generated by its least occurring power of <span class="math" data-tex="\(x\)">\(x\)</span>. This is a DVR of dimension one.</p>
+<p>Modulo <span class="math" data-tex="\(x-1\)">\(x-1\)</span>, each transition <span class="math" data-tex="\(k[x,z_j]\to k[x,z_{j+1}]\)">\(k[x,z_j]\to k[x,z_{j+1}]\)</span> becomes the isomorphism <span class="math" data-tex="\(k[z_j]\to k[z_{j+1}]\)">\(k[z_j]\to k[z_{j+1}]\)</span>, <span class="math" data-tex="\(z_j\mapsto a_j+z_{j+1}\)">\(z_j\mapsto a_j+z_{j+1}\)</span>. Since quotients commute with these directed unions, <span class="math" data-tex="\(R/(x-1)=k[z]\)">\(R/(x-1)=k[z]\)</span>, where <span class="math" data-tex="\(z=xz_1\)">\(z=xz_1\)</span> has residue <span class="math" data-tex="\(z_1\)">\(z_1\)</span>. Hence <span class="math" data-tex="\(\mathfrak n=(x-1,z)\)">\(\mathfrak n=(x-1,z)\)</span> is another maximal ideal with residue <span class="math" data-tex="\(k\)">\(k\)</span>. Inverting <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(R_x=k[x,x^{-1},z]\)">\(R_x=k[x,x^{-1},z]\)</span>, directly from (17a). Therefore</p>
+<span class="math math-display" data-tex="\[
+R_{\mathfrak n}=k[x,x^{-1},z]_{(x-1,z)},
+\]">\[
+R_{\mathfrak n}=k[x,x^{-1},z]_{(x-1,z)},
+\]</span>
+<p>a Noetherian local ring of dimension two: its maximal ideal has two generators, and <span class="math" data-tex="\((0)\subset(z)\subset(x-1,z)\)">\((0)\subset(z)\subset(x-1,z)\)</span> has length two.</p>
+<p>Let <span class="math" data-tex="\(S=R\setminus(\mathfrak m\cup\mathfrak n)\)">\(S=R\setminus(\mathfrak m\cup\mathfrak n)\)</span>, and <span class="math" data-tex="\(B=S^{-1}R\)">\(B=S^{-1}R\)</span>. Finite prime avoidance shows that every prime disjoint from <span class="math" data-tex="\(S\)">\(S\)</span> lies in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> or <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>. Thus these give exactly the two maximal ideals of <span class="math" data-tex="\(B\)">\(B\)</span>, with the local rings and residue fields just computed. For any ideal <span class="math" data-tex="\(I\subset B\)">\(I\subset B\)</span>, choose finitely many numerators in <span class="math" data-tex="\(I\)">\(I\)</span> generating its localization at each of the two maximal ideals. Their combined ideal <span class="math" data-tex="\(I_0\)">\(I_0\)</span> has <span class="math" data-tex="\((I/I_0)\)">\((I/I_0)\)</span> zero at every maximal ideal, hence is all of <span class="math" data-tex="\(I\)">\(I\)</span> by local detection. Every ideal is finite, so <span class="math" data-tex="\(B\)">\(B\)</span> is Noetherian. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 8.2 (identifying the closed points).</strong> Put <span class="math" data-tex="\(J=\mathfrak m_B\cap\mathfrak n_B\)">\(J=\mathfrak m_B\cap\mathfrak n_B\)</span> and <span class="math" data-tex="\(A=k+J\subset B\)">\(A=k+J\subset B\)</span>. Then <span class="math" data-tex="\(A\)">\(A\)</span> is a two-dimensional Noetherian local domain with maximal ideal <span class="math" data-tex="\(J\)">\(J\)</span>, and <span class="math" data-tex="\(B\)">\(B\)</span> is finite over <span class="math" data-tex="\(A\)">\(A\)</span> with the same fraction field.</p>
+<p><strong>Proof.</strong> Chinese remainder identifies <span class="math" data-tex="\(B/J\)">\(B/J\)</span> with <span class="math" data-tex="\(k\times k\)">\(k\times k\)</span>, and <span class="math" data-tex="\(A/J\)">\(A/J\)</span> with its diagonal <span class="math" data-tex="\(k\)">\(k\)</span>. Choose <span class="math" data-tex="\(\beta\in B\)">\(\beta\in B\)</span> with residues <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Subtracting the two residue components of any element shows <span class="math" data-tex="\(B=A+A\beta\)">\(B=A+A\beta\)</span>; hence it is finite over <span class="math" data-tex="\(A\)">\(A\)</span> and integral. For <span class="math" data-tex="\(c+j\in A\)">\(c+j\in A\)</span>, <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, its inverse in the semilocal ring <span class="math" data-tex="\(B\)">\(B\)</span> has residues <span class="math" data-tex="\((c^{-1},c^{-1})\)">\((c^{-1},c^{-1})\)</span>, hence lies in <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is local with maximal ideal <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Here is a direct Noetherian proof, so no unproved finite-subring theorem is required. The ideal <span class="math" data-tex="\(J\)">\(J\)</span> is an ideal of <span class="math" data-tex="\(B\)">\(B\)</span>, because it is the intersection of its maximal ideals, and it is contained in <span class="math" data-tex="\(A\)">\(A\)</span>. Let <span class="math" data-tex="\(I\)">\(I\)</span> be a proper ideal of <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(I\subset J\)">\(I\subset J\)</span>. The ideal <span class="math" data-tex="\(BI\)">\(BI\)</span> is finite over the Noetherian ring <span class="math" data-tex="\(B\)">\(B\)</span>. The submodule <span class="math" data-tex="\(JBI\)">\(JBI\)</span> is likewise finite over <span class="math" data-tex="\(B\)">\(B\)</span>, hence finite over <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(B\)">\(B\)</span> is finite over <span class="math" data-tex="\(A\)">\(A\)</span>. Moreover <span class="math" data-tex="\(JBI\subset I\)">\(JBI\subset I\)</span>: write its terms as <span class="math" data-tex="\(jbi\)">\(jbi\)</span>, with <span class="math" data-tex="\(jb\in J\subset A\)">\(jb\in J\subset A\)</span>. The quotient <span class="math" data-tex="\(BI/JBI\)">\(BI/JBI\)</span> is finite over <span class="math" data-tex="\(B/J=k\times k\)">\(B/J=k\times k\)</span>, so finite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>. Its subspace <span class="math" data-tex="\(I/JBI\)">\(I/JBI\)</span> is therefore finite-dimensional. Lift a basis and combine it with a finite <span class="math" data-tex="\(A\)">\(A\)</span>-generating set of <span class="math" data-tex="\(JBI\)">\(JBI\)</span>; these generate <span class="math" data-tex="\(I\)">\(I\)</span>. The whole ring ideal is generated by one. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian.</p>
+<p>The ideal <span class="math" data-tex="\(J\)">\(J\)</span> contains a nonzero element, for example the image of <span class="math" data-tex="\(x(x-1)\)">\(x(x-1)\)</span>. For <span class="math" data-tex="\(0\ne j\in J\)">\(0\ne j\in J\)</span> and <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, we have <span class="math" data-tex="\(jb\in J\subset A\)">\(jb\in J\subset A\)</span>, so <span class="math" data-tex="\(b=(jb)/j\)">\(b=(jb)/j\)</span> belongs to <span class="math" data-tex="\(\operatorname{Frac}A\)">\(\operatorname{Frac}A\)</span>. The fraction fields coincide. Integral inclusions preserve dimension, as proved in <em>Integral extensions</em>, Theorem 5.1; thus <span class="math" data-tex="\(\dim A=\dim B=2\)">\(\dim A=\dim B=2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 8.3 (noncatenarity).</strong> The Noetherian local domain</p>
+<span class="math math-display" data-tex="\[
+D=A[T]_{\mathfrak M},\qquad \mathfrak M=(J,T),
+\tag{17b}
+\]">\[
+D=A[T]_{\mathfrak M},\qquad \mathfrak M=(J,T),
+\tag{17b}
+\]</span>
+<p>has saturated chains of different lengths between its zero prime and maximal ideal.</p>
+<p><strong>Proof.</strong> Send <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(\beta\)">\(\beta\)</span> from Lemma 8.2. This gives a surjection <span class="math" data-tex="\(A[T]\to B\)">\(A[T]\to B\)</span> with prime kernel <span class="math" data-tex="\(P\)">\(P\)</span>, contained in <span class="math" data-tex="\(\mathfrak M\)">\(\mathfrak M\)</span>, since the residue of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> at <span class="math" data-tex="\(\mathfrak m_B\)">\(\mathfrak m_B\)</span> is zero. Its contraction to <span class="math" data-tex="\(A\)">\(A\)</span> is zero. After inverting all nonzero elements of <span class="math" data-tex="\(A\)">\(A\)</span>, the map is the evaluation <span class="math" data-tex="\(K[T]\to K\)">\(K[T]\to K\)</span> at <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is the common fraction field. Its kernel is <span class="math" data-tex="\((T-\beta)\)">\((T-\beta)\)</span>, a height-one prime of the PID <span class="math" data-tex="\(K[T]\)">\(K[T]\)</span>. Every prime below <span class="math" data-tex="\(P\)">\(P\)</span> also contracts to zero, so the same localization proves that no prime lies strictly between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span>. The kernel is nonzero because <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is integral and has a monic relation. Also <span class="math" data-tex="\(D/PD=B_{\mathfrak m_B}\)">\(D/PD=B_{\mathfrak m_B}\)</span>, a DVR. Consequently</p>
+<span class="math math-display" data-tex="\[
+(0)\subsetneq PD\subsetneq\mathfrak MD
+\]">\[
+(0)\subsetneq PD\subsetneq\mathfrak MD
+\]</span>
+<p>is saturated of length two.</p>
+<p>On the other hand, take a nonzero prime <span class="math" data-tex="\(\mathfrak r\subsetneq\mathfrak n_B\)">\(\mathfrak r\subsetneq\mathfrak n_B\)</span>, which exists in the two-dimensional local branch. Its contraction <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero: after inverting <span class="math" data-tex="\(A\setminus\{0\}\)">\(A\setminus\{0\}\)</span>, the integral domain <span class="math" data-tex="\(B\)">\(B\)</span> becomes the field <span class="math" data-tex="\(K\)">\(K\)</span>, whose only prime is zero. It is strictly smaller than <span class="math" data-tex="\(J\)">\(J\)</span> by incomparability for the integral extension, applied to <span class="math" data-tex="\(\mathfrak r\subsetneq\mathfrak n_B\)">\(\mathfrak r\subsetneq\mathfrak n_B\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+(0)\subsetneq\mathfrak aA[T]\subsetneq JA[T]\subsetneq(J,T)
+\]">\[
+(0)\subsetneq\mathfrak aA[T]\subsetneq JA[T]\subsetneq(J,T)
+\]</span>
+<p>is a length-three chain of primes. Localization at <span class="math" data-tex="\(\mathfrak M\)">\(\mathfrak M\)</span> preserves it. The finite dimension bound already proved here lets us extend it to a saturated chain, of length at least three. This differs from the saturated length-two chain with the same endpoints, proving noncatenarity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Finite local dimension and the height theorem therefore do not justify subtracting endpoint heights along an arbitrary prime interval. The CM hypothesis in the following depth lesson will give a positive catenarity theorem.</p>
+<p>Systems of parameters need not be regular sequences. Exercise 9.6 makes the distinction explicit. Depth, the Cohen–Macaulay condition, the stronger properties of regular local rings, and completion are developed in their later lessons. Every theorem assigned to the present lesson has been proved above.</p>
+<h2 id="9-exercises"><span id="section-9"></span>9. Exercises</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Let <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> be a prime of a Noetherian ring generated as an ideal by <span class="math" data-tex="\(r\)">\(r\)</span> elements. Prove <span class="math" data-tex="\(\operatorname{ht}\mathfrak p\leq r\)">\(\operatorname{ht}\mathfrak p\leq r\)</span>. Explain why this is a statement about generators of the ideal, not the number of points of its spectrum.</p>
+<p><strong>Exercise 9.2 (easy).</strong> Compute the dimension and embedding dimension of <span class="math" data-tex="\(k[x,y]_{(x,y)}/(y^2-x^3)\)">\(k[x,y]_{(x,y)}/(y^2-x^3)\)</span>. Is this local ring regular?</p>
+<p><strong>Exercise 9.3 (medium).</strong> Let <span class="math" data-tex="\(x\in\mathfrak m\)">\(x\in\mathfrak m\)</span> be a nonzerodivisor of a Noetherian local ring. Prove <span class="math" data-tex="\(\dim(R/xR)=\dim R-1\)">\(\dim(R/xR)=\dim R-1\)</span>. Show also that every prime minimal over <span class="math" data-tex="\((x)\)">\((x)\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span> has height exactly one.</p>
+<p><strong>Exercise 9.4 (medium).</strong> In the ring (22), prove that <span class="math" data-tex="\(x,y\)">\(x,y\)</span> is a system of parameters and <span class="math" data-tex="\(x,z\)">\(x,z\)</span> is not. Compute the dimensions after imposing only <span class="math" data-tex="\(x\)">\(x\)</span>, then after imposing <span class="math" data-tex="\(x,y\)">\(x,y\)</span>.</p>
+<p><strong>Exercise 9.5 (hard).</strong> For an arbitrary ring <span class="math" data-tex="\(R\)">\(R\)</span>, prove <span class="math" data-tex="\(\dim R[T]\geq\dim R+1\)">\(\dim R[T]\geq\dim R+1\)</span>, including infinite and empty spectra. For Noetherian <span class="math" data-tex="\(R\)">\(R\)</span>, prove that every prime <span class="math" data-tex="\(P\)">\(P\)</span> contracts to a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with <span class="math" data-tex="\(\operatorname{ht}P\leq\operatorname{ht}\mathfrak p+1\)">\(\operatorname{ht}P\leq\operatorname{ht}\mathfrak p+1\)</span>. Determine exactly when the increment in height is zero or one using the fibre prime.</p>
+<p><strong>Exercise 9.6 (hard).</strong> Let <span class="math" data-tex="\(R=k[x,y]_{(x,y)}/(x^2,xy)\)">\(R=k[x,y]_{(x,y)}/(x^2,xy)\)</span>, with maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Compute its dimension and embedding dimension. Show that <span class="math" data-tex="\(y\)">\(y\)</span> is a parameter but a zero divisor. Compute <span class="math" data-tex="\(\ell_R(R/\mathfrak m^n)\)">\(\ell_R(R/\mathfrak m^n)\)</span> for all <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and its multiplicity. Explain why a parameter need not begin a regular sequence.</p>
+<h2 id="10-solutions"><span id="section-10"></span>10. Solutions</h2>
+<p><strong>Solution 9.1.</strong> The prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is minimal among primes containing its own generating ideal: any prime containing that ideal contains <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> itself. Apply Theorem 3.1. Equivalently, localize at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>; its <span class="math" data-tex="\(r\)">\(r\)</span> generators generate the maximal ideal and hence an ideal of definition, so local dimension is at most <span class="math" data-tex="\(r\)">\(r\)</span>. Neither reasoning counts points. For example, the principal prime <span class="math" data-tex="\((0)\)">\((0)\)</span> in <span class="math" data-tex="\(k[T]\)">\(k[T]\)</span> has height zero while its closed subset is the entire, potentially very large, spectrum.</p>
+<p><strong>Solution 9.2.</strong> The equation has order two. The preceding lesson’s plane-hypersurface calculation gives <span class="math" data-tex="\(H(n)=2n-1\)">\(H(n)=2n-1\)</span>, so <span class="math" data-tex="\(d(R)=1\)">\(d(R)=1\)</span>. Theorem 2.1 gives <span class="math" data-tex="\(\dim R=1\)">\(\dim R=1\)</span>. With <span class="math" data-tex="\(A=k[x,y]_{(x,y)}\)">\(A=k[x,y]_{(x,y)}\)</span> and <span class="math" data-tex="\(\mathfrak n=(x,y)A\)">\(\mathfrak n=(x,y)A\)</span>, the quotient cotangent space is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m/\mathfrak m^2
+\cong\mathfrak n/\bigl(\mathfrak n^2+(y^2-x^3)\bigr)
+=\mathfrak n/\mathfrak n^2.
+\]">\[
+\mathfrak m/\mathfrak m^2
+\cong\mathfrak n/\bigl(\mathfrak n^2+(y^2-x^3)\bigr)
+=\mathfrak n/\mathfrak n^2.
+\]</span>
+<p>The classes of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> are a basis, so the embedding dimension is two. Since <span class="math" data-tex="\(1&lt;2\)">\(1&lt;2\)</span>, the ring is not regular. This argument works in every characteristic.</p>
+<p><strong>Solution 9.3.</strong> Minimal primes are associated to <span class="math" data-tex="\(R\)">\(R\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> belonged to one, it would annihilate a nonzero element of <span class="math" data-tex="\(R\)">\(R\)</span>, contradicting injectivity. Thus it avoids them all, and Theorem 3.2 gives the dimension formula. For a prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> minimal over <span class="math" data-tex="\((x)\)">\((x)\)</span>, the principal ideal theorem gives height at most one. Height zero would make it a minimal prime of <span class="math" data-tex="\(R\)">\(R\)</span>: a nonminimal prime contains a minimal prime strictly, producing a chain of length one. This is impossible because <span class="math" data-tex="\(x\in\mathfrak p\)">\(x\in\mathfrak p\)</span> avoids all minimal primes. Hence the height is one.</p>
+<p><strong>Solution 9.4.</strong> Section 7 proves <span class="math" data-tex="\(\dim B=2\)">\(\dim B=2\)</span>. Quotienting by <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> gives the local Artinian ring <span class="math" data-tex="\(k[z]/(z^2)\)">\(k[z]/(z^2)\)</span>, whose only prime is <span class="math" data-tex="\((z)\)">\((z)\)</span>. Thus <span class="math" data-tex="\(\sqrt{(x,y)B}\)">\(\sqrt{(x,y)B}\)</span> is the maximal ideal, and the two-element list is a system of parameters. Quotienting by <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span> gives <span class="math" data-tex="\(k[y]_{(y)}\)">\(k[y]_{(y)}\)</span>, where the zero prime is strictly below <span class="math" data-tex="\((y)\)">\((y)\)</span>. Its dimension is one, so that pair does not define the closed point alone. After imposing just <span class="math" data-tex="\(x\)">\(x\)</span>, the quotient is</p>
+<span class="math math-display" data-tex="\[
+\bigl(k[y,z]/(z^2)\bigr)_{(y,z)}.
+\]">\[
+\bigl(k[y,z]/(z^2)\bigr)_{(y,z)}.
+\]</span>
+<p>Every prime contains <span class="math" data-tex="\(z\)">\(z\)</span>, and reducing modulo <span class="math" data-tex="\(z\)">\(z\)</span> identifies its spectrum with <span class="math" data-tex="\(\operatorname{Spec}k[y]_{(y)}\)">\(\operatorname{Spec}k[y]_{(y)}\)</span>, preserving chains. Its dimension is one. After imposing <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, it is zero, as also required by (12).</p>
+<p><strong>Solution 9.5.</strong> Extend every finite prime chain of <span class="math" data-tex="\(R\)">\(R\)</span> coefficientwise and append the prime generated by its last extended ideal and <span class="math" data-tex="\(T\)">\(T\)</span>, as in (18). Domain quotients verify primality, contraction verifies all earlier strict inclusions, and the nonzero class of <span class="math" data-tex="\(T\)">\(T\)</span> verifies the last one. For finite nonempty dimension <span class="math" data-tex="\(D\)">\(D\)</span>, a length-<span class="math" data-tex="\(D\)">\(D\)</span> chain exists because a bounded nonempty set of nonnegative integers attains its supremum. This produces length <span class="math" data-tex="\(D+1\)">\(D+1\)</span>. For infinite dimension, chains of unbounded finite lengths produce the required infinite supremum. An empty spectrum means <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, by maximal-ideal existence for nonzero rings, and <span class="math" data-tex="\(R[T]=0\)">\(R[T]=0\)</span> too.</p>
+<p>In the Noetherian case, apply the flat local formula to <span class="math" data-tex="\(R\to R[T]\)">\(R\to R[T]\)</span> at <span class="math" data-tex="\(P\)">\(P\)</span>. It gives precisely (20). The corresponding prime <span class="math" data-tex="\(\bar P\)">\(\bar P\)</span> of <span class="math" data-tex="\(\kappa(\mathfrak p)[T]\)">\(\kappa(\mathfrak p)[T]\)</span> is either zero, when its local ring is the rational-function field and the increment is zero, or a nonzero principal prime, when its local ring has dimension one and the increment is one. The prime <span class="math" data-tex="\(\mathfrak pR[T]+(T)\)">\(\mathfrak pR[T]+(T)\)</span> realizes the second possibility for every <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. All these heights are finite, even if their global supremum is infinite.</p>
+<p><strong>Solution 9.6.</strong> Before localization, every class has a unique form <span class="math" data-tex="\(f(y)+cx\)">\(f(y)+cx\)</span>, with <span class="math" data-tex="\(f\in k[y]\)">\(f\in k[y]\)</span> and <span class="math" data-tex="\(c\in k\)">\(c\in k\)</span>: the surviving monomials are <span class="math" data-tex="\(1,y,y^2,\ldots,x\)">\(1,y,y^2,\ldots,x\)</span>. This was also the embedded-point example in Section 7 of <em>Associated primes and primary decomposition</em>. Localization does not kill <span class="math" data-tex="\(x\)">\(x\)</span>. Indeed, multiplying it by any polynomial outside <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> multiplies it by a nonzero constant, since <span class="math" data-tex="\(x^2=xy=0\)">\(x^2=xy=0\)</span>.</p>
+<p>Every prime contains the nilpotent <span class="math" data-tex="\(x\)">\(x\)</span>. Reducing modulo it identifies the local spectrum with <span class="math" data-tex="\(\operatorname{Spec}k[y]_{(y)}\)">\(\operatorname{Spec}k[y]_{(y)}\)</span>, so dimension is one. Both defining equations lie in <span class="math" data-tex="\((x,y)^2\)">\((x,y)^2\)</span>; hence the classes of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> remain independent in <span class="math" data-tex="\(\mathfrak m/\mathfrak m^2\)">\(\mathfrak m/\mathfrak m^2\)</span>, and the embedding dimension is two. Quotienting by <span class="math" data-tex="\(y\)">\(y\)</span> leaves <span class="math" data-tex="\(k[x]/(x^2)\)">\(k[x]/(x^2)\)</span>, an Artinian local ring, so <span class="math" data-tex="\(y\)">\(y\)</span> is a one-element system of parameters. Yet <span class="math" data-tex="\(yx=0\)">\(yx=0\)</span> with <span class="math" data-tex="\(x\neq0\)">\(x\neq0\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the quotient by <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has length one. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, every product involving <span class="math" data-tex="\(x\)">\(x\)</span> and another generator vanishes, so <span class="math" data-tex="\(\mathfrak m^n=(y^n)\)">\(\mathfrak m^n=(y^n)\)</span>. Its quotient has basis</p>
+<span class="math math-display" data-tex="\[
+1,y,\ldots,y^{n-1},x.
+\]">\[
+1,y,\ldots,y^{n-1},x.
+\]</span>
+<p>Localization introduces no further change: in this finite-dimensional quotient the ideal <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is nilpotent, so every element with nonzero constant term already has an inverse. A composition series over this local <span class="math" data-tex="\(k\)">\(k\)</span>-algebra has one-dimensional simple factors, and its length is its vector-space dimension. Therefore</p>
+<span class="math math-display" data-tex="\[
+H_R(1)=1,\qquad H_R(n)=n+1\ (n\geq2),
+\qquad e_{\mathfrak m}(R)=1.
+\tag{24}
+\]">\[
+H_R(1)=1,\qquad H_R(n)=n+1\ (n\geq2),
+\qquad e_{\mathfrak m}(R)=1.
+\tag{24}
+\]</span>
+<p>The degree is one, agreeing with the prime-chain dimension. The first element of a regular sequence must act injectively on the ring; this parameter does not. Even multiplicity one here does not imply regularity.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative Algebra: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-dimension">Tag 00KQ</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-regular-local">Tag 00KU</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-minimal-over-1">Tag 00KV</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-minimal-over-r">Tag 0BBZ</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-one-equation">Tag 00KW</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-elements-generate-ideal-definition">Tag 02IE</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-dimension-base-fibre-total">Tag 00OM</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-dimension-base-fibre-equals-total">Tag 00ON</a>. These give the dimension theorem, parameters, height theorems and local base/fibre comparison. The tag links use the AI Integrated Stacks Project English reader described in the course introduction. The polynomial-ring theorem over a general Noetherian base is proved in Section 6.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Section 12.3, Krull’s theorems. <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s public draft</a>.</li>
+</ul>
+<h2 id="sources-and-adaptation-history">Sources and adaptation history</h2>
+<p>Section 8 adapts the noncatenary construction presented by the Stacks Project Authors in the pinned AI Integrated Stacks Project examples chapter. Its valuation, conductor and prime-chain verifications are supplied here; the conductor proof establishes Noetherianity directly. <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/examples.tex#L1410">Incorporated source</a>.</p>
+<p>History: Stacks Project Authors, original construction; OpenAI GPT-6.1 Sol, mathematical exposition and completed verifications, October 2026.</p>
+<h2 id="copyright-and-licence">Copyright and licence</h2>
+<p>Copyright (C) 2005–2025 Johan de Jong. The incorporated source is <em>The Stacks Project</em>, as distributed in AI Integrated Stacks Project at revision <code>565b10e987aba5969b21145a0833f42d69f96790</code>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy is supplied as <a href="COPYING-GFDL-1.2.txt">GNU Free Documentation License 1.2</a>.</p>
+<p>The original course material remains available under its CC0 dedication. This combined edition, including the incorporated and adapted proof, is distributed under GNU FDL 1.2 or later. The source authors, incorporated source titles and mathematical adaptations are identified above. History: Stacks Project Authors, original source; the credited AI Integrated Stacks Project editorial contributors, where used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.</p>
+</article><nav><a href="index.html">Contents</a> · <a href="prerequisites.html">Prerequisites</a> · <a href="src/dimension-theory-of-noetherian-local-rings.md">Editable source</a> · <a href="licence.html">Attribution and licences</a></nav></main></body></html>

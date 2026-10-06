@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ringed spaces and sheaves of modules · Sheaves and schemes</title>
+<meta name="description" content="A lesson of the course Sheaves and schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-SS/ringed-spaces-and-sheaves-of-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Sheaves and schemes</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="ringed-spaces-and-sheaves-of-modules">Ringed spaces and sheaves of modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).</em></p>
+<p>A geometric space carries a notion of functions. The functions need not be determined by their values: they may retain derivatives or nilpotent information. A ringed space records functions as a sheaf of rings. Its module sheaves then describe objects on which functions act. This lesson explains how modules combine and how they move along a map of spaces.</p>
+<p>We use <a href="sheaves-on-topological-spaces.html">Sheaves on topological spaces</a>, especially sheafification, the stalk criterion and inverse image. The algebraic background is the tensor-product and localization language in <a href="../AG-CA/AG-CA-02.html">Localization, local properties and support</a>. Basic references are [Stacks], [Vakil] and [Module sheaves]. The rings in this lesson are commutative with identity. A local ring is nonzero and has one maximal ideal.</p>
+<h2 id="1-the-rings-carried-by-a-space">1. The rings carried by a space</h2>
+<p>A <strong>ringed space</strong> is a pair <span class="math" data-tex="\((X,\mathcal O_X)\)">\((X,\mathcal O_X)\)</span> with <span class="math" data-tex="\(X\)">\(X\)</span> a topological space and <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> a sheaf of rings. A morphism</p>
+<span class="math math-display" data-tex="\[
+(f,f^\sharp):(X,\mathcal O_X)\longrightarrow(Y,\mathcal O_Y)
+\]">\[
+(f,f^\sharp):(X,\mathcal O_X)\longrightarrow(Y,\mathcal O_Y)
+\]</span>
+<p>consists of a continuous map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> and a sheaf morphism <span class="math" data-tex="\(f^\sharp:\mathcal O_Y\to f_*\mathcal O_X\)">\(f^\sharp:\mathcal O_Y\to f_*\mathcal O_X\)</span>. Thus functions on an open subset <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(Y\)">\(Y\)</span> pull back to functions on <span class="math" data-tex="\(f^{-1}V\)">\(f^{-1}V\)</span>. By the inverse-image adjunction, the same datum is a ring-sheaf map</p>
+<span class="math math-display" data-tex="\[
+f^{-1}\mathcal O_Y\longrightarrow\mathcal O_X.
+\tag{1.1}
+\]">\[
+f^{-1}\mathcal O_Y\longrightarrow\mathcal O_X.
+\tag{1.1}
+\]</span>
+<p>For composable morphisms <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, the structure map of the composite is
+<span class="math" data-tex="\(\mathcal O_Z\xrightarrow{g^\sharp}g_*\mathcal O_Y\xrightarrow{g_*f^\sharp}g_*f_*\mathcal O_X\)">\(\mathcal O_Z\xrightarrow{g^\sharp}g_*\mathcal O_Y\xrightarrow{g_*f^\sharp}g_*f_*\mathcal O_X\)</span>.</p>
+<p>A ringed space is <strong>locally ringed</strong> if every stalk <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span> is a local ring. Its unique maximal ideal is <span class="math" data-tex="\(\mathfrak m_x\)">\(\mathfrak m_x\)</span>; its <strong>residue field</strong> is <span class="math" data-tex="\(\kappa(x)=\mathcal O_{X,x}/\mathfrak m_x\)">\(\kappa(x)=\mathcal O_{X,x}/\mathfrak m_x\)</span>. A homomorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> between local rings is <strong>local</strong> if the inverse image of the maximal ideal of <span class="math" data-tex="\(B\)">\(B\)</span> is the maximal ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. Equivalently, it sends the maximal ideal of <span class="math" data-tex="\(A\)">\(A\)</span> into that of <span class="math" data-tex="\(B\)">\(B\)</span>: every element outside the maximal ideal of <span class="math" data-tex="\(A\)">\(A\)</span> is a unit and hence maps outside the maximal ideal of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>A morphism of <strong>locally ringed spaces</strong> is a morphism of ringed spaces whose maps
+<span class="math" data-tex="\(\mathcal O_{Y,f(x)}\to\mathcal O_{X,x}\)">\(\mathcal O_{Y,f(x)}\to\mathcal O_{X,x}\)</span> are local for every <span class="math" data-tex="\(x\)">\(x\)</span>. It then induces a field homomorphism <span class="math" data-tex="\(\kappa(f(x))\to\kappa(x)\)">\(\kappa(f(x))\to\kappa(x)\)</span>. Composition preserves locality, because inverse images of maximal ideals compose.</p>
+<p><strong>Example 1.1 (smooth functions).</strong> A smooth manifold <span class="math" data-tex="\(M\)">\(M\)</span> with its sheaf <span class="math" data-tex="\(\mathcal C^\infty_M\)">\(\mathcal C^\infty_M\)</span> is locally ringed. Evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> maps the stalk onto <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. A germ with nonzero value has a smooth reciprocal on a sufficiently small neighbourhood; a germ with zero value cannot be a unit. Thus the nonunits are exactly the kernel of evaluation, which is the unique maximal ideal. Pullback by a smooth map respects evaluation, so its stalk maps are local. The same argument gives a locally ringed space from continuous real functions on any topological space, or holomorphic functions on a complex manifold.</p>
+<p><strong>Example 1.2 (a constant sheaf of rings).</strong> The stalks of <span class="math" data-tex="\(R_X\)">\(R_X\)</span> are <span class="math" data-tex="\(R\)">\(R\)</span>. Consequently, on a nonempty space, <span class="math" data-tex="\((X,R_X)\)">\((X,R_X)\)</span> is locally ringed precisely when <span class="math" data-tex="\(R\)">\(R\)</span> is local. If <span class="math" data-tex="\(X\)">\(X\)</span> is empty there is no stalk condition to check.</p>
+<p><strong>Example 1.3 (locality is an additional condition).</strong> Fix a prime integer <span class="math" data-tex="\(p\)">\(p\)</span>. The inclusion <span class="math" data-tex="\(\mathbb Z_{(p)}\to\mathbb Q\)">\(\mathbb Z_{(p)}\to\mathbb Q\)</span> gives a morphism of one-point ringed spaces</p>
+<span class="math math-display" data-tex="\[
+(\{*\},\mathbb Q)\longrightarrow(\{*\},\mathbb Z_{(p)}).
+\]">\[
+(\{*\},\mathbb Q)\longrightarrow(\{*\},\mathbb Z_{(p)}).
+\]</span>
+<p>Both spaces are locally ringed, but the morphism is not local. The maximal ideal of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is zero; its inverse image is zero, rather than <span class="math" data-tex="\(p\mathbb Z_{(p)}\)">\(p\mathbb Z_{(p)}\)</span>. In geometric terms, the map has inverted an element that was noninvertible at the target point.</p>
+<p><strong>Theorem 1.4 (recognizing an isomorphism).</strong> A morphism of locally ringed spaces is an isomorphism if and only if its underlying map is a homeomorphism and all its stalk maps are isomorphisms.</p>
+<p><strong>Proof.</strong> An isomorphism has both properties. Conversely, use the homeomorphism to identify the two underlying spaces. The structure map becomes a morphism of sheaves of rings on one space. Its stalk maps are isomorphisms, so the stalk criterion gives a sheaf isomorphism. Its inverse, together with the inverse homeomorphism, gives an inverse ringed-space morphism. An isomorphism of local rings identifies their unique maximal ideals, so the inverse maps are local. Thus the inverse is a morphism of locally ringed spaces. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-bilinear-operations-require-sheafification">2. Bilinear operations require sheafification</h2>
+<p>An <strong><span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module</strong> is a sheaf <span class="math" data-tex="\(F\)">\(F\)</span> of abelian groups with actions <span class="math" data-tex="\(\mathcal O_X(U)\times F(U)\to F(U)\)">\(\mathcal O_X(U)\times F(U)\to F(U)\)</span> making each <span class="math" data-tex="\(F(U)\)">\(F(U)\)</span> a module and satisfying <span class="math" data-tex="\((as)|_V=a|_V\,s|_V\)">\((as)|_V=a|_V\,s|_V\)</span>. Morphisms preserve these actions. Each stalk <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is an <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span>-module, by multiplying representatives after restricting to a common neighbourhood.</p>
+<p>The category <span class="math" data-tex="\(\operatorname{Mod}(\mathcal O_X)\)">\(\operatorname{Mod}(\mathcal O_X)\)</span> is abelian, and exactness is checked on stalks; these facts are [Module sheaves, Theorem 2.1]. We use them without repeating their proof. A direct sum of an arbitrary family of module sheaves is the sheafification of the sectionwise direct sum. In particular, the free module <span class="math" data-tex="\(\mathcal O_X^{(I)}\)">\(\mathcal O_X^{(I)}\)</span> has stalk <span class="math" data-tex="\(\bigoplus_{i\in I}\mathcal O_{X,x}\)">\(\bigoplus_{i\in I}\mathcal O_{X,x}\)</span>. A section of this free module need have only locally finite, rather than globally finite, support in its indices.</p>
+<p>For two module sheaves <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, form the presheaf</p>
+<span class="math math-display" data-tex="\[
+T(U)=F(U)\otimes_{\mathcal O_X(U)}G(U).
+\tag{2.1}
+\]">\[
+T(U)=F(U)\otimes_{\mathcal O_X(U)}G(U).
+\tag{2.1}
+\]</span>
+<p>Restrictions send <span class="math" data-tex="\(s\otimes t\)">\(s\otimes t\)</span> to <span class="math" data-tex="\(s|_V\otimes t|_V\)">\(s|_V\otimes t|_V\)</span>; the change of scalar ring causes no problem because the restrictions are linear over <span class="math" data-tex="\(\mathcal O_X(U)\to\mathcal O_X(V)\)">\(\mathcal O_X(U)\to\mathcal O_X(V)\)</span>. Define the <strong>tensor product sheaf</strong> <span class="math" data-tex="\(F\otimes_{\mathcal O_X}G=T^{\#}\)">\(F\otimes_{\mathcal O_X}G=T^{\#}\)</span>.</p>
+<p>An <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-bilinear morphism from <span class="math" data-tex="\(F,G\)">\(F,G\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> means maps <span class="math" data-tex="\(F(U)\times G(U)\to H(U)\)">\(F(U)\times G(U)\to H(U)\)</span>, bilinear over <span class="math" data-tex="\(\mathcal O_X(U)\)">\(\mathcal O_X(U)\)</span> and compatible with restriction.</p>
+<p><strong>Theorem 2.1 (tensor products).</strong> The tensor product sheaf represents such bilinear morphisms. Its stalks satisfy the natural identity</p>
+<span class="math math-display" data-tex="\[
+(F\otimes_{\mathcal O_X}G)_x
+\cong F_x\otimes_{\mathcal O_{X,x}}G_x.
+\tag{2.2}
+\]">\[
+(F\otimes_{\mathcal O_X}G)_x
+\cong F_x\otimes_{\mathcal O_{X,x}}G_x.
+\tag{2.2}
+\]</span>
+<p>Tensor product is associative and symmetric up to its canonical isomorphisms, has unit <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>, and is right exact in each variable.</p>
+<p><strong>Proof.</strong> Bilinear maps into <span class="math" data-tex="\(H(U)\)">\(H(U)\)</span> factor uniquely through (2.1). Their compatibility is exactly the condition that the resulting maps form a presheaf morphism <span class="math" data-tex="\(T\to H\)">\(T\to H\)</span>. The sheafification universal property gives the asserted bijection of maps from <span class="math" data-tex="\(T^{\#}\)">\(T^{\#}\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For (2.2), sheafification does not alter stalks. The map from the stalk of <span class="math" data-tex="\(T\)">\(T\)</span> sends the germ of <span class="math" data-tex="\(\sum_j s_j\otimes t_j\)">\(\sum_j s_j\otimes t_j\)</span> to <span class="math" data-tex="\(\sum_j(s_j)_x\otimes(t_j)_x\)">\(\sum_j(s_j)_x\otimes(t_j)_x\)</span>. Every tensor on the right is a finite sum, so its finitely many entries can be represented on one neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>, proving surjectivity.</p>
+<p>For injectivity, construct tensor products of modules as the free abelian group on pairs, modulo the additive and balancing relations. An equality to zero uses finitely many of these relations and finitely many ring or module elements. Represent all of them on a common neighbourhood. Every equality among the representatives that holds as germs holds after further shrinking; only finitely many equalities are involved. The same finite relation certificate then proves that the sectionwise tensor is zero on that smaller neighbourhood. This proves injectivity even though the ring of scalars varies with the neighbourhood.</p>
+<p>The module-level associativity, symmetry and unit maps on sections descend to sheaf maps and are isomorphisms on stalks by (2.2). Hence they are sheaf isomorphisms. A right-exact sequence remains right exact after tensoring on each stalk, because tensor product of ordinary modules is right exact. The stalk exactness criterion proves the sheaf assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 2.2 (why the presheaf in (2.1) can fail).</strong> Let <span class="math" data-tex="\(X=\mathbb N_{&gt;0}\)">\(X=\mathbb N_{&gt;0}\)</span> with the discrete topology, and <span class="math" data-tex="\(\mathcal O=k_X\)">\(\mathcal O=k_X\)</span> for a field <span class="math" data-tex="\(k\)">\(k\)</span>. Put <span class="math" data-tex="\(V=\bigoplus_{j\geq1}ke_j\)">\(V=\bigoplus_{j\geq1}ke_j\)</span>, and let <span class="math" data-tex="\(F(U)=G(U)=\prod_{n\in U}V\)">\(F(U)=G(U)=\prod_{n\in U}V\)</span>. These are module sheaves, since a sheaf on a discrete space is a collection of stalks with unrestricted componentwise gluing.</p>
+<p>On the singleton <span class="math" data-tex="\(\{n\}\)">\(\{n\}\)</span>, choose</p>
+<span class="math math-display" data-tex="\[
+t_n=\sum_{j=1}^n e_j\otimes e_j\in V\otimes_kV.
+\]">\[
+t_n=\sum_{j=1}^n e_j\otimes e_j\in V\otimes_kV.
+\]</span>
+<p>These sections are automatically compatible on the disjoint singleton cover of <span class="math" data-tex="\(X\)">\(X\)</span>. If they came from <span class="math" data-tex="\(F(X)\otimes_{k^X}G(X)\)">\(F(X)\otimes_{k^X}G(X)\)</span>, that element would be a finite sum of, say, <span class="math" data-tex="\(r\)">\(r\)</span> pure tensors. Its component at every <span class="math" data-tex="\(n\)">\(n\)</span> would then be a sum of at most <span class="math" data-tex="\(r\)">\(r\)</span> pure tensors. But the tensor <span class="math" data-tex="\(t_n\)">\(t_n\)</span> has rank <span class="math" data-tex="\(n\)">\(n\)</span>: contraction by the first <span class="math" data-tex="\(n\)">\(n\)</span> coordinate functionals gives the <span class="math" data-tex="\(n\)">\(n\)</span> linearly independent vectors <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>, whereas contraction of a sum of <span class="math" data-tex="\(r\)">\(r\)</span> pure tensors has image in the span of at most <span class="math" data-tex="\(r\)">\(r\)</span> vectors. Taking <span class="math" data-tex="\(n&gt;r\)">\(n&gt;r\)</span> is a contradiction. Sheafification supplies exactly the missing ability to use different finite expressions on different open pieces.</p>
+<h2 id="3-hom-as-a-sheaf-of-local-maps">3. Hom as a sheaf of local maps</h2>
+<p>Define the <strong>sheaf Hom</strong> by</p>
+<span class="math math-display" data-tex="\[
+\mathcal Hom_{\mathcal O_X}(G,H)(U)
+=\operatorname{Hom}_{\mathcal O_U}(G|_U,H|_U).
+\tag{3.1}
+\]">\[
+\mathcal Hom_{\mathcal O_X}(G,H)(U)
+=\operatorname{Hom}_{\mathcal O_U}(G|_U,H|_U).
+\tag{3.1}
+\]</span>
+<p>Its restriction forgets components outside the smaller open set. It is a sheaf: maps on an open cover that agree on overlaps glue uniquely by the morphism-gluing theorem. Addition and the action of a function on the images make it an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module. Notice that (3.1) means maps of sheaves on <span class="math" data-tex="\(U\)">\(U\)</span>, not merely maps <span class="math" data-tex="\(G(U)\to H(U)\)">\(G(U)\to H(U)\)</span>.</p>
+<p>Evaluation gives a bilinear sheaf morphism <span class="math" data-tex="\(\mathcal Hom(G,H)\times G\to H\)">\(\mathcal Hom(G,H)\times G\to H\)</span>, and hence a tensor morphism. Evaluation at the section <span class="math" data-tex="\(1\)">\(1\)</span> gives a sheaf isomorphism <span class="math" data-tex="\(\mathcal Hom(\mathcal O_X,H)\cong H\)">\(\mathcal Hom(\mathcal O_X,H)\cong H\)</span>; its inverse sends <span class="math" data-tex="\(h\)">\(h\)</span> to multiplication <span class="math" data-tex="\(a\mapsto ah\)">\(a\mapsto ah\)</span>.</p>
+<p><strong>Theorem 3.1 (tensor–Hom adjunction).</strong> There are natural bijections</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal O_X}(F\otimes G,H)
+\cong\operatorname{Hom}_{\mathcal O_X}(F,\mathcal Hom(G,H))
+\tag{3.2}
+\]">\[
+\operatorname{Hom}_{\mathcal O_X}(F\otimes G,H)
+\cong\operatorname{Hom}_{\mathcal O_X}(F,\mathcal Hom(G,H))
+\tag{3.2}
+\]</span>
+<p>and, more strongly, a natural sheaf isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathcal Hom(F\otimes G,H)
+\cong\mathcal Hom(F,\mathcal Hom(G,H)).
+\tag{3.3}
+\]">\[
+\mathcal Hom(F\otimes G,H)
+\cong\mathcal Hom(F,\mathcal Hom(G,H)).
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(b:F\times G\to H\)">\(b:F\times G\to H\)</span> be bilinear. For <span class="math" data-tex="\(s\in F(U)\)">\(s\in F(U)\)</span>, define a morphism <span class="math" data-tex="\(G|_U\to H|_U\)">\(G|_U\to H|_U\)</span> whose component on <span class="math" data-tex="\(V\subset U\)">\(V\subset U\)</span> sends <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(b_V(s|_V,t)\)">\(b_V(s|_V,t)\)</span>. These components respect restriction and define an element of (3.1). Sending <span class="math" data-tex="\(s\)">\(s\)</span> to that element is linear and compatible with restriction, giving the right side of (3.2).</p>
+<p>Conversely, for <span class="math" data-tex="\(c:F\to\mathcal Hom(G,H)\)">\(c:F\to\mathcal Hom(G,H)\)</span>, put <span class="math" data-tex="\(b_U(s,t)=(c_U(s))_U(t)\)">\(b_U(s,t)=(c_U(s))_U(t)\)</span>. Linearity of <span class="math" data-tex="\(c\)">\(c\)</span>, linearity of each local map, and compatibility with restrictions make <span class="math" data-tex="\(b\)">\(b\)</span> a bilinear morphism. The two formulas are inverse on every pair of local sections. Apply Theorem 2.1 to obtain (3.2). Perform the same constructions after restriction to every open <span class="math" data-tex="\(U\)">\(U\)</span>; they commute with shrinking <span class="math" data-tex="\(U\)">\(U\)</span>, which proves (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a natural map <span class="math" data-tex="\(\mathcal Hom(G,H)_x\to\operatorname{Hom}_{\mathcal O_{X,x}}(G_x,H_x)\)">\(\mathcal Hom(G,H)_x\to\operatorname{Hom}_{\mathcal O_{X,x}}(G_x,H_x)\)</span>, but we have not claimed it is always an isomorphism. A germ of a local sheaf map must act on all nearby stalks in a compatible way. An arbitrary map of just one stalk need not extend. Finiteness conditions that make this comparison an isomorphism will be treated in the next lesson.</p>
+<h2 id="4-changing-the-functions-as-well-as-the-space">4. Changing the functions as well as the space</h2>
+<p>Let <span class="math" data-tex="\((f,f^\sharp):X\to Y\)">\((f,f^\sharp):X\to Y\)</span> be a morphism of ringed spaces. For an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module <span class="math" data-tex="\(F\)">\(F\)</span>, the sheaf <span class="math" data-tex="\(f_*F\)">\(f_*F\)</span> becomes an <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span>-module by</p>
+<span class="math math-display" data-tex="\[
+a\cdot s=f^\sharp_V(a)s,
+\qquad a\in\mathcal O_Y(V),\quad s\in F(f^{-1}V).
+\]">\[
+a\cdot s=f^\sharp_V(a)s,
+\qquad a\in\mathcal O_Y(V),\quad s\in F(f^{-1}V).
+\]</span>
+<p>For an <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span>-module <span class="math" data-tex="\(G\)">\(G\)</span>, the inverse image <span class="math" data-tex="\(f^{-1}G\)">\(f^{-1}G\)</span> is a module over <span class="math" data-tex="\(f^{-1}\mathcal O_Y\)">\(f^{-1}\mathcal O_Y\)</span>. To make it a module over the actual functions on <span class="math" data-tex="\(X\)">\(X\)</span>, extend scalars through (1.1). This defines the <strong>module pullback</strong></p>
+<span class="math math-display" data-tex="\[
+f^*G=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}G.
+\tag{4.1}
+\]">\[
+f^*G=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}G.
+\tag{4.1}
+\]</span>
+<p>The inverse image and module pullback perform different operations. The first moves local information; the second also changes the scalar ring.</p>
+<p><strong>Theorem 4.1 (module pullback and pushforward).</strong> For every morphism of ringed spaces, the following hold naturally.</p>
+<ol>
+<li><span class="math" data-tex="\(f^*\)">\(f^*\)</span> is left adjoint to <span class="math" data-tex="\(f_*\)">\(f_*\)</span> on module sheaves.</li>
+<li>For <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>,
+<span class="math math-display" data-tex="\[
+(f^*G)_x\cong\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}G_{f(x)}.
+\tag{4.2}
+\]">\[
+(f^*G)_x\cong\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}G_{f(x)}.
+\tag{4.2}
+\]</span></li>
+<li><span class="math" data-tex="\(f^*\mathcal O_Y\cong\mathcal O_X\)">\(f^*\mathcal O_Y\cong\mathcal O_X\)</span>, and
+<span class="math" data-tex="\(f^*(G\otimes_{\mathcal O_Y}H)\cong f^*G\otimes_{\mathcal O_X}f^*H\)">\(f^*(G\otimes_{\mathcal O_Y}H)\cong f^*G\otimes_{\mathcal O_X}f^*H\)</span>.</li>
+<li><span class="math" data-tex="\(f^*\)">\(f^*\)</span> preserves all small colimits and is right exact. It need not be left exact.</li>
+<li>If <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, then <span class="math" data-tex="\((g\circ f)^*\cong f^*g^*\)">\((g\circ f)^*\cong f^*g^*\)</span>, canonically and compatibly with triple compositions.</li>
+</ol>
+<p><strong>Proof.</strong> First consider any ring-sheaf map <span class="math" data-tex="\(\mathcal R\to\mathcal S\)">\(\mathcal R\to\mathcal S\)</span> on one space. A map <span class="math" data-tex="\(\mathcal S\otimes_{\mathcal R}M\to N\)">\(\mathcal S\otimes_{\mathcal R}M\to N\)</span> of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>-modules gives an <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>-linear map <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span> by <span class="math" data-tex="\(m\mapsto1\otimes m\)">\(m\mapsto1\otimes m\)</span> followed by that map. Conversely, an <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>-linear map <span class="math" data-tex="\(b:M\to N\)">\(b:M\to N\)</span> defines the balanced bilinear rule <span class="math" data-tex="\(s\otimes m\mapsto s b(m)\)">\(s\otimes m\mapsto s b(m)\)</span>. The tensor universal property extends it to a sheaf morphism. These formulas are inverse, proving extension of scalars is left adjoint to restriction of scalars.</p>
+<p>Apply this with <span class="math" data-tex="\(\mathcal R=f^{-1}\mathcal O_Y\)">\(\mathcal R=f^{-1}\mathcal O_Y\)</span>, <span class="math" data-tex="\(\mathcal S=\mathcal O_X\)">\(\mathcal S=\mathcal O_X\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathcal O_X}(f^*G,F)
+&amp;\cong\operatorname{Hom}_{f^{-1}\mathcal O_Y}(f^{-1}G,F)\\
+&amp;\cong\operatorname{Hom}_{\mathcal O_Y}(G,f_*F).
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathcal O_X}(f^*G,F)
+&amp;\cong\operatorname{Hom}_{f^{-1}\mathcal O_Y}(f^{-1}G,F)\\
+&amp;\cong\operatorname{Hom}_{\mathcal O_Y}(G,f_*F).
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>For the second bijection, start with an <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span>-linear map <span class="math" data-tex="\(b:G\to f_*F\)">\(b:G\to f_*F\)</span>. A local representative <span class="math" data-tex="\(g\in G(V)\)">\(g\in G(V)\)</span> for <span class="math" data-tex="\(f^{-1}G\)">\(f^{-1}G\)</span> on <span class="math" data-tex="\(U\subset f^{-1}V\)">\(U\subset f^{-1}V\)</span> maps to <span class="math" data-tex="\(b_V(g)|_U\)">\(b_V(g)|_U\)</span>. For a scalar represented by <span class="math" data-tex="\(a\in\mathcal O_Y(V&#x27;)\)">\(a\in\mathcal O_Y(V&#x27;)\)</span>, restrict both representatives to <span class="math" data-tex="\(V\cap V&#x27;\)">\(V\cap V&#x27;\)</span>. Linearity of <span class="math" data-tex="\(b\)">\(b\)</span> gives <span class="math" data-tex="\(b(ag)=f^\sharp(a)b(g)\)">\(b(ag)=f^\sharp(a)b(g)\)</span>, so the local rule is <span class="math" data-tex="\(f^{-1}\mathcal O_Y\)">\(f^{-1}\mathcal O_Y\)</span>-linear. It respects the colimit identifications and extends by sheafification. Conversely, compose <span class="math" data-tex="\(G(V)\to f^{-1}G(f^{-1}V)\)">\(G(V)\to f^{-1}G(f^{-1}V)\)</span> with an <span class="math" data-tex="\(f^{-1}\mathcal O_Y\)">\(f^{-1}\mathcal O_Y\)</span>-linear map to <span class="math" data-tex="\(F\)">\(F\)</span>. The induced map to <span class="math" data-tex="\(F(f^{-1}V)\)">\(F(f^{-1}V)\)</span> is <span class="math" data-tex="\(\mathcal O_Y(V)\)">\(\mathcal O_Y(V)\)</span>-linear under <span class="math" data-tex="\(f^\sharp\)">\(f^\sharp\)</span>. Restriction compatibility gives a morphism <span class="math" data-tex="\(G\to f_*F\)">\(G\to f_*F\)</span>. The two constructions are inverse by the explicit adjunction in <em>Sheaves on topological spaces</em>, and their linearity checks prove this bijection in the module categories. This proves (1).</p>
+<p>Take stalks of (4.1). Theorem 2.1 and the inverse-image stalk formula identify the two scalar rings and the module with those in (4.2), proving (2). For (3), multiplication gives <span class="math" data-tex="\(\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal O_Y\cong\mathcal O_X\)">\(\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal O_Y\cong\mathcal O_X\)</span>. The tensor comparison is induced by the local rule</p>
+<span class="math math-display" data-tex="\[
+(a\otimes g)\otimes(b\otimes h)\longmapsto ab\otimes(g\otimes h).
+\]">\[
+(a\otimes g)\otimes(b\otimes h)\longmapsto ab\otimes(g\otimes h).
+\]</span>
+<p>At a stalk, its inverse sends <span class="math" data-tex="\(c\otimes(g\otimes h)\)">\(c\otimes(g\otimes h)\)</span> to <span class="math" data-tex="\((c\otimes g)\otimes(1\otimes h)\)">\((c\otimes g)\otimes(1\otimes h)\)</span>. Balancing relations make both formulas well-defined. Thus the comparison is an isomorphism on stalks and hence on sheaves.</p>
+<p>For (4), an adjunction gives colimit preservation directly: for a diagram <span class="math" data-tex="\((G_i)\)">\((G_i)\)</span> and any <span class="math" data-tex="\(F\)">\(F\)</span>, maps from <span class="math" data-tex="\(f^*(\varinjlim_iG_i)\)">\(f^*(\varinjlim_iG_i)\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span> are compatible families of maps from <span class="math" data-tex="\(G_i\)">\(G_i\)</span> to <span class="math" data-tex="\(f_*F\)">\(f_*F\)</span>, hence compatible maps from <span class="math" data-tex="\(f^*G_i\)">\(f^*G_i\)</span> to <span class="math" data-tex="\(F\)">\(F\)</span>. This is the universal property of <span class="math" data-tex="\(\varinjlim_if^*G_i\)">\(\varinjlim_if^*G_i\)</span>. The module categories have these colimits by [Module sheaves, Theorem 3.1]. In particular, cokernels are preserved; additivity then gives right exactness. Alternatively, (4.2) and right exactness of tensor product check it on stalks. Example 5.1 below proves left exactness can fail.</p>
+<p>Pushforwards compose, including their scalar actions, because the composite structure map was defined by composing pullbacks of functions. Therefore both <span class="math" data-tex="\(f^*g^*\)">\(f^*g^*\)</span> and <span class="math" data-tex="\((g\circ f)^*\)">\((g\circ f)^*\)</span> are left adjoints to <span class="math" data-tex="\(g_*f_*\)">\(g_*f_*\)</span>. Uniqueness of the adjoint-compatible isomorphism proves (5), with coherence for a triple composition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The unit of the adjunction is <span class="math" data-tex="\(G\to f_*f^*G\)">\(G\to f_*f^*G\)</span>, locally <span class="math" data-tex="\(g\mapsto1\otimes g\)">\(g\mapsto1\otimes g\)</span>. The counit <span class="math" data-tex="\(f^*f_*F\to F\)">\(f^*f_*F\to F\)</span> multiplies functions by the restrictions of sections: <span class="math" data-tex="\(a\otimes s\mapsto as|_U\)">\(a\otimes s\mapsto as|_U\)</span> on any open where the representative is defined. These formulas clarify that (4.3) uses the given map of structure sheaves, not merely the underlying continuous map.</p>
+<p>If (1.1) is an isomorphism, the extension of scalars in (4.1) does nothing and <span class="math" data-tex="\(f^*=f^{-1}\)">\(f^*=f^{-1}\)</span> under that identification. For a general morphism the distinction remains. If every stalk <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span> is flat over <span class="math" data-tex="\(\mathcal O_{Y,f(x)}\)">\(\mathcal O_{Y,f(x)}\)</span>, (4.2) shows that <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is exact. Flatness is sufficient here; the inverse-image functor itself is exact without that additional hypothesis.</p>
+<h2 id="5-open-pieces-and-quotient-functions">5. Open pieces and quotient functions</h2>
+<p>An <strong>open immersion</strong> of locally ringed spaces identifies its source with an open subset <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span> and its structure sheaf with <span class="math" data-tex="\(\mathcal O_X|_U\)">\(\mathcal O_X|_U\)</span>. Its pullback is restriction, since both inverse image and the scalar-ring identification are restriction. Conversely, a locally ringed-space map with an open embedding underneath and isomorphisms on the corresponding stalks is an open immersion by the sheaf stalk criterion. The locality condition then follows from the ring isomorphisms.</p>
+<p>For closed immersions we use the convention in [Stacks, Tag 01HK]. A module sheaf is <strong>locally generated by sections</strong> if every point has a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> and a family of sections <span class="math" data-tex="\((s_i)_{i\in I}\)">\((s_i)_{i\in I}\)</span> on that same neighbourhood whose germs generate the module at every point of <span class="math" data-tex="\(U\)">\(U\)</span>. The index set may be infinite. Equivalently, on <span class="math" data-tex="\(U\)">\(U\)</span> there is a surjection <span class="math" data-tex="\(\mathcal O_U^{(I)}\to F|_U\)">\(\mathcal O_U^{(I)}\to F|_U\)</span>. This means that local sections can be written as finite linear combinations after shrinking; it does not assert that the map on sections over all of <span class="math" data-tex="\(U\)">\(U\)</span> is onto.</p>
+<p>A <strong>closed immersion</strong> <span class="math" data-tex="\(i:Z\to X\)">\(i:Z\to X\)</span> of locally ringed spaces is a homeomorphism onto a closed subset for which <span class="math" data-tex="\(\mathcal O_X\to i_*\mathcal O_Z\)">\(\mathcal O_X\to i_*\mathcal O_Z\)</span> is surjective on stalks and its kernel <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> is locally generated by sections. This last condition is not a finite-generation condition. Closed subschemes will have quasi-coherent kernels, and their relationship to this definition will be proved when affine schemes are constructed.</p>
+<p>The surjective stalk map at <span class="math" data-tex="\(z\)">\(z\)</span> identifies <span class="math" data-tex="\(\mathcal O_{Z,z}\)">\(\mathcal O_{Z,z}\)</span> with a quotient of <span class="math" data-tex="\(\mathcal O_{X,i(z)}\)">\(\mathcal O_{X,i(z)}\)</span>. The ideal is proper, since the quotient is a nonzero local ring. A surjection between local rings is local: the inverse image of the maximal ideal of the quotient is the unique maximal ideal of the source. Thus quotient functions give the required local morphisms.</p>
+<p><strong>Example 5.1 (a closed immersion makes pullback nonexact).</strong> Let <span class="math" data-tex="\(R=k[\epsilon]/(\epsilon^2)\)">\(R=k[\epsilon]/(\epsilon^2)\)</span>, with maximal ideal <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>, and consider the map of one-point locally ringed spaces</p>
+<span class="math math-display" data-tex="\[
+i:(\{*\},k)\longrightarrow(\{*\},R)
+\]">\[
+i:(\{*\},k)\longrightarrow(\{*\},R)
+\]</span>
+<p>given by the quotient <span class="math" data-tex="\(R\to k\)">\(R\to k\)</span>. It is a closed immersion: the topology is a homeomorphism, the ring map is surjective, and the kernel is generated by the section <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Modules on these one-point spaces are ordinary modules. Pullback is <span class="math" data-tex="\(k\otimes_R(-)\)">\(k\otimes_R(-)\)</span>.</p>
+<p>The inclusion <span class="math" data-tex="\((\epsilon)\hookrightarrow R\)">\((\epsilon)\hookrightarrow R\)</span> is injective. But its pullback is</p>
+<span class="math math-display" data-tex="\[
+k\otimes_R(\epsilon)\longrightarrow k\otimes_RR=k,
+\]">\[
+k\otimes_R(\epsilon)\longrightarrow k\otimes_RR=k,
+\]</span>
+<p>which is the zero map from a nonzero one-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector space. Indeed, <span class="math" data-tex="\((\epsilon)\cong k\)">\((\epsilon)\cong k\)</span> as an <span class="math" data-tex="\(R\)">\(R\)</span>-module, while the included element <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> maps to zero in <span class="math" data-tex="\(k\)">\(k\)</span>. The same underlying continuous map is the identity of a point; its inverse image on abelian sheaves is exact. Only the change of scalar ring has destroyed injectivity.</p>
+<p>The more elementary quotient <span class="math" data-tex="\(\mathbb Z\to\mathbb Z/2\mathbb Z\)">\(\mathbb Z\to\mathbb Z/2\mathbb Z\)</span>, considered in [Module sheaves, Example 5], has the same mechanism: the injective map <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\)</span> becomes zero after tensoring with <span class="math" data-tex="\(\mathbb Z/2\mathbb Z\)">\(\mathbb Z/2\mathbb Z\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove the stalk tensor identity (2.2) by constructing inverse maps on generators and checking the balancing relation over the stalk ring. Use it to compute the tensor of the two skyscraper modules with values <span class="math" data-tex="\(\mathbb Z/4\mathbb Z\)">\(\mathbb Z/4\mathbb Z\)</span> and <span class="math" data-tex="\(\mathbb Z/6\mathbb Z\)">\(\mathbb Z/6\mathbb Z\)</span> at one closed point, for the constant structure sheaf <span class="math" data-tex="\(\mathbb Z_X\)">\(\mathbb Z_X\)</span>.</p>
+<p><strong>Exercise 2 (easy).</strong> Verify the failure of locality in Example 1.3. Contrast it with the quotient <span class="math" data-tex="\(R\to R/\mathfrak m\)">\(R\to R/\mathfrak m\)</span> for a local ring <span class="math" data-tex="\((R,\mathfrak m)\)">\((R,\mathfrak m)\)</span>.</p>
+<p><strong>Exercise 3 (medium).</strong> For Example 5.1, compute the pullback of the full exact sequence <span class="math" data-tex="\(0\to(\epsilon)\to R\to k\to0\)">\(0\to(\epsilon)\to R\to k\to0\)</span>. Locate the failure of exactness, and prove directly that module pullback preserves every right-exact sequence.</p>
+<p><strong>Exercise 4 (medium).</strong> Prove that (3.1) is a sheaf by writing its glued map on an arbitrary open subset. Show <span class="math" data-tex="\(\mathcal Hom(\mathcal O_X,F)\cong F\)">\(\mathcal Hom(\mathcal O_X,F)\cong F\)</span>, as sheaves, rather than just as sets of global sections.</p>
+<p><strong>Exercise 5 (medium).</strong> Construct both directions of (3.2) on local sections, and check that the constructions commute with restriction. Deduce (3.3).</p>
+<p><strong>Exercise 6 (hard).</strong> In Example 2.2, identify the sheafification of the tensor presheaf on every open subset. Show that the presheaf's sections map only to families of tensors of uniformly bounded rank, whereas the sheaf permits arbitrary ranks at the different points. Explain why no finiteness restriction on the open set appears in the sheafified answer.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> Send <span class="math" data-tex="\(s_x\otimes t_x\)">\(s_x\otimes t_x\)</span> to the germ of <span class="math" data-tex="\(s\otimes t\)">\(s\otimes t\)</span>, after choosing representatives on a common neighbourhood. Changing a representative changes nothing after shrinking. An element <span class="math" data-tex="\(a_x\)">\(a_x\)</span> of the scalar ring also has a local representative <span class="math" data-tex="\(a\)">\(a\)</span>, and the relation <span class="math" data-tex="\((as)\otimes t=s\otimes(at)\)">\((as)\otimes t=s\otimes(at)\)</span> holds on that neighbourhood. Thus the rule defines a balanced map from the stalk tensor to the stalk of the presheaf tensor. The reverse map takes germs of sectionwise tensors to tensors of germs. Both composites fix the pure generators, so they are inverse; sheafification preserves that stalk.</p>
+<p>For the skyscrapers at a closed point <span class="math" data-tex="\(x\)">\(x\)</span>, their stalks vanish away from <span class="math" data-tex="\(x\)">\(x\)</span> and are the indicated cyclic groups at <span class="math" data-tex="\(x\)">\(x\)</span>. Their tensor stalk is therefore zero elsewhere and <span class="math" data-tex="\(\mathbb Z/4\otimes\mathbb Z/6\cong\mathbb Z/2\)">\(\mathbb Z/4\otimes\mathbb Z/6\cong\mathbb Z/2\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>. To identify the sheaf, multiplication of the two sections on each neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> gives a map from the skyscraper <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> to the tensor sheaf, which is an isomorphism on all stalks. Closedness matters: it ensures that the original skyscrapers have no nonzero stalks at other points.</p>
+<p><strong>Solution 2.</strong> The inverse image of <span class="math" data-tex="\((0)\subset\mathbb Q\)">\((0)\subset\mathbb Q\)</span> under the injection is <span class="math" data-tex="\((0)\)">\((0)\)</span>. This is strictly smaller than <span class="math" data-tex="\((p)\subset\mathbb Z_{(p)}\)">\((p)\subset\mathbb Z_{(p)}\)</span>, since <span class="math" data-tex="\(p\ne0\)">\(p\ne0\)</span>. Thus the map is not local. For <span class="math" data-tex="\(R\to R/\mathfrak m\)">\(R\to R/\mathfrak m\)</span>, the target field has maximal ideal zero and its inverse image is exactly <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>; the quotient map is local.</p>
+<p><strong>Solution 3.</strong> The pulled-back terms are <span class="math" data-tex="\(k,k,k\)">\(k,k,k\)</span>, and the maps are zero followed by the identity: the first is zero by Example 5.1, and the second is the canonical <span class="math" data-tex="\(k\otimes_RR\to k\otimes_Rk\)">\(k\otimes_RR\to k\otimes_Rk\)</span>. The sequence <span class="math" data-tex="\(k\xrightarrow{0}k\xrightarrow{1}k\to0\)">\(k\xrightarrow{0}k\xrightarrow{1}k\to0\)</span> is right exact but cannot be preceded by an injective arrow from the first <span class="math" data-tex="\(k\)">\(k\)</span>. For any right-exact sequence on <span class="math" data-tex="\(Y\)">\(Y\)</span>, take stalks at <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, tensor over <span class="math" data-tex="\(\mathcal O_{Y,f(x)}\)">\(\mathcal O_{Y,f(x)}\)</span> with <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span>, and use ordinary module right exactness. Formula (4.2) identifies this with the stalk sequence after pullback. Stalkwise exactness proves right exactness of the sheaf sequence.</p>
+<p><strong>Solution 4.</strong> Given compatible morphisms <span class="math" data-tex="\(b_i:G|_{U_i}\to H|_{U_i}\)">\(b_i:G|_{U_i}\to H|_{U_i}\)</span>, and a section <span class="math" data-tex="\(s\in G(W)\)">\(s\in G(W)\)</span>, apply <span class="math" data-tex="\(b_i\)">\(b_i\)</span> to <span class="math" data-tex="\(s|_{W\cap U_i}\)">\(s|_{W\cap U_i}\)</span>. Their images agree on the overlaps, so they glue to a unique section of <span class="math" data-tex="\(H(W)\)">\(H(W)\)</span>. Restricting <span class="math" data-tex="\(W\)">\(W\)</span> restricts the glued section, by uniqueness. Addition and scalar multiplication commute with this gluing locally and hence globally. This gives the unique sheaf morphism on the union. For <span class="math" data-tex="\(G=\mathcal O_X\)">\(G=\mathcal O_X\)</span>, a morphism on <span class="math" data-tex="\(U\)">\(U\)</span> is determined by the image <span class="math" data-tex="\(t\in F(U)\)">\(t\in F(U)\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>; its component on <span class="math" data-tex="\(W\subset U\)">\(W\subset U\)</span> sends <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a(t|_W)\)">\(a(t|_W)\)</span>. These inverse formulas respect restriction in <span class="math" data-tex="\(U\)">\(U\)</span>, proving the sheaf isomorphism.</p>
+<p><strong>Solution 5.</strong> A tensor morphism gives a bilinear rule <span class="math" data-tex="\(b_U(s,t)\)">\(b_U(s,t)\)</span>. Associate to <span class="math" data-tex="\(s\in F(U)\)">\(s\in F(U)\)</span> the local map with component <span class="math" data-tex="\(t\mapsto b_V(s|_V,t)\)">\(t\mapsto b_V(s|_V,t)\)</span> on <span class="math" data-tex="\(V\subset U\)">\(V\subset U\)</span>. This is a section of <span class="math" data-tex="\(\mathcal Hom(G,H)(U)\)">\(\mathcal Hom(G,H)(U)\)</span> and depends linearly on <span class="math" data-tex="\(s\)">\(s\)</span>. Conversely, evaluate the local map associated to <span class="math" data-tex="\(s\)">\(s\)</span> on <span class="math" data-tex="\(t\)">\(t\)</span> over <span class="math" data-tex="\(U\)">\(U\)</span>. Bilinearity supplies the unique tensor morphism. The composites return the same values on all pure local tensors and on all sections of the local Hom. Restriction of either formula is the same formula over the smaller open, so the adjunction applies on every <span class="math" data-tex="\(U\)">\(U\)</span> compatibly and yields (3.3).</p>
+<p><strong>Solution 6.</strong> On a discrete space a sheaf is determined by its values on the singleton basis. The tensor presheaf has value <span class="math" data-tex="\(V\otimes_kV\)">\(V\otimes_kV\)</span> on <span class="math" data-tex="\(\{n\}\)">\(\{n\}\)</span>, so its sheafification has
+<span class="math math-display" data-tex="\[
+(F\otimes_{\mathcal O}G)(U)=\prod_{n\in U}(V\otimes_kV).
+\]">\[
+(F\otimes_{\mathcal O}G)(U)=\prod_{n\in U}(V\otimes_kV).
+\]</span>
+The canonical map from the presheaf sends a finite sum <span class="math" data-tex="\(\sum_{j=1}^r s_j\otimes t_j\)">\(\sum_{j=1}^r s_j\otimes t_j\)</span> to its coordinate tensors, each of rank at most <span class="math" data-tex="\(r\)">\(r\)</span>. Conversely, if a family has a uniform bound <span class="math" data-tex="\(r\)">\(r\)</span> on its ranks, choose at each point an expression with at most <span class="math" data-tex="\(r\)">\(r\)</span> pure tensors and pad it with zeros. For each <span class="math" data-tex="\(j\)">\(j\)</span>, the chosen first and second factors at every point give sections <span class="math" data-tex="\(s_j,t_j\in\prod_{n\in U}V\)">\(s_j,t_j\in\prod_{n\in U}V\)</span>. Their sectionwise tensor maps to the family. Hence the image is exactly the uniformly bounded-rank families. Each tensor at an individual point is finite, but no common bound is imposed by gluing on the singleton cover. That is why the sheafified answer is the full product.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The abelian category of module sheaves and stalkwise exactness are Sheaves of modules and their derived categories, Theorem 2.1. The existence and sectionwise-sheafification descriptions of colimits are its Theorem 3.1. Exact inverse image is that lesson's Theorem 4.1, parts (1)–(3). These are already written internal prerequisites. The inverse-image module adjunction, tensor product and all module-pullback assertions taught here have been proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, chapters <em>Sheaves on Spaces</em>, <em>Sheaves of Modules</em> and <em>Schemes</em>: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sheaves.html#definition-ringed-space">Tag 0091</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sheaves.html#lemma-adjoint-pullback-pushforward-modules">Tag 0096</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sheaves.html#lemma-stalk-pullback-modules">Tag 0098</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/modules.html#lemma-stalk-tensor-product">Tag 01CB</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/modules.html#lemma-internal-hom">Tag 01CN</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#definition-locally-ringed-space">Tag 01HB</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#definition-closed-immersion-locally-ringed-spaces">Tag 01HK</a>. Links use the AI Integrated Stacks Project English edition.</li>
+<li><strong>[Vakil]</strong> Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Sections 2.3, 2.6–2.7 and 7.2–7.3. <a href="https://math.stanford.edu/~vakil/216blog/">Author's book page</a>; <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">consulted public draft</a> (personal viewing and downloading only; no redistribution or derivative works).</li>
+<li><strong>[Module sheaves]</strong> <em>Sheaves of modules and their derived categories</em>, in <em>Derived categories and sheaf operations</em>, Theorems 2.1, 3.1 and 4.1, and Example 5. Open lesson.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="sheaves-on-topological-spaces.html">← Sheaves on topological spaces</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="quasi-coherent-coherent-and-locally-free-modules.html">Quasi-coherent, coherent and locally free modules →</a></span></nav>
+<p class="small source-link"><a href="src/ringed-spaces-and-sheaves-of-modules.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-SS">Repository</a></nav>
+</footer>
+</body>
+</html>

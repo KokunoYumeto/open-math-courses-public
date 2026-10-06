@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>SH02-NCD — Continuing cohomology through a moving boundary</title><link href="reader.css" rel="stylesheet"/></head><body><nav><a href="index.html">Sheaf proof readings</a></nav><main><span id="SH02-NCD"></span><h1 id="sh02-ncd-continuing-cohomology-through-a-moving-boundary">SH02-NCD —
+Continuing cohomology through a moving boundary</h1>
+<p>A moving family of open sets gives restriction maps on cohomology.
+The theorem below identifies conditions under which those maps are
+isomorphisms.</p>
+<p>The coefficient ring
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is unital; it need not be a field, commutative, or of finite global
+dimension. We use sheaves of left
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>.
+All complexes in the deformation theorem are bounded below. Their
+cohomology sheaves may have infinite stalks and need not be
+constructible. The ambient space will be Hausdorff, with no local
+compactness, metrizability, manifold, or cohomological-dimension
+hypothesis.</p>
+<p>The mechanism has two parts. Compactness prevents a change from
+arriving from arbitrarily far away. Vanishing of local cohomology
+prevents a change at the boundary that remains after taking all
+sufficiently small advances. Both parts are necessary, as the examples
+below show.</p>
+<p>The source comparison is with Marco Robalo and Pierre Schapira, <a href="https://arxiv.org/abs/1611.06789v1"><em>A lemma for microlocal
+sheaf theory in the infinity-categorical setting</em>,
+arXiv:1611.06789v1</a>, Section 2. The theorem there treats unbounded
+complexes. Here the bounded-below proof exposes the compact-neighborhood
+comparison, the inverse-limit obstruction one degree below, and the
+interval argument separately. This separation keeps track of the actual
+restriction maps and explains exactly where the lower bound is used.</p>
+<span id="SH02-NCD-FOUNDATIONS"></span><h2 id="sh02-ncd-foundations-the-exact-foundational-interface">SH02-NCD-FOUNDATIONS
+— The exact foundational interface</h2>
+<p>The <a href="src/SH02/open-prerequisites.md">open prerequisite
+contracts</a> provide stalkwise exactness, exact inverse image, enough
+injectives, bounded-below derived functors, flabby acyclicity, and the
+localization triangle. We use their IDs <code>SH02-IMP-ABELIAN</code>,
+<code>SH02-IMP-INVERSE</code>, <code>SH02-IMP-INJECTIVE</code>,
+<code>SH02-IMP-DERIVE</code>, <code>SH02-IMP-FLABBY</code>,
+<code>SH02-IMP-LOCALIZATION</code>, <code>SH02-IMP-OPEN-ZERO</code>, and
+<code>SH02-IMP-HYPERCOH</code>. Although that overview uses commutative
+coefficients, each listed input is stated for modules on a ringed space,
+or has the same stalkwise proof for left modules. None of the arguments
+here uses tensor products.</p>
+<p>For a closed subset
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">C\subset X</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_C F</annotation></semantics></math>
+denotes a sheaf complex on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.
+It is distinguished from the module complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mo>;</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(X;R\Gamma_CF)</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>:</mo><mi>U</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">j:U\hookrightarrow X</annotation></semantics></math>
+is open, localization is the natural triangle</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><mi>U</mi></mrow></msub><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>j</mi><mo>*</mo></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>U</mi></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N1)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_{X\setminus U}F\longrightarrow F
+\longrightarrow Rj_*(F|_U)\xrightarrow{+1}.
+\qquad\text{(N1)}
+</annotation></semantics></math></p>
+<p>Restriction to an open set preserves injectives: its left adjoint is
+exact extension by zero. A direct image preserves injectives because
+inverse image of constant-ring module sheaves is exact. Thus composites
+of direct images can be calculated with one bounded-below injective
+resolution. For closed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>,</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">C,D</annotation></semantics></math>,
+the analogous calculation gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mi>D</mi></msub><mi>F</mi><mo>≃</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>C</mi><mo>∩</mo><mi>D</mi></mrow></msub><mi>F</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N2)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_C R\Gamma_D F\simeq R\Gamma_{C\cap D}F.
+\qquad\text{(N2)}
+</annotation></semantics></math></p>
+<p>Here is a resolution-level justification for this last assertion. The
+underived support functors compose by intersection. For a closed
+embedding
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>C</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">i:C\hookrightarrow X</annotation></semantics></math>,
+the sheaf functor
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi mathvariant="normal">Γ</mi><mi>C</mi></msub><annotation encoding="application/x-tex">\Gamma_C</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>i</mi><mo>*</mo></msub><msup><mi>i</mi><mi>!</mi></msup></mrow><annotation encoding="application/x-tex">i_*i^!</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mi>!</mi></msup><annotation encoding="application/x-tex">i^!</annotation></semantics></math>
+is right adjoint to the exact
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mo>*</mo></msub><annotation encoding="application/x-tex">i_*</annotation></semantics></math>.
+Therefore
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mi>!</mi></msup><annotation encoding="application/x-tex">i^!</annotation></semantics></math>
+preserves injectives, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>i</mi><mo>*</mo></msub><annotation encoding="application/x-tex">i_*</annotation></semantics></math>
+preserves injectives by its exact left adjoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">i^{-1}</annotation></semantics></math>.
+Applying the underived identity to an injective resolution gives (N2).
+This justification uses
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>i</mi><mi>!</mi></msup><annotation encoding="application/x-tex">i^!</annotation></semantics></math>
+only for a closed embedding of sheaf categories; it does not import
+manifold duality.</p>
+<p>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mo>:</mo><mi>S</mi><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">i:S\hookrightarrow X</annotation></semantics></math>
+is closed and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+has zero cohomology stalks outside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>,
+the restriction unit
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>→</mo><msub><mi>i</mi><mo>*</mo></msub><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">F\to i_*i^{-1}F</annotation></semantics></math>
+is an isomorphism, as can be checked on stalks. Closed direct image is
+exact. Combining it with (N1) identifies the local support tests and all
+the open-set cohomology of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+with those of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>F</mi></mrow><annotation encoding="application/x-tex">i^{-1}F</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.
+This permits a reduction to the closed support without imposing extra
+topology on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<span id="SH02-NCD-COMPACT-CONTINUITY"></span><h3 id="sh02-ncd-compact-continuity-a-sufficient-open-theorem-and-its-derived-form">SH02-NCD-COMPACT-CONTINUITY
+— A sufficient open theorem and its derived form</h3>
+<p>We import the exact compact-neighborhood theorem <a href="https://stacks.math.columbia.edu/tag/09V3">Stacks, Tag 09V3</a>.
+Its hypothesis is that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>⊂</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">K\subset X</annotation></semantics></math>
+is quasi-compact and distinct points of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+have disjoint open neighborhoods in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.
+Its conclusion for an abelian sheaf
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>V</mi><mo>⊃</mo><mi>K</mi></mrow></munder><msup><mi>H</mi><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>G</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>p</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>;</mo><mi>G</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>K</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N3)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{V\supset K}{\operatorname{colim}}H^p(V;G)
+\xrightarrow{\sim}H^p(K;G|_K),
+\qquad\text{(N3)}
+</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+runs through open neighborhoods, ordered by shrinking. In particular it
+applies to every compact subset of a Hausdorff space. Local compactness
+of the ambient space is not one of its hypotheses. For the present
+source comparison, the statement and proof were checked in the native
+Stacks chapter at <a href="https://github.com/stacks/stacks-project/blob/a04446e57ec1fbc252a871afcec7752fb2807b14/cohomology.tex">revision
+a04446e57ec1</a>, under the label
+<code>lemma-cohomology-of-closed</code>. The earlier import revision
+remains recorded in the private source history.</p>
+<p>For a module sheaf, use its underlying abelian sheaf. A
+module-injective resolution consists of flabby abelian sheaves, which
+are acyclic for sections on every open set. Hence forgetting scalars
+computes the same cohomology; the comparison map retains its
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-action.
+This proves (N3) for arbitrary left
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-modules</span>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D^+(k_X)</annotation></semantics></math>,
+the resulting form is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>V</mi><mo>⊃</mo><mi>K</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>K</mi><mo>;</mo><mi>A</mi><msub><mo form="prefix" stretchy="false">|</mo><mi>K</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N4)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{V\supset K}{\operatorname{colim}}H^q(V;A)
+\xrightarrow{\sim}H^q(K;A|_K).
+\qquad\text{(N4)}
+</annotation></semantics></math></p>
+<p>To check the extension, choose a uniform lower bound
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+on the cohomology sheaves of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>.
+Apply the natural hypercohomology spectral sequences to the restrictions
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+and to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.
+Formula (N3) identifies their
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>E</mi><mn>2</mn></msub><annotation encoding="application/x-tex">E_2</annotation></semantics></math>
+terms after filtered colimit. Filtered colimits of modules are exact, so
+they commute with the kernels and quotients defining each later page.
+For a fixed total degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>,
+only
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>p</mi><mo>≤</mo><mi>q</mi><mo>−</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">0\le p\le q-N</annotation></semantics></math>
+contributes. Thus the convergence filtration in that degree is finite,
+and the comparison of its associated graded pieces proves (N4). This
+argument explains why bounded below is adequate even when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+has no finite cohomological dimension.</p>
+<span id="SH02-NCD-OPEN-UNION"></span><h2 id="sh02-ncd-open-union-increasing-open-sets-and-the-degree-below">SH02-NCD-OPEN-UNION
+— Increasing open sets and the degree below</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>⊂</mo><msub><mi>V</mi><mn>1</mn></msub><mo>⊂</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">V_0\subset V_1\subset\cdots</annotation></semantics></math>
+be open in an arbitrary topological space and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><msub><mo>⋃</mo><mi>n</mi></msub><msub><mi>V</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">V=\bigcup_nV_n</annotation></semantics></math>.
+For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A\in D^+(k_X)</annotation></semantics></math>
+there is a natural short exact sequence</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munderover><mi mathvariant="normal">lim</mi><mi>n</mi><mn>1</mn></munderover><msup><mi>H</mi><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>n</mi></msub><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munder><mi mathvariant="normal">lim</mi><mi>n</mi></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>n</mi></msub><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N5)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow\operatorname{lim}^{1}_n H^{q-1}(V_n;A)
+\longrightarrow H^q(V;A)
+\longrightarrow\lim_n H^q(V_n;A)\longrightarrow0.
+\qquad\text{(N5)}
+</annotation></semantics></math></p>
+<p>Here, for a tower of modules
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(M_n)</annotation></semantics></math>
+with transitions
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mi>n</mi></msub><mo>:</mo><msub><mi>M</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>→</mo><msub><mi>M</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">r_n:M_{n+1}\to M_n</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><msub><mi>M</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\lim^1 M_n</annotation></semantics></math>
+means the cokernel of</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∏</mo><mi>n</mi></munder><msub><mi>M</mi><mi>n</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munder><mo>∏</mo><mi>n</mi></munder><msub><mi>M</mi><mi>n</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longmapsto" stretchy="false">⟼</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>r</mi><mi>n</mi></msub><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N6)</mtext></mrow><annotation encoding="application/x-tex">
+\prod_nM_n\longrightarrow\prod_nM_n,
+\qquad (x_n)\longmapsto(x_n-r_nx_{n+1}).
+\qquad\text{(N6)}
+</annotation></semantics></math></p>
+<p>For completeness, resolve
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+by a bounded-below complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>I</mi><annotation encoding="application/x-tex">I</annotation></semantics></math>
+of injective sheaves and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>n</mi></msub><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_n=\Gamma(V_n;I)</annotation></semantics></math>.
+Flabbiness makes every transition
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>C</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mi>d</mi></msubsup><mo>→</mo><msubsup><mi>C</mi><mi>n</mi><mi>d</mi></msubsup></mrow><annotation encoding="application/x-tex">C_{n+1}^d\to C_n^d</annotation></semantics></math>
+surjective. Given
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>y</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(y_n)</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math>
+and then recursively choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">x_{n+1}</annotation></semantics></math>
+mapping to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>y</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_n-y_n</annotation></semantics></math>.
+This proves degreewise surjectivity of (N6) for the complexes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>C</mi><mi>n</mi></msub><annotation encoding="application/x-tex">C_n</annotation></semantics></math>.
+The kernel is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><msub><mi>C</mi><mi>n</mi></msub><mo>=</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\lim C_n=\Gamma(V;I)</annotation></semantics></math>
+by the sheaf gluing axiom. We obtain a short exact sequence of
+complexes</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>I</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><munder><mo>∏</mo><mi>n</mi></munder><msub><mi>C</mi><mi>n</mi></msub><mover><mo>→</mo><mrow><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">f</mi><mi mathvariant="normal">t</mi></mrow></mrow></mover><munder><mo>∏</mo><mi>n</mi></munder><msub><mi>C</mi><mi>n</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N7)</mtext></mrow><annotation encoding="application/x-tex">
+0\longrightarrow\Gamma(V;I)\longrightarrow\prod_nC_n
+\xrightarrow{1-\mathrm{shift}}\prod_nC_n\longrightarrow0.
+\qquad\text{(N7)}
+</annotation></semantics></math></p>
+<p>Products are exact in the category of modules, so their cohomology is
+the product of the cohomologies. The long exact cohomology sequence of
+(N7) gives (N5). This is also the countable Milnor sequence of <a href="https://stacks.math.columbia.edu/tag/0D60">Stacks, Tag 0D60</a>,
+with the geometric comparison here supplied by the displayed
+resolution.</p>
+<p>If all transitions in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+are surjective, the same recursive choice proves
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><msup><mi>H</mi><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>V</mi><mi>n</mi></msub><mo>;</mo><mi>A</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\lim^1 H^{q-1}(V_n;A)=0</annotation></semantics></math>.
+Eventual isomorphisms in that degree suffice as well, since deleting
+finitely many initial terms does not affect the cokernel in (N6).
+Constancy only in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+would leave the leftmost term of (N5) uncontrolled.</p>
+<span id="SH02-NCD-INTERVAL-SYSTEM"></span><h2 id="sh02-ncd-interval-system-two-one-sided-continuities-force-constancy">SH02-NCD-INTERVAL-SYSTEM
+— Two one-sided continuities force constancy</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>M</mi><mi>t</mi></msub><mo>,</mo><msub><mi>r</mi><mrow><mi>u</mi><mo>,</mo><mi>t</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(M_t,r_{u,t})</annotation></semantics></math>
+be an inverse system of modules indexed by the real numbers:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>r</mi><mrow><mi>u</mi><mo>,</mo><mi>t</mi></mrow></msub><mo>:</mo><msub><mi>M</mi><mi>t</mi></msub><mo>→</mo><msub><mi>M</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">r_{u,t}:M_t\to M_u</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">u\le t</annotation></semantics></math>.
+Suppose that for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+both natural maps</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><msub><mi>M</mi><mi>t</mi></msub><mover><mo>→</mo><mo accent="false">∼</mo></mover><msub><mi>M</mi><mi>s</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>M</mi><mi>s</mi></msub><mover><mo>→</mo><mo accent="false">∼</mo></mover><munder><mi mathvariant="normal">lim</mi><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></munder><msub><mi>M</mi><mi>u</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N8)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{t&gt;s}{\operatorname{colim}}M_t\xrightarrow{\sim}M_s,
+\qquad
+M_s\xrightarrow{\sim}\lim_{u&lt;s}M_u
+\qquad\text{(N8)}
+</annotation></semantics></math></p>
+<p>are isomorphisms. In the first system, indices approach
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+from above and arrows are restrictions to smaller indices. Then every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>r</mi><mrow><mi>u</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">r_{u,t}</annotation></semantics></math>
+is an isomorphism.</p>
+<p><em>Proof of injectivity.</em> Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a&lt;b</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msub><mi>M</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">x\in M_b</annotation></semantics></math>
+whose restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>a</mi></msub><annotation encoding="application/x-tex">M_a</annotation></semantics></math>
+is zero. Consider the times
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">t\in[a,b]</annotation></semantics></math>
+for which the restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>t</mi></msub><annotation encoding="application/x-tex">M_t</annotation></semantics></math>
+is zero. They form a downward-closed nonempty set. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+be its supremum. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">c=a</annotation></semantics></math>,
+vanishing at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+is already known. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">c&gt;a</annotation></semantics></math>,
+the restrictions vanish at every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&lt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">u&lt;c</annotation></semantics></math>;
+the injectivity of the second map in (N8) gives vanishing at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+as well. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c&lt;b</annotation></semantics></math>,
+the element represented by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi mathvariant="normal">colim</mi><mo>⁡</mo></mrow><mrow><mi>t</mi><mo>&gt;</mo><mi>c</mi></mrow></msub><msub><mi>M</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\operatorname{colim}_{t&gt;c}M_t</annotation></semantics></math>
+maps to zero in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>c</mi></msub><annotation encoding="application/x-tex">M_c</annotation></semantics></math>.
+Injectivity of the first map in (N8) implies that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+restricts to zero at some
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>d</mi><mo>≤</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c&lt;d\le b</annotation></semantics></math>,
+contradicting the supremum. Hence
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c=b</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>.</p>
+<p><em>Proof of surjectivity.</em> Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>∈</mo><msub><mi>M</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">y\in M_a</annotation></semantics></math>.
+By the first map in (N8), it extends to some later time. All extensions,
+whenever they exist, are unique because the transitions are now known to
+be injective. Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>⊂</mo><mo form="prefix" stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">J\subset[a,b]</annotation></semantics></math>
+be the times to which
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+extends. It is downward closed. Put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mrow><mi mathvariant="normal">sup</mi><mo>⁡</mo></mrow><mi>J</mi></mrow><annotation encoding="application/x-tex">c=\sup J</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">c&gt;a</annotation></semantics></math>,
+the unique extensions for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>≤</mo><mi>u</mi><mo>&lt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a\le u&lt;c</annotation></semantics></math>,
+together with the restrictions of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&lt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">u&lt;a</annotation></semantics></math>,
+form a compatible family for all
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>&lt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">u&lt;c</annotation></semantics></math>.
+Thus the surjectivity of the second map in (N8) extends them to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>c</mi></msub><annotation encoding="application/x-tex">M_c</annotation></semantics></math>;
+their restriction to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>M</mi><mi>a</mi></msub><annotation encoding="application/x-tex">M_a</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">c=a</annotation></semantics></math>,
+use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>
+itself. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c&lt;b</annotation></semantics></math>,
+the first map in (N8) extends this element to a time strictly beyond
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+a contradiction. Thus
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">c=b</annotation></semantics></math>
+and the extension at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>
+exists. The maps are therefore bijective.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>This is an interval argument about systems of modules, not a
+local-system assertion about a sheaf on an interval. The two subjects
+have different hypotheses.</p>
+<span id="SH02-NCD-COMPACT-FRONT"></span><h2 id="sh02-ncd-compact-front-the-shrinking-boundary-that-must-be-tested">SH02-NCD-COMPACT-FRONT
+— The shrinking boundary that must be tested</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be Hausdorff, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>t</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">(U_t)_{t\in\mathbb R}</annotation></semantics></math>
+be increasing open subsets, and fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+Suppose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><annotation encoding="application/x-tex">\overline{U_t\setminus U_s}</annotation></semantics></math>
+is compact for every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>.
+Define</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>s</mi></msub><mo>=</mo><munder><mo>⋂</mo><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N9)</mtext></mrow><annotation encoding="application/x-tex">
+B_s=\bigcap_{t&gt;s}\overline{U_t\setminus U_s}.
+\qquad\text{(N9)}
+</annotation></semantics></math></p>
+<p>The bars in (N9) are taken separately, before the intersection. Then
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+is a compact subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">X\setminus U_s</annotation></semantics></math>.
+If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+is an open neighborhood of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>,
+there exists
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>u</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;u\le t</annotation></semantics></math>
+such that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>u</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mo>⊂</mo><mi>V</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N10)</mtext></mrow><annotation encoding="application/x-tex">
+\overline{U_u\setminus U_s}\subset V.
+\qquad\text{(N10)}
+</annotation></semantics></math></p>
+<p>Indeed, the closed sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>v</mi></msub><mo>=</mo><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>v</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover></mrow><annotation encoding="application/x-tex">K_v=\overline{U_v\setminus U_s}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>v</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;v\le t</annotation></semantics></math>
+lie in the compact set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>t</mi></msub><annotation encoding="application/x-tex">K_t</annotation></semantics></math>
+and decrease as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>
+decreases. If none were contained in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
+the compact closed sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>K</mi><mi>v</mi></msub><mo>\</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">K_v\setminus V</annotation></semantics></math>
+would have the finite-intersection property: a finite intersection is
+the member with the smallest index. Their intersection would be
+nonempty, contradicting the definition of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>.
+This also treats
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>s</mi></msub><mo>=</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">B_s=\varnothing</annotation></semantics></math>,
+by taking
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mi>⌀</mi></mrow><annotation encoding="application/x-tex">V=\varnothing</annotation></semantics></math>.
+Finally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mi>v</mi></msub><annotation encoding="application/x-tex">K_v</annotation></semantics></math>
+is disjoint from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>s</mi></msub><annotation encoding="application/x-tex">U_s</annotation></semantics></math>
+because
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>s</mi></msub><annotation encoding="application/x-tex">U_s</annotation></semantics></math>
+is open.</p>
+<span id="SH02-NCD-THEOREM"></span><h2 id="sh02-ncd-theorem-the-deformation-theorem">SH02-NCD-THEOREM — The
+deformation theorem</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+be Hausdorff,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^+(k_X)</annotation></semantics></math>,
+and put</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><munder><mo>⋃</mo><mi>q</mi></munder><mo form="prefix" stretchy="false">{</mo><mi>x</mi><mo>:</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mi>.</mi></mrow><annotation encoding="application/x-tex">
+S=\operatorname{supp}(F)
+=\overline{\bigcup_q\{x:H^q(F)_x\ne0\}}.
+</annotation></semantics></math></p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><msub><mo form="postfix" stretchy="false">)</mo><mrow><mi>t</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">(U_t)_{t\in\mathbb R}</annotation></semantics></math>
+be a family of open subsets satisfying the following conditions.</p>
+<ol type="1">
+<li>For every real
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow></msub><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">U_t=\bigcup_{s&lt;t}U_s</annotation></semantics></math>.
+In particular the family is increasing.</li>
+<li>If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;t</annotation></semantics></math>,
+the set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mo>∩</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\overline{U_t\setminus U_s}\cap S</annotation></semantics></math>
+is compact.</li>
+<li>Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+by (N9). For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s\le t</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msub><mi>B</mi><mi>s</mi></msub><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">x\in B_s\setminus U_t</annotation></semantics></math>,
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N11)</mtext></mrow><annotation encoding="application/x-tex">
+(R\Gamma_{X\setminus U_t}F)_x=0.
+\qquad\text{(N11)}
+</annotation></semantics></math></li>
+</ol>
+<p>Then all natural restriction maps</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mspace width="-0.167em"></mspace><mrow><mo form="prefix" stretchy="true">(</mo><munder><mo>⋃</mo><mi>t</mi></munder><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N12)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma\!\left(\bigcup_tU_t;F\right)
+\longrightarrow R\Gamma(U_s;F)
+\qquad\text{(N12)}
+</annotation></semantics></math></p>
+<p>are isomorphisms. Consequently restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(U_t;F)\to R\Gamma(U_s;F)</annotation></semantics></math>
+is an isomorphism for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s\le t</annotation></semantics></math>.</p>
+<p>The endpoint
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s=t</annotation></semantics></math>
+in (N11) is part of the hypothesis. At a point inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>,
+the sheaf complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{X\setminus U_t}F</annotation></semantics></math>
+has zero stalk automatically. Thus (N11) is equivalently its vanishing
+on all of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>;
+the stated form displays exactly where a test is required.</p>
+<p><em>Proof.</em> First reduce to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">X=S</annotation></semantics></math>
+using <code>SH02-NCD-FOUNDATIONS</code>. To check this reduction without
+confusing closures, write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mi>t</mi></msub><mo>=</mo><msub><mi>U</mi><mi>t</mi></msub><mo>∩</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">W_t=U_t\cap S</annotation></semantics></math>.
+Then</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>W</mi><mi>t</mi></msub><mo>\</mo><msub><mi>W</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mrow><mspace width="0.167em"></mspace><mi>S</mi></mrow></msup><mo>⊂</mo><mi>S</mi><mo>∩</mo><msup><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mrow><mspace width="0.167em"></mspace><mi>X</mi></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N13)</mtext></mrow><annotation encoding="application/x-tex">
+\overline{W_t\setminus W_s}^{\,S}
+\subset S\cap\overline{U_t\setminus U_s}^{\,X}.
+\qquad\text{(N13)}
+</annotation></semantics></math></p>
+<p>The right side is compact by hypothesis; the left side is closed in
+it and is compact. The front computed in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+is a subset of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>∩</mo><msub><mi>B</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">S\cap B_s</annotation></semantics></math>.
+The support tests identify under the closed embedding, so (N11) holds on
+that smaller front. Open-set cohomology agrees under the same embedding.
+We may therefore assume all the sets
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><annotation encoding="application/x-tex">\overline{U_t\setminus U_s}</annotation></semantics></math>
+are compact.</p>
+<p>Fix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+and put
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>s</mi></msub><mo>=</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">Q_s=R\Gamma_{X\setminus U_s}F</annotation></semantics></math>.
+We claim</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for every </mtext><mspace width="0.333em"></mspace></mrow><mi>q</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N14)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{t&gt;s}{\operatorname{colim}}H^q(U_t;Q_s)=0
+\quad\text{for every }q.
+\qquad\text{(N14)}
+</annotation></semantics></math></p>
+<p>Take a representative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>∈</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha\in H^q(U_t;Q_s)</annotation></semantics></math>,
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>j</mi><mi>t</mi></msub><mo>:</mo><msub><mi>U</mi><mi>t</mi></msub><mo>↪</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">j_t:U_t\hookrightarrow X</annotation></semantics></math>.
+Apply (N1) to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>s</mi></msub><annotation encoding="application/x-tex">Q_s</annotation></semantics></math>
+and use (N2). Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub><mo>⊂</mo><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">X\setminus U_t\subset X\setminus U_s</annotation></semantics></math>,
+this gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi>X</mi><mo>\</mo><msub><mi>U</mi><mi>t</mi></msub></mrow></msub><mi>F</mi><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><msub><mi>Q</mi><mi>s</mi></msub><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><msub><mi>j</mi><mrow><mi>t</mi><mo>*</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>s</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>U</mi><mi>t</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mrow><mi>+</mi><mn>1</mn></mrow></mover><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N15)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma_{X\setminus U_t}F\longrightarrow Q_s
+\longrightarrow Rj_{t*}(Q_s|_{U_t})\xrightarrow{+1}.
+\qquad\text{(N15)}
+</annotation></semantics></math></p>
+<p>Both of the first two terms restrict to zero on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>,
+by (N11) for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(s,t)</annotation></semantics></math>
+and for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(s,s)</annotation></semantics></math>.
+Hence the last term restricts to zero there as well. It is bounded
+below. Applying (N4) on the compact set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+shows that the restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+vanishes on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>∩</mo><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">V\cap U_t</annotation></semantics></math>
+for some open neighborhood
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>:
+the identifications</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>;</mo><mi>R</mi><msub><mi>j</mi><mrow><mi>t</mi><mo>*</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>Q</mi><mi>s</mi></msub><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>U</mi><mi>t</mi></msub></msub><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><mi>V</mi><mo>∩</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">
+H^q(V;Rj_{t*}(Q_s|_{U_t}))=H^q(V\cap U_t;Q_s)
+</annotation></semantics></math></p>
+<p>are the natural direct-image identifications. This argument remains
+valid when the front is empty.</p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math>
+as in (N10). Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>u</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub><mo>⊂</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">U_u\setminus U_s\subset V</annotation></semantics></math>,
+the two opens
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>s</mi></msub><annotation encoding="application/x-tex">U_s</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>u</mi></msub><mo>∩</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">U_u\cap V</annotation></semantics></math>
+cover
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>u</mi></msub><annotation encoding="application/x-tex">U_u</annotation></semantics></math>.
+The complex
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>Q</mi><mi>s</mi></msub><annotation encoding="application/x-tex">Q_s</annotation></semantics></math>
+restricts to zero on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>s</mi></msub><annotation encoding="application/x-tex">U_s</annotation></semantics></math>
+and on its intersection with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+The two-open Mayer-Vietoris triangle therefore identifies
+restriction</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>u</mi></msub><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>u</mi></msub><mo>∩</mo><mi>V</mi><mo>;</mo><msub><mi>Q</mi><mi>s</mi></msub><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N16)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(U_u;Q_s)\xrightarrow{\sim}R\Gamma(U_u\cap V;Q_s).
+\qquad\text{(N16)}
+</annotation></semantics></math></p>
+<p>One may obtain this triangle by applying an injective resolution to
+the ordinary two-open sheaf gluing sequence; flabbiness makes its last
+difference map surjective. The restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
+is zero on the right of (N16), since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">u\le t</annotation></semantics></math>,
+so it is zero on the left. This proves (N14).</p>
+<p>Restrict the localization triangle
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mi>s</mi></msub><mo>→</mo><mi>F</mi><mo>→</mo><mi>R</mi><msub><mi>j</mi><mrow><mi>s</mi><mo>*</mo></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>F</mi><msub><mo form="prefix" stretchy="false">|</mo><msub><mi>U</mi><mi>s</mi></msub></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q_s\to F\to Rj_{s*}(F|_{U_s})</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>,
+take cohomology, and take the filtered colimit over
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>.
+The cohomology of its last term is constantly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(U_s;F)</annotation></semantics></math>
+and all its transitions are identities. Filtered colimits are exact, and
+(N14) holds in consecutive degrees. We obtain the natural
+right-continuity isomorphism</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mi mathvariant="normal">colim</mi><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>t</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>q</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N17)</mtext></mrow><annotation encoding="application/x-tex">
+\underset{t&gt;s}{\operatorname{colim}}H^q(U_t;F)
+\xrightarrow{\sim}H^q(U_s;F)
+\quad(q\in\mathbb Z).
+\qquad\text{(N17)}
+</annotation></semantics></math></p>
+<p>Choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+such that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mrow><mo>≥</mo><mi>N</mi></mrow></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^{\ge N}(k_X)</annotation></semantics></math>.
+Sections, being right derived from a left exact functor, have no
+cohomology below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+on any open set. We now prove by induction on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≥</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">q\ge N</annotation></semantics></math>
+that all restriction maps in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+are isomorphisms. For any fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>,
+choose
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>↑</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">s_n\uparrow s</annotation></semantics></math>
+strictly from below. The first hypothesis gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>s</mi></msub><mo>=</mo><msub><mo>⋃</mo><mi>n</mi></msub><msub><mi>U</mi><msub><mi>s</mi><mi>n</mi></msub></msub></mrow><annotation encoding="application/x-tex">U_s=\bigcup_nU_{s_n}</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">q=N</annotation></semantics></math>,
+the degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+term of (N5) is zero. At each subsequent degree, the induction
+hypothesis makes the degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1</annotation></semantics></math>
+system constant. In either case (N5) gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mover><mo>→</mo><mo accent="false">∼</mo></mover><munder><mi mathvariant="normal">lim</mi><mrow><mi>u</mi><mo>&lt;</mo><mi>s</mi></mrow></munder><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>u</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N18)</mtext></mrow><annotation encoding="application/x-tex">
+H^q(U_s;F)\xrightarrow{\sim}\lim_{u&lt;s}H^q(U_u;F),
+\qquad\text{(N18)}
+</annotation></semantics></math></p>
+<p>where the sequence is cofinal for this inverse limit. Equations (N17)
+and (N18) are precisely the hypotheses of
+<code>SH02-NCD-INTERVAL-SYSTEM</code>, which proves constancy in degree
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>
+and completes the induction.</p>
+<p>Finally
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⋃</mo><mi>t</mi></msub><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub><msub><mi>U</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\bigcup_tU_t=\bigcup_{n\ge0}U_n</annotation></semantics></math>.
+Apply (N5) again. All transitions in every cohomology degree are now
+isomorphisms, so the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><annotation encoding="application/x-tex">\lim^1</annotation></semantics></math>
+term vanishes and the inverse limit identifies with any fixed
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mi>q</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mi>s</mi></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">H^q(U_s;F)</annotation></semantics></math>,
+using indices
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">n\ge s</annotation></semantics></math>.
+Its comparison is restriction. Thus (N12) induces an isomorphism in
+every degree and is an isomorphism in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D^+(k)</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<span id="SH02-NCD-PARAMETERS"></span><h3 id="sh02-ncd-parameters-open-parameter-intervals-and-locality-in-time">SH02-NCD-PARAMETERS
+— Open parameter intervals and locality in time</h3>
+<p>The same theorem holds with parameters in any nonempty open interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>⊂</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">I\subset\mathbb R</annotation></semantics></math>,
+bounded or unbounded, and with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>⋃</mo><mrow><mi>t</mi><mo>∈</mo><mi>I</mi></mrow></msub><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\bigcup_{t\in I}U_t</annotation></semantics></math>
+in its conclusion. Choose an increasing homeomorphism
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">ℝ</mi><mo>→</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">\mathbb R\to I</annotation></semantics></math>.
+It preserves increasing unions, pairs
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;t</annotation></semantics></math>,
+the fronts (N9), and the inequalities
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s\le t</annotation></semantics></math>
+in the tests. Pulling the family back therefore satisfies the
+theorem.</p>
+<p>Conditions can also be verified on overlapping parameter intervals.
+If the theorem applies on each member of an open cover of a parameter
+interval, every pair of times in a sufficiently small member has an
+isomorphic restriction. A compact segment between any two times has a
+finite subdivision subordinate to that cover: take a Lebesgue number for
+its finite subcover and subdivide into shorter segments. Composing the
+adjacent restriction isomorphisms gives the desired restriction for the
+endpoints. This use of compactness occurs in the parameter line and does
+not add compactness of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>.</p>
+<span id="SH02-NCD-SUBLEVELS"></span><h2 id="sh02-ncd-sublevels-checking-the-theorem-for-a-real-function">SH02-NCD-SUBLEVELS
+— Checking the theorem for a real function</h2>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>X</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:X\to\mathbb R</annotation></semantics></math>
+be continuous,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">I=(a,b)</annotation></semantics></math>
+a nonempty open interval with possibly infinite endpoints, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mo>+</mo></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^+(k_X)</annotation></semantics></math>.
+Assume, for every compact interval
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo form="postfix" stretchy="false">]</mo><mo>⊂</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">[c,d]\subset I</annotation></semantics></math>,
+that</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>∩</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> is compact</mtext></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N19)</mtext></mrow><annotation encoding="application/x-tex">
+f^{-1}([c,d])\cap\operatorname{supp}(F)\text{ is compact}.
+\qquad\text{(N19)}
+</annotation></semantics></math></p>
+<p>Assume also that for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">c\in I</annotation></semantics></math>
+and every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">f(x)=c</annotation></semantics></math>,</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≥</mo><mi>c</mi><mo form="postfix" stretchy="false">}</mo></mrow></msub><mi>F</mi><msub><mo form="postfix" stretchy="false">)</mo><mi>x</mi></msub><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N20)</mtext></mrow><annotation encoding="application/x-tex">
+(R\Gamma_{\{f\ge c\}}F)_x=0.
+\qquad\text{(N20)}
+</annotation></semantics></math></p>
+<p>Then for each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">c\in I</annotation></semantics></math>,
+the natural map</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>b</mi><mo form="postfix" stretchy="false">}</mo><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo data-source-command="longrightarrow" stretchy="false">⟶</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>c</mi><mo form="postfix" stretchy="false">}</mo><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N21)</mtext></mrow><annotation encoding="application/x-tex">
+R\Gamma(\{f&lt;b\};F)\longrightarrow R\Gamma(\{f&lt;c\};F)
+\qquad\text{(N21)}
+</annotation></semantics></math></p>
+<p>is an isomorphism, interpreting
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>+</mi><mi>∞</mi><mo form="postfix" stretchy="false">}</mo><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">\{f&lt;+\infty\}=X</annotation></semantics></math>.</p>
+<p>Indeed, set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>t</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">U_t=\{f&lt;t\}</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">t\in I</annotation></semantics></math>.
+Continuity gives both
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><msub><mo>⋃</mo><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow></msub><msub><mi>U</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">U_t=\bigcup_{s&lt;t}U_s</annotation></semantics></math>
+and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover data-source-command="overline" style="border-top:0.06em solid currentColor"><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mi>s</mi></msub></mrow><mo accent="true" style="opacity:0">¯</mo></mover><mo>⊂</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">[</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">]</mo><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>B</mi><mi>s</mi></msub><mo>⊂</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N22)</mtext></mrow><annotation encoding="application/x-tex">
+\overline{U_t\setminus U_s}\subset f^{-1}([s,t]),
+\qquad B_s\subset f^{-1}(s).
+\qquad\text{(N22)}
+</annotation></semantics></math></p>
+<p>The first inclusion and (N19) imply the required compactness because
+the supported closure is a closed subset of that compact slab. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t&gt;s</annotation></semantics></math>,
+the second inclusion puts
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>B</mi><mi>s</mi></msub><annotation encoding="application/x-tex">B_s</annotation></semantics></math>
+inside
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>,
+where the support test vanishes automatically. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">t=s</annotation></semantics></math>,
+condition (N20) is exactly the remaining test. The union of the
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>t</mi></msub><annotation encoding="application/x-tex">U_t</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>b</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f&lt;b\}</annotation></semantics></math>.
+Apply the parameter-interval version.</p>
+<p>For the microsupport specialization, use the advanced course
+conventions:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is commutative of finite global dimension,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+is a finite-dimensional real manifold countable at infinity, and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>∈</mo><msup><mi>D</mi><mi>b</mi></msup><mo form="prefix" stretchy="false">(</mo><msub><mi>k</mi><mi>X</mi></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F\in D^b(k_X)</annotation></semantics></math>.
+The defining support test for microsupport gives a sufficient hypothesis
+for (N20): for a
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math>
+function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>,
+require
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>d</mi><msub><mi>f</mi><mi>x</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∉</mo><mrow><mi mathvariant="normal">SS</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,df_x)\notin\operatorname{SS}(F)</annotation></semantics></math>
+at every point with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><mi>I</mi></mrow><annotation encoding="application/x-tex">f(x)\in I</annotation></semantics></math>.
+Subtracting the level value identifies (N20) with that defining test.
+This last implication uses only the definition in
+<code>SH02-MST-TEST</code>, not the propagation theorems that depend on
+the present deformation result. The proof of
+<code>SH02-NCD-THEOREM</code> has no microsupport dependency.</p>
+<span id="SH02-NCD-EXAMPLES"></span><h2 id="sh02-ncd-examples-two-mechanisms-that-can-defeat-continuation">SH02-NCD-EXAMPLES
+— Two mechanisms that can defeat continuation</h2>
+<span id="SH02-NCD-MISSED-FRONT"></span><h3 id="sh02-ncd-missed-front-a-boundary-point-missed-by-the-wrong-intersection">SH02-NCD-MISSED-FRONT
+— A boundary point missed by the wrong intersection</h3>
+<p>Fix a nonzero
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module</span>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">X=\mathbb R</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi>M</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">F=M_{[0,\infty)}</annotation></semantics></math>,
+the constant sheaf on the closed half-line followed by closed direct
+image. Set</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>⌀</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>t</mi><mo>≤</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>t</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N23)</mtext></mrow><annotation encoding="application/x-tex">
+U_t=\begin{cases}\varnothing,&amp;t\le0,\\(0,t),&amp;t&gt;0.\end{cases}
+\qquad\text{(N23)}
+</annotation></semantics></math></p>
+<p>This family is left continuous and its supported closed increments
+are compact. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>,
+the intersection of the increments
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mn>0</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">U_t\setminus U_0=(0,t)</annotation></semantics></math>
+is empty. Taking the closure after that intersection would therefore
+produce an empty test set. In contrast, (N9) gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mn>0</mn></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mn>0</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">B_0=\{0\}</annotation></semantics></math>.</p>
+<p>For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&gt;0</annotation></semantics></math>,
+the front is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>s</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{s\}</annotation></semantics></math>
+and the restriction of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>F</mi><annotation encoding="application/x-tex">F</annotation></semantics></math>
+near
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+is constant. Its restriction towards
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">x&lt;s</annotation></semantics></math>
+is an isomorphism on derived stalks, so the support test at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+vanishes. For
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&lt;0</annotation></semantics></math>,
+the front is empty. Thus the version using the closure of the
+intersection would pass every test. Its proposed conclusion would
+identify
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">R\Gamma((0,\infty);F)=M</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>U</mi><mn>0</mn></msub><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R\Gamma(U_0;F)=0</annotation></semantics></math>,
+which is impossible. The correct test detects the failure:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mi mathvariant="double-struck">ℝ</mi><mo>\</mo><msub><mi>U</mi><mn>0</mn></msub></mrow></msub><mi>F</mi><mo>=</mo><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{\mathbb R\setminus U_0}F=F</annotation></semantics></math>
+has stalk
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>.</p>
+<p>The interval cohomology used here is the constant-coefficient
+calculation <code>SH02-CA-CONSTANT</code>; equivalently, evaluate
+sections on a nonempty convex interval and use its vanishing of higher
+cohomology. No finite generation of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is involved.</p>
+<span id="SH02-NCD-INFINITY"></span><h3 id="sh02-ncd-infinity-a-change-arriving-from-infinity">SH02-NCD-INFINITY
+— A change arriving from infinity</h3>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi>M</mi><mi mathvariant="double-struck">ℝ</mi></msub></mrow><annotation encoding="application/x-tex">F=M_{\mathbb R}</annotation></semantics></math>
+and put</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>⌀</mi><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>t</mi><mo>≤</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mi>/</mi><mi>t</mi><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>t</mi><mo>&gt;</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(N24)</mtext></mrow><annotation encoding="application/x-tex">
+U_t=\begin{cases}\varnothing,&amp;t\le0,\\(1/t,\infty),&amp;t&gt;0.\end{cases}
+\qquad\text{(N24)}
+</annotation></semantics></math></p>
+<p>Again the family is left continuous. Its corrected front at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=0</annotation></semantics></math>
+is empty, since the closed rays
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mi>/</mi><mi>t</mi><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[1/t,\infty)</annotation></semantics></math>
+have empty intersection as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>↓</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t\downarrow0</annotation></semantics></math>.
+At
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&gt;0</annotation></semantics></math>
+the front is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mi>/</mi><mi>s</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{1/s\}</annotation></semantics></math>;
+the support test for a constant sheaf at an endpoint of a half-line is
+zero. At negative
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+the front is empty. All the local tests hold, but the closure of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>\</mo><msub><mi>U</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">U_t\setminus U_0</annotation></semantics></math>
+is unbounded and is not compact. The proposed restriction is again
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">M\to0</annotation></semantics></math>.
+Thus compact supported increments exclude a failure that no finite
+boundary point can detect.</p>
+<span id="SH02-NCD-EXERCISES"></span><h2 id="sh02-ncd-exercises-applications-with-solutions">SH02-NCD-EXERCISES —
+Applications with solutions</h2>
+<ol type="1">
+<li><p><strong>A strip with a persistent boundary face.</strong> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+be an arbitrary
+<span class="math-with-suffix" style="white-space:nowrap"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>-module</span>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msup><mi mathvariant="double-struck">ℝ</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">X=\mathbb R^2</annotation></semantics></math>,
+let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi>M</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi mathvariant="double-struck">ℝ</mi></mrow></msub></mrow><annotation encoding="application/x-tex">F=M_{[0,1]\times\mathbb R}</annotation></semantics></math>
+by closed direct image, and set
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>y</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">f(x,y)=y+x^2</annotation></semantics></math>.
+Prove that every restriction
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>d</mi><mo form="postfix" stretchy="false">}</mo><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo><mo>→</mo><mi>R</mi><mi mathvariant="normal">Γ</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>c</mi><mo form="postfix" stretchy="false">}</mo><mo>;</mo><mi>F</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R\Gamma(\{f&lt;d\};F)\to R\Gamma(\{f&lt;c\};F)</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mi>d</mi></mrow><annotation encoding="application/x-tex">c&lt;d</annotation></semantics></math>
+is an isomorphism. Verify the boundary faces
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x=0,1</annotation></semantics></math>
+as well as interior points.</p>
+<p><em>Solution.</em> The supported slab
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi mathvariant="double-struck">ℝ</mi><mo>∩</mo><mo form="prefix" stretchy="false">{</mo><mi>c</mi><mo>≤</mo><mi>y</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>≤</mo><mi>d</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">[0,1]\times\mathbb R\cap\{c\le y+x^2\le d\}</annotation></semantics></math>
+is a closed and bounded subset of the plane, hence compact. Change
+coordinates by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo form="postfix" stretchy="false">)</mo><mo>↦</mo><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo>=</mo><mi>y</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)\mapsto(x,z=y+x^2)</annotation></semantics></math>.
+This is a homeomorphism and takes the support to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo><mo>×</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">[0,1]\times\mathbb R</annotation></semantics></math>
+and the sublevel to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">z&lt;c</annotation></semantics></math>.
+At a point
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_0,c)</annotation></semantics></math>
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>∈</mo><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">x_0\in[0,1]</annotation></semantics></math>,
+use rectangle neighborhoods. Their intersection with the support is a
+product of a nonempty interval in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math>
+and an interval around
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>;
+its intersection with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>&lt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">z&lt;c</annotation></semantics></math>
+is another nonempty convex set. Constant-coefficient cohomology on each
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+in degree zero, and restriction carries a constant value to the same
+value. The defining direct-image stalk is the filtered colimit over
+these rectangles, so the map from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi>c</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><annotation encoding="application/x-tex">F_{(x_0,c)}</annotation></semantics></math>
+to the lower-side direct-image stalk is the identity on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Localization proves (N20), including at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x_0=0,1</annotation></semantics></math>.
+Off the closed strip the complex is locally zero. Apply
+<code>SH02-NCD-SUBLEVELS</code> on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mo>=</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">I=\mathbb R</annotation></semantics></math>;
+the individual restriction maps follow by composition with the common
+global complex. This example allows infinite and torsion modules and a
+support with boundary.</p></li>
+<li><p><strong>Why the equal-time test matters.</strong> Take
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo>=</mo><msub><mi>M</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow></msub></mrow><annotation encoding="application/x-tex">F=M_{[0,1]}</annotation></semantics></math>
+on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="double-struck">ℝ</mi><annotation encoding="application/x-tex">\mathbb R</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>U</mi><mi>t</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>∞</mi><mo>,</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">U_t=(-\infty,t)</annotation></semantics></math>.
+Show that requiring (N11) only for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;t</annotation></semantics></math>
+gives no restriction at all, and find a restriction map that is not an
+isomorphism.</p>
+<p><em>Solution.</em> Here
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>B</mi><mi>s</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mi>s</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">B_s=\{s\}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>∈</mo><msub><mi>U</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">s\in U_t</annotation></semantics></math>
+whenever
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&lt;</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">s&lt;t</annotation></semantics></math>,
+so every strict-time test has zero stalk automatically. The supported
+increments are compact and the family is left continuous. If
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><mi>d</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">c&lt;0&lt;d&lt;1</annotation></semantics></math>,
+the cohomology on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>c</mi></msub><annotation encoding="application/x-tex">U_c</annotation></semantics></math>
+is zero, whereas on
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>U</mi><mi>d</mi></msub><annotation encoding="application/x-tex">U_d</annotation></semantics></math>
+it is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+in degree zero. The missing equal-time test is at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s=t=0</annotation></semantics></math>:
+the stalk of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi mathvariant="normal">Γ</mi><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>∞</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>F</mi></mrow><annotation encoding="application/x-tex">R\Gamma_{[0,\infty)}F</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Thus the equal-time part cannot be discarded.</p></li>
+<li><p><strong>Local assumptions on an open parameter interval.</strong>
+Suppose (N19) and (N20) hold only for levels in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,5)</annotation></semantics></math>.
+State exactly which conclusion follows without a test at level
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>.</p>
+<p><em>Solution.</em> For every
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>&lt;</mo><mi>c</mi><mo>&lt;</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">2&lt;c&lt;5</annotation></semantics></math>,
+restriction from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mn>5</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f&lt;5\}</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mi>c</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f&lt;c\}</annotation></semantics></math>
+is an isomorphism. The union of sublevels with parameter in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>5</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,5)</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>&lt;</mo><mn>5</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f&lt;5\}</annotation></semantics></math>.
+No conclusion about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">{</mo><mi>f</mi><mo>≤</mo><mn>5</mn><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\{f\le5\}</annotation></semantics></math>
+follows: it is a different subset, and the theorem supplies no
+equal-time test at level
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>.</p></li>
+<li><p><strong>Locate the obstruction degree.</strong> For an arbitrary
+increasing open exhaustion, explain why stability of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>
+alone is not the stated sufficient condition for computing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>H</mi><mi>q</mi></msup><annotation encoding="application/x-tex">H^q</annotation></semantics></math>
+of its union.</p>
+<p><em>Solution.</em> In (N5), the kernel of the comparison to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><msup><mi>H</mi><mi>q</mi></msup></mrow><annotation encoding="application/x-tex">\lim H^q</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mi mathvariant="normal">lim</mi><mo>⁡</mo></mrow><mn>1</mn></msup><msup><mi>H</mi><mrow><mi>q</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\lim^1H^{q-1}</annotation></semantics></math>.
+The condition must control the transitions one degree below. In the
+deformation proof this is why the induction begins at a uniform lower
+bound and proceeds upward: each completed degree removes the obstruction
+for the next one.</p></li>
+</ol>
+<span id="SH02-NCD-PROVENANCE"></span><h2 id="sh02-ncd-provenance-correspondence-and-limits-of-this-bridge">SH02-NCD-PROVENANCE
+— Correspondence and limits of this bridge</h2>
+<p>The exact freely accessible comparison used here is Robalo and
+Schapira, <a href="https://arxiv.org/abs/1611.06789v1"><em>A lemma for
+microlocal sheaf theory in the infinity-categorical setting</em>,
+arXiv:1611.06789v1</a>, submitted 21 November 2016. The verified
+author-supplied source and its corresponding PDF were compared: Lemmas
+2.1–2.2 appear on pp. 2–3, and Theorem 2.3 with its proof on pp. 4–5.
+Section 2 uses a unital coefficient ring. Theorem 2.3 has the same
+Hausdorff, left-continuity, supported-compactness and equal-time
+boundary conditions used above, and permits unbounded complexes. The
+earlier bounded-below version in Kashiwara and Schapira, <a href="https://www.numdam.org/item/AST_1985__128__1_0/"><em>Microlocal
+Study of Sheaves</em>, Astérisque 128 (1985)</a>, Theorem 1.4.3, printed
+pp. 30–31, also places a closure on each increment before the
+intersection. This is the front in (N9); the examples here explain its
+necessity directly.</p>
+<p>The compact-front mechanism is shared with those sources: restrict
+the localization triangle to the limiting front, kill a cohomology class
+on a neighborhood of that compact set, and shrink the advance until it
+lies in that neighborhood. In the present proof, (N13) verifies the
+passage to the closed support, (N15) types the direct-image comparison,
+and (N16) uses the actual two-open gluing triangle to carry the
+vanishing back to the whole smaller open set. The empty-front case is
+included. These details preserve the natural restriction map in (N17),
+not just an abstract equality of cohomology groups.</p>
+<p>The subsequent constancy argument is given in full here. The source
+recalls the set-valued criterion without proving it in Section 2, and
+its proof of the complex-valued Lemma 2.2 invokes earlier inverse-limit
+results. <code>SH02-NCD-INTERVAL-SYSTEM</code> instead supplies the
+injectivity and unique-extension arguments for the module system.
+Equations (N5)–(N7) derive the required countable exact sequence from
+one flabby resolution, and induction from the common lower bound removes
+its degree-below obstruction. Thus no unbounded injective-resolution
+theorem or omitted proof of the source’s constant-functor criterion is
+being silently imported. The unbounded and higher-category theorems
+remain worthwhile, separately stated extensions outside this unit’s
+bounded-below assertion.</p>
+<p>The Stacks comparisons have distinct roles. <a href="https://stacks.math.columbia.edu/tag/09V3">Tag 09V3</a> proves
+compact-neighborhood continuity by finite neighborhood shrinking and a
+Cech-cohomology argument for restricted injectives. It supplies the
+sheaf-level input (N3); the scalar-action check and finite convergence
+filtration above supply (N4) for arbitrary left modules. <a href="https://stacks.math.columbia.edu/tag/0BKM">Tag 0BKM</a> records
+the bounded-below hypercohomology spectral sequence. <a href="https://stacks.math.columbia.edu/tag/0D60">Tag 0D60</a> concerns
+derived inverse limits of complexes on a fixed space. It does not by
+itself identify sections on an increasing union: the sheaf gluing and
+degreewise surjectivity in (N7) provide that comparison here. All three
+locators were checked at the same native Stacks revision linked
+above.</p>
+<p>This unit keeps its own order of proof obligations, its two failure
+mechanisms, and all four solved applications. No claim about an error in
+an unconsulted edition is needed for the front convention. The earlier
+source and errata attributions remain in private history.</p>
+<p>The exact Stacks compact-neighborhood import is GFDL-1.2-or-later,
+with no invariant sections or cover texts, under the <a href="https://raw.githubusercontent.com/stacks/stacks-project/master/introduction.tex">Stacks
+license notice</a>. The independently authored exposition in this unit
+is dedicated under CC0 1.0 Universal. The identified human component
+retains its own terms. All private source images and comparison records
+remain outside the public course.</p>
+</main></body></html>

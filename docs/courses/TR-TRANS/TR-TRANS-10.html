@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The index method for rational approximation · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-10.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-index-method-for-rational-approximation">The index method for rational approximation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original text, proofs and figure: public domain (CC0). The complete Roth proof is Theorem 12.1.</em></p>
+<p>Liouville's theorem bounds the quality of rational approximation to an algebraic number by its degree. Roth's theorem replaces that degree by two. The change requires more than a better estimate for the minimal polynomial: in one variable the conjugates use up exactly the freedom needed to improve the exponent. Several variables let us distribute vanishing among many coefficients. The <strong>index</strong> measures that distribution.</p>
+<p>This lesson constructs the polynomial with large index used in Roth's proof. The next lesson proves that a polynomial of small height has small index at rational points with suitably separated denominators. <a href="TR-TRANS-12.html">Roth's theorem and its consequences</a> combines the two statements. Theorem 12.1 supplies the complete Roth proof; the binary-form application at the end of this lesson uses it.</p>
+<p>We use the integer polynomial height <span class="math" data-tex="\(H(P)=\max|a_{\boldsymbol j}|\)">\(H(P)=\max|a_{\boldsymbol j}|\)</span>, as in <a href="TR-TRANS-02.html">Heights of algebraic numbers</a>, and the small-solution principle of <a href="TR-TRANS-05.html">Siegel's lemma and the six exponentials theorem</a>. All index and counting arguments needed here are proved below.</p>
+<h2 id="1-the-exponent-two">1. The exponent two</h2>
+<h3 id="theorem-10-1-roth-s-approximation-theorem">Theorem 10.1. Roth's approximation theorem</h3>
+<p>If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a real irrational algebraic number and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\left|\alpha-\frac pq\right|&lt;q^{-2-\delta},
+\qquad p\in\mathbb Z,\quad q\in\mathbb Z_{&gt;0},
+\quad\gcd(p,q)=1,
+\tag{10.1}
+\]">\[
+\left|\alpha-\frac pq\right|&lt;q^{-2-\delta},
+\qquad p\in\mathbb Z,\quad q\in\mathbb Z_{&gt;0},
+\quad\gcd(p,q)=1,
+\tag{10.1}
+\]</span>
+<p>has only finitely many solutions. Equivalently, there is a positive constant <span class="math" data-tex="\(c(\alpha,\delta)\)">\(c(\alpha,\delta)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\left|\alpha-\frac pq\right|
+\geq c(\alpha,\delta)q^{-2-\delta}
+\quad\text{for every reduced }p/q.
+\]">\[
+\left|\alpha-\frac pq\right|
+\geq c(\alpha,\delta)q^{-2-\delta}
+\quad\text{for every reduced }p/q.
+\]</span>
+<p><strong>Proof location.</strong> The complete argument is in Theorem 12.1, using the construction in this lesson and the rational-point index bound in the next. The equivalence follows now: finitely many exceptions have a positive minimum of <span class="math" data-tex="\(q^{2+\delta}|\alpha-p/q|\)">\(q^{2+\delta}|\alpha-p/q|\)</span>, while the remaining values are at least one. Irrationality ensures none of the finitely many values is zero.</p>
+<p>Dirichlet's theorem, proved in Lesson 1, gives infinitely many reduced approximations with <span class="math" data-tex="\(|\alpha-p/q|&lt;q^{-2}\)">\(|\alpha-p/q|&lt;q^{-2}\)</span>. Thus two is the limiting exponent; Roth's assertion uses every positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, not <span class="math" data-tex="\(\delta=0\)">\(\delta=0\)</span>. For a nonreal <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the inequality <span class="math" data-tex="\(|\alpha-p/q|\geq|\operatorname{Im}\alpha|\)">\(|\alpha-p/q|\geq|\operatorname{Im}\alpha|\)</span> makes the corresponding finiteness immediate.</p>
+<p>Historically, Thue obtained the exponent <span class="math" data-tex="\(d/2+1+\delta\)">\(d/2+1+\delta\)</span> for degree <span class="math" data-tex="\(d\)">\(d\)</span>, Siegel improved it to <span class="math" data-tex="\(2\sqrt d+\delta\)">\(2\sqrt d+\delta\)</span>, and Dyson and Gel'fond reached <span class="math" data-tex="\(\sqrt{2d}+\delta\)">\(\sqrt{2d}+\delta\)</span>. Each of these weaker finiteness assertions follows from Theorem 10.1 whenever its displayed exponent exceeds two: choose a positive Roth parameter smaller than that excess. We credit those earlier results for the development of the method; their original methods are not needed to establish the implications just described. The case <span class="math" data-tex="\(d=2\)">\(d=2\)</span> at exponent two is excluded from this inference. The constants in the full Roth theorem are not effectively bounded by this proof.</p>
+<h2 id="2-keep-taylor-coefficients-integral">2. Keep Taylor coefficients integral</h2>
+<p>For a multi-index <span class="math" data-tex="\(\boldsymbol i=(i_1,\ldots,i_m)\)">\(\boldsymbol i=(i_1,\ldots,i_m)\)</span> of nonnegative integers, put</p>
+<span class="math math-display" data-tex="\[
+D_{\boldsymbol i}
+=\frac{1}{i_1!\cdots i_m!}
+\frac{\partial^{i_1+\cdots+i_m}}
+{\partial X_1^{i_1}\cdots\partial X_m^{i_m}}.
+\]">\[
+D_{\boldsymbol i}
+=\frac{1}{i_1!\cdots i_m!}
+\frac{\partial^{i_1+\cdots+i_m}}
+{\partial X_1^{i_1}\cdots\partial X_m^{i_m}}.
+\]</span>
+<p>These are the operators in the finite Taylor expansion</p>
+<span class="math math-display" data-tex="\[
+P(\boldsymbol x+\boldsymbol T)
+=\sum_{\boldsymbol i}
+(D_{\boldsymbol i}P)(\boldsymbol x)
+\boldsymbol T^{\boldsymbol i}.
+\tag{10.4}
+\]">\[
+P(\boldsymbol x+\boldsymbol T)
+=\sum_{\boldsymbol i}
+(D_{\boldsymbol i}P)(\boldsymbol x)
+\boldsymbol T^{\boldsymbol i}.
+\tag{10.4}
+\]</span>
+<h3 id="lemma-10-3-derivative-heights">Lemma 10.3. Derivative heights</h3>
+<p>If <span class="math" data-tex="\(P\in\mathbb Z[X_1,\ldots,X_m]\)">\(P\in\mathbb Z[X_1,\ldots,X_m]\)</span>, then <span class="math" data-tex="\(D_{\boldsymbol i}P\)">\(D_{\boldsymbol i}P\)</span> also has integer coefficients. If <span class="math" data-tex="\(\deg_{X_j}P\leq d_j\)">\(\deg_{X_j}P\leq d_j\)</span> and <span class="math" data-tex="\(D=d_1+\cdots+d_m\)">\(D=d_1+\cdots+d_m\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+H(D_{\boldsymbol i}P)\leq2^D H(P).
+\tag{10.5}
+\]">\[
+H(D_{\boldsymbol i}P)\leq2^D H(P).
+\tag{10.5}
+\]</span>
+<p><strong>Proof.</strong> On a monomial, the operator gives</p>
+<span class="math math-display" data-tex="\[
+D_{\boldsymbol i}\boldsymbol X^{\boldsymbol j}
+=\left(\prod_{r=1}^m\binom{j_r}{i_r}\right)
+\boldsymbol X^{\boldsymbol j-\boldsymbol i},
+\]">\[
+D_{\boldsymbol i}\boldsymbol X^{\boldsymbol j}
+=\left(\prod_{r=1}^m\binom{j_r}{i_r}\right)
+\boldsymbol X^{\boldsymbol j-\boldsymbol i},
+\]</span>
+<p>with zero when any <span class="math" data-tex="\(i_r&gt;j_r\)">\(i_r&gt;j_r\)</span>. The binomial coefficients are integers and each is at most <span class="math" data-tex="\(2^{j_r}\)">\(2^{j_r}\)</span>. Different surviving monomials have different exponent vectors after subtracting the same <span class="math" data-tex="\(\boldsymbol i\)">\(\boldsymbol i\)</span>, so their coefficients do not combine. This proves the asserted bound for every coefficient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The assertion is preservation, not surjectivity: for example <span class="math" data-tex="\(D_1\)">\(D_1\)</span> in one variable cannot map an integer polynomial to <span class="math" data-tex="\(X\)">\(X\)</span>. A factorial normalization removes the denominators from the differentiated coefficients; it does not make formal integration over the integers possible.</p>
+<h2 id="3-read-the-first-surviving-taylor-term">3. Read the first surviving Taylor term</h2>
+<p>Fix positive integers <span class="math" data-tex="\(\boldsymbol d=(d_1,\ldots,d_m)\)">\(\boldsymbol d=(d_1,\ldots,d_m)\)</span>. For a nonzero polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, its index at <span class="math" data-tex="\(\boldsymbol x\)">\(\boldsymbol x\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ind}_{\boldsymbol x,\boldsymbol d}P
+=\min\left\{\sum_{j=1}^m\frac{i_j}{d_j}:
+(D_{\boldsymbol i}P)(\boldsymbol x)\ne0\right\}.
+\tag{10.6}
+\]">\[
+\operatorname{ind}_{\boldsymbol x,\boldsymbol d}P
+=\min\left\{\sum_{j=1}^m\frac{i_j}{d_j}:
+(D_{\boldsymbol i}P)(\boldsymbol x)\ne0\right\}.
+\tag{10.6}
+\]</span>
+<p>The minimum exists by the finite Taylor expansion. Set the index of zero to <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. The weights <span class="math" data-tex="\(d_j\)">\(d_j\)</span> are specified data, not necessarily the actual degrees. In particular, a polynomial can be constant in one variable while its index is still computed with that variable's positive weight.</p>
+<p>For <span class="math" data-tex="\(P=(X_1-1)^2(X_2-2)\)">\(P=(X_1-1)^2(X_2-2)\)</span> at <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> with weights <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>, the only nonzero lowest Taylor coefficient has exponent <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>. Its index is <span class="math" data-tex="\(2/2+1/1=2\)">\(2/2+1/1=2\)</span>. With weights <span class="math" data-tex="\((4,1)\)">\((4,1)\)</span>, the same polynomial has index <span class="math" data-tex="\(3/2\)">\(3/2\)</span>.</p>
+<figure><img src="figures/weighted-index.png" alt="Taylor coefficient weights for two variables" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 10.1. Taylor coefficient indices with weights <span class="math" data-tex="\((d_1,d_2)=(8,4)\)">\((d_1,d_2)=(8,4)\)</span>. Requiring index greater than one sets every coefficient at or below <span class="math" data-tex="\(i_1/8+i_2/4=1\)">\(i_1/8+i_2/4=1\)</span> to zero. Points above the line may survive. These are coefficient indices, not points at which the polynomial is evaluated; the diagram illustrates definition (10.6), without asserting the existence of a polynomial at any particular algebraic point.</em></p>
+<p><strong>Worked weighted calculation.</strong> At <span class="math" data-tex="\((a,a)\)">\((a,a)\)</span>, the expansion of <span class="math" data-tex="\(P=(X-Y)^2\)">\(P=(X-Y)^2\)</span> is <span class="math" data-tex="\(T_1^2-2T_1T_2+T_2^2\)">\(T_1^2-2T_1T_2+T_2^2\)</span>. With weights <span class="math" data-tex="\((4,2)\)">\((4,2)\)</span>, the three terms have weights <span class="math" data-tex="\(1/2,3/4,1\)">\(1/2,3/4,1\)</span>, so the index is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. With weights <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, all three have weight one. The index therefore measures vanishing relative to the available degrees in each direction; the ordinary total multiplicity is two in both calculations. Differentiating once in <span class="math" data-tex="\(X\)">\(X\)</span> under the first weights leaves <span class="math" data-tex="\(2T_1-2T_2\)">\(2T_1-2T_2\)</span>, of index <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, exactly the permitted loss <span class="math" data-tex="\(1/4\)">\(1/4\)</span>.</p>
+<h3 id="lemma-10-4-the-index-rules">Lemma 10.4. The index rules</h3>
+<p>At a fixed point and with fixed weights,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{ind}(D_{\boldsymbol i}P)
+&amp;\geq\operatorname{ind}(P)-\sum_j i_j/d_j,\\
+\operatorname{ind}(PQ)&amp;=\operatorname{ind}(P)+\operatorname{ind}(Q),\\
+\operatorname{ind}(P+Q)&amp;\geq\min\{\operatorname{ind}(P),
+\operatorname{ind}(Q)\}.
+\end{aligned}
+\tag{10.7}
+\]">\[
+\begin{aligned}
+\operatorname{ind}(D_{\boldsymbol i}P)
+&amp;\geq\operatorname{ind}(P)-\sum_j i_j/d_j,\\
+\operatorname{ind}(PQ)&amp;=\operatorname{ind}(P)+\operatorname{ind}(Q),\\
+\operatorname{ind}(P+Q)&amp;\geq\min\{\operatorname{ind}(P),
+\operatorname{ind}(Q)\}.
+\end{aligned}
+\tag{10.7}
+\]</span>
+<p><strong>Proof.</strong> In (10.4), differentiating a nonzero term lowers its weight by <span class="math" data-tex="\(\sum i_j/d_j\)">\(\sum i_j/d_j\)</span>, when the term survives. This proves the first bound. The third follows because coefficients of weights below both minima vanish in the sum. For the product, collect the terms of least weight in the two Taylor expansions into nonzero polynomials <span class="math" data-tex="\(P_0,Q_0\)">\(P_0,Q_0\)</span>. All terms of their product have the sum of these weights, and <span class="math" data-tex="\(P_0Q_0\ne0\)">\(P_0Q_0\ne0\)</span>, since a polynomial ring over a field has no zero divisors. Every other product term has higher weight. The least weight is therefore exactly the sum. Zero polynomials satisfy the rules with the stated convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In one variable, the index with weight <span class="math" data-tex="\(n\)">\(n\)</span> is the multiplicity divided by <span class="math" data-tex="\(n\)">\(n\)</span>. If an integer polynomial of degree <span class="math" data-tex="\(n\)">\(n\)</span> has a degree-<span class="math" data-tex="\(d\)">\(d\)</span> algebraic root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of multiplicity <span class="math" data-tex="\(r\)">\(r\)</span>, its irreducible minimal polynomial divides it to power <span class="math" data-tex="\(r\)">\(r\)</span>. To see this without assuming complex automorphisms, divide repeatedly over <span class="math" data-tex="\(\mathbb Q[X]\)">\(\mathbb Q[X]\)</span> by that irreducible polynomial. Its distinct conjugate roots each occur once in that factor, so the exact exponent of the factor equals the multiplicity at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Thus <span class="math" data-tex="\(dr\leq n\)">\(dr\leq n\)</span>, and the index is at most <span class="math" data-tex="\(1/d\)">\(1/d\)</span>.</p>
+<p>This explains the obstruction to a one-variable improvement of Liouville's argument. Its rational denominator bound is <span class="math" data-tex="\(|P(p/q)|\geq q^{-n}\)">\(|P(p/q)|\geq q^{-n}\)</span> when the value is nonzero, while a multiplicity <span class="math" data-tex="\(r\)">\(r\)</span> gives the analytic upper bound <span class="math" data-tex="\(C|\alpha-p/q|^r\)">\(C|\alpha-p/q|^r\)</span>. These estimates can exclude approximation exponents only above <span class="math" data-tex="\(n/r\geq d\)">\(n/r\geq d\)</span>. Several variables will allow an index close to <span class="math" data-tex="\(m/2\)">\(m/2\)</span>.</p>
+<h2 id="4-count-equations-before-choosing-coefficients">4. Count equations before choosing coefficients</h2>
+<p><strong>A four-variable check.</strong> On the grid <span class="math" data-tex="\(\{0,1\}^4\)">\(\{0,1\}^4\)</span>, there are <span class="math" data-tex="\(16\)">\(16\)</span> monomials. Killing weights at most one means killing the constant and the four coordinate terms: five conditions over the algebraic field. At a quadratic point, reducing them in <span class="math" data-tex="\(1,\alpha\)">\(1,\alpha\)</span> gives at most ten rational equations, leaving room among the sixteen coefficients. This small count demonstrates the construction, but not a uniform height bound. For that bound the ratio of equations to unknowns must stay uniformly below one as the degrees vary.</p>
+<p>Choose <span class="math" data-tex="\(I_j\)">\(I_j\)</span> independently and uniformly from <span class="math" data-tex="\(\{0,1,\ldots,d_j\}\)">\(\{0,1,\ldots,d_j\}\)</span>. Counting grid points is the same as computing probabilities for these finite sets. Put <span class="math" data-tex="\(Y_j=I_j/d_j-1/2\)">\(Y_j=I_j/d_j-1/2\)</span>. These variables are symmetric about zero, with</p>
+<span class="math math-display" data-tex="\[
+\mathbb E Y_j=0,
+\qquad \mathbb E Y_j^2=\frac{d_j+2}{12d_j}\leq\frac14.
+\tag{10.9}
+\]">\[
+\mathbb E Y_j=0,
+\qquad \mathbb E Y_j^2=\frac{d_j+2}{12d_j}\leq\frac14.
+\tag{10.9}
+\]</span>
+<p>The cross terms vanish by independence. Consequently, if <span class="math" data-tex="\(S=\sum Y_j\)">\(S=\sum Y_j\)</span>, then <span class="math" data-tex="\(\mathbb E S^2\leq m/4\)">\(\mathbb E S^2\leq m/4\)</span>. Symmetry and the elementary inequality <span class="math" data-tex="\(\mathbb P(|S|\geq a)\leq\mathbb E S^2/a^2\)">\(\mathbb P(|S|\geq a)\leq\mathbb E S^2/a^2\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\mathbb P\!\left(\sum_j I_j/d_j\leq\frac m2(1-\varepsilon)\right)
+\leq\frac{1}{2m\varepsilon^2}.
+\tag{10.10}
+\]">\[
+\mathbb P\!\left(\sum_j I_j/d_j\leq\frac m2(1-\varepsilon)\right)
+\leq\frac{1}{2m\varepsilon^2}.
+\tag{10.10}
+\]</span>
+<p>This already gives an explicit convenient construction when <span class="math" data-tex="\(m\geq d/\varepsilon^2\)">\(m\geq d/\varepsilon^2\)</span>: at most <span class="math" data-tex="\(1/(2d)\)">\(1/(2d)\)</span> of the grid points are conditions. To retain the smaller threshold <span class="math" data-tex="\(m\geq d/(2\varepsilon^2)\)">\(m\geq d/(2\varepsilon^2)\)</span> in Theorem 10.7, we need a uniform strict version of the same estimate. The next lemma supplies it, including small degrees <span class="math" data-tex="\(d_j\)">\(d_j\)</span>.</p>
+<h3 id="lemma-10-6-a-uniform-strict-grid-bound">Lemma 10.6. A uniform strict grid bound</h3>
+<p>For every integer <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>, there is a number <span class="math" data-tex="\(\rho_d&lt;1/d\)">\(\rho_d&lt;1/d\)</span> such that, for all positive <span class="math" data-tex="\(d_1,\ldots,d_m\)">\(d_1,\ldots,d_m\)</span> and all <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span> with <span class="math" data-tex="\(m\geq d/(2\varepsilon^2)\)">\(m\geq d/(2\varepsilon^2)\)</span>, the proportion of grid points satisfying</p>
+<span class="math math-display" data-tex="\[
+\sum_j i_j/d_j\leq m(1-\varepsilon)/2
+\tag{10.11}
+\]">\[
+\sum_j i_j/d_j\leq m(1-\varepsilon)/2
+\tag{10.11}
+\]</span>
+<p>is at most <span class="math" data-tex="\(\rho_d\)">\(\rho_d\)</span>. The bound is independent of <span class="math" data-tex="\(m,\varepsilon\)">\(m,\varepsilon\)</span> and the grid sizes.</p>
+<p><strong>Proof.</strong> We have <span class="math" data-tex="\(m&gt;d/2\)">\(m&gt;d/2\)</span>, and <span class="math" data-tex="\(\varepsilon m/2\geq a_m=\sqrt{dm/8}\)">\(\varepsilon m/2\geq a_m=\sqrt{dm/8}\)</span>. It is enough to bound <span class="math" data-tex="\(\mathbb P(S\leq-a_m)\)">\(\mathbb P(S\leq-a_m)\)</span>. Symmetry and the second-moment inequality give</p>
+<span class="math math-display" data-tex="\[
+\mathbb P(S\leq-a_m)\leq1/d.
+\tag{10.12}
+\]">\[
+\mathbb P(S\leq-a_m)\leq1/d.
+\tag{10.12}
+\]</span>
+<p>For each fixed <span class="math" data-tex="\(m\)">\(m\)</span>, this inequality has a uniform strict gap over all grid sizes. Here are the compactness and strictness details. A sequence of positive integer grid sizes has a subsequence which is either constant or tends to infinity. A uniform grid of mesh <span class="math" data-tex="\(1/d_j\)">\(1/d_j\)</span> then tends, by its Riemann sums, to the uniform distribution on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>; bounded sizes remain fixed. For finitely many independent coordinates their product distributions have the corresponding limit. If a limiting coordinate is continuous, the sum has no atoms, so the probability of the fixed half-line converges; this follows by bounding its indicator between continuous functions which differ only on a shrinking interval at the endpoint. If all coordinates are finite, they are eventually constant. Thus a sequence approaching the supremum has a limiting probability of the same kind, allowing also continuous uniform coordinates.</p>
+<p>If any limiting grid has size bigger than one, or is continuous, its variance is strictly below <span class="math" data-tex="\(1/4\)">\(1/4\)</span>; (10.12) is then strict. If every grid has size one, <span class="math" data-tex="\(S\)">\(S\)</span> is a sum of <span class="math" data-tex="\(m\)">\(m\)</span> symmetric variables with values <span class="math" data-tex="\(\pm1/2\)">\(\pm1/2\)</span>. Equality in the second-moment bound would require every nonzero value of <span class="math" data-tex="\(S\)">\(S\)</span> to have absolute value exactly <span class="math" data-tex="\(a_m\)">\(a_m\)</span>. For <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span>, its support has at least two different positive absolute values, which is impossible. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, its support is <span class="math" data-tex="\(\{-1,0,1\}\)">\(\{-1,0,1\}\)</span>; equality would require <span class="math" data-tex="\(a_m=1\)">\(a_m=1\)</span>, or <span class="math" data-tex="\(d=4\)">\(d=4\)</span>, contrary to <span class="math" data-tex="\(m&gt;d/2\)">\(m&gt;d/2\)</span>. The case <span class="math" data-tex="\(m=1\)">\(m=1\)</span> is excluded by <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. The supremum for each fixed <span class="math" data-tex="\(m\)">\(m\)</span> is therefore strictly below <span class="math" data-tex="\(1/d\)">\(1/d\)</span>.</p>
+<p>It remains to ensure a gap as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>. This can be proved directly rather than importing a limit theorem. Along any such sequence, pass to a subsequence on which</p>
+<span class="math math-display" data-tex="\[
+v_m=m^{-1}\sum_j\mathbb E Y_j^2
+\longrightarrow v\in[1/12,1/4].
+\]">\[
+v_m=m^{-1}\sum_j\mathbb E Y_j^2
+\longrightarrow v\in[1/12,1/4].
+\]</span>
+<p>For fixed real <span class="math" data-tex="\(t\)">\(t\)</span>, boundedness <span class="math" data-tex="\(|Y_j|\leq1/2\)">\(|Y_j|\leq1/2\)</span> and the exponential Taylor remainder give, uniformly in every coordinate,</p>
+<span class="math math-display" data-tex="\[
+\mathbb E e^{itY_j/\sqrt m}
+=1-\frac{t^2\mathbb E Y_j^2}{2m}+O_t(m^{-3/2}).
+\]">\[
+\mathbb E e^{itY_j/\sqrt m}
+=1-\frac{t^2\mathbb E Y_j^2}{2m}+O_t(m^{-3/2}).
+\]</span>
+<p>Multiply these expressions, or take their logarithms once their distance from one is small. The characteristic function of <span class="math" data-tex="\(S/\sqrt m\)">\(S/\sqrt m\)</span> tends to <span class="math" data-tex="\(e^{-vt^2/2}\)">\(e^{-vt^2/2}\)</span>.</p>
+<p>For completeness, this characteristic-function calculation determines the half-line probabilities as follows. Add an independent centered Gaussian of variance <span class="math" data-tex="\(r^2&gt;0\)">\(r^2&gt;0\)</span>. The density of the resulting sum is</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int_{\mathbb R}
+e^{-itx}\,\mathbb E e^{itS/\sqrt m}
+e^{-r^2t^2/2}\,dt.
+\]">\[
+\frac1{2\pi}\int_{\mathbb R}
+e^{-itx}\,\mathbb E e^{itS/\sqrt m}
+e^{-r^2t^2/2}\,dt.
+\]</span>
+<p>This formula follows by integrating the Gaussian density against the distribution of <span class="math" data-tex="\(S/\sqrt m\)">\(S/\sqrt m\)</span> and applying Fubini; the Gaussian Fourier identity follows by differentiating its integral and integrating by parts. The displayed integrals converge uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> by the integrable bound <span class="math" data-tex="\(e^{-r^2t^2/2}\)">\(e^{-r^2t^2/2}\)</span>. Their limiting density is Gaussian of variance <span class="math" data-tex="\(v+r^2\)">\(v+r^2\)</span>. Half-line integrals converge as well: truncate to a fixed bounded interval and control the omitted tails by the uniformly bounded second moment <span class="math" data-tex="\(v_m+r^2\)">\(v_m+r^2\)</span>. If the added Gaussian is <span class="math" data-tex="\(rZ\)">\(rZ\)</span>, the events with and without it differ, outside <span class="math" data-tex="\(|rZ|&gt;\eta\)">\(|rZ|&gt;\eta\)</span>, only by shifting the endpoint by <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Take <span class="math" data-tex="\(\eta=\sqrt r\)">\(\eta=\sqrt r\)</span>, use <span class="math" data-tex="\(\mathbb P(|rZ|&gt;\eta)\leq r\)">\(\mathbb P(|rZ|&gt;\eta)\leq r\)</span>, and then let <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. The Gaussian limiting distribution is continuous, so this proves convergence of the original half-line probabilities.</p>
+<p>In particular,</p>
+<span class="math math-display" data-tex="\[
+\mathbb P(S\leq-a_m)
+\longrightarrow
+\Phi\!\left(-\sqrt{d/(8v)}\right)
+\leq\Phi\!\left(-\sqrt{d/2}\right)&lt;1/d,
+\]">\[
+\mathbb P(S\leq-a_m)
+\longrightarrow
+\Phi\!\left(-\sqrt{d/(8v)}\right)
+\leq\Phi\!\left(-\sqrt{d/2}\right)&lt;1/d,
+\]</span>
+<p>where <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is the standard Gaussian distribution function. The final inequality is strict by symmetry and the second-moment inequality for a Gaussian: its squared values are not confined to zero and the threshold. If there were no uniform gap for large <span class="math" data-tex="\(m\)">\(m\)</span>, a sequence of probabilities tending to <span class="math" data-tex="\(1/d\)">\(1/d\)</span> would contradict this conclusion. Combining the large-<span class="math" data-tex="\(m\)">\(m\)</span> gap with the finitely many remaining fixed-<span class="math" data-tex="\(m\)">\(m\)</span> gaps proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma provides a constant depending only on <span class="math" data-tex="\(d\)">\(d\)</span>; it makes no claim that the elementary estimate (10.10) by itself gives <span class="math" data-tex="\(1/(2d)\)">\(1/(2d)\)</span> at the smaller threshold. Keeping those two estimates distinct prevents a factor-of-two error in the construction.</p>
+<h2 id="5-turn-the-equation-count-into-a-height-bound">5. Turn the equation count into a height bound</h2>
+<p>The count and the coefficient sizes are separate inputs. At <span class="math" data-tex="\(\alpha=\sqrt2\)">\(\alpha=\sqrt2\)</span>, imposing <span class="math" data-tex="\(P(\alpha,\alpha)=0\)">\(P(\alpha,\alpha)=0\)</span> on <span class="math" data-tex="\(P=c_{00}+c_{10}X+c_{01}Y+c_{11}XY\)">\(P=c_{00}+c_{10}X+c_{01}Y+c_{11}XY\)</span> gives the two integer equations</p>
+<span class="math math-display" data-tex="\[
+c_{00}+2c_{11}=0,\qquad c_{10}+c_{01}=0.
+\]">\[
+c_{00}+2c_{11}=0,\qquad c_{10}+c_{01}=0.
+\]</span>
+<p>The vectors <span class="math" data-tex="\((-2,0,0,1)\)">\((-2,0,0,1)\)</span> and <span class="math" data-tex="\((0,1,-1,0)\)">\((0,1,-1,0)\)</span> give <span class="math" data-tex="\(XY-2\)">\(XY-2\)</span> and <span class="math" data-tex="\(X-Y\)">\(X-Y\)</span>. Both have index one with weights <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> at <span class="math" data-tex="\((\alpha,\alpha)\)">\((\alpha,\alpha)\)</span>. Notice that a single vanishing condition in a quadratic field became two rational equations. Theorem 10.7 repeats this reduction for every low-weight derivative and uses the following lemma to control the resulting coefficient vector.</p>
+<h3 id="lemma-10-5-siegel-s-lemma-with-a-common-coefficient-bound">Lemma 10.5. Siegel's lemma with a common coefficient bound</h3>
+<p>Let an integer <span class="math" data-tex="\(M\times N\)">\(M\times N\)</span> matrix have <span class="math" data-tex="\(0&lt;M&lt;N\)">\(0&lt;M&lt;N\)</span>, and let <span class="math" data-tex="\(A\geq1\)">\(A\geq1\)</span> bound the absolute values of its entries. Its kernel contains an integer vector <span class="math" data-tex="\(\boldsymbol z\ne0\)">\(\boldsymbol z\ne0\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\max|z_j|\leq(NA)^{M/(N-M)}.
+\tag{10.8}
+\]">\[
+\max|z_j|\leq(NA)^{M/(N-M)}.
+\tag{10.8}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(C=NA\)">\(C=NA\)</span> and <span class="math" data-tex="\(X=\lfloor C^{M/(N-M)}\rfloor\)">\(X=\lfloor C^{M/(N-M)}\rfloor\)</span>. Map the <span class="math" data-tex="\((X+1)^N\)">\((X+1)^N\)</span> integer points in <span class="math" data-tex="\([0,X]^N\)">\([0,X]^N\)</span> by the matrix. Each output coordinate lies in an interval containing at most <span class="math" data-tex="\(CX+1\)">\(CX+1\)</span> integers: the interval's length is the sum of the absolute row coefficients times <span class="math" data-tex="\(X\)">\(X\)</span>. Since <span class="math" data-tex="\(X+1&gt;C^{M/(N-M)}\)">\(X+1&gt;C^{M/(N-M)}\)</span> and <span class="math" data-tex="\(C\geq N&gt;1\)">\(C\geq N&gt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(X+1)^{N/M}&gt;C(X+1)&gt;CX+1.
+\]">\[
+(X+1)^{N/M}&gt;C(X+1)&gt;CX+1.
+\]</span>
+<p>There are more inputs than outputs, so two inputs have the same image. Their nonzero difference lies in the kernel and has coordinates of absolute value at most <span class="math" data-tex="\(X\)">\(X\)</span>. This proves (10.8), including its rounding. If there are no equations, a coordinate vector already suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-assemble-the-polynomial-of-large-index">6. Assemble the polynomial of large index</h2>
+<h3 id="theorem-10-7-the-index-construction">Theorem 10.7. The index construction</h3>
+<p>Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be an algebraic integer of degree <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. There is a constant <span class="math" data-tex="\(C_\alpha\geq1\)">\(C_\alpha\geq1\)</span>, depending only on <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, with the following property. For every <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, every integer <span class="math" data-tex="\(m\geq d/(2\varepsilon^2)\)">\(m\geq d/(2\varepsilon^2)\)</span>, and all positive integers <span class="math" data-tex="\(d_1,\ldots,d_m\)">\(d_1,\ldots,d_m\)</span>, a nonzero polynomial <span class="math" data-tex="\(P\in\mathbb Z[X_1,\ldots,X_m]\)">\(P\in\mathbb Z[X_1,\ldots,X_m]\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\deg_{X_j}P\leq d_j,\qquad
+H(P)\leq C_\alpha^{d_1+\cdots+d_m},\qquad
+\operatorname{ind}_{(\alpha,\ldots,\alpha),\boldsymbol d}P
+&gt;\frac m2(1-\varepsilon).
+\tag{10.13}
+\]">\[
+\deg_{X_j}P\leq d_j,\qquad
+H(P)\leq C_\alpha^{d_1+\cdots+d_m},\qquad
+\operatorname{ind}_{(\alpha,\ldots,\alpha),\boldsymbol d}P
+&gt;\frac m2(1-\varepsilon).
+\tag{10.13}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(D=\sum d_j\)">\(D=\sum d_j\)</span> and <span class="math" data-tex="\(N=\prod(d_j+1)\)">\(N=\prod(d_j+1)\)</span>. The <span class="math" data-tex="\(N\)">\(N\)</span> unknown coefficients of</p>
+<span class="math math-display" data-tex="\[
+P=\sum_{0\leq j_r\leq d_r}
+z_{\boldsymbol j}\boldsymbol X^{\boldsymbol j}
+\]">\[
+P=\sum_{0\leq j_r\leq d_r}
+z_{\boldsymbol j}\boldsymbol X^{\boldsymbol j}
+\]</span>
+<p>must satisfy <span class="math" data-tex="\((D_{\boldsymbol i}P)(\alpha,\ldots,\alpha)=0\)">\((D_{\boldsymbol i}P)(\alpha,\ldots,\alpha)=0\)</span> for all the <span class="math" data-tex="\(M\)">\(M\)</span> indices in (10.11). Lemma 10.6 gives <span class="math" data-tex="\(M\leq\rho_dN\)">\(M\leq\rho_dN\)</span>, so <span class="math" data-tex="\(dM&lt;N\)">\(dM&lt;N\)</span>.</p>
+<p>Write the monic minimal polynomial as <span class="math" data-tex="\(T^d+a_{d-1}T^{d-1}+\cdots+a_0\)">\(T^d+a_{d-1}T^{d-1}+\cdots+a_0\)</span>, and put <span class="math" data-tex="\(B=\max(1,\sum|a_j|)\)">\(B=\max(1,\sum|a_j|)\)</span>. Reduction modulo that polynomial expresses every power <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span> in the basis <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{d-1}\)">\(1,\alpha,\ldots,\alpha^{d-1}\)</span> with integer coordinates of sum of absolute values at most <span class="math" data-tex="\(B^r\)">\(B^r\)</span>. Indeed multiplication by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> shifts the first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> basis columns and has final column <span class="math" data-tex="\((-a_0,\ldots,-a_{d-1})\)">\((-a_0,\ldots,-a_{d-1})\)</span>; its matrix has column-sum norm at most <span class="math" data-tex="\(B\)">\(B\)</span>, so its <span class="math" data-tex="\(r\)">\(r\)</span>-th power has norm at most <span class="math" data-tex="\(B^r\)">\(B^r\)</span>.</p>
+<p>Each derivative coefficient multiplying <span class="math" data-tex="\(z_{\boldsymbol j}\)">\(z_{\boldsymbol j}\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_r\binom{j_r}{i_r}\right)
+\alpha^{\sum(j_r-i_r)}.
+\]">\[
+\left(\prod_r\binom{j_r}{i_r}\right)
+\alpha^{\sum(j_r-i_r)}.
+\]</span>
+<p>Its reduced integer coordinates have absolute value at most <span class="math" data-tex="\((2B)^D\)">\((2B)^D\)</span>. Setting the <span class="math" data-tex="\(d\)">\(d\)</span> coordinates of every condition to zero gives an integer system with <span class="math" data-tex="\(dM\)">\(dM\)</span> rows and <span class="math" data-tex="\(N\)">\(N\)</span> columns; these conditions are equivalent, since the displayed basis is rationally independent. Lemma 10.5 supplies a nonzero solution with</p>
+<span class="math math-display" data-tex="\[
+H(P)\leq\left(N(2B)^D\right)^{dM/(N-dM)}
+\leq(4B)^{D\,d\rho_d/(1-d\rho_d)}.
+\]">\[
+H(P)\leq\left(N(2B)^D\right)^{dM/(N-dM)}
+\leq(4B)^{D\,d\rho_d/(1-d\rho_d)}.
+\]</span>
+<p>Here <span class="math" data-tex="\(N\leq2^D\)">\(N\leq2^D\)</span>, by <span class="math" data-tex="\(r+1\leq2^r\)">\(r+1\leq2^r\)</span> for each positive integer <span class="math" data-tex="\(r\)">\(r\)</span>. Taking
+<span class="math" data-tex="\(C_\alpha=(4B)^{\max\{1,d\rho_d/(1-d\rho_d)\}}\)">\(C_\alpha=(4B)^{\max\{1,d\rho_d/(1-d\rho_d)\}}\)</span>
+proves the height bound. All Taylor coefficients of weight at most <span class="math" data-tex="\(m(1-\varepsilon)/2\)">\(m(1-\varepsilon)/2\)</span> have been set to zero, and the polynomial is nonzero, so its index is strictly larger. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The range <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span> is the useful one. For <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span> the demanded lower bound is negative and the constant polynomial already suffices. At <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span>, the non-strict bound <span class="math" data-tex="\(\operatorname{ind}\geq0\)">\(\operatorname{ind}\geq0\)</span> is automatic; a strict positive index for all allowed degrees would be false, as a one-variable linear polynomial cannot vanish at a quadratic irrational. Roth's proof uses only the displayed useful range.</p>
+<p>This construction does not yet distinguish algebraic points from good rational approximations. That distinction is the next lesson's task: an integer polynomial of this height cannot have large index at rational points when its variable degrees and their denominators are chosen in the required order.</p>
+<h2 id="7-apply-the-exponent-to-integer-equations">7. Apply the exponent to integer equations</h2>
+<p>A binary form is a homogeneous polynomial <span class="math" data-tex="\(F(X,Y)\)">\(F(X,Y)\)</span>. Irreducibility in this section means irreducibility over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<h3 id="proposition-10-2-finiteness-of-a-thue-equation">Proposition 10.2. Finiteness of a Thue equation</h3>
+<p>Let <span class="math" data-tex="\(F\in\mathbb Z[X,Y]\)">\(F\in\mathbb Z[X,Y]\)</span> be an irreducible binary form of degree <span class="math" data-tex="\(d\geq3\)">\(d\geq3\)</span>, and fix <span class="math" data-tex="\(b\in\mathbb Z\)">\(b\in\mathbb Z\)</span>. The equation</p>
+<span class="math math-display" data-tex="\[
+F(x,y)=b
+\tag{10.2}
+\]">\[
+F(x,y)=b
+\tag{10.2}
+\]</span>
+<p>has only finitely many integer solutions. The proof uses Roth's theorem, proved in Theorem 12.1.</p>
+<p><strong>Proof.</strong> The polynomial <span class="math" data-tex="\(f(T)=F(T,1)\)">\(f(T)=F(T,1)\)</span> has degree <span class="math" data-tex="\(d\)">\(d\)</span>, is irreducible and has distinct roots: its leading coefficient <span class="math" data-tex="\(F(1,0)\)">\(F(1,0)\)</span> is nonzero, since otherwise <span class="math" data-tex="\(Y\)">\(Y\)</span> would divide <span class="math" data-tex="\(F\)">\(F\)</span>; its derivative cannot share a factor with it in characteristic zero.</p>
+<p>If <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, a solution with <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> would make <span class="math" data-tex="\(x/y\)">\(x/y\)</span> a rational root of <span class="math" data-tex="\(f\)">\(f\)</span>, impossible. A solution with <span class="math" data-tex="\(y=0\)">\(y=0\)</span> has <span class="math" data-tex="\(F(1,0)x^d=0\)">\(F(1,0)x^d=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Suppose henceforth that <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>. For bounded <span class="math" data-tex="\(y\)">\(y\)</span>, the nonconstant polynomial <span class="math" data-tex="\(F(X,y)-b\)">\(F(X,y)-b\)</span> has finitely many roots. It remains to rule out solutions with <span class="math" data-tex="\(|y|\to\infty\)">\(|y|\to\infty\)</span>.</p>
+<p>Put <span class="math" data-tex="\(t=x/y\)">\(t=x/y\)</span>. We have <span class="math" data-tex="\(f(t)=b/y^d\to0\)">\(f(t)=b/y^d\to0\)</span>. The real values of <span class="math" data-tex="\(t\)">\(t\)</span> stay in a bounded interval, because <span class="math" data-tex="\(|f(t)|\to\infty\)">\(|f(t)|\to\infty\)</span> as <span class="math" data-tex="\(|t|\to\infty\)">\(|t|\to\infty\)</span>. Outside fixed disjoint small neighbourhoods of the real roots, <span class="math" data-tex="\(|f|\)">\(|f|\)</span> has a positive minimum on that interval. Thus every sufficiently large solution is near some real root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The other root factors are bounded away from zero in its neighbourhood, giving</p>
+<span class="math math-display" data-tex="\[
+|t-\alpha|\leq C|y|^{-d}.
+\tag{10.3}
+\]">\[
+|t-\alpha|\leq C|y|^{-d}.
+\tag{10.3}
+\]</span>
+<p>There are finitely many roots, so <span class="math" data-tex="\(C\)">\(C\)</span> can be chosen uniformly. Write <span class="math" data-tex="\(x/y=p/q\)">\(x/y=p/q\)</span> in reduced form, with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, and let <span class="math" data-tex="\(g=\gcd(|x|,|y|)\)">\(g=\gcd(|x|,|y|)\)</span>. Homogeneity gives <span class="math" data-tex="\(g^d\mid b\)">\(g^d\mid b\)</span>, so <span class="math" data-tex="\(g\)">\(g\)</span> is bounded and <span class="math" data-tex="\(q=|y|/g\to\infty\)">\(q=|y|/g\to\infty\)</span>. Equation (10.3) implies <span class="math" data-tex="\(|\alpha-p/q|\leq Cq^{-d}\)">\(|\alpha-p/q|\leq Cq^{-d}\)</span>. Choose <span class="math" data-tex="\(0&lt;\delta&lt;d-2\)">\(0&lt;\delta&lt;d-2\)</span>. For large <span class="math" data-tex="\(q\)">\(q\)</span>, this is smaller than <span class="math" data-tex="\(q^{-2-\delta}\)">\(q^{-2-\delta}\)</span>, contradicting Roth's theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,</p>
+<span class="math math-display" data-tex="\[
+x^3-2y^3=(x-\sqrt[3]2\,y)
+(x^2+\sqrt[3]2\,xy+\sqrt[3]4\,y^2).
+\]">\[
+x^3-2y^3=(x-\sqrt[3]2\,y)
+(x^2+\sqrt[3]2\,xy+\sqrt[3]4\,y^2).
+\]</span>
+<p>For <span class="math" data-tex="\(x/y\)">\(x/y\)</span> near <span class="math" data-tex="\(\sqrt[3]2\)">\(\sqrt[3]2\)</span>, the second factor is bounded above and below by positive multiples of <span class="math" data-tex="\(y^2\)">\(y^2\)</span>. A fixed nonzero right-hand side therefore forces an approximation of order <span class="math" data-tex="\(|y|^{-3}\)">\(|y|^{-3}\)</span>. Liouville's lower bound also has exponent three; two bounds with the same exponent do not force a contradiction. Roth's exponent below three does.</p>
+<p>Irreducibility matters. The form <span class="math" data-tex="\(X^3+Y^3=(X+Y)(X^2-XY+Y^2)\)">\(X^3+Y^3=(X+Y)(X^2-XY+Y^2)\)</span> is reducible, and <span class="math" data-tex="\(x^3+y^3=0\)">\(x^3+y^3=0\)</span> has all the solutions <span class="math" data-tex="\((x,-x)\)">\((x,-x)\)</span>. For a nonzero right-hand side it still has finitely many solutions, by its factorization, as an exercise below shows.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li>
+<p><strong>Medium — audit the budget.</strong> On <span class="math" data-tex="\(\{0,1\}^4\)">\(\{0,1\}^4\)</span>, count the conditions of weight at most one. Then derive (10.9)–(10.10) by finite sums and reflection, and distinguish the thresholds <span class="math" data-tex="\(m\ge d/\varepsilon^2\)">\(m\ge d/\varepsilon^2\)</span> and <span class="math" data-tex="\(m\ge d/(2\varepsilon^2)\)">\(m\ge d/(2\varepsilon^2)\)</span>. Why is the strict uniform gap of Lemma 10.6 needed for the latter?</p>
+</li>
+<li>
+<p><strong>Medium — read and change an index.</strong> Prove all three rules (10.7) from Taylor expansions. Compute the index of <span class="math" data-tex="\((X_1-1)^2+(X_2-2)^3\)">\((X_1-1)^2+(X_2-2)^3\)</span> at <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> with weights <span class="math" data-tex="\((2,3)\)">\((2,3)\)</span>, and compare the weighted calculations for <span class="math" data-tex="\((X-Y)^2\)">\((X-Y)^2\)</span> above.</p>
+</li>
+<li>
+<p><strong>Medium — normalize an approximation.</strong> Show that proving (10.1) for algebraic integers <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(|\beta|&lt;1\)">\(|\beta|&lt;1\)</span> proves it for every real irrational algebraic <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Give the fractional linear transformation, track reduced denominators, and show why simply taking the reciprocal of an algebraic integer is insufficient.</p>
+</li>
+<li>
+<p><strong>Medium — distinguish two cubic mechanisms.</strong> (a) Explain why Liouville's theorem and the factorization of <span class="math" data-tex="\(x^3-2y^3=b\)">\(x^3-2y^3=b\)</span> do not alone give finiteness. (b) Prove finiteness of <span class="math" data-tex="\(x^3+y^3=b\)">\(x^3+y^3=b\)</span> for <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, describe <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and identify why the Thue proposition does not cover the second form.</p>
+</li>
+<li>
+<p><strong>Hard — reduce one field equation.</strong> For <span class="math" data-tex="\(\alpha=\sqrt2\)">\(\alpha=\sqrt2\)</span> and <span class="math" data-tex="\(P=c_{00}+c_{10}X+c_{01}Y+c_{11}XY\)">\(P=c_{00}+c_{10}X+c_{01}Y+c_{11}XY\)</span>, compute every integer solution of <span class="math" data-tex="\(P(\alpha,\alpha)=0\)">\(P(\alpha,\alpha)=0\)</span>. Show that each nonzero such polynomial has index exactly one with weights <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. Why can this two-variable example not produce the index near <span class="math" data-tex="\(m/2\)">\(m/2\)</span> with an arbitrarily small relative loss required for Roth's argument in all degrees?</p>
+</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<ol>
+<li>
+<p>The grid has one term of weight zero and four of weight one, so five of its sixteen entries are conditions. The identities <span class="math" data-tex="\(\sum_{i=0}^r i=r(r+1)/2\)">\(\sum_{i=0}^r i=r(r+1)/2\)</span> and <span class="math" data-tex="\(\sum_{i=0}^r i^2=r(r+1)(2r+1)/6\)">\(\sum_{i=0}^r i^2=r(r+1)(2r+1)/6\)</span> give the mean <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and variance <span class="math" data-tex="\((r+2)/(12r)\)">\((r+2)/(12r)\)</span>. For independent grid coordinates, summing the squared centered sum cancels its mixed terms, yielding variance at most <span class="math" data-tex="\(m/4\)">\(m/4\)</span>. Reflection <span class="math" data-tex="\(i_j\mapsto d_j-i_j\)">\(i_j\mapsto d_j-i_j\)</span> exchanges the two tails at distance <span class="math" data-tex="\(a=\varepsilon m/2&gt;0\)">\(a=\varepsilon m/2&gt;0\)</span>; they are disjoint and have equal size. Each tail therefore has probability at most half of <span class="math" data-tex="\((m/4)/a^2=1/(m\varepsilon^2)\)">\((m/4)/a^2=1/(m\varepsilon^2)\)</span>. This is (10.10). If <span class="math" data-tex="\(m\geq d/\varepsilon^2\)">\(m\geq d/\varepsilon^2\)</span>, it gives <span class="math" data-tex="\(1/(2d)\)">\(1/(2d)\)</span>; at the smaller threshold it gives only <span class="math" data-tex="\(1/d\)">\(1/d\)</span>. For instance <span class="math" data-tex="\(d=2,m=4,\varepsilon=1/2\)">\(d=2,m=4,\varepsilon=1/2\)</span>, with every grid size one, has five of sixteen points in the lower tail <span class="math" data-tex="\(\sum i_j\leq1\)">\(\sum i_j\leq1\)</span>, more than <span class="math" data-tex="\(1/(2d)=1/4\)">\(1/(2d)=1/4\)</span>. Lemma 10.6 establishes the strict gap below <span class="math" data-tex="\(1/d\)">\(1/d\)</span> needed at that threshold, rather than claiming the false stronger count. The strict bound <span class="math" data-tex="\(d\rho_d&lt;1\)">\(d\rho_d&lt;1\)</span> leaves a positive proportion of free coefficients, so the Siegel exponent <span class="math" data-tex="\(dM/(N-dM)\)">\(dM/(N-dM)\)</span> remains bounded independently of all variable degrees. A non-strict count <span class="math" data-tex="\(dM\le N\)">\(dM\le N\)</span> would allow a square full-rank system.</p>
+</li>
+<li>
+<p>For differentiation, a surviving Taylor monomial loses exactly <span class="math" data-tex="\(\sum i_j/d_j\)">\(\sum i_j/d_j\)</span> in weight. For a sum, no new coefficient below either least weight can appear. For a product, its least-weight part is the product of the two least-weight parts, which is nonzero in the polynomial ring; possible cancellation within higher-weight terms cannot affect it. In the requested example the Taylor terms have weights <span class="math" data-tex="\(2/2=1\)">\(2/2=1\)</span> and <span class="math" data-tex="\(3/3=1\)">\(3/3=1\)</span>, so the index is one, including when their least-weight sum has two monomials. For <span class="math" data-tex="\((X-Y)^2\)">\((X-Y)^2\)</span>, the three weights are <span class="math" data-tex="\(1/2,3/4,1\)">\(1/2,3/4,1\)</span> with <span class="math" data-tex="\((4,2)\)">\((4,2)\)</span>, and all one with <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>. The changed weights change the index while the polynomial and ordinary multiplicity stay fixed.</p>
+</li>
+<li>
+<p>Choose an integer <span class="math" data-tex="\(k\)">\(k\)</span> such that <span class="math" data-tex="\(\alpha-k&gt;1\)">\(\alpha-k&gt;1\)</span>. If <span class="math" data-tex="\(a_dT^d+\cdots+a_0\)">\(a_dT^d+\cdots+a_0\)</span> is its primitive minimal polynomial, <span class="math" data-tex="\(A\alpha\)">\(A\alpha\)</span> is an algebraic integer for a positive integer <span class="math" data-tex="\(A\)">\(A\)</span>, for example <span class="math" data-tex="\(A=|a_d|\)">\(A=|a_d|\)</span>, by substituting into a monic equation. The same applies to <span class="math" data-tex="\(A(\alpha-k)\)">\(A(\alpha-k)\)</span>. The reciprocal need not be integral; instead first let <span class="math" data-tex="\(\gamma=1/(\alpha-k)\)">\(\gamma=1/(\alpha-k)\)</span>, which lies in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and choose a positive integer <span class="math" data-tex="\(A\)">\(A\)</span> making <span class="math" data-tex="\(A\gamma\)">\(A\gamma\)</span> integral. Finally put <span class="math" data-tex="\(\beta=A\gamma-\lfloor A\gamma\rfloor\)">\(\beta=A\gamma-\lfloor A\gamma\rfloor\)</span>, an irrational algebraic integer in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. This is a fixed fractional linear transformation <span class="math" data-tex="\(\beta=(u\alpha+v)/(w\alpha+z)\)">\(\beta=(u\alpha+v)/(w\alpha+z)\)</span> with integer coefficients and nonzero determinant.</p>
+<p>Apply the same transformation to a reduced <span class="math" data-tex="\(p/q\)">\(p/q\)</span> near <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Its image is rational with unreduced denominator <span class="math" data-tex="\(wp+zq\)">\(wp+zq\)</span>, hence reduced denominator <span class="math" data-tex="\(Q\leq Cq\)">\(Q\leq Cq\)</span>. Its error from <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is at most <span class="math" data-tex="\(C&#x27;|\alpha-p/q|\)">\(C&#x27;|\alpha-p/q|\)</span>, by the exact subtraction formula and a denominator bounded away from zero in a neighbourhood of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Infinitely many distinct <span class="math" data-tex="\(p/q\)">\(p/q\)</span> give distinct images, and their <span class="math" data-tex="\(Q\)">\(Q\)</span> tend to infinity; otherwise finitely many rationals in a bounded interval would be available. If the original errors are <span class="math" data-tex="\(&lt;q^{-2-\delta}\)">\(&lt;q^{-2-\delta}\)</span>, their image errors are <span class="math" data-tex="\(&lt;C&#x27;&#x27;Q^{-2-\delta}\)">\(&lt;C&#x27;&#x27;Q^{-2-\delta}\)</span>, hence <span class="math" data-tex="\(&lt;Q^{-2-\delta/2}\)">\(&lt;Q^{-2-\delta/2}\)</span> for large <span class="math" data-tex="\(Q\)">\(Q\)</span>. This contradicts the restricted Roth theorem. A nonreduced or bounded original denominator cannot give infinitely many approximations in a bounded interval. For example, <span class="math" data-tex="\(2\)">\(2\)</span> is an algebraic integer but <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is not; the integrality step after taking the reciprocal is essential.</p>
+</li>
+<li>
+<p>(a) The fixed equation makes <span class="math" data-tex="\(|\sqrt[3]2-x/y|\leq C|y|^{-3}\)">\(|\sqrt[3]2-x/y|\leq C|y|^{-3}\)</span>. Liouville gives <span class="math" data-tex="\(|\sqrt[3]2-x/y|\geq c q^{-3}\)">\(|\sqrt[3]2-x/y|\geq c q^{-3}\)</span>, where <span class="math" data-tex="\(q\)">\(q\)</span> is the reduced denominator. In a fixed nonzero equation the common divisor of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> is bounded, so these are bounds at the same exponent. They are compatible when <span class="math" data-tex="\(c\leq C\)">\(c\leq C\)</span>. One needs an exponent strictly smaller than three to contradict the upper bound for all large denominators; the degree-three instance of Roth provides it.</p>
+<p>(b) Let <span class="math" data-tex="\(s=x+y\)">\(s=x+y\)</span>. The factorization gives <span class="math" data-tex="\(s\mid b\)">\(s\mid b\)</span>, so <span class="math" data-tex="\(s\)">\(s\)</span> has finitely many possible nonzero values. For each one, <span class="math" data-tex="\(y=s-x\)">\(y=s-x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+x^2-xy+y^2=3x^2-3sx+s^2=b/s.
+\]">\[
+x^2-xy+y^2=3x^2-3sx+s^2=b/s.
+\]</span>
+<p>This nonconstant quadratic has at most two integer roots <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(y\)">\(y\)</span> is then fixed. For <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, every <span class="math" data-tex="\((x,-x)\)">\((x,-x)\)</span> is a solution; the positive definite second factor has no further nonzero zeros. The form is reducible, so the irreducibility hypothesis of Proposition 10.2 is absent. Finiteness with nonzero <span class="math" data-tex="\(b\)">\(b\)</span> here comes from its particular factorization.</p>
+</li>
+<li>
+<p>Independence of <span class="math" data-tex="\(1,\sqrt2\)">\(1,\sqrt2\)</span> gives <span class="math" data-tex="\(c_{00}=-2c_{11}\)">\(c_{00}=-2c_{11}\)</span> and <span class="math" data-tex="\(c_{01}=-c_{10}\)">\(c_{01}=-c_{10}\)</span>. Thus <span class="math" data-tex="\(P=a(XY-2)+b(X-Y)\)">\(P=a(XY-2)+b(X-Y)\)</span>, with arbitrary integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, not both zero. Its linear Taylor coefficients at <span class="math" data-tex="\((\alpha,\alpha)\)">\((\alpha,\alpha)\)</span> are <span class="math" data-tex="\(a\alpha+b\)">\(a\alpha+b\)</span> and <span class="math" data-tex="\(a\alpha-b\)">\(a\alpha-b\)</span>. They cannot both vanish unless <span class="math" data-tex="\(a=b=0\)">\(a=b=0\)</span>. The constant coefficient is zero and a linear coefficient survives, giving index one. This example concerns one quadratic point and fixed small degrees; it gives neither a uniform construction for all algebraic degrees nor the many-variable concentration and degree-uniform height control of Theorem 10.7. Those are exactly the extra claims needed in the full approximation proof.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Shivani Goel, Rashi Lunia and Anwesh Ray, <a href="https://arxiv.org/abs/2502.00731v2"><em>Diophantine approximation and the subspace theorem</em></a>, arXiv:2502.00731v2: §2.3 for Siegel's lemma, §2.4 for the index and its rules, Lemma 3.5 for the count of exponent vectors, and Lemmas 3.6–3.8 for the auxiliary polynomial and its index. K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §§15–16: the auxiliary polynomial of Roth's proof, its index at nearby points and the counting argument.</li>
+<li>M. Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours4.pdf"><em>Diophantine approximation, irrationality and transcendence</em></a>, IMPA course notes, Course 4 (2010), §4.1.3, Theorems 42–46: the historical approximation exponents of Thue, Siegel, Dyson and Gel'fond, and Roth. The internal Roth proof supplies the weaker historical finiteness assertions as consequences.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-6.pdf"><em>Diophantine Approximation</em>, Chapter 6: Approximation of algebraic numbers by rationals</a>, Leiden course notes, Theorems 6.2–6.3 and Corollary 6.4: Roth's theorem, lower bounds for squarefree binary forms and the finiteness of Thue equations, with the condition on distinct roots in their consequences.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-07.html">← The Schneider–Lang criterion</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-11.html">Wronskians and Roth&#x27;s rational-point lemma →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-10.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Free tensor words and ordered algebra encoding</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="free-tensor-words-and-ordered-algebra-encoding">Free tensor words and ordered algebra encoding</h1>
+<p>A list remembers the order of its entries. Tensor coherence lets us change its parentheses while preserving that order. Order-preserving maps then encode multiplication by merging consecutive entries, and encode a unit by inserting an empty block. These are different universal constructions: free tensor words have only componentwise maps, whereas the category of finite ordinals also has merges and insertions.</p>
+<p>We use categories and functor categories in fixed suitable universes. A tensor category here may have no unit. A unit, when needed, has the constraints established in <a href="tensor-duality-and-coherent-inverses.html">Tensor duality and coherent inverses</a>. All algebra morphisms preserve both multiplication and unit.</p>
+<h2 id="1-tensor-structures-without-a-unit">1. Tensor structures without a unit</h2>
+<p>A <strong>semigroupal category</strong> is a category <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, a bifunctor <span class="math" data-tex="\(\otimes\)">\(\otimes\)</span>, and a natural isomorphism
+<span class="math math-display" data-tex="\[
+a_{X,Y,Z}:(X\otimes Y)\otimes Z
+\longrightarrow X\otimes(Y\otimes Z)
+\]">\[
+a_{X,Y,Z}:(X\otimes Y)\otimes Z
+\longrightarrow X\otimes(Y\otimes Z)
+\]</span>
+satisfying the pentagon. More explicitly, its two maps from <span class="math" data-tex="\(((XY)Z)W\)">\(((XY)Z)W\)</span> to <span class="math" data-tex="\(X(Y(ZW))\)">\(X(Y(ZW))\)</span> obey
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{X,Y,ZW}\,a_{XY,Z,W}\\
+{}=(1_X\otimes a_{Y,Z,W})\\
+{}\circ a_{X,YZ,W}\\
+{}\circ(a_{X,Y,Z}\otimes1_W).
+\end{gathered}\tag{1.1}
+\]">\[
+\begin{gathered}
+a_{X,Y,ZW}\,a_{XY,Z,W}\\
+{}=(1_X\otimes a_{Y,Z,W})\\
+{}\circ a_{X,YZ,W}\\
+{}\circ(a_{X,Y,Z}\otimes1_W).
+\end{gathered}\tag{1.1}
+\]</span>
+Juxtaposition denotes tensor product; composition is read from right to left. A monoidal category adds a unit and its coherent constraints. Keeping these notions separate matters for free nonempty words.</p>
+<p>A <strong>strong tensor functor</strong> <span class="math" data-tex="\(F:\mathcal T\to\mathcal U\)">\(F:\mathcal T\to\mathcal U\)</span> in the semigroupal sense has natural isomorphisms
+<span class="math math-display" data-tex="\[
+\xi^F_{X,Y}:F(XY)\longrightarrow FX\otimes FY.
+\]">\[
+\xi^F_{X,Y}:F(XY)\longrightarrow FX\otimes FY.
+\]</span>
+Its associativity requirement is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(1_{FX}\otimes\xi^F_{Y,Z})\,\xi^F_{X,YZ}\\
+{}\circ F(a_{X,Y,Z})\\
+{}=a_{FX,FY,FZ}\,
+(\xi^F_{X,Y}\otimes1_{FZ})\\
+{}\circ\xi^F_{XY,Z}.
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+(1_{FX}\otimes\xi^F_{Y,Z})\,\xi^F_{X,YZ}\\
+{}\circ F(a_{X,Y,Z})\\
+{}=a_{FX,FY,FZ}\,
+(\xi^F_{X,Y}\otimes1_{FZ})\\
+{}\circ\xi^F_{XY,Z}.
+\end{gathered}\tag{1.2}
+\]</span>
+A tensor transformation <span class="math" data-tex="\(\theta:F\to G\)">\(\theta:F\to G\)</span> is a natural transformation satisfying
+<span class="math math-display" data-tex="\[
+\xi^G_{X,Y}\,\theta_{XY}
+=(\theta_X\otimes\theta_Y)\,\xi^F_{X,Y}.
+\tag{1.3}
+\]">\[
+\xi^G_{X,Y}\,\theta_{XY}
+=(\theta_X\otimes\theta_Y)\,\xi^F_{X,Y}.
+\tag{1.3}
+\]</span>
+It need not be invertible. There is no unit condition in (1.3). When source and target have units, a <strong>unital</strong> functor has its coherent unit identification <span class="math" data-tex="\(s_F:F(I)\to I\)">\(s_F:F(I)\to I\)</span>; a <strong>unital tensor transformation</strong> additionally satisfies
+<span class="math math-display" data-tex="\[
+s_G\,\theta_I=s_F.\tag{1.4}
+\]">\[
+s_G\,\theta_I=s_F.\tag{1.4}
+\]</span>
+The standard monoidal definitions in <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">Etingof–Gelaki–Nikshych–Ostrik, §2.4</a> use the inverse comparison <span class="math" data-tex="\(J=\xi^{-1}\)">\(J=\xi^{-1}\)</span>. Their unit requirements cannot be inserted into the semigroupal definition. We will also distinguish (1.3) from (1.4) when classifying algebras.</p>
+<p>For a functor between categories with units, the source convention calls it unital when <span class="math" data-tex="\(F(I)\)">\(F(I)\)</span>, with multiplication <span class="math" data-tex="\(\rho_F=F(\rho)J_{I,I}\)">\(\rho_F=F(\rho)J_{I,I}\)</span>, is a unit. This gives the same coherent functor notion. Indeed put <span class="math" data-tex="\(d_X=F(l_X)J_{I,X}\)">\(d_X=F(l_X)J_{I,X}\)</span>. Functor associativity and the source left-unit equation give
+<span class="math math-display" data-tex="\[
+(1_{FI}\otimes d_X)\,a_{FI,FI,FX}
+=\rho_F\otimes1_{FX}.
+\]">\[
+(1_{FI}\otimes d_X)\,a_{FI,FI,FX}
+=\rho_F\otimes1_{FX}.
+\]</span>
+The canonical left constraint for the unit <span class="math" data-tex="\(FI\)">\(FI\)</span> satisfies this equation too. Since tensoring on the left with <span class="math" data-tex="\(FI\)">\(FI\)</span> is faithful, it uniquely determines <span class="math" data-tex="\(d_X\)">\(d_X\)</span>. Thus <span class="math" data-tex="\(d_X\)">\(d_X\)</span> is that constraint. Likewise <span class="math" data-tex="\(F(r_X)J_{X,I}\)">\(F(r_X)J_{X,I}\)</span> is the right constraint, by the source right-unit equation and faithfulness of tensoring on the right with <span class="math" data-tex="\(FI\)">\(FI\)</span>. The unique multiplication-compatible identification <span class="math" data-tex="\(s_F:FI\to I\)">\(s_F:FI\to I\)</span>, proved in the preceding lesson, transports these constraints to those of the target unit. Hence requiring coherent unit comparisons adds no object-level restriction to that source convention. It is the separate morphism condition (1.4) that excludes zero transformations.</p>
+<p>There are two ways to reverse a tensor structure. On <span class="math" data-tex="\(\mathcal T^{\mathrm{op}}\)">\(\mathcal T^{\mathrm{op}}\)</span>, keep <span class="math" data-tex="\(XY\)">\(XY\)</span> as the object product and use the opposite arrow corresponding to <span class="math" data-tex="\(a_{X,Y,Z}^{-1}\)">\(a_{X,Y,Z}^{-1}\)</span> as associator. Reversing all arrows in the original pentagon gives its pentagon. On <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> itself put <span class="math" data-tex="\(X\otimes_rY=YX\)">\(X\otimes_rY=YX\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a^r_{X,Y,Z}=a_{Z,Y,X}^{-1},\\
+Z(YX)\longrightarrow(ZY)X.
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+a^r_{X,Y,Z}=a_{Z,Y,X}^{-1},\\
+Z(YX)\longrightarrow(ZY)X.
+\end{gathered}
+\tag{1.5}
+\]</span>
+Its pentagon is the original pentagon on <span class="math" data-tex="\(W,Z,Y,X\)">\(W,Z,Y,X\)</span>, with both routes inverted. Thus neither construction requires a braiding.</p>
+<h2 id="2-free-nonempty-words-and-the-precise-uniqueness-statement">2. Free nonempty words and the precise uniqueness statement</h2>
+<p>For a category <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, define <span class="math" data-tex="\(\mathsf W^+(\mathcal I)\)">\(\mathsf W^+(\mathcal I)\)</span> to have objects the finite nonempty lists of objects of <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>. Morphisms between two lists of length <span class="math" data-tex="\(n\)">\(n\)</span> are <span class="math" data-tex="\(n\)">\(n\)</span>-tuples of component morphisms; there are no morphisms between different lengths. Composition and identities are componentwise. Concatenation on objects and morphisms is strictly associative, so
+<span class="math math-display" data-tex="\[
+\mathsf W^+(\mathcal I)
+=\coprod_{n\geq1}\mathcal I^n
+\]">\[
+\mathsf W^+(\mathcal I)
+=\coprod_{n\geq1}\mathcal I^n
+\]</span>
+is semigroupal. The inclusion <span class="math" data-tex="\(i:\mathcal I\to\mathsf W^+(\mathcal I)\)">\(i:\mathcal I\to\mathsf W^+(\mathcal I)\)</span> sends an object to its one-letter word.</p>
+<p>No unit exists. If a unit word had length <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, tensoring it with a one-letter word could not be isomorphic to that word, since the lengths would be <span class="math" data-tex="\(r+1\)">\(r+1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> is empty there are no words and hence no possible unit.</p>
+<p>We use the pinned open coherence proof explained in <a href="tensor-actions-and-absolute-algebra-presentations.html#1-the-action-of-the-unit-detects-unitality">Tensor actions and absolute algebra presentations, §1</a>; compare <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">EGNO, Theorem 2.9.2</a>. Here is its interface for a category without a unit. Adjoin a new object <span class="math" data-tex="\(e\)">\(e\)</span>, with only its identity morphism, no morphisms to or from the old objects, and set <span class="math" data-tex="\(eX=Xe=X\)">\(eX=Xe=X\)</span>, including on morphisms. An associator with an <span class="math" data-tex="\(e\)">\(e\)</span> input is the identity; otherwise it is the old associator. A pentagon with no <span class="math" data-tex="\(e\)">\(e\)</span> is the old pentagon. With an <span class="math" data-tex="\(e\)">\(e\)</span> input, erase that input: both paths are the same three-object associator, or identities if fewer than three old objects remain. The unit constraints are identities. This produces a monoidal category containing <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> fully faithfully. Canonical coherence therefore applies to every nonempty ordered word in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, without assuming that <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> already has a unit.</p>
+<p><strong>Proposition 2.1.</strong> Restriction to letters is an equivalence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{TensorFun}
+(\mathsf W^+(\mathcal I),\mathcal T)\\
+\simeq\operatorname{Fun}(\mathcal I,\mathcal T),
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{TensorFun}
+(\mathsf W^+(\mathcal I),\mathcal T)\\
+\simeq\operatorname{Fun}(\mathcal I,\mathcal T),
+\end{gathered}
+\tag{2.1}
+\]</span>
+where the morphisms on the left are all transformations satisfying (1.3).</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\varphi:\mathcal I\to\mathcal T\)">\(\varphi:\mathcal I\to\mathcal T\)</span>, evaluate a word by its left-associated product:
+<span class="math math-display" data-tex="\[
+E_\varphi(x_1,\ldots,x_n)
+=((\varphi x_1\otimes\varphi x_2)
+\otimes\cdots)\otimes\varphi x_n.
+\]">\[
+E_\varphi(x_1,\ldots,x_n)
+=((\varphi x_1\otimes\varphi x_2)
+\otimes\cdots)\otimes\varphi x_n.
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> this means <span class="math" data-tex="\(\varphi x_1\)">\(\varphi x_1\)</span>. Apply the same iterated tensor bifunctor to component morphisms. Bifunctoriality proves preservation of identities and composition. The comparison
+<span class="math math-display" data-tex="\[
+E_\varphi(uv)\longrightarrow
+E_\varphi(u)\otimes E_\varphi(v)
+\tag{2.2}
+\]">\[
+E_\varphi(uv)\longrightarrow
+E_\varphi(u)\otimes E_\varphi(v)
+\tag{2.2}
+\]</span>
+is the canonical reassociation of the same ordered factors. It is the identity when <span class="math" data-tex="\(v\)">\(v\)</span> has length one; for longer <span class="math" data-tex="\(v\)">\(v\)</span>, first split off its last letter, apply the preceding comparison tensored with that letter, and then apply the associator. Naturality follows from naturality of the associator. Both routes in (1.2) are canonical reassociations of one ordered word, so coherence proves the tensor-functor equation. Restriction of <span class="math" data-tex="\(E_\varphi\)">\(E_\varphi\)</span> is exactly <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p>For any strong tensor functor <span class="math" data-tex="\(F\)">\(F\)</span> on words, put <span class="math" data-tex="\(F_1=Fi\)">\(F_1=Fi\)</span>. Repeatedly split off the last letter using <span class="math" data-tex="\(\xi^F\)">\(\xi^F\)</span>. This gives a natural isomorphism
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c^F_w:F(w)\longrightarrow E_{F_1}(w),\\
+c^F_{(x)}=1_{F(x)}.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+c^F_w:F(w)\longrightarrow E_{F_1}(w),\\
+c^F_{(x)}=1_{F(x)}.
+\end{gathered}
+\tag{2.3}
+\]</span>
+It is a tensor isomorphism. To check this, split the right-hand word <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(uv\)">\(uv\)</span> one letter at a time. The length-one case is the definition of <span class="math" data-tex="\(c^F\)">\(c^F\)</span>. The next step is exactly (1.2) for <span class="math" data-tex="\(F\)">\(F\)</span>; induction gives compatibility with (2.2) for every <span class="math" data-tex="\(u,v\)">\(u,v\)</span>.</p>
+<p>Given a natural transformation <span class="math" data-tex="\(\eta:F_1\to G_1\)">\(\eta:F_1\to G_1\)</span>, its only possible tensor extension is
+<span class="math math-display" data-tex="\[
+\theta_w=(c^G_w)^{-1}
+\bigl(\eta_{x_1}\otimes\cdots\otimes\eta_{x_n}\bigr)c^F_w.
+\tag{2.4}
+\]">\[
+\theta_w=(c^G_w)^{-1}
+\bigl(\eta_{x_1}\otimes\cdots\otimes\eta_{x_n}\bigr)c^F_w.
+\tag{2.4}
+\]</span>
+Use left-associated products in the middle. This is natural on every tuple of morphisms, because <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and both <span class="math" data-tex="\(c\)">\(c\)</span>'s are natural. Naturality of reassociation makes the iterated tensor of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s commute with (2.2). Conjugating by the tensor isomorphisms <span class="math" data-tex="\(c^F,c^G\)">\(c^F,c^G\)</span> proves (1.3). Conversely, (1.3) forces (2.4), by induction on word length. Restriction is therefore full and faithful, and the construction <span class="math" data-tex="\(E_\varphi\)">\(E_\varphi\)</span> proves essential surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus an extension is unique up to a unique isomorphism <strong>compatible with a specified identification on letters</strong>. An unspecified extension may have automorphisms. Nor does coherence say that every isomorphism between two parenthesizations is the same: it says that the canonical composites of associators are the same. Exercise 1 makes both qualifications visible.</p>
+<h2 id="3-examples-and-actions-at-their-exact-scope">3. Examples and actions at their exact scope</h2>
+<p>The standard examples in <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">EGNO, §2.3</a> and <a href="https://stacks.math.columbia.edu/tag/0FFJ">Stacks, monoidal categories</a> provide the following interfaces.</p>
+<ol>
+<li>For a commutative ring <span class="math" data-tex="\(k\)">\(k\)</span>, all <span class="math" data-tex="\(k\)">\(k\)</span>-modules with <span class="math" data-tex="\(\otimes_k\)">\(\otimes_k\)</span> form a monoidal category with unit <span class="math" data-tex="\(k\)">\(k\)</span>. No finite-generation or flatness assumption is needed for the ordinary tensor bifunctor or its associator.</li>
+<li>A monoid <span class="math" data-tex="\(M\)">\(M\)</span>, regarded as a discrete category, has tensor product its multiplication and unit its identity. A semigroup gives the corresponding example without a chosen unit.</li>
+<li>For a unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, the category of <span class="math" data-tex="\(k\)">\(k\)</span>-central <span class="math" data-tex="\(A\)">\(A\)</span>-bimodules, equivalently modules over <span class="math" data-tex="\(A\otimes_kA^{\mathrm{op}}\)">\(A\otimes_kA^{\mathrm{op}}\)</span>, is monoidal under <span class="math" data-tex="\(\otimes_A\)">\(\otimes_A\)</span>, with unit <span class="math" data-tex="\(A\)">\(A\)</span>. The balanced relation identifies the left and right <span class="math" data-tex="\(k\)">\(k\)</span>-actions on the tensor product, so it stays in this category. Reassociation sends <span class="math" data-tex="\((x\otimes y)\otimes z\)">\((x\otimes y)\otimes z\)</span> to <span class="math" data-tex="\(x\otimes(y\otimes z)\)">\(x\otimes(y\otimes z)\)</span>; the balanced relations respect this map and its reverse. Every pentagon route sends a fourfold elementary tensor to the same ordered tensor. Such tensors generate the iterated products, proving the equality. This also checks the module example by taking <span class="math" data-tex="\(A=k\)">\(A=k\)</span>.</li>
+<li>For any category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, <span class="math" data-tex="\(\operatorname{End}(\mathcal C)\)">\(\operatorname{End}(\mathcal C)\)</span> is strict monoidal under composition, with unit <span class="math" data-tex="\(1_{\mathcal C}\)">\(1_{\mathcal C}\)</span>. The tensor of natural transformations is horizontal composition; its functoriality is the interchange law.</li>
+<li>A category with finite products is monoidal under any chosen products, with its terminal object as unit. Each associator is the unique map preserving the three projections. Each pentagon route preserves all four projections, so product uniqueness proves coherence. The unit identities have the same proof with the projections involving the terminal object.</li>
+<li>A category with finite coproducts is monoidal under chosen coproducts, with its initial object as unit. Reverse the preceding argument: each route agrees after all summand inclusions, so coproduct uniqueness proves the pentagon and unit identities.</li>
+<li>For any group <span class="math" data-tex="\(G\)">\(G\)</span> and field <span class="math" data-tex="\(k\)">\(k\)</span>, all <span class="math" data-tex="\(k\)">\(k\)</span>-linear <span class="math" data-tex="\(G\)">\(G\)</span>-representations are monoidal under the diagonal action. On elementary tensors <span class="math" data-tex="\(g(v\otimes w)=gv\otimes gw\)">\(g(v\otimes w)=gv\otimes gw\)</span>; the group law and tensor relations make this an action. Reassociation is <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant on elementary tensors, and its pentagon is the module pentagon. The trivial representation <span class="math" data-tex="\(k\)">\(k\)</span> is the unit. Infinite-dimensional representations are included.</li>
+<li>The category <span class="math" data-tex="\(\mathsf W^+(\mathcal I)\)">\(\mathsf W^+(\mathcal I)\)</span> is the strict semigroupal example just constructed, including its absence of a unit.</li>
+<li>Bounded cohomological complexes of <span class="math" data-tex="\(k\)">\(k\)</span>-modules use ordinary total tensor product. Its degree <span class="math" data-tex="\(n\)">\(n\)</span> term is <span class="math" data-tex="\(\bigoplus_{p+q=n}A^p\otimes_kB^q\)">\(\bigoplus_{p+q=n}A^p\otimes_kB^q\)</span>, with differential <span class="math" data-tex="\(d(a\otimes b)=d(a)\otimes b+(-1)^p a\otimes d(b)\)">\(d(a\otimes b)=d(a)\otimes b+(-1)^p a\otimes d(b)\)</span>. We retain the ordinary chain associator and its three differential signs from <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/SH-02--SH02-PREREQ-PROOFS.html#sh02-prp-df-b">the published chain-level tensor-coherence interface</a>. Specialize its sheaf calculation to a one-point space with coefficient ring <span class="math" data-tex="\(k\)">\(k\)</span>. If the inputs occupy degrees <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> and <span class="math" data-tex="\([c,d]\)">\([c,d]\)</span>, their ordinary tensor occupies <span class="math" data-tex="\([a+c,b+d]\)">\([a+c,b+d]\)</span>, so this restricts to bounded complexes. The unit is <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero. This example uses the ordinary complex category and ordinary tensor product.</li>
+</ol>
+<p>There are also two basic actions. The evaluation of endofunctors makes <span class="math" data-tex="\(\operatorname{End}(\mathcal C)\)">\(\operatorname{End}(\mathcal C)\)</span> act on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>: <span class="math" data-tex="\((F\circ G)(Z)=F(G(Z))\)">\((F\circ G)(Z)=F(G(Z))\)</span>, so its comparison is the identity. Every semigroupal <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> acts on itself by left tensoring. Send <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(X\otimes-\)">\(X\otimes-\)</span> and a morphism <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(f\otimes1\)">\(f\otimes1\)</span>. The comparison at <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(a_{X,Y,Z}\)">\(a_{X,Y,Z}\)</span>; its action equation is the pentagon (1.1). If <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> has a unit, <span class="math" data-tex="\(l_Z:IZ\to Z\)">\(l_Z:IZ\to Z\)</span> makes this action unital. This checks the two examples against the action convention of <a href="tensor-actions-and-absolute-algebra-presentations.html">Tensor actions and absolute algebra presentations</a>.</p>
+<h2 id="4-ordinal-sum-has-no-braiding">4. Ordinal sum has no braiding</h2>
+<p>Let <span class="math" data-tex="\(\mathsf O\)">\(\mathsf O\)</span> be the category of finite totally ordered sets, including the empty set, and order-preserving maps. Work first in its skeleton: write <span class="math" data-tex="\(\langle n\rangle=\{0,\ldots,n-1\}\)">\(\langle n\rangle=\{0,\ldots,n-1\}\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. The sum is <span class="math" data-tex="\(\langle p\rangle+\langle q\rangle=\langle p+q\rangle\)">\(\langle p\rangle+\langle q\rangle=\langle p+q\rangle\)</span>. For maps <span class="math" data-tex="\(f:\langle p\rangle\to\langle p&#x27;\rangle\)">\(f:\langle p\rangle\to\langle p&#x27;\rangle\)</span> and <span class="math" data-tex="\(g:\langle q\rangle\to\langle q&#x27;\rangle\)">\(g:\langle q\rangle\to\langle q&#x27;\rangle\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(f+g)(i)=f(i),\quad0\leq i&lt;p,\\
+(f+g)(p+j)=p&#x27;+g(j),\\
+0\leq j&lt;q.
+\end{gathered}\tag{4.1}
+\]">\[
+\begin{gathered}
+(f+g)(i)=f(i),\quad0\leq i&lt;p,\\
+(f+g)(p+j)=p&#x27;+g(j),\\
+0\leq j&lt;q.
+\end{gathered}\tag{4.1}
+\]</span>
+This preserves order. The formula proves both bifunctoriality and strict associativity by evaluating on each block. The empty ordinal is a strict unit. On all finite ordered sets use tagged disjoint union, with every element of the first block before the second. Reassociation preserves the ordered positions of all entries; its pentagon and units follow by the same position check. The unique increasing enumeration gives a strong monoidal equivalence with the skeleton.</p>
+<p>Although <span class="math" data-tex="\(\sigma+\tau\)">\(\sigma+\tau\)</span> and <span class="math" data-tex="\(\tau+\sigma\)">\(\tau+\sigma\)</span> have the same cardinality and a unique order isomorphism, those isomorphisms are not natural in <span class="math" data-tex="\(\sigma,\tau\)">\(\sigma,\tau\)</span>. Indeed take
+<span class="math math-display" data-tex="\[
+f:\langle1\rangle\to\langle2\rangle,\quad f(0)=0,
+\qquad g=1_{\langle1\rangle}.
+\]">\[
+f:\langle1\rangle\to\langle2\rangle,\quad f(0)=0,
+\qquad g=1_{\langle1\rangle}.
+\]</span>
+Every order isomorphism between two skeletal ordinals of the same size is the identity. Naturality of a proposed exchange would therefore require <span class="math" data-tex="\(f+g=g+f\)">\(f+g=g+f\)</span> as maps <span class="math" data-tex="\(\langle2\rangle\to\langle3\rangle\)">\(\langle2\rangle\to\langle3\rangle\)</span>. But
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(f+g)(1)&amp;=2,\\
+(g+f)(1)&amp;=1.
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+(f+g)(1)&amp;=2,\\
+(g+f)(1)&amp;=1.
+\end{aligned}
+\tag{4.2}
+\]</span>
+Thus ordinal sum admits no braiding at all. A braiding's components would necessarily be precisely these unique order isomorphisms, already ruled out by (4.2). This distinction agrees with <a href="https://tac.mta.ca/tac/volumes/30/50/30-50.pdf">Weber, §4.1</a>: finite ordinals with monotone maps classify arbitrary monoids; finite sets with all maps, a different category, classify commutative monoids.</p>
+<h2 id="5-the-canonical-algebra-classifier-and-its-morphisms">5. The canonical algebra classifier and its morphisms</h2>
+<p>An algebra object here means <span class="math" data-tex="\(A\in\mathcal T\)">\(A\in\mathcal T\)</span>, with <span class="math" data-tex="\(m:A\otimes A\to A\)">\(m:A\otimes A\to A\)</span> associative and <span class="math" data-tex="\(u:I\to A\)">\(u:I\to A\)</span> a two-sided unit. There is no requirement of additivity, a braiding, or commutative multiplication. Algebra morphisms <span class="math" data-tex="\(h:A\to B\)">\(h:A\to B\)</span> satisfy <span class="math" data-tex="\(hm_A=m_B(h\otimes h)\)">\(hm_A=m_B(h\otimes h)\)</span> and <span class="math" data-tex="\(hu_A=u_B\)">\(hu_A=u_B\)</span>.</p>
+<p>The full fibre construction below proves the canonical classifier discussed in <a href="https://tac.mta.ca/tac/volumes/30/50/30-50.pdf">Weber, §4.1 and Proposition 4.1.4</a>:
+<span class="math math-display" data-tex="\[
+\operatorname{Alg}(\mathcal T)
+\simeq
+\operatorname{MonFun}(\mathsf O,\mathcal T).
+\tag{5.1}
+\]">\[
+\operatorname{Alg}(\mathcal T)
+\simeq
+\operatorname{MonFun}(\mathsf O,\mathcal T).
+\tag{5.1}
+\]</span>
+Here <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is any monoidal category and the right side has strong unital functors and <strong>unital</strong> tensor transformations. The empty ordinal corresponds to the unit, and the one-element ordinal to the algebra. The following full fibre calculation checks the interface, including empty fibres and morphisms.</p>
+<p>Define <span class="math" data-tex="\(A^0=I\)">\(A^0=I\)</span>, <span class="math" data-tex="\(A^1=A\)">\(A^1=A\)</span>, and use left-associated products for higher powers. Put <span class="math" data-tex="\(m_0=u\)">\(m_0=u\)</span>, <span class="math" data-tex="\(m_1=1_A\)">\(m_1=1_A\)</span>, and recursively <span class="math" data-tex="\(m_{r+1}=m(m_r\otimes1_A)\)">\(m_{r+1}=m(m_r\otimes1_A)\)</span> for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>. If a block has consecutive subblocks of lengths <span class="math" data-tex="\(r_1,\ldots,r_s\)">\(r_1,\ldots,r_s\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m_s(m_{r_1}\otimes\cdots\otimes m_{r_s})\\
+{}=m_{r_1+\cdots+r_s}.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+m_s(m_{r_1}\otimes\cdots\otimes m_{r_s})\\
+{}=m_{r_1+\cdots+r_s}.
+\end{gathered}
+\tag{5.2}
+\]</span>
+The displayed sources use canonical reassociation and unit maps. For positive <span class="math" data-tex="\(r_i\)">\(r_i\)</span>, induction on the block lengths applies associativity to move each successive multiplication into the left-associated product. A zero <span class="math" data-tex="\(r_i\)">\(r_i\)</span> inserts <span class="math" data-tex="\(u\)">\(u\)</span>; a unit law removes it, leaving the same assertion with that subblock deleted. If all <span class="math" data-tex="\(r_i\)">\(r_i\)</span> vanish, successive applications of <span class="math" data-tex="\(m(u\otimes u)=u\)">\(m(u\otimes u)=u\)</span>, with the unit identification <span class="math" data-tex="\(I\otimes I\simeq I\)">\(I\otimes I\simeq I\)</span>, give (5.2). For <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, both sides mean <span class="math" data-tex="\(u\)">\(u\)</span>. Thus every case, including an empty block of empty subblocks, is covered.</p>
+<p>For a monotone map <span class="math" data-tex="\(f:\langle p\rangle\to\langle q\rangle\)">\(f:\langle p\rangle\to\langle q\rangle\)</span>, the fibres are consecutive, in output order. Write <span class="math" data-tex="\(r_j=|f^{-1}(j)|\)">\(r_j=|f^{-1}(j)|\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_A(\langle p\rangle)&amp;=A^p,\\
+F_A(f)&amp;=\bigotimes_{j=0}^{q-1}m_{r_j}.
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+F_A(\langle p\rangle)&amp;=A^p,\\
+F_A(f)&amp;=\bigotimes_{j=0}^{q-1}m_{r_j}.
+\end{aligned}
+\tag{5.3}
+\]</span>
+The source of the latter map is identified with the ordered product of its fibre blocks. If <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, such a map exists only when <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, and it is sent to <span class="math" data-tex="\(1_I\)">\(1_I\)</span>. Identity maps have singleton fibres, so give identity morphisms. For <span class="math" data-tex="\(g:\langle q\rangle\to\langle r\rangle\)">\(g:\langle q\rangle\to\langle r\rangle\)</span>, each fibre of <span class="math" data-tex="\(gf\)">\(gf\)</span> is the consecutive union of the fibres of <span class="math" data-tex="\(f\)">\(f\)</span> indexed by a fibre of <span class="math" data-tex="\(g\)">\(g\)</span>. Apply (5.2) in every output block: it says exactly <span class="math" data-tex="\(F_A(g)F_A(f)=F_A(gf)\)">\(F_A(g)F_A(f)=F_A(gf)\)</span>. Bifunctoriality of tensor combines the equalities between blocks. This proves functoriality.</p>
+<p>The canonical comparison <span class="math" data-tex="\(A^{p+q}\to A^p\otimes A^q\)">\(A^{p+q}\to A^p\otimes A^q\)</span> makes <span class="math" data-tex="\(F_A\)">\(F_A\)</span> strong unital. Both associativity routes are reassociations of the same ordered factors. Its naturality follows from the disjoint fibre blocks of <span class="math" data-tex="\(f+g\)">\(f+g\)</span>; empty blocks use the unit constraints. The unit comparison is <span class="math" data-tex="\(F_A(0)=I\)">\(F_A(0)=I\)</span>.</p>
+<p>Conversely, take a strong unital <span class="math" data-tex="\(F\)">\(F\)</span>, with <span class="math" data-tex="\(s_F:F(0)\to I\)">\(s_F:F(0)\to I\)</span>. Let <span class="math" data-tex="\(c_2:\langle2\rangle\to\langle1\rangle\)">\(c_2:\langle2\rangle\to\langle1\rangle\)</span> be the unique map and <span class="math" data-tex="\(c_0:\langle0\rangle\to\langle1\rangle\)">\(c_0:\langle0\rangle\to\langle1\rangle\)</span> the empty map. Set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=F(1),\\
+m&amp;=F(c_2)(\xi^F_{1,1})^{-1},\\
+u&amp;=F(c_0)s_F^{-1}.
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+A&amp;=F(1),\\
+m&amp;=F(c_2)(\xi^F_{1,1})^{-1},\\
+u&amp;=F(c_0)s_F^{-1}.
+\end{aligned}
+\tag{5.4}
+\]</span>
+The two consecutive ways of collapsing a three-element ordinal to one element are equal monotone maps. Applying <span class="math" data-tex="\(F\)">\(F\)</span> and (1.2) gives associativity of <span class="math" data-tex="\(m\)">\(m\)</span>. The maps <span class="math" data-tex="\(c_0+1\)">\(c_0+1\)</span> and <span class="math" data-tex="\(1+c_0\)">\(1+c_0\)</span>, followed by <span class="math" data-tex="\(c_2\)">\(c_2\)</span>, are the identity of the one-element ordinal. Applying <span class="math" data-tex="\(F\)">\(F\)</span>, its coherent unit comparison and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> gives the two unit laws.</p>
+<p>Iterate <span class="math" data-tex="\(\xi^F\)">\(\xi^F\)</span>, using <span class="math" data-tex="\(s_F\)">\(s_F\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>, to obtain natural tensor identifications <span class="math" data-tex="\(F(p)\simeq A^p\)">\(F(p)\simeq A^p\)</span>. Any monotone map is the ordinal sum of its fibre-collapse maps <span class="math" data-tex="\(c_{r_j}:\langle r_j\rangle\to\langle1\rangle\)">\(c_{r_j}:\langle r_j\rangle\to\langle1\rangle\)</span>. For <span class="math" data-tex="\(r_j&gt;1\)">\(r_j&gt;1\)</span>, successive binary collapses express <span class="math" data-tex="\(c_{r_j}\)">\(c_{r_j}\)</span>; <span class="math" data-tex="\(c_1\)">\(c_1\)</span> is the identity and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> supplies the unit. Functoriality and the strong comparisons therefore identify <span class="math" data-tex="\(F(f)\)">\(F(f)\)</span> with (5.3). The exceptional map to <span class="math" data-tex="\(0\)">\(0\)</span> is its identity. This proves that (5.4) and (5.3) recover each other up to a unital tensor isomorphism.</p>
+<p>For an algebra map <span class="math" data-tex="\(h:A\to B\)">\(h:A\to B\)</span>, its powers, with <span class="math" data-tex="\(h^0=1_I\)">\(h^0=1_I\)</span>, give a natural transformation <span class="math" data-tex="\(F_A\to F_B\)">\(F_A\to F_B\)</span>. The identities <span class="math" data-tex="\(hm_r=m_r(h^{\otimes r})\)">\(hm_r=m_r(h^{\otimes r})\)</span> follow by induction from the multiplication and unit conditions, proving naturality on every fibre. The powers also satisfy tensor compatibility and (1.4).</p>
+<p>Conversely, a unital tensor transformation is determined on positive ordinals by its component <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span>, using (1.3), and on <span class="math" data-tex="\(0\)">\(0\)</span> by (1.4). Naturality for <span class="math" data-tex="\(c_2\)">\(c_2\)</span> gives the multiplication condition; naturality for <span class="math" data-tex="\(c_0\)">\(c_0\)</span> gives the unit condition. The transformation is exactly the powers of <span class="math" data-tex="\(h\)">\(h\)</span> under the preceding identifications. This proves full faithfulness and completes the checked equivalence (5.1).</p>
+<p>The adjective “unital” on transformations is essential. In <span class="math" data-tex="\(\mathcal T=\operatorname{Mod}(k)\)">\(\mathcal T=\operatorname{Mod}(k)\)</span> for a nonzero commutative ring <span class="math" data-tex="\(k\)">\(k\)</span>, the transformation whose every component is zero is natural and satisfies (1.3) between any two strong unital functors. It fails (1.4). Thus evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> with those unrestricted transformations does not give the algebra-morphism classification. There is even no abstract equivalence between those two categories: every such functor has distinct zero and identity endomorphisms, because its value at <span class="math" data-tex="\(0\)">\(0\)</span> is isomorphic to <span class="math" data-tex="\(k\neq0\)">\(k\neq0\)</span>. The zero algebra is a valid unital algebra object and has only one endomorphism. An equivalence would preserve that endomorphism set. This supplies a categorical counterexample, beyond the failure of the proposed evaluation functor.</p>
+<h2 id="6-graded-exercises-with-complete-solutions">6. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> have one object and only its identity, and let its image be the line <span class="math" data-tex="\(k\)">\(k\)</span> over a field with an element <span class="math" data-tex="\(\lambda\in k^\times\setminus\{1\}\)">\(\lambda\in k^\times\setminus\{1\}\)</span>. Describe the free nonempty words and exhibit a nontrivial tensor automorphism of their evaluation functor. Explain why it does not contradict Proposition 2.1.</p>
+<p><strong>Solution.</strong> There is one word of each length <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and only identity morphisms. Concatenation adds lengths. Its evaluation is <span class="math" data-tex="\(k^{\otimes n}\)">\(k^{\otimes n}\)</span>. Multiply this vector space by <span class="math" data-tex="\(\lambda^n\)">\(\lambda^n\)</span>. These maps are invertible and natural; <span class="math" data-tex="\(\lambda^{p+q}=\lambda^p\lambda^q\)">\(\lambda^{p+q}=\lambda^p\lambda^q\)</span> gives (1.3), since reassociation commutes with scalar multiplication. At length one the map is multiplication by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, so it is nontrivial. Proposition 2.1 permits exactly the automorphisms of the one-letter image. If that component is required to be the identity, every power is the identity, recovering the qualified uniqueness.</p>
+<p><strong>Exercise 2 (moderate).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a unital, possibly noncommutative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra. Take <span class="math" data-tex="\(f:\langle4\rangle\to\langle3\rangle\)">\(f:\langle4\rangle\to\langle3\rangle\)</span> with values <span class="math" data-tex="\(0,0,2,2\)">\(0,0,2,2\)</span>, and <span class="math" data-tex="\(g:\langle3\rangle\to\langle2\rangle\)">\(g:\langle3\rangle\to\langle2\rangle\)</span> with values <span class="math" data-tex="\(0,1,1\)">\(0,1,1\)</span>. Compute <span class="math" data-tex="\(F_A(f)\)">\(F_A(f)\)</span>, <span class="math" data-tex="\(F_A(g)\)">\(F_A(g)\)</span> and <span class="math" data-tex="\(F_A(gf)\)">\(F_A(gf)\)</span> on elementary tensors, and verify composition.</p>
+<p><strong>Solution.</strong> The fibres of <span class="math" data-tex="\(f\)">\(f\)</span> have lengths <span class="math" data-tex="\(2,0,2\)">\(2,0,2\)</span>, so
+<span class="math math-display" data-tex="\[
+F_A(f)(a\otimes b\otimes c\otimes d)
+=ab\otimes1_A\otimes cd.
+\]">\[
+F_A(f)(a\otimes b\otimes c\otimes d)
+=ab\otimes1_A\otimes cd.
+\]</span>
+The fibres of <span class="math" data-tex="\(g\)">\(g\)</span> have lengths <span class="math" data-tex="\(1,2\)">\(1,2\)</span>, so <span class="math" data-tex="\(F_A(g)(x\otimes y\otimes z)=x\otimes yz\)">\(F_A(g)(x\otimes y\otimes z)=x\otimes yz\)</span>. Its value on the preceding tensor is <span class="math" data-tex="\(ab\otimes(1_Acd)=ab\otimes cd\)">\(ab\otimes(1_Acd)=ab\otimes cd\)</span>. The composite <span class="math" data-tex="\(gf\)">\(gf\)</span> has values <span class="math" data-tex="\(0,0,1,1\)">\(0,0,1,1\)</span>, giving precisely <span class="math" data-tex="\(F_A(gf)(a\otimes b\otimes c\otimes d)=ab\otimes cd\)">\(F_A(gf)(a\otimes b\otimes c\otimes d)=ab\otimes cd\)</span>. Elementary tensors generate, so equality holds as a linear map. No factors were exchanged and no commutativity was used. The empty fibre was necessary: omitting its unit would give the wrong codomain for <span class="math" data-tex="\(F_A(f)\)">\(F_A(f)\)</span>.</p>
+<p><strong>Exercise 3 (hard).</strong> For an algebra <span class="math" data-tex="\(A\)">\(A\)</span> over a field <span class="math" data-tex="\(k\)">\(k\)</span>, classify all tensor endomorphisms of <span class="math" data-tex="\(F_A\)">\(F_A\)</span> satisfying only (1.3), and identify those satisfying (1.4).</p>
+<p><strong>Solution.</strong> On the empty ordinal such an endomorphism is a scalar <span class="math" data-tex="\(t:k\to k\)">\(t:k\to k\)</span>. Tensor compatibility at <span class="math" data-tex="\(0+0\)">\(0+0\)</span> gives <span class="math" data-tex="\(t^2=t\)">\(t^2=t\)</span>. At <span class="math" data-tex="\(1\)">\(1\)</span> it is a linear map <span class="math" data-tex="\(h:A\to A\)">\(h:A\to A\)</span>; tensor compatibility at <span class="math" data-tex="\(0+1\)">\(0+1\)</span> gives <span class="math" data-tex="\(h=th\)">\(h=th\)</span>, and all positive components must be <span class="math" data-tex="\(h^{\otimes n}\)">\(h^{\otimes n}\)</span>. Naturality for <span class="math" data-tex="\(c_2\)">\(c_2\)</span> and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> gives
+<span class="math math-display" data-tex="\[
+hm=m(h\otimes h),\qquad hu=t\,u.
+\]">\[
+hm=m(h\otimes h),\qquad hu=t\,u.
+\]</span>
+Over a field an idempotent scalar is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, then <span class="math" data-tex="\(h=0\)">\(h=0\)</span> and every component is zero. If <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, the displayed conditions say exactly that <span class="math" data-tex="\(h\)">\(h\)</span> is a unital algebra endomorphism, and its powers give the transformation by §5. Those transformations and the all-zero transformation exhaust the possibilities: the fibre description verifies naturality for every map. Condition (1.4) requires <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, so retains precisely the unital algebra endomorphisms. For the zero algebra the positive components of its identity also vanish, but its empty component is <span class="math" data-tex="\(1_k\)">\(1_k\)</span>, distinguishing it from the unrestricted all-zero transformation.</p>
+<p><strong>Exercise 4 (expert).</strong> Prove that comonoids in any monoidal category <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> are classified by strong unital functors <span class="math" data-tex="\(\mathsf O^{\mathrm{op}}\to\mathcal T\)">\(\mathsf O^{\mathrm{op}}\to\mathcal T\)</span> and unital tensor transformations. State the functor on a reversed monotone map and prove its composition rule, including empty fibres.</p>
+<p><strong>Solution.</strong> A comonoid has <span class="math" data-tex="\(\delta:C\to C\otimes C\)">\(\delta:C\to C\otimes C\)</span> coassociative and <span class="math" data-tex="\(e:C\to I\)">\(e:C\to I\)</span> a counit. The opposite-category construction in §1 makes <span class="math" data-tex="\(\mathcal T^{\mathrm{op}}\)">\(\mathcal T^{\mathrm{op}}\)</span> monoidal with the same object product. A comonoid in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is exactly an algebra in <span class="math" data-tex="\(\mathcal T^{\mathrm{op}}\)">\(\mathcal T^{\mathrm{op}}\)</span>. Apply (5.1) there. A functor <span class="math" data-tex="\(\mathsf O\to\mathcal T^{\mathrm{op}}\)">\(\mathsf O\to\mathcal T^{\mathrm{op}}\)</span>, on taking opposites, is a functor <span class="math" data-tex="\(\mathsf O^{\mathrm{op}}\to\mathcal T\)">\(\mathsf O^{\mathrm{op}}\to\mathcal T\)</span>; its comparison reverses direction but remains invertible. Natural transformations reverse direction too. Consequently one must take the opposite of both classified categories; this restores the direction of comonoid morphisms.</p>
+<p>Explicitly, put <span class="math" data-tex="\(C^0=I\)">\(C^0=I\)</span>, <span class="math" data-tex="\(\delta_0=e\)">\(\delta_0=e\)</span>, <span class="math" data-tex="\(\delta_1=1_C\)">\(\delta_1=1_C\)</span>, and let <span class="math" data-tex="\(\delta_r:C\to C^r\)">\(\delta_r:C\to C^r\)</span> be iterated comultiplication. For <span class="math" data-tex="\(f:\langle p\rangle\to\langle q\rangle\)">\(f:\langle p\rangle\to\langle q\rangle\)</span> with fibre lengths <span class="math" data-tex="\(r_j\)">\(r_j\)</span>, send its opposite arrow to
+<span class="math math-display" data-tex="\[
+C^q\longrightarrow C^p,\qquad
+\bigotimes_{j=0}^{q-1}\delta_{r_j}.
+\]">\[
+C^q\longrightarrow C^p,\qquad
+\bigotimes_{j=0}^{q-1}\delta_{r_j}.
+\]</span>
+The outputs are reassociated in the original input order. A zero fibre applies the counit. For composable <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, each block of <span class="math" data-tex="\(gf\)">\(gf\)</span> is the consecutive union of the corresponding blocks of <span class="math" data-tex="\(f\)">\(f\)</span>. The reverse of (5.2), proved by coassociativity and the two counit laws, says that expanding first by a fibre of <span class="math" data-tex="\(g\)">\(g\)</span> and then by its fibres of <span class="math" data-tex="\(f\)">\(f\)</span> equals the single expansion by their union. It includes all-zero fibres by the counit law, and the empty target has only its identity. Tensoring these identities proves functoriality on the reversed composite. A comonoid map <span class="math" data-tex="\(h\)">\(h\)</span> has the powers <span class="math" data-tex="\(h^{\otimes n}\)">\(h^{\otimes n}\)</span> and identity component at <span class="math" data-tex="\(0\)">\(0\)</span>; conversely naturality at the reversed <span class="math" data-tex="\(c_2,c_0\)">\(c_2,c_0\)</span> forces preservation of <span class="math" data-tex="\(\delta,e\)">\(\delta,e\)</span>. This proves the asserted equivalence with the required morphism direction and unit condition.</p>
+<p>Original exposition and solutions are dedicated to CC0 1.0. References provide the canonical interfaces; their text is not reproduced. Self-checked; no independent review has occurred.</p>
+</main></body></html>

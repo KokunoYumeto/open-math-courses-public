@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Riemann-Helmholtz space problem · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-riemann-helmholtz-space-problem">The Riemann-Helmholtz space problem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>How much geometry can be recovered from the permitted motions? A distance function immediately supplies invariants of motions. The converse question is harder: which assumptions about motions force a metric, and which force its curvature to be constant? We prove a local answer, with the compactness hypothesis stated explicitly, and distinguish it from the historical formulations.</p>
+<p>Our actions are effective real-analytic local actions on real manifolds. A field means a germ when discussing a local algebra. The convention is <span class="math" data-tex="$[X,Y]=XY-YX$">$[X,Y]=XY-YX$</span>. We use the action, orbit and isotropy constructions proved in <a href="LIE-TG-08.html">Transitivity and primitivity</a>. Basic differential geometry is available from <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D50">Differential Geometry</a>. We give the curvature and normal-coordinate arguments needed for the space theorem, including its local uniqueness step.</p>
+<h2 id="1-what-the-historical-problem-asks">1. What the historical problem asks</h2>
+<p>Riemann starts with an infinitesimal length given by a positive quadratic form, now written <span class="math" data-tex="$ds^2=g_{ij}(x)dx^i dx^j$">$ds^2=g_{ij}(x)dx^i dx^j$</span>. Helmholtz instead asks what can be inferred from the movement of rigid configurations. Lie examines the transformations themselves. The opening of the fifth division of <em>Theorie der Transformationsgruppen</em> III, pp. 393–398, and Chapter 20, §85, pp. 399–410, set out this change of viewpoint.</p>
+<p>Helmholtz's four assumptions, quoted by Lie in Chapter 21, §91, pp. 438–440 (following the chapter introduction on pp. 437–438), have the following roles. The first gives an <span class="math" data-tex="$n$">$n$</span>-dimensional differentiable coordinate description and differentiable motions. The second describes rigidity through a relation between each pair of points, preserved by motions; it does not initially posit a Riemannian metric. The third requires free movement of rigid configurations subject to their pair relations. The fourth, usually called monodromy, asks that the one-parameter motion remaining after fixing <span class="math" data-tex="$n-1$">$n-1$</span> suitable points return to its initial configuration without reversing the motion. Precise regularity, independence and neighbourhood qualifications are part of the mathematical problem, rather than consequences of these informal words.</p>
+<p>Lie objects in particular to replacing a finite motion group by its first-order truncation and treating the resulting infinitesimal group as if it retained the original invariant and mobility properties. First-order terms need not retain that information. The critique in Chapter 21, §§91–96, and Merker's discussion in <em>Sophus Lie, Friedrich Engel et le problème de Riemann–Helmholtz</em>, §§2.4–2.6, concern that passage, not a denial that valid infinitesimal methods exist. Lessons 2–6 supply the hypotheses and integration arguments under which such methods work.</p>
+<p>The historical word “essential” needs care. Chapter 20 defines an invariant of a configuration as <em>essential</em> when it cannot be expressed through invariants of configurations with fewer points (p. 399). Thus “no essential invariant” for more than two points means generation by the pair invariants, not the absence of nonconstant or functionally independent invariants. This differs from the ordinary functional-independence usage in a compressed modern formulation. The complete introduction translated below states the pairwise-generation condition explicitly (pp. 397–398). Even three Euclidean points have three independent pair distances near a noncollinear configuration. To see independence, move the first point to zero, the second to <span class="math" data-tex="$(a,0,0)$">$(a,0,0)$</span>, and the third to <span class="math" data-tex="$(b,c,0)$">$(b,c,0)$</span>, where <span class="math" data-tex="$a,c&gt;0$">$a,c&gt;0$</span>. The squared distances are</p>
+<span class="math math-display" data-tex="$$
+a^2,\qquad b^2+c^2,\qquad (b-a)^2+c^2.
+\tag{1.1}
+$$">$$
+a^2,\qquad b^2+c^2,\qquad (b-a)^2+c^2.
+\tag{1.1}
+$$</span>
+<p>Their Jacobian with respect to <span class="math" data-tex="$(a,b,c)$">$(a,b,c)$</span> has determinant <span class="math" data-tex="$8a^2c\ne0$">$8a^2c\ne0$</span>. Thus they are local independent invariants. For <span class="math" data-tex="$m\ge3$">$m\ge3$</span> points in general position in three-dimensional Euclidean space, a motion fixing the configuration has zero infinitesimal stabilizer: fixing three noncollinear points fixes their spanning plane pointwise, and a skew matrix vanishing on that plane is zero. The six-dimensional motion orbit therefore has codimension <span class="math" data-tex="$3m-6$">$3m-6$</span>. Pair distances generate these local invariants: their values give the Gram matrix of the displacement vectors by</p>
+<span class="math math-display" data-tex="$$
+\langle v_i,v_j\rangle
+=\tfrac12\bigl(|v_i|^2+|v_j|^2-|v_i-v_j|^2\bigr).
+$$">$$
+\langle v_i,v_j\rangle
+=\tfrac12\bigl(|v_i|^2+|v_j|^2-|v_i-v_j|^2\bigr).
+$$</span>
+<p>A Gram matrix determines such a configuration up to an orthogonal motion. When restricting to orientation-preserving motions, the possible orientation sign is discrete; it is fixed on a sufficiently small regular neighbourhood and supplies no additional essential continuous invariant.</p>
+<p>Lie's first solution begins with the Chapter 22 introduction on pp. 471–472; §97, the plane case, occupies pp. 472–477; the three-dimensional conclusion is Theorem 40 in §98, pp. 477–479. His second solution occupies Chapter 23, pp. 498–523. The modern theorem below uses a precise compact isotropy condition and derives a metric. We do not identify that condition with every historical version of free mobility.</p>
+<h2 id="2-recovering-an-invariant-metric">2. Recovering an invariant metric</h2>
+<p>Fix a base point <span class="math" data-tex="$p$">$p$</span> of a transitive local action. Derivatives at <span class="math" data-tex="$p$">$p$</span> of transformations fixing <span class="math" data-tex="$p$">$p$</span> act linearly on <span class="math" data-tex="$T_pM$">$T_pM$</span>. For a local group, make the compactness assumption precise as follows: these local derivatives are contained in a compact subgroup <span class="math" data-tex="$K\subset\mathrm{GL}(T_pM)$">$K\subset\mathrm{GL}(T_pM)$</span>. Equivalently, the subgroup they generate has compact closure. Compactness of just a small bounded parameter neighbourhood would say nothing useful.</p>
+<p>The only measure-theoretic input is Haar existence and uniqueness: every locally compact Hausdorff group has a nonzero left-invariant Radon measure, unique up to positive scalar. These are Theorems 8.3 and 9.2 of <a href="../harmonic-analysis-on-locally-compact-groups/reader/index.html">Haar measure on locally compact groups</a>. On a compact group its total mass is positive and finite, so normalize it to one. Right translation of this probability measure is again a left-invariant probability measure, and uniqueness makes it unchanged. Thus normalized compact Haar measure is both left and right invariant.</p>
+<p><strong>Theorem 2.1 (invariant metric).</strong> A transitive analytic local action satisfying this compact derivative-isotropy condition preserves a positive-definite analytic Riemannian metric near <span class="math" data-tex="$p$">$p$</span>.</p>
+<p><strong>Proof.</strong> Choose any positive inner product <span class="math" data-tex="$b_0$">$b_0$</span> on <span class="math" data-tex="$T_pM$">$T_pM$</span> and set</p>
+<span class="math math-display" data-tex="$$
+b(v,w)=\int_K b_0(kv,kw)\,d\mu(k).
+\tag{2.1}
+$$">$$
+b(v,w)=\int_K b_0(kv,kw)\,d\mu(k).
+\tag{2.1}
+$$</span>
+<p>It is a bilinear positive inner product: the integrand for <span class="math" data-tex="$v=w\ne0$">$v=w\ne0$</span> is everywhere positive, and is continuous on the compact group. Right invariance gives <span class="math" data-tex="$b(k_0v,k_0w)=b(v,w)$">$b(k_0v,k_0w)=b(v,w)$</span>. Hence every local isotropy derivative preserves <span class="math" data-tex="$b$">$b$</span>.</p>
+<p>Write <span class="math" data-tex="$T_a(x)=x\cdot a$">$T_a(x)=x\cdot a$</span> for the right action. Then <span class="math" data-tex="$T_b\circ T_a=T_{ab}$">$T_b\circ T_a=T_{ab}$</span>. The transitive orbit map has a local analytic section <span class="math" data-tex="$q\mapsto a(q)$">$q\mapsto a(q)$</span> with <span class="math" data-tex="$p\cdot a(q)=q$">$p\cdot a(q)=q$</span>, by the orbit-chart argument in lesson 8. Define</p>
+<span class="math math-display" data-tex="$$
+g_q(DT_a|_p v,DT_a|_p w)=b(v,w),\qquad p\cdot a=q.
+\tag{2.2}
+$$">$$
+g_q(DT_a|_p v,DT_a|_p w)=b(v,w),\qquad p\cdot a=q.
+\tag{2.2}
+$$</span>
+<p>If <span class="math" data-tex="$b&#x27;$">$b&#x27;$</span> is another sufficiently small parameter sending <span class="math" data-tex="$p$">$p$</span> to <span class="math" data-tex="$q$">$q$</span>, the transformation <span class="math" data-tex="$T_{b&#x27;}^{-1}\circ T_a=T_{a(b&#x27;)^{-1}}$">$T_{b&#x27;}^{-1}\circ T_a=T_{a(b&#x27;)^{-1}}$</span> fixes <span class="math" data-tex="$p$">$p$</span>. Its derivative preserves <span class="math" data-tex="$b$">$b$</span>, proving independence of the choice in (2.2). The section and the derivatives of the action are analytic, so <span class="math" data-tex="$g$">$g$</span> is analytic and positive definite. Finally, composing <span class="math" data-tex="$T_a$">$T_a$</span> with <span class="math" data-tex="$T_c$">$T_c$</span> represents transport to <span class="math" data-tex="$q\cdot c$">$q\cdot c$</span> by <span class="math" data-tex="$ac$">$ac$</span>; formula (2.2) proves <span class="math" data-tex="$T_c^*g=g$">$T_c^*g=g$</span> wherever the local action and its compositions are defined. Shrink the neighbourhood once to ensure these assertions have common domains. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The construction does not assume in advance that isotropy is determined by its derivative. That conclusion follows from the metric, as we now prove. This avoids the first-order faithfulness problem encountered for projective isotropy in lesson 11.</p>
+<h2 id="3-isometries-and-their-first-derivatives">3. Isometries and their first derivatives</h2>
+<p>We recall explicitly the local geometry used here. A positive metric has a unique torsion-free metric connection. In coordinates its coefficients are</p>
+<span class="math math-display" data-tex="$$
+\Gamma^k_{ij}=\tfrac12g^{k\ell}
+(\partial_i g_{j\ell}+\partial_j g_{i\ell}-\partial_\ell g_{ij}).
+\tag{3.1}
+$$">$$
+\Gamma^k_{ij}=\tfrac12g^{k\ell}
+(\partial_i g_{j\ell}+\partial_j g_{i\ell}-\partial_\ell g_{ij}).
+\tag{3.1}
+$$</span>
+<p>The displayed symmetry gives zero torsion, and substitution gives <span class="math" data-tex="$\nabla g=0$">$\nabla g=0$</span>. Conversely, writing metric compatibility for three permutations of <span class="math" data-tex="$i,j,\ell$">$i,j,\ell$</span>, and using zero torsion, solves for (3.1); this proves uniqueness. Geodesics solve <span class="math" data-tex="$\ddot x^k+\Gamma^k_{ij}\dot x^i\dot x^j=0$">$\ddot x^k+\Gamma^k_{ij}\dot x^i\dot x^j=0$</span>. Local ODE existence and uniqueness give the exponential map <span class="math" data-tex="$\exp_p(v)$">$\exp_p(v)$</span> at time one, whose derivative at <span class="math" data-tex="$v=0$">$v=0$</span> is the identity because the linear variation from the constant geodesic is <span class="math" data-tex="$tv$">$tv$</span>. The inverse theorem supplies a normal-coordinate neighbourhood. All these constructions are analytic for an analytic metric; the smooth versions also suffice below.</p>
+<p>An isometry preserves the connection, by its uniqueness, and therefore preserves geodesics with their parameters. Consequently an isometry <span class="math" data-tex="$f$">$f$</span> satisfies</p>
+<span class="math math-display" data-tex="$$
+f(\exp_p v)=\exp_{f(p)}(Df_pv)
+\tag{3.2}
+$$">$$
+f(\exp_p v)=\exp_{f(p)}(Df_pv)
+\tag{3.2}
+$$</span>
+<p>on a small normal neighbourhood. In particular, its germ is determined by <span class="math" data-tex="$f(p)$">$f(p)$</span> and <span class="math" data-tex="$Df_p$">$Df_p$</span>. An isometry fixing <span class="math" data-tex="$p$">$p$</span> with derivative the identity is the identity germ.</p>
+<p>A Killing field is a field <span class="math" data-tex="$X$">$X$</span> with <span class="math" data-tex="$\mathcal L_Xg=0$">$\mathcal L_Xg=0$</span>. Its local flow consists of isometries, since
+<span class="math" data-tex="$\frac d{dt}(\Phi_X^t)^*g=(\Phi_X^t)^*\mathcal L_Xg=0$">$\frac d{dt}(\Phi_X^t)^*g=(\Phi_X^t)^*\mathcal L_Xg=0$</span>; the converse follows by differentiating at zero. Metric compatibility and zero torsion give</p>
+<span class="math math-display" data-tex="$$
+(\mathcal L_Xg)(u,v)=g(\nabla_uX,v)+g(u,\nabla_vX).
+\tag{3.3}
+$$">$$
+(\mathcal L_Xg)(u,v)=g(\nabla_uX,v)+g(u,\nabla_vX).
+\tag{3.3}
+$$</span>
+<p>For example, expand the Lie derivative as <span class="math" data-tex="$Xg(u,v)-g([X,u],v)-g(u,[X,v])$">$Xg(u,v)-g([X,u],v)-g(u,[X,v])$</span> and use <span class="math" data-tex="$[X,u]=\nabla_Xu-\nabla_uX$">$[X,u]=\nabla_Xu-\nabla_uX$</span> to obtain (3.3). Thus <span class="math" data-tex="$(\nabla X)_p$">$(\nabla X)_p$</span> is skew with respect to <span class="math" data-tex="$g_p$">$g_p$</span> for a Killing field. Killing fields form a Lie algebra because <span class="math" data-tex="$\mathcal L_{[X,Y]}=[\mathcal L_X,\mathcal L_Y]$">$\mathcal L_{[X,Y]}=[\mathcal L_X,\mathcal L_Y]$</span>.</p>
+<p><strong>Theorem 3.1 (first-jet determination and dimension).</strong> For a connected <span class="math" data-tex="$n$">$n$</span>-dimensional Riemannian manifold, the map</p>
+<span class="math math-display" data-tex="$$
+X\longmapsto\bigl(X(p),(\nabla X)_p\bigr)
+\quad\text{from Killing fields to }T_pM\oplus\mathfrak{so}(T_pM,g_p)
+\tag{3.4}
+$$">$$
+X\longmapsto\bigl(X(p),(\nabla X)_p\bigr)
+\quad\text{from Killing fields to }T_pM\oplus\mathfrak{so}(T_pM,g_p)
+\tag{3.4}
+$$</span>
+<p>is injective. Hence</p>
+<span class="math math-display" data-tex="$$
+\dim\operatorname{Kill}(M,g)\le n+\frac{n(n-1)}2
+=\frac{n(n+1)}2.
+\tag{3.5}
+$$">$$
+\dim\operatorname{Kill}(M,g)\le n+\frac{n(n-1)}2
+=\frac{n(n+1)}2.
+\tag{3.5}
+$$</span>
+<p>The same injection and bound hold for local Killing-field germs.</p>
+<p><strong>Proof.</strong> Suppose the jet in (3.4) is zero. Since <span class="math" data-tex="$X(p)=0$">$X(p)=0$</span>, its flow fixes <span class="math" data-tex="$p$">$p$</span>. In coordinates <span class="math" data-tex="$(\nabla X)_p=DX_p$">$(\nabla X)_p=DX_p$</span> at a zero of <span class="math" data-tex="$X$">$X$</span>, and the derivative of the flow there is <span class="math" data-tex="$e^{tDX_p}=I$">$e^{tDX_p}=I$</span>. Equation (3.2) makes the flow the identity on a normal neighbourhood for small <span class="math" data-tex="$t$">$t$</span>. Differentiation gives <span class="math" data-tex="$X=0$">$X=0$</span> there. This proves the germ assertion.</p>
+<p>For a global field, the set of points where its first jet is zero is closed by continuity. The preceding local argument makes it open: every such point has a neighbourhood on which <span class="math" data-tex="$X$">$X$</span> is identically zero. It is nonempty and the manifold is connected, so it is the whole manifold. This proves injection. The finite-dimensional target has the dimension in (3.5), proving the bound even without assuming finite-dimensionality of the space of Killing fields beforehand. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular, an effective metric-preserving local action has faithful derivative isotropy. If an infinitesimal isotropy field has zero derivative, Theorem 3.1 makes it the zero germ, and effectiveness excludes it from the acting algebra.</p>
+<h2 id="4-from-isotropy-to-constant-curvature">4. From isotropy to constant curvature</h2>
+<p>Our curvature convention is</p>
+<span class="math math-display" data-tex="$$
+R(U,V)W=\nabla_U\nabla_VW-\nabla_V\nabla_UW-\nabla_{[U,V]}W,
+\qquad
+K(\langle u,v\rangle)=
+\frac{g(R(u,v)v,u)}{g(u,u)g(v,v)-g(u,v)^2}.
+\tag{4.1}
+$$">$$
+R(U,V)W=\nabla_U\nabla_VW-\nabla_V\nabla_UW-\nabla_{[U,V]}W,
+\qquad
+K(\langle u,v\rangle)=
+\frac{g(R(u,v)v,u)}{g(u,u)g(v,v)-g(u,v)^2}.
+\tag{4.1}
+$$</span>
+<p>Isometries preserve <span class="math" data-tex="$R$">$R$</span> because they preserve the connection. Therefore isotropy acts on the function assigning sectional curvature to a two-plane at <span class="math" data-tex="$p$">$p$</span>.</p>
+<p><strong>Theorem 4.1 (constant curvature).</strong> In dimension <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, if the action in Theorem 2.1 has isotropy transitive on the unoriented two-planes of <span class="math" data-tex="$T_pM$">$T_pM$</span>, then its invariant metric has constant sectional curvature near <span class="math" data-tex="$p$">$p$</span>.</p>
+<p><strong>Proof.</strong> Isotropy invariance and plane transitivity give a single value <span class="math" data-tex="$K$">$K$</span> at <span class="math" data-tex="$p$">$p$</span>. Transitivity of the action carries each nearby point to <span class="math" data-tex="$p$">$p$</span> by an isometry and carries its tangent two-planes bijectively to those at <span class="math" data-tex="$p$">$p$</span>. Thus their curvature is the same value <span class="math" data-tex="$K$">$K$</span>. For <span class="math" data-tex="$n=2$">$n=2$</span> there is just one tangent two-plane at each point, so the plane condition is automatic; transitivity still makes its Gaussian curvature constant. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This homogeneous argument does not need Schur's lemma. Schur's lemma concerns a metric with plane-independent curvature at each point without assuming any transitive motions; it is proved in Solution 2.</p>
+<p>For later use, constant sectional curvature is equivalent to the full tensor identity</p>
+<span class="math math-display" data-tex="$$
+R(U,V)W=K\bigl(g(V,W)U-g(U,W)V\bigr).
+\tag{4.2}
+$$">$$
+R(U,V)W=K\bigl(g(V,W)U-g(U,W)V\bigr).
+\tag{4.2}
+$$</span>
+<p>Here is the polarization step, including the algebraic identities it uses. At a normal-coordinate origin, put <span class="math" data-tex="$R_{abcd}=g(R(\partial_a,\partial_b)\partial_c,\partial_d)$">$R_{abcd}=g(R(\partial_a,\partial_b)\partial_c,\partial_d)$</span> and use a comma for ordinary coordinate derivatives. Substitution in (3.1) gives</p>
+<span class="math math-display" data-tex="$$
+R_{abcd}=\tfrac12
+(g_{bd,ac}+g_{ac,bd}-g_{bc,ad}-g_{ad,bc}).
+$$">$$
+R_{abcd}=\tfrac12
+(g_{bd,ac}+g_{ac,bd}-g_{bc,ad}-g_{ad,bc}).
+$$</span>
+<p>Symmetry of the metric and commutation of its second derivatives give antisymmetry in the first two and last two indices, pair interchange, and the cyclic first Bianchi identity, with each metric derivative cancelling its opposite. These are tensor identities and hence hold everywhere. Subtract the right side of (4.2) from <span class="math" data-tex="$R$">$R$</span> and let <span class="math" data-tex="$T(x,y,z,w)$">$T(x,y,z,w)$</span> be its inner product with <span class="math" data-tex="$w$">$w$</span>. Zero sectional curvature says <span class="math" data-tex="$T(x,y,y,x)=0$">$T(x,y,y,x)=0$</span>. Polarizing the outer <span class="math" data-tex="$x$">$x$</span> and using pair interchange gives <span class="math" data-tex="$T(x,y,y,z)=0$">$T(x,y,y,z)=0$</span>. Polarizing the repeated <span class="math" data-tex="$y$">$y$</span> then gives <span class="math" data-tex="$T(x,y,w,z)+T(x,w,y,z)=0$">$T(x,y,w,z)+T(x,w,y,z)=0$</span>. Along with the two original antisymmetries this makes <span class="math" data-tex="$T$">$T$</span> alternating in all four arguments. The cyclic first Bianchi identity is therefore <span class="math" data-tex="$3T=0$">$3T=0$</span>. Thus <span class="math" data-tex="$T=0$">$T=0$</span>, proving (4.2).</p>
+<h2 id="5-a-full-local-uniqueness-argument">5. A full local uniqueness argument</h2>
+<p>We next show that constant <span class="math" data-tex="$K$">$K$</span> determines the local metric, rather than importing a global space-form classification. Put</p>
+<span class="math math-display" data-tex="$$
+S_K(r)=
+\begin{cases}
+\sin(\sqrt K r)/\sqrt K,&amp;K&gt;0,\\
+r,&amp;K=0,\\
+\sinh(\sqrt{-K}r)/\sqrt{-K},&amp;K&lt;0.
+\end{cases}
+\tag{5.1}
+$$">$$
+S_K(r)=
+\begin{cases}
+\sin(\sqrt K r)/\sqrt K,&amp;K&gt;0,\\
+r,&amp;K=0,\\
+\sinh(\sqrt{-K}r)/\sqrt{-K},&amp;K&lt;0.
+\end{cases}
+\tag{5.1}
+$$</span>
+<p><strong>Theorem 5.1 (local space-form uniqueness).</strong> Two Riemannian manifolds of the same dimension and the same constant sectional curvature <span class="math" data-tex="$K$">$K$</span> are locally isometric near any chosen points. Every linear isometry between their tangent spaces extends to such a local isometry.</p>
+<p><strong>Proof.</strong> Work in a small normal ball about <span class="math" data-tex="$p$">$p$</span>. For a unit vector <span class="math" data-tex="$v$">$v$</span>, the radial geodesic is <span class="math" data-tex="$\gamma(r)=\exp_p(rv)$">$\gamma(r)=\exp_p(rv)$</span>. Vary <span class="math" data-tex="$v$">$v$</span> through unit vectors with derivative <span class="math" data-tex="$w\perp v$">$w\perp v$</span>. The variation field <span class="math" data-tex="$J$">$J$</span> has <span class="math" data-tex="$J(0)=0$">$J(0)=0$</span> and <span class="math" data-tex="$D_rJ(0)=w$">$D_rJ(0)=w$</span>. Commuting the two covariant derivatives of the geodesic variation, and using zero torsion to interchange its velocity derivatives, gives</p>
+<span class="math math-display" data-tex="$$
+D_r^2J+R(J,\dot\gamma)\dot\gamma=0.
+\tag{5.2}
+$$">$$
+D_r^2J+R(J,\dot\gamma)\dot\gamma=0.
+\tag{5.2}
+$$</span>
+<p>For clarity, if <span class="math" data-tex="$T=\partial_r\gamma$">$T=\partial_r\gamma$</span> and <span class="math" data-tex="$J=\partial_s\gamma$">$J=\partial_s\gamma$</span>, then <span class="math" data-tex="$[T,J]=0$">$[T,J]=0$</span>, <span class="math" data-tex="$\nabla_JT=\nabla_TJ$">$\nabla_JT=\nabla_TJ$</span>, and <span class="math" data-tex="$\nabla_TT=0$">$\nabla_TT=0$</span>. Thus <span class="math" data-tex="$R(J,T)T=-\nabla_T\nabla_JT=-D_r^2J$">$R(J,T)T=-\nabla_T\nabla_JT=-D_r^2J$</span>, which is (5.2).</p>
+<p>Parallel transport is an isometry by <span class="math" data-tex="$\nabla g=0$">$\nabla g=0$</span>. Formula (4.2) and the initial conditions show that the unique solution is</p>
+<span class="math math-display" data-tex="$$
+J(r)=S_K(r)P_rw,
+\tag{5.3}
+$$">$$
+J(r)=S_K(r)P_rw,
+\tag{5.3}
+$$</span>
+<p>where <span class="math" data-tex="$P_r$">$P_r$</span> is parallel transport along <span class="math" data-tex="$\gamma$">$\gamma$</span>. Indeed, this field stays perpendicular to <span class="math" data-tex="$\dot\gamma$">$\dot\gamma$</span>, and (5.2) becomes the scalar equation <span class="math" data-tex="$S_K&#x27;&#x27;+KS_K=0$">$S_K&#x27;&#x27;+KS_K=0$</span>, <span class="math" data-tex="$S_K(0)=0$">$S_K(0)=0$</span>, <span class="math" data-tex="$S_K&#x27;(0)=1$">$S_K&#x27;(0)=1$</span>. Uniqueness of the linear ODE gives (5.3).</p>
+<p>The radial direction has unit length and is orthogonal to these angular variations, by (5.3). Consequently the metric in polar normal coordinates is exactly</p>
+<span class="math math-display" data-tex="$$
+g=dr^2+S_K(r)^2g_{\mathrm{round}},
+\tag{5.4}
+$$">$$
+g=dr^2+S_K(r)^2g_{\mathrm{round}},
+\tag{5.4}
+$$</span>
+<p>where <span class="math" data-tex="$g_{\mathrm{round}}$">$g_{\mathrm{round}}$</span> is the unit-sphere metric in <span class="math" data-tex="$T_pM$">$T_pM$</span>. Choose the normal ball small enough that <span class="math" data-tex="$S_K(r)&gt;0$">$S_K(r)&gt;0$</span> for <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>. Given a linear tangent isometry <span class="math" data-tex="$L:T_pM\to T_{p&#x27;}M&#x27;$">$L:T_pM\to T_{p&#x27;}M&#x27;$</span>, the map <span class="math" data-tex="$\exp_{p&#x27;}\circ L\circ\exp_p^{-1}$">$\exp_{p&#x27;}\circ L\circ\exp_p^{-1}$</span> has the same radial and angular metric by (5.4), and is an isometry off the centre. It is smooth across the centre by its normal-coordinate definition, so the metric equality extends there by continuity. This proves both assertions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>No completeness, simple connectivity or global covering assertion enters this proof. The word <em>local</em> in the space theorem is essential.</p>
+<h2 id="6-the-three-models-and-their-motion-algebras">6. The three models and their motion algebras</h2>
+<p>For <span class="math" data-tex="$K=0$">$K=0$</span> the model is <span class="math" data-tex="$\mathbb R^n$">$\mathbb R^n$</span> with its Euclidean metric. Its motions <span class="math" data-tex="$q\mapsto Aq+b$">$q\mapsto Aq+b$</span>, <span class="math" data-tex="$A\in\mathrm{SO}(n)$">$A\in\mathrm{SO}(n)$</span>, have infinitesimal fields</p>
+<span class="math math-display" data-tex="$$
+X_{a,B}(q)=a+Bq,\qquad B^T=-B.
+\tag{6.1}
+$$">$$
+X_{a,B}(q)=a+Bq,\qquad B^T=-B.
+\tag{6.1}
+$$</span>
+<p>There are <span class="math" data-tex="$n+n(n-1)/2$">$n+n(n-1)/2$</span> independent fields. Their flows preserve the metric. The abstract motion algebra is <span class="math" data-tex="$\mathfrak e(n)=\mathfrak{so}(n)\ltimes\mathbb R^n$">$\mathfrak e(n)=\mathfrak{so}(n)\ltimes\mathbb R^n$</span>.</p>
+<p>For <span class="math" data-tex="$K&gt;0$">$K&gt;0$</span>, put <span class="math" data-tex="$R=1/\sqrt K$">$R=1/\sqrt K$</span> and use the sphere</p>
+<span class="math math-display" data-tex="$$
+S_R^n=\{q\in\mathbb R^{n+1}:|q|^2=R^2\}
+\tag{6.2}
+$$">$$
+S_R^n=\{q\in\mathbb R^{n+1}:|q|^2=R^2\}
+\tag{6.2}
+$$</span>
+<p>with its induced metric. The group <span class="math" data-tex="$\mathrm{SO}(n+1)$">$\mathrm{SO}(n+1)$</span> acts transitively by isometries. The stabilizer of a point acts on its tangent space as <span class="math" data-tex="$\mathrm{SO}(n)$">$\mathrm{SO}(n)$</span>: extend an oriented orthonormal tangent frame by the radial unit normal to see both assertions.</p>
+<p>For <span class="math" data-tex="$K&lt;0$">$K&lt;0$</span>, put <span class="math" data-tex="$R=1/\sqrt{-K}$">$R=1/\sqrt{-K}$</span> and write the ambient bilinear form as <span class="math" data-tex="$\langle(u,t),(u&#x27;,t&#x27;)\rangle=u\cdot u&#x27;-tt&#x27;$">$\langle(u,t),(u&#x27;,t&#x27;)\rangle=u\cdot u&#x27;-tt&#x27;$</span>. The model is</p>
+<span class="math math-display" data-tex="$$
+H_R^n=\{(u,t):|u|^2-t^2=-R^2,\ t&gt;0\}
+\tag{6.3}
+$$">$$
+H_R^n=\{(u,t):|u|^2-t^2=-R^2,\ t&gt;0\}
+\tag{6.3}
+$$</span>
+<p>with the induced positive metric. To check positivity, a tangent vector <span class="math" data-tex="$(v,s)$">$(v,s)$</span> satisfies <span class="math" data-tex="$u\cdot v=ts$">$u\cdot v=ts$</span>. Hence
+<span class="math" data-tex="$|v|^2-s^2\ge(1-|u|^2/t^2)|v|^2&gt;0$">$|v|^2-s^2\ge(1-|u|^2/t^2)|v|^2&gt;0$</span> unless the vector is zero. The identity component <span class="math" data-tex="$\mathrm{SO}^+(n,1)$">$\mathrm{SO}^+(n,1)$</span> preserves this sheet and its metric. It acts transitively, with tangent isotropy <span class="math" data-tex="$\mathrm{SO}(n)$">$\mathrm{SO}(n)$</span>: choose an orthonormal tangent basis and the future unit timelike normal, then map one such ambient orthonormal basis to another. Choices of orientation give the identity-component motion taking the prescribed nearby points and frames to each other; this suffices for the local action, and continuation along paths gives transitivity of the whole sheet.</p>
+<p>Here is a direct curvature calculation for both nonzero models. Let the ambient normal be <span class="math" data-tex="$N=q/R$">$N=q/R$</span> and let <span class="math" data-tex="$\varepsilon=\langle N,N\rangle$">$\varepsilon=\langle N,N\rangle$</span>, equal to <span class="math" data-tex="$1$">$1$</span> for the sphere and <span class="math" data-tex="$-1$">$-1$</span> for the hyperboloid. Ambient differentiation gives <span class="math" data-tex="$D_UN=U/R$">$D_UN=U/R$</span> and</p>
+<span class="math math-display" data-tex="$$
+h(U,V):=\langle D_UV,N\rangle=-g(U,V)/R,
+\qquad D_UV=\nabla_UV+\varepsilon h(U,V)N.
+$$">$$
+h(U,V):=\langle D_UV,N\rangle=-g(U,V)/R,
+\qquad D_UV=\nabla_UV+\varepsilon h(U,V)N.
+$$</span>
+<p>The tangential part defines the metric torsion-free connection. Taking the tangential part of the zero ambient curvature gives</p>
+<span class="math math-display" data-tex="$$
+0=R(U,V)W+
+\frac{\varepsilon}{R}\bigl(h(V,W)U-h(U,W)V\bigr).
+$$">$$
+0=R(U,V)W+
+\frac{\varepsilon}{R}\bigl(h(V,W)U-h(U,W)V\bigr).
+$$</span>
+<p>Consequently <span class="math" data-tex="$R(U,V)W=(\varepsilon/R^2)(g(V,W)U-g(U,W)V)$">$R(U,V)W=(\varepsilon/R^2)(g(V,W)U-g(U,W)V)$</span>, exactly (4.2). The curvatures are <span class="math" data-tex="$1/R^2$">$1/R^2$</span> and <span class="math" data-tex="$-1/R^2$">$-1/R^2$</span> with our sign convention.</p>
+<p>On these models the infinitesimal fields are <span class="math" data-tex="$X_A(q)=Aq$">$X_A(q)=Aq$</span>, where <span class="math" data-tex="$A$">$A$</span> is skew for the ambient bilinear form. Each is tangent and Killing, and their number is <span class="math" data-tex="$n(n+1)/2$">$n(n+1)/2$</span>. They are independent as germs: if <span class="math" data-tex="$Aq=0$">$Aq=0$</span> on an open patch, it annihilates the base point and the whole tangent space by differentiation, which together span the ambient space. Thus <span class="math" data-tex="$A=0$">$A=0$</span>. Theorem 3.1 shows that these are <strong>all</strong> the local Killing fields.</p>
+<p>Matrix and field brackets have opposite signs:</p>
+<span class="math math-display" data-tex="$$
+[X_A,X_B](q)=(BA-AB)q=-X_{[A,B]}(q).
+\tag{6.4}
+$$">$$
+[X_A,X_B](q)=(BA-AB)q=-X_{[A,B]}(q).
+\tag{6.4}
+$$</span>
+<p>The map <span class="math" data-tex="$A\mapsto-X_A$">$A\mapsto-X_A$</span> is therefore the Lie algebra isomorphism. The same minus sign identifies the affine matrix algebra with (6.1), using homogeneous coordinates. This agrees with the convention in lessons 6 and 9.</p>
+<p>For dimension three the three algebras are</p>
+<span class="math math-display" data-tex="$$
+\mathfrak e(3),\qquad\mathfrak{so}(4),\qquad\mathfrak{so}(3,1),
+\tag{6.5}
+$$">$$
+\mathfrak e(3),\qquad\mathfrak{so}(4),\qquad\mathfrak{so}(3,1),
+\tag{6.5}
+$$</span>
+<p>all of dimension six, with three-dimensional rotational isotropy. For dimension two they are</p>
+<span class="math math-display" data-tex="$$
+\mathfrak e(2),\qquad\mathfrak{so}(3),\qquad\mathfrak{so}(2,1),
+\tag{6.6}
+$$">$$
+\mathfrak e(2),\qquad\mathfrak{so}(3),\qquad\mathfrak{so}(2,1),
+\tag{6.6}
+$$</span>
+<p>all of dimension three, with one-dimensional rotational isotropy. The last algebra is isomorphic to <span class="math" data-tex="$\mathfrak{sl}_2(\mathbb R)$">$\mathfrak{sl}_2(\mathbb R)$</span>. An explicit verification uses</p>
+<span class="math math-display" data-tex="$$
+J=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix},\quad
+B_1=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\1&amp;0&amp;0\end{pmatrix},\quad
+B_2=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}.
+$$">$$
+J=\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix},\quad
+B_1=\begin{pmatrix}0&amp;0&amp;1\\0&amp;0&amp;0\\1&amp;0&amp;0\end{pmatrix},\quad
+B_2=\begin{pmatrix}0&amp;0&amp;0\\0&amp;0&amp;1\\0&amp;1&amp;0\end{pmatrix}.
+$$</span>
+<p>For the form <span class="math" data-tex="$\operatorname{diag}(1,1,-1)$">$\operatorname{diag}(1,1,-1)$</span> these have brackets
+<span class="math" data-tex="$[J,B_1]=B_2$">$[J,B_1]=B_2$</span>, <span class="math" data-tex="$[J,B_2]=-B_1$">$[J,B_2]=-B_1$</span>, <span class="math" data-tex="$[B_1,B_2]=-J$">$[B_1,B_2]=-J$</span>.
+Taking <span class="math" data-tex="$H=2B_1$">$H=2B_1$</span>, <span class="math" data-tex="$E=B_2-J$">$E=B_2-J$</span>, <span class="math" data-tex="$F=B_2+J$">$F=B_2+J$</span> gives <span class="math" data-tex="$[H,E]=2E$">$[H,E]=2E$</span>, <span class="math" data-tex="$[H,F]=-2F$">$[H,F]=-2F$</span>, <span class="math" data-tex="$[E,F]=H$">$[E,F]=H$</span>, the real Chevalley relations. Thus (6.6) is also the familiar Euclidean, compact and split surface list. The real spherical action is primitive, although its complexification is outside the primitive complex-plane list in lesson 11: complexification admits invariant complex directions in the isotropy representation.</p>
+<h2 id="7-the-modern-space-theorem-and-maximal-mobility">7. The modern space theorem and maximal mobility</h2>
+<p><strong>Theorem 7.1 (local space theorem).</strong> Let an effective finite-dimensional analytic local action be transitive near <span class="math" data-tex="$p$">$p$</span> on a real three-manifold. Suppose its derivative isotropy Lie algebra, after a linear change of tangent coordinates, is exactly <span class="math" data-tex="$\mathfrak{so}(3)$">$\mathfrak{so}(3)$</span>. Then it preserves an analytic Riemannian metric of constant sectional curvature. In local isometric coordinates its algebra is the full motion algebra of one of the three models in (6.5).</p>
+<p>In dimension two the analogous assumption is derivative isotropy <span class="math" data-tex="$\mathfrak{so}(2)$">$\mathfrak{so}(2)$</span>, and the conclusions are the three models and algebras in (6.6).</p>
+<p><strong>Proof.</strong> Restrict to transformations in the identity neighbourhood of the local group. The derivative isotropy is locally generated by exponentials of the indicated matrix Lie algebra, so it is contained in <span class="math" data-tex="$\mathrm{SO}(3)$">$\mathrm{SO}(3)$</span>, or <span class="math" data-tex="$\mathrm{SO}(2)$">$\mathrm{SO}(2)$</span> in the surface case. This is the compact condition of Theorem 2.1. Its averaged metric is invariant. Relative to that metric the derivative isotropy is the full orthogonal Lie algebra: it preserves the metric, has the same dimension as that orthogonal algebra, and is contained in it. In dimension three the resulting rotations act transitively on two-planes; in dimension two there is only one such plane. Theorem 4.1 gives constant <span class="math" data-tex="$K$">$K$</span>.</p>
+<p>Theorem 3.1 makes derivative isotropy faithful. Thus the acting algebra has dimension <span class="math" data-tex="$3+3=6$">$3+3=6$</span>, or <span class="math" data-tex="$2+1=3$">$2+1=3$</span>, by the orbit–isotropy exact sequence. Theorem 5.1 identifies the metric locally with the corresponding model in Section 6. Pushforward carries the acting algebra into the model's Killing algebra. Their equal dimensions and the model calculation show that the inclusion is equality, proving the asserted equivalence of actions and the algebra isomorphisms. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The same proof works in dimension <span class="math" data-tex="$n\ge2$">$n\ge2$</span> with full derivative isotropy <span class="math" data-tex="$\mathfrak{so}(n)$">$\mathfrak{so}(n)$</span>. A hypothesis merely saying that some noncompact linear group moves tangent directions transitively does not give its first step. For example, <span class="math" data-tex="$\mathrm{GL}^+(3)$">$\mathrm{GL}^+(3)$</span> moves directions and two-planes transitively but contains every positive dilation. An invariant inner product at a fixed point would have to satisfy <span class="math" data-tex="$b(\lambda v,\lambda v)=b(v,v)$">$b(\lambda v,\lambda v)=b(v,v)$</span>, impossible for <span class="math" data-tex="$\lambda\ne1$">$\lambda\ne1$</span>. Section 2 uses compactness, not just direction transitivity.</p>
+<p><strong>Theorem 7.2 (equality in the Killing bound).</strong> If a connected Riemannian <span class="math" data-tex="$n$">$n$</span>-manifold, <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, has <span class="math" data-tex="$n(n+1)/2$">$n(n+1)/2$</span> independent global Killing fields, it has constant sectional curvature. At the level of germs, constant-curvature metrics attain this bound. In particular, a connected three-manifold has at most six global Killing fields, and equality forces constant curvature.</p>
+<p><strong>Proof.</strong> Equality makes the injective map (3.4) surjective at every point. Evaluation is therefore onto, and the Killing fields vanishing at the point realize every skew derivative there. Choose <span class="math" data-tex="$n$">$n$</span> fields whose values form a basis; their successive local flows give an open orbit by the inverse theorem. The local Killing action is transitive. Its isotropy realizes all infinitesimal rotations, and their flows act as the rotation group on tangent planes. The argument of Theorem 4.1 makes curvature constant in a neighbourhood of each point. These neighbourhood values agree on overlaps, and connectedness makes the value constant on the whole manifold. Conversely, Theorem 5.1 and the independent model fields in Section 6 supply <span class="math" data-tex="$n(n+1)/2$">$n(n+1)/2$</span> Killing germs for every constant-curvature metric. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This last converse is deliberately about germs. A constant-curvature quotient can have fewer global Killing fields, because a model field need not descend through its identifications. Nor does the local positive-curvature model decide whether a global geometry is spherical or elliptic. Completeness, topology and covering spaces are additional questions.</p>
+<h2 id="8-what-the-three-geometries-share-and-what-differs">8. What the three geometries share and what differs</h2>
+<p>All three models have the same local freedom to choose a point and an orthonormal frame. Their curvature signs distinguish the geometries: in (5.4), nearby radial angular distances scale as <span class="math" data-tex="$S_K(r)=r-Kr^3/6+O(r^5)$">$S_K(r)=r-Kr^3/6+O(r^5)$</span>. Compared with the flat model, positive curvature makes this scale smaller and negative curvature makes it larger. This follows directly by expanding (5.1), and describes an actual local measurement rather than just three abstract algebra names.</p>
+<p>Lie's work puts the finite transformation group and its isotropy at the centre of the classification. The tensor and frame language used above leads to the later metric and connection formulations associated with Weyl and Cartan. Merker's historical and mathematical account separates Riemann's metric assumption, Helmholtz's mobility assumptions, and Lie's classifications. The distinction remains useful: specifying which objects are invariant is part of a theorem's hypotheses. It cannot be replaced by a count of informal degrees of freedom.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>Exercise 1 (introductory).</strong> Show that <span class="math" data-tex="$\mathrm{SO}(3)$">$\mathrm{SO}(3)$</span> acts transitively on the unoriented two-planes of <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span>. Explain how this is used in the curvature argument.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Prove Schur's lemma: in a connected Riemannian manifold of dimension <span class="math" data-tex="$n\ge3$">$n\ge3$</span>, if sectional curvature at each point is independent of the two-plane, its value is constant. Explain the failure in dimension two.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Compute all Killing fields of the round unit sphere <span class="math" data-tex="$S^2$">$S^2$</span>. Give their spherical-coordinate formulas, their brackets, and the dimension.</p>
+<p><strong>Exercise 4 (intermediate).</strong> Explain why the affine group acting on <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span> cannot preserve a positive Riemannian metric, although its isotropy moves directions and two-planes transitively.</p>
+<p><strong>Exercise 5 (advanced).</strong> Prove <span class="math" data-tex="$\dim\operatorname{Kill}(M,g)\le n(n+1)/2$">$\dim\operatorname{Kill}(M,g)\le n(n+1)/2$</span> for every connected Riemannian <span class="math" data-tex="$n$">$n$</span>-manifold, without assuming beforehand that its Killing fields form a finite-dimensional space. State the distinction between the local and global equality conclusions.</p>
+<h2 id="10-solutions">10. Solutions</h2>
+<p><strong>Solution 1.</strong> A two-plane is the orthogonal complement of a unit normal, with the two choices of normal defining the same plane. Given planes with normals <span class="math" data-tex="$u,v$">$u,v$</span>, complete <span class="math" data-tex="$u$">$u$</span> and <span class="math" data-tex="$v$">$v$</span> to positively oriented orthonormal bases. The unique orthogonal map between these bases has determinant one and sends <span class="math" data-tex="$u^\perp$">$u^\perp$</span> to <span class="math" data-tex="$v^\perp$">$v^\perp$</span>. Hence the action is transitive. Because isometries preserve the curvature tensor, isotropy transitivity makes all sectional curvatures at the fixed point equal; transitive motions then give the same value at nearby points.</p>
+<p><strong>Solution 2.</strong> Denote the plane-independent value by <span class="math" data-tex="$K(p)$">$K(p)$</span>. It is smooth, since it can be evaluated on any local orthonormal pair. The polarization argument in Section 4 gives (4.2), so</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Ric}=(n-1)Kg,\qquad \operatorname{scal}=n(n-1)K.
+\tag{10.1}
+$$">$$
+\operatorname{Ric}=(n-1)Kg,\qquad \operatorname{scal}=n(n-1)K.
+\tag{10.1}
+$$</span>
+<p>We need the contracted differential Bianchi identity</p>
+<span class="math math-display" data-tex="$$
+\nabla^i\operatorname{Ric}_{ij}=\tfrac12\partial_j\operatorname{scal}.
+\tag{10.2}
+$$">$$
+\nabla^i\operatorname{Ric}_{ij}=\tfrac12\partial_j\operatorname{scal}.
+\tag{10.2}
+$$</span>
+<p>Here is its derivation. In normal coordinates at an arbitrary point, <span class="math" data-tex="$\Gamma=0$">$\Gamma=0$</span> and the curvature components are the alternating first derivatives of <span class="math" data-tex="$\Gamma$">$\Gamma$</span>, with the usual quadratic <span class="math" data-tex="$\Gamma\Gamma$">$\Gamma\Gamma$</span> terms. In the cyclic sum</p>
+<span class="math math-display" data-tex="$$
+(\nabla_a R)(b,c)d+(\nabla_b R)(c,a)d+(\nabla_c R)(a,b)d
+$$">$$
+(\nabla_a R)(b,c)d+(\nabla_b R)(c,a)d+(\nabla_c R)(a,b)d
+$$</span>
+<p>the quadratic terms and their first derivatives vanish at the point, while each second partial derivative of a connection coefficient occurs twice with opposite signs. Commutation of ordinary partial derivatives makes the sum zero. This proves the differential Bianchi identity there, and hence tensorially everywhere. To see the contraction signs explicitly, use <span class="math" data-tex="$R_{abcd}=g(R(e_a,e_b)e_c,e_d)$">$R_{abcd}=g(R(e_a,e_b)e_c,e_d)$</span> in an orthonormal frame at the point. The differential identity is</p>
+<span class="math math-display" data-tex="$$
+\nabla_aR_{bcde}+\nabla_bR_{cade}+\nabla_cR_{abde}=0.
+$$">$$
+\nabla_aR_{bcde}+\nabla_bR_{cade}+\nabla_cR_{abde}=0.
+$$</span>
+<p>Contract <span class="math" data-tex="$a=d$">$a=d$</span> and use <span class="math" data-tex="$\operatorname{Ric}_{ce}=\sum_a R_{acea}$">$\operatorname{Ric}_{ce}=\sum_a R_{acea}$</span> to obtain</p>
+<span class="math math-display" data-tex="$$
+\sum_a\nabla_aR_{bcae}+\nabla_b\operatorname{Ric}_{ce}
+-\nabla_c\operatorname{Ric}_{be}=0.
+$$">$$
+\sum_a\nabla_aR_{bcae}+\nabla_b\operatorname{Ric}_{ce}
+-\nabla_c\operatorname{Ric}_{be}=0.
+$$</span>
+<p>Now contract <span class="math" data-tex="$b=e$">$b=e$</span>. The first two terms are both <span class="math" data-tex="$\nabla^a\operatorname{Ric}_{ca}$">$\nabla^a\operatorname{Ric}_{ca}$</span>, and the last is <span class="math" data-tex="$-\partial_c\operatorname{scal}$">$-\partial_c\operatorname{scal}$</span>. This gives (10.2).</p>
+<p>Substituting (10.1) in (10.2) gives</p>
+<span class="math math-display" data-tex="$$
+(n-1)dK=\tfrac12n(n-1)dK,
+\qquad (n-1)(n-2)dK=0.
+$$">$$
+(n-1)dK=\tfrac12n(n-1)dK,
+\qquad (n-1)(n-2)dK=0.
+$$</span>
+<p>For <span class="math" data-tex="$n\ge3$">$n\ge3$</span> this says <span class="math" data-tex="$dK=0$">$dK=0$</span>. Connectedness gives constancy. In dimension two every point has only one tangent two-plane, so the assumption imposes no condition. For an explicit counterexample use <span class="math" data-tex="$g=dx^2+f(x)^2dy^2$">$g=dx^2+f(x)^2dy^2$</span> with <span class="math" data-tex="$f=e^{x^2}$">$f=e^{x^2}$</span>. Formula (3.1) gives <span class="math" data-tex="$\Gamma^x_{yy}=-ff&#x27;$">$\Gamma^x_{yy}=-ff&#x27;$</span> and <span class="math" data-tex="$\Gamma^y_{xy}=\Gamma^y_{yx}=f&#x27;/f$">$\Gamma^y_{xy}=\Gamma^y_{yx}=f&#x27;/f$</span>, with the other coefficients zero. Then <span class="math" data-tex="$R(\partial_x,\partial_y)\partial_y=-ff&#x27;&#x27;\partial_x$">$R(\partial_x,\partial_y)\partial_y=-ff&#x27;&#x27;\partial_x$</span>, so <span class="math" data-tex="$K=-f&#x27;&#x27;/f=-(2+4x^2)$">$K=-f&#x27;&#x27;/f=-(2+4x^2)$</span>, which varies.</p>
+<p><strong>Solution 3.</strong> Let <span class="math" data-tex="$q=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$">$q=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$</span>. Rotation about an axis <span class="math" data-tex="$a$">$a$</span> has field <span class="math" data-tex="$X_a(q)=a\times q$">$X_a(q)=a\times q$</span>. For the three standard axes these are</p>
+<span class="math math-display" data-tex="$$
+X_1=-\sin\phi\,\partial_\theta-\cot\theta\cos\phi\,\partial_\phi,
+\qquad
+X_2=\cos\phi\,\partial_\theta-\cot\theta\sin\phi\,\partial_\phi,
+\qquad X_3=\partial_\phi.
+\tag{10.3}
+$$">$$
+X_1=-\sin\phi\,\partial_\theta-\cot\theta\cos\phi\,\partial_\phi,
+\qquad
+X_2=\cos\phi\,\partial_\theta-\cot\theta\sin\phi\,\partial_\phi,
+\qquad X_3=\partial_\phi.
+\tag{10.3}
+$$</span>
+<p>These coordinate formulas hold away from the poles; the ambient formulas define smooth global fields. For instance, take the dot products of <span class="math" data-tex="$e_1\times q$">$e_1\times q$</span> with <span class="math" data-tex="$\partial_\theta q$">$\partial_\theta q$</span> and <span class="math" data-tex="$\partial_\phi q$">$\partial_\phi q$</span>, dividing the latter by <span class="math" data-tex="$\sin^2\theta$">$\sin^2\theta$</span>, to obtain the first formula. The other axes give the remaining two. The fields are Killing because rotations preserve the induced metric. A constant relation among them would say <span class="math" data-tex="$a\times q=0$">$a\times q=0$</span> for every <span class="math" data-tex="$q$">$q$</span> on a patch, forcing <span class="math" data-tex="$a=0$">$a=0$</span>, so they are independent. The bound in Theorem 3.1 is three for a surface, proving that their span is the full global and local Killing algebra of the round sphere. Formula (6.4) gives <span class="math" data-tex="$[X_a,X_b]=-X_{a\times b}$">$[X_a,X_b]=-X_{a\times b}$</span>, in particular <span class="math" data-tex="$[X_1,X_2]=-X_3$">$[X_1,X_2]=-X_3$</span> and its cyclic counterparts. The map <span class="math" data-tex="$a\mapsto-X_a$">$a\mapsto-X_a$</span> identifies it with <span class="math" data-tex="$\mathfrak{so}(3)$">$\mathfrak{so}(3)$</span>.</p>
+<p><strong>Solution 4.</strong> At the origin the affine stabilizer contains <span class="math" data-tex="$q\mapsto\lambda q$">$q\mapsto\lambda q$</span> for every <span class="math" data-tex="$\lambda&gt;0$">$\lambda&gt;0$</span>. If it were an isometry of some positive metric, its derivative would satisfy <span class="math" data-tex="$\lambda^2g_0(v,v)=g_0(v,v)$">$\lambda^2g_0(v,v)=g_0(v,v)$</span> for every tangent vector. Choose <span class="math" data-tex="$v\ne0$">$v\ne0$</span> and <span class="math" data-tex="$\lambda\ne1$">$\lambda\ne1$</span> to get a contradiction. Meanwhile any positively oriented basis can be sent to another by <span class="math" data-tex="$\mathrm{GL}^+(3)$">$\mathrm{GL}^+(3)$</span>, so that isotropy is transitive on directions and on two-planes. Those transitivity assertions therefore cannot replace compactness in Theorem 2.1.</p>
+<p><strong>Solution 5.</strong> For a Killing field, (3.3) makes <span class="math" data-tex="$(\nabla X)_p$">$(\nabla X)_p$</span> a skew endomorphism. If its value and covariant derivative both vanish at <span class="math" data-tex="$p$">$p$</span>, the flow fixes <span class="math" data-tex="$p$">$p$</span> and has derivative <span class="math" data-tex="$e^{tDX_p}=I$">$e^{tDX_p}=I$</span>. By geodesic uniqueness it fixes every <span class="math" data-tex="$\exp_pv$">$\exp_pv$</span> in a normal ball, so <span class="math" data-tex="$X$">$X$</span> vanishes there. The set of points with zero first jet is both closed and open; connectedness propagates that vanishing to all of <span class="math" data-tex="$M$">$M$</span>. Thus (3.4) is an injective linear map into a space of dimension <span class="math" data-tex="$n+n(n-1)/2$">$n+n(n-1)/2$</span>. Any independent family of fields maps to an independent family of vectors there, giving the bound without a preliminary finite-dimensionality theorem.</p>
+<p>For <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, global equality forces constant curvature by Theorem 7.2; constant curvature gives local equality by its model identification. It need not give global equality on an arbitrary quotient. In dimension one the bound is one, and every metric is locally a Euclidean length coordinate, obtained by integrating its positive length density; there is no sectional-curvature assertion to make.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Haar existence and uniqueness are imported in their exact measure-theoretic form from <em>Haar measure on locally compact groups</em>, Theorems 8.3 and 9.2. We prove the compact normalization and averaging consequences used here. We assume the local action and orbit theory of lessons 5–8 and the local ODE and inverse-function results located in lessons 3 and 1. The basic tensor operations of D50 are used, with the connection, first-jet, curvature-polarization, Jacobi, local-uniqueness and Killing-dimension arguments supplied above.</p>
+<p>We do not prove that every historical formulation of Helmholtz's axioms implies the precise compact derivative-isotropy hypothesis of Theorem 7.1. Lie's different historical classification arguments are cited in Chapters 20–24 of Volume III. The modern theorem explicitly states the hypothesis it uses. Global space-form classification, completeness, covering-space descriptions, and the full subsequent theories of Weyl and Cartan are outside this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Sophus Lie, with Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume III (1893), fifth division, introduction, pp. 393–398; Chapter 20, §§85–90, pp. 399–436, with complete §85 on pp. 399–410; Chapter 21, §§91–96, pp. 437–470; Chapter 22, first solution, introduction pp. 471–472 and §97 pp. 472–477, especially §98, Theorem 40, pp. 477–479; Chapter 23, second solution, pp. 498–523; Chapter 24, pp. 524–534, and concluding remarks from p. 535. Printed chapter titles and pages govern these references.</li>
+<li>Joël Merker, <em>Sophus Lie, Friedrich Engel et le problème de Riemann–Helmholtz</em>, <a href="https://arxiv.org/abs/0910.0801">arXiv:0910.0801</a>, especially §§2.4–2.6 for Helmholtz's hypotheses and Lie's critique. The present proofs and English prose are independently written.</li>
+<li><em>Haar measure on locally compact groups</em>, <a href="../harmonic-analysis-on-locally-compact-groups/reader/index.html">course lesson</a>, Theorems 8.3 and 9.2, for Haar existence and uniqueness.</li>
+<li><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D50">Differential Geometry, D50</a>, for the prerequisite differential-geometric language.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-11.html">← Lie algebras of vector fields on the line and in the plane</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

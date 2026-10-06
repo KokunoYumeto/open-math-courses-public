@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Inverting mixed symbols without commuting matrix factors</title>
+<style>body{box-sizing:border-box;width:100%;min-width:0}main{min-width:0}body{font:18px/1.65 system-ui;color:#142535;background:#fbfcfa;max-width:980px;margin:2rem auto;padding:0 1.3rem}a{color:#075c89}h1{font-size:2.3rem;line-height:1.2}h2{margin-top:2rem}img{max-width:100%;height:auto}.math.display{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.5rem 0}math{font-size:1.04em}.math.display math{width:max-content;min-width:100%}.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle}pre{overflow-x:auto}nav,footer{border-block:1px solid #ccd8df;padding:1rem 0;margin:1.5rem 0}article{overflow-wrap:anywhere}table{border-collapse:collapse;max-width:100%;display:block;overflow-x:auto}td,th{border:1px solid #ccd;padding:.4rem}aside{background:#eef4f7;padding:1rem;border-radius:8px}</style>
+</head><body><main><nav><a href="index.html">Elliptic operators and boundary problems</a> · <a href="supporting-proofs.html">Learn first</a> · <a href="src/mixed-symbol-inversion.md">Markdown</a> · <a href="tex/mixed-symbol-inversion.tex">TeX</a> · <a href="pdf/mixed-symbol-inversion.pdf">PDF</a> · <a href="credits.html">Credits and terms</a></nav>
+<aside>Component license: GFDL-1.2-only. Original contributor notices remain in the source. HTML preparation: OpenAI Codex, GPT-6.1 Sol, Ultra effort. Programme proof and review evidence is retained for each lesson. This edition does not claim independent review of the whole course. <a href="component-notices/TITLE_PAGE.md">Authors and component terms</a></aside><details><summary>Contents</summary><ul><li><a href="#the-two-frequency-weights">1. The two frequency weights</a></li><li><a href="#exact-identity-map-to-bracket-weight-conventions">Exact identity
+map to bracket-weight conventions</a></li><li><a href="#an-exact-finite-formula-for-inverse-derivatives">2. An exact
+finite formula for inverse derivatives</a></li><li><a href="#a-cutoff-inverse-in-the-full-mixed-class">3. A cutoff inverse in
+the full mixed class</a></li><li><a href="#improvement-for-an-individual-frequency-derivative">4.
+Improvement for an individual frequency derivative</a></li><li><a href="#two-examples-with-different-purposes">5. Two examples with
+different purposes</a></li><li><a href="#solved-exercise-detect-an-invalid-commutation">6. Solved
+exercise: detect an invalid commutation</a></li><li><a href="#references">References</a></li></ul></details><article><h1 id="inverting-mixed-symbols-without-commuting-matrix-factors">Inverting
+mixed symbols without commuting matrix factors</h1>
+<p>The inversion problem addressed here is pointwise in phase space. Its
+output is a symbol with quantitative derivative estimates, so it can
+subsequently enter an operator construction. No composition or
+boundedness theorem for pseudodifferential operators is needed for the
+inversion itself.</p>
+<p><a href="euclidean-symbol-calculus.html">From symbol estimates to
+operators on every Sobolev scale</a> supplies the earlier symbol-space
+context. The calculation below uses multivariable differentiation, the
+product rule, matrix norms and smooth cutoffs; every mixed estimate
+needed here is proved directly.</p>
+<span id="AN03-MSI-001"></span><span id="an03-msi-001-the-two-frequency-weights"></span><span id="1-the-two-frequency-weights"></span><h2 id="the-two-frequency-weights">1. The two frequency weights</h2>
+<p>Fix integers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>,</mo><mi>N</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n,N\geq1</annotation></semantics></math></span>.
+Write</p>
+<p><span class="math display"><math display="block" id="eq-MSI1" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>ξ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo>,</mo><msub><mi>ξ</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>×</mo><mi mathvariant="double-struck">ℝ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI1)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+x=(x_1,\ldots,x_n)\in\mathbb R^n,&#13;
+\qquad&#13;
+\xi=(\xi',\xi_n)\in\mathbb R^{n-1}\times\mathbb R.&#13;
+\tag{MSI1}&#13;
+</annotation></semantics></math></span></p>
+<p>The matrix space is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>M</mi><mi>N</mi></msub><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℂ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">M_N(\mathbb C)</annotation></semantics></math></span>,
+equipped with the operator norm induced by the Euclidean norm on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℂ</mi><mi>N</mi></msup><annotation encoding="application/x-tex">\mathbb C^N</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>U</mi><mi>V</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><mo form="postfix" stretchy="false">∥</mo><mi>U</mi><mo form="postfix" stretchy="false">∥</mo><mo form="postfix" stretchy="false">∥</mo><mi>V</mi><mo form="postfix" stretchy="false">∥</mo></mrow><annotation encoding="application/x-tex">\|UV\|\leq\|U\|\|V\|</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>I</mi><mi>N</mi></msub><mo form="postfix" stretchy="false">∥</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|I_N\|=1</annotation></semantics></math></span>,
+and scalar multiplication has its usual absolute-value norm. For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math></span>,
+the vector
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ξ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\xi'</annotation></semantics></math></span>
+has no coordinates, its norm is zero, and every multiindex in its
+coordinates has length zero.</p>
+<p>For real numbers
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math></span>
+and multiindices
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>,</mo><mi>β</mi><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">\alpha,\beta\in\mathbb N_0^n</annotation></semantics></math></span>,
+put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>α</mi><mo>′</mo></msup><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>α</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\alpha'=(\alpha_1,\ldots,\alpha_{n-1})</annotation></semantics></math></span>
+and</p>
+<p><span class="math display"><math display="block" id="eq-MSI2" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>p</mi><mo>−</mo><msub><mi>α</mi><mi>n</mi></msub></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>q</mi><mo>−</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI2)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+W_{p,q;\alpha}(\xi)&#13;
+=(1+|\xi|)^{p-\alpha_n}&#13;
+ (1+|\xi'|)^{q-|\alpha'|}.&#13;
+\tag{MSI2}&#13;
+</annotation></semantics></math></span></p>
+<p>The original weights
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">1+|\xi|</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">1+|\xi'|</annotation></semantics></math></span>
+are retained throughout. They are positive numerical weights;
+differentiability of these weights at the origin is neither assumed nor
+used.</p>
+<p>A smooth function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>:</mo><msubsup><mi mathvariant="double-struck">ℝ</mi><mi>x</mi><mi>n</mi></msubsup><mo>×</mo><msubsup><mi mathvariant="double-struck">ℝ</mi><mi>ξ</mi><mi>n</mi></msubsup><mo>→</mo><msub><mi>M</mi><mi>N</mi></msub><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℂ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a:\mathbb R_x^n\times\mathbb R_\xi^n\to M_N(\mathbb C)</annotation></semantics></math></span>
+belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow></msup><annotation encoding="application/x-tex">S^{p,q}</annotation></semantics></math></span>
+when every number</p>
+<p><span class="math display"><math display="block" id="eq-MSI3" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>a</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mrow><mi>x</mi><mo>,</mo><mi>ξ</mi></mrow></munder><mfrac><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mi>x</mi><mi>β</mi></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo></mrow><mrow><msub><mi>W</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI3)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\|a\|_{p,q;\beta,\alpha}&#13;
+=\sup_{x,\xi}&#13;
+\frac{\|\partial_x^\beta\partial_\xi^\alpha a(x,\xi)\|}&#13;
+     {W_{p,q;\alpha}(\xi)}&#13;
+\tag{MSI3}&#13;
+</annotation></semantics></math></span></p>
+<p>is finite. In particular the constants are uniform in all
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x\in\mathbb R^n</annotation></semantics></math></span>;
+there is no implicit compact restriction on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></span>.
+The convention
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>j</mi></msub><mo>=</mo><mi>−</mi><mi>i</mi><msub><mi>∂</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">D_j=-i\partial_j</annotation></semantics></math></span>,
+if used in an operator realization, gives the same seminorms, because
+each derivative of fixed multiindex differs by a scalar of modulus one.
+We use ordinary derivatives in the identities below so that every sign
+is explicit.</p>
+<p>The product of two smooth matrix symbols satisfies the exact Leibniz
+identity</p>
+<p><span class="math display"><math display="block" id="eq-MSI4" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><mi>x</mi><mi>β</mi></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>u</mi><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>δ</mi><mo>≤</mo><mi>β</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi>ε</mi><mo>≤</mo><mi>α</mi></mrow></mtd></mtr></mtable></munder><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>β</mi><mi>δ</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>α</mi><mi>ε</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><mo form="prefix" stretchy="false">(</mo><msubsup><mi>∂</mi><mi>x</mi><mi>δ</mi></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mi>ε</mi></msubsup><mi>u</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msubsup><mi>∂</mi><mi>x</mi><mrow><mi>β</mi><mo>−</mo><mi>δ</mi></mrow></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mrow><mi>α</mi><mo>−</mo><mi>ε</mi></mrow></msubsup><mi>v</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI4)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial_x^\beta\partial_\xi^\alpha(uv)&#13;
+=\sum_{\substack{\delta\leq\beta\\\varepsilon\leq\alpha}}&#13;
+ \binom\beta\delta\binom\alpha\varepsilon&#13;
+ (\partial_x^\delta\partial_\xi^\varepsilon u)&#13;
+ (\partial_x^{\beta-\delta}\partial_\xi^{\alpha-\varepsilon}v).&#13;
+\tag{MSI4}&#13;
+</annotation></semantics></math></span></p>
+<p>No factors on the right are interchanged. To prove this identity,
+apply the ordinary one-coordinate product rule repeatedly; choosing
+which of the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\beta_j</annotation></semantics></math></span>
+derivatives acts on the left factor gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><msub><mi>β</mi><mi>j</mi></msub><msub><mi>δ</mi><mi>j</mi></msub></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">\binom{\beta_j}{\delta_j}</annotation></semantics></math></span>
+choices, and the frequency derivatives give the second collection of
+binomial factors. Multiplying these independent counts gives (MSI4).
+Since</p>
+<p><span class="math display"><math display="block" id="eq-MSI5" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>ε</mi></mrow></msub><msub><mi>W</mi><mrow><mi>r</mi><mo>,</mo><mi>t</mi><mo>;</mo><mi>α</mi><mo>−</mo><mi>ε</mi></mrow></msub><mo>=</mo><msub><mi>W</mi><mrow><mi>p</mi><mo>+</mo><mi>r</mi><mo>,</mo><mi>q</mi><mo>+</mo><mi>t</mi><mo>;</mo><mi>α</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+W_{p,q;\varepsilon}&#13;
+W_{r,t;\alpha-\varepsilon}&#13;
+=W_{p+r,q+t;\alpha},&#13;
+\tag{MSI5}&#13;
+</annotation></semantics></math></span></p>
+<p>submultiplicativity and (MSI4) prove that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>v</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>p</mi><mo>+</mo><mi>r</mi><mo>,</mo><mi>q</mi><mo>+</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">uv\in S^{p+r,q+t}</annotation></semantics></math></span>
+whenever
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow></msup></mrow><annotation encoding="application/x-tex">u\in S^{p,q}</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>r</mi><mo>,</mo><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">v\in S^{r,t}</annotation></semantics></math></span>.
+More precisely, its
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\beta,\alpha)</annotation></semantics></math></span>
+seminorm is bounded by the sum in (MSI4) with each differentiated factor
+replaced by its corresponding seminorm. This argument also applies on a
+subset of phase space whenever all derivatives in the displayed
+estimates exist in a neighborhood of each of its points.</p>
+<h3 id="exact-identity-map-to-bracket-weight-conventions">Exact identity
+map to bracket-weight conventions</h3>
+<p>Some statements use
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\langle\xi\rangle=(1+|\xi|^2)^{1/2}</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\langle\xi'\rangle=(1+|\xi'|^2)^{1/2}</annotation></semantics></math></span>.
+We retain the original weights and prove their precise correspondence
+with these additional weights. For every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\geq0</annotation></semantics></math></span>,
+<span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><msup><mi>s</mi><mn>2</mn></msup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>s</mi><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>≤</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msup><mi>s</mi><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo></mrow><annotation encoding="application/x-tex">&#13;
+ 1+s^2\leq(1+s)^2\leq2(1+s^2),&#13;
+</annotation></semantics></math></span> because the first difference is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>s</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">2s\geq0</annotation></semantics></math></span>
+and the second difference is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>s</mi><mo>−</mo><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(s-1)^2\geq0</annotation></semantics></math></span>.
+Thus the two positive ratios
+<span class="math display"><math display="block" id="eq-MSI5a" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow><mrow><mo form="prefix" stretchy="false">⟨</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">⟩</mo></mrow></mfrac><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">belong to </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo>,</mo><msqrt><mn>2</mn></msqrt><mo form="postfix" stretchy="false">]</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5a)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \frac{1+|\xi|}{\langle\xi\rangle},\qquad&#13;
+ \frac{1+|\xi'|}{\langle\xi'\rangle}&#13;
+ \quad\hbox{belong to }[1,\sqrt2].&#13;
+ \tag{MSI5a}&#13;
+</annotation></semantics></math></span> When
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math></span>,
+the second ratio is exactly one. For a real number
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>,
+put
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mo>+</mo></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t_+=\max(t,0)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mo>−</mo></msub><mo>=</mo><mrow><mi mathvariant="normal">max</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>t</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">t_-=\max(-t,0)</annotation></semantics></math></span>.
+Raising a number in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>1</mn><mo>,</mo><msqrt><mn>2</mn></msqrt><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[1,\sqrt2]</annotation></semantics></math></span>
+to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math></span>
+gives a number in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>t</mi><mo>−</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo><msup><mn>2</mn><mrow><msub><mi>t</mi><mo>+</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[2^{-t_-/2},2^{t_+/2}]</annotation></semantics></math></span>;
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&lt;0</annotation></semantics></math></span>
+the inequality reverses on taking the reciprocal, which proves this
+assertion in that case as well.</p>
+<p>Define the second, unchanged-derivative weight
+<span class="math display"><math display="block" id="eq-MSI5b" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>W</mi><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mrow><mi>p</mi><mo>−</mo><msub><mi>α</mi><mi>n</mi></msub></mrow></msup><mo form="prefix" stretchy="false">⟨</mo><msup><mi>ξ</mi><mo>′</mo></msup><msup><mo form="postfix" stretchy="false">⟩</mo><mrow><mi>q</mi><mo>−</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>u</mi><mo>=</mo><mi>p</mi><mo>−</mo><msub><mi>α</mi><mi>n</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><mi>v</mi><mo>=</mo><mi>q</mi><mo>−</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5b)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ \widetilde W_{p,q;\alpha}(\xi)&#13;
+ =\langle\xi\rangle^{p-\alpha_n}&#13;
+  \langle\xi'\rangle^{q-|\alpha'|},&#13;
+ \qquad u=p-\alpha_n,\quad v=q-|\alpha'|.&#13;
+ \tag{MSI5b}&#13;
+</annotation></semantics></math></span> Multiplying the two ratio bounds gives,
+for these exact real exponents,
+<span class="math display"><math display="block" id="eq-MSI5c" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>−</mo></msub><mo>+</mo><msub><mi>v</mi><mo>−</mo></msub><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mover><mi>W</mi><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mo>≤</mo><msub><mi>W</mi><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mo>≤</mo><msup><mn>2</mn><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>+</mo></msub><mo>+</mo><msub><mi>v</mi><mo>+</mo></msub><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mover><mi>W</mi><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>α</mi></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5c)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+ 2^{-(u_-+v_-)/2}\widetilde W_{p,q;\alpha}&#13;
+ \leq W_{p,q;\alpha}&#13;
+ \leq2^{(u_++v_+)/2}\widetilde W_{p,q;\alpha}.&#13;
+ \tag{MSI5c}&#13;
+</annotation></semantics></math></span> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo form="postfix" stretchy="false">∥</mo></mrow><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><annotation encoding="application/x-tex">\widetilde{\|f\|}_{p,q;\beta,\alpha}</annotation></semantics></math></span>
+denote (MSI3) with only its denominator changed to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>W</mi><mo accent="true">̃</mo></mover><annotation encoding="application/x-tex">\widetilde W</annotation></semantics></math></span>.
+Division by the positive bounds in (MSI5c), followed by the same
+supremum over all
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>,</mo><mi>ξ</mi></mrow><annotation encoding="application/x-tex">x,\xi</annotation></semantics></math></span>,
+proves
+<span class="math display"><math display="block" id="eq-MSI5d" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msup><mn>2</mn><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>−</mo></msub><mo>+</mo><msub><mi>v</mi><mo>−</mo></msub><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><msub><mover><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo form="postfix" stretchy="false">∥</mo></mrow><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><msub><mover><mrow><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><mo form="postfix" stretchy="false">∥</mo></mrow><mo accent="true">̃</mo></mover><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mo>≤</mo><msup><mn>2</mn><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>u</mi><mo>+</mo></msub><mo>+</mo><msub><mi>v</mi><mo>+</mo></msub><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mn>2</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mi>f</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5d)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\begin{aligned}&#13;
+ \|f\|_{p,q;\beta,\alpha}&#13;
+ &amp;\leq2^{(u_-+v_-)/2}\widetilde{\|f\|}_{p,q;\beta,\alpha},\\&#13;
+ \widetilde{\|f\|}_{p,q;\beta,\alpha}&#13;
+ &amp;\leq2^{(u_++v_+)/2}\|f\|_{p,q;\beta,\alpha}.&#13;
+\end{aligned}&#13;
+ \tag{MSI5d}&#13;
+</annotation></semantics></math></span> Therefore the identity on the actual
+smooth matrix functions is a continuous linear bijection between the two
+symbol spaces with their families of seminorms. The two inequalities
+prove continuity in both directions. It commutes with every derivative,
+preserves matrix multiplication in its original order, and preserves the
+actual cutoff inverse
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>.
+These are literal identities on the functions, not changes of
+phase-space coordinates or of the operator convention.</p>
+<p>The ellipticity constants also have definite transformations. Write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mi>R</mi></msub><mo>,</mo><msub><mi>C</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">c_R,C_R</annotation></semantics></math></span>
+for scalar lower-bound and inverse-norm constants using
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">R=1+|\xi|</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>c</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><mo>,</mo><msub><mi>C</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub></mrow><annotation encoding="application/x-tex">c_{\langle\cdot\rangle},C_{\langle\cdot\rangle}</annotation></semantics></math></span>
+for constants using
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">\langle\xi\rangle</annotation></semantics></math></span>.
+The following choices are valid on exactly the same set:
+<span class="math display"><math display="block" id="eq-MSI5e" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">|</mo><mi>a</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><msub><mi>c</mi><mi>R</mi></msub><msup><mi>R</mi><mi>m</mi></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><msub><mi>c</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><mo>=</mo><msub><mi>c</mi><mi>R</mi></msub><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>m</mi><mo>−</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="prefix" stretchy="false">|</mo><mi>a</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><msub><mi>c</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mi>m</mi></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><msub><mi>c</mi><mi>R</mi></msub><mo>=</mo><msub><mi>c</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>m</mi><mo>+</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>C</mi><mi>R</mi></msub><msup><mi>R</mi><mrow><mi>−</mi><mi>m</mi></mrow></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><msub><mi>C</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><mo>=</mo><msub><mi>C</mi><mi>R</mi></msub><msup><mn>2</mn><mrow><msub><mi>m</mi><mo>−</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mo form="postfix" stretchy="false">∥</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>C</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mrow><mi>−</mi><mi>m</mi></mrow></msup></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mspace width="0.222em"></mspace><mo>⇒</mo><mspace width="0.222em"></mspace><msub><mi>C</mi><mi>R</mi></msub><mo>=</mo><msub><mi>C</mi><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>⋅</mi><mo form="postfix" stretchy="false">⟩</mo></mrow></msub><msup><mn>2</mn><mrow><msub><mi>m</mi><mo>+</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mi>.</mi></mtd></mtr></mtable><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI5e)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\begin{aligned}&#13;
+ |a|\geq c_R R^m&#13;
+   &amp;\ \Longrightarrow\ c_{\langle\cdot\rangle}=c_R2^{-m_-/2},\\&#13;
+ |a|\geq c_{\langle\cdot\rangle}\langle\xi\rangle^m&#13;
+   &amp;\ \Longrightarrow\ c_R=c_{\langle\cdot\rangle}2^{-m_+/2},\\&#13;
+ \|a^{-1}\|\leq C_R R^{-m}&#13;
+   &amp;\ \Longrightarrow\ C_{\langle\cdot\rangle}=C_R2^{m_-/2},\\&#13;
+ \|a^{-1}\|\leq C_{\langle\cdot\rangle}\langle\xi\rangle^{-m}&#13;
+   &amp;\ \Longrightarrow\ C_R=C_{\langle\cdot\rangle}2^{m_+/2}.&#13;
+\end{aligned}&#13;
+ \tag{MSI5e}&#13;
+</annotation></semantics></math></span> For example the first implication
+follows from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>R</mi><mi>m</mi></msup><mo>≥</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>m</mi><mo>−</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">R^m\geq2^{-m_-/2}\langle\xi\rangle^m</annotation></semantics></math></span>;
+the second follows from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mi>m</mi></msup><mo>≥</mo><msup><mn>2</mn><mrow><mi>−</mi><msub><mi>m</mi><mo>+</mo></msub><mi>/</mi><mn>2</mn></mrow></msup><msup><mi>R</mi><mi>m</mi></msup></mrow><annotation encoding="application/x-tex">\langle\xi\rangle^m\geq2^{-m_+/2}R^m</annotation></semantics></math></span>.
+The last two apply the corresponding upper bounds to exponent
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">-m</annotation></semantics></math></span>.
+This proves all four implications, including negative and zero orders.
+Together with (MSI5d), it transfers every hypothesis and conclusion of
+the inverse theorem in both directions with explicit constants,
+retaining both weight presentations.</p>
+<span id="AN03-MSI-002"></span><span id="an03-msi-002-an-exact-finite-formula-for-inverse-derivatives"></span><span id="2-an-exact-finite-formula-for-inverse-derivatives"></span><h2 id="an-exact-finite-formula-for-inverse-derivatives">2. An exact
+finite formula for inverse derivatives</h2>
+<p>Use a combined multiindex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mrow><mn>2</mn><mi>n</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">\mu=(\beta,\alpha)\in\mathbb N_0^{2n}</annotation></semantics></math></span>,
+and write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>∂</mi><mi>μ</mi></msup><mo>=</mo><msubsup><mi>∂</mi><mi>x</mi><mi>β</mi></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup></mrow><annotation encoding="application/x-tex">\partial^\mu=\partial_x^\beta\partial_\xi^\alpha</annotation></semantics></math></span>.
+Inequalities and sums of combined multiindices are componentwise;
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mi>!</mi><mo>=</mo><msubsup><mo>∏</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mrow><mn>2</mn><mi>n</mi></mrow></msubsup><msub><mi>μ</mi><mi>j</mi></msub><mi>!</mi></mrow><annotation encoding="application/x-tex">\mu!=\prod_{j=1}^{2n}\mu_j!</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mo form="prefix" stretchy="false">|</mo><mi>ν</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">0&lt;|\nu|</annotation></semantics></math></span>
+means that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math></span>
+is nonzero.</p>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+be smooth on an open set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>2</mn><mi>n</mi></mrow></msup></mrow><annotation encoding="application/x-tex">V\subset\mathbb R^{2n}</annotation></semantics></math></span>,
+with every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(z)</annotation></semantics></math></span>
+invertible. The inverse
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">r=a^{-1}</annotation></semantics></math></span>
+is smooth: the cofactor formula expresses each entry of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></span>
+as a polynomial in the entries of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+divided by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">det</mi><mo>⁡</mo></mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">\det a</annotation></semantics></math></span>,
+a nowhere-zero smooth function on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\mu\ne0</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" id="eq-MSI6" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>∂</mi><mi>μ</mi></msup><mi>r</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mo form="prefix" stretchy="false">|</mo><mi>μ</mi><mo form="prefix" stretchy="false">|</mo></mrow></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mn>1</mn><msup><mo form="postfix" stretchy="false">)</mo><mi>k</mi></msup><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>ν</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>ν</mi><mi>k</mi></msub><mo>=</mo><mi>μ</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ν</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable></munder><mfrac><mrow><mi>μ</mi><mi>!</mi></mrow><mrow><msub><mi>ν</mi><mn>1</mn></msub><mi>!</mi><mi>⋯</mi><msub><mi>ν</mi><mi>k</mi></msub><mi>!</mi></mrow></mfrac><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>∂</mi><msub><mi>ν</mi><mn>1</mn></msub></msup><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mi>⋯</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>∂</mi><msub><mi>ν</mi><mi>k</mi></msub></msup><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI6)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial^\mu r&#13;
+=\sum_{k=1}^{|\mu|}(-1)^k&#13;
+ \sum_{\substack{\nu_1+\cdots+\nu_k=\mu\\|\nu_i|&gt;0}}&#13;
+ \frac{\mu!}{\nu_1!\cdots\nu_k!}&#13;
+ r(\partial^{\nu_1}a)r\cdots&#13;
+   (\partial^{\nu_k}a)r.&#13;
+\tag{MSI6}&#13;
+</annotation></semantics></math></span></p>
+<p>The inner sum is over ordered lists. This is essential: in general,
+two lists obtained by interchanging
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ν</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\nu_i</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ν</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\nu_j</annotation></semantics></math></span>
+produce different matrix products.</p>
+<p>Here is a finite algebraic proof of (MSI6). Fix
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>∈</mo><mi>V</mi></mrow><annotation encoding="application/x-tex">z\in V</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>≥</mo><mo form="prefix" stretchy="false">|</mo><mi>μ</mi><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">L\geq|\mu|</annotation></semantics></math></span>.
+Work with polynomials in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span>
+formal commuting variables
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>h</mi><mn>1</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>h</mi><mrow><mn>2</mn><mi>n</mi></mrow></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h=(h_1,\ldots,h_{2n})</annotation></semantics></math></span>,
+with matrix coefficients, and identify two polynomials when their
+difference contains only monomials of total degree greater than
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>L</mi><annotation encoding="application/x-tex">L</annotation></semantics></math></span>.
+For any smooth matrix function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>,
+form the finite polynomial</p>
+<p><span class="math display"><math display="block" id="eq-MSI7" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>L</mi></msub><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>h</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>L</mi></mrow></munder><mfrac><mrow><msup><mi>∂</mi><mi>η</mi></msup><mi>f</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mi>η</mi><mi>!</mi></mrow></mfrac><msup><mi>h</mi><mi>η</mi></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI7)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+J_Lf(h)=\sum_{|\eta|\leq L}&#13;
+ \frac{\partial^\eta f(z)}{\eta!}h^\eta.&#13;
+\tag{MSI7}&#13;
+</annotation></semantics></math></span></p>
+<p>Formula (MSI4), coefficient by coefficient, proves
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>L</mi></msub><mo form="prefix" stretchy="false">(</mo><mi>f</mi><mi>g</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>J</mi><mi>L</mi></msub><mi>f</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>J</mi><mi>L</mi></msub><mi>g</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">J_L(fg)=(J_Lf)(J_Lg)</annotation></semantics></math></span>
+in this finite quotient algebra. Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>z</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A=a(z)</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><msup><mi>A</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">R=A^{-1}</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><msub><mi>J</mi><mi>L</mi></msub><mi>a</mi><mo>−</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">H=J_La-A</annotation></semantics></math></span>.
+Every monomial of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+has positive degree. Consequently
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>R</mi><mi>H</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>L</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(RH)^{L+1}=0</annotation></semantics></math></span>
+in the quotient. Direct multiplication, without commuting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>,
+now gives</p>
+<p><span class="math display"><math display="block" id="eq-MSI8" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>A</mi><mo>+</mo><mi>H</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>L</mi></munderover><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>R</mi><mi>H</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>k</mi></msup><mi>R</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI8)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+(A+H)^{-1}&#13;
+=\sum_{k=0}^{L}(-RH)^kR.&#13;
+\tag{MSI8}&#13;
+</annotation></semantics></math></span></p>
+<p>Indeed
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>+</mo><mi>H</mi><mo>=</mo><mi>A</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mi>N</mi></msub><mo>+</mo><mi>R</mi><mi>H</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A+H=A(I_N+RH)</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>I</mi><mi>N</mi></msub><mo>+</mo><mi>R</mi><mi>H</mi><mo form="postfix" stretchy="false">)</mo><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>L</mi></msubsup><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>R</mi><mi>H</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>k</mi></msup><mo>=</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">(I_N+RH)\sum_{k=0}^{L}(-RH)^k=I_N</annotation></semantics></math></span>,
+with the same identity in the reverse order. On the other hand,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>L</mi></msub><mi>a</mi><mspace width="0.167em"></mspace><msub><mi>J</mi><mi>L</mi></msub><mi>r</mi><mo>=</mo><msub><mi>J</mi><mi>L</mi></msub><mi>r</mi><mspace width="0.167em"></mspace><msub><mi>J</mi><mi>L</mi></msub><mi>a</mi><mo>=</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">J_La\,J_Lr=J_Lr\,J_La=I_N</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>r</mi><mo>=</mo><mi>r</mi><mi>a</mi><mo>=</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">ar=ra=I_N</annotation></semantics></math></span>
+as actual smooth functions. An inverse in any associative algebra is
+unique: if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>Y</mi><mo>=</mo><mi>Y</mi><mi>X</mi><mo>=</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">XY=YX=I_N</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mi>Z</mi><mo>=</mo><mi>Z</mi><mi>X</mi><mo>=</mo><msub><mi>I</mi><mi>N</mi></msub></mrow><annotation encoding="application/x-tex">XZ=ZX=I_N</annotation></semantics></math></span>,
+then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Y</mi><mo>=</mo><mi>Y</mi><mo form="prefix" stretchy="false">(</mo><mi>X</mi><mi>Z</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>Y</mi><mi>X</mi><mo form="postfix" stretchy="false">)</mo><mi>Z</mi><mo>=</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">Y=Y(XZ)=(YX)Z=Z</annotation></semantics></math></span>.
+Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>J</mi><mi>L</mi></msub><mi>r</mi></mrow><annotation encoding="application/x-tex">J_Lr</annotation></semantics></math></span>
+equals (MSI8). The coefficient of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>h</mi><mi>μ</mi></msup><annotation encoding="application/x-tex">h^\mu</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mi>R</mi><mi>H</mi><msup><mo form="postfix" stretchy="false">)</mo><mi>k</mi></msup><mi>R</mi></mrow><annotation encoding="application/x-tex">(-RH)^kR</annotation></semantics></math></span>
+is the ordered product sum in (MSI6), divided by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mi>!</mi></mrow><annotation encoding="application/x-tex">\mu!</annotation></semantics></math></span>.
+Comparing coefficients proves the formula at the arbitrary point
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>z</mi><annotation encoding="application/x-tex">z</annotation></semantics></math></span>.</p>
+<p>In particular, for a single coordinate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>j</mi></msub><annotation encoding="application/x-tex">z_j</annotation></semantics></math></span>
+and for any two coordinates
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>z</mi><mi>j</mi></msub><mo>,</mo><msub><mi>z</mi><mi>l</mi></msub></mrow><annotation encoding="application/x-tex">z_j,z_l</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" id="eq-MSI9" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><mi>j</mi></msub><mi>r</mi><mo>=</mo><mi>−</mi><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>j</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>∂</mi><mi>l</mi></msub><msub><mi>∂</mi><mi>j</mi></msub><mi>r</mi><mo>=</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>l</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>j</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mo>+</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>j</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>l</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mo>−</mo><mi>r</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><mi>l</mi></msub><msub><mi>∂</mi><mi>j</mi></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><mi>r</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI9)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial_jr=-r(\partial_ja)r,&#13;
+\qquad&#13;
+\partial_l\partial_jr&#13;
+=r(\partial_la)r(\partial_ja)r&#13;
+ +r(\partial_ja)r(\partial_la)r&#13;
+ -r(\partial_l\partial_ja)r.&#13;
+\tag{MSI9}&#13;
+</annotation></semantics></math></span></p>
+<p>These identities hold for matrices with no symmetry, normality,
+positivity, or commutation assumptions.</p>
+<span id="AN03-MSI-003"></span><span id="an03-msi-003-a-cutoff-inverse-in-the-full-mixed-class"></span><span id="3-a-cutoff-inverse-in-the-full-mixed-class"></span><h2 id="a-cutoff-inverse-in-the-full-mixed-class">3. A cutoff inverse in
+the full mixed class</h2>
+<p><strong>Theorem.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">m\in\mathbb R</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>m</mi><mo>,</mo><mn>0</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><mo>;</mo><msub><mi>M</mi><mi>N</mi></msub><mo form="prefix" stretchy="false">(</mo><mi mathvariant="double-struck">ℂ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a\in S^{m,0}(\mathbb R^n\times\mathbb R^n;M_N(\mathbb C))</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msubsup><mi mathvariant="double-struck">ℝ</mi><mi>ξ</mi><mi>n</mi></msubsup><mo>;</mo><mi mathvariant="double-struck">ℂ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\chi\in C_c^\infty(\mathbb R_\xi^n;\mathbb C)</annotation></semantics></math></span>.
+Write</p>
+<p><span class="math display"><math display="block" id="eq-MSI10" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>S</mi><mo>=</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>θ</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI10)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\theta(\xi)=1-\chi(\xi),\qquad&#13;
+S=\operatorname{supp}\theta.&#13;
+\tag{MSI10}&#13;
+</annotation></semantics></math></span></p>
+<p>Suppose that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(x,\xi)</annotation></semantics></math></span>
+is invertible whenever
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">x\in\mathbb R^n</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\xi\in S</annotation></semantics></math></span>,
+and that a constant
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C_0&gt;0</annotation></semantics></math></span>
+satisfies</p>
+<p><span class="math display"><math display="block" id="eq-MSI11" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>C</mi><mn>0</mn></msub><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mi>m</mi></mrow></msup><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><mo>,</mo><mspace width="0.222em"></mspace><mi>ξ</mi><mo>∈</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI11)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\|a(x,\xi)^{-1}\|&#13;
+\leq C_0(1+|\xi|)^{-m}&#13;
+\qquad (x\in\mathbb R^n,\ \xi\in S).&#13;
+\tag{MSI11}&#13;
+</annotation></semantics></math></span></p>
+<p>Define the function on the whole phase space by</p>
+<p><span class="math display"><math display="block" id="eq-MSI12" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mi>θ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>ξ</mi><mo>∈</mo><mi>S</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mn>0</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>ξ</mi><mo>∉</mo><mi>S</mi><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI12)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+b(x,\xi)=&#13;
+\begin{cases}&#13;
+\theta(\xi)a(x,\xi)^{-1},&amp;\xi\in S,\\&#13;
+0,&amp;\xi\notin S.&#13;
+\end{cases}&#13;
+\tag{MSI12}&#13;
+</annotation></semantics></math></span></p>
+<p>Then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">b\in S^{-m,0}</annotation></semantics></math></span>,
+and the two pointwise identities</p>
+<p><span class="math display"><math display="block" id="eq-MSI13" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>θ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><msub><mi>I</mi><mi>N</mi></msub><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI13)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+a(x,\xi)b(x,\xi)=b(x,\xi)a(x,\xi)&#13;
+=\theta(\xi)I_N&#13;
+\tag{MSI13}&#13;
+</annotation></semantics></math></span></p>
+<p>hold on all of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mn>2</mn><mi>n</mi></mrow></msup><annotation encoding="application/x-tex">\mathbb R^{2n}</annotation></semantics></math></span>.
+In particular
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">b=a^{-1}</annotation></semantics></math></span>
+outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>χ</mi></mrow><annotation encoding="application/x-tex">\operatorname{supp}\chi</annotation></semantics></math></span>.
+The theorem imposes no invertibility condition where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>
+is identically zero in a neighborhood, and imposes neither reality nor
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>χ</mi><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\leq\chi\leq1</annotation></semantics></math></span>
+on the cutoff.</p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N=1</annotation></semantics></math></span>,
+the scalar hypothesis</p>
+<p><span class="math display"><math display="block" id="eq-MSI14" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mi>m</mi></msup><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>∈</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup><mo>,</mo><mspace width="0.222em"></mspace><mi>ξ</mi><mo>∈</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>c</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI14)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+|a(x,\xi)|\geq c(1+|\xi|)^m&#13;
+\quad (x\in\mathbb R^n,\ \xi\in S),\qquad c&gt;0,&#13;
+\tag{MSI14}&#13;
+</annotation></semantics></math></span></p>
+<p>is sufficient, with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><msup><mi>c</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">C_0=c^{-1}</annotation></semantics></math></span>.
+In that case (MSI12) is precisely the smooth extension of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1-\chi(\xi))/a(x,\xi)</annotation></semantics></math></span>
+by zero on the open region where
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mi>χ</mi></mrow><annotation encoding="application/x-tex">1-\chi</annotation></semantics></math></span>
+vanishes.</p>
+<p><strong>Proof, including seminorm constants.</strong> First we
+justify smoothness of the globally defined function. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>∉</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\xi_0\notin S</annotation></semantics></math></span>,
+then
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>
+is identically zero on a neighborhood of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\xi_0</annotation></semantics></math></span>,
+so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+is smooth near every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_0,\xi_0)</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ξ</mi><mn>0</mn></msub><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\xi_0\in S</annotation></semantics></math></span>,
+the invertible matrix
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">a(x_0,\xi_0)</annotation></semantics></math></span>
+remains invertible on some open neighborhood of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>ξ</mi><mn>0</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_0,\xi_0)</annotation></semantics></math></span>,
+because its continuous determinant is nonzero there after shrinking the
+neighborhood. On that neighborhood the smooth function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\theta a^{-1}</annotation></semantics></math></span>
+agrees with (MSI12): at points outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\theta=0</annotation></semantics></math></span>.
+Thus it is a local smooth representative of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+at every such point, including points of the boundary of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>.
+This proves smoothness without imposing an additional neighborhood lower
+bound in the hypotheses. Formula (MSI13) follows directly on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>;
+outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>,
+both sides are zero.</p>
+<p>For every combined multiindex
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ν</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>δ</mi><mo>,</mo><mi>ε</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\nu=(\delta,\varepsilon)</annotation></semantics></math></span>,
+let</p>
+<p><span class="math display"><math display="block" id="eq-MSI15" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>ν</mi></msub><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><mi>a</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>δ</mi><mo>,</mo><mi>ε</mi></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI15)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+A_\nu=\|a\|_{m,0;\delta,\varepsilon}.&#13;
+\tag{MSI15}&#13;
+</annotation></semantics></math></span></p>
+<p>Define the nonnegative finite constants</p>
+<p><span class="math display"><math display="block" id="eq-MSI16" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Q</mi><mn>0</mn></msub><mo>=</mo><msub><mi>C</mi><mn>0</mn></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>Q</mi><mi>μ</mi></msub><mo>=</mo><munderover><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mo form="prefix" stretchy="false">|</mo><mi>μ</mi><mo form="prefix" stretchy="false">|</mo></mrow></munderover><munder><mo>∑</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><msub><mi>ν</mi><mn>1</mn></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>ν</mi><mi>k</mi></msub><mo>=</mo><mi>μ</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ν</mi><mi>i</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr></mtable></munder><mfrac><mrow><mi>μ</mi><mi>!</mi></mrow><mrow><msub><mi>ν</mi><mn>1</mn></msub><mi>!</mi><mi>⋯</mi><msub><mi>ν</mi><mi>k</mi></msub><mi>!</mi></mrow></mfrac><msubsup><mi>C</mi><mn>0</mn><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msubsup><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><msub><mi>A</mi><msub><mi>ν</mi><mi>i</mi></msub></msub><mspace width="1.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>μ</mi><mo>≠</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI16)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+Q_0=C_0,&#13;
+\qquad&#13;
+Q_\mu=&#13;
+\sum_{k=1}^{|\mu|}&#13;
+ \sum_{\substack{\nu_1+\cdots+\nu_k=\mu\\|\nu_i|&gt;0}}&#13;
+ \frac{\mu!}{\nu_1!\cdots\nu_k!}&#13;
+ C_0^{k+1}\prod_{i=1}^{k}A_{\nu_i}&#13;
+\quad(\mu\ne0).&#13;
+\tag{MSI16}&#13;
+</annotation></semantics></math></span></p>
+<p>At a point with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\xi\in S</annotation></semantics></math></span>,
+the inverse derivatives are understood through the local smooth inverse
+just constructed. Every term in (MSI6) has
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math></span>
+factors
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">a^{-1}</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math></span>
+differentiated factors
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msup><mi>β</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mo>,</mo><msup><mi>α</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\nu_i=(\beta^{(i)},\alpha^{(i)})</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mo>∑</mo><mi>i</mi></msub><msub><mi>ν</mi><mi>i</mi></msub><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sum_i\nu_i=(\beta,\alpha)</annotation></semantics></math></span>,
+its total first-weight exponent is</p>
+<p><span class="math display"><math display="block" id="eq-MSI17" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>m</mi><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>−</mo><msubsup><mi>α</mi><mi>n</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>m</mi><mo>−</mo><msub><mi>α</mi><mi>n</mi></msub><mo>;</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI17)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+-(k+1)m+\sum_{i=1}^{k}(m-\alpha_n^{(i)})&#13;
+=-m-\alpha_n;&#13;
+\tag{MSI17}&#13;
+</annotation></semantics></math></span></p>
+<p>its second-weight exponent is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mo>∑</mo><mi>i</mi></msub><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><msup><mi></mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>i</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mo form="prefix" stretchy="false">|</mo><mo>=</mo><mi>−</mi><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">-\sum_i|\alpha'^{(i)}|=-|\alpha'|</annotation></semantics></math></span>.
+Therefore (MSI6), (MSI11), and the triangle inequality give the fully
+uniform bounds</p>
+<p><span class="math display"><math display="block" id="eq-MSI18" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msubsup><mi>∂</mi><mi>x</mi><mi>β</mi></msubsup><msubsup><mi>∂</mi><mi>ξ</mi><mi>α</mi></msubsup><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><msub><mi>Q</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><msub><mi>W</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mspace width="2.0em"></mspace><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo>∈</mo><mi>S</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI18)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\|\partial_x^\beta\partial_\xi^\alpha a^{-1}(x,\xi)\|&#13;
+\leq Q_{(\beta,\alpha)}W_{-m,0;\alpha}(\xi)&#13;
+\qquad (\xi\in S).&#13;
+\tag{MSI18}&#13;
+</annotation></semantics></math></span></p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mi>β</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha=\beta=0</annotation></semantics></math></span>,
+this is exactly (MSI11), so no derivative induction lacks a starting
+case.</p>
+<p>Choose a number
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R\geq1</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mi>χ</mi><mo>⊂</mo><mo form="prefix" stretchy="false">{</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>R</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">\operatorname{supp}\chi\subset\{|\xi|\leq R\}</annotation></semantics></math></span>;
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">R=1</annotation></semantics></math></span>
+is allowed when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\chi=0</annotation></semantics></math></span>.
+Set</p>
+<p><span class="math display"><math display="block" id="eq-MSI19" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>δ</mi></msub><mo>=</mo><munder><mi mathvariant="normal">sup</mi><mi>ξ</mi></munder><mo form="prefix" stretchy="false">|</mo><msubsup><mi>∂</mi><mi>ξ</mi><mi>δ</mi></msubsup><mi>θ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo form="prefix" stretchy="false">|</mo><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>L</mi><mi>δ</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">{</mo><mtable><mtr><mtd columnalign="left" style="text-align: left"><mn>1</mn><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>δ</mi><mo>=</mo><mn>0</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="left" style="text-align: left"><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>,</mo></mtd><mtd columnalign="left" style="text-align: left"><mi>δ</mi><mo>≠</mo><mn>0</mn><mi>.</mi></mtd></mtr></mtable></mrow><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI19)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+T_\delta=\sup_\xi|\partial_\xi^\delta\theta(\xi)|,&#13;
+\qquad&#13;
+L_\delta=&#13;
+\begin{cases}1,&amp;\delta=0,\\(1+R)^{|\delta|},&amp;\delta\ne0.&#13;
+\end{cases}&#13;
+\tag{MSI19}&#13;
+</annotation></semantics></math></span></p>
+<p>All
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mi>δ</mi></msub><annotation encoding="application/x-tex">T_\delta</annotation></semantics></math></span>
+are finite. For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta\ne0</annotation></semantics></math></span>,
+the derivative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>∂</mi><mi>δ</mi></msup><mi>θ</mi><mo>=</mo><mi>−</mi><msup><mi>∂</mi><mi>δ</mi></msup><mi>χ</mi></mrow><annotation encoding="application/x-tex">\partial^\delta\theta=-\partial^\delta\chi</annotation></semantics></math></span>
+is supported in the ball of radius
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math></span>.
+On that support,</p>
+<p><span class="math display"><math display="block" id="eq-MSI20" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msub><mi>W</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi><mo>−</mo><mi>δ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><msub><mi>W</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><msub><mi>δ</mi><mi>n</mi></msub></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>δ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>=</mo><msub><mi>L</mi><mi>δ</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI20)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\frac{W_{-m,0;\alpha-\delta}(\xi)}&#13;
+     {W_{-m,0;\alpha}(\xi)}&#13;
+=(1+|\xi|)^{\delta_n}(1+|\xi'|)^{|\delta'|}&#13;
+\leq (1+R)^{|\delta|}=L_\delta.&#13;
+\tag{MSI20}&#13;
+</annotation></semantics></math></span></p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta=0</annotation></semantics></math></span>,
+this ratio equals one everywhere. The product rule for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mi>θ</mi><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">b=\theta a^{-1}</annotation></semantics></math></span>,
+valid locally at every point of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>,
+now yields</p>
+<p><span class="math display"><math display="block" id="eq-MSI21" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>b</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>≤</mo><munder><mo>∑</mo><mrow><mi>δ</mi><mo>≤</mo><mi>α</mi></mrow></munder><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>α</mi><mi>δ</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><msub><mi>T</mi><mi>δ</mi></msub><msub><mi>L</mi><mi>δ</mi></msub><msub><mi>Q</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo>−</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI21)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\|b\|_{-m,0;\beta,\alpha}&#13;
+\leq&#13;
+\sum_{\delta\leq\alpha}&#13;
+ \binom\alpha\delta T_\delta L_\delta&#13;
+ Q_{(\beta,\alpha-\delta)}.&#13;
+\tag{MSI21}&#13;
+</annotation></semantics></math></span></p>
+<p>To see why this is also a global estimate, at every point outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+all derivatives of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+vanish on a neighborhood, and at every point of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+the preceding local calculation applies. This includes every boundary
+point; no omitted limiting argument is needed. The right side of (MSI21)
+is a finite number depending only on the explicitly listed constants and
+derivative orders. Hence all seminorms required for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{-m,0}</annotation></semantics></math></span>
+are finite. In the scalar case, (MSI14) gives (MSI11) by taking
+reciprocals of the positive numerical lower bound. This proves every
+assertion.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<span id="AN03-MSI-004"></span><span id="an03-msi-004-improvement-for-an-individual-frequency-derivative"></span><span id="4-improvement-for-an-individual-frequency-derivative"></span><h2 id="improvement-for-an-individual-frequency-derivative">4.
+Improvement for an individual frequency derivative</h2>
+<p><strong>Theorem.</strong> Retain all hypotheses of Section 3. Fix one
+index
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">j\in\{1,\ldots,n\}</annotation></semantics></math></span>.
+If</p>
+<p><span class="math display"><math display="block" id="eq-MSI22" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo>:=</mo><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI22)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+a_j:=\partial_{\xi_j}a\in S^{m-1,0},&#13;
+\tag{MSI22}&#13;
+</annotation></semantics></math></span></p>
+<p>then</p>
+<p><span class="math display"><math display="block" id="eq-MSI23" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>b</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>−</mi><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI23)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial_{\xi_j}b\in S^{-m-1,0}.&#13;
+\tag{MSI23}&#13;
+</annotation></semantics></math></span></p>
+<p>There is no hypothesis here on the other first frequency derivatives
+beyond
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>m</mi><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a\in S^{m,0}</annotation></semantics></math></span>.
+Consequently the same conclusion holds for any collection of indices for
+which (MSI22) holds, including all indices when the stronger assumption
+holds for all of them.</p>
+<p><strong>Proof.</strong> At every point with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><mi>S</mi></mrow><annotation encoding="application/x-tex">\xi\in S</annotation></semantics></math></span>,
+the exact matrix identity (MSI9) gives</p>
+<p><span class="math display"><math display="block" id="eq-MSI24" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>b</mi><mo>=</mo><mi>−</mi><mi>θ</mi><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>a</mi><mi>j</mi></msub><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>+</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>θ</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI24)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial_{\xi_j}b&#13;
+=-\theta a^{-1}a_j a^{-1}&#13;
+  +(\partial_{\xi_j}\theta)a^{-1}.&#13;
+\tag{MSI24}&#13;
+</annotation></semantics></math></span></p>
+<p>The order of the two inverses and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>j</mi></msub><annotation encoding="application/x-tex">a_j</annotation></semantics></math></span>
+is fixed. Each term has a smooth global extension by zero outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>.
+Indeed near a point of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>
+it is the displayed product of smooth functions and the locally defined
+smooth inverse. At a point outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>,
+all its derivatives, and the extended terms vanish on a neighborhood. On
+an overlap these local definitions agree. For the term involving
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>θ</mi></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}\theta</annotation></semantics></math></span>,
+observe that every derivative of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>
+vanishes outside
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span>
+is locally zero there. Thus the same gluing argument applies to that
+term.</p>
+<p>We give explicit bounds for every derivative in (MSI24). Let</p>
+<p><span class="math display"><math display="block" id="eq-MSI25" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>H</mi><mi>κ</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><mo form="postfix" stretchy="false">∥</mo><msub><mi>a</mi><mi>j</mi></msub><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>;</mo><msub><mi>κ</mi><mi>x</mi></msub><mo>,</mo><msub><mi>κ</mi><mi>ξ</mi></msub></mrow></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">for </mtext><mspace width="0.333em"></mspace></mrow><mi>κ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>κ</mi><mi>x</mi></msub><mo>,</mo><msub><mi>κ</mi><mi>ξ</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mrow><mn>2</mn><mi>n</mi></mrow></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI25)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+H^{(j)}_\kappa&#13;
+=\|a_j\|_{m-1,0;\kappa_x,\kappa_\xi}&#13;
+\quad&#13;
+\text{for }\kappa=(\kappa_x,\kappa_\xi)\in\mathbb N_0^{2n}.&#13;
+\tag{MSI25}&#13;
+</annotation></semantics></math></span></p>
+<p>When
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mu=(\beta,\alpha)</annotation></semantics></math></span>,
+a term in the repeated product rule for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mi>a</mi><mi>j</mi></msub><msup><mi>a</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\theta a^{-1}a_j a^{-1}</annotation></semantics></math></span>
+is indexed by</p>
+<p><span class="math display"><math display="block" id="eq-MSI26" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>ν</mi><mo>+</mo><mi>κ</mi><mo>+</mo><mi>λ</mi><mo>=</mo><mi>μ</mi><mo>,</mo><mspace width="2.0em"></mspace><mi>δ</mi><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mi>n</mi></msubsup><mo>,</mo><mspace width="1.0em"></mspace><mi>ν</mi><mo>,</mo><mi>κ</mi><mo>,</mo><mi>λ</mi><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mrow><mn>2</mn><mi>n</mi></mrow></msubsup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI26)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+(0,\delta)+\nu+\kappa+\lambda=\mu,&#13;
+\qquad \delta\in\mathbb N_0^n,&#13;
+\quad \nu,\kappa,\lambda\in\mathbb N_0^{2n}.&#13;
+\tag{MSI26}&#13;
+</annotation></semantics></math></span></p>
+<p>The differentiated three matrix factors have combined first exponent
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>m</mi><mo>+</mo><mo form="prefix" stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mi>m</mi><mo>−</mo><mo form="prefix" stretchy="false">(</mo><msub><mi>α</mi><mi>n</mi></msub><mo>−</mo><msub><mi>δ</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>m</mi><mo>−</mo><mn>1</mn><mo>−</mo><msub><mi>α</mi><mi>n</mi></msub><mo>+</mo><msub><mi>δ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">-m+(m-1)-m-(\alpha_n-\delta_n)=-m-1-\alpha_n+\delta_n</annotation></semantics></math></span>,
+and combined second exponent
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mi>+</mi><mo form="prefix" stretchy="false">|</mo><msup><mi>δ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">-|\alpha'|+|\delta'|</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta=0</annotation></semantics></math></span>,
+these are exactly the desired exponents. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta\ne0</annotation></semantics></math></span>,
+the cutoff derivative restricts the term to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">|\xi|\leq R</annotation></semantics></math></span>,
+and the weight correction is bounded by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>L</mi><mi>δ</mi></msub><annotation encoding="application/x-tex">L_\delta</annotation></semantics></math></span>,
+exactly as in (MSI20). Thus the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(\beta,\alpha)</annotation></semantics></math></span>
+seminorm of the first term of (MSI24), in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>−</mi><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{-m-1,0}</annotation></semantics></math></span>,
+is at most</p>
+<p><span class="math display"><math display="block" id="eq-MSI27" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>U</mi><mi>μ</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>ν</mi><mo>+</mo><mi>κ</mi><mo>+</mo><mi>λ</mi><mo>=</mo><mi>μ</mi></mrow></munder><mfrac><mrow><mi>μ</mi><mi>!</mi></mrow><mrow><mi>δ</mi><mi>!</mi><mi>ν</mi><mi>!</mi><mi>κ</mi><mi>!</mi><mi>λ</mi><mi>!</mi></mrow></mfrac><msub><mi>T</mi><mi>δ</mi></msub><msub><mi>L</mi><mi>δ</mi></msub><msub><mi>Q</mi><mi>ν</mi></msub><msubsup><mi>H</mi><mi>κ</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><msub><mi>Q</mi><mi>λ</mi></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI27)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+U_\mu^{(j)}=&#13;
+\sum_{(0,\delta)+\nu+\kappa+\lambda=\mu}&#13;
+ \frac{\mu!}{\delta!\nu!\kappa!\lambda!}&#13;
+ T_\delta L_\delta Q_\nu H^{(j)}_\kappa Q_\lambda.&#13;
+\tag{MSI27}&#13;
+</annotation></semantics></math></span></p>
+<p>Here
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo><mi>!</mi><mo>=</mo><mi>δ</mi><mi>!</mi></mrow><annotation encoding="application/x-tex">(0,\delta)!=\delta!</annotation></semantics></math></span>,
+which accounts for the denominator. The finite multinomial count follows
+from the same derivative-choice argument that proved (MSI4), now with
+four factors.</p>
+<p>For the second term of (MSI24), apply the product rule with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>≤</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\delta\leq\alpha</annotation></semantics></math></span>
+derivatives hitting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>θ</mi></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}\theta</annotation></semantics></math></span>.
+All such cutoff factors are supported in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mi>R</mi></mrow><annotation encoding="application/x-tex">|\xi|\leq R</annotation></semantics></math></span>,
+even for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta=0</annotation></semantics></math></span>,
+because their total derivative order
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo><mi>+</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">|\delta|+1</annotation></semantics></math></span>
+is positive. Their weight comparison is</p>
+<p><span class="math display"><math display="block" id="eq-MSI28" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><msub><mi>W</mi><mrow><mi>−</mi><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi><mo>−</mo><mi>δ</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><msub><mi>W</mi><mrow><mi>−</mi><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi></mrow></msub><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mo>=</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mo>+</mo><msub><mi>δ</mi><mi>n</mi></msub></mrow></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>δ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow></msup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI28)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\frac{W_{-m,0;\alpha-\delta}(\xi)}&#13;
+     {W_{-m-1,0;\alpha}(\xi)}&#13;
+=(1+|\xi|)^{1+\delta_n}&#13;
+ (1+|\xi'|)^{|\delta'|}&#13;
+\leq(1+R)^{1+|\delta|}.&#13;
+\tag{MSI28}&#13;
+</annotation></semantics></math></span></p>
+<p>If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mi>j</mi></msub><mo>∈</mo><msubsup><mi mathvariant="double-struck">ℕ</mi><mn>0</mn><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">e_j\in\mathbb N_0^n</annotation></semantics></math></span>
+is the
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math></span>-th
+frequency multiindex, the second term therefore has seminorm at most</p>
+<p><span class="math display"><math display="block" id="eq-MSI29" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>V</mi><mi>μ</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>=</mo><munder><mo>∑</mo><mrow><mi>δ</mi><mo>≤</mo><mi>α</mi></mrow></munder><mrow><mo form="prefix" stretchy="true">(</mo><mfrac linethickness="0"><mi>α</mi><mi>δ</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><msub><mi>T</mi><mrow><mi>δ</mi><mo>+</mo><msub><mi>e</mi><mi>j</mi></msub></mrow></msub><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>R</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>δ</mi><mo form="prefix" stretchy="false">|</mo></mrow></msup><msub><mi>Q</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo>−</mo><mi>δ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI29)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+V_\mu^{(j)}=&#13;
+\sum_{\delta\leq\alpha}&#13;
+ \binom\alpha\delta T_{\delta+e_j}&#13;
+ (1+R)^{1+|\delta|}Q_{(\beta,\alpha-\delta)}.&#13;
+\tag{MSI29}&#13;
+</annotation></semantics></math></span></p>
+<p>Combining (MSI24), (MSI27), and (MSI29) gives</p>
+<p><span class="math display"><math display="block" id="eq-MSI30" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>b</mi><msub><mo form="postfix" stretchy="false">∥</mo><mrow><mi>−</mi><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>;</mo><mi>β</mi><mo>,</mo><mi>α</mi></mrow></msub><mo>≤</mo><msubsup><mi>U</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>+</mo><msubsup><mi>V</mi><mrow><mo form="prefix" stretchy="false">(</mo><mi>β</mi><mo>,</mo><mi>α</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mi>j</mi><mo form="postfix" stretchy="false">)</mo></mrow></msubsup><mo>&lt;</mo><mi>∞</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI30)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\|\partial_{\xi_j}b\|_{-m-1,0;\beta,\alpha}&#13;
+\leq U_{(\beta,\alpha)}^{(j)}+V_{(\beta,\alpha)}^{(j)}&lt;\infty.&#13;
+\tag{MSI30}&#13;
+</annotation></semantics></math></span></p>
+<p>The local extension argument again makes these global bounds. This
+proves (MSI23) for the chosen
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math></span>,
+without invoking any condition on another first derivative.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>There is an immediate distinction between the normal and tangential
+indices. The normal case
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=n</annotation></semantics></math></span>
+of (MSI22) follows already from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>m</mi><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a\in S^{m,0}</annotation></semantics></math></span>,
+since</p>
+<p><span class="math display"><math display="block" id="eq-MSI31" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>W</mi><mrow><mi>m</mi><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi><mo>+</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></msub><mo>=</mo><msub><mi>W</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>;</mo><mi>α</mi></mrow></msub><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI31)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+W_{m,0;\alpha+e_n}=W_{m-1,0;\alpha}.&#13;
+\tag{MSI31}&#13;
+</annotation></semantics></math></span></p>
+<p>For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j&lt;n</annotation></semantics></math></span>,
+the original class instead yields
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mi>m</mi><mo>,</mo><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}a\in S^{m,-1}</annotation></semantics></math></span>.
+The first-frequency weight and second-frequency weight have different
+behavior when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mi>n</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">|\xi_n|\to\infty</annotation></semantics></math></span>
+while
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ξ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\xi'</annotation></semantics></math></span>
+is fixed. The following explicit example proves that the tangential
+improvement cannot be inferred from the original class alone.</p>
+<span id="AN03-MSI-005"></span><span id="an03-msi-005-two-examples-with-different-purposes"></span><span id="5-two-examples-with-different-purposes"></span><h2 id="two-examples-with-different-purposes">5. Two examples with
+different purposes</h2>
+<p><strong>A singular matrix in the discarded region.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">N=2</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n\geq1</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">m=2</annotation></semantics></math></span>,
+and</p>
+<p><span class="math display"><math display="block" id="eq-MSI32" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><msub><mi>I</mi><mn>2</mn></msub><mo>+</mo><mi>J</mi><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI32)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+J=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},&#13;
+\qquad&#13;
+a(x,\xi)=|\xi|^2I_2+J.&#13;
+\tag{MSI32}&#13;
+</annotation></semantics></math></span></p>
+<p>This symbol is independent of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^2=0</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>J</mi><mo form="postfix" stretchy="false">∥</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\|J\|=1</annotation></semantics></math></span>.
+It belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mn>2</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{2,0}</annotation></semantics></math></span>,
+as may be checked at every derivative order directly. At order zero,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>a</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\|a\|\leq|\xi|^2+1\leq(1+|\xi|)^2</annotation></semantics></math></span>.
+At a first frequency derivative,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><mi>a</mi><mo>=</mo><mn>2</mn><msub><mi>ξ</mi><mi>j</mi></msub><msub><mi>I</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}a=2\xi_jI_2</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=n</annotation></semantics></math></span>,
+this is bounded by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(1+|\xi|)</annotation></semantics></math></span>,
+the required normal weight. For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j&lt;n</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow><annotation encoding="application/x-tex">|\xi_j|\leq|\xi'|</annotation></semantics></math></span>,
+so</p>
+<p><span class="math display"><math display="block" id="eq-MSI33" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mi>j</mi></msub><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mn>2</mn><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo>≤</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI33)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+2|\xi_j|(1+|\xi'|)&#13;
+\leq2|\xi'|(1+|\xi'|)&#13;
+\leq2(1+|\xi|)^2.&#13;
+\tag{MSI33}&#13;
+</annotation></semantics></math></span></p>
+<p>At order two, the only nonzero derivatives are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub><mn>2</mn></msubsup><mi>a</mi><mo>=</mo><mn>2</mn><msub><mi>I</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}^2a=2I_2</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=n</annotation></semantics></math></span>,
+the prescribed weight is one. For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j&lt;n</annotation></semantics></math></span>,
+it is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(1+|\xi|)^2(1+|\xi'|)^{-2}\geq1</annotation></semantics></math></span>.
+All mixed second derivatives, all derivatives of order greater than two,
+and every positive-order
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math></span>
+derivative vanish. These observations prove all required seminorm
+bounds.</p>
+<p>Every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><mn>2</mn><msub><mi>ξ</mi><mi>j</mi></msub><msub><mi>I</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">a_j=2\xi_jI_2</annotation></semantics></math></span>
+also lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{1,0}</annotation></semantics></math></span>.
+At order zero its norm is at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(1+|\xi|)</annotation></semantics></math></span>.
+Its only possibly nonzero positive-order derivative is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mi>j</mi></msub></msub><msub><mi>a</mi><mi>j</mi></msub><mo>=</mo><mn>2</mn><msub><mi>I</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\partial_{\xi_j}a_j=2I_2</annotation></semantics></math></span>;
+the required weight is one if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j=n</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo form="postfix" stretchy="false">)</mo><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">(1+|\xi|)/(1+|\xi'|)\geq1</annotation></semantics></math></span>
+if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&lt;</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">j&lt;n</annotation></semantics></math></span>.
+All other derivatives vanish.</p>
+<p>Choose a smooth cutoff
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\chi(\xi)</annotation></semantics></math></span>
+equal to one when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi|\leq1</annotation></semantics></math></span>,
+equal to zero when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">|\xi|\geq2</annotation></semantics></math></span>,
+and taking values in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo form="postfix" stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0,1]</annotation></semantics></math></span>.
+Such a cutoff can be made explicitly. Define
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mi>t</mi></mrow></msup></mrow><annotation encoding="application/x-tex">h(t)=e^{-1/t}</annotation></semantics></math></span>
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&gt;0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>t</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h(t)=0</annotation></semantics></math></span>
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t\leq0</annotation></semantics></math></span>;
+repeated differentiation for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t&gt;0</annotation></semantics></math></span>
+gives a polynomial in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>t</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">t^{-1}</annotation></semantics></math></span>
+times
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mi>−</mi><mn>1</mn><mi>/</mi><mi>t</mi></mrow></msup><annotation encoding="application/x-tex">e^{-1/t}</annotation></semantics></math></span>,
+which tends to zero as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>↓</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">t\downarrow0</annotation></semantics></math></span>,
+at every derivative order. Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math></span>
+is smooth. Set</p>
+<p><span class="math display"><math display="block" id="eq-MSI34" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>χ</mi><mo form="prefix" stretchy="false">(</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mn>4</mn><mo>−</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mn>4</mn><mo>−</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI34)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\chi(\xi)&#13;
+=\frac{h(4-|\xi|^2)}&#13;
+       {h(4-|\xi|^2)+h(|\xi|^2-1)}.&#13;
+\tag{MSI34}&#13;
+</annotation></semantics></math></span></p>
+<p>The denominator is strictly positive for every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math></span>:
+if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi|^2\leq1</annotation></semantics></math></span>,
+the first term is positive; if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>≥</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">|\xi|^2\geq4</annotation></semantics></math></span>,
+the second is positive; in between both are positive. This proves
+smoothness and all stated cutoff properties, including compact support.
+Every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ξ</mi><mo>∈</mo><mrow><mi mathvariant="normal">supp</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>χ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\xi\in\operatorname{supp}(1-\chi)</annotation></semantics></math></span>
+has
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi|\geq1</annotation></semantics></math></span>.
+For such
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math></span>,
+direct multiplication using
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>J</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">J^2=0</annotation></semantics></math></span>
+gives</p>
+<p><span class="math display"><math display="block" id="eq-MSI35" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><msub><mi>I</mi><mn>2</mn></msub><mo>−</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>−</mi><mn>4</mn></mrow></msup><mi>J</mi><mo>,</mo><mspace width="2.0em"></mspace><mo form="postfix" stretchy="false">∥</mo><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><mn>2</mn><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><msup><mo form="prefix" stretchy="false">|</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mo>≤</mo><mn>8</mn><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>2</mn></mrow></msup><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI35)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+a(x,\xi)^{-1}=|\xi|^{-2}I_2-|\xi|^{-4}J,&#13;
+\qquad&#13;
+\|a(x,\xi)^{-1}\|&#13;
+\leq2|\xi|^{-2}\leq8(1+|\xi|)^{-2}.&#13;
+\tag{MSI35}&#13;
+</annotation></semantics></math></span></p>
+<p>Thus (MSI11) holds with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">C_0=8</annotation></semantics></math></span>.
+The resulting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>−</mi><mn>2</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{-2,0}</annotation></semantics></math></span>,
+and every frequency derivative belongs to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>−</mi><mn>3</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{-3,0}</annotation></semantics></math></span>.
+Although
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>J</mi></mrow><annotation encoding="application/x-tex">a(x,0)=J</annotation></semantics></math></span>
+is singular,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b=0</annotation></semantics></math></span>
+on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>ξ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">|\xi|\leq1</annotation></semantics></math></span>,
+and the globally smooth inverse construction remains valid. This
+verifies concretely why global invertibility of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+is unnecessary.</p>
+<p><strong>A tangential derivative that does not improve.</strong> Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n\geq2</annotation></semantics></math></span>,
+and choose a real-valued
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>φ</mi><mo>∈</mo><msubsup><mi>C</mi><mi>c</mi><mi>∞</mi></msubsup><mo form="prefix" stretchy="false">(</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\varphi\in C_c^\infty(\mathbb R^{n-1})</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>φ</mi><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><mn>1</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">|\varphi|\leq1/2</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mn>1</mn></msub></msub><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\partial_{\xi_1}\varphi(\eta)\ne0</annotation></semantics></math></span>
+at some point
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>η</mi><annotation encoding="application/x-tex">\eta</annotation></semantics></math></span>.
+Such a function is obtained by multiplying the coordinate
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\xi_1</annotation></semantics></math></span>
+by a smooth cutoff equal to one near the origin and then multiplying by
+a sufficiently small positive constant; the cutoff is constructed by the
+same one-variable function
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math></span>
+as in (MSI34). Put</p>
+<p><span class="math display"><math display="block" id="eq-MSI36" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo>+</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>χ</mi><mo>=</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo>+</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI36)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+a(x,\xi)=2+\varphi(\xi'),\qquad \chi=0,&#13;
+\qquad b(x,\xi)=\frac1{2+\varphi(\xi')}.&#13;
+\tag{MSI36}&#13;
+</annotation></semantics></math></span></p>
+<p>The symbol
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+is scalar and at least
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">3/2</annotation></semantics></math></span>.
+To verify
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><msup><mi>S</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a\in S^{0,0}</annotation></semantics></math></span>,
+if
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_n&gt;0</annotation></semantics></math></span>
+or
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta\ne0</annotation></semantics></math></span>,
+the required derivative is zero. If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta=0</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_n=0</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">|\alpha'|&gt;0</annotation></semantics></math></span>,
+the derivative
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><msup><mi>ξ</mi><mo>′</mo></msup><msup><mi>α</mi><mo>′</mo></msup></msubsup><mi>φ</mi></mrow><annotation encoding="application/x-tex">\partial_{\xi'}^{\alpha'}\varphi</annotation></semantics></math></span>
+has compact support in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ξ</mi><mo>′</mo></msup><annotation encoding="application/x-tex">\xi'</annotation></semantics></math></span>.
+If that support lies in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>ξ</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><msub><mi>R</mi><mi>φ</mi></msub></mrow><annotation encoding="application/x-tex">|\xi'|\leq R_\varphi</annotation></semantics></math></span>,
+the required seminorm is at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><msup><mi>∂</mi><msup><mi>α</mi><mo>′</mo></msup></msup><mi>φ</mi><msub><mo form="postfix" stretchy="false">∥</mo><mi>∞</mi></msub><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msub><mi>R</mi><mi>φ</mi></msub><msup><mo form="postfix" stretchy="false">)</mo><mrow><mo form="prefix" stretchy="false">|</mo><msup><mi>α</mi><mo>′</mo></msup><mo form="prefix" stretchy="false">|</mo></mrow></msup></mrow><annotation encoding="application/x-tex">\|\partial^{\alpha'}\varphi\|_\infty(1+R_\varphi)^{|\alpha'|}</annotation></semantics></math></span>.
+The order-zero seminorm is at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">5/2</annotation></semantics></math></span>.
+Thus every required estimate is established. The inverse bound (MSI11)
+holds for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m=0</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><mn>2</mn><mi>/</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">C_0=2/3</annotation></semantics></math></span>,
+and Section 3 yields
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>∈</mo><msup><mi>S</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">b\in S^{0,0}</annotation></semantics></math></span>.</p>
+<p>At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ξ</mi><mo>′</mo></msup><mo>=</mo><mi>η</mi></mrow><annotation encoding="application/x-tex">\xi'=\eta</annotation></semantics></math></span>,
+however,</p>
+<p><span class="math display"><math display="block" id="eq-MSI37" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mn>1</mn></msub></msub><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>η</mi><mo>,</mo><msub><mi>ξ</mi><mi>n</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mfrac><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mn>1</mn></msub></msub><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo></mrow><mrow><mo form="prefix" stretchy="false">(</mo><mn>2</mn><mo>+</mo><mi>φ</mi><mo form="prefix" stretchy="false">(</mo><mi>η</mi><mo form="postfix" stretchy="false">)</mo><msup><mo form="postfix" stretchy="false">)</mo><mn>2</mn></msup></mrow></mfrac><mo>≠</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI37)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\partial_{\xi_1}b(x,\eta,\xi_n)&#13;
+=-\frac{\partial_{\xi_1}\varphi(\eta)}&#13;
+        {(2+\varphi(\eta))^2}\ne0,&#13;
+\tag{MSI37}&#13;
+</annotation></semantics></math></span></p>
+<p>independently of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\xi_n</annotation></semantics></math></span>.
+The order-zero estimate for membership in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{-1,0}</annotation></semantics></math></span>
+would bound the absolute value of this nonzero constant by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo form="prefix" stretchy="false">(</mo><mn>1</mn><mo>+</mo><msqrt><mrow><mo form="prefix" stretchy="false">|</mo><mi>η</mi><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo>+</mo><msubsup><mi>ξ</mi><mi>n</mi><mn>2</mn></msubsup></mrow></msqrt><msup><mo form="postfix" stretchy="false">)</mo><mrow><mi>−</mi><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">C(1+\sqrt{|\eta|^2+\xi_n^2})^{-1}</annotation></semantics></math></span>
+for all
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ξ</mi><mi>n</mi></msub><annotation encoding="application/x-tex">\xi_n</annotation></semantics></math></span>.
+The right side tends to zero as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><msub><mi>ξ</mi><mi>n</mi></msub><mo form="prefix" stretchy="false">|</mo><mo>→</mo><mi>∞</mi></mrow><annotation encoding="application/x-tex">|\xi_n|\to\infty</annotation></semantics></math></span>,
+which is impossible. Therefore
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mn>1</mn></msub></msub><mi>b</mi><mo>∉</mo><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\partial_{\xi_1}b\notin S^{-1,0}</annotation></semantics></math></span>.
+The same argument shows
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>ξ</mi><mn>1</mn></msub></msub><mi>a</mi><mo>∉</mo><msup><mi>S</mi><mrow><mi>−</mi><mn>1</mn><mo>,</mo><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\partial_{\xi_1}a\notin S^{-1,0}</annotation></semantics></math></span>.
+This example preserves the full original mixed class while proving that
+the extra tangential assumption in (MSI22) has mathematical content.</p>
+<span id="AN03-MSI-006"></span><span id="an03-msi-006-solved-exercise-detect-an-invalid-commutation"></span><span id="6-solved-exercise-detect-an-invalid-commutation"></span><h2 id="solved-exercise-detect-an-invalid-commutation">6. Solved
+exercise: detect an invalid commutation</h2>
+<p><strong>Exercise.</strong> For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n\geq1</annotation></semantics></math></span>,
+take a matrix symbol independent of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ξ</mi><annotation encoding="application/x-tex">\xi</annotation></semantics></math></span>
+and of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi>…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_2,\ldots,x_n</annotation></semantics></math></span>,
+defined by</p>
+<p><span class="math display"><math display="block" id="eq-MSI38" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mi>χ</mi><mo>=</mo><mn>0</mn><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI38)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+a(x,\xi)=&#13;
+\begin{pmatrix}1&amp;\sin x_1\\\cos x_1&amp;1\end{pmatrix},&#13;
+\qquad \chi=0.&#13;
+\tag{MSI38}&#13;
+</annotation></semantics></math></span></p>
+<p>Prove that Section 3 applies with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m=0</annotation></semantics></math></span>.
+Compute
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∂</mi><msub><mi>x</mi><mn>1</mn></msub></msub><mi>b</mi></mrow><annotation encoding="application/x-tex">\partial_{x_1}b</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>∂</mi><msub><mi>x</mi><mn>1</mn></msub><mn>2</mn></msubsup><mi>b</mi></mrow><annotation encoding="application/x-tex">\partial_{x_1}^2b</annotation></semantics></math></span>
+at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_1=0</annotation></semantics></math></span>.
+Determine whether replacing the inverse derivative by
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>∂</mi><msub><mi>x</mi><mn>1</mn></msub></msub><mi>a</mi><mo form="postfix" stretchy="false">)</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">- (\partial_{x_1}a)b^2</annotation></semantics></math></span>
+gives the correct first derivative there. Finally, explain the
+frequency-derivative conclusion for this example.</p>
+<p><strong>Solution.</strong> Every
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span>
+derivative of every entry of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+is bounded, and all positive-order frequency derivatives vanish. These
+facts verify every seminorm of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{0,0}</annotation></semantics></math></span>:
+when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha=0</annotation></semantics></math></span>,
+the denominator in (MSI3) is one; when
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha\ne0</annotation></semantics></math></span>,
+the numerator vanishes. The determinant is</p>
+<p><span class="math display"><math display="block" id="eq-MSI39" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>1</mn><mo>−</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub><mo>≥</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>,</mo><mspace width="2.0em"></mspace><mi>b</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>ξ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>d</mi><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo form="postfix" stretchy="false">)</mo></mrow></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI39)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+d(x_1)=1-\sin x_1\cos x_1\geq\tfrac12,&#13;
+\qquad&#13;
+b(x,\xi)=\frac1{d(x_1)}&#13;
+\begin{pmatrix}1&amp;-\sin x_1\\-\cos x_1&amp;1\end{pmatrix}.&#13;
+\tag{MSI39}&#13;
+</annotation></semantics></math></span></p>
+<p>The bound on the determinant follows from
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo form="prefix" stretchy="false">|</mo><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><msub><mi>x</mi><mn>1</mn></msub><mo form="prefix" stretchy="false">|</mo><mo>≤</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2|\sin x_1\cos x_1|\leq\sin^2x_1+\cos^2x_1=1</annotation></semantics></math></span>.
+The numerator matrix has squared Frobenius norm
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>+</mo><msup><mrow><mi mathvariant="normal">sin</mi><mo>⁡</mo></mrow><mn>2</mn></msup><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msup><mrow><mi mathvariant="normal">cos</mi><mo>⁡</mo></mrow><mn>2</mn></msup><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">2+\sin^2x_1+\cos^2x_1=3</annotation></semantics></math></span>,
+so its Euclidean operator norm is at most
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mn>3</mn></msqrt><annotation encoding="application/x-tex">\sqrt3</annotation></semantics></math></span>:
+for any vector
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math></span>,
+the scalar Cauchy–Schwarz inequality applied to each row gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>M</mi><mi>v</mi><msup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msup><mo>≤</mo><mo form="prefix" stretchy="false">(</mo><msub><mo>∑</mo><mrow><mi>k</mi><mo>,</mo><mi>l</mi></mrow></msub><mo form="prefix" stretchy="false">|</mo><msub><mi>M</mi><mrow><mi>k</mi><mi>l</mi></mrow></msub><msup><mo form="prefix" stretchy="false">|</mo><mn>2</mn></msup><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">∥</mo><mi>v</mi><msup><mo form="postfix" stretchy="false">∥</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\|Mv\|^2\leq(\sum_{k,l}|M_{kl}|^2)\|v\|^2</annotation></semantics></math></span>.
+Consequently
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="postfix" stretchy="false">∥</mo><mi>b</mi><mo form="postfix" stretchy="false">∥</mo><mo>≤</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">\|b\|\leq2\sqrt3</annotation></semantics></math></span>,
+and (MSI11) holds with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>C</mi><mn>0</mn></msub><mo>=</mo><mn>2</mn><msqrt><mn>3</mn></msqrt></mrow><annotation encoding="application/x-tex">C_0=2\sqrt3</annotation></semantics></math></span>.
+In particular the theorem supplies all inverse-symbol seminorms without
+assuming them in advance.</p>
+<p>At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x_1=0</annotation></semantics></math></span>,
+write</p>
+<p><span class="math display"><math display="block" id="eq-MSI40" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>R</mi><mo>=</mo><msup><mi>A</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>A</mi><mn>1</mn></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>A</mi><mn>2</mn></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI40)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+A=\begin{pmatrix}1&amp;0\\1&amp;1\end{pmatrix},&#13;
+\quad R=A^{-1}=\begin{pmatrix}1&amp;0\\-1&amp;1\end{pmatrix},&#13;
+\quad A_1=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},&#13;
+\quad A_2=\begin{pmatrix}0&amp;0\\-1&amp;0\end{pmatrix}.&#13;
+\tag{MSI40}&#13;
+</annotation></semantics></math></span></p>
+<p>Formula (MSI9), with the products performed in their written order,
+gives</p>
+<p><span class="math display"><math display="block" id="eq-MSI41" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><msub><mi>∂</mi><msub><mi>x</mi><mn>1</mn></msub></msub><mi>b</mi><mo form="postfix" stretchy="true">|</mo></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mi>−</mi><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI41)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\left.\partial_{x_1}b\right|_{x_1=0}&#13;
+=-RA_1R&#13;
+=\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix},&#13;
+\tag{MSI41}&#13;
+</annotation></semantics></math></span></p>
+<p>and</p>
+<p><span class="math display"><math display="block" id="eq-MSI42" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><msubsup><mi>∂</mi><msub><mi>x</mi><mn>1</mn></msub><mn>2</mn></msubsup><mi>b</mi><mo form="postfix" stretchy="true">|</mo></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow></msub><mo>=</mo><mn>2</mn><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><mo>−</mo><mi>R</mi><msub><mi>A</mi><mn>2</mn></msub><mi>R</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>2</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI42)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+\left.\partial_{x_1}^2b\right|_{x_1=0}&#13;
+=2RA_1RA_1R-RA_2R&#13;
+=\begin{pmatrix}2&amp;-2\\-1&amp;2\end{pmatrix}.&#13;
+\tag{MSI42}&#13;
+</annotation></semantics></math></span></p>
+<p>For a direct check of the first multiplication,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr></mtable><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">RA_1R=\bigl(\begin{smallmatrix}-1&amp;1\\1&amp;-1\end{smallmatrix}\bigr)</annotation></semantics></math></span>.
+For the second,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><msub><mi>A</mi><mn>1</mn></msub><mi>R</mi><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">RA_1RA_1R=\bigl(\begin{smallmatrix}1&amp;-1\\-1&amp;1\end{smallmatrix}\bigr)</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><msub><mi>A</mi><mn>2</mn></msub><mi>R</mi><mo>=</mo><mo form="prefix" maxsize="120%" minsize="120%" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" maxsize="120%" minsize="120%" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">RA_2R=\bigl(\begin{smallmatrix}0&amp;0\\-1&amp;0\end{smallmatrix}\bigr)</annotation></semantics></math></span>;
+these two explicit products yield (MSI42).</p>
+<p>By contrast,</p>
+<p><span class="math display"><math display="block" id="eq-MSI43" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><msub><mi>A</mi><mn>1</mn></msub><msup><mi>R</mi><mn>2</mn></msup><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>2</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>≠</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>−</mi><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi><mspace width="2.0em"></mspace><mtext mathvariant="normal">(MSI43)</mtext></mrow><annotation encoding="application/x-tex">&#13;
+-A_1R^2&#13;
+=\begin{pmatrix}2&amp;-1\\0&amp;0\end{pmatrix}&#13;
+\ne&#13;
+\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix}.&#13;
+\tag{MSI43}&#13;
+</annotation></semantics></math></span></p>
+<p>The proposed commutation therefore fails even for a uniformly
+invertible, smooth, globally bounded symbol. Every positive-order
+frequency derivative of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+is zero. The symbols themselves have bounded position derivatives of
+every order, so both belong to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>S</mi><mrow><mn>0</mn><mo>,</mo><mn>0</mn></mrow></msup><annotation encoding="application/x-tex">S^{0,0}</annotation></semantics></math></span>.
+Indeed their entries are rational functions of sine and cosine with
+denominators bounded away from zero; repeated position differentiation
+therefore remains bounded. The nonzero symbols are not asserted to
+belong to every mixed order class. In particular (MSI22) and (MSI23)
+hold for each
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><mo form="prefix" stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>…</mi><mo>,</mo><mi>n</mi><mo form="postfix" stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">j\in\{1,\ldots,n\}</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m=0</annotation></semantics></math></span>.
+This last conclusion comes from actual vanishing, whereas the
+noncommuting
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>1</mn></msub><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span>
+derivatives above remain nonzero.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<h2 id="references">References</h2></article>
+<footer></footer></main></body></html>

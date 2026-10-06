@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="FD619B78FB7E860DDB3699B32203469A5AFBB56A2D3037473186C6772911927F">
+<title>Fourier transforms, finite spectra and convex separation — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-AN-03/prerequisite-bridges</span></nav>
+<article id="lesson" class="lesson"><h1 id="exact-prerequisite-interfaces-for-the-quadratic-multiplier-estimates"><span id="fourier-transforms-finite-spectra-and-convex-separation"></span>Fourier transforms, finite spectra and convex separation</h1>
+<p>The Gaussian estimates in <a href="gauss-transform-estimates.html">Quantitative estimates for quadratic Fourier multipliers</a> use a precise Fourier convention, a real spectral theorem, and finite-dimensional convex separation. This chapter proves those facts with their constants and endpoint cases. <a href="metric-foundation-bridges.html">Metric and topological foundations</a> supplies the measure and compactness background. Basic references are [Melrose] for Fourier analysis and [Beezer] for finite-dimensional linear algebra, but the arguments below do not require either book.</p>
+<p>Section 13 of <a href="metric-foundation-bridges.html#original-scalar-calculus-and-its-finite-coordinate-receivers">Metric and topological foundations</a> proves the full original scalar and finite-coordinate calculus. Its Section 13.12 gives the exact Gaussian, Rayleigh, logarithmic-contour, matrix and half-line receiving maps, retaining every original factor, endpoint and norm.</p>
+<p>The complete original real-number, compactness, extrema and finite-norm proofs are in Section 12 of <a href="metric-foundation-bridges.html#real-numbers-and-finite-dimensional-topology">Metric and topological foundations</a>. Its Section 12.10 gives the exact receiving minimum and spectral-contour maps; the original coordinates, norms and constants are retained.</p>
+<p>We assume multivariable differentiation and Taylor's formula, smooth compact cutoffs, change of variables and Fubini for absolutely integrable functions, dominated convergence and differentiation, Cauchy–Schwarz, finite-dimensional compactness, and completeness of the real numbers. We also use elementary matrix algebra, determinants, Gram–Schmidt, and the usual monomial Schwartz seminorms. The complete finite basis, Gram, matrix and adjoint proofs are given in Section 10 of <a href="stable-prerequisite-bridges.html#full-finite-linear-algebra-foundations">Polynomial and contour interfaces for stable boundary models</a>. Each further step is proved here.</p>
+<h2 id="AN03-DEP-001"><span id="an03-dep-001"></span><span id="an03-dep-001-the-exact-fourier-reading-contract"></span><span id="1-fourier-inversion-on-the-schwartz-space"></span><span id="fourier-inversion-on-the-schwartz-space"></span>1. Fourier inversion on the Schwartz space</h2>
+<p>For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, let <span class="math" data-tex="\(\mathcal S(\mathbb R^d)\)">\(\mathcal S(\mathbb R^d)\)</span> have the seminorms</p>
+<span class="math math-display" data-tex="\[
+p_{\alpha,\beta}(f)=\sup_x|x^\alpha\partial^\beta f(x)|.
+\]">\[
+p_{\alpha,\beta}(f)=\sup_x|x^\alpha\partial^\beta f(x)|.
+\]</span>
+<p>Use <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span> and</p>
+<span class="math math-display" data-tex="\[
+Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,
+\qquad
+Gv(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi.
+\]">\[
+Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,
+\qquad
+Gv(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi.
+\]</span>
+<p><span id="theorem-1-1"></span><strong>Theorem 1.1 (Fourier inversion).</strong> The map <span class="math" data-tex="\(F\)">\(F\)</span> is a continuous automorphism of the Schwartz space with inverse <span class="math" data-tex="\(G\)">\(G\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+F(D_jf)=\xi_jFf,\qquad F(x_jf)=i\partial_{\xi_j}Ff.
+\]">\[
+F(D_jf)=\xi_jFf,\qquad F(x_jf)=i\partial_{\xi_j}Ff.
+\]</span>
+<p>For the complex-linear distribution convention, <span class="math" data-tex="\(\langle Fu,\phi\rangle=\langle u,F\phi\rangle\)">\(\langle Fu,\phi\rangle=\langle u,F\phi\rangle\)</span>; transposition of the continuous Schwartz maps supplies the transform on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, its inverse with the corresponding factor, and the differentiated identities. This convention agrees with the integral for regular distributions induced by Schwartz functions, by Fubini.</p>
+<p><strong>Proof of Theorem 1.1.</strong> Differentiation under the integral and integration by parts give the displayed identities. More precisely, <span class="math" data-tex="\(\xi^\alpha\partial_\xi^\beta Ff(\xi)=F[D^\alpha((-ix)^\beta f)](\xi)\)">\(\xi^\alpha\partial_\xi^\beta Ff(\xi)=F[D^\alpha((-ix)^\beta f)](\xi)\)</span>. By the finite Leibniz rule, <span class="math" data-tex="\(D^\alpha((-ix)^\beta f)\)">\(D^\alpha((-ix)^\beta f)\)</span> is a finite linear combination of derivatives of <span class="math" data-tex="\(x^\beta f(x)\)">\(x^\beta f(x)\)</span>, with each coefficient fixed by <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. Its Fourier transform is bounded in supremum norm by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of that full expression. If <span class="math" data-tex="\(N&gt;d\)">\(N&gt;d\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|h\|_1\leq\left(\int_{\mathbb R^d}\langle x\rangle^{-N}\,dx\right)
+\sup_x\langle x\rangle^N|h(x)|,
+\]">\[
+\|h\|_1\leq\left(\int_{\mathbb R^d}\langle x\rangle^{-N}\,dx\right)
+\sup_x\langle x\rangle^N|h(x)|,
+\]</span>
+<p>so finitely many Schwartz seminorms bound each output seminorm. Thus <span class="math" data-tex="\(F:\mathcal S\to\mathcal S\)">\(F:\mathcal S\to\mathcal S\)</span> is continuous.</p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+k_\varepsilon(x)=(4\pi\varepsilon)^{-d/2}e^{-|x|^2/(4\varepsilon)}.
+\]">\[
+k_\varepsilon(x)=(4\pi\varepsilon)^{-d/2}e^{-|x|^2/(4\varepsilon)}.
+\]</span>
+<p>The one-dimensional Gaussian integral is <span class="math" data-tex="\(\int_{\mathbb R}e^{-t^2}\,dt=\sqrt{\pi}\)">\(\int_{\mathbb R}e^{-t^2}\,dt=\sqrt{\pi}\)</span>: square the integral, use Fubini, and in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> make the polar change of variables with Jacobian <span class="math" data-tex="\(r\)">\(r\)</span>, obtaining <span class="math" data-tex="\(2\pi\int_0^\infty e^{-r^2}r\,dr=\pi\)">\(2\pi\int_0^\infty e^{-r^2}r\,dr=\pi\)</span>. Hence <span class="math" data-tex="\(\int k_\varepsilon=1\)">\(\int k_\varepsilon=1\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+I_\varepsilon(x)=\int_{\mathbb R^d}e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi.
+\]">\[
+I_\varepsilon(x)=\int_{\mathbb R^d}e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi.
+\]</span>
+<p>Integration of a total <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span>-derivative gives</p>
+<span class="math math-display" data-tex="\[
+0=ix_jI_\varepsilon(x)-2\varepsilon
+\int_{\mathbb R^d}\xi_j e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi,
+\qquad
+\partial_{x_j}I_\varepsilon(x)=-\frac{x_j}{2\varepsilon}I_\varepsilon(x).
+\]">\[
+0=ix_jI_\varepsilon(x)-2\varepsilon
+\int_{\mathbb R^d}\xi_j e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi,
+\qquad
+\partial_{x_j}I_\varepsilon(x)=-\frac{x_j}{2\varepsilon}I_\varepsilon(x).
+\]</span>
+<p>Its value at zero is <span class="math" data-tex="\((\pi/\varepsilon)^{d/2}\)">\((\pi/\varepsilon)^{d/2}\)</span>. Solving these coordinate equations yields the exact inverse-Gaussian identity</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-d}I_\varepsilon(x)=k_\varepsilon(x).
+\]">\[
+(2\pi)^{-d}I_\varepsilon(x)=k_\varepsilon(x).
+\]</span>
+<p>For <span class="math" data-tex="\(f\in\mathcal S\)">\(f\in\mathcal S\)</span>, Fubini is legitimate after inserting <span class="math" data-tex="\(e^{-\varepsilon|\xi|^2}\)">\(e^{-\varepsilon|\xi|^2}\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}Ff(\xi)\,d\xi
+=\int_{\mathbb R^d}k_\varepsilon(x-y)f(y)\,dy.
+\]">\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}Ff(\xi)\,d\xi
+=\int_{\mathbb R^d}k_\varepsilon(x-y)f(y)\,dy.
+\]</span>
+<p>On the left, dominated convergence gives <span class="math" data-tex="\(GFf(x)\)">\(GFf(x)\)</span>, since <span class="math" data-tex="\(Ff\in L^1\)">\(Ff\in L^1\)</span>. On the right, write the difference from <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> as <span class="math" data-tex="\(\int k_\varepsilon(y)(f(x-y)-f(x))\,dy\)">\(\int k_\varepsilon(y)(f(x-y)-f(x))\,dy\)</span>. On <span class="math" data-tex="\(|y|&lt;\delta\)">\(|y|&lt;\delta\)</span>, the mean-value formula bounds the difference by <span class="math" data-tex="\(\|\nabla f\|_\infty\delta\)">\(\|\nabla f\|_\infty\delta\)</span>. On its complement, boundedness of <span class="math" data-tex="\(f\)">\(f\)</span> gives at most <span class="math" data-tex="\(2\|f\|_\infty\)">\(2\|f\|_\infty\)</span> times the Gaussian mass <span class="math" data-tex="\(\int_{|y|\geq\delta}k_\varepsilon(y)\,dy=\pi^{-d/2}\int_{|z|\geq\delta/(2\sqrt{\varepsilon})}e^{-|z|^2}\,dz\)">\(\int_{|y|\geq\delta}k_\varepsilon(y)\,dy=\pi^{-d/2}\int_{|z|\geq\delta/(2\sqrt{\varepsilon})}e^{-|z|^2}\,dz\)</span>, which tends to zero for fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. First let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, then <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. Thus the right side tends to <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>. Hence <span class="math" data-tex="\(GF=I\)">\(GF=I\)</span> on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. The calculation of the other inverse follows below without changing any Fourier factor. ∎</p>
+<p>Here is the two-sided inverse bridge. Define <span class="math" data-tex="\(Rf(x)=f(-x)\)">\(Rf(x)=f(-x)\)</span> and <span class="math" data-tex="\(a=(2\pi)^{-d}\)">\(a=(2\pi)^{-d}\)</span>. A change of variables gives <span class="math" data-tex="\(FR=RF\)">\(FR=RF\)</span>, and the candidate inverse is <span class="math" data-tex="\(G=aRF\)">\(G=aRF\)</span>. The proof above gives <span class="math" data-tex="\(GF=I\)">\(GF=I\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+FG=aFRF=aRF^2=GF=I.
+\]">\[
+FG=aFRF=aRF^2=GF=I.
+\]</span>
+<p>Reflection preserves the monomial seminorms, so <span class="math" data-tex="\(G\)">\(G\)</span> is continuous. No equivalence with an unstated alternative topology is required. In dimension zero the integral convention is the identity on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; this includes that harmless endpoint whenever a zero-dimensional factor occurs.</p>
+<h2 id="AN03-DEP-002"><span id="an03-dep-002"></span><span id="an03-dep-002-the-precise-square-integral-consequence"></span><span id="2-plancherel-and-integer-sobolev-weights"></span><span id="plancherel-and-integer-sobolev-weights"></span>2. Plancherel and integer Sobolev weights</h2>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1 (Plancherel on Schwartz functions).</strong> For <span class="math" data-tex="\(u\in\mathcal S(\mathbb R^d)\)">\(u\in\mathcal S(\mathbb R^d)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|Fu\|_2^2=(2\pi)^d\|u\|_2^2.
+\]">\[
+\|Fu\|_2^2=(2\pi)^d\|u\|_2^2.
+\]</span>
+<p>For <span class="math" data-tex="\(f,g\in\mathcal S\)">\(f,g\in\mathcal S\)</span>, substitute <span class="math" data-tex="\(g=GFg\)">\(g=GFg\)</span> from Theorem 1.1 into <span class="math" data-tex="\(\int f\overline g\)">\(\int f\overline g\)</span>. Fubini is valid because <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(Fg\)">\(Fg\)</span> are integrable. The inner integral is <span class="math" data-tex="\(Ff\)">\(Ff\)</span>, so <span class="math" data-tex="\(\int f\overline g=(2\pi)^{-d}\int Ff\,\overline{Fg}\)">\(\int f\overline g=(2\pi)^{-d}\int Ff\,\overline{Fg}\)</span>. Taking <span class="math" data-tex="\(g=f\)">\(g=f\)</span> proves the displayed identity, including its full factor. No extension to arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions is needed here.</p>
+<p>For every integer <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, the multinomial identity and differentiation under <span class="math" data-tex="\(F\)">\(F\)</span> give the more precise formula</p>
+<span class="math math-display" data-tex="\[
+\|\langle\xi\rangle^s Fu\|_2^2
+=(2\pi)^d\sum_{|\alpha|\leq s}
+\frac{s!}{(s-|\alpha|)!\,\alpha!}\|D^\alpha u\|_2^2.
+\]">\[
+\|\langle\xi\rangle^s Fu\|_2^2
+=(2\pi)^d\sum_{|\alpha|\leq s}
+\frac{s!}{(s-|\alpha|)!\,\alpha!}\|D^\alpha u\|_2^2.
+\]</span>
+<p>Indeed expand <span class="math" data-tex="\((1+\xi_1^2+\cdots+\xi_d^2)^s\)">\((1+\xi_1^2+\cdots+\xi_d^2)^s\)</span>, multiply by <span class="math" data-tex="\(|Fu|^2\)">\(|Fu|^2\)</span>, integrate the finite sum and apply Theorem 2.1 to each derivative. All coefficients are positive, so this also proves both norm comparisons, with constants depending only on <span class="math" data-tex="\(d,s\)">\(d,s\)</span>. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the sum has one term.</p>
+<p>When <span class="math" data-tex="\(s&gt;d/2\)">\(s&gt;d/2\)</span>, Cauchy–Schwarz yields</p>
+<span class="math math-display" data-tex="\[
+\|Fu\|_1\leq
+\|\langle\xi\rangle^{-s}\|_2
+\|\langle\xi\rangle^sFu\|_2.
+\]">\[
+\|Fu\|_1\leq
+\|\langle\xi\rangle^{-s}\|_2
+\|\langle\xi\rangle^sFu\|_2.
+\]</span>
+<p>The first norm is finite: the integral inside the unit ball is bounded; the annulus <span class="math" data-tex="\(2^k\leq|\xi|&lt;2^{k+1}\)">\(2^k\leq|\xi|&lt;2^{k+1}\)</span> contributes at most a constant times <span class="math" data-tex="\(2^{k(d-2s)}\)">\(2^{k(d-2s)}\)</span>, whose sum converges. This is the precise integer-derivative control used in the local multiplier estimate.</p>
+<h2 id="AN03-DEP-003"><span id="an03-dep-003"></span><span id="an03-dep-003-a-real-spectral-interface-with-all-finite-dimensional-cases"></span><span id="3-real-spectral-decomposition"></span><span id="real-spectral-decomposition"></span>3. Real spectral decomposition</h2>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1 (Real spectral decomposition).</strong> Every self-adjoint endomorphism of a finite-dimensional real inner-product space has a real orthonormal eigenbasis, including repeated and zero eigenvalues.</p>
+<p><strong>Proof.</strong> In dimension zero the empty basis suffices. Otherwise maximize <span class="math" data-tex="\(\langle Av,v\rangle\)">\(\langle Av,v\rangle\)</span> over the compact unit sphere, and call a maximizer <span class="math" data-tex="\(v\)">\(v\)</span>. For each <span class="math" data-tex="\(w\perp v\)">\(w\perp v\)</span>, differentiate <span class="math" data-tex="\(\langle A(v+tw),v+tw\rangle/\langle v+tw,v+tw\rangle\)">\(\langle A(v+tw),v+tw\rangle/\langle v+tw,v+tw\rangle\)</span> at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Its derivative vanishes, so <span class="math" data-tex="\(\langle Av,w\rangle=0\)">\(\langle Av,w\rangle=0\)</span>; hence <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span> for <span class="math" data-tex="\(\lambda=\langle Av,v\rangle\)">\(\lambda=\langle Av,v\rangle\)</span>. Self-adjointness makes <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span> invariant, since <span class="math" data-tex="\(\langle Aw,v\rangle=\langle w,Av\rangle=0\)">\(\langle Aw,v\rangle=\langle w,Av\rangle=0\)</span> for <span class="math" data-tex="\(w\perp v\)">\(w\perp v\)</span>. Induction on dimension gives an orthonormal eigenbasis of <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span>. Together with <span class="math" data-tex="\(v\)">\(v\)</span> it gives the asserted basis, with no distinct-eigenvalue assumption. ∎</p>
+<p>The complexification gives a second check of the real eigenspaces.</p>
+<p>In dimension zero take the empty basis. Otherwise use Gram–Schmidt to choose real orthonormal coordinates. The real symmetric matrix <span class="math" data-tex="\(A\)">\(A\)</span>, regarded as a complex matrix, is Hermitian. The real basis just proved complexifies to an eigenbasis of <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, and every eigenvalue remains real. For real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, taking real and imaginary parts proves</p>
+<span class="math math-display" data-tex="\[
+\ker_{\mathbb C}(A-\lambda I)
+=\ker_{\mathbb R}(A-\lambda I)
++i\ker_{\mathbb R}(A-\lambda I).
+\]">\[
+\ker_{\mathbb C}(A-\lambda I)
+=\ker_{\mathbb R}(A-\lambda I)
++i\ker_{\mathbb R}(A-\lambda I).
+\]</span>
+<p>Decompose a real vector into complex eigenvectors and take real parts. Thus the real eigenspaces span <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>. If <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span> and <span class="math" data-tex="\(Aw=\mu w\)">\(Aw=\mu w\)</span>, symmetry gives</p>
+<span class="math math-display" data-tex="\[
+(\lambda-\mu)\langle v,w\rangle
+=\langle Av,w\rangle-\langle v,Aw\rangle=0.
+\]">\[
+(\lambda-\mu)\langle v,w\rangle
+=\langle Av,w\rangle-\langle v,Aw\rangle=0.
+\]</span>
+<p>Distinct eigenspaces are orthogonal. Choosing an orthonormal basis in each gives the required real basis, with all multiplicities retained.</p>
+<p>The following triangular-matrix facts retain the zero-dimensional case and the order of multiplication. Its induction includes dimension zero with the empty matrix. Products of upper triangular matrices are upper triangular: when <span class="math" data-tex="\(i&gt;j\)">\(i&gt;j\)</span>, in each term <span class="math" data-tex="\(a_{ik}b_{kj}\)">\(a_{ik}b_{kj}\)</span>, either <span class="math" data-tex="\(k&lt;i\)">\(k&lt;i\)</span> or <span class="math" data-tex="\(k\geq i&gt;j\)">\(k\geq i&gt;j\)</span>, so one factor vanishes. An invertible upper triangular matrix preserves every coordinate flag space <span class="math" data-tex="\(E_j\)">\(E_j\)</span>; its restriction to that finite-dimensional space is injective and therefore onto. Its inverse preserves the same flag and is upper triangular. The diagonal equation in <span class="math" data-tex="\(AA^{-1}=I\)">\(AA^{-1}=I\)</span> gives <span class="math" data-tex="\((A^{-1})_{jj}=a_{jj}^{-1}\)">\((A^{-1})_{jj}=a_{jj}^{-1}\)</span>.</p>
+<h3 id="AN03-DEP-SKEW-001"><span id="an03-dep-skew-001"></span><span id="real-skew-adjoint-operators-and-their-full-coordinate-blocks"></span><span id="3-1-real-skew-adjoint-operators-and-their-full-coordinate-blocks"></span>3.1. Real skew-adjoint operators and their full coordinate blocks</h3>
+<p>The scalar positivity argument uses both real self-adjoint and real skew-adjoint finite-dimensional spectral decompositions. The self-adjoint theorem is proved in Section3 of <a href="prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, with the original inner product. We now prove the skew-adjoint theorem and every coordinate comparison needed to use it.</p>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite-dimensional real vector space with its given positive-definite inner product <span class="math" data-tex="\(h\)">\(h\)</span>, and let <span class="math" data-tex="\(A:V\to V\)">\(A:V\to V\)</span> satisfy</p>
+<span id="equation-ss1"></span><span class="math math-display" data-tex="\[
+h(Au,v)=-h(u,Av)\qquad(u,v\in V).
+\tag{SS1}
+\]">\[
+h(Au,v)=-h(u,Av)\qquad(u,v\in V).
+\tag{SS1}
+\]</span>
+<p>Keep an original ordered coordinate basis <span class="math" data-tex="\(b\)">\(b\)</span>, its full positive Gram matrix <span class="math" data-tex="\(H\)">\(H\)</span>, and the original coordinate matrix <span class="math" data-tex="\(M\)">\(M\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. Thus</p>
+<span id="equation-ss2"></span><span class="math math-display" data-tex="\[
+h(J_bx,J_by)=x^{\mathsf T}Hy,\qquad
+AJ_bx=J_bMx,\qquad M^{\mathsf T}H+HM=0.
+\tag{SS2}
+\]">\[
+h(J_bx,J_by)=x^{\mathsf T}Hy,\qquad
+AJ_bx=J_bMx,\qquad M^{\mathsf T}H+HM=0.
+\tag{SS2}
+\]</span>
+<p>The last equality follows by substituting each original pair of coordinate vectors into SS1. No coefficient, Gram factor or coordinate of the working operator is replaced.</p>
+<p>Put <span class="math" data-tex="\(B=-A^2\)">\(B=-A^2\)</span>. Two applications of SS1 give</p>
+<span id="equation-ss3"></span><span class="math math-display" data-tex="\[
+h(Bu,v)=h(Au,Av)=h(u,Bv),\qquad
+h(Bu,u)=h(Au,Au)\geq0.
+\tag{SS3}
+\]">\[
+h(Bu,v)=h(Au,Av)=h(u,Bv),\qquad
+h(Bu,u)=h(Au,Au)\geq0.
+\tag{SS3}
+\]</span>
+<p>The proved real self-adjoint theorem applies to this actual <span class="math" data-tex="\(B\)">\(B\)</span>: its real eigenspaces give an orthogonal direct sum of <span class="math" data-tex="\(V\)">\(V\)</span>, with every multiplicity retained. If <span class="math" data-tex="\(Bu=\tau u\)">\(Bu=\tau u\)</span>, <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, SS3 gives
+<span class="math" data-tex="\(\tau h(u,u)=h(Au,Au)\geq0\)">\(\tau h(u,u)=h(Au,Au)\geq0\)</span>, hence <span class="math" data-tex="\(\tau\geq0\)">\(\tau\geq0\)</span>. Moreover</p>
+<span id="equation-ss4"></span><span class="math math-display" data-tex="\[
+\ker B=\ker A,\qquad AB=BA,\qquad
+A\ker(B-\tau I)\subset\ker(B-\tau I).
+\tag{SS4}
+\]">\[
+\ker B=\ker A,\qquad AB=BA,\qquad
+A\ker(B-\tau I)\subset\ker(B-\tau I).
+\tag{SS4}
+\]</span>
+<p>For the kernel equality one direction follows from <span class="math" data-tex="\(B=-A^2\)">\(B=-A^2\)</span>; in the other direction SS3 gives <span class="math" data-tex="\(h(Au,Au)=0\)">\(h(Au,Au)=0\)</span>, so <span class="math" data-tex="\(Au=0\)">\(Au=0\)</span>. The commuting identity is the full equality <span class="math" data-tex="\(-A^3=-A^3\)">\(-A^3=-A^3\)</span>, and substitution proves the invariant-eigenspace assertion.</p>
+<p>For each positive eigenvalue <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, let <span class="math" data-tex="\(\lambda=\sqrt{\tau}&gt;0\)">\(\lambda=\sqrt{\tau}&gt;0\)</span>, the positive real root constructed in the real-number chapter. Choose a vector <span class="math" data-tex="\(u\)">\(u\)</span> of original <span class="math" data-tex="\(h\)">\(h\)</span>-length one in its eigenspace; finite Gram–Schmidt provides such a vector. Define <span class="math" data-tex="\(v=Au/\lambda\)">\(v=Au/\lambda\)</span>. Then SS1--SS3 give the complete identities</p>
+<span id="equation-ss5"></span><span class="math math-display" data-tex="\[
+h(u,v)=\lambda^{-1}h(u,Au)=0,\qquad
+h(v,v)=\lambda^{-2}h(Au,Au)
+=\lambda^{-2}\tau h(u,u)=1,
+\qquad Au=\lambda v,\quad Av=-\lambda u.
+\tag{SS5}
+\]">\[
+h(u,v)=\lambda^{-1}h(u,Au)=0,\qquad
+h(v,v)=\lambda^{-2}h(Au,Au)
+=\lambda^{-2}\tau h(u,u)=1,
+\qquad Au=\lambda v,\quad Av=-\lambda u.
+\tag{SS5}
+\]</span>
+<p>Here <span class="math" data-tex="\(h(u,Au)=-h(Au,u)=-h(u,Au)\)">\(h(u,Au)=-h(Au,u)=-h(u,Au)\)</span>, so it is zero over the original real field. The last identity uses the actual equation <span class="math" data-tex="\(A^2u=-\tau u\)">\(A^2u=-\tau u\)</span>, retaining both <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> factors.</p>
+<p>The original <span class="math" data-tex="\(h\)">\(h\)</span>-orthogonal complement of <span class="math" data-tex="\(\operatorname{span}\{u,v\}\)">\(\operatorname{span}\{u,v\}\)</span> inside that eigenspace is <span class="math" data-tex="\(A\)">\(A\)</span>-invariant: for a vector <span class="math" data-tex="\(w\)">\(w\)</span> in the complement,</p>
+<span id="equation-ss6"></span><span class="math math-display" data-tex="\[
+h(Aw,u)=-h(w,Au)=-\lambda h(w,v)=0,\qquad
+h(Aw,v)=-h(w,Av)=\lambda h(w,u)=0.
+\tag{SS6}
+\]">\[
+h(Aw,u)=-h(w,Au)=-\lambda h(w,v)=0,\qquad
+h(Aw,v)=-h(w,Av)=\lambda h(w,u)=0.
+\tag{SS6}
+\]</span>
+<p>Induction on its finite dimension constructs all pairs there. It cannot terminate in a positive-eigenvalue line, because SS5 would construct two orthogonal unit vectors in that line. Thus each positive eigenspace has even dimension, with one pair per two dimensions. Choose an <span class="math" data-tex="\(h\)">\(h\)</span>-orthonormal basis of <span class="math" data-tex="\(\ker A\)">\(\ker A\)</span> by the proved Gram construction. Altogether there are <span class="math" data-tex="\(k\)">\(k\)</span> orthonormal kernel vectors and <span class="math" data-tex="\(l\)">\(l\)</span> ordered pairs, with <span class="math" data-tex="\(k+2l=\dim V\)">\(k+2l=\dim V\)</span>. The actual operator is zero on those <span class="math" data-tex="\(k\)">\(k\)</span> vectors and has the full ordered block</p>
+<span id="equation-ss7"></span><span class="math math-display" data-tex="\[
+C_j=\begin{pmatrix}0&amp;-\lambda_j\\ \lambda_j&amp;0\end{pmatrix}
+\quad\hbox{on the ordered pair }(u_j,v_j),\qquad
+\lambda_j&gt;0.
+\tag{SS7}
+\]">\[
+C_j=\begin{pmatrix}0&amp;-\lambda_j\\ \lambda_j&amp;0\end{pmatrix}
+\quad\hbox{on the ordered pair }(u_j,v_j),\qquad
+\lambda_j&gt;0.
+\tag{SS7}
+\]</span>
+<p>Equal positive numbers are allowed and all their pairs remain.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> have, in the original coordinates <span class="math" data-tex="\(b\)">\(b\)</span>, the columns of this entire constructed basis, and put <span class="math" data-tex="\(C=\operatorname{diag}(0_k,C_1,\ldots,C_l)\)">\(C=\operatorname{diag}(0_k,C_1,\ldots,C_l)\)</span>. Orthogonality and the actual images in SS5 prove</p>
+<span id="equation-ss8"></span><span class="math math-display" data-tex="\[
+S^{\mathsf T}HS=I,\qquad MS=SC,\qquad
+S^{-1}=S^{\mathsf T}H,\qquad
+M=SCS^{-1}=SC S^{\mathsf T}H.
+\tag{SS8}
+\]">\[
+S^{\mathsf T}HS=I,\qquad MS=SC,\qquad
+S^{-1}=S^{\mathsf T}H,\qquad
+M=SCS^{-1}=SC S^{\mathsf T}H.
+\tag{SS8}
+\]</span>
+<p>The columns form a basis, so <span class="math" data-tex="\(S\)">\(S\)</span> is invertible; multiplying the first equation by <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> proves the displayed inverse formula. These are exact morphisms between the original coordinates and the displayed blocks, preserving <span class="math" data-tex="\(H\)">\(H\)</span> and every coordinate coefficient. They do not identify <span class="math" data-tex="\(M\)">\(M\)</span> numerically with <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Complexify the original maps and inner product. In each pair,</p>
+<span id="equation-ss9"></span><span class="math math-display" data-tex="\[
+A(u_j+i v_j)=-i\lambda_j(u_j+i v_j),\qquad
+A(u_j-i v_j)=i\lambda_j(u_j-i v_j).
+\tag{SS9}
+\]">\[
+A(u_j+i v_j)=-i\lambda_j(u_j+i v_j),\qquad
+A(u_j-i v_j)=i\lambda_j(u_j-i v_j).
+\tag{SS9}
+\]</span>
+<p>Both eigenvectors are nonzero and independent: their coefficients on the original real independent pair give determinant <span class="math" data-tex="\(-2i\ne0\)">\(-2i\ne0\)</span>. They span its complexification, while each chosen kernel vector remains an eigenvector with eigenvalue zero. Each is nonzero, since its original squared norm is one. Thus the full complex spectrum is zero with multiplicity <span class="math" data-tex="\(k\)">\(k\)</span> and both signs <span class="math" data-tex="\(i\lambda_j,-i\lambda_j\)">\(i\lambda_j,-i\lambda_j\)</span> for every pair. The real characteristic polynomial comparison retains the entire determinant factors:</p>
+<span id="equation-ss10"></span><span class="math math-display" data-tex="\[
+\begin{split}
+\det(tI-M)
+&amp;=\det S\,\det(tI-C)\,\det(S^{-1})\\
+&amp;=\det S\,t^k\prod_{j=1}^l(t^2+\lambda_j^2)\,\det(S^{-1}),\\
+\det S\,\det(S^{-1})&amp;=\det(SS^{-1})=1.
+\end{split}
+\tag{SS10}
+\]">\[
+\begin{split}
+\det(tI-M)
+&amp;=\det S\,\det(tI-C)\,\det(S^{-1})\\
+&amp;=\det S\,t^k\prod_{j=1}^l(t^2+\lambda_j^2)\,\det(S^{-1}),\\
+\det S\,\det(S^{-1})&amp;=\det(SS^{-1})=1.
+\end{split}
+\tag{SS10}
+\]</span>
+<p>Every zero and repeated pair is accounted for. In dimension zero the basis is empty, both coordinate maps are the unique empty bijection, each determinant and empty product is one, and <span class="math" data-tex="\(k=l=0\)">\(k=l=0\)</span>. This proves the entire real skew-adjoint decomposition used by the scalar positivity argument at its original finite-dimensional inner product.</p>
+<h2 id="AN03-DEP-004"><span id="an03-dep-004"></span><span id="an03-dep-004-separating-an-open-convex-set-by-a-supporting-covector"></span><span id="4-strict-separation-of-an-open-convex-set"></span><span id="strict-separation-of-an-open-convex-set"></span>4. Strict separation of an open convex set</h2>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1 (Strict separation).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite-dimensional real vector space, let <span class="math" data-tex="\(C\subset V\)">\(C\subset V\)</span> be nonempty, open and convex, and let <span class="math" data-tex="\(x\notin C\)">\(x\notin C\)</span>. There is a nonzero real covector <span class="math" data-tex="\(\eta\)">\(\eta\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\eta(y)&lt;\eta(x)\quad(y\in C),
+\qquad \sup_{y\in C}\eta(y)\leq\eta(x).
+\]">\[
+\eta(y)&lt;\eta(x)\quad(y\in C),
+\qquad \sup_{y\in C}\eta(y)\leq\eta(x).
+\]</span>
+<p>The second inequality includes <span class="math" data-tex="\(x\)">\(x\)</span> on the boundary. The supremum need not be attained. The proof uses only finite-dimensional compactness and the inner product.</p>
+<p>Choose an auxiliary Euclidean norm, put <span class="math" data-tex="\(K=\overline C\)">\(K=\overline C\)</span>, and fix <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span> with <span class="math" data-tex="\(B(c,r)\subset C\)">\(B(c,r)\subset C\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. First, if <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> and <span class="math" data-tex="\(0\leq t&lt;1\)">\(0\leq t&lt;1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(1-t)c+tz\in C.
+\]">\[
+(1-t)c+tz\in C.
+\]</span>
+<p>For <span class="math" data-tex="\(t=0\)">\(t=0\)</span> this is immediate. For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, choose <span class="math" data-tex="\(z_j\in C\)">\(z_j\in C\)</span> tending to <span class="math" data-tex="\(z\)">\(z\)</span>. Convexity gives a ball of radius <span class="math" data-tex="\((1-t)r\)">\((1-t)r\)</span> centered at <span class="math" data-tex="\((1-t)c+tz_j\)">\((1-t)c+tz_j\)</span> inside <span class="math" data-tex="\(C\)">\(C\)</span>. For sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>, this ball contains <span class="math" data-tex="\((1-t)c+tz\)">\((1-t)c+tz\)</span>, proving the assertion.</p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put <span class="math" data-tex="\(z_\varepsilon=x+\varepsilon(x-c)\)">\(z_\varepsilon=x+\varepsilon(x-c)\)</span>. This point lies outside <span class="math" data-tex="\(K\)">\(K\)</span>: if it lay in <span class="math" data-tex="\(K\)">\(K\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+x=\frac{\varepsilon}{1+\varepsilon}c
++\frac{1}{1+\varepsilon}z_\varepsilon
+\]">\[
+x=\frac{\varepsilon}{1+\varepsilon}c
++\frac{1}{1+\varepsilon}z_\varepsilon
+\]</span>
+<p>would lie in <span class="math" data-tex="\(C\)">\(C\)</span> by the preceding assertion. The nonempty closed set <span class="math" data-tex="\(K\)">\(K\)</span> has a point <span class="math" data-tex="\(q_\varepsilon\)">\(q_\varepsilon\)</span> nearest to <span class="math" data-tex="\(z_\varepsilon\)">\(z_\varepsilon\)</span>. To see existence without a compactness assumption on <span class="math" data-tex="\(K\)">\(K\)</span>, take a minimizing sequence. Its distance to <span class="math" data-tex="\(z_\varepsilon\)">\(z_\varepsilon\)</span> is bounded, so it has a convergent subsequence in finite dimensions; closedness places its limit in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Write <span class="math" data-tex="\(v_\varepsilon=z_\varepsilon-q_\varepsilon\ne0\)">\(v_\varepsilon=z_\varepsilon-q_\varepsilon\ne0\)</span>. For <span class="math" data-tex="\(y\in K\)">\(y\in K\)</span>, the segment <span class="math" data-tex="\(q_\varepsilon+t(y-q_\varepsilon)\)">\(q_\varepsilon+t(y-q_\varepsilon)\)</span>, <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Differentiating the squared distance at its minimum <span class="math" data-tex="\(t=0\)">\(t=0\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\langle v_\varepsilon,y-q_\varepsilon\rangle\leq0.
+\]">\[
+\langle v_\varepsilon,y-q_\varepsilon\rangle\leq0.
+\]</span>
+<p>Consequently, for <span class="math" data-tex="\(u_\varepsilon=v_\varepsilon/|v_\varepsilon|\)">\(u_\varepsilon=v_\varepsilon/|v_\varepsilon|\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle u_\varepsilon,y\rangle
+\leq\langle u_\varepsilon,z_\varepsilon\rangle
+-|v_\varepsilon|
+\leq\langle u_\varepsilon,z_\varepsilon\rangle.
+\]">\[
+\langle u_\varepsilon,y\rangle
+\leq\langle u_\varepsilon,z_\varepsilon\rangle
+-|v_\varepsilon|
+\leq\langle u_\varepsilon,z_\varepsilon\rangle.
+\]</span>
+<p>Choose <span class="math" data-tex="\(\varepsilon=1/k\)">\(\varepsilon=1/k\)</span> and a convergent subsequence of the unit vectors, with limit <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>. Since <span class="math" data-tex="\(z_\varepsilon\to x\)">\(z_\varepsilon\to x\)</span>, the last inequality implies <span class="math" data-tex="\(\langle u,y\rangle\leq\langle u,x\rangle\)">\(\langle u,y\rangle\leq\langle u,x\rangle\)</span> for every <span class="math" data-tex="\(y\in K\)">\(y\in K\)</span>. The same subsequence works for every <span class="math" data-tex="\(y\)">\(y\)</span>: it was selected using only the unit vectors, and the inequality holds for every <span class="math" data-tex="\(y\)">\(y\)</span> at every index.</p>
+<p>Set <span class="math" data-tex="\(\eta(y)=\langle u,y\rangle\)">\(\eta(y)=\langle u,y\rangle\)</span>. It is nonzero. For <span class="math" data-tex="\(y\in C\)">\(y\in C\)</span>, openness gives <span class="math" data-tex="\(y+\delta u\in C\)">\(y+\delta u\in C\)</span> for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, whence</p>
+<span class="math math-display" data-tex="\[
+\eta(y)+\delta\leq\eta(x).
+\]">\[
+\eta(y)+\delta\leq\eta(x).
+\]</span>
+<p>This proves strict pointwise separation. The supremum statement follows because <span class="math" data-tex="\(\eta(C)\)">\(\eta(C)\)</span> is nonempty and bounded above. In dimension zero the hypotheses cannot occur, since the only nonempty open set is all of <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<h2 id="AN03-DEP-005"><span id="an03-dep-005"></span><span id="an03-dep-005-support-functions-of-sums-including-unbounded-sets"></span><span id="5-support-functions-of-minkowski-sums"></span><span id="support-functions-of-minkowski-sums"></span>5. Support functions of Minkowski sums</h2>
+<p><span id="proposition-5-1"></span><strong>Proposition 5.1.</strong> For nonempty <span class="math" data-tex="\(A,B\subset V\)">\(A,B\subset V\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+h_A(\eta)=\sup_{a\in A}\eta(a)\in\mathbb R\cup\{+\infty\}.
+\]">\[
+h_A(\eta)=\sup_{a\in A}\eta(a)\in\mathbb R\cup\{+\infty\}.
+\]</span>
+<p>Then <span class="math" data-tex="\(h_{A+B}(\eta)=h_A(\eta)+h_B(\eta)\)">\(h_{A+B}(\eta)=h_A(\eta)+h_B(\eta)\)</span>, where <span class="math" data-tex="\(A+B=\{a+b:a\in A,b\in B\}\)">\(A+B=\{a+b:a\in A,b\in B\}\)</span>. Nonemptiness excludes <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, so the right side is unambiguous.</p>
+<p>Linearity first gives the inequality <span class="math" data-tex="\(\leq\)">\(\leq\)</span>. If both right-hand suprema are finite, choose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> within <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of the two suprema. Their sum gives the reverse inequality up to <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>; let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. If <span class="math" data-tex="\(h_A(\eta)=+\infty\)">\(h_A(\eta)=+\infty\)</span>, fix <span class="math" data-tex="\(b_0\in B\)">\(b_0\in B\)</span>. The values <span class="math" data-tex="\(\eta(a+b_0)\)">\(\eta(a+b_0)\)</span> are unbounded above, so <span class="math" data-tex="\(h_{A+B}(\eta)=+\infty\)">\(h_{A+B}(\eta)=+\infty\)</span>. Interchange <span class="math" data-tex="\(A,B\)">\(A,B\)</span> for the other case. No boundedness, compactness or convexity is needed for this identity.</p>
+<h2 id="AN03-DEP-006"><span id="an03-dep-006"></span><span id="an03-dep-006-reading-annotations-and-a-diagnostic-exercise"></span><span id="6-phase-checks-and-exercises"></span><span id="phase-checks-and-exercises"></span>6. Phase checks and exercises</h2>
+<p>The exact Fourier phases used above can be checked without changing conventions: the segment integral in the fundamental theorem runs from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>; frequency continuity compares <span class="math" data-tex="\(e^{-ix\cdot\xi}-e^{-ix\cdot\xi&#x27;}\)">\(e^{-ix\cdot\xi}-e^{-ix\cdot\xi&#x27;}\)</span>; the squared one-dimensional Gaussian integral is an integral over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>; Parseval uses the conjugate transform of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> as its second factor; and an <span class="math" data-tex="\(H^m\)">\(H^m\)</span> condition uses <span class="math" data-tex="\(\langle\xi\rangle^{m}Fu\in L^2\)">\(\langle\xi\rangle^{m}Fu\in L^2\)</span>. These checks preserve the signs and the factor <span class="math" data-tex="\((2\pi)^{-d}\)">\((2\pi)^{-d}\)</span> in Theorems 1.1 and 2.1.</p>
+<p>Exercise. For the open strip <span class="math" data-tex="\(C=\{(a,b)\in\mathbb R^2:|a|&lt;2\}\)">\(C=\{(a,b)\in\mathbb R^2:|a|&lt;2\}\)</span> and boundary point <span class="math" data-tex="\(x=(2,7)\)">\(x=(2,7)\)</span>, determine all separating covectors satisfying the strict inequality in Theorem 4.1. Explain why the support value need not be attained and why its finiteness constrains the covector.</p>
+<p>Solution. Write <span class="math" data-tex="\(\eta(a,b)=\alpha a+\beta b\)">\(\eta(a,b)=\alpha a+\beta b\)</span>. Since <span class="math" data-tex="\(b\)">\(b\)</span> is unrestricted, finite upper support forces <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>. Nonzero separation at the right boundary then forces <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and every such <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> works: <span class="math" data-tex="\(\alpha a&lt;2\alpha=\eta(x)\)">\(\alpha a&lt;2\alpha=\eta(x)\)</span>. The support equals <span class="math" data-tex="\(2\alpha\)">\(2\alpha\)</span> but is not attained because <span class="math" data-tex="\(a=2\)">\(a=2\)</span> is excluded. This distinguishes strict pointwise separation from a positive uniform gap at a boundary point.</p>
+<p><strong>Exercise 6.2 (A Gaussian transform).</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(f_t(x)=e^{-t|x|^2}\)">\(f_t(x)=e^{-t|x|^2}\)</span> on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, compute <span class="math" data-tex="\(Ff_t(\xi)\)">\(Ff_t(\xi)\)</span> with the exact convention of Section 1.</p>
+<p><strong>Solution.</strong> Apply the Gaussian identity from the proof of Theorem 1.1 after exchanging the roles of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Equivalently, the same integration-by-parts equation gives <span class="math" data-tex="\(\partial_{\xi_j}Ff_t=-\xi_jFf_t/(2t)\)">\(\partial_{\xi_j}Ff_t=-\xi_jFf_t/(2t)\)</span>, while <span class="math" data-tex="\(Ff_t(0)=(\pi/t)^{d/2}\)">\(Ff_t(0)=(\pi/t)^{d/2}\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+Ff_t(\xi)=(\pi/t)^{d/2}e^{-|\xi|^2/(4t)}.
+\]">\[
+Ff_t(\xi)=(\pi/t)^{d/2}e^{-|\xi|^2/(4t)}.
+\]</span>
+<p>The positive value at zero fixes the constant and the negative exponent fixes the phase.</p>
+<p>The polar and Gaussian integrations in Section 1 are proved in Sections 15.6–15.7 of <a href="banach-foundation-bridges.html#the-full-polar-formula-on-the-original-plane">Banach estimates, quotient spaces and compact parameter arguments</a>. These proofs include completed measurability, both determinant terms, the radial endpoints and the full Fourier heat-kernel factors.</p>
+<h2 id="fourier-transforms-on-the-complete-l2-space"><span id="7-fourier-transforms-on-the-complete-l-2-space"></span>7. Fourier transforms on the complete <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space</h2>
+<p>The Schwartz identities above extend to the original completed Lebesgue <span class="math" data-tex="\(L^2(\mathbb R^d)\)">\(L^2(\mathbb R^d)\)</span>, with both Fourier factors unchanged. The measure, density, translation and completeness proofs used here are Sections 15.0–15.4 of <a href="banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>. We use their original measure and scalar field.</p>
+<h3 id="AN03-DEP-L2-001"><span id="an03-dep-l2-001"></span><span id="constructing-both-inverse-maps"></span><span id="7-1-constructing-both-inverse-maps"></span>7.1. Constructing both inverse maps</h3>
+<p>Suppose first that <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. Compact smooth functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, by the truncation and mollification proof there, and belong to the Schwartz space. For <span class="math" data-tex="\(f\in L^2\)">\(f\in L^2\)</span>, choose Schwartz <span class="math" data-tex="\(f_j\to f\)">\(f_j\to f\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Theorem 2.1 gives the exact difference identity</p>
+<span id="equation-fl1"></span><span class="math math-display" data-tex="\[
+\|Ff_j-Ff_k\|_2=(2\pi)^{d/2}\|f_j-f_k\|_2.
+\tag{FL1}
+\]">\[
+\|Ff_j-Ff_k\|_2=(2\pi)^{d/2}\|f_j-f_k\|_2.
+\tag{FL1}
+\]</span>
+<p>Completeness makes this a convergent sequence. If <span class="math" data-tex="\(\widetilde f_j\to f\)">\(\widetilde f_j\to f\)</span> is another such sequence, its difference from <span class="math" data-tex="\(f_j\)">\(f_j\)</span> tends to zero in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, so (FL1) gives the same output. Define <span class="math" data-tex="\(Ff\)">\(Ff\)</span> as that limit. Linearity follows by approximating each summand and taking limits; the norm identity follows from continuity of the norm.</p>
+<p>For Schwartz <span class="math" data-tex="\(h\)">\(h\)</span>, Theorem 1.1 gives <span class="math" data-tex="\(F(Gh)=h\)">\(F(Gh)=h\)</span>, and Theorem 2.1 applied to <span class="math" data-tex="\(Gh\)">\(Gh\)</span> gives <span class="math" data-tex="\(\|Gh\|_2=(2\pi)^{-d/2}\|h\|_2\)">\(\|Gh\|_2=(2\pi)^{-d/2}\|h\|_2\)</span>. Thus the same construction extends <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Applying continuity to <span class="math" data-tex="\(GFf_j=f_j\)">\(GFf_j=f_j\)</span> and <span class="math" data-tex="\(FGh_j=h_j\)">\(FGh_j=h_j\)</span> proves, on the original entire spaces,</p>
+<span id="equation-fl2"></span><span class="math math-display" data-tex="\[
+\begin{split}
+F,G&amp;:L^2(\mathbb R^d)\longrightarrow L^2(\mathbb R^d),\\
+GF&amp;=I,\qquad FG=I,\\
+\|Ff\|_2&amp;=(2\pi)^{d/2}\|f\|_2,\qquad
+\|Gh\|_2=(2\pi)^{-d/2}\|h\|_2 .
+\end{split}                                                   \tag{FL2}
+\]">\[
+\begin{split}
+F,G&amp;:L^2(\mathbb R^d)\longrightarrow L^2(\mathbb R^d),\\
+GF&amp;=I,\qquad FG=I,\\
+\|Ff\|_2&amp;=(2\pi)^{d/2}\|f\|_2,\qquad
+\|Gh\|_2=(2\pi)^{-d/2}\|h\|_2 .
+\end{split}                                                   \tag{FL2}
+\]</span>
+<p>These are bijections with their original norms. In dimension zero the measure is the point mass on the one point <span class="math" data-tex="\(\mathbb R^0\)">\(\mathbb R^0\)</span>, the space is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and both maps are the identity with <span class="math" data-tex="\((2\pi)^0=1\)">\((2\pi)^0=1\)</span>. No assertion that this point is null is used in that case.</p>
+<h3 id="AN03-DEP-L2-002"><span id="an03-dep-l2-002"></span><span id="ordinary-integrals-and-simultaneous-approximation"></span><span id="7-2-ordinary-integrals-and-simultaneous-approximation"></span>7.2. Ordinary integrals and simultaneous approximation</h3>
+<p>For any finite exponents <span class="math" data-tex="\(a,c\geq1\)">\(a,c\geq1\)</span> and <span class="math" data-tex="\(f\in L^a\cap L^c\)">\(f\in L^a\cap L^c\)</span>, put
+<span class="math" data-tex="\(f_j=1_{\{|x|_\infty\leq j,\ |f(x)|\leq j\}}f\)">\(f_j=1_{\{|x|_\infty\leq j,\ |f(x)|\leq j\}}f\)</span>.
+Dominated convergence of <span class="math" data-tex="\(|f|^a\)">\(|f|^a\)</span> and <span class="math" data-tex="\(|f|^c\)">\(|f|^c\)</span> proves convergence in both original norms. Each <span class="math" data-tex="\(f_j\)">\(f_j\)</span> is bounded and supported in its displayed coordinate cube. Fix the compact smooth nonnegative approximate identity <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, with <span class="math" data-tex="\(\int\rho=1\)">\(\int\rho=1\)</span>, from Section 15.4 of the linked chapter. For
+<span class="math" data-tex="\(\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)\)">\(\rho_\varepsilon(x)=\varepsilon^{-d}\rho(x/\varepsilon)\)</span>, its proved translation estimate is</p>
+<span id="equation-fl3"></span><span class="math math-display" data-tex="\[
+\|\rho_\varepsilon*f_j-f_j\|_t
+\leq\int|\rho(z)|\,\|f_j(\,\cdot-\varepsilon z)-f_j\|_t\,dz
+\longrightarrow0,\qquad t=a,c.                                \tag{FL3}
+\]">\[
+\|\rho_\varepsilon*f_j-f_j\|_t
+\leq\int|\rho(z)|\,\|f_j(\,\cdot-\varepsilon z)-f_j\|_t\,dz
+\longrightarrow0,\qquad t=a,c.                                \tag{FL3}
+\]</span>
+<p><strong>The full integral triangle estimate in (FL3).</strong> Fix an original finite exponent <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, the actual <span class="math" data-tex="\(f_j\)">\(f_j\)</span>, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Put <span class="math" data-tex="\(h_z(x)=f_j(x-\varepsilon z)-f_j(x)\)">\(h_z(x)=f_j(x-\varepsilon z)-f_j(x)\)</span> and <span class="math" data-tex="\(M_\varepsilon(x)=\int|\rho(z)||h_z(x)|\,dz\)">\(M_\varepsilon(x)=\int|\rho(z)||h_z(x)|\,dz\)</span>. These are the original translated differences and their nonnegative integral envelope. The joint integrand is measurable for completed Lebesgue measure: first take a Borel representative of the given <span class="math" data-tex="\(f_j\)">\(f_j\)</span> class. Its coordinate compositions are Borel. Changing that representative on a null set <span class="math" data-tex="\(N\)">\(N\)</span> changes the composed functions only on the inverse images of <span class="math" data-tex="\(N\times\mathbb R^d\)">\(N\times\mathbb R^d\)</span> under the identity product map and the invertible shear <span class="math" data-tex="\((x,z)\mapsto(x-\varepsilon z,z)\)">\((x,z)\mapsto(x-\varepsilon z,z)\)</span>. Its inverse is <span class="math" data-tex="\((w,z)\mapsto(w+\varepsilon z,z)\)">\((w,z)\mapsto(w+\varepsilon z,z)\)</span>, its full block determinant is one, and completed product integration and affine substitution make both inverse images null. Thus the calculation respects the original completed classes. For each fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the section in <span class="math" data-tex="\(z\)">\(z\)</span> is also measurable by the invertible affine substitution <span class="math" data-tex="\(z\mapsto x-\varepsilon z\)">\(z\mapsto x-\varepsilon z\)</span>.</p>
+<p>The original truncation gives <span class="math" data-tex="\(|f_j|\leq j\)">\(|f_j|\leq j\)</span> and support in <span class="math" data-tex="\(Q_j=[-j,j]^d\)">\(Q_j=[-j,j]^d\)</span>. Consequently <span class="math" data-tex="\(0\leq M_\varepsilon\leq2j\|\rho\|_1\)">\(0\leq M_\varepsilon\leq2j\|\rho\|_1\)</span>, with support contained in the actual compact set <span class="math" data-tex="\(Q_j\cup(Q_j+\varepsilon\operatorname{supp}\rho)\)">\(Q_j\cup(Q_j+\varepsilon\operatorname{supp}\rho)\)</span>. It follows that <span class="math" data-tex="\(M_\varepsilon\in L^t\)">\(M_\varepsilon\in L^t\)</span>. At <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, nonnegative Tonelli gives <span class="math" data-tex="\(\|M_\varepsilon\|_1=\int|\rho(z)|\|h_z\|_1\,dz\)">\(\|M_\varepsilon\|_1=\int|\rho(z)|\|h_z\|_1\,dz\)</span>. If <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>, apply the proved scalar Hölder inequality with its actual conjugate exponent <span class="math" data-tex="\(t&#x27;=t/(t-1)\)">\(t&#x27;=t/(t-1)\)</span>. The full power satisfies <span class="math" data-tex="\(\|M_\varepsilon^{t-1}\|_{t&#x27;}=\|M_\varepsilon\|_t^{t-1}\)">\(\|M_\varepsilon^{t-1}\|_{t&#x27;}=\|M_\varepsilon\|_t^{t-1}\)</span>, since <span class="math" data-tex="\((t-1)t&#x27;=t\)">\((t-1)t&#x27;=t\)</span>. Nonnegative Tonelli then gives</p>
+<span id="equation-fl3a"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\|M_\varepsilon\|_t^t
+&amp;=\int M_\varepsilon(x)^{t-1}
+\left(\int|\rho(z)||h_z(x)|\,dz\right)dx\\
+&amp;=\int|\rho(z)|
+\left(\int M_\varepsilon(x)^{t-1}|h_z(x)|\,dx\right)dz\\
+&amp;\leq\|M_\varepsilon\|_t^{t-1}
+\int|\rho(z)|\|h_z\|_t\,dz.
+\end{aligned}\tag{FL3a}
+\]">\[
+\begin{aligned}
+\|M_\varepsilon\|_t^t
+&amp;=\int M_\varepsilon(x)^{t-1}
+\left(\int|\rho(z)||h_z(x)|\,dz\right)dx\\
+&amp;=\int|\rho(z)|
+\left(\int M_\varepsilon(x)^{t-1}|h_z(x)|\,dx\right)dz\\
+&amp;\leq\|M_\varepsilon\|_t^{t-1}
+\int|\rho(z)|\|h_z\|_t\,dz.
+\end{aligned}\tag{FL3a}
+\]</span>
+<p>The last integral is finite, because translation is an isometry and <span class="math" data-tex="\(\|h_z\|_t\leq2\|f_j\|_t\)">\(\|h_z\|_t\leq2\|f_j\|_t\)</span>. If <span class="math" data-tex="\(\|M_\varepsilon\|_t&gt;0\)">\(\|M_\varepsilon\|_t&gt;0\)</span>, division by its displayed positive power proves the integral triangle bound. If that norm is zero, the same bound is immediate without division. The exact difference formula (LP13), with both original scaling Jacobians retained, gives <span class="math" data-tex="\(|\rho_\varepsilon*f_j-f_j|\leq M_\varepsilon\)">\(|\rho_\varepsilon*f_j-f_j|\leq M_\varepsilon\)</span>. Combining these two inequalities proves exactly (FL3), rather than replacing it by the weaker power-integral bound (LP14). Translation continuity makes <span class="math" data-tex="\(\|h_z\|_t\to0\)">\(\|h_z\|_t\to0\)</span> for each fixed <span class="math" data-tex="\(z\)">\(z\)</span>, and its original bound <span class="math" data-tex="\(2|\rho(z)|\|f_j\|_t\)">\(2|\rho(z)|\|f_j\|_t\)</span> is integrable. Its dependence on <span class="math" data-tex="\(z\)">\(z\)</span> is continuous by that same translation theorem and the reverse norm inequality. Dominated convergence therefore proves the limit in (FL3) for each of the original exponents <span class="math" data-tex="\(a,c\)">\(a,c\)</span>, without an infinite-dimensional integration theorem.</p>
+<p>Its bound <span class="math" data-tex="\(2|\rho(z)|\|f_j\|_t\)">\(2|\rho(z)|\|f_j\|_t\)</span> is integrable. Choose a positive <span class="math" data-tex="\(\varepsilon_j&lt;1/j\)">\(\varepsilon_j&lt;1/j\)</span> making both errors at most <span class="math" data-tex="\(1/j\)">\(1/j\)</span>. Then <span class="math" data-tex="\(v_j=\rho_{\varepsilon_j}*f_j\)">\(v_j=\rho_{\varepsilon_j}*f_j\)</span> is compact smooth and tends to <span class="math" data-tex="\(f\)">\(f\)</span> in both norms. Differentiating this absolutely convergent convolution proves smoothness, and its support is contained in the sum of the two original compact supports. This constructs a single approximation, rather than assuming that two independently chosen approximations coincide.</p>
+<p>Apply this with <span class="math" data-tex="\(a=1,c=2\)">\(a=1,c=2\)</span>. The ordinary Fourier and inverse integrals satisfy</p>
+<span id="equation-fl4"></span><span class="math math-display" data-tex="\[
+\begin{split}
+\sup_\xi|Fv_j(\xi)-Ff(\xi)|&amp;\leq\|v_j-f\|_1,\\
+\sup_x|Gv_j(x)-Gf(x)|&amp;\leq(2\pi)^{-d}\|v_j-f\|_1 .
+\end{split}                                                   \tag{FL4}
+\]">\[
+\begin{split}
+\sup_\xi|Fv_j(\xi)-Ff(\xi)|&amp;\leq\|v_j-f\|_1,\\
+\sup_x|Gv_j(x)-Gf(x)|&amp;\leq(2\pi)^{-d}\|v_j-f\|_1 .
+\end{split}                                                   \tag{FL4}
+\]</span>
+<p>Here the symbols on the right side of each difference denote their ordinary absolutely defined integrals. Their uniform limits therefore agree almost everywhere with the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limits in (FL2). Indeed, the summable-difference argument in the completeness proof supplies an almost-everywhere convergent subsequence of either <span class="math" data-tex="\(L^2\)">\(L^2\)</span> sequence. The uniform and almost-everywhere limits of that subsequence are equal. Thus the constructed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> classes coincide with the original integrals on <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>, with the exact inverse factor retained.</p>
+<p>The same simultaneous approximation identifies any two finite-exponent continuous extensions of an operator from Schwartz functions when both original norm bounds are available. For completeness, if functions converge in <span class="math" data-tex="\(L^a\)">\(L^a\)</span> and <span class="math" data-tex="\(L^c\)">\(L^c\)</span> to two limits, select a common subsequence with summable <span class="math" data-tex="\(a\)">\(a\)</span>-th and <span class="math" data-tex="\(c\)">\(c\)</span>-th powers of its errors. Chebyshev's integral inequality and the measure of the countable tail unions make both errors tend to zero almost everywhere; the limits must agree. This is the identification used for the multiplier below.</p>
+<h3 id="AN03-DEP-L2-003"><span id="an03-dep-l2-003"></span><span id="parseval-pairing-multiplication-and-the-actual-adjoint"></span><span id="7-3-parseval-pairing-multiplication-and-the-actual-adjoint"></span>7.3. Parseval pairing, multiplication and the actual adjoint</h3>
+<p>Approximating both inputs by Schwartz functions in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, Theorem 2.1 and Cauchy–Schwarz prove</p>
+<span id="equation-fl5"></span><span class="math math-display" data-tex="\[
+\langle u,v\rangle
+=(2\pi)^{-d}\int_{\mathbb R^d}
+Fu(\xi)\overline{Fv(\xi)}\,d\xi .
+\tag{FL5}
+\]">\[
+\langle u,v\rangle
+=(2\pi)^{-d}\int_{\mathbb R^d}
+Fu(\xi)\overline{Fv(\xi)}\,d\xi .
+\tag{FL5}
+\]</span>
+<p>The inner product is linear in the first variable. Each pairing difference tends to zero by the sum of the two Cauchy–Schwarz bounds, so the original factor persists.</p>
+<p>If <span class="math" data-tex="\(b\)">\(b\)</span> is a measurable scalar frequency function with
+<span class="math" data-tex="\(\|b\|_\infty\leq B\)">\(\|b\|_\infty\leq B\)</span>, multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> respects the completed null classes and maps <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to itself with norm at most <span class="math" data-tex="\(B\)">\(B\)</span>. Hence</p>
+<span id="equation-fl6"></span><span class="math math-display" data-tex="\[
+\begin{split}
+T_b&amp;=G\,M_b\,F,\qquad M_bh=bh,\\
+\|T_bf\|_2
+&amp;\leq(2\pi)^{-d/2}B(2\pi)^{d/2}\|f\|_2=B\|f\|_2,\\
+\langle T_bu,v\rangle
+&amp;=(2\pi)^{-d}\int b(\xi)Fu(\xi)\overline{Fv(\xi)}\,d\xi
+=\langle u,T_{\overline b}v\rangle .
+\end{split}                                                   \tag{FL6}
+\]">\[
+\begin{split}
+T_b&amp;=G\,M_b\,F,\qquad M_bh=bh,\\
+\|T_bf\|_2
+&amp;\leq(2\pi)^{-d/2}B(2\pi)^{d/2}\|f\|_2=B\|f\|_2,\\
+\langle T_bu,v\rangle
+&amp;=(2\pi)^{-d}\int b(\xi)Fu(\xi)\overline{Fv(\xi)}\,d\xi
+=\langle u,T_{\overline b}v\rangle .
+\end{split}                                                   \tag{FL6}
+\]</span>
+<p>This proves the actual adjoint <span class="math" data-tex="\(T_b^*=T_{\overline b}\)">\(T_b^*=T_{\overline b}\)</span>. It uses the constructed inverse maps, not an assumed representation of an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> dual space. For Schwartz <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(bFf\in L^1\cap L^2\)">\(bFf\in L^1\cap L^2\)</span>, so <span class="math" data-tex="\(T_bf\)">\(T_bf\)</span> is exactly the original inverse integral. These statements apply in the elliptic chapter with <span class="math" data-tex="\(d=n\geq1\)">\(d=n\geq1\)</span>; its arbitrary value of the symbol at zero changes no frequency integral.</p>
+<h2 id="AN03-DEP-PARTIAL-000"><span id="an03-dep-partial-000"></span><span id="partial-fourier-transforms-in-the-original-product-coordinates"></span><span id="8-partial-fourier-transforms-in-the-original-product-coordinates"></span>8. Partial Fourier transforms in the original product coordinates</h2>
+<p><a href="banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the full original integration, monomial Schwartz and lattice-cutoff proofs used here. <a href="metric-foundation-bridges.html">Metric and topological foundations</a> supplies the exact derivative and segment-integration maps.</p>
+<p>These proofs extend the course's existing scalar Fourier calculation to its actual product spaces. The original transform, Lebesgue densities, complex-linear distribution convention, coordinate orders and every inverse factor remain. This is a standard foundation and carries no novelty claim. The independent inputs are the scalar Fourier inversion and Schwartz Plancherel proofs in Sections 1 and 2 of the Fourier chapter, the two-sided original L2 extensions in its Section 7, the scalar measure and density proofs in Banach Sections 15--16, the full monomial Schwartz proof in Banach Section 18, and the actual cutoff in Banach Section 21. The distribution, symbol, conormal and operator receivers do not prove these inputs.</p>
+<h3 id="AN03-DEP-PARTIAL-001"><span id="an03-dep-partial-001"></span><span id="the-actual-transform-and-every-monomial-derivative"></span><span id="8-1-the-actual-transform-and-every-monomial-derivative"></span>8.1. The actual transform and every monomial derivative</h3>
+<p>Let <span class="math" data-tex="\(p,q\geq0\)">\(p,q\geq0\)</span> be integers. Write the original coordinates as <span class="math" data-tex="\((x,y)\in\mathbb R^p\times\mathbb R^q\)">\((x,y)\in\mathbb R^p\times\mathbb R^q\)</span>, with dual coordinate <span class="math" data-tex="\(\xi\in\mathbb R^p\)">\(\xi\in\mathbb R^p\)</span>. The monomial seminorms are</p>
+<span id="equation-pf1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+P_{a,b;c,d}(f)=\sup_{x,y}
+|x^a y^b\partial_x^c\partial_y^d f(x,y)|,
+\qquad\\
+(T_xf)(\xi,y)=\int_{\mathbb R^p}e^{-ix\cdot\xi}f(x,y)\,dx,
+\qquad\\
+(G_\xi h)(x,y)=(2\pi)^{-p}
+\int_{\mathbb R^p}e^{ix\cdot\xi}h(\xi,y)\,d\xi.
+\end{aligned}
+\tag{PF1}
+\]">\[
+\begin{aligned}
+P_{a,b;c,d}(f)=\sup_{x,y}
+|x^a y^b\partial_x^c\partial_y^d f(x,y)|,
+\qquad\\
+(T_xf)(\xi,y)=\int_{\mathbb R^p}e^{-ix\cdot\xi}f(x,y)\,dx,
+\qquad\\
+(G_\xi h)(x,y)=(2\pi)^{-p}
+\int_{\mathbb R^p}e^{ix\cdot\xi}h(\xi,y)\,d\xi.
+\end{aligned}
+\tag{PF1}
+\]</span>
+<p>Dimension zero means a singleton carrying measure one; its empty monomials and derivative products equal one. Thus these formulas include the identity when <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, and the full scalar transform when <span class="math" data-tex="\(q=0\)">\(q=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>, choose an integer <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(2M&gt;p\)">\(2M&gt;p\)</span> and retain the actual finite integral</p>
+<span id="equation-pf2"></span><span class="math math-display" data-tex="\[
+I_{p,M}=\int_{\mathbb R^p}(1+|x|^2)^{-M}\,dx,
+\qquad
+(1+|x|^2)^M=
+\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}x^{2r}.
+\tag{PF2}
+\]">\[
+I_{p,M}=\int_{\mathbb R^p}(1+|x|^2)^{-M}\,dx,
+\qquad
+(1+|x|^2)^M=
+\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}x^{2r}.
+\tag{PF2}
+\]</span>
+<p>Its finiteness, with the entire integral and all shell bounds retained, was proved by SC3. This also bounds the integral of any Schwartz function in the <span class="math" data-tex="\(x\)">\(x\)</span> variables uniformly in all original <span class="math" data-tex="\(y\)">\(y\)</span> variables and in each prescribed <span class="math" data-tex="\(y\)">\(y\)</span> monomial. Derivatives under the integral follow from the original dominated derivative theorem: on a compact parameter segment, every derivative of the integrand is bounded by a finite sum of original monomial Schwartz seminorms times the integrable <span class="math" data-tex="\((1+|x|^2)^{-M}\)">\((1+|x|^2)^{-M}\)</span>. The exact fundamental theorem on that segment identifies each derivative of the integral with the integral of the derivative. Iterating gives all joint derivatives, with the original <span class="math" data-tex="\((-ix)^\gamma\)">\((-ix)^\gamma\)</span> factors.</p>
+<p>Here are the integration-by-parts limits, including their cutoff terms. Take the actual Banach Section 21 function <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>, equal to one on <span class="math" data-tex="\([-1,1]^p\)">\([-1,1]^p\)</span> and supported in <span class="math" data-tex="\([-7/4,7/4]^p\subset(-2,2)^p\)">\([-7/4,7/4]^p\subset(-2,2)^p\)</span>, and set <span class="math" data-tex="\(\vartheta_R(x)=\vartheta(x/R)\)">\(\vartheta_R(x)=\vartheta(x/R)\)</span>, <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>. For any Schwartz <span class="math" data-tex="\(g(x,y)\)">\(g(x,y)\)</span> and multiindex <span class="math" data-tex="\(a\)">\(a\)</span>, compact integration by parts gives</p>
+<span id="equation-pf3"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\xi^a\int e^{-ix\cdot\xi}\vartheta_R(x)g(x,y)\,dx
+\\
+=(-i)^{|a|}\sum_{v\leq a}{a\choose v}R^{-|v|}
+\int e^{-ix\cdot\xi}
+(\partial^v\vartheta)(x/R)
+\partial_x^{a-v}g(x,y)\,dx.
+\end{aligned}
+\tag{PF3}
+\]">\[
+\begin{aligned}
+\xi^a\int e^{-ix\cdot\xi}\vartheta_R(x)g(x,y)\,dx
+\\
+=(-i)^{|a|}\sum_{v\leq a}{a\choose v}R^{-|v|}
+\int e^{-ix\cdot\xi}
+(\partial^v\vartheta)(x/R)
+\partial_x^{a-v}g(x,y)\,dx.
+\end{aligned}
+\tag{PF3}
+\]</span>
+<p>The <span class="math" data-tex="\(v=0\)">\(v=0\)</span> term converges by dominated convergence to the full original derivative integral. Every <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> term is supported where <span class="math" data-tex="\(R\leq\max_j|x_j|\leq2R\)">\(R\leq\max_j|x_j|\leq2R\)</span>. Its absolute value is at most its original coefficient <span class="math" data-tex="\( {a\choose v}R^{-|v|}\|\partial^v\vartheta\|_\infty\)">\( {a\choose v}R^{-|v|}\|\partial^v\vartheta\|_\infty\)</span> times the integral of <span class="math" data-tex="\(|\partial_x^{a-v}g(x,y)|\)">\(|\partial_x^{a-v}g(x,y)|\)</span> over that set, and tends to zero. Multiplying by any requested <span class="math" data-tex="\(y\)">\(y\)</span> monomial and taking any <span class="math" data-tex="\(y\)">\(y\)</span> derivative gives the same conclusion with its corresponding original seminorm bound. The left side tends to <span class="math" data-tex="\(\xi^aT_xg\)">\(\xi^aT_xg\)</span>. Consequently <span class="math" data-tex="\(T_xD_x^ag=\xi^aT_xg\)">\(T_xD_x^ag=\xi^aT_xg\)</span>, with <span class="math" data-tex="\(D_x=-i\partial_x\)">\(D_x=-i\partial_x\)</span>. No boundary contribution or cutoff derivative has been omitted before its limiting estimate.</p>
+<p>Apply this identity to <span class="math" data-tex="\(g=(-ix)^\gamma y^\beta\partial_y^\delta f\)">\(g=(-ix)^\gamma y^\beta\partial_y^\delta f\)</span>. The full product rule gives</p>
+<span id="equation-pf4"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\xi^\alpha y^\beta\partial_\xi^\gamma\partial_y^\delta T_xf
+\\
+=(-i)^{|\alpha|+|\gamma|}
+\sum_{\substack{v\leq\alpha\\v\leq\gamma}}
+{\alpha\choose v}{\gamma!\over(\gamma-v)!}
+\int e^{-ix\cdot\xi}x^{\gamma-v}y^\beta
+\partial_x^{\alpha-v}\partial_y^\delta f(x,y)\,dx.
+\end{aligned}
+\tag{PF4}
+\]">\[
+\begin{aligned}
+\xi^\alpha y^\beta\partial_\xi^\gamma\partial_y^\delta T_xf
+\\
+=(-i)^{|\alpha|+|\gamma|}
+\sum_{\substack{v\leq\alpha\\v\leq\gamma}}
+{\alpha\choose v}{\gamma!\over(\gamma-v)!}
+\int e^{-ix\cdot\xi}x^{\gamma-v}y^\beta
+\partial_x^{\alpha-v}\partial_y^\delta f(x,y)\,dx.
+\end{aligned}
+\tag{PF4}
+\]</span>
+<p>Taking absolute values and expanding the entire weight in PF2 proves the finite, explicit seminorm estimate</p>
+<span id="equation-pf5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\sup_{\xi,y}
+|\xi^\alpha y^\beta\partial_\xi^\gamma\partial_y^\delta T_xf|
+\\
+\leq I_{p,M}
+\sum_{\substack{v\leq\alpha\\v\leq\gamma}}
+{\alpha\choose v}{\gamma!\over(\gamma-v)!}
+\\
+\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}
+P_{2r+\gamma-v,\beta;\alpha-v,\delta}(f).
+\end{aligned}
+\tag{PF5}
+\]">\[
+\begin{aligned}
+\sup_{\xi,y}
+|\xi^\alpha y^\beta\partial_\xi^\gamma\partial_y^\delta T_xf|
+\\
+\leq I_{p,M}
+\sum_{\substack{v\leq\alpha\\v\leq\gamma}}
+{\alpha\choose v}{\gamma!\over(\gamma-v)!}
+\\
+\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}
+P_{2r+\gamma-v,\beta;\alpha-v,\delta}(f).
+\end{aligned}
+\tag{PF5}
+\]</span>
+<p>Every factorial, multiindex and coefficient is retained. For <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, this is the equality of the original <span class="math" data-tex="\(y\)">\(y\)</span> seminorms, with <span class="math" data-tex="\(I_{0,M}=1\)">\(I_{0,M}=1\)</span> and the singleton empty-index sums. PF5 proves that <span class="math" data-tex="\(T_x\)">\(T_x\)</span> maps the original full product Schwartz space continuously into itself. It does not rely on a tensor-density assertion, a Schwartz kernel theorem, or a coordinate pullback theorem.</p>
+<h3 id="AN03-DEP-PARTIAL-002"><span id="an03-dep-partial-002"></span><span id="both-inverse-maps-with-the-original-factors"></span><span id="8-2-both-inverse-maps-with-the-original-factors"></span>8.2. Both inverse maps, with the original factors</h3>
+<p>Reflection in the transformed variables is <span class="math" data-tex="\(R_xf(x,y)=f(-x,y)\)">\(R_xf(x,y)=f(-x,y)\)</span>. Its original monomial seminorms equal those of <span class="math" data-tex="\(f\)">\(f\)</span>. Direct change of the original integration variable gives <span class="math" data-tex="\(T_xR_x=R_\xi T_x\)">\(T_xR_x=R_\xi T_x\)</span>, and the actual inverse in PF1 is <span class="math" data-tex="\(G_\xi=(2\pi)^{-p}R_xT_\xi\)">\(G_\xi=(2\pi)^{-p}R_xT_\xi\)</span>, with the input coordinates named accordingly. Thus PF5 also proves continuity of <span class="math" data-tex="\(G_\xi\)">\(G_\xi\)</span>, retaining the factor <span class="math" data-tex="\((2\pi)^{-p}\)">\((2\pi)^{-p}\)</span> on each output bound.</p>
+<p>For every fixed original <span class="math" data-tex="\(y\)">\(y\)</span>, the slice <span class="math" data-tex="\(f(\cdot,y)\)">\(f(\cdot,y)\)</span> is Schwartz by PF2 and the original monomial bounds. The proved scalar Fourier inversion applies to this slice and gives</p>
+<span id="equation-pf6"></span><span class="math math-display" data-tex="\[
+G_\xi T_x f(x,y)=f(x,y),\qquad
+T_xG_\xi h(\xi,y)=h(\xi,y),\qquad
+T_\xi T_x f(x,y)=(2\pi)^p f(-x,y).
+\tag{PF6}
+\]">\[
+G_\xi T_x f(x,y)=f(x,y),\qquad
+T_xG_\xi h(\xi,y)=h(\xi,y),\qquad
+T_\xi T_x f(x,y)=(2\pi)^p f(-x,y).
+\tag{PF6}
+\]</span>
+<p>Both compositions lie in the original full Schwartz space by PF5, so pointwise equality is equality of its actual elements. The third identity follows from the first and the full reflection/inverse formula. It retains the entire power of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>; the original transform has not been replaced by a unitary convention.</p>
+<p>For each transformed coordinate <span class="math" data-tex="\(j\)">\(j\)</span> and unchanged coordinate <span class="math" data-tex="\(k\)">\(k\)</span>, PF3, differentiation under PF1 and the original product rule give all four original maps</p>
+<span id="equation-pf7"></span><span class="math math-display" data-tex="\[
+T_x(D_{x_j}f)=\xi_jT_xf,\qquad
+T_x(x_jf)=i\partial_{\xi_j}T_xf,\qquad
+T_x(D_{y_k}f)=D_{y_k}T_xf,\qquad
+T_x(y_kf)=y_kT_xf.
+\tag{PF7}
+\]">\[
+T_x(D_{x_j}f)=\xi_jT_xf,\qquad
+T_x(x_jf)=i\partial_{\xi_j}T_xf,\qquad
+T_x(D_{y_k}f)=D_{y_k}T_xf,\qquad
+T_x(y_kf)=y_kT_xf.
+\tag{PF7}
+\]</span>
+<p>Their arbitrary finite iterates follow by composition in the actual indicated order. Formula PF4 supplies the full simultaneous derivative formula, rather than suppressing its product terms.</p>
+<h3 id="AN03-DEP-PARTIAL-003"><span id="an03-dep-partial-003"></span><span id="tempered-distributions-and-both-original-dual-topologies"></span><span id="8-3-tempered-distributions-and-both-original-dual-topologies"></span>8.3. Tempered distributions and both original dual topologies</h3>
+<p>Let <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> denote the complex-linear continuous dual of the original monomial Schwartz space. In the transposed formula below, <span class="math" data-tex="\(T_\xi\phi(x,y)\)">\(T_\xi\phi(x,y)\)</span> is the same original negative-sign transform applied to the test function's <span class="math" data-tex="\(\xi\)">\(\xi\)</span> variables, with its output named <span class="math" data-tex="\(x\)">\(x\)</span>. Define</p>
+<span id="equation-pf8"></span><span class="math math-display" data-tex="\[
+\langle T_xu,\phi(\xi,y)\rangle
+=\langle u,T_\xi\phi(x,y)\rangle,
+\qquad
+\langle G_\xi v,\psi(x,y)\rangle
+=\langle v,G_x\psi(\xi,y)\rangle.
+\tag{PF8}
+\]">\[
+\langle T_xu,\phi(\xi,y)\rangle
+=\langle u,T_\xi\phi(x,y)\rangle,
+\qquad
+\langle G_\xi v,\psi(x,y)\rangle
+=\langle v,G_x\psi(\xi,y)\rangle.
+\tag{PF8}
+\]</span>
+<p>The test transforms are continuous by PF5 and its full inverse bound, so these are actual tempered distributions. Transposing the two equations in PF6 proves that these distribution maps are mutual inverses. On regular distributions induced by Schwartz functions, Fubini identifies PF8 with the original integrals in PF1. Here is its full absolute-integrability bound: choose integers <span class="math" data-tex="\(M,N\)">\(M,N\)</span> with <span class="math" data-tex="\(2M&gt;p\)">\(2M&gt;p\)</span>, <span class="math" data-tex="\(2N&gt;q\)">\(2N&gt;q\)</span>, retain <span class="math" data-tex="\(I_{p,M}\)">\(I_{p,M}\)</span>, <span class="math" data-tex="\(I_{q,N}\)">\(I_{q,N}\)</span>, and put</p>
+<span id="equation-pf8a"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+A_f=\sum_{\substack{|r|\leq M\\|s|\leq N}}
+{M!\over(M-|r|)!\,r!}{N!\over(N-|s|)!\,s!}
+P_{2r,2s;0,0}(f),\qquad\\
+B_\phi=\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}
+P_{2r,0;0,0}(\phi),
+\qquad\\
+\iiint |f(x,y)\phi(\xi,y)|\,dx\,d\xi\,dy
+\leq I_{p,M}^2 I_{q,N} A_f B_\phi&lt;\infty.
+\end{aligned}
+\tag{PF8a}
+\]">\[
+\begin{aligned}
+A_f=\sum_{\substack{|r|\leq M\\|s|\leq N}}
+{M!\over(M-|r|)!\,r!}{N!\over(N-|s|)!\,s!}
+P_{2r,2s;0,0}(f),\qquad\\
+B_\phi=\sum_{|r|\leq M}{M!\over(M-|r|)!\,r!}
+P_{2r,0;0,0}(\phi),
+\qquad\\
+\iiint |f(x,y)\phi(\xi,y)|\,dx\,d\xi\,dy
+\leq I_{p,M}^2 I_{q,N} A_f B_\phi&lt;\infty.
+\end{aligned}
+\tag{PF8a}
+\]</span>
+<p>The full weight expansions give
+<span class="math" data-tex="\(|f(x,y)|\leq A_f(1+|x|^2)^{-M}(1+|y|^2)^{-N}\)">\(|f(x,y)|\leq A_f(1+|x|^2)^{-M}(1+|y|^2)^{-N}\)</span> and
+<span class="math" data-tex="\(|\phi(\xi,y)|\leq B_\phi(1+|\xi|^2)^{-M}\)">\(|\phi(\xi,y)|\leq B_\phi(1+|\xi|^2)^{-M}\)</span>.
+Their product and positive Tonelli prove PF8a. Empty-dimensional factors retain their unit mass and empty-index coefficient one. Consequently the distribution convention agrees with the original function convention, including its inverse coefficient.</p>
+<p>For the strong dual topology use its actual bounded-set seminorm <span class="math" data-tex="\(q_C(u)=\sup_{\phi\in C}|\langle u,\phi\rangle|\)">\(q_C(u)=\sup_{\phi\in C}|\langle u,\phi\rangle|\)</span>. PF5 proves that the image of every bounded Schwartz set <span class="math" data-tex="\(C\)">\(C\)</span> under <span class="math" data-tex="\(T_\xi\)">\(T_\xi\)</span> is bounded. Directly from PF8,</p>
+<span id="equation-pf9"></span><span class="math math-display" data-tex="\[
+q_C(T_xu)=q_{T_\xi C}(u),\qquad
+q_C(G_\xi v)=q_{G_x C}(v).
+\tag{PF9}
+\]">\[
+q_C(T_xu)=q_{T_\xi C}(u),\qquad
+q_C(G_\xi v)=q_{G_x C}(v).
+\tag{PF9}
+\]</span>
+<p>Thus both distribution maps are continuous for the original strong dual topology; singletons give the weak dual continuity too. No unidentified distribution topology enters the argument.</p>
+<p>The identities in PF7 hold for these distributions with precisely the same factors and signs. For example,</p>
+<span id="equation-pf10"></span><span class="math math-display" data-tex="\[
+\langle T_xD_{x_j}u,\phi\rangle
+=i\langle u,\partial_{x_j}T_\xi\phi\rangle
+=\langle u,T_\xi(\xi_j\phi)\rangle,
+\qquad
+\langle i\partial_{\xi_j}T_xu,\phi\rangle
+=-i\langle u,T_\xi\partial_{\xi_j}\phi\rangle
+=\langle u,x_jT_\xi\phi\rangle.
+\tag{PF10}
+\]">\[
+\langle T_xD_{x_j}u,\phi\rangle
+=i\langle u,\partial_{x_j}T_\xi\phi\rangle
+=\langle u,T_\xi(\xi_j\phi)\rangle,
+\qquad
+\langle i\partial_{\xi_j}T_xu,\phi\rangle
+=-i\langle u,T_\xi\partial_{\xi_j}\phi\rangle
+=\langle u,x_jT_\xi\phi\rangle.
+\tag{PF10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\partial_{x_j}T_\xi\phi=-iT_\xi(\xi_j\phi)\)">\(\partial_{x_j}T_\xi\phi=-iT_\xi(\xi_j\phi)\)</span> and <span class="math" data-tex="\(T_\xi\partial_{\xi_j}\phi=i x_jT_\xi\phi\)">\(T_\xi\partial_{\xi_j}\phi=i x_jT_\xi\phi\)</span>, with the latter proved by PF3 in the test variable. Differentiating <span class="math" data-tex="\(y\)">\(y\)</span> commutes with the test transform by the proved dominated derivative step, and multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> factors out of that integral. The original distributional signs in the unchanged variables therefore give the last two identities in PF7. Their finite iterates keep their actual multiplication order.</p>
+<h3 id="AN03-DEP-PARTIAL-004"><span id="an03-dep-partial-004"></span><span id="original-l2-maps-and-the-exact-unitary-comparison"></span><span id="8-4-original-l2-maps-and-the-exact-unitary-comparison"></span>8.4. Original L2 maps and the exact unitary comparison</h3>
+<p>For <span class="math" data-tex="\(f,g\in\mathcal S(\mathbb R^{p+q})\)">\(f,g\in\mathcal S(\mathbb R^{p+q})\)</span>, apply the original scalar Schwartz Parseval identity at each fixed <span class="math" data-tex="\(y\)">\(y\)</span>. Positive Tonelli, or absolute Fubini for the pairing, then gives</p>
+<span id="equation-pf11"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T_xf\|_{L^2(d\xi\,dy)}^2
+=(2\pi)^p\|f\|_{L^2(dx\,dy)}^2,
+\qquad\\
+\int f(x,y)\overline{g(x,y)}\,dx\,dy
+=(2\pi)^{-p}
+\int T_xf(\xi,y)\overline{T_xg(\xi,y)}\,d\xi\,dy.
+\end{aligned}
+\tag{PF11}
+\]">\[
+\begin{aligned}
+\|T_xf\|_{L^2(d\xi\,dy)}^2
+=(2\pi)^p\|f\|_{L^2(dx\,dy)}^2,
+\qquad\\
+\int f(x,y)\overline{g(x,y)}\,dx\,dy
+=(2\pi)^{-p}
+\int T_xf(\xi,y)\overline{T_xg(\xi,y)}\,d\xi\,dy.
+\end{aligned}
+\tag{PF11}
+\]</span>
+<p>The pairing is absolutely integrable on either side by the already proved integral Cauchy--Schwarz inequality. All densities and the full power of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> remain.</p>
+<p>Compact smooth density in the original <span class="math" data-tex="\(L^2(dx\,dy)\)">\(L^2(dx\,dy)\)</span>, proved by LP10--LP12, supplies Schwartz approximants <span class="math" data-tex="\(f_j\to f\)">\(f_j\to f\)</span>. PF11 makes <span class="math" data-tex="\(T_xf_j\)">\(T_xf_j\)</span> Cauchy with its exact norm factor <span class="math" data-tex="\((2\pi)^{p/2}\)">\((2\pi)^{p/2}\)</span>. Completeness of the original target <span class="math" data-tex="\(L^2(d\xi\,dy)\)">\(L^2(d\xi\,dy)\)</span> gives a unique limit, independent of the approximants. This defines the bounded original <span class="math" data-tex="\(T_x\)">\(T_x\)</span> on the whole original L2 space, with precisely that norm factor. The inverse <span class="math" data-tex="\(G_\xi\)">\(G_\xi\)</span> extends by its exact <span class="math" data-tex="\((2\pi)^{-p/2}\)">\((2\pi)^{-p/2}\)</span> norm bound. Taking limits in both identities in PF6 shows that these two whole-space maps are mutual inverses. Taking limits in PF11 gives both original norm and pairing identities for all L2 inputs.</p>
+<p>The distribution and L2 maps agree on L2 functions. Indeed for every fixed Schwartz test, the original integral pairing against that test is continuous in L2 by Cauchy--Schwarz. Pair PF8 with the same approximants on both sides and pass to their L2 limits. This identifies the two exact maps without a pointwise Fourier-integrability assumption for a general L2 input.</p>
+<p>If the receiving statement uses a unitary transform, its exact comparison is</p>
+<span id="equation-pf12"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+U_x=(2\pi)^{-p/2}T_x,\qquad\\
+U_x^{-1}=(2\pi)^{p/2}G_\xi,\qquad\\
+\|U_xf\|_2^2=(2\pi)^{-p}\|T_xf\|_2^2=\|f\|_2^2.
+\end{aligned}
+\tag{PF12}
+\]">\[
+\begin{aligned}
+U_x=(2\pi)^{-p/2}T_x,\qquad\\
+U_x^{-1}=(2\pi)^{p/2}G_\xi,\qquad\\
+\|U_xf\|_2^2=(2\pi)^{-p}\|T_xf\|_2^2=\|f\|_2^2.
+\end{aligned}
+\tag{PF12}
+\]</span>
+<p>Both inverse maps and their surjectivity have just been proved, so this receiving comparison is unitary. It leaves the original <span class="math" data-tex="\(T_x\)">\(T_x\)</span>, <span class="math" data-tex="\(G_\xi\)">\(G_\xi\)</span>, measures and constants explicit throughout the calculation.</p>
+<h3 id="AN03-DEP-PARTIAL-005"><span id="an03-dep-partial-005"></span><span id="exact-receiving-scope"></span><span id="8-5-exact-receiving-scope"></span>8.5. Exact receiving scope</h3>
+<p>For the conormal coordinates <span class="math" data-tex="\((t,z)\in\mathbb R^k\times\mathbb R^{n-k}\)">\((t,z)\in\mathbb R^k\times\mathbb R^{n-k}\)</span>, take the actual substitutions <span class="math" data-tex="\(p=k\)">\(p=k\)</span>, <span class="math" data-tex="\(q=n-k\)">\(q=n-k\)</span>, <span class="math" data-tex="\(x=t\)">\(x=t\)</span>, <span class="math" data-tex="\(y=z\)">\(y=z\)</span>, <span class="math" data-tex="\(\xi=\tau\)">\(\xi=\tau\)</span>. PF1--PF12 then supply the entire partial normal Fourier, full tempered-distribution, monomial derivative and L2 extension clause with inverse coefficient <span class="math" data-tex="\((2\pi)^{-k}\)">\((2\pi)^{-k}\)</span>. The codimension-zero factor has already been proved as the identity; it requires no nonexistent normal coordinate. The complete original scalar Fourier proof supplies the full transform when every coordinate is transformed. These are exact maps on the specified spaces, with every original coordinate and factor retained.</p>
+<p>This supplies the elementary Fourier interface itself. Distribution test-function tensor operations, nonlinear coordinate pullbacks, bundle covariance, intrinsic wavefront statements and complex contour continuation are distinct receiving calculations that still require their complete actual proofs. No conclusion about those calculations is inferred from this Euclidean map.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT 18.155 lecture notes, 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/d7569c76af5fd5132b03d34b4db590e0_lecture_notes.pdf">MIT OpenCourseWare edition</a>.</li>
+<li>[Beezer] Robert Beezer, <em>A First Course in Linear Algebra</em>, <a href="https://github.com/rbeezer/fcla">author's source repository</a>.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/AN-03/prerequisite-bridges.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaughan&#x27;s identity and sums over primes · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-14.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="vaughan-s-identity-and-sums-over-primes">Vaughan's identity and sums over primes</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An exponential phase is simple on an arithmetic progression, but primes do not form a progression. Vaughan's identity expresses the prime weight as a sum of convolutions. Some have a short coefficient sequence and a smooth second factor; others have two long variables. Geometric sums handle the first type. Cauchy–Schwarz and separation of phases handle the second.</p>
+<p>We use the elementary Chebyshev and divisor estimates from <em>Counting primes by elementary means</em>, the divisor-square energy proved in <em>The multiplicative large sieve and bilinear forms with characters</em>, and the prime and Möbius forms of <em>The Siegel–Walfisz theorem</em>. All implied constants below are effective and absolute, except where an epsilon dependence or the ineffectivity of Siegel–Walfisz is explicitly indicated. Write <span class="math" data-tex="\(e(t)=e^{2\pi it}\)">\(e(t)=e^{2\pi it}\)</span>, <span class="math" data-tex="\(\|t\|=\min_{k\in\mathbb Z}|t-k|\)">\(\|t\|=\min_{k\in\mathbb Z}|t-k|\)</span>, and <span class="math" data-tex="\(f_{\le Y}=f\mathbf1_{n\le Y}\)">\(f_{\le Y}=f\mathbf1_{n\le Y}\)</span>, <span class="math" data-tex="\(f_{&gt;Y}=f-f_{\le Y}\)">\(f_{&gt;Y}=f-f_{\le Y}\)</span>.</p>
+<h2 id="1-the-convolution-identity">1. The convolution identity</h2>
+<p>Let <span class="math" data-tex="\(\mathbf1(n)=1\)">\(\mathbf1(n)=1\)</span>, <span class="math" data-tex="\(\ell(n)=\log n\)">\(\ell(n)=\log n\)</span>, and <span class="math" data-tex="\(\epsilon(n)=\mathbf1_{n=1}\)">\(\epsilon(n)=\mathbf1_{n=1}\)</span>. Dirichlet convolution has identity <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Prime factorization gives</p>
+<span class="math math-display" data-tex="\[
+\mu*\mathbf1=\epsilon,\qquad \Lambda*\mathbf1=\ell,\qquad \mu*\ell=\Lambda.
+\tag{1.1}
+\]">\[
+\mu*\mathbf1=\epsilon,\qquad \Lambda*\mathbf1=\ell,\qquad \mu*\ell=\Lambda.
+\tag{1.1}
+\]</span>
+<p>For <span class="math" data-tex="\(U,V\ge1\)">\(U,V\ge1\)</span>, split <span class="math" data-tex="\(\mu\)">\(\mu\)</span> at <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> at <span class="math" data-tex="\(U\)">\(U\)</span>. Since
+<span class="math" data-tex="\(\mu_{&gt;V}*\mathbf1=\epsilon-\mu_{\le V}*\mathbf1\)">\(\mu_{&gt;V}*\mathbf1=\epsilon-\mu_{\le V}*\mathbf1\)</span>, associativity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda
+&amp;=\mu_{\le V}*\ell+\mu_{&gt;V}*\mathbf1*(\Lambda_{\le U}+\Lambda_{&gt;U})\\
+&amp;=\mu_{\le V}*\ell-(\Lambda_{\le U}*\mu_{\le V})*\mathbf1
++(\Lambda_{&gt;U}*\mathbf1)*\mu_{&gt;V}+\Lambda_{\le U}.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+\Lambda
+&amp;=\mu_{\le V}*\ell+\mu_{&gt;V}*\mathbf1*(\Lambda_{\le U}+\Lambda_{&gt;U})\\
+&amp;=\mu_{\le V}*\ell-(\Lambda_{\le U}*\mu_{\le V})*\mathbf1
++(\Lambda_{&gt;U}*\mathbf1)*\mu_{&gt;V}+\Lambda_{\le U}.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>This proves <strong>Vaughan's identity</strong> at every integer, without convergence qualifications. Set
+<span class="math" data-tex="\(c=\Lambda_{\le U}*\mu_{\le V}\)">\(c=\Lambda_{\le U}*\mu_{\le V}\)</span>, <span class="math" data-tex="\(\alpha=\Lambda_{&gt;U}*\mathbf1\)">\(\alpha=\Lambda_{&gt;U}*\mathbf1\)</span>, <span class="math" data-tex="\(\beta=\mu_{&gt;V}\)">\(\beta=\mu_{&gt;V}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{supp}c&amp;\subset[1,UV],&amp; |c(d)|&amp;\le\log d,\\
+\alpha(m)&amp;=0\ (m\le U),&amp;0\le\alpha(m)&amp;\le\log m,\\
+\beta(n)&amp;=0\ (n\le V),&amp;|\beta(n)|&amp;\le1.
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\operatorname{supp}c&amp;\subset[1,UV],&amp; |c(d)|&amp;\le\log d,\\
+\alpha(m)&amp;=0\ (m\le U),&amp;0\le\alpha(m)&amp;\le\log m,\\
+\beta(n)&amp;=0\ (n\le V),&amp;|\beta(n)|&amp;\le1.
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>The bound for <span class="math" data-tex="\(c\)">\(c\)</span> uses <span class="math" data-tex="\(|\mu|\le1\)">\(|\mu|\le1\)</span> and <span class="math" data-tex="\(\sum_{d\mid n}\Lambda(d)=\log n\)">\(\sum_{d\mid n}\Lambda(d)=\log n\)</span>. The same divisor identity proves the bound for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Thus the first two convolutions in (1.2) are Type I; <span class="math" data-tex="\(\alpha*\beta\)">\(\alpha*\beta\)</span> is Type II. These labels describe the support and smoothness available to an estimate, rather than additional identities.</p>
+<p>Take <span class="math" data-tex="\(n=12\)">\(n=12\)</span>, <span class="math" data-tex="\(U=V=2\)">\(U=V=2\)</span>. The four terms in their displayed order are</p>
+<span class="math math-display" data-tex="\[
+\log12-\log6=\log2,\qquad
+-\log2+\log2=0,\qquad-\log2,\qquad0.
+\tag{1.4}
+\]">\[
+\log12-\log6=\log2,\qquad
+-\log2+\log2=0,\qquad-\log2,\qquad0.
+\tag{1.4}
+\]</span>
+<p>For the third term, the possible second factors <span class="math" data-tex="\(n&gt;2\)">\(n&gt;2\)</span> dividing 12 are 3,4,6,12; their paired first factors are 4,3,2,1. Only 3 contributes: <span class="math" data-tex="\(\mu(3)=-1\)">\(\mu(3)=-1\)</span>, <span class="math" data-tex="\(\alpha(4)=\Lambda(4)=\log2\)">\(\alpha(4)=\Lambda(4)=\log2\)</span>. The factor 4 has Möbius value zero, and <span class="math" data-tex="\(\alpha(2)=\alpha(1)=0\)">\(\alpha(2)=\alpha(1)=0\)</span>. Their total is zero, as required by <span class="math" data-tex="\(\Lambda(12)=0\)">\(\Lambda(12)=0\)</span>.</p>
+<h2 id="2-geometric-sums-and-the-spacing-lemma">2. Geometric sums and the spacing lemma</h2>
+<p>For a sum with at most <span class="math" data-tex="\(L\)">\(L\)</span> consecutive integer terms, the geometric-series identity and <span class="math" data-tex="\(|\sin\pi t|\ge2\|t\|\)">\(|\sin\pi t|\ge2\|t\|\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{a&lt;n\le b}e(tn)\right|\le\min\left(L,\frac1{2\|t\|}\right).
+\tag{2.1}
+\]">\[
+\left|\sum_{a&lt;n\le b}e(tn)\right|\le\min\left(L,\frac1{2\|t\|}\right).
+\tag{2.1}
+\]</span>
+<p>At <span class="math" data-tex="\(\|t\|=0\)">\(\|t\|=0\)</span> interpret the second bound as infinity. Let <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span> and <span class="math" data-tex="\(|\alpha-b/q|\le q^{-2}\)">\(|\alpha-b/q|\le q^{-2}\)</span>. If <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span>, any block of <span class="math" data-tex="\(\lfloor q/2\rfloor\)">\(\lfloor q/2\rfloor\)</span> consecutive indices has its phases <span class="math" data-tex="\(\alpha n\)">\(\alpha n\)</span> separated on the circle by at least <span class="math" data-tex="\(1/(2q)\)">\(1/(2q)\)</span>. Indeed a nonzero difference <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(|h|\le q/2\)">\(|h|\le q/2\)</span>, satisfies <span class="math" data-tex="\(\|bh/q\|\ge1/q\)">\(\|bh/q\|\ge1/q\)</span>, while <span class="math" data-tex="\(|h(\alpha-b/q)|\le1/(2q)\)">\(|h(\alpha-b/q)|\le1/(2q)\)</span>.</p>
+<p>For such a block, and any added phase <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, list the distances <span class="math" data-tex="\(r_j\)">\(r_j\)</span> of its phases from zero in increasing order. An interval of radius <span class="math" data-tex="\(r\)">\(r\)</span> contains at most <span class="math" data-tex="\(1+4qr\)">\(1+4qr\)</span> separated points, so <span class="math" data-tex="\(r_j\ge(j-1)/(4q)\)">\(r_j\ge(j-1)/(4q)\)</span>. It follows that</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le Y}\min\bigl(Z,\|\alpha n+\eta\|^{-1}\bigr)
+\ll\left(\frac{YZ}q+Y+Z+q\right)\log(2q),
+\tag{2.2}
+\]">\[
+\sum_{n\le Y}\min\bigl(Z,\|\alpha n+\eta\|^{-1}\bigr)
+\ll\left(\frac{YZ}q+Y+Z+q\right)\log(2q),
+\tag{2.2}
+\]</span>
+<p>uniformly for <span class="math" data-tex="\(Y,Z\ge1\)">\(Y,Z\ge1\)</span>, <span class="math" data-tex="\(\eta\in\mathbb R\)">\(\eta\in\mathbb R\)</span>. In each block, allow <span class="math" data-tex="\(Z\)">\(Z\)</span> for its closest point and sum <span class="math" data-tex="\(4q/(j-1)\)">\(4q/(j-1)\)</span> for the others. Multiply by <span class="math" data-tex="\(O(Y/q+1)\)">\(O(Y/q+1)\)</span>. If <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the trivial bound <span class="math" data-tex="\(YZ\)">\(YZ\)</span> proves (2.2).</p>
+<p>A varying cutoff gives a sharper first-moment estimate:</p>
+<span class="math math-display" data-tex="\[
+\sum_{d\le D}\min\bigl(x/d,\|\alpha d\|^{-1}\bigr)
+\ll(x/q+D+q)\log(2qx),\qquad x\ge2,
+\tag{2.3}
+\]">\[
+\sum_{d\le D}\min\bigl(x/d,\|\alpha d\|^{-1}\bigr)
+\ll(x/q+D+q)\log(2qx),\qquad x\ge2,
+\tag{2.3}
+\]</span>
+<p>where <span class="math" data-tex="\(d&gt;x\)">\(d&gt;x\)</span> may be omitted. To prove it for <span class="math" data-tex="\(2\le q\le x\)">\(2\le q\le x\)</span>, put <span class="math" data-tex="\(h=\lfloor q/2\rfloor\)">\(h=\lfloor q/2\rfloor\)</span>. In the initial block <span class="math" data-tex="\(1\le d\le h\)">\(1\le d\le h\)</span>, all distances are at least <span class="math" data-tex="\(1/(2q)\)">\(1/(2q)\)</span>, by comparison to <span class="math" data-tex="\(bd/q\)">\(bd/q\)</span>. Its whole reciprocal sum is <span class="math" data-tex="\(O(q\log(2q))\)">\(O(q\log(2q))\)</span>. In block <span class="math" data-tex="\(jh&lt;d\le(j+1)h\)">\(jh&lt;d\le(j+1)h\)</span>, <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, the closest point costs at most <span class="math" data-tex="\(x/(jh)\ll x/(jq)\)">\(x/(jh)\ll x/(jq)\)</span>, and the rest cost <span class="math" data-tex="\(O(q\log(2q))\)">\(O(q\log(2q))\)</span>. Summing these terms over <span class="math" data-tex="\(O(D/q+1)\)">\(O(D/q+1)\)</span> blocks proves (2.3). If <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, or <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span>, use <span class="math" data-tex="\(\sum_{d\le x}x/d\ll x\log(2x)\)">\(\sum_{d\le x}x/d\ll x\log(2x)\)</span>; the right side of (2.3) is then at least a constant multiple of this bound.</p>
+<h2 id="3-type-i-and-type-ii-estimates">3. Type I and Type II estimates</h2>
+<p><strong>Type I.</strong> For <span class="math" data-tex="\(a_d\)">\(a_d\)</span> supported on <span class="math" data-tex="\(d\le D\)">\(d\le D\)</span>, <span class="math" data-tex="\(|a_d|\le A\)">\(|a_d|\le A\)</span>, and <span class="math" data-tex="\(v=0\)">\(v=0\)</span> or 1,</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{dm\le x}a_d(\log m)^v e(\alpha dm)\right|
+\ll A\log^v(2x)(x/q+D+q)\log(2qx).
+\tag{3.1}
+\]">\[
+\left|\sum_{dm\le x}a_d(\log m)^v e(\alpha dm)\right|
+\ll A\log^v(2x)(x/q+D+q)\log(2qx).
+\tag{3.1}
+\]</span>
+<p>For <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, use (2.1) and (2.3). For <span class="math" data-tex="\(v=1\)">\(v=1\)</span>, partial summation on the inner sum bounds it by <span class="math" data-tex="\(O(\log(2x)\min(x/d,\|\alpha d\|^{-1}))\)">\(O(\log(2x)\min(x/d,\|\alpha d\|^{-1}))\)</span>: every partial geometric sum has the indicated geometric bound, and the boundary term and the integral of <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> each cost at most <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span>. Then apply (2.3). This proves (3.1), including logarithmic coefficients in Vaughan's first Type I term.</p>
+<p><strong>Type II.</strong> Suppose <span class="math" data-tex="\(a_m,b_n\)">\(a_m,b_n\)</span> have supports in <span class="math" data-tex="\(1\le m\le M\)">\(1\le m\le M\)</span>, <span class="math" data-tex="\(1\le n\le N\)">\(1\le n\le N\)</span>. For every product cutoff <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{mn\le x}a_mb_n e(\alpha mn)\right|
+\ll\left(M+N+q+\frac{MN}q\right)^{1/2}
+\log^{1/2}(2q)\,\|a\|_2\|b\|_2.
+\tag{3.2}
+\]">\[
+\left|\sum_{mn\le x}a_mb_n e(\alpha mn)\right|
+\ll\left(M+N+q+\frac{MN}q\right)^{1/2}
+\log^{1/2}(2q)\,\|a\|_2\|b\|_2.
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Cauchy–Schwarz in <span class="math" data-tex="\(m\)">\(m\)</span> removes <span class="math" data-tex="\(a_m\)">\(a_m\)</span>. Expanding the remaining square gives inner geometric sums over
+<span class="math" data-tex="\(m\le\min(M,x/n_1,x/n_2)\)">\(m\le\min(M,x/n_1,x/n_2)\)</span>. Their moduli are bounded by <span class="math" data-tex="\(\min(M,\|\alpha(n_1-n_2)\|^{-1})\)">\(\min(M,\|\alpha(n_1-n_2)\|^{-1})\)</span>; at equal indices use <span class="math" data-tex="\(M\)">\(M\)</span>. For each fixed <span class="math" data-tex="\(n_1\)">\(n_1\)</span>, (2.2), with <span class="math" data-tex="\(Y=N\)">\(Y=N\)</span>, <span class="math" data-tex="\(Z=M\)">\(Z=M\)</span> and <span class="math" data-tex="\(\eta=-\alpha n_1\)">\(\eta=-\alpha n_1\)</span>, bounds the sum of these moduli by
+<span class="math" data-tex="\(O((MN/q+M+N+q)\log(2q))\)">\(O((MN/q+M+N+q)\log(2q))\)</span>. Finally
+<span class="math" data-tex="\(|b_{n_1}b_{n_2}|\le(|b_{n_1}|^2+|b_{n_2}|^2)/2\)">\(|b_{n_1}b_{n_2}|\le(|b_{n_1}|^2+|b_{n_2}|^2)/2\)</span>, so the full expanded sum is bounded by this quantity times <span class="math" data-tex="\(\|b\|_2^2\)">\(\|b\|_2^2\)</span>. Multiply by <span class="math" data-tex="\(\|a\|_2^2\)">\(\|a\|_2^2\)</span> and take a square root. The same proof allows a consecutive interval for the <span class="math" data-tex="\(m\)">\(m\)</span> support: its intersection with each upper product cutoff is still an interval. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The product cutoff remains inside the geometric sum. No separation by a Mellin integral, and hence no extra Mellin logarithm, is required for this individual additive-phase estimate.</p>
+<h2 id="4-the-exponential-sum-over-prime-powers">4. The exponential sum over prime powers</h2>
+<p><strong>Theorem 4.1 (Vinogradov–Vaughan bound).</strong> For <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>, <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, <span class="math" data-tex="\(|\alpha-b/q|\le q^{-2}\)">\(|\alpha-b/q|\le q^{-2}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{n\le x}\Lambda(n)e(\alpha n)
+\ll\left(\frac{x}{\sqrt q}+x^{4/5}+\sqrt{xq}\right)\log^4(2x).}
+\tag{4.1}
+\]">\[
+\boxed{\sum_{n\le x}\Lambda(n)e(\alpha n)
+\ll\left(\frac{x}{\sqrt q}+x^{4/5}+\sqrt{xq}\right)\log^4(2x).}
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span>, the trivial bound <span class="math" data-tex="\(\sum_{n\le x}\Lambda(n)\ll x\)">\(\sum_{n\le x}\Lambda(n)\ll x\)</span> is already enough. Suppose <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>. The two Type I terms of (1.2), estimated by (3.1) and (1.3), contribute
+<span class="math" data-tex="\(O((x/q+UV+q)\log^2(2xUV))\)">\(O((x/q+UV+q)\log^2(2xUV))\)</span>. The short term contributes <span class="math" data-tex="\(O(U)\)">\(O(U)\)</span>, by Chebyshev.</p>
+<p>For the Type II term partition <span class="math" data-tex="\(U&lt;m\le x/V\)">\(U&lt;m\le x/V\)</span> into blocks <span class="math" data-tex="\((L,2L]\)">\((L,2L]\)</span>, <span class="math" data-tex="\(L=2^jU\)">\(L=2^jU\)</span>, clipping the last. On a block <span class="math" data-tex="\(\|\alpha\|_2\ll\sqrt L\log(2x)\)">\(\|\alpha\|_2\ll\sqrt L\log(2x)\)</span>, <span class="math" data-tex="\(\|\beta_{\le x/L}\|_2\le\sqrt{x/L}\)">\(\|\beta_{\le x/L}\|_2\le\sqrt{x/L}\)</span>. Apply (3.2) with <span class="math" data-tex="\(M\ll L\)">\(M\ll L\)</span>, <span class="math" data-tex="\(N\le x/L\)">\(N\le x/L\)</span>, so <span class="math" data-tex="\(MN\ll x\)">\(MN\ll x\)</span>. Its contribution is</p>
+<span class="math math-display" data-tex="\[
+\ll\left(\frac{x}{\sqrt q}+\sqrt{xL}+\frac{x}{\sqrt L}+\sqrt{xq}\right)\log^{3/2}(2x).
+\]">\[
+\ll\left(\frac{x}{\sqrt q}+\sqrt{xL}+\frac{x}{\sqrt L}+\sqrt{xq}\right)\log^{3/2}(2x).
+\]</span>
+<p>Here <span class="math" data-tex="\(U\le L&lt;x/V\)">\(U\le L&lt;x/V\)</span>; the middle terms are <span class="math" data-tex="\(O(x/\sqrt V+x/\sqrt U)\)">\(O(x/\sqrt V+x/\sqrt U)\)</span>. There are <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span> blocks. Combining all four terms yields</p>
+<span class="math math-display" data-tex="\[
+\ll\left(U+UV+\frac{x}{\sqrt q}+\frac{x}{\sqrt U}
++\frac{x}{\sqrt V}+\sqrt{xq}\right)\log^{5/2}(2xUV),
+\tag{4.2}
+\]">\[
+\ll\left(U+UV+\frac{x}{\sqrt q}+\frac{x}{\sqrt U}
++\frac{x}{\sqrt V}+\sqrt{xq}\right)\log^{5/2}(2xUV),
+\tag{4.2}
+\]</span>
+<p>where <span class="math" data-tex="\(x/q\le x/\sqrt q\)">\(x/q\le x/\sqrt q\)</span> and <span class="math" data-tex="\(q\le\sqrt{xq}\)">\(q\le\sqrt{xq}\)</span>. Choose <span class="math" data-tex="\(U=V=x^{2/5}\)">\(U=V=x^{2/5}\)</span>. Then <span class="math" data-tex="\(UV=x^{4/5}\)">\(UV=x^{4/5}\)</span>, and <span class="math" data-tex="\(x/\sqrt U=x/\sqrt V=x^{4/5}\)">\(x/\sqrt U=x/\sqrt V=x^{4/5}\)</span>. This proves (4.1); in fact the displayed argument proves the stronger power <span class="math" data-tex="\(5/2\)">\(5/2\)</span> of the logarithm, with <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both variables must be long for the Type II gain. Balancing their losses <span class="math" data-tex="\(x/\sqrt U,x/\sqrt V\)">\(x/\sqrt U,x/\sqrt V\)</span> against the Type I support <span class="math" data-tex="\(UV\)">\(UV\)</span> explains the exponent <span class="math" data-tex="\(4/5\)">\(4/5\)</span>.</p>
+<h2 id="5-a-möbius-version-with-its-epsilon-stated">5. A Möbius version, with its epsilon stated</h2>
+<p>The direct Möbius variant has divisor coefficients in its Type I term. We prove the precise estimate</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le x}\mu(n)e(\alpha n)
+\ll_\varepsilon\left(\frac{x}{\sqrt q}+x^{4/5+\varepsilon}+\sqrt{xq}\right)\log^3(2x),
+\qquad\varepsilon&gt;0.
+\tag{5.1}
+\]">\[
+\sum_{n\le x}\mu(n)e(\alpha n)
+\ll_\varepsilon\left(\frac{x}{\sqrt q}+x^{4/5+\varepsilon}+\sqrt{xq}\right)\log^3(2x),
+\qquad\varepsilon&gt;0.
+\tag{5.1}
+\]</span>
+<p>The epsilon is in the middle term; it is not silently transferred to the denominator or the square-root terms.</p>
+<p>For <span class="math" data-tex="\(W\ge1\)">\(W\ge1\)</span>, elementary convolution algebra gives</p>
+<span class="math math-display" data-tex="\[
+\mu=2\mu_{\le W}-\mu_{\le W}*\mu_{\le W}*\mathbf1
++\mu_{&gt;W}*\mathbf1*\mu_{&gt;W}.
+\tag{5.2}
+\]">\[
+\mu=2\mu_{\le W}-\mu_{\le W}*\mu_{\le W}*\mathbf1
++\mu_{&gt;W}*\mathbf1*\mu_{&gt;W}.
+\tag{5.2}
+\]</span>
+<p>Indeed expand its right side, use <span class="math" data-tex="\(\mu*\mathbf1=\epsilon\)">\(\mu*\mathbf1=\epsilon\)</span>, and cancel the two mixed terms. In the last term, <span class="math" data-tex="\(\mu_{&gt;W}*\mathbf1=\epsilon-\mu_{\le W}*\mathbf1\)">\(\mu_{&gt;W}*\mathbf1=\epsilon-\mu_{\le W}*\mathbf1\)</span> vanishes on <span class="math" data-tex="\(n\le W\)">\(n\le W\)</span> and has modulus at most <span class="math" data-tex="\(d(n)\)">\(d(n)\)</span> elsewhere. Thus its square energy on <span class="math" data-tex="\(n\le Y\)">\(n\le Y\)</span> is <span class="math" data-tex="\(O(Y\log^3(2Y))\)">\(O(Y\log^3(2Y))\)</span>. The other factor has modulus at most 1. Take <span class="math" data-tex="\(W=x^{2/5}\)">\(W=x^{2/5}\)</span>; dyadic Type II estimation by (3.2) then gives
+<span class="math" data-tex="\(O((x/\sqrt q+x^{4/5}+\sqrt{xq})\log^3(2x))\)">\(O((x/\sqrt q+x^{4/5}+\sqrt{xq})\log^3(2x))\)</span>. The short term is <span class="math" data-tex="\(O(W)\)">\(O(W)\)</span>.</p>
+<p>It remains to justify the divisor-weighted Type I bound. For its coefficient sequence <span class="math" data-tex="\(|c_d|\le d(d)\)">\(|c_d|\le d(d)\)</span>, <span class="math" data-tex="\(d\le D_0=W^2=x^{4/5}\)">\(d\le D_0=W^2=x^{4/5}\)</span>, it is enough to bound
+<span class="math" data-tex="\(\sum_{d\le D_0}d(d)\min(x/d,\|\alpha d\|^{-1})\)">\(\sum_{d\le D_0}d(d)\min(x/d,\|\alpha d\|^{-1})\)</span>. We give the details, since replacing <span class="math" data-tex="\(d(d)\)">\(d(d)\)</span> by a logarithm would be false.</p>
+<p>For a dyadic block <span class="math" data-tex="\(D&lt;d\le2D\)">\(D&lt;d\le2D\)</span>, Cauchy–Schwarz, <span class="math" data-tex="\(\sum d(d)^2\ll D\log^3(2D)\)">\(\sum d(d)^2\ll D\log^3(2D)\)</span>, and the spacing argument of section 2 yield</p>
+<span class="math math-display" data-tex="\[
+\sum_{D&lt;d\le2D}d(d)\min(x/d,\|\alpha d\|^{-1})
+\ll\left(\frac{x}{\sqrt q}+\frac{x}{\sqrt D}+\sqrt{xD}+\sqrt{xq}\right)\log^{3/2}(2x).
+\tag{5.3}
+\]">\[
+\sum_{D&lt;d\le2D}d(d)\min(x/d,\|\alpha d\|^{-1})
+\ll\left(\frac{x}{\sqrt q}+\frac{x}{\sqrt D}+\sqrt{xD}+\sqrt{xq}\right)\log^{3/2}(2x).
+\tag{5.3}
+\]</span>
+<p>To see the squared spacing bound used here, set <span class="math" data-tex="\(Z=x/D\)">\(Z=x/D\)</span>. Each block of <span class="math" data-tex="\(\lfloor q/2\rfloor\)">\(\lfloor q/2\rfloor\)</span> indices contributes at most
+<span class="math" data-tex="\(O(Z^2+qZ)\)">\(O(Z^2+qZ)\)</span> to <span class="math" data-tex="\(\sum\min(Z,\|\alpha d\|^{-1})^2\)">\(\sum\min(Z,\|\alpha d\|^{-1})^2\)</span>: allow <span class="math" data-tex="\(Z^2\)">\(Z^2\)</span> for its closest point, then sum <span class="math" data-tex="\(\min(Z,4q/j)^2\)">\(\min(Z,4q/j)^2\)</span>, splitting at <span class="math" data-tex="\(j=q/Z\)">\(j=q/Z\)</span>. With <span class="math" data-tex="\(O(D/q+1)\)">\(O(D/q+1)\)</span> blocks, multiplying by <span class="math" data-tex="\(D\log^3(2D)\)">\(D\log^3(2D)\)</span> and taking a square root proves (5.3). The finitely many initial indices are included by enlarging dyadic blocks or bounding them separately.</p>
+<p>On a block wholly within <span class="math" data-tex="\(1\le d\le q/2\)">\(1\le d\le q/2\)</span>, there is no exceptional closest point, because all distances are at least <span class="math" data-tex="\(1/(2q)\)">\(1/(2q)\)</span>. The squared sum is instead
+<span class="math" data-tex="\(O(\min(q^2,qZ))\)">\(O(\min(q^2,qZ))\)</span>. The corresponding weighted bound is
+<span class="math" data-tex="\(O(\min(q\sqrt D,\sqrt{xq})\log^{3/2}(2x))\)">\(O(\min(q\sqrt D,\sqrt{xq})\log^{3/2}(2x))\)</span>.</p>
+<p>If <span class="math" data-tex="\(q\le x^{1/5}\)">\(q\le x^{1/5}\)</span>, use this initial-block bound up to <span class="math" data-tex="\(q/2\)">\(q/2\)</span>, and (5.3) above it. In the latter blocks <span class="math" data-tex="\(D\gg q\)">\(D\gg q\)</span>, while <span class="math" data-tex="\(D\le D_0\)">\(D\le D_0\)</span>; all four terms in (5.3) are <span class="math" data-tex="\(O(x/\sqrt q)\)">\(O(x/\sqrt q)\)</span>, since <span class="math" data-tex="\(\sqrt{xD}\le x^{9/10}\le x/\sqrt q\)">\(\sqrt{xD}\le x^{9/10}\le x/\sqrt q\)</span>. Summing <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span> blocks is acceptable in (5.1).</p>
+<p>If <span class="math" data-tex="\(q\ge D_0\)">\(q\ge D_0\)</span> and <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>, the initial-block bound and (5.3) for the possible remaining block above <span class="math" data-tex="\(q/2\)">\(q/2\)</span> give <span class="math" data-tex="\(O(\sqrt{xq}\log^{5/2}(2x))\)">\(O(\sqrt{xq}\log^{5/2}(2x))\)</span>, because <span class="math" data-tex="\(q\ge x^{4/5}\)">\(q\ge x^{4/5}\)</span> and <span class="math" data-tex="\(D\ll q\)">\(D\ll q\)</span>.</p>
+<p>In the remaining range <span class="math" data-tex="\(x^{1/5}&lt;q&lt;D_0\)">\(x^{1/5}&lt;q&lt;D_0\)</span>, use the elementary divisor bound <span class="math" data-tex="\(d(d)\ll_\eta d^\eta\)">\(d(d)\ll_\eta d^\eta\)</span>, with <span class="math" data-tex="\(0&lt;\eta\le\min(\varepsilon,1/10)\)">\(0&lt;\eta\le\min(\varepsilon,1/10)\)</span>. Its proof is short: for sufficiently large primes <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(k+1\le p^{\eta k}\)">\(k+1\le p^{\eta k}\)</span> for all <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>; the finitely many smaller primes have uniformly bounded <span class="math" data-tex="\((k+1)p^{-\eta k}\)">\((k+1)p^{-\eta k}\)</span>. Multiply those finite constants. Equation (2.3) now bounds the weighted Type I sum by
+<span class="math" data-tex="\(O_\eta(x^\eta(x/q+D_0+q)\log(2x))\)">\(O_\eta(x^\eta(x/q+D_0+q)\log(2x))\)</span>. Since <span class="math" data-tex="\(q&gt;x^{1/5}\ge x^{2\eta}\)">\(q&gt;x^{1/5}\ge x^{2\eta}\)</span>, its first term is at most <span class="math" data-tex="\(x/\sqrt q\)">\(x/\sqrt q\)</span>; its other terms are at most <span class="math" data-tex="\(2x^{4/5+\varepsilon}\)">\(2x^{4/5+\varepsilon}\)</span>. Finally <span class="math" data-tex="\(q=1\)">\(q=1\)</span> or <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span> is handled directly by the trivial bound for the original Möbius sum. These cases prove (5.1) completely.</p>
+<h2 id="6-the-classical-three-primes-theorem">6. The classical three-primes theorem</h2>
+<p><strong>Theorem 6.1 (Vinogradov).</strong> Every sufficiently large odd integer is a sum of three primes. More precisely, the weighted count defined below satisfies
+<span class="math" data-tex="\(R(N)=\tfrac12\mathfrak S(N)N^2+O_A(N^2(\log N)^{-A})\)">\(R(N)=\tfrac12\mathfrak S(N)N^2+O_A(N^2(\log N)^{-A})\)</span> for every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. The argument here gives no effective numerical threshold, because it uses Siegel–Walfisz.</p>
+<p>We give the full special circle-method argument needed for this statement. Let <span class="math" data-tex="\(N\)">\(N\)</span> be an integer tending to infinity and put
+<span class="math" data-tex="\(S(\theta)=\sum_{n\le N}\Lambda(n)e(n\theta)\)">\(S(\theta)=\sum_{n\le N}\Lambda(n)e(n\theta)\)</span>. Orthogonality gives the exact weighted count</p>
+<span class="math math-display" data-tex="\[
+R(N)=\sum_{n_1+n_2+n_3=N}\Lambda(n_1)\Lambda(n_2)\Lambda(n_3)
+=\int_0^1 S(\theta)^3e(-N\theta)d\theta,
+\tag{6.1}
+\]">\[
+R(N)=\sum_{n_1+n_2+n_3=N}\Lambda(n_1)\Lambda(n_2)\Lambda(n_3)
+=\int_0^1 S(\theta)^3e(-N\theta)d\theta,
+\tag{6.1}
+\]</span>
+<p>where the indices are positive integers. Fix <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, set <span class="math" data-tex="\(B=2A+12\)">\(B=2A+12\)</span>, and put <span class="math" data-tex="\(P=(\log N)^B\)">\(P=(\log N)^B\)</span>. For every reduced <span class="math" data-tex="\(b/q\)">\(b/q\)</span> with <span class="math" data-tex="\(q\le P\)">\(q\le P\)</span>, take the interval on the circle of radius <span class="math" data-tex="\(2P/N\)">\(2P/N\)</span> about <span class="math" data-tex="\(b/q\)">\(b/q\)</span>. These <strong>major arcs</strong> are disjoint for large <span class="math" data-tex="\(N\)">\(N\)</span>: distinct reduced centers have circle distance at least <span class="math" data-tex="\(P^{-2}\)">\(P^{-2}\)</span>, and <span class="math" data-tex="\(4P^3&lt;N\)">\(4P^3&lt;N\)</span>. Their complement consists of the minor arcs.</p>
+<p><strong>Minor arcs.</strong> The elementary Dirichlet approximation lemma follows by placing <span class="math" data-tex="\(L+1\)">\(L+1\)</span> fractional parts <span class="math" data-tex="\(0,\theta,\ldots,L\theta\)">\(0,\theta,\ldots,L\theta\)</span> into <span class="math" data-tex="\(L\)">\(L\)</span> equal intervals: two are at distance at most <span class="math" data-tex="\(1/L\)">\(1/L\)</span>, giving a reduced <span class="math" data-tex="\(b/q\)">\(b/q\)</span> with <span class="math" data-tex="\(q\le L\)">\(q\le L\)</span>, <span class="math" data-tex="\(|\theta-b/q|\le1/(qL)\)">\(|\theta-b/q|\le1/(qL)\)</span>. Choose <span class="math" data-tex="\(L=\lfloor N/P\rfloor\)">\(L=\lfloor N/P\rfloor\)</span>. On a minor arc its denominator must exceed <span class="math" data-tex="\(P\)">\(P\)</span>, since otherwise the distance is at most <span class="math" data-tex="\(1/L\le2P/N\)">\(1/L\le2P/N\)</span>. Also <span class="math" data-tex="\(q\le N/P\)">\(q\le N/P\)</span> and <span class="math" data-tex="\(|\theta-b/q|\le q^{-2}\)">\(|\theta-b/q|\le q^{-2}\)</span>. Theorem 4.1 gives</p>
+<span class="math math-display" data-tex="\[
+\sup_{\mathrm{minor}}|S(\theta)|
+\ll\bigl(N/\sqrt P+N^{4/5}\bigr)\log^4(2N).
+\]">\[
+\sup_{\mathrm{minor}}|S(\theta)|
+\ll\bigl(N/\sqrt P+N^{4/5}\bigr)\log^4(2N).
+\]</span>
+<p>Orthogonality and Chebyshev give <span class="math" data-tex="\(\int_0^1|S|^2=\sum_{n\le N}\Lambda(n)^2\ll N\log(2N)\)">\(\int_0^1|S|^2=\sum_{n\le N}\Lambda(n)^2\ll N\log(2N)\)</span>. Thus
+<span class="math" data-tex="\(\left|\int_{\mathrm{minor}}S^3e(-N\theta)d\theta\right|\ll_A N^2(\log N)^{-A}\)">\(\left|\int_{\mathrm{minor}}S^3e(-N\theta)d\theta\right|\ll_A N^2(\log N)^{-A}\)</span>: the two errors are <span class="math" data-tex="\(O(N^2\log^{5-B/2}N)\)">\(O(N^2\log^{5-B/2}N)\)</span> and <span class="math" data-tex="\(O(N^{9/5}\log^5N)\)">\(O(N^{9/5}\log^5N)\)</span>, and <span class="math" data-tex="\(5-B/2=-A-1\)">\(5-B/2=-A-1\)</span>.</p>
+<p><strong>Major arcs.</strong> Define <span class="math" data-tex="\(V(\beta)=\int_0^N e(\beta u)du\)">\(V(\beta)=\int_0^N e(\beta u)du\)</span>. Uniformly for <span class="math" data-tex="\(q\le P\)">\(q\le P\)</span>, <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, <span class="math" data-tex="\(|\beta|\le2P/N\)">\(|\beta|\le2P/N\)</span>, Siegel–Walfisz and partial summation yield</p>
+<span class="math math-display" data-tex="\[
+S(b/q+\beta)=\frac{\mu(q)}{\varphi(q)}V(\beta)
++O\bigl(NP^2e^{-c\sqrt{\log N}}\bigr)
+\tag{6.2}
+\]">\[
+S(b/q+\beta)=\frac{\mu(q)}{\varphi(q)}V(\beta)
++O\bigl(NP^2e^{-c\sqrt{\log N}}\bigr)
+\tag{6.2}
+\]</span>
+<p>for a fixed positive <span class="math" data-tex="\(c\)">\(c\)</span>, with an ineffective threshold. Here are the uniformity details. For every unit class <span class="math" data-tex="\(h\pmod q\)">\(h\pmod q\)</span>, the estimate
+<span class="math" data-tex="\(\psi(u;q,h)=u/\varphi(q)+O(Ne^{-c\sqrt{\log N}})\)">\(\psi(u;q,h)=u/\varphi(q)+O(Ne^{-c\sqrt{\log N}})\)</span> holds simultaneously for <span class="math" data-tex="\(0\le u\le N\)">\(0\le u\le N\)</span>. For <span class="math" data-tex="\(u\ge\sqrt N\)">\(u\ge\sqrt N\)</span>, use Siegel–Walfisz with exponent <span class="math" data-tex="\(2B\)">\(2B\)</span> and decrease its decay constant; for smaller <span class="math" data-tex="\(u\)">\(u\)</span>, the elementary bound <span class="math" data-tex="\(O(\sqrt N\log N)\)">\(O(\sqrt N\log N)\)</span>, including the proposed main term, is smaller than the displayed error. Partial summation costs <span class="math" data-tex="\(1+N|\beta|\ll P\)">\(1+N|\beta|\ll P\)</span>, and summing the unit classes costs <span class="math" data-tex="\(\varphi(q)\le P\)">\(\varphi(q)\le P\)</span>. The sum of their phases is <span class="math" data-tex="\(\sum_{h\bmod q}^*e(bh/q)=\mu(q)\)">\(\sum_{h\bmod q}^*e(bh/q)=\mu(q)\)</span>. Nonunit prime powers have primes dividing <span class="math" data-tex="\(q\)">\(q\)</span> and contribute at most <span class="math" data-tex="\(O(\log q\log N)\)">\(O(\log q\log N)\)</span>, absorbed in the error. The Ramanujan identity used here follows by inserting <span class="math" data-tex="\(\mathbf1_{(h,q)=1}=\sum_{d\mid(h,q)}\mu(d)\)">\(\mathbf1_{(h,q)=1}=\sum_{d\mid(h,q)}\mu(d)\)</span> into the complete exponential sum.</p>
+<p>The total major-arc measure is <span class="math" data-tex="\(O(P^3/N)\)">\(O(P^3/N)\)</span>. Since <span class="math" data-tex="\(|S|,|V|\ll N\)">\(|S|,|V|\ll N\)</span>, cubing (6.2) and integrating introduces only <span class="math" data-tex="\(O(N^2P^5e^{-c\sqrt{\log N}})=o(N^2)\)">\(O(N^2P^5e^{-c\sqrt{\log N}})=o(N^2)\)</span>. All arcs have the same <span class="math" data-tex="\(\beta\)">\(\beta\)</span> interval. Their main contribution is therefore</p>
+<span class="math math-display" data-tex="\[
+\left(\sum_{q\le P}\frac{\mu(q)^3c_q(-N)}{\varphi(q)^3}\right)
+\int_{-2P/N}^{2P/N}V(\beta)^3e(-N\beta)d\beta,
+\tag{6.3}
+\]">\[
+\left(\sum_{q\le P}\frac{\mu(q)^3c_q(-N)}{\varphi(q)^3}\right)
+\int_{-2P/N}^{2P/N}V(\beta)^3e(-N\beta)d\beta,
+\tag{6.3}
+\]</span>
+<p>where <span class="math" data-tex="\(c_q(k)=\sum_{h\bmod q}^*e(hk/q)\)">\(c_q(k)=\sum_{h\bmod q}^*e(hk/q)\)</span>.</p>
+<p><strong>The singular integral.</strong> Since <span class="math" data-tex="\(|V(\beta)|\le\min(N,1/(\pi|\beta|))\)">\(|V(\beta)|\le\min(N,1/(\pi|\beta|))\)</span>, the omitted integral tail is <span class="math" data-tex="\(O(N^2/P^2)\)">\(O(N^2/P^2)\)</span>. The full integral is exactly <span class="math" data-tex="\(N^2/2\)">\(N^2/2\)</span>. Indeed it is the Fourier inversion value at <span class="math" data-tex="\(N\)">\(N\)</span> of the threefold convolution of <span class="math" data-tex="\(\mathbf1_{[0,N]}\)">\(\mathbf1_{[0,N]}\)</span>; that value is the area of <span class="math" data-tex="\(\{(u_1,u_2):u_1,u_2\ge0,\ u_1+u_2\le N\}\)">\(\{(u_1,u_2):u_1,u_2\ge0,\ u_1+u_2\le N\}\)</span>, namely <span class="math" data-tex="\(N^2/2\)">\(N^2/2\)</span>. One can justify inversion directly by first inserting <span class="math" data-tex="\(e^{-\pi\varepsilon\beta^2}\)">\(e^{-\pi\varepsilon\beta^2}\)</span>: the Gaussian Fourier identity makes the resulting integral the convolution with a Gaussian approximate identity. The threefold interval convolution is continuous, and <span class="math" data-tex="\(|V|^3\)">\(|V|^3\)</span> is integrable, so both sides converge to the asserted values as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. This supplies the required inversion without a distributional endpoint convention.</p>
+<p><strong>The singular series.</strong> The series in (6.3) converges absolutely, uniformly in <span class="math" data-tex="\(N\)">\(N\)</span>. In fact <span class="math" data-tex="\(|c_q(N)|\le\varphi(q)\)">\(|c_q(N)|\le\varphi(q)\)</span>, and for squarefree <span class="math" data-tex="\(q\)">\(q\)</span>,
+<span class="math" data-tex="\(\varphi(q)\gg q^{3/4}\)">\(\varphi(q)\gg q^{3/4}\)</span>: for all sufficiently large primes <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(p/(p-1)\le p^{1/4}\)">\(p/(p-1)\le p^{1/4}\)</span>, while the finitely many smaller primes supply only a fixed factor. Thus the tail beyond <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(O(P^{-1/2})\)">\(O(P^{-1/2})\)</span>. The Chinese remainder theorem makes <span class="math" data-tex="\(c_q(N)\)">\(c_q(N)\)</span> multiplicative in <span class="math" data-tex="\(q\)">\(q\)</span>, and direct complete sums give
+<span class="math" data-tex="\(c_p(N)=p-1\)">\(c_p(N)=p-1\)</span> if <span class="math" data-tex="\(p\mid N\)">\(p\mid N\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. Consequently the full series is</p>
+<span class="math math-display" data-tex="\[
+\mathfrak S(N)=\prod_p\left(1-\frac{c_p(N)}{(p-1)^3}\right).
+\tag{6.4}
+\]">\[
+\mathfrak S(N)=\prod_p\left(1-\frac{c_p(N)}{(p-1)^3}\right).
+\tag{6.4}
+\]</span>
+<p>Absolute Euler-product convergence also follows from
+<span class="math" data-tex="\(\prod_p(1+(p-1)^{-2})&lt;\infty\)">\(\prod_p(1+(p-1)^{-2})&lt;\infty\)</span>. For odd <span class="math" data-tex="\(N\)">\(N\)</span>, the factor at 2 is 2; every odd-prime factor is at least <span class="math" data-tex="\(1-(p-1)^{-2}\)">\(1-(p-1)^{-2}\)</span>. Their product has a positive absolute lower bound, since <span class="math" data-tex="\(\sum_{p&gt;2}(p-1)^{-2}&lt;\infty\)">\(\sum_{p&gt;2}(p-1)^{-2}&lt;\infty\)</span>. Thus <span class="math" data-tex="\(\mathfrak S(N)\ge c_0&gt;0\)">\(\mathfrak S(N)\ge c_0&gt;0\)</span>, uniformly over odd <span class="math" data-tex="\(N\)">\(N\)</span>. For even <span class="math" data-tex="\(N\)">\(N\)</span>, the factor at 2 vanishes; this is the parity obstruction to three odd primes.</p>
+<p>Equations (6.1)–(6.4) prove
+<span class="math" data-tex="\(R(N)=\tfrac12\mathfrak S(N)N^2+O_A(N^2(\log N)^{-A})\)">\(R(N)=\tfrac12\mathfrak S(N)N^2+O_A(N^2(\log N)^{-A})\)</span>. Indeed the singular-series and integral tails are <span class="math" data-tex="\(O(N^2P^{-1/2})\)">\(O(N^2P^{-1/2})\)</span> and <span class="math" data-tex="\(O(N^2P^{-2})\)">\(O(N^2P^{-2})\)</span>, while the exponential major-arc error is smaller than every fixed logarithmic power. Finally remove representations involving a prime power <span class="math" data-tex="\(p^k\)">\(p^k\)</span>, <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. There are <span class="math" data-tex="\(O(\sqrt N\log N)\)">\(O(\sqrt N\log N)\)</span> such values up to <span class="math" data-tex="\(N\)">\(N\)</span>; for any fixed one, at most <span class="math" data-tex="\(N\)">\(N\)</span> pairs of positive integers have the remaining sum. All three weights are at most <span class="math" data-tex="\(\log N\)">\(\log N\)</span>. Their total weighted contribution, allowing any of the three positions, is <span class="math" data-tex="\(O(N^{3/2}\log^4 N)=o(N^2)\)">\(O(N^{3/2}\log^4 N)=o(N^2)\)</span>. The positive remaining weighted count proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-a-finite-heath-brown-identity">7. A finite Heath-Brown identity</h2>
+<p>Vaughan's decomposition is one way to choose short and long variables. A useful alternative, usually called Heath-Brown's identity, follows from the same convolution algebra. For an integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, <span class="math" data-tex="\(z=x^{1/k}\)">\(z=x^{1/k}\)</span>, and <span class="math" data-tex="\(n\le x\)">\(n\le x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Lambda(n)=\sum_{j=1}^k(-1)^{j-1}\binom kj
+\bigl(\mu_{\le z}^{*j}*\ell*\mathbf1^{*(j-1)}\bigr)(n).
+\tag{7.1}
+\]">\[
+\Lambda(n)=\sum_{j=1}^k(-1)^{j-1}\binom kj
+\bigl(\mu_{\le z}^{*j}*\ell*\mathbf1^{*(j-1)}\bigr)(n).
+\tag{7.1}
+\]</span>
+<p>The zeroth convolution power is <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. To prove the identity, set <span class="math" data-tex="\(B=\epsilon-\mathbf1*\mu_{\le z}=\mathbf1*\mu_{&gt;z}\)">\(B=\epsilon-\mathbf1*\mu_{\le z}=\mathbf1*\mu_{&gt;z}\)</span>, supported on integers strictly greater than <span class="math" data-tex="\(z\)">\(z\)</span>. Its <span class="math" data-tex="\(k\)">\(k\)</span>-fold convolution vanishes on <span class="math" data-tex="\(n\le z^k=x\)">\(n\le z^k=x\)</span>. Expand
+<span class="math" data-tex="\(\epsilon-B^{*k}=\sum_{j=1}^k(-1)^{j-1}\binom kj\mathbf1^{*j}*\mu_{\le z}^{*j}\)">\(\epsilon-B^{*k}=\sum_{j=1}^k(-1)^{j-1}\binom kj\mathbf1^{*j}*\mu_{\le z}^{*j}\)</span>, convolve with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and use <span class="math" data-tex="\(\Lambda*\mathbf1=\ell\)">\(\Lambda*\mathbf1=\ell\)</span>. Since <span class="math" data-tex="\(\Lambda*B^{*k}\)">\(\Lambda*B^{*k}\)</span> also vanishes on <span class="math" data-tex="\(n\le x\)">\(n\le x\)</span>, this gives (7.1). The identity itself is elementary; choosing its many variables for a particular application is a separate optimization.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Verify Vaughan's identity by absolutely convergent Dirichlet series in <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>.</li>
+<li><strong>Medium.</strong> Prove <span class="math" data-tex="\(\sum_{d\le D}|\sum_{m\le x/d}e(\alpha dm)|\ll(x/q+D+q)\log(2qx)\)">\(\sum_{d\le D}|\sum_{m\le x/d}e(\alpha dm)|\ll(x/q+D+q)\log(2qx)\)</span> under the rational-approximation hypothesis.</li>
+<li><strong>Medium.</strong> Establish the Möbius analogue (5.1), specifying the epsilon in the middle term and controlling the divisor-weighted Type I contribution.</li>
+<li><strong>Hard.</strong> Complete the exponential prime-sum estimate with the exponents <span class="math" data-tex="\(1/2,4/5,1/2\)">\(1/2,4/5,1/2\)</span> in (4.1), checking the support lengths after dyadic partition and the threshold choice.</li>
+</ol>
+<h2 id="9-complete-solutions">9. Complete solutions</h2>
+<p><strong>1.</strong> Put <span class="math" data-tex="\(Z=\zeta(s)\)">\(Z=\zeta(s)\)</span>, <span class="math" data-tex="\(M=\sum_{n\le V}\mu(n)n^{-s}\)">\(M=\sum_{n\le V}\mu(n)n^{-s}\)</span>, <span class="math" data-tex="\(H=\sum_{n\le U}\Lambda(n)n^{-s}\)">\(H=\sum_{n\le U}\Lambda(n)n^{-s}\)</span>, and <span class="math" data-tex="\(A=-Z&#x27;/Z\)">\(A=-Z&#x27;/Z\)</span>. In <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, the series of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(-Z&#x27;\)">\(-Z&#x27;\)</span>, the series of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is <span class="math" data-tex="\(1/Z\)">\(1/Z\)</span>, and products are absolutely convergent convolutions. The series for the right side of (1.2) is
+<span class="math" data-tex="\(-MZ&#x27;-HMZ+(A-H)Z(1/Z-M)+H\)">\(-MZ&#x27;-HMZ+(A-H)Z(1/Z-M)+H\)</span>. Since <span class="math" data-tex="\(-Z&#x27;=AZ\)">\(-Z&#x27;=AZ\)</span>, this equals
+<span class="math" data-tex="\(AMZ-HMZ+(A-H)(1-ZM)+H=A\)">\(AMZ-HMZ+(A-H)(1-ZM)+H=A\)</span>. Uniqueness of coefficients of an absolutely convergent Dirichlet series proves the identity. Alternatively all cancellations take place in finite divisor sums, as in section 1.</p>
+<p><strong>2.</strong> Bound each geometric sum by <span class="math" data-tex="\(\min(x/d,1/(2\|\alpha d\|))\)">\(\min(x/d,1/(2\|\alpha d\|))\)</span>. If <span class="math" data-tex="\(q=1\)">\(q=1\)</span> or <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span>, the harmonic bound <span class="math" data-tex="\(x\sum_{d\le x}1/d\)">\(x\sum_{d\le x}1/d\)</span> suffices. For <span class="math" data-tex="\(2\le q\le x\)">\(2\le q\le x\)</span>, split into blocks of <span class="math" data-tex="\(h=\lfloor q/2\rfloor\)">\(h=\lfloor q/2\rfloor\)</span>. Their phases are <span class="math" data-tex="\(1/(2q)\)">\(1/(2q)\)</span>-separated. The first block's closest distance is at least <span class="math" data-tex="\(1/(2q)\)">\(1/(2q)\)</span>; its whole contribution is <span class="math" data-tex="\(O(q\log(2q))\)">\(O(q\log(2q))\)</span>. In the <span class="math" data-tex="\(j\)">\(j\)</span>-th following block the closest point contributes at most <span class="math" data-tex="\(x/(jh)\)">\(x/(jh)\)</span>, and all others have total <span class="math" data-tex="\(O(q\log(2q))\)">\(O(q\log(2q))\)</span>. Sum the harmonic closest-point costs and the <span class="math" data-tex="\(O(D/q+1)\)">\(O(D/q+1)\)</span> block costs. This is <span class="math" data-tex="\(O((x/q+D+q)\log(2qx))\)">\(O((x/q+D+q)\log(2qx))\)</span>. The endpoint <span class="math" data-tex="\(d&gt;x\)">\(d&gt;x\)</span> contributes an empty inner sum.</p>
+<p><strong>3.</strong> Expand <span class="math" data-tex="\(\mu=2\mu_{\le W}-\mu_{\le W}^{*2}*\mathbf1+\mu_{&gt;W}*\mathbf1*\mu_{&gt;W}\)">\(\mu=2\mu_{\le W}-\mu_{\le W}^{*2}*\mathbf1+\mu_{&gt;W}*\mathbf1*\mu_{&gt;W}\)</span>, using <span class="math" data-tex="\(\mu*\mathbf1=\epsilon\)">\(\mu*\mathbf1=\epsilon\)</span>, and take <span class="math" data-tex="\(W=x^{2/5}\)">\(W=x^{2/5}\)</span>. The short part is <span class="math" data-tex="\(O(W)\)">\(O(W)\)</span>. The Type II factor <span class="math" data-tex="\(\mu_{&gt;W}*\mathbf1\)">\(\mu_{&gt;W}*\mathbf1\)</span> has square energy <span class="math" data-tex="\(O(Y\log^3(2Y))\)">\(O(Y\log^3(2Y))\)</span>, while the other factor has square energy at most <span class="math" data-tex="\(Y\)">\(Y\)</span>. On each dyadic block their norm product is <span class="math" data-tex="\(O(\sqrt x\log^{3/2}(2x))\)">\(O(\sqrt x\log^{3/2}(2x))\)</span>. Equation (3.2) and the <span class="math" data-tex="\(O(\log x)\)">\(O(\log x)\)</span> blocks give the three terms with power <span class="math" data-tex="\(\log^3(2x)\)">\(\log^3(2x)\)</span>. For Type I, the coefficient bound is <span class="math" data-tex="\(d(d)\)">\(d(d)\)</span>, not <span class="math" data-tex="\(\log d\)">\(\log d\)</span>. The squared spacing sum on a block is <span class="math" data-tex="\(O((D/q+1)((x/D)^2+qx/D))\)">\(O((D/q+1)((x/D)^2+qx/D))\)</span>; Cauchy–Schwarz gives (5.3). For <span class="math" data-tex="\(q\le x^{1/5}\)">\(q\le x^{1/5}\)</span>, that estimate and its initial-block refinement are bounded by <span class="math" data-tex="\(x/\sqrt q\)">\(x/\sqrt q\)</span>; for <span class="math" data-tex="\(q\ge x^{4/5}\)">\(q\ge x^{4/5}\)</span> they are bounded by <span class="math" data-tex="\(\sqrt{xq}\)">\(\sqrt{xq}\)</span>. In the middle range use <span class="math" data-tex="\(d(d)\ll_\eta d^\eta\)">\(d(d)\ll_\eta d^\eta\)</span>, <span class="math" data-tex="\(\eta\le\min(\varepsilon,1/10)\)">\(\eta\le\min(\varepsilon,1/10)\)</span>, and solution 2: <span class="math" data-tex="\(x^\eta x/q\le x/\sqrt q\)">\(x^\eta x/q\le x/\sqrt q\)</span>, and <span class="math" data-tex="\(x^\eta(D_0+q)\le2x^{4/5+\varepsilon}\)">\(x^\eta(D_0+q)\le2x^{4/5+\varepsilon}\)</span>. These are precisely the three cases proved in section 5. The trivial bound handles <span class="math" data-tex="\(q=1\)">\(q=1\)</span> and <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span>. No epsilon-free assertion follows merely by setting <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>.</p>
+<p><strong>4.</strong> The first Type I sequence has support <span class="math" data-tex="\(V\)">\(V\)</span>, norm bound 1 and logarithmic smooth factor; the second has support <span class="math" data-tex="\(UV\)">\(UV\)</span> and coefficient bound <span class="math" data-tex="\(\log(UV)\)">\(\log(UV)\)</span>. Their combined size is <span class="math" data-tex="\(O((x/q+UV+q)\log^2(2xUV))\)">\(O((x/q+UV+q)\log^2(2xUV))\)</span>. In a Type II block <span class="math" data-tex="\(L&lt;m\le2L\)">\(L&lt;m\le2L\)</span>, the other support has length at most <span class="math" data-tex="\(x/L\)">\(x/L\)</span>; the product of the two coefficient norms is <span class="math" data-tex="\(O(\sqrt x\log(2x))\)">\(O(\sqrt x\log(2x))\)</span>. Equation (3.2) therefore produces <span class="math" data-tex="\(x/\sqrt q\)">\(x/\sqrt q\)</span>, <span class="math" data-tex="\(\sqrt{xL}\)">\(\sqrt{xL}\)</span>, <span class="math" data-tex="\(x/\sqrt L\)">\(x/\sqrt L\)</span>, and <span class="math" data-tex="\(\sqrt{xq}\)">\(\sqrt{xq}\)</span>. Since <span class="math" data-tex="\(U\le L&lt;x/V\)">\(U\le L&lt;x/V\)</span>, the middle terms are at most <span class="math" data-tex="\(x/\sqrt V\)">\(x/\sqrt V\)</span> and <span class="math" data-tex="\(x/\sqrt U\)">\(x/\sqrt U\)</span>. Sum the blocks, add the short <span class="math" data-tex="\(O(U)\)">\(O(U)\)</span> contribution, and choose <span class="math" data-tex="\(U=V=x^{2/5}\)">\(U=V=x^{2/5}\)</span>. The three parameter terms <span class="math" data-tex="\(UV,x/\sqrt U,x/\sqrt V\)">\(UV,x/\sqrt U,x/\sqrt V\)</span> all become <span class="math" data-tex="\(x^{4/5}\)">\(x^{4/5}\)</span>. If <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>, absorb <span class="math" data-tex="\(x/q\)">\(x/q\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> into the two square-root terms. If <span class="math" data-tex="\(q&gt;x\)">\(q&gt;x\)</span>, the trivial <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span> bound suffices. The resulting power <span class="math" data-tex="\(5/2\)">\(5/2\)</span> of <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span> is smaller than the requested power 4, so (4.1) follows in its full stated range.</p>
+<h2 id="10-proof-scope-and-references">10. Proof scope and references</h2>
+<p>The convolution identities, both exponential Type I and Type II estimates, the prime-power bound, the stated Möbius analogue, and the classical sufficiently-large three-primes theorem are proved here. The three-primes argument imports the earlier proved Siegel–Walfisz theorem; it does not give a numerical exceptional range or a proof of the stronger every-odd-integer formulation. The elementary Chebyshev bound and divisor-square energy are the other named prerequisites.</p>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, AMS, 2019, author's preliminary version, Lemma 23.1, Theorems 23.5–23.6 and Theorem 23.8: the exact convolution normalization, phase spacing, bilinear bound, and the sharper logarithmic power <span class="math" data-tex="\(5/2\)">\(5/2\)</span>.</li>
+</ul>
+<p>Vaughan's identity packages Vinogradov's cancellation mechanism into four exact terms. In a character average, the same Type II coefficient structure feeds the maximal multiplicative bound proved in the preceding lesson.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-13.html">← The multiplicative large sieve and bilinear forms with characters</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-15.html">The Bombieri–Vinogradov theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-14.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

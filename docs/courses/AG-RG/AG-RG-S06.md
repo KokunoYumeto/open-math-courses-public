@@ -1,0 +1,431 @@
+# Lie proofs for the characteristic-zero group construction
+
+This lesson proves the Lie-theoretic results used by the subsequent rational group construction: the trace criterion and complete reducibility, the rational Serre algebra, finite integrable highest-weight modules, and rational rank-one integration. The algebraic-group closure and integral construction have their distinct proofs in the subsequent group lesson. All field hypotheses are stated where used.
+
+*Written and self-checked by GPT-6.1 Sol (OpenAI), Codex, Ultra setting, October 2026. Original exposition is dedicated under CC0 1.0. This reconstruction draft remains under programme review.*
+
+The comparison sources are [Milne, *Lie Algebras, Algebraic Groups, and Lie Groups*, version 2.00, 5 May 2013](https://www.jmilne.org/math/CourseNotes/LAG.pdf), Chapter I, and [Etingof, *Lie Groups and Lie Algebras I*, full MIT OpenCourseWare notes](https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/mit18_745_f20_lec_full.pdf), Sections 13–18 and 21–25. The proofs here use algebraic operations and give the required steps. These links identify freely accessible comparisons; they do not supply omitted proofs.
+
+The full ordered-word and relation-ideal proof is supplied in Section 1.A before any use of enveloping or free Lie algebras. It proves termination, contextual ambiguity resolution, the lower-length Jacobi calculation, and both inclusions identifying the normalization kernel with the relation ideal.
+
+Throughout, all Lie algebras and modules in Sections 2–4 are finite-dimensional unless explicitly stated otherwise. Sections 5–7 permit the indicated infinite-dimensional auxiliary algebras or cyclic modules until finiteness is proved. The characteristic-zero restriction is essential for the trace criteria, complete reducibility, and the finite-type construction.
+
+## 1. Finite linear operations and scalar extension
+
+The finite matrix reductions used here have an explicit algorithm. Choose a nonzero entry as a pivot, move it to the first available row and column, divide its row by that nonzero scalar, and subtract multiples to clear its column. Apply the same procedure to the remaining rows and columns. Each step has an inverse (reverse a swap, multiply back, or subtract the opposite multiple), and each pivot decreases both remaining sizes, so the procedure terminates. Back substitution expresses each nonpivot column in the pivot columns; the pivot columns are independent by their successive leading entries. Thus an independent list in $k^m$ has length at most $m$. Applied to an augmented system, the algorithm either produces a contradictory row $0=c\ne0$, or obtains a solution by choosing free variables and back substituting. This proves the matrix facts about independence and consistency used below.
+
+A finite independent list in a finite-dimensional vector space extends to a basis: append a vector outside its span whenever the span is not the whole space. Its length strictly increases and is bounded by the length $m$ of any given finite spanning list. Indeed choose lifts of its vectors under the surjection $k^m\to V$ given by that list; a relation among those lifts would give a relation among the independent vectors, so the lifts are independent and the matrix bound applies. Thus the process stops. This also constructs a complement to every subspace. A basis of a kernel followed by such a complement proves rank–nullity: the images of the added vectors form a basis of the image. Every linear functional on a subspace extends by prescribing zero on a complement.
+
+For matrices, direct summation gives
+
+\[
+\operatorname{tr}(AB)=\sum_{i,j}A_{ij}B_{ji}
+=\operatorname{tr}(BA),\qquad
+\operatorname{tr}([A,B]C)=\operatorname{tr}(A[B,C]).
+\tag{1.1}
+\]
+
+The trace of an operator preserving a subspace is the sum of its trace on that subspace and on the quotient: choose a basis starting in the subspace and read the two diagonal blocks. A nilpotent operator has trace zero. Indeed, the increasing kernels of its powers give a basis in which it is strictly triangular. These calculations also show that traces and products commute with field extension.
+
+Let $K/k$ be a field extension. If $(v_i)$ is a basis, then $(1\otimes v_i)$ is a $K$-basis of $K\otimes_k V$: tensor multilinearity gives spanning, and the tensor extensions of the coefficient functionals give independence. It follows that scalar extension is exact and detects a zero vector space. In particular, it detects whether a subspace is nonzero or proper. For a finite matrix over $k$, Gaussian elimination uses only nonzero scalars already in $k$. Its rank and nullity are unchanged by extension. Thus kernels, simultaneous kernels of a finite family of maps, and consistency of finite systems of linear equations commute with field extension. For example, an inconsistent equation $0=1$ produced by row reduction over $k$ cannot become consistent over $K$.
+
+There is an algebraically closed extension of any field. Here is the needed construction, using the usual choice principle to well order sets. For a field $F$, well order its nonconstant monic polynomials. In that order, adjoin a root of each polynomial not already having one: choose an irreducible factor and pass to the field quotient $F'[t]/(q)$; polynomial division and Bézout show that a quotient by an irreducible polynomial is a field. At limit stages take unions of the nested fields. This gives an algebraic extension $F^+$ in which every nonconstant polynomial originally over $F$ has a root. Starting with $F_0=F$, repeat to obtain $F_{n+1}=F_n^+$. The union $\Omega=\bigcup_nF_n$ is algebraic over $F$, since each element belongs to a finite tower of algebraic extensions. A polynomial over $\Omega$ has finitely many coefficients, all in some $F_n$, so has a root in $F_{n+1}$. Factoring out that root and inducting on degree shows that every polynomial splits over $\Omega$. This proves the existence needed below; no analytic assertion about $\mathbb C$ is required.
+
+We also need the polynomial Jordan decomposition over an algebraically closed field. If $X$ acts on a finite-dimensional space, linear dependence among its powers supplies an annihilating polynomial. Its monic polynomial of least degree factors as $m(t)=\prod_\lambda(t-\lambda)^{d_\lambda}$. The factors are pairwise coprime. Euclidean division gives Bézout identities, which combine residues two at a time to prove the Chinese remainder construction for these factors. The resulting polynomials $e_\lambda$ give orthogonal projections $e_\lambda(X)$ with sum one and images $V_\lambda=\ker(X-\lambda)^{d_\lambda}$. Prescribe $p(t)\equiv\lambda$ modulo each factor, and also $p(0)=0$. If zero is an eigenvalue the last condition is automatic; otherwise add the coprime modulus $t$. Then
+
+\[
+X=S+N,\qquad S=p(X),\quad N=X-p(X)
+\tag{1.2}
+\]
+
+has commuting diagonalizable and nilpotent parts. On $V_\lambda$, $S=\lambda$ and $N=X-\lambda$. Uniqueness follows because any commuting decomposition preserves each $V_\lambda$: on an eigenspace of its semisimple part, the sum with its nilpotent part has that same eigenvalue, which must therefore be $\lambda$. Both parts are polynomials with zero constant term. On $\operatorname{End}(V)$, $\operatorname{ad}S$ is diagonalizable with eigenvalues $\lambda-\mu$ on $\operatorname{Hom}(V_\mu,V_\lambda)$. If $N^d=0$, the binomial expansion of the commuting left and right multiplications proves $(\operatorname{ad}N)^{2d-1}=0$. Consequently
+
+\[
+(\operatorname{ad}X)_s=\operatorname{ad}S,
+\qquad (\operatorname{ad}X)_n=\operatorname{ad}N.
+\tag{1.3}
+\]
+
+This identity concerns the Jordan parts. It does not assert that $\operatorname{ad}(p(X))$ is an arbitrary polynomial in $\operatorname{ad}X$.
+
+## 1.A. Ordered words and their relation ideal
+
+For a Lie algebra $\mathfrak l$ over a field, choose a totally ordered basis $(x_i)$. The tensor algebra is the vector space with the finite basis words, including the empty word, with concatenation as multiplication. Let $I$ be the two-sided ideal generated by $xy-yx-[x,y]$ for $x,y\in\mathfrak l$. By bilinearity it suffices to use basis pairs. Define $U(\mathfrak l)=T(\mathfrak l)/I$.
+
+**Theorem 1.A (ordered words).** The classes of $x_{i_1}\cdots x_{i_m}$ with $i_1\le\cdots\le i_m$, including the empty word, are a basis of $U(\mathfrak l)$. In particular $\mathfrak l\to U(\mathfrak l)$ is injective. This holds in arbitrary characteristic and does not require $\mathfrak l$ to be finite-dimensional.
+
+**Proof.** At an adjacent inversion replace $x_jx_i$, $j>i$, by $x_ix_j+[x_j,x_i]$, expanding the bracket in the given basis. Order a word first by its length and then by its number of inversions. The swapped term keeps its length and loses one inversion; every bracket term has smaller length. Each replacement has finitely many terms. Induction on this pair proves termination of every fully expanded reduction.
+
+We prove by the same induction that its final linear combination of ordered words is independent of the choices. Two replacements on disjoint adjacent pairs commute: expanding both in either order gives the identical terms, all strictly smaller, whose subsequent normalizations agree by induction. An overlapping pair can only occur in $zyx$ with $z>y>x$. Performing the swaps of the three original letters in the two orders yields respectively
+
+$$
+xyz+[y,x]z+y[z,x]+[z,y]x,
+$$
+
+and
+
+$$
+xyz+x[z,y]+[z,x]y+z[y,x].
+$$
+
+Subtract these. For any two basis elements, normalizing $ab-ba$ gives $[a,b]$: use the single replacement in the inverted order, its negative in the opposite order, and alternation for equal indices. Bilinearity gives the same identity when either entry is a bracket. Consequently the difference above normalizes to
+
+$$
+[[y,x],z]+[y,[z,x]]+[[z,y],x]=0
+$$
+
+by Jacobi. The same calculation works inside any left and right word context. Every term involving a bracket has smaller total length than the original contextual triple, so its normalization is already unique by induction. The two three-swap paths end at the same larger ordered-letter term with the displayed smaller corrections. Thus their further normalizations coincide. These are all possible first-step conflicts. After comparing the two first steps, apply induction to all their smaller terms; this proves unique normalization at the original word. Linearity extends the normalization $N$ to the tensor algebra.
+
+Every contextual generator of $I$ has normal form zero: for an inverted basis pair this is exactly the permitted first replacement followed by uniqueness, and the reverse or equal pair follows by alternation. Hence $I\subset\ker N$. Conversely each replacement changes an expression by an element of $I$, so finite reduction gives $a-N(a)\in I$ for every $a$. If $N(a)=0$, then $a\in I$. Thus $I=\ker N$. Normalization fixes each ordered word, proving that their quotient classes span and are independent. Their length-one members are the original basis, proving injectivity. $\square$
+
+This proves the entire relation-ideal assertion, including contextual relations; resolving the bare triple alone would not suffice. The associated graded algebra for the length filtration is the symmetric algebra: the ordered-word basis identifies both degree-$m$ pieces, and the leading relation replaces a swap without its lower-length bracket. A Lie subalgebra's enveloping algebra embeds in the full one by extending its ordered basis and comparing these word bases.
+
+A free Lie algebra on $V$ is formed from bracket expressions modulo bilinearity, alternation and Jacobi; evaluation gives its universal property. The algebra maps from its enveloping algebra to an associative algebra are therefore in bijection with linear maps from $V$ to that algebra, as are maps from $T(V)$. The two universal maps are inverse on generators, hence inverse on all words. Thus its enveloping algebra is $T(V)$, and Theorem 1.A injects the free Lie algebra into these tensor words. This is the precise separation assertion used in Section 6.
+
+Freely accessible comparison material: Etingof's MIT OpenCourseWare notes listed at the beginning of this supporting lesson, Section 13. The proof used here is the complete normalization and ideal calculation above.
+
+## 2. Engel, Lie, and the trace criterion
+
+For a Lie algebra $\mathfrak l$, let $D^0\mathfrak l=\mathfrak l$ and $D^{j+1}\mathfrak l=[D^j\mathfrak l,D^j\mathfrak l]$. It is solvable when one term is zero. Its lower central series is $C^1\mathfrak l=\mathfrak l$, $C^{j+1}\mathfrak l=[\mathfrak l,C^j\mathfrak l]$; it is nilpotent when this series terminates. Jacobi makes all these terms ideals. The series of a subalgebra lies in the ambient series, and a quotient map takes the series onto the quotient series. If an ideal $I$ and $\mathfrak l/I$ are solvable, some $D^a\mathfrak l$ lies in $I$, and then $D^{a+b}\mathfrak l\subseteq D^bI=0$ for some $b$. This proves the solvable-extension assertion. Nilpotent algebras are solvable, because $D^j\mathfrak l\subseteq C^{j+1}\mathfrak l$. Bilinearity identifies either series after field extension with the tensor extension of the original series, so solvability and nilpotence are preserved and reflected by field extension.
+
+**Proposition 2.1 (Engel).** Over any field, a finite-dimensional operator Lie algebra $\mathfrak l\subseteq\operatorname{End}(V)$ consisting of nilpotent operators, with $V\ne0$, has a common nonzero zero vector. It is strictly triangular in a suitable basis.
+
+**Proof.** If $X^d=0$, then $\operatorname{ad}X=L_X-R_X$ on $\operatorname{End}(V)$ satisfies $(\operatorname{ad}X)^{2d-1}=0$: in the binomial expansion every term contains at least $d$ left or right factors. No division is used.
+
+Induct on $\dim\mathfrak l$. For any proper subalgebra $\mathfrak a$, its bracket action on $\mathfrak l/\mathfrak a$ is defined and consists of nilpotent operators by the preceding calculation. Its image has dimension less than $\dim\mathfrak l$. Induction gives a nonzero annihilated class, so the normalizer of $\mathfrak a$ strictly contains $\mathfrak a$. A maximal proper subalgebra is therefore an ideal. Its quotient has dimension one, because a higher-dimensional quotient has a proper one-dimensional subalgebra whose inverse image contradicts maximality.
+
+Write $\mathfrak l=\mathfrak a+kZ$ for this ideal. Induction makes $W=\{v:\mathfrak a v=0\}$ nonzero. Idealness gives $a(Zw)=Z(aw)+[a,Z]w=0$, so $Z$ preserves $W$. Its nilpotent restriction has a nonzero kernel, giving the common zero vector. The zero algebra begins the induction. Repeat the conclusion on successive quotient spaces of $V$; the resulting flag has $\mathfrak lV_i\subseteq V_{i-1}$. An adapted basis is strictly triangular. $\square$
+
+It follows that if every $\operatorname{ad}x$ on $\mathfrak l$ is nilpotent, then $\mathfrak l$ is nilpotent: strict triangularity makes every product of $\dim\mathfrak l$ adjoint operators zero, and their values span the corresponding lower central term. The converse follows directly from that series.
+
+**Proposition 2.2 (Lie).** Over an algebraically closed field of characteristic zero, every finite-dimensional representation of a solvable algebra has an invariant flag with one-dimensional successive quotients.
+
+**Proof.** Induct on the dimension of the algebra to produce a common eigenvector. A nonzero solvable algebra has proper derived ideal; choose a codimension-one ideal $\mathfrak a$ containing it and write $\mathfrak l=\mathfrak a+kx$. Induction gives $v\ne0$ with $av=\lambda(a)v$. The cyclic space $W=\langle v,xv,x^2v,\ldots\rangle$ has basis $v,\ldots,x^{m-1}v$, stopping at the first dependence, and is $x$-stable. Simultaneous induction on $j$, for all $a\in\mathfrak a$, gives
+
+\[
+ax^jv-\lambda(a)x^jv\in\langle v,\ldots,x^{j-1}v\rangle.
+\tag{2.1}
+\]
+
+For the step, use $ax^jv=x(ax^{j-1}v)+[a,x]x^{j-1}v$ and apply the preceding step also to $[a,x]\in\mathfrak a$. Thus $W$ is $\mathfrak a$-stable and the trace of $a|_W$ is $m\lambda(a)$. Since both $a$ and $x$ preserve $W$, equation (1.1) gives $m\lambda([x,a])=0$. Characteristic zero implies $\lambda([x,a])=0$. Hence the full common eigenspace $E_\lambda$ of $\mathfrak a$ is $x$-stable. The restriction of $x$ to this nonzero space has an eigenvector by Section 1: in a nonzero generalized eigenspace, the last nonzero iterate of its nilpotent part is an eigenvector. This vector is common to $\mathfrak a$ and $x$, giving the induction. Passing repeatedly to quotients constructs the asserted flag. $\square$
+
+**Proposition 2.3 (Cartan trace criterion).** For a finite-dimensional $\mathfrak l\subseteq\operatorname{End}(V)$ in characteristic zero,
+
+\[
+\mathfrak l\text{ is solvable}
+\quad\Longleftrightarrow\quad
+\operatorname{tr}(XY)=0
+\quad(X\in[\mathfrak l,\mathfrak l],\ Y\in\mathfrak l).
+\tag{2.2}
+\]
+
+**Proof.** Extend to an algebraic closure. Lie's theorem proves necessity: the first factor is strictly triangular, the second triangular, so their product has zero diagonal. This also descends the equality to the original field.
+
+For sufficiency, fix $X\in[\mathfrak l,\mathfrak l]$ and list its eigenvalues $\lambda_1,\ldots,\lambda_d$ with multiplicities. Let $E\subseteq k$ be their rational span. For a rational linear functional $b:E\to\mathbb Q$, define $B$ to be multiplication by $b(\lambda)$ on the generalized $\lambda$-space. On $\operatorname{Hom}(V_\mu,V_\lambda)$, $\operatorname{ad}B$ has eigenvalue $b(\lambda-\mu)$, whereas $\operatorname{ad}S$ has eigenvalue $\lambda-\mu$. Interpolate on the finite set of these differences, including zero, to obtain $q$ with $q(0)=0$ and $\operatorname{ad}B=q(\operatorname{ad}S)$. By (1.3) and the polynomial Jordan construction, $\operatorname{ad}S=p_0(\operatorname{ad}X)$ with $p_0(0)=0$. Thus $\operatorname{ad}B$ is a zero-constant polynomial in $\operatorname{ad}X$. Since $X$ is in the derived ideal, this proves
+
+\[
+[B,\mathfrak l]\subseteq[\mathfrak l,\mathfrak l].
+\tag{2.3}
+\]
+
+Write $X=\sum_j[Y_j,Z_j]$. The trace identity and (2.3) give
+
+\[
+\sum_i\lambda_i b(\lambda_i)
+=\operatorname{tr}(XB)
+=\sum_j\operatorname{tr}(Y_j[Z_j,B])=0.
+\tag{2.4}
+\]
+
+The nilpotent restriction of $X-\lambda$ contributes zero trace on each generalized eigenspace, proving the first equality. Apply $b$ to the equality in $E$: it gives $\sum_i b(\lambda_i)^2=0$ in $\mathbb Q$. A sum of rational squares can be zero only if every summand is zero. Every rational functional therefore vanishes on every eigenvalue, and coordinate functionals in a basis of $E$ imply $E=0$. Thus every $X$ in the derived algebra is nilpotent. Engel makes that represented derived algebra nilpotent, hence solvable; the quotient is abelian, so the solvable-extension argument proves the assertion. Field extension preserves and reflects it. $\square$
+
+The Hom-block interpolation is necessary. In general, preservation of a subspace by $\operatorname{ad}X$ says nothing of this kind about $\operatorname{ad}(X^2)$. For instance, $X=\operatorname{diag}(-1,0,1)$ and $A=E_{12}+E_{23}$, $B=E_{21}+E_{32}$ span a Lie algebra with $[X,A]=-A$, $[X,B]=B$, $[A,B]=-X$, whereas $[X^2,A]=E_{12}-E_{23}$ is outside it. This excludes the incorrect polynomial inference appearing in the freely available LAG proof on page 39.
+
+## 3. Killing forms, ideals, and inner derivations
+
+For a representation $\rho$ put $B_\rho(x,y)=\operatorname{tr}(\rho(x)\rho(y))$; its adjoint instance is the Killing form $\kappa$. Equation (1.1) proves symmetry and invariance:
+
+\[
+B_\rho([x,y],z)=B_\rho(x,[y,z]).
+\tag{3.1}
+\]
+
+The orthogonal complement of an ideal for any invariant form is an ideal: if $z\perp I$, then $B([x,z],i)=-B(z,[x,i])=0$. For $x,y$ in an ideal $I$, the quotient action of $\operatorname{ad}x$ is zero. The block trace formula therefore gives $\kappa_{\mathfrak g}|_{I\times I}=\kappa_I$. Applying Proposition 2.3 to the adjoint image, whose kernel is the abelian centre, proves the intrinsic solvability criterion
+
+\[
+\mathfrak g\text{ solvable}
+\quad\Longleftrightarrow\quad
+\kappa([\mathfrak g,\mathfrak g],\mathfrak g)=0.
+\tag{3.2}
+\]
+
+Call $\mathfrak g$ semisimple if it has no nonzero solvable ideal. This is equivalent to having no nonzero abelian ideal: the last nonzero derived term of a solvable ideal is abelian and remains an ideal of $\mathfrak g$, by Jacobi. The radical exists without an additional theorem. The sum of two solvable ideals is solvable by the extension argument; the sum of all of them is already a finite sum, by choosing a basis of their total sum and collecting finitely many ideals expressing each basis vector.
+
+**Proposition 3.1.** In characteristic zero, $\mathfrak g$ is semisimple if and only if $\kappa$ is nondegenerate. Every faithful finite-dimensional representation of a semisimple algebra also has nondegenerate trace form.
+
+**Proof.** The radical $R$ of the Killing form is an ideal; its restricted Killing form is zero. Equation (3.2) makes $R$ solvable, so it is zero for a semisimple algebra. Conversely, for an abelian ideal $I$, $\operatorname{ad}i\operatorname{ad}y$ maps the algebra into $I$ and kills $I$. Its trace is zero. Nondegeneracy forces every $i$ to be zero.
+
+For a faithful representation, the radical $R$ of its trace form is an ideal. On its represented subalgebra the trace pairing vanishes identically, so Proposition 2.3 makes $R$ solvable. Semisimplicity forces $R=0$. $\square$
+
+The Killing matrix has the same entries after extension of the field; a matrix is invertible if and only if its kernel is zero, which is unchanged by extension. Hence semisimplicity is preserved and reflected under every field extension in characteristic zero.
+
+**Proposition 3.2.** A semisimple algebra is a direct sum of commuting nonabelian simple ideals. Every ideal is a sum of a subset of these factors. In particular its ideals and quotients are semisimple, its centre is zero, and $[\mathfrak g,\mathfrak g]=\mathfrak g$.
+
+**Proof.** For an ideal $I$, set $J=I\cap I^\perp$. It is an ideal, and for $u,v\in J$ and $z\in\mathfrak g$,
+$\kappa([u,v],z)=\kappa(u,[v,z])=0$. Nondegeneracy makes $J$ abelian, so $J=0$. Identifying $\mathfrak g$ with its dual by $\kappa$ and extending functionals on $I$ gives $\dim I^\perp=\dim\mathfrak g-\dim I$. Thus $\mathfrak g=I\oplus I^\perp$, and the two ideals commute because their bracket lies in their intersection.
+
+Choose a minimal nonzero ideal. Any ideal of it is an ideal of the whole algebra, since its complement commutes with it; hence it is simple, and it is not abelian. Its complement is again semisimple, since an abelian ideal there would be an abelian ideal of the whole algebra. Dimension induction produces the claimed factors $I_j$. If an ideal $J$ contains a vector with nonzero $I_j$-component $v_j$, some $a\in I_j$ has $[a,v_j]\ne0$, since the centre of $I_j$ is zero. Then $[a,v]\in J\cap I_j$ is nonzero, so simplicity gives $I_j\subseteq J$. This identifies every ideal as the sum of the factors it contains. Finally each simple factor equals its own derived algebra: its derived algebra is a nonzero ideal. All stated consequences follow. $\square$
+
+**Proposition 3.3.** Every derivation $D$ of a semisimple characteristic-zero algebra is inner, with a unique inducing element.
+
+**Proof.** Nondegeneracy gives a unique $z$ with $\kappa(z,x)=\operatorname{tr}(D\operatorname{ad}x)$. Set $E=D-\operatorname{ad}z$, so $\operatorname{tr}(E\operatorname{ad}x)=0$ for all $x$. The derivation identity gives $[E,\operatorname{ad}x]=\operatorname{ad}(Ex)$. Therefore
+
+\[
+0=\operatorname{tr}(E\operatorname{ad}[x,y])
+=\operatorname{tr}([E,\operatorname{ad}x]\operatorname{ad}y)
+=\kappa(Ex,y).
+\tag{3.3}
+\]
+
+It follows that $E=0$. Uniqueness uses the zero centre. $\square$
+
+## 4. Complete reducibility with its field scope
+
+**Proposition 4.1 (Casimir operator).** Suppose $B$ is a nondegenerate invariant symmetric form on a finite-dimensional Lie algebra. If $(x_i)$ and $(y_i)$ are dual bases, $C_B=\sum_i x_i y_i\in U(\mathfrak g)$ is independent of the basis and is central. For a faithful representation of a semisimple characteristic-zero algebra, use its trace form for $B$. The resulting operator $C$ on that representation has trace $\dim\mathfrak g$.
+
+**Proof.** The tensor $\sum_i x_i\otimes y_i$ corresponds to the identity endomorphism under $u\otimes v\mapsto(w\mapsto B(v,w)u)$, proving independence. Write $[a,x_i]=\sum_j c_{ji}x_j$. Invariance gives $[a,y_i]=-\sum_j c_{ij}y_j$. The adjoint action on the tensor is consequently zero: the two double sums cancel on interchanging their indices. Multiplication into $U(\mathfrak g)$ is compatible with the commutator derivation rule, so $[a,C_B]=0$ for every generator $a$ and hence for every element of $U(\mathfrak g)$. Finally
+$\operatorname{tr}C=\sum_i B(x_i,y_i)=\dim\mathfrak g$. $\square$
+
+Over an algebraically closed field, an endomorphism of an irreducible nonzero module commuting with its action is scalar: it has an eigenvalue, and the nonzero kernel after subtracting that eigenvalue is a submodule and therefore the whole module. A semisimple algebra acts trivially on every one-dimensional module, since it equals its derived algebra and scalars commute.
+
+**Theorem 4.2 (Weyl).** Every finite-dimensional module over a semisimple Lie algebra in characteristic zero is a sum of irreducibles. Every submodule has an invariant complement, over the given ground field.
+
+**Proof over an algebraically closed field.** First suppose $W\subset V$ is irreducible and $\dim(V/W)=1$. The quotient action is trivial, so $\mathfrak gV\subseteq W$. If the action on $V$ is zero, any linear complement works. Otherwise replace $\mathfrak g$ by its nonzero image $\mathfrak l\subseteq\operatorname{End}(V)$, which is semisimple by Proposition 3.2. Its trace form is nondegenerate. Its Casimir operator maps $V$ into $W$ and acts by a scalar $a$ on $W$. Its trace is both $a\dim W$ and $\dim\mathfrak l$, a nonzero scalar in characteristic zero. Thus $a\ne0$. The kernel is an invariant line disjoint from $W$, and is a complement.
+
+For arbitrary $W$ of codimension one, induct on $\dim V$. If $W=0$ or is irreducible, the conclusion is settled. Otherwise choose $0\ne U\subsetneq W$ invariant. By induction, $W/U$ has a complementary invariant line in $V/U$. Its inverse image $T$ satisfies $T\cap W=U$ and $T/U$ has dimension one. Since $\dim T<\dim V$, induction complements $U$ in $T$ by an invariant line $L$. Then $L\cap W=0$ and $\dim L=1$, giving the desired complement to $W$.
+
+For a general nonzero $W\subset V$, put the commutator action on $\operatorname{Hom}_k(V,W)$ and define
+
+\[
+A=\{P:P|_W=a\operatorname{id}_W\text{ for some }a\in k\},
+\qquad B=\{P:P|_W=0\}.
+\tag{4.1}
+\]
+
+Restriction to $W$ gives a surjection $A\to k$, because $\operatorname{id}_W$ extends linearly to $V$. Its kernel is $B$. For $x\in\mathfrak g$ and $P\in A$, $(xP)|_W=0$, so both spaces are invariant and $A/B$ is trivial. The codimension-one conclusion supplies $A=B\oplus L$ with $L$ an invariant line. Its action is trivial. Normalize $0\ne P\in L$ to have $P|_W=\operatorname{id}_W$. This $P$ commutes with the action, and $V=W\oplus\ker P$. The cases $W=0$ and $W=V$ are immediate.
+
+Over an arbitrary characteristic-zero field $k$, extend to an algebraic closure. The extended algebra is semisimple by Proposition 3.1, so an equivariant projection $V_{\Omega}\to W_{\Omega}$ exists. The equations specifying restriction to $W$ as the identity and commutation with a basis of $\mathfrak g$ form a finite linear system with coefficients in $k$. Section 1 shows that consistency over $\Omega$ implies consistency over $k$. The resulting projection has invariant kernel and gives the complement over $k$. Finally choose an irreducible submodule of minimum positive dimension and split it off; induction on dimension gives a finite direct sum of irreducibles. $\square$
+
+No assertion about modular complete reducibility is used. In particular, the adjoint module being a sum of irreducibles does not characterize semisimple Lie algebras: a nonzero abelian algebra has a trivial adjoint action. The draft also does not import the positive-characteristic claim in LAG, Aside 5.22, from the single trace computation.
+
+## 5. The finite root facts needed for the construction
+
+Let $\Phi$ be a finite reduced crystallographic root system in a positive definite real space $E$: it spans $E$, is stable under $s_\alpha(x)=x-2(x,\alpha)\alpha/(\alpha,\alpha)$, has integral root-coroot pairings, and has only $\pm\alpha$ on each root line. We give the Euclidean inputs directly, without assuming a semisimple Lie algebra exists. For $E=0$ the root set is empty and every assertion has its empty interpretation.
+
+For nonproportional roots $\alpha,\beta$, the product of their Cartan integers is $4(\alpha,\beta)^2/((\alpha,\alpha)(\beta,\beta))$, an integer strictly smaller than $4$. The strict bound follows by expanding the positive squared norm of $\beta-(\alpha,\beta)\alpha/(\alpha,\alpha)$. If the inner product is positive, those integers are positive with product $1,2$ or $3$, so one is $1$. One reflection therefore gives $\alpha-\beta$ or its negative as a root. Negation is also a reflection image, so $\alpha-\beta$ is a root. Replacing $\beta$ by $-\beta$ treats a negative inner product.
+
+Choose $t\in E$ with $(t,\alpha)\ne0$ for every root. Such a vector exists: the product of the finitely many nonzero linear coordinate polynomials is a nonzero polynomial, since a leading monomial of a product has a nonzero product coefficient. A nonzero polynomial over an infinite field does not vanish everywhere, by induction on the number of variables using the finite-root bound in one variable. Set $\Phi^+=\{\alpha:(t,\alpha)>0\}$ and let $\Delta$ be its roots not expressible as sums of two positive roots. Induction on the finite ordered set of positive values $(t,\alpha)$ expresses every positive root as a sum of members of $\Delta$, since the two summands of a decomposition have smaller positive values. Distinct members of $\Delta$ have nonpositive inner product: otherwise their difference is a root, whose positive sign in either direction decomposes one of them. A real linear relation between them can be split into equal positive combinations with disjoint supports. The inner product between those combinations is nonpositive, but it is the squared norm of their common vector. That vector must be zero. A nonempty positive combination has positive pairing with $t$, so both supports are empty. Thus $\Delta$ is independent and spans $E$. Every root has unique integer coordinates in this base, with all coordinates nonnegative or all nonpositive.
+
+The coroots $\alpha^\vee=2\alpha/(\alpha,\alpha)$ themselves form a reduced root system. Orthogonality gives $s_\alpha(\beta^\vee)=(s_\alpha\beta)^\vee$, and their Cartan integers are the transposed original integers; spanning and reducedness are immediate from their root lines. Their positive set is on the same rays as $\Phi^+$. The cone generated by it is therefore exactly the cone generated by the $\alpha_i^\vee$, because each positive root is a nonnegative combination of the $\alpha_i$ and every coroot is a positive multiple of its root. For any linearly independent base, the extreme rays of its nonnegative cone are precisely its basis rays: a vector with two positive coordinates splits into two nonproportional positive vectors, whereas a basis ray cannot so split by uniqueness of coordinates. Applying the base construction just proved to the dual system identifies its simple roots with these extreme rays. Reducedness leaves exactly $\alpha_i^\vee$ on each such positive ray. Hence the simple coroots are a base, and every coroot has an integral same-sign expansion in them.
+
+Finally $s_i$ permutes $\Phi^+\setminus\{\alpha_i\}$ and negates $\alpha_i$. A different positive root has a positive coefficient outside $i$, since reducedness excludes a larger multiple of $\alpha_i$. Reflection changes only its $i$-coefficient. Its image is a root with an unchanged positive coefficient, so the same-sign property makes it positive; involutivity proves the permutation assertion. These root statements have just been proved directly, before use in the Serre construction.
+
+The Cartan matrix in this draft is $a_{ji}=\langle\alpha_j,\alpha_i^\vee\rangle$, so its columns index coroots. The simple coroots form a base of the dual root system and are a basis of the space. The pairing matrix between two bases of a space with a nondegenerate form is invertible. Consequently the $\alpha_j$, defined by these values on a formal basis $(h_i)$, are independent rational linear forms.
+
+Every positive root is moved to a simple root by a product of simple reflections. For a nonsimple $\beta=\sum b_i\alpha_i$ with $b_i\ge0$, positive definiteness gives some $i$ with $(\beta,\alpha_i)>0$. That $b_i$ is positive, because otherwise the nonpositive cross inner products would force $(\beta,\alpha_i)\le0$. The integer $\langle\beta,\alpha_i^\vee\rangle$ is positive. Reflection changes only its $i$-coefficient; some coefficient outside $i$ is positive unless $\beta$ is simple, so the same-sign root property makes $s_i\beta$ positive with smaller height. Iteration terminates at a simple root. Negative roots are handled by negation and the reflection of a simple root. Since $s_{w\alpha}=ws_\alpha w^{-1}$, this also proves generation of the full Weyl group by the simple reflections. The group is finite because it permutes the finite spanning root set faithfully.
+
+For completeness, there is an element $w_0$ taking all positive roots to negative roots, and it satisfies $w_0^2=1$. Define $N(w)$ to be the number of positive roots made negative. If $w\beta<0$ for a positive root and $w=s_{i_1}\cdots s_{i_m}$, read the suffix images of $\beta$ from right to left. At a sign change the immediately preceding positive root must be the simple root of that step, since $s_i$ negates only $\alpha_i$. If $u$ is that suffix, $u\beta=\alpha_{i_j}$ and $us_\beta=s_{i_j}u$. Hence $ws_\beta$ is the given word with its $j$th letter removed. For a shortest word this implies $\ell(ws_\beta)<\ell(w)$. Conversely if this inequality holds but $w\beta>0$, apply the proved implication to $ws_\beta$ and $\beta$ to obtain the reverse strict inequality, a contradiction. For a simple reflection, the length changes by at most one. If $w\alpha_i$ is negative, the proved implication makes the change a strict decrease. If it is positive, $(ws_i)\alpha_i$ is negative, and the same implication applied to $ws_i$ makes the change a strict increase. Thus the change is exactly minus or plus one according to that sign. The simple sign rule gives the identical change for $N(ws_i)$. Prefixes of a shortest word are shortest, proving $N(w)=\ell(w)$ by induction on such a word.
+
+Choose an element of maximum length. Multiplying it by any $s_i$ shortens it, so it takes all simple roots to negative roots. It therefore takes every positive root to a negative root by their positive expansions. If two elements do this, their quotient preserves all positive roots; its $N$ is zero and its length is zero, so the two are equal. The square of this unique element preserves positives, giving $w_0^2=1$. Also $w_0Q^+=-Q^+$, where $Q^+=\sum_i\mathbb Z_{\ge0}\alpha_i$.
+
+These deductions are the only Weyl-group inputs to Sections 6–7. No classification of complex Lie algebras, conjugacy of Cartan subalgebras, or Lie-group existence theorem is used.
+
+## 6. A rational Serre algebra with the prescribed roots
+
+Set $H=\bigoplus_i\mathbb Q h_i$, and define $\alpha_j(h_i)=a_{ji}$. Let $\widetilde{\mathfrak g}$ be the Lie algebra generated by $e_i,f_i,h_i$ with
+
+\[
+[h_i,h_j]=0,\quad [h_i,e_j]=a_{ji}e_j,\quad
+[h_i,f_j]=-a_{ji}f_j,\quad [e_i,f_j]=\delta_{ij}h_i.
+\tag{6.1}
+\]
+
+A free Lie algebra can be defined by formal bracket expressions modulo bilinearity, alternation and Jacobi; evaluating expressions proves its universal property. By Theorem 1.A it embeds in its enveloping algebra. The universal property identifies the enveloping algebra of the free Lie algebra on a space $V$ with $T(V)$, since both have algebra maps to an associative algebra in bijection with linear maps $V$ to that algebra. Thus free Lie expressions embed in tensor words. This supplies the separation used next.
+
+**Lemma 6.1.** The auxiliary algebra has a direct decomposition
+
+\[
+\widetilde{\mathfrak g}=\widetilde{\mathfrak n}^{-}\oplus H
+\oplus\widetilde{\mathfrak n}^{+},
+\tag{6.2}
+\]
+
+where the two side algebras are free on their respective $f_i$ and $e_i$. It is graded by $Q=\bigoplus_i\mathbb Z\alpha_i$, with these generators of degrees $-\alpha_i,\alpha_i$ and $h_i$ of degree zero. There are no mixed-sign degrees, the degree-zero part is $H$, and each nonzero degree is finite-dimensional.
+
+**Proof.** Jacobi rewrites a word on the $f_i$ as a combination of words of the form $[f_j,w]$. Induction on its length, using
+$[e_i,[f_j,w]]=[[e_i,f_j],w]+[f_j,[e_i,w]]$, puts its bracket with $e_i$ in $H$ for length one and in the negative side for larger length. The positive version follows in the same way. Induction on the length of a positive word, with $[[e_i,u],w]=[e_i,[u,w]]-[u,[e_i,w]]$, now puts every mixed bracket in the sum in (6.2). The sum contains the generators and is a subalgebra, so it spans the quotient.
+
+To prove the promised embeddings rather than assume them, act on
+$M=T(\mathbb Q\{F_1,\ldots,F_r\})\otimes\mathbb Q[z_1,\ldots,z_r]$.
+For a word $w$ of positive letter degree $\beta$, put
+
+\[
+\begin{aligned}
+\mathcal F_j(w\otimes P)&=F_jw\otimes P,\\
+\mathcal H_i(w\otimes P)&=w\otimes(z_i-\beta(h_i))P,\\
+\mathcal E_i(1\otimes P)&=0,\\
+\mathcal E_i(F_jw\otimes P)&=F_j\mathcal E_i(w\otimes P)
++\delta_{ij}w\otimes(z_i-\beta(h_i))P.
+\end{aligned}
+\tag{6.3}
+\]
+
+The Cartan operators commute. Prepending $F_j$ changes its degree by $\alpha_j$ and gives the $[\mathcal H_i,\mathcal F_j]$ relation. Every output term of $\mathcal E_j$ deletes one $F_j$, giving $[\mathcal H_i,\mathcal E_j]=a_{ji}\mathcal E_j$. The last recursion is precisely $[\mathcal E_i,\mathcal F_j]=\delta_{ij}\mathcal H_i$. Thus all defining relations hold. On $1\otimes1$, the $h_i$ give the independent polynomials $z_i$. Negative Lie words act by left multiplication by their free tensor commutators, and evaluating at $1\otimes1$ proves their independence. The involution $e_i\leftrightarrow f_i$, $h_i\mapsto-h_i$ of (6.1) gives the positive embedding. The homogeneous grading separates the three summands. A fixed side degree has a fixed finite number of letters, with only finitely many orderings and bracket patterns, so its dimension is finite. $\square$
+
+For $i\ne j$, impose the additional relations
+
+\[
+S_{ij}^+=(\operatorname{ad}e_i)^{1-a_{ji}}e_j=0,
+\qquad S_{ij}^-=(\operatorname{ad}f_i)^{1-a_{ji}}f_j=0.
+\tag{6.4}
+\]
+
+Let $I^+$ be the ideal generated by $S_{ij}^+$ inside the positive free algebra, and $I^-$ its negative analogue. The ideal they generate in the whole auxiliary algebra is exactly $I^-\oplus I^+$. To verify this, first note that each $S_{ij}^+$ is killed by every $\operatorname{ad}f_k$. For $k$ distinct from $i,j$, all brackets with its letters vanish. For $k=i$, on a vector with $[f_i,v]=0$, $[h_i,v]=\lambda v$, commutator induction gives
+
+\[
+[f_i,(\operatorname{ad}e_i)^m v]
+=-m(\lambda+m-1)(\operatorname{ad}e_i)^{m-1}v.
+\tag{6.5}
+\]
+
+Indeed the next step contributes $-(\lambda+2m)$ from $[f_i,e_i]=-h_i$ and the previous coefficient, whose sum is $-(m+1)(\lambda+m)$. Substituting $v=e_j$, $\lambda=a_{ji}$, $m=1-a_{ji}$ gives zero. For $k=j$, commute $\operatorname{ad}f_j$ past the $e_i$ adjoints and obtain $-(\operatorname{ad}e_i)^m h_j$. If $a_{ji}<0$, then $m\ge2$ and two adjoints kill $h_j$. If $a_{ji}=0$, the symmetric zero pattern gives $a_{ij}=0$, so the first adjoint already kills it.
+
+Now $I^+$ is spanned by repeated adjoints of positive generators on these homogeneous elements, and is $H$-stable. Induct on that number of adjoints and use
+$[f_k,[e_l,u]]=[[f_k,e_l],u]+[e_l,[f_k,u]]$.
+The first term is zero or a Cartan action on $I^+$, and the second uses induction. Thus $I^+$ is an ideal of the entire auxiliary algebra. The involution proves the same for $I^-$. Their sum is direct and contains exactly the required generating relations, proving the claim. The Serre quotient consequently has
+
+\[
+\mathfrak g_{\mathbb Q}=\mathfrak n^-\oplus H\oplus\mathfrak n^+.
+\tag{6.6}
+\]
+
+In particular the $h_i$ survive independently, and $e_i,f_i\ne0$ since their bracket is $h_i$. Their degree spaces are one-dimensional. A side word using only one generator has length one or is zero, so there are no degrees $m\alpha_i$ with $|m|>1$.
+
+The adjoints of $e_i$ and $f_i$ are locally nilpotent. On each generator this follows from (6.4) or from the three rank-one brackets; on $f_i$, for example, successive $e_i$ adjoints are $h_i,-2e_i,0$. If a derivation kills $u$ in $p$ steps and $v$ in $q$ steps, its $(p+q-1)$st iterate on $[u,v]$ is zero by the binomial derivation formula. Induction on bracket words proves local nilpotence everywhere. Thus the finite-on-each-vector exponential automorphism
+
+\[
+T_i=\exp(\operatorname{ad}e_i)
+\exp(-\operatorname{ad}f_i)
+\exp(\operatorname{ad}e_i)
+\tag{6.7}
+\]
+
+is defined even before dimension is known. The binomial derivation formula proves bracket preservation, and $\exp(-D)$ is inverse to $\exp(D)$ by multiplication of the finite series on each vector. The rank-one brackets directly give $T_i h_i=-h_i$, $T_i e_i=-f_i$, $T_i f_i=-e_i$. The part of $H$ in $\ker\alpha_i$ commutes with both root generators, so
+$T_i H'=H'-\alpha_i(H')h_i$. Transporting the weight equation gives
+$T_i\mathfrak g_\beta=\mathfrak g_{s_i\beta}$. No Coxeter relations among the $T_i$ are required.
+
+**Theorem 6.2.** The algebra (6.1), (6.4) is finite-dimensional, has exactly the roots $\Phi$ with one-dimensional root spaces, and is semisimple over $\mathbb Q$ and every characteristic-zero extension field. Its Cartan span is $H$.
+
+**Proof.** Consider a nonzero positive degree $\beta=\sum_i b_i\alpha_i$ with $b_i\ge0$. If only one coefficient is nonzero, the preceding single-generator observation makes it a simple root. Otherwise positive definiteness gives $i$ with $b_i>0$ and $\langle\beta,\alpha_i^\vee\rangle>0$. The reflection automorphism makes $s_i\beta$ another nonzero degree. It has an unchanged positive coefficient outside $i$, so the absence of mixed-sign degrees makes it positive. Its height is strictly lower. Induction shows it, and hence $\beta$, is a root. The negative argument follows by the involution. Conversely each root is moved to a simple root by Section 5, and the reflection automorphisms show that its degree space exists and has dimension one. Thus the total dimension is $r+|\Phi|$.
+
+For a connected simple-root diagram, let $J$ be a nonzero ideal. It is stable under the commuting diagonalizable adjoints of $H$, so polynomial interpolation separates any finite list of weight components and places each component in $J$. A nonzero Cartan component $h$ detects some simple root because the $\alpha_i$ form a basis of $H^*$; then $[h,e_i]\ne0$ puts a root vector in $J$. Otherwise $J$ already has a root vector. An ideal is preserved by every finite exponential of an inner derivation, including its inverse. Apply the $T_i$ to move that root to a simple root, giving $e_i\in J$. Then $h_i=[e_i,f_i]\in J$ and $f_i=-[h_i,f_i]/2\in J$. If $j$ is adjacent to $i$, its nonzero Cartan integer gives $e_j$ from $[h_i,e_j]$ and then $h_j,f_j$ in the same way. Connectivity yields all generators. The algebra is therefore nonabelian simple.
+
+For several diagram components, generators from distinct components commute: (6.4) with exponent one gives this for positive-positive and negative-negative pairs, while (6.1) gives all mixed and Cartan pairs. The quotient is their direct sum, by (6.6) and the grading, and each component is simple. It is semisimple. Every argument is valid over any characteristic-zero field with the same rational coefficients. Alternatively, the Killing criterion reflects the rational conclusion from an algebraic closure. The centralizer of $H$ is $H$ by the weight decomposition. If an element normalizes $H$, its nonzero root components would give nonzero root components in a bracket with a suitable $h$, so there are none; thus its normalizer is also $H$. This gives the Cartan claim directly. $\square$
+
+Tensor and bracket-word presentations commute with field extension: all relations and all their finite bracket consequences span a rational subspace, whose extension is the subspace of the extended relations. The tensor basis argument in Section 1 proves exactness of the quotient operation. This verifies the precise rational form and every characteristic-zero base change; it does not assert the same finite-type theorem in prime characteristic.
+
+## 7. The finite integrable highest-weight presentation
+
+Fix $\lambda\in H^*$ with $n_i=\lambda(h_i)\in\mathbb Z_{\ge0}$. The fundamental case is $\lambda=\omega_j$, where $\omega_j(h_i)=\delta_{ij}$. The simple coroots form a base of the dual root system, so their integral dual lattice is $P=\bigoplus_i\mathbb Z\omega_i$. The root lattice lies in $P$ by the Cartan integers.
+
+Order a root basis of $\mathfrak n^-$ first, the $h_i$ next, and a root basis of $\mathfrak n^+$ last. Theorem 1.A gives a vector-space multiplication isomorphism
+
+\[
+U(\mathfrak n^-)\otimes U(H)\otimes U(\mathfrak n^+)
+\longrightarrow U(\mathfrak g).
+\tag{7.1}
+\]
+
+It also embeds each subalgebra's enveloping algebra: extend its ordered basis to one of the full algebra and compare the two PBW word sets. With $\mathfrak b=H\oplus\mathfrak n^+$ and its character $\lambda$ killing $\mathfrak n^+$, let
+$M(\lambda)=U(\mathfrak g)\otimes_{U(\mathfrak b)}k_\lambda$.
+Equivalently it is the quotient by the left ideal generated by the $e_i$ and $h_i-n_i$. The tensor generator obeys those relations; conversely they make every $\mathfrak b$ word act on the cyclic generator by its character, giving the inverse tensor map. The multiplication in (7.1) respects the right $U(\mathfrak b)$-action, so it identifies $M(\lambda)$ with $U(\mathfrak n^-)$ as a vector space. In particular its top vector $v$ is nonzero, its top space is one-dimensional, and its weight spaces have weights $\lambda-Q^+$.
+
+Each of these weight spaces is finite-dimensional. A monomial with multiplicities $m_\alpha$ in the negative root basis has degree $-\sum_{\alpha>0}m_\alpha\alpha$. Fixing $\gamma\in Q^+$ bounds $\sum m_\alpha$ by the height of $\gamma$, since every positive root has positive integral height. Only finitely many tuples are possible. For a vector with finitely many distinct weight components, choose $h\in H$ separating their values; the excluded equalities are finitely many proper linear hyperplanes over an infinite field. Lagrange polynomials in $h$ project onto the separate components. Every $H$-stable subspace and its quotient are consequently weight modules with the corresponding intersections and quotient spaces.
+
+The rank-one commutator calculation, valid on this cyclic vector without a finite-dimensional rank-one classification, is
+
+\[
+h_i f_i^m v=(n_i-2m)f_i^m v,
+\qquad e_i f_i^m v=m(n_i-m+1)f_i^{m-1}v.
+\tag{7.2}
+\]
+
+For the second formula, commute $e_i$ past one more $f_i$ and use $[e_i,f_i]=h_i$ and the first formula; this adds $n_i-2m$ to the previous coefficient $m(n_i-m+1)$, producing $(m+1)(n_i-m)$. The first formula follows by the same induction from $[h_i,f_i]=-2f_i$.
+
+It follows that $z_i=f_i^{n_i+1}v$ is killed by every $e_j$: use (7.2) for $j=i$ and $[e_j,f_i]=0$ otherwise. Thus it is a highest vector of weight $\lambda-(n_i+1)\alpha_i$. The same induced-module construction gives a map from the Verma module of that weight to its generated submodule, so all those weights lie below it. In particular that submodule has no top $\lambda$-component. Hence
+
+\[
+T(\lambda)=M(\lambda)/\sum_i U(\mathfrak g)z_i
+\tag{7.3}
+\]
+
+is nonzero, cyclic, and has a one-dimensional top weight space. This proves properness of the defining sum before any finite-dimensional complete reducibility is invoked.
+
+Each $\operatorname{ad}e_i$ and $\operatorname{ad}f_i$ is nilpotent on the finite-dimensional $\mathfrak g$ by Section 6. On $U(\mathfrak g)$ the same derivation is locally nilpotent: the iterated Leibniz rule on a fixed finite word distributes more derivatives than the sum of the bounds on its letters. Finite sums of words retain a bound. For any Lie element $x$, multiplication and commutators give
+
+\[
+x^N(uv)=\sum_{a=0}^N\binom Na(\operatorname{ad}x)^a(u)x^{N-a}v.
+\tag{7.4}
+\]
+
+This follows by induction using $xu=[x,u]+ux$, with Pascal's identity combining the two sums. In (7.3), $f_i^{n_i+1}v=0$ and $e_iv=0$. If $(\operatorname{ad}f_i)^a u=0$ for $a>R$, choose $N>R+n_i$; every summand in (7.4) vanishes. For $e_i$, choose $N>R$. Thus both simple root operators act locally nilpotently on $T(\lambda)$.
+
+On this possibly infinite module, the operator $S_i=\exp(e_i)\exp(-f_i)\exp(e_i)$ is well defined and invertible, since each exponential terminates on each vector. The conjugation formula for an operator $A$ with terminating iterated commutators is $\exp(x)A\exp(-x)=\sum_m(\operatorname{ad}x)^m(A)/m!$. It follows by the binomial expansion; each expression evaluated on a fixed vector involves only finitely many terms, because $x$ is locally nilpotent on that vector and on the finitely many commutator images. The rank-one brackets give
+
+\[
+\exp(e_i)h_i\exp(-e_i)=h_i-2e_i,\quad
+\exp(-f_i)h_i\exp(f_i)=h_i-2f_i,\quad
+\exp(-f_i)e_i\exp(f_i)=e_i+h_i-f_i.
+\tag{7.5}
+\]
+
+Applying the three conjugations gives $S_i h_iS_i^{-1}=-h_i$. The part of $H$ in $\ker\alpha_i$ is fixed, so $S_i hS_i^{-1}=h-\alpha_i(h)h_i=s_i h$. Therefore $S_i$ takes the $\mu$-space isomorphically to the $s_i\mu$-space. The weights and their multiplicities are Weyl-invariant before finiteness is known.
+
+Every occurring $\mu$ satisfies $\lambda-\mu\in Q^+$. Weyl invariance also gives $\lambda-w_0\mu\in Q^+$, and applying $w_0$ gives $\mu-w_0\lambda\in Q^+$. Write
+$\lambda-w_0\lambda=\sum_i b_i\alpha_i$ and
+$\lambda-\mu=\sum_i d_i\alpha_i$.
+Since $\lambda$ occurs and Weyl translates occur, the $b_i$ are nonnegative integers; the two bounds give $0\le d_i\le b_i$. There are finitely many integer tuples in this box. Every weight space is a quotient of a finite Verma weight space, so $T(\lambda)$ is finite-dimensional.
+
+It is irreducible. If $N$ is a proper submodule, weight projection gives $N_\lambda=0$, since a nonzero vector there would be the cyclic generator. Theorem 4.2 gives an invariant complement $S$. The projections preserve weights, so the projection of $v$ to $N$ is zero and $v\in S$. Cyclicity forces $S=T(\lambda)$ and $N=0$. We have proved the finite irreducible presentation
+
+\[
+L(\lambda)=U(\mathfrak g)\Big/
+\Big(\sum_iU(\mathfrak g)e_i
++\sum_iU(\mathfrak g)(h_i-n_i)
++\sum_iU(\mathfrak g)f_i^{n_i+1}\Big).
+\tag{7.6}
+\]
+
+This is a quotient by a left ideal; none of these module relations is asserted to be a two-sided algebra relation.
+
+All constructions are rational. Tensor powers, bracket relations, associative relations and left ideals extend exactly under a field extension, by Section 1. Construct (7.6) over $\mathbb Q$ and extend to an algebraic closure. The preceding proof shows that extension is finite-dimensional. Selecting rational vectors whose extended images span it, exactness shows that their rational span is already the whole rational module. Thus the rational module is finite-dimensional. The displayed PBW weights are rational linear forms, so the rational weight spaces are simultaneous kernels of finite matrices and extend to the indicated weight spaces. Over every characteristic-zero extension field the top remains a one-dimensional nonzero space, the vector remains cyclic, and the algebra remains semisimple. The same complement argument proves irreducibility there. Consequently this particular rational module is absolutely irreducible. No assertion of absolute irreducibility for arbitrary rational modules is needed.
+
+## 8. The precise consequences consumed by AG-RG-05
+
+Take $V=\bigoplus_j L_{\mathbb Q}(\omega_j)$. These summands are pairwise nonisomorphic, including after any characteristic-zero extension. Indeed all weights of $L(\lambda)$ lie in $\lambda-Q^+$ and its top occurs; an isomorphism for $\lambda,\mu$ would imply both $\lambda-\mu\in Q^+$ and $\mu-\lambda\in Q^+$, giving $\lambda=\mu$. The distinct dual basis elements $\omega_j$ cannot be equal.
+
+The action of $\mathfrak g_{\mathbb Q}$ on $V$ is faithful. Its kernel is an ideal, hence a sum of the simple diagram factors. A factor containing the index $j$ acts nontrivially on $L(\omega_j)$: $h_j$ acts by $1$ on its top. Thus no factor is in the kernel. The same argument works after field extension.
+
+Each root vector acts nilpotently on every summand. Its bracket with $H$ shows that it sends $V_\mu$ into $V_{\mu+\alpha}$. The finite weight set contains no arbitrarily long sequence $\mu+m\alpha$ for a nonzero root in characteristic zero. A sufficiently high power is therefore zero on every weight space, hence on the module. This proves the polynomial exponentials for all root vectors, with no appeal to an unproved abstract Jordan-compatibility theorem.
+
+The split torus with character lattice $P$ acts by the weights. Its action is faithful as a group scheme: its kernel is cut out by all characters occurring in $V$ being one, and among them are the basis characters $\omega_j$. Over every test algebra those equations force every coordinate of the split torus to be one. Here is the closed-immersion proof. Choose the highest vector of each fundamental summand among a rational weight basis of $V$. For the Laurent coordinate $t_j$ of the basis character $\omega_j$, the corresponding diagonal matrix entry restricts to $t_j$. The corresponding entry of the inverse matrix restricts to $t_j^{-1}$; inverse matrix entries are regular functions on $\mathrm{GL}(V)$ by the adjugate formula and inversion of its determinant. These restricted functions generate $\mathbb Q[P]=\mathbb Q[t_1^{\pm1},\ldots,t_r^{\pm1}]$. Thus the coordinate-ring map $\mathbb Q[\mathrm{GL}(V)]\to\mathbb Q[P]$ is surjective, proving that the torus representation is a closed immersion.
+
+For each irreducible summand the sum of its weights with multiplicities is zero. The functional $h\mapsto\operatorname{tr}(h|_{L(\omega_j)})$ is zero on $\mathfrak g$ because $\mathfrak g$ is perfect and traces of commutators vanish. On $H$ it is exactly the sum of weights. Independence of the $h_i$ forces that sum to be zero as an element of $P$. Thus the torus determinant on each summand is identically one; this proof is a lattice computation. A root exponential has determinant one: choose the filtration by kernels of powers of its nilpotent generator, making its exponential upper triangular with every diagonal entry one. Consequently the generated algebraic group lies in the product of these special linear groups.
+
+Over an algebraic closure, Schur's scalar lemma and the pairwise nonisomorphism imply $\operatorname{End}_{\mathfrak g}(V)=\bigoplus_j k\operatorname{id}_{V_j}$. The off-diagonal blocks are zero because a nonzero homomorphism between simple modules has zero kernel and full image and would be an isomorphism. If an operator $A$ normalizes the faithful image of $\mathfrak g$, $[A,\rho(x)]$ gives a derivation of $\mathfrak g$. Proposition 3.3 supplies $z$ with this derivation $\operatorname{ad}z$, so $A-\rho(z)$ commutes with $\mathfrak g$. This proves exactly the normalizer decomposition used in the Lie-algebra calculation of the generated group. If $A$ also belongs to the Lie algebra of the product of the special linear groups, its block traces are zero. The block traces of $\rho(z)$ are zero by perfectness, so each remaining scalar $c_j$ satisfies $(\dim V_j)c_j=0$. Characteristic zero gives $c_j=0$.
+
+Finally, the rational rank-one integration used in AG-RG-05, Lemma 6.1, needs only Theorem 4.2 and the following calculation. The trace-zero $2\times2$ algebra with basis $e,f,h$ and brackets $[h,e]=2e$, $[h,f]=-2f$, $[e,f]=h$ is simple: an ideal is stable under the diagonal operator $\operatorname{ad}h$ with eigenvalues $2,-2,0$; polynomial projections isolate one of its basis lines, and bracketing any of those lines with the other generators yields all three. In an irreducible finite-dimensional module over an algebraically closed characteristic-zero field, choose an $h$-eigenvector. Successive applications of $e$ have distinct eigenvalues until they become zero; take the last nonzero vector $v$, with $ev=0$ and $hv=\lambda v$. Similarly $f^jv$ eventually becomes zero. If $f^nv\ne0$, $f^{n+1}v=0$, the same commutator calculation as (7.2) gives $(n+1)(\lambda-n)f^nv=0$, so $\lambda=n$. The vectors $v,fv,\ldots,f^nv$ have distinct eigenvalues and span a nonzero invariant submodule; irreducibility makes it the whole module.
+
+The polynomial $\mathrm{SL}_2$ action on $W_n=\operatorname{Sym}^n(k^2)$ realizes this string: on variables $u,v$ its operators are $e=u\partial_v$, $f=v\partial_u$, $h=u\partial_u-v\partial_v$. Projection to individual $h$-weights followed by raising and lowering proves irreducibility. Theorem 4.2 decomposes every finite-dimensional rank-one module into these strings. For a rational module $M$, set $K_n=\ker e\cap\ker(h-n)$ and map
+$W_n\otimes K_n\to M$ by $f^j u^n\otimes w\mapsto f^jw$.
+Only finitely many $K_n$ are nonzero, since the spectrum of $h$ is finite. The map is equivariant by the string formulas, and becomes an isomorphism over an algebraic closure by the decomposition. Section 1 reflects that isomorphism to $\mathbb Q$. Transport the polynomial $\mathrm{SL}_2$ action on the direct sum through it. These are polynomial matrix identities over $\mathbb Q$, so they define the rank-one group morphism on every commutative $\mathbb Q$-algebra, including nonreduced test algebras. Its diagonal and unipotent actions are the weight action and the finite exponentials just computed.

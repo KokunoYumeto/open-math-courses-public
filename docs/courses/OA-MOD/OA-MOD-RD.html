@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Right Hilbert algebra density and commutants · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-RD.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 23 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="recovering-the-commutant-from-right-bounded-vectors">Recovering the commutant from right-bounded vectors</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>The elementary multiplication construction produces a right algebra inside the Hilbert completion, but it does not yet show that this algebra is dense. The missing approximation must control a vector and its adjoint-involution image at the same time. This unit constructs such approximations from the spectral cutoffs of a closed right multiplier. It then recovers the full commutant and proves the product-core and ideal-intersection statements needed for left/right dualization.</p>
+<p>The freely accessible comparison is Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em>, Lemmas 1.13–1.17 and Theorem 1.16, pages 5–7</a>. The cutoff method links bounded multiplication to graph density and commutant generation. We give the full argument with its operator domains below, construct the contractive net explicitly, and provide a finite geometric polynomial with a quantitative error bound for the original product core. The preceding programme proofs supply the form and spectral inputs; no modular commutant theorem is a premise.</p>
+<h2 id="the-exact-starting-interface"><span id="oa-mod-rd-01"></span><span id="OA-MOD-RD-01"></span>The exact starting interface</h2>
+<p>Use the arbitrary left Hilbert algebra <span class="math" data-tex="\(\mathcal A\subseteq H\)">\(\mathcal A\subseteq H\)</span> of OA-MOD-HA. Inner products are linear in the first variable. The algebra need not have a unit, and <span class="math" data-tex="\(H\)">\(H\)</span> need not be separable. Write</p>
+<span class="math math-display" data-tex="\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad
+S=\overline{(a\mapsto a^\sharp)},\qquad F=S^*,
+\]">\[
+M=L(\mathcal A)&#x27;&#x27;,\qquad
+S=\overline{(a\mapsto a^\sharp)},\qquad F=S^*,
+\]</span>
+<span class="math math-display" data-tex="\[
+\mathcal B_r=\{\eta:a\mapsto L_a\eta\text{ is bounded for the Hilbert norm}\},
+\quad
+\mathfrak n_r=\{R_\eta:\eta\in\mathcal B_r\},
+\quad
+\mathcal A_r=\mathcal B_r\cap D(F).
+\tag{RD.1}
+\]">\[
+\mathcal B_r=\{\eta:a\mapsto L_a\eta\text{ is bounded for the Hilbert norm}\},
+\quad
+\mathfrak n_r=\{R_\eta:\eta\in\mathcal B_r\},
+\quad
+\mathcal A_r=\mathcal B_r\cap D(F).
+\tag{RD.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(R_\eta a=L_a\eta\)">\(R_\eta a=L_a\eta\)</span> for <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>. OA-MOD-HA-05–08 prove that <span class="math" data-tex="\(R\)">\(R\)</span> is linear and injective, that <span class="math" data-tex="\(\mathfrak n_r\)">\(\mathfrak n_r\)</span> is a left ideal of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and that</p>
+<span class="math math-display" data-tex="\[
+R_{x\eta}=xR_\eta,\qquad
+R_\eta^*\zeta\in\mathcal A_r,\qquad
+F(R_\eta^*\zeta)=R_\zeta^*\eta
+\tag{RD.2}
+\]">\[
+R_{x\eta}=xR_\eta,\qquad
+R_\eta^*\zeta\in\mathcal A_r,\qquad
+F(R_\eta^*\zeta)=R_\zeta^*\eta
+\tag{RD.2}
+\]</span>
+<p>for <span class="math" data-tex="\(x\in M&#x27;\)">\(x\in M&#x27;\)</span>, <span class="math" data-tex="\(\eta,\zeta\in\mathcal B_r\)">\(\eta,\zeta\in\mathcal B_r\)</span>. For <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F\eta\in\mathcal A_r,\qquad R_{F\eta}=R_\eta^*.
+\tag{RD.3}
+\]">\[
+F\eta\in\mathcal A_r,\qquad R_{F\eta}=R_\eta^*.
+\tag{RD.3}
+\]</span>
+<p>The product <span class="math" data-tex="\(\eta\zeta=R_\zeta\eta\)">\(\eta\zeta=R_\zeta\eta\)</span> makes <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> an involutive algebra with bounded right multiplication. Its density is the first target here.</p>
+<p>An immediate operator form of (RD.2) will be useful:</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_r^*\mathfrak n_r\subseteq R(\mathcal A_r).
+\tag{RD.4}
+\]">\[
+\mathfrak n_r^*\mathfrak n_r\subseteq R(\mathcal A_r).
+\tag{RD.4}
+\]</span>
+<p>This means every product <span class="math" data-tex="\(b^*c\)">\(b^*c\)</span>, <span class="math" data-tex="\(b,c\in\mathfrak n_r\)">\(b,c\in\mathfrak n_r\)</span>, belongs to <span class="math" data-tex="\(R(\mathcal A_r)\)">\(R(\mathcal A_r)\)</span>, and therefore so does its finite linear span. Indeed, write <span class="math" data-tex="\(b=R_\eta,c=R_\zeta\)">\(b=R_\eta,c=R_\zeta\)</span>; covariance gives
+<span class="math" data-tex="\(b^*c=R_{R_\eta^*\zeta}\)">\(b^*c=R_{R_\eta^*\zeta}\)</span>, and (RD.2) gives the required vector.</p>
+<p>For <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span>, OA-MOD-HA-07 supplies a closed densely defined operator</p>
+<span class="math math-display" data-tex="\[
+T_\eta=\overline{\,a\mapsto L_a\eta\,},\qquad
+\mathcal A\subseteq D(T_\eta),\quad T_\eta a=L_a\eta.
+\tag{RD.5}
+\]">\[
+T_\eta=\overline{\,a\mapsto L_a\eta\,},\qquad
+\mathcal A\subseteq D(T_\eta),\quad T_\eta a=L_a\eta.
+\tag{RD.5}
+\]</span>
+<p>It is affiliated with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal A\subseteq D(T_\eta^*),\qquad
+T_\eta^*a=L_aF\eta.
+\tag{RD.6}
+\]">\[
+\mathcal A\subseteq D(T_\eta^*),\qquad
+T_\eta^*a=L_aF\eta.
+\tag{RD.6}
+\]</span>
+<p>Only the restriction in (RD.6) is assumed; equality between <span class="math" data-tex="\(T_\eta^*\)">\(T_\eta^*\)</span> and the closure of the map for <span class="math" data-tex="\(F\eta\)">\(F\eta\)</span> is not a premise.</p>
+<p>The required foundations are already written. <a href="OA-MOD-HA.html#oa-mod-ha-05">HA05–08</a> prove the multiplication, ideal, graph-affiliation and adjoint identities just used. <span class="unlinked">TC03</span> proves ordinary and conjugate-linear graph adjoints. <a href="OA-MOD-QF.html#oa-mod-qf-03">QF03–04</a> prove closed-form representation and its unitary symmetry. <a href="OA-MOD-BK.html#oa-mod-bk-01">BK01</a> supplies bounded calculus and Hilbert-space operations; <a href="OA-MOD-BK.html#oa-mod-bk-02">BK02–06</a> and <a href="OA-MOD-BK.html#oa-mod-bk-08">BK08</a> supply bicommutants, topologies, monotone nets, inverse order, supports and unitary tests. The precise unbounded inputs are <a href="OA-MOD-SK.html#oa-mod-sk-05">SK05–07</a> for spectral domains, products, square roots and kernels, <a href="OA-MOD-SK.html#oa-mod-sk-08">SK08</a> for transport and reducing subspaces, and <a href="OA-MOD-SK.html#oa-mod-sk-09">SK09</a> for cutoff convergence. Each refers to its written scalar foundations. RD06 proves the particular polynomial approximation it uses directly.</p>
+<h2 id="polar-cutoffs-for-a-closed-linear-operator"><span id="oa-mod-rd-02"></span><span id="OA-MOD-RD-02"></span>Polar cutoffs for a closed linear operator</h2>
+<p>The right multiplier in (RD.5) need not be bounded or injective. We first establish the exact polar facts needed in that generality.</p>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(T:D(T)\subseteq H\to H\)">\(T:D(T)\subseteq H\to H\)</span> be closed and densely defined. There are nonnegative self-adjoint operators <span class="math" data-tex="\(h,k\)">\(h,k\)</span> and a bounded partial isometry <span class="math" data-tex="\(u\)">\(u\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h&amp;=(T^*T)^{1/2},&amp;D(h)&amp;=D(T),\\
+T&amp;=uh=ku,&amp;D(ku)&amp;=D(h),\\
+T^*&amp;=hu^*,&amp;
+D(T^*)&amp;=\{\zeta:u^*\zeta\in D(h)\}=D(k),\\
+k&amp;=(TT^*)^{1/2}.&amp;&amp;
+\end{aligned}
+\tag{RD.7}
+\]">\[
+\begin{aligned}
+h&amp;=(T^*T)^{1/2},&amp;D(h)&amp;=D(T),\\
+T&amp;=uh=ku,&amp;D(ku)&amp;=D(h),\\
+T^*&amp;=hu^*,&amp;
+D(T^*)&amp;=\{\zeta:u^*\zeta\in D(h)\}=D(k),\\
+k&amp;=(TT^*)^{1/2}.&amp;&amp;
+\end{aligned}
+\tag{RD.7}
+\]</span>
+<p>The initial and final projections are</p>
+<span class="math math-display" data-tex="\[
+p=u^*u=P_{\overline{\operatorname{ran}T^*}},
+\qquad
+q=uu^*=P_{\overline{\operatorname{ran}T}}.
+\tag{RD.8}
+\]">\[
+p=u^*u=P_{\overline{\operatorname{ran}T^*}},
+\qquad
+q=uu^*=P_{\overline{\operatorname{ran}T}}.
+\tag{RD.8}
+\]</span>
+<p>If <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated with a von Neumann algebra <span class="math" data-tex="\(N\)">\(N\)</span>, then <span class="math" data-tex="\(u,p,q\in N\)">\(u,p,q\in N\)</span>, and all spectral projections of <span class="math" data-tex="\(h,k\)">\(h,k\)</span> belong to <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>For every bounded Borel <span class="math" data-tex="\(f:[0,\infty)\to\mathbb C\)">\(f:[0,\infty)\to\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f(k)=u f(h)u^*+f(0)(I-q),\qquad f(k)u=u f(h).
+\tag{RD.9}
+\]">\[
+f(k)=u f(h)u^*+f(0)(I-q),\qquad f(k)u=u f(h).
+\tag{RD.9}
+\]</span>
+<p>In particular, for <span class="math" data-tex="\(f\in C_c(0,\infty)\)">\(f\in C_c(0,\infty)\)</span>, extended by zero at zero,</p>
+<span class="math math-display" data-tex="\[
+f(k)T\subseteq kf(k)u,\qquad
+f(h)T^*\subseteq hf(h)u^*,
+\tag{RD.10}
+\]">\[
+f(k)T\subseteq kf(k)u,\qquad
+f(h)T^*\subseteq hf(h)u^*,
+\tag{RD.10}
+\]</span>
+<p>where the operators on the right are bounded on <span class="math" data-tex="\(H\)">\(H\)</span>. Their norms are at most
+<span class="math" data-tex="\(\sup_{t&gt;0}|t f(t)|\)">\(\sup_{t&gt;0}|t f(t)|\)</span>.</p>
+<p><strong>Proof.</strong> The form</p>
+<span class="math math-display" data-tex="\[
+q_T(\xi,\zeta)=\langle T\xi,T\zeta\rangle,\qquad D(q_T)=D(T),
+\]">\[
+q_T(\xi,\zeta)=\langle T\xi,T\zeta\rangle,\qquad D(q_T)=D(T),
+\]</span>
+<p>is closed because its form norm is the graph norm of <span class="math" data-tex="\(T\)">\(T\)</span>. Its representing operator in OA-MOD-QF-03 is <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span>: for <span class="math" data-tex="\(\xi\in D(T)\)">\(\xi\in D(T)\)</span>, existence of <span class="math" data-tex="\(y\)">\(y\)</span> with
+<span class="math" data-tex="\(\langle T\xi,T\zeta\rangle=\langle y,\zeta\rangle\)">\(\langle T\xi,T\zeta\rangle=\langle y,\zeta\rangle\)</span> for all <span class="math" data-tex="\(\zeta\in D(T)\)">\(\zeta\in D(T)\)</span>
+is precisely <span class="math" data-tex="\(T\xi\in D(T^*)\)">\(T\xi\in D(T^*)\)</span>, <span class="math" data-tex="\(T^*T\xi=y\)">\(T^*T\xi=y\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+D(h)=D(T),\qquad
+\langle h\xi,h\zeta\rangle=\langle T\xi,T\zeta\rangle.
+\tag{RD.11}
+\]">\[
+D(h)=D(T),\qquad
+\langle h\xi,h\zeta\rangle=\langle T\xi,T\zeta\rangle.
+\tag{RD.11}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\ker h=\ker T\)">\(\ker h=\ker T\)</span>. The rule <span class="math" data-tex="\(h\xi\mapsto T\xi\)">\(h\xi\mapsto T\xi\)</span> is well-defined and isometric. Extend it to a unitary <span class="math" data-tex="\(U:pH\to qH\)">\(U:pH\to qH\)</span>, where initially <span class="math" data-tex="\(p\)">\(p\)</span> projects onto <span class="math" data-tex="\(\overline{\operatorname{ran}h}\)">\(\overline{\operatorname{ran}h}\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> onto <span class="math" data-tex="\(\overline{\operatorname{ran}T}\)">\(\overline{\operatorname{ran}T}\)</span>; set <span class="math" data-tex="\(u=U\)">\(u=U\)</span> on <span class="math" data-tex="\(pH\)">\(pH\)</span> and zero on <span class="math" data-tex="\((I-p)H=\ker h\)">\((I-p)H=\ker h\)</span>. This gives <span class="math" data-tex="\(T=uh\)">\(T=uh\)</span>.</p>
+<p>For <span class="math" data-tex="\(\zeta\in H\)">\(\zeta\in H\)</span>, the pairing</p>
+<span class="math math-display" data-tex="\[
+\langle T\xi,\zeta\rangle=\langle h\xi,u^*\zeta\rangle
+\quad(\xi\in D(h))
+\]">\[
+\langle T\xi,\zeta\rangle=\langle h\xi,u^*\zeta\rangle
+\quad(\xi\in D(h))
+\]</span>
+<p>is bounded in <span class="math" data-tex="\(\|\xi\|\)">\(\|\xi\|\)</span> exactly when <span class="math" data-tex="\(u^*\zeta\in D(h^*)=D(h)\)">\(u^*\zeta\in D(h^*)=D(h)\)</span>. This proves the asserted domain and action of <span class="math" data-tex="\(T^*\)">\(T^*\)</span>. Its range equals <span class="math" data-tex="\(\operatorname{ran}h\)">\(\operatorname{ran}h\)</span>: for any <span class="math" data-tex="\(h\xi\)">\(h\xi\)</span>, replacing <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by <span class="math" data-tex="\(p\xi\)">\(p\xi\)</span> changes neither membership in <span class="math" data-tex="\(D(h)\)">\(D(h)\)</span> nor its image, and <span class="math" data-tex="\(T^*(u p\xi)=h p\xi=h\xi\)">\(T^*(u p\xi)=h p\xi=h\xi\)</span>. Thus the projection <span class="math" data-tex="\(p\)">\(p\)</span> also has the description in (RD.8).</p>
+<p>The spectral projection <span class="math" data-tex="\(p\)">\(p\)</span> reduces <span class="math" data-tex="\(h\)">\(h\)</span>, so its restriction <span class="math" data-tex="\(h_p\)">\(h_p\)</span> is self-adjoint on <span class="math" data-tex="\(pH\)">\(pH\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+k=(Uh_pU^*)\oplus0
+\quad\text{on }qH\oplus(I-q)H.
+\]">\[
+k=(Uh_pU^*)\oplus0
+\quad\text{on }qH\oplus(I-q)H.
+\]</span>
+<p>This is nonnegative self-adjoint with</p>
+<span class="math math-display" data-tex="\[
+D(k)=\{\zeta:u^*\zeta\in D(h)\},\qquad k\zeta=uh u^*\zeta.
+\]">\[
+D(k)=\{\zeta:u^*\zeta\in D(h)\},\qquad k\zeta=uh u^*\zeta.
+\]</span>
+<p>Its square has domain <span class="math" data-tex="\(\{\zeta:u^*\zeta\in D(h^2)\}\)">\(\{\zeta:u^*\zeta\in D(h^2)\}\)</span>. The product <span class="math" data-tex="\(TT^*\)">\(TT^*\)</span> has exactly the same domain and action <span class="math" data-tex="\(uh^2u^*\)">\(uh^2u^*\)</span>, by the already-proved formulas for <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span>. Thus <span class="math" data-tex="\(k^2=TT^*\)">\(k^2=TT^*\)</span>, including domains. Also</p>
+<span class="math math-display" data-tex="\[
+u\xi\in D(k)\ \Longleftrightarrow\ p\xi\in D(h)
+\ \Longleftrightarrow\ \xi\in D(h),
+\]">\[
+u\xi\in D(k)\ \Longleftrightarrow\ p\xi\in D(h)
+\ \Longleftrightarrow\ \xi\in D(h),
+\]</span>
+<p>because <span class="math" data-tex="\(\ker h\subseteq D(h)\)">\(\ker h\subseteq D(h)\)</span>. On that domain <span class="math" data-tex="\(ku\xi=uh\xi=T\xi\)">\(ku\xi=uh\xi=T\xi\)</span>. This proves all of (RD.7).</p>
+<p>Spectral calculus on the displayed orthogonal decomposition of <span class="math" data-tex="\(k\)">\(k\)</span> proves (RD.9). Multiplication by <span class="math" data-tex="\(tf(t)\)">\(tf(t)\)</span>, for the compactly supported <span class="math" data-tex="\(f\)">\(f\)</span> in (RD.10), is a bounded spectral function. On <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span>, the first identity in (RD.10) follows from <span class="math" data-tex="\(T=ku\)">\(T=ku\)</span>; on <span class="math" data-tex="\(D(T^*)\)">\(D(T^*)\)</span>, the second follows from <span class="math" data-tex="\(T^*=hu^*\)">\(T^*=hu^*\)</span>. They are inclusions because the bounded extensions on the right have domain all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Finally suppose <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>. For each unitary <span class="math" data-tex="\(v\in N&#x27;\)">\(v\in N&#x27;\)</span>, the form <span class="math" data-tex="\(q_T\)">\(q_T\)</span> has invariant domain and satisfies <span class="math" data-tex="\(q_T[v\xi]=q_T[\xi]\)">\(q_T[v\xi]=q_T[\xi]\)</span>. Uniqueness and unitary symmetry of closed-form representation imply that <span class="math" data-tex="\(v\)">\(v\)</span> commutes with <span class="math" data-tex="\(h\)">\(h\)</span> and its spectral projections. On <span class="math" data-tex="\(\operatorname{ran}h\)">\(\operatorname{ran}h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+uvh\xi=uhv\xi=Tv\xi=vT\xi=vuh\xi.
+\]">\[
+uvh\xi=uhv\xi=Tv\xi=vT\xi=vuh\xi.
+\]</span>
+<p>On <span class="math" data-tex="\(\ker h\)">\(\ker h\)</span> the two sides also agree, since that kernel is invariant under <span class="math" data-tex="\(v\)">\(v\)</span>. Hence <span class="math" data-tex="\(u\)">\(u\)</span> commutes with every unitary of <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>, so <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span> by the unitary test and bicommutant theorem. This gives <span class="math" data-tex="\(p,q\in N\)">\(p,q\in N\)</span>, and spectral transport in (RD.9) gives the spectral projections of <span class="math" data-tex="\(k\)">\(k\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span>. No range or kernel has been assumed trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="bounded-cutoffs-land-in-the-operator-ideal">Bounded cutoffs land in the operator ideal</h2>
+<p>Fix <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span>. Apply OA-MOD-RD-02 to <span class="math" data-tex="\(T=T_\eta\)">\(T=T_\eta\)</span>, and retain <span class="math" data-tex="\(h,k,u,p,q\)">\(h,k,u,p,q\)</span>. All their bounded spectral functions and <span class="math" data-tex="\(u\)">\(u\)</span> lie in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>.</p>
+<p><strong>Cutoff theorem.</strong> For <span class="math" data-tex="\(f\in C_c(0,\infty)\)">\(f\in C_c(0,\infty)\)</span>, extended by zero at zero,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f(k)\eta&amp;\in\mathcal B_r,
+&amp;R_{f(k)\eta}&amp;=kf(k)u,\\
+f(h)F\eta&amp;\in\mathcal B_r,
+&amp;R_{f(h)F\eta}&amp;=hf(h)u^*.
+\end{aligned}
+\tag{RD.12}
+\]">\[
+\begin{aligned}
+f(k)\eta&amp;\in\mathcal B_r,
+&amp;R_{f(k)\eta}&amp;=kf(k)u,\\
+f(h)F\eta&amp;\in\mathcal B_r,
+&amp;R_{f(h)F\eta}&amp;=hf(h)u^*.
+\end{aligned}
+\tag{RD.12}
+\]</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+f(h),f(k)\in R(\mathcal A_r),
+\tag{RD.13}
+\]">\[
+f(h),f(k)\in R(\mathcal A_r),
+\tag{RD.13}
+\]</span>
+<p>and both cutoff vectors in (RD.12) belong to <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span>. Their adjoint-involution relation is</p>
+<span class="math math-display" data-tex="\[
+F(f(k)\eta)=\overline f(h)F\eta.
+\tag{RD.14}
+\]">\[
+F(f(k)\eta)=\overline f(h)F\eta.
+\tag{RD.14}
+\]</span>
+<p>Here <span class="math" data-tex="\(\overline f(t)=\overline{f(t)}\)">\(\overline f(t)=\overline{f(t)}\)</span>, and <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span> denotes the linear span of products.</p>
+<p><strong>Proof of the bounded formulas.</strong> For <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, the cutoff operators commute with <span class="math" data-tex="\(L_a\)">\(L_a\)</span>. Equations (RD.5–6) and (RD.10) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_a f(k)\eta&amp;=f(k)T a=kf(k)u a,\\
+L_a f(h)F\eta&amp;=f(h)T^*a=hf(h)u^*a.
+\end{aligned}
+\]">\[
+\begin{aligned}
+L_a f(k)\eta&amp;=f(k)T a=kf(k)u a,\\
+L_a f(h)F\eta&amp;=f(h)T^*a=hf(h)u^*a.
+\end{aligned}
+\]</span>
+<p>The final operators are bounded on <span class="math" data-tex="\(H\)">\(H\)</span>, proving (RD.12) directly from the definition of right boundedness.</p>
+<p><strong>Proof of the ideal assertion.</strong> By covariance (RD.2),</p>
+<span class="math math-display" data-tex="\[
+u^*R_{f(k)\eta}=h f(h)\in\mathfrak n_r,
+\qquad
+uR_{f(h)F\eta}=k f(k)\in\mathfrak n_r.
+\tag{RD.15}
+\]">\[
+u^*R_{f(k)\eta}=h f(h)\in\mathfrak n_r,
+\qquad
+uR_{f(h)F\eta}=k f(k)\in\mathfrak n_r.
+\tag{RD.15}
+\]</span>
+<p>The polar transport identities justify these equalities also on the kernel subspaces, since <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. Now <span class="math" data-tex="\(g(t)=f(t)/t\)">\(g(t)=f(t)/t\)</span> is again in <span class="math" data-tex="\(C_c(0,\infty)\)">\(C_c(0,\infty)\)</span>. Apply (RD.15) to <span class="math" data-tex="\(g\)">\(g\)</span> to conclude <span class="math" data-tex="\(f(h),f(k)\in\mathfrak n_r\)">\(f(h),f(k)\in\mathfrak n_r\)</span>.</p>
+<p>Choose a real <span class="math" data-tex="\(\chi\in C_c(0,\infty)\)">\(\chi\in C_c(0,\infty)\)</span> that equals one on <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>. Such a function can be chosen piecewise linear on an interval with positive endpoints containing that compact support. Both <span class="math" data-tex="\(\chi(h)\)">\(\chi(h)\)</span> and <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> lie in <span class="math" data-tex="\(\mathfrak n_r\)">\(\mathfrak n_r\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+f(h)=\chi(h)^*f(h)\in\mathfrak n_r^*\mathfrak n_r
+\subseteq R(\mathcal A_r).
+\]">\[
+f(h)=\chi(h)^*f(h)\in\mathfrak n_r^*\mathfrak n_r
+\subseteq R(\mathcal A_r).
+\]</span>
+<p>The same argument applies to <span class="math" data-tex="\(k\)">\(k\)</span>, proving (RD.13).</p>
+<p><strong>Proof of the vector and domain assertions.</strong> Set <span class="math" data-tex="\(v=f(k)\eta\)">\(v=f(k)\eta\)</span>, already known to lie in <span class="math" data-tex="\(\mathcal B_r\)">\(\mathcal B_r\)</span>. As <span class="math" data-tex="\(\chi(k)\)">\(\chi(k)\)</span> is self-adjoint and belongs to <span class="math" data-tex="\(R(\mathcal A_r)\)">\(R(\mathcal A_r)\)</span>, it can be written <span class="math" data-tex="\(R_\alpha^*\)">\(R_\alpha^*\)</span> for some <span class="math" data-tex="\(\alpha\in\mathcal A_r\)">\(\alpha\in\mathcal A_r\)</span>, by (RD.3). Since <span class="math" data-tex="\(\chi(k)v=v\)">\(\chi(k)v=v\)</span>, equation (RD.2) gives <span class="math" data-tex="\(v\in\mathcal A_r\)">\(v\in\mathcal A_r\)</span>. Write also <span class="math" data-tex="\(\chi(k)=R_\beta\)">\(\chi(k)=R_\beta\)</span>, <span class="math" data-tex="\(\beta\in\mathcal A_r\)">\(\beta\in\mathcal A_r\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+v=\chi(k)v=R_\beta v=v\beta\in\mathcal A_r^2.
+\]">\[
+v=\chi(k)v=R_\beta v=v\beta\in\mathcal A_r^2.
+\]</span>
+<p>The same reasoning using <span class="math" data-tex="\(h\)">\(h\)</span> proves <span class="math" data-tex="\(f(h)F\eta\in\mathcal A_r^2\)">\(f(h)F\eta\in\mathcal A_r^2\)</span>.</p>
+<p>We may now apply (RD.3) to <span class="math" data-tex="\(v\)">\(v\)</span>. Taking adjoints in its bounded formula in (RD.12) gives</p>
+<span class="math math-display" data-tex="\[
+R_{Fv}=R_v^*=h\overline f(h)u^*
+=R_{\overline f(h)F\eta}.
+\]">\[
+R_{Fv}=R_v^*=h\overline f(h)u^*
+=R_{\overline f(h)F\eta}.
+\]</span>
+<p>Both vectors are right bounded, so injectivity of <span class="math" data-tex="\(R\)">\(R\)</span> proves (RD.14). The argument established membership in <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span> before computing this value. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="graph-density-of-the-right-algebra"><span id="oa-mod-rd-04"></span><span id="OA-MOD-RD-04"></span>Graph density of the right algebra</h2>
+<p>The graph norm of <span class="math" data-tex="\(F\)">\(F\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\|\eta\|_F^2=\|\eta\|^2+\|F\eta\|^2.
+\tag{RD.16}
+\]">\[
+\|\eta\|_F^2=\|\eta\|^2+\|F\eta\|^2.
+\tag{RD.16}
+\]</span>
+<p><strong>Theorem.</strong> Both <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> and <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span> are graph cores for <span class="math" data-tex="\(F\)">\(F\)</span>. In particular, both are dense in <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is a right Hilbert algebra, and</p>
+<span class="math math-display" data-tex="\[
+\overline{F|_{\mathcal A_r}}=F,\qquad
+(F|_{\mathcal A_r})^*=F^*=S.
+\tag{RD.17}
+\]">\[
+\overline{F|_{\mathcal A_r}}=F,\qquad
+(F|_{\mathcal A_r})^*=F^*=S.
+\tag{RD.17}
+\]</span>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span> and its polar data from OA-MOD-RD-03. First we need the support identities</p>
+<span class="math math-display" data-tex="\[
+q\eta=\eta,\qquad pF\eta=F\eta.
+\tag{RD.18}
+\]">\[
+q\eta=\eta,\qquad pF\eta=F\eta.
+\tag{RD.18}
+\]</span>
+<p>For <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, the vector <span class="math" data-tex="\(L_a\eta=T a\)">\(L_a\eta=T a\)</span> lies in <span class="math" data-tex="\(qH\)">\(qH\)</span>. Since <span class="math" data-tex="\(q\in M&#x27;\)">\(q\in M&#x27;\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L_a(I-q)\eta=(I-q)L_a\eta=0.
+\]">\[
+L_a(I-q)\eta=(I-q)L_a\eta=0.
+\]</span>
+<p>The common-kernel criterion OA-MOD-HA-02 gives <span class="math" data-tex="\((I-q)\eta=0\)">\((I-q)\eta=0\)</span>. Similarly <span class="math" data-tex="\(L_aF\eta=T^*a\in pH\)">\(L_aF\eta=T^*a\in pH\)</span>, and the same criterion proves <span class="math" data-tex="\(pF\eta=F\eta\)">\(pF\eta=F\eta\)</span>. Thus the support projections need not be the identity, but they fix the two particular vectors we approximate.</p>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, define on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span></p>
+<span class="math math-display" data-tex="\[
+f_n(t)=\max\!\left(0,\min\!\left(1,\,2-\frac{|\log t|}{n}\right)\right).
+\tag{RD.19}
+\]">\[
+f_n(t)=\max\!\left(0,\min\!\left(1,\,2-\frac{|\log t|}{n}\right)\right).
+\tag{RD.19}
+\]</span>
+<p>Each function is continuous, supported in <span class="math" data-tex="\([e^{-2n},e^{2n}]\)">\([e^{-2n},e^{2n}]\)</span>, takes values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and increases pointwise to one on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Extend it by zero at zero. The spectral calculus and scalar dominated convergence give</p>
+<span class="math math-display" data-tex="\[
+f_n(k)\longrightarrow q,\qquad
+f_n(h)\longrightarrow p
+\quad\text{strongly}.
+\tag{RD.20}
+\]">\[
+f_n(k)\longrightarrow q,\qquad
+f_n(h)\longrightarrow p
+\quad\text{strongly}.
+\tag{RD.20}
+\]</span>
+<p>OA-MOD-RD-03 supplies <span class="math" data-tex="\(\eta_n=f_n(k)\eta\in\mathcal A_r^2\)">\(\eta_n=f_n(k)\eta\in\mathcal A_r^2\)</span> and
+<span class="math" data-tex="\(F\eta_n=f_n(h)F\eta\)">\(F\eta_n=f_n(h)F\eta\)</span>. Equations (RD.18–20) therefore imply</p>
+<span class="math math-display" data-tex="\[
+\|\eta_n-\eta\|^2+\|F\eta_n-F\eta\|^2\longrightarrow0.
+\tag{RD.21}
+\]">\[
+\|\eta_n-\eta\|^2+\|F\eta_n-F\eta\|^2\longrightarrow0.
+\tag{RD.21}
+\]</span>
+<p>This proves that <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span> is a graph core. Since
+<span class="math" data-tex="\(\mathcal A_r^2\subseteq\mathcal A_r\subseteq D(F)\)">\(\mathcal A_r^2\subseteq\mathcal A_r\subseteq D(F)\)</span>, the same is true of <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>. The domain <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>, so both subspaces are Hilbert-norm dense too.</p>
+<p>OA-MOD-HA-08 established the first three right Hilbert algebra properties; density of <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span> supplies the fourth. Graph density proves the first equality in (RD.17), and taking adjoints gives the second by <span class="math" data-tex="\(F=S^*\)">\(F=S^*\)</span>, <span class="math" data-tex="\(S^{**}=S\)">\(S^{**}=S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The approximating sequence depends on <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, through its multiplier <span class="math" data-tex="\(T_\eta\)">\(T_\eta\)</span>. It is not a countable dense family for <span class="math" data-tex="\(H\)">\(H\)</span>, nor an assertion that a global net of algebra operators has a sequential replacement.</p>
+<h2 id="contractive-approximation-of-the-entire-commutant"><span id="oa-mod-rd-05"></span><span id="OA-MOD-RD-05"></span>Contractive approximation of the entire commutant</h2>
+<p>Put <span class="math" data-tex="\(\mathcal D=R(\mathcal A_r)\subseteq M&#x27;\)">\(\mathcal D=R(\mathcal A_r)\subseteq M&#x27;\)</span>. It is a *-algebra, by the anti-representation and adjoint formulas in OA-MOD-HA-08. It is nondegenerate because its action on <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> contains the dense product span <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span>.</p>
+<p><strong>Theorem.</strong> There is a net of positive contractions <span class="math" data-tex="\(e_i\in\mathcal D\)">\(e_i\in\mathcal D\)</span> with <span class="math" data-tex="\(e_i\to I\)">\(e_i\to I\)</span> strongly. For every <span class="math" data-tex="\(x\in M&#x27;\)">\(x\in M&#x27;\)</span>,</p>
+<span class="math math-display" data-tex="\[
+e_i x e_i\in\mathcal D,\qquad
+\|e_i x e_i\|\leq\|x\|,\qquad
+e_i x e_i\longrightarrow x
+\quad\text{strongly*}.
+\tag{RD.22}
+\]">\[
+e_i x e_i\in\mathcal D,\qquad
+\|e_i x e_i\|\leq\|x\|,\qquad
+e_i x e_i\longrightarrow x
+\quad\text{strongly*}.
+\tag{RD.22}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+R(\mathcal A_r)&#x27;&#x27;=M&#x27;.
+\tag{RD.23}
+\]">\[
+R(\mathcal A_r)&#x27;&#x27;=M&#x27;.
+\tag{RD.23}
+\]</span>
+<p>Strong* convergence means strong convergence of both the operators and their adjoints.</p>
+<p><strong>Proof.</strong> Index a net by pairs <span class="math" data-tex="\((E,\varepsilon)\)">\((E,\varepsilon)\)</span>, where <span class="math" data-tex="\(E\)">\(E\)</span> is a finite subset of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>; enlarge <span class="math" data-tex="\(E\)">\(E\)</span> and decrease <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+b_E=\sum_{r\in E}r^*r,\qquad
+c_{E,\varepsilon}=b_E(b_E+\varepsilon I)^{-1}.
+\tag{RD.24}
+\]">\[
+b_E=\sum_{r\in E}r^*r,\qquad
+c_{E,\varepsilon}=b_E(b_E+\varepsilon I)^{-1}.
+\tag{RD.24}
+\]</span>
+<p>These are positive contractions <span class="math" data-tex="\(c_{E,\varepsilon}\in M&#x27;\)">\(c_{E,\varepsilon}\in M&#x27;\)</span>. By inverse order, they increase when <span class="math" data-tex="\(E\)">\(E\)</span> enlarges and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decreases. For fixed <span class="math" data-tex="\(E\)">\(E\)</span>, letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives the support projection <span class="math" data-tex="\(s(b_E)\)">\(s(b_E)\)</span>, by OA-MOD-BK-06.</p>
+<p>The family of these supports spans <span class="math" data-tex="\(H\)">\(H\)</span>. Indeed,</p>
+<span class="math math-display" data-tex="\[
+\bigcap_E\ker b_E=\bigcap_{r\in\mathcal D}\ker r=\{0\}.
+\tag{RD.25}
+\]">\[
+\bigcap_E\ker b_E=\bigcap_{r\in\mathcal D}\ker r=\{0\}.
+\tag{RD.25}
+\]</span>
+<p>The first equality follows by expanding
+<span class="math" data-tex="\(\langle b_E\xi,\xi\rangle=\sum_{r\in E}\|r\xi\|^2\)">\(\langle b_E\xi,\xi\rangle=\sum_{r\in E}\|r\xi\|^2\)</span>.
+For the second, a common-kernel vector is orthogonal to every <span class="math" data-tex="\(r^*\zeta\)">\(r^*\zeta\)</span>; *-closure and nondegeneracy of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> make these vectors span a dense subspace.</p>
+<p>The increasing contraction net <span class="math" data-tex="\(c_{E,\varepsilon}\)">\(c_{E,\varepsilon}\)</span> has a strong limit <span class="math" data-tex="\(c\)">\(c\)</span> by OA-MOD-BK-04. This limit satisfies <span class="math" data-tex="\(s(b_E)\leq c\leq I\)">\(s(b_E)\leq c\leq I\)</span> for every <span class="math" data-tex="\(E\)">\(E\)</span>. A positive contraction dominating a projection acts as the identity on its range, by OA-MOD-BK-06. Equations (RD.25) thus imply <span class="math" data-tex="\(c=I\)">\(c=I\)</span>.</p>
+<p>We next make approximants that lie in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> itself. Since <span class="math" data-tex="\(b_E\in\mathcal D\subseteq\mathfrak n_r\)">\(b_E\in\mathcal D\subseteq\mathfrak n_r\)</span>, the left-ideal property gives <span class="math" data-tex="\(c_{E,\varepsilon}\in\mathfrak n_r\)">\(c_{E,\varepsilon}\in\mathfrak n_r\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+e_{E,\varepsilon}=c_{E,\varepsilon}^*c_{E,\varepsilon}
+=c_{E,\varepsilon}^{\,2}.
+\tag{RD.26}
+\]">\[
+e_{E,\varepsilon}=c_{E,\varepsilon}^*c_{E,\varepsilon}
+=c_{E,\varepsilon}^{\,2}.
+\tag{RD.26}
+\]</span>
+<p>Equation (RD.4) puts <span class="math" data-tex="\(e_{E,\varepsilon}\)">\(e_{E,\varepsilon}\)</span> in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. It is a positive contraction, and</p>
+<span class="math math-display" data-tex="\[
+\|(e_{E,\varepsilon}-I)\xi\|
+\leq 2\|(c_{E,\varepsilon}-I)\xi\|\longrightarrow0.
+\]">\[
+\|(e_{E,\varepsilon}-I)\xi\|
+\leq 2\|(c_{E,\varepsilon}-I)\xi\|\longrightarrow0.
+\]</span>
+<p>These self-adjoint operators converge strongly*. Their squares are not asserted to form an increasing net.</p>
+<p>Finally <span class="math" data-tex="\(e_i\in\mathfrak n_r\)">\(e_i\in\mathfrak n_r\)</span> and <span class="math" data-tex="\(xe_i\in\mathfrak n_r\)">\(xe_i\in\mathfrak n_r\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+e_i x e_i=e_i^*(xe_i)\in\mathfrak n_r^*\mathfrak n_r
+\subseteq\mathcal D.
+\]">\[
+e_i x e_i=e_i^*(xe_i)\in\mathfrak n_r^*\mathfrak n_r
+\subseteq\mathcal D.
+\]</span>
+<p>Their norms are at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|(e_i x e_i-x)\xi\|
+\leq\|x\|\|(e_i-I)\xi\|+\|(e_i-I)x\xi\|\longrightarrow0.
+\]">\[
+\|(e_i x e_i-x)\xi\|
+\leq\|x\|\|(e_i-I)\xi\|+\|(e_i-I)x\xi\|\longrightarrow0.
+\]</span>
+<p>Replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(x^*\)">\(x^*\)</span> to obtain the adjoint convergence. Since <span class="math" data-tex="\(\mathcal D\subseteq M&#x27;\)">\(\mathcal D\subseteq M&#x27;\)</span>, (RD.22) proves that its strong closure is <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and hence its bicommutant is <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, using the nondegenerate density lemma OA-MOD-HA-03. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This explicit net proves the bounded approximation needed here without assuming a density theorem for unit balls. On a bounded set, its strong convergence is also ultraweak convergence by OA-MOD-BK-03.</p>
+<h2 id="products-form-a-core-for-the-original-involution"><span id="oa-mod-rd-06"></span><span id="OA-MOD-RD-06"></span>Products form a core for the original involution</h2>
+<p><strong>Theorem.</strong> The product span <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is dense in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> for the graph norm of <span class="math" data-tex="\(S\)">\(S\)</span>. Equivalently, for <span class="math" data-tex="\(v,w\in H\)">\(v,w\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left[
+\langle a^\sharp b,v\rangle=\langle w,b^\sharp a\rangle
+\quad\text{for every }a,b\in\mathcal A
+\right]
+\quad\Longleftrightarrow\quad
+v\in D(F),\ Fv=w.
+\tag{RD.27}
+\]">\[
+\left[
+\langle a^\sharp b,v\rangle=\langle w,b^\sharp a\rangle
+\quad\text{for every }a,b\in\mathcal A
+\right]
+\quad\Longleftrightarrow\quad
+v\in D(F),\ Fv=w.
+\tag{RD.27}
+\]</span>
+<p><strong>Proof of graph density.</strong> It suffices to approximate each <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, because <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is already a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>. Write <span class="math" data-tex="\(A=L_a\)">\(A=L_a\)</span>. The net in OA-MOD-RD-05 has <span class="math" data-tex="\(e_i=R_{\beta_i}\)">\(e_i=R_{\beta_i}\)</span>, <span class="math" data-tex="\(\beta_i\in\mathcal A_r\)">\(\beta_i\in\mathcal A_r\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+e_i a=L_a\beta_i=A\beta_i\longrightarrow a.
+\]">\[
+e_i a=L_a\beta_i=A\beta_i\longrightarrow a.
+\]</span>
+<p>This proves <span class="math" data-tex="\(a\in\overline{\operatorname{ran}A}\)">\(a\in\overline{\operatorname{ran}A}\)</span>. Applying the same argument to <span class="math" data-tex="\(a^\sharp\)">\(a^\sharp\)</span> gives <span class="math" data-tex="\(a^\sharp\in\overline{\operatorname{ran}A^*}\)">\(a^\sharp\in\overline{\operatorname{ran}A^*}\)</span>.</p>
+<p>For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, let <span class="math" data-tex="\(g_\delta(t)=t/(t+\delta)\)">\(g_\delta(t)=t/(t+\delta)\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. The support-cutoff theorem gives</p>
+<span class="math math-display" data-tex="\[
+g_\delta(AA^*)a\longrightarrow a,\qquad
+g_\delta(A^*A)a^\sharp\longrightarrow a^\sharp
+\quad(\delta\downarrow0).
+\tag{RD.28}
+\]">\[
+g_\delta(AA^*)a\longrightarrow a,\qquad
+g_\delta(A^*A)a^\sharp\longrightarrow a^\sharp
+\quad(\delta\downarrow0).
+\tag{RD.28}
+\]</span>
+<p>These cutoffs need not themselves be left multipliers of vectors in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, so we approximate their scalar functions by polynomials.</p>
+<p>Take <span class="math" data-tex="\(\delta_n=1/n\)">\(\delta_n=1/n\)</span>. If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, faithfulness gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and there is nothing to prove. Otherwise choose real polynomials <span class="math" data-tex="\(p_n\)">\(p_n\)</span> with <span class="math" data-tex="\(p_n(0)=0\)">\(p_n(0)=0\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\sup_{0\leq t\leq\|A\|^2}
+|p_n(t)-g_{\delta_n}(t)|\leq n^{-1}.
+\tag{RD.29}
+\]">\[
+\sup_{0\leq t\leq\|A\|^2}
+|p_n(t)-g_{\delta_n}(t)|\leq n^{-1}.
+\tag{RD.29}
+\]</span>
+<p>Here is an explicit construction with the stronger error <span class="math" data-tex="\(1/(2n)\)">\(1/(2n)\)</span>. Put <span class="math" data-tex="\(K=\|A\|^2&gt;0\)">\(K=\|A\|^2&gt;0\)</span>, and choose a positive integer <span class="math" data-tex="\(m_n\ge2n^2K\)">\(m_n\ge2n^2K\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+p_n(t)=\frac{t}{K+\delta_n}
+\sum_{j=0}^{m_n-1}
+\left(\frac{K-t}{K+\delta_n}\right)^j.
+\]">\[
+p_n(t)=\frac{t}{K+\delta_n}
+\sum_{j=0}^{m_n-1}
+\left(\frac{K-t}{K+\delta_n}\right)^j.
+\]</span>
+<p>This is a real polynomial with zero constant term. Summing the finite geometric progression, for <span class="math" data-tex="\(0\le t\le K\)">\(0\le t\le K\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;g_{\delta_n}(t)-p_n(t)\\
+&amp;=g_{\delta_n}(t)
+\left(\frac{K-t}{K+\delta_n}\right)^{m_n},\\
+&amp;0\le g_{\delta_n}(t)-p_n(t)\\
+&amp;\le\left(1+\frac{\delta_n}{K}\right)^{-m_n}\\
+&amp;\le\frac1{1+m_n\delta_n/K}
+\\
+&amp;\le\frac1{1+2n}&lt;\frac1{2n}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;g_{\delta_n}(t)-p_n(t)\\
+&amp;=g_{\delta_n}(t)
+\left(\frac{K-t}{K+\delta_n}\right)^{m_n},\\
+&amp;0\le g_{\delta_n}(t)-p_n(t)\\
+&amp;\le\left(1+\frac{\delta_n}{K}\right)^{-m_n}\\
+&amp;\le\frac1{1+m_n\delta_n/K}
+\\
+&amp;\le\frac1{1+2n}&lt;\frac1{2n}.
+\end{aligned}
+\]</span>
+<p>The penultimate bound follows from Bernoulli's inequality, whose induction step is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(1+x)^{m+1}\\
+&amp;\ge(1+mx)(1+x)\\
+&amp;\ge1+(m+1)x\qquad(x\ge0).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(1+x)^{m+1}\\
+&amp;\ge(1+mx)(1+x)\\
+&amp;\ge1+(m+1)x\qquad(x\ge0).
+\end{aligned}
+\]</span>
+<p>Since <span class="math" data-tex="\(g_{\delta_n}(0)=0\)">\(g_{\delta_n}(0)=0\)</span>, the polynomial and the target have the same value at zero, and the required error <span class="math" data-tex="\(1/n\)">\(1/n\)</span> follows. Only this explicit finite sum is needed; no additional polynomial-density theorem enters the proof.</p>
+<p>Define the algebra vector</p>
+<span class="math math-display" data-tex="\[
+a_n=p_n(aa^\sharp)a.
+\tag{RD.30}
+\]">\[
+a_n=p_n(aa^\sharp)a.
+\tag{RD.30}
+\]</span>
+<p>Because the polynomial has zero constant term, this is a finite linear combination of products of at least three algebra vectors and hence belongs to <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span>. Algebraic associativity and the real coefficients give</p>
+<span class="math math-display" data-tex="\[
+a_n=p_n(AA^*)a,\qquad
+a_n^\sharp=p_n(A^*A)a^\sharp.
+\tag{RD.31}
+\]">\[
+a_n=p_n(AA^*)a,\qquad
+a_n^\sharp=p_n(A^*A)a^\sharp.
+\tag{RD.31}
+\]</span>
+<p>For the second identity, each term satisfies
+<span class="math" data-tex="\(\bigl((aa^\sharp)^m a\bigr)^\sharp
+=a^\sharp(aa^\sharp)^m=(a^\sharp a)^m a^\sharp\)">\(\bigl((aa^\sharp)^m a\bigr)^\sharp
+=a^\sharp(aa^\sharp)^m=(a^\sharp a)^m a^\sharp\)</span>.
+Uniform functional calculus and (RD.28–29) now prove
+<span class="math" data-tex="\(a_n\to a\)">\(a_n\to a\)</span> and <span class="math" data-tex="\(a_n^\sharp\to a^\sharp\)">\(a_n^\sharp\to a^\sharp\)</span>.
+Thus <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is graph dense in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and therefore in <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span>. Explicitly, approximate a vector of <span class="math" data-tex="\(D(S)\)">\(D(S)\)</span> by algebra vectors with graph error <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, and for each of those choose a product-span vector with a further graph error <span class="math" data-tex="\(1/n\)">\(1/n\)</span>.</p>
+<p><strong>Proof of the pairing characterization.</strong> The forward implication of the right side of (RD.27) to the left follows from the adjoint identity, applied to <span class="math" data-tex="\(b^\sharp a\)">\(b^\sharp a\)</span>, whose image under <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(a^\sharp b\)">\(a^\sharp b\)</span>. Conversely, the assumed pairings extend by linearity to</p>
+<span class="math math-display" data-tex="\[
+\langle S\xi,v\rangle=\langle w,\xi\rangle
+\quad(\xi\in\mathcal A^2).
+\]">\[
+\langle S\xi,v\rangle=\langle w,\xi\rangle
+\quad(\xi\in\mathcal A^2).
+\]</span>
+<p>Graph density extends this equality to all <span class="math" data-tex="\(\xi\in D(S)\)">\(\xi\in D(S)\)</span>. It is exactly the adjoint-domain test <span class="math" data-tex="\(v\in D(S^*)\)">\(v\in D(S^*)\)</span>, <span class="math" data-tex="\(S^*v=w\)">\(S^*v=w\)</span>. Since <span class="math" data-tex="\(F=S^*\)">\(F=S^*\)</span>, this proves (RD.27). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In the modular notation of OA-MOD-TC, the equality of graph norms
+<span class="math" data-tex="\(\|\xi\|^2+\|S\xi\|^2=\|\xi\|^2+\|\Delta^{1/2}\xi\|^2\)">\(\|\xi\|^2+\|S\xi\|^2=\|\xi\|^2+\|\Delta^{1/2}\xi\|^2\)</span>
+also makes <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> a form core for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. This does not assert that every product vector belongs to <span class="math" data-tex="\(D(\Delta)\)">\(D(\Delta)\)</span>, or that <span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is an operator core for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<h2 id="the-adjoint-intersection-of-the-right-ideal"><span id="oa-mod-rd-07"></span><span id="OA-MOD-RD-07"></span>The adjoint intersection of the right ideal</h2>
+<p><strong>Theorem.</strong> With <span class="math" data-tex="\(\mathfrak n_r^*=\{b^*:b\in\mathfrak n_r\}\)">\(\mathfrak n_r^*=\{b^*:b\in\mathfrak n_r\}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*.
+\tag{RD.32}
+\]">\[
+R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*.
+\tag{RD.32}
+\]</span>
+<p>More precisely, if <span class="math" data-tex="\(\eta,\zeta\in\mathcal B_r\)">\(\eta,\zeta\in\mathcal B_r\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+R_\eta^*=R_\zeta
+\quad\Longleftrightarrow\quad
+\eta\in D(F)\text{ and }F\eta=\zeta.
+\tag{RD.33}
+\]">\[
+R_\eta^*=R_\zeta
+\quad\Longleftrightarrow\quad
+\eta\in D(F)\text{ and }F\eta=\zeta.
+\tag{RD.33}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\eta\in\mathcal A_r\)">\(\eta\in\mathcal A_r\)</span>, (RD.3) gives <span class="math" data-tex="\(R_\eta^*=R_{F\eta}\)">\(R_\eta^*=R_{F\eta}\)</span>, proving one inclusion in (RD.32) and one implication in (RD.33).</p>
+<p>Conversely suppose <span class="math" data-tex="\(\eta,\zeta\in\mathcal B_r\)">\(\eta,\zeta\in\mathcal B_r\)</span> and <span class="math" data-tex="\(R_\eta^*=R_\zeta\)">\(R_\eta^*=R_\zeta\)</span>. For <span class="math" data-tex="\(a,b\in\mathcal A\)">\(a,b\in\mathcal A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle a^\sharp b,\eta\rangle
+&amp;=\langle b,L_a\eta\rangle
+=\langle b,R_\eta a\rangle\\
+&amp;=\langle R_\eta^*b,a\rangle
+=\langle L_b\zeta,a\rangle
+=\langle\zeta,b^\sharp a\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle a^\sharp b,\eta\rangle
+&amp;=\langle b,L_a\eta\rangle
+=\langle b,R_\eta a\rangle\\
+&amp;=\langle R_\eta^*b,a\rangle
+=\langle L_b\zeta,a\rangle
+=\langle\zeta,b^\sharp a\rangle.
+\end{aligned}
+\]</span>
+<p>The graph-core characterization (RD.27) proves <span class="math" data-tex="\(\eta\in D(F)\)">\(\eta\in D(F)\)</span>, <span class="math" data-tex="\(F\eta=\zeta\)">\(F\eta=\zeta\)</span>. Finally every operator in <span class="math" data-tex="\(\mathfrak n_r\cap\mathfrak n_r^*\)">\(\mathfrak n_r\cap\mathfrak n_r^*\)</span> has such a pair of representing right-bounded vectors, by the definitions, proving the remaining inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem applies to any left Hilbert algebra satisfying the original four axioms. In particular, after OA-MOD-RD-04, it can be applied to the opposite algebra of the right Hilbert algebra <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span>. That supplies the corresponding left-ideal statement once the left-bounded-vector spaces for that application have been defined. No identification of a full left completion is implicit in this observation.</p>
+<h2 id="a-weighted-discrete-model-of-the-approximations">A weighted discrete model of the approximations</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set and let <span class="math" data-tex="\(\mu_i&gt;0\)">\(\mu_i&gt;0\)</span>. On <span class="math" data-tex="\(\mathcal A=c_{00}(I)\)">\(\mathcal A=c_{00}(I)\)</span>, use pointwise products, complex conjugation, and</p>
+<span class="math math-display" data-tex="\[
+\langle a,b\rangle=\sum_{i\in I}\mu_i a_i\overline{b_i},
+\qquad H=\ell^2(I,\mu).
+\tag{RD.34}
+\]">\[
+\langle a,b\rangle=\sum_{i\in I}\mu_i a_i\overline{b_i},
+\qquad H=\ell^2(I,\mu).
+\tag{RD.34}
+\]</span>
+<p>Every nonnegative sum is the supremum of its finite subsums. The coordinate change <span class="math" data-tex="\(a_i\mapsto\sqrt{\mu_i}a_i\)">\(a_i\mapsto\sqrt{\mu_i}a_i\)</span> identifies this space with the scalar square-sum space over the same arbitrary index set. The completeness and finite-support density proof in <a href="OA-MOD-HA.html#oa-mod-ha-09">HA09</a> applies one scalar coordinate at a time and proves that it is the Hilbert completion of the displayed algebra. Left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> has norm <span class="math" data-tex="\(\sup_i|a_i|\)">\(\sup_i|a_i|\)</span>, as follows by the coordinatewise upper bound and testing one coordinate. Pointwise products give the adjoint compatibility. Conjugation extends to an antiunitary involution on <span class="math" data-tex="\(H\)">\(H\)</span>, so is closable. Each finite-support vector is its product with the indicator of its support, giving <span class="math" data-tex="\(\mathcal A^2=\mathcal A\)">\(\mathcal A^2=\mathcal A\)</span>. These verify the four left Hilbert algebra axioms.</p>
+<p>Both <span class="math" data-tex="\(S,F\)">\(S,F\)</span> are conjugation on all of <span class="math" data-tex="\(H\)">\(H\)</span>. Right boundedness is exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_r=\mathcal A_r=\ell^2(I,\mu)\cap\ell^\infty(I),
+\qquad R_\eta=\operatorname{diag}(\eta_i),\quad
+\|R_\eta\|=\sup_i|\eta_i|.
+\tag{RD.35}
+\]">\[
+\mathcal B_r=\mathcal A_r=\ell^2(I,\mu)\cap\ell^\infty(I),
+\qquad R_\eta=\operatorname{diag}(\eta_i),\quad
+\|R_\eta\|=\sup_i|\eta_i|.
+\tag{RD.35}
+\]</span>
+<p>Testing coordinate vectors proves necessity of the bound; summing the coordinate inequalities proves sufficiency.</p>
+<p>For an arbitrary <span class="math" data-tex="\(\eta\in H=D(F)\)">\(\eta\in H=D(F)\)</span>, the closed operator <span class="math" data-tex="\(T_\eta\)">\(T_\eta\)</span> is multiplication by <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>, with exact domain</p>
+<span class="math math-display" data-tex="\[
+D(T_\eta)=
+\left\{\xi\in H:\sum_i\mu_i|\eta_i\xi_i|^2&lt;\infty\right\}.
+\tag{RD.36}
+\]">\[
+D(T_\eta)=
+\left\{\xi\in H:\sum_i\mu_i|\eta_i\xi_i|^2&lt;\infty\right\}.
+\tag{RD.36}
+\]</span>
+<p>This operator is closed by coordinatewise limits, and finite-coordinate truncations approximate both <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and its displayed image, so <span class="math" data-tex="\(c_{00}(I)\)">\(c_{00}(I)\)</span> is a graph core. The adjoint domain can also be checked directly. Testing one coordinate forces</p>
+<span class="math math-display" data-tex="\[
+(T_\eta^*\xi)_i=\overline{\eta_i}\xi_i,
+\qquad
+D(T_\eta^*)=D(T_\eta).
+\]">\[
+(T_\eta^*\xi)_i=\overline{\eta_i}\xi_i,
+\qquad
+D(T_\eta^*)=D(T_\eta).
+\]</span>
+<p>Necessity is the requirement that this representing vector lie in the weighted square-sum space. Conversely, when it does, Cauchy–Schwarz makes its pairing continuous; the coordinate identity first holds on finite supports and then extends along the graph core just proved. Applying the same argument to multiplication by the real nonnegative family <span class="math" data-tex="\((|\eta_i|)_i\)">\((|\eta_i|)_i\)</span> proves self-adjointness with its maximal square-sum domain. Its polar data are</p>
+<span class="math math-display" data-tex="\[
+h=k=\operatorname{diag}(|\eta_i|),\qquad
+u_i=\begin{cases}\eta_i/|\eta_i|,&amp;\eta_i\neq0,\\0,&amp;\eta_i=0.\end{cases}
+\tag{RD.37}
+\]">\[
+h=k=\operatorname{diag}(|\eta_i|),\qquad
+u_i=\begin{cases}\eta_i/|\eta_i|,&amp;\eta_i\neq0,\\0,&amp;\eta_i=0.\end{cases}
+\tag{RD.37}
+\]</span>
+<p>The cutoff vector has entries <span class="math" data-tex="\(f_n(|\eta_i|)\eta_i\)">\(f_n(|\eta_i|)\eta_i\)</span>; it is bounded because <span class="math" data-tex="\(t f_n(t)\)">\(t f_n(t)\)</span> has compact support. The graph convergence for <span class="math" data-tex="\(F\)">\(F\)</span> is simply</p>
+<span class="math math-display" data-tex="\[
+2\sum_i\mu_i|f_n(|\eta_i|)-1|^2|\eta_i|^2\longrightarrow0.
+\tag{RD.38}
+\]">\[
+2\sum_i\mu_i|f_n(|\eta_i|)-1|^2|\eta_i|^2\longrightarrow0.
+\tag{RD.38}
+\]</span>
+<p>The zero coordinates contribute zero, and scalar dominated convergence applies to the summable family.</p>
+<p>The product span has the exact description</p>
+<span class="math math-display" data-tex="\[
+\mathcal A_r^2=\ell^1(I,\mu)\cap\ell^\infty(I).
+\tag{RD.39}
+\]">\[
+\mathcal A_r^2=\ell^1(I,\mu)\cap\ell^\infty(I).
+\tag{RD.39}
+\]</span>
+<p>A product of two <span class="math" data-tex="\(\ell^2(I,\mu)\)">\(\ell^2(I,\mu)\)</span> vectors belongs to <span class="math" data-tex="\(\ell^1(I,\mu)\)">\(\ell^1(I,\mu)\)</span> by Cauchy–Schwarz, and a product of bounded vectors is bounded. Conversely, for <span class="math" data-tex="\(v\in\ell^1(I,\mu)\cap\ell^\infty(I)\)">\(v\in\ell^1(I,\mu)\cap\ell^\infty(I)\)</span>, let <span class="math" data-tex="\(b_i=|v_i|^{1/2}\)">\(b_i=|v_i|^{1/2}\)</span> and let <span class="math" data-tex="\(a_i=v_i/|v_i|^{1/2}\)">\(a_i=v_i/|v_i|^{1/2}\)</span> when <span class="math" data-tex="\(v_i\neq0\)">\(v_i\neq0\)</span>, with <span class="math" data-tex="\(a_i=0\)">\(a_i=0\)</span> otherwise. Both factors are bounded and square summable, and <span class="math" data-tex="\(v=ab\)">\(v=ab\)</span>. Also <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span>, since <span class="math" data-tex="\(\sum_i\mu_i|v_i|^2\leq\|v\|_\infty\sum_i\mu_i|v_i|\)">\(\sum_i\mu_i|v_i|^2\leq\|v\|_\infty\sum_i\mu_i|v_i|\)</span>. This proves (RD.39).</p>
+<p>For counting weights on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, the vector <span class="math" data-tex="\(v_n=1/n\)">\(v_n=1/n\)</span> belongs to <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> but not to <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span>. Square summability follows from the telescoping bound in <a href="OA-MOD-HA.html#oa-mod-ha-10">HA10</a>. Failure of absolute summability has a finite proof: for each integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{n=2^j+1}^{2^{j+1}}\frac1n
+\ge\frac{2^j}{2^{j+1}}=\frac12.
+\]">\[
+\sum_{n=2^j+1}^{2^{j+1}}\frac1n
+\ge\frac{2^j}{2^{j+1}}=\frac12.
+\]</span>
+<p>The disjoint blocks therefore have arbitrarily large partial sums. Nevertheless its finite truncations converge in the graph norm of <span class="math" data-tex="\(F\)">\(F\)</span>, which is <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> times the Hilbert norm. Thus a product core can be a proper subspace.</p>
+<p>Here <span class="math" data-tex="\(M=M&#x27;\)">\(M=M&#x27;\)</span> is the algebra of all bounded diagonal multipliers. To check the commutant statement directly, an operator commuting with every one-coordinate projection preserves each coordinate line and hence is diagonal; boundedness bounds its diagonal coefficients. Conversely every bounded diagonal multiplier commutes with <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The finite-support indicators give positive contractions in <span class="math" data-tex="\(R(\mathcal A_r)\)">\(R(\mathcal A_r)\)</span> converging strongly to the identity. When <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable, no sequence of finite-support indicators can do so, since a coordinate outside the union of its supports is annihilated by the whole sequence. Thus the global net in OA-MOD-RD-05 and the vectorwise sequence in OA-MOD-RD-04 serve different purposes.</p>
+<h2 id="problems-and-worked-solutions">Problems and worked solutions</h2>
+<p><strong>Problem 1: a genuine unbounded multiplier with a nontrivial kernel.</strong> In the weighted discrete model take <span class="math" data-tex="\(I=\{0\}\cup\mathbb N\)">\(I=\{0\}\cup\mathbb N\)</span>, <span class="math" data-tex="\(\mu_0=1\)">\(\mu_0=1\)</span>, <span class="math" data-tex="\(\mu_n=n^{-4}\)">\(\mu_n=n^{-4}\)</span>, and <span class="math" data-tex="\(\eta_0=0,\eta_n=n\)">\(\eta_0=0,\eta_n=n\)</span>. Find its right multiplier and polar supports. Explain why the spectral cutoffs converge strongly to a proper projection but still approximate <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in the graph norm of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Solution.</strong> The vector belongs to <span class="math" data-tex="\(H\)">\(H\)</span>, since <span class="math" data-tex="\(\sum_{n\geq1}n^{-4}n^2=\sum_n n^{-2}&lt;\infty\)">\(\sum_{n\geq1}n^{-4}n^2=\sum_n n^{-2}&lt;\infty\)</span>, by the telescoping estimate in <a href="OA-MOD-HA.html#oa-mod-ha-10">HA10</a>, but it is unbounded and hence not right bounded. Its closed right multiplier has</p>
+<span class="math math-display" data-tex="\[
+(T_\eta\xi)_0=0,\quad (T_\eta\xi)_n=n\xi_n,\qquad
+D(T_\eta)=\left\{\xi\in H:\sum_{n\geq1}n^{-2}|\xi_n|^2&lt;\infty\right\}.
+\]">\[
+(T_\eta\xi)_0=0,\quad (T_\eta\xi)_n=n\xi_n,\qquad
+D(T_\eta)=\left\{\xi\in H:\sum_{n\geq1}n^{-2}|\xi_n|^2&lt;\infty\right\}.
+\]</span>
+<p>This is a nonnegative self-adjoint diagonal operator, with <span class="math" data-tex="\(h=k=T_\eta\)">\(h=k=T_\eta\)</span>. Its partial isometry is <span class="math" data-tex="\(u=p=q=I-P_0\)">\(u=p=q=I-P_0\)</span>, where <span class="math" data-tex="\(P_0\)">\(P_0\)</span> projects onto coordinate zero. Thus <span class="math" data-tex="\(f_n(k)\to I-P_0\)">\(f_n(k)\to I-P_0\)</span>, not to <span class="math" data-tex="\(I\)">\(I\)</span>. Since <span class="math" data-tex="\(\eta_0=0\)">\(\eta_0=0\)</span>, this projection fixes both <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(F\eta=\eta\)">\(F\eta=\eta\)</span>. Formula (RD.38) proves graph convergence. Each cutoff vector has finite support in the positive coordinates, because <span class="math" data-tex="\(f_n(m)=0\)">\(f_n(m)=0\)</span> for integers <span class="math" data-tex="\(m&gt;e^{2n}\)">\(m&gt;e^{2n}\)</span>, so in this example the approximants even lie in <span class="math" data-tex="\(c_{00}(I)\)">\(c_{00}(I)\)</span>.</p>
+<p><strong>Problem 2: Hilbert-norm approximation alone does not control the involution.</strong> In OA-MOD-HA-09 take <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span>, <span class="math" data-tex="\(D_n=\operatorname{diag}(1,n^4)\)">\(D_n=\operatorname{diag}(1,n^4)\)</span>. Let <span class="math" data-tex="\(v^{(n)}\)">\(v^{(n)}\)</span> have only one nonzero block, its <span class="math" data-tex="\(n\)">\(n\)</span>-th block equal to <span class="math" data-tex="\(n^{-3}e_{12}\)">\(n^{-3}e_{12}\)</span>. Show that <span class="math" data-tex="\(v^{(n)}\to0\)">\(v^{(n)}\to0\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span> but not in the graph norm of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Solution.</strong> The weighted squared norm of <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> in block <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(n^4\)">\(n^4\)</span>, so <span class="math" data-tex="\(\|v^{(n)}\|=n^{-1}\to0\)">\(\|v^{(n)}\|=n^{-1}\to0\)</span>. The exact formula in OA-MOD-HA-09 gives</p>
+<span class="math math-display" data-tex="\[
+Fv^{(n)}=n e_{21}
+\]">\[
+Fv^{(n)}=n e_{21}
+\]</span>
+<p>in that block and zero elsewhere. The weighted norm of <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span> is one, so <span class="math" data-tex="\(\|Fv^{(n)}\|=n\)">\(\|Fv^{(n)}\|=n\)</span>. All these vectors have finite support and lie in <span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span>, but their graph norms diverge. This does not conflict with graph density: a core theorem provides appropriate approximating vectors, and does not make every norm-convergent sequence converge in graph norm.</p>
+<p><strong>Problem 3: squaring a monotone contraction family needs care.</strong> Set</p>
+<span class="math math-display" data-tex="\[
+c=\frac14\begin{pmatrix}2&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+d=\frac14\begin{pmatrix}3&amp;1\\1&amp;1\end{pmatrix}.
+\]">\[
+c=\frac14\begin{pmatrix}2&amp;0\\0&amp;0\end{pmatrix},
+\qquad
+d=\frac14\begin{pmatrix}3&amp;1\\1&amp;1\end{pmatrix}.
+\]</span>
+<p>Verify <span class="math" data-tex="\(0\leq c\leq d\leq I\)">\(0\leq c\leq d\leq I\)</span>, but <span class="math" data-tex="\(c^2\not\leq d^2\)">\(c^2\not\leq d^2\)</span>. Explain which conclusion about the squared approximants in (RD.26) is valid.</p>
+<p><strong>Solution.</strong> The difference <span class="math" data-tex="\(d-c=\frac14\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)">\(d-c=\frac14\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span> is positive. The matrices <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(I-d=\frac14\begin{pmatrix}1&amp;-1\\-1&amp;3\end{pmatrix}\)">\(I-d=\frac14\begin{pmatrix}1&amp;-1\\-1&amp;3\end{pmatrix}\)</span> are positive by their quadratic forms: for <span class="math" data-tex="\(v=(z,w)\)">\(v=(z,w)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+4\langle dv,v\rangle&amp;=2|z|^2+|z+w|^2,\\
+4\langle(I-d)v,v\rangle&amp;=|z-w|^2+2|w|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+4\langle dv,v\rangle&amp;=2|z|^2+|z+w|^2,\\
+4\langle(I-d)v,v\rangle&amp;=|z-w|^2+2|w|^2.
+\end{aligned}
+\]</span>
+<p>Thus positivity here needs no unstated matrix criterion. However,</p>
+<span class="math math-display" data-tex="\[
+d^2-c^2=\frac1{16}\begin{pmatrix}6&amp;4\\4&amp;2\end{pmatrix},
+\qquad
+\left\langle(d^2-c^2)\binom1{-2},\binom1{-2}\right\rangle=-\frac18.
+\]">\[
+d^2-c^2=\frac1{16}\begin{pmatrix}6&amp;4\\4&amp;2\end{pmatrix},
+\qquad
+\left\langle(d^2-c^2)\binom1{-2},\binom1{-2}\right\rangle=-\frac18.
+\]</span>
+<p>Thus the square map does not preserve this order. In (RD.26), positivity and contractivity of each square remain true. Strong convergence <span class="math" data-tex="\(c_i\to I\)">\(c_i\to I\)</span> and the uniform contraction bound give <span class="math" data-tex="\(c_i^2\to I\)">\(c_i^2\to I\)</span> strongly, by the displayed estimate there; self-adjointness gives strong* convergence. Monotonicity of the squares is unnecessary.</p>
+<h2 id="exported-conclusions-and-the-remaining-modular-boundary">Exported conclusions and the remaining modular boundary</h2>
+<p>This unit closes the general cutoff, right-algebra density, commutant-generation, original product-core, and ideal-intersection statements:</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Exact exported conclusion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OA-MOD-RD-03</td>
+<td>Compact spectral cutoffs of a closed right multiplier produce right-algebra products with the exact adjoint-domain formula</td>
+</tr>
+<tr>
+<td>OA-MOD-RD-04</td>
+<td><span class="math" data-tex="\(\mathcal A_r^2\)">\(\mathcal A_r^2\)</span> and <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> are graph cores for <span class="math" data-tex="\(F\)">\(F\)</span>; <span class="math" data-tex="\(\mathcal A_r\)">\(\mathcal A_r\)</span> is a right Hilbert algebra; its closed involution is <span class="math" data-tex="\(F\)">\(F\)</span>, whose adjoint is <span class="math" data-tex="\(S\)">\(S\)</span></td>
+</tr>
+<tr>
+<td>OA-MOD-RD-05</td>
+<td><span class="math" data-tex="\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)">\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)</span>, with explicit norm-controlled strong* approximants to every <span class="math" data-tex="\(x\in M&#x27;\)">\(x\in M&#x27;\)</span></td>
+</tr>
+<tr>
+<td>OA-MOD-RD-06</td>
+<td><span class="math" data-tex="\(\mathcal A^2\)">\(\mathcal A^2\)</span> is a graph core for <span class="math" data-tex="\(S\)">\(S\)</span>, with the complete product-pairing test for <span class="math" data-tex="\(D(F)\)">\(D(F)\)</span></td>
+</tr>
+<tr>
+<td>OA-MOD-RD-07</td>
+<td><span class="math" data-tex="\(R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*\)">\(R(\mathcal A_r)=\mathfrak n_r\cap\mathfrak n_r^*\)</span>, including the representing-vector involution</td>
+</tr>
+</tbody>
+</table>
+<p>All proofs retain arbitrary Hilbert spaces, nonunital algebras, nontrivial operator kernels, and possibly unbounded right multipliers. The graph-density sequence and the global operator-approximation net have their separate topologies stated. The analytic prerequisites are the exact preceding proofs linked in OA-MOD-RD-01; RD06 supplies its finite polynomial estimate locally.</p>
+<p>Further work must define the left-bounded-vector completion, prove its repeated-dualization and fullness identities, establish the modular resolvent estimates and the fundamental modular theorem, and construct the analytic Tomita algebra. The equality <span class="math" data-tex="\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)">\(R(\mathcal A_r)&#x27;&#x27;=M&#x27;\)</span> proved here does not identify <span class="math" data-tex="\(R(\mathcal A_r)\)">\(R(\mathcal A_r)\)</span> with <span class="math" data-tex="\(J M J\)">\(J M J\)</span>. No assertion <span class="math" data-tex="\(JMJ=M&#x27;\)">\(JMJ=M&#x27;\)</span> or <span class="math" data-tex="\(\Delta^{it}M\Delta^{-it}=M\)">\(\Delta^{it}M\Delta^{-it}=M\)</span> has entered the proof. The general weight-to-Hilbert-algebra and weight-reconstruction theorems also retain their separate obligations.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-BC.html">← Polynomial cutoffs recover an operator&#x27;s range</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-FL.html">The full left Hilbert algebra obtained by dualizing twice →</a></span></nav>
+<p class="small source-link"><a href="src/right-hilbert-algebra-density.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

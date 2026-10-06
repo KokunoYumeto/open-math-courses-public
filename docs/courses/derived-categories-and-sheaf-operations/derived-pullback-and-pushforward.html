@@ -1,0 +1,431 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Derived pullback and pushforward</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Derived categories of sheaves</a></nav><h1 id="derived-pullback-and-pushforward">Derived pullback and pushforward</h1>
+<p><em>Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the <a href="licence.html">course notice</a>.</em></p>
+<p>Pullback changes both the space and the coefficient ring. Pushforward collects sections over inverse images of opens. Their ordinary adjunction survives passage to derived categories, but proving this requires two different resolutions. A K-flat model controls the tensor in pullback, and a K-injective model controls pushforward. The proof must also work when pushforward of that K-injective model is not itself K-injective.</p>
+<p>The prerequisites are <a href="derived-tensor-products-and-tor-sheaves.html">The derived tensor product and Tor sheaves</a>, Lemma 1.1, Theorem 1.2, Lemma 2.1 and Theorem 2.2, and <a href="k-injective-resolutions-in-grothendieck-categories.html">K-injective resolutions in Grothendieck categories</a>, Theorems 4.1 and 5.1 and Proposition 5.2. Their earlier prerequisites supply the chain-level adjunction (first lesson, Theorem 4.4), the open-extension adjunction (Lemma 5.1 there), maps into K-injectives (bounded-derived lesson, Theorem 3.3), and roof cancellation (common reading, Theorem 4.2). For the spectral-sequence exercise we use the lower-bound preservation in Theorem 4.1 of the bounded-derived lesson.</p>
+<p>Unless explicitly stated otherwise, all structure sheaves are commutative and unital, and all derived categories are unbounded. Let
+<span class="math" data-tex="\(f:(X,\mathcal O_X)\to(Y,\mathcal O_Y)\)">\(f:(X,\mathcal O_X)\to(Y,\mathcal O_Y)\)</span> be a morphism of ringed spaces. Write</p>
+<span class="math math-display" data-tex="\[
+f^*G=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}G.
+\tag{0.1}
+\]">\[
+f^*G=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}G.
+\tag{0.1}
+\]</span>
+<p>We retain cohomological indexing, direct-sum tensor totalization and the common reading's negative cone-projection convention. These results require no separation, Noetherian, compactness or finite homological-dimension hypothesis.</p>
+<p>The construction sources are the Stacks project authors’ <em>Cohomology of Sheaves</em>, “Derived pullback”, “Cohomology of unbounded complexes” and “Some properties of K-injective complexes”, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex">AI Integrated Stacks Project edition</a>. The proofs use resolutions, roofs and adjunction to establish the comparison maps with their actual coefficient hypotheses. Source attribution and the licence for adapted passages appear in the <a href="licence.html">course notice</a>.</p>
+<h2 id="1-derived-pullback-on-k-flat-models">1. Derived pullback on K-flat models</h2>
+<p><strong>Theorem 1.1.</strong> Choosing a K-flat resolution <span class="math" data-tex="\(P\to G\)">\(P\to G\)</span> and setting</p>
+<span class="math math-display" data-tex="\[
+Lf^*G=f^*P
+\tag{1.1}
+\]">\[
+Lf^*G=f^*P
+\tag{1.1}
+\]</span>
+<p>defines a well-defined exact functor <span class="math" data-tex="\(Lf^*:D(\mathcal O_Y)\to D(\mathcal O_X)\)">\(Lf^*:D(\mathcal O_Y)\to D(\mathcal O_X)\)</span>. It carries K-flat models to K-flat models. For composable <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, there are canonical natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+Lf^*Lg^*G\cong L(gf)^*G.
+\tag{1.2}
+\]">\[
+Lf^*Lg^*G\cong L(gf)^*G.
+\tag{1.2}
+\]</span>
+<p><strong>Proof.</strong> Pullback preserves K-flatness by Lemma 2.2 of the K-flat lesson. It also preserves quasi-isomorphisms <strong>between</strong> K-flats. Indeed, at <span class="math" data-tex="\(x\)">\(x\)</span> their pullback map is</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}P_{f(x)}
+\longrightarrow
+\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}P&#x27;_{f(x)}.
+\]">\[
+\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}P_{f(x)}
+\longrightarrow
+\mathcal O_{X,x}\otimes_{\mathcal O_{Y,f(x)}}P&#x27;_{f(x)}.
+\]</span>
+<p>The stalk models are K-flat; Lemma 1.1 of the tensor lesson applies to their quasi-isomorphism and the possibly nonflat module <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span>. Thus this map is a quasi-isomorphism on every stalk. Pullback is additive, so it preserves homotopies, shifts and cones. Lemma 2.1 of the tensor lesson identifies the localization of K-flat models with the full derived category. Localizing pullback on those models gives the claimed exact functor and canonical comparisons for all choices and roofs.</p>
+<p>Choose <span class="math" data-tex="\(P\)">\(P\)</span> K-flat on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Then <span class="math" data-tex="\(g^*P\)">\(g^*P\)</span> is K-flat on <span class="math" data-tex="\(Y\)">\(Y\)</span>, so the iterated derived pullback is computed by <span class="math" data-tex="\(f^*g^*P\)">\(f^*g^*P\)</span>. Ordinary pullback composition identifies this with <span class="math" data-tex="\((gf)^*P\)">\((gf)^*P\)</span>. On stalks its scalar-extension map has the formula</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s\otimes(t\otimes p)\longmapsto s f^\sharp(t)\otimes p,\\
+s\otimes p\longmapsto s\otimes(1\otimes p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+s\otimes(t\otimes p)\longmapsto s f^\sharp(t)\otimes p,\\
+s\otimes p\longmapsto s\otimes(1\otimes p).
+\end{gathered}
+\]</span>
+<p>Balancing proves that these are inverse maps; scalars have degree zero, so they commute with differentials. The same balanced sheaf maps, using the natural and coherent inverse-image composition proved in Lemma 4.2 of the first lesson, define the identification before taking stalks. They are natural for chain maps, hence for inverse denominators and roofs. For three successive pullbacks every association multiplies the same successive scalar images; associativity and that inverse-image comparison prove coherence of (1.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (tensor compatibility).</strong> There are canonical natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lf^*(A\otimes_{\mathcal O_Y}^{\mathbf L}B)
+\\ \cong Lf^*A\otimes_{\mathcal O_X}^{\mathbf L}Lf^*B,\\
+F\otimes_{\mathcal O_X}^{\mathbf L}Lf^*G
+\\ \cong F\otimes_{f^{-1}\mathcal O_Y}^{\mathbf L}f^{-1}G.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+Lf^*(A\otimes_{\mathcal O_Y}^{\mathbf L}B)
+\\ \cong Lf^*A\otimes_{\mathcal O_X}^{\mathbf L}Lf^*B,\\
+F\otimes_{\mathcal O_X}^{\mathbf L}Lf^*G
+\\ \cong F\otimes_{f^{-1}\mathcal O_Y}^{\mathbf L}f^{-1}G.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>In the second line <span class="math" data-tex="\(F\)">\(F\)</span> is an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-complex; the right side retains its <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-action from <span class="math" data-tex="\(F\)">\(F\)</span>. The isomorphisms respect the tensor associativity, symmetry, unit and pullback-composition comparisons.</p>
+<p><strong>Proof.</strong> For K-flat <span class="math" data-tex="\(P,R\)">\(P,R\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, their tensor is K-flat. Thus the first line is computed by the ordinary isomorphism <span class="math" data-tex="\(f^*(P\otimes R)\cong f^*P\otimes f^*R\)">\(f^*(P\otimes R)\cong f^*P\otimes f^*R\)</span>. On a stalk, with coefficient map <span class="math" data-tex="\(R_0\to S\)">\(R_0\to S\)</span>, the inverse-direction map and its inverse are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(s\otimes p)\otimes(t\otimes r)\longmapsto st\otimes(p\otimes r),\\
+s\otimes(p\otimes r)\longmapsto(s\otimes p)\otimes(1\otimes r).
+\end{gathered}
+\]">\[
+\begin{gathered}
+(s\otimes p)\otimes(t\otimes r)\longmapsto st\otimes(p\otimes r),\\
+s\otimes(p\otimes r)\longmapsto(s\otimes p)\otimes(1\otimes r).
+\end{gathered}
+\]</span>
+<p>Commutativity of the rings and balancing make the formulas well defined. Their differential signs are <span class="math" data-tex="\(1,(-1)^{|p|}\)">\(1,(-1)^{|p|}\)</span> on both sides. Inverse image and scalar extension commute with direct sums, so the same maps identify the totalizations. They commute with elementary reassociation, the Koszul flip and units; on four scalar factors every route is scalar multiplication in the same order. Their naturality extends to localized models.</p>
+<p>For the second line choose only a K-flat <span class="math" data-tex="\(P\to G\)">\(P\to G\)</span>. Then <span class="math" data-tex="\(f^{-1}P\)">\(f^{-1}P\)</span> is K-flat over <span class="math" data-tex="\(f^{-1}\mathcal O_Y\)">\(f^{-1}\mathcal O_Y\)</span>, by the K-flat pullback criterion applied with unchanged coefficients, and <span class="math" data-tex="\(f^*P\)">\(f^*P\)</span> is K-flat over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. The one-resolution construction computes both sides by</p>
+<span class="math math-display" data-tex="\[
+F\otimes_{\mathcal O_X}
+(\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}P)
+\cong F\otimes_{f^{-1}\mathcal O_Y}f^{-1}P.
+\]">\[
+F\otimes_{\mathcal O_X}
+(\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}P)
+\cong F\otimes_{f^{-1}\mathcal O_Y}f^{-1}P.
+\]</span>
+<p>The map sends <span class="math" data-tex="\(a\otimes(s\otimes p)\)">\(a\otimes(s\otimes p)\)</span> to <span class="math" data-tex="\(sa\otimes p\)">\(sa\otimes p\)</span>, with inverse <span class="math" data-tex="\(a\otimes p\mapsto a\otimes(1\otimes p)\)">\(a\otimes p\mapsto a\otimes(1\otimes p)\)</span>. This proves the asserted module action and naturality without assuming <span class="math" data-tex="\(F\)">\(F\)</span> flat. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a natural comparison <span class="math" data-tex="\(Lf^*G\to f^*G\)">\(Lf^*G\to f^*G\)</span> for a specified complex <span class="math" data-tex="\(G\)">\(G\)</span>, induced by <span class="math" data-tex="\(f^*P\to f^*G\)">\(f^*P\to f^*G\)</span>. It need not be an isomorphism. All comparisons to ordinary tensor commute with (1.3): on resolving tensors both routes send <span class="math" data-tex="\((s\otimes p)\otimes(t\otimes r)\)">\((s\otimes p)\otimes(t\otimes r)\)</span> to <span class="math" data-tex="\(st\otimes(\epsilon_Pp\otimes\epsilon_Rr)\)">\(st\otimes(\epsilon_Pp\otimes\epsilon_Rr)\)</span>. For the map <span class="math" data-tex="\(a:P\otimes R\to A\otimes B\)">\(a:P\otimes R\to A\otimes B\)</span>, Corollary 4.4 of the K-flat lesson supplies a factorization <span class="math" data-tex="\(a=cb\)">\(a=cb\)</span> through a K-flat resolution <span class="math" data-tex="\(c:N\to A\otimes B\)">\(c:N\to A\otimes B\)</span>. Applying pullback gives <span class="math" data-tex="\(f^*c\,f^*b=f^*a\)">\(f^*c\,f^*b=f^*a\)</span>; the left side represents the route through <span class="math" data-tex="\(Lf^*(A\otimes B)\)">\(Lf^*(A\otimes B)\)</span> and its ordinary comparison, and the right side is the same elementary tensor formula. This proves the complete comparison square, including the augmentation maps.</p>
+<h2 id="2-derived-pushforward-and-the-adjunction">2. Derived pushforward and the adjunction</h2>
+<p>Choose <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> K-injective with injective terms, using Theorem 4.1 of the K-injective lesson. Theorem 5.1 there, applied to the additive functor <span class="math" data-tex="\(f_*\)">\(f_*\)</span>, gives an exact functor</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Rf_*:D(\mathcal O_X)\longrightarrow D(\mathcal O_Y),\\
+Rf_*F=f_*I.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+Rf_*:D(\mathcal O_X)\longrightarrow D(\mathcal O_Y),\\
+Rf_*F=f_*I.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Two K-injective models are homotopy equivalent, and additive pushforward preserves these equivalences and their homotopies. Maps between the models, unique up to homotopy, define the functor on all derived morphisms. No claim about K-injectivity of <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span> is needed for this construction.</p>
+<p><strong>Lemma 2.1 (a relative Hom comparison).</strong> For <span class="math" data-tex="\(P\)">\(P\)</span> K-flat on <span class="math" data-tex="\(Y\)">\(Y\)</span> and <span class="math" data-tex="\(I\)">\(I\)</span> K-injective on <span class="math" data-tex="\(X\)">\(X\)</span>, localization induces a bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{K(\mathcal O_Y)}(P,f_*I)\\
+\cong
+\operatorname{Hom}_{D(\mathcal O_Y)}(P,f_*I).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{K(\mathcal O_Y)}(P,f_*I)\\
+\cong
+\operatorname{Hom}_{D(\mathcal O_Y)}(P,f_*I).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Represent a derived map by a roof <span class="math" data-tex="\(P\leftarrow Z\to f_*I\)">\(P\leftarrow Z\to f_*I\)</span>. Resolve <span class="math" data-tex="\(Z\)">\(Z\)</span> by a K-flat <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>. Its composite <span class="math" data-tex="\(s:T\to P\)">\(s:T\to P\)</span> is a quasi-isomorphism between K-flats. Theorem 1.1 makes <span class="math" data-tex="\(f^*s\)">\(f^*s\)</span> a quasi-isomorphism. Maps into <span class="math" data-tex="\(I\)">\(I\)</span> consequently give a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{K(\mathcal O_X)}(f^*P,I)
+\longrightarrow
+\operatorname{Hom}_{K(\mathcal O_X)}(f^*T,I),
+\]">\[
+\operatorname{Hom}_{K(\mathcal O_X)}(f^*P,I)
+\longrightarrow
+\operatorname{Hom}_{K(\mathcal O_X)}(f^*T,I),
+\]</span>
+<p>by Theorem 3.3 of the bounded-derived lesson. The chain-level adjunction identifies this with precomposition by <span class="math" data-tex="\(s\)">\(s\)</span> on maps into <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span>. Thus the roof's numerator comes from a unique homotopy class <span class="math" data-tex="\(P\to f_*I\)">\(P\to f_*I\)</span>, proving surjectivity of (2.2).</p>
+<p>For injectivity, if such a homotopy class becomes zero after localization, roof cancellation (common reading, Theorem 4.2) gives a quasi-isomorphism <span class="math" data-tex="\(Z\to P\)">\(Z\to P\)</span> making its composite zero in the homotopy category. Resolve <span class="math" data-tex="\(Z\)">\(Z\)</span> by a K-flat <span class="math" data-tex="\(T\)">\(T\)</span>. Precomposition along the resulting <span class="math" data-tex="\(T\to P\)">\(T\to P\)</span> is the bijection just proved by the chain adjunction, so the original class was zero. Applying this to a difference also proves injectivity for equality of two classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (unbounded adjunction).</strong> There is a bifunctorial bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{D(\mathcal O_X)}(Lf^*G,F)
+\\ \cong\operatorname{Hom}_{D(\mathcal O_Y)}(G,Rf_*F).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{D(\mathcal O_X)}(Lf^*G,F)
+\\ \cong\operatorname{Hom}_{D(\mathcal O_Y)}(G,Rf_*F).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>It gives <span class="math" data-tex="\(Lf^*\dashv Rf_*\)">\(Lf^*\dashv Rf_*\)</span>, with natural unit <span class="math" data-tex="\(\eta:G\to Rf_*Lf^*G\)">\(\eta:G\to Rf_*Lf^*G\)</span> and counit <span class="math" data-tex="\(\epsilon:Lf^*Rf_*F\to F\)">\(\epsilon:Lf^*Rf_*F\to F\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(P\to G\)">\(P\to G\)</span> K-flat and <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> K-injective. The left group is <span class="math" data-tex="\(\operatorname{Hom}_K(f^*P,I)\)">\(\operatorname{Hom}_K(f^*P,I)\)</span>, because the target is K-injective. The ordinary adjunction on complexes, including homotopies, identifies this with <span class="math" data-tex="\(\operatorname{Hom}_K(P,f_*I)\)">\(\operatorname{Hom}_K(P,f_*I)\)</span>. Lemma 2.1 identifies the latter with <span class="math" data-tex="\(\operatorname{Hom}_D(P,f_*I)\)">\(\operatorname{Hom}_D(P,f_*I)\)</span>; use <span class="math" data-tex="\(P\simeq G\)">\(P\simeq G\)</span> to obtain the right group.</p>
+<p>For naturality in <span class="math" data-tex="\(G\)">\(G\)</span>, every derived map between its K-flat models is a roof with K-flat middle, by Lemma 2.1 of the tensor lesson. The chain adjunction and all Hom comparisons commute with its numerator and denominator, hence with the inverse denominator. For naturality in <span class="math" data-tex="\(F\)">\(F\)</span>, derived maps between K-injective models are homotopy classes of chain maps; the adjunction commutes with them. Replacing either model uses these same comparisons. Thus (2.3) is independent of choices and bifunctorial.</p>
+<p>Define the unit as the transpose of <span class="math" data-tex="\(1_{Lf^*G}\)">\(1_{Lf^*G}\)</span>, and the counit as the inverse transpose of <span class="math" data-tex="\(1_{Rf_*F}\)">\(1_{Rf_*F}\)</span>. Write <span class="math" data-tex="\(L=Lf^*\)">\(L=Lf^*\)</span>, <span class="math" data-tex="\(R=Rf_*\)">\(R=Rf_*\)</span>, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> for the bijection. Naturality implies <span class="math" data-tex="\(\alpha(u)=R(u)\eta\)">\(\alpha(u)=R(u)\eta\)</span> and <span class="math" data-tex="\(\alpha^{-1}(v)=\epsilon L(v)\)">\(\alpha^{-1}(v)=\epsilon L(v)\)</span>. Applying these to <span class="math" data-tex="\(\eta=\alpha(1)\)">\(\eta=\alpha(1)\)</span> and <span class="math" data-tex="\(\epsilon=\alpha^{-1}(1)\)">\(\epsilon=\alpha^{-1}(1)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\epsilon_{LG}L(\eta_G)=1_{LG},\\
+R(\epsilon_F)\eta_{RF}=1_{RF}.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+\epsilon_{LG}L(\eta_G)=1_{LG},\\
+R(\epsilon_F)\eta_{RF}=1_{RF}.
+\end{gathered}
+\tag{2.4}
+\]</span>
+<p>These are the triangle identities, so the asserted maps give the adjunction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3 (unchanged coefficients, also noncommutative).</strong> If <span class="math" data-tex="\(\mathcal O_X=f^{-1}\mathcal O_Y\)">\(\mathcal O_X=f^{-1}\mathcal O_Y\)</span>, for any unital sheaf of rings, <span class="math" data-tex="\(f^{-1}\dashv Rf_*\)">\(f^{-1}\dashv Rf_*\)</span> on unbounded derived categories.</p>
+<p><strong>Proof.</strong> Inverse image is exact, and <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is its right adjoint. Proposition 5.2 of the K-injective lesson makes <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span> K-injective. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(f^{-1}G,F)
+=\operatorname{Hom}_K(f^{-1}G,I)\\
+=\operatorname{Hom}_K(G,f_*I)
+=\operatorname{Hom}_D(G,Rf_*F).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(f^{-1}G,F)
+=\operatorname{Hom}_K(f^{-1}G,I)\\
+=\operatorname{Hom}_K(G,f_*I)
+=\operatorname{Hom}_D(G,Rf_*F).
+\end{gathered}
+\]</span>
+<p>Each equality is natural for maps and homotopies and extends to roofs. This proves the exact-coefficient adjunction without using commutative K-flat theory in the noncommutative case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-composition-leray-and-the-local-descriptions">3. Composition, Leray and the local descriptions</h2>
+<p><strong>Proposition 3.1.</strong> For composable morphisms <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> and <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Rg_*Rf_*F\cong R(gf)_*F
+\tag{3.1}
+\]">\[
+Rg_*Rf_*F\cong R(gf)_*F
+\tag{3.1}
+\]</span>
+<p>canonically and naturally. In particular,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(Y,Rf_*F)\cong R\Gamma(X,F).
+\tag{3.2}
+\]">\[
+R\Gamma(Y,Rf_*F)\cong R\Gamma(X,F).
+\tag{3.2}
+\]</span>
+<p>The second identification is in <span class="math" data-tex="\(D(\Gamma(Y,\mathcal O_Y))\)">\(D(\Gamma(Y,\mathcal O_Y))\)</span>, with the right side's scalars restricted along <span class="math" data-tex="\(\Gamma(Y,\mathcal O_Y)\to\Gamma(X,\mathcal O_X)\)">\(\Gamma(Y,\mathcal O_Y)\to\Gamma(X,\mathcal O_X)\)</span>.</p>
+<p><strong>Proof.</strong> Successive adjunctions show that <span class="math" data-tex="\(Rg_*Rf_*\)">\(Rg_*Rf_*\)</span> is right adjoint to <span class="math" data-tex="\(Lf^*Lg^*\)">\(Lf^*Lg^*\)</span>. Theorem 1.1 identifies the latter with <span class="math" data-tex="\(L(gf)^*\)">\(L(gf)^*\)</span>, whose right adjoint is <span class="math" data-tex="\(R(gf)_*\)">\(R(gf)_*\)</span>.</p>
+<p>For completeness, a right adjoint is unique in the required canonical sense. If <span class="math" data-tex="\(L\dashv R_1\)">\(L\dashv R_1\)</span> and <span class="math" data-tex="\(L\dashv R_2\)">\(L\dashv R_2\)</span>, send the counit <span class="math" data-tex="\(LR_1B\to B\)">\(LR_1B\to B\)</span> through the second adjunction to a map <span class="math" data-tex="\(\beta_B:R_1B\to R_2B\)">\(\beta_B:R_1B\to R_2B\)</span>. Reverse the roles to obtain <span class="math" data-tex="\(\gamma_B\)">\(\gamma_B\)</span>. Naturality of the adjunctions and their triangle identities show that the transpose of <span class="math" data-tex="\(\gamma_B\beta_B\)">\(\gamma_B\beta_B\)</span> under the first adjunction is its counit, so <span class="math" data-tex="\(\gamma_B\beta_B=1\)">\(\gamma_B\beta_B=1\)</span>; likewise <span class="math" data-tex="\(\beta_B\gamma_B=1\)">\(\beta_B\gamma_B=1\)</span>. Transposing maps after a morphism <span class="math" data-tex="\(B\to B&#x27;\)">\(B\to B&#x27;\)</span> proves naturality. This is the unique isomorphism compatible with the given adjunctions, and its uniqueness also gives compatibility for three successive functors. It proves (3.1) without assuming <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span> is K-injective.</p>
+<p>Put <span class="math" data-tex="\(A=\Gamma(Y,\mathcal O_Y)\)">\(A=\Gamma(Y,\mathcal O_Y)\)</span>. The canonical morphism <span class="math" data-tex="\(Y\to(\mathrm{pt},A)\)">\(Y\to(\mathrm{pt},A)\)</span> has pushforward <span class="math" data-tex="\(\Gamma(Y,-)\)">\(\Gamma(Y,-)\)</span>. Its composite with <span class="math" data-tex="\(f\)">\(f\)</span> has pushforward <span class="math" data-tex="\(\Gamma(X,-)\)">\(\Gamma(X,-)\)</span> with the indicated <span class="math" data-tex="\(A\)">\(A\)</span>-action. Apply (3.1) to obtain (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (opens and cohomology sheaves).</strong> Let <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span> and <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span> be open, and for the restriction formula set <span class="math" data-tex="\(U=f^{-1}V\)">\(U=f^{-1}V\)</span>, <span class="math" data-tex="\(f_V:U\to V\)">\(f_V:U\to V\)</span>. Then:</p>
+<ol>
+<li>A K-injective <span class="math" data-tex="\(I\)">\(I\)</span> restricts to a K-injective <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span>, and <span class="math" data-tex="\(H^q(U,F)=H^q(U,F|_U)\)">\(H^q(U,F)=H^q(U,F|_U)\)</span>.</li>
+<li>The sheafification of <span class="math" data-tex="\(U\mapsto H^q(U,F)\)">\(U\mapsto H^q(U,F)\)</span> is <span class="math" data-tex="\(H^q(F)\)">\(H^q(F)\)</span>.</li>
+<li><span class="math" data-tex="\((Rf_*F)|_V\cong R(f_V)_*(F|_U)\)">\((Rf_*F)|_V\cong R(f_V)_*(F|_U)\)</span>.</li>
+<li><span class="math" data-tex="\(R\Gamma(V,Rf_*F)\cong R\Gamma(f^{-1}V,F)\)">\(R\Gamma(V,Rf_*F)\cong R\Gamma(f^{-1}V,F)\)</span>, with scalar restriction understood.</li>
+<li><span class="math" data-tex="\(H^q(Rf_*F)\)">\(H^q(Rf_*F)\)</span> is the sheaf associated to <span class="math" data-tex="\(V\mapsto H^q(f^{-1}V,F)\)">\(V\mapsto H^q(f^{-1}V,F)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Extension by zero <span class="math" data-tex="\(j_!\)">\(j_!\)</span> is exact and left adjoint to restriction, by Lemma 5.1 of the first lesson. Proposition 5.2 of the K-injective lesson makes its right adjoint, restriction, preserve K-injectives. Thus <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span> resolves <span class="math" data-tex="\(F|_U\)">\(F|_U\)</span>, and both definitions of the group in (1) use the same section complex <span class="math" data-tex="\(\Gamma(U,I)\)">\(\Gamma(U,I)\)</span>.</p>
+<p>For (2), this complex gives the presheaf</p>
+<span class="math math-display" data-tex="\[
+U\longmapsto
+\frac{\ker\bigl(I^q(U)\to I^{q+1}(U)\bigr)}
+{\operatorname{im}\bigl(I^{q-1}(U)\to I^q(U)\bigr)}.
+\tag{3.3}
+\]">\[
+U\longmapsto
+\frac{\ker\bigl(I^q(U)\to I^{q+1}(U)\bigr)}
+{\operatorname{im}\bigl(I^{q-1}(U)\to I^q(U)\bigr)}.
+\tag{3.3}
+\]</span>
+<p>At a point, its filtered colimit is <span class="math" data-tex="\(H^q(I_x)\)">\(H^q(I_x)\)</span>, because stalks and filtered colimits are exact. This is <span class="math" data-tex="\(H^q(F)_x\)">\(H^q(F)_x\)</span>. The map sending a section cycle to its cohomology germ therefore induces an isomorphism after sheafification, by the first lesson's stalk criterion. This argument works for any complex of sheaves; it does not require exactness of taking sections.</p>
+<p>For (3), use the K-injective <span class="math" data-tex="\(I\)">\(I\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. The ordinary sheaf identity <span class="math" data-tex="\((f_*I)|_V=(f_V)_*(I|_U)\)">\((f_*I)|_V=(f_V)_*(I|_U)\)</span> follows by evaluating on opens of <span class="math" data-tex="\(V\)">\(V\)</span>, so it gives the derived identity. Apply (3.2) to <span class="math" data-tex="\(f_V\)">\(f_V\)</span> and use (1) and (3) to obtain (4). Finally <span class="math" data-tex="\(Rf_*F\)">\(Rf_*F\)</span> is represented by <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span>; apply the cohomology-presheaf argument to this complex. On an open <span class="math" data-tex="\(V\)">\(V\)</span>, its section cohomology is <span class="math" data-tex="\(H^q(\Gamma(f^{-1}V,I))=H^q(f^{-1}V,F)\)">\(H^q(\Gamma(f^{-1}V,I))=H^q(f^{-1}V,F)\)</span> by (1). Sheafification gives (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These assertions distinguish a cohomology sheaf from the cohomology of sections on a specified open. Sections of a quotient sheaf need not be the quotient of sections; sheafification in (2) and (5) is part of the statement.</p>
+<h2 id="4-coefficient-comparison-and-exact-adjoints">4. Coefficient comparison and exact adjoints</h2>
+<p>Write <span class="math" data-tex="\(F_{ab}\)">\(F_{ab}\)</span> for the underlying complex of abelian sheaves. Forgetting the module action is exact: kernels and images are the same underlying sheaf kernels and images. It therefore induces <span class="math" data-tex="\(D(\mathcal O_X)\to D(\mathbb Z_X)\)">\(D(\mathcal O_X)\to D(\mathbb Z_X)\)</span>, even when <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> has integer torsion.</p>
+<p><strong>Theorem 4.1 (modules and underlying abelian sheaves).</strong> The canonical comparison maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R\Gamma(U,F)\longrightarrow R\Gamma(U,F_{ab}),\\
+(Rf_*F)_{ab}\longrightarrow Rf_*^{ab}(F_{ab})
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+R\Gamma(U,F)\longrightarrow R\Gamma(U,F_{ab}),\\
+(Rf_*F)_{ab}\longrightarrow Rf_*^{ab}(F_{ab})
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>are isomorphisms, respectively in <span class="math" data-tex="\(D(\mathrm{Ab})\)">\(D(\mathrm{Ab})\)</span> and <span class="math" data-tex="\(D(\mathbb Z_Y)\)">\(D(\mathbb Z_Y)\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> K-injective over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>, and a K-injective abelian-sheaf resolution <span class="math" data-tex="\(I_{ab}\to J\)">\(I_{ab}\to J\)</span>. The comparisons are represented by <span class="math" data-tex="\(\Gamma(U,I)\to\Gamma(U,J)\)">\(\Gamma(U,I)\to\Gamma(U,J)\)</span> and <span class="math" data-tex="\(f_*I_{ab}\to f_*J\)">\(f_*I_{ab}\to f_*J\)</span>. The choice of <span class="math" data-tex="\(J\)">\(J\)</span> changes them only by the canonical homotopy comparison between K-injective resolutions, so these are natural derived maps.</p>
+<p>Consider the coefficient morphism <span class="math" data-tex="\(h:(X,\mathcal O_X)\to(X,\mathbb Z_X)\)">\(h:(X,\mathcal O_X)\to(X,\mathbb Z_X)\)</span>, the identity on spaces and the unit map on rings. Its ordinary pushforward is exactly forgetting the action, so its derived pushforward is also that exact functor. Also <span class="math" data-tex="\(Lh^*\mathbb Z_X=\mathcal O_X\)">\(Lh^*\mathbb Z_X=\mathcal O_X\)</span>, because <span class="math" data-tex="\(\mathbb Z_X[0]\)">\(\mathbb Z_X[0]\)</span> is K-flat over itself. The adjunction of Theorem 2.2 gives, for every integer <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{D(\mathcal O_X)}(\mathcal O_X,F[n])
+\\ \cong\operatorname{Hom}_{D(\mathbb Z_X)}(\mathbb Z_X,F_{ab}[n]).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{D(\mathcal O_X)}(\mathcal O_X,F[n])
+\\ \cong\operatorname{Hom}_{D(\mathbb Z_X)}(\mathbb Z_X,F_{ab}[n]).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The left group is <span class="math" data-tex="\(H^n(\Gamma(X,I))\)">\(H^n(\Gamma(X,I))\)</span>: maps from <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> into <span class="math" data-tex="\(I[n]\)">\(I[n]\)</span>, modulo homotopy, are section cycles modulo section boundaries. The right group is <span class="math" data-tex="\(H^n(\Gamma(X,J))\)">\(H^n(\Gamma(X,J))\)</span>. To check that (4.2) is the specified comparison, use Lemma 2.1 for <span class="math" data-tex="\(h\)">\(h\)</span> and the K-flat source <span class="math" data-tex="\(\mathbb Z_X\)">\(\mathbb Z_X\)</span>. Its intermediate chain adjunction sends a section of <span class="math" data-tex="\(I\)">\(I\)</span> to the same underlying section of <span class="math" data-tex="\(I_{ab}\)">\(I_{ab}\)</span>; localization followed by <span class="math" data-tex="\(I_{ab}\to J\)">\(I_{ab}\to J\)</span> gives exactly the cohomology map of <span class="math" data-tex="\(\Gamma(X,I)\to\Gamma(X,J)\)">\(\Gamma(X,I)\to\Gamma(X,J)\)</span>. Hence that map is an isomorphism in every degree. Repeat on <span class="math" data-tex="\(U\)">\(U\)</span>, using Proposition 3.2 to restrict the models, to prove the first line of (4.1).</p>
+<p>For the second line, take the section cohomology of <span class="math" data-tex="\(f_*I_{ab}\to f_*J\)">\(f_*I_{ab}\to f_*J\)</span> on every open <span class="math" data-tex="\(V\)">\(V\)</span>. It is the first comparison on <span class="math" data-tex="\(f^{-1}V\)">\(f^{-1}V\)</span>, so it is an isomorphism in every degree. Sheafifying these cohomology presheaves, as in Proposition 3.2, proves that the map is a quasi-isomorphism. No preservation of K-injectivity by forgetting coefficients was assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2 (open extension and flat pushforward).</strong> For an open inclusion <span class="math" data-tex="\(j:U\to X\)">\(j:U\to X\)</span>, exact extension by zero is left adjoint to restriction on derived categories. For a flat morphism <span class="math" data-tex="\(f\)">\(f\)</span>, pushforward preserves K-injective complexes.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(B\in D(\mathcal O_U)\)">\(B\in D(\mathcal O_U)\)</span> and <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> K-injective on <span class="math" data-tex="\(X\)">\(X\)</span>, restriction of <span class="math" data-tex="\(I\)">\(I\)</span> is K-injective. Exactness of <span class="math" data-tex="\(j_!\)">\(j_!\)</span> and the chain adjunction give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{D(\mathcal O_X)}(j_!B,F)
+&amp;=\operatorname{Hom}_{K(\mathcal O_X)}(j_!B,I)\\
+&amp;=\operatorname{Hom}_{K(\mathcal O_U)}(B,I|_U)\\
+&amp;=\operatorname{Hom}_{D(\mathcal O_U)}(B,F|_U).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{D(\mathcal O_X)}(j_!B,F)
+&amp;=\operatorname{Hom}_{K(\mathcal O_X)}(j_!B,I)\\
+&amp;=\operatorname{Hom}_{K(\mathcal O_U)}(B,I|_U)\\
+&amp;=\operatorname{Hom}_{D(\mathcal O_U)}(B,F|_U).
+\end{aligned}
+\]</span>
+<p>Naturality is inherited from the chain adjunction and localization, so this is <span class="math" data-tex="\(j_!\dashv j^*\)">\(j_!\dashv j^*\)</span>.</p>
+<p>Flatness of <span class="math" data-tex="\(f\)">\(f\)</span> means that each <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span> is flat over <span class="math" data-tex="\(\mathcal O_{Y,f(x)}\)">\(\mathcal O_{Y,f(x)}\)</span>. The pullback stalk formula then makes <span class="math" data-tex="\(f^*\)">\(f^*\)</span> exact. If <span class="math" data-tex="\(A\)">\(A\)</span> is acyclic on <span class="math" data-tex="\(Y\)">\(Y\)</span>, <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span> is acyclic, and
+<span class="math" data-tex="\(\operatorname{Hom}_K(A,f_*I)=\operatorname{Hom}_K(f^*A,I)=0\)">\(\operatorname{Hom}_K(A,f_*I)=\operatorname{Hom}_K(f^*A,I)=0\)</span>.
+This is the definition of K-injectivity of <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span>. It applies to every K-injective <span class="math" data-tex="\(I\)">\(I\)</span>, without a termwise-injectivity assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-point-maps-and-constant-coefficients">5. Point maps and constant coefficients</h2>
+<p>For <span class="math" data-tex="\(f:X\to\mathrm{pt}\)">\(f:X\to\mathrm{pt}\)</span> with target ring <span class="math" data-tex="\(A\)">\(A\)</span>, pushforward is global sections with its <span class="math" data-tex="\(A\)">\(A\)</span>-action, so <span class="math" data-tex="\(Rf_*=R\Gamma(X,-)\)">\(Rf_*=R\Gamma(X,-)\)</span> with that action. The pullback is</p>
+<span class="math math-display" data-tex="\[
+Lf^*G=\mathcal O_X\otimes_{A_X}^{\mathbf L}G_X,
+\tag{5.1}
+\]">\[
+Lf^*G=\mathcal O_X\otimes_{A_X}^{\mathbf L}G_X,
+\tag{5.1}
+\]</span>
+<p>where <span class="math" data-tex="\(A_X,G_X\)">\(A_X,G_X\)</span> denote inverse-image constant sheaves. Resolve <span class="math" data-tex="\(G\)">\(G\)</span> by a K-flat complex over <span class="math" data-tex="\(A\)">\(A\)</span>; its constant inverse image is K-flat, proving (5.1) by one-variable tensor. If <span class="math" data-tex="\(\mathcal O_X=A_X\)">\(\mathcal O_X=A_X\)</span> with the identity coefficient map, this is the exact constant sheaf functor, also for noncommutative <span class="math" data-tex="\(A\)">\(A\)</span> by Corollary 2.3. For the canonical map to <span class="math" data-tex="\((\mathrm{pt},\Gamma(X,\mathcal O_X))\)">\((\mathrm{pt},\Gamma(X,\mathcal O_X))\)</span>, the structure sheaf need not be constant, and (5.1) gives the correct pullback.</p>
+<p>For a point <span class="math" data-tex="\(x\)">\(x\)</span>, give its one-point source the ring <span class="math" data-tex="\(\mathcal O_{X,x}\)">\(\mathcal O_{X,x}\)</span>. Pullback is then the exact stalk functor, since the coefficient map at that point is the identity. If the stalk ring is local and we instead give the point its residue field <span class="math" data-tex="\(\kappa(x)\)">\(\kappa(x)\)</span>, the ring map is the quotient, and</p>
+<span class="math math-display" data-tex="\[
+Li_x^*F=\kappa(x)\otimes_{\mathcal O_{X,x}}^{\mathbf L}F_x.
+\tag{5.2}
+\]">\[
+Li_x^*F=\kappa(x)\otimes_{\mathcal O_{X,x}}^{\mathbf L}F_x.
+\tag{5.2}
+\]</span>
+<p>Take stalks of a K-flat resolution to prove this formula. A residue field is part of this additional local-ring hypothesis, not data attached to every arbitrary ringed space.</p>
+<p>On the analytic curve of the tensor lesson, pull back <span class="math" data-tex="\(k_a\)">\(k_a\)</span> to the residue point at <span class="math" data-tex="\(a\)">\(a\)</span>. Its two-term parameter resolution becomes <span class="math" data-tex="\(\mathbb R\xrightarrow{0}\mathbb R\)">\(\mathbb R\xrightarrow{0}\mathbb R\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Thus the derived pullback has <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> in both degrees, whereas the ordinary pullback retains only degree zero. With the stalk-ring structure on the point, pullback has only <span class="math" data-tex="\(k_{a,a}\)">\(k_{a,a}\)</span> in degree zero, because taking a stalk is exact. These are two different morphisms of ringed spaces on the same underlying point inclusion.</p>
+<h2 id="6-exercises-with-checked-solutions">6. Exercises with checked solutions</h2>
+<p><strong>Exercise 1 (easy: an open subspace).</strong> Prove <span class="math" data-tex="\(H^p(U,F)=H^p(U,F|_U)\)">\(H^p(U,F)=H^p(U,F|_U)\)</span>, for an arbitrary open <span class="math" data-tex="\(U\)">\(U\)</span> and an unbounded complex. Explain why restriction of the resolution is admissible.</p>
+<p><strong>Solution.</strong> Resolve <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> by a K-injective. For an acyclic <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, exactness of <span class="math" data-tex="\(j_!\)">\(j_!\)</span> makes <span class="math" data-tex="\(j_!A\)">\(j_!A\)</span> acyclic, and
+<span class="math" data-tex="\(\operatorname{Hom}_K(A,I|_U)=\operatorname{Hom}_K(j_!A,I)=0\)">\(\operatorname{Hom}_K(A,I|_U)=\operatorname{Hom}_K(j_!A,I)=0\)</span>.
+Thus <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span> is K-injective. Both groups are the cohomology of the same complex of sections <span class="math" data-tex="\(\Gamma(U,I)\)">\(\Gamma(U,I)\)</span>. No bound on <span class="math" data-tex="\(I\)">\(I\)</span>, nor on the cohomological dimension of <span class="math" data-tex="\(U\)">\(U\)</span>, was used.</p>
+<p><strong>Exercise 2 (medium: the adjunction without projective models).</strong> Let <span class="math" data-tex="\(P\to G\)">\(P\to G\)</span> be K-flat and <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span> K-injective. Prove that a roof <span class="math" data-tex="\(P\leftarrow Z\to f_*I\)">\(P\leftarrow Z\to f_*I\)</span> comes from a unique homotopy class <span class="math" data-tex="\(f^*P\to I\)">\(f^*P\to I\)</span>. Deduce the unbounded adjunction and its naturality, without assuming that <span class="math" data-tex="\(P\)">\(P\)</span> is K-projective or <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span> K-injective.</p>
+<p><strong>Solution.</strong> Resolve <span class="math" data-tex="\(Z\)">\(Z\)</span> by K-flat <span class="math" data-tex="\(T\)">\(T\)</span>. The denominator <span class="math" data-tex="\(s:T\to P\)">\(s:T\to P\)</span> is a quasi-isomorphism between K-flats, so <span class="math" data-tex="\(f^*s\)">\(f^*s\)</span> is a quasi-isomorphism. Transpose the numerator <span class="math" data-tex="\(a:T\to f_*I\)">\(a:T\to f_*I\)</span> to <span class="math" data-tex="\(f^*T\to I\)">\(f^*T\to I\)</span>. Since <span class="math" data-tex="\(I\)">\(I\)</span> is K-injective, there is a unique homotopy class <span class="math" data-tex="\(b:f^*P\to I\)">\(b:f^*P\to I\)</span> whose composite with <span class="math" data-tex="\(f^*s\)">\(f^*s\)</span> is that numerator. Transposing back makes the roof the localization of a map <span class="math" data-tex="\(P\to f_*I\)">\(P\to f_*I\)</span>.</p>
+<p>If two maps <span class="math" data-tex="\(P\to f_*I\)">\(P\to f_*I\)</span> give the same derived class, cancellation supplies a quasi-isomorphism into <span class="math" data-tex="\(P\)">\(P\)</span> annihilating their difference. Resolve its source by a K-flat; the same precomposition bijection forces the original difference to be zero in the homotopy category. This proves uniqueness. Maps <span class="math" data-tex="\(Lf^*G\to F\)">\(Lf^*G\to F\)</span> are maps <span class="math" data-tex="\(f^*P\to I\)">\(f^*P\to I\)</span> modulo homotopy, so we obtain (2.3). The constructions commute with chain maps. All source derived morphisms can be expressed as roofs between K-flat models; commuting with their arrows also gives commuting with their inverse denominators. Target morphisms are homotopy classes between K-injective models. This proves bifunctoriality.</p>
+<p><strong>Exercise 3 (medium to hard: Leray and convergence).</strong> For a module sheaf <span class="math" data-tex="\(M\)">\(M\)</span>, prove</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_2^{p,q}=H^p(Y,R^qf_*M)\\
+\ \Longrightarrow\ H^{p+q}(X,M),
+\\ p,q\ge0,
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+E_2^{p,q}=H^p(Y,R^qf_*M)\\
+\ \Longrightarrow\ H^{p+q}(X,M),
+\\ p,q\ge0,
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>including the construction, differential bidegrees and convergence. This exercise concerns sheaves in degree zero; it imposes no finite dimension on <span class="math" data-tex="\(X\)">\(X\)</span> or <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>Solution.</strong> Choose a bounded-below injective resolution of <span class="math" data-tex="\(M\)">\(M\)</span>, with zero terms below zero. It is K-injective by Lemma 3.2 of the bounded-derived lesson. Put <span class="math" data-tex="\(K=f_*I\)">\(K=f_*I\)</span>, so <span class="math" data-tex="\(K\)">\(K\)</span> represents <span class="math" data-tex="\(Rf_*M\)">\(Rf_*M\)</span>, has no negative terms and has <span class="math" data-tex="\(H^q(K)=R^qf_*M\)">\(H^q(K)=R^qf_*M\)</span>.</p>
+<p>Let <span class="math" data-tex="\(A_q=R\Gamma(Y,\tau_{\le q}K)\)">\(A_q=R\Gamma(Y,\tau_{\le q}K)\)</span>, with <span class="math" data-tex="\(A_q=0\)">\(A_q=0\)</span> for <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>. Good upper truncations give triangles</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{q-1}\longrightarrow A_q\\
+\longrightarrow R\Gamma(Y,H^qK)[-q]
+\\ \longrightarrow A_{q-1}[1].
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+A_{q-1}\longrightarrow A_q\\
+\longrightarrow R\Gamma(Y,H^qK)[-q]
+\\ \longrightarrow A_{q-1}[1].
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>To check the cofiber before applying <span class="math" data-tex="\(R\Gamma\)">\(R\Gamma\)</span>, the quotient of <span class="math" data-tex="\(\tau_{\le q}K\)">\(\tau_{\le q}K\)</span> by <span class="math" data-tex="\(\tau_{\le q-1}K\)">\(\tau_{\le q-1}K\)</span> has the injection <span class="math" data-tex="\(\operatorname{im}d^{q-1}\to\ker d^q\)">\(\operatorname{im}d^{q-1}\to\ker d^q\)</span> as its two possibly nonzero terms. Its quotient map to <span class="math" data-tex="\(H^qK[-q]\)">\(H^qK[-q]\)</span> is a quasi-isomorphism. The common reading's short-exact-sequence triangle therefore proves (6.2).</p>
+<p>Write <span class="math" data-tex="\(D_q^n=H^n(A_q)\)">\(D_q^n=H^n(A_q)\)</span> and <span class="math" data-tex="\(E_q^n=H^{n-q}(Y,H^qK)\)">\(E_q^n=H^{n-q}(Y,H^qK)\)</span>. The long exact sequences give maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+i:D_q^n\longrightarrow D_{q+1}^n,\\
+j:D_q^n\longrightarrow E_q^n,\\
+k:E_q^n\longrightarrow D_{q-1}^{n+1}.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+i:D_q^n\longrightarrow D_{q+1}^n,\\
+j:D_q^n\longrightarrow E_q^n,\\
+k:E_q^n\longrightarrow D_{q-1}^{n+1}.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>They form an exact couple: <span class="math" data-tex="\(\ker j=\operatorname{im}i\)">\(\ker j=\operatorname{im}i\)</span>, <span class="math" data-tex="\(\ker k=\operatorname{im}j\)">\(\ker k=\operatorname{im}j\)</span> and <span class="math" data-tex="\(\ker i=\operatorname{im}k\)">\(\ker i=\operatorname{im}k\)</span>, with the adjacent indices understood. This is simply exactness at the three positions of (6.2).</p>
+<p>Here is an explicit iteration, including the proof that it gives successive pages. For <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Z_r^{n,q}&amp;=k^{-1}\bigl(\operatorname{im}(i^{r-2})\bigr),\\
+B_r^{n,q}&amp;=j\ker(i^{r-2}).
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+Z_r^{n,q}&amp;=k^{-1}\bigl(\operatorname{im}(i^{r-2})\bigr),\\
+B_r^{n,q}&amp;=j\ker(i^{r-2}).
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>In the first line the indicated power maps <span class="math" data-tex="\(D_{q-r+1}^{n+1}\)">\(D_{q-r+1}^{n+1}\)</span> into <span class="math" data-tex="\(D_{q-1}^{n+1}\)">\(D_{q-1}^{n+1}\)</span>; in the second it maps <span class="math" data-tex="\(D_q^n\)">\(D_q^n\)</span> into <span class="math" data-tex="\(D_{q+r-2}^n\)">\(D_{q+r-2}^n\)</span>. The image of <span class="math" data-tex="\(j\)">\(j\)</span> lies in every <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span>, since <span class="math" data-tex="\(kj=0\)">\(kj=0\)</span>, so <span class="math" data-tex="\(B_r\subset Z_r\)">\(B_r\subset Z_r\)</span>. Set
+<span class="math" data-tex="\(E_r^{p,q}=Z_r^{p+q,q}/B_r^{p+q,q}\)">\(E_r^{p,q}=Z_r^{p+q,q}/B_r^{p+q,q}\)</span>.
+For <span class="math" data-tex="\(r=2\)">\(r=2\)</span> the power is the identity, so this is precisely <span class="math" data-tex="\(H^p(Y,H^qK)\)">\(H^p(Y,H^qK)\)</span>.</p>
+<p>Given <span class="math" data-tex="\(e\in Z_r^{n,q}\)">\(e\in Z_r^{n,q}\)</span>, choose <span class="math" data-tex="\(x\in D_{q-r+1}^{n+1}\)">\(x\in D_{q-r+1}^{n+1}\)</span> with <span class="math" data-tex="\(i^{r-2}x=k e\)">\(i^{r-2}x=k e\)</span>, and define <span class="math" data-tex="\(d_r[e]=[jx]\)">\(d_r[e]=[jx]\)</span>. Changing <span class="math" data-tex="\(x\)">\(x\)</span> by an element of the power's kernel changes <span class="math" data-tex="\(jx\)">\(jx\)</span> by <span class="math" data-tex="\(B_r\)">\(B_r\)</span>. Changing <span class="math" data-tex="\(e\)">\(e\)</span> by an element of <span class="math" data-tex="\(B_r\)">\(B_r\)</span> leaves <span class="math" data-tex="\(ke\)">\(ke\)</span> unchanged, so this is well defined. Its output has total degree <span class="math" data-tex="\(n+1\)">\(n+1\)</span> and second index <span class="math" data-tex="\(q-r+1\)">\(q-r+1\)</span>; hence its bidegree is <span class="math" data-tex="\((r,1-r)\)">\((r,1-r)\)</span>. Since <span class="math" data-tex="\(kj=0\)">\(kj=0\)</span>, its square is zero.</p>
+<p>To verify the next page, suppose <span class="math" data-tex="\(d_r[e]=0\)">\(d_r[e]=0\)</span>. Then <span class="math" data-tex="\(jx=jy\)">\(jx=jy\)</span> for a <span class="math" data-tex="\(y\)">\(y\)</span> killed by <span class="math" data-tex="\(i^{r-2}\)">\(i^{r-2}\)</span>. Exactness gives <span class="math" data-tex="\(x-y=iz\)">\(x-y=iz\)</span>, and therefore <span class="math" data-tex="\(ke=i^{r-1}z\)">\(ke=i^{r-1}z\)</span>. Thus <span class="math" data-tex="\(e\in Z_{r+1}\)">\(e\in Z_{r+1}\)</span>; the converse follows by taking <span class="math" data-tex="\(x=iz\)">\(x=iz\)</span>. A differential image <span class="math" data-tex="\(jx\)">\(jx\)</span> has <span class="math" data-tex="\(i^{r-1}x=i k e=0\)">\(i^{r-1}x=i k e=0\)</span>, so it lies in <span class="math" data-tex="\(B_{r+1}\)">\(B_{r+1}\)</span>. Conversely, if <span class="math" data-tex="\(i^{r-1}x=0\)">\(i^{r-1}x=0\)</span>, then <span class="math" data-tex="\(i^{r-2}x\in\ker i=\operatorname{im}k\)">\(i^{r-2}x\in\ker i=\operatorname{im}k\)</span>. Choose <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(ke=i^{r-2}x\)">\(ke=i^{r-2}x\)</span>; it lies in <span class="math" data-tex="\(Z_r\)">\(Z_r\)</span>, and its differential is <span class="math" data-tex="\(jx\)">\(jx\)</span>. Consequently cycles modulo differential images are <span class="math" data-tex="\(Z_{r+1}/B_{r+1}\)">\(Z_{r+1}/B_{r+1}\)</span>, proving <span class="math" data-tex="\(E_{r+1}=H(E_r,d_r)\)">\(E_{r+1}=H(E_r,d_r)\)</span>. This constructs the spectral sequence directly from the triangles.</p>
+<p>It remains to identify its limit. The tail <span class="math" data-tex="\(\tau_{\ge q+1}K\)">\(\tau_{\ge q+1}K\)</span> is represented in degrees at least <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. The lower-bound preserving injective resolution of the bounded-derived lesson shows that its <span class="math" data-tex="\(R\Gamma\)">\(R\Gamma\)</span> also has no cohomology below <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Apply <span class="math" data-tex="\(R\Gamma\)">\(R\Gamma\)</span> to the natural good-truncation triangle proved in Lemma 5.3 of <em>Complexes, cones and localization</em>. Its long exact sequence gives
+<span class="math" data-tex="\(H^n(A_q)\cong H^n(R\Gamma(Y,K))\)">\(H^n(A_q)\cong H^n(R\Gamma(Y,K))\)</span> whenever <span class="math" data-tex="\(q\ge n\)">\(q\ge n\)</span>. Put this stable group <span class="math" data-tex="\(T^n\)">\(T^n\)</span>, and filter it by</p>
+<span class="math math-display" data-tex="\[
+F_qT^n=\operatorname{im}(D_q^n\longrightarrow T^n).
+\tag{6.5}
+\]">\[
+F_qT^n=\operatorname{im}(D_q^n\longrightarrow T^n).
+\tag{6.5}
+\]</span>
+<p>For <span class="math" data-tex="\(r&gt;q+1\)">\(r&gt;q+1\)</span>, the source <span class="math" data-tex="\(D_{q-r+1}^{n+1}\)">\(D_{q-r+1}^{n+1}\)</span> in (6.4) is zero, so <span class="math" data-tex="\(Z_r=\ker k=\operatorname{im}j\)">\(Z_r=\ker k=\operatorname{im}j\)</span>. For sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, the target of the power in the second line is already the stable <span class="math" data-tex="\(T^n\)">\(T^n\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_\infty^{n-q,q}
+&amp;=\operatorname{im}j\big/
+j\ker(D_q^n\to T^n)\\
+&amp;\cong F_qT^n/F_{q-1}T^n.
+\end{aligned}
+\tag{6.6}
+\]">\[
+\begin{aligned}
+E_\infty^{n-q,q}
+&amp;=\operatorname{im}j\big/
+j\ker(D_q^n\to T^n)\\
+&amp;\cong F_qT^n/F_{q-1}T^n.
+\end{aligned}
+\tag{6.6}
+\]</span>
+<p>The last identification follows from <span class="math" data-tex="\(\ker j=\operatorname{im}(D_{q-1}^n\to D_q^n)\)">\(\ker j=\operatorname{im}(D_{q-1}^n\to D_q^n)\)</span> and the quotient theorem for the map <span class="math" data-tex="\(D_q^n\to T^n\)">\(D_q^n\to T^n\)</span>. The filtration starts with <span class="math" data-tex="\(F_{-1}=0\)">\(F_{-1}=0\)</span> and ends with <span class="math" data-tex="\(F_n=T^n\)">\(F_n=T^n\)</span>. All <span class="math" data-tex="\(E_2^{p,q}\)">\(E_2^{p,q}\)</span> with <span class="math" data-tex="\(p&lt;0\)">\(p&lt;0\)</span> or <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span> vanish, because sheaf cohomology has no negative degrees and <span class="math" data-tex="\(K\)">\(K\)</span> has no negative cohomology. Thus each total degree has a finite filtration, and each position has finitely many possible incoming and outgoing differential degrees. This proves convergence. Finally Proposition 3.1 identifies <span class="math" data-tex="\(T^n=H^n(R\Gamma(Y,Rf_*M))\)">\(T^n=H^n(R\Gamma(Y,Rf_*M))\)</span> with <span class="math" data-tex="\(H^n(X,M)\)">\(H^n(X,M)\)</span>, proving (6.1) with the stated scalar action.</p>
+<p><strong>Exercise 4 (hard: the flatness hypothesis for K-injectives).</strong> Prove preservation of K-injectives by a flat pushforward using its defining test. Show that the statement can fail for the one-point map with coefficient map <span class="math" data-tex="\(\mathbb Z\to\mathbb F_2\)">\(\mathbb Z\to\mathbb F_2\)</span>.</p>
+<p><strong>Solution.</strong> An acyclic <span class="math" data-tex="\(A\)">\(A\)</span> pulls back to an acyclic <span class="math" data-tex="\(f^*A\)">\(f^*A\)</span> when <span class="math" data-tex="\(f\)">\(f\)</span> is flat. For K-injective <span class="math" data-tex="\(I\)">\(I\)</span>, the chain adjunction gives <span class="math" data-tex="\(\operatorname{Hom}_K(A,f_*I)=\operatorname{Hom}_K(f^*A,I)=0\)">\(\operatorname{Hom}_K(A,f_*I)=\operatorname{Hom}_K(f^*A,I)=0\)</span>. This proves the preservation assertion.</p>
+<p>For the indicated nonflat map, <span class="math" data-tex="\(I=\mathbb F_2[0]\)">\(I=\mathbb F_2[0]\)</span> is K-injective over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>: the field is injective by Baer's criterion, whose only ideal tests are zero and the field itself, and a bounded complex of injectives is K-injective. Its pushforward is the same complex as a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-module. The complex
+<span class="math" data-tex="\(A=(\mathbb Z\xrightarrow{2}\mathbb Z\to\mathbb F_2)\)">\(A=(\mathbb Z\xrightarrow{2}\mathbb Z\to\mathbb F_2)\)</span> in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span> is acyclic. It has a chain map to <span class="math" data-tex="\(I\)">\(I\)</span>, reduction modulo two in degree zero and zero elsewhere. A null homotopy in degree zero would express this nonzero reduction as <span class="math" data-tex="\(h^1\circ2\)">\(h^1\circ2\)</span>, but every homomorphism <span class="math" data-tex="\(\mathbb Z\to\mathbb F_2\)">\(\mathbb Z\to\mathbb F_2\)</span> kills multiples of two. It cannot be null-homotopic, so the pushforward is not K-injective. Nevertheless the general derived adjunction holds by Theorem 2.2.</p>
+<p><strong>Exercise 5 (hard: torsion coefficients and comparison).</strong> Let <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> have arbitrary integer torsion. Prove that <span class="math" data-tex="\(\Gamma(U,I)\to\Gamma(U,J)\)">\(\Gamma(U,I)\to\Gamma(U,J)\)</span> is a quasi-isomorphism when <span class="math" data-tex="\(I\)">\(I\)</span> is K-injective over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> and <span class="math" data-tex="\(I_{ab}\to J\)">\(I_{ab}\to J\)</span> is K-injective over <span class="math" data-tex="\(\mathbb Z_X\)">\(\mathbb Z_X\)</span>. Explain why exactness of forgetting alone does not prove that <span class="math" data-tex="\(I_{ab}\)">\(I_{ab}\)</span> is K-injective.</p>
+<p><strong>Solution.</strong> For the coefficient morphism <span class="math" data-tex="\(h:(U,\mathcal O_U)\to(U,\mathbb Z_U)\)">\(h:(U,\mathcal O_U)\to(U,\mathbb Z_U)\)</span>, the right derived pushforward is exact forgetting, while <span class="math" data-tex="\(Lh^*\mathbb Z_U=\mathcal O_U\)">\(Lh^*\mathbb Z_U=\mathcal O_U\)</span>. Theorem 2.2 identifies maps from <span class="math" data-tex="\(\mathcal O_U\)">\(\mathcal O_U\)</span> into <span class="math" data-tex="\(I[n]|_U\)">\(I[n]|_U\)</span> with derived maps from <span class="math" data-tex="\(\mathbb Z_U\)">\(\mathbb Z_U\)</span> into <span class="math" data-tex="\(I_{ab}[n]|_U\)">\(I_{ab}[n]|_U\)</span>. Lemma 2.1 identifies these with chain maps into the same underlying <span class="math" data-tex="\(I_{ab}\)">\(I_{ab}\)</span>; passing to <span class="math" data-tex="\(J|_U\)">\(J|_U\)</span> computes the latter derived group by a K-injective. On section cycles the comparison sends a cycle to its image in <span class="math" data-tex="\(J\)">\(J\)</span>, and on boundaries it sends boundaries to boundaries. Thus the induced map is precisely <span class="math" data-tex="\(H^n\Gamma(U,I)\to H^n\Gamma(U,J)\)">\(H^n\Gamma(U,I)\to H^n\Gamma(U,J)\)</span>, and is an isomorphism for every <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>An exact functor preserves acyclic complexes in its domain, but K-injectivity tests maps <strong>from every</strong> acyclic complex in the target category. Those tests are not reduced to acyclic module complexes merely by forgetting actions. On a point with structure ring <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, Exercise 4 gives an injective and K-injective module whose underlying abelian complex fails the K-injective test. The coefficient-comparison theorem consequently needs the adjunction argument just supplied.</p>
+<p>The next lesson constructs internal derived Hom and its tensor adjunction. Later, the projection-formula and base-change lesson uses the unit, counit and coherent composition isomorphisms proved here to define the comparison maps.</p>
+<p>Sources and licensing: the pullback proofs are taken from the Stacks project, tags 06YJ, 0D5S, 079U and 08DE, in its AI Integrated Stacks Project edition (GFDL), checked and edited by GPT-6.1 Sol (OpenAI), at Ultra. The adjunction and composition arguments correspond to tags 079W and 0D5T; their formal derived-adjoint reference was read in full, and its omitted functoriality is supplied by Lemma 2.1 and Theorem 2.2. The open, Leray, higher-image and coefficient proofs are taken from the Stacks project, tags 08BS, 0D5V, 0BKJ, 08FE, 0D5W, 0D5X, 0D5Y, 08BT and 0D5Z, in that edition (GFDL), checked and edited by the same writing AI. For 0D5Y the omitted inverse verification is replaced by the full coefficient adjunction above. Actual passages: <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L6758">derived pullback</a>, <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L7056">unbounded adjunction</a>, <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex#L8261">local properties</a>, and <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/derived.tex#L9838">deriving adjoints</a>. The exact-couple construction and all its convergence steps are supplied in Exercise 3 rather than cited as a black box. See the <a href="licence.html">combined licence notice</a> and <a href="COPYING">GNU FDL text</a>.</p>
+<footer><a href="src/derived-pullback-and-pushforward.md">Editable Markdown source</a> · <span class="unlinked">Sources and authorship</span></footer></main></body></html>

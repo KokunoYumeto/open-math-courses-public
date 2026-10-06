@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artin L-functions, conductors and discriminants · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/artin-l-functions-conductors-and-discriminants.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 21 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed"><summary>What this lesson assumes (10)</summary><ul><li><a href="abelian-ramification-conductors-and-hasse-arf.html">Abelian ramification, conductors and Hasse–Arf</a></li><li><a href="weil-groups-and-one-dimensional-representations.html">Weil groups and one-dimensional representations</a></li><li><a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a></li><li><a href="global-existence-and-the-idelic-class-field-correspondence.html">Global existence and the idèlic class field correspondence</a></li><li><a href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/characters-and-the-orthogonality-relations.html#theorem-3-2">Characters and the orthogonality relations</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/induced-representations-and-frobenius-reciprocity.html#1-one-copy-for-each-coset">Induced representations and Frobenius reciprocity</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/brauers-induction-theorem.html#theorem-5-1">Brauer&#x27;s induction theorem</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#LG-GAL-06">Local L-factors and epsilon factors</a></li></ul></details>
+<article class="lesson">
+<h1 id="artin-l-functions-conductors-and-discriminants">Artin L-functions, conductors and discriminants</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 21.</strong> A finite Galois representation packages Frobenius operators into an Euler product. Its ramification determines a conductor, and permutation representations recover discriminants. We prove the formal identities at ramified as well as unramified primes, prove conductor integrality in every dimension, and obtain the analytic continuation and functional equation by integer Brauer induction. The splitting field of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> provides a concrete nonabelian example. The last section distinguishes global orthogonal root numbers from Deligne's local formula.</p>
+<p>Our representation-theoretic inputs are written in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/characters-and-the-orthogonality-relations.html#theorem-3-2">Characters and the orthogonality relations</a>, Theorem 3.2; <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/induced-representations-and-frobenius-reciprocity.html#1-one-copy-for-each-coset">Induced representations and Frobenius reciprocity</a>, §§1–4; and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/brauers-induction-theorem.html#theorem-5-1">Brauer's induction theorem</a>, Theorem 5.1. In particular, Brauer's theorem expresses every character as an <strong>integer</strong> linear combination of characters induced from one-dimensional characters of subgroups. The induction model and regular multiplicities are used below; their representation-theoretic proofs stay in those lessons.</p>
+<p>For ramification we use Hilbert's different formula and Herbrand's quotient theorem, with the conventions of <a href="abelian-ramification-conductors-and-hasse-arf.html">Abelian ramification, conductors and Hasse–Arf</a>. <a href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity</a> identifies rank-one Galois and idèle characters. The written number-field analytic input is Theorem 10.1 of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a>. Section 6 also supplies the function-field analytic argument from the adelic duality proved in lessons 15 and 17 and the local Fourier calculations of lesson 12.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-21">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-euler-factors-and-induction">1. Euler factors and induction</h2>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be a finite Galois extension of global fields, <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite-dimensional complex representation of <span class="math" data-tex="\(G\)">\(G\)</span>. At a finite place <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, choose a place <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, decomposition group <span class="math" data-tex="\(D_w\)">\(D_w\)</span>, and inertia group <span class="math" data-tex="\(I_w\)">\(I_w\)</span>. Put <span class="math" data-tex="\(q_v=|\kappa(v)|\)">\(q_v=|\kappa(v)|\)</span>. An arithmetic Frobenius <span class="math" data-tex="\(\phi_w\in D_w/I_w\)">\(\phi_w\in D_w/I_w\)</span> acts on the residue field by <span class="math" data-tex="\(x\mapsto x^{q_v}\)">\(x\mapsto x^{q_v}\)</span>. It acts unambiguously on <span class="math" data-tex="\(V^{I_w}\)">\(V^{I_w}\)</span>, even though its lift to <span class="math" data-tex="\(D_w\)">\(D_w\)</span> is not unique. Define
+<span class="math math-display" data-tex="\[
+L_v(s,V)=\det(1-q_v^{-s}\phi_w\mid V^{I_w})^{-1},
+\qquad L_K(s,V)=\prod_{v\text{ finite}}L_v(s,V).
+\tag{1}
+\]">\[
+L_v(s,V)=\det(1-q_v^{-s}\phi_w\mid V^{I_w})^{-1},
+\qquad L_K(s,V)=\prod_{v\text{ finite}}L_v(s,V).
+\tag{1}
+\]</span>
+Changing <span class="math" data-tex="\(w\)">\(w\)</span> conjugates the relevant groups and operator, so does not change the determinant. Eigenvalues have absolute value one, since <span class="math" data-tex="\(G\)">\(G\)</span> is finite. The logarithmic expansion is
+<span class="math math-display" data-tex="\[
+\log L_K(s,V)=\sum_v\sum_{m\geq1}
+\frac{\operatorname{tr}(\phi_w^m\mid V^{I_w})}{m q_v^{ms}}.
+\tag{2}
+\]">\[
+\log L_K(s,V)=\sum_v\sum_{m\geq1}
+\frac{\operatorname{tr}(\phi_w^m\mid V^{I_w})}{m q_v^{ms}}.
+\tag{2}
+\]</span>
+Its absolute value is bounded termwise by <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> times the logarithmic series for <span class="math" data-tex="\(\zeta_K(\operatorname{Re}s)\)">\(\zeta_K(\operatorname{Re}s)\)</span>. The latter converges for <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>. Thus (1) converges absolutely there, locally uniformly, and has no zeros there. For a virtual representation, take quotients of these products.</p>
+<p><strong>Proposition 21.1.</strong> Artin L-functions satisfy
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_K(s,V\oplus W)&amp;=L_K(s,V)L_K(s,W),\\
+L_K(s,\operatorname{Ind}_H^G W)&amp;=L_E(s,W),\quad E=L^H,\\
+L_K(s,\operatorname{Inf}_{G/N}^G U)&amp;=L_K(s,U),\quad N\triangleleft G.
+\end{aligned}
+\tag{3}
+\]">\[
+\begin{aligned}
+L_K(s,V\oplus W)&amp;=L_K(s,V)L_K(s,W),\\
+L_K(s,\operatorname{Ind}_H^G W)&amp;=L_E(s,W),\quad E=L^H,\\
+L_K(s,\operatorname{Inf}_{G/N}^G U)&amp;=L_K(s,U),\quad N\triangleleft G.
+\end{aligned}
+\tag{3}
+\]</span>
+The last function on the right is computed in <span class="math" data-tex="\(L^N/K\)">\(L^N/K\)</span>. Also
+<span class="math math-display" data-tex="\[
+\zeta_E(s)=L_K(s,\mathbf C[G/H]),\qquad
+\zeta_L(s)=\prod_{\rho\in\operatorname{Irr}(G)}L_K(s,\rho)^{\dim\rho}.
+\tag{4}
+\]">\[
+\zeta_E(s)=L_K(s,\mathbf C[G/H]),\qquad
+\zeta_L(s)=\prod_{\rho\in\operatorname{Irr}(G)}L_K(s,\rho)^{\dim\rho}.
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> Direct sums give block-diagonal determinants. Under passage to a quotient, decomposition and inertia map onto their counterparts, and Frobenius maps to Frobenius. The invariant space and its operator are consequently unchanged, proving inflation invariance.</p>
+<p>We prove induction place by place. Restrict <span class="math" data-tex="\(\mathbf C[G]\otimes_{\mathbf C[H]}W\)">\(\mathbf C[G]\otimes_{\mathbf C[H]}W\)</span> to <span class="math" data-tex="\(D=D_w\)">\(D=D_w\)</span>. Splitting its coset basis into <span class="math" data-tex="\(D\)">\(D\)</span>-orbits gives
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_D\operatorname{Ind}_H^G W
+\simeq\bigoplus_{g\in D\backslash G/H}
+\operatorname{Ind}_{J_g}^{D}W_g,
+\quad J_g=D\cap gHg^{-1}.
+\tag{5}
+\]">\[
+\operatorname{Res}_D\operatorname{Ind}_H^G W
+\simeq\bigoplus_{g\in D\backslash G/H}
+\operatorname{Ind}_{J_g}^{D}W_g,
+\quad J_g=D\cap gHg^{-1}.
+\tag{5}
+\]</span>
+Here <span class="math" data-tex="\(W_g\)">\(W_g\)</span> is the conjugate representation on the same vector space. The double cosets correspond to the places <span class="math" data-tex="\(u\mid v\)">\(u\mid v\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(J_g\)">\(J_g\)</span> is the local Galois group over <span class="math" data-tex="\(E_u\)">\(E_u\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I=I_w\)">\(I=I_w\)</span>. For one summand of (5), its <span class="math" data-tex="\(I\)">\(I\)</span>-invariants have one copy of <span class="math" data-tex="\(W_g^{I\cap J_g}\)">\(W_g^{I\cap J_g}\)</span> for each <span class="math" data-tex="\(I\)">\(I\)</span>-orbit in <span class="math" data-tex="\(D/J_g\)">\(D/J_g\)</span>. This follows directly in the coset model: an invariant vector on an orbit is determined by its value at a representative, and that value must be fixed by its stabilizer. Because <span class="math" data-tex="\(D/I\)">\(D/I\)</span> is cyclic, Frobenius permutes these orbits cyclically, in
+<span class="math" data-tex="\(f=[D:IJ_g]=[\kappa(u):\kappa(v)]\)">\(f=[D:IJ_g]=[\kappa(u):\kappa(v)]\)</span> slots. After one circuit its action on the initial copy is arithmetic Frobenius of <span class="math" data-tex="\(E_u\)">\(E_u\)</span>: <span class="math" data-tex="\(\phi_w^f\)">\(\phi_w^f\)</span> can be adjusted by an element of <span class="math" data-tex="\(I\)">\(I\)</span> to lie in <span class="math" data-tex="\(J_g\)">\(J_g\)</span>, and that adjustment does not affect the invariant vectors.</p>
+<p>For a cyclic block operator with wrap-around operator <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\det(1-T\Phi)=\det(1-T^f A).
+\tag{6}
+\]">\[
+\det(1-T\Phi)=\det(1-T^f A).
+\tag{6}
+\]</span>
+To see this, successively change bases in the slots so that all transition maps except the last are identities. Eliminating the first <span class="math" data-tex="\(f-1\)">\(f-1\)</span> variables from <span class="math" data-tex="\((1-T\Phi)x\)">\((1-T\Phi)x\)</span> leaves the last block <span class="math" data-tex="\(1-T^f A\)">\(1-T^f A\)</span>; the other diagonal blocks are identities. This is a polynomial identity, so the computation over <span class="math" data-tex="\(\mathbf C(T)\)">\(\mathbf C(T)\)</span> proves it for every <span class="math" data-tex="\(T\)">\(T\)</span>. Since <span class="math" data-tex="\(q_u=q_v^f\)">\(q_u=q_v^f\)</span>, (6) proves that this summand contributes exactly <span class="math" data-tex="\(L_u(s,W)\)">\(L_u(s,W)\)</span>. Taking all summands proves the middle identity of (3), including ramified places.</p>
+<p>The trivial representation has Euler factor <span class="math" data-tex="\((1-q_v^{-s})^{-1}\)">\((1-q_v^{-s})^{-1}\)</span>, hence L-function <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>. Apply induction to <span class="math" data-tex="\(W=\mathbf1\)">\(W=\mathbf1\)</span> to obtain the first identity of (4). For <span class="math" data-tex="\(H=1\)">\(H=1\)</span>, the permutation representation is the regular representation. The written regular-multiplicity theorem decomposes it as <span class="math" data-tex="\(\bigoplus_\rho\rho^{\oplus\dim\rho}\)">\(\bigoplus_\rho\rho^{\oplus\dim\rho}\)</span>. Additivity gives the second identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-rank-one-and-primitive-hecke-characters">2. Rank one and primitive Hecke characters</h2>
+<p>Write <span class="math" data-tex="\(\operatorname{rec}_{\mathrm{arith}}:C_K\to G^{\mathrm{ab}}\)">\(\operatorname{rec}_{\mathrm{arith}}:C_K\to G^{\mathrm{ab}}\)</span> for arithmetic global reciprocity. For a one-dimensional character <span class="math" data-tex="\(\chi:G\to\mathbf C^\times\)">\(\chi:G\to\mathbf C^\times\)</span>, define
+<span class="math math-display" data-tex="\[
+\omega=\chi\circ\operatorname{rec}_{\mathrm{arith}}.
+\tag{7}
+\]">\[
+\omega=\chi\circ\operatorname{rec}_{\mathrm{arith}}.
+\tag{7}
+\]</span>
+It is a finite-order Hecke character. Its finite conductor is the least ideal whose local principal unit groups it kills; real sign conditions are recorded separately in its infinite type.</p>
+<p><strong>Theorem 21.2.</strong> With the primitive Euler product, <span class="math" data-tex="\(L_K(s,\chi)=L_K(s,\omega)\)">\(L_K(s,\chi)=L_K(s,\omega)\)</span>.</p>
+<p><strong>Proof.</strong> Local compatibility sends units onto inertia. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial on inertia at <span class="math" data-tex="\(v\)">\(v\)</span>, its invariant space is zero, so the Artin factor is 1. The local Hecke character is ramified and its primitive factor is also 1. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is trivial on inertia, then
+<span class="math" data-tex="\(\omega_v(\pi_v)=\chi(\phi_w)\)">\(\omega_v(\pi_v)=\chi(\phi_w)\)</span>, and both factors are
+<span class="math" data-tex="\((1-\omega_v(\pi_v)q_v^{-s})^{-1}\)">\((1-\omega_v(\pi_v)q_v^{-s})^{-1}\)</span>. This proves equality in the convergence region, hence wherever continuation is defined. One may equivalently replace <span class="math" data-tex="\(L\)">\(L\)</span> by the abelian field fixed by <span class="math" data-tex="\(\ker\chi\)">\(\ker\chi\)</span>; inflation invariance proves that this replacement changes no factor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A prime ramified in <span class="math" data-tex="\(L\)">\(L\)</span> can be unramified for <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Its factor must then be retained. Omitting every prime dividing the conductor of the ambient extension produces an imprimitive Hecke function, generally different from (1). The relevant modulus is the character's conductor.</p>
+<p>Deligne's Euler factors use geometric Frobenius. On a finite-image representation they give our arithmetic factors for <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span>. In rank one the corresponding reciprocity map is geometric as well. These two changes must be made together. For self-dual representations the L-functions themselves coincide in either Frobenius convention.</p>
+<h2 id="3-the-local-conductor-and-its-integrality">3. The local conductor and its integrality</h2>
+<p>Let <span class="math" data-tex="\(T/F\)">\(T/F\)</span> be a finite Galois extension of nonarchimedean local fields, with group <span class="math" data-tex="\(G\)">\(G\)</span>, residue degree <span class="math" data-tex="\(f\)">\(f\)</span>, and lower ramification groups <span class="math" data-tex="\(G_j\)">\(G_j\)</span>. For <span class="math" data-tex="\(\sigma\ne1\)">\(\sigma\ne1\)</span>, let <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> be its motion number as in lesson 10; it is zero off inertia. Define the class function
+<span class="math math-display" data-tex="\[
+a_G(\sigma)=-f i_G(\sigma)\quad(\sigma\ne1),\qquad
+a_G(1)=f\sum_{\sigma\ne1}i_G(\sigma).
+\tag{8}
+\]">\[
+a_G(\sigma)=-f i_G(\sigma)\quad(\sigma\ne1),\qquad
+a_G(1)=f\sum_{\sigma\ne1}i_G(\sigma).
+\tag{8}
+\]</span>
+For a representation <span class="math" data-tex="\(V\)">\(V\)</span>, its conductor exponent is
+<span class="math math-display" data-tex="\[
+a_F(V)=\langle a_G,\chi_V\rangle_G
+=\sum_{j\geq0}\frac{|G_j|}{|G_0|}
+       \operatorname{codim}V^{G_j}.
+\tag{9}
+\]">\[
+a_F(V)=\langle a_G,\chi_V\rangle_G
+=\sum_{j\geq0}\frac{|G_j|}{|G_0|}
+       \operatorname{codim}V^{G_j}.
+\tag{9}
+\]</span>
+Indeed <span class="math" data-tex="\(i_G(\sigma)\)">\(i_G(\sigma)\)</span> counts the indices <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> for which <span class="math" data-tex="\(\sigma\in G_j\)">\(\sigma\in G_j\)</span>. Insert this count into the character inner product and use
+<span class="math" data-tex="\(|G_j|^{-1}\sum_{\sigma\in G_j}\overline{\chi_V(\sigma)}=\dim V^{G_j}\)">\(|G_j|^{-1}\sum_{\sigma\in G_j}\overline{\chi_V(\sigma)}=\dim V^{G_j}\)</span> and <span class="math" data-tex="\(|G|=f|G_0|\)">\(|G|=f|G_0|\)</span>. The expression in (9) is nonnegative rational; its integrality requires proof.</p>
+<p>With the ceiling convention of lesson 10, change variables by Herbrand's function to obtain
+<span class="math math-display" data-tex="\[
+a_F(V)=\operatorname{codim}V^{G^0}
+       +\int_0^\infty\operatorname{codim}V^{G^u}\,du.
+\tag{10}
+\]">\[
+a_F(V)=\operatorname{codim}V^{G^0}
+       +\int_0^\infty\operatorname{codim}V^{G^u}\,du.
+\tag{10}
+\]</span>
+Herbrand's quotient theorem shows that (10), hence (9), is unchanged if the representation is realized in a larger finite Galois extension. It therefore defines the exponent intrinsically for any finite-image local representation. It is additive on direct sums, and extends additively to virtual representations.</p>
+<p><strong>Proposition 21.4.</strong> For a one-dimensional <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, <span class="math" data-tex="\(a_F(\chi)\)">\(a_F(\chi)\)</span> is the least integer <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> for which its multiplicative character under reciprocity kills <span class="math" data-tex="\(U_F^{(a)}\)">\(U_F^{(a)}\)</span>, where <span class="math" data-tex="\(U_F^{(0)}=\mathcal O_F^\times\)">\(U_F^{(0)}=\mathcal O_F^\times\)</span>. In particular it is an integer.</p>
+<p><strong>Proof.</strong> Pass to the abelian quotient through which <span class="math" data-tex="\(\chi\)">\(\chi\)</span> factors, using (10). Lesson 10 identifies its upper groups with the images of <span class="math" data-tex="\(U_F^{(\lceil u\rceil)}\)">\(U_F^{(\lceil u\rceil)}\)</span> for <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> and with the units at <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. If the character is unramified, every codimension in (10) is zero. Otherwise its least unit level is some integer <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span>, and its invariant space is zero at <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and for <span class="math" data-tex="\(0&lt;u\leq a-1\)">\(0&lt;u\leq a-1\)</span>, and is all of its line for <span class="math" data-tex="\(u&gt;a-1\)">\(u&gt;a-1\)</span>. Endpoints have no effect on the integral. Formula (10) gives <span class="math" data-tex="\(1+(a-1)=a\)">\(1+(a-1)=a\)</span>, also for tame characters with <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. The integer filtration theorem used here is the proved Hasse–Arf theorem of lesson 10. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>To pass to higher dimension, we need the different in a tower. Here and below <span class="math" data-tex="\(\mathfrak D\)">\(\mathfrak D\)</span> is the different and <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> the discriminant ideal.</p>
+<p><strong>Different in a tower.</strong> For finite separable local extensions <span class="math" data-tex="\(T/E/F\)">\(T/E/F\)</span>,
+<span class="math math-display" data-tex="\[
+\mathfrak D_{T/F}=\mathfrak D_{T/E}\mathfrak D_{E/F}\mathcal O_T,
+\quad \delta_{T/F}=\delta_{T/E}+e(T/E)\delta_{E/F}.
+\tag{11}
+\]">\[
+\mathfrak D_{T/F}=\mathfrak D_{T/E}\mathfrak D_{E/F}\mathcal O_T,
+\quad \delta_{T/F}=\delta_{T/E}+e(T/E)\delta_{E/F}.
+\tag{11}
+\]</span>
+For completeness, identify the inverse different with the trace-dual lattice:
+<span class="math" data-tex="\(\mathfrak D_{E/F}^{-1}=\{x:\operatorname{Tr}_{E/F}(x\mathcal O_E)\subseteq\mathcal O_F\}\)">\(\mathfrak D_{E/F}^{-1}=\{x:\operatorname{Tr}_{E/F}(x\mathcal O_E)\subseteq\mathcal O_F\}\)</span>.
+There is an adjunction
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal O_F}(\mathcal O_T,\mathcal O_F)
+\simeq
+\operatorname{Hom}_{\mathcal O_E}
+\bigl(\mathcal O_T,\operatorname{Hom}_{\mathcal O_F}(\mathcal O_E,\mathcal O_F)\bigr),
+\tag{12}
+\]">\[
+\operatorname{Hom}_{\mathcal O_F}(\mathcal O_T,\mathcal O_F)
+\simeq
+\operatorname{Hom}_{\mathcal O_E}
+\bigl(\mathcal O_T,\operatorname{Hom}_{\mathcal O_F}(\mathcal O_E,\mathcal O_F)\bigr),
+\tag{12}
+\]</span>
+sending <span class="math" data-tex="\(\ell\)">\(\ell\)</span> to the map <span class="math" data-tex="\(z\mapsto(b\mapsto\ell(bz))\)">\(z\mapsto(b\mapsto\ell(bz))\)</span>; its inverse evaluates at <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. Under trace identifications the middle lattice is <span class="math" data-tex="\(\mathfrak D_{E/F}^{-1}\)">\(\mathfrak D_{E/F}^{-1}\)</span>. It is a principal fractional <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-ideal, so it factors out of the final Hom in (12). Trace transitivity then identifies the left lattice with
+<span class="math" data-tex="\(\mathfrak D_{T/E}^{-1}\mathfrak D_{E/F}^{-1}\mathcal O_T\)">\(\mathfrak D_{T/E}^{-1}\mathfrak D_{E/F}^{-1}\mathcal O_T\)</span>.
+Inverting and taking valuations proves (11). All trace identifications are isomorphisms because the extensions are separable.</p>
+<p><strong>Induction formula.</strong> If <span class="math" data-tex="\(E=T^H\)">\(E=T^H\)</span>, with <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> is a representation of <span class="math" data-tex="\(H\)">\(H\)</span>, then
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}_H^G W)
+=(\dim W)v_F(\mathfrak d_{E/F})+f(E/F)a_E(W).
+\tag{13}
+\]">\[
+a_F(\operatorname{Ind}_H^G W)
+=(\dim W)v_F(\mathfrak d_{E/F})+f(E/F)a_E(W).
+\tag{13}
+\]</span>
+This does not require <span class="math" data-tex="\(H\)">\(H\)</span> to be normal.</p>
+<p><strong>Proof.</strong> The lower groups of <span class="math" data-tex="\(T/E\)">\(T/E\)</span> are <span class="math" data-tex="\(H_j=H\cap G_j\)">\(H_j=H\cap G_j\)</span>, since their definition uses <span class="math" data-tex="\(v_T\)">\(v_T\)</span> and <span class="math" data-tex="\(\mathcal O_T\)">\(\mathcal O_T\)</span> in both cases. Since <span class="math" data-tex="\(G_j\)">\(G_j\)</span> is normal in <span class="math" data-tex="\(G\)">\(G\)</span>, its orbits on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> all have size <span class="math" data-tex="\(|G_j|/|H_j|\)">\(|G_j|/|H_j|\)</span>. An invariant vector on each orbit is determined by a vector fixed by <span class="math" data-tex="\(H_j\)">\(H_j\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\dim(\operatorname{Ind}W)^{G_j}=[G:G_jH]\dim W^{H_j}.
+\tag{14}
+\]">\[
+\dim(\operatorname{Ind}W)^{G_j}=[G:G_jH]\dim W^{H_j}.
+\tag{14}
+\]</span>
+Separating the missing orbit dimensions from the missing dimensions within each orbit in (9) gives
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}W)
+=(\dim W)a_F(\operatorname{Ind}\mathbf1)
+ +f(E/F)a_E(W),
+\tag{15}
+\]">\[
+a_F(\operatorname{Ind}W)
+=(\dim W)a_F(\operatorname{Ind}\mathbf1)
+ +f(E/F)a_E(W),
+\tag{15}
+\]</span>
+because
+<span class="math" data-tex="\(\frac{|G_j|}{|G_0|}[G:G_jH]
+=f(E/F)\frac{|H_j|}{|H_0|}\)">\(\frac{|G_j|}{|G_0|}[G:G_jH]
+=f(E/F)\frac{|H_j|}{|H_0|}\)</span>.
+Here <span class="math" data-tex="\(f(E/F)=|G||H_0|/(|G_0||H|)\)">\(f(E/F)=|G||H_0|/(|G_0||H|)\)</span>.</p>
+<p>For the permutation term, direct substitution in (9) yields
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}\mathbf1)
+=\frac{f(E/F)}{|H_0|}\sum_{j\geq0}(|G_j|-|H_j|).
+\tag{16}
+\]">\[
+a_F(\operatorname{Ind}\mathbf1)
+=\frac{f(E/F)}{|H_0|}\sum_{j\geq0}(|G_j|-|H_j|).
+\tag{16}
+\]</span>
+Hilbert's different formula identifies the sum with <span class="math" data-tex="\(\delta_{T/F}-\delta_{T/E}\)">\(\delta_{T/F}-\delta_{T/E}\)</span>. By (11) this is <span class="math" data-tex="\(|H_0|\delta_{E/F}\)">\(|H_0|\delta_{E/F}\)</span>. Finally the local trace-dual discriminant formula, proved in lesson 10, is
+<span class="math" data-tex="\(v_F(\mathfrak d_{E/F})=f(E/F)\delta_{E/F}\)">\(v_F(\mathfrak d_{E/F})=f(E/F)\delta_{E/F}\)</span>.
+This proves (13). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Artin integrality in every dimension.</strong> Apply the written integer Brauer induction theorem to <span class="math" data-tex="\(\chi_V\)">\(\chi_V\)</span>:
+<span class="math math-display" data-tex="\[
+\chi_V=\sum_i n_i\operatorname{Ind}_{H_i}^G\chi_i,
+\qquad n_i\in\mathbf Z,\quad\dim\chi_i=1.
+\tag{17}
+\]">\[
+\chi_V=\sum_i n_i\operatorname{Ind}_{H_i}^G\chi_i,
+\qquad n_i\in\mathbf Z,\quad\dim\chi_i=1.
+\tag{17}
+\]</span>
+The conductor is a linear functional on characters. Each induced term has integral conductor by (13) and Proposition 21.4. Hence <span class="math" data-tex="\(a_F(V)\in\mathbf Z\)">\(a_F(V)\in\mathbf Z\)</span>; (9) makes it nonnegative for an actual representation. This proves integrality without assuming it in the definition. Moreover (8) is itself a character: its multiplicity on each irreducible is the nonnegative integer just proved, and irreducible characters form an orthonormal basis of class functions.</p>
+<h2 id="4-global-conductors-and-the-discriminant-formula">4. Global conductors and the discriminant formula</h2>
+<p>At each finite place use the restricted local representation, and set
+<span class="math math-display" data-tex="\[
+\mathfrak f_K(V)=\prod_v\mathfrak p_v^{a_{K_v}(V)}.
+\tag{18}
+\]">\[
+\mathfrak f_K(V)=\prod_v\mathfrak p_v^{a_{K_v}(V)}.
+\tag{18}
+\]</span>
+Only finitely many exponents are nonzero. This is an integral ideal for an actual representation; for virtual representations it is a fractional ideal. Infinite signs contribute to the gamma factors below rather than to (18).</p>
+<p>For a finite separable global <span class="math" data-tex="\(E/K\)">\(E/K\)</span>, Mackey's decomposition (5) and (13) give
+<span class="math math-display" data-tex="\[
+\mathfrak f_K(\operatorname{Ind}_{E}^{K}W)
+=\mathfrak d_{E/K}^{\dim W}\,N_{E/K}\mathfrak f_E(W).
+\tag{19}
+\]">\[
+\mathfrak f_K(\operatorname{Ind}_{E}^{K}W)
+=\mathfrak d_{E/K}^{\dim W}\,N_{E/K}\mathfrak f_E(W).
+\tag{19}
+\]</span>
+Indeed, at <span class="math" data-tex="\(v\)">\(v\)</span> sum (13) over <span class="math" data-tex="\(u\mid v\)">\(u\mid v\)</span>. The second term is precisely the valuation of the ideal norm. The first is the valuation of the global discriminant: completion decomposes the integral lattice into the local integer rings, its trace pairing is block diagonal, and determinant valuations add. This localization argument was also given explicitly in lesson 20. No normality assumption on <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is needed in (19).</p>
+<p><strong>Theorem 21.5 (conductor–discriminant).</strong> For finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+\mathfrak d_{L/K}
+=\prod_{\rho\in\operatorname{Irr}(G)}\mathfrak f_K(\rho)^{\dim\rho}.
+\tag{20}
+\]">\[
+\mathfrak d_{L/K}
+=\prod_{\rho\in\operatorname{Irr}(G)}\mathfrak f_K(\rho)^{\dim\rho}.
+\tag{20}
+\]</span>
+More generally <span class="math" data-tex="\(\mathfrak f_K(\mathbf C[G/H])=\mathfrak d_{L^H/K}\)">\(\mathfrak f_K(\mathbf C[G/H])=\mathfrak d_{L^H/K}\)</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(W=\mathbf1\)">\(W=\mathbf1\)</span> in (19). Its conductor over <span class="math" data-tex="\(E\)">\(E\)</span> is the unit ideal, proving the permutation assertion. For <span class="math" data-tex="\(H=1\)">\(H=1\)</span>, use the regular decomposition in Proposition 21.1 and additivity of every local exponent. This proves (20) as an equality of ideals. Alternatively (16) with <span class="math" data-tex="\(H=1\)">\(H=1\)</span> gives the exponent <span class="math" data-tex="\(f(L_w/K_v)\delta_{L_w/K_v}\)">\(f(L_w/K_v)\delta_{L_w/K_v}\)</span> for one local regular representation, and the global restriction has one such copy for every place above <span class="math" data-tex="\(v\)">\(v\)</span>. This is exactly the completed global trace discriminant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-meromorphy-and-the-functional-equation-over-number-fields">5. Meromorphy and the functional equation over number fields</h2>
+<p>Suppose first that <span class="math" data-tex="\(K\)">\(K\)</span> is a number field, of absolute discriminant <span class="math" data-tex="\(d_K\)">\(d_K\)</span>. Put
+<span class="math math-display" data-tex="\[
+Q_K(V)=|d_K|^{\dim V}N_{K/\mathbf Q}\mathfrak f_K(V),\quad
+\Gamma_{\mathbf R}(s)=\pi^{-s/2}\Gamma(s/2),\quad
+\Gamma_{\mathbf C}(s)=2(2\pi)^{-s}\Gamma(s).
+\tag{21}
+\]">\[
+Q_K(V)=|d_K|^{\dim V}N_{K/\mathbf Q}\mathfrak f_K(V),\quad
+\Gamma_{\mathbf R}(s)=\pi^{-s/2}\Gamma(s/2),\quad
+\Gamma_{\mathbf C}(s)=2(2\pi)^{-s}\Gamma(s).
+\tag{21}
+\]</span>
+At a real place, let <span class="math" data-tex="\(d_v^+,d_v^-\)">\(d_v^+,d_v^-\)</span> be the multiplicities of <span class="math" data-tex="\(+1,-1\)">\(+1,-1\)</span> for complex conjugation. At a complex place there is one gamma factor of complex type per dimension. Define
+<span class="math math-display" data-tex="\[
+\Gamma_K(s,V)=
+\prod_{v\text{ real}}\Gamma_{\mathbf R}(s)^{d_v^+}
+                         \Gamma_{\mathbf R}(s+1)^{d_v^-}
+\prod_{v\text{ complex}}\Gamma_{\mathbf C}(s)^{\dim V},
+\quad
+\Lambda_K(s,V)=Q_K(V)^{s/2}\Gamma_K(s,V)L_K(s,V).
+\tag{22}
+\]">\[
+\Gamma_K(s,V)=
+\prod_{v\text{ real}}\Gamma_{\mathbf R}(s)^{d_v^+}
+                         \Gamma_{\mathbf R}(s+1)^{d_v^-}
+\prod_{v\text{ complex}}\Gamma_{\mathbf C}(s)^{\dim V},
+\quad
+\Lambda_K(s,V)=Q_K(V)^{s/2}\Gamma_K(s,V)L_K(s,V).
+\tag{22}
+\]</span>
+For virtual representations, dimensions and multiplicities in these formulas are signed integers and <span class="math" data-tex="\(Q_K(V)\)">\(Q_K(V)\)</span> is a positive real number.</p>
+<p>Both completion factors respect induction. For <span class="math" data-tex="\(Q\)">\(Q\)</span>, use (19) and
+<span class="math math-display" data-tex="\[
+|d_E|=|d_K|^{[E:K]}N_{K/\mathbf Q}\mathfrak d_{E/K},
+\quad Q_K(\operatorname{Ind}_E^K W)=Q_E(W).
+\tag{23}
+\]">\[
+|d_E|=|d_K|^{[E:K]}N_{K/\mathbf Q}\mathfrak d_{E/K},
+\quad Q_K(\operatorname{Ind}_E^K W)=Q_E(W).
+\tag{23}
+\]</span>
+The discriminant tower identity follows by taking norms of (11) at every finite place, or by trace adjunction for the corresponding global lattices. For the gamma factor, a real place of <span class="math" data-tex="\(E\)">\(E\)</span> over a real place of <span class="math" data-tex="\(K\)">\(K\)</span> retains its sign type, whereas a complex place over a real place contributes one <span class="math" data-tex="\(+1\)">\(+1\)</span> and one <span class="math" data-tex="\(-1\)">\(-1\)</span> per dimension. The gamma duplication identity gives
+<span class="math" data-tex="\(\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s)\)">\(\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s)\)</span>.
+At a complex place induction simply adds the dimensions for the places above it. Therefore
+<span class="math math-display" data-tex="\[
+\Lambda_K(s,\operatorname{Ind}_E^K W)=\Lambda_E(s,W).
+\tag{24}
+\]">\[
+\Lambda_K(s,\operatorname{Ind}_E^K W)=\Lambda_E(s,W).
+\tag{24}
+\]</span></p>
+<p><strong>Theorem 21.3.</strong> Every finite-image Artin L-function is meromorphic on <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. With the above completion it satisfies
+<span class="math math-display" data-tex="\[
+\Lambda_K(s,V)=W_K(V)\Lambda_K(1-s,V^\vee),
+\qquad |W_K(V)|=1.
+\tag{25}
+\]">\[
+\Lambda_K(s,V)=W_K(V)\Lambda_K(1-s,V^\vee),
+\qquad |W_K(V)|=1.
+\tag{25}
+\]</span>
+The function-field version is proved in section 6.</p>
+<p><strong>Proof over number fields.</strong> Use (17) for the global Galois group, and put <span class="math" data-tex="\(E_i=L^{H_i}\)">\(E_i=L^{H_i}\)</span>. Propositions 21.1 and Theorem 21.2 imply, initially in <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+L_K(s,V)=\prod_i L_{E_i}(s,\omega_i)^{n_i},
+\quad
+\Lambda_K(s,V)=\prod_i\Lambda_{E_i}(s,\omega_i)^{n_i},
+\tag{26}
+\]">\[
+L_K(s,V)=\prod_i L_{E_i}(s,\omega_i)^{n_i},
+\quad
+\Lambda_K(s,V)=\prod_i\Lambda_{E_i}(s,\omega_i)^{n_i},
+\tag{26}
+\]</span>
+where <span class="math" data-tex="\(\omega_i=\chi_i\circ\operatorname{rec}_{\mathrm{arith}}\)">\(\omega_i=\chi_i\circ\operatorname{rec}_{\mathrm{arith}}\)</span>. The second equality uses (24) and additivity of conductors, dimensions and gamma multiplicities. Theorem 10.1 of the written Hecke lesson proves continuation and the completed functional equation for each finite-order <span class="math" data-tex="\(\omega_i\)">\(\omega_i\)</span>, with unit absolute-value root number. Integer powers in (26) give meromorphic functions, including when some <span class="math" data-tex="\(n_i\)">\(n_i\)</span> are negative. Taking their functional equations gives (25), with
+<span class="math" data-tex="\(W_K(V)=\prod_i W_{E_i}(\omega_i)^{n_i}\)">\(W_K(V)=\prod_i W_{E_i}(\omega_i)^{n_i}\)</span>.
+The dual of an induced representation is induced from the dual, as follows by dualizing its finite coset model, so the function on the right is the required <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span>.</p>
+<p>The resulting function agrees with (1) on its convergence half-plane, hence is independent of the Brauer expression by analytic uniqueness. The constant is independent as well: on a nonempty open set where both completed functions are finite and nonzero it is their ratio in (25). Thus two expressions give the same constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Negative powers explain why this argument proves meromorphy rather than holomorphy. <strong>Artin's conjecture</strong> for number fields asserts that the L-function of every nontrivial irreducible finite-image representation is entire. It is proved in dimension one by the Hecke theorem; (26) does not prove it in general. The trivial representation has the zeta pole and is deliberately excluded. Nothing here asserts the conjecture for all solvable Galois groups.</p>
+<h2 id="6-the-analytic-argument-over-function-fields">6. The analytic argument over function fields</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> now be a global function field. We give the analytic input needed for the same Brauer argument, rather than applying a number-field theorem to it. Lessons 15 and 17 proved that <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span> is compact and that there is a continuous additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, trivial on <span class="math" data-tex="\(K\)">\(K\)</span>, for which the pairing <span class="math" data-tex="\(\psi(xy)\)">\(\psi(xy)\)</span> identifies the adèles with their dual and has exact annihilator <span class="math" data-tex="\(K\)">\(K\)</span>. Use the product of the local self-dual measures of lesson 12 and the positive Fourier kernel. Schwartz functions here are locally constant with compact support.</p>
+<p>First the additive covolume of <span class="math" data-tex="\(K\)">\(K\)</span> is 1. Here is a finite counting proof, also fixing the normalization in Poisson summation. Choose a compact open additive subgroup <span class="math" data-tex="\(U\)">\(U\)</span> with <span class="math" data-tex="\(U\cap K=0\)">\(U\cap K=0\)</span>, and put <span class="math" data-tex="\(V=U^\perp\)">\(V=U^\perp\)</span>. The finite quotient <span class="math" data-tex="\(\mathbb A_K/(K+U)\)">\(\mathbb A_K/(K+U)\)</span> has dual <span class="math" data-tex="\(K\cap V\)">\(K\cap V\)</span>, by the exact annihilator assertion; write their common order as <span class="math" data-tex="\(N\)">\(N\)</span>. The map from <span class="math" data-tex="\(U\)">\(U\)</span> into the compact quotient <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span> is injective and its image has index <span class="math" data-tex="\(N\)">\(N\)</span>, so the covolume is <span class="math" data-tex="\(N\operatorname{vol}(U)\)">\(N\operatorname{vol}(U)\)</span>. Also <span class="math" data-tex="\(K+V=\mathbb A_K\)">\(K+V=\mathbb A_K\)</span>: this open subgroup is closed and its quotient has annihilator <span class="math" data-tex="\(K\cap U=0\)">\(K\cap U=0\)</span>, so that quotient is trivial, since characters separate a compact abelian quotient. Consequently the covolume is <span class="math" data-tex="\(\operatorname{vol}(V)/N\)">\(\operatorname{vol}(V)/N\)</span>. Local Fourier inversion gives <span class="math" data-tex="\(\operatorname{vol}(U)\operatorname{vol}(V)=1\)">\(\operatorname{vol}(U)\operatorname{vol}(V)=1\)</span>. The two covolume formulas therefore give covolume squared 1, and positivity gives 1. The finite duality used here is the character duality already proved for the relevant adelic compact quotients in lesson 15.</p>
+<p>Periodize a Schwartz function on <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span>. The periodization is locally constant, so factors through a finite quotient of this compact group. Its Fourier coefficients, indexed by the annihilator <span class="math" data-tex="\(K\)">\(K\)</span>, are <span class="math" data-tex="\(\widehat f(\alpha)\)">\(\widehat f(\alpha)\)</span>, since the covolume is 1; unfolding the integral proves this assertion directly. Finite Fourier inversion at zero gives
+<span class="math math-display" data-tex="\[
+\sum_{\alpha\in K}f(\alpha x)
+=|x|^{-1}\sum_{\alpha\in K}\widehat f(\alpha/x),\qquad x\in\mathbb A_K^\times.
+\tag{27}
+\]">\[
+\sum_{\alpha\in K}f(\alpha x)
+=|x|^{-1}\sum_{\alpha\in K}\widehat f(\alpha/x),\qquad x\in\mathbb A_K^\times.
+\tag{27}
+\]</span>
+The scaling factor follows by the substitution <span class="math" data-tex="\(z\mapsto zx\)">\(z\mapsto zx\)</span> in additive measure. Each sum is finite on compact sets of idèles. This follows from discreteness of <span class="math" data-tex="\(K\)">\(K\)</span> and compactness of the supports.</p>
+<p>The content image is a nontrivial discrete cyclic subgroup of <span class="math" data-tex="\(\mathbf R_{&gt;0}\)">\(\mathbf R_{&gt;0}\)</span>, say <span class="math" data-tex="\(R^{\mathbf Z}\)">\(R^{\mathbf Z}\)</span> with <span class="math" data-tex="\(R&gt;1\)">\(R&gt;1\)</span>. Choose an idèle class <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(|c|=R\)">\(|c|=R\)</span>. No assertion that a degree-one place exists is required. The norm-one group <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> is compact, as proved in lesson 14. Fix its quotient Haar measure, of volume <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, so that each norm level is a translate with that same measure. Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a finite-order Hecke character and put
+<span class="math math-display" data-tex="\[
+\Theta_f(x)=\sum_{\alpha\in K^\times}f(\alpha x),\qquad
+Z(f,\omega,s)=\int_{C_K}\Theta_f(x)\omega(x)|x|^s\,d^\times x.
+\tag{28}
+\]">\[
+\Theta_f(x)=\sum_{\alpha\in K^\times}f(\alpha x),\qquad
+Z(f,\omega,s)=\int_{C_K}\Theta_f(x)\omega(x)|x|^s\,d^\times x.
+\tag{28}
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>, this converges and unfolds to the usual idèle zeta integral. To check convergence directly, (27) bounds <span class="math" data-tex="\(\Theta_f\)">\(\Theta_f\)</span> on negative norm levels by <span class="math" data-tex="\(C(|x|^{-1}+1)\)">\(C(|x|^{-1}+1)\)</span>: the inverted classes have positive norm, where the Fourier theta sum vanishes beyond a fixed bound, and the remaining finitely many levels are compact. Summing the resulting geometric bound gives convergence for <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>.</p>
+<p>Write <span class="math" data-tex="\(P_{\geq}(f,\omega,s)\)">\(P_{\geq}(f,\omega,s)\)</span> and <span class="math" data-tex="\(P_&gt;(f,\omega,s)\)">\(P_&gt;(f,\omega,s)\)</span> for the portions of (28) with norm at least 1 and strictly greater than 1. Both are finite Laurent polynomials in <span class="math" data-tex="\(R^{-s}\)">\(R^{-s}\)</span>. Indeed a compact additive support bounds the module of every idèle lying in it: outside a finite set its components are integral, and inside that set their absolute values are bounded. Since <span class="math" data-tex="\(|\alpha|=1\)">\(|\alpha|=1\)</span> for <span class="math" data-tex="\(\alpha\in K^\times\)">\(\alpha\in K^\times\)</span>, the condition <span class="math" data-tex="\(\alpha x\in\operatorname{supp}f\)">\(\alpha x\in\operatorname{supp}f\)</span> bounds <span class="math" data-tex="\(|x|\)">\(|x|\)</span>. Thus only finitely many positive levels occur; their integrals are finite by compactness of <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>.</p>
+<p>Apply (27) to the negative levels in (28), removing the zero summands and substituting <span class="math" data-tex="\(y=x^{-1}\)">\(y=x^{-1}\)</span>. It gives
+<span class="math math-display" data-tex="\[
+Z(f,\omega,s)=P_{\geq}(f,\omega,s)
+ +P_&gt;(\widehat f,\omega^{-1},1-s)+C(f,\omega,s).
+\tag{29}
+\]">\[
+Z(f,\omega,s)=P_{\geq}(f,\omega,s)
+ +P_&gt;(\widehat f,\omega^{-1},1-s)+C(f,\omega,s).
+\tag{29}
+\]</span>
+If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nontrivial on <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, the correction <span class="math" data-tex="\(C\)">\(C\)</span> is zero by character orthogonality. Otherwise set <span class="math" data-tex="\(\lambda=\omega(c)\)">\(\lambda=\omega(c)\)</span>. Summing the negative-level zero terms gives exactly
+<span class="math math-display" data-tex="\[
+C(f,\omega,s)=\kappa\left(
+\widehat f(0)\frac{\lambda^{-1}R^{1-s}}{1-\lambda^{-1}R^{1-s}}
+-f(0)\frac{\lambda^{-1}R^{-s}}{1-\lambda^{-1}R^{-s}}
+\right).
+\tag{30}
+\]">\[
+C(f,\omega,s)=\kappa\left(
+\widehat f(0)\frac{\lambda^{-1}R^{1-s}}{1-\lambda^{-1}R^{1-s}}
+-f(0)\frac{\lambda^{-1}R^{-s}}{1-\lambda^{-1}R^{-s}}
+\right).
+\tag{30}
+\]</span>
+This was derived in the convergence region by geometric series and is now a rational continuation in <span class="math" data-tex="\(R^{-s}\)">\(R^{-s}\)</span>.</p>
+<p>The continued integral satisfies
+<span class="math math-display" data-tex="\[
+Z(f,\omega,s)=Z(\widehat f,\omega^{-1},1-s).
+\tag{31}
+\]">\[
+Z(f,\omega,s)=Z(\widehat f,\omega^{-1},1-s).
+\tag{31}
+\]</span>
+Here is the check at norm zero, which avoids any overlap assumption on convergence regions. The two strictly positive polynomial parts in (29) exchange. The norm-one terms satisfy, by (27),
+<span class="math math-display" data-tex="\[
+P_0(f,\omega,s)-P_0(\widehat f,\omega^{-1},1-s)
+=\begin{cases}\kappa(\widehat f(0)-f(0)),&amp;\omega|_{C_K^1}=1,\\0,&amp;\text{otherwise}.
+\end{cases}
+\tag{32}
+\]">\[
+P_0(f,\omega,s)-P_0(\widehat f,\omega^{-1},1-s)
+=\begin{cases}\kappa(\widehat f(0)-f(0)),&amp;\omega|_{C_K^1}=1,\\0,&amp;\text{otherwise}.
+\end{cases}
+\tag{32}
+\]</span>
+When applying Poisson to the inverted norm-one class, use that inversion preserves Haar measure and that <span class="math" data-tex="\(\Theta_{\widehat{\widehat f}}=\Theta_f\)">\(\Theta_{\widehat{\widehat f}}=\Theta_f\)</span>, since <span class="math" data-tex="\(\widehat{\widehat f}(z)=f(-z)\)">\(\widehat{\widehat f}(z)=f(-z)\)</span> and <span class="math" data-tex="\(-1\in K^\times\)">\(-1\in K^\times\)</span>. If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is trivial on <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, write <span class="math" data-tex="\(A=\lambda^{-1}R^{1-s}\)">\(A=\lambda^{-1}R^{1-s}\)</span> and <span class="math" data-tex="\(B=\lambda^{-1}R^{-s}\)">\(B=\lambda^{-1}R^{-s}\)</span>. The corresponding variables in the dual correction are <span class="math" data-tex="\(1/B,1/A\)">\(1/B,1/A\)</span>. The identity
+<span class="math" data-tex="\(z/(1-z)+(1/z)/(1-1/z)=-1\)">\(z/(1-z)+(1/z)/(1-1/z)=-1\)</span>
+shows that the difference of the two corrections is <span class="math" data-tex="\(-\kappa(\widehat f(0)-f(0))\)">\(-\kappa(\widehat f(0)-f(0))\)</span>, canceling (32). If <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nontrivial there, both corrections and the difference in (32) vanish. This proves (31) as a rational identity.</p>
+<p>To extract the L-function, take at every unramified place <span class="math" data-tex="\(f_v=\mathbf1_{\mathcal O_v}\)">\(f_v=\mathbf1_{\mathcal O_v}\)</span>, and at each ramified place
+<span class="math" data-tex="\(f_v=\omega_v|_{\mathcal O_v^\times}^{-1}\mathbf1_{\mathcal O_v^\times}\)">\(f_v=\omega_v|_{\mathcal O_v^\times}^{-1}\mathbf1_{\mathcal O_v^\times}\)</span>.
+These form a restricted tensor product Schwartz function. With multiplicative unit volume 1 its local zeta integrals are respectively the primitive Euler factor and 1. Absolute factorization in <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span> therefore gives <span class="math" data-tex="\(Z(f,\omega,s)=L_K(s,\omega)\)">\(Z(f,\omega,s)=L_K(s,\omega)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(n_v\)">\(n_v\)</span> be the local additive conductor in the convention that <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span> is trivial on <span class="math" data-tex="\(\mathfrak p_v^{-n_v}\)">\(\mathfrak p_v^{-n_v}\)</span>, and set
+<span class="math math-display" data-tex="\[
+D_K(\psi)=\prod_vq_v^{n_v},\qquad
+Q_K(V)=D_K(\psi)^{\dim V}N\mathfrak f_K(V),\qquad
+\Lambda_K(s,V)=Q_K(V)^{s/2}L_K(s,V).
+\tag{33}
+\]">\[
+D_K(\psi)=\prod_vq_v^{n_v},\qquad
+Q_K(V)=D_K(\psi)^{\dim V}N\mathfrak f_K(V),\qquad
+\Lambda_K(s,V)=Q_K(V)^{s/2}L_K(s,V).
+\tag{33}
+\]</span>
+Only finitely many <span class="math" data-tex="\(n_v\)">\(n_v\)</span> are nonzero. The actual finite Fourier calculation of lesson 12, equations (13)–(17), gives
+<span class="math math-display" data-tex="\[
+\epsilon_v(s,\omega_v)=W_v(\omega_v)q_v^{(a_v+n_v)(1/2-s)},
+\qquad |W_v(\omega_v)|=1.
+\tag{34}
+\]">\[
+\epsilon_v(s,\omega_v)=W_v(\omega_v)q_v^{(a_v+n_v)(1/2-s)},
+\qquad |W_v(\omega_v)|=1.
+\tag{34}
+\]</span>
+This holds in positive characteristic too. Factor the dual integral in its own convergence region, use the local equations, and then use the rational continuations (29). Equations (31) and (34) imply
+<span class="math" data-tex="\(L_K(s,\omega)=W_K(\omega)Q_K(\omega)^{1/2-s}L_K(1-s,\omega^{-1})\)">\(L_K(s,\omega)=W_K(\omega)Q_K(\omega)^{1/2-s}L_K(1-s,\omega^{-1})\)</span>,
+where <span class="math" data-tex="\(W_K(\omega)=\prod_v W_v(\omega_v)\)">\(W_K(\omega)=\prod_v W_v(\omega_v)\)</span>. Hence (25) holds in rank one, with no infinite gamma factors. In particular the trivial character has <span class="math" data-tex="\(W_K(\mathbf1)=1\)">\(W_K(\mathbf1)=1\)</span>, since its local central constants in (34) are all 1.</p>
+<p>For <span class="math" data-tex="\(E/K\)">\(E/K\)</span>, use <span class="math" data-tex="\(\psi_E=\psi\circ\operatorname{Tr}_{E/K}\)">\(\psi_E=\psi\circ\operatorname{Tr}_{E/K}\)</span>. The trace-dual formula (12) gives
+<span class="math" data-tex="\(n_u=e(E_u/K_v)n_v+\delta_{E_u/K_v}\)">\(n_u=e(E_u/K_v)n_v+\delta_{E_u/K_v}\)</span>.
+Multiplying the corresponding powers of residue cardinalities gives
+<span class="math math-display" data-tex="\[
+D_E(\psi_E)=D_K(\psi)^{[E:K]}N\mathfrak d_{E/K}.
+\tag{35}
+\]">\[
+D_E(\psi_E)=D_K(\psi)^{[E:K]}N\mathfrak d_{E/K}.
+\tag{35}
+\]</span>
+Thus (19) makes <span class="math" data-tex="\(Q\)">\(Q\)</span> respect induction here as well. The Brauer proof (26) now proves meromorphy and (25) for every finite-image representation over a function field. It also proves rationality in <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span>, where <span class="math" data-tex="\(q\)">\(q\)</span> is the cardinality of the full constant field: every <span class="math" data-tex="\(R\)">\(R\)</span> and every residue norm is an integral power of <span class="math" data-tex="\(q\)">\(q\)</span>, and the same is true for the constant fields of the finite extensions used in (26). The completed function may include the elementary exponential factor <span class="math" data-tex="\(Q^{s/2}\)">\(Q^{s/2}\)</span>; the uncompleted L-function is rational in <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span>.</p>
+<p>The scale <span class="math" data-tex="\(D_K(\psi)\)">\(D_K(\psi)\)</span> is independent of multiplying the global character by a principal nonzero scalar: the local conductor changes multiply it by the inverse global module of that scalar, which is 1. Formula (33) suffices here without invoking a separate theorem about degrees of canonical divisors.</p>
+<h2 id="7-the-cubic-field-and-its-two-dimensional-representation">7. The cubic field and its two-dimensional representation</h2>
+<p>Put <span class="math" data-tex="\(\alpha=\sqrt[3]2\)">\(\alpha=\sqrt[3]2\)</span>, <span class="math" data-tex="\(E=\mathbf Q(\alpha)\)">\(E=\mathbf Q(\alpha)\)</span>, and <span class="math" data-tex="\(L=\mathbf Q(\alpha,\zeta_3)\)">\(L=\mathbf Q(\alpha,\zeta_3)\)</span>. The polynomial is irreducible by Eisenstein at 2. Its discriminant is <span class="math" data-tex="\(-108\)">\(-108\)</span>, computed as <span class="math" data-tex="\((-1)^3N_{E/\mathbf Q}(3\alpha^2)\)">\((-1)^3N_{E/\mathbf Q}(3\alpha^2)\)</span>. Since this is not a square, the transitive cubic Galois group is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. Its quadratic subfield is <span class="math" data-tex="\(\mathbf Q(\sqrt{-3})\)">\(\mathbf Q(\sqrt{-3})\)</span>.</p>
+<p>The polynomial order is already maximal. At 2 the polynomial is Eisenstein, so <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a local uniformizer and <span class="math" data-tex="\(\mathcal O_{E_2}=\mathbf Z_2[\alpha]\)">\(\mathcal O_{E_2}=\mathbf Z_2[\alpha]\)</span>. At 3, <span class="math" data-tex="\(\beta=\alpha+1\)">\(\beta=\alpha+1\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\beta^3-3\beta^2+3\beta-3=0,
+\tag{36}
+\]">\[
+\beta^3-3\beta^2+3\beta-3=0,
+\tag{36}
+\]</span>
+an Eisenstein equation, so <span class="math" data-tex="\(\mathcal O_{E_3}=\mathbf Z_3[\beta]=\mathbf Z_3[\alpha]\)">\(\mathcal O_{E_3}=\mathbf Z_3[\beta]=\mathbf Z_3[\alpha]\)</span>. The local integer-ring assertion for an Eisenstein generator follows by expanding an integer in powers of the uniformizer with residue representatives from the base field, then reducing by its monic equation; the resulting degree-less-than-three coefficients converge in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>. At other primes the polynomial discriminant is a unit, so the order's trace dual is itself and no index can occur. Thus
+<span class="math" data-tex="\(\mathcal O_E=\mathbf Z[\alpha]\)">\(\mathcal O_E=\mathbf Z[\alpha]\)</span> and <span class="math" data-tex="\(d_E=-108\)">\(d_E=-108\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span> be the standard two-dimensional representation of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the complement of the constants in its action on three letters. The transposition stabilizer has index three, hence
+<span class="math math-display" data-tex="\[
+\mathbf C[S_3/S_2]=\mathbf1\oplus\rho_2,
+\qquad
+\mathbf C[S_3]=\mathbf1\oplus\operatorname{sgn}\oplus\rho_2^{\oplus2}.
+\tag{37}
+\]">\[
+\mathbf C[S_3/S_2]=\mathbf1\oplus\rho_2,
+\qquad
+\mathbf C[S_3]=\mathbf1\oplus\operatorname{sgn}\oplus\rho_2^{\oplus2}.
+\tag{37}
+\]</span>
+The sign character is the quadratic character <span class="math" data-tex="\(\chi_{-3}\)">\(\chi_{-3}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\zeta_E(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\rho_2),\qquad
+\zeta_L(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\chi_{-3})L_{\mathbf Q}(s,\rho_2)^2.
+\tag{38}
+\]">\[
+\zeta_E(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\rho_2),\qquad
+\zeta_L(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\chi_{-3})L_{\mathbf Q}(s,\rho_2)^2.
+\tag{38}
+\]</span>
+The non-Galois permutation assertion in Theorem 21.5 immediately gives
+<span class="math math-display" data-tex="\[
+\mathfrak f_{\mathbf Q}(\rho_2)=(108)=(2^2 3^3).
+\tag{39}
+\]">\[
+\mathfrak f_{\mathbf Q}(\rho_2)=(108)=(2^2 3^3).
+\tag{39}
+\]</span>
+Here the trivial summand has conductor 1.</p>
+<p>We check both local exponents directly. At 2, adjoining <span class="math" data-tex="\(\zeta_3\)">\(\zeta_3\)</span> is unramified of degree two, since <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> is irreducible modulo 2. Adjoining <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is totally ramified of degree three and tame. The local splitting field has degree six, decomposition group <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, inertia <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, and no positive ramification group. A three-cycle has eigenvalues <span class="math" data-tex="\(\zeta_3,\zeta_3^2\)">\(\zeta_3,\zeta_3^2\)</span> on <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span>, so no invariant vectors. Formula (9) gives <span class="math" data-tex="\(a_2(\rho_2)=2\)">\(a_2(\rho_2)=2\)</span>.</p>
+<p>At 3, the cubic extension is totally ramified and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unit. Its different is generated by <span class="math" data-tex="\(3\alpha^2\)">\(3\alpha^2\)</span>, so <span class="math" data-tex="\(\delta_{E_3/\mathbf Q_3}=3\)">\(\delta_{E_3/\mathbf Q_3}=3\)</span>. The quadratic extension <span class="math" data-tex="\(\mathbf Q_3(\zeta_3)\)">\(\mathbf Q_3(\zeta_3)\)</span> is ramified of degree two. In the compositum the ramification index is divisible by both 3 and 2; its degree is six, so it is totally ramified of degree six. Its extension over <span class="math" data-tex="\(E_3\)">\(E_3\)</span> is tame quadratic, with different exponent 1. Formula (11) gives
+<span class="math" data-tex="\(\delta_{L_3/\mathbf Q_3}=1+2\cdot3=7\)">\(\delta_{L_3/\mathbf Q_3}=1+2\cdot3=7\)</span>.
+Now <span class="math" data-tex="\(G_0=S_3\)">\(G_0=S_3\)</span>, while its wild inertia is its unique Sylow 3-subgroup <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. Hilbert's formula reads
+<span class="math" data-tex="\(7=5+\sum_{j\geq1}(|G_j|-1)\)">\(7=5+\sum_{j\geq1}(|G_j|-1)\)</span>.
+The positive groups are either <span class="math" data-tex="\(C_3\)">\(C_3\)</span> or trivial, so exactly one is nontrivial. Thus <span class="math" data-tex="\(G_1=C_3,G_2=1\)">\(G_1=C_3,G_2=1\)</span>. Neither <span class="math" data-tex="\(S_3\)">\(S_3\)</span> nor <span class="math" data-tex="\(C_3\)">\(C_3\)</span> has invariants on <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span>, and
+<span class="math math-display" data-tex="\[
+a_3(\rho_2)=2+\frac36\,2=3.
+\tag{40}
+\]">\[
+a_3(\rho_2)=2+\frac36\,2=3.
+\tag{40}
+\]</span>
+This verifies (39) with the lower-group weights, independently of the global numerical prediction.</p>
+<h2 id="8-orthogonal-root-numbers">8. Orthogonal root numbers</h2>
+<p>An orthogonal representation here means the complexification of a finite-image real representation with an invariant positive definite inner product. Its global root number is the constant in (25). A local root number is the central epsilon constant for a nontrivial local additive character and self-dual measure. These local constants need not all be 1 even when the global constant is 1.</p>
+<p>The exact internal provider for the higher-dimensional local epsilon family is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#LG-GAL-06">Local L-factors and epsilon-factors of Weil group representations</a>, §3, and for the orthogonal theorem it is §7, equation (24). The present edition of that lesson gives existence and orthogonal statements and proves uniqueness and formal consequences; its general existence and orthogonal proofs are still required there. The analytic proof of Theorem 21.3 above uses the proved rank-one theory and Brauer induction and is independent of these remaining local proofs.</p>
+<p><strong>Deligne's local orthogonal theorem.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is a virtual finite-image real representation of the absolute Galois group of a local field <span class="math" data-tex="\(F\)">\(F\)</span>, with virtual dimension zero and determinant one, then
+<span class="math math-display" data-tex="\[
+W_F(A)=\exp\bigl(2\pi i\operatorname{inv}_F(\operatorname{cl}(w_2(A)))\bigr).
+\tag{41}
+\]">\[
+W_F(A)=\exp\bigl(2\pi i\operatorname{inv}_F(\operatorname{cl}(w_2(A)))\bigr).
+\tag{41}
+\]</span>
+The total Stiefel–Whitney class extends to virtual representations by <span class="math" data-tex="\(w(V-W)=w(V)w(W)^{-1}\)">\(w(V-W)=w(V)w(W)^{-1}\)</span>; its degree-two part is <span class="math" data-tex="\(w_2(A)\in H^2(G_F,\mathbf Z/2)\)">\(w_2(A)\in H^2(G_F,\mathbf Z/2)\)</span>. Inflate from a finite quotient and map the coefficient <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(-1\in\bar F^\times\)">\(-1\in\bar F^\times\)</span>. This gives <span class="math" data-tex="\(\operatorname{cl}(w_2(A))\in\operatorname{Br}(F)\)">\(\operatorname{cl}(w_2(A))\in\operatorname{Br}(F)\)</span>. The invariant is in <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>; at a real place its nonzero value is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and at a complex place it is zero. In characteristic two the coefficient map is trivial and the right side is 1. Dimension zero removes measure dependence and determinant one removes additive-character dependence. The specified theorem and class construction are the ones owned by §7 of the provider, corresponding to Deligne (1976), (1.3)–(1.5). They are not proved by Brauer meromorphy alone.</p>
+<p>Here is the global deduction with its precise inputs. It uses the local existence and orthogonal theorems just identified and <a href="brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields</a>, section 4 and Theorem 24.4. That lesson proves that for every global Brauer class <span class="math" data-tex="\(b\)">\(b\)</span>, all but finitely many local invariants vanish and <span class="math" data-tex="\(\sum_v\operatorname{inv}_v(b_v)=0\)">\(\sum_v\operatorname{inv}_v(b_v)=0\)</span>, including arbitrary splitting groups and both characteristics. This is the required part of the Albert–Brauer–Hasse–Noether theorem.</p>
+<p><strong>Fröhlich–Queyrut global theorem.</strong> For a finite-image orthogonal global representation <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+W_K(V)=1.
+\tag{42}
+\]">\[
+W_K(V)=1.
+\tag{42}
+\]</span></p>
+<p><strong>Deduction from those local and Brauer inputs.</strong> First verify that the global constant in (25) is the product of local central constants. Interpret the provider's geometric local constants on <span class="math" data-tex="\(V^\vee\)">\(V^\vee\)</span> to match our arithmetic convention. For orthogonal representations this dualization changes nothing. Write
+<span class="math" data-tex="\(P_K(V)=\prod_v W_{K_v}(V)\)">\(P_K(V)=\prod_v W_{K_v}(V)\)</span>; only finitely many factors differ from 1. Rank-one Tate theory, the written Hecke theorem, and section 6 show <span class="math" data-tex="\(P_K(\chi)=W_K(\chi)\)">\(P_K(\chi)=W_K(\chi)\)</span>.</p>
+<p>For a permutation representation <span class="math" data-tex="\(P=\operatorname{Ind}_E^K\mathbf1\)">\(P=\operatorname{Ind}_E^K\mathbf1\)</span>, let <span class="math" data-tex="\(n=\dim P\)">\(n=\dim P\)</span>, <span class="math" data-tex="\(\eta=\det P\)">\(\eta=\det P\)</span>, and <span class="math" data-tex="\(A=P-\eta-(n-1)\mathbf1\)">\(A=P-\eta-(n-1)\mathbf1\)</span>. This is a global real virtual representation of dimension zero and determinant one. Its Stiefel–Whitney class gives a global Brauer class. Formula (41) and the invariant sum law give <span class="math" data-tex="\(P_K(A)=1\)">\(P_K(A)=1\)</span>. The trivial character has global root number 1. Every quadratic character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> also has global root number 1: for its quadratic field <span class="math" data-tex="\(M\)">\(M\)</span>, (24) and Proposition 21.1 identify its completed L-function with <span class="math" data-tex="\(\Lambda_M(s,\mathbf1)/\Lambda_K(s,\mathbf1)\)">\(\Lambda_M(s,\mathbf1)/\Lambda_K(s,\mathbf1)\)</span>, and both zeta completions have root number 1. The latter is the number-field zeta theorem in the Hecke provider and, for function fields, the trivial-character case of (34). Consequently <span class="math" data-tex="\(P_K(P)=1\)">\(P_K(P)=1\)</span>.</p>
+<p>Local induction for virtual dimension zero implies, on subtracting <span class="math" data-tex="\((\dim W)\mathbf1\)">\((\dim W)\mathbf1\)</span>,
+<span class="math math-display" data-tex="\[
+W_F(\operatorname{Ind}_{E_u}^F W)
+=\lambda(E_u/F)^{\dim W}W_{E_u}(W),\quad
+\lambda(E_u/F)=\frac{W_F(\operatorname{Ind}\mathbf1)}{W_{E_u}(\mathbf1)}.
+\tag{43}
+\]">\[
+W_F(\operatorname{Ind}_{E_u}^F W)
+=\lambda(E_u/F)^{\dim W}W_{E_u}(W),\quad
+\lambda(E_u/F)=\frac{W_F(\operatorname{Ind}\mathbf1)}{W_{E_u}(\mathbf1)}.
+\tag{43}
+\]</span>
+Using all completions above each place, the product of these <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>'s is <span class="math" data-tex="\(P_K(P)/P_E(\mathbf1)=1\)">\(P_K(P)/P_E(\mathbf1)=1\)</span>. Thus <span class="math" data-tex="\(P_K(\operatorname{Ind}_E^K\chi)=P_E(\chi)=W_E(\chi)\)">\(P_K(\operatorname{Ind}_E^K\chi)=P_E(\chi)=W_E(\chi)\)</span>. Integer Brauer induction and (26) give <span class="math" data-tex="\(P_K(V)=W_K(V)\)">\(P_K(V)=W_K(V)\)</span> for every finite-image representation. This proves the needed factorization from the stated local inputs, rather than assuming a separate global factorization theorem.</p>
+<p>Finally for an arbitrary orthogonal <span class="math" data-tex="\(V\)">\(V\)</span> of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, put <span class="math" data-tex="\(A=V-\det V-(n-1)\mathbf1\)">\(A=V-\det V-(n-1)\mathbf1\)</span>. Apply (41) at every place and the global invariant sum law to its global class. They give <span class="math" data-tex="\(W_K(A)=P_K(A)=1\)">\(W_K(A)=P_K(A)=1\)</span>. The determinant is trivial or quadratic and has root number 1, as above, and so does the trivial character. Multiplicativity gives (42). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The assertion is global. For example the real sign character, with the negative exponential additive character used in lesson 12, has local central constant <span class="math" data-tex="\(-i\)">\(-i\)</span>. Its global quadratic counterpart has product 1, so the other factors cancel that phase. Nor does (42) apply to every self-dual complex representation: a symplectic representation need not be the complexification of a real orthogonal one.</p>
+<h2 id="9-exercises-and-complete-solutions">9. Exercises and complete solutions</h2>
+<h3 id="exercise-1-the-cubic-zeta-factor-easy">Exercise 1 — The cubic zeta factor (easy)</h3>
+<p>Prove <span class="math" data-tex="\(\zeta_{\mathbf Q(\sqrt[3]2)}(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\rho_2)\)">\(\zeta_{\mathbf Q(\sqrt[3]2)}(s)=\zeta_{\mathbf Q}(s)L_{\mathbf Q}(s,\rho_2)\)</span>, with every ramified Euler factor included.</p>
+<p><strong>Solution.</strong> Irreducibility at 2 and the nonsquare cubic discriminant show that the splitting field has group <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. The cubic field is fixed by the subgroup stabilizing one root, of order two. Its coset permutation representation is the three-letter representation. Its constant line is trivial, and the coordinate-sum-zero plane is <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span>, giving <span class="math" data-tex="\(\operatorname{Ind}_{S_2}^{S_3}\mathbf1=\mathbf1\oplus\rho_2\)">\(\operatorname{Ind}_{S_2}^{S_3}\mathbf1=\mathbf1\oplus\rho_2\)</span>. The ramified induction calculation (5)–(6) identifies its Euler factor with the product of the cubic field's factors above each prime. Additivity and <span class="math" data-tex="\(L(s,\mathbf1)=\zeta_{\mathbf Q}(s)\)">\(L(s,\mathbf1)=\zeta_{\mathbf Q}(s)\)</span> prove the identity. No factors at 2 or 3 have been deleted.</p>
+<h3 id="exercise-2-the-two-local-conductor-exponents-medium">Exercise 2 — The two local conductor exponents (medium)</h3>
+<p>Compute <span class="math" data-tex="\(a_2(\rho_2)\)">\(a_2(\rho_2)\)</span> and <span class="math" data-tex="\(a_3(\rho_2)\)">\(a_3(\rho_2)\)</span> directly from the lower ramification groups, and recover conductor 108.</p>
+<p><strong>Solution.</strong> At 2 the local cubic field is tame totally ramified of degree three, and the quadratic roots of unity form the unramified quadratic extension. Thus the splitting field has <span class="math" data-tex="\(G_0=C_3\)">\(G_0=C_3\)</span>, <span class="math" data-tex="\(G_j=1\)">\(G_j=1\)</span> for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>. A three-cycle has eigenvalues <span class="math" data-tex="\(\zeta_3,\zeta_3^2\)">\(\zeta_3,\zeta_3^2\)</span> on the coordinate-sum-zero plane, so <span class="math" data-tex="\(a_2=2\)">\(a_2=2\)</span>.</p>
+<p>At 3 use the Eisenstein generator <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of (36). Since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unit, the derivative <span class="math" data-tex="\(3\alpha^2\)">\(3\alpha^2\)</span> has valuation 3 in the cubic field, so its different exponent is 3. The splitting field has total ramification degree six; its relative quadratic extension over the cubic field is tame, of different exponent 1. Different transitivity gives exponent <span class="math" data-tex="\(1+2\cdot3=7\)">\(1+2\cdot3=7\)</span>. In <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, the wild inertia is <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. Hilbert's formula forces <span class="math" data-tex="\(G_0=S_3,G_1=C_3,G_2=1\)">\(G_0=S_3,G_1=C_3,G_2=1\)</span>, because the zero group contributes 5 and each nontrivial positive group contributes 2. Both nontrivial groups have zero invariants on <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span>, so (9) gives <span class="math" data-tex="\(a_3=2+(3/6)2=3\)">\(a_3=2+(3/6)2=3\)</span>. All other places are unramified, since the polynomial discriminant is a unit there. Hence the conductor is <span class="math" data-tex="\(2^2 3^3=108\)">\(2^2 3^3=108\)</span>.</p>
+<h3 id="exercise-3-induction-at-a-ramified-prime-medium">Exercise 3 — Induction at a ramified prime (medium)</h3>
+<p>Prove the induction identity in Proposition 21.1 without assuming the base prime is unramified.</p>
+<p><strong>Solution.</strong> Fix its local decomposition and inertia groups <span class="math" data-tex="\(D,I\)">\(D,I\)</span>. Split the restricted induced representation according to <span class="math" data-tex="\(D\backslash G/H\)">\(D\backslash G/H\)</span>; these double cosets are precisely the places of <span class="math" data-tex="\(E=L^H\)">\(E=L^H\)</span> over the base place. On a summand <span class="math" data-tex="\(\operatorname{Ind}_J^D W_g\)">\(\operatorname{Ind}_J^D W_g\)</span>, taking <span class="math" data-tex="\(I\)">\(I\)</span>-invariants leaves copies of <span class="math" data-tex="\(W_g^{I\cap J}\)">\(W_g^{I\cap J}\)</span> indexed by <span class="math" data-tex="\(I\backslash D/J\)">\(I\backslash D/J\)</span>. A vector on an inertia orbit is determined by a stabilizer-invariant initial value, which proves this statement even when <span class="math" data-tex="\(I\)">\(I\)</span> is nontrivial. The arithmetic Frobenius cycles the <span class="math" data-tex="\(f=[D:IJ]\)">\(f=[D:IJ]\)</span> copies; after <span class="math" data-tex="\(f\)">\(f\)</span> steps it is the arithmetic Frobenius at the corresponding place of <span class="math" data-tex="\(E\)">\(E\)</span>. The cyclic block determinant (6) changes <span class="math" data-tex="\(q_v^{-s}\)">\(q_v^{-s}\)</span> into <span class="math" data-tex="\(q_v^{-fs}=q_u^{-s}\)">\(q_v^{-fs}=q_u^{-s}\)</span>. Multiplying over the double cosets gives the full local Euler identity, and absolute convergence then gives the global identity. At no point was <span class="math" data-tex="\(I=1\)">\(I=1\)</span> required.</p>
+<h3 id="exercise-4-discriminants-from-ramification-hard">Exercise 4 — Discriminants from ramification (hard)</h3>
+<p>Derive the conductor–discriminant formula directly from the different formula, including the multiplicities of global irreducible characters.</p>
+<p><strong>Solution.</strong> At a fixed completion <span class="math" data-tex="\(T/F\)">\(T/F\)</span>, its regular representation has dimension <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, and its <span class="math" data-tex="\(G_j\)">\(G_j\)</span>-invariants have dimension <span class="math" data-tex="\(|G|/|G_j|\)">\(|G|/|G_j|\)</span>. Thus
+<span class="math math-display" data-tex="\[
+a_F(\mathbf C[G])
+=\frac{|G|}{|G_0|}\sum_{j\geq0}(|G_j|-1)
+=f(T/F)\delta_{T/F}
+=v_F(\mathfrak d_{T/F}).
+\tag{44}
+\]">\[
+a_F(\mathbf C[G])
+=\frac{|G|}{|G_0|}\sum_{j\geq0}(|G_j|-1)
+=f(T/F)\delta_{T/F}
+=v_F(\mathfrak d_{T/F}).
+\tag{44}
+\]</span>
+For a global Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the restriction of <span class="math" data-tex="\(\mathbf C[\operatorname{Gal}(L/K)]\)">\(\mathbf C[\operatorname{Gal}(L/K)]\)</span> to a decomposition group is the direct sum of <span class="math" data-tex="\([G:D]\)">\([G:D]\)</span> copies of its regular representation: partition its basis into left <span class="math" data-tex="\(D\)">\(D\)</span>-orbits. Summing (44) therefore gives <span class="math" data-tex="\([G:D]f(T/F)\delta_{T/F}\)">\([G:D]f(T/F)\delta_{T/F}\)</span>. The completed global integer lattice is the product of the <span class="math" data-tex="\([G:D]\)">\([G:D]\)</span> local integer rings, and its trace determinant is the product of their trace determinants; hence that sum is exactly the valuation of <span class="math" data-tex="\(\mathfrak d_{L/K}\)">\(\mathfrak d_{L/K}\)</span>.</p>
+<p>Globally the regular character is <span class="math" data-tex="\(\sum_{\rho\in\operatorname{Irr}(G)}(\dim\rho)\chi_\rho\)">\(\sum_{\rho\in\operatorname{Irr}(G)}(\dim\rho)\chi_\rho\)</span>. Since (9) is linear in the character, the same discriminant exponent is <span class="math" data-tex="\(\sum_\rho(\dim\rho)a_{K_v}(\rho)\)">\(\sum_\rho(\dim\rho)a_{K_v}(\rho)\)</span>. Taking the ideal product over all finite places proves (20), with precisely the displayed multiplicities. General conductor integrality was proved in section 3, so the factors are actual integral ideals. For a non-Galois subfield, the analogous permutation computation (16) uses different transitivity to give its discriminant as well.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Finite-group character theory, induction and integer Brauer induction are supplied by the three exact written representation-theory lessons identified at the beginning. The number-field rank-one analytic theorem is supplied by the written Hecke lesson; the function-field argument is proved in section 6. Hilbert's different formula and Herbrand's quotient theorem have the written local-field providers identified in lesson 10. The central Artin conductor integrality and discriminant arguments themselves are proved here.</p>
+<p>The general local epsilon existence theorem and Deligne's orthogonal theorem have the exact existing provider <em>Local L-factors and epsilon-factors of Weil group representations</em>, §§3 and 7; their proofs are currently incomplete in that edition. The global invariant sum law used in section 8 is proved in this course's lesson 24, Theorem 24.4. Thus (42) has the full deduction above, with the two precisely identified local prerequisites still required in their owning course; the local theorem (41) is not claimed proved here. Artin's number-field conjecture remains a conjecture.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The ramified induction identities, conductor integrality, conductor–discriminant identity and meromorphic functional equation are proved using the named internal character and Fourier lessons. The function-field analytic argument is written in section 6. The orthogonal deduction retains the missing full local LG-GAL-06 theorem.</p>
+<ul>
+<li><a href="https://math.mit.edu/~poonen/786/notes.pdf">Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)</a>.</li>
+<li><a href="https://www.wwli.asia/downloads/YAlg1.pdf">Wen-Wei Li, Yanqi Lake Lectures on Algebra: Part 1</a>.</li>
+<li><a href="https://publications.ias.edu/sites/default/files/Number20.pdf">Pierre Deligne, Les constantes des équations fonctionnelles des fonctions L (1973), IAS archive</a>.</li>
+<li><a href="https://publications.ias.edu/sites/default/files/Number26.pdf">Pierre Deligne, Les constantes locales de l’équation fonctionnelle de la fonction L d’Artin d’une représentation orthogonale (1976), IAS archive</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.html">← Kronecker–Weber and the maximal abelian extension of the rationals</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-chebotarev-density-theorem.html">The Chebotarev density theorem →</a></span></nav>
+<p class="small source-link"><a href="files/artin-l-functions-conductors-and-discriminants.md">Markdown source of this lesson</a> · <a download href="files/artin-l-functions-conductors-and-discriminants.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

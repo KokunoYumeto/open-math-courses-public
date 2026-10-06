@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idèles in extensions and their cohomology · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/ideles-in-extensions-and-their-cohomology.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 13 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a></li><li><a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a></li><li><a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-03">Idèles and the idèle class group</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a></li></ul></details>
+<article class="lesson">
+<h1 id="idèles-in-extensions-and-their-cohomology">Idèles in extensions and their cohomology</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>A field extension replaces a place by the places above it. Its idèle norm multiplies the corresponding local norms. This lets us compute cyclic cohomology one place at a time. The resulting quotient of the idèle group is usually infinite; the principal idèles impose relations between those local obstructions.</p>
+<p>We use the definitions and restricted product topology in <em>Idèles and the idèle class group</em>, lesson 3 of <em>Adèles and L-functions</em>, the Hilbert 90 proof in <a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's theorem 90 and Kummer theory</a>, and finite local reciprocity in <a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a>. The cyclic Tate groups and Herbrand quotient are defined in <a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a>.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a global field and <span class="math" data-tex="\(L/K\)">\(L/K\)</span> a finite separable extension. A global field means a number field or a finite extension of a finite-field rational function field. For a place <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, write <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> for its extensions to <span class="math" data-tex="\(L\)">\(L\)</span>. The arguments below apply to either kind of global field. There are no archimedean places in the function-field case.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-13">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-embeddings-and-norms">1. Embeddings and norms</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+J_K=\prod_v&#x27;K_v^\times,\qquad C_K=J_K/K^\times,
+\]">\[
+J_K=\prod_v&#x27;K_v^\times,\qquad C_K=J_K/K^\times,
+\]</span>
+where the restricted product uses <span class="math" data-tex="\(U_v=\mathcal O_v^\times\)">\(U_v=\mathcal O_v^\times\)</span> at finite places. If <span class="math" data-tex="\(S\)">\(S\)</span> is a finite set containing the archimedean places, let <span class="math" data-tex="\(S_L\)">\(S_L\)</span> be its inverse image and put
+<span class="math math-display" data-tex="\[
+J_L^S=\prod_{w\in S_L}L_w^\times\times
+                \prod_{w\notin S_L}U_w.
+\tag{1}
+\]">\[
+J_L^S=\prod_{w\in S_L}L_w^\times\times
+                \prod_{w\notin S_L}U_w.
+\tag{1}
+\]</span>
+These are open subgroups, and their union is <span class="math" data-tex="\(J_L\)">\(J_L\)</span>.</p>
+<p>We recall the local decomposition in a form that also fixes the norm:
+<span class="math math-display" data-tex="\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w,\qquad
+\sum_{w\mid v}[L_w:K_v]=[L:K].
+\tag{2}
+\]">\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w,\qquad
+\sum_{w\mid v}[L_w:K_v]=[L:K].
+\tag{2}
+\]</span>
+Indeed, write <span class="math" data-tex="\(L=K[T]/(f)\)">\(L=K[T]/(f)\)</span> by a primitive element, factor its separable polynomial over <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, and apply the polynomial Chinese remainder theorem. Its irreducible factors give the finite extensions of <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. The image of <span class="math" data-tex="\(K[T]/(f)\)">\(K[T]/(f)\)</span> is dense in each such field, since <span class="math" data-tex="\(K\)">\(K\)</span> is dense in <span class="math" data-tex="\(K_v\)">\(K_v\)</span> and powers of its generator span that field. Thus those factors are exactly the completions at the extensions of <span class="math" data-tex="\(v\)">\(v\)</span>, proving (2).</p>
+<p>In the Galois case, <span class="math" data-tex="\(L_w\)">\(L_w\)</span> contains the images of all conjugates of the primitive element, since they already belong to <span class="math" data-tex="\(L\)">\(L\)</span>. Thus it splits <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(L_w/K_v\)">\(L_w/K_v\)</span> is Galois. Any local automorphism sends that primitive element to a global conjugate, so it preserves the dense subfield <span class="math" data-tex="\(L\)">\(L\)</span> and restricts to an element of <span class="math" data-tex="\(G\)">\(G\)</span> preserving <span class="math" data-tex="\(w\)">\(w\)</span>. Conversely every such global element extends continuously. This identifies the local group with <span class="math" data-tex="\(G_w\)">\(G_w\)</span>. Finally every other local factor has a root of <span class="math" data-tex="\(f\)">\(f\)</span>, which is some global conjugate in <span class="math" data-tex="\(L_w\)">\(L_w\)</span>; the resulting embedding is the embedding of <span class="math" data-tex="\(L\)">\(L\)</span> twisted by that global automorphism. Its induced place is a conjugate of <span class="math" data-tex="\(w\)">\(w\)</span>. Hence <span class="math" data-tex="\(G\)">\(G\)</span> acts transitively on the places above <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Only finitely many places ramify. One way to see the finiteness needed here is to choose a primitive element integral after excluding finitely many denominators. Its nonzero discriminant is a unit outside a finite further set. At such a finite place the reduction of its polynomial is separable; lifting its relatively prime factors gives unramified local factors. For a number field use integer rings; for a function field use the integral closure of a finite-field polynomial ring and include the places over infinity. This argument proves the same finite exceptional-set assertion in both cases.</p>
+<h3 id="proposition-13-1-extension-and-norm-maps">Proposition 13.1. Extension and norm maps</h3>
+<p>The diagonal embeddings at the places above <span class="math" data-tex="\(v\)">\(v\)</span> define a continuous injection <span class="math" data-tex="\(J_K\hookrightarrow J_L\)">\(J_K\hookrightarrow J_L\)</span>. The continuous norm is
+<span class="math math-display" data-tex="\[
+(N_{L/K}x)_v=\prod_{w\mid v}N_{L_w/K_v}(x_w).
+\tag{3}
+\]">\[
+(N_{L/K}x)_v=\prod_{w\mid v}N_{L_w/K_v}(x_w).
+\tag{3}
+\]</span>
+It sends principal idèles to their ordinary field norms, is transitive in towers, and sends an embedded <span class="math" data-tex="\(a\in J_K\)">\(a\in J_K\)</span> to <span class="math" data-tex="\(a^{[L:K]}\)">\(a^{[L:K]}\)</span>. It induces maps
+<span class="math math-display" data-tex="\[
+C_K\hookrightarrow C_L,\qquad N_{L/K}:C_L\longrightarrow C_K.
+\tag{4}
+\]">\[
+C_K\hookrightarrow C_L,\qquad N_{L/K}:C_L\longrightarrow C_K.
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> A local unit stays a unit on extension, and the norm of a local unit is a unit. Thus both formulas give idèles and are continuous on every restricted product chart. The diagonal map is injective because each component embedding is injective.</p>
+<p>In (2), multiplication by <span class="math" data-tex="\((x_w)\)">\((x_w)\)</span> is the product of the multiplication operators on the factors, so its determinant is (3). For a principal element <span class="math" data-tex="\(x\in L^\times\)">\(x\in L^\times\)</span>, this operator is the scalar extension of multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> on the <span class="math" data-tex="\(K\)">\(K\)</span>-vector space <span class="math" data-tex="\(L\)">\(L\)</span>. Its determinant is therefore <span class="math" data-tex="\(N_{L/K}(x)\)">\(N_{L/K}(x)\)</span>, independently of <span class="math" data-tex="\(v\)">\(v\)</span>. Transitivity follows from field-norm transitivity at the completions and regrouping the places. For <span class="math" data-tex="\(a_v\in K_v^\times\)">\(a_v\in K_v^\times\)</span>, the determinant is <span class="math" data-tex="\(a_v^{[L:K]}\)">\(a_v^{[L:K]}\)</span> by (2).</p>
+<p>To prove the first injection in (4), we need <span class="math" data-tex="\(J_K\cap L^\times=K^\times\)">\(J_K\cap L^\times=K^\times\)</span>. Embed <span class="math" data-tex="\(L\)">\(L\)</span> in a finite Galois extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span>. A diagonal idèle from <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is fixed by <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span>. If it is the principal idèle of <span class="math" data-tex="\(x\in L^\times\)">\(x\in L^\times\)</span>, each automorphism therefore fixes <span class="math" data-tex="\(x\)">\(x\)</span> in every completion and hence fixes <span class="math" data-tex="\(x\)">\(x\)</span> as an element of <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(x\in K^\times\)">\(x\in K^\times\)</span>. The norm map descends because of the principal-element calculation. ∎</p>
+<p>For Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the norm (3) is also the group-module norm <span class="math" data-tex="\(\prod_{g\in G}g(x)\)">\(\prod_{g\in G}g(x)\)</span>. This follows either from the determinant or by grouping the embeddings according to the place they induce.</p>
+<h2 id="2-galois-descent-for-classes">2. Galois descent for classes</h2>
+<p>Assume <span class="math" data-tex="\(L/K\)">\(L/K\)</span> Galois, with <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>. Its action on idèles is
+<span class="math math-display" data-tex="\[
+(g x)_w=g(x_{g^{-1}w}).
+\tag{5}
+\]">\[
+(g x)_w=g(x_{g^{-1}w}).
+\tag{5}
+\]</span>
+Here the last <span class="math" data-tex="\(g\)">\(g\)</span> denotes the induced isomorphism of completions.</p>
+<h3 id="proposition-13-2-fixed-idèles-and-fixed-classes">Proposition 13.2. Fixed idèles and fixed classes</h3>
+<p>With the embeddings just defined,
+<span class="math math-display" data-tex="\[
+J_L^G=J_K,\qquad C_L^G=C_K.
+\tag{6}
+\]">\[
+J_L^G=J_K,\qquad C_L^G=C_K.
+\tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> and its decomposition group <span class="math" data-tex="\(G_w\)">\(G_w\)</span>. The local field <span class="math" data-tex="\(L_w/K_v\)">\(L_w/K_v\)</span> is Galois with group <span class="math" data-tex="\(G_w\)">\(G_w\)</span>; this follows also from (2), since the global automorphisms permute its factors transitively and the stabilizer acts on one factor. A fixed idèle has <span class="math" data-tex="\(x_w\in L_w^{G_w}=K_v\)">\(x_w\in L_w^{G_w}=K_v\)</span>. Transitivity on the places above <span class="math" data-tex="\(v\)">\(v\)</span> then makes all their components the image of the same element of <span class="math" data-tex="\(K_v^\times\)">\(K_v^\times\)</span>. Almost all of these elements are units, proving the first equality.</p>
+<p>A fixed class need not initially have a fixed representative. If <span class="math" data-tex="\([x]\in C_L^G\)">\([x]\in C_L^G\)</span>, define
+<span class="math math-display" data-tex="\[
+a_g=\frac{g(x)}x\in L^\times.
+\]">\[
+a_g=\frac{g(x)}x\in L^\times.
+\]</span>
+These principal elements satisfy <span class="math" data-tex="\(a_{gh}=a_g\,g(a_h)\)">\(a_{gh}=a_g\,g(a_h)\)</span>. The full, noncyclic Hilbert 90 theorem proved in lesson 3 gives <span class="math" data-tex="\(a_g=g(b)/b\)">\(a_g=g(b)/b\)</span> for some <span class="math" data-tex="\(b\in L^\times\)">\(b\in L^\times\)</span>. Consequently <span class="math" data-tex="\(x/b\)">\(x/b\)</span> is fixed by every <span class="math" data-tex="\(g\)">\(g\)</span>, hence belongs to <span class="math" data-tex="\(J_K\)">\(J_K\)</span>, and represents <span class="math" data-tex="\([x]\)">\([x]\)</span>. Proposition 13.1 gives injectivity, proving the second equality. ∎</p>
+<p>This is the invariant part of the exact sequence <span class="math" data-tex="\(1\to L^\times\to J_L\to C_L\to1\)">\(1\to L^\times\to J_L\to C_L\to1\)</span>. Hilbert 90 supplies the surjectivity that invariants alone would not preserve.</p>
+<h2 id="3-a-cyclic-induction-calculation">3. A cyclic induction calculation</h2>
+<p>Suppose <span class="math" data-tex="\(G=\langle\sigma\rangle\)">\(G=\langle\sigma\rangle\)</span> has order <span class="math" data-tex="\(n\)">\(n\)</span>. Let <span class="math" data-tex="\(H=\langle\tau\rangle\)">\(H=\langle\tau\rangle\)</span>, <span class="math" data-tex="\(\tau=\sigma^r\)">\(\tau=\sigma^r\)</span>, be a subgroup, with <span class="math" data-tex="\(r=[G:H]\)">\(r=[G:H]\)</span>. We use additive notation for an abelian <span class="math" data-tex="\(H\)">\(H\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>. Its induced module is <span class="math" data-tex="\(B=M^r\)">\(B=M^r\)</span>, with
+<span class="math math-display" data-tex="\[
+\sigma(x_0,\ldots,x_{r-1})=(\tau x_{r-1},x_0,\ldots,x_{r-2}).
+\tag{7}
+\]">\[
+\sigma(x_0,\ldots,x_{r-1})=(\tau x_{r-1},x_0,\ldots,x_{r-2}).
+\tag{7}
+\]</span></p>
+<p><strong>Lemma.</strong> For <span class="math" data-tex="\(i=0,-1\)">\(i=0,-1\)</span>,
+<span class="math math-display" data-tex="\[
+\widehat H^i(G,B)\simeq\widehat H^i(H,M).
+\tag{8}
+\]">\[
+\widehat H^i(G,B)\simeq\widehat H^i(H,M).
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> Invariants in (7) are diagonal vectors <span class="math" data-tex="\((a,\ldots,a)\)">\((a,\ldots,a)\)</span> with <span class="math" data-tex="\(a\in M^H\)">\(a\in M^H\)</span>. If <span class="math" data-tex="\(N_H=1+\tau+\cdots+\tau^{n/r-1}\)">\(N_H=1+\tau+\cdots+\tau^{n/r-1}\)</span>, then
+<span class="math math-display" data-tex="\[
+N_G(x_0,\ldots,x_{r-1})
+=(N_H\textstyle\sum x_i,\ldots,N_H\sum x_i).
+\tag{9}
+\]">\[
+N_G(x_0,\ldots,x_{r-1})
+=(N_H\textstyle\sum x_i,\ldots,N_H\sum x_i).
+\tag{9}
+\]</span>
+Thus invariants modulo norms give (8) in degree zero.</p>
+<p>Summing coordinates modulo <span class="math" data-tex="\((\tau-1)M\)">\((\tau-1)M\)</span> identifies
+<span class="math math-display" data-tex="\[
+B/(\sigma-1)B\simeq M/(\tau-1)M.
+\tag{10}
+\]">\[
+B/(\sigma-1)B\simeq M/(\tau-1)M.
+\tag{10}
+\]</span>
+To check the kernel as well as surjectivity, in the left quotient each coordinate vector is equivalent to a vector in the first coordinate, by successive applications of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Returning after <span class="math" data-tex="\(r\)">\(r\)</span> steps identifies its value with its image under <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. These are precisely the relations in the right quotient; placing a value in the first coordinate gives the inverse. Under (10), the norm to invariants is exactly <span class="math" data-tex="\(N_H\)">\(N_H\)</span>, by (9). Its kernel is <span class="math" data-tex="\(\widehat H^{-1}\)">\(\widehat H^{-1}\)</span>, proving the other case. ∎</p>
+<p>For a chosen <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>, the identifications <span class="math" data-tex="\(L_w\simeq L_{\sigma^i w}\)">\(L_w\simeq L_{\sigma^i w}\)</span> identify
+<span class="math math-display" data-tex="\[
+B_v=\prod_{w&#x27;\mid v}L_{w&#x27;}^\times
+ \simeq\operatorname{Ind}_{G_w}^G L_w^\times.
+\tag{11}
+\]">\[
+B_v=\prod_{w&#x27;\mid v}L_{w&#x27;}^\times
+ \simeq\operatorname{Ind}_{G_w}^G L_w^\times.
+\tag{11}
+\]</span>
+The same holds for the unit groups at finite places. This is (7) written multiplicatively, not a trivial permutation action on the factors.</p>
+<h2 id="4-the-restricted-product-contributes-a-direct-sum">4. The restricted product contributes a direct sum</h2>
+<p>For a cyclic unramified local extension, both Tate groups of its units vanish. The unit norm is surjective by the unramified norm theorem used in lesson 6. For the other group, Hilbert 90 writes a norm-one unit as <span class="math" data-tex="\(\tau(b)/b\)">\(\tau(b)/b\)</span>. Since an unramified extension has the same valuation group and a ground-field uniformizer, divide <span class="math" data-tex="\(b\)">\(b\)</span> by the ground-field uniformizer to the power <span class="math" data-tex="\(v(b)\)">\(v(b)\)</span>. This makes <span class="math" data-tex="\(b\)">\(b\)</span> a unit without changing its coboundary. Thus
+<span class="math math-display" data-tex="\[
+\widehat H^0(G_w,U_w)=\widehat H^{-1}(G_w,U_w)=0
+\quad\text{at an unramified finite place.}
+\tag{12}
+\]">\[
+\widehat H^0(G_w,U_w)=\widehat H^{-1}(G_w,U_w)=0
+\quad\text{at an unramified finite place.}
+\tag{12}
+\]</span></p>
+<h3 id="proposition-13-3-local-decomposition-of-idèle-cohomology">Proposition 13.3. Local decomposition of idèle cohomology</h3>
+<p>For cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span> and <span class="math" data-tex="\(i=0,-1\)">\(i=0,-1\)</span>, restriction to the local factors gives
+<span class="math math-display" data-tex="\[
+\widehat H^i(G,J_L)
+\simeq\bigoplus_v\widehat H^i(G_w,L_w^\times).
+\tag{13}
+\]">\[
+\widehat H^i(G,J_L)
+\simeq\bigoplus_v\widehat H^i(G_w,L_w^\times).
+\tag{13}
+\]</span>
+In particular,
+<span class="math math-display" data-tex="\[
+J_K/N_{L/K}J_L
+\simeq\bigoplus_v K_v^\times/N_{L_w/K_v}L_w^\times,
+\qquad
+\widehat H^{-1}(G,J_L)=0.
+\tag{14}
+\]">\[
+J_K/N_{L/K}J_L
+\simeq\bigoplus_v K_v^\times/N_{L_w/K_v}L_w^\times,
+\qquad
+\widehat H^{-1}(G,J_L)=0.
+\tag{14}
+\]</span>
+One place <span class="math" data-tex="\(w\)">\(w\)</span> above each <span class="math" data-tex="\(v\)">\(v\)</span> is chosen; changing it transports the same local quotient by a <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-isomorphism.</p>
+<p><strong>Proof.</strong> Take finite <span class="math" data-tex="\(S\)">\(S\)</span> containing the archimedean and ramified places. Invariants, the norm kernel and the image of <span class="math" data-tex="\(\sigma-1\)">\(\sigma-1\)</span> commute with arbitrary products of modules: the assertions are componentwise, and for the image choose one preimage in each component. Hence (8), (11) and (12) give
+<span class="math math-display" data-tex="\[
+\widehat H^i(G,J_L^S)
+=\prod_{v\in S}\widehat H^i(G_w,L_w^\times).
+\tag{15}
+\]">\[
+\widehat H^i(G,J_L^S)
+=\prod_{v\in S}\widehat H^i(G_w,L_w^\times).
+\tag{15}
+\]</span>
+There is no tail contribution. Passing to the union over finite <span class="math" data-tex="\(S\)">\(S\)</span> changes this finite product into a direct sum. More explicitly, a norm-zero or fixed representative belongs to some <span class="math" data-tex="\(J_L^S\)">\(J_L^S\)</span>, and a relation exhibiting a norm or coboundary also belongs to some such chart; only finitely many group operations occur. Thus kernels and the relevant images pass to the filtered union, proving (13).</p>
+<p>Degree zero is invariants modulo norms, and (6) identifies invariants with <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. Local degree zero is <span class="math" data-tex="\(K_v^\times/N L_w^\times\)">\(K_v^\times/N L_w^\times\)</span>, proving the first formula in (14). The local degree-minus-one group is zero by Hilbert 90, including at archimedean fields. This proves the last assertion. ∎</p>
+<p>There is a concrete interpretation of the first formula. A fixed idèle is a unit at almost all unramified places, and those units are local norms. Thus it has only finitely many nonzero obstruction classes. Conversely any finite list of local classes can be represented by an idèle. If all its local classes vanish, choose norm preimages that are units outside a finite set, using (12); these preimages form an idèle whose norm is the given one.</p>
+<h2 id="5-the-quotient-for-a-finite-set-of-places">5. The quotient for a finite set of places</h2>
+<h3 id="proposition-13-4-the-herbrand-quotient-of-s--idèles">Proposition 13.4. The Herbrand quotient of <span class="math" data-tex="\(S\)">\(S\)</span>-idèles</h3>
+<p>For cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, with <span class="math" data-tex="\(S\)">\(S\)</span> finite and containing all archimedean and ramified places,
+<span class="math math-display" data-tex="\[
+h(G,J_L^S)=\prod_{v\in S}[L_w:K_v].
+\tag{16}
+\]">\[
+h(G,J_L^S)=\prod_{v\in S}[L_w:K_v].
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Formula (15) makes both Tate groups finite. For a finite cyclic extension of nonarchimedean local fields, finite reciprocity gives norm index <span class="math" data-tex="\([L_w:K_v]\)">\([L_w:K_v]\)</span>, and Hilbert 90 gives degree-minus-one group zero. Their Herbrand quotient is therefore <span class="math" data-tex="\([L_w:K_v]\)">\([L_w:K_v]\)</span>. At a real place that becomes complex, the norm image is <span class="math" data-tex="\(\mathbf R_{&gt;0}\)">\(\mathbf R_{&gt;0}\)</span>, of index 2, and a norm-one complex number is <span class="math" data-tex="\(z/\bar z\)">\(z/\bar z\)</span>; hence the same quotient is 2. Every other archimedean local degree is 1 and contributes 1. Multiply these local orders in (15), with no tail contribution by (12). ∎</p>
+<p>The quotient <span class="math" data-tex="\(h(G,J_L)\)">\(h(G,J_L)\)</span> need not be defined: its degree-zero Tate group may be infinite. Formula (16) concerns the specified open subgroup, not the whole idèle group.</p>
+<h2 id="6-an-infinite-local-quotient-and-a-finite-class-quotient">6. An infinite local quotient and a finite class quotient</h2>
+<p>Consider <span class="math" data-tex="\(L=\mathbf Q(i)\)">\(L=\mathbf Q(i)\)</span>, <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span>. At an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the polynomial <span class="math" data-tex="\(T^2+1\)">\(T^2+1\)</span> splits if <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, and otherwise gives the unramified quadratic extension. This follows from cyclicity of the residue-field units and the simple-root lifting theorem. At 2 its completion is the ramified quadratic field <span class="math" data-tex="\(\mathbf Q_2(i)\)">\(\mathbf Q_2(i)\)</span>. The real completion becomes complex.</p>
+<p>The norm groups proved in lessons 6 and 10 therefore give
+<span class="math math-display" data-tex="\[
+J_{\mathbf Q}/N J_{\mathbf Q(i)}
+\simeq \mathbf Z/2\ \oplus\ \mathbf Z/2\
+        \oplus\!\!\bigoplus_{p\equiv3\ (4)}\mathbf Z/2.
+\tag{17}
+\]">\[
+J_{\mathbf Q}/N J_{\mathbf Q(i)}
+\simeq \mathbf Z/2\ \oplus\ \mathbf Z/2\
+        \oplus\!\!\bigoplus_{p\equiv3\ (4)}\mathbf Z/2.
+\tag{17}
+\]</span>
+The first coordinate is the real sign. The second sends <span class="math" data-tex="\(x_2=2^\alpha u\)">\(x_2=2^\alpha u\)</span> to the class of its odd unit <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(1+4\mathbf Z_2\)">\(1+4\mathbf Z_2\)</span>. The <span class="math" data-tex="\(p\)">\(p\)</span>-coordinate is <span class="math" data-tex="\(v_p(x_p)\)">\(v_p(x_p)\)</span> modulo 2. Split primes contribute zero.</p>
+<p>There are infinitely many primes <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>: from a putative finite list take <span class="math" data-tex="\(4\prod p-1\)">\(4\prod p-1\)</span>. It is <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>, none of the listed primes divides it, and some prime factor is <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>, since a product of primes all <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span> cannot be <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>. Thus (17) is infinite.</p>
+<p>We can also compute the class quotient here without assuming global reciprocity. Let <span class="math" data-tex="\(e_\infty,e_2,e_p\)">\(e_\infty,e_2,e_p\)</span> be the coordinate generators in (17). The image of the principal idèle <span class="math" data-tex="\(-1\)">\(-1\)</span> is <span class="math" data-tex="\(e_\infty+e_2\)">\(e_\infty+e_2\)</span>; that of a prime <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span> is <span class="math" data-tex="\(e_2+e_p\)">\(e_2+e_p\)</span>. Principal primes <span class="math" data-tex="\(1\pmod4\)">\(1\pmod4\)</span> and the prime 2 have zero image. These elements generate the full principal image, since <span class="math" data-tex="\(\mathbf Q^\times\)">\(\mathbf Q^\times\)</span> is generated by <span class="math" data-tex="\(-1\)">\(-1\)</span> and its primes. The quotient by these relations identifies every coordinate generator with <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, and the sum of all coordinates remains a nonzero invariant. Consequently
+<span class="math math-display" data-tex="\[
+C_{\mathbf Q}/N C_{\mathbf Q(i)}\simeq\mathbf Z/2.
+\tag{18}
+\]">\[
+C_{\mathbf Q}/N C_{\mathbf Q(i)}\simeq\mathbf Z/2.
+\tag{18}
+\]</span>
+Every sum here has finite support. The passage from (17) to (18) displays the relations imposed by principal idèles.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<h3 id="exercise-1-the-norm-image-is-open-easy">Exercise 1. The norm image is open — easy</h3>
+<p>For finite separable <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, prove that <span class="math" data-tex="\(N J_L\)">\(N J_L\)</span> is open in <span class="math" data-tex="\(J_K\)">\(J_K\)</span>.</p>
+<p><strong>Solution.</strong> A norm subgroup for any finite extension of nonarchimedean local fields is open: embed it in a finite Galois extension, whose norm subgroup is open by local reciprocity, and use norm transitivity to put that open subgroup inside the original norm image. At infinity a norm image is the whole local multiplicative group or the positive real subgroup; both are open. Choose finite <span class="math" data-tex="\(S\)">\(S\)</span> containing ramification and infinity. At each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, the product of the local norm images is an open subgroup <span class="math" data-tex="\(V_v\subset K_v^\times\)">\(V_v\subset K_v^\times\)</span>. Outside <span class="math" data-tex="\(S\)">\(S\)</span>, every unit is a norm of a unit from any one unramified factor. Thus
+<span class="math math-display" data-tex="\[
+\prod_{v\in S}V_v\times\prod_{v\notin S}U_v
+\subset N J_L.
+\]">\[
+\prod_{v\in S}V_v\times\prod_{v\notin S}U_v
+\subset N J_L.
+\]</span>
+Choose the corresponding preimages componentwise; their unit tails make them idèles. The displayed group is an open identity neighborhood, so the subgroup <span class="math" data-tex="\(N J_L\)">\(N J_L\)</span> is open. Infinite index is compatible with openness.</p>
+<h3 id="exercise-2-fixed-classes-medium">Exercise 2. Fixed classes — medium</h3>
+<p>Prove that every <span class="math" data-tex="\(G\)">\(G\)</span>-fixed idèle class has a fixed representative. Identify where Hilbert 90 enters.</p>
+<p><strong>Solution.</strong> Choose representative <span class="math" data-tex="\(x\)">\(x\)</span>. Fixedness means <span class="math" data-tex="\(g(x)/x=a_g\in L^\times\)">\(g(x)/x=a_g\in L^\times\)</span>, and the action gives <span class="math" data-tex="\(a_{gh}=a_g g(a_h)\)">\(a_{gh}=a_g g(a_h)\)</span>. Hilbert 90 for the full finite Galois group gives <span class="math" data-tex="\(a_g=g(b)/b\)">\(a_g=g(b)/b\)</span>. Then <span class="math" data-tex="\(g(x/b)=x/b\)">\(g(x/b)=x/b\)</span>, so the representative is in <span class="math" data-tex="\(J_L^G=J_K\)">\(J_L^G=J_K\)</span>. Its class is unchanged. Injection follows from <span class="math" data-tex="\(J_K\cap L^\times=K^\times\)">\(J_K\cap L^\times=K^\times\)</span>. The cocycle could not be removed merely by applying an exactness claim to invariants; Hilbert 90 is precisely the missing surjectivity step.</p>
+<h3 id="exercise-3-the-quadratic-rational-example-medium">Exercise 3. The quadratic rational example — medium</h3>
+<p>Describe the quotient in (17), provide a representative for each coordinate generator, and derive (18).</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(e_\infty\)">\(e_\infty\)</span>, use real component <span class="math" data-tex="\(-1\)">\(-1\)</span> and all finite components 1. For <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, use component 3 at 2 and all other components 1. For <span class="math" data-tex="\(e_p\)">\(e_p\)</span>, use a uniformizer <span class="math" data-tex="\(p\)">\(p\)</span> at that inert prime and 1 elsewhere. Their local norms fail exactly at the indicated place. Local unramified norms have even valuation and arbitrary unit; the norm group at 2 is <span class="math" data-tex="\(2^{\mathbf Z}(1+4\mathbf Z_2)\)">\(2^{\mathbf Z}(1+4\mathbf Z_2)\)</span>; the real norm is positive; at split primes it is surjective. This proves the coordinate description, its independence and its exhaustiveness by (14). On principal elements, <span class="math" data-tex="\(-1\)">\(-1\)</span> gives <span class="math" data-tex="\(e_\infty+e_2\)">\(e_\infty+e_2\)</span>, each inert prime gives <span class="math" data-tex="\(e_2+e_p\)">\(e_2+e_p\)</span>, and the remaining prime generators give zero. Quotienting by their span identifies all generators, leaving a single group of order 2 detected by the sum of coordinates. This is the class quotient because <span class="math" data-tex="\(N C_L\)">\(N C_L\)</span> is the image of <span class="math" data-tex="\(N J_L\)">\(N J_L\)</span> after quotienting by <span class="math" data-tex="\(\mathbf Q^\times\)">\(\mathbf Q^\times\)</span>.</p>
+<h3 id="exercise-4-proving-the-decomposition-directly-hard">Exercise 4. Proving the decomposition directly — hard</h3>
+<p>Prove both degrees of (13), keeping track of restricted-product support and the twisted action on a block.</p>
+<p><strong>Solution.</strong> For a place block choose the cosets <span class="math" data-tex="\(1,\sigma,\ldots,\sigma^{r-1}\)">\(1,\sigma,\ldots,\sigma^{r-1}\)</span> of <span class="math" data-tex="\(G_w=\langle\sigma^r\rangle\)">\(G_w=\langle\sigma^r\rangle\)</span>, and identify the components using these automorphisms. The action is the twisted cycle (7). Its invariants are diagonal <span class="math" data-tex="\(G_w\)">\(G_w\)</span>-invariants; its norm is (9). Thus degree zero reduces to the local degree-zero quotient. The sum map (10), with inverse given by the first coordinate, reduces the kernel of the norm on coinvariants to <span class="math" data-tex="\(\ker N_{G_w}/(\sigma^r-1)L_w^\times\)">\(\ker N_{G_w}/(\sigma^r-1)L_w^\times\)</span>; this proves degree minus one, too.</p>
+<p>An idèle belongs to a chart with only finitely many unrestricted places. At every remaining place the unit Tate groups vanish by unramified unit norms and the unit-adjusted Hilbert 90 argument. For the product of those tails, choose the local preimages all in unit blocks, so they form a restricted-product preimage. Hence the chart's cohomology is the finite product in (15). A representative or a finite algebraic relation involves only one sufficiently large chart. Taking their union therefore produces the direct sum over all places, not an unrestricted product of local obstruction groups.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Section 1 gives the local tensor decomposition from the primitive element and polynomial remainder lemmas of lesson 1. Subsequent sections prove norms, invariant class descent and the induced local calculation in the restricted product.</p>
+<ul>
+<li><a href="https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf">Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="weil-groups-and-one-dimensional-representations.html">← Weil groups and one-dimensional representations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group →</a></span></nav>
+<p class="small source-link"><a href="files/ideles-in-extensions-and-their-cohomology.md">Markdown source of this lesson</a> · <a download href="files/ideles-in-extensions-and-their-cohomology.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spectral spaces and affine realization · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/spectral-spaces-and-affine-realization.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="spectral-spaces-and-affine-realization">Spectral spaces and
+affine realization</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra
+setting, October 2026. Original exposition, CC0. Independent AI review
+has not been completed.</em></p>
+<p>The first lesson associated a space to a ring. We now solve the
+reverse problem: which spaces can arise? A <strong>spectral
+space</strong> is a sober, quasi-compact space with a basis of
+quasi-compact open sets closed under finite intersection. Sobriety
+includes the uniqueness of generic points, hence the separation
+condition <span class="math inline">\(T_0\)</span>. Hochster’s theorem
+says that these conditions suffice, with no finiteness or countability
+assumption.</p>
+<p>Read <a href="AG-CA-01.html">Spectra of rings</a>, especially the
+radical criterion in Theorem 1.2 and the spectral-space proof in
+Solution 7.5, first. We use elementary polynomial rings, fraction fields
+and Zorn’s lemma. Weighted valuations and the new topology used in the
+construction are developed here. The proof follows Hochster’s
+mathematical construction in <em>Prime ideal structure in commutative
+rings</em>, §§2–7, with a fixed infinite ground field, explicit checks
+of the controlled-division step, and a direct recovery of every prime
+ideal. No functorial realization theorem is assumed.</p>
+<h2 id="keeping-track-of-both-membership-and-nonmembership">1. Keeping
+track of both membership and nonmembership</h2>
+<p>Let <span class="math inline">\(\mathcal Q\)</span> be the set of
+quasi-compact open subsets of a spectral space <span
+class="math inline">\(X\)</span>. It contains <span
+class="math inline">\(X,\varnothing\)</span> and is closed under finite
+unions and intersections. Every quasi-compact open is a finite union of
+members of the given basis, so this follows even if the definition
+initially specified only a basis.</p>
+<p>The <strong>patch topology</strong> is generated by all <span
+class="math inline">\(U\in\mathcal Q\)</span> and their complements.
+Thus every such <span class="math inline">\(U\)</span> is clopen in this
+finer topology.</p>
+<p><strong>Lemma 1.1.</strong> The patch topology is compact and
+Hausdorff.</p>
+<p><strong>Proof.</strong> Distinct points are distinguished by an
+original open set, hence by a member of <span
+class="math inline">\(\mathcal Q\)</span>; that set and its complement
+separate them in the patch topology.</p>
+<p>For compactness, let <span class="math inline">\(\mathcal F\)</span>
+be an ultrafilter of subsets of <span class="math inline">\(X\)</span>.
+Put <span class="math inline">\(\mathcal I=\{U\in\mathcal
+Q:U\notin\mathcal F\}\)</span>. It is closed under finite unions and
+passage to smaller members of <span class="math inline">\(\mathcal
+Q\)</span>. Define</p>
+<p><span class="math display">\[
+C=X\setminus\bigcup_{U\in\mathcal I}U.
+\]</span></p>
+<p>The set <span class="math inline">\(C\)</span> is nonempty: otherwise
+quasi-compactness of <span class="math inline">\(X\)</span> would give a
+finite subcover from <span class="math inline">\(\mathcal I\)</span>,
+putting <span class="math inline">\(X\)</span> in <span
+class="math inline">\(\mathcal I\)</span>. If <span
+class="math inline">\(U\in\mathcal Q\cap\mathcal F\)</span>, then <span
+class="math inline">\(U\cap C\ne\varnothing\)</span>. Indeed, a cover of
+<span class="math inline">\(U\)</span> by members of <span
+class="math inline">\(\mathcal I\)</span> would have a finite subcover,
+contradicting <span class="math inline">\(U\in\mathcal F\)</span>.
+Conversely, a member of <span class="math inline">\(\mathcal Q\)</span>
+meeting <span class="math inline">\(C\)</span> cannot belong to <span
+class="math inline">\(\mathcal I\)</span>.</p>
+<p>Any two original opens meeting <span class="math inline">\(C\)</span>
+therefore contain members <span class="math inline">\(U,V\)</span> of
+<span class="math inline">\(\mathcal Q\cap\mathcal F\)</span>. Their
+intersection belongs to the filter and meets <span
+class="math inline">\(C\)</span>. Thus <span
+class="math inline">\(C\)</span> is irreducible and closed. Let <span
+class="math inline">\(x\)</span> be its unique generic point. An
+original open meets <span
+class="math inline">\(C=\overline{\{x\}}\)</span> exactly when it
+contains <span class="math inline">\(x\)</span>. Consequently</p>
+<p><span class="math display">\[
+x\in U\quad\Longleftrightarrow\quad U\in\mathcal F
+\qquad(U\in\mathcal Q).
+\]</span></p>
+<p>Every patch neighborhood of <span class="math inline">\(x\)</span>
+belongs to <span class="math inline">\(\mathcal F\)</span>, since a
+basic one is a finite intersection of sets <span
+class="math inline">\(U\)</span> or <span
+class="math inline">\(X\setminus U\)</span> having the corresponding
+membership. Hence every ultrafilter converges. This proves compactness:
+if a family of patch-closed sets has the finite-intersection property,
+extend the filter it generates to an ultrafilter by Zorn; a limit point
+lies in every closed member. The empty space is compact separately.
+<span class="math inline">\(\square\)</span></p>
+<p>Write <span class="math inline">\(y\rightsquigarrow x\)</span> when
+<span class="math inline">\(x\in\overline{\{y\}}\)</span>. Original
+opens contain <span class="math inline">\(y\)</span> whenever they
+contain <span class="math inline">\(x\)</span>.</p>
+<p><strong>Lemma 1.2.</strong> A patch-closed subset <span
+class="math inline">\(E\)</span> is closed in the original topology if
+and only if it contains every specialization of each of its points. A
+patch-clopen subset with this property has a quasi-compact original-open
+complement.</p>
+<p><strong>Proof.</strong> The forward implication is immediate. If
+<span class="math inline">\(x\)</span> is in the original closure of
+<span class="math inline">\(E\)</span>, every finite intersection of
+quasi-compact open neighborhoods of <span
+class="math inline">\(x\)</span> meets <span
+class="math inline">\(E\)</span>. Patch compactness gives a point <span
+class="math inline">\(y\in E\)</span> in all these neighborhoods. Every
+original neighborhood of <span class="math inline">\(x\)</span> contains
+such a basis member, so <span class="math inline">\(y\rightsquigarrow
+x\)</span>. Specialization stability puts <span
+class="math inline">\(x\)</span> in <span
+class="math inline">\(E\)</span>. For the final assertion, the
+complement is original-open and patch-compact. Any original-open cover
+is also a patch-open cover, so has a finite subcover. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="functions-whose-nonzero-sets-are-the-desired-opens">2. Functions
+whose nonzero sets are the desired opens</h2>
+<p>Assume <span class="math inline">\(X\ne\varnothing\)</span>, and fix
+<span class="math inline">\(k=\mathbb Q\)</span>. Introduce
+algebraically independent variables <span
+class="math inline">\(t_U\)</span> for <span
+class="math inline">\(U\in\mathcal Q\)</span>, and let <span
+class="math inline">\(K=k(t_U:U\in\mathcal Q)\)</span>. Define a
+function</p>
+<p><span class="math display">\[
+e_U(x)=\begin{cases}t_U&amp;x\in U,\\0&amp;x\notin U.\end{cases}
+\]</span></p>
+<p>Let <span class="math inline">\(A_0\subset K^X\)</span> be the <span
+class="math inline">\(k\)</span>-algebra generated by these functions.
+For a function <span class="math inline">\(a\)</span>, put <span
+class="math inline">\(D_X(a)=\{x:a(x)\ne0\}\)</span> and <span
+class="math inline">\(Z_X(a)=X\setminus D_X(a)\)</span>.</p>
+<p>An element of <span class="math inline">\(A_0\)</span> is a
+polynomial in finitely many <span class="math inline">\(e_U\)</span>’s.
+Combine like monomials first. At a point, some monomials vanish;
+distinct surviving monomials remain distinct monomials in independent
+variables. They cannot cancel. Thus its nonzero set is the union of the
+finitely many intersections of opens corresponding to its nonconstant
+monomials, together with <span class="math inline">\(X\)</span> if it
+has a nonzero constant term. In particular every <span
+class="math inline">\(D_X(a)\)</span> is quasi-compact open, and the
+sets <span class="math inline">\(D_X(e_U)=U\)</span> form a basis. Every
+function in <span class="math inline">\(A_0\)</span> has finite image in
+<span class="math inline">\(K\)</span>.</p>
+<p>Evaluation at a point has a domain as its image. Therefore its kernel
+is a prime ideal. The difficulty is that <span
+class="math inline">\(A_0\)</span> can have additional primes. We will
+add functions to eliminate exactly those additional primes, preserving
+all the nonzero sets as quasi-compact opens.</p>
+<h2 id="orders-of-vanishing-along-a-specialization">3. Orders of
+vanishing along a specialization</h2>
+<p>For <span class="math inline">\(y\rightsquigarrow x\)</span>, the
+image <span class="math inline">\(A_0(y)\)</span> is the polynomial ring
+generated by <span class="math inline">\(t_U\)</span> with <span
+class="math inline">\(y\in U\)</span>. Give such a variable weight zero
+if <span class="math inline">\(x\in U\)</span>, and weight one
+otherwise. For a nonzero polynomial define <span
+class="math inline">\(v_{y,x}\)</span> as the smallest weight of its
+surviving monomials. Minimal-weight homogeneous parts multiply without
+becoming zero, since their polynomial ring is a domain. Hence</p>
+<p><span class="math display">\[
+v(fg)=v(f)+v(g),\qquad v(f+g)\ge\min(v(f),v(g))
+\]</span></p>
+<p>whenever the expressions are nonzero. Extend to the fraction field of
+<span class="math inline">\(A_0(y)\)</span> by <span
+class="math inline">\(v(f/g)=v(f)-v(g)\)</span>. The product identity
+makes this independent of the chosen fraction. The valuation may be
+trivial; this includes <span class="math inline">\(x=y\)</span>.</p>
+<p>For <span class="math inline">\(a\in A_0\)</span> with <span
+class="math inline">\(a(y)\ne0\)</span>,</p>
+<p><span class="math display">\[
+v_{y,x}(a(y))\ge0,\qquad
+v_{y,x}(a(y))=0\ \Longleftrightarrow\ a(x)\ne0.
+\tag{1}
+\]</span></p>
+<p>The weight-zero monomials are precisely those surviving at <span
+class="math inline">\(x\)</span>, proving (1). For each fixed <span
+class="math inline">\(a\)</span>, the values in (1) are bounded above by
+its polynomial degree, uniformly over all relevant pairs.</p>
+<p>We retain the following three properties as functions are added:
+their nonzero sets are quasi-compact open; (1) holds for the same
+valuations on their evaluation fraction fields; and each function has a
+uniform finite upper bound for the nonnegative valuations of its nonzero
+values. Every new value at <span class="math inline">\(y\)</span> will
+lie in the original fraction field of <span
+class="math inline">\(A_0(y)\)</span>.</p>
+<h2 id="division-with-control-at-the-zero-set">4. Division with control
+at the zero set</h2>
+<p>Suppose a ring <span class="math inline">\(A\subset K^X\)</span>
+containing <span class="math inline">\(A_0\)</span> has these three
+properties and all its functions have finite image. For <span
+class="math inline">\(a,b\in A\)</span> with <span
+class="math inline">\(Z_X(b)\subseteq Z_X(a)\)</span>, define</p>
+<p><span class="math display">\[
+h(x)=\begin{cases}a(x)/b(x)&amp;b(x)\ne0,\\0&amp;b(x)=0.\end{cases}
+\tag{2}
+\]</span></p>
+<p>Allow this function to be adjoined when, for every <span
+class="math inline">\(y\rightsquigarrow x\)</span> with <span
+class="math inline">\(a(y)\ne0\)</span>,</p>
+<p><span class="math display">\[
+v_{y,x}(a(y))\ge v_{y,x}(b(y)),
+\quad\text{with strict inequality if }b(x)=0.
+\tag{3}
+\]</span></p>
+<p>The denominator is nonzero at <span class="math inline">\(y\)</span>
+by the zero-set inclusion.</p>
+<p><strong>Lemma 4.1.</strong> Under (3), adjoining <span
+class="math inline">\(h\)</span> preserves all three properties and
+finite images.</p>
+<p><strong>Proof.</strong> Consider <span
+class="math inline">\(r=\sum_{i=0}^m c_i h^i\)</span> and the old
+function <span class="math inline">\(c=\sum_{i=0}^m c_i a^i
+b^{m-i}\)</span>. On <span class="math inline">\(D_X(b)\)</span>, <span
+class="math inline">\(c=b^m r\)</span>; on <span
+class="math inline">\(Z_X(b)\)</span>, <span
+class="math inline">\(r=c_0\)</span>. Thus</p>
+<p><span class="math display">\[
+D_X(r)=(D_X(c)\cap D_X(b))\cup(D_X(c_0)\cap Z_X(b))
+\tag{4}
+\]</span></p>
+<p>is patch-clopen.</p>
+<p>Its complement is stable under specialization. Suppose <span
+class="math inline">\(r(y)=0\)</span> and <span
+class="math inline">\(y\rightsquigarrow x\)</span>. If <span
+class="math inline">\(b(x)\ne0\)</span>, then <span
+class="math inline">\(b(y)\ne0\)</span>, so <span
+class="math inline">\(c(y)=0\)</span> and therefore <span
+class="math inline">\(c(x)=0\)</span>, giving <span
+class="math inline">\(r(x)=0\)</span>. If <span
+class="math inline">\(b(x)=0=b(y)\)</span>, then <span
+class="math inline">\(c_0(y)=0\)</span> implies <span
+class="math inline">\(c_0(x)=0\)</span>. In the remaining case <span
+class="math inline">\(b(y)\ne0\)</span> and <span
+class="math inline">\(b(x)=0\)</span>, if <span
+class="math inline">\(a(y)=0\)</span>, again <span
+class="math inline">\(r(y)=c_0(y)=0\)</span>. Otherwise (3) gives <span
+class="math inline">\(v(h(y))&gt;0\)</span>. Every nonconstant term
+<span class="math inline">\(c_i(y)h(y)^i\)</span> then has positive
+valuation when nonzero. Their sum equals <span
+class="math inline">\(-c_0(y)\)</span>; hence either <span
+class="math inline">\(c_0(y)=0\)</span>, or its valuation is positive.
+Property (1) gives <span class="math inline">\(c_0(x)=0\)</span> in
+either case. As <span class="math inline">\(h(x)=0\)</span>, we have
+<span class="math inline">\(r(x)=0\)</span>. Lemma 1.2 now makes (4)
+quasi-compact original-open.</p>
+<p>We also verify (1) for <span class="math inline">\(r\)</span>. If
+<span class="math inline">\(r(y)\ne0\)</span> and <span
+class="math inline">\(b(y)=0\)</span>, then <span
+class="math inline">\(b(x)=0\)</span>, and both values of <span
+class="math inline">\(r\)</span> are those of <span
+class="math inline">\(c_0\)</span>. If <span
+class="math inline">\(b(y)\ne0\)</span>, all nonzero terms have
+nonnegative valuation by (3). When <span
+class="math inline">\(b(x)\ne0\)</span>, <span
+class="math inline">\(v(b(y))=0\)</span>, and <span
+class="math inline">\(c=b^mr\)</span> gives <span
+class="math inline">\(v(r(y))=0\)</span> exactly when <span
+class="math inline">\(c(x)\ne0\)</span>, or equivalently <span
+class="math inline">\(r(x)\ne0\)</span>. When <span
+class="math inline">\(b(x)=0\)</span>, the nonconstant terms have
+positive valuation, unless <span class="math inline">\(a(y)=0\)</span>,
+in which case they vanish. Thus <span
+class="math inline">\(v(r(y))=0\)</span> exactly when <span
+class="math inline">\(c_0(x)\ne0\)</span>, again the required
+condition.</p>
+<p>Finally, if <span class="math inline">\(b(y)\ne0\)</span> and <span
+class="math inline">\(r(y)\ne0\)</span>, then <span
+class="math inline">\(c(y)\ne0\)</span> and <span
+class="math inline">\(v(r(y))=v(c(y))-m v(b(y))\le N_c\)</span>, where
+<span class="math inline">\(N_c\)</span> is an old uniform bound. If
+<span class="math inline">\(b(y)=0\)</span>, use <span
+class="math inline">\(N_{c_0}\)</span>. A uniform bound is therefore
+<span class="math inline">\(\max(N_c,N_{c_0})\)</span>. The values of
+<span class="math inline">\(h\)</span> form a finite set, since the
+values of <span class="math inline">\(a,b\)</span> do; a polynomial in
+finitely many finite-image functions also has finite image. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="making-every-zero-set-containment-algebraic">5. Making every
+zero-set containment algebraic</h2>
+<p>At each stage adjoin all functions (2) satisfying (3), and take the
+union over the stages <span class="math inline">\(A_0\subset A_1\subset
+A_2\subset\cdots\)</span>. This is a construction with sets: all rings
+are subrings of the fixed set <span class="math inline">\(K^X\)</span>.
+To justify adjoining many functions at once, each polynomial uses only
+finitely many of them. Adjoin those finitely many successively. Old
+evaluation fraction fields are unchanged, and the valuations of old
+functions are unchanged, so each old pair still satisfies (3). Lemma 4.1
+applies successively. Its conclusions then pass to the union <span
+class="math inline">\(A\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> In <span
+class="math inline">\(A\)</span>, if <span
+class="math inline">\(Z_X(b)\subseteq Z_X(a)\)</span>, then <span
+class="math inline">\(a\in\sqrt{(b)}\)</span>.</p>
+<p><strong>Proof.</strong> The two functions belong to some common
+stage. Let <span class="math inline">\(N\ge0\)</span> bound all
+valuations of nonzero values of <span class="math inline">\(b\)</span>.
+The pair <span class="math inline">\((a^{N+1},b)\)</span> satisfies (3):
+if <span class="math inline">\(b(x)\ne0\)</span>, its valuation is zero
+and the numerator has nonnegative valuation. If <span
+class="math inline">\(b(x)=0\)</span>, then <span
+class="math inline">\(a(x)=0\)</span>; for <span
+class="math inline">\(a(y)\ne0\)</span>, the integer valuation of <span
+class="math inline">\(a(y)\)</span> is at least one. Thus <span
+class="math inline">\((N+1)v(a(y))&gt;v(b(y))\)</span>. At the next
+stage the quotient extended by zero is present, and multiplying it by
+<span class="math inline">\(b\)</span> gives <span
+class="math inline">\(a^{N+1}\)</span> at every point. The identity
+holds also where <span class="math inline">\(b=0\)</span>, because <span
+class="math inline">\(a=0\)</span> there. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Lemma 5.2.</strong> For finitely many <span
+class="math inline">\(b_i\in A\)</span>, their ideal contains a function
+<span class="math inline">\(c\)</span> with <span
+class="math inline">\(D_X(c)=\bigcup_i D_X(b_i)\)</span>.</p>
+<p><strong>Proof.</strong> For two functions, choose <span
+class="math inline">\(\lambda\in\mathbb Q\)</span> such that <span
+class="math inline">\(b_1(x)+\lambda b_2(x)\ne0\)</span> whenever at
+least one summand function is nonzero. Where <span
+class="math inline">\(b_2\ne0\)</span>, failure forbids only the value
+<span class="math inline">\(-b_1(x)/b_2(x)\)</span>. There are finitely
+many forbidden values because both functions have finite image. The
+infinite field <span class="math inline">\(\mathbb Q\)</span> therefore
+supplies a choice outside them. Where <span
+class="math inline">\(b_2=0\)</span>, no cancellation is possible. Take
+<span class="math inline">\(c=b_1+\lambda b_2\)</span>, and iterate. The
+empty list uses <span class="math inline">\(c=0\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Combining the two results gives the full criterion</p>
+<p><span class="math display">\[
+\bigcap_i Z_X(b_i)\subseteq Z_X(a)
+\quad\Longrightarrow\quad
+a\in\sqrt{(b_1,\ldots,b_n)}.
+\tag{5}
+\]</span></p>
+<p>Indeed, the left side is <span class="math inline">\(Z_X(c)\)</span>,
+so Proposition 5.1 gives a power of <span
+class="math inline">\(a\)</span> in <span
+class="math inline">\((c)\)</span>, which is contained in the indicated
+ideal.</p>
+<h2 id="recovering-every-point-and-every-prime">6. Recovering every
+point and every prime</h2>
+<p><strong>Theorem 6.1 (Hochster realization).</strong> Every spectral
+space is homeomorphic to the prime spectrum of a commutative ring with
+identity.</p>
+<p><strong>Proof.</strong> For nonempty <span
+class="math inline">\(X\)</span>, use <span
+class="math inline">\(A\)</span> constructed above and define <span
+class="math inline">\(\phi(x)=\{a\in A:a(x)=0\}\)</span>. Evaluation has
+image in the field <span class="math inline">\(K\)</span>, so this is a
+prime ideal, and <span
+class="math inline">\(\phi^{-1}(D(a))=D_X(a)\)</span>. The map is
+continuous and injective: the <span class="math inline">\(e_U\)</span>’s
+distinguish points because <span class="math inline">\(X\)</span> is
+<span class="math inline">\(T_0\)</span>.</p>
+<p>Let <span class="math inline">\(\mathfrak p\)</span> be any prime of
+<span class="math inline">\(A\)</span>. The patch-closed sets</p>
+<p><span class="math display">\[
+Z_X(b)\quad(b\in\mathfrak p),\qquad
+D_X(a)\quad(a\notin\mathfrak p)
+\]</span></p>
+<p>have the finite-intersection property. Otherwise, for finite lists,
+put <span class="math inline">\(a=\prod_j a_j\notin\mathfrak p\)</span>;
+the empty product is one. The empty intersection would say <span
+class="math inline">\(\bigcap_i Z_X(b_i)\subseteq Z_X(a)\)</span>. By
+(5), a power of <span class="math inline">\(a\)</span> belongs to the
+ideal generated by the <span class="math inline">\(b_i\)</span>’s and
+hence to <span class="math inline">\(\mathfrak p\)</span>, a
+contradiction. Patch compactness gives <span
+class="math inline">\(x\)</span> in the intersection of all these sets.
+Exactly the members of <span class="math inline">\(\mathfrak p\)</span>
+vanish at <span class="math inline">\(x\)</span>, so <span
+class="math inline">\(\phi(x)=\mathfrak p\)</span>. Thus <span
+class="math inline">\(\phi\)</span> is onto.</p>
+<p>The image of <span class="math inline">\(U=D_X(e_U)\)</span> is now
+precisely <span class="math inline">\(D(e_U)\)</span>. Since these <span
+class="math inline">\(U\)</span>’s form a basis, <span
+class="math inline">\(\phi\)</span> is an open bijection and a
+homeomorphism. If <span class="math inline">\(X=\varnothing\)</span>,
+use the zero ring, whose prime spectrum is empty. No other case was
+excluded, and the construction allowed an arbitrary set of quasi-compact
+opens. <span class="math inline">\(\square\)</span></p>
+<p>Together with Solution 7.5 of <em>Spectra of rings</em>, this proves
+the full characterization in both directions. It does not assert a
+canonical ring or a structure sheaf determined solely by the
+topology.</p>
+<h2 id="examples-and-exercises">7. Examples and exercises</h2>
+<p>A one-point space is realized by <span class="math inline">\(\mathbb
+Q\)</span>, though the general construction is much larger. The
+two-point space with opens <span
+class="math inline">\(\varnothing,\{\eta\},\{\eta,s\}\)</span> is
+realized by <span class="math inline">\(\mathbb Q[T]_{(T)}\)</span>: its
+primes are <span class="math inline">\((0)\)</span> and <span
+class="math inline">\((T)\)</span>. In the construction, the variable
+associated to <span class="math inline">\(\{\eta\}\)</span> has
+valuation one along <span class="math inline">\(\eta\rightsquigarrow
+s\)</span>. This is the mechanism that prevents an illicit inverse from
+destroying the closed point.</p>
+<p><strong>Exercise 7.1 (easy).</strong> Explain why a quasi-compact
+Hausdorff space with a basis of clopens is spectral. Realize a finite
+discrete space by a simpler ring than the general construction.</p>
+<p><strong>Solution 7.1.</strong> In a Hausdorff space a nonempty
+irreducible closed subset cannot contain two distinct points: disjoint
+neighborhoods would both meet it. It is therefore a singleton, giving
+sobriety. Closed subsets of a compact Hausdorff space are compact, so
+the clopen basis is quasi-compact and stable under intersections. A
+discrete space with <span class="math inline">\(n\)</span> points is
+<span class="math inline">\(\operatorname{Spec}(\mathbb Q^n)\)</span>:
+its primes are the kernels of the coordinate maps, as follows from the
+orthogonal idempotents. For <span class="math inline">\(n=0\)</span>,
+use the zero ring.</p>
+<p><strong>Exercise 7.2 (medium).</strong> In the two-point example,
+show why adjoining the function which is <span
+class="math inline">\(t^{-1}\)</span> at <span
+class="math inline">\(\eta\)</span> and zero at <span
+class="math inline">\(s\)</span> is forbidden. Determine the nonzero set
+of one minus its product with <span
+class="math inline">\(e_{\{\eta\}}\)</span>.</p>
+<p><strong>Solution 7.2.</strong> The putative inverse has valuation
+<span class="math inline">\(-1\)</span> along <span
+class="math inline">\(\eta\rightsquigarrow s\)</span>, violating
+nonnegativity in (1). Its product with <span
+class="math inline">\(e_{\{\eta\}}\)</span> is one at <span
+class="math inline">\(\eta\)</span> and zero at <span
+class="math inline">\(s\)</span>. One minus that product has nonzero set
+<span class="math inline">\(\{s\}\)</span>, which is not open. Thus
+uncontrolled division really breaks the required topology.</p>
+<p><strong>Exercise 7.3 (hard).</strong> Let <span
+class="math inline">\(X\)</span> be an infinite set with the discrete
+topology. Explain exactly which hypothesis fails and why no ring can
+have this space as its spectrum.</p>
+<p><strong>Solution 7.3.</strong> Each singleton is quasi-compact open,
+intersections remain quasi-compact, and the space is sober, since its
+irreducible closed subsets are singletons. The cover by all singletons
+has no finite subcover, so <span class="math inline">\(X\)</span> is not
+quasi-compact. Every ring spectrum is quasi-compact by Proposition 2.3
+of <em>Spectra of rings</em>. A homeomorphism would preserve this
+property, so no realization exists. This distinguishes unrestricted
+cardinality in the theorem from the omission of a required topological
+hypothesis.</p>
+<h2 id="sources-and-proof-scope">Sources and proof scope</h2>
+<p>Melvin Hochster, <em>Prime ideal structure in commutative rings</em>,
+Transactions of the American Mathematical Society 142 (1969), 43–60, <a
+href="https://www.ams.org/journals/tran/1969-142-00/S0002-9947-1969-0251026-X/S0002-9947-1969-0251026-X.pdf">original
+article</a>, <a
+href="https://doi.org/10.1090/S0002-9947-1969-0251026-X">DOI</a>, §§2–7,
+supplies the realization method. The proof here uses its mathematical
+ideas with independently written exposition; it restricts the auxiliary
+ground field to <span class="math inline">\(\mathbb Q\)</span>, which
+places no restriction on the realized space, replaces finite prime
+avoidance by finite-value cancellation, and supplies the
+valuation-preservation checks. No source prose or images are
+reproduced.</p>
+<p>The spectral-space definition and geometric context are also recorded
+in the <a
+href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/topology.tex#L4468">AI
+Integrated Stacks Project topology chapter</a>, with credit to the
+Stacks Project Authors and Hochster. That introductory passage alone is
+not a proof of the converse. Every step of the converse needed here is
+proved in this lesson; its exact internal forward provider is
+<em>Spectra of rings</em>, Solution 7.5.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

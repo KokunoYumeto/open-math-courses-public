@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The wave Cauchy problem and Kirchhoff&#x27;s formula</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="the-wave-cauchy-problem-and-kirchhoff-s-formula">The wave Cauchy problem and Kirchhoff's formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A wave equation needs two initial traces: the displacement and its time derivative. A causal fundamental solution converts these traces into distributions on the initial plane. This gives uniqueness without any assumption about growth at spatial infinity. To obtain a classical solution from finitely differentiable data, we must also control the order of the kernel at the cone vertex.</p>
+<p>We use the properly supported convolution rules developed in <a href="AN02-L015.html">Wave kernels with complex coefficients</a>. The flat wave kernel in <a href="prerequisites/wave-hadamard-kernels.html">Causal kernels, initial data, and short-time geometry</a> supplies the fundamental-solution identity, cone formula, homogeneity and initial traces stated below. The compact finite-jet extension theorem in <a href="prerequisites/compatible-jets-on-closed-sets.html">Compatible jets on closed sets</a> supplies one precisely stated extension step. We prove its consequence for a whole initial plane here.</p>
+<h2 id="the-causal-kernel-and-its-normalization">The causal kernel and its normalization</h2>
+<p>Fix <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, let <span class="math" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_c&amp;=c^{-2}\partial_t^2-\Delta_x,\\
+H&amp;=\{t\geq0\},\\
+C_c^+&amp;=\{ct\geq|x|\}.
+\end{aligned}
+\tag{1}
+\]">\[
+\begin{aligned}
+W_c&amp;=c^{-2}\partial_t^2-\Delta_x,\\
+H&amp;=\{t\geq0\},\\
+C_c^+&amp;=\{ct\geq|x|\}.
+\end{aligned}
+\tag{1}
+\]</span>
+The inequality defining the cone includes <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. We write <span class="math" data-tex="\(C^r(H)\)">\(C^r(H)\)</span> for functions whose derivatives through order <span class="math" data-tex="\(r\)">\(r\)</span> extend continuously to its boundary.</p>
+<p>Here is the exact flat-kernel input. For unit speed there is a distribution <span class="math" data-tex="\(E_1\)">\(E_1\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\partial_t^2-\Delta)E_1=\delta_{(0,0)},\\
+\operatorname{supp}E_1\subset C_1^+.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+(\partial_t^2-\Delta)E_1=\delta_{(0,0)},\\
+\operatorname{supp}E_1\subset C_1^+.
+\end{gathered}
+\tag{2}
+\]</span>
+It is homogeneous of degree <span class="math" data-tex="\(1-n\)">\(1-n\)</span>. Away from the vertex, on the positive-time branch, its cone formula is
+<span class="math math-display" data-tex="\[
+E_1=\frac12\pi^{(1-n)/2}
+ \chi_+^{(1-n)/2}(t^2-|x|^2).
+\tag{3}
+\]">\[
+E_1=\frac12\pi^{(1-n)/2}
+ \chi_+^{(1-n)/2}(t^2-|x|^2).
+\tag{3}
+\]</span>
+Here <span class="math" data-tex="\(\chi_+^a=s_+^a/\Gamma(a+1)\)">\(\chi_+^a=s_+^a/\Gamma(a+1)\)</span> for <span class="math" data-tex="\(a&gt;-1\)">\(a&gt;-1\)</span>, extended by the recurrence
+<span class="math" data-tex="\(\partial_s\chi_+^a=\chi_+^{a-1}\)">\(\partial_s\chi_+^a=\chi_+^{a-1}\)</span>. In particular, <span class="math" data-tex="\(\chi_+^{-1}=\delta_0\)">\(\chi_+^{-1}=\delta_0\)</span>. Its one-sided distribution-valued traces are
+<span class="math math-display" data-tex="\[
+E_1(0+)=0,\qquad \partial_tE_1(0+)=\delta_x.
+\tag{4}
+\]">\[
+E_1(0+)=0,\qquad \partial_tE_1(0+)=\delta_x.
+\tag{4}
+\]</span>
+These statements are the flat case of WHK-002–004 in <a href="prerequisites/wave-hadamard-kernels.html">flat</a>. We use no variable-coefficient Cauchy theorem.</p>
+<p>Define <span class="math" data-tex="\(E_c(t,x)=cE_1(ct,x)\)">\(E_c(t,x)=cE_1(ct,x)\)</span> by linear pullback. A change of time variable gives
+<span class="math math-display" data-tex="\[
+W_cE_c=c\,\delta(ct)\delta_x=\delta_{(0,0)}.
+\tag{5}
+\]">\[
+W_cE_c=c\,\delta(ct)\delta_x=\delta_{(0,0)}.
+\tag{5}
+\]</span>
+Its support is <span class="math" data-tex="\(C_c^+\)">\(C_c^+\)</span>, its homogeneity degree is <span class="math" data-tex="\(1-n\)">\(1-n\)</span>, and
+<span class="math" data-tex="\(\partial_tE_c(0+)=c^2\delta_x\)">\(\partial_tE_c(0+)=c^2\delta_x\)</span>. Thus <span class="math" data-tex="\(E_c\)">\(E_c\)</span> is normalized for <span class="math" data-tex="\(W_c\)">\(W_c\)</span>. The kernel for a unit initial velocity is <span class="math" data-tex="\(c^{-2}E_c\)">\(c^{-2}E_c\)</span>.</p>
+<h2 id="the-boundary-jump-and-uniqueness">The boundary jump and uniqueness</h2>
+<p>Addition is proper on <span class="math" data-tex="\(C_c^+\times H\)">\(C_c^+\times H\)</span>: the inverse image of every compact set under addition is compact. Indeed, if <span class="math" data-tex="\((a,b)+(s,y)\)">\((a,b)+(s,y)\)</span> lies in a fixed compact set, then <span class="math" data-tex="\(a,s\geq0\)">\(a,s\geq0\)</span> and their sum is bounded. Consequently both times are bounded, <span class="math" data-tex="\(|b|\leq ca\)">\(|b|\leq ca\)</span> is bounded, and the bounded spatial sum bounds <span class="math" data-tex="\(y\)">\(y\)</span>. Closedness completes the proof. This argument allows arbitrary spatial support in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Theorem 1.</strong> A <span class="math" data-tex="\(C^2(H)\)">\(C^2(H)\)</span> solution of <span class="math" data-tex="\(W_cu=f\)">\(W_cu=f\)</span> is uniquely determined by <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(u(0,\cdot)\)">\(u(0,\cdot)\)</span>, and <span class="math" data-tex="\(u_t(0,\cdot)\)">\(u_t(0,\cdot)\)</span>. If <span class="math" data-tex="\(U\)">\(U\)</span> denotes its extension by zero to negative times, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_cU&amp;=1_Hf+c^{-2}\delta(t)u_1(x)\\
+&amp;\quad+c^{-2}\delta&#x27;(t)u_0(x),
+\end{aligned}
+\tag{6}
+\]">\[
+\begin{aligned}
+W_cU&amp;=1_Hf+c^{-2}\delta(t)u_1(x)\\
+&amp;\quad+c^{-2}\delta&#x27;(t)u_0(x),
+\end{aligned}
+\tag{6}
+\]</span>
+where <span class="math" data-tex="\(u_0=u(0,\cdot)\)">\(u_0=u(0,\cdot)\)</span>, <span class="math" data-tex="\(u_1=u_t(0,\cdot)\)">\(u_1=u_t(0,\cdot)\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U=E_c*&amp;\bigl(1_Hf+c^{-2}\delta(t)u_1\\
+&amp;\quad+c^{-2}\delta&#x27;(t)u_0\bigr).
+\end{aligned}
+\tag{7}
+\]">\[
+\begin{aligned}
+U=E_c*&amp;\bigl(1_Hf+c^{-2}\delta(t)u_1\\
+&amp;\quad+c^{-2}\delta&#x27;(t)u_0\bigr).
+\end{aligned}
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> Integrating <span class="math" data-tex="\(1_Hu\)">\(1_Hu\)</span> twice against a temporal derivative of a compact test produces <span class="math" data-tex="\(1_Hu_{tt}\)">\(1_Hu_{tt}\)</span>, <span class="math" data-tex="\(u_t(0,x)\delta(t)\)">\(u_t(0,x)\delta(t)\)</span>, and <span class="math" data-tex="\(u(0,x)\delta&#x27;(t)\)">\(u(0,x)\delta&#x27;(t)\)</span>. The latter two coefficients each occur once. Spatial integration by parts produces no boundary term because the boundary is the time plane. This proves (6).</p>
+<p>The two supports in the convolution <span class="math" data-tex="\(E_c*U\)">\(E_c*U\)</span> have proper addition. We may therefore differentiate either convolution factor:
+<span class="math math-display" data-tex="\[
+U=(W_cE_c)*U=E_c*(W_cU).
+\tag{8}
+\]">\[
+U=(W_cE_c)*U=E_c*(W_cU).
+\tag{8}
+\]</span>
+This is (7). Apply it to the difference of two solutions with identical data. Its wave image and both boundary traces vanish, so its zero extension is zero. No estimate at spatial infinity has entered the argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="how-much-differentiation-the-kernel-costs">How much differentiation the kernel costs</h2>
+<p><strong>Lemma 2.</strong> If <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the kernel <span class="math" data-tex="\(E_c\)">\(E_c\)</span> has local distribution order at most
+<span class="math math-display" data-tex="\[
+v_0=\left\lceil\frac{n-3}{2}\right\rceil.
+\tag{9}
+\]">\[
+v_0=\left\lceil\frac{n-3}{2}\right\rceil.
+\tag{9}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(E_c\)">\(E_c\)</span> and all its first derivatives are locally finite measures.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, set <span class="math" data-tex="\(a=(1-n)/2\)">\(a=(1-n)/2\)</span>, and observe that <span class="math" data-tex="\(v_0\geq0\)">\(v_0\geq0\)</span>. The recurrence gives
+<span class="math math-display" data-tex="\[
+\chi_+^a=\partial_s^{v_0}\chi_+^{a+v_0}.
+\tag{10}
+\]">\[
+\chi_+^a=\partial_s^{v_0}\chi_+^{a+v_0}.
+\tag{10}
+\]</span>
+For odd <span class="math" data-tex="\(n\)">\(n\)</span>, the last factor is <span class="math" data-tex="\(\chi_+^{-1}=\delta_0\)">\(\chi_+^{-1}=\delta_0\)</span>. For even <span class="math" data-tex="\(n\)">\(n\)</span>, it is <span class="math" data-tex="\(\chi_+^{-1/2}\)">\(\chi_+^{-1/2}\)</span>, a locally integrable function. Both have order zero. At every nonvertex point of the cone, <span class="math" data-tex="\(c^2t^2-|x|^2\)">\(c^2t^2-|x|^2\)</span> is a submersion. Coordinates with this function as their first variable show that pulling back (10) has order at most <span class="math" data-tex="\(v_0\)">\(v_0\)</span>: at most <span class="math" data-tex="\(v_0\)">\(v_0\)</span> derivatives fall on the test and its smooth Jacobian. Off the cone the same conclusion is immediate. Thus <span class="math" data-tex="\(E_c\)">\(E_c\)</span> has that order on each annulus about zero.</p>
+<p>We still need the vertex. Write <span class="math" data-tex="\(N=n+1\)">\(N=n+1\)</span>; the degree of the kernel is <span class="math" data-tex="\(2-N\)">\(2-N\)</span>. Choose a smooth dyadic partition
+<span class="math" data-tex="\(\sum_{j\in\mathbb Z}\eta(2^jz)=1\)">\(\sum_{j\in\mathbb Z}\eta(2^jz)=1\)</span> on punctured space, with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> supported in a fixed annulus. For a compact test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, abbreviate <span class="math" data-tex="\(\phi_j(z)=\phi(2^{-j}z)\)">\(\phi_j(z)=\phi(2^{-j}z)\)</span> and define
+<span class="math math-display" data-tex="\[
+T(\phi)=\sum_{j\in\mathbb Z}2^{-2j}
+\left\langle E_c,\eta\phi_j\right\rangle_{\!z\ne0}.
+\tag{11}
+\]">\[
+T(\phi)=\sum_{j\in\mathbb Z}2^{-2j}
+\left\langle E_c,\eta\phi_j\right\rangle_{\!z\ne0}.
+\tag{11}
+\]</span>
+Only finitely many negative <span class="math" data-tex="\(j\)">\(j\)</span> contribute. The annular order estimate and the product rule bound the pairing for <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> by
+<span class="math" data-tex="\(C\max_{|\alpha|\leq v_0}\|\partial^\alpha\phi\|_\infty\)">\(C\max_{|\alpha|\leq v_0}\|\partial^\alpha\phi\|_\infty\)</span>.
+Indeed, derivatives of the rescaled test bring factors <span class="math" data-tex="\(2^{-j|\alpha|}\leq1\)">\(2^{-j|\alpha|}\leq1\)</span>. The series converges absolutely. Its tail from <span class="math" data-tex="\(j=J\)">\(j=J\)</span> is bounded by
+<span class="math math-display" data-tex="\[
+C2^{-2J}\|\phi\|_{C^{v_0}}.
+\tag{12}
+\]">\[
+C2^{-2J}\|\phi\|_{C^{v_0}}.
+\tag{12}
+\]</span>
+It defines an extension of order at most <span class="math" data-tex="\(v_0\)">\(v_0\)</span>.</p>
+<p>This extension is homogeneous for every positive scale. To verify that point, remove a smooth radial neighborhood of radius <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> from the punctured pairing. The dyadic tail bounds the change by
+<span class="math" data-tex="\(C\epsilon^2\|\phi\|_{C^{v_0}}\)">\(C\epsilon^2\|\phi\|_{C^{v_0}}\)</span>. On the finitely many shells meeting the transition of the cutoff, rescaling gives the same bounded annular derivatives. Thus any fixed smooth cutoff profile has the limit (11). Rescaling the test by <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> rescales the removed radius. Passing to the limit in the punctured homogeneity identity gives
+<span class="math math-display" data-tex="\[
+T(\phi(s\,\cdot))=s^{-2}T(\phi).
+\tag{13}
+\]">\[
+T(\phi(s\,\cdot))=s^{-2}T(\phi).
+\tag{13}
+\]</span></p>
+<p>The actual <span class="math" data-tex="\(E_c\)">\(E_c\)</span> has the same homogeneity and agrees with <span class="math" data-tex="\(T\)">\(T\)</span> off zero. Their difference is supported at zero. A point-supported distribution is a finite sum of delta derivatives: if its order is at most <span class="math" data-tex="\(r\)">\(r\)</span>, subtract from a test a cutoff times its Taylor polynomial of degree <span class="math" data-tex="\(r\)">\(r\)</span>. The remainder has derivatives
+<span class="math" data-tex="\(o(|z|^{r-|\alpha|})\)">\(o(|z|^{r-|\alpha|})\)</span>. Multiplying it by a cutoff of radius <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> tends to zero in the <span class="math" data-tex="\(C^r\)">\(C^r\)</span> norm. Support at zero then makes the distribution annihilate that remainder, so it depends only on the finite Taylor jet.</p>
+<p>But <span class="math" data-tex="\(\partial^\alpha\delta\)">\(\partial^\alpha\delta\)</span> has degree <span class="math" data-tex="\(-N-|\alpha|\)">\(-N-|\alpha|\)</span>, and none of these degrees is <span class="math" data-tex="\(2-N\)">\(2-N\)</span>. Independence of the Taylor jets in (13) forces every coefficient of <span class="math" data-tex="\(E_c-T\)">\(E_c-T\)</span> to vanish. The annular order bound therefore holds at the vertex too.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the kernel is explicitly
+<span class="math math-display" data-tex="\[
+E_c(t,x)=\frac c2\,1_{\{ct\geq|x|\}}.
+\tag{14}
+\]">\[
+E_c(t,x)=\frac c2\,1_{\{ct\geq|x|\}}.
+\tag{14}
+\]</span>
+Integration by parts over this wedge shows that each first derivative is a measure on its two boundary rays. The boundary divergence formula has no extra point mass at their meeting point. The kernel itself is locally integrable. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For dimensions <span class="math" data-tex="\(n=1,2,3,4,5\)">\(n=1,2,3,4,5\)</span>, the smallest admissible integer in the existence theorem below is respectively <span class="math" data-tex="\(-1,0,0,1,1\)">\(-1,0,0,1,1\)</span>. The value <span class="math" data-tex="\(-1\)">\(-1\)</span> records a gain supplied by the first derivatives of (14); it does not denote a negative distribution order.</p>
+<h2 id="extending-a-finite-collection-of-normal-jets">Extending a finite collection of normal jets</h2>
+<p>We use the following exact compact theorem from [jets, Theorem 3.1]. Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonempty compact subset of Euclidean space. For a finite jet <span class="math" data-tex="\((f_\alpha)_{|\alpha|\leq M}\)">\((f_\alpha)_{|\alpha|\leq M}\)</span>, put
+<span class="math math-display" data-tex="\[
+T_{\alpha,w}(z)=\sum_{|\beta|\leq M-|\alpha|}
+\frac{f_{\alpha+\beta}(w)}{\beta!}(z-w)^\beta.
+\]">\[
+T_{\alpha,w}(z)=\sum_{|\beta|\leq M-|\alpha|}
+\frac{f_{\alpha+\beta}(w)}{\beta!}(z-w)^\beta.
+\]</span>
+It is compatible if its Taylor comparisons have uniform remainders
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_\alpha(z)-T_{\alpha,w}(z)
+&amp;=o(|z-w|^{M-|\alpha|})
+\end{aligned}
+\tag{15}
+\]">\[
+\begin{aligned}
+f_\alpha(z)-T_{\alpha,w}(z)
+&amp;=o(|z-w|^{M-|\alpha|})
+\end{aligned}
+\tag{15}
+\]</span>
+as distinct <span class="math" data-tex="\(z,w\in F\)">\(z,w\in F\)</span> approach each other; at order <span class="math" data-tex="\(M\)">\(M\)</span> this means continuity. Every such jet is the restriction of the derivatives of some <span class="math" data-tex="\(C_c^M\)">\(C_c^M\)</span> function.</p>
+<p><strong>Lemma 3.</strong> Given <span class="math" data-tex="\(g_j\in C^{M-j}(\mathbb R^n)\)">\(g_j\in C^{M-j}(\mathbb R^n)\)</span> for <span class="math" data-tex="\(0\leq j\leq M\)">\(0\leq j\leq M\)</span>, there is <span class="math" data-tex="\(v\in C^M(\mathbb R^{n+1})\)">\(v\in C^M(\mathbb R^{n+1})\)</span> with
+<span class="math math-display" data-tex="\[
+\partial_t^jv(0,x)=g_j(x),\qquad 0\leq j\leq M.
+\tag{16}
+\]">\[
+\partial_t^jv(0,x)=g_j(x),\qquad 0\leq j\leq M.
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> Take a locally finite smooth spatial partition of unity <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span> with compact supports. Its neighborhoods may be chosen with locally finite enlarged neighborhoods. In each choose a compact ball <span class="math" data-tex="\(K_i\)">\(K_i\)</span> containing the support of <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>, and a smooth spatial cutoff <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span> supported inside <span class="math" data-tex="\(K_i\)">\(K_i\)</span> and equal to one near that support.</p>
+<p>On the compact set <span class="math" data-tex="\(F_i=\{0\}\times K_i\)">\(F_i=\{0\}\times K_i\)</span>, prescribe
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_{(j,\beta)}(0,x)=\partial_x^\beta(\eta_i g_j)(x),\\
+j+|\beta|\leq M.
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+f_{(j,\beta)}(0,x)=\partial_x^\beta(\eta_i g_j)(x),\\
+j+|\beta|\leq M.
+\end{gathered}
+\tag{17}
+\]</span>
+Two points of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> have zero temporal difference. Consequently the normal-power terms in (15) vanish, and the remaining comparison is the ordinary spatial Taylor remainder of
+<span class="math" data-tex="\(\partial^\beta(\eta_i g_j)\)">\(\partial^\beta(\eta_i g_j)\)</span>, through degree <span class="math" data-tex="\(M-j-|\beta|\)">\(M-j-|\beta|\)</span>. Its <span class="math" data-tex="\(C^{M-j}\)">\(C^{M-j}\)</span> regularity gives the required uniform little-oh on the compact ball. Top-order components are continuous. The compact theorem applies.</p>
+<p>Let <span class="math" data-tex="\(v_i\in C_c^M\)">\(v_i\in C_c^M\)</span> be the resulting extension. Multiplication by <span class="math" data-tex="\(\theta_i(x)\)">\(\theta_i(x)\)</span> leaves its temporal trace equal to <span class="math" data-tex="\(\eta_i g_j\)">\(\eta_i g_j\)</span>, including globally outside <span class="math" data-tex="\(K_i\)">\(K_i\)</span>, where both sides vanish. The sum
+<span class="math math-display" data-tex="\[
+v(t,x)=\sum_i\theta_i(x)v_i(t,x)
+\tag{18}
+\]">\[
+v(t,x)=\sum_i\theta_i(x)v_i(t,x)
+\tag{18}
+\]</span>
+is locally finite in space, hence <span class="math" data-tex="\(C^M\)">\(C^M\)</span> on spacetime. Its temporal traces are <span class="math" data-tex="\(\sum_i\eta_i g_j=g_j\)">\(\sum_i\eta_i g_j=g_j\)</span>. This proves the consequence for a noncompact plane using only the compact extension theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="classical-existence-at-the-integer-endpoint">Classical existence at the integer endpoint</h2>
+<p><strong>Theorem 4.</strong> Let <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, and let <span class="math" data-tex="\(v\)">\(v\)</span> be an integer satisfying
+<span class="math math-display" data-tex="\[
+v\geq(n-3)/2.
+\tag{19}
+\]">\[
+v\geq(n-3)/2.
+\tag{19}
+\]</span>
+If
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f&amp;\in C^{k+v}(H),\\
+u_0&amp;\in C^{k+v+2}(\mathbb R^n),\\
+u_1&amp;\in C^{k+v+1}(\mathbb R^n),
+\end{aligned}
+\tag{20}
+\]">\[
+\begin{aligned}
+f&amp;\in C^{k+v}(H),\\
+u_0&amp;\in C^{k+v+2}(\mathbb R^n),\\
+u_1&amp;\in C^{k+v+1}(\mathbb R^n),
+\end{aligned}
+\tag{20}
+\]</span>
+then there is a <span class="math" data-tex="\(C^k(H)\)">\(C^k(H)\)</span> solution of <span class="math" data-tex="\(W_cu=f\)">\(W_cu=f\)</span> with initial traces <span class="math" data-tex="\(u_0,u_1\)">\(u_0,u_1\)</span>. It is unique among all <span class="math" data-tex="\(C^2(H)\)">\(C^2(H)\)</span> solutions with these data.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(M=k+v+2\)">\(M=k+v+2\)</span>, so <span class="math" data-tex="\(M\geq3\)">\(M\geq3\)</span>. Set <span class="math" data-tex="\(g_0=u_0\)">\(g_0=u_0\)</span>, <span class="math" data-tex="\(g_1=u_1\)">\(g_1=u_1\)</span>, and define recursively
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_{j+2}=c^2\bigl(\partial_t^jf(0,x)+\Delta g_j\bigr),\\
+0\leq j\leq M-2.
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+g_{j+2}=c^2\bigl(\partial_t^jf(0,x)+\Delta g_j\bigr),\\
+0\leq j\leq M-2.
+\end{gathered}
+\tag{21}
+\]</span>
+Induction gives <span class="math" data-tex="\(g_j\in C^{M-j}\)">\(g_j\in C^{M-j}\)</span>: both terms defining <span class="math" data-tex="\(g_{j+2}\)">\(g_{j+2}\)</span> have regularity <span class="math" data-tex="\(C^{M-j-2}\)">\(C^{M-j-2}\)</span>. Lemma 3 produces <span class="math" data-tex="\(v_*\in C^M\)">\(v_*\in C^M\)</span> with these normal jets.</p>
+<p>On <span class="math" data-tex="\(H\)">\(H\)</span>, the residual <span class="math" data-tex="\(h=f-W_cv_*\)">\(h=f-W_cv_*\)</span> belongs to <span class="math" data-tex="\(C^{M-2}\)">\(C^{M-2}\)</span>, and (21) gives <span class="math" data-tex="\(\partial_t^jh(0,x)=0\)">\(\partial_t^jh(0,x)=0\)</span> for <span class="math" data-tex="\(j\leq M-2\)">\(j\leq M-2\)</span>. Differentiating these identities spatially shows that every mixed boundary jet of total order at most <span class="math" data-tex="\(M-2\)">\(M-2\)</span> vanishes. Extension by zero gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F\in C^{M-2}(\mathbb R^{n+1}),\\
+\operatorname{supp}F\subset H.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+F\in C^{M-2}(\mathbb R^{n+1}),\\
+\operatorname{supp}F\subset H.
+\end{gathered}
+\tag{22}
+\]</span>
+One can verify this last regularity by joining the derivatives on the two sides, whose boundary traces all agree, and integrating along coordinate lines to identify them as classical derivatives.</p>
+<p>Set <span class="math" data-tex="\(w=E_c*F\)">\(w=E_c*F\)</span>. Proper addition makes this convolution legitimate and gives <span class="math" data-tex="\(W_cw=F\)">\(W_cw=F\)</span>. For <span class="math" data-tex="\(v\geq0\)">\(v\geq0\)</span>, Lemma 2 bounds the kernel order by <span class="math" data-tex="\(v\)">\(v\)</span>. On a compact output neighborhood, properness gives a common compact pairing region. Differentiating through order <span class="math" data-tex="\(k\)">\(k\)</span> puts those derivatives on <span class="math" data-tex="\(F\)">\(F\)</span>; they remain <span class="math" data-tex="\(C^v\)">\(C^v\)</span>. Translated cutoff pairings vary continuously in that norm, so all distributional derivatives of <span class="math" data-tex="\(w\)">\(w\)</span> through order <span class="math" data-tex="\(k\)">\(k\)</span> are continuous.</p>
+<p>In the remaining case <span class="math" data-tex="\(n=1,v=-1\)">\(n=1,v=-1\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(C^{k-1}\)">\(C^{k-1}\)</span>. In a derivative of total order <span class="math" data-tex="\(k\)">\(k\)</span>, put one derivative on <span class="math" data-tex="\(E_c\)">\(E_c\)</span> and the other <span class="math" data-tex="\(k-1\)">\(k-1\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>. The former is a measure by Lemma 2, so again the compact translated pairing is continuous. Lower derivatives use the measure <span class="math" data-tex="\(E_c\)">\(E_c\)</span> itself. A distribution whose derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span> are continuous has a <span class="math" data-tex="\(C^k\)">\(C^k\)</span> representative: locally mollify, pass to the uniform limits of these derivatives on smaller compact sets, and use the fundamental theorem of calculus along coordinate lines. Thus <span class="math" data-tex="\(w\in C^k\)">\(w\in C^k\)</span> in every case.</p>
+<p>Its support is in <span class="math" data-tex="\(H\)">\(H\)</span>, so its value and first derivatives vanish at the initial plane. Therefore <span class="math" data-tex="\(u=v_*+w\)">\(u=v_*+w\)</span>, restricted to <span class="math" data-tex="\(H\)">\(H\)</span>, solves the equation with the required traces. Theorem 1 gives uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The non-strict inequality in (19) matters. In three dimensions <span class="math" data-tex="\(v=0\)">\(v=0\)</span> is allowed; in one dimension <span class="math" data-tex="\(v=-1\)">\(v=-1\)</span> permits a source of class <span class="math" data-tex="\(C^{k-1}\)">\(C^{k-1}\)</span>.</p>
+<h2 id="kirchhoff-s-formula-in-three-spatial-dimensions">Kirchhoff's formula in three spatial dimensions</h2>
+<p>For <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, (3) becomes a measure on the cone. The speed change gives
+<span class="math math-display" data-tex="\[
+\langle E_c,\phi\rangle=
+\frac1{4\pi}\int_{\mathbb R^3}
+\frac{\phi(|y|/c,y)}{|y|}\,dy.
+\tag{23}
+\]">\[
+\langle E_c,\phi\rangle=
+\frac1{4\pi}\int_{\mathbb R^3}
+\frac{\phi(|y|/c,y)}{|y|}\,dy.
+\tag{23}
+\]</span>
+For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, polar integration yields
+<span class="math math-display" data-tex="\[
+(E_c(t)*g)(x)=c^2t\,A_{ct}g(x),
+\tag{24}
+\]">\[
+(E_c(t)*g)(x)=c^2t\,A_{ct}g(x),
+\tag{24}
+\]</span>
+where the spherical average is
+<span class="math math-display" data-tex="\[
+A_rg(x)=\frac1{4\pi}\int_{S^2}g(x+r\omega)\,d\omega.
+\]">\[
+A_rg(x)=\frac1{4\pi}\int_{S^2}g(x+r\omega)\,d\omega.
+\]</span>
+Reflection of the sphere changes the convolution displacement from minus to plus. Insert (23)–(24) into (7). The initial-value delta derivative differentiates (24) in time, and each initial-data factor <span class="math" data-tex="\(c^{-2}\)">\(c^{-2}\)</span> cancels its <span class="math" data-tex="\(c^2\)">\(c^2\)</span>. For a compact expression of the full formula, write
+<span class="math" data-tex="\(f_{t,x}(y)=f(t-|y|/c,x-y)\)">\(f_{t,x}(y)=f(t-|y|/c,x-y)\)</span> and <span class="math" data-tex="\(z_\omega=x+ct\omega\)">\(z_\omega=x+ct\omega\)</span>.
+We obtain
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u(t,x)&amp;=\frac1{4\pi}\int_{|y|\leq ct}
+\frac{f_{t,x}(y)}{|y|}\,dy\\
+&amp;\quad+\frac1{4\pi}\int_{S^2}
+\bigl[u_0(z_\omega)+t u_1(z_\omega)\\
+&amp;\qquad+ct\,\omega\cdot\nabla u_0(z_\omega)\bigr]\,d\omega.
+\end{aligned}
+\tag{25}
+\]">\[
+\begin{aligned}
+u(t,x)&amp;=\frac1{4\pi}\int_{|y|\leq ct}
+\frac{f_{t,x}(y)}{|y|}\,dy\\
+&amp;\quad+\frac1{4\pi}\int_{S^2}
+\bigl[u_0(z_\omega)+t u_1(z_\omega)\\
+&amp;\qquad+ct\,\omega\cdot\nabla u_0(z_\omega)\bigr]\,d\omega.
+\end{aligned}
+\tag{25}
+\]</span>
+This formula holds for every solution in Theorem 4, and hence for every <span class="math" data-tex="\(C^2\)">\(C^2\)</span> solution for which the displayed terms are defined, by the same jump representation.</p>
+<p>At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the sphere average gives <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Its first spatial moment is zero, so differentiating at zero gives <span class="math" data-tex="\(u_1\)">\(u_1\)</span>. The forcing term is <span class="math" data-tex="\(O(t^2)\)">\(O(t^2)\)</span>. More explicitly, with <span class="math" data-tex="\(y=ctz\)">\(y=ctz\)</span> it becomes
+<span class="math math-display" data-tex="\[
+\frac{c^2t^2}{4\pi}\int_{|z|\leq1}
+\frac{f(t(1-|z|),x-ctz)}{|z|}\,dz.
+\tag{26}
+\]">\[
+\frac{c^2t^2}{4\pi}\int_{|z|\leq1}
+\frac{f(t(1-|z|),x-ctz)}{|z|}\,dz.
+\tag{26}
+\]</span>
+The weight is integrable in dimension three. Dominated differentiation on compact sets gives <span class="math" data-tex="\(C^k\)">\(C^k\)</span> regularity from <span class="math" data-tex="\(f\in C^k(H)\)">\(f\in C^k(H)\)</span>; the other terms use at most the regularity specified in (20) with <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Thus the formula also checks the three-dimensional endpoint directly.</p>
+<p>Initial data are sampled on the sphere of radius <span class="math" data-tex="\(ct\)">\(ct\)</span>. The source is sampled on the backward cone between the initial plane and the observation point. For zero source, this sphere dependence is the sharp-front property of three-dimensional waves. A continuous source contributes over the full cone. The next lesson, <a href="AN02-L034.html">Spacelike Cauchy surfaces and the Riesz formula</a>, replaces the initial plane by a curved surface.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: the two jump coefficients).</strong> Let <span class="math" data-tex="\(a,b,h\)">\(a,b,h\)</span> be constants and set <span class="math" data-tex="\(u(t,x)=a+bt+c^2ht^2/2\)">\(u(t,x)=a+bt+c^2ht^2/2\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Compute <span class="math" data-tex="\(W_cu\)">\(W_cu\)</span> and <span class="math" data-tex="\(W_c(1_Hu)\)">\(W_c(1_Hu)\)</span>. Check the initial terms in (25).</p>
+<p><strong>Solution.</strong> The spatial Laplacian is zero, and <span class="math" data-tex="\(c^{-2}u_{tt}=h\)">\(c^{-2}u_{tt}=h\)</span>. Formula (6) gives
+<span class="math math-display" data-tex="\[
+W_c(1_Hu)=1_Hh+c^{-2}b\delta(t)
++c^{-2}a\delta&#x27;(t).
+\]">\[
+W_c(1_Hu)=1_Hh+c^{-2}b\delta(t)
++c^{-2}a\delta&#x27;(t).
+\]</span>
+In (25) the initial sphere integral is <span class="math" data-tex="\(a+bt\)">\(a+bt\)</span>. The source integral is
+<span class="math math-display" data-tex="\[
+\frac{h}{4\pi}4\pi\int_0^{ct}r\,dr
+=\frac{c^2ht^2}{2}.
+\]">\[
+\frac{h}{4\pi}4\pi\int_0^{ct}r\,dr
+=\frac{c^2ht^2}{2}.
+\]</span>
+Their sum is the given solution. An extra copy of the <span class="math" data-tex="\(\delta\)">\(\delta\)</span> coefficient would give the wrong velocity term.</p>
+<p><strong>Exercise 2 (intermediate: regularity by dimension).</strong> For <span class="math" data-tex="\(k=2\)">\(k=2\)</span> and dimensions <span class="math" data-tex="\(n=1,2,3,4,5\)">\(n=1,2,3,4,5\)</span>, list the weakest data regularities supplied by Theorem 4. Explain the separate treatment of <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p><strong>Solution.</strong> The smallest integers <span class="math" data-tex="\(v\)">\(v\)</span> are <span class="math" data-tex="\(-1,0,0,1,1\)">\(-1,0,0,1,1\)</span>. The corresponding triples <span class="math" data-tex="\((f,u_0,u_1)\)">\((f,u_0,u_1)\)</span> have classes
+<span class="math math-display" data-tex="\[
+\begin{array}{c|ccc}
+n&amp;f&amp;u_0&amp;u_1\\ \hline
+1&amp;C^1&amp;C^3&amp;C^2\\
+2,3&amp;C^2&amp;C^4&amp;C^3\\
+4,5&amp;C^3&amp;C^5&amp;C^4
+\end{array}
+\]">\[
+\begin{array}{c|ccc}
+n&amp;f&amp;u_0&amp;u_1\\ \hline
+1&amp;C^1&amp;C^3&amp;C^2\\
+2,3&amp;C^2&amp;C^4&amp;C^3\\
+4,5&amp;C^3&amp;C^5&amp;C^4
+\end{array}
+\]</span>
+These are sufficient conditions from the theorem, rather than assertions of necessity. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, putting a derivative on the measure-valued first derivative of the kernel recovers the derivative missing from <span class="math" data-tex="\(f\)">\(f\)</span>. In higher dimensions the proof instead differentiates the source and pays the nonnegative kernel order.</p>
+<p><strong>Exercise 3 (intermediate: disappearance behind the front).</strong> In three dimensions let <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, and suppose both initial data are supported in <span class="math" data-tex="\(\{|y|\leq R\}\)">\(\{|y|\leq R\}\)</span>. Prove that <span class="math" data-tex="\(u(t,x)=0\)">\(u(t,x)=0\)</span> whenever <span class="math" data-tex="\(ct&gt;|x|+R\)">\(ct&gt;|x|+R\)</span>. Also prove vanishing when <span class="math" data-tex="\(|x|&gt;ct+R\)">\(|x|&gt;ct+R\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(ct&gt;|x|+R\)">\(ct&gt;|x|+R\)</span>, every sampled point satisfies
+<span class="math math-display" data-tex="\[
+|x+ct\omega|\geq ct-|x|&gt;R.
+\]">\[
+|x+ct\omega|\geq ct-|x|&gt;R.
+\]</span>
+Both data and the gradient of <span class="math" data-tex="\(u_0\)">\(u_0\)</span> vanish there, so every term in the homogeneous sphere integral is zero. If <span class="math" data-tex="\(|x|&gt;ct+R\)">\(|x|&gt;ct+R\)</span>, use
+<span class="math" data-tex="\(|x+ct\omega|\geq|x|-ct&gt;R\)">\(|x+ct\omega|\geq|x|-ct&gt;R\)</span>.
+This gives the usual outer propagation bound and the additional inner disappearance. The latter uses the three-dimensional sphere formula and zero source.</p>
+<p><strong>Exercise 4 (advanced: compatibility on a plane).</strong> For <span class="math" data-tex="\(M=3\)">\(M=3\)</span>, let <span class="math" data-tex="\(g_0\in C^3\)">\(g_0\in C^3\)</span>, <span class="math" data-tex="\(g_1\in C^2\)">\(g_1\in C^2\)</span>, <span class="math" data-tex="\(g_2\in C^1\)">\(g_2\in C^1\)</span>, <span class="math" data-tex="\(g_3\in C^0\)">\(g_3\in C^0\)</span>. Verify the Whitney comparisons on <span class="math" data-tex="\(\{0\}\times K\)">\(\{0\}\times K\)</span> for the jet used in Lemma 3, where <span class="math" data-tex="\(K\)">\(K\)</span> is compact and a smooth spatial cutoff has been applied.</p>
+<p><strong>Solution.</strong> A component <span class="math" data-tex="\((j,\beta)\)">\((j,\beta)\)</span> has remaining order <span class="math" data-tex="\(3-j-|\beta|\)">\(3-j-|\beta|\)</span>. Between <span class="math" data-tex="\((0,x)\)">\((0,x)\)</span> and <span class="math" data-tex="\((0,y)\)">\((0,y)\)</span>, every term containing a positive temporal power is zero. The comparison is precisely the spatial Taylor expansion of
+<span class="math" data-tex="\(\partial^\beta(\eta g_j)\)">\(\partial^\beta(\eta g_j)\)</span> through that remaining order. Since <span class="math" data-tex="\(\eta g_j\in C^{3-j}\)">\(\eta g_j\in C^{3-j}\)</span>, its remainder is uniformly
+<span class="math" data-tex="\(o(|x-y|^{3-j-|\beta|})\)">\(o(|x-y|^{3-j-|\beta|})\)</span> on the compact set. For <span class="math" data-tex="\(j+|\beta|=3\)">\(j+|\beta|=3\)</span>, uniform continuity gives the order-zero remainder. These verify all components, including mixed jets; no relation between different <span class="math" data-tex="\(g_j\)">\(g_j\)</span> is needed for extension alone.</p>
+<p><strong>Exercise 5 (advanced: the one-dimensional formula).</strong> Derive the formula for the one-dimensional Cauchy problem from (7) and (14). Retain the normalization for <span class="math" data-tex="\(W_c\)">\(W_c\)</span>.</p>
+<p><strong>Solution.</strong> The initial-velocity term is
+<span class="math math-display" data-tex="\[
+\frac1{2c}\int_{x-ct}^{x+ct}u_1(y)\,dy.
+\]">\[
+\frac1{2c}\int_{x-ct}^{x+ct}u_1(y)\,dy.
+\]</span>
+Differentiating <span class="math" data-tex="\(c^{-2}E_c(t)*u_0\)">\(c^{-2}E_c(t)*u_0\)</span> gives
+<span class="math" data-tex="\(\tfrac12[u_0(x-ct)+u_0(x+ct)]\)">\(\tfrac12[u_0(x-ct)+u_0(x+ct)]\)</span>, by differentiation of its moving endpoints. The source convolution is the integral over the wedge. Together,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u(t,x)&amp;=\tfrac12[u_0(x-ct)+u_0(x+ct)]\\
+&amp;\quad+\frac1{2c}\int_{x-ct}^{x+ct}u_1(y)\,dy\\
+&amp;\quad+\frac c2\int_0^t
+\int_{x-c(t-s)}^{x+c(t-s)}f(s,y)\,dy\,ds.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u(t,x)&amp;=\tfrac12[u_0(x-ct)+u_0(x+ct)]\\
+&amp;\quad+\frac1{2c}\int_{x-ct}^{x+ct}u_1(y)\,dy\\
+&amp;\quad+\frac c2\int_0^t
+\int_{x-c(t-s)}^{x+c(t-s)}f(s,y)\,dy\,ds.
+\end{aligned}
+\]</span>
+For constant source <span class="math" data-tex="\(h\)">\(h\)</span>, the last term equals
+<span class="math" data-tex="\(\frac c2\int_0^t2c(t-s)h\,ds=c^2ht^2/2\)">\(\frac c2\int_0^t2c(t-s)h\,ds=c^2ht^2/2\)</span>, agreeing with Exercise 1. Initial values at interior points of the interval contribute in one dimension.</p>
+<p><strong>Exercise 6 (advanced: no correction at the vertex).</strong> Suppose two homogeneous distributions on <span class="math" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span> have degree <span class="math" data-tex="\(2-N\)">\(2-N\)</span> and agree away from zero. Prove that they coincide. Explain why changing the degree to <span class="math" data-tex="\(-N\)">\(-N\)</span> changes the answer.</p>
+<p><strong>Solution.</strong> Their difference is point supported, hence has the form
+<span class="math" data-tex="\(\sum_{|\alpha|\leq r}a_\alpha\partial^\alpha\delta\)">\(\sum_{|\alpha|\leq r}a_\alpha\partial^\alpha\delta\)</span> by the Taylor-jet argument in Lemma 2. On <span class="math" data-tex="\(\phi(s\,\cdot)\)">\(\phi(s\,\cdot)\)</span>, each term scales by <span class="math" data-tex="\(s^{|\alpha|}\)">\(s^{|\alpha|}\)</span>; degree <span class="math" data-tex="\(2-N\)">\(2-N\)</span> instead demands scaling by <span class="math" data-tex="\(s^{-2}\)">\(s^{-2}\)</span>. Choose tests with just one prescribed Taylor jet. The identity
+<span class="math" data-tex="\(a_\alpha s^{|\alpha|}=a_\alpha s^{-2}\)">\(a_\alpha s^{|\alpha|}=a_\alpha s^{-2}\)</span> for all <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> implies <span class="math" data-tex="\(a_\alpha=0\)">\(a_\alpha=0\)</span>. At degree <span class="math" data-tex="\(-N\)">\(-N\)</span>, the required test scaling is one, so a multiple of <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is allowed. Thus homogeneity rules out the vertex correction specifically for the wave kernel's degree.</p>
+<h2 id="references">References</h2>
+<p><a href="prerequisites/wave-hadamard-kernels.html">flat</a> <em>Causal kernels, initial data, and short-time geometry</em>, WHK-002–004: the flat fundamental solution, cone power, homogeneity and initial traces.</p>
+<p><a href="prerequisites/compatible-jets-on-closed-sets.html">jets</a> <em>Compatible jets on closed sets</em>, Theorem 3.1: extension of compatible finite jets on a compact set.</p>
+<p>M. Riesz, <em>L'intégrale de Riemann-Liouville et le problème de Cauchy pour l'équation des ondes</em>, Bulletin de la Société Mathématique de France 67 (1939), 153–170, <a href="https://www.numdam.org/article/BSMF_1939__67__S153_0.pdf">primary paper</a>, for causal integrals and wave Cauchy representations.</p>
+</main></body></html>

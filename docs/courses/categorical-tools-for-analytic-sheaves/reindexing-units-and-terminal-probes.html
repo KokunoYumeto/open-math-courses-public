@@ -1,0 +1,292 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reindexing, units and terminal probes</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="reindexing-units-and-terminal-probes">Reindexing, units and terminal probes</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0. Self-checked; no independent review.</em></p>
+<p>A change of indices gives a specified map between colimits. A transformation between two index functors gives a triangle of these maps. Under a coherence condition, a transformation from the identity supplies the inverse comparison. An index adjunction supplies a useful three-map sequence, but the general conclusion concerns a composite of two of those maps. Terminal objects and formal colimits of representables provide two ways to recognize when reindexing is cofinal.</p>
+<p>Compose from right to left. Category data and choices live in ambient set theory. Fix a working Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>; small means <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, with the full closure and relabelling proofs in <a href="universes-and-small-categories.html#1-smallness-is-invariant-under-relabelling">Universes and small categories, Sections 1–3</a>. Functor categories may require a larger ambient universe. General reindexing statements assume the indicated colimits exist; only the formal presheaf test in Section 5 requires its entire base and index to be small.</p>
+<p>Retain the entire cocone representations, diagram-map laws and structural comparisons in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families, Sections 2–3</a>, all inverse cofinal cocone factors in <a href="change-an-index-without-changing-universal-maps.html#1-connected-comma-categories">Change an index, Sections 1–3</a>, and the specified unit, counit and triangles in <a href="passing-maps-across-an-adjunction.html#1-a-best-arrow-to-a-target">Passing maps across an adjunction, Sections 1–2</a>. These are complete proof interfaces, including their arbitrary ambient and empty-index conventions.</p>
+<h2 id="1-a-transformation-gives-a-commuting-triangle">1. A transformation gives a commuting triangle</h2>
+<p>Let <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, let <span class="math" data-tex="\(\phi_1,\phi_2:J\to I\)">\(\phi_1,\phi_2:J\to I\)</span>, and let <span class="math" data-tex="\(\theta:\phi_1\to\phi_2\)">\(\theta:\phi_1\to\phi_2\)</span> be natural. Suppose all three colimits below exist. Give them their chosen legs</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=\operatorname{colim}_I D,\\
+c_i:D(i)\to L,\\
+K_a=\operatorname{colim}_J D\phi_a,\\
+d_j^a:D(\phi_a j)\to K_a\\
+(a=1,2).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+L=\operatorname{colim}_I D,\\
+c_i:D(i)\to L,\\
+K_a=\operatorname{colim}_J D\phi_a,\\
+d_j^a:D(\phi_a j)\to K_a\\
+(a=1,2).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The full retained structural comparison gives <span class="math" data-tex="\(q_a:K_a\to L\)">\(q_a:K_a\to L\)</span> with <span class="math" data-tex="\(q_a d_j^a=c_{\phi_a j}\)">\(q_a d_j^a=c_{\phi_a j}\)</span>. The full diagram-transformation construction gives <span class="math" data-tex="\(r:K_1\to K_2\)">\(r:K_1\to K_2\)</span> with
+<span class="math" data-tex="\(r d_j^1=d_j^2 D(\theta_j)\)">\(r d_j^1=d_j^2 D(\theta_j)\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> These maps satisfy <span class="math" data-tex="\(q_2r=q_1\)">\(q_2r=q_1\)</span>, naturally in <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proof.</strong> For every <span class="math" data-tex="\(j\)">\(j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q_2r d_j^1
+&amp;=c_{\phi_2 j}D(\theta_j)\\
+&amp;=c_{\phi_1 j}=q_1d_j^1.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+q_2r d_j^1
+&amp;=c_{\phi_2 j}D(\theta_j)\\
+&amp;=c_{\phi_1 j}=q_1d_j^1.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>The middle equality is precisely the <span class="math" data-tex="\(I\)">\(I\)</span>-cocone equation at <span class="math" data-tex="\(\theta_j:\phi_1j\to\phi_2j\)">\(\theta_j:\phi_1j\to\phi_2j\)</span>. Colimit uniqueness gives the result. For a transformation <span class="math" data-tex="\(v:D\to E\)">\(v:D\to E\)</span>, each comparison square commutes after every structural leg, by naturality of <span class="math" data-tex="\(v\)">\(v\)</span> at <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> and the full retained diagram-map equations. Uniqueness proves the squares on the colimits. No cofinality hypothesis is needed. For empty <span class="math" data-tex="\(J\)">\(J\)</span>, uniqueness is the empty-colimit factor property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-when-reindexing-has-a-specified-inverse">2. When reindexing has a specified inverse</h2>
+<p>Let <span class="math" data-tex="\(T:I\to I\)">\(T:I\to I\)</span> and <span class="math" data-tex="\(\theta:1_I\to T\)">\(\theta:1_I\to T\)</span> be natural. Suppose</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta_{T i}=T(\theta_i):T i\to T^2i\\
+\text{for every }i.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\theta_{T i}=T(\theta_i):T i\to T^2i\\
+\text{for every }i.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>For <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, choose colimits <span class="math" data-tex="\(L=\operatorname{colim}_I D\)">\(L=\operatorname{colim}_I D\)</span> and <span class="math" data-tex="\(M=\operatorname{colim}_I DT\)">\(M=\operatorname{colim}_I DT\)</span>, with legs <span class="math" data-tex="\(c_i\)">\(c_i\)</span> and <span class="math" data-tex="\(d_i\)">\(d_i\)</span>. Their two specified maps are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e:M\to L,\qquad e d_i=c_{T i},\\
+x:L\to M,\qquad x c_i=d_iD(\theta_i).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+e:M\to L,\qquad e d_i=c_{T i},\\
+x:L\to M,\qquad x c_i=d_iD(\theta_i).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The first is the index comparison, and the second is induced by <span class="math" data-tex="\(D\theta\)">\(D\theta\)</span>. The complete retained cocone proof makes the second family compatible: for <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>, naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives
+<span class="math" data-tex="\(d_jD(\theta_j)D(s)=d_jD(Ts)D(\theta_i)=d_iD(\theta_i)\)">\(d_jD(\theta_j)D(s)=d_jD(Ts)D(\theta_i)=d_iD(\theta_i)\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The maps <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> are inverse isomorphisms.</p>
+<p><strong>Proof of both composites.</strong> At each <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, the original cocone equation gives
+<span class="math" data-tex="\(ex c_i=c_{T i}D(\theta_i)=c_i\)">\(ex c_i=c_{T i}D(\theta_i)=c_i\)</span>. Hence <span class="math" data-tex="\(ex=1_L\)">\(ex=1_L\)</span>. At each <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, use (2.1) and the cocone of <span class="math" data-tex="\(DT\)">\(DT\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+xe d_i
+&amp;=d_{T i}D(\theta_{T i})\\
+&amp;=d_{T i}D(T\theta_i)\\
+&amp;=d_i.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+xe d_i
+&amp;=d_{T i}D(\theta_{T i})\\
+&amp;=d_{T i}D(T\theta_i)\\
+&amp;=d_i.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(xe=1_M\)">\(xe=1_M\)</span>. Each equality uses its specified leg, so the inverse is exactly the map induced by <span class="math" data-tex="\(D\theta\)">\(D\theta\)</span>. For a transformation of <span class="math" data-tex="\(D\)">\(D\)</span>, the retained leg laws make both <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> natural, including their inverse squares. The proof requires neither <span class="math" data-tex="\(T^2=T\)">\(T^2=T\)</span> nor invertibility of <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>. Empty indices use the same empty universal uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Naturality of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> alone gives
+<span class="math" data-tex="\(T(\theta_i)\theta_i=\theta_{T i}\theta_i\)">\(T(\theta_i)\theta_i=\theta_{T i}\theta_i\)</span>.
+That equation cannot be cancelled without a suitable hypothesis on <span class="math" data-tex="\(\theta_i\)">\(\theta_i\)</span>. Exercise 4 supplies a complete example in which dropping (2.1) destroys the second inverse identity.</p>
+<h2 id="3-three-maps-from-an-index-adjunction">3. Three maps from an index adjunction</h2>
+<p>Let <span class="math" data-tex="\(\lambda:I\to J\)">\(\lambda:I\to J\)</span> be left adjoint to <span class="math" data-tex="\(\mu:J\to I\)">\(\mu:J\to I\)</span>, with specified unit <span class="math" data-tex="\(\theta:1_I\to\mu\lambda\)">\(\theta:1_I\to\mu\lambda\)</span> and counit <span class="math" data-tex="\(\varepsilon:\lambda\mu\to1_J\)">\(\varepsilon:\lambda\mu\to1_J\)</span>. Write <span class="math" data-tex="\(T=\mu\lambda\)">\(T=\mu\lambda\)</span>. Retain the full unit/counit Hom factors and triangles from <em>Passing maps across an adjunction</em>, Section 2.</p>
+<p><strong>Proposition 3.1.</strong> The right adjoint <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is cofinal.</p>
+<p><strong>Full comma specialization.</strong> For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, the incoming comma <span class="math" data-tex="\((i\downarrow\mu)\)">\((i\downarrow\mu)\)</span> has initial object <span class="math" data-tex="\((\lambda i,\theta_i)\)">\((\lambda i,\theta_i)\)</span>. Indeed, to an object <span class="math" data-tex="\((j,a:i\to\mu j)\)">\((j,a:i\to\mu j)\)</span>, its unique outgoing arrow is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b=\varepsilon_j\lambda(a):\lambda i\to j,\\
+\mu(b)\theta_i=a.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+b=\varepsilon_j\lambda(a):\lambda i\to j,\\
+\mu(b)\theta_i=a.
+\end{gathered}
+\tag{3.1}
+\]</span>
+These are exactly the inverse adjunction factor and its equation. The full initial-comma proof in <a href="fibres-slices-and-index-adjunctions.html#5-an-index-adjunction-computes-kan-extensions">Fibres, slices and index adjunctions, Section 5</a>, with the adjoints renamed, checks existence and uniqueness for every object. A category with an initial object is nonempty and connected: every object is joined to that initial object by its unique arrow. Thus every incoming comma satisfies the complete cofinal definition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Suppose <span class="math" data-tex="\(C\)">\(C\)</span> admits <span class="math" data-tex="\(I\)">\(I\)</span>-colimits and let <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>. The two <span class="math" data-tex="\(I\)">\(I\)</span>-colimits <span class="math" data-tex="\(L=\operatorname{colim}D\)">\(L=\operatorname{colim}D\)</span> and <span class="math" data-tex="\(M=\operatorname{colim}DT\)">\(M=\operatorname{colim}DT\)</span> exist. Cofinality and the entire inverse-cocone theorem in <em>Change an index</em>, Section 2, give existence of <span class="math" data-tex="\(N=\operatorname{colim}_J D\mu\)">\(N=\operatorname{colim}_J D\mu\)</span>, even though all <span class="math" data-tex="\(J\)">\(J\)</span>-colimits in <span class="math" data-tex="\(C\)">\(C\)</span> were not assumed. Write their legs as <span class="math" data-tex="\(c_i,d_i,n_j\)">\(c_i,d_i,n_j\)</span>.</p>
+<p>The relevant maps are completely specified by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L\xrightarrow{u}M\xrightarrow{v}N\xrightarrow{w}L,\\
+u c_i=d_iD(\theta_i),\\
+v d_i=n_{\lambda i},\qquad
+w n_j=c_{\mu j}.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+L\xrightarrow{u}M\xrightarrow{v}N\xrightarrow{w}L,\\
+u c_i=d_iD(\theta_i),\\
+v d_i=n_{\lambda i},\qquad
+w n_j=c_{\mu j}.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The first family is compatible by naturality of the unit, as in Section 2. The second is the comparison for restriction of <span class="math" data-tex="\(D\mu\)">\(D\mu\)</span> along <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and the third is the comparison for restriction of <span class="math" data-tex="\(D\)">\(D\)</span> along <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The retained proofs verify every cocone equation and all these endpoints. Cofinality makes this particular <span class="math" data-tex="\(w\)">\(w\)</span> invertible, with the inverse obtained by extending the <span class="math" data-tex="\(J\)">\(J\)</span>-cocone.</p>
+<p><strong>Theorem 3.2.</strong> Always <span class="math" data-tex="\(wvu=1_L\)">\(wvu=1_L\)</span>, and <span class="math" data-tex="\(vu=w^{-1}\)">\(vu=w^{-1}\)</span>. If every <span class="math" data-tex="\(\lambda(\theta_i)\)">\(\lambda(\theta_i)\)</span> is invertible in <span class="math" data-tex="\(J\)">\(J\)</span>, then <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> are all invertible.</p>
+<p><strong>Proof of the unconditional assertion.</strong> On each <span class="math" data-tex="\(c_i\)">\(c_i\)</span>,
+<span class="math math-display" data-tex="\[
+wvu c_i=c_{T i}D(\theta_i)=c_i.
+\tag{3.3}
+\]">\[
+wvu c_i=c_{T i}D(\theta_i)=c_i.
+\tag{3.3}
+\]</span>
+The last equality is the original cocone equation. Uniqueness gives <span class="math" data-tex="\(wvu=1_L\)">\(wvu=1_L\)</span>, and composing with <span class="math" data-tex="\(w^{-1}\)">\(w^{-1}\)</span> gives <span class="math" data-tex="\(vu=w^{-1}\)">\(vu=w^{-1}\)</span>. Thus the composite <span class="math" data-tex="\(vu\)">\(vu\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> are inverses. This calculation alone does not make the two individual factors <span class="math" data-tex="\(u,v\)">\(u,v\)</span> invertible.</p>
+<p><strong>The extra unit condition and its exact coherence consequence.</strong> Define
+<span class="math math-display" data-tex="\[
+m_i=\mu(\varepsilon_{\lambda i}):T^2i\to Ti.
+\tag{3.4}
+\]">\[
+m_i=\mu(\varepsilon_{\lambda i}):T^2i\to Ti.
+\tag{3.4}
+\]</span>
+The two adjunction triangles give
+<span class="math math-display" data-tex="\[
+m_i T(\theta_i)=1_{T i},
+\qquad m_i\theta_{T i}=1_{T i}.
+\tag{3.5}
+\]">\[
+m_i T(\theta_i)=1_{T i},
+\qquad m_i\theta_{T i}=1_{T i}.
+\tag{3.5}
+\]</span>
+For the first equation, apply <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to
+<span class="math" data-tex="\(\varepsilon_{\lambda i}\lambda(\theta_i)=1_{\lambda i}\)">\(\varepsilon_{\lambda i}\lambda(\theta_i)=1_{\lambda i}\)</span>.
+For the second, use
+<span class="math" data-tex="\(\mu(\varepsilon_{\lambda i})\theta_{\mu\lambda i}=1_{\mu\lambda i}\)">\(\mu(\varepsilon_{\lambda i})\theta_{\mu\lambda i}=1_{\mu\lambda i}\)</span>.
+Under the extra condition, <span class="math" data-tex="\(T(\theta_i)=\mu(\lambda(\theta_i))\)">\(T(\theta_i)=\mu(\lambda(\theta_i))\)</span> is invertible, because the full functor inverse law sends inverses to inverses. The first equation forces
+<span class="math" data-tex="\(m_i=T(\theta_i)^{-1}\)">\(m_i=T(\theta_i)^{-1}\)</span>. The second then forces
+<span class="math math-display" data-tex="\[
+\theta_{T i}=T(\theta_i).
+\tag{3.6}
+\]">\[
+\theta_{T i}=T(\theta_i).
+\tag{3.6}
+\]</span>
+Thus the hypotheses of Theorem 2.1 hold, with <span class="math" data-tex="\(x=u\)">\(x=u\)</span> and <span class="math" data-tex="\(e=wv\)">\(e=wv\)</span>: indeed <span class="math" data-tex="\(wv d_i=c_{T i}\)">\(wv d_i=c_{T i}\)</span>. That theorem gives <span class="math" data-tex="\(u=(wv)^{-1}\)">\(u=(wv)^{-1}\)</span>. Since <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(wv\)">\(wv\)</span> are invertible, <span class="math" data-tex="\(v=w^{-1}(wv)\)">\(v=w^{-1}(wv)\)</span> is invertible too. This proves all three assertions with their canonical maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The unit condition has supplied (3.6), rather than an unsupported equality <span class="math" data-tex="\(T^2=T\)">\(T^2=T\)</span>. All maps in (3.2) are natural under transformations of <span class="math" data-tex="\(D\)">\(D\)</span>, by checking their stated structural legs and using the complete retained comparison laws. If either <span class="math" data-tex="\(I\)">\(I\)</span> or <span class="math" data-tex="\(J\)">\(J\)</span> is empty, existence of both adjoint functors forces both empty, and every comparison is between the chosen empty colimits. The <span class="math" data-tex="\(I\)">\(I\)</span>-colimit assumption then supplies the needed initial object of <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<h2 id="4-a-terminal-object-tests-cofinality">4. A terminal object tests cofinality</h2>
+<p>Let <span class="math" data-tex="\(F:A\to B\)">\(F:A\to B\)</span>, and suppose <span class="math" data-tex="\(A\)">\(A\)</span> has a terminal object <span class="math" data-tex="\(t\)">\(t\)</span>. No smallness of the whole categories is required beyond the stated ambient set convention.</p>
+<p><strong>Theorem 4.1.</strong> The functor <span class="math" data-tex="\(F\)">\(F\)</span> is cofinal if and only if <span class="math" data-tex="\(F(t)\)">\(F(t)\)</span> is terminal in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(F(t)\)">\(F(t)\)</span> is terminal. For every <span class="math" data-tex="\(Y\in B\)">\(Y\in B\)</span>, the incoming comma <span class="math" data-tex="\((Y\downarrow F)\)">\((Y\downarrow F)\)</span> has object <span class="math" data-tex="\((t,\ell_Y)\)">\((t,\ell_Y)\)</span>, where <span class="math" data-tex="\(\ell_Y:Y\to F(t)\)">\(\ell_Y:Y\to F(t)\)</span> is the unique arrow. From <span class="math" data-tex="\((a,q:Y\to F(a))\)">\((a,q:Y\to F(a))\)</span>, the unique arrow <span class="math" data-tex="\(p_a:a\to t\)">\(p_a:a\to t\)</span> satisfies <span class="math" data-tex="\(F(p_a)q=\ell_Y\)">\(F(p_a)q=\ell_Y\)</span>, because both sides go from <span class="math" data-tex="\(Y\)">\(Y\)</span> to the terminal object. Uniqueness of <span class="math" data-tex="\(p_a\)">\(p_a\)</span> makes <span class="math" data-tex="\((t,\ell_Y)\)">\((t,\ell_Y)\)</span> terminal in this comma. It is nonempty and connected, so <span class="math" data-tex="\(F\)">\(F\)</span> is cofinal.</p>
+<p>Conversely, suppose all incoming commas are nonempty and connected. For a fixed <span class="math" data-tex="\(Y\)">\(Y\)</span>, attach to <span class="math" data-tex="\((a,q)\)">\((a,q)\)</span> the arrow</p>
+<span class="math math-display" data-tex="\[
+b_{a,q}=F(p_a)q:Y\to F(t).
+\tag{4.1}
+\]">\[
+b_{a,q}=F(p_a)q:Y\to F(t).
+\tag{4.1}
+\]</span>
+<p>For a comma arrow <span class="math" data-tex="\(s:(a,q)\to(a&#x27;,q&#x27;)\)">\(s:(a,q)\to(a&#x27;,q&#x27;)\)</span>, its equation is <span class="math" data-tex="\(F(s)q=q&#x27;\)">\(F(s)q=q&#x27;\)</span>. Terminality in <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(p_{a&#x27;}s=p_a\)">\(p_{a&#x27;}s=p_a\)</span>, so
+<span class="math" data-tex="\(b_{a&#x27;,q&#x27;}=F(p_{a&#x27;}s)q=b_{a,q}\)">\(b_{a&#x27;,q&#x27;}=F(p_{a&#x27;}s)q=b_{a,q}\)</span>.
+Read this equality in either orientation and propagate it along every zigzag. Connectedness makes all <span class="math" data-tex="\(b_{a,q}\)">\(b_{a,q}\)</span> equal; nonemptiness supplies one such arrow. Any arrow <span class="math" data-tex="\(r:Y\to F(t)\)">\(r:Y\to F(t)\)</span> gives the comma object <span class="math" data-tex="\((t,r)\)">\((t,r)\)</span>, for which <span class="math" data-tex="\(b_{t,r}=r\)">\(b_{t,r}=r\)</span>, since <span class="math" data-tex="\(p_t=1_t\)">\(p_t=1_t\)</span>. Every arrow <span class="math" data-tex="\(r\)">\(r\)</span> therefore equals the one already supplied. There is exactly one arrow from each <span class="math" data-tex="\(Y\)">\(Y\)</span>, proving terminality of <span class="math" data-tex="\(F(t)\)">\(F(t)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(t\)">\(t\)</span> exists, <span class="math" data-tex="\(A\)">\(A\)</span> is nonempty, and existence of <span class="math" data-tex="\(F\)">\(F\)</span> then forces <span class="math" data-tex="\(B\)">\(B\)</span> nonempty. No empty-target exception is being hidden in the criterion.</p>
+<p>For an object <span class="math" data-tex="\(Z\in C\)">\(Z\in C\)</span>, let <span class="math" data-tex="\(\delta_Z:\mathsf{Pt}\to C\)">\(\delta_Z:\mathsf{Pt}\to C\)</span> select it, where <span class="math" data-tex="\(\mathsf{Pt}\)">\(\mathsf{Pt}\)</span> has one object and its identity arrow.</p>
+<p><strong>Proposition 4.2.</strong> The category <span class="math" data-tex="\((X\downarrow\delta_Z)\)">\((X\downarrow\delta_Z)\)</span> is isomorphic to the discrete category on <span class="math" data-tex="\(C(X,Z)\)">\(C(X,Z)\)</span>. Consequently <span class="math" data-tex="\(\delta_Z\)">\(\delta_Z\)</span> is cofinal if and only if <span class="math" data-tex="\(Z\)">\(Z\)</span> is terminal.</p>
+<p><strong>Proof on every object and arrow.</strong> Its objects are the arrows <span class="math" data-tex="\(q:X\to Z\)">\(q:X\to Z\)</span>. An arrow <span class="math" data-tex="\(q\to q&#x27;\)">\(q\to q&#x27;\)</span> must come from the unique identity of <span class="math" data-tex="\(\mathsf{Pt}\)">\(\mathsf{Pt}\)</span>, and its comma equation is <span class="math" data-tex="\(q=q&#x27;\)">\(q=q&#x27;\)</span>. Thus there is an identity at each <span class="math" data-tex="\(q\)">\(q\)</span> and no other arrow. Sending the comma object to <span class="math" data-tex="\(q\)">\(q\)</span>, and its identity to the corresponding discrete identity, is a functor; sending them back is its literal inverse. A discrete category is nonempty and connected exactly when its object set has one element: its generated zigzag equivalence is equality. Hence cofinality is exactly the condition that <span class="math" data-tex="\(C(X,Z)\)">\(C(X,Z)\)</span> has one element for every <span class="math" data-tex="\(X\)">\(X\)</span>. This is terminality. Its Hom values are the original ambient sets; local smallness supplies small encodings when needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same conclusion follows from Theorem 4.1, since the unique object of <span class="math" data-tex="\(\mathsf{Pt}\)">\(\mathsf{Pt}\)</span> is terminal. The explicit isomorphism above also identifies the entire comma category used in the original test.</p>
+<h2 id="5-the-formal-yoneda-colimit-detects-cofinality">5. The formal Yoneda colimit detects cofinality</h2>
+<p>Now let <span class="math" data-tex="\(I,J\)">\(I,J\)</span> be small and let <span class="math" data-tex="\(\alpha:J\to I\)">\(\alpha:J\to I\)</span>. Use the complete Hom and Yoneda construction in <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points and representations, Section 2</a>. The representable <span class="math" data-tex="\(h_i\)">\(h_i\)</span> has value <span class="math" data-tex="\(h_i(k)=I(k,i)\)">\(h_i(k)=I(k,i)\)</span>, with precomposition in <span class="math" data-tex="\(k\)">\(k\)</span>. Postcomposition along <span class="math" data-tex="\(\alpha(s)\)">\(\alpha(s)\)</span> makes <span class="math" data-tex="\(j\mapsto h_{\alpha j}\)">\(j\mapsto h_{\alpha j}\)</span> a diagram of presheaves.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+Q=\operatorname{colim}_{j\in J}h_{\alpha j}
+\quad\text{in }\widehat I.
+\tag{5.1}
+\]">\[
+Q=\operatorname{colim}_{j\in J}h_{\alpha j}
+\quad\text{in }\widehat I.
+\tag{5.1}
+\]</span>
+This is the formal colimit of the original object diagram, rather than a claim that a representative in <span class="math" data-tex="\(I\)">\(I\)</span> exists. The entire arbitrary-base pointwise proof in <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">Colimits as connected components, Section 4</a> supplies existence, all natural universal factors and the value formula
+<span class="math math-display" data-tex="\[
+Q(k)=\operatorname{colim}_{j\in J}I(k,\alpha j).
+\tag{5.2}
+\]">\[
+Q(k)=\operatorname{colim}_{j\in J}I(k,\alpha j).
+\tag{5.2}
+\]</span>
+Smallness of <span class="math" data-tex="\(I,J\)">\(I,J\)</span>, the full Hom encoding and the small tagged-union/quotient bounds make each value small. The transformation set may be placed in a larger ambient universe without changing these values.</p>
+<p>The covariant element category of <span class="math" data-tex="\(j\mapsto I(k,\alpha j)\)">\(j\mapsto I(k,\alpha j)\)</span> is exactly <span class="math" data-tex="\((k\downarrow\alpha)\)">\((k\downarrow\alpha)\)</span>: an object is <span class="math" data-tex="\((j,q:k\to\alpha j)\)">\((j,q:k\to\alpha j)\)</span>, and an arrow <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span> satisfies <span class="math" data-tex="\(\alpha(s)q=q&#x27;\)">\(\alpha(s)q=q&#x27;\)</span>. The entire component/class proof in that lesson, Sections 1–2, therefore gives the specified bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(k)\simeq\pi_0(k\downarrow\alpha),\\
+[j,q]\longmapsto[(j,q)].
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+Q(k)\simeq\pi_0(k\downarrow\alpha),\\
+[j,q]\longmapsto[(j,q)].
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>Its inverse sends that component back to <span class="math" data-tex="\([j,q]\)">\([j,q]\)</span>; equality of the generated relations proves independence and both inverse equations. The pointwise restriction along <span class="math" data-tex="\(a:k&#x27;\to k\)">\(a:k&#x27;\to k\)</span> sends <span class="math" data-tex="\([j,q]\)">\([j,q]\)</span> to <span class="math" data-tex="\([j,qa]\)">\([j,qa]\)</span>. On comma categories the same formula is the functor taking <span class="math" data-tex="\((j,q)\)">\((j,q)\)</span> to <span class="math" data-tex="\((j,qa)\)">\((j,qa)\)</span> and retaining <span class="math" data-tex="\(s\)">\(s\)</span>. Its comma equation, identities and compositions are preserved. Thus (5.3) is a natural comparison on the whole base, rather than only an objectwise cardinal identity.</p>
+<p><strong>Theorem 5.1.</strong> The functor <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is cofinal if and only if <span class="math" data-tex="\(Q\)">\(Q\)</span> is a terminal presheaf.</p>
+<p><strong>Proof with the actual singleton comparison.</strong> The singleton presheaf <span class="math" data-tex="\(1\)">\(1\)</span> is terminal by the complete pointwise proof: every component function to it is unique and all naturality squares commute. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is cofinal, every incoming comma is nonempty and connected, so (5.3) makes every value <span class="math" data-tex="\(Q(k)\)">\(Q(k)\)</span> a singleton. The unique transformation <span class="math" data-tex="\(q:Q\to1\)">\(q:Q\to1\)</span> is then invertible. Its inverse at <span class="math" data-tex="\(k\)">\(k\)</span> selects the sole class; restriction takes that class to the sole class at <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>, proving naturality of the inverse. Both composites fix the sole elements. Hence <span class="math" data-tex="\(Q\)">\(Q\)</span> is terminal.</p>
+<p>Conversely, if <span class="math" data-tex="\(Q\)">\(Q\)</span> is terminal, the unique transformations between <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> compose to their identities, by terminal uniqueness. Thus <span class="math" data-tex="\(Q(k)\)">\(Q(k)\)</span> is a singleton at every <span class="math" data-tex="\(k\)">\(k\)</span>. Equation (5.3) makes each incoming comma nonempty and connected, so <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is cofinal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(J=\varnothing\)">\(J=\varnothing\)</span> and <span class="math" data-tex="\(I\)">\(I\)</span> has an object, then <span class="math" data-tex="\(Q(k)=\varnothing\)">\(Q(k)=\varnothing\)</span> at that object and is not terminal; the incoming comma is empty. If <span class="math" data-tex="\(I=\varnothing\)">\(I=\varnothing\)</span>, existence of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> forces <span class="math" data-tex="\(J=\varnothing\)">\(J=\varnothing\)</span>, and <span class="math" data-tex="\(\widehat I\)">\(\widehat I\)</span> has its unique presheaf and transformation. The cofinality condition is vacuous and this presheaf is terminal, as the theorem asserts.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-the-triangle-retains-each-leg">Exercise 1 — the triangle retains each leg</h3>
+<p><em>Introductory.</em> Let <span class="math" data-tex="\(I=\{0&lt;1\}\)">\(I=\{0&lt;1\}\)</span>, <span class="math" data-tex="\(J=\mathsf{Pt}\)">\(J=\mathsf{Pt}\)</span>, with <span class="math" data-tex="\(\phi_1(*)=0,\phi_2(*)=1\)">\(\phi_1(*)=0,\phi_2(*)=1\)</span> and the unique transformation between them. Let
+<span class="math" data-tex="\(D(0)=\{a,b\}\)">\(D(0)=\{a,b\}\)</span>, <span class="math" data-tex="\(D(1)=\{c,d,e\}\)">\(D(1)=\{c,d,e\}\)</span>, and send both <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>. Compute every map in Proposition 1.1 and its equality at all elements.</p>
+<p><strong>Solution.</strong> The colimit of <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(D(1)\)">\(D(1)\)</span>: a cocone is determined by its map from <span class="math" data-tex="\(D(1)\)">\(D(1)\)</span>, and its other map is the composite with <span class="math" data-tex="\(D(0\to1)\)">\(D(0\to1)\)</span>. Its full unique factor is that <span class="math" data-tex="\(D(1)\)">\(D(1)\)</span>-component. The two point-index colimits are <span class="math" data-tex="\(K_1=\{a,b\}\)">\(K_1=\{a,b\}\)</span> and <span class="math" data-tex="\(K_2=\{c,d,e\}\)">\(K_2=\{c,d,e\}\)</span>, since a one-object identity-only diagram has its value as colimit.</p>
+<p>Here <span class="math" data-tex="\(q_1(a)=q_1(b)=c\)">\(q_1(a)=q_1(b)=c\)</span>; <span class="math" data-tex="\(q_2\)">\(q_2\)</span> is the identity of <span class="math" data-tex="\(\{c,d,e\}\)">\(\{c,d,e\}\)</span>; and <span class="math" data-tex="\(r(a)=r(b)=c\)">\(r(a)=r(b)=c\)</span>. Thus <span class="math" data-tex="\(q_2r=q_1\)">\(q_2r=q_1\)</span> at both <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. For any target set, assigning a cocone on the arrow diagram is exactly assigning one map from <span class="math" data-tex="\(\{c,d,e\}\)">\(\{c,d,e\}\)</span>; precomposing it with the computed triangle gives identical values on both original points. This checks the specified factor comparison, including the two points <span class="math" data-tex="\(d,e\)">\(d,e\)</span> which have no preimage from stage <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<h3 id="exercise-2-the-three-maps-for-an-endpoint-adjunction">Exercise 2 — the three maps for an endpoint adjunction</h3>
+<p><em>Intermediate.</em> Let <span class="math" data-tex="\(I=\{0&lt;1\}\)">\(I=\{0&lt;1\}\)</span>, <span class="math" data-tex="\(J=\{0&lt;1&lt;2\}\)">\(J=\{0&lt;1&lt;2\}\)</span>, with <span class="math" data-tex="\(\lambda(0)=0,\lambda(1)=2\)">\(\lambda(0)=0,\lambda(1)=2\)</span> and <span class="math" data-tex="\(\mu(0)=\mu(1)=0,\mu(2)=1\)">\(\mu(0)=\mu(1)=0,\mu(2)=1\)</span>. Let <span class="math" data-tex="\(D:I\to\mathsf{Set}\)">\(D:I\to\mathsf{Set}\)</span> be
+<span class="math" data-tex="\(\{a,b\}\to\{c,d\}\)">\(\{a,b\}\to\{c,d\}\)</span>, with both <span class="math" data-tex="\(a,b\mapsto c\)">\(a,b\mapsto c\)</span>. Verify the index adjunction, then calculate <span class="math" data-tex="\(L,M,N,u,v,w\)">\(L,M,N,u,v,w\)</span>, each unit condition and every incoming comma initial object.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, both <span class="math" data-tex="\(\lambda i\le j\)">\(\lambda i\le j\)</span> and <span class="math" data-tex="\(i\le\mu j\)">\(i\le\mu j\)</span> always hold. For <span class="math" data-tex="\(i=1\)">\(i=1\)</span>, both hold exactly at <span class="math" data-tex="\(j=2\)">\(j=2\)</span>. These six pairs verify the natural order-category Hom bijections, with their unique arrows. The unit is the identity since <span class="math" data-tex="\(\mu\lambda=1_I\)">\(\mu\lambda=1_I\)</span>; the counit is the identity at <span class="math" data-tex="\(0,2\)">\(0,2\)</span> and the arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> at the middle object of <span class="math" data-tex="\(J\)">\(J\)</span>. Both triangles hold.</p>
+<p>The incoming comma at <span class="math" data-tex="\(i=0\)">\(i=0\)</span> consists of all three objects of <span class="math" data-tex="\(J\)">\(J\)</span> and their order arrows, and has initial object <span class="math" data-tex="\(0=\lambda(0)\)">\(0=\lambda(0)\)</span>. At <span class="math" data-tex="\(i=1\)">\(i=1\)</span> it contains only <span class="math" data-tex="\(2=\lambda(1)\)">\(2=\lambda(1)\)</span>. These are the exact <span class="math" data-tex="\((\lambda i,\theta_i)\)">\((\lambda i,\theta_i)\)</span> objects of Proposition 3.1.</p>
+<p>The two <span class="math" data-tex="\(I\)">\(I\)</span>-diagrams <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(DT\)">\(DT\)</span> agree, so <span class="math" data-tex="\(L=M=\{c,d\}\)">\(L=M=\{c,d\}\)</span>. The <span class="math" data-tex="\(J\)">\(J\)</span>-diagram <span class="math" data-tex="\(D\mu\)">\(D\mu\)</span> is
+<span class="math" data-tex="\(\{a,b\}\xrightarrow{1}\{a,b\}\to\{c,d\}\)">\(\{a,b\}\xrightarrow{1}\{a,b\}\to\{c,d\}\)</span>. Its colimit is <span class="math" data-tex="\(N=\{c,d\}\)">\(N=\{c,d\}\)</span>, by its terminal index <span class="math" data-tex="\(2\)">\(2\)</span> and the full endpoint factor proof. Each of <span class="math" data-tex="\(u,v,w\)">\(u,v,w\)</span> is the identity on <span class="math" data-tex="\(c,d\)">\(c,d\)</span>, by (3.2) on the terminal legs. At stage <span class="math" data-tex="\(0\)">\(0\)</span> every relevant leg sends <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>, and at stage <span class="math" data-tex="\(1\)">\(1\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> it is the identity on <span class="math" data-tex="\(c,d\)">\(c,d\)</span>, verifying all other equations. Each <span class="math" data-tex="\(\lambda(\theta_i)\)">\(\lambda(\theta_i)\)</span> is the identity, so the extra condition holds and <span class="math" data-tex="\(wvu=1\)">\(wvu=1\)</span> with all three actual inverses.</p>
+<h3 id="exercise-3-one-object-need-not-be-terminal">Exercise 3 — one object need not be terminal</h3>
+<p><em>Advanced.</em> Let <span class="math" data-tex="\(I\)">\(I\)</span> have one object <span class="math" data-tex="\(t\)">\(t\)</span>, with automorphism group <span class="math" data-tex="\(\{1,g\}\)">\(\{1,g\}\)</span>, <span class="math" data-tex="\(g^2=1\)">\(g^2=1\)</span>. Compare the functor <span class="math" data-tex="\(\delta_t:\mathsf{Pt}\to I\)">\(\delta_t:\mathsf{Pt}\to I\)</span> with <span class="math" data-tex="\(1_I:I\to I\)">\(1_I:I\to I\)</span>. Compute each formal Yoneda colimit, its restriction action, and the incoming comma component sets. Decide cofinality and terminality.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\delta_t\)">\(\delta_t\)</span>, the incoming comma at <span class="math" data-tex="\(t\)">\(t\)</span> is discrete on <span class="math" data-tex="\(I(t,t)=\{1,g\}\)">\(I(t,t)=\{1,g\}\)</span>, by Proposition 4.2. It has two components and is not connected, so <span class="math" data-tex="\(\delta_t\)">\(\delta_t\)</span> is not cofinal. Its formal Yoneda colimit is just <span class="math" data-tex="\(h_t\)">\(h_t\)</span>, with two elements at the only test object. Restriction along <span class="math" data-tex="\(g\)">\(g\)</span> interchanges <span class="math" data-tex="\(1,g\)">\(1,g\)</span> by right multiplication, so it is not the singleton terminal presheaf. There is also no terminal object in <span class="math" data-tex="\(I\)">\(I\)</span>: its only candidate has two endomorphisms.</p>
+<p>For <span class="math" data-tex="\(1_I\)">\(1_I\)</span>, its incoming comma at <span class="math" data-tex="\(t\)">\(t\)</span> has objects <span class="math" data-tex="\(1,g:t\to t\)">\(1,g:t\to t\)</span>. There is a unique comma arrow from <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(q&#x27;\)">\(q&#x27;\)</span>, namely <span class="math" data-tex="\(q&#x27;q^{-1}\)">\(q&#x27;q^{-1}\)</span>, so it is nonempty and connected. Its formal colimit at <span class="math" data-tex="\(t\)">\(t\)</span> is the quotient of <span class="math" data-tex="\(\{1,g\}\)">\(\{1,g\}\)</span> by the diagram's postcomposition action; <span class="math" data-tex="\(g\)">\(g\)</span> sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span>, identifying the two. There is one class, and the remaining restriction by right multiplication fixes that class. The resulting presheaf is exactly the terminal singleton presheaf.</p>
+<p>The two calculations give their explicit class maps and inverses in (5.3). They show why a single object with extra arrows differs from the category <span class="math" data-tex="\(\mathsf{Pt}\)">\(\mathsf{Pt}\)</span>.</p>
+<h3 id="exercise-4-naturality-does-not-give-the-coherence-equation">Exercise 4 — naturality does not give the coherence equation</h3>
+<p><em>Challenge.</em> Let <span class="math" data-tex="\(I\)">\(I\)</span> have one object and endomorphism monoid
+<span class="math" data-tex="\(\operatorname{End}(\mathbb N)\)">\(\operatorname{End}(\mathbb N)\)</span>, all functions of nonnegative integers under composition. Let <span class="math" data-tex="\(T:I\to I\)">\(T:I\to I\)</span> act on an arrow <span class="math" data-tex="\(f\)">\(f\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(Tf)(0)=0,\\
+(Tf)(n+1)=f(n)+1,\\
+\theta(n)=n+1.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+(Tf)(0)=0,\\
+(Tf)(n+1)=f(n)+1,\\
+\theta(n)=n+1.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(D:I\to\mathsf{Set}\)">\(D:I\to\mathsf{Set}\)</span> be the natural action on <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Prove <span class="math" data-tex="\(T\)">\(T\)</span> is a functor and <span class="math" data-tex="\(\theta:1_I\to T\)">\(\theta:1_I\to T\)</span> is natural. Compute both colimits in (2.2), their actual comparisons, and the failure of (2.1). Use full quotient factors for arbitrary target sets.</p>
+<p><strong>Solution.</strong> The identity function is fixed by <span class="math" data-tex="\(T\)">\(T\)</span>, because its two defining cases give <span class="math" data-tex="\(n\)">\(n\)</span> at every <span class="math" data-tex="\(n\)">\(n\)</span>. For functions <span class="math" data-tex="\(f,h\)">\(f,h\)</span>, both <span class="math" data-tex="\(T(hf)\)">\(T(hf)\)</span> and <span class="math" data-tex="\(Th\,Tf\)">\(Th\,Tf\)</span> fix <span class="math" data-tex="\(0\)">\(0\)</span>; at <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, both have value <span class="math" data-tex="\(h(f(n))+1\)">\(h(f(n))+1\)</span>. Thus <span class="math" data-tex="\(T\)">\(T\)</span> preserves composition. Naturality is
+<span class="math" data-tex="\((Tf)\theta(n)=f(n)+1=\theta f(n)\)">\((Tf)\theta(n)=f(n)+1=\theta f(n)\)</span> for every <span class="math" data-tex="\(f,n\)">\(f,n\)</span>.</p>
+<p>The original action diagram has colimit a singleton. A cocone to a set <span class="math" data-tex="\(W\)">\(W\)</span> is a function <span class="math" data-tex="\(a:\mathbb N\to W\)">\(a:\mathbb N\to W\)</span> invariant under every endomorphism. The constant endomorphism with value <span class="math" data-tex="\(0\)">\(0\)</span> forces <span class="math" data-tex="\(a(n)=a(0)\)">\(a(n)=a(0)\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>; conversely every constant function is invariant. Such a cocone therefore has its unique factor from a singleton, taking its point to <span class="math" data-tex="\(a(0)\)">\(a(0)\)</span>. This proves the entire colimit property even when <span class="math" data-tex="\(W\)">\(W\)</span> is empty, in which case neither map exists.</p>
+<p>Under the action <span class="math" data-tex="\(Tf\)">\(Tf\)</span>, the point <span class="math" data-tex="\(0\)">\(0\)</span> is fixed and positive integers map to positive integers. The arrows coming from constant functions connect every positive integer to <span class="math" data-tex="\(1\)">\(1\)</span>, so there are exactly two quotient classes: <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and <span class="math" data-tex="\(\{1,2,\ldots\}\)">\(\{1,2,\ldots\}\)</span>. A cocone function is precisely one with a constant value on the positive class and an independent value at <span class="math" data-tex="\(0\)">\(0\)</span>. Thus it factors uniquely from the two-point class set, with both inverse factor assignments verified at every integer and naturally under postcomposition in <span class="math" data-tex="\(W\)">\(W\)</span>. This proves the full colimit <span class="math" data-tex="\(M\)">\(M\)</span>, rather than just its orbit count.</p>
+<p>The canonical <span class="math" data-tex="\(e:M\to L\)">\(e:M\to L\)</span> sends both classes to the singleton. The induced <span class="math" data-tex="\(x:L\to M\)">\(x:L\to M\)</span> sends that point to the positive class, since every <span class="math" data-tex="\(\theta(n)\)">\(\theta(n)\)</span> is positive. Hence <span class="math" data-tex="\(ex=1_L\)">\(ex=1_L\)</span>, whereas <span class="math" data-tex="\(xe\)">\(xe\)</span> sends the zero class to the positive class and is not <span class="math" data-tex="\(1_M\)">\(1_M\)</span>.</p>
+<p>At the one object of <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(\theta_T=\theta\)">\(\theta_T=\theta\)</span> sends <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, while <span class="math" data-tex="\(T\theta\)">\(T\theta\)</span> fixes <span class="math" data-tex="\(0\)">\(0\)</span>. They are unequal, so (2.1) fails exactly as needed. The monoid <span class="math" data-tex="\(\operatorname{End}(\mathbb N)\)">\(\operatorname{End}(\mathbb N)\)</span> is a small function set by the complete universe closure proof, and its one-object category is small. Therefore the set colimits used here exist under the same working-universe conventions. This is an infinite example with a complete written proof; a finite sample of its integers cannot establish its full quotient or functor claims.</p>
+<h2 id="7-references-and-retained-proof-interfaces">7. References and retained proof interfaces</h2>
+<ul>
+<li><strong>Schapira.</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Sections 2.3–2.5, for limits, colimits and their properties.</li>
+<li><strong>[Stacks, Categories].</strong> The pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L1720-L1776">Categories structured source</a> gives the full cofinal definition and the canonical colimit comparison declaration, with that comparison proof omitted. The entire owned inverse cocone proof in <em>Change an index</em> supplies the argument used here. The linked source retains GFDL 1.2 or later under its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a>; no source expression is incorporated.</li>
+<li><strong>Owned proofs.</strong> The complete compatible-cocone and reindexing laws, cofinal inverse factors, adjunction triangles and comma endpoint proofs are linked above. The full Hom/Yoneda and pointwise quotient/component proofs supply every value, naturality map, size bound and inverse in the formal presheaf criterion. Their existing versions retain their respective attribution and licences.</li>
+</ul>
+</main></body></html>

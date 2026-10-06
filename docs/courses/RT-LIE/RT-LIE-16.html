@@ -1,0 +1,934 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weyl&#x27;s character formula and the multiplicity formulas · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><style>main{max-width:76rem;margin:auto;padding:1.5rem}.lesson{max-width:66rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}img{max-width:100%;height:auto}table{display:block;overflow-x:auto}td,th{padding:.4rem} .math-display{display:block;overflow-x:auto}details{margin:1rem 0}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav><a href="index.html">Semisimple Lie algebras</a> · <a href="proof-crosswalk.html">Proof index</a> · <a href="sources.html">Sources and terms</a></nav></div></header><main id="main"><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-16.md" download>Editable source</a><a href="RT-LIE-15.html">← Previous lesson</a><a href="RT-LIE-17.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#proposition-1-1">Proposition 1.1.</a></li><li><a href="#theorem-2-1">Theorem 2.1 (Weyl&#x27;s character formula).</a></li><li><a href="#corollary-2-2">Corollary 2.2 (denominator identity).</a></li><li><a href="#corollary-3-1">Corollary 3.1 (Weyl&#x27;s dimension formula).</a></li><li><a href="#theorem-4-1">Theorem 4.1 (Kostant&#x27;s multiplicity formula).</a></li><li><a href="#theorem-5-1">Theorem 5.1 (Freudenthal&#x27;s formula).</a></li></ul></details><article class="lesson"><h1 id="weyl-s-character-formula-and-the-multiplicity-formulas">Weyl's character formula and the multiplicity formulas</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The character of an irreducible module is a finite sum of weights with unknown multiplicities. Verma characters give a way to solve for those multiplicities. The central character restricts which Verma terms can survive, and Weyl symmetry determines their signs. We shall justify the finite virtual expansion before using it.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is a finite-dimensional complex semisimple Lie algebra. Fix <span class="math" data-tex="\(\Phi^+\)">\(\Phi^+\)</span>, the simple roots <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, the full weight lattice <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and <span class="math" data-tex="\(\rho=\frac12\sum_{\alpha&gt;0}\alpha\)">\(\rho=\frac12\sum_{\alpha&gt;0}\alpha\)</span>. The order is <span class="math" data-tex="\(\mu\le\lambda\)">\(\mu\le\lambda\)</span> when <span class="math" data-tex="\(\lambda-\mu\in Q^+=\sum_i\mathbb Z_{\ge0}\alpha_i\)">\(\lambda-\mu\in Q^+=\sum_i\mathbb Z_{\ge0}\alpha_i\)</span>. Put <span class="math" data-tex="\(\epsilon(w)=\det(w)\)">\(\epsilon(w)=\det(w)\)</span>. We use complete reducibility from <a href="RT-LIE-04.html">Complete reducibility: Casimir elements and Weyl's theorem</a>, the root and chamber results from <a href="RT-LIE-08.html">Root systems and their Weyl groups</a>, and the classical roots from <a href="RT-LIE-07.html">The root space decomposition of a semisimple Lie algebra</a>. The Verma characters, finite-dimensional classification, Weyl multiplicities and exact weight polytope are proved in <a href="RT-LIE-14.html">Weights, Verma modules and the theorem of the highest weight</a>. Central-character linkage and the ordered Casimir are proved in <a href="RT-LIE-15.html">The centre of the enveloping algebra and Harish-Chandra's theorem</a>.</p>
+<p>For finite <span class="math" data-tex="\(V\)">\(V\)</span>, its character is
+<span class="math math-display" data-tex="\[
+\operatorname{ch}V=\sum_{\mu\in\Lambda}\dim V_\mu\,e^\mu
+\in\mathbb Z[\Lambda],\qquad e^\mu e^\nu=e^{\mu+\nu}.
+\]">\[
+\operatorname{ch}V=\sum_{\mu\in\Lambda}\dim V_\mu\,e^\mu
+\in\mathbb Z[\Lambda],\qquad e^\mu e^\nu=e^{\mu+\nu}.
+\]</span>
+For modules supported in a fixed translate <span class="math" data-tex="\(\lambda-Q^+\)">\(\lambda-Q^+\)</span>, allow downward series with finite-dimensional weight spaces. Interpret <span class="math" data-tex="\(e^{-\alpha_i}\)">\(e^{-\alpha_i}\)</span> as formal variables <span class="math" data-tex="\(q_i\)">\(q_i\)</span>; each coefficient of a product has finitely many contributions. This is the completion used below, with no analytic convergence assumption.</p>
+<h2 id="section-1"><span id="1-a-finite-virtual-expansion"></span>1. A finite virtual expansion</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+P=\prod_{\alpha&gt;0}(1-e^{-\alpha}),\qquad
+D=e^\rho P,\qquad
+\operatorname{ch}M(\nu)=\frac{e^\nu}{P}.
+\tag{1.1}
+\]">\[
+P=\prod_{\alpha&gt;0}(1-e^{-\alpha}),\qquad
+D=e^\rho P,\qquad
+\operatorname{ch}M(\nu)=\frac{e^\nu}{P}.
+\tag{1.1}
+\]</span>
+Each positive root has positive integer height, so <span class="math" data-tex="\(P^{-1}\)">\(P^{-1}\)</span> is a legitimate formal product of geometric series.</p>
+<p id="proposition-1-1"><strong>Proposition 1.1.</strong> For <span class="math" data-tex="\(\lambda\in\Lambda^+\)">\(\lambda\in\Lambda^+\)</span>, there are finitely many integers <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> such that
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(\lambda)=
+\sum_{\substack{\nu\le\lambda\\\nu\in W\cdot\lambda}}
+c_\nu\operatorname{ch}M(\nu),\qquad c_\lambda=1,
+\quad W\cdot\lambda=\{w(\lambda+\rho)-\rho:w\in W\}.
+\tag{1.2}
+\]">\[
+\operatorname{ch}L(\lambda)=
+\sum_{\substack{\nu\le\lambda\\\nu\in W\cdot\lambda}}
+c_\nu\operatorname{ch}M(\nu),\qquad c_\lambda=1,
+\quad W\cdot\lambda=\{w(\lambda+\rho)-\rho:w\in W\}.
+\tag{1.2}
+\]</span>
+This is an identity of characters. It does not assert a filtration of <span class="math" data-tex="\(L(\lambda)\)">\(L(\lambda)\)</span> by Verma modules.</p>
+<p><strong>Proof.</strong> For a weight <span class="math" data-tex="\(\nu=\lambda-\sum_i b_i\alpha_i\)">\(\nu=\lambda-\sum_i b_i\alpha_i\)</span>, define its level to be <span class="math" data-tex="\(\sum_i b_i\)">\(\sum_i b_i\)</span>. There are finitely many weights at each fixed level. Write <span class="math" data-tex="\(V=L(\lambda)\)">\(V=L(\lambda)\)</span> and <span class="math" data-tex="\(\chi=\chi_\lambda\)">\(\chi=\chi_\lambda\)</span>. The Laurent polynomial <span class="math" data-tex="\(P\operatorname{ch}V\)">\(P\operatorname{ch}V\)</span> is finite and supported in <span class="math" data-tex="\(\lambda-Q^+\)">\(\lambda-Q^+\)</span>. Choose <span class="math" data-tex="\(N\)">\(N\)</span> at least its largest level.</p>
+<p>We describe a finite elimination on signed lists of weight modules. Every module remaining on the list has finite-dimensional weight spaces, support in <span class="math" data-tex="\(\lambda-Q^+\)">\(\lambda-Q^+\)</span>, and scalar central action <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Initially the list is just <span class="math" data-tex="\(+V\)">\(+V\)</span>. At level <span class="math" data-tex="\(q\)">\(q\)</span>, suppose each listed module has zero weight spaces at levels below <span class="math" data-tex="\(q\)">\(q\)</span>. For one such module <span class="math" data-tex="\(T\)">\(T\)</span>, let
+<span class="math math-display" data-tex="\[
+E=\bigoplus_{\operatorname{level}(\nu)=q}T_\nu.
+\]">\[
+E=\bigoplus_{\operatorname{level}(\nu)=q}T_\nu.
+\]</span>
+This is finite-dimensional. Every vector in <span class="math" data-tex="\(E\)">\(E\)</span> is highest: a positive root operator would move it to a lower level, where <span class="math" data-tex="\(T\)">\(T\)</span> is zero. Choose a weight basis of <span class="math" data-tex="\(E\)">\(E\)</span>. The universal Verma maps for these basis vectors give a map
+<span class="math math-display" data-tex="\[
+A=\bigoplus_{\operatorname{level}(\nu)=q}
+M(\nu)^{\oplus\dim T_\nu}\longrightarrow T
+\]">\[
+A=\bigoplus_{\operatorname{level}(\nu)=q}
+M(\nu)^{\oplus\dim T_\nu}\longrightarrow T
+\]</span>
+whose image is <span class="math" data-tex="\(UE\)">\(UE\)</span>, where <span class="math" data-tex="\(U=U(\mathfrak g)\)">\(U=U(\mathfrak g)\)</span>. On the level-<span class="math" data-tex="\(q\)">\(q\)</span> spaces this map is exactly the chosen basis isomorphism. Its kernel <span class="math" data-tex="\(K\)">\(K\)</span>, and the quotient <span class="math" data-tex="\(Q=T/UE\)">\(Q=T/UE\)</span>, therefore have no weights through level <span class="math" data-tex="\(q\)">\(q\)</span>. Their weight spaces remain finite, by the Verma PBW description and exactness on weight spaces.</p>
+<p>Each nonzero basis vector of weight <span class="math" data-tex="\(\nu\)">\(\nu\)</span> generates a highest-weight submodule of <span class="math" data-tex="\(T\)">\(T\)</span>. Its central character is both <span class="math" data-tex="\(\chi_\nu\)">\(\chi_\nu\)</span> and <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Hence <span class="math" data-tex="\(\chi_\nu=\chi_\lambda\)">\(\chi_\nu=\chi_\lambda\)</span>, and linkage gives <span class="math" data-tex="\(\nu\in W\cdot\lambda\)">\(\nu\in W\cdot\lambda\)</span>. The centre acts on every summand of <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; it consequently acts that way on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>. The two exact sequences give
+<span class="math math-display" data-tex="\[
+\operatorname{ch}T=\operatorname{ch}A-\operatorname{ch}K+
+\operatorname{ch}Q.
+\tag{1.3}
+\]">\[
+\operatorname{ch}T=\operatorname{ch}A-\operatorname{ch}K+
+\operatorname{ch}Q.
+\tag{1.3}
+\]</span>
+Emit the Verma terms in <span class="math" data-tex="\(A\)">\(A\)</span>, with the sign of <span class="math" data-tex="\(T\)">\(T\)</span>, and replace <span class="math" data-tex="\(T\)">\(T\)</span> on the list by the signed terms <span class="math" data-tex="\(-K,+Q\)">\(-K,+Q\)</span>, multiplied by that same sign. A module with <span class="math" data-tex="\(E=0\)">\(E=0\)</span> may simply be retained: it already has zero spaces through level <span class="math" data-tex="\(q\)">\(q\)</span>. All submodules and quotients are weight modules, by the finite-support Cartan interpolation proved in the preceding highest-weight lesson.</p>
+<p>Run this operation for <span class="math" data-tex="\(q=0,\ldots,N\)">\(q=0,\ldots,N\)</span>. At each step there are finitely many modules and finitely many summands of <span class="math" data-tex="\(A\)">\(A\)</span>; the new list has at most twice as many modules. The number of steps is <span class="math" data-tex="\(N+1\)">\(N+1\)</span>. Thus every operation and every emitted sum is finite. We obtain
+<span class="math math-display" data-tex="\[
+\operatorname{ch}V=\sum_\nu c_\nu\operatorname{ch}M(\nu)+R,
+\tag{1.4}
+\]">\[
+\operatorname{ch}V=\sum_\nu c_\nu\operatorname{ch}M(\nu)+R,
+\tag{1.4}
+\]</span>
+where every emitted <span class="math" data-tex="\(\nu\)">\(\nu\)</span> has level at most <span class="math" data-tex="\(N\)">\(N\)</span>, is linked to <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and the signed remainder <span class="math" data-tex="\(R\)">\(R\)</span> has zero coefficients through level <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Multiply by <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(P\)">\(P\)</span> only lowers weights, <span class="math" data-tex="\(PR\)">\(PR\)</span> still has zero coefficients through level <span class="math" data-tex="\(N\)">\(N\)</span>. By (1.1),
+<span class="math math-display" data-tex="\[
+P\operatorname{ch}V=\sum_\nu c_\nu e^\nu+PR.
+\]">\[
+P\operatorname{ch}V=\sum_\nu c_\nu e^\nu+PR.
+\]</span>
+The left side and the emitted finite sum both have support through level <span class="math" data-tex="\(N\)">\(N\)</span>. Equality through these levels therefore identifies them exactly, leaving <span class="math" data-tex="\(PR=0\)">\(PR=0\)</span>. Multiplication by <span class="math" data-tex="\(P^{-1}\)">\(P^{-1}\)</span> in the completion now proves (1.2). The coefficient at <span class="math" data-tex="\(e^\lambda\)">\(e^\lambda\)</span> in <span class="math" data-tex="\(P\operatorname{ch}V\)">\(P\operatorname{ch}V\)</span> is one, since the top multiplicity is one and all nonconstant factors lower weights. Hence <span class="math" data-tex="\(c_\lambda=1\)">\(c_\lambda=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses finitely many truncated levels, rather than assuming that all intermediate modules have finite length.</p>
+<h2 id="section-2"><span id="2-the-weyl-numerator-and-denominator"></span>2. The Weyl numerator and denominator</h2>
+<p>For any integral weight <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, write
+<span class="math math-display" data-tex="\[
+A_\eta=\sum_{w\in W}\epsilon(w)e^{w\eta}.
+\tag{2.1}
+\]">\[
+A_\eta=\sum_{w\in W}\epsilon(w)e^{w\eta}.
+\tag{2.1}
+\]</span>
+Changing variables in the sum gives <span class="math" data-tex="\(wA_\eta=\epsilon(w)A_\eta\)">\(wA_\eta=\epsilon(w)A_\eta\)</span>. Also
+<span class="math math-display" data-tex="\[
+D=e^\rho\prod_{\alpha&gt;0}(1-e^{-\alpha})
+\]">\[
+D=e^\rho\prod_{\alpha&gt;0}(1-e^{-\alpha})
+\]</span>
+is anti-invariant. A simple reflection permutes the positive roots other than <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, sends <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> to <span class="math" data-tex="\(-\alpha_i\)">\(-\alpha_i\)</span>, and sends <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\rho-\alpha_i\)">\(\rho-\alpha_i\)</span>. The changed factor and monomial give
+<span class="math math-display" data-tex="\[
+e^{\rho-\alpha_i}(1-e^{\alpha_i})
+=-e^\rho(1-e^{-\alpha_i}),
+\]">\[
+e^{\rho-\alpha_i}(1-e^{\alpha_i})
+=-e^\rho(1-e^{-\alpha_i}),
+\]</span>
+so <span class="math" data-tex="\(s_iD=-D\)">\(s_iD=-D\)</span>. This calculation stays in <span class="math" data-tex="\(\mathbb Z[\Lambda]\)">\(\mathbb Z[\Lambda]\)</span>; individual half-root exponentials are unnecessary.</p>
+<p id="theorem-2-1"><strong>Theorem 2.1 (Weyl's character formula).</strong> For every dominant integral <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>,
+<span class="math math-display" data-tex="\[
+D\,\operatorname{ch}L(\lambda)=A_{\lambda+\rho}.
+\tag{2.2}
+\]">\[
+D\,\operatorname{ch}L(\lambda)=A_{\lambda+\rho}.
+\tag{2.2}
+\]</span></p>
+<p><strong>Proof.</strong> Proposition 1.1 gives
+<span class="math math-display" data-tex="\[
+D\,\operatorname{ch}L(\lambda)=\sum_\nu c_\nu e^{\nu+\rho},
+\]">\[
+D\,\operatorname{ch}L(\lambda)=\sum_\nu c_\nu e^{\nu+\rho},
+\]</span>
+supported on the single orbit <span class="math" data-tex="\(W(\lambda+\rho)\)">\(W(\lambda+\rho)\)</span>, with coefficient one at <span class="math" data-tex="\(\lambda+\rho\)">\(\lambda+\rho\)</span>. Its left side is anti-invariant: the finite character has Weyl-invariant multiplicities, and <span class="math" data-tex="\(D\)">\(D\)</span> is anti-invariant.</p>
+<p>The shifted weight is strictly dominant, because <span class="math" data-tex="\((\lambda+\rho)(h_i)=\lambda(h_i)+1&gt;0\)">\((\lambda+\rho)(h_i)=\lambda(h_i)+1&gt;0\)</span>. Its stabilizer is trivial by the chamber results. In an anti-invariant sum the coefficient at <span class="math" data-tex="\(w(\lambda+\rho)\)">\(w(\lambda+\rho)\)</span> is therefore <span class="math" data-tex="\(\epsilon(w)\)">\(\epsilon(w)\)</span> times the coefficient at <span class="math" data-tex="\(\lambda+\rho\)">\(\lambda+\rho\)</span>. These are exactly the coefficients in (2.1), proving (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-2-2"><strong>Corollary 2.2 (denominator identity).</strong>
+<span class="math math-display" data-tex="\[
+\sum_{w\in W}\epsilon(w)e^{w\rho}
+=e^\rho\prod_{\alpha&gt;0}(1-e^{-\alpha})=D.
+\tag{2.3}
+\]">\[
+\sum_{w\in W}\epsilon(w)e^{w\rho}
+=e^\rho\prod_{\alpha&gt;0}(1-e^{-\alpha})=D.
+\tag{2.3}
+\]</span>
+<strong>Proof.</strong> Take <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> in Theorem 2.1. The unique finite irreducible of highest weight zero is the trivial module, whose character is one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the quotient form of the theorem is
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(\lambda)=
+\frac{\sum_w\epsilon(w)e^{w(\lambda+\rho)}}
+{\sum_w\epsilon(w)e^{w\rho}}.
+\tag{2.4}
+\]">\[
+\operatorname{ch}L(\lambda)=
+\frac{\sum_w\epsilon(w)e^{w(\lambda+\rho)}}
+{\sum_w\epsilon(w)e^{w\rho}}.
+\tag{2.4}
+\]</span>
+The identity (2.2) is in the ordinary group ring; (2.4) can be read in its fraction field or in the translated downward completion of (1.1). In particular no value at a zero of the denominator is required.</p>
+<h2 id="section-3"><span id="3-dimensions-from-the-first-nonzero-taylor-term"></span>3. Dimensions from the first nonzero Taylor term</h2>
+<p>Use the positive definite real root inner product, extended complex-bilinearly. Put <span class="math" data-tex="\(n=|\Phi^+|\)">\(n=|\Phi^+|\)</span>, and choose regular <span class="math" data-tex="\(H\in\mathfrak h\)">\(H\in\mathfrak h\)</span>. Evaluation <span class="math" data-tex="\(e^\mu\mapsto\exp(t\mu(H))\)">\(e^\mu\mapsto\exp(t\mu(H))\)</span> gives a finite analytic character whose value at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is the dimension.</p>
+<p>We compute the leading term of <span class="math" data-tex="\(A_\eta(tH)\)">\(A_\eta(tH)\)</span>. Its degree-<span class="math" data-tex="\(k\)">\(k\)</span> Taylor coefficient as a polynomial in <span class="math" data-tex="\(H\)">\(H\)</span> is
+<span class="math math-display" data-tex="\[
+B_k(\eta,H)=\frac1{k!}\sum_w\epsilon(w)\bigl((w\eta)(H)\bigr)^k.
+\]">\[
+B_k(\eta,H)=\frac1{k!}\sum_w\epsilon(w)\bigl((w\eta)(H)\bigr)^k.
+\]</span>
+It is anti-invariant in <span class="math" data-tex="\(H\)">\(H\)</span>. Any anti-invariant polynomial is zero on every reflection hyperplane: at a fixed point of the reflection its value equals its negative. Consequently it is divisible by each positive-root linear form <span class="math" data-tex="\(\alpha(H)\)">\(\alpha(H)\)</span>. To justify divisibility, choose that linear form as one coordinate and expand in its powers; vanishing on the coordinate hyperplane makes the constant coefficient zero. The quotient by any such linear factor is a polynomial ring in the remaining coordinates, hence an integral domain; the factor is therefore prime. Distinct positive roots are nonproportional, so none of these factors divides another. Successively applying primeness shows that their product
+<span class="math math-display" data-tex="\[
+\Delta(H)=\prod_{\alpha&gt;0}\alpha(H)
+\]">\[
+\Delta(H)=\prod_{\alpha&gt;0}\alpha(H)
+\]</span>
+therefore divides the polynomial. It has degree <span class="math" data-tex="\(n\)">\(n\)</span>, so <span class="math" data-tex="\(B_k=0\)">\(B_k=0\)</span> for <span class="math" data-tex="\(k&lt;n\)">\(k&lt;n\)</span>.</p>
+<p>For <span class="math" data-tex="\(k=n\)">\(k=n\)</span>, write <span class="math" data-tex="\(B_n(\eta,H)=b(\eta)\Delta(H)\)">\(B_n(\eta,H)=b(\eta)\Delta(H)\)</span>. The coefficient <span class="math" data-tex="\(b\)">\(b\)</span> is a homogeneous polynomial of degree <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>: evaluate at one fixed regular <span class="math" data-tex="\(H\)">\(H\)</span> and divide by the nonzero constant <span class="math" data-tex="\(\Delta(H)\)">\(\Delta(H)\)</span>. Changing variables in the alternating sum shows that <span class="math" data-tex="\(b\)">\(b\)</span> is anti-invariant in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> too. The same hyperplane argument on the weight space gives
+<span class="math math-display" data-tex="\[
+b(\eta)=c\prod_{\alpha&gt;0}(\eta,\alpha)
+\tag{3.1}
+\]">\[
+b(\eta)=c\prod_{\alpha&gt;0}(\eta,\alpha)
+\tag{3.1}
+\]</span>
+for a constant <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Use the already proved identity <span class="math" data-tex="\(A_\rho=D\)">\(A_\rho=D\)</span>. Its product expansion along <span class="math" data-tex="\(tH\)">\(tH\)</span> begins with
+<span class="math math-display" data-tex="\[
+D(tH)=t^n\Delta(H)+O(t^{n+1}).
+\]">\[
+D(tH)=t^n\Delta(H)+O(t^{n+1}).
+\]</span>
+Since every <span class="math" data-tex="\((\rho,\alpha)&gt;0\)">\((\rho,\alpha)&gt;0\)</span>, (3.1) determines <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(c\prod_{\alpha&gt;0}(\rho,\alpha)=1\)">\(c\prod_{\alpha&gt;0}(\rho,\alpha)=1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+A_\eta(tH)=t^n\Delta(H)
+\prod_{\alpha&gt;0}\frac{(\eta,\alpha)}{(\rho,\alpha)}
++O(t^{n+1}).
+\tag{3.2}
+\]">\[
+A_\eta(tH)=t^n\Delta(H)
+\prod_{\alpha&gt;0}\frac{(\eta,\alpha)}{(\rho,\alpha)}
++O(t^{n+1}).
+\tag{3.2}
+\]</span></p>
+<p id="corollary-3-1"><strong>Corollary 3.1 (Weyl's dimension formula).</strong>
+<span class="math math-display" data-tex="\[
+\dim L(\lambda)=
+\prod_{\alpha&gt;0}\frac{(\lambda+\rho,\alpha)}{(\rho,\alpha)}
+=\prod_{\alpha&gt;0}
+\frac{(\lambda+\rho)(\alpha^\vee)}{\rho(\alpha^\vee)}.
+\tag{3.3}
+\]">\[
+\dim L(\lambda)=
+\prod_{\alpha&gt;0}\frac{(\lambda+\rho,\alpha)}{(\rho,\alpha)}
+=\prod_{\alpha&gt;0}
+\frac{(\lambda+\rho)(\alpha^\vee)}{\rho(\alpha^\vee)}.
+\tag{3.3}
+\]</span>
+<strong>Proof.</strong> Divide (3.2) for <span class="math" data-tex="\(\eta=\lambda+\rho\)">\(\eta=\lambda+\rho\)</span> by its value for <span class="math" data-tex="\(\eta=\rho\)">\(\eta=\rho\)</span>, at the fixed regular <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span> in (2.4). The character is a finite sum continuous at zero. The second expression follows by cancelling the coroot conversion factor <span class="math" data-tex="\(2/(\alpha,\alpha)\)">\(2/(\alpha,\alpha)\)</span> separately in every quotient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument does not rely on an integral grading attached to a particular normalization of the Killing-dual <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. For a product of simple algebras all root products factor by component. In rank zero the empty product is one and the unique irreducible is one-dimensional.</p>
+<h2 id="section-4"><span id="4-kostant-s-coefficient-formula"></span>4. Kostant's coefficient formula</h2>
+<p>Let <span class="math" data-tex="\(p(\beta)\)">\(p(\beta)\)</span> count the tuples <span class="math" data-tex="\((a_\alpha)_{\alpha&gt;0}\)">\((a_\alpha)_{\alpha&gt;0}\)</span> of nonnegative integers with <span class="math" data-tex="\(\sum_{\alpha&gt;0}a_\alpha\alpha=\beta\)">\(\sum_{\alpha&gt;0}a_\alpha\alpha=\beta\)</span>. Set <span class="math" data-tex="\(p(\beta)=0\)">\(p(\beta)=0\)</span> outside <span class="math" data-tex="\(Q^+\)">\(Q^+\)</span>. Positive height bounds every <span class="math" data-tex="\(a_\alpha\)">\(a_\alpha\)</span> for fixed <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so the count is finite. The Verma PBW count gives, or direct multiplication of geometric series verifies,
+<span class="math math-display" data-tex="\[
+P^{-1}=\sum_{\beta\in Q^+}p(\beta)e^{-\beta}.
+\tag{4.1}
+\]">\[
+P^{-1}=\sum_{\beta\in Q^+}p(\beta)e^{-\beta}.
+\tag{4.1}
+\]</span></p>
+<p id="theorem-4-1"><strong>Theorem 4.1 (Kostant's multiplicity formula).</strong> For <span class="math" data-tex="\(\lambda\in\Lambda^+\)">\(\lambda\in\Lambda^+\)</span> and every integral <span class="math" data-tex="\(\mu\)">\(\mu\)</span>,
+<span class="math math-display" data-tex="\[
+m_\lambda(\mu):=\dim L(\lambda)_\mu
+=\sum_{w\in W}\epsilon(w)\,
+p\bigl(w(\lambda+\rho)-(\mu+\rho)\bigr).
+\tag{4.2}
+\]">\[
+m_\lambda(\mu):=\dim L(\lambda)_\mu
+=\sum_{w\in W}\epsilon(w)\,
+p\bigl(w(\lambda+\rho)-(\mu+\rho)\bigr).
+\tag{4.2}
+\]</span>
+<strong>Proof.</strong> Multiply the finite numerator in (2.2) by <span class="math" data-tex="\(e^{-\rho}P^{-1}\)">\(e^{-\rho}P^{-1}\)</span>, using (4.1). The coefficient of <span class="math" data-tex="\(e^\mu\)">\(e^\mu\)</span> is precisely the stated sum. There are finitely many Weyl terms and each partition coefficient is finite, so coefficient extraction is legitimate in the downward completion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The formula also gives zero at weights outside the module; a partition term with an argument outside the positive root cone is zero.</p>
+<h2 id="section-5"><span id="5-freudenthal-s-upward-recursion"></span>5. Freudenthal's upward recursion</h2>
+<p>Use the inverse Killing form on weights, which is positive definite on their real root span. For each positive root choose <span class="math" data-tex="\(E_\alpha,F_\alpha\)">\(E_\alpha,F_\alpha\)</span> with <span class="math" data-tex="\(\kappa(E_\alpha,F_\alpha)=1\)">\(\kappa(E_\alpha,F_\alpha)=1\)</span>, and let <span class="math" data-tex="\(t_\alpha\)">\(t_\alpha\)</span> be Killing-dual to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Then <span class="math" data-tex="\([E_\alpha,F_\alpha]=t_\alpha\)">\([E_\alpha,F_\alpha]=t_\alpha\)</span>. The ordered Casimir and its scalar, proved in the previous lesson, are
+<span class="math math-display" data-tex="\[
+\Omega_\kappa=\sum_a H_aH^a+
+2\sum_{\alpha&gt;0}F_\alpha E_\alpha+2t_\rho,
+\qquad c_\lambda=(\lambda,\lambda+2\rho).
+\tag{5.1}
+\]">\[
+\Omega_\kappa=\sum_a H_aH^a+
+2\sum_{\alpha&gt;0}F_\alpha E_\alpha+2t_\rho,
+\qquad c_\lambda=(\lambda,\lambda+2\rho).
+\tag{5.1}
+\]</span></p>
+<p id="theorem-5-1"><strong>Theorem 5.1 (Freudenthal's formula).</strong> For every integral <span class="math" data-tex="\(\mu\)">\(\mu\)</span>,
+<span class="math math-display" data-tex="\[
+\bigl(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\bigr)m_\lambda(\mu)
+=2\sum_{\alpha&gt;0}\sum_{k\ge1}
+(\mu+k\alpha,\alpha)\,m_\lambda(\mu+k\alpha).
+\tag{5.2}
+\]">\[
+\bigl(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\bigr)m_\lambda(\mu)
+=2\sum_{\alpha&gt;0}\sum_{k\ge1}
+(\mu+k\alpha,\alpha)\,m_\lambda(\mu+k\alpha).
+\tag{5.2}
+\]</span>
+Only finitely many summands on the right are nonzero.</p>
+<p><strong>Proof.</strong> Trace (5.1) on the finite-dimensional weight space <span class="math" data-tex="\(V_\mu\)">\(V_\mu\)</span>, with <span class="math" data-tex="\(V=L(\lambda)\)">\(V=L(\lambda)\)</span>. The Cartan sum and <span class="math" data-tex="\(2t_\rho\)">\(2t_\rho\)</span> give <span class="math" data-tex="\((\|\mu\|^2+2(\mu,\rho))m_\lambda(\mu)\)">\((\|\mu\|^2+2(\mu,\rho))m_\lambda(\mu)\)</span>. Put
+<span class="math math-display" data-tex="\[
+T_\alpha(\mu)=\operatorname{Tr}_{V_\mu}(F_\alpha E_\alpha).
+\]">\[
+T_\alpha(\mu)=\operatorname{Tr}_{V_\mu}(F_\alpha E_\alpha).
+\]</span>
+Subtracting the Cartan terms from the Casimir scalar gives
+<span class="math math-display" data-tex="\[
+\bigl(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\bigr)m_\lambda(\mu)
+=2\sum_{\alpha&gt;0}T_\alpha(\mu).
+\tag{5.3}
+\]">\[
+\bigl(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\bigr)m_\lambda(\mu)
+=2\sum_{\alpha&gt;0}T_\alpha(\mu).
+\tag{5.3}
+\]</span>
+For linear maps <span class="math" data-tex="\(A:X\to Y\)">\(A:X\to Y\)</span>, <span class="math" data-tex="\(B:Y\to X\)">\(B:Y\to X\)</span> between finite spaces, <span class="math" data-tex="\(\operatorname{Tr}_X(BA)=\operatorname{Tr}_Y(AB)\)">\(\operatorname{Tr}_X(BA)=\operatorname{Tr}_Y(AB)\)</span>. In bases, both sides are the sum <span class="math" data-tex="\(\sum_{i,j}B_{ij}A_{ji}\)">\(\sum_{i,j}B_{ij}A_{ji}\)</span>. Apply this to <span class="math" data-tex="\(E_\alpha:V_\mu\to V_{\mu+\alpha}\)">\(E_\alpha:V_\mu\to V_{\mu+\alpha}\)</span> and <span class="math" data-tex="\(F_\alpha\)">\(F_\alpha\)</span> in the reverse direction. Since <span class="math" data-tex="\(E_\alpha F_\alpha=F_\alpha E_\alpha+t_\alpha\)">\(E_\alpha F_\alpha=F_\alpha E_\alpha+t_\alpha\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+T_\alpha(\mu)=T_\alpha(\mu+\alpha)
++(\mu+\alpha,\alpha)m_\lambda(\mu+\alpha).
+\tag{5.4}
+\]">\[
+T_\alpha(\mu)=T_\alpha(\mu+\alpha)
++(\mu+\alpha,\alpha)m_\lambda(\mu+\alpha).
+\tag{5.4}
+\]</span>
+There are finitely many weights of <span class="math" data-tex="\(V\)">\(V\)</span>. Thus <span class="math" data-tex="\(V_{\mu+k\alpha}=0\)">\(V_{\mu+k\alpha}=0\)</span> for all sufficiently large <span class="math" data-tex="\(k\)">\(k\)</span>, and iterating (5.4) terminates with
+<span class="math math-display" data-tex="\[
+T_\alpha(\mu)=\sum_{k\ge1}
+(\mu+k\alpha,\alpha)m_\lambda(\mu+k\alpha).
+\]">\[
+T_\alpha(\mu)=\sum_{k\ge1}
+(\mu+k\alpha,\alpha)m_\lambda(\mu+k\alpha).
+\]</span>
+Substitute in (5.3). The proof also applies when <span class="math" data-tex="\(V_\mu=0\)">\(V_\mu=0\)</span>, using the zero-dimensional trace, and proves (5.2) at every integral <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For recursion one needs a nonzero denominator. Every actual weight <span class="math" data-tex="\(\mu\ne\lambda\)">\(\mu\ne\lambda\)</span> has
+<span class="math math-display" data-tex="\[
+\|\lambda+\rho\|^2-\|\mu+\rho\|^2
+=\|\lambda\|^2-\|\mu\|^2+2(\rho,\lambda-\mu)&gt;0.
+\tag{5.5}
+\]">\[
+\|\lambda+\rho\|^2-\|\mu+\rho\|^2
+=\|\lambda\|^2-\|\mu\|^2+2(\rho,\lambda-\mu)&gt;0.
+\tag{5.5}
+\]</span>
+Indeed move <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to its dominant representative <span class="math" data-tex="\(\mu'\)">\(\mu'\)</span>, still a weight with <span class="math" data-tex="\(\mu'\le\lambda\)">\(\mu'\le\lambda\)</span>. Dominance gives
+<span class="math math-display" data-tex="\[
+\|\lambda\|^2-\|\mu'\|^2
+=\sum_i b_i(\lambda+\mu',\alpha_i)\ge0,
+\qquad\lambda-\mu'=\sum_i b_i\alpha_i.
+\]">\[
+\|\lambda\|^2-\|\mu'\|^2
+=\sum_i b_i(\lambda+\mu',\alpha_i)\ge0,
+\qquad\lambda-\mu'=\sum_i b_i\alpha_i.
+\]</span>
+Weyl invariance gives <span class="math" data-tex="\(\|\mu\|=\|\mu'\|\)">\(\|\mu\|=\|\mu'\|\)</span>. Finally <span class="math" data-tex="\(\lambda-\mu\in Q^+\)">\(\lambda-\mu\in Q^+\)</span> is nonzero, and <span class="math" data-tex="\((\rho,\alpha_i)&gt;0\)">\((\rho,\alpha_i)&gt;0\)</span>, proving strict positivity.</p>
+<p>Start with <span class="math" data-tex="\(m_\lambda(\lambda)=1\)">\(m_\lambda(\lambda)=1\)</span> and the finite candidate set
+<span class="math" data-tex="\(\operatorname{conv}(W\lambda)\cap(\lambda+Q)\)">\(\operatorname{conv}(W\lambda)\cap(\lambda+Q)\)</span>, proved to be the exact weight set in the highest-weight lesson. Process it by increasing level from <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; every weight <span class="math" data-tex="\(\mu+k\alpha\)">\(\mu+k\alpha\)</span> on the right has smaller level. Equation (5.5) allows division at every remaining candidate, and weights outside this set are assigned zero. One must not divide by the displayed denominator at arbitrary exterior weights where it might vanish.</p>
+<h2 id="section-6"><span id="6-the-classical-determinant-and-dimension-formulas"></span>6. The classical determinant and dimension formulas</h2>
+<p>The general formulas apply to every semisimple type. For the classical root systems they reduce to useful finite determinants. Here characters mean Lie-algebra weight characters with the full lattices; a specified global group's representation lattice may be smaller.</p>
+<p>For <span class="math" data-tex="\(A_{n-1}\)">\(A_{n-1}\)</span>, choose integers
+<span class="math math-display" data-tex="\[
+l_1\ge\cdots\ge l_n=0,\qquad
+\lambda_i=l_i-\frac{|l|}{n},\quad |l|=\sum_i l_i.
+\]">\[
+l_1\ge\cdots\ge l_n=0,\qquad
+\lambda_i=l_i-\frac{|l|}{n},\quad |l|=\sum_i l_i.
+\]</span>
+These give every dominant integral <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> weight, since <span class="math" data-tex="\(l_i-l_{i+1}=\lambda(h_i)\)">\(l_i-l_{i+1}=\lambda(h_i)\)</span>. With <span class="math" data-tex="\(x_j=e^{\varepsilon_j}\)">\(x_j=e^{\varepsilon_j}\)</span>, where the <span class="math" data-tex="\(\varepsilon_j\)">\(\varepsilon_j\)</span> are projected to the sum-zero weight space, <span class="math" data-tex="\(\prod_jx_j=1\)">\(\prod_jx_j=1\)</span>. The permutation Weyl group and (2.4) give
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(\lambda)=
+\frac{\det\bigl(x_j^{\,l_i+n-i}\bigr)_{i,j=1}^n}
+{\det\bigl(x_j^{\,n-i}\bigr)_{i,j=1}^n},
+\qquad
+\dim L(\lambda)=
+\prod_{i&lt;j}\frac{l_i-l_j+j-i}{j-i}.
+\tag{6.1}
+\]">\[
+\operatorname{ch}L(\lambda)=
+\frac{\det\bigl(x_j^{\,l_i+n-i}\bigr)_{i,j=1}^n}
+{\det\bigl(x_j^{\,n-i}\bigr)_{i,j=1}^n},
+\qquad
+\dim L(\lambda)=
+\prod_{i&lt;j}\frac{l_i-l_j+j-i}{j-i}.
+\tag{6.1}
+\]</span>
+For the first identity, expand the two determinants into signed permutation sums. The actual exponents in the numerator are <span class="math" data-tex="\(\lambda_i+\rho_i\)">\(\lambda_i+\rho_i\)</span>, with <span class="math" data-tex="\(\rho_i=(n+1-2i)/2\)">\(\rho_i=(n+1-2i)/2\)</span>. Passing to <span class="math" data-tex="\(l_i+n-i\)">\(l_i+n-i\)</span> adds the same constant to every exponent; the resulting common monomial is one because <span class="math" data-tex="\(\prod_jx_j=1\)">\(\prod_jx_j=1\)</span>. The denominator is treated in the same way. The dimension expression follows from the positive roots <span class="math" data-tex="\(\varepsilon_i-\varepsilon_j\)">\(\varepsilon_i-\varepsilon_j\)</span> in (3.3).</p>
+<p>For <span class="math" data-tex="\(B_r,C_r,D_r\)">\(B_r,C_r,D_r\)</span>, use orthonormal <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> and coordinates <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>. The complete lattice and dominance conditions are:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Coordinates of an integral dominant weight</th>
+<th><span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(B_r\)">\(B_r\)</span></td>
+<td>All <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> integers, or all half-integers; <span class="math" data-tex="\(\lambda_1\ge\cdots\ge\lambda_r\ge0\)">\(\lambda_1\ge\cdots\ge\lambda_r\ge0\)</span></td>
+<td><span class="math" data-tex="\(r-i+\tfrac12\)">\(r-i+\tfrac12\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(C_r\)">\(C_r\)</span></td>
+<td>All <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> integers; <span class="math" data-tex="\(\lambda_1\ge\cdots\ge\lambda_r\ge0\)">\(\lambda_1\ge\cdots\ge\lambda_r\ge0\)</span></td>
+<td><span class="math" data-tex="\(r-i+1\)">\(r-i+1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_r\)">\(D_r\)</span></td>
+<td>All <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> integers, or all half-integers; <span class="math" data-tex="\(\lambda_1\ge\cdots\ge\lambda_{r-1}\ge\lvert\lambda_r\rvert\)">\(\lambda_1\ge\cdots\ge\lambda_{r-1}\ge\lvert\lambda_r\rvert\)</span></td>
+<td><span class="math" data-tex="\(r-i\)">\(r-i\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These conditions follow by evaluating on the simple coroots. In <span class="math" data-tex="\(B_r\)">\(B_r\)</span>, consecutive differences are integers and <span class="math" data-tex="\(2\lambda_r\)">\(2\lambda_r\)</span> is an integer; in <span class="math" data-tex="\(C_r\)">\(C_r\)</span>, consecutive differences and <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span> are integers; in <span class="math" data-tex="\(D_r\)">\(D_r\)</span>, the differences through <span class="math" data-tex="\(r-1\)">\(r-1\)</span> and the last sum are integers. The nonnegative simple-coroot values give exactly the inequalities displayed. In particular the last <span class="math" data-tex="\(D_r\)">\(D_r\)</span> coordinate may have either sign. Take <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> for <span class="math" data-tex="\(B,C\)">\(B,C\)</span>, and <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> for <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Put <span class="math" data-tex="\(L_i=\lambda_i+\rho_i\)">\(L_i=\lambda_i+\rho_i\)</span> and <span class="math" data-tex="\(x_j=e^{\varepsilon_j}\)">\(x_j=e^{\varepsilon_j}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_r,\ C_r:\quad
+\operatorname{ch}L(\lambda)
+&amp;=\frac{\det(x_j^{L_i}-x_j^{-L_i})}
+{\det(x_j^{\rho_i}-x_j^{-\rho_i})},\\
+D_r:\quad
+\operatorname{ch}L(\lambda)
+&amp;=\frac{\det(x_j^{L_i}+x_j^{-L_i})+
+\det(x_j^{L_i}-x_j^{-L_i})}
+{\det(x_j^{\rho_i}+x_j^{-\rho_i})}.
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+B_r,\ C_r:\quad
+\operatorname{ch}L(\lambda)
+&amp;=\frac{\det(x_j^{L_i}-x_j^{-L_i})}
+{\det(x_j^{\rho_i}-x_j^{-\rho_i})},\\
+D_r:\quad
+\operatorname{ch}L(\lambda)
+&amp;=\frac{\det(x_j^{L_i}+x_j^{-L_i})+
+\det(x_j^{L_i}-x_j^{-L_i})}
+{\det(x_j^{\rho_i}+x_j^{-\rho_i})}.
+\end{aligned}
+\tag{6.2}
+\]</span>
+Half-powers may be computed in the enlarged lattice ring
+<span class="math" data-tex="\(\mathbb Z[\frac12\mathbb Z^r]\)">\(\mathbb Z[\frac12\mathbb Z^r]\)</span>; the full alternating sums belong to the actual weight lattice, and the quotient is the character already proved in (2.4).</p>
+<p>Here is the determinant derivation. For <span class="math" data-tex="\(B,C\)">\(B,C\)</span>, the Weyl elements are all signed permutations, with sign equal to the permutation sign times the product of coordinate signs. Summing those coordinate signs independently gives
+<span class="math math-display" data-tex="\[
+\sum_{\sigma_i=\pm1}\left(\prod_i\sigma_i\right)
+\prod_i x_{\pi(i)}^{\sigma_i L_i}
+=\prod_i(x_{\pi(i)}^{L_i}-x_{\pi(i)}^{-L_i}).
+\]">\[
+\sum_{\sigma_i=\pm1}\left(\prod_i\sigma_i\right)
+\prod_i x_{\pi(i)}^{\sigma_i L_i}
+=\prod_i(x_{\pi(i)}^{L_i}-x_{\pi(i)}^{-L_i}).
+\]</span>
+The subsequent signed permutation sum is the first determinant in (6.2). For <span class="math" data-tex="\(D\)">\(D\)</span>, only sign choices with <span class="math" data-tex="\(\prod_i\sigma_i=1\)">\(\prod_i\sigma_i=1\)</span> are allowed. Their sum is
+<span class="math math-display" data-tex="\[
+\frac12\left\{
+\prod_i(x_{\pi(i)}^{L_i}+x_{\pi(i)}^{-L_i})+
+\prod_i(x_{\pi(i)}^{L_i}-x_{\pi(i)}^{-L_i})\right\}.
+\]">\[
+\frac12\left\{
+\prod_i(x_{\pi(i)}^{L_i}+x_{\pi(i)}^{-L_i})+
+\prod_i(x_{\pi(i)}^{L_i}-x_{\pi(i)}^{-L_i})\right\}.
+\]</span>
+The permutation sum is half the sum of the two determinants. In the denominator, <span class="math" data-tex="\(\rho_r=0\)">\(\rho_r=0\)</span> makes the minus determinant zero. Cancelling the common factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> gives exactly the second formula in (6.2), including either sign of <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span>.</p>
+<p>The positive roots are <span class="math" data-tex="\(\varepsilon_i\pm\varepsilon_j\)">\(\varepsilon_i\pm\varepsilon_j\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, together with <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> in <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(2\varepsilon_i\)">\(2\varepsilon_i\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Hence (3.3) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_r,\ C_r:\quad
+\dim L(\lambda)&amp;=
+\prod_i\frac{L_i}{\rho_i}
+\prod_{i&lt;j}\frac{L_i^2-L_j^2}{\rho_i^2-\rho_j^2},\\
+D_r:\quad
+\dim L(\lambda)&amp;=
+\prod_{i&lt;j}\frac{L_i^2-L_j^2}{\rho_i^2-\rho_j^2}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+B_r,\ C_r:\quad
+\dim L(\lambda)&amp;=
+\prod_i\frac{L_i}{\rho_i}
+\prod_{i&lt;j}\frac{L_i^2-L_j^2}{\rho_i^2-\rho_j^2},\\
+D_r:\quad
+\dim L(\lambda)&amp;=
+\prod_{i&lt;j}\frac{L_i^2-L_j^2}{\rho_i^2-\rho_j^2}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+The denominators are nonzero in the indicated ranges. For <span class="math" data-tex="\(D\)">\(D\)</span>, the absence of a single-root factor allows <span class="math" data-tex="\(\rho_r=0\)">\(\rho_r=0\)</span>. This proves all three products directly, without treating spin weights as if their coordinates were integral.</p>
+<p>In the type <span class="math" data-tex="\(A\)">\(A\)</span> determinant, shifting every partition coordinate by an integer <span class="math" data-tex="\(a\)">\(a\)</span> multiplies the quotient by <span class="math" data-tex="\((\prod_jx_j)^a\)">\((\prod_jx_j)^a\)</span>. It changes no <span class="math" data-tex="\(\mathfrak{sl}_n\)">\(\mathfrak{sl}_n\)</span> character. In a polynomial <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span> representation the same operation is a determinant twist. The alternating subspace <span class="math" data-tex="\(\Lambda^n\mathbb C^n\subset(\mathbb C^n)^{\otimes n}\)">\(\Lambda^n\mathbb C^n\subset(\mathbb C^n)^{\otimes n}\)</span> is one-dimensional and has determinant action: expansion of an alternating tensor gives exactly the determinant coefficient. Thus tensor powers of the defining module can contain a nontrivial determinant component, even when a chosen highest component is labelled with <span class="math" data-tex="\(l_n=0\)">\(l_n=0\)</span>.</p>
+<h2 id="section-7"><span id="7-rank-one-and-the-two-rank-two-examples"></span>7. Rank one and the two rank-two examples</h2>
+<p>For <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>, let <span class="math" data-tex="\(\lambda=n\omega\)">\(\lambda=n\omega\)</span> with <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, <span class="math" data-tex="\(\alpha=2\omega\)">\(\alpha=2\omega\)</span>, and <span class="math" data-tex="\(\rho=\omega\)">\(\rho=\omega\)</span>. Formula (2.4) is a geometric sum:
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(n\omega)=
+\frac{e^{(n+1)\omega}-e^{-(n+1)\omega}}
+{e^\omega-e^{-\omega}}
+=\sum_{j=0}^n e^{(n-2j)\omega},
+\qquad \dim L(n\omega)=n+1.
+\tag{7.1}
+\]">\[
+\operatorname{ch}L(n\omega)=
+\frac{e^{(n+1)\omega}-e^{-(n+1)\omega}}
+{e^\omega-e^{-\omega}}
+=\sum_{j=0}^n e^{(n-2j)\omega},
+\qquad \dim L(n\omega)=n+1.
+\tag{7.1}
+\]</span>
+The finite geometric identity verifies this equality after multiplying by the denominator, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, normalize <span class="math" data-tex="\(\|\alpha_1\|^2=\|\alpha_2\|^2=2\)">\(\|\alpha_1\|^2=\|\alpha_2\|^2=2\)</span> and <span class="math" data-tex="\((\alpha_1,\alpha_2)=-1\)">\((\alpha_1,\alpha_2)=-1\)</span>. Put <span class="math" data-tex="\(\theta=\alpha_1+\alpha_2=\rho\)">\(\theta=\alpha_1+\alpha_2=\rho\)</span>. Its positive roots are <span class="math" data-tex="\(\alpha_1,\alpha_2,\theta\)">\(\alpha_1,\alpha_2,\theta\)</span>. Directly from the partition definition,
+<span class="math math-display" data-tex="\[
+p(a\alpha_1+b\alpha_2)=
+\begin{cases}\min(a,b)+1,&amp;a,b\in\mathbb Z_{\ge0},\\0,&amp;\text{otherwise}.\end{cases}
+\tag{7.2}
+\]">\[
+p(a\alpha_1+b\alpha_2)=
+\begin{cases}\min(a,b)+1,&amp;a,b\in\mathbb Z_{\ge0},\\0,&amp;\text{otherwise}.\end{cases}
+\tag{7.2}
+\]</span>
+Indeed the number of copies of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> can be any integer from zero to <span class="math" data-tex="\(\min(a,b)\)">\(\min(a,b)\)</span>; the remaining simple-root counts are forced.</p>
+<p>In the adjoint representation, <span class="math" data-tex="\(\lambda=\theta\)">\(\lambda=\theta\)</span>, so <span class="math" data-tex="\(\lambda+\rho=2\theta\)">\(\lambda+\rho=2\theta\)</span>. In simple-root coordinates its six orbit points and signs are
+<span class="math math-display" data-tex="\[
+(2,2)_+,\ (0,2)_-,\ (2,0)_-,\
+(-2,0)_+,\ (0,-2)_+,\ (-2,-2)_-.
+\]">\[
+(2,2)_+,\ (0,2)_-,\ (2,0)_-,\
+(-2,0)_+,\ (0,-2)_+,\ (-2,-2)_-.
+\]</span>
+For the zero weight, subtracting <span class="math" data-tex="\(\rho=(1,1)\)">\(\rho=(1,1)\)</span> in (4.2) leaves only the positive-cone argument <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, of partition count two. Thus Kostant gives <span class="math" data-tex="\(m_\theta(0)=2\)">\(m_\theta(0)=2\)</span>. At the top it gives one; Weyl symmetry gives multiplicity one at all six roots. The full character and dimension are
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(\theta)=
+2+\sum_{\alpha\in\Phi}e^\alpha,\qquad
+\dim L(\theta)=8.
+\tag{7.3}
+\]">\[
+\operatorname{ch}L(\theta)=
+2+\sum_{\alpha\in\Phi}e^\alpha,\qquad
+\dim L(\theta)=8.
+\tag{7.3}
+\]</span>
+The dimension product also gives <span class="math" data-tex="\(2\cdot2\cdot2=8\)">\(2\cdot2\cdot2=8\)</span>. For any <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span>, (3.3) gives the useful type <span class="math" data-tex="\(A_2\)">\(A_2\)</span> expression
+<span class="math math-display" data-tex="\[
+\dim L(a\omega_1+b\omega_2)
+=\frac{(a+1)(b+1)(a+b+2)}2.
+\tag{7.4}
+\]">\[
+\dim L(a\omega_1+b\omega_2)
+=\frac{(a+1)(b+1)(a+b+2)}2.
+\tag{7.4}
+\]</span>
+The full Freudenthal calculation of (7.3) is given in Exercise 10.3.</p>
+<p>For <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, take vertex 1 short and use
+<span class="math math-display" data-tex="\[
+\|\alpha_1\|^2=2,\quad \|\alpha_2\|^2=6,\quad
+(\alpha_1,\alpha_2)=-3,\qquad
+\omega_1=2\alpha_1+\alpha_2,\quad
+\omega_2=3\alpha_1+2\alpha_2,\quad
+\rho=5\alpha_1+3\alpha_2.
+\]">\[
+\|\alpha_1\|^2=2,\quad \|\alpha_2\|^2=6,\quad
+(\alpha_1,\alpha_2)=-3,\qquad
+\omega_1=2\alpha_1+\alpha_2,\quad
+\omega_2=3\alpha_1+2\alpha_2,\quad
+\rho=5\alpha_1+3\alpha_2.
+\]</span>
+The common scaling of the form cancels from dimension factors and from the Freudenthal equation. All six factors of the dimension products are:</p>
+<table>
+<thead>
+<tr>
+<th>Positive root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\rho,\alpha)\)">\((\rho,\alpha)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\omega_1+\rho,\alpha)\)">\((\omega_1+\rho,\alpha)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\omega_2+\rho,\alpha)\)">\((\omega_2+\rho,\alpha)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\alpha_1+\alpha_2\)">\(\alpha_1+\alpha_2\)</span></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(2\alpha_1+\alpha_2\)">\(2\alpha_1+\alpha_2\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\alpha_1+\alpha_2\)">\(3\alpha_1+\alpha_2\)</span></td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\alpha_1+2\alpha_2\)">\(3\alpha_1+2\alpha_2\)</span></td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">15</td>
+</tr>
+</tbody>
+</table>
+<p>Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dim L(\omega_1)&amp;=2\cdot1\cdot\frac54\cdot\frac75\cdot\frac32\cdot\frac43=7,\\
+\dim L(\omega_2)&amp;=1\cdot2\cdot\frac74\cdot\frac85\cdot\frac32\cdot\frac53=14.
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+\dim L(\omega_1)&amp;=2\cdot1\cdot\frac54\cdot\frac75\cdot\frac32\cdot\frac43=7,\\
+\dim L(\omega_2)&amp;=1\cdot2\cdot\frac74\cdot\frac85\cdot\frac32\cdot\frac53=14.
+\end{aligned}
+\tag{7.5}
+\]</span>
+The explicit highest-weight models in the preceding highest-weight lesson have characters
+<span class="math math-display" data-tex="\[
+\operatorname{ch}L(\omega_1)=1+\sum_{\alpha\text{ short}}e^\alpha,
+\qquad
+\operatorname{ch}L(\omega_2)=2+\sum_{\alpha\in\Phi}e^\alpha.
+\tag{7.6}
+\]">\[
+\operatorname{ch}L(\omega_1)=1+\sum_{\alpha\text{ short}}e^\alpha,
+\qquad
+\operatorname{ch}L(\omega_2)=2+\sum_{\alpha\in\Phi}e^\alpha.
+\tag{7.6}
+\]</span>
+These also illustrate Freudenthal's zero-weight calculation. For <span class="math" data-tex="\(\omega_1\)">\(\omega_1\)</span>, its Casimir scalar in this scale is
+<span class="math" data-tex="\((\omega_1,\omega_1+2\rho)=12\)">\((\omega_1,\omega_1+2\rho)=12\)</span>; the three positive short roots contribute <span class="math" data-tex="\(3\cdot2\)">\(3\cdot2\)</span>, giving <span class="math" data-tex="\(12m(0)=2\cdot6\)">\(12m(0)=2\cdot6\)</span>, hence <span class="math" data-tex="\(m(0)=1\)">\(m(0)=1\)</span>. For <span class="math" data-tex="\(\omega_2\)">\(\omega_2\)</span>, the scalar is <span class="math" data-tex="\(24\)">\(24\)</span>, and the positive roots contribute <span class="math" data-tex="\(3\cdot2+3\cdot6=24\)">\(3\cdot2+3\cdot6=24\)</span>, giving <span class="math" data-tex="\(24m(0)=48\)">\(24m(0)=48\)</span>, hence <span class="math" data-tex="\(m(0)=2\)">\(m(0)=2\)</span>. No positive multiple <span class="math" data-tex="\(k\alpha\)">\(k\alpha\)</span> with <span class="math" data-tex="\(k&gt;1\)">\(k&gt;1\)</span> is among these nonzero weights.</p>
+<p><img alt="Adjoint sl3 weight diagram: six root weights with multiplicity one and zero with multiplicity two" class="course-figure" data-asset-id="a2-adjoint-weights" data-asset-sha256="F1EDD19C1918E8C64673BC45A2FEEC1699CAB99A391253E584A06997832A041C" decoding="async" height="1242" loading="lazy" src="assets/RT-LIE-16/a2-adjoint-weights-F1EDD19C1918E8C64673BC45A2FEEC1699CAB99A391253E584A06997832A041C.png" style="max-width:100%;height:auto" width="1620"/></p>
+<p><strong>Figure 7.1.</strong> The adjoint weight diagram in the Euclidean realization <span class="math" data-tex="\(\alpha_1=(\sqrt2,0)\)">\(\alpha_1=(\sqrt2,0)\)</span>, <span class="math" data-tex="\(\alpha_2=(-1/\sqrt2,\sqrt{3/2})\)">\(\alpha_2=(-1/\sqrt2,\sqrt{3/2})\)</span>. The outline is the weight polytope; the two arrows identify the simple roots. Kostant's formula gives multiplicity two at zero in (7.3), and Exercise10.3 checks the entire diagram by Freudenthal's formula. The plotted coordinates and multiplicities are independently generated; the mathematical source comparison is Etingof §26. Reproducible source: <em>rt_lie_16_figures.py</em>.</p>
+<h2 id="section-8"><span id="8-tensor-products-by-signed-folding"></span>8. Tensor products by signed folding</h2>
+<p>Let <span class="math" data-tex="\(\lambda,\eta\)">\(\lambda,\eta\)</span> be dominant integral. Complete reducibility and the highest-weight classification give
+<span class="math math-display" data-tex="\[
+L(\lambda)\otimes L(\eta)=\bigoplus_{\nu\in\Lambda^+}
+L(\nu)^{\oplus n_\nu},
+\]">\[
+L(\lambda)\otimes L(\eta)=\bigoplus_{\nu\in\Lambda^+}
+L(\nu)^{\oplus n_\nu},
+\]</span>
+with finitely many summands. Weight spaces in a tensor product give the product of its two finite characters. Multiplying by <span class="math" data-tex="\(D\)">\(D\)</span> and using (2.2) gives
+<span class="math math-display" data-tex="\[
+A_{\lambda+\rho}\operatorname{ch}L(\eta)
+=\sum_\nu n_\nu A_{\nu+\rho}.
+\]">\[
+A_{\lambda+\rho}\operatorname{ch}L(\eta)
+=\sum_\nu n_\nu A_{\nu+\rho}.
+\]</span>
+Distinct strictly dominant shifted weights lie in distinct Weyl orbits. The coefficient of <span class="math" data-tex="\(e^{\nu+\rho}\)">\(e^{\nu+\rho}\)</span> consequently yields the Brauer–Klimyk multiplicity formula
+<span class="math math-display" data-tex="\[
+n_\nu=\sum_{w\in W}\epsilon(w)\,
+m_\eta\bigl(\nu+\rho-w(\lambda+\rho)\bigr).
+\tag{8.1}
+\]">\[
+n_\nu=\sum_{w\in W}\epsilon(w)\,
+m_\eta\bigl(\nu+\rho-w(\lambda+\rho)\bigr).
+\tag{8.1}
+\]</span>
+By Weyl invariance of <span class="math" data-tex="\(m_\eta\)">\(m_\eta\)</span>, the equivalent argument inside the multiplicity is <span class="math" data-tex="\(w(\nu+\rho)-(\lambda+\rho)\)">\(w(\nu+\rho)-(\lambda+\rho)\)</span>.</p>
+<p>There is also a finite folding algorithm. Weyl invariance of the weights of <span class="math" data-tex="\(L(\eta)\)">\(L(\eta)\)</span> gives
+<span class="math math-display" data-tex="\[
+A_{\lambda+\rho}\operatorname{ch}L(\eta)
+=\sum_\beta m_\eta(\beta)A_{\lambda+\rho+\beta}.
+\tag{8.2}
+\]">\[
+A_{\lambda+\rho}\operatorname{ch}L(\eta)
+=\sum_\beta m_\eta(\beta)A_{\lambda+\rho+\beta}.
+\tag{8.2}
+\]</span>
+To check it, expand the right side; in its <span class="math" data-tex="\(w\)">\(w\)</span>-summand change the weight variable from <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to <span class="math" data-tex="\(w\beta\)">\(w\beta\)</span>, preserving its multiplicity.</p>
+<p>If <span class="math" data-tex="\(\zeta=\lambda+\rho+\beta\)">\(\zeta=\lambda+\rho+\beta\)</span> is on a reflection wall, <span class="math" data-tex="\(A_\zeta=0\)">\(A_\zeta=0\)</span>, since the fixing reflection pairs equal monomials with opposite signs. Otherwise there is a unique <span class="math" data-tex="\(w\)">\(w\)</span> taking <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> into the strictly dominant chamber. The weight <span class="math" data-tex="\(\nu=w\zeta-\rho\)">\(\nu=w\zeta-\rho\)</span> is dominant integral: every simple-coroot value of <span class="math" data-tex="\(w\zeta\)">\(w\zeta\)</span> is a positive integer, and subtracting <span class="math" data-tex="\(\rho\)">\(\rho\)</span> subtracts one. Then
+<span class="math math-display" data-tex="\[
+A_\zeta=\epsilon(w)A_{\nu+\rho}.
+\]">\[
+A_\zeta=\epsilon(w)A_{\nu+\rho}.
+\]</span>
+Add these signed multiplicities over the finite weight set. Formula (8.2) proves the algorithm, including the removal of singular terms and cancellation of negative contributions.</p>
+<p>For <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>, the natural module <span class="math" data-tex="\(L(\omega_1)\)">\(L(\omega_1)\)</span> has weights
+<span class="math" data-tex="\(\omega_1,-\omega_1+\omega_2,-\omega_2\)">\(\omega_1,-\omega_1+\omega_2,-\omega_2\)</span>. Fold each after adding <span class="math" data-tex="\(\omega_1+\rho\)">\(\omega_1+\rho\)</span>. In fundamental-weight coordinates the three shifted points are
+<span class="math" data-tex="\((3,1),(1,2),(2,0)\)">\((3,1),(1,2),(2,0)\)</span>. The first two are strictly dominant and the third singular. Thus
+<span class="math math-display" data-tex="\[
+L(\omega_1)\otimes L(\omega_1)
+\cong L(2\omega_1)\oplus L(\omega_2),\qquad 3\cdot3=6+3.
+\tag{8.3}
+\]">\[
+L(\omega_1)\otimes L(\omega_1)
+\cong L(2\omega_1)\oplus L(\omega_2),\qquad 3\cdot3=6+3.
+\tag{8.3}
+\]</span>
+The dual natural module has weights
+<span class="math" data-tex="\(\omega_2,\omega_1-\omega_2,-\omega_1\)">\(\omega_2,\omega_1-\omega_2,-\omega_1\)</span>. Their shifted points are
+<span class="math" data-tex="\((2,2),(3,0),(1,1)\)">\((2,2),(3,0),(1,1)\)</span>, giving
+<span class="math math-display" data-tex="\[
+L(\omega_1)\otimes L(\omega_2)
+\cong L(\omega_1+\omega_2)\oplus L(0),\qquad 3\cdot3=8+1.
+\tag{8.4}
+\]">\[
+L(\omega_1)\otimes L(\omega_2)
+\cong L(\omega_1+\omega_2)\oplus L(0),\qquad 3\cdot3=8+1.
+\tag{8.4}
+\]</span>
+Every dimension here follows from (7.4). The same finite folding proof is the algebraic input for compact-group tensor-product calculations.</p>
+<h2 id="section-9"><span id="9-a-dimension-series-application"></span>9. A dimension-series application</h2>
+<p>For <span class="math" data-tex="\(\lambda=\sum_i n_i\omega_i\)">\(\lambda=\sum_i n_i\omega_i\)</span>, put <span class="math" data-tex="\(m_i=n_i+1\)">\(m_i=n_i+1\)</span>. Define
+<span class="math math-display" data-tex="\[
+A_\alpha(m)=\sum_i m_i\,\omega_i(\alpha^\vee),\qquad
+K=\prod_{\alpha&gt;0}A_\alpha(1,\ldots,1).
+\]">\[
+A_\alpha(m)=\sum_i m_i\,\omega_i(\alpha^\vee),\qquad
+K=\prod_{\alpha&gt;0}A_\alpha(1,\ldots,1).
+\]</span>
+The positive coroot expansion has nonnegative integral coefficients, so these are positive integers for <span class="math" data-tex="\(m_i\ge1\)">\(m_i\ge1\)</span>. Formula (3.3) becomes
+<span class="math math-display" data-tex="\[
+\dim L(\lambda)=K^{-1}\prod_{\alpha&gt;0}A_\alpha(m).
+\tag{9.1}
+\]">\[
+\dim L(\lambda)=K^{-1}\prod_{\alpha&gt;0}A_\alpha(m).
+\tag{9.1}
+\]</span>
+It expresses the Witten dimension series as a multiple root series:
+<span class="math math-display" data-tex="\[
+\zeta_W(s;\mathfrak g):=
+\sum_{\lambda\in\Lambda^+}(\dim L(\lambda))^{-s}
+=K^s\sum_{m_1,\ldots,m_r\ge1}
+\prod_{\alpha&gt;0}A_\alpha(m)^{-s}.
+\tag{9.2}
+\]">\[
+\zeta_W(s;\mathfrak g):=
+\sum_{\lambda\in\Lambda^+}(\dim L(\lambda))^{-s}
+=K^s\sum_{m_1,\ldots,m_r\ge1}
+\prod_{\alpha&gt;0}A_\alpha(m)^{-s}.
+\tag{9.2}
+\]</span>
+Powers of positive real numbers use their real logarithms.</p>
+<p>For completeness, this identity holds as an absolutely convergent series for <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>. Every root factor in (3.3) is at least one. The factors for simple roots are exactly <span class="math" data-tex="\(n_i+1=m_i\)">\(n_i+1=m_i\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\dim L(\lambda)\ge\prod_i m_i,\qquad
+\sum_\lambda(\dim L(\lambda))^{-\sigma}
+\le\left(\sum_{m\ge1}m^{-\sigma}\right)^r&lt;\infty
+\quad(\sigma&gt;1).
+\]">\[
+\dim L(\lambda)\ge\prod_i m_i,\qquad
+\sum_\lambda(\dim L(\lambda))^{-\sigma}
+\le\left(\sum_{m\ge1}m^{-\sigma}\right)^r&lt;\infty
+\quad(\sigma&gt;1).
+\]</span>
+The last convergence follows by bounding the positive decreasing series with <span class="math" data-tex="\(1+\int_1^\infty x^{-\sigma}\,dx\)">\(1+\int_1^\infty x^{-\sigma}\,dx\)</span>. This proves an adequate convergence range; it is not asserted to be optimal.</p>
+<p>In rank one, <span class="math" data-tex="\(\zeta_W(s;\mathfrak{sl}_2)=\sum_{m\ge1}m^{-s}\)">\(\zeta_W(s;\mathfrak{sl}_2)=\sum_{m\ge1}m^{-s}\)</span>. For <span class="math" data-tex="\(A_2\)">\(A_2\)</span>, (7.4) gives
+<span class="math math-display" data-tex="\[
+\zeta_W(s;\mathfrak{sl}_3)=
+2^s\sum_{m,n\ge1}\bigl(mn(m+n)\bigr)^{-s}.
+\tag{9.3}
+\]">\[
+\zeta_W(s;\mathfrak{sl}_3)=
+2^s\sum_{m,n\ge1}\bigl(mn(m+n)\bigr)^{-s}.
+\tag{9.3}
+\]</span>
+For <span class="math" data-tex="\(B_2\)">\(B_2\)</span>, with <span class="math" data-tex="\(\alpha_1=\varepsilon_1-\varepsilon_2\)">\(\alpha_1=\varepsilon_1-\varepsilon_2\)</span> long and <span class="math" data-tex="\(\alpha_2=\varepsilon_2\)">\(\alpha_2=\varepsilon_2\)</span> short, the four positive coroot forms are <span class="math" data-tex="\(m,n,2m+n,m+n\)">\(m,n,2m+n,m+n\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\zeta_W(s;\mathfrak{so}_5)=
+6^s\sum_{m,n\ge1}\bigl(mn(m+n)(2m+n)\bigr)^{-s}.
+\tag{9.4}
+\]">\[
+\zeta_W(s;\mathfrak{so}_5)=
+6^s\sum_{m,n\ge1}\bigl(mn(m+n)(2m+n)\bigr)^{-s}.
+\tag{9.4}
+\]</span>
+Indeed the two nonsimple coroots are <span class="math" data-tex="\(2\alpha_1^\vee+\alpha_2^\vee\)">\(2\alpha_1^\vee+\alpha_2^\vee\)</span> and <span class="math" data-tex="\(\alpha_1^\vee+\alpha_2^\vee\)">\(\alpha_1^\vee+\alpha_2^\vee\)</span>, whose values at <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are three and two. These computations give the dimension factors for the displayed rank-two root system. They make no claim about special values or analytic continuation of root-system series.</p>
+<h2 id="section-10"><span id="10-exercises-with-complete-solutions"></span>10. Exercises with complete solutions</h2>
+<h3 id="exercise-10-1-rank-one-easy">Exercise 10.1 — rank one [easy]</h3>
+<p>Use the Weyl numerator and denominator for <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> to derive the character of <span class="math" data-tex="\(L(n\omega)\)">\(L(n\omega)\)</span>, <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>. Determine every weight multiplicity and the dimension, including <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(\alpha=2\omega\)">\(\alpha=2\omega\)</span>, <span class="math" data-tex="\(\rho=\omega\)">\(\rho=\omega\)</span>, and the nontrivial reflection changes the sign of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Set <span class="math" data-tex="\(x=e^\omega\)">\(x=e^\omega\)</span>. Formula (2.4) is
+<span class="math math-display" data-tex="\[
+\frac{x^{n+1}-x^{-n-1}}{x-x^{-1}}
+=x^n\frac{1-x^{-2n-2}}{1-x^{-2}}
+=\sum_{j=0}^n x^{n-2j}.
+\]">\[
+\frac{x^{n+1}-x^{-n-1}}{x-x^{-1}}
+=x^n\frac{1-x^{-2n-2}}{1-x^{-2}}
+=\sum_{j=0}^n x^{n-2j}.
+\]</span>
+The last equality is the finite geometric identity: multiplying its right side by <span class="math" data-tex="\(1-x^{-2}\)">\(1-x^{-2}\)</span> cancels all interior terms and leaves <span class="math" data-tex="\(1-x^{-2n-2}\)">\(1-x^{-2n-2}\)</span>. The weights are precisely <span class="math" data-tex="\((n-2j)\omega\)">\((n-2j)\omega\)</span>, each once. Their number is <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, which is also the limit at <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, or the single factor <span class="math" data-tex="\((n+1)/1\)">\((n+1)/1\)</span> in (3.3). For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the sum is one and gives the trivial module.</p>
+<h3 id="exercise-10-2-both-fundamental-modules-of-g_2-medium">Exercise 10.2 — both fundamental modules of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> [medium]</h3>
+<p>Take <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> short, <span class="math" data-tex="\((\alpha_1,\alpha_1)=2\)">\((\alpha_1,\alpha_1)=2\)</span>, and <span class="math" data-tex="\((\alpha_1,\alpha_2)=-3\)">\((\alpha_1,\alpha_2)=-3\)</span>. Compute the dimensions of <span class="math" data-tex="\(L(\omega_1)\)">\(L(\omega_1)\)</span> and <span class="math" data-tex="\(L(\omega_2)\)">\(L(\omega_2)\)</span> from all six factors in (3.3).</p>
+<p><strong>Solution.</strong> The long root has squared length six. For root coordinates <span class="math" data-tex="\(u=(u_1,u_2)\)">\(u=(u_1,u_2)\)</span>, <span class="math" data-tex="\(v=(v_1,v_2)\)">\(v=(v_1,v_2)\)</span>, the inner product is
+<span class="math math-display" data-tex="\[
+(u,v)=2u_1v_1-3u_1v_2-3u_2v_1+6u_2v_2.
+\]">\[
+(u,v)=2u_1v_1-3u_1v_2-3u_2v_1+6u_2v_2.
+\]</span>
+The equations <span class="math" data-tex="\(\omega_j(\alpha_i^\vee)=\delta_{ij}\)">\(\omega_j(\alpha_i^\vee)=\delta_{ij}\)</span> give <span class="math" data-tex="\(\omega_1=(2,1)\)">\(\omega_1=(2,1)\)</span>, <span class="math" data-tex="\(\omega_2=(3,2)\)">\(\omega_2=(3,2)\)</span>, hence <span class="math" data-tex="\(\rho=(5,3)\)">\(\rho=(5,3)\)</span>. The six positive roots and the necessary pairings are</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\rho,\alpha)\)">\((\rho,\alpha)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\omega_1+\rho,\alpha)\)">\((\omega_1+\rho,\alpha)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\((\omega_2+\rho,\alpha)\)">\((\omega_2+\rho,\alpha)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\((1,0)\)">\((1,0)\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((0,1)\)">\((0,1)\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((1,1)\)">\((1,1)\)</span></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,1)\)">\((2,1)\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,1)\)">\((3,1)\)</span></td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">9</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,2)\)">\((3,2)\)</span></td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">15</td>
+</tr>
+</tbody>
+</table>
+<p>For example, for <span class="math" data-tex="\(\rho=(5,3)\)">\(\rho=(5,3)\)</span>, the two simple-root pairings are <span class="math" data-tex="\(10-9=1\)">\(10-9=1\)</span> and <span class="math" data-tex="\(-15+18=3\)">\(-15+18=3\)</span>. Linearity gives every other entry in its column; the two remaining columns start with <span class="math" data-tex="\((2,3)\)">\((2,3)\)</span> and <span class="math" data-tex="\((1,6)\)">\((1,6)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\dim L(\omega_1)=\frac{2\cdot3\cdot5\cdot7\cdot9\cdot12}
+{1\cdot3\cdot4\cdot5\cdot6\cdot9}=7,
+\qquad
+\dim L(\omega_2)=\frac{1\cdot6\cdot7\cdot8\cdot9\cdot15}
+{1\cdot3\cdot4\cdot5\cdot6\cdot9}=14.
+\]">\[
+\dim L(\omega_1)=\frac{2\cdot3\cdot5\cdot7\cdot9\cdot12}
+{1\cdot3\cdot4\cdot5\cdot6\cdot9}=7,
+\qquad
+\dim L(\omega_2)=\frac{1\cdot6\cdot7\cdot8\cdot9\cdot15}
+{1\cdot3\cdot4\cdot5\cdot6\cdot9}=14.
+\]</span>
+Using coroot pairings instead changes both entries in each ratio by the same root-length factor and gives the same products. The numbering is fixed by <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> being short.</p>
+<h3 id="exercise-10-3-the-entire-adjoint-weight-diagram-medium">Exercise 10.3 — the entire adjoint weight diagram [medium]</h3>
+<p>Compute every weight multiplicity of <span class="math" data-tex="\(L(\theta)\)">\(L(\theta)\)</span> for <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>, with <span class="math" data-tex="\(\theta=\alpha_1+\alpha_2\)">\(\theta=\alpha_1+\alpha_2\)</span>, by Freudenthal's formula. In particular derive the multiplicity at zero.</p>
+<p><strong>Solution.</strong> Normalize <span class="math" data-tex="\((\alpha_i,\alpha_i)=2\)">\((\alpha_i,\alpha_i)=2\)</span>, <span class="math" data-tex="\((\alpha_1,\alpha_2)=-1\)">\((\alpha_1,\alpha_2)=-1\)</span>. A common scaling of the form cancels in (5.2). Here <span class="math" data-tex="\(\rho=\theta\)">\(\rho=\theta\)</span> and <span class="math" data-tex="\(\|\theta+\rho\|^2=8\)">\(\|\theta+\rho\|^2=8\)</span>. The finite candidate set from the weight-polytope theorem is the six roots and zero: in the root lattice the hexagon <span class="math" data-tex="\(\operatorname{conv}(W\theta)\)">\(\operatorname{conv}(W\theta)\)</span> has those six vertices and only the origin inside. To check the last assertion directly, its inequalities in root coordinates <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> are <span class="math" data-tex="\(|a|\le1\)">\(|a|\le1\)</span>, <span class="math" data-tex="\(|b|\le1\)">\(|b|\le1\)</span>, <span class="math" data-tex="\(|a-b|\le1\)">\(|a-b|\le1\)</span>, whose integral solutions are exactly these seven points.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+D_\mu=8-\|\mu+\rho\|^2,\qquad
+S_\mu=\sum_{\alpha&gt;0}\sum_{k\ge1}
+(\mu+k\alpha,\alpha)m(\mu+k\alpha).
+\]">\[
+D_\mu=8-\|\mu+\rho\|^2,\qquad
+S_\mu=\sum_{\alpha&gt;0}\sum_{k\ge1}
+(\mu+k\alpha,\alpha)m(\mu+k\alpha).
+\]</span>
+Process the points by increasing level from <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, assigning zero outside the hexagon. Start with <span class="math" data-tex="\(m(\theta)=1\)">\(m(\theta)=1\)</span>. The recursion <span class="math" data-tex="\(D_\mu m(\mu)=2S_\mu\)">\(D_\mu m(\mu)=2S_\mu\)</span> then gives</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(\mu\)">\(\mu\)</span></th>
+<th style="text-align:right">Level</th>
+<th style="text-align:right"><span class="math" data-tex="\(D_\mu\)">\(D_\mu\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(S_\mu\)">\(S_\mu\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(m(\mu)\)">\(m(\mu)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\theta\)">\(\theta\)</span></td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1, the initial value</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">2</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-\alpha_1,-\alpha_2\)">\(-\alpha_1,-\alpha_2\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-\theta\)">\(-\theta\)</span></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p>Here are all nonzero contributions. For <span class="math" data-tex="\(\mu=\alpha_1\)">\(\mu=\alpha_1\)</span>, only <span class="math" data-tex="\(\alpha=\alpha_2,k=1\)">\(\alpha=\alpha_2,k=1\)</span> reaches a weight with nonzero pairing: it reaches <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and <span class="math" data-tex="\((\theta,\alpha_2)=1\)">\((\theta,\alpha_2)=1\)</span>. Interchange the simple roots for <span class="math" data-tex="\(\mu=\alpha_2\)">\(\mu=\alpha_2\)</span>. At <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>, each of the three positive roots contributes its squared length two, so <span class="math" data-tex="\(S_0=6\)">\(S_0=6\)</span>, giving <span class="math" data-tex="\(m(0)=2\)">\(m(0)=2\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mu=-\alpha_1\)">\(\mu=-\alpha_1\)</span>, the <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> string reaches zero at <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, contributing zero, and <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> at <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, contributing two. The <span class="math" data-tex="\(\theta\)">\(\theta\)</span> string reaches <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span> at <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, contributing one. No other term contributes. Thus <span class="math" data-tex="\(S_{-\alpha_1}=3\)">\(S_{-\alpha_1}=3\)</span>; the other negative simple root is symmetric. Finally, from <span class="math" data-tex="\(-\theta\)">\(-\theta\)</span>, adding <span class="math" data-tex="\(\alpha_1\)">\(\alpha_1\)</span> or <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span> gives the opposite negative simple root, each with pairing one. Adding <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives zero with pairing zero, then <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with pairing two. Thus <span class="math" data-tex="\(S_{-\theta}=4\)">\(S_{-\theta}=4\)</span>. All later points on all these strings lie outside the candidate set. The total dimension is <span class="math" data-tex="\(6+2=8\)">\(6+2=8\)</span>, agreeing with (7.4) at <span class="math" data-tex="\((a,b)=(1,1)\)">\((a,b)=(1,1)\)</span>.</p>
+<h3 id="exercise-10-4-derive-the-recursion-hard">Exercise 10.4 — derive the recursion [hard]</h3>
+<p>Prove (5.2) for every integral <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, including an absent weight. Explain why the sums terminate and where division by its left coefficient is justified.</p>
+<p><strong>Solution.</strong> Choose opposite-root vectors dual for the Killing form. Invariance of the form gives <span class="math" data-tex="\([E_\alpha,F_\alpha]=t_\alpha\)">\([E_\alpha,F_\alpha]=t_\alpha\)</span>: pairing the bracket with <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(\alpha(H)\)">\(\alpha(H)\)</span>, and it lies in <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. For a Cartan dual pair of bases, the ordered Casimir is
+<span class="math math-display" data-tex="\[
+\Omega_\kappa=\sum_aH_aH^a+2t_\rho+
+2\sum_{\alpha&gt;0}F_\alpha E_\alpha.
+\]">\[
+\Omega_\kappa=\sum_aH_aH^a+2t_\rho+
+2\sum_{\alpha&gt;0}F_\alpha E_\alpha.
+\]</span>
+On the highest vector its last sum vanishes; its scalar on the cyclic irreducible is <span class="math" data-tex="\((\lambda,\lambda)+2(\lambda,\rho)\)">\((\lambda,\lambda)+2(\lambda,\rho)\)</span>. On <span class="math" data-tex="\(V_\mu\)">\(V_\mu\)</span>, the first two terms are the scalar <span class="math" data-tex="\((\mu,\mu)+2(\mu,\rho)\)">\((\mu,\mu)+2(\mu,\rho)\)</span>. Subtract and take the trace to get
+<span class="math math-display" data-tex="\[
+\bigl((\lambda,\lambda+2\rho)-(\mu,\mu+2\rho)\bigr)m(\mu)
+=2\sum_{\alpha&gt;0}T_\alpha(\mu),\quad
+T_\alpha(\mu)=\operatorname{Tr}_{V_\mu}(F_\alpha E_\alpha).
+\]">\[
+\bigl((\lambda,\lambda+2\rho)-(\mu,\mu+2\rho)\bigr)m(\mu)
+=2\sum_{\alpha&gt;0}T_\alpha(\mu),\quad
+T_\alpha(\mu)=\operatorname{Tr}_{V_\mu}(F_\alpha E_\alpha).
+\]</span>
+For finite spaces <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, write maps <span class="math" data-tex="\(A:X\to Y\)">\(A:X\to Y\)</span>, <span class="math" data-tex="\(B:Y\to X\)">\(B:Y\to X\)</span> as rectangular matrices. The traces of <span class="math" data-tex="\(BA\)">\(BA\)</span> and <span class="math" data-tex="\(AB\)">\(AB\)</span> are both <span class="math" data-tex="\(\sum_{i,j}B_{ij}A_{ji}\)">\(\sum_{i,j}B_{ij}A_{ji}\)</span>, including a zero-dimensional space. Applying this identity to the two weight spaces, and then using <span class="math" data-tex="\(E_\alpha F_\alpha=F_\alpha E_\alpha+t_\alpha\)">\(E_\alpha F_\alpha=F_\alpha E_\alpha+t_\alpha\)</span>, yields
+<span class="math math-display" data-tex="\[
+T_\alpha(\mu)-T_\alpha(\mu+\alpha)
+=(\mu+\alpha,\alpha)m(\mu+\alpha).
+\]">\[
+T_\alpha(\mu)-T_\alpha(\mu+\alpha)
+=(\mu+\alpha,\alpha)m(\mu+\alpha).
+\]</span>
+After <span class="math" data-tex="\(K\)">\(K\)</span> upward steps the right sides telescope and give
+<span class="math math-display" data-tex="\[
+T_\alpha(\mu)=T_\alpha(\mu+K\alpha)+
+\sum_{k=1}^K(\mu+k\alpha,\alpha)m(\mu+k\alpha).
+\]">\[
+T_\alpha(\mu)=T_\alpha(\mu+K\alpha)+
+\sum_{k=1}^K(\mu+k\alpha,\alpha)m(\mu+k\alpha).
+\]</span>
+The finite weight set makes the first term zero and all further multiplicities zero for sufficiently large <span class="math" data-tex="\(K\)">\(K\)</span>. There are only finitely many positive roots. Substitution therefore gives a finite right side, and the left coefficient is
+<span class="math" data-tex="\(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\)">\(\|\lambda+\rho\|^2-\|\mu+\rho\|^2\)</span>, proving the formula at every <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p>For an actual <span class="math" data-tex="\(\mu\ne\lambda\)">\(\mu\ne\lambda\)</span>, move it to dominant <span class="math" data-tex="\(\mu'\)">\(\mu'\)</span>. Both <span class="math" data-tex="\(\mu'\le\lambda\)">\(\mu'\le\lambda\)</span> and <span class="math" data-tex="\(\mu\le\lambda\)">\(\mu\le\lambda\)</span>. The first gives <span class="math" data-tex="\(\|\mu\|=\|\mu'\|\le\|\lambda\|\)">\(\|\mu\|=\|\mu'\|\le\|\lambda\|\)</span>, by pairing <span class="math" data-tex="\(\lambda-\mu'\)">\(\lambda-\mu'\)</span> with the dominant <span class="math" data-tex="\(\lambda+\mu'\)">\(\lambda+\mu'\)</span>; the second gives <span class="math" data-tex="\((\rho,\lambda-\mu)&gt;0\)">\((\rho,\lambda-\mu)&gt;0\)</span>. Their sum proves (5.5) and permits division. At <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> one supplies the initial multiplicity one. At arbitrary exterior weights the identity still holds, but a zero coefficient would prevent using it as a quotient; one instead assigns zero using the known exact candidate set.</p>
+<h2 id="section-11"><span id="11-scope-and-reading"></span>11. Scope and reading</h2>
+<p>Every new character, denominator, dimension and multiplicity formula used here has been proved. The finite virtual expansion is a character identity, obtained by bounded elimination of entire lowest levels. Central linkage does not imply an actual Verma filtration of a finite irreducible. The alternating numerator has one coefficient for each point of a regular shifted orbit; alternants indexed by all weights would include dependent and zero terms.</p>
+<p>The Lie-algebra formulas use the full integral lattice, including spin weights. Descent to a global orthogonal group needs an additional lattice condition. The compact-form lesson will make the Lie-algebra/group connection. The compact-group tensor-product topic <em>RT-CPT-12</em> uses the same signed folding mechanism; it is a reading pointer, with no theorem imported into this proof.</p>
+<p>For comparison with the algebraic character proof, see Pavel Etingof, <a href="https://ocw.mit.edu/courses/18-745-lie-groups-and-lie-algebras-i-fall-2020/mit18_745_f20_lec_full.pdf"><em>Lie Groups and Lie Algebras I</em>, MIT 18.745, Fall 2020, complete lecture notes</a>, §26, printed pp.138–143. Our finite-level argument makes the truncation and the number of kernel/quotient branches explicit, and the Taylor proof uses an arbitrary regular Cartan element.</p>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/Books/iAG2017.pdf"><em>Algebraic Groups</em>, freely accessible author's 2017 edition</a>, §22d, Theorem 22.52, printed pp.480–481, gives a geometric character formula through flag-variety cohomology. In characteristic zero its dominant global-section module is simple; that geometric proof is an alternative viewpoint and is not a prerequisite for our Lie-algebra proof. The displayed root-series application uses only the dimension factors proved here; deeper special-value results are not asserted.</p>
+</article><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-16.md" download>Editable source</a><a href="RT-LIE-15.html">← Previous lesson</a><a href="RT-LIE-17.html">Next lesson →</a></nav></main></body></html>

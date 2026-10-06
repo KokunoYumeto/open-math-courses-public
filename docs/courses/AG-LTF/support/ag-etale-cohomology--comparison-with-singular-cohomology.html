@@ -1,0 +1,450 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparison with singular cohomology</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="comparison-with-singular-cohomology">Comparison with singular cohomology</h1>
+<p>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text released under CC0.</p>
+<p>An étale neighbourhood of a complex point becomes a local analytic chart. This observation gives a map on cohomology, but it does not prove that the map is an isomorphism. We prove the compact-support comparison by reducing proper maps to projective curves, where coverings and line bundles determine the answer. We then prove ordinary comparison for constructible coefficients. Keeping these arguments separate also reveals a simple degree-zero counterexample when constructibility is removed.</p>
+<h2 id="1-scope-and-the-inputs-that-remain-inputs">1. Scope and the inputs that remain inputs</h2>
+<p>Schemes are of finite type over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. A morphism <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> under consideration is separated and of finite type. The notation <span class="math" data-tex="\(X^{\mathrm{an}}\)">\(X^{\mathrm{an}}\)</span> means the associated complex analytic space with its classical topology. An arbitrary torsion sheaf means an étale sheaf of abelian groups whose geometric stalks are torsion; it need not have a common annihilator. A constructible torsion sheaf has finite stalks on a finite stratification, and therefore has a common annihilator. We first work with <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and then pass to arbitrary torsion.</p>
+<p>For constant coefficients on a locally contractible analytic space, classical sheaf cohomology is singular cohomology. For a local system, it is singular cohomology with local coefficients. For a general constructible sheaf, the right side of the comparison is classical <em>sheaf</em> cohomology; one must retain its specialization maps. Ordinary singular cochains with a single coefficient group do not describe such a sheaf.</p>
+<p>The lesson uses two inputs, stated without proof:</p>
+<ul>
+<li><strong>Riemann existence, stated:</strong> analytification gives an equivalence between finite étale covers of any finite-type complex scheme and finite topological covering spaces of its analytic space. No normality assumption is required. We use full faithfulness as well as existence; this includes group actions on covers.</li>
+<li><strong>Projective-curve GAGA, stated:</strong> for a projective complex curve, analytification identifies algebraic and holomorphic line bundles, their morphisms and tensor products. In particular, it identifies their Picard groups.</li>
+</ul>
+<p>These are the interfaces of the planned prerequisite lessons qc-09, “Algebraic and analytic coherent sheaves,” and df-08, “Comparison with the topological fundamental group.” We state the interfaces here instead of claiming those prerequisite lessons have been written. Their verified modern locators are listed in Section 17.</p>
+<p>The scheme-theoretic prerequisites are finite normalization over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, the projectivity of a proper normal complex curve, and the invariance of the étale topos under nilpotent thickening. These are the same geometric foundations used in Lessons 6 and 12. Lesson 11 supplies constructible presentations, their Serre property, and filtered-cohomology continuity on a Noetherian étale site. Lessons 13–14 supply proper base change, compactification and <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span>, including their natural maps. General proper constructibility retains the stated-input status recorded in Lesson 14. Lessons 17–18 supply normalized curve and smooth duality; their exact current versions are prerequisites.</p>
+<p>For the ordinary comparison argument in Section 11 we also use <strong>resolution of singularities as an external geometric prerequisite</strong>: a reduced finite-type complex scheme has a proper map from a smooth scheme which is an isomorphism over a dense open. Temkin, Theorem 1.2.1, gives a sequence of blow-ups with regular final scheme and centers outside the regular locus; finite-type complex schemes satisfy its Noetherian, quasi-excellent, characteristic-zero hypotheses. This geometric theorem is not a cohomological comparison premise and is not proved in this course. The proper-support proof, Sections 5–9, does not use it. Classical manifold Poincaré duality, triangulation, the universal coefficient theorem, and the Dolbeault resolution on a Riemann surface are topological and analytic prerequisites. Section 10 explains the exact duality form and orientation needed here.</p>
+<h2 id="2-from-analytic-charts-to-a-morphism-of-topoi">2. From analytic charts to a morphism of topoi</h2>
+<p>If <span class="math" data-tex="\(u:U\to X\)">\(u:U\to X\)</span> is étale, the analytic inverse function theorem makes <span class="math" data-tex="\(u^{\mathrm{an}}\)">\(u^{\mathrm{an}}\)</span> a local biholomorphism, hence a local homeomorphism. Surjective étale families give jointly surjective analytic families. Analytification preserves finite fibre products. The site of local homeomorphisms over a space presents its usual sheaf topos: an open subset is a local homeomorphism, and every local homeomorphism is covered by such opens.</p>
+<p>Consequently the assignment <span class="math" data-tex="\(U\mapsto U^{\mathrm{an}}\)">\(U\mapsto U^{\mathrm{an}}\)</span> induces a geometric morphism</p>
+<span class="math math-display" data-tex="\[
+\epsilon_X:\operatorname{Sh}(X^{\mathrm{an}})
+\longrightarrow\operatorname{Sh}(X_{\mathrm{\acute et}}),
+\qquad F^{\mathrm{an}}=\epsilon_X^*F.
+\tag{2.1}
+\]">\[
+\epsilon_X:\operatorname{Sh}(X^{\mathrm{an}})
+\longrightarrow\operatorname{Sh}(X_{\mathrm{\acute et}}),
+\qquad F^{\mathrm{an}}=\epsilon_X^*F.
+\tag{2.1}
+\]</span>
+<p>One can see its inverse image concretely: form local analytic sections from étale sections and sheafify. At a complex point <span class="math" data-tex="\(x\)">\(x\)</span>, the associated fibre functor is the geometric étale point <span class="math" data-tex="\(\bar x:\operatorname{Spec}\mathbf C\to X\)">\(\bar x:\operatorname{Spec}\mathbf C\to X\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+(F^{\mathrm{an}})_x=F_{\bar x}.
+\tag{2.2}
+\]">\[
+(F^{\mathrm{an}})_x=F_{\bar x}.
+\tag{2.2}
+\]</span>
+<p><strong>Lemma 2.1.</strong> Analytification of abelian sheaves is exact, preserves colimits and tensor products, and sends finite locally constant sheaves to finite local systems. For an open immersion <span class="math" data-tex="\(j\)">\(j\)</span> and a closed immersion <span class="math" data-tex="\(i\)">\(i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(j_!F)^{\mathrm{an}}=j^{\mathrm{an}}_!F^{\mathrm{an}},
+\qquad
+(i_*G)^{\mathrm{an}}=i^{\mathrm{an}}_*G^{\mathrm{an}}.
+\tag{2.3}
+\]">\[
+(j_!F)^{\mathrm{an}}=j^{\mathrm{an}}_!F^{\mathrm{an}},
+\qquad
+(i_*G)^{\mathrm{an}}=i^{\mathrm{an}}_*G^{\mathrm{an}}.
+\tag{2.3}
+\]</span>
+<p><em>Proof.</em> Inverse image of a geometric morphism preserves finite limits and all colimits. For abelian sheaves this proves exactness. Tensor products are constructed from sums and relations, so they are preserved; exactness also gives the derived tensor compatibility. A finite local system is trivialized by a finite étale cover, which analytifies to a covering. For (2.3), at a point of the open the stalk is the original stalk and outside it the stalk is zero. The closed case has the same stalk test. Formula (2.2) proves the assertions, including the canonical maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite-type complex schemes, closed complex points give all analytic points. To prove a morphism of analytic sheaves is an isomorphism, their stalks suffice. We will therefore apply algebraic proper base change only at these geometric points; no comparison over a non-complex residue field is being assumed.</p>
+<h2 id="3-constructing-the-comparison-maps">3. Constructing the comparison maps</h2>
+<p>The square of topoi associated with <span class="math" data-tex="\(f\)">\(f\)</span> commutes. For a bounded-below complex <span class="math" data-tex="\(E\)">\(E\)</span>, the counit <span class="math" data-tex="\(f^*Rf_*E\to E\)">\(f^*Rf_*E\to E\)</span>, pulled back to the analytic space and transposed by adjunction, defines</p>
+<span class="math math-display" data-tex="\[
+\alpha_f:\epsilon_S^*Rf_*E
+\longrightarrow Rf^{\mathrm{an}}_*\epsilon_X^*E.
+\tag{3.1}
+\]">\[
+\alpha_f:\epsilon_S^*Rf_*E
+\longrightarrow Rf^{\mathrm{an}}_*\epsilon_X^*E.
+\tag{3.1}
+\]</span>
+<p>More explicitly, the map being transposed is</p>
+<span class="math math-display" data-tex="\[
+(f^{\mathrm{an}})^*\epsilon_S^*Rf_*E
+\simeq\epsilon_X^*f^*Rf_*E
+\longrightarrow\epsilon_X^*E.
+\]">\[
+(f^{\mathrm{an}})^*\epsilon_S^*Rf_*E
+\simeq\epsilon_X^*f^*Rf_*E
+\longrightarrow\epsilon_X^*E.
+\]</span>
+<p>For the structure map to a point this gives the canonical ordinary map <span class="math" data-tex="\(R\Gamma(X,E)\to R\Gamma(X^{\mathrm{an}},E^{\mathrm{an}})\)">\(R\Gamma(X,E)\to R\Gamma(X^{\mathrm{an}},E^{\mathrm{an}})\)</span>. It is a map, without a prior assertion that it is an isomorphism.</p>
+<p>Choose a relative compactification <span class="math" data-tex="\(X\xrightarrow{j}\overline X\xrightarrow{p}S\)">\(X\xrightarrow{j}\overline X\xrightarrow{p}S\)</span>, with <span class="math" data-tex="\(j\)">\(j\)</span> open and <span class="math" data-tex="\(p\)">\(p\)</span> proper, as in Lesson 14. Using (2.3) and (3.1) defines</p>
+<span class="math math-display" data-tex="\[
+\beta_f:\epsilon_S^*Rf_!E
+=\epsilon_S^*Rp_*j_!E
+\longrightarrow Rp^{\mathrm{an}}_*j^{\mathrm{an}}_!E^{\mathrm{an}}
+=Rf^{\mathrm{an}}_!E^{\mathrm{an}}.
+\tag{3.2}
+\]">\[
+\beta_f:\epsilon_S^*Rf_!E
+=\epsilon_S^*Rp_*j_!E
+\longrightarrow Rp^{\mathrm{an}}_*j^{\mathrm{an}}_!E^{\mathrm{an}}
+=Rf^{\mathrm{an}}_!E^{\mathrm{an}}.
+\tag{3.2}
+\]</span>
+<p>Algebraic proper maps analytify to proper continuous maps. The associated analytic compactification therefore defines the usual derived direct image with proper support. A common proper refinement of two compactifications identifies their <span class="math" data-tex="\(j_!\)">\(j_!\)</span> objects by the fibre calculation proved in Section 7. Naturality of the counits in (3.1) then identifies their maps (3.2). Thus <span class="math" data-tex="\(\beta_f\)">\(\beta_f\)</span> is independent of compactification.</p>
+<p><strong>Lemma 3.1 (compatibilities).</strong> The comparison maps are natural in coefficients, respect distinguished triangles, and commute with composition, base-change maps, and the ordinary action on compactly supported cohomology. In particular they respect cup products.</p>
+<p><em>Proof.</em> The maps arise from inverse image, units and counits. Transposing two counits in sequence gives the counit of their composite, by the two adjunction identities. Transposing around a base-change square gives its usual base-change map by the same identities. Exact inverse image preserves the localization sequences (2.3), so the constructions also commute with their boundary maps. Finally inverse image preserves the evaluation <span class="math" data-tex="\(E\otimes^LG\to H\)">\(E\otimes^LG\to H\)</span>; the projection maps for pushforward are obtained by transposing that evaluation. Pulling back either construction gives the same evaluation on the analytic side. Applying ordinary or proper-support sections proves cup compatibility, including mixed ordinary/compact products. The derived symmetry is the usual Koszul symmetry on both sides, so the sign for exchanging degrees <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is <span class="math" data-tex="\((-1)^{ab}\)">\((-1)^{ab}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This supplies comparison maps between Leray and hypercohomology spectral sequences. Their finite filtrations, rather than just numerical dimensions, will be used below.</p>
+<h2 id="4-the-classical-proper-support-tools">4. The classical proper-support tools</h2>
+<p>Here are the classical facts corresponding to the algebraic theorems already proved in the course.</p>
+<p><strong>Lemma 4.1 (compact continuity).</strong> On a compact Hausdorff space <span class="math" data-tex="\(K\)">\(K\)</span>, sheaf cohomology commutes with filtered colimits of abelian sheaves.</p>
+<p><em>Proof.</em> First global sections commute. A section of the colimit has local representatives. Choose a finite cover by compact neighbourhoods contained in the representative opens, with interiors covering <span class="math" data-tex="\(K\)">\(K\)</span>. On each compact intersection, equality of two representatives is locally witnessed at later stages, and finitely many such witnesses suffice. A common stage makes the representatives equal on all intersections; they glue on the interiors. The same finite-cover argument makes a section which becomes zero vanish at a single later stage. This proves both surjectivity and injectivity of the degree-zero colimit map. It applies to every closed subset of <span class="math" data-tex="\(K\)">\(K\)</span>, which is also compact Hausdorff.</p>
+<p>Use functorial injective resolutions of the system. Injective sheaves are flasque and hence soft on a compact Hausdorff space. A filtered colimit of these terms is soft: sections on each closed subset and global sections commute with the colimit, and the extension map was surjective at every stage. Soft sheaves on a paracompact Hausdorff space are acyclic for global sections, by the usual finite shrinking-and-extension proof of Čech acyclicity. The colimit resolution is exact on stalks and consists of these acyclic terms. Global sections of the resolution commute with the colimit, and filtered colimits of groups are exact. Its cohomology gives the assertion in every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (classical proper base change).</strong> If <span class="math" data-tex="\(p:T\to B\)">\(p:T\to B\)</span> is proper between locally compact Hausdorff spaces, then</p>
+<span class="math math-display" data-tex="\[
+(Rp_*G)_b\simeq R\Gamma(T_b,G|_{T_b}).
+\tag{4.1}
+\]">\[
+(Rp_*G)_b\simeq R\Gamma(T_b,G|_{T_b}).
+\tag{4.1}
+\]</span>
+<p>It follows that proper pushforward satisfies arbitrary base change.</p>
+<p><em>Proof.</em> The stalk on the left is cohomology over the inverse images of shrinking neighbourhoods of <span class="math" data-tex="\(b\)">\(b\)</span>. These are cofinal among neighbourhoods of the compact fibre: if <span class="math" data-tex="\(W\supset T_b\)">\(W\supset T_b\)</span>, then <span class="math" data-tex="\(B\setminus p(T\setminus W)\)">\(B\setminus p(T\setminus W)\)</span> is an open neighbourhood whose inverse image lies in <span class="math" data-tex="\(W\)">\(W\)</span>, since <span class="math" data-tex="\(p\)">\(p\)</span> is closed. Restriction to a compact Hausdorff closed subset computes the colimit of cohomology over its neighbourhoods. To verify the latter assertion, lift a finite Čech representative on the subset to neighbourhoods, shrink a finite cover so that its overlap equations hold, and do the same for a coboundary. Čech and derived cohomology agree on a compact Hausdorff space and the restrictions of injective sheaves are acyclic by this same refinement argument. This proves (4.1). After base change the two fibres are homeomorphic and carry the same sheaf; the stalk map is their identity, proving base change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full neighbourhood-refinement proof is in the pinned cohomology chapter cited in Section 17; Anschütz, Lemma 4.20 and Theorem 4.16, provide an additional open account. These statements apply to arbitrary abelian sheaves, without constructibility. From (4.1) and Lemma 4.1, <span class="math" data-tex="\(R^qp_*\)">\(R^qp_*\)</span> commutes with filtered colimits for a proper analytic map. Applying this to <span class="math" data-tex="\(p_*j_!\)">\(p_*j_!\)</span> gives the same assertion for proper-support pushforward in our compactifiable setting.</p>
+<h2 id="5-the-comparison-on-a-smooth-projective-curve">5. The comparison on a smooth projective curve</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a connected smooth projective complex curve. Choose <span class="math" data-tex="\(\zeta_n=\exp(2\pi i/n)\)">\(\zeta_n=\exp(2\pi i/n)\)</span>, identifying <span class="math" data-tex="\(\Lambda(1)=\mu_n\)">\(\Lambda(1)=\mu_n\)</span> with the constant analytic <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. We keep twists when no choice is intended.</p>
+<p><strong>Theorem 5.1.</strong> The canonical maps</p>
+<span class="math math-display" data-tex="\[
+H^q(C,\Lambda)\longrightarrow
+H^q(C^{\mathrm{an}},\Lambda)
+\tag{5.1}
+\]">\[
+H^q(C,\Lambda)\longrightarrow
+H^q(C^{\mathrm{an}},\Lambda)
+\tag{5.1}
+\]</span>
+<p>are isomorphisms in all degrees.</p>
+<p><em>Proof in degree zero.</em> Sections of a finite constant set are sections of its trivial finite cover. Full faithfulness in Riemann existence identifies those sections on the two sides and their group operations. In particular a connected algebraic <span class="math" data-tex="\(C\)">\(C\)</span> has connected analytic space: a nontrivial analytic open-and-closed decomposition would give a nonconstant section of the trivial two-sheeted cover. Hence both groups in degree zero are <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and (5.1) is the identity on constants.</p>
+<p><em>Proof in degree one.</em> <span class="math" data-tex="\(H^1(-,\Lambda)\)">\(H^1(-,\Lambda)\)</span> classifies <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-torsors. The algebraic torsors are finite étale covers with a specified simply transitive fibre action. Riemann existence identifies the covers, their actions, and equivariant isomorphisms. The action conditions can be checked on fibres and are preserved. Analytification of a torsor represents precisely the cohomological map (5.1), since the Čech transition cocycle pulls back to the same cocycle. This proves an additive isomorphism, without assuming that higher cohomology is group cohomology of the fundamental group.</p>
+<p><em>Proof in degree two.</em> Kummer is exact both étale locally and analytically locally; a nonvanishing holomorphic function has a local holomorphic <span class="math" data-tex="\(n\)">\(n\)</span>-th root. Naturality gives a diagram of Kummer sequences. On the algebraic curve, Lesson 10 gives <span class="math" data-tex="\(H^2(C,\mathbf G_m)=0\)">\(H^2(C,\mathbf G_m)=0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+H^2(C,\mu_n)=\operatorname{Pic}(C)/n.
+\tag{5.2}
+\]">\[
+H^2(C,\mu_n)=\operatorname{Pic}(C)/n.
+\tag{5.2}
+\]</span>
+<p>On the Riemann surface, the exponential sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathbf Z\longrightarrow\mathcal O_C
+\xrightarrow{\exp(2\pi i\,\cdot)}\mathcal O_C^*
+\longrightarrow1
+\tag{5.3}
+\]">\[
+0\longrightarrow\mathbf Z\longrightarrow\mathcal O_C
+\xrightarrow{\exp(2\pi i\,\cdot)}\mathcal O_C^*
+\longrightarrow1
+\tag{5.3}
+\]</span>
+<p>has <span class="math" data-tex="\(H^2(C^{\mathrm{an}},\mathcal O_C)=0\)">\(H^2(C^{\mathrm{an}},\mathcal O_C)=0\)</span>, by the Dolbeault resolution of complex length one, and <span class="math" data-tex="\(H^3(C^{\mathrm{an}},\mathbf Z)=0\)">\(H^3(C^{\mathrm{an}},\mathbf Z)=0\)</span>, since a compact surface has a two-dimensional CW structure. Its long exact sequence gives <span class="math" data-tex="\(H^2(C^{\mathrm{an}},\mathcal O_C^*)=0\)">\(H^2(C^{\mathrm{an}},\mathcal O_C^*)=0\)</span>. Analytic Kummer therefore gives <span class="math" data-tex="\(H^2(C^{\mathrm{an}},\mu_n)=\operatorname{Pic}(C^{\mathrm{an}})/n\)">\(H^2(C^{\mathrm{an}},\mu_n)=\operatorname{Pic}(C^{\mathrm{an}})/n\)</span>. Curve GAGA identifies the two Picard groups. The map (5.1), transferred along <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, is consequently an isomorphism in degree two. The algebraic groups vanish above two by Lesson 12; the analytic constant groups do by the surface CW calculation. This proves every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The generator is also identified. <span class="math" data-tex="\(\mathcal O_C(x)\)">\(\mathcal O_C(x)\)</span> has degree one; its Kummer class maps to its analytic first Chern class modulo <span class="math" data-tex="\(n\)">\(n\)</span>. Sequence (5.3) computes that class by the winding of a transition function. A positively oriented small circle around the zero of a local parameter has winding <span class="math" data-tex="\(+1\)">\(+1\)</span>. Thus the curve trace of Lesson 17 is integration over the complex orientation, with the same <span class="math" data-tex="\(+1\)">\(+1\)</span> normalization.</p>
+<h2 id="6-finite-cover-resolutions-of-constructible-sheaves">6. Finite-cover resolutions of constructible sheaves</h2>
+<p>We need more than constant coefficients on a curve. The following embedding works in every dimension and will be used twice.</p>
+<p><strong>Lemma 6.1.</strong> For a reduced finite-type complex scheme <span class="math" data-tex="\(X\)">\(X\)</span> and a constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, there is a monomorphism</p>
+<span class="math math-display" data-tex="\[
+F\longrightarrow I=\bigoplus_{a=1}^m (\pi_a)_*\Lambda_{T_a}^{\,r_a},
+\tag{6.1}
+\]">\[
+F\longrightarrow I=\bigoplus_{a=1}^m (\pi_a)_*\Lambda_{T_a}^{\,r_a},
+\tag{6.1}
+\]</span>
+<p>where each <span class="math" data-tex="\(\pi_a:T_a\to X\)">\(\pi_a:T_a\to X\)</span> is finite, <span class="math" data-tex="\(T_a\)">\(T_a\)</span> is normal, and <span class="math" data-tex="\(\dim T_a\leq\dim X\)">\(\dim T_a\leq\dim X\)</span>. The cokernel is constructible. If <span class="math" data-tex="\(X\)">\(X\)</span> is proper of dimension at most one, the <span class="math" data-tex="\(T_a\)">\(T_a\)</span> are disjoint unions of smooth projective curves and points.</p>
+<p><em>Proof.</em> Choose a dense open <span class="math" data-tex="\(U\)">\(U\)</span> which is a disjoint union of normal opens of the irreducible components and on which <span class="math" data-tex="\(F\)">\(F\)</span> is finite locally constant. Write <span class="math" data-tex="\(j:U\to X\)">\(j:U\to X\)</span> and <span class="math" data-tex="\(i:Z=X\setminus U\to X\)">\(i:Z=X\setminus U\to X\)</span>. The map</p>
+<span class="math math-display" data-tex="\[
+F\longrightarrow j_*F|_U\oplus i_*i^*F
+\tag{6.2}
+\]">\[
+F\longrightarrow j_*F|_U\oplus i_*i^*F
+\tag{6.2}
+\]</span>
+<p>is injective: on <span class="math" data-tex="\(U\)">\(U\)</span> its first component is the identity, and at a point of <span class="math" data-tex="\(Z\)">\(Z\)</span> its second component is the identity.</p>
+<p>A finite local system on a connected normal <span class="math" data-tex="\(U\)">\(U\)</span> is trivialized by a finite étale cover <span class="math" data-tex="\(r:V\to U\)">\(r:V\to U\)</span>. Its finite fibre module <span class="math" data-tex="\(M\)">\(M\)</span> embeds in <span class="math" data-tex="\(\Lambda^r\)">\(\Lambda^r\)</span>. To see this even for composite <span class="math" data-tex="\(n\)">\(n\)</span>, decompose <span class="math" data-tex="\(M\)">\(M\)</span> into cyclic groups <span class="math" data-tex="\(\mathbf Z/d\)">\(\mathbf Z/d\)</span>, <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>, and embed <span class="math" data-tex="\(1\)">\(1\)</span> as <span class="math" data-tex="\(n/d\)">\(n/d\)</span> in a separate copy of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Equivalently, <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is a finite injective cogenerator, as proved in Lesson 17. The unit <span class="math" data-tex="\(F|_U\to r_*r^*F|_U\)">\(F|_U\to r_*r^*F|_U\)</span>, followed by this embedding on the trivialized fibres, is injective and lands in <span class="math" data-tex="\(r_*\Lambda_V^r\)">\(r_*\Lambda_V^r\)</span>.</p>
+<p>Normalize each component of <span class="math" data-tex="\(X\)">\(X\)</span> in the finitely many function fields of <span class="math" data-tex="\(V\)">\(V\)</span>. Excellence makes the resulting map <span class="math" data-tex="\(\pi:T\to X\)">\(\pi:T\to X\)</span> finite, and its restriction over <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(V\)">\(V\)</span>. On a normal scheme <span class="math" data-tex="\(T\)">\(T\)</span>, with dense open <span class="math" data-tex="\(j&#x27;:V\to T\)">\(j&#x27;:V\to T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+j&#x27;_*\Lambda_V=\Lambda_T.
+\tag{6.3}
+\]">\[
+j&#x27;_*\Lambda_V=\Lambda_T.
+\tag{6.3}
+\]</span>
+<p>Indeed a strict local normal connected scheme is integral; its intersection with the dense open is nonempty and irreducible, hence connected. Sections of the constant sheaf there are exactly <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. These are the geometric stalks of (6.3). Applying left exact <span class="math" data-tex="\(j_*\)">\(j_*\)</span> to the embedding on <span class="math" data-tex="\(U\)">\(U\)</span> now embeds <span class="math" data-tex="\(j_*F|_U\)">\(j_*F|_U\)</span> in <span class="math" data-tex="\(\pi_*\Lambda_T^r\)">\(\pi_*\Lambda_T^r\)</span>.</p>
+<p>For the boundary term in (6.2), use the same construction by induction on <span class="math" data-tex="\(\dim Z&lt;\dim X\)">\(\dim Z&lt;\dim X\)</span>, beginning with finite sets of points. Composing its finite maps with the closed immersion <span class="math" data-tex="\(i\)">\(i\)</span> gives the remaining terms of (6.1). All terms and the cokernel are constructible by the constructible Serre property and finite pushforward. A proper normal complex curve is smooth and projective; zero-dimensional normal schemes are finite sets of complex points. This proves the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Iterating (6.1) on its cokernel produces an exact right resolution <span class="math" data-tex="\(0\to F\to I^0\to I^1\to\cdots\)">\(0\to F\to I^0\to I^1\to\cdots\)</span>. It need not terminate. Both analytification and finite pushforward are exact; finite pushforward commutes with analytification by proper base change with zero-dimensional fibres. The hypercohomology spectral sequence is</p>
+<span class="math math-display" data-tex="\[
+E_1^{a,b}=H^b(X,I^a)\Longrightarrow H^{a+b}(X,F).
+\tag{6.4}
+\]">\[
+E_1^{a,b}=H^b(X,I^a)\Longrightarrow H^{a+b}(X,F).
+\tag{6.4}
+\]</span>
+<p>It is first quadrant: each fixed total degree involves only finitely many pairs <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Thus if comparison is an isomorphism on every <span class="math" data-tex="\(I^a\)">\(I^a\)</span>, it is an isomorphism on <span class="math" data-tex="\(F\)">\(F\)</span>; there is no claim that an infinite resolution is an acyclic resolution. The same conclusion follows by truncating it beyond the fixed degree and noting the remaining cokernel shifts past that degree.</p>
+<p>For a proper curve, Theorem 5.1, finite pushforward and (6.4) prove comparison for every constructible <span class="math" data-tex="\(F\)">\(F\)</span>. Points contribute only degree zero. This includes singular and reducible curves.</p>
+<h2 id="7-proper-comparison-by-lowering-the-dimension">7. Proper comparison by lowering the dimension</h2>
+<p><strong>Lemma 7.1 (proper modification over an open).</strong> Suppose <span class="math" data-tex="\(h:Y\to X\)">\(h:Y\to X\)</span> is proper and is an isomorphism over <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span>. For <span class="math" data-tex="\(j:U\to X\)">\(j:U\to X\)</span>, <span class="math" data-tex="\(j&#x27;:h^{-1}U\to Y\)">\(j&#x27;:h^{-1}U\to Y\)</span>, and any torsion <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, the unit gives</p>
+<span class="math math-display" data-tex="\[
+j_!G\simeq Rh_*j&#x27;_!G.
+\tag{7.1}
+\]">\[
+j_!G\simeq Rh_*j&#x27;_!G.
+\tag{7.1}
+\]</span>
+<p>The same statement holds analytically, and comparison commutes with these identifications.</p>
+<p><em>Proof.</em> At a geometric point of <span class="math" data-tex="\(U\)">\(U\)</span>, the proper fibre is a single point and the map is the identity on its coefficient. At a point outside <span class="math" data-tex="\(U\)">\(U\)</span>, the restriction of <span class="math" data-tex="\(j&#x27;_!G\)">\(j&#x27;_!G\)</span> to the entire fibre is zero. Algebraic proper base change therefore makes (7.1) an isomorphism on every stalk. Classical proper base change gives the same conclusion analytically. Both maps are units, so their comparison squares commute by Section 3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2.</strong> Proper comparison (3.1) is an isomorphism for every proper finite-type complex map and every constructible torsion sheaf.</p>
+<p><em>Proof.</em> Induct on a bound <span class="math" data-tex="\(d\)">\(d\)</span> for the dimensions of the proper fibres. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> the map is finite, and its stalk is a finite direct sum over points; this proves the assertion, including the vanishing of higher images. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, proper base change on both sides reduces the assertion at each analytic point of the base to a proper complex curve or a finite set of points. Section 6 proves that case.</p>
+<p>Assume <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span> and the result for smaller relative dimensions. Again proper base change reduces us to a proper scheme <span class="math" data-tex="\(X/\mathbf C\)">\(X/\mathbf C\)</span> of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>. Reduce <span class="math" data-tex="\(X\)">\(X\)</span> without changing its étale topos or underlying analytic topology. Zero-dimensional components separated from the others can be handled separately; on the remaining positive-dimensional components choose a rational function nonconstant on each component. On a dense open <span class="math" data-tex="\(U\)">\(U\)</span>, where the components are disjoint, it defines <span class="math" data-tex="\(\varphi:U\to\mathbf A^1\)">\(\varphi:U\to\mathbf A^1\)</span>. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be the reduced closure of its graph in <span class="math" data-tex="\(X\times\mathbf P^1\)">\(X\times\mathbf P^1\)</span>. There are proper maps</p>
+<span class="math math-display" data-tex="\[
+Y\xrightarrow{a}\mathbf P^1\xrightarrow{b}\operatorname{Spec}\mathbf C,
+\qquad h:Y\to X,
+\qquad h^{-1}U\simeq U.
+\tag{7.2}
+\]">\[
+Y\xrightarrow{a}\mathbf P^1\xrightarrow{b}\operatorname{Spec}\mathbf C,
+\qquad h:Y\to X,
+\qquad h^{-1}U\simeq U.
+\tag{7.2}
+\]</span>
+<p>Every irreducible component of <span class="math" data-tex="\(Y\)">\(Y\)</span> dominates <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, since the function was nonconstant. Its fibres are proper closed subsets of that component, so have dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. The fibres of <span class="math" data-tex="\(b\)">\(b\)</span> have dimension one, also less than <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Put <span class="math" data-tex="\(G=F|_U\)">\(G=F|_U\)</span> and <span class="math" data-tex="\(E=j&#x27;_!G\)">\(E=j&#x27;_!G\)</span>. The induction hypothesis compares <span class="math" data-tex="\(Ra_*E\)">\(Ra_*E\)</span> with <span class="math" data-tex="\(Ra^{\mathrm{an}}_*E^{\mathrm{an}}\)">\(Ra^{\mathrm{an}}_*E^{\mathrm{an}}\)</span>. Its cohomology sheaves are constructible by proper constructibility and vanish above the uniform fibre bound. The already known comparison for <span class="math" data-tex="\(b\)">\(b\)</span>, applied to these sheaves and then their finite truncations, compares the two Leray spectral sequences. Their finite filtrations in each total degree give</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(Y,E)\simeq
+R\Gamma(Y^{\mathrm{an}},E^{\mathrm{an}}).
+\tag{7.3}
+\]">\[
+R\Gamma(Y,E)\simeq
+R\Gamma(Y^{\mathrm{an}},E^{\mathrm{an}}).
+\tag{7.3}
+\]</span>
+<p>Lemma 7.1 transfers (7.3) to <span class="math" data-tex="\(R\Gamma(X,j_!G)\)">\(R\Gamma(X,j_!G)\)</span>. For the closed complement <span class="math" data-tex="\(Z=X\setminus U\)">\(Z=X\setminus U\)</span>, every component has dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. The induction hypothesis compares <span class="math" data-tex="\(R\Gamma(Z,i^*F)\)">\(R\Gamma(Z,i^*F)\)</span>. The exact localization sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow j_!G\longrightarrow F
+\longrightarrow i_*i^*F\longrightarrow0
+\tag{7.4}
+\]">\[
+0\longrightarrow j_!G\longrightarrow F
+\longrightarrow i_*i^*F\longrightarrow0
+\tag{7.4}
+\]</span>
+<p>and its analytic counterpart now compare <span class="math" data-tex="\(R\Gamma(X,F)\)">\(R\Gamma(X,F)\)</span>. Finally return to the original proper map: at each analytic point the comparison stalk is this comparison on its complex fibre. Stalks detect the desired isomorphism. This completes the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice the two dimensions in this argument. It lowers <em>proper fibre dimension</em> through <span class="math" data-tex="\(a\)">\(a\)</span>, and lowers <em>support dimension</em> on the boundary <span class="math" data-tex="\(Z\)">\(Z\)</span>. Merely choosing a curve inside <span class="math" data-tex="\(X\)">\(X\)</span> would accomplish neither reduction.</p>
+<h2 id="8-arbitrary-torsion-in-the-proper-theorem">8. Arbitrary torsion in the proper theorem</h2>
+<p><strong>Theorem 8.1.</strong> For proper <span class="math" data-tex="\(p:X\to S\)">\(p:X\to S\)</span> and an arbitrary torsion sheaf <span class="math" data-tex="\(F\)">\(F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\epsilon_S^*Rp_*F\simeq Rp^{\mathrm{an}}_*F^{\mathrm{an}}.
+\tag{8.1}
+\]">\[
+\epsilon_S^*Rp_*F\simeq Rp^{\mathrm{an}}_*F^{\mathrm{an}}.
+\tag{8.1}
+\]</span>
+<p><em>Proof.</em> On the Noetherian étale site of <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is a filtered colimit of constructible finite torsion sheaves, using their finite presentations as in Lesson 11. One may first write <span class="math" data-tex="\(F=\varinjlim_nF[n]\)">\(F=\varinjlim_nF[n]\)</span>, with divisibility indexing the annihilators, then use the finite presentations for each <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-sheaf. The coherent-site continuity theorem makes <span class="math" data-tex="\(R^qp_*\)">\(R^qp_*\)</span> commute with these filtered colimits. Inverse image and analytification commute with colimits. On the analytic side classical proper base change computes each stalk on the compact proper fibre, and Lemma 4.1 proves its continuity. Hence (8.1) is the filtered colimit in each degree of the isomorphisms in Theorem 7.2. Since the comparison maps themselves are natural in <span class="math" data-tex="\(F\)">\(F\)</span>, the resulting isomorphism is the original map (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This passage does not replace an arbitrary torsion sheaf by one finite local system or assume a common integer kills it. Properness supplies the compactness on the analytic side that makes the passage legitimate.</p>
+<h2 id="9-artin-comparison-with-proper-support">9. Artin comparison with proper support</h2>
+<p><strong>Theorem 9.1.</strong> For separated finite-type <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, arbitrary torsion <span class="math" data-tex="\(F\)">\(F\)</span>, and every <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, the canonical map is an isomorphism:</p>
+<span class="math math-display" data-tex="\[
+(R^qf_!F)^{\mathrm{an}}
+\xrightarrow{\ \sim\ }
+R^qf^{\mathrm{an}}_!F^{\mathrm{an}}.
+\tag{9.1}
+\]">\[
+(R^qf_!F)^{\mathrm{an}}
+\xrightarrow{\ \sim\ }
+R^qf^{\mathrm{an}}_!F^{\mathrm{an}}.
+\tag{9.1}
+\]</span>
+<p>In particular, for a separated finite-type complex scheme,</p>
+<span class="math math-display" data-tex="\[
+H^q_c(X,F)\simeq H^q_c(X^{\mathrm{an}},F^{\mathrm{an}}).
+\tag{9.2}
+\]">\[
+H^q_c(X,F)\simeq H^q_c(X^{\mathrm{an}},F^{\mathrm{an}}).
+\tag{9.2}
+\]</span>
+<p><em>Proof.</em> Use the compactification in (3.2). Theorem 8.1 applies to the arbitrary torsion sheaf <span class="math" data-tex="\(j_!F\)">\(j_!F\)</span> on <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span>, and Lemma 2.1 identifies its analytification with <span class="math" data-tex="\(j^{\mathrm{an}}_!F^{\mathrm{an}}\)">\(j^{\mathrm{an}}_!F^{\mathrm{an}}\)</span>. This is exactly (3.2), hence is an isomorphism. Taking cohomology sheaves proves (9.1); taking the base to be a point proves (9.2). If <span class="math" data-tex="\(S\)">\(S\)</span> is not separated, work over its affine open charts. The inverse image <span class="math" data-tex="\(X_V\)">\(X_V\)</span> over such a chart is separated over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, so the analytic proper-support argument applies there. The canonical maps agree on overlaps by naturality, and their isomorphisms glue. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For bounded constructible complexes the same theorem follows by finite truncations. Composition and all base-change diagrams retain the compatibilities of Section 3. The proof has used precisely the projective-curve comparison, finite-cover coefficient resolutions, proper fibre calculations, the graph reduction and continuity. It has not used an ordinary comparison theorem or a resolution of higher-dimensional singularities.</p>
+<h2 id="10-cup-products-point-orientations-and-smooth-ordinary-comparison">10. Cup products, point orientations and smooth ordinary comparison</h2>
+<p>The cup-product compatibility was proved in Lemma 3.1 before any isomorphism assertion. We now check the trace, which is an orientation assertion rather than a formal consequence of equal group sizes.</p>
+<p><strong>Lemma 10.1 (orientation).</strong> On a smooth complex scheme of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>, comparison sends the compact cycle class of a complex point to its positively oriented topological point class. Consequently it identifies the smooth compact trace with integration over the complex orientation.</p>
+<p><em>Proof.</em> First consider a smooth divisor with local equation <span class="math" data-tex="\(t\)">\(t\)</span>. The algebraic Thom class is the boundary of the Kummer class of <span class="math" data-tex="\(t\)">\(t\)</span>, by the divisor normalization in Lesson 18, Lemma 12.2. Analytically, continuation of a chosen <span class="math" data-tex="\(n\)">\(n\)</span>-th root of <span class="math" data-tex="\(t\)">\(t\)</span> around a positively oriented transverse circle multiplies it by <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. Its Kummer class is therefore the positive generator of that circle's <span class="math" data-tex="\(H^1(-,\Lambda)\)">\(H^1(-,\Lambda)\)</span>. The connecting map for the oriented disk and punctured disk sends this generator to the positive Thom class in <span class="math" data-tex="\(H^2_{\{0\}}(-,\Lambda(1))\)">\(H^2_{\{0\}}(-,\Lambda(1))\)</span>. Naturality of localization and Kummer makes the two boundary constructions commute with comparison.</p>
+<p>Near a smooth point choose étale coordinates <span class="math" data-tex="\(t_1,\ldots,t_d\)">\(t_1,\ldots,t_d\)</span>. Analytically these are local biholomorphic coordinates, preserving the complex orientation. The point Gysin class is the iterated Gysin class, or product of the coordinate-divisor Thom classes, by Gysin transitivity in Lesson 18. The preceding one-coordinate computation compares each factor. Products of their real two-dimensional positive orientations give the complex <span class="math" data-tex="\(2d\)">\(2d\)</span>-orientation; the shifts are even and contribute no exchange sign. Excision identifies this local class with the global point class, both with ordinary support and after mapping to compact support.</p>
+<p>On a connected smooth <span class="math" data-tex="\(X\)">\(X\)</span>, Lesson 18 identifies <span class="math" data-tex="\(H^{2d}_c(X,\Lambda(d))\)">\(H^{2d}_c(X,\Lambda(d))\)</span> with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, sending the point class to <span class="math" data-tex="\(1\)">\(1\)</span>. Classical manifold duality identifies <span class="math" data-tex="\(H^{2d}_c(X^{\mathrm{an}},\Lambda)\)">\(H^{2d}_c(X^{\mathrm{an}},\Lambda)\)</span> with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, also sending the point class to <span class="math" data-tex="\(1\)">\(1\)</span>. Compact comparison, already proved, therefore identifies the two trace homomorphisms. For disconnected schemes take the sum over their finitely many connected components. For a relative smooth <span class="math" data-tex="\(f\)">\(f\)</span>, the same argument on each complex fibre, together with proper-support base change, identifies the relative maps <span class="math" data-tex="\(R^{2d}f_!\Lambda(d)\to\Lambda_S\)">\(R^{2d}f_!\Lambda(d)\to\Lambda_S\)</span> on every analytic stalk. This proves relative trace compatibility as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 10.2 (smooth constant ordinary comparison).</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is smooth, separated and finite type over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+H^r(X,\Lambda)\xrightarrow{\sim}
+H^r(X^{\mathrm{an}},\Lambda)
+\tag{10.1}
+\]">\[
+H^r(X,\Lambda)\xrightarrow{\sim}
+H^r(X^{\mathrm{an}},\Lambda)
+\tag{10.1}
+\]</span>
+<p>for every <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><em>Proof.</em> Work on each pure-dimensional component, of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Étale duality in Lesson 18 identifies <span class="math" data-tex="\(H^r(X,\Lambda)\)">\(H^r(X,\Lambda)\)</span> with the <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dual of <span class="math" data-tex="\(H^{2d-r}_c(X,\Lambda(d))\)">\(H^{2d-r}_c(X,\Lambda(d))\)</span>, by the compact-first trace pairing. The analogous classical statement holds on the oriented manifold <span class="math" data-tex="\(X^{\mathrm{an}}\)">\(X^{\mathrm{an}}\)</span>. Its cap-product form is <span class="math" data-tex="\(H^{2d-r}_c(X^{\mathrm{an}},\Lambda)\simeq H_r(X^{\mathrm{an}},\Lambda)\)">\(H^{2d-r}_c(X^{\mathrm{an}},\Lambda)\simeq H_r(X^{\mathrm{an}},\Lambda)\)</span>. The singular chain complex is free over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(-,\Lambda)\)">\(\operatorname{Hom}_\Lambda(-,\Lambda)\)</span> is exact because <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is self-injective. Thus ordinary cohomology is the dual of that homology, and cup evaluation gives precisely the stated classical pairing. The groups are finite: compact comparison identifies compact groups with the finite algebraic ones, and these dualities make the ordinary groups finite too.</p>
+<p>The compact comparison for <span class="math" data-tex="\(\Lambda(d)\)">\(\Lambda(d)\)</span> is an isomorphism. Lemma 3.1 and Lemma 10.1 give a commutative pairing square: evaluating an ordinary class against a compact class, then tracing, agrees on both sides. Hence the ordinary map (10.1) is the dual of the inverse compact map. It is an isomorphism. This proves the assertion without using ordinary comparison to justify the trace or either pairing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Classical duality here is a topological prerequisite, not an étale comparison theorem in disguise. Hatcher's Theorem 3.35 gives its noncompact cap-product form with any coefficient ring. The exact <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dual argument just given is essential for composite <span class="math" data-tex="\(n\)">\(n\)</span>; replacing it with vector-space duality would lose that generality.</p>
+<h2 id="11-ordinary-comparison-for-all-constructible-coefficients">11. Ordinary comparison for all constructible coefficients</h2>
+<p><strong>Theorem 11.1.</strong> For separated finite-type complex <span class="math" data-tex="\(X\)">\(X\)</span>, constructible torsion <span class="math" data-tex="\(F\)">\(F\)</span>, and every <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^q(X,F)\xrightarrow{\sim}
+H^q(X^{\mathrm{an}},F^{\mathrm{an}}).
+\tag{11.1}
+\]">\[
+H^q(X,F)\xrightarrow{\sim}
+H^q(X^{\mathrm{an}},F^{\mathrm{an}}).
+\tag{11.1}
+\]</span>
+<p>The same holds for bounded constructible complexes.</p>
+<p><em>Proof.</em> We induct on <span class="math" data-tex="\(d=\dim X\)">\(d=\dim X\)</span>, allowing all finite annihilators at each stage. Dimension zero is a finite set of points after reduction, so is immediate. Nilpotents can be removed without changing either cohomology theory.</p>
+<p>First prove the assertion for <span class="math" data-tex="\(\Lambda_X\)">\(\Lambda_X\)</span> on every reduced <span class="math" data-tex="\(X\)">\(X\)</span> of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>. By the resolution prerequisite in Section 1 there is a proper <span class="math" data-tex="\(p:Y\to X\)">\(p:Y\to X\)</span>, with <span class="math" data-tex="\(Y\)">\(Y\)</span> smooth, which is an isomorphism over a dense open <span class="math" data-tex="\(U\)">\(U\)</span> meeting every component. Put</p>
+<span class="math math-display" data-tex="\[
+C=\operatorname{Cone}(\Lambda_X\longrightarrow Rp_*\Lambda_Y).
+\tag{11.2}
+\]">\[
+C=\operatorname{Cone}(\Lambda_X\longrightarrow Rp_*\Lambda_Y).
+\tag{11.2}
+\]</span>
+<p>Proper constructibility and the finite fibre cohomological bound make <span class="math" data-tex="\(C\)">\(C\)</span> a bounded constructible complex. Its restriction to <span class="math" data-tex="\(U\)">\(U\)</span> is zero, since the displayed map is the identity there. Thus it is supported on <span class="math" data-tex="\(Z=X\setminus U\)">\(Z=X\setminus U\)</span>, of dimension less than <span class="math" data-tex="\(d\)">\(d\)</span>. If <span class="math" data-tex="\(i:Z\to X\)">\(i:Z\to X\)</span>, the unit <span class="math" data-tex="\(C\to i_*i^*C\)">\(C\to i_*i^*C\)</span> is an isomorphism on stalks; hence the induction hypothesis, extended by finite truncations, compares its ordinary cohomology.</p>
+<p>Proper comparison identifies <span class="math" data-tex="\(C^{\mathrm{an}}\)">\(C^{\mathrm{an}}\)</span> with the cone of <span class="math" data-tex="\(\Lambda_{X^{\mathrm{an}}}\to Rp^{\mathrm{an}}_*\Lambda_{Y^{\mathrm{an}}}\)">\(\Lambda_{X^{\mathrm{an}}}\to Rp^{\mathrm{an}}_*\Lambda_{Y^{\mathrm{an}}}\)</span>. Smooth ordinary comparison, Theorem 10.2, compares <span class="math" data-tex="\(R\Gamma(Y,\Lambda)\)">\(R\Gamma(Y,\Lambda)\)</span>; the derived identity <span class="math" data-tex="\(R\Gamma(X,Rp_*\Lambda)=R\Gamma(Y,\Lambda)\)">\(R\Gamma(X,Rp_*\Lambda)=R\Gamma(Y,\Lambda)\)</span> and its analytic version are natural. The map between the two triangles defined by (11.2) now has isomorphisms on the second and third terms. The long exact sequences prove that it is an isomorphism on <span class="math" data-tex="\(R\Gamma(X,\Lambda)\)">\(R\Gamma(X,\Lambda)\)</span> as well. This proves constant comparison in dimension <span class="math" data-tex="\(d\)">\(d\)</span>, for every <span class="math" data-tex="\(n\)">\(n\)</span>, without requiring <span class="math" data-tex="\(X\)">\(X\)</span> to be proper or smooth.</p>
+<p>Now take an arbitrary constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on such an <span class="math" data-tex="\(X\)">\(X\)</span>. Lemma 6.1 provides its right resolution by finite pushforwards of constant sheaves on normal finite-type schemes <span class="math" data-tex="\(T_a\)">\(T_a\)</span> of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>. Constant comparison on each <span class="math" data-tex="\(T_a\)">\(T_a\)</span> has just been proved. Finite pushforward is exact and compares with its analytic counterpart, so the ordinary cohomology of every term <span class="math" data-tex="\(I^a\)">\(I^a\)</span> compares. The first-quadrant spectral sequences (6.4) prove (11.1). This also proves the induction claim for the next dimension. Every constructible torsion sheaf has some annihilator <span class="math" data-tex="\(n\)">\(n\)</span>, so nothing is lost by the coefficient notation. Bounded constructible complexes follow by their finite cohomology-sheaf truncation triangles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This identifies the substantive extra work for ordinary comparison: smooth duality, point orientation, and a proper resolution whose error cone lives on a smaller-dimensional closed set. Proper base change alone does not compute stalks of <span class="math" data-tex="\(Rj_*\)">\(Rj_*\)</span> for a nonproper open immersion.</p>
+<h2 id="12-why-ordinary-comparison-needs-constructibility">12. Why ordinary comparison needs constructibility</h2>
+<p>Let <span class="math" data-tex="\(X=\mathbf A^1_{\mathbf C}\)">\(X=\mathbf A^1_{\mathbf C}\)</span>, let <span class="math" data-tex="\(i_m:\{m\}\to X\)">\(i_m:\{m\}\to X\)</span> for <span class="math" data-tex="\(m\in\mathbf Z\)">\(m\in\mathbf Z\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+F=\bigoplus_{m\in\mathbf Z}(i_m)_*\Lambda.
+\tag{12.1}
+\]">\[
+F=\bigoplus_{m\in\mathbf Z}(i_m)_*\Lambda.
+\tag{12.1}
+\]</span>
+<p>This is a torsion sheaf annihilated by <span class="math" data-tex="\(n\)">\(n\)</span>, but is not constructible. The sum is the filtered colimit of finite sums. On the quasi-compact Noetherian étale site, global sections commute with that filtered colimit, by Lesson 11. Consequently</p>
+<span class="math math-display" data-tex="\[
+H^0(X,F)=\bigoplus_{m\in\mathbf Z}\Lambda.
+\tag{12.2}
+\]">\[
+H^0(X,F)=\bigoplus_{m\in\mathbf Z}\Lambda.
+\tag{12.2}
+\]</span>
+<p>Analytification preserves the sum. In the complex plane the integers form a closed discrete subset, and every compact set meets only finitely many of them. Any family <span class="math" data-tex="\((a_m)_{m\in\mathbf Z}\)">\((a_m)_{m\in\mathbf Z}\)</span> is locally a section of a finite sum of the skyscrapers: near any point choose a neighbourhood meeting only finitely many integers. These sections agree on overlaps and glue. Conversely a section is determined by these stalk values. Thus</p>
+<span class="math math-display" data-tex="\[
+H^0(\mathbf C,F^{\mathrm{an}})=\prod_{m\in\mathbf Z}\Lambda.
+\tag{12.3}
+\]">\[
+H^0(\mathbf C,F^{\mathrm{an}})=\prod_{m\in\mathbf Z}\Lambda.
+\tag{12.3}
+\]</span>
+<p>The canonical ordinary comparison is the inclusion of the direct sum in the product, and is not surjective. A family with value <span class="math" data-tex="\(1\)">\(1\)</span> at every integer exhibits the failure. Compactly supported sections on either side have finite support, so both <span class="math" data-tex="\(H^0_c\)">\(H^0_c\)</span> groups are the direct sum and their comparison is an isomorphism, as Theorem 9.1 requires.</p>
+<p>The analytic direct sum of skyscraper sheaves has product global sections here because infinite families are locally finite. Confusing a sheaf direct sum with its presheaf of finite-support global sections would erase the example.</p>
+<h2 id="13-projective-spaces-an-elliptic-curve-and-the-punctured-line">13. Projective spaces, an elliptic curve and the punctured line</h2>
+<p><strong>Example 13.1 (projective space).</strong> The analytic space of <span class="math" data-tex="\(\mathbf P^N_{\mathbf C}\)">\(\mathbf P^N_{\mathbf C}\)</span> is <span class="math" data-tex="\(\mathbf{CP}^N\)">\(\mathbf{CP}^N\)</span>. Its standard filtration has one cell in each dimension <span class="math" data-tex="\(0,2,\ldots,2N\)">\(0,2,\ldots,2N\)</span> and no odd-dimensional cells; cellular differentials therefore vanish. On the algebraic side Lesson 18, Section 14, computes the same groups and their hyperplane generators. With <span class="math" data-tex="\(h=c_1^{(n)}(\mathcal O(1))\)">\(h=c_1^{(n)}(\mathcal O(1))\)</span>, comparison identifies</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_i H^{2i}(\mathbf P^N,\Lambda(i))
+\simeq\Lambda[h]/(h^{N+1}),\qquad \deg h=2,
+\tag{13.1}
+\]">\[
+\bigoplus_i H^{2i}(\mathbf P^N,\Lambda(i))
+\simeq\Lambda[h]/(h^{N+1}),\qquad \deg h=2,
+\tag{13.1}
+\]</span>
+<p>with the corresponding singular cohomology ring. The algebraic hyperplane Gysin class is its Kummer Chern class; its analytic class is the usual positive hyperplane Chern class. Cup compatibility sends <span class="math" data-tex="\(h^i\)">\(h^i\)</span> to the cellular generator normalized by evaluation on <span class="math" data-tex="\(\mathbf{CP}^i\)">\(\mathbf{CP}^i\)</span>. In particular <span class="math" data-tex="\(\operatorname{Tr}(h^N)=1\)">\(\operatorname{Tr}(h^N)=1\)</span>. If twists are suppressed using <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, each even group is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>; without that choice the untwisted algebraic group is canonically <span class="math" data-tex="\(\Lambda(-i)\)">\(\Lambda(-i)\)</span>.</p>
+<p><strong>Example 13.2 (elliptic curve).</strong> For an elliptic curve <span class="math" data-tex="\(E\)">\(E\)</span>, its analytic space is a compact oriented surface. Lesson 17 gives étale degree-one rank two, and Theorem 5.1 compares that group; the surface formula therefore makes its topological genus one. A CW structure has one vertex, two one-cells <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and one two-cell attached by the commutator. Both cellular differentials are zero. Therefore</p>
+<span class="math math-display" data-tex="\[
+H^0(E,\Lambda)=\Lambda,\qquad
+H^1(E,\Lambda)=\Lambda^2,\qquad
+H^2(E,\Lambda)=\Lambda(-1).
+\tag{13.2}
+\]">\[
+H^0(E,\Lambda)=\Lambda,\qquad
+H^1(E,\Lambda)=\Lambda^2,\qquad
+H^2(E,\Lambda)=\Lambda(-1).
+\tag{13.2}
+\]</span>
+<p>Choose the positively oriented basis with intersection <span class="math" data-tex="\(a\cdot b=1\)">\(a\cdot b=1\)</span>. Its dual classes <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> satisfy <span class="math" data-tex="\(\operatorname{Tr}(\alpha\cup\beta)=1\)">\(\operatorname{Tr}(\alpha\cup\beta)=1\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(\beta\cup\alpha)=-1\)">\(\operatorname{Tr}(\beta\cup\alpha)=-1\)</span>, and <span class="math" data-tex="\(\alpha^2=\beta^2=0\)">\(\alpha^2=\beta^2=0\)</span>. The last assertion holds even when <span class="math" data-tex="\(2\mid n\)">\(2\mid n\)</span>: these classes are reductions of integral degree-one classes with square zero, rather than a deduction from skew symmetry alone. Comparison transports this pairing to étale cohomology. Riemann existence also identifies <span class="math" data-tex="\(\pi_1^{\mathrm{\acute et}}(E)\)">\(\pi_1^{\mathrm{\acute et}}(E)\)</span> with the profinite completion of the surface group <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span>. This calculation is compatible with the Jacobian description in Lesson 17; it does not require another proof of its separately stated Weil-pairing comparison.</p>
+<p><strong>Example 13.3 (<span class="math" data-tex="\(\mathbf C^*\)">\(\mathbf C^*\)</span>).</strong> The analytic punctured line deformation retracts onto the unit circle, with positive counterclockwise generator <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(\pi_1^{\mathrm{top}}=\mathbf Z\)">\(\pi_1^{\mathrm{top}}=\mathbf Z\)</span>. Riemann existence and the pointed fibre functors give</p>
+<span class="math math-display" data-tex="\[
+\pi_1^{\mathrm{\acute et}}(\mathbf G_m,1)
+\simeq\widehat{\mathbf Z}.
+\tag{13.3}
+\]">\[
+\pi_1^{\mathrm{\acute et}}(\mathbf G_m,1)
+\simeq\widehat{\mathbf Z}.
+\tag{13.3}
+\]</span>
+<p>Indeed finite covers of the circle correspond to finite sets with a permutation, equivalently finite continuous <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>-sets; equivalence of their fibre functors identifies the automorphism groups. The connected cover <span class="math" data-tex="\(z\mapsto z^r\)">\(z\mapsto z^r\)</span> corresponds to the subgroup <span class="math" data-tex="\(r\mathbf Z\)">\(r\mathbf Z\)</span>, whose closures form a cofinal family of open subgroups. The Kummer class of <span class="math" data-tex="\(t\)">\(t\)</span> in <span class="math" data-tex="\(H^1(\mathbf G_m,\mu_n)\)">\(H^1(\mathbf G_m,\mu_n)\)</span> sends <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> to <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, since continuation of <span class="math" data-tex="\(t^{1/n}\)">\(t^{1/n}\)</span> once around the circle multiplies it by that root. Thus the comparison fixes both the generator and its orientation. The nonzero ordinary constant groups are <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span>, <span class="math" data-tex="\(H^1=\Lambda(-1)\)">\(H^1=\Lambda(-1)\)</span>; the compact groups are <span class="math" data-tex="\(H^1_c=\Lambda\)">\(H^1_c=\Lambda\)</span>, <span class="math" data-tex="\(H^2_c=\Lambda(-1)\)">\(H^2_c=\Lambda(-1)\)</span>, in accordance with curve duality. These two different degree-one orientations should not be silently conflated.</p>
+<h2 id="14-betti-numbers-and-the-coefficient-limit">14. Betti numbers and the coefficient limit</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be smooth projective over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> a prime. Write</p>
+<span class="math math-display" data-tex="\[
+b_q(X^{\mathrm{an}})=\dim_{\mathbf Q}H^q(X^{\mathrm{an}},\mathbf Q).
+\]">\[
+b_q(X^{\mathrm{an}})=\dim_{\mathbf Q}H^q(X^{\mathrm{an}},\mathbf Q).
+\]</span>
+<p>Its compact analytic space has a finite CW model. Let <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> be its bounded finite free integral cellular cochain complex. For every <span class="math" data-tex="\(m\)">\(m\)</span>, comparison naturally identifies the algebraic <span class="math" data-tex="\(\mathbf Z/\ell^m\)">\(\mathbf Z/\ell^m\)</span>-cohomology with <span class="math" data-tex="\(H^q(C^\bullet\otimes\mathbf Z/\ell^m)\)">\(H^q(C^\bullet\otimes\mathbf Z/\ell^m)\)</span>; these identifications commute with reduction of coefficients.</p>
+<p>Define the integral étale coefficient-limit complex as <span class="math" data-tex="\(R\varprojlim_m R\Gamma(X,\mathbf Z/\ell^m)\)">\(R\varprojlim_m R\Gamma(X,\mathbf Z/\ell^m)\)</span>. Each finite-coefficient cohomology group is finite, so its tower is Mittag–Leffler: for a fixed target the descending images stabilize. Its <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> vanishes, and the Milnor sequence identifies the limit cohomology with the inverse limit of the cohomology groups. On the cellular side the degreewise reduction maps are surjective, so derived inverse limit is the ordinary complex <span class="math" data-tex="\(C^\bullet\otimes\mathbf Z_\ell\)">\(C^\bullet\otimes\mathbf Z_\ell\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+H^q_{\mathrm{\acute et}}(X,\mathbf Z_\ell)
+\simeq H^q(C^\bullet\otimes\mathbf Z_\ell).
+\tag{14.1}
+\]">\[
+H^q_{\mathrm{\acute et}}(X,\mathbf Z_\ell)
+\simeq H^q(C^\bullet\otimes\mathbf Z_\ell).
+\tag{14.1}
+\]</span>
+<p>Tensoring with the flat localization <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H^q_{\mathrm{\acute et}}(X,\mathbf Q_\ell)
+\simeq H^q(X^{\mathrm{an}},\mathbf Q)\otimes_{\mathbf Q}\mathbf Q_\ell,
+\qquad
+\dim_{\mathbf Q_\ell}H^q_{\mathrm{\acute et}}(X,\mathbf Q_\ell)=b_q.
+\tag{14.2}
+\]">\[
+H^q_{\mathrm{\acute et}}(X,\mathbf Q_\ell)
+\simeq H^q(X^{\mathrm{an}},\mathbf Q)\otimes_{\mathbf Q}\mathbf Q_\ell,
+\qquad
+\dim_{\mathbf Q_\ell}H^q_{\mathrm{\acute et}}(X,\mathbf Q_\ell)=b_q.
+\tag{14.2}
+\]</span>
+<p>The finite complex justifies each passage; this is not an application of the torsion theorem directly to the nontorsion sheaf <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>. Nor does (14.2) say that <span class="math" data-tex="\(\dim_{\mathbf F_\ell}H^q(X,\mathbf F_\ell)=b_q\)">\(\dim_{\mathbf F_\ell}H^q(X,\mathbf F_\ell)=b_q\)</span> always. The integral universal coefficient sequence has contributions from <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-torsion in integral cohomology in degrees <span class="math" data-tex="\(q\)">\(q\)</span> and <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. The rational Betti number is the rank, with those contributions removed.</p>
+<h2 id="15-exercises">15. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Compute both cohomologies of <span class="math" data-tex="\(\mathbf P^1_{\mathbf C}\)">\(\mathbf P^1_{\mathbf C}\)</span> with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-coefficients, and identify the canonical comparison in every degree, including the sign of its top generator.</li>
+<li><strong>Medium.</strong> Prove equality of étale and topological Betti numbers for a smooth projective complex variety. Explain why finite-coefficient dimensions need not equal rational Betti numbers.</li>
+<li><strong>Medium.</strong> Prove that ordinary and compact comparison preserve cup products and that the relative smooth trace corresponds to integration over the complex-oriented fibres. Specify the coefficient twists and the sign when two classes are exchanged.</li>
+<li><strong>Hard.</strong> Starting with the permitted Riemann existence and projective-curve Picard GAGA inputs, carry out the reduction of the arbitrary-torsion proper-support comparison to smooth projective curves. Identify every dimension induction, coefficient resolution and limit argument. Then give the extra argument for ordinary constructible comparison and identify its additional geometric prerequisite.</li>
+</ol>
+<h2 id="16-complete-solutions">16. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Algebraically, Kummer, <span class="math" data-tex="\(\operatorname{Pic}(\mathbf P^1)=\mathbf Z\)">\(\operatorname{Pic}(\mathbf P^1)=\mathbf Z\)</span>, and the curve computation give <span class="math" data-tex="\(H^0=\Lambda\)">\(H^0=\Lambda\)</span>, <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>, <span class="math" data-tex="\(H^2=\Lambda(-1)\)">\(H^2=\Lambda(-1)\)</span>, with all higher groups zero. Analytically <span class="math" data-tex="\(\mathbf{CP}^1\simeq S^2\)">\(\mathbf{CP}^1\simeq S^2\)</span> has a vertex and an oriented two-cell, so the same groups are obtained after choosing <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. The degree-zero comparison is the identity on constants. Degree one and all degrees above two compare zero groups. In degree two, naturality of Kummer and curve GAGA send <span class="math" data-tex="\(c_1^{(n)}(\mathcal O(1))\)">\(c_1^{(n)}(\mathcal O(1))\)</span> to its analytic Chern class modulo <span class="math" data-tex="\(n\)">\(n\)</span>. A section of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> has one simple zero; its transition function winds positively once, so that class evaluates to <span class="math" data-tex="\(+1\)">\(+1\)</span> on the complex-oriented sphere. Both traces are therefore <span class="math" data-tex="\(+1\)">\(+1\)</span>. Without the chosen root this is a comparison of the canonically twisted groups, not a choice-free identification of <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> with <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>.</p>
+<p><strong>Solution 2.</strong> Choose a finite free integral cellular cochain complex <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> for the compact analytic variety. For every <span class="math" data-tex="\(m\)">\(m\)</span>, Theorem 11.1 gives a natural, coefficient-compatible isomorphism <span class="math" data-tex="\(H^q_{\mathrm{\acute et}}(X,\mathbf Z/\ell^m)\simeq H^q(C^\bullet/\ell^m)\)">\(H^q_{\mathrm{\acute et}}(X,\mathbf Z/\ell^m)\simeq H^q(C^\bullet/\ell^m)\)</span>. The finite cohomology towers satisfy Mittag–Leffler, so the Milnor <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> term is zero. The degreewise surjective cellular tower has derived limit <span class="math" data-tex="\(C^\bullet\otimes\mathbf Z_\ell\)">\(C^\bullet\otimes\mathbf Z_\ell\)</span>. This proves (14.1). Flat tensoring with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> commutes with its cohomology; since the integral complex is finite free, the resulting group is <span class="math" data-tex="\(H^q(C^\bullet\otimes\mathbf Q)\otimes_{\mathbf Q}\mathbf Q_\ell\)">\(H^q(C^\bullet\otimes\mathbf Q)\otimes_{\mathbf Q}\mathbf Q_\ell\)</span>. Its dimension is <span class="math" data-tex="\(b_q\)">\(b_q\)</span>, proving the assertion. In contrast, the exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to H^q(X^{\mathrm{an}},\mathbf Z)\otimes\mathbf F_\ell
+\to H^q(X^{\mathrm{an}},\mathbf F_\ell)
+\to\operatorname{Tor}_1^{\mathbf Z}
+(H^{q+1}(X^{\mathrm{an}},\mathbf Z),\mathbf F_\ell)\to0
+\]">\[
+0\to H^q(X^{\mathrm{an}},\mathbf Z)\otimes\mathbf F_\ell
+\to H^q(X^{\mathrm{an}},\mathbf F_\ell)
+\to\operatorname{Tor}_1^{\mathbf Z}
+(H^{q+1}(X^{\mathrm{an}},\mathbf Z),\mathbf F_\ell)\to0
+\]</span>
+<p>shows the two torsion contributions. Comparison equates the two finite-coefficient theories, but cannot remove those terms from their dimension.</p>
+<p><strong>Solution 3.</strong> Pullback along <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is exact and preserves tensor products and their symmetry. The ordinary comparison is the adjoint of the pulled-back counit, so evaluation and cup diagrams commute. The compact comparison is built with the same adjunction after exact <span class="math" data-tex="\(j_!\)">\(j_!\)</span>; its projection diagram commutes as well. Thus mixed compact/ordinary products compare, and exchange of degrees <span class="math" data-tex="\(a,b\)">\(a,b\)</span> has the common Koszul sign <span class="math" data-tex="\((-1)^{ab}\)">\((-1)^{ab}\)</span>.</p>
+<p>For the trace use <span class="math" data-tex="\(\Lambda(d)\)">\(\Lambda(d)\)</span>, not untwisted <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>: the map is <span class="math" data-tex="\(R^{2d}f_!\Lambda(d)\to\Lambda_S\)">\(R^{2d}f_!\Lambda(d)\to\Lambda_S\)</span>. In relative dimension one, Kummer and the positive winding of a simple parameter give the <span class="math" data-tex="\(+1\)">\(+1\)</span> point Thom class. In dimension <span class="math" data-tex="\(d\)">\(d\)</span>, choose étale coordinates at a point of each smooth fibre and take the product of the <span class="math" data-tex="\(d\)">\(d\)</span> divisor Thom classes. Gysin transitivity and the even shifts identify it with the point class, and analytification sends it to the positive complex orientation. On every connected fibre the algebraic and topological top compact groups are generated by this class and both traces send it to <span class="math" data-tex="\(1\)">\(1\)</span>; for disconnected fibres both traces sum these values. Proper-support base change identifies the relative stalks with these compact fibre groups. Equality on every analytic stalk proves the relative trace comparison. A compatible root <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> translates the Tate twist to the usual analytic orientation convention; without it retain the twist. This establishes the trace compatibility actually used in smooth ordinary comparison.</p>
+<p><strong>Solution 4.</strong> For a smooth projective curve, degree zero follows by applying full faithfulness of Riemann existence to a trivial finite cover. Degree one follows by applying the equivalence to finite <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-torsors with their group actions. Degree two follows from natural Kummer diagrams and Picard GAGA: algebraic <span class="math" data-tex="\(H^2(\mathbf G_m)=0\)">\(H^2(\mathbf G_m)=0\)</span>; analytic <span class="math" data-tex="\(H^2(\mathcal O^*)=0\)">\(H^2(\mathcal O^*)=0\)</span> follows from the exponential sequence, Dolbeault vanishing above one and surface cohomology vanishing above two. Both Kummer cokernels are <span class="math" data-tex="\(\operatorname{Pic}/n\)">\(\operatorname{Pic}/n\)</span>. Higher constant groups vanish on both sides.</p>
+<p>For every constructible sheaf on a proper curve, choose a dense normal open trivializing its finite monodromy. Embed its generic finite module into a finite sum of constant modules after a finite étale cover. Finite normalization extends the cover over the curve, and <span class="math" data-tex="\(j&#x27;_*\Lambda=\Lambda\)">\(j&#x27;_*\Lambda=\Lambda\)</span> on that normal cover. Add the boundary stalk sheaves to make the map injective on the whole curve. Repeat on the constructible cokernel. Finite pushforward is exact and comparison-compatible, so every term of this right resolution compares by the constant smooth projective curve theorem. In a fixed total degree the first-quadrant hypercohomology spectral sequence uses only finitely many terms and its comparison proves the assertion for the original sheaf.</p>
+<p>Induct now on proper fibre dimension. Proper base change on both sides reduces a relative map to proper complex fibres. For a fibre of dimension <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>, choose a rational function nonconstant on every positive-dimensional component and close its graph in <span class="math" data-tex="\(X\times\mathbf P^1\)">\(X\times\mathbf P^1\)</span>. Its map <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has fibre dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>; the structural map <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has fibre dimension one. Induction compares <span class="math" data-tex="\(Ra_*j&#x27;_!F_U\)">\(Ra_*j&#x27;_!F_U\)</span>, proper constructibility permits comparison of its cohomology sheaves along <span class="math" data-tex="\(b\)">\(b\)</span>, and the finite Leray filtrations compare its global cohomology on the graph. The proper graph projection is an isomorphism over <span class="math" data-tex="\(U\)">\(U\)</span>; its pushforward of <span class="math" data-tex="\(j&#x27;_!F_U\)">\(j&#x27;_!F_U\)</span> is exactly <span class="math" data-tex="\(j_!F_U\)">\(j_!F_U\)</span>, because its other fibres carry zero coefficients. The boundary <span class="math" data-tex="\(X\setminus U\)">\(X\setminus U\)</span> has smaller dimension, so localization finishes the comparison on <span class="math" data-tex="\(X\)">\(X\)</span>. Proper base change then finishes the relative induction.</p>
+<p>Express an arbitrary torsion sheaf as a filtered colimit of constructible finite torsion sheaves. Coherent étale continuity and compact Hausdorff continuity on the proper analytic fibres justify passage to that colimit on both sides. Finally compactify the given separated <span class="math" data-tex="\(f\)">\(f\)</span> and apply the proper result to <span class="math" data-tex="\(j_!F\)">\(j_!F\)</span>. This proves its arbitrary-torsion <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> comparison, independently of higher-dimensional resolution.</p>
+<p>For ordinary constructible comparison, first use compact comparison, trace orientation and smooth Poincaré duality to compare constant coefficients on smooth schemes. Invoke the explicitly stated resolution-of-singularities prerequisite for a reduced <span class="math" data-tex="\(X\)">\(X\)</span>. The cone of <span class="math" data-tex="\(\Lambda_X\to Rp_*\Lambda_Y\)">\(\Lambda_X\to Rp_*\Lambda_Y\)</span> is bounded constructible and supported on the lower-dimensional complement of the open over which the proper resolution is an isomorphism. Proper comparison identifies its analytic cone; support induction and smooth constant comparison therefore prove constant comparison on <span class="math" data-tex="\(X\)">\(X\)</span>. The finite-cover right resolution in arbitrary dimension then proves ordinary comparison for every constructible sheaf. Without constructibility this last argument does not apply, and the direct-sum/product example in Section 12 proves that its conclusion would be false.</p>
+<h2 id="17-sources-proof-dependencies-and-status">17. Sources, proof dependencies and status</h2>
+<p>The historical comparison result is due to Artin; see <a href="https://publications.ias.edu/sites/default/files/Number32.pdf">SGA 4½</a>, <em>Arcata</em>, IV, 6.3. Its concise reduction to proper smooth curves is expanded here into explicit coefficient resolutions, the proper graph induction, and filtered-colimit arguments. <a href="https://www.normalesup.org/~forgogozo/SGA4/">SGA 4</a>, Exposé XVI, Section 4, including Theorem 4.1 and Lemmas 4.2–4.6, proves a more general relative comparison and uses resolution of singularities for the nonproper case. This lesson proves the absolute statement; the relative theorem is not proved here.</p>
+<ul>
+<li><strong>[Riemann existence, stated input]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-theorem-riemann-existence">AI Integrated Stacks Project, Riemann existence</a>. Its reference to SGA 1, Exposé XII, Theorem 5.1, supplies the full finite-cover equivalence. Its displayed “proof” cites that theorem; it is not a new owned proof of Riemann existence.</li>
+<li><strong>[Curve GAGA, stated input]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/gaga.html#gaga-section-gaga-statements">GAGA comparison statements</a>, particularly theorem-gaga-fully-faithful and theorem-gaga-essential-surjectivity. The projective-curve Picard consequence is the allowed input used in Section 5; no general coherent analytic comparison is substituted for the torsion comparison proved here.</li>
+<li><strong>[Algebraic base change]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-theorem-proper-base-change">Proper base change, Tag 095T</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-theorem-smooth-base-change">smooth base change, Tag 0EYU</a>. The first is used in every proper fibre calculation. The second checks the smooth framework from Lesson 15; it alone cannot compare a nonproper analytic boundary stalk.</li>
+<li><strong>[Classical sheaf tools]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-section-proper-base-change">Proper base change in topology, cohomology chapter</a>, including the compact-neighbourhood refinement argument preceding it. <a href="https://janschuetz.perso.math.cnrs.fr/skripte/lecture_notes_etale_cohomology.pdf">J. Anschütz, <em>Lecture notes on étale cohomology</em></a>, Theorem 4.16 and Lemma 4.20, PDF pages 25–27, give proper base change and compact Hausdorff continuity.</li>
+<li><strong>[Alternative comparison exposition]</strong> <a href="https://www.jmilne.org/math/CourseNotes/LEC.pdf">J. S. Milne, <em>Lectures on Étale Cohomology</em>, version 2.21</a>, Section 21, PDF pages 130–134. Its analytic effacement through elementary fibrations is a useful alternative; the present proper-support proof instead uses graph modifications, so no elementary-fibration lemma is silently assumed.</li>
+<li><strong>[Geometric prerequisite for Section 11]</strong> <a href="https://arxiv.org/pdf/0904.1592v2">M. Temkin, <em>Functorial desingularization of quasi-excellent schemes in characteristic zero: the non-embedded case</em>, Theorem 1.2.1, arXiv:0904.1592v2</a>, page 3. We verified the statement and its hypotheses. It gives the proper smooth resolution used in (11.2); the long resolution algorithm itself is outside this étale-cohomology course and is not claimed as proved here.</li>
+<li><strong>[Classical duality prerequisite]</strong> <a href="https://pi.math.cornell.edu/~hatcher/AT/AT.pdf">A. Hatcher, <em>Algebraic Topology</em></a>, Section 3.3, Theorem 3.35, gives the noncompact manifold cap-product theorem. The dual-cell discussion on printed page 232 also explains the orientation mechanism. Section 10 makes the exact coefficient-dual step needed over <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> explicit.</li>
+</ul>
+<p>Within this course, <a href="../support/ag-etale-cohomology--constructible-sheaves-and-extension-by-zero.html">Lesson 11</a> supplies the constructible and continuity machinery, <a href="../support/ag-etale-cohomology--the-proper-base-change-theorem.html">Lesson 13</a> proper base change, and <a href="../support/ag-etale-cohomology--cohomology-with-compact-support.html">Lesson 14</a> compactification and proper support. <a href="../support/ag-etale-cohomology--poincare-duality-for-curves.html">Lesson 17</a> fixes the curve trace and coefficient self-injectivity. <a href="../further-reading.html">Lesson 18</a> supplies smooth duality, the point/divisor Gysin normalization and the projective-space computation. Their stated geometric and higher-trace inputs retain their stated status.</p>
+<p>The Artin proper-support theorem and the ordinary constructible theorem are proved in Sections 5–11; neither is relegated to an unproved citation. Riemann existence and curve GAGA remain the two permitted analytic inputs. The resolution and classical topology prerequisites are expressly identified where they enter. All examples and all four exercises have full solutions.</p>
+</article></main></body></html>

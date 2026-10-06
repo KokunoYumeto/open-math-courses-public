@@ -1,0 +1,277 @@
+# Lubin–Tate division fields
+
+*Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).*
+
+A Lubin–Tate formal module gives a way to divide by a uniformizer. The points killed by \(\pi^n\) form one cyclic module over \(\mathcal O_K/\pi^n\). Its generators generate a field, and the units of that quotient act as every automorphism of the field. We prove these assertions by counting polynomial roots and applying Eisenstein's criterion.
+
+Fix a nonarchimedean local field \(K\), its valuation ring \(\mathcal O\), a uniformizer \(\pi\), and residue field \(\mathbf F_q\). Normalize \(v_K(\pi)=1\) and extend this valuation to a separable closure \(K^s\). For a Lubin–Tate series \(f\in\mathcal F_\pi\), write \(F_f\) and \([a]_f\) for the formal group and scalar action constructed in [Formal groups and Lubin–Tate modules](formal-groups-and-lubin-tate-modules.md), Theorem 7.3.
+
+We also use [Unramified and totally ramified extensions](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07), Theorem 5.1: a root of a monic Eisenstein polynomial of degree \(d\) over a complete discretely valued field generates a totally ramified extension of degree \(d\), and that root is a uniformizer. Finite extensions are complete with the uniquely extended valuation, by [Extensions of complete valued fields](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04), Theorem 1.2.
+
+
+**Prerequisite proof availability.** The named results below identify specific programme lessons. The [prerequisite record](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-8) distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.
+
+## 1. Evaluating the formal module
+
+Put
+\[
+\mathfrak m_s=\{x\in K^s:v_K(x)>0\}.
+\]
+Here \(0\) has valuation \(+\infty\). For finitely many elements of \(\mathfrak m_s\), choose a finite extension of \(K\) containing them. Integral power series converge there, since their terms of degree tending to infinity have valuation tending to infinity. Thus \(F_f\), its inverse and every \([a]_f\) can be evaluated on \(\mathfrak m_s\). This does not require the separable closure itself to be complete.
+
+The identities proved in lesson 7 give \(\mathfrak m_s\) an \(\mathcal O\)-module structure, with addition \(F_f\). Define
+\[
+T_n(f)=F_f[\pi^n]
+ =\{x\in\mathfrak m_s:f^{\circ n}(x)=0\},\qquad T_0(f)=\{0\}.
+\tag{1}
+\]
+The superscript \(\circ n\) denotes composition, not the \(n\)th power of a series. A point is **primitive at level \(n\)** if it belongs to \(T_n(f)\setminus T_{n-1}(f)\).
+
+The particularly useful series
+\[
+f_0(X)=\pi X+X^q
+\tag{2}
+\]
+is a polynomial. It permits a finite root calculation. For an arbitrary \(f\), Theorem 7.3 supplies an integral isomorphism
+\[
+h=[1]_{f,f_0}:F_{f_0}\longrightarrow F_f,\qquad
+h(X)=X+\text{higher terms},\qquad f\circ h=h\circ f_0.
+\tag{3}
+\]
+Its inverse is integral, and both series can be evaluated in every finite extension on its maximal ideal. Consequently \(h\) identifies \(T_n(f_0)\) with \(T_n(f)\), including their scalar actions and primitive points.
+
+### Proposition 8.1. The division module
+
+For each \(n\geq1\), \(T_n(f)\) has \(q^n\) elements and is a free module of rank one over \(\mathcal O/\pi^n\mathcal O\). If \(\lambda\) is any primitive point, the isomorphism is
+\[
+\mathcal O/\pi^n\mathcal O\longrightarrow T_n(f),\qquad
+a\longmapsto[a]_f(\lambda).
+\tag{4}
+\]
+
+**Proof.** First use \(f_0\). The polynomial \(f_0^{\circ n}\) is monic of degree \(q^n\). All its roots have positive valuation. Indeed, for \(v_K(x)<0\),
+\[
+v_K(f_0(x))=qv_K(x)<0,
+\]
+because the two summands have distinct valuations \(1+v_K(x)\) and \(qv_K(x)\). For \(v_K(x)=0\), its value likewise has valuation zero. Neither type of point can reach zero under iteration.
+
+At every point of positive valuation,
+\[
+f_0'(x)=\pi+q x^{q-1}\ne0.
+\tag{5}
+\]
+In characteristic \(p\), the second summand is zero. In characteristic zero, \(v_K(q)\geq1\), so that summand has valuation strictly greater than 1, whereas \(\pi\) has valuation 1. This also gives \(f_0'(0)=\pi\ne0\). The derivative of the iterate is the product of these nonzero derivatives along the orbit of a root. Thus all \(q^n\) roots are simple and lie in \(K^s\). We have \(|T_n(f_0)|=q^n\).
+
+The nesting \(T_{n-1}\subset T_n\) is strict, so primitive points exist. Fix one, \(\lambda\). The kernel of \(a\mapsto[a]_{f_0}(\lambda)\) contains \(\pi^n\mathcal O\). Every nonzero \(a\in\mathcal O\) has the form \(\pi^r u\) with \(u\) a unit. The series \([u]_{f_0}\) is an invertible module map. If \(r<n\), then \([\pi^r]_{f_0}(\lambda)\ne0\), since otherwise \(\lambda\) would be killed by \(\pi^{n-1}\). Hence \([a]_{f_0}(\lambda)\ne0\). The kernel is exactly \(\pi^n\mathcal O\).
+
+The resulting injection from \(\mathcal O/\pi^n\mathcal O\), a set of \(q^n\) elements, onto a subset of \(T_n(f_0)\) is a bijection. Finally (3) transports the count and this module isomorphism to every \(f\). \(\square\)
+
+In particular, the primitive points correspond exactly to the unit classes. Their number is
+\[
+D_n=|(\mathcal O/\pi^n\mathcal O)^\times|
+      =(q-1)q^{n-1}.
+\tag{6}
+\]
+
+## 2. The field and its automorphisms
+
+Define
+\[
+K_{\pi,n}=K(T_n(f)).
+\tag{7}
+\]
+This notation will be justified by proving independence from \(f\); the uniformizer \(\pi\) remains part of the notation.
+
+### Proposition 8.2. Independence of the Lubin–Tate series
+
+The field in (7) is the same for every \(f\in\mathcal F_\pi\). For any primitive \(\lambda\in T_n(f)\),
+\[
+K_{\pi,n}=K(\lambda).
+\tag{8}
+\]
+
+**Proof.** An integral series with coefficients in \(K\), evaluated at a point of positive valuation in a finite extension \(L/K\), has its value in \(L\), by completeness. Thus (3) maps every point \(x\in T_n(f_0)\) into \(K(x)\). Its integral inverse maps \(h(x)\) back into \(K(h(x))\). Therefore \(K(x)=K(h(x))\), and the fields generated by all points are equal.
+
+By Proposition 8.1, every element of \(T_n(f)\) is \([a]_f(\lambda)\) for some \(a\in\mathcal O\). These values lie in the complete finite field \(K(\lambda)\). It contains all the points, proving (8). \(\square\)
+
+If \(\sigma\in\operatorname{Gal}(K^s/K)\), then
+\[
+\sigma([a]_f(x))=[a]_f(\sigma x),\qquad
+\sigma(F_f(x,y))=F_f(\sigma x,\sigma y).
+\tag{9}
+\]
+To justify passing through an infinite series, put the inputs and their conjugates in a finite Galois extension. Its automorphisms preserve the uniquely extended valuation and are continuous; each coefficient is fixed by \(\sigma\), so the identities hold for finite truncations and then for their limits.
+
+For \(f_0\), \(K_{\pi,n}\) is the splitting field of the separable polynomial \(f_0^{\circ n}\), hence is finite Galois. Proposition 8.2 gives the same conclusion for every \(f\). Equation (9) defines an injection
+\[
+\operatorname{Gal}(K_{\pi,n}/K)
+ \hookrightarrow\operatorname{Aut}_{\mathcal O}(T_n(f))
+ \simeq(\mathcal O/\pi^n\mathcal O)^\times.
+\tag{10}
+\]
+It is injective because the division points generate the field. An automorphism of the cyclic module is multiplication by a unique unit class.
+
+### Theorem 8.3. Degree, ramification and Galois group
+
+The extension \(K_{\pi,n}/K\) is totally ramified of degree \(D_n\), every primitive point is a uniformizer of this extension, and (10) is an isomorphism.
+
+**Proof.** Continue first with \(f_0\). Put \(A_n(X)=f_0^{\circ(n-1)}(X)\), where \(A_1(X)=X\). Polynomial composition gives the exact factorization
+\[
+f_0^{\circ n}(X)=A_n(X)\bigl(\pi+A_n(X)^{q-1}\bigr).
+\]
+Thus
+\[
+P_n(X)=\frac{f_0^{\circ n}(X)}{f_0^{\circ(n-1)}(X)}
+       =\pi+A_n(X)^{q-1}
+\tag{11}
+\]
+is a monic polynomial of degree \(D_n\). Since \(A_n(0)=0\), its constant coefficient is \(\pi\). Reduction modulo \(\pi\) gives \(A_n(X)\equiv X^{q^{n-1}}\), and therefore \(P_n(X)\equiv X^{D_n}\). Every other nonleading coefficient is divisible by \(\pi\), while its constant coefficient is not divisible by \(\pi^2\). This is precisely the Eisenstein condition.
+
+A primitive \(\lambda\) is a root of \(P_n\), because \(A_n(\lambda)\ne0\) while \(f_0^{\circ n}(\lambda)=0\). Here the degree and ramification consequences of the Eisenstein condition can also be verified directly. Write \(d=D_n\) and \(t=v_K(\lambda)>0\). In \(P_n(\lambda)\), the leading term has valuation \(dt\), the constant term has valuation 1, and every intervening term has valuation at least \(1+it>1\). A sum equal to zero cannot have a unique term of least valuation: after dividing by that term, reduction in the residue field would give \(1=0\). Therefore \(dt=1\). If \(e\) is the ramification index of \(K(\lambda)/K\), its value group in this normalization is \(e^{-1}\mathbf Z\); thus \(d\) divides \(e\). The degree formula for complete discretely valued fields gives
+\(d\leq e\leq[K(\lambda):K]\), whereas the polynomial \(P_n\) gives the reverse bound \([K(\lambda):K]\leq d\). All these quantities are consequently \(d\), the residue degree is 1, and \(\lambda\) has normalized valuation 1 in its field. In particular
+\[
+[K(\lambda):K]=D_n,
+\]
+total ramification, and the uniformizer assertion. By (8), this is the entire division field. Its Galois group and the right side of (10) both have \(D_n\) elements; the injection is consequently onto.
+
+For general \(f\), the strict isomorphism (3) preserves the generated field and the valuation of each nonzero point: if \(v_K(x)>0\), every higher term of \(h(x)-x\) has valuation strictly greater than \(v_K(x)\). A primitive \(h(\lambda)\) therefore remains a uniformizer. This proves all the assertions. \(\square\)
+
+The polynomial argument uses the specific choice (2). An arbitrary Lubin–Tate series can have infinitely many nonzero coefficients; it need not supply a polynomial quotient as in (11). The integral isomorphism transfers the field and module conclusions without making such an assumption.
+
+### Proposition 8.4. A uniformizer is a norm
+
+For every \(n\geq1\),
+\[
+\pi\in N_{K_{\pi,n}/K}(K_{\pi,n}^{\times}).
+\tag{12}
+\]
+
+**Proof.** Choose a primitive \(\lambda\) for \(f_0\). Its minimal polynomial is \(P_n\), with constant coefficient \(\pi\), so
+\[
+N_{K_{\pi,n}/K}(\lambda)=(-1)^{D_n}\pi.
+\]
+Since \(N(-1)=(-1)^{D_n}\), we obtain
+\[
+N_{K_{\pi,n}/K}(-\lambda)=\pi.
+\tag{13}
+\]
+The field is independent of the chosen series, so (12) holds for it in every presentation. \(\square\)
+
+When \(q\) is even and \(n=1\), \(D_1=q-1\) is odd, and \(N(\lambda)=-\pi\). Formula (13) includes this case. A primitive point for a different series is still a uniformizer, but its norm need not have the particular value of the polynomial coordinate just used.
+
+## 3. The infinite tower
+
+The nesting of the division modules gives fields
+\[
+K_{\pi,1}\subset K_{\pi,2}\subset\cdots,\qquad
+K_\pi=\bigcup_{n\geq1}K_{\pi,n}.
+\tag{14}
+\]
+
+### Corollary 8.5. The Galois group of the tower
+
+There is a canonical isomorphism of topological groups, characterized by its action on division points,
+\[
+\operatorname{Gal}(K_\pi/K)\simeq\mathcal O^\times.
+\tag{15}
+\]
+
+**Proof.** Multiplication by \(\pi\) maps \(T_{n+1}(f)\) onto \(T_n(f)\): in the cyclic module \(\mathcal O/\pi^{n+1}\), its image has \(q^n\) elements, lies in \(T_n\), and hence equals it. Choose primitive points compatibly with \([\pi]_f(\lambda_{n+1})=\lambda_n\). A preimage of a primitive level-\(n\) point must be primitive at level \(n+1\).
+
+If \(\sigma(\lambda_{n+1})=[u]_{f}(\lambda_{n+1})\), applying \([\pi]_f\) shows \(\sigma(\lambda_n)=[u]_f(\lambda_n)\). Thus the restriction maps in Theorem 8.3 correspond to reduction of unit classes. Infinite Galois theory from lesson 1 now yields
+\[
+\operatorname{Gal}(K_\pi/K)
+ \simeq\varprojlim_n(\mathcal O/\pi^n\mathcal O)^\times.
+\]
+
+For completeness, this last inverse limit is \(\mathcal O^\times\). Given compatible classes, choose representatives \(u_n\in\mathcal O^\times\). They satisfy \(u_{n+1}-u_n\in\pi^n\mathcal O\), so form a Cauchy sequence and have a limit \(u\in\mathcal O\). Its nonzero residue makes it a unit, and it represents all the classes. Uniqueness follows from \(\bigcap_n\pi^n\mathcal O=\{0\}\). Reduction is continuous, and its kernels \(1+\pi^n\mathcal O\) form a neighborhood basis, so the bijection and its inverse are continuous. \(\square\)
+
+The isomorphism uses scalar action and is independent of the chosen compatible generators. All finite levels are abelian, as is the tower.
+
+## 4. Two concrete descriptions
+
+For \(K=\mathbf Q_p\), \(\pi=p\), choose
+\[
+f(X)=(1+X)^p-1,\qquad F_f(X,Y)=X+Y+XY.
+\]
+Lesson 7 proves \([a]_f(X)=(1+X)^a-1\) for \(a\in\mathbf Z_p\). Iterating gives \(f^{\circ n}(X)=(1+X)^{p^n}-1\). Therefore
+\[
+T_n(f)=\{\zeta-1:\zeta^{p^n}=1\},\qquad
+K_{p,n}=\mathbf Q_p(\zeta_{p^n}).
+\tag{16}
+\]
+The root count and positive-valuation assertion can also be obtained by transferring from \(f_0\), as above. For a primitive \(p^n\)th root \(\zeta\), (10) says precisely
+\[
+\sigma(\zeta)=\zeta^u,\qquad u\in(\mathbf Z/p^n\mathbf Z)^\times.
+\tag{17}
+\]
+For a \(p\)-adic scalar, choose an ordinary integer congruent to it modulo \(p^n\); Proposition 8.1 makes their actions identical on \(T_n\). Thus the exponent in (17) has an unambiguous meaning.
+
+For the polynomial \(f_0\) over general \(K\), its nonzero first-level points satisfy
+\[
+\lambda^{q-1}=-\pi,\qquad
+K_{\pi,1}=K\bigl((-\pi)^{1/(q-1)}\bigr).
+\tag{18}
+\]
+This is a totally ramified extension of degree \(q-1\). If \(q=2\), its degree is one and \(\lambda=-\pi\) already belongs to \(K\).
+
+Changing the series for a fixed uniformizer preserves the tower. Changing the uniformizer can change even its first field. For example, over \(\mathbf Q_3\), the choices \(3\) and \(-3\) yield \(\mathbf Q_3(\sqrt{-3})\) and \(\mathbf Q_3(\sqrt3)\); Exercise 4 proves they are different. The next lesson will explain why adjoining the entire unramified tower removes this dependence.
+
+## 5. Exercises and complete solutions
+
+### Exercise 1 — easy
+
+For \(K=\mathbf Q_p\), verify the torsion and Galois descriptions (16)–(17) using the multiplicative formal group.
+
+**Solution.** Composition of \(f(X)=(1+X)^p-1\) multiplies the exponent by \(p\), giving \(f^{\circ n}(X)=(1+X)^{p^n}-1\) by induction. Its zeros are exactly \(\zeta-1\). They lie in the positive-valuation domain because this torsion set is the image under (3) of the polynomial torsion set. A primitive point corresponds to a primitive root: otherwise its exponent order would divide \(p^{n-1}\). All other roots are powers of it, so the generated field is \(\mathbf Q_p(\zeta_{p^n})\).
+
+For integer \(a\), \([a]_f(\zeta-1)=\zeta^a-1\) follows from the multiplicative law. For any \(a\in\mathbf Z_p\), choose that integer modulo \(p^n\); their difference kills the division module. Theorem 8.3 makes every unit class a Galois automorphism, giving (17) and degree \((p-1)p^{n-1}\), including \(p=2\).
+
+### Exercise 2 — medium
+
+Prove that the Galois action on \(T_n(f)\) commutes with every scalar \([a]_f\).
+
+**Solution.** Put a division point and its conjugate in a finite Galois extension \(L/K\). The coefficients of \([a]_f\) belong to \(\mathcal O\subset K\). For each finite truncation, applying \(\sigma\) to its value equals evaluating it at \(\sigma x\). The unique extended valuation on \(L\) is \(\sigma\)-invariant, so \(\sigma\) is an isometry and preserves limits. Passing to the convergent series gives (9). Applying the same argument to \(F_f\) proves additivity. In particular \(\sigma\) takes points killed by \(\pi^n\) to points killed by \(\pi^n\), and is an \(\mathcal O\)-module automorphism there.
+
+### Exercise 3 — medium
+
+For the polynomial choice \(f_0=\pi X+X^q\), prove that \(f_0^{\circ n}/f_0^{\circ(n-1)}\) is Eisenstein. Explain the role of this choice for a general series.
+
+**Solution.** With \(A=f_0^{\circ(n-1)}\), composition is \(f_0(A)=\pi A+A^q\). The quotient is the polynomial \(\pi+A^{q-1}\). The polynomial \(A\) is monic of degree \(q^{n-1}\), has constant coefficient zero, and reduces to \(X^{q^{n-1}}\) modulo \(\pi\). Hence the quotient is monic of degree \((q-1)q^{n-1}\), has constant coefficient exactly \(\pi\), and reduces to the pure power \(X^{(q-1)q^{n-1}}\). These are all the Eisenstein conditions.
+
+For a general power series in \(\mathcal F_\pi\), its iterate is not necessarily a polynomial. The assertions about torsion and fields follow instead from the integral strict isomorphism with \(f_0\), which preserves primitive points, their fields and their valuations. This supplies the same degree and ramification conclusion without assuming finite polynomial degree for an infinite series.
+
+### Exercise 4 — hard
+
+Let \(K=\mathbf Q_p\) with \(p\) odd. For uniformizers \(\pi,\pi'\), prove
+\[
+K_{\pi,1}=K_{\pi',1}
+\quad\Longleftrightarrow\quad
+\pi'/\pi\equiv1\pmod p.
+\tag{19}
+\]
+
+**Solution.** Put \(m=p-1\), \(u=\pi'/\pi\), and choose \(\alpha^m=-\pi\), \(\beta^m=-\pi'\). Equation (18) gives the two fields. If they are equal to \(L\), both \(\alpha,\beta\) are uniformizers of the same totally ramified extension. Their ratio is a unit of \(L\), and
+\[
+(\beta/\alpha)^m=u.
+\]
+The residue field of \(L\) is \(\mathbf F_p\). Every nonzero residue has \(m\)th power 1, so reducing this equality gives \(u\equiv1\pmod p\).
+
+Conversely suppose \(u\in1+p\mathbf Z_p\). We construct \(a\in1+p\mathbf Z_p\) with \(a^m=u\). Start \(a_0=1\), and put
+\[
+a_{j+1}=a_j+\frac{u-a_j^m}{m a_j^{m-1}}.
+\]
+The denominator is a \(p\)-adic unit. If \(a_j\in1+p\mathbf Z_p\) and the error \(u-a_j^m\) has valuation at least \(r\geq1\), the increment has valuation at least \(r\). Expanding the \(m\)th power cancels its linear error; all remaining terms contain at least the square of the increment, and have integral coefficients. The next error has valuation at least \(2r\). Thus the increments tend to zero with valuations at least \(2^j\), the sequence converges in \(1+p\mathbf Z_p\), and its limit \(a\) satisfies \(a^m=u\). Now \(a\alpha\) is a root of \(X^m+\pi'\). It generates \(K(\alpha)\), since \(a\in K^\times\); hence the two fields are equal. This proves (19).
+
+## Editable edition
+
+The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.
+
+## References
+
+Sections 1–2 prove root counts, the division module, independence of the defining series and the full Galois group. The valuation calculation in Theorem 8.3 proves the degree and total ramification directly. The norm sign and the whole tower are retained.
+
+- [J. S. Milne, Class Field Theory, version 4.03](https://www.jmilne.org/math/CourseNotes/CFT.pdf).
+- [Teruyoshi Yoshida, Local class field theory via Lubin–Tate theory, arXiv:math/0606108v2](https://arxiv.org/abs/math/0606108v2).
+
+The [proof guide](../FREE_PROOFS.md) gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.

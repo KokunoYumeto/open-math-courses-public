@@ -1,0 +1,322 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local displacement and the continuous C-star part · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L113.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Preserved continuous-part and local-displacement proof, completed nonunital quotient and bounded normal-average exposition, and original illustration by GPT-6.1 Sol (OpenAI), Ultra; owner and separate independent review by GPT-6 Astra (OpenAI), Ultra; guarded integration preparation by GPT-6 Astra (OpenAI), Ultra at exact earlier inputs. Human review and formal verification are not asserted.</p><p><a id="oa-flow.l113.0"></a><a id="l113-opening-context"></a></p>
+<h1 id="OA-FLOW.L113.0">Local displacement and the continuous C-star part</h1>
+<p>A normal action can have norm-discontinuous elements even though compact averages of every element have norm-continuous orbits. We first construct this continuous C-star part and prove its density. A translation model then separates that density statement from norm continuity of the whole algebra. Only afterwards do we identify the spectrum visible to a represented commutative system and use a cutoff to obtain a locally orthogonal projection.</p>
+<p><em>Preserved historical original argument with independently written completion and teaching organization by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026. CC0-1.0 to the extent of rights held; historical and prerequisite terms remain intact. Spot-checked in a separate AI session.</em></p>
+<p><span id="OA-FLOW.L113.INPUTS"></span><a id="oa-flow.l113.inputs"></a></p>
+<p><a id="l113-inputs"></a></p>
+<h2 id="exact-earlier-inputs-and-scope">Exact earlier inputs and scope</h2>
+<p>The group is always locally compact Hausdorff and may be nonabelian, nonunimodular, non-sigma-compact or non-second-countable; Hilbert spaces and von Neumann algebras are arbitrary. The two settings are stated separately below. For the normal action we use <a href="OA-FLOW-AT.html#oa-flow.at.1">AT1</a>, <a href="OA-FLOW-AT.html#oa-flow.at.5">AT5</a> and the retained complete alternative <a href="OA-FLOW-AT.html#oa-flow.at.6">AT6</a>, with <span class="unlinked">ST2</span> for bounded topology comparisons. <a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24 translations</a>, <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">vector integration</a> and <a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">Haar conventions</a> supply the actual scalar and vector integrals. <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a> supplies all concrete normal functional tests; fixed multiplication is checked locally below. The <span class="unlinked">CF3 norm facts</span>, <span class="unlinked">CF4 character bounds</span>, <span class="unlinked">CF7 positivity</span>, <span class="unlinked">CF8 arbitrary-Hilbert tools and quadratic positivity</span>, and <a href="OA-FLOW-HR.html#hr-06">HR6 positive Haar normalization</a> are the exact additional earlier inputs.</p>
+<p>The nonunital bridge uses exactly <span class="unlinked">CF6</span>, <span class="unlinked">CF9</span>, the full <a href="OA-FLOW-L24.html#oa-flow.grp.cstarquotients">C-star quotient/closed-image proof</a>, and <a href="OA-FLOW-QF.html#qf-1">QF1</a>. Compact cutoffs come from <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>. <span class="unlinked">PC1</span> supplies bounded supports and the concrete bicommutant proof; <a href="OA-FLOW-BD.html#oa-flow.bd.4">BD4</a> and <a href="OA-FLOW-BD.html#oa-flow.bd.5">BD5</a> supply the bounded strong-star-to-ultraweak density passage. Every citation to the external antecedent is credit, not a replacement for these proofs.</p>
+<p><span id="OA-FLOW.CONT.ALGEBRA"></span><a id="oa-flow.cont.algebra"></a></p>
+<p><a id="l113-continuous"></a></p>
+<h2 id="norm-continuous-elements-form-an-invariant-c-star-algebra">Norm-continuous elements form an invariant C-star algebra</h2>
+<p>Now let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be a point-ultraweakly continuous action of an arbitrary locally compact group on a von Neumann algebra. Define its norm-continuous part by</p>
+<p><a id="equation-d14"></a></p>
+<p><span class="math math-display" data-tex="$$M_{\mathrm c}
+=
+\left\{x\in M:
+\lim_{t\to e}\|\alpha_t(x)-x\|=0\right\}. \tag{D14}$$">$$M_{\mathrm c}
+=
+\left\{x\in M:
+\lim_{t\to e}\|\alpha_t(x)-x\|=0\right\}. \tag{D14}$$</span></p>
+<p>This is a norm-closed unital star subalgebra: sums and scalar multiples follow from the triangle inequality, and the unit is fixed. It includes the zero algebra with its zero unit. For products,</p>
+<p><a id="equation-d15"></a></p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(xy)-xy\|
+\le
+\|\alpha_t(x)-x\|\,\|y\|
++\|x\|\,\|\alpha_t(y)-y\|. \tag{D15}$$">$$\|\alpha_t(xy)-xy\|
+\le
+\|\alpha_t(x)-x\|\,\|y\|
++\|x\|\,\|\alpha_t(y)-y\|. \tag{D15}$$</span></p>
+<p>Adjoints preserve the norm difference, and every <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> is isometric. If <span class="math" data-tex="\(x_n\in M_{\mathrm c}\)">\(x_n\in M_{\mathrm c}\)</span> and <span class="math" data-tex="\(\|x_n-x\|\to0\)">\(\|x_n-x\|\to0\)</span>, then <span class="math" data-tex="\(\|\alpha_t(x)-x\|\le2\|x-x_n\|+\|\alpha_t(x_n)-x_n\|\)">\(\|\alpha_t(x)-x\|\le2\|x-x_n\|+\|\alpha_t(x_n)-x_n\|\)</span>. First choose one sufficiently close <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, then a group neighbourhood for its orbit. This proves norm closure without any first-countability assumption on the group.</p>
+<p>The algebra is globally invariant. If <span class="math" data-tex="\(x\in M_{\mathrm c}\)">\(x\in M_{\mathrm c}\)</span> and <span class="math" data-tex="\(r\in G\)">\(r\in G\)</span>, then</p>
+<p><a id="equation-d16"></a></p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(\alpha_r(x))-\alpha_r(x)\|
+=
+\|\alpha_{r^{-1}tr}(x)-x\|
+\longrightarrow0
+\qquad(t\to e). \tag{D16}$$">$$\|\alpha_t(\alpha_r(x))-\alpha_r(x)\|
+=
+\|\alpha_{r^{-1}tr}(x)-x\|
+\longrightarrow0
+\qquad(t\to e). \tag{D16}$$</span></p>
+<p>The restricted action is norm continuous at the identity by definition and therefore at every group point. Thus</p>
+<p><a id="equation-d17"></a></p>
+<p><span class="math math-display" data-tex="$$(M_{\mathrm c},G,\alpha|_{M_{\mathrm c}}) \tag{D17}$$">$$(M_{\mathrm c},G,\alpha|_{M_{\mathrm c}}) \tag{D17}$$</span></p>
+<p>is a C*-covariant system.</p>
+<p><span id="OA-FLOW.CONT.SMOOTHING"></span><a id="oa-flow.cont.smoothing"></a></p>
+<p><a id="l113-smoothing"></a></p>
+<h2 id="compact-smoothing-lands-in-the-continuous-part">Compact smoothing lands in the continuous part</h2>
+<p>Fix left Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span>. For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> and <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, define the ultraweak integral</p>
+<p><a id="equation-d18"></a></p>
+<p><span class="math math-display" data-tex="$$x_f=\int_G f(s)\alpha_s(x)\,ds. \tag{D18}$$">$$x_f=\int_G f(s)\alpha_s(x)\,ds. \tag{D18}$$</span></p>
+<p>AT5 defines the integral by its genuine predual adjoint and proves its normality. It satisfies</p>
+<p><a id="equation-d19"></a></p>
+<p><span class="math math-display" data-tex="$$\|x_f\|\le\|f\|_1\|x\|. \tag{D19}$$">$$\|x_f\|\le\|f\|_1\|x\|. \tag{D19}$$</span></p>
+<p>With</p>
+<p><a id="equation-d20"></a></p>
+<p><span class="math math-display" data-tex="$$(\lambda_tf)(r)=f(t^{-1}r), \tag{D20}$$">$$(\lambda_tf)(r)=f(t^{-1}r), \tag{D20}$$</span></p>
+<p>left invariance of Haar measure gives</p>
+<p><a id="equation-d21"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_t(x_f)=x_{\lambda_tf}. \tag{D21}$$">$$\alpha_t(x_f)=x_{\lambda_tf}. \tag{D21}$$</span></p>
+<p>Consequently</p>
+<p><a id="equation-d22"></a></p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(x_f)-x_f\|
+\le
+\|\lambda_tf-f\|_1\|x\|
+\longrightarrow0
+\qquad(t\to e). \tag{D22}$$">$$\|\alpha_t(x_f)-x_f\|
+\le
+\|\lambda_tf-f\|_1\|x\|
+\longrightarrow0
+\qquad(t\to e). \tag{D22}$$</span></p>
+<p>The full L24 translation theorem proves this <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> limit for arbitrary groups and both recorded Haar conventions. Hence</p>
+<p><a id="equation-d23"></a></p>
+<p><span class="math math-display" data-tex="$$x_f\in M_{\mathrm c}. \tag{D23}$$">$$x_f\in M_{\mathrm c}. \tag{D23}$$</span></p>
+<p>The estimate is an operator-norm statement even though the original orbit of <span class="math" data-tex="\(x\)">\(x\)</span> was assumed only ultraweakly continuous.</p>
+<p><span id="OA-FLOW.CONT.DENSITY"></span><a id="oa-flow.cont.density"></a></p>
+<p><a id="l113-averages"></a></p>
+<h2 id="positive-local-averages-are-strong-star-dense">Positive local averages are strong-star dense</h2>
+<p>Direct the relatively compact identity neighborhoods <span class="math" data-tex="\(U\)">\(U\)</span> by reverse inclusion. Choose</p>
+<p><a id="equation-d24"></a></p>
+<p><span class="math math-display" data-tex="$$f_U\in C_c(G),\qquad
+f_U\ge0,\qquad
+\int_G f_U(s)\,ds=1,\qquad
+\operatorname{supp}f_U\subset U. \tag{D24}$$">$$f_U\in C_c(G),\qquad
+f_U\ge0,\qquad
+\int_G f_U(s)\,ds=1,\qquad
+\operatorname{supp}f_U\subset U. \tag{D24}$$</span></p>
+<p>H0 supplies a nonnegative cutoff equal to one near the identity and compactly supported in any such <span class="math" data-tex="\(U\)">\(U\)</span>. Haar measure has full support and is finite on compact sets by L24, so division by its strictly positive finite integral supplies (D24). This net is directed by all relatively compact identity neighbourhoods, rather than by an assumed countable base.</p>
+<p>Set <span class="math" data-tex="\(x_U=x_{f_U}\in M_{\mathrm c}\)">\(x_U=x_{f_U}\in M_{\mathrm c}\)</span>, with <span class="math" data-tex="\(\|x_U\|\le\|x\|\)">\(\|x_U\|\le\|x\|\)</span>. We prove</p>
+<p><a id="equation-d25"></a></p>
+<p><span class="math math-display" data-tex="$$x_U\longrightarrow x
+\quad\text{in the sigma-strong-star topology}. \tag{D25}$$">$$x_U\longrightarrow x
+\quad\text{in the sigma-strong-star topology}. \tag{D25}$$</span></p>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a normal positive functional and put
+<span class="math" data-tex="\(z_U=x_U-x\)">\(z_U=x_U-x\)</span>. Here is the complete positive-average estimate. Put <span class="math" data-tex="\(b_s=\alpha_s(x)-x\)">\(b_s=\alpha_s(x)-x\)</span>, <span class="math" data-tex="\(f=f_U\)">\(f=f_U\)</span>, and <span class="math" data-tex="\(z=\int f(s)b_s\,ds=z_U\)">\(z=\int f(s)b_s\,ds=z_U\)</span>. For every vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, AT1 and the compact support of <span class="math" data-tex="\(f\)">\(f\)</span> make <span class="math" data-tex="\(s\mapsto f(s)b_s\xi\)">\(s\mapsto f(s)b_s\xi\)</span> a Bochner-integrable vector field by L24. Its coefficients are the AT5 coefficients, so its integral is exactly <span class="math" data-tex="\(z\xi\)">\(z\xi\)</span>. The vector triangle inequality and scalar probability inequality yield</p>
+<p><a id="equation-ld1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|z\xi\|^2\le\left(\int f(s)\|b_s\xi\|\,ds\right)^2
+ \le\int f(s)\|b_s\xi\|^2\,ds.
+ \tag{LD1}
+\]">\[
+ \|z\xi\|^2\le\left(\int f(s)\|b_s\xi\|\,ds\right)^2
+ \le\int f(s)\|b_s\xi\|^2\,ds.
+ \tag{LD1}
+\]</span></p>
+<p>For the last inequality, set <span class="math" data-tex="\(c=\int f(s)\|b_s\xi\|\,ds\)">\(c=\int f(s)\|b_s\xi\|\,ds\)</span>. Expanding the nonnegative integral <span class="math" data-tex="\(\int f(s)(\|b_s\xi\|-c)^2\,ds\)">\(\int f(s)(\|b_s\xi\|-c)^2\,ds\)</span> and using <span class="math" data-tex="\(\int f=1\)">\(\int f=1\)</span> gives the claim. All quantities are finite, since <span class="math" data-tex="\(\|b_s\|\le2\|x\|\)">\(\|b_s\|\le2\|x\|\)</span>. No operator-norm measurability of the original orbit is asserted.</p>
+<p>The bounded positive operator integral is explicitly</p>
+<p><a id="equation-ld2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ R=T_f(x^*x)-T_f(x^*)x-x^*T_f(x)+x^*x
+   =\int f(s)b_s^*b_s\,ds.
+ \tag{LD2}
+\]">\[
+ R=T_f(x^*x)-T_f(x^*)x-x^*T_f(x)+x^*x
+   =\int f(s)b_s^*b_s\,ds.
+ \tag{LD2}
+\]</span></p>
+<p>The first expression belongs to <span class="math" data-tex="\(M\)">\(M\)</span> by AT5. Testing fixed multiplication <span class="math" data-tex="\(a y b\)">\(a y b\)</span> against a CP6 vector series replaces its square-summable vectors by <span class="math" data-tex="\((b\xi_n,a^*\eta_n)\)">\((b\xi_n,a^*\eta_n)\)</span>; this proves normality and every scalar integral identity in the second expression. Its vector tests are <span class="math" data-tex="\(\int f\|b_s\xi\|^2\)">\(\int f\|b_s\xi\|^2\)</span>, so the CF8 positivity criterion makes <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>. Formula (LD1) gives <span class="math" data-tex="\(R-z^*z\ge0\)">\(R-z^*z\ge0\)</span>. Applying the finite normal positive functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and then its defining AT5 integral identity, proves</p>
+<p><a id="equation-d26"></a></p>
+<p><span class="math math-display" data-tex="$$\varphi(z_U^*z_U)
+\le
+\int_G f_U(s)
+\varphi\!\left((\alpha_s(x)-x)^*(\alpha_s(x)-x)\right)\,ds. \tag{D26}$$">$$\varphi(z_U^*z_U)
+\le
+\int_G f_U(s)
+\varphi\!\left((\alpha_s(x)-x)^*(\alpha_s(x)-x)\right)\,ds. \tag{D26}$$</span></p>
+<p>The scalar integrand tends to zero as <span class="math" data-tex="\(s\to e\)">\(s\to e\)</span>. Indeed, after expansion it is a sum of evaluations of
+<span class="math" data-tex="\(\alpha_s(x^*x)\)">\(\alpha_s(x^*x)\)</span>, <span class="math" data-tex="\(\alpha_s(x^*)x\)">\(\alpha_s(x^*)x\)</span>, <span class="math" data-tex="\(x^*\alpha_s(x)\)">\(x^*\alpha_s(x)\)</span>, and <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span>, each ultraweakly continuous at the identity. Given any positive error, continuity provides an identity neighbourhood on which this nonnegative integrand is below that error. Every sufficiently late <span class="math" data-tex="\(U\)">\(U\)</span> is contained there; hence its supremum on <span class="math" data-tex="\(\operatorname{supp}f_U\)">\(\operatorname{supp}f_U\)</span> tends to zero. Apply the identical argument to <span class="math" data-tex="\(x^*\)">\(x^*\)</span>; since <span class="math" data-tex="\(f_U\)">\(f_U\)</span> is real, its averaged difference is <span class="math" data-tex="\(z_U^*\)">\(z_U^*\)</span>. This controls <span class="math" data-tex="\(z_Uz_U^*\)">\(z_Uz_U^*\)</span> as well as its opposite product and proves both intrinsic seminorm estimates, hence (D25). The averages are uniformly norm bounded, so ST2 also identifies this convergence with concrete bounded strong-star convergence in every faithful normal representation. Indeed an operator commuting with every element of <span class="math" data-tex="\(M_{\mathrm c}\)">\(M_{\mathrm c}\)</span> commutes with each bounded strong limit <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, and conversely <span class="math" data-tex="\(M_{\mathrm c}\subset M\)">\(M_{\mathrm c}\subset M\)</span>. Their commutants agree, and the PC1 bicommutant characterization of the concrete von Neumann algebra gives (D27). This written scalar-positive-average proof complements the direct vector/predual proof already available in AT6.</p>
+<p>Thus <span class="math" data-tex="\(M_{\mathrm c}\)">\(M_{\mathrm c}\)</span> is sigma-strong-star dense, hence ultraweakly dense, in <span class="math" data-tex="\(M\)">\(M\)</span>:</p>
+<p><a id="equation-d27"></a></p>
+<p><span class="math math-display" data-tex="$$M_{\mathrm c}''=M \tag{D27}$$">$$M_{\mathrm c}''=M \tag{D27}$$</span></p>
+<p>in every faithful normal representation. The inclusion
+<span class="math" data-tex="\(M_{\mathrm c}\hookrightarrow M\)">\(M_{\mathrm c}\hookrightarrow M\)</span>, together with the original action on <span class="math" data-tex="\(M\)">\(M\)</span>, is therefore an <span class="math" data-tex="\(\alpha|_{M_{\mathrm c}}\)">\(\alpha|_{M_{\mathrm c}}\)</span>-representation.</p>
+<p><span id="OA-FLOW.L113.TRANSLATION-MODEL"></span><a id="oa-flow.l113.translation-model"></a></p>
+<p><a id="l113-translation-model"></a></p>
+<h2 id="a-proper-continuous-part-on-the-real-line">A proper continuous part on the real line</h2>
+<p>The continuous part can be proper. On <span class="math" data-tex="\(\mathcal H=L^2(\mathbb R)\)">\(\mathcal H=L^2(\mathbb R)\)</span>, let
+<span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span> be the left regular translation <span class="math" data-tex="\((\lambda_t\xi)(r)=\xi(r-t)\)">\((\lambda_t\xi)(r)=\xi(r-t)\)</span>, with Lebesgue Haar measure, and let</p>
+<p><a id="equation-d28"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_t=\operatorname{Ad}(\lambda_t)
+\quad\text{on }B(\mathcal H). \tag{D28}$$">$$\alpha_t=\operatorname{Ad}(\lambda_t)
+\quad\text{on }B(\mathcal H). \tag{D28}$$</span></p>
+<p>The L24 <span class="math" data-tex="\(L^2\)">\(L^2\)</span> translation theorem makes <span class="math" data-tex="\(t\mapsto\lambda_t\xi\)">\(t\mapsto\lambda_t\xi\)</span> strongly continuous for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. For fixed <span class="math" data-tex="\(a\in B(\mathcal H)\)">\(a\in B(\mathcal H)\)</span>, expanding <span class="math" data-tex="\(\lambda_t a\lambda_t^*\xi-a\xi\)">\(\lambda_t a\lambda_t^*\xi-a\xi\)</span> into the change of <span class="math" data-tex="\(\lambda_t^*\xi\)">\(\lambda_t^*\xi\)</span> and the change of <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span> on the fixed vector <span class="math" data-tex="\(a\xi\)">\(a\xi\)</span> proves point-strong continuity; repeating for <span class="math" data-tex="\(a^*\)">\(a^*\)</span> proves strong-star continuity. BD5 therefore gives point-ultraweak continuity of this uniformly bounded orbit, as required for the normal action.</p>
+<p>For <span class="math" data-tex="\(\theta_{\xi,\eta}v=\langle v,\eta\rangle\xi\)">\(\theta_{\xi,\eta}v=\langle v,\eta\rangle\xi\)</span>, Hilbert Cauchy–Schwarz and testing at <span class="math" data-tex="\(\eta/\|\eta\|\)">\(\eta/\|\eta\|\)</span> give <span class="math" data-tex="\(\|\theta_{\xi,\eta}\|=\|\xi\|\|\eta\|\)">\(\|\theta_{\xi,\eta}\|=\|\xi\|\|\eta\|\)</span>, including a zero vector by continuity. Conjugation sends this rank-one operator to <span class="math" data-tex="\(\theta_{\lambda_t\xi,\lambda_t\eta}\)">\(\theta_{\lambda_t\xi,\lambda_t\eta}\)</span>. The two-term estimate</p>
+<p><a id="equation-ld3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|\theta_{\lambda_t\xi,\lambda_t\eta}-\theta_{\xi,\eta}\|
+ \le\|\lambda_t\xi-\xi\|\|\eta\|+\|\xi\|\|\lambda_t\eta-\eta\|
+ \longrightarrow0
+ \tag{LD3}
+\]">\[
+ \|\theta_{\lambda_t\xi,\lambda_t\eta}-\theta_{\xi,\eta}\|
+ \le\|\lambda_t\xi-\xi\|\|\eta\|+\|\xi\|\|\lambda_t\eta-\eta\|
+ \longrightarrow0
+ \tag{LD3}
+\]</span></p>
+<p>proves norm continuity of every finite-rank orbit. Every compact operator is their norm limit: a finite error-net for the image of the unit ball lies in a finite-dimensional space <span class="math" data-tex="\(E\)">\(E\)</span>, and orthogonal projection <span class="math" data-tex="\(p_E\)">\(p_E\)</span> gives <span class="math" data-tex="\(\|a-p_Ea\|\)">\(\|a-p_Ea\|\)</span> below that error. Norm closure of <span class="math" data-tex="\(M_{\mathrm c}\)">\(M_{\mathrm c}\)</span> therefore proves the entire compact-operator assertion. But if <span class="math" data-tex="\(q\)">\(q\)</span> is multiplication by <span class="math" data-tex="\(1_{[0,\infty)}\)">\(1_{[0,\infty)}\)</span>, then</p>
+<p><a id="equation-d29"></a></p>
+<p><span class="math math-display" data-tex="$$\|\alpha_t(q)-q\|=1\qquad(t\ne0), \tag{D29}$$">$$\|\alpha_t(q)-q\|=1\qquad(t\ne0), \tag{D29}$$</span></p>
+<p>To see the exact norm, <span class="math" data-tex="\(\alpha_t(q)\)">\(\alpha_t(q)\)</span> multiplies by <span class="math" data-tex="\(1_{[t,\infty)}\)">\(1_{[t,\infty)}\)</span>. The difference has magnitude at most one everywhere and exactly one on the interval between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, which has positive finite measure. Its normalized characteristic vector gives the lower bound one. Thus <span class="math" data-tex="\(q\notin M_{\mathrm c}\)">\(q\notin M_{\mathrm c}\)</span>. This gives a concrete proper, strongly dense continuous C*-part.</p>
+<p><span id="OA-FLOW.L113.NONUNITAL"></span><a id="oa-flow.l113.nonunital"></a></p>
+<p><a id="l113-nonunital"></a></p>
+<h2 id="the-nonunital-gelfand-and-hull-quotient-bridge">The nonunital Gelfand and hull-quotient bridge</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be any commutative C-star algebra. CF9 supplies the forced unitization <span class="math" data-tex="\(A^\dagger=A\oplus\mathbb C\)">\(A^\dagger=A\oplus\mathbb C\)</span>, even when <span class="math" data-tex="\(A\)">\(A\)</span> already has a unit. The scalar map <span class="math" data-tex="\(q(a,\lambda)=\lambda\)">\(q(a,\lambda)=\lambda\)</span> is a character and <span class="math" data-tex="\(A=\ker q\)">\(A=\ker q\)</span>. Apply CF6 to <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span>, with compact Hausdorff character space <span class="math" data-tex="\(X\)">\(X\)</span>. Under its onto Gelfand isomorphism, <span class="math" data-tex="\(A\)">\(A\)</span> is exactly the continuous functions vanishing at the point <span class="math" data-tex="\(q\)">\(q\)</span>. Put <span class="math" data-tex="\(\Omega=X\setminus\{q\}\)">\(\Omega=X\setminus\{q\}\)</span>, an open LCH subspace.</p>
+<p>Restricting such a function to <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> puts it in <span class="math" data-tex="\(C_0(\Omega)\)">\(C_0(\Omega)\)</span>: every nonzero level set is compact in <span class="math" data-tex="\(X\)">\(X\)</span> and avoids <span class="math" data-tex="\(q\)">\(q\)</span>. Conversely, if <span class="math" data-tex="\(g\in C_0(\Omega)\)">\(g\in C_0(\Omega)\)</span>, extension by zero at <span class="math" data-tex="\(q\)">\(q\)</span> is continuous. For each positive error the compact set <span class="math" data-tex="\(\{|g|\ge\epsilon\}\subset\Omega\)">\(\{|g|\ge\epsilon\}\subset\Omega\)</span> is closed in <span class="math" data-tex="\(X\)">\(X\)</span>; its complement is a neighbourhood of <span class="math" data-tex="\(q\)">\(q\)</span> on which the extension is small. This proves the isometric star identification <span class="math" data-tex="\(A=C_0(\Omega)\)">\(A=C_0(\Omega)\)</span>, including its topology and all products.</p>
+<p>Every nonzero character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> extends uniquely to <span class="math" data-tex="\(\chi^\dagger(a,\lambda)=\chi(a)+\lambda\)">\(\chi^\dagger(a,\lambda)=\chi(a)+\lambda\)</span>. Direct multiplication verifies the character identity, and the unital character bounds and star property proved in CF3–6 apply to this extension. Conversely a character of <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span> other than <span class="math" data-tex="\(q\)">\(q\)</span> restricts nontrivially, since vanishing on <span class="math" data-tex="\(A\)">\(A\)</span> forces it to equal <span class="math" data-tex="\(q\)">\(q\)</span>. The coordinate topology is unchanged because the added scalar coordinate is constant at each character. Thus this <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is precisely the usual nonzero character spectrum. For an already unital <span class="math" data-tex="\(A\)">\(A\)</span>, its internal unit has Gelfand value one at every point of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and zero at <span class="math" data-tex="\(q\)">\(q\)</span>, so <span class="math" data-tex="\(q\)">\(q\)</span> is isolated and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is compact; the forced extra scalar point causes no loss. For <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, <span class="math" data-tex="\(X=\{q\}\)">\(X=\{q\}\)</span>, <span class="math" data-tex="\(\Omega=\varnothing\)">\(\Omega=\varnothing\)</span>; the subsequent nonidentity represented-action hypothesis is impossible.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be a norm-closed star ideal in <span class="math" data-tex="\(C_0(\Omega)\)">\(C_0(\Omega)\)</span>, and let <span class="math" data-tex="\(F\)">\(F\)</span> be its common zero set. It is closed. We prove that <span class="math" data-tex="\(I\)">\(I\)</span> consists exactly of the functions vanishing on <span class="math" data-tex="\(F\)">\(F\)</span>. Only the reverse inclusion needs proof. For such a <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, put <span class="math" data-tex="\(K=\{|g|\ge\epsilon\}\)">\(K=\{|g|\ge\epsilon\}\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is empty then <span class="math" data-tex="\(g\)">\(g\)</span> is already within <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> of zero in <span class="math" data-tex="\(I\)">\(I\)</span>. Otherwise <span class="math" data-tex="\(K\)">\(K\)</span> is compact and disjoint from <span class="math" data-tex="\(F\)">\(F\)</span>. Each point of <span class="math" data-tex="\(K\)">\(K\)</span> has some <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span> nonzero there. A finite cover gives <span class="math" data-tex="\(a_1,\ldots,a_m\in I\)">\(a_1,\ldots,a_m\in I\)</span> such that <span class="math" data-tex="\(h=\sum_j|a_j|^2\)">\(h=\sum_j|a_j|^2\)</span> is strictly positive on <span class="math" data-tex="\(K\)">\(K\)</span>; compactness supplies <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with <span class="math" data-tex="\(h\ge\delta\)">\(h\ge\delta\)</span> there. For <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>,</p>
+<p><a id="equation-ld4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ g_\eta=g\,h/(h+\eta)\in I,\qquad
+ \|g-g_\eta\|\le\max\{\epsilon,\|g\|\eta/\delta\}.
+ \tag{LD4}
+\]">\[
+ g_\eta=g\,h/(h+\eta)\in I,\qquad
+ \|g-g_\eta\|\le\max\{\epsilon,\|g\|\eta/\delta\}.
+ \tag{LD4}
+\]</span></p>
+<p>Indeed <span class="math" data-tex="\(g/(h+\eta)\)">\(g/(h+\eta)\)</span> is continuous and vanishes at infinity, with norm at most <span class="math" data-tex="\(\|g\|/\eta\)">\(\|g\|/\eta\)</span>; multiplying it by <span class="math" data-tex="\(h\in I\)">\(h\in I\)</span> stays in the ideal. Outside <span class="math" data-tex="\(K\)">\(K\)</span> the error is below <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>; on <span class="math" data-tex="\(K\)">\(K\)</span> it is at most <span class="math" data-tex="\(\|g\|\eta/\delta\)">\(\|g\|\eta/\delta\)</span>. Choosing <span class="math" data-tex="\(\eta\)">\(\eta\)</span> sufficiently small and then arbitrary <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, closedness gives <span class="math" data-tex="\(g\in I\)">\(g\in I\)</span>.</p>
+<p>Restriction <span class="math" data-tex="\(C_0(\Omega)\to C_0(F)\)">\(C_0(\Omega)\to C_0(F)\)</span> is a star homomorphism with this kernel. The target is a C-star algebra: zero extension identifies it with the closed ideal of continuous functions on its one-point compactification vanishing at infinity, as above. L24 Section10 makes the restriction range closed and its induced quotient map isometric. QF1 extends every <span class="math" data-tex="\(C_c(F)\)">\(C_c(F)\)</span> function to <span class="math" data-tex="\(C_c(\Omega)\)">\(C_c(\Omega)\)</span>. These functions are dense in <span class="math" data-tex="\(C_0(F)\)">\(C_0(F)\)</span>: multiply any <span class="math" data-tex="\(g\)">\(g\)</span> by an H0 compact cutoff equal to one on its compact nonzero level set; the uniform error is below the chosen level. Hence the restriction range is onto, and</p>
+<p><a id="equation-ld5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A/I\ \cong\ C_0(F)
+ \tag{LD5}
+\]">\[
+ A/I\ \cong\ C_0(F)
+ \tag{LD5}
+\]</span></p>
+<p>is the required isometric star isomorphism. This proof covers empty <span class="math" data-tex="\(F\)">\(F\)</span>, unital <span class="math" data-tex="\(A\)">\(A\)</span>, arbitrary nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, and spaces without any countable exhaustion.</p>
+<p><span id="OA-FLOW.CONT.GELFAND"></span><a id="oa-flow.cont.gelfand"></a></p>
+<p><a id="l113-visible"></a></p>
+<h2 id="a-nontrivial-represented-action-moves-a-visible-point">A nontrivial represented action moves a visible point</h2>
+<p>Let <span class="math" data-tex="\((A,G,\alpha)\)">\((A,G,\alpha)\)</span> be a norm-continuous C-star covariant system with <span class="math" data-tex="\(A\)">\(A\)</span> abelian. Let <span class="math" data-tex="\(\pi:A\to B(\mathcal H)\)">\(\pi:A\to B(\mathcal H)\)</span> be a star representation and suppose a point-ultraweakly continuous normal action <span class="math" data-tex="\(\widetilde\alpha\)">\(\widetilde\alpha\)</span> on <span class="math" data-tex="\(\pi(A)''\)">\(\pi(A)''\)</span> satisfies <span class="math" data-tex="\(\widetilde\alpha_t\pi(a)=\pi(\alpha_ta)\)">\(\widetilde\alpha_t\pi(a)=\pi(\alpha_ta)\)</span>. This is the represented-action hypothesis; its existence is not inferred for every representation. The represented extension implements the original action <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Degenerate representations are allowed. Write</p>
+<p><a id="equation-d1"></a></p>
+<p><span class="math math-display" data-tex="$$P=\pi(A)'',\qquad I=\ker\pi. \tag{D1}$$">$$P=\pi(A)'',\qquad I=\ker\pi. \tag{D1}$$</span></p>
+<p>The ideal <span class="math" data-tex="\(I\)">\(I\)</span> is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant. If <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>, covariance gives <span class="math" data-tex="\(\pi(\alpha_ta)=0\)">\(\pi(\alpha_ta)=0\)</span>, and applying the inverse action gives <span class="math" data-tex="\(\alpha_t(I)=I\)">\(\alpha_t(I)=I\)</span>. Contractivity of the star representation makes <span class="math" data-tex="\(I\)">\(I\)</span> norm closed. Put</p>
+<p><a id="equation-d2"></a></p>
+<p><span class="math math-display" data-tex="$$\Omega=\operatorname{Spec}(A),\qquad
+F=h(I)=\{\omega\in\Omega:a(\omega)=0\text{ for every }a\in I\}. \tag{D2}$$">$$\Omega=\operatorname{Spec}(A),\qquad
+F=h(I)=\{\omega\in\Omega:a(\omega)=0\text{ for every }a\in I\}. \tag{D2}$$</span></p>
+<p>The complete preceding hull bridge gives <span class="math" data-tex="\(A/I\cong C_0(F)\)">\(A/I\cong C_0(F)\)</span>. Kernel invariance makes <span class="math" data-tex="\(F\)">\(F\)</span> invariant: composing a character annihilating <span class="math" data-tex="\(I\)">\(I\)</span> with <span class="math" data-tex="\(\alpha_{t^{-1}}\)">\(\alpha_{t^{-1}}\)</span> still annihilates it. Define the induced action on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> by</p>
+<p><a id="equation-d3"></a></p>
+<p><span class="math math-display" data-tex="$$T_t\omega=\omega\circ\alpha_{t^{-1}}. \tag{D3}$$">$$T_t\omega=\omega\circ\alpha_{t^{-1}}. \tag{D3}$$</span></p>
+<p>Thus</p>
+<p><a id="equation-d4"></a></p>
+<p><span class="math math-display" data-tex="$$(\alpha_ta)(\omega)=a(T_{t^{-1}}\omega). \tag{D4}$$">$$(\alpha_ta)(\omega)=a(T_{t^{-1}}\omega). \tag{D4}$$</span></p>
+<p>The map <span class="math" data-tex="\((t,\omega)\mapsto T_t\omega\)">\((t,\omega)\mapsto T_t\omega\)</span> is continuous. To check this directly, let
+<span class="math" data-tex="\((t_i,\omega_i)\to(t,\omega)\)">\((t_i,\omega_i)\to(t,\omega)\)</span>. For every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,</p>
+<p><a id="equation-d5"></a></p>
+<p><span class="math math-display" data-tex="$$\begin{aligned}
+\bigl|a(T_{t_i}\omega_i)-a(T_t\omega)\bigr|
+&amp;=
+\bigl|\omega_i(\alpha_{t_i^{-1}}a)-\omega(\alpha_{t^{-1}}a)\bigr|\\
+&amp;\le
+\|\alpha_{t_i^{-1}}a-\alpha_{t^{-1}}a\|
++\bigl|\omega_i(\alpha_{t^{-1}}a)-\omega(\alpha_{t^{-1}}a)\bigr|
+\longrightarrow0.
+\end{aligned} \tag{D5}$$">$$\begin{aligned}
+\bigl|a(T_{t_i}\omega_i)-a(T_t\omega)\bigr|
+&amp;=
+\bigl|\omega_i(\alpha_{t_i^{-1}}a)-\omega(\alpha_{t^{-1}}a)\bigr|\\
+&amp;\le
+\|\alpha_{t_i^{-1}}a-\alpha_{t^{-1}}a\|
++\bigl|\omega_i(\alpha_{t^{-1}}a)-\omega(\alpha_{t^{-1}}a)\bigr|
+\longrightarrow0.
+\end{aligned} \tag{D5}$$</span></p>
+<p>The Gelfand topology is the weakest topology making all these functions continuous, so (D5) proves joint continuity.</p>
+<p>Assume that <span class="math" data-tex="\(\widetilde\alpha_s\ne\operatorname{id}_P\)">\(\widetilde\alpha_s\ne\operatorname{id}_P\)</span>. We must detect this on the quotient even if <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is degenerate. The unital algebra <span class="math" data-tex="\(B=\pi(A)+\mathbb C I_{\mathcal H}\)">\(B=\pi(A)+\mathbb C I_{\mathcal H}\)</span> is the closed star image of the forced unitization by L24 Section10, and <span class="math" data-tex="\(B''=P\)">\(B''=P\)</span>. BD4 gives bounded strong-star approximation of every contraction in <span class="math" data-tex="\(P\)">\(P\)</span> by elements of <span class="math" data-tex="\(B\)">\(B\)</span>, and BD5 turns it into ultraweak approximation. If the normal unital map <span class="math" data-tex="\(\widetilde\alpha_s\)">\(\widetilde\alpha_s\)</span> fixed <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> pointwise, it would fix <span class="math" data-tex="\(B\)">\(B\)</span>, then all of <span class="math" data-tex="\(P\)">\(P\)</span>, a contradiction. Thus the induced automorphism on <span class="math" data-tex="\(A/I\)">\(A/I\)</span> is nontrivial. If it fixed every point of <span class="math" data-tex="\(F\)">\(F\)</span>, the isomorphism with <span class="math" data-tex="\(C_0(F)\)">\(C_0(F)\)</span> would make it the identity on the quotient. This is impossible. Hence some</p>
+<p><a id="equation-d6"></a></p>
+<p><span class="math math-display" data-tex="$$\omega_0\in F\qquad\text{satisfies}\qquad
+T_s\omega_0\ne\omega_0. \tag{D6}$$">$$\omega_0\in F\qquad\text{satisfies}\qquad
+T_s\omega_0\ne\omega_0. \tag{D6}$$</span></p>
+<p>This restriction to <span class="math" data-tex="\(F\)">\(F\)</span> matters: points outside <span class="math" data-tex="\(F\)">\(F\)</span> are invisible to the representation.</p>
+<p><span id="OA-FLOW.CONT.DISJOINT"></span><a id="oa-flow.cont.disjoint"></a></p>
+<p><a id="l113-displacement"></a></p>
+<h2 id="a-gelfand-cutoff-gives-a-locally-disjoint-projection">A Gelfand cutoff gives a locally disjoint projection</h2>
+<p>Choose disjoint neighborhoods <span class="math" data-tex="\(O_0\ni\omega_0\)">\(O_0\ni\omega_0\)</span> and
+<span class="math" data-tex="\(O_1\ni T_s\omega_0\)">\(O_1\ni T_s\omega_0\)</span>. Joint continuity supplies a neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span> and a relatively compact open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> such that</p>
+<p><a id="equation-d7"></a></p>
+<p><span class="math math-display" data-tex="$$V\subset O_0,\qquad
+T_t(V)\subset O_1\quad(t\in U). \tag{D7}$$">$$V\subset O_0,\qquad
+T_t(V)\subset O_1\quad(t\in U). \tag{D7}$$</span></p>
+<p>In particular,</p>
+<p><a id="equation-d8"></a></p>
+<p><span class="math math-display" data-tex="$$T_t(V)\cap V=\varnothing,\qquad t\in U. \tag{D8}$$">$$T_t(V)\cap V=\varnothing,\qquad t\in U. \tag{D8}$$</span></p>
+<p>Choose <span class="math" data-tex="\(f\in C_c(\Omega)\)">\(f\in C_c(\Omega)\)</span> with</p>
+<p><a id="equation-d9"></a></p>
+<p><span class="math math-display" data-tex="$$0\le f\le1,\qquad f(\omega_0)=1,\qquad
+\operatorname{supp}f\subset V, \tag{D9}$$">$$0\le f\le1,\qquad f(\omega_0)=1,\qquad
+\operatorname{supp}f\subset V, \tag{D9}$$</span></p>
+<p>and let <span class="math" data-tex="\(p=s(\pi(f))\)">\(p=s(\pi(f))\)</span> be the support projection of <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span> in the abelian von Neumann algebra <span class="math" data-tex="\(P\)">\(P\)</span>. Because <span class="math" data-tex="\(\omega_0\in F\)">\(\omega_0\in F\)</span>, the function <span class="math" data-tex="\(f\)">\(f\)</span> does not belong to <span class="math" data-tex="\(I\)">\(I\)</span>; hence</p>
+<p><a id="equation-d10"></a></p>
+<p><span class="math math-display" data-tex="$$p\ne0. \tag{D10}$$">$$p\ne0. \tag{D10}$$</span></p>
+<p>By (D4), <span class="math" data-tex="\(\operatorname{supp}(\alpha_t f)\subset T_t(V)\)">\(\operatorname{supp}(\alpha_t f)\subset T_t(V)\)</span>. Equations (D8)--(D9) give</p>
+<p><a id="equation-d11"></a></p>
+<p><span class="math math-display" data-tex="$$\alpha_t(f)f=0,\qquad t\in U. \tag{D11}$$">$$\alpha_t(f)f=0,\qquad t\in U. \tag{D11}$$</span></p>
+<p>Normal automorphisms preserve support projections, so</p>
+<p><a id="equation-d12"></a></p>
+<p><span class="math math-display" data-tex="$$\widetilde\alpha_t(p)
+=s\!\left(\pi(\alpha_t f)\right).
+\tag{D12}$$">$$\widetilde\alpha_t(p)
+=s\!\left(\pi(\alpha_t f)\right).
+\tag{D12}$$</span></p>
+<p>Here are both support steps explicitly. For a bounded positive operator <span class="math" data-tex="\(a\)">\(a\)</span>, PC1 puts the projection onto <span class="math" data-tex="\(\overline{a\mathcal H}\)">\(\overline{a\mathcal H}\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>; it is the least projection <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(ra=a\)">\(ra=a\)</span>. Normal automorphisms preserve this characterization, proving (D12). If bounded positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span> have <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span>, then <span class="math" data-tex="\(b\mathcal H\subset\ker a=(\overline{a\mathcal H})^\perp\)">\(b\mathcal H\subset\ker a=(\overline{a\mathcal H})^\perp\)</span>; taking closures makes their range projections orthogonal. Apply this to <span class="math" data-tex="\(a=\pi(\alpha_tf)\)">\(a=\pi(\alpha_tf)\)</span> and <span class="math" data-tex="\(b=\pi(f)\)">\(b=\pi(f)\)</span>, whose product is zero by (D11). We have proved</p>
+<p><a id="equation-d13"></a></p>
+<p><span class="math math-display" data-tex="$$\boxed{\widetilde\alpha_t(p)p=0
+\qquad(t\in U)}. \tag{D13}$$">$$\boxed{\widetilde\alpha_t(p)p=0
+\qquad(t\in U)}. \tag{D13}$$</span></p>
+<p>No commutativity of <span class="math" data-tex="\(G\)">\(G\)</span> was used. Commutativity was required only for the coefficient algebra <span class="math" data-tex="\(A\)">\(A\)</span>, so that points and disjoint open sets in its Gelfand spectrum can be used.</p>
+<p><span id="OA-FLOW.L113.MODEL"></span><a id="oa-flow.l113.model"></a></p>
+<p><a id="l113-model"></a></p>
+<h2 id="the-paired-real-line-models-and-solved-checks">The paired real-line models and solved checks</h2>
+<p>The two examples use the same left regular convention but answer different questions. The discontinuous element is the half-line projection <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(B(L^2(\mathbb R))\)">\(B(L^2(\mathbb R))\)</span>. For <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>, its difference from <span class="math" data-tex="\(\alpha_t(q)\)">\(\alpha_t(q)\)</span> has magnitude one on <span class="math" data-tex="\([0,1/2)\)">\([0,1/2)\)</span>, so (D29) is exact, not an estimate approaching zero.</p>
+<p>For the displacement example take <span class="math" data-tex="\(A=C_0(\mathbb R)\)">\(A=C_0(\mathbb R)\)</span>, represented by multiplication on <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>, and <span class="math" data-tex="\(\alpha_t f(r)=f(r-t)\)">\(\alpha_t f(r)=f(r-t)\)</span>. This representation is faithful: a nonzero continuous function is bounded away from zero on an open interval of positive Haar measure, and a characteristic vector detects its nonzero multiplication operator. For a compactly supported continuous function, uniform continuity on a compact interval enlarged by one makes its uniform translation difference tend to zero; outside that interval both translates vanish for small <span class="math" data-tex="\(t\)">\(t\)</span>. H0 gives uniform <span class="math" data-tex="\(C_c\)">\(C_c\)</span> approximation of every <span class="math" data-tex="\(C_0\)">\(C_0\)</span> function, so the isometric three-term estimate proves norm continuity of the action on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Its normal extension is the restriction of the already checked conjugation action on <span class="math" data-tex="\(B(L^2)\)">\(B(L^2)\)</span>: covariance is direct substitution, and conjugation preserves the generated bicommutant by transporting commutants. Here <span class="math" data-tex="\(T_t(r)=r+t\)">\(T_t(r)=r+t\)</span>, <span class="math" data-tex="\(F=\Omega=\mathbb R\)">\(F=\Omega=\mathbb R\)</span>, and choose</p>
+<p><a id="equation-ld6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ s=1,\quad U=(9/10,11/10),\quad V=(-1/3,1/3),\quad
+ O_0=(-1/2,1/2),\quad O_1=(1/2,3/2),\quad
+ f(r)=\max(1-4|r|,0).
+ \tag{LD6}
+\]">\[
+ s=1,\quad U=(9/10,11/10),\quad V=(-1/3,1/3),\quad
+ O_0=(-1/2,1/2),\quad O_1=(1/2,3/2),\quad
+ f(r)=\max(1-4|r|,0).
+ \tag{LD6}
+\]</span></p>
+<p>Then <span class="math" data-tex="\(f(0)=1\)">\(f(0)=1\)</span>, <span class="math" data-tex="\(\operatorname{supp}f=[-1/4,1/4]\subset V\)">\(\operatorname{supp}f=[-1/4,1/4]\subset V\)</span>. For every <span class="math" data-tex="\(t\in U\)">\(t\in U\)</span>, <span class="math" data-tex="\(T_t(V)\subset(17/30,43/30)\subset O_1\)">\(T_t(V)\subset(17/30,43/30)\subset O_1\)</span>; it is disjoint from <span class="math" data-tex="\(V\)">\(V\)</span>. The support projection is multiplication by <span class="math" data-tex="\(1_{(-1/4,1/4)}\)">\(1_{(-1/4,1/4)}\)</span>. Its translate is multiplication by <span class="math" data-tex="\(1_{(t-1/4,t+1/4)}\)">\(1_{(t-1/4,t+1/4)}\)</span>, so their product is exactly zero for every <span class="math" data-tex="\(t\in U\)">\(t\in U\)</span>. No numerical sampling is used to prove this neighbourhood statement.</p>
+<p><strong>Problem 1.</strong> Can point-ultraweak continuity of a normal action be replaced by an assertion that every orbit is norm continuous?</p>
+<p><strong>Solution.</strong> Norm continuity would imply point-ultraweak continuity since each normal functional is bounded, but it is a stronger hypothesis. In (D28), all orbits are strong-star and ultraweak continuous, while (D29) gives a norm-discontinuous orbit. The continuous part is strongly dense and proper, and contains every compact operator. This distinction is the reason for smoothing rather than assuming <span class="math" data-tex="\(M_{\mathrm c}=M\)">\(M_{\mathrm c}=M\)</span>.</p>
+<p><strong>Problem 2.</strong> Why must the cutoff point lie in the represented closed set <span class="math" data-tex="\(F\)">\(F\)</span>, and does a degenerate representation spoil the argument?</p>
+<p><strong>Solution.</strong> At a point outside <span class="math" data-tex="\(F\)">\(F\)</span>, nonzero functions can lie in the kernel; their image and support projection can vanish. At <span class="math" data-tex="\(\omega_0\in F\)">\(\omega_0\in F\)</span>, <span class="math" data-tex="\(f(\omega_0)=1\)">\(f(\omega_0)=1\)</span> forces <span class="math" data-tex="\(f\notin I\)">\(f\notin I\)</span> and gives (D10). Degeneracy only prevents claiming that <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> itself fills the unital bicommutant; the proved density of <span class="math" data-tex="\(\pi(A)+\mathbb C I\)">\(\pi(A)+\mathbb C I\)</span> and unitality of the normal extension give the same nonidentity test. No faithful-state or nondegeneracy assumption is added.</p>
+<p><span id="OA-FLOW.L113.SOURCES"></span><a id="oa-flow.l113.sources"></a></p>
+<p><a id="l113-sources"></a></p>
+<h2 id="human-antecedent-and-bounded-conclusion">Human antecedent and bounded conclusion</h2>
+<p>The two targets and the common smoothing/cutoff mechanisms occur in Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em>, Definition XI.2.4 and Lemma XI.2.5, printed333–334</a>. This restored teaching order begins with the continuous part and its properness model, then supplies the nonunital spectrum/ideal quotient proof before the represented displacement application. The exact Jensen and degenerate-image density passages are written here. The earlier free-source AT construction and its complete arbitrary-group approximation proof remain available and unchanged. A source citation does not supply a missing internal proof.</p>
+<p>The bounded conclusions are the invariant norm-continuous C-star part with bounded sigma-strong-star density in every faithful normal realization, and local orthogonal-projection displacement for represented commutative systems, with arbitrary LCH group, arbitrary coefficient algebra/Hilbert space and the stated representation hypothesis. No integrable-action eigenoperator theorem, general homogeneity result or whole C3 completion is asserted.</p>
+<p><a id="oa-flow.l113.figure"></a></p>
+<h2 id="OA-FLOW.L113.FIGURE">The paired displacement illustration</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Half-line norm obstruction and locally disjoint cutoff supports" src="assets/local-displacement-continuous-part/assets/paired-displacement.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>Both models use Lebesgue left Haar measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, <span class="math" data-tex="\((\lambda_t\xi)(r)=\xi(r-t)\)">\((\lambda_t\xi)(r)=\xi(r-t)\)</span>, and conjugation by <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span>. The displayed coordinate functions are exact step or piecewise-linear functions; their finite drawing coordinates are not a sampled proof of continuity or orthogonality.</p>
+<p>In the upper-left panel, <span class="math" data-tex="\(q\)">\(q\)</span> is multiplication by <span class="math" data-tex="\(1_{[0,\infty)}\)">\(1_{[0,\infty)}\)</span>, and its translate at <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span> is multiplication by <span class="math" data-tex="\(1_{[1/2,\infty)}\)">\(1_{[1/2,\infty)}\)</span>. The shaded interval <span class="math" data-tex="\([0,1/2)\)">\([0,1/2)\)</span> has difference magnitude one. For every nonzero <span class="math" data-tex="\(t\)">\(t\)</span>, the interval between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> has positive finite measure; its normalized indicator vector proves <span class="math" data-tex="\(\|\alpha_t(q)-q\|=1\)">\(\|\alpha_t(q)-q\|=1\)</span>. At zero the norm is zero, represented by the blue point in the lower-left panel; the open red point excludes zero from the constant-one branch. Endpoint choices for these multipliers differ only on Lebesgue-null points. This is the exact <a href="OA-FLOW-L113.html#l113-translation-model">D28–29 model</a>, whose orbit is nevertheless strong-star continuous.</p>
+<p>The upper-right panel uses <span class="math" data-tex="\(A=C_0(\mathbb R)\)">\(A=C_0(\mathbb R)\)</span> in its faithful multiplication representation and <span class="math" data-tex="\(T_t(r)=r+t\)">\(T_t(r)=r+t\)</span>. The blue cutoff is <span class="math" data-tex="\(f(r)=\max(1-4|r|,0)\)">\(f(r)=\max(1-4|r|,0)\)</span>, with closed function support <span class="math" data-tex="\([-1/4,1/4]\)">\([-1/4,1/4]\)</span> and positive set <span class="math" data-tex="\((-1/4,1/4)\)">\((-1/4,1/4)\)</span>. Thus its operator support projection is multiplication by <span class="math" data-tex="\(1_{(-1/4,1/4)}\)">\(1_{(-1/4,1/4)}\)</span>. The red dashed curve is the exact translate at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. The green region is the union of closed function supports for all <span class="math" data-tex="\(t\in U=(9/10,11/10)\)">\(t\in U=(9/10,11/10)\)</span>, namely the open interval <span class="math" data-tex="\((13/20,27/20)\)">\((13/20,27/20)\)</span>; openness comes from the open parameter interval.</p>
+<p>The lower-right intervals retain <span class="math" data-tex="\(V=(-1/3,1/3)\)">\(V=(-1/3,1/3)\)</span>, <span class="math" data-tex="\(O_0=(-1/2,1/2)\)">\(O_0=(-1/2,1/2)\)</span>, and <span class="math" data-tex="\(O_1=(1/2,3/2)\)">\(O_1=(1/2,3/2)\)</span>. Open endpoint circles denote open intervals; the filled endpoints denote the closed support of <span class="math" data-tex="\(f\)">\(f\)</span>. For every <span class="math" data-tex="\(t\in U\)">\(t\in U\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ T_t(V)=(t-1/3,t+1/3)\subset(17/30,43/30)\subset O_1,
+ \qquad \operatorname{supp}f\subset V\subset O_0.
+\]">\[
+ T_t(V)=(t-1/3,t+1/3)\subset(17/30,43/30)\subset O_1,
+ \qquad \operatorname{supp}f\subset V\subset O_0.
+\]</span></p>
+<p>Consequently <span class="math" data-tex="\(\alpha_t(p)p=0\)">\(\alpha_t(p)p=0\)</span> on this entire neighborhood. The figure's exact rational coordinates and endpoint conventions are retained in the <a href="assets/local-displacement-continuous-part/assets/paired-displacement-data.json">data</a>; see the complete <a href="OA-FLOW-L113.html#l113-model">LD6 model</a> and <a href="OA-FLOW-L113.html#l113-displacement">D7–13 proof</a>.</p>
+<p>These are real-line explanatory models. The written density theorem concerns arbitrary LCH group actions on arbitrary von Neumann algebras/Hilbert spaces; the displacement theorem concerns arbitrary LCH groups with a commutative coefficient algebra and the stated represented normal action. Neither diagram changes these hypotheses. The common mechanisms have the human antecedent Takesaki, <a href="https://doi.org/10.1007/978-3-662-10451-4"><em>Theory of Operator Algebras II</em>, Lemma XI.2.5, printed333–334</a>; the paired geometry and exact model are drawn independently here.</p>
+<p>Native PNG dimensions are <span class="math" data-tex="\(3000\times2000\)">\(3000\times2000\)</span>. The <a href="assets/local-displacement-continuous-part/assets/paired-displacement.svg">editable SVG</a> and <a href="assets/local-displacement-continuous-part/render_displacement.py">reproduction source</a> preserve the complete figure. Original diagram/code/data are CC0-1.0 to the extent of rights held; <a href="assets/local-displacement-continuous-part/FONT-LICENSE.txt">DejaVu font terms</a> remain separate.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L113.md">Lesson source</a></nav></main></body></html>

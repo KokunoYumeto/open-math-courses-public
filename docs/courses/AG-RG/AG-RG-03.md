@@ -1,0 +1,673 @@
+# Roots and reductive groups of rank one
+
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original exposition is public domain (CC0). The collected lesson, including the explicitly attributed Stacks passage, is also distributed under the GNU Free Documentation License 1.2.*
+
+The diagonal entries of a matrix act on its off-diagonal entries through ratios. Those ratios are the roots of a general linear group. For an arbitrary reductive group, roots are still characters of a maximal torus, but their one-dimensional spaces need not be globally trivial over the base. This lesson constructs the corresponding groups without using a power-series exponential, and shows why every root carries a copy of the rank-one geometry of $\operatorname{SL}_2$.
+
+We use torus conjugacy, torus deformation, and the centralizer theorem from the preceding two lessons. A reductive $S$-group is smooth affine of finite presentation with connected reductive geometric fibres. A semisimple $S$-group has semisimple geometric fibres. Statements about line bundles and subgroup schemes are made over arbitrary schemes, including nonreduced ones.
+
+## 1. The centre and the two ranks
+
+Let $T$ be a split maximal torus of $G$, and, on an open set where the ranks are constant, write
+
+$$
+\mathfrak g=\mathfrak t\oplus\bigoplus_{\alpha\in\Phi}\mathfrak g_\alpha.
+$$
+
+For now $\Phi$ means the nonzero weights; we will prove that they form a reduced root system. Put
+
+$$
+Z=\bigcap_{\alpha\in\Phi}\ker(\alpha:T\to\mathbf G_m).
+$$
+
+The group $Z$ is of multiplicative type. It is precisely the scheme-theoretic centre of $G$. Indeed, its conjugation action on $\mathfrak g$ is trivial. Exactness of invariants for a multiplicative-type group makes $C_G(Z)$ smooth with Lie algebra $\mathfrak g$. Its geometric fibres are therefore all of $G$; the smooth fibrewise isomorphism argument of the preceding lesson gives $C_G(Z)=G$. Conversely any central point belongs to $C_G(T)=T$ and acts trivially on every weight summand, hence lies in $Z$. These constructions agree on overlaps and descend when $T$ is only étale locally split.
+
+The centre need not be smooth: $Z(\operatorname{SL}_n)=\mu_n$, including when the characteristic divides $n$. Its largest subtorus is called the **radical**, denoted $\operatorname{Rad}(G)$. For a group of multiplicative type with character sheaf $M$, this subtorus has character sheaf $M/M_{\mathrm{tors}}$. Thus its rank is locally constant and its formation commutes with base change. The **rank** of $G$ is the dimension of a maximal torus; its **semisimple rank** is
+
+$$
+\operatorname{rank}(G)-\dim\operatorname{Rad}(G).
+$$
+
+Over an algebraically closed field, the radical also equals the largest smooth connected solvable normal subgroup. Its unipotent radical is normal in $G$ and is trivial by reductivity, so it is a torus; rigidity of torus automorphisms makes it central. Conversely a central torus is connected solvable normal. The quotient by this torus is semisimple: the inverse image of a connected solvable normal subgroup of the quotient would enlarge the radical.
+
+The derived group will be constructed for arbitrary bases after the pinned existence theorem in [Pinnings and the classification of split reductive groups](AG-RG-05.md#the-derived-group). It is semisimple and the multiplication map
+
+$$
+\operatorname{Rad}(G)\times G_{\mathrm{der}}\longrightarrow G
+$$
+
+is a central isogeny. Its construction uses the root groups established here. We do not assume a relative derived group in constructing these groups. Central quotients are constructed by graded invariant algebras in Theorem 1.1 below, without using coroots. In rank one we will construct the simply connected cover explicitly below.
+
+### Central quotients before the rank-one argument
+
+The rank-one argument below needs the affine quotient even when the centre is not smooth. The invariant-algebra construction is independent of coroots and root groups.
+
+**Theorem 1.1 (affine central quotient).** Let $G$ be a reductive group over a scheme $S$, and let $H\subset Z(G)$ be a closed subgroup of multiplicative type of finite presentation. The fppf quotient $G/H$ is an affine reductive $S$-group. Formation of the quotient commutes with arbitrary base change.
+
+**Proof.** Work étale locally on $S=\operatorname{Spec}R$, with $H=D_R(M)$. Its character group $M$ is finitely generated. Right translation gives a grading $A=\Gamma(G,\mathcal O_G)=\bigoplus_{m\in M}A_m$. Put $B=A_0$ and $Q=\operatorname{Spec}B$. Invariants commute with any base change because they are a direct grading summand. The same summand proves that $B$ is flat over $R$.
+
+We check finite presentation. The data descend to a finitely generated $\mathbf Z$-algebra, including the smooth group, the closed embedding of $D(M)$, and centrality; all are finite-presentation equations. We may therefore assume $R$ Noetherian. Choose finitely many homogeneous generators of $A$ as an $R$-algebra and a graded surjection $P=R[z_1,\ldots,z_n]\to A$. Its invariant part surjects onto $B$. The monomials of weight zero in $P$ are finitely generated as a semigroup: their indecomposable exponent vectors form an antichain in $\mathbf N^n$, since if $u\le v$ are two such vectors, $v-u$ also has weight zero. Every antichain is finite. The latter assertion follows inductively on $n$ by extracting a nondecreasing subsequence of the first coordinates from any infinite sequence, then applying the induction to the remaining coordinates. Every zero-weight vector is a sum of indecomposables by induction on its coordinate sum. Thus $P_0$, and then $B$, are finitely generated. They are finitely presented over Noetherian $R$. Descent and base change now give finite presentation in general.
+
+Next we prove that $q:G\to Q$ is an $H$-torsor. First suppose $R=k$ is algebraically closed. The closed embedding $H\hookrightarrow G$ gives a graded surjection $A\to k[M]$. For each of finitely many generators $m_i$ of $M$, choose elements $a_i\in A_{m_i}$ and $b_i\in A_{-m_i}$ restricting to the corresponding characters of $H$. Then $f=\prod_i a_ib_i\in B$ has value one at the identity. In $A_f$, every $a_i$ and $b_i$ is a unit. Each homogeneous component is therefore a free rank-one $B_f$-module generated by a homogeneous unit; multiplication of components is an isomorphism. Explicitly the map
+
+$$
+A_f\otimes_{B_f}A_f\longrightarrow A_f\otimes_k k[M],
+\qquad a\otimes c_m\longmapsto ac_m\otimes e_m
+$$
+
+is an isomorphism: for a homogeneous unit $u_m$ its inverse sends $a\otimes e_m$ to $a u_m^{-1}\otimes u_m$. Also $A_f=\bigoplus_m B_f u_m$ is faithfully flat over $B_f$. This proves the torsor assertion on $D(f)$.
+
+Left translation by $g\in G(k)$ preserves the grading and gives the same proof on $D(f_g)$, where $f_g(x)=f(g^{-1}x)$. These opens cover $Q$. Indeed $B\hookrightarrow A$ has a $B$-linear retraction, so $A\otimes_B\kappa(y)$ is nonzero for every prime $y$ of $B$ and $q$ is surjective. A closed point of $Q$ has a $k$-point $g$ above it, and $f_g(g)=1$. Since $Q$ is of finite type over $k$, an uncovered nonempty closed subset would contain a closed point. Hence there is no uncovered point.
+
+Return to general $R$. Both $G$ and $Q$ are flat of finite presentation over $R$, and the geometric-fibre morphisms are faithfully flat torsors by the preceding calculation. The fibre criterion for flatness gives that $q$ is flat and of finite presentation; it is surjective by the invariant retraction. The natural morphism $G\times H\to G\times_QG$ is an isomorphism on geometric fibres. Both sides are flat of finite presentation over $R$. The fibre criterion applied to this morphism makes it étale, and its fibrewise bijectivity makes it an isomorphism. Thus $q$ is an fppf torsor. Centrality permits multiplication and inversion to descend, making $Q$ a group; this also identifies $Q$ with the fppf quotient.
+
+Its geometric fibres are smooth connected reductive groups. Here is a proof of smoothness and reductivity that does not assume a quotient theorem. Over an algebraically closed field, $A$ is a normal domain, and its invariant subring $B$ is normal: an element of $\operatorname{Frac}B$ integral over $B$ is integral over $A$, hence in $A$, and is invariant, hence in $B$. A finite-type normal group over a perfect field has a nonempty smooth open subset; translation carries a smooth point to every closed point, so it is smooth. It is connected because $G\to Q$ is surjective. If its smooth connected unipotent radical were nontrivial, its inverse image would be a solvable normal subgroup of $G$. The reduced identity component of that inverse image is smooth, connected, solvable and normal, so is a central torus by reductivity. It surjects onto the radical: the finitely many components of the inverse image cannot map onto a connected group with the identity component having smaller dimension. A torus has trivial image in a unipotent group, a contradiction. Flatness, finite presentation and these smooth geometric fibres prove smoothness of $Q/S$.
+
+$\square$
+
+## 2. Why rank one has only two moving directions
+
+We first prove the geometric rank-one statement, rather than assuming a root classification. Work over an algebraically closed field $k$.
+
+**Lemma 2.1.** If a torus acts linearly on an irreducible projective variety $X$, it has at least $\dim X+1$ fixed points.
+
+**Proof.** Choose a cocharacter separating the finitely many weights of an equivariant projective embedding. Induct on $\dim X$. Choose a lowest-weight basis vector and the complementary coordinate hyperplane. If $X$ lies in that hyperplane, remove the basis vector and repeat. Otherwise the hyperplane section has dimension $\dim X-1$ and has at least $\dim X$ fixed points by induction on an irreducible component. The affine complementary chart has nonnegative cocharacter weights. Sending its cocharacter parameter to zero produces another fixed point, outside the hyperplane. Separation of the torus weights makes it torus-fixed, not merely cocharacter-fixed. The base case is a point. $\square$
+
+### The curve duality used in rank one
+
+**Lemma (curve duality).** If $C$ is a smooth projective pure one-dimensional curve over a field $k$ and $L$ is invertible, then naturally
+
+$$
+H^1(C,L)^*\simeq
+H^0(C,\Omega_{C/k}\otimes L^{-1}).
+$$
+
+**Proof.** Embed \(i:C\hookrightarrow P=\mathbf P^N_k\), and put \(c=N-1\). The regular-immersion calculation in Projective cohomology and smooth affine models, Lemma 6.1, proves over the original field, including imperfect fields, that \(I/I^2\) is locally free of rank \(c\), that the ideal is locally generated by a regular sequence, and that
+\[
+0\longrightarrow I/I^2\longrightarrow i^*\Omega_{P/k}
+\longrightarrow\Omega_{C/k}\longrightarrow0
+\]
+is exact. Its proof first calculates at geometric closed points, then descends the conormal module and the exact Koszul complex by faithful field extension.
+
+Dualizing that Koszul resolution, with a local frame of \(L\), gives
+\[
+\mathcal E xt^q_P(i_*L,\omega_P)=0\quad(q\ne c),
+\qquad
+\mathcal E xt^c_P(i_*L,\omega_P)
+=i_*(L^{-1}\otimes i^*\omega_P\otimes\det(I/I^2)^*).
+\]
+Here \(\omega_P=\det\Omega_{P/k}=\mathcal O_P(-N-1)\). Taking determinants of the conormal sequence identifies the sheaf in degree \(c\) with \(i_*(L^{-1}\otimes\Omega_{C/k})\). The finite-cover Hom double complex written in S02 Theorem 6.2 has only this nonzero sheaf-Ext row, and therefore gives
+\[
+\operatorname{Ext}^c_P(i_*L,\omega_P)
+=H^0(C,L^{-1}\otimes\Omega_{C/k}).
+\]
+S02 Ambient Theorem 6.B proves projective-space duality by the monomial trace, a two-stage twist presentation and dimension shifting; it identifies the same Ext group with \(H^{N-c}(P,i_*L)^*=H^1(C,L)^*\). Its trace sends the class of \(T_0^{-1}\cdots T_N^{-1}\) to one. All the Koszul, determinant, finite-cover and trace comparisons are natural. This proves the asserted isomorphism. \(\square\)
+
+**Lemma 2.2 (the curve argument).** Over an algebraically closed field, a smooth projective curve dominated by $\mathbf P^1$ is isomorphic to $\mathbf P^1$.
+
+**Proof.** The preceding curve-duality lemma identifies $H^1(C,L)^*$ with $H^0(C,\Omega_{C/k}\otimes L^{-1})$.
+
+Here are the remaining curve calculations. For any divisor $D$, adding one point in the divisor exact sequence changes the Euler characteristic of $\mathcal O_C(D)$ by one. Thus, with $g=h^1(\mathcal O_C)$,
+
+$$
+\chi(L)=\deg L+1-g.
+$$
+
+Every line bundle on a smooth curve has a rational section and is of this form. Duality gives $h^0(\omega_C)=g$ and $h^1(\omega_C)=1$, so $\deg\omega_C=2g-2$. A nonzero section of a line bundle has an effective zero divisor; hence a negative-degree line bundle has no nonzero section.
+
+For a nonconstant separable morphism $f:\mathbf P^1\to C$ of degree $n$, the map $f^*\Omega_C\to\Omega_{\mathbf P^1}$ is a nonzero map of line bundles. Its zero divisor $R$ is effective, and taking degrees gives
+
+$$
+-2=n(2g-2)+\deg R.
+$$
+
+Pullback multiplies degree by $n$: for a point divisor this is the sum of the lengths of the finite flat fibres over the discrete valuation ring, and the general assertion follows by addition. The displayed equality forces $g=0$.
+
+The inseparable case reduces to this one without any genus assertion about inseparable maps. In characteristic $p$, view $k(C)$ inside $k(t)$, and choose the largest $e$ such that $k(C)\subset k(t^{p^e})$. It exists, since any fixed nonconstant element has finite rational-function degree, divisible by $p^e$ if it lies in that subfield. Put $z=t^{p^e}$. Some element $f(z)$ of $k(C)$ has nonzero derivative: the kernel of the derivative on $k(z)$ is $k(z^p)$, as follows by writing $k(z)$ in the basis $1,z,\ldots,z^{p-1}$ over $k(z^p)$. The extension $k(z)/k(f)$ is separable, by differentiating its rational-function equation, so $k(z)/k(C)$ is separable. It gives a nonconstant separable morphism from the smooth projective curve with field $k(z)$, namely $\mathbf P^1$, to $C$. We have again proved $g=0$.
+
+Choose $q\in C(k)$. The line bundle $L=\mathcal O_C(q)$ has degree one. Duality and $\deg\omega_C=-2$ give $h^1(L)=0$ and $h^0(L)=2$. For any point $x$, the same calculation for $L(-x)$ gives $h^0(L(-x))=1$. Thus $L$ is generated by its two sections. They define a nonconstant map $C\to\mathbf P^1$ whose pullback of $\mathcal O(1)$ has degree one. Its degree is one, so it is a finite birational morphism between smooth curves and hence an isomorphism, by their integrally closed local rings. $\square$
+
+**Proposition 2.3.** A semisimple group of rank one has exactly two Borel subgroups containing a maximal torus, its Borel quotient is $\mathbf P^1$, and the action on that quotient has image $\operatorname{PGL}_2$ and kernel its centre.
+
+**Proof.** The normalizer quotient acts faithfully on the rank-one torus, whose automorphism group is $\{1,-1\}$. It acts simply transitively on the torus-fixed points of the homogeneous projective quotient $G/B$, as proved in the preceding lesson without assuming the full Borel-normalizer theorem. There are at most two such points. There cannot be one: Lemma 2.1 would then make this quotient zero-dimensional, so the connected group would be solvable, contradicting nontrivial semisimplicity. There are therefore two, and Lemma 2.1 makes the quotient a smooth projective curve.
+
+The kernel of the action is the intersection of the conjugates of a Borel. Its reduced identity component is solvable and normal, so is trivial by semisimplicity. Thus the action kernel is finite. In particular a positive-dimensional Borel acts nontrivially on the curve. A connected solvable group over $k$ is a rational variety: its torus times its split unipotent radical has an open affine parametrization, as in the solvable-group discussion in the first lesson. A nonconstant orbit map therefore restricts to a nonconstant rational map from an affine line, by fixing all but one of these coordinates. Since $k$ is infinite, the fixed coordinates can be chosen outside the finitely many vanishing conditions in its rational functions. Properness extends this map to $\mathbf P^1$. Lemma 2.2 identifies the curve with $\mathbf P^1$.
+
+The natural map $\operatorname{PGL}_2\to\operatorname{Aut}(\mathbf P^1)$ is an isomorphism. To verify it over a ring, an automorphism carries the three pairwise fibrewise disjoint sections $0,1,\infty$ to another such triple. Locally, a $2\times2$ change of basis carries $0,\infty$ to the first and third members; diagonal scaling then carries $1$ to the second. The resulting projective matrix glues uniquely. An automorphism fixing $0$ and $\infty$ preserves their Cartier divisors; the ratio of its pullback of the coordinate to that coordinate is a global unit on $\mathbf P^1$, hence a unit of the base ring. Fixing $1$ makes that unit one. This proves uniqueness, including over rings with nilpotents.
+
+The smooth connected image contains a one-dimensional torus, since the action kernel is finite. Conjugate this torus to the diagonal torus of $\operatorname{PGL}_2$. If the image were proper, its dimension would be at most two. Its Lie algebra then contains the diagonal line and at most one of the two distinct torus root lines. Choose the diagonal cocharacter with nonnegative weights on this Lie algebra. The general limit-subgroup lemma in Section 3 gives $P_H(\lambda)=H$ for this image $H$: it is a smooth connected closed subgroup with the same dimension. But $P_H(\lambda)=H\cap P_{\operatorname{PGL}_2}(\lambda)$, and the latter ambient subgroup is triangular. Thus $H$ would be solvable. The finite action kernel has central $k$-points, since conjugation by a connected group on a finite reduced set is constant. Solvability of $H$ would make $G(k)$ solvable as a central extension, and density of $G(k)$ in the smooth group would make $G$ solvable. This contradicts semisimplicity. The image is consequently all of $\operatorname{PGL}_2$.
+
+Let $B_+$ and $B_-$ be the two Borels containing $T$. Their unipotent radicals are one-dimensional, since their images in the point stabilizers of $\operatorname{PGL}_2$ have finite kernel. A smooth connected one-dimensional unipotent group over $k$ is $\mathbf G_a$. The action of $T$ on these radicals has nonzero characters $\alpha_+$ and $\alpha_-$. An element of the normalizer interchanging the Borels induces inversion on $T$, so $\alpha_-=-\alpha_+$.
+
+The Lie algebra of the action kernel lies in both $\mathfrak b_+$ and $\mathfrak b_-$, whose moving lines have the opposite nonzero characters just found. Thus it has no vector in either unipotent root line. Its intersection with either unipotent radical is finite and torus-stable. A finite subgroup of $\mathbf G_a$ stable under all scalar multiplications is defined by $x^{p^a}=0$ in characteristic $p$, or is trivial in characteristic zero: a homogeneous Hopf ideal has this form by the binomial formula. Every nontrivial such subgroup has nonzero tangent space. Our intersections therefore are trivial, so each unipotent radical maps isomorphically to the corresponding unipotent subgroup of $\operatorname{PGL}_2$. If a point of $B_+\cap B_-$ is written $tu_+$, its image lies in the diagonal intersection of the two point stabilizers in $\operatorname{PGL}_2$. Hence the image of $u_+$ is trivial, and $u_+=1$. This works on all test algebras and proves $B_+\cap B_-=T$. The action kernel is consequently contained in $T$. A normal multiplicative-type subgroup of a connected smooth group is central, by rigidity of its character sheaf. The converse inclusion follows because the image has trivial centre. $\square$
+
+For a reductive group of semisimple rank one, quotienting by its radical gives this situation. Its centre is the kernel of the resulting action on the same projective line. The two Borel unipotent radicals are still additive lines with opposite characters.
+
+Now let $\alpha$ be any nonzero weight of a maximal torus of an arbitrary reductive $k$-group. Define the codimension-one torus
+
+$$
+T_\alpha=(\ker\alpha)^0_{\mathrm{red}}.
+$$
+
+The centralizer $G_\alpha=C_G(T_\alpha)$ is reductive by the preceding lesson. Its weights are precisely the weights of $G$ that are rational multiples of $\alpha$, since these and only these vanish on $T_\alpha$. Its maximal central torus has codimension one in $T$: the nonzero characters on $T/T_\alpha$ span a rank-one lattice. Thus its semisimple rank is one. Proposition 2.3 proves
+
+$$
+\Phi\cap\mathbf Q\alpha=\{\alpha,-\alpha\},\qquad
+\dim\mathfrak g_\alpha=1.
+$$
+
+This proves both the reducedness along each root line and the one-dimensional root-space assertion without appealing to a general root-system classification.
+
+## 3. Subgroups obtained by taking a limit
+
+The definitions and full grading, smoothness, connectedness and open-cell proof for these subgroups are in [Tori, maximal tori and their conjugacy, Lemma 3.3](AG-RG-01.md#subgroups-obtained-by-taking-a-limit), an earlier lesson. In this lesson Lemma 3.1 denotes that already proved general lemma; it applies to every smooth affine group of finite presentation, without reductivity or a root classification.
+
+For $\operatorname{SL}_2$ and $\lambda(t)=\operatorname{diag}(t,t^{-1})$, conjugation sends $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ to $\begin{pmatrix}a&t^2b\\t^{-2}c&d\end{pmatrix}$. Thus $P(\lambda)$ is upper triangular, $U(\lambda)$ is upper unipotent, and $L(\lambda)$ is diagonal. This calculation works in characteristic two because the group character $t^2$ remains nontrivial.
+
+## 4. Root groups over the base
+
+Let $T=D_S(M)$ be a split maximal torus. Locally the nonzero weights are a fixed finite set $\Phi\subset M$, and each $\mathfrak g_\alpha$ is a line bundle by Proposition 2.3 on geometric fibres. Define $T_\alpha$ by the torsion-free quotient of $M/\mathbf Z\alpha$. Then
+
+$$
+G_\alpha=C_G(T_\alpha),\qquad
+\operatorname{Lie}(G_\alpha)=\mathfrak t\oplus\mathfrak g_\alpha\oplus\mathfrak g_{-\alpha}.
+$$
+
+Choose a cocharacter $\lambda$ of $T$ with $n=\langle\alpha,\lambda\rangle>0$, and set $U_\alpha=U_{G_\alpha}(\lambda)$. It is a smooth connected one-dimensional unipotent group, with Lie algebra $\mathfrak g_\alpha$.
+
+For a line bundle $L$, write $\mathbf V(L)=\operatorname{Spec}_S\operatorname{Sym}(L^*)$ for its additive group.
+
+**Theorem 4.1.** There is a unique $T$-equivariant homomorphism
+
+$$
+\exp_\alpha:\mathbf V(\mathfrak g_\alpha)\longrightarrow G
+$$
+
+whose differential is the inclusion of the root line. It is a closed immersion, with image $U_\alpha$, and commutes with every base change. Moreover
+
+$$
+U_{-\alpha}\times T\times U_\alpha\longrightarrow G_\alpha
+$$
+
+is an open immersion.
+
+**Proof.** On $U_\alpha$, $\mathbf G_m$ acts through $t^n$ on each geometric fibre. Its subgroup $\mu_n$ acts trivially: the fixed subgroup is smooth by exactness of multiplicative-type invariants, and equals $U_\alpha$ on every geometric fibre, so equals it over $S$.
+
+Étale locally choose a section $\sigma$ of $U_\alpha$ disjoint from its identity. The orbit map $t\mapsto t.\sigma$ extends to $q:\mathbf A^1\to U_\alpha$ with $q(0)=1$. Since $\mu_n$ acts trivially on the target, the map factors through the invariant ring $R[x]^{\mu_n}=R[x^n]$ on an affine chart. Its factor $\bar q:\mathbf A^1\to U_\alpha$ is an isomorphism on geometric fibres: there the original map is a nonzero scalar times $t^n$. The smooth fibrewise isomorphism criterion makes $\bar q$ an isomorphism over the base.
+
+The quotient acting torus $\mathbf G_m/\mu_n$ gives ordinary scalar multiplication on the source. The transported group law is a polynomial $m(x,y)$ with
+
+$$
+m(tx,ty)=tm(x,y),\quad m(x,0)=x,\quad m(0,y)=y.
+$$
+
+Homogeneity forces $m=ax+by$, and the identities force $a=b=1$. Thus $U_\alpha$ is an additive line. Normalize the isomorphism by its differential to obtain $\exp_\alpha$. A scalar-equivariant polynomial map of an additive line is linear; if its differential is the identity it is the identity. This proves uniqueness and allows descent of the local construction.
+
+An equivariant homomorphism with the required differential must factor through $G_\alpha$, since $T_\alpha$ acts trivially on its source, and through $U_{G_\alpha}(\lambda)$, since its orbit limits to the identity. The same uniqueness therefore holds as a map into $G$. The open immersion follows from Lemma 3.1, with $L_{G_\alpha}(\lambda)=T$. $\square$
+
+The notation $\exp_\alpha$ denotes this algebraic map, not the analytic exponential series. No division by factorials occurs. A root-group parameterization $x_\alpha:\mathbf G_a\simeq U_\alpha$ is exactly a trivializing section of the root line.
+
+**Example 4.2.** In $\operatorname{GL}_n$, conjugation by $\operatorname{diag}(t_i)$ sends $E_{ij}$ to $(t_i/t_j)E_{ij}$. Thus
+
+$$
+\alpha_{ij}=e_i-e_j,\quad
+\mathfrak g_{\alpha_{ij}}=\mathcal O_SE_{ij},\quad
+x_{ij}(u)=I+uE_{ij}.
+$$
+
+**Example 4.3.** For a line bundle $L$ on $S$, consider $G=\operatorname{SL}(\mathcal O_S\oplus L)$. It has the split torus acting by $(t,t^{-1})$ on the two summands. Its two root lines are $L^{-1}$ and $L$. If $L$ is nontrivial, its root groups are $\mathbf V(L^{-1})$ and $\mathbf V(L)$ and need not be globally isomorphic to $\mathbf G_a$. Having a split maximal torus is thus weaker than having globally parameterized root groups. The distinction disappears over a field.
+
+## 5. A projective quotient and its rank-one form
+
+We use the general algebraic-space tool proved before this lesson in Affine descent, Zariski Main and recognition of spaces, Theorems E8.1 and E9.1. The proof there includes the finite flat affine quotient, the off-diagonal induction, separated locally quasi-finite scheme effectivity, and relative integral closure with its étale base change. It applies over every base and on every test scheme.
+
+**Quasi-finite normalization lemma.** Let $S$ be a scheme and let $f:X\to Y$ be a quasi-finite separated morphism of algebraic spaces over $S$. Let $Y'$ be the relative integral closure of $Y$ in $X$. Then the factorization $X\xrightarrow{f'}Y'\xrightarrow{\nu}Y$ has $f'$ a quasi-compact open immersion and $\nu$ integral. In particular $f$ is quasi-affine.
+
+**Proof.** Theorem E9.1 of the preceding supporting lesson proves the full factorization, after Theorem E8.1 establishes recognition and Corollary E8.2 establishes representability on every scheme test. Its integral algebras are descended using the proved affine faithfully flat equalizer, and Corollary D4.3 supplies their étale base-change compatibility. Thus for every affine scheme $Z\to Y$, the pullback $Z\times_YX$ is a quasi-compact open subscheme of the affine integral scheme $Z\times_YY'$. This is quasi-affineness. All these input proofs precede the present application in the programme. $\square$
+
+The relative integral closure retains nilpotents; a reduced normalization is not substituted for it. The full argument is in the preceding supporting lesson, rather than being delegated to a source citation.
+
+The following construction will also be used for flag varieties. It makes explicit why a fibrewise projective quotient is a scheme, even before we have classified the group over the base.
+
+**A flat-source fibre criterion.** A finitely presented closed immersion $Y\hookrightarrow Z$ over $S$, with $Y$ flat over $S$, is an isomorphism if it is so on every geometric fibre. Locally write its ideal as $I\subset C$. Flatness of $C/I$ makes $I\otimes k(s)\to C\otimes k(s)$ injective. Fibre equality makes this module zero. Since $I$ is finitely generated as an ideal, Nakayama at every prime of $C$ gives $I=0$. No flatness assumption on $Z$ is needed.
+
+### Formal separation and normalizers
+
+We first justify the use of identity neighbourhoods over bases with nilpotents. This argument concerns smooth connected subgroups, rather than only tori.
+
+**Formal separation lemma.** Let $R$ be Noetherian and let $H/R$ be a smooth affine group of finite presentation with geometrically connected fibres. Write $C=\mathcal O(H)$ and let $J$ be its augmentation ideal. Then
+
+$$
+\bigcap_{n\geq 1}J^n=0.
+$$
+
+**Proof.** A smooth geometrically connected algebraic group over a field is geometrically integral: over an algebraic closure its regular irreducible components are disjoint and open, and connectedness leaves one component. For every prime $\mathfrak p\subset R$, the flat algebra $C/\mathfrak p C$ therefore embeds in its integral generic fibre over $\operatorname{Frac}(R/\mathfrak p)$ and is a domain.
+
+Choose a finite prime filtration of the $R$-module $R$. Such a filtration exists for every finite module over a Noetherian ring: choose an element with prime annihilator, insert its cyclic submodule, and repeat in the quotient; the ascending chain condition terminates the process. Flatness of $C$ turns this into a filtration of $C$ with factors $C/\mathfrak p C$. If $j\in J$, then $1-j$ has augmentation one in every such factor, so is nonzero there. It is a nonzerodivisor on every factor and consequently on $C$.
+
+Put $I=\bigcap_nJ^n$. The ring $C$ is Noetherian. Artin–Rees applied to $I\subset C$ gives, for some $c$ and every $n\geq c$,
+
+$$
+I\cap J^n=J^{n-c}(I\cap J^c).
+$$
+
+For completeness, this equality comes from the finite generation of the graded submodule $\bigoplus_n(I\cap J^n)t^n$ of the Rees ring $\bigoplus_nJ^nt^n$: the latter is a finitely generated $C$-algebra, hence Noetherian; take $c$ at least the degrees of homogeneous generators. Since $I\subset J^n$ for all $n$, taking $n=c+1$ gives $I=JI$. On a finite set of generators of $I$, this equality has matrix form $v=Mv$ with entries of $M$ in $J$. The adjugate identity gives $\det(1-M)I=0$, where $\det(1-M)=1-j$ for some $j\in J$. Its nonzerodivisor property proves $I=0$. $\square$
+
+**Normalizer lemma.** If $H$ is a smooth closed subgroup with geometrically connected fibres of a smooth affine group $K$ of finite presentation over any scheme $S$, then its scheme-theoretic normalizer is a closed subgroup of finite presentation in $K$. Its formation commutes with every base change.
+
+**Proof.** First let $S=\operatorname{Spec}R$ be Noetherian. The identity neighbourhood $H_n$ has coordinate algebra $C/J^{n+1}$, finite locally free over $R$. Indeed, smooth coordinates along the identity section identify the augmentation graded algebra with $\operatorname{Sym}(J/J^2)$; each of its finitely many graded pieces is finite locally free, and their extensions split locally. The same holds for $K_n$, and $H_n\subset K_n$ is a closed subscheme.
+
+Write $D=\mathcal O(K)$. Restrict the conjugates of a finite set of generators of the ideal of $H$ to $H_n$. Their vanishing gives finitely many coefficient equations in $D$, because $\mathcal O(H_n)$ is finite projective. Impose these equations for conjugation by $g$ and by $g^{-1}$. They define a closed subgroup $N_n\subset K$, the stabilizer of $H_n$. Let $L_n\subset D$ be its ideal. The ideals $L_n$ increase, so their union $L$ equals some $L_N$.
+
+It remains to check that these finite equations detect the whole subgroup on every test ring. Over the universal quotient $D/L$, both conjugation restrictions vanish on every identity neighbourhood of $H$. This quotient is Noetherian, and $H_{D/L}$ is still smooth with geometrically connected fibres. The formal separation lemma makes each restricted defining equation zero in $\mathcal O(H_{D/L})$. Thus both conjugations preserve $H_{D/L}$, and $N_N$ normalizes $H$. Pulling back this actual equality proves sufficiency over every $R$-algebra, including non-Noetherian ones. Necessity follows because a group automorphism preserving $H$ preserves its identity and all its identity neighbourhoods. Therefore $N_K(H)=N_N$ as functors, and the description proves arbitrary base change.
+
+For general affine \(S\), Projective cohomology and smooth affine models, Proposition 3.2 and Theorem 4.5, supply smooth affine group and subgroup models with geometrically connected fibres over a finitely generated \(\mathbf Z\)-algebra. Their proof descends the finite smoothness witnesses, proves constructibility of the number of geometric components, and removes the constructible bad locus at a finite coefficient stage. Apply that argument simultaneously to \(K,H\), retaining the closed immersion, group laws and their finitely many identities. The Noetherian construction above then represents the normalizer on every algebra over the model. Its pullback represents the original normalizer on every \(S\)-scheme, including non-Noetherian and nonreduced tests. Uniqueness of the represented subgroup glues these constructions. \(\square\)
+
+### Cohomology of a projective completion
+
+The preceding supporting lesson Projective cohomology and smooth affine models, Theorem 2.3, proves the precise formal-functions statement used here. If \(A\) is Noetherian, \(X/A\) projective, \(F\) coherent and \(I\subset A\), then
+\[
+H^q(X,F)^\wedge_I
+\simeq\varprojlim_nH^q(X,F/I^nF).
+\]
+Here is the mechanism of that written proof. Over the Rees algebra \(B=\bigoplus I^nt^n\), the sheaf \(\bigoplus I^nF\) is finite on the projective base change \(X_B\); projective Serre finiteness therefore makes \(\bigoplus H^q(X,I^nF)t^n\) finite over \(B\). If \(M^q=H^q(X,F)\), \(J_n^q=\operatorname{im}(H^q(X,I^nF)\to M^q)\) and \(K_n^q\) is its kernel, finite homogeneous generators give constants \(a_q,b_q\) with
+\[
+I^nM^q\subset J_n^q\subset I^{n-a_q}M^q,
+\qquad K_m^q\longrightarrow K_n^q=0\quad(m\ge n+b_q).
+\]
+The sheaf exact sequence consequently gives
+\[
+0\longrightarrow M^q/J_n^q\longrightarrow H^q(X,F/I^nF)
+\longrightarrow K_n^{q+1}\longrightarrow0.
+\]
+Its compatible kernel coordinates vanish by the displayed transition bound; the remaining quotient filtration is cofinal with \(I^nM^q\). This proves the inverse-limit comparison, without an unexplained exchange of cohomology and inverse limit.
+
+S02 Lemmas 1.2–1.3 prove exact finite-module completion, Noetherianity and faithful flatness of local completion. Thus a finite module over a complete local Noetherian ring is complete. S02 Lemma 1.4 proves unique lifting of idempotents through nilpotent ideals, and Corollary 2.4 turns the compatible thickened idempotents into an actual section of a projective scheme. These are precisely the two completion operations in the quotient proof below.
+
+<a id="ag-rg-03-grassmannian"></a>
+
+**Lemma 5.A (Grassmannians).** The scheme \(\operatorname{Gr}_d(V)\) of locally free rank-\(d\) quotients of a finite locally free \(V/S\) is smooth and projective, commutes with arbitrary base change, and its Plücker line bundle is \(\det Q\), for its universal quotient \(Q\).
+
+**Proof.** Trivialize \(V=\mathcal O^n\). On the open where columns \(I\) give a basis of a quotient, its unique normalized matrix has those columns equal to the identity and \(d(n-d)\) free entries. A second basis \(J\) gives the transition \(M_J=(M_I|_J)^{-1}M_I\). These open affine charts represent the quotient functor on all tests and glue. The determinant quotient \(\bigwedge^dV\twoheadrightarrow\det Q\) defines the Plücker map to \(\mathbf P(\bigwedge^dV)\), with the quotient convention. Over the target chart \(p_I\ne0\), the ratios of minors containing a single replacement of an identity column recover, with their determinant signs, every free matrix entry. The corresponding map of coordinate rings is surjective. These target charts cover the projective bundle, so the Plücker map is a closed immersion, and its \(\mathcal O(1)\) pulls back to \(\det Q\). The construction glues for general \(V\) and uses only invertible minors, hence works over nonreduced bases. The subbundle convention follows by dualizing. \(\square\)
+
+### Projective homogeneous quotients
+
+**Lemma 5.1.** Let \(H\) be a smooth closed subgroup with geometrically connected fibres of a smooth affine \(S\)-group \(K\) with geometrically connected fibres. Suppose \(N_K(H)=H\), and suppose every geometric quotient \(K_{\bar s}/H_{\bar s}\) is proper. Then the fppf quotient \(X=K/H\) is a smooth projective \(S\)-scheme, locally on \(S\). Its universal conjugate subgroup \(\mathcal H\subset K_X\) supplies a canonical relatively ample line bundle \(\det(\operatorname{Lie}\mathcal H)^*\).
+
+**Proof.** Work first on an affine part $S=\operatorname{Spec}R$. Descend $K,H$ and their group laws and closed immersion to a finite-type Noetherian model $S_0$, retaining smoothness and geometrically connected fibres as in the normalizer lemma. The normalizer is now of finite presentation and commutes with base change. Its equality with $H$ descends after a further finite stage: equality of their finitely generated defining ideals uses finitely many relation witnesses. We do not assume that projectivity of all geometric quotient fibres descends merely by choosing coefficients.
+
+Construct the quotient $X_0=K_0/H_0$ on this model. The free right $H_0$-action defines a smooth equivalence relation. Corollary 8.3 of Flat quotient bootstrap applies to this free smooth action: its quotient is an algebraic space, $K_0\to X_0$ is an $H_0$-torsor, and its equality relation is $H_0\times K_0=K_0\times_{X_0}K_0$ on every test scheme. Thus $X_0$ is smooth with geometrically connected fibres, and formation commutes with base change. For the next two paragraphs write $K,H,X$ for these model objects.
+
+Let $K_n,H_n$ be the $n$th infinitesimal neighbourhoods of the identities. The normalizer lemma identifies $N_K(H)$ with the stabilizer of $H_n$ in $K_n$ for some $n$, as functors on all test schemes. Increase $n$ to at least one. Since $N_K(H)=H$, this stabilizer is exactly $H$. The coordinate modules of $K_n$ and $H_n$ are finite locally free, with augmentation graded pieces $\operatorname{Sym}^i(\mathfrak k^*)$ and $\operatorname{Sym}^i(\mathfrak h^*)$ for $0\leq i\leq n$.
+
+Conjugation acts on the Grassmannian of quotients of the locally free coordinate module of $K_n$ of rank equal to that of $H_n$. Its section corresponding to $H_n$ has stabilizer exactly $H$. Thus the orbit map gives a finite-type monomorphism $X\to\operatorname{Gr}$. A finite-type monomorphism is quasi-finite and separated; the normalization lemma just proved from the earlier supporting lesson makes it quasi-affine. In particular $X$ is a scheme and is quasi-projective locally on the base.
+
+We verify properness near the image of the original \(S\) in \(S_0\). At any point \(p\) of this image, the quotient fibre is proper: after extension to an algebraic closure containing a residue field of a point above \(p\), this is the hypothesized proper geometric fibre, and properness descends under field extensions. Localize $S_0$ at $p$ and pass faithfully flatly to its completion $A$. Place $X$ as an open subscheme of a projective closure $\bar X$ over $A$. Its proper special fibre $X_0$ is open and closed in $\bar X_0$, and is therefore cut out by an idempotent. Idempotents lift uniquely across nilpotent ideals. The internal theorem on formal functions gives $\Gamma(\bar X,\mathcal O_{\bar X})\simeq\varprojlim_n\Gamma(\bar X_n,\mathcal O_{\bar X_n})$, since $A$ is complete and $\bar X$ is proper. It therefore turns this compatible formal idempotent into an actual idempotent. It defines an open and closed proper component $Z\subset\bar X$ with $Z_0=X_0$. The closed subset $Z\setminus X$ has empty special fibre; properness makes it empty. Hence $Z\subset X$.
+
+The image of $Z\to\operatorname{Spec}A$ is both open and closed: it is proper, and it is the restriction of the smooth map $X\to\operatorname{Spec}A$. It contains the closed point, so is all of the local base. In each geometric fibre, $Z$ is a nonempty open and closed part of the connected fibre of $X$. It is the entire fibre. Thus $Z=X$, proving properness. This descends from the completion to $\mathcal O_{S_0,p}$. The monomorphism to the Grassmannian is now proper there, hence a closed immersion. The finite-presentation limit theorem for closed immersions, proved in [Limits of schemes and Noetherian approximation](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/AG-MO-03.html), Theorem 4.2, spreads this closed immersion to an open neighbourhood of $p$. The union of these neighbourhoods contains the image of the original base. Pulling back to $S$ proves the required projectivity there; it has not been imposed on unrelated model fibres.
+
+The Grassmannian map is now a proper monomorphism and hence a closed immersion. Its Plücker bundle pulls back to $\det\mathcal O_{\mathcal H_n}$. The augmentation filtration identifies this determinant with
+
+$$
+\bigotimes_{i=0}^n\det(\operatorname{Sym}^i(\operatorname{Lie}\mathcal H)^*)
+=\bigl(\det(\operatorname{Lie}\mathcal H)^*\bigr)^c
+$$
+
+for a positive integer $c$ when $\dim H>0$. Positivity follows already from the $i=1$ term; the determinant exponent for $\operatorname{Sym}^i$ on a rank-$d$ bundle is $\binom{i+d-1}{d}$. Thus the stated canonical bundle is relatively ample. The zero-dimensional connected smooth case is trivial. All the constructions descend to the original arbitrary base and commute with base change. $\square$
+
+The quotient proof is Flat quotient bootstrap, Theorem 8.2 and Corollary 8.3; the formal-functions proof is Cohomology and models, Theorem 2.3. The algebraic-space normalization lemma has its full earlier proof in the descent and Zariski Main supporting lesson, Theorem E9.1. The group-specific argument is original exposition.
+
+### A universal finite cohomology complex
+
+**Lemma (finite projective replacement).** Let $A$ be Noetherian and let $C$ be a complex of flat $A$-modules concentrated in degrees $[a,b]$, with finite cohomology modules. There is a complex $K$ of finite projective modules in $[a,b]$ and a quasi-isomorphism $K\to C$ that remains a quasi-isomorphism after tensoring with any $A$-module.
+
+**Proof.** Construct a bounded-above complex $P$ of finite free modules and a map $f:P\to C$, descending from degree $b$. Once the terms above $j$ are chosen, its cone has terms
+
+$$
+D^i=C^i\oplus P^{i+1},\qquad
+d(c,p)=(d_Cc+f(p),-d_Pp).
+$$
+
+Its cohomology is finite: the cone long exact sequence uses the finite cohomology of $C$ and of the already chosen finite free portion of $P$. Choose finitely many cocycles $(c_\ell,p_\ell)$ generating $H^j(D)$. Take $P^j$ free on $e_\ell$, and set $f(e_\ell)=c_\ell$, $d_P(e_\ell)=-p_\ell$. The cocycle equations give $d_P^2=0$ and $d_Cf=fd_P$. In the new cone, $d(0,e_\ell)=(c_\ell,p_\ell)$, so this kills $H^j$ without changing higher cohomology. Continue to the left. Each degree stabilizes, giving a quasi-isomorphism $P\to C$.
+
+Its cone is acyclic, bounded above and flat termwise. Such a complex stays acyclic after every tensor: start at its last degree and descend through
+
+$$
+0\longrightarrow Z^i\longrightarrow D^i\longrightarrow Z^{i+1}\longrightarrow0.
+$$
+
+The quotient is flat; hence the kernel is flat and the sequence stays exact under tensor. Thus $H^i(P\otimes_AM)=H^i(C\otimes_AM)$ for every $M$.
+
+Put $Q=\operatorname{coker}(P^{a-1}\to P^a)$. The left tail is a free resolution of $Q$, and
+
+$$
+\operatorname{Tor}_1^A(Q,M)=H^{a-1}(P\otimes_AM)=0
+$$
+
+for every $M$, since $C\otimes_AM$ starts in degree $a$. The module $Q$ is finitely presented, so it is flat and finite projective. Take $K^a=Q$ and $K^i=P^i$ for $a<i\leq b$. The map to $C$ factors through $Q$ because $C^{a-1}=0$. Truncation preserves cohomology, and the same acyclic flat-cone argument proves the assertion after every tensor. $\square$
+
+Apply this to the finite section complex of a line bundle \(L_0\) on a smooth projective scheme over a Noetherian ring \(A_0\). Choose a finite affine cover. Separatedness makes its intersections affine, and S01 Sections 4–5 prove that its ordered section complex computes quasi-coherent cohomology. On each intersection the line bundle is a projective module over its chart algebra; smoothness makes that algebra \(A_0\)-flat, so every term is \(A_0\)-flat. S01 Theorem 8.4 and its closed-immersion passage prove that all cohomology modules are finite. Under every algebra base change, affine module-sheaf correspondence and localization, proved in S01 Section 2, identify the new section complex with its tensor product over \(A_0\). The finite projective replacement just proved therefore computes the line bundle cohomology after every base change.
+
+### Sections in a vanishing family
+
+**Lemma (sections in a vanishing family).** Let $f:X\to S$ be smooth and projective of finite presentation, and let $L$ be an invertible sheaf on $X$. Suppose that $H^q(X_{\bar s},L_{\bar s})=0$ for every geometric point $\bar s$ and every $q>0$. Then $f_*L$ is finite locally free, all its positive higher direct images vanish, and these statements commute with every base change. In particular the canonical map $g^*f_*L\to f'_*L'$ is an isomorphism for any $g:S'\to S$. The base may be nonreduced.
+
+**Proof.** Work with $S=\operatorname{Spec}A$. Choose a projective embedding, a finite affine cover trivializing $L$, and finite affine covers of the pairwise and triple overlaps. Write $A$ as the filtered union of its finitely generated $\mathbf Z$-subalgebras. The embedding, chart opens and overlap maps descend at a finite stage by [finite-presentation descent](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-MO/AG-MO-03.html#4-descending-objects-maps-and-properties), Theorems 4.1–4.2. Retain the closed immersion, so the model $X_0$ is projective.
+
+Retain smoothness at a finite stage by S02 Lemma 3.1 and Proposition 3.2. In a finite polynomial presentation, Lemma 3.0 identifies formal smoothness with a left inverse of the conormal differential map. The left inverse uses finitely many coefficients; its equations on the finitely many relation generators have finite polynomial witnesses. Descend these coefficients and witnesses to one stage. The same left inverse then proves formal smoothness there, and the retained finite presentation proves smoothness. Apply this on a finite affine cover, retaining the cover and the projective closed immersion by the finite-presentation limit proof. The line-bundle transition units, their inverses and the finitely many overlap and cocycle witnesses descend at the same stage, as in S02 Proposition 3.2. Gluing these descended transition units defines the invertible sheaf \(L_0\) on the smooth projective model \(X_0/A_0\).
+
+The preceding finite-projective-replacement lemma gives a bounded finite projective complex $K_0$ such that
+
+$$
+H^q(K_0\otimes_{A_0}B)
+\simeq H^q(X_0\times_{A_0}\operatorname{Spec}B,L_0\otimes_{A_0}B)
+$$
+
+for every $A_0$-algebra $B$, compatibly with the canonical comparison maps. Its proof uses the finite affine-cover complex and projective Serre finiteness; ordinary tensor of $K_0$ computes its derived tensor. This finite argument supplies the universal comparison before pullback to the original base.
+
+Put $K=K_0\otimes_{A_0}A$. Near any $s\in\operatorname{Spec}A$, trivialize its terms. Whenever a differential has an entry invertible at $s$, shrink the neighbourhood and perform row and column operations to put that entry in an identity block. The equation $d^2=0$ makes the adjacent differentials zero on that block, so it splits off a contractible pair $A\xrightarrow{1}A$. After finitely many cancellations, all remaining differential entries vanish in $\kappa(s)$. The remaining complex therefore has
+
+$$
+K^q\otimes_A\kappa(s)=H^q(X_s,L_s).
+$$
+
+For $q>0$ the right side is zero by the hypothesis and field extension; for $q<0$ it is zero because $L_s$ is a sheaf. Thus every remaining free term except degree zero has rank zero and disappears on a neighbourhood of $s$. The degree-zero term is finite free. Every cancelled identity pair stays contractible after any tensor. The universal comparison consequently proves the direct-image assertions and every base-change assertion, including nonflat changes involving nilpotents. The canonical comparisons glue. Notice that vanishing was imposed only on the original family, not on unrelated fibres of its Noetherian model. $\square$
+
+**Proposition 5.2.** If $G$ has trivial centre and geometric semisimple rank one, and has a split maximal torus $T$, then Zariski locally $(G,T)$ is isomorphic to $(\operatorname{PGL}_2,D)$.
+
+**Proof.** Its geometric fibres are $\operatorname{PGL}_2$ by Proposition 2.3: the action on the projective line has trivial kernel. Choose a root $\alpha$ locally. It is an isomorphism $T\to\mathbf G_m$, as this is true on the character lattices of the geometric fibres. Put $B=P_G(\alpha^{-1})$. It is smooth and on each geometric fibre is an upper triangular Borel subgroup of $\operatorname{PGL}_2$.
+
+Its scheme-theoretic normalizer equals $B$. The normalizer lemma makes it closed of finite presentation and proves that its formation commutes with arbitrary base change. On geometric fibres the point stabilizer in $\mathbf P^1$ is self-normalizing. Infinitesimally, the bracket of a diagonal matrix class with the lower off-diagonal class is a nonzero lower off-diagonal class in every characteristic, so the normalizer has exactly the tangent space of $B$. It is therefore smooth and equals $B$ on those fibres. The flat-source criterion above, applied with source $B$, proves the equality over the base without assuming the normalizer flat.
+
+Lemma 5.1 makes \(f:X=G/B\to S\) a smooth projective curve whose geometric fibres are \(\mathbf P^1\), and it has the section \(e=1B\). A section of a smooth relative curve is an effective Cartier divisor: étale coordinates at the section give one parameter cutting out its ideal, a nonzerodivisor because the coordinate algebra is flat over the polynomial chart. Put \(L=\mathcal O_X(e)\); it has degree one on every geometric fibre. The sections-in-a-vanishing-family lemma applies to \(L\), since \(H^1(\mathbf P^1,\mathcal O(1))=0\), and gives \(E=f_*L\) locally free of rank two, with arbitrary base change. The evaluation \(f^*E\to L\) is surjective: its cokernel is finite locally, its geometric fibres vanish by generation of \(\mathcal O(1)\), and local Nakayama kills that cokernel. With the quotient convention it defines \(j:X\to\mathbf P(E)\), and \(j_{\bar s}\) is the usual isomorphism given by the two sections of \(\mathcal O(1)\). Both schemes are smooth over \(S\), and the differential of \(j\) is an isomorphism on all geometric fibres, hence locally an isomorphism of their cotangent bundles. The étale differential criterion makes \(j\) étale. Its geometric fibres are isomorphisms, so it is universally injective and surjective; an étale universally injective morphism is an open immersion, and surjectivity makes it an isomorphism. Trivializing \(E\) Zariski locally now gives \(G/B\simeq\mathbf P^1_S\).
+
+The action now gives $G\to\operatorname{PGL}_2$, an isomorphism on every geometric fibre, hence an isomorphism over $S$. It carries $B$ to the point stabilizer. Within that stabilizer the transporter taking its torus $T$ to the diagonal torus is a $\mathbf G_m$-torsor: the stabilizer of the diagonal torus inside the upper triangular group is the diagonal torus. Such a torsor is the frame bundle of a line bundle and is Zariski locally trivial. This finishes the pairwise assertion. $\square$
+
+## 6. Splitting a central extension of the rank-one cover
+
+We need an integral result, including characteristic two. The following splitting argument is due to Gabber; we give the argument for a separated commutative group scheme $Z$, which includes the multiplicative-type centres used here.
+
+**Theorem 6.1.** Every fppf central extension
+
+$$
+1\longrightarrow Z\longrightarrow E\longrightarrow\operatorname{SL}_{2,S}\longrightarrow1
+$$
+
+has a unique homomorphic section.
+
+**Proof.** In $\operatorname{SL}_2$ use
+
+$$
+x(u)=\begin{pmatrix}1&u\\0&1\end{pmatrix},\quad
+y(v)=\begin{pmatrix}1&0\\v&1\end{pmatrix},\quad
+h(t)=\operatorname{diag}(t,t^{-1}).
+$$
+
+Let $D',U',V'$ be their inverse images in $E$. A central extension of a commutative group has a commutator pairing on its quotient: changing a lift by an element of the central kernel does not change the commutator, and the identities for commutators make this pairing additive in each variable.
+
+For $D'$, the pairing $\mathbf G_m\times\mathbf G_m\to Z$ is trivial. Restrict the first argument to $\mu_n$. The resulting pairing is killed by $n$ in that argument, and the $n$th-power map is an fppf epimorphism in the second argument, so this restriction is trivial. The schemes $\mu_n$ are universally schematically dense in $\mathbf G_m$: distinct Laurent exponents remain distinct modulo sufficiently large $n$. Separatedness of $Z$ makes the whole pairing trivial. Thus $D'$ is commutative.
+
+The conjugation action on $E$ factors through $\operatorname{SL}_2$, since $Z$ is central. The commutator pairing on $U'$ is invariant under simultaneous multiplication of its arguments by $t^2$. The square map is fppf surjective, so it is invariant under simultaneous multiplication by every unit. For given $u,v$, the morphism $a\mapsto c(au,av)$ from $\mathbf A^1$ to $Z$ is constant on $\mathbf G_m$. Separatedness extends the equality to zero, where it is the identity. Hence $c(u,v)=1$. Thus $U'$ is commutative; the same argument proves it for $V'$.
+
+We construct a unique $D$-equivariant section of $U'\to U$. Fppf locally choose a unit $t$ with $t^2-1$ invertible and a lift $\tilde h$ of $h(t)$. Such choices exist: the open locus $t(t^2-1)\ne0$ in an affine line is smooth surjective, and the extension is an fppf epimorphism. In the commutative group $U'$, the endomorphism
+
+$$
+\varphi(a)=\tilde h a\tilde h^{-1}a^{-1}
+$$
+
+kills $Z$ and induces multiplication by $t^2-1$ on $U=\mathbf G_a$. It therefore factors through a homomorphism $U\to U'$, which after division by $t^2-1$ is the required section. It is $D$-equivariant because $D'$ is commutative. Uniqueness holds since any difference is a $D$-invariant homomorphism $U\to Z$: scalar invariance and the specialization from nonzero scalars to zero force it to vanish. Uniqueness descends these local sections. Obtain $x':\mathbf G_a\to E$ and similarly $y'$.
+
+Set
+
+$$
+w'(t)=y'(-t^{-1})x'(t)y'(-t^{-1}),\qquad
+h'(t)=w'(t)w'(1)^{-1}.
+$$
+
+Their images are $\begin{pmatrix}0&t\\-t^{-1}&0\end{pmatrix}$ and $h(t)$. Thus $h'(t)\in D'$. Equivariance gives
+
+$$
+h'(s)w'(t)h'(s)^{-1}=w'(s^2t).
+$$
+
+Divide by the instance $t=1$. Since $D'$ is commutative, this gives $h'(t)=h'(s^2t)h'(s^2)^{-1}$. The square map being fppf surjective, $h'$ is a homomorphism. Its definition then gives $h'(s)w'(t)=w'(st)$.
+
+Substitute the expression for $w'$ into this last equality and move the $y'$ terms using $h'(s)y'(v)h'(s)^{-1}=y'(s^{-2}v)$. With $u=st$ and $v=(s-1)/(st)$, the result is
+
+$$
+x'(u)y'(v)=y'\left(\frac{v}{1+uv}\right)
+h'(1+uv)x'\left(\frac{u}{1+uv}\right)
+\tag{1}
+$$
+
+when $u$ and $1+uv$ are units. The restriction that $u$ be a unit can be removed. Fppf locally write $u=a+b$ with $a,b,1+bv$ units; the open conditions on a choice of $b$ omit only finitely many points of each geometric affine-line fibre. Apply (1) first to $x'(b)y'(v)$, then to $x'(a)y'(v/(1+bv))$. The second denominator is $(1+uv)/(1+bv)$. Moving the two resulting $h'$ factors together leaves the $y'$ parameter $v/(1+uv)$ and the $x'$ parameter
+
+$$
+\frac{a}{(1+bv)(1+uv)}+\frac{b}{1+bv}
+=\frac{u}{1+uv}.
+$$
+
+This proves (1) in its full domain.
+
+These identities, the additivity of $x',y'$, the multiplicativity of $h'$, and its two conjugation identities are exactly the multiplication rules on the open cell $\Omega=U_-DU_+$ of $\operatorname{SL}_2$. Define a section there by
+
+$$
+y(v)h(t)x(u)\longmapsto y'(v)h'(t)x'(u).
+$$
+
+It is multiplicative whenever both factors and their product are in \(\Omega\): reorder their factors with (1). Write \(s_\Omega:\Omega\to E\) for this cell section. For any test scheme \(R\to S\) and finite list \(g_1,\ldots,g_m\in\operatorname{SL}_2(R)\), the open
+\[
+\Omega_R\cap\bigcap_i\Omega_Rg_i^{-1}
+\]
+is nonempty in every geometric fibre: a smooth geometrically connected group has integral geometric fibres, and finitely many dense opens have nonempty intersection. It is smooth and surjective over \(R\); affine refinements therefore supply an fppf local point \(c\) with \(c,cg_i\in\Omega\).
+
+In particular, for one \(g\), use the nonempty open
+\[
+\Omega_R\cap\Omega_R^{-1}\cap\Omega_Rg^{-1}.
+\]
+Then \(g=c^{-1}(cg)\) is a product of two points of \(\Omega\). Assign to a word in cell points the corresponding product of their \(s_\Omega\)-values. This is independent of the word. For two words with the same endpoint \(g\), choose \(c\) so that \(c\) and its translates by every partial product of both words lie in \(\Omega\). Successive cell multiplicativity says that multiplying either lifted word on the left by \(s_\Omega(c)\) gives \(s_\Omega(cg)\). Cancellation proves equality. In particular a word representing the identity has lift one; concatenation therefore respects multiplication and inverses. These word values agree after further fppf pullbacks, so descend through the sheaf property of \(E\). They define a homomorphism of represented fppf sheaves, hence a scheme homomorphism \(\operatorname{SL}_2\to E\). Its composite with \(E\to\operatorname{SL}_2\) is the identity on generating words. It is the required homomorphic section on all test schemes.
+
+Finally any homomorphism $\operatorname{SL}_2\to Z$ kills $x(u)$, since
+
+$$
+[h(t),x(u)]=x((t^2-1)u),
+$$
+
+and one may choose $t^2-1$ invertible fppf locally. It kills $y(v)$ similarly, and then $h(t)=w(t)w(1)^{-1}$. It kills the open cell, hence the group. The difference between two central sections is such a homomorphism, proving uniqueness. $\square$
+
+## 7. Coroots from multiplication
+
+**Theorem 7.1.** For every root $\alpha$ there is a canonical coroot $\alpha^\vee:\mathbf G_m\to T$, with $\langle\alpha,\alpha^\vee\rangle=2$. There is a canonical perfect pairing $\mathfrak g_\alpha\otimes\mathfrak g_{-\alpha}\to\mathcal O_S$ such that, writing its value as $XY$,
+
+$$
+\exp_\alpha(X)\exp_{-\alpha}(Y)
+=\exp_{-\alpha}\left(\frac{Y}{1+XY}\right)
+\alpha^\vee(1+XY)
+\exp_\alpha\left(\frac{X}{1+XY}\right)
+\tag{2}
+$$
+
+whenever $1+XY$ is a unit. This unit condition is precisely membership in the open cell $U_{-\alpha}TU_\alpha$.
+
+**Proof.** Work in \(G_\alpha\), whose scheme-theoretic centre is \(Z=\ker\alpha\subset T\), by Section 1. Theorem 1.1 constructs \(q:G_\alpha\to Q=G_\alpha/Z\) as an affine reductive quotient and an fppf \(Z\)-torsor, compatible with every base change. The torus quotient has character group \(\mathbf Z\alpha\subset X^*(T)\), so \(T/Z\simeq\mathbf G_m\) via the descended character \(\alpha\). It is a closed subgroup of \(Q\): its pullback under \(q\) is \(T\subset G_\alpha\), and closed immersions descend through the fppf torsor. On geometric fibres Proposition 2.3 identifies this quotient with \(\operatorname{PGL}_2\), so \(T/Z\) is a maximal torus.
+
+The open cell \(U_{-\alpha}TU_\alpha\) is right \(Z\)-stable; centrality makes \(Z\) act only on its torus coordinate. Its quotient is the open subscheme
+\[
+U_{-\alpha}\times(T/Z)\times U_\alpha\subset Q,
+\]
+as follows by invariant-open descent and the product torsor. At the identity this gives the two nonzero torus weights \(\alpha,-\alpha\), with their root lines, in \(\operatorname{Lie}Q\). The centre formula of Section 1, applied to \(Q,T/Z\), is consequently \(Z(Q)=\ker(\alpha:T/Z\to\mathbf G_m)=1\), as a scheme over the original base. Proposition 5.2 therefore identifies the pair \(Q,T/Z\), Zariski locally, with \(\operatorname{PGL}_2\) and its diagonal torus. Choose the identification so \(\alpha(\operatorname{diag}(t,1))=t\).
+
+Pull back $G_\alpha\to\operatorname{PGL}_2$ by $\operatorname{SL}_2\to\operatorname{PGL}_2$. Theorem 6.1 splits the resulting central extension by $Z$. The homomorphism $\operatorname{SL}_2\to G_\alpha$ obtained from the splitting identifies its upper and lower unipotent groups with $U_\alpha,U_{-\alpha}$: the maps are equivariant, and their differentials on the root lines are isomorphisms, so Theorem 4.1 gives the assertion. The diagonal cocharacter therefore defines $\alpha^\vee$.
+
+Direct multiplication gives
+
+$$
+\begin{pmatrix}1&x\\0&1\end{pmatrix}
+\begin{pmatrix}1&0\\y&1\end{pmatrix}
+=
+\begin{pmatrix}1&0\\y/(1+xy)&1\end{pmatrix}
+\begin{pmatrix}1+xy&0\\0&(1+xy)^{-1}\end{pmatrix}
+\begin{pmatrix}1&x/(1+xy)\\0&1\end{pmatrix}.
+$$
+
+The upper-left entry is a unit exactly when the product is in this open cell. It supplies (2), a perfect pairing of the two root lines, and $\alpha\circ\alpha^\vee(t)=t^2$.
+
+The pairing and coroot are unique. In the adjoint quotient, comparing the upper-root parameter in (2) forces any alternative scalar in the pairing to be one; equality of open-cell coordinates then fixes the coroot on every unit $1+xy$, which ranges over all units by setting $y=1$. An alternative coroot in $T$ with the same adjoint image could differ by a cocharacter into $Z$, but (2) fixes its actual torus component and eliminates that difference. Hence the constructions on different local identifications agree and descend. The same characterization proves base-change compatibility. $\square$
+
+For $\operatorname{SL}_2$, use $T\simeq\mathbf G_m$ via $\operatorname{diag}(t,t^{-1})$. Its root is $\alpha(t)=t^2$, and $\alpha^\vee(t)=\operatorname{diag}(t,t^{-1})$. For $\operatorname{PGL}_2$, parameterize its diagonal torus by the class of $\operatorname{diag}(t,1)$. Its root is $t\mapsto t$, and its coroot is the class of $\operatorname{diag}(t^2,1)$. In both cases the pairing is two, but the root and coroot occupy different sublattices.
+
+For $\operatorname{GL}_2$, the roots are $e_1-e_2$ and its negative, and the positive coroot is $t\mapsto\operatorname{diag}(t,t^{-1})$. These explicit formulas remain valid over $\mathbb Z$.
+
+## 8. The three rank-one groups
+
+### A lattice calculation with pairing two
+
+**Lemma 8.A.** Let \(X\) be a finite free abelian group of rank \(r+1\). Let \(a\in X\) and \(b\in X^*=\operatorname{Hom}(X,\mathbf Z)\) be nonzero and satisfy \(b(a)=2\). Up to an isomorphism of \(X\) preserving this pair, exactly one of the following descriptions occurs:
+
+1. \(X=\mathbf Z e_0\oplus\mathbf Z^r\), \(a=2e_0\), \(b=e_0^*\).
+2. \(X=\mathbf Z e_0\oplus\mathbf Z^r\), \(a=e_0\), \(b=2e_0^*\).
+3. \(r\geq1\), \(X=\mathbf Z e_1\oplus\mathbf Z e_2\oplus\mathbf Z^{r-1}\), \(a=e_1-e_2\), \(b=e_1^*-e_2^*\).
+
+In these formulas \(b\) is zero on the displayed extra summand.
+
+**Proof.** Write \(a=m a_0\) and \(b=n b_0\), with \(a_0,b_0\) primitive and \(m,n>0\). Then
+
+\[
+mn\,b_0(a_0)=2.
+\]
+
+Consequently \((m,n)\) is \((2,1)\), \((1,2)\), or \((1,1)\).
+
+In the first case \(b(a_0)=1\). Every \(x\in X\) has the unique expression
+
+\[
+x=b(x)a_0+\bigl(x-b(x)a_0\bigr),
+\qquad x-b(x)a_0\in\ker b.
+\]
+
+Thus \(X=\mathbf Z a_0\oplus\ker b\); choose a basis of the free kernel. This gives case 1. In the second case apply the same expression using \(b_0(a)=1\). It gives case 2.
+
+Suppose now that both \(a\) and \(b\) are primitive. Extend \(a\) to a basis \(a,c_1,\ldots,c_r\). At least one \(b(c_i)\) is odd: otherwise every value of \(b\), including \(b(a)=2\), would be even, contradicting primitivity of \(b\). Relabel so that \(b(c_1)=2q+1\), and replace \(c_1\) by \(c_1-qa\). This is a basis operation and makes its value under \(b\) equal to one. Call the new vector \(c\). Replace each remaining \(c_i\) by \(c_i-b(c_i)c\); their values become zero. Finally set
+
+\[
+e_1=c,\qquad e_2=c-a.
+\]
+
+These replace the basis pair \(a,c\) by another unimodular basis pair. They satisfy \(a=e_1-e_2\), \(b(e_1)=1\) and \(b(e_2)=-1\), giving case 3. If \(r=0\), both primitive elements would pair to \(\pm1\), so this case cannot occur.
+
+The divisibilities \((m,n)\) of \(a\) and \(b\) are invariant under lattice isomorphisms. They distinguish all three cases. \(\square\)
+
+### Extending a map from the rank-one cell
+
+**Lemma 8.B.** Let \(K/S\) be a smooth group with geometrically connected fibres. Let \(\Omega\subset K\) be a fibrewise dense open containing the identity. Let \(H/S\) be a group scheme. Suppose \(f:\Omega\to H\) sends the identity to the identity and satisfies
+
+\[
+f(xy)=f(x)f(y)
+\]
+
+on the open where \(x,y,xy\in\Omega\). Then \(f\) extends uniquely to a homomorphism \(K\to H\).
+
+**Proof.** A geometrically connected smooth algebraic group is geometrically irreducible: its regular irreducible components are disjoint and open, so connectedness leaves only one. For any test scheme \(R\to S\) and any finite list \(g_1,\ldots,g_d\in K(R)\), the open
+
+\[
+\Omega_R\cap\bigcap_{i=1}^d\Omega_R g_i^{-1}
+\]
+
+has a nonempty open in every geometric fibre of \(K_R\). Its map to \(R\) is smooth and surjective. It therefore supplies a point \(c\) after an fppf cover of \(R\), with \(c\) and all \(cg_i\) in the cell.
+
+In particular, for \(g\in K(R)\), choose \(c\in\Omega_R\cap\Omega_R^{-1}\cap\Omega_Rg^{-1}\) locally. Then \(g=c^{-1}(cg)\) is a product of two cell points. Assign to any word in cell points the corresponding product of \(f\)-values.
+
+This assignment is independent of the word. For two words \(x_1\cdots x_d\) and \(y_1\cdots y_e\) with the same endpoint \(g\), choose \(c\) so that it and every translated partial product of both words lie in the cell. Repeatedly apply the given identity. The first image word multiplied on the left by \(f(c)\), and the second image word multiplied by the same element, both equal \(f(cg)\). Cancellation proves equality. The assignment also respects inverses: for \(x\in\Omega(R)\), choose \(d,d^{-1},dx^{-1}\in\Omega\). The identities \((dx^{-1})x=d\) and \(d^{-1}d=1\) then give \(f(d^{-1})f(dx^{-1})=f(x)^{-1}\). The word \(d^{-1}(dx^{-1})\) represents \(x^{-1}\), as required.
+
+The assignments agree after fppf pullback, so the sheaf property of \(H\) descends them. Concatenation of words proves multiplicativity. Yoneda makes this map of represented fppf sheaves a scheme morphism. Every extension must have these values on generating words, proving uniqueness. \(\square\)
+
+### The three rank-one models
+
+**Theorem 8.1.** A split reductive group of rank \(r+1\) and semisimple rank one over a field is isomorphic to exactly one of
+
+\[
+\mathbf G_m^r\times\operatorname{SL}_2,
+\qquad
+\mathbf G_m^r\times\operatorname{PGL}_2,
+\qquad
+\mathbf G_m^{r-1}\times\operatorname{GL}_2\quad(r\geq1).
+\]
+
+For a reductive group over a scheme with a split maximal torus and semisimple rank one, the same description holds Zariski locally on fixed-type loci. Trivial root lines with chosen frames give a global isomorphism to the corresponding base change from \(\mathbf Z\).
+
+**Proof.** The root and coroot construction in Theorem 7.1 gives two roots \(\pm\alpha\), their additive root lines, the coroot \(\eta=\alpha^\vee\), and \(\langle\alpha,\eta\rangle=2\). Apply Lemma 8.A to \(X=X^*(T)\), \(a=\alpha\), \(b=\eta\). The three resulting pairs are precisely those computed for the three displayed matrix groups: in \(\operatorname{SL}_2\) the root is twice the primitive character and the coroot is primitive; in \(\operatorname{PGL}_2\) the root is primitive and the coroot twice primitive; in \(\operatorname{GL}_2\) they are respectively \(e_1-e_2\) and \(e_1^*-e_2^*\).
+
+Let \(G_0\) be the indicated matrix model. The lattice isomorphism gives a torus isomorphism \(f_T:T\to T_0\) carrying root characters and coroots to those of the model. Choose a nonzero positive-root frame \(E\in\mathfrak g_\alpha\). The perfect pairing of Theorem 7.1 gives a unique negative-root frame \(F\) with pairing one. Define \(x(u)=\exp_\alpha(uE)\) and \(y(v)=\exp_{-\alpha}(vF)\), and match these to the upper and lower matrix parameters \(x_0,y_0\) of \(G_0\).
+
+The open cell theorem gives \(\Omega=U_-TU_+\). On it define
+
+\[
+f\bigl(y(v)t x(u)\bigr)=y_0(v)f_T(t)x_0(u).
+\]
+
+This is an isomorphism of schemes from \(\Omega\) to the model cell. The group law on the torus, the additivity of \(x,y\), and the conjugation identities \(t x(u)t^{-1}=x(\alpha(t)u)\), \(t y(v)t^{-1}=y(\alpha(t)^{-1}v)\), agree under this map. The remaining multiplication rule is
+
+\[
+x(u)y(v)=y\left(\frac{v}{1+uv}\right)
+\eta(1+uv)x\left(\frac{u}{1+uv}\right),
+\qquad 1+uv\in\mathcal O^\times,
+\]
+
+proved in Theorem 7.1 by the arbitrary-base central-extension argument and the explicit \(2\times2\) matrix identity.
+
+For two cell points \(y(v)t x(u)\) and \(y(v')t'x(u')\), their product is in the cell exactly when \(x(u)y(v')\) is: left multiplication by \(U_-T\) and right multiplication by \(TU_+\) preserve the cell, as do their inverses. The preceding rule and its unit criterion therefore give every multiplication of cell points whose product remains in the cell. It follows that \(f\) satisfies Lemma 8.B. The lemma extends it to a group homomorphism \(G\to G_0\). The inverse cell map satisfies the same identities and extends in the other direction. Uniqueness in the lemma makes their compositions the identity. Thus \(G\simeq G_0\).
+
+Any group isomorphism carries a maximal torus to a maximal torus. Over an algebraic closure the torus conjugacy theorem then identifies its root/coroot pair with the pair for the fixed torus. It can interchange the signs of both elements, but does not change either divisibility. The three invariant pairs \((2,1),(1,2),(1,1)\) distinguish the models in all characteristics, including characteristic two. This proves uniqueness without a forward reference to the derived group.
+
+Over a scheme, restrict to an open where the root/coroot lattice pair is constant and the positive root line is trivial. Its paired negative line is then also trivial. The same torus map, cell formula and fppf word argument work over every test scheme, so give the asserted local isomorphism. When the lattice pair and frames are fixed globally, these constructions are global. All maps commute with base change because the displayed formulas and their character pairings do. \(\square\)
+
+## 9. Exercises and solutions
+
+**Exercise 9.1 (first steps).** Compute all roots and root spaces of $\operatorname{GL}_n$ with respect to its diagonal torus. Determine the zero-weight space and the positive coroot for $e_i-e_j$.
+
+**Solution.** The diagonal matrix units have weight zero and form $\mathfrak t$. For $i\ne j$, $E_{ij}$ has weight $e_i-e_j$, each once. The corresponding root group is $I+uE_{ij}$. Its coroot has diagonal entries $t$ in position $i$, $t^{-1}$ in position $j$, and $1$ elsewhere. Evaluating $e_i-e_j$ gives $t^2$, so the root–coroot pairing is two.
+
+**Exercise 9.2 (rank-one multiplication).** Compute $U_{\pm\alpha}$ and $\alpha^\vee$ for $\operatorname{SL}_2$. Verify the factorization (2), and explain why the character differential in characteristic two does not change this factorization.
+
+**Solution.** The two groups are the upper and lower unipotent matrices. Their parameters are $x,y$ in the displayed matrix identity, and $\alpha^\vee(t)=\operatorname{diag}(t,t^{-1})$. Multiplication of the three factors gives $\begin{pmatrix}1+xy&x\\y&1\end{pmatrix}$, equal to $x_\alpha(x)x_{-\alpha}(y)$. The character on the upper group is $t^2$, so its pairing with this coroot is two. Although its differential is zero in characteristic two, the Laurent character and all polynomial matrix identities remain valid; no division by two was used.
+
+**Exercise 9.3 (infinitesimal information).** In characteristic different from two, show that $\mathfrak{sl}_2\simeq\mathfrak{pgl}_2$ as Lie algebras, while the groups are not isomorphic. What happens to the differential of $\operatorname{SL}_2\to\operatorname{PGL}_2$ in characteristic two?
+
+**Solution.** The inclusion of trace-zero matrices followed by quotienting by scalar matrices has zero kernel when two is invertible: a trace-zero scalar is zero. Both Lie algebras have dimension three, so this bracket-preserving map is an isomorphism. The groups have different centres, $\mu_2$ and $1$. In characteristic two the scalar identity has trace zero and lies in the kernel of the differential, which therefore has one-dimensional kernel. It cannot be an isomorphism. The group map remains a central fppf isogeny with kernel $\mu_2$.
+
+**Exercise 9.4 (classification).** List the rank-two split reductive groups of semisimple rank one. Distinguish them by their centres and derived groups, including characteristic two.
+
+**Solution.** Put \(r=1\) in Theorem 8.1. The list is \(\mathbf G_m\times\operatorname{SL}_2\), \(\mathbf G_m\times\operatorname{PGL}_2\), and \(\operatorname{GL}_2\). Their centres are respectively \(\mathbf G_m\times\mu_2\), \(\mathbf G_m\), and \(\mathbf G_m\). The first centre is not a torus: in characteristic two it is nonsmooth, and otherwise it has two geometric components. We compute the indicated derived groups directly. Fppf locally choose \(t\) with \(t^2-1\) invertible. The identities \([h(t),x(u)]=x((t^2-1)u)\) and \([h(t),y(v)]=y((t^{-2}-1)v)\) put both root groups of \(\operatorname{SL}_2\) in its commutator subgroup. The open cell word argument of Theorem 6.1 shows that these root groups generate \(\operatorname{SL}_2\) as an fppf sheaf, since \(h(t)=w(t)w(1)^{-1}\). Their images generate \(\operatorname{PGL}_2\), because \(\operatorname{SL}_2\to\operatorname{PGL}_2\) is fppf surjective; hence its derived group is itself. For \(\operatorname{GL}_2\), determinant kills all commutators, and conjugation by \(\operatorname{diag}(t,1)\), with \(t-1\) invertible fppf locally, puts both determinant-one root groups in the commutator subgroup. The same generation argument gives its derived group \(\operatorname{SL}_2\). The central \(\mathbf G_m\) factors contribute no commutators. Thus the last two models have derived groups \(\operatorname{PGL}_2\) and \(\operatorname{SL}_2\); the first and third have the same derived group but different centres. These computations are scheme-theoretic and remain valid in characteristic two.
+
+**Exercise 9.5 (families).** For $G=\operatorname{SL}(\mathcal O\oplus L)$, identify the two root groups and their pairing. Give a condition on $L$ necessary for a pinning of this pair with its displayed torus.
+
+**Solution.** An upper off-diagonal entry is a map $L\to\mathcal O$, so its line is $L^{-1}$; a lower entry is a map $\mathcal O\to L$, so its line is $L$. Composition gives $L^{-1}\otimes L\to\mathcal O$, the perfect pairing in Theorem 7.1. A pinning chooses a nowhere-vanishing section in the simple root line. It therefore requires $L^{-1}$, equivalently $L$, to be trivial. This illustrates the global hypothesis absent from the field case.
+
+The course prerequisite guide records the exact supporting statements, their full proof routes, and the hypotheses needed in their applications.
+
+## References and prerequisite proofs
+
+- Brian Conrad, [*Reductive group schemes*](https://math.stanford.edu/~conrad/papers/luminysga3.pdf), §§2.3 and 4.1–4.3, for the dynamic approach and Gabber's central-extension splitting argument. The proofs above are written out independently.
+- [Milne’s freely accessible *Algebraic Groups*, version 2.00 (2015)](https://www.jmilne.org/math/CourseNotes/iAG200.pdf). This exact free author edition provides comparison material; its citations do not replace the programme proofs.
+- SGA 3, [*Schémas en groupes*](https://webusers.imj-prg.fr/~patrick.polo/SGA3/), Exposés XIX–XX, for roots and the relative rank-one theorem.
+- The [official Stacks project](https://stacks.math.columbia.edu/) and AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks project's maintainers. The normalization lemma and its whole proof in Section 5 are adapted from the Stacks project authors through this edition.
+
+The following supporting statements have their exact proof routes recorded in the course prerequisite guide:
+
+- [Algebra and sheaf cohomology before reductive groups](AG-RG-S01.md), §§3–8: injectives, finite-cover comparisons, affine vanishing, projective-space twists, ample embeddings and projective Serre finiteness.
+- Projective cohomology and smooth affine models, §§1–6: exact and faithful local completion; projective formal functions and idempotents; smooth connected affine models; universal finite projective complexes and all-base-change direct images; regular curve immersions, curve duality, divisor degrees and the genus-zero calculation.
+- [Completing a smooth affine curve and extending its group action](AG-RG-S03.md), §§1–4: finite curve normalization, completion, the actual family action and one-dimensional unipotent identification used through the preceding solvable-group proofs.
+- Affine descent, Zariski Main and recognition of spaces, Theorems E8.1–E9.1: recognition on every scheme test, representability and the full relative integral-closure factorization.
+- Flat quotient bootstrap, Theorem 8.2 and Corollary 8.3: the algebraic-space quotient and torsor relation for the free smooth subgroup action, over arbitrary bases.
+- [Lemma 5.A of this lesson](#ag-rg-03-grassmannian): quotient Grassmannian charts, arbitrary base change, and the closed Plücker immersion with determinant quotient bundle; the subbundle convention follows by dualizing.
+- The current written group-scheme proofs: *Diagonalizable groups*, Theorems 3.4–3.5 and §4, for smooth fixed loci, invariant algebras and torus quotients; *Group schemes over a field*, Proposition 5.8, for the reduced schematic image and faithful-flat image factorization; *Lie algebras and smoothness*, Theorem 2.9 and Theorem 3.2, for the universal normalizer tangent calculation and geometric smoothness criterion; and *Quotients and torsors*, its affine descent proof and Theorem 8.1, for effective algebra descent and line-bundle frame torsors. These are the actual written proofs, including positive-characteristic and nonreduced scope, rather than source citations.
+
+Theorem 1.1 proves the affine central quotient before the rank-one argument; the following lesson adds the consequences for root-group coordinates. The arbitrary-base derived group is constructed after the existence theorem in the following lesson.
+
+## History
+
+This lesson's new exposition, constructions, calculations, examples and solutions were written by GPT-6.1 Sol (OpenAI), Ultra setting, in October 2026, and are dedicated to the public domain under CC0.
+
+The normalization lemma and its whole proof are adapted from the Stacks authors, *The Stacks Project*, *Morphisms of Algebraic Spaces*, Tag 0ABS, through the AI Integrated Stacks Project English source edition read on 1 October 2026. The Stacks authors retain copyright in that material. The source is the [versioned transparent source](https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/spaces-morphisms.tex). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and has not been reviewed by the Stacks project's maintainers.
+
+This collected lesson, *Roots and reductive groups of rank one* (2026), is published by Open Mathematics Courses. The Stacks authors are the authors of its imported proof; GPT-6.1 Sol (OpenAI) is responsible for the new contributions and adaptation. Permission is granted to copy, distribute and modify this collected lesson under the GNU Free Documentation License, Version 1.2, with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. An unaltered copy of the licence is supplied as [GNU Free Documentation License 1.2](https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-RG/assets/GFDL-1.2.txt). This additional licence for the collected lesson does not withdraw the CC0 dedication of its original contributions.

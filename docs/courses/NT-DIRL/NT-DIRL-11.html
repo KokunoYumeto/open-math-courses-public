@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Siegel–Walfisz theorem · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-11.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-siegel-walfisz-theorem">The Siegel–Walfisz theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The prime number theorem with an exceptional term was effective. Siegel's theorem removes that term uniformly when the modulus grows like a fixed power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>. This gives an ineffective uniform theorem in a much more useful range. The same zero-free input controls cancellation of the Möbius function, but that assertion needs a reciprocal <span class="math" data-tex="\(L\)">\(L\)</span>-function bound and its own contour argument.</p>
+<p>We use the classical zero-free region and local analytic theory from <em>Zero-free regions and the exceptional zero</em>, the truncated Perron kernel and GRH estimates from <em>Counting zeros and the explicit formula for character sums over prime powers</em>, the exceptional-term prime theorem from <em>The prime number theorem for arithmetic progressions</em>, and the real-axis bound proved in <em>Siegel's theorem</em>. The deeper class-number discussion is not an input. Write <span class="math" data-tex="\(\operatorname{li}(x)=\int_2^x du/\log u\)">\(\operatorname{li}(x)=\int_2^x du/\log u\)</span>; changing its additive normalization only changes bounded terms.</p>
+<h2 id="1-removing-the-exceptional-term">1. Removing the exceptional term</h2>
+<p>Put <span class="math" data-tex="\(v=\log x\)">\(v=\log x\)</span>. The earlier theorem gives absolute effective <span class="math" data-tex="\(a,k&gt;0\)">\(a,k&gt;0\)</span> such that for <span class="math" data-tex="\(q\le\exp(a\sqrt v)\)">\(q\le\exp(a\sqrt v)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
+-E(\chi)\frac{x^{\beta_1}}{\beta_1}
++O(xe^{-k\sqrt v}).
+\tag{1.1}
+\]">\[
+\psi(x,\chi)=\mathbf1_{\chi=\chi_0}x
+-E(\chi)\frac{x^{\beta_1}}{\beta_1}
++O(xe^{-k\sqrt v}).
+\tag{1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(E(\chi)\)">\(E(\chi)\)</span> is 1 only for the possible exceptional real character, including its induced copies, and <span class="math" data-tex="\(\beta_1&gt;1/2\)">\(\beta_1&gt;1/2\)</span>. For the principal character, the omitted prime powers dividing <span class="math" data-tex="\(q\)">\(q\)</span> contribute <span class="math" data-tex="\(O(\log(2q)\log(2x))\)">\(O(\log(2q)\log(2x))\)</span>, already absorbed in this range.</p>
+<p>Fix <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and suppose <span class="math" data-tex="\(q\le v^A\)">\(q\le v^A\)</span>. For sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, effectively in <span class="math" data-tex="\(A\)">\(A\)</span>, this range is contained in the range of (1.1). Apply Siegel's real-axis estimate with exponent <span class="math" data-tex="\(\varepsilon=1/(4A)\)">\(\varepsilon=1/(4A)\)</span>. If a zero occurs, its primitive conductor <span class="math" data-tex="\(d\le q\)">\(d\le q\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+1-\beta_1\ge c(\varepsilon)d^{-\varepsilon}
+\ge c(\varepsilon)v^{-1/4}.
+\]">\[
+1-\beta_1\ge c(\varepsilon)d^{-\varepsilon}
+\ge c(\varepsilon)v^{-1/4}.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\frac{x^{\beta_1}}{\beta_1}
+\le2x\exp(-c(\varepsilon)v^{3/4})
+=O_A(xe^{-k\sqrt v}).
+\tag{1.2}
+\]">\[
+\frac{x^{\beta_1}}{\beta_1}
+\le2x\exp(-c(\varepsilon)v^{3/4})
+=O_A(xe^{-k\sqrt v}).
+\tag{1.2}
+\]</span>
+<p>The last comparison holds beyond an ineffective threshold depending on <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(v^{3/4}/\sqrt v\to\infty\)">\(v^{3/4}/\sqrt v\to\infty\)</span>. This choice of exponent keeps the final exponential constant absolute: its possible ineffectivity can be put entirely in the threshold or the implied constant. The frequently used choice <span class="math" data-tex="\(1/(2A)\)">\(1/(2A)\)</span> also proves the theorem, but immediately produces an exponential constant depending on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="2-the-uniform-prime-theorem">2. The uniform prime theorem</h2>
+<p><strong>Theorem 2.1 (Siegel–Walfisz).</strong> There is an absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that, for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, uniformly for <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>, <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span>, and <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O_A(xe^{-c\sqrt{\log x}}),
+\tag{2.1}
+\]">\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O_A(xe^{-c\sqrt{\log x}}),
+\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\theta(x;q,b)=\frac{x}{\varphi(q)}
++O_A(xe^{-c\sqrt{\log x}}),
+\tag{2.2}
+\]">\[
+\theta(x;q,b)=\frac{x}{\varphi(q)}
++O_A(xe^{-c\sqrt{\log x}}),
+\tag{2.2}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\pi(x;q,b)=\frac{\operatorname{li}(x)}{\varphi(q)}
++O_A\left(\frac{x}{\log x}e^{-c\sqrt{\log x}}\right).
+\tag{2.3}
+\]">\[
+\pi(x;q,b)=\frac{\operatorname{li}(x)}{\varphi(q)}
++O_A\left(\frac{x}{\log x}e^{-c\sqrt{\log x}}\right).
+\tag{2.3}
+\]</span>
+<p>In particular the weaker error <span class="math" data-tex="\(O_A(xe^{-c\sqrt{\log x}})\)">\(O_A(xe^{-c\sqrt{\log x}})\)</span> holds for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The implied constants are ineffective.</p>
+<p><strong>Proof.</strong> Equations (1.1)–(1.2) give the character estimate with no exceptional term. Average against <span class="math" data-tex="\(\overline{\chi(b)}\)">\(\overline{\chi(b)}\)</span> by orthogonality and divide by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>. The sum of the absolute error bounds has exactly <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> terms, so this averaging does not introduce a factor <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>. It gives (2.1) for large <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>For the bounded interval below the required threshold, use <span class="math" data-tex="\(\psi(x;q,b)\le\psi(x)\ll x\)">\(\psi(x;q,b)\le\psi(x)\ll x\)</span>, proved earlier by the elementary Chebyshev bound. Enlarging the implied constant extends (2.1) to <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>; this is where an ineffective threshold becomes an ineffective constant.</p>
+<p>Higher prime powers contribute <span class="math" data-tex="\(O(\sqrt x\log^2(2x))\)">\(O(\sqrt x\log^2(2x))\)</span>, uniformly in <span class="math" data-tex="\(q,b\)">\(q,b\)</span>. They are smaller than the displayed error after decreasing <span class="math" data-tex="\(c\)">\(c\)</span>, proving (2.2).</p>
+<p>For (2.3), split the exact partial summation at <span class="math" data-tex="\(z=\sqrt x\)">\(z=\sqrt x\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\pi(x;q,b)=\pi(z;q,b)
++\frac{\theta(x;q,b)}{\log x}
+-\frac{\theta(z;q,b)}{\log z}
++\int_z^x\frac{\theta(u;q,b)}{u\log^2u}\,du.
+\tag{2.4}
+\]">\[
+\pi(x;q,b)=\pi(z;q,b)
++\frac{\theta(x;q,b)}{\log x}
+-\frac{\theta(z;q,b)}{\log z}
++\int_z^x\frac{\theta(u;q,b)}{u\log^2u}\,du.
+\tag{2.4}
+\]</span>
+<p>For <span class="math" data-tex="\(u\ge z\)">\(u\ge z\)</span>, the endpoint hypothesis <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span> implies <span class="math" data-tex="\(q\le(\log u)^{2A}\)">\(q\le(\log u)^{2A}\)</span> once <span class="math" data-tex="\(\log x\ge4\)">\(\log x\ge4\)</span>. Thus apply (2.2) with parameter <span class="math" data-tex="\(2A\)">\(2A\)</span> throughout that upper interval. The contributions at <span class="math" data-tex="\(z\)">\(z\)</span>, including <span class="math" data-tex="\(\pi(z;q,b)\)">\(\pi(z;q,b)\)</span> and the lower main-term normalization, are <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>, by the elementary global estimates. They are negligible for (2.3).</p>
+<p>The upper main terms integrate to <span class="math" data-tex="\(\operatorname{li}(x)/\varphi(q)+O(\sqrt x)\)">\(\operatorname{li}(x)/\varphi(q)+O(\sqrt x)\)</span>. The endpoint error is <span class="math" data-tex="\(O_A(xe^{-c\sqrt{\log x}}/\log x)\)">\(O_A(xe^{-c\sqrt{\log x}}/\log x)\)</span>. Since <span class="math" data-tex="\(\log u\ge(\log x)/2\)">\(\log u\ge(\log x)/2\)</span> and <span class="math" data-tex="\(\sqrt{\log u}\ge\sqrt{\log x}/\sqrt2\)">\(\sqrt{\log u}\ge\sqrt{\log x}/\sqrt2\)</span>, the upper error integral is bounded by</p>
+<span class="math math-display" data-tex="\[
+\frac{O_A(1)}{\log^2x}
+\int_{\sqrt x}^x e^{-c\sqrt{\log x}/\sqrt2}\,du
+\ll_A\frac{x}{\log^2x}e^{-c\sqrt{\log x}/\sqrt2}.
+\]">\[
+\frac{O_A(1)}{\log^2x}
+\int_{\sqrt x}^x e^{-c\sqrt{\log x}/\sqrt2}\,du
+\ll_A\frac{x}{\log^2x}e^{-c\sqrt{\log x}/\sqrt2}.
+\]</span>
+<p>Choose a smaller common absolute <span class="math" data-tex="\(c\)">\(c\)</span>, and enlarge constants for the bounded initial range. This proves (2.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In this modulus range the error is small relative to the main term. For example, its relative size for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is at most
+<span class="math" data-tex="\(O_A((\log x)^A e^{-c\sqrt{\log x}})\)">\(O_A((\log x)^A e^{-c\sqrt{\log x}})\)</span>, which tends to zero. The same holds for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> using the stronger error in (2.3) and <span class="math" data-tex="\(\operatorname{li}(x)\sim x/\log x\)">\(\operatorname{li}(x)\sim x/\log x\)</span>.</p>
+<h2 id="3-bounding-the-reciprocal-l-function">3. Bounding the reciprocal L-function</h2>
+<p>The Möbius Dirichlet series is</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}\frac{\mu(n)\chi(n)}{n^s}
+=\frac1{L(s,\chi)}
+\quad(\Re s&gt;1).
+\tag{3.1}
+\]">\[
+\sum_{n\ge1}\frac{\mu(n)\chi(n)}{n^s}
+=\frac1{L(s,\chi)}
+\quad(\Re s&gt;1).
+\tag{3.1}
+\]</span>
+<p>Zeros of <span class="math" data-tex="\(L\)">\(L\)</span> become poles here; at the principal pole <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, its reciprocal instead has a zero. We need a bound throughout a zero-free strip, including its horizontal edges.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, <span class="math" data-tex="\(T\ge3\)">\(T\ge3\)</span>, and <span class="math" data-tex="\(H=\log(q(T+3))\)">\(H=\log(q(T+3))\)</span>. There are absolute <span class="math" data-tex="\(h,K&gt;0\)">\(h,K&gt;0\)</span> with the following property. If the primitive <span class="math" data-tex="\(L\)">\(L\)</span>-function inducing a character modulo <span class="math" data-tex="\(q\)">\(q\)</span> has no zeros in</p>
+<span class="math math-display" data-tex="\[
+\sigma\ge1-\frac{8h}{H},\qquad |t|\le T+1,
+\tag{3.2}
+\]">\[
+\sigma\ge1-\frac{8h}{H},\qquad |t|\le T+1,
+\tag{3.2}
+\]</span>
+<p>then</p>
+<span class="math math-display" data-tex="\[
+\left|\frac1{L(\sigma+it,\chi)}\right|
+\ll q^2(2H)^K
+\quad\left(\sigma\ge1-\frac hH,\ |t|\le T,\ \sigma\le2\right).
+\tag{3.3}
+\]">\[
+\left|\frac1{L(\sigma+it,\chi)}\right|
+\ll q^2(2H)^K
+\quad\left(\sigma\ge1-\frac hH,\ |t|\le T,\ \sigma\le2\right).
+\tag{3.3}
+\]</span>
+<p>For the principal primitive factor, use the zeta function and interpret its reciprocal holomorphically at 1. The constants are effective.</p>
+<p><strong>Proof.</strong> Decrease the absolute <span class="math" data-tex="\(h\)">\(h\)</span> so that all points considered have <span class="math" data-tex="\(\sigma\ge1/2\)">\(\sigma\ge1/2\)</span>. First treat a nonprincipal primitive character of conductor <span class="math" data-tex="\(d\le q\)">\(d\le q\)</span>.</p>
+<p>Truncate its periodic partial-summation formula at the integer <span class="math" data-tex="\(N=\lceil q(T+3)\rceil\)">\(N=\lceil q(T+3)\rceil\)</span>. The boundary term has magnitude at most <span class="math" data-tex="\(dN^{-\sigma}\)">\(dN^{-\sigma}\)</span>, and the integral tail at most <span class="math" data-tex="\(|s|dN^{-\sigma}/\sigma\)">\(|s|dN^{-\sigma}/\sigma\)</span>. For <span class="math" data-tex="\(\sigma\ge1-8h/H\)">\(\sigma\ge1-8h/H\)</span>, <span class="math" data-tex="\(|t|\le T+1\)">\(|t|\le T+1\)</span>, and <span class="math" data-tex="\(\sigma\le2\)">\(\sigma\le2\)</span>, these are <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>: <span class="math" data-tex="\(N^{1-\sigma}\le e^{O(h)}\)">\(N^{1-\sigma}\le e^{O(h)}\)</span>, <span class="math" data-tex="\(d\le q\)">\(d\le q\)</span>, and <span class="math" data-tex="\(|s|\ll T+3\)">\(|s|\ll T+3\)</span>. The finite sum is <span class="math" data-tex="\(O(H)\)">\(O(H)\)</span>, because</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le N}n^{-\sigma}
+\le N^{\max(1-\sigma,0)}\sum_{n\le N}\frac1n
+\ll H.
+\]">\[
+\sum_{n\le N}n^{-\sigma}
+\le N^{\max(1-\sigma,0)}\sum_{n\le N}\frac1n
+\ll H.
+\]</span>
+<p>Hence <span class="math" data-tex="\(|L(s)|\ll H\)">\(|L(s)|\ll H\)</span> in this band.</p>
+<p>For each <span class="math" data-tex="\(|t|\le T\)">\(|t|\le T\)</span>, consider the disk with center
+<span class="math" data-tex="\(s_0=1+2h/H+it\)">\(s_0=1+2h/H+it\)</span> and radius <span class="math" data-tex="\(R=4h/H\)">\(R=4h/H\)</span>.
+It lies inside the zero-free box (3.2). Choose its holomorphic logarithm <span class="math" data-tex="\(g=\log L\)">\(g=\log L\)</span> to agree at the center with the Euler-product logarithm. There</p>
+<span class="math math-display" data-tex="\[
+|g(s_0)|\le\log\zeta(1+2h/H)\ll\log(2H),
+\]">\[
+|g(s_0)|\le\log\zeta(1+2h/H)\ll\log(2H),
+\]</span>
+<p>and throughout the disk <span class="math" data-tex="\(\Re g\le\log(CH)\)">\(\Re g\le\log(CH)\)</span>.</p>
+<p>Here is the required elementary bound for a holomorphic logarithm. If <span class="math" data-tex="\(g\)">\(g\)</span> is holomorphic in a disk of radius <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(\Re g\le M\)">\(\Re g\le M\)</span>, and <span class="math" data-tex="\(g_0\)">\(g_0\)</span> is its central value, the function</p>
+<span class="math math-display" data-tex="\[
+w(z)=\frac{g(z)-g_0}{2M-g(z)-\overline{g_0}}
+\]">\[
+w(z)=\frac{g(z)-g_0}{2M-g(z)-\overline{g_0}}
+\]</span>
+<p>has modulus at most 1 and central value zero, provided <span class="math" data-tex="\(M&gt;\Re g_0\)">\(M&gt;\Re g_0\)</span>. The maximum principle applied to <span class="math" data-tex="\(w(z)/z\)">\(w(z)/z\)</span> gives <span class="math" data-tex="\(|w(z)|\le r/R\)">\(|w(z)|\le r/R\)</span> on radius <span class="math" data-tex="\(r&lt;R\)">\(r&lt;R\)</span>. Solving this inequality yields</p>
+<span class="math math-display" data-tex="\[
+|g(z)-g_0|\le
+\frac{2r}{R-r}(M-\Re g_0).
+\tag{3.4}
+\]">\[
+|g(z)-g_0|\le
+\frac{2r}{R-r}(M-\Re g_0).
+\tag{3.4}
+\]</span>
+<p>One can increase <span class="math" data-tex="\(M\)">\(M\)</span> slightly if necessary. Take <span class="math" data-tex="\(r=3h/H\)">\(r=3h/H\)</span>, so <span class="math" data-tex="\(r/R=3/4\)">\(r/R=3/4\)</span>. Formula (3.4) gives <span class="math" data-tex="\(|g(z)|\ll\log(2H)\)">\(|g(z)|\ll\log(2H)\)</span>. At the same ordinate <span class="math" data-tex="\(t\)">\(t\)</span>, every real part from <span class="math" data-tex="\(1-h/H\)">\(1-h/H\)</span> to <span class="math" data-tex="\(1+2h/H\)">\(1+2h/H\)</span> lies in this smaller disk. Therefore <span class="math" data-tex="\(|1/L(z)|\ll(2H)^K\)">\(|1/L(z)|\ll(2H)^K\)</span> there. To its right, the absolutely convergent reciprocal Euler product gives
+<span class="math" data-tex="\(|1/L(z)|\le\zeta(\sigma)\ll H\)">\(|1/L(z)|\le\zeta(\sigma)\ll H\)</span>, covering the remaining real parts up to 2.</p>
+<p>For the principal primitive factor, apply the same argument to</p>
+<span class="math math-display" data-tex="\[
+Z(s)=\frac{s-1}{s+1}\zeta(s).
+\tag{3.5}
+\]">\[
+Z(s)=\frac{s-1}{s+1}\zeta(s).
+\tag{3.5}
+\]</span>
+<p>It is holomorphic and nonzero on the disks, including at 1. Its magnitude is <span class="math" data-tex="\(O(H)\)">\(O(H)\)</span>: when <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span>, use (2.4) of <em>Siegel's theorem</em> after multiplying by <span class="math" data-tex="\((s-1)/(s+1)\)">\((s-1)/(s+1)\)</span>; when <span class="math" data-tex="\(|t|&gt;1\)">\(|t|&gt;1\)</span>, truncate</p>
+<span class="math math-display" data-tex="\[
+\zeta(s)=\sum_{n\le N}n^{-s}
++\frac{N^{1-s}}{s-1}
+-s\int_N^\infty\{u\}u^{-s-1}\,du
+\]">\[
+\zeta(s)=\sum_{n\le N}n^{-s}
++\frac{N^{1-s}}{s-1}
+-s\int_N^\infty\{u\}u^{-s-1}\,du
+\]</span>
+<p>and use the same bounds as above. At <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, the logarithm of <span class="math" data-tex="\((s_0-1)/(s_0+1)\)">\((s_0-1)/(s_0+1)\)</span> has magnitude <span class="math" data-tex="\(O(\log(2H))\)">\(O(\log(2H))\)</span>: its modulus lies between a fixed multiple of <span class="math" data-tex="\(1/H\)">\(1/H\)</span> and 1, and its argument is bounded. Thus the logarithm bound applies to <span class="math" data-tex="\(Z\)">\(Z\)</span>. Since
+<span class="math" data-tex="\(1/\zeta=((s-1)/(s+1))/Z\)">\(1/\zeta=((s-1)/(s+1))/Z\)</span>
+and the prefactor is bounded for <span class="math" data-tex="\(\sigma\ge1/2\)">\(\sigma\ge1/2\)</span>, the conclusion follows for <span class="math" data-tex="\(1/\zeta\)">\(1/\zeta\)</span>.</p>
+<p>Finally restore the extra Euler factors for an imprimitive character:</p>
+<span class="math math-display" data-tex="\[
+\frac1{L(s,\chi)}
+=\frac1{L(s,\chi^*)}
+\prod_{p\mid q,\ p\nmid d}(1-\chi^*(p)p^{-s})^{-1}.
+\]">\[
+\frac1{L(s,\chi)}
+=\frac1{L(s,\chi^*)}
+\prod_{p\mid q,\ p\nmid d}(1-\chi^*(p)p^{-s})^{-1}.
+\]</span>
+<p>For <span class="math" data-tex="\(\sigma\ge1/2\)">\(\sigma\ge1/2\)</span>, each factor is at most
+<span class="math" data-tex="\((1-p^{-1/2})^{-1}\le p^2\)">\((1-p^{-1/2})^{-1}\le p^2\)</span> in magnitude. Their product is at most <span class="math" data-tex="\((\prod_{p\mid q}p)^2\le q^2\)">\((\prod_{p\mid q}p)^2\le q^2\)</span>, proving (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The polynomial in <span class="math" data-tex="\(H\)">\(H\)</span> matters. A bound of size <span class="math" data-tex="\(T^K\)">\(T^K\)</span> would spoil the horizontal Perron integrals and would not prove the asserted exponential cancellation.</p>
+<h2 id="4-siegel-walfisz-for-the-möbius-function">4. Siegel–Walfisz for the Möbius function</h2>
+<p><strong>Theorem 4.1.</strong> There is an absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that, for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, uniformly for <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span> and all residue classes <span class="math" data-tex="\(b\)">\(b\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le x,\ n\equiv b\pmod q}\mu(n)
+=O_A(xe^{-c\sqrt{\log x}}).
+\tag{4.1}
+\]">\[
+\sum_{n\le x,\ n\equiv b\pmod q}\mu(n)
+=O_A(xe^{-c\sqrt{\log x}}).
+\tag{4.1}
+\]</span>
+<p>The implied constant is ineffective. In particular this holds for every reduced residue class.</p>
+<p><strong>Proof.</strong> First prove, for every character modulo <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M(x,\chi):=\sum_{n\le x}\mu(n)\chi(n)
+\ll_A xe^{-c\sqrt{\log x}}.
+\tag{4.2}
+\]">\[
+M(x,\chi):=\sum_{n\le x}\mu(n)\chi(n)
+\ll_A xe^{-c\sqrt{\log x}}.
+\tag{4.2}
+\]</span>
+<p>Put <span class="math" data-tex="\(v=\log x\)">\(v=\log x\)</span>, choose an absolute small <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>, and let <span class="math" data-tex="\(T=\exp(\kappa\sqrt v)\)">\(T=\exp(\kappa\sqrt v)\)</span>. The classical zero-free region excludes every nonreal zero and every nonexceptional real zero from a box of the form (3.2), after choosing <span class="math" data-tex="\(h\)">\(h\)</span> sufficiently small. The only possible remaining zero has distance</p>
+<span class="math math-display" data-tex="\[
+1-\beta_1\ge c(1/(4A))v^{-1/4}.
+\]">\[
+1-\beta_1\ge c(1/(4A))v^{-1/4}.
+\]</span>
+<p>For large <span class="math" data-tex="\(x\)">\(x\)</span>, ineffectively in <span class="math" data-tex="\(A\)">\(A\)</span>, this exceeds <span class="math" data-tex="\(8h/H\)">\(8h/H\)</span>, since
+<span class="math" data-tex="\(H=\log(q(T+3))\asymp\kappa\sqrt v\)">\(H=\log(q(T+3))\asymp\kappa\sqrt v\)</span>.
+Thus the box is entirely zero-free and Lemma 3.1 applies. The principal zeta factor has no exceptional real zero.</p>
+<p>Use the truncated Perron kernel from the explicit-formula lesson, with coefficients <span class="math" data-tex="\(\mu(n)\chi(n)\)">\(\mu(n)\chi(n)\)</span> of magnitude at most 1. Taking <span class="math" data-tex="\(x\)">\(x\)</span> halfway between integers avoids an endpoint term. On <span class="math" data-tex="\(c_x=1+1/\log x\)">\(c_x=1+1/\log x\)</span>, absolute summation of the kernel error gives</p>
+<span class="math math-display" data-tex="\[
+M(x,\chi)=\frac1{2\pi i}\int_{c_x-iT}^{c_x+iT}
+\frac{x^s}{sL(s,\chi)}\,ds
++O\left(\frac{x\log(2x)}T\right).
+\tag{4.3}
+\]">\[
+M(x,\chi)=\frac1{2\pi i}\int_{c_x-iT}^{c_x+iT}
+\frac{x^s}{sL(s,\chi)}\,ds
++O\left(\frac{x\log(2x)}T\right).
+\tag{4.3}
+\]</span>
+<p>For clarity, the error bound follows by separating <span class="math" data-tex="\(x/2&lt;n&lt;2x\)">\(x/2&lt;n&lt;2x\)</span>, where
+<span class="math" data-tex="\(|\log(x/n)|\gg|x-n|/x\)">\(|\log(x/n)|\gg|x-n|/x\)</span> and the half-integer distances have a harmonic sum <span class="math" data-tex="\(O(\log(2x))\)">\(O(\log(2x))\)</span>, from the remaining integers, where <span class="math" data-tex="\(|\log(x/n)|\)">\(|\log(x/n)|\)</span> is bounded below and <span class="math" data-tex="\(\sum n^{-c_x}\ll\log(2x)\)">\(\sum n^{-c_x}\ll\log(2x)\)</span>. The error kernel is <span class="math" data-tex="\(O((x/n)^{c_x}\min(1,(T|\log(x/n)|)^{-1}))\)">\(O((x/n)^{c_x}\min(1,(T|\log(x/n)|)^{-1}))\)</span>. This proves the bound in both ranges.</p>
+<p>Shift to <span class="math" data-tex="\(\sigma_0=1-h/H\)">\(\sigma_0=1-h/H\)</span>. The integrand is holomorphic throughout the rectangle: there are no <span class="math" data-tex="\(L\)">\(L\)</span>-zeros, <span class="math" data-tex="\(s=0\)">\(s=0\)</span> is outside it, and for the principal character the pole of <span class="math" data-tex="\(L\)">\(L\)</span> gives a zero of its reciprocal. Therefore there is no residue and no main term.</p>
+<p>By Lemma 3.1 the new vertical side is</p>
+<span class="math math-display" data-tex="\[
+O\left(x^{1-h/H}q^2(2H)^K\log(T+2)\right);
+\tag{4.4}
+\]">\[
+O\left(x^{1-h/H}q^2(2H)^K\log(T+2)\right);
+\tag{4.4}
+\]</span>
+<p>the factor <span class="math" data-tex="\(\log(T+2)\)">\(\log(T+2)\)</span> bounds <span class="math" data-tex="\(\int_{-T}^T|\sigma_0+it|^{-1}dt\)">\(\int_{-T}^T|\sigma_0+it|^{-1}dt\)</span>.
+The two horizontal sides are</p>
+<span class="math math-display" data-tex="\[
+O\left(\frac{xq^2(2H)^K}{T}\right),
+\tag{4.5}
+\]">\[
+O\left(\frac{xq^2(2H)^K}{T}\right),
+\tag{4.5}
+\]</span>
+<p>since <span class="math" data-tex="\(x^{c_x}=ex\)">\(x^{c_x}=ex\)</span> and their lengths are bounded.</p>
+<p>For sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(H\le2\kappa\sqrt v\)">\(H\le2\kappa\sqrt v\)</span>, while <span class="math" data-tex="\(q^2(2H)^K\log(T+2)\)">\(q^2(2H)^K\log(T+2)\)</span> is at most a fixed power of <span class="math" data-tex="\(v\)">\(v\)</span>, with exponent depending on <span class="math" data-tex="\(A\)">\(A\)</span>. Choose, for example, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> small enough that <span class="math" data-tex="\(h/(2\kappa)\ge2\kappa\)">\(h/(2\kappa)\ge2\kappa\)</span>. Then (4.3)–(4.5) are <span class="math" data-tex="\(O_A(xe^{-\kappa\sqrt v/2})\)">\(O_A(xe^{-\kappa\sqrt v/2})\)</span>, after absorbing that power of <span class="math" data-tex="\(v\)">\(v\)</span>. Extending below the threshold by the trivial bound <span class="math" data-tex="\(|M(x,\chi)|\le x\)">\(|M(x,\chi)|\le x\)</span> gives (4.2).</p>
+<p>For arbitrary real <span class="math" data-tex="\(x\)">\(x\)</span>, apply the half-integer argument at <span class="math" data-tex="\(X=\lfloor x\rfloor+1/2\)">\(X=\lfloor x\rfloor+1/2\)</span>, which has the same integer summands. Here <span class="math" data-tex="\(\log X\sim\log x\)">\(\log X\sim\log x\)</span> and <span class="math" data-tex="\(q\le2^A(\log X)^A\)">\(q\le2^A(\log X)^A\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>; the proof and its thresholds also apply with this fixed factor in the modulus hypothesis. Decrease <span class="math" data-tex="\(c\)">\(c\)</span> and cover the bounded initial interval. This justifies (4.2) at every <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>.</p>
+<p>For <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, orthogonality and averaging (4.2) prove (4.1) without a factor <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>.</p>
+<p>To cover a nonreduced class, put <span class="math" data-tex="\(g=(b,q)\)">\(g=(b,q)\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> is not squarefree, every summand has <span class="math" data-tex="\(\mu(n)=0\)">\(\mu(n)=0\)</span>. Otherwise write <span class="math" data-tex="\(n=gk\)">\(n=gk\)</span>, <span class="math" data-tex="\(q=gr\)">\(q=gr\)</span>, <span class="math" data-tex="\(b=gb&#x27;\)">\(b=gb&#x27;\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\mu(gk)=\mu(g)\mu(k)\mathbf1_{(k,g)=1},\qquad
+k\equiv b&#x27;\pmod r,\quad (b&#x27;,r)=1.
+\tag{4.6}
+\]">\[
+\mu(gk)=\mu(g)\mu(k)\mathbf1_{(k,g)=1},\qquad
+k\equiv b&#x27;\pmod r,\quad (b&#x27;,r)=1.
+\tag{4.6}
+\]</span>
+<p>The allowed <span class="math" data-tex="\(k\)">\(k\)</span>'s form at most <span class="math" data-tex="\(g\)">\(g\)</span> reduced residue classes modulo <span class="math" data-tex="\(R=\operatorname{lcm}(r,\operatorname{rad}g)\)">\(R=\operatorname{lcm}(r,\operatorname{rad}g)\)</span>, with <span class="math" data-tex="\(R\mid q\)">\(R\mid q\)</span>. Apply the proved reduced-class theorem at <span class="math" data-tex="\(x/g\)">\(x/g\)</span>, with parameter <span class="math" data-tex="\(2A\)">\(2A\)</span>: for large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(R\le(\log(x/g))^{2A}\)">\(R\le(\log(x/g))^{2A}\)</span> since <span class="math" data-tex="\(g\le q\le(\log x)^A\)">\(g\le q\le(\log x)^A\)</span>. Sum the at most <span class="math" data-tex="\(g\)">\(g\)</span> bounds. Their factors <span class="math" data-tex="\(x/g\)">\(x/g\)</span> cancel that number, and <span class="math" data-tex="\(\log(x/g)\ge(\log x)/2\)">\(\log(x/g)\ge(\log x)/2\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, giving (4.1) after another absolute decrease of <span class="math" data-tex="\(c\)">\(c\)</span>. Initial bounded <span class="math" data-tex="\(x\)">\(x\)</span> is absorbed as before. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-mertens-sums-in-progressions">5. Mertens sums in progressions</h2>
+<p><strong>Corollary 5.1.</strong> For each reduced class there is a real constant <span class="math" data-tex="\(B(q,b)\)">\(B(q,b)\)</span> such that, for every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\le x,\ p\equiv b\pmod q}\frac1p
+=\frac{\log\log x}{\varphi(q)}+B(q,b)
++O_A(e^{-c\sqrt{\log x}})
+\tag{5.1}
+\]">\[
+\sum_{p\le x,\ p\equiv b\pmod q}\frac1p
+=\frac{\log\log x}{\varphi(q)}+B(q,b)
++O_A(e^{-c\sqrt{\log x}})
+\tag{5.1}
+\]</span>
+<p>uniformly for <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span>. The error constant is ineffective; the constants <span class="math" data-tex="\(B(q,b)\)">\(B(q,b)\)</span> are allowed to depend on the class.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R(u)=\pi(u;q,b)-\operatorname{li}(u)/\varphi(q)\)">\(R(u)=\pi(u;q,b)-\operatorname{li}(u)/\varphi(q)\)</span>. Partial summation gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\le x,\ p\equiv b\pmod q}\frac1p
+=\frac{\pi(x;q,b)}x+\int_2^x\frac{\pi(u;q,b)}{u^2}\,du.
+\]">\[
+\sum_{p\le x,\ p\equiv b\pmod q}\frac1p
+=\frac{\pi(x;q,b)}x+\int_2^x\frac{\pi(u;q,b)}{u^2}\,du.
+\]</span>
+<p>For the <span class="math" data-tex="\(\operatorname{li}\)">\(\operatorname{li}\)</span> part, the derivative identity
+<span class="math" data-tex="\((\operatorname{li}(u)/u)&#x27;=1/(u\log u)-\operatorname{li}(u)/u^2\)">\((\operatorname{li}(u)/u)&#x27;=1/(u\log u)-\operatorname{li}(u)/u^2\)</span>
+makes this
+<span class="math" data-tex="\((\log\log x-\log\log2)/\varphi(q)\)">\((\log\log x-\log\log2)/\varphi(q)\)</span>.
+For fixed <span class="math" data-tex="\(q\)">\(q\)</span>, Theorem 2.1 ensures that <span class="math" data-tex="\(\int_2^\infty R(u)u^{-2}du\)">\(\int_2^\infty R(u)u^{-2}du\)</span> converges absolutely. Thus define</p>
+<span class="math math-display" data-tex="\[
+B(q,b)=-\frac{\log\log2}{\varphi(q)}
++\int_2^\infty\frac{R(u)}{u^2}\,du.
+\tag{5.2}
+\]">\[
+B(q,b)=-\frac{\log\log2}{\varphi(q)}
++\int_2^\infty\frac{R(u)}{u^2}\,du.
+\tag{5.2}
+\]</span>
+<p>The remaining error is <span class="math" data-tex="\(R(x)/x-\int_x^\infty R(u)u^{-2}du\)">\(R(x)/x-\int_x^\infty R(u)u^{-2}du\)</span>. If <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span>, the hypothesis remains valid at every <span class="math" data-tex="\(u\ge x\)">\(u\ge x\)</span>, so its magnitude is bounded by</p>
+<span class="math math-display" data-tex="\[
+O_A\left(\frac{e^{-c\sqrt{\log x}}}{\log x}
++\int_{\log x}^\infty \frac{e^{-c\sqrt v}}v\,dv\right)
+\ll_A e^{-c\sqrt{\log x}}.
+\]">\[
+O_A\left(\frac{e^{-c\sqrt{\log x}}}{\log x}
++\int_{\log x}^\infty \frac{e^{-c\sqrt v}}v\,dv\right)
+\ll_A e^{-c\sqrt{\log x}}.
+\]</span>
+<p>For the integral use <span class="math" data-tex="\(v=t^2\)">\(v=t^2\)</span> and <span class="math" data-tex="\(1/t\le1/\sqrt{\log x}\)">\(1/t\le1/\sqrt{\log x}\)</span>. This proves uniformity without applying the modulus bound at smaller arguments where it might fail. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The corresponding Mertens product is</p>
+<span class="math math-display" data-tex="\[
+\prod_{p\le x,\ p\equiv b\pmod q}(1-1/p)^{-1}
+=C(q,b)(\log x)^{1/\varphi(q)}
+\left(1+O_A(e^{-c\sqrt{\log x}})\right)
+\tag{5.3}
+\]">\[
+\prod_{p\le x,\ p\equiv b\pmod q}(1-1/p)^{-1}
+=C(q,b)(\log x)^{1/\varphi(q)}
+\left(1+O_A(e^{-c\sqrt{\log x}})\right)
+\tag{5.3}
+\]</span>
+<p>for a positive <span class="math" data-tex="\(C(q,b)\)">\(C(q,b)\)</span>. Indeed its logarithm differs from the reciprocal-prime sum by the convergent series
+<span class="math" data-tex="\(\sum_{p\equiv b}\sum_{j\ge2}1/(jp^j)\)">\(\sum_{p\equiv b}\sum_{j\ge2}1/(jp^j)\)</span>;
+its tail beyond <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(O(1/x)\)">\(O(1/x)\)</span>, uniformly in the class. Exponentiating (5.1) proves (5.3).</p>
+<h2 id="6-the-size-of-the-range-and-of-the-error">6. The size of the range and of the error</h2>
+<p>Siegel's conclusion is available for every <em>fixed</em> <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, with an uncontrolled constant <span class="math" data-tex="\(c(\varepsilon)\)">\(c(\varepsilon)\)</span>. At <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span> we can fix an exponent in advance and make
+<span class="math" data-tex="\((1-\beta_1)\log x\gg_A(\log x)^{3/4}\)">\((1-\beta_1)\log x\gg_A(\log x)^{3/4}\)</span>.</p>
+<p>If instead <span class="math" data-tex="\(q\le\exp((\log x)^\delta)\)">\(q\le\exp((\log x)^\delta)\)</span> for fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the lower bound furnished by a fixed exponent gives only</p>
+<span class="math math-display" data-tex="\[
+c(\varepsilon)\log x\,
+\exp(-\varepsilon(\log x)^\delta)\longrightarrow0.
+\tag{6.1}
+\]">\[
+c(\varepsilon)\log x\,
+\exp(-\varepsilon(\log x)^\delta)\longrightarrow0.
+\tag{6.1}
+\]</span>
+<p>It supplies no useful uniform decay for the exceptional term at that endpoint. Taking an exponent that changes with <span class="math" data-tex="\(x\)">\(x\)</span> would introduce the uncontrolled varying constant <span class="math" data-tex="\(c(\varepsilon(x))\)">\(c(\varepsilon(x))\)</span>, so is not a repair. This is a limitation of this method of removing the term; it does not contradict the much wider effective theorem that keeps the term visible.</p>
+<p>At <span class="math" data-tex="\(x=10^{100}\)">\(x=10^{100}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\log x=230.2585093,\quad
+\sqrt{\log x}=15.17427129,\quad
+\log_{10}(\log x)=2.362215689.
+\tag{6.2}
+\]">\[
+\log x=230.2585093,\quad
+\sqrt{\log x}=15.17427129,\quad
+\log_{10}(\log x)=2.362215689.
+\tag{6.2}
+\]</span>
+<p>Thus the formal scale <span class="math" data-tex="\(xe^{-c\sqrt{\log x}}\)">\(xe^{-c\sqrt{\log x}}\)</span> has decimal logarithm <span class="math" data-tex="\(100-6.590102290c\)">\(100-6.590102290c\)</span>. At the endpoint <span class="math" data-tex="\(q=(\log x)^A\)">\(q=(\log x)^A\)</span>, the relative <span class="math" data-tex="\(\psi\)">\(\psi\)</span> error bound <span class="math" data-tex="\(C_Aq e^{-c\sqrt{\log x}}\)">\(C_Aq e^{-c\sqrt{\log x}}\)</span> has decimal logarithm at most</p>
+<span class="math math-display" data-tex="\[
+\log_{10}C_A+2.362215689A-6.590102290c.
+\tag{6.3}
+\]">\[
+\log_{10}C_A+2.362215689A-6.590102290c.
+\tag{6.3}
+\]</span>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(A\)">\(A\)</span></th>
+<th style="text-align:right">Endpoint modulus scale</th>
+<th>Relative error bound, decimal logarithm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(2.3026\cdot10^2\)">\(2.3026\cdot10^2\)</span></td>
+<td><span class="math" data-tex="\(\log_{10}C_A+2.3622-6.5901c\)">\(\log_{10}C_A+2.3622-6.5901c\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(5.3019\cdot10^4\)">\(5.3019\cdot10^4\)</span></td>
+<td><span class="math" data-tex="\(\log_{10}C_A+4.7244-6.5901c\)">\(\log_{10}C_A+4.7244-6.5901c\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right"><span class="math" data-tex="\(1.2208\cdot10^7\)">\(1.2208\cdot10^7\)</span></td>
+<td><span class="math" data-tex="\(\log_{10}C_A+7.0866-6.5901c\)">\(\log_{10}C_A+7.0866-6.5901c\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These are recomputed scales, not numerical error guarantees: the proof does not give a usable value for <span class="math" data-tex="\(C_A\)">\(C_A\)</span>. Substituting <span class="math" data-tex="\(C_A=1\)">\(C_A=1\)</span> or an arbitrary <span class="math" data-tex="\(c\)">\(c\)</span> would not turn the table into a certified accuracy statement.</p>
+<p>Under GRH the explicit formula gives the effective estimate</p>
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O(\sqrt x\log^2(qx)).
+\tag{6.4}
+\]">\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O(\sqrt x\log^2(qx)).
+\tag{6.4}
+\]</span>
+<p>For <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>, partial summation also gives</p>
+<span class="math math-display" data-tex="\[
+\pi(x;q,b)=\frac{\operatorname{li}(x)}{\varphi(q)}
++O(\sqrt x\log x).
+\tag{6.5}
+\]">\[
+\pi(x;q,b)=\frac{\operatorname{li}(x)}{\varphi(q)}
++O(\sqrt x\log x).
+\tag{6.5}
+\]</span>
+<p>To check (6.5), remove higher powers and use (2.4) split at <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span>. The lower terms are <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>. On the upper interval <span class="math" data-tex="\(\log(qu)\le2\log x\)">\(\log(qu)\le2\log x\)</span>, so the integral of the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> error is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span> and its endpoint is <span class="math" data-tex="\(O(\sqrt x\log x)\)">\(O(\sqrt x\log x)\)</span>.</p>
+<p>For any fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, if</p>
+<span class="math math-display" data-tex="\[
+q\le\frac{\sqrt x}{(\log x)^{2+\delta}},
+\tag{6.6}
+\]">\[
+q\le\frac{\sqrt x}{(\log x)^{2+\delta}},
+\tag{6.6}
+\]</span>
+<p>the relative errors in both (6.4) and (6.5) tend to zero: each is at most <span class="math" data-tex="\(O((\log x)^{-\delta})\)">\(O((\log x)^{-\delta})\)</span>, using <span class="math" data-tex="\(\varphi(q)\le q\)">\(\varphi(q)\le q\)</span>. The coarser bound <span class="math" data-tex="\(O(\sqrt x\log^2x)\)">\(O(\sqrt x\log^2x)\)</span> for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is true but by itself would lose a logarithm in this comparison.</p>
+<h2 id="7-a-stronger-error-from-the-wider-zero-free-region">7. A stronger error from the wider zero-free region</h2>
+<p>The wider Vinogradov–Korobov region assigned to <em>Zero-free regions and the exceptional zero</em> has denominator</p>
+<span class="math math-display" data-tex="\[
+\log q+(\log\tau)^{2/3}(\log\log\tau)^{1/3},
+\qquad \tau=|t|+4.
+\tag{7.1}
+\]">\[
+\log q+(\log\tau)^{2/3}(\log\log\tau)^{1/3},
+\qquad \tau=|t|+4.
+\tag{7.1}
+\]</span>
+<p>Its proof remains planned within that lesson. Given this precise region, the explicit formula proves, for <span class="math" data-tex="\(q\le(\log x)^A\)">\(q\le(\log x)^A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O_A\left(x\exp\left(-c
+\frac{(\log x)^{3/5}}{(\log\log x)^{1/5}}\right)\right),
+\tag{7.2}
+\]">\[
+\psi(x;q,b)=\frac{x}{\varphi(q)}
++O_A\left(x\exp\left(-c
+\frac{(\log x)^{3/5}}{(\log\log x)^{1/5}}\right)\right),
+\tag{7.2}
+\]</span>
+<p>and the same error, with an additional <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span>, for <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. For (7.2) take <span class="math" data-tex="\(x\)">\(x\)</span> sufficiently large; all constants may again be extended to the initial range. The wider-region proof is an exact internal prerequisite of this refinement, rather than a consequence of the classical region alone.</p>
+<p><strong>Derivation from (7.1).</strong> Put
+<span class="math" data-tex="\(W=(\log x)^{3/5}(\log\log x)^{-1/5}\)">\(W=(\log x)^{3/5}(\log\log x)^{-1/5}\)</span>
+and take <span class="math" data-tex="\(T=\exp(\kappa W)\)">\(T=\exp(\kappa W)\)</span>. For <span class="math" data-tex="\(|t|\le T\)">\(|t|\le T\)</span>, the denominator in (7.1) is
+<span class="math" data-tex="\(O_A((\log x)^{2/5}(\log\log x)^{1/5})\)">\(O_A((\log x)^{2/5}(\log\log x)^{1/5})\)</span>:
+its conductor part <span class="math" data-tex="\(A\log\log x\)">\(A\log\log x\)</span> is smaller. Thus every nonexceptional zero has
+<span class="math" data-tex="\((1-\beta)\log x\gg W\)">\((1-\beta)\log x\gg W\)</span>.
+The stable explicit formula and the local reciprocal-ordinate bounds from the zero-count lesson make their total <span class="math" data-tex="\(O_A(xe^{-cW})\)">\(O_A(xe^{-cW})\)</span>, after absorbing logarithmic factors. Low zeros near 0 are treated by
+<span class="math" data-tex="\((x^\rho-1)/\rho=\int_1^x u^{\rho-1}du\)">\((x^\rho-1)/\rho=\int_1^x u^{\rho-1}du\)</span>;
+their contribution is <span class="math" data-tex="\(O(\sqrt x\log x\log(2q))\)">\(O(\sqrt x\log x\log(2q))\)</span>. The truncation error <span class="math" data-tex="\(O(x\log^2(qx)/T)\)">\(O(x\log^2(qx)/T)\)</span> has the same required scale.</p>
+<p>For the remaining real zero, Siegel with exponent <span class="math" data-tex="\(1/(5A)\)">\(1/(5A)\)</span> gives <span class="math" data-tex="\((1-\beta_1)\log x\gg_A(\log x)^{4/5}\)">\((1-\beta_1)\log x\gg_A(\log x)^{4/5}\)</span>, which eventually dominates <span class="math" data-tex="\(W\)">\(W\)</span>. Average characters as before. The passage to <span class="math" data-tex="\(\pi\)">\(\pi\)</span> uses the upper-interval modulus check with parameter <span class="math" data-tex="\(2A\)">\(2A\)</span>; on that interval <span class="math" data-tex="\(W(u)\gg W(x)\)">\(W(u)\gg W(x)\)</span>, giving the stated error after an absolute decrease of <span class="math" data-tex="\(c\)">\(c\)</span>. This proves the refinement from the exact planned input. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Möbius theorem and the classical Theorem 2.1 need only the already written classical region, not this sharper prerequisite.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Derive the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> assertions from the <span class="math" data-tex="\(\psi\)">\(\psi\)</span> assertion. Check the modulus condition inside the integration interval.</li>
+<li><strong>Medium.</strong> Explain why Siegel's lower distance bound alone does not remove the exceptional term uniformly up to <span class="math" data-tex="\(q=\exp((\log x)^\delta)\)">\(q=\exp((\log x)^\delta)\)</span>.</li>
+<li><strong>Medium.</strong> Under GRH, prove the relative asymptotic throughout (6.6) for both <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Keep the appropriate logarithm in each error.</li>
+<li><strong>Hard.</strong> Prove the Möbius theorem, including a bound for <span class="math" data-tex="\(1/L\)">\(1/L\)</span> on the horizontal sides of the Perron rectangle.</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>1.</strong> The difference <span class="math" data-tex="\(\psi-\theta\)">\(\psi-\theta\)</span> is <span class="math" data-tex="\(O(\sqrt x\log^2x)\)">\(O(\sqrt x\log^2x)\)</span>, absorbed by the exponential error, so (2.2) follows. Apply the exact identity (2.4). At <span class="math" data-tex="\(u\ge\sqrt x\)">\(u\ge\sqrt x\)</span>, <span class="math" data-tex="\(q\le(\log x)^A\le(\log u)^{2A}\)">\(q\le(\log x)^A\le(\log u)^{2A}\)</span> for <span class="math" data-tex="\(\log x\ge4\)">\(\log x\ge4\)</span>, permitting the theorem with parameter <span class="math" data-tex="\(2A\)">\(2A\)</span>. The lower range is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>. The endpoint upper error is <span class="math" data-tex="\(O_A(xe^{-c\sqrt{\log x}}/\log x)\)">\(O_A(xe^{-c\sqrt{\log x}}/\log x)\)</span>, and the upper integral at most <span class="math" data-tex="\(O_A(xe^{-c\sqrt{\log x}/\sqrt2}/\log^2x)\)">\(O_A(xe^{-c\sqrt{\log x}/\sqrt2}/\log^2x)\)</span>. Decrease the absolute constant to obtain (2.3). Using the original endpoint range at every smaller <span class="math" data-tex="\(u\)">\(u\)</span> without this check would be unjustified.</p>
+<p><strong>2.</strong> For fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the available lower bound for <span class="math" data-tex="\((1-\beta_1)\log x\)">\((1-\beta_1)\log x\)</span> at that endpoint is exactly the scale in (6.1), which tends to zero. It cannot imply a growing exponent such as <span class="math" data-tex="\(c\sqrt{\log x}\)">\(c\sqrt{\log x}\)</span>. Allowing <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to decrease with <span class="math" data-tex="\(x\)">\(x\)</span> leaves an uncontrolled changing constant and does not justify uniform decay. This proves a limitation of the given bound, without asserting that an exceptional zero actually exists or that no other method can enlarge the range.</p>
+<p><strong>3.</strong> GRH gives <span class="math" data-tex="\(O(\sqrt x\log^2(qx))\)">\(O(\sqrt x\log^2(qx))\)</span> for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, hence <span class="math" data-tex="\(O(\sqrt x\log^2x)\)">\(O(\sqrt x\log^2x)\)</span> for <span class="math" data-tex="\(q\le x\)">\(q\le x\)</span>. Divide by <span class="math" data-tex="\(x/\varphi(q)\)">\(x/\varphi(q)\)</span> and use (6.6) to get <span class="math" data-tex="\(O((\log x)^{-\delta})\)">\(O((\log x)^{-\delta})\)</span>. For <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, partial summation as in (6.5) gives <span class="math" data-tex="\(O(\sqrt x\log x)\)">\(O(\sqrt x\log x)\)</span>; divide by <span class="math" data-tex="\(\operatorname{li}(x)/\varphi(q)\sim x/(\varphi(q)\log x)\)">\(\operatorname{li}(x)/\varphi(q)\sim x/(\varphi(q)\log x)\)</span>, producing the same relative bound. The error for <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is also bounded by <span class="math" data-tex="\(O(\sqrt x\log^2x)\)">\(O(\sqrt x\log^2x)\)</span>, but that weaker form alone would not prove this relative range for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>.</p>
+<p><strong>4.</strong> Use (3.1), and put <span class="math" data-tex="\(T=e^{\kappa\sqrt{\log x}}\)">\(T=e^{\kappa\sqrt{\log x}}\)</span>, <span class="math" data-tex="\(H=\log(q(T+3))\)">\(H=\log(q(T+3))\)</span>. The classical region excludes every zero in (3.2) except a possible real one; Siegel with exponent <span class="math" data-tex="\(1/(4A)\)">\(1/(4A)\)</span> makes its distance <span class="math" data-tex="\(\gg_A(\log x)^{-1/4}\)">\(\gg_A(\log x)^{-1/4}\)</span>, larger than <span class="math" data-tex="\(8h/H\)">\(8h/H\)</span> beyond an ineffective threshold. Lemma 3.1 follows from the bounded logarithm on overlapping disks, not from a crude power of <span class="math" data-tex="\(T\)">\(T\)</span>; it gives <span class="math" data-tex="\(q^2(2H)^K\)">\(q^2(2H)^K\)</span> uniformly on all three new sides.</p>
+<p>The truncated Perron error is <span class="math" data-tex="\(O(x\log(2x)/T)\)">\(O(x\log(2x)/T)\)</span> at half-integers. Shift the rectangle to <span class="math" data-tex="\(1-h/H\)">\(1-h/H\)</span> with no residue. The new sides have the bounds (4.4) and (4.5). Since <span class="math" data-tex="\(q^2(2H)^K\log(T+2)\)">\(q^2(2H)^K\log(T+2)\)</span> is only a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>, choose <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> so <span class="math" data-tex="\(h/(2\kappa)\ge2\kappa\)">\(h/(2\kappa)\ge2\kappa\)</span> and absorb this power into half the exponential decay. Thus <span class="math" data-tex="\(M(x,\chi)\ll_A xe^{-c\sqrt{\log x}}\)">\(M(x,\chi)\ll_A xe^{-c\sqrt{\log x}}\)</span>. Moving to the half-integer with the same integer summands proves it for general <span class="math" data-tex="\(x\)">\(x\)</span>. Character orthogonality proves the reduced-class theorem; (4.6) and the at most <span class="math" data-tex="\(g\)">\(g\)</span> unit lifts prove its extension to all residue classes. The threshold, and therefore the extended implied constant, is ineffective.</p>
+<h2 id="references">References</h2>
+<p>The theorem goes back to A. Walfisz's 1936 work. D. Koukoulopoulos, <em>The Distribution of Prime Numbers</em>, Theorem 12.1 and the discussion after Theorem 12.10, specifies the absolute exponential constant and the ineffective uniformity; Exercise 12.1 gives the Möbius target. Section 7 gives a stronger error scale. Its exact wider-region input remains planned in the preceding zero-free-region lesson. The classical prime and Möbius proofs, the reciprocal bound, both partial-summation range checks, and the solutions are supplied here.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-10.html">← Siegel&#x27;s theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-12.html">The large sieve inequality →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-11.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

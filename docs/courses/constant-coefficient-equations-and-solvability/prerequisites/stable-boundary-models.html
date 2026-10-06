@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Stable modes and the algebra of boundary data</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="stable-modes-and-the-algebra-of-boundary-data">Stable modes and the algebra of boundary data</h1>
+<p><strong>AN-03 · Unit AN03-U003 · Independent English AI draft, not admitted.</strong></p>
+<p>A frozen boundary equation asks which normal profiles remain bounded inside the domain, and which boundary measurements determine those profiles. For systems, the number of profiles counts algebraic multiplicity. Eigenvectors alone can miss solutions. This unit constructs the bounded solution space from Cauchy data, then changes the equation while preserving that space and its boundary measurements.</p>
+<p>Throughout, vector spaces are finite-dimensional and complex, coefficients are constant in the normal variable, and</p>
+<span class="math math-display" data-tex="\[
+D=-i\frac{d}{dt},\qquad t\in\mathbb R.
+\]">\[
+D=-i\frac{d}{dt},\qquad t\in\mathbb R.
+\]</span>
+<p>We call a solution <em>stable</em> when it is bounded for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Under the no-real-root hypotheses below, this is equivalent to exponential decay of the solution and every derivative. No diagonalizability, simplicity of roots, commutation of matrix coefficients, or prescribed number of boundary equations is assumed.</p>
+<p>The elementary prerequisite contracts are polynomial division and Bézout identities over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, the fundamental theorem of algebra, Cayley–Hamilton, and the contour moment identities for globally convergent power-series numerators with prescribed spectral indices, with the exact reading and finite entry-base boundaries specified in <a href="stable-prerequisite-bridges.html">AN03-P002</a>. The finite-dimensional linear algebra used includes bases and direct sums, rank and trace of projections, determinant multiplicativity and block-triangular determinants, elementary row and column operations, operator norms and continuity of matrix inversion. The calculus used includes locally uniformly convergent exponential series, termwise differentiation and integration when the differentiated series converge locally uniformly, dominated differentiation of exponentially decreasing integration tails, and compactness of the unit sphere. The spectral and ODE results needed here are proved below. These contracts specify mathematical dependencies; no existing exposition is imported as text.</p>
+<h2 id="AN03-STB-001"><span id="an03-stb-001"></span><span id="an03-stb-001-spectral-calculus-without-an-eigenbasis"></span>AN03-STB-001 — Spectral calculus without an eigenbasis</h2>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite-dimensional complex vector space and <span class="math" data-tex="\(A\in\operatorname{End}(V)\)">\(A\in\operatorname{End}(V)\)</span>. Choose any norm. The series</p>
+<span class="math math-display" data-tex="\[
+E_A(t)=\sum_{k=0}^{\infty}\frac{(itA)^k}{k!}
+\]">\[
+E_A(t)=\sum_{k=0}^{\infty}\frac{(itA)^k}{k!}
+\]</span>
+<p>converges locally uniformly with all derivatives, since its norms and the norms of its differentiated terms are bounded by scalar exponential series. Thus <span class="math" data-tex="\(DE_A=AE_A\)">\(DE_A=AE_A\)</span>, <span class="math" data-tex="\(E_A(0)=I\)">\(E_A(0)=I\)</span>, and multiplication of absolutely convergent series gives <span class="math" data-tex="\(E_A(-t)E_A(t)=I\)">\(E_A(-t)E_A(t)=I\)</span>. If <span class="math" data-tex="\(Du=Au\)">\(Du=Au\)</span>, differentiating <span class="math" data-tex="\(E_A(-t)u(t)\)">\(E_A(-t)u(t)\)</span> shows that it is constant. Consequently</p>
+<span class="math math-display" data-tex="\[
+u(t)=E_A(t)v                                                 \tag{S1}
+\]">\[
+u(t)=E_A(t)v                                                 \tag{S1}
+\]</span>
+<p>is the unique solution with <span class="math" data-tex="\(u(0)=v\)">\(u(0)=v\)</span>. In particular the solution space has dimension <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>.</p>
+<p>Here is the spectral information, including the nilpotent terms. Factor the minimal polynomial as <span class="math" data-tex="\(\prod_{\zeta}(z-\zeta)^{\nu_\zeta}\)">\(\prod_{\zeta}(z-\zeta)^{\nu_\zeta}\)</span>. The factors are pairwise relatively prime. Repeated Bézout identities give polynomials <span class="math" data-tex="\(e_\zeta\)">\(e_\zeta\)</span> which are one modulo <span class="math" data-tex="\((z-\zeta)^{\nu_\zeta}\)">\((z-\zeta)^{\nu_\zeta}\)</span> and zero modulo every other factor. Their sum is one modulo the minimal polynomial. Evaluation at <span class="math" data-tex="\(A\)">\(A\)</span> therefore gives projections</p>
+<span class="math math-display" data-tex="\[
+Q_\zeta=e_\zeta(A),\quad
+Q_\zeta Q_\eta=0\ (\zeta\ne\eta),\quad
+\sum_\zeta Q_\zeta=I.
+\]">\[
+Q_\zeta=e_\zeta(A),\quad
+Q_\zeta Q_\eta=0\ (\zeta\ne\eta),\quad
+\sum_\zeta Q_\zeta=I.
+\]</span>
+<p>Their images are exactly</p>
+<span class="math math-display" data-tex="\[
+V_\zeta=\ker(A-\zeta I)^{\nu_\zeta}.
+\]">\[
+V_\zeta=\ker(A-\zeta I)^{\nu_\zeta}.
+\]</span>
+<p>Indeed, the polynomial congruences show both inclusion in this kernel and that <span class="math" data-tex="\(Q_\zeta\)">\(Q_\zeta\)</span> is the identity there. Thus <span class="math" data-tex="\(V=\bigoplus V_\zeta\)">\(V=\bigoplus V_\zeta\)</span>. On <span class="math" data-tex="\(V_\zeta\)">\(V_\zeta\)</span>, write <span class="math" data-tex="\(A=\zeta I+N_\zeta\)">\(A=\zeta I+N_\zeta\)</span>, where <span class="math" data-tex="\(N_\zeta^{\nu_\zeta}=0\)">\(N_\zeta^{\nu_\zeta}=0\)</span>. The inverse and the evolution on that summand are</p>
+<span class="math math-display" data-tex="\[
+(zI-A)^{-1}|_{V_\zeta}
+=\sum_{k=0}^{\nu_\zeta-1}\frac{N_\zeta^k}{(z-\zeta)^{k+1}},
+\qquad
+E_A(t)|_{V_\zeta}
+=e^{it\zeta}\sum_{k=0}^{\nu_\zeta-1}\frac{(it)^kN_\zeta^k}{k!}. \tag{S2}
+\]">\[
+(zI-A)^{-1}|_{V_\zeta}
+=\sum_{k=0}^{\nu_\zeta-1}\frac{N_\zeta^k}{(z-\zeta)^{k+1}},
+\qquad
+E_A(t)|_{V_\zeta}
+=e^{it\zeta}\sum_{k=0}^{\nu_\zeta-1}\frac{(it)^kN_\zeta^k}{k!}. \tag{S2}
+\]</span>
+<p>The first identity follows by multiplying a finite geometric series; the second follows from the exponential series for commuting <span class="math" data-tex="\(\zeta I\)">\(\zeta I\)</span> and <span class="math" data-tex="\(N_\zeta\)">\(N_\zeta\)</span>. The Cauchy formula applied to the first identity yields</p>
+<span class="math math-display" data-tex="\[
+E_A(t)=\frac{1}{2\pi i}\int_\Gamma
+e^{itz}(zI-A)^{-1}\,dz,                                    \tag{S3}
+\]">\[
+E_A(t)=\frac{1}{2\pi i}\int_\Gamma
+e^{itz}(zI-A)^{-1}\,dz,                                    \tag{S3}
+\]</span>
+<p>where <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a finite union of positively oriented closed contours enclosing every eigenvalue once and no point of the spectrum on the contours. Integrating the resolvent alone around a single eigenvalue gives <span class="math" data-tex="\(Q_\zeta\)">\(Q_\zeta\)</span>. These assertions also follow directly from (S2), so multiple poles are included.</p>
+<p>For later counting, <span class="math" data-tex="\(\dim V_\zeta\)">\(\dim V_\zeta\)</span> equals the algebraic multiplicity of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> in <span class="math" data-tex="\(\det(zI-A)\)">\(\det(zI-A)\)</span>. The direct sum decomposes the determinant into the determinants of the restrictions. A nilpotent map is upper triangular with zero diagonal in a basis adapted to its successive kernels; the restriction to <span class="math" data-tex="\(V_\zeta\)">\(V_\zeta\)</span> therefore contributes <span class="math" data-tex="\((z-\zeta)^{\dim V_\zeta}\)">\((z-\zeta)^{\dim V_\zeta}\)</span>. The length of a nilpotent chain affects polynomial factors in time, while the dimension of the whole generalized eigenspace determines the number of solutions.</p>
+<h2 id="AN03-STB-002"><span id="an03-stb-002"></span><span id="an03-stb-002-a-monic-equation-and-its-complete-cauchy-coordinates"></span>AN03-STB-002 — A monic equation and its complete Cauchy coordinates</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> have dimension <span class="math" data-tex="\(N\)">\(N\)</span>, let <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+p(z)=z^m I+\sum_{j=0}^{m-1}p_jz^j,
+\qquad p_j\in\operatorname{End}(E).                         \tag{S4}
+\]">\[
+p(z)=z^m I+\sum_{j=0}^{m-1}p_jz^j,
+\qquad p_j\in\operatorname{End}(E).                         \tag{S4}
+\]</span>
+<p>The scalar variable <span class="math" data-tex="\(z\)">\(z\)</span> commutes with every coefficient; the coefficients need not commute with each other. The case <span class="math" data-tex="\(E=0\)">\(E=0\)</span> has only zero solutions and determinant one; the following arguments can be read with <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(x=(x_0,\ldots,x_{m-1})\in E^m\)">\(x=(x_0,\ldots,x_{m-1})\in E^m\)</span>, define the companion map</p>
+<span class="math math-display" data-tex="\[
+C_px=(x_1,\ldots,x_{m-1},-p_0x_0-\cdots-p_{m-1}x_{m-1}).
+\]">\[
+C_px=(x_1,\ldots,x_{m-1},-p_0x_0-\cdots-p_{m-1}x_{m-1}).
+\]</span>
+<p>If <span class="math" data-tex="\(p(D)u=0\)">\(p(D)u=0\)</span>, its state <span class="math" data-tex="\(J u=(u,Du,\ldots,D^{m-1}u)\)">\(J u=(u,Du,\ldots,D^{m-1}u)\)</span> satisfies <span class="math" data-tex="\(D(Ju)=C_pJu\)">\(D(Ju)=C_pJu\)</span>. Conversely, the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> rows of this first-order equation imply that any state solution is the jet of its first component, and the last row gives <span class="math" data-tex="\(p(D)u=0\)">\(p(D)u=0\)</span>. Applying AN03-STB-001 proves existence and uniqueness for arbitrary Cauchy data and gives <span class="math" data-tex="\(\dim\ker p(D)=mN\)">\(\dim\ker p(D)=mN\)</span>.</p>
+<p>We will need the exact characteristic polynomial:</p>
+<span class="math math-display" data-tex="\[
+\det(zI_{E^m}-C_p)=\det p(z).                              \tag{S5}
+\]">\[
+\det(zI_{E^m}-C_p)=\det p(z).                              \tag{S5}
+\]</span>
+<p>For a direct determinant check, make the triangular change of variables
+<span class="math" data-tex="\(x_0=y_0\)">\(x_0=y_0\)</span> and <span class="math" data-tex="\(x_j=zx_{j-1}+y_j\)">\(x_j=zx_{j-1}+y_j\)</span> for <span class="math" data-tex="\(1\leq j&lt;m\)">\(1\leq j&lt;m\)</span>; its determinant is one. The first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> rows of <span class="math" data-tex="\((zI-C_p)x\)">\((zI-C_p)x\)</span> become <span class="math" data-tex="\(-y_1,\ldots,-y_{m-1}\)">\(-y_1,\ldots,-y_{m-1}\)</span>, and the coefficient of <span class="math" data-tex="\(y_0\)">\(y_0\)</span> in the last row is <span class="math" data-tex="\(p(z)\)">\(p(z)\)</span>. Move that last block row to the front and eliminate its other entries using the identity block rows. The block-row permutation has sign <span class="math" data-tex="\((-1)^{N^2(m-1)}\)">\((-1)^{N^2(m-1)}\)</span>, and the negative identities contribute <span class="math" data-tex="\((-1)^{N(m-1)}\)">\((-1)^{N(m-1)}\)</span>. Their product is one. This proves (S5), as a polynomial identity, without assuming that any <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is invertible.</p>
+<p>There is also a useful polynomial encoding of a jet. Set <span class="math" data-tex="\(p_m=I\)">\(p_m=I\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\mathcal U_x(z)=
+\sum_{0\leq k\leq j&lt;m}p_{j+1}x_{j-k}z^k.                 \tag{S6}
+\]">\[
+\mathcal U_x(z)=
+\sum_{0\leq k\leq j&lt;m}p_{j+1}x_{j-k}z^k.                 \tag{S6}
+\]</span>
+<p>This maps <span class="math" data-tex="\(E^m\)">\(E^m\)</span> bijectively onto the <span class="math" data-tex="\(E\)">\(E\)</span>-valued polynomials of degree less than <span class="math" data-tex="\(m\)">\(m\)</span>. To see this, read coefficients from the highest power downwards: the coefficient of <span class="math" data-tex="\(z^{m-1}\)">\(z^{m-1}\)</span> is <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, the next is <span class="math" data-tex="\(x_1+p_{m-1}x_0\)">\(x_1+p_{m-1}x_0\)</span>, and in general the next unknown <span class="math" data-tex="\(x_r\)">\(x_r\)</span> occurs with coefficient <span class="math" data-tex="\(I\)">\(I\)</span>, accompanied only by already recovered <span class="math" data-tex="\(x_0,\ldots,x_{r-1}\)">\(x_0,\ldots,x_{r-1}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\pi_0:E^m\to E\)">\(\pi_0:E^m\to E\)</span> be the first coordinate. Solving <span class="math" data-tex="\((zI-C_p)w=x\)">\((zI-C_p)w=x\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+w_j=z^jw_0-\sum_{r=0}^{j-1}z^{j-1-r}x_r,
+\qquad
+p(z)w_0=\mathcal U_x(z).
+\]">\[
+w_j=z^jw_0-\sum_{r=0}^{j-1}z^{j-1-r}x_r,
+\qquad
+p(z)w_0=\mathcal U_x(z).
+\]</span>
+<p>The latter equality follows by substituting the first formula into the last block row; its coefficient of <span class="math" data-tex="\(x_r\)">\(x_r\)</span> is <span class="math" data-tex="\(\sum_{j=r}^{m-1}p_{j+1}z^{j-r}\)">\(\sum_{j=r}^{m-1}p_{j+1}z^{j-r}\)</span>. Consequently (S3), applied to <span class="math" data-tex="\(C_p\)">\(C_p\)</span>, gives the solution with jet <span class="math" data-tex="\(x\)">\(x\)</span>:</p>
+<span class="math math-display" data-tex="\[
+u(t)=\frac{1}{2\pi i}\int_\Gamma
+p(z)^{-1}\mathcal U_x(z)e^{itz}\,dz.                       \tag{S7}
+\]">\[
+u(t)=\frac{1}{2\pi i}\int_\Gamma
+p(z)^{-1}\mathcal U_x(z)e^{itz}\,dz.                       \tag{S7}
+\]</span>
+<p>The contours enclose all roots of <span class="math" data-tex="\(\det p\)">\(\det p\)</span>. Formula (S7) is valid for repeated roots and matrix poles of arbitrary order. It is the sum of the corresponding residues. The triangular bijection above proves uniqueness of the polynomial in this representation, as well as existence. In particular, it does not require a factorization of <span class="math" data-tex="\(p\)">\(p\)</span> into linear matrix factors.</p>
+<h2 id="AN03-STB-003"><span id="an03-stb-003"></span><span id="an03-stb-003-bounded-solutions-derivatives-and-multiplicity"></span>AN03-STB-003 — Bounded solutions, derivatives, and multiplicity</h2>
+<p>First, boundedness of a solution of a monic constant-coefficient equation controls all its derivatives. This fact is useful before any spectral separation is imposed.</p>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(r\)">\(r\)</span> is any monic matrix polynomial and <span class="math" data-tex="\(r(D)u=0\)">\(r(D)u=0\)</span>, then boundedness of <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> implies boundedness there of <span class="math" data-tex="\(D^ku\)">\(D^ku\)</span> for every <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(C=C_r\)">\(C=C_r\)</span>, with state space <span class="math" data-tex="\(W\)">\(W\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+h(v)=\int_0^1\|\pi_0E_C(s)v\|^2\,ds.
+\]">\[
+h(v)=\int_0^1\|\pi_0E_C(s)v\|^2\,ds.
+\]</span>
+<p>If <span class="math" data-tex="\(h(v)=0\)">\(h(v)=0\)</span>, the continuous integrand vanishes on the interval. Its derivatives at zero then vanish, so every Cauchy coordinate of <span class="math" data-tex="\(v\)">\(v\)</span> is zero. The positive function <span class="math" data-tex="\(h\)">\(h\)</span> has a positive minimum <span class="math" data-tex="\(c\)">\(c\)</span> on the unit sphere. Thus for every <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+c\|Ju(t)\|^2\leq
+\int_0^1\|u(t+s)\|^2\,ds.
+\]">\[
+c\|Ju(t)\|^2\leq
+\int_0^1\|u(t+s)\|^2\,ds.
+\]</span>
+<p>All components of the state are bounded. Repeated differentiation of <span class="math" data-tex="\(D(Ju)=CJu\)">\(D(Ju)=CJu\)</span> expresses every higher derivative through a fixed power of <span class="math" data-tex="\(C\)">\(C\)</span>, proving the claim. The same argument with integration over <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> proves the negative-half-line version. An equation with invertible leading coefficient is first multiplied on the left by its inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Assume now that <span class="math" data-tex="\(A\)">\(A\)</span> has no real eigenvalues. Define</p>
+<span class="math math-display" data-tex="\[
+q_A=\sum_{\operatorname{Im}\zeta&gt;0}Q_\zeta
+=\frac{1}{2\pi i}\int_{\Gamma_+}(zI-A)^{-1}\,dz,             \tag{S8}
+\]">\[
+q_A=\sum_{\operatorname{Im}\zeta&gt;0}Q_\zeta
+=\frac{1}{2\pi i}\int_{\Gamma_+}(zI-A)^{-1}\,dz,             \tag{S8}
+\]</span>
+<p>where <span class="math" data-tex="\(\Gamma_+\)">\(\Gamma_+\)</span> surrounds precisely the upper-half-plane spectrum. This is a projection commuting with <span class="math" data-tex="\(A\)">\(A\)</span>. On its image, (S2) shows that <span class="math" data-tex="\(E_A(t)\)">\(E_A(t)\)</span> and all its derivatives decay as <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span>: every polynomial factor is dominated by the exponential <span class="math" data-tex="\(e^{-t\operatorname{Im}\zeta}\)">\(e^{-t\operatorname{Im}\zeta}\)</span>. On the image of <span class="math" data-tex="\(I-q_A\)">\(I-q_A\)</span>, the corresponding decay holds as <span class="math" data-tex="\(t\to-\infty\)">\(t\to-\infty\)</span>.</p>
+<p>Conversely, if <span class="math" data-tex="\(E_A(t)v\)">\(E_A(t)v\)</span> is bounded for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, set <span class="math" data-tex="\(v_-=(I-q_A)v\)">\(v_-=(I-q_A)v\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+v_-=E_A(-t)(I-q_A)E_A(t)v.
+\]">\[
+v_-=E_A(-t)(I-q_A)E_A(t)v.
+\]</span>
+<p>The norm of <span class="math" data-tex="\(E_A(-t)\)">\(E_A(-t)\)</span> on the lower spectral subspace tends to zero, by (S2), while the last factor is bounded. Taking <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> gives <span class="math" data-tex="\(v_-=0\)">\(v_-=0\)</span>. The negative-half-line assertion follows with signs reversed. Hence initial evaluation identifies the two bounded solution spaces with <span class="math" data-tex="\(q_AV\)">\(q_AV\)</span> and <span class="math" data-tex="\((I-q_A)V\)">\((I-q_A)V\)</span>, and every solution splits uniquely into one of each kind.</p>
+<p>For (S4), assume</p>
+<span class="math math-display" data-tex="\[
+\det p(\xi)\ne0\qquad(\xi\in\mathbb R).                    \tag{S9}
+\]">\[
+\det p(\xi)\ne0\qquad(\xi\in\mathbb R).                    \tag{S9}
+\]</span>
+<p>The companion characteristic identity and the lemma imply that its stable solution space</p>
+<span class="math math-display" data-tex="\[
+\mathcal M^+(p)=
+\{u\in C^\infty(\mathbb R,E):p(D)u=0,
+\ \sup_{t\geq0}\|u(t)\|&lt;\infty\}
+\]">\[
+\mathcal M^+(p)=
+\{u\in C^\infty(\mathbb R,E):p(D)u=0,
+\ \sup_{t\geq0}\|u(t)\|&lt;\infty\}
+\]</span>
+<p>corresponds under <span class="math" data-tex="\(J\)">\(J\)</span> exactly to <span class="math" data-tex="\(q_{C_p}E^m\)">\(q_{C_p}E^m\)</span>. All its derivatives decay exponentially. The dimension is the sum of the algebraic multiplicities of the roots of <span class="math" data-tex="\(\det p\)">\(\det p\)</span> in the upper half-plane. The analogous lower space gives a direct-sum decomposition of all solutions. The statement counts generalized modes, even if the scalar determinant has high multiplicity and the space of ordinary eigenvectors is small.</p>
+<h2 id="AN03-STB-004"><span id="an03-stb-004"></span><span id="an03-stb-004-parameters-and-fixed-projections"></span>AN03-STB-004 — Parameters and fixed projections</h2>
+<p>Suppose <span class="math" data-tex="\(A(y)\)">\(A(y)\)</span> is a <span class="math" data-tex="\(C^r\)">\(C^r\)</span> family on an open parameter set, where <span class="math" data-tex="\(0\leq r\leq\infty\)">\(0\leq r\leq\infty\)</span>, and every <span class="math" data-tex="\(A(y)\)">\(A(y)\)</span> has no real eigenvalues. Near a fixed parameter one can choose the same contours in (S8): invertibility on a compact contour persists under small matrix perturbations. The resolvent is <span class="math" data-tex="\(C^r\)">\(C^r\)</span>, and, for one derivative,</p>
+<span class="math math-display" data-tex="\[
+\partial_y(zI-A)^{-1}
+=(zI-A)^{-1}(\partial_y A)(zI-A)^{-1}.                      \tag{S10}
+\]">\[
+\partial_y(zI-A)^{-1}
+=(zI-A)^{-1}(\partial_y A)(zI-A)^{-1}.                      \tag{S10}
+\]</span>
+<p>Repeated differentiation gives finite sums of ordered products of such factors; their order cannot be changed when matrices do not commute. Differentiating the contour integral proves that <span class="math" data-tex="\(q_A(y)\)">\(q_A(y)\)</span> is <span class="math" data-tex="\(C^r\)">\(C^r\)</span>. Since the rank of a projection is its integer-valued trace, its rank is locally constant. A basis of its image at one parameter remains a basis after applying nearby projections, so the stable spaces form a <span class="math" data-tex="\(C^r\)">\(C^r\)</span> vector bundle. A global eigenbasis or a splitting into individual eigenvalue branches is unnecessary.</p>
+<p>On a compact parameter set contained in this no-real-spectrum region, there are constants <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and <span class="math" data-tex="\(C_k\)">\(C_k\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\|D_t^k E_{A(y)}(t)q_{A(y)}\|\leq C_k e^{-\delta t}
+\qquad(t\geq0).                                           \tag{S11}
+\]">\[
+\|D_t^k E_{A(y)}(t)q_{A(y)}\|\leq C_k e^{-\delta t}
+\qquad(t\geq0).                                           \tag{S11}
+\]</span>
+<p>To justify the common contour used for this estimate, matrix norms give a common bound for all eigenvalues. If their distances from the real axis had no positive lower bound, a convergent sequence of parameters and a convergent subsequence of eigenvalues would give a real eigenvalue at the limiting parameter, by continuity of the determinant. Choose a rectangle enclosing all upper eigenvalues with its lower side strictly above the real axis, and with its other sides beyond the common spectral bound. Its distance from the spectra is positive. Formula (S3) with this contour, and <span class="math" data-tex="\(D_t^ke^{itz}=z^ke^{itz}\)">\(D_t^ke^{itz}=z^ke^{itz}\)</span>, proves (S11). In parameter charts, derivatives through order <span class="math" data-tex="\(r\)">\(r\)</span> obey the corresponding estimate by (S10). Constants are local on the parameter space; no global spectral gap is asserted on a noncompact parameter set.</p>
+<p>These results apply to <span class="math" data-tex="\(C_{p(y)}\)">\(C_{p(y)}\)</span> when the coefficients of a fixed-degree monic polynomial vary <span class="math" data-tex="\(C^r\)">\(C^r\)</span> and (S9) holds. Collisions among roots in one half-plane do not damage the stable bundle or these estimates.</p>
+<h2 id="AN03-STB-005"><span id="an03-stb-005"></span><span id="an03-stb-005-collapsing-rates-within-their-half-planes"></span>AN03-STB-005 — Collapsing rates within their half-planes</h2>
+<p>Let <span class="math" data-tex="\(q=q_A\)">\(q=q_A\)</span>, let <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, and let <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+A_\tau=(1-\tau)A+i\tau\lambda(2q-I).                      \tag{S12}
+\]">\[
+A_\tau=(1-\tau)A+i\tau\lambda(2q-I).                      \tag{S12}
+\]</span>
+<p><strong>Theorem.</strong> Each <span class="math" data-tex="\(A_\tau\)">\(A_\tau\)</span> has no real eigenvalues, and its upper spectral projection is exactly <span class="math" data-tex="\(q\)">\(q\)</span>. At <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>, its solution with initial value <span class="math" data-tex="\(v\)">\(v\)</span> is</p>
+<span class="math math-display" data-tex="\[
+e^{-\lambda t}qv+e^{\lambda t}(I-q)v.                     \tag{S13}
+\]">\[
+e^{-\lambda t}qv+e^{\lambda t}(I-q)v.                     \tag{S13}
+\]</span>
+<p><strong>Proof.</strong> On an original primary summand <span class="math" data-tex="\(V_\zeta\)">\(V_\zeta\)</span>, the restriction is</p>
+<span class="math math-display" data-tex="\[
+\big((1-\tau)\zeta+i\tau\lambda\,
+\operatorname{sgn}(\operatorname{Im}\zeta)\big)I
++(1-\tau)N_\zeta.
+\]">\[
+\big((1-\tau)\zeta+i\tau\lambda\,
+\operatorname{sgn}(\operatorname{Im}\zeta)\big)I
++(1-\tau)N_\zeta.
+\]</span>
+<p>Its only eigenvalue has the same strict imaginary-part sign as <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, including at both endpoints. The fixed direct sum of all original upper summands is therefore the full upper primary subspace for every <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and the lower sum is its complementary lower subspace. The spectral projection is uniquely the projection onto the first along the second, hence equals <span class="math" data-tex="\(q\)">\(q\)</span>. Formula (S13) follows by exponentiating the restrictions <span class="math" data-tex="\(i\lambda I\)">\(i\lambda I\)</span> and <span class="math" data-tex="\(-i\lambda I\)">\(-i\lambda I\)</span>.</p>
+<p>Distinct original eigenvalues can coalesce during this deformation, and at the last endpoint nilpotent parts vanish. Individual generalized eigenspaces labelled by <em>distinct moving eigenvalues</em> therefore need not stay individually identifiable. The two half-plane sums and their projection are what remain fixed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For parameter-dependent <span class="math" data-tex="\(A\)">\(A\)</span> and positive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, (S12) has the same regularity as those data by AN03-STB-004. There is no additional requirement that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> avoid the original eigenvalues.</p>
+<h2 id="AN03-STB-006"><span id="an03-stb-006"></span><span id="an03-stb-006-polynomial-coordinates-adapted-to-two-half-planes"></span>AN03-STB-006 — Polynomial coordinates adapted to two half-planes</h2>
+<p>Return to (S4), now with <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>, and fix <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+L(z)=z+i\lambda,\qquad R(z)=z-i\lambda.
+\]">\[
+L(z)=z+i\lambda,\qquad R(z)=z-i\lambda.
+\]</span>
+<p>There are unique coefficients <span class="math" data-tex="\(a_0,\ldots,a_m\in\operatorname{End}(E)\)">\(a_0,\ldots,a_m\in\operatorname{End}(E)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+p(z)=\sum_{j=0}^m a_j R(z)^jL(z)^{m-j}.                   \tag{S14}
+\]">\[
+p(z)=\sum_{j=0}^m a_j R(z)^jL(z)^{m-j}.                   \tag{S14}
+\]</span>
+<p>For completeness, set <span class="math" data-tex="\(w=R(z)/L(z)\)">\(w=R(z)/L(z)\)</span>, so <span class="math" data-tex="\(z=i\lambda(1+w)/(1-w)\)">\(z=i\lambda(1+w)/(1-w)\)</span> and <span class="math" data-tex="\(L(z)=2i\lambda/(1-w)\)">\(L(z)=2i\lambda/(1-w)\)</span>. Then the coefficients are those of the polynomial</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^m a_jw^j
+=\sum_{k=0}^m\frac{i^{k-m}}{2^m}\lambda^{k-m}
+p_k(1+w)^k(1-w)^{m-k}.                                  \tag{S15}
+\]">\[
+\sum_{j=0}^m a_jw^j
+=\sum_{k=0}^m\frac{i^{k-m}}{2^m}\lambda^{k-m}
+p_k(1+w)^k(1-w)^{m-k}.                                  \tag{S15}
+\]</span>
+<p>This gives an explicit formula</p>
+<span class="math math-display" data-tex="\[
+a_j=\sum_{k=0}^m c_{jk}p_k\lambda^{k-m},\qquad
+c_{jk}=\frac{i^{k-m}}{2^m}
+\sum_{r=0}^{j}(-1)^{j-r}
+\binom{k}{r}\binom{m-k}{j-r},                             \tag{S16}
+\]">\[
+a_j=\sum_{k=0}^m c_{jk}p_k\lambda^{k-m},\qquad
+c_{jk}=\frac{i^{k-m}}{2^m}
+\sum_{r=0}^{j}(-1)^{j-r}
+\binom{k}{r}\binom{m-k}{j-r},                             \tag{S16}
+\]</span>
+<p>with binomial coefficients outside their ordinary range interpreted as zero. The right side of (S15) has degree at most <span class="math" data-tex="\(m\)">\(m\)</span>, proving existence. If a combination in (S14) vanishes, divide by <span class="math" data-tex="\(L(z)^m\)">\(L(z)^m\)</span> for <span class="math" data-tex="\(z\ne-i\lambda\)">\(z\ne-i\lambda\)</span>; the polynomial <span class="math" data-tex="\(\sum a_jw^j\)">\(\sum a_jw^j\)</span> vanishes on infinitely many <span class="math" data-tex="\(w\)">\(w\)</span>, so each coefficient vanishes. This proves uniqueness and invertibility of the change of basis. Comparing the coefficient of <span class="math" data-tex="\(z^m\)">\(z^m\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=0}^m a_j=I.                                      \tag{S17}
+\]">\[
+\sum_{j=0}^m a_j=I.                                      \tag{S17}
+\]</span>
+<p>Neither <span class="math" data-tex="\(a_0\)">\(a_0\)</span> nor <span class="math" data-tex="\(a_m\)">\(a_m\)</span>, nor any intermediate coefficient, is assumed invertible. The negative powers of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in (S16) require <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>; there is no claim of uniformity as <span class="math" data-tex="\(\lambda\downarrow0\)">\(\lambda\downarrow0\)</span>.</p>
+<h2 id="AN03-STB-007"><span id="an03-stb-007"></span><span id="an03-stb-007-first-order-coordinates-that-respect-decay"></span>AN03-STB-007 — First-order coordinates that respect decay</h2>
+<p>For a solution of <span class="math" data-tex="\(p(D)u=0\)">\(p(D)u=0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+v_j=R(D)^jL(D)^{m-1-j}u,\qquad 0\leq j&lt;m.                \tag{S18}
+\]">\[
+v_j=R(D)^jL(D)^{m-1-j}u,\qquad 0\leq j&lt;m.                \tag{S18}
+\]</span>
+<p>The polynomials <span class="math" data-tex="\(R^jL^{m-1-j}\)">\(R^jL^{m-1-j}\)</span> form a basis of the scalar polynomials of degree at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, by the same argument as in AN03-STB-006. Thus (S18) is an invertible, constant, scalar-block change from the Cauchy state <span class="math" data-tex="\((u,Du,\ldots,D^{m-1}u)\)">\((u,Du,\ldots,D^{m-1}u)\)</span>. There is no loss of a Cauchy coordinate.</p>
+<p>The transformed equations are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{j=0}^{m-1}a_jL(D)v_j+a_mR(D)v_{m-1}=0,\\
+&amp;L(D)v_j-R(D)v_{j-1}=0\quad(1\leq j&lt;m).
+\end{aligned}                                             \tag{S19}
+\]">\[
+\begin{aligned}
+&amp;\sum_{j=0}^{m-1}a_jL(D)v_j+a_mR(D)v_{m-1}=0,\\
+&amp;L(D)v_j-R(D)v_{j-1}=0\quad(1\leq j&lt;m).
+\end{aligned}                                             \tag{S19}
+\]</span>
+<p>The second equations follow by commuting scalar polynomials in <span class="math" data-tex="\(D\)">\(D\)</span>; the first is precisely (S14) applied to <span class="math" data-tex="\(u\)">\(u\)</span>. We have only moved scalar differential factors past constant matrix coefficients, never exchanged two matrix coefficients.</p>
+<p>These equations are exactly a first-order system, not merely consequences that define a larger space. One way to check the converse is to let <span class="math" data-tex="\(T\)">\(T\)</span> denote the invertible change in (S18). The leading matrix of the left side of (S19) has row zero
+<span class="math" data-tex="\((a_0,a_1,\ldots,a_{m-2},a_{m-1}+a_m)\)">\((a_0,a_1,\ldots,a_{m-2},a_{m-1}+a_m)\)</span>, and lower rows have <span class="math" data-tex="\(-I,I\)">\(-I,I\)</span> in adjacent columns. Its determinant is one by the factorization in the next result at <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>. Call that leading matrix <span class="math" data-tex="\(C\)">\(C\)</span>, and the constant matrix <span class="math" data-tex="\(K\)">\(K\)</span>. Every jet initial value yields a transformed solution, so
+<span class="math" data-tex="\((CTC_p+KT)x=0\)">\((CTC_p+KT)x=0\)</span> for every initial vector <span class="math" data-tex="\(x\)">\(x\)</span>. Hence <span class="math" data-tex="\(CD+K=CT(D-C_p)T^{-1}\)">\(CD+K=CT(D-C_p)T^{-1}\)</span>. Invertibility of <span class="math" data-tex="\(C,T\)">\(C,T\)</span> proves the converse.</p>
+<p>This change of state is an exact first-order reduction. The next construction has a different purpose: it produces a homotopy of fixed-degree polynomial systems beginning with the original equation plus auxiliary equations. Choosing <span class="math" data-tex="\(L(D)^m\)">\(L(D)^m\)</span> for those auxiliary equations places their characteristic root at <span class="math" data-tex="\(-i\lambda\)">\(-i\lambda\)</span>, where they have no stable solutions. Auxiliary equations <span class="math" data-tex="\(D^m v=0\)">\(D^m v=0\)</span> would instead introduce the real root zero.</p>
+<h2 id="AN03-STB-008"><span id="an03-stb-008"></span><span id="an03-stb-008-an-explicit-stabilization-and-its-leading-coefficient"></span>AN03-STB-008 — An explicit stabilization and its leading coefficient</h2>
+<p>For <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>, define the degree-<span class="math" data-tex="\(m\)">\(m\)</span> polynomial <span class="math" data-tex="\(P_\tau(z)\in\operatorname{End}(E^m)[z]\)">\(P_\tau(z)\in\operatorname{End}(E^m)[z]\)</span> by its action on <span class="math" data-tex="\(U=(U_0,\ldots,U_{m-1})\)">\(U=(U_0,\ldots,U_{m-1})\)</span>. The first component is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(P_\tau(z)U)_0={}&amp;
+\big((1-\tau^m)p(z)+\tau^m a_0L(z)^m\big)U_0\\
+&amp;+\sum_{j=1}^{m-2}\tau^{m-j}a_jL(z)^mU_j\\
+&amp;+\tau\big(a_{m-1}L(z)^m+a_mR(z)L(z)^{m-1}\big)U_{m-1},
+\end{aligned}                                             \tag{S20}
+\]">\[
+\begin{aligned}
+(P_\tau(z)U)_0={}&amp;
+\big((1-\tau^m)p(z)+\tau^m a_0L(z)^m\big)U_0\\
+&amp;+\sum_{j=1}^{m-2}\tau^{m-j}a_jL(z)^mU_j\\
+&amp;+\tau\big(a_{m-1}L(z)^m+a_mR(z)L(z)^{m-1}\big)U_{m-1},
+\end{aligned}                                             \tag{S20}
+\]</span>
+<p>and the remaining components are</p>
+<span class="math math-display" data-tex="\[
+(P_\tau(z)U)_j=L(z)^mU_j-
+\tau R(z)L(z)^{m-1}U_{j-1}\quad(1\leq j&lt;m).               \tag{S21}
+\]">\[
+(P_\tau(z)U)_j=L(z)^mU_j-
+\tau R(z)L(z)^{m-1}U_{j-1}\quad(1\leq j&lt;m).               \tag{S21}
+\]</span>
+<p>For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, the sum in the middle line of (S20) is empty; the last block appears only once. At the endpoints,</p>
+<span class="math math-display" data-tex="\[
+P_0(z)=\operatorname{diag}(p(z),L(z)^mI,\ldots,L(z)^mI),    \tag{S22}
+\]">\[
+P_0(z)=\operatorname{diag}(p(z),L(z)^mI,\ldots,L(z)^mI),    \tag{S22}
+\]</span>
+<p>and every entry of <span class="math" data-tex="\(P_1(z)\)">\(P_1(z)\)</span> contains <span class="math" data-tex="\(L(z)^{m-1}\)">\(L(z)^{m-1}\)</span>. After that scalar factor is removed, its equations are (S19).</p>
+<p>Let <span class="math" data-tex="\(C_\tau\)">\(C_\tau\)</span> be the coefficient of <span class="math" data-tex="\(z^m\)">\(z^m\)</span> in <span class="math" data-tex="\(P_\tau\)">\(P_\tau\)</span>. Define <span class="math" data-tex="\(S:E^m\to E^m\)">\(S:E^m\to E^m\)</span> by <span class="math" data-tex="\((SU)_0=0\)">\((SU)_0=0\)</span>, <span class="math" data-tex="\((SU)_j=U_{j-1}\)">\((SU)_j=U_{j-1}\)</span>, and let <span class="math" data-tex="\(H_\tau\)">\(H_\tau\)</span> have identity diagonal, zero off-diagonal entries except in its first row, and</p>
+<span class="math math-display" data-tex="\[
+(H_\tau)_{0j}=h_j
+=\tau^{m-j}\sum_{k=j}^m a_k\quad(1\leq j&lt;m).
+\]">\[
+(H_\tau)_{0j}=h_j
+=\tau^{m-j}\sum_{k=j}^m a_k\quad(1\leq j&lt;m).
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+C_\tau=H_\tau(I-\tau S).                                 \tag{S23}
+\]">\[
+C_\tau=H_\tau(I-\tau S).                                 \tag{S23}
+\]</span>
+<p>To verify this, its first block is <span class="math" data-tex="\(I-\tau h_1=I-\tau^m\sum_{k=1}^ma_k=(1-\tau^m)I+\tau^ma_0\)">\(I-\tau h_1=I-\tau^m\sum_{k=1}^ma_k=(1-\tau^m)I+\tau^ma_0\)</span>. Its intermediate first-row blocks are <span class="math" data-tex="\(h_j-\tau h_{j+1}=\tau^{m-j}a_j\)">\(h_j-\tau h_{j+1}=\tau^{m-j}a_j\)</span>, and its last block is <span class="math" data-tex="\(h_{m-1}=\tau(a_{m-1}+a_m)\)">\(h_{m-1}=\tau(a_{m-1}+a_m)\)</span>. The lower rows are exactly <span class="math" data-tex="\(-\tau I,I\)">\(-\tau I,I\)</span>. These are the leading blocks of (S20)–(S21).</p>
+<p>Both factors in (S23) are block triangular with identity diagonal. Therefore</p>
+<span class="math math-display" data-tex="\[
+\det C_\tau=1.                                            \tag{S24}
+\]">\[
+\det C_\tau=1.                                            \tag{S24}
+\]</span>
+<p>Moreover, <span class="math" data-tex="\(H_\tau=I+N_\tau\)">\(H_\tau=I+N_\tau\)</span> with <span class="math" data-tex="\(N_\tau^2=0\)">\(N_\tau^2=0\)</span>, while <span class="math" data-tex="\(S^m=0\)">\(S^m=0\)</span>. Its inverse is the explicit finite expression</p>
+<span class="math math-display" data-tex="\[
+C_\tau^{-1}
+=\left(\sum_{r=0}^{m-1}\tau^rS^r\right)(I-N_\tau).          \tag{S25}
+\]">\[
+C_\tau^{-1}
+=\left(\sum_{r=0}^{m-1}\tau^rS^r\right)(I-N_\tau).          \tag{S25}
+\]</span>
+<p>In block form, <span class="math" data-tex="\((C_\tau^{-1})_{i0}=\tau^iI\)">\((C_\tau^{-1})_{i0}=\tau^iI\)</span>, and for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(C_\tau^{-1})_{ij}
+=\begin{cases}
+\tau^{i-j}I-\tau^i h_j,&amp;i\geq j,\\
+-\tau^i h_j,&amp;i&lt;j,
+\end{cases}
+\qquad 0\leq i&lt;m.                                        \tag{S26}
+\]">\[
+(C_\tau^{-1})_{ij}
+=\begin{cases}
+\tau^{i-j}I-\tau^i h_j,&amp;i\geq j,\\
+-\tau^i h_j,&amp;i&lt;j,
+\end{cases}
+\qquad 0\leq i&lt;m.                                        \tag{S26}
+\]</span>
+<p>Every entry has degree at most one in the <span class="math" data-tex="\(a_k\)">\(a_k\)</span>; using (S17) to replace <span class="math" data-tex="\(I\)">\(I\)</span> makes it a linear combination of them. No product of two <span class="math" data-tex="\(a_k\)">\(a_k\)</span>'s occurs. The factorization uses only addition, composition with scalar multiples of identity, and the relation (S17). Consequently the inverse calculation also works for coefficients in any unital, possibly noncommutative, algebra satisfying that relation. Only the determinant statement is restricted here to finite-dimensional matrices.</p>
+<h2 id="AN03-STB-009"><span id="an03-stb-009"></span><span id="an03-stb-009-a-determinant-identity-retaining-every-root"></span>AN03-STB-009 — A determinant identity retaining every root</h2>
+<p>For every complex <span class="math" data-tex="\(z\)">\(z\)</span> and every <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\det P_\tau(z)=\det p(z)\,L(z)^{m(m-1)N}.                 \tag{S27}
+\]">\[
+\det P_\tau(z)=\det p(z)\,L(z)^{m(m-1)N}.                 \tag{S27}
+\]</span>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(L(z)\ne0\)">\(L(z)\ne0\)</span>. The block of rows and columns indexed <span class="math" data-tex="\(1,\ldots,m-1\)">\(1,\ldots,m-1\)</span> is lower triangular with diagonal <span class="math" data-tex="\(L(z)^m I\)">\(L(z)^m I\)</span>, and therefore has determinant <span class="math" data-tex="\(L(z)^{m(m-1)N}\)">\(L(z)^{m(m-1)N}\)</span>. Eliminating these rows expresses the auxiliary components as</p>
+<span class="math math-display" data-tex="\[
+U_j=\left(\tau\frac{R(z)}{L(z)}\right)^jU_0.
+\]">\[
+U_j=\left(\tau\frac{R(z)}{L(z)}\right)^jU_0.
+\]</span>
+<p>The Schur complement in the first row is</p>
+<span class="math math-display" data-tex="\[
+(1-\tau^m)p(z)
++\tau^m\sum_{j=0}^ma_jR(z)^jL(z)^{m-j}=p(z).
+\]">\[
+(1-\tau^m)p(z)
++\tau^m\sum_{j=0}^ma_jR(z)^jL(z)^{m-j}=p(z).
+\]</span>
+<p>The block determinant formula proves (S27) whenever <span class="math" data-tex="\(L(z)\ne0\)">\(L(z)\ne0\)</span>. Both sides are polynomials in <span class="math" data-tex="\(z\)">\(z\)</span>, so equality on that set proves equality also at <span class="math" data-tex="\(z=-i\lambda\)">\(z=-i\lambda\)</span>. The calculation never assumes invertibility of <span class="math" data-tex="\(p(z)\)">\(p(z)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If (S9) holds, (S27) proves that <span class="math" data-tex="\(P_\tau\)">\(P_\tau\)</span> is invertible at every real <span class="math" data-tex="\(z\)">\(z\)</span>. It also records multiplicity: the upper-half-plane roots, with algebraic multiplicity, are exactly those of <span class="math" data-tex="\(\det p\)">\(\det p\)</span>; the auxiliary factor adds only the lower root <span class="math" data-tex="\(-i\lambda\)">\(-i\lambda\)</span>, with multiplicity <span class="math" data-tex="\(m(m-1)N\)">\(m(m-1)N\)</span>. If this is already a root of <span class="math" data-tex="\(\det p\)">\(\det p\)</span>, multiplicities add. At <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>, writing <span class="math" data-tex="\(P_1=L^{m-1}F\)">\(P_1=L^{m-1}F\)</span>, where <span class="math" data-tex="\(F\)">\(F\)</span> is the first-order polynomial of (S19), gives <span class="math" data-tex="\(\det F=\det p\)">\(\det F=\det p\)</span>. A zero of the auxiliary factor is not discarded from the full equation.</p>
+<h2 id="AN03-STB-010"><span id="an03-stb-010"></span><span id="an03-stb-010-the-stable-space-is-preserved-with-an-explicit-inverse"></span>AN03-STB-010 — The stable space is preserved, with an explicit inverse</h2>
+<p>Assume (S9), and write <span class="math" data-tex="\(\mathcal M^+_\tau=\mathcal M^+(P_\tau)\)">\(\mathcal M^+_\tau=\mathcal M^+(P_\tau)\)</span>, with the definition extended to invertible leading coefficient by left normalization.</p>
+<p><strong>Theorem.</strong> For every <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Pi_\tau:\mathcal M^+_\tau\longrightarrow\mathcal M^+(p),
+\qquad U\longmapsto U_0                                  \tag{S28}
+\]">\[
+\Pi_\tau:\mathcal M^+_\tau\longrightarrow\mathcal M^+(p),
+\qquad U\longmapsto U_0                                  \tag{S28}
+\]</span>
+<p>is a linear isomorphism. On these spaces,</p>
+<span class="math math-display" data-tex="\[
+L(D)U_j=\tau R(D)U_{j-1},\qquad
+L(D)^jU_j=\tau^jR(D)^jU_0.                               \tag{S29}
+\]">\[
+L(D)U_j=\tau R(D)U_{j-1},\qquad
+L(D)^jU_j=\tau^jR(D)^jU_0.                               \tag{S29}
+\]</span>
+<p><strong>Proof.</strong> The leading coefficient is invertible by (S24), and the determinant has no real zeros by (S27). AN03-STB-003 therefore applies to <span class="math" data-tex="\(P_\tau\)">\(P_\tau\)</span>: every stable solution and all its derivatives decay exponentially.</p>
+<p>Equation (S21) says
+<span class="math" data-tex="\(L(D)^{m-1}(L(D)U_j-\tau R(D)U_{j-1})=0\)">\(L(D)^{m-1}(L(D)U_j-\tau R(D)U_{j-1})=0\)</span>.
+The expression in parentheses is bounded. The kernel of <span class="math" data-tex="\(L(D)^k\)">\(L(D)^k\)</span>, for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, consists exactly of <span class="math" data-tex="\(e^{\lambda t}\)">\(e^{\lambda t}\)</span> times vector polynomials of degree less than <span class="math" data-tex="\(k\)">\(k\)</span>: substitute <span class="math" data-tex="\(f=e^{\lambda t}g\)">\(f=e^{\lambda t}g\)</span> and use <span class="math" data-tex="\(L(D)f=-ie^{\lambda t}g&#x27;\)">\(L(D)f=-ie^{\lambda t}g&#x27;\)</span>. No nonzero such function is bounded for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Cancellation is therefore valid on this bounded solution space, giving the first recurrence in (S29). Iteration gives the second one.</p>
+<p>For <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>, multiply the second identity by <span class="math" data-tex="\(L(D)^{m-j}\)">\(L(D)^{m-j}\)</span>. In the last term of (S20), use <span class="math" data-tex="\(R(D)L(D)^{m-1}U_{m-1}=\tau^{m-1}R(D)^mU_0\)">\(R(D)L(D)^{m-1}U_{m-1}=\tau^{m-1}R(D)^mU_0\)</span>. The first row of the differential equation becomes</p>
+<span class="math math-display" data-tex="\[
+(1-\tau^m)p(D)U_0+
+\tau^m\sum_{j=0}^ma_jR(D)^jL(D)^{m-j}U_0=p(D)U_0=0.
+\]">\[
+(1-\tau^m)p(D)U_0+
+\tau^m\sum_{j=0}^ma_jR(D)^jL(D)^{m-j}U_0=p(D)U_0=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Pi_\tau\)">\(\Pi_\tau\)</span> has the asserted codomain.</p>
+<p>To construct the inverse, first observe that for a smooth exponentially decreasing function <span class="math" data-tex="\(g\)">\(g\)</span>, whose derivatives have the same property, the unique bounded solution of <span class="math" data-tex="\(L(D)f=g\)">\(L(D)f=g\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(T_\lambda g)(t)
+=-i\int_0^\infty e^{-\lambda s}g(t+s)\,ds.                \tag{S30}
+\]">\[
+(T_\lambda g)(t)
+=-i\int_0^\infty e^{-\lambda s}g(t+s)\,ds.                \tag{S30}
+\]</span>
+<p>Differentiating the integral or integrating once by parts gives
+<span class="math" data-tex="\(f&#x27;-\lambda f=ig\)">\(f&#x27;-\lambda f=ig\)</span>, which is equivalent to <span class="math" data-tex="\(L(D)f=g\)">\(L(D)f=g\)</span>. The difference of any two bounded solutions is <span class="math" data-tex="\(ce^{\lambda t}\)">\(ce^{\lambda t}\)</span>, so is zero. Differentiation under the integral is justified by the exponential derivative bounds. If <span class="math" data-tex="\(\|D^kg(t)\|\leq M_ke^{-\delta t}\)">\(\|D^kg(t)\|\leq M_ke^{-\delta t}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|D^kT_\lambda g(t)\|\leq
+\frac{M_k}{\lambda+\delta}e^{-\delta t}
+\quad(t\geq0).                                          \tag{S31}
+\]">\[
+\|D^kT_\lambda g(t)\|\leq
+\frac{M_k}{\lambda+\delta}e^{-\delta t}
+\quad(t\geq0).                                          \tag{S31}
+\]</span>
+<p>Every <span class="math" data-tex="\(u\in\mathcal M^+(p)\)">\(u\in\mathcal M^+(p)\)</span> has these bounds by AN03-STB-003. Define</p>
+<span class="math math-display" data-tex="\[
+U_0=u,\qquad U_j=\tau T_\lambda R(D)U_{j-1}\ (1\leq j&lt;m). \tag{S32}
+\]">\[
+U_0=u,\qquad U_j=\tau T_\lambda R(D)U_{j-1}\ (1\leq j&lt;m). \tag{S32}
+\]</span>
+<p>These functions are defined on all real <span class="math" data-tex="\(t\)">\(t\)</span>; for fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the integration tail still lies in the decaying region. They and all their derivatives decay on the positive half-line, satisfy (S29), and hence satisfy every lower row of <span class="math" data-tex="\(P_\tau(D)U=0\)">\(P_\tau(D)U=0\)</span>. Substituting the recurrences into the first row gives <span class="math" data-tex="\(p(D)u=0\)">\(p(D)u=0\)</span>, as above. This proves surjectivity. If <span class="math" data-tex="\(U_0=0\)">\(U_0=0\)</span>, each successive bounded solution of <span class="math" data-tex="\(L(D)U_j=\tau R(D)U_{j-1}\)">\(L(D)U_j=\tau R(D)U_{j-1}\)</span> is zero by uniqueness, proving injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(T_\lambda\)">\(T_\lambda\)</span> commutes with scalar constant-coefficient differentiation on these functions, the lift can also be written</p>
+<span class="math math-display" data-tex="\[
+U_j=\tau^j(T_\lambda R(D))^ju.
+\]">\[
+U_j=\tau^j(T_\lambda R(D))^ju.
+\]</span>
+<p>At <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>, this is exactly <span class="math" data-tex="\((u,0,\ldots,0)\)">\((u,0,\ldots,0)\)</span>; no division by <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is needed. The same estimates show local <span class="math" data-tex="\(C^r\)">\(C^r\)</span> dependence of the lift on <span class="math" data-tex="\(C^r\)">\(C^r\)</span> coefficients and on <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. In Cauchy coordinates this is an isomorphism of the stable bundles from AN03-STB-004. On compact parameter sets, differentiation of (S30) in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> introduces powers of <span class="math" data-tex="\(s\)">\(s\)</span>, whose integrals remain finite because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has a positive lower bound and the stable decay estimates are uniform.</p>
+<h2 id="AN03-STB-011"><span id="an03-stb-011"></span><span id="an03-stb-011-boundary-measurements-their-orders-and-the-zero-endpoint"></span>AN03-STB-011 — Boundary measurements, their orders, and the zero endpoint</h2>
+<p>For <span class="math" data-tex="\(1\leq\ell\leq J\)">\(1\leq\ell\leq J\)</span>, let <span class="math" data-tex="\(G_\ell\)">\(G_\ell\)</span> be a finite-dimensional complex vector space and</p>
+<span class="math math-display" data-tex="\[
+B_\ell(z)=\sum_{r=0}^{d_\ell}b_{\ell r}z^r,
+\qquad b_{\ell r}\in\operatorname{Hom}(E,G_\ell),
+\qquad d_\ell\geq0.
+\]">\[
+B_\ell(z)=\sum_{r=0}^{d_\ell}b_{\ell r}z^r,
+\qquad b_{\ell r}\in\operatorname{Hom}(E,G_\ell),
+\qquad d_\ell\geq0.
+\]</span>
+<p>The boundary map is</p>
+<span class="math math-display" data-tex="\[
+\mathcal B:\mathcal M^+(p)\longrightarrow
+G:=\bigoplus_{\ell=1}^J G_\ell,
+\qquad
+u\longmapsto\big(B_\ell(D)u(0)\big)_\ell.                 \tag{S33}
+\]">\[
+\mathcal B:\mathcal M^+(p)\longrightarrow
+G:=\bigoplus_{\ell=1}^J G_\ell,
+\qquad
+u\longmapsto\big(B_\ell(D)u(0)\big)_\ell.                 \tag{S33}
+\]</span>
+<p>The empty family is allowed, with target zero. We call these measurements <em>complementing</em> precisely when (S33) is bijective. In particular its domain and target dimensions must agree; injectivity alone does not establish complementing data with arbitrary targets.</p>
+<p>For any finite orders <span class="math" data-tex="\(d_\ell\)">\(d_\ell\)</span>, composition with (S28) gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_\tau(U)=\big(B_\ell(D)U_0(0)\big)_\ell,
+\qquad \mathcal B_\tau=\mathcal B\Pi_\tau.                 \tag{S34}
+\]">\[
+\mathcal B_\tau(U)=\big(B_\ell(D)U_0(0)\big)_\ell,
+\qquad \mathcal B_\tau=\mathcal B\Pi_\tau.                 \tag{S34}
+\]</span>
+<p>Since <span class="math" data-tex="\(\Pi_\tau\)">\(\Pi_\tau\)</span> is an isomorphism, <span class="math" data-tex="\(\mathcal B_\tau\)">\(\mathcal B_\tau\)</span> is bijective if and only if <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is. This statement includes both <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> and <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>, and does not require <span class="math" data-tex="\(d_\ell&lt;m\)">\(d_\ell&lt;m\)</span>.</p>
+<p>The preserved data form the commuting square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+\mathcal M^+_\tau&amp;\xrightarrow{\mathcal B_\tau}&amp;G\\
+\Pi_\tau\downarrow&amp;&amp;\downarrow I_G\\
+\mathcal M^+(p)&amp;\xrightarrow{\mathcal B}&amp;G.
+\end{array}
+\]">\[
+\begin{array}{ccc}
+\mathcal M^+_\tau&amp;\xrightarrow{\mathcal B_\tau}&amp;G\\
+\Pi_\tau\downarrow&amp;&amp;\downarrow I_G\\
+\mathcal M^+(p)&amp;\xrightarrow{\mathcal B}&amp;G.
+\end{array}
+\]</span>
+<p>The left vertical arrow is invertible; the bottom measurement map is invertible exactly when the top one is. This diagram concerns solution spaces, so it does not extend an expression with singular coefficients to arbitrary Cauchy vectors.</p>
+<p>For the following alternative expression, impose the additional hypothesis <span class="math" data-tex="\(d_\ell&lt;m\)">\(d_\ell&lt;m\)</span>. There are unique coefficients <span class="math" data-tex="\(\beta_{\ell k}\in\operatorname{Hom}(E,G_\ell)\)">\(\beta_{\ell k}\in\operatorname{Hom}(E,G_\ell)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+B_\ell(z)=\sum_{k=0}^{m-1}
+\beta_{\ell k}R(z)^kL(z)^{m-1-k}.                         \tag{S35}
+\]">\[
+B_\ell(z)=\sum_{k=0}^{m-1}
+\beta_{\ell k}R(z)^kL(z)^{m-1-k}.                         \tag{S35}
+\]</span>
+<p>Repeating the change of variables with degree <span class="math" data-tex="\(m-1\)">\(m-1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^{m-1}\beta_{\ell k}w^k
+=\sum_{r=0}^{d_\ell}
+\frac{i^{r+1-m}}{2^{m-1}}\lambda^{r+1-m}
+b_{\ell r}(1+w)^r(1-w)^{m-1-r}.                          \tag{S36}
+\]">\[
+\sum_{k=0}^{m-1}\beta_{\ell k}w^k
+=\sum_{r=0}^{d_\ell}
+\frac{i^{r+1-m}}{2^{m-1}}\lambda^{r+1-m}
+b_{\ell r}(1+w)^r(1-w)^{m-1-r}.                          \tag{S36}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\beta_{\ell k}=\sum_{r=0}^{d_\ell}c&#x27;_{kr}b_{\ell r}\lambda^{r+1-m}\)">\(\beta_{\ell k}=\sum_{r=0}^{d_\ell}c&#x27;_{kr}b_{\ell r}\lambda^{r+1-m}\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+c&#x27;_{kr}=\frac{i^{r+1-m}}{2^{m-1}}
+\sum_{a=0}^k(-1)^{k-a}
+\binom{r}{a}\binom{m-1-r}{k-a}.
+\]">\[
+c&#x27;_{kr}=\frac{i^{r+1-m}}{2^{m-1}}
+\sum_{a=0}^k(-1)^{k-a}
+\binom{r}{a}\binom{m-1-r}{k-a}.
+\]</span>
+<p>The degrees and powers of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> follow from (S36), including when the actual order is less than <span class="math" data-tex="\(m-1\)">\(m-1\)</span>. From (S29),</p>
+<span class="math math-display" data-tex="\[
+L(D)^{m-1}U_k
+=\tau^kR(D)^kL(D)^{m-1-k}U_0.
+\]">\[
+L(D)^{m-1}U_k
+=\tau^kR(D)^kL(D)^{m-1-k}U_0.
+\]</span>
+<p>Consequently for <span class="math" data-tex="\(0&lt;\tau\leq1\)">\(0&lt;\tau\leq1\)</span> and <span class="math" data-tex="\(U\in\mathcal M^+_\tau\)">\(U\in\mathcal M^+_\tau\)</span>,</p>
+<span class="math math-display" data-tex="\[
+B_\ell(D)U_0
+=\sum_{k=0}^{m-1}\tau^{-k}\beta_{\ell k}
+L(D)^{m-1}U_k.                                          \tag{S37}
+\]">\[
+B_\ell(D)U_0
+=\sum_{k=0}^{m-1}\tau^{-k}\beta_{\ell k}
+L(D)^{m-1}U_k.                                          \tag{S37}
+\]</span>
+<p>This is equality of functions of <span class="math" data-tex="\(t\)">\(t\)</span>, so it remains true at the boundary after evaluation at zero. The factors <span class="math" data-tex="\(\tau^{-k}\)">\(\tau^{-k}\)</span> make (S37) unsuitable as a formula for an ambient boundary operator at <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>. The correct endpoint map is (S34). On the explicitly lifted stable vectors (S32), the factors cancel with <span class="math" data-tex="\(\tau^k\)">\(\tau^k\)</span>, but this cancellation does not define <span class="math" data-tex="\(\tau^{-k}\)">\(\tau^{-k}\)</span> on arbitrary vectors at zero.</p>
+<p>Here the orders are orders in the single normal variable. In a boundary PDE, tangential orders and their Sobolev shifts are additional data. None of the finite-dimensional statements permits dropping them or replacing an arbitrary boundary system by Dirichlet data.</p>
+<h2 id="AN03-STB-012"><span id="an03-stb-012"></span><span id="an03-stb-012-the-normalized-reduction-package"></span>AN03-STB-012 — The normalized reduction package</h2>
+<p>Combine the preceding statements under exactly these assumptions: <span class="math" data-tex="\(E\)">\(E\)</span> is finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>; <span class="math" data-tex="\(p\)">\(p\)</span> has degree <span class="math" data-tex="\(m\)">\(m\)</span> and leading coefficient <span class="math" data-tex="\(I\)">\(I\)</span>; <span class="math" data-tex="\(\det p(\xi)\ne0\)">\(\det p(\xi)\ne0\)</span> for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>; and <span class="math" data-tex="\(0\leq\tau\leq1\)">\(0\leq\tau\leq1\)</span>.</p>
+<p>The family <span class="math" data-tex="\(P_\tau\)">\(P_\tau\)</span> in (S20)–(S21) begins with the stabilized equation (S22), has no real characteristic roots, preserves the full stable solution space by first-coordinate projection, and preserves bijectivity of every finite collection of boundary measurements transported by that projection. Its leading coefficient has determinant one and inverse entries linear in <span class="math" data-tex="\(a_0,\ldots,a_m\)">\(a_0,\ldots,a_m\)</span>. The extra boundary expression (S37) requires orders less than <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\widehat P_\tau(z)=C_\tau^{-1}P_\tau(z).                  \tag{S38}
+\]">\[
+\widehat P_\tau(z)=C_\tau^{-1}P_\tau(z).                  \tag{S38}
+\]</span>
+<p>It is monic of degree <span class="math" data-tex="\(m\)">\(m\)</span>. Left multiplication by the invertible constant matrix changes neither the differential equation's solutions nor any of their boundary measurements. Because <span class="math" data-tex="\(\det C_\tau=1\)">\(\det C_\tau=1\)</span>, it also leaves (S27) unchanged. At <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>, (S23) gives <span class="math" data-tex="\(C_0=I\)">\(C_0=I\)</span>, so the starting polynomial is unchanged. At <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\widehat P_1(z)=L(z)^{m-1}(zI-A_*)                        \tag{S39}
+\]">\[
+\widehat P_1(z)=L(z)^{m-1}(zI-A_*)                        \tag{S39}
+\]</span>
+<p>for a matrix <span class="math" data-tex="\(A_*\)">\(A_*\)</span> with no real eigenvalues: the first-order factor is monic and its determinant is <span class="math" data-tex="\(\det p(z)\)">\(\det p(z)\)</span>. Thus its stable equation can be further deformed by AN03-STB-005. The scalar factor in (S39) has only the lower root <span class="math" data-tex="\(-i\lambda\)">\(-i\lambda\)</span>; cancellation of that factor is valid for bounded solutions by AN03-STB-010, and is not an equality of full solution spaces.</p>
+<p>An original polynomial with invertible leading coefficient <span class="math" data-tex="\(p_m\)">\(p_m\)</span> can first be replaced by <span class="math" data-tex="\(p_m^{-1}p\)">\(p_m^{-1}p\)</span>, which has the same solutions and real invertibility. All displayed determinant-one claims then refer to the construction from that <em>normalized</em> polynomial. A singular leading coefficient falls outside this package: neither the full <span class="math" data-tex="\(mN\)">\(mN\)</span>-dimensional Cauchy coordinate space nor this normalization is available in general.</p>
+<h2 id="an03-stb-ex-001-a-four-dimensional-stable-space-with-cubic-time-factors">AN03-STB-EX-001 — A four-dimensional stable space with cubic time factors</h2>
+<p>Let <span class="math" data-tex="\(E=\mathbb C^2\)">\(E=\mathbb C^2\)</span>, let <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>, and consider</p>
+<span class="math math-display" data-tex="\[
+p(z)=
+\begin{pmatrix}(z-i)^2&amp;\kappa\\0&amp;(z-i)^2\end{pmatrix}.
+\]">\[
+p(z)=
+\begin{pmatrix}(z-i)^2&amp;\kappa\\0&amp;(z-i)^2\end{pmatrix}.
+\]</span>
+<p>It is monic of degree two, and its determinant is <span class="math" data-tex="\((z-i)^4\)">\((z-i)^4\)</span>, so every solution is stable. To see all four coordinates directly, write</p>
+<span class="math math-display" data-tex="\[
+u_2(t)=e^{-t}(a+bt),\qquad
+u_1(t)=e^{-t}
+\left(c+dt+\frac{\kappa a}{2}t^2+\frac{\kappa b}{6}t^3\right).
+\]">\[
+u_2(t)=e^{-t}(a+bt),\qquad
+u_1(t)=e^{-t}
+\left(c+dt+\frac{\kappa a}{2}t^2+\frac{\kappa b}{6}t^3\right).
+\]</span>
+<p>Since <span class="math" data-tex="\((D-i)(e^{-t}f)=-ie^{-t}f&#x27;\)">\((D-i)(e^{-t}f)=-ie^{-t}f&#x27;\)</span>, substitution proves the equation. The free constants <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span> give all four solutions by Cauchy uniqueness. Thus a second-order matrix equation can contain a cubic polynomial times an exponential; the order of the scalar equation alone does not bound the length of a generalized chain for the full state matrix. In agreement, the upper-right entry of <span class="math" data-tex="\(p(z)^{-1}\)">\(p(z)^{-1}\)</span> is <span class="math" data-tex="\(-\kappa(z-i)^{-4}\)">\(-\kappa(z-i)^{-4}\)</span>.</p>
+<p>The pair of measurements <span class="math" data-tex="\(u(0)\in E\)">\(u(0)\in E\)</span>, <span class="math" data-tex="\(Du(0)\in E\)">\(Du(0)\in E\)</span> is complementing because every Cauchy jet is stable. Under the construction with <span class="math" data-tex="\(\lambda=2\)">\(\lambda=2\)</span>, the stabilized system has determinant <span class="math" data-tex="\((z-i)^4(z+2i)^4\)">\((z-i)^4(z+2i)^4\)</span>. Its stable dimension remains four, while its total solution dimension is eight.</p>
+<h2 id="an03-stb-ex-002-noncommuting-coefficients-and-an-unsuitable-trace">AN03-STB-EX-002 — Noncommuting coefficients and an unsuitable trace</h2>
+<p>Consider</p>
+<span class="math math-display" data-tex="\[
+p(z)=
+\begin{pmatrix}(z-i)^2&amp;1\\0&amp;(z+2i)^2\end{pmatrix}.
+\]">\[
+p(z)=
+\begin{pmatrix}(z-i)^2&amp;1\\0&amp;(z+2i)^2\end{pmatrix}.
+\]</span>
+<p>Its coefficients <span class="math" data-tex="\(p_1=\operatorname{diag}(-2i,4i)\)">\(p_1=\operatorname{diag}(-2i,4i)\)</span> and
+<span class="math" data-tex="\(p_0=\left(\begin{smallmatrix}-1&amp;1\\0&amp;-4\end{smallmatrix}\right)\)">\(p_0=\left(\begin{smallmatrix}-1&amp;1\\0&amp;-4\end{smallmatrix}\right)\)</span>
+do not commute: <span class="math" data-tex="\(p_1p_0-p_0p_1\)">\(p_1p_0-p_0p_1\)</span> has upper-right entry <span class="math" data-tex="\(-6i\)">\(-6i\)</span>. The determinant is <span class="math" data-tex="\((z-i)^2(z+2i)^2\)">\((z-i)^2(z+2i)^2\)</span>. A bounded solution must have <span class="math" data-tex="\(u_2=0\)">\(u_2=0\)</span>, since its second component solves <span class="math" data-tex="\((D+2i)^2u_2=0\)">\((D+2i)^2u_2=0\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+u(t)=\big(e^{-t}(a+bt),0\big),\qquad a,b\in\mathbb C.
+\]">\[
+u(t)=\big(e^{-t}(a+bt),0\big),\qquad a,b\in\mathbb C.
+\]</span>
+<p>The stable dimension is two. The ordinary vector trace <span class="math" data-tex="\(u(0)\in\mathbb C^2\)">\(u(0)\in\mathbb C^2\)</span> has image <span class="math" data-tex="\(\mathbb C\times\{0\}\)">\(\mathbb C\times\{0\}\)</span> and a one-dimensional kernel, despite equality of source and target dimensions. In contrast, the two scalar measurements</p>
+<span class="math math-display" data-tex="\[
+B_1(D)u(0)=u_1(0)=a,\qquad
+B_2(D)u(0)=Du_1(0)=i(a-b)
+\]">\[
+B_1(D)u(0)=u_1(0)=a,\qquad
+B_2(D)u(0)=Du_1(0)=i(a-b)
+\]</span>
+<p>are bijective onto <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\)">\(\mathbb C\oplus\mathbb C\)</span>. The entire construction above applies without changing the coefficient order or imposing a scalar boundary model.</p>
+<h2 id="an03-stb-ps-001-problems-with-solutions">AN03-STB-PS-001 — Problems with solutions</h2>
+<p><strong>Problem 1: a real root at the boundary of the hypothesis.</strong> Let
+<span class="math" data-tex="\(A_\varepsilon=\left(\begin{smallmatrix}i\varepsilon&amp;1\\0&amp;i\varepsilon\end{smallmatrix}\right)\)">\(A_\varepsilon=\left(\begin{smallmatrix}i\varepsilon&amp;1\\0&amp;i\varepsilon\end{smallmatrix}\right)\)</span>, for real <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Determine the positive-half-line bounded initial values, including <span class="math" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>. Explain the failure of a continuous stable projection across zero.</p>
+<p><strong>Solution.</strong> The solution is
+<span class="math" data-tex="\(e^{-\varepsilon t}(v_1+itv_2,v_2)\)">\(e^{-\varepsilon t}(v_1+itv_2,v_2)\)</span>. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, every initial vector is stable. For <span class="math" data-tex="\(\varepsilon&lt;0\)">\(\varepsilon&lt;0\)</span>, only zero is bounded. At zero, precisely vectors with <span class="math" data-tex="\(v_2=0\)">\(v_2=0\)</span> are bounded, and their solutions are constant. Thus the bounded dimensions are respectively two, zero, and one. The upper spectral projection is <span class="math" data-tex="\(I\)">\(I\)</span> for positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and zero for negative <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, so cannot extend continuously across zero. At zero, boundedness does not imply decay, and the upper/lower splitting omits the real generalized eigenspace. This identifies why the no-real-spectrum hypothesis is used.</p>
+<p><strong>Problem 2: the smallest block homotopy.</strong> For <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, write <span class="math" data-tex="\(P_\tau\)">\(P_\tau\)</span>, its leading coefficient, and an inverse of that coefficient. Verify the determinant-one assertion without commutativity assumptions.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(a_0+a_1+a_2=I\)">\(a_0+a_1+a_2=I\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_\tau=
+\begin{pmatrix}
+(1-\tau^2)p+\tau^2a_0L^2&amp;\tau(a_1L^2+a_2RL)\\
+-\tau RL&amp;L^2I
+\end{pmatrix}.
+\]">\[
+P_\tau=
+\begin{pmatrix}
+(1-\tau^2)p+\tau^2a_0L^2&amp;\tau(a_1L^2+a_2RL)\\
+-\tau RL&amp;L^2I
+\end{pmatrix}.
+\]</span>
+<p>Writing <span class="math" data-tex="\(b=\tau(a_1+a_2)\)">\(b=\tau(a_1+a_2)\)</span>, its leading coefficient and inverse are</p>
+<span class="math math-display" data-tex="\[
+C_\tau=
+\begin{pmatrix}I-\tau b&amp;b\\-\tau I&amp;I\end{pmatrix}
+=\begin{pmatrix}I&amp;b\\0&amp;I\end{pmatrix}
+\begin{pmatrix}I&amp;0\\-\tau I&amp;I\end{pmatrix},
+\qquad
+C_\tau^{-1}=
+\begin{pmatrix}I&amp;-b\\\tau I&amp;I-\tau b\end{pmatrix}.
+\]">\[
+C_\tau=
+\begin{pmatrix}I-\tau b&amp;b\\-\tau I&amp;I\end{pmatrix}
+=\begin{pmatrix}I&amp;b\\0&amp;I\end{pmatrix}
+\begin{pmatrix}I&amp;0\\-\tau I&amp;I\end{pmatrix},
+\qquad
+C_\tau^{-1}=
+\begin{pmatrix}I&amp;-b\\\tau I&amp;I-\tau b\end{pmatrix}.
+\]</span>
+<p>Multiplying the two displayed factors or multiplying <span class="math" data-tex="\(C_\tau C_\tau^{-1}\)">\(C_\tau C_\tau^{-1}\)</span> verifies the formulas; no two unrelated coefficient matrices are interchanged. Each triangular factor has determinant one. In addition, (S27) reads <span class="math" data-tex="\(\det P_\tau=\det p\,L^{2N}\)">\(\det P_\tau=\det p\,L^{2N}\)</span>.</p>
+<p><strong>Problem 3: boundary orders beyond the coordinate basis.</strong> Let <span class="math" data-tex="\(B(z)\in\operatorname{Hom}(E,G)[z]\)">\(B(z)\in\operatorname{Hom}(E,G)[z]\)</span> have arbitrary finite degree and let <span class="math" data-tex="\(p\)">\(p\)</span> be monic of degree <span class="math" data-tex="\(m\)">\(m\)</span>. Prove a unique division formula <span class="math" data-tex="\(B=Qp+R_B\)">\(B=Qp+R_B\)</span> with <span class="math" data-tex="\(\deg R_B&lt;m\)">\(\deg R_B&lt;m\)</span>. Which factor order is required, and what does this imply on solutions?</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(B\)">\(B\)</span> has leading term <span class="math" data-tex="\(bz^d\)">\(bz^d\)</span> with <span class="math" data-tex="\(d\geq m\)">\(d\geq m\)</span>, subtract <span class="math" data-tex="\(bz^{d-m}p(z)\)">\(bz^{d-m}p(z)\)</span>. The leading term cancels because <span class="math" data-tex="\(p_m=I\)">\(p_m=I\)</span>, and the degree decreases. Iterating constructs <span class="math" data-tex="\(Q\in\operatorname{Hom}(E,G)[z]\)">\(Q\in\operatorname{Hom}(E,G)[z]\)</span> and <span class="math" data-tex="\(R_B\)">\(R_B\)</span> of degree below <span class="math" data-tex="\(m\)">\(m\)</span>. If two decompositions exist, a nonzero difference <span class="math" data-tex="\(Q_1-Q_2\)">\(Q_1-Q_2\)</span> of degree <span class="math" data-tex="\(s\)">\(s\)</span> makes <span class="math" data-tex="\((Q_1-Q_2)p\)">\((Q_1-Q_2)p\)</span> have degree exactly <span class="math" data-tex="\(s+m\)">\(s+m\)</span>, since its leading coefficient is unchanged by multiplication by <span class="math" data-tex="\(I\)">\(I\)</span>. It cannot equal a polynomial of degree below <span class="math" data-tex="\(m\)">\(m\)</span>; hence both differences vanish. The required order is <span class="math" data-tex="\(Qp\)">\(Qp\)</span>, which composes <span class="math" data-tex="\(E\xrightarrow{p}E\xrightarrow{Q}G\)">\(E\xrightarrow{p}E\xrightarrow{Q}G\)</span>. On constant-coefficient solutions, <span class="math" data-tex="\(B(D)u=R_B(D)u\)">\(B(D)u=R_B(D)u\)</span>. This justifies normal-order reduction for this algebraic model. A PDE with variable coefficients or tangential orders needs its own division and mapping argument.</p>
+<p><strong>Problem 4: a negative power of the homotopy parameter.</strong> Take <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, <span class="math" data-tex="\(B(z)=z\)">\(B(z)=z\)</span>, and any stable scalar solution <span class="math" data-tex="\(u\)">\(u\)</span>. Find <span class="math" data-tex="\(\beta_0,\beta_1\)">\(\beta_0,\beta_1\)</span>, verify (S37), and identify its valid zero-parameter interpretation.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(z=\tfrac12(z+i\lambda)+\tfrac12(z-i\lambda)\)">\(z=\tfrac12(z+i\lambda)+\tfrac12(z-i\lambda)\)</span>, one has <span class="math" data-tex="\(\beta_0=\beta_1=1/2\)">\(\beta_0=\beta_1=1/2\)</span>. For <span class="math" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, the recurrence gives <span class="math" data-tex="\(LU_1=\tau RU_0\)">\(LU_1=\tau RU_0\)</span>, so
+<span class="math" data-tex="\(\tfrac12 LU_0+\tfrac1{2\tau}LU_1=\tfrac12(L+R)U_0=DU_0\)">\(\tfrac12 LU_0+\tfrac1{2\tau}LU_1=\tfrac12(L+R)U_0=DU_0\)</span>.
+At zero, the stable lift has <span class="math" data-tex="\(U_1=0\)">\(U_1=0\)</span>; inserting this into <span class="math" data-tex="\(\tau^{-1}LU_1\)">\(\tau^{-1}LU_1\)</span> is undefined. The correct boundary functional remains <span class="math" data-tex="\(DU_0(0)\)">\(DU_0(0)\)</span> from (S34). Along a lifted family, its limiting value can be computed before setting <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>, using <span class="math" data-tex="\(\tau^{-1}LU_1=RU_0\)">\(\tau^{-1}LU_1=RU_0\)</span>. It is not an ambient formula at zero.</p>
+<p><strong>Problem 5: nilpotent coalescence at the last endpoint.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be the direct sum of the blocks <span class="math" data-tex="\(iI+N\)">\(iI+N\)</span> on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, <span class="math" data-tex="\(2i\)">\(2i\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and <span class="math" data-tex="\(-3i\)">\(-3i\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, where <span class="math" data-tex="\(N=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)">\(N=\left(\begin{smallmatrix}0&amp;1\\0&amp;0\end{smallmatrix}\right)\)</span>. Describe (S12) when <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>.</p>
+<p><strong>Solution.</strong> The first block is <span class="math" data-tex="\(iI+(1-\tau)N\)">\(iI+(1-\tau)N\)</span>, the next is <span class="math" data-tex="\(i(2-\tau)\)">\(i(2-\tau)\)</span>, and the last is <span class="math" data-tex="\(-i(3-2\tau)\)">\(-i(3-2\tau)\)</span>. The upper projection is always <span class="math" data-tex="\(\operatorname{diag}(I_2,1,0)\)">\(\operatorname{diag}(I_2,1,0)\)</span>. For <span class="math" data-tex="\(\tau&lt;1\)">\(\tau&lt;1\)</span>, the first and second upper blocks have distinct eigenvalues; at one, their eigenvalues coalesce at <span class="math" data-tex="\(i\)">\(i\)</span> and the nilpotent part of the first vanishes. The full <span class="math" data-tex="\(i\)">\(i\)</span>-eigenspace at one has dimension three. Thus individual primary summands associated with distinct spectral values have merged, while the upper spectral subspace has remained the same three-dimensional space throughout.</p>
+<p><strong>Problem 6: why the leading coefficient matters.</strong> Treat <span class="math" data-tex="\(r(z)=\operatorname{diag}(z,1)\)">\(r(z)=\operatorname{diag}(z,1)\)</span> as a degree-one matrix polynomial on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Determine the solutions and compare their dimension with the formal count <span class="math" data-tex="\(m\dim E\)">\(m\dim E\)</span>.</p>
+<p><strong>Solution.</strong> The equations are <span class="math" data-tex="\(Du_1=0\)">\(Du_1=0\)</span> and <span class="math" data-tex="\(u_2=0\)">\(u_2=0\)</span>, so the solution space is one-dimensional, although <span class="math" data-tex="\(m\dim E=2\)">\(m\dim E=2\)</span>. The leading coefficient is <span class="math" data-tex="\(\operatorname{diag}(1,0)\)">\(\operatorname{diag}(1,0)\)</span>, which is singular. Initial values are constrained, and multiplication by the inverse leading coefficient is impossible. In contrast, a genuinely monic degree-one polynomial supplies two free initial coordinates. This example concerns the leading-coefficient hypothesis; its determinant also has a real root, so it is not an example within the stable reduction theorem.</p>
+<h2 id="further-directions-and-claim-boundary">Further directions and claim boundary</h2>
+<p>The next analytic use of this algebra is a family over nonzero tangential covectors. AN03-STB-004 supplies its stable vector bundle, and (S33) supplies the finite-dimensional complementing map. Constructing a global boundary parametrix, proving its Sobolev mapping properties, and deriving an index theorem require the symbol calculus, coordinate invariance, bundle gluing, and adjoint theory developed in other units. A fiberwise stable isomorphism alone proves none of those analytic conclusions.</p>
+<p>Two useful research questions are to identify when the stable bundle admits a globally chosen system of boundary measurements, and to determine which additional estimates survive when spectral roots approach the real axis. The examples here already distinguish the local rank condition from a global choice of boundary data, and show why estimates uniform through a real crossing cannot be inferred from this unit.</p>
+<p>The mathematical antecedents are the finite-dimensional resolvent calculus and Lars Hörmander's treatment of the algebra underlying elliptic boundary problems. The determinant calculation, the derivative estimate through an observation integral, and the examples and exercises above are written for this course.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><a href="src/stable-boundary-models.md">Editable Markdown</a>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

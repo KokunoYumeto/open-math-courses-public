@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lattices, Minkowski&#x27;s theorem and the Minkowski embedding · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="lattices-minkowski-s-theorem-and-the-minkowski-embedding">Lattices, Minkowski's theorem and the Minkowski embedding</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>The discriminant can be seen as a volume. Sending an algebraic integer to all its archimedean embeddings produces a lattice, and its discriminant determines the volume of a fundamental cell. A sufficiently large symmetric convex region must meet that lattice away from the origin. Choosing the region carefully turns this geometric fact into a bound for the norm of an element in an ideal.</p>
+<h2 id="prerequisites-and-measure">Prerequisites and measure</h2>
+<p>We use integral bases and the embedding formula for discriminants from <a href="discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>, the field norm formula from <a href="algebraic-integers-and-rings-of-integers.html"><em>Algebraic integers and rings of integers</em></a>, and the ideal norm and module results from <a href="norms-class-groups-and-modules-over-dedekind-domains.html"><em>Norms, class groups, and modules over Dedekind domains</em></a>. The only module classification needed here is Theorem 4.3 for <span class="math" data-tex="\(A=\mathbf Z\)">\(A=\mathbf Z\)</span>: a finitely generated torsion-free abelian group is free.</p>
+<p>The analysis prerequisites are the basic properties of Lebesgue measure taught in <em>Measure and Integration</em>: completeness, countable additivity, translation invariance, and the change-of-variables formula for an invertible linear map. Exact measure locators are [Fremlin, 112A, 113C, 115E–115G, 134A and 263A]. We also use compactness of closed bounded subsets of Euclidean space, continuity, and the area of a disc.</p>
+<p>Throughout, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The space
+<span class="math math-display" data-tex="\[
+K_{\mathbf R}=\mathbf R^{r_1}\times\mathbf C^{r_2},
+\qquad n=r_1+2r_2,
+\]">\[
+K_{\mathbf R}=\mathbf R^{r_1}\times\mathbf C^{r_2},
+\qquad n=r_1+2r_2,
+\]</span>
+has ordinary Lebesgue measure, with each complex coordinate written as its real and imaginary parts. A complex disc of radius <span class="math" data-tex="\(t\)">\(t\)</span> has area <span class="math" data-tex="\(\pi t^2\)">\(\pi t^2\)</span>. A convention that doubles the measure of each complex coordinate multiplies the total measure by <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span>; covolumes in that convention must be divided by this factor here.</p>
+<h2 id="discreteness-and-integral-bases-of-lattices">Discreteness and integral bases of lattices</h2>
+<p>A <strong>lattice</strong> in <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span> is a discrete additive subgroup <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Here discreteness means that every point is isolated. For a subgroup it suffices to isolate zero: there is a <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\Lambda\cap\{x\mid \|x\|&lt;\delta\}=\{0\}.
+\]">\[
+\Lambda\cap\{x\mid \|x\|&lt;\delta\}=\{0\}.
+\]</span>
+Two distinct lattice points are then at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> apart, since their difference belongs to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p>Every bounded set meets <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in finitely many points. Indeed, a closed ball containing the set is compact and has a finite cover by balls of radius less than <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>; each covering ball contains at most one lattice point. Also <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is closed: a convergent sequence of its points is Cauchy, so eventually all its terms agree.</p>
+<p><strong>Lattice structure lemma.</strong> A discrete subgroup has the form
+<span class="math math-display" data-tex="\[
+\Lambda=\mathbf Z v_1+\cdots+\mathbf Z v_r,
+\]">\[
+\Lambda=\mathbf Z v_1+\cdots+\mathbf Z v_r,
+\]</span>
+where <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> are linearly independent over <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>, and <span class="math" data-tex="\(0\leq r\leq n\)">\(0\leq r\leq n\)</span>. Conversely every subgroup of this form is discrete.</p>
+<p><strong>Proof.</strong> If the subgroup is zero, take <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Otherwise let <span class="math" data-tex="\(V\)">\(V\)</span> be its real span, of dimension <span class="math" data-tex="\(r\)">\(r\)</span>, and choose a real basis <span class="math" data-tex="\(w_1,\ldots,w_r\)">\(w_1,\ldots,w_r\)</span> from the subgroup. Put <span class="math" data-tex="\(\Lambda_0=\sum\mathbf Z w_i\)">\(\Lambda_0=\sum\mathbf Z w_i\)</span>. Subtracting integral parts of the coordinates of an element of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> gives a representative of its coset modulo <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> in
+<span class="math math-display" data-tex="\[
+F_0=\left\{\sum t_iw_i\mid 0\leq t_i&lt;1\right\}.
+\]">\[
+F_0=\left\{\sum t_iw_i\mid 0\leq t_i&lt;1\right\}.
+\]</span>
+This is bounded, so there are only finitely many such representatives. Thus <span class="math" data-tex="\(\Lambda/\Lambda_0\)">\(\Lambda/\Lambda_0\)</span> is finite; if its order is <span class="math" data-tex="\(m\)">\(m\)</span>, then
+<span class="math math-display" data-tex="\[
+\Lambda_0\subseteq\Lambda\subseteq \tfrac1m\Lambda_0.
+\]">\[
+\Lambda_0\subseteq\Lambda\subseteq \tfrac1m\Lambda_0.
+\]</span>
+The middle group is finitely generated, because it is a submodule of the finite free <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-module on the right and <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> is Noetherian. It is torsion-free, hence free by Theorem 4.3. Tensoring these inclusions with <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> shows that its rank is <span class="math" data-tex="\(r\)">\(r\)</span>. A <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> therefore has <span class="math" data-tex="\(r\)">\(r\)</span> members and spans <span class="math" data-tex="\(V\)">\(V\)</span> over <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>, so it is real linearly independent.</p>
+<p>Conversely, the linear isomorphism <span class="math" data-tex="\(\mathbf R^r\to V\)">\(\mathbf R^r\to V\)</span> sending the standard basis to the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> sends <span class="math" data-tex="\(\mathbf Z^r\)">\(\mathbf Z^r\)</span> to the indicated subgroup. Its continuous inverse isolates zero in that subgroup. The subspace <span class="math" data-tex="\(V\)">\(V\)</span> is closed in <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span>, so this also proves discreteness in the ambient space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lattice is <strong>complete</strong>, or of full rank, when <span class="math" data-tex="\(r=n\)">\(r=n\)</span>. Equivalently,
+<span class="math math-display" data-tex="\[
+\Lambda\text{ is complete}
+\quad\Longleftrightarrow\quad
+\Lambda\text{ is discrete and }\mathbf R^n/\Lambda\text{ is compact}. \tag{1}
+\]">\[
+\Lambda\text{ is complete}
+\quad\Longleftrightarrow\quad
+\Lambda\text{ is discrete and }\mathbf R^n/\Lambda\text{ is compact}. \tag{1}
+\]</span>
+For a full-rank lattice the closed parallelepiped <span class="math" data-tex="\(\sum[0,1]v_i\)">\(\sum[0,1]v_i\)</span> maps onto the quotient, proving compactness. Conversely, for a discrete subgroup with span <span class="math" data-tex="\(V\ne\mathbf R^n\)">\(V\ne\mathbf R^n\)</span>, orthogonal projection gives a continuous surjection
+<span class="math" data-tex="\(\mathbf R^n/\Lambda\to V^\perp\)">\(\mathbf R^n/\Lambda\to V^\perp\)</span>. A positive dimensional Euclidean space is not compact, contradicting compactness of the quotient. This proves (1).</p>
+<h2 id="a-cell-whose-volume-counts-the-lattice">A cell whose volume counts the lattice</h2>
+<p>Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be complete, and let <span class="math" data-tex="\(T\)">\(T\)</span> be the invertible real matrix whose columns are a lattice basis. The half-open parallelepiped
+<span class="math math-display" data-tex="\[
+F=T[0,1)^n
+\]">\[
+F=T[0,1)^n
+\]</span>
+is a <strong>fundamental domain</strong>: the sets <span class="math" data-tex="\(F+\lambda\)">\(F+\lambda\)</span>, for <span class="math" data-tex="\(\lambda\in\Lambda\)">\(\lambda\in\Lambda\)</span>, partition <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span>. Apply <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span> and subtract the integral part of each coordinate to prove both existence and uniqueness of the representative.</p>
+<p>The <strong>covolume</strong> is
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(\Lambda)=\operatorname{vol}(F)=|\det T|. \tag{2}
+\]">\[
+\operatorname{covol}(\Lambda)=\operatorname{vol}(F)=|\det T|. \tag{2}
+\]</span>
+A change of lattice basis multiplies <span class="math" data-tex="\(T\)">\(T\)</span> by a matrix in <span class="math" data-tex="\(\operatorname{GL}_n(\mathbf Z)\)">\(\operatorname{GL}_n(\mathbf Z)\)</span>, whose determinant is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus the covolume is independent of the basis.</p>
+<p>If <span class="math" data-tex="\(\Lambda&#x27;\subseteq\Lambda\)">\(\Lambda&#x27;\subseteq\Lambda\)</span> has finite index, writing a basis of <span class="math" data-tex="\(\Lambda&#x27;\)">\(\Lambda&#x27;\)</span> in a basis of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> gives an integral matrix <span class="math" data-tex="\(U\)">\(U\)</span>. The determinant-index formula from <em>Discriminants and integral bases</em> gives
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(\Lambda&#x27;)
+=[\Lambda:\Lambda&#x27;]\operatorname{covol}(\Lambda). \tag{3}
+\]">\[
+\operatorname{covol}(\Lambda&#x27;)
+=[\Lambda:\Lambda&#x27;]\operatorname{covol}(\Lambda). \tag{3}
+\]</span>
+For any invertible real map <span class="math" data-tex="\(S\)">\(S\)</span>, formula (2) also gives
+<span class="math" data-tex="\(\operatorname{covol}(S\Lambda)=|\det S|\operatorname{covol}(\Lambda)\)">\(\operatorname{covol}(S\Lambda)=|\det S|\operatorname{covol}(\Lambda)\)</span>.</p>
+<p><strong>Blichfeldt's lemma.</strong> If <span class="math" data-tex="\(E\subseteq\mathbf R^n\)">\(E\subseteq\mathbf R^n\)</span> is measurable and
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(E)&gt;\operatorname{covol}(\Lambda),
+\]">\[
+\operatorname{vol}(E)&gt;\operatorname{covol}(\Lambda),
+\]</span>
+there are distinct <span class="math" data-tex="\(x,y\in E\)">\(x,y\in E\)</span> with <span class="math" data-tex="\(x-y\in\Lambda\)">\(x-y\in\Lambda\)</span>.</p>
+<p><strong>Proof.</strong> The lattice is countable. Its fundamental domains partition <span class="math" data-tex="\(E\)">\(E\)</span> into the measurable pieces <span class="math" data-tex="\(E\cap(F+\lambda)\)">\(E\cap(F+\lambda)\)</span>. Translate each piece into <span class="math" data-tex="\(F\)">\(F\)</span>, obtaining
+<span class="math math-display" data-tex="\[
+E_\lambda=(E-\lambda)\cap F.
+\]">\[
+E_\lambda=(E-\lambda)\cap F.
+\]</span>
+Translation invariance and countable additivity give
+<span class="math math-display" data-tex="\[
+\sum_{\lambda\in\Lambda}\operatorname{vol}(E_\lambda)
+=\operatorname{vol}(E)&gt;\operatorname{vol}(F).
+\]">\[
+\sum_{\lambda\in\Lambda}\operatorname{vol}(E_\lambda)
+=\operatorname{vol}(E)&gt;\operatorname{vol}(F).
+\]</span>
+If all these translated pieces were pairwise disjoint, their union inside <span class="math" data-tex="\(F\)">\(F\)</span> would have measure equal to this sum, which is impossible. Choose <span class="math" data-tex="\(z\in E_\lambda\cap E_\mu\)">\(z\in E_\lambda\cap E_\mu\)</span> with <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>. Then <span class="math" data-tex="\(x=z+\lambda\)">\(x=z+\lambda\)</span> and <span class="math" data-tex="\(y=z+\mu\)">\(y=z+\mu\)</span> lie in <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(x-y=\lambda-\mu\)">\(x-y=\lambda-\mu\)</span> is a nonzero lattice vector. The argument also works when <span class="math" data-tex="\(\operatorname{vol}(E)=\infty\)">\(\operatorname{vol}(E)=\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="from-two-points-to-a-nonzero-lattice-point">From two points to a nonzero lattice point</h2>
+<p><strong>Theorem 7.1 (Minkowski's convex body theorem).</strong> Let <span class="math" data-tex="\(\Lambda\subseteq\mathbf R^n\)">\(\Lambda\subseteq\mathbf R^n\)</span> be a complete lattice and <span class="math" data-tex="\(X\subseteq\mathbf R^n\)">\(X\subseteq\mathbf R^n\)</span> a convex set symmetric about zero, meaning <span class="math" data-tex="\(X=-X\)">\(X=-X\)</span>. If
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(X)&gt;2^n\operatorname{covol}(\Lambda), \tag{4}
+\]">\[
+\operatorname{vol}(X)&gt;2^n\operatorname{covol}(\Lambda), \tag{4}
+\]</span>
+then <span class="math" data-tex="\(X\)">\(X\)</span> contains a nonzero point of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is compact, the same conclusion holds with <span class="math" data-tex="\(\geq\)">\(\geq\)</span> in (4).</p>
+<p>We first justify the measure in this statement for arbitrary convex sets. A convex set with empty interior lies in a proper affine subspace: otherwise it contains the simplex on <span class="math" data-tex="\(n+1\)">\(n+1\)</span> affinely independent points, which has nonempty interior. Such a subspace has measure zero, and completeness makes all its subsets measurable.</p>
+<p>If a convex set has nonempty interior, translate an interior point to zero and choose <span class="math" data-tex="\(B(0,\delta)\subseteq X\)">\(B(0,\delta)\subseteq X\)</span>. Put <span class="math" data-tex="\(C=\overline X\)">\(C=\overline X\)</span>. For <span class="math" data-tex="\(y\in C\)">\(y\in C\)</span> and <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>, approximate <span class="math" data-tex="\(y\)">\(y\)</span> by points <span class="math" data-tex="\(y_k\in X\)">\(y_k\in X\)</span>. Convexity puts the ball of radius <span class="math" data-tex="\((1-\lambda)\delta\)">\((1-\lambda)\delta\)</span> centered at <span class="math" data-tex="\(\lambda y_k\)">\(\lambda y_k\)</span> inside <span class="math" data-tex="\(X\)">\(X\)</span>. For large <span class="math" data-tex="\(k\)">\(k\)</span>, this contains a neighborhood of <span class="math" data-tex="\(\lambda y\)">\(\lambda y\)</span>; hence <span class="math" data-tex="\(\lambda C\subseteq\operatorname{int}X\)">\(\lambda C\subseteq\operatorname{int}X\)</span>. For the compact measurable set <span class="math" data-tex="\(C_R=C\cap[-R,R]^n\)">\(C_R=C\cap[-R,R]^n\)</span>, with <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, scaling toward zero also stays in the box. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(C_R\setminus\operatorname{int}X)
+\leq (1-\lambda^n)\operatorname{vol}(C_R).
+\]">\[
+\operatorname{vol}(C_R\setminus\operatorname{int}X)
+\leq (1-\lambda^n)\operatorname{vol}(C_R).
+\]</span>
+Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> tend to one. Taking the union over positive integral <span class="math" data-tex="\(R\)">\(R\)</span> shows that <span class="math" data-tex="\(C\setminus\operatorname{int}X\)">\(C\setminus\operatorname{int}X\)</span> is null. Since <span class="math" data-tex="\(X\)">\(X\)</span> lies between its interior and its closure, completeness proves its measurability.</p>
+<p><strong>Proof of Theorem 7.1.</strong> By linear change of variables,
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\tfrac12X)=2^{-n}\operatorname{vol}(X).
+\]">\[
+\operatorname{vol}(\tfrac12X)=2^{-n}\operatorname{vol}(X).
+\]</span>
+Under the strict inequality, Blichfeldt supplies distinct <span class="math" data-tex="\(x,y\in\frac12X\)">\(x,y\in\frac12X\)</span> whose difference lies in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Both <span class="math" data-tex="\(2x\)">\(2x\)</span> and <span class="math" data-tex="\(-2y\)">\(-2y\)</span> belong to <span class="math" data-tex="\(X\)">\(X\)</span>; convexity gives
+<span class="math math-display" data-tex="\[
+x-y=\tfrac12(2x)+\tfrac12(-2y)\in X.
+\]">\[
+x-y=\tfrac12(2x)+\tfrac12(-2y)\in X.
+\]</span>
+It is the required nonzero point.</p>
+<p>For the compact case with <span class="math" data-tex="\(\operatorname{vol}(X)\geq2^n\operatorname{covol}(\Lambda)\)">\(\operatorname{vol}(X)\geq2^n\operatorname{covol}(\Lambda)\)</span>, apply the strict case to <span class="math" data-tex="\((1+1/k)X\)">\((1+1/k)X\)</span>, for <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. The set <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty, and its symmetry and convexity imply <span class="math" data-tex="\(0\in X\)">\(0\in X\)</span>. Thus all the resulting nonzero points <span class="math" data-tex="\(\lambda_k\)">\(\lambda_k\)</span> lie in <span class="math" data-tex="\(2X\)">\(2X\)</span>, a bounded set. Only finitely many lattice points lie there, so one nonzero <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> occurs for infinitely many <span class="math" data-tex="\(k\)">\(k\)</span>. Along that subsequence,
+<span class="math math-display" data-tex="\[
+\lambda/(1+1/k)\in X,\qquad
+\lambda/(1+1/k)\longrightarrow\lambda.
+\]">\[
+\lambda/(1+1/k)\in X,\qquad
+\lambda/(1+1/k)\longrightarrow\lambda.
+\]</span>
+Compactness makes <span class="math" data-tex="\(X\)">\(X\)</span> closed, proving <span class="math" data-tex="\(\lambda\in X\)">\(\lambda\in X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Symmetry here must be about zero. Symmetry about an arbitrary center does not give the midpoint calculation used in the proof.</p>
+<h2 id="putting-a-number-field-into-real-space">Putting a number field into real space</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> have real embeddings <span class="math" data-tex="\(\sigma_1,\ldots,\sigma_{r_1}\)">\(\sigma_1,\ldots,\sigma_{r_1}\)</span>, and choose one embedding <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> from each of its <span class="math" data-tex="\(r_2\)">\(r_2\)</span> conjugate pairs of complex embeddings. Its <strong>Minkowski embedding</strong> is the additive injective map
+<span class="math math-display" data-tex="\[
+j:K\longrightarrow K_{\mathbf R},\qquad
+\alpha\longmapsto
+(\sigma_1\alpha,\ldots,\sigma_{r_1}\alpha,
+\tau_1\alpha,\ldots,\tau_{r_2}\alpha). \tag{5}
+\]">\[
+j:K\longrightarrow K_{\mathbf R},\qquad
+\alpha\longmapsto
+(\sigma_1\alpha,\ldots,\sigma_{r_1}\alpha,
+\tau_1\alpha,\ldots,\tau_{r_2}\alpha). \tag{5}
+\]</span>
+Injectivity follows from injectivity of any one field embedding. All these embeddings fix <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, so <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-linear.</p>
+<p>Write <span class="math" data-tex="\(D_K=\operatorname{disc}(K)\)">\(D_K=\operatorname{disc}(K)\)</span>. For a nonzero fractional ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span>, its norm <span class="math" data-tex="\(N\mathfrak a\)">\(N\mathfrak a\)</span> is the positive rational norm defined in Proposition 4.1; for an integral ideal it is <span class="math" data-tex="\([\mathcal O_K:\mathfrak a]\)">\([\mathcal O_K:\mathfrak a]\)</span>.</p>
+<p><strong>Proposition 7.2.</strong> The groups <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span> and <span class="math" data-tex="\(j(\mathfrak a)\)">\(j(\mathfrak a)\)</span> are complete lattices, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{covol}(j(\mathcal O_K))&amp;=2^{-r_2}\sqrt{|D_K|},\\
+\operatorname{covol}(j(\mathfrak a))&amp;=
+2^{-r_2}\sqrt{|D_K|}\,N\mathfrak a.
+\end{aligned} \tag{6}
+\]">\[
+\begin{aligned}
+\operatorname{covol}(j(\mathcal O_K))&amp;=2^{-r_2}\sqrt{|D_K|},\\
+\operatorname{covol}(j(\mathfrak a))&amp;=
+2^{-r_2}\sqrt{|D_K|}\,N\mathfrak a.
+\end{aligned} \tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> Choose an integral basis <span class="math" data-tex="\(\omega_1,\ldots,\omega_n\)">\(\omega_1,\ldots,\omega_n\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be the real matrix with columns <span class="math" data-tex="\(j(\omega_i)\)">\(j(\omega_i)\)</span>, writing each complex coordinate in real and imaginary parts. Let <span class="math" data-tex="\(S\)">\(S\)</span> be the complex matrix with the same columns evaluated at all <span class="math" data-tex="\(n\)">\(n\)</span> embeddings, including both members of each complex pair.</p>
+<p>For each complex pair, the two rows of <span class="math" data-tex="\(S\)">\(S\)</span> are obtained from the corresponding real and imaginary rows of <span class="math" data-tex="\(M\)">\(M\)</span> by
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}1&amp;i\\1&amp;-i\end{pmatrix},
+\]">\[
+\begin{pmatrix}1&amp;i\\1&amp;-i\end{pmatrix},
+\]</span>
+whose determinant is <span class="math" data-tex="\(-2i\)">\(-2i\)</span>. Consequently <span class="math" data-tex="\(|\det S|=2^{r_2}|\det M|\)">\(|\det S|=2^{r_2}|\det M|\)</span>. The discriminant formula is <span class="math" data-tex="\((\det S)^2=D_K\)">\((\det S)^2=D_K\)</span>, so
+<span class="math math-display" data-tex="\[
+|\det M|=2^{-r_2}\sqrt{|D_K|}&gt;0.
+\]">\[
+|\det M|=2^{-r_2}\sqrt{|D_K|}&gt;0.
+\]</span>
+Thus the columns of <span class="math" data-tex="\(M\)">\(M\)</span> are a real basis and generate the complete lattice <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span>. This proves the first formula.</p>
+<p>For a nonzero integral ideal, the subgroup <span class="math" data-tex="\(j(\mathfrak a)\)">\(j(\mathfrak a)\)</span> has index <span class="math" data-tex="\(N\mathfrak a\)">\(N\mathfrak a\)</span> in <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span>. Formula (3) proves completeness and the second formula. For a fractional ideal, choose a positive integer <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(d\mathfrak a\)">\(d\mathfrak a\)</span> integral. The map <span class="math" data-tex="\(j\)">\(j\)</span> intertwines multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> with scalar multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(\mathbf R^n\)">\(\mathbf R^n\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(j(d\mathfrak a))
+=d^n\operatorname{covol}(j(\mathfrak a)),
+\qquad
+N(d\mathfrak a)=d^nN\mathfrak a.
+\]">\[
+\operatorname{covol}(j(d\mathfrak a))
+=d^n\operatorname{covol}(j(\mathfrak a)),
+\qquad
+N(d\mathfrak a)=d^nN\mathfrak a.
+\]</span>
+Apply the integral case and cancel <span class="math" data-tex="\(d^n\)">\(d^n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(\mathcal O_{\mathbf Q(\sqrt2)}=\mathbf Z[\sqrt2]\)">\(\mathcal O_{\mathbf Q(\sqrt2)}=\mathbf Z[\sqrt2]\)</span>, with discriminant <span class="math" data-tex="\(8\)">\(8\)</span>. Its lattice basis is
+<span class="math math-display" data-tex="\[
+j(1)=(1,1),\qquad j(\sqrt2)=(\sqrt2,-\sqrt2).
+\]">\[
+j(1)=(1,1),\qquad j(\sqrt2)=(\sqrt2,-\sqrt2).
+\]</span>
+The determinant is <span class="math" data-tex="\(-2\sqrt2\)">\(-2\sqrt2\)</span>, and the covolume is <span class="math" data-tex="\(2\sqrt2=\sqrt8\)">\(2\sqrt2=\sqrt8\)</span>.</p>
+<p><img class="course-figure" src="assets/minkowski-sqrt2.png" alt="Lattice points of the two real embeddings of the integers in Q square root two, with basis arrows and a shaded fundamental parallelogram"></p>
+<p><em>Figure 1.</em> The plotted points are <span class="math" data-tex="\((a+b\sqrt2,a-b\sqrt2)\)">\((a+b\sqrt2,a-b\sqrt2)\)</span> for integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; only points in the displayed window are shown. The shaded closed parallelogram has vertices <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(j(1)\)">\(j(1)\)</span>, <span class="math" data-tex="\(j(\sqrt2)\)">\(j(\sqrt2)\)</span>, and <span class="math" data-tex="\(j(1+\sqrt2)\)">\(j(1+\sqrt2)\)</span>, and area <span class="math" data-tex="\(2\sqrt2\)">\(2\sqrt2\)</span>. To partition the plane uniquely, use its half-open version. The construction illustrates (2) and (6); see [Milne ANT, Proposition 4.26].</p>
+<h2 id="choosing-a-body-to-bound-the-norm">Choosing a body to bound the norm</h2>
+<p>The field norm is
+<span class="math math-display" data-tex="\[
+|N_{K/\mathbf Q}(\alpha)|
+=\prod_{i=1}^{r_1}|\sigma_i\alpha|
+\prod_{j=1}^{r_2}|\tau_j\alpha|^2. \tag{7}
+\]">\[
+|N_{K/\mathbf Q}(\alpha)|
+=\prod_{i=1}^{r_1}|\sigma_i\alpha|
+\prod_{j=1}^{r_2}|\tau_j\alpha|^2. \tag{7}
+\]</span>
+A uniform bound on the absolute values of all these coordinates therefore bounds the norm.</p>
+<p><strong>Proposition 7.3.</strong> For every nonzero fractional ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> of a number field <span class="math" data-tex="\(K\)">\(K\)</span>, there is a nonzero <span class="math" data-tex="\(\alpha\in\mathfrak a\)">\(\alpha\in\mathfrak a\)</span> such that
+<span class="math math-display" data-tex="\[
+|N_{K/\mathbf Q}(\alpha)|
+\leq
+\left(\frac2\pi\right)^{r_2}\sqrt{|D_K|}\,N\mathfrak a. \tag{8}
+\]">\[
+|N_{K/\mathbf Q}(\alpha)|
+\leq
+\left(\frac2\pi\right)^{r_2}\sqrt{|D_K|}\,N\mathfrak a. \tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, consider the product of intervals and complex discs
+<span class="math math-display" data-tex="\[
+X_t=\{(x_1,\ldots,x_{r_1},z_1,\ldots,z_{r_2})
+\mid |x_i|\leq t,\ |z_j|\leq t\}.
+\]">\[
+X_t=\{(x_1,\ldots,x_{r_1},z_1,\ldots,z_{r_2})
+\mid |x_i|\leq t,\ |z_j|\leq t\}.
+\]</span>
+It is compact, convex, and symmetric about zero, with
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(X_t)=2^{r_1}\pi^{r_2}t^n.
+\]">\[
+\operatorname{vol}(X_t)=2^{r_1}\pi^{r_2}t^n.
+\]</span>
+Choose <span class="math" data-tex="\(t\)">\(t\)</span> by
+<span class="math math-display" data-tex="\[
+t^n=(2/\pi)^{r_2}\sqrt{|D_K|}\,N\mathfrak a.
+\]">\[
+t^n=(2/\pi)^{r_2}\sqrt{|D_K|}\,N\mathfrak a.
+\]</span>
+Since <span class="math" data-tex="\(n=r_1+2r_2\)">\(n=r_1+2r_2\)</span>, its volume is exactly <span class="math" data-tex="\(2^n\operatorname{covol}(j(\mathfrak a))\)">\(2^n\operatorname{covol}(j(\mathfrak a))\)</span>. The compact form of Theorem 7.1 gives a nonzero <span class="math" data-tex="\(j(\alpha)\)">\(j(\alpha)\)</span> in this body. Formula (7) gives <span class="math" data-tex="\(|N(\alpha)|\leq t^{r_1+2r_2}=t^n\)">\(|N(\alpha)|\leq t^{r_1+2r_2}=t^n\)</span>, proving (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The complex factors are discs, not squares in their real and imaginary coordinates. Their areas account for the <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in the constant. A sharper choice of body, adapted to a sum of coordinate absolute values, gives the class-number bound in the next lesson.</p>
+<h2 id="a-geometric-proof-of-the-two-square-prime-theorem">A geometric proof of the two-square prime theorem</h2>
+<p>Let <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span> be prime. The finite-field multiplicative group is cyclic, as proved in the Gaussian example of <a href="decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>. Hence there is an integer <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u^2\equiv-1\pmod p\)">\(u^2\equiv-1\pmod p\)</span>.</p>
+<p>The congruence lattice
+<span class="math math-display" data-tex="\[
+\Lambda_{p,u}=\{(a,b)\in\mathbf Z^2\mid a\equiv ub\pmod p\}
+\]">\[
+\Lambda_{p,u}=\{(a,b)\in\mathbf Z^2\mid a\equiv ub\pmod p\}
+\]</span>
+has basis <span class="math" data-tex="\((p,0),(u,1)\)">\((p,0),(u,1)\)</span> and covolume <span class="math" data-tex="\(p\)">\(p\)</span>: write <span class="math" data-tex="\(a=pk+ub\)">\(a=pk+ub\)</span>. The open disc
+<span class="math math-display" data-tex="\[
+X=\{(a,b)\in\mathbf R^2\mid a^2+b^2&lt;2p\}
+\]">\[
+X=\{(a,b)\in\mathbf R^2\mid a^2+b^2&lt;2p\}
+\]</span>
+has area <span class="math" data-tex="\(2\pi p&gt;4p\)">\(2\pi p&gt;4p\)</span>. By Minkowski it contains a nonzero point of <span class="math" data-tex="\(\Lambda_{p,u}\)">\(\Lambda_{p,u}\)</span>. At that point,
+<span class="math math-display" data-tex="\[
+a^2+b^2\equiv(u^2+1)b^2\equiv0\pmod p.
+\]">\[
+a^2+b^2\equiv(u^2+1)b^2\equiv0\pmod p.
+\]</span>
+The positive integer <span class="math" data-tex="\(a^2+b^2\)">\(a^2+b^2\)</span> is less than <span class="math" data-tex="\(2p\)">\(2p\)</span> and divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so it equals <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>The use of the open disc makes the last inequality strict. Also <span class="math" data-tex="\(2=1^2+1^2\)">\(2=1^2+1^2\)</span>. A prime congruent to <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span> cannot be a sum of two integer squares, since each square is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>. This proves the full prime version of Fermat's two-square theorem.</p>
+<p>For a concrete instance take <span class="math" data-tex="\(p=13,u=5\)">\(p=13,u=5\)</span>. The point <span class="math" data-tex="\((3,-2)\)">\((3,-2)\)</span> lies in the congruence lattice because <span class="math" data-tex="\(3\equiv5(-2)\pmod{13}\)">\(3\equiv5(-2)\pmod{13}\)</span>, and gives <span class="math" data-tex="\(13=3^2+(-2)^2\)">\(13=3^2+(-2)^2\)</span>.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — a complex ideal lattice.</strong> Compute the covolumes of <span class="math" data-tex="\(j(\mathbf Z[i])\)">\(j(\mathbf Z[i])\)</span> and <span class="math" data-tex="\(j((2+i))\)">\(j((2+i))\)</span>, using the stated measure. Verify the second answer by the real matrix of multiplication by <span class="math" data-tex="\(2+i\)">\(2+i\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium — the overlap argument.</strong> Prove Blichfeldt's lemma for every measurable set of volume greater than the covolume, including unbounded sets. Explain why the two points it supplies are distinct.</p>
+</li>
+<li>
+<p><strong>Medium — two norm forms.</strong> Give the congruence-lattice proof that every prime <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span> is <span class="math" data-tex="\(a^2+b^2\)">\(a^2+b^2\)</span>. Then prove that every prime <span class="math" data-tex="\(p\equiv1\)">\(p\equiv1\)</span> or <span class="math" data-tex="\(3\pmod8\)">\(3\pmod8\)</span> is <span class="math" data-tex="\(a^2+2b^2\)">\(a^2+2b^2\)</span>. For the second part, first construct a square root of <span class="math" data-tex="\(-2\)">\(-2\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>; an eighth root of unity in a finite extension of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> is useful.</p>
+</li>
+<li>
+<p><strong>Hard — the optimal volume threshold.</strong> Put <span class="math" data-tex="\(c=\operatorname{covol}(\Lambda)\)">\(c=\operatorname{covol}(\Lambda)\)</span>. For every <span class="math" data-tex="\(0&lt;\varepsilon&lt;2^nc\)">\(0&lt;\varepsilon&lt;2^nc\)</span>, construct a compact convex set symmetric about zero, of volume <span class="math" data-tex="\(2^nc-\varepsilon\)">\(2^nc-\varepsilon\)</span>, with no nonzero lattice point. Treat <span class="math" data-tex="\(\varepsilon=2^nc\)">\(\varepsilon=2^nc\)</span>, and explain why larger <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> are impossible. Give a noncompact convex set of volume exactly <span class="math" data-tex="\(2^nc\)">\(2^nc\)</span> with no nonzero lattice point.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>1.</strong> In <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, <span class="math" data-tex="\(r_2=1\)">\(r_2=1\)</span> and <span class="math" data-tex="\(D_K=-4\)">\(D_K=-4\)</span>, so (6) gives <span class="math" data-tex="\(\operatorname{covol}(j(\mathbf Z[i]))=\frac12\sqrt4=1\)">\(\operatorname{covol}(j(\mathbf Z[i]))=\frac12\sqrt4=1\)</span>. The basis <span class="math" data-tex="\(1,i\)">\(1,i\)</span> gives the usual square lattice in real and imaginary coordinates.</p>
+<p>Multiplication by <span class="math" data-tex="\(2+i\)">\(2+i\)</span> sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(2+i\)">\(2+i\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(-1+2i\)">\(-1+2i\)</span>. Its real matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}2&amp;-1\\1&amp;2\end{pmatrix},
+\]">\[
+\begin{pmatrix}2&amp;-1\\1&amp;2\end{pmatrix},
+\]</span>
+with determinant <span class="math" data-tex="\(5\)">\(5\)</span>. Thus <span class="math" data-tex="\(\operatorname{covol}(j((2+i)))=5\)">\(\operatorname{covol}(j((2+i)))=5\)</span>. Equivalently the ideal norm is <span class="math" data-tex="\(N(2+i)=|2+i|^2=5\)">\(N(2+i)=|2+i|^2=5\)</span>, and (6) gives the same answer.</p>
+<p><strong>2.</strong> Let <span class="math" data-tex="\(F=T[0,1)^n\)">\(F=T[0,1)^n\)</span>. Partition the measurable set <span class="math" data-tex="\(E\)">\(E\)</span> by the disjoint translates <span class="math" data-tex="\(F+\lambda\)">\(F+\lambda\)</span>, and translate the intersections into <span class="math" data-tex="\(F\)">\(F\)</span>. If the resulting sets were pairwise disjoint, countable additivity would give
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(E)
+=\sum_{\lambda\in\Lambda}\operatorname{vol}((E-\lambda)\cap F)
+\leq\operatorname{vol}(F),
+\]">\[
+\operatorname{vol}(E)
+=\sum_{\lambda\in\Lambda}\operatorname{vol}((E-\lambda)\cap F)
+\leq\operatorname{vol}(F),
+\]</span>
+contrary to the hypothesis. This includes infinite volume: a disjoint union inside <span class="math" data-tex="\(F\)">\(F\)</span> cannot have infinite measure. An overlap for two different translates gives <span class="math" data-tex="\(z+\lambda,z+\mu\in E\)">\(z+\lambda,z+\mu\in E\)</span> with difference <span class="math" data-tex="\(\lambda-\mu\ne0\)">\(\lambda-\mu\ne0\)</span>. Uniqueness of the fundamental-domain representative ensures that the indices are distinct when a pair of translated pieces overlaps.</p>
+<p><strong>3.</strong> For <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, choose <span class="math" data-tex="\(u^2\equiv-1\pmod p\)">\(u^2\equiv-1\pmod p\)</span>. The lattice with basis <span class="math" data-tex="\((p,0),(u,1)\)">\((p,0),(u,1)\)</span> has covolume <span class="math" data-tex="\(p\)">\(p\)</span>. The open disc of squared radius <span class="math" data-tex="\(2p\)">\(2p\)</span> has area <span class="math" data-tex="\(2\pi p&gt;4p\)">\(2\pi p&gt;4p\)</span>, so it contains a nonzero congruence-lattice point. Its squared norm is a positive multiple of <span class="math" data-tex="\(p\)">\(p\)</span> below <span class="math" data-tex="\(2p\)">\(2p\)</span>, proving that it is <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(p\equiv1\)">\(p\equiv1\)</span> or <span class="math" data-tex="\(3\pmod8\)">\(3\pmod8\)</span>. In a splitting field of <span class="math" data-tex="\(X^8-1\)">\(X^8-1\)</span> over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, choose a primitive eighth root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Such a root exists: the polynomial has eight distinct roots because <span class="math" data-tex="\(p\)">\(p\)</span> is odd; these roots form a finite multiplicative subgroup of order eight, which is cyclic. Put <span class="math" data-tex="\(s=\zeta-\zeta^{-1}\)">\(s=\zeta-\zeta^{-1}\)</span>. Since <span class="math" data-tex="\(\zeta^4=-1\)">\(\zeta^4=-1\)</span> and <span class="math" data-tex="\(\zeta^{-2}=-\zeta^2\)">\(\zeta^{-2}=-\zeta^2\)</span>,
+<span class="math math-display" data-tex="\[
+s^2=\zeta^2-2+\zeta^{-2}=-2.
+\]">\[
+s^2=\zeta^2-2+\zeta^{-2}=-2.
+\]</span>
+If <span class="math" data-tex="\(p\equiv1\pmod8\)">\(p\equiv1\pmod8\)</span>, then <span class="math" data-tex="\(s^p=s\)">\(s^p=s\)</span>. If <span class="math" data-tex="\(p\equiv3\pmod8\)">\(p\equiv3\pmod8\)</span>, use
+<span class="math math-display" data-tex="\[
+\zeta^3=-\zeta^{-1},\qquad \zeta^{-3}=-\zeta
+\]">\[
+\zeta^3=-\zeta^{-1},\qquad \zeta^{-3}=-\zeta
+\]</span>
+to obtain <span class="math" data-tex="\(s^p=\zeta^3-\zeta^{-3}=s\)">\(s^p=\zeta^3-\zeta^{-3}=s\)</span> again. The roots of <span class="math" data-tex="\(X^p-X\)">\(X^p-X\)</span> in any extension are exactly the <span class="math" data-tex="\(p\)">\(p\)</span> members of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, since all those members are roots and the polynomial has degree <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(s\in\mathbf F_p\)">\(s\in\mathbf F_p\)</span>, giving <span class="math" data-tex="\(u^2\equiv-2\pmod p\)">\(u^2\equiv-2\pmod p\)</span>.</p>
+<p>Use the same congruence lattice, but the open ellipse
+<span class="math math-display" data-tex="\[
+X=\{(a,b)\mid a^2+2b^2&lt;2p\}.
+\]">\[
+X=\{(a,b)\mid a^2+2b^2&lt;2p\}.
+\]</span>
+Its semiaxes are <span class="math" data-tex="\(\sqrt{2p}\)">\(\sqrt{2p}\)</span> and <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span>, so its area is <span class="math" data-tex="\(\pi\sqrt2\,p&gt;4p\)">\(\pi\sqrt2\,p&gt;4p\)</span>. The last inequality follows from <span class="math" data-tex="\(\pi&gt;3&gt;2\sqrt2\)">\(\pi&gt;3&gt;2\sqrt2\)</span>. A nonzero lattice point in it satisfies <span class="math" data-tex="\(p\mid a^2+2b^2\)">\(p\mid a^2+2b^2\)</span>. This positive integer is below <span class="math" data-tex="\(2p\)">\(2p\)</span>, and hence equals <span class="math" data-tex="\(p\)">\(p\)</span>. For example, <span class="math" data-tex="\(3=1^2+2\cdot1^2\)">\(3=1^2+2\cdot1^2\)</span>, <span class="math" data-tex="\(11=3^2+2\cdot1^2\)">\(11=3^2+2\cdot1^2\)</span>, and <span class="math" data-tex="\(17=3^2+2\cdot2^2\)">\(17=3^2+2\cdot2^2\)</span>.</p>
+<p><strong>4.</strong> Write <span class="math" data-tex="\(\Lambda=T\mathbf Z^n\)">\(\Lambda=T\mathbf Z^n\)</span> and <span class="math" data-tex="\(|\det T|=c\)">\(|\det T|=c\)</span>. For the prescribed range of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, put
+<span class="math math-display" data-tex="\[
+t=\left(1-\frac{\varepsilon}{2^nc}\right)^{1/n},
+\qquad X=T[-t,t]^n.
+\]">\[
+t=\left(1-\frac{\varepsilon}{2^nc}\right)^{1/n},
+\qquad X=T[-t,t]^n.
+\]</span>
+Then <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, and <span class="math" data-tex="\(X\)">\(X\)</span> is compact, convex, symmetric about zero, with volume
+<span class="math math-display" data-tex="\[
+|\det T|(2t)^n=2^nc-\varepsilon.
+\]">\[
+|\det T|(2t)^n=2^nc-\varepsilon.
+\]</span>
+Every nonzero point of <span class="math" data-tex="\(\mathbf Z^n\)">\(\mathbf Z^n\)</span> has an integral coordinate of absolute value at least one, so none belongs to <span class="math" data-tex="\([-t,t]^n\)">\([-t,t]^n\)</span>. Therefore <span class="math" data-tex="\(X\cap\Lambda=\{0\}\)">\(X\cap\Lambda=\{0\}\)</span>.</p>
+<p>At <span class="math" data-tex="\(\varepsilon=2^nc\)">\(\varepsilon=2^nc\)</span>, use <span class="math" data-tex="\(X=\{0\}\)">\(X=\{0\}\)</span>. Larger <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> would require negative volume and cannot occur. Finally, the open parallelepiped <span class="math" data-tex="\(T(-1,1)^n\)">\(T(-1,1)^n\)</span> is convex and symmetric, has volume exactly <span class="math" data-tex="\(2^nc\)">\(2^nc\)</span>, and contains no nonzero lattice point. It is not compact. Thus the factor <span class="math" data-tex="\(2^n\)">\(2^n\)</span> is optimal, and compactness is needed for the stated weak-inequality conclusion.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We import the embedding formula for field norms from Lesson 1, the integral-basis discriminant and determinant-index formulas from Lesson 2, ideal norms from Proposition 4.1, and finite torsion-free module freeness over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> from Theorem 4.3. The elementary cyclicity result used in the prime examples is proved in the Gaussian example of Lesson 5.</p>
+<p>The basic measure, linear change-of-variables, compactness, and disc-area results listed at the start are analysis prerequisites. Measurability of the convex sets used in Minkowski's theorem is justified above. The sharper small-norm constant, finiteness of the ideal class group, and Dirichlet's unit theorem are proved in the following lessons. No assertion about the density of represented primes is needed here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (2020), Chapter 4, “Lattices,” Lemma 4.14, Proposition 4.15, Remark 4.16, Theorems 4.17 and 4.19, and “Some calculus”; Proposition 4.26 gives the number-field covolume. Pages 73–80. <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Lecture notes</a>.</li>
+<li><strong>[Hecke]</strong> Erich Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, §32, Sätze 94–95, pp. 116–118, the linear-form version of Minkowski's theorem and its translation to conjugate complex coordinates.</li>
+<li><strong>[Fremlin]</strong> D. H. Fremlin, <em>Measure Theory</em>, 112A and 113C, the measure and countable-additivity framework; 115E–115G, complete Lebesgue measure and Borel sets; 134A, translation invariance; 263A, linear maps and the absolute determinant. <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap11.pdf">Chapters 11</a>, <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap13.pdf">13</a>, and <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap26.pdf">26</a>.</li>
+</ul>
+</article><nav><a href="src/lattices-minkowskis-theorem-and-the-minkowski-embedding.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

@@ -1,0 +1,474 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The isomorphism theorem and Serre&#x27;s theorem</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../index.html">Kasparov’s KK-theory</a> · <a href="index.html">Supporting Lie-algebra proofs</a> · <a href="RT-LIE-11.md">Exact structured source</a></p><article class="lesson">
+<h1 id="the-isomorphism-theorem-and-serre-s-theorem">The isomorphism theorem and Serre's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.</em></p>
+<p>A Dynkin diagram first records the relative positions of simple roots. It also tells us how many times one simple-root generator can be bracketed with another before the result is zero. We will show that these instructions determine every bracket of a semisimple Lie algebra, and that they construct an algebra for every finite Dynkin diagram.</p>
+<p>The ground field is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The used presentation proof takes its root decomposition and nonzero brackets from <a href="RT-LIE-07.html#RTLIE07-T21">RT-LIE-07, Sections 1–5</a>, arithmetic and base/reflection descent from <a href="RT-LIE-08.html#RTLIE08-L41">RT-LIE-08, Sections 1–4</a>, finite rank-one calculations from <a href="RT-LIE-foundations.html#RTF-003">RTF-003</a>, and the arbitrary-dimensional ordered-word/free-Lie statement from <a href="RT-LIE-foundations.html#RTF-004">RTF-004</a>. For Theorem 6.1, <strong>finite type</strong> means the Cartan matrix of a given finite reduced Euclidean root system. Its proof does not import the classification of all diagrams or Cartan conjugacy. The retained classification Corollary 6.2 additionally uses the separate <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-LIE/RT-LIE-09.html">root-system classification provider</a>, and the statement about independence of the choice of Cartan additionally uses the separate <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-LIE/RT-LIE-10.html">Cartan-conjugacy provider</a>. Those two imports are outside this receiving edition's checked Lesson-18 proof chain. The auxiliary algebra can be infinite-dimensional; no argument below assumes its finite dimension before proving it.</p>
+<h2 id="1-read-the-generators-from-the-root-spaces">1. Read the generators from the root spaces</h2>
+<p>Choose a Cartan subalgebra <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, a base <span class="math" data-tex="\(\Delta=\{\alpha_1,\ldots,\alpha_r\}\)">\(\Delta=\{\alpha_1,\ldots,\alpha_r\}\)</span> of its roots, and nonzero vectors <span class="math" data-tex="\(e_i\in\mathfrak g_{\alpha_i}\)">\(e_i\in\mathfrak g_{\alpha_i}\)</span>. Normalize <span class="math" data-tex="\(f_i\in\mathfrak g_{-\alpha_i}\)">\(f_i\in\mathfrak g_{-\alpha_i}\)</span> so that
+<span class="math math-display" data-tex="\[
+[e_i,f_i]=h_i=\alpha_i^\vee,
+\qquad [h_i,e_i]=2e_i,
+\qquad [h_i,f_i]=-2f_i.
+\tag{1.1}
+\]">\[
+[e_i,f_i]=h_i=\alpha_i^\vee,
+\qquad [h_i,e_i]=2e_i,
+\qquad [h_i,f_i]=-2f_i.
+\tag{1.1}
+\]</span>
+The coroot here is the element of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> furnished by the Killing-dual construction. The <span class="math" data-tex="\(h_i\)">\(h_i\)</span> form a basis, since simple coroots form a base of the dual root system. Our convention is
+<span class="math math-display" data-tex="\[
+a_{ij}=\langle\alpha_i,\alpha_j^\vee\rangle
+=\alpha_i(h_j).
+\tag{1.2}
+\]">\[
+a_{ij}=\langle\alpha_i,\alpha_j^\vee\rangle
+=\alpha_i(h_j).
+\tag{1.2}
+\]</span>
+Thus the index on the acting generator is the <strong>second</strong> index of a Cartan entry.</p>
+<span id="RTLIE11-P11"></span>
+<p><strong>Proposition 1.1 (Chevalley generators).</strong> The <span class="math" data-tex="\(e_i,f_i,h_i\)">\(e_i,f_i,h_i\)</span> generate <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. They satisfy
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[h_i,h_j]&amp;=0,&amp;
+[h_i,e_j]&amp;=a_{ji}e_j,&amp;
+[h_i,f_j]&amp;=-a_{ji}f_j,\\
+[e_i,f_j]&amp;=\delta_{ij}h_i,&amp;&amp;&amp;
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+[h_i,h_j]&amp;=0,&amp;
+[h_i,e_j]&amp;=a_{ji}e_j,&amp;
+[h_i,f_j]&amp;=-a_{ji}f_j,\\
+[e_i,f_j]&amp;=\delta_{ij}h_i,&amp;&amp;&amp;
+\end{aligned}
+\tag{1.3}
+\]</span>
+and, for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>,
+<span class="math math-display" data-tex="\[
+(\operatorname{ad}e_i)^{1-a_{ji}}e_j=0,
+\qquad
+(\operatorname{ad}f_i)^{1-a_{ji}}f_j=0.
+\tag{1.4}
+\]">\[
+(\operatorname{ad}e_i)^{1-a_{ji}}e_j=0,
+\qquad
+(\operatorname{ad}f_i)^{1-a_{ji}}f_j=0.
+\tag{1.4}
+\]</span></p>
+<p><strong>Proof.</strong> The root-space eigenvalue equations and normalization give the Cartan and same-index relations in (1.3). For different indices, <span class="math" data-tex="\(\alpha_i-\alpha_j\)">\(\alpha_i-\alpha_j\)</span> is forbidden by the same-sign basis property of RT-LIE-08, Theorem 2.1, so the mixed bracket is zero.</p>
+<p>For positive nonsimple <span class="math" data-tex="\(\beta=\sum b_i\alpha_i\)">\(\beta=\sum b_i\alpha_i\)</span>, the equality <span class="math" data-tex="\((\beta,\beta)=\sum b_i(\beta,\alpha_i)&gt;0\)">\((\beta,\beta)=\sum b_i(\beta,\alpha_i)&gt;0\)</span> gives an i with positive coefficient and positive inner product. It is not proportional to <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> by reducedness. The root string of RT-LIE-07, Theorem 4.1, has <span class="math" data-tex="\(r-q=\beta(h_i)&gt;0\)">\(r-q=\beta(h_i)&gt;0\)</span>, hence r is at least one: <span class="math" data-tex="\(\beta-\alpha_i\)">\(\beta-\alpha_i\)</span> is a root. Subtracting one from its positive coefficient leaves a nonnegative expansion with smaller height. The same theorem gives
+<span class="math math-display" data-tex="\[
+[\mathfrak g_{\alpha_i},\mathfrak g_{\beta-\alpha_i}]=\mathfrak g_\beta.
+\tag{1.5}
+\]">\[
+[\mathfrak g_{\alpha_i},\mathfrak g_{\beta-\alpha_i}]=\mathfrak g_\beta.
+\tag{1.5}
+\]</span>
+Induct on positive integral height to generate every positive root line. Apply this argument to the opposite base for the negative lines. Their mixed brackets give the coroot basis, so these elements generate all of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>.</p>
+<p>For <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, the root string through <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> in direction <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> has r=0: subtracting <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> would give mixed signs. Thus <span class="math" data-tex="\(q=-\alpha_j(h_i)=-a_{ji}\)">\(q=-\alpha_j(h_i)=-a_{ji}\)</span>. Raising reaches its last root after q steps and vanishes at q+1; this is exactly the first relation in (1.4). The opposite string gives the negative relation. In particular the acting index i is the <strong>column</strong> index in <span class="math" data-tex="\(a_{ji}\)">\(a_{ji}\)</span>, and the exponent is <span class="math" data-tex="\(1-a_{ji}\)">\(1-a_{ji}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The choice of <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is free up to a nonzero scalar, after which (1.1) determines <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. A presentation theorem must respect those choices; it cannot silently prescribe extra normalization on all other root vectors.</p>
+<h2 id="2-separate-formal-generators-before-imposing-the-endpoints">2. Separate formal generators before imposing the endpoints</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be the Cartan matrix of any finite reduced root system <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, with chosen base <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>. For the presentation theorem a given such system suffices; the retained classification corollary makes the additional diagram-realization import. Write <span class="math" data-tex="\(Q=\bigoplus_i\mathbb Z\alpha_i\)">\(Q=\bigoplus_i\mathbb Z\alpha_i\)</span> and <span class="math" data-tex="\(Q_+=\bigoplus_i\mathbb Z_{\ge0}\alpha_i\)">\(Q_+=\bigoplus_i\mathbb Z_{\ge0}\alpha_i\)</span>. Take an abstract vector space <span class="math" data-tex="\(H\)">\(H\)</span> with basis <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, and define the linear forms <span class="math" data-tex="\(\alpha_j\in H^*\)">\(\alpha_j\in H^*\)</span> by <span class="math" data-tex="\(\alpha_j(h_i)=a_{ji}\)">\(\alpha_j(h_i)=a_{ji}\)</span>. The matrix is invertible: its Euclidean realization is the positive-definite Gram matrix of the simple roots multiplied by the invertible diagonal matrix with entries <span class="math" data-tex="\(2/(\alpha_i,\alpha_i)\)">\(2/(\alpha_i,\alpha_i)\)</span>. Thus these <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> form a basis of <span class="math" data-tex="\(H^*\)">\(H^*\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\widetilde{\mathfrak g}\)">\(\widetilde{\mathfrak g}\)</span> by generators <span class="math" data-tex="\(e_i,f_i,h_i\)">\(e_i,f_i,h_i\)</span> and only (1.3), leaving out (1.4). A Lie algebra given by generators and relations means a quotient of the free Lie algebra by the ideal of the stated relations. Free Lie algebras themselves can be constructed from formal bracket expressions modulo bilinearity, alternation and Jacobi; their universal property follows by evaluation of those expressions.</p>
+<p>We need to know that this quotient has not accidentally introduced relations among the positive generators or collapsed <span class="math" data-tex="\(H\)">\(H\)</span>. The following elementary separation fact will supply that check.</p>
+<span id="RTLIE11-L21"></span>
+<p><strong>Lemma 2.1 (free Lie expressions inside a tensor algebra).</strong> The free Lie algebra on a vector space <span class="math" data-tex="\(V\)">\(V\)</span> embeds into its tensor algebra <span class="math" data-tex="\(T(V)\)">\(T(V)\)</span>, as the Lie subalgebra generated by <span class="math" data-tex="\(V\)">\(V\)</span> under commutators.</p>
+<p><strong>Proof.</strong> The full ordered-word proof, including arbitrary-dimensional bases, terminating reductions, disjoint and three-letter overlap checks, and independence in the quotient, is <a href="RT-LIE-foundations.html#RTF-004">RTF-004</a>. It injects every Lie algebra L into <span class="math" data-tex="\(U(L)\)">\(U(L)\)</span>. For the free algebra F(V), the universal property identifies <span class="math" data-tex="\(U(F(V))\)">\(U(F(V))\)</span> with T(V): both algebra maps to an associative algebra are exactly the linear maps from V to that algebra. Their inverse maps fix V and its generated algebra. Under this identification the injection of F(V) has image the Lie subalgebra generated by V. This proves the stated separation before it is used below. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="RTLIE11-P22"></span>
+<p><strong>Proposition 2.2 (the auxiliary triangular decomposition).</strong> There is a direct decomposition
+<span class="math math-display" data-tex="\[
+\widetilde{\mathfrak g}
+=\widetilde{\mathfrak n}^-\oplus H\oplus
+\widetilde{\mathfrak n}^+,
+\tag{2.2}
+\]">\[
+\widetilde{\mathfrak g}
+=\widetilde{\mathfrak n}^-\oplus H\oplus
+\widetilde{\mathfrak n}^+,
+\tag{2.2}
+\]</span>
+where <span class="math" data-tex="\(\widetilde{\mathfrak n}^+\)">\(\widetilde{\mathfrak n}^+\)</span> is free on the <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, <span class="math" data-tex="\(\widetilde{\mathfrak n}^-\)">\(\widetilde{\mathfrak n}^-\)</span> is free on the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, and the displayed <span class="math" data-tex="\(h_i\)">\(h_i\)</span> are linearly independent. The degrees are <span class="math" data-tex="\(\deg e_i=\alpha_i\)">\(\deg e_i=\alpha_i\)</span>, <span class="math" data-tex="\(\deg f_i=-\alpha_i\)">\(\deg f_i=-\alpha_i\)</span>, <span class="math" data-tex="\(\deg h_i=0\)">\(\deg h_i=0\)</span>. There are no degrees outside <span class="math" data-tex="\(Q_+\cup(-Q_+)\)">\(Q_+\cup(-Q_+)\)</span>, and each nonzero-degree space is finite-dimensional.</p>
+<p><strong>Proof of spanning.</strong> All defining relations are homogeneous for the root-lattice grading. Pure positive and negative words are eigenvectors for H with their assigned degrees; Jacobi gives the sum of eigenvalues. A negative word can be written as a linear combination of words <span class="math" data-tex="\([f_j,w]\)">\([f_j,w]\)</span>, with w shorter, by repeatedly using Jacobi to put a generator at the left. The identity
+<span class="math math-display" data-tex="\[
+[e_i,[f_j,w]]=[[e_i,f_j],w]+[f_j,[e_i,w]]
+\tag{2.3}
+\]">\[
+[e_i,[f_j,w]]=[[e_i,f_j],w]+[f_j,[e_i,w]]
+\tag{2.3}
+\]</span>
+proves by induction on negative length that a bracket of one positive generator with a negative word lies in that sum: length one gives a Cartan vector, and at longer length the Cartan term acts on a shorter negative word and the induction term brackets a negative generator with a negative or Cartan word. Equivalently its total height is at most zero, so no positive component can occur. For longer positive words use
+<span class="math" data-tex="\([[e_i,u],w]=[e_i,[u,w]]-[u,[e_i,w]]\)">\([[e_i,u],w]=[e_i,[u,w]]-[u,[e_i,w]]\)</span>
+and induction on positive word length, valid for negative words of every length, with (2.3) for its first step. In the first term, bracket the one generator with the negative, Cartan or positive components already found. In the second, (2.3) has produced negative or Cartan components, so the shorter positive word uses the induction. Cartan brackets preserve the spaces. Thus this sum is a subalgebra containing every generator, and is the whole auxiliary algebra.</p>
+<p><strong>Proof of independence and freeness.</strong> Let
+<span class="math" data-tex="\(M=T(\mathbb C\{F_1,\ldots,F_r\})\otimes\mathbb C[z_1,\ldots,z_r]\)">\(M=T(\mathbb C\{F_1,\ldots,F_r\})\otimes\mathbb C[z_1,\ldots,z_r]\)</span>.
+For a word w with letter-root sum <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal F_j(w\otimes P)&amp;=F_jw\otimes P,\\
+\mathcal H_i(w\otimes P)&amp;=w\otimes(z_i-\beta(h_i))P,\\
+\mathcal E_i(1\otimes P)&amp;=0,\\
+\mathcal E_i(F_jw\otimes P)&amp;=F_j\mathcal E_i(w\otimes P)
++\delta_{ij}\mathcal H_i(w\otimes P).
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+\mathcal F_j(w\otimes P)&amp;=F_jw\otimes P,\\
+\mathcal H_i(w\otimes P)&amp;=w\otimes(z_i-\beta(h_i))P,\\
+\mathcal E_i(1\otimes P)&amp;=0,\\
+\mathcal E_i(F_jw\otimes P)&amp;=F_j\mathcal E_i(w\otimes P)
++\delta_{ij}\mathcal H_i(w\otimes P).
+\end{aligned}
+\tag{2.4}
+\]</span>
+The last formula is a recursion on word length, so defines the operators on every finite word. The Cartan operators commute. Prepending <span class="math" data-tex="\(F_j\)">\(F_j\)</span> changes <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>, giving <span class="math" data-tex="\([\mathcal H_i,\mathcal F_j]=-a_{ji}\mathcal F_j\)">\([\mathcal H_i,\mathcal F_j]=-a_{ji}\mathcal F_j\)</span>. Each nonzero term of <span class="math" data-tex="\(\mathcal E_j\)">\(\mathcal E_j\)</span> deletes one <span class="math" data-tex="\(F_j\)">\(F_j\)</span>; comparing the Cartan scalar before and after this deletion gives <span class="math" data-tex="\([\mathcal H_i,\mathcal E_j]=a_{ji}\mathcal E_j\)">\([\mathcal H_i,\mathcal E_j]=a_{ji}\mathcal E_j\)</span>. The recursion itself says <span class="math" data-tex="\([\mathcal E_i,\mathcal F_j]=\delta_{ij}\mathcal H_i\)">\([\mathcal E_i,\mathcal F_j]=\delta_{ij}\mathcal H_i\)</span>. These are all auxiliary relations: no positive-positive or negative-negative relation has yet been imposed. Therefore the operators represent the auxiliary algebra.</p>
+<p>On <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span>, the Cartan generators give the independent polynomials <span class="math" data-tex="\(z_i\)">\(z_i\)</span>, so H survives. A negative bracket word acts by left multiplication by the identical commutator expression in the tensor algebra. Its value on <span class="math" data-tex="\(1\otimes1\)">\(1\otimes1\)</span>, together with Lemma 2.1, proves injection of the negative free Lie algebra. The involution
+<span class="math math-display" data-tex="\[
+e_i\longleftrightarrow f_i,\qquad h_i\longmapsto-h_i
+\tag{2.5}
+\]">\[
+e_i\longleftrightarrow f_i,\qquad h_i\longmapsto-h_i
+\tag{2.5}
+\]</span>
+preserves every auxiliary relation and gives the positive injection. Positive words have strictly positive total height, negative words strictly negative, and H has degree zero. Their spanning sum is thus direct. A fixed multidegree uses a fixed finite number of letters and finitely many bracket patterns, so its space is finite-dimensional. The triangular decomposition also excludes all mixed-sign nonzero degrees. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-root-system-isomorphism-gives-a-lie-algebra-isomorphism">3. A root-system isomorphism gives a Lie-algebra isomorphism</h2>
+<p>We can already prove uniqueness, before the finite-dimensional construction theorem.</p>
+<p><strong>Theorem 3.1 (isomorphism theorem).</strong> Let <span class="math" data-tex="\(\mathfrak g,\mathfrak g&#x27;\)">\(\mathfrak g,\mathfrak g&#x27;\)</span> be complex semisimple algebras. An isomorphism of their root systems taking <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> to <span class="math" data-tex="\(\alpha_i&#x27;\)">\(\alpha_i&#x27;\)</span> extends to a unique Lie-algebra isomorphism taking any chosen normalized <span class="math" data-tex="\(e_i,f_i\)">\(e_i,f_i\)</span> to the corresponding normalized <span class="math" data-tex="\(e_i&#x27;,f_i&#x27;\)">\(e_i&#x27;,f_i&#x27;\)</span>.</p>
+<p><strong>Proof.</strong> Root-system isomorphisms preserve all Cartan integers and coroots. The subalgebra <span class="math" data-tex="\(L\subseteq\mathfrak g\oplus\mathfrak g&#x27;\)">\(L\subseteq\mathfrak g\oplus\mathfrak g&#x27;\)</span> generated by
+<span class="math" data-tex="\((e_i,e_i&#x27;)\)">\((e_i,e_i&#x27;)\)</span> and <span class="math" data-tex="\((f_i,f_i&#x27;)\)">\((f_i,f_i&#x27;)\)</span> also contains <span class="math" data-tex="\((h_i,h_i&#x27;)\)">\((h_i,h_i&#x27;)\)</span>, and satisfies the auxiliary relations (1.3). Proposition 2.2 gives its spanning decomposition into negative words, the diagonal Cartan span
+<span class="math math-display" data-tex="\[
+H_D=\operatorname{span}\{(h_i,h_i&#x27;)\},
+\]">\[
+H_D=\operatorname{span}\{(h_i,h_i&#x27;)\},
+\]</span>
+and positive words. Those words have negative and positive root weights for the common Cartan action. Hence the common zero-weight subspace of <span class="math" data-tex="\(L\)">\(L\)</span> is exactly <span class="math" data-tex="\(H_D\)">\(H_D\)</span>, and
+<span class="math math-display" data-tex="\[
+L\cap(\mathfrak h\oplus\mathfrak h&#x27;)=H_D.
+\tag{3.1}
+\]">\[
+L\cap(\mathfrak h\oplus\mathfrak h&#x27;)=H_D.
+\tag{3.1}
+\]</span>
+Both projections of <span class="math" data-tex="\(L\)">\(L\)</span> are onto by Proposition 1.1.</p>
+<p>The subspace <span class="math" data-tex="\(I=\{x\in\mathfrak g:(x,0)\in L\}\)">\(I=\{x\in\mathfrak g:(x,0)\in L\}\)</span> is an ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>: bracket <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span> with a lift in <span class="math" data-tex="\(L\)">\(L\)</span> of any element of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Every nonzero ideal of a semisimple algebra meets its Cartan subalgebra nontrivially. Here is the needed argument. It is stable under the commuting diagonalizable <span class="math" data-tex="\(\operatorname{ad}H\)">\(\operatorname{ad}H\)</span>, so polynomial spectral projections split it into its Cartan and root components. If a Cartan component is nonzero we are done. Otherwise it contains a nonzero vector in some one-dimensional <span class="math" data-tex="\(\mathfrak g_\beta\)">\(\mathfrak g_\beta\)</span>. Bracketing with a nonzero opposite root vector gives the nonzero Killing-dual coroot direction in <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, still in the ideal.</p>
+<p>But (3.1) prohibits any nonzero <span class="math" data-tex="\((H,0)\)">\((H,0)\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>: the second components of the basis of <span class="math" data-tex="\(H_D\)">\(H_D\)</span> are independent. Therefore <span class="math" data-tex="\(I=0\)">\(I=0\)</span>. The same argument with the factors interchanged gives the other projection's kernel zero. Thus both projections are isomorphisms, and <span class="math" data-tex="\(p_2p_1^{-1}\)">\(p_2p_1^{-1}\)</span> is the required isomorphism. Generation proves uniqueness. It maps <span class="math" data-tex="\(h_i\)">\(h_i\)</span> to <span class="math" data-tex="\(h_i&#x27;\)">\(h_i&#x27;\)</span>, so transporting the weight equation shows that it realizes the specified root-system map on every root, not only on the simple roots. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If the root-system map is given without bases, choose a base in its source and its image base in the target. The theorem applies to those bases. Together with Cartan conjugacy, it says that the isomorphism class of the root system determines the isomorphism class of a semisimple Lie algebra whenever such an algebra exists. We now prove existence.</p>
+<h2 id="4-the-serre-ideal-stays-on-the-two-sides">4. The Serre ideal stays on the two sides</h2>
+<p>In <span class="math" data-tex="\(\widetilde{\mathfrak g}\)">\(\widetilde{\mathfrak g}\)</span>, set
+<span class="math math-display" data-tex="\[
+m_{ij}=1-a_{ji},\qquad
+S^+_{ij}=(\operatorname{ad}e_i)^{m_{ij}}e_j,
+\qquad
+S^-_{ij}=(\operatorname{ad}f_i)^{m_{ij}}f_j
+\quad(i\ne j).
+\tag{4.1}
+\]">\[
+m_{ij}=1-a_{ji},\qquad
+S^+_{ij}=(\operatorname{ad}e_i)^{m_{ij}}e_j,
+\qquad
+S^-_{ij}=(\operatorname{ad}f_i)^{m_{ij}}f_j
+\quad(i\ne j).
+\tag{4.1}
+\]</span>
+Let <span class="math" data-tex="\(I^+\)">\(I^+\)</span> be the ideal they generate <strong>inside</strong> <span class="math" data-tex="\(\widetilde{\mathfrak n}^+\)">\(\widetilde{\mathfrak n}^+\)</span>, and <span class="math" data-tex="\(I^-\)">\(I^-\)</span> its negative counterpart. The next calculation shows why imposing the endpoint relations does not create a new degree-zero relation.</p>
+<span id="RTLIE11-L41"></span>
+<p><strong>Lemma 4.1.</strong> Every <span class="math" data-tex="\(S^+_{ij}\)">\(S^+_{ij}\)</span> is killed by <span class="math" data-tex="\(\operatorname{ad}f_k\)">\(\operatorname{ad}f_k\)</span>, for every <span class="math" data-tex="\(k\)">\(k\)</span>. The ideal generated by all Serre elements in <span class="math" data-tex="\(\widetilde{\mathfrak g}\)">\(\widetilde{\mathfrak g}\)</span> is precisely <span class="math" data-tex="\(I^-\oplus I^+\)">\(I^-\oplus I^+\)</span>.</p>
+<p><strong>Proof.</strong> A negative generator outside <span class="math" data-tex="\(\{i,j\}\)">\(\{i,j\}\)</span> commutes with both positive letters, hence kills <span class="math" data-tex="\(S^+_{ij}\)">\(S^+_{ij}\)</span>. For k=i, apply the rank-one relations to the vector <span class="math" data-tex="\(v=e_j\)">\(v=e_j\)</span>, which has <span class="math" data-tex="\([f_i,v]=0\)">\([f_i,v]=0\)</span> and <span class="math" data-tex="\([h_i,v]=a_{ji}v\)">\([h_i,v]=a_{ji}v\)</span>. Jacobi proves by induction
+<span class="math math-display" data-tex="\[
+[f_i,(\operatorname{ad}e_i)^m v]
+=-m(a_{ji}+m-1)(\operatorname{ad}e_i)^{m-1}v.
+\tag{4.2}
+\]">\[
+[f_i,(\operatorname{ad}e_i)^m v]
+=-m(a_{ji}+m-1)(\operatorname{ad}e_i)^{m-1}v.
+\tag{4.2}
+\]</span>
+In the induction step, the additional term from <span class="math" data-tex="\([f_i,e_i]=-h_i\)">\([f_i,e_i]=-h_i\)</span> has weight <span class="math" data-tex="\(a_{ji}+2m\)">\(a_{ji}+2m\)</span>; adding it to the previous coefficient gives <span class="math" data-tex="\(-(m+1)(a_{ji}+m)\)">\(-(m+1)(a_{ji}+m)\)</span>. At <span class="math" data-tex="\(m=1-a_{ji}\)">\(m=1-a_{ji}\)</span> the coefficient vanishes.</p>
+<p>For k=j, <span class="math" data-tex="\(\operatorname{ad}f_j\)">\(\operatorname{ad}f_j\)</span> commutes with <span class="math" data-tex="\(\operatorname{ad}e_i\)">\(\operatorname{ad}e_i\)</span> and replaces e_j by <span class="math" data-tex="\(-h_j\)">\(-h_j\)</span>. If <span class="math" data-tex="\(a_{ji}&lt;0\)">\(a_{ji}&lt;0\)</span>, the exponent is at least two, and <span class="math" data-tex="\((\operatorname{ad}e_i)^2h_j=0\)">\((\operatorname{ad}e_i)^2h_j=0\)</span>. If <span class="math" data-tex="\(a_{ji}=0\)">\(a_{ji}=0\)</span>, the Euclidean Cartan matrix has the symmetric zero pattern <span class="math" data-tex="\(a_{ij}=0\)">\(a_{ij}=0\)</span>, and already <span class="math" data-tex="\([e_i,h_j]=0\)">\([e_i,h_j]=0\)</span>. This proves all the annihilations. Involution (2.5) proves the negative counterpart.</p>
+<p>Inside the positive free algebra, <span class="math" data-tex="\(I^+\)">\(I^+\)</span> is spanned by successive adjoints of positive generators on these homogeneous Serre elements. Indeed, Jacobi writes adjoint action of a bracket word as a combination of such successive actions. Homogeneity makes it H-stable. Induct on the number of these actions and use
+<span class="math math-display" data-tex="\[
+[f_k,[e_l,u]]=[[f_k,e_l],u]+[e_l,[f_k,u]].
+\tag{4.3}
+\]">\[
+[f_k,[e_l,u]]=[[f_k,e_l],u]+[e_l,[f_k,u]].
+\tag{4.3}
+\]</span>
+The first term is either zero or Cartan action on an element of <span class="math" data-tex="\(I^+\)">\(I^+\)</span>; the second term uses the induction. The just-proved annihilation is the initial case. Thus <span class="math" data-tex="\(I^+\)">\(I^+\)</span> is stable under every negative generator too, and is an ideal of the whole auxiliary algebra. The involution gives the same result for <span class="math" data-tex="\(I^-\)">\(I^-\)</span>. Their direct sum, direct by Proposition 2.2, is therefore an ideal containing all Serre elements. Conversely their defining positive and negative adjoints already lie in the full Serre ideal. These inclusions identify that ideal exactly with <span class="math" data-tex="\(I^-\oplus I^+\)">\(I^-\oplus I^+\)</span>. In particular it has no Cartan component. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the <strong>Serre algebra</strong>
+<span class="math math-display" data-tex="\[
+\mathfrak g(A)=
+\widetilde{\mathfrak g}/(I^-\oplus I^+).
+\tag{4.4}
+\]">\[
+\mathfrak g(A)=
+\widetilde{\mathfrak g}/(I^-\oplus I^+).
+\tag{4.4}
+\]</span>
+It has the direct triangular decomposition
+<span class="math math-display" data-tex="\[
+\mathfrak g(A)=\mathfrak n^-\oplus H\oplus\mathfrak n^+,
+\qquad
+\mathfrak n^\pm=\widetilde{\mathfrak n}^\pm/I^\pm.
+\tag{4.5}
+\]">\[
+\mathfrak g(A)=\mathfrak n^-\oplus H\oplus\mathfrak n^+,
+\qquad
+\mathfrak n^\pm=\widetilde{\mathfrak n}^\pm/I^\pm.
+\tag{4.5}
+\]</span>
+In particular the positive and negative subalgebras have exactly their respective Serre relations as defining relations. The <span class="math" data-tex="\(h_i\)">\(h_i\)</span> remain independent. The <span class="math" data-tex="\(e_i,f_i\)">\(e_i,f_i\)</span> remain nonzero as well: <span class="math" data-tex="\([e_i,f_i]=h_i\ne0\)">\([e_i,f_i]=h_i\ne0\)</span>. Their individual degree spaces are one-dimensional. There are no degrees <span class="math" data-tex="\(k\alpha_i\)">\(k\alpha_i\)</span>, <span class="math" data-tex="\(|k|&gt;1\)">\(|k|&gt;1\)</span>, because a bracket word on a single generator vanishes once its length exceeds one. Every degree space is finite-dimensional, and the only degree-zero space is <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<h2 id="5-nilpotent-adjoints-move-the-weights-by-reflections">5. Nilpotent adjoints move the weights by reflections</h2>
+<span id="RTLIE11-P51"></span>
+<p><strong>Proposition 5.1.</strong> On <span class="math" data-tex="\(\mathfrak g(A)\)">\(\mathfrak g(A)\)</span>, each <span class="math" data-tex="\(\operatorname{ad}e_i\)">\(\operatorname{ad}e_i\)</span> and <span class="math" data-tex="\(\operatorname{ad}f_i\)">\(\operatorname{ad}f_i\)</span> is locally nilpotent: every individual vector is killed by a sufficiently high power. The automorphism
+<span class="math math-display" data-tex="\[
+T_i=
+\exp(\operatorname{ad}e_i)
+\exp(-\operatorname{ad}f_i)
+\exp(\operatorname{ad}e_i)
+\tag{5.1}
+\]">\[
+T_i=
+\exp(\operatorname{ad}e_i)
+\exp(-\operatorname{ad}f_i)
+\exp(\operatorname{ad}e_i)
+\tag{5.1}
+\]</span>
+acts on <span class="math" data-tex="\(H\)">\(H\)</span> as <span class="math" data-tex="\(H_0\mapsto H_0-\alpha_i(H_0)h_i\)">\(H_0\mapsto H_0-\alpha_i(H_0)h_i\)</span>, and carries the degree space <span class="math" data-tex="\(\mathfrak g(A)_\beta\)">\(\mathfrak g(A)_\beta\)</span> isomorphically onto <span class="math" data-tex="\(\mathfrak g(A)_{s_i\beta}\)">\(\mathfrak g(A)_{s_i\beta}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(D=\operatorname{ad}e_i\)">\(D=\operatorname{ad}e_i\)</span>, nilpotence on each generator follows explicitly: D kills e_i and all <span class="math" data-tex="\(f_j\)">\(f_j\)</span> with <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, its third power kills f_i through <span class="math" data-tex="\(f_i\mapsto h_i\mapsto-2e_i\mapsto0\)">\(f_i\mapsto h_i\mapsto-2e_i\mapsto0\)</span>, its second power kills every h_j, and the Serre exponent kills every e_j with <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. The derivation binomial rule gives
+<span class="math math-display" data-tex="\[
+D^pu=D^qv=0\quad\Longrightarrow\quad D^{p+q-1}[u,v]=0:
+\quad D^n[u,v]=\sum_{k=0}^n\binom nk[D^ku,D^{n-k}v].
+\tag{5.2}
+\]">\[
+D^pu=D^qv=0\quad\Longrightarrow\quad D^{p+q-1}[u,v]=0:
+\quad D^n[u,v]=\sum_{k=0}^n\binom nk[D^ku,D^{n-k}v].
+\tag{5.2}
+\]</span>
+It follows by induction on the bracket tree, and then by taking a maximum for a finite linear combination, that D is locally nilpotent on every element. The involution gives the assertion for <span class="math" data-tex="\(\operatorname{ad}f_i\)">\(\operatorname{ad}f_i\)</span>. No common exponent for the entire algebra, and no finite dimension, has been used.</p>
+<p>For a locally nilpotent derivation the exponential is a finite polynomial on each argument. The same binomial identity proves <span class="math" data-tex="\(\exp D[u,v]=[\exp D u,\exp D v]\)">\(\exp D[u,v]=[\exp D u,\exp D v]\)</span>, and multiplication of finite series gives inverse <span class="math" data-tex="\(\exp(-D)\)">\(\exp(-D)\)</span>. The three factors in (5.1) therefore define an automorphism.</p>
+<p>For explicit verification on the rank-one triple, <span class="math" data-tex="\(\exp(\operatorname{ad}e)\)">\(\exp(\operatorname{ad}e)\)</span> sends <span class="math" data-tex="\((e,h,f)\)">\((e,h,f)\)</span> to <span class="math" data-tex="\((e,h-2e,f+h-e)\)">\((e,h-2e,f+h-e)\)</span>, whereas <span class="math" data-tex="\(\exp(-\operatorname{ad}f)\)">\(\exp(-\operatorname{ad}f)\)</span> sends them to <span class="math" data-tex="\((e+h-f,h-2f,f)\)">\((e+h-f,h-2f,f)\)</span>. Composing right to left gives
+<span class="math math-display" data-tex="\[
+T_i(e_i)=-f_i,\qquad T_i(f_i)=-e_i,\qquad T_i(h_i)=-h_i.
+\tag{5.3}
+\]">\[
+T_i(e_i)=-f_i,\qquad T_i(f_i)=-e_i,\qquad T_i(h_i)=-h_i.
+\tag{5.3}
+\]</span>
+For general <span class="math" data-tex="\(H_0\in H\)">\(H_0\in H\)</span>, its part <span class="math" data-tex="\(H_0-\alpha_i(H_0)h_i/2\)">\(H_0-\alpha_i(H_0)h_i/2\)</span> centralizes both rank-one generators, and its remaining part is negated. Thus <span class="math" data-tex="\(T_iH_0=H_0-\alpha_i(H_0)h_i\)">\(T_iH_0=H_0-\alpha_i(H_0)h_i\)</span>. Transporting the equation <span class="math" data-tex="\([H_0,v]=\beta(H_0)v\)">\([H_0,v]=\beta(H_0)v\)</span> gives the weight
+<span class="math" data-tex="\(\beta\circ T_i^{-1}|_H=\beta-\beta(h_i)\alpha_i=s_i\beta\)">\(\beta\circ T_i^{-1}|_H=\beta-\beta(h_i)\alpha_i=s_i\beta\)</span>.
+The inverse yields an isomorphism of the two weight spaces, preserving dimensions. Products give any sequence of Weyl reflections; no Coxeter relations for the particular lifts <span class="math" data-tex="\(T_i\)">\(T_i\)</span> are needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-finite-type-leaves-exactly-the-prescribed-roots">6. Finite type leaves exactly the prescribed roots</h2>
+<span id="RTLIE11-T61"></span>
+<p><strong>Theorem 6.1 (Serre).</strong> For a Cartan matrix <span class="math" data-tex="\(A\)">\(A\)</span> of finite type, the presentation (1.3)–(1.4) defines a finite-dimensional semisimple complex Lie algebra. Its Cartan subalgebra is <span class="math" data-tex="\(H=\operatorname{span}\{h_i\}\)">\(H=\operatorname{span}\{h_i\}\)</span>, and its root system is <span class="math" data-tex="\(\Phi(A)\)">\(\Phi(A)\)</span>. More precisely,
+<span class="math math-display" data-tex="\[
+\mathfrak g(A)=H\oplus\bigoplus_{\beta\in\Phi(A)}\mathfrak g(A)_\beta,
+\qquad \dim\mathfrak g(A)_\beta=1,
+\qquad \dim\mathfrak g(A)=r+|\Phi(A)|.
+\tag{6.1}
+\]">\[
+\mathfrak g(A)=H\oplus\bigoplus_{\beta\in\Phi(A)}\mathfrak g(A)_\beta,
+\qquad \dim\mathfrak g(A)_\beta=1,
+\qquad \dim\mathfrak g(A)=r+|\Phi(A)|.
+\tag{6.1}
+\]</span>
+Every connected component of the Dynkin diagram gives a simple ideal, and these are the direct simple summands.</p>
+<p><strong>Proof of the exact root set.</strong> Use the positive Euclidean form of the given finite root system, with simple-root basis <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>. Proposition 2.2 and Lemma 4.1 say that every nonzero degree lies in <span class="math" data-tex="\(Q_+\setminus\{0\}\)">\(Q_+\setminus\{0\}\)</span> or its negative. A positive degree on just one simple-root line can only be <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, because every longer bracket word in a single generator is zero.</p>
+<p>Consider a positive occurring degree <span class="math" data-tex="\(\beta=\sum b_i\alpha_i\)">\(\beta=\sum b_i\alpha_i\)</span> with at least two positive coefficients. The equality
+<span class="math" data-tex="\(0&lt;(\beta,\beta)=\sum b_i(\beta,\alpha_i)\)">\(0&lt;(\beta,\beta)=\sum b_i(\beta,\alpha_i)\)</span>
+supplies i with <span class="math" data-tex="\(b_i&gt;0\)">\(b_i&gt;0\)</span> and positive inner product. The integer <span class="math" data-tex="\(m=\beta(h_i)=\sum b_j a_{ji}\)">\(m=\beta(h_i)=\sum b_j a_{ji}\)</span> is positive. Proposition 5.1 makes degree <span class="math" data-tex="\(s_i\beta=\beta-m\alpha_i\)">\(s_i\beta=\beta-m\alpha_i\)</span> occur. Its unchanged positive coefficient outside i forbids zero or a negative degree. Triangularity consequently makes it positive, with smaller integral height. Repeated descent reaches a simple root. The negative side follows from the involution. RT-LIE-08, Lemma 4.1, says <span class="math" data-tex="\(W\Delta=\Phi\)">\(W\Delta=\Phi\)</span>, so all possible nonzero degrees are in the prescribed finite root set.</p>
+<p>Conversely every element of <span class="math" data-tex="\(W\Delta\)">\(W\Delta\)</span> occurs, by applying the corresponding product of the <span class="math" data-tex="\(T_i\)">\(T_i\)</span> to a nonzero simple generator. Their spaces are lines: a simple generator has a one-dimensional degree space after (4.5), and Proposition 5.1 preserves dimensions. The surviving Cartan basis and exact triangular decomposition now give (6.1), including finite dimension. Positive definiteness was essential to the descending step; the argument is not asserted for indefinite Cartan matrices.</p>
+<p><strong>Proof of simplicity and Cartan.</strong> For a connected diagram let J be a nonzero ideal. The commuting diagonalizable Cartan actions split it into weight components: choose finitely many separating Cartan operators and use their polynomial spectral projections. If J contains a nonzero Cartan vector H_0, some <span class="math" data-tex="\(\alpha_i(H_0)\ne0\)">\(\alpha_i(H_0)\ne0\)</span> because the simple roots form a basis of <span class="math" data-tex="\(H^*\)">\(H^*\)</span>; bracketing with e_i supplies a root vector. Otherwise it already has a nonzero root component. Every <span class="math" data-tex="\(T_i\)">\(T_i\)</span> and its inverse preserve ideals, being products of adjoint polynomials. The root descent carries this component to a simple root line, giving some e_i in J. Then J contains <span class="math" data-tex="\(h_i=[e_i,f_i]\)">\(h_i=[e_i,f_i]\)</span> and <span class="math" data-tex="\(f_i=-[h_i,f_i]/2\)">\(f_i=-[h_i,f_i]/2\)</span>. If j is a neighboring vertex, <span class="math" data-tex="\([h_i,e_j]=a_{ji}e_j\ne0\)">\([h_i,e_j]=a_{ji}e_j\ne0\)</span> supplies e_j, and the same argument supplies h_j,f_j. Connectedness reaches every generator; J is the whole algebra, which is nonabelian by its rank-one relations. It is simple.</p>
+<p>Generators on different components commute: the Cartan entries and cross mixed brackets vanish, and the cross Serre exponents are one. Jacobi then makes their generated subalgebras commute. They span, and their sum is direct because the nonzero component weights are disjoint while their Cartan spans have disjoint independent bases. Applying the connected proof to each gives the stated direct simple decomposition and semisimplicity.</p>
+<p>Finally H acts diagonally, is abelian and hence nilpotent, and is its own normalizer. Indeed, for an element in its normalizer each nonzero weight component has to vanish by bracketing with an H_0 on which that weight is nonzero. Its remaining component lies in H. Thus H is a Cartan subalgebra by the nilpotent self-normalizing definition; this step needs no Cartan-conjugacy or Cartan-equivalence import. Its weights are exactly <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> and its pairings <span class="math" data-tex="\(\alpha_i(h_j)=a_{ij}\)">\(\alpha_i(h_j)=a_{ij}\)</span>. Relative lengths are those of the given Euclidean system; independent overall scales on orthogonal components do not affect these pairings. This proves the theorem in the stated root-system convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The empty matrix gives the zero algebra. All arguments above then have empty sets of generators and roots; (6.1) gives dimension zero. Semisimplicity includes this case, while simplicity does not.</p>
+<p><strong>Corollary 6.2 (classification).</strong> Complex simple Lie algebras, up to isomorphism, correspond bijectively to
+<span class="math math-display" data-tex="\[
+A_n\ (n\ge1),\quad B_n\ (n\ge2),\quad
+C_n\ (n\ge3),\quad D_n\ (n\ge4),\quad
+E_6,E_7,E_8,F_4,G_2.
+\]">\[
+A_n\ (n\ge1),\quad B_n\ (n\ge2),\quad
+C_n\ (n\ge3),\quad D_n\ (n\ge4),\quad
+E_6,E_7,E_8,F_4,G_2.
+\]</span></p>
+<p><strong>Proof.</strong> The preceding root-decomposition and classification lessons give a finite Dynkin diagram for every semisimple algebra. For a connected diagram, Theorem 6.1 constructs a simple algebra with that root system, and Theorem 3.1 proves uniqueness. To see that a simple algebra's diagram is connected, its Chevalley generators belonging to distinct components commute, by Proposition 1.1; they would give disjoint nonzero ideals and a direct decomposition as in the theorem. Conversely a connected diagram gives a simple algebra by the theorem. The specified rank cutoffs remove <span class="math" data-tex="\(B_1=C_1=A_1\)">\(B_1=C_1=A_1\)</span>, <span class="math" data-tex="\(B_2=C_2\)">\(B_2=C_2\)</span> and <span class="math" data-tex="\(D_3=A_3\)">\(D_3=A_3\)</span>, and exclude the reducible <span class="math" data-tex="\(D_2\)">\(D_2\)</span>. This proves both surjectivity and injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular any original semisimple <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> has exactly this Serre presentation. Proposition 1.1 gives a surjection <span class="math" data-tex="\(\mathfrak g(A)\to\mathfrak g\)">\(\mathfrak g(A)\to\mathfrak g\)</span>; both have dimension <span class="math" data-tex="\(r+|\Phi|\)">\(r+|\Phi|\)</span>, so it is an isomorphism. The endpoint relations are therefore sufficient, not only necessary.</p>
+<h2 id="7-two-matrix-examples-and-one-asymmetric-exponent">7. Two matrix examples and one asymmetric exponent</h2>
+<p>For <span class="math" data-tex="\(A=[2]\)">\(A=[2]\)</span>, there are no cross-vertex Serre relations. The algebra has basis <span class="math" data-tex="\(e,f,h\)">\(e,f,h\)</span> with <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span>, <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span>, <span class="math" data-tex="\([e,f]=h\)">\([e,f]=h\)</span>. The matrices <span class="math" data-tex="\(E_{12},E_{21},\operatorname{diag}(1,-1)\)">\(E_{12},E_{21},\operatorname{diag}(1,-1)\)</span> satisfy these relations and are independent, giving <span class="math" data-tex="\(\mathfrak g(A)=\mathfrak{sl}_2\)">\(\mathfrak g(A)=\mathfrak{sl}_2\)</span>.</p>
+<p>For
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix},
+\qquad e_1=E_{12},\quad e_2=E_{23},\quad
+f_1=E_{21},\quad f_2=E_{32},
+\tag{7.1}
+\]">\[
+A=\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix},
+\qquad e_1=E_{12},\quad e_2=E_{23},\quad
+f_1=E_{21},\quad f_2=E_{32},
+\tag{7.1}
+\]</span>
+the extra positive vector is <span class="math" data-tex="\([e_1,e_2]=E_{13}\)">\([e_1,e_2]=E_{13}\)</span>, and the negative one is <span class="math" data-tex="\([f_2,f_1]=E_{31}\)">\([f_2,f_1]=E_{31}\)</span>. The two Cartan generators are <span class="math" data-tex="\(E_{11}-E_{22}\)">\(E_{11}-E_{22}\)</span> and <span class="math" data-tex="\(E_{22}-E_{33}\)">\(E_{22}-E_{33}\)</span>. These eight independent matrices span <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>. The Serre algebra also has dimension <span class="math" data-tex="\(2+6=8\)">\(2+6=8\)</span>, so the generator map is an isomorphism. Exercise 8.1 checks all relations explicitly.</p>
+<p>For <span class="math" data-tex="\(G_2\)">\(G_2\)</span>, number the short simple root by 1. Our column-coroot matrix is
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}.
+\tag{7.2}
+\]">\[
+A=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}.
+\tag{7.2}
+\]</span>
+Consequently the two positive endpoint relations are
+<span class="math math-display" data-tex="\[
+(\operatorname{ad}e_1)^4e_2=0,
+\qquad (\operatorname{ad}e_2)^2e_1=0,
+\tag{7.3}
+\]">\[
+(\operatorname{ad}e_1)^4e_2=0,
+\qquad (\operatorname{ad}e_2)^2e_1=0,
+\tag{7.3}
+\]</span>
+and the same powers hold for the negative generators. The first string contains the roots
+<span class="math" data-tex="\(\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,3\alpha_1+\alpha_2\)">\(\alpha_2,\alpha_1+\alpha_2,2\alpha_1+\alpha_2,3\alpha_1+\alpha_2\)</span>.
+Its last vector is nonzero by the rank-one string calculation, while one further bracket is zero. The other positive nonsimple root <span class="math" data-tex="\(3\alpha_1+2\alpha_2\)">\(3\alpha_1+2\alpha_2\)</span> comes from the bracket at the remaining endpoint with <span class="math" data-tex="\(e_2\)">\(e_2\)</span>. Thus the four and the two in (7.3) correspond to the actual short/long geometry. Transposing (7.2) without changing the acting-index convention would reverse these instructions.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-8-1-the-relations-in-three-by-three-matrices-easy">Exercise 8.1 — the relations in three-by-three matrices (easy)</h3>
+<p>Use the generators in (7.1), with <span class="math" data-tex="\(h_1=E_{11}-E_{22}\)">\(h_1=E_{11}-E_{22}\)</span> and <span class="math" data-tex="\(h_2=E_{22}-E_{33}\)">\(h_2=E_{22}-E_{33}\)</span>. Check the Cartan, mixed and Serre relations, including the negative generators.</p>
+<p><strong>Solution.</strong> Matrix units satisfy
+<span class="math math-display" data-tex="\[
+[E_{ab},E_{cd}]=\delta_{bc}E_{ad}-\delta_{da}E_{cb}.
+\tag{8.1}
+\]">\[
+[E_{ab},E_{cd}]=\delta_{bc}E_{ad}-\delta_{da}E_{cb}.
+\tag{8.1}
+\]</span>
+The diagonal matrices <span class="math" data-tex="\(h_1,h_2\)">\(h_1,h_2\)</span> commute. For a diagonal <span class="math" data-tex="\(H=\operatorname{diag}(d_1,d_2,d_3)\)">\(H=\operatorname{diag}(d_1,d_2,d_3)\)</span>,
+<span class="math" data-tex="\([H,E_{ab}]=(d_a-d_b)E_{ab}\)">\([H,E_{ab}]=(d_a-d_b)E_{ab}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rr}
+ &amp;e_1&amp;e_2\\\hline
+\operatorname{ad}h_1&amp;2e_1&amp;-e_2\\
+\operatorname{ad}h_2&amp;-e_1&amp;2e_2
+\end{array}
+\]">\[
+\begin{array}{c|rr}
+ &amp;e_1&amp;e_2\\\hline
+\operatorname{ad}h_1&amp;2e_1&amp;-e_2\\
+\operatorname{ad}h_2&amp;-e_1&amp;2e_2
+\end{array}
+\]</span>
+and the corresponding coefficients on <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span> are their negatives. These are exactly the entries <span class="math" data-tex="\(a_{ji}\)">\(a_{ji}\)</span> and <span class="math" data-tex="\(-a_{ji}\)">\(-a_{ji}\)</span>. Formula (8.1) gives
+<span class="math" data-tex="\([e_1,f_1]=h_1\)">\([e_1,f_1]=h_1\)</span>, <span class="math" data-tex="\([e_2,f_2]=h_2\)">\([e_2,f_2]=h_2\)</span>, and
+<span class="math" data-tex="\([e_1,f_2]=[e_2,f_1]=0\)">\([e_1,f_2]=[e_2,f_1]=0\)</span>.</p>
+<p>Next <span class="math" data-tex="\([e_1,e_2]=E_{13}\)">\([e_1,e_2]=E_{13}\)</span>, while
+<span class="math" data-tex="\([E_{12},E_{13}]=[E_{23},E_{13}]=0\)">\([E_{12},E_{13}]=[E_{23},E_{13}]=0\)</span>. Therefore
+<span class="math" data-tex="\((\operatorname{ad}e_1)^2e_2=(\operatorname{ad}e_2)^2e_1=0\)">\((\operatorname{ad}e_1)^2e_2=(\operatorname{ad}e_2)^2e_1=0\)</span>.
+For the negative generators, <span class="math" data-tex="\([f_1,f_2]=-E_{31}\)">\([f_1,f_2]=-E_{31}\)</span>, and
+<span class="math" data-tex="\([E_{21},E_{31}]=[E_{32},E_{31}]=0\)">\([E_{21},E_{31}]=[E_{32},E_{31}]=0\)</span>. Both negative endpoint relations also have exponent two. This checks all defining relations. The additional vectors <span class="math" data-tex="\(E_{13},E_{31}\)">\(E_{13},E_{31}\)</span>, the four initial off-diagonal units and the two diagonals are independent and span all trace-zero matrices, so the generators give all of <span class="math" data-tex="\(\mathfrak{sl}_3\)">\(\mathfrak{sl}_3\)</span>. Its dimension agrees with Theorem 6.1, proving that this representation of the presentation is faithful.</p>
+<h3 id="exercise-8-2-generation-from-the-simple-root-spaces-medium">Exercise 8.2 — generation from the simple root spaces (medium)</h3>
+<p>Let <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> be any complex semisimple Lie algebra. Prove directly that normalized Chevalley generators for a base of its root system generate <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be their generated subalgebra. The simple coroots form a basis of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, and all of them belong to <span class="math" data-tex="\(K\)">\(K\)</span>, so <span class="math" data-tex="\(\mathfrak h\subseteq K\)">\(\mathfrak h\subseteq K\)</span>. We prove by height induction that every positive root space is in <span class="math" data-tex="\(K\)">\(K\)</span>. Height one is the given set of simple root vectors, whose spaces are one-dimensional.</p>
+<p>Write a positive nonsimple root as <span class="math" data-tex="\(\beta=\sum b_j\alpha_j\)">\(\beta=\sum b_j\alpha_j\)</span>. Since
+<span class="math" data-tex="\((\beta,\beta)=\sum b_j(\beta,\alpha_j)&gt;0\)">\((\beta,\beta)=\sum b_j(\beta,\alpha_j)&gt;0\)</span>, choose <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(b_i&gt;0\)">\(b_i&gt;0\)</span> and <span class="math" data-tex="\((\beta,\alpha_i)&gt;0\)">\((\beta,\alpha_i)&gt;0\)</span>. Here <span class="math" data-tex="\(\beta\ne\alpha_i\)">\(\beta\ne\alpha_i\)</span>, and a reduced root system has no other root that is a positive multiple of <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>. The root-string property therefore says that <span class="math" data-tex="\(\beta-\alpha_i\)">\(\beta-\alpha_i\)</span> is a root. Its coefficients are nonnegative and its height is one less, so its space lies in <span class="math" data-tex="\(K\)">\(K\)</span> by induction. The nonzero-bracket theorem for root spaces gives
+<span class="math math-display" data-tex="\[
+[\mathfrak g_{\alpha_i},\mathfrak g_{\beta-\alpha_i}]
+=\mathfrak g_\beta.
+\]">\[
+[\mathfrak g_{\alpha_i},\mathfrak g_{\beta-\alpha_i}]
+=\mathfrak g_\beta.
+\]</span>
+Thus <span class="math" data-tex="\(\mathfrak g_\beta\subseteq K\)">\(\mathfrak g_\beta\subseteq K\)</span>. Apply the same argument to the base <span class="math" data-tex="\(-\Delta\)">\(-\Delta\)</span>, starting with the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, to get every negative root space. The root decomposition now gives <span class="math" data-tex="\(K=\mathfrak g\)">\(K=\mathfrak g\)</span>. The proof applies component by component, and to the zero algebra with an empty base.</p>
+<h3 id="exercise-8-3-a-bound-on-each-adjoint-orbit-medium">Exercise 8.3 — a bound on each adjoint orbit (medium)</h3>
+<p>Prove local nilpotence of <span class="math" data-tex="\(D=\operatorname{ad}e_i\)">\(D=\operatorname{ad}e_i\)</span> using only the defining relations, before finite dimension is known. Give a nilpotence bound for any specified bracket word.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(i\)">\(i\)</span>. Assign the following safe exponents to generators:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\nu(e_i)&amp;=1,&amp;\nu(e_j)&amp;=1-a_{ji}\quad(j\ne i),\\
+\nu(f_i)&amp;=3,&amp;\nu(f_j)&amp;=1\quad(j\ne i),&amp;
+\nu(h_j)&amp;=2.
+\end{aligned}
+\tag{8.2}
+\]">\[
+\begin{aligned}
+\nu(e_i)&amp;=1,&amp;\nu(e_j)&amp;=1-a_{ji}\quad(j\ne i),\\
+\nu(f_i)&amp;=3,&amp;\nu(f_j)&amp;=1\quad(j\ne i),&amp;
+\nu(h_j)&amp;=2.
+\end{aligned}
+\tag{8.2}
+\]</span>
+Each satisfies <span class="math" data-tex="\(D^{\nu(x)}x=0\)">\(D^{\nu(x)}x=0\)</span>. For the <span class="math" data-tex="\(e_j\)">\(e_j\)</span> this is the Serre relation; for the mixed <span class="math" data-tex="\(f_j\)">\(f_j\)</span> it is <span class="math" data-tex="\([e_i,f_j]=0\)">\([e_i,f_j]=0\)</span>. For <span class="math" data-tex="\(f_i\)">\(f_i\)</span> the successive values are <span class="math" data-tex="\(h_i,-2e_i,0\)">\(h_i,-2e_i,0\)</span>. Finally <span class="math" data-tex="\([e_i,h_j]=-a_{ij}e_i\)">\([e_i,h_j]=-a_{ij}e_i\)</span>, so the second iterate vanishes.</p>
+<p>A derivation obeys the iterated Leibniz formula
+<span class="math math-display" data-tex="\[
+D^n[u,v]=\sum_{k=0}^n\binom nk[D^ku,D^{n-k}v].
+\tag{8.3}
+\]">\[
+D^n[u,v]=\sum_{k=0}^n\binom nk[D^ku,D^{n-k}v].
+\tag{8.3}
+\]</span>
+It follows by induction on <span class="math" data-tex="\(n\)">\(n\)</span> from the derivation rule and Pascal's identity. If <span class="math" data-tex="\(D^pu=D^qv=0\)">\(D^pu=D^qv=0\)</span>, then every term in (8.3) vanishes for <span class="math" data-tex="\(n=p+q-1\)">\(n=p+q-1\)</span>: either <span class="math" data-tex="\(k\ge p\)">\(k\ge p\)</span> or <span class="math" data-tex="\(n-k\ge q\)">\(n-k\ge q\)</span>. By induction on the bracket tree, a word with leaves <span class="math" data-tex="\(x_1,\ldots,x_s\)">\(x_1,\ldots,x_s\)</span> is killed by
+<span class="math math-display" data-tex="\[
+D^{\,1+\sum_{\ell=1}^s(\nu(x_\ell)-1)}.
+\tag{8.4}
+\]">\[
+D^{\,1+\sum_{\ell=1}^s(\nu(x_\ell)-1)}.
+\tag{8.4}
+\]</span>
+Every element of a presented Lie algebra is a finite linear combination of words. The maximum of their bounds kills that element. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is locally nilpotent without any appeal to finite dimension. This also proves that the exponentials used in (5.1) are well defined at that stage of the argument.</p>
+<h3 id="exercise-8-4-reconstructing-the-graph-proof-hard">Exercise 8.4 — reconstructing the graph proof (hard)</h3>
+<p>Let <span class="math" data-tex="\(\sigma:\Phi\to\Phi&#x27;\)">\(\sigma:\Phi\to\Phi&#x27;\)</span> be an isomorphism of root systems taking <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to <span class="math" data-tex="\(\Delta&#x27;\)">\(\Delta&#x27;\)</span>, with corresponding normalized generators. Prove the isomorphism theorem by examining the subalgebra generated by their paired vectors.</p>
+<p><strong>Solution.</strong> Write corresponding generators with the same indices and set
+<span class="math math-display" data-tex="\[
+L=\big\langle(e_i,e_i&#x27;),(f_i,f_i&#x27;)\big\rangle
+\subseteq\mathfrak g\oplus\mathfrak g&#x27;,\qquad
+H_D=\operatorname{span}\{(h_i,h_i&#x27;)\}.
+\]">\[
+L=\big\langle(e_i,e_i&#x27;),(f_i,f_i&#x27;)\big\rangle
+\subseteq\mathfrak g\oplus\mathfrak g&#x27;,\qquad
+H_D=\operatorname{span}\{(h_i,h_i&#x27;)\}.
+\]</span>
+The paired mixed brackets give <span class="math" data-tex="\((h_i,h_i&#x27;)\)">\((h_i,h_i&#x27;)\)</span>, so <span class="math" data-tex="\(H_D\subseteq L\)">\(H_D\subseteq L\)</span>. Exercise 8.2 makes both projections of <span class="math" data-tex="\(L\)">\(L\)</span> surjective. The Cartan matrices agree, and hence the paired generators satisfy the non-Serre relations (1.3). Proposition 2.2 applies to the resulting map from the auxiliary algebra: <span class="math" data-tex="\(L\)">\(L\)</span> is spanned by its positive words, its negative words and <span class="math" data-tex="\(H_D\)">\(H_D\)</span>.</p>
+<p>Every positive word has a strictly positive weight for the common Cartan action; every negative word has a strictly negative one. They may vanish, but they cannot contribute a zero-weight vector. Polynomial weight projections therefore give
+<span class="math math-display" data-tex="\[
+L\cap(\mathfrak h\oplus\mathfrak h&#x27;)=H_D.
+\tag{8.5}
+\]">\[
+L\cap(\mathfrak h\oplus\mathfrak h&#x27;)=H_D.
+\tag{8.5}
+\]</span>
+The projection of <span class="math" data-tex="\(H_D\)">\(H_D\)</span> to either Cartan algebra is an isomorphism because the simple coroots are bases.</p>
+<p>Define <span class="math" data-tex="\(I=\{x\in\mathfrak g:(x,0)\in L\}\)">\(I=\{x\in\mathfrak g:(x,0)\in L\}\)</span>. This is an ideal: given <span class="math" data-tex="\(y\in\mathfrak g\)">\(y\in\mathfrak g\)</span>, choose <span class="math" data-tex="\((y,y&#x27;)\in L\)">\((y,y&#x27;)\in L\)</span> by surjectivity, and then <span class="math" data-tex="\(([y,x],0)\in L\)">\(([y,x],0)\in L\)</span>. Any nonzero ideal of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> meets <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> nontrivially. Indeed, its weight components belong to the ideal. If one is a nonzero <span class="math" data-tex="\(x\in\mathfrak g_\beta\)">\(x\in\mathfrak g_\beta\)</span>, nondegeneracy of the opposite-root pairing gives <span class="math" data-tex="\(y\in\mathfrak g_{-\beta}\)">\(y\in\mathfrak g_{-\beta}\)</span> with <span class="math" data-tex="\(\kappa(x,y)\ne0\)">\(\kappa(x,y)\ne0\)</span>. Then <span class="math" data-tex="\([x,y]\in\mathfrak h\)">\([x,y]\in\mathfrak h\)</span> is nonzero, since for <span class="math" data-tex="\(H\in\mathfrak h\)">\(H\in\mathfrak h\)</span>
+<span class="math math-display" data-tex="\[
+\kappa([x,y],H)=\beta(H)\kappa(x,y).
+\]">\[
+\kappa([x,y],H)=\beta(H)\kappa(x,y).
+\]</span>
+If the only nonzero component is already in <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, the assertion is immediate.</p>
+<p>But <span class="math" data-tex="\(I\cap\mathfrak h=0\)">\(I\cap\mathfrak h=0\)</span>: by (8.5), <span class="math" data-tex="\((H,0)\)">\((H,0)\)</span> would belong to <span class="math" data-tex="\(H_D\)">\(H_D\)</span>, whose projection to <span class="math" data-tex="\(\mathfrak h&#x27;\)">\(\mathfrak h&#x27;\)</span> is injective. Thus <span class="math" data-tex="\(I=0\)">\(I=0\)</span>. Interchanging the two factors gives the other kernel zero. Both projections <span class="math" data-tex="\(L\to\mathfrak g,\mathfrak g&#x27;\)">\(L\to\mathfrak g,\mathfrak g&#x27;\)</span> are now isomorphisms. Their composite defines an isomorphism <span class="math" data-tex="\(\psi:\mathfrak g\to\mathfrak g&#x27;\)">\(\psi:\mathfrak g\to\mathfrak g&#x27;\)</span> with graph <span class="math" data-tex="\(L\)">\(L\)</span>, sending every <span class="math" data-tex="\(e_i,f_i,h_i\)">\(e_i,f_i,h_i\)</span> to its primed counterpart.</p>
+<p>For <span class="math" data-tex="\(H\in\mathfrak h\)">\(H\in\mathfrak h\)</span>, the equal Cartan pairings give
+<span class="math" data-tex="\(\alpha_i&#x27;(\psi H)=\alpha_i(H)\)">\(\alpha_i&#x27;(\psi H)=\alpha_i(H)\)</span>; extending linearly to roots shows
+<span class="math" data-tex="\(\psi(\mathfrak g_\beta)=\mathfrak g&#x27;_{\sigma\beta}\)">\(\psi(\mathfrak g_\beta)=\mathfrak g&#x27;_{\sigma\beta}\)</span>. Hence this map extends the specified root-system isomorphism. Its values on the generating vectors force uniqueness. The argument also covers empty root systems, in which both algebras are zero.</p>
+<h2 id="9-scope-automorphisms-and-references">9. Scope, automorphisms and references</h2>
+<p>The proofs above establish the isomorphism theorem and the finite-type Serre theorem for every complex semisimple Lie algebra, with arbitrary rank and any number of simple components. In particular the auxiliary free algebras, survival of the Cartan generators, stability of the Serre ideals, locally nilpotent reflection operators, absence of additional weights, and simplicity of each connected component have all been proved. The exact checked prerequisites for the presentation are the receiving root decomposition, finite Euclidean base/reflection lemmas and RTF-004. The retained classification corollary additionally depends on the separate classification provider; it is outside the scoped proof audit.</p>
+<p><strong>What this lesson does not prove.</strong> After choosing a base and normalized simple generators, the automorphism group has the decomposition
+<span class="math math-display" data-tex="\[
+\operatorname{Aut}(\mathfrak g)
+\cong\operatorname{Int}(\mathfrak g)
+\rtimes\operatorname{Aut}(\operatorname{Dyn}(\mathfrak g)).
+\tag{9.1}
+\]">\[
+\operatorname{Aut}(\mathfrak g)
+\cong\operatorname{Int}(\mathfrak g)
+\rtimes\operatorname{Aut}(\operatorname{Dyn}(\mathfrak g)).
+\tag{9.1}
+\]</span>
+Here diagram automorphisms preserve the Cartan entries, including the directions of multiple edges, and may permute isomorphic connected components. Their chosen lifts permute the corresponding normalized generators. Theorem 3.1 supplies these lifts; the assertion not proved here is that every automorphism factors uniquely as an inner automorphism followed by such a lift. This unproved automorphism factorization is retained as a clearly stated further result and is not used by Lesson 18 or by the Serre proof above.</p>
+<p>The planned algebraic-geometry lesson <em>Isomorphism and existence theorems for split reductive group schemes</em> develops the group version. Its additional data are the character and cocharacter lattices; a root system alone does not determine a reductive group. The Serre presentation here is a Lie-algebra statement over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and does not assert the same semisimplicity result in positive characteristic.</p>
+<p>For comparison with the wider algebraic-geometry programme, the <a href="https://stacks.math.columbia.edu/">official Stacks project</a> remains the reference project. The <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI Integrated Stacks Project reader</a> presents unofficial AI drafts; those drafts are not maintainer-reviewed Stacks results. No result from that reader is needed as an external proof in this lesson.</p>
+<p><strong>References.</strong></p>
+<ul>
+<li>P. Etingof, <a href="https://math.mit.edu/~etingof/lnlg.pdf"><em>18.745: Lie Groups and Lie Algebras, I</em>, author-hosted lecture notes</a>, Section 23: Theorem 23.1 (Chevalley generators and Serre relations), Theorem 23.2 (Serre presentation) and Lemma 23.3 (the auxiliary free triangular algebra); Sections 10–11 for tensor/enveloping algebras and PBW. These locators refer to the checked 223-page author PDF. Its row-coroot convention is the transpose of the column-coroot convention (1.2), so its <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> in an acting-i exponent becomes our <span class="math" data-tex="\(a_{ji}\)">\(a_{ji}\)</span>.</li>
+<li>A. Kirillov, Jr., <a href="https://math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf"><em>Introduction to Lie Groups and Lie Algebras</em>, author-hosted notes</a>, Sections 6.6 and 7.3–7.7, for the root-space brackets and finite Euclidean arithmetic/base/reflection inputs reconstructed in the receiving RT-LIE-07 and RT-LIE-08.</li>
+</ul>
+</article></main></body></html>

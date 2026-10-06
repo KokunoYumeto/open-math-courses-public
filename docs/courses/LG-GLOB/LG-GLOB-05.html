@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The principle of functoriality · Global Langlands conjectures and functoriality</title>
+<meta name="description" content="A lesson of the course Global Langlands conjectures and functoriality. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GLOB/LG-GLOB-05.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Global Langlands conjectures and functoriality</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong></p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-principle-of-functoriality">The principle of functoriality</h1>
+<p><em>Draft lesson. Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>A homomorphism of L-groups acts on local parameters. Functoriality predicts that the resulting family of parameters comes from automorphic representations. Its simplest visible consequence is an identity of Euler factors. Its deeper consequences depend on the kind of automorphic representation obtained and on the places at which the parameters agree.</p>
+<p>We make these distinctions explicit, compute quadratic induction and the symmetric square of a dihedral representation, and prove the deductions toward Ramanujan and Selberg. The prerequisites are <em>L-functions for GL_n: Godement–Jacquet and Rankin–Selberg</em> and <em>Beyond GL_n: L-parameters, L-packets and the local Langlands conjecture for reductive groups</em>. The uniqueness and analytic deductions retain the local and global analytic hypotheses and the isobaric existence statements whose general proofs are still missing in the preceding lesson.</p>
+<h2 id="1-local-parameters-and-a-global-conjecture">1. Local parameters and a global conjecture</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a number field. Fix an algebraic closure and write <span class="math" data-tex="\(\Gamma_F=\operatorname{Gal}(\overline F/F)\)">\(\Gamma_F=\operatorname{Gal}(\overline F/F)\)</span>. For a quasi-split connected reductive group <span class="math" data-tex="\(H/F\)">\(H/F\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+{}^LH=\widehat H\rtimes\Gamma_F.
+\tag{1.1}
+\]">\[
+{}^LH=\widehat H\rtimes\Gamma_F.
+\tag{1.1}
+\]</span>
+<p>The Galois action is the pinned action on the dual group. One can instead pull this extension back to the Weil group. We use the same choice of Frobenius and reciprocity normalization for every group and every local L-factor. In the convention of the preceding lessons, an unramified character <span class="math" data-tex="\(\chi_v\)">\(\chi_v\)</span> has Satake eigenvalue <span class="math" data-tex="\(\chi_v(\varpi_v)\)">\(\chi_v(\varpi_v)\)</span>, with <span class="math" data-tex="\(|\varpi_v|_v=q_v^{-1}\)">\(|\varpi_v|_v=q_v^{-1}\)</span>.</p>
+<p>An <strong>L-homomorphism</strong></p>
+<span class="math math-display" data-tex="\[
+\phi:{}^LH\longrightarrow{}^LG
+\tag{1.2}
+\]">\[
+\phi:{}^LH\longrightarrow{}^LG
+\tag{1.2}
+\]</span>
+<p>commutes with projection to <span class="math" data-tex="\(\Gamma_F\)">\(\Gamma_F\)</span>, is continuous, and restricts to an algebraic homomorphism <span class="math" data-tex="\(\widehat H\to\widehat G\)">\(\widehat H\to\widehat G\)</span>. We require the usual semisimplicity condition, so that composition takes admissible local parameters to admissible parameters. L-homomorphisms are considered up to <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>-conjugacy. The phrase “over <span class="math" data-tex="\(F\)">\(F\)</span>” includes the Galois factor in (1.2); a homomorphism of the connected dual groups alone need not define an L-homomorphism.</p>
+<p>At a finite place, a local parameter has domain the Weil–Deligne group, or equivalently the Weil group together with an <span class="math" data-tex="\(SL_2(\mathbb C)\)">\(SL_2(\mathbb C)\)</span>-factor in the usual parametrization. At an archimedean place its domain is the local Weil group. Denote either domain by <span class="math" data-tex="\(W&#x27;_v\)">\(W&#x27;_v\)</span>. Local functoriality is the operation</p>
+<span class="math math-display" data-tex="\[
+\rho_v:W&#x27;_v\longrightarrow{}^LH_v
+\quad\longmapsto\quad
+\phi_v\circ\rho_v:W&#x27;_v\longrightarrow{}^LG_v.
+\tag{1.3}
+\]">\[
+\rho_v:W&#x27;_v\longrightarrow{}^LH_v
+\quad\longmapsto\quad
+\phi_v\circ\rho_v:W&#x27;_v\longrightarrow{}^LG_v.
+\tag{1.3}
+\]</span>
+<p>The local Langlands conjecture asks for a correspondence attaching a packet to each parameter. For <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span>, its packet contains one irreducible admissible representation; we use this correspondence where it is proved earlier or explicitly assumed. For a general <span class="math" data-tex="\(G\)">\(G\)</span>, (1.3) gives a target packet under the conjectural correspondence; it does not specify a preferred member for every member of the source packet. Internal packet parametrizations and the global multiplicity conditions are additional data.</p>
+<p>At an unramified place, normalized Satake theory already makes (1.3) concrete. The class <span class="math" data-tex="\(c_v(\pi)\)">\(c_v(\pi)\)</span> lies in the Frobenius coset of <span class="math" data-tex="\({}^LH_v\)">\({}^LH_v\)</span>. Its image <span class="math" data-tex="\(\phi_v(c_v(\pi))\)">\(\phi_v(c_v(\pi))\)</span> is a semisimple class in the corresponding coset of <span class="math" data-tex="\({}^LG_v\)">\({}^LG_v\)</span>, and hence determines an unramified representation of <span class="math" data-tex="\(G(F_v)\)">\(G(F_v)\)</span>. This is the meaning of <span class="math" data-tex="\(\phi_*(\pi_v)\)">\(\phi_*(\pi_v)\)</span> at a good place. In a nonsplit group it is a coset conjugacy class, rather than an ordinary conjugacy class in <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>.</p>
+<p><strong>Definition 1.1 (weak and strong transfer).</strong> A weak transfer of an automorphic representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(H(\mathbb A_F)\)">\(H(\mathbb A_F)\)</span> with respect to <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is an automorphic representation <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> of <span class="math" data-tex="\(G(\mathbb A_F)\)">\(G(\mathbb A_F)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+c_v(\Pi)=\phi_v(c_v(\pi))\qquad(v\notin S)
+\tag{1.4}
+\]">\[
+c_v(\Pi)=\phi_v(c_v(\pi))\qquad(v\notin S)
+\tag{1.4}
+\]</span>
+<p>for some finite set <span class="math" data-tex="\(S\)">\(S\)</span> containing the archimedean places and all relevant ramified places. A strong transfer has parameter <span class="math" data-tex="\(\phi_v\circ\rho_{\pi_v}\)">\(\phi_v\circ\rho_{\pi_v}\)</span> at every place, including the ramified and archimedean places, whenever the local correspondence is available. For general groups this condition specifies membership in the corresponding packets. For <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span> it specifies the local representation itself. When the target is <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span>, we will explicitly require a weak transfer to be isobaric when using its uniqueness.</p>
+<p><strong>Conjecture 1.2 (Langlands, 1967–1970; weak functoriality).</strong> For quasi-split <span class="math" data-tex="\(H,G\)">\(H,G\)</span> and an admissible L-homomorphism (1.2), every automorphic representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(H(\mathbb A_F)\)">\(H(\mathbb A_F)\)</span> should have an automorphic weak transfer satisfying (1.4). A general-linear target is expected to admit an isobaric transfer. Even for unitary cuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the transfer need not be cuspidal, and this statement alone does not say that all its isobaric constituents are unitary cuspidal representations.</p>
+<p>This is the formulation in terms of almost all Satake classes [Langlands 1997, §3, pp.5–7; Arthur, June 2020 author draft, pp.14–15]. To state strong functoriality precisely for general groups, one must include the packet and multiplicity conditions rather than demand that every choice of local packet members be automorphic. One particularly clean formulation is the following.</p>
+<p><strong>Conjecture 1.3 (tempered transfer to a general linear group).</strong> Assume the local Langlands correspondences for <span class="math" data-tex="\(H(F_v)\)">\(H(F_v)\)</span> at every place. Let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be an everywhere tempered cuspidal automorphic representation of <span class="math" data-tex="\(H(\mathbb A_F)\)">\(H(\mathbb A_F)\)</span>, and let <span class="math" data-tex="\(\phi:{}^LH\to{}^LGL_N\)">\(\phi:{}^LH\to{}^LGL_N\)</span> be an L-homomorphism. The restricted tensor product of the unique local representations with parameters <span class="math" data-tex="\(\phi_v\circ\rho_{\pi_v}\)">\(\phi_v\circ\rho_{\pi_v}\)</span> is automorphic. This is [Getz–Hahn, 22 April 2022 draft, Conjecture 12.6.1, p.295], with its extension field taken to be <span class="math" data-tex="\(F\)">\(F\)</span>. Its local formulation gives a tempered target.</p>
+<p>The tempered hypothesis in Conjecture 1.3 is unsuitable as a hypothesis for a proof of Ramanujan: it would assume the desired property of the source. The argument in §5 instead states the stronger transfer hypotheses needed for a possibly nontempered cusp form. Arthur parameters describe the additional phenomena that occur outside the tempered spectrum; the final lesson returns to them.</p>
+<p><strong>Proposition 1.4 (uniqueness and composition).</strong> Isobaric weak transfers to <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span>, when they exist, are unique. If <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is a weak transfer of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> for <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a weak transfer of <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> for <span class="math" data-tex="\(\psi:{}^LG\to{}^LK\)">\(\psi:{}^LG\to{}^LK\)</span>, then <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is a weak transfer of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> for <span class="math" data-tex="\(\psi\circ\phi\)">\(\psi\circ\phi\)</span>.</p>
+<p><strong>Proof.</strong> Two isobaric transfers have the same unramified local representations outside the union of their finite exceptional sets. Isobaric strong multiplicity one, proved in the preceding lesson, identifies them, including their constituents, twists and multiplicities. For composition, outside the union of the two exceptional sets,</p>
+<span class="math math-display" data-tex="\[
+c_v(\Omega)=\psi_v(c_v(\Pi))
+=\psi_v\phi_v(c_v(\pi)).
+\]">\[
+c_v(\Omega)=\psi_v(c_v(\Pi))
+=\psi_v\phi_v(c_v(\pi)).
+\]</span>
+<p>This is (1.4) for the composite. No statement about the omitted places follows from this argument. ∎</p>
+<h2 id="2-the-l-function-identity">2. The L-function identity</h2>
+<p>Let <span class="math" data-tex="\(r:{}^LG\to GL(V)\)">\(r:{}^LG\to GL(V)\)</span> be a finite-dimensional representation, algebraic on the dual group and admissible for defining Langlands L-factors. For a sufficiently large <span class="math" data-tex="\(S\)">\(S\)</span>, the unramified factors are</p>
+<span class="math math-display" data-tex="\[
+L_v(s,\Pi,r)=\det(1-q_v^{-s}r(c_v(\Pi)))^{-1}.
+\tag{2.1}
+\]">\[
+L_v(s,\Pi,r)=\det(1-q_v^{-s}r(c_v(\Pi)))^{-1}.
+\tag{2.1}
+\]</span>
+<p><strong>Proposition 2.1 (functorial identity of partial L-functions).</strong> If <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is a weak transfer of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> for <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+L^S(s,\Pi,r)=L^S(s,\pi,r\circ\phi).
+\tag{2.2}
+\]">\[
+L^S(s,\Pi,r)=L^S(s,\pi,r\circ\phi).
+\tag{2.2}
+\]</span>
+<p>This is an identity of local Euler factors and formal Euler products. It is an identity of analytic functions wherever the products converge absolutely. If both sides have meromorphic continuations, they agree by continuation.</p>
+<p><strong>Proof.</strong> At each <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, choose representatives so that <span class="math" data-tex="\(c_v(\Pi)\)">\(c_v(\Pi)\)</span> is conjugate to <span class="math" data-tex="\(\phi_v(c_v(\pi))\)">\(\phi_v(c_v(\pi))\)</span>. Applying <span class="math" data-tex="\(r\)">\(r\)</span> preserves conjugacy, and therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\det(1-q_v^{-s}r(c_v(\Pi)))
+&amp;=\det(1-q_v^{-s}r(\phi_v(c_v(\pi))))\\
+&amp;=\det(1-q_v^{-s}(r\circ\phi_v)(c_v(\pi))).
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+\det(1-q_v^{-s}r(c_v(\Pi)))
+&amp;=\det(1-q_v^{-s}r(\phi_v(c_v(\pi))))\\
+&amp;=\det(1-q_v^{-s}(r\circ\phi_v)(c_v(\pi))).
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>Taking reciprocals gives equality of the local factors. Their expansions at <span class="math" data-tex="\(q_v^{-s}=0\)">\(q_v^{-s}=0\)</span> consequently have identical coefficients, so multiplying gives the formal identity. In any common half-plane of absolute convergence, products of the same factors give the same analytic function. The identity theorem then gives the asserted equality of meromorphic continuations. ∎</p>
+<p>For the split general-linear instances below, existence of an initial common half-plane can also be checked directly. The preceding lessons give a bound <span class="math" data-tex="\(|\alpha_{i,v}|\le q_v^C\)">\(|\alpha_{i,v}|\le q_v^C\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(v\)">\(v\)</span>, for the finitely many fixed cuspidal constituents and norm twists involved. A fixed tensor or symmetric-power construction replaces this by a bound of the same form, with a larger constant. The logarithmic Euler-product estimate from <em>Automorphic representations and automorphic L-functions</em>, Proposition 2.1, gives absolute convergence far enough to the right. No claim about the optimal half-plane is needed for (2.2).</p>
+<p>Weak transfer proves neither equality of the factors at <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span> nor equality of conductors, epsilon factors or archimedean gamma factors. Strong transfer and a local correspondence compatible with the relevant factors give those further identities. Even in the strong case, an analytic property of the full product need not follow from an unproved analytic property of a different L-function; the standard <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span> analytic theorem is the usable input.</p>
+<h2 id="3-basic-instances">3. Basic instances</h2>
+<h3 id="direct-sums-symmetric-powers-and-tensor-products">Direct sums, symmetric powers and tensor products</h3>
+<p>The block diagonal embedding</p>
+<span class="math math-display" data-tex="\[
+\prod_i GL_{n_i}(\mathbb C)\longrightarrow GL_{\sum_i n_i}(\mathbb C)
+\tag{3.1}
+\]">\[
+\prod_i GL_{n_i}(\mathbb C)\longrightarrow GL_{\sum_i n_i}(\mathbb C)
+\tag{3.1}
+\]</span>
+<p>corresponds to isobaric addition <span class="math" data-tex="\(\boxplus_i\pi_i\)">\(\boxplus_i\pi_i\)</span>. Its Satake eigenvalues are the union, with multiplicity, of the eigenvalues of the <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>, and its standard L-factor is their product. This case comes from Eisenstein series and normalized parabolic induction [Getz–Hahn, 22 April 2022 draft, §13.2, p.306]. The automorphic existence and identification of the chosen isobaric subquotient are stated inputs in §6 of the preceding lesson; their general proof is still required. The union of Satake eigenvalues and the determinant calculation do not construct that global representation.</p>
+<p>For symmetric powers, extend the algebraic representation</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^r:GL_2(\mathbb C)\longrightarrow GL_{r+1}(\mathbb C)
+\tag{3.2}
+\]">\[
+\operatorname{Sym}^r:GL_2(\mathbb C)\longrightarrow GL_{r+1}(\mathbb C)
+\tag{3.2}
+\]</span>
+<p>by the identity on <span class="math" data-tex="\(\Gamma_F\)">\(\Gamma_F\)</span>. If <span class="math" data-tex="\(c_v(\pi)=\operatorname{diag}(\alpha_v,\beta_v)\)">\(c_v(\pi)=\operatorname{diag}(\alpha_v,\beta_v)\)</span>, its action on the basis <span class="math" data-tex="\(e_1^{r-j}e_2^j\)">\(e_1^{r-j}e_2^j\)</span>, <span class="math" data-tex="\(0\le j\le r\)">\(0\le j\le r\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^r c_v(\pi)
+=\operatorname{diag}(\alpha_v^r,\alpha_v^{r-1}\beta_v,
+\ldots,\beta_v^r).
+\tag{3.3}
+\]">\[
+\operatorname{Sym}^r c_v(\pi)
+=\operatorname{diag}(\alpha_v^r,\alpha_v^{r-1}\beta_v,
+\ldots,\beta_v^r).
+\tag{3.3}
+\]</span>
+<p>Thus a symmetric-power transfer has local factor</p>
+<span class="math math-display" data-tex="\[
+L_v(s,\operatorname{Sym}^r\pi)
+=\prod_{j=0}^r
+(1-\alpha_v^{r-j}\beta_v^j q_v^{-s})^{-1}.
+\tag{3.4}
+\]">\[
+L_v(s,\operatorname{Sym}^r\pi)
+=\prod_{j=0}^r
+(1-\alpha_v^{r-j}\beta_v^j q_v^{-s})^{-1}.
+\tag{3.4}
+\]</span>
+<p>The determinant is <span class="math" data-tex="\((\alpha_v\beta_v)^{r(r+1)/2}\)">\((\alpha_v\beta_v)^{r(r+1)/2}\)</span>: each exponent has sum <span class="math" data-tex="\(0+1+\cdots+r\)">\(0+1+\cdots+r\)</span>. At a place of strong compatibility, its central character is therefore <span class="math" data-tex="\(\omega_{\pi_v}^{r(r+1)/2}\)">\(\omega_{\pi_v}^{r(r+1)/2}\)</span>.</p>
+<p>The tensor-product map is</p>
+<span class="math math-display" data-tex="\[
+GL_n(\mathbb C)\times GL_m(\mathbb C)\longrightarrow GL_{nm}(\mathbb C),
+\qquad(A,B)\longmapsto A\otimes B.
+\tag{3.5}
+\]">\[
+GL_n(\mathbb C)\times GL_m(\mathbb C)\longrightarrow GL_{nm}(\mathbb C),
+\qquad(A,B)\longmapsto A\otimes B.
+\tag{3.5}
+\]</span>
+<p>For diagonalizable <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, tensoring eigenvectors gives eigenvalues <span class="math" data-tex="\(\alpha_i\beta_j\)">\(\alpha_i\beta_j\)</span>, one for every ordered pair. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_v(s,\pi\boxtimes\pi&#x27;)&amp;=
+\prod_{i=1}^n\prod_{j=1}^m(1-\alpha_{i,v}\beta_{j,v}q_v^{-s})^{-1},\\
+\det(A\otimes B)&amp;=(\det A)^m(\det B)^n.
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+L_v(s,\pi\boxtimes\pi&#x27;)&amp;=
+\prod_{i=1}^n\prod_{j=1}^m(1-\alpha_{i,v}\beta_{j,v}q_v^{-s})^{-1},\\
+\det(A\otimes B)&amp;=(\det A)^m(\det B)^n.
+\end{aligned}
+\tag{3.6}
+\]</span>
+<p>The local expression is the unramified Rankin–Selberg factor. Rankin–Selberg theory constructs and studies that L-function without, by itself, constructing a global automorphic tensor-product representation. Functorial tensor-product automorphy is a further assertion. The next lesson discusses proved cases.</p>
+<h3 id="reciprocity-and-artin-l-functions">Reciprocity and Artin L-functions</h3>
+<p>For the trivial group, <span class="math" data-tex="\({}^L\{1\}=\Gamma_F\)">\({}^L\{1\}=\Gamma_F\)</span>. A finite-image complex representation <span class="math" data-tex="\(\rho:\Gamma_F\to GL_N(\mathbb C)\)">\(\rho:\Gamma_F\to GL_N(\mathbb C)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\phi_\rho:\Gamma_F\longrightarrow GL_N(\mathbb C)\times\Gamma_F,
+\qquad\gamma\longmapsto(\rho(\gamma),\gamma).
+\tag{3.7}
+\]">\[
+\phi_\rho:\Gamma_F\longrightarrow GL_N(\mathbb C)\times\Gamma_F,
+\qquad\gamma\longmapsto(\rho(\gamma),\gamma).
+\tag{3.7}
+\]</span>
+<p>The source has one automorphic representation, the trivial one. At an unramified place its transfer should have Satake class <span class="math" data-tex="\(\rho(\operatorname{Frob}_v)\)">\(\rho(\operatorname{Frob}_v)\)</span>. Proposition 2.1 gives</p>
+<span class="math math-display" data-tex="\[
+L^S(s,\Pi)=L^S(s,\rho).
+\tag{3.8}
+\]">\[
+L^S(s,\Pi)=L^S(s,\rho).
+\tag{3.8}
+\]</span>
+<p>The Galois factor in (3.7) is essential: the L-group of the trivial group is not trivial. Finite-image <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unitary after choosing an invariant Hermitian form. Indeed, average any positive definite form over its finite image; the average is positive definite and invariant.</p>
+<p>The <strong>strong Artin conjecture</strong> asks that an irreducible <span class="math" data-tex="\(\rho\)">\(\rho\)</span> correspond to a cuspidal <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> on <span class="math" data-tex="\(GL_N\)">\(GL_N\)</span>, with matching local factors at every place. For <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, the Godement–Jacquet theorem then makes the complete Artin L-function entire. The finite Artin product is also entire: it is the complete product multiplied by the reciprocal archimedean factors, which are entire. In dimension one, class field theory gives the Hecke character, and the nontrivial finite-order characters have entire completed L-functions by Tate's theorem. The trivial character is the exception: its completed Dedekind zeta function has poles at zero and one. Almost-all-place agreement (3.8), without control of the removed factors, is not the entire strong Artin assertion. See [Arthur, June 2020 author draft, pp.14–15; Taylor 2004, §5.3.2, pp.108–110].</p>
+<p>More general Weil-group representations extend this picture. Geometric <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic representations and motives require additional hypotheses, coefficient comparisons and normalization choices. They are the subject of <em>Global reciprocity for GL_n: conjectures and known cases</em>.</p>
+<h3 id="base-change">Base change</h3>
+<p>For a finite Galois extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+{}^L\operatorname{Res}_{E/F}GL_n
+=GL_n(\mathbb C)^d\rtimes\Gamma_F,
+\tag{3.9}
+\]">\[
+{}^L\operatorname{Res}_{E/F}GL_n
+=GL_n(\mathbb C)^d\rtimes\Gamma_F,
+\tag{3.9}
+\]</span>
+<p>where <span class="math" data-tex="\(\Gamma_F\)">\(\Gamma_F\)</span> permutes the factors through <span class="math" data-tex="\(\operatorname{Gal}(E/F)\)">\(\operatorname{Gal}(E/F)\)</span>. The diagonal embedding <span class="math" data-tex="\(A\mapsto(A,\ldots,A)\)">\(A\mapsto(A,\ldots,A)\)</span>, together with the identity on <span class="math" data-tex="\(\Gamma_F\)">\(\Gamma_F\)</span>, is an L-homomorphism from <span class="math" data-tex="\({}^LGL_n\)">\({}^LGL_n\)</span> to (3.9). It corresponds locally to restriction of a parameter to the Weil groups of <span class="math" data-tex="\(E_w\)">\(E_w\)</span>, and globally to base change from <span class="math" data-tex="\(GL_n(\mathbb A_F)\)">\(GL_n(\mathbb A_F)\)</span> to <span class="math" data-tex="\(GL_n(\mathbb A_E)\)">\(GL_n(\mathbb A_E)\)</span>. The same construction works for a group defined over <span class="math" data-tex="\(F\)">\(F\)</span> and its base extension to <span class="math" data-tex="\(E\)">\(E\)</span>, with the relevant dual action included.</p>
+<p>If <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> are unramified and the residue degree is <span class="math" data-tex="\(f\)">\(f\)</span>, then <span class="math" data-tex="\(q_w=q_v^f\)">\(q_w=q_v^f\)</span> and the compatible Frobenius at <span class="math" data-tex="\(w\)">\(w\)</span> maps to the <span class="math" data-tex="\(f\)">\(f\)</span>-th power of the one at <span class="math" data-tex="\(v\)">\(v\)</span>. Hence the base-changed eigenvalues are <span class="math" data-tex="\(\alpha_{i,v}^f\)">\(\alpha_{i,v}^f\)</span> and</p>
+<span class="math math-display" data-tex="\[
+L_w(s,\pi_E)=\prod_i(1-\alpha_{i,v}^f q_w^{-s})^{-1}.
+\tag{3.10}
+\]">\[
+L_w(s,\pi_E)=\prod_i(1-\alpha_{i,v}^f q_w^{-s})^{-1}.
+\tag{3.10}
+\]</span>
+<p>For a quadratic extension with associated character <span class="math" data-tex="\(\varepsilon_{E/F}\)">\(\varepsilon_{E/F}\)</span>, this gives, at every unramified place of both the extension and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\prod_{w\mid v}L_w(s,\pi_E)
+=L_v(s,\pi)L_v(s,\pi\otimes\varepsilon_{E/F}).
+\tag{3.11}
+\]">\[
+\prod_{w\mid v}L_w(s,\pi_E)
+=L_v(s,\pi)L_v(s,\pi\otimes\varepsilon_{E/F}).
+\tag{3.11}
+\]</span>
+<p>At a split place there are two identical factors and <span class="math" data-tex="\(\varepsilon_v(\varpi_v)=1\)">\(\varepsilon_v(\varpi_v)=1\)</span>. At an inert place there is one factor with <span class="math" data-tex="\(f=2\)">\(f=2\)</span>, and <span class="math" data-tex="\(\varepsilon_v(\varpi_v)=-1\)">\(\varepsilon_v(\varpi_v)=-1\)</span>. For each eigenvalue, the required identity is <span class="math" data-tex="\((1-\alpha X)(1+\alpha X)=1-\alpha^2X^2\)">\((1-\alpha X)(1+\alpha X)=1-\alpha^2X^2\)</span>, with <span class="math" data-tex="\(X=q_v^{-s}\)">\(X=q_v^{-s}\)</span>. This proves (3.11) in both cases. The existence of base change is a global theorem for cyclic extensions, rather than a consequence of the polynomial calculation [Getz–Hahn, 22 April 2022 draft, §13.5, pp.310–312; Taylor 2004, §5.2, pp.106–107].</p>
+<h3 id="automorphic-induction">Automorphic induction</h3>
+<p>There is an L-homomorphism in the opposite direction,</p>
+<span class="math math-display" data-tex="\[
+{}^L\operatorname{Res}_{E/F}GL_n\longrightarrow{}^LGL_{nd}.
+\tag{3.12}
+\]">\[
+{}^L\operatorname{Res}_{E/F}GL_n\longrightarrow{}^LGL_{nd}.
+\tag{3.12}
+\]</span>
+<p>Its <span class="math" data-tex="\(nd\)">\(nd\)</span>-dimensional representation acts on a direct sum of <span class="math" data-tex="\(d\)">\(d\)</span> copies of <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>: the <span class="math" data-tex="\(d\)">\(d\)</span> dual factors act block diagonally and the Galois group permutes the blocks. For a concrete convention, index them by <span class="math" data-tex="\(\tau\in\operatorname{Gal}(E/F)\)">\(\tau\in\operatorname{Gal}(E/F)\)</span>, let <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> act by <span class="math" data-tex="\(A_\tau\)">\(A_\tau\)</span> on the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-block, and let <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span> send that block to the <span class="math" data-tex="\(\gamma\tau\)">\(\gamma\tau\)</span>-block. Then</p>
+<span class="math math-display" data-tex="\[
+P_\gamma D(B)P_\gamma^{-1}=D(\gamma\cdot B),
+\quad (\gamma\cdot B)_\tau=B_{\gamma^{-1}\tau}.
+\tag{3.13}
+\]">\[
+P_\gamma D(B)P_\gamma^{-1}=D(\gamma\cdot B),
+\quad (\gamma\cdot B)_\tau=B_{\gamma^{-1}\tau}.
+\tag{3.13}
+\]</span>
+<p>Thus <span class="math" data-tex="\((A,\gamma)\mapsto(D(A)P_\gamma,\gamma)\)">\((A,\gamma)\mapsto(D(A)P_\gamma,\gamma)\)</span> is a homomorphism of the semidirect products. Locally it is induction of Weil–Deligne parameters. Globally the predicted transfer is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{AI}_{E/F}:GL_n(\mathbb A_E)
+\longrightarrow GL_{nd}(\mathbb A_F).
+\tag{3.14}
+\]">\[
+\operatorname{AI}_{E/F}:GL_n(\mathbb A_E)
+\longrightarrow GL_{nd}(\mathbb A_F).
+\tag{3.14}
+\]</span>
+<p>The dual representation uses all the dual factors in (3.9). Only after restriction to the diagonal subgroup does its description reduce to the standard <span class="math" data-tex="\(GL_n\)">\(GL_n\)</span> representation tensored with the permutation representation of the Galois group. Confusing that restriction with the full L-map loses the independent blocks.</p>
+<h3 id="classical-groups-and-endoscopy">Classical groups and endoscopy</h3>
+<p>For split classical groups, the standard dual embeddings give the following instances.</p>
+<table>
+<thead>
+<tr>
+<th>Source group <span class="math" data-tex="\(H\)">\(H\)</span></th>
+<th>Dual group <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span></th>
+<th>Target for the standard transfer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(Sp_{2n}\)">\(Sp_{2n}\)</span></td>
+<td><span class="math" data-tex="\(SO_{2n+1}(\mathbb C)\)">\(SO_{2n+1}(\mathbb C)\)</span></td>
+<td><span class="math" data-tex="\(GL_{2n+1}\)">\(GL_{2n+1}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(SO_{2n+1}\)">\(SO_{2n+1}\)</span></td>
+<td><span class="math" data-tex="\(Sp_{2n}(\mathbb C)\)">\(Sp_{2n}(\mathbb C)\)</span></td>
+<td><span class="math" data-tex="\(GL_{2n}\)">\(GL_{2n}\)</span></td>
+</tr>
+<tr>
+<td>Split <span class="math" data-tex="\(SO_{2n}\)">\(SO_{2n}\)</span></td>
+<td><span class="math" data-tex="\(SO_{2n}(\mathbb C)\)">\(SO_{2n}(\mathbb C)\)</span></td>
+<td><span class="math" data-tex="\(GL_{2n}\)">\(GL_{2n}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The homomorphism is the defining matrix representation of the listed dual group, extended over <span class="math" data-tex="\(\Gamma_F\)">\(\Gamma_F\)</span>. The symplectic and orthogonal groups exchange roles under duality. For nonsplit groups the Galois action must also be matched. In particular, a unitary group's dual <span class="math" data-tex="\(GL_n(\mathbb C)\)">\(GL_n(\mathbb C)\)</span> has a nontrivial Galois action; its familiar degree-<span class="math" data-tex="\(n\)">\(n\)</span> transfer is base change to the quadratic extension, not the same formula as a split <span class="math" data-tex="\(GL_n/F\)">\(GL_n/F\)</span> embedding. These constructions and their generic cases are discussed in [Getz–Hahn, 22 April 2022 draft, §13.7, pp.315–316]. We do not assert temperedness of every cuspidal representation of a classical group: nontempered cuspidal packets are part of the theory.</p>
+<p>An endoscopic datum supplies an endoscopic group and a suitable L-embedding into the original L-group, together with the data needed for transfer identities. It generally does not arise from an embedding of the original algebraic groups over <span class="math" data-tex="\(F\)">\(F\)</span>. The local packet structure and the global multiplicity formula are essential. The final lesson explains this instance and the role of Arthur parameters.</p>
+<h2 id="4-quadratic-induction-and-a-dihedral-symmetric-square">4. Quadratic induction and a dihedral symmetric square</h2>
+<p>Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be quadratic, write <span class="math" data-tex="\(\tau\)">\(\tau\)</span> for its nonidentity automorphism, and let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be a unitary Hecke character of <span class="math" data-tex="\(E\)">\(E\)</span>. We use the following existence theorem.</p>
+<p><strong>Theorem 4.1 (quadratic automorphic induction).</strong> The induction <span class="math" data-tex="\(\pi=\operatorname{AI}_{E/F}(\theta)\)">\(\pi=\operatorname{AI}_{E/F}(\theta)\)</span> is an isobaric automorphic representation of <span class="math" data-tex="\(GL_2(\mathbb A_F)\)">\(GL_2(\mathbb A_F)\)</span>, with the induced local Weil parameters at every place. It is cuspidal if and only if <span class="math" data-tex="\(\theta\ne\theta^\tau\)">\(\theta\ne\theta^\tau\)</span>. If <span class="math" data-tex="\(\theta=\mu\circ N_{E/F}\)">\(\theta=\mu\circ N_{E/F}\)</span>, then <span class="math" data-tex="\(\pi=\mu\boxplus\mu\varepsilon_{E/F}\)">\(\pi=\mu\boxplus\mu\varepsilon_{E/F}\)</span>.</p>
+<p>These are the degree-one quadratic cases of [Getz–Hahn, 22 April 2022 draft, Theorem 13.5.2, pp.311–312], with the inducing representation correctly taken over <span class="math" data-tex="\(E\)">\(E\)</span>; compatibility with local parameters is discussed immediately after that theorem.</p>
+<p>The noninvariant case is proved in <a href="../automorphic-forms-and-representations-of-gl2/dihedral-forms-examples-and-the-ramanujan-conjecture-for-gl2.html">Dihedral forms, examples, and the Ramanujan conjecture for GL₂</a>, Theorem 2.1 and §2.1, over every number field. That proof uses the earlier local quadratic models, identifies all complete Hecke twists, proves their entire continuation and strip estimates, and applies the proved all-field converse, Theorem 4.5 of the earlier converse lesson. Proposition 1.2 of the dihedral lesson proves that invariance is equivalent to being a norm pullback: extend the invariant character to the two open cosets of the relative Weil group, then use its topological abelianization to obtain the base Hecke character. The induced parameter is then the sum of the two extensions. Proposition 4.1a below constructs the invariant case's global automorphic sum directly by an Eisenstein series over every number field. If the inducing character is unitary, its two extensions are unitary: choose the square root on the unit circle in the two-coset extension argument.</p>
+<h3 id="the-invariant-character-an-eisenstein-construction-over-every-number-field">The invariant character: an Eisenstein construction over every number field</h3>
+<p>The invariant case of Theorem 4.1 can be constructed without assuming general isobaric existence. We give the argument because splitting a parameter by itself does not produce an automorphic representation.</p>
+<p><strong>Proposition 4.1a.</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be any number field, let <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> be a nontrivial quadratic Hecke character of <span class="math" data-tex="\(F\)">\(F\)</span>, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a unitary Hecke character. The restricted tensor product of the normalized local inductions</p>
+<span class="math math-display" data-tex="\[
+I_v=\operatorname{Ind}_{B(F_v)}^{GL_2(F_v)}
+(\mu_v\otimes\mu_v\varepsilon_v)
+\tag{4.1a}
+\]">\[
+I_v=\operatorname{Ind}_{B(F_v)}^{GL_2(F_v)}
+(\mu_v\otimes\mu_v\varepsilon_v)
+\tag{4.1a}
+\]</span>
+<p>has an injective realization in automorphic forms by Eisenstein series at the unitary parameter. It is irreducible and noncuspidal. This realizes the particular isobaric sum <span class="math" data-tex="\(\mu\boxplus\mu\varepsilon\)">\(\mu\boxplus\mu\varepsilon\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(C_F=F^\times\backslash\mathbb A_F^\times\)">\(C_F=F^\times\backslash\mathbb A_F^\times\)</span>, <span class="math" data-tex="\(d=[F:\mathbb Q]\)">\(d=[F:\mathbb Q]\)</span>, and <span class="math" data-tex="\(u=s+1/2\)">\(u=s+1/2\)</span>. A flat section has a fixed compact-model restriction and satisfies</p>
+<span class="math math-display" data-tex="\[
+f_s\left(\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}g\right)
+=\mu(a)\mu\varepsilon(c)|a/c|^{s+1/2}f_s(g).
+\tag{4.1b}
+\]">\[
+f_s\left(\begin{pmatrix}a&amp;b\\0&amp;c\end{pmatrix}g\right)
+=\mu(a)\mu\varepsilon(c)|a/c|^{s+1/2}f_s(g).
+\tag{4.1b}
+\]</span>
+<p>Here the compact group is <span class="math" data-tex="\(O(2)\)">\(O(2)\)</span> at a real place, <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span> at a complex place, and <span class="math" data-tex="\(GL_2(\mathcal O_v)\)">\(GL_2(\mathcal O_v)\)</span> at a finite place. The local Iwasawa decompositions used for this model are proved in the preceding Satake lesson for <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span>, and at infinity follow from orthogonalizing the two rows.</p>
+<p>For <span class="math" data-tex="\(\Phi\in\mathcal S(\mathbb A_F^2)\)">\(\Phi\in\mathcal S(\mathbb A_F^2)\)</span>, initially in <span class="math" data-tex="\(\Re u&gt;1\)">\(\Re u&gt;1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+f_{\Phi,s}(g)=\mu(\det g)|\det g|^u
+\int_{\mathbb A_F^\times}
+\Phi((0,t)g)\varepsilon(t)|t|^{2u}\,d^\times t.
+\tag{4.1c}
+\]">\[
+f_{\Phi,s}(g)=\mu(\det g)|\det g|^u
+\int_{\mathbb A_F^\times}
+\Phi((0,t)g)\varepsilon(t)|t|^{2u}\,d^\times t.
+\tag{4.1c}
+\]</span>
+<p>The multiplicative measures have finite unit groups of volume one. Changing <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(ct\)">\(ct\)</span> verifies (4.1b): the character multiplier is
+<span class="math" data-tex="\(\mu(ac)\varepsilon(c)^{-1}=\mu(a)\mu\varepsilon(c)\)">\(\mu(ac)\varepsilon(c)^{-1}=\mu(a)\mu\varepsilon(c)\)</span>, and the norm multiplier is <span class="math" data-tex="\(|ac|^u|c|^{-2u}=|a/c|^u\)">\(|ac|^u|c|^{-2u}=|a/c|^u\)</span>. Convergence of this rank-one integral in the initial region is Proposition 9.1 of <a href="../NT-ADL/NT-ADL-09.html">Tate's global theory: continuation and functional equation</a>.</p>
+<p>The cosets <span class="math" data-tex="\(B(F)\backslash GL_2(F)\)">\(B(F)\backslash GL_2(F)\)</span> are the rational bottom-row lines. Splitting each nonzero row into its line and a scalar in <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> therefore unfolds the Eisenstein sum to</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(g,f_{\Phi,s})&amp;=\mu(\det g)|\det g|^u J_g(u),\\
+J_g(u)&amp;=\int_{C_F}
+\left(\sum_{v\in F^2}\Phi(tv g)-\Phi(0)\right)
+\varepsilon(t)|t|^{2u}\,d^\times t.
+\end{aligned}
+\tag{4.1d}
+\]">\[
+\begin{aligned}
+E(g,f_{\Phi,s})&amp;=\mu(\det g)|\det g|^u J_g(u),\\
+J_g(u)&amp;=\int_{C_F}
+\left(\sum_{v\in F^2}\Phi(tv g)-\Phi(0)\right)
+\varepsilon(t)|t|^{2u}\,d^\times t.
+\end{aligned}
+\tag{4.1d}
+\]</span>
+<p>We justify the convergence and continuation uniformly in the number field. The norm-one class group <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span> is compact by Theorem 3.3 of <a href="../NT-ADL/NT-ADL-03.html">Idèles and the idèle class group</a>. Its proof and the compact-lift argument in the theta lemma of NT-ADL-09 give a compact set of idèle representatives. Choose the norm splitting <span class="math" data-tex="\(t_\lambda\)">\(t_\lambda\)</span> with component <span class="math" data-tex="\(\lambda^{1/d}\)">\(\lambda^{1/d}\)</span> at every infinite place and component one at every finite place. It has idèle norm <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Haar measure on the quotient is a positive constant times <span class="math" data-tex="\(d\lambda/\lambda\)">\(d\lambda/\lambda\)</span> times Haar measure on <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>; the harmless constant need not be normalized to one.</p>
+<p>For fixed <span class="math" data-tex="\(g\)">\(g\)</span>, and uniformly for <span class="math" data-tex="\(g\)">\(g\)</span> in a compact set and representatives <span class="math" data-tex="\(y\)">\(y\)</span> in that compact lift, the finite support of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> confines contributing rows to a fixed fractional-ideal lattice in <span class="math" data-tex="\(F^2\)">\(F^2\)</span>. In its Minkowski embedding this is a lattice of real rank <span class="math" data-tex="\(2d\)">\(2d\)</span>. The archimedean factors of <span class="math" data-tex="\(y\)">\(y\)</span> and their inverses are bounded. If <span class="math" data-tex="\(R=\lambda^{1/d}\ge1\)">\(R=\lambda^{1/d}\ge1\)</span>, Schwartz estimates give</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{v\ne0}\Phi(t_\lambda yv g)\right|
+\le C_N\sum_{v\in\Lambda\setminus\{0\}}(1+cR\|v\|)^{-N}
+=O(\lambda^{-N/d})\qquad(N&gt;2d).
+\tag{4.1e}
+\]">\[
+\left|\sum_{v\ne0}\Phi(t_\lambda yv g)\right|
+\le C_N\sum_{v\in\Lambda\setminus\{0\}}(1+cR\|v\|)^{-N}
+=O(\lambda^{-N/d})\qquad(N&gt;2d).
+\tag{4.1e}
+\]</span>
+<p>To verify the summability here, disjoint balls smaller than the lattice's minimum separation bound the number of points of norm at most <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(C(1+T)^{2d}\)">\(C(1+T)^{2d}\)</span>. Dyadic shells then show <span class="math" data-tex="\(\sum_{v\ne0}\|v\|^{-N}&lt;\infty\)">\(\sum_{v\ne0}\|v\|^{-N}&lt;\infty\)</span> for <span class="math" data-tex="\(N&gt;2d\)">\(N&gt;2d\)</span>. Choosing <span class="math" data-tex="\(N\)">\(N\)</span> arbitrarily large proves the rapid decay claimed in (4.1e). The same estimate holds after any fixed archimedean derivative, since differentiating a Schwartz function produces another Schwartz function multiplied by a polynomial.</p>
+<p>Use the self-dual additive measure from NT-ADL-09. The Poisson formula of <a href="../NT-ADL/NT-ADL-05.html">Additive characters, self-dual measures and Poisson summation on the adèles</a>, Theorems 5.4–5.5, applies on <span class="math" data-tex="\(\mathbb A_F^2\)">\(\mathbb A_F^2\)</span> by applying it in each coordinate. Partial Fourier transforms preserve the Schwartz space. The lattice-counting estimate above, applied to each partial transform, gives absolute convergence of the successive sums, so they may be exchanged; this proves the product formula also for Schwartz functions that do not separate into coordinate tensors. Change of variables gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{v\in F^2}\Phi(tv g)
+=|t|^{-2}|\det g|^{-1}
+\sum_{v\in F^2}\widehat\Phi(t^{-1}v g^{-t}).
+\tag{4.1f}
+\]">\[
+\sum_{v\in F^2}\Phi(tv g)
+=|t|^{-2}|\det g|^{-1}
+\sum_{v\in F^2}\widehat\Phi(t^{-1}v g^{-t}).
+\tag{4.1f}
+\]</span>
+<p>Split (4.1d) at <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, use (4.1f) in the small-norm integral, and invert the idèle there. The resulting nonzero dual theta sum is integrated over norm at least one, with weight <span class="math" data-tex="\(|t|^{2-2u}\)">\(|t|^{2-2u}\)</span> and character <span class="math" data-tex="\(\varepsilon^{-1}=\varepsilon\)">\(\varepsilon^{-1}=\varepsilon\)</span>. Both nonzero-sum tails are entire in <span class="math" data-tex="\(u\)">\(u\)</span>, locally uniformly with all group derivatives, by (4.1e). The two zero terms before inversion are</p>
+<span class="math math-display" data-tex="\[
+|t|^{-2}|\det g|^{-1}\widehat\Phi(0)-\Phi(0).
+\tag{4.1g}
+\]">\[
+|t|^{-2}|\det g|^{-1}\widehat\Phi(0)-\Phi(0).
+\tag{4.1g}
+\]</span>
+<p>Their averages over <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span> are zero. Indeed, <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is nontrivial on <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>: otherwise it would factor through the connected norm group <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>, whose continuous finite-image characters are trivial. The integral of a nontrivial character on a compact group is zero, since translation by an element on which its value differs from one multiplies that integral by this value. Also <span class="math" data-tex="\(\varepsilon(t_\lambda)=1\)">\(\varepsilon(t_\lambda)=1\)</span> by connectedness. Thus (4.1d) continues to an entire function for every <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>Every flat finite-level, archimedean compact-group-finite section is a finite sum of pure local sections. We recover each such section near <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. At an exceptional finite place its compact-model function, after removing <span class="math" data-tex="\(\mu_v(\det k)\)">\(\mu_v(\det k)\)</span>, is a locally constant function of the primitive bottom row. Independence of the chosen top row follows from upper-triangular compact covariance in (4.1b). Scaling that row by a unit multiplies this function by <span class="math" data-tex="\(\varepsilon_v^{-1}\)">\(\varepsilon_v^{-1}\)</span>. Extend it to <span class="math" data-tex="\(F_v^2\)">\(F_v^2\)</span> using the unit radial shell and zero outside that shell. The integral in (4.1c) at <span class="math" data-tex="\(k\in K_v\)">\(k\in K_v\)</span> then reproduces the prescribed compact-model function times a nonzero constant.</p>
+<p>At a real or complex place do the same on the unit sphere, and multiply the smooth angular function by a smooth radial bump supported in a sufficiently narrow annulus about radius one. Integration over the scalar unit group cancels the angular covariance. The radial Mellin integral <span class="math" data-tex="\(a_v(s)\)">\(a_v(s)\)</span> is entire and nonzero at zero when the bump is chosen narrow enough; its phase then varies by less than any fixed small angle. Angular compact finiteness is preserved by this construction. At each remaining finite place choose <span class="math" data-tex="\(\Phi_v=\mathbf1_{\mathcal O_v^2}\)">\(\Phi_v=\mathbf1_{\mathcal O_v^2}\)</span>. The compact restriction of its scalar integral is the geometric series
+<span class="math" data-tex="\(L_v(1+2s,\varepsilon_v)\)">\(L_v(1+2s,\varepsilon_v)\)</span>. Consequently (4.1c) has compact restriction <span class="math" data-tex="\(a(s)f_s|_K\)">\(a(s)f_s|_K\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+a(s)=L^S(1+2s,\varepsilon)\prod_{v\in S}a_v(s).
+\tag{4.1h}
+\]">\[
+a(s)=L^S(1+2s,\varepsilon)\prod_{v\in S}a_v(s).
+\tag{4.1h}
+\]</span>
+<p>Here <span class="math" data-tex="\(S\)">\(S\)</span> includes the infinite places and all exceptional finite places, and <span class="math" data-tex="\(L^S\)">\(L^S\)</span> is the finite Euler product with those finite factors omitted. Theorem 10.6 of <a href="../NT-ADL/NT-ADL-10.html">Hecke L-functions and the Dedekind zeta function</a> proves that <span class="math" data-tex="\(L(1,\varepsilon)\)">\(L(1,\varepsilon)\)</span> is finite and nonzero over every number field. Its quadratic-case proof uses the nonnegative coefficients of <span class="math" data-tex="\(\zeta_F(s)L(s,\varepsilon)\)">\(\zeta_F(s)L(s,\varepsilon)\)</span>, including the squared-ideal coefficients, and its proved positive-pole and Landau lemmas. Each omitted Euler factor is finite and nonzero at one. Hence <span class="math" data-tex="\(a\)">\(a\)</span> is holomorphic and nonzero near zero.</p>
+<p>In the initial convergence region the equality of compact restrictions and Iwasawa covariance give <span class="math" data-tex="\(f_{\Phi,s}=a(s)f_s\)">\(f_{\Phi,s}=a(s)f_s\)</span>. The absolutely convergent theta unfolding proves convergence of the Eisenstein sum there. Dividing its entire continuation by <span class="math" data-tex="\(a(s)\)">\(a(s)\)</span> gives a holomorphic Eisenstein family for every flat section near zero. This continuation is automorphic: rational left invariance, the central character and right equivariance hold initially and extend by the identity theorem.</p>
+<p>For clarity, these functions have moderate growth, not just pointwise continuation. Fix the finite component of <span class="math" data-tex="\(g\)">\(g\)</span>, put <span class="math" data-tex="\(H=1+\|g_\infty\|+\|g_\infty^{-1}\|\)">\(H=1+\|g_\infty\|+\|g_\infty^{-1}\|\)</span>, and use the same lattice as above. The least singular value is at least <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span>. For <span class="math" data-tex="\(\lambda\ge1\)">\(\lambda\ge1\)</span> the nonzero theta sum is bounded by
+<span class="math" data-tex="\(C_N\sum_{v\ne0}(1+c\lambda^{1/d}\|v\|/H)^{-N}\)">\(C_N\sum_{v\ne0}(1+c\lambda^{1/d}\|v\|/H)^{-N}\)</span>. On <span class="math" data-tex="\(1\le\lambda\le H^d\)">\(1\le\lambda\le H^d\)</span>, lattice counting bounds this by <span class="math" data-tex="\(CH^{2d}\)">\(CH^{2d}\)</span>; on <span class="math" data-tex="\(\lambda\ge H^d\)">\(\lambda\ge H^d\)</span>, it is at most <span class="math" data-tex="\(C_NH^N\lambda^{-N/d}\)">\(C_NH^N\lambda^{-N/d}\)</span>. Integrating either bound against a fixed power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> yields a polynomial in <span class="math" data-tex="\(H\)">\(H\)</span>, by taking <span class="math" data-tex="\(N\)">\(N\)</span> larger than that power times <span class="math" data-tex="\(d\)">\(d\)</span>. The dual tail obeys the same bounds with <span class="math" data-tex="\(g^{-t}\)">\(g^{-t}\)</span>; its determinant factor and the prefactor in (4.1d) are bounded by further powers of <span class="math" data-tex="\(H\)">\(H\)</span>. This also proves moderate growth after every fixed derivative. Uniform adelic height bounds follow by clearing the finite denominators: the possible rows lie in <span class="math" data-tex="\(M^{-1}\mathcal O_F^2\)">\(M^{-1}\mathcal O_F^2\)</span>, where the positive rational integer <span class="math" data-tex="\(M\)">\(M\)</span> can be bounded by a fixed power of the product of the finite matrix norms of <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. Such an <span class="math" data-tex="\(M\)">\(M\)</span> is obtained by multiplying the underlying rational prime powers needed to clear the finitely many denominator ideals. Rescaling the fixed Minkowski lattice by <span class="math" data-tex="\(M\)">\(M\)</span> inserts only further polynomial factors into the same estimates. Finite level and compact finiteness are preserved by right equivariance. The infinitesimal centers act through those of the fixed local principal series, so the functions are also infinitesimal-character finite.</p>
+<p>It remains to show that the map at zero does not collapse. Normalize the compact additive quotient <span class="math" data-tex="\(F\backslash\mathbb A_F\)">\(F\backslash\mathbb A_F\)</span> to volume one. Bruhat decomposition unfolds the constant term in the initial region to</p>
+<span class="math math-display" data-tex="\[
+E_N(g,f_s)=f_s(g)+M_s f_s(g),\qquad
+M_s f_s(g)=\int_{\mathbb A_F}f_s(w n(x)g)\,dx.
+\tag{4.1i}
+\]">\[
+E_N(g,f_s)=f_s(g)+M_s f_s(g),\qquad
+M_s f_s(g)=\int_{\mathbb A_F}f_s(w n(x)g)\,dx.
+\tag{4.1i}
+\]</span>
+<p>The first Bruhat cell gives <span class="math" data-tex="\(f_s\)">\(f_s\)</span>; the second is indexed by <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span>, and unfolding its sum over the additive quotient gives the displayed adelic integral. Changing its integration variable proves that the second term has covariance
+<span class="math" data-tex="\(\mu\varepsilon(a)\mu(c)|a/c|^{1/2-s}\)">\(\mu\varepsilon(a)\mu(c)|a/c|^{1/2-s}\)</span>. Near zero it is holomorphic because it equals <span class="math" data-tex="\(E_N-f_s\)">\(E_N-f_s\)</span>, and integration of the continued family over the compact additive quotient preserves holomorphy. Its covariance therefore continues too.</p>
+<p>Choose <span class="math" data-tex="\(y\in C_F^1\)">\(y\in C_F^1\)</span> with <span class="math" data-tex="\(\varepsilon(y)=-1\)">\(\varepsilon(y)=-1\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, left multiplication by <span class="math" data-tex="\(\operatorname{diag}(y,1)\)">\(\operatorname{diag}(y,1)\)</span> multiplies the two terms of (4.1i) by the opposite scalars <span class="math" data-tex="\(\mu(y)\)">\(\mu(y)\)</span> and <span class="math" data-tex="\(-\mu(y)\)">\(-\mu(y)\)</span>. If <span class="math" data-tex="\(E(g,f_0)\)">\(E(g,f_0)\)</span> vanished identically, its constant term and its value at this translate would both vanish. Adding and subtracting those two equations would give <span class="math" data-tex="\(f_0=0\)">\(f_0=0\)</span>. Thus the Eisenstein map is injective, and every nonzero image has a nonzero constant term.</p>
+<p>Finally each local module (4.1a) is simple. At a finite place the ratio is quadratic or trivial, and cannot be <span class="math" data-tex="\(|\cdot|_v^{\pm1}\)">\(|\cdot|_v^{\pm1}\)</span>; the irreducibility proof is Theorem 4.2 of <a href="../automorphic-forms-and-representations-of-gl2/whittaker-models-kirillov-models-and-the-local-classification.html">Whittaker models, Kirillov models and the local classification</a>. At a real place the exponent difference is zero. Theorem 3.2 of <a href="../automorphic-forms-and-representations-of-gl2/real-and-complex-representations-weights-gamma-factors-and-classical-forms.html">Real and complex representations: weights, gamma factors and classical forms</a> proves full-group irreducibility also for the odd-parity limit: reflection exchanges its two connected half-ladders. At a complex place the quadratic character is trivial; the finite-head-and-infinite-tail lemma of that lesson, §8, excludes reducibility at ratio one. Theorem 5.2 of <a href="../automorphic-forms-and-representations-of-gl2/restricted-tensor-products-and-the-tensor-product-theorem.html">Restricted tensor products and the tensor product theorem</a>, with its number-field extension in §6, proves irreducibility of the restricted tensor product. Its proof uses finite interpolation to isolate a pure tensor and then generates every finite tensor stage. The injective, right-equivariant Eisenstein map realizes this module automorphically. Its nonzero constant terms establish noncuspidality. ∎</p>
+<p>For <span class="math" data-tex="\(\theta=\mu\circ N_{E/F}\)">\(\theta=\mu\circ N_{E/F}\)</span>, the two extended characters are <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\mu\varepsilon_{E/F}\)">\(\mu\varepsilon_{E/F}\)</span>. Their direct sum is the induced parameter. At nonsplit finite places the norm-factor proof of Theorem 6.4 and the complete factor identity of Theorem 6.5 in <a href="../automorphic-forms-and-representations-of-gl2/supercuspidal-representations-from-compact-induction.html">Supercuspidal representations from compact induction</a> identify the model with precisely this principal series. At split places the two inducing characters give the direct-sum model. The real and complex classification just used identifies the archimedean models, including the real odd-parity limit. These are the explicit rank-two models for the split induced parameter, rather than an appeal to an unproved general local correspondence. Proposition 4.1a therefore supplies the invariant branch of Theorem 4.1 over every number field. The rank-three isobaric construction in Proposition 4.2 below still requires its separate existence hypothesis.</p>
+<p>Here are the local calculations. At a split finite place, the two characters <span class="math" data-tex="\(\theta_{w_1},\theta_{w_2}\)">\(\theta_{w_1},\theta_{w_2}\)</span> give eigenvalues</p>
+<span class="math math-display" data-tex="\[
+u_1=\theta_{w_1}(\varpi_{w_1}),\qquad
+u_2=\theta_{w_2}(\varpi_{w_2}),
+\quad
+L_v(s,\pi)=(1-u_1q_v^{-s})^{-1}(1-u_2q_v^{-s})^{-1}.
+\tag{4.1}
+\]">\[
+u_1=\theta_{w_1}(\varpi_{w_1}),\qquad
+u_2=\theta_{w_2}(\varpi_{w_2}),
+\quad
+L_v(s,\pi)=(1-u_1q_v^{-s})^{-1}(1-u_2q_v^{-s})^{-1}.
+\tag{4.1}
+\]</span>
+<p>At an inert unramified place there is one <span class="math" data-tex="\(w\)">\(w\)</span>, with <span class="math" data-tex="\(q_w=q_v^2\)">\(q_w=q_v^2\)</span>. Write <span class="math" data-tex="\(u=\theta_w(\operatorname{Frob}_w)\)">\(u=\theta_w(\operatorname{Frob}_w)\)</span>, with the reciprocity convention of §1. The induced Frobenius has a basis in which its matrix is</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;u\\1&amp;0\end{pmatrix}.
+\tag{4.2}
+\]">\[
+\begin{pmatrix}0&amp;u\\1&amp;0\end{pmatrix}.
+\tag{4.2}
+\]</span>
+<p>It has characteristic polynomial <span class="math" data-tex="\(T^2-u\)">\(T^2-u\)</span>, eigenvalues <span class="math" data-tex="\(\sqrt u,-\sqrt u\)">\(\sqrt u,-\sqrt u\)</span>, and determinant <span class="math" data-tex="\(-u\)">\(-u\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+L_v(s,\pi)=(1-uq_v^{-2s})^{-1}=L_w(s,\theta).
+\tag{4.3}
+\]">\[
+L_v(s,\pi)=(1-uq_v^{-2s})^{-1}=L_w(s,\theta).
+\tag{4.3}
+\]</span>
+<p>Either square root gives the same unordered eigenvalues. Since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is unitary, <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>, and both eigenvalues have absolute value one. The same assertion follows from (4.1) at a split place. This computes the good-place Ramanujan property for this induction directly.</p>
+<p>Now suppose <span class="math" data-tex="\(\theta\ne\theta^\tau\)">\(\theta\ne\theta^\tau\)</span>, so that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a dihedral cusp form. We compute its symmetric square before making an automorphic assertion. Write <span class="math" data-tex="\(\rho=\operatorname{Ind}_{W_E}^{W_F}\theta\)">\(\rho=\operatorname{Ind}_{W_E}^{W_F}\theta\)</span>. Let <span class="math" data-tex="\(t\in W_F\setminus W_E\)">\(t\in W_F\setminus W_E\)</span>. On restriction to <span class="math" data-tex="\(W_E\)">\(W_E\)</span>, <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(\theta\oplus\theta^\tau\)">\(\theta\oplus\theta^\tau\)</span>. Choose a basis such that</p>
+<span class="math math-display" data-tex="\[
+\rho(t)e_1=e_2,\qquad \rho(t)e_2=a e_1,
+\quad a=\theta(t^2).
+\tag{4.4}
+\]">\[
+\rho(t)e_1=e_2,\qquad \rho(t)e_2=a e_1,
+\quad a=\theta(t^2).
+\tag{4.4}
+\]</span>
+<p>This is the usual index-two induced representation. The two eigenspaces for <span class="math" data-tex="\(W_E\)">\(W_E\)</span> are distinct and <span class="math" data-tex="\(t\)">\(t\)</span> interchanges them, so no one-dimensional subspace is <span class="math" data-tex="\(W_F\)">\(W_F\)</span>-stable; hence <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is irreducible.</p>
+<p>In <span class="math" data-tex="\(\operatorname{Sym}^2\rho\)">\(\operatorname{Sym}^2\rho\)</span>, the span of <span class="math" data-tex="\(e_1^2,e_2^2\)">\(e_1^2,e_2^2\)</span> restricts to <span class="math" data-tex="\(\theta^2\oplus(\theta^\tau)^2\)">\(\theta^2\oplus(\theta^\tau)^2\)</span>. The element <span class="math" data-tex="\(t\)">\(t\)</span> sends <span class="math" data-tex="\(e_1^2\)">\(e_1^2\)</span> to <span class="math" data-tex="\(e_2^2\)">\(e_2^2\)</span> and <span class="math" data-tex="\(e_2^2\)">\(e_2^2\)</span> to <span class="math" data-tex="\(a^2e_1^2\)">\(a^2e_1^2\)</span>; this two-dimensional summand is <span class="math" data-tex="\(\operatorname{Ind}\theta^2\)">\(\operatorname{Ind}\theta^2\)</span>. The remaining line is spanned by <span class="math" data-tex="\(e_1e_2\)">\(e_1e_2\)</span>. On <span class="math" data-tex="\(W_E\)">\(W_E\)</span> its character is <span class="math" data-tex="\(\theta\theta^\tau=\det\rho\)">\(\theta\theta^\tau=\det\rho\)</span>. On <span class="math" data-tex="\(t\)">\(t\)</span>, its eigenvalue is <span class="math" data-tex="\(a\)">\(a\)</span>, whereas <span class="math" data-tex="\(\det\rho(t)=-a\)">\(\det\rho(t)=-a\)</span>. The quadratic character <span class="math" data-tex="\(\varepsilon_{E/F}\)">\(\varepsilon_{E/F}\)</span> is trivial on <span class="math" data-tex="\(W_E\)">\(W_E\)</span> and has value <span class="math" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-tex="\(t\)">\(t\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^2\rho
+\simeq\operatorname{Ind}_{W_E}^{W_F}\theta^2
+\oplus(\det\rho)\varepsilon_{E/F}.
+\tag{4.5}
+\]">\[
+\operatorname{Sym}^2\rho
+\simeq\operatorname{Ind}_{W_E}^{W_F}\theta^2
+\oplus(\det\rho)\varepsilon_{E/F}.
+\tag{4.5}
+\]</span>
+<p><strong>Proposition 4.2 (dihedral symmetric square, under isobaric existence).</strong> A weak symmetric-square transfer of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^2\pi
+=\operatorname{AI}_{E/F}(\theta^2)
+\boxplus\omega_\pi\varepsilon_{E/F}.
+\tag{4.6}
+\]">\[
+\operatorname{Sym}^2\pi
+=\operatorname{AI}_{E/F}(\theta^2)
+\boxplus\omega_\pi\varepsilon_{E/F}.
+\tag{4.6}
+\]</span>
+<p>It is not cuspidal. In particular, the existence of a symmetric-square transfer does not imply its cuspidality.</p>
+<p><strong>Proof.</strong> Theorem 4.1 constructs the degree-two summand, and class field theory supplies the character <span class="math" data-tex="\(\omega_\pi\varepsilon_{E/F}\)">\(\omega_\pi\varepsilon_{E/F}\)</span>. Isobaric addition constructs their automorphic sum. At every good place (4.5) identifies its Satake parameter with the symmetric square of the parameter of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. It is therefore a weak transfer. Its isobaric decomposition contains a rank-one constituent. Isobaric uniqueness from Proposition 1.4 precludes its being a rank-three cuspidal representation: the latter would have a single rank-three cuspidal constituent. ∎</p>
+<p>There are two possibilities for the rank-two term. If <span class="math" data-tex="\(\theta^2\ne(\theta^\tau)^2\)">\(\theta^2\ne(\theta^\tau)^2\)</span>, it is cuspidal. If <span class="math" data-tex="\(\theta^2=(\theta^\tau)^2\)">\(\theta^2=(\theta^\tau)^2\)</span>, the character extends from <span class="math" data-tex="\(W_E\)">\(W_E\)</span> to <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. To see this, choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(b^2=\theta^2(t^2)\)">\(b^2=\theta^2(t^2)\)</span>, let an extension take value <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(t\)">\(t\)</span>, and take value <span class="math" data-tex="\(\theta^2\)">\(\theta^2\)</span> on <span class="math" data-tex="\(W_E\)">\(W_E\)</span>. Invariance ensures compatibility with conjugation by <span class="math" data-tex="\(t\)">\(t\)</span>, and the square condition ensures compatibility with <span class="math" data-tex="\(t^2\)">\(t^2\)</span>. These relations define a continuous character because <span class="math" data-tex="\(W_E\)">\(W_E\)</span> is open of index two. There are exactly two extensions, differing by <span class="math" data-tex="\(\varepsilon_{E/F}\)">\(\varepsilon_{E/F}\)</span>. Under class field theory they give <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\mu\varepsilon_{E/F}\)">\(\mu\varepsilon_{E/F}\)</span>, with <span class="math" data-tex="\(\theta^2=\mu\circ N_{E/F}\)">\(\theta^2=\mu\circ N_{E/F}\)</span>. Thus (4.6) has three rank-one constituents in this case. Both cases establish noncuspidality.</p>
+<h3 id="a-cm-holomorphic-form">A CM holomorphic form</h3>
+<p>For a concrete archimedean type, take <span class="math" data-tex="\(F=\mathbb Q\)">\(F=\mathbb Q\)</span>, an imaginary quadratic <span class="math" data-tex="\(E\)">\(E\)</span>, and a Hecke character whose algebraic infinity type gives a holomorphic theta series of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>. Write <span class="math" data-tex="\(\theta\)">\(\theta\)</span> for its unitary normalization, so that</p>
+<span class="math math-display" data-tex="\[
+\theta_\infty(z)=(z/|z|)^{-(k-1)}.
+\tag{4.7}
+\]">\[
+\theta_\infty(z)=(z/|z|)^{-(k-1)}.
+\tag{4.7}
+\]</span>
+<p>The negative exponent in (4.7) is the idelic unitary normalization of an ideal character of type <span class="math" data-tex="\(z^{k-1}\)">\(z^{k-1}\)</span>; triviality on diagonal elements forces this inverse infinity character. The holomorphic theta-series realization is proved in <a href="../automorphic-forms-and-representations-of-gl2/dihedral-forms-examples-and-the-ramanujan-conjecture-for-gl2.html">Dihedral forms, examples, and the Ramanujan conjecture for GL₂</a>, Theorem 3.1. Conjugation replaces this infinity character by its inverse. Their squares are distinct because <span class="math" data-tex="\(k-1&gt;0\)">\(k-1&gt;0\)</span>; hence <span class="math" data-tex="\(\operatorname{AI}(\theta^2)\)">\(\operatorname{AI}(\theta^2)\)</span> in (4.6) is a cusp form, while the rank-three symmetric square is not.</p>
+<p>Let <span class="math" data-tex="\(p\)">\(p\)</span> be a good prime and put <span class="math" data-tex="\(w_p=\omega_\pi(p)\)">\(w_p=\omega_\pi(p)\)</span>. At a split prime, write the normalized roots as <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. Then <span class="math" data-tex="\(\alpha\beta=w_p\)">\(\alpha\beta=w_p\)</span>, and the rank-two and rank-one constituents of (4.6) have roots <span class="math" data-tex="\(\alpha^2,\beta^2\)">\(\alpha^2,\beta^2\)</span> and <span class="math" data-tex="\(w_p\)">\(w_p\)</span>, respectively. Their local denominators multiply to</p>
+<span class="math math-display" data-tex="\[
+(1-\alpha^2X)(1-w_pX)(1-\beta^2X),\qquad X=p^{-s}.
+\tag{4.8}
+\]">\[
+(1-\alpha^2X)(1-w_pX)(1-\beta^2X),\qquad X=p^{-s}.
+\tag{4.8}
+\]</span>
+<p>At an inert prime, (4.2) gives <span class="math" data-tex="\(\beta=-\alpha\)">\(\beta=-\alpha\)</span>, <span class="math" data-tex="\(\alpha^2=u\)">\(\alpha^2=u\)</span>, and <span class="math" data-tex="\(w_p=-u\)">\(w_p=-u\)</span>. The symmetric-square roots are <span class="math" data-tex="\(u,-u,u\)">\(u,-u,u\)</span>. The induction of <span class="math" data-tex="\(\theta^2\)">\(\theta^2\)</span> has roots <span class="math" data-tex="\(u,-u\)">\(u,-u\)</span>, and the character <span class="math" data-tex="\(\omega_\pi\varepsilon\)">\(\omega_\pi\varepsilon\)</span> has value <span class="math" data-tex="\((-u)(-1)=u\)">\((-u)(-1)=u\)</span>. This again gives exactly the three roots. If <span class="math" data-tex="\(w_p=1\)">\(w_p=1\)</span>, then <span class="math" data-tex="\(u=-1\)">\(u=-1\)</span>, the three roots are <span class="math" data-tex="\(-1,1,-1\)">\(-1,1,-1\)</span>, and the denominator is <span class="math" data-tex="\((1+X)^2(1-X)\)">\((1+X)^2(1-X)\)</span>.</p>
+<p>These calculations use unitary roots. The classical roots of the weight-<span class="math" data-tex="\(k\)">\(k\)</span> form are <span class="math" data-tex="\(p^{(k-1)/2}\alpha,p^{(k-1)/2}\beta\)">\(p^{(k-1)/2}\alpha,p^{(k-1)/2}\beta\)</span>; their symmetric squares are obtained by multiplying each of the three roots above by <span class="math" data-tex="\(p^{k-1}\)">\(p^{k-1}\)</span>. Mixing these two normalizations would give an incorrect Ramanujan statement.</p>
+<h2 id="5-langlands-argument-for-ramanujan">5. Langlands' argument for Ramanujan</h2>
+<p>Fix a unitary cuspidal representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(GL_2(\mathbb A_F)\)">\(GL_2(\mathbb A_F)\)</span> and a finite unramified place <span class="math" data-tex="\(v\)">\(v\)</span>, with normalized roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. Unitarity of the central character gives</p>
+<span class="math math-display" data-tex="\[
+|\alpha\beta|=1.
+\tag{5.1}
+\]">\[
+|\alpha\beta|=1.
+\tag{5.1}
+\]</span>
+<p>We say that an isobaric sum has <strong>unitary cuspidal constituents</strong> if it is <span class="math" data-tex="\(\sigma_1\boxplus\cdots\boxplus\sigma_a\)">\(\sigma_1\boxplus\cdots\boxplus\sigma_a\)</span> with each <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span> unitary cuspidal, without any nonunitary real norm twists. This property is stronger than saying that an automorphic representation is unitary.</p>
+<p><strong>Theorem 5.1 (Langlands' symmetric-power deduction).</strong> Use Corollary 4.5 of the preceding lesson, with its stated local and global analytic hypotheses. Suppose there is an unbounded set of positive integers <span class="math" data-tex="\(r\)">\(r\)</span> for which an isobaric automorphic representation <span class="math" data-tex="\(\Pi_r\)">\(\Pi_r\)</span> on <span class="math" data-tex="\(GL_{r+1}(\mathbb A_F)\)">\(GL_{r+1}(\mathbb A_F)\)</span> has unitary cuspidal constituents and is compatible at the fixed place <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\operatorname{Sym}^r\pi_v\)">\(\operatorname{Sym}^r\pi_v\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|\alpha|=|\beta|=1.
+\tag{5.2}
+\]">\[
+|\alpha|=|\beta|=1.
+\tag{5.2}
+\]</span>
+<p>In particular, symmetric-power transfers for every <span class="math" data-tex="\(r\)">\(r\)</span>, with these constituent and local-compatibility properties at every unramified place of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, imply unramified Ramanujan. The deduction is Langlands' argument [Langlands 1997, §3, p.7; Sarnak 2005, §1, pp.663–664]; we give its complete proof with the analytic hypotheses exposed.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\Pi_{r,v}\)">\(\Pi_{r,v}\)</span> is unramified, its constituent parameters are unramified. Indeed, its parameter is their direct sum: trivial inertia and trivial monodromy on a direct sum imply the same properties on every summand. The Satake eigenvalues of each <span class="math" data-tex="\(\sigma_{i,v}\)">\(\sigma_{i,v}\)</span> obey the Jacquet–Shalika bound <span class="math" data-tex="\(|\gamma|&lt;q_v^{1/2}\)">\(|\gamma|&lt;q_v^{1/2}\)</span>, by Corollary 4.5 of the preceding lesson. Taking their union gives that bound for every root of <span class="math" data-tex="\(\Pi_{r,v}\)">\(\Pi_{r,v}\)</span>. Formula (3.3) includes <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span> and <span class="math" data-tex="\(\beta^r\)">\(\beta^r\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+|\alpha|^r&lt;q_v^{1/2},\qquad
+|\beta|^r&lt;q_v^{1/2}.
+\tag{5.3}
+\]">\[
+|\alpha|^r&lt;q_v^{1/2},\qquad
+|\beta|^r&lt;q_v^{1/2}.
+\tag{5.3}
+\]</span>
+<p>For arbitrarily large <span class="math" data-tex="\(r\)">\(r\)</span>, taking <span class="math" data-tex="\(r\)">\(r\)</span>-th roots gives <span class="math" data-tex="\(|\alpha|,|\beta|\le1\)">\(|\alpha|,|\beta|\le1\)</span>, because <span class="math" data-tex="\(q_v^{1/(2r)}\to1\)">\(q_v^{1/(2r)}\to1\)</span>. Equation (5.1) forces both to be one. Normalized unramified Satake theory then identifies <span class="math" data-tex="\(\pi_v\)">\(\pi_v\)</span> as tempered. ∎</p>
+<p>The argument only needs a bound <span class="math" data-tex="\(|\gamma|\le q_v^C\)">\(|\gamma|\le q_v^C\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(r\)">\(r\)</span>. The strict bound from the preceding lesson supplies <span class="math" data-tex="\(C=1/2\)">\(C=1/2\)</span>. At a fixed finite stage (5.3) yields a bound tending to temperedness as <span class="math" data-tex="\(r\)">\(r\)</span> grows; it does not already give equality.</p>
+<p>Two logical limitations are essential. First, a separate weak transfer for every <span class="math" data-tex="\(r\)">\(r\)</span> may have exceptional set <span class="math" data-tex="\(S_r\)">\(S_r\)</span> depending on <span class="math" data-tex="\(r\)">\(r\)</span>. A fixed <span class="math" data-tex="\(v\)">\(v\)</span> could belong to every <span class="math" data-tex="\(S_r\)">\(S_r\)</span>; even the union of finite sets <span class="math" data-tex="\(S_r\)">\(S_r\)</span> need not be finite. Thus those weak transfers alone do not establish the hypothesis at every unramified <span class="math" data-tex="\(v\)">\(v\)</span>. Strong local compatibility, a uniform exceptional set, or an unbounded compatible family at each place resolves this issue.</p>
+<p>Second, arbitrary automorphy does not supply the needed cuspidal bound. The trivial automorphic representation of <span class="math" data-tex="\(GL_2\)">\(GL_2\)</span> is unitary and has roots <span class="math" data-tex="\(q_v^{1/2},q_v^{-1/2}\)">\(q_v^{1/2},q_v^{-1/2}\)</span>. Their <span class="math" data-tex="\(r\)">\(r\)</span>-th symmetric power has roots</p>
+<span class="math math-display" data-tex="\[
+q_v^{r/2},q_v^{(r-2)/2},\ldots,q_v^{-r/2},
+\tag{5.4}
+\]">\[
+q_v^{r/2},q_v^{(r-2)/2},\ldots,q_v^{-r/2},
+\tag{5.4}
+\]</span>
+<p>which are the Satake roots of the trivial automorphic representation of <span class="math" data-tex="\(GL_{r+1}\)">\(GL_{r+1}\)</span>, equivalently the residual representation <span class="math" data-tex="\(\operatorname{Speh}(1,r+1)\)">\(\operatorname{Speh}(1,r+1)\)</span>. All these representations are unitary automorphic. Their isobaric constituents are real norm twists of characters, rather than unitary characters, and the roots in (5.4) violate the desired bound when <span class="math" data-tex="\(r\)">\(r\)</span> is large. The source in this example is not cuspidal, so it is not a counterexample to Ramanujan for cusp forms. It demonstrates precisely why the inference “automorphic, therefore Jacquet–Shalika applies” is invalid. Theorem 5.1 states the correct sufficient hypotheses.</p>
+<h2 id="6-the-real-place-and-selberg-s-eigenvalue-conjecture">6. The real place and Selberg's eigenvalue conjecture</h2>
+<p>For a congruence subgroup <span class="math" data-tex="\(\Gamma\subset SL_2(\mathbb Z)\)">\(\Gamma\subset SL_2(\mathbb Z)\)</span>, give the upper half-plane the metric <span class="math" data-tex="\((dx^2+dy^2)/y^2\)">\((dx^2+dy^2)/y^2\)</span>, and use the nonnegative Laplacian</p>
+<span class="math math-display" data-tex="\[
+\Delta=-y^2(\partial_x^2+\partial_y^2).
+\tag{6.1}
+\]">\[
+\Delta=-y^2(\partial_x^2+\partial_y^2).
+\tag{6.1}
+\]</span>
+<p><strong>Conjecture 6.1 (Selberg).</strong> A Maass cusp form for a congruence subgroup has no eigenvalue in <span class="math" data-tex="\((0,1/4)\)">\((0,1/4)\)</span>. Equivalently, all its Laplace eigenvalues are at least <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. See [Sarnak 2005, §1, p.663, Remark 3] for its representation-theoretic formulation.</p>
+<p><strong>Lemma 6.1a (the Maass realization and its normalization).</strong> If a congruence Maass cusp form has <span class="math" data-tex="\(0&lt;\lambda&lt;1/4\)">\(0&lt;\lambda&lt;1/4\)</span>, there is a unitary cuspidal representation of <span class="math" data-tex="\(GL_2(\mathbb A_{\mathbb Q})\)">\(GL_2(\mathbb A_{\mathbb Q})\)</span>, with a weight-zero real vector of that eigenvalue, whose real parameter is</p>
+<span class="math math-display" data-tex="\[
+\rho_\infty=
+\operatorname{sgn}^{\epsilon}|\cdot|^t
+\oplus\operatorname{sgn}^{\epsilon}|\cdot|^{-t},
+\quad 0&lt;t&lt;1/2,\quad\epsilon\in\{0,1\},
+\qquad\lambda=\frac14-t^2.
+\tag{6.2}
+\]">\[
+\rho_\infty=
+\operatorname{sgn}^{\epsilon}|\cdot|^t
+\oplus\operatorname{sgn}^{\epsilon}|\cdot|^{-t},
+\quad 0&lt;t&lt;1/2,\quad\epsilon\in\{0,1\},
+\qquad\lambda=\frac14-t^2.
+\tag{6.2}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\Gamma(N)\subset\Gamma\)">\(\Gamma(N)\subset\Gamma\)</span>. The principal-level decomposition proved in <a href="../automorphic-forms-and-representations-of-gl2/adeles-for-gl2-and-strong-approximation.html">Adèles for GL₂ and strong approximation</a>, §4, equation (4.5) and the following principal-level calculation, identifies the adelic quotient by <span class="math" data-tex="\(K(N)\)">\(K(N)\)</span>, the real center and <span class="math" data-tex="\(SO(2)\)">\(SO(2)\)</span> with finitely many copies of <span class="math" data-tex="\(\Gamma(N)\backslash\mathfrak H\)">\(\Gamma(N)\backslash\mathfrak H\)</span>. Put the given form on one copy and zero on the others. This defines its smooth adelic lift. All its unipotent constant terms vanish: on each component the compact adelic unipotent integral is a sum of integrals over the classical cusp periods; these are zero by cuspidality. This is the unfolding used in <a href="../automorphic-forms-and-representations-of-gl2/from-modular-forms-to-adelic-functions.html">From modular forms to adelic functions</a>, §4, without the holomorphic differential condition.</p>
+<p>The Fourier argument in <a href="../LG-MF/LG-MF-18.html">Non-holomorphic Eisenstein series and Maass forms</a>, Proposition 4.1 and Corollary 4.2, applies with each cusp's width replacing one: the zero mode is absent, polynomial growth excludes the increasing Bessel solution, and the remaining modes decay exponentially. Thus the lift is square integrable. Its central translates span a finite-dimensional space, because the real center acts trivially and the compact finite center acts through a finite quotient modulo <span class="math" data-tex="\(K(N)\)">\(K(N)\)</span>. Averaging over this finite abelian quotient decomposes it into unitary central characters. At least one component is nonzero; averaging preserves its Laplace eigenvalue, rotation weight zero and cusp integrals.</p>
+<p>For that central character, <a href="../automorphic-forms-and-representations-of-gl2/why-the-cuspidal-spectrum-is-discrete.html">Why the cuspidal spectrum is discrete</a>, Theorem 5.2, gives a Hilbert sum of irreducible unitary cuspidal constituents. Project the nonzero lifted vector onto a nonzero summand. The projection commutes with rotations and the real group, hence with the closed Laplacian and its eigenprojections. The projected vector still has weight zero and eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The finite-vector and Hilbert cuspidal comparison in <a href="../automorphic-forms-and-representations-of-gl2/automorphic-forms-modules-and-hilbert-constituents.html">Automorphic forms, modules and Hilbert constituents</a>, Theorems 3.2 and 4.1, supplies the corresponding cuspidal automorphic representation. Its positive real center is trivial.</p>
+<p>The real classification in <a href="../automorphic-forms-and-representations-of-gl2/real-and-complex-representations-weights-gamma-factors-and-classical-forms.html">Real and complex representations: weights, gamma factors and classical forms</a>, Theorem 3.2 and Proposition 4.1, now forces a complementary principal series: discrete-series ladders have no weight zero, and the one-dimensional cases have eigenvalue zero. In that lesson's notation the inducing difference is <span class="math" data-tex="\(2t\)">\(2t\)</span>, the central exponent is zero, and unitarity gives <span class="math" data-tex="\(0&lt;2t&lt;1\)">\(0&lt;2t&lt;1\)</span>. Weight zero makes the two sign exponents equal. Its Casimir formula (1.2) gives <span class="math" data-tex="\(\lambda=(1-(2t)^2)/4\)">\(\lambda=(1-(2t)^2)/4\)</span>, and §7 gives the parameter (6.2). The sign character is interpreted through real local reciprocity. ∎</p>
+<p>The same normalization is visible in the Fourier term <span class="math" data-tex="\(y^{1/2}K_t(2\pi|n|y)e^{2\pi inx}\)">\(y^{1/2}K_t(2\pi|n|y)e^{2\pi inx}\)</span>. Put <span class="math" data-tex="\(a=2\pi|n|\)">\(a=2\pi|n|\)</span> and <span class="math" data-tex="\(F(y)=y^{1/2}K_t(ay)\)">\(F(y)=y^{1/2}K_t(ay)\)</span>. The Bessel equation</p>
+<span class="math math-display" data-tex="\[
+z^2K_t&#x27;&#x27;(z)+zK_t&#x27;(z)-(z^2+t^2)K_t(z)=0
+\]">\[
+z^2K_t&#x27;&#x27;(z)+zK_t&#x27;(z)-(z^2+t^2)K_t(z)=0
+\]</span>
+<p>gives <span class="math" data-tex="\(F&#x27;&#x27;-a^2F=(t^2-1/4)y^{-2}F\)">\(F&#x27;&#x27;-a^2F=(t^2-1/4)y^{-2}F\)</span>. Applying (6.1) gives exactly <span class="math" data-tex="\(\lambda=1/4-t^2\)">\(\lambda=1/4-t^2\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\nu=|\cdot|\)">\(\nu=|\cdot|\)</span> for the character of <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span> obtained from real reciprocity. For the following deduction use a real local correspondence satisfying</p>
+<span class="math math-display" data-tex="\[
+\rho_{\widetilde\sigma}=\rho_\sigma^\vee,
+\qquad
+\rho_{\overline\sigma}=\overline{\rho_\sigma},
+\qquad
+\rho_{\boxplus_a\sigma_a}=\bigoplus_a\rho_{\sigma_a},
+\qquad
+L_\infty(s,\sigma\times\tau)=L(s,\rho_\sigma\otimes\rho_\tau).
+\tag{6.3a}
+\]">\[
+\rho_{\widetilde\sigma}=\rho_\sigma^\vee,
+\qquad
+\rho_{\overline\sigma}=\overline{\rho_\sigma},
+\qquad
+\rho_{\boxplus_a\sigma_a}=\bigoplus_a\rho_{\sigma_a},
+\qquad
+L_\infty(s,\sigma\times\tau)=L(s,\rho_\sigma\otimes\rho_\tau).
+\tag{6.3a}
+\]</span>
+<p>These are explicit local compatibility hypotheses. An almost-all-place transfer assertion supplies none of them. The parameter factor of a one-dimensional real character <span class="math" data-tex="\(\operatorname{sgn}^{e}\nu^b\)">\(\operatorname{sgn}^{e}\nu^b\)</span>, <span class="math" data-tex="\(e\in\{0,1\}\)">\(e\in\{0,1\}\)</span>, is <span class="math" data-tex="\(\Gamma_{\mathbb R}(s+b+e)\)">\(\Gamma_{\mathbb R}(s+b+e)\)</span>, as proved in <a href="../NT-ADL/NT-ADL-08.html">Archimedean local zeta integrals and gamma factors</a>, Proposition 8.2. A direct sum gives a product of these factors.</p>
+<p><strong>Lemma 6.1b (a real line in a unitary parameter).</strong> Under the duality and complex-conjugation compatibilities in (6.3a), if the real parameter of a unitary admissible representation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> contains the character <span class="math" data-tex="\(\operatorname{sgn}^{e}\nu^{-b}\)">\(\operatorname{sgn}^{e}\nu^{-b}\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> real, then it also contains <span class="math" data-tex="\(\operatorname{sgn}^{e}\nu^{b}\)">\(\operatorname{sgn}^{e}\nu^{b}\)</span>. Its self-pairing parameter consequently contains <span class="math" data-tex="\(\nu^{-2b}\)">\(\nu^{-2b}\)</span>.</p>
+<p><strong>Proof.</strong> Unitarity identifies <span class="math" data-tex="\(\widetilde\sigma\)">\(\widetilde\sigma\)</span> with <span class="math" data-tex="\(\overline\sigma\)">\(\overline\sigma\)</span>. To see the identification, make the invariant Hermitian product linear in its first variable; then
+<span class="math" data-tex="\(\overline v\mapsto[w\mapsto\langle w,v\rangle]\)">\(\overline v\mapsto[w\mapsto\langle w,v\rangle]\)</span>
+is a linear equivariant map from the conjugate representation to the contragredient. On compact finite vectors it is onto: each compact type is finite dimensional, its Hermitian product identifies its conjugate with its dual, and a compact finite functional is supported on finitely many types. Thus (6.3a) gives <span class="math" data-tex="\(\rho_\sigma^\vee\simeq\overline{\rho_\sigma}\)">\(\rho_\sigma^\vee\simeq\overline{\rho_\sigma}\)</span>.</p>
+<p>The character <span class="math" data-tex="\(\operatorname{sgn}^{e}\nu^{-b}\)">\(\operatorname{sgn}^{e}\nu^{-b}\)</span> has real values, so conjugating its matrices leaves it unchanged. It therefore occurs in <span class="math" data-tex="\(\overline{\rho_\sigma}\)">\(\overline{\rho_\sigma}\)</span>, hence in <span class="math" data-tex="\(\rho_\sigma^\vee\)">\(\rho_\sigma^\vee\)</span>. Dualizing shows that its inverse <span class="math" data-tex="\(\operatorname{sgn}^{e}\nu^b\)">\(\operatorname{sgn}^{e}\nu^b\)</span> occurs in <span class="math" data-tex="\(\rho_\sigma\)">\(\rho_\sigma\)</span>. Tensor the original line in <span class="math" data-tex="\(\rho_\sigma\)">\(\rho_\sigma\)</span> with the same line in <span class="math" data-tex="\(\rho_\sigma^\vee\)">\(\rho_\sigma^\vee\)</span>: their product is <span class="math" data-tex="\(\operatorname{sgn}^{2e}\nu^{-2b}=\nu^{-2b}\)">\(\operatorname{sgn}^{2e}\nu^{-2b}=\nu^{-2b}\)</span>. This is a direct summand of the self-pairing parameter. ∎</p>
+<p><strong>Theorem 6.2 (conditional deduction of Selberg).</strong> Use the local compatibilities (6.3a) and the real self-pairing regularity of <a href="LG-GLOB-04.html">L-functions for GL_n: Godement–Jacquet and Rankin–Selberg</a>, Corollary 4.5. Suppose that for each unitary cuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span> arising from a congruence Maass form and for arbitrarily large <span class="math" data-tex="\(r\)">\(r\)</span>:</p>
+<ol>
+<li>A symmetric-power transfer <span class="math" data-tex="\(\Pi_r\)">\(\Pi_r\)</span> has parameter <span class="math" data-tex="\(\operatorname{Sym}^r\rho_{\pi_\infty}\)">\(\operatorname{Sym}^r\rho_{\pi_\infty}\)</span> at infinity.</li>
+<li>A tensor-product transfer <span class="math" data-tex="\(\Xi_r\)">\(\Xi_r\)</span> of <span class="math" data-tex="\(\Pi_r\)">\(\Pi_r\)</span> and <span class="math" data-tex="\(\widetilde\Pi_r\)">\(\widetilde\Pi_r\)</span> has parameter <span class="math" data-tex="\(\operatorname{Sym}^r\rho_{\pi_\infty}\otimes(\operatorname{Sym}^r\rho_{\pi_\infty})^\vee\)">\(\operatorname{Sym}^r\rho_{\pi_\infty}\otimes(\operatorname{Sym}^r\rho_{\pi_\infty})^\vee\)</span> at infinity and is an isobaric sum of unitary cuspidal representations.</li>
+</ol>
+<p>Then Selberg's conjecture holds. In particular, strong symmetric-power and tensor-product functoriality with these spectral properties implies it. Corollary 4.5 uses the local factor identification and the complete global Rankin–Selberg pole theorem stated in that lesson; the deduction here retains those analytic hypotheses.</p>
+<p><strong>Proof.</strong> Suppose an exceptional eigenvalue occurs. Lemma 6.1a gives (6.2) with <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. On the monomial basis the characters in <span class="math" data-tex="\(\operatorname{Sym}^r\rho_\infty\)">\(\operatorname{Sym}^r\rho_\infty\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sgn}^{r\epsilon}\nu^{(r-2j)t},
+\qquad 0\le j\le r.
+\tag{6.3}
+\]">\[
+\operatorname{sgn}^{r\epsilon}\nu^{(r-2j)t},
+\qquad 0\le j\le r.
+\tag{6.3}
+\]</span>
+<p>Tensoring with the dual gives characters <span class="math" data-tex="\(\nu^{2(k-j)t}\)">\(\nu^{2(k-j)t}\)</span>, <span class="math" data-tex="\(0\le j,k\le r\)">\(0\le j,k\le r\)</span>. Every sign is trivial. Hence the tensor transfer has parameter factor</p>
+<span class="math math-display" data-tex="\[
+L_\infty(s,\Xi_r)=
+\prod_{j,k=0}^r\Gamma_{\mathbb R}(s+2(k-j)t).
+\tag{6.4}
+\]">\[
+L_\infty(s,\Xi_r)=
+\prod_{j,k=0}^r\Gamma_{\mathbb R}(s+2(k-j)t).
+\tag{6.4}
+\]</span>
+<p>In particular, the parameter contains <span class="math" data-tex="\(\nu^{-2rt}\)">\(\nu^{-2rt}\)</span>, from <span class="math" data-tex="\(j=r,k=0\)">\(j=r,k=0\)</span>. Write <span class="math" data-tex="\(\Xi_r=\boxplus_a\sigma_a\)">\(\Xi_r=\boxplus_a\sigma_a\)</span>, with each <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span> unitary cuspidal. Its parameter is the direct sum of their parameters, so at least one constituent, say <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span>, contains this line. This uses only a multiset assertion about semisimple direct sums; it imposes no rank restriction on <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span>.</p>
+<p>Lemma 6.1b, with <span class="math" data-tex="\(e=0\)">\(e=0\)</span> and <span class="math" data-tex="\(b=2rt\)">\(b=2rt\)</span>, gives a second line <span class="math" data-tex="\(\nu^{2rt}\)">\(\nu^{2rt}\)</span> in <span class="math" data-tex="\(\rho_{\sigma_{a,\infty}}\)">\(\rho_{\sigma_{a,\infty}}\)</span>, and the self-pairing parameter contains <span class="math" data-tex="\(\nu^{-4rt}\)">\(\nu^{-4rt}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+L_\infty(s,\sigma_a\times\widetilde\sigma_a)
+\quad\text{contains the factor}\quad
+\Gamma_{\mathbb R}(s-4rt).
+\tag{6.5}
+\]">\[
+L_\infty(s,\sigma_a\times\widetilde\sigma_a)
+\quad\text{contains the factor}\quad
+\Gamma_{\mathbb R}(s-4rt).
+\tag{6.5}
+\]</span>
+<p>At <span class="math" data-tex="\(s=4rt\)">\(s=4rt\)</span> this gamma factor has a pole. Every other real or complex Weil factor is a gamma factor and has no zeros, so the remaining factors cannot cancel the pole. The entire reciprocal and the pole at zero were proved in the preceding lesson, Lemma 2.2; equivalently the recurrence <span class="math" data-tex="\(\Gamma(z+1)=z\Gamma(z)\)">\(\Gamma(z+1)=z\Gamma(z)\)</span> and <span class="math" data-tex="\(\Gamma(1)=1\)">\(\Gamma(1)=1\)</span> give the pole at zero.</p>
+<p>Choose a compatible <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(4rt\ge1\)">\(4rt\ge1\)</span>. Corollary 4.5 of the preceding lesson says that every local self-pairing factor of a unitary cusp, including this real factor, is holomorphic and nonzero at every real <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>. This contradicts (6.5). Therefore no exceptional eigenvalue occurs. Lemma 6.1a applies to every congruence cusp eigenfunction, so the conclusion is not restricted to a previously chosen Hecke eigenbasis. ∎</p>
+<p>There is also a useful weaker transfer hypothesis. If <span class="math" data-tex="\(\Pi_r\)">\(\Pi_r\)</span> itself has unitary cuspidal constituents and the stated real parameter, choose a constituent containing <span class="math" data-tex="\(\operatorname{sgn}^{r\epsilon}\nu^{-rt}\)">\(\operatorname{sgn}^{r\epsilon}\nu^{-rt}\)</span>. Lemma 6.1b makes its self-pairing contain <span class="math" data-tex="\(\nu^{-2rt}\)">\(\nu^{-2rt}\)</span>, whose factor <span class="math" data-tex="\(\Gamma_{\mathbb R}(s-2rt)\)">\(\Gamma_{\mathbb R}(s-2rt)\)</span> has a real pole at <span class="math" data-tex="\(2rt\ge1\)">\(2rt\ge1\)</span> for sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>. The same Corollary 4.5 contradicts this. This variant needs no tensor-product transfer; Theorem 6.2 proves the original two-transfer assertion without assuming that <span class="math" data-tex="\(\Pi_r\)">\(\Pi_r\)</span> has unitary cuspidal constituents.</p>
+<p>For the full <span class="math" data-tex="\(L^2\)">\(L^2\)</span> spectrum over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <a href="../automorphic-forms-and-representations-of-gl2/eisenstein-series-on-gl2-and-the-continuous-spectrum.html">Eisenstein series on GL₂(A) and the continuous spectrum</a>, Theorem 6.1 and §6.5, proves the spectral decomposition and residual exhaustion at every finite level. The continuous Casimir is multiplication by <span class="math" data-tex="\(1/4+u^2\)">\(1/4+u^2\)</span>, <span class="math" data-tex="\(u\in\mathbb R\)">\(u\in\mathbb R\)</span>, and its parameter measure has no atoms. The noncuspidal discrete lines are <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>; on <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span> their vectors are constant and have eigenvalue zero. These proved rank-two statements imply that excluding the cuspidal interval <span class="math" data-tex="\((0,1/4)\)">\((0,1/4)\)</span> also excludes every positive discrete eigenvalue in that interval. This passage does not require the arbitrary-rank residual classification. Weak agreement at almost all finite primes cannot replace the real compatibility in (6.3a)–(6.4).</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 7.1.</strong> Compute the symmetric-square map on an unramified Satake class <span class="math" data-tex="\(\operatorname{diag}(\alpha,\beta)\)">\(\operatorname{diag}(\alpha,\beta)\)</span>, its trace and determinant, and the local L-factor.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(e_1^2,e_1e_2,e_2^2\)">\(e_1^2,e_1e_2,e_2^2\)</span>, the action is diagonal with eigenvalues <span class="math" data-tex="\(\alpha^2,\alpha\beta,\beta^2\)">\(\alpha^2,\alpha\beta,\beta^2\)</span>. Its trace is <span class="math" data-tex="\(\alpha^2+\alpha\beta+\beta^2=(\alpha+\beta)^2-\alpha\beta\)">\(\alpha^2+\alpha\beta+\beta^2=(\alpha+\beta)^2-\alpha\beta\)</span>. Its determinant is <span class="math" data-tex="\(\alpha^3\beta^3=(\alpha\beta)^3\)">\(\alpha^3\beta^3=(\alpha\beta)^3\)</span>. The local factor is</p>
+<span class="math math-display" data-tex="\[
+\bigl((1-\alpha^2q_v^{-s})(1-\alpha\beta q_v^{-s})
+(1-\beta^2q_v^{-s})\bigr)^{-1}.
+\]">\[
+\bigl((1-\alpha^2q_v^{-s})(1-\alpha\beta q_v^{-s})
+(1-\beta^2q_v^{-s})\bigr)^{-1}.
+\]</span>
+<p>The middle root occurs once: the antisymmetric line belongs to <span class="math" data-tex="\(\wedge^2\)">\(\wedge^2\)</span>, not to <span class="math" data-tex="\(\operatorname{Sym}^2\)">\(\operatorname{Sym}^2\)</span>. If numerical roots coincide, the indexed factors still retain their multiplicities. ∎</p>
+<p><strong>Exercise 7.2.</strong> Prove unramified Ramanujan from symmetric-power transfers. State precisely the hypotheses on the transfers and on the fixed place that your argument uses.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(v\)">\(v\)</span> be unramified for a unitary cusp <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and suppose an unbounded family of <span class="math" data-tex="\(r\)">\(r\)</span> has transfers with unitary cuspidal constituents and Satake agreement at this <span class="math" data-tex="\(v\)">\(v\)</span>. The constituent parameters are unramified because their direct sum is. The local bound from the preceding lesson gives <span class="math" data-tex="\(|\alpha|^r,|\beta|^r&lt;q_v^{1/2}\)">\(|\alpha|^r,|\beta|^r&lt;q_v^{1/2}\)</span>. If <span class="math" data-tex="\(|\alpha|&gt;1\)">\(|\alpha|&gt;1\)</span>, choose a compatible <span class="math" data-tex="\(r&gt;(\log q_v)/(2\log|\alpha|)\)">\(r&gt;(\log q_v)/(2\log|\alpha|)\)</span>; the first inequality fails. Thus <span class="math" data-tex="\(|\alpha|\le1\)">\(|\alpha|\le1\)</span>, and the same argument gives <span class="math" data-tex="\(|\beta|\le1\)">\(|\beta|\le1\)</span>. Unitarity gives <span class="math" data-tex="\(|\alpha\beta|=1\)">\(|\alpha\beta|=1\)</span>, hence both are one. This proves temperedness of the unramified local component. Applying it at each unramified <span class="math" data-tex="\(v\)">\(v\)</span> proves unramified Ramanujan.</p>
+<p>The mere existence of an automorphic transfer does not justify the constituent bound: the residual example (5.4) shows why. Also, a transfer asserted only outside a finite set that varies with <span class="math" data-tex="\(r\)">\(r\)</span> may never match at the chosen <span class="math" data-tex="\(v\)">\(v\)</span>. These are additional requirements, not consequences proved by this solution. ∎</p>
+<p><strong>Exercise 7.3.</strong> Show that the symmetric square of a dihedral cusp form is not cuspidal. Include the quadratic twist in the one-dimensional summand and handle the case in which the rank-two summand splits.</p>
+<p><strong>Solution.</strong> Retain the isobaric existence hypothesis of Proposition 4.2. Write <span class="math" data-tex="\(\pi=\operatorname{AI}_{E/F}\theta\)">\(\pi=\operatorname{AI}_{E/F}\theta\)</span>, with <span class="math" data-tex="\(\theta\ne\theta^\tau\)">\(\theta\ne\theta^\tau\)</span>. In the induced basis of (4.4), <span class="math" data-tex="\(e_1^2,e_2^2\)">\(e_1^2,e_2^2\)</span> form <span class="math" data-tex="\(\operatorname{Ind}\theta^2\)">\(\operatorname{Ind}\theta^2\)</span>, and <span class="math" data-tex="\(e_1e_2\)">\(e_1e_2\)</span> is a line of character <span class="math" data-tex="\((\det\rho)\varepsilon_{E/F}\)">\((\det\rho)\varepsilon_{E/F}\)</span>. The twist is forced by the opposite signs of <span class="math" data-tex="\(\det\rho(t)=-a\)">\(\det\rho(t)=-a\)</span> and the eigenvalue <span class="math" data-tex="\(a\)">\(a\)</span> on that line. Quadratic induction, class field theory and the assumed automorphic isobaric construction therefore give the transfer (4.6). If <span class="math" data-tex="\(\theta^2\ne(\theta^\tau)^2\)">\(\theta^2\ne(\theta^\tau)^2\)</span>, its decomposition has a rank-two cusp and a rank-one character. If <span class="math" data-tex="\(\theta^2\)">\(\theta^2\)</span> is invariant, extend it by either square root of its value on <span class="math" data-tex="\(t^2\)">\(t^2\)</span>; the two extensions differ by <span class="math" data-tex="\(\varepsilon_{E/F}\)">\(\varepsilon_{E/F}\)</span>, and the induction is their sum. The transfer then has three rank-one constituents. In either case it has more than one constituent, so isobaric uniqueness rules out a rank-three cusp form with the same almost-all Satake classes. ∎</p>
+<p><strong>Exercise 7.4.</strong> Assuming symmetric-power and tensor-product functoriality, deduce the Selberg eigenvalue conjecture for congruence subgroups. Specify the local and spectral properties needed beyond weak transfer.</p>
+<p><strong>Solution.</strong> Use the transfer hypotheses of Theorem 6.2, the local duality, complex-conjugation, direct-sum and Rankin–Selberg compatibilities (6.3a), and the analytic hypotheses of the preceding lesson's Corollary 4.5. If <span class="math" data-tex="\(0&lt;\lambda&lt;1/4\)">\(0&lt;\lambda&lt;1/4\)</span>, Lemma 6.1a supplies a unitary cusp with the real parameter (6.2), where <span class="math" data-tex="\(t=\sqrt{1/4-\lambda}&gt;0\)">\(t=\sqrt{1/4-\lambda}&gt;0\)</span>. Its <span class="math" data-tex="\(r\)">\(r\)</span>-th symmetric power has characters (6.3). Tensoring with the dual gives the characters <span class="math" data-tex="\(\nu^{2(k-j)t}\)">\(\nu^{2(k-j)t}\)</span>, with trivial parity; the character <span class="math" data-tex="\(\nu^{-2rt}\)">\(\nu^{-2rt}\)</span> occurs.</p>
+<p>Choose a unitary cuspidal constituent <span class="math" data-tex="\(\sigma_a\)">\(\sigma_a\)</span> of the tensor transfer whose real parameter contains that character. Unitarity identifies its contragredient with its complex conjugate, as proved in Lemma 6.1b. The local compatibilities therefore force <span class="math" data-tex="\(\nu^{2rt}\)">\(\nu^{2rt}\)</span> to occur in the same constituent. Its self-pairing parameter contains <span class="math" data-tex="\(\nu^{-4rt}\)">\(\nu^{-4rt}\)</span>, so its real Rankin–Selberg factor contains <span class="math" data-tex="\(\Gamma_{\mathbb R}(s-4rt)\)">\(\Gamma_{\mathbb R}(s-4rt)\)</span>. Choose a compatible <span class="math" data-tex="\(r\ge1/(4t)\)">\(r\ge1/(4t)\)</span>. This factor has a pole at the real point <span class="math" data-tex="\(s=4rt\ge1\)">\(s=4rt\ge1\)</span>, and the other gamma factors have no zeros that could cancel it. Corollary 4.5 says that this self-pairing factor is holomorphic and nonzero at that real point, a contradiction.</p>
+<p>Thus <span class="math" data-tex="\(\lambda\ge1/4\)">\(\lambda\ge1/4\)</span> for every congruence cusp form. The proved rank-two spectral decomposition cited at the end of §6 puts the continuous spectrum at and above <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, while the residual determinant characters contribute zero. Hence no positive discrete eigenvalue lies below <span class="math" data-tex="\(1/4\)">\(1/4\)</span>.</p>
+<p>Real-place agreement supplies the line <span class="math" data-tex="\(\nu^{-2rt}\)">\(\nu^{-2rt}\)</span>; the unitary cuspidal decomposition lets us apply the self-pairing regularity theorem to a constituent. Weak agreement at almost all finite places supplies neither property. The deduction retains the complete global pole and local factor-identification hypotheses needed for Corollary 4.5. ∎</p>
+<h2 id="8-proof-dependencies-and-the-remaining-conjectures">8. Proof dependencies and the remaining conjectures</h2>
+<p>The local determinant identities, composition, good-place quadratic calculations and symmetric-square splitting are direct proofs in this lesson. Theorems 5.1 and 6.2 prove their conditional deductions with the original transfer scope. The general transfer conjectures, including arbitrary symmetric powers, tensor products, base change and induction, are not established by those calculations.</p>
+<p>The following distinctions specify the mathematical inputs to the deductions.</p>
+<ul>
+<li><strong>General-linear analytic theory.</strong> Corollary 4.5 of the preceding lesson proves real self-pairing regularity and the strict unramified Satake bound from its stated local factor theorem, Theorem 2.1, and complete global Rankin–Selberg theorem, Theorem 3.1. The positivity and Landau arguments are written out there. The arbitrary-rank local integral construction and the global continuation, functional equation and exact simple-pole theorem remain unproved foundations of that lesson. They are needed here; a source citation does not replace them. The general-rank standard analytic theorem, its Theorem 1.1, is also needed for the strong-Artin entireness deduction. Degree one has the actual Tate proof in <a href="../NT-ADL/NT-ADL-09.html">Tate's global theory: continuation and functional equation</a>, Theorem 9.2; the preceding lesson identifies the separate rational rank-two Whittaker proof.</li>
+<li><strong>Isobaric existence and classification.</strong> The preceding lesson, §6, states the local construction, global automorphic existence and unitary cuspidal normalization, but does not prove them in general rank over every number field. Its Theorem 6.1 proves multiset uniqueness under those existence and analytic inputs. The general direct-sum transfer and the rank-three automorphic realization of (4.6) retain that existence requirement. The specific rank-two sum of the invariant-character case is constructed in Proposition 4.1a here. Free statement locators are [Getz–Hahn, 22 April 2022 draft, Theorems 10.5.1–10.5.2, (10.21), and Theorem 10.6.5, pp.246–251].</li>
+<li><strong>Quadratic induction.</strong> For a noninvariant inducing character the all-number-field automorphy proof is in <a href="../automorphic-forms-and-representations-of-gl2/dihedral-forms-examples-and-the-ramanujan-conjecture-for-gl2.html">Dihedral forms, examples, and the Ramanujan conjecture for GL₂</a>, Theorem 2.1 and §2.1. Its Propositions 1.2–1.3 prove norm, transfer and invariant-character compatibility; its Lemma 2.2 supplies the number-field Hecke strip estimates; the all-field converse is proved in <a href="../automorphic-forms-and-representations-of-gl2/multiplicity-one-strong-multiplicity-one-and-the-converse-theorem.html">Multiplicity one, strong multiplicity one and the converse theorem</a>, Theorem 4.5. The invariant-character parameter splits by the extension argument in §4 here, and Proposition 4.1a realizes the resulting rank-two sum automorphically by an all-number-field theta integral. Its continuation, section generation, moderate growth, injectivity and noncuspidality are proved there using the actual adelic Poisson and Hecke nonvanishing proofs and the proved local principal-series classification. The earlier dihedral lesson, Theorem 3.1, also proves the CM theta realization used in the holomorphic example.</li>
+<li><strong>Local correspondence.</strong> The symmetric-power and tensor-product deductions use direct sums of local general-linear parameters. For Theorem 6.2 the precise additional requirements are (6.3a): compatibility with contragredients, complex conjugation, isobaric sums and analytic Rankin–Selberg factors. The real-character factor is proved in NT-ADL-08, Proposition 8.2; the rank-two real classification used in Lemma 6.1a is proved in the named real-representation lesson, Theorem 3.2 and Proposition 4.1. This does not supply a general-rank proof of all of (6.3a), which remain hypotheses here. General reductive-group packets and their global multiplicity conditions are also outside these proofs.</li>
+<li><strong>The congruence spectrum.</strong> Lemma 6.1a gives the Maass realization from the proved principal-level quotient and cuspidal Hilbert decomposition. The rational rank-two Eisenstein lesson, Theorem 6.1 and §6.5, proves full spectral completeness and residual exhaustion at every finite level. Thus the passage from cusp forms to all positive discrete eigenvalues uses that earlier proof, rather than an unproved arbitrary-rank residual classification. The latter is still a separate theorem in the preceding lesson.</li>
+</ul>
+<p>The existence of a transfer, its cuspidality, unitary normalization of each constituent, and its compatibility at a specified place are separate assertions. Keeping them separate is what makes the Ramanujan and Selberg implications precise. The free sources below locate the conjectures and the stated foundational theorems; they are not being used as a list of all currently known cases.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. Arthur, <a href="https://www.math.toronto.edu/arthur/pdf/Introduction_to_Langlands_Functoriality_June29.pdf">“An introduction to Langlands functoriality”</a>, freely accessible author draft, June 2020, pp.14–15, for the trivial-group L-group and the local and global functoriality questions.</li>
+<li>J. R. Getz and H. Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, freely accessible author draft dated 22 April 2022. All locators in this lesson refer to this draft: §§10.5–10.7, Conjecture 12.6.1, §§13.2, 13.5 and 13.7.</li>
+<li>R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/where-stands-functoriality-today_rpl_7.pdf">“Where stands functoriality today?”</a>, 1997, freely accessible IAS author edition, §3, pp.5–7.</li>
+<li>P. Sarnak, <a href="https://publications.ias.edu/sites/default/files/FieldNotesCurrent.pdf">“Notes on the generalized Ramanujan conjectures”</a>, freely accessible IAS author notes, 2005, §1, pp.661–664; p.663, Remark 3, relates real-place temperedness to Selberg's conjecture. The sign convention for its archimedean shifts differs from (6.2).</li>
+<li>R. Taylor, <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0.pdf">“Galois representations”</a>, freely accessible article, <em>Annales de la Faculté des Sciences de Toulouse</em> 13 (2004), 73–119, especially §5.2, pp.106–107, and §5.3.2, pp.108–110.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-GLOB-04.html">← L-functions for GL_n: Godement–Jacquet and Rankin–Selberg</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-GLOB-14.html">The function-field case: Drinfeld and L. Lafforgue →</a></span></nav>
+<p class="small source-link"><a href="src/LG-GLOB-05.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GLOB">Repository</a></nav>
+</footer>
+</body>
+</html>

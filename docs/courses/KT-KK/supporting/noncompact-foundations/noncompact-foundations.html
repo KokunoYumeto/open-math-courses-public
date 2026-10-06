@@ -1,0 +1,376 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Noncompact foundations for equivariant induction</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../">Kasparov’s KK-theory</a> · <a href="../../KT-KK-17.html">Equivariant KK-theory and the Green–Julg theorem</a> · <a href="noncompact-foundations.md">Markdown source</a></p><article class="lesson">
+<h1 id="noncompact-foundations-for-equivariant-induction">Noncompact foundations for equivariant induction</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>This companion proves the topology and integration used for second countable locally compact Hausdorff groups and their closed subgroups. It does not assume that a subgroup is normal, that a quotient has local continuous sections, or that either group is unimodular. Compact Haar measure and compact vector integration remain the earlier <a href="../representations-of-compact-groups/compact-foundations.html">Foundations for compact-group averaging and coefficient approximation</a>, CPT-F-005 and CPT-F-010. Its CPT-F-002–CPT-F-004 also prove compact Hausdorff separation, finite Radon representation and finite scalar Fubini. The ordinary module facts are <a href="../hilbert-c-star-modules-and-morita-equivalence/hilbert-module-foundations.html">Hilbert-module foundations</a>, MF.1–MF.7.</p>
+<span id="ncf-001"></span>
+<h2 id="ncf-1-countable-locally-compact-spaces-cutoffs-and-partitions">NCF.1. Countable locally compact spaces, cutoffs and partitions</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a second countable locally compact Hausdorff space. We prove the specific topology tools needed below. A countable base makes every open cover admit a countable subcover: for each basic open set contained in some cover member, choose one such member. The chosen members cover <span class="math" data-tex="\(X\)">\(X\)</span>. The same applies to a closed subspace, by adding its open complement to a cover.</p>
+<p>First, <span class="math" data-tex="\(X\)">\(X\)</span> is regular. Given <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span> open, take an open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> with compact closure. In the compact Hausdorff space <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>, the compact normality proof of CPT-F-002 provides a relative open <span class="math" data-tex="\(W\)">\(W\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span> with relative closure contained in <span class="math" data-tex="\(O\cap V\)">\(O\cap V\)</span>. Since <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> is open in <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> is open in <span class="math" data-tex="\(X\)">\(X\)</span>. Its closure in <span class="math" data-tex="\(X\)">\(X\)</span> equals its closure in <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>; it is compact and lies in <span class="math" data-tex="\(O\)">\(O\)</span>. Finite unions give the following version for a compact set:
+<span class="math math-display" data-tex="\[
+ K\subset O,\ K\text{ compact},\ O\text{ open}
+ \ \Longrightarrow\
+ K\subset W\subset\overline W\subset O,
+ \quad \overline W\text{ compact}.                 \tag{NC.1}
+\]">\[
+ K\subset O,\ K\text{ compact},\ O\text{ open}
+ \ \Longrightarrow\
+ K\subset W\subset\overline W\subset O,
+ \quad \overline W\text{ compact}.                 \tag{NC.1}
+\]</span></p>
+<p>The space is also normal. For disjoint closed <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, regularity gives countable open families <span class="math" data-tex="\(U_n,V_n\)">\(U_n,V_n\)</span> covering <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, respectively, with
+<span class="math" data-tex="\(\overline U_n\cap B=\overline V_n\cap A=\varnothing\)">\(\overline U_n\cap B=\overline V_n\cap A=\varnothing\)</span>.
+Countable families suffice by the preceding closed-subspace covering argument. The open sets
+<span class="math math-display" data-tex="\[
+ P=\bigcup_n\left(U_n\setminus\bigcup_{j\leq n}\overline V_j\right),
+ \qquad
+ Q=\bigcup_n\left(V_n\setminus\bigcup_{j\leq n}\overline U_j\right)
+\]">\[
+ P=\bigcup_n\left(U_n\setminus\bigcup_{j\leq n}\overline V_j\right),
+ \qquad
+ Q=\bigcup_n\left(V_n\setminus\bigcup_{j\leq n}\overline U_j\right)
+\]</span>
+contain <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and are disjoint. If a point were in the terms indexed <span class="math" data-tex="\(n,m\)">\(n,m\)</span>, the smaller of <span class="math" data-tex="\(n,m\)">\(n,m\)</span> would exclude the other term's closure. Empty closed sets cause no difficulty.</p>
+<p>For use with this normality, recall the nested-open construction explicitly. For disjoint closed <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, choose opens <span class="math" data-tex="\(U_0,U_1\)">\(U_0,U_1\)</span> with
+<span class="math" data-tex="\(A\subset U_0\subset\overline U_0\subset U_1=X\setminus B\)">\(A\subset U_0\subset\overline U_0\subset U_1=X\setminus B\)</span>.
+Inductively, normality inserts <span class="math" data-tex="\(U_{(r+s)/2}\)">\(U_{(r+s)/2}\)</span> between <span class="math" data-tex="\(\overline U_r\)">\(\overline U_r\)</span> and <span class="math" data-tex="\(U_s\)">\(U_s\)</span> for consecutive dyadic indices <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. Thus
+<span class="math" data-tex="\(\overline U_r\subset U_s\)">\(\overline U_r\subset U_s\)</span> whenever <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. Put
+<span class="math math-display" data-tex="\[
+ u(x)=\inf\{r\in[0,1]\text{ dyadic}:x\in U_r\},
+ \qquad \inf\varnothing=1.
+\]">\[
+ u(x)=\inf\{r\in[0,1]\text{ dyadic}:x\in U_r\},
+ \qquad \inf\varnothing=1.
+\]</span>
+Then <span class="math" data-tex="\(u=0\)">\(u=0\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>. The identities
+<span class="math math-display" data-tex="\[
+ \{u&lt;t\}=\bigcup_{r&lt;t}U_r,\qquad
+ \{u&gt;t\}=\bigcup_{r&gt;t}(X\setminus\overline U_r)
+ \quad(0&lt;t&lt;1)
+\]">\[
+ \{u&lt;t\}=\bigcup_{r&lt;t}U_r,\qquad
+ \{u&gt;t\}=\bigcup_{r&gt;t}(X\setminus\overline U_r)
+ \quad(0&lt;t&lt;1)
+\]</span>
+and the corresponding endpoint statements prove continuity. This is the same dyadic mechanism proved for compact spaces in CPT-F-002; only normality was required for its construction.</p>
+<p>Combining it with (NC.1), for <span class="math" data-tex="\(K\subset O\)">\(K\subset O\)</span> as there one obtains a function
+<span class="math math-display" data-tex="\[
+ 0\leq\rho\leq1,\quad \rho=1\text{ on }K,\quad
+ \rho\in C_c(X),\quad\operatorname{supp}\rho\subset O.       \tag{NC.2}
+\]">\[
+ 0\leq\rho\leq1,\quad \rho=1\text{ on }K,\quad
+ \rho\in C_c(X),\quad\operatorname{supp}\rho\subset O.       \tag{NC.2}
+\]</span>
+Indeed choose <span class="math" data-tex="\(W\)">\(W\)</span> with compact closure in <span class="math" data-tex="\(O\)">\(O\)</span>, separate <span class="math" data-tex="\(K\)">\(K\)</span> from the closed set <span class="math" data-tex="\(X\setminus W\)">\(X\setminus W\)</span>, and take <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to be one on the former and zero on the latter. Its support lies in <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span>.</p>
+<p>There is a compact exhaustion <span class="math" data-tex="\(K_n\)">\(K_n\)</span> with
+<span class="math math-display" data-tex="\[
+ K_n\subset\operatorname{int}K_{n+1},\qquad
+ \bigcup_n\operatorname{int}K_n=X.                       \tag{NC.3}
+\]">\[
+ K_n\subset\operatorname{int}K_{n+1},\qquad
+ \bigcup_n\operatorname{int}K_n=X.                       \tag{NC.3}
+\]</span>
+Precompact neighborhoods have a countable subcover <span class="math" data-tex="\(B_n\)">\(B_n\)</span>. Start with <span class="math" data-tex="\(\overline B_1\)">\(\overline B_1\)</span>. At each step, finitely many precompact open neighborhoods cover the previous compact set together with <span class="math" data-tex="\(\overline B_{n+1}\)">\(\overline B_{n+1}\)</span>; the closure of their union is the next compact set. This ensures both assertions. Empty <span class="math" data-tex="\(X\)">\(X\)</span> has the empty exhaustion. Equation (NC.2) gives <span class="math" data-tex="\(0\leq\rho_n\leq1\)">\(0\leq\rho_n\leq1\)</span>, equal to one on <span class="math" data-tex="\(K_n\)">\(K_n\)</span> and compactly supported; hence <span class="math" data-tex="\(\rho_n f\to f\)">\(\rho_n f\to f\)</span> uniformly for every continuous function <span class="math" data-tex="\(f\)">\(f\)</span> vanishing at infinity. Its tail estimate is <span class="math" data-tex="\(\|(1-\rho_n)f\|_\infty\leq\sup_{X\setminus K_n}\|f(x)\|\)">\(\|(1-\rho_n)f\|_\infty\leq\sup_{X\setminus K_n}\|f(x)\|\)</span>, also for Banach-valued <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Every open cover of <span class="math" data-tex="\(X\)">\(X\)</span> has a countable locally finite subordinate partition with compact supports. To construct it, set <span class="math" data-tex="\(K_0=K_{-1}=\varnothing\)">\(K_0=K_{-1}=\varnothing\)</span>, and consider the compact annulus
+<span class="math" data-tex="\(A_n=K_n\setminus\operatorname{int}K_{n-1}\)">\(A_n=K_n\setminus\operatorname{int}K_{n-1}\)</span>.
+At each point of <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, choose two nested precompact neighborhoods
+<span class="math math-display" data-tex="\[
+ x\in V_{n,j}\subset\overline V_{n,j}\subset W_{n,j},
+ \quad
+ \overline W_{n,j}\subset
+ U_{n,j}\cap(\operatorname{int}K_{n+1}\setminus K_{n-2}),
+\]">\[
+ x\in V_{n,j}\subset\overline V_{n,j}\subset W_{n,j},
+ \quad
+ \overline W_{n,j}\subset
+ U_{n,j}\cap(\operatorname{int}K_{n+1}\setminus K_{n-2}),
+\]</span>
+where <span class="math" data-tex="\(U_{n,j}\)">\(U_{n,j}\)</span> is an assigned member of the given cover. Such choices follow from (NC.1); the annulus avoids <span class="math" data-tex="\(K_{n-2}\)">\(K_{n-2}\)</span>. Finitely many <span class="math" data-tex="\(V_{n,j}\)">\(V_{n,j}\)</span> cover <span class="math" data-tex="\(A_n\)">\(A_n\)</span>. Choose <span class="math" data-tex="\(\psi_{n,j}\)">\(\psi_{n,j}\)</span> from (NC.2), equal to one on <span class="math" data-tex="\(\overline V_{n,j}\)">\(\overline V_{n,j}\)</span> and supported in <span class="math" data-tex="\(W_{n,j}\)">\(W_{n,j}\)</span>. Their supports form a locally finite family: a neighborhood inside <span class="math" data-tex="\(\operatorname{int}K_m\)">\(\operatorname{int}K_m\)</span> misses all families with <span class="math" data-tex="\(n\geq m+2\)">\(n\geq m+2\)</span>, and the remaining families are finite. They cover <span class="math" data-tex="\(X\)">\(X\)</span> by positive sets. Thus
+<span class="math math-display" data-tex="\[
+ s(x)=\sum_{n,j}\psi_{n,j}(x)&gt;0,\qquad
+ \chi_{n,j}=\psi_{n,j}/s
+\]">\[
+ s(x)=\sum_{n,j}\psi_{n,j}(x)&gt;0,\qquad
+ \chi_{n,j}=\psi_{n,j}/s
+\]</span>
+are continuous, locally finite, sum to one, and have compact supports inside their assigned cover members. A compact set meets only finitely many supports, by taking finitely many of the neighborhoods witnessing local finiteness. Repeating an original cover label is permitted; it causes no change in the subordination claim. Finite compact-cover partitions are already CPT-F-002.</p>
+<p>We need one extension result. Let <span class="math" data-tex="\(F\subset X\)">\(F\subset X\)</span> be closed and <span class="math" data-tex="\(f:F\to[-M,M]\)">\(f:F\to[-M,M]\)</span> continuous. For a residual <span class="math" data-tex="\(r\)">\(r\)</span> bounded by <span class="math" data-tex="\(M\)">\(M\)</span>, its closed level sets
+<span class="math" data-tex="\(\{r\leq-M/3\}\)">\(\{r\leq-M/3\}\)</span> and <span class="math" data-tex="\(\{r\geq M/3\}\)">\(\{r\geq M/3\}\)</span> are closed in <span class="math" data-tex="\(X\)">\(X\)</span>. The preceding separation function gives <span class="math" data-tex="\(g:X\to[-M/3,M/3]\)">\(g:X\to[-M/3,M/3]\)</span> taking the corresponding endpoint values on them. Then
+<span class="math" data-tex="\(\|r-g|_F\|_\infty\leq2M/3\)">\(\|r-g|_F\|_\infty\leq2M/3\)</span>.
+Apply this repeatedly to residuals, with bounds <span class="math" data-tex="\(M(2/3)^n\)">\(M(2/3)^n\)</span>. The resulting continuous functions have sup norms at most <span class="math" data-tex="\(M(2/3)^n/3\)">\(M(2/3)^n/3\)</span>, so their series converges uniformly on <span class="math" data-tex="\(X\)">\(X\)</span>, defines a continuous bounded extension, and its residual on <span class="math" data-tex="\(F\)">\(F\)</span> tends uniformly to zero. For <span class="math" data-tex="\(f:F\to[0,M]\)">\(f:F\to[0,M]\)</span>, clamp an extension to that interval. If <span class="math" data-tex="\(f:F\to[0,M]\)">\(f:F\to[0,M]\)</span> is compactly supported, multiply its nonnegative extension by a cutoff from (NC.2) that equals one on its compact support. The restriction is still <span class="math" data-tex="\(f\)">\(f\)</span> everywhere on <span class="math" data-tex="\(F\)">\(F\)</span>, and the extension now lies in <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>. For a bounded real or complex compactly supported function, extend its real and imaginary parts by the preceding bounded extension construction, then multiply the resulting extension by such a cutoff. Its restriction is again the original function. This proves exactly the compactly supported extension needed for closed-subgroup approximate-identity functions.</p>
+<p>For completeness, if <span class="math" data-tex="\(K\)">\(K\)</span> is compact and second countable and <span class="math" data-tex="\(Z\)">\(Z\)</span> is a separable Banach space, <span class="math" data-tex="\(C(K,Z)\)">\(C(K,Z)\)</span> is separable. Choose a countable relative base on <span class="math" data-tex="\(K\)">\(K\)</span>. For each pair of basic sets with the closure of the first inside the second, choose a continuous cutoff equal to one on that closure and zero outside the second. Such a countable family separates points, by regularity. If a closure does not itself belong to a basic set contained in the desired open set, use a finite union of basic sets as the second set; the family of these finite unions is still countable. The algebra it generates with rational complex coefficients and <span class="math" data-tex="\(1\)">\(1\)</span> is countable and uniformly dense in <span class="math" data-tex="\(C(K)\)">\(C(K)\)</span>, by CPT-F-001's proved Stone–Weierstrass argument. For a countable dense set <span class="math" data-tex="\(D\subset Z\)">\(D\subset Z\)</span>, finite sums of members of this algebra times members of <span class="math" data-tex="\(D\)">\(D\)</span> are countable. They are dense in <span class="math" data-tex="\(C(K,Z)\)">\(C(K,Z)\)</span>: cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many neighborhoods on which a given <span class="math" data-tex="\(Z\)">\(Z\)</span>-valued function varies by less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, choose nearby values in <span class="math" data-tex="\(D\)">\(D\)</span>, use CPT-F-002's finite partition, and approximate each scalar partition function by the countable algebra. Thus no metrization theorem is an unproved premise of this separability argument.</p>
+<span id="ncf-002"></span>
+<h2 id="ncf-2-closed-subgroups-and-homogeneous-quotients">NCF.2. Closed subgroups and homogeneous quotients</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a second countable locally compact Hausdorff group and <span class="math" data-tex="\(H\)">\(H\)</span> a closed subgroup. Its relative topology makes <span class="math" data-tex="\(H\)">\(H\)</span> locally compact Hausdorff and second countable: intersect a compact neighborhood in <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(H\)">\(H\)</span>. Therefore NCF.1 applies to <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Equip the homogeneous space <span class="math" data-tex="\(X=G/H\)">\(X=G/H\)</span> with the quotient topology and write <span class="math" data-tex="\(q:G\to X\)">\(q:G\to X\)</span>. The map is open, since
+<span class="math" data-tex="\(q^{-1}(q(O))=OH=\bigcup_{h\in H}Oh\)">\(q^{-1}(q(O))=OH=\bigcup_{h\in H}Oh\)</span> for an open <span class="math" data-tex="\(O\subset G\)">\(O\subset G\)</span>.
+It follows that the images of a countable base form a base of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The quotient is Hausdorff. For unequal cosets <span class="math" data-tex="\(gH,kH\)">\(gH,kH\)</span>, the element <span class="math" data-tex="\(g^{-1}k\)">\(g^{-1}k\)</span> is outside the closed set <span class="math" data-tex="\(H\)">\(H\)</span>. Continuity of <span class="math" data-tex="\((u,v)\mapsto u^{-1}v\)">\((u,v)\mapsto u^{-1}v\)</span> gives neighborhoods <span class="math" data-tex="\(O_g,O_k\)">\(O_g,O_k\)</span> with
+<span class="math" data-tex="\(O_g^{-1}O_k\cap H=\varnothing\)">\(O_g^{-1}O_k\cap H=\varnothing\)</span>.
+Their open quotient images are disjoint: a common coset would give <span class="math" data-tex="\(u\in O_g,v\in O_k\)">\(u\in O_g,v\in O_k\)</span> with <span class="math" data-tex="\(u^{-1}v\in H\)">\(u^{-1}v\in H\)</span>, a contradiction. At any representative <span class="math" data-tex="\(g\)">\(g\)</span>, a precompact open <span class="math" data-tex="\(O\ni g\)">\(O\ni g\)</span> has open image <span class="math" data-tex="\(q(O)\)">\(q(O)\)</span> contained in the compact set <span class="math" data-tex="\(q(\overline O)\)">\(q(\overline O)\)</span>. The latter is closed because <span class="math" data-tex="\(X\)">\(X\)</span> is Hausdorff, so the closure of <span class="math" data-tex="\(q(O)\)">\(q(O)\)</span> is compact. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is locally compact. NCF.1 now supplies normality, compact exhaustions, cutoffs and subordinate partitions on <span class="math" data-tex="\(X\)">\(X\)</span>. None of this treats <span class="math" data-tex="\(G/H\)">\(G/H\)</span> as a group or requires <span class="math" data-tex="\(H\)">\(H\)</span> to be a normal subgroup.</p>
+<p>Every compact <span class="math" data-tex="\(C\subset G/H\)">\(C\subset G/H\)</span> has a compact set of representatives. Choose finitely many precompact opens <span class="math" data-tex="\(O_j\subset G\)">\(O_j\subset G\)</span> whose quotient images cover <span class="math" data-tex="\(C\)">\(C\)</span>, and set
+<span class="math math-display" data-tex="\[
+ L=q^{-1}(C)\cap\bigcup_j\overline O_j.                 \tag{NC.4}
+\]">\[
+ L=q^{-1}(C)\cap\bigcup_j\overline O_j.                 \tag{NC.4}
+\]</span>
+It is closed in a compact set and hence compact, and <span class="math" data-tex="\(q(L)=C\)">\(q(L)=C\)</span>. This proof extends the compact-lifting mechanism used for abelian groups in the HA-LCA lesson to arbitrary closed subgroups. It makes no claim of a continuous local section.</p>
+<p>For closed <span class="math" data-tex="\(L\subset H\subset G\)">\(L\subset H\subset G\)</span>, the map <span class="math" data-tex="\(G/L\to G/H\)">\(G/L\to G/H\)</span> is continuous. The fibre over <span class="math" data-tex="\(gH\)">\(gH\)</span> is homeomorphic to <span class="math" data-tex="\(H/L\)">\(H/L\)</span>, by <span class="math" data-tex="\(hL\mapsto ghL\)">\(hL\mapsto ghL\)</span>, and is closed. To see its topology, <span class="math" data-tex="\(H\)">\(H\)</span> is closed in <span class="math" data-tex="\(G\)">\(G\)</span> and the quotient maps are open; if an open subset of <span class="math" data-tex="\(H/L\)">\(H/L\)</span> has preimage <span class="math" data-tex="\(V\subset H\)">\(V\subset H\)</span>, write <span class="math" data-tex="\(V=H\cap O\)">\(V=H\cap O\)</span> for open <span class="math" data-tex="\(O\subset G\)">\(O\subset G\)</span>. Its fibre image is the intersection of that fibre with the open set <span class="math" data-tex="\(q_L(gO)\)">\(q_L(gO)\)</span>. This verifies the subspace topology. These facts are the quotient inputs to successive induction and its vanishing conditions.</p>
+<span id="ncf-003"></span>
+<h2 id="ncf-3-radon-representation-and-scalar-fubini-beyond-compact-spaces">NCF.3. Radon representation and scalar Fubini beyond compact spaces</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be as in NCF.1 and <span class="math" data-tex="\(I:C_c(X)\to\mathbb C\)">\(I:C_c(X)\to\mathbb C\)</span> a positive linear functional. We derive its noncompact Radon representation from CPT-F-003, without importing another representation theorem. Fix the exhaustion (NC.3) and cutoffs <span class="math" data-tex="\(b_n\in C_c(X)\)">\(b_n\in C_c(X)\)</span> equal to one on <span class="math" data-tex="\(K_n\)">\(K_n\)</span>, with <span class="math" data-tex="\(0\leq b_n\leq1\)">\(0\leq b_n\leq1\)</span>, supported in <span class="math" data-tex="\(\operatorname{int}K_{n+1}\)">\(\operatorname{int}K_{n+1}\)</span>.</p>
+<p>For <span class="math" data-tex="\(v\in C(K_{n+1})\)">\(v\in C(K_{n+1})\)</span>, take a bounded continuous extension to <span class="math" data-tex="\(X\)">\(X\)</span> by NCF.1 and define <span class="math" data-tex="\(I_n(v)=I(b_n\widetilde v)\)">\(I_n(v)=I(b_n\widetilde v)\)</span>. This is independent of the extension, because <span class="math" data-tex="\(b_n\)">\(b_n\)</span> vanishes outside <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span>. Positivity follows by choosing nonnegative extensions when <span class="math" data-tex="\(v\geq0\)">\(v\geq0\)</span>; linearity follows by the same independence. It is bounded: for real <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(|I_n(v)|\leq I(b_n)\|v\|_\infty\)">\(|I_n(v)|\leq I(b_n)\|v\|_\infty\)</span>; decomposing into real and imaginary parts gives a complex bound. CPT-F-003 supplies a finite Radon measure <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> on <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span>, extended by zero to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>On <span class="math" data-tex="\(O_n=\operatorname{int}K_n\)">\(O_n=\operatorname{int}K_n\)</span>, all measures <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>, <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, give <span class="math" data-tex="\(I(f)\)">\(I(f)\)</span> for <span class="math" data-tex="\(f\in C_c(O_n)\)">\(f\in C_c(O_n)\)</span>. They therefore have the same restriction to <span class="math" data-tex="\(O_n\)">\(O_n\)</span>: an open subset of <span class="math" data-tex="\(O_n\)">\(O_n\)</span> has measure equal to the supremum of integrals of its continuous compactly supported tests, by compact inner regularity and (NC.2). Equality on opens extends to Borel sets by finite Radon outer regularity. Define
+<span class="math math-display" data-tex="\[
+ \mu(E)=\lim_n\mu_n(E\cap O_n),\qquad E\in\mathcal B(X).
+                                                               \tag{NC.5}
+\]">\[
+ \mu(E)=\lim_n\mu_n(E\cap O_n),\qquad E\in\mathcal B(X).
+                                                               \tag{NC.5}
+\]</span>
+Consistency makes the terms increasing. It gives countable additivity by passing the increasing limit through a nonnegative series; that interchange is scalar monotone convergence, already proved in CPT-F-004. The resulting measure restricts to <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> on <span class="math" data-tex="\(O_n\)">\(O_n\)</span>, is finite on each <span class="math" data-tex="\(K_n\subset O_{n+1}\)">\(K_n\subset O_{n+1}\)</span>, and is sigma-finite.</p>
+<p>It is Radon. For any Borel <span class="math" data-tex="\(E\)">\(E\)</span>, partition it into
+<span class="math" data-tex="\(E_n=E\cap(O_n\setminus O_{n-1})\)">\(E_n=E\cap(O_n\setminus O_{n-1})\)</span>, with <span class="math" data-tex="\(O_0=\varnothing\)">\(O_0=\varnothing\)</span>. Each piece lies in <span class="math" data-tex="\(O_n\)">\(O_n\)</span>, where the finite Radon measure <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> applies. Choose an open <span class="math" data-tex="\(V_n\subset O_n\)">\(V_n\subset O_n\)</span> containing <span class="math" data-tex="\(E_n\)">\(E_n\)</span> with
+<span class="math" data-tex="\(\mu(V_n)\leq\mu(E_n)+\varepsilon2^{-n}\)">\(\mu(V_n)\leq\mu(E_n)+\varepsilon2^{-n}\)</span>.
+Then <span class="math" data-tex="\(V=\bigcup_nV_n\)">\(V=\bigcup_nV_n\)</span> contains <span class="math" data-tex="\(E\)">\(E\)</span> and
+<span class="math" data-tex="\(\mu(V)\leq\mu(E)+\varepsilon\)">\(\mu(V)\leq\mu(E)+\varepsilon\)</span>. This proves outer regularity, also when <span class="math" data-tex="\(\mu(E)=\infty\)">\(\mu(E)=\infty\)</span>. For inner regularity, first intersect <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(O_n\)">\(O_n\)</span>; compact inner approximation there and monotone convergence in <span class="math" data-tex="\(n\)">\(n\)</span> give
+<span class="math" data-tex="\(\mu(E)=\sup\{\mu(C):C\subset E,\ C\text{ compact}\}\)">\(\mu(E)=\sup\{\mu(C):C\subset E,\ C\text{ compact}\}\)</span>.
+The integral identity <span class="math" data-tex="\(I(f)=\int f\,d\mu\)">\(I(f)=\int f\,d\mu\)</span> holds because the support of <span class="math" data-tex="\(f\)">\(f\)</span> lies in some <span class="math" data-tex="\(O_n\)">\(O_n\)</span>, where the finite representation gives it. The open-test supremum and outer regularity prove uniqueness. Homeomorphisms preserve these properties; consequently invariant functionals give invariant measures.</p>
+<p>For Radon measures <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span> on second countable locally compact spaces <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, their product and Fubini follow from the compact finite version, CPT-F-004. Choose compact exhaustions <span class="math" data-tex="\(K_n,L_n\)">\(K_n,L_n\)</span>. On <span class="math" data-tex="\(K_n\times L_n\)">\(K_n\times L_n\)</span>, take the product of the restricted finite measures by that earlier proof. These products agree under restriction to smaller rectangles, because their scalar finite Fubini formula gives identical integrals of every Borel indicator. Define the global product by increasing restriction to <span class="math" data-tex="\(K_n\times L_n\)">\(K_n\times L_n\)</span>, as in (NC.5). Its measure is sigma-finite. The Borel sigma-algebra of <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> is the product Borel sigma-algebra: a countable product base makes every open set a countable union of open rectangles.</p>
+<p>For every nonnegative Borel <span class="math" data-tex="\(F\)">\(F\)</span>, apply compact finite Fubini first to the bounded functions
+<span class="math math-display" data-tex="\[
+ F_n(x,y)=\min(F(x,y),n)\,1_{K_n}(x)1_{L_n}(y).
+\]">\[
+ F_n(x,y)=\min(F(x,y),n)\,1_{K_n}(x)1_{L_n}(y).
+\]</span>
+They increase to <span class="math" data-tex="\(F\)">\(F\)</span>. Scalar monotone convergence in each order, already CPT-F-004, gives
+<span class="math math-display" data-tex="\[
+ \int_{X\times Y}F\,d(\mu\times\nu)
+ =\int_X\int_Y F(x,y)\,d\nu(y)\,d\mu(x)
+ =\int_Y\int_X F(x,y)\,d\mu(x)\,d\nu(y).              \tag{NC.6}
+\]">\[
+ \int_{X\times Y}F\,d(\mu\times\nu)
+ =\int_X\int_Y F(x,y)\,d\nu(y)\,d\mu(x)
+ =\int_Y\int_X F(x,y)\,d\mu(x)\,d\nu(y).              \tag{NC.6}
+\]</span>
+The inner functions are measurable, as increasing limits of the finite measurable inner functions. Applying this to <span class="math" data-tex="\(|F|\)">\(|F|\)</span>, then to real and imaginary positive and negative parts, proves scalar Fubini for every absolutely integrable complex <span class="math" data-tex="\(F\)">\(F\)</span>, with integrable sections almost everywhere. Completed measures are handled by choosing Borel representatives outside a null set; finite null-section assertions follow from CPT-F-004 and exhaustions give the global null-section assertion. Thus no unrestricted non-sigma-finite Fubini theorem is claimed.</p>
+<p>The product is Radon too. On <span class="math" data-tex="\(O_n\times P_n\)">\(O_n\times P_n\)</span>, where <span class="math" data-tex="\(O_n=\operatorname{int}K_n\)">\(O_n=\operatorname{int}K_n\)</span>, <span class="math" data-tex="\(P_n=\operatorname{int}L_n\)">\(P_n=\operatorname{int}L_n\)</span>, it agrees with the finite compact product's restriction. The outer and inner regularity argument used for (NC.5) applies verbatim to this product exhaustion.</p>
+<span id="ncf-004"></span>
+<h2 id="ncf-4-noncompact-haar-measure-and-translation-continuity">NCF.4. Noncompact Haar measure and translation continuity</h2>
+<p>For compact groups use CPT-F-005's already proved Haar probability. We now construct Haar measure for the noncompact groups in the standing scope. Second countability supplies the compact exhaustion and the Radon and integration inputs through NCF.1–NCF.3.</p>
+<p>For nonnegative nonzero <span class="math" data-tex="\(f,u\in C_c(G)\)">\(f,u\in C_c(G)\)</span>, define the covering number
+<span class="math math-display" data-tex="\[
+ C(f,u)=\inf\left\{\sum_{j=1}^N c_j:
+ f(x)\leq\sum_jc_j u(t_j^{-1}x)\ \forall x,\quad c_j\geq0\right\}.
+                                                               \tag{NC.7}
+\]">\[
+ C(f,u)=\inf\left\{\sum_{j=1}^N c_j:
+ f(x)\leq\sum_jc_j u(t_j^{-1}x)\ \forall x,\quad c_j\geq0\right\}.
+                                                               \tag{NC.7}
+\]</span>
+It is finite: finitely many left translates of the nonempty open set where <span class="math" data-tex="\(u&gt;\|u\|_\infty/2\)">\(u&gt;\|u\|_\infty/2\)</span> cover the compact support of <span class="math" data-tex="\(f\)">\(f\)</span>, and sufficiently large equal coefficients dominate <span class="math" data-tex="\(f\)">\(f\)</span>. It is positive since any such domination gives
+<span class="math" data-tex="\(\|f\|_\infty\leq\|u\|_\infty\sum c_j\)">\(\|f\|_\infty\leq\|u\|_\infty\sum c_j\)</span>.
+Set <span class="math" data-tex="\(C(0,u)=0\)">\(C(0,u)=0\)</span>. Translating the centers, adding dominations, scaling and comparing functions prove left invariance in <span class="math" data-tex="\(f\)">\(f\)</span>, subadditivity, positive homogeneity and monotonicity. Substituting a domination of <span class="math" data-tex="\(v\)">\(v\)</span> by translates of <span class="math" data-tex="\(u\)">\(u\)</span> into one of <span class="math" data-tex="\(f\)">\(f\)</span> by translates of <span class="math" data-tex="\(v\)">\(v\)</span>, then approximating the two infima, gives
+<span class="math math-display" data-tex="\[
+ C(f,u)\leq C(f,v)C(v,u).                              \tag{NC.8}
+\]">\[
+ C(f,u)\leq C(f,v)C(v,u).                              \tag{NC.8}
+\]</span></p>
+<p>Fix <span class="math" data-tex="\(f_0\in C_c(G)\)">\(f_0\in C_c(G)\)</span>, nonzero and nonnegative. For each identity neighborhood <span class="math" data-tex="\(U\)">\(U\)</span>, choose nonzero <span class="math" data-tex="\(u_U\geq0\)">\(u_U\geq0\)</span> supported in <span class="math" data-tex="\(U\)">\(U\)</span>, by (NC.2), and set <span class="math" data-tex="\(J_U(f)=C(f,u_U)/C(f_0,u_U)\)">\(J_U(f)=C(f,u_U)/C(f_0,u_U)\)</span>. Equation (NC.8) gives the uniform bounds
+<span class="math math-display" data-tex="\[
+ C(f_0,f)^{-1}\leq J_U(f)\leq C(f,f_0)\quad(f\ne0),
+ \qquad J_U(f_0)=1.                                  \tag{NC.9}
+\]">\[
+ C(f_0,f)^{-1}\leq J_U(f)\leq C(f,f_0)\quad(f\ne0),
+ \qquad J_U(f_0)=1.                                  \tag{NC.9}
+\]</span>
+Use the tail ultrafilter and bounded-real-family limit constructed in CPT-F-005, with neighborhoods directed by shrinking. Define <span class="math" data-tex="\(J(f)=\lim_U J_U(f)\)">\(J(f)=\lim_U J_U(f)\)</span>. No additional compactness theorem is an input here.</p>
+<p>We prove additivity with the support and error terms included. Every <span class="math" data-tex="\(r\in C_c(G)\)">\(r\in C_c(G)\)</span> is uniformly continuous under small right translations. Indeed choose a precompact identity neighborhood <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. For <span class="math" data-tex="\(v\in V_0\)">\(v\in V_0\)</span>, only the compact set
+<span class="math" data-tex="\(\operatorname{supp}r\ \cup\operatorname{supp}r\,\overline V_0^{-1}\)">\(\operatorname{supp}r\ \cup\operatorname{supp}r\,\overline V_0^{-1}\)</span>
+can have <span class="math" data-tex="\(r(xv)-r(x)\ne0\)">\(r(xv)-r(x)\ne0\)</span>. Continuity on this compact set times <span class="math" data-tex="\(\{e\}\)">\(\{e\}\)</span>, and a finite product-neighborhood cover, give
+<span class="math math-display" data-tex="\[
+ \sup_{x\in G}|r(xv)-r(x)|\longrightarrow0
+ \quad(v\to e).
+                                                               \tag{NC.10}
+\]">\[
+ \sup_{x\in G}|r(xv)-r(x)|\longrightarrow0
+ \quad(v\to e).
+                                                               \tag{NC.10}
+\]</span>
+Left translations satisfy the same assertion, using the compact set
+<span class="math" data-tex="\(\overline V_0\operatorname{supp}r\cup\operatorname{supp}r\)">\(\overline V_0\operatorname{supp}r\cup\operatorname{supp}r\)</span>.</p>
+<p>Given <span class="math" data-tex="\(f_1,f_2\geq0\)">\(f_1,f_2\geq0\)</span>, choose <span class="math" data-tex="\(k\in C_c(G)\)">\(k\in C_c(G)\)</span>, <span class="math" data-tex="\(0\leq k\leq1\)">\(0\leq k\leq1\)</span>, equal to one on their supports. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, put <span class="math" data-tex="\(h=f_1+f_2+\delta k\)">\(h=f_1+f_2+\delta k\)</span>. Define <span class="math" data-tex="\(a_i=f_i/h\)">\(a_i=f_i/h\)</span> where <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, zero elsewhere. Each <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is continuous and compactly supported: the denominator is at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> on the support of <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, and <span class="math" data-tex="\(f_i\)">\(f_i\)</span> is zero off that support. Also <span class="math" data-tex="\(a_1+a_2\leq1\)">\(a_1+a_2\leq1\)</span>.</p>
+<p>For any <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, (NC.10) supplies <span class="math" data-tex="\(U\)">\(U\)</span> with
+<span class="math" data-tex="\(|a_i(tv)-a_i(t)|&lt;\eta\)">\(|a_i(tv)-a_i(t)|&lt;\eta\)</span> for all <span class="math" data-tex="\(t\in G,v\in U\)">\(t\in G,v\in U\)</span>.
+If <span class="math" data-tex="\(h\leq\sum_j c_j u_U(t_j^{-1}x)\)">\(h\leq\sum_j c_j u_U(t_j^{-1}x)\)</span>, then a contributing term has <span class="math" data-tex="\(x=t_jv\)">\(x=t_jv\)</span>, <span class="math" data-tex="\(v\in U\)">\(v\in U\)</span>. Multiplying the domination by <span class="math" data-tex="\(a_i(x)\)">\(a_i(x)\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+ f_i(x)\leq\sum_j c_j(a_i(t_j)+\eta)u_U(t_j^{-1}x).
+\]">\[
+ f_i(x)\leq\sum_j c_j(a_i(t_j)+\eta)u_U(t_j^{-1}x).
+\]</span>
+Adding the coefficient sums of these two dominations and taking infima proves
+<span class="math math-display" data-tex="\[
+ J_U(f_1)+J_U(f_2)
+ \leq(1+2\eta)J_U(h)
+ \leq(1+2\eta)\bigl[J_U(f_1+f_2)+\delta J_U(k)\bigr].       \tag{NC.11}
+\]">\[
+ J_U(f_1)+J_U(f_2)
+ \leq(1+2\eta)J_U(h)
+ \leq(1+2\eta)\bigl[J_U(f_1+f_2)+\delta J_U(k)\bigr].       \tag{NC.11}
+\]</span>
+The bounds (NC.9) control both error terms independently of <span class="math" data-tex="\(U\)">\(U\)</span>. Pass to the tail-ultrafilter limit, then let <span class="math" data-tex="\(\eta,\delta\)">\(\eta,\delta\)</span> tend to zero. Together with subadditivity, this gives <span class="math" data-tex="\(J(f_1+f_2)=J(f_1)+J(f_2)\)">\(J(f_1+f_2)=J(f_1)+J(f_2)\)</span>. The formula uses an oscillation inequality; it does not equate ratios at different points.</p>
+<p>Extend <span class="math" data-tex="\(J\)">\(J\)</span> to real compactly supported functions by differences of nonnegative ones, then complexify. Additivity makes the extension independent of each decomposition. It is positive, nonzero and left invariant. It is locally bounded: for functions supported in a compact <span class="math" data-tex="\(K\)">\(K\)</span>, choose <span class="math" data-tex="\(k=1\)">\(k=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and positivity gives
+<span class="math" data-tex="\(|J(f)|\leq J(k)\|f\|_\infty\)">\(|J(f)|\leq J(k)\|f\|_\infty\)</span>, using a complex phase and the real part when needed. NCF.3 now supplies a nonzero Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> representing <span class="math" data-tex="\(J\)">\(J\)</span>. Its uniqueness there transfers left functional invariance to
+<span class="math" data-tex="\(\mu(gE)=\mu(E)\)">\(\mu(gE)=\mu(E)\)</span> for all Borel <span class="math" data-tex="\(E\)">\(E\)</span>. This is left Haar measure, finite on compacts and sigma-finite.</p>
+<p>Every nonempty open set <span class="math" data-tex="\(O\)">\(O\)</span> has positive measure. Otherwise any compact set is covered by finitely many left translates of <span class="math" data-tex="\(O\)">\(O\)</span> and has measure zero. Inner regularity would give <span class="math" data-tex="\(\mu(G)=0\)">\(\mu(G)=0\)</span>, contradicting <span class="math" data-tex="\(J(f_0)=1\)">\(J(f_0)=1\)</span>. Consequently every nonzero nonnegative compactly supported continuous function has positive integral. Each identity neighborhood admits a nonnegative <span class="math" data-tex="\(\varphi\in C_c(G)\)">\(\varphi\in C_c(G)\)</span> supported there with integral one, by dividing a bump by its positive integral. Closed subgroups have their own Haar measure by the same argument; compact ones use CPT-F-005.</p>
+<p>Here is uniqueness, using only the scalar Fubini already proved in NCF.3. Let <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span> be left Haar measures. Choose nonnegative <span class="math" data-tex="\(\varphi_U\)">\(\varphi_U\)</span>, supported in shrinking identity neighborhoods inside one fixed precompact neighborhood, with <span class="math" data-tex="\(\int\varphi_U\,d\mu=1\)">\(\int\varphi_U\,d\mu=1\)</span>. For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, define
+<span class="math math-display" data-tex="\[
+ f_U(x)=\int f(xy)\varphi_U(y)\,d\mu(y).
+\]">\[
+ f_U(x)=\int f(xy)\varphi_U(y)\,d\mu(y).
+\]</span>
+Equation (NC.10) gives uniform convergence <span class="math" data-tex="\(f_U\to f\)">\(f_U\to f\)</span>, and all supports lie in one fixed compact set. Hence <span class="math" data-tex="\(\int f_U\,d\nu\to\int f\,d\nu\)">\(\int f_U\,d\nu\to\int f\,d\nu\)</span>. Change <span class="math" data-tex="\(t=xy\)">\(t=xy\)</span> by left invariance of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, then use Fubini on the common compact integration supports:
+<span class="math math-display" data-tex="\[
+ \int f_U\,d\nu
+ =\int f(t)\left[\int\varphi_U(x^{-1}t)\,d\nu(x)\right]d\mu(t)
+ =c_U\int f\,d\mu,
+ \quad c_U=\int\varphi_U(z^{-1})\,d\nu(z).               \tag{NC.12}
+\]">\[
+ \int f_U\,d\nu
+ =\int f(t)\left[\int\varphi_U(x^{-1}t)\,d\nu(x)\right]d\mu(t)
+ =c_U\int f\,d\mu,
+ \quad c_U=\int\varphi_U(z^{-1})\,d\nu(z).               \tag{NC.12}
+\]</span>
+The last equality changes <span class="math" data-tex="\(x=tz\)">\(x=tz\)</span>, using only left invariance of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Fix nonzero <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>; its two integrals are positive. Equation (NC.12) shows that <span class="math" data-tex="\(c_U\)">\(c_U\)</span> tends to their positive ratio <span class="math" data-tex="\(c\)">\(c\)</span>. Applying the same equation to every other compactly supported continuous function gives <span class="math" data-tex="\(\nu=c\mu\)">\(\nu=c\mu\)</span>, by NCF.3's Radon uniqueness. No modular-function or inversion substitution formula was assumed.</p>
+<p>Continuous compactly supported functions are dense in <span class="math" data-tex="\(L^p(G,\mu)\)">\(L^p(G,\mu)\)</span>, for <span class="math" data-tex="\(p=1,2\)">\(p=1,2\)</span>. To approximate an indicator of a finite-measure Borel set <span class="math" data-tex="\(E\)">\(E\)</span>, choose compact <span class="math" data-tex="\(K\subset E\subset O\)">\(K\subset E\subset O\)</span> open with <span class="math" data-tex="\(\mu(O\setminus K)&lt;\varepsilon\)">\(\mu(O\setminus K)&lt;\varepsilon\)</span>, by Radon regularity. A cutoff <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, supported in <span class="math" data-tex="\(O\)">\(O\)</span>, satisfies
+<span class="math" data-tex="\(\|\rho-1_E\|_p^p\leq\mu(O\setminus K)&lt;\varepsilon\)">\(\|\rho-1_E\|_p^p\leq\mu(O\setminus K)&lt;\varepsilon\)</span>.
+Truncation, simple-function approximation and scalar dominated convergence, CPT-F-004, approximate every <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function by such finite-measure indicators. The assertion also holds for completed-measure representatives.</p>
+<p>Left translations <span class="math" data-tex="\(\lambda_gf(x)=f(g^{-1}x)\)">\(\lambda_gf(x)=f(g^{-1}x)\)</span> are isometries on these <span class="math" data-tex="\(L^p\)">\(L^p\)</span> spaces, by left measure invariance. For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, (NC.10) and the common compact support bound give <span class="math" data-tex="\(\|\lambda_gf-f\|_p\to0\)">\(\|\lambda_gf-f\|_p\to0\)</span>. Density and
+<span class="math math-display" data-tex="\[
+ \|\lambda_gf-f\|_p
+ \leq2\|f-v\|_p+\|\lambda_gv-v\|_p,\quad v\in C_c(G),
+                                                               \tag{NC.13}
+\]">\[
+ \|\lambda_gf-f\|_p
+ \leq2\|f-v\|_p+\|\lambda_gv-v\|_p,\quad v\in C_c(G),
+                                                               \tag{NC.13}
+\]</span>
+extend this to every <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function. In particular the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> translation estimate used for operator smoothing and the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimate used for regular-module stabilization are proved here.</p>
+<span id="ncf-005"></span>
+<h2 id="ncf-5-bochner-integrals-fubini-and-compactly-supported-strict-smoothing">NCF.5. Bochner integrals, Fubini and compactly supported strict smoothing</h2>
+<p>The integrals of continuous Banach-valued maps against finite Radon measures on compact sets are already constructed in CPT-F-010. Thus every continuous compactly supported <span class="math" data-tex="\(v:G\to Z\)">\(v:G\to Z\)</span>, with <span class="math" data-tex="\(Z\)">\(Z\)</span> any Banach space, is integrated by that theorem on a compact containing its support, using the restricted Haar measure. Enlarging the compact makes no difference since <span class="math" data-tex="\(v=0\)">\(v=0\)</span> on the added set.</p>
+<p>We give the measurable extension and Fubini explicitly. A Banach-valued function is strongly measurable if it is almost everywhere the pointwise norm limit of finitely valued measurable functions. Its essential range is separable: outside one null set it lies in the closure of the countable union of the finite approximants' ranges. The norm and the distance to any fixed vector are measurable, as pointwise limits of measurable real functions.</p>
+<p>On a sigma-finite measure space, a strongly measurable <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\int\|v\|&lt;\infty\)">\(\int\|v\|&lt;\infty\)</span> is approximable in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by integrable finite simple functions. Choose finite-measure sets increasing to the whole space, and also truncate where <span class="math" data-tex="\(\|v\|\)">\(\|v\|\)</span> exceeds an increasing bound. The discarded norm integrals tend to zero by scalar dominated convergence. On a remaining finite-measure set where <span class="math" data-tex="\(\|v\|\leq M\)">\(\|v\|\leq M\)</span>, use a countable dense set in its separable essential range and select the first vector within distance <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. The selection sets are measurable. Retain only the first <span class="math" data-tex="\(N\)">\(N\)</span> selections and put zero on the rest. As <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>, the leftover set has measure tending to zero; its contribution is at most <span class="math" data-tex="\(M\)">\(M\)</span> times that measure, while the selected contribution's error is at most the set's measure divided by <span class="math" data-tex="\(n\)">\(n\)</span>. First choose <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(N\)">\(N\)</span>. This constructs the required finite simple approximations. Choose errors summing to a finite number; scalar monotone convergence applied to their norm errors then also gives almost everywhere pointwise convergence.</p>
+<p>For a disjoint integrable finite simple function <span class="math" data-tex="\(s=\sum_j z_j1_{E_j}\)">\(s=\sum_j z_j1_{E_j}\)</span>, define
+<span class="math" data-tex="\(\int s=\sum_j\mu(E_j)z_j\)">\(\int s=\sum_j\mu(E_j)z_j\)</span>.
+Refining its level sets verifies independence of representation, linearity and
+<span class="math math-display" data-tex="\[
+ \left\|\int s\right\|\leq\int\|s\|.
+\]">\[
+ \left\|\int s\right\|\leq\int\|s\|.
+\]</span>
+Thus <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-approximation defines a unique integral of <span class="math" data-tex="\(v\)">\(v\)</span>, independent of its approximants, with
+<span class="math math-display" data-tex="\[
+ \left\|\int v\right\|\leq\int\|v\|.                    \tag{NC.14}
+\]">\[
+ \left\|\int v\right\|\leq\int\|v\|.                    \tag{NC.14}
+\]</span>
+This is the Bochner integral. Its existence follows from completeness of <span class="math" data-tex="\(Z\)">\(Z\)</span>, since the simple integrals are Cauchy. Conversely a function approximable in this sense is strongly measurable and has integrable norm: a summably Cauchy subsequence has pointwise absolutely summable norm differences by scalar monotone convergence, giving a pointwise limit and an integrable bound. The same tail estimate gives <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convergence of the subsequence and then of the original Cauchy sequence. This also proves completeness of this Banach-valued <span class="math" data-tex="\(L^1\)">\(L^1\)</span> space.</p>
+<p>Every bounded linear map between Banach spaces commutes with the integral, by the finite simple identity and (NC.14); bounded real-linear or conjugate-linear maps do also, because the measure's simple weights are real. For a closed convex cone, a function taking its values there has its integral there: use the above approximation with values in the cone's separable essential range, and take limits of nonnegative finite combinations. If <span class="math" data-tex="\(v_n\to v\)">\(v_n\to v\)</span> almost everywhere in norm and <span class="math" data-tex="\(\|v_n\|\leq b\)">\(\|v_n\|\leq b\)</span> for an integrable scalar <span class="math" data-tex="\(b\)">\(b\)</span>, the limit is strongly measurable and has integrable norm. Scalar dominated convergence applied to <span class="math" data-tex="\(\|v_n-v\|\leq2b\)">\(\|v_n-v\|\leq2b\)</span> proves integral convergence. No closed unbounded-operator commutation assertion is used.</p>
+<p>For the scalar product measures of NCF.3, a strongly measurable
+<span class="math" data-tex="\(V:X\times Y\to Z\)">\(V:X\times Y\to Z\)</span> with <span class="math" data-tex="\(\int\|V\|&lt;\infty\)">\(\int\|V\|&lt;\infty\)</span> satisfies Banach-valued Fubini:
+<span class="math math-display" data-tex="\[
+ \int V\,d(\mu\times\nu)
+ =\int_X\left(\int_YV(x,y)\,d\nu(y)\right)d\mu(x)
+ =\int_Y\left(\int_XV(x,y)\,d\mu(x)\right)d\nu(y).        \tag{NC.15}
+\]">\[
+ \int V\,d(\mu\times\nu)
+ =\int_X\left(\int_YV(x,y)\,d\nu(y)\right)d\mu(x)
+ =\int_Y\left(\int_XV(x,y)\,d\mu(x)\right)d\nu(y).        \tag{NC.15}
+\]</span>
+For a finite simple <span class="math" data-tex="\(V=\sum_jz_j1_{A_j}\)">\(V=\sum_jz_j1_{A_j}\)</span> with integrable norm, scalar Fubini of each finite-measure level set gives the identity. Its inner integral functions are strongly measurable, since they are finite linear combinations of measurable scalar section volumes, and their norm integrals are bounded by <span class="math" data-tex="\(\int\|V\|\)">\(\int\|V\|\)</span>.</p>
+<p>For general <span class="math" data-tex="\(V\)">\(V\)</span>, choose finite simple <span class="math" data-tex="\(V_n\)">\(V_n\)</span> with
+<span class="math" data-tex="\(\sum_n\int\|V_n-V\|&lt;\infty\)">\(\sum_n\int\|V_n-V\|&lt;\infty\)</span>.
+Scalar Tonelli shows that for almost every <span class="math" data-tex="\(x\)">\(x\)</span>, the section errors have summable <span class="math" data-tex="\(L^1(Y)\)">\(L^1(Y)\)</span> norms. The corresponding sections converge almost everywhere and in <span class="math" data-tex="\(L^1(Y;Z)\)">\(L^1(Y;Z)\)</span> to <span class="math" data-tex="\(V(x,\cdot)\)">\(V(x,\cdot)\)</span>, using the product-null section assertion in NCF.3. Their inner integrals therefore converge pointwise almost everywhere to the desired inner integral. The latter is strongly measurable as this pointwise limit, and
+<span class="math math-display" data-tex="\[
+ \int_X\left\|\int_Y(V_n-V)(x,y)\,d\nu(y)\right\|d\mu(x)
+ \leq\int_{X\times Y}\|V_n-V\|\,d(\mu\times\nu)
+ \longrightarrow0.
+\]">\[
+ \int_X\left\|\int_Y(V_n-V)(x,y)\,d\nu(y)\right\|d\mu(x)
+ \leq\int_{X\times Y}\|V_n-V\|\,d(\mu\times\nu)
+ \longrightarrow0.
+\]</span>
+Pass to the limit in the finite simple identities; the other order is identical with the variables exchanged. This proves (NC.15), including existence and integrability of almost all sections. Continuous compact-support double integrals are its special case and also follow directly from CPT-F-010's compact vector Fubini. The full scalar or Banach Fubini assertion here remains sigma-finite.</p>
+<p>For the operator integrals in the equivariant lesson, the precise extension from compact to noncompact groups is particularly short. Let <span class="math" data-tex="\(T(g)\in\mathcal L(E)\)">\(T(g)\in\mathcal L(E)\)</span> be uniformly bounded, with <span class="math" data-tex="\(g\mapsto T(g)x\)">\(g\mapsto T(g)x\)</span> and <span class="math" data-tex="\(g\mapsto T(g)^*x\)">\(g\mapsto T(g)^*x\)</span> continuous for each <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, and let <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>. Integrate those vector functions over a compact containing the support of <span class="math" data-tex="\(f\)">\(f\)</span>, using CPT-F-010. Its adjoint identity gives an adjointable operator
+<span class="math math-display" data-tex="\[
+ A_f x=\int_G f(g)T(g)x\,dg,\qquad
+ A_f^*x=\int_G\overline{f(g)}T(g)^*x\,dg,\qquad
+ \|A_f\|\leq \sup_g\|T(g)\|\,\|f\|_1.                 \tag{NC.16}
+\]">\[
+ A_f x=\int_G f(g)T(g)x\,dg,\qquad
+ A_f^*x=\int_G\overline{f(g)}T(g)^*x\,dg,\qquad
+ \|A_f\|\leq \sup_g\|T(g)\|\,\|f\|_1.                 \tag{NC.16}
+\]</span>
+The norm bound is (NC.14) applied to each vector. Positivity for nonnegative <span class="math" data-tex="\(f\)">\(f\)</span> and positive <span class="math" data-tex="\(T(g)\)">\(T(g)\)</span>, and integration into the compact ideal for norm-continuous compact-valued localized integrands, are exactly CPT-F-010's positive-cone and closed-subspace conclusions, now on this finite restricted Radon measure.</p>
+<p>For a strongly continuous, possibly coefficient-semilinear, action <span class="math" data-tex="\(U_g\)">\(U_g\)</span>, the field <span class="math" data-tex="\(g\cdot T=U_gTU_g^{-1}\)">\(g\cdot T=U_gTU_g^{-1}\)</span> and its adjoint act continuously on each vector: replace the moving input by a fixed one and use the common operator bound. Thus (NC.16) applies. Left Haar substitution gives
+<span class="math math-display" data-tex="\[
+ h\cdot A_f-A_f
+   =\int_G(\lambda_hf-f)(g)(g\cdot T)\,dg,\qquad
+ \|h\cdot A_f-A_f\|
+   \leq\|T\|\,\|\lambda_hf-f\|_1.                     \tag{NC.17}
+\]">\[
+ h\cdot A_f-A_f
+   =\int_G(\lambda_hf-f)(g)(g\cdot T)\,dg,\qquad
+ \|h\cdot A_f-A_f\|
+   \leq\|T\|\,\|\lambda_hf-f\|_1.                     \tag{NC.17}
+\]</span>
+Equation (NC.13) makes this orbit norm continuous. This is the strict smoothing used in formulas (2.15) and (7.15) of the equivariant lesson. Each integral has compactly supported scalar weight; no average with respect to an infinite total Haar mass is taken.</p>
+<span id="ncf-006"></span>
+<h2 id="ncf-6-locally-supported-subgroup-averaging">NCF.6. Locally supported subgroup averaging</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span> satisfy NCF.2, with fixed left Haar measure on <span class="math" data-tex="\(H\)">\(H\)</span>. There is a continuous <span class="math" data-tex="\(\alpha:G\to[0,\infty)\)">\(\alpha:G\to[0,\infty)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \int_H\alpha(gh)\,dh=1\quad(g\in G),\qquad
+ \operatorname{supp}\alpha\cap q^{-1}(C)\text{ is compact}
+ \quad(C\subset G/H\text{ compact}).                       \tag{NC.18}
+\]">\[
+ \int_H\alpha(gh)\,dh=1\quad(g\in G),\qquad
+ \operatorname{supp}\alpha\cap q^{-1}(C)\text{ is compact}
+ \quad(C\subset G/H\text{ compact}).                       \tag{NC.18}
+\]</span>
+For each <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, the map <span class="math" data-tex="\(g\mapsto\alpha(g\,\cdot)\)">\(g\mapsto\alpha(g\,\cdot)\)</span> is continuous near <span class="math" data-tex="\(g_0\)">\(g_0\)</span> in <span class="math" data-tex="\(L^1(H)\)">\(L^1(H)\)</span>. The support condition concerns compact subsets of the quotient; <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> need not have compact support on all of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Here is the construction. For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, put
+<span class="math math-display" data-tex="\[
+ F_f(gH)=\int_H f(gh)\,dh.                                \tag{NC.19}
+\]">\[
+ F_f(gH)=\int_H f(gh)\,dh.                                \tag{NC.19}
+\]</span>
+This is well-defined on <span class="math" data-tex="\(G/H\)">\(G/H\)</span>: replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(gh_0\)">\(gh_0\)</span> and changing variable <span class="math" data-tex="\(k=h_0h\)">\(k=h_0h\)</span> uses left Haar invariance. It is continuous. Choose a precompact neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of a representative <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, and write <span class="math" data-tex="\(K=\operatorname{supp}f\)">\(K=\operatorname{supp}f\)</span>. For <span class="math" data-tex="\(g\in V\)">\(g\in V\)</span>, the integrand is supported in the compact set <span class="math" data-tex="\(H\cap\overline V^{-1}K\)">\(H\cap\overline V^{-1}K\)</span>. On this fixed compact set the function <span class="math" data-tex="\((g,h)\mapsto f(gh)\)">\((g,h)\mapsto f(gh)\)</span> varies uniformly as <span class="math" data-tex="\(g\to g_0\)">\(g\to g_0\)</span>: continuity at all points of <span class="math" data-tex="\(\{g_0\}\)">\(\{g_0\}\)</span> times that compact set and a finite product-neighborhood cover prove the uniform assertion. Its integral therefore varies continuously. Since <span class="math" data-tex="\(q\)">\(q\)</span> is an open quotient map, this continuous invariant function descends to a continuous function on the quotient. Its support lies in the compact set <span class="math" data-tex="\(q(K)\)">\(q(K)\)</span>: it is zero on the complement of that closed set.</p>
+<p>For each coset choose a nonnegative <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> positive at a representative, using NCF.1. It is positive on that representative times an identity neighborhood in <span class="math" data-tex="\(H\)">\(H\)</span>; NCF.4 makes the measure of this neighborhood positive. Consequently <span class="math" data-tex="\(F_f\)">\(F_f\)</span> is positive at that coset. These positivity sets cover <span class="math" data-tex="\(G/H\)">\(G/H\)</span>. Choose a countable locally finite partition <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>, with compact supports inside these sets, by NCF.1 applied to NCF.2's quotient. Let <span class="math" data-tex="\(f_j\)">\(f_j\)</span> be the function attached to the positivity set for <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>; repeated labels are allowed. Set
+<span class="math math-display" data-tex="\[
+ \alpha(g)=\sum_j\chi_j(gH)\frac{f_j(g)}{F_{f_j}(gH)}.       \tag{NC.20}
+\]">\[
+ \alpha(g)=\sum_j\chi_j(gH)\frac{f_j(g)}{F_{f_j}(gH)}.       \tag{NC.20}
+\]</span>
+Each summand is set to zero off its positivity set. It is continuous there as well: the closed support of <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> is contained in that set, so a neighborhood of any exterior point misses this support. The pulled-back sum is locally finite, since inverse images of the neighborhoods witnessing local finiteness on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> witness it on <span class="math" data-tex="\(G\)">\(G\)</span>. Thus <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is continuous and nonnegative. On each fibre only finitely many summands occur, and (NC.19) gives integral <span class="math" data-tex="\(\sum_j\chi_j(gH)=1\)">\(\sum_j\chi_j(gH)=1\)</span>.</p>
+<p>A compact <span class="math" data-tex="\(C\subset G/H\)">\(C\subset G/H\)</span> meets only finitely many partition supports. On <span class="math" data-tex="\(q^{-1}(C)\)">\(q^{-1}(C)\)</span>, therefore, the support of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> lies in the union of finitely many compact supports of <span class="math" data-tex="\(f_j\)">\(f_j\)</span>. Its intersection with <span class="math" data-tex="\(q^{-1}(C)\)">\(q^{-1}(C)\)</span> is closed, hence compact; this proves (NC.18). For <span class="math" data-tex="\(g\)">\(g\)</span> in a precompact neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, let
+<span class="math" data-tex="\(L=\operatorname{supp}\alpha\cap q^{-1}(q(\overline V))\)">\(L=\operatorname{supp}\alpha\cap q^{-1}(q(\overline V))\)</span>.
+This is compact by (NC.18). The functions <span class="math" data-tex="\(h\mapsto\alpha(gh)\)">\(h\mapsto\alpha(gh)\)</span> all have support in the compact set <span class="math" data-tex="\(H\cap\overline V^{-1}L\)">\(H\cap\overline V^{-1}L\)</span>. The same finite product-neighborhood argument used for (NC.19), now applied to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proves uniform convergence on this set as <span class="math" data-tex="\(g\to g_0\)">\(g\to g_0\)</span>. Multiplication by its finite Haar measure proves the stated <span class="math" data-tex="\(L^1\)">\(L^1\)</span> continuity.</p>
+<p>In particular, if <span class="math" data-tex="\(h\mapsto T(h)\)">\(h\mapsto T(h)\)</span> is a norm-continuous field of bounded operators with common bound <span class="math" data-tex="\(M\)">\(M\)</span>, then the norm integrals
+<span class="math math-display" data-tex="\[
+ A(g)=\int_H\alpha(gh)T(h)\,dh
+\]">\[
+ A(g)=\int_H\alpha(gh)T(h)\,dh
+\]</span>
+exist on these compact integration supports, by NCF.5. They satisfy
+<span class="math" data-tex="\(\|A(g)-A(g_0)\|\leq M\|\alpha(g\,\cdot)-\alpha(g_0\,\cdot)\|_1\)">\(\|A(g)-A(g_0)\|\leq M\|\alpha(g\,\cdot)-\alpha(g_0\,\cdot)\|_1\)</span>.
+For <span class="math" data-tex="\(T(h)=h\cdot F\)">\(T(h)=h\cdot F\)</span>, changing variable <span class="math" data-tex="\(k=h_0h\)">\(k=h_0h\)</span> also gives
+<span class="math" data-tex="\(A(gh_0)=h_0^{-1}\cdot A(g)\)">\(A(gh_0)=h_0^{-1}\cdot A(g)\)</span>.
+This proves the continuity and covariance of the pointwise induction operator in Lesson 17, formula (7.14). Formula (NC.17) then supplies its additional whole-group smoothing in (7.15).</p>
+<h2 id="reading">Reading</h2>
+<ul>
+<li>Terence Tao, <a href="https://terrytao.wordpress.com/2011/09/27/254a-notes-3-haar-measure-and-the-peter-weyl-theorem/"><em>254A, Notes 3: Haar measure and the Peter–Weyl theorem</em></a>, Section 1, Theorems 3–4 and the covering-functional construction. The complete Haar and Radon arguments needed here are NCF.3–NCF.4.</li>
+<li>John K. Hunter, <a href="https://www.math.ucdavis.edu/~hunter/pdes/ch6A.pdf"><em>Notes on Partial Differential Equations</em>, Appendix 6.A</a>, Definitions 6.13–6.21 and Theorems 6.24–6.26, on strong measurability and the Bochner integral. NCF.5 proves the norm approximation, integral and Fubini assertions used here.</li>
+<li>D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap4a.pdf"><em>Measure Theory</em>, Volume 4, Appendix 4A</a>, 4A2F(d) and 4A2G(e), on normality, extension and compact cutoffs. NCF.1 supplies the constructions for the second countable locally compact spaces used here.</li>
+</ul>
+<p>The lesson text is CC0. These freely accessible reading references retain their authors' terms.</p>
+</article></main></body></html>

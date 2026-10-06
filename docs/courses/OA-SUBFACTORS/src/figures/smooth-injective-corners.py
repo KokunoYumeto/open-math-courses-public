@@ -1,0 +1,32 @@
+"""Original exact maps and support normalizations for 61.8."""
+from pathlib import Path
+from html import escape
+R=Path(__file__).resolve().parent
+out=['<svg xmlns="http://www.w3.org/2000/svg" width="740" height="820" viewBox="0 0 740 820"><defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#365c78"/></marker></defs><rect width="740" height="820" fill="white"/>']
+def text(x,y,s,size=17,bold=False):out.append(f'<text x="{x}" y="{y}" font-family="Arial, sans-serif" font-size="{size}" fill="#17324a" font-weight="{"bold" if bold else "normal"}">{escape(s)}</text>')
+def rect(x,y,w,h,fill='#eff5fb'):out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="{fill}" stroke="#9eb3c5"/>')
+def arrow(x,y,u,v):out.append(f'<line x1="{x}" y1="{y}" x2="{u}" y2="{v}" stroke="#365c78" stroke-width="2" marker-end="url(#a)"/>')
+text(26,40,'Generation gives a projection with the right trace',24,True)
+text(26,72,'A is a finite factor; increasing finite Fℓ generate A. Proof: Theorem 61.8.',17)
+rect(18,94,704,185)
+text(36,129,'Compress onto L²(Fℓ), then Haar-average the right unitary action.',17)
+text(36,167,'βℓ(Lₓ) = E_Fℓ(x) → x;   βℓ(ρ(x)) = zℓ(x) → τ_A(x)1.',18)
+text(36,205,'zℓ(x) ∈ Z(Fℓ); any weak cluster commutes with every fixed Fₖ.',17)
+text(36,249,'A point-ultraweak cluster β fixes all A and has the right-trace identity.',17)
+rect(18,298,704,281,'#eef8f4')
+text(36,333,'A nonzero corner uses both left and right support',20,True)
+text(36,370,'B = Matₙ(A),  p ∈ B,  t = τ_B(p),  q = L_p ρ(p).',18)
+rect(45,396,215,54,'white');text(62,430,'B(qL²(B))',20)
+rect(493,396,199,54,'white');text(556,430,'p B p',20)
+arrow(270,420,483,420);text(355,402,'β_p',20)
+text(36,483,'β_p(X) = t⁻¹ p β_B(X) p;   β_B(q) = t p;   β_p(q) = p.',18)
+text(36,520,'β_p(ρ_p(y)) = τ_B(y)/t · p = τ_pBp(y) p.',18)
+text(36,556,'The projection uses t⁻¹. The scalar support mass is τ_B(β_B(q)) = t².',17)
+rect(18,598,704,139,'#fff7ea')
+text(36,633,'Finite tower corners → βⱼ on L²(Mⱼ) → Θ on the canonical T.',18,True)
+text(36,673,'Generating hypotheses: lesson60.5. Tower: 61.2. Cluster: 61.7.',17)
+text(36,709,'The bicommutant condition needed for 61.6 remains a separate input.',17)
+text(26,773,'Exact algebra maps and trace constants; diagram positions are schematic.',16)
+text(26,802,'Human sources: von Neumann; Popa, DOI 10.1007/BF02392646, §2.2/4.5.',15)
+out.append('</svg>')
+(R/'smooth-injective-corners.svg').write_text('\n'.join(out),encoding='utf-8')

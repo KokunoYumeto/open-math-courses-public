@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Localizing symbols when the measuring scale moves</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="localizing-symbols-when-the-measuring-scale-moves">Localizing symbols when the measuring scale moves</h1>
+<p><strong>AN-03 · Unit AN03-U001 · Independent English AI draft, not admitted.</strong></p>
+<p>The purpose of this unit is to turn estimates measured by a different ellipsoid at every point into a usable localization procedure. The ellipsoids may be anisotropic, their coefficients need not be smooth, and the weight may initially be discontinuous. No uncertainty inequality, symplectic structure, or temperateness is assumed. Those are additional hypotheses for later operator theorems.</p>
+<p>The prerequisites are finite-dimensional differential calculus, the product rule, compactness, Lebesgue volume under linear changes of variables, and the maximality principle for partially ordered sets. We give the covering and partition arguments here. No distribution theory or operator boundedness theorem is imported into their proofs.</p>
+<h2 id="AN03-MET-001"><span id="an03-met-001"></span><span id="an03-met-001-the-data-and-the-seminorms"></span>AN03-MET-001 — The data and the seminorms</h2>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a real vector space of finite dimension <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. At every <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span>, let <span class="math" data-tex="\(g_X\)">\(g_X\)</span> be a positive-definite quadratic form on <span class="math" data-tex="\(E\)">\(E\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+B_X(t)=\{Y:g_X(Y-X)&lt;t^2\}.
+\]">\[
+B_X(t)=\{Y:g_X(Y-X)&lt;t^2\}.
+\]</span>
+<p>We assume that there are <span class="math" data-tex="\(r_*&gt;0\)">\(r_*&gt;0\)</span> and <span class="math" data-tex="\(C_g\geq1\)">\(C_g\geq1\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+g_X(Y-X)\leq r_*^2
+\quad\Longrightarrow\quad
+C_g^{-1}g_X(T)\leq g_Y(T)\leq C_g g_X(T)
+\quad(T\in E).                                      \tag{1}
+\]">\[
+g_X(Y-X)\leq r_*^2
+\quad\Longrightarrow\quad
+C_g^{-1}g_X(T)\leq g_Y(T)\leq C_g g_X(T)
+\quad(T\in E).                                      \tag{1}
+\]</span>
+<p>This is slow variation. A positive function <span class="math" data-tex="\(m:E\to(0,\infty)\)">\(m:E\to(0,\infty)\)</span> is an admissible weight for this <em>local</em> discussion if, after possibly decreasing <span class="math" data-tex="\(r_*\)">\(r_*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+g_X(Y-X)\leq r_*^2
+\quad\Longrightarrow\quad
+C_m^{-1}m(X)\leq m(Y)\leq C_m m(X)                 \tag{2}
+\]">\[
+g_X(Y-X)\leq r_*^2
+\quad\Longrightarrow\quad
+C_m^{-1}m(X)\leq m(Y)\leq C_m m(X)                 \tag{2}
+\]</span>
+<p>for some <span class="math" data-tex="\(C_m\geq1\)">\(C_m\geq1\)</span>. The word “admissible” will not be used without the qualification “local” here: some accounts reserve it for a package that also includes global temperateness and uncertainty. Neither continuity of <span class="math" data-tex="\(X\mapsto g_X\)">\(X\mapsto g_X\)</span> nor continuity of <span class="math" data-tex="\(m\)">\(m\)</span> is required by (1)–(2).</p>
+<p>For a smooth complex-valued function <span class="math" data-tex="\(a\)">\(a\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+|a|_{k,g}(X)=
+\sup_{g_X(T_j)\leq1}
+\left|D^k a(X)[T_1,\ldots,T_k]\right|,
+\qquad
+p_k(a;m,g)=\sup_X\frac{|a|_{k,g}(X)}{m(X)}.       \tag{3}
+\]">\[
+|a|_{k,g}(X)=
+\sup_{g_X(T_j)\leq1}
+\left|D^k a(X)[T_1,\ldots,T_k]\right|,
+\qquad
+p_k(a;m,g)=\sup_X\frac{|a|_{k,g}(X)}{m(X)}.       \tag{3}
+\]</span>
+<p>For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the numerator is <span class="math" data-tex="\(|a(X)|\)">\(|a(X)|\)</span>. The symbol space <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> consists of the smooth functions for which every <span class="math" data-tex="\(p_k\)">\(p_k\)</span> is finite. We also write <span class="math" data-tex="\(p_{\leq k}=\max_{j\leq k}p_j\)">\(p_{\leq k}=\max_{j\leq k}p_j\)</span>. These norms of multilinear derivatives avoid making the definition depend on a preferred basis. Replacing them with the maximum of derivatives in a <span class="math" data-tex="\(g_X\)">\(g_X\)</span>-orthonormal basis gives equivalent seminorms, with constants depending only on <span class="math" data-tex="\(d,k\)">\(d,k\)</span>.</p>
+<p>For clarity about conventions, the usual one-sided slow-variation assumption is sufficient. Suppose <span class="math" data-tex="\(g_X(Y-X)\leq c\)">\(g_X(Y-X)\leq c\)</span> implies <span class="math" data-tex="\(g_Y\leq Cg_X\)">\(g_Y\leq Cg_X\)</span>. If <span class="math" data-tex="\(g_X(Y-X)\leq c/C\)">\(g_X(Y-X)\leq c/C\)</span>, then <span class="math" data-tex="\(g_Y(X-Y)\leq c\)">\(g_Y(X-Y)\leq c\)</span>; applying the same assumption with <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> exchanged gives <span class="math" data-tex="\(g_X\leq Cg_Y\)">\(g_X\leq Cg_Y\)</span>. Thus (1) results by shrinking the radius. We do not add a stronger regularity assumption by using its symmetric form.</p>
+<h2 id="AN03-MET-002"><span id="an03-met-002"></span><span id="an03-met-002-an-ellipsoid-cover-with-controlled-multiplicity"></span>AN03-MET-002 — An ellipsoid cover with controlled multiplicity</h2>
+<p><strong>Theorem.</strong> Choose any</p>
+<span class="math math-display" data-tex="\[
+0&lt;r&lt;\frac{r_*}{4(1+C_g)},\qquad R_1=(1+C_g)r,
+\qquad R_2=2R_1.
+\]">\[
+0&lt;r&lt;\frac{r_*}{4(1+C_g)},\qquad R_1=(1+C_g)r,
+\qquad R_2=2R_1.
+\]</span>
+<p>There is an at most countable family of centers <span class="math" data-tex="\(X_\nu\)">\(X_\nu\)</span> such that:</p>
+<ol>
+<li>the balls <span class="math" data-tex="\(B_{X_\nu}(r)\)">\(B_{X_\nu}(r)\)</span> are pairwise disjoint;</li>
+<li>the balls <span class="math" data-tex="\(B_{X_\nu}(R_1)\)">\(B_{X_\nu}(R_1)\)</span> cover <span class="math" data-tex="\(E\)">\(E\)</span>;</li>
+<li>the larger balls <span class="math" data-tex="\(B_{X_\nu}(R_2)\)">\(B_{X_\nu}(R_2)\)</span> form a locally finite family;</li>
+<li>no point belongs to more than</li>
+</ol>
+<span class="math math-display" data-tex="\[
+N=\left\lceil C_g^d\left(1+R_2/r\right)^d\right\rceil               \tag{4}
+\]">\[
+N=\left\lceil C_g^d\left(1+R_2/r\right)^d\right\rceil               \tag{4}
+\]</span>
+<p>of those larger balls.</p>
+<p>The particular numerical radii are only one convenient choice. All constants are independent of the centers and of the eccentricities of the ellipsoids.</p>
+<p><strong>Proof.</strong> Order the collections of pairwise disjoint balls <span class="math" data-tex="\(B_X(r)\)">\(B_X(r)\)</span> by inclusion. A chain has its union as an upper bound, since any two balls in the union lie together in one member of the chain. The maximality principle gives a maximal collection. Every ball in it is a nonempty Euclidean open set. Choose a rational-coordinate point in each ball, in any fixed linear coordinates; disjointness makes these chosen points distinct. The collection is at most countable.</p>
+<p>Maximality means that <span class="math" data-tex="\(B_X(r)\)">\(B_X(r)\)</span> meets a selected ball <span class="math" data-tex="\(B_{X_\nu}(r)\)">\(B_{X_\nu}(r)\)</span> for every <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> belong to the intersection. Applying (1) with centers <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(X_\nu\)">\(X_\nu\)</span> at <span class="math" data-tex="\(Y\)">\(Y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+g_{X_\nu}\leq C_g g_Y\leq C_g^2g_X.
+\]">\[
+g_{X_\nu}\leq C_g g_Y\leq C_g^2g_X.
+\]</span>
+<p>The triangle inequality in the norm <span class="math" data-tex="\(g_{X_\nu}^{1/2}\)">\(g_{X_\nu}^{1/2}\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+g_{X_\nu}(X-X_\nu)^{1/2}
+\leq g_{X_\nu}(X-Y)^{1/2}+g_{X_\nu}(Y-X_\nu)^{1/2}
+&lt;(C_g+1)r=R_1.
+\]">\[
+g_{X_\nu}(X-X_\nu)^{1/2}
+\leq g_{X_\nu}(X-Y)^{1/2}+g_{X_\nu}(Y-X_\nu)^{1/2}
+&lt;(C_g+1)r=R_1.
+\]</span>
+<p>This proves the covering assertion.</p>
+<p>Fix <span class="math" data-tex="\(X\)">\(X\)</span>, and consider centers with <span class="math" data-tex="\(X\in B_{X_\nu}(R_2)\)">\(X\in B_{X_\nu}(R_2)\)</span>. Since <span class="math" data-tex="\(R_2&lt;r_*\)">\(R_2&lt;r_*\)</span>, (1) yields</p>
+<span class="math math-display" data-tex="\[
+C_g^{-1}g_X\leq g_{X_\nu}\leq C_g g_X.
+\]">\[
+C_g^{-1}g_X\leq g_{X_\nu}\leq C_g g_X.
+\]</span>
+<p>Consequently the disjoint smaller balls <span class="math" data-tex="\(B_{X_\nu}(r)\)">\(B_{X_\nu}(r)\)</span> all lie in the <span class="math" data-tex="\(g_X\)">\(g_X\)</span>-ball centered at <span class="math" data-tex="\(X\)">\(X\)</span> of radius <span class="math" data-tex="\(\sqrt{C_g}(R_2+r)\)">\(\sqrt{C_g}(R_2+r)\)</span>. Each has volume at least <span class="math" data-tex="\(C_g^{-d/2}r^d v_X\)">\(C_g^{-d/2}r^d v_X\)</span>, where <span class="math" data-tex="\(v_X\)">\(v_X\)</span> is the volume of the unit ball of <span class="math" data-tex="\(g_X\)">\(g_X\)</span>. The containing ball has volume <span class="math" data-tex="\(C_g^{d/2}(R_2+r)^d v_X\)">\(C_g^{d/2}(R_2+r)^d v_X\)</span>. Dividing these two quantities bounds every finite subcollection by the expression in (4), and hence bounds the entire collection. This proves the multiplicity assertion without any global comparison to the Euclidean metric.</p>
+<p>For local finiteness we need more than a pointwise multiplicity estimate. Choose <span class="math" data-tex="\(0&lt;\delta&lt;r_*\)">\(0&lt;\delta&lt;r_*\)</span>, and consider all larger balls meeting <span class="math" data-tex="\(B_X(\delta)\)">\(B_X(\delta)\)</span>. At an intersection point <span class="math" data-tex="\(Y\)">\(Y\)</span>, (1) first compares <span class="math" data-tex="\(g_Y\)">\(g_Y\)</span> with <span class="math" data-tex="\(g_X\)">\(g_X\)</span>, then with <span class="math" data-tex="\(g_{X_\nu}\)">\(g_{X_\nu}\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+C_g^{-2}g_X\leq g_{X_\nu}\leq C_g^2g_X.
+\]">\[
+C_g^{-2}g_X\leq g_{X_\nu}\leq C_g^2g_X.
+\]</span>
+<p>The centers lie within <span class="math" data-tex="\(g_X\)">\(g_X\)</span>-distance <span class="math" data-tex="\(\delta+C_gR_2\)">\(\delta+C_gR_2\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>. Their disjoint smaller balls lie in the fixed ball of radius <span class="math" data-tex="\(\delta+C_g(R_2+r)\)">\(\delta+C_g(R_2+r)\)</span>, and each has volume at least <span class="math" data-tex="\(C_g^{-d}r^dv_X\)">\(C_g^{-d}r^dv_X\)</span>. Volume comparison bounds the number meeting this neighborhood by a finite number. The family is therefore locally finite. ∎</p>
+<p><strong>The same centers at every permissible radius.</strong> For every <span class="math" data-tex="\(0&lt;R\leq r_*\)">\(0&lt;R\leq r_*\)</span>, the family <span class="math" data-tex="\(\{B_{X_\nu}(R)\}\)">\(\{B_{X_\nu}(R)\}\)</span> is locally finite and has multiplicity at most <span class="math" data-tex="\(\lceil C_g^d(1+R/r)^d\rceil\)">\(\lceil C_g^d(1+R/r)^d\rceil\)</span>; it covers whenever <span class="math" data-tex="\(R\geq R_1\)">\(R\geq R_1\)</span>. These assertions hold for the same centers, not a new selection for each <span class="math" data-tex="\(R\)">\(R\)</span>. In the last two paragraphs of the proof replace <span class="math" data-tex="\(R_2\)">\(R_2\)</span> by <span class="math" data-tex="\(R\)">\(R\)</span>; the only radius condition used in the metric comparison is <span class="math" data-tex="\(R\leq r_*\)">\(R\leq r_*\)</span>. The covering assertion follows by inclusion from the cover at <span class="math" data-tex="\(R_1\)">\(R_1\)</span>.</p>
+<p>In particular, given <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>, choose <span class="math" data-tex="\(r=r_*\sqrt\varepsilon/[8(1+C_g)]\)">\(r=r_*\sqrt\varepsilon/[8(1+C_g)]\)</span>. The same centers cover at every radius satisfying <span class="math" data-tex="\(\varepsilon r_*^2&lt;R^2\)">\(\varepsilon r_*^2&lt;R^2\)</span>, and their multiplicity for all <span class="math" data-tex="\(R^2&lt;r_*^2\)">\(R^2&lt;r_*^2\)</span> is bounded by the one constant</p>
+<span class="math math-display" data-tex="\[
+N_\varepsilon=\left\lceil C_g^d
+\left(1+8(1+C_g)/\sqrt\varepsilon\right)^d\right\rceil.
+\]">\[
+N_\varepsilon=\left\lceil C_g^d
+\left(1+8(1+C_g)/\sqrt\varepsilon\right)^d\right\rceil.
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(R_1=r_*\sqrt\varepsilon/8\)">\(R_1=r_*\sqrt\varepsilon/8\)</span>, which is smaller than every radius in that covering range; the multiplicity estimate follows by using <span class="math" data-tex="\(R\leq r_*\)">\(R\leq r_*\)</span>.</p>
+<h2 id="AN03-MET-003"><span id="an03-met-003"></span><span id="an03-met-003-a-partition-whose-derivatives-obey-the-moving-scale"></span>AN03-MET-003 — A partition whose derivatives obey the moving scale</h2>
+<p><strong>Theorem.</strong> With the centers above, there are smooth nonnegative functions <span class="math" data-tex="\(\phi_\nu\)">\(\phi_\nu\)</span>, compactly supported in <span class="math" data-tex="\(B_{X_\nu}(R_2)\)">\(B_{X_\nu}(R_2)\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\sum_\nu\phi_\nu=1,
+\qquad
+\sup_{X,\nu}|\phi_\nu|_{k,g}(X)\leq A_k
+\quad(k\geq0).                                                   \tag{5}
+\]">\[
+\sum_\nu\phi_\nu=1,
+\qquad
+\sup_{X,\nu}|\phi_\nu|_{k,g}(X)\leq A_k
+\quad(k\geq0).                                                   \tag{5}
+\]</span>
+<p>The constants depend only on <span class="math" data-tex="\(d,k,r,C_g\)">\(d,k,r,C_g\)</span> and on one fixed scalar cutoff. The same assertion holds with <span class="math" data-tex="\(g_X\)">\(g_X\)</span> in each derivative norm replaced by <span class="math" data-tex="\(g_{X_\nu}\)">\(g_{X_\nu}\)</span>.</p>
+<p><strong>Proof.</strong> Choose a smooth function <span class="math" data-tex="\(\chi:[0,\infty)\to[0,1]\)">\(\chi:[0,\infty)\to[0,1]\)</span> equal to one on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with support in <span class="math" data-tex="\([0,4)\)">\([0,4)\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+\theta_\nu(X)=\chi\left(g_{X_\nu}(X-X_\nu)/R_1^2\right),
+\quad H(X)=\sum_\nu\theta_\nu(X),
+\quad\phi_\nu=\theta_\nu/H.                                     \tag{6}
+\]">\[
+\theta_\nu(X)=\chi\left(g_{X_\nu}(X-X_\nu)/R_1^2\right),
+\quad H(X)=\sum_\nu\theta_\nu(X),
+\quad\phi_\nu=\theta_\nu/H.                                     \tag{6}
+\]</span>
+<p>Local finiteness just proved makes all sums smooth. The cover gives <span class="math" data-tex="\(H\geq1\)">\(H\geq1\)</span>; multiplicity gives <span class="math" data-tex="\(H\leq N\)">\(H\leq N\)</span>. A linear isometry from <span class="math" data-tex="\((E,g_{X_\nu})\)">\((E,g_{X_\nu})\)</span> to Euclidean space turns <span class="math" data-tex="\(\theta_\nu\)">\(\theta_\nu\)</span> into the same fixed radial cutoff at radius <span class="math" data-tex="\(R_1\)">\(R_1\)</span>. Its derivatives of every order have a bound independent of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. On its support, (1) compares <span class="math" data-tex="\(g_X\)">\(g_X\)</span> and <span class="math" data-tex="\(g_{X_\nu}\)">\(g_{X_\nu}\)</span>, so these derivative bounds also hold in <span class="math" data-tex="\(g_X\)">\(g_X\)</span>, with an extra factor at most <span class="math" data-tex="\(C_g^{k/2}\)">\(C_g^{k/2}\)</span>. Off the support, all derivatives vanish.</p>
+<p>At a given point only at most <span class="math" data-tex="\(N\)">\(N\)</span> terms can contribute derivatives to <span class="math" data-tex="\(H\)">\(H\)</span>. Therefore <span class="math" data-tex="\(|H|_{k,g}\leq ND_k\)">\(|H|_{k,g}\leq ND_k\)</span> for constants <span class="math" data-tex="\(D_k\)">\(D_k\)</span>. To control the reciprocal, differentiate <span class="math" data-tex="\(H\cdot H^{-1}=1\)">\(H\cdot H^{-1}=1\)</span>. In arbitrary directions <span class="math" data-tex="\(T_1,\ldots,T_k\)">\(T_1,\ldots,T_k\)</span>, the term with all derivatives on <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> equals minus the sum of the other product-rule terms, divided by <span class="math" data-tex="\(H\)">\(H\)</span>. Since <span class="math" data-tex="\(H\geq1\)">\(H\geq1\)</span>, induction on <span class="math" data-tex="\(k\)">\(k\)</span> gives a uniform bound for <span class="math" data-tex="\(|H^{-1}|_{k,g}\)">\(|H^{-1}|_{k,g}\)</span>. No derivative of the metric occurs in this calculation: the norm is evaluated at the fixed point after differentiating scalar functions. Apply the product rule to <span class="math" data-tex="\(\theta_\nu H^{-1}\)">\(\theta_\nu H^{-1}\)</span> to get (5). The same pointwise comparison of metrics gives the assertion in the frozen metric. ∎</p>
+<p><strong>A partition uniform in the outer radius.</strong> In the preceding <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-parameter version, assume <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>. A single partition can be chosen with compact support in <span class="math" data-tex="\(B_{X_\nu}(R)\)">\(B_{X_\nu}(R)\)</span> for <em>every</em> <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(2\varepsilon r_*^2&lt;R^2&lt;r_*^2\)">\(2\varepsilon r_*^2&lt;R^2&lt;r_*^2\)</span>, and derivative bounds depending on <span class="math" data-tex="\(\varepsilon,r_*,C_g,d,k\)">\(\varepsilon,r_*,C_g,d,k\)</span> and the fixed cutoff, not on <span class="math" data-tex="\(R\)">\(R\)</span>. To prove this, take <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with support in <span class="math" data-tex="\([0,2)\)">\([0,2)\)</span>, and use <span class="math" data-tex="\(\theta_\nu=\chi(g_{X_\nu}(X-X_\nu)/(\varepsilon r_*^2))\)">\(\theta_\nu=\chi(g_{X_\nu}(X-X_\nu)/(\varepsilon r_*^2))\)</span>. The cover at <span class="math" data-tex="\(R_1=r_*\sqrt\varepsilon/8\)">\(R_1=r_*\sqrt\varepsilon/8\)</span> makes the sum at least one. All supports lie within radius <span class="math" data-tex="\(r_*\sqrt{2\varepsilon}&lt;r_*\)">\(r_*\sqrt{2\varepsilon}&lt;r_*\)</span>, so metric comparison and the uniform bound <span class="math" data-tex="\(N_\varepsilon\)">\(N_\varepsilon\)</span> apply. The derivative and reciprocal argument above is unchanged. Since those compact supports lie inside every ball in the stated range, the assertion follows. For <span class="math" data-tex="\(\varepsilon\geq1/2\)">\(\varepsilon\geq1/2\)</span> the range of such outer radii is empty.</p>
+<h2 id="AN03-MET-004"><span id="an03-met-004"></span><span id="an03-met-004-localization-and-reconstruction-of-a-symbol"></span>AN03-MET-004 — Localization and reconstruction of a symbol</h2>
+<p><strong>Theorem.</strong> If <span class="math" data-tex="\(a\in S(m,g)\)">\(a\in S(m,g)\)</span>, the pieces <span class="math" data-tex="\(a_\nu=\phi_\nu a\)">\(a_\nu=\phi_\nu a\)</span> are supported in <span class="math" data-tex="\(B_{X_\nu}(R_2)\)">\(B_{X_\nu}(R_2)\)</span>, and for every <span class="math" data-tex="\(k\)">\(k\)</span></p>
+<span class="math math-display" data-tex="\[
+\sup_\nu\sup_X\frac{|a_\nu|_{k,g_{X_\nu}}(X)}{m(X_\nu)}
+\leq C_k p_{\leq k}(a;m,g).                                     \tag{7}
+\]">\[
+\sup_\nu\sup_X\frac{|a_\nu|_{k,g_{X_\nu}}(X)}{m(X_\nu)}
+\leq C_k p_{\leq k}(a;m,g).                                     \tag{7}
+\]</span>
+<p>Conversely, suppose smooth functions <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span> are supported in these balls and satisfy</p>
+<span class="math math-display" data-tex="\[
+\sup_\nu\sup_X |b_\nu|_{k,g_{X_\nu}}(X)/m(X_\nu)\leq L_k
+\quad\text{for every }k.                                       \tag{8}
+\]">\[
+\sup_\nu\sup_X |b_\nu|_{k,g_{X_\nu}}(X)/m(X_\nu)\leq L_k
+\quad\text{for every }k.                                       \tag{8}
+\]</span>
+<p>Then <span class="math" data-tex="\(b=\sum_\nu b_\nu\)">\(b=\sum_\nu b_\nu\)</span> is a smooth symbol and</p>
+<span class="math math-display" data-tex="\[
+p_k(b;m,g)\leq NC_m C_g^{k/2}L_k.                             \tag{9}
+\]">\[
+p_k(b;m,g)\leq NC_m C_g^{k/2}L_k.                             \tag{9}
+\]</span>
+<p><strong>Proof.</strong> On the support of a piece, (1)–(2) compare the metric and weight at <span class="math" data-tex="\(X\)">\(X\)</span> with their values at the center. Apply the product rule and (5) to obtain (7). For reconstruction, local finiteness makes the sum smooth. At every point at most <span class="math" data-tex="\(N\)">\(N\)</span> derivative tensors occur. A direction of <span class="math" data-tex="\(g_X\)">\(g_X\)</span>-length at most one has <span class="math" data-tex="\(g_{X_\nu}\)">\(g_{X_\nu}\)</span>-length at most <span class="math" data-tex="\(\sqrt{C_g}\)">\(\sqrt{C_g}\)</span>. Estimate each tensor by (8), multiply by the weight-comparison constant <span class="math" data-tex="\(C_m\)">\(C_m\)</span>, and add the at most <span class="math" data-tex="\(N\)">\(N\)</span> contributions. This gives exactly (9). ∎</p>
+<p>This result is a quantitative interface: a later operator estimate can be proved on compactly supported symbols measured in one fixed ellipsoid, and then combined using a separately justified summability estimate. Local bounded overlap alone does not justify summing the <em>images</em> of pieces under a nonlocal operator.</p>
+<p>The reconstruction assertion also holds for the same centers and any support radius <span class="math" data-tex="\(0&lt;R&lt;r_*\)">\(0&lt;R&lt;r_*\)</span>, with the multiplicity constant at that radius replacing <span class="math" data-tex="\(N\)">\(N\)</span>. The all-radius form of AN03-MET-002 supplies local finiteness and multiplicity, and (1)–(2) still compare center data with point data. Thus the proof of (9) applies verbatim at the new radius. In the <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-parameter version, <span class="math" data-tex="\(N_\varepsilon\)">\(N_\varepsilon\)</span> gives a uniform bound over all such radii.</p>
+<h2 id="AN03-MET-005"><span id="an03-met-005"></span><span id="an03-met-005-smooth-representatives-without-added-hypotheses"></span>AN03-MET-005 — Smooth representatives without added hypotheses</h2>
+<p><strong>Theorem.</strong> There is a positive smooth function <span class="math" data-tex="\(M\)">\(M\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+C_m^{-1}m\leq M\leq C_m m,
+\qquad M\in S(m,g).                                           \tag{10}
+\]">\[
+C_m^{-1}m\leq M\leq C_m m,
+\qquad M\in S(m,g).                                           \tag{10}
+\]</span>
+<p>There is also a smooth field of positive-definite forms <span class="math" data-tex="\(G_X\)">\(G_X\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+C_g^{-1}g_X\leq G_X\leq C_g g_X,                              \tag{11}
+\]">\[
+C_g^{-1}g_X\leq G_X\leq C_g g_X,                              \tag{11}
+\]</span>
+<p>and, for every <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|D_X^kG_X(V,W)[T_1,\ldots,T_k]\right|
+\leq B_k\sqrt{g_X(V)g_X(W)}\prod_{j=1}^k\sqrt{g_X(T_j)}.       \tag{12}
+\]">\[
+\left|D_X^kG_X(V,W)[T_1,\ldots,T_k]\right|
+\leq B_k\sqrt{g_X(V)g_X(W)}\prod_{j=1}^k\sqrt{g_X(T_j)}.       \tag{12}
+\]</span>
+<p>Here the same notation denotes a quadratic form and its symmetric bilinear form. The symbol spaces <span class="math" data-tex="\(S(M,G)\)">\(S(M,G)\)</span> and <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> agree, with equivalent seminorms.</p>
+<p><strong>Proof.</strong> Define</p>
+<span class="math math-display" data-tex="\[
+M(X)=\sum_\nu\phi_\nu(X)m(X_\nu),\qquad
+G_X=\sum_\nu\phi_\nu(X)g_{X_\nu}.                            \tag{13}
+\]">\[
+M(X)=\sum_\nu\phi_\nu(X)m(X_\nu),\qquad
+G_X=\sum_\nu\phi_\nu(X)g_{X_\nu}.                            \tag{13}
+\]</span>
+<p>Both sums are locally finite. On the support of <span class="math" data-tex="\(\phi_\nu\)">\(\phi_\nu\)</span>, (1)–(2) apply between <span class="math" data-tex="\(X_\nu\)">\(X_\nu\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span>. Since the coefficients are nonnegative and sum to one, weighted averaging immediately proves (10) without its derivative assertion, and proves (11). In particular the average form is positive definite.</p>
+<p>Differentiating (13) differentiates only <span class="math" data-tex="\(\phi_\nu\)">\(\phi_\nu\)</span>, since the center values are constants. At a given point there are at most <span class="math" data-tex="\(N\)">\(N\)</span> nonzero terms, and (5) bounds the differentiated coefficients. It follows that <span class="math" data-tex="\(|M|_{k,g}\leq NA_kC_m m\)">\(|M|_{k,g}\leq NA_kC_m m\)</span>. For the metric, the Cauchy–Schwarz inequality for the positive form <span class="math" data-tex="\(g_{X_\nu}\)">\(g_{X_\nu}\)</span>, followed by (1), gives</p>
+<span class="math math-display" data-tex="\[
+|g_{X_\nu}(V,W)|
+\leq\sqrt{g_{X_\nu}(V)g_{X_\nu}(W)}
+\leq C_g\sqrt{g_X(V)g_X(W)}.
+\]">\[
+|g_{X_\nu}(V,W)|
+\leq\sqrt{g_{X_\nu}(V)g_{X_\nu}(W)}
+\leq C_g\sqrt{g_X(V)g_X(W)}.
+\]</span>
+<p>Together with (5) this proves (12) with <span class="math" data-tex="\(B_k=NA_kC_g\)">\(B_k=NA_kC_g\)</span>. Finally (10)–(11) compare each defining seminorm in either direction. Thus equality and equivalence of the symbol spaces follow directly from (3), without differentiating the weight or the metric. ∎</p>
+<p>The new metric is itself slowly varying. Indeed, if <span class="math" data-tex="\(G_X(Y-X)\leq r_*^2/C_g\)">\(G_X(Y-X)\leq r_*^2/C_g\)</span>, then <span class="math" data-tex="\(g_X(Y-X)\leq r_*^2\)">\(g_X(Y-X)\leq r_*^2\)</span>; inserting (11) on both sides of (1) compares <span class="math" data-tex="\(G_Y\)">\(G_Y\)</span> and <span class="math" data-tex="\(G_X\)">\(G_X\)</span> with constant <span class="math" data-tex="\(C_g^3\)">\(C_g^3\)</span>. The new weight is locally comparable on these balls by (2) and (10). Thus regularization keeps us within the same class of local data.</p>
+<p><strong>Weight-recognition consequence.</strong> For fixed <span class="math" data-tex="\(g\)">\(g\)</span> and two locally admissible weights <span class="math" data-tex="\(m_1,m_2\)">\(m_1,m_2\)</span>, the inclusion <span class="math" data-tex="\(S(m_1,g)\subset S(m_2,g)\)">\(S(m_1,g)\subset S(m_2,g)\)</span> as sets holds if and only if <span class="math" data-tex="\(m_1/m_2\)">\(m_1/m_2\)</span> is bounded. The reverse implication follows from (3). For the forward implication, construct <span class="math" data-tex="\(M_1\)">\(M_1\)</span> by (10). It lies in <span class="math" data-tex="\(S(m_1,g)\)">\(S(m_1,g)\)</span>, hence in <span class="math" data-tex="\(S(m_2,g)\)">\(S(m_2,g)\)</span>; its zeroth seminorm gives <span class="math" data-tex="\(M_1\leq Cm_2\)">\(M_1\leq Cm_2\)</span>, and (10) then gives the claimed ratio bound. In particular, equality of these spaces is equivalent to comparability of the weights in both directions.</p>
+<h2 id="AN03-MET-006"><span id="an03-met-006"></span><span id="an03-met-006-topology-multiplication-and-inversion"></span>AN03-MET-006 — Topology, multiplication and inversion</h2>
+<p>The pointwise differential inequalities in this section are local statements: for fixed <span class="math" data-tex="\(k\)">\(k\)</span>, they apply to complex-valued <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions on a neighborhood of the point, measured in any fixed positive-definite form <span class="math" data-tex="\(Q\)">\(Q\)</span>. In particular the product rule gives
+<span class="math math-display" data-tex="\[
+|ab|_{k,Q}(X)\leq\sum_{j=0}^k\binom{k}{j}|a|_{j,Q}(X)|b|_{k-j,Q}(X).
+\]">\[
+|ab|_{k,Q}(X)\leq\sum_{j=0}^k\binom{k}{j}|a|_{j,Q}(X)|b|_{k-j,Q}(X).
+\]</span>
+No global symbol membership is needed for this inequality or for the pointwise reciprocal bound (18). Global smoothness and symbol seminorms are imposed only for the Fréchet-space and symbol-membership conclusions.</p>
+<p><strong>Proposition.</strong> The seminorms (3) make <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> a Fréchet space. For locally admissible weights <span class="math" data-tex="\(m_1,m_2\)">\(m_1,m_2\)</span>, multiplication is continuous and satisfies</p>
+<span class="math math-display" data-tex="\[
+p_k(ab;m_1m_2,g)
+\leq\sum_{j=0}^k\binom{k}{j}
+p_j(a;m_1,g)p_{k-j}(b;m_2,g).                                \tag{14}
+\]">\[
+p_k(ab;m_1m_2,g)
+\leq\sum_{j=0}^k\binom{k}{j}
+p_j(a;m_1,g)p_{k-j}(b;m_2,g).                                \tag{14}
+\]</span>
+<p>If <span class="math" data-tex="\(a\in S(m,g)\)">\(a\in S(m,g)\)</span> and <span class="math" data-tex="\(|a(X)|\geq c\,m(X)\)">\(|a(X)|\geq c\,m(X)\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, then <span class="math" data-tex="\(a^{-1}\in S(m^{-1},g)\)">\(a^{-1}\in S(m^{-1},g)\)</span>. Its seminorms are bounded recursively by</p>
+<span class="math math-display" data-tex="\[
+b_0=c^{-1},\qquad
+b_k=c^{-1}\sum_{j=1}^k\binom{k}{j}p_j(a;m,g)b_{k-j},
+\qquad p_k(a^{-1};m^{-1},g)\leq b_k.                         \tag{15}
+\]">\[
+b_0=c^{-1},\qquad
+b_k=c^{-1}\sum_{j=1}^k\binom{k}{j}p_j(a;m,g)b_{k-j},
+\qquad p_k(a^{-1};m^{-1},g)\leq b_k.                         \tag{15}
+\]</span>
+<p><strong>Proof.</strong> At any fixed point <span class="math" data-tex="\(X\)">\(X\)</span>, (1)–(2) give a neighborhood on which the metric is comparable to <span class="math" data-tex="\(g_X\)">\(g_X\)</span> and the weight is bounded above and bounded away from zero. A finite subcover gives such bounds on a compact set. In fixed coordinates this means that convergence in all the seminorms (3) implies convergence of every derivative uniformly on compact sets.</p>
+<p>If <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> is Cauchy in every seminorm, its coordinate derivatives of every order have uniform limits on compact sets. These limits are the derivatives of a single smooth function: on a coordinate box apply the fundamental theorem of calculus to <span class="math" data-tex="\(a_n\)">\(a_n\)</span> along each coordinate segment, pass to the uniform limit, and repeat for each already obtained derivative. At a fixed <span class="math" data-tex="\(X\)">\(X\)</span>, pass to the limit in</p>
+<span class="math math-display" data-tex="\[
+|a_n-a_\ell|_{k,g}(X)\leq\varepsilon m(X)
+\]">\[
+|a_n-a_\ell|_{k,g}(X)\leq\varepsilon m(X)
+\]</span>
+<p>for sufficiently large <span class="math" data-tex="\(n,\ell\)">\(n,\ell\)</span>. The result is the same bound for <span class="math" data-tex="\(a_n-a\)">\(a_n-a\)</span>, uniformly in <span class="math" data-tex="\(X\)">\(X\)</span>; hence convergence holds in every <span class="math" data-tex="\(p_k\)">\(p_k\)</span>, and <span class="math" data-tex="\(a\in S(m,g)\)">\(a\in S(m,g)\)</span>. The topology is Hausdorff because <span class="math" data-tex="\(p_0\)">\(p_0\)</span> separates points. A countable family of seminorms is metrized, for example, by <span class="math" data-tex="\(\sum_{k\geq0}2^{-k-1}\min(1,p_k(a-b))\)">\(\sum_{k\geq0}2^{-k-1}\min(1,p_k(a-b))\)</span>. This establishes the Fréchet assertion.</p>
+<p>For multiplication, apply the multilinear product rule. There are <span class="math" data-tex="\(\binom{k}{j}\)">\(\binom{k}{j}\)</span> ways to place <span class="math" data-tex="\(j\)">\(j\)</span> of the <span class="math" data-tex="\(k\)">\(k\)</span> derivatives on the first factor, giving (14). The product weight satisfies (2), with the product of the two comparison constants and the smaller common radius.</p>
+<p>The reciprocal is smooth because <span class="math" data-tex="\(a\)">\(a\)</span> has no zero. Differentiate <span class="math" data-tex="\(aa^{-1}=1\)">\(aa^{-1}=1\)</span>. Move the term with no derivative on <span class="math" data-tex="\(a\)">\(a\)</span> to the other side, divide by <span class="math" data-tex="\(a\)">\(a\)</span>, and use <span class="math" data-tex="\(|a|^{-1}\leq c^{-1}m^{-1}\)">\(|a|^{-1}\leq c^{-1}m^{-1}\)</span>. Induction gives (15): each product involving <span class="math" data-tex="\(j\)">\(j\)</span> derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> has weight <span class="math" data-tex="\(m\)">\(m\)</span>, while the derivative of its reciprocal has weight <span class="math" data-tex="\(m^{-1}\)">\(m^{-1}\)</span>; the weights cancel before the final division by <span class="math" data-tex="\(a\)">\(a\)</span>. ∎</p>
+<p>The same argument works for matrices of any fixed finite size, using an operator norm and the assumption <span class="math" data-tex="\(\|a(X)^{-1}\|\leq c^{-1}m(X)^{-1}\)">\(\|a(X)^{-1}\|\leq c^{-1}m(X)^{-1}\)</span>. The identity is differentiated with the order of matrix factors preserved. This is a symbol estimate; it is not the construction of an inverse to a quantized operator.</p>
+<p>There is also a useful scalar pointwise bound that does not involve a global weight. Fix <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, a positive-definite form <span class="math" data-tex="\(Q\)">\(Q\)</span>, and a <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function <span class="math" data-tex="\(a\)">\(a\)</span> near a point <span class="math" data-tex="\(X\)">\(X\)</span> with <span class="math" data-tex="\(a(X)=1\)">\(a(X)=1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|a^{-1}|_{k,Q}(X)
+\leq C_k\left(\sum_{j=1}^k |a|_{j,Q}(X)^{1/j}\right)^k.       \tag{18}
+\]">\[
+|a^{-1}|_{k,Q}(X)
+\leq C_k\left(\sum_{j=1}^k |a|_{j,Q}(X)^{1/j}\right)^k.       \tag{18}
+\]</span>
+<p>To verify it, differentiate the scalar composite <span class="math" data-tex="\(t\mapsto t^{-1}\)">\(t\mapsto t^{-1}\)</span> with <span class="math" data-tex="\(t=a\)">\(t=a\)</span>. Its <span class="math" data-tex="\(k\)">\(k\)</span>-th multilinear derivative is the sum over set partitions <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\{1,\ldots,k\}\)">\(\{1,\ldots,k\}\)</span>, with term</p>
+<span class="math math-display" data-tex="\[
+(-1)^{|\pi|}|\pi|!\,a(X)^{-|\pi|-1}
+\prod_{B\in\pi}D^{|B|}a(X)[T_j:j\in B].
+\]">\[
+(-1)^{|\pi|}|\pi|!\,a(X)^{-|\pi|-1}
+\prod_{B\in\pi}D^{|B|}a(X)[T_j:j\in B].
+\]</span>
+<p>This formula follows by induction: differentiating the scalar power adds a singleton block, while differentiating a derivative factor appends the new index to its block; these exhaust the set partitions with their indicated coefficients. Put <span class="math" data-tex="\(H=\sum_{j=1}^k |a|_{j,Q}(X)^{1/j}\)">\(H=\sum_{j=1}^k |a|_{j,Q}(X)^{1/j}\)</span>. Each factor of order <span class="math" data-tex="\(j\)">\(j\)</span> is at most <span class="math" data-tex="\(H^j\)">\(H^j\)</span> on unit directions. Each partition term therefore has size at most <span class="math" data-tex="\(|\pi|!H^k\)">\(|\pi|!H^k\)</span>; summing proves (18) with <span class="math" data-tex="\(C_k=\sum_\pi|\pi|!\)">\(C_k=\sum_\pi|\pi|!\)</span>. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, every positive-order derivative factor vanishes and the same conclusion holds. At any nonzero <span class="math" data-tex="\(a(X)\)">\(a(X)\)</span>, apply this normalized result to <span class="math" data-tex="\(a/a(X)\)">\(a/a(X)\)</span> and multiply by <span class="math" data-tex="\(|a(X)|^{-1}\)">\(|a(X)|^{-1}\)</span> to recover the homogeneous general form.</p>
+<h2 id="AN03-MET-007"><span id="an03-met-007"></span><span id="an03-met-007-bounded-approximation-and-a-topology-warning"></span>AN03-MET-007 — Bounded approximation and a topology warning</h2>
+<p><strong>Proposition.</strong> Every <span class="math" data-tex="\(a\in S(m,g)\)">\(a\in S(m,g)\)</span> is the limit in <span class="math" data-tex="\(C^\infty_{\mathrm{loc}}\)">\(C^\infty_{\mathrm{loc}}\)</span> of a sequence <span class="math" data-tex="\(a_N\in C_c^\infty(E)\)">\(a_N\in C_c^\infty(E)\)</span> bounded in every seminorm of <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span>.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(C_c^\infty(E)\subset S(m,g)\)">\(C_c^\infty(E)\subset S(m,g)\)</span>, by the compact-set comparison used in AN03-MET-006. Enumerate the partition and set <span class="math" data-tex="\(a_N=\sum_{\nu\leq N}\phi_\nu a\)">\(a_N=\sum_{\nu\leq N}\phi_\nu a\)</span>. Each sum has compact support. The proof of (7)–(9) gives bounds independent of <span class="math" data-tex="\(N\)">\(N\)</span>. On any compact set only finitely many partition supports meet it; after all these indices have been included, <span class="math" data-tex="\(a_N=a\)">\(a_N=a\)</span> on a neighborhood of that compact set. This proves the asserted convergence. ∎</p>
+<p>This is deliberately a bounded approximation statement. It does not assert convergence in the symbol seminorms. For the constant Euclidean metric and <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the symbol <span class="math" data-tex="\(a=1\)">\(a=1\)</span> has <span class="math" data-tex="\(p_0(1-b;1,g)\geq1\)">\(p_0(1-b;1,g)\geq1\)</span> for every compactly supported <span class="math" data-tex="\(b\)">\(b\)</span>. Thus <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span> need not be dense in the Fréchet topology. Later extension theorems must specify which topology their continuity uses.</p>
+<h2 id="AN03-EX-001"><span id="an03-ex-001"></span><span id="an03-ex-001-how-much-generality-the-metric-already-contains"></span>AN03-EX-001 — How much generality the metric already contains</h2>
+<p>On <span class="math" data-tex="\(E=\mathbb R_x^n\times\mathbb R_\xi^n\)">\(E=\mathbb R_x^n\times\mathbb R_\xi^n\)</span>, take arbitrary real <span class="math" data-tex="\(\delta,q\)">\(\delta,q\)</span>, take <span class="math" data-tex="\(\rho\leq1\)">\(\rho\leq1\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\langle\xi\rangle=(1+|\xi|^2)^{1/2},\qquad
+g_{(x,\xi)}(y,\eta)
+=\langle\xi\rangle^{2\delta}|y|^2
++\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m(x,\xi)=\langle\xi\rangle^q.                         \tag{16}
+\]">\[
+\langle\xi\rangle=(1+|\xi|^2)^{1/2},\qquad
+g_{(x,\xi)}(y,\eta)
+=\langle\xi\rangle^{2\delta}|y|^2
++\langle\xi\rangle^{-2\rho}|\eta|^2,
+\qquad m(x,\xi)=\langle\xi\rangle^q.                         \tag{16}
+\]</span>
+<p>If <span class="math" data-tex="\(g_{(x,\xi)}(y,\eta)\leq r_*^2\)">\(g_{(x,\xi)}(y,\eta)\leq r_*^2\)</span>, then
+<span class="math" data-tex="\(|\eta|\leq r_*\langle\xi\rangle^\rho\leq r_*\langle\xi\rangle\)">\(|\eta|\leq r_*\langle\xi\rangle^\rho\leq r_*\langle\xi\rangle\)</span>.
+Since the function <span class="math" data-tex="\(\xi\mapsto\langle\xi\rangle\)">\(\xi\mapsto\langle\xi\rangle\)</span> is one-Lipschitz,</p>
+<span class="math math-display" data-tex="\[
+(1-r_*)\langle\xi\rangle\leq\langle\xi+\eta\rangle
+\leq(1+r_*)\langle\xi\rangle.
+\]">\[
+(1-r_*)\langle\xi\rangle\leq\langle\xi+\eta\rangle
+\leq(1+r_*)\langle\xi\rangle.
+\]</span>
+<p>Choose <span class="math" data-tex="\(r_*&lt;1/2\)">\(r_*&lt;1/2\)</span>. Raising this ratio to each of the fixed real powers in (16) proves both (1) and (2). From (3), or by testing coordinate directions and expanding arbitrary directions, membership in <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> is equivalent to</p>
+<span class="math math-display" data-tex="\[
+|\partial_x^\beta\partial_\xi^\alpha a(x,\xi)|
+\leq C_{\alpha\beta}
+\langle\xi\rangle^{q+\delta|\beta|-\rho|\alpha|}.             \tag{17}
+\]">\[
+|\partial_x^\beta\partial_\xi^\alpha a(x,\xi)|
+\leq C_{\alpha\beta}
+\langle\xi\rangle^{q+\delta|\beta|-\rho|\alpha|}.             \tag{17}
+\]</span>
+<p>The present localization theorem therefore includes all these parameter choices, not just <span class="math" data-tex="\((\rho,\delta)=(1,0)\)">\((\rho,\delta)=(1,0)\)</span>. It does not claim that all of them support the same composition or continuity theorem. In particular, those conclusions cannot be inferred merely from the proof of slow variation.</p>
+<h2 id="AN03-PS-001"><span id="an03-ps-001"></span><span id="an03-ps-001-problems-and-fully-worked-solutions"></span>AN03-PS-001 — Problems and fully worked solutions</h2>
+<p><strong>Problem 1: an unsmoothed weight.</strong> For the Euclidean metric on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, let <span class="math" data-tex="\(m(X)=2+\mathbf1_{\{X_1\geq0\}}\)">\(m(X)=2+\mathbf1_{\{X_1\geq0\}}\)</span>. Verify the hypotheses and identify <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span>. Explain what the regularization theorem supplies.</p>
+<p><strong>Solution.</strong> The metric comparison constant is one at every radius. The weight lies between two and three, so any pair of points satisfies (2) with <span class="math" data-tex="\(C_m=3/2\)">\(C_m=3/2\)</span>. Formula (3) gives <span class="math" data-tex="\(\frac13\sup|D^ka|\leq p_k(a;m,g)\leq\frac12\sup|D^ka|\)">\(\frac13\sup|D^ka|\leq p_k(a;m,g)\leq\frac12\sup|D^ka|\)</span>. Thus the space consists exactly of smooth functions with all derivatives bounded, with its usual topology. Theorem AN03-MET-005 constructs a positive smooth representative comparable to the discontinuous weight. It does not claim to make the original weight continuous or to approximate its jump uniformly by continuous functions.</p>
+<p><strong>Problem 2: the missing local-finiteness argument.</strong> The intervals <span class="math" data-tex="\((2^{-j},3\cdot2^{-j-1})\)">\((2^{-j},3\cdot2^{-j-1})\)</span>, <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, have multiplicity one. Are they locally finite in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>? Which part of AN03-MET-002 prevents the analogous failure?</p>
+<p><strong>Solution.</strong> They are pairwise disjoint, but every neighborhood of zero meets infinitely many. They are therefore not locally finite. In AN03-MET-002, slow variation compares <em>every</em> center whose large ball meets a fixed small neighborhood with the metric at that neighborhood's center. It gives a common positive lower bound for the volumes of the disjoint small balls, inside one bounded ellipsoid. That neighborhood-volume argument, rather than the pointwise bound alone, proves local finiteness.</p>
+<p><strong>Problem 3: a matrix symbol with a nonconstant scale.</strong> For a weight <span class="math" data-tex="\(m\)">\(m\)</span>, let <span class="math" data-tex="\(M\)">\(M\)</span> be its smooth representative and let <span class="math" data-tex="\(B\in S(1,g;\mathbb C^{r\times r})\)">\(B\in S(1,g;\mathbb C^{r\times r})\)</span> satisfy <span class="math" data-tex="\(\sup_X\|B(X)\|\leq1/2\)">\(\sup_X\|B(X)\|\leq1/2\)</span>. Show that <span class="math" data-tex="\(A=M(I+B)\)">\(A=M(I+B)\)</span> belongs to <span class="math" data-tex="\(S(m,g)\)">\(S(m,g)\)</span> and that <span class="math" data-tex="\(A^{-1}\in S(m^{-1},g)\)">\(A^{-1}\in S(m^{-1},g)\)</span>.</p>
+<p><strong>Solution.</strong> Product estimate (14) gives the symbol bound for <span class="math" data-tex="\(A\)">\(A\)</span>. For each <span class="math" data-tex="\(X\)">\(X\)</span>, the geometric series <span class="math" data-tex="\(\sum_{j\geq0}(-B(X))^j\)">\(\sum_{j\geq0}(-B(X))^j\)</span> converges in operator norm, multiplies <span class="math" data-tex="\(I+B(X)\)">\(I+B(X)\)</span> to the identity, and has norm at most two. Hence <span class="math" data-tex="\(\|A(X)^{-1}\|\leq2/M(X)\leq2C_m/m(X)\)">\(\|A(X)^{-1}\|\leq2/M(X)\leq2C_m/m(X)\)</span>. The matrix form of (15) now bounds every derivative of the inverse. Differentiating the infinite geometric series is unnecessary and would require a separate convergence argument.</p>
+<p><strong>Problem 4: a distinction in approximation.</strong> Give an approximating sequence for the constant symbol one which is bounded in <span class="math" data-tex="\(S(1,g)\)">\(S(1,g)\)</span>, converges locally smoothly, and fails to converge in <span class="math" data-tex="\(p_0\)">\(p_0\)</span>, for Euclidean <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span> equal to one near the origin and set <span class="math" data-tex="\(a_N(X)=\psi(X/N)\)">\(a_N(X)=\psi(X/N)\)</span>. Derivatives of order <span class="math" data-tex="\(k\)">\(k\)</span> have supremum at most <span class="math" data-tex="\(N^{-k}\sup|D^k\psi|\)">\(N^{-k}\sup|D^k\psi|\)</span>, so the sequence is bounded in every seminorm. On each compact set it is eventually identically one. But each <span class="math" data-tex="\(a_N\)">\(a_N\)</span> vanishes outside a compact set, so <span class="math" data-tex="\(p_0(a_N-1;1,g)\geq1\)">\(p_0(a_N-1;1,g)\geq1\)</span>. This explicitly separates the two topologies used in AN03-MET-007.</p>
+<h2 id="references-and-claim-boundary">References and claim boundary</h2>
+<p>The mathematical antecedent is the slowly varying metric formulation of symbol spaces developed in Lars Hörmander's work on pseudodifferential calculus. Nicolas Lerner's <em>Introduction to the Weyl–Hörmander Calculus</em> is a further mathematical comparison reference. The cover here is constructed by maximal disjoint ellipsoids and a direct neighborhood-volume argument; the examples and problem set were written for this unit.</p>
+<p>This unit proves local symbol structure. Gauss-transform estimates, Weyl composition, operator continuity, parametrices, the calculus of conormal and totally characteristic operators, and all boundary and global Fredholm results remain separate course obligations.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><a href="src/metric-localization.md">Editable Markdown</a>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Traces on integer crossed products and their K-theory ranges · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 19 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (6)</summary><ul><li><a href="determinants-of-traces-and-the-pairing-with-k1.html">Determinants of traces and the pairing with K_1</a></li><li><span class="unlinked">The Pimsner–Voiculescu exact sequence</span></li><li><a href="smooth-subalgebras-and-the-density-theorem.html">Smooth subalgebras and the density theorem</a></li><li><a href="the-mapping-torus.html">The mapping torus</a></li><li><a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></li><li><a href="vector-bundles-and-finitely-generated-projective-modules.html">Vector bundles and finitely generated projective modules</a></li></ul></details>
+<article class="lesson">
+<h1 id="traces-on-integer-crossed-products-and-their-k-theory-ranges">Traces on integer crossed products and their K-theory ranges</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Independently authored CC0 lesson; self-checked by the writing AI.</em></p>
+<p>An invariant trace measures the constant Fourier coefficient of an integer crossed product. Its values on projections can include new numbers. Those new numbers, modulo the old trace range, are determinants of the change made by the automorphism to a fixed K-class. We prove this assertion, including the numerical comparison that connects a mapping-torus integral to an actual crossed-product trace.</p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a unital complex C*-algebra, <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(A)\)">\(\alpha\in\operatorname{Aut}(A)\)</span>, and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant tracial state. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B=A\rtimes_\alpha\mathbb Z,\\
+uau^*=\alpha(a),\qquad \iota:A\longrightarrow B.
+\end{gathered}
+\tag{0.1}
+\]">\[
+\begin{gathered}
+B=A\rtimes_\alpha\mathbb Z,\\
+uau^*=\alpha(a),\qquad \iota:A\longrightarrow B.
+\end{gathered}
+\tag{0.1}
+\]</span>
+<p>Matrix traces are unnormalized. Write <span class="math" data-tex="\(H=\tau_*(K_0(A))\subset\mathbb R\)">\(H=\tau_*(K_0(A))\subset\mathbb R\)</span>; quotients by <span class="math" data-tex="\(H\)">\(H\)</span> below are quotients of additive groups, without taking a closure. We use <a href="determinants-of-traces-and-the-pairing-with-k1.html#1-the-logarithmic-integral-and-its-periods">Lesson 14, §§1–2</a> for the integral <span class="math" data-tex="\(\Gamma_\tau\)">\(\Gamma_\tau\)</span>, its period group <span class="math" data-tex="\(H\)">\(H\)</span>, and the unitary determinant <span class="math" data-tex="\(\Delta_\tau:U_\infty(A)_0\to\mathbb R/H\)">\(\Delta_\tau:U_\infty(A)_0\to\mathbb R/H\)</span>. The mapping-torus integral is that lesson's Theorem 4.1. <span class="unlinked">Lesson 18</span> supplies the PV sequence and its actual inclusion arrows.</p>
+<h2 id="1-the-dual-trace-and-agreement-of-trace-extensions">1. The dual trace and agreement of trace extensions</h2>
+<p>The gauge action <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span>, for <span class="math" data-tex="\(t\in\mathbb R/\mathbb Z\)">\(t\in\mathbb R/\mathbb Z\)</span>, fixes <span class="math" data-tex="\(A\)">\(A\)</span> and sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(e^{2\pi it}u\)">\(e^{2\pi it}u\)</span>. Its average is the faithful conditional expectation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(b)=\int_0^1\beta_t(b)\,dt,\\
+E\left(\sum_n a_nu^n\right)=a_0.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+E(b)=\int_0^1\beta_t(b)\,dt,\\
+E\left(\sum_n a_nu^n\right)=a_0.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The crossed product equals its reduced version by amenability of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The expectation and gauge facts are the Fourier construction in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/KT-CP-05.html#an-automorphism-and-its-gauge-action">KT-CP-05, Proposition 5.1</a>. Faithfulness of the average also follows directly: if <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> and its average is zero, then for every state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> the nonnegative continuous function <span class="math" data-tex="\(t\mapsto\omega(\beta_t(b))\)">\(t\mapsto\omega(\beta_t(b))\)</span> has integral zero, hence is zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. States separate positive elements, so <span class="math" data-tex="\(b=0\)">\(b=0\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> The state <span class="math" data-tex="\(\widehat\tau=\tau E\)">\(\widehat\tau=\tau E\)</span> is a trace extending <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Every tracial state on <span class="math" data-tex="\(B\)">\(B\)</span> restricts to an invariant tracial state on <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, so is <span class="math" data-tex="\(\widehat\tau\)">\(\widehat\tau\)</span>.</p>
+<p><em>Proof.</em> Positivity and normalization follow from the average. On monomials <span class="math" data-tex="\(au^m,bu^n\)">\(au^m,bu^n\)</span>, the traces of their two products are zero unless <span class="math" data-tex="\(m+n=0\)">\(m+n=0\)</span>. When <span class="math" data-tex="\(n=-m\)">\(n=-m\)</span>, invariance and cyclicity give</p>
+<span class="math math-display" data-tex="\[
+\tau(a\alpha^m(b))=\tau(b\alpha^{-m}(a)).
+\tag{1.2}
+\]">\[
+\tau(a\alpha^m(b))=\tau(b\alpha^{-m}(a)).
+\tag{1.2}
+\]</span>
+<p>Thus the trace identity holds on Laurent polynomials; density and boundedness extend it to <span class="math" data-tex="\(B\)">\(B\)</span>. For a trace <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, cyclicity gives <span class="math" data-tex="\(\rho(uau^*)=\rho(a)\)">\(\rho(uau^*)=\rho(a)\)</span>, proving invariance of its restriction. Finally <span class="math" data-tex="\(\widehat\tau(b^*b)=0\)">\(\widehat\tau(b^*b)=0\)</span> implies <span class="math" data-tex="\(E(b^*b)=0\)">\(E(b^*b)=0\)</span> when <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, and then <span class="math" data-tex="\(b=0\)">\(b=0\)</span> by faithfulness of <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (all extensions have the same K₀-state).</strong> If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is any tracial state on <span class="math" data-tex="\(B\)">\(B\)</span> restricting to <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, then <span class="math" data-tex="\(\rho_* =\widehat\tau_*\)">\(\rho_* =\widehat\tau_*\)</span> on <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>.</p>
+<p><em>Proof.</em> For a projection <span class="math" data-tex="\(p\in M_n(B)\)">\(p\in M_n(B)\)</span>, the path <span class="math" data-tex="\(s\mapsto\beta_s(p)\)">\(s\mapsto\beta_s(p)\)</span>, <span class="math" data-tex="\(0\leq s\leq t\)">\(0\leq s\leq t\)</span>, consists of projections. Thus <span class="math" data-tex="\([\beta_t(p)]=[p]\)">\([\beta_t(p)]=[p]\)</span> in <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>. A trace pairing is constant on that class by Lesson 13, Theorem 1.1. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho_n(p)=\int_0^1\rho_n(\beta_t(p))\,dt\\
+=\rho_n(E_n(p))=\tau_n(E_n(p))\\
+=\widehat\tau_n(p).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\rho_n(p)=\int_0^1\rho_n(\beta_t(p))\,dt\\
+=\rho_n(E_n(p))=\tau_n(E_n(p))\\
+=\widehat\tau_n(p).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The integral commutes with the bounded linear functional <span class="math" data-tex="\(\rho_n\)">\(\rho_n\)</span>. Differences of projections generate <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>, proving the result. This supplies the proof omitted in Blackadar, §10.10.1; no extra hypothesis on <span class="math" data-tex="\(A\)">\(A\)</span> or the trace extension is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equality of K-pairings is weaker than equality of traces. For the trivial action on <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, the crossed product is <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>. All probability measures give trace extensions of the scalar state, and all pair with a projection by its constant rank.</p>
+<h2 id="2-a-determinant-on-fixed-k₁-classes">2. A determinant on fixed K₁-classes</h2>
+<p>Put <span class="math" data-tex="\(F=\ker(1-\alpha_*:K_1(A)\to K_1(A))\)">\(F=\ker(1-\alpha_*:K_1(A)\to K_1(A))\)</span>. If <span class="math" data-tex="\(x=[v]\in F\)">\(x=[v]\in F\)</span>, choose a unitary matrix representative. The stable class of <span class="math" data-tex="\(v\alpha(v^*)\)">\(v\alpha(v^*)\)</span> is zero. After identity padding, it lies in the unitary identity component. Define</p>
+<span class="math math-display" data-tex="\[
+R_\tau^\alpha(x)=\Delta_\tau(v\alpha(v^*))\in\mathbb R/H.
+\tag{2.1}
+\]">\[
+R_\tau^\alpha(x)=\Delta_\tau(v\alpha(v^*))\in\mathbb R/H.
+\tag{2.1}
+\]</span>
+<p>This is also often written <span class="math" data-tex="\(\Delta_\tau^\alpha\)">\(\Delta_\tau^\alpha\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Equation (2.1) is a well-defined homomorphism on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Proof.</em> First <span class="math" data-tex="\(\Delta_\tau(\alpha(w))=\Delta_\tau(w)\)">\(\Delta_\tau(\alpha(w))=\Delta_\tau(w)\)</span> on the identity component: apply <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to a path from 1 and use <span class="math" data-tex="\(\tau\alpha=\tau\)">\(\tau\alpha=\tau\)</span> in its logarithmic integral. Conjugating such a path by an arbitrary fixed unitary also preserves the integral, by trace cyclicity.</p>
+<p>Suppose <span class="math" data-tex="\(v_s\)">\(v_s\)</span> joins two stabilized representatives of the same K-class. Replace the path by a piecewise smooth unitary path in its homotopy class, as in Lesson 14, §1. Each <span class="math" data-tex="\(r_s=v_s\alpha(v_s^*)\)">\(r_s=v_s\alpha(v_s^*)\)</span> lies in the identity component. The product and inverse rules for the integral apply even to paths with nonidentity endpoints and give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_\tau(r_s)=\Gamma_\tau(v_s)-\Gamma_\tau(\alpha(v_s))\\
+=0.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\Gamma_\tau(r_s)=\Gamma_\tau(v_s)-\Gamma_\tau(\alpha(v_s))\\
+=0.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Appending this path to a path from 1 to <span class="math" data-tex="\(r_0\)">\(r_0\)</span> shows that the determinants of <span class="math" data-tex="\(r_0\)">\(r_0\)</span> and <span class="math" data-tex="\(r_1\)">\(r_1\)</span> agree modulo <span class="math" data-tex="\(H\)">\(H\)</span>. Identity stabilization adds zero, proving independence of representative and size. Finally block sum represents addition of K-classes, and its logarithmic trace is the sum of the two logarithmic traces. Applying this to <span class="math" data-tex="\(v\oplus w\)">\(v\oplus w\)</span> proves additivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof does not apply <span class="math" data-tex="\(\Delta_\tau\)">\(\Delta_\tau\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span> unless <span class="math" data-tex="\(v\)">\(v\)</span> is in its domain. A fixed K-class makes the <em>relative product</em> in (2.1) nullhomotopic; its chosen representative can have nonzero K₁-class.</p>
+<h3 id="composition-and-iteration-on-their-exact-domains">Composition and iteration on their exact domains</h3>
+<p>The next results develop Ruy Exel's rotation and invariant-determinant constructions, Sections III–IV of <a href="https://msp.org/pjm/1987/127-1/pjm-v127-n1-p03-s.pdf"><em>Rotation numbers for automorphisms of C*-algebras</em></a>, printed pp. 45–50. We give the proofs with the present additive determinant convention. Composition works for the actual period subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, even when <span class="math" data-tex="\(H\)">\(H\)</span> is not integral.</p>
+<p><strong>Theorem 2.2 (composition of rotations).</strong> Suppose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> preserve <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. On the subgroup fixed by both <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span> and <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_\tau^{\alpha\beta}(x)=R_\tau^\alpha(x)+R_\tau^\beta(x).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+R_\tau^{\alpha\beta}(x)=R_\tau^\alpha(x)+R_\tau^\beta(x).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>No commutativity between the automorphisms is required. For every <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R_\tau^{\alpha^n}(x)=nR_\tau^\alpha(x)
+\quad\text{if }\alpha_*x=x.
+\tag{2.4}
+\]">\[
+R_\tau^{\alpha^n}(x)=nR_\tau^\alpha(x)
+\quad\text{if }\alpha_*x=x.
+\tag{2.4}
+\]</span>
+<p><em>Proof.</em> Choose one unitary representative <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and pad it so that both relative products are in the identity component. The class is also fixed by <span class="math" data-tex="\((\alpha\beta)_*\)">\((\alpha\beta)_*\)</span>. The exact factorization is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v\alpha\beta(v^*)\\
+=\bigl(v\alpha(v^*)\bigr)\,
+\alpha\bigl(v\beta(v^*)\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+v\alpha\beta(v^*)\\
+=\bigl(v\alpha(v^*)\bigr)\,
+\alpha\bigl(v\beta(v^*)\bigr).
+\end{gathered}
+\]</span>
+<p>Apply additivity of <span class="math" data-tex="\(\Delta_\tau\)">\(\Delta_\tau\)</span> on this component and its invariance under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proved in Lemma 2.1. This gives (2.3). Induction gives (2.4) for positive <span class="math" data-tex="\(n\)">\(n\)</span>; <span class="math" data-tex="\(R_\tau^{\mathrm{id}}=0\)">\(R_\tau^{\mathrm{id}}=0\)</span>. The same class is fixed by <span class="math" data-tex="\(\alpha_*^{-1}\)">\(\alpha_*^{-1}\)</span>, so applying (2.3) to <span class="math" data-tex="\(\alpha,\alpha^{-1}\)">\(\alpha,\alpha^{-1}\)</span> gives <span class="math" data-tex="\(R_\tau^{\alpha^{-1}}=-R_\tau^\alpha\)">\(R_\tau^{\alpha^{-1}}=-R_\tau^\alpha\)</span>. Induction with <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span> completes the integer assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The fixed subgroup of <span class="math" data-tex="\(\alpha_*^n\)">\(\alpha_*^n\)</span> can be larger than that of <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span>. Formula (2.4) concerns the latter subgroup; it makes no assertion about the additional classes.</p>
+<h3 id="an-obstruction-to-invariant-determinants">An obstruction to invariant determinants</h3>
+<p>For this paragraph assume <span class="math" data-tex="\(H\subseteq\mathbb Z\)">\(H\subseteq\mathbb Z\)</span>. Since <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>, this is equivalent to <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>. <a href="determinants-of-traces-and-the-pairing-with-k1.html#2-5-extending-a-determinant-to-every-stable-unitary">Lesson 14, Theorem 2.10</a> gives a homomorphism <span class="math" data-tex="\(D:U_\infty(A)\to\mathbb T\)">\(D:U_\infty(A)\to\mathbb T\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(e^{ih})=e^{i\tau_n(h)},\\
+h=h^*\in M_n(A).
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+D(e^{ih})=e^{i\tau_n(h)},\\
+h=h^*\in M_n(A).
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>It is defined on every component. Each choice is continuous on every finite unitary group. Different choices are precisely <span class="math" data-tex="\(D\chi\)">\(D\chi\)</span>, where <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a character of <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>. No closure of a commutator subgroup is part of this construction.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be any group acting on <span class="math" data-tex="\(A\)">\(A\)</span> by trace-preserving automorphisms. Use ordinary algebraic group cohomology, with no topology imposed on <span class="math" data-tex="\(G\)">\(G\)</span>. The character group
+<span class="math" data-tex="\(X=\operatorname{Hom}(K_1(A),\mathbb T)\)">\(X=\operatorname{Hom}(K_1(A),\mathbb T)\)</span>
+has the action</p>
+<span class="math math-display" data-tex="\[
+(g\cdot\chi)(x)=\chi(g_*^{-1}x).
+\tag{2.6}
+\]">\[
+(g\cdot\chi)(x)=\chi(g_*^{-1}x).
+\tag{2.6}
+\]</span>
+<p>Every <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant on <span class="math" data-tex="\(U_\infty(A)_0\)">\(U_\infty(A)_0\)</span>: factor an element there into selfadjoint exponentials, apply <span class="math" data-tex="\(g\)">\(g\)</span>, and use <span class="math" data-tex="\(\tau g=\tau\)">\(\tau g=\tau\)</span> in (2.5). Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_g([v])=\frac{D(v)}{D(g^{-1}(v))}\\
+=D(g^{-1}(v^*)v)
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+c_g([v])=\frac{D(v)}{D(g^{-1}(v))}\\
+=D(g^{-1}(v^*)v)
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>defines a character of <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>. Indeed the ratio is a homomorphism on the stable unitary group, and it is trivial on its identity component. Its passage to that quotient proves independence of representative and matrix size.</p>
+<p><strong>Theorem 2.3 (Exel's invariant determinant obstruction).</strong> The family <span class="math" data-tex="\(c\)">\(c\)</span> is a one-cocycle:</p>
+<span class="math math-display" data-tex="\[
+c_{gh}=c_g\,(g\cdot c_h).
+\tag{2.8}
+\]">\[
+c_{gh}=c_g\,(g\cdot c_h).
+\tag{2.8}
+\]</span>
+<p>Its class in <span class="math" data-tex="\(H^1(G,X)\)">\(H^1(G,X)\)</span> is independent of the chosen determinant. This class vanishes exactly when a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant determinant exists. If <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is invariant, every invariant determinant is <span class="math" data-tex="\(D_0\chi\)">\(D_0\chi\)</span> with <span class="math" data-tex="\(g\cdot\chi=\chi\)">\(g\cdot\chi=\chi\)</span> for all <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><em>Proof.</em> On a representative <span class="math" data-tex="\(v\)">\(v\)</span>, cancellation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{D(v)}{D(h^{-1}g^{-1}(v))}\\
+=\frac{D(v)}{D(g^{-1}(v))}
+\frac{D(g^{-1}(v))}{D(h^{-1}g^{-1}(v))}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{D(v)}{D(h^{-1}g^{-1}(v))}\\
+=\frac{D(v)}{D(g^{-1}(v))}
+\frac{D(g^{-1}(v))}{D(h^{-1}g^{-1}(v))}.
+\end{gathered}
+\]</span>
+<p>This is (2.8), with the inverse order required by <span class="math" data-tex="\((gh)^{-1}=h^{-1}g^{-1}\)">\((gh)^{-1}=h^{-1}g^{-1}\)</span>. If <span class="math" data-tex="\(D&#x27;=D\chi\)">\(D&#x27;=D\chi\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+c&#x27;_g=c_g\,\frac{\chi}{g\cdot\chi}.
+\tag{2.9}
+\]">\[
+c&#x27;_g=c_g\,\frac{\chi}{g\cdot\chi}.
+\tag{2.9}
+\]</span>
+<p>To make the cohomology statement explicit, one-cocycles are the families satisfying (2.8), and coboundaries are <span class="math" data-tex="\(g\mapsto(g\cdot\chi)/\chi\)">\(g\mapsto(g\cdot\chi)/\chi\)</span>. These form a subgroup of the cocycles under pointwise multiplication: inserting <span class="math" data-tex="\(gh\)">\(gh\)</span> and canceling the intermediate <span class="math" data-tex="\(g\cdot\chi\)">\(g\cdot\chi\)</span> verifies (2.8). The quotient is <span class="math" data-tex="\(H^1(G,X)\)">\(H^1(G,X)\)</span>. Equation (2.9) proves the asserted independence.</p>
+<p>An invariant <span class="math" data-tex="\(D\)">\(D\)</span> gives <span class="math" data-tex="\(c_g=1\)">\(c_g=1\)</span>. Conversely, if <span class="math" data-tex="\(c_g=(g\cdot\chi)/\chi\)">\(c_g=(g\cdot\chi)/\chi\)</span>, replacing <span class="math" data-tex="\(D\)">\(D\)</span> by <span class="math" data-tex="\(D\chi\)">\(D\chi\)</span> gives <span class="math" data-tex="\(c&#x27;_g=1\)">\(c&#x27;_g=1\)</span>. Equation (2.7) says precisely that this determinant is invariant under <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>, hence under every element of <span class="math" data-tex="\(G\)">\(G\)</span>. The classification follows by applying (2.9) to two invariant choices and using Lesson 14's classification of all choices. Restricting the action to a subgroup simply restricts this cocycle. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.4 (circle rotation versus coset rotation).</strong> For <span class="math" data-tex="\(x=[v]\)">\(x=[v]\)</span> fixed by <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span>, the relative product has zero stable K₁-class, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(\alpha(v^*)v)
+=\exp\bigl(2\pi iR_\tau^\alpha(x)\bigr)\\
+=c_{\alpha^{-1}}(x).
+\end{gathered}
+\tag{2.10}
+\]">\[
+\begin{gathered}
+D(\alpha(v^*)v)
+=\exp\bigl(2\pi iR_\tau^\alpha(x)\bigr)\\
+=c_{\alpha^{-1}}(x).
+\end{gathered}
+\tag{2.10}
+\]</span>
+<p>The first value is independent of the all-components determinant chosen.</p>
+<p><em>Proof.</em> After finite padding, <span class="math" data-tex="\(\alpha(v^*)v\)">\(\alpha(v^*)v\)</span> lies in the identity component. Conjugating it by <span class="math" data-tex="\(v\)">\(v\)</span> gives the relative product in (2.1). On that component <span class="math" data-tex="\(D=\exp(2\pi i\Delta_\tau)\)">\(D=\exp(2\pi i\Delta_\tau)\)</span>, by Lesson 14, Theorem 2.10, and conjugation preserves <span class="math" data-tex="\(\Delta_\tau\)">\(\Delta_\tau\)</span>. This gives the first equality. Put <span class="math" data-tex="\(g=\alpha^{-1}\)">\(g=\alpha^{-1}\)</span> in (2.7) for the second. A different choice multiplies the value on the relative product by the character of its K-class, which is the character at zero and hence one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This compares the two rotation conventions without applying an identity-component determinant to the representative <span class="math" data-tex="\(v\)">\(v\)</span> itself.</p>
+<h2 id="3-why-the-mapping-torus-integral-measures-the-crossed-product-trace">3. Why the mapping-torus integral measures the crossed-product trace</h2>
+<p>An exact K-sequence alone does not identify a numerical trace pairing. We establish that additional comparison using two precise proved prerequisites:</p>
+<ul>
+<li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/KT-CP-07.html#completion-in-the-full-crossed-product-norms">KT-CP-07, Theorem 7.4 and formulas (7.10)–(7.11), (7.45)</a>: Green's imprimitivity module for <span class="math" data-tex="\(\mathbb Z\subset\mathbb R\)">\(\mathbb Z\subset\mathbb R\)</span>.</li>
+<li><a href="../NCG-CYCLIC/public/reader/action-pseudodifferential-calculus.html#computing-the-one-dimensional-trace">Frequency calculus for an action of Euclidean space, §7, Theorem 7.6</a>: for a finite invariant trace <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and a smooth unitary <span class="math" data-tex="\(w\)">\(w\)</span>, the index-normalized Thom map satisfies</li>
+</ul>
+<span class="math math-display" data-tex="\[
+\widehat\varphi_*\Phi_\sigma^1[w]
+=-\frac1{2\pi i}\varphi_n(\delta(w)w^*).
+\tag{3.1}
+\]">\[
+\widehat\varphi_*\Phi_\sigma^1[w]
+=-\frac1{2\pi i}\varphi_n(\delta(w)w^*).
+\tag{3.1}
+\]</span>
+<p>That theorem includes the semifinite dual trace normalization, its trace ideals, and its K-pairing. Its frequency convention is <span class="math" data-tex="\(V_t=e^{itH}\)">\(V_t=e^{itH}\)</span> and measure <span class="math" data-tex="\(d\xi/(2\pi)\)">\(d\xi/(2\pi)\)</span>. We use the same real group parameter and <span class="math" data-tex="\(\Phi^1\)">\(\Phi^1\)</span>, so (3.1)'s sign is retained. We use the complete programme proof of <a href="../hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html"><em>Morita invariance of K-theory and correspondence maps</em>, Theorem 2.4 and Corollary 2.5</a>. For the Green module <span class="math" data-tex="\(X\)">\(X\)</span>, with left algebra <span class="math" data-tex="\(E=C\rtimes_\sigma\mathbb R\)">\(E=C\rtimes_\sigma\mathbb R\)</span> and right algebra <span class="math" data-tex="\(B\)">\(B\)</span>, its actual map is <span class="math" data-tex="\(\mu=(i_{B*})^{-1}i_{E*}\)">\(\mu=(i_{B*})^{-1}i_{E*}\)</span>, where the inclusions are the two full diagonal corners of <span class="math" data-tex="\(\mathcal K(X\oplus B)\)">\(\mathcal K(X\oplus B)\)</span>. Both corner maps are proved invertible there without countability assumptions. Theorem 5.1 identifies this map on finite-projective-module classes; those are the Gram-projection classes in the next lemma. This exact written proof replaces the earlier literature-only prerequisite description.</p>
+<p>Let <span class="math" data-tex="\(C=M_{\alpha^{-1}}\)">\(C=M_{\alpha^{-1}}\)</span>. Extend <span class="math" data-tex="\(f\in C\)">\(f\in C\)</span> to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by <span class="math" data-tex="\(f(r+n)=\alpha^{-n}(f(r))\)">\(f(r+n)=\alpha^{-n}(f(r))\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\sigma_t f)(r)=f(r-t),\\
+\delta f=-f&#x27;,\\
+\varphi(f)=\int_0^1\tau(f(r))\,dr.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+(\sigma_t f)(r)=f(r-t),\\
+\delta f=-f&#x27;,\\
+\varphi(f)=\int_0^1\tau(f(r))\,dr.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>Uniform continuity on a compact interval, together with the endpoint relation and isometry of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proves norm continuity of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The function <span class="math" data-tex="\(r\mapsto\tau(f(r))\)">\(r\mapsto\tau(f(r))\)</span> is period one. Thus <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is an invariant tracial state. Green's module <span class="math" data-tex="\(X\)">\(X\)</span> identifies <span class="math" data-tex="\(C\rtimes_\sigma\mathbb R\)">\(C\rtimes_\sigma\mathbb R\)</span> with <span class="math" data-tex="\(\mathcal K_B(X)\)">\(\mathcal K_B(X)\)</span>.</p>
+<p><strong>Lemma 3.1 (trace compatibility in Green's module).</strong> Let <span class="math" data-tex="\(\mu:K_0(C\rtimes_\sigma\mathbb R)\to K_0(B)\)">\(\mu:K_0(C\rtimes_\sigma\mathbb R)\to K_0(B)\)</span> be the Morita isomorphism defined by <span class="math" data-tex="\(X\)">\(X\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\widehat\varphi_*y=\widehat\tau_*\mu(y).
+\tag{3.3}
+\]">\[
+\widehat\varphi_*y=\widehat\tau_*\mu(y).
+\tag{3.3}
+\]</span>
+<p><em>Proof.</em> Normalize counting measure on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and Lebesgue measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, whose quotient interval has length one. For <span class="math" data-tex="\(x,y\in C_c(\mathbb R,A)\)">\(x,y\in C_c(\mathbb R,A)\)</span>, put <span class="math" data-tex="\(x_n(r)=\alpha^n(x(r+n))\)">\(x_n(r)=\alpha^n(x(r+n))\)</span> and <span class="math" data-tex="\(y_n(r)=\alpha^n(y(r+n))\)">\(y_n(r)=\alpha^n(y(r+n))\)</span>. The two Green inner products become</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(x,y)(n)\\
+=\int_{\mathbb R}x(r)^*\alpha^n(y(r+n))\,dr,\\
+L(x,y)(t,r)\\
+=\sum_{n\in\mathbb Z}x_n(r)y_n(r-t)^*.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+R(x,y)(n)\\
+=\int_{\mathbb R}x(r)^*\alpha^n(y(r+n))\,dr,\\
+L(x,y)(t,r)\\
+=\sum_{n\in\mathbb Z}x_n(r)y_n(r-t)^*.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>Their left action is <span class="math" data-tex="\(L(x,y)=\theta_{x,y}\)">\(L(x,y)=\theta_{x,y}\)</span>, where <span class="math" data-tex="\(\theta_{x,y}z=xR(y,z)\)">\(\theta_{x,y}z=xR(y,z)\)</span>. The dual trace on positive continuous core kernels evaluates their group-zero coefficient, with the tracial integration normalization preceding (3.1). Invariance of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, partitioning <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> into unit intervals, and cyclicity therefore give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat\varphi(L(x,y))
+=\int_{\mathbb R}\tau(x(r)y(r)^*)\,dr\\
+=\widehat\tau(R(y,x)).
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+\widehat\varphi(L(x,y))
+=\int_{\mathbb R}\tau(x(r)y(r)^*)\,dr\\
+=\widehat\tau(R(y,x)).
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>For diagonal terms these are nonnegative finite quantities; polarization gives the displayed general formula. The sums and integrals are finite on compact supports before taking the quotient interval.</p>
+<p>Here is the completion and projection step in this trace comparison. For core vectors,
+<span class="math" data-tex="\(\widehat\varphi(\theta_{x,x})=\widehat\tau(R(x,x))\leq\|x\|_X^2\)">\(\widehat\varphi(\theta_{x,x})=\widehat\tau(R(x,x))\leq\|x\|_X^2\)</span>.
+The positive two-by-two block <span class="math" data-tex="\((\theta_{x_i,x_j})\)">\((\theta_{x_i,x_j})\)</span>, with <span class="math" data-tex="\(x_1=x,x_2=y\)">\(x_1=x,x_2=y\)</span>, factors its off-diagonal entry as <span class="math" data-tex="\(\theta_{x,x}^{1/2}c\theta_{y,y}^{1/2}\)">\(\theta_{x,x}^{1/2}c\theta_{y,y}^{1/2}\)</span> for a contraction <span class="math" data-tex="\(c\)">\(c\)</span> in the tracial von Neumann completion. Applying the <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-to-<span class="math" data-tex="\(L^1\)">\(L^1\)</span> inequality gives
+<span class="math" data-tex="\(\|\theta_{x,y}\|_1\leq\widehat\varphi(\theta_{x,x})^{1/2}\widehat\varphi(\theta_{y,y})^{1/2}\)">\(\|\theta_{x,y}\|_1\leq\widehat\varphi(\theta_{x,x})^{1/2}\widehat\varphi(\theta_{y,y})^{1/2}\)</span>.
+It follows, by expanding differences of rank ones, that approximating vectors in module norm also approximates these operators in trace norm. Thus (3.5) holds for all completed vectors. This uses the semifinite integration inequalities included in the exact analytic prerequisite, not boundedness of <span class="math" data-tex="\(\widehat\varphi\)">\(\widehat\varphi\)</span> on the entire compact-operator algebra.</p>
+<p>For a projection <span class="math" data-tex="\(p\in M_k(\mathcal K_B(X))\)">\(p\in M_k(\mathcal K_B(X))\)</span>, choose a positive finite-rank operator <span class="math" data-tex="\(T=\sum_i\theta_{z_i,z_i}\)">\(T=\sum_i\theta_{z_i,z_i}\)</span> with <span class="math" data-tex="\(\|p-pTp\|&lt;1\)">\(\|p-pTp\|&lt;1\)</span> in its corner. Such operators approximate compact operators. The positive operator <span class="math" data-tex="\(pTp\)">\(pTp\)</span> is invertible on <span class="math" data-tex="\(pX^k\)">\(pX^k\)</span>. Put <span class="math" data-tex="\(y_i=(pTp)^{-1/2}pz_i\)">\(y_i=(pTp)^{-1/2}pz_i\)</span>; then</p>
+<span class="math math-display" data-tex="\[
+\sum_i\theta_{y_i,y_i}=p.
+\tag{3.6}
+\]">\[
+\sum_i\theta_{y_i,y_i}=p.
+\tag{3.6}
+\]</span>
+<p>The column map <span class="math" data-tex="\(V:B^N\to pX^k\)">\(V:B^N\to pX^k\)</span>, <span class="math" data-tex="\(V(b_i)=\sum_i y_ib_i\)">\(V(b_i)=\sum_i y_ib_i\)</span>, satisfies <span class="math" data-tex="\(VV^*=p\)">\(VV^*=p\)</span>. Hence <span class="math" data-tex="\(e=V^*V=(R(y_i,y_j))\)">\(e=V^*V=(R(y_i,y_j))\)</span> is a projection in <span class="math" data-tex="\(M_N(B)\)">\(M_N(B)\)</span>, representing <span class="math" data-tex="\(\mu[p]\)">\(\mu[p]\)</span>. Summing (3.5) on its diagonal gives <span class="math" data-tex="\(\widehat\varphi_k(p)=\widehat\tau_N(e)\)">\(\widehat\varphi_k(p)=\widehat\tau_N(e)\)</span>.</p>
+<p>These projection classes generate the whole K₀-group here. Indeed, fullness and unitality of <span class="math" data-tex="\(B\)">\(B\)</span> give finitely many vectors <span class="math" data-tex="\(z_i\)">\(z_i\)</span> with <span class="math" data-tex="\(S=\sum_iR(z_i,z_i)\)">\(S=\sum_iR(z_i,z_i)\)</span> positive and invertible; normalize them by <span class="math" data-tex="\(S^{-1/2}\)">\(S^{-1/2}\)</span>. The map <span class="math" data-tex="\(b\mapsto(z_iS^{-1/2}b)_i\)">\(b\mapsto(z_iS^{-1/2}b)_i\)</span> embeds <span class="math" data-tex="\(B\)">\(B\)</span> as a complemented summand of <span class="math" data-tex="\(X^N\)">\(X^N\)</span>. Its range projection is a full projection in <span class="math" data-tex="\(M_N(\mathcal K_B(X))\)">\(M_N(\mathcal K_B(X))\)</span>, with corner <span class="math" data-tex="\(B\)">\(B\)</span>. Fullness follows because every rank one factors through this column and its adjoint. The full-corner Morita K-map therefore realizes every class, including relative classes, by differences of projections in finite matrix algebras over <span class="math" data-tex="\(\mathcal K_B(X)\)">\(\mathcal K_B(X)\)</span>. The diagonal calculation proves (3.3) on all of K₀. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (numerical comparison).</strong> The isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Psi=\mu\Phi_\sigma^1:K_1(M_{\alpha^{-1}})\longrightarrow K_0(B)
+\end{gathered}
+\tag{3.7}
+\]">\[
+\begin{gathered}
+\Psi=\mu\Phi_\sigma^1:K_1(M_{\alpha^{-1}})\longrightarrow K_0(B)
+\end{gathered}
+\tag{3.7}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(\widehat\tau_*\Psi[w]=\Gamma_\tau(w)\)">\(\widehat\tau_*\Psi[w]=\Gamma_\tau(w)\)</span>.</p>
+<p><em>Proof.</em> Every K-class has a unitary representative smooth for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, by orbit convolution and matrix functional calculus, as in <a href="smooth-subalgebras-and-the-density-theorem.html#4-smooth-actions-and-regular-spectral-triples">Lesson 15, Theorem 4.1</a>. Such a representative is a smooth twisted path in <span class="math" data-tex="\(r\)">\(r\)</span>. Insert <span class="math" data-tex="\(\delta w=-w&#x27;\)">\(\delta w=-w&#x27;\)</span> into (3.1), then use (3.2) and (3.3):</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat\tau_*\Psi[w]\\
+=\frac1{2\pi i}\int_0^1\tau_n(w&#x27;(r)w(r)^*)\,dr\\
+=\Gamma_\tau(w).
+\end{gathered}
+\tag{3.8}
+\]">\[
+\begin{gathered}
+\widehat\tau_*\Psi[w]\\
+=\frac1{2\pi i}\int_0^1\tau_n(w&#x27;(r)w(r)^*)\,dr\\
+=\Gamma_\tau(w).
+\end{gathered}
+\tag{3.8}
+\]</span>
+<p>The two minus signs cancel: one is in the index-normalized degree-one Thom formula, and one in left translation's generator. Both sides are K-homomorphisms, the right side by Lesson 14, Theorem 4.1. Thus the identity holds for every class. Invertibility of the Thom and Morita maps proves the asserted isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-pimsner-s-exact-sequence-of-trace-ranges">4. Pimsner's exact sequence of trace ranges</h2>
+<p><strong>Theorem 4.1.</strong> Set <span class="math" data-tex="\(G=\widehat\tau_*(K_0(B))\)">\(G=\widehat\tau_*(K_0(B))\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow H\longrightarrow G\\
+\xrightarrow{\pi}R_\tau^\alpha(F)\longrightarrow0
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow H\longrightarrow G\\
+\xrightarrow{\pi}R_\tau^\alpha(F)\longrightarrow0
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>is exact. The first map is inclusion and <span class="math" data-tex="\(\pi(g)=g+H\)">\(\pi(g)=g+H\)</span>.</p>
+<p><em>Proof.</em> The actual inclusion <span class="math" data-tex="\(\iota\)">\(\iota\)</span> preserves the trace, so <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span>. Proposition 3.2 identifies</p>
+<span class="math math-display" data-tex="\[
+G=\Gamma_\tau(K_1(M_{\alpha^{-1}})).
+\tag{4.2}
+\]">\[
+G=\Gamma_\tau(K_1(M_{\alpha^{-1}})).
+\tag{4.2}
+\]</span>
+<p>For <span class="math" data-tex="\(q:M_{\alpha^{-1}}\to A\)">\(q:M_{\alpha^{-1}}\to A\)</span>, evaluation at zero, the exact sequence of <a href="the-mapping-torus.html#3-kernels-cokernels-and-the-splitting-question">Lesson 17, Corollary 3.1</a> says <span class="math" data-tex="\(q_*\)">\(q_*\)</span> maps onto <span class="math" data-tex="\(\ker(1-\alpha_*^{-1})=F\)">\(\ker(1-\alpha_*^{-1})=F\)</span>, and its kernel is the image of the suspended ideal. Lesson 14, equation (4.2), gives <span class="math" data-tex="\(\Gamma_\tau j_*\beta_A=\tau_*\)">\(\Gamma_\tau j_*\beta_A=\tau_*\)</span>.</p>
+<p>Let <span class="math" data-tex="\(w\)">\(w\)</span> be a unitary representative in this mapping torus and <span class="math" data-tex="\(v=w(0)\)">\(v=w(0)\)</span>. The path <span class="math" data-tex="\(w(r)v^*\)">\(w(r)v^*\)</span> starts at 1 and ends at <span class="math" data-tex="\(\alpha^{-1}(v)v^*\)">\(\alpha^{-1}(v)v^*\)</span>. Its integral is <span class="math" data-tex="\(\Gamma_\tau(w)\)">\(\Gamma_\tau(w)\)</span>, since <span class="math" data-tex="\(v\)">\(v\)</span> is constant in <span class="math" data-tex="\(r\)">\(r\)</span>. Apply <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> to this endpoint and use determinant invariance from Lemma 2.1. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_\tau(w)+H
+=\Delta_\tau(\alpha^{-1}(v)v^*)\\
+=\Delta_\tau(v\alpha(v^*))=R_\tau^\alpha(q_*[w]).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\Gamma_\tau(w)+H
+=\Delta_\tau(\alpha^{-1}(v)v^*)\\
+=\Delta_\tau(v\alpha(v^*))=R_\tau^\alpha(q_*[w]).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>This proves that <span class="math" data-tex="\(\pi(G)\subset R_\tau^\alpha(F)\)">\(\pi(G)\subset R_\tau^\alpha(F)\)</span>. Conversely, every <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span> lifts to <span class="math" data-tex="\([w]\)">\([w]\)</span> by the mapping-torus exact sequence, so (4.3) puts its rotation determinant in <span class="math" data-tex="\(\pi(G)\)">\(\pi(G)\)</span>. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is onto the stated target. Its kernel is exactly <span class="math" data-tex="\(H\)">\(H\)</span>, by definition of the quotient. Inclusion is injective, completing the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, as a subgroup of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+G=\{r\in\mathbb R:r+H\in R_\tau^\alpha(F)\}.
+\tag{4.4}
+\]">\[
+G=\{r\in\mathbb R:r+H\in R_\tau^\alpha(F)\}.
+\tag{4.4}
+\]</span>
+<p>Indeed both sides contain <span class="math" data-tex="\(H\)">\(H\)</span> and have the same image modulo <span class="math" data-tex="\(H\)">\(H\)</span>. This is Blackadar's Theorem 10.10.4. The proof has supplied the trace comparison behind the source's instruction to apply the extension determinant sequence. It does not identify an abstract transported functional with the dual trace merely because both extend <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span>.</p>
+<h3 id="signed-traces-and-the-integral-obstruction">Signed traces and the integral obstruction</h3>
+<p>Exel's source allows a normalized bounded hermitian trace rather than requiring positivity. A functional <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is <strong>hermitian</strong> when <span class="math" data-tex="\(\tau(a^*)=\overline{\tau(a)}\)">\(\tau(a^*)=\overline{\tau(a)}\)</span>. This extension of the numerical range argument can be made without changing its Green–Thom map.</p>
+<p><strong>Lemma 4.2 (the same range theorem for hermitian traces).</strong> Replace the standing tracial state by a bounded hermitian trace satisfying <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span> and <span class="math" data-tex="\(\tau\alpha=\tau\)">\(\tau\alpha=\tau\)</span>. Then <span class="math" data-tex="\(\widehat\tau=\tau E\)">\(\widehat\tau=\tau E\)</span> is a normalized bounded hermitian trace. Define <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(R_\tau^\alpha\)">\(R_\tau^\alpha\)</span> as before. Lemma 2.1, Theorem 2.2 and the exact range sequence (4.1) remain valid; Theorem 2.3 and Lemma 2.4 remain valid when <span class="math" data-tex="\(H\subseteq\mathbb Z\)">\(H\subseteq\mathbb Z\)</span>. Every bounded hermitian trace on <span class="math" data-tex="\(B\)">\(B\)</span> restricting to <span class="math" data-tex="\(\tau\)">\(\tau\)</span> has the same K₀-pairing as <span class="math" data-tex="\(\widehat\tau\)">\(\widehat\tau\)</span>.</p>
+<p><em>Proof.</em> The monomial calculation (1.2), boundedness, and <span class="math" data-tex="\(\tau(a^*)=\overline{\tau(a)}\)">\(\tau(a^*)=\overline{\tau(a)}\)</span> show that <span class="math" data-tex="\(\tau E\)">\(\tau E\)</span> is a hermitian trace; normalization is immediate. Likewise <span class="math" data-tex="\(\tau_n(p)\)">\(\tau_n(p)\)</span> is real on every projection <span class="math" data-tex="\(p\)">\(p\)</span>, so <span class="math" data-tex="\(H\subseteq\mathbb R\)">\(H\subseteq\mathbb R\)</span>. For a differentiable unitary path, <span class="math" data-tex="\(w&#x27;w^*\)">\(w&#x27;w^*\)</span> is antihermitian, so <span class="math" data-tex="\(\tau_n(w&#x27;w^*)/(2\pi i)\)">\(\tau_n(w&#x27;w^*)/(2\pi i)\)</span> is real. Lesson 14's bounded-trace period theorem therefore gives the determinant into the actual quotient <span class="math" data-tex="\(\mathbb R/H\)">\(\mathbb R/H\)</span>. All of Lemma 2.1 and Theorem 2.2 uses only boundedness, traciality and invariance. The all-components extension in Lesson 14, Theorem 2.10, already has precisely this hermitian scope, so the algebraic proofs of Theorem 2.3 and Lemma 2.4 also apply.</p>
+<p>Here is the numerical comparison that requires an extra step. The full norm-additive decomposition argument in Lesson 14, within the proof of Theorem 2.6, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau=\tau_+-\tau_-,\\
+\|\tau\|=\|\tau_+\|+\|\tau_-\|.
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+\tau=\tau_+-\tau_-,\\
+\|\tau\|=\|\tau_+\|+\|\tau_-\|.
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>with uniquely determined bounded positive traces. That decomposition and its uniqueness hold for every unital C*-algebra; separability is used later in that theorem for trace detection, and is unnecessary here. Composing the two positive parts with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives another norm-additive decomposition of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>: an automorphism preserves positivity and the functional norm, and <span class="math" data-tex="\(\tau\alpha=\tau\)">\(\tau\alpha=\tau\)</span>. Uniqueness yields <span class="math" data-tex="\(\tau_\pm\alpha=\tau_\pm\)">\(\tau_\pm\alpha=\tau_\pm\)</span>.</p>
+<p>For each nonzero positive part put <span class="math" data-tex="\(c_\pm=\tau_\pm(1)&gt;0\)">\(c_\pm=\tau_\pm(1)&gt;0\)</span> and <span class="math" data-tex="\(\sigma_\pm=\tau_\pm/c_\pm\)">\(\sigma_\pm=\tau_\pm/c_\pm\)</span>. A positive functional of zero value at one is zero, by Cauchy–Schwarz, so zero parts are simply omitted. The nonzero <span class="math" data-tex="\(\sigma_\pm\)">\(\sigma_\pm\)</span> are invariant tracial states. Proposition 3.2 applies to each of them using the same isomorphism <span class="math" data-tex="\(\Psi=\mu\Phi_\sigma^1\)">\(\Psi=\mu\Phi_\sigma^1\)</span>; its Green module, translation action and index convention depend on <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span>, not on the chosen trace. Linear combination gives, for every mapping-torus class <span class="math" data-tex="\([w]\)">\([w]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat\tau_*\Psi[w]\\
+=c_+\widehat{\sigma_+}_*\Psi[w]
+-c_-\widehat{\sigma_-}_*\Psi[w]\\
+=\Gamma_\tau(w).
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+\widehat\tau_*\Psi[w]\\
+=c_+\widehat{\sigma_+}_*\Psi[w]
+-c_-\widehat{\sigma_-}_*\Psi[w]\\
+=\Gamma_\tau(w).
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>The same linear combination proves that the mapping-torus integral is a K-homomorphism for <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its value on positive Bott loops is <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span>, either directly or by combining the two positive formulas. Invertibility of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> gives (4.2) with this signed trace. Evaluation onto <span class="math" data-tex="\(F\)">\(F\)</span>, the endpoint computation (4.3) and inclusion of <span class="math" data-tex="\(H\)">\(H\)</span> use no positivity. They consequently give the entire exact sequence (4.1) and the subgroup formula (4.4).</p>
+<p>Finally the proof of Theorem 1.2 works word for word for bounded trace functionals: the K-pairing is constant on a projection path and boundedness moves the functional through the gauge integral. Neither that calculation nor its conclusion needs positivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Positivity-based conclusions about faithfulness, projectionlessness and invariant probability measures in §§5–6 retain their stated tracial-state hypotheses.</p>
+<p><strong>Theorem 4.3 (Exel's integral crossed-product criterion).</strong> Under either the standing tracial-state hypotheses or the hermitian hypotheses of Lemma 4.2, assume <span class="math" data-tex="\(H\subseteq\mathbb Z\)">\(H\subseteq\mathbb Z\)</span>, equivalently <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>. The following conditions are equivalent:</p>
+<ol>
+<li>The rotation <span class="math" data-tex="\(R_\tau^\alpha\)">\(R_\tau^\alpha\)</span> vanishes on <span class="math" data-tex="\(F=\ker(1-\alpha_*)\)">\(F=\ker(1-\alpha_*)\)</span>.</li>
+<li><span class="math" data-tex="\(\widehat\tau_*(K_0(A\rtimes_\alpha\mathbb Z))\subseteq\mathbb Z\)">\(\widehat\tau_*(K_0(A\rtimes_\alpha\mathbb Z))\subseteq\mathbb Z\)</span>.</li>
+<li>There is an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-invariant determinant <span class="math" data-tex="\(D:U_\infty(A)\to\mathbb T\)">\(D:U_\infty(A)\to\mathbb T\)</span> satisfying (2.5).</li>
+<li>The class of Theorem 2.3 vanishes for the cyclic action of <span class="math" data-tex="\(\langle\alpha\rangle\)">\(\langle\alpha\rangle\)</span>.</li>
+</ol>
+<p><em>Proof.</em> The exact sequence (4.1) identifies <span class="math" data-tex="\(G/H\)">\(G/H\)</span> with the image of the rotation map. Since <span class="math" data-tex="\(H=\mathbb Z\subseteq G\)">\(H=\mathbb Z\subseteq G\)</span>, condition 1 says exactly that <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>, which is condition 2.</p>
+<p>Under condition 2, apply Lesson 14, Theorem 2.10, to the unital crossed product <span class="math" data-tex="\(B\)">\(B\)</span> and its normalized hermitian trace <span class="math" data-tex="\(\widehat\tau\)">\(\widehat\tau\)</span>. It gives a determinant <span class="math" data-tex="\(D_B\)">\(D_B\)</span> on every stable unitary of <span class="math" data-tex="\(B\)">\(B\)</span>. Restrict it to <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(v\in U_n(A)\)">\(v\in U_n(A)\)</span>, covariance and multiplicativity in the abelian circle yield</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_B(\alpha_n(v))\\
+=D_B((u\otimes1_n)v(u\otimes1_n)^*)\\
+=D_B(v).
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+D_B(\alpha_n(v))\\
+=D_B((u\otimes1_n)v(u\otimes1_n)^*)\\
+=D_B(v).
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>The restriction has normalization (2.5) because <span class="math" data-tex="\(\widehat\tau|_A=\tau\)">\(\widehat\tau|_A=\tau\)</span>, proving condition 3. Conversely an invariant determinant satisfies <span class="math" data-tex="\(D(\alpha(v^*)v)=1\)">\(D(\alpha(v^*)v)=1\)</span> on every fixed K-class. Lemma 2.4 then gives <span class="math" data-tex="\(\exp(2\pi iR_\tau^\alpha(x))=1\)">\(\exp(2\pi iR_\tau^\alpha(x))=1\)</span>. With <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>, the exponential identifies <span class="math" data-tex="\(\mathbb R/H\)">\(\mathbb R/H\)</span> with <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, so that rotation coset is zero. This proves condition 1. Finally, invariance under <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives invariance under every positive and negative power, and Theorem 2.3 gives equivalence with condition 4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the integral criterion of Exel, Theorem V.13, printed p. 63. It also identifies exactly when an all-components determinant can be chosen compatibly with the action.</p>
+<p><strong>Example 4.4 (a signed integral range).</strong> Put <span class="math" data-tex="\(A=C(S^1)\oplus C(S^1)\)">\(A=C(S^1)\oplus C(S^1)\)</span>, let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> act by the half-turn pullback on the first component and by identity on the second, and set</p>
+<span class="math math-display" data-tex="\[
+\tau(f,g)=2\int_{S^1}f\,d\nu-\int_{S^1}g\,d\nu,
+\tag{4.8}
+\]">\[
+\tau(f,g)=2\int_{S^1}f\,d\nu-\int_{S^1}g\,d\nu,
+\tag{4.8}
+\]</span>
+<p>where <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is Haar probability measure. This is a normalized invariant bounded hermitian trace, and <span class="math" data-tex="\(\tau(0,1)=-1\)">\(\tau(0,1)=-1\)</span>, so it is not positive. Coefficient projection traces are integers; the two central unit projections have traces 2 and <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>.</p>
+<p>The crossed product splits into the crossed products of the two components: the invariant complementary central unit projections split every covariant representation, and the two component universal representations give the reverse homomorphism. The gauge expectations split in the same way. Apply Exercise 19.5 separately to the half-turn and the identity action. The two normalized dual trace ranges are <span class="math" data-tex="\(\tfrac12\mathbb Z\)">\(\tfrac12\mathbb Z\)</span> and <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. K₀ of a direct sum and its trace pairing split componentwise, hence the range for (4.8) is</p>
+<span class="math math-display" data-tex="\[
+2\bigl(\tfrac12\mathbb Z\bigr)-\mathbb Z=\mathbb Z.
+\tag{4.9}
+\]">\[
+2\bigl(\tfrac12\mathbb Z\bigr)-\mathbb Z=\mathbb Z.
+\tag{4.9}
+\]</span>
+<p>Theorem 4.3 supplies an invariant determinant for this signed trace. The normalized positive trace on the first component has the nonintegral half-integer crossed-product range. Scaling and taking a difference can therefore change the integrality obstruction; the signed theorem carries additional information.</p>
+<p>There is a sign distinction in comparing the source's mapping-torus formula to §3. Exel, Theorem V.11, uses <span class="math" data-tex="\(M_\alpha\)">\(M_\alpha\)</span> and writes <span class="math" data-tex="\((2\pi i)^{-1}\int\tau(w&#x27;^*w)=-\Gamma_\tau(w)\)">\((2\pi i)^{-1}\int\tau(w&#x27;^*w)=-\Gamma_\tau(w)\)</span>. Here we use <span class="math" data-tex="\(M_{\alpha^{-1}}\)">\(M_{\alpha^{-1}}\)</span> and <span class="math" data-tex="\(+\Gamma_\tau\)">\(+\Gamma_\tau\)</span>. Reversal <span class="math" data-tex="\(w(t)\mapsto w(1-t)\)">\(w(t)\mapsto w(1-t)\)</span> changes the twist and negates the integral, so these numerical conventions agree under reversal. This numerical comparison does not identify the source's Paschke map with the particular PV boundary normalized in Lesson 18; that stronger map identity is not needed in Theorem 4.3.</p>
+<h2 id="5-scalar-determinants-suffice-for-commutative-coefficients">5. Scalar determinants suffice for commutative coefficients</h2>
+<p>Let <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>, where <span class="math" data-tex="\(X\)">\(X\)</span> is a nonempty compact Hausdorff space, let <span class="math" data-tex="\(\varphi:X\to X\)">\(\varphi:X\to X\)</span> be a homeomorphism, and use <span class="math" data-tex="\(\alpha(f)=f\circ\varphi^{-1}\)">\(\alpha(f)=f\circ\varphi^{-1}\)</span>. An invariant probability measure <span class="math" data-tex="\(\nu\)">\(\nu\)</span> defines <span class="math" data-tex="\(\tau(f)=\int_X f\,d\nu\)">\(\tau(f)=\int_X f\,d\nu\)</span>. Write <span class="math" data-tex="\(\mathcal H^1(X)=C(X,S^1)/\exp(2\pi i C(X,\mathbb R))\)">\(\mathcal H^1(X)=C(X,S^1)/\exp(2\pi i C(X,\mathbb R))\)</span>, with multiplication of scalar functions giving its abelian group law. We prove the cohomological identification at the full compact Hausdorff generality used here.</p>
+<h3 id="circle-maps-and-their-cohomology-classes">Circle maps and their cohomology classes</h3>
+<p>For a finite open cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span>, use the nerve description of Čech cohomology. An integer one-cocycle assigns a constant integer <span class="math" data-tex="\(n_{ij}\)">\(n_{ij}\)</span> whenever <span class="math" data-tex="\(U_i\cap U_j\ne\varnothing\)">\(U_i\cap U_j\ne\varnothing\)</span>, with <span class="math" data-tex="\(n_{ji}=-n_{ij}\)">\(n_{ji}=-n_{ij}\)</span> and <span class="math" data-tex="\(n_{ij}+n_{jk}=n_{ik}\)">\(n_{ij}+n_{jk}=n_{ik}\)</span> whenever the triple intersection is nonempty. A coboundary has form <span class="math" data-tex="\(n_{ij}=k_i-k_j\)">\(n_{ij}=k_i-k_j\)</span>. Passing to refinements and then the direct limit defines <span class="math" data-tex="\(\check H^1(X;\mathbb Z)\)">\(\check H^1(X;\mathbb Z)\)</span>. Finite covers suffice by compactness.</p>
+<p>We will use a finite partition of unity <span class="math" data-tex="\((\rho_i)\)">\((\rho_i)\)</span> with <span class="math" data-tex="\(\operatorname{supp}\rho_i\subset U_i\)">\(\operatorname{supp}\rho_i\subset U_i\)</span>. Here are the needed topological details. A compact Hausdorff space is normal: separate each pair of points from two disjoint closed sets by disjoint neighborhoods, first take a finite cover of the second compact set and then a finite cover of the first. Finite intersections and unions give disjoint neighborhoods of the two whole sets. Normality consequently shrinks a neighborhood of a closed set so that its closure remains inside the original neighborhood. Shrinking neighborhoods of points in a finite cover, and taking a finite subcover, gives closed sets <span class="math" data-tex="\(F_i\subset U_i\)">\(F_i\subset U_i\)</span> that cover <span class="math" data-tex="\(X\)">\(X\)</span>. Choose open <span class="math" data-tex="\(V_i\)">\(V_i\)</span> with <span class="math" data-tex="\(F_i\subset V_i\)">\(F_i\subset V_i\)</span> and <span class="math" data-tex="\(\overline{V_i}\subset U_i\)">\(\overline{V_i}\subset U_i\)</span>.</p>
+<p>For completeness, normality gives a continuous function <span class="math" data-tex="\(h_i:X\to[0,1]\)">\(h_i:X\to[0,1]\)</span> that is one on <span class="math" data-tex="\(F_i\)">\(F_i\)</span> and zero outside <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. To construct it, choose open sets <span class="math" data-tex="\(G_r\)">\(G_r\)</span>, indexed by dyadic <span class="math" data-tex="\(r\in[0,1]\)">\(r\in[0,1]\)</span>, with <span class="math" data-tex="\(F_i\subset G_0\)">\(F_i\subset G_0\)</span>, <span class="math" data-tex="\(G_1=V_i\)">\(G_1=V_i\)</span>, and <span class="math" data-tex="\(\overline{G_r}\subset G_s\)">\(\overline{G_r}\subset G_s\)</span> for <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. Insert each intermediate set between a closed set and an open neighborhood by the preceding shrinking property. Put <span class="math" data-tex="\(a(x)=\inf\{r:x\in G_r\}\)">\(a(x)=\inf\{r:x\in G_r\}\)</span>, taking the infimum of the empty set as one, and set <span class="math" data-tex="\(h_i=1-a\)">\(h_i=1-a\)</span>. For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the sets <span class="math" data-tex="\(\{a&lt;t\}=\bigcup_{r&lt;t}G_r\)">\(\{a&lt;t\}=\bigcup_{r&lt;t}G_r\)</span> and <span class="math" data-tex="\(\{a&gt;t\}=\bigcup_{r&gt;t}(X\setminus\overline{G_r})\)">\(\{a&gt;t\}=\bigcup_{r&gt;t}(X\setminus\overline{G_r})\)</span> are open; the endpoint cases follow from the same formulas. Thus <span class="math" data-tex="\(a\)">\(a\)</span> is continuous, with the required values. Since <span class="math" data-tex="\(\operatorname{supp}h_i\subset\overline{V_i}\subset U_i\)">\(\operatorname{supp}h_i\subset\overline{V_i}\subset U_i\)</span>, the functions <span class="math" data-tex="\(\rho_i=h_i/\sum_jh_j\)">\(\rho_i=h_i/\sum_jh_j\)</span> have the stated supports and sum to one. The denominator is positive because the <span class="math" data-tex="\(F_i\)">\(F_i\)</span> cover <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Lemma (circle maps and Čech cohomology).</strong> There is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal H^1(X)\cong\check H^1(X;\mathbb Z).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal H^1(X)\cong\check H^1(X;\mathbb Z).
+\end{gathered}
+\]</span>
+<p>Moreover two scalar unitaries are homotopic precisely when their quotient has a continuous real logarithm.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(u:X\to S^1\)">\(u:X\to S^1\)</span>, choose a finite cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> with local real logarithms <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, so <span class="math" data-tex="\(u|_{U_i}=e^{2\pi ia_i}\)">\(u|_{U_i}=e^{2\pi ia_i}\)</span>, and with each <span class="math" data-tex="\(a_i(U_i)\)">\(a_i(U_i)\)</span> contained in an interval of length less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Such covers exist by taking short arcs around <span class="math" data-tex="\(u(x)\)">\(u(x)\)</span> and then a finite subcover. On an overlap, <span class="math" data-tex="\(n_{ij}=a_i-a_j\)">\(n_{ij}=a_i-a_j\)</span> is integer-valued. Its possible values lie in an interval of length less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so it is a single constant integer even if the overlap is disconnected. These integers satisfy the cocycle rule. Different short-log covers have a common refinement by intersections; the two local logarithms differ there by a constant integer, so their cocycles differ by a coboundary. This defines an unambiguous class of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>Products add this class: add the local logarithms on a common refinement, shortening the cover if needed, and their transition integers add. If <span class="math" data-tex="\(u=e^{2\pi ia}\)">\(u=e^{2\pi ia}\)</span> for a global continuous real <span class="math" data-tex="\(a\)">\(a\)</span>, each <span class="math" data-tex="\(a_i-a\)">\(a_i-a\)</span> is locally constant and integer-valued. Refine the cover by neighborhoods on which it is constant, then take a finite subcover. The cocycle is a coboundary there. Conversely, if the class vanishes, some refinement has <span class="math" data-tex="\(n_{ij}=k_i-k_j\)">\(n_{ij}=k_i-k_j\)</span>. Restrict the original logarithms to that refinement. The functions <span class="math" data-tex="\(a_i-k_i\)">\(a_i-k_i\)</span> then agree on overlaps and glue to a global continuous real logarithm. Thus the kernel is precisely <span class="math" data-tex="\(\exp(2\pi i C(X,\mathbb R))\)">\(\exp(2\pi i C(X,\mathbb R))\)</span>.</p>
+<p>To prove surjectivity, start with a cocycle on a finite cover and the partition <span class="math" data-tex="\((\rho_k)\)">\((\rho_k)\)</span> just constructed. For <span class="math" data-tex="\(x\in U_i\)">\(x\in U_i\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+b_i(x)=\sum_k\rho_k(x)n_{ik}.
+\]">\[
+b_i(x)=\sum_k\rho_k(x)n_{ik}.
+\]</span>
+<p>Each term is interpreted as zero outside <span class="math" data-tex="\(U_k\)">\(U_k\)</span>. It is continuous on <span class="math" data-tex="\(U_i\)">\(U_i\)</span>: at a point outside <span class="math" data-tex="\(U_k\)">\(U_k\)</span>, a neighborhood misses the closed support of <span class="math" data-tex="\(\rho_k\)">\(\rho_k\)</span>. On <span class="math" data-tex="\(U_i\cap U_j\)">\(U_i\cap U_j\)</span>, every nonzero term has a nonempty triple intersection, so the cocycle rule gives <span class="math" data-tex="\(b_i-b_j=\sum_k\rho_k n_{ij}=n_{ij}\)">\(b_i-b_j=\sum_k\rho_k n_{ij}=n_{ij}\)</span>. The circle functions <span class="math" data-tex="\(e^{2\pi ib_i}\)">\(e^{2\pi ib_i}\)</span> therefore glue to a global <span class="math" data-tex="\(u\)">\(u\)</span>. Refine by neighborhoods inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span> where <span class="math" data-tex="\(b_i\)">\(b_i\)</span> ranges over an interval shorter than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and take a finite subcover. These are admissible short logarithms for <span class="math" data-tex="\(u\)">\(u\)</span>, and their transition cocycle is exactly the pullback of <span class="math" data-tex="\((n_{ij})\)">\((n_{ij})\)</span>. Hence <span class="math" data-tex="\(u\)">\(u\)</span> represents the desired class. This proves the isomorphism.</p>
+<p>Finally a continuous real logarithm of <span class="math" data-tex="\(u_1u_0^*\)">\(u_1u_0^*\)</span> gives the homotopy <span class="math" data-tex="\(u_s=u_0e^{2\pi isa}\)">\(u_s=u_0e^{2\pi isa}\)</span>. Conversely, a norm-continuous homotopy has a finite time subdivision for which <span class="math" data-tex="\(\|u_{s_{j+1}}u_{s_j}^*-1\|&lt;2\)">\(\|u_{s_{j+1}}u_{s_j}^*-1\|&lt;2\)</span>. Each quotient avoids <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the ordinary continuous logarithm on <span class="math" data-tex="\(S^1\setminus\{-1\}\)">\(S^1\setminus\{-1\}\)</span> supplies a real function <span class="math" data-tex="\(c_j\)">\(c_j\)</span>. Multiplying the quotients gives <span class="math" data-tex="\(u_1u_0^*=\exp(2\pi i\sum_jc_j)\)">\(u_1u_0^*=\exp(2\pi i\sum_jc_j)\)</span>. A jointly continuous homotopy on <span class="math" data-tex="\(X\times[0,1]\)">\(X\times[0,1]\)</span> is norm continuous: compactness gives a finite neighborhood cover of each time slice and a uniform estimate. Thus the same argument proves the topological homotopy criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument uses the open-cover group directly for arbitrary compact Hausdorff spaces; no singular-cohomology replacement is needed for the range theorem.</p>
+<p><strong>Theorem 5.1 (commutative range formula).</strong> In this case</p>
+<span class="math math-display" data-tex="\[
+H=\left\{\int_X h\,d\nu:h\in C(X,\mathbb Z)\right\},
+\tag{5.1}
+\]">\[
+H=\left\{\int_X h\,d\nu:h\in C(X,\mathbb Z)\right\},
+\tag{5.1}
+\]</span>
+<p>and <span class="math" data-tex="\(G/H\)">\(G/H\)</span> is the image under (2.1) of the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-fixed components in <span class="math" data-tex="\(\mathcal H^1(X)\)">\(\mathcal H^1(X)\)</span>. Thus scalar unitaries alone determine the additional range.</p>
+<p><em>Proof.</em> A matrix projection has a continuous integer-valued rank, and its trace pairing is the integral of that rank, by Lesson 13. Conversely every continuous integer-valued <span class="math" data-tex="\(h\)">\(h\)</span> has finite image and clopen level sets. The positive and negative parts are rank functions of diagonal projections formed from those clopen characteristic functions. Their difference realizes <span class="math" data-tex="\(\int h\)">\(\int h\)</span>, proving (5.1).</p>
+<p>For a unitary matrix path <span class="math" data-tex="\(\xi(t,x)\)">\(\xi(t,x)\)</span>, differentiation of its ordinary determinant gives pointwise</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(\xi&#x27;\xi^{-1})
+=(\det\xi)&#x27;(\det\xi)^{-1}.
+\tag{5.2}
+\]">\[
+\operatorname{Tr}(\xi&#x27;\xi^{-1})
+=(\det\xi)&#x27;(\det\xi)^{-1}.
+\tag{5.2}
+\]</span>
+<p>The path is piecewise norm smooth; integration against the probability measure and in <span class="math" data-tex="\(t\)">\(t\)</span> is legitimate for its bounded continuous derivatives. Therefore <span class="math" data-tex="\(\Gamma_\tau(\xi)=\Gamma_\tau(\det\xi)\)">\(\Gamma_\tau(\xi)=\Gamma_\tau(\det\xi)\)</span>, and hence <span class="math" data-tex="\(\Delta_\tau=\Delta_\tau\circ\det\)">\(\Delta_\tau=\Delta_\tau\circ\det\)</span> on the identity component, with the same period group (5.1).</p>
+<p>If <span class="math" data-tex="\([v]\in F\)">\([v]\in F\)</span>, a stabilized homotopy from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(\alpha(v)\)">\(\alpha(v)\)</span> gives a scalar homotopy from <span class="math" data-tex="\(\det v\)">\(\det v\)</span> to <span class="math" data-tex="\(\alpha(\det v)\)">\(\alpha(\det v)\)</span>. Thus <span class="math" data-tex="\(\det v\)">\(\det v\)</span> has a fixed component in <span class="math" data-tex="\(\mathcal H^1(X)\)">\(\mathcal H^1(X)\)</span>. Also <span class="math" data-tex="\(\det(v\alpha(v^*))=(\det v)\alpha((\det v)^*)\)">\(\det(v\alpha(v^*))=(\det v)\alpha((\det v)^*)\)</span>, so its relative determinant is exactly that of this scalar representative. Conversely, if a scalar unitary <span class="math" data-tex="\(z\)">\(z\)</span> has fixed component, the scalar homotopy from <span class="math" data-tex="\(z\)">\(z\)</span> to <span class="math" data-tex="\(\alpha(z)\)">\(\alpha(z)\)</span> is itself a stable unitary homotopy. It follows that <span class="math" data-tex="\([z]\in F\)">\([z]\in F\)</span>. Both inclusions in the asserted determinant image follow, and Theorem 4.1 proves the range formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Scalar homotopy components are indeed the displayed logarithm quotient. A global logarithm supplies an exponential homotopy. Conversely subdivide a homotopy from 1 finely enough that each successive multiplicative increment is uniformly within distance less than one of 1. Each increment has a continuous real logarithm; in the commutative algebra their sum is a global logarithm of the endpoint.</p>
+<p><strong>Corollary 5.2.</strong> If <span class="math" data-tex="\(\mathcal H^1(X)=0\)">\(\mathcal H^1(X)=0\)</span>, then <span class="math" data-tex="\(G=H\)">\(G=H\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is also connected, then <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>.</p>
+<p><em>Proof.</em> Every scalar unitary is <span class="math" data-tex="\(z=\exp(2\pi i h)\)">\(z=\exp(2\pi i h)\)</span>, <span class="math" data-tex="\(h\)">\(h\)</span> real. Its relative product is <span class="math" data-tex="\(\exp(2\pi i(h-\alpha(h)))\)">\(\exp(2\pi i(h-\alpha(h)))\)</span>. The determinant is <span class="math" data-tex="\(\tau(h-\alpha(h))+H=0\)">\(\tau(h-\alpha(h))+H=0\)</span>, by invariance. Thus Theorem 5.1 gives no additional cosets, so <span class="math" data-tex="\(G=H\)">\(G=H\)</span>. On a connected space every continuous integer-valued rank function is constant, and all integer ranks and their differences occur. Hence (5.1) gives <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-minimal-systems-and-the-absence-of-nontrivial-projections">6. Minimal systems and the absence of nontrivial projections</h2>
+<p><strong>Lemma 6.1.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is infinite compact Hausdorff and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is minimal, then <span class="math" data-tex="\(C(X)\rtimes_\alpha\mathbb Z\)">\(C(X)\rtimes_\alpha\mathbb Z\)</span> is simple.</p>
+<p><em>Proof.</em> There are no periodic points: a finite orbit would be a proper closed invariant subset of an infinite minimal space. We first prove the ideal-intersection property. Suppose a quotient map <span class="math" data-tex="\(Q:B\to B/I\)">\(Q:B\to B/I\)</span> is injective on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. Fix <span class="math" data-tex="\(a\in B_+\)">\(a\in B_+\)</span>, choose a Laurent polynomial <span class="math" data-tex="\(c=\sum_{|n|\leq N}f_nu^n\)">\(c=\sum_{|n|\leq N}f_nu^n\)</span> with <span class="math" data-tex="\(\|a-c\|&lt;\varepsilon\)">\(\|a-c\|&lt;\varepsilon\)</span>, and choose <span class="math" data-tex="\(x_0\)">\(x_0\)</span> where <span class="math" data-tex="\(E(a)\)">\(E(a)\)</span> attains its maximum. The finitely many points <span class="math" data-tex="\(\varphi^n(x_0)\)">\(\varphi^n(x_0)\)</span>, <span class="math" data-tex="\(|n|\leq N\)">\(|n|\leq N\)</span>, are distinct. Hausdorff separation and continuity give a neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> with <span class="math" data-tex="\(U\cap\varphi^n(U)=\varnothing\)">\(U\cap\varphi^n(U)=\varnothing\)</span> for <span class="math" data-tex="\(0&lt;|n|\leq N\)">\(0&lt;|n|\leq N\)</span>. Choose <span class="math" data-tex="\(h\in C(X)\)">\(h\in C(X)\)</span>, <span class="math" data-tex="\(0\leq h\leq1\)">\(0\leq h\leq1\)</span>, <span class="math" data-tex="\(h(x_0)=1\)">\(h(x_0)=1\)</span>, supported in <span class="math" data-tex="\(U\)">\(U\)</span>, using normality of compact Hausdorff spaces.</p>
+<p>Covariance implies <span class="math" data-tex="\(hch=hE(c)h\)">\(hch=hE(c)h\)</span>. The two approximation errors are at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> each, so</p>
+<span class="math math-display" data-tex="\[
+\|hah-hE(a)h\|&lt;2\varepsilon.
+\tag{6.1}
+\]">\[
+\|hah-hE(a)h\|&lt;2\varepsilon.
+\tag{6.1}
+\]</span>
+<p>Since <span class="math" data-tex="\(Q\)">\(Q\)</span> is isometric on coefficients and <span class="math" data-tex="\(\|hE(a)h\|=\|E(a)\|\)">\(\|hE(a)h\|=\|E(a)\|\)</span>, it follows that <span class="math" data-tex="\(\|Q(a)\|\geq\|E(a)\|-2\varepsilon\)">\(\|Q(a)\|\geq\|E(a)\|-2\varepsilon\)</span>. Letting <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span> shows that if <span class="math" data-tex="\(Q(a)=0\)">\(Q(a)=0\)</span>, then <span class="math" data-tex="\(E(a)=0\)">\(E(a)=0\)</span>, hence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Therefore <span class="math" data-tex="\(I=0\)">\(I=0\)</span>. Any nonzero ideal consequently intersects <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> nontrivially.</p>
+<p>That intersection is an invariant coefficient ideal, because conjugation by <span class="math" data-tex="\(u\)">\(u\)</span> preserves it. Its corresponding open subset of <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty and invariant. Minimality makes it all of <span class="math" data-tex="\(X\)">\(X\)</span>, so the intersection contains 1 and <span class="math" data-tex="\(I=B\)">\(I=B\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is simple. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (corrected projection corollary).</strong> Suppose <span class="math" data-tex="\(X\)">\(X\)</span> is infinite, connected and compact Hausdorff, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is minimal, and <span class="math" data-tex="\(\mathcal H^1(X)=0\)">\(\mathcal H^1(X)=0\)</span>. Then <span class="math" data-tex="\(B\)">\(B\)</span> is simple and unital and its only projections are 0 and 1.</p>
+<p><em>Proof.</em> An invariant probability measure exists. Starting with a point mass, average its first <span class="math" data-tex="\(N\)">\(N\)</span> translates. The difference between such an average and its translate has norm at most <span class="math" data-tex="\(2/N\)">\(2/N\)</span>. Weak-star compactness of the probability measures gives a cluster subnet, whose limit is invariant. Its support is nonempty, closed and invariant, hence is all of <span class="math" data-tex="\(X\)">\(X\)</span> by minimality. The coefficient trace is faithful: a nonzero positive function is positive on an open set of positive measure. Proposition 1.1 makes its dual trace faithful as well.</p>
+<p>Lemma 6.1 proves simplicity. Corollary 5.2 gives trace range <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> is a projection other than 0 and 1, faithfulness on both <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(1-p\)">\(1-p\)</span> gives <span class="math" data-tex="\(0&lt;\widehat\tau(p)&lt;1\)">\(0&lt;\widehat\tau(p)&lt;1\)</span>, contradicting that integer range. Thus no such projection exists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This corrects two points in Blackadar, Corollary 10.10.6. The infinite-space hypothesis is needed for simplicity: on the one-point minimal system the algebra is <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>, which is not simple. Also the unit is not a <em>minimal projection</em> in the standard sense <span class="math" data-tex="\(pBp=\mathbb Cp\)">\(pBp=\mathbb Cp\)</span>; here <span class="math" data-tex="\(1B1=B\)">\(1B1=B\)</span> is infinite dimensional. The proved conclusion concerns projections inside <span class="math" data-tex="\(B\)">\(B\)</span>, and does not assert that matrix algebras over it have no projections.</p>
+<p>The existence example follows from the full Fathi–Herman construction in Theorem 6.5 below, credited to <a href="https://www.numdam.org/item/AST_1977__49__37_0/">their original paper (1977), §3.4, Theorem 1 and §3.9(c)</a>. In particular <span class="math" data-tex="\(S^3\subset\mathbb C^2\)">\(S^3\subset\mathbb C^2\)</span> has the free circle action <span class="math" data-tex="\(z\mapsto e^{2\pi it}z\)">\(z\mapsto e^{2\pi it}z\)</span>, so their existence theorem applies. Its scalar circle group vanishes directly: <a href="invertibles-unitaries-and-k1.html#sphere-maps-and-unitary-transport">Lesson 6's sphere-contraction lemma</a> contracts every loop in <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. For a circle map on <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, lift its value along a path from a fixed basepoint, using the local-argument construction of <a href="vector-bundles-and-finitely-generated-projective-modules.html">Lesson 2, Lemma 5.2</a>. Two paths differ by a contractible loop, whose image has winding zero, so their lifted endpoints agree. In a small coordinate ball where the circle map takes values in an arc, this lift differs from the continuous local argument by a constant integer; it is therefore continuous. This gives a global logarithm and proves <span class="math" data-tex="\(\mathcal H^1(S^3)=0\)">\(\mathcal H^1(S^3)=0\)</span>. Theorem 6.2 consequently gives a simple unital crossed product with only the two trivial projections. Theorem 6.5 supplies the dynamical existence construction in every odd dimension and in its full locally free circle-action scope.</p>
+<h3 id="the-dynamical-existence-proof">The dynamical existence proof</h3>
+<p>We now supply the construction used in the odd-sphere example. The theorem is due to Fathi and Herman; its conjugation and category method follows Anosov and Katok. The proof below includes the transversal and ambient-motion steps, the finite-cover lifting, and the category argument.</p>
+<p><strong>Lemma 6.3 (a finite transverse family).</strong> Let a nonvanishing smooth vector field on a compact manifold of dimension <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span> have its orbit foliation. There are finitely many pairwise disjoint embedded closed <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-disks, each with a transverse extension to a slightly larger disk, whose interiors meet every orbit.</p>
+<p><em>Proof.</em> Flow boxes exist directly from the inverse function theorem: choose a small disk transverse to the field at a point and map <span class="math" data-tex="\((s,y)\)">\((s,y)\)</span> to the time-<span class="math" data-tex="\(s\)">\(s\)</span> flow of its points. The derivative is invertible at the center, so this is a coordinate chart after shrinking. Choose finitely many such charts containing closed boxes
+<span class="math" data-tex="\([-1,1]\times\overline D^{d-1}(1)\)">\([-1,1]\times\overline D^{d-1}(1)\)</span>, with slightly larger flow boxes around them, so that the interiors of their smaller concentric boxes cover the manifold. The flow lines in a box are the vertical segments.</p>
+<p>Construct the disks successively through these boxes. Start with a transverse slice in the first box covering its smaller transverse disk. Suppose a finite disjoint transverse family has already been constructed, and consider the next closed box. Let <span class="math" data-tex="\(L\)">\(L\)</span> be the intersection of the existing disks with this box, in its coordinates. It is compact. For each transverse coordinate <span class="math" data-tex="\(y\)">\(y\)</span>, the fiber
+<span class="math" data-tex="\(L_y=\{s:(s,y)\in L\}\)">\(L_y=\{s:(s,y)\in L\}\)</span> is finite. Indeed transversality makes each intersection with a vertical segment isolated, including near a disk boundary because the disk has a transverse extension. An infinite fiber in this compact set would have an accumulation point, contradicting that isolation.</p>
+<p>Choose a small open neighborhood <span class="math" data-tex="\(O_y\)">\(O_y\)</span> of this finite set in the vertical interval, leaving infinitely many points of <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> outside it. There is a neighborhood <span class="math" data-tex="\(V_y\)">\(V_y\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span> such that <span class="math" data-tex="\(L_{y&#x27;}\subset O_y\)">\(L_{y&#x27;}\subset O_y\)</span> for <span class="math" data-tex="\(y&#x27;\in V_y\)">\(y&#x27;\in V_y\)</span>. Otherwise a sequence of points in the compact set <span class="math" data-tex="\(L\)">\(L\)</span>, with transverse coordinates tending to <span class="math" data-tex="\(y\)">\(y\)</span> and vertical coordinates outside <span class="math" data-tex="\(O_y\)">\(O_y\)</span>, would have a limit in <span class="math" data-tex="\(L_y\setminus O_y\)">\(L_y\setminus O_y\)</span>. This proves the needed upper semicontinuity without any regularity assumption on the boundary of the box.</p>
+<p>Cover the smaller closed transverse disk by finitely many closed round disks <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, whose interiors cover it and which have slightly larger disks inside their respective <span class="math" data-tex="\(V_y\)">\(V_y\)</span>'s and the original transverse chart. For each <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, choose a vertical coordinate <span class="math" data-tex="\(s_i\in(-1,1)\setminus O_y\)">\(s_i\in(-1,1)\setminus O_y\)</span>, avoiding the finitely many coordinates already chosen. The slices <span class="math" data-tex="\(\{s_i\}\times B_i\)">\(\{s_i\}\times B_i\)</span> miss <span class="math" data-tex="\(L\)">\(L\)</span>, have transverse extensions, and are pairwise disjoint even when their transverse disks overlap, because their vertical coordinates differ. They also miss all earlier disks. Every orbit passing through the smaller box meets the interior of one of these slices along its vertical segment. Repeat through all finitely many boxes. Their smaller interiors cover the manifold, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.4 (moving the transverse family).</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is connected, compact and smooth of dimension at least two, and <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span> is nonempty and open, a finite disjoint transverse family as in Lemma 6.3 can be carried into <span class="math" data-tex="\(U\)">\(U\)</span> by a smooth diffeomorphism isotopic to identity. Consequently, for a smooth locally free circle action on <span class="math" data-tex="\(M\)">\(M\)</span>, such a diffeomorphism <span class="math" data-tex="\(H\)">\(H\)</span> can be chosen with <span class="math" data-tex="\(H^{-1}(U)\)">\(H^{-1}(U)\)</span> meeting every circle orbit.</p>
+<p><em>Proof.</em> Each extended transverse disk has a product neighborhood: the field flow maps a slightly larger disk times a sufficiently short time interval injectively onto a neighborhood of the original disk. To justify one common time interval, local flow-box injectivity covers the compact disk by finitely many neighborhoods; pairs of points outside a common such neighborhood stay uniformly separated at time zero, so remain separated for short times. The derivative stays invertible by compactness. Shrink these product neighborhoods to make their closures pairwise disjoint. They are coordinate neighborhoods containing the entire disks, and each contains its central point.</p>
+<p>In one such coordinate neighborhood a compactly supported radial vector field, equal to <span class="math" data-tex="\(-x\)">\(-x\)</span> on a closed ball containing the disk, has a flow which shrinks that disk arbitrarily close to its center. Choose the containing ball within the product chart after rescaling the disk and time coordinates. Its flow remains in this ball, so the stated formula applies throughout the shrinking. Extend the field by zero outside the chart. Applying these disjointly supported flows shrinks all disks to arbitrarily small neighborhoods of their respective centers.</p>
+<p>There is an ambient smooth isotopy taking these finitely many centers to distinct points of <span class="math" data-tex="\(U\)">\(U\)</span>. Here are the details needed for that assertion. Removing finitely many points from a connected manifold of dimension at least two leaves it path connected: a piecewise smooth path can be altered in small coordinate balls around the forbidden points by arcs avoiding their centers, since a punctured ball in that dimension is path connected. Move the centers one at a time to distinct target points in <span class="math" data-tex="\(U\)">\(U\)</span>, chosen outside the finite set of original centers. At each step choose a smooth path avoiding all other current centers. The motion along this path is the flow of a smooth time-dependent vector field with support avoiding those other centers. In coordinates around a short path segment, multiply the prescribed velocity by a bump function equal to one near the moving point; subdivide the compact time interval into finitely many such segments. This constructs the field and fixes every excluded center. Compactness gives a global flow and the reverse time-dependent flow gives its inverse. Composing these finitely many isotopies produces a diffeomorphism <span class="math" data-tex="\(G\)">\(G\)</span> carrying all centers into <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>By continuity, each center has a small neighborhood which <span class="math" data-tex="\(G\)">\(G\)</span> carries into <span class="math" data-tex="\(U\)">\(U\)</span>. First use the radial flows to put the original disks inside those neighborhoods, and then apply <span class="math" data-tex="\(G\)">\(G\)</span>. The composite is isotopic to identity and carries every disk into <span class="math" data-tex="\(U\)">\(U\)</span>. Their interiors originally meet all orbits, so its inverse image of <span class="math" data-tex="\(U\)">\(U\)</span> meets every orbit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.5 (Fathi–Herman existence theorem).</strong> Every connected compact smooth manifold with a smooth locally free circle action admits a smooth minimal diffeomorphism isotopic to identity. In particular every odd sphere <span class="math" data-tex="\(S^{2m+1}\)">\(S^{2m+1}\)</span>, <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>, admits one.</p>
+<p><em>Proof.</em> Write the action as <span class="math" data-tex="\(R_t\)">\(R_t\)</span>, <span class="math" data-tex="\(t\in\mathbb R/\mathbb Z\)">\(t\in\mathbb R/\mathbb Z\)</span>. Its generating vector field is nonvanishing because the stabilizers are discrete. There is a number <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(R_t(x)\ne x\)">\(R_t(x)\ne x\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(0&lt;|t|&lt;\delta\)">\(0&lt;|t|&lt;\delta\)</span>. To see uniformity, use the flow coordinates just constructed near each point: on a smaller neighborhood and for a common short time the vertical coordinate increases strictly with <span class="math" data-tex="\(t\)">\(t\)</span>. Finitely many such smaller neighborhoods cover <span class="math" data-tex="\(M\)">\(M\)</span>. Each stabilizer is a finite cyclic subgroup of the circle, hence its order is at most <span class="math" data-tex="\(1/\delta\)">\(1/\delta\)</span>. Their union therefore is contained in the finite set of roots of unity of orders at most that bound.</p>
+<p>It follows that rational rotations <span class="math" data-tex="\(R_{p/q}\)">\(R_{p/q}\)</span> whose generated subgroup acts freely are dense among all <span class="math" data-tex="\(R_t\)">\(R_t\)</span>. For example take arbitrarily large prime denominators <span class="math" data-tex="\(q\)">\(q\)</span> exceeding every stabilizer order and relatively prime numerators <span class="math" data-tex="\(p\)">\(p\)</span>; these fractions approximate any circle parameter. For such a subgroup <span class="math" data-tex="\(G=\langle p/q\rangle\)">\(G=\langle p/q\rangle\)</span>, the finite free quotient <span class="math" data-tex="\(\pi:M\to M/G\)">\(\pi:M\to M/G\)</span> is a smooth covering. Small coordinate neighborhoods with disjoint translates give its charts; the quotient is compact and connected. The circle action descends, with nonvanishing generator, to a locally free circle action on this quotient.</p>
+<p>Fix a nonempty open <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span>. Lemma 6.4 on <span class="math" data-tex="\(M/G\)">\(M/G\)</span> gives an isotopy <span class="math" data-tex="\(\overline H_s\)">\(\overline H_s\)</span>, starting at identity, for which <span class="math" data-tex="\(\overline H_1^{-1}(\pi U)\)">\(\overline H_1^{-1}(\pi U)\)</span> meets every quotient circle orbit. Lift this isotopy through the covering, starting at identity, to <span class="math" data-tex="\(H_s\)">\(H_s\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>. Existence, uniqueness and smoothness follow by lifting each path in evenly covered neighborhoods and continuing through a finite time subdivision; lifting the inverse isotopy gives the inverse diffeomorphisms. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, both <span class="math" data-tex="\(H_sg\)">\(H_sg\)</span> and <span class="math" data-tex="\(gH_s\)">\(gH_s\)</span> lift the same paths and agree at time zero, so they agree for every <span class="math" data-tex="\(s\)">\(s\)</span>. In particular <span class="math" data-tex="\(H=H_1\)">\(H=H_1\)</span> commutes with <span class="math" data-tex="\(R_{p/q}\)">\(R_{p/q}\)</span>. Its set <span class="math" data-tex="\(H^{-1}(U)\)">\(H^{-1}(U)\)</span> meets every original circle orbit: the quotient condition first puts <span class="math" data-tex="\(H(x)\)">\(H(x)\)</span> in some translate <span class="math" data-tex="\(gU\)">\(gU\)</span>; replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(g^{-1}x\)">\(g^{-1}x\)</span> in that same circle orbit and use equivariance.</p>
+<p>For irrational <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the positive powers of either <span class="math" data-tex="\(R_\alpha\)">\(R_\alpha\)</span> or <span class="math" data-tex="\(R_{-\alpha}\)">\(R_{-\alpha}\)</span> are dense in each circle orbit, even when that orbit has a finite stabilizer. For completeness, the closure of the positive powers of an irrational circle element contains its inverse. Partition the circle into arbitrarily short arcs and apply the pigeonhole principle to finitely many successive powers; the quotient of two powers in the same arc is a positive power arbitrarily close to identity. Irrationality makes the resulting exponents unbounded as the required distance tends to zero, and the preceding powers therefore approach the inverse. The closure consequently contains the whole cyclic subgroup, whose closure is the circle by the elementary subgroup argument in Exercise 19.5. Quotienting by a finite stabilizer preserves density. Thus</p>
+<span class="math math-display" data-tex="\[
+\bigcup_{k\ge0}(H R_\alpha H^{-1})^k(U)=M.
+\tag{6.2}
+\]">\[
+\bigcup_{k\ge0}(H R_\alpha H^{-1})^k(U)=M.
+\tag{6.2}
+\]</span>
+<p>The sets on the left are open, and compactness supplies a finite subcover. As irrational <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> tends to <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, the conjugate <span class="math" data-tex="\(H R_\alpha H^{-1}\)">\(H R_\alpha H^{-1}\)</span> tends in every derivative to <span class="math" data-tex="\(R_{p/q}\)">\(R_{p/q}\)</span>, because <span class="math" data-tex="\(H\)">\(H\)</span> is fixed and commutes with that rational rotation. We have therefore approximated every freely acting rational rotation by conjugate rotations with a finite forward covering of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>We make the category step precise. Give <span class="math" data-tex="\(\operatorname{Diff}^{\infty}(M)\)">\(\operatorname{Diff}^{\infty}(M)\)</span> the topology of uniform convergence of every derivative of both a map and its inverse, in a finite system of charts, or after a fixed smooth embedding of <span class="math" data-tex="\(M\)">\(M\)</span> in Euclidean space. This topology has a complete metric: sum bounded versions of the successive derivative distances with weights <span class="math" data-tex="\(2^{-r}\)">\(2^{-r}\)</span>. A Cauchy sequence and its inverse converge in every derivative to smooth maps <span class="math" data-tex="\(f,g\)">\(f,g\)</span>; uniform convergence in the identities <span class="math" data-tex="\(f_ng_n=g_nf_n=1\)">\(f_ng_n=g_nf_n=1\)</span> gives <span class="math" data-tex="\(fg=gf=1\)">\(fg=gf=1\)</span>, so the limit is again a diffeomorphism. Derivative convergence follows in the finite charts from the usual complete spaces of smooth functions. Composition and inversion are continuous by the chain rule and compactness. Thus every closed subspace is a Baire space.</p>
+<p>Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the closure in this space of all conjugates <span class="math" data-tex="\(hR_t h^{-1}\)">\(hR_t h^{-1}\)</span>. For a nonempty open set <span class="math" data-tex="\(U\)">\(U\)</span>, let <span class="math" data-tex="\(\mathcal V_U\)">\(\mathcal V_U\)</span> consist of the maps <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span> for which, for some <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M=\bigcup_{k=0}^{N}f^k(U).
+\tag{6.3}
+\]">\[
+M=\bigcup_{k=0}^{N}f^k(U).
+\tag{6.3}
+\]</span>
+<p>This is open. For any finite cover <span class="math" data-tex="\(M=\bigcup_{k=0}^N f^k(U)\)">\(M=\bigcup_{k=0}^N f^k(U)\)</span>, shrink the cover to compact subsets <span class="math" data-tex="\(K_k\subset f^k(U)\)">\(K_k\subset f^k(U)\)</span> still covering <span class="math" data-tex="\(M\)">\(M\)</span>, using compactness and finitely many coordinate neighborhoods with closures inside the relevant open sets. For all sufficiently close <span class="math" data-tex="\(g\)">\(g\)</span>, continuity of the finitely many inverse powers gives <span class="math" data-tex="\(g^{-k}(K_k)\subset U\)">\(g^{-k}(K_k)\subset U\)</span>. Hence the covering property persists.</p>
+<p>It is also dense in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. It is enough to approximate each <span class="math" data-tex="\(hR_t h^{-1}\)">\(hR_t h^{-1}\)</span>. Apply the preceding rational approximation to <span class="math" data-tex="\(h^{-1}U\)">\(h^{-1}U\)</span>, then conjugate by <span class="math" data-tex="\(h\)">\(h\)</span>. Freely acting rational parameters are dense, and at each such parameter the fixed commuting <span class="math" data-tex="\(H\)">\(H\)</span> gives the required approximations in <span class="math" data-tex="\(\mathcal V_U\)">\(\mathcal V_U\)</span>. This proves density for every <span class="math" data-tex="\(t\)">\(t\)</span>, every conjugating diffeomorphism, and consequently their closure.</p>
+<p>Choose a countable base <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> of nonempty open sets. The Baire theorem gives
+<span class="math" data-tex="\(f\in\bigcap_i\mathcal V_{U_i}\)">\(f\in\bigcap_i\mathcal V_{U_i}\)</span>. For every <span class="math" data-tex="\(x\)">\(x\)</span> and every <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, the finite covering property puts <span class="math" data-tex="\(f^{-k}x\)">\(f^{-k}x\)</span> in <span class="math" data-tex="\(U_i\)">\(U_i\)</span> for some <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>. Every orbit is therefore dense, so <span class="math" data-tex="\(f\)">\(f\)</span> is minimal.</p>
+<p>Finally the isotopy assertion also survives this construction. Each conjugate rotation is isotopic to identity through <span class="math" data-tex="\(hR_{st}h^{-1}\)">\(hR_{st}h^{-1}\)</span>, choosing a real lift of <span class="math" data-tex="\(t\)">\(t\)</span>. The subgroup of diffeomorphisms isotopic to identity is open and closed: maps sufficiently close to identity in <span class="math" data-tex="\(C^1\)">\(C^1\)</span> are joined to it by their short exponential-coordinate interpolation, which remains a diffeomorphism throughout; translating this neighborhood gives open cosets and hence a closed identity subgroup. To justify that interpolation, its derivatives stay invertible for a sufficiently small <span class="math" data-tex="\(C^1\)">\(C^1\)</span> neighborhood; uniform local injectivity in finitely many charts and uniform closeness to identity exclude any pair of distinct preimages outside those charts. It is therefore a bijective local diffeomorphism at each interpolation time. Thus <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> lies in the identity isotopy subgroup and the chosen <span class="math" data-tex="\(f\)">\(f\)</span> is isotopic to identity.</p>
+<p>If <span class="math" data-tex="\(\dim M=1\)">\(\dim M=1\)</span>, a connected closed smooth manifold is a circle, and an irrational rotation proves the assertion directly. For <span class="math" data-tex="\(S^{2m+1}\subset\mathbb C^{m+1}\)">\(S^{2m+1}\subset\mathbb C^{m+1}\)</span>, multiplication by <span class="math" data-tex="\(e^{2\pi it}\)">\(e^{2\pi it}\)</span> is a smooth free action: a nonzero coordinate forces every stabilizer element to be one. This verifies the hypotheses in every odd dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exact source comparison is Fathi–Herman, §4.1, Lemma 4.6, Proposition 4.8 and Corollaries 4.11–4.12, followed by §§5.4–5.6. Lemma 6.4 provides the ambient motion directly by compactly supported vector fields. The theorem is proved here in its full locally free circle-action scope; its application to the odd spheres is no longer an external existence input.</p>
+<h2 id="7-five-exercises-with-complete-solutions">7. Five exercises with complete solutions</h2>
+<p><strong>Exercise 19.1.</strong> Verify the dual trace, its restriction property and its faithfulness.</p>
+<p><em>Solution.</em> Gauge averaging is positive and preserves 1, and removes every nonzero Fourier coefficient. For <span class="math" data-tex="\(au^m\)">\(au^m\)</span> and <span class="math" data-tex="\(bu^n\)">\(bu^n\)</span>, the coefficient of their product at zero is zero if <span class="math" data-tex="\(m+n\ne0\)">\(m+n\ne0\)</span>. Otherwise it is <span class="math" data-tex="\(a\alpha^m(b)\)">\(a\alpha^m(b)\)</span>. Applying invariance to this expression and cyclically moving the second factor gives <span class="math" data-tex="\(\tau(b\alpha^{-m}(a))\)">\(\tau(b\alpha^{-m}(a))\)</span>, the zero coefficient of the reverse product. Linearity and norm density give a trace on all of <span class="math" data-tex="\(B\)">\(B\)</span>. Any trace restriction satisfies <span class="math" data-tex="\(\rho(\alpha(a))=\rho(uau^*)=\rho(a)\)">\(\rho(\alpha(a))=\rho(uau^*)=\rho(a)\)</span>. If the coefficient trace is faithful, a zero dual trace on <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> forces its nonnegative expectation to vanish, and faithfulness of the average forces <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. These prove each assertion without assuming simplicity.</p>
+<p><strong>Exercise 19.2.</strong> Prove representative independence of the rotation determinant and explain why higher matrix classes cause no difficulty in the commutative case.</p>
+<p><em>Solution.</em> A fixed stable class makes <span class="math" data-tex="\(v\alpha(v^*)\)">\(v\alpha(v^*)\)</span> a zero stable class, so after finite stabilization a path from 1 exists. Its determinant is independent of that path modulo <span class="math" data-tex="\(H\)">\(H\)</span> by the complete period theorem of Lesson 14. If <span class="math" data-tex="\(v_s\)">\(v_s\)</span> joins representatives, the integral of <span class="math" data-tex="\(v_s\alpha(v_s^*)\)">\(v_s\alpha(v_s^*)\)</span> is the difference of two equal integrals, because <span class="math" data-tex="\(\tau\alpha=\tau\)">\(\tau\alpha=\tau\)</span>. Appending this relative path changes the determinant by zero. Block sums add the values, proving the K-homomorphism assertion. For commutative coefficients Jacobi's identity (5.2) makes the matrix determinant preserve the entire logarithmic integral. Taking determinants of a stable homotopy also preserves scalar component invariance. Conversely every invariant scalar component already gives a fixed stable class. Thus matrices contribute no determinant cosets beyond those of scalar unitaries, even when the full K₁-group contains additional classes.</p>
+<p><strong>Exercise 19.3.</strong> Prove the projection corollary and identify both corrections to its source formulation.</p>
+<p><em>Solution.</em> Vanishing Čech first cohomology makes each scalar unitary a global exponential. The relative determinant is then the trace of <span class="math" data-tex="\(h-\alpha(h)\)">\(h-\alpha(h)\)</span>, hence zero. The range theorem reduces the crossed-product range to coefficient ranks, which are integers because <span class="math" data-tex="\(X\)">\(X\)</span> is connected. An invariant measure is obtained by weak-star limits of orbit averages. Minimality gives full support, and the dual trace is faithful. A proper nonzero projection would have trace strictly between 0 and 1, which an integer range excludes. For simplicity, the infinite minimal system has no periodic points, so the Fourier cutdown in Lemma 6.1 proves every nonzero ideal meets coefficients, and the invariant coefficient ideal must be the whole algebra. The one-point minimal system shows why infinitude cannot be omitted from that simplicity argument. Finally the assertion about projections does not make <span class="math" data-tex="\(1\)">\(1\)</span> minimal in the corner sense: <span class="math" data-tex="\(1B1=B\)">\(1B1=B\)</span>, not <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. It also leaves matrix projections available; for example <span class="math" data-tex="\(\operatorname{diag}(1,0)\in M_2(B)\)">\(\operatorname{diag}(1,0)\in M_2(B)\)</span> is a nontrivial projection.</p>
+<p><strong>Exercise 19.4.</strong> Prove agreement of all trace extensions on K₀ and show that the extensions themselves can differ.</p>
+<p><em>Solution.</em> Gauge automorphisms are joined to identity by the gauge path. For any projection <span class="math" data-tex="\(p\)">\(p\)</span>, its gauge translates have the same stable class. Thus every trace extension <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives them the same number <span class="math" data-tex="\(\rho_n(p)\)">\(\rho_n(p)\)</span>. Average these numbers. Boundedness of <span class="math" data-tex="\(\rho_n\)">\(\rho_n\)</span> moves it through the integral, giving <span class="math" data-tex="\(\rho_n(E_n(p))\)">\(\rho_n(E_n(p))\)</span>. This expectation lies in <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>, where <span class="math" data-tex="\(\rho_n=\tau_n\)">\(\rho_n=\tau_n\)</span>, so the result is <span class="math" data-tex="\(\widehat\tau_n(p)\)">\(\widehat\tau_n(p)\)</span>. Differences give equality on all K₀. For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, evaluation at two distinct points of <span class="math" data-tex="\(S^1\)">\(S^1\)</span> gives two different trace states on <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>. Both restrict to the scalar state and both evaluate projection classes by rank. This proves the general agreement and the precise limitation on what it says about the traces.</p>
+<p><strong>Exercise 19.5 (rotation range).</strong> Let <span class="math" data-tex="\(r_\theta(z)=e^{2\pi i\theta}z\)">\(r_\theta(z)=e^{2\pi i\theta}z\)</span>, <span class="math" data-tex="\(\alpha(f)=f\circ r_\theta^{-1}\)">\(\alpha(f)=f\circ r_\theta^{-1}\)</span>, and let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be Haar trace on <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>. Compute the full dual trace range, with its sign convention explicit.</p>
+<p><em>Solution.</em> The coefficient range is <span class="math" data-tex="\(H=\mathbb Z\)">\(H=\mathbb Z\)</span>. Scalar components are winding numbers, and rotation fixes them all. A representative of winding <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(z^k\)">\(z^k\)</span>. Covariance and the chosen pullback give</p>
+<span class="math math-display" data-tex="\[
+z^k\alpha(z^{-k})=e^{2\pi ik\theta}1.
+\tag{7.1}
+\]">\[
+z^k\alpha(z^{-k})=e^{2\pi ik\theta}1.
+\tag{7.1}
+\]</span>
+<p>The scalar exponential path has determinant <span class="math" data-tex="\(k\theta+\mathbb Z\)">\(k\theta+\mathbb Z\)</span>, as already computed in Lesson 14, Exercise 14.4. Thus the determinant image is <span class="math" data-tex="\(\theta\mathbb Z\)">\(\theta\mathbb Z\)</span> modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Equation (4.4) now gives exactly <span class="math" data-tex="\(G=\mathbb Z+\theta\mathbb Z\)">\(G=\mathbb Z+\theta\mathbb Z\)</span>: every element of this subgroup occurs as the trace of a K-class, not necessarily as the trace of a projection in the unstabilized algebra. Reversing the geometric pullback convention negates the displayed determinant, but leaves the additive range subgroup unchanged. If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is irrational, Lemma 6.1 also proves simplicity. To see minimality, the closure of its cyclic subgroup is a closed subgroup of the circle. If a closed subgroup contains arbitrarily small positive angles, their successive multiples approximate every angle, so the subgroup is the whole circle. Otherwise its least positive angle generates a finite subgroup, which would force <span class="math" data-tex="\(\theta\)">\(\theta\)</span> rational. Thus the irrational subgroup is dense, and every orbit is its dense coset. This prepares the finer group and projection computations of Lesson 20.</p>
+<h2 id="sources-and-exact-imports">Sources and exact imports</h2>
+<ul>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition (1998), complete §10.10, especially Theorem 10.10.4, Theorem 10.10.5 and Corollary 10.10.6, printed pp. 83–86. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>. Blackadar's introductory discussion on pp. 83–84 attributes the integer trace-range result to M. Pimsner; that is the historical attribution used in §4. The full trace-extension agreement, numerical Green–Thom comparison, determinant range sequence, commutative reduction and corrected projection corollary are proved above. The original free-group paper is not a proof prerequisite for these integer-action results.</p>
+</li>
+<li>
+<p>Green's module is imported with the exact KT-CP-07 formulas listed in §3. Its trace compatibility is proved in Lemma 3.1. The actual Morita K-map is proved in the programme Hilbert-module lesson, Theorem 2.4, Corollary 2.5 and Theorem 5.1, as specified in §3. <a href="../hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html">The checked published source</a> contains the complete full-corner proof, including its directed-continuity passage. Rosenberg (2012), §1.2, pp. 97–98, supplies comparison and attribution.</p>
+</li>
+<li>
+<p>The numerical real-flow Thom identity and its semifinite integration framework are reused from <em>Frequency calculus for an action of Euclidean space</em>, §7, Theorem 7.6, with the signs and measures stated in §3. Theorem 7.7 there concerns real crossed products of smooth manifolds; the integer range theorem here requires the Green comparison just proved.</p>
+</li>
+<li>
+<p>Ordinary trace pairings, determinants and mapping-torus exactness are from Lessons 13, 14 and 17. Smooth representatives are from Lesson 15. The Fathi–Herman existence theorem is proved in Lemmas 6.3–6.4 and Theorem 6.5, retaining its original attribution and the Anosov–Katok conjugation method.</p>
+</li>
+<li>
+<p>Albert Fathi and Michael R. Herman, <em>Existence de difféomorphismes minimaux</em>, Astérisque 49 (1977), 37–59, §3.4 Theorem 1, §3.9(c), §4.1, §§4.6–4.12, §§5.1 and 5.4–5.6. <a href="https://www.numdam.org/item/AST_1977__49__37_0/">Original paper</a>. The complete required construction has been compared with this paper; the ambient motion in Lemma 6.4 is written directly with vector fields. The conjugation method retains the authors' credit to D. V. Anosov and A. B. Katok, <em>New examples in smooth ergodic theory. Ergodic diffeomorphisms</em>, Transactions of the Moscow Mathematical Society 23 (1970), 1–35.</p>
+</li>
+<li>
+<p>Ruy Exel, <a href="https://msp.org/pjm/1987/127-1/pjm-v127-n1-p03-s.pdf"><em>Rotation numbers for automorphisms of C*-algebras</em></a>, Pacific Journal of Mathematics 127 (1987), 31–89, III.1–7 and IV.1–4, printed pp. 45–50, and V.3–13, printed pp. 53–63. In V.9–11 the source computes the dual trace of its mapping-torus classes explicitly; V.12–13 then treat the integral case. Theorems 2.2–2.3, Lemma 2.4 and Theorem 4.3 give complete independently written composition, cocycle, determinant-choice and integral crossed-product proofs. Lemma 4.2 retains normalized bounded hermitian traces using the full positive decomposition and the same trace-independent Green–Thom map. The circle-valued statements in V.12–13 assume the coefficient trace range is integral; the general quotient by the actual subgroup H is proved here in Theorem 4.1. Source III.3's character correction is fixed explicitly in (2.9); algebraic and closed commutator subgroups are kept distinct. Source V.11's sign/twist comparison is numerical only, as specified after Theorem 4.3, and does not identify its Paschke map with this programme's normalized PV boundary.</p>
+</li>
+</ul>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← The Pimsner–Voiculescu exact sequence</span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="irrational-rotation-algebras.html">Irrational rotation algebras →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-19.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

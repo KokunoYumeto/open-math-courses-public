@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Chern classes and the Whitney formula</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math"><main id="main">
+<nav aria-label="Chapter contents"><details><summary>Chapter contents</summary><ol><li><a href="#1-characteristic-coefficients-and-direct-sums">1. Characteristic coefficients and direct sums</a></li>
+<li><a href="#2-chern-classes-from-the-euler-class">2. Chern classes from the Euler class</a></li>
+<li><a href="#3-bundle-operations-and-the-real-comparison">3. Bundle operations and the real comparison</a></li>
+<li><a href="#4-integral-evaluation-of-the-top-class">4. Integral evaluation of the top class</a></li>
+<li><a href="#free-construction-sources">Free construction sources</a></li></ol></details></nav>
+<article class="lesson"><h1 id="chern-classes-and-the-whitney-formula">Chern classes and the Whitney formula</h1>
+<p>DG-CHAR-09 · Differential geometry foundations</p>
+<p>A projective bundle determines characteristic coefficients through one monic relation. Relative cup products prove their direct-sum formula. A second construction begins with the Euler class and successively removes a nonzero vector; it defines Chern classes without a metric. We prove that the constructions agree on paracompact Hausdorff bases, with the integral sign fixed by the complex orientation. The resulting determinant, dual, line-tensor and underlying-real formulas include their bundle and coefficient prerequisites.</p>
+<p>Throughout, vector bundles have constant finite rank and bases are Hausdorff. We specify paracompactness wherever it is used. Cohomology is ordinary singular cohomology; groups in negative degrees are zero. The algebra assumes the usual number systems and the axiom of choice. Complex fibre orientations list each basis vector followed by its imaginary multiple. Hermitian metrics are conjugate-linear in the first argument. A smooth manifold is Hausdorff, second countable and without boundary unless stated otherwise.</p>
+<p>Earlier programme proofs are in <a href="../../local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, <a href="DG-CHAR-06.html">Integral Thom classes and Euler indices</a>, <a href="DG-CHAR-07.html">Manifold duality and the Euler characteristic</a>, and <a href="DG-CHAR-08.html">Projective bundles, Gysin sequences and line classes</a>. References prefixed DG06 or DG08 name their exact numbered results; labels A–D without those prefixes refer to this chapter. The opening lesson's numeric labels specify its local analytic and linear tools. Every result used is proved here or in those exact earlier programme scopes. The free construction readings at the end are materials for the written arguments.</p>
+<h2 id="1-characteristic-coefficients-and-direct-sums">1. Characteristic coefficients and direct sums</h2>
+<h3 id="a-vanishing-product-from-an-open-cover">A vanishing product from an open cover</h3>
+<p id="lemma-a-1"><strong>Lemma A.1 (relative annihilation).</strong> Let <span class="math" data-tex="\(Y=U\cup W\)">\(Y=U\cup W\)</span>, where <span class="math" data-tex="\(U,W\)">\(U,W\)</span> are open. Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative unital ring. If <span class="math" data-tex="\(\alpha\in H^a(Y;R)\)">\(\alpha\in H^a(Y;R)\)</span> restricts to zero on <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(\beta\in H^b(Y;R)\)">\(\beta\in H^b(Y;R)\)</span> restricts to zero on <span class="math" data-tex="\(W\)">\(W\)</span>, then <span class="math" data-tex="\(\alpha\smile\beta=0\)">\(\alpha\smile\beta=0\)</span>.</p>
+<p><strong>Proof.</strong> Exactness of the pair sequence, DG06 E.1, supplies lifts
+<span class="math math-display" data-tex="\[
+\widetilde\alpha\in H^a(Y,U;R),\qquad
+\widetilde\beta\in H^b(Y,W;R).
+\]">\[
+\widetilde\alpha\in H^a(Y,U;R),\qquad
+\widetilde\beta\in H^b(Y,W;R).
+\]</span>
+The relative external product DG06 X.4 lies in
+<span class="math math-display" data-tex="\[
+H^{a+b}(Y\times Y,U\times Y\cup Y\times W;R).
+\]">\[
+H^{a+b}(Y\times Y,U\times Y\cup Y\times W;R).
+\]</span>
+The diagonal is a map of pairs
+<span class="math math-display" data-tex="\[
+(Y,Y)\longrightarrow
+(Y\times Y,U\times Y\cup Y\times W),
+\]">\[
+(Y,Y)\longrightarrow
+(Y\times Y,U\times Y\cup Y\times W),
+\]</span>
+because each <span class="math" data-tex="\(y\)">\(y\)</span> belongs to <span class="math" data-tex="\(U\)">\(U\)</span> or <span class="math" data-tex="\(W\)">\(W\)</span>. Its pullback is therefore zero: the relative chain complex of <span class="math" data-tex="\((Y,Y)\)">\((Y,Y)\)</span> is zero. Forgetting relative conditions commutes with this pullback and with X.4's external product. On absolute cochains the product pulled back along the diagonal is exactly the front/back cup formula, so its image is <span class="math" data-tex="\(\alpha\smile\beta\)">\(\alpha\smile\beta\)</span>. Thus that product is zero. □</p>
+<h3 id="coefficients-of-the-projective-relation">Coefficients of the projective relation</h3>
+<p>Use the following two settings:
+<span class="math math-display" data-tex="\[
+(\mathbb F,R,d)=
+(\mathbb R,\mathbb F_2,1)
+\quad\hbox{or}\quad
+(\mathbb C,\mathbb Z,2).
+\tag{A.1}
+\]">\[
+(\mathbb F,R,d)=
+(\mathbb R,\mathbb F_2,1)
+\quad\hbox{or}\quad
+(\mathbb C,\mathbb Z,2).
+\tag{A.1}
+\]</span>
+All bases in this component are Hausdorff, and all ranks are constant and finite. Cup products are those of singular cohomology. In the real case cohomology with <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> is commutative by DG06 X.5; in the complex case its even-degree integral part is commutative by the same sign formula.</p>
+<p>For a rank-<span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> bundle <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(p:P(V)\to B\)">\(p:P(V)\to B\)</span> and let <span class="math" data-tex="\(S\)">\(S\)</span> be its tautological line. Put
+<span class="math math-display" data-tex="\[
+z=
+\begin{cases}
+e_2(S),&amp;\mathbb F=\mathbb R,\\
+-e(S_{\mathbb R}),&amp;\mathbb F=\mathbb C.
+\end{cases}
+\tag{A.2}
+\]">\[
+z=
+\begin{cases}
+e_2(S),&amp;\mathbb F=\mathbb R,\\
+-e(S_{\mathbb R}),&amp;\mathbb F=\mathbb C.
+\end{cases}
+\tag{A.2}
+\]</span>
+The complex orientation in this formula is DG08 R.2's orientation. The real line class equals its orientation-transport class by DG08 Z.3.</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (projective characteristic coefficients).</strong> There are unique classes <span class="math" data-tex="\(a_i(V)\in H^{di}(B;R)\)">\(a_i(V)\in H^{di}(B;R)\)</span>, <span class="math" data-tex="\(1\leq i\leq r\)">\(1\leq i\leq r\)</span>, such that
+<span class="math math-display" data-tex="\[
+z^r+\sum_{i=1}^r p^*a_i(V)\smile z^{r-i}=0.
+\tag{A.3}
+\]">\[
+z^r+\sum_{i=1}^r p^*a_i(V)\smile z^{r-i}=0.
+\tag{A.3}
+\]</span>
+Set <span class="math" data-tex="\(a_0(V)=1\)">\(a_0(V)=1\)</span> and <span class="math" data-tex="\(a_i(V)=0\)">\(a_i(V)=0\)</span> for <span class="math" data-tex="\(i&gt;r\)">\(i&gt;r\)</span>. For rank zero use these latter conventions without a projectivization. These classes are natural under pullbacks between Hausdorff bases and invariant under bundle isomorphisms.</p>
+<p>In the real setting we write <span class="math" data-tex="\(w_i(V)=a_i(V)\)">\(w_i(V)=a_i(V)\)</span> and call these the Stiefel–Whitney classes. In the complex setting we temporarily write <span class="math" data-tex="\(C_i(V)=a_i(V)\)">\(C_i(V)=a_i(V)\)</span>. For lines,
+<span class="math math-display" data-tex="\[
+w_1(L)=e_2(L),\qquad C_1(L)=e(L_{\mathbb R}).
+\tag{A.4}
+\]">\[
+w_1(L)=e_2(L),\qquad C_1(L)=e(L_{\mathbb R}).
+\tag{A.4}
+\]</span></p>
+<p><strong>Proof.</strong> DG08 M.3 gives the graded <span class="math" data-tex="\(H^*(B;R)\)">\(H^*(B;R)\)</span>-module basis <span class="math" data-tex="\(1,z,\ldots,z^{r-1}\)">\(1,z,\ldots,z^{r-1}\)</span>. In degree <span class="math" data-tex="\(dr\)">\(dr\)</span>, expand <span class="math" data-tex="\(-z^r\)">\(-z^r\)</span> uniquely in this basis. The coefficient of <span class="math" data-tex="\(z^{r-i}\)">\(z^{r-i}\)</span> has degree <span class="math" data-tex="\(di\)">\(di\)</span>, proving existence, grading and uniqueness in (A.3).</p>
+<p>For a map <span class="math" data-tex="\(f:B'\to B\)">\(f:B'\to B\)</span>, the pullback bundle <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span> has projective bundle canonically isomorphic to the pullback of <span class="math" data-tex="\(P(V)\)">\(P(V)\)</span>. In a bundle chart both spaces have coordinates <span class="math" data-tex="\((b',\ell)\)">\((b',\ell)\)</span> with <span class="math" data-tex="\(\ell\in\mathbb F P^{r-1}\)">\(\ell\in\mathbb F P^{r-1}\)</span>, and the proposed map and inverse are identity coordinate maps. The tautological line likewise pulls back, since its fibre is the represented line. Euler naturality DG06 T.4, with the complex orientation rule where required, therefore pulls <span class="math" data-tex="\(z\)">\(z\)</span> back to the corresponding <span class="math" data-tex="\(z'\)">\(z'\)</span>. Pull (A.3) back to <span class="math" data-tex="\(P(f^*V)\)">\(P(f^*V)\)</span>. Its coefficients become <span class="math" data-tex="\(f^*a_i(V)\)">\(f^*a_i(V)\)</span>, so uniqueness gives
+<span class="math math-display" data-tex="\[
+a_i(f^*V)=f^*a_i(V).
+\tag{A.5}
+\]">\[
+a_i(f^*V)=f^*a_i(V).
+\tag{A.5}
+\]</span>
+For an isomorphism over <span class="math" data-tex="\(B\)">\(B\)</span>, the induced homeomorphism of projective bundles has the same tautological-line property; the identical uniqueness argument proves invariance. Rank zero is immediate from the conventions.</p>
+<p>For a line <span class="math" data-tex="\(P(L)\to B\)">\(P(L)\to B\)</span> is a homeomorphism: it has one point in every fibre and in product charts is the identity on <span class="math" data-tex="\(B\)">\(B\)</span>. Its tautological line is <span class="math" data-tex="\(L\)">\(L\)</span>. Thus (A.3) is <span class="math" data-tex="\(z+a_1(L)=0\)">\(z+a_1(L)=0\)</span>. In <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> the sign is immaterial, and in the complex case <span class="math" data-tex="\(z=-e(L_{\mathbb R})\)">\(z=-e(L_{\mathbb R})\)</span>, giving (A.4). Higher line classes are zero by definition. □</p>
+<h3 id="the-whitney-formula-without-a-metric">The Whitney formula without a metric</h3>
+<p id="theorem-a-3"><strong>Theorem A.3 (direct sums and stability).</strong> For real or complex bundles on a Hausdorff base, the projective coefficients satisfy
+<span class="math math-display" data-tex="\[
+a_k(V\oplus W)=\sum_{i+j=k}a_i(V)\smile a_j(W).
+\tag{A.6}
+\]">\[
+a_k(V\oplus W)=\sum_{i+j=k}a_i(V)\smile a_j(W).
+\tag{A.6}
+\]</span>
+Consequently their total classes <span class="math" data-tex="\(a(V)=\sum_{i\geq0}a_i(V)\)">\(a(V)=\sum_{i\geq0}a_i(V)\)</span> satisfy
+<span class="math math-display" data-tex="\[
+a(V\oplus W)=a(V)a(W),\qquad
+a(\underline{\mathbb F}^{\,s})=1,\qquad
+a(V\oplus\underline{\mathbb F}^{\,s})=a(V).
+\tag{A.7}
+\]">\[
+a(V\oplus W)=a(V)a(W),\qquad
+a(\underline{\mathbb F}^{\,s})=1,\qquad
+a(V\oplus\underline{\mathbb F}^{\,s})=a(V).
+\tag{A.7}
+\]</span></p>
+<p><strong>Proof.</strong> Assume first that <span class="math" data-tex="\(V,W\)">\(V,W\)</span> have positive ranks <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, and put <span class="math" data-tex="\(Y=P(V\oplus W)\)">\(Y=P(V\oplus W)\)</span> with projection <span class="math" data-tex="\(p:Y\to B\)">\(p:Y\to B\)</span>. The subbundles <span class="math" data-tex="\(P(V)\)">\(P(V)\)</span> and <span class="math" data-tex="\(P(W)\)">\(P(W)\)</span> are disjoint closed subsets of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Closedness is checked in a product chart: a line in <span class="math" data-tex="\(\mathbb F^{r+s}\)">\(\mathbb F^{r+s}\)</span> belongs to the first summand precisely when all its last <span class="math" data-tex="\(s\)">\(s\)</span> projection-matrix diagonal entries vanish; these are continuous functions by DG08 R.1. The other summand is treated in the same way.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+U=Y\setminus P(W),\qquad W'=Y\setminus P(V).
+\tag{A.8}
+\]">\[
+U=Y\setminus P(W),\qquad W'=Y\setminus P(V).
+\tag{A.8}
+\]</span>
+These opens cover <span class="math" data-tex="\(Y\)">\(Y\)</span>. A line in <span class="math" data-tex="\(U\)">\(U\)</span> has a representative <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> with <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. The homotopy
+<span class="math math-display" data-tex="\[
+[(v,w)]\longmapsto[(v,(1-t)w)],\qquad 0\leq t\leq1,
+\tag{A.9}
+\]">\[
+[(v,w)]\longmapsto[(v,(1-t)w)],\qquad 0\leq t\leq1,
+\tag{A.9}
+\]</span>
+stays in <span class="math" data-tex="\(U\)">\(U\)</span> and is a deformation retraction onto <span class="math" data-tex="\(P(V)\)">\(P(V)\)</span>. It is independent of the chosen nonzero scalar multiple of the representative. To check continuity, in the projection-matrix model its expression is
+<span class="math math-display" data-tex="\[
+P\longmapsto
+\frac{A_t P A_t^*}{\operatorname{tr}(A_t P A_t^*)},
+\qquad
+A_t=\operatorname{diag}(I_r,(1-t)I_s).
+\]">\[
+P\longmapsto
+\frac{A_t P A_t^*}{\operatorname{tr}(A_t P A_t^*)},
+\qquad
+A_t=\operatorname{diag}(I_r,(1-t)I_s).
+\]</span>
+The denominator is positive on <span class="math" data-tex="\(U\)">\(U\)</span>, including <span class="math" data-tex="\(t=1\)">\(t=1\)</span>, because the <span class="math" data-tex="\(V\)">\(V\)</span>-component is nonzero. Thus the formula is continuous in each chart. Bundle transition maps for <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span> are block diagonal and commute with scaling its two summands, so these formulas agree globally. Interchanging the two summands gives a deformation retraction of <span class="math" data-tex="\(W'\)">\(W'\)</span> onto <span class="math" data-tex="\(P(W)\)">\(P(W)\)</span>. Both homotopies preserve the base point.</p>
+<p>Let <span class="math" data-tex="\(z\)">\(z\)</span> denote (A.2) on <span class="math" data-tex="\(Y\)">\(Y\)</span>, and form
+<span class="math math-display" data-tex="\[
+P_V(z)=\sum_{i=0}^{r}p^*a_i(V)\,z^{r-i},
+\qquad
+P_W(z)=\sum_{j=0}^{s}p^*a_j(W)\,z^{s-j}.
+\tag{A.10}
+\]">\[
+P_V(z)=\sum_{i=0}^{r}p^*a_i(V)\,z^{r-i},
+\qquad
+P_W(z)=\sum_{j=0}^{s}p^*a_j(W)\,z^{s-j}.
+\tag{A.10}
+\]</span>
+On <span class="math" data-tex="\(P(V)\)">\(P(V)\)</span> the tautological line of <span class="math" data-tex="\(Y\)">\(Y\)</span> is its tautological line, so the first polynomial restricts to zero by (A.3). The inclusion <span class="math" data-tex="\(P(V)\to U\)">\(P(V)\to U\)</span> induces an isomorphism on cohomology, since (A.9) and DG06 K.1 give a homotopy inverse. Therefore <span class="math" data-tex="\(P_V(z)|_U=0\)">\(P_V(z)|_U=0\)</span>. Similarly <span class="math" data-tex="\(P_W(z)|_{W'}=0\)">\(P_W(z)|_{W'}=0\)</span>.</p>
+<p>Lemma A.1 now gives <span class="math" data-tex="\(P_V(z)P_W(z)=0\)">\(P_V(z)P_W(z)=0\)</span>. The factors commute when expanding: all complex degrees are even, and in the real case the coefficients are mod two. This is exactly the sign conclusion of DG06 X.5. Hence
+<span class="math math-display" data-tex="\[
+0=z^{r+s}+
+\sum_{k=1}^{r+s}p^*
+ \left(\sum_{i+j=k}a_i(V)a_j(W)\right)z^{r+s-k}.
+\tag{A.11}
+\]">\[
+0=z^{r+s}+
+\sum_{k=1}^{r+s}p^*
+ \left(\sum_{i+j=k}a_i(V)a_j(W)\right)z^{r+s-k}.
+\tag{A.11}
+\]</span>
+Uniqueness in A.2 for <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span> identifies each coefficient, proving (A.6).</p>
+<p>If one rank is zero, the direct sum is canonically the other bundle and (A.6) reduces to its defining conventions. Thus all ranks are covered. A trivial bundle is pulled back from a vector space over a point. Positive cohomology of a point vanishes by DG06 E.1, so naturality makes its positive classes zero. This proves the middle identity in (A.7), and the other two follow from (A.6). These arguments use no metric or paracompactness. □</p>
+<h3 id="splitting-and-the-top-euler-class">Splitting and the top Euler class</h3>
+<p>For commuting <span class="math" data-tex="\(t_1,\ldots,t_r\)">\(t_1,\ldots,t_r\)</span>, define
+<span class="math math-display" data-tex="\[
+e_i(t_1,\ldots,t_r)=
+\sum_{\substack{J\subset\{1,\ldots,r\}\\|J|=i}}
+\prod_{j\in J}t_j,\qquad e_0=1.
+\tag{A.12}
+\]">\[
+e_i(t_1,\ldots,t_r)=
+\sum_{\substack{J\subset\{1,\ldots,r\}\\|J|=i}}
+\prod_{j\in J}t_j,\qquad e_0=1.
+\tag{A.12}
+\]</span>
+The product over a subset may be taken in increasing order; commutativity makes it independent of that order. For <span class="math" data-tex="\(i&gt;r\)">\(i&gt;r\)</span> the sum is empty and zero.</p>
+<p id="theorem-a-4"><strong>Theorem A.4 (roots, Euler normalization and uniqueness).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be on a paracompact Hausdorff base. On the flag space <span class="math" data-tex="\(f:F(V)\to B\)">\(f:F(V)\to B\)</span> of DG08 M.4 write <span class="math" data-tex="\(f^*V=L_1\oplus\cdots\oplus L_r\)">\(f^*V=L_1\oplus\cdots\oplus L_r\)</span>. Then
+<span class="math math-display" data-tex="\[
+f^*a_i(V)=e_i(t_1,\ldots,t_r),\qquad t_j=a_1(L_j).
+\tag{A.13}
+\]">\[
+f^*a_i(V)=e_i(t_1,\ldots,t_r),\qquad t_j=a_1(L_j).
+\tag{A.13}
+\]</span>
+Moreover,
+<span class="math math-display" data-tex="\[
+w_r(V)=e_2(V)\quad\hbox{in the real case},\qquad
+C_r(V)=e(V_{\mathbb R})\quad\hbox{in the complex case}.
+\tag{A.14}
+\]">\[
+w_r(V)=e_2(V)\quad\hbox{in the real case},\qquad
+C_r(V)=e(V_{\mathbb R})\quad\hbox{in the complex case}.
+\tag{A.14}
+\]</span>
+For positive rank these are top-degree classes. For rank zero both sides in (A.14) are the class one with the canonical zero-rank orientation.</p>
+<p>On paracompact Hausdorff bases, a natural sequence satisfying the direct-sum formula, rank vanishing, degree-zero normalization and the line normalizations (A.4) is uniquely determined by them.</p>
+<p><strong>Proof.</strong> The flag space is paracompact Hausdorff and its pullback is injective in <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span> cohomology for real bundles and in integral cohomology for complex bundles, by DG08 M.4. Apply A.3 successively to the actual line sum. Its total class is
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^r(1+t_j).
+\]">\[
+\prod_{j=1}^r(1+t_j).
+\]</span>
+Expanding by choosing <span class="math" data-tex="\(t_j\)">\(t_j\)</span> from exactly <span class="math" data-tex="\(i\)">\(i\)</span> of the factors gives (A.12) and (A.13), including ranks zero and one.</p>
+<p>The top component is <span class="math" data-tex="\(\prod_jt_j\)">\(\prod_jt_j\)</span>. In the real case (A.4) identifies its factors with mod-two line Euler classes, and the mod-two sum formula of DG06 T.4 identifies their product with <span class="math" data-tex="\(e_2(f^*V)\)">\(e_2(f^*V)\)</span>. In the complex case the same theorem applies integrally. The ordered orientation on the underlying real direct sum of complex lines lists each basis vector and its imaginary multiple, precisely the canonical complex orientation of <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span>, by DG08 R.2. Therefore the product is <span class="math" data-tex="\(e((f^*V)_{\mathbb R})\)">\(e((f^*V)_{\mathbb R})\)</span>, with no unspecified sign. Naturality of the Euler class and injectivity of <span class="math" data-tex="\(f^*\)">\(f^*\)</span> prove (A.14). The zero-rank normalization is in DG06 T.3–T.4.</p>
+<p>For another sequence with the listed properties, its value on each <span class="math" data-tex="\(L_j\)">\(L_j\)</span> is <span class="math" data-tex="\(1+t_j\)">\(1+t_j\)</span>. Its direct-sum formula and naturality therefore give the same pullbacks (A.13). Injectivity makes its classes equal to ours. This proves uniqueness on the stated category of bases. It does not require a homotopy classification theorem. □</p>
+<h3 id="inverses-in-a-completed-graded-ring">Inverses in a completed graded ring</h3>
+<p id="lemma-a-5"><strong>Lemma A.5 (the total-class inverse).</strong> In the product of its nonnegative graded groups, a total class <span class="math" data-tex="\(a=1+\sum_{i\geq1}a_i\)">\(a=1+\sum_{i\geq1}a_i\)</span>, with <span class="math" data-tex="\(\deg a_i=di\)">\(\deg a_i=di\)</span> in the coefficient setting (A.1), has a unique inverse <span class="math" data-tex="\(b=1+\sum_{m\geq1}b_m\)">\(b=1+\sum_{m\geq1}b_m\)</span>. It is defined degree by degree by
+<span class="math math-display" data-tex="\[
+b_0=1,\qquad b_m=-\sum_{i=1}^{m}a_i b_{m-i}.
+\tag{A.15}
+\]">\[
+b_0=1,\qquad b_m=-\sum_{i=1}^{m}a_i b_{m-i}.
+\tag{A.15}
+\]</span>
+If a sum <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span> is trivial, then <span class="math" data-tex="\(a(W)=a(V)^{-1}\)">\(a(W)=a(V)^{-1}\)</span> in this completed ring.</p>
+<p><strong>Proof.</strong> Define multiplication of two sequences by the coefficient rule
+<span class="math" data-tex="\((uv)_m=\sum_{i=0}^m u_i v_{m-i}\)">\((uv)_m=\sum_{i=0}^m u_i v_{m-i}\)</span>. Every such sum is finite. Associativity follows by reindexing the finite sum over triples of nonnegative indices with fixed total; its scalar multiplication is associative by DG06 K.5. The relevant homogeneous elements commute as noted after (A.1), so the product ring is commutative and has unit <span class="math" data-tex="\((1,0,\ldots)\)">\((1,0,\ldots)\)</span>.</p>
+<p>The degree-<span class="math" data-tex="\(dm\)">\(dm\)</span> coefficient of <span class="math" data-tex="\(ab\)">\(ab\)</span>, for <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, is <span class="math" data-tex="\(b_m+\sum_{i=1}^m a_i b_{m-i}\)">\(b_m+\sum_{i=1}^m a_i b_{m-i}\)</span>. Setting it equal to zero forces (A.15). Starting with <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span>, this recursion supplies each coefficient from the earlier ones, so it proves both existence and uniqueness. Commutativity gives <span class="math" data-tex="\(ba=ab=1\)">\(ba=ab=1\)</span>. The last assertion follows from A.3. On an unbounded cohomology ring the inverse can have infinitely many nonzero components; no finite polynomial inverse is asserted. □</p>
+<h2 id="2-chern-classes-from-the-euler-class">2. Chern classes from the Euler class</h2>
+<h3 id="the-quotient-above-a-nonzero-vector">The quotient above a nonzero vector</h3>
+<p id="lemma-b-1"><strong>Lemma B.1 (the tautological quotient).</strong> Let <span class="math" data-tex="\(V\to B\)">\(V\to B\)</span> be a complex rank-<span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> vector bundle on a Hausdorff base, and let <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span> be its complement of the zero section, with projection <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The pullback <span class="math" data-tex="\(\pi^*V\)">\(\pi^*V\)</span> has the nowhere-zero section <span class="math" data-tex="\(v\mapsto v\)">\(v\mapsto v\)</span>. Its span is a trivial line subbundle, and the fibrewise quotient
+<span class="math math-display" data-tex="\[
+Q_V=\pi^*V/\mathbb C v
+\tag{B.1}
+\]">\[
+Q_V=\pi^*V/\mathbb C v
+\tag{B.1}
+\]</span>
+is a complex vector bundle of rank <span class="math" data-tex="\(r-1\)">\(r-1\)</span> on <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span>. Its topology is the quotient topology of the pullback total space. This construction commutes with pullback maps and bundle isomorphisms.</p>
+<p><strong>Proof.</strong> The total space of <span class="math" data-tex="\(V\)">\(V\)</span> is Hausdorff. Points over distinct base points separate by the projection; points in the same fibre separate inside a common product chart. The zero section is closed, since its intersection with every product chart is the inverse image of the closed zero vector. Thus <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span> is an open Hausdorff space.</p>
+<p>In a local frame of <span class="math" data-tex="\(V\)">\(V\)</span>, a point of <span class="math" data-tex="\(\pi^*V\)">\(\pi^*V\)</span> is <span class="math" data-tex="\((b,v,w)\)">\((b,v,w)\)</span>, where <span class="math" data-tex="\(v\in\mathbb C^r\setminus0\)">\(v\in\mathbb C^r\setminus0\)</span> and <span class="math" data-tex="\(w\in\mathbb C^r\)">\(w\in\mathbb C^r\)</span>. Work on the open set <span class="math" data-tex="\(v_j\ne0\)">\(v_j\ne0\)</span>. The class of <span class="math" data-tex="\(w\)">\(w\)</span> modulo the span of <span class="math" data-tex="\(v\)">\(v\)</span> has the unique representative with <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate zero:
+<span class="math math-display" data-tex="\[
+w'=w-\frac{w_j}{v_j}v,\qquad
+y_k=w_k-\frac{w_j}{v_j}v_k\quad(k\ne j).
+\tag{B.2}
+\]">\[
+w'=w-\frac{w_j}{v_j}v,\qquad
+y_k=w_k-\frac{w_j}{v_j}v_k\quad(k\ne j).
+\tag{B.2}
+\]</span>
+Uniqueness follows because adding <span class="math" data-tex="\(t v\)">\(t v\)</span> changes the <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate by <span class="math" data-tex="\(t v_j\)">\(t v_j\)</span>. The coordinates <span class="math" data-tex="\((y_k)_{k\ne j}\)">\((y_k)_{k\ne j}\)</span> consequently identify each quotient fibre linearly with <span class="math" data-tex="\(\mathbb C^{r-1}\)">\(\mathbb C^{r-1}\)</span>. Their inverse sends <span class="math" data-tex="\(y\)">\(y\)</span> to the class of the vector whose <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate is zero and whose other coordinates are <span class="math" data-tex="\(y_k\)">\(y_k\)</span>.</p>
+<p>These are continuous quotient charts, not just fibrewise bijections. Indeed the change of coordinates on the original pullback total space
+<span class="math math-display" data-tex="\[
+(b,v,w)\longleftrightarrow
+\left(b,v,(y_k)_{k\ne j},t=\frac{w_j}{v_j}\right)
+\tag{B.3}
+\]">\[
+(b,v,w)\longleftrightarrow
+\left(b,v,(y_k)_{k\ne j},t=\frac{w_j}{v_j}\right)
+\tag{B.3}
+\]</span>
+is a homeomorphism. Its inverse is <span class="math" data-tex="\(w_j=t v_j\)">\(w_j=t v_j\)</span> and <span class="math" data-tex="\(w_k=y_k+t v_k\)">\(w_k=y_k+t v_k\)</span>. Both directions use continuous functions with denominator <span class="math" data-tex="\(v_j\ne0\)">\(v_j\ne0\)</span>. The quotient map in these coordinates is the projection forgetting <span class="math" data-tex="\(t\)">\(t\)</span>, a continuous open surjection: it maps basic open rectangles to open rectangles. Hence it is a quotient map. The preimages of these chart domains are open saturated subsets of the total space. The restriction of a quotient map to an open saturated subset is quotient, because an open inverse image there is open in the whole total space and saturated. Thus the local quotient topologies agree with the global quotient topology.</p>
+<p>On overlapping frame and index choices, the coordinate change is obtained by converting a representative to the other vector frame and applying (B.2) there. It is linear in <span class="math" data-tex="\(y\)">\(y\)</span>, continuous in <span class="math" data-tex="\((b,v)\)">\((b,v)\)</span>, and has a continuous inverse given by reversing the two choices. Thus it is an invertible transition matrix and defines the claimed bundle. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span> the coordinate list <span class="math" data-tex="\(y\)">\(y\)</span> is empty and the quotient is the zero bundle.</p>
+<p>The map <span class="math" data-tex="\((v,t)\mapsto t v\)">\((v,t)\mapsto t v\)</span> trivializes the span line. Its inverse over <span class="math" data-tex="\(v_j\ne0\)">\(v_j\ne0\)</span> recovers <span class="math" data-tex="\(t=w_j/v_j\)">\(t=w_j/v_j\)</span>, proving continuity. These local inverses agree and prove that it is a line subbundle.</p>
+<p>For <span class="math" data-tex="\(f:B'\to B\)">\(f:B'\to B\)</span>, the map <span class="math" data-tex="\((b',v)\mapsto v\)">\((b',v)\mapsto v\)</span> from <span class="math" data-tex="\((f^*V)^\times\)">\((f^*V)^\times\)</span> to <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span> identifies the pullback fibres and their distinguished vectors. The induced quotient map sends the class of <span class="math" data-tex="\(w\)">\(w\)</span> to the class of the same <span class="math" data-tex="\(w\)">\(w\)</span>. In the just-constructed charts it is the identity on <span class="math" data-tex="\(y\)">\(y\)</span> over the base map, so it is the canonical pullback isomorphism. The same coordinate argument works for bundle isomorphisms. □</p>
+<h3 id="the-inductive-definition-and-its-immediate-properties">The inductive definition and its immediate properties</h3>
+<p>The real orientation of a complex vector space is the ordered list
+<span class="math" data-tex="\((v_1,iv_1,\ldots,v_r,iv_r)\)">\((v_1,iv_1,\ldots,v_r,iv_r)\)</span> from DG08 R.2. Its independence of basis, continuity in bundle charts and compatibility with ordered sums have already been proved there.</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (metric-free Chern construction).</strong> Every complex vector bundle <span class="math" data-tex="\(V\)">\(V\)</span> of constant rank <span class="math" data-tex="\(r\)">\(r\)</span> on a Hausdorff base has classes <span class="math" data-tex="\(c_i(V)\in H^{2i}(B;\mathbb Z)\)">\(c_i(V)\in H^{2i}(B;\mathbb Z)\)</span> specified by
+<span class="math math-display" data-tex="\[
+c_0(V)=1,\qquad c_i(V)=0\ (i&gt;r),\qquad
+c_r(V)=e(V_{\mathbb R})\ (r&gt;0),
+\tag{B.4}
+\]">\[
+c_0(V)=1,\qquad c_i(V)=0\ (i&gt;r),\qquad
+c_r(V)=e(V_{\mathbb R})\ (r&gt;0),
+\tag{B.4}
+\]</span>
+and, for <span class="math" data-tex="\(0&lt;i&lt;r\)">\(0&lt;i&lt;r\)</span>,
+<span class="math math-display" data-tex="\[
+\pi^*c_i(V)=c_i(Q_V).
+\tag{B.5}
+\]">\[
+\pi^*c_i(V)=c_i(Q_V).
+\tag{B.5}
+\]</span>
+The equality in (B.5) determines a unique class. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> only the degree-zero class is retained. Write <span class="math" data-tex="\(c(V)=\sum_{i=0}^r c_i(V)\)">\(c(V)=\sum_{i=0}^r c_i(V)\)</span> for the total Chern class. These classes are natural under pullbacks between Hausdorff bases, invariant under complex bundle isomorphisms, and stable:
+<span class="math math-display" data-tex="\[
+c(V\oplus\underline{\mathbb C}^{\,s})=c(V).
+\tag{B.6}
+\]">\[
+c(V\oplus\underline{\mathbb C}^{\,s})=c(V).
+\tag{B.6}
+\]</span>
+For a complex line they equal the Euler-normalized first class in DG08 formula (W.9).</p>
+<p><strong>Proof.</strong> DG08 S.1 applied to the canonically oriented real rank-<span class="math" data-tex="\(2r\)">\(2r\)</span> bundle has segment
+<span class="math math-display" data-tex="\[
+H^{q-2r}(B;\mathbb Z)\longrightarrow H^q(B;\mathbb Z)
+\xrightarrow{\pi^*}H^q(V^\times;\mathbb Z)
+\longrightarrow H^{q-2r+1}(B;\mathbb Z).
+\tag{B.7}
+\]">\[
+H^{q-2r}(B;\mathbb Z)\longrightarrow H^q(B;\mathbb Z)
+\xrightarrow{\pi^*}H^q(V^\times;\mathbb Z)
+\longrightarrow H^{q-2r+1}(B;\mathbb Z).
+\tag{B.7}
+\]</span>
+If <span class="math" data-tex="\(q&lt;2r-1\)">\(q&lt;2r-1\)</span>, both outer groups have negative degree and vanish. Exactness makes the middle pullback an isomorphism. For <span class="math" data-tex="\(0&lt;i&lt;r\)">\(0&lt;i&lt;r\)</span>, <span class="math" data-tex="\(q=2i\leq2r-2\)">\(q=2i\leq2r-2\)</span> satisfies this bound.</p>
+<p>Induct on rank. The rank-zero definition is explicit. Given all lower ranks on Hausdorff bases, B.1 provides <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span> over the Hausdorff space <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span>, so all <span class="math" data-tex="\(c_i(Q_V)\)">\(c_i(Q_V)\)</span> are already defined. The isomorphism just proved gives the unique lower classes (B.5), and the oriented Euler class supplies the top class. This proves existence and uniqueness of the inductively specified sequence, without a metric.</p>
+<p>For naturality let <span class="math" data-tex="\(f:B'\to B\)">\(f:B'\to B\)</span>, <span class="math" data-tex="\(V'=f^*V\)">\(V'=f^*V\)</span>, and let <span class="math" data-tex="\(F:(V')^\times\to V^\times\)">\(F:(V')^\times\to V^\times\)</span> be the map of B.1. Then <span class="math" data-tex="\(\pi F=f\pi'\)">\(\pi F=f\pi'\)</span> and <span class="math" data-tex="\(Q_{V'}\cong F^*Q_V\)">\(Q_{V'}\cong F^*Q_V\)</span>. For a lower index, induction and (B.5) give
+<span class="math math-display" data-tex="\[
+(\pi')^*f^*c_i(V)
+=F^*\pi^*c_i(V)
+=F^*c_i(Q_V)
+=c_i(Q_{V'}).
+\tag{B.8}
+\]">\[
+(\pi')^*f^*c_i(V)
+=F^*\pi^*c_i(V)
+=F^*c_i(Q_V)
+=c_i(Q_{V'}).
+\tag{B.8}
+\]</span>
+Injectivity of <span class="math" data-tex="\((\pi')^*\)">\((\pi')^*\)</span> in degree <span class="math" data-tex="\(2i\)">\(2i\)</span> identifies <span class="math" data-tex="\(f^*c_i(V)\)">\(f^*c_i(V)\)</span> with <span class="math" data-tex="\(c_i(V')\)">\(c_i(V')\)</span>. The top class is natural by DG06 T.4 and preservation of the complex orientation. The degree-zero and above-rank conventions are natural as well. A bundle isomorphism gives the same deleted-space square and quotient identification, so the same induction proves isomorphism invariance.</p>
+<p>To prove stability, put <span class="math" data-tex="\(E=V\oplus\underline{\mathbb C}\)">\(E=V\oplus\underline{\mathbb C}\)</span>, of rank <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. Its deleted total space has the section
+<span class="math math-display" data-tex="\[
+s:B\longrightarrow E^\times,\qquad s(b)=(0,1).
+\]">\[
+s:B\longrightarrow E^\times,\qquad s(b)=(0,1).
+\]</span>
+The pulled-back quotient <span class="math" data-tex="\(s^*Q_E\)">\(s^*Q_E\)</span> is <span class="math" data-tex="\(V\)">\(V\)</span>: fibrewise, the class of <span class="math" data-tex="\((w,t)\)">\((w,t)\)</span> modulo the last coordinate line is identified with <span class="math" data-tex="\(w\)">\(w\)</span>, and these maps and inverses are identity coordinate maps in bundle charts. For <span class="math" data-tex="\(1\leq i&lt;r+1\)">\(1\leq i&lt;r+1\)</span>, pull (B.5) for <span class="math" data-tex="\(E\)">\(E\)</span> back by <span class="math" data-tex="\(s\)">\(s\)</span>. Naturality, already proved for the rank-<span class="math" data-tex="\(r\)">\(r\)</span> quotient, and <span class="math" data-tex="\(\pi s=\operatorname{id}\)">\(\pi s=\operatorname{id}\)</span> give <span class="math" data-tex="\(c_i(E)=c_i(V)\)">\(c_i(E)=c_i(V)\)</span>. The top class of <span class="math" data-tex="\(E\)">\(E\)</span> is zero by its nowhere-zero section and DG06 T.4. Classes above rank and the degree-zero class satisfy the same equality by their definitions. This also covers <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, where the range of lower positive indices is empty. Iterating proves (B.6).</p>
+<p>For rank one the top-class definition is precisely <span class="math" data-tex="\(e(V_{\mathbb R})\)">\(e(V_{\mathbb R})\)</span>, agreeing with DG08 formula (W.9). □</p>
+<h3 id="paracompactness-needed-for-comparison">Paracompactness needed for comparison</h3>
+<p id="lemma-b-3"><strong>Lemma B.3 (deleted total spaces remain paracompact).</strong> If <span class="math" data-tex="\(B\)">\(B\)</span> is paracompact Hausdorff and <span class="math" data-tex="\(V\)">\(V\)</span> has positive finite rank, then <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span> is paracompact Hausdorff.</p>
+<p><strong>Proof.</strong> Choose a continuous Hermitian metric by DG08 Q.4. Its unit sphere bundle <span class="math" data-tex="\(S(V)\to B\)">\(S(V)\to B\)</span> is locally trivial with compact Hausdorff fibre <span class="math" data-tex="\(S^{2r-1}\)">\(S^{2r-1}\)</span>. To check the local trivializations directly, let <span class="math" data-tex="\(H(b)\)">\(H(b)\)</span> be the positive Hermitian matrix in a vector frame. The map from the standard unit sphere to the metric unit sphere is
+<span class="math math-display" data-tex="\[
+u\longmapsto\frac{u}{\sqrt{u^*H(b)u}}.
+\tag{B.9}
+\]">\[
+u\longmapsto\frac{u}{\sqrt{u^*H(b)u}}.
+\tag{B.9}
+\]</span>
+It is continuous, with inverse <span class="math" data-tex="\(v\mapsto v/|v|\)">\(v\mapsto v/|v|\)</span>; these identities use that the displayed vectors have their indicated unit norms. Positivity keeps both denominators nonzero. The standard sphere is compact by the finite-dimensional closed-bounded compactness theorem in the opening lesson 0.1. Thus DG08 Q.5 makes <span class="math" data-tex="\(S(V)\)">\(S(V)\)</span> paracompact Hausdorff.</p>
+<p>We give the needed product argument explicitly. If <span class="math" data-tex="\(X\)">\(X\)</span> is paracompact Hausdorff, then <span class="math" data-tex="\(X\times(0,\infty)\)">\(X\times(0,\infty)\)</span> is paracompact. Let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be any open cover of this product. For <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, set
+<span class="math math-display" data-tex="\[
+I_n=(2^{n-1},2^{n+1}),\qquad
+J_n=[2^{n-2},2^{n+2}].
+\tag{B.10}
+\]">\[
+I_n=(2^{n-1},2^{n+1}),\qquad
+J_n=[2^{n-2},2^{n+2}].
+\tag{B.10}
+\]</span>
+The intervals <span class="math" data-tex="\(I_n\)">\(I_n\)</span> cover <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and their closures form a locally finite family there. To see both assertions, the powers <span class="math" data-tex="\(2^n\)">\(2^n\)</span> tend to infinity as <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> because <span class="math" data-tex="\(2^n\geq n+1\)">\(2^n\geq n+1\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, by induction; their reciprocals tend to zero. Every positive number therefore lies between consecutive powers and in one of these intervals. Any compact interval <span class="math" data-tex="\([a,b]\subset(0,\infty)\)">\([a,b]\subset(0,\infty)\)</span> meets only finitely many of the closures, by the same bounds.</p>
+<p>Each <span class="math" data-tex="\(X\times J_n\)">\(X\times J_n\)</span> is paracompact by DG08 Q.5, applied to its projection onto <span class="math" data-tex="\(X\)">\(X\)</span> with compact interval fibre. Restrict <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> to this product and choose a locally finite relatively open refinement <span class="math" data-tex="\(\mathcal R_n\)">\(\mathcal R_n\)</span>. Restrict every member of <span class="math" data-tex="\(\mathcal R_n\)">\(\mathcal R_n\)</span> to <span class="math" data-tex="\(X\times I_n\)">\(X\times I_n\)</span>. These restrictions are open in the full product, since <span class="math" data-tex="\(I_n\)">\(I_n\)</span> is contained in the interior of <span class="math" data-tex="\(J_n\)">\(J_n\)</span>. They cover <span class="math" data-tex="\(X\times I_n\)">\(X\times I_n\)</span> and refine <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, this restricted family is locally finite in the full product. At a point whose interval coordinate is in the interior of <span class="math" data-tex="\(J_n\)">\(J_n\)</span>, use the local finiteness in <span class="math" data-tex="\(X\times J_n\)">\(X\times J_n\)</span>. At a point outside the closure of <span class="math" data-tex="\(I_n\)">\(I_n\)</span>, use an interval neighbourhood disjoint from that closure. These two cases cover the product, because <span class="math" data-tex="\(\overline{I_n}\subset\operatorname{int}J_n\)">\(\overline{I_n}\subset\operatorname{int}J_n\)</span>. Finally, near any interval coordinate only finitely many <span class="math" data-tex="\(\overline{I_n}\)">\(\overline{I_n}\)</span> occur. Intersect neighbourhoods establishing local finiteness for those finitely many families. Their union is a locally finite open refinement of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. This proves the product assertion.</p>
+<p>Radial normalization gives the homeomorphism
+<span class="math math-display" data-tex="\[
+V^\times\longrightarrow S(V)\times(0,\infty),
+\qquad
+v\longmapsto\left(\frac{v}{\|v\|},\|v\|\right),
+\tag{B.11}
+\]">\[
+V^\times\longrightarrow S(V)\times(0,\infty),
+\qquad
+v\longmapsto\left(\frac{v}{\|v\|},\|v\|\right),
+\tag{B.11}
+\]</span>
+with inverse <span class="math" data-tex="\((u,t)\mapsto tu\)">\((u,t)\mapsto tu\)</span>. The formulas are continuous in every chart, and all norms in their denominators are positive. Apply the product assertion with <span class="math" data-tex="\(X=S(V)\)">\(X=S(V)\)</span>. Hausdorffness was proved in B.1. □</p>
+<h3 id="agreement-with-the-projective-classes">Agreement with the projective classes</h3>
+<p id="theorem-b-4"><strong>Theorem B.4 (integral Whitney formula and projective relation).</strong> On a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+c_i(V)=C_i(V)
+\tag{B.12}
+\]">\[
+c_i(V)=C_i(V)
+\tag{B.12}
+\]</span>
+for all indices. In particular,
+<span class="math math-display" data-tex="\[
+c(V\oplus W)=c(V)c(W),\qquad
+z^r+\sum_{i=1}^r p^*c_i(V)\,z^{r-i}=0,
+\qquad z=-c_1(S).
+\tag{B.13}
+\]">\[
+c(V\oplus W)=c(V)c(W),\qquad
+z^r+\sum_{i=1}^r p^*c_i(V)\,z^{r-i}=0,
+\qquad z=-c_1(S).
+\tag{B.13}
+\]</span>
+The projective relation is asserted only for positive rank; the direct-sum identity includes rank zero. On a full flag, <span class="math" data-tex="\(c_i(V)\)">\(c_i(V)\)</span> pulls back to the <span class="math" data-tex="\(i\)">\(i\)</span>-th elementary symmetric polynomial in the actual line first classes. These classes are the unique natural, rank-vanishing, Whitney-multiplicative sequence with <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span> and the specified complex-line Euler normalization.</p>
+<p><strong>Proof.</strong> Induct on rank on the category of paracompact Hausdorff bases. Rank zero agrees by convention, and rank one agrees by A.4 and the top-class definition (B.4). For general positive rank, A.4 identifies the top projective coefficient with <span class="math" data-tex="\(e(V_{\mathbb R})=c_r(V)\)">\(e(V_{\mathbb R})=c_r(V)\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;i&lt;r\)">\(0&lt;i&lt;r\)</span>, work over <span class="math" data-tex="\(V^\times\)">\(V^\times\)</span>, which is paracompact by B.3. The pulled-back Hermitian metric gives the orthogonal complement of the span of <span class="math" data-tex="\(v\)">\(v\)</span> by DG08 Q.4. The quotient map from that complement to <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span> is a bundle isomorphism: fibrewise its inverse takes the class of <span class="math" data-tex="\(w\)">\(w\)</span> to
+<span class="math math-display" data-tex="\[
+w-\frac{h(v,w)}{h(v,v)}v.
+\tag{B.14}
+\]">\[
+w-\frac{h(v,w)}{h(v,v)}v.
+\tag{B.14}
+\]</span>
+The metric is conjugate-linear in its first argument and linear in its second. Therefore (B.14) is complex linear in <span class="math" data-tex="\(w\)">\(w\)</span>, annihilates the change <span class="math" data-tex="\(w\mapsto w+\lambda v\)">\(w\mapsto w+\lambda v\)</span>, and lies in the orthogonal complement. It is continuous in B.1's quotient charts; each chart permits a continuous representative <span class="math" data-tex="\(w\)">\(w\)</span>, and the result is independent of that choice. Together with the trivial span line this yields an actual bundle isomorphism
+<span class="math math-display" data-tex="\[
+\pi^*V\cong\underline{\mathbb C}\oplus Q_V.
+\tag{B.15}
+\]">\[
+\pi^*V\cong\underline{\mathbb C}\oplus Q_V.
+\tag{B.15}
+\]</span>
+Naturality and stability of the projective coefficients in A.2–A.3 give <span class="math" data-tex="\(\pi^*C_i(V)=C_i(Q_V)\)">\(\pi^*C_i(V)=C_i(Q_V)\)</span>. Induction applies to <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span> over its paracompact Hausdorff base, so the latter is <span class="math" data-tex="\(c_i(Q_V)\)">\(c_i(Q_V)\)</span>. Equation (B.5) and injectivity in (B.7) then give <span class="math" data-tex="\(C_i(V)=c_i(V)\)">\(C_i(V)=c_i(V)\)</span>.</p>
+<p>The rank, zero and above-rank cases have already been addressed, completing the induction. Substituting (B.12) into A.3 and A.13 proves (B.13) and the root formula. The projective generator in the complex case is <span class="math" data-tex="\(-e(S_{\mathbb R})=-c_1(S)\)">\(-e(S_{\mathbb R})=-c_1(S)\)</span> by the rank-one definition. The uniqueness statement is precisely A.4 in the complex coefficient setting. All metric choices were used only to prove equality with the already metric-free definition. □</p>
+<h3 id="conjugation-before-choosing-a-metric">Conjugation before choosing a metric</h3>
+<p id="theorem-b-5"><strong>Theorem B.5 (conjugation on every Hausdorff base).</strong> For a complex rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle, let <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span> have the same underlying real bundle with scalar action <span class="math" data-tex="\(\lambda\cdot_{\overline V}v=\overline\lambda\,v\)">\(\lambda\cdot_{\overline V}v=\overline\lambda\,v\)</span>. Then
+<span class="math math-display" data-tex="\[
+c_i(\overline V)=(-1)^i c_i(V)
+\tag{B.16}
+\]">\[
+c_i(\overline V)=(-1)^i c_i(V)
+\tag{B.16}
+\]</span>
+on every Hausdorff base.</p>
+<p><strong>Proof.</strong> In a vector chart, use conjugates of the original complex coordinates for <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. If the original coordinate change is <span class="math" data-tex="\(A(b)\)">\(A(b)\)</span>, the new one is <span class="math" data-tex="\(\overline{A(b)}\)">\(\overline{A(b)}\)</span>, continuous and invertible; their cocycle identities give the conjugate bundle. The identity on underlying real total spaces is continuous in both directions, because coordinate conjugation is a real homeomorphism.</p>
+<p>A positive real basis for <span class="math" data-tex="\(V_{\mathbb R}\)">\(V_{\mathbb R}\)</span> is <span class="math" data-tex="\((v_1,iv_1,\ldots,v_r,iv_r)\)">\((v_1,iv_1,\ldots,v_r,iv_r)\)</span>. The corresponding complex orientation of <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span> is <span class="math" data-tex="\((v_1,-iv_1,\ldots,v_r,-iv_r)\)">\((v_1,-iv_1,\ldots,v_r,-iv_r)\)</span>. Its sign relative to the former is <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>, by the determinant permutation formula DG06 L.1. Euler orientation change DG06 T.4 therefore gives (B.16) for <span class="math" data-tex="\(i=r&gt;0\)">\(i=r&gt;0\)</span>.</p>
+<p>The deleted total spaces agree as real spaces. The complex line spanned by <span class="math" data-tex="\(v\)">\(v\)</span> is also the same subset in either scalar convention, and its quotient for <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span> is canonically the conjugate of <span class="math" data-tex="\(Q_V\)">\(Q_V\)</span>. This identification is continuous in the quotient charts of B.1: conjugate all their scalar coordinates, and (B.2) becomes the conjugate formula.</p>
+<p>Induct on rank. For a lower positive index, the induction hypothesis and (B.5) give
+<span class="math math-display" data-tex="\[
+\pi^*c_i(\overline V)
+=c_i(\overline{Q_V})
+=(-1)^i c_i(Q_V)
+=\pi^*\bigl((-1)^ic_i(V)\bigr).
+\]">\[
+\pi^*c_i(\overline V)
+=c_i(\overline{Q_V})
+=(-1)^i c_i(Q_V)
+=\pi^*\bigl((-1)^ic_i(V)\bigr).
+\]</span>
+Injectivity of <span class="math" data-tex="\(\pi^*\)">\(\pi^*\)</span> in that degree proves (B.16). The degree-zero and above-rank assertions follow from their conventions, which also settle rank zero. No metric or paracompactness was used. □</p>
+<h2 id="3-bundle-operations-and-the-real-comparison">3. Bundle operations and the real comparison</h2>
+<h3 id="continuous-bundles-for-the-algebraic-operations">Continuous bundles for the algebraic operations</h3>
+<p id="lemma-c-1"><strong>Lemma C.1 (dual, determinant and tensor charts).</strong> A complex rank-<span class="math" data-tex="\(r\)">\(r\)</span> bundle <span class="math" data-tex="\(V\)">\(V\)</span> on a Hausdorff base has a dual bundle <span class="math" data-tex="\(V^*\)">\(V^*\)</span>, a determinant line <span class="math" data-tex="\(\det_{\mathbb C}V\)">\(\det_{\mathbb C}V\)</span>, and, for a complex line <span class="math" data-tex="\(L\)">\(L\)</span>, a rank-<span class="math" data-tex="\(r\)">\(r\)</span> tensor bundle <span class="math" data-tex="\(V\otimes L\)">\(V\otimes L\)</span>. These constructions commute with pullback. They have canonical identifications
+<span class="math math-display" data-tex="\[
+\det_{\mathbb C}(L_1\oplus\cdots\oplus L_r)
+\cong L_1\otimes\cdots\otimes L_r,
+\tag{C.1}
+\]">\[
+\det_{\mathbb C}(L_1\oplus\cdots\oplus L_r)
+\cong L_1\otimes\cdots\otimes L_r,
+\tag{C.1}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+(L_1\oplus\cdots\oplus L_r)\otimes L
+\cong\bigoplus_{j=1}^r(L_j\otimes L).
+\tag{C.2}
+\]">\[
+(L_1\oplus\cdots\oplus L_r)\otimes L
+\cong\bigoplus_{j=1}^r(L_j\otimes L).
+\tag{C.2}
+\]</span>
+For rank zero the determinant line is the trivial complex line and the tensor bundle is the zero bundle. If <span class="math" data-tex="\(V\)">\(V\)</span> has a continuous Hermitian metric, there is a complex-linear bundle isomorphism
+<span class="math math-display" data-tex="\[
+\overline V\longrightarrow V^*,\qquad
+v\longmapsto\bigl(w\mapsto h(v,w)\bigr),
+\tag{C.3}
+\]">\[
+\overline V\longrightarrow V^*,\qquad
+v\longmapsto\bigl(w\mapsto h(v,w)\bigr),
+\tag{C.3}
+\]</span>
+where <span class="math" data-tex="\(h\)">\(h\)</span> is conjugate-linear in the first argument.</p>
+<p><strong>Proof.</strong> In a vector frame, a linear functional is specified by its values on the <span class="math" data-tex="\(r\)">\(r\)</span> basis vectors, by finite-dimensional basis expansion from the opening lesson 0.2. If vector coordinates change by <span class="math" data-tex="\(A\)">\(A\)</span>, the column of functional coefficients changes by <span class="math" data-tex="\((A^{-1})^{\mathsf T}\)">\((A^{-1})^{\mathsf T}\)</span>, because the scalar evaluation must stay fixed. Matrix inversion is continuous by the opening lesson 0.4, applied to underlying real matrices as in DG08 Q.4. Thus these are continuous invertible transition matrices with the required cocycle law. The open-chart gluing proof in DG08 I.2, with fibre <span class="math" data-tex="\(\mathbb C^r\)">\(\mathbb C^r\)</span>, gives the dual bundle.</p>
+<p>For clarity, the determinant fibre is the one-dimensional vector space generated by formal symbols <span class="math" data-tex="\(v_1\wedge\cdots\wedge v_r\)">\(v_1\wedge\cdots\wedge v_r\)</span>, subject to multilinearity in each entry and the rule that a repeated pair of entries gives zero. One concrete construction is the free vector space on ordered <span class="math" data-tex="\(r\)">\(r\)</span>-tuples, quotiented by these relations. A zero tuple in one entry gives zero by linearity. Replacing two slots by the same sum <span class="math" data-tex="\(u+v\)">\(u+v\)</span> and expanding shows that interchanging those slots changes the sign. Expansion in a basis <span class="math" data-tex="\(e_1,\ldots,e_r\)">\(e_1,\ldots,e_r\)</span> therefore expresses every symbol as
+<span class="math math-display" data-tex="\[
+v_1\wedge\cdots\wedge v_r
+=\det[v_1\ \cdots\ v_r]\,
+ (e_1\wedge\cdots\wedge e_r).
+\tag{C.4}
+\]">\[
+v_1\wedge\cdots\wedge v_r
+=\det[v_1\ \cdots\ v_r]\,
+ (e_1\wedge\cdots\wedge e_r).
+\tag{C.4}
+\]</span>
+Terms with repeated basis indices vanish; the remaining terms are the permutations with exactly their determinant signs. The coordinate determinant itself is an alternating multilinear function, by DG06 L.1, so it descends to a functional on this quotient and takes the displayed basis symbol to one. Thus that symbol is nonzero and the fibre has dimension exactly one. A vector coordinate change by <span class="math" data-tex="\(A\)">\(A\)</span> changes its scalar determinant coordinate by <span class="math" data-tex="\(\det A\)">\(\det A\)</span>, by the determinant multiplication identity in L.1. These nonzero continuous scalar transitions define the determinant line. They describe its intrinsic fibre just constructed, so different vector frames give the same bundle. In rank zero use <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> with its distinguished generator one.</p>
+<p>For the tensor product of a vector space with a line, elementary tensors span the quotient by bilinear relations. If <span class="math" data-tex="\(e_1,\ldots,e_r\)">\(e_1,\ldots,e_r\)</span> is a vector basis and <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span> a line vector, they are spanned by <span class="math" data-tex="\(e_j\otimes\ell\)">\(e_j\otimes\ell\)</span>. They are linearly independent: for each <span class="math" data-tex="\(j\)">\(j\)</span>, the bilinear function <span class="math" data-tex="\((\sum a_ke_k,t\ell)\mapsto a_jt\)">\((\sum a_ke_k,t\ell)\mapsto a_jt\)</span> descends to a linear functional which is one on the <span class="math" data-tex="\(j\)">\(j\)</span>-th basis candidate and zero on all the others. Hence it is a basis. If the vector transition is <span class="math" data-tex="\(A\)">\(A\)</span> and the line transition is <span class="math" data-tex="\(g\)">\(g\)</span>, the tensor transition is <span class="math" data-tex="\(gA\)">\(gA\)</span>. These matrices are continuous, invertible and satisfy the cocycle law. They define the tensor bundle by the same gluing argument.</p>
+<p>The map in (C.1) sends the tensor of <span class="math" data-tex="\(r\)">\(r\)</span> vectors, one from each line in the listed order, to their wedge in the ordered direct sum. Multilinearity makes it well-defined on the tensor product. In line frames it takes the scalar product coordinate to the determinant coordinate, hence is an isomorphism with continuous inverse. The tensor product of finitely many lines may be parenthesized successively; the coordinate product description shows that changing parentheses gives the canonical same scalar-coordinate map. For (C.2), send <span class="math" data-tex="\((v_1,\ldots,v_r)\otimes \ell\)">\((v_1,\ldots,v_r)\otimes \ell\)</span> to <span class="math" data-tex="\((v_1\otimes\ell,\ldots,v_r\otimes\ell)\)">\((v_1\otimes\ell,\ldots,v_r\otimes\ell)\)</span> and extend linearly. The basis description shows it is a fibre isomorphism. It and its inverse are identity maps on the <span class="math" data-tex="\(r\)">\(r\)</span> scalar coordinates in common frames, so both are continuous.</p>
+<p>A pullback replaces each transition matrix or scalar by its composition with the base map. Taking inverse transpose, determinant, or multiplication by a scalar commutes with this composition. The natural fibre identifications therefore have identity coordinate maps and give the claimed pullback isomorphisms.</p>
+<p>Finally (C.3) is complex linear for the conjugate scalar structure: multiplication of <span class="math" data-tex="\(v\)">\(v\)</span> there by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is multiplication of the original <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(\overline\lambda\)">\(\overline\lambda\)</span>, and <span class="math" data-tex="\(h(\overline\lambda v,w)=\lambda h(v,w)\)">\(h(\overline\lambda v,w)=\lambda h(v,w)\)</span>. Positivity implies injectivity: if <span class="math" data-tex="\(h(v,w)=0\)">\(h(v,w)=0\)</span> for all <span class="math" data-tex="\(w\)">\(w\)</span>, choose <span class="math" data-tex="\(w=v\)">\(w=v\)</span>. Both fibres have dimension <span class="math" data-tex="\(r\)">\(r\)</span>, so the map is bijective by basis extension, opening lesson 0.2. In coordinates <span class="math" data-tex="\(h(v,w)=\overline v^{\mathsf T}H(b)w\)">\(h(v,w)=\overline v^{\mathsf T}H(b)w\)</span>, the map from the conjugate coordinates <span class="math" data-tex="\(\overline v\)">\(\overline v\)</span> to the functional column has matrix <span class="math" data-tex="\(H(b)^{\mathsf T}\)">\(H(b)^{\mathsf T}\)</span>. This is continuous with continuous inverse by matrix inversion. It proves the bundle assertion, including the unique map between zero bundles when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. □</p>
+<h3 id="integral-identities">Integral identities</h3>
+<p id="theorem-c-2"><strong>Theorem C.2 (determinants, duals and line tensors).</strong> On a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+c_1(V)=c_1(\det_{\mathbb C}V),\qquad
+c_i(V^*)=(-1)^i c_i(V).
+\tag{C.5}
+\]">\[
+c_1(V)=c_1(\det_{\mathbb C}V),\qquad
+c_i(V^*)=(-1)^i c_i(V).
+\tag{C.5}
+\]</span>
+If <span class="math" data-tex="\(L\)">\(L\)</span> is a complex line, <span class="math" data-tex="\(\ell=c_1(L)\)">\(\ell=c_1(L)\)</span>, and <span class="math" data-tex="\(0\leq k\leq r=\operatorname{rank}V\)">\(0\leq k\leq r=\operatorname{rank}V\)</span>, then
+<span class="math math-display" data-tex="\[
+c_k(V\otimes L)
+=\sum_{i=0}^k
+\binom{r-i}{k-i}\,c_i(V)\,\ell^{k-i}.
+\tag{C.6}
+\]">\[
+c_k(V\otimes L)
+=\sum_{i=0}^k
+\binom{r-i}{k-i}\,c_i(V)\,\ell^{k-i}.
+\tag{C.6}
+\]</span>
+The total Chern class has the completed inverse of A.5. In particular <span class="math" data-tex="\(c(V)c(W)=1\)">\(c(V)c(W)=1\)</span> when <span class="math" data-tex="\(V\oplus W\)">\(V\oplus W\)</span> is trivial.</p>
+<p><strong>Proof.</strong> Choose the complex flag map <span class="math" data-tex="\(f:F(V)\to B\)">\(f:F(V)\to B\)</span> of DG08 M.4. It is injective on integral cohomology, and <span class="math" data-tex="\(f^*V=\bigoplus_j L_j\)">\(f^*V=\bigoplus_j L_j\)</span> on a paracompact Hausdorff flag space. Put <span class="math" data-tex="\(t_j=c_1(L_j)\)">\(t_j=c_1(L_j)\)</span>. By C.1, the pulled-back determinant is the tensor product of these lines. The line tensor formula DG08 W.3, applied successively, gives first class <span class="math" data-tex="\(\sum_j t_j\)">\(\sum_j t_j\)</span>. By B.4 this is <span class="math" data-tex="\(f^*c_1(V)\)">\(f^*c_1(V)\)</span>. Naturality of determinant and Chern classes and injectivity prove the first equality in (C.5).</p>
+<p>For the dual equality, choose a Hermitian metric by DG08 Q.4. The actual isomorphism (C.3), invariance of Chern classes B.2 and the conjugation formula B.5 give
+<span class="math math-display" data-tex="\[
+c_i(V^*)=c_i(\overline V)=(-1)^i c_i(V).
+\]">\[
+c_i(V^*)=c_i(\overline V)=(-1)^i c_i(V).
+\]</span>
+For rank zero the determinant is trivial and all positive Chern classes vanish, so both assertions hold there as well.</p>
+<p>Pull the tensor bundle back to the same flag. By (C.2) it splits into the lines <span class="math" data-tex="\(L_j\otimes f^*L\)">\(L_j\otimes f^*L\)</span>, whose first classes are <span class="math" data-tex="\(t_j+f^*\ell\)">\(t_j+f^*\ell\)</span> by DG08 W.3. B.4 expresses its <span class="math" data-tex="\(k\)">\(k\)</span>-th class as <span class="math" data-tex="\(e_k(t_1+f^*\ell,\ldots,t_r+f^*\ell)\)">\(e_k(t_1+f^*\ell,\ldots,t_r+f^*\ell)\)</span>.</p>
+<p>Expand this elementary symmetric expression by choosing a <span class="math" data-tex="\(k\)">\(k\)</span>-element subset of indices, then choosing which of its factors contribute their <span class="math" data-tex="\(t_j\)">\(t_j\)</span> rather than <span class="math" data-tex="\(f^*\ell\)">\(f^*\ell\)</span>. Fix the chosen <span class="math" data-tex="\(i\)">\(i\)</span>-element subset contributing roots. There are exactly <span class="math" data-tex="\(\binom{r-i}{k-i}\)">\(\binom{r-i}{k-i}\)</span> ways to choose the other <span class="math" data-tex="\(k-i\)">\(k-i\)</span> indices from the remaining <span class="math" data-tex="\(r-i\)">\(r-i\)</span>. Here the binomial coefficient is the number of subsets of that size; no division inside the cohomology ring is involved. Grouping this finite sum gives
+<span class="math math-display" data-tex="\[
+e_k(t_1+f^*\ell,\ldots,t_r+f^*\ell)
+=\sum_{i=0}^k\binom{r-i}{k-i}
+ e_i(t_1,\ldots,t_r)(f^*\ell)^{k-i}.
+\tag{C.7}
+\]">\[
+e_k(t_1+f^*\ell,\ldots,t_r+f^*\ell)
+=\sum_{i=0}^k\binom{r-i}{k-i}
+ e_i(t_1,\ldots,t_r)(f^*\ell)^{k-i}.
+\tag{C.7}
+\]</span>
+All factors have even degree, so the rearrangements introduce no sign, by DG06 X.5. The right side is the pullback of (C.6) by B.4 and naturality. Integral injectivity proves (C.6) downstairs. If <span class="math" data-tex="\(r=k=0\)">\(r=k=0\)</span>, both sides are the degree-zero class one.</p>
+<p>The final assertions are A.5 and B.4: their recursion uses the even-degree Chern classes, and the Whitney formula gives <span class="math" data-tex="\(c(V)c(W)=c(V\oplus W)=1\)">\(c(V)c(W)=c(V\oplus W)=1\)</span> for a trivial sum. This is a coefficientwise identity in the completed graded ring even when the base has unbounded cohomology. □</p>
+<h3 id="the-complete-real-comparison">The complete real comparison</h3>
+<p>Write <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span> for the cohomology map induced by reduction of integer cochains modulo two. It commutes with pullback and cup products because both are defined by integer face and evaluation formulas.</p>
+<p id="theorem-c-3"><strong>Theorem C.3 (underlying real Stiefel–Whitney classes).</strong> For a complex bundle <span class="math" data-tex="\(V\)">\(V\)</span> on a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+w_{2i}(V_{\mathbb R})=\rho_2c_i(V),\qquad
+w_{2i+1}(V_{\mathbb R})=0
+\tag{C.8}
+\]">\[
+w_{2i}(V_{\mathbb R})=\rho_2c_i(V),\qquad
+w_{2i+1}(V_{\mathbb R})=0
+\tag{C.8}
+\]</span>
+for every nonnegative index.</p>
+<p><strong>Proof.</strong> First consider a complex line <span class="math" data-tex="\(L\)">\(L\)</span>. DG08 I.4 gives a continuous map <span class="math" data-tex="\(g:B\to\mathbb CP^\infty\)">\(g:B\to\mathbb CP^\infty\)</span> and a line-bundle isomorphism <span class="math" data-tex="\(L\cong g^*\gamma\)">\(L\cong g^*\gamma\)</span>, where <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is the infinite tautological line. Its underlying real plane pulls back in the same manner, as is seen in its real coordinate charts.</p>
+<p>The class <span class="math" data-tex="\(w_1(\gamma_{\mathbb R})\)">\(w_1(\gamma_{\mathbb R})\)</span> is defined by A.2: that construction required only a Hausdorff base, and DG08 I.1 proves this condition for <span class="math" data-tex="\(\mathbb CP^\infty\)">\(\mathbb CP^\infty\)</span>. But
+<span class="math math-display" data-tex="\[
+H^1(\mathbb CP^\infty;\mathbb F_2)=0
+\]">\[
+H^1(\mathbb CP^\infty;\mathbb F_2)=0
+\]</span>
+by DG08 I.3, so this class is zero. Naturality in A.2 implies <span class="math" data-tex="\(w_1(L_{\mathbb R})=0\)">\(w_1(L_{\mathbb R})=0\)</span>. This argument makes no paracompactness claim about <span class="math" data-tex="\(\mathbb CP^\infty\)">\(\mathbb CP^\infty\)</span>.</p>
+<p>By A.4, <span class="math" data-tex="\(w_2(L_{\mathbb R})=e_2(L_{\mathbb R})\)">\(w_2(L_{\mathbb R})=e_2(L_{\mathbb R})\)</span>. The integral Thom class of this canonically oriented plane reduces to its mod-two Thom class: its restrictions to fibres are the coefficient images of the integral positive generator, hence the nonzero mod-two generators. Uniqueness of the Thom class in DG06 T.3 proves the equality of the classes themselves. Pulling them back along the zero section, with the relative condition forgotten, gives
+<span class="math math-display" data-tex="\[
+e_2(L_{\mathbb R})=\rho_2 e(L_{\mathbb R})
+=\rho_2c_1(L).
+\tag{C.9}
+\]">\[
+e_2(L_{\mathbb R})=\rho_2 e(L_{\mathbb R})
+=\rho_2c_1(L).
+\tag{C.9}
+\]</span>
+The rank convention in A.2 makes all higher real classes of this plane zero. Its total Stiefel–Whitney class is therefore <span class="math" data-tex="\(1+\rho_2c_1(L)\)">\(1+\rho_2c_1(L)\)</span>.</p>
+<p>For general <span class="math" data-tex="\(V\)">\(V\)</span>, pull back by the complex flag map <span class="math" data-tex="\(f:F(V)\to B\)">\(f:F(V)\to B\)</span>. DG08 M.4 is injective with every abelian coefficient group in the complex case, in particular with <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>. The pulled-back complex bundle is an actual line sum, so its underlying real bundle is the corresponding direct sum of planes. The real Whitney formula A.3 and the line calculation yield
+<span class="math math-display" data-tex="\[
+f^*w(V_{\mathbb R})=
+\prod_{j=1}^r\bigl(1+\rho_2c_1(L_j)\bigr).
+\tag{C.10}
+\]">\[
+f^*w(V_{\mathbb R})=
+\prod_{j=1}^r\bigl(1+\rho_2c_1(L_j)\bigr).
+\tag{C.10}
+\]</span>
+Every positive factor has degree two. The odd components of this product are zero, and its degree-<span class="math" data-tex="\(2i\)">\(2i\)</span> component is
+<span class="math" data-tex="\(\rho_2 e_i(c_1(L_1),\ldots,c_1(L_r))\)">\(\rho_2 e_i(c_1(L_1),\ldots,c_1(L_r))\)</span>.
+By B.4 and commutation of <span class="math" data-tex="\(\rho_2\)">\(\rho_2\)</span> with pullback this is <span class="math" data-tex="\(f^*\rho_2c_i(V)\)">\(f^*\rho_2c_i(V)\)</span>. Mod-two injectivity proves (C.8). The empty product is one, so this includes rank zero, degree zero and all above-rank indices. □</p>
+<h2 id="4-integral-evaluation-of-the-top-class">4. Integral evaluation of the top class</h2>
+<h3 id="fundamental-classes-with-their-local-signs">Fundamental classes with their local signs</h3>
+<p id="corollary-d-1"><strong>Corollary D.1 (oriented compact-support classes).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a smooth Hausdorff second-countable oriented <span class="math" data-tex="\(d\)">\(d\)</span>-manifold without boundary. For each compact <span class="math" data-tex="\(K\subset M\)">\(K\subset M\)</span> there is a unique class
+<span class="math math-display" data-tex="\[
+[M]_K\in H_d(M,M\setminus K;\mathbb Z)
+\tag{D.1}
+\]">\[
+[M]_K\in H_d(M,M\setminus K;\mathbb Z)
+\tag{D.1}
+\]</span>
+restricting to the positive orientation generator at every point of <span class="math" data-tex="\(K\)">\(K\)</span>. Point restrictions detect this degree, and
+<span class="math math-display" data-tex="\[
+H_j(M,M\setminus K;\mathbb Z)=0\qquad(j&gt;d).
+\tag{D.2}
+\]">\[
+H_j(M,M\setminus K;\mathbb Z)=0\qquad(j&gt;d).
+\tag{D.2}
+\]</span>
+If <span class="math" data-tex="\(M\)">\(M\)</span> is compact, <span class="math" data-tex="\([M]_M=[M]\)">\([M]_M=[M]\)</span> is its absolute fundamental class. The classes are compatible under restriction to smaller compact supports.</p>
+<p><strong>Proof.</strong> The positive local generator and its sign under an invertible linear change were constructed in DG06 O.1–O.2. O.3 proves that a smooth coordinate change acts by the sign of its derivative, so the given orientation identifies these generators in overlapping oriented charts. O.4 proves their local coherence and constructs the compatible classes (D.1), using the complete compact-set gluing theorem E.8. Detection by points and the vanishing (D.2), for every compact support, are precisely E.7. Its proof first treats finite unions of convex chart sets by E.6 and then uses finite-chain support to treat general compact sets, so no triangulation or finite-cell hypothesis on <span class="math" data-tex="\(K\)">\(K\)</span> is needed. These are earlier programme results with the same manifold and coefficient hypotheses. For compact <span class="math" data-tex="\(M\)">\(M\)</span>, the relative complement is empty, giving its absolute class; compatibility is O.4's uniqueness argument. □</p>
+<h3 id="zeros-and-the-euler-number">Zeros and the Euler number</h3>
+<p id="theorem-d-2"><strong>Theorem D.2 (isolated zeros and top Chern evaluation).</strong> Let <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> be an oriented real rank-<span class="math" data-tex="\(d\)">\(d\)</span> bundle over a compact oriented smooth <span class="math" data-tex="\(d\)">\(d\)</span>-manifold without boundary, where <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. For a continuous section <span class="math" data-tex="\(s\)">\(s\)</span> with isolated zeros, define the index at a zero <span class="math" data-tex="\(x\)">\(x\)</span> by pulling the fibre Thom class back to the local pair and evaluating on the positive base local generator. Then there are finitely many zeros and
+<span class="math math-display" data-tex="\[
+\langle e(E),[M]\rangle
+=\sum_{s(x)=0}\operatorname{ind}_x(s).
+\tag{D.3}
+\]">\[
+\langle e(E),[M]\rangle
+=\sum_{s(x)=0}\operatorname{ind}_x(s).
+\tag{D.3}
+\]</span>
+If <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> are smooth near <span class="math" data-tex="\(x\)">\(x\)</span> and the local coefficient derivative <span class="math" data-tex="\(D s_x\)">\(D s_x\)</span> is invertible, this index is <span class="math" data-tex="\(\operatorname{sgn}\det_{\mathbb R}(D s_x)\)">\(\operatorname{sgn}\det_{\mathbb R}(D s_x)\)</span>, computed in oriented base and bundle frames.</p>
+<p>In particular, for a complex rank-<span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> bundle on a compact oriented smooth <span class="math" data-tex="\(2r\)">\(2r\)</span>-manifold, with its canonical fibre orientation,
+<span class="math math-display" data-tex="\[
+\langle c_r(V),[M]\rangle
+=\sum_{s(x)=0}\operatorname{ind}_x(s).
+\tag{D.4}
+\]">\[
+\langle c_r(V),[M]\rangle
+=\sum_{s(x)=0}\operatorname{ind}_x(s).
+\tag{D.4}
+\]</span></p>
+<p><strong>Proof.</strong> The zero set <span class="math" data-tex="\(Z\)">\(Z\)</span> is closed, as follows in each bundle chart from continuity of its coefficient map, and hence is compact. Its isolated-point neighbourhoods cover it; compactness gives a finite subcover, proving finiteness.</p>
+<p>The continuous section is a map of pairs <span class="math" data-tex="\((M,M\setminus Z)\to(E,E^\times)\)">\((M,M\setminus Z)\to(E,E^\times)\)</span>. Thus it pulls the integral Thom class of DG06 T.3 back to
+<span class="math" data-tex="\(\alpha\in H^d(M,M\setminus Z;\mathbb Z)\)">\(\alpha\in H^d(M,M\setminus Z;\mathbb Z)\)</span>.
+Forgetting relative conditions gives <span class="math" data-tex="\(e(E)\)">\(e(E)\)</span>: scalar multiplication <span class="math" data-tex="\(s\mapsto t s\)">\(s\mapsto t s\)</span> is a homotopy to the zero section, and homotopy invariance is DG06 K.1.</p>
+<p>Choose disjoint oriented coordinate neighbourhoods of the finitely many zeros. Excision DG06 E.2 and the disjoint-simplex decomposition proved in N.2 identify homology relative to <span class="math" data-tex="\(M\setminus Z\)">\(M\setminus Z\)</span> with the direct sum of local homology groups at these points. By D.1 the image of <span class="math" data-tex="\([M]\)">\([M]\)</span> has the positive generator in each summand. Evaluating <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on this direct sum gives the sum of its evaluations on those generators, which by definition are the indices. Naturality of the evaluation pairing under the map from absolute to relative chains now gives (D.3). This is N.2's complete relative-pullback calculation; each step just listed uses only continuity of the section. If there are no zeros, DG06 T.4 gives zero Euler class and the sum is empty.</p>
+<p>For a nondegenerate smooth zero, DG06 N.1 identifies the same local Thom-pullback index with the real determinant sign, using the local inverse theorem and O.3's oriented local generator. Its proof also checks invariance under oriented frame and base-coordinate changes. Thus it applies with exactly the sign convention used here. Finally B.2 defines <span class="math" data-tex="\(c_r(V)=e(V_{\mathbb R})\)">\(c_r(V)=e(V_{\mathbb R})\)</span> on every Hausdorff base, giving (D.4).</p>
+<p>For completeness, the dimension-zero version is read directly on points. A compact zero-dimensional manifold has finitely many points, its oriented fundamental class is the sum of its signed point generators, and the canonically oriented zero bundle has Euler class one. Its evaluation is the sum of those point signs. With the canonical positive point orientations it is the number of points. □</p>
+<h2 id="free-construction-sources">Free construction sources</h2>
+<ul>
+<li>Allen Hatcher, free author <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf"><em>Vector Bundles and K-Theory</em>, version 2.2</a>, printed pages 79–83: projective characteristic coefficients, the relative-cup proof of the Whitney formula, splitting and the real-complex comparison. The local proofs use the already established arbitrary Hausdorff-base projective module theorem and supply the open-cover deformation, relative product and coefficient normalization.</li>
+<li>José Perea, freely posted <a href="https://www.joperea.com/s/MTH-7375-FS24-Lecture-18.pdf">MTH 7375 Lecture 18, 18 November 2024</a>, PDF pages 2–7: top Chern Euler normalization, conjugation and duals, the lower-rank Gysin construction and its metric-free quotient alternative. The chapter gives all quotient charts, pullback comparisons and deleted-space paracompactness proofs, with its stated Hermitian convention.</li>
+</ul>
+<p>The exact earlier programme proofs supply the Thom, Gysin, projective, flag, line, fundamental-class and index arguments cited in the text. Their human construction sources remain credited in those lessons.</p>
+<p>Original exposition: GPT-6 Astra (OpenAI), October 2026, CC0 1.0. Human construction sources are credited above. No source prose, diagrams or source PDFs are reproduced.</p>
+</article>
+<footer class="source-link"><p><a href="src/DG-CHAR-09.md">Chapter source</a> ·
+<a href="DG-CHAR-06.html">Earlier Thom and chain proofs</a> ·
+<a href="DG-CHAR-07.html">Earlier duality and product proofs</a> ·
+<a href="DG-CHAR-08.html">Earlier projective and line proofs</a> ·
+<a href="../../local-tools-for-bundles-and-transport.html">Earlier local tools</a></p>
+<p>Original exposition: CC0 1.0. Human construction sources are credited in the chapter.</p>
+<p>Rendering software: <a href="../../assets/mathjax/LICENSE">MathJax Apache 2.0 licence</a>;
+<a href="../../assets/mathjax/FONT-LICENSES.txt">font notices and licences</a>.</p></footer>
+</main></body></html>

@@ -1,0 +1,455 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From a generator to module presentations</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="from-a-generator-to-module-presentations">From a generator to module presentations</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0.</em></p>
+<p>A generator gives a way to describe an object by maps into it. Composition with endomorphisms of the generator turns those maps into a module. The resulting module remembers the object and every arrow between such objects, but arbitrary modules can contain information that disappears on returning to the original category. The Gabriel–Popescu theorem makes this distinction exact.</p>
+<p>We work in a fixed universe. Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be a Grothendieck abelian category: it is locally small and abelian, admits all small colimits, has exact filtered colimits, and has a generator <span class="math" data-tex="\(U\)">\(U\)</span>. Here generator means that <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal C}(U,-)\)">\(\operatorname{Hom}_{\mathcal C}(U,-)\)</span> is faithful. We do not assume that <span class="math" data-tex="\(U\)">\(U\)</span> is projective or that its Hom functor preserves coproducts. An object and an endomorphism ring below may be large relative to a smaller universe; all presentations use sets in the chosen one.</p>
+<p>The prerequisite <a href="ring-actions-and-tensor-hom-in-abelian-categories.html">ring-action lesson</a> constructs tensor products with objects of an abelian category. The <a href="generators-and-small-quotient-families.html">generator lesson</a> supplies evaluation epimorphisms. The <a href="serre-quotients-and-local-saturation.html">Serre-quotient lesson</a> supplies the quotient and its local Hom formula.</p>
+<h2 id="1-the-ring-and-the-two-module-conventions">1. The ring and the two module conventions</h2>
+<p>Set <span class="math" data-tex="\(S=\operatorname{End}_{\mathcal C}(U)\)">\(S=\operatorname{End}_{\mathcal C}(U)\)</span>, with multiplication <span class="math" data-tex="\(st=s\circ t\)">\(st=s\circ t\)</span>. The object <span class="math" data-tex="\(U\)">\(U\)</span> carries its tautological internal left <span class="math" data-tex="\(S\)">\(S\)</span>-action. Define
+<span class="math math-display" data-tex="\[
+\Gamma(A)=\operatorname{Hom}_{\mathcal C}(U,A),
+\qquad h\cdot s=h\circ s.
+\]">\[
+\Gamma(A)=\operatorname{Hom}_{\mathcal C}(U,A),
+\qquad h\cdot s=h\circ s.
+\]</span>
+This is a right <span class="math" data-tex="\(S\)">\(S\)</span>-module: <span class="math" data-tex="\((h\cdot s)\cdot t=h\cdot(st)\)">\((h\cdot s)\cdot t=h\cdot(st)\)</span>. For <span class="math" data-tex="\(a: A\to B\)">\(a: A\to B\)</span>, postcomposition defines the right-linear map <span class="math" data-tex="\(\Gamma(a)\)">\(\Gamma(a)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\Gamma: \mathcal C\longrightarrow\mathsf{Mod}\text{-}S.
+\]">\[
+\Gamma: \mathcal C\longrightarrow\mathsf{Mod}\text{-}S.
+\]</span>
+It is additive, faithful and left exact. Left exactness follows by applying the universal property of a kernel to maps out of <span class="math" data-tex="\(U\)">\(U\)</span>; it does not assert that a map out of <span class="math" data-tex="\(U\)">\(U\)</span> lifts across every epimorphism.</p>
+<p>The tensor construction gives an additive functor
+<span class="math math-display" data-tex="\[
+F: \mathsf{Mod}\text{-}S\longrightarrow\mathcal C,
+\qquad F(M)=M\otimes_S U,
+\]">\[
+F: \mathsf{Mod}\text{-}S\longrightarrow\mathcal C,
+\qquad F(M)=M\otimes_S U,
+\]</span>
+and natural bijections
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(F(M),A)
+\\
+\simeq\operatorname{Hom}_{\mathsf{Mod}\text{-}S}(M,\Gamma(A)).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(F(M),A)
+\\
+\simeq\operatorname{Hom}_{\mathsf{Mod}\text{-}S}(M,\Gamma(A)).
+\end{gathered}
+\tag{1.1}
+\]</span>
+In particular <span class="math" data-tex="\(F\)">\(F\)</span> is left adjoint to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, preserves all small colimits, and is right exact. To see the colimit assertion directly, maps from <span class="math" data-tex="\(F(\operatorname{colim}M_i)\)">\(F(\operatorname{colim}M_i)\)</span> to <span class="math" data-tex="\(A\)">\(A\)</span> correspond by (1.1) to compatible module maps <span class="math" data-tex="\(M_i\to\Gamma(A)\)">\(M_i\to\Gamma(A)\)</span>, hence to compatible maps <span class="math" data-tex="\(F(M_i)\to A\)">\(F(M_i)\to A\)</span>. This is the required colimit universal property, natural in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For comparison with a left-module convention, put <span class="math" data-tex="\(R=S^{\mathrm{op}}\)">\(R=S^{\mathrm{op}}\)</span>. A right <span class="math" data-tex="\(S\)">\(S\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> is the same left <span class="math" data-tex="\(R\)">\(R\)</span>-module, by <span class="math" data-tex="\(s^{\mathrm{op}}m=ms\)">\(s^{\mathrm{op}}m=ms\)</span>. The left <span class="math" data-tex="\(S\)">\(S\)</span>-action on <span class="math" data-tex="\(U\)">\(U\)</span> is an internal right <span class="math" data-tex="\(R\)">\(R\)</span>-action. Consequently the tensor in that convention is
+<span class="math math-display" data-tex="\[
+M\otimes_{R^{\mathrm{op}}}U.
+\]">\[
+M\otimes_{R^{\mathrm{op}}}U.
+\]</span>
+One may write <span class="math" data-tex="\(U\otimes_R M\)">\(U\otimes_R M\)</span> if this is declared to be the transposed notation for the same balanced construction. Writing <span class="math" data-tex="\(M\otimes_R U\)">\(M\otimes_R U\)</span> with these specified actions gives the wrong sides. No commutativity of <span class="math" data-tex="\(S\)">\(S\)</span> is available to repair that expression.</p>
+<h2 id="2-presentations-arrows-and-the-actual-unit">2. Presentations, arrows and the actual unit</h2>
+<p>Choose a free presentation of a right <span class="math" data-tex="\(S\)">\(S\)</span>-module:
+<span class="math math-display" data-tex="\[
+S^{(J)}\xrightarrow{d}S^{(I)}
+\xrightarrow{p}M\longrightarrow0.
+\tag{2.1}
+\]">\[
+S^{(J)}\xrightarrow{d}S^{(I)}
+\xrightarrow{p}M\longrightarrow0.
+\tag{2.1}
+\]</span>
+If the <span class="math" data-tex="\(j\)">\(j\)</span>-th column of <span class="math" data-tex="\(d\)">\(d\)</span> has entries <span class="math" data-tex="\(s_{ij}\)">\(s_{ij}\)</span>, there are only finitely many nonzero entries in that column. They give a map <span class="math" data-tex="\(U\to U^{(I)}\)">\(U\to U^{(I)}\)</span> with components <span class="math" data-tex="\(s_{ij}: U\to U\)">\(s_{ij}: U\to U\)</span>. The coproduct of these maps is
+<span class="math math-display" data-tex="\[
+d_U: U^{(J)}\longrightarrow U^{(I)}.
+\]">\[
+d_U: U^{(J)}\longrightarrow U^{(I)}.
+\]</span>
+The composite of two such maps has the same coefficient order as composition of the right-module maps: the coefficient of a composite is a sum of products <span class="math" data-tex="\(s_{ij}t_{jk}\)">\(s_{ij}t_{jk}\)</span>, and its operator on <span class="math" data-tex="\(U\)">\(U\)</span> is the sum of <span class="math" data-tex="\(s_{ij}\circ t_{jk}\)">\(s_{ij}\circ t_{jk}\)</span>. Finite column support makes every sum defining a column meaningful.</p>
+<p>Take <span class="math" data-tex="\(F(M)=\operatorname{coker}d_U\)">\(F(M)=\operatorname{coker}d_U\)</span>, with quotient <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. A map <span class="math" data-tex="\(a: U^{(I)}\to A\)">\(a: U^{(I)}\to A\)</span> is a family <span class="math" data-tex="\(a_i: U\to A\)">\(a_i: U\to A\)</span>. The condition <span class="math" data-tex="\(ad_U=0\)">\(ad_U=0\)</span> says
+<span class="math math-display" data-tex="\[
+\sum_i a_i s_{ij}=0\quad\text{for each }j.
+\]">\[
+\sum_i a_i s_{ij}=0\quad\text{for each }j.
+\]</span>
+These are exactly the relations for the map <span class="math" data-tex="\(S^{(I)}\to\Gamma(A)\)">\(S^{(I)}\to\Gamma(A)\)</span> sending its <span class="math" data-tex="\(i\)">\(i\)</span>-th basis element to <span class="math" data-tex="\(a_i\)">\(a_i\)</span> to factor through <span class="math" data-tex="\(M\)">\(M\)</span>. This proves (1.1), including naturality in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Here are the choice and arrow details. If <span class="math" data-tex="\(b: M\to N\)">\(b: M\to N\)</span> is a module map, precomposition gives, naturally in <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_S(N,\Gamma(A))
+\longrightarrow\operatorname{Hom}_S(M,\Gamma(A)).
+\]">\[
+\operatorname{Hom}_S(N,\Gamma(A))
+\longrightarrow\operatorname{Hom}_S(M,\Gamma(A)).
+\]</span>
+Through (1.1), this is precomposition by a unique map <span class="math" data-tex="\(F(b): F(M)\to F(N)\)">\(F(b): F(M)\to F(N)\)</span>, by the covariant representable version of Yoneda. The equality of precomposition maps for identities and composites gives <span class="math" data-tex="\(F(1)=1\)">\(F(1)=1\)</span> and <span class="math" data-tex="\(F(cb)=F(c)F(b)\)">\(F(cb)=F(c)F(b)\)</span>. Addition of precomposition maps gives <span class="math" data-tex="\(F(b+b&#x27;)=F(b)+F(b&#x27;)\)">\(F(b+b&#x27;)=F(b)+F(b&#x27;)\)</span>.</p>
+<p>Two presentations of <span class="math" data-tex="\(M\)">\(M\)</span> represent the same functor <span class="math" data-tex="\(\operatorname{Hom}_S(M,\Gamma(-))\)">\(\operatorname{Hom}_S(M,\Gamma(-))\)</span>, with its specified identification. Their unique comparison isomorphism respects that identification. Comparisons for three presentations compose to the comparison for the first and third, since both induce the identity on this functor. The same uniqueness makes every comparison commute with every module arrow. This proves presentation independence, functoriality and all their compatibility, without choosing lifts that might depend on a presentation.</p>
+<p>Write <span class="math" data-tex="\(\eta_M: M\to\Gamma F(M)\)">\(\eta_M: M\to\Gamma F(M)\)</span> and <span class="math" data-tex="\(\epsilon_A: F\Gamma(A)\to A\)">\(\epsilon_A: F\Gamma(A)\to A\)</span> for the unit and counit of (1.1). The unit corresponds to <span class="math" data-tex="\(1_{F(M)}\)">\(1_{F(M)}\)</span>; the counit corresponds to <span class="math" data-tex="\(1_{\Gamma(A)}\)">\(1_{\Gamma(A)}\)</span>. In (2.1),
+<span class="math math-display" data-tex="\[
+\eta_M(p(e_i))=\pi\iota_i: U\longrightarrow F(M),
+\tag{2.2}
+\]">\[
+\eta_M(p(e_i))=\pi\iota_i: U\longrightarrow F(M),
+\tag{2.2}
+\]</span>
+where <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span> is the <span class="math" data-tex="\(i\)">\(i\)</span>-th coproduct injection. This determines the unit on the whole module. The two triangles
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\epsilon_{F(M)}F(\eta_M)=1_{F(M)},\\
+\Gamma(\epsilon_A)\eta_{\Gamma(A)}=1_{\Gamma(A)}
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\epsilon_{F(M)}F(\eta_M)=1_{F(M)},\\
+\Gamma(\epsilon_A)\eta_{\Gamma(A)}=1_{\Gamma(A)}
+\end{gathered}
+\tag{2.3}
+\]</span>
+follow by transposing the identity maps in (1.1).</p>
+<p>For the free module <span class="math" data-tex="\(S\)">\(S\)</span>, the natural identification <span class="math" data-tex="\(F(S)=U\)">\(F(S)=U\)</span> makes <span class="math" data-tex="\(\eta_S\)">\(\eta_S\)</span> the identity of <span class="math" data-tex="\(S=\Gamma(U)\)">\(S=\Gamma(U)\)</span>. On finite free modules it gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(S^n)=U^n,\qquad \Gamma(U^n)=S^n,\\
+\eta_{S^n}=1_{S^n}.
+\end{gathered}
+\tag{2.4}
+\]">\[
+\begin{gathered}
+F(S^n)=U^n,\qquad \Gamma(U^n)=S^n,\\
+\eta_{S^n}=1_{S^n}.
+\end{gathered}
+\tag{2.4}
+\]</span>
+The second equality uses finite biproducts. For an infinite set <span class="math" data-tex="\(I\)">\(I\)</span>, we still have <span class="math" data-tex="\(F(S^{(I)})=U^{(I)}\)">\(F(S^{(I)})=U^{(I)}\)</span>, but generally
+<span class="math math-display" data-tex="\[
+\Gamma(U^{(I)})\ne S^{(I)}.
+\tag{2.5}
+\]">\[
+\Gamma(U^{(I)})\ne S^{(I)}.
+\tag{2.5}
+\]</span>
+Replacing (2.4) by an infinite version would silently impose an extra hypothesis on the generator.</p>
+<h2 id="3-the-retained-gabriel-popescu-theorem">3. The retained Gabriel–Popescu theorem</h2>
+<p>We retain <a href="https://stacks.math.columbia.edu/tag/0F5R">Stacks, Theorem 19.14.3 and its specified functors</a>: for the chosen <span class="math" data-tex="\(U\)">\(U\)</span>, the functors above satisfy</p>
+<ol>
+<li><span class="math" data-tex="\(F\dashv\Gamma\)">\(F\dashv\Gamma\)</span>;</li>
+<li><span class="math" data-tex="\(\epsilon: F\Gamma\to\operatorname{id}_{\mathcal C}\)">\(\epsilon: F\Gamma\to\operatorname{id}_{\mathcal C}\)</span> is an isomorphism;</li>
+<li><span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is fully faithful;</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is exact.</li>
+</ol>
+<p>The same section's Lemma 19.14.2 states that a module injection <span class="math" data-tex="\(M\hookrightarrow\Gamma(A)\)">\(M\hookrightarrow\Gamma(A)\)</span> has a monic adjoint <span class="math" data-tex="\(F(M)\to A\)">\(F(M)\to A\)</span>. The ring is allowed to be noncommutative, and these statements hold for every generator.</p>
+<p>Sections 1–2 identify the canonical functors, their actions and their natural adjunction with the tensor construction used here. In particular this import is about the same <span class="math" data-tex="\(F\)">\(F\)</span>, rather than a second unspecified left adjoint.</p>
+<p>For clarity, the counit and full-faithfulness assertions are equivalent in this adjunction. If <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> is invertible, a module map <span class="math" data-tex="\(b: \Gamma(A)\to\Gamma(B)\)">\(b: \Gamma(A)\to\Gamma(B)\)</span> corresponds to <span class="math" data-tex="\(c: F\Gamma(A)\to B\)">\(c: F\Gamma(A)\to B\)</span>, and then to <span class="math" data-tex="\(a=c\epsilon_A^{-1}: A\to B\)">\(a=c\epsilon_A^{-1}: A\to B\)</span>. Naturality of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and (2.3) show <span class="math" data-tex="\(\Gamma(a)=b\)">\(\Gamma(a)=b\)</span>. The same adjunction shows uniqueness.</p>
+<p>Conversely, if <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is fully faithful, for every <span class="math" data-tex="\(B\)">\(B\)</span> the map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(A,B)
+\\
+\longrightarrow\operatorname{Hom}_{\mathcal C}(F\Gamma(A),B),
+\\
+a\longmapsto a\epsilon_A
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(A,B)
+\\
+\longrightarrow\operatorname{Hom}_{\mathcal C}(F\Gamma(A),B),
+\\
+a\longmapsto a\epsilon_A
+\end{gathered}
+\]</span>
+becomes under (1.1) the bijection <span class="math" data-tex="\(a\mapsto\Gamma(a)\)">\(a\mapsto\Gamma(a)\)</span>. It is therefore bijective. Yoneda implies that <span class="math" data-tex="\(\epsilon_A\)">\(\epsilon_A\)</span> is an isomorphism. Both arguments use the actual counit, so their conclusions are natural in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Full faithfulness identifies <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> with a full subcategory of <span class="math" data-tex="\(\mathsf{Mod}\text{-}S\)">\(\mathsf{Mod}\text{-}S\)</span>. Exactness belongs to the functor returning from modules. The fully faithful functor <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> can fail to be right exact, as Exercise 1 shows.</p>
+<h2 id="4-an-ordinary-exactness-criterion">4. An ordinary exactness criterion</h2>
+<p>The following elementary criterion supplies the ordinary exactness step when a proof has reduced to submodules of free modules.</p>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(H: \mathsf{Mod}\text{-}S\to\mathcal B\)">\(H: \mathsf{Mod}\text{-}S\to\mathcal B\)</span> be an additive right exact functor, with <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> abelian. Suppose <span class="math" data-tex="\(H(K)\to H(P)\)">\(H(K)\to H(P)\)</span> is monic for every submodule <span class="math" data-tex="\(K\subseteq P\)">\(K\subseteq P\)</span> of a free module. Then <span class="math" data-tex="\(H\)">\(H\)</span> is exact.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(M&#x27;\subseteq M\)">\(M&#x27;\subseteq M\)</span>, choose a free epimorphism <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span>, and let <span class="math" data-tex="\(L\)">\(L\)</span> be its kernel and <span class="math" data-tex="\(K\)">\(K\)</span> the inverse image of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. There are compatible exact sequences
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow L\longrightarrow K\longrightarrow M&#x27;\longrightarrow0,\\
+0\longrightarrow L\longrightarrow P\longrightarrow M\longrightarrow0.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow L\longrightarrow K\longrightarrow M&#x27;\longrightarrow0,\\
+0\longrightarrow L\longrightarrow P\longrightarrow M\longrightarrow0.
+\end{gathered}
+\tag{4.1}
+\]</span>
+By hypothesis <span class="math" data-tex="\(H(L)\)">\(H(L)\)</span> and <span class="math" data-tex="\(H(K)\)">\(H(K)\)</span> embed into <span class="math" data-tex="\(H(P)\)">\(H(P)\)</span>. Their factorization <span class="math" data-tex="\(H(L)\to H(K)\to H(P)\)">\(H(L)\to H(K)\to H(P)\)</span> shows that <span class="math" data-tex="\(H(L)\to H(K)\)">\(H(L)\to H(K)\)</span> is also monic. We can therefore regard them as nested subobjects
+<span class="math math-display" data-tex="\[
+H(L)\subseteq H(K)\subseteq H(P).
+\]">\[
+H(L)\subseteq H(K)\subseteq H(P).
+\]</span>
+Right exactness identifies the images of the last two quotients in (4.1):
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(M&#x27;)=H(K)/H(L),\\
+H(M)=H(P)/H(L).
+\end{gathered}
+\]">\[
+\begin{gathered}
+H(M&#x27;)=H(K)/H(L),\\
+H(M)=H(P)/H(L).
+\end{gathered}
+\]</span>
+The induced map between these quotients is monic. Indeed, the kernel of <span class="math" data-tex="\(H(K)\to H(P)/H(L)\)">\(H(K)\to H(P)/H(L)\)</span> is the pullback of <span class="math" data-tex="\(H(L)\hookrightarrow H(P)\)">\(H(L)\hookrightarrow H(P)\)</span> to <span class="math" data-tex="\(H(K)\)">\(H(K)\)</span>, which is precisely <span class="math" data-tex="\(H(L)\)">\(H(L)\)</span>. The coimage–image isomorphism in an abelian category identifies the induced quotient with a subobject of <span class="math" data-tex="\(H(P)/H(L)\)">\(H(P)/H(L)\)</span>. This induced arrow is <span class="math" data-tex="\(H(M&#x27;\hookrightarrow M)\)">\(H(M&#x27;\hookrightarrow M)\)</span>, by the compatible cokernel diagrams.</p>
+<p>Thus <span class="math" data-tex="\(H\)">\(H\)</span> preserves every monomorphism. Applied to a short exact sequence, right exactness supplies its last two terms and their kernel-image equality, while preservation of the first monomorphism supplies its initial zero. Hence <span class="math" data-tex="\(H\)">\(H\)</span> is exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only free covers and abelian quotients were used. There is no need to construct a derived functor for this criterion.</p>
+<h2 id="5-correcting-the-finite-kernel-argument">5. Correcting the finite kernel argument</h2>
+<p>There is also a direct way to check the delicate finite step in the free-cover argument. Let <span class="math" data-tex="\(i: M\hookrightarrow S^{(I)}\)">\(i: M\hookrightarrow S^{(I)}\)</span> be an inclusion with <span class="math" data-tex="\(M\)">\(M\)</span> finitely generated. Choose an epimorphism <span class="math" data-tex="\(p: S^n\to M\)">\(p: S^n\to M\)</span>, and set <span class="math" data-tex="\(h=ip\)">\(h=ip\)</span>.</p>
+<p>Since the images of finitely many basis elements have finite support, <span class="math" data-tex="\(h\)">\(h\)</span> factors through some finite-coordinate summand:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S^n\xrightarrow{h_0}S^J
+\hookrightarrow S^{(I)},\\
+J\subseteq I\text{ finite}.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+S^n\xrightarrow{h_0}S^J
+\hookrightarrow S^{(I)},\\
+J\subseteq I\text{ finite}.
+\end{gathered}
+\tag{5.1}
+\]</span>
+The second arrow is split. Under (2.4), <span class="math" data-tex="\(\Gamma F(h_0)\)">\(\Gamma F(h_0)\)</span> is <span class="math" data-tex="\(h_0\)">\(h_0\)</span> itself: this follows either from the coefficients or from naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Applying <span class="math" data-tex="\(F\)">\(F\)</span>, then <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, to the split inclusion still gives a split monomorphism. Consequently, as submodules of <span class="math" data-tex="\(\Gamma F(S^n)=S^n\)">\(\Gamma F(S^n)=S^n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\ker\Gamma F(h)&amp;=\ker h_0\\
+&amp;=\ker h=\ker p.
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+\ker\Gamma F(h)&amp;=\ker h_0\\
+&amp;=\ker h=\ker p.
+\end{aligned}
+\tag{5.2}
+\]</span>
+This calculation has not replaced <span class="math" data-tex="\(\Gamma(U^{(I)})\)">\(\Gamma(U^{(I)})\)</span> by <span class="math" data-tex="\(S^{(I)}\)">\(S^{(I)}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\kappa: K\hookrightarrow F(S^n)\)">\(\kappa: K\hookrightarrow F(S^n)\)</span> be the kernel of <span class="math" data-tex="\(F(h)\)">\(F(h)\)</span>. Left exactness of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> identifies <span class="math" data-tex="\(\Gamma(\kappa)\)">\(\Gamma(\kappa)\)</span> with the kernel in (5.2). Naturality of the unit says
+<span class="math math-display" data-tex="\[
+\Gamma F(p)\eta_{S^n}=\eta_M p.
+\]">\[
+\Gamma F(p)\eta_{S^n}=\eta_M p.
+\]</span>
+As <span class="math" data-tex="\(\eta_{S^n}\)">\(\eta_{S^n}\)</span> is the identity under (2.4), it follows that
+<span class="math math-display" data-tex="\[
+\Gamma F(p)\Gamma(\kappa)=0.
+\]">\[
+\Gamma F(p)\Gamma(\kappa)=0.
+\]</span>
+Faithfulness of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> gives <span class="math" data-tex="\(F(p)\kappa=0\)">\(F(p)\kappa=0\)</span>. Thus <span class="math" data-tex="\(\ker F(h)\)">\(\ker F(h)\)</span> is contained in <span class="math" data-tex="\(\ker F(p)\)">\(\ker F(p)\)</span>. The reverse containment follows from <span class="math" data-tex="\(F(h)=F(i)F(p)\)">\(F(h)=F(i)F(p)\)</span>, so these kernels agree.</p>
+<p>Right exactness makes <span class="math" data-tex="\(F(p)\)">\(F(p)\)</span> epic. In an abelian category, the kernel of <span class="math" data-tex="\(F(i)\)">\(F(i)\)</span> pulls back along this epimorphism to <span class="math" data-tex="\(\ker F(h)\)">\(\ker F(h)\)</span>; the projection of that pullback onto <span class="math" data-tex="\(\ker F(i)\)">\(\ker F(i)\)</span> is epic. The equality just proved says that this pullback is <span class="math" data-tex="\(\ker F(p)\)">\(\ker F(p)\)</span>, whose map to <span class="math" data-tex="\(\ker F(i)\)">\(\ker F(i)\)</span> is zero. A zero epimorphism has zero target. Hence <span class="math" data-tex="\(\ker F(i)=0\)">\(\ker F(i)=0\)</span>, proving that <span class="math" data-tex="\(F(i)\)">\(F(i)\)</span> is monic.</p>
+<p>The required vanishing in this argument is
+<span class="math math-display" data-tex="\[
+F(p)\kappa=0: \ker F(h)\longrightarrow F(M).
+\tag{5.3}
+\]">\[
+F(p)\kappa=0: \ker F(h)\longrightarrow F(M).
+\tag{5.3}
+\]</span>
+The source instead prints a map from <span class="math" data-tex="\(\ker F(h)\)">\(\ker F(h)\)</span> to <span class="math" data-tex="\(F(S^{(I)})\)">\(F(S^{(I)})\)</span>. That map vanishes by the definition of a kernel and gives no information about <span class="math" data-tex="\(F(M)\)">\(F(M)\)</span>. Its corresponding Hom display needs the same target correction. Equation (5.3) states the missing assertion and proves it.</p>
+<p>For arbitrary <span class="math" data-tex="\(M\subseteq S^{(I)}\)">\(M\subseteq S^{(I)}\)</span>, take its directed family of finitely generated submodules <span class="math" data-tex="\(M_\lambda\)">\(M_\lambda\)</span>. Their union is <span class="math" data-tex="\(M\)">\(M\)</span>: each finite set of elements generates one, and the sum of two such submodules is again finitely generated. Each <span class="math" data-tex="\(F(M_\lambda)\to F(S^{(I)})\)">\(F(M_\lambda)\to F(S^{(I)})\)</span> is monic by the finite argument. Since <span class="math" data-tex="\(F\)">\(F\)</span> preserves colimits and filtered colimits are exact in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, their colimit <span class="math" data-tex="\(F(M)\to F(S^{(I)})\)">\(F(M)\to F(S^{(I)})\)</span> is monic. More explicitly, apply filtered exactness to the sequences
+<span class="math math-display" data-tex="\[
+0\longrightarrow F(M_\lambda)\longrightarrow F(S^{(I)})
+\longrightarrow C_\lambda\longrightarrow0,
+\]">\[
+0\longrightarrow F(M_\lambda)\longrightarrow F(S^{(I)})
+\longrightarrow C_\lambda\longrightarrow0,
+\]</span>
+where <span class="math" data-tex="\(C_\lambda\)">\(C_\lambda\)</span> is the cokernel. The constant middle diagram has colimit <span class="math" data-tex="\(F(S^{(I)})\)">\(F(S^{(I)})\)</span>. Proposition 4.1 now supplies exactness for arbitrary module monomorphisms.</p>
+<p>This checks the printed proof interface using the faithful Hom functor, finite free identifications, right exactness, and AB5. In particular neither an infinite free Hom identification nor a projective generator is hidden in the correction.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (warm-up: a generator that is not projective).</strong> In abelian groups take <span class="math" data-tex="\(U=\mathbf Z\oplus\mathbf Z/2\)">\(U=\mathbf Z\oplus\mathbf Z/2\)</span>. Compute <span class="math" data-tex="\(S=\operatorname{End}(U)\)">\(S=\operatorname{End}(U)\)</span> and the right action on <span class="math" data-tex="\(\Gamma(X)\)">\(\Gamma(X)\)</span>. Prove that <span class="math" data-tex="\(U\)">\(U\)</span> is a generator and that <span class="math" data-tex="\(S\)">\(S\)</span> is noncommutative. For the quotient <span class="math" data-tex="\(q: \mathbf Z\to\mathbf Z/2\)">\(q: \mathbf Z\to\mathbf Z/2\)</span>, decide whether <span class="math" data-tex="\(\Gamma(q)\)">\(\Gamma(q)\)</span> is epic. Explain how your answer fits the retained theorem.</p>
+<p><strong>Solution.</strong> The four Hom groups between the two summands give
+<span class="math math-display" data-tex="\[
+S=\left\{
+\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+\ \middle|\ 
+\substack{r\in\mathbf Z\\ b,c\in\mathbf F_2}
+\right\},
+\]">\[
+S=\left\{
+\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+\ \middle|\ 
+\substack{r\in\mathbf Z\\ b,c\in\mathbf F_2}
+\right\},
+\]</span>
+where a product has entries
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+\begin{pmatrix}r&#x27;&amp;0\\ b&#x27;&amp;c&#x27;\end{pmatrix}
+\\
+{}=
+\begin{pmatrix}rr&#x27;&amp;0\\ b\overline{r&#x27;}+cb&#x27;&amp;cc&#x27;\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+\begin{pmatrix}r&#x27;&amp;0\\ b&#x27;&amp;c&#x27;\end{pmatrix}
+\\
+{}=
+\begin{pmatrix}rr&#x27;&amp;0\\ b\overline{r&#x27;}+cb&#x27;&amp;cc&#x27;\end{pmatrix}.
+\end{gathered}
+\]</span>
+The bar means reduction modulo <span class="math" data-tex="\(2\)">\(2\)</span>. The missing upper-right entry is zero because an element of order dividing <span class="math" data-tex="\(2\)">\(2\)</span> cannot have a nonzero image in <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>.</p>
+<p>A map <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is a pair <span class="math" data-tex="\((x,y)\in X\oplus X[2]\)">\((x,y)\in X\oplus X[2]\)</span>, where <span class="math" data-tex="\(X[2]=\{y: 2y=0\}\)">\(X[2]=\{y: 2y=0\}\)</span>. Precomposition gives
+<span class="math math-display" data-tex="\[
+(x,y)\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+=(rx+by,cy).
+\tag{6.1}
+\]">\[
+(x,y)\begin{pmatrix}r&amp;0\\ b&amp;c\end{pmatrix}
+=(rx+by,cy).
+\tag{6.1}
+\]</span>
+The scalar <span class="math" data-tex="\(b\)">\(b\)</span> acts on <span class="math" data-tex="\(y\)">\(y\)</span> through <span class="math" data-tex="\(\mathbf F_2\)">\(\mathbf F_2\)</span>, so this expression is well defined. Applying it twice gives the displayed matrix product in exactly its specified order.</p>
+<p>If <span class="math" data-tex="\(a: X\to Y\)">\(a: X\to Y\)</span> is a nonzero homomorphism, some <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> has <span class="math" data-tex="\(a(x)\ne0\)">\(a(x)\ne0\)</span>. Send <span class="math" data-tex="\(1\)">\(1\)</span> in the <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-summand of <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>, and send the other summand to zero. Its composite with <span class="math" data-tex="\(a\)">\(a\)</span> is nonzero. Subtracting two different maps proves faithfulness, hence the generator assertion.</p>
+<p>Let <span class="math" data-tex="\(e\)">\(e\)</span> be the matrix with diagonal <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, and <span class="math" data-tex="\(n\)">\(n\)</span> the matrix with lower-left entry <span class="math" data-tex="\(1\)">\(1\)</span> and other entries zero. Then <span class="math" data-tex="\(ne=n\)">\(ne=n\)</span> and <span class="math" data-tex="\(en=0\)">\(en=0\)</span>. Thus <span class="math" data-tex="\(S\)">\(S\)</span> is noncommutative.</p>
+<p>Here <span class="math" data-tex="\(\Gamma(\mathbf Z)=\mathbf Z\oplus0\)">\(\Gamma(\mathbf Z)=\mathbf Z\oplus0\)</span>, whereas <span class="math" data-tex="\(\Gamma(\mathbf Z/2)=\mathbf F_2\oplus\mathbf F_2\)">\(\Gamma(\mathbf Z/2)=\mathbf F_2\oplus\mathbf F_2\)</span>. The map is
+<span class="math math-display" data-tex="\[
+\Gamma(q)(x,0)=(\overline x,0).
+\]">\[
+\Gamma(q)(x,0)=(\overline x,0).
+\]</span>
+It misses <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and is not epic in right <span class="math" data-tex="\(S\)">\(S\)</span>-modules, where epimorphisms are surjections. Equivalently the map <span class="math" data-tex="\(U\to\mathbf Z/2\)">\(U\to\mathbf Z/2\)</span> that is identity on its second summand does not lift to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>; all maps from that summand to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> vanish. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is not projective.</p>
+<p>Nevertheless <span class="math" data-tex="\(F\)">\(F\)</span> is exact and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is fully faithful by §3. The theorem does not claim that <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> preserves epimorphisms. This example uses precisely the endomorphism-ring action (6.1); forgetting it would lose the full-faithfulness assertion.</p>
+<p><strong>Exercise 2 (moderate: a nonzero module erased by <span class="math" data-tex="\(F\)">\(F\)</span>).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field and <span class="math" data-tex="\(U=k^{(\mathbf N)}\)">\(U=k^{(\mathbf N)}\)</span> in <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces, with <span class="math" data-tex="\(S=\operatorname{End}_k(U)\)">\(S=\operatorname{End}_k(U)\)</span>. Let <span class="math" data-tex="\(D\subseteq S\)">\(D\subseteq S\)</span> consist of the finite-rank operators. Prove that <span class="math" data-tex="\(D\)">\(D\)</span> is a two-sided ideal and that <span class="math" data-tex="\(S/D\ne0\)">\(S/D\ne0\)</span>, but <span class="math" data-tex="\(F(S/D)=0\)">\(F(S/D)=0\)</span>. Determine the image of the canonical coproduct map
+<span class="math math-display" data-tex="\[
+\bigoplus_{n\in\mathbf N}\Gamma(k)
+\longrightarrow\Gamma\!\left(\bigoplus_{n\in\mathbf N}k\right)=S.
+\tag{6.2}
+\]">\[
+\bigoplus_{n\in\mathbf N}\Gamma(k)
+\longrightarrow\Gamma\!\left(\bigoplus_{n\in\mathbf N}k\right)=S.
+\tag{6.2}
+\]</span></p>
+<p><strong>Solution.</strong> The object <span class="math" data-tex="\(U\)">\(U\)</span> is a generator: a nonzero map of vector spaces is nonzero on some vector <span class="math" data-tex="\(v\)">\(v\)</span>, and the map from <span class="math" data-tex="\(U\)">\(U\)</span> sending its first basis vector to <span class="math" data-tex="\(v\)">\(v\)</span> and the others to zero detects it. A sum of finite-rank operators has image in the sum of their finite-dimensional images. Precomposition and postcomposition of a finite-rank operator remain finite rank. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is a two-sided ideal. The identity of the infinite-dimensional <span class="math" data-tex="\(U\)">\(U\)</span> is not finite rank, so its class in <span class="math" data-tex="\(S/D\)">\(S/D\)</span> is nonzero.</p>
+<p>For a finite-dimensional subspace <span class="math" data-tex="\(W\subseteq U\)">\(W\subseteq U\)</span>, choose a projection <span class="math" data-tex="\(e_W: U\to W\subseteq U\)">\(e_W: U\to W\subseteq U\)</span>. Its associated right ideal is
+<span class="math math-display" data-tex="\[
+e_WS=\{s\in S: \operatorname{im}s\subseteq W\}.
+\tag{6.3}
+\]">\[
+e_WS=\{s\in S: \operatorname{im}s\subseteq W\}.
+\tag{6.3}
+\]</span>
+The inclusion from left to right follows from the projection's image. For the converse, <span class="math" data-tex="\(e_Ws=s\)">\(e_Ws=s\)</span> whenever <span class="math" data-tex="\(s\)">\(s\)</span> has image in <span class="math" data-tex="\(W\)">\(W\)</span>. The right side of (6.3) is independent of the chosen projection.</p>
+<p>The right-linear idempotent <span class="math" data-tex="\(s\mapsto e_Ws\)">\(s\mapsto e_Ws\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> has image <span class="math" data-tex="\(e_WS\)">\(e_WS\)</span>. Under <span class="math" data-tex="\(F(S)=U\)">\(F(S)=U\)</span>, its image under <span class="math" data-tex="\(F\)">\(F\)</span> is the operator <span class="math" data-tex="\(e_W\)">\(e_W\)</span>, by the free-module identification. An additive functor preserves the injection and retraction of a split image, so
+<span class="math math-display" data-tex="\[
+F(e_WS)=W
+\]">\[
+F(e_WS)=W
+\]</span>
+with its specified inclusion into <span class="math" data-tex="\(F(S)=U\)">\(F(S)=U\)</span>. This identification is natural under <span class="math" data-tex="\(W\subseteq W&#x27;\)">\(W\subseteq W&#x27;\)</span>: composing either proposed map into <span class="math" data-tex="\(U\)">\(U\)</span> gives the inclusion of <span class="math" data-tex="\(W\)">\(W\)</span>, and the inclusion of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> is monic. It is also independent of the projection, because it identifies the same right ideal's map into <span class="math" data-tex="\(S\)">\(S\)</span> with the same subspace's map into <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Finite-dimensional subspaces form a directed set under inclusion, and
+<span class="math math-display" data-tex="\[
+D=\operatorname{colim}_{W}e_WS.
+\]">\[
+D=\operatorname{colim}_{W}e_WS.
+\]</span>
+Every finite-rank operator belongs to the ideal for its image; the reverse inclusion is immediate. Preservation of colimits by <span class="math" data-tex="\(F\)">\(F\)</span> now identifies <span class="math" data-tex="\(F(D)\to F(S)\)">\(F(D)\to F(S)\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_{W}W\longrightarrow U.
+\]">\[
+\operatorname{colim}_{W}W\longrightarrow U.
+\]</span>
+Every vector lies in a finite-dimensional subspace, so this is an isomorphism. Right exactness on <span class="math" data-tex="\(D\to S\to S/D\to0\)">\(D\to S\to S/D\to0\)</span> gives <span class="math" data-tex="\(F(S/D)=0\)">\(F(S/D)=0\)</span>.</p>
+<p>Finally a member of the source of (6.2) is a finite family of linear functionals <span class="math" data-tex="\(U\to k\)">\(U\to k\)</span>, placed in finitely many output coordinates. It therefore gives an operator with finite-coordinate image, hence finite rank. Conversely a finite-dimensional subspace of <span class="math" data-tex="\(k^{(\mathbf N)}\)">\(k^{(\mathbf N)}\)</span> lies in a finite-coordinate subspace: take a finite basis and unite its finite supports. Thus every finite-rank operator has only finitely many nonzero output coordinate functionals and occurs in (6.2). The map is injective, since its coordinates recover each functional, and its image is exactly <span class="math" data-tex="\(D\)">\(D\)</span>. It misses the identity. This gives an explicit failure of coproduct preservation by <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and explains why the arbitrary-module comparison is a quotient rather than necessarily a module-category equivalence.</p>
+<p><strong>Exercise 3 (hard: identify the quotient and all its local objects).</strong> In the general setting of this lesson, let
+<span class="math math-display" data-tex="\[
+\mathcal T=\{M\in\mathsf{Mod}\text{-}S: F(M)=0\}.
+\]">\[
+\mathcal T=\{M\in\mathsf{Mod}\text{-}S: F(M)=0\}.
+\]</span>
+Prove that <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is Serre and closed under small colimits. Show that <span class="math" data-tex="\(F\)">\(F\)</span> induces an equivalence
+<span class="math math-display" data-tex="\[
+\overline F: (\mathsf{Mod}\text{-}S)/\mathcal T
+\simeq\mathcal C.
+\tag{6.4}
+\]">\[
+\overline F: (\mathsf{Mod}\text{-}S)/\mathcal T
+\simeq\mathcal C.
+\tag{6.4}
+\]</span>
+Identify the local modules and the kernel of <span class="math" data-tex="\(\eta_M\)">\(\eta_M\)</span>.</p>
+<p><strong>Solution.</strong> Exactness of <span class="math" data-tex="\(F\)">\(F\)</span> takes a short exact sequence to a short exact sequence. If its middle term is killed, so are its subobject and quotient; if both ends are killed, so is its middle term. This is Serre closure. Preservation of colimits shows closure under arbitrary small colimits of killed modules. The Serre-quotient theorem from the prerequisite therefore gives an exact quotient functor <span class="math" data-tex="\(q\)">\(q\)</span>, with small Hom sets since a module has a set of submodules. Exact <span class="math" data-tex="\(F\)">\(F\)</span> descends to the exact functor <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> in (6.4).</p>
+<p>The first triangle in (2.3), together with invertibility of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, makes <span class="math" data-tex="\(F(\eta_M)\)">\(F(\eta_M)\)</span> invertible. Exactness then puts <span class="math" data-tex="\(\ker\eta_M\)">\(\ker\eta_M\)</span> and <span class="math" data-tex="\(\operatorname{coker}\eta_M\)">\(\operatorname{coker}\eta_M\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Thus <span class="math" data-tex="\(q\eta_M\)">\(q\eta_M\)</span> is invertible.</p>
+<p>Call a module <span class="math" data-tex="\(L\)">\(L\)</span> local if <span class="math" data-tex="\(\operatorname{Hom}_S(-,L)\)">\(\operatorname{Hom}_S(-,L)\)</span> takes every map with kernel and cokernel in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> to a bijection. For <span class="math" data-tex="\(L=\Gamma(A)\)">\(L=\Gamma(A)\)</span>, adjunction identifies this precomposition map with precomposition by the corresponding <span class="math" data-tex="\(F(d)\)">\(F(d)\)</span>. Exactness makes <span class="math" data-tex="\(F(d)\)">\(F(d)\)</span> invertible, so <span class="math" data-tex="\(\Gamma(A)\)">\(\Gamma(A)\)</span> is local. The local Hom formula of the Serre-quotient lesson gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{(\mathsf{Mod}\text{-}S)/\mathcal T}(qX,q\Gamma(A))
+\\
+\simeq\operatorname{Hom}_S(X,\Gamma(A)).
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{(\mathsf{Mod}\text{-}S)/\mathcal T}(qX,q\Gamma(A))
+\\
+\simeq\operatorname{Hom}_S(X,\Gamma(A)).
+\end{gathered}
+\tag{6.5}
+\]</span>
+In this formula the map induced by <span class="math" data-tex="\(q\)">\(q\)</span> is the specified bijection.</p>
+<p>Replacing <span class="math" data-tex="\(qM,qN\)">\(qM,qN\)</span> by the isomorphic <span class="math" data-tex="\(q\Gamma F(M),q\Gamma F(N)\)">\(q\Gamma F(M),q\Gamma F(N)\)</span>, (6.5) and full faithfulness of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> identify their Hom set with <span class="math" data-tex="\(\operatorname{Hom}_{\mathcal C}(F(M),F(N))\)">\(\operatorname{Hom}_{\mathcal C}(F(M),F(N))\)</span>. This bijection is the one induced by <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span>: for a map between the <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-values, the counit identifies its image under <span class="math" data-tex="\(F\)">\(F\)</span> with the unique corresponding map in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> gives the same identification after the replacements. Hence <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> is fully faithful. Every <span class="math" data-tex="\(A\)">\(A\)</span> is isomorphic to <span class="math" data-tex="\(F\Gamma(A)\)">\(F\Gamma(A)\)</span>, so it is essentially surjective. This proves (6.4).</p>
+<p>For a local <span class="math" data-tex="\(M\)">\(M\)</span>, apply locality to the denominator <span class="math" data-tex="\(\eta_M: M\to\Gamma F(M)\)">\(\eta_M: M\to\Gamma F(M)\)</span>. There is a unique map <span class="math" data-tex="\(a: \Gamma F(M)\to M\)">\(a: \Gamma F(M)\to M\)</span> with <span class="math" data-tex="\(a\eta_M=1_M\)">\(a\eta_M=1_M\)</span>. The target <span class="math" data-tex="\(\Gamma F(M)\)">\(\Gamma F(M)\)</span> is also local. The maps <span class="math" data-tex="\(\eta_Ma\)">\(\eta_Ma\)</span> and <span class="math" data-tex="\(1_{\Gamma F(M)}\)">\(1_{\Gamma F(M)}\)</span> agree after precomposition with <span class="math" data-tex="\(\eta_M\)">\(\eta_M\)</span>, so locality gives <span class="math" data-tex="\(\eta_Ma=1\)">\(\eta_Ma=1\)</span>. Thus <span class="math" data-tex="\(\eta_M\)">\(\eta_M\)</span> is invertible and <span class="math" data-tex="\(M\)">\(M\)</span> is a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-value up to isomorphism. Conversely all such values were proved local. They are exactly the local modules.</p>
+<p>If <span class="math" data-tex="\(T&#x27;\subseteq M\)">\(T&#x27;\subseteq M\)</span> is killed by <span class="math" data-tex="\(F\)">\(F\)</span>, adjunction gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_S(T&#x27;,\Gamma F(M))
+\\
+\simeq\operatorname{Hom}_{\mathcal C}(F(T&#x27;),F(M))=0.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_S(T&#x27;,\Gamma F(M))
+\\
+\simeq\operatorname{Hom}_{\mathcal C}(F(T&#x27;),F(M))=0.
+\end{gathered}
+\]</span>
+Therefore <span class="math" data-tex="\(T&#x27;\subseteq\ker\eta_M\)">\(T&#x27;\subseteq\ker\eta_M\)</span>. The kernel itself is killed, so it is the largest <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>-submodule of <span class="math" data-tex="\(M\)">\(M\)</span>. The unit's cokernel can still be killed and nonzero. Removing that largest submodule need not make <span class="math" data-tex="\(M\)">\(M\)</span> local; the full saturation is <span class="math" data-tex="\(\Gamma F(M)\)">\(\Gamma F(M)\)</span>.</p>
+<p><strong>Exercise 4 (expert: when the quotient disappears).</strong> Prove that the adjunction <span class="math" data-tex="\(F\dashv\Gamma\)">\(F\dashv\Gamma\)</span> is an equivalence of categories if and only if <span class="math" data-tex="\(U\)">\(U\)</span> is projective and the canonical map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigoplus_i\operatorname{Hom}_{\mathcal C}(U,A_i)
+\\
+\longrightarrow
+\operatorname{Hom}_{\mathcal C}\!\left(U,\bigoplus_i A_i\right)
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+\bigoplus_i\operatorname{Hom}_{\mathcal C}(U,A_i)
+\\
+\longrightarrow
+\operatorname{Hom}_{\mathcal C}\!\left(U,\bigoplus_i A_i\right)
+\end{gathered}
+\tag{6.6}
+\]</span>
+is bijective for every small family. State exactly where each hypothesis is used, and check the failures in Exercises 1–2.</p>
+<p><strong>Solution.</strong> Suppose the two properties hold. Projectivity means that every map <span class="math" data-tex="\(U\to B\)">\(U\to B\)</span> lifts across every epimorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>. Thus <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> takes epimorphisms to surjective module maps. Together with its left exactness, this makes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> exact. The bijections (6.6) are right-linear and compatible with the injections, so <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> preserves coproducts as module coproducts.</p>
+<p>For every free module <span class="math" data-tex="\(S^{(I)}\)">\(S^{(I)}\)</span>, (6.6), <span class="math" data-tex="\(F(S)=U\)">\(F(S)=U\)</span>, and (2.2) identify
+<span class="math math-display" data-tex="\[
+\eta_{S^{(I)}}: S^{(I)}
+\xrightarrow{\ \sim\ }\Gamma(U^{(I)}).
+\]">\[
+\eta_{S^{(I)}}: S^{(I)}
+\xrightarrow{\ \sim\ }\Gamma(U^{(I)}).
+\]</span>
+This is where the coproduct hypothesis is used. For a free presentation (2.1), both the identity functor and <span class="math" data-tex="\(\Gamma F\)">\(\Gamma F\)</span> take its cokernel to the cokernel of its first map: <span class="math" data-tex="\(F\)">\(F\)</span> is right exact, and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is exact by projectivity. Naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives a diagram of these cokernel presentations, whose two free-module components are isomorphisms. The induced map on cokernels is therefore an isomorphism. It is <span class="math" data-tex="\(\eta_M\)">\(\eta_M\)</span>. This is where projectivity is used, and no finite-presentation restriction has been imposed.</p>
+<p>The unit and the already invertible counit are now isomorphisms on all objects, so <span class="math" data-tex="\(F,\Gamma\)">\(F,\Gamma\)</span> are inverse equivalences.</p>
+<p>Conversely suppose they are equivalences. An equivalence preserves epimorphisms and coproducts by their categorical universal properties. Thus <span class="math" data-tex="\(\Gamma(A)\to\Gamma(B)\)">\(\Gamma(A)\to\Gamma(B)\)</span> is surjective for every epimorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, because epimorphisms of modules are surjective. Elements of these modules are maps from <span class="math" data-tex="\(U\)">\(U\)</span>, proving projectivity. Preservation of coproducts gives (6.6), since the underlying abelian group of a module coproduct is the direct sum of its groups. The preserved injection maps give exactly the canonical map, rather than merely some abstract group isomorphism.</p>
+<p>Exercise 1 fails projectivity: the specified map from the <span class="math" data-tex="\(\mathbf Z/2\)">\(\mathbf Z/2\)</span>-summand cannot lift across <span class="math" data-tex="\(q\)">\(q\)</span>. Its <span class="math" data-tex="\(U\)">\(U\)</span> does satisfy (6.6), since a map from each of the two finitely generated summands has finite support in a coproduct, and their two finite supports have finite union. Exercise 2 has projective <span class="math" data-tex="\(U\)">\(U\)</span>: maps from a free vector space lift across surjections by lifting each basis vector. It fails (6.6), since the identity is outside the image of (6.2). These failures occur separately. Neither property follows from being a generator alone.</p>
+<h2 id="7-references-and-scope">7. References and scope</h2>
+<p>The ordinary Gabriel–Popescu theorem and the injection-to-adjoint-monomorphism lemma are retained through <a href="https://stacks.math.columbia.edu/tag/0F5R">Stacks, Section 19.14</a>. Generators and Grothendieck categories are also treated in Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 5.4.</p>
+<p>The tensor construction is the previously proved internal-object construction, including all presentation comparisons. The quotient uses the previously retained Serre-quotient interface. For the ordinary abelian category of sheaves of modules, see the existing <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/derived-categories-and-sheaf-operations/sheaves-of-modules-on-a-ringed-space.html#2-the-abelian-category-of-module-sheaves">Sheaves of modules on a ringed space, Section 2, Theorem 2.1</a>. This lesson uses ordinary categories, modules and exact sequences throughout.</p>
+</main></body></html>

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fourier windows, sector growth and branched vanishing</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="fourier-windows-sector-growth-and-branched-vanishing">Fourier windows, sector growth and branched vanishing</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Exponential smallness on one ray does not control an entire algebraic covering. Compact Fourier windows and sector estimates supply enough rays on every sheet to force vanishing.</p>
+<p>Read <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz inversion; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the integration estimates. <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/cauchy-kernels-and-boundary-limits.html">Cauchy kernels and distributional boundary limits</a> proves the Cauchy–Pompeiu formula; <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> proves scalar factorization and the exponential series.</p>
+<p>For Fourier background, Grubb's author-hosted Chapter 5, <em>Fourier transformation of distributions</em>, gives differentiation and Schwartz inversion in Theorem 5.4(2–3), equations (5.9)–(5.10), printed pp. 5.3–5.6, and compact-support holomorphy in Remark 5.18, printed pp. 5.14–5.15. The uniform window estimates, sector arguments and branched-curve vanishing are proved below. Other general background references are Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs below use the linked prerequisite lessons and the stated planned results.</p>
+<h2 id="the-full-spatial-fourier-bound-and-its-differential-equation">The full spatial Fourier bound and its differential equation</h2>
+<p><strong>Lemma A.</strong> Let <span class="math" data-tex="\(u\in C^\infty(\mathbb R^d\times(-2,2))\)">\(u\in C^\infty(\mathbb R^d\times(-2,2))\)</span> have spatial support in <span class="math" data-tex="\(\{|y|\le M\}\)">\(\{|y|\le M\}\)</span>, <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>, at every time. Use <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. Its partial transform
+<span class="math math-display" data-tex="\[
+ U(\zeta,t)=\int_{\mathbb R^d}u(y,t)e^{-iy\cdot\zeta}\,dy
+ \tag{1}
+\]">\[
+ U(\zeta,t)=\int_{\mathbb R^d}u(y,t)e^{-iy\cdot\zeta}\,dy
+ \tag{1}
+\]</span>
+is entire in <span class="math" data-tex="\(\zeta\in\mathbb C^d\)">\(\zeta\in\mathbb C^d\)</span>, smooth in <span class="math" data-tex="\(t\)">\(t\)</span>, and satisfies, for every compact time interval <span class="math" data-tex="\(I\subset(-2,2)\)">\(I\subset(-2,2)\)</span> and integers <span class="math" data-tex="\(b,N\ge0\)">\(b,N\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|D_t^bU(\zeta,t)|\\
+\le C_{I,b,N}(1+|\zeta|)^{-N}
+                           e^{M|\operatorname{Im}\zeta|},
+ \\
+\qquad t\in I.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+|D_t^bU(\zeta,t)|\\
+\le C_{I,b,N}(1+|\zeta|)^{-N}
+                           e^{M|\operatorname{Im}\zeta|},
+ \\
+\qquad t\in I.
+\end{gathered}
+\tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> All time and spatial derivatives of <span class="math" data-tex="\(u\)">\(u\)</span> vanish outside the same spatial support: there the original function vanishes on a spatial open neighborhood at every time, so its derivatives are zero. These derivatives are bounded on the compact product of <span class="math" data-tex="\(I\)">\(I\)</span> and a fixed closed spatial ball. For each compact set of complex <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the exponential and all its <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>-derivatives are uniformly bounded on that product. Differentiation under the finite-support integral therefore proves the asserted holomorphy and time smoothness, including their commutation.</p>
+<p>For <span class="math" data-tex="\(|\zeta|\ge1\)">\(|\zeta|\ge1\)</span>, select a coordinate with <span class="math" data-tex="\(|\zeta_j|\ge|\zeta|/\sqrt d\)">\(|\zeta_j|\ge|\zeta|/\sqrt d\)</span>. Repeated integration by parts gives
+<span class="math" data-tex="\(\zeta_j^N D_t^bU=\int D_{y_j}^N D_t^bu(y,t)e^{-iy\cdot\zeta}\,dy\)">\(\zeta_j^N D_t^bU=\int D_{y_j}^N D_t^bu(y,t)e^{-iy\cdot\zeta}\,dy\)</span>.
+No conjugation is involved. On the support, the exponential has modulus at most <span class="math" data-tex="\(e^{M|\operatorname{Im}\zeta|}\)">\(e^{M|\operatorname{Im}\zeta|}\)</span>. Its integral is therefore bounded by the ball's volume times the appropriate derivative supremum; division by <span class="math" data-tex="\(|\zeta_j|^N\)">\(|\zeta_j|^N\)</span> gives the required decay, uniformly over the finitely many possible selected coordinates. For <span class="math" data-tex="\(|\zeta|\le1\)">\(|\zeta|\le1\)</span>, use the undifferentiated integral and enlarge the constant by <span class="math" data-tex="\(2^N\)">\(2^N\)</span>. This gives (2) for the original complex norm <span class="math" data-tex="\(|\zeta|\)">\(|\zeta|\)</span>, not only its real part.</p>
+<p>If <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, a continuous function supported at the spatial point zero is zero, so the conclusion is immediate. In dimension zero define the integral over the one-point space to be its value, put <span class="math" data-tex="\(|\zeta|=0\)">\(|\zeta|=0\)</span>, and use the time derivative bound. There is no coordinate-selection step in that case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma B.</strong> Let <span class="math" data-tex="\(P(\zeta,\lambda)\)">\(P(\zeta,\lambda)\)</span> be a polynomial of total degree <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and suppose <span class="math" data-tex="\(P(\zeta,D_t)U=0\)">\(P(\zeta,D_t)U=0\)</span>. Define its polynomial difference quotient and the corresponding time function by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(\zeta,s,\lambda)=
+ \sum_{j\ge1}a_j(\zeta)\sum_{h=0}^{j-1}s^{j-1-h}\lambda^h,
+ \\
+\qquad
+ W(\zeta,s,t)=Q(\zeta,s,D_t)U(\zeta,t),
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+Q(\zeta,s,\lambda)=
+ \sum_{j\ge1}a_j(\zeta)\sum_{h=0}^{j-1}s^{j-1-h}\lambda^h,
+ \\
+\qquad
+ W(\zeta,s,t)=Q(\zeta,s,D_t)U(\zeta,t),
+\end{gathered}
+\tag{3}
+\]</span>
+where <span class="math" data-tex="\(P(\zeta,\lambda)=\sum_j a_j(\zeta)\lambda^j\)">\(P(\zeta,\lambda)=\sum_j a_j(\zeta)\lambda^j\)</span>. If <span class="math" data-tex="\(P(\zeta,s)=0\)">\(P(\zeta,s)=0\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(D_t-s)W=0,\\
+\qquad W(\zeta,s,t)=e^{ist}W(\zeta,s,0),
+ \\
+\quad
+ |W(\zeta,s,0)|\\
+\le C(1+|s|)^{m-1}
+                     e^{M|\operatorname{Im}\zeta|-|\operatorname{Im}s|}.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+(D_t-s)W=0,\\
+\qquad W(\zeta,s,t)=e^{ist}W(\zeta,s,0),
+ \\
+\quad
+ |W(\zeta,s,0)|\\
+\le C(1+|s|)^{m-1}
+                     e^{M|\operatorname{Im}\zeta|-|\operatorname{Im}s|}.
+\end{gathered}
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> The finite geometric-sum identity gives
+<span class="math" data-tex="\((s-\lambda)Q=P(\zeta,s)-P(\zeta,\lambda)\)">\((s-\lambda)Q=P(\zeta,s)-P(\zeta,\lambda)\)</span>.
+Consequently <span class="math" data-tex="\((D_t-s)W=[P(\zeta,D_t)-P(\zeta,s)]U\)">\((D_t-s)W=[P(\zeta,D_t)-P(\zeta,s)]U\)</span>, which is zero at a root. Since <span class="math" data-tex="\(D_t=-i\partial_t\)">\(D_t=-i\partial_t\)</span>, differentiating <span class="math" data-tex="\(e^{-ist}W(t)\)">\(e^{-ist}W(t)\)</span> gives zero, proving the displayed time identity with its exact phase.</p>
+<p>Every monomial <span class="math" data-tex="\(\zeta^\alpha s^q\lambda^h\)">\(\zeta^\alpha s^q\lambda^h\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span> has <span class="math" data-tex="\(|\alpha|+q+h\le m-1\)">\(|\alpha|+q+h\le m-1\)</span>. At <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and <span class="math" data-tex="\(t=-1\)">\(t=-1\)</span>, apply Lemma A with <span class="math" data-tex="\(N=m-1\)">\(N=m-1\)</span> to its corresponding derivative <span class="math" data-tex="\(D_t^hU\)">\(D_t^hU\)</span>. Multiplication by <span class="math" data-tex="\(|\zeta^\alpha|\)">\(|\zeta^\alpha|\)</span> consumes at most that decay order; multiplication by <span class="math" data-tex="\(|s|^q\)">\(|s|^q\)</span> is at most <span class="math" data-tex="\((1+|s|)^{m-1}\)">\((1+|s|)^{m-1}\)</span>. Summing the finitely many terms gives one constant <span class="math" data-tex="\(C\)">\(C\)</span> valid at both times. Now <span class="math" data-tex="\(W(0)=e^{-ist}W(t)\)">\(W(0)=e^{-ist}W(t)\)</span> has modulus <span class="math" data-tex="\(e^{t\operatorname{Im}s}|W(t)|\)">\(e^{t\operatorname{Im}s}|W(t)|\)</span>. Choose <span class="math" data-tex="\(t=-1\)">\(t=-1\)</span> when <span class="math" data-tex="\(\operatorname{Im}s\ge0\)">\(\operatorname{Im}s\ge0\)</span>, and <span class="math" data-tex="\(t=1\)">\(t=1\)</span> otherwise. The exponent becomes <span class="math" data-tex="\(-|\operatorname{Im}s|\)">\(-|\operatorname{Im}s|\)</span>, proving (4) with the original support radius <span class="math" data-tex="\(M\)">\(M\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma C.</strong> At a fixed <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, suppose <span class="math" data-tex="\(P(\zeta,\lambda)\)">\(P(\zeta,\lambda)\)</span> has degree <span class="math" data-tex="\(\mu\ge1\)">\(\mu\ge1\)</span> and distinct roots <span class="math" data-tex="\(s_1,\ldots,s_\mu\)">\(s_1,\ldots,s_\mu\)</span>. If <span class="math" data-tex="\(W(\zeta,s_j,0)=0\)">\(W(\zeta,s_j,0)=0\)</span> for every root, then <span class="math" data-tex="\(U(\zeta,t)=0\)">\(U(\zeta,t)=0\)</span> for all times in the slab.</p>
+<p><strong>Proof.</strong> Lemma B makes each <span class="math" data-tex="\(Q(\zeta,s_j,D_t)U\)">\(Q(\zeta,s_j,D_t)U\)</span> zero at all those times. The polynomial <span class="math" data-tex="\(Q(\zeta,s_j,\lambda)=P(\zeta,\lambda)/(\lambda-s_j)\)">\(Q(\zeta,s_j,\lambda)=P(\zeta,\lambda)/(\lambda-s_j)\)</span> has value zero at <span class="math" data-tex="\(s_\ell\)">\(s_\ell\)</span> for <span class="math" data-tex="\(\ell\ne j\)">\(\ell\ne j\)</span>, and value <span class="math" data-tex="\(\partial_\lambda P(\zeta,s_j)\ne0\)">\(\partial_\lambda P(\zeta,s_j)\ne0\)</span> at <span class="math" data-tex="\(s_j\)">\(s_j\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ 1=\sum_{j=1}^{\mu}
+     \frac{Q(\zeta,s_j,\lambda)}{\partial_\lambda P(\zeta,s_j)}.
+ \tag{5}
+\]">\[
+ 1=\sum_{j=1}^{\mu}
+     \frac{Q(\zeta,s_j,\lambda)}{\partial_\lambda P(\zeta,s_j)}.
+ \tag{5}
+\]</span>
+Indeed, the difference of the two sides is a polynomial of degree at most <span class="math" data-tex="\(\mu-1\)">\(\mu-1\)</span> vanishing at all <span class="math" data-tex="\(\mu\)">\(\mu\)</span> distinct roots; repeated scalar division shows it is zero. Apply this polynomial identity with <span class="math" data-tex="\(\lambda=D_t\)">\(\lambda=D_t\)</span>. It gives <span class="math" data-tex="\(U=0\)">\(U=0\)</span> with the full original leading coefficient retained in <span class="math" data-tex="\(\partial_\lambda P\)">\(\partial_\lambda P\)</span>. When <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span> and <span class="math" data-tex="\(P(\zeta,\lambda)\)">\(P(\zeta,\lambda)\)</span> is a nonzero constant, the original equation itself gives <span class="math" data-tex="\(U=0\)">\(U=0\)</span>. No conclusion is asserted at a parameter where that polynomial is identically zero without a separate parameter-continuation argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="growth-below-the-sector-threshold">Growth below the sector threshold</h2>
+<p><strong>Lemma 1.</strong> Let <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span> be an integer and let a sector have central argument <span class="math" data-tex="\(\theta_c\)">\(\theta_c\)</span>, opening <span class="math" data-tex="\(0&lt;\omega&lt;\pi/p\)">\(0&lt;\omega&lt;\pi/p\)</span>, and inner radius <span class="math" data-tex="\(R_0&gt;0\)">\(R_0&gt;0\)</span>. Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic in a neighborhood of its closed part <span class="math" data-tex="\(|z|\ge R_0\)">\(|z|\ge R_0\)</span>, and
+<span class="math math-display" data-tex="\[
+ |f(z)|\le A e^{B|z|^p},\qquad A&gt;0,\quad B\ge0.
+ \tag{6}
+\]">\[
+ |f(z)|\le A e^{B|z|^p},\qquad A&gt;0,\quad B\ge0.
+ \tag{6}
+\]</span>
+Suppose <span class="math" data-tex="\(|f|\le M\)">\(|f|\le M\)</span> on its two bounding rays. If <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is the maximum of <span class="math" data-tex="\(M\)">\(M\)</span> and the supremum of <span class="math" data-tex="\(|f|\)">\(|f|\)</span> on its inner circular arc, then <span class="math" data-tex="\(|f|\le C_0\)">\(|f|\le C_0\)</span> throughout the sector.</p>
+<p><strong>Proof.</strong> Choose a real number <span class="math" data-tex="\(\rho\)">\(\rho\)</span> such that
+<span class="math math-display" data-tex="\[
+ p&lt;\rho&lt;\frac{\pi}{\omega},\qquad
+ c_\rho=\cos(\rho\omega/2)&gt;0.
+ \tag{7}
+\]">\[
+ p&lt;\rho&lt;\frac{\pi}{\omega},\qquad
+ c_\rho=\cos(\rho\omega/2)&gt;0.
+ \tag{7}
+\]</span>
+The strict opening hypothesis makes this choice possible. The branch of <span class="math" data-tex="\(\log(e^{-i\theta_c}z)\)">\(\log(e^{-i\theta_c}z)\)</span> whose imaginary part lies between <span class="math" data-tex="\(-\omega/2\)">\(-\omega/2\)</span> and <span class="math" data-tex="\(\omega/2\)">\(\omega/2\)</span> defines its <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-th power. It is holomorphic on a slightly larger sector if that enlargement is sufficiently small. Throughout the original sector,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Re}(e^{-i\theta_c}z)^\rho
+   \\
+=|z|^\rho\cos\bigl(\rho(\arg z-\theta_c)\bigr)
+   \\
+\ge c_\rho |z|^\rho.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\operatorname{Re}(e^{-i\theta_c}z)^\rho
+   \\
+=|z|^\rho\cos\bigl(\rho(\arg z-\theta_c)\bigr)
+   \\
+\ge c_\rho |z|^\rho.
+\end{gathered}
+\tag{8}
+\]</span></p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, apply maximum modulus to
+<span class="math math-display" data-tex="\[
+ g_\varepsilon(z)=
+ f(z)\exp\bigl(-\varepsilon(e^{-i\theta_c}z)^\rho\bigr)
+ \tag{9}
+\]">\[
+ g_\varepsilon(z)=
+ f(z)\exp\bigl(-\varepsilon(e^{-i\theta_c}z)^\rho\bigr)
+ \tag{9}
+\]</span>
+on a sector truncated at radius <span class="math" data-tex="\(R&gt;R_0\)">\(R&gt;R_0\)</span>. On both radial sides its modulus is at most <span class="math" data-tex="\(M\)">\(M\)</span>, and on the inner arc it is at most <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, because the damping factor has modulus at most one. On the outer arc (6)–(8) give <span class="math" data-tex="\(A\exp(BR^p-\varepsilon c_\rho R^\rho)\)">\(A\exp(BR^p-\varepsilon c_\rho R^\rho)\)</span>. Since <span class="math" data-tex="\(\rho&gt;p\)">\(\rho&gt;p\)</span>, this tends to zero. If <span class="math" data-tex="\(C_0&gt;0\)">\(C_0&gt;0\)</span>, choose <span class="math" data-tex="\(R\)">\(R\)</span> arbitrarily large with this last bound at most <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. The bounded truncated sector is connected; a maximum in its interior forces a constant by the local maximum-modulus theorem. Thus its maximum is bounded by its boundary maximum, also in the constant case. We obtain <span class="math" data-tex="\(|g_\varepsilon(z)|\le C_0\)">\(|g_\varepsilon(z)|\le C_0\)</span> at every fixed point after taking <span class="math" data-tex="\(R\)">\(R\)</span> large enough to include it.</p>
+<p>If <span class="math" data-tex="\(C_0=0\)">\(C_0=0\)</span>, the function already vanishes on its inner arc, which lies in its holomorphic neighborhood and has limit points there. The identity principle proves it is zero on the sector. In the other case, let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> in the bound just obtained. The damping factor at the fixed point tends to one, and its removal yields the exact bound <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. The inner-arc constant is independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The strict inequality in the opening is essential. The example <span class="math" data-tex="\(f(z)=e^{z^p}\)">\(f(z)=e^{z^p}\)</span> in the sector <span class="math" data-tex="\(|\arg z|&lt;\pi/(2p)\)">\(|\arg z|&lt;\pi/(2p)\)</span> has modulus one on both rays and unbounded modulus on the positive axis.</p>
+<h2 id="covering-all-arguments-and-removing-infinity">Covering all arguments and removing infinity</h2>
+<p><strong>Lemma 2.</strong> Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic for <span class="math" data-tex="\(|z|&gt;R\)">\(|z|&gt;R\)</span> and satisfies (6) there. Suppose a finite cyclic list of ray arguments has every successive angular gap strictly less than <span class="math" data-tex="\(\pi/p\)">\(\pi/p\)</span>, and <span class="math" data-tex="\(f\)">\(f\)</span> is bounded on each of those rays outside a sufficiently large radius. Then <span class="math" data-tex="\(f\)">\(f\)</span> is bounded on a smaller exterior domain. If, on at least one ray, it additionally satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(re^{i\theta_0})|\le C r^L e^{-c r^p},
+ \\
+\qquad c&gt;0,\quad L\ge0,
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+|f(re^{i\theta_0})|\le C r^L e^{-c r^p},
+ \\
+\qquad c&gt;0,\quad L\ge0,
+\end{gathered}
+\tag{10}
+\]</span>
+then <span class="math" data-tex="\(f\)">\(f\)</span> is identically zero on <span class="math" data-tex="\(|z|&gt;R\)">\(|z|&gt;R\)</span>.</p>
+<p><strong>Proof.</strong> Choose one radius <span class="math" data-tex="\(R_1&gt;R\)">\(R_1&gt;R\)</span> beyond all the finitely many ray thresholds. The closed circle at that radius is a compact subset of the holomorphic domain, so <span class="math" data-tex="\(|f|\)">\(|f|\)</span> has a finite maximum there. Take the maximum of that value and the finitely many ray bounds. Lemma 1 applies to each sector between consecutive rays with this same constant. The sectors cover the exterior of the circle, so <span class="math" data-tex="\(f\)">\(f\)</span> is bounded there.</p>
+<p>Set <span class="math" data-tex="\(h(v)=f(1/v)\)">\(h(v)=f(1/v)\)</span>. It is holomorphic and bounded in a punctured disk. We spell out the removable-point step. For <span class="math" data-tex="\(0&lt;|v|&lt;r_0&lt;1/R_1\)">\(0&lt;|v|&lt;r_0&lt;1/R_1\)</span>, the annular Cauchy formula gives, when <span class="math" data-tex="\(0&lt;\delta&lt;|v|\)">\(0&lt;\delta&lt;|v|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+h(v)=\frac1{2\pi i}\int_{|u|=r_0}\frac{h(u)}{u-v}\,du
+      \\
+-\frac1{2\pi i}\int_{|u|=\delta}\frac{h(u)}{u-v}\,du.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+h(v)=\frac1{2\pi i}\int_{|u|=r_0}\frac{h(u)}{u-v}\,du
+      \\
+-\frac1{2\pi i}\int_{|u|=\delta}\frac{h(u)}{u-v}\,du.
+\end{gathered}
+\tag{11}
+\]</span>
+Both circles in this formula have counterclockwise orientation; the minus sign is the inner boundary orientation. The second integral is bounded in modulus by <span class="math" data-tex="\(\|h\|_\infty\delta/(|v|-\delta)\)">\(\|h\|_\infty\delta/(|v|-\delta)\)</span> and tends to zero. The first defines a holomorphic function also at <span class="math" data-tex="\(v=0\)">\(v=0\)</span>: its kernel has the uniformly convergent geometric series for <span class="math" data-tex="\(|v|&lt;r_0\)">\(|v|&lt;r_0\)</span>, and termwise integration gives its convergent Taylor series. Thus <span class="math" data-tex="\(h\)">\(h\)</span> extends holomorphically across zero, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)=\sum_{j=0}^{\infty}a_jz^{-j}
+ \\
+\quad\hbox{for all sufficiently large }|z|.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+f(z)=\sum_{j=0}^{\infty}a_jz^{-j}
+ \\
+\quad\hbox{for all sufficiently large }|z|.
+\end{gathered}
+\tag{12}
+\]</span></p>
+<p>If this series is not zero, let <span class="math" data-tex="\(j_0\)">\(j_0\)</span> be its first nonzero index. On the ray in (10), convergence of the Taylor series at zero gives, for all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+ |f(re^{i\theta_0})|\ge
+       \frac{|a_{j_0}|}{2}r^{-j_0}.
+ \tag{13}
+\]">\[
+ |f(re^{i\theta_0})|\ge
+       \frac{|a_{j_0}|}{2}r^{-j_0}.
+ \tag{13}
+\]</span>
+This contradicts (10). Indeed, choose an integer <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(pq&gt;L+j_0\)">\(pq&gt;L+j_0\)</span>; the positive exponential series gives <span class="math" data-tex="\(e^{c r^p}\ge(c r^p)^q/q!\)">\(e^{c r^p}\ge(c r^p)^q/q!\)</span>, so <span class="math" data-tex="\(r^{L+j_0}e^{-c r^p}\to0\)">\(r^{L+j_0}e^{-c r^p}\to0\)</span>. Therefore every <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is zero, and <span class="math" data-tex="\(f\)">\(f\)</span> vanishes on an exterior open subset. The holomorphic identity principle extends the zero to the connected domain <span class="math" data-tex="\(|z|&gt;R\)">\(|z|&gt;R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-nonreal-slope-supplies-the-necessary-rays-on-every-sheet">A nonreal slope supplies the necessary rays on every sheet</h2>
+<p><strong>Proposition 3.</strong> Let <span class="math" data-tex="\(p\ge1\)">\(p\ge1\)</span>, <span class="math" data-tex="\(e\in\mathbb R^d\)">\(e\in\mathbb R^d\)</span>, <span class="math" data-tex="\(\eta\in\mathbb C^d\)">\(\eta\in\mathbb C^d\)</span>, and <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>. Suppose <span class="math" data-tex="\(t\)">\(t\)</span> is holomorphic on <span class="math" data-tex="\(|w|&gt;R\)">\(|w|&gt;R\)</span> and
+<span class="math math-display" data-tex="\[
+ t(w)=c_0w^p+O(|w|^{p-1})
+ \tag{14}
+\]">\[
+ t(w)=c_0w^p+O(|w|^{p-1})
+ \tag{14}
+\]</span>
+uniformly in argument, where either <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span> or <span class="math" data-tex="\(\operatorname{Im}c_0\ne0\)">\(\operatorname{Im}c_0\ne0\)</span>. Suppose <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic on the same exterior domain and, for fixed <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> and <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(w)|\\
+\le C(1+|w|^p)^a
+       \\
+\exp\bigl(M|\operatorname{Im}(t(w)e+\eta)|
+                        -|\operatorname{Im}(w^p)|\bigr).
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+|f(w)|\\
+\le C(1+|w|^p)^a
+       \\
+\exp\bigl(M|\operatorname{Im}(t(w)e+\eta)|
+                        -|\operatorname{Im}(w^p)|\bigr).
+\end{gathered}
+\tag{15}
+\]</span>
+Then <span class="math" data-tex="\(f\)">\(f\)</span> is identically zero there. The norm in (15) is the original Euclidean norm of the <span class="math" data-tex="\(d\)">\(d\)</span>-vector; <span class="math" data-tex="\(e\)">\(e\)</span>, <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> are not changed.</p>
+<p><strong>Proof.</strong> The uniform remainder in (14) gives <span class="math" data-tex="\(|t(w)|\le C_1|w|^p\)">\(|t(w)|\le C_1|w|^p\)</span> for all sufficiently large <span class="math" data-tex="\(|w|\)">\(|w|\)</span>. Since <span class="math" data-tex="\(e\)">\(e\)</span> is real,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\operatorname{Im}(t(w)e+\eta)|\\
+\le |e|\,|t(w)|+|\operatorname{Im}\eta|
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\operatorname{Im}(t(w)e+\eta)|\\
+\le |e|\,|t(w)|+|\operatorname{Im}\eta|
+\end{gathered}
+\]</span>.
+Dropping the negative last term of (15) therefore gives (6) for suitable <span class="math" data-tex="\(A,B\)">\(A,B\)</span> and the same <span class="math" data-tex="\(p\)">\(p\)</span>. Its polynomial prefactor can be absorbed into that bound because <span class="math" data-tex="\(1+s\le e^s\)">\(1+s\le e^s\)</span> for <span class="math" data-tex="\(s\ge0\)">\(s\ge0\)</span>.</p>
+<p>If <span class="math" data-tex="\(c_0\ne0\)">\(c_0\ne0\)</span>, take <span class="math" data-tex="\(\theta=-\arg c_0\)">\(\theta=-\arg c_0\)</span>. Then <span class="math" data-tex="\(\operatorname{Im}(c_0e^{i\theta})=0\)">\(\operatorname{Im}(c_0e^{i\theta})=0\)</span> and <span class="math" data-tex="\(\sin\theta\ne0\)">\(\sin\theta\ne0\)</span>, because <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is not real. If <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span>, take <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span>. By continuity, choose <span class="math" data-tex="\(0&lt;\delta&lt;\pi/2\)">\(0&lt;\delta&lt;\pi/2\)</span> and <span class="math" data-tex="\(s_0&gt;0\)">\(s_0&gt;0\)</span> so that, on both closed intervals centered at <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(\theta+\pi\)">\(\theta+\pi\)</span> with half-width <span class="math" data-tex="\(\delta\)">\(\delta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\sin\beta|\ge s_0,\\
+\qquad
+ M|e|\,|\operatorname{Im}(c_0e^{i\beta})|
+                       \le \tfrac14|\sin\beta|.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+|\sin\beta|\ge s_0,\\
+\qquad
+ M|e|\,|\operatorname{Im}(c_0e^{i\beta})|
+                       \le \tfrac14|\sin\beta|.
+\end{gathered}
+\tag{16}
+\]</span>
+These two intervals have the same inequalities because adding <span class="math" data-tex="\(\pi\)">\(\pi\)</span> reverses the signs before absolute values.</p>
+<p>For <span class="math" data-tex="\(w=re^{i\varphi}\)">\(w=re^{i\varphi}\)</span> whose <span class="math" data-tex="\(p\varphi\)">\(p\varphi\)</span> lies in either interval modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, use the real-vector inequality
+<span class="math" data-tex="\(|\operatorname{Im}(t(w)e+\eta)|\le |e|\,|\operatorname{Im}t(w)|+|\operatorname{Im}\eta|\)">\(|\operatorname{Im}(t(w)e+\eta)|\le |e|\,|\operatorname{Im}t(w)|+|\operatorname{Im}\eta|\)</span>.
+The uniform remainder in (14) and (16) show that the exponent in (15) is at most
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+-\tfrac34r^p|\sin(p\varphi)|+
+        \\
+O(r^{p-1})+M|\operatorname{Im}\eta|
+ \\
+\le-\tfrac12s_0r^p
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+-\tfrac34r^p|\sin(p\varphi)|+
+        \\
+O(r^{p-1})+M|\operatorname{Im}\eta|
+ \\
+\le-\tfrac12s_0r^p
+\end{gathered}
+\tag{17}
+\]</span>
+for all sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>, uniformly on these finitely many lifted closed intervals. Absorb the prefactor into half of this negative exponential. One way to verify that absorption without a logarithmic estimate is to choose an integer <span class="math" data-tex="\(q&gt;a\)">\(q&gt;a\)</span>, expand <span class="math" data-tex="\(e^{s_0r^p/4}\)">\(e^{s_0r^p/4}\)</span>, and compare its <span class="math" data-tex="\(q\)">\(q\)</span>-th positive term with <span class="math" data-tex="\(r^{pa}\)">\(r^{pa}\)</span>. We obtain <span class="math" data-tex="\(|f(w)|\le C_2e^{-s_0r^p/4}\)">\(|f(w)|\le C_2e^{-s_0r^p/4}\)</span> on the lifted rays.</p>
+<p>The centers of the lifted intervals are <span class="math" data-tex="\((\theta+j\pi)/p\)">\((\theta+j\pi)/p\)</span>, <span class="math" data-tex="\(j=0,\ldots,2p-1\)">\(j=0,\ldots,2p-1\)</span>. In each interval choose two rays with arguments center minus and plus <span class="math" data-tex="\(\delta/(2p)\)">\(\delta/(2p)\)</span>. There are <span class="math" data-tex="\(4p\)">\(4p\)</span> cyclic rays. Their successive gaps are <span class="math" data-tex="\(\delta/p\)">\(\delta/p\)</span> and <span class="math" data-tex="\((\pi-\delta)/p\)">\((\pi-\delta)/p\)</span>, both strictly smaller than <span class="math" data-tex="\(\pi/p\)">\(\pi/p\)</span>. The global growth bound and the ray bounds therefore satisfy Lemma 2. Any one of these rays also satisfies its exponential-decay hypothesis. It follows that <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. This counts every sheet of the finite cover <span class="math" data-tex="\(w\mapsto w^p\)">\(w\mapsto w^p\)</span>; no application of a single-sheet sector argument is hidden. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: the critical opening).</strong> For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, exhibit a holomorphic function bounded on the rays of the sector <span class="math" data-tex="\(-\pi/4\le\arg z\le\pi/4\)">\(-\pi/4\le\arg z\le\pi/4\)</span> but unbounded inside it. Give the damping-power interval for a smaller sector of opening <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-tex="\(e^{z^2}\)">\(e^{z^2}\)</span> has modulus one on the two rays, since <span class="math" data-tex="\(z^2\)">\(z^2\)</span> is purely imaginary there, and has modulus <span class="math" data-tex="\(e^{r^2}\)">\(e^{r^2}\)</span> on the positive axis. The critical opening is <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>, so Lemma 1 does not apply. At opening <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>, choose <span class="math" data-tex="\(2&lt;\rho&lt;3\)">\(2&lt;\rho&lt;3\)</span>; for example <span class="math" data-tex="\(\rho=5/2\)">\(\rho=5/2\)</span>. Then <span class="math" data-tex="\(\cos(\rho\omega/2)=\cos(5\pi/12)&gt;0\)">\(\cos(\rho\omega/2)=\cos(5\pi/12)&gt;0\)</span>, providing the strictly positive damping factor needed on the whole sector.</p>
+<p><strong>Exercise 2 (intermediate: a complex slope and a three-sheet cover).</strong> In Proposition 3 let <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, <span class="math" data-tex="\(c_0=i\)">\(c_0=i\)</span>, <span class="math" data-tex="\(M=2\)">\(M=2\)</span>, <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span> and <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. Find a central angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with zero leading imaginary spatial displacement, and specify a sufficiently small interval of ray angles satisfying (16). How many lifted ray intervals and sector cuts are used?</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(\theta=-\pi/2\)">\(\theta=-\pi/2\)</span>, so <span class="math" data-tex="\(ie^{i\theta}=1\)">\(ie^{i\theta}=1\)</span> and <span class="math" data-tex="\(|\sin\theta|=1\)">\(|\sin\theta|=1\)</span>. If <span class="math" data-tex="\(\beta=\theta+h\)">\(\beta=\theta+h\)</span>, then <span class="math" data-tex="\(|\operatorname{Im}(ie^{i\beta})|=|\sin h|\)">\(|\operatorname{Im}(ie^{i\beta})|=|\sin h|\)</span> and <span class="math" data-tex="\(|\sin\beta|=|\cos h|\)">\(|\sin\beta|=|\cos h|\)</span>. It suffices that <span class="math" data-tex="\(2|\tan h|\le1/4\)">\(2|\tan h|\le1/4\)</span>, for example <span class="math" data-tex="\(|h|\le\arctan(1/16)\)">\(|h|\le\arctan(1/16)\)</span>; this gives a strict margin because <span class="math" data-tex="\(2/16&lt;1/4\)">\(2/16&lt;1/4\)</span>. The interval centered at <span class="math" data-tex="\(\theta+\pi\)">\(\theta+\pi\)</span> obeys the same bound. On the <span class="math" data-tex="\(w\)">\(w\)</span>-plane there are <span class="math" data-tex="\(2p=6\)">\(2p=6\)</span> intervals, with centers <span class="math" data-tex="\((\theta+j\pi)/3\)">\((\theta+j\pi)/3\)</span>. Taking two interior rays from each gives <span class="math" data-tex="\(4p=12\)">\(4p=12\)</span> sector cuts. The gap estimate in the proof covers the full argument circle.</p>
+<p><strong>Exercise 3 (advanced: a complete two-variable uniqueness case).</strong> Let <span class="math" data-tex="\(u\in C^\infty(\mathbb R\times(-2,2))\)">\(u\in C^\infty(\mathbb R\times(-2,2))\)</span> have spatial support in <span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span> and solve <span class="math" data-tex="\((D_t^2+D_y^2)u=0\)">\((D_t^2+D_y^2)u=0\)</span>. Prove <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, using this lesson without assuming the full general bounded-support uniqueness theorem.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(P(\zeta,\lambda)=\lambda^2+\zeta^2\)">\(P(\zeta,\lambda)=\lambda^2+\zeta^2\)</span>, <span class="math" data-tex="\(Q(\zeta,s,\lambda)=s+\lambda\)">\(Q(\zeta,s,\lambda)=s+\lambda\)</span>, and <span class="math" data-tex="\(W=(s+D_t)U\)">\(W=(s+D_t)U\)</span>. For each sign set <span class="math" data-tex="\(f_\pm(w)=W(\pm iw,w,0)\)">\(f_\pm(w)=W(\pm iw,w,0)\)</span>. These functions are entire because <span class="math" data-tex="\(U\)">\(U\)</span> and its time derivatives are entire in their spatial argument. Their parameters satisfy <span class="math" data-tex="\(P(\pm iw,w)=0\)">\(P(\pm iw,w)=0\)</span>. Lemma B gives exactly (15) with <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, and <span class="math" data-tex="\(t(w)=\pm iw\)">\(t(w)=\pm iw\)</span>. Both slopes are nonreal, so Proposition 3 makes <span class="math" data-tex="\(f_\pm=0\)">\(f_\pm=0\)</span> outside a disk; the entire identity principle makes them zero everywhere. If <span class="math" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span>, the two roots of <span class="math" data-tex="\(P(\zeta,\lambda)\)">\(P(\zeta,\lambda)\)</span> are distinct, and these two parameterizations give <span class="math" data-tex="\(W=0\)">\(W=0\)</span> at both roots. Lemma C yields <span class="math" data-tex="\(U(\zeta,t)=0\)">\(U(\zeta,t)=0\)</span>. Continuity gives the same at <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span>. At each fixed real time, <span class="math" data-tex="\(u\)">\(u\)</span> is a smooth compactly supported function; its real Fourier transform is zero, so the exact Schwartz inversion theorem gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. This proves the claimed case in the whole open slab. It does not replace the required general irreducible-root argument.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Fourier transformation of distributions</em>, author-hosted Chapter 5 of <em>Distributions and Operators</em>. Theorem 5.4(2–3), equations (5.9)–(5.10), printed pp. 5.3–5.6; Remark 5.18, printed pp. 5.14–5.15. These passages supply the differentiation, Schwartz inversion and compact-support holomorphy background for Lemma A and Exercise 3. The uniform window, sector and branched-vanishing proofs are given in this lesson. <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition (1990), reprinted in <em>Classics in Mathematics</em>, Springer, 2003, e-ISBN 978-3-642-61497-2. Definition 7.1.1, Lemma 7.1.3 and Theorem 7.1.5, printed pp. 160–161; Theorem 7.3.1, printed pp. 181–182. These give ordinary Fourier and compact-support background for Lemma A and Exercise 3. The uniform window, sector and branched-vanishing proofs are given in this lesson.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

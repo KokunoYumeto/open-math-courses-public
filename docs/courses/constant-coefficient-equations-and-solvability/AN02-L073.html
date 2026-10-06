@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Boundary data for a decaying half-line equation</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="boundary-data-for-a-decaying-half-line-equation">Boundary data for a decaying half-line equation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The upper roots of a normal polynomial generate the solutions that decay into the positive half-line. Boundary conditions determine these modes through their remainders modulo that upper factor. We prove the exact criterion for arbitrary data, its contour determinant, the anti-causal forcing formula and a polynomial formula for every boundary jet. Repeated roots need no separate nondegeneracy assumption.</p>
+<p>Read <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, <a href="AN02-L044.html">Primitive factors and moving polynomial roots</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Schwartz Fourier transform; <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> supplies finite algebra and matrices; <a href="prerequisites/boundary-flux-and-weak-identities.html">Boundary flux and weak identities</a> supplies the complex Green identity.</p>
+<p>All scalar ODE, repeated-mode, residue-pairing and boundary-jet arguments needed here are proved in this lesson.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The linked prerequisite lessons supply the proofs used below.</p>
+<h2 id="the-function-class-and-the-two-factors">The function class and the two factors</h2>
+<p>Use <span class="math" data-tex="\(D=-i\,d/dt\)">\(D=-i\,d/dt\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be monic, with complex coefficients and no real root. Factor it, including multiplicities, as
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p(z)=p_+(z)p_-(z),\\
+\qquad
+ \deg p_+=h,\\
+\quad\deg p_-=\ell,
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+p(z)=p_+(z)p_-(z),\\
+\qquad
+ \deg p_+=h,\\
+\quad\deg p_-=\ell,
+\end{gathered}
+\tag{1}
+\]</span>
+where the two factors are monic and their roots have positive and negative imaginary parts, respectively. A degree-zero factor is one. Let <span class="math" data-tex="\(\mathcal S_+\)">\(\mathcal S_+\)</span> consist of the smooth functions on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> whose every right derivative at zero exists and which satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{t\ge0}(1+t)^a|u^{(b)}(t)|&lt;\infty
+ \\
+\quad(a,b\in\mathbb Z_{\ge0}).
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+\sup_{t\ge0}(1+t)^a|u^{(b)}(t)|&lt;\infty
+ \\
+\quad(a,b\in\mathbb Z_{\ge0}).
+\end{gathered}
+\tag{2}
+\]</span>
+The right derivatives are understood as continuous derivatives up to the endpoint. Restriction of a Schwartz function on the full line lies in this class.</p>
+<p>For <span class="math" data-tex="\(f\in\mathcal S(\mathbb R)\)">\(f\in\mathcal S(\mathbb R)\)</span>, polynomials <span class="math" data-tex="\(b_1,\ldots,b_\mu\)">\(b_1,\ldots,b_\mu\)</span>, and arbitrary complex numbers <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span>, consider
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p(D)u=f\\
+\quad(t&gt;0),\\
+\qquad
+ b_j(D)u(0)=\phi_j\\
+\quad(1\le j\le\mu),\\
+\qquad
+ u\in\mathcal S_+.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+p(D)u=f\\
+\quad(t&gt;0),\\
+\qquad
+ b_j(D)u(0)=\phi_j\\
+\quad(1\le j\le\mu),\\
+\qquad
+ u\in\mathcal S_+.
+\end{gathered}
+\tag{3}
+\]</span>
+Only <span class="math" data-tex="\(f|_{[0,\infty)}\)">\(f|_{[0,\infty)}\)</span> is prescribed by the equation. Using a full-line <span class="math" data-tex="\(f\)">\(f\)</span> supplies a convenient particular solution, and will not impose an extra condition on its negative-time values.</p>
+<p>The rational function <span class="math" data-tex="\(1/p(\xi)\)">\(1/p(\xi)\)</span> is smooth on the real line and each derivative has at most polynomial growth there. Indeed its denominator factors stay away from zero on every bounded interval, and its asymptotic expansion at infinity gives a power bound. Leibniz's rule makes multiplication by <span class="math" data-tex="\(1/p\)">\(1/p\)</span> preserve Schwartz functions. By the Fourier inversion theorem, the function
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_0=\mathcal F^{-1}(\widehat f/p)
+ \\
+\quad\text{belongs to }\mathcal S(\mathbb R),\\
+\qquad
+ p(D)u_0=f.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+u_0=\mathcal F^{-1}(\widehat f/p)
+ \\
+\quad\text{belongs to }\mathcal S(\mathbb R),\\
+\qquad
+ p(D)u_0=f.
+\end{gathered}
+\tag{4}
+\]</span>
+Every solution of 3 is therefore <span class="math" data-tex="\(u_0+v\)">\(u_0+v\)</span>, where <span class="math" data-tex="\(p(D)v=0\)">\(p(D)v=0\)</span> on the positive half-line and its boundary data are
+<span class="math" data-tex="\(\psi_j=\phi_j-b_j(D)u_0(0)\)">\(\psi_j=\phi_j-b_j(D)u_0(0)\)</span>.</p>
+<h2 id="all-homogeneous-modes-including-multiplicities">All homogeneous modes, including multiplicities</h2>
+<p>For a monic polynomial <span class="math" data-tex="\(a(z)=z^r+\sum_{k&lt;r}a_kz^k\)">\(a(z)=z^r+\sum_{k&lt;r}a_kz^k\)</span>, the Cauchy data
+<span class="math" data-tex="\((v(0),Dv(0),\ldots,D^{r-1}v(0))\)">\((v(0),Dv(0),\ldots,D^{r-1}v(0))\)</span> specify a unique smooth solution of <span class="math" data-tex="\(a(D)v=0\)">\(a(D)v=0\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, write this equation as
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y&#x27;=iCY,\\
+\qquad
+ Y=(v,Dv,\ldots,D^{r-1}v)^T,
+ \\
+\quad
+ C=
+ \begin{pmatrix}
+ 0&amp;1&amp; &amp;0\\
+  &amp;0&amp;\ddots&amp;\\
+ 0&amp;&amp;0&amp;1\\
+ -a_0&amp;-a_1&amp;\cdots&amp;-a_{r-1}
+ \end{pmatrix}.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+Y&#x27;=iCY,\\
+\qquad
+ Y=(v,Dv,\ldots,D^{r-1}v)^T,
+ \\
+\quad
+ C=
+ \begin{pmatrix}
+ 0&amp;1&amp; &amp;0\\
+  &amp;0&amp;\ddots&amp;\\
+ 0&amp;&amp;0&amp;1\\
+ -a_0&amp;-a_1&amp;\cdots&amp;-a_{r-1}
+ \end{pmatrix}.
+\end{gathered}
+\tag{5}
+\]</span>
+The series <span class="math" data-tex="\(e^{itC}=\sum_{k\ge0}(itC)^k/k!\)">\(e^{itC}=\sum_{k\ge0}(itC)^k/k!\)</span> converges with every derivative on bounded intervals and solves the system for arbitrary <span class="math" data-tex="\(Y(0)\)">\(Y(0)\)</span>. To prove uniqueness without importing an ODE theorem, integrate the equation for a solution with zero initial value. On an interval of length <span class="math" data-tex="\(\delta&lt;1/\|C\|\)">\(\delta&lt;1/\|C\|\)</span>, its supremum norm is at most <span class="math" data-tex="\(\delta\|C\|\)">\(\delta\|C\|\)</span> times itself, so it is zero. Repeat on adjacent intervals, in either direction. If <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, the equation itself gives constancy. The first <span class="math" data-tex="\(r-1\)">\(r-1\)</span> rows ensure that the first component's successive <span class="math" data-tex="\(D\)">\(D\)</span>-derivatives are the remaining components, and the last row is <span class="math" data-tex="\(a(D)v=0\)">\(a(D)v=0\)</span>.</p>
+<p>If the roots of <span class="math" data-tex="\(a\)">\(a\)</span> are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, with multiplicities <span class="math" data-tex="\(r_\lambda\)">\(r_\lambda\)</span>, its solutions are exactly
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(t)=\sum_\lambda e^{i\lambda t}A_\lambda(t),
+ \\
+\qquad \deg A_\lambda&lt;r_\lambda .
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+v(t)=\sum_\lambda e^{i\lambda t}A_\lambda(t),
+ \\
+\qquad \deg A_\lambda&lt;r_\lambda .
+\end{gathered}
+\tag{6}
+\]</span>
+Every displayed term solves the equation because
+<span class="math" data-tex="\((D-\lambda)(e^{i\lambda t}A)=e^{i\lambda t}DA\)">\((D-\lambda)(e^{i\lambda t}A)=e^{i\lambda t}DA\)</span>.
+They are linearly independent. To isolate a chosen root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> from an alleged relation, apply
+<span class="math" data-tex="\(\prod_{\nu\ne\lambda}(D-\nu)^{r_\nu}\)">\(\prod_{\nu\ne\lambda}(D-\nu)^{r_\nu}\)</span>. All other terms disappear. On the polynomial space of degree less than <span class="math" data-tex="\(r_\lambda\)">\(r_\lambda\)</span>, each remaining operator <span class="math" data-tex="\(D+\lambda-\nu\)">\(D+\lambda-\nu\)</span> has an upper triangular matrix with nonzero constant diagonal and is invertible. The chosen polynomial must therefore be zero. The number of independent functions is <span class="math" data-tex="\(\sum r_\lambda=r\)">\(\sum r_\lambda=r\)</span>, which equals the solution-space dimension from 5. This proves 6.</p>
+<p>The bounded solutions of <span class="math" data-tex="\(p(D)v=0\)">\(p(D)v=0\)</span> on the positive half-line have only upper-root terms. Here is a cancellation check that also proves this for repeated roots. If a nonzero lower-root term occurs, choose the largest growth exponent <span class="math" data-tex="\(a=-\operatorname{Im}\lambda&gt;0\)">\(a=-\operatorname{Im}\lambda&gt;0\)</span> among all nonzero terms, and the largest polynomial degree <span class="math" data-tex="\(k\)">\(k\)</span> among terms with that exponent. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e^{-at}t^{-k}v(t)
+       =\sum_{\nu=1}^r c_\nu e^{ib_\nu t}+o(1),
+ \\
+\quad c_\nu\ne0,\\
+\quad b_\nu\text{ distinct real}.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+e^{-at}t^{-k}v(t)
+       =\sum_{\nu=1}^r c_\nu e^{ib_\nu t}+o(1),
+ \\
+\quad c_\nu\ne0,\\
+\quad b_\nu\text{ distinct real}.
+\end{gathered}
+\tag{7}
+\]</span>
+A bounded <span class="math" data-tex="\(v\)">\(v\)</span> makes the left side tend to zero. The error tends to zero because smaller growth exponents have exponential suppression, and smaller degrees lose a power of <span class="math" data-tex="\(t\)">\(t\)</span>. Thus the finite oscillatory sum tends to zero. But
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lim_{T\to\infty}\frac1T\int_0^T
+       \left|\sum_{\nu=1}^r c_\nu e^{ib_\nu t}\right|^2dt
+       \\
+=\sum_{\nu=1}^r|c_\nu|^2&gt;0:
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\lim_{T\to\infty}\frac1T\int_0^T
+       \left|\sum_{\nu=1}^r c_\nu e^{ib_\nu t}\right|^2dt
+       \\
+=\sum_{\nu=1}^r|c_\nu|^2&gt;0:
+\end{gathered}
+\tag{8}
+\]</span>
+each cross integral divided by <span class="math" data-tex="\(T\)">\(T\)</span> is bounded by
+<span class="math" data-tex="\(2/(T|b_\nu-b_\kappa|)\)">\(2/(T|b_\nu-b_\kappa|)\)</span>, while the diagonal integrals are <span class="math" data-tex="\(|c_\nu|^2\)">\(|c_\nu|^2\)</span>. A bounded function tending to zero has squared Cesàro mean zero, by splitting off a fixed initial interval. This contradiction excludes the growing terms. Conversely every upper-root term and all its derivatives decrease exponentially times a polynomial, so belong to <span class="math" data-tex="\(\mathcal S_+\)">\(\mathcal S_+\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{v\in\mathcal S_+:p(D)v=0\}
+       \\
+=\{v:p_+(D)v=0\},
+ \\
+\dim=h.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\{v\in\mathcal S_+:p(D)v=0\}
+       \\
+=\{v:p_+(D)v=0\},
+ \\
+\dim=h.
+\end{gathered}
+\tag{9}
+\]</span>
+For <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, this is the zero space.</p>
+<h2 id="boundary-remainders-and-the-exact-count">Boundary remainders and the exact count</h2>
+<p>Divide each boundary symbol by the monic upper factor:
+<span class="math math-display" data-tex="\[
+ b_j=q_jp_++r_j,\qquad \deg r_j&lt;h.
+ \tag{10}
+\]">\[
+ b_j=q_jp_++r_j,\qquad \deg r_j&lt;h.
+ \tag{10}
+\]</span>
+On a homogeneous decaying solution <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(b_j(D)v(0)=r_j(D)v(0)\)">\(b_j(D)v(0)=r_j(D)v(0)\)</span>. 5 identifies its first <span class="math" data-tex="\(h\)">\(h\)</span> jets with an arbitrary vector in <span class="math" data-tex="\(\mathbb C^h\)">\(\mathbb C^h\)</span>, so the boundary map is precisely the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-by-<span class="math" data-tex="\(h\)">\(h\)</span> matrix of the coefficients of <span class="math" data-tex="\(r_j\)">\(r_j\)</span> in the basis <span class="math" data-tex="\(1,z,\ldots,z^{h-1}\)">\(1,z,\ldots,z^{h-1}\)</span>.</p>
+<p>Consequently 3 has a unique solution for every <span class="math" data-tex="\((\phi_1,\ldots,\phi_\mu)\)">\((\phi_1,\ldots,\phi_\mu)\)</span> if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu=h,\\ {}
+[b_1],\ldots,[b_h]\text{ form a basis of }
+       \\
+\mathbb C[z]/(p_+).
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+\mu=h,\\ {}
+[b_1],\ldots,[b_h]\text{ form a basis of }
+       \\
+\mathbb C[z]/(p_+).
+\end{gathered}
+\tag{11}
+\]</span>
+Necessity follows because an injective and surjective linear map between these finite-dimensional spaces has equal dimensions and full rank. Sufficiency follows by solving the <span class="math" data-tex="\(h\)">\(h\)</span>-jet system and using 5–9. If the map is injective with <span class="math" data-tex="\(\mu&gt;h\)">\(\mu&gt;h\)</span>, arbitrary data need not be attainable; if it is surjective with <span class="math" data-tex="\(\mu&lt;h\)">\(\mu&lt;h\)</span>, homogeneous solutions remain. For <span class="math" data-tex="\(h=\mu=0\)">\(h=\mu=0\)</span>, the empty boundary map is an isomorphism of zero spaces and <span class="math" data-tex="\(u_0|_{[0,\infty)}\)">\(u_0|_{[0,\infty)}\)</span> is the unique solution.</p>
+<h2 id="a-residue-pairing-that-does-not-lose-repeated-roots">A residue pairing that does not lose repeated roots</h2>
+<p>For <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>, take a positive circle containing all roots of <span class="math" data-tex="\(p_+\)">\(p_+\)</span>, and define the complex bilinear form
+<span class="math math-display" data-tex="\[
+ \beta(a,b)=\frac1{2\pi i}\int_{\mathcal C}
+                  \frac{a(z)b(z)}{p_+(z)}\,dz.
+ \tag{12}
+\]">\[
+ \beta(a,b)=\frac1{2\pi i}\int_{\mathcal C}
+                  \frac{a(z)b(z)}{p_+(z)}\,dz.
+ \tag{12}
+\]</span>
+It descends to <span class="math" data-tex="\(\mathbb C[z]/(p_+)\)">\(\mathbb C[z]/(p_+)\)</span> in both variables: replacing either polynomial by a multiple of <span class="math" data-tex="\(p_+\)">\(p_+\)</span> leaves a polynomial integrand, whose integral is zero by the complex Green identity. The same identity on annuli permits a larger circle without changing the integral. On a sufficiently large circle the uniformly convergent expansion at infinity gives
+<span class="math math-display" data-tex="\[
+ \beta(a,b)=[z^{-1}]\,\frac{a(z)b(z)}{p_+(z)}.
+ \tag{13}
+\]">\[
+ \beta(a,b)=[z^{-1}]\,\frac{a(z)b(z)}{p_+(z)}.
+ \tag{13}
+\]</span>
+The notation means the coefficient of <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> in the Laurent series. Integrating each Laurent monomial proves the equality, including its sign and normalization.</p>
+<p>Let <span class="math" data-tex="\(G_{jk}=\beta(z^j,z^k)\)">\(G_{jk}=\beta(z^j,z^k)\)</span>, <span class="math" data-tex="\(0\le j,k&lt;h\)">\(0\le j,k&lt;h\)</span>. Since <span class="math" data-tex="\(p_+\)">\(p_+\)</span> is monic,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_{jk}=0\ (j+k&lt;h-1),\\
+\qquad
+ G_{jk}=1\ (j+k=h-1),\\
+\qquad
+ \det G=(-1)^{h(h-1)/2}.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+G_{jk}=0\ (j+k&lt;h-1),\\
+\qquad
+ G_{jk}=1\ (j+k=h-1),\\
+\qquad
+ \det G=(-1)^{h(h-1)/2}.
+\end{gathered}
+\tag{14}
+\]</span>
+Reverse the columns to get a triangular matrix with diagonal one; the reversing permutation has <span class="math" data-tex="\(h(h-1)/2\)">\(h(h-1)/2\)</span> inversions. Thus the pairing is nondegenerate even when all roots coincide.</p>
+<p>Define the Lopatinski matrix and determinant by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_{jk}=\beta(b_j,z^{k-1}),\\
+\quad 1\le j,k\le h,
+ \\
+\qquad L(b_1,\ldots,b_h;p_+)=\det M.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+M_{jk}=\beta(b_j,z^{k-1}),\\
+\quad 1\le j,k\le h,
+ \\
+\qquad L(b_1,\ldots,b_h;p_+)=\det M.
+\end{gathered}
+\tag{15}
+\]</span>
+If <span class="math" data-tex="\(R\)">\(R\)</span> is the matrix of the remainders in 10, then <span class="math" data-tex="\(M=RG\)">\(M=RG\)</span>, whence
+<span class="math math-display" data-tex="\[
+ L=(-1)^{h(h-1)/2}\det R.
+ \tag{16}
+\]">\[
+ L=(-1)^{h(h-1)/2}\det R.
+ \tag{16}
+\]</span>
+Thus <span class="math" data-tex="\(L\ne0\)">\(L\ne0\)</span> is exactly 11. For <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, set <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, the determinant of the empty matrix; no pairing is needed.</p>
+<p>All entries of <span class="math" data-tex="\(M\)">\(M\)</span> are polynomials in the coefficients of <span class="math" data-tex="\(b_j\)">\(b_j\)</span> and of the monic <span class="math" data-tex="\(p_+\)">\(p_+\)</span>. Indeed write
+<span class="math math-display" data-tex="\[
+ \frac1{p_+(z)}
+   =z^{-h}\sum_{\nu\ge0}
+        \left(1-\frac{p_+(z)}{z^h}\right)^\nu .
+ \tag{17}
+\]">\[
+ \frac1{p_+(z)}
+   =z^{-h}\sum_{\nu\ge0}
+        \left(1-\frac{p_+(z)}{z^h}\right)^\nu .
+ \tag{17}
+\]</span>
+The parenthesis has strictly negative powers of <span class="math" data-tex="\(z\)">\(z\)</span>. Each needed Laurent coefficient is therefore a finite polynomial expression in the coefficients of <span class="math" data-tex="\(p_+\)">\(p_+\)</span>; only finitely many <span class="math" data-tex="\(\nu\)">\(\nu\)</span>'s contribute. The numerators are finite polynomials as well. The determinant is a polynomial in these entries.</p>
+<p>For real <span class="math" data-tex="\(a\)">\(a\)</span>, simultaneously replace <span class="math" data-tex="\(p_+(z)\)">\(p_+(z)\)</span> and all <span class="math" data-tex="\(b_j(z)\)">\(b_j(z)\)</span> by <span class="math" data-tex="\(p_+(z-a)\)">\(p_+(z-a)\)</span> and <span class="math" data-tex="\(b_j(z-a)\)">\(b_j(z-a)\)</span>. The substitution <span class="math" data-tex="\(y=z-a\)">\(y=z-a\)</span> changes the monomial <span class="math" data-tex="\(z^{k-1}\)">\(z^{k-1}\)</span> to <span class="math" data-tex="\((y+a)^{k-1}\)">\((y+a)^{k-1}\)</span>. In the basis <span class="math" data-tex="\(1,y,\ldots,y^{h-1}\)">\(1,y,\ldots,y^{h-1}\)</span>, this change has a triangular matrix with diagonal one, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(b_1(\cdot-a),\ldots,b_h(\cdot-a);
+       \\
+p_+(\cdot-a))\\
+=L(b_1,\ldots,b_h;p_+).
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+L(b_1(\cdot-a),\ldots,b_h(\cdot-a);
+       \\
+p_+(\cdot-a))\\
+=L(b_1,\ldots,b_h;p_+).
+\end{gathered}
+\tag{18}
+\]</span>
+The contour can be translated because it still encloses the same shifted roots. The polynomial identity actually holds for complex <span class="math" data-tex="\(a\)">\(a\)</span> too; restricting to real <span class="math" data-tex="\(a\)">\(a\)</span> ensures that the upper-root interpretation is preserved.</p>
+<h2 id="an-anti-causal-inverse-fixes-the-forcing-part">An anti-causal inverse fixes the forcing part</h2>
+<p>For a lower root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the locally integrable kernel
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_\lambda(t)=-i\,\mathbf1_{\{t\le0\}}e^{i\lambda t},
+ \\
+\qquad (D-\lambda)E_\lambda=\delta_0
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+E_\lambda(t)=-i\,\mathbf1_{\{t\le0\}}e^{i\lambda t},
+ \\
+\qquad (D-\lambda)E_\lambda=\delta_0
+\end{gathered}
+\tag{19}
+\]</span>
+has negative support and decreases exponentially as <span class="math" data-tex="\(t\to-\infty\)">\(t\to-\infty\)</span>. The sign follows from
+<span class="math" data-tex="\(d\mathbf1_{\{t\le0\}}/dt=-\delta_0\)">\(d\mathbf1_{\{t\le0\}}/dt=-\delta_0\)</span> and <span class="math" data-tex="\(D=-i\,d/dt\)">\(D=-i\,d/dt\)</span>.
+For <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, convolve the <span class="math" data-tex="\(\ell\)">\(\ell\)</span> kernels counted with multiplicity to obtain <span class="math" data-tex="\(E_-\)">\(E_-\)</span>. All convolutions are absolutely integrable and supported in the negative half-line. Choosing <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> smaller than every <span class="math" data-tex="\(-\operatorname{Im}\lambda\)">\(-\operatorname{Im}\lambda\)</span>, their absolute values are bounded by a constant times
+<span class="math" data-tex="\(\mathbf1_{\{t\le0\}}(1+|t|)^{\ell-1}e^{-c|t|}\)">\(\mathbf1_{\{t\le0\}}(1+|t|)^{\ell-1}e^{-c|t|}\)</span>.
+To verify this, each convolution over <span class="math" data-tex="\(t=y_1+\cdots+y_\ell\)">\(t=y_1+\cdots+y_\ell\)</span>, <span class="math" data-tex="\(y_j\le0\)">\(y_j\le0\)</span>, has an <span class="math" data-tex="\((\ell-1)\)">\((\ell-1)\)</span>-simplex of length <span class="math" data-tex="\(|t|\)">\(|t|\)</span>, whose volume is <span class="math" data-tex="\(|t|^{\ell-1}/(\ell-1)!\)">\(|t|^{\ell-1}/(\ell-1)!\)</span>; the common exponential factors multiply to <span class="math" data-tex="\(e^{-c|t|}\)">\(e^{-c|t|}\)</span>. For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, put <span class="math" data-tex="\(E_-=\delta_0\)">\(E_-=\delta_0\)</span>.</p>
+<p>Applying the first-order identity successively gives
+<span class="math" data-tex="\(p_-(D)E_-=\delta_0\)">\(p_-(D)E_-=\delta_0\)</span>. Fubini is justified by the exponential bound and compact test functions; alternatively it follows from the proper-support convolution identity. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(t)=(f*E_-)(t)
+       \\
+=\int_{-\infty}^0f(t-y)E_-(y)\,dy
+       \\
+(\ell&gt;0),\\
+g=f\\
+(\ell=0).
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+g(t)=(f*E_-)(t)
+       \\
+=\int_{-\infty}^0f(t-y)E_-(y)\,dy
+       \\
+(\ell&gt;0),\\
+g=f\\
+(\ell=0).
+\end{gathered}
+\tag{20}
+\]</span>
+This is a Schwartz function on the full line. Differentiate <span class="math" data-tex="\(f\)">\(f\)</span> under the integral and use
+<span class="math" data-tex="\((1+|t|)^a\le(1+|t-y|)^a(1+|y|)^a\)">\((1+|t|)^a\le(1+|t-y|)^a(1+|y|)^a\)</span>;
+every weighted kernel moment is finite. Distributional differentiation gives <span class="math" data-tex="\(p_-(D)g=f\)">\(p_-(D)g=f\)</span>.</p>
+<p>For any solution <span class="math" data-tex="\(u\)">\(u\)</span> of 3, the function <span class="math" data-tex="\(p_+(D)u-g\)">\(p_+(D)u-g\)</span> is in <span class="math" data-tex="\(\mathcal S_+\)">\(\mathcal S_+\)</span> and is annihilated by <span class="math" data-tex="\(p_-(D)\)">\(p_-(D)\)</span>. 7–9, now with no upper root, force it to vanish. Therefore
+<span class="math math-display" data-tex="\[
+ p_+(D)u=g\quad\text{on }[0,\infty).
+ \tag{21}
+\]">\[
+ p_+(D)u=g\quad\text{on }[0,\infty).
+ \tag{21}
+\]</span>
+The formula uses only values <span class="math" data-tex="\(f(t-y)\)">\(f(t-y)\)</span> with <span class="math" data-tex="\(t-y\ge t\ge0\)">\(t-y\ge t\ge0\)</span>. Thus changing the negative-time extension of <span class="math" data-tex="\(f\)">\(f\)</span> changes neither <span class="math" data-tex="\(g\)">\(g\)</span> on this half-line nor the eventual unique solution with the same boundary values. Although an anti-causal convolution looks towards larger <span class="math" data-tex="\(t\)">\(t\)</span>, it is precisely what removes the growing lower-root modes.</p>
+<h2 id="polynomial-reconstruction-of-every-boundary-jet">Polynomial reconstruction of every boundary jet</h2>
+<p>Assume <span class="math" data-tex="\(\mu=h\)">\(\mu=h\)</span>. For each integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, let <span class="math" data-tex="\(v_j\)">\(v_j\)</span> be the row
+<span class="math" data-tex="\((\beta(z^j,1),\ldots,\beta(z^j,z^{h-1}))\)">\((\beta(z^j,1),\ldots,\beta(z^j,z^{h-1}))\)</span>. Put
+<span class="math math-display" data-tex="\[
+ (t_{j1},\ldots,t_{jh})=v_j\,\operatorname{adj}M.
+ \tag{22}
+\]">\[
+ (t_{j1},\ldots,t_{jh})=v_j\,\operatorname{adj}M.
+ \tag{22}
+\]</span>
+The adjugate identity gives
+<span class="math" data-tex="\((t_{j1},\ldots,t_{jh})M=L v_j\)">\((t_{j1},\ldots,t_{jh})M=L v_j\)</span>.
+It follows that <span class="math" data-tex="\(Lz^j-\sum_k t_{jk}b_k\)">\(Lz^j-\sum_k t_{jk}b_k\)</span> pairs to zero with every basis monomial. Nondegeneracy of 14 makes its remainder modulo <span class="math" data-tex="\(p_+\)">\(p_+\)</span> zero. Monic division therefore defines a polynomial <span class="math" data-tex="\(s_j(z)\)">\(s_j(z)\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lz^j=\sum_{k=1}^h t_{jk}b_k(z)\\
++p_+(z)s_j(z),
+ \\
+\deg s_j\\
+\le\max(j,\deg b_1,\ldots,\deg b_h)-h.
+\end{gathered}
+\tag{23}
+\]">\[
+\begin{gathered}
+Lz^j=\sum_{k=1}^h t_{jk}b_k(z)\\
++p_+(z)s_j(z),
+ \\
+\deg s_j\\
+\le\max(j,\deg b_1,\ldots,\deg b_h)-h.
+\end{gathered}
+\tag{23}
+\]</span>
+A negative degree bound means <span class="math" data-tex="\(s_j=0\)">\(s_j=0\)</span>. Write <span class="math" data-tex="\(s_j(z)=\sum_{r\ge0}s_{jr}z^r\)">\(s_j(z)=\sum_{r\ge0}s_{jr}z^r\)</span>; only <span class="math" data-tex="\(h+r\le\max(j,\deg b_1,\ldots,\deg b_h)\)">\(h+r\le\max(j,\deg b_1,\ldots,\deg b_h)\)</span> can occur. All <span class="math" data-tex="\(t_{jk}\)">\(t_{jk}\)</span> and <span class="math" data-tex="\(s_{jr}\)">\(s_{jr}\)</span> are polynomials in the coefficients of <span class="math" data-tex="\(p_+\)">\(p_+\)</span> and <span class="math" data-tex="\(b_k\)">\(b_k\)</span>: 17 proves this for <span class="math" data-tex="\(v_j,M\)">\(v_j,M\)</span>, the adjugate is polynomial, and division by a monic polynomial requires only subtraction and multiplication of coefficients. This algebraic identity does not require <span class="math" data-tex="\(L\ne0\)">\(L\ne0\)</span>. At <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, it holds with <span class="math" data-tex="\(L=1\)">\(L=1\)</span>, an empty first sum and <span class="math" data-tex="\(s_j=z^j\)">\(s_j=z^j\)</span>.</p>
+<p>Apply 23 at <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span>, use its boundary values and 21, and take the right trace at zero:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L D^j u(0)\\
+= \sum_{k=1}^h t_{jk}\phi_k
+       +\sum_{r\ge0}s_{jr}D^r g(0).
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+L D^j u(0)\\
+= \sum_{k=1}^h t_{jk}\phi_k
+       +\sum_{r\ge0}s_{jr}D^r g(0).
+\end{gathered}
+\tag{24}
+\]</span>
+This is the full all-order boundary-jet formula, with the original derivative phase and finite degree bound. When <span class="math" data-tex="\(L\ne0\)">\(L\ne0\)</span>, it reconstructs every jet from the prescribed boundary values and the forcing. No inverse determinant was hidden in the coefficient formulas.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: a repeated upper root).</strong> Let <span class="math" data-tex="\(p=(z-i)^2(z+2i)\)">\(p=(z-i)^2(z+2i)\)</span>, <span class="math" data-tex="\(b_1=1\)">\(b_1=1\)</span>, <span class="math" data-tex="\(b_2=z\)">\(b_2=z\)</span>. Compute <span class="math" data-tex="\(L\)">\(L\)</span>, describe every homogeneous decaying solution, and find the second-jet identity in terms of <span class="math" data-tex="\(\phi_1,\phi_2\)">\(\phi_1,\phi_2\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(p_+=(z-i)^2=z^2-2iz-1\)">\(p_+=(z-i)^2=z^2-2iz-1\)</span>, <span class="math" data-tex="\(p_-=z+2i\)">\(p_-=z+2i\)</span>. The pairings give
+<span class="math math-display" data-tex="\[
+ M=\begin{pmatrix}0&amp;1\\
+1&amp;2i\end{pmatrix},
+ \qquad L=-1.
+ \tag{25}
+\]">\[
+ M=\begin{pmatrix}0&amp;1\\
+1&amp;2i\end{pmatrix},
+ \qquad L=-1.
+ \tag{25}
+\]</span>
+The two boundary classes are a basis, despite the repeated root. Every homogeneous decaying solution is <span class="math" data-tex="\(v(t)=e^{-t}(A+Bt)\)">\(v(t)=e^{-t}(A+Bt)\)</span>. Its traces are <span class="math" data-tex="\(v(0)=A\)">\(v(0)=A\)</span> and <span class="math" data-tex="\(Dv(0)=iA-iB\)">\(Dv(0)=iA-iB\)</span>. Thus arbitrary homogeneous data <span class="math" data-tex="\(\psi_1,\psi_2\)">\(\psi_1,\psi_2\)</span> give
+<span class="math" data-tex="\(A=\psi_1\)">\(A=\psi_1\)</span>, <span class="math" data-tex="\(B=\psi_1+i\psi_2\)">\(B=\psi_1+i\psi_2\)</span>, proving uniqueness explicitly. The identity <span class="math" data-tex="\(z^2=1+2iz+p_+\)">\(z^2=1+2iz+p_+\)</span> and 21 yield
+<span class="math" data-tex="\(D^2u(0)=\phi_1+2i\phi_2+g(0)\)">\(D^2u(0)=\phi_1+2i\phi_2+g(0)\)</span>.
+In the adjugate normalization, <span class="math" data-tex="\(t_{21}=-1,t_{22}=-2i,s_2=-1\)">\(t_{21}=-1,t_{22}=-2i,s_2=-1\)</span>, exactly as 23 with <span class="math" data-tex="\(L=-1\)">\(L=-1\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: too few, too many and dependent data).</strong> Keep the same <span class="math" data-tex="\(p\)">\(p\)</span>. Compare prescribing only <span class="math" data-tex="\(u(0)\)">\(u(0)\)</span>, prescribing <span class="math" data-tex="\(u(0),Du(0),D^2u(0)\)">\(u(0),Du(0),D^2u(0)\)</span>, and prescribing <span class="math" data-tex="\(u(0),p_+(D)u(0)\)">\(u(0),p_+(D)u(0)\)</span>. Identify the compatibility or nonuniqueness explicitly.</p>
+<p><strong>Solution.</strong> Only <span class="math" data-tex="\(u(0)\)">\(u(0)\)</span> fixes <span class="math" data-tex="\(A\)">\(A\)</span> in the homogeneous correction while leaving <span class="math" data-tex="\(B\)">\(B\)</span> free, so there is nonuniqueness. Three jets contain the compatible relation
+<span class="math" data-tex="\(D^2u(0)=u(0)+2iDu(0)+g(0)\)">\(D^2u(0)=u(0)+2iDu(0)+g(0)\)</span>, so arbitrary triples cannot be solved, although a compatible triple determines the solution. The two symbols <span class="math" data-tex="\(1,p_+\)">\(1,p_+\)</span> have remainders <span class="math" data-tex="\(1,0\)">\(1,0\)</span>, so the boundary matrix has rank one and <span class="math" data-tex="\(L=0\)">\(L=0\)</span>. The second prescribed datum must equal <span class="math" data-tex="\(g(0)\)">\(g(0)\)</span>, by 21. When it does, the first fixes <span class="math" data-tex="\(A\)">\(A\)</span> while <span class="math" data-tex="\(B\)">\(B\)</span> remains free. Matching the number of conditions to two therefore does not suffice; their classes must also be independent.</p>
+<p><strong>Exercise 3 (advanced: confluence and shifts).</strong> Show that for any monic <span class="math" data-tex="\(p_+\)">\(p_+\)</span> of degree <span class="math" data-tex="\(h\)">\(h\)</span>, the consecutive jet symbols <span class="math" data-tex="\(1,z,\ldots,z^{h-1}\)">\(1,z,\ldots,z^{h-1}\)</span> have determinant <span class="math" data-tex="\((-1)^{h(h-1)/2}\)">\((-1)^{h(h-1)/2}\)</span>, independent of every root. For <span class="math" data-tex="\(h=3\)">\(h=3\)</span>, compare this with a determinant of values at distinct roots and explain its coalescing limit.</p>
+<p><strong>Solution.</strong> Their remainder matrix is the identity, so 16 gives the asserted constant. For <span class="math" data-tex="\(h=3\)">\(h=3\)</span>, it is <span class="math" data-tex="\(-1\)">\(-1\)</span>, including <span class="math" data-tex="\(p_+=(z-i)^3\)">\(p_+=(z-i)^3\)</span>. For distinct roots <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_h\)">\(\lambda_1,\ldots,\lambda_h\)</span>, simple residue evaluation in 12 yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_{jk}=\sum_{\nu=1}^h
+       \frac{b_j(\lambda_\nu)\lambda_\nu^{k-1}}
+            {p_+&#x27;(\lambda_\nu)},\\
+L=(-1)^{h(h-1)/2}
+       \\
+\frac{\det(b_j(\lambda_\nu))_{j,\nu}}
+            {\prod_{\nu&lt;\kappa}(\lambda_\kappa-\lambda_\nu)}.
+\end{gathered}
+\tag{26}
+\]">\[
+\begin{gathered}
+M_{jk}=\sum_{\nu=1}^h
+       \frac{b_j(\lambda_\nu)\lambda_\nu^{k-1}}
+            {p_+&#x27;(\lambda_\nu)},\\
+L=(-1)^{h(h-1)/2}
+       \\
+\frac{\det(b_j(\lambda_\nu))_{j,\nu}}
+            {\prod_{\nu&lt;\kappa}(\lambda_\kappa-\lambda_\nu)}.
+\end{gathered}
+\tag{26}
+\]</span>
+To check the sign, factor <span class="math" data-tex="\(M=B\,\operatorname{diag}(1/p_+&#x27;(\lambda_\nu))V^T\)">\(M=B\,\operatorname{diag}(1/p_+&#x27;(\lambda_\nu))V^T\)</span>, where <span class="math" data-tex="\(V_{k\nu}=\lambda_\nu^{k-1}\)">\(V_{k\nu}=\lambda_\nu^{k-1}\)</span>. The determinant of <span class="math" data-tex="\(V\)">\(V\)</span> is the Vandermonde product in the denominator, and the product of all <span class="math" data-tex="\(p_+&#x27;(\lambda_\nu)\)">\(p_+&#x27;(\lambda_\nu)\)</span> is <span class="math" data-tex="\((-1)^{h(h-1)/2}\)">\((-1)^{h(h-1)/2}\)</span> times its square. For consecutive jets, <span class="math" data-tex="\(\det B\)">\(\det B\)</span> is the same Vandermonde product, so the quotient is one. As roots coalesce, the two vanishing factors cancel; the contour determinant's polynomial coefficient formula extends with the same nonzero constant. Treating the value determinant alone as the boundary criterion would incorrectly lose the repeated-root case. 18 further proves invariance under real simultaneous shifts, which preserve the decaying-mode interpretation.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Open lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

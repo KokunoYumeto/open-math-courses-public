@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weil&#x27;s positivity criterion · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weil-s-positivity-criterion">Weil's positivity criterion</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The explicit formula becomes a quadratic form when its test function is a convolution square. On the critical line that quadratic form is a sum of absolute squares. Away from the line, reflection couples two different evaluations and can give a negative value. Weil's criterion says that this distinction detects RH even if the test functions have compact support and their Mellin transforms satisfy any prescribed finite set of vanishing conditions.</p>
+<p>The compact-support requirement has an arithmetic consequence: each individual test uses only finitely many primes. It does not give one fixed finite set of primes sufficient for all tests. Our proof of the converse constructs a test with the required values, controls its values at all other zeros, and preserves exact vanishing when a Gaussian auxiliary function is cut off.</p>
+<p>After the positivity criterion and its character versions, we prove Connes's semilocal trace formula. For finitely many places, two cutoffs make the scaling operator trace class. Mellin transformation separates its trace into the length of a cutoff interval and the logarithmic derivative of a Fourier phase. Tate's local functional equations identify that derivative with the local distributions already calculated in the second lesson.</p>
+<h2 id="1-convolution-squares-and-the-sign-convention">1. Convolution squares and the sign convention</h2>
+<p>On <span class="math" data-tex="\(\mathbb R_+^\times\)">\(\mathbb R_+^\times\)</span>, with measure <span class="math" data-tex="\(d^*x=dx/x\)">\(d^*x=dx/x\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+(g*h)(x)=\int_0^\infty g(y)h(x/y)\,\frac{dy}{y},
+\qquad g^\sharp(x)=x^{-1}g(x^{-1}),
+\qquad G(s)=\widetilde g(s).
+\tag{1.1}
+\]">\[
+(g*h)(x)=\int_0^\infty g(y)h(x/y)\,\frac{dy}{y},
+\qquad g^\sharp(x)=x^{-1}g(x^{-1}),
+\qquad G(s)=\widetilde g(s).
+\tag{1.1}
+\]</span>
+<p>Changing variables and applying Fubini gives</p>
+<span class="math math-display" data-tex="\[
+\widetilde{g*h}(s)=\widetilde g(s)\widetilde h(s),
+\qquad
+\widetilde{\bar g^\sharp}(s)=\overline{G(1-\bar s)}.
+\tag{1.2}
+\]">\[
+\widetilde{g*h}(s)=\widetilde g(s)\widetilde h(s),
+\qquad
+\widetilde{\bar g^\sharp}(s)=\overline{G(1-\bar s)}.
+\tag{1.2}
+\]</span>
+<p>For <span class="math" data-tex="\(g\in C_c^\infty(\mathbb R_+^\times)\)">\(g\in C_c^\infty(\mathbb R_+^\times)\)</span> put <span class="math" data-tex="\(f=g*\bar g^\sharp\)">\(f=g*\bar g^\sharp\)</span>. It is again smooth with compact support, and</p>
+<span class="math math-display" data-tex="\[
+\widetilde f(s)=G(s)\overline{G(1-\bar s)}.
+\tag{1.3}
+\]">\[
+\widetilde f(s)=G(s)\overline{G(1-\bar s)}.
+\tag{1.3}
+\]</span>
+<p>The explicit formula in the first lesson therefore reads</p>
+<span class="math math-display" data-tex="\[
+\mathcal W(g):=\sum_v W_v(g*\bar g^\sharp)
+=G(0)\overline{G(1)}+G(1)\overline{G(0)}-Q(g),
+\tag{1.4}
+\]">\[
+\mathcal W(g):=\sum_v W_v(g*\bar g^\sharp)
+=G(0)\overline{G(1)}+G(1)\overline{G(0)}-Q(g),
+\tag{1.4}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+Q(g)=\sum_\rho G(\rho)\overline{G(1-\bar\rho)}.
+\tag{1.5}
+\]">\[
+Q(g)=\sum_\rho G(\rho)\overline{G(1-\bar\rho)}.
+\tag{1.5}
+\]</span>
+<p>The sum is absolutely convergent, as the Mellin bound below proves. The zero multiset is preserved by <span class="math" data-tex="\(\tau(\rho)=1-\bar\rho\)">\(\tau(\rho)=1-\bar\rho\)</span>, including multiplicities. Thus changing <span class="math" data-tex="\(\rho\)">\(\rho\)</span> to <span class="math" data-tex="\(\tau(\rho)\)">\(\tau(\rho)\)</span> conjugates (1.5); <span class="math" data-tex="\(Q(g)\)">\(Q(g)\)</span> is real. In particular, when <span class="math" data-tex="\(G(0)=G(1)=0\)">\(G(0)=G(1)=0\)</span>, our arithmetic sign convention is</p>
+<span class="math math-display" data-tex="\[
+\mathcal W(g)=-Q(g). \tag{1.6}
+\]">\[
+\mathcal W(g)=-Q(g). \tag{1.6}
+\]</span>
+<p>Weil's positive zero form and the nonpositive arithmetic form used here are the same criterion with this minus sign.</p>
+<h2 id="2-compact-support-and-mellin-decay">2. Compact support and Mellin decay</h2>
+<p><strong>Lemma 2.1.</strong> If <span class="math" data-tex="\(\operatorname{supp}g\subset[a,b]\)">\(\operatorname{supp}g\subset[a,b]\)</span>, with <span class="math" data-tex="\(0&lt;a&lt;b\)">\(0&lt;a&lt;b\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}(g*\bar g^\sharp)
+\subset\operatorname{supp}g\cdot(\operatorname{supp}g)^{-1}
+\subset[a/b,b/a].
+\tag{2.1}
+\]">\[
+\operatorname{supp}(g*\bar g^\sharp)
+\subset\operatorname{supp}g\cdot(\operatorname{supp}g)^{-1}
+\subset[a/b,b/a].
+\tag{2.1}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(W_p(f)=0\)">\(W_p(f)=0\)</span> if <span class="math" data-tex="\(\operatorname{supp}f\subset(p^{-1},p)\)">\(\operatorname{supp}f\subset(p^{-1},p)\)</span>.</p>
+<p><em>Proof.</em> A nonzero integrand in (1.1) requires <span class="math" data-tex="\(y\in\operatorname{supp}g\)">\(y\in\operatorname{supp}g\)</span> and <span class="math" data-tex="\(y/x\in\operatorname{supp}g\)">\(y/x\in\operatorname{supp}g\)</span>; hence <span class="math" data-tex="\(x\)">\(x\)</span> is a ratio of two support points. Taking closures proves (2.1). A local prime term evaluates only <span class="math" data-tex="\(f(p^m)\)">\(f(p^m)\)</span> and <span class="math" data-tex="\(p^{-m}f(p^{-m})\)">\(p^{-m}f(p^{-m})\)</span>. Neither argument meets the given open support interval, so every summand is zero. ∎</p>
+<p>For support in <span class="math" data-tex="\([A^{-1/2},A^{1/2}]\)">\([A^{-1/2},A^{1/2}]\)</span>, only primes <span class="math" data-tex="\(p&lt;A\)">\(p&lt;A\)</span> can contribute. At the boundary <span class="math" data-tex="\(p=A\)">\(p=A\)</span>, if it is prime, smooth compact support forces <span class="math" data-tex="\(f(A)=f(A^{-1})=0\)">\(f(A)=f(A^{-1})=0\)</span> as well. Thus the strict inequality is valid also when the containing support interval is closed.</p>
+<p><strong>Lemma 2.2 (Mellin Paley–Wiener bound).</strong> For <span class="math" data-tex="\(g\in C_c^\infty([a,b])\)">\(g\in C_c^\infty([a,b])\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is entire and, for every integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|G(\sigma+it)|
+\leq C_{N,g}\max(a^\sigma,b^\sigma)(1+|t|)^{-N}.
+\tag{2.2}
+\]">\[
+|G(\sigma+it)|
+\leq C_{N,g}\max(a^\sigma,b^\sigma)(1+|t|)^{-N}.
+\tag{2.2}
+\]</span>
+<p>The constant is independent of <span class="math" data-tex="\(\sigma,t\)">\(\sigma,t\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(A=\log a\)">\(A=\log a\)</span>, <span class="math" data-tex="\(B=\log b\)">\(B=\log b\)</span>, and <span class="math" data-tex="\(h(u)=g(e^u)\)">\(h(u)=g(e^u)\)</span>. Then
+<span class="math" data-tex="\(G(s)=\int_A^B h(u)e^{su}\,du\)">\(G(s)=\int_A^B h(u)e^{su}\,du\)</span>.
+Differentiation under this finite integral proves that <span class="math" data-tex="\(G\)">\(G\)</span> is entire and has exponential type. All derivatives of <span class="math" data-tex="\(h\)">\(h\)</span> vanish at the endpoints of any containing compact interval. For <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span>, integration by parts <span class="math" data-tex="\(N\)">\(N\)</span> times gives</p>
+<span class="math math-display" data-tex="\[
+G(s)=\frac{(-1)^N}{s^N}\int_A^B h^{(N)}(u)e^{su}\,du.
+\]">\[
+G(s)=\frac{(-1)^N}{s^N}\int_A^B h^{(N)}(u)e^{su}\,du.
+\]</span>
+<p>Its absolute value is at most
+<span class="math" data-tex="\(|s|^{-N}\|h^{(N)}\|_1\max(e^{A\sigma},e^{B\sigma})\)">\(|s|^{-N}\|h^{(N)}\|_1\max(e^{A\sigma},e^{B\sigma})\)</span>.
+For <span class="math" data-tex="\(|t|\geq1\)">\(|t|\geq1\)</span>, use <span class="math" data-tex="\(|s|\geq|t|\)">\(|s|\geq|t|\)</span>; for <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>, use the original integral and absorb <span class="math" data-tex="\(2^N\)">\(2^N\)</span> into the constant. This proves (2.2). ∎</p>
+<p>With <span class="math" data-tex="\(0\leq\Re\rho\leq1\)">\(0\leq\Re\rho\leq1\)</span>, the factor involving <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is bounded. Since the zeta zero count is <span class="math" data-tex="\(O(T\log(T+2))\)">\(O(T\log(T+2))\)</span>, (2.2) makes (1.5) absolutely convergent. The zero count, functional equation and gamma inputs are supplied by the same existing planned internal zeta lessons identified in the first lesson; their public proof completion is not asserted here.</p>
+<h2 id="3-a-compact-test-with-one-prescribed-zero-value">3. A compact test with one prescribed zero value</h2>
+<p>An exponential-type bound alone is not a proof that arbitrary interpolation is possible. We construct the function explicitly.</p>
+<p><strong>Lemma 3.1 (isolation with exact vanishing).</strong> Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be a locally finite multiset in <span class="math" data-tex="\(0\leq\Re s\leq1\)">\(0\leq\Re s\leq1\)</span>, with <span class="math" data-tex="\(O(T\log(T+2))\)">\(O(T\log(T+2))\)</span> points of height at most <span class="math" data-tex="\(T\)">\(T\)</span>, counted with multiplicity. Fix a distinct point <span class="math" data-tex="\(\rho_0\in Z\)">\(\rho_0\in Z\)</span>, and a finite set <span class="math" data-tex="\(F\)">\(F\)</span> not containing <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>. Fix <span class="math" data-tex="\(R&gt;2\)">\(R&gt;2\)</span>. There exists <span class="math" data-tex="\(g\in C_c^\infty(\mathbb R_+^\times)\)">\(g\in C_c^\infty(\mathbb R_+^\times)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+G(\rho_0)=1,\qquad G|_F=0,\qquad
+G(\rho)=0
+\quad\text{for every other distinct }\rho\in Z
+\text{ with }|\Im\rho-\Im\rho_0|\leq R,
+\tag{3.1}
+\]">\[
+G(\rho_0)=1,\qquad G|_F=0,\qquad
+G(\rho)=0
+\quad\text{for every other distinct }\rho\in Z
+\text{ with }|\Im\rho-\Im\rho_0|\leq R,
+\tag{3.1}
+\]</span>
+<p>provided <span class="math" data-tex="\(F\)">\(F\)</span> does not contain the target. The squared sum of <span class="math" data-tex="\(|G(\rho)|\)">\(|G(\rho)|\)</span>, with multiplicity, over zeros outside that band can be made arbitrarily small.</p>
+<p><em>Proof.</em> The band contains finitely many distinct points. Let <span class="math" data-tex="\(E\)">\(E\)</span> be their union with <span class="math" data-tex="\(F\)">\(F\)</span>, omitting <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span>, and put <span class="math" data-tex="\(P(s)=\prod_{z\in E}(s-z)\)">\(P(s)=\prod_{z\in E}(s-z)\)</span>. Then <span class="math" data-tex="\(P(\rho_0)\ne0\)">\(P(\rho_0)\ne0\)</span>. Consider first the auxiliary entire function</p>
+<span class="math math-display" data-tex="\[
+H_\varepsilon(s)=\frac{P(s)}{P(\rho_0)}
+\exp\left(\frac{(s-\rho_0)^2}{\varepsilon^2}\right),
+\qquad0&lt;\varepsilon\leq1.
+\tag{3.2}
+\]">\[
+H_\varepsilon(s)=\frac{P(s)}{P(\rho_0)}
+\exp\left(\frac{(s-\rho_0)^2}{\varepsilon^2}\right),
+\qquad0&lt;\varepsilon\leq1.
+\tag{3.2}
+\]</span>
+<p>It has the values in (3.1). Write <span class="math" data-tex="\(v=\Im\rho-\Im\rho_0\)">\(v=\Im\rho-\Im\rho_0\)</span>. Since the real parts differ by at most <span class="math" data-tex="\(1\)">\(1\)</span>, outside the band</p>
+<span class="math math-display" data-tex="\[
+|H_\varepsilon(\rho)|^2
+\leq C(1+|\rho|)^{2\deg P}
+\exp\left(\frac{2(1-v^2)}{\varepsilon^2}\right)
+\leq C e^{-(R^2-2)/\varepsilon^2}
+(1+|\rho|)^{2\deg P}e^{-v^2}.
+\tag{3.3}
+\]">\[
+|H_\varepsilon(\rho)|^2
+\leq C(1+|\rho|)^{2\deg P}
+\exp\left(\frac{2(1-v^2)}{\varepsilon^2}\right)
+\leq C e^{-(R^2-2)/\varepsilon^2}
+(1+|\rho|)^{2\deg P}e^{-v^2}.
+\tag{3.3}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\(|v|&gt;R\)">\(|v|&gt;R\)</span> and <span class="math" data-tex="\(\varepsilon\leq1\)">\(\varepsilon\leq1\)</span>. The sum of the last factor over <span class="math" data-tex="\(Z\)">\(Z\)</span> is finite by the zero count. Thus the squared tail tends to zero as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>.</p>
+<p>Function (3.2) is not itself a compact-support Mellin transform. Fix <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> after making its tail small, and use the Gaussian bilateral Laplace transform</p>
+<span class="math math-display" data-tex="\[
+b_\varepsilon(u)=\frac{\varepsilon}{2\sqrt\pi}
+e^{-\varepsilon^2u^2/4-\rho_0u},
+\qquad
+\int_\mathbb R b_\varepsilon(u)e^{su}\,du
+=e^{(s-\rho_0)^2/\varepsilon^2}.
+\tag{3.4}
+\]">\[
+b_\varepsilon(u)=\frac{\varepsilon}{2\sqrt\pi}
+e^{-\varepsilon^2u^2/4-\rho_0u},
+\qquad
+\int_\mathbb R b_\varepsilon(u)e^{su}\,du
+=e^{(s-\rho_0)^2/\varepsilon^2}.
+\tag{3.4}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span>, equal to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and zero outside <span class="math" data-tex="\([-2,2]\)">\([-2,2]\)</span>. The transforms
+<span class="math" data-tex="\(B_L(s)=\int\chi(u/L)b_\varepsilon(u)e^{su}\,du\)">\(B_L(s)=\int\chi(u/L)b_\varepsilon(u)e^{su}\,du\)</span>
+converge to the right side of (3.4), with every polynomial vertical weight, uniformly for <span class="math" data-tex="\(0\leq\Re s\leq1\)">\(0\leq\Re s\leq1\)</span>. Indeed all derivatives of the Gaussian tail, multiplied by <span class="math" data-tex="\(e^{\sigma u}\)">\(e^{\sigma u}\)</span>, have <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms tending to zero uniformly in this strip. Derivatives of <span class="math" data-tex="\(\chi(u/L)\)">\(\chi(u/L)\)</span> are supported in the same tail and carry bounded factors <span class="math" data-tex="\(L^{-j}\)">\(L^{-j}\)</span>. Integration by parts <span class="math" data-tex="\(N\)">\(N\)</span> times therefore gives</p>
+<span class="math math-display" data-tex="\[
+\sup_{0\leq\sigma\leq1,\ t\in\mathbb R}
+(1+|t|)^N|B_L(\sigma+it)-B(\sigma+it)|\longrightarrow0.
+\tag{3.5}
+\]">\[
+\sup_{0\leq\sigma\leq1,\ t\in\mathbb R}
+(1+|t|)^N|B_L(\sigma+it)-B(\sigma+it)|\longrightarrow0.
+\tag{3.5}
+\]</span>
+<p>Apply <span class="math" data-tex="\(P(-d/du)\)">\(P(-d/du)\)</span> to <span class="math" data-tex="\(\chi(u/L)b_\varepsilon(u)\)">\(\chi(u/L)b_\varepsilon(u)\)</span>. Its transform is <span class="math" data-tex="\(P(s)B_L(s)\)">\(P(s)B_L(s)\)</span>; this function vanishes <strong>exactly</strong> on <span class="math" data-tex="\(E\)">\(E\)</span> for every <span class="math" data-tex="\(L\)">\(L\)</span>. Its value at <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> tends to <span class="math" data-tex="\(P(\rho_0)\)">\(P(\rho_0)\)</span>, so it is nonzero for large <span class="math" data-tex="\(L\)">\(L\)</span>. Divide by that value. Finally set <span class="math" data-tex="\(g(e^u)\)">\(g(e^u)\)</span> equal to this normalized compactly supported smooth function.</p>
+<p>The resulting transforms converge to <span class="math" data-tex="\(H_\varepsilon\)">\(H_\varepsilon\)</span> with weight <span class="math" data-tex="\((1+|t|)^2\)">\((1+|t|)^2\)</span>, by choosing <span class="math" data-tex="\(N&gt;\deg P+2\)">\(N&gt;\deg P+2\)</span> in (3.5). Since
+<span class="math" data-tex="\(\sum_{\rho\in Z}(1+|\Im\rho|)^{-4}&lt;\infty\)">\(\sum_{\rho\in Z}(1+|\Im\rho|)^{-4}&lt;\infty\)</span>,
+they converge in squared-sum norm on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Their tail is therefore as small as desired, while every condition in (3.1) remains exact. ∎</p>
+<p>The same proof gives the frequently useful pointwise formulation: for any prescribed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, the nontarget values can be bounded by <span class="math" data-tex="\(\eta|\rho-\rho_0|^{-2}\)">\(\eta|\rho-\rho_0|^{-2}\)</span>, outside a fixed sufficiently large disk, and can be set to zero at the other zeros inside it. In (3.3), multiply by <span class="math" data-tex="\(|\rho-\rho_0|^4\)">\(|\rho-\rho_0|^4\)</span>; the Gaussian still dominates every polynomial. In (3.5), retain the same weighted uniform bound. A band may contain extra points beyond the disk; their values are simply set to zero too.</p>
+<p>The support radius <span class="math" data-tex="\(L\)">\(L\)</span> is chosen after the auxiliary Gaussian width. It can be very large. Compactness gives a finite witness, not a uniform small-support witness.</p>
+<h2 id="4-the-full-converse-with-finitely-many-vanishing-conditions">4. The full converse with finitely many vanishing conditions</h2>
+<p><strong>Theorem 4.1 (Weil's compact-support criterion).</strong> Let <span class="math" data-tex="\(F\subset\mathbb C\)">\(F\subset\mathbb C\)</span> be any finite set containing <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, disjoint from the nontrivial zeta zeros. Then</p>
+<span class="math math-display" data-tex="\[
+\boxed{\mathrm{RH}\quad\Longleftrightarrow\quad
+\mathcal W(g)\leq0
+\text{ for every }g\in C_c^\infty(\mathbb R_+^\times)
+\text{ with }G|_F=0.}
+\tag{4.1}
+\]">\[
+\boxed{\mathrm{RH}\quad\Longleftrightarrow\quad
+\mathcal W(g)\leq0
+\text{ for every }g\in C_c^\infty(\mathbb R_+^\times)
+\text{ with }G|_F=0.}
+\tag{4.1}
+\]</span>
+<p><em>Proof.</em> Under RH, <span class="math" data-tex="\(1-\bar\rho=\rho\)">\(1-\bar\rho=\rho\)</span>. Equations (1.5)–(1.6) give
+<span class="math" data-tex="\(\mathcal W(g)=-\sum_\rho|G(\rho)|^2\leq0\)">\(\mathcal W(g)=-\sum_\rho|G(\rho)|^2\leq0\)</span>.</p>
+<p>Conversely suppose <span class="math" data-tex="\(\rho_0\)">\(\rho_0\)</span> is off the critical line. Then
+<span class="math" data-tex="\(\rho_1=1-\bar\rho_0\ne\rho_0\)">\(\rho_1=1-\bar\rho_0\ne\rho_0\)</span>
+is a zero of the same multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, with the same imaginary part. Select one band of radius <span class="math" data-tex="\(R&gt;2\)">\(R&gt;2\)</span> about that imaginary part. Use Lemma 3.1 twice: obtain <span class="math" data-tex="\(G_0,G_1\)">\(G_0,G_1\)</span> equal to <span class="math" data-tex="\(1\)">\(1\)</span> at their respective targets, zero at the other target, zero at every remaining band zero and on <span class="math" data-tex="\(F\)">\(F\)</span>, and each with outside squared-sum norm less than <span class="math" data-tex="\(\eta^2\)">\(\eta^2\)</span>. Let <span class="math" data-tex="\(g=g_0-g_1\)">\(g=g_0-g_1\)</span>. Its transform takes the values <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> at <span class="math" data-tex="\(\rho_0,\rho_1\)">\(\rho_0,\rho_1\)</span>; all other band evaluations vanish.</p>
+<p>The pair's contribution to <span class="math" data-tex="\(Q(g)\)">\(Q(g)\)</span> is <span class="math" data-tex="\(-2m\)">\(-2m\)</span>. Reflection <span class="math" data-tex="\(\tau\)">\(\tau\)</span> preserves the outside band and its multiplicities, so Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{\rho\ {\rm outside}}
+G(\rho)\overline{G(\tau\rho)}\right|
+\leq\sum_{\rho\ {\rm outside}}|G(\rho)|^2
+&lt;4\eta^2.
+\tag{4.2}
+\]">\[
+\left|\sum_{\rho\ {\rm outside}}
+G(\rho)\overline{G(\tau\rho)}\right|
+\leq\sum_{\rho\ {\rm outside}}|G(\rho)|^2
+&lt;4\eta^2.
+\tag{4.2}
+\]</span>
+<p>Choose <span class="math" data-tex="\(4\eta^2&lt;2m\)">\(4\eta^2&lt;2m\)</span>. Then <span class="math" data-tex="\(Q(g)&lt;0\)">\(Q(g)&lt;0\)</span>, while <span class="math" data-tex="\(G|_F=0\)">\(G|_F=0\)</span>. Equation (1.6) gives <span class="math" data-tex="\(\mathcal W(g)&gt;0\)">\(\mathcal W(g)&gt;0\)</span>, contradicting the proposed sign. Every step uses an actual compactly supported smooth test. ∎</p>
+<p>This proves the finite-vanishing extension discussed by Connes and Consani in their appendix <em>Positivity criterion</em>, including the compact interpolation step referred there to Yoshida. The disjointness condition on <span class="math" data-tex="\(F\)">\(F\)</span> is essential to the construction: if a target were also prescribed to vanish, its required value <span class="math" data-tex="\(1\)">\(1\)</span> would be impossible.</p>
+<h2 id="5-two-examples-of-support-and-spectral-localization">5. Two examples of support and spectral localization</h2>
+<p>If <span class="math" data-tex="\(g\)">\(g\)</span> is supported in <span class="math" data-tex="\([2^{-1/2},2^{1/2}]\)">\([2^{-1/2},2^{1/2}]\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is supported in <span class="math" data-tex="\([1/2,2]\)">\([1/2,2]\)</span>. Smoothness makes both endpoint values zero. No prime term enters, including the prime <span class="math" data-tex="\(2\)">\(2\)</span>. Thus <span class="math" data-tex="\(\mathcal W(g)=W_{\mathbb R}(f)\)">\(\mathcal W(g)=W_{\mathbb R}(f)\)</span> is purely archimedean. The next lesson studies this small-support form in detail.</p>
+<p>For a spectral localization example, assume RH and write <span class="math" data-tex="\(\gamma_1\approx14.1347\)">\(\gamma_1\approx14.1347\)</span> for the first positive ordinate. Let <span class="math" data-tex="\(b\)">\(b\)</span> be a nonzero real, even, smooth bump supported in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, with positive integral, and begin with
+<span class="math" data-tex="\(h_L(u)=e^{-u/2}b(u/L)\cos(\gamma_1u)\)">\(h_L(u)=e^{-u/2}b(u/L)\cos(\gamma_1u)\)</span>.
+Its Mellin transform on the critical line is</p>
+<span class="math math-display" data-tex="\[
+\frac L2\left\{\widehat b(L(t-\gamma_1))
++\widehat b(L(t+\gamma_1))\right\},
+\tag{5.1}
+\]">\[
+\frac L2\left\{\widehat b(L(t-\gamma_1))
++\widehat b(L(t+\gamma_1))\right\},
+\tag{5.1}
+\]</span>
+<p>where <span class="math" data-tex="\(\widehat b(t)=\int b(u)e^{itu}\,du\)">\(\widehat b(t)=\int b(u)e^{itu}\,du\)</span>. Apply the polynomial differential operator whose Mellin multiplier is <span class="math" data-tex="\(s(s-1)\)">\(s(s-1)\)</span>, imposing vanishing at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Normalize so that the resulting <span class="math" data-tex="\(G_L(1/2+i\gamma_1)=1\)">\(G_L(1/2+i\gamma_1)=1\)</span>. Evenness and reality give the same value at the negative ordinate, because
+<span class="math" data-tex="\(s(s-1)=-(1/4+t^2)\)">\(s(s-1)=-(1/4+t^2)\)</span> on the critical line.</p>
+<p>Every other distinct zero evaluation tends to zero, while their squared sum tends to zero: rapid decay of <span class="math" data-tex="\(\widehat b\)">\(\widehat b\)</span>, the positive distance to the nearest other ordinate, and the zero count give a summable majorant after choosing a power greater than <span class="math" data-tex="\(4\)">\(4\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal W(g_L)\longrightarrow-2m_1,
+\tag{5.2}
+\]">\[
+\mathcal W(g_L)\longrightarrow-2m_1,
+\tag{5.2}
+\]</span>
+<p>where <span class="math" data-tex="\(m_1\)">\(m_1\)</span> is the multiplicity of the first positive zero. If it is simple, the limit is <span class="math" data-tex="\(-2\)">\(-2\)</span>. This explains the approximation by the two first-zero absolute squares. The support expands with <span class="math" data-tex="\(L\)">\(L\)</span>, so this localization example does not simultaneously have fixed small support.</p>
+<p>The existing lesson <em>Weil's proof for curves and what is missing over the integers</em> in <em>The field with one element</em> proves a Gaussian-type criterion in its Theorem 6.4. Theorem 4.1 adds compact support and arbitrary admissible finite vanishing conditions; its proof above does not assume that the Gaussian auxiliary transform itself is of Paley–Wiener type.</p>
+<h2 id="6-characters-and-idèle-classes">6. Characters and idèle classes</h2>
+<h3 id="all-dirichlet-characters-modulo-one-modulus">All Dirichlet characters modulo one modulus</h3>
+<p>Let <span class="math" data-tex="\(B=(\mathbb Z/q\mathbb Z)^\times\)">\(B=(\mathbb Z/q\mathbb Z)^\times\)</span>, with probability counting measure. For a smooth compactly supported <span class="math" data-tex="\(g(b,x)\)">\(g(b,x)\)</span>, define the character Mellin coefficient</p>
+<span class="math math-display" data-tex="\[
+G_\chi(s)=\frac1{\varphi(q)}
+\sum_{b\in B}\int_0^\infty g(b,x)\chi(b)x^s\,\frac{dx}{x}.
+\tag{6.1}
+\]">\[
+G_\chi(s)=\frac1{\varphi(q)}
+\sum_{b\in B}\int_0^\infty g(b,x)\chi(b)x^s\,\frac{dx}{x}.
+\tag{6.1}
+\]</span>
+<p>Convolution is on <span class="math" data-tex="\(B\times\mathbb R_+^\times\)">\(B\times\mathbb R_+^\times\)</span>, and the involution is
+<span class="math" data-tex="\(g^*(b,x)=x^{-1}\overline{g(b^{-1},x^{-1})}\)">\(g^*(b,x)=x^{-1}\overline{g(b^{-1},x^{-1})}\)</span>.
+The coefficient of <span class="math" data-tex="\(g*g^*\)">\(g*g^*\)</span> is
+<span class="math" data-tex="\(G_\chi(s)\overline{G_\chi(1-\bar s)}\)">\(G_\chi(s)\overline{G_\chi(1-\bar s)}\)</span>.
+This follows by the same substitutions as (1.2), with character orthogonality in the finite group.</p>
+<p>Define the combined zero form</p>
+<span class="math math-display" data-tex="\[
+Q_q(g)=\sum_{\chi\bmod q}\sum_{\rho\ {\rm of}\ \chi^*}
+G_\chi(\rho)\overline{G_\chi(1-\bar\rho)}.
+\tag{6.2}
+\]">\[
+Q_q(g)=\sum_{\chi\bmod q}\sum_{\rho\ {\rm of}\ \chi^*}
+G_\chi(\rho)\overline{G_\chi(1-\bar\rho)}.
+\tag{6.2}
+\]</span>
+<p>Here each character is reduced to its primitive inducing character. The corresponding arithmetic form is obtained from lesson 2 by using, in each component, <span class="math" data-tex="\(P_\chi+E_\chi-A_{q_\chi,a_\chi}\)">\(P_\chi+E_\chi-A_{q_\chi,a_\chi}\)</span>; the single conductor-<span class="math" data-tex="\(1\)">\(1\)</span> component also has the pole pair. On functions with <span class="math" data-tex="\(G_{\chi_0}(0)=G_{\chi_0}(1)=0\)">\(G_{\chi_0}(0)=G_{\chi_0}(1)=0\)</span>, the total arithmetic form equals <span class="math" data-tex="\(-Q_q(g)\)">\(-Q_q(g)\)</span>.</p>
+<p><strong>Proposition 6.1.</strong> GRH for all primitive functions inducing characters modulo <span class="math" data-tex="\(q\)">\(q\)</span> is equivalent to <span class="math" data-tex="\(Q_q(g)\geq0\)">\(Q_q(g)\geq0\)</span> for all such tests.</p>
+<p><em>Proof.</em> Under GRH every summand in (6.2) is an absolute square. Conversely choose a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and use
+<span class="math" data-tex="\(g(b,x)=\bar\chi(b)k(x)\)">\(g(b,x)=\bar\chi(b)k(x)\)</span>.
+Orthogonality makes the only nonzero coefficient <span class="math" data-tex="\(G_\chi=\widetilde k\)">\(G_\chi=\widetilde k\)</span>. The zero multiset of this primitive function is invariant under <span class="math" data-tex="\(s\mapsto1-\bar s\)">\(s\mapsto1-\bar s\)</span>, by its functional equation and conjugation, and has the zero-count bound of lesson 2. If an off-line pair exists, the proof of Theorem 4.1 constructs <span class="math" data-tex="\(k\)">\(k\)</span> with a negative zero form. For the principal component impose the two additional vanishing conditions; for other components no pole conditions are necessary. This contradicts positivity. ∎</p>
+<p>Requiring vanishing at <span class="math" data-tex="\(0,1\)">\(0,1\)</span> in <strong>every</strong> component gives an equivalent criterion, since the same construction imposes any finite set disjoint from the completed zeros. The missing Euler factors are retained in the arithmetic form rather than treating their boundary zeros as primitive nontrivial zeros.</p>
+<h3 id="weil-s-idèle-class-distribution">Weil's idèle-class distribution</h3>
+<p>For a number field <span class="math" data-tex="\(k\)">\(k\)</span>, use the norm splitting and Mellin-character convention of lesson 2, Section 7. Define on <span class="math" data-tex="\(C_c^\infty(C_k)\)">\(C_c^\infty(C_k)\)</span></p>
+<span class="math math-display" data-tex="\[
+D(h)=\widehat h(0)+\widehat h(1)-\sum_vW_v(h).
+\tag{6.3}
+\]">\[
+D(h)=\widehat h(0)+\widehat h(1)-\sum_vW_v(h).
+\tag{6.3}
+\]</span>
+<p>Weil's idèlic explicit formula, proved there, identifies this as</p>
+<span class="math math-display" data-tex="\[
+D(h)=\sum_{\chi\in\widehat{C_k^1}}\sum_{\rho\ {\rm of}\ \Lambda_\chi}
+\widehat h(\chi,\rho).
+\tag{6.4}
+\]">\[
+D(h)=\sum_{\chi\in\widehat{C_k^1}}\sum_{\rho\ {\rm of}\ \Lambda_\chi}
+\widehat h(\chi,\rho).
+\tag{6.4}
+\]</span>
+<p>With <span class="math" data-tex="\(g^*(u)=|u|^{-1}\overline{g(u^{-1})}\)">\(g^*(u)=|u|^{-1}\overline{g(u^{-1})}\)</span>, its evaluation on <span class="math" data-tex="\(g*g^*\)">\(g*g^*\)</span> is the sum of the character zero forms. The character and zero sums are absolutely convergent by the fixed-level rapid Fourier decay and uniform zero bound proved in that lesson.</p>
+<p><strong>Proposition 6.2 (Weil's idèle criterion).</strong> Every unitary Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-function of <span class="math" data-tex="\(k\)">\(k\)</span> satisfies RH if and only if <span class="math" data-tex="\(D(g*g^*)\geq0\)">\(D(g*g^*)\geq0\)</span> for every <span class="math" data-tex="\(g\in C_c^\infty(C_k)\)">\(g\in C_c^\infty(C_k)\)</span>.</p>
+<p><em>Proof.</em> The forward direction gives an absolute square in every component of (6.4). For the converse fix a character of <span class="math" data-tex="\(C_k^1\)">\(C_k^1\)</span>, and use <span class="math" data-tex="\(g(u)=\bar\chi(u)k(|u|)\)">\(g(u)=\bar\chi(u)k(|u|)\)</span>. Character orthogonality isolates its Hecke function. Its zeros lie in the same bounded strip, satisfy the zero count of lesson 2, and are invariant under <span class="math" data-tex="\(s\mapsto1-\bar s\)">\(s\mapsto1-\bar s\)</span>. Lemma 3.1 and the off-line-pair argument therefore produce a negative form if any such zero exists. The trivial norm component's poles have already been subtracted in the definition (6.3), so no moment restriction is needed for this zero-form criterion. ∎</p>
+<p>To express positive type with the usual unitary convolution involution, apply the algebra automorphism <span class="math" data-tex="\(g(u)\mapsto|u|^{1/2}g(u)\)">\(g(u)\mapsto|u|^{1/2}g(u)\)</span>. It changes <span class="math" data-tex="\(g^*\)">\(g^*\)</span> into <span class="math" data-tex="\(\overline{g(u^{-1})}\)">\(\overline{g(u^{-1})}\)</span>, and the critical-line Mellin evaluations become Fourier evaluations. This is the Fourier–Mellin dictionary behind Weil's 1952 idèle-class formulation. The ordinary real positivity here is a property of the whole distribution; it does not assert positivity of each individual local term.</p>
+<h2 id="7-a-hilbert-space-for-finitely-many-places">7. A Hilbert space for finitely many places</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a global field, and let <span class="math" data-tex="\(S\)">\(S\)</span> be a nonempty finite set of its places, containing all infinite places in the number-field case. Put</p>
+<span class="math math-display" data-tex="\[
+A_S=\prod_{v\in S}k_v,\qquad J_S=\prod_{v\in S}k_v^\times,\qquad
+\Gamma=\mathcal O_S^\times
+=\{q\in k^\times:|q|_v=1\text{ for }v\notin S\},
+\qquad C_S=J_S/\Gamma.
+\tag{7.1}
+\]">\[
+A_S=\prod_{v\in S}k_v,\qquad J_S=\prod_{v\in S}k_v^\times,\qquad
+\Gamma=\mathcal O_S^\times
+=\{q\in k^\times:|q|_v=1\text{ for }v\notin S\},
+\qquad C_S=J_S/\Gamma.
+\tag{7.1}
+\]</span>
+<p>The product norm is <span class="math" data-tex="\(|x|=\prod_{v\in S}|x_v|_v\)">\(|x|=\prod_{v\in S}|x_v|_v\)</span>. The product formula gives <span class="math" data-tex="\(|q|=1\)">\(|q|=1\)</span> for <span class="math" data-tex="\(q\in\Gamma\)">\(q\in\Gamma\)</span>. The norm-one group <span class="math" data-tex="\(K_S=\ker(|\cdot|:C_S\to\mathbb R_+^\times)\)">\(K_S=\ker(|\cdot|:C_S\to\mathbb R_+^\times)\)</span> is compact.</p>
+<p>Here are the precise structural inputs and their relation to this setting. For number fields we use finiteness of the ideal class group and Dirichlet's unit lattice, the results used in lesson 3, <em>Idèles and the idèle class group</em>, of <em>Adèles, idèles and Tate's thesis</em>. These are existing planned internal prerequisites; their public proof completion is not asserted here. They imply the <span class="math" data-tex="\(S\)">\(S\)</span>-unit statement as follows. For each finite place <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, a positive power of its prime ideal is principal. A generator of that power is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit. Its valuation at <span class="math" data-tex="\(v\)">\(v\)</span> is nonzero and its valuations at the other finite places are zero. These generators supply all the finite-place directions, up to finite index. The ordinary unit lattice supplies the remaining archimedean directions. Thus</p>
+<span class="math math-display" data-tex="\[
+q\longmapsto(\log|q|_v)_{v\in S}
+\tag{7.2}
+\]">\[
+q\longmapsto(\log|q|_v)_{v\in S}
+\tag{7.2}
+\]</span>
+<p>has finite kernel and is a full lattice in <span class="math" data-tex="\(\sum_v y_v=0\)">\(\sum_v y_v=0\)</span>. The kernel consists of roots of unity. The local norm-one unit groups are compact, so a bounded lattice fundamental region and those unit groups give compactness of <span class="math" data-tex="\(K_S\)">\(K_S\)</span>. In particular <span class="math" data-tex="\(C_S\simeq K_S\times\mathbb R\)">\(C_S\simeq K_S\times\mathbb R\)</span>, after choosing a splitting and writing the second coordinate as <span class="math" data-tex="\(r=\log|x|\)">\(r=\log|x|\)</span>.</p>
+<p>For completeness, the function-field structure needed for the same trace theorem has an elementary adelic proof. Let the constant field have order <span class="math" data-tex="\(q\)">\(q\)</span>. Choose a separating element <span class="math" data-tex="\(t\)">\(t\)</span>, so that <span class="math" data-tex="\(k/\mathbb F_q(t)\)">\(k/\mathbb F_q(t)\)</span> is finite separable. The additive quotient
+<span class="math" data-tex="\(\mathbb A_{\mathbb F_q(t)}/\mathbb F_q(t)\)">\(\mathbb A_{\mathbb F_q(t)}/\mathbb F_q(t)\)</span> is compact: subtract the finitely many principal parts at finite irreducible polynomials by partial fractions, then subtract the polynomial part at infinity. The remaining representative lies in
+<span class="math" data-tex="\(\prod_{p\text{ finite}}\mathcal O_p\times t^{-1}\mathcal O_\infty\)">\(\prod_{p\text{ finite}}\mathcal O_p\times t^{-1}\mathcal O_\infty\)</span>, a compact set. It meets the diagonal rational-function field only at zero. A field basis of <span class="math" data-tex="\(k/\mathbb F_q(t)\)">\(k/\mathbb F_q(t)\)</span> gives a topological additive isomorphism
+<span class="math" data-tex="\(\mathbb A_k\simeq\mathbb A_{\mathbb F_q(t)}^{[k:\mathbb F_q(t)]}\)">\(\mathbb A_k\simeq\mathbb A_{\mathbb F_q(t)}^{[k:\mathbb F_q(t)]}\)</span>, carrying <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(\mathbb F_q(t)^{[k:\mathbb F_q(t)]}\)">\(\mathbb F_q(t)^{[k:\mathbb F_q(t)]}\)</span>. To check the restricted products in this assertion, away from finitely many primes an integral basis and its inverse have integral coordinates; at the remaining primes either basis gives equivalent finite-dimensional local topologies. Hence <span class="math" data-tex="\(\mathbb A_k/k\)">\(\mathbb A_k/k\)</span> is compact and <span class="math" data-tex="\(k\)">\(k\)</span> is discrete.</p>
+<p>If a compact open additive box <span class="math" data-tex="\(B\subset\mathbb A_k\)">\(B\subset\mathbb A_k\)</span> has volume exceeding the volume of that quotient, two points of <span class="math" data-tex="\(B\)">\(B\)</span> have the same image in the quotient. Indeed integrate the number of representatives in <span class="math" data-tex="\(B\)">\(B\)</span> over a fundamental region; if it were at most one, the volume of <span class="math" data-tex="\(B\)">\(B\)</span> could not exceed that region's volume. Since <span class="math" data-tex="\(B-B=B\)">\(B-B=B\)</span>, this gives a nonzero element of <span class="math" data-tex="\(k\cap B\)">\(k\cap B\)</span>. For a divisor <span class="math" data-tex="\(D\)">\(D\)</span>, the box
+<span class="math" data-tex="\(B_D=\prod_v\{x:\operatorname{ord}_v x\geq-D_v\}\)">\(B_D=\prod_v\{x:\operatorname{ord}_v x\geq-D_v\}\)</span>
+has volume <span class="math" data-tex="\(c q^{\deg D}\)">\(c q^{\deg D}\)</span>, where <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> is fixed. Choose one place <span class="math" data-tex="\(v_0\)">\(v_0\)</span> and an integer <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(c q^{N\deg v_0}\)">\(c q^{N\deg v_0}\)</span> exceeding the quotient volume. Every divisor <span class="math" data-tex="\(D\)">\(D\)</span> of degree zero then admits <span class="math" data-tex="\(0\ne f\in B_{D+Nv_0}\cap k\)">\(0\ne f\in B_{D+Nv_0}\cap k\)</span>. Thus <span class="math" data-tex="\(D+Nv_0+\operatorname{div}(f)\)">\(D+Nv_0+\operatorname{div}(f)\)</span> is effective of the fixed degree <span class="math" data-tex="\(N\deg v_0\)">\(N\deg v_0\)</span>.</p>
+<p>There are only finitely many effective divisors of that degree. A place of <span class="math" data-tex="\(k\)">\(k\)</span> of bounded degree lies above a place of <span class="math" data-tex="\(\mathbb F_q(t)\)">\(\mathbb F_q(t)\)</span> of bounded degree; there are finitely many such base places, and finitely many places above each. This proves finiteness of the degree-zero divisor class group. For <span class="math" data-tex="\(v\in S\setminus\{v_0\}\)">\(v\in S\setminus\{v_0\}\)</span>, with <span class="math" data-tex="\(v_0\)">\(v_0\)</span> now chosen in <span class="math" data-tex="\(S\)">\(S\)</span>, a positive multiple of
+<span class="math" data-tex="\((\deg v_0)v-(\deg v)v_0\)">\((\deg v_0)v-(\deg v)v_0\)</span> is therefore principal. Its generator is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit. These generators span, up to finite index, the lattice of integer valuations satisfying <span class="math" data-tex="\(\sum_v(\deg v)n_v=0\)">\(\sum_v(\deg v)n_v=0\)</span>. Its kernel is finite: an element with every valuation zero has all its powers in the compact box <span class="math" data-tex="\(B_0\)">\(B_0\)</span>; the discrete set <span class="math" data-tex="\(k\cap B_0\)">\(k\cap B_0\)</span> is finite, so two powers coincide. This proves the <span class="math" data-tex="\(S\)">\(S\)</span>-unit lattice and compactness of <span class="math" data-tex="\(K_S\)">\(K_S\)</span> in this case too. The norm image is <span class="math" data-tex="\(e^{a\mathbb Z}\)">\(e^{a\mathbb Z}\)</span>, where <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> is the positive generator of the subgroup of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> generated by <span class="math" data-tex="\((\deg v)\log q\)">\((\deg v)\log q\)</span>, <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>. Choosing one element of norm <span class="math" data-tex="\(e^a\)">\(e^a\)</span> gives <span class="math" data-tex="\(C_S\simeq K_S\times a\mathbb Z\)">\(C_S\simeq K_S\times a\mathbb Z\)</span>.</p>
+<p>Normalize multiplicative measure on <span class="math" data-tex="\(C_S\)">\(C_S\)</span> by mass one on <span class="math" data-tex="\(K_S\)">\(K_S\)</span>, and by <span class="math" data-tex="\(dr\)">\(dr\)</span> on the real norm coordinate, or <span class="math" data-tex="\(a\)">\(a\)</span> times counting measure on <span class="math" data-tex="\(a\mathbb Z\)">\(a\mathbb Z\)</span>. This is exactly the normalization for which long norm intervals have volume asymptotic to their logarithmic length. Fix additive characters <span class="math" data-tex="\(\alpha_v\)">\(\alpha_v\)</span>, self-dual additive measures, and the product Fourier transform <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span> on <span class="math" data-tex="\(A_S\)">\(A_S\)</span>.</p>
+<p>The quotient <span class="math" data-tex="\(X_S=A_S/\Gamma\)">\(X_S=A_S/\Gamma\)</span> can have a complicated topology. Its required Hilbert space is nevertheless concrete. For a Schwartz–Bruhat function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> define</p>
+<span class="math math-display" data-tex="\[
+E_0\phi(x)=\sum_{q\in\Gamma}\phi(qx),\qquad
+\|\phi\|_{X_S}^2=\int_D|E_0\phi(x)|^2\,dx,
+\tag{7.3}
+\]">\[
+E_0\phi(x)=\sum_{q\in\Gamma}\phi(qx),\qquad
+\|\phi\|_{X_S}^2=\int_D|E_0\phi(x)|^2\,dx,
+\tag{7.3}
+\]</span>
+<p>where <span class="math" data-tex="\(D\subset J_S\)">\(D\subset J_S\)</span> is a fundamental region and <span class="math" data-tex="\(dx\)">\(dx\)</span> is the quotient of the self-dual additive measure. The complement <span class="math" data-tex="\(A_S\setminus J_S\)">\(A_S\setminus J_S\)</span> has additive measure zero. Multiplication by <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> preserves additive measure. There is a positive constant <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\(dx=\rho|x|\,d^*x\)">\(dx=\rho|x|\,d^*x\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Lemma 7.1.</strong> Formula (7.3) is finite, and</p>
+<span class="math math-display" data-tex="\[
+\langle\phi_1,\phi_2\rangle_{X_S}
+=\sum_{q\in\Gamma}
+\langle\phi_1,U(q)\phi_2\rangle_{L^2(A_S)},\qquad
+U(q)\phi(x)=\phi(q^{-1}x).
+\tag{7.4}
+\]">\[
+\langle\phi_1,\phi_2\rangle_{X_S}
+=\sum_{q\in\Gamma}
+\langle\phi_1,U(q)\phi_2\rangle_{L^2(A_S)},\qquad
+U(q)\phi(x)=\phi(q^{-1}x).
+\tag{7.4}
+\]</span>
+<p>The series is absolutely convergent. The Fourier transform induces a unitary involution on the separated completion of (7.3), and that completion is unitarily isomorphic to <span class="math" data-tex="\(L^2(C_S,d^*x)\)">\(L^2(C_S,d^*x)\)</span>.</p>
+<p><em>Proof.</em> Choose a lattice word length on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. The sum of the coordinates in (7.2) is zero, so
+<span class="math math-display" data-tex="\[
+\sum_v(\log|q|_v)^+=\frac12\sum_v|\log|q|_v|
+\geq c\,\operatorname{length}(q)
+\]">\[
+\sum_v(\log|q|_v)^+=\frac12\sum_v|\log|q|_v|
+\geq c\,\operatorname{length}(q)
+\]</span>
+outside the finite kernel. For two characteristic functions of fixed local boxes, the volume of their intersection after scaling by <span class="math" data-tex="\(q\)">\(q\)</span> is at most a constant times
+<span class="math" data-tex="\(\prod_v\min(1,|q|_v^{-1})\)">\(\prod_v\min(1,|q|_v^{-1})\)</span>, which is exponentially small in that length. For Schwartz functions use a sum of such box majorants with coefficients decreasing faster than every power of the box radius. The radii contribute only polynomial factors; summing them leaves the same exponential bound with a fixed constant. Thus the series of absolute inner products in (7.4) converges. Expanding (7.3), unfolding one of its two sums from <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(J_S\)">\(J_S\)</span>, and applying this absolute bound proves (7.4).</p>
+<p>Fourier transformation preserves the additive inner product and sends <span class="math" data-tex="\(U(q)\)">\(U(q)\)</span> to <span class="math" data-tex="\(U(q^{-1})\)">\(U(q^{-1})\)</span>, since <span class="math" data-tex="\(|q|=1\)">\(|q|=1\)</span>. It therefore preserves (7.4). Its square is reflection by <span class="math" data-tex="\(-1\)">\(-1\)</span>, which acts trivially on the quotient because <span class="math" data-tex="\(-1\in\Gamma\)">\(-1\in\Gamma\)</span>. Finally the map
+<span class="math math-display" data-tex="\[
+\phi\longmapsto \rho^{1/2}|x|^{1/2}E_0\phi(x)
+\tag{7.5}
+\]">\[
+\phi\longmapsto \rho^{1/2}|x|^{1/2}E_0\phi(x)
+\tag{7.5}
+\]</span>
+is isometric into <span class="math" data-tex="\(L^2(C_S,d^*x)\)">\(L^2(C_S,d^*x)\)</span>. Its image is dense. To see this, lift a smooth compactly supported function on <span class="math" data-tex="\(C_S\)">\(C_S\)</span> to <span class="math" data-tex="\(J_S\)">\(J_S\)</span> using finitely many relatively compact coordinate neighborhoods and a smooth partition of unity. The discreteness of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> makes each neighborhood an evenly covered set. Multiply the lift by <span class="math" data-tex="\(\rho^{-1/2}|x|^{-1/2}\)">\(\rho^{-1/2}|x|^{-1/2}\)</span> before periodizing. Extended by zero, the resulting function is Schwartz–Bruhat on <span class="math" data-tex="\(A_S\)">\(A_S\)</span>, because its support is compact and bounded away from every coordinate zero. Its image under (7.5) is the prescribed function. Such functions are dense. ∎</p>
+<p>The unnormalized scaling <span class="math" data-tex="\(U(\lambda)\)">\(U(\lambda)\)</span> has operator norm <span class="math" data-tex="\(|\lambda|^{1/2}\)">\(|\lambda|^{1/2}\)</span>. Under (7.5) it becomes <span class="math" data-tex="\(|\lambda|^{1/2}\)">\(|\lambda|^{1/2}\)</span> times unitary translation on <span class="math" data-tex="\(C_S\)">\(C_S\)</span>. Thus
+<span class="math math-display" data-tex="\[
+U(h)=\int_{C_S}h(\lambda)U(\lambda)\,d^*\lambda
+\tag{7.6}
+\]">\[
+U(h)=\int_{C_S}h(\lambda)U(\lambda)\,d^*\lambda
+\tag{7.6}
+\]</span>
+is bounded for smooth compactly supported <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<h2 id="8-mellin-transformation-of-the-two-cutoffs">8. Mellin transformation of the two cutoffs</h2>
+<p>First take a number field, so the norm coordinate is <span class="math" data-tex="\(r\in\mathbb R\)">\(r\in\mathbb R\)</span>. Expand on the compact group <span class="math" data-tex="\(K_S\)">\(K_S\)</span>, with characters <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, extended to be trivial on the chosen norm splitting. Use the unitary transform
+<span class="math math-display" data-tex="\[
+\mathcal M_\chi\psi(s)
+=\frac1{\sqrt{2\pi}}\int_{K_S}\int_{\mathbb R}
+\psi(c,r)\overline{\chi(c)}e^{-isr}\,dr\,dc.
+\tag{8.1}
+\]">\[
+\mathcal M_\chi\psi(s)
+=\frac1{\sqrt{2\pi}}\int_{K_S}\int_{\mathbb R}
+\psi(c,r)\overline{\chi(c)}e^{-isr}\,dr\,dc.
+\tag{8.1}
+\]</span>
+The scaling integral is diagonal in this representation, with multiplier
+<span class="math math-display" data-tex="\[
+m_\chi(s)=\int_{C_S}h(\lambda)|\lambda|^{1/2}
+\overline{\chi(\lambda)}|\lambda|^{-is}\,d^*\lambda.
+\tag{8.2}
+\]">\[
+m_\chi(s)=\int_{C_S}h(\lambda)|\lambda|^{1/2}
+\overline{\chi(\lambda)}|\lambda|^{-is}\,d^*\lambda.
+\tag{8.2}
+\]</span></p>
+<p>We use Tate's local functional equations in lessons 7 and 8 of <em>Adèles, idèles and Tate's thesis</em>, already exact planned prerequisites of the second lesson. To fix the convention completely, write their local factor as
+<span class="math math-display" data-tex="\[
+Z_v(\mathscr F_v\phi,\omega^{-1},1-z)
+=\gamma_v(\omega,z,\alpha_v)Z_v(\phi,\omega,z),\quad
+Z_v(\phi,\omega,z)=\int_{k_v^\times}
+\phi(x)\omega(x)|x|_v^z\,d^\times x.
+\tag{8.3}
+\]">\[
+Z_v(\mathscr F_v\phi,\omega^{-1},1-z)
+=\gamma_v(\omega,z,\alpha_v)Z_v(\phi,\omega,z),\quad
+Z_v(\phi,\omega,z)=\int_{k_v^\times}
+\phi(x)\omega(x)|x|_v^z\,d^\times x.
+\tag{8.3}
+\]</span>
+Any constant normalization of <span class="math" data-tex="\(d^\times x\)">\(d^\times x\)</span> cancels here. On <span class="math" data-tex="\(\Re z=1/2\)">\(\Re z=1/2\)</span>, the factor has modulus one for unitary <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Unfold (7.5) in (8.1), first for a product of local Schwartz functions. Equation (8.3) at each place gives
+<span class="math math-display" data-tex="\[
+(\mathcal M\mathscr F\psi)_\chi(s)
+=u_\chi(s)(\mathcal M\psi)_{\bar\chi}(-s),\qquad
+u_\chi(s)=\prod_{v\in S}
+\gamma_v(\chi_v,1/2+is,\alpha_v).
+\tag{8.4}
+\]">\[
+(\mathcal M\mathscr F\psi)_\chi(s)
+=u_\chi(s)(\mathcal M\psi)_{\bar\chi}(-s),\qquad
+u_\chi(s)=\prod_{v\in S}
+\gamma_v(\chi_v,1/2+is,\alpha_v).
+\tag{8.4}
+\]</span>
+The product of local integrals converges absolutely on this line. Finite sums of product Schwartz functions are dense; Lemma 7.1 then extends (8.4) to the whole Hilbert space. In particular no assertion about RH is needed to obtain its Fourier phase.</p>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be multiplication by <span class="math" data-tex="\(u_\chi(s)\)">\(u_\chi(s)\)</span>, and let <span class="math" data-tex="\(J\)">\(J\)</span> reflect <span class="math" data-tex="\(s\)">\(s\)</span> and conjugate the character index as in (8.4). Thus <span class="math" data-tex="\(\mathscr F=VJ\)">\(\mathscr F=VJ\)</span>. Put <span class="math" data-tex="\(L=\log\Lambda\)">\(L=\log\Lambda\)</span>, and let <span class="math" data-tex="\(P_L\)">\(P_L\)</span> multiply by <span class="math" data-tex="\(1_{r\leq L}\)">\(1_{r\leq L}\)</span>. Its Fourier conjugate is
+<span class="math math-display" data-tex="\[
+\widehat P_L=\mathscr F P_L\mathscr F^{-1}
+=V\,1_{r\geq-L}\,V^*.
+\tag{8.5}
+\]">\[
+\widehat P_L=\mathscr F P_L\mathscr F^{-1}
+=V\,1_{r\geq-L}\,V^*.
+\tag{8.5}
+\]</span></p>
+<p>At any fixed finite level, <span class="math" data-tex="\(h\)">\(h\)</span> has only a finite group of nonarchimedean angular variables and finitely many torus directions. Repeated integration by parts in those torus directions and in <span class="math" data-tex="\(r\)">\(r\)</span> makes <span class="math" data-tex="\(m_\chi(s)\)">\(m_\chi(s)\)</span> rapidly decreasing in both the torus frequency and <span class="math" data-tex="\(s\)">\(s\)</span>. The local factors have a useful uniform bound: every derivative of <span class="math" data-tex="\(u_\chi\)">\(u_\chi\)</span> grows at most polynomially in <span class="math" data-tex="\(1+|s|+\operatorname{frequency}(\chi)\)">\(1+|s|+\operatorname{frequency}(\chi)\)</span>, at that level. At a finite place the unramified factor is a quotient of <span class="math" data-tex="\(1-\omega(\varpi)q_v^{-1/2-is}\)">\(1-\omega(\varpi)q_v^{-1/2-is}\)</span> and its conjugate, whose denominator has absolute value at least <span class="math" data-tex="\(1-q_v^{-1/2}\)">\(1-q_v^{-1/2}\)</span>; a ramified factor is a constant phase times an exponential in <span class="math" data-tex="\(s\)">\(s\)</span>. Its conductor is bounded at the fixed level. At the infinite places the factors are gamma quotients with positive real gamma arguments. Differentiated Stirling estimates and the digamma series give logarithmic bounds for their first logarithmic derivatives and polynomial bounds for all higher ones, uniformly as the angular index varies. Hence <span class="math" data-tex="\(m_\chi u_\chi\)">\(m_\chi u_\chi\)</span> and <span class="math" data-tex="\(m_\chi\bar u_\chi\)">\(m_\chi\bar u_\chi\)</span> are Schwartz multipliers with seminorms decreasing faster than every power of that index.</p>
+<h2 id="9-why-the-cutoff-operator-is-trace-class">9. Why the cutoff operator is trace class</h2>
+<p>We supply the operator argument before calculating a diagonal. On <span class="math" data-tex="\(L^2(\mathbb R,dr)\)">\(L^2(\mathbb R,dr)\)</span>, let <span class="math" data-tex="\(P=1_{r\leq0}\)">\(P=1_{r\leq0}\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> be a convolution operator with Schwartz Fourier multiplier <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Lemma 9.1.</strong> The commutator <span class="math" data-tex="\([P,B]\)">\([P,B]\)</span> is trace class. If <span class="math" data-tex="\(I\)">\(I\)</span> is a bounded interval, <span class="math" data-tex="\(1_I B\)">\(1_I B\)</span> is trace class as well. Their trace norms are bounded by finitely many Schwartz seminorms of <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><em>Proof.</em> Write the inverse transform kernel of <span class="math" data-tex="\(B\)">\(B\)</span> as <span class="math" data-tex="\(b(r-t)\)">\(b(r-t)\)</span>. The commutator has only the two off-diagonal blocks <span class="math" data-tex="\(r\leq0&lt;t\)">\(r\leq0&lt;t\)</span> and <span class="math" data-tex="\(t\leq0&lt;r\)">\(t\leq0&lt;r\)</span>. Reflecting the negative coordinate turns each block into a kernel <span class="math" data-tex="\(b(\pm(r+t))\)">\(b(\pm(r+t))\)</span> on <span class="math" data-tex="\(r,t\geq0\)">\(r,t\geq0\)</span>. Choose a smooth function equal to one on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> and zero on <span class="math" data-tex="\((-\infty,-1]\)">\((-\infty,-1]\)</span>. Multiplying by this function in each variable extends the kernel to a Schwartz function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>: on its support, <span class="math" data-tex="\(r+t\)">\(r+t\)</span> controls the size of both variables except in a bounded region.</p>
+<p>A Schwartz-kernel operator <span class="math" data-tex="\(T\)">\(T\)</span> on the full line is trace class. Set <span class="math" data-tex="\(A=1+r^2-d^2/dr^2\)">\(A=1+r^2-d^2/dr^2\)</span>. The kernel of <span class="math" data-tex="\(AT\)">\(AT\)</span> is square integrable, so <span class="math" data-tex="\(AT\)">\(AT\)</span> is Hilbert–Schmidt. The normalized Hermite functions diagonalize <span class="math" data-tex="\(A\)">\(A\)</span>, with eigenvalues <span class="math" data-tex="\(2n+2\)">\(2n+2\)</span>, making <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span> Hilbert–Schmidt. Their completeness can be checked without a spectral assumption: if <span class="math" data-tex="\(f\)">\(f\)</span> is orthogonal to every polynomial times <span class="math" data-tex="\(e^{-r^2/2}\)">\(e^{-r^2/2}\)</span>, the entire function <span class="math" data-tex="\(\int f(r)e^{-r^2/2}e^{zr}\,dr\)">\(\int f(r)e^{-r^2/2}e^{zr}\,dr\)</span> has all derivatives zero at zero. It vanishes identically; uniqueness of the Fourier transform then gives <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. The Hermite eigenvalue calculation follows by differentiating their Rodrigues formula. Thus <span class="math" data-tex="\(T=A^{-1}(AT)\)">\(T=A^{-1}(AT)\)</span> is a product of two Hilbert–Schmidt operators. Such a product is trace class: in an orthonormal basis expand it as a sum of rank-one operators and use Cauchy–Schwarz to bound the sum of their norms by the product of the Hilbert–Schmidt norms. Restricting the two variables to half-lines preserves trace class. This proves the first assertion.</p>
+<p>For the second assertion choose a smooth compactly supported function equal to one on <span class="math" data-tex="\(I\)">\(I\)</span>. Its product with <span class="math" data-tex="\(b(r-t)\)">\(b(r-t)\)</span> is a Schwartz kernel on the full plane, since <span class="math" data-tex="\(r\)">\(r\)</span> is bounded and <span class="math" data-tex="\(b\)">\(b\)</span> decreases rapidly in <span class="math" data-tex="\(r-t\)">\(r-t\)</span>. Restrict its output to <span class="math" data-tex="\(I\)">\(I\)</span>. The same proof applies. All the displayed Hilbert–Schmidt bounds use only finitely many weighted kernel derivatives, giving the stated seminorm estimates. ∎</p>
+<p>Suppose <span class="math" data-tex="\(V\)">\(V\)</span> is a unitary Fourier multiplier <span class="math" data-tex="\(u\)">\(u\)</span> with the derivative bounds of Section 8. Since <span class="math" data-tex="\(B\)">\(B\)</span> commutes with <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+[V^*,P]VB=V^*[P,VB]-[P,B].
+\tag{9.1}
+\]">\[
+[V^*,P]VB=V^*[P,VB]-[P,B].
+\tag{9.1}
+\]</span>
+Both commutators on the right are trace class by Lemma 9.1. On one character component, unitary conjugation by <span class="math" data-tex="\(V\)">\(V\)</span> changes the cutoff operator
+<span class="math" data-tex="\(R_\Lambda U(h)=\widehat P_LP_L B\)">\(R_\Lambda U(h)=\widehat P_LP_L B\)</span> into
+<span class="math math-display" data-tex="\[
+1_{r\geq-L}V^*P_LVB
+=1_{[-L,L]}B+1_{r\geq-L}[V^*,P_L]VB.
+\tag{9.2}
+\]">\[
+1_{r\geq-L}V^*P_LVB
+=1_{[-L,L]}B+1_{r\geq-L}[V^*,P_L]VB.
+\tag{9.2}
+\]</span>
+This is trace class by the lemma and (9.1). The same statement holds after summing over characters: the seminorm bounds and rapid angular decrease established in Section 8 make the sums of trace norms finite. Thus (9.2) proves trace class for the actual operator, rather than assuming it from a formal kernel integral.</p>
+<p>The first trace in (9.2) is
+<span class="math math-display" data-tex="\[
+2L\,\frac1{2\pi}\int_\mathbb R m_\chi(s)\,ds.
+\tag{9.3}
+\]">\[
+2L\,\frac1{2\pi}\int_\mathbb R m_\chi(s)\,ds.
+\tag{9.3}
+\]</span>
+For example, its kernel is continuous except at the two output cutoff endpoints. Average the Fourier basis on a finite containing interval with Fejér weights. These positive contraction kernels converge to the diagonal away from those two endpoints; boundedness of the kernel and the approximate-identity bound give dominated convergence. Their traces therefore converge to the diagonal integral. This argument also justifies the diagonal calculation below.</p>
+<p>Translate the second term in (9.2) by <span class="math" data-tex="\(L\)">\(L\)</span>. Since convolution operators commute with translation, its trace becomes
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl(
+1_{r\geq-2L}[V^*,P]VB\bigr)
+\longrightarrow\operatorname{Tr}\bigl((V^*PV-P)B\bigr).
+\tag{9.4}
+\]">\[
+\operatorname{Tr}\bigl(
+1_{r\geq-2L}[V^*,P]VB\bigr)
+\longrightarrow\operatorname{Tr}\bigl((V^*PV-P)B\bigr).
+\tag{9.4}
+\]</span>
+Here strong convergence of the projections suffices: approximate a trace-class operator in trace norm by finite-rank operators, apply strong convergence on their finite-dimensional ranges, and use the uniform norm bound one on the projections.</p>
+<p>In the <span class="math" data-tex="\(s\)">\(s\)</span>-representation the kernel of <span class="math" data-tex="\(P\)">\(P\)</span> is
+<span class="math" data-tex="\(\tfrac12\delta(s-t)+\tfrac{i}{2\pi}\operatorname{PV}(s-t)^{-1}\)">\(\tfrac12\delta(s-t)+\tfrac{i}{2\pi}\operatorname{PV}(s-t)^{-1}\)</span>.
+The delta terms in <span class="math" data-tex="\(V^*PV-P\)">\(V^*PV-P\)</span> cancel. The remaining continuous kernel, after multiplication by <span class="math" data-tex="\(B\)">\(B\)</span>, is
+<span class="math math-display" data-tex="\[
+\frac{i}{2\pi}
+\frac{\overline{u_\chi(s)}u_\chi(t)-1}{s-t}\,m_\chi(t).
+\tag{9.5}
+\]">\[
+\frac{i}{2\pi}
+\frac{\overline{u_\chi(s)}u_\chi(t)-1}{s-t}\,m_\chi(t).
+\tag{9.5}
+\]</span>
+Its diagonal is <span class="math" data-tex="\(-i\overline{u_\chi(s)}u_\chi&#x27;(s)m_\chi(s)/(2\pi)\)">\(-i\overline{u_\chi(s)}u_\chi&#x27;(s)m_\chi(s)/(2\pi)\)</span>.
+To verify the trace formula, first restrict both spectral variables to <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>. Fejér averages of that interval's orthonormal Fourier basis converge to its identity strongly, while their positive kernels concentrate on the diagonal of the continuous kernel (9.5). Thus the trace of the restricted operator is its diagonal integral. Let <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. Trace-norm approximation gives convergence of the traces, and the Schwartz multiplier times the polynomial bound on <span class="math" data-tex="\(u_\chi&#x27;\)">\(u_\chi&#x27;\)</span> gives dominated convergence of the integrals. We obtain
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl((V^*PV-P)B\bigr)
+=\frac1{2\pi}\int_\mathbb R
+m_\chi(s)\bigl(-i\overline{u_\chi(s)}u_\chi&#x27;(s)\bigr)\,ds.
+\tag{9.6}
+\]">\[
+\operatorname{Tr}\bigl((V^*PV-P)B\bigr)
+=\frac1{2\pi}\int_\mathbb R
+m_\chi(s)\bigl(-i\overline{u_\chi(s)}u_\chi&#x27;(s)\bigr)\,ds.
+\tag{9.6}
+\]</span>
+The signs in (9.5)–(9.6) use the negative half-line cutoff <span class="math" data-tex="\(r\leq0\)">\(r\leq0\)</span>. Replacing it by the positive half-line changes the commutator sign.</p>
+<h2 id="10-connes-s-semilocal-trace-formula">10. Connes's semilocal trace formula</h2>
+<p>For each place define the additive-character-normalized distribution
+<span class="math math-display" data-tex="\[
+T_v(h)=\int_{k_v^\times}&#x27;\frac{h(u^{-1})}{|1-u|_v}\,d^*u.
+\tag{10.1}
+\]">\[
+T_v(h)=\int_{k_v^\times}&#x27;\frac{h(u^{-1})}{|1-u|_v}\,d^*u.
+\tag{10.1}
+\]</span>
+Here <span class="math" data-tex="\(k_v^\times\)">\(k_v^\times\)</span> is mapped to <span class="math" data-tex="\(C_S\)">\(C_S\)</span> by inserting <span class="math" data-tex="\(u\)">\(u\)</span> in its <span class="math" data-tex="\(v\)">\(v\)</span>-coordinate. To specify the prime, let <span class="math" data-tex="\(\rho_v&gt;0\)">\(\rho_v&gt;0\)</span> satisfy <span class="math" data-tex="\(d^*u=\rho_v^{-1}du/|u|_v\)">\(d^*u=\rho_v^{-1}du/|u|_v\)</span>, for self-dual <span class="math" data-tex="\(du\)">\(du\)</span> and the multiplicative normalization of the second lesson. Take the finite-part extension <span class="math" data-tex="\(L_v\)">\(L_v\)</span> of <span class="math" data-tex="\(\rho_v^{-1}du/|1-u|_v\)">\(\rho_v^{-1}du/|1-u|_v\)</span> whose additive Fourier transform vanishes at <span class="math" data-tex="\(1\)">\(1\)</span>, and set
+<span class="math" data-tex="\(T_v(h)=\langle L_v,h(u^{-1})/|u|_v\rangle\)">\(T_v(h)=\langle L_v,h(u^{-1})/|u|_v\rangle\)</span>.
+“Finite part” means that the test function's value at <span class="math" data-tex="\(1\)">\(1\)</span> is subtracted in a neighborhood of the logarithmic singularity. The remaining ambiguity is a multiple of <span class="math" data-tex="\(\delta_1\)">\(\delta_1\)</span>; the Fourier condition fixes it. It excludes extensions with additional derivatives of a point mass. The second lesson's equations (7.2)–(7.5) give equivalent explicit formulas at finite, real and complex places. In particular this principal value retains the different and conductor terms.</p>
+<p>Its spectral density is the logarithmic derivative of the local phase:
+<span class="math math-display" data-tex="\[
+w_{v,\chi}(s)
+=-i\,\overline{\gamma_v(\chi_v,1/2+is,\alpha_v)}
+\frac{d}{ds}\gamma_v(\chi_v,1/2+is,\alpha_v).
+\tag{10.2}
+\]">\[
+w_{v,\chi}(s)
+=-i\,\overline{\gamma_v(\chi_v,1/2+is,\alpha_v)}
+\frac{d}{ds}\gamma_v(\chi_v,1/2+is,\alpha_v).
+\tag{10.2}
+\]</span>
+We check the correspondence, including its constants. At an unramified finite place let <span class="math" data-tex="\(\beta=\chi_v(\varpi_v)\)">\(\beta=\chi_v(\varpi_v)\)</span>, and first use an additive character of conductor <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>. The phase is
+<span class="math math-display" data-tex="\[
+\frac{1-\beta q_v^{-1/2-is}}
+{1-\bar\beta q_v^{-1/2+is}},
+\quad
+w_{v,\chi}(s)
+=2\log q_v\sum_{n\geq1}q_v^{-n/2}
+\Re\bigl(\beta^ne^{-ins\log q_v}\bigr).
+\tag{10.3}
+\]">\[
+\frac{1-\beta q_v^{-1/2-is}}
+{1-\bar\beta q_v^{-1/2+is}},
+\quad
+w_{v,\chi}(s)
+=2\log q_v\sum_{n\geq1}q_v^{-n/2}
+\Re\bigl(\beta^ne^{-ins\log q_v}\bigr).
+\tag{10.3}
+\]</span>
+The series converges normally. Fourier inversion of <span class="math" data-tex="\(m_\chi\)">\(m_\chi\)</span> makes its two exponentials evaluate <span class="math" data-tex="\(h\)">\(h\)</span> at the classes of <span class="math" data-tex="\(\varpi_v^{-n}\)">\(\varpi_v^{-n}\)</span> and <span class="math" data-tex="\(\varpi_v^n\)">\(\varpi_v^n\)</span>. The factors <span class="math" data-tex="\(|\lambda|^{1/2}\)">\(|\lambda|^{1/2}\)</span> in (8.2), combined with <span class="math" data-tex="\(q_v^{-n/2}\)">\(q_v^{-n/2}\)</span>, give respectively <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(q_v^{-n}\)">\(q_v^{-n}\)</span>. Character factors cancel after angular inversion. This is precisely the nonunit-shell calculation of (10.1).</p>
+<p>For a character of conductor exponent <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the phase is a constant of modulus one times <span class="math" data-tex="\(q_v^{-ins}\)">\(q_v^{-ins}\)</span>; its density is <span class="math" data-tex="\(-n\log q_v\)">\(-n\log q_v\)</span>. This equals the unit-shell term calculated in the second lesson. Changing an additive character to <span class="math" data-tex="\(\alpha_v(ax)\)">\(\alpha_v(ax)\)</span> multiplies the phase by a constant of modulus one times <span class="math" data-tex="\(|a|_v^{is}\)">\(|a|_v^{is}\)</span>; it adds <span class="math" data-tex="\(\log|a|_v\)">\(\log|a|_v\)</span> to (10.2), exactly the prescribed principal-value correction.</p>
+<p>At a real place with parity <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> and norm shift <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, put <span class="math" data-tex="\(L_v(z)=\Gamma_{\mathbb R}(z+\epsilon)\)">\(L_v(z)=\Gamma_{\mathbb R}(z+\epsilon)\)</span>. Up to a constant phase the quotient is
+<span class="math math-display" data-tex="\[
+\frac{L_v(1/2-i(s+\tau))}
+{L_v(1/2+i(s+\tau))},\qquad
+w_{v,\chi}(s)
+=-2\Re\frac{L_v&#x27;}{L_v}(1/2+i(s+\tau)).
+\tag{10.4}
+\]">\[
+\frac{L_v(1/2-i(s+\tau))}
+{L_v(1/2+i(s+\tau))},\qquad
+w_{v,\chi}(s)
+=-2\Re\frac{L_v&#x27;}{L_v}(1/2+i(s+\tau)).
+\tag{10.4}
+\]</span>
+The complex formula is the same with
+<span class="math" data-tex="\(L_v(z)=\Gamma_{\mathbb C}(z+|m|/2)\)">\(L_v(z)=\Gamma_{\mathbb C}(z+|m|/2)\)</span> for angular index <span class="math" data-tex="\(m\)">\(m\)</span>.
+The digamma integrals and angular integral in the second lesson, Section 7, identify these densities with its real and complex principal values. This is also a direct way to check the archimedean sign: for the trivial real character, (10.4) is the negative of the positive-frequency density used for <span class="math" data-tex="\(W_\infty=-W_{\mathbb R}\)">\(W_\infty=-W_{\mathbb R}\)</span> in the next lesson.</p>
+<p>Since <span class="math" data-tex="\(u_\chi\)">\(u_\chi\)</span> is the product of these local phases,
+<span class="math" data-tex="\(-i\bar u_\chi u_\chi&#x27;=\sum_{v\in S}w_{v,\chi}\)">\(-i\bar u_\chi u_\chi&#x27;=\sum_{v\in S}w_{v,\chi}\)</span>.
+Fourier inversion and (10.2)–(10.4) therefore give
+<span class="math math-display" data-tex="\[
+\sum_\chi\frac1{2\pi}\int m_\chi(s)
+\bigl(-i\bar u_\chi(s)u_\chi&#x27;(s)\bigr)\,ds
+=\sum_{v\in S}T_v(h).
+\tag{10.5}
+\]">\[
+\sum_\chi\frac1{2\pi}\int m_\chi(s)
+\bigl(-i\bar u_\chi(s)u_\chi&#x27;(s)\bigr)\,ds
+=\sum_{v\in S}T_v(h).
+\tag{10.5}
+\]</span>
+All interchanges are justified by the uniform bounds and angular decay of Section 8. Equivalently first check each angular component by the local calculations, then sum the absolutely convergent components. The possible lack of compact support of the restriction of <span class="math" data-tex="\(h\)">\(h\)</span> to one local group causes no difficulty: its norm support is bounded away from zero and infinity, and at fixed norm its angular variables range over compact sets.</p>
+<p><strong>Theorem 10.1 (Connes's semilocal trace formula).</strong> On the Hilbert space (7.3), let <span class="math" data-tex="\(P_\Lambda\)">\(P_\Lambda\)</span> be the norm cutoff <span class="math" data-tex="\(|x|\leq\Lambda\)">\(|x|\leq\Lambda\)</span>, let <span class="math" data-tex="\(\widehat P_\Lambda=\mathscr F P_\Lambda\mathscr F^{-1}\)">\(\widehat P_\Lambda=\mathscr F P_\Lambda\mathscr F^{-1}\)</span>, and put <span class="math" data-tex="\(R_\Lambda=\widehat P_\Lambda P_\Lambda\)">\(R_\Lambda=\widehat P_\Lambda P_\Lambda\)</span>. For every smooth compactly supported <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\(C_S\)">\(C_S\)</span>, <span class="math" data-tex="\(R_\Lambda U(h)\)">\(R_\Lambda U(h)\)</span> is trace class, and</p>
+<span class="math math-display" data-tex="\[
+\boxed{\operatorname{Tr}(R_\Lambda U(h))
+=2h(1)\log&#x27;\Lambda+\sum_{v\in S}T_v(h)+o(1),}
+\qquad
+2\log&#x27;\Lambda
+=\int_{\Lambda^{-1}\leq|\lambda|\leq\Lambda}d^*\lambda.
+\tag{10.6}
+\]">\[
+\boxed{\operatorname{Tr}(R_\Lambda U(h))
+=2h(1)\log&#x27;\Lambda+\sum_{v\in S}T_v(h)+o(1),}
+\qquad
+2\log&#x27;\Lambda
+=\int_{\Lambda^{-1}\leq|\lambda|\leq\Lambda}d^*\lambda.
+\tag{10.6}
+\]</span>
+<p>In a number field <span class="math" data-tex="\(\log&#x27;\Lambda=\log\Lambda\)">\(\log&#x27;\Lambda=\log\Lambda\)</span>.</p>
+<p><em>Proof in the number-field case.</em> Trace class was proved in (9.2), with a summable bound over all angular components. Sum (9.3) over <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Fourier inversion at the identity in (8.2) gives
+<span class="math" data-tex="\(\sum_\chi(2\pi)^{-1}\int m_\chi(s)\,ds=h(1)\)">\(\sum_\chi(2\pi)^{-1}\int m_\chi(s)\,ds=h(1)\)</span>.
+The second trace tends to (10.5) by (9.4)–(9.6). The trace-norm bound is summable uniformly for <span class="math" data-tex="\(L\geq0\)">\(L\geq0\)</span>; it bounds every projection in (9.4) by one. Hence dominated convergence also justifies summing the limits over <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. This proves (10.6). ∎</p>
+<p>For a function field the norm coordinate is <span class="math" data-tex="\(r=aj\)">\(r=aj\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. Use the Fourier variable <span class="math" data-tex="\(\theta\in[0,2\pi]\)">\(\theta\in[0,2\pi]\)</span> and replace (8.2) by
+<span class="math math-display" data-tex="\[
+m_\chi(\theta)
+=a\sum_{j\in\mathbb Z}\int_{K_S}
+h(c,aj)e^{aj/2}\overline{\chi(c)}e^{-ij\theta}\,dc.
+\tag{10.7}
+\]">\[
+m_\chi(\theta)
+=a\sum_{j\in\mathbb Z}\int_{K_S}
+h(c,aj)e^{aj/2}\overline{\chi(c)}e^{-ij\theta}\,dc.
+\tag{10.7}
+\]</span>
+This is a trigonometric polynomial. At the finite level of <span class="math" data-tex="\(h\)">\(h\)</span>, there are finitely many angular characters: <span class="math" data-tex="\(K_S\)">\(K_S\)</span> is a finite extension of a quotient of local profinite unit groups, and a locally constant function factors through a finite quotient. The phase <span class="math" data-tex="\(u_\chi(\theta)\)">\(u_\chi(\theta)\)</span> is the same product of local factors as (8.4), evaluated at <span class="math" data-tex="\(s=\theta/a\)">\(s=\theta/a\)</span>. Each local residue logarithm is an integer multiple of <span class="math" data-tex="\(a\)">\(a\)</span>, so this phase is periodic and smooth. Its finite Euler denominators have no zeros on the circle.</p>
+<p>Put <span class="math" data-tex="\(M=\lfloor\log\Lambda/a\rfloor\)">\(M=\lfloor\log\Lambda/a\rfloor\)</span>. The proof of (9.2) now uses <span class="math" data-tex="\(P_M=1_{j\leq M}\)">\(P_M=1_{j\leq M}\)</span>, and the finite overlap is <span class="math" data-tex="\(-M\leq j\leq M\)">\(-M\leq j\leq M\)</span>. The required commutator lemma has a simpler discrete proof. If a smooth multiplier has Fourier coefficients <span class="math" data-tex="\(b_n\)">\(b_n\)</span>, the commutator of a half-line projection with a shift by <span class="math" data-tex="\(n\)">\(n\)</span> has rank <span class="math" data-tex="\(|n|\)">\(|n|\)</span> and norm one. Thus its trace norm is at most
+<span class="math" data-tex="\(\sum_n|n||b_n|&lt;\infty\)">\(\sum_n|n||b_n|&lt;\infty\)</span>. Apply this to <span class="math" data-tex="\(m_\chi\)">\(m_\chi\)</span> and <span class="math" data-tex="\(m_\chi u_\chi\)">\(m_\chi u_\chi\)</span>, using (9.1). The finite overlap term has finite rank, and the second term tends in trace to the full commutator exactly as in (9.4).</p>
+<p>The kernel of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, away from the diagonal on the circle, is
+<span class="math" data-tex="\((2\pi)^{-1}(1-e^{i(\theta-\eta)})^{-1}\)">\((2\pi)^{-1}(1-e^{i(\theta-\eta)})^{-1}\)</span>.
+In <span class="math" data-tex="\(V^*P_0V-P_0\)">\(V^*P_0V-P_0\)</span> the diagonal singularity cancels, and its diagonal limit is
+<span class="math" data-tex="\(-i\bar u_\chi(\theta)u_\chi&#x27;(\theta)/(2\pi)\)">\(-i\bar u_\chi(\theta)u_\chi&#x27;(\theta)/(2\pi)\)</span>.
+Fejér averaging on the circle gives its trace. Equations (10.3) and their ramified versions identify its pairing with (10.7) with <span class="math" data-tex="\(\sum_vT_v(h)\)">\(\sum_vT_v(h)\)</span>: differentiation in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> divides the density by <span class="math" data-tex="\(a\)">\(a\)</span>, while the factor <span class="math" data-tex="\(a\)">\(a\)</span> in (10.7) restores exactly the local shell measure <span class="math" data-tex="\(\log q_v\)">\(\log q_v\)</span>.</p>
+<p>Finally the main trace is <span class="math" data-tex="\(a(2M+1)h(1)\)">\(a(2M+1)h(1)\)</span>, and
+<span class="math math-display" data-tex="\[
+2\log&#x27;\Lambda=a(2M+1)
+\tag{10.8}
+\]">\[
+2\log&#x27;\Lambda=a(2M+1)
+\tag{10.8}
+\]</span>
+by the specified multiplicative measure. This proves (10.6) in the function-field case, including the shell boundary term. It completes the theorem for global fields.</p>
+<h2 id="11-what-the-finite-place-trace-teaches">11. What the finite-place trace teaches</h2>
+<p>For <span class="math" data-tex="\(k=\mathbb Q\)">\(k=\mathbb Q\)</span> and <span class="math" data-tex="\(S=\{\infty,2,3\}\)">\(S=\{\infty,2,3\}\)</span>, the group of <span class="math" data-tex="\(S\)">\(S\)</span>-units is
+<span class="math" data-tex="\(\{\pm2^n3^m:n,m\in\mathbb Z\}\)">\(\{\pm2^n3^m:n,m\in\mathbb Z\}\)</span>. The local terms in (10.6) are the real principal value and the two prime distributions. If <span class="math" data-tex="\(h\)">\(h\)</span> depends only on the norm, the finite terms are exactly
+<span class="math math-display" data-tex="\[
+(\log2)\sum_{n\geq1}\bigl(h(2^n)+2^{-n}h(2^{-n})\bigr)
++(\log3)\sum_{n\geq1}\bigl(h(3^n)+3^{-n}h(3^{-n})\bigr).
+\tag{11.1}
+\]">\[
+(\log2)\sum_{n\geq1}\bigl(h(2^n)+2^{-n}h(2^{-n})\bigr)
++(\log3)\sum_{n\geq1}\bigl(h(3^n)+3^{-n}h(3^{-n})\bigr).
+\tag{11.1}
+\]</span>
+Only finitely many terms enter for a compactly supported norm test. If <span class="math" data-tex="\(h\)">\(h\)</span> is supported in <span class="math" data-tex="\((1/2,2)\)">\((1/2,2)\)</span>, both prime distributions vanish, so the constant term after subtracting <span class="math" data-tex="\(2h(1)\log\Lambda\)">\(2h(1)\log\Lambda\)</span> is purely archimedean.</p>
+<p>The function-field boundary in (10.8) matters even for one local field. With residue cardinality <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, trivial additive conductor, <span class="math" data-tex="\(h\)">\(h\)</span> equal to <span class="math" data-tex="\(1\)">\(1\)</span> on the units and zero on all other norm shells, the local principal value is zero by its normalization. For <span class="math" data-tex="\(\Lambda=q_v^M\)">\(\Lambda=q_v^M\)</span>, the trace is consequently
+<span class="math" data-tex="\((2M+1)\log q_v+o(1)\)">\((2M+1)\log q_v+o(1)\)</span>.
+Using <span class="math" data-tex="\(2M\log q_v\)">\(2M\log q_v\)</span> would lose the central shell. This agrees with the exact main term obtained from the discrete overlap projection.</p>
+<p>We can check that example directly in the trivial angular component. Put <span class="math" data-tex="\(r=q_v^{-1/2}\)">\(r=q_v^{-1/2}\)</span> and expand its phase as
+<span class="math math-display" data-tex="\[
+\frac{1-re^{-i\theta}}{1-re^{i\theta}}
+=\sum_{\ell\in\mathbb Z}c_\ell e^{-i\ell\theta},
+\qquad
+c_1=-r,\quad c_{-j}=(1-r^2)r^j\ (j\geq0),\quad
+c_\ell=0\ (\ell\geq2).
+\tag{11.2}
+\]">\[
+\frac{1-re^{-i\theta}}{1-re^{i\theta}}
+=\sum_{\ell\in\mathbb Z}c_\ell e^{-i\ell\theta},
+\qquad
+c_1=-r,\quad c_{-j}=(1-r^2)r^j\ (j\geq0),\quad
+c_\ell=0\ (\ell\geq2).
+\tag{11.2}
+\]</span>
+These coefficients have squared sum one and first weighted squared sum zero:
+<span class="math" data-tex="\(\sum_\ell\ell c_\ell^2=r^2-(1-r^2)^2\sum_{j\geq0}jr^{2j}=0\)">\(\sum_\ell\ell c_\ell^2=r^2-(1-r^2)^2\sum_{j\geq0}jr^{2j}=0\)</span>.
+For <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span>, the cutoff diagonal trace is
+<span class="math math-display" data-tex="\[
+(\log q_v)\sum_{\ell\leq2M}(2M-\ell+1)c_\ell^2
+=(2M+1)\log q_v.
+\tag{11.3}
+\]">\[
+(\log q_v)\sum_{\ell\leq2M}(2M-\ell+1)c_\ell^2
+=(2M+1)\log q_v.
+\tag{11.3}
+\]</span>
+Indeed for each shift <span class="math" data-tex="\(\ell=j-k\)">\(\ell=j-k\)</span>, the constraints <span class="math" data-tex="\(j\leq M\)">\(j\leq M\)</span>, <span class="math" data-tex="\(k\geq-M\)">\(k\geq-M\)</span> give exactly <span class="math" data-tex="\(2M-\ell+1\)">\(2M-\ell+1\)</span> pairs. Thus this particular example has the stated trace exactly once <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span>, independently confirming the shell convention.</p>
+<p>The theorem concerns each fixed finite <span class="math" data-tex="\(S\)">\(S\)</span>. Its proof uses the product of finitely many local phases and sums over the angular characters of <span class="math" data-tex="\(K_S\)">\(K_S\)</span>. The global Weil criterion in Section 6 concerns the full idèle class distribution. Establishing an operator limit as all places are included requires further estimates; the finite-<span class="math" data-tex="\(S\)">\(S\)</span> theorem by itself supplies no global positivity conclusion.</p>
+<h2 id="12-exercises-with-solutions">12. Exercises with solutions</h2>
+<h3 id="1-the-support-of-the-square">1. The support of the square</h3>
+<p>Prove the support inclusion for <span class="math" data-tex="\(g*\bar g^\sharp\)">\(g*\bar g^\sharp\)</span>.</p>
+<p><strong>Solution.</strong> The integrand can be nonzero only if <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(y/x\)">\(y/x\)</span> belong to the support of <span class="math" data-tex="\(g\)">\(g\)</span>. Their ratio is <span class="math" data-tex="\(x\)">\(x\)</span>. A point outside the closed product of the two compact support sets has a neighborhood where the integrand vanishes, so the convolution vanishes there. This proves (2.1), including support endpoints.</p>
+<h3 id="2-which-primes-can-occur">2. Which primes can occur?</h3>
+<p>Prove the local vanishing assertion, and list the possible primes for <span class="math" data-tex="\(g\)">\(g\)</span> supported in <span class="math" data-tex="\([1/3,3]\)">\([1/3,3]\)</span>.</p>
+<p><strong>Solution.</strong> The local distribution evaluates only the two points <span class="math" data-tex="\(p^m,p^{-m}\)">\(p^m,p^{-m}\)</span>; neither lies in an open support interval <span class="math" data-tex="\((p^{-1},p)\)">\((p^{-1},p)\)</span>. For the stated support, <span class="math" data-tex="\(f\)">\(f\)</span> is supported in <span class="math" data-tex="\([1/9,9]\)">\([1/9,9]\)</span> and is zero at its endpoints. The possible primes are <span class="math" data-tex="\(2,3,5,7\)">\(2,3,5,7\)</span>. Their possible powers below <span class="math" data-tex="\(9\)">\(9\)</span> are <span class="math" data-tex="\(2,4,8;3;5;7\)">\(2,4,8;3;5;7\)</span>, respectively. The power <span class="math" data-tex="\(9\)">\(9\)</span> has zero endpoint value. A particular test may make further terms vanish.</p>
+<h3 id="3-mellin-paley-wiener-decay">3. Mellin Paley–Wiener decay</h3>
+<p>Prove (2.2) with a constant independent of the real part.</p>
+<p><strong>Solution.</strong> Integrate against the whole complex exponential <span class="math" data-tex="\(e^{su}\)">\(e^{su}\)</span>, not just its oscillatory factor. Moving <span class="math" data-tex="\(N\)">\(N\)</span> derivatives to <span class="math" data-tex="\(g(e^u)\)">\(g(e^u)\)</span> gives <span class="math" data-tex="\(s^{-N}\)">\(s^{-N}\)</span>, with no powers of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> in the numerator. Bound its derivative's integral by <span class="math" data-tex="\(\max(e^{A\sigma},e^{B\sigma})\)">\(\max(e^{A\sigma},e^{B\sigma})\)</span> times its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm. Use <span class="math" data-tex="\(|s|\geq|t|\)">\(|s|\geq|t|\)</span> for <span class="math" data-tex="\(|t|\geq1\)">\(|t|\geq1\)</span> and the undifferentiated integral otherwise. Compact support permits differentiation in <span class="math" data-tex="\(s\)">\(s\)</span>, proving entire continuation as well.</p>
+<h3 id="4-the-direct-positivity-implication">4. The direct positivity implication</h3>
+<p>Show that RH and <span class="math" data-tex="\(G(0)=G(1)=0\)">\(G(0)=G(1)=0\)</span> give <span class="math" data-tex="\(\mathcal W(g)=-\sum_\rho|G(\rho)|^2\)">\(\mathcal W(g)=-\sum_\rho|G(\rho)|^2\)</span>.</p>
+<p><strong>Solution.</strong> On the critical line, <span class="math" data-tex="\(1-\bar\rho=\rho\)">\(1-\bar\rho=\rho\)</span>, so each term in (1.5) is <span class="math" data-tex="\(|G(\rho)|^2\)">\(|G(\rho)|^2\)</span>. The two pole products in (1.4) vanish. Equation (2.2) and the zero count justify the absolutely convergent sum. Hence (1.6) is exactly the claimed identity.</p>
+<h3 id="5-completing-the-compact-interpolation">5. Completing the compact interpolation</h3>
+<p>Construct the test that contradicts the sign in the presence of an off-line zero, preserving the finite conditions exactly.</p>
+<p><strong>Solution.</strong> Choose the band containing the distinct pair <span class="math" data-tex="\(\rho_0,1-\bar\rho_0\)">\(\rho_0,1-\bar\rho_0\)</span>. For each target, the polynomial <span class="math" data-tex="\(P\)">\(P\)</span> vanishes at the other target, every remaining band zero, and every point of <span class="math" data-tex="\(F\)">\(F\)</span>. The Gaussian transform (3.2) makes the outside squared tail exponentially small by (3.3). Cut off its inverse transform (3.4), and then apply <span class="math" data-tex="\(P(-d/du)\)">\(P(-d/du)\)</span>; cutting off <strong>after</strong> that polynomial operation would destroy the exact zero conditions. Normalize at the target. Weighted convergence (3.5) proves that the tail remains small. Subtract the two tests, giving values <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> at the pair and zero at all other band zeros. Their contribution is <span class="math" data-tex="\(-2m\)">\(-2m\)</span>, while the outside form has absolute value at most <span class="math" data-tex="\(4\eta^2\)">\(4\eta^2\)</span>. Taking <span class="math" data-tex="\(4\eta^2&lt;2m\)">\(4\eta^2&lt;2m\)</span> gives <span class="math" data-tex="\(Q&lt;0\)">\(Q&lt;0\)</span>, hence <span class="math" data-tex="\(\mathcal W&gt;0\)">\(\mathcal W&gt;0\)</span>. This provides the function, its support, its exact vanishing and the bound on the infinite remainder, rather than only formal interpolation data.</p>
+<h2 id="13-proof-dependencies-and-references">13. Proof dependencies and references</h2>
+<p>The compact interpolation, Weil criterion, character reductions and semilocal trace theorem are proved in this lesson. For the positivity statements we use the explicit formulas proved in the preceding two lessons and their exact existing planned zeta and Hecke prerequisites: continuation, reflection, order, zero count and gamma estimates. For the trace theorem we use the local Fourier transforms, self-dual measures and Tate functional equations in lessons 5, 7 and 8 of <em>Adèles, idèles and Tate's thesis</em>. In the convention (8.3), those equations are required for every unitary character of a nonarchimedean local field and of <span class="math" data-tex="\(\mathbb R^\times,\mathbb C^\times\)">\(\mathbb R^\times,\mathbb C^\times\)</span>, including the conductor and additive-character dependence. The number-field class and unit structure is supplied by its lesson 3. These providers are actual existing planned assignments; their public full-proof completion is not asserted here. Section 7 gives the needed function-field compactness and <span class="math" data-tex="\(S\)">\(S\)</span>-unit argument directly.</p>
+<p>The sources establish the historical origins and allow comparison of conventions:</p>
+<ul>
+<li>A. Weil, <a href="https://www.mathnet.ru/php/getFT.phtml?jrnid=im&amp;paperid=2289&amp;what=fullt&amp;option_lang=eng"><em>Sur les formules explicites de la théorie des nombres</em></a> (1972), no. 16, for the explicit formula written as a distribution on the Weil group (on the idèle class group for Hecke characters) and the remark that the positivity of this distribution is equivalent to the Riemann hypothesis together with Artin's conjecture. Weil introduced the positivity criterion and the idèle-class formulation in 1952.</li>
+<li>E. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a> (2000), Section V, for the quadratic form and its two pole moments.</li>
+<li>A. Connes and C. Consani, <a href="https://arxiv.org/pdf/2006.13771"><em>Weil positivity and trace formula, the archimedean place</em></a> (2021), Introduction and appendix <em>Positivity criterion</em>, for the compact-support formulation with finite vanishing conditions and its attribution to Yoshida.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/math/9811068"><em>Trace formula in noncommutative geometry and the zeros of the Riemann zeta function</em></a> (1999), Section V, Theorem 3, for one place, and Section VII, Theorem 4, for the semilocal formula. The proof here uses the Fourier phase and trace-class commutators to justify the cutoff trace.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/2602.04022"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a> (2026), subsection <em>Weil's Positivity Criterion</em>, for the relation between the form and its geometric interpretations.</li>
+</ul>
+<p>The Gaussian criterion in <em>Weil's proof for curves and what is missing over the integers</em>, Theorem 6.4, is a related existing internal result. The compact construction above proves the additional support and interpolation assertions used here.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-03.html">← Guinand&#x27;s formula</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-05.html">The archimedean place: W_∞ and positivity for small support →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mackey theory and Clifford&#x27;s theorem · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/mackey-theory-and-cliffords-theorem.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="induced-representations-and-frobenius-reciprocity.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-07.md" download>Editable source</a><a href="groups-with-an-abelian-normal-subgroup-the-little-group-method.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#theorem-1-1">Theorem 1.1</a></li><li><a href="#corollary-1-2">Corollary 1.2</a></li><li><a href="#theorem-2-1">Theorem 2.1</a></li><li><a href="#corollary-2-2">Corollary 2.2</a></li><li><a href="#theorem-3-1">Theorem 3.1</a></li><li><a href="#theorem-4-1">Theorem 4.1</a></li><li><a href="#theorem-5-1">Theorem 5.1</a></li></ul></details><h1 id="mackey-theory-and-clifford-s-theorem">Mackey theory and Clifford's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>Induction assembles a representation from coset copies. When we restrict that representation to a second subgroup, some copies can move into one another and some cannot. The resulting blocks are indexed by double cosets. Mackey's formula describes each block and turns irreducibility into a question about representations of intersections.</p>
+<p>A normal subgroup gives a different kind of structure. Its irreducible types inside an irreducible representation of the whole group form one conjugacy orbit. Clifford's theorem identifies their common multiplicity, and Clifford's correspondence reconstructs the representation from one isotypic component and its stabilizer. The component can contain several copies of its subgroup type.</p>
+<p>All groups here are finite, all vector spaces are finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and all modules are left modules. We use the two natural adjunctions, the tensor construction and its coset decomposition from <a href="induced-representations-and-frobenius-reciprocity.html">Induced representations and Frobenius reciprocity</a>, Propositions 2.1 and 4.1 and Theorem 3.1. Complete reducibility, Schur's lemma and intrinsic isotypic components are proved in <a href="representations-and-complete-reducibility.html">Representations and complete reducibility</a>, Theorems 2.3 and 3.1 and Proposition 4.2. Character inner products are linear in the first variable. Basic references for the induction formulas are [Gruson–Serganova 2018]; the normal-subgroup theorem is due to [Clifford 1937].</p>
+<h2 id="1-blocks-that-a-subgroup-can-reach">1. Blocks that a subgroup can reach</h2>
+<p>For <span class="math" data-tex="\(H,K\le G\)">\(H,K\le G\)</span>, a <strong>double coset</strong> is a subset <span class="math" data-tex="\(KsH\)">\(KsH\)</span>. Two such subsets are equal or disjoint: if <span class="math" data-tex="\(k_1sh_1=k_2th_2\)">\(k_1sh_1=k_2th_2\)</span>, then <span class="math" data-tex="\(s\in KtH\)">\(s\in KtH\)</span>, and multiplication on either side gives both inclusions. They therefore partition <span class="math" data-tex="\(G\)">\(G\)</span>. The set of blocks is denoted <span class="math" data-tex="\(K\backslash G/H\)">\(K\backslash G/H\)</span>.</p>
+<p>There is an equivalent description that explains their role in induction. The left <span class="math" data-tex="\(K\)">\(K\)</span>-orbits on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> are exactly the collections of cosets contained in one <span class="math" data-tex="\(KsH\)">\(KsH\)</span>. The stabilizer in <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(sH\)">\(sH\)</span> is</p>
+<span class="math math-display" data-tex="\[
+J_s=K\cap sHs^{-1}.
+\tag{1}
+\]">\[
+J_s=K\cap sHs^{-1}.
+\tag{1}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(ksH=sH\)">\(ksH=sH\)</span> if and only if <span class="math" data-tex="\(s^{-1}ks\in H\)">\(s^{-1}ks\in H\)</span>. The map <span class="math" data-tex="\(kJ_s\mapsto ksH\)">\(kJ_s\mapsto ksH\)</span> identifies <span class="math" data-tex="\(K/J_s\)">\(K/J_s\)</span> with this orbit.</p>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be an <span class="math" data-tex="\(H\)">\(H\)</span>-representation with action <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. On the same vector space define</p>
+<span class="math math-display" data-tex="\[
+W^s(x)=\rho(s^{-1}xs),\qquad x\in sHs^{-1}.
+\tag{2}
+\]">\[
+W^s(x)=\rho(s^{-1}xs),\qquad x\in sHs^{-1}.
+\tag{2}
+\]</span>
+<p>We use the same notation for its restriction to <span class="math" data-tex="\(J_s\)">\(J_s\)</span>, specifying the acting group when needed.</p>
+<p id="theorem-1-1" class="result-link"><strong>Theorem 1.1 (Mackey's restriction formula).</strong> Choose one representative <span class="math" data-tex="\(s\)">\(s\)</span> of each double coset. There is a <span class="math" data-tex="\(K\)">\(K\)</span>-isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_K^G\operatorname{Ind}_H^G W
+\simeq
+\bigoplus_{s\in K\backslash G/H}
+\operatorname{Ind}_{J_s}^K(W^s|_{J_s}).
+\tag{3}
+\]">\[
+\operatorname{Res}_K^G\operatorname{Ind}_H^G W
+\simeq
+\bigoplus_{s\in K\backslash G/H}
+\operatorname{Ind}_{J_s}^K(W^s|_{J_s}).
+\tag{3}
+\]</span>
+<p><strong>Proof.</strong> In the coset decomposition of <span class="math" data-tex="\(\mathbb C[G]\otimes_{\mathbb C[H]}W\)">\(\mathbb C[G]\otimes_{\mathbb C[H]}W\)</span>, group together the copies indexed by the cosets in one <span class="math" data-tex="\(KsH\)">\(KsH\)</span>. Its subspace</p>
+<span class="math math-display" data-tex="\[
+B_s=\mathbb C[KsH]\otimes_{\mathbb C[H]}W
+\]">\[
+B_s=\mathbb C[KsH]\otimes_{\mathbb C[H]}W
+\]</span>
+<p>is <span class="math" data-tex="\(K\)">\(K\)</span>-invariant, and the different subspaces give a direct sum. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi_s:\mathbb C[K]\otimes_{\mathbb C[J_s]}W^s&amp;\longrightarrow B_s,\\
+k\otimes w&amp;\longmapsto ks\otimes w.
+\end{aligned}
+\tag{4}
+\]">\[
+\begin{aligned}
+\Phi_s:\mathbb C[K]\otimes_{\mathbb C[J_s]}W^s&amp;\longrightarrow B_s,\\
+k\otimes w&amp;\longmapsto ks\otimes w.
+\end{aligned}
+\tag{4}
+\]</span>
+<p>For <span class="math" data-tex="\(j\in J_s\)">\(j\in J_s\)</span>, the two balanced inputs give</p>
+<span class="math math-display" data-tex="\[
+kjs\otimes w
+=ks(s^{-1}js)\otimes w
+=ks\otimes\rho(s^{-1}js)w.
+\]">\[
+kjs\otimes w
+=ks(s^{-1}js)\otimes w
+=ks\otimes\rho(s^{-1}js)w.
+\]</span>
+<p>Thus the map is well-defined. It commutes with left <span class="math" data-tex="\(K\)">\(K\)</span>-multiplication. Every tensor from the double coset has first factor <span class="math" data-tex="\(ksh\)">\(ksh\)</span>, and its image equals <span class="math" data-tex="\(ks\otimes hw\)">\(ks\otimes hw\)</span>, so the map is surjective.</p>
+<p>Choose representatives <span class="math" data-tex="\(Q_s\)">\(Q_s\)</span> of <span class="math" data-tex="\(K/J_s\)">\(K/J_s\)</span>. The cosets <span class="math" data-tex="\(qsH\)">\(qsH\)</span>, for <span class="math" data-tex="\(q\in Q_s\)">\(q\in Q_s\)</span>, are distinct and exhaust the <span class="math" data-tex="\(K\)">\(K\)</span>-orbit of <span class="math" data-tex="\(sH\)">\(sH\)</span>. On the corresponding decompositions, (4) maps each copy <span class="math" data-tex="\(q\otimes W\)">\(q\otimes W\)</span> identically to the copy <span class="math" data-tex="\(qs\otimes W\)">\(qs\otimes W\)</span>. It is therefore injective and gives the explicit inverse on these copies. Summing (4) proves (3). The maps commute with every <span class="math" data-tex="\(H\)">\(H\)</span>-intertwiner <span class="math" data-tex="\(W\to W&#x27;\)">\(W\to W&#x27;\)</span>, giving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The choice of representatives describes the summands; the <span class="math" data-tex="\(K\)">\(K\)</span>-invariant block for a double coset does not depend on that choice. For example, replacing <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(k_0sh_0\)">\(k_0sh_0\)</span> merely changes the basis and the identification of its stabilizer.</p>
+<p>The dimensions provide a useful independent check:</p>
+<span class="math math-display" data-tex="\[
+[G:H]=\sum_s[K:J_s].
+\tag{5}
+\]">\[
+[G:H]=\sum_s[K:J_s].
+\tag{5}
+\]</span>
+<p>This equality counts the cosets in the separate <span class="math" data-tex="\(K\)">\(K\)</span>-orbits. Multiplying by <span class="math" data-tex="\(\dim W\)">\(\dim W\)</span> gives the dimension identity in (3).</p>
+<p id="corollary-1-2" class="result-link"><strong>Corollary 1.2 (intertwining numbers).</strong> Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be a <span class="math" data-tex="\(K\)">\(K\)</span>-representation, with character <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and let <span class="math" data-tex="\(\psi=\chi_W\)">\(\psi=\chi_W\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_G(\operatorname{Ind}_H^G W,\operatorname{Ind}_K^G Z)
+&amp;\simeq
+\bigoplus_s
+\operatorname{Hom}_{J_s}(W^s|_{J_s},Z|_{J_s}),\\
+\left\langle\operatorname{Ind}_H^G\psi,\operatorname{Ind}_K^G\phi\right\rangle_G
+&amp;=\sum_s
+\left\langle\psi^s|_{J_s},\phi|_{J_s}\right\rangle_{J_s}.
+\end{aligned}
+\tag{6}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_G(\operatorname{Ind}_H^G W,\operatorname{Ind}_K^G Z)
+&amp;\simeq
+\bigoplus_s
+\operatorname{Hom}_{J_s}(W^s|_{J_s},Z|_{J_s}),\\
+\left\langle\operatorname{Ind}_H^G\psi,\operatorname{Ind}_K^G\phi\right\rangle_G
+&amp;=\sum_s
+\left\langle\psi^s|_{J_s},\phi|_{J_s}\right\rangle_{J_s}.
+\end{aligned}
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> The adjunction with an induced target changes the first Hom space to
+<span class="math" data-tex="\(\operatorname{Hom}_K(\operatorname{Res}_K\operatorname{Ind}_H W,Z)\)">\(\operatorname{Hom}_K(\operatorname{Res}_K\operatorname{Ind}_H W,Z)\)</span>.
+Substitute (3), and use the adjunction with an induced source on each summand. This gives the first line of (6). Taking dimensions and using the character–Hom identity gives the second. Characters span the class-function spaces, so the second line extends by linearity and conjugate linearity to arbitrary class functions on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-when-the-coset-copies-form-one-irreducible">2. When the coset copies form one irreducible</h2>
+<p>Representations of a group are <strong>disjoint</strong> if they have no common irreducible constituent. By complete reducibility and Schur's lemma, this is equivalent to a zero Hom space, or to an inner product of characters equal to zero.</p>
+<p id="theorem-2-1" class="result-link"><strong>Theorem 2.1 (Mackey's irreducibility criterion).</strong> For <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span>, the representation <span class="math" data-tex="\(\operatorname{Ind}_H^G W\)">\(\operatorname{Ind}_H^G W\)</span> is irreducible if and only if:</p>
+<ul>
+<li><span class="math" data-tex="\(W\)">\(W\)</span> is irreducible;</li>
+<li>for every <span class="math" data-tex="\(s\notin H\)">\(s\notin H\)</span>, the representations <span class="math" data-tex="\(W^s\)">\(W^s\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, restricted to <span class="math" data-tex="\(H\cap sHs^{-1}\)">\(H\cap sHs^{-1}\)</span>, are disjoint.</li>
+</ul>
+<p>It suffices to check the second condition on representatives of the nonidentity double cosets in <span class="math" data-tex="\(H\backslash G/H\)">\(H\backslash G/H\)</span>.</p>
+<p><strong>Proof.</strong> Apply (6) with <span class="math" data-tex="\(K=H\)">\(K=H\)</span> and <span class="math" data-tex="\(Z=W\)">\(Z=W\)</span>, choosing <span class="math" data-tex="\(1\)">\(1\)</span> for the double coset <span class="math" data-tex="\(H\)">\(H\)</span>. It gives</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{End}_G(\operatorname{Ind}_H^G W)
+=\dim\operatorname{End}_H(W)
++\sum_{s\ne1}
+\dim\operatorname{Hom}_{H\cap sHs^{-1}}(W^s,W).
+\tag{7}
+\]">\[
+\dim\operatorname{End}_G(\operatorname{Ind}_H^G W)
+=\dim\operatorname{End}_H(W)
++\sum_{s\ne1}
+\dim\operatorname{Hom}_{H\cap sHs^{-1}}(W^s,W).
+\tag{7}
+\]</span>
+<p>For any nonzero semisimple complex representation <span class="math" data-tex="\(\bigoplus_i V_i^{\oplus m_i}\)">\(\bigoplus_i V_i^{\oplus m_i}\)</span>, its endomorphism dimension is <span class="math" data-tex="\(\sum_i m_i^2\)">\(\sum_i m_i^2\)</span>. It equals one exactly for an irreducible representation. All terms in (7) are nonnegative integers, and its first term is at least one. Thus the left side is one exactly when the first term is one and all remaining terms vanish. These are the two conditions.</p>
+<p>To justify checking all <span class="math" data-tex="\(s\notin H\)">\(s\notin H\)</span>, let <span class="math" data-tex="\(s&#x27;=h_1sh_2\)">\(s&#x27;=h_1sh_2\)</span>, with <span class="math" data-tex="\(h_1,h_2\in H\)">\(h_1,h_2\in H\)</span>. Its intersection subgroup is the conjugate by <span class="math" data-tex="\(h_1\)">\(h_1\)</span> of <span class="math" data-tex="\(H\cap sHs^{-1}\)">\(H\cap sHs^{-1}\)</span>. Transporting both representations along that conjugation and applying the <span class="math" data-tex="\(H\)">\(H\)</span>-operators for <span class="math" data-tex="\(h_1,h_2\)">\(h_1,h_2\)</span> identifies their Hom spaces. Hence vanishing depends only on the double coset. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-2-2" class="result-link"><strong>Corollary 2.2 (normal-subgroup criterion).</strong> If <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_H^G\operatorname{Ind}_H^G W
+\simeq\bigoplus_{s\in G/H}W^s.
+\tag{8}
+\]">\[
+\operatorname{Res}_H^G\operatorname{Ind}_H^G W
+\simeq\bigoplus_{s\in G/H}W^s.
+\tag{8}
+\]</span>
+<p>For irreducible <span class="math" data-tex="\(W\)">\(W\)</span>, its induction is irreducible exactly when <span class="math" data-tex="\(W^s\not\simeq W\)">\(W^s\not\simeq W\)</span> for every <span class="math" data-tex="\(s\notin H\)">\(s\notin H\)</span>.</p>
+<p><strong>Proof.</strong> In (3) take <span class="math" data-tex="\(K=H\)">\(K=H\)</span>. Normality makes every <span class="math" data-tex="\(J_s=H\)">\(J_s=H\)</span> and identifies double cosets with cosets. The criterion now compares irreducible representations of all of <span class="math" data-tex="\(H\)">\(H\)</span>, so Schur's lemma turns disjointness into nonisomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a nonnormal subgroup, the intersection in Theorem 2.1 is essential. If it is the trivial group for some nonidentity double coset, any two nonzero restrictions have a common trivial constituent, so induction cannot be irreducible.</p>
+<p>For instance, <span class="math" data-tex="\(H=\langle(12)\rangle\le S_3\)">\(H=\langle(12)\rangle\le S_3\)</span> has double cosets represented by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\((13)\)">\((13)\)</span>; the latter intersection is trivial. Inducing either of its linear characters is reducible. For the nontrivial character the two terms in (7) are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, consistent with the decomposition into the sign line and the standard plane.</p>
+<h2 id="3-a-normal-subgroup-s-types-move-together">3. A normal subgroup's types move together</h2>
+<p>Let <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span>. Conjugation acts on isomorphism classes of irreducible <span class="math" data-tex="\(N\)">\(N\)</span>-representations by (2). Since <span class="math" data-tex="\((W^t)^s=W^{st}\)">\((W^t)^s=W^{st}\)</span>, this is a left action. An element of <span class="math" data-tex="\(N\)">\(N\)</span> fixes every class: its operator in <span class="math" data-tex="\(W\)">\(W\)</span> intertwines the inner-conjugate representation with <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>For an irreducible <span class="math" data-tex="\(N\)">\(N\)</span>-representation <span class="math" data-tex="\(W\)">\(W\)</span>, define its <strong>inertia group</strong></p>
+<span class="math math-display" data-tex="\[
+I=I_G(W)=\{g\in G:W^g\simeq W\}.
+\tag{9}
+\]">\[
+I=I_G(W)=\{g\in G:W^g\simeq W\}.
+\tag{9}
+\]</span>
+<p>It is a subgroup containing <span class="math" data-tex="\(N\)">\(N\)</span>. For a <span class="math" data-tex="\(G\)">\(G\)</span>-representation <span class="math" data-tex="\(V\)">\(V\)</span>, let <span class="math" data-tex="\(V[W]\)">\(V[W]\)</span> denote the intrinsic <span class="math" data-tex="\(W\)">\(W\)</span>-isotypic component of its restriction to <span class="math" data-tex="\(N\)">\(N\)</span>: the sum of all <span class="math" data-tex="\(N\)">\(N\)</span>-submodules isomorphic to <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p id="theorem-3-1" class="result-link"><strong>Theorem 3.1 (Clifford's theorem).</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is an irreducible <span class="math" data-tex="\(G\)">\(G\)</span>-representation and <span class="math" data-tex="\(W\)">\(W\)</span> is a constituent of <span class="math" data-tex="\(\operatorname{Res}_N^G V\)">\(\operatorname{Res}_N^G V\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_N^G V
+\simeq\bigoplus_{j=1}^t W_j^{\oplus e},
+\qquad e\ge1,\qquad t=[G:I_G(W)],
+\tag{10}
+\]">\[
+\operatorname{Res}_N^G V
+\simeq\bigoplus_{j=1}^t W_j^{\oplus e},
+\qquad e\ge1,\qquad t=[G:I_G(W)],
+\tag{10}
+\]</span>
+<p>where the <span class="math" data-tex="\(W_j\)">\(W_j\)</span> are precisely the distinct <span class="math" data-tex="\(G\)">\(G\)</span>-conjugates of <span class="math" data-tex="\(W\)">\(W\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\dim V=e[G:I_G(W)]\dim W.
+\tag{11}
+\]">\[
+\dim V=e[G:I_G(W)]\dim W.
+\tag{11}
+\]</span>
+<p><strong>Proof.</strong> Complete reducibility over <span class="math" data-tex="\(N\)">\(N\)</span> gives its intrinsic isotypic decomposition. If <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span> has type <span class="math" data-tex="\(W\)">\(W\)</span>, then for <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+n(gu)=g(g^{-1}ng)u,\qquad n\in N.
+\tag{12}
+\]">\[
+n(gu)=g(g^{-1}ng)u,\qquad n\in N.
+\tag{12}
+\]</span>
+<p>Thus <span class="math" data-tex="\(gU\)">\(gU\)</span> has type <span class="math" data-tex="\(W^g\)">\(W^g\)</span>, and <span class="math" data-tex="\(gV[W]=V[W^g]\)">\(gV[W]=V[W^g]\)</span>. The equality follows by applying the same inclusion with <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. Consequently <span class="math" data-tex="\(G\)">\(G\)</span> permutes the nonzero components.</p>
+<p>The sum of all components in any one orbit is a nonzero <span class="math" data-tex="\(G\)">\(G\)</span>-invariant subspace. Irreducibility makes it all of <span class="math" data-tex="\(V\)">\(V\)</span>, so there is exactly one orbit. The stabilizer of the component <span class="math" data-tex="\(V[W]\)">\(V[W]\)</span> is exactly <span class="math" data-tex="\(I_G(W)\)">\(I_G(W)\)</span>, because distinct nonzero isotypic components have distinct types. The orbit therefore has <span class="math" data-tex="\([G:I_G(W)]\)">\([G:I_G(W)]\)</span> members.</p>
+<p>The maps <span class="math" data-tex="\(g:V[W]\to V[W^g]\)">\(g:V[W]\to V[W^g]\)</span> are vector-space isomorphisms. They preserve the dimension of the component; all conjugate irreducibles also have the same dimension. Dividing the component dimension by <span class="math" data-tex="\(\dim W\)">\(\dim W\)</span> shows that every multiplicity is the same positive integer <span class="math" data-tex="\(e\)">\(e\)</span>. This proves (10) and (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The assertion has two separate parts: all types belong to one orbit, and every type has the same multiplicity. It does not assert that the multiplicity is one.</p>
+<p>For example, the irreducible degree-two representation of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>, restricted to its center <span class="math" data-tex="\(N=\{1,-1\}\)">\(N=\{1,-1\}\)</span>, is two copies of the character taking <span class="math" data-tex="\(-1\)">\(-1\)</span> to <span class="math" data-tex="\(-1\)">\(-1\)</span>. There is one type, <span class="math" data-tex="\(I=Q_8\)">\(I=Q_8\)</span>, and <span class="math" data-tex="\(e=2\)">\(e=2\)</span>. This linear character of the center does not extend to a linear character of <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>: the element <span class="math" data-tex="\(-1=[i,j]\)">\(-1=[i,j]\)</span> is a commutator, whereas every linear character kills commutators. No extension assumption will enter the next theorem.</p>
+<h2 id="4-recovering-the-whole-representation-from-one-component">4. Recovering the whole representation from one component</h2>
+<p>Say that an irreducible representation <strong>lies over</strong> <span class="math" data-tex="\(W\)">\(W\)</span> if its restriction to <span class="math" data-tex="\(N\)">\(N\)</span> contains <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p id="theorem-4-1" class="result-link"><strong>Theorem 4.1 (Clifford correspondence).</strong> Fix <span class="math" data-tex="\(W\in\operatorname{Irr}(N)\)">\(W\in\operatorname{Irr}(N)\)</span> and put <span class="math" data-tex="\(I=I_G(W)\)">\(I=I_G(W)\)</span>. Induction gives a bijection</p>
+<span class="math math-display" data-tex="\[
+\left\{\begin{array}{c}
+\text{irreducible }I\text{-representations}\\
+\text{lying over }W
+\end{array}\right\}
+\longleftrightarrow
+\left\{\begin{array}{c}
+\text{irreducible }G\text{-representations}\\
+\text{lying over }W
+\end{array}\right\}.
+\tag{13}
+\]">\[
+\left\{\begin{array}{c}
+\text{irreducible }I\text{-representations}\\
+\text{lying over }W
+\end{array}\right\}
+\longleftrightarrow
+\left\{\begin{array}{c}
+\text{irreducible }G\text{-representations}\\
+\text{lying over }W
+\end{array}\right\}.
+\tag{13}
+\]</span>
+<p>Its inverse is <span class="math" data-tex="\(V\mapsto V[W]\)">\(V\mapsto V[W]\)</span>, with the inherited <span class="math" data-tex="\(I\)">\(I\)</span>-action. Both sets are sets of isomorphism classes.</p>
+<p><strong>Proof, from <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(I\)">\(I\)</span>.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be irreducible over <span class="math" data-tex="\(G\)">\(G\)</span>, lying over <span class="math" data-tex="\(W\)">\(W\)</span>, and put <span class="math" data-tex="\(U=V[W]\)">\(U=V[W]\)</span>. Formula (12) makes <span class="math" data-tex="\(U\)">\(U\)</span> <span class="math" data-tex="\(I\)">\(I\)</span>-invariant. Choose representatives <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(G/I\)">\(G/I\)</span>, including <span class="math" data-tex="\(1\)">\(1\)</span>. Theorem 3.1 gives</p>
+<span class="math math-display" data-tex="\[
+V=\bigoplus_{t\in T}tU,
+\tag{14}
+\]">\[
+V=\bigoplus_{t\in T}tU,
+\tag{14}
+\]</span>
+<p>where the summands have pairwise distinct <span class="math" data-tex="\(N\)">\(N\)</span>-types <span class="math" data-tex="\(W^t\)">\(W^t\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\ne L\subset U\)">\(0\ne L\subset U\)</span> is an <span class="math" data-tex="\(I\)">\(I\)</span>-submodule, then <span class="math" data-tex="\(\sum_{t\in T}tL\)">\(\sum_{t\in T}tL\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-submodule: for <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>, write <span class="math" data-tex="\(at=t&#x27;i\)">\(at=t&#x27;i\)</span>, and use <span class="math" data-tex="\(iL=L\)">\(iL=L\)</span>. It is nonzero, hence all of <span class="math" data-tex="\(V\)">\(V\)</span>. Intersecting this sum with the component <span class="math" data-tex="\(U\)">\(U\)</span> gives exactly <span class="math" data-tex="\(L\)">\(L\)</span>, since all other summands have distinct <span class="math" data-tex="\(N\)">\(N\)</span>-types. Therefore <span class="math" data-tex="\(L=U\)">\(L=U\)</span>. This proves that <span class="math" data-tex="\(U\)">\(U\)</span> is irreducible over <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_I^G U\longrightarrow V,
+\qquad g\otimes u\longmapsto gu.
+\tag{15}
+\]">\[
+\operatorname{Ind}_I^G U\longrightarrow V,
+\qquad g\otimes u\longmapsto gu.
+\tag{15}
+\]</span>
+<p>The map respects balancing and the <span class="math" data-tex="\(G\)">\(G\)</span>-action. It identifies its separate coset copies with the summands in (14), so it is an isomorphism.</p>
+<p><strong>Proof, from <span class="math" data-tex="\(I\)">\(I\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span>.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be irreducible over <span class="math" data-tex="\(I\)">\(I\)</span>, lying over <span class="math" data-tex="\(W\)">\(W\)</span>. Apply Theorem 3.1 to <span class="math" data-tex="\(N\triangleleft I\)">\(N\triangleleft I\)</span>. All <span class="math" data-tex="\(I\)">\(I\)</span>-conjugates of <span class="math" data-tex="\(W\)">\(W\)</span> are isomorphic to <span class="math" data-tex="\(W\)">\(W\)</span>, by the definition of <span class="math" data-tex="\(I\)">\(I\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_N^I U\simeq W^{\oplus e}.
+\tag{16}
+\]">\[
+\operatorname{Res}_N^I U\simeq W^{\oplus e}.
+\tag{16}
+\]</span>
+<p>For <span class="math" data-tex="\(s\notin I\)">\(s\notin I\)</span>, the group <span class="math" data-tex="\(J_s=I\cap sIs^{-1}\)">\(J_s=I\cap sIs^{-1}\)</span> contains <span class="math" data-tex="\(N\)">\(N\)</span>. The restrictions of <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(U^s\)">\(U^s\)</span> to <span class="math" data-tex="\(N\)">\(N\)</span> have respectively the distinct types <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(W^s\)">\(W^s\)</span>. Thus an intertwiner between their <span class="math" data-tex="\(J_s\)">\(J_s\)</span>-restrictions must be zero: it would already be an <span class="math" data-tex="\(N\)">\(N\)</span>-intertwiner between disjoint types. Theorem 2.1 shows that <span class="math" data-tex="\(\operatorname{Ind}_I^G U\)">\(\operatorname{Ind}_I^G U\)</span> is irreducible.</p>
+<p>Its restriction to <span class="math" data-tex="\(N\)">\(N\)</span> has one coset component of type <span class="math" data-tex="\(W^t\)">\(W^t\)</span> for each <span class="math" data-tex="\(tI\)">\(tI\)</span>, with multiplicity <span class="math" data-tex="\(e\)">\(e\)</span>. This follows from (3) with <span class="math" data-tex="\(K=N,H=I\)">\(K=N,H=I\)</span>; normality and <span class="math" data-tex="\(N\subset I\)">\(N\subset I\)</span> make the relevant double cosets <span class="math" data-tex="\(G/I\)">\(G/I\)</span>. Only the identity coset has type <span class="math" data-tex="\(W\)">\(W\)</span>, since <span class="math" data-tex="\(W^t\simeq W\)">\(W^t\simeq W\)</span> precisely when <span class="math" data-tex="\(t\in I\)">\(t\in I\)</span>. Therefore its <span class="math" data-tex="\(W\)">\(W\)</span>-isotypic component is the original <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The two constructions undo one another. A <span class="math" data-tex="\(G\)">\(G\)</span>-isomorphism preserves the intrinsic <span class="math" data-tex="\(W\)">\(W\)</span>-component, and an <span class="math" data-tex="\(I\)">\(I\)</span>-isomorphism induces a <span class="math" data-tex="\(G\)">\(G\)</span>-isomorphism, so this is a bijection on isomorphism classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <span class="math" data-tex="\(I\)">\(I\)</span>-module in (13) has dimension <span class="math" data-tex="\(e\dim W\)">\(e\dim W\)</span>. It is an actual representation of <span class="math" data-tex="\(I\)">\(I\)</span>, obtained from the whole isotypic component. Replacing it by one chosen copy of <span class="math" data-tex="\(W\)">\(W\)</span> would generally lose its <span class="math" data-tex="\(I\)">\(I\)</span>-action.</p>
+<h2 id="5-abelian-normal-subgroups-and-degree-divisibility">5. Abelian normal subgroups and degree divisibility</h2>
+<p>When <span class="math" data-tex="\(N\)">\(N\)</span> is abelian, its irreducibles are linear characters. Formula (11) gives <span class="math" data-tex="\(\dim V=e[G:I]\)">\(\dim V=e[G:I]\)</span>. The remaining factor <span class="math" data-tex="\(e\)">\(e\)</span> need not be one, but it divides <span class="math" data-tex="\([I:N]\)">\([I:N]\)</span>.</p>
+<p id="theorem-5-1" class="result-link"><strong>Theorem 5.1 (Itô's degree divisibility theorem).</strong> If <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> is abelian and <span class="math" data-tex="\(V\)">\(V\)</span> is an irreducible complex representation, then</p>
+<span class="math math-display" data-tex="\[
+\dim V\mid [G:N].
+\tag{17}
+\]">\[
+\dim V\mid [G:N].
+\tag{17}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> be a constituent over <span class="math" data-tex="\(N\)">\(N\)</span>, let <span class="math" data-tex="\(I=I_G(\lambda)\)">\(I=I_G(\lambda)\)</span>, and let <span class="math" data-tex="\(U=V[\lambda]\)">\(U=V[\lambda]\)</span>. Theorem 4.1 makes <span class="math" data-tex="\(U\)">\(U\)</span> irreducible over <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> acts on it by the scalar <span class="math" data-tex="\(\lambda(n)\)">\(\lambda(n)\)</span>. Put <span class="math" data-tex="\(K=\ker\lambda\)">\(K=\ker\lambda\)</span>, as a subgroup of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is invariant under <span class="math" data-tex="\(I\)">\(I\)</span>, the subgroup <span class="math" data-tex="\(K\)">\(K\)</span> is normal in <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(i\in I,n\in N\)">\(i\in I,n\in N\)</span>, invariance gives</p>
+<span class="math math-display" data-tex="\[
+\lambda(ini^{-1}n^{-1})=1.
+\]">\[
+\lambda(ini^{-1}n^{-1})=1.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(N/K\subset Z(I/K)\)">\(N/K\subset Z(I/K)\)</span>. The representation <span class="math" data-tex="\(U\)">\(U\)</span> factors through the finite group <span class="math" data-tex="\(I/K\)">\(I/K\)</span> and remains irreducible. The central refinement of degree divisibility, proved in Theorem 2.2 of <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's theorem</a>, gives</p>
+<span class="math math-display" data-tex="\[
+\dim U\mid [I/K:Z(I/K)]\mid[I/K:N/K]=[I:N].
+\tag{18}
+\]">\[
+\dim U\mid [I/K:Z(I/K)]\mid[I/K:N/K]=[I:N].
+\tag{18}
+\]</span>
+<p>Here <span class="math" data-tex="\(\dim U=e\)">\(\dim U=e\)</span>, because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is one-dimensional. Finally <span class="math" data-tex="\(\dim V=[G:I]\dim U\)">\(\dim V=[G:I]\dim U\)</span>, by (15), and multiplying the divisibility in (18) by <span class="math" data-tex="\([G:I]\)">\([G:I]\)</span> proves (17). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses scalar action after quotienting by its kernel. It does not require <span class="math" data-tex="\(N\)">\(N\)</span> itself to be central, nor does it assume that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> extends to <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For a split group <span class="math" data-tex="\(G=N\rtimes H\)">\(G=N\rtimes H\)</span>, write <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span> for the stabilizer of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Then <span class="math" data-tex="\(I=N\rtimes H_\lambda\)">\(I=N\rtimes H_\lambda\)</span>. In this situation there is an explicit extension</p>
+<span class="math math-display" data-tex="\[
+\widetilde\lambda(nh)=\lambda(n),\qquad n\in N,\ h\in H_\lambda.
+\tag{19}
+\]">\[
+\widetilde\lambda(nh)=\lambda(n),\qquad n\in N,\ h\in H_\lambda.
+\tag{19}
+\]</span>
+<p>Indeed the multiplication rule <span class="math" data-tex="\(n_1h_1n_2h_2=n_1(h_1n_2h_1^{-1})h_1h_2\)">\(n_1h_1n_2h_2=n_1(h_1n_2h_1^{-1})h_1h_2\)</span>, together with <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>-invariance, makes (19) multiplicative. Tensoring an irreducible <span class="math" data-tex="\(U\)">\(U\)</span> over <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-tex="\(\widetilde\lambda^{-1}\)">\(\widetilde\lambda^{-1}\)</span> makes <span class="math" data-tex="\(N\)">\(N\)</span> act trivially. Thus it is the inflation of an irreducible representation <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+U\simeq\widetilde\lambda\otimes T,\qquad
+\dim V=[H:H_\lambda]\dim T.
+\tag{20}
+\]">\[
+U\simeq\widetilde\lambda\otimes T,\qquad
+\dim V=[H:H_\lambda]\dim T.
+\tag{20}
+\]</span>
+<p>Ordinary degree divisibility for <span class="math" data-tex="\(H_\lambda\)">\(H_\lambda\)</span> now proves that this degree divides <span class="math" data-tex="\(|H|=[G:N]\)">\(|H|=[G:N]\)</span>. The following lesson develops (20) into a complete classification.</p>
+<h2 id="6-orbits-in-small-groups">6. Orbits in small groups</h2>
+<h3 id="the-tetrahedral-group-from-its-four-element-normal-subgroup">The tetrahedral group from its four-element normal subgroup</h3>
+<p>Let <span class="math" data-tex="\(N=V_4\triangleleft A_4\)">\(N=V_4\triangleleft A_4\)</span>, whose three nonidentity elements are
+<span class="math" data-tex="\((12)(34),(13)(24),(14)(23)\)">\((12)(34),(13)(24),(14)(23)\)</span>. Conjugation by <span class="math" data-tex="\((123)\)">\((123)\)</span> cycles these elements. A nontrivial linear character <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of <span class="math" data-tex="\(V_4\)">\(V_4\)</span> has an order-two kernel, so the same conjugation cycles the three nontrivial characters. Its inertia group in <span class="math" data-tex="\(A_4\)">\(A_4\)</span> is therefore <span class="math" data-tex="\(V_4\)">\(V_4\)</span>.</p>
+<p>Corollary 2.2 proves that</p>
+<span class="math math-display" data-tex="\[
+R=\operatorname{Ind}_{V_4}^{A_4}\nu
+\tag{21}
+\]">\[
+R=\operatorname{Ind}_{V_4}^{A_4}\nu
+\tag{21}
+\]</span>
+<p>is irreducible of dimension three. It vanishes on 3-cycles because its inducing subgroup is normal. On <span class="math" data-tex="\(V_4\)">\(V_4\)</span>, its character is the sum of all three nontrivial linear characters. This sum is <span class="math" data-tex="\(3\)">\(3\)</span> at the identity and <span class="math" data-tex="\(-1\)">\(-1\)</span> at every other element: including the trivial character gives the regular character of <span class="math" data-tex="\(V_4\)">\(V_4\)</span>, which is zero off the identity. Hence the row of <span class="math" data-tex="\(R\)">\(R\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(3,-1,0,0)
+\]">\[
+(3,-1,0,0)
+\]</span>
+<p>on <span class="math" data-tex="\(1\)">\(1\)</span>, the double transpositions and the two 3-cycle classes.</p>
+<p>The quotient <span class="math" data-tex="\(A_4/V_4\simeq C_3\)">\(A_4/V_4\simeq C_3\)</span> supplies the three linear characters <span class="math" data-tex="\(1,\alpha,\alpha^2\)">\(1,\alpha,\alpha^2\)</span>. Together with <span class="math" data-tex="\(R\)">\(R\)</span>, their degree squares total <span class="math" data-tex="\(1+1+1+9=12\)">\(1+1+1+9=12\)</span>, so they exhaust <span class="math" data-tex="\(\operatorname{Irr}(A_4)\)">\(\operatorname{Irr}(A_4)\)</span>. Their restrictions to <span class="math" data-tex="\(V_4\)">\(V_4\)</span> have respectively one copy of the trivial character or one copy of each member of the nontrivial three-character orbit.</p>
+<h3 id="two-normal-subgroups-in-s_4">Two normal subgroups in <span class="math" data-tex="\(S_4\)">\(S_4\)</span></h3>
+<p>Use the irreducibles <span class="math" data-tex="\(1,\mathrm{sign},U,W,W\otimes\mathrm{sign}\)">\(1,\mathrm{sign},U,W,W\otimes\mathrm{sign}\)</span> constructed in the preceding lesson, of degrees <span class="math" data-tex="\(1,1,2,3,3\)">\(1,1,2,3,3\)</span>. Their restrictions to <span class="math" data-tex="\(A_4\)">\(A_4\)</span> are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c|c}
+S_4\text{-representation}&amp;A_4\text{-restriction}&amp;e&amp;t\\ \hline
+1&amp;1&amp;1&amp;1\\
+\mathrm{sign}&amp;1&amp;1&amp;1\\
+U&amp;\alpha\oplus\alpha^2&amp;1&amp;2\\
+W&amp;R&amp;1&amp;1\\
+W\otimes\mathrm{sign}&amp;R&amp;1&amp;1
+\end{array}
+\tag{22}
+\]">\[
+\begin{array}{c|c|c|c}
+S_4\text{-representation}&amp;A_4\text{-restriction}&amp;e&amp;t\\ \hline
+1&amp;1&amp;1&amp;1\\
+\mathrm{sign}&amp;1&amp;1&amp;1\\
+U&amp;\alpha\oplus\alpha^2&amp;1&amp;2\\
+W&amp;R&amp;1&amp;1\\
+W\otimes\mathrm{sign}&amp;R&amp;1&amp;1
+\end{array}
+\tag{22}
+\]</span>
+<p>This follows by restricting the earlier character rows and using character determination; Exercise 1 gives the entries explicitly. In particular the two linear types in <span class="math" data-tex="\(U\)">\(U\)</span> are interchanged by an odd permutation, and each has inertia group <span class="math" data-tex="\(A_4\)">\(A_4\)</span>.</p>
+<p>Restricting further to <span class="math" data-tex="\(V_4\)">\(V_4\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+1|_{V_4}=\mathrm{sign}|_{V_4}=1,\qquad
+U|_{V_4}=1^{\oplus2},\qquad
+W|_{V_4}=(W\otimes\mathrm{sign})|_{V_4}
+=\nu_1\oplus\nu_2\oplus\nu_3.
+\tag{23}
+\]">\[
+1|_{V_4}=\mathrm{sign}|_{V_4}=1,\qquad
+U|_{V_4}=1^{\oplus2},\qquad
+W|_{V_4}=(W\otimes\mathrm{sign})|_{V_4}
+=\nu_1\oplus\nu_2\oplus\nu_3.
+\tag{23}
+\]</span>
+<p>The representation <span class="math" data-tex="\(U\)">\(U\)</span> now has <span class="math" data-tex="\(e=2,t=1\)">\(e=2,t=1\)</span>. The two degree-three representations have <span class="math" data-tex="\(e=1,t=3\)">\(e=1,t=3\)</span>. Thus even an abelian normal subgroup permits multiplicity greater than one.</p>
+<p>For a nontrivial <span class="math" data-tex="\(\nu\)">\(\nu\)</span> whose kernel is <span class="math" data-tex="\(\{1,(13)(24)\}\)">\(\{1,(13)(24)\}\)</span>, its inertia group in <span class="math" data-tex="\(S_4\)">\(S_4\)</span> is the centralizer of <span class="math" data-tex="\((13)(24)\)">\((13)(24)\)</span>: preserving its kernel means fixing that element by conjugation. This centralizer has order <span class="math" data-tex="\(8\)">\(8\)</span> and equals</p>
+<span class="math math-display" data-tex="\[
+I=\langle r=(1234),s=(13)\rangle\simeq D_4.
+\]">\[
+I=\langle r=(1234),s=(13)\rangle\simeq D_4.
+\]</span>
+<p>The linear character <span class="math" data-tex="\(\eta(r)=-1,\eta(s)=1\)">\(\eta(r)=-1,\eta(s)=1\)</span> restricts to this <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, since its values on <span class="math" data-tex="\(r^2,rs,r^3s\)">\(r^2,rs,r^3s\)</span> are <span class="math" data-tex="\(1,-1,-1\)">\(1,-1,-1\)</span>. The construction <span class="math" data-tex="\(W=\operatorname{Ind}_I^{S_4}\eta\)">\(W=\operatorname{Ind}_I^{S_4}\eta\)</span> from the preceding lesson is therefore an explicit instance of Theorem 4.1. The sign twist gives the corresponding inertia representation for <span class="math" data-tex="\(W\otimes\mathrm{sign}\)">\(W\otimes\mathrm{sign}\)</span>.</p>
+<h3 id="the-rotation-subgroup-in-a-dihedral-group">The rotation subgroup in a dihedral group</h3>
+<p>For <span class="math" data-tex="\(D_n=\langle r,s\mid r^n=s^2=1,\ srs=r^{-1}\rangle\)">\(D_n=\langle r,s\mid r^n=s^2=1,\ srs=r^{-1}\rangle\)</span>, put <span class="math" data-tex="\(N=\langle r\rangle\)">\(N=\langle r\rangle\)</span> and <span class="math" data-tex="\(\theta_k(r)=e^{2\pi i k/n}\)">\(\theta_k(r)=e^{2\pi i k/n}\)</span>. Reflection sends <span class="math" data-tex="\(\theta_k\)">\(\theta_k\)</span> to <span class="math" data-tex="\(\theta_{-k}\)">\(\theta_{-k}\)</span>. If <span class="math" data-tex="\(2k\not\equiv0\pmod n\)">\(2k\not\equiv0\pmod n\)</span>, its inertia group is <span class="math" data-tex="\(N\)">\(N\)</span>, and induction is irreducible of degree two. If <span class="math" data-tex="\(2k\equiv0\pmod n\)">\(2k\equiv0\pmod n\)</span>, its inertia group is all of <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, and the induced representation is reducible. The two eigenspaces of the reflection give its two linear constituents, as shown by the explicit matrices in the preceding lesson.</p>
+<p>This recovers every odd and even dihedral case. For <span class="math" data-tex="\(n=1,2\)">\(n=1,2\)</span>, every rotation character is invariant, so there are only the linear cases.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-1-see-the-orbit-and-the-multiplicity-separately">Exercise 1. See the orbit and the multiplicity separately</h3>
+<p>Compute the restrictions of every irreducible of <span class="math" data-tex="\(S_4\)">\(S_4\)</span> to <span class="math" data-tex="\(A_4\)">\(A_4\)</span>. Verify the orbit and equal-multiplicity assertions, and explain what changes upon restricting to <span class="math" data-tex="\(V_4\)">\(V_4\)</span>.</p>
+<p><strong>Solution.</strong> Order the <span class="math" data-tex="\(A_4\)">\(A_4\)</span> classes as <span class="math" data-tex="\(1,22,3_+,3_-\)">\(1,22,3_+,3_-\)</span>, with sizes <span class="math" data-tex="\(1,3,4,4\)">\(1,3,4,4\)</span>; choose <span class="math" data-tex="\(3_+\)">\(3_+\)</span> so that <span class="math" data-tex="\(\alpha(3_+)=\omega\)">\(\alpha(3_+)=\omega\)</span>, where <span class="math" data-tex="\(\omega^3=1,\omega\ne1\)">\(\omega^3=1,\omega\ne1\)</span>. The four constructed irreducible rows are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rrrr}
+1&amp;1&amp;1&amp;1&amp;1\\
+\alpha&amp;1&amp;1&amp;\omega&amp;\omega^2\\
+\alpha^2&amp;1&amp;1&amp;\omega^2&amp;\omega\\
+R&amp;3&amp;-1&amp;0&amp;0
+\end{array}.
+\]">\[
+\begin{array}{c|rrrr}
+1&amp;1&amp;1&amp;1&amp;1\\
+\alpha&amp;1&amp;1&amp;\omega&amp;\omega^2\\
+\alpha^2&amp;1&amp;1&amp;\omega^2&amp;\omega\\
+R&amp;3&amp;-1&amp;0&amp;0
+\end{array}.
+\]</span>
+<p>The <span class="math" data-tex="\(S_4\)">\(S_4\)</span> rows restrict to</p>
+<span class="math math-display" data-tex="\[
+(1,1,1,1),\quad(1,1,1,1),\quad
+(2,2,-1,-1),\quad(3,-1,0,0),\quad(3,-1,0,0).
+\]">\[
+(1,1,1,1),\quad(1,1,1,1),\quad
+(2,2,-1,-1),\quad(3,-1,0,0),\quad(3,-1,0,0).
+\]</span>
+<p>Since <span class="math" data-tex="\(\omega+\omega^2=-1\)">\(\omega+\omega^2=-1\)</span>, these are <span class="math" data-tex="\(1,1,\alpha+\alpha^2,R,R\)">\(1,1,\alpha+\alpha^2,R,R\)</span>. They give (22) by character determination. The <span class="math" data-tex="\(A_4\)">\(A_4\)</span>-type <span class="math" data-tex="\(R\)">\(R\)</span> is fixed under all of <span class="math" data-tex="\(S_4\)">\(S_4\)</span>, as is the trivial type, so their orbit has one member. The two nontrivial linear types are interchanged by odd permutations and have stabilizer <span class="math" data-tex="\(A_4\)">\(A_4\)</span>; their orbit has two members. Every listed multiplicity is one.</p>
+<p>On <span class="math" data-tex="\(V_4\)">\(V_4\)</span>, both <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\alpha^2\)">\(\alpha^2\)</span> are trivial, hence <span class="math" data-tex="\(U\)">\(U\)</span> becomes two copies of the trivial character. The degree-three row on <span class="math" data-tex="\(V_4\)">\(V_4\)</span> is the sum of its three nontrivial characters, by (21). These types are permuted transitively by <span class="math" data-tex="\(S_4\)">\(S_4\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(e=2,t=1\)">\(e=2,t=1\)</span>, whereas each degree-three representation has <span class="math" data-tex="\(e=1,t=3\)">\(e=1,t=3\)</span>. The identities <span class="math" data-tex="\(\dim V=et\dim W\)">\(\dim V=et\dim W\)</span> hold in every case.</p>
+<h3 id="exercise-2-follow-both-adjunctions">Exercise 2. Follow both adjunctions</h3>
+<p>Derive the intertwining-number formula (6) directly from Mackey's decomposition and Frobenius reciprocity. Apply it to the sign character of <span class="math" data-tex="\(\langle(12)\rangle\le S_3\)">\(\langle(12)\rangle\le S_3\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(X=\operatorname{Ind}_H^G W\)">\(X=\operatorname{Ind}_H^G W\)</span>. The right adjunction gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_G(X,\operatorname{Ind}_K^G Z)
+\simeq\operatorname{Hom}_K(\operatorname{Res}_K^G X,Z).
+\]">\[
+\operatorname{Hom}_G(X,\operatorname{Ind}_K^G Z)
+\simeq\operatorname{Hom}_K(\operatorname{Res}_K^G X,Z).
+\]</span>
+<p>Mackey's decomposition replaces the source on the right by the sum over <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(\operatorname{Ind}_{J_s}^K W^s\)">\(\operatorname{Ind}_{J_s}^K W^s\)</span>. A map from that direct sum is a tuple of maps from its summands. The left adjunction identifies the map space for each summand with <span class="math" data-tex="\(\operatorname{Hom}_{J_s}(W^s,Z|_{J_s})\)">\(\operatorname{Hom}_{J_s}(W^s,Z|_{J_s})\)</span>. Taking dimensions gives exactly</p>
+<span class="math math-display" data-tex="\[
+\sum_s\langle\psi^s|_{J_s},\phi|_{J_s}\rangle_{J_s}.
+\]">\[
+\sum_s\langle\psi^s|_{J_s},\phi|_{J_s}\rangle_{J_s}.
+\]</span>
+<p>Both adjunctions are needed because the first induced representation is the source and the second is the target.</p>
+<p>For <span class="math" data-tex="\(H=K=\langle(12)\rangle\)">\(H=K=\langle(12)\rangle\)</span> and <span class="math" data-tex="\(W=Z\)">\(W=Z\)</span> its nontrivial line, the two double-coset representatives are <span class="math" data-tex="\(1,(13)\)">\(1,(13)\)</span>. Their intersections have orders <span class="math" data-tex="\(2,1\)">\(2,1\)</span>. The first Hom dimension is one by Schur's lemma; the second is one because both restrictions to the trivial group are lines. The induced character therefore has squared norm <span class="math" data-tex="\(2\)">\(2\)</span>. Its known decomposition into the sign line and standard plane has precisely this norm.</p>
+<h3 id="exercise-3-prove-degree-divisibility-without-an-extension-assumption">Exercise 3. Prove degree divisibility without an extension assumption</h3>
+<p>Let <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> be abelian. Prove that every irreducible degree divides <span class="math" data-tex="\([G:N]\)">\([G:N]\)</span>. Give a separate proof of the remaining multiplicity divisibility when <span class="math" data-tex="\(G=N\rtimes H\)">\(G=N\rtimes H\)</span>.</p>
+<p><strong>Solution.</strong> For a constituent <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(\operatorname{Res}_N V\)">\(\operatorname{Res}_N V\)</span>, let <span class="math" data-tex="\(I\)">\(I\)</span> be its inertia group and <span class="math" data-tex="\(U=V[\lambda]\)">\(U=V[\lambda]\)</span>. Clifford correspondence gives <span class="math" data-tex="\(\dim V=[G:I]\dim U\)">\(\dim V=[G:I]\dim U\)</span>, and <span class="math" data-tex="\(N\)">\(N\)</span> acts on <span class="math" data-tex="\(U\)">\(U\)</span> by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Set <span class="math" data-tex="\(K=\ker\lambda\)">\(K=\ker\lambda\)</span>. Invariance under <span class="math" data-tex="\(I\)">\(I\)</span> makes <span class="math" data-tex="\(K\triangleleft I\)">\(K\triangleleft I\)</span> and makes every commutator between <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> belong to <span class="math" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-tex="\(N/K\)">\(N/K\)</span> is central in <span class="math" data-tex="\(I/K\)">\(I/K\)</span>.</p>
+<p>The irreducible representation <span class="math" data-tex="\(U\)">\(U\)</span> descends to <span class="math" data-tex="\(I/K\)">\(I/K\)</span>. The earlier central-index divisibility theorem gives <span class="math" data-tex="\(\dim U\mid[I/K:Z(I/K)]\)">\(\dim U\mid[I/K:Z(I/K)]\)</span>. Since <span class="math" data-tex="\(N/K\)">\(N/K\)</span> is contained in this center, that index divides <span class="math" data-tex="\([I:N]\)">\([I:N]\)</span>. Multiplying by <span class="math" data-tex="\([G:I]\)">\([G:I]\)</span> proves <span class="math" data-tex="\(\dim V\mid[G:N]\)">\(\dim V\mid[G:N]\)</span>.</p>
+<p>In the split case <span class="math" data-tex="\(I=N\rtimes H_\lambda\)">\(I=N\rtimes H_\lambda\)</span>, the character <span class="math" data-tex="\(\widetilde\lambda(nh)=\lambda(n)\)">\(\widetilde\lambda(nh)=\lambda(n)\)</span> is an extension, as checked in (19). Twisting <span class="math" data-tex="\(U\)">\(U\)</span> by its inverse kills <span class="math" data-tex="\(N\)">\(N\)</span>, and the resulting irreducible representation factors through <span class="math" data-tex="\(I/N\simeq H_\lambda\)">\(I/N\simeq H_\lambda\)</span>. If it is <span class="math" data-tex="\(T\)">\(T\)</span>, then <span class="math" data-tex="\(\dim U=\dim T\mid|H_\lambda|\)">\(\dim U=\dim T\mid|H_\lambda|\)</span> by ordinary degree divisibility. This again gives <span class="math" data-tex="\(\dim V=[H:H_\lambda]\dim T\mid|H|\)">\(\dim V=[H:H_\lambda]\dim T\mid|H|\)</span>. The split argument constructs the extension; it does not assume one in the general case.</p>
+<h3 id="exercise-4-a-second-proof-of-the-correspondence">Exercise 4. A second proof of the correspondence</h3>
+<p>Prove Theorem 4.1, replacing its use of Mackey's irreducibility criterion by a direct argument with the normal subgroup's isotypic projections.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be irreducible over <span class="math" data-tex="\(I\)">\(I\)</span> and lying over <span class="math" data-tex="\(W\)">\(W\)</span>. Its restriction to <span class="math" data-tex="\(N\)">\(N\)</span> is a multiple of <span class="math" data-tex="\(W\)">\(W\)</span>, by Clifford's theorem applied within <span class="math" data-tex="\(I\)">\(I\)</span>. In <span class="math" data-tex="\(X=\operatorname{Ind}_I^G U=\bigoplus_{t\in G/I}t\otimes U\)">\(X=\operatorname{Ind}_I^G U=\bigoplus_{t\in G/I}t\otimes U\)</span>, the summands have pairwise distinct types <span class="math" data-tex="\(W^t\)">\(W^t\)</span>. They are exactly the intrinsic <span class="math" data-tex="\(N\)">\(N\)</span>-isotypic components.</p>
+<p>Suppose <span class="math" data-tex="\(0\ne L\subset X\)">\(0\ne L\subset X\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-submodule. Canonical isotypic projections preserve <span class="math" data-tex="\(L\)">\(L\)</span>: the projections are natural for the <span class="math" data-tex="\(N\)">\(N\)</span>-equivariant inclusion <span class="math" data-tex="\(L\hookrightarrow X\)">\(L\hookrightarrow X\)</span>, by the earlier isotypic-component theorem. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is the sum of its intersections with those components. One intersection is nonzero, and translating by its coset representative's inverse shows that <span class="math" data-tex="\(L\cap(1\otimes U)\ne0\)">\(L\cap(1\otimes U)\ne0\)</span>.</p>
+<p>This intersection is <span class="math" data-tex="\(I\)">\(I\)</span>-invariant. Irreducibility of <span class="math" data-tex="\(U\)">\(U\)</span> forces <span class="math" data-tex="\(1\otimes U\subset L\)">\(1\otimes U\subset L\)</span>. Its <span class="math" data-tex="\(G\)">\(G\)</span>-translates span <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(L=X\)">\(L=X\)</span>. Thus <span class="math" data-tex="\(X\)">\(X\)</span> is irreducible. Only its identity component has type <span class="math" data-tex="\(W\)">\(W\)</span>, so its <span class="math" data-tex="\(W\)">\(W\)</span>-component recovers <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Conversely, for an irreducible <span class="math" data-tex="\(G\)">\(G\)</span>-representation <span class="math" data-tex="\(V\)">\(V\)</span> lying over <span class="math" data-tex="\(W\)">\(W\)</span>, set <span class="math" data-tex="\(U=V[W]\)">\(U=V[W]\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is a nonzero <span class="math" data-tex="\(I\)">\(I\)</span>-submodule of <span class="math" data-tex="\(U\)">\(U\)</span>, the direct sum of its coset translates is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant and therefore all of <span class="math" data-tex="\(V\)">\(V\)</span>. Its <span class="math" data-tex="\(W\)">\(W\)</span>-component is exactly <span class="math" data-tex="\(L\)">\(L\)</span>, whence <span class="math" data-tex="\(L=U\)">\(L=U\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(I\)">\(I\)</span>-irreducible. The map <span class="math" data-tex="\(g\otimes u\mapsto gu\)">\(g\otimes u\mapsto gu\)</span> identifies the induction coset copies with all of <span class="math" data-tex="\(V\)">\(V\)</span>'s isotypic components, hence is a <span class="math" data-tex="\(G\)">\(G\)</span>-isomorphism. Isomorphisms preserve these intrinsic components, so the two constructions give the asserted bijection on isomorphism classes.</p>
+<h2 id="8-what-this-lesson-assumes">8. What this lesson assumes</h2>
+<p>Mackey's formula and criterion, the normal-subgroup criterion, Clifford's theorem and correspondence, and the abelian-normal degree theorem were proved here. The opening paragraph identifies the exact earlier induction, semisimplicity, Schur and isotypic results used.</p>
+<p>The character–Hom formula and determination by characters are Theorem 3.1 of <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>; the regular degree-square identity used for <span class="math" data-tex="\(A_4\)">\(A_4\)</span> is Theorem 3.2 there, and the class-function basis is Theorem 4.1. Theorem 2.2 of <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's theorem</a> states both ordinary and central-index degree divisibility. The <span class="math" data-tex="\(S_4\)">\(S_4\)</span>, <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> and dihedral representations referenced in the examples were explicitly constructed in the preceding lessons.</p>
+<p>Coset partition and subgroup-orbit counting are proved in <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html#lemma-6-1">the Fourier lesson, Lemma 6.1</a>. No assertion that a subgroup type always extends to its inertia group is imported or needed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>C. Lassueur</strong>, <a href="https://kluedo.ub.rptu.de/frontdoor/index/index/year/2021/docId/6228"><em>Character Theory of Finite Groups</em></a>, lecture notes, TU Kaiserslautern, 2020, §20, Theorem 20.5, for Clifford's theorem and the Clifford correspondence. The normal-subgroup theorem goes back to A. H. Clifford (1937).</li>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, 2018, Chapter 2 §7, Theorem 7.4 and Corollary 7.6, and §8, Theorem 8.1 and Corollary 8.2, for Mackey's formulas and criterion.</li>
+<li><strong>Earlier course proof:</strong> <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html#lemma-6-1">the Fourier lesson, Lemma 6.1</a>, for cosets, orbit–stabilizer, centralizers and normalizers.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

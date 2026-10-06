@@ -1,0 +1,395 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Formal colimits and their test objects</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="formal-colimits-and-their-test-objects">Formal colimits and their test objects</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text public domain (CC0).</em></p>
+<p>Taking a colimit after embedding objects into presheaves changes what counts as a test object. Evaluation at an original object commutes with that colimit. Maps from an arbitrary presheaf need not. This distinction also explains why a represented presheaf colimit gives a universal construction preserved by every functor, while an ordinary colimit often does not.</p>
+<p>We use a fixed Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, ambient choice, and a locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small category <span class="math" data-tex="\(C\)">\(C\)</span>, whose object set may be larger. All category data are ambient sets. The complete encodings, both Yoneda proofs and element-category laws are retained from <a href="points-fibres-and-universal-representations.html">Points and representations</a>. The pointwise constructions and all their universal factors are retained from <a href="colimits-as-connected-components.html#4-compute-presheaf-limits-and-colimits-pointwise">Colimits as connected components</a>. “Small” below means <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Enlargements used for ambient transformation sets do not permit larger diagrams to count as small.</p>
+<h2 id="1-put-the-colimit-in-the-right-category">1. Put the colimit in the right category</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat C=\operatorname{Fun}
+(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U}),\\
+C^\vee=\operatorname{Fun}
+(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\widehat C=\operatorname{Fun}
+(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U}),\\
+C^\vee=\operatorname{Fun}
+(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The encoded point functors are <span class="math" data-tex="\(h_X(T)=\operatorname{Hom}_C(T,X)\)">\(h_X(T)=\operatorname{Hom}_C(T,X)\)</span> and <span class="math" data-tex="\(q_X(T)=\operatorname{Hom}_C(X,T)\)">\(q_X(T)=\operatorname{Hom}_C(X,T)\)</span>, with the full Hom encoding understood when literal Hom sets are only small up to bijection. The covariant <span class="math" data-tex="\(q_X\)">\(q_X\)</span>, regarded in the opposite category, gives the fully faithful functor <span class="math" data-tex="\(k:C\to C^\vee\)">\(k:C\to C^\vee\)</span>; precomposition by <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is its underlying transformation <span class="math" data-tex="\(q_Y\to q_X\)">\(q_Y\to q_X\)</span>.</p>
+<p>For a small <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, define its <strong>formal colimit</strong></p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf I_C(D)=\operatorname{colim}_{i\in I}h_{D(i)}\\
+\text{in }\widehat C.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\mathsf I_C(D)=\operatorname{colim}_{i\in I}h_{D(i)}\\
+\text{in }\widehat C.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>This is also called the quoted <strong>ind-lim</strong>, even when <span class="math" data-tex="\(I\)">\(I\)</span> is not filtered. The word does not assert that this presheaf belongs to <span class="math" data-tex="\(\operatorname{Ind}(C)\)">\(\operatorname{Ind}(C)\)</span>. For a diagram <span class="math" data-tex="\(\alpha:I\to\widehat C\)">\(\alpha:I\to\widehat C\)</span>, its quoted colimit instead means the actual colimit of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> itself, without first restricting to original objects.</p>
+<p>The complete pointwise presheaf theorem in <em>Colimits as connected components</em>, Section 4, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf I_C(D)(T)\\
+\simeq
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(T,D(i)).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\mathsf I_C(D)(T)\\
+\simeq
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(T,D(i)).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>In literal Hom notation, a value is represented by a class <span class="math" data-tex="\([i,u]\)">\([i,u]\)</span>, with <span class="math" data-tex="\(u:T\to D(i)\)">\(u:T\to D(i)\)</span>. A <span class="math" data-tex="\(C\)">\(C\)</span>-arrow <span class="math" data-tex="\(a:S\to T\)">\(a:S\to T\)</span> sends this to <span class="math" data-tex="\([i,ua]\)">\([i,ua]\)</span>. An <span class="math" data-tex="\(I\)">\(I\)</span>-arrow <span class="math" data-tex="\(s:i\to i&#x27;\)">\(s:i\to i&#x27;\)</span> supplies the generating identification
+<span class="math" data-tex="\([i,u]=[i&#x27;,D(s)u]\)">\([i,u]=[i&#x27;,D(s)u]\)</span>. The retained quotient and Hom proofs verify every functor law, every generator and the full natural cocone factor. A transformation <span class="math" data-tex="\(t:D\to E\)">\(t:D\to E\)</span> gives the value map
+<span class="math" data-tex="\([i,u]\mapsto[i,t_i u]\)">\([i,u]\mapsto[i,t_i u]\)</span>, commuting with every <span class="math" data-tex="\(C\)">\(C\)</span>-arrow by associativity.</p>
+<p>For general <span class="math" data-tex="\(\alpha:I\to\widehat C\)">\(\alpha:I\to\widehat C\)</span>, the same pointwise theorem gives
+<span class="math" data-tex="\((\operatorname{colim}\alpha)(T)=\operatorname{colim}_i\alpha(i)(T)\)">\((\operatorname{colim}\alpha)(T)=\operatorname{colim}_i\alpha(i)(T)\)</span>, with its exact class maps. Yoneda then supplies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(h_T,\operatorname{colim}\alpha)
+\simeq\\
+\operatorname{colim}_{i\in I}
+\operatorname{Nat}(h_T,\alpha(i)).
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(h_T,\operatorname{colim}\alpha)
+\simeq\\
+\operatorname{colim}_{i\in I}
+\operatorname{Nat}(h_T,\alpha(i)).
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>It identifies the canonical comparison, not merely the cardinalities: a transformation at stage <span class="math" data-tex="\(i\)">\(i\)</span>, corresponding to <span class="math" data-tex="\(x\in\alpha(i)(T)\)">\(x\in\alpha(i)(T)\)</span>, maps to the transformation corresponding to its class <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span>. Both Yoneda maps are natural in <span class="math" data-tex="\(T\)">\(T\)</span> and in the diagram, so this equality of maps is natural as well. This guarantee is for every original representable <span class="math" data-tex="\(h_T\)">\(h_T\)</span>; it is not a classification of all test presheaves that might preserve colimits.</p>
+<p>Quoted coproducts are coproducts in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>, with values the tagged disjoint unions of the input values and the full pointwise factor property. A binary quoted disjoint union means this same coproduct. It does not presume a coproduct in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>If <span class="math" data-tex="\(L=\operatorname{colim}_I D\)">\(L=\operatorname{colim}_I D\)</span> exists in <span class="math" data-tex="\(C\)">\(C\)</span>, with <span class="math" data-tex="\(c_i:D(i)\to L\)">\(c_i:D(i)\to L\)</span>, there is a specified comparison</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf I_C(D)\longrightarrow h_L,\\
+{}[i,u]\longmapsto c_i u.
+\end{gathered}
+\tag{1.5}
+\]">\[
+\begin{gathered}
+\mathsf I_C(D)\longrightarrow h_L,\\
+{}[i,u]\longmapsto c_i u.
+\end{gathered}
+\tag{1.5}
+\]</span>
+<p>The <span class="math" data-tex="\(C\)">\(C\)</span>-cocone equations respect each generating relation, and associativity makes this map natural in the test object. It is the unique presheaf-cocone factor of the maps <span class="math" data-tex="\(h_{c_i}\)">\(h_{c_i}\)</span>, by the full universal factor theorem. It need not be invertible.</p>
+<p>The formal ordinary-colimit functor instead sends <span class="math" data-tex="\(T\)">\(T\)</span> to the set of <span class="math" data-tex="\(C\)">\(C\)</span>-cocones from <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>, an object of <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>. It represents an ordinary colimit when that object exists. This outgoing-cocone object differs from the presheaf in (1.2), whose values are colimits of incoming Hom sets.</p>
+<h2 id="2-hom-out-of-the-whole-colimit">2. Hom out of the whole colimit</h2>
+<p>For any <span class="math" data-tex="\(\alpha:I\to\widehat C\)">\(\alpha:I\to\widehat C\)</span> and <span class="math" data-tex="\(B\in\widehat C\)">\(B\in\widehat C\)</span>, the complete colimit factor property in the presheaf category gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(\operatorname{colim}_I\alpha,B)
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Nat}(\alpha(i),B).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(\operatorname{colim}_I\alpha,B)
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Nat}(\alpha(i),B).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The map restricts a transformation along every coprojection. Its inverse is the unique factor of the compatible family. The complete universal cone/cocone proof in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families, Section 2</a>, applied in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>, verifies both inverses and postcomposition naturality in <span class="math" data-tex="\(B\)">\(B\)</span>. For arbitrary <span class="math" data-tex="\(\alpha,B\)">\(\alpha,B\)</span>, these transformation sets are ambient sets; no smallness of all <span class="math" data-tex="\(\operatorname{Nat}(A,B)\)">\(\operatorname{Nat}(A,B)\)</span> is asserted.</p>
+<p>For <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, Yoneda identifies each right-hand term with <span class="math" data-tex="\(B(D(i))\)">\(B(D(i))\)</span>, with precomposition along <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span> on the <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span>-arrows. These values and their small compatible-family limit are small. Thus maps from a small colimit of original representables to any <span class="math" data-tex="\(B\)">\(B\)</span> form a small set, even when general presheaf transformation sets can be larger.</p>
+<p>For small <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span> and <span class="math" data-tex="\(E:J\to C\)">\(E:J\to C\)</span>, combine (2.1) with the representable evaluation (1.4):</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(\mathsf I_C(D),\mathsf I_C(E))
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}
+\operatorname{Hom}_C(D(i),E(j)).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(\mathsf I_C(D),\mathsf I_C(E))
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{colim}_{j\in J}
+\operatorname{Hom}_C(D(i),E(j)).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The <span class="math" data-tex="\(I\)">\(I\)</span>-direction is contravariant: <span class="math" data-tex="\(s:i\to i&#x27;\)">\(s:i\to i&#x27;\)</span> induces precomposition by <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span>, from the term at <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span> to the term at <span class="math" data-tex="\(i\)">\(i\)</span>. The <span class="math" data-tex="\(J\)">\(J\)</span>-direction is covariant, by postcomposition with <span class="math" data-tex="\(E(t)\)">\(E(t)\)</span>. The full Hom bifunctor and Yoneda proofs make these actions commute, and the full universal factor gives exactly the compatible family of resulting classes. Transforming <span class="math" data-tex="\(D\)">\(D\)</span> acts by precomposition; transforming <span class="math" data-tex="\(E\)">\(E\)</span> acts by postcomposition. Naturality of the retained two-variable Yoneda bijections and of the factor map proves both compatibilities.</p>
+<p>Each <span class="math" data-tex="\(i\)">\(i\)</span> may use its own target stage <span class="math" data-tex="\(j\)">\(j\)</span>, and a compatibility is equality of colimit classes. There is no uniform-stage assertion for an arbitrary <span class="math" data-tex="\(J\)">\(J\)</span>. No filteredness or compression of zigzags to one later stage is imposed. Empty indices are included by the existing empty product and empty quotient proofs.</p>
+<p>The direction in (1.4) matters. Take the category <span class="math" data-tex="\(C\)">\(C\)</span> with one object and only its identity. Its presheaf category is <span class="math" data-tex="\(\mathsf{Set}_{\mathcal U}\)">\(\mathsf{Set}_{\mathcal U}\)</span>, by the complete inverse evaluation construction in <em>Points</em>, Section 8, and its sole representable is <span class="math" data-tex="\(1\)">\(1\)</span>. For the discrete two-object diagram of this representable, the colimit is <span class="math" data-tex="\(2\)">\(2\)</span>. Using the test presheaf <span class="math" data-tex="\(A=2\)">\(A=2\)</span>, the canonical map is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(2,1)\sqcup
+\operatorname{Nat}(2,1)\\
+\longrightarrow\operatorname{Nat}(2,2).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(2,1)\sqcup
+\operatorname{Nat}(2,1)\\
+\longrightarrow\operatorname{Nat}(2,2).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>Its domain has two elements, while its codomain has four. The images are the two constant functions, missing the identity and the transposition. Thus arbitrary test presheaves do not have the unconditional evaluation property, even when every diagram value is an original representable.</p>
+<h2 id="3-reverse-the-whole-construction">3. Reverse the whole construction</h2>
+<p>For a small <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C\)">\(\beta:I^{\mathrm{op}}\to C\)</span>, define the <strong>formal projective limit</strong>, or quoted <strong>pro-lim</strong>,</p>
+<span class="math math-display" data-tex="\[
+\mathsf P_C(\beta)=
+\lim_{I^{\mathrm{op}}}k\beta
+\quad\text{in }C^\vee.
+\tag{3.1}
+\]">\[
+\mathsf P_C(\beta)=
+\lim_{I^{\mathrm{op}}}k\beta
+\quad\text{in }C^\vee.
+\tag{3.1}
+\]</span>
+<p>The opposite on <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span> reverses the universal arrows. Its underlying covariant functor is the pointwise colimit</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_\beta(T)=\\
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(\beta(i),T).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+Q_\beta(T)=\\
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(\beta(i),T).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>For <span class="math" data-tex="\(s:i\to i&#x27;\)">\(s:i\to i&#x27;\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>, the actual <span class="math" data-tex="\(C\)">\(C\)</span>-arrow is
+<span class="math" data-tex="\(\beta(s):\beta(i&#x27;)\to\beta(i)\)">\(\beta(s):\beta(i&#x27;)\to\beta(i)\)</span>; precomposition gives
+<span class="math" data-tex="\(\operatorname{Hom}(\beta(i),T)\to\operatorname{Hom}(\beta(i&#x27;),T)\)">\(\operatorname{Hom}(\beta(i),T)\to\operatorname{Hom}(\beta(i&#x27;),T)\)</span>.
+The class maps in <span class="math" data-tex="\(T\)">\(T\)</span> are postcomposition. These are the full mixed actions retained from the encoded Hom bifunctor.</p>
+<p>Precisely, <span class="math" data-tex="\(\widehat{C^{\mathrm{op}}}\)">\(\widehat{C^{\mathrm{op}}}\)</span> is the covariant functor category <span class="math" data-tex="\(\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})\)">\(\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})\)</span>. Its identity on objects, followed by passage to the opposite, is a <strong>contravariant</strong> identification
+<span class="math" data-tex="\(\xi:\widehat{C^{\mathrm{op}}}\to C^\vee\)">\(\xi:\widehat{C^{\mathrm{op}}}\to C^\vee\)</span>.
+For a transformation <span class="math" data-tex="\(t:A\to B\)">\(t:A\to B\)</span>, <span class="math" data-tex="\(\xi(t)\)">\(\xi(t)\)</span> has direction <span class="math" data-tex="\(\xi(B)\to\xi(A)\)">\(\xi(B)\to\xi(A)\)</span>. Its identity law and equation
+<span class="math" data-tex="\(\xi(tu)=\xi(u)\xi(t)\)">\(\xi(tu)=\xi(u)\xi(t)\)</span> are exactly the definition of opposite composition. Applying the identification twice restores every arrow. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf P_C(\beta)\simeq\\
+\xi\bigl(\mathsf I_{C^{\mathrm{op}}}
+(\beta^{\mathrm{op}})\bigr).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\mathsf P_C(\beta)\simeq\\
+\xi\bigl(\mathsf I_{C^{\mathrm{op}}}
+(\beta^{\mathrm{op}})\bigr).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)">\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)</span>. Its Yoneda values are
+<span class="math" data-tex="\(\operatorname{Hom}_{C^{\mathrm{op}}}(T,\beta(i))
+=\operatorname{Hom}_C(\beta(i),T)\)">\(\operatorname{Hom}_{C^{\mathrm{op}}}(T,\beta(i))
+=\operatorname{Hom}_C(\beta(i),T)\)</span>.
+Thus the underlying value functor is exactly (3.2). Reversing each coprojection gives the specified projection to <span class="math" data-tex="\(k\beta(i)\)">\(k\beta(i)\)</span>. The complete opposite-category factor proof in <em>Compatible families</em>, Section 3, converts every colimit factor and its uniqueness into the projective-limit factor. This proves (3.3) with its structural maps, not merely its object values.</p>
+<p>Covariant Yoneda evaluates maps to an original test object:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{C^\vee}
+(\mathsf P_C(\beta),kT)
+\simeq\\
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(\beta(i),T).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{C^\vee}
+(\mathsf P_C(\beta),kT)
+\simeq\\
+\operatorname{colim}_{i\in I}
+\operatorname{Hom}_C(\beta(i),T).
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>The canonical comparison sends a map from <span class="math" data-tex="\(k\beta(i)\)">\(k\beta(i)\)</span> to <span class="math" data-tex="\(kT\)">\(kT\)</span> to its composite with the projection. Under Yoneda this is its class <span class="math" data-tex="\([i,u]\)">\([i,u]\)</span>. For every <span class="math" data-tex="\(B\in C^\vee\)">\(B\in C^\vee\)</span>, the whole universal property instead gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{C^\vee}
+(B,\mathsf P_C(\beta))
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{C^\vee}(B,k\beta(i)).
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{C^\vee}
+(B,\mathsf P_C(\beta))
+\simeq\\
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{C^\vee}(B,k\beta(i)).
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>Its inverse factors the compatible incoming cone, and its forward map composes with every projection. Opposite-category reversal of (2.1) proves both inverse equations and all test-object naturality. The same reasoning applies to a general small <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C^\vee\)">\(\beta:I^{\mathrm{op}}\to C^\vee\)</span>, where the pro-lim means its actual limit and the terms use <span class="math" data-tex="\(\beta(i)\)">\(\beta(i)\)</span> itself.</p>
+<p>Quoted products are products in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>. Their underlying covariant value functors are coproducts, with the full opposite universal factor property. The empty quoted projective limit is terminal in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>, represented by its underlying everywhere-empty covariant functor. The empty quoted colimit in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span> is initial, represented by the empty presheaf.</p>
+<p>General <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span> tests need not satisfy (3.4). For the one-object identity <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(C^\vee=\mathsf{Set}_{\mathcal U}^{\mathrm{op}}\)">\(C^\vee=\mathsf{Set}_{\mathcal U}^{\mathrm{op}}\)</span>. The formal projective limit of two copies of the sole original object has underlying set <span class="math" data-tex="\(2\)">\(2\)</span>. With the test object having underlying set <span class="math" data-tex="\(2\)">\(2\)</span>, the canonical map from the coproduct of the two stage Hom sets again has size <span class="math" data-tex="\(2\to4\)">\(2\to4\)</span>, and its images are the two constant functions. This is the entire dual of the preceding counterexample, with Hom reversed.</p>
+<h2 id="4-every-presheaf-has-its-own-pieces">4. Every presheaf has its own pieces</h2>
+<p>For <span class="math" data-tex="\(A\in\widehat C\)">\(A\in\widehat C\)</span>, let <span class="math" data-tex="\(E_A\)">\(E_A\)</span> be its category of elements. An object is <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span>, with <span class="math" data-tex="\(a\in A(X)\)">\(a\in A(X)\)</span>, and an arrow
+<span class="math" data-tex="\(u:(X,a)\to(Y,b)\)">\(u:(X,a)\to(Y,b)\)</span> satisfies <span class="math" data-tex="\(A(u)b=a\)">\(A(u)b=a\)</span>. Retain the full typed identity, composition and size proofs in <em>Points</em>, Section 3. The projection <span class="math" data-tex="\(j_A:E_A\to C\)">\(j_A:E_A\to C\)</span> sends this arrow to <span class="math" data-tex="\(u\)">\(u\)</span>, and each object supplies its Yoneda transformation <span class="math" data-tex="\(h_X\to A\)">\(h_X\to A\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> The whole diagram of these representables has colimit <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>:</p>
+<span class="math math-display" data-tex="\[
+A\simeq\operatorname{colim}_{(X,a)\in E_A}h_X.
+\tag{4.1}
+\]">\[
+A\simeq\operatorname{colim}_{(X,a)\in E_A}h_X.
+\tag{4.1}
+\]</span>
+<p>The index may not be essentially small in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. This is a particular large-index colimit whose existence is proved, rather than an assertion that <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span> has every large colimit.</p>
+<p><strong>Complete canonical proof interface and size bridge.</strong> Retain the main density proof of
+<a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/sites.tex#L2476">the pinned Stacks lemma-colimit-representable</a>.
+Its complete main argument uses the category of pairs <span class="math" data-tex="\((X,a)\)">\((X,a)\)</span> and the pointwise inverse supplied by <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> with its identity arrow. Its additional covering-subfamily refinement is not needed here.</p>
+<p>Here are all the specialization and universe checks. Choose one larger universe containing the complete data of <span class="math" data-tex="\(C,E_A\)">\(C,E_A\)</span> and <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Regard <span class="math" data-tex="\(C\)">\(C\)</span> as a site with the trivial topology. Every presheaf is then a sheaf, and sheafification is the identity: the singleton identity covering imposes only its own tautological compatibility equation. The retained main proof therefore applies to the actual <span class="math" data-tex="\(E_A\)">\(E_A\)</span>-diagram of <span class="math" data-tex="\(h_X\)">\(h_X\)</span>, without filtering or replacing that category by a small <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-subcategory.</p>
+<p>Its value comparison and inverse, written in our labels, are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{}[(X,a),u:T\to X]\longmapsto A(u)a,\\
+t\longmapsto[(T,t),1_T].
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+{}[(X,a),u:T\to X]\longmapsto A(u)a,\\
+t\longmapsto[(T,t),1_T].
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The first formula respects every generator because an element arrow
+<span class="math" data-tex="\(v:(X,a)\to(Y,b)\)">\(v:(X,a)\to(Y,b)\)</span> has <span class="math" data-tex="\(A(v)b=a\)">\(A(v)b=a\)</span>, so
+<span class="math" data-tex="\(A(vu)b=A(u)a\)">\(A(vu)b=A(u)a\)</span>. The first composite sends <span class="math" data-tex="\(t\)">\(t\)</span> to itself. For the other composite, <span class="math" data-tex="\(u\)">\(u\)</span> is the element arrow
+<span class="math" data-tex="\((T,A(u)a)\to(X,a)\)">\((T,A(u)a)\to(X,a)\)</span>; its generating identification sends the identity representative to the given <span class="math" data-tex="\([(X,a),u]\)">\([(X,a),u]\)</span>. For <span class="math" data-tex="\(w:S\to T\)">\(w:S\to T\)</span>, the forward formula on the restricted class is
+<span class="math" data-tex="\(A(uw)a=A(w)A(u)a\)">\(A(uw)a=A(w)A(u)a\)</span>, proving naturality in every test object. These checks identify the canonical proof's exact inverse and presheaf cocone with our chosen maps.</p>
+<p>The resulting values are precisely the given <span class="math" data-tex="\(A(T)\)">\(A(T)\)</span>, which are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Thus the representative can be <span class="math" data-tex="\(A\)">\(A\)</span> itself. For any <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-valued target presheaf <span class="math" data-tex="\(B\)">\(B\)</span>, the canonical universal cocone factor can be taken in the larger presheaf category. The full faithfulness of universe inclusion from <em>Points</em>, Section 7, lifts that factor uniquely to a transformation <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>, and lifts each factor equation unchanged. This proves the full colimit property in the original value universe. In particular it does not require the ambient transformation set <span class="math" data-tex="\(\operatorname{Nat}(A,B)\)">\(\operatorname{Nat}(A,B)\)</span> to be small in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>.</p>
+<p>Explicitly, for a cocone <span class="math" data-tex="\(b_{(X,a)}:h_X\to B\)">\(b_{(X,a)}:h_X\to B\)</span>, its factor sends
+<span class="math" data-tex="\(t\in A(T)\)">\(t\in A(T)\)</span> to <span class="math" data-tex="\(b_{(T,t),T}(1_T)\)">\(b_{(T,t),T}(1_T)\)</span>.
+For <span class="math" data-tex="\(w:S\to T\)">\(w:S\to T\)</span>, the element arrow
+<span class="math" data-tex="\((S,A(w)t)\to(T,t)\)">\((S,A(w)t)\to(T,t)\)</span> and the cocone equation identify
+<span class="math" data-tex="\(b_{(S,A(w)t),S}(1_S)\)">\(b_{(S,A(w)t),S}(1_S)\)</span> with <span class="math" data-tex="\(b_{(T,t),S}(w)\)">\(b_{(T,t),S}(w)\)</span>.
+Naturality of the latter Yoneda transformation makes this
+<span class="math" data-tex="\(B(w)b_{(T,t),T}(1_T)\)">\(B(w)b_{(T,t),T}(1_T)\)</span>, proving the factor's naturality.
+For any <span class="math" data-tex="\(u:T\to X\)">\(u:T\to X\)</span>, the same element-arrow equation makes its value at
+<span class="math" data-tex="\(A(u)a\)">\(A(u)a\)</span> equal to <span class="math" data-tex="\(b_{(X,a),T}(u)\)">\(b_{(X,a),T}(u)\)</span>, so every cocone leg factors.
+Conversely the leg at <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span>, evaluated at <span class="math" data-tex="\(1_T\)">\(1_T\)</span>, forces the factor's value at every <span class="math" data-tex="\(t\)">\(t\)</span>; hence it is unique. Postcomposing <span class="math" data-tex="\(B\to B&#x27;\)">\(B\to B&#x27;\)</span> applies the same component to each displayed value, proving target naturality and both inverse equations for the cocone-factor bijection.</p>
+<p>If <span class="math" data-tex="\(C\)">\(C\)</span> is empty, <span class="math" data-tex="\(E_A\)">\(E_A\)</span> is empty and its presheaf category is the terminal category; its unique object is the empty-index colimit there. If <span class="math" data-tex="\(C\)">\(C\)</span> is nonempty and <span class="math" data-tex="\(A\)">\(A\)</span> is the empty presheaf, <span class="math" data-tex="\(E_A\)">\(E_A\)</span> is again empty and (4.1) is the initial empty presheaf. No element or representative is invented in these cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a second complete existing interface for a small <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>. Let <span class="math" data-tex="\(A=\mathsf I_C(D)\)">\(A=\mathsf I_C(D)\)</span> and let <span class="math" data-tex="\(d_i\in A(D(i))\)">\(d_i\in A(D(i))\)</span> be the class of <span class="math" data-tex="\(1_{D(i)}\)">\(1_{D(i)}\)</span>. Its canonical lift is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde D:I\to E_A,\\
+i\longmapsto(D(i),d_i).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\widetilde D:I\to E_A,\\
+i\longmapsto(D(i),d_i).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>It sends <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span>. The generating quotient equation says
+<span class="math" data-tex="\(A(D(s))d_{i&#x27;}=d_i\)">\(A(D(s))d_{i&#x27;}=d_i\)</span>, so that is an element arrow; identities and composites are exactly those of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Retain the entire proof of <a href="ind-objects-through-their-elements.html#1-an-element-carries-its-test-object">Ind-objects through their elements, Proposition 1.2</a>. Its statement allows every small <span class="math" data-tex="\(I\)">\(I\)</span>, without filteredness. An incoming comma at <span class="math" data-tex="\((T,t)\)">\((T,t)\)</span> is precisely the category of representatives <span class="math" data-tex="\(u:T\to D(i)\)">\(u:T\to D(i)\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span>. The existing proof obtains nonemptiness from the quotient representatives and connectedness from every generated finite zigzag, all intermediate representatives still having class <span class="math" data-tex="\(t\)">\(t\)</span>. Therefore <span class="math" data-tex="\(\widetilde D\)">\(\widetilde D\)</span> is cofinal. Its empty-index argument makes the same assertion vacuous when <span class="math" data-tex="\(E_A\)">\(E_A\)</span> is empty.</p>
+<p>This proof does not require <span class="math" data-tex="\(E_A\)">\(E_A\)</span> to be small. The full arbitrary-ambient cocone theorem in <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index, Section 2</a> applies to this lift with its actual large target index. Nor does it make <span class="math" data-tex="\(A\)">\(A\)</span> an ind-object: that additionally requires a small filtered presentation.</p>
+<h2 id="5-a-represented-formal-colimit-is-absolute">5. A represented formal colimit is absolute</h2>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span> be small, and suppose a specified isomorphism
+<span class="math" data-tex="\(\rho:\mathsf I_C(D)\simeq h_X\)">\(\rho:\mathsf I_C(D)\simeq h_X\)</span> exists. Transport the coprojections through <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; full faithfulness of Yoneda gives their <span class="math" data-tex="\(C\)">\(C\)</span>-cocone <span class="math" data-tex="\(c_i:D(i)\to X\)">\(c_i:D(i)\to X\)</span>. For every functor <span class="math" data-tex="\(F:C\to C&#x27;\)">\(F:C\to C&#x27;\)</span> between locally small categories, the cocone <span class="math" data-tex="\(F(c_i)\)">\(F(c_i)\)</span> makes <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> a colimit of <span class="math" data-tex="\(FD\)">\(FD\)</span>.</p>
+<p><strong>Exact complete owned proof interface.</strong> Retain <a href="ind-objects-through-their-elements.html#3-extend-a-functor-by-its-values-on-pieces">Ind-objects through their elements, Proposition 3.2</a> in full. It allows an arbitrary small diagram and an arbitrary functor <span class="math" data-tex="\(F\)">\(F\)</span>, with no filteredness or general existence of colimits in <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>. Its test presheaf is
+<span class="math" data-tex="\(H_Y(T)=\operatorname{Hom}_{C&#x27;}(F(T),Y)\)">\(H_Y(T)=\operatorname{Hom}_{C&#x27;}(F(T),Y)\)</span>.</p>
+<p>The target Hom sets need not be small in the original <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>.
+Choose one larger universe containing the entire category data of <span class="math" data-tex="\(C,C&#x27;\)">\(C,C&#x27;\)</span>, the diagram and <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, using the enlargement axiom in <em>Universes</em>, Section 1.
+The independently proved preservation theorem in Section 6 below carries the specified <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small formal colimit and its representation to this larger value universe.
+Now <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span> is a presheaf in that universe, so the retained proof applies to it there.
+With this size change understood, its bijections are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{C&#x27;}(F(X),Y)
+\\\simeq\operatorname{Nat}(h_X,H_Y)\\
+\simeq\operatorname{Nat}(\mathsf I_C(D),H_Y)\\
+\simeq
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{C&#x27;}(F(D(i)),Y).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{C&#x27;}(F(X),Y)
+\\\simeq\operatorname{Nat}(h_X,H_Y)\\
+\simeq\operatorname{Nat}(\mathsf I_C(D),H_Y)\\
+\simeq
+\lim_{i\in I^{\mathrm{op}}}
+\operatorname{Hom}_{C&#x27;}(F(D(i)),Y).
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>The existing proof explicitly identifies this map with composition by every <span class="math" data-tex="\(F(c_i)\)">\(F(c_i)\)</span>, naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>; its bijectivity is the full factor and uniqueness property. For arbitrary Hom labels use the complete encoded Hom and Yoneda proofs in <em>Points</em>, Sections 1–2: <span class="math" data-tex="\(H_Y(v)\)">\(H_Y(v)\)</span> decodes a map, precomposes by <span class="math" data-tex="\(F(v)\)">\(F(v)\)</span>, then encodes. Cancellation of the codes gives every contravariant functor equation and target-postcomposition naturality. Thus these same complete bijections apply to locally small categories with arbitrary labels. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Taking <span class="math" data-tex="\(F=1_C\)">\(F=1_C\)</span> shows that <span class="math" data-tex="\(X\)">\(X\)</span> is the ordinary colimit too. The converse is false. In the one-object identity <span class="math" data-tex="\(C\)">\(C\)</span>, the discrete two-copy diagram has the ordinary colimit equal to its sole object: every ordinary cocone and every factor is unique. Its formal colimit is the two-element presheaf, while <span class="math" data-tex="\(h_X=1\)">\(h_X=1\)</span>. The functor <span class="math" data-tex="\(F:C\to\mathsf{Set}\)">\(F:C\to\mathsf{Set}\)</span> selecting <span class="math" data-tex="\(2\)">\(2\)</span> sends both ordinary coprojections to <span class="math" data-tex="\(1_2\)">\(1_2\)</span>. They are not a coproduct cocone in sets: the cocone with first leg <span class="math" data-tex="\(1_2\)">\(1_2\)</span> and second leg the constant-zero function has no common factor through those two identities.</p>
+<p>For an empty <span class="math" data-tex="\(I\)">\(I\)</span>, the formal colimit is the empty presheaf. It cannot be represented by any <span class="math" data-tex="\(X\in C\)">\(X\in C\)</span>, since <span class="math" data-tex="\(h_X(X)\)">\(h_X(X)\)</span> contains <span class="math" data-tex="\(1_X\)">\(1_X\)</span>. Thus the representation premise of Theorem 5.1 is impossible in that case; the theorem does not assert that every functor preserves initial objects.</p>
+<h2 id="6-change-the-universe-with-the-values-fixed">6. Change the universe with the values fixed</h2>
+<p>Let <span class="math" data-tex="\(\mathcal U\subseteq\mathcal V\)">\(\mathcal U\subseteq\mathcal V\)</span> and keep <span class="math" data-tex="\(C\)">\(C\)</span> fixed and locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. The inclusion
+<span class="math" data-tex="\(j:\widehat C_{\mathcal U}\to\widehat C_{\mathcal V}\)">\(j:\widehat C_{\mathcal U}\to\widehat C_{\mathcal V}\)</span> is fully faithful, by the complete component and postcomposition proof in <em>Points</em>, Section 7. This remains true when the common transformation sets are larger than <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>.</p>
+<p><strong>Proposition 6.1.</strong> The inclusion <span class="math" data-tex="\(j\)">\(j\)</span> preserves every limit and colimit indexed by a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small category, with their specified structural maps.</p>
+<p><strong>Proof.</strong> Use the complete arbitrary-base pointwise theorem in <em>Colimits as connected components</em>, Section 4. At <span class="math" data-tex="\(T\)">\(T\)</span>, a small colimit is the quotient of the small tagged union by all diagram-arrow identifications. Retain its chosen <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-encoding and regard it as a <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-set. The actual relation, classes and coprojections are unchanged. The entire quotient factor proof applies to every target set, including a <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-set: each compatible family descends to the same unique class map. The full pointwise presheaf naturality proof then supplies the unique transformation to any <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-valued target presheaf.</p>
+<p>Likewise a small limit is the set of compatible tuples in the small product of its values. The same tuples and projections form a <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-set. Every incoming cone, even from a <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-set, has the same unique tuple-valued factor. The full pointwise functor-category proof verifies all naturality equations, so these are the chosen presheaf limits in the larger universe too. Both comparisons respect every original projection or coprojection. This proves preservation with the universal maps, including empty diagrams, without requiring a small object set for <span class="math" data-tex="\(C\)">\(C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This assertion retains the <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-bound on the index. For the one-object identity <span class="math" data-tex="\(C\)">\(C\)</span>, the discrete family of singleton presheaves indexed by the ambient set <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> is small in a universe containing <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Its larger-universe coproduct has value <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, which is not <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small by the complete Cantor proof in <a href="universes-and-small-categories.html#1-smallness-is-invariant-under-relabelling">Universes, Lemma 1.1</a>. It therefore cannot be the image of a smaller-valued presheaf. The exact Set quotient-size criterion in <em>Colimits as connected components</em>, Section 6, also proves that no such coproduct exists in the smaller presheaf category.</p>
+<h2 id="7-four-graded-exercises-with-full-solutions">7. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-the-four-maps">Exercise 1 — the four maps</h3>
+<p>In the one-object identity category, take the discrete two-copy diagram of the original object. For the test presheaf <span class="math" data-tex="\(2\)">\(2\)</span>, identify every map to its formal colimit and identify the image of the stagewise comparison. Repeat for the formal projective limit in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>.</p>
+<p><strong>Solution.</strong> The presheaf category is sets, its original object is <span class="math" data-tex="\(1\)">\(1\)</span>, and the formal colimit is <span class="math" data-tex="\(1\sqcup1=2\)">\(1\sqcup1=2\)</span>. A function <span class="math" data-tex="\(2\to2\)">\(2\to2\)</span> is given by its ordered pair of values, so the four functions have pairs
+<span class="math" data-tex="\((0,0),(0,1),(1,0),(1,1)\)">\((0,0),(0,1),(1,0),(1,1)\)</span>. Each stage has one function <span class="math" data-tex="\(2\to1\)">\(2\to1\)</span>. Postcomposing with its coprojection gives respectively <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> and <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. The identity and transposition, with pairs <span class="math" data-tex="\((0,1),(1,0)\)">\((0,1),(1,0)\)</span>, are missing.</p>
+<p>In <span class="math" data-tex="\(C^\vee=\mathsf{Set}^{\mathrm{op}}\)">\(C^\vee=\mathsf{Set}^{\mathrm{op}}\)</span>, the formal projective limit of the two original values has underlying set <span class="math" data-tex="\(2\)">\(2\)</span>. Its maps to the test object with underlying set <span class="math" data-tex="\(2\)">\(2\)</span> are the same four functions from the test's underlying set to the limit's underlying set. Composing a stage map with a projection reverses to postcomposing <span class="math" data-tex="\(2\to1\)">\(2\to1\)</span> with the corresponding Set coprojection. Hence the two constant functions are again the entire image. This checks the dual Hom direction as well as the cardinalities.</p>
+<h3 id="exercise-2-two-elements-sharing-one-restriction">Exercise 2 — two elements sharing one restriction</h3>
+<p>Let <span class="math" data-tex="\(C=(x\to y)\)">\(C=(x\to y)\)</span>, with arrow <span class="math" data-tex="\(a:x\to y\)">\(a:x\to y\)</span>. Let <span class="math" data-tex="\(A(y)=\{r,s\}\)">\(A(y)=\{r,s\}\)</span>, <span class="math" data-tex="\(A(x)=\{u\}\)">\(A(x)=\{u\}\)</span>, with both elements restricting to <span class="math" data-tex="\(u\)">\(u\)</span>. Describe <span class="math" data-tex="\(E_A\)">\(E_A\)</span>, compute the entire density diagram pointwise, and give the factor of every presheaf cocone to <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Solution.</strong> The objects of <span class="math" data-tex="\(E_A\)">\(E_A\)</span> are <span class="math" data-tex="\((x,u),(y,r),(y,s)\)">\((x,u),(y,r),(y,s)\)</span>. In addition to their identities, its arrows are the two copies of <span class="math" data-tex="\(a\)">\(a\)</span> from <span class="math" data-tex="\((x,u)\)">\((x,u)\)</span> to each of the other objects. There is no arrow between the latter two: the only <span class="math" data-tex="\(C\)">\(C\)</span>-endomorphism of <span class="math" data-tex="\(y\)">\(y\)</span> is its identity, and it cannot carry one distinct specified element to the other.</p>
+<p>The density diagram is <span class="math" data-tex="\(h_x\to h_y\)">\(h_x\to h_y\)</span> along each branch. At <span class="math" data-tex="\(x\)">\(x\)</span> it is <span class="math" data-tex="\(1\to1\)">\(1\to1\)</span> and <span class="math" data-tex="\(1\to1\)">\(1\to1\)</span>, so its generated quotient has one class. At <span class="math" data-tex="\(y\)">\(y\)</span> it is <span class="math" data-tex="\(\varnothing\to1\)">\(\varnothing\to1\)</span> and <span class="math" data-tex="\(\varnothing\to1\)">\(\varnothing\to1\)</span>, so its quotient has two classes. The restriction from <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> sends both to the single class. These are exactly <span class="math" data-tex="\(A\)">\(A\)</span> and its restriction.</p>
+<p>By full Yoneda, a cocone to <span class="math" data-tex="\(B\)">\(B\)</span> is a choice <span class="math" data-tex="\(b,c\in B(y)\)">\(b,c\in B(y)\)</span> and <span class="math" data-tex="\(d\in B(x)\)">\(d\in B(x)\)</span> with <span class="math" data-tex="\(B(a)b=d=B(a)c\)">\(B(a)b=d=B(a)c\)</span>. Its factor <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> sends <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(d\)">\(d\)</span>. The stated equalities are precisely its naturality at <span class="math" data-tex="\(a\)">\(a\)</span>. All components are forced, so this factor is unique; postcomposing <span class="math" data-tex="\(B\to B&#x27;\)">\(B\to B&#x27;\)</span> applies its component functions to <span class="math" data-tex="\(b,c,d\)">\(b,c,d\)</span>, proving target naturality. This also handles empty values: if such choices do not exist, neither a cocone nor a factor exists.</p>
+<h3 id="exercise-3-one-target-stage-for-each-source-piece">Exercise 3 — one target stage for each source piece</h3>
+<p>Again use the one-object identity <span class="math" data-tex="\(C\)">\(C\)</span>. Let <span class="math" data-tex="\(D\)">\(D\)</span> have discrete two-object index and <span class="math" data-tex="\(E\)">\(E\)</span> discrete three-object index, all values equal to the original object. Compute (2.2), compare it with first taking the limit over the two source indices, and include the empty-index boundaries.</p>
+<p><strong>Solution.</strong> The two formal colimits are the sets <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>, so their transformation set has <span class="math" data-tex="\(3^2=9\)">\(3^2=9\)</span> elements. Each original Hom set is a singleton. Taking its colimit over the three target indices gives <span class="math" data-tex="\(3\)">\(3\)</span>, and taking the limit over the discrete two source indices gives <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span>, again nine elements. The bijection sends a function to its separate values at the two source elements.</p>
+<p>If one first takes the limit over the two source indices at each fixed target index, the result is a singleton at each of the three target indices. Its colimit is <span class="math" data-tex="\(3\)">\(3\)</span>. Its canonical map into <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> sends <span class="math" data-tex="\(j\)">\(j\)</span> to <span class="math" data-tex="\((j,j)\)">\((j,j)\)</span>, missing all six pairs with different coordinates. Requiring one uniform target stage therefore changes the answer.</p>
+<p>If the source index is empty, its formal colimit is the empty set, and maps from it form a singleton. The right side is the empty compatible-family product, also a singleton. If the target index is empty and the source has two objects, there are no maps <span class="math" data-tex="\(2\to\varnothing\)">\(2\to\varnothing\)</span>, and the right side is the product of two empty sets. If both indices are empty, there is one empty function, agreeing with the empty product.</p>
+<h3 id="exercise-4-split-an-idempotent-before-applying-any-functor">Exercise 4 — split an idempotent before applying any functor</h3>
+<p>Suppose <span class="math" data-tex="\(e:X\to X\)">\(e:X\to X\)</span> satisfies <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, and is split by maps
+<span class="math" data-tex="\(r:X\to R\)">\(r:X\to R\)</span>, <span class="math" data-tex="\(i:R\to X\)">\(i:R\to X\)</span>, with <span class="math" data-tex="\(ri=1_R\)">\(ri=1_R\)</span> and <span class="math" data-tex="\(ir=e\)">\(ir=e\)</span>. Use the one-object index category whose endomorphisms are <span class="math" data-tex="\(1,e\)">\(1,e\)</span>. Prove its <span class="math" data-tex="\(C\)">\(C\)</span>-diagram has formal colimit <span class="math" data-tex="\(h_R\)">\(h_R\)</span>, and verify directly that every functor preserves the resulting colimit.</p>
+<p><strong>Solution.</strong> At a test <span class="math" data-tex="\(T\)">\(T\)</span>, the formal colimit is the quotient of
+<span class="math" data-tex="\(\operatorname{Hom}_C(T,X)\)">\(\operatorname{Hom}_C(T,X)\)</span> by the generated identifications <span class="math" data-tex="\(f\sim ef\)">\(f\sim ef\)</span>. Send <span class="math" data-tex="\([f]\)">\([f]\)</span> to <span class="math" data-tex="\(rf:T\to R\)">\(rf:T\to R\)</span>. This respects every generator because <span class="math" data-tex="\(re=rir=r\)">\(re=rir=r\)</span>. Its inverse sends <span class="math" data-tex="\(g:T\to R\)">\(g:T\to R\)</span> to <span class="math" data-tex="\([ig]\)">\([ig]\)</span>. The first composite is <span class="math" data-tex="\(rig=g\)">\(rig=g\)</span>; the second is <span class="math" data-tex="\([irf]=[ef]=[f]\)">\([irf]=[ef]=[f]\)</span>. For <span class="math" data-tex="\(v:S\to T\)">\(v:S\to T\)</span>, both routes send <span class="math" data-tex="\([f]\)">\([f]\)</span> to <span class="math" data-tex="\(rfv\)">\(rfv\)</span>, so the bijection is natural. It identifies the formal coprojection with <span class="math" data-tex="\(h_r:h_X\to h_R\)">\(h_r:h_X\to h_R\)</span>, hence supplies the specified formal representation.</p>
+<p>For any functor <span class="math" data-tex="\(F\)">\(F\)</span>, write <span class="math" data-tex="\(E=F(e)\)">\(E=F(e)\)</span>, <span class="math" data-tex="\(P=F(i)\)">\(P=F(i)\)</span>, <span class="math" data-tex="\(Q=F(r)\)">\(Q=F(r)\)</span>.
+Then <span class="math" data-tex="\(QP=1\)">\(QP=1\)</span> and <span class="math" data-tex="\(PQ=E\)">\(PQ=E\)</span>. A cocone on the one-object idempotent diagram is exactly <span class="math" data-tex="\(b:F(X)\to Y\)">\(b:F(X)\to Y\)</span> with <span class="math" data-tex="\(bE=b\)">\(bE=b\)</span>. Its factor through <span class="math" data-tex="\(Q\)">\(Q\)</span> is <span class="math" data-tex="\(bP:F(R)\to Y\)">\(bP:F(R)\to Y\)</span>, since <span class="math" data-tex="\(bPQ=bE=b\)">\(bPQ=bE=b\)</span>. If <span class="math" data-tex="\(zQ=b\)">\(zQ=b\)</span>, then <span class="math" data-tex="\(z=zQP=bP\)">\(z=zQP=bP\)</span>, proving uniqueness. These factors are natural under postcomposition in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Thus <span class="math" data-tex="\(F(R)\)">\(F(R)\)</span>, with <span class="math" data-tex="\(F(r)\)">\(F(r)\)</span>, is the actual colimit, without any hypothesis that <span class="math" data-tex="\(F\)">\(F\)</span> preserves other colimits.</p>
+<h2 id="8-references-and-retained-proof-interfaces">8. References and retained proof interfaces</h2>
+<ul>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.7, for ind-objects and their colimits.</li>
+<li>The Stacks Project Authors, <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/sites.tex#L2476">pinned lemma-colimit-representable, main density proof</a>, is the complete canonical proof core retained for Theorem 4.1. Its proof remains under GFDL 1.2 or later. No canonical text is reproduced; the trivial-topology, arbitrary-index and original-value-universe specialization is checked above.</li>
+<li><a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, full Proposition 1.2 and Proposition 3.2, supplies the arbitrary small-diagram cofinal lift and absolute represented-colimit proof. Their full nonfiltered scope is retained.</li>
+<li><a href="points-fibres-and-universal-representations.html">Points and representations</a>, Sections 1–3 and 7–8, supplies encoded Hom, both complete Yoneda bijections, elements, full universe inclusion and the one-object identity base. <a href="colimits-as-connected-components.html">Colimits as connected components</a>, Sections 1, 4 and 6, supplies all quotient factors, arbitrary-base pointwise presheaf constructions and the exact universe-size criterion.</li>
+<li><a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families and universal cones</a>, Sections 2–4, supplies complete universal structural maps, natural factor bijections and opposite-category reversal. <a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index without changing its universal maps</a> supplies the complete arbitrary-ambient cofinal cocone theorem.</li>
+</ul>
+</main></body></html>

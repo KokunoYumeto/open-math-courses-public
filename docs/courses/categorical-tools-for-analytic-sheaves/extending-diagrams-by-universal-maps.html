@@ -1,0 +1,426 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Extending diagrams by universal maps</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="extending-diagrams-by-universal-maps">Extending diagrams by universal maps</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0.</em></p>
+<p>Restricting a diagram forgets values outside the selected indices. Extending it requires a rule for those missing values and the arrows that connect them. There are two universal rules. One assembles all maps arriving at an index by a colimit; the other matches all maps leaving it by a limit. The comparison with restriction specifies what “universal” means and makes the extension coherent on every arrow.</p>
+<p>Compose from right to left. All categories have sets of objects and arrows in ambient set theory. Choose sufficiently large ambient universes and assume ambient choice, as in <a href="points-fibres-and-universal-representations.html#1-size-and-the-two-directions-of-points">Points, fibres and universal representations, Section 1</a>. A working universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> fixes the meaning of “small.” Functor and transformation collections may require a larger universe <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>; this does not turn a hypothesis about <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small colimits into one about all <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>-small colimits.</p>
+<p>Keep the complete precomposition and component-inverse proofs in <a href="natural-transformations-and-composition-of-functors.html#1-maps-between-diagrams-form-a-category">Natural transformations, Sections 1–2</a>, the complete adjunction proofs in <a href="passing-maps-across-an-adjunction.html#1-a-best-arrow-to-a-target">Passing maps across an adjunction, Sections 1–3</a>, and the full cone/cocone and opposite-category proofs in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families, Sections 2–4</a>. The constructions below use actual universal families, including empty ones.</p>
+<h2 id="1-restriction-and-the-two-universal-extensions">1. Restriction and the two universal extensions</h2>
+<p>Fix <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span>. Write <span class="math" data-tex="\(\mathcal A=\operatorname{Fun}(I,C)\)">\(\mathcal A=\operatorname{Fun}(I,C)\)</span>, <span class="math" data-tex="\(\mathcal B=\operatorname{Fun}(J,C)\)">\(\mathcal B=\operatorname{Fun}(J,C)\)</span>, and <span class="math" data-tex="\(\operatorname{Nat}_I,\operatorname{Nat}_J\)">\(\operatorname{Nat}_I,\operatorname{Nat}_J\)</span> for their Hom sets. The restriction functor is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r=\phi^*:\mathcal A\to\mathcal B,\\
+rD=D\phi,\qquad
+(r v)_j=v_{\phi(j)}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+r=\phi^*:\mathcal A\to\mathcal B,\\
+rD=D\phi,\qquad
+(r v)_j=v_{\phi(j)}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The full retained precomposition proof verifies naturality of these components and preservation of identities and vertical composition. Thus the operation restricts both diagrams and maps between them.</p>
+<p>A <strong>left Kan extension functor</strong> <span class="math" data-tex="\(L=\operatorname{Lan}_\phi\)">\(L=\operatorname{Lan}_\phi\)</span> is a left adjoint of <span class="math" data-tex="\(r\)">\(r\)</span>. A <strong>right Kan extension functor</strong> <span class="math" data-tex="\(R=\operatorname{Ran}_\phi\)">\(R=\operatorname{Ran}_\phi\)</span> is a right adjoint of <span class="math" data-tex="\(r\)">\(r\)</span>. They have bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}_I(L\beta,D)
+\simeq\operatorname{Nat}_J(\beta,rD),\\
+\operatorname{Nat}_I(D,R\beta)
+\simeq\operatorname{Nat}_J(rD,\beta),
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}_I(L\beta,D)
+\simeq\operatorname{Nat}_J(\beta,rD),\\
+\operatorname{Nat}_I(D,R\beta)
+\simeq\operatorname{Nat}_J(rD,\beta),
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>natural in both <span class="math" data-tex="\(\beta\in\mathcal B\)">\(\beta\in\mathcal B\)</span> and <span class="math" data-tex="\(D\in\mathcal A\)">\(D\in\mathcal A\)</span>. An arbitrary set of objectwise bijections does not define an adjunction without this naturality.</p>
+<p>Let <span class="math" data-tex="\(\eta:1_{\mathcal B}\to rL\)">\(\eta:1_{\mathcal B}\to rL\)</span> and <span class="math" data-tex="\(\zeta:Lr\to1_{\mathcal A}\)">\(\zeta:Lr\to1_{\mathcal A}\)</span> be the left unit and counit; let <span class="math" data-tex="\(\nu:1_{\mathcal A}\to Rr\)">\(\nu:1_{\mathcal A}\to Rr\)</span> and <span class="math" data-tex="\(\varepsilon:rR\to1_{\mathcal B}\)">\(\varepsilon:rR\to1_{\mathcal B}\)</span> be the right unit and counit. The two transpositions in (1.2), in the displayed left-to-right direction, are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+h&amp;\longmapsto(rh)\eta_\beta,\\
+v&amp;\longmapsto\varepsilon_\beta(rv).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+h&amp;\longmapsto(rh)\eta_\beta,\\
+v&amp;\longmapsto\varepsilon_\beta(rv).
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>Their inverses send <span class="math" data-tex="\(u:\beta\to rD\)">\(u:\beta\to rD\)</span> to <span class="math" data-tex="\(\zeta_D L(u)\)">\(\zeta_D L(u)\)</span>, and <span class="math" data-tex="\(w:rD\to\beta\)">\(w:rD\to\beta\)</span> to <span class="math" data-tex="\(R(w)\nu_D\)">\(R(w)\nu_D\)</span>. These are the exact general adjunction formulas of the retained proof; they include naturality of all four transformations and the triangle equations</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\zeta_{L\beta}L(\eta_\beta)&amp;=1_{L\beta},\\
+r(\zeta_D)\eta_{rD}&amp;=1_{rD},\\
+R(\varepsilon_\beta)\nu_{R\beta}&amp;=1_{R\beta},\\
+\varepsilon_{rD}r(\nu_D)&amp;=1_{rD}.
+\end{aligned}
+\tag{1.4}
+\]">\[
+\begin{aligned}
+\zeta_{L\beta}L(\eta_\beta)&amp;=1_{L\beta},\\
+r(\zeta_D)\eta_{rD}&amp;=1_{rD},\\
+R(\varepsilon_\beta)\nu_{R\beta}&amp;=1_{R\beta},\\
+\varepsilon_{rD}r(\nu_D)&amp;=1_{rD}.
+\end{aligned}
+\tag{1.4}
+\]</span>
+<p>In Sections 3–4 we construct the first and last of these four universal transformations directly. For those pointwise constructions, <span class="math" data-tex="\(\zeta_D\)">\(\zeta_D\)</span> is the unique map induced at <span class="math" data-tex="\(i\)">\(i\)</span> by the family <span class="math" data-tex="\(D(t):D(\phi j)\to D(i)\)">\(D(t):D(\phi j)\to D(i)\)</span>, where <span class="math" data-tex="\(t:\phi j\to i\)">\(t:\phi j\to i\)</span>. The component <span class="math" data-tex="\(\nu_{D,i}\)">\(\nu_{D,i}\)</span> has projection <span class="math" data-tex="\(D(t):D(i)\to D(\phi j)\)">\(D(t):D(i)\to D(\phi j)\)</span>, where <span class="math" data-tex="\(t:i\to\phi j\)">\(t:i\to\phi j\)</span>. Thus both other transformations have specified maps as well.</p>
+<h2 id="2-one-diagram-or-an-entire-adjoint">2. One diagram or an entire adjoint</h2>
+<p>An individual diagram <span class="math" data-tex="\(\beta:J\to C\)">\(\beta:J\to C\)</span> can have an extension even when <span class="math" data-tex="\(r\)">\(r\)</span> has no adjoint on every diagram. A left extension is an object <span class="math" data-tex="\(L\beta\in\mathcal A\)">\(L\beta\in\mathcal A\)</span> representing the <strong>covariant</strong> functor <span class="math" data-tex="\(D\mapsto\operatorname{Nat}_J(\beta,rD)\)">\(D\mapsto\operatorname{Nat}_J(\beta,rD)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}_I(L\beta,D)
+\simeq\operatorname{Nat}_J(\beta,rD).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}_I(L\beta,D)
+\simeq\operatorname{Nat}_J(\beta,rD).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The specified correspondence is natural in <span class="math" data-tex="\(D\)">\(D\)</span>. Its universal element is <span class="math" data-tex="\(\eta_\beta:\beta\to rL\beta\)">\(\eta_\beta:\beta\to rL\beta\)</span>, and the forward map is <span class="math" data-tex="\(h\mapsto(rh)\eta_\beta\)">\(h\mapsto(rh)\eta_\beta\)</span>. In this representation, the arrows go <strong>out of</strong> the representing object. A right extension represents the contravariant functor <span class="math" data-tex="\(D\mapsto\operatorname{Nat}_J(rD,\beta)\)">\(D\mapsto\operatorname{Nat}_J(rD,\beta)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}_I(D,R\beta)
+\simeq\operatorname{Nat}_J(rD,\beta).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}_I(D,R\beta)
+\simeq\operatorname{Nat}_J(rD,\beta).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Its universal element is <span class="math" data-tex="\(\varepsilon_\beta:rR\beta\to\beta\)">\(\varepsilon_\beta:rR\beta\to\beta\)</span>, and the forward map is <span class="math" data-tex="\(v\mapsto\varepsilon_\beta(rv)\)">\(v\mapsto\varepsilon_\beta(rv)\)</span>. Here the arrows go <strong>into</strong> the representative.</p>
+<p>These characterizations use the complete covariant and contravariant universal-element proofs in <a href="solution-sets-and-universal-representations.html#1-universal-elements-and-variance">Solution sets and universal representations, Section 1</a>. They also give unique isomorphisms between two extensions commuting with their specified universal transformations. An abstract isomorphism of their underlying diagrams does not specify that comparison.</p>
+<p>If (2.2) holds for every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, retain the full represented-Hom-family construction in <a href="points-fibres-and-universal-representations.html#4-representatives-in-a-diagram">Points and representations, Section 4</a>, applied to <span class="math" data-tex="\(r:\mathcal A\to\mathcal B\)">\(r:\mathcal A\to\mathcal B\)</span>. It constructs <span class="math" data-tex="\(R\)">\(R\)</span> on arrows from the chosen representations, proves both functor laws and both-variable naturality, and proves compatible uniqueness. Apply that complete result to <span class="math" data-tex="\(r^{\mathrm{op}}\)">\(r^{\mathrm{op}}\)</span> for (2.1): it constructs <span class="math" data-tex="\(L^{\mathrm{op}}\)">\(L^{\mathrm{op}}\)</span>, hence <span class="math" data-tex="\(L\)">\(L\)</span>. This includes empty functor categories and uses choices indexed by ambient sets. Hom encodings and representation comparisons after universe enlargement are exactly those in the retained Sections 1 and 7 of that lesson. The object category <span class="math" data-tex="\(C\)">\(C\)</span> remains fixed.</p>
+<p>A Kan extension defined by (2.1) or (2.2) is a universal object in a functor category. The next formulas are sufficient constructions using specified pointwise (co)limits; their existence is a hypothesis, rather than an assertion that every universal extension must have these pointwise descriptions without further conditions.</p>
+<h2 id="3-build-the-left-extension">3. Build the left extension</h2>
+<p>For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, let <span class="math" data-tex="\(K_i=(\phi\downarrow i)\)">\(K_i=(\phi\downarrow i)\)</span>. An object is <span class="math" data-tex="\((j,t:\phi(j)\to i)\)">\((j,t:\phi(j)\to i)\)</span>; an arrow to <span class="math" data-tex="\((j&#x27;,t&#x27;)\)">\((j&#x27;,t&#x27;)\)</span> is <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span> with <span class="math" data-tex="\(t&#x27;\phi(s)=t\)">\(t&#x27;\phi(s)=t\)</span>. The complete comma-category proof in <a href="zero-maps-components-and-subobjects.html#1-a-category-whose-objects-carry-an-arrow">Zero maps, Section 1</a> gives its category laws and the forgetful functor <span class="math" data-tex="\(K_i\to J\)">\(K_i\to J\)</span>. Compose it with <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to get the diagram with value <span class="math" data-tex="\(\beta(j)\)">\(\beta(j)\)</span> and arrow <span class="math" data-tex="\(\beta(s)\)">\(\beta(s)\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> If this diagram has a colimit in <span class="math" data-tex="\(C\)">\(C\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has a left Kan extension. No smallness of <span class="math" data-tex="\(I\)">\(I\)</span> or <span class="math" data-tex="\(J\)">\(J\)</span> is needed for this conditional statement.</p>
+<p>Choose its universal cocones and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(L\beta)(i)=\operatorname{colim}_{K_i}\beta(j),\\
+\lambda^i_{j,t}:\beta(j)\to(L\beta)(i).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+(L\beta)(i)=\operatorname{colim}_{K_i}\beta(j),\\
+\lambda^i_{j,t}:\beta(j)\to(L\beta)(i).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>The cocone equation is <span class="math" data-tex="\(\lambda^i_{j&#x27;,t&#x27;}\beta(s)=\lambda^i_{j,t}\)">\(\lambda^i_{j&#x27;,t&#x27;}\beta(s)=\lambda^i_{j,t}\)</span> whenever <span class="math" data-tex="\(t&#x27;\phi(s)=t\)">\(t&#x27;\phi(s)=t\)</span>.</p>
+<p>For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, postcomposition sends <span class="math" data-tex="\(K_i\)">\(K_i\)</span> to <span class="math" data-tex="\(K_{i&#x27;}\)">\(K_{i&#x27;}\)</span> by <span class="math" data-tex="\((j,t)\mapsto(j,at)\)">\((j,t)\mapsto(j,at)\)</span>, and keeps its arrows <span class="math" data-tex="\(s\)">\(s\)</span>. It preserves the triangle equation, identities and compositions. The maps <span class="math" data-tex="\(\lambda^{i&#x27;}_{j,at}\)">\(\lambda^{i&#x27;}_{j,at}\)</span> form a cocone on <span class="math" data-tex="\(K_i\)">\(K_i\)</span>, so they induce the unique arrow</p>
+<span class="math math-display" data-tex="\[
+(L\beta)(a)\lambda^i_{j,t}
+=\lambda^{i&#x27;}_{j,at}.
+\tag{3.2}
+\]">\[
+(L\beta)(a)\lambda^i_{j,t}
+=\lambda^{i&#x27;}_{j,at}.
+\tag{3.2}
+\]</span>
+<p>For <span class="math" data-tex="\(a=1_i\)">\(a=1_i\)</span>, the identity has these composites. For <span class="math" data-tex="\(a&#x27;:i&#x27;\to i&#x27;&#x27;\)">\(a&#x27;:i&#x27;\to i&#x27;&#x27;\)</span>, the composite <span class="math" data-tex="\((L\beta)(a&#x27;)(L\beta)(a)\)">\((L\beta)(a&#x27;)(L\beta)(a)\)</span> has composite <span class="math" data-tex="\(\lambda^{i&#x27;&#x27;}_{j,a&#x27;at}\)">\(\lambda^{i&#x27;&#x27;}_{j,a&#x27;at}\)</span> with each <span class="math" data-tex="\(\lambda^i_{j,t}\)">\(\lambda^i_{j,t}\)</span>, so it is <span class="math" data-tex="\((L\beta)(a&#x27;a)\)">\((L\beta)(a&#x27;a)\)</span>. Colimit uniqueness proves both laws and makes <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span> a functor.</p>
+<p>Define <span class="math" data-tex="\(\eta_{\beta,j}=\lambda^{\phi j}_{j,1_{\phi j}}\)">\(\eta_{\beta,j}=\lambda^{\phi j}_{j,1_{\phi j}}\)</span>. For <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span>, there is an arrow <span class="math" data-tex="\(s:(j,\phi s)\to(j&#x27;,1_{\phi j&#x27;})\)">\(s:(j,\phi s)\to(j&#x27;,1_{\phi j&#x27;})\)</span> in <span class="math" data-tex="\(K_{\phi j&#x27;}\)">\(K_{\phi j&#x27;}\)</span>. Its cocone equation and (3.2) give</p>
+<span class="math math-display" data-tex="\[
+(L\beta)(\phi s)\eta_{\beta,j}
+=\eta_{\beta,j&#x27;}\beta(s).
+\tag{3.3}
+\]">\[
+(L\beta)(\phi s)\eta_{\beta,j}
+=\eta_{\beta,j&#x27;}\beta(s).
+\tag{3.3}
+\]</span>
+<p>Hence <span class="math" data-tex="\(\eta_\beta:\beta\to rL\beta\)">\(\eta_\beta:\beta\to rL\beta\)</span> is natural.</p>
+<p>For a transformation <span class="math" data-tex="\(z:\beta\to\beta&#x27;\)">\(z:\beta\to\beta&#x27;\)</span> between diagrams with these pointwise colimits, the family <span class="math" data-tex="\(\lambda&#x27;{}^i_{j,t}z_j\)">\(\lambda&#x27;{}^i_{j,t}z_j\)</span> is a cocone: naturality of <span class="math" data-tex="\(z\)">\(z\)</span> and the primed cocone equation verify every comma arrow. It gives the unique <span class="math" data-tex="\((Lz)_i\)">\((Lz)_i\)</span> with
+<span class="math" data-tex="\((Lz)_i\lambda^i_{j,t}=\lambda&#x27;{}^i_{j,t}z_j\)">\((Lz)_i\lambda^i_{j,t}=\lambda&#x27;{}^i_{j,t}z_j\)</span>. Testing these composites proves naturality in <span class="math" data-tex="\(i\)">\(i\)</span> by (3.2). The same test proves <span class="math" data-tex="\(L(1_\beta)=1_{L\beta}\)">\(L(1_\beta)=1_{L\beta}\)</span> and <span class="math" data-tex="\(L(z&#x27;z)=L(z&#x27;)L(z)\)">\(L(z&#x27;z)=L(z&#x27;)L(z)\)</span>. At <span class="math" data-tex="\((j,1)\)">\((j,1)\)</span> it gives <span class="math" data-tex="\((rLz)_j\eta_{\beta,j}=\eta_{\beta&#x27;,j}z_j\)">\((rLz)_j\eta_{\beta,j}=\eta_{\beta&#x27;,j}z_j\)</span>, which is naturality of the unit in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p>To prove universality, take <span class="math" data-tex="\(u:\beta\to rD\)">\(u:\beta\to rD\)</span>. For fixed <span class="math" data-tex="\(i\)">\(i\)</span>, the maps <span class="math" data-tex="\(D(t)u_j:\beta(j)\to D(i)\)">\(D(t)u_j:\beta(j)\to D(i)\)</span> form a cocone. Indeed, for <span class="math" data-tex="\(t&#x27;\phi(s)=t\)">\(t&#x27;\phi(s)=t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(t&#x27;)u_{j&#x27;}\beta(s)
+&amp;=D(t&#x27;)D(\phi s)u_j\\
+&amp;=D(t)u_j.
+\end{aligned}
+\tag{3.4}
+\]">\[
+\begin{aligned}
+D(t&#x27;)u_{j&#x27;}\beta(s)
+&amp;=D(t&#x27;)D(\phi s)u_j\\
+&amp;=D(t)u_j.
+\end{aligned}
+\tag{3.4}
+\]</span>
+<p>Let <span class="math" data-tex="\(h_i:(L\beta)(i)\to D(i)\)">\(h_i:(L\beta)(i)\to D(i)\)</span> be its unique factor. For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, both <span class="math" data-tex="\(D(a)h_i\)">\(D(a)h_i\)</span> and <span class="math" data-tex="\(h_{i&#x27;}(L\beta)(a)\)">\(h_{i&#x27;}(L\beta)(a)\)</span> compose with <span class="math" data-tex="\(\lambda^i_{j,t}\)">\(\lambda^i_{j,t}\)</span> to <span class="math" data-tex="\(D(at)u_j\)">\(D(at)u_j\)</span>. Uniqueness makes <span class="math" data-tex="\(h:L\beta\to D\)">\(h:L\beta\to D\)</span> natural.</p>
+<p>Conversely, a natural <span class="math" data-tex="\(h:L\beta\to D\)">\(h:L\beta\to D\)</span> gives <span class="math" data-tex="\(u_j=h_{\phi j}\eta_{\beta,j}\)">\(u_j=h_{\phi j}\eta_{\beta,j}\)</span>. Naturality of <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(\phi(s)\)">\(\phi(s)\)</span> and (3.3) give <span class="math" data-tex="\(D(\phi s)u_j=u_{j&#x27;}\beta(s)\)">\(D(\phi s)u_j=u_{j&#x27;}\beta(s)\)</span>, so <span class="math" data-tex="\(u\)">\(u\)</span> is natural. Starting from <span class="math" data-tex="\(u\)">\(u\)</span>, the value of its factor at <span class="math" data-tex="\((j,1)\)">\((j,1)\)</span> is <span class="math" data-tex="\(h_{\phi j}\eta_{\beta,j}=D(1)u_j=u_j\)">\(h_{\phi j}\eta_{\beta,j}=D(1)u_j=u_j\)</span>, giving one inverse equation. Starting from <span class="math" data-tex="\(h\)">\(h\)</span>, its reconstructed factor has composite</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(t)h_{\phi j}\eta_{\beta,j}
+&amp;=h_i(L\beta)(t)\eta_{\beta,j}\\
+&amp;=h_i\lambda^i_{j,t}
+\end{aligned}
+\tag{3.5}
+\]">\[
+\begin{aligned}
+D(t)h_{\phi j}\eta_{\beta,j}
+&amp;=h_i(L\beta)(t)\eta_{\beta,j}\\
+&amp;=h_i\lambda^i_{j,t}
+\end{aligned}
+\tag{3.5}
+\]</span>
+<p>at every coprojection. Colimit uniqueness gives the original <span class="math" data-tex="\(h_i\)">\(h_i\)</span>. This proves the other inverse equation, including empty <span class="math" data-tex="\(K_i\)">\(K_i\)</span>.</p>
+<p>The correspondence is natural in both variables. For <span class="math" data-tex="\(z:\beta&#x27;\to\beta\)">\(z:\beta&#x27;\to\beta\)</span>, <span class="math" data-tex="\(v:D\to D&#x27;\)">\(v:D\to D&#x27;\)</span>, its forward map <span class="math" data-tex="\(\Psi(h)=(rh)\eta_\beta\)">\(\Psi(h)=(rh)\eta_\beta\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\Psi(vhLz)=(rv)\Psi(h)z.
+\tag{3.6}
+\]">\[
+\Psi(vhLz)=(rv)\Psi(h)z.
+\tag{3.6}
+\]</span>
+<p>This follows from naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in <span class="math" data-tex="\(\beta\)">\(\beta\)</span> just proved and the restriction functor laws. A family of bijections whose forward maps obey these squares has inverse maps obeying them too. Thus the complete factors prove (2.1), and when the hypotheses hold for every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, they give <span class="math" data-tex="\(L\dashv r\)">\(L\dashv r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-build-the-right-extension">4. Build the right extension</h2>
+<p>Let <span class="math" data-tex="\(H_i=(i\downarrow\phi)\)">\(H_i=(i\downarrow\phi)\)</span>. Its objects are <span class="math" data-tex="\((j,t:i\to\phi(j))\)">\((j,t:i\to\phi(j))\)</span>; an arrow to <span class="math" data-tex="\((j&#x27;,t&#x27;)\)">\((j&#x27;,t&#x27;)\)</span> is <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span> with <span class="math" data-tex="\(\phi(s)t=t&#x27;\)">\(\phi(s)t=t&#x27;\)</span>. Retain the complete dual comma-category construction and forgetful functor from Zero maps, Section 1.</p>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(\beta:H_i\to C\)">\(\beta:H_i\to C\)</span>, via this forgetful functor, has a limit for every <span class="math" data-tex="\(i\)">\(i\)</span>, then <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has a right Kan extension. This conditional statement again allows arbitrary ambient <span class="math" data-tex="\(I,J\)">\(I,J\)</span>.</p>
+<p>Choose the limits and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(R\beta)(i)=\lim_{H_i}\beta(j),\\
+p^i_{j,t}:(R\beta)(i)\to\beta(j).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+(R\beta)(i)=\lim_{H_i}\beta(j),\\
+p^i_{j,t}:(R\beta)(i)\to\beta(j).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The cone equations are <span class="math" data-tex="\(\beta(s)p^i_{j,t}=p^i_{j&#x27;,t&#x27;}\)">\(\beta(s)p^i_{j,t}=p^i_{j&#x27;,t&#x27;}\)</span> whenever <span class="math" data-tex="\(\phi(s)t=t&#x27;\)">\(\phi(s)t=t&#x27;\)</span>.</p>
+<p>An arrow <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span> sends <span class="math" data-tex="\(H_{i&#x27;}\)">\(H_{i&#x27;}\)</span> to <span class="math" data-tex="\(H_i\)">\(H_i\)</span> by <span class="math" data-tex="\((j,t&#x27;)\mapsto(j,t&#x27;a)\)">\((j,t&#x27;)\mapsto(j,t&#x27;a)\)</span>, keeping <span class="math" data-tex="\(s\)">\(s\)</span>. The triangle equations and category laws are preserved. The maps <span class="math" data-tex="\(p^i_{j,t&#x27;a}\)">\(p^i_{j,t&#x27;a}\)</span>, indexed by <span class="math" data-tex="\(H_{i&#x27;}\)">\(H_{i&#x27;}\)</span>, form a cone and give the unique arrow characterized by</p>
+<span class="math math-display" data-tex="\[
+p^{i&#x27;}_{j,t&#x27;}(R\beta)(a)=p^i_{j,t&#x27;a}.
+\tag{4.2}
+\]">\[
+p^{i&#x27;}_{j,t&#x27;}(R\beta)(a)=p^i_{j,t&#x27;a}.
+\tag{4.2}
+\]</span>
+<p>For an identity the identity satisfies this equation. For successive <span class="math" data-tex="\(a,a&#x27;\)">\(a,a&#x27;\)</span>, testing at each projection in <span class="math" data-tex="\(H_{i&#x27;&#x27;}\)">\(H_{i&#x27;&#x27;}\)</span> shows that <span class="math" data-tex="\((R\beta)(a&#x27;)(R\beta)(a)\)">\((R\beta)(a&#x27;)(R\beta)(a)\)</span> and <span class="math" data-tex="\((R\beta)(a&#x27;a)\)">\((R\beta)(a&#x27;a)\)</span> have the same projections <span class="math" data-tex="\(p^i_{j,t&#x27;&#x27;a&#x27;a}\)">\(p^i_{j,t&#x27;&#x27;a&#x27;a}\)</span>. Uniqueness proves composition, so <span class="math" data-tex="\(R\beta\)">\(R\beta\)</span> is a functor.</p>
+<p>A transformation <span class="math" data-tex="\(z:\beta\to\beta&#x27;\)">\(z:\beta\to\beta&#x27;\)</span> gives a cone <span class="math" data-tex="\(z_jp^i_{j,t}\)">\(z_jp^i_{j,t}\)</span>, because the naturality of <span class="math" data-tex="\(z\)">\(z\)</span> intertwines the two cone equations. Its unique factor <span class="math" data-tex="\((Rz)_i\)">\((Rz)_i\)</span> satisfies <span class="math" data-tex="\(p&#x27;{}^i_{j,t}(Rz)_i=z_jp^i_{j,t}\)">\(p&#x27;{}^i_{j,t}(Rz)_i=z_jp^i_{j,t}\)</span>. Testing at the target projections proves naturality in <span class="math" data-tex="\(i\)">\(i\)</span> using (4.2), and proves preservation of identities and compositions of <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>Define <span class="math" data-tex="\(\varepsilon_{\beta,j}=p^{\phi j}_{j,1_{\phi j}}\)">\(\varepsilon_{\beta,j}=p^{\phi j}_{j,1_{\phi j}}\)</span>. For <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span>, the arrow <span class="math" data-tex="\(s:(j,1)\to(j&#x27;,\phi s)\)">\(s:(j,1)\to(j&#x27;,\phi s)\)</span> in <span class="math" data-tex="\(H_{\phi j}\)">\(H_{\phi j}\)</span>, together with (4.2), gives</p>
+<span class="math math-display" data-tex="\[
+\beta(s)\varepsilon_{\beta,j}
+=\varepsilon_{\beta,j&#x27;}(R\beta)(\phi s).
+\tag{4.3}
+\]">\[
+\beta(s)\varepsilon_{\beta,j}
+=\varepsilon_{\beta,j&#x27;}(R\beta)(\phi s).
+\tag{4.3}
+\]</span>
+<p>This proves naturality in <span class="math" data-tex="\(j\)">\(j\)</span>; the transformation-factor equation at <span class="math" data-tex="\((j,1)\)">\((j,1)\)</span> proves naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p>For <span class="math" data-tex="\(w:rD\to\beta\)">\(w:rD\to\beta\)</span>, the maps <span class="math" data-tex="\(w_jD(t):D(i)\to\beta(j)\)">\(w_jD(t):D(i)\to\beta(j)\)</span> give a cone on <span class="math" data-tex="\(H_i\)">\(H_i\)</span>. For its arrow <span class="math" data-tex="\(s\)">\(s\)</span>, naturality of <span class="math" data-tex="\(w\)">\(w\)</span> gives
+<span class="math" data-tex="\(\beta(s)w_jD(t)=w_{j&#x27;}D(\phi s)D(t)=w_{j&#x27;}D(t&#x27;)\)">\(\beta(s)w_jD(t)=w_{j&#x27;}D(\phi s)D(t)=w_{j&#x27;}D(t&#x27;)\)</span>.
+Its unique factor <span class="math" data-tex="\(v_i:D(i)\to(R\beta)(i)\)">\(v_i:D(i)\to(R\beta)(i)\)</span> is natural in <span class="math" data-tex="\(i\)">\(i\)</span>: for <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, the two arrows <span class="math" data-tex="\((R\beta)(a)v_i\)">\((R\beta)(a)v_i\)</span>, <span class="math" data-tex="\(v_{i&#x27;}D(a)\)">\(v_{i&#x27;}D(a)\)</span> have the same projection <span class="math" data-tex="\(w_jD(t&#x27;a)\)">\(w_jD(t&#x27;a)\)</span> at every <span class="math" data-tex="\((j,t&#x27;)\in H_{i&#x27;}\)">\((j,t&#x27;)\in H_{i&#x27;}\)</span>.</p>
+<p>Conversely, a natural <span class="math" data-tex="\(v:D\to R\beta\)">\(v:D\to R\beta\)</span> gives <span class="math" data-tex="\(w_j=\varepsilon_{\beta,j}v_{\phi j}\)">\(w_j=\varepsilon_{\beta,j}v_{\phi j}\)</span>. Naturality of <span class="math" data-tex="\(v\)">\(v\)</span> at <span class="math" data-tex="\(\phi(s)\)">\(\phi(s)\)</span>, followed by (4.3), proves that <span class="math" data-tex="\(w\)">\(w\)</span> is natural. Starting from <span class="math" data-tex="\(w\)">\(w\)</span>, the factor at <span class="math" data-tex="\((j,1)\)">\((j,1)\)</span> gives <span class="math" data-tex="\(\varepsilon_{\beta,j}v_{\phi j}=w_jD(1)=w_j\)">\(\varepsilon_{\beta,j}v_{\phi j}=w_jD(1)=w_j\)</span>. Starting from <span class="math" data-tex="\(v\)">\(v\)</span>, the reconstructed factor has projection</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon_{\beta,j}v_{\phi j}D(t)
+&amp;=\varepsilon_{\beta,j}(R\beta)(t)v_i\\
+&amp;=p^i_{j,t}v_i.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+\varepsilon_{\beta,j}v_{\phi j}D(t)
+&amp;=\varepsilon_{\beta,j}(R\beta)(t)v_i\\
+&amp;=p^i_{j,t}v_i.
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>Limit uniqueness therefore gives the original <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. Both inverse equations hold even when <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is empty.</p>
+<p>For <span class="math" data-tex="\(z:\beta\to\beta&#x27;\)">\(z:\beta\to\beta&#x27;\)</span>, <span class="math" data-tex="\(b:D&#x27;\to D\)">\(b:D&#x27;\to D\)</span>, the forward map <span class="math" data-tex="\(\Xi(v)=\varepsilon_\beta(rv)\)">\(\Xi(v)=\varepsilon_\beta(rv)\)</span> obeys</p>
+<span class="math math-display" data-tex="\[
+\Xi(Rz\,v b)=z\,\Xi(v)\,(rb).
+\tag{4.5}
+\]">\[
+\Xi(Rz\,v b)=z\,\Xi(v)\,(rb).
+\tag{4.5}
+\]</span>
+<p>Use naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and the restriction functor laws. This proves both-variable naturality; the inverse maps commute as well because these are bijections. We have proved (2.2) with every factor specified. When the hypotheses hold for all <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, this gives <span class="math" data-tex="\(r\dashv R\)">\(r\dashv R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-recover-the-values-on-a-full-embedding">5. Recover the values on a full embedding</h2>
+<p>For the usual small-diagram consequence, suppose <span class="math" data-tex="\(J\)">\(J\)</span> is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small and <span class="math" data-tex="\(I\)">\(I\)</span> is locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. This is the working-universe convention for the target index category; its object set may be larger. The objects of <span class="math" data-tex="\(K_i\)">\(K_i\)</span> form a tagged union of the small sets <span class="math" data-tex="\(I(\phi j,i)\)">\(I(\phi j,i)\)</span> over the small object set of <span class="math" data-tex="\(J\)">\(J\)</span>. By the complete transported-union proof in <a href="universes-and-small-categories.html#3-transporting-the-size-bound">Universes and small categories, Section 3</a>, that union is small. For each pair of these objects, its Hom set is a subset of a Hom set of <span class="math" data-tex="\(J\)">\(J\)</span>; the union of those subsets over the small set of pairs is small too. Thus <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is a small category. The proof for <span class="math" data-tex="\(H_i\)">\(H_i\)</span> uses <span class="math" data-tex="\(I(i,\phi j)\)">\(I(i,\phi j)\)</span> and the same closure arguments.</p>
+<p>Consequently, if <span class="math" data-tex="\(C\)">\(C\)</span> has all <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small colimits, Theorem 3.1 applies to every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>; if it has all <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small limits, Theorem 4.1 applies to every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Choices are indexed by ambient objects, and the already proved arrow rules or the full representative construction of Section 2 make the adjoints coherent. The size proof did not require <span class="math" data-tex="\(I\)">\(I\)</span> to be small. If a conditional comma diagram is larger than <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, Sections 3–4 still apply when its needed colimit or limit exists; the all-small consequence alone does not supply that larger object.</p>
+<p>Now suppose <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is fully faithful. In <span class="math" data-tex="\(K_{\phi j}\)">\(K_{\phi j}\)</span>, the object <span class="math" data-tex="\((j,1_{\phi j})\)">\((j,1_{\phi j})\)</span> is terminal. From <span class="math" data-tex="\((j&#x27;,t)\)">\((j&#x27;,t)\)</span> to it, the comma arrow is the unique <span class="math" data-tex="\(s:j&#x27;\to j\)">\(s:j&#x27;\to j\)</span> with <span class="math" data-tex="\(\phi(s)=t\)">\(\phi(s)=t\)</span>, supplied by full faithfulness. The complete terminal-index colimit proof in <a href="universal-forks-and-diagram-constructions.html#1-families-and-their-universal-maps">Universal forks, Section 1</a> identifies the colimit with <span class="math" data-tex="\(\beta(j)\)">\(\beta(j)\)</span>. The specified comparison is precisely <span class="math" data-tex="\(\eta_{\beta,j}\)">\(\eta_{\beta,j}\)</span>, so it is invertible.</p>
+<p>For completeness, its inverse <span class="math" data-tex="\(c:(L\beta)(\phi j)\to\beta(j)\)">\(c:(L\beta)(\phi j)\to\beta(j)\)</span> has <span class="math" data-tex="\(c\lambda_{j&#x27;,t}=\beta(s)\)">\(c\lambda_{j&#x27;,t}=\beta(s)\)</span>, where <span class="math" data-tex="\(\phi(s)=t\)">\(\phi(s)=t\)</span>. These form a cocone by the faithful functor law. At <span class="math" data-tex="\((j,1)\)">\((j,1)\)</span>, <span class="math" data-tex="\(c\eta_{\beta,j}=1\)">\(c\eta_{\beta,j}=1\)</span>. At any <span class="math" data-tex="\((j&#x27;,t)\)">\((j&#x27;,t)\)</span>, the cocone equation gives <span class="math" data-tex="\(\eta_{\beta,j}\beta(s)=\lambda_{j&#x27;,t}\)">\(\eta_{\beta,j}\beta(s)=\lambda_{j&#x27;,t}\)</span>; hence <span class="math" data-tex="\(\eta_{\beta,j}c\)">\(\eta_{\beta,j}c\)</span> has the same composites as the identity with every coprojection. Uniqueness gives the other inverse equation.</p>
+<p>In <span class="math" data-tex="\(H_{\phi j}\)">\(H_{\phi j}\)</span>, <span class="math" data-tex="\((j,1_{\phi j})\)">\((j,1_{\phi j})\)</span> is initial: the unique arrow to <span class="math" data-tex="\((j&#x27;,t)\)">\((j&#x27;,t)\)</span> is the unique <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span> with <span class="math" data-tex="\(\phi(s)=t\)">\(\phi(s)=t\)</span>. A cone from <span class="math" data-tex="\(\beta(j)\)">\(\beta(j)\)</span> has components <span class="math" data-tex="\(\beta(s)\)">\(\beta(s)\)</span>. Its unique factor <span class="math" data-tex="\(d:\beta(j)\to(R\beta)(\phi j)\)">\(d:\beta(j)\to(R\beta)(\phi j)\)</span> satisfies <span class="math" data-tex="\(\varepsilon_{\beta,j}d=1\)">\(\varepsilon_{\beta,j}d=1\)</span>. The cone equation gives <span class="math" data-tex="\(\beta(s)\varepsilon_{\beta,j}=p_{j&#x27;,t}\)">\(\beta(s)\varepsilon_{\beta,j}=p_{j&#x27;,t}\)</span>, so <span class="math" data-tex="\(d\varepsilon_{\beta,j}\)">\(d\varepsilon_{\beta,j}\)</span> has each identity projection and is the identity. Thus the specified counit component is invertible.</p>
+<p>Whenever the corresponding <strong>global</strong> adjoint exists, the component-inverse theorem makes <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, or <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, a natural isomorphism. The complete unit/counit full-faithfulness criterion in <a href="passing-maps-across-an-adjunction.html#3-when-an-adjoint-retains-all-maps">Passing maps across an adjunction, Section 3</a>, applied to <span class="math" data-tex="\(L\dashv r\)">\(L\dashv r\)</span> or <span class="math" data-tex="\(r\dashv R\)">\(r\dashv R\)</span>, proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L\text{ is fully faithful},\qquad rL\simeq1_{\mathcal B},\\
+R\text{ is fully faithful},\qquad rR\simeq1_{\mathcal B},
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+L\text{ is fully faithful},\qquad rL\simeq1_{\mathcal B},\\
+R\text{ is fully faithful},\qquad rR\simeq1_{\mathcal B},
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>respectively. Even for an individual <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with only its conditional pointwise construction available, the particular <span class="math" data-tex="\(\eta_\beta\)">\(\eta_\beta\)</span> or <span class="math" data-tex="\(\varepsilon_\beta\)">\(\varepsilon_\beta\)</span> above is invertible. Full faithfulness of a global functor is a claim made when that functor exists.</p>
+<p>If <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is empty, its colimit value is initial; if <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is empty, its limit value is terminal, by the complete empty-diagram proof. For empty <span class="math" data-tex="\(J\)">\(J\)</span>, all these comma categories are empty. The left extension is the constant initial diagram and the right extension the constant terminal diagram whenever those objects exist. Every arrow of a constant such diagram is its unique endomorphism, hence its identity, verifying the functor laws at this boundary. For empty <span class="math" data-tex="\(I\)">\(I\)</span>, a functor <span class="math" data-tex="\(J\to I\)">\(J\to I\)</span> forces <span class="math" data-tex="\(J\)">\(J\)</span> to be empty; both functor categories then have exactly one object and one arrow, and both adjunctions and comparisons are the unique ones.</p>
+<h2 id="6-reverse-both-directions">6. Reverse both directions</h2>
+<p>There is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_I:\operatorname{Fun}(I,C)^{\mathrm{op}}\\
+\longrightarrow\\
+\operatorname{Fun}(I^{\mathrm{op}},C^{\mathrm{op}}).
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+E_I:\operatorname{Fun}(I,C)^{\mathrm{op}}\\
+\longrightarrow\\
+\operatorname{Fun}(I^{\mathrm{op}},C^{\mathrm{op}}).
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>It sends <span class="math" data-tex="\(D\)">\(D\)</span> to <span class="math" data-tex="\(D^{\mathrm{op}}\)">\(D^{\mathrm{op}}\)</span>. An arrow <span class="math" data-tex="\(D\to D&#x27;\)">\(D\to D&#x27;\)</span> in the left category is a transformation <span class="math" data-tex="\(D&#x27;\to D\)">\(D&#x27;\to D\)</span> in the original functor category; take the opposite of each component to get <span class="math" data-tex="\(D^{\mathrm{op}}\to D&#x27;{}^{\mathrm{op}}\)">\(D^{\mathrm{op}}\to D&#x27;{}^{\mathrm{op}}\)</span>. Its naturality equation is the reversed original equation. Identity and composition laws are reversed componentwise; repeating the operation is its inverse. This is the entire opposite-functor-category construction retained from Compatible families, Section 4.</p>
+<p>On both objects and components, <span class="math" data-tex="\(E_J r_\phi^{\mathrm{op}}=r_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}E_I\)">\(E_J r_\phi^{\mathrm{op}}=r_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}E_I\)</span>. An adjunction <span class="math" data-tex="\(L\dashv r\)">\(L\dashv r\)</span> reverses to <span class="math" data-tex="\(r^{\mathrm{op}}\dashv L^{\mathrm{op}}\)">\(r^{\mathrm{op}}\dashv L^{\mathrm{op}}\)</span>, because reversing a Hom set in the defining natural correspondence interchanges its two arguments. Transporting through <span class="math" data-tex="\(E_I,E_J\)">\(E_I,E_J\)</span> therefore gives a right Kan extension along <span class="math" data-tex="\(\phi^{\mathrm{op}}\)">\(\phi^{\mathrm{op}}\)</span> in <span class="math" data-tex="\(C^{\mathrm{op}}\)">\(C^{\mathrm{op}}\)</span>. Compatible uniqueness of adjoints identifies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(L_\phi^C\beta)^{\mathrm{op}}
+&amp;\simeq R_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}(\beta^{\mathrm{op}}),\\
+(R_\phi^C\beta)^{\mathrm{op}}
+&amp;\simeq L_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}(\beta^{\mathrm{op}}).
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+(L_\phi^C\beta)^{\mathrm{op}}
+&amp;\simeq R_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}(\beta^{\mathrm{op}}),\\
+(R_\phi^C\beta)^{\mathrm{op}}
+&amp;\simeq L_{\phi^{\mathrm{op}}}^{C^{\mathrm{op}}}(\beta^{\mathrm{op}}).
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>These are the comparisons respecting the specified universal maps. The left unit becomes the right counit under reversal; the left counit becomes the right unit. The equations of Section 1 reverse into the corresponding equations. The same argument applies to individual representations in Section 2.</p>
+<p>Concretely, <span class="math" data-tex="\((\phi\downarrow i)^{\mathrm{op}}\)">\((\phi\downarrow i)^{\mathrm{op}}\)</span> is the category <span class="math" data-tex="\((i\downarrow\phi^{\mathrm{op}})\)">\((i\downarrow\phi^{\mathrm{op}})\)</span> in the reversed indices: the arrow <span class="math" data-tex="\(\phi j\to i\)">\(\phi j\to i\)</span> becomes <span class="math" data-tex="\(i\to\phi j\)">\(i\to\phi j\)</span>, and every triangle reverses. Reversing its colimit cocone gives precisely the limit cone of the right formula. This verifies the pointwise formulas and their arrow maps under the comparisons, including empty categories.</p>
+<h2 id="7-total-assembly-and-total-compatibility">7. Total assembly and total compatibility</h2>
+<p>Suppose <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are small and <span class="math" data-tex="\(C\)">\(C\)</span> has all small colimits, using a working universe in which the index categories and their relevant Hom sets are small. For <span class="math" data-tex="\(\beta:J\to C\)">\(\beta:J\to C\)</span>, put <span class="math" data-tex="\(B=\operatorname{colim}_J\beta\)">\(B=\operatorname{colim}_J\beta\)</span> with coprojections <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, and <span class="math" data-tex="\(A=\operatorname{colim}_I L\beta\)">\(A=\operatorname{colim}_I L\beta\)</span> with coprojections <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. The unit gives the <strong>canonical</strong> comparison <span class="math" data-tex="\(q:B\to A\)">\(q:B\to A\)</span> characterized by</p>
+<span class="math math-display" data-tex="\[
+q b_j=c_{\phi j}\eta_{\beta,j}.
+\tag{7.1}
+\]">\[
+q b_j=c_{\phi j}\eta_{\beta,j}.
+\tag{7.1}
+\]</span>
+<p>It is the composite of the colimit map induced by <span class="math" data-tex="\(\eta_\beta\)">\(\eta_\beta\)</span> and the canonical restriction-of-index comparison for <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span>. Both canonical maps are supplied by the complete structural-family proof in Compatible families, Section 2.</p>
+<p><strong>Proposition 7.1.</strong> This <span class="math" data-tex="\(q\)">\(q\)</span> is invertible, for every <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p><strong>Proof.</strong> A map <span class="math" data-tex="\(A\to T\)">\(A\to T\)</span> is exactly a cocone from <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>, or a transformation <span class="math" data-tex="\(L\beta\to\Delta_I T\)">\(L\beta\to\Delta_I T\)</span>, by the complete cone/cocone correspondence. The constant functor sends every arrow to <span class="math" data-tex="\(1_T\)">\(1_T\)</span>, so <span class="math" data-tex="\(r\Delta_I T=\Delta_J T\)">\(r\Delta_I T=\Delta_J T\)</span> on all objects and arrows. The left adjunction consequently gives a natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(A,T)\simeq
+\operatorname{Nat}_I(L\beta,\Delta_I T)\\
+\simeq\operatorname{Nat}_J(\beta,\Delta_J T)
+\simeq C(B,T).
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+C(A,T)\simeq
+\operatorname{Nat}_I(L\beta,\Delta_I T)\\
+\simeq\operatorname{Nat}_J(\beta,\Delta_J T)
+\simeq C(B,T).
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>Its action on <span class="math" data-tex="\(h:A\to T\)">\(h:A\to T\)</span>, using the specified unit transposition, has <span class="math" data-tex="\(j\)">\(j\)</span>-component <span class="math" data-tex="\(h c_{\phi j}\eta_{\beta,j}=h q b_j\)">\(h c_{\phi j}\eta_{\beta,j}=h q b_j\)</span>. Colimit uniqueness identifies this map with <span class="math" data-tex="\(h\mapsto hq\)">\(h\mapsto hq\)</span>. To see invertibility directly, take <span class="math" data-tex="\(T=B\)">\(T=B\)</span>: the bijection gives <span class="math" data-tex="\(a:A\to B\)">\(a:A\to B\)</span> with <span class="math" data-tex="\(aq=1_B\)">\(aq=1_B\)</span>. For <span class="math" data-tex="\(T=A\)">\(T=A\)</span>, the maps <span class="math" data-tex="\(qa\)">\(qa\)</span> and <span class="math" data-tex="\(1_A\)">\(1_A\)</span> have the same composite with <span class="math" data-tex="\(q\)">\(q\)</span>, so injectivity gives <span class="math" data-tex="\(qa=1_A\)">\(qa=1_A\)</span>. Thus this exact canonical comparison is invertible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction also proves naturality in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>: for <span class="math" data-tex="\(z:\beta\to\beta&#x27;\)">\(z:\beta\to\beta&#x27;\)</span>, both routes from <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>, tested at <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, give <span class="math" data-tex="\(c&#x27;_{\phi j}\eta_{\beta&#x27;,j}z_j\)">\(c&#x27;_{\phi j}\eta_{\beta&#x27;,j}z_j\)</span>, by unit naturality and the colimit transformation law. Universal uniqueness makes the routes equal.</p>
+<p>There is an ordinary covariant limit form. Suppose <span class="math" data-tex="\(C\)">\(C\)</span> has all small limits. For <span class="math" data-tex="\(\gamma:J\to C\)">\(\gamma:J\to C\)</span>, let <span class="math" data-tex="\(A=\lim_I R\gamma\)">\(A=\lim_I R\gamma\)</span>, <span class="math" data-tex="\(B=\lim_J\gamma\)">\(B=\lim_J\gamma\)</span>, with projections <span class="math" data-tex="\(p_i,b_j\)">\(p_i,b_j\)</span>. The counit gives <span class="math" data-tex="\(q:A\to B\)">\(q:A\to B\)</span> with</p>
+<span class="math math-display" data-tex="\[
+b_jq=\varepsilon_{\gamma,j}p_{\phi j}.
+\tag{7.3}
+\]">\[
+b_jq=\varepsilon_{\gamma,j}p_{\phi j}.
+\tag{7.3}
+\]</span>
+<p>It is the canonical index-restriction map followed by the limit map induced by the counit. The full cone property and right adjunction give, naturally in <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(T,A)\simeq\operatorname{Nat}_I(\Delta_I T,R\gamma)\\
+\simeq\operatorname{Nat}_J(\Delta_J T,\gamma)
+\simeq C(T,B).
+\end{gathered}
+\]">\[
+\begin{gathered}
+C(T,A)\simeq\operatorname{Nat}_I(\Delta_I T,R\gamma)\\
+\simeq\operatorname{Nat}_J(\Delta_J T,\gamma)
+\simeq C(T,B).
+\end{gathered}
+\]</span>
+<p>The action on <span class="math" data-tex="\(h:T\to A\)">\(h:T\to A\)</span> has projections <span class="math" data-tex="\(\varepsilon_{\gamma,j}p_{\phi j}h=b_j qh\)">\(\varepsilon_{\gamma,j}p_{\phi j}h=b_j qh\)</span>, so it is postcomposition by this <span class="math" data-tex="\(q\)">\(q\)</span>. At <span class="math" data-tex="\(T=B\)">\(T=B\)</span>, surjectivity gives <span class="math" data-tex="\(a:B\to A\)">\(a:B\to A\)</span> with <span class="math" data-tex="\(qa=1_B\)">\(qa=1_B\)</span>; at <span class="math" data-tex="\(T=A\)">\(T=A\)</span>, injectivity gives <span class="math" data-tex="\(aq=1_A\)">\(aq=1_A\)</span>. Thus <span class="math" data-tex="\(q\)">\(q\)</span> is invertible. Naturality in <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> follows by testing at every <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, using counit naturality and the retained limit transformation law.</p>
+<p>For the projective source convention, take <span class="math" data-tex="\(\beta:J^{\mathrm{op}}\to C\)">\(\beta:J^{\mathrm{op}}\to C\)</span> and <span class="math" data-tex="\(\phi^{\mathrm{op}}:J^{\mathrm{op}}\to I^{\mathrm{op}}\)">\(\phi^{\mathrm{op}}:J^{\mathrm{op}}\to I^{\mathrm{op}}\)</span>. The preceding limit result says</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lim_{I^{\mathrm{op}}}R_{\phi^{\mathrm{op}}}\beta
+\xrightarrow{\ \sim\ }\lim_{J^{\mathrm{op}}}\beta.
+\end{gathered}
+\tag{7.4}
+\]">\[
+\begin{gathered}
+\lim_{I^{\mathrm{op}}}R_{\phi^{\mathrm{op}}}\beta
+\xrightarrow{\ \sim\ }\lim_{J^{\mathrm{op}}}\beta.
+\end{gathered}
+\tag{7.4}
+\]</span>
+<p>At <span class="math" data-tex="\(i\)">\(i\)</span>, its inner right-Kan limit is indexed by arrows <span class="math" data-tex="\(i\to\phi j\)">\(i\to\phi j\)</span> <strong>in <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span></strong>, equivalently arrows <span class="math" data-tex="\(\phi j\to i\)">\(\phi j\to i\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>. Its diagram values are <span class="math" data-tex="\(\beta(j)\)">\(\beta(j)\)</span>, with its reversed-<span class="math" data-tex="\(J\)">\(J\)</span> arrow action. This explains the direction in the iterated projective formula. The comparison uses the counit for <span class="math" data-tex="\(\phi^{\mathrm{op}}\)">\(\phi^{\mathrm{op}}\)</span>; using the counit for <span class="math" data-tex="\(\phi\)">\(\phi\)</span> instead would have the wrong domain.</p>
+<p>No fully faithful hypothesis on <span class="math" data-tex="\(\phi\)">\(\phi\)</span> was used in either total comparison. All the universal properties and constant-diagram equalities include empty indices. When <span class="math" data-tex="\(J\)">\(J\)</span> is empty but <span class="math" data-tex="\(I\)">\(I\)</span> is not, (7.2) still identifies the total colimit of the initial-valued extension with the initial object. The dual identifies the total limit of the terminal-valued extension with the terminal object. When <span class="math" data-tex="\(I\)">\(I\)</span> is empty, <span class="math" data-tex="\(J\)">\(J\)</span> is empty too, and the same initial or terminal factor argument applies.</p>
+<h2 id="8-four-graded-exercises">8. Four graded exercises</h2>
+<h3 id="exercise-1-introductory-extend-from-either-endpoint">Exercise 1 — introductory: extend from either endpoint</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the walking arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span> the one-object identity category, <span class="math" data-tex="\(C=\mathsf{Set}\)">\(C=\mathsf{Set}\)</span>, and <span class="math" data-tex="\(\beta(*)=S\)">\(\beta(*)=S\)</span>. For each inclusion <span class="math" data-tex="\(\phi_0(*)=0\)">\(\phi_0(*)=0\)</span>, <span class="math" data-tex="\(\phi_1(*)=1\)">\(\phi_1(*)=1\)</span>, calculate the left and right extensions, their structural arrow, and their unit or counit. Give the universal correspondences for an arbitrary diagram <span class="math" data-tex="\(D=(A\xrightarrow{d}B)\)">\(D=(A\xrightarrow{d}B)\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\phi_0\)">\(\phi_0\)</span>, each left comma category has one object and its identity, using <span class="math" data-tex="\(1_0\)">\(1_0\)</span> at 0 and the arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> at 1. Thus <span class="math" data-tex="\(L_0S=(S\xrightarrow{1}S)\)">\(L_0S=(S\xrightarrow{1}S)\)</span>; its unit is <span class="math" data-tex="\(1_S\)">\(1_S\)</span> at 0. A transformation <span class="math" data-tex="\(L_0S\to D\)">\(L_0S\to D\)</span> is a pair <span class="math" data-tex="\(h_0:S\to A,h_1:S\to B\)">\(h_0:S\to A,h_1:S\to B\)</span> with <span class="math" data-tex="\(h_1=dh_0\)">\(h_1=dh_0\)</span>. Choosing <span class="math" data-tex="\(h_0\)">\(h_0\)</span> gives exactly a map <span class="math" data-tex="\(S\to(r_0D)=A\)">\(S\to(r_0D)=A\)</span>, with unique inverse choice <span class="math" data-tex="\(h_1=dh_0\)">\(h_1=dh_0\)</span>.</p>
+<p>The right comma at 0 has its single identity object; the one at 1 is empty. Hence <span class="math" data-tex="\(R_0S=(S\to1)\)">\(R_0S=(S\to1)\)</span>, where <span class="math" data-tex="\(1\)">\(1\)</span> is a singleton and the arrow is unique. The counit at 0 is <span class="math" data-tex="\(1_S\)">\(1_S\)</span>. A transformation <span class="math" data-tex="\(D\to R_0S\)">\(D\to R_0S\)</span> is any <span class="math" data-tex="\(v_0:A\to S\)">\(v_0:A\to S\)</span> together with the unique <span class="math" data-tex="\(v_1:B\to1\)">\(v_1:B\to1\)</span>. The arrow square commutes because both routes to <span class="math" data-tex="\(1\)">\(1\)</span> are unique. It is thus exactly a map <span class="math" data-tex="\(r_0D=A\to S\)">\(r_0D=A\to S\)</span>, including when <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> or <span class="math" data-tex="\(S\)">\(S\)</span> is empty.</p>
+<p>For <span class="math" data-tex="\(\phi_1\)">\(\phi_1\)</span>, the left comma at 0 is empty and the one at 1 has its single identity object. Thus <span class="math" data-tex="\(L_1S=(\varnothing\to S)\)">\(L_1S=(\varnothing\to S)\)</span>, with unit <span class="math" data-tex="\(1_S\)">\(1_S\)</span> at 1. A transformation to <span class="math" data-tex="\(D\)">\(D\)</span> consists of the unique empty map to <span class="math" data-tex="\(A\)">\(A\)</span> and any <span class="math" data-tex="\(h_1:S\to B\)">\(h_1:S\to B\)</span>; the arrow square has empty domain and is automatic. This is exactly a map <span class="math" data-tex="\(S\to r_1D=B\)">\(S\to r_1D=B\)</span>.</p>
+<p>Both right comma categories for <span class="math" data-tex="\(\phi_1\)">\(\phi_1\)</span> have one object, so <span class="math" data-tex="\(R_1S=(S\xrightarrow{1}S)\)">\(R_1S=(S\xrightarrow{1}S)\)</span>, with counit <span class="math" data-tex="\(1_S\)">\(1_S\)</span> at 1. A transformation <span class="math" data-tex="\(D\to R_1S\)">\(D\to R_1S\)</span> is determined by <span class="math" data-tex="\(v_1:B\to S\)">\(v_1:B\to S\)</span>, because <span class="math" data-tex="\(v_0=v_1d\)">\(v_0=v_1d\)</span>. These rules prove both right and left correspondences, all inverse equations, and the specified structural arrows. Pre- or postcomposing the free component maps commutes with the formulas, proving the required naturality.</p>
+<h3 id="exercise-2-intermediate-every-arrow-label-matters">Exercise 2 — intermediate: every arrow label matters</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> have objects <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, their identities and two distinct arrows <span class="math" data-tex="\(a,b:0\to1\)">\(a,b:0\to1\)</span>, with no other nonidentity arrows. Include the point <span class="math" data-tex="\(J=\{*\}\)">\(J=\{*\}\)</span> at 0 and take <span class="math" data-tex="\(\beta(*)=S\)">\(\beta(*)=S\)</span>. Find both extensions. Describe a left-extension transformation into <span class="math" data-tex="\(D=(A\mathrel{\substack{\xrightarrow{d_a}\\[-2pt]\xrightarrow[d_b]{}}}B)\)">\(D=(A\mathrel{\substack{\xrightarrow{d_a}\\[-2pt]\xrightarrow[d_b]{}}}B)\)</span>. Does the unit recover <span class="math" data-tex="\(S\)">\(S\)</span>?</p>
+<p><strong>Solution.</strong> The left comma at 0 has the identity object. At 1 it has the two objects <span class="math" data-tex="\((*,a)\)">\((*,a)\)</span>, <span class="math" data-tex="\((*,b)\)">\((*,b)\)</span>, with no arrow between them: the only underlying <span class="math" data-tex="\(J\)">\(J\)</span>-arrow is the identity, which forces its two labels to agree. Hence <span class="math" data-tex="\(LS(0)=S\)">\(LS(0)=S\)</span>, <span class="math" data-tex="\(LS(1)=S\amalg S\)">\(LS(1)=S\amalg S\)</span>, and <span class="math" data-tex="\(LS(a)\)">\(LS(a)\)</span>, <span class="math" data-tex="\(LS(b)\)">\(LS(b)\)</span> are respectively its first and second inclusions. The unit at 0 is <span class="math" data-tex="\(1_S\)">\(1_S\)</span>.</p>
+<p>A transformation has <span class="math" data-tex="\(h_0:S\to A\)">\(h_0:S\to A\)</span> and <span class="math" data-tex="\(h_1:S\amalg S\to B\)">\(h_1:S\amalg S\to B\)</span>. Its two arrow equations force <span class="math" data-tex="\(h_1\iota_a=d_a h_0\)">\(h_1\iota_a=d_a h_0\)</span>, <span class="math" data-tex="\(h_1\iota_b=d_b h_0\)">\(h_1\iota_b=d_b h_0\)</span>. The coproduct property gives precisely one such <span class="math" data-tex="\(h_1\)">\(h_1\)</span> for every <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, with values <span class="math" data-tex="\(d_a h_0\)">\(d_a h_0\)</span> and <span class="math" data-tex="\(d_b h_0\)">\(d_b h_0\)</span> on the two tagged summands. Conversely evaluation at 0 recovers <span class="math" data-tex="\(h_0\)">\(h_0\)</span>, so these are inverse correspondences. This verifies the universal extension and its full arrow data.</p>
+<p>The right comma at 0 has the single identity object, while at 1 it is empty. Thus <span class="math" data-tex="\(RS(0)=S\)">\(RS(0)=S\)</span>, <span class="math" data-tex="\(RS(1)=1\)">\(RS(1)=1\)</span>, with both arrow maps the unique map to the singleton, and counit <span class="math" data-tex="\(1_S\)">\(1_S\)</span> at 0. A transformation <span class="math" data-tex="\(D\to RS\)">\(D\to RS\)</span> is exactly any function <span class="math" data-tex="\(A\to S\)">\(A\to S\)</span> and the unique map <span class="math" data-tex="\(B\to1\)">\(B\to1\)</span>; both arrow squares commute by uniqueness.</p>
+<p>The inclusion of <span class="math" data-tex="\(J\)">\(J\)</span> is fully faithful: the only Hom set it tests is <span class="math" data-tex="\(I(0,0)=\{1_0\}\)">\(I(0,0)=\{1_0\}\)</span>. Both unit and counit recover <span class="math" data-tex="\(S\)">\(S\)</span> at that included object, as the full embedding theorem predicts. Distinct arrows to the missing object create distinct comma labels and two left summands. If <span class="math" data-tex="\(S=\{0,1\}\)">\(S=\{0,1\}\)</span>, the left value at 1 has four elements, whereas the right value there has one.</p>
+<h3 id="exercise-3-advanced-compare-total-colimits-directly">Exercise 3 — advanced: compare total colimits directly</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be the ordered category with objects <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, nonidentity arrows <span class="math" data-tex="\(0\to2\)">\(0\to2\)</span>, <span class="math" data-tex="\(1\to2\)">\(1\to2\)</span>, and no arrow between 0 and 1. Let <span class="math" data-tex="\(J=\{0,1\}\)">\(J=\{0,1\}\)</span> be discrete and include it in <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(\beta(0)=A,\beta(1)=B\)">\(\beta(0)=A,\beta(1)=B\)</span>, find both extensions in sets. Compute their total colimits and total limits. Identify which two calculations are the canonical total comparisons of Section 7.</p>
+<p><strong>Solution.</strong> The left comma at 0 has only <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, the one at 1 only <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, and the one at 2 has the two objects labelled by the two arrows to 2, with no morphism between them. Thus <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span> is <span class="math" data-tex="\(A\to A\amalg B\leftarrow B\)">\(A\to A\amalg B\leftarrow B\)</span>, with the two inclusions. The right comma at 0 and at 1 have their respective identities, while the one at 2 is empty. Thus <span class="math" data-tex="\(R\beta\)">\(R\beta\)</span> is <span class="math" data-tex="\(A\to1\leftarrow B\)">\(A\to1\leftarrow B\)</span>, with the unique functions.</p>
+<p>The object 2 is terminal in <span class="math" data-tex="\(I\)">\(I\)</span>. The complete terminal-index factor proof gives <span class="math" data-tex="\(\operatorname{colim}_I L\beta=A\amalg B\)">\(\operatorname{colim}_I L\beta=A\amalg B\)</span> and <span class="math" data-tex="\(\operatorname{colim}_I R\beta=1\)">\(\operatorname{colim}_I R\beta=1\)</span>. On discrete <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(\operatorname{colim}_J\beta=A\amalg B\)">\(\operatorname{colim}_J\beta=A\amalg B\)</span>. Its canonical comparison to the former is the identity on both tagged summands: the units at 0,1 are identities and the outer coprojections are the inclusions.</p>
+<p>A cone on <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span> consists of functions <span class="math" data-tex="\(u:T\to A\)">\(u:T\to A\)</span>, <span class="math" data-tex="\(v:T\to B\)">\(v:T\to B\)</span> whose composites to <span class="math" data-tex="\(A\amalg B\)">\(A\amalg B\)</span> agree. The two tagged summands are disjoint, so such a pair can exist only for empty <span class="math" data-tex="\(T\)">\(T\)</span>, and then all maps are unique. Consequently <span class="math" data-tex="\(\lim_I L\beta=\varnothing\)">\(\lim_I L\beta=\varnothing\)</span>, with its unique cone. This holds if either set is empty too.</p>
+<p>A cone on <span class="math" data-tex="\(R\beta\)">\(R\beta\)</span> is an arbitrary pair <span class="math" data-tex="\(u:T\to A,v:T\to B\)">\(u:T\to A,v:T\to B\)</span>, together with the unique map to <span class="math" data-tex="\(1\)">\(1\)</span>; both equations to <span class="math" data-tex="\(1\)">\(1\)</span> hold. Thus <span class="math" data-tex="\(\lim_I R\beta=A\times B\)">\(\lim_I R\beta=A\times B\)</span>, with its ordinary projections. On discrete <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(\lim_J\beta=A\times B\)">\(\lim_J\beta=A\times B\)</span>, and the counit comparison is the identity on both projections.</p>
+<p>The canonical invariances of Section 7 are the total <strong>colimit of <span class="math" data-tex="\(L\beta\)">\(L\beta\)</span></strong> and total <strong>limit of <span class="math" data-tex="\(R\beta\)">\(R\beta\)</span></strong>. The other two calculations give different objects and illustrate why the direction of the extension matters. All properties just computed are full factor properties, not just cardinality comparisons.</p>
+<h3 id="exercise-4-challenge-free-and-cofree-group-actions">Exercise 4 — challenge: free and cofree group actions</h3>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a small group, regarded as a one-object category with composition multiplication. Include the identity-only point <span class="math" data-tex="\(J\)">\(J\)</span> and let <span class="math" data-tex="\(\beta(*)=S\)">\(\beta(*)=S\)</span>, a small set. Calculate its extensions in <span class="math" data-tex="\(\mathsf{Set}_{\mathcal U}\)">\(\mathsf{Set}_{\mathcal U}\)</span>. Prove both universal correspondences for every left <span class="math" data-tex="\(G\)">\(G\)</span>-set <span class="math" data-tex="\(X\)">\(X\)</span>. Then compute the orbits of the left extension and the fixed elements of the right extension, and identify their canonical comparisons with <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Solution.</strong> A diagram on the group category is a set with functions <span class="math" data-tex="\(g:X\to X\)">\(g:X\to X\)</span> satisfying <span class="math" data-tex="\(g(hx)=(gh)x\)">\(g(hx)=(gh)x\)</span> and <span class="math" data-tex="\(1x=x\)">\(1x=x\)</span>. The inverse group element gives the inverse function, so it is exactly a left <span class="math" data-tex="\(G\)">\(G\)</span>-action. Restriction forgets this action. Each comma category has one object for every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> and only identities, since the identity-only <span class="math" data-tex="\(J\)">\(J\)</span> supplies no nontrivial arrow. Thus
+<span class="math" data-tex="\(LS=G\times S\)">\(LS=G\times S\)</span> and <span class="math" data-tex="\(RS=S^G\)">\(RS=S^G\)</span>.</p>
+<p>Postcomposition of left-comma labels gives <span class="math" data-tex="\(h(g,s)=(hg,s)\)">\(h(g,s)=(hg,s)\)</span>. This is a left action because <span class="math" data-tex="\(k(h(g,s))=((kh)g,s)\)">\(k(h(g,s))=((kh)g,s)\)</span>, and the identity acts trivially. Precomposition of right-comma labels gives
+<span class="math" data-tex="\((h\cdot f)(g)=f(gh)\)">\((h\cdot f)(g)=f(gh)\)</span>.
+Here <span class="math" data-tex="\((k\cdot(h\cdot f))(g)=f(gkh)=((kh)\cdot f)(g)\)">\((k\cdot(h\cdot f))(g)=f(gkh)=((kh)\cdot f)(g)\)</span>, and the identity again acts trivially. The unit is <span class="math" data-tex="\(s\mapsto(1,s)\)">\(s\mapsto(1,s)\)</span>; the counit is evaluation <span class="math" data-tex="\(f\mapsto f(1)\)">\(f\mapsto f(1)\)</span>. Smallness of <span class="math" data-tex="\(G\times S\)">\(G\times S\)</span> and <span class="math" data-tex="\(S^G\)">\(S^G\)</span> is the retained product/function-set closure.</p>
+<p>Given <span class="math" data-tex="\(u:S\to X\)">\(u:S\to X\)</span>, its unique equivariant left factor is <span class="math" data-tex="\(H(g,s)=g\,u(s)\)">\(H(g,s)=g\,u(s)\)</span>. Indeed <span class="math" data-tex="\(H(hg,s)=hg\,u(s)=hH(g,s)\)">\(H(hg,s)=hg\,u(s)=hH(g,s)\)</span>. Evaluating at <span class="math" data-tex="\((1,s)\)">\((1,s)\)</span> returns <span class="math" data-tex="\(u\)">\(u\)</span>. Conversely an equivariant <span class="math" data-tex="\(H\)">\(H\)</span> must satisfy <span class="math" data-tex="\(H(g,s)=gH(1,s)\)">\(H(g,s)=gH(1,s)\)</span>, so it is this factor. For the right correspondence, given <span class="math" data-tex="\(w:X\to S\)">\(w:X\to S\)</span>, define <span class="math" data-tex="\(V(x)(g)=w(gx)\)">\(V(x)(g)=w(gx)\)</span>. Then <span class="math" data-tex="\(V(hx)(g)=w(ghx)=(h\cdot V(x))(g)\)">\(V(hx)(g)=w(ghx)=(h\cdot V(x))(g)\)</span>, so <span class="math" data-tex="\(V\)">\(V\)</span> is equivariant. Evaluation at 1 gives <span class="math" data-tex="\(w(x)\)">\(w(x)\)</span>. Conversely an equivariant <span class="math" data-tex="\(V\)">\(V\)</span> satisfies <span class="math" data-tex="\(V(x)(g)=(g\cdot V(x))(1)=V(gx)(1)\)">\(V(x)(g)=(g\cdot V(x))(1)=V(gx)(1)\)</span>, forcing the same formula. Thus the two constructions and evaluations are inverse on every map. Composing <span class="math" data-tex="\(u,w\)">\(u,w\)</span> or the equivariant maps with a function of <span class="math" data-tex="\(S\)">\(S\)</span> or an equivariant map of <span class="math" data-tex="\(X\)">\(X\)</span> commutes with these explicit formulas, proving both-variable naturality.</p>
+<p>Every orbit of <span class="math" data-tex="\(G\times S\)">\(G\times S\)</span> consists of the entire fibre <span class="math" data-tex="\(G\times\{s\}\)">\(G\times\{s\}\)</span>: from <span class="math" data-tex="\((g,s)\)">\((g,s)\)</span> to <span class="math" data-tex="\((g&#x27;,s)\)">\((g&#x27;,s)\)</span> use <span class="math" data-tex="\(g&#x27;g^{-1}\)">\(g&#x27;g^{-1}\)</span>. No action changes <span class="math" data-tex="\(s\)">\(s\)</span>. Hence the orbit set is <span class="math" data-tex="\(S\)">\(S\)</span>, and the canonical map from <span class="math" data-tex="\(S=\operatorname{colim}_J\beta\)">\(S=\operatorname{colim}_J\beta\)</span> sends <span class="math" data-tex="\(s\)">\(s\)</span> to the orbit of <span class="math" data-tex="\((1,s)\)">\((1,s)\)</span>, an inverse to recording <span class="math" data-tex="\(s\)">\(s\)</span>. An invariant function <span class="math" data-tex="\(f:G\to S\)">\(f:G\to S\)</span> satisfies <span class="math" data-tex="\(f(gh)=f(g)\)">\(f(gh)=f(g)\)</span> for all <span class="math" data-tex="\(g,h\)">\(g,h\)</span>; setting <span class="math" data-tex="\(g=1\)">\(g=1\)</span> makes it constant. Conversely constant functions are invariant. Their set is therefore <span class="math" data-tex="\(S\)">\(S\)</span>, and the canonical comparison <span class="math" data-tex="\(\lim_I RS\to S\)">\(\lim_I RS\to S\)</span> evaluates a constant function at 1, with inverse the constant-function assignment.</p>
+<p>These calculations include empty <span class="math" data-tex="\(S\)">\(S\)</span>: <span class="math" data-tex="\(G\)">\(G\)</span> is nonempty, so <span class="math" data-tex="\(S^G\)">\(S^G\)</span> and <span class="math" data-tex="\(G\times S\)">\(G\times S\)</span> are then empty, and both total comparisons are the empty bijection. If <span class="math" data-tex="\(G\)">\(G\)</span> is nontrivial, the inclusion <span class="math" data-tex="\(J\to I\)">\(J\to I\)</span> is not full, and for singleton <span class="math" data-tex="\(S\)">\(S\)</span> the left unit lands in only one of <span class="math" data-tex="\(|G|\)">\(|G|\)</span> elements. Thus recovery at the included object needs the full embedding hypothesis, while the total comparisons do not.</p>
+<h2 id="9-references-and-retained-proof-interfaces">9. References and retained proof interfaces</h2>
+<p>Kan extensions, their pointwise formulas and the comma categories that compute them are treated in Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em></a>, Sections 6.1–6.3. Every universal map used in a comparison is specified here.</p>
+<p>The linked course providers retain complete arguments for representing objects in diagrams, adjunctions and their triangles, the exact unit/counit full-faithfulness criterion, comma-category laws, cone/cocone factor properties, opposite functor categories and small indexing bounds. These include compatible uniqueness and the needed empty cases. Their exact specializations are stated where used.</p>
+<p>The pinned Stacks category source supplies a full adjoint full-faithfulness criterion, already covered by the retained owned proof above. Its objectwise right-adjoint existence argument omits the functor and adjunction verification; that omission is not imported as a complete proof. The full represented-Hom-family provider, and the complete pointwise calculations of Sections 3–4, supply every such check here.</p>
+</main></body></html>

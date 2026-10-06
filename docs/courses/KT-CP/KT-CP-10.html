@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="C4BB6E6785C8EEEEE67AFD20899296CC965B58144B0FB3AD50589A39D1FC80B8">
+<title>The Connes–Thom isomorphism I: the Wiener–Hopf extension — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-10</span></nav>
+<article id="lesson" class="lesson"><h1 id="the-connes-thom-isomorphism-i-the-wiener-hopf-extension">The Connes–Thom isomorphism I: the Wiener–Hopf extension</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A real action changes the parity of K-theory. The useful extension has a coefficient space with one endpoint at infinity: its open part gives compact operators, and evaluation at the endpoint gives the crossed product whose K-theory we want. We construct that extension, calculate its scalar index, and prove a reduction that will make one surjectivity argument sufficient for the entire theorem.</p>
+<p>Throughout, <span class="math" data-tex="\(A\)">\(A\)</span> is any C*-algebra and <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(A)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(A)\)</span> is point-norm continuous. Use Lebesgue Haar measure and the conventions</p>
+<span id="equation-10-1"></span><span class="math math-display" data-tex="\[
+(\tau_s f)(t)=f(t-s),\qquad
+\mathcal F_+g(u)=\int_{\mathbb R}g(s)e^{2\pi ius}\,ds.
+\tag{10.1}
+\]">\[
+(\tau_s f)(t)=f(t-s),\qquad
+\mathcal F_+g(u)=\int_{\mathbb R}g(s)e^{2\pi ius}\,ds.
+\tag{10.1}
+\]</span>
+<p>Full and reduced crossed products by <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> agree by Lesson 4. We use the full construction, so its ideal exactness is available directly from Lesson 1.</p>
+<h2 id="the-k-theory-tools-and-the-statement">The K-theory tools and the statement</h2>
+<p>Write <span class="math" data-tex="\(SA=C_0(\mathbb R,A)\)">\(SA=C_0(\mathbb R,A)\)</span>, with an increasing real suspension coordinate. We use the following general K-theory foundations:</p>
+<ul>
+<li>Homotopy invariance, matrix stability and compact-operator stability of <span class="math" data-tex="\(K_0,K_1\)">\(K_0,K_1\)</span>. A rank-one corner <span class="math" data-tex="\(a\mapsto a\otimes e\)">\(a\mapsto a\otimes e\)</span> induces the stability isomorphism.</li>
+<li>The natural isomorphisms <span class="math" data-tex="\(\theta_A:K_1(A)\to K_0(SA)\)">\(\theta_A:K_1(A)\to K_0(SA)\)</span> and <span class="math" data-tex="\(\beta_A:K_0(A)\to K_1(SA)\)">\(\beta_A:K_0(A)\to K_1(SA)\)</span>.</li>
+<li>The natural six-term exact sequence of an extension, including split exactness.</li>
+</ul>
+<p>The finite-matrix and compact-operator foundations are written programme proofs. For <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, <a href="prerequisites/KT-OPK/KT-OPK-03.html"><em>The Grothendieck group and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> of a unital algebra</em></a>, Theorem 4.2, proves homotopy invariance; <a href="prerequisites/KT-OPK/KT-OPK-04.html"><em>Nonunital algebras: unitization, relative classes and half-exactness</em></a>, §1, extends it to nonunital algebras and relative scalar kernels. <a href="prerequisites/KT-OPK/KT-OPK-05.html"><em>Matrix stability, stability and continuity of <span class="math" data-tex="\(K_0\)">\(K_0\)</span></em></a>, Theorems 1.1 and 4.1, proves matrix and compact-operator stability. For <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, <a href="prerequisites/KT-OPK/KT-OPK-06.html"><em>Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></em></a>, §3, Theorem 3.1 and Corollary 4.2, proves homotopy invariance and both stability statements. Each applies to every C*-algebra and to the actual rank-one corner. Thus these foundations retain the generality used in the Wiener–Hopf construction.</p>
+<p>For the index, suspension, positive Bott and six-term tools we reuse the written prerequisites <a href="prerequisites/KT-OPK/KT-OPK-07.html">The index map and the exact sequence at <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, Proposition 5.1</a>, <a href="prerequisites/KT-OPK/KT-OPK-08.html">Suspension, higher K-groups and the long exact sequence, Theorem 2.1</a>, [Bott periodicity, Theorem 4.1], and <a href="prerequisites/KT-OPK/KT-OPK-11.html">The six-term exact sequence and the exponential map, Theorems 1.1 and 2.1</a>. The primary reference is [Blackadar 1998]. In particular, <span class="math" data-tex="\(\beta_A[p]\)">\(\beta_A[p]\)</span> is the positive-winding loop <span class="math" data-tex="\(zp+1-p\)">\(zp+1-p\)</span>. The construction of <span class="math" data-tex="\(\theta_A[u]\)">\(\theta_A[u]\)</span> uses a path <span class="math" data-tex="\(w\)">\(w\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span> and the class <span class="math" data-tex="\([w p_n w^{-1}]-[p_n]\)">\([w p_n w^{-1}]-[p_n]\)</span>, where <span class="math" data-tex="\(p_n=\operatorname{diag}(1_n,0_n)\)">\(p_n=\operatorname{diag}(1_n,0_n)\)</span>.</p>
+<p>For an extension <span class="math" data-tex="\(0\to I\to D\to Q\to0\)">\(0\to I\to D\to Q\to0\)</span>, denote its two boundaries by</p>
+<span id="equation-10-2"></span><span class="math math-display" data-tex="\[
+\delta_1:K_1(Q)\longrightarrow K_0(I),\qquad
+\delta_0:K_0(Q)\longrightarrow K_1(I).
+\tag{10.2}
+\]">\[
+\delta_1:K_1(Q)\longrightarrow K_0(I),\qquad
+\delta_0:K_0(Q)\longrightarrow K_1(I).
+\tag{10.2}
+\]</span>
+<p>The index convention is kernel minus cokernel. More precisely, if a unitary lifts to a partial isometry <span class="math" data-tex="\(V\)">\(V\)</span> in a matrix unitization of <span class="math" data-tex="\(D\)">\(D\)</span>, then</p>
+<span id="equation-10-3"></span><span class="math math-display" data-tex="\[
+\delta_1[U]=[1-V^*V]-[1-VV^*].
+\tag{10.3}
+\]">\[
+\delta_1[U]=[1-V^*V]-[1-VV^*].
+\tag{10.3}
+\]</span>
+<p>This is the prerequisite's Proposition 5.1, also [Blackadar 1998]. The exponential boundary uses <span class="math" data-tex="\(\exp(2\pi i x)\)">\(\exp(2\pi i x)\)</span> for a selfadjoint lift <span class="math" data-tex="\(x\)">\(x\)</span>, by <a href="prerequisites/KT-OPK/KT-OPK-11.html">The six-term exact sequence and the exponential map, Theorem 1.1</a>, also Blackadar §9.3.2. With our forward <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and positive <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, that theorem gives the typed comparison</p>
+<span class="math math-display" data-tex="\[
+\delta_0=-\theta_I^{-1}\delta_{1,SE}\beta_Q,
+\]">\[
+\delta_0=-\theta_I^{-1}\delta_{1,SE}\beta_Q,
+\]</span>
+<p>where <span class="math" data-tex="\(SE\)">\(SE\)</span> is the suspended extension. Thus the positive exponential is not obtained by dropping the minus sign in this comparison. General boundaries do not require partial-isometry lifts.</p>
+<p>The Connes–Thom theorem will assert that the two boundaries of the extension constructed below are isomorphisms:</p>
+<span id="equation-10-4"></span><span class="math math-display" data-tex="\[
+K_i(A\rtimes_\alpha\mathbb R)\cong K_{1-i}(A),
+\qquad i=0,1.
+\tag{10.4}
+\]">\[
+K_i(A\rtimes_\alpha\mathbb R)\cong K_{1-i}(A),
+\qquad i=0,1.
+\tag{10.4}
+\]</span>
+<p>This lesson proves the construction, the scalar case and the reduction. Lesson 11 proves the universal surjectivity required by that reduction, and records the normalized inverse maps. Thus (10.4) is the theorem being developed; we do not use it in the argument that follows.</p>
+<h2 id="a-cone-with-an-equivariant-quotient">A cone with an equivariant quotient</h2>
+<p>Let <span class="math" data-tex="\(Y=\mathbb R\cup\{+\infty\}\)">\(Y=\mathbb R\cup\{+\infty\}\)</span>, with its usual one-sided compactification. A function in <span class="math" data-tex="\(C=C_0(Y)\)">\(C=C_0(Y)\)</span> is continuous on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, tends to zero at <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, and has a finite limit at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. Set</p>
+<span id="equation-10-5"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+CA=C_0(Y,A),\qquad
+(\gamma_sF)(t)=\alpha_s(F(t-s)),\\
+(\gamma_sF)(+\infty)=\alpha_s(F(+\infty)).
+\end{gathered}
+\tag{10.5}
+\]">\[
+\begin{gathered}
+CA=C_0(Y,A),\qquad
+(\gamma_sF)(t)=\alpha_s(F(t-s)),\\
+(\gamma_sF)(+\infty)=\alpha_s(F(+\infty)).
+\end{gathered}
+\tag{10.5}
+\]</span>
+<p>The tensor identification <span class="math" data-tex="\(CA=C\otimes A\)">\(CA=C\otimes A\)</span> is Lemma 8.1. Formula (10.5) defines a point-norm continuous action. To see continuity, first use finite sums of scalar functions times coefficients. Translation is norm continuous on <span class="math" data-tex="\(C_0(Y)\)">\(C_0(Y)\)</span>, and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is norm continuous on each coefficient. These sums are dense; isometry gives continuity for every <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Evaluation at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> gives an equivariant exact sequence</p>
+<span id="equation-10-6"></span><span class="math math-display" data-tex="\[
+0\longrightarrow SA\longrightarrow CA
+\xrightarrow{\operatorname{ev}_{+\infty}}A\longrightarrow0.
+\tag{10.6}
+\]">\[
+0\longrightarrow SA\longrightarrow CA
+\xrightarrow{\operatorname{ev}_{+\infty}}A\longrightarrow0.
+\tag{10.6}
+\]</span>
+<p>It is onto: multiply <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> by a continuous scalar function vanishing at <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> and equal to one near <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. The kernel is precisely the functions vanishing at both ends.</p>
+<p>The algebra <span class="math" data-tex="\(CA\)">\(CA\)</span> is contractible. The coordinate</p>
+<span id="equation-10-7"></span><span class="math math-display" data-tex="\[
+u(t)=\frac{e^t}{1+e^t},\qquad u(+\infty)=1
+\tag{10.7}
+\]">\[
+u(t)=\frac{e^t}{1+e^t},\qquad u(+\infty)=1
+\tag{10.7}
+\]</span>
+<p>identifies it with <span class="math" data-tex="\(C_0((0,1],A)\)">\(C_0((0,1],A)\)</span>. Extend each such function by zero at <span class="math" data-tex="\(0\)">\(0\)</span>. For <span class="math" data-tex="\(0\le r\le1\)">\(0\le r\le1\)</span>, define</p>
+<span id="equation-10-8"></span><span class="math math-display" data-tex="\[
+(H_rF)(u)=F(ru).
+\tag{10.8}
+\]">\[
+(H_rF)(u)=F(ru).
+\tag{10.8}
+\]</span>
+<p>Each <span class="math" data-tex="\(H_r\)">\(H_r\)</span> is a *-homomorphism, <span class="math" data-tex="\(H_0=0\)">\(H_0=0\)</span>, <span class="math" data-tex="\(H_1=\operatorname{id}\)">\(H_1=\operatorname{id}\)</span>, and uniform continuity on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> gives point-norm continuity in <span class="math" data-tex="\(r\)">\(r\)</span>. Consequently</p>
+<span id="equation-10-9"></span><span class="math math-display" data-tex="\[
+K_0(CA)=K_1(CA)=0.
+\tag{10.9}
+\]">\[
+K_0(CA)=K_1(CA)=0.
+\tag{10.9}
+\]</span>
+<p>This is an ordinary algebra homotopy. It does not commute with the action in (10.5), and therefore does not itself give vanishing K-theory of the crossed product.</p>
+<h2 id="untwisting-the-open-part">Untwisting the open part</h2>
+<p><span id="proposition-10-1"></span><strong>Proposition 10.1.</strong> There is a natural isomorphism</p>
+<span id="equation-10-10"></span><span class="math math-display" data-tex="\[
+SA\rtimes_\gamma\mathbb R\cong
+A\otimes\mathcal K(L^2(\mathbb R)).
+\tag{10.10}
+\]">\[
+SA\rtimes_\gamma\mathbb R\cong
+A\otimes\mathcal K(L^2(\mathbb R)).
+\tag{10.10}
+\]</span>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="\((\Phi F)(t)=\alpha_{-t}(F(t))\)">\((\Phi F)(t)=\alpha_{-t}(F(t))\)</span> on <span class="math" data-tex="\(SA\)">\(SA\)</span>. This is an isometric *-isomorphism, with inverse <span class="math" data-tex="\(F(t)\mapsto\alpha_t(F(t))\)">\(F(t)\mapsto\alpha_t(F(t))\)</span>, and</p>
+<span id="equation-10-11"></span><span class="math math-display" data-tex="\[
+\Phi\gamma_sF(t)
+=\alpha_{s-t}(F(t-s))
+=(\tau_s\Phi F)(t).
+\tag{10.11}
+\]">\[
+\Phi\gamma_sF(t)
+=\alpha_{s-t}(F(t-s))
+=(\tau_s\Phi F)(t).
+\tag{10.11}
+\]</span>
+<p>It induces an isomorphism to <span class="math" data-tex="\(SA\rtimes_{\tau\otimes\operatorname{id}}\mathbb R\)">\(SA\rtimes_{\tau\otimes\operatorname{id}}\mathbb R\)</span>. On crossed-product kernels it is</p>
+<span id="equation-10-12"></span><span class="math math-display" data-tex="\[
+\widetilde f(s,t)=\alpha_{-t}(f(s,t)).
+\tag{10.12}
+\]">\[
+\widetilde f(s,t)=\alpha_{-t}(f(s,t)).
+\tag{10.12}
+\]</span>
+<p>For example, the original product is</p>
+<span class="math math-display" data-tex="\[
+(f*g)(s,t)=\int_{\mathbb R}
+f(r,t)\alpha_r(g(s-r,t-r))\,dr.
+\]">\[
+(f*g)(s,t)=\int_{\mathbb R}
+f(r,t)\alpha_r(g(s-r,t-r))\,dr.
+\]</span>
+<p>Applying <span class="math" data-tex="\(\alpha_{-t}\)">\(\alpha_{-t}\)</span> gives the untwisted product of <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span> and <span class="math" data-tex="\(\widetilde g\)">\(\widetilde g\)</span>, since the second coefficient becomes <span class="math" data-tex="\(\alpha_{-(t-r)}g(s-r,t-r)\)">\(\alpha_{-(t-r)}g(s-r,t-r)\)</span>. The involution transforms in the same way:</p>
+<span class="math math-display" data-tex="\[
+\widetilde{f^*}(s,t)
+=\widetilde f(-s,t-s)^*.
+\]">\[
+\widetilde{f^*}(s,t)
+=\widetilde f(-s,t-s)^*.
+\]</span>
+<p>Both directions preserve full norms because they identify all covariant representations.</p>
+<p>Lemma 8.2 moves the inactive <span class="math" data-tex="\(A\)">\(A\)</span>-factor outside the full crossed product. The translation theorem of Lesson 7 identifies <span class="math" data-tex="\(C_0(\mathbb R)\rtimes_\tau\mathbb R\)">\(C_0(\mathbb R)\rtimes_\tau\mathbb R\)</span> with <span class="math" data-tex="\(\mathcal K(L^2(\mathbb R))\)">\(\mathcal K(L^2(\mathbb R))\)</span>. Lemma 8.1 identifies the maximal and spatial tensor norms on the resulting compact-operator factor. This proves (10.10).</p>
+<p>For a concrete description, the kernel of the image of <span class="math" data-tex="\(f\)">\(f\)</span> is</p>
+<span id="equation-10-13"></span><span class="math math-display" data-tex="\[
+k_f(t,r)=\alpha_{-t}(f(t-r,t)).
+\tag{10.13}
+\]">\[
+k_f(t,r)=\alpha_{-t}(f(t-r,t)).
+\tag{10.13}
+\]</span>
+<p>Under a faithful representation of <span class="math" data-tex="\(A\)">\(A\)</span>, this acts on <span class="math" data-tex="\(L^2(\mathbb R)\otimes H_A\)">\(L^2(\mathbb R)\otimes H_A\)</span> by integration in <span class="math" data-tex="\(r\)">\(r\)</span>. A separated kernel <span class="math" data-tex="\(a\,\xi(t)\overline{\eta(r)}\)">\(a\,\xi(t)\overline{\eta(r)}\)</span> corresponds to <span class="math" data-tex="\(a\otimes\theta_{\xi,\eta}\)">\(a\otimes\theta_{\xi,\eta}\)</span>, with the tensor factors written in the order of (10.10). The full-norm assertion comes from the translation theorem, not just from the formal kernel formula. ∎</p>
+<p>The untwisting map here is defined on <span class="math" data-tex="\(SA\)">\(SA\)</span>. On <span class="math" data-tex="\(CA\)">\(CA\)</span>, the function <span class="math" data-tex="\(t\mapsto\alpha_{-t}(F(t))\)">\(t\mapsto\alpha_{-t}(F(t))\)</span> need not have a limit at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>; this formula does not untwist the entire Wiener–Hopf algebra.</p>
+<h2 id="the-extension-and-its-boundary-maps">The extension and its boundary maps</h2>
+<p>Put <span class="math" data-tex="\(W_\alpha=CA\rtimes_\gamma\mathbb R\)">\(W_\alpha=CA\rtimes_\gamma\mathbb R\)</span> and <span class="math" data-tex="\(B_\alpha=A\rtimes_\alpha\mathbb R\)">\(B_\alpha=A\rtimes_\alpha\mathbb R\)</span>. Full crossed-product exactness applied to (10.6), followed by Proposition 10.1, gives</p>
+<span id="equation-10-14"></span><span class="math math-display" data-tex="\[
+0\longrightarrow A\otimes\mathcal K
+\xrightarrow{\iota_\alpha}W_\alpha
+\xrightarrow{q_\alpha}B_\alpha\longrightarrow0.
+\tag{10.14}
+\]">\[
+0\longrightarrow A\otimes\mathcal K
+\xrightarrow{\iota_\alpha}W_\alpha
+\xrightarrow{q_\alpha}B_\alpha\longrightarrow0.
+\tag{10.14}
+\]</span>
+<p>This is the <strong>Wiener–Hopf extension</strong>. On a continuous compact group kernel, <span class="math" data-tex="\(q_\alpha f(s)=f(s,+\infty)\)">\(q_\alpha f(s)=f(s,+\infty)\)</span>. Compact-operator stability identifies its boundaries with</p>
+<span id="equation-10-15"></span><span class="math math-display" data-tex="\[
+\partial_1^\alpha:K_1(B_\alpha)\to K_0(A),\qquad
+\partial_0^\alpha:K_0(B_\alpha)\to K_1(A).
+\tag{10.15}
+\]">\[
+\partial_1^\alpha:K_1(B_\alpha)\to K_0(A),\qquad
+\partial_0^\alpha:K_0(B_\alpha)\to K_1(A).
+\tag{10.15}
+\]</span>
+<p>The two consecutive parts of the cyclic exact sequence are</p>
+<span id="equation-10-16"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(A)\longrightarrow K_0(W_\alpha)\longrightarrow K_0(B_\alpha)
+\xrightarrow{\partial_0^\alpha}K_1(A),\\
+K_1(A)\longrightarrow K_1(W_\alpha)\longrightarrow K_1(B_\alpha)
+\xrightarrow{\partial_1^\alpha}K_0(A).
+\end{gathered}
+\tag{10.16}
+\]">\[
+\begin{gathered}
+K_0(A)\longrightarrow K_0(W_\alpha)\longrightarrow K_0(B_\alpha)
+\xrightarrow{\partial_0^\alpha}K_1(A),\\
+K_1(A)\longrightarrow K_1(W_\alpha)\longrightarrow K_1(B_\alpha)
+\xrightarrow{\partial_1^\alpha}K_0(A).
+\end{gathered}
+\tag{10.16}
+\]</span>
+<p>Here the stability corner can be chosen explicitly. If <span class="math" data-tex="\(h\in L^2(\mathbb R)\)">\(h\in L^2(\mathbb R)\)</span> is a unit vector, let <span class="math" data-tex="\(e_h=\theta_{h,h}\)">\(e_h=\theta_{h,h}\)</span>. For a continuous compactly supported <span class="math" data-tex="\(h\)">\(h\)</span>, its image in the ideal is</p>
+<span id="equation-10-17"></span><span class="math math-display" data-tex="\[
+\phi_h(a)(s,t)=\alpha_t(a)h(t)\overline{h(t-s)}.
+\tag{10.17}
+\]">\[
+\phi_h(a)(s,t)=\alpha_t(a)h(t)\overline{h(t-s)}.
+\tag{10.17}
+\]</span>
+<p>Formula (10.13) sends this to <span class="math" data-tex="\(a\otimes e_h\)">\(a\otimes e_h\)</span>, so it is a *-homomorphism and induces the stability isomorphism onto the ideal's K-theory. For arbitrary <span class="math" data-tex="\(h\)">\(h\)</span>, the same assertion means norm completion: approximate <span class="math" data-tex="\(h\)">\(h\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by continuous compactly supported functions and use continuity of rank-one operators. It is not a claim that the displayed coefficients are always continuous.</p>
+<p>The extension is natural even for a degenerate equivariant *-homomorphism <span class="math" data-tex="\(v:A\to D\)">\(v:A\to D\)</span>. Applying <span class="math" data-tex="\(v\)">\(v\)</span> pointwise to the continuous kernel algebras gives a morphism of (10.14); on its ideal this is <span class="math" data-tex="\(v\otimes\operatorname{id}_{\mathcal K}\)">\(v\otimes\operatorname{id}_{\mathcal K}\)</span>. The full construction of Lesson 1 makes these maps contractive. Formula (10.12) commutes with them by equivariance. No extension of a degenerate map to a multiplier algebra is needed.</p>
+<h2 id="one-surjectivity-assertion-controls-both-parities">One surjectivity assertion controls both parities</h2>
+<p><span id="proposition-10-2"></span><strong>Proposition 10.2.</strong> Suppose that <span class="math" data-tex="\(\partial_1^\beta\)">\(\partial_1^\beta\)</span> is onto for every C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span> with every point-norm continuous action <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Then for every <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span>, <span class="math" data-tex="\(K_*(W_\alpha)=0\)">\(K_*(W_\alpha)=0\)</span>, and both maps in (10.15) are isomorphisms.</p>
+<p><strong>Proof.</strong> The hypothesis first gives the implication</p>
+<span id="equation-10-18"></span><span class="math math-display" data-tex="\[
+K_1(D\rtimes_\beta\mathbb R)=0
+\ \Longrightarrow\ K_0(D)=0.
+\tag{10.18}
+\]">\[
+K_1(D\rtimes_\beta\mathbb R)=0
+\ \Longrightarrow\ K_0(D)=0.
+\tag{10.18}
+\]</span>
+<p>Indeed a surjective map from the zero group has zero target.</p>
+<p>Now assume <span class="math" data-tex="\(K_1(A)=0\)">\(K_1(A)=0\)</span>, put <span class="math" data-tex="\(D=A\rtimes_\alpha\mathbb R\)">\(D=A\rtimes_\alpha\mathbb R\)</span>, and give <span class="math" data-tex="\(D\)">\(D\)</span> its dual action. Identify the dual group with <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> using <span class="math" data-tex="\(\chi_u(s)=e^{2\pi ius}\)">\(\chi_u(s)=e^{2\pi ius}\)</span>. Takai duality from Lesson 8 and stability give</p>
+<span id="equation-10-19"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K_1(D\rtimes_{\widehat\alpha}\mathbb R)
+&amp;\cong K_1(A\otimes\mathcal K(L^2(\mathbb R)))\\
+&amp;\cong K_1(A)=0.
+\end{aligned}
+\tag{10.19}
+\]">\[
+\begin{aligned}
+K_1(D\rtimes_{\widehat\alpha}\mathbb R)
+&amp;\cong K_1(A\otimes\mathcal K(L^2(\mathbb R)))\\
+&amp;\cong K_1(A)=0.
+\end{aligned}
+\tag{10.19}
+\]</span>
+<p>Apply (10.18) to this <span class="math" data-tex="\(D,\widehat\alpha\)">\(D,\widehat\alpha\)</span>. It follows that</p>
+<span id="equation-10-20"></span><span class="math math-display" data-tex="\[
+K_1(A)=0\ \Longrightarrow\
+K_0(A\rtimes_\alpha\mathbb R)=0.
+\tag{10.20}
+\]">\[
+K_1(A)=0\ \Longrightarrow\
+K_0(A\rtimes_\alpha\mathbb R)=0.
+\tag{10.20}
+\]</span>
+<p>Only the ordinary Takai isomorphism is used here; there is no need to remove its surviving double dual action.</p>
+<p>Next assume <span class="math" data-tex="\(K_0(A)=0\)">\(K_0(A)=0\)</span>. Let <span class="math" data-tex="\(S\alpha\)">\(S\alpha\)</span> act trivially on the suspension coordinate and by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on coefficients. Bott periodicity gives <span class="math" data-tex="\(K_1(SA)\cong K_0(A)=0\)">\(K_1(SA)\cong K_0(A)=0\)</span>. Applying (10.20) to <span class="math" data-tex="\(SA,S\alpha\)">\(SA,S\alpha\)</span>, and using Lemmas 8.1–8.2, gives</p>
+<span id="equation-10-21"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;=K_0(SA\rtimes_{S\alpha}\mathbb R)\\
+&amp;\cong K_0(S(A\rtimes_\alpha\mathbb R))
+\cong K_1(A\rtimes_\alpha\mathbb R).
+\end{aligned}
+\tag{10.21}
+\]">\[
+\begin{aligned}
+0&amp;=K_0(SA\rtimes_{S\alpha}\mathbb R)\\
+&amp;\cong K_0(S(A\rtimes_\alpha\mathbb R))
+\cong K_1(A\rtimes_\alpha\mathbb R).
+\end{aligned}
+\tag{10.21}
+\]</span>
+<p>Thus <span class="math" data-tex="\(K_0(A)=0\)">\(K_0(A)=0\)</span> implies vanishing of the crossed product's <span class="math" data-tex="\(K_1\)">\(K_1\)</span>.</p>
+<p>Use these two implications with the coefficient algebra <span class="math" data-tex="\(CA\)">\(CA\)</span>, whose two groups vanish by (10.9), and with its action <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. They give</p>
+<span id="equation-10-22"></span><span class="math math-display" data-tex="\[
+K_0(W_\alpha)=K_1(W_\alpha)=0.
+\tag{10.22}
+\]">\[
+K_0(W_\alpha)=K_1(W_\alpha)=0.
+\tag{10.22}
+\]</span>
+<p>In (10.16), the zero middle groups make both boundaries injective and surjective. ∎</p>
+<p>The order of this argument matters: universal surjectivity gives (10.18), Takai gives (10.20), suspension gives (10.21), and only then does the cone give (10.22). Crossing the nonequivariant contraction (10.8) would not prove that last assertion.</p>
+<h2 id="the-scalar-index-including-its-sign">The scalar index, including its sign</h2>
+<p>Take <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span> with the trivial action and write <span class="math" data-tex="\(W=C_0(Y)\rtimes_\tau\mathbb R\)">\(W=C_0(Y)\rtimes_\tau\mathbb R\)</span>. The extension becomes</p>
+<span id="equation-10-23"></span><span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K(L^2(\mathbb R))
+\longrightarrow W\longrightarrow C_0(\widehat{\mathbb R})
+\longrightarrow0.
+\tag{10.23}
+\]">\[
+0\longrightarrow\mathcal K(L^2(\mathbb R))
+\longrightarrow W\longrightarrow C_0(\widehat{\mathbb R})
+\longrightarrow0.
+\tag{10.23}
+\]</span>
+<p>We calculate its boundary without using Proposition 10.2's hypothesis.</p>
+<p>Represent <span class="math" data-tex="\(W\)">\(W\)</span> on <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span> by multiplication and left translation:</p>
+<span id="equation-10-24"></span><span class="math math-display" data-tex="\[
+(T(f)\xi)(t)=\int_{\mathbb R}f(s,t)\xi(t-s)\,ds.
+\tag{10.24}
+\]">\[
+(T(f)\xi)(t)=\int_{\mathbb R}f(s,t)\xi(t-s)\,ds.
+\tag{10.24}
+\]</span>
+<p>This representation is faithful. Its restriction to the open-part ideal is the faithful compact-operator representation of Lesson 7. On a compact group kernel,
+<span class="math" data-tex="\(\lambda_n^*T(f)\lambda_n\)">\(\lambda_n^*T(f)\lambda_n\)</span> converges strongly, as <span class="math" data-tex="\(n\to+\infty\)">\(n\to+\infty\)</span>, to convolution by <span class="math" data-tex="\(s\mapsto f(s,+\infty)\)">\(s\mapsto f(s,+\infty)\)</span>. Pointwise coefficient convergence and the integrable compact-support norm bound give this on every vector by dominated convergence. Norm approximation extends it to every element of <span class="math" data-tex="\(W\)">\(W\)</span>. Consequently <span class="math" data-tex="\(T(b)=0\)">\(T(b)=0\)</span> implies that the regular representation of the quotient <span class="math" data-tex="\(q(b)\)">\(q(b)\)</span> is zero. The Fourier theorem of Lesson 6 makes that quotient representation faithful. Hence <span class="math" data-tex="\(b\)">\(b\)</span> belongs to the open-part ideal, where faithfulness gives <span class="math" data-tex="\(b=0\)">\(b=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be the indicator of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and consider the operator</p>
+<span id="equation-10-25"></span><span class="math math-display" data-tex="\[
+(F\xi)(t)=\chi(t)\int_0^t e^{-(t-r)/2}\xi(r)\,dr.
+\tag{10.25}
+\]">\[
+(F\xi)(t)=\chi(t)\int_0^t e^{-(t-r)/2}\xi(r)\,dr.
+\tag{10.25}
+\]</span>
+<p>Its kernel is <span class="math" data-tex="\(e^{-(t-r)/2}\chi(t-r)\chi(r)\)">\(e^{-(t-r)/2}\chi(t-r)\chi(r)\)</span>. We must check that it belongs to <span class="math" data-tex="\(T(W)\)">\(T(W)\)</span>, since the coefficients suggested by this formula are discontinuous.</p>
+<p>Let <span class="math" data-tex="\(g_\varepsilon\)">\(g_\varepsilon\)</span> be zero on <span class="math" data-tex="\((-\infty,0]\)">\((-\infty,0]\)</span>, linear from zero to one on <span class="math" data-tex="\([0,\varepsilon]\)">\([0,\varepsilon]\)</span>, and one thereafter. The coefficients</p>
+<span id="equation-10-26"></span><span class="math math-display" data-tex="\[
+G_\varepsilon(s,t)=e^{-s/2}g_\varepsilon(s)g_\varepsilon(t-s)
+\tag{10.26}
+\]">\[
+G_\varepsilon(s,t)=e^{-s/2}g_\varepsilon(s)g_\varepsilon(t-s)
+\tag{10.26}
+\]</span>
+<p>belong to <span class="math" data-tex="\(L^1(\mathbb R,C_0(Y))\)">\(L^1(\mathbb R,C_0(Y))\)</span>: they vanish for <span class="math" data-tex="\(s\le0\)">\(s\le0\)</span>, have integrable coefficient norms, and are norm continuous in <span class="math" data-tex="\(s\)">\(s\)</span>. They therefore define elements of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>In their operator kernels, changing <span class="math" data-tex="\(\chi(s)\)">\(\chi(s)\)</span> to <span class="math" data-tex="\(g_\varepsilon(s)\)">\(g_\varepsilon(s)\)</span> has convolution norm at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Changing <span class="math" data-tex="\(\chi(r)\)">\(\chi(r)\)</span> to <span class="math" data-tex="\(g_\varepsilon(r)\)">\(g_\varepsilon(r)\)</span> contributes a Hilbert–Schmidt operator whose squared norm is at most</p>
+<span class="math math-display" data-tex="\[
+\int_0^\varepsilon\int_0^\infty e^{-s}\,ds\,dr
+=\varepsilon.
+\]">\[
+\int_0^\varepsilon\int_0^\infty e^{-s}\,ds\,dr
+=\varepsilon.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|T(G_\varepsilon)-F\|\le\varepsilon+\sqrt{\varepsilon}\)">\(\|T(G_\varepsilon)-F\|\le\varepsilon+\sqrt{\varepsilon}\)</span>. Faithfulness of <span class="math" data-tex="\(T\)">\(T\)</span> makes <span class="math" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> Cauchy in the full norm, proving membership of (10.25) in <span class="math" data-tex="\(W\)">\(W\)</span>. The discontinuous expressions themselves were not treated as elements of <span class="math" data-tex="\(L^1(\mathbb R,C_0(Y))\)">\(L^1(\mathbb R,C_0(Y))\)</span>.</p>
+<p>Set <span class="math" data-tex="\(h(t)=e^{-t/2}\chi(t)\)">\(h(t)=e^{-t/2}\chi(t)\)</span>. It has squared norm one, so <span class="math" data-tex="\(E=\theta_{h,h}\)">\(E=\theta_{h,h}\)</span> is a rank-one projection in the compact ideal. Direct integrations give, for <span class="math" data-tex="\(t,r&gt;0\)">\(t,r&gt;0\)</span>,</p>
+<span id="equation-10-27"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(F^*F)(t,r)&amp;=e^{-|t-r|/2},\\
+(FF^*)(t,r)&amp;=e^{-|t-r|/2}-e^{-(t+r)/2},\\
+(F+F^*)(t,r)&amp;=e^{-|t-r|/2}.
+\end{aligned}
+\tag{10.27}
+\]">\[
+\begin{aligned}
+(F^*F)(t,r)&amp;=e^{-|t-r|/2},\\
+(FF^*)(t,r)&amp;=e^{-|t-r|/2}-e^{-(t+r)/2},\\
+(F+F^*)(t,r)&amp;=e^{-|t-r|/2}.
+\end{aligned}
+\tag{10.27}
+\]</span>
+<p>All these kernels vanish if either variable is negative, apart from the identity operator used next. For the first line integrate over <span class="math" data-tex="\(v&gt;\max(t,r)\)">\(v&gt;\max(t,r)\)</span>. For the second integrate over <span class="math" data-tex="\(0&lt;v&lt;\min(t,r)\)">\(0&lt;v&lt;\min(t,r)\)</span>. The third splits according to <span class="math" data-tex="\(t&gt;r\)">\(t&gt;r\)</span> or <span class="math" data-tex="\(r&gt;t\)">\(r&gt;t\)</span>; the diagonal is a null set. It follows that</p>
+<span id="equation-10-28"></span><span class="math math-display" data-tex="\[
+S=1-F,\qquad S^*S=1,\qquad SS^*=1-E.
+\tag{10.28}
+\]">\[
+S=1-F,\qquad S^*S=1,\qquad SS^*=1-E.
+\tag{10.28}
+\]</span>
+<p>These equalities hold in the unitization of <span class="math" data-tex="\(W\)">\(W\)</span>, because <span class="math" data-tex="\(T\)">\(T\)</span> is faithful.</p>
+<p>The quotient of <span class="math" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> is the Fourier transform of <span class="math" data-tex="\(e^{-s/2}g_\varepsilon(s)\)">\(e^{-s/2}g_\varepsilon(s)\)</span>. These scalar kernels converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, giving</p>
+<span id="equation-10-29"></span><span class="math math-display" data-tex="\[
+q(F)(u)=\frac1{1/2-2\pi iu},\qquad
+q(S)(u)=v(u)=\frac{u-ic}{u+ic},\quad c=\frac1{4\pi}.
+\tag{10.29}
+\]">\[
+q(F)(u)=\frac1{1/2-2\pi iu},\qquad
+q(S)(u)=v(u)=\frac{u-ic}{u+ic},\quad c=\frac1{4\pi}.
+\tag{10.29}
+\]</span>
+<p>The unitary <span class="math" data-tex="\(v\)">\(v\)</span> tends to one at both ends. With the increasing coordinate <span class="math" data-tex="\(u\)">\(u\)</span>, its winding is</p>
+<span id="equation-10-30"></span><span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_{\mathbb R}v&#x27;(u)v(u)^{-1}\,du
+=\frac1{2\pi i}\int_{\mathbb R}
+\frac{2ic}{u^2+c^2}\,du=1.
+\tag{10.30}
+\]">\[
+\frac1{2\pi i}\int_{\mathbb R}v&#x27;(u)v(u)^{-1}\,du
+=\frac1{2\pi i}\int_{\mathbb R}
+\frac{2ic}{u^2+c^2}\,du=1.
+\tag{10.30}
+\]</span>
+<p>Thus <span class="math" data-tex="\([v]\)">\([v]\)</span> is the positive generator <span class="math" data-tex="\(\beta_{\mathbb C}[1]\)">\(\beta_{\mathbb C}[1]\)</span> of <span class="math" data-tex="\(K_1(C_0(\mathbb R))\)">\(K_1(C_0(\mathbb R))\)</span>, with the compactified real coordinate used as the loop coordinate.</p>
+<p>Formula (10.3) applied to the isometry <span class="math" data-tex="\(S\)">\(S\)</span> now gives</p>
+<span id="equation-10-31"></span><span class="math math-display" data-tex="\[
+\partial_1[v]=-[E]=-[1]\in K_0(\mathbb C).
+\tag{10.31}
+\]">\[
+\partial_1[v]=-[E]=-[1]\in K_0(\mathbb C).
+\tag{10.31}
+\]</span>
+<p>The index boundary is an isomorphism, and its inverse sends <span class="math" data-tex="\([1]\)">\([1]\)</span> to <span class="math" data-tex="\(-[v]\)">\(-[v]\)</span>. The other boundary is the isomorphism between zero groups, since <span class="math" data-tex="\(K_0(C_0(\mathbb R))=K_1(\mathbb C)=0\)">\(K_0(C_0(\mathbb R))=K_1(\mathbb C)=0\)</span>. Exactness of (10.23) also proves <span class="math" data-tex="\(K_0(W)=K_1(W)=0\)">\(K_0(W)=K_1(W)=0\)</span>.</p>
+<p>This agrees with the Toeplitz sign convention. An isometry with a one-dimensional cokernel has index <span class="math" data-tex="\(-1\)">\(-1\)</span>; the unilateral shift gives the same calculation for the circle symbol <span class="math" data-tex="\(z\)">\(z\)</span>. Here the symbol is the positive Cayley loop <span class="math" data-tex="\(v\)">\(v\)</span>, and its winding was computed rather than inferred from a Fourier convention.</p>
+<h2 id="why-the-continuous-shift-is-the-universal-pure-isometry">Why the continuous shift is the universal pure isometry</h2>
+<p>The shift used in the scalar Wiener–Hopf calculation is part of a general classification theorem. This section adapts S. Sundar's <em>Notes on C*-algebras</em> (2025), the section on Cooper's theorem, supplied as editable TeX under CC0. The adaptation gives the dilation details, uses the translation imprimitivity proof of Lesson 7, and includes arbitrary Hilbert-space multiplicities.</p>
+<p>A strongly continuous semigroup of isometries satisfies <span class="math" data-tex="\(V_0=1\)">\(V_0=1\)</span>, <span class="math" data-tex="\(V_sV_t=V_{s+t}\)">\(V_sV_t=V_{s+t}\)</span>, and <span class="math" data-tex="\(V_t^*V_t=1\)">\(V_t^*V_t=1\)</span>, for <span class="math" data-tex="\(s,t\geq0\)">\(s,t\geq0\)</span>. It is <strong>pure</strong> when <span class="math" data-tex="\(V_t^*\xi\to0\)">\(V_t^*\xi\to0\)</span> as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> for every vector.</p>
+<p><span id="theorem-10c-1"></span><strong>Theorem 10C.1 (Cooper and the continuous Wold decomposition).</strong> Every such semigroup on an arbitrary Hilbert space has a reducing decomposition</p>
+<span class="math math-display" data-tex="\[
+\mathcal H=\mathcal H_\infty^\perp\oplus\mathcal H_\infty,\qquad
+\mathcal H_\infty=\bigcap_{t\geq0}V_t\mathcal H,
+\]">\[
+\mathcal H=\mathcal H_\infty^\perp\oplus\mathcal H_\infty,\qquad
+\mathcal H_\infty=\bigcap_{t\geq0}V_t\mathcal H,
+\]</span>
+<p>and is unitarily equivalent to</p>
+<span id="equation-10c-1"></span><span class="math math-display" data-tex="\[
+V_t=(S_t\otimes1_{\mathcal L})\oplus U_t,\qquad
+(S_t\xi)(x)=
+\begin{cases}\xi(x-t)&amp;x\geq t,\\0&amp;0&lt;x&lt;t.\end{cases}
+\tag{10C.1}
+\]">\[
+V_t=(S_t\otimes1_{\mathcal L})\oplus U_t,\qquad
+(S_t\xi)(x)=
+\begin{cases}\xi(x-t)&amp;x\geq t,\\0&amp;0&lt;x&lt;t.\end{cases}
+\tag{10C.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(U\)">\(U\)</span> extends to a strongly continuous unitary representation of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and the shift multiplicity <span class="math" data-tex="\(\dim\mathcal L\)">\(\dim\mathcal L\)</span> can be any Hilbert-space cardinal.</p>
+<p><strong>Proof.</strong> The range projections <span class="math" data-tex="\(P_t=V_tV_t^*\)">\(P_t=V_tV_t^*\)</span> decrease with <span class="math" data-tex="\(t\)">\(t\)</span>. The space <span class="math" data-tex="\(\mathcal H_\infty\)">\(\mathcal H_\infty\)</span> reduces <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, and <span class="math" data-tex="\(V_t\mathcal H_\infty=\mathcal H_\infty\)">\(V_t\mathcal H_\infty=\mathcal H_\infty\)</span>. Indeed, if <span class="math" data-tex="\(\xi\)">\(\xi\)</span> belongs to every range, then <span class="math" data-tex="\(V_t^*\xi\)">\(V_t^*\xi\)</span> does too, since <span class="math" data-tex="\(\xi\in V_{s+t}\mathcal H\)">\(\xi\in V_{s+t}\mathcal H\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>; conversely <span class="math" data-tex="\(V_t\xi\)">\(V_t\xi\)</span> is in every range by splitting into <span class="math" data-tex="\(s\leq t\)">\(s\leq t\)</span> and <span class="math" data-tex="\(s&gt;t\)">\(s&gt;t\)</span>. Thus the restriction there is unitary. Its inverse supplies negative times. On the orthogonal complement the intersection of the decreasing ranges is zero. The union of their orthogonal complements is dense there, and <span class="math" data-tex="\(P_t\xi=0\)">\(P_t\xi=0\)</span> eventually on that union. Hence <span class="math" data-tex="\(P_t\to0\)">\(P_t\to0\)</span> strongly there; <span class="math" data-tex="\(\|V_t^*\xi\|=\|P_t\xi\|\)">\(\|V_t^*\xi\|=\|P_t\xi\|\)</span> proves purity. It remains to classify a pure semigroup.</p>
+<p>First construct its minimal unitary dilation. On pairs <span class="math" data-tex="\((\xi,s)\)">\((\xi,s)\)</span>, <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, declare <span class="math" data-tex="\((\xi,s)\sim(\eta,t)\)">\((\xi,s)\sim(\eta,t)\)</span> when <span class="math" data-tex="\(V_t\xi=V_s\eta\)">\(V_t\xi=V_s\eta\)</span>. Cancellation by an isometry proves transitivity. Use</p>
+<span id="equation-10c-2"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+[\xi,s]+[\eta,t]&amp;=[V_t\xi+V_s\eta,s+t],\\
+\lambda[\xi,s]&amp;=[\lambda\xi,s],\\
+\langle[\xi,s],[\eta,t]\rangle&amp;=\langle V_t\xi,V_s\eta\rangle.
+\end{aligned}
+\tag{10C.2}
+\]">\[
+\begin{aligned}
+[\xi,s]+[\eta,t]&amp;=[V_t\xi+V_s\eta,s+t],\\
+\lambda[\xi,s]&amp;=[\lambda\xi,s],\\
+\langle[\xi,s],[\eta,t]\rangle&amp;=\langle V_t\xi,V_s\eta\rangle.
+\end{aligned}
+\tag{10C.2}
+\]</span>
+<p>These formulas are independent of representatives: move any finite collection of pairs to one common time <span class="math" data-tex="\(r\geq s,t\)">\(r\geq s,t\)</span>, replacing <span class="math" data-tex="\([\xi,s]\)">\([\xi,s]\)</span> by <span class="math" data-tex="\([V_{r-s}\xi,r]\)">\([V_{r-s}\xi,r]\)</span>, and use preservation of inner products by <span class="math" data-tex="\(V_r\)">\(V_r\)</span>. Completing gives <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, containing <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> by <span class="math" data-tex="\(\xi\mapsto[\xi,0]\)">\(\xi\mapsto[\xi,0]\)</span>. Define <span class="math" data-tex="\(W_a[\xi,s]=[V_a\xi,s]\)">\(W_a[\xi,s]=[V_a\xi,s]\)</span> for <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>. This is isometric and onto, because</p>
+<span class="math math-display" data-tex="\[
+W_a[\xi,s+a]=[V_a\xi,s+a]=[\xi,s].
+\]">\[
+W_a[\xi,s+a]=[V_a\xi,s+a]=[\xi,s].
+\]</span>
+<p>Extend by its inverse to <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>. The semigroup law holds on pairs. Strong continuity follows from
+<span class="math" data-tex="\(\|W_a[\xi,s]-W_b[\xi,s]\|=\|V_a\xi-V_b\xi\|\)">\(\|W_a[\xi,s]-W_b[\xi,s]\|=\|V_a\xi-V_b\xi\|\)</span> for <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span>, followed by inversion and translation. Moreover <span class="math" data-tex="\(\bigcup_{s\geq0}W_{-s}\mathcal H\)">\(\bigcup_{s\geq0}W_{-s}\mathcal H\)</span> is the dense pair space. In any other minimal dilation the correspondence <span class="math" data-tex="\(W_{-s}\xi\mapsto W&#x27;_{-s}\xi\)">\(W_{-s}\xi\mapsto W&#x27;_{-s}\xi\)</span> preserves inner products, as is seen by translating both vectors to a common nonnegative time. It therefore extends uniquely to an intertwining unitary.</p>
+<p>Let <span class="math" data-tex="\(E_t\)">\(E_t\)</span> be the projection onto <span class="math" data-tex="\(W_t\mathcal H\)">\(W_t\mathcal H\)</span>, now for all real <span class="math" data-tex="\(t\)">\(t\)</span>. Then</p>
+<span id="equation-10c-3"></span><span class="math math-display" data-tex="\[
+E_sE_t=E_{\max(s,t)},\qquad
+W_aE_tW_a^*=E_{a+t}.
+\tag{10C.3}
+\]">\[
+E_sE_t=E_{\max(s,t)},\qquad
+W_aE_tW_a^*=E_{a+t}.
+\tag{10C.3}
+\]</span>
+<p>The family is strongly continuous. Minimality gives <span class="math" data-tex="\(E_t\to1\)">\(E_t\to1\)</span> as <span class="math" data-tex="\(t\to-\infty\)">\(t\to-\infty\)</span>. Purity gives <span class="math" data-tex="\(E_t\to0\)">\(E_t\to0\)</span> as <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span>: on a dense vector <span class="math" data-tex="\(W_{-s}\xi\)">\(W_{-s}\xi\)</span>, with <span class="math" data-tex="\(s\geq0,\xi\in\mathcal H\)">\(s\geq0,\xi\in\mathcal H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|E_tW_{-s}\xi\|=\|E_0W_{-(t+s)}\xi\|
+=\|V_{t+s}^*\xi\|\longrightarrow0
+\]">\[
+\|E_tW_{-s}\xi\|=\|E_0W_{-(t+s)}\xi\|
+=\|V_{t+s}^*\xi\|\longrightarrow0
+\]</span>
+<p>for <span class="math" data-tex="\(t+s\geq0\)">\(t+s\geq0\)</span>.</p>
+<p>The commuting projections define a position algebra. For <span class="math" data-tex="\(f\in C_c(\mathbb R)\)">\(f\in C_c(\mathbb R)\)</span>, set</p>
+<span id="equation-10c-4"></span><span class="math math-display" data-tex="\[
+F_f=\int f(t)E_t\,dt,\qquad
+\widetilde f(x)=\int_{-\infty}^{x}f(t)\,dt,
+\quad x\in(-\infty,\infty].
+\tag{10C.4}
+\]">\[
+F_f=\int f(t)E_t\,dt,\qquad
+\widetilde f(x)=\int_{-\infty}^{x}f(t)\,dt,
+\quad x\in(-\infty,\infty].
+\tag{10C.4}
+\]</span>
+<p>The first integral is a strong operator integral, bounded by <span class="math" data-tex="\(\|f\|_1\)">\(\|f\|_1\)</span>. Let <span class="math" data-tex="\(D\)">\(D\)</span> be the C*-algebra generated by these operators. For a nonzero character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, the <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-bounded functional <span class="math" data-tex="\(f\mapsto\chi(F_f)\)">\(f\mapsto\chi(F_f)\)</span> is integration against some <span class="math" data-tex="\(\varphi\in L^\infty(\mathbb R)\)">\(\varphi\in L^\infty(\mathbb R)\)</span>. There is a bounded interval <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> and a <span class="math" data-tex="\(g\)">\(g\)</span> supported in it with <span class="math" data-tex="\(\chi(F_g)=1\)">\(\chi(F_g)=1\)</span>. This follows by subdividing a compactly supported test function on which the character is nonzero and then rescaling a nonzero summand. For <span class="math" data-tex="\(f\)">\(f\)</span> supported to the left of <span class="math" data-tex="\(a\)">\(a\)</span>, (10C.3) gives</p>
+<span class="math math-display" data-tex="\[
+F_fF_g=\left(\int f\right)F_g.
+\]">\[
+F_fF_g=\left(\int f\right)F_g.
+\]</span>
+<p>Hence <span class="math" data-tex="\(\varphi=1\)">\(\varphi=1\)</span> almost everywhere to the left of <span class="math" data-tex="\(a\)">\(a\)</span>. Set <span class="math" data-tex="\(x=\sup\{c:\varphi=1\text{ almost everywhere on }(-\infty,c)\}\)">\(x=\sup\{c:\varphi=1\text{ almost everywhere on }(-\infty,c)\}\)</span>. This set is nonempty. If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is nonzero on a positive-measure subset to the right of a finite <span class="math" data-tex="\(x\)">\(x\)</span>, choose a normalized test <span class="math" data-tex="\(g\)">\(g\)</span> in a bounded interval there and repeat the argument. It would make <span class="math" data-tex="\(\varphi=1\)">\(\varphi=1\)</span> to the left of a number larger than <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. Therefore</p>
+<span id="equation-10c-5"></span><span class="math math-display" data-tex="\[
+\chi(F_f)=\widetilde f(x),\qquad x\in(-\infty,\infty].
+\tag{10C.5}
+\]">\[
+\chi(F_f)=\widetilde f(x),\qquad x\in(-\infty,\infty].
+\tag{10C.5}
+\]</span>
+<p>The endpoint is unique.</p>
+<p>The functions <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span> generate <span class="math" data-tex="\(C_0((-\infty,\infty])\)">\(C_0((-\infty,\infty])\)</span>: they separate points, vanish at the missing left endpoint, and vanish simultaneously nowhere. Stone–Weierstrass applies. The map <span class="math" data-tex="\(T:\widehat D\to(-\infty,\infty]\)">\(T:\widehat D\to(-\infty,\infty]\)</span> taking <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> is continuous by (10C.5). It is proper as well. For a compact set of endpoints bounded below by <span class="math" data-tex="\(a\)">\(a\)</span>, choose <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, of integral one, supported to the left of <span class="math" data-tex="\(a\)">\(a\)</span>. Its inverse image lies in the compact set <span class="math" data-tex="\(\{\chi:|\chi(F_f)|\geq1/2\}\)">\(\{\chi:|\chi(F_f)|\geq1/2\}\)</span>, and is closed. Gelfand theory consequently gives a homomorphism</p>
+<span id="equation-10c-6"></span><span class="math math-display" data-tex="\[
+\pi:C_0((-\infty,\infty])\to D,\qquad
+\pi(\widetilde f)=F_f.
+\tag{10C.6}
+\]">\[
+\pi:C_0((-\infty,\infty])\to D,\qquad
+\pi(\widetilde f)=F_f.
+\tag{10C.6}
+\]</span>
+<p>Changing variables in (10C.4) and using (10C.3) proves covariance
+<span class="math" data-tex="\(W_a\pi(h)W_a^*=\pi(h(\,\cdot-a))\)">\(W_a\pi(h)W_a^*=\pi(h(\,\cdot-a))\)</span>.</p>
+<p>The restriction of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span> is nondegenerate. If a vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is orthogonal to <span class="math" data-tex="\(\pi(C_0(\mathbb R))\mathcal K\)">\(\pi(C_0(\mathbb R))\mathcal K\)</span>, then for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span> the functional
+<span class="math" data-tex="\(f\mapsto\int f(t)\langle E_t\xi,\eta\rangle\,dt\)">\(f\mapsto\int f(t)\langle E_t\xi,\eta\rangle\,dt\)</span>
+vanishes whenever <span class="math" data-tex="\(\int f=0\)">\(\int f=0\)</span>, because then <span class="math" data-tex="\(\widetilde f\in C_c(\mathbb R)\)">\(\widetilde f\in C_c(\mathbb R)\)</span>. It is therefore a scalar multiple of integration: subtract <span class="math" data-tex="\((\int f)g\)">\((\int f)g\)</span> for one fixed integral-one test <span class="math" data-tex="\(g\)">\(g\)</span>. Strong continuity says the function <span class="math" data-tex="\(\langle E_t\xi,\eta\rangle\)">\(\langle E_t\xi,\eta\rangle\)</span> is constant. Its limit at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> is zero, so it is zero everywhere; its limit at <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> gives <span class="math" data-tex="\(\langle\xi,\eta\rangle=0\)">\(\langle\xi,\eta\rangle=0\)</span>. Thus <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>.</p>
+<p>Finally</p>
+<span id="equation-10c-7"></span><span class="math math-display" data-tex="\[
+\overline{\pi(C_c((0,\infty)))\mathcal K}=\mathcal H.
+\tag{10C.7}
+\]">\[
+\overline{\pi(C_c((0,\infty)))\mathcal K}=\mathcal H.
+\tag{10C.7}
+\]</span>
+<p>For <span class="math" data-tex="\(h\in C_c^\infty((0,\infty))\)">\(h\in C_c^\infty((0,\infty))\)</span>, (10C.4) gives <span class="math" data-tex="\(\pi(h)=\int h&#x27;(t)E_t\,dt\)">\(\pi(h)=\int h&#x27;(t)E_t\,dt\)</span>. Since <span class="math" data-tex="\(E_0E_t=E_t\)">\(E_0E_t=E_t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, its range is in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. If <span class="math" data-tex="\(\eta\in\mathcal H\)">\(\eta\in\mathcal H\)</span> is orthogonal to all such ranges, the same zero-integral test argument makes <span class="math" data-tex="\(\langle E_t\xi,\eta\rangle\)">\(\langle E_t\xi,\eta\rangle\)</span> constant on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. The limit at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> makes the constant zero, and continuity at zero gives <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. Smooth-function density proves (10C.7).</p>
+<p>Apply Lesson 7's translation imprimitivity theorem to the nondegenerate covariant pair <span class="math" data-tex="\(\pi|_{C_0(\mathbb R)},W\)">\(\pi|_{C_0(\mathbb R)},W\)</span>. Its crossed product is <span class="math" data-tex="\(\mathcal K(L^2(\mathbb R))\)">\(\mathcal K(L^2(\mathbb R))\)</span>. Every nondegenerate representation of that compact algebra is its defining representation tensored with an identity on a Hilbert space <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>: choosing matrix units, their range spaces are mutually unitarily identified, and their orthogonal sum is the whole representation space. This argument allows arbitrary multiplicity. We obtain a unitary sending <span class="math" data-tex="\(\pi(h),W_a\)">\(\pi(h),W_a\)</span> to <span class="math" data-tex="\(M_h\otimes1,\lambda_a\otimes1\)">\(M_h\otimes1,\lambda_a\otimes1\)</span>. Equation (10C.7) sends the original space precisely to <span class="math" data-tex="\(L^2((0,\infty))\otimes\mathcal L\)">\(L^2((0,\infty))\otimes\mathcal L\)</span>. Restricting <span class="math" data-tex="\(\lambda_t\otimes1\)">\(\lambda_t\otimes1\)</span>, for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, gives (10C.1). Combining with the initial reducing decomposition proves the theorem. ∎</p>
+<p>The theorem explains why half-line shifts appear in the Wiener–Hopf boundary. A unitary component has no lost range; the pure component is exactly the translation representation restricted to the positive-position subspace. The theorem concerns all strongly continuous isometric semigroups, rather than just the scalar shift used in the index computation.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> Prove that <span class="math" data-tex="\(CA\)">\(CA\)</span> is contractible. Does this immediately make <span class="math" data-tex="\(CA\rtimes_\gamma\mathbb R\)">\(CA\rtimes_\gamma\mathbb R\)</span> contractible?</p>
+<p><strong>Solution.</strong> Use the coordinate (10.7) and the maps <span class="math" data-tex="\(H_rF(u)=F(ru)\)">\(H_rF(u)=F(ru)\)</span>. Pointwise operations make each a *-homomorphism, and uniform continuity on the closed interval gives
+<span class="math" data-tex="\(\|H_rF-H_{r&#x27;}F\|\to0\)">\(\|H_rF-H_{r&#x27;}F\|\to0\)</span> as <span class="math" data-tex="\(r\to r&#x27;\)">\(r\to r&#x27;\)</span>. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the function is zero, and at <span class="math" data-tex="\(r=1\)">\(r=1\)</span> it is <span class="math" data-tex="\(F\)">\(F\)</span>. This proves contractibility and (10.9). The maps do not in general intertwine <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so they do not supply crossed-product homomorphisms for a contraction. Vanishing of crossed-product K-theory will instead follow from universal index surjectivity and Proposition 10.2.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Verify the untwisting isomorphism, including convolution and involution, and identify a rank-one coefficient corner.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(f(s,t)\)">\(f(s,t)\)</span> for the two-variable kernel. The transformed product is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_{-t}((f*g)(s,t))
+&amp;=\int\alpha_{-t}(f(r,t))
+\alpha_{r-t}(g(s-r,t-r))\,dr\\
+&amp;=(\widetilde f*\widetilde g)(s,t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha_{-t}((f*g)(s,t))
+&amp;=\int\alpha_{-t}(f(r,t))
+\alpha_{r-t}(g(s-r,t-r))\,dr\\
+&amp;=(\widetilde f*\widetilde g)(s,t).
+\end{aligned}
+\]</span>
+<p>For the involution, <span class="math" data-tex="\(f^*(s,t)=\alpha_s(f(-s,t-s)^*)\)">\(f^*(s,t)=\alpha_s(f(-s,t-s)^*)\)</span>, so
+<span class="math" data-tex="\(\alpha_{-t}(f^*(s,t))=\alpha_{s-t}(f(-s,t-s)^*)=\widetilde f(-s,t-s)^*\)">\(\alpha_{-t}(f^*(s,t))=\alpha_{s-t}(f(-s,t-s)^*)=\widetilde f(-s,t-s)^*\)</span>.
+The inverse uses <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>, and covariant representations in both directions give equality of full norms. Formula (10.13) sends <span class="math" data-tex="\(\alpha_t(a)h(t)\overline{h(t-s)}\)">\(\alpha_t(a)h(t)\overline{h(t-s)}\)</span> to <span class="math" data-tex="\(a h(t)\overline{h(r)}\)">\(a h(t)\overline{h(r)}\)</span>. Therefore (10.17) is exactly <span class="math" data-tex="\(a\otimes\theta_{h,h}\)">\(a\otimes\theta_{h,h}\)</span>, extended by norm completion for an arbitrary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> unit vector.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Compute the scalar index boundary on the positive generator and compare it with the Toeplitz boundary.</p>
+<p><strong>Solution.</strong> The continuous approximants (10.26) put <span class="math" data-tex="\(F\)">\(F\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span>. The two integral products in (10.27) make <span class="math" data-tex="\(S=1-F\)">\(S=1-F\)</span> an isometry with cokernel projection <span class="math" data-tex="\(E=\theta_{h,h}\)">\(E=\theta_{h,h}\)</span>. The positive Fourier transform gives the Cayley symbol (10.29), and (10.30) proves winding <span class="math" data-tex="\(+1\)">\(+1\)</span>. Hence the boundary sends the positive generator to <span class="math" data-tex="\(-[E]\)">\(-[E]\)</span>, by (10.3). For the Toeplitz extension the unilateral shift lifts the positive circle generator and has the same defects <span class="math" data-tex="\(1-S^*S=0\)">\(1-S^*S=0\)</span>, <span class="math" data-tex="\(1-SS^*=E\)">\(1-SS^*=E\)</span>. Both boundaries are minus winding under these normalizations.</p>
+<p><strong>Exercise 4 (advanced).</strong> Assume universal surjectivity of the Wiener–Hopf index maps. Give every K-group identification needed to conclude that both boundary maps are isomorphisms.</p>
+<p><strong>Solution.</strong> Surjectivity implies (10.18). If <span class="math" data-tex="\(K_1(A)=0\)">\(K_1(A)=0\)</span>, Takai and stability identify the double crossed product's <span class="math" data-tex="\(K_1\)">\(K_1\)</span> with <span class="math" data-tex="\(K_1(A)=0\)">\(K_1(A)=0\)</span>; (10.18) then gives <span class="math" data-tex="\(K_0(A\rtimes\mathbb R)=0\)">\(K_0(A\rtimes\mathbb R)=0\)</span>. If <span class="math" data-tex="\(K_0(A)=0\)">\(K_0(A)=0\)</span>, the Bott map gives <span class="math" data-tex="\(K_1(SA)=0\)">\(K_1(SA)=0\)</span>. The preceding implication gives <span class="math" data-tex="\(K_0(SA\rtimes\mathbb R)=0\)">\(K_0(SA\rtimes\mathbb R)=0\)</span>. Moving the inactive suspension factor outside the product identifies this with <span class="math" data-tex="\(K_0(S(A\rtimes\mathbb R))\)">\(K_0(S(A\rtimes\mathbb R))\)</span>, and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> identifies the latter with <span class="math" data-tex="\(K_1(A\rtimes\mathbb R)\)">\(K_1(A\rtimes\mathbb R)\)</span>. Since <span class="math" data-tex="\(K_0(CA)=K_1(CA)=0\)">\(K_0(CA)=K_1(CA)=0\)</span>, these implications applied to <span class="math" data-tex="\(CA,\gamma\)">\(CA,\gamma\)</span> give both groups of <span class="math" data-tex="\(W_\alpha\)">\(W_\alpha\)</span> zero. In each half of (10.16), exactness then makes the outgoing boundary injective and the following boundary surjective. Thus both boundaries are bijective.</p>
+<p><strong>Exercise 5 (intermediate).</strong> On <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>, let <span class="math" data-tex="\(\lambda_t\xi(x)=\xi(x-t)\)">\(\lambda_t\xi(x)=\xi(x-t)\)</span>. Prove that restricting <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, to <span class="math" data-tex="\(L^2((b,\infty))\)">\(L^2((b,\infty))\)</span> gives a pure isometric semigroup with minimal dilation <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Compare it with <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span> acting on the whole line.</p>
+<p><strong>Solution.</strong> Translation by <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> maps functions supported in <span class="math" data-tex="\((b,\infty)\)">\((b,\infty)\)</span> to functions supported in <span class="math" data-tex="\((b+t,\infty)\)">\((b+t,\infty)\)</span>, preserving their <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-norm. The range projections are multiplication by <span class="math" data-tex="\(1_{(b+t,\infty)}\)">\(1_{(b+t,\infty)}\)</span>; dominated convergence makes them converge strongly to zero. Hence the restriction is pure. The union of the spaces translated by <span class="math" data-tex="\(-s\)">\(-s\)</span>, <span class="math" data-tex="\(s\geq0\)">\(s\geq0\)</span>, contains every compactly supported <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function, so it is dense in the whole-line space and proves minimality. Translating the endpoint <span class="math" data-tex="\(b\)">\(b\)</span> to zero identifies the restriction with <span class="math" data-tex="\(S_t\)">\(S_t\)</span>. On the whole line every <span class="math" data-tex="\(\lambda_t\)">\(\lambda_t\)</span> is unitary, its range intersection is the whole Hilbert space, and its pure part is zero. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general K-theory foundations listed above are prerequisites. The index convention, forward <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, positive Bott isomorphism, positive exponential and natural six-term sequence are reused from the four exact operator K-theory locators given there; the broader stable projection and unitary foundations, homotopy invariance and stability use the exact written programme proofs identified at the start. The Blackadar references remain mathematical credit. Full crossed-product exactness, amenability of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the translation imprimitivity theorem, the tensor identities and Takai duality are proved in Lessons 1, 4, 7 and 8.</p>
+<p>The continuous Wold and Cooper classification is proved here by the credited Sundar adaptation and the exact translation imprimitivity theorem of Lesson 7.</p>
+<p>Universal index surjectivity for arbitrary <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span> is the remaining step of the Connes–Thom theorem; Lesson 11 proves it. The scalar calculation fixes the inverse index map on <span class="math" data-tex="\(K_0(\mathbb C)\)">\(K_0(\mathbb C)\)</span>. It does not on its own compare both parities with every suspension convention, or compare the map with a geometric cotangent Thom class.</p>
+<h2 id="references">References</h2>
+<p><a href="prerequisites/KT-OPK/KT-OPK-07.html">The index map and the exact sequence at <span class="math" data-tex="\(K_0\)">\(K_0\)</span></a> <a href="prerequisites/KT-OPK/KT-OPK-07.html">K-theory for operator algebras, Lesson 7</a>, Proposition 5.1, the kernel-minus-cokernel boundary formula.</p>
+<p><a href="prerequisites/KT-OPK/KT-OPK-08.html">Suspension, higher K-groups and the long exact sequence</a> <a href="prerequisites/KT-OPK/KT-OPK-08.html">K-theory for operator algebras, Lesson 8</a>, Theorem 2.1, the forward doubled-path <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</p>
+<p>[Bott periodicity] <a href="prerequisites/KT-OPK/KT-OPK-10.html">K-theory for operator algebras, Lesson 10</a>, Theorem 4.1, the positive loop isomorphism with Toeplitz boundary <span class="math" data-tex="\(\partial\beta=-1\)">\(\partial\beta=-1\)</span>.</p>
+<p><a href="prerequisites/KT-OPK/KT-OPK-11.html">The six-term exact sequence and the exponential map</a> <a href="prerequisites/KT-OPK/KT-OPK-11.html">K-theory for operator algebras, Lesson 11</a>, Theorems 1.1 and 2.1, the positive exponential and exact natural cycle, including its suspension sign.</p>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition. General K-theory: §§5.1–5.5, 8.1–8.3 and 9.1–9.3. Wiener–Hopf construction and reduction: §10.9, Lemmas 10.9.1–10.9.2, pp. 79–80; scalar operators: Lemmas 10.9.3–10.9.4, pp. 80–81. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's second edition</a>.</p>
+<p>[Rosenberg 2012] Jonathan Rosenberg, <em>Examples and applications of noncommutative geometry and K-theory</em>, in <em>Topics in Noncommutative Geometry</em>, Clay Mathematics Proceedings 16, 2012, §2.4, pp. 106–107. <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip016c.pdf">Electronic volume</a>. An overview of the Connes–Thom theorem and its proof methods.</p>
+<p>[Schulz-Baldes–Stoiber 2022] Hermann Schulz-Baldes and Tom Stoiber, <em>Harmonic Analysis in Operator Algebras and its Applications to Index Theory and Topological Solid State Systems</em>, chapter <em>Duality for Toeplitz extensions</em>. <a href="https://arxiv.org/abs/2206.07781">Preprint</a>. The smooth real-action extension gives a related index construction; we use the C*-extension (10.14).</p>
+<p>[Sundar 2025] S. Sundar, <a href="https://arxiv.org/abs/2505.17456v1"><em>Notes on C*-algebras</em></a>, 2025, the treatment of Cooper’s theorem. The credited section above adapts the author’s <a href="https://arxiv.org/src/2505.17456v1">supplied editable TeX</a>, dedicated under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-09.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-11.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-10.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

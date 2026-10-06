@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Base change and the Grothendieck complex</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main style="max-width:72rem;margin:auto;padding:1rem"><nav><a href="../../index.html">Group schemes</a> · <a href="https://kokunoyumeto.github.io/open-math-courses-public/">Open Mathematics Courses</a></nav><h1 id="base-change-and-the-grothendieck-complex">Base change and the Grothendieck complex</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).</em></p>
+<p>Pulling back a cohomology sheaf and computing cohomology on the pulled-back family are different operations. Flat change of the base makes them agree. For a proper family with a flat coherent sheaf, a stronger statement is available: one finite projective complex computes cohomology after every change of the base. Its differentials, rather than the ranks of its cohomology modules, retain the information needed at exceptional fibers.</p>
+<p>We use <a href="affine-cohomology-and-serres-criterion.html">affine cohomology and quasi-coherent direct images</a>, <a href="proper-morphisms-and-coherent-direct-images.html">proper cohomology finiteness</a>, and the flat-module results assigned to <em>Tor and flat modules</em> in <em>Commutative algebra for geometry</em>. For the initial derived construction we use <em>Sheaves of modules and their derived categories</em>, Sections 8–10: K-flat resolutions, derived tensor and the pullback–pushforward adjunction. The exact open adjunction proof is [Stacks, Tag 079W], with its derived-adjunction construction linked below. Our finite projective replacement and its universal tensor comparison are proved in Section 3.</p>
+<h2 id="1-constructing-the-comparison">1. Constructing the comparison</h2>
+<p>Fix a cartesian square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+S&#x27;&amp;\xrightarrow{g}&amp;S.
+\end{array}
+\]">\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+S&#x27;&amp;\xrightarrow{g}&amp;S.
+\end{array}
+\]</span>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be quasi-coherent on <span class="math" data-tex="\(X\)">\(X\)</span>, and put <span class="math" data-tex="\(F&#x27;=g&#x27;^*F\)">\(F&#x27;=g&#x27;^*F\)</span>. A sheaf is <strong>flat over <span class="math" data-tex="\(S\)">\(S\)</span></strong> when every <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is flat over <span class="math" data-tex="\(\mathcal O_{S,f(x)}\)">\(\mathcal O_{S,f(x)}\)</span>; for <span class="math" data-tex="\(F=\mathcal O_X\)">\(F=\mathcal O_X\)</span>, this defines a flat morphism. Base change preserves this stalkwise condition. Flatness of <span class="math" data-tex="\(F\)">\(F\)</span> and flatness of <span class="math" data-tex="\(g\)">\(g\)</span> will enter different theorems.</p>
+<p>The canonical comparison maps are</p>
+<span class="math math-display" data-tex="\[
+\beta^q:g^*R^qf_*F\longrightarrow R^qf&#x27;_*F&#x27;.
+\]">\[
+\beta^q:g^*R^qf_*F\longrightarrow R^qf&#x27;_*F&#x27;.
+\]</span>
+<p>Here is a derived construction that also applies to a nonflat <span class="math" data-tex="\(g\)">\(g\)</span>. Derived adjunction turns the composite</p>
+<span class="math math-display" data-tex="\[
+Lf&#x27;^*Lg^*Rf_*F
+\cong Lg&#x27;^*Lf^*Rf_*F
+\longrightarrow Lg&#x27;^*F
+\longrightarrow g&#x27;^*F
+\]">\[
+Lf&#x27;^*Lg^*Rf_*F
+\cong Lg&#x27;^*Lf^*Rf_*F
+\longrightarrow Lg&#x27;^*F
+\longrightarrow g&#x27;^*F
+\]</span>
+<p>into a map <span class="math" data-tex="\(Lg^*Rf_*F\to Rf&#x27;_*F&#x27;\)">\(Lg^*Rf_*F\to Rf&#x27;_*F&#x27;\)</span>. The first arrow is the pullback–pushforward counit; the last is the natural map from derived pullback of a sheaf to its degree-zero, ordinary pullback. Commutation of the two derived pullbacks follows from equality of the composite morphisms and composition of derived pullback. It does not assert that derived pullback is exact.</p>
+<p>There is a natural cohomology edge map</p>
+<span class="math math-display" data-tex="\[
+g^*H^q(C)\longrightarrow H^q(Lg^*C)
+\]">\[
+g^*H^q(C)\longrightarrow H^q(Lg^*C)
+\]</span>
+<p>for a bounded-above cohomology object <span class="math" data-tex="\(C\)">\(C\)</span>. Locally, choose a bounded-above free resolution <span class="math" data-tex="\(P\)">\(P\)</span> of its complex over <span class="math" data-tex="\(A\)">\(A\)</span>, and use the cocycle map</p>
+<span class="math math-display" data-tex="\[
+H^q(P)\otimes_A B\longrightarrow H^q(P\otimes_A B).
+\]">\[
+H^q(P)\otimes_A B\longrightarrow H^q(P\otimes_A B).
+\]</span>
+<p>A cocycle tensored with an element of <span class="math" data-tex="\(B\)">\(B\)</span> is still a cocycle; an original boundary becomes a boundary. Right exactness of tensor lets this descend from the cocycle module to <span class="math" data-tex="\(H^q(P)\otimes B\)">\(H^q(P)\otimes B\)</span>. Homotopic comparison maps of free resolutions induce the same map, so the edge is intrinsic and compatible with restriction. Composing it with the cohomology map of the derived comparison defines <span class="math" data-tex="\(\beta^q\)">\(\beta^q\)</span>. For the quasi-compact, quasi-separated morphisms used below, the boundedness needed here is the affine-cover bound from the third lesson. For flat <span class="math" data-tex="\(g\)">\(g\)</span>, the edge is simply the identification <span class="math" data-tex="\(g^*H^q(C)=H^q(g^*C)\)">\(g^*H^q(C)=H^q(g^*C)\)</span>.</p>
+<p>The construction is functorial in <span class="math" data-tex="\(F\)">\(F\)</span> and in successive base changes: units, counits and pullback composition give the same map for a composite square as for the two successive squares. On affine charts with a Čech model, it is the cocycle comparison just described. Thus the isomorphisms proved below concern these canonical maps, not a separately chosen identification of abstract vector spaces.</p>
+<p><strong>Proposition 1.1 (affine morphisms).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is affine, every <span class="math" data-tex="\(\beta^q\)">\(\beta^q\)</span> is an isomorphism for every base change <span class="math" data-tex="\(g\)">\(g\)</span>, without a flatness assumption.</p>
+<p><strong>Proof.</strong> Higher direct images of a quasi-coherent sheaf under an affine morphism are zero, and the same holds for <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>. Locally write <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span>, <span class="math" data-tex="\(X=\operatorname{Spec}R\)">\(X=\operatorname{Spec}R\)</span>, <span class="math" data-tex="\(S&#x27;=\operatorname{Spec}B\)">\(S&#x27;=\operatorname{Spec}B\)</span>, and <span class="math" data-tex="\(F=\widetilde M\)">\(F=\widetilde M\)</span>. The pullback sheaf corresponds to</p>
+<span class="math math-display" data-tex="\[
+M\otimes_R(R\otimes_A B)\cong M\otimes_A B.
+\]">\[
+M\otimes_R(R\otimes_A B)\cong M\otimes_A B.
+\]</span>
+<p>This is precisely the degree-zero base-change map. The tensor identity proves the assertion in degree zero, and the vanishing proves it in higher degrees. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypothesis concerns the morphism <span class="math" data-tex="\(f\)">\(f\)</span>. Affineness of <span class="math" data-tex="\(g\)">\(g\)</span> alone does not guarantee comparison isomorphisms; a closed point of an affine parameter scheme is already a nonflat affine base change.</p>
+<h2 id="2-flat-base-change-including-nonseparated-schemes">2. Flat base change, including nonseparated schemes</h2>
+<p><strong>Theorem 2.1 (flat base change).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is quasi-compact and quasi-separated, <span class="math" data-tex="\(F\)">\(F\)</span> is quasi-coherent, and <span class="math" data-tex="\(g\)">\(g\)</span> is flat, then</p>
+<span class="math math-display" data-tex="\[
+g^*R^qf_*F\xrightarrow{\sim}R^qf&#x27;_*F&#x27;\quad(q\geq0).
+\]">\[
+g^*R^qf_*F\xrightarrow{\sim}R^qf&#x27;_*F&#x27;\quad(q\geq0).
+\]</span>
+<p>In particular, for a flat ring map <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> and a quasi-compact, quasi-separated <span class="math" data-tex="\(A\)">\(A\)</span>-scheme,</p>
+<span class="math math-display" data-tex="\[
+H^q(X,F)\otimes_A B\xrightarrow{\sim}H^q(X_B,F_B).
+\]">\[
+H^q(X,F)\otimes_A B\xrightarrow{\sim}H^q(X_B,F_B).
+\]</span>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(S,S&#x27;\)">\(S,S&#x27;\)</span> are affine and <span class="math" data-tex="\(X\)">\(X\)</span> is separated. Choose a finite affine cover <span class="math" data-tex="\(U_1,\ldots,U_r\)">\(U_1,\ldots,U_r\)</span>. Its intersections are affine, so the finite ordered complex <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> of their section modules computes cohomology. The induced cover after base change again has affine intersections. Proposition 1.1 identifies its section complex with <span class="math" data-tex="\(C^\bullet\otimes_A B\)">\(C^\bullet\otimes_A B\)</span>. Flatness of <span class="math" data-tex="\(B\)">\(B\)</span> preserves kernels and images and gives</p>
+<span class="math math-display" data-tex="\[
+H^q(C^\bullet)\otimes_A B\cong H^q(C^\bullet\otimes_A B).
+\]">\[
+H^q(C^\bullet)\otimes_A B\cong H^q(C^\bullet\otimes_A B).
+\]</span>
+<p>The identification is the canonical cocycle map.</p>
+<p>For a quasi-separated <span class="math" data-tex="\(X\)">\(X\)</span>, a finite affine cover still exists, but its intersections need not be affine. Each intersection <span class="math" data-tex="\(U_I\)">\(U_I\)</span> is quasi-compact and separated: it is an open subscheme of one of the affine <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. The case just proved therefore applies to every <span class="math" data-tex="\(U_I\)">\(U_I\)</span>. Use the Čech-to-cohomology spectral sequence of the second lesson, in the form</p>
+<span class="math math-display" data-tex="\[
+E_1^{p,q}=\bigoplus_{|I|=p+1}H^q(U_I,F)\Longrightarrow H^{p+q}(X,F).
+\]">\[
+E_1^{p,q}=\bigoplus_{|I|=p+1}H^q(U_I,F)\Longrightarrow H^{p+q}(X,F).
+\]</span>
+<p>Tensoring this spectral sequence with flat <span class="math" data-tex="\(B\)">\(B\)</span> preserves its successive kernels, images and cohomology. The comparison with the base-changed cover is an isomorphism on every first-page term, by the separated case. Hence it is an isomorphism on every page and on the filtered abutments. The cover has finitely many intersections and each has a finite affine-cover cohomological bound, so there are only finitely many possibly nonzero terms. Convergence and comparison therefore involve finite filtrations and prove the asserted global identity.</p>
+<p>Finally work locally on <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>, with its affine open contained over an affine open of <span class="math" data-tex="\(S\)">\(S\)</span>. The higher direct images are quasi-coherent by the third lesson, and over this affine base they are the sheaves associated to the cohomology modules just compared. The global identities give the sheaf comparison locally, and canonical functoriality glues them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice that <span class="math" data-tex="\(F\)">\(F\)</span> need not be flat over the original base in this theorem. Tensor is exact because the <em>change of base</em> is flat. In contrast, we next keep <span class="math" data-tex="\(F\)">\(F\)</span> flat and permit every change of base.</p>
+<h2 id="3-a-finite-projective-replacement">3. A finite projective replacement</h2>
+<p>We first prove the algebraic step, retaining its tensor behavior rather than only its cohomology over the original ring.</p>
+<p><strong>Lemma 3.1 (bounded flat complexes).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be Noetherian. Let <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> be a complex of flat <span class="math" data-tex="\(A\)">\(A\)</span>-modules, zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, with finite cohomology modules. There is a complex <span class="math" data-tex="\(K^\bullet\)">\(K^\bullet\)</span> of finite projective modules, also zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, and a quasi-isomorphism</p>
+<span class="math math-display" data-tex="\[
+K^\bullet\longrightarrow C^\bullet
+\]">\[
+K^\bullet\longrightarrow C^\bullet
+\]</span>
+<p>that remains a quasi-isomorphism after tensoring with every <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p><strong>Proof.</strong> We construct a bounded-above finite free resolution of the complex, then truncate its unnecessary left tail.</p>
+<p>Start with no terms of <span class="math" data-tex="\(P\)">\(P\)</span>, and attach them in descending degrees, beginning at <span class="math" data-tex="\(b\)">\(b\)</span>. Suppose terms <span class="math" data-tex="\(P^{j+1},\ldots,P^b\)">\(P^{j+1},\ldots,P^b\)</span> and a chain map <span class="math" data-tex="\(f:P\to C\)">\(f:P\to C\)</span> have been constructed, with its cone <span class="math" data-tex="\(D\)">\(D\)</span> having zero cohomology in degrees above <span class="math" data-tex="\(j\)">\(j\)</span>. The cone terms and differential are</p>
+<span class="math math-display" data-tex="\[
+D^i=C^i\oplus P^{i+1},\qquad d_D(c,p)=(d_Cc+f(p),-d_Pp).
+\]">\[
+D^i=C^i\oplus P^{i+1},\qquad d_D(c,p)=(d_Cc+f(p),-d_Pp).
+\]</span>
+<p>Its cohomology modules are finite. This holds initially for <span class="math" data-tex="\(C\)">\(C\)</span>, and remains true for a cone of a map from a finite complex of finite free modules: its long exact sequence expresses cohomology as extensions of subquotients of finite modules, which are finite because <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian.</p>
+<p>Choose finitely many cocycles <span class="math" data-tex="\((c_\ell,p_\ell)\)">\((c_\ell,p_\ell)\)</span> generating <span class="math" data-tex="\(H^j(D)\)">\(H^j(D)\)</span>. Set <span class="math" data-tex="\(P^j\)">\(P^j\)</span> equal to the finite free module on these choices and define</p>
+<span class="math math-display" data-tex="\[
+f(e_\ell)=c_\ell,\qquad d_P(e_\ell)=-p_\ell.
+\]">\[
+f(e_\ell)=c_\ell,\qquad d_P(e_\ell)=-p_\ell.
+\]</span>
+<p>The cocycle equations give <span class="math" data-tex="\(d_P^2=0\)">\(d_P^2=0\)</span> and <span class="math" data-tex="\(d_Cf=fd_P\)">\(d_Cf=fd_P\)</span>. In the new cone, the differential of <span class="math" data-tex="\((0,e_\ell)\)">\((0,e_\ell)\)</span> is <span class="math" data-tex="\((c_\ell,p_\ell)\)">\((c_\ell,p_\ell)\)</span>, so <span class="math" data-tex="\(H^j\)">\(H^j\)</span> is killed while higher cohomology remains zero. Finiteness of lower cohomology is preserved by the same long exact sequence. Continuing indefinitely to the left gives a chain map <span class="math" data-tex="\(P\to C\)">\(P\to C\)</span>, with each <span class="math" data-tex="\(P^j\)">\(P^j\)</span> finite free and <span class="math" data-tex="\(P^j=0\)">\(P^j=0\)</span> for <span class="math" data-tex="\(j&gt;b\)">\(j&gt;b\)</span>. Its cone is acyclic: in any fixed degree, the construction kills the cohomology after finitely many stages, and later stages do not change it. Thus <span class="math" data-tex="\(P\to C\)">\(P\to C\)</span> is a quasi-isomorphism.</p>
+<p>We need a tensor fact about its cone. An acyclic bounded-above complex <span class="math" data-tex="\(T\)">\(T\)</span> of flat modules remains acyclic after every tensor product. At its last nonzero degree, the preceding differential surjects onto the last term. The kernel is flat, because a kernel between flat middle and flat quotient modules is flat. Repeating downward shows all cycle modules are flat and every sequence</p>
+<span class="math math-display" data-tex="\[
+0\to Z^i(T)\to T^i\to Z^{i+1}(T)\to0
+\]">\[
+0\to Z^i(T)\to T^i\to Z^{i+1}(T)\to0
+\]</span>
+<p>remains exact under tensor. These tensor sequences imply acyclicity after tensoring. The downward induction reaches any specified degree in finitely many steps even if the complex is unbounded to the left. Applying it to the cone of <span class="math" data-tex="\(P\to C\)">\(P\to C\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H^i(P\otimes_A M)\cong H^i(C\otimes_A M)=0\quad(i&lt;a)
+\]">\[
+H^i(P\otimes_A M)\cong H^i(C\otimes_A M)=0\quad(i&lt;a)
+\]</span>
+<p>for every <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Now put <span class="math" data-tex="\(Q=\operatorname{coker}(P^{a-1}\to P^a)\)">\(Q=\operatorname{coker}(P^{a-1}\to P^a)\)</span>. It is finite, and the exact sequence</p>
+<span class="math math-display" data-tex="\[
+\cdots\to P^{a-2}\to P^{a-1}\to P^a\to Q\to0
+\]">\[
+\cdots\to P^{a-2}\to P^{a-1}\to P^a\to Q\to0
+\]</span>
+<p>is a free resolution of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Exactness uses <span class="math" data-tex="\(H^i(P)=0\)">\(H^i(P)=0\)</span> for <span class="math" data-tex="\(i&lt;a\)">\(i&lt;a\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_1^A(Q,M)=H^{a-1}(P\otimes_A M)=0
+\]">\[
+\operatorname{Tor}_1^A(Q,M)=H^{a-1}(P\otimes_A M)=0
+\]</span>
+<p>for all <span class="math" data-tex="\(M\)">\(M\)</span>, since the differential through degree <span class="math" data-tex="\(a\)">\(a\)</span> is the same in that resolution. Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is flat. It is finitely presented over Noetherian <span class="math" data-tex="\(A\)">\(A\)</span>, so it is finite projective by the flat-module criterion.</p>
+<p>Define <span class="math" data-tex="\(K^a=Q\)">\(K^a=Q\)</span>, <span class="math" data-tex="\(K^i=P^i\)">\(K^i=P^i\)</span> for <span class="math" data-tex="\(a&lt;i\leq b\)">\(a&lt;i\leq b\)</span>, and all other terms zero. The map <span class="math" data-tex="\(P^a\to C^a\)">\(P^a\to C^a\)</span> kills the preceding image because <span class="math" data-tex="\(C^{a-1}=0\)">\(C^{a-1}=0\)</span>; it factors through <span class="math" data-tex="\(Q\)">\(Q\)</span>, giving a chain map <span class="math" data-tex="\(K\to C\)">\(K\to C\)</span>. Truncation preserves all cohomology, so this map is a quasi-isomorphism. Its cone is a bounded acyclic complex of flat modules. The tensor fact proves that <span class="math" data-tex="\(K\otimes M\to C\otimes M\)">\(K\otimes M\to C\otimes M\)</span> is a quasi-isomorphism for every <span class="math" data-tex="\(M\)">\(M\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The finite replacement does not come from assuming Čech terms are finite, nor from assuming the ring has finite global dimension. Finiteness of the <em>cohomology</em> constructs the finite free approximation. Flatness and its bounded range then make the last retained quotient projective.</p>
+<p><strong>Theorem 3.2 (the Grothendieck complex).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be Noetherian, <span class="math" data-tex="\(f:X\to\operatorname{Spec}A\)">\(f:X\to\operatorname{Spec}A\)</span> proper, and <span class="math" data-tex="\(F\)">\(F\)</span> coherent and flat over <span class="math" data-tex="\(A\)">\(A\)</span>. There is a bounded complex <span class="math" data-tex="\(K\)">\(K\)</span> of finite projective <span class="math" data-tex="\(A\)">\(A\)</span>-modules, in nonnegative degrees, such that for every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^q(K\otimes_A B)\cong H^q(X_B,F_B),
+\]">\[
+H^q(K\otimes_A B)\cong H^q(X_B,F_B),
+\]</span>
+<p>functorially in <span class="math" data-tex="\(B\)">\(B\)</span>. More generally <span class="math" data-tex="\(H^q(K\otimes_A M)\cong H^q(X,F\otimes_A M)\)">\(H^q(K\otimes_A M)\cong H^q(X,F\otimes_A M)\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> Properness makes <span class="math" data-tex="\(X\)">\(X\)</span> quasi-compact and separated. Take a finite affine cover with <span class="math" data-tex="\(r\)">\(r\)</span> members. Its ordered Čech complex <span class="math" data-tex="\(C\)">\(C\)</span>, zero outside <span class="math" data-tex="\([0,r-1]\)">\([0,r-1]\)</span>, computes <span class="math" data-tex="\(F\)">\(F\)</span>-cohomology. Every term is <span class="math" data-tex="\(A\)">\(A\)</span>-flat: for any injection of <span class="math" data-tex="\(A\)">\(A\)</span>-modules, tensoring the sheaf preserves injectivity at all stalks, and taking sections on an affine intersection preserves exactness of quasi-coherent sheaves. This is the section-module flatness argument already used for high twists in the preceding lesson. Its cohomology is finite by proper finiteness. Apply Lemma 3.1 to obtain <span class="math" data-tex="\(K\to C\)">\(K\to C\)</span>.</p>
+<p>Every affine intersection stays affine after a base change. Its section module for <span class="math" data-tex="\(F_B\)">\(F_B\)</span> is the original one tensored with <span class="math" data-tex="\(B\)">\(B\)</span>, so the complex after base change is <span class="math" data-tex="\(C\otimes_A B\)">\(C\otimes_A B\)</span>. It computes <span class="math" data-tex="\(H^q(X_B,F_B)\)">\(H^q(X_B,F_B)\)</span>. The universal tensor quasi-isomorphism of Lemma 3.1 identifies its cohomology with that of <span class="math" data-tex="\(K\otimes_A B\)">\(K\otimes_A B\)</span>. For an arbitrary module <span class="math" data-tex="\(M\)">\(M\)</span>, the same affine correspondence identifies <span class="math" data-tex="\(C\otimes_A M\)">\(C\otimes_A M\)</span> with the Čech complex of <span class="math" data-tex="\(F\otimes_A M\)">\(F\otimes_A M\)</span>. All maps arise from a fixed chain map and affine tensor identifications, so are compatible with homomorphisms of modules and algebras. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In derived language, a bounded complex of finite projective modules represents a <strong>perfect</strong> object. Thus the theorem proves that <span class="math" data-tex="\(R\Gamma(X,F)\)">\(R\Gamma(X,F)\)</span> is perfect and</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(X,F)\otimes_A^L B\cong R\Gamma(X_B,F_B)
+\]">\[
+R\Gamma(X,F)\otimes_A^L B\cong R\Gamma(X_B,F_B)
+\]</span>
+<p>for every <span class="math" data-tex="\(B\)">\(B\)</span>. This is stronger than flat base change. It does not imply that <span class="math" data-tex="\(H^q(X,F)\otimes B\to H^q(X_B,F_B)\)">\(H^q(X,F)\otimes B\to H^q(X_B,F_B)\)</span> is always an isomorphism: taking cohomology of a tensor product is still distinct from tensoring its cohomology. The finite complex makes that distinction computable.</p>
+<h2 id="4-euler-constancy-and-explicit-models">4. Euler constancy and explicit models</h2>
+<p><strong>Corollary 4.1.</strong> Under Theorem 3.2, the fiber Euler characteristic <span class="math" data-tex="\(s\mapsto\chi(X_s,F_s)\)">\(s\mapsto\chi(X_s,F_s)\)</span> is locally constant on <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>.</p>
+<p><strong>Proof.</strong> The complex <span class="math" data-tex="\(K\otimes_A\kappa(s)\)">\(K\otimes_A\kappa(s)\)</span> is a finite complex of finite-dimensional vector spaces computing fiber cohomology. Image cancellation gives</p>
+<span class="math math-display" data-tex="\[
+\chi(X_s,F_s)=\sum_i(-1)^i\dim_{\kappa(s)}(K^i\otimes_A\kappa(s))
+=\sum_i(-1)^i\operatorname{rank}_s K^i.
+\]">\[
+\chi(X_s,F_s)=\sum_i(-1)^i\dim_{\kappa(s)}(K^i\otimes_A\kappa(s))
+=\sum_i(-1)^i\operatorname{rank}_s K^i.
+\]</span>
+<p>Each finite projective module has locally constant rank. There are finitely many of them, so their alternating sum is locally constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> on <span class="math" data-tex="\(\mathbf P^1_A\)">\(\mathbf P^1_A\)</span>, use <span class="math" data-tex="\(K=A[0]\)">\(K=A[0]\)</span>. The projective-space computation gives <span class="math" data-tex="\(H^0=B\)">\(H^0=B\)</span> and all higher cohomology zero for every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>. More generally <span class="math" data-tex="\(\mathcal O(d)\)">\(\mathcal O(d)\)</span> has the explicit free complex concentrated in degree zero for <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>, in degree one for <span class="math" data-tex="\(d\leq-2\)">\(d\leq-2\)</span>, and the zero complex for <span class="math" data-tex="\(d=-1\)">\(d=-1\)</span>. This includes <span class="math" data-tex="\(\mathcal O(-2)\)">\(\mathcal O(-2)\)</span> represented by <span class="math" data-tex="\(A\)">\(A\)</span> in degree one.</p>
+<p>For the family of conics <span class="math" data-tex="\(xy=tz^2\)">\(xy=tz^2\)</span> over <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span>, the monic homogeneous equation makes the family flat, as proved in the preceding lesson. Over every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, multiplication by the equation remains injective in the polynomial ring: its leading coefficient is one. The sequence on <span class="math" data-tex="\(\mathbf P^2_B\)">\(\mathbf P^2_B\)</span></p>
+<span class="math math-display" data-tex="\[
+0\to\mathcal O(-2)\to\mathcal O\to\mathcal O_{\mathcal C_B}\to0
+\]">\[
+0\to\mathcal O(-2)\to\mathcal O\to\mathcal O_{\mathcal C_B}\to0
+\]</span>
+<p>and projective-space cohomology give a Grothendieck complex <span class="math" data-tex="\(A[0]\)">\(A[0]\)</span> for the structure sheaf. Twisting once replaces <span class="math" data-tex="\(\mathcal O(-2)\)">\(\mathcal O(-2)\)</span> by <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span> and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> by <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>, giving <span class="math" data-tex="\(A^3[0]\)">\(A^3[0]\)</span> for <span class="math" data-tex="\(\mathcal O_{\mathcal C}(1)\)">\(\mathcal O_{\mathcal C}(1)\)</span>. These computations work on the reducible special fiber as well.</p>
+<p>A more revealing example is the rank-two extension on <span class="math" data-tex="\(\mathbf P^1_{k[t]}\)">\(\mathbf P^1_{k[t]}\)</span></p>
+<span class="math math-display" data-tex="\[
+0\to\mathcal O(-2)\to E\to\mathcal O\to0
+\]">\[
+0\to\mathcal O(-2)\to E\to\mathcal O\to0
+\]</span>
+<p>with extension class <span class="math" data-tex="\(t\)">\(t\)</span>. The projective-line calculations and its connecting map give the model</p>
+<span class="math math-display" data-tex="\[
+K=[\,A\xrightarrow{t}A\,]\quad\text{in degrees }0,1.
+\]">\[
+K=[\,A\xrightarrow{t}A\,]\quad\text{in degrees }0,1.
+\]</span>
+<p>Indeed the cohomology triangle for the extension is the fiber of multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> between the two copies of <span class="math" data-tex="\(A\)">\(A\)</span>, which is this two-term complex; choosing the generator of <span class="math" data-tex="\(H^1(\mathcal O(-2))\)">\(H^1(\mathcal O(-2))\)</span> fixes that sign. Tensoring with any <span class="math" data-tex="\(B\)">\(B\)</span> replaces the differential by multiplication by the image of <span class="math" data-tex="\(t\)">\(t\)</span>. Over the original integral ring, <span class="math" data-tex="\(H^0(E)=0\)">\(H^0(E)=0\)</span> and <span class="math" data-tex="\(H^1(E)=A/(t)\)">\(H^1(E)=A/(t)\)</span>. At the zero fiber the differential is zero and both fiber groups are <span class="math" data-tex="\(k\)">\(k\)</span>. Thus <span class="math" data-tex="\(\beta^0\)">\(\beta^0\)</span> is the map <span class="math" data-tex="\(0\to k\)">\(0\to k\)</span>, while <span class="math" data-tex="\(\beta^1\)">\(\beta^1\)</span> is an isomorphism. The Euler characteristic is zero everywhere. Retaining the differential recovers the missing fiber sections.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 5.1 (easy: affine comparison).</strong> For an affine morphism and an arbitrary change of base, write the degree-zero comparison explicitly and explain the higher-degree statement.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(A\to R\)">\(A\to R\)</span>, <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, and <span class="math" data-tex="\(M\)">\(M\)</span> an <span class="math" data-tex="\(R\)">\(R\)</span>-module, the map is <span class="math" data-tex="\(M\otimes_A B\to M\otimes_R(R\otimes_A B)\)">\(M\otimes_A B\to M\otimes_R(R\otimes_A B)\)</span>, taking <span class="math" data-tex="\(m\otimes b\)">\(m\otimes b\)</span> to <span class="math" data-tex="\(m\otimes(1\otimes b)\)">\(m\otimes(1\otimes b)\)</span>. The inverse takes <span class="math" data-tex="\(m\otimes(r\otimes b)\)">\(m\otimes(r\otimes b)\)</span> to <span class="math" data-tex="\(rm\otimes b\)">\(rm\otimes b\)</span>. Higher source and target sheaves are zero by affine vanishing. Neither flatness of <span class="math" data-tex="\(M\)">\(M\)</span> nor flatness of <span class="math" data-tex="\(B\)">\(B\)</span> is needed.</p>
+<p><strong>Exercise 5.2 (easy: flat Čech terms).</strong> Prove flatness over <span class="math" data-tex="\(A\)">\(A\)</span> of the section modules on affine intersections when <span class="math" data-tex="\(F\)">\(F\)</span> is flat over <span class="math" data-tex="\(A\)">\(A\)</span>. Identify where separatedness is used in Theorem 3.2.</p>
+<p><strong>Solution.</strong> Every stalk <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is flat over its parameter local ring and therefore over <span class="math" data-tex="\(A\)">\(A\)</span>, since localization of <span class="math" data-tex="\(A\)">\(A\)</span> is flat. Tensoring an injection of <span class="math" data-tex="\(A\)">\(A\)</span>-modules with <span class="math" data-tex="\(F\)">\(F\)</span> is thus stalkwise injective. The resulting sheaves are quasi-coherent, and their sections on an affine open form an exact sequence. Hence tensoring the affine section module preserves injections, proving flatness. Separatedness ensures that the finite cover's intersections are affine; without it, the single section complex need not compute higher cohomology.</p>
+<p><strong>Exercise 5.3 (medium: the alternating ranks).</strong> Derive Euler constancy from a Grothendieck complex, and decide whether it forces its cohomology ranks to be locally constant.</p>
+<p><strong>Solution.</strong> On each fiber, boundaries cancel in the alternating dimension sum, leaving the alternating ranks of the finitely many projective terms. Those ranks are locally constant, which proves Euler constancy. Cohomology ranks need not be: for <span class="math" data-tex="\([A\xrightarrow{t}A]\)">\([A\xrightarrow{t}A]\)</span>, both are zero away from <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and both are one there. The alternating difference stays zero.</p>
+<p><strong>Exercise 5.4 (medium: the conic hyperplane bundle).</strong> Compute a Grothendieck complex for <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> on <span class="math" data-tex="\(xy=tz^2\)">\(xy=tz^2\)</span>, and check its behavior under the nonflat base change <span class="math" data-tex="\(k[t]\to k[t]/(t^2)\)">\(k[t]\to k[t]/(t^2)\)</span>.</p>
+<p><strong>Solution.</strong> The twisted hypersurface sequence is <span class="math" data-tex="\(0\to\mathcal O(-1)\to\mathcal O(1)\to\mathcal O_{\mathcal C}(1)\to0\)">\(0\to\mathcal O(-1)\to\mathcal O(1)\to\mathcal O_{\mathcal C}(1)\to0\)</span>. On <span class="math" data-tex="\(\mathbf P^2_B\)">\(\mathbf P^2_B\)</span>, <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span> has no cohomology and <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> has only <span class="math" data-tex="\(H^0=B^3\)">\(H^0=B^3\)</span>, for every <span class="math" data-tex="\(B\)">\(B\)</span>. The monic equation preserves injectivity even when <span class="math" data-tex="\(B\)">\(B\)</span> has nilpotents. Thus <span class="math" data-tex="\(K=A^3[0]\)">\(K=A^3[0]\)</span> works, and over <span class="math" data-tex="\(B=A/(t^2)\)">\(B=A/(t^2)\)</span> it gives <span class="math" data-tex="\(B^3\)">\(B^3\)</span> in degree zero and zero otherwise. This is a genuine arbitrary-base-change calculation, not an application of the flat-base-change theorem.</p>
+<p><strong>Exercise 5.5 (hard: truncate a free approximation).</strong> For a bounded flat complex with finite cohomology over a Noetherian ring, explain why a finite free approximation may have an infinite left tail, and prove that its truncation term at the original lower bound is projective.</p>
+<p><strong>Solution.</strong> Successively killing the cone's top cohomology constructs finite free terms, but new kernel classes can appear one degree lower at each step. The ring need not have finite global dimension, so this process need not stop. Let the original flat complex start in degree <span class="math" data-tex="\(a\)">\(a\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> be the resulting bounded-above free approximation. Its acyclic flat cone remains acyclic after tensoring, by the cycle induction of Lemma 3.1. Thus <span class="math" data-tex="\(H^{a-1}(P\otimes M)=0\)">\(H^{a-1}(P\otimes M)=0\)</span> for every <span class="math" data-tex="\(M\)">\(M\)</span>. The free tail through <span class="math" data-tex="\(P^a\)">\(P^a\)</span> resolves <span class="math" data-tex="\(Q=\operatorname{coker}(P^{a-1}\to P^a)\)">\(Q=\operatorname{coker}(P^{a-1}\to P^a)\)</span>, so this equality is <span class="math" data-tex="\(\operatorname{Tor}_1(Q,M)=0\)">\(\operatorname{Tor}_1(Q,M)=0\)</span>. It implies flatness of <span class="math" data-tex="\(Q\)">\(Q\)</span>; finite generation and Noetherianness give finite presentation, hence projectivity. Replacing the whole left tail by <span class="math" data-tex="\(Q\)">\(Q\)</span> retains the cohomology and universal tensor comparison. This is the complete truncation mechanism, not a finite global-dimension argument.</p>
+<p><strong>Exercise 5.6 (challenging: why the flat-sheaf hypothesis matters).</strong> Take the proper identity map <span class="math" data-tex="\(X=\operatorname{Spec}k[t]\to\operatorname{Spec}k[t]\)">\(X=\operatorname{Spec}k[t]\to\operatorname{Spec}k[t]\)</span> and <span class="math" data-tex="\(F=\widetilde{k[t]/(t)}\)">\(F=\widetilde{k[t]/(t)}\)</span>. Show that no bounded finite projective complex can compute its ordinary fiber cohomology for all base changes in the manner of Theorem 3.2, although <span class="math" data-tex="\(R\Gamma(X,F)\)">\(R\Gamma(X,F)\)</span> itself is perfect.</p>
+<p><strong>Solution.</strong> Its fiber is zero away from <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, and at zero it is <span class="math" data-tex="\(k\)">\(k\)</span>, with no positive cohomology because the fibers are affine. A hypothetical complex would therefore have fiber Euler characteristic zero generically and one at zero. Its alternating term ranks would be locally constant, contradicting connectedness of <span class="math" data-tex="\(\operatorname{Spec}k[t]\)">\(\operatorname{Spec}k[t]\)</span>. Meanwhile <span class="math" data-tex="\(k[t]/(t)\)">\(k[t]/(t)\)</span> has the finite free resolution <span class="math" data-tex="\([A\xrightarrow{t}A]\)">\([A\xrightarrow{t}A]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, so it is perfect. Tensoring that resolution with <span class="math" data-tex="\(k\)">\(k\)</span> creates a nonzero degree-<span class="math" data-tex="\(-1\)">\(-1\)</span> Tor group. Derived base change remembers this group; ordinary pullback of <span class="math" data-tex="\(F\)">\(F\)</span> does not. Thus perfectness alone does not remove the need for flatness in the universal ordinary-family comparison.</p>
+<h2 id="references-and-the-next-use-of-the-complex">References and the next use of the complex</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, in its AI Integrated Stacks Project edition: affine comparison <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-affine-base-change">Tag 02KG</a>; flat comparison <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-flat-base-change-cohomology">Tag 02KH</a>; base-change Čech complexes <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-base-change-complex">Tag 01XM</a>; proper flat perfect direct images <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-perfect-direct-image">Tag 07VK</a>. The construction and finite replacement needed here are proved in Sections 2–3.</li>
+<li>The foundation <em>Sheaves of modules and their derived categories</em>, Sections 8–10, specifies the derived operations. The open adjunction is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-adjoint">Tag 079W</a>, using <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-derived-adjoint-functors">derived adjoint functors</a> and its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-pre-derived-adjoint-functors-general">general localization proof</a>. Composition of derived pullbacks is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-derived-pullback-composition">cohomology, lemma-derived-pullback-composition</a>.</li>
+<li>These open reference texts retain GNU FDL 1.2. This exposition, its finite replacement proof and exercise solutions are independently written CC0. AI Integrated Stacks Project contains AI-proposed additions and corrections and is not reviewed by maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks project</a>. The next lesson studies ranks of the differentials to prove semicontinuity and the precise criterion for a cohomology base-change map to be an isomorphism.</li>
+</ul>
+<footer><a href="src/base-change-and-the-grothendieck-complex.md">Editable source</a></footer></main></body></html>

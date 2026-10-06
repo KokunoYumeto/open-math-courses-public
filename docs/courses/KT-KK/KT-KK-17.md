@@ -1,0 +1,843 @@
+# Equivariant KK-theory and the Green–Julg theorem
+
+*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+
+A symmetry can leave two identical ordinary Fredholm indices with different equivariant labels: the finite-dimensional kernel may carry the trivial representation or a sign representation. We will follow those labels from a two-element action into invariant operator matrices, then through stabilization to the Green–Julg isomorphism. The same matrix calculation also exposes the Haar normalization that a crossed-product formula must preserve.
+
+A group action adds two requirements to a Kasparov cycle. Its representation must respect the action, and its operator must respect it up to compact errors after the source algebra acts. For a compact group, averaging removes the latter errors, while invariant connections and partitions construct the product. For a discrete group, individual expressions \(aU_g\) already belong to the full crossed product, leading to a different cycle comparison. The analytic order below reflects these prerequisites: the compact homotopy comparison in Theorem 2.3 is needed in the Green–Julg proof, and the product is needed for representation-ring and induction laws.
+
+We retain the graded tensor conventions of *Graded C\*-algebras, Clifford algebras and graded Hilbert modules*. We use the non-equivariant connection calculus and product proofs in *Connections and the existence of the Kasparov product*, Sections 1–5, and the associativity and homotopy proofs in *Homotopy, associativity, the index pairing and KK-equivalence*, Sections 1–5. The integrated covariant representation and regular-module constructions are Theorem 2.3 of *C\*-dynamical systems and full crossed products* and Proposition 2.1 and the absorption proof of *Reduced crossed products and Fell’s absorption principle*. We prove the additional equivariant steps below.
+
+Throughout, groups are second countable locally compact Hausdorff groups, algebras are separable, and Hilbert modules are countably generated. Actions preserve grading. Haar measure on a compact group is normalized to have mass one. A crossed product without a subscript is the **full** crossed product. For graded coefficients, \(K_i(D)\) means the graded group \(KK^i(\mathbb C,D)\); it agrees with ordinary K-theory when the grading is trivial.
+
+For compact groups, the Haar probability measure used below is proved in [Foundations for compact-group averaging and coefficient approximation, CPT-F-005](supporting/representations-of-compact-groups/compact-foundations.html#cpt-f-005). Its [CPT-F-010](supporting/representations-of-compact-groups/compact-foundations.html#cpt-f-010) constructs continuous vector integrals, strict operator averages and source-localized compact integrals on arbitrary Hilbert modules. For the noncompact case, [Noncompact foundations for equivariant induction](supporting/noncompact-foundations/noncompact-foundations.html) proves the topology and cutoffs in NCF.1–NCF.2, scalar Radon representation and Fubini in NCF.3, Haar existence and translation continuity in NCF.4, Banach and strict operator integration in NCF.5, and the locally supported subgroup average in NCF.6.
+
+## 1. Actions and continuity
+
+An action \(\alpha\) on a C\*-algebra \(A\) is point-norm continuous: \(g\mapsto\alpha_g(a)\) is norm continuous for each \(a\). On a Hilbert \(B\)-module \(E\), an action \(U\) consists of even complex-linear maps satisfying
+\[
+\begin{gathered}
+U_g(\xi b)=U_g\xi\,\beta_g(b),\\
+\langle U_g\xi,U_g\eta\rangle
+ =\beta_g(\langle\xi,\eta\rangle),\\
+U_gU_h=U_{gh},\qquad U_e=1.
+\end{gathered}
+\tag{1.1}
+\]
+We require \(g\mapsto U_g\xi\) to be norm continuous for each vector. The maps \(U_g\) are isometries, although they are generally not \(B\)-linear. Conjugation defines an action on adjointable \(B\)-linear operators:
+\[
+g\cdot T=U_gTU_g^{-1}.
+\tag{1.2}
+\]
+An operator is **G-continuous** when its orbit under (1.2) is norm continuous.
+
+**Lemma 1.1 (compact operators and strict integration).** Compact module operators are G-continuous. Every adjointable operator has a strictly continuous orbit. If \(G\) is compact, a bounded strictly continuous orbit can be integrated to an adjointable operator; the average of an operator is invariant.
+
+**Proof.** For a rank-one operator,
+\[
+g\cdot\theta_{\xi,\eta}
+ =\theta_{U_g\xi,U_g\eta}.
+\tag{1.3}
+\]
+The estimate \(\|\theta_{\xi,\eta}\|\leq\|\xi\|\|\eta\|\) proves norm continuity. Finite sums and norm approximation give it for every compact operator.
+
+For \(T\in\mathcal L(E)\), the vector
+\(U_gT U_g^{-1}\xi\) depends continuously on \(g\): use continuity of \(U_g^{-1}\xi\), boundedness of \(T\), and continuity of \(U_g\) on each fixed vector. The same holds for \(T^*\). On a bounded family, this strong continuity for the operator and its adjoint is precisely strict continuity in \(M(\mathcal K(E))\).
+
+For compact \(G\), define the average on each vector by its Bochner integral. It is bounded and \(B\)-linear, and integrating the adjoints gives its adjoint. A change of Haar variable proves invariance. Positivity and the contraction bound pass to this integral. If an integrand is norm continuous with values in compact operators, its integral is compact, since Riemann sums converge in norm. \(\square\)
+
+A Kasparov G-cycle is a triple \((E,\phi,F)\), with an equivariant graded homomorphism \(\phi:A\to\mathcal L(E)\) and an odd G-continuous \(F\), such that
+\[
+\begin{gathered}
+{}[F,\phi(a)]_{\mathrm{gr}}\in\mathcal K(E),\\
+(F^2-1)\phi(a)\in\mathcal K(E),\\
+(F-F^*)\phi(a)\in\mathcal K(E),\\
+(g\cdot F-F)\phi(a)\in\mathcal K(E)\\
+(a\in A,\ g\in G).
+\end{gathered}
+\tag{1.4}
+\]
+The fourth defect is norm continuous in \(g\), because \(F\) is G-continuous. A cycle is degenerate if every defect in (1.4) is zero. A homotopy is a cycle with coefficient \(C([0,1],B)\), with the given action on \(B\) and trivial action on the interval. Its homotopy group is \(KK^G(A,B)\). We set
+\[
+KK_G^1(A,B)=KK^G(A,B\widehat\otimes C_1),
+\tag{1.5}
+\]
+where \(G\) acts trivially on the auxiliary Clifford algebra. We also write \(KK_G^0=KK^G\), \(K_i^G(B)=KK_G^i(\mathbb C,B)\), and \(K_G^i(A)=KK_G^i(A,\mathbb C)\).
+
+The inverse-cycle rotation, direct-sum rotation and degenerate-cycle contraction from *Kasparov modules and the groups KK(A,B)* are equivariant: their scalar rotation matrices commute with \(G\), and the degenerate-cycle contraction is the C_0-path proof of Proposition 2.3 of Lesson 06, with the diagonal group action. The action is strongly continuous on these sections, by approximation by finite sums of scalar functions times module vectors. These constructions prove that the homotopy classes form an abelian group. Equivariant pullback and coefficient tensoring give the two functorialities, with the action
+\(U_g(\xi\widehat\otimes b)=U_g\xi\widehat\otimes\beta_g(b)\).
+The rank-one and creation formulas of that lesson prove preservation of compact defects; (1.4) tensors in the same way.
+
+Self-adjoint normalization and clipping work for any locally compact group: polynomial functional-calculus approximation preserves the localized fourth defect, and the operator orbit remains norm continuous. Compactness is needed for the invariant averaging in the next proposition.
+
+**Proposition 1.2 (compact-group normalization).** If \(G\) is compact, every cycle and homotopy can be replaced, through an equivariant locally compact perturbation, by one whose operator is invariant, self-adjoint and contractive.
+
+**Proof.** First use the self-adjoint normalization and clipping from Proposition 3.1 and Theorem 3.2 of *Kasparov modules and the groups KK(A,B)*. Equivariance modulo compacts passes to these operations. For clipping, in the quotient after source localization the images of \(g\cdot F\) and \(F\) agree, so polynomial approximation to the clipping function gives the same equality. Norm continuity of the orbit passes to continuous functional calculus.
+
+Average the normalized operator:
+\[
+\overline F=\int_G g\cdot F\,dg.
+\tag{1.6}
+\]
+For each \(a\), \((\overline F-F)\phi(a)\) is the integral of the fourth defect in (1.4), hence compact. The integrand is norm continuous because \(F\) is G-continuous; thus this is a compact-operator norm integral, not merely a strict-limit assertion. Taking adjoints gives compactness on the other side. Put \(D=\overline F-F\) and \(F_t=F+tD\). Its square satisfies
+\[
+(F_t^2-1)\phi(a)=(F^2-1)\phi(a)
+ +t(FD+DF)\phi(a)+t^2D^2\phi(a).
+\]
+The \(FD\) and \(D^2\) terms are compact because \(D\phi(a)\) is compact. For homogeneous \(a\), moving \(F\) through \(\phi(a)\) in the \(DF\) term leaves \((-1)^{|a|}D\phi(a)F\) and a compact commutator, so that term is compact too. The commutator of \(D\) with \(\phi(a)\) is compact because both products are compact; the adjoint defect is zero. The fourth defect is exactly \((1-t)(g\cdot F-F)\phi(a)\), and the orbit of \(F_t\) is norm continuous. Hence this is an equivariant operator homotopy. Haar translation makes the endpoint invariant; averaging preserves its self-adjointness and contraction bound. Applying these same equations over \(C([0,1],B)\) proves the homotopy assertion. \(\square\)
+
+### A two-element action as a working model
+
+Before constructing a product, consider an action of \(G=\{e,s\}\), \(s^2=e\), on \(B\), with \(\alpha=\beta_s\) and \(\alpha^2=1\). On \(B\oplus B\) use inner product \(\frac12(x_e^*y_e+x_s^*y_s)\), reflecting normalized Haar measure. The group acts by
+\[
+U_s(x_e,x_s)=(\alpha(x_s),\alpha(x_e)).
+\]
+An operator matrix with entries in \(B\) is invariant precisely when it has the form
+\[
+\begin{pmatrix}A&C\\\alpha(C)&\alpha(A)\end{pmatrix}.
+\]
+Indeed conjugating a matrix \(\begin{pmatrix}A&C\\D&E\end{pmatrix}\) by \(U_s\) gives \(\begin{pmatrix}\alpha(E)&\alpha(D)\\\alpha(C)&\alpha(A)\end{pmatrix}\). Matrices over \(B\) are exactly the compact operators on this finite free module, also for nonunital \(B\): products \(xy^*\) span a dense subspace of each entry. The scalar factor in the inner product is removed by the module unitary \((x_e,x_s)\mapsto2^{-1/2}(x_e,x_s)\).
+
+Write a normalized-Haar coefficient function as \(f(e)=a,f(s)=b\). Its integrated regular operator is
+\[
+T_f=\frac12
+\begin{pmatrix}a&b\\\alpha(b)&\alpha(a)\end{pmatrix}.
+\tag{1.7}
+\]
+Thus the counting-measure coefficients are \(a/2,b/2\). For \(g(e)=c,g(s)=d\), direct multiplication gives
+\[
+\begin{aligned}
+(f*g)(e)&=\tfrac12(ac+b\alpha(d)),\\
+(f*g)(s)&=\tfrac12(ad+b\alpha(c)),\\
+f^*(e)&=a^*,\\
+f^*(s)&=\alpha(b^*).
+\end{aligned}
+\tag{1.8}
+\]
+These formulas give \(T_{f*g}=T_fT_g\) and \(T_{f^*}=T_f^*\). Conversely every displayed invariant compact matrix is \(T_f\), with coefficients twice its first row. This is already the concrete algebraic content of the kernel identification in Proposition 4.1. That proposition will prove that the same identification respects the full crossed-product norm for every compact group.
+
+For \(B=\mathbb C\) with trivial action, the constant orthonormal change of coordinates to \((1,1)\) and \((1,-1)\) diagonalizes (1.7). Its two entries are \((a+b)/2\) and \((a-b)/2\). The normalized coefficient functions \((1,1)\) and \((1,-1)\) are therefore the two orthogonal central projections; the identity function in this convolution algebra is \((2,0)\). The two scalar blocks have ordinary K-groups \(K_0=\mathbb Z^2\), \(K_1=0\), by the matrix computations in the operator K-theory prerequisites. Theorem 4.3 will identify these blocks with equivariant Fredholm classes. Proposition 6.1 will identify their labels with the trivial and sign representations, with the tensor rule \(\mathrm{sign}\otimes\mathrm{sign}=\mathrm{trivial}\).
+
+Two different tasks remain visible in this small model. Invariance constrains an operator's entries, while a Kasparov product must also satisfy its connection and positivity conditions. Averaging an arbitrary operator matrix settles only the first task. The invariant partition construction below handles both tasks together. Later, stabilization lets the finite matrix picture describe cycles on arbitrary countably generated modules, and the kernel theorem replaces this finite calculation by one over a compact group.
+
+
+## 2. Invariant partitions and the product for compact groups
+
+**Theorem 2.1 (the invariant technical theorem).** Let a compact group act on a graded \(\sigma\)-unital algebra \(J\). Suppose \(A_1,A_2\subset M(J)\) are invariant graded \(\sigma\)-unital subalgebras, their elements are G-continuous, and \(\Delta\) is an invariant separable graded subspace of G-continuous multipliers. Assume
+\[
+A_1A_2\subset J,\qquad
+[\Delta,A_1]_{\mathrm{gr}}\subset A_1.
+\tag{2.1}
+\]
+There are invariant even positive contractions \(M,N\) such that
+\[
+\begin{gathered}
+M+N=1,\\
+MA_1\subset J,\qquad NA_2\subset J,\\
+[M,\Delta]\subset J.
+\end{gathered}
+\tag{2.2}
+\]
+Their square roots have the annihilation and commutator properties of Corollary 3.2 of *Kasparov’s technical theorem*.
+
+**Proof.** Theorem 3.1 of that lesson first supplies \(M_0,N_0\), without invariance. The action on \(M(J)\) is strictly continuous on each fixed multiplier, by the same argument as Lemma 1.1 with module \(J\). Take strict Haar averages \(M,N\).
+
+For \(a\in A_1\), the function
+\[
+\begin{gathered}
+g\longmapsto(g\cdot M_0)a\\
+=g\cdot\bigl(M_0(g^{-1}\cdot a)\bigr).
+\end{gathered}
+\tag{2.3}
+\]
+is norm continuous with values in \(J\). Membership uses invariance of \(A_1\); continuity uses norm continuity of \(g^{-1}\cdot a\), fixed bounded multiplication by \(M_0\), and norm continuity of the action on \(J\). Therefore \(Ma\in J\). The argument for \(NA_2\) is identical. For \(d\in\Delta\),
+\[
+[g\cdot M_0,d]
+ =g\cdot[M_0,g^{-1}\cdot d]
+\tag{2.4}
+\]
+is another norm-continuous \(J\)-valued function. Its integral proves the commutator conclusion. Positivity, evenness and \(M+N=1\) survive averaging. Invariance follows by Haar translation. Polynomial approximation in the quotient proves the assertions about roots, exactly as in the cited corollary. \(\square\)
+
+**Lemma 2.2 (invariant connections).** For compact \(G\), let \(E_1,E_2\) be equivariant modules and let \(F_2\) be invariant and self-adjoint. On \(E_1\widehat\otimes_D E_2\), there is an invariant self-adjoint odd \(F_2\)-connection.
+
+**Proof.** Choose a non-equivariant self-adjoint connection \(G_0\) by the Grassmann connection construction in Section 1 of *Connections and the existence of the Kasparov product*. The tensor-module action is diagonal. For homogeneous \(\xi\in E_1\), conjugation carries its creation operator to the creation operator of \(U_g\xi\). Thus the creation error of \(g\cdot G_0\) for \(\xi\) is the conjugate of the creation error of \(G_0\) for \(U_g^{-1}\xi\). This error depends continuously on \(g\) in the norm of compact operators between the two modules: creation operators depend norm continuously on their vectors, and conjugation on compact operators is norm continuous by (1.3). The adjoint creation error has the same property. Strictly average \(G_0\). The two integrated errors are compact, so its invariant average is a connection. Strict averaging preserves its parity and self-adjointness. \(\square\)
+
+**Theorem 2.3 (compact-group composition).** For compact \(G\), composition and external product give bilinear natural pairings
+\[
+\begin{gathered}
+KK_G^i(A,D)\times KK_G^j(D,B)\\
+\longrightarrow KK_G^{i+j}(A,B),\\[3pt]
+KK_G^i(A_1,B_1)\times KK_G^j(A_2,B_2)\\
+\longrightarrow KK_G^{i+j}(A_1\widehat\otimes A_2,\\
+ B_1\widehat\otimes B_2).
+\end{gathered}
+\tag{2.5}
+\]
+Composition is associative, has the homomorphism cycles as identities, and respects equivariant homomorphisms. External product has the signed flip symmetry. Equivariant module homotopy and stable equivariant operator homotopy give the same groups.
+
+**Proof.** Normalize both input operators invariantly by Proposition 1.2. Put \(S=F_1\widehat\otimes1\) and choose the invariant connection \(G\) from Lemma 2.2. In the notation of the non-equivariant existence proof, put
+\[
+\begin{gathered}
+I_0=\mathcal K(E_1)\widehat\otimes1,\\
+J=\mathcal K(E_1\widehat\otimes_D E_2),\\
+A_1=C^*(I_0,J),\\
+\begin{aligned}
+A_2=C^*\bigl(&J,G^2-1,[S,G]_{\mathrm{gr}},\\
+ &[G,\phi(A)]_{\mathrm{gr}}\bigr),
+\end{aligned}\\
+\Delta=\overline{\operatorname{span}}\\
+\{S,G,\phi(A),S^*,G^*,\phi(A)^*\}.
+\end{gathered}
+\tag{2.6}
+\]
+These are invariant: \(S,G\) are invariant, \(I_0,J\) are invariant ideals in the indicated represented algebra, and equivariance of \(\phi\) preserves the last family. All their elements are G-continuous, by norm approximation from these generators. Separability of \(A\) and countable generation give the countable tests and strictly positive elements constructed in the non-equivariant proof. That proof’s zero-connection calculation proves \(A_1A_2\subset J\), and its connection calculus proves that \(\Delta\) derives \(A_1\).
+
+Apply Theorem 2.1. The invariant operator
+\[
+F=M^{1/4}SM^{1/4}+N^{1/4}GN^{1/4}
+\tag{2.7}
+\]
+is self-adjoint and odd. Equations (3.5)–(3.7) of the non-equivariant product lesson prove its localized square defect, representation commutator, connection condition and positivity. Each of those equations involves precisely the data (2.6) and the partition (2.2); therefore it applies here without any changed analytic assumption. Invariance supplies the additional fourth condition (1.4) with zero defect.
+
+An initially noninvariant equivariant product operator can also be averaged. Its connection errors average to compact errors by Lemma 2.2, and its localized anticommutator with invariant \(S\) averages to a positive quotient element. Proposition 1.2 gives its locally compact homotopy. Thus uniqueness can be checked among invariant operators.
+
+For uniqueness, use the same invariant \(A_1\), and replace \(A_2\) by
+\[
+C^*(J,[S,F]_{\mathrm{gr}},[S,F']_{\mathrm{gr}},F-F').
+\tag{2.8}
+\]
+All generators are invariant zero-connections. Include the invariant \(S,F,F'\) and equivariant \(\phi(A)\) in \(\Delta\). Theorem 2.1 then gives an invariant comparison operator. Equation (4.3) and the positive-anticommutator homotopy in that lesson join both product operators to it through invariant operators. The argument also works over \(C([0,1],B)\), so product descends to homotopy classes in both variables. Block sums prove bilinearity.
+
+Essential replacement, when a homomorphism is an input, uses the interval ideal and module of Proposition 5.1 of that lesson. They are invariant under the pointwise action. Choose their connection by Lemma 2.2. The compact creation calculations in that proposition then give an equivariant interval cycle. Its endpoint tensor unitaries are equivariant. Thus Theorem 5.2 there proves both homomorphism identities here.
+
+For associativity, use Lemmas 3.1–3.2 and the explicit separation proof of Theorem 4.1 in *Homotopy, associativity, the index pairing and KK-equivalence*. Its bracket connections and their negative parts are equivariant, because all selected input and intermediate operators are invariant and functional calculus commutes with conjugation. Its separation algebras, generated by those operators, their compact defects and \(\phi(A)\), are invariant. Replace the single technical-theorem step in that proof by Theorem 2.1. The resulting simultaneous product operator is invariant and is a product for each parenthesization by the exact positivity estimates there. The invariant uniqueness just proved identifies the two classes.
+
+The evaluation bridge in Lemma 1.1 of the homotopy lesson has trivial action on its scalar Hilbert spaces. Its exterior extension with \(B\), and all its scalar rotation paths, are equivariant. Using the just established equivariant products and uniqueness, the proof of Theorem 2.3 there converts every module homotopy into a stable equivariant operator homotopy. This proves the last assertion, without assuming equivariant stabilization.
+
+Finally, external product is formed by exterior extension and composition with diagonal actions. Its signed flip unitaries are equivariant. The two-order comparison of Theorem 5.3 of the homotopy lesson now uses the established invariant associativity and proves signed symmetry. The degree-one construction uses the same trivial auxiliary Clifford factors and the same ordered odd–odd Morita map as in that theorem. This also proves every parity of (2.5). \(\square\)
+
+### Almost invariant partitions
+
+Exact averaging is replaced by uniform approximate invariance on compact sets for a noncompact group.
+
+**Lemma 2.4 (convex approximate invariance).** Let a locally compact group act continuously on a \(\sigma\)-unital algebra \(D\). Given a compact \(K\subset G\), finite or norm-compact derivating-multiplier commutator tests and finite approximate-identity tests, finite convex combinations of any sufficiently late tail of a nested functional-calculus approximate identity can satisfy all the tests and
+\[
+\sup_{g\in K}\|g\cdot v-v\|<\varepsilon.
+\tag{2.9}
+\]
+Successive choices can retain \(v_nv_{n-1}=v_{n-1}\), and can be even for graded data.
+
+**Proof.** Take the nested \(e_j=f_j(h)\) of Section 1 of *Kasparov’s technical theorem*. In \(C(K,D)\), both functions \(g\mapsto e_j\) and \(g\mapsto g\cdot e_j\) are positive contractive approximate identities. For the second assertion and \(z\in C(K,D)\),
+\[
+\begin{gathered}
+\|(g\cdot e_j)z(g)-z(g)\|\\
+=\|e_j(g^{-1}\cdot z(g))-g^{-1}\cdot z(g)\|.
+\end{gathered}
+\tag{2.10}
+\]
+The right-hand test values form a norm-compact subset of \(D\), so convergence is uniform; the other-side test is identical. The bounded-functional construction in [Lesson 08, Theorem 1.1](KT-KK-08.html#1-approximate-identities-with-commutator-control) writes every bounded functional on \(C(K,D)\) as a vector coefficient of a representation. Both represented approximate identities converge strongly to the same projection onto the closure of the represented algebra acting on that Hilbert space, by the strong-support argument proved there. Their represented difference tends strongly to zero; testing each such vector coefficient proves weak convergence to zero in the full Banach dual of \(C(K,D)\).
+
+Combine that difference with the finite commutator tuple from Theorem 1.1 of the technical-theorem lesson. The tuple has weak limit zero in the finite direct sum. Hahn–Banach separation gives a single finite convex combination making every norm small, including the sup norm in (2.9). Compact commutator sets reduce to finite nets. A sufficiently late tail already satisfies the finite approximate-identity tests, and convex combinations retain their bounds. Choosing the next indices beyond the previous finite support gives \(v_nv_{n-1}=v_{n-1}\) by the nested product equation. Evenness is preserved throughout. \(\square\)
+
+**Theorem 2.5 (the locally compact technical theorem).** Under the invariant separation hypotheses of Theorem 2.1, but for any second countable locally compact \(G\), there are even G-continuous positive contractions satisfying (2.2) and
+\[
+g\cdot M-M\in J\quad(g\in G),
+\tag{2.11}
+\]
+with this difference norm continuous in \(g\).
+
+**Proof.** For separable tested algebras retain every test in the strict-series proof of Theorem 2.1 of *Kasparov’s technical theorem*. Its approximate identities are \(u_n\in A_1\), \(v_n\in J\), its square-root differences are \(b_n=(v_n-v_{n-1})^{1/2}\), and its sum is
+\[
+\begin{gathered}
+N=\sum_{n\geq1}b_nu_nb_n,\\
+M=1-N.
+\end{gathered}
+\tag{2.12}
+\]
+Equations (2.3)–(2.12) of that proof establish separation and commutation modulo \(J\). Lemma 2.4 allows the additional group tests simultaneously with those original tests.
+
+Choose increasing compact \(K_n\) whose interiors cover \(G\), and \(\varepsilon_n=2^{-n}\). Require
+\[
+\begin{gathered}
+\sup_{g\in K_n}\|g\cdot u_n-u_n\|<\varepsilon_n,\\
+\sup_{g\in K_n}\|g\cdot b_n-b_n\|<\varepsilon_n.
+\end{gathered}
+\tag{2.13}
+\]
+For the second requirement, uniform polynomial approximation to the square root supplies a tolerance \(\eta_n\). At step \(n\) require the group difference of \(v_n\), over \(K_{n+1}\), to be smaller than half both \(\eta_n\) and \(\eta_{n+1}\). Then the already chosen \(v_{n-1}\) and the new \(v_n\) give the desired bound for the square root of their difference over \(K_n\). The first difference, with \(v_0=0\), has its own bound. This is the prospective square-root selection of the preceding proof, now with both commutator and group tests.
+
+For \(g\in K_n\), expansion into three differences gives
+\[
+\begin{gathered}
+\|g\cdot(b_nu_nb_n)-b_nu_nb_n\|\\
+\leq3\varepsilon_n.
+\end{gathered}
+\tag{2.14}
+\]
+Every difference is in \(J\). On fixed \(K_m\) the tail with \(n\geq m\) converges uniformly in norm; the finitely many initial terms have continuous orbits in \(J\). The difference series is therefore norm continuous and \(J\)-valued. Strict continuity of the action identifies its sum with \(g\cdot N-N\): apply the action to bounded strict partial sums and test on elements of \(J\). This proves (2.11) and G-continuity.
+
+For general \(\sigma\)-unital separation algebras, use the separable reduction at the end of the preceding technical-theorem proof, also closing its subalgebras under translates. Begin with strictly positive \(h_0,h_1,h_2\), include their orbits, and close under the required products and derivations. A countable dense subset of \(G\) suffices because the tested orbits are norm continuous. The resulting \(J_0,B_1,B_2\) are separable and invariant. The proved embedding \(M(J_0)\subset M(J)\) is equivariant by strict extension from invariant \(J_0\). The separation conclusions extend using the original \(h_i\); the norm-continuous difference series remains in \(J_0\subset J\). Graded invariant subalgebras and even approximate identities retain parity. \(\square\)
+
+Invariance of the separation data matters: an almost invariant partition cannot separate two supports that the group exchanges modulo \(J\). The product data below satisfy the invariant hypothesis.
+
+**Theorem 2.6 (composition for locally compact groups).** The product, naturality, associativity, signed symmetry and homotopy-comparison conclusions of Theorem 2.3 hold for any second countable locally compact \(G\).
+
+**Proof.** First construct a G-continuous connection. Choose a self-adjoint non-equivariant connection \(G_0\) and a nonnegative \(f\in C_c(G)\) of integral one. Its strict convolution is
+\[
+G_f=\int_G f(g)(g\cdot G_0)\,dg.
+\tag{2.15}
+\]
+[NCF.4–NCF.5](supporting/noncompact-foundations/noncompact-foundations.html#ncf-004) prove Haar existence, the strict integral and translation continuity of \(f\) in \(L^1(G)\). They give norm continuity of the orbit, with bound \(\|G_0\|\|\lambda_hf-f\|_1\). A translate of \(G_0\) is a connection for \(g\cdot F_2\). The latter differs two-sided locally compactly from \(F_2\), so the creation compactness test of Lemma 2.1 of the product lesson makes it also an \(F_2\)-connection. For a fixed creation vector its errors are norm continuous in \(g\): transformed vectors are norm continuous, compact errors transform norm continuously, and \(F_2\) has a norm-continuous orbit. Integrating the errors over compact support proves that \(G_f\) is a self-adjoint odd connection. Subtracting its translated connection identities shows that \(g\cdot G_f-G_f\) is a zero-connection.
+
+Normalize the inputs and set \(G=G_f\). Keep invariant \(A_1=I_0+J\) from (2.6). Generate \(A_2\) by every translate of the defect generators there and of \(g\cdot G-G\). These are zero-connections, hence \(A_1A_2\subset J\). Include the orbits of \(S,G,\phi(A)\) and their adjoints in \(\Delta\). The connection calculus makes them derivations of invariant \(A_1\). Norm-continuous orbits generate separable tested data; the positive generator-sum argument in the non-equivariant proof gives \(\sigma\)-unitality. Apply Theorem 2.5.
+
+The non-equivariant equations (3.5)–(3.7) prove all product conditions for \(F_0=M^{1/2}S+N^{1/2}G\). Its additional defect is
+\[
+\begin{gathered}
+g\cdot F_0-F_0\\
+ =(g\cdot M^{1/2}-M^{1/2})(g\cdot S)\\
+ \quad+M^{1/2}(g\cdot S-S)\\
+ \quad+(g\cdot N^{1/2}-N^{1/2})(g\cdot G)\\
+ \quad+N^{1/2}(g\cdot G-G).
+\end{gathered}
+\tag{2.16}
+\]
+The first and third terms are globally compact by (2.11) and quotient functional calculus. Multiplying the second by \(\phi(a)\) gives a compact operator, since \((g\cdot S-S)\phi(a)\in I_0\) and \(M^{1/2}\) annihilates \(I_0\) modulo \(J\). The last term is globally compact by the extra \(A_2\) generators. All factors are G-continuous. Thus (1.4) holds, and the self-adjoint sandwich (2.7), differing globally compactly from \(F_0\), has the same equivariant class.
+
+For uniqueness start with (2.8), adjoin \(g\cdot F-F\), \(g\cdot F'-F'\), and close under translates. These differences are zero-connections because the translated second-input operators differ locally compactly from \(F_2\). Include every tested operator orbit in the derivating space. The comparison operator satisfies (1.4) by (2.16). Its positive-anticommutator homotopies use continuous functional calculus in G-continuous operators; polynomial approximation preserves their localized equivariance defects. Hence uniqueness and the interval-coefficient proof of bilinearity give actual equivariant homotopies.
+
+The associativity and evaluation-bridge arguments used in Theorem 2.3 have the same additional tests at each separation step. Their first separation algebra is invariant: it is generated by the relevant tensor images of compact operators and \(J\). Close the defect and derivating sets under translates and include the equivariance differences of connection operators being combined. The added defects annihilate the invariant first algebra modulo \(J\), by zero-connection calculus or by translating the original annihilation equation. The added derivating tests still derive it. Theorem 2.5 supplies the partition; expansion (2.16), with the corresponding localized first-module defect, proves equivariance of the simultaneous product or homotopy operator. The original connection and positivity equations are unchanged. The exact preceding proofs therefore give associativity, essential replacement, homomorphism identities and comparison of homotopies. The external signed flips commute with the diagonal group action. This proves all asserted properties without averaging over a noncompact group. \(\square\)
+
+## 3. Equivariant stabilization
+
+Write
+\[
+\begin{gathered}
+\mathcal H_B^G=L^2(G)\otimes\ell^2\otimes B,\\
+(U_g\zeta)(s)=\beta_g(\zeta(g^{-1}s)).
+\end{gathered}
+\tag{3.1}
+\]
+For grading, give \(\ell^2\) infinitely many even and odd coordinates and use the tensor grading. This module has a strongly continuous action by approximation by continuous functions with finitely many coordinates.
+
+**Theorem 3.1 (compact equivariant stabilization).** Assume \(G\) is compact. Every countably generated graded equivariant Hilbert \(B\)-module \(E\) admits an even equivariant adjointable isometry into \(\mathcal H_B^G\), and
+\[
+E\oplus\mathcal H_B^G\cong\mathcal H_B^G
+\tag{3.2}
+\]
+by an even equivariant module unitary.
+
+**Proof.** Choose homogeneous generating vectors \(\xi_j\) of norm at most one and positive weights \(a_j\) with \(\sum a_j^2<\infty\). Include enough vectors that
+\(k_0=\sum a_j^2\theta_{\xi_j,\xi_j}\)
+is strictly positive in \(\mathcal K(E)\). Here is a direct check. It dominates \(a_j^2\theta_{\xi_j,\xi_j}\). If \(e_n\) is its spectral cutoff approximate identity, then
+\(\|(1-e_n)\xi_j\|^2\leq a_j^{-2}\|(1-e_n)k_0(1-e_n)\|\to0\).
+The generating property extends this to every vector. Applying it to both vectors in each rank-one operator proves that \(e_n\) is an approximate identity of \(\mathcal K(E)\).
+
+Assign the \(j\)-th regular coordinate the parity of \(\xi_j\). Define
+\[
+\begin{gathered}
+T\zeta=\sum_j a_j\int_G U_s\xi_j\,\zeta_j(s)\,ds,\\
+(T^*\eta)_j(s)=a_j\langle U_s\xi_j,\eta\rangle.
+\end{gathered}
+\tag{3.3}
+\]
+On finite continuous sections the formulas are adjoint to each other. The Hilbert-module Cauchy–Schwarz inequality for the integral gives \(\|T_j\|\leq\|\xi_j\|\); summability of \(a_j^2\) gives a bounded row operator and its adjoint column. The formulas extend by density. They are \(B\)-linear; changing \(s=gr\) in the first proves \(TU_g=U_gT\). In particular
+\[
+k=TT^*=\int_G g\cdot k_0\,dg
+\tag{3.4}
+\]
+is invariant and compact.
+
+It is strictly positive in \(\mathcal K(E)\). Indeed every nonzero positive functional \(\omega\) on that algebra has \(\omega(k_0)>0\). The continuous nonnegative function \(g\mapsto\omega(g\cdot k_0)\) is positive at the identity, so its integral is positive. The characterization of strict positivity by positive functionals proves the claim. Equivalently, its spectral cutoff approximate identity tends strictly to one, so \(kE\) is dense in \(E\).
+
+Choose a nonnegative locally finite continuous partition \(\chi_n\) of \((0,\|k\|]\), with each support bounded away from zero. Set \(f_n(t)=(\chi_n(t)/t)^{1/2}\), extended by zero at zero. Then
+\[
+\begin{gathered}
+V\eta=(T^*f_n(k)\eta)_n,\\
+\sum_n f_n(k)k f_n(k)=1\quad\text{strictly}.
+\end{gathered}
+\tag{3.5}
+\]
+Consequently \(V\) is an isometry into a countable direct sum of regular modules. It is adjointable: the partial row operators \(\sum_n f_n(k)T\zeta_n\) have norm at most one, and convergence on finitely supported vectors extends them to the adjoint. Functional calculus of invariant even \(k\) makes \(V\) equivariant and even. The resulting countable sum is another copy of \(\mathcal H_B^G\).
+
+Write this copy as \(VE\oplus E^\perp\). Its countable direct sum is \(E^\infty\oplus(E^\perp)^\infty\). Absorbing one additional copy of \(E\) into \(E^\infty\) by the coordinate shift gives (3.2). All coordinate rearrangements are even and equivariant. \(\square\)
+
+The averaged strictly positive operator is the reason this argument gives an exactly equivariant unitary for compact groups. An integral over all of a noncompact group would require a separate construction.
+
+**Theorem 3.2 (G-continuous stabilization).** For any second countable locally compact \(G\), there is an even G-continuous module unitary
+\[
+E\oplus\mathcal H_B^G\longrightarrow\mathcal H_B^G.
+\tag{3.6}
+\]
+It need not be equivariant.
+
+**Proof.** Choose a unit vector \(f\in C_c(G)\subset L^2(G)\). Separate \(f\otimes E^\infty\) from its orthogonal complement in \(L^2(G,E^\infty)\). Send an additional copy of \(E\) to the zeroth \(f\)-coordinate, shift the old \(f\)-coordinates by one, and fix the orthogonal complement. This gives an even unitary
+\[
+\begin{gathered}
+W:E\oplus L^2(G,E^\infty)\\
+\longrightarrow L^2(G,E^\infty).
+\end{gathered}
+\tag{3.7}
+\]
+Its components are the isometry \(\xi\mapsto f\otimes\xi\), the projection \(p_f\), and scalar coordinate shifts. Conjugation replaces \(f\) by \(\lambda_gf\) and \(p_f\) by \(p_{\lambda_gf}\); the action on \(E\) cancels. The bounds \(\|\lambda_gf-f\|_2\to0\) and \(\|p_{\lambda_gf}-p_f\|\leq2\|\lambda_gf-f\|_2\) prove G-continuity.
+
+For an even module unitary \(w:E_1\to E_2\), regularize it by
+\[
+(\widetilde w\xi)(t)=
+ U_t^{(2)}w(U_t^{(1)})^{-1}\xi(t).
+\tag{3.8}
+\]
+The semilinear coefficient actions cancel, giving \(B\)-linearity. The field and its adjoint act continuously on compact continuous sections by strong continuity of both actions, and extend to inverse L²-module unitaries. Substitution of \(g^{-1}t\) proves exact equivariance.
+
+Ordinary graded stabilization gives an even unitary \(E^\infty\oplus\widehat H_B\cong\widehat H_B\). Regularize it, obtaining an equivariant unitary \(L^2(G,E^\infty)\oplus\mathcal H_B^G\cong\mathcal H_B^G\). Use its inverse to open the regular summand in (3.6), apply \(W\oplus1\), and close with the same equivariant unitary. The composite is G-continuous. All L² modules are countably generated by second countability. \(\square\)
+
+## 4. Invariant compact operators and Green–Julg
+
+For the next calculation use the unitarily equivalent regular-module action
+\[
+\begin{gathered}
+\mathcal R_B=L^2(G)\otimes B,\\
+(U_g\xi)(t)=\beta_g(\xi(tg)).
+\end{gathered}
+\tag{4.1}
+\]
+Inversion \(t\mapsto t^{-1}\) intertwines (3.1) and (4.1), because compact groups are unimodular. The regular covariant pair on this module is
+\[
+\begin{gathered}
+(\pi(b)\xi)(t)=\beta_{t^{-1}}(b)\xi(t),\\
+(\lambda_s\xi)(t)=\xi(s^{-1}t).
+\end{gathered}
+\tag{4.2}
+\]
+Both operators in (4.2) commute with (4.1).
+
+**Proposition 4.1 (the invariant kernel algebra).** For compact \(G\), integration of (4.2) is an isomorphism
+\[
+B\rtimes G\ \cong\ \mathcal K(\mathcal R_B)^G.
+\tag{4.3}
+\]
+It preserves grading. With an additional trivial infinite multiplicity space it gives
+\[
+(B\rtimes G)\widehat\otimes\mathcal K
+ \cong\mathcal K(\mathcal H_B^G)^G.
+\tag{4.4}
+\]
+
+**Proof.** An element \(f\in C(G,B)\) acts as the integral kernel
+\[
+K_f(t,r)=\beta_{t^{-1}}\bigl(f(tr^{-1})\bigr).
+\tag{4.5}
+\]
+Indeed substitute \(r=s^{-1}t\) in its integrated formula. This kernel is norm continuous on compact \(G\times G\). Such a \(B\)-valued kernel defines a compact module operator: approximate it uniformly by finite sums \(a(t)b(r)c\), then approximate each coefficient \(c\in B\) by sums of products \(uv^*\). The resulting kernels are rank-one operators on \(L^2(G)\otimes B\). The operator-norm error is bounded by the uniform kernel error, since Haar mass is one.
+
+Conjugation in (4.1) sends a kernel \(K\) to
+\[
+(g\cdot K)(t,r)=\beta_g(K(tg,rg)).
+\tag{4.6}
+\]
+Thus (4.5) is invariant. Conversely an invariant continuous kernel obeys
+\(K(tg,rg)=\beta_{g^{-1}}K(t,r)\).
+Putting \(g=t^{-1}\) gives (4.5) with \(f(s)=K(e,s^{-1})\). Continuous kernels are dense among compact operators by approximation of both vectors of a rank-one operator by continuous sections. Averaging that approximation in norm makes it invariant, and preserves continuity of its kernel. Hence invariant continuous kernels are dense in \(\mathcal K(\mathcal R_B)^G\). This proves density of the range in (4.3).
+
+The regular representation is faithful on the full crossed product in this compact case. To verify the full-to-reduced step, take any nondegenerate covariant Hilbert-space pair \((\rho,V)\). The map \(v\mapsto v\otimes1_G\) embeds it into \((\rho\otimes1,V\otimes\lambda)\), since \(1_G\) is an invariant unit vector. Fell absorption, with its explicit unitary from *Reduced crossed products and Fell’s absorption principle*, identifies the latter with the regular representation for \(\rho\). Regular-representation norm independence in that lesson bounds it by the faithful regular norm. Taking the supremum over all covariant pairs proves that full and regular norms coincide. Tensoring the regular module with a faithful Hilbert-space representation of \(B\) tests its norm faithfully; therefore its integrated module representation is faithful as well. A faithful homomorphism has closed range, so the already dense range is all of the fixed compact algebra.
+
+Finally compress compact operators to finitely many multiplicity coordinates. Those compressions converge in norm and commute with the group action. Their invariant entries are precisely the algebra in (4.3). This proves (4.4), with the indicated tensor grading. \(\square\)
+
+**Lemma 4.2 (fixed multipliers).** Put \(J=\mathcal K(\mathcal H_B^G)^G\). Its action on \(\mathcal H_B^G\) is nondegenerate, and strict extension identifies
+\[
+M(J)=\mathcal L(\mathcal H_B^G)^G.
+\tag{4.7}
+\]
+
+**Proof.** Average a strictly positive compact operator as in (3.4), now on the regular module itself. The averaged operator lies in \(J\) and remains strictly positive in the whole compact algebra. Its cutoff approximate identity acts in norm on every vector. Thus \(J\) acts nondegenerately, and the multiplier extension exists and is faithful. Every extended multiplier is invariant, since its products with \(J\) are invariant and those products determine its action on a dense set of vectors. Conversely every invariant adjointable \(T\) satisfies \(TJ,JT\subset J\), so is a multiplier of \(J\). The extension agrees with \(T\) on the dense subspace \(J\mathcal H_B^G\), proving surjectivity. \(\square\)
+
+**Theorem 4.3 (Green–Julg for compact groups).** For compact \(G\), there is a natural isomorphism
+\[
+K_i^G(B)\cong K_i(B\rtimes G).
+\tag{4.8}
+\]
+For trivial grading on \(B\), the group on the right is ordinary K-theory.
+
+**Proof.** We give the cycle comparison, including its equivalence relations. A scalar source has the invariant projection \(p=\phi(1)\). Its commutator with \(F\) is compact. Removing the off-diagonal corners of \(F\) is therefore a compact perturbation; the \(1-p\) corner has zero representation and is degenerate. Thus take the scalar representation to be unital. By Proposition 1.2 take \(F\) invariant.
+
+Add a unital degenerate cycle on the balanced regular module, whose operator is the odd flip between its even and odd multiplicity coordinates. Theorem 3.1 identifies the enlarged module equivariantly with the balanced regular module. The resulting cycle is an odd invariant operator with adjoint and square defects in
+\(J=\mathcal K(\mathcal H_B^G)^G\). Consequently it is exactly an odd multiplier of \(J\), with those defects in \(J\), by Lemma 4.2.
+
+On the other hand put \(D=B\rtimes G\). The ordinary scalar cycle picture for \(KK(\mathbb C,D)\), after graded stabilization, consists of odd operators on a balanced standard \(D\)-module with the same defects in its compact algebra. Proposition 4.1 identifies that compact algebra with \(J\), including grading; its isomorphism extends to multipliers. It therefore identifies these two sets of normalized standard cycles.
+
+It also identifies all their relations. Norm operator paths are the same multiplier paths, compact perturbations are the same elements of \(J\), and even unitary changes of standard-module coordinates are the same even multiplier unitaries. A degenerate operator has exactly zero defects on either side. Theorem 2.3 identifies equivariant module homotopy with stable equivariant operator homotopy. The corresponding non-equivariant identification is Theorem 2.3 of *Homotopy, associativity, the index pairing and KK-equivalence*. Hence the standard-cycle identification descends to a bijection of the actual homotopy groups, rather than merely their operator-path versions. Block sums prove additivity.
+
+For degree one apply the same argument with the trivial auxiliary \(C_1\) action. The integrated kernel isomorphism then identifies \((B\widehat\otimes C_1)\rtimes G\) with \((B\rtimes G)\widehat\otimes C_1\). On continuous functions this is the identity on the Clifford factor, and the full covariant universal property gives its inverse. This proves (4.8) for either grading and both degrees.
+
+The construction is natural in equivariant coefficient maps. On a rank-one kernel a coefficient map replaces each inner product by its image; scalar extension of the regular module gives exactly that replacement. Finite kernel approximation, then multiplier extension on the generated support module, gives the same map for arbitrary cycles. Thus the two normalized cycle constructions commute with coefficient pushforward. \(\square\)
+
+## 5. The discrete dual
+
+The full crossed product is essential here. For a countable discrete group its dense algebra consists of finite sums \(\sum_g a_g u_g\), and \(a u_g\) belongs to the algebra even when \(A\) is nonunital. For a nondiscrete group, an individual coefficient times a group multiplier need not belong to the crossed product.
+
+**Theorem 5.1 (the dual Green–Julg theorem).** Let \(G\) be countable and discrete. There is a natural isomorphism
+\[
+K_G^i(A)\cong K^i(A\rtimes G).
+\tag{5.1}
+\]
+Its forward map integrates the covariant representation and retains the cycle operator.
+
+**Proof.** First let the coefficient be \(\mathbb C\). For an equivariant cycle \((H,\phi,F)\), integrate \((\phi,U)\) to \(\Phi:A\rtimes G\to\mathcal L(H)\). For homogeneous \(a\), the graded commutator expands as
+\[
+\begin{gathered}
+{}[F,\phi(a)U_g]_{\mathrm{gr}}\\
+ = [F,\phi(a)]_{\mathrm{gr}}U_g\\
+ \quad+(-1)^{|a|}\phi(a)[F,U_g].
+\end{gathered}
+\tag{5.2}
+\]
+The second term is compact by the equivariance defect: \([F,U_g]=(F-g\cdot F)U_g\), and the two-sided localized version of (1.4) follows by taking adjoints after self-adjoint normalization. The square and adjoint defects multiplied by \(\phi(a)U_g\) are compact by the original cycle conditions. Finite sums and norm density extend these statements to every element of \(A\rtimes G\). Thus \((H,\Phi,F)\) is a non-equivariant cycle.
+
+Conversely take a cycle \((H,\Phi,F)\) for \(D=A\rtimes G\). It can be taken with nondegenerate representation. On a Hilbert space this also follows directly by compressing to \(H_0=\overline{\Phi(D)H}\): the orthogonal complementary representation is zero, and
+\((1-P)F\Phi(d)=(1-P)[F,\Phi(d)]\)
+is compact. Removing these off-diagonal terms is a two-sided locally compact perturbation, and the complementary cycle is degenerate.
+
+Extend the nondegenerate representation strictly to \(M(D)\). Define
+\(\phi(a)=\Phi(a)\) and \(U_g=\widetilde\Phi(u_g)\). They are covariant. The inclusion \(A\subset D\) is nondegenerate, so \(\phi\) is nondegenerate. Every orbit is norm continuous because the group is discrete. Both \([F,\Phi(au_g)]_{\mathrm{gr}}\) and \([F,\phi(a)]_{\mathrm{gr}}\) are compact. Equation (5.2) therefore proves \(\phi(a)[F,U_g]\) compact. Multiplying by \(U_g^{-1}\), and taking adjoints for the other localization, gives the fourth defect in (1.4). The remaining defects are obtained by restricting from \(D\). Thus this is an equivariant cycle.
+
+For completeness, the inverse respects homotopy even when a homotopy’s module is not a trivial Hilbert-space field. Given a \(D\)-\(C([0,1])\) homotopy, use Proposition 5.1 of *Connections and the existence of the Kasparov product* to replace it by a cycle with nondegenerate \(D\)-representation. The resulting essential module is \(\overline{\Phi(D)E}\). Its representation extends to the canonical \(u_g\), and (5.2), now in compact module operators over the interval, supplies the equivariant cycle conditions. Evaluation has the essential representation at each endpoint. The replacement operator at an endpoint differs locally compactly from its compressed original operator: this is the connection conclusion of the essential-replacement construction when the original endpoint is essential. Such a difference gives an equivariant straight homotopy, since the action is discrete and its additional localized defect is compact. Therefore the inverse sends homotopic cycles to the same equivariant class. This argument also covers stable additions and degenerate cycles. Integration itself preserves homotopies by exactly (5.2) on the interval module.
+
+On nondegenerate covariant representations the two operations are inverse by the integrated-form theorem. For a cycle with degenerate source representation, its Hilbert-space support projection commutes with \(U_g\), since the represented support is invariant. The preceding compression is then equivariant. Thus the two operations are inverse on all classes, not only essential representatives. Pulling a representation back along an equivariant algebra map commutes with integration, proving naturality.
+
+For degree one use the ungraded odd Fredholm description of Proposition 3.1 of *Pictures of KK*. The same covariant representation and the same compact estimates apply. Equivalently retain the finite auxiliary right \(C_1\) factor throughout; its action is trivial and its multiplier extension causes no new continuity requirement. This proves (5.1) in both degrees. \(\square\)
+
+## 6. Representation classes
+
+For any group for which the equivariant product is constructed, define
+\[
+R^i(G)=KK_G^i(\mathbb C,\mathbb C).
+\tag{6.1}
+\]
+For compact groups Theorem 2.3 supplies its full ring structure. Finite-dimensional unitary representations give even cycles \((V,1,0)\), with \(V\) in even degree. Their square defect is compact because \(V\) is finite dimensional.
+
+**Proposition 6.1 (the compact representation ring).** For compact \(G\),
+\[
+R^0(G)=R(G),\qquad R^1(G)=0,
+\tag{6.2}
+\]
+where the right-hand ring is the Grothendieck ring of finite-dimensional unitary representations. Addition is direct sum and multiplication is tensor product. In particular it is commutative, and it acts naturally on \(KK_G^i(A,B)\).
+
+**Proof.** An invariant even Fredholm operator on a graded Hilbert space has off-diagonal part \(T\) commuting with the group. Its polar decomposition commutes with the group as well: form the support and modulus by spectral calculus. Kernel and cokernel are finite-dimensional invariant subspaces. The invertible complementary part is an equivariant compact perturbation of its polar unitary and yields a degenerate cycle. Thus every even class is
+\([
+\ker T]-[\ker T^*]
+\).
+To check independence and injectivity, we describe the invariant compact algebra and its K-groups rather than assume invariance of these finite kernels under an arbitrary module homotopy.
+
+Every strongly continuous unitary representation on a separable Hilbert space is a Hilbert sum of finite-dimensional representations when \(G\) is compact. Indeed average a positive compact operator with trivial kernel, as in (3.4). The average still has trivial kernel: for a nonzero vector its positive quadratic form is positive at the identity and hence on a set of positive Haar measure. Its positive eigenspaces are finite dimensional and invariant, and the compact spectral theorem gives their dense orthogonal sum. A finite-dimensional unitary representation splits into irreducibles by taking invariant orthogonal complements.
+
+Every irreducible \(V\) occurs in the right regular representation: for a nonzero linear functional \(\ell\) on \(V\), the map
+\(v\mapsto(t\mapsto\ell(\pi(t)v))\)
+intertwines \(V\) with right translation and is injective, since its kernel is invariant and the map is nonzero. Schur’s lemma follows directly by spectral decomposition of a commuting self-adjoint matrix; a general commuting matrix has scalar real and imaginary parts. Applying it to an averaged map between two irreducibles shows that inequivalent irreducibles have zero intertwiner space. Consequently, with infinite trivial multiplicity,
+\[
+\mathcal K(\mathcal H_{\mathbb C}^G)^G
+ \cong\bigoplus_{V\in\widehat G}^{c_0}
+ \mathcal K(M_V)\otimes1_V,
+\tag{6.3}
+\]
+where each multiplicity space \(M_V\) is infinite dimensional. The \(c_0\) condition follows from compactness: finitely many finite-rank compressions approximate a compact operator, and its norm on all remaining isotypical summands then tends to zero. Conversely a \(c_0\) family of compact blocks tensored with the finite-dimensional identities is compact. Second countability makes this a countable collection, as each irreducible occurs in separable \(L^2(G)\).
+
+The ordinary K-groups of (6.3) are \(\bigoplus_{V\in\widehat G}\mathbb Z\) in degree zero and zero in degree one. For example a projection over its unitization differs from its scalar projection by a norm-small tail; when the tail norm is below one, the standard near-projection unitary homotopy removes that tail. Thus its K-class is supported in finitely many blocks. The same tail removal applies to unitaries, and matrix stability gives the stated groups. The finite-dimensional matrix computation has \(K_0=\mathbb Z\), \(K_1=0\).
+
+The cycle comparison of Theorem 4.3 sends the finite even representation \(V\) to a rank-one projection in its multiplicity block in (6.3). Hence the index \([\ker T]-[\ker T^*]\) is independent of all cycle relations and distinct irreducibles give independent classes. This proves (6.2).
+
+The zero-operator cycle on \(V\otimes W\) is a product of the two finite cycles: its creation operators are compact and its positivity condition for the zero first operator is zero. Thus multiplication is tensor product. The ordinary flip \(V\otimes W\to W\otimes V\) is an intertwining unitary, proving commutativity.
+
+For an arbitrary equivariant cycle, tensoring by \(V\) with diagonal action gives the scalar action
+\[
+[V]\cdot x=[V]\boxtimes x.
+\tag{6.4}
+\]
+Associativity and bilinearity in Theorem 2.3 prove the module laws. The signed flip moves an even \([V]\) through another factor without a sign; naturality proves that all equivariant pullbacks, pushforwards and products respect (6.4). \(\square\)
+
+**Proposition 6.2 (the ring for a locally compact group).** For any second countable locally compact \(G\), \(R^*(G)\) is a graded commutative unital ring acting on the equivariant groups as graded scalars. Its degree-zero part acts without parity signs.
+
+**Proof.** Theorem 2.6 supplies composition, associativity and identity \([\mathbb C]\). For scalar source and coefficient the external and composition products agree by their exterior-extension definition. The signed flip is the usual identification of scalar factors, so symmetry reads \(xy=(-1)^{ij}yx\) for \(x\in R^i(G)\), \(y\in R^j(G)\). Exterior product with an algebra identity gives its scalar action. Associativity and interchange prove the module laws and compatibility with products, and naturality proves compatibility with algebra maps. This does not identify the ring with finite-dimensional representation theory for a noncompact group. \(\square\)
+
+## 7. Restriction and compact induction
+
+A continuous homomorphism \(r:H\to G\) gives a restriction map
+\[
+\begin{gathered}
+r^*:KK_G^i(A,B)\\
+\longrightarrow KK_H^i(A,B).
+\end{gathered}
+\tag{7.1}
+\]
+by using the actions through \(r\) on the same cycle. Norm continuity of \(h\mapsto r(h)\cdot F\), covariance and (1.4) follow by composition. The same operation on interval modules proves well-definedness. Composition of homomorphisms gives composition of restrictions. It preserves products: the same operator remains a product cycle for the restricted actions, so uniqueness in Theorem 2.6 applies. This includes quotient homomorphisms, not only subgroup inclusions.
+
+For a closed subgroup \(H\subset G\), let \(\operatorname{Ind}_H^G B\) consist of continuous functions \(b:G\to B\) satisfying
+\[
+\begin{gathered}
+b(gh)=\beta_{h^{-1}}b(g),\\
+\|b(g)\|\longrightarrow0\quad\text{on }G/H,\\
+(k\cdot b)(g)=b(k^{-1}g).
+\end{gathered}
+\tag{7.2}
+\]
+The inverse on \(h\) is part of the right-coset convention. When \(B\) is a G-algebra restricted to \(H\), the map \(b(g)\mapsto\beta_g b(g)\) identifies (7.2) with \(C_0(G/H)\widehat\otimes B\) carrying the diagonal action. Its covariance is checked by \(\beta_{gh}\beta_{h^{-1}}=\beta_g\).
+
+For an equivariant Hilbert \(B\)-module \(E\), use the analogous section condition
+\(\eta(gh)=U_h^{-1}\eta(g)\), with pointwise multiplication and inner product. Denote the resulting module by \(\operatorname{Ind}_H^G E\).
+
+**Lemma 7.1 (induced sections for compact groups).** Suppose \(G\) is compact and \(H\) is closed. Evaluation at each \(g\) has dense range in \(E\), and induced compact operator fields are precisely
+\[
+\mathcal K(\operatorname{Ind}_H^G E)
+ \cong\operatorname{Ind}_H^G\mathcal K(E).
+\tag{7.3}
+\]
+The induced module is countably generated.
+
+**Proof.** For \(\xi\in E\) and \(f\in C(G)\), put
+\[
+\eta(g)=\int_H U_h\xi\,f(gh)\,dh.
+\tag{7.4}
+\]
+Changing the variable \(h=h_0^{-1}k\) shows \(\eta(gh_0)=U_{h_0}^{-1}\eta(g)\). On \(H\), choose a nonnegative continuous integral-one function supported near the identity. Extend it continuously to \(G\), which is possible since compact metrizable \(G\) is normal and \(H\) is closed. Equation (7.4) at the identity approximates \(\xi\), by continuity of \(h\mapsto U_h\xi\). Left translates do the same at any \(g\). This proves density of all evaluation ranges and uses no local section of \(G\to G/H\).
+
+A rank-one operator of two induced sections is the field
+\(g\mapsto\theta_{\eta(g),\zeta(g)}\), which has the required covariance and norm continuity. This embeds the left side of (7.3) into the right side. To prove density, fix a continuous equivariant compact field \(k(g)\). At one fibre approximate its value by a finite sum of rank-one operators, and approximate the two vectors of each by evaluations of global induced sections, as just proved. The error remains small on a neighborhood, since its norm is continuous on \(G\) and descends to \(G/H\). Cover compact \(G/H\) by finitely many such neighborhoods and combine the approximations with a scalar partition of unity. A nonnegative partition function can be split into its two square roots on the two sections, so each patched term is still a rank-one operator. This proves uniform density and hence (7.3).
+
+Finally \(E\) is a separable Banach space under our standing hypotheses. The induced module is a closed subspace of separable \(C(G,E)\), hence separable. A countable norm-dense family generates it as a module, since a coefficient approximate identity converges on every vector. Thus it is countably generated. \(\square\)
+
+**Theorem 7.2 (compact induction).** For compact \(G\) and closed \(H\), induction gives
+\[
+\begin{gathered}
+\operatorname{Ind}_H^G:KK_H^i(A,B)\\
+\longrightarrow KK_G^i(\operatorname{Ind}_H^G A,\\
+       \operatorname{Ind}_H^G B).
+\end{gathered}
+\tag{7.5}
+\]
+It preserves products, homomorphism classes and successive induction.
+
+**Proof.** Average an input cycle to make \(F\) H-invariant. On its induced module use the pointwise source action and pointwise operator \(F\). The latter is well-defined because it commutes with \(H\), and is invariant under left translation by \(G\). Each localized defect is the continuous compact field obtained by applying the original defect to the source section \(a(g)\). It is compact by (7.3). An invariant interval homotopy induces the same construction over the interval coefficient algebra, so this operation is well-defined and additive.
+
+For products the pointwise tensor map
+\[
+(\eta\widehat\otimes\zeta)(g)
+ \longmapsto\eta(g)\widehat\otimes\zeta(g)
+\tag{7.6}
+\]
+identifies the tensor product of induced modules with the induced tensor module. It is isometric by the pointwise inner product, and onto by fibrewise density followed by the finite-neighborhood partition argument of Lemma 7.1. An induced invariant product operator has the connection conditions first for the pointwise creation sections, by (7.3), then for every vector by density. Its localized positivity also holds in the induced quotient: the pointwise positive quotient field has a continuous positive lift modulo compact fields. To see this last assertion directly, take the self-adjoint represented localized anticommutator \(L(g)\). Its negative part is compact in each fibre because its quotient is positive. Functional calculus makes \(L(g)_-\) a continuous compact field with the required covariance; (7.3) makes it compact on the induced module. Thus its operator quotient is positive. Product uniqueness proves compatibility with (7.5).
+
+Induction of a homomorphism cycle is the pointwise induced homomorphism cycle, so identities are preserved. For \(L\subset H\subset G\), successive sections are identified by
+\[
+(\Psi\eta)(g)(h)=\eta(gh).
+\tag{7.7}
+\]
+The inverse evaluates the inner section at \(e\). The two covariance conditions give the inverse identities; compactness of the quotients and the supremum inner product give an isometric onto map. It intertwines source actions, group actions and invariant operators, proving successive induction. \(\square\)
+
+**Theorem 7.3 (compact Frobenius reciprocity).** For compact \(G\), closed \(H\), a G-algebra \(A\) and an H-algebra \(B\), there is a natural isomorphism
+\[
+\begin{gathered}
+KK_H^i(A,B)\\
+\cong KK_G^i(A,\operatorname{Ind}_H^G B).
+\end{gathered}
+\tag{7.8}
+\]
+The forward map induces and represents \(a\in A\) at \(g\) by \(\phi(\alpha_{g^{-1}}a)\). The inverse restricts to \(H\) and pushes coefficients forward by evaluation at \(e\).
+
+**Proof.** The described forward source action is covariant and preserves the induced section condition. It is the pullback of (7.5) by the equivariant map
+\(a\mapsto(g\mapsto\alpha_{g^{-1}}a)\)
+into \(\operatorname{Ind}_H^G A\). Evaluation at \(e\) is H-equivariant, because
+\(b(h^{-1})=\beta_h b(e)\). Thus both maps are defined on cycles and on homotopies.
+
+Their composite on an H-cycle is identified with the original by the unitary
+\[
+\begin{gathered}
+\operatorname{Ind}_H^G E
+ \widehat\otimes_{\operatorname{ev}_e}B
+ \longrightarrow E,\\
+\eta\widehat\otimes b\longmapsto\eta(e)b.
+\end{gathered}
+\tag{7.9}
+\]
+Its inner product is exactly the evaluated inner product, and Lemma 7.1 gives dense range. It intertwines the representation, H-action and invariant operator.
+
+For the other composite take a G-cycle on \(Y\), with coefficient \(D=\operatorname{Ind}_H^G B\), and average its operator invariantly. Set \(E=Y\widehat\otimes_{\operatorname{ev}_e}B\), with the induced H-action. Write \([y]_e\) for its fibre quotient. Define
+\[
+(Wy)(g)=[U_g^{-1}y]_e.
+\tag{7.10}
+\]
+This is norm continuous, has the H-covariance condition, and obeys
+\[
+\begin{gathered}
+\langle Wy,Wz\rangle(g)
+ =\langle y,z\rangle_D(g),\\
+W(yb)(g)=(Wy)(g)b(g).
+\end{gathered}
+\tag{7.11}
+\]
+Hence it is an isometry. Its fibre values are dense: at a fixed \(g\), the quotient of \(U_g^{-1}Y\) is dense in \(E\). This quotient statement can be expressed as the ordinary Hilbert-module fibre quotient, so no identity in nonunital \(B\) is being inserted. Finite-neighborhood approximation and a partition of unity on compact \(G/H\) show that the range is dense in the induced module. Multiplication of \(y\) by a partition function is permitted through the central multiplier action of \(C(G/H)\) on \(D\). Therefore \(W\) is onto.
+
+For the group action,
+\(W(U_k y)(g)=Wy(k^{-1}g)\).
+For the source action,
+\(W(\phi(a)y)(g)=\phi_e(\alpha_{g^{-1}}a)Wy(g)\).
+An invariant \(F\) passes to \(F_e\) and satisfies \(W(Fy)(g)=F_e Wy(g)\). Thus \(W\) identifies the second composite cycle with the original. These same unitaries over interval modules prove the inverse identities on homotopy classes. The auxiliary Clifford factor is untouched, giving both degrees. \(\square\)
+
+### Induction for a locally compact group
+
+**Lemma 7.4 (local averaging and induced compact fields).** For any closed \(H\subset G\), there is a nonnegative continuous function \(\alpha\) on \(G\) such that
+\[
+\int_H\alpha(gh)\,dh=1,
+\tag{7.12}
+\]
+and its support over each compact subset of \(G/H\) is compact in \(G\). Induced sections have dense evaluation ranges, are countably generated, and obey (7.3), now with compact fields vanishing at infinity on \(G/H\).
+
+**Proof.** [NCF.2](supporting/noncompact-foundations/noncompact-foundations.html#ncf-002) proves that the quotient is locally compact Hausdorff and second countable. [NCF.1](supporting/noncompact-foundations/noncompact-foundations.html#ncf-001) gives its compactly supported partitions and cutoffs; [NCF.6](supporting/noncompact-foundations/noncompact-foundations.html#ncf-006) proves all continuity and support assertions in the following averaging construction. Choose nonnegative \(f_j\in C_c(G)\) whose orbit integrals
+\(F_j(gH)=\int_H f_j(gh)\,dh\)
+are positive on an open cover of \(G/H\). Such a function is obtained at each coset by taking a bump positive at a representative. Each orbit integral is continuous: near a fixed representative, its integration variable lies in a common compact subset of \(H\). The quotient map is open, so invariant continuity descends to the quotient. Its support is in the compact set \(q(\operatorname{supp}f_j)\).
+
+Take a locally finite partition of unity \(\chi_j\) with supports contained in the positivity sets, and put
+\[
+\alpha(g)=\sum_j
+ \chi_j(gH)\frac{f_j(g)}{F_j(gH)}.
+\tag{7.13}
+\]
+Each summand is extended by zero outside that positivity set. Local finiteness gives continuity, (7.12) follows by integration, and a compact quotient set meets only finitely many partition supports. Over that set the support of \(\alpha\) therefore lies in finitely many compact supports of \(f_j\). It is closed there and hence compact. In particular \(g\mapsto\alpha(g\,\cdot)\) is locally continuous in \(L^1(H)\), by uniform continuity on its common compact integration support.
+
+For evaluation density use (7.4) with compactly supported \(f\). By [NCF.4](supporting/noncompact-foundations/noncompact-foundations.html#ncf-004), nonnegative functions of integral one exist on \(H\) with arbitrarily small compact support. [NCF.1](supporting/noncompact-foundations/noncompact-foundations.html#ncf-001) extends each such function from closed \(H\) to a compactly supported continuous function on \(G\), retaining nonnegativity. The resulting section is bounded, with norm supported on \(q(\operatorname{supp}f)\), by the continuous orbit-integral bound. It is therefore induced, and gives the same density proof as before. A compactly supported induced compact field is approximated by the finite-neighborhood argument of Lemma 7.1. Cutoffs on the quotient approximate every vanishing field, proving (7.3).
+
+Every compact quotient set has a compact set of representatives: cover it by finitely many images of precompact open subsets of \(G\), and take their compact closures. For sections supported in a fixed compact quotient set, the supremum norm is thus detected on a compact subset of \(G\). Restriction to \(L\) is an isometric injection of this section space into \(C(L,E)\). The latter is separable by NCF.1: the compact subspace \(L\) is second countable, and countable generation over separable \(B\) makes \(E\) separable by approximating the finite linear combinations of a countable generating family using a countable dense subset of \(B\). A subspace of a separable metric space is separable: balls of rational radius about a countable dense set give a countable base; choose a point in each basic set meeting the subspace. A countable quotient exhaustion and scalar cutoffs, NCF.1, therefore give a dense union of separable section spaces. The induced module is separable. If \(\eta_j\) is a countable norm-dense set of its vectors, the right \(B\)-linear span of these vectors is dense: each \(\eta_j e_n\to\eta_j\) for an approximate identity of \(B\), by the inner-product norm calculation in the Hilbert-module foundations. Hence it is countably generated. \(\square\)
+
+**Theorem 7.5 (general induction).** The induction map (7.5), its naturality, product compatibility and successive-induction formula hold for every closed subgroup of a second countable locally compact group.
+
+**Proof.** An H-cycle has a self-adjoint contractive H-continuous operator \(F\). On its induced module first form the bounded pointwise operator field
+\[
+F_\alpha(g)=\int_H(h\cdot F)\alpha(gh)\,dh.
+\tag{7.14}
+\]
+The local \(L^1\) continuity in Lemma 7.4 makes this a norm-continuous field. Changing \(h=h_0^{-1}k\) gives
+\(F_\alpha(gh_0)=h_0^{-1}\cdot F_\alpha(g)\),
+so it acts adjointably on induced sections. It is bounded by one. For each source value \(a(g)\), its difference from \(F\) is two-sided locally compact for \(\phi(a(g))\), by the H-equivariance defect and (7.12). On compact subsets of the quotient these compact differences vary continuously, using the common compact integration supports. The actual cycle defects of \(F_\alpha\) are therefore continuous compact fields, and they vanish at infinity after the source section acts, because \(\|a(g)\|\to0\). The same is true of the localized difference between any fixed left translate of \(F_\alpha\) and \(F_\alpha\). Uniform boundedness handles the quotient tail, and the compact-support integral handles local continuity.
+
+This field need not have a norm-continuous orbit uniformly over the whole quotient. Choose nonnegative \(f\in C_c(G)\) of integral one and define
+\[
+F_{\alpha,f}=\int_G f(k)(k\cdot F_\alpha)\,dk.
+\tag{7.15}
+\]
+The strict integral is adjointable. Its orbit is norm continuous by the \(L^1\)-translation bound from (2.15). Its difference from \(F_\alpha\) is locally compact for the induced source: the preceding translated defects are norm-continuous compact module operators on the compact integration support. Expanding square and commutator defects now proves that (7.15) is an equivariant cycle. Two choices of \(\alpha,f\) have a two-sided locally compact difference, since at each fibre they are integral-one averages of H-translates of \(F\). Those compact fields are continuous and vanish after multiplication by the source. Both resulting operators are G-continuous, so the straight path is an equivariant cycle. Thus the class is independent of the choices. The same construction for an interval coefficient module proves homotopy invariance and additivity. It commutes with coefficient maps and source pullbacks, proving naturality.
+
+For product compatibility use the tensor unitary (7.6), now by quotient cutoffs and Lemma 7.4. Let \(F\) be an H-product of \(F_1,F_2\). A translate \(h\cdot F\) is a connection for \(h\cdot F_2\), which differs locally compactly from \(F_2\). Hence \(h\cdot F-F\) is a zero-connection, as well as a two-sided locally compact source perturbation. At each fibre the averages (7.14)–(7.15) therefore preserve the connection conditions for the correspondingly averaged \(F_2\). Creation errors are continuous compact fields and vanish at quotient infinity by the vanishing norm of the creation section. Averaging \(F_1\) changes its localized positivity tests by exactly the locally compact input-perturbation calculation of Lemma 2.1 of the product lesson. Thus the pointwise localized anticommutator is positive modulo compact operators. Its negative part is a continuous compact field vanishing at infinity; Lemma 7.4 makes that negative part compact on the induced module. This is the required operator-quotient positivity. The averaged \(F\) is consequently a G-product, and uniqueness in Theorem 2.6 proves compatibility.
+
+For successive induction the section unitary (7.7) retains its vanishing conditions. A section vanishing on \(G/L\) restricts to a vanishing section on each closed fibre \(H/L\), and the supremum over that fibre vanishes on \(G/H\), since the image of a compact subset of \(G/L\) is compact. Conversely, restrict a successively induced section to a compact set of representatives for its relevant outer quotient support. Its values there form a norm-compact family of inner sections, which has a uniform vanishing tail on \(H/L\), by finite approximation. The resulting compact representative set times the compact inner support maps to a compact subset of \(G/L\). This proves vanishing of the flattened section and the onto assertion of (7.7).
+
+Under this unitary both averaged operators are integral-one averages of translates of the original operator by the smallest subgroup. Their difference is two-sided locally compact for the pointwise source. On compact quotient sets this is a continuous compact field by the local support property of Lemma 7.4; globally the source’s vanishing tail supplies the required decay. Both final operators have G-continuous orbits, so the straight path identifies their classes. The zero operator of a homomorphism cycle remains zero under each average, so induction preserves homomorphism classes and identities. \(\square\)
+
+## 8. Computations
+
+The two-element kernel model in Section 1 now has its full cycle interpretation. The next examples test three distinct features: representation labels for a trivial action, loss of the stabilizer for a free transitive action, and a grading changed by a reflection.
+
+
+For finite \(G\) acting trivially on a trivially graded algebra \(B\),
+\[
+K_i^G(B)\cong R(G)\otimes_{\mathbb Z}K_i(B).
+\tag{8.1}
+\]
+Indeed \(B\rtimes G=B\otimes C^*(G)\), and the finite-dimensional group algebra is a direct sum of matrix algebras, one for each irreducible. This decomposition follows from the invariant orthogonal decomposition and Schur’s lemma in Proposition 6.1; the regular representation is faithful by Proposition 4.1. Matrix stability gives one copy of \(K_i(B)\) per irreducible, and (6.4) identifies its representation-ring labels. There is no Künneth assumption on \(B\).
+
+Let \(\mathbb T\) act on \(C(\mathbb T)\) by rotation. The homogeneous space is \(\mathbb T/\{e\}\), so Theorem 7.3 gives
+\[
+\begin{gathered}
+K_0^{\mathbb T}(C(\mathbb T))=\mathbb Z,\\
+K_1^{\mathbb T}(C(\mathbb T))=0.
+\end{gathered}
+\tag{8.2}
+\]
+The same crossed-product groups follow by (4.8). The free proper orbit module of *Proper actions, free actions and the orbit space*, Proposition 9.2 and Theorem 9.5, identifies this crossed product with \(\mathcal K(L^2(\mathbb T))\). A character of \(\mathbb T\) acts on the integer group by its dimension, namely one: in Frobenius reciprocity it restricts to the trivial subgroup.
+
+For a Clifford example, let \(G=\mathbb Z/2\) act on \(C_1\) by sending its odd self-adjoint generator \(e\) to \(-e\). The crossed product is generated by \(e\) and an even \(u\), with
+\[
+\begin{gathered}
+e^2=u^2=1,\qquad ue=-eu,\\
+e=\begin{pmatrix}0&1\\1&0\end{pmatrix},\\
+u=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\end{gathered}
+\tag{8.3}
+\]
+The four elements \(1,e,u,eu\) span the dense polynomial algebra and their displayed matrices are linearly independent. Thus this is \(M_2(\mathbb C)\), graded by conjugation with \(u\). The balanced spinor \(\mathbb C^{1|1}\) gives its graded Morita equivalence with \(\mathbb C\). Green–Julg therefore gives
+\[
+\begin{gathered}
+KK^G(\mathbb C,C_1)=\mathbb Z,\\
+KK_G^1(\mathbb C,C_1)=0.
+\end{gathered}
+\tag{8.4}
+\]
+The grading in (8.3) is needed for this conclusion. The nonequivariant odd Clifford algebra has \(KK(\mathbb C,C_1)=0\); the reflection action changes the equivariant group.
+
+## 9. Exercises
+
+**9.1. Finite representations.** For a finite group \(G\), compute \(KK^G(\mathbb C,\mathbb C)\) and its ring product. Give the result for a finite cyclic group of order \(m\).
+
+**9.2. A finite kernel proof.** Prove Green–Julg directly for a finite group by computing the invariant matrix algebra on \(\ell^2(G)\otimes B\). Include the normalization for Haar measure and the cycle equivalence relations.
+
+**9.3. The discrete dual.** Starting with an equivariant Fredholm cycle for a countable discrete group, integrate it and recover its action from the full crossed product. Prove that these operations preserve homotopy, also for nonunital \(A\).
+
+**9.4. A homogeneous space.** For compact \(G\) and closed \(H\), prove \(K_0^G(C(G/H))\cong R(H)\) and compute the action of \(R(G)\). Determine the odd group.
+
+## 10. Solutions
+
+**Solution to 9.1.** Proposition 6.1 identifies every even cycle with the virtual representation \([\ker T]-[\ker T^*]\) of its invariant off-diagonal Fredholm operator. Distinct irreducibles are independent by the compact-block decomposition (6.3) and the standard-cycle isomorphism, so the group is the free abelian group on the irreducibles. Tensoring two finite zero-operator cycles is their product, hence the multiplication coefficients are the multiplicities in the tensor-product decomposition.
+
+For a cyclic group, diagonalize the unitary representing a generator. Its eigenvalues are the \(m\)-th roots of unity, and its irreducibles are the one-dimensional characters \(1,t,\ldots,t^{m-1}\). Tensoring multiplies eigenvalues, so the ring is
+\[
+R(\mathbb Z/m)=\mathbb Z[t]/(t^m-1).
+\tag{10.1}
+\]
+The corresponding odd group is zero by (6.3).
+
+**Solution to 9.2.** Put \(n=|G|\) and give each point Haar mass \(1/n\). A kernel operator is
+\((K\xi)(t)=n^{-1}\sum_r K(t,r)\xi(r)\).
+The invariant condition from (4.6) gives
+\[
+\begin{gathered}
+K(t,r)=\beta_{t^{-1}}f(tr^{-1}),\\
+f(s)=K(e,s^{-1}).
+\end{gathered}
+\tag{10.2}
+\]
+Its composition is exactly the crossed-product convolution with normalized counting measure, by substituting \(s=tr^{-1}\) in the finite sum. Its adjoint is the crossed-product involution, by transposing and adjointing this matrix kernel. Every entry lies in \(B\), so the operator is in \(M_n(B)=\mathcal K(\ell^2(G)\otimes B)\); conversely every invariant matrix has the form (10.2). Faithfulness follows either by inspection of its \(e\)-row, followed by the finite-group full-norm argument, or directly by embedding each covariant pair through its constant regular vector as in Proposition 4.1. Thus the invariant matrix algebra is the full crossed product.
+
+For the same integrated operator, normalized Haar coefficients \(f_{\mathrm{norm}}\) and counting-Haar coefficients \(f_{\mathrm{count}}\) satisfy
+\[
+\begin{gathered}
+\frac1n\sum_g f_{\mathrm{norm}}(g)U_g
+\\ =\sum_g f_{\mathrm{count}}(g)U_g,\\
+f_{\mathrm{count}}=\frac1n f_{\mathrm{norm}}.
+\end{gathered}
+\tag{10.2a}
+\]
+When \(B\) is unital, the identity coefficient is \(n1_B\delta_e\) for normalized Haar and \(1_B\delta_e\) for counting Haar. This is consistent with the normalized-Haar matrix identity kernel \(K(t,r)=n\delta_{t,r}1_B\).
+
+Add infinite trivial multiplicity, use Theorem 3.1 to standardize scalar equivariant cycles, and use Lemma 4.2 to identify their invariant adjointables with the multipliers of the invariant compact algebra. Ordinary scalar cycles on the crossed product have the same multiplier picture. Even unitaries, compact perturbations, norm operator paths and degenerate operators match under this identification. Theorem 2.3 and its non-equivariant counterpart identify these relations with module homotopy. This proves the isomorphism on the actual K-groups in both degrees; it is not just the displayed matrix-algebra identity.
+
+**Solution to 9.3.** Define \(\Phi(\sum a_gu_g)=\sum\phi(a_g)U_g\). The covariance identities give a representation of the finite-support convolution algebra and its adjoint, and the full universal norm extends it. Equation (5.2) and the localized equivariance defect give compact commutators; the localized square and adjoint defects follow term by term and then by norm approximation. Over an interval coefficient module the same compact computations hold, so integration preserves homotopy.
+
+For the inverse first pass to the essential representation using Proposition 5.1 of the product lesson. Extend it to canonical multiplier unitaries \(u_g\), and restrict to \(A\). Equation (5.2), applied to both \(a\) and \(au_g\) in the crossed product, recovers the localized equivariance defect. All group maps are continuous in the discrete topology. For an interval homotopy take its essential replacement over the interval first, then perform this same multiplier extension. Endpoint replacements are locally compact perturbations of the essential endpoint cycles, so they preserve the equivariant class by the straight path described in Theorem 5.1. The two operations are inverse by the integrated covariant correspondence. In the nonunital case \(u_g\) is in the multiplier algebra but \(au_g\) is in the crossed product, and the latter membership is exactly what was used in (5.2). No scalar identity in \(A\) is required.
+
+**Solution to 9.4.** Set \(A=B=\mathbb C\) in Theorem 7.3, with the trivial H-action on \(B\). Equation (7.2) becomes \(\operatorname{Ind}_H^G\mathbb C=C(G/H)\). Thus
+\[
+K_i^G(C(G/H))\cong KK_H^i(\mathbb C,\mathbb C).
+\tag{10.3}
+\]
+Proposition 6.1 for compact \(H\) identifies these with \(R(H)\) and zero. Explicitly an H-representation \(V\) gives the associated bundle with sections \(\eta(gh)=\pi(h)^{-1}\eta(g)\); the induced zero-operator cycle is its equivariant bundle class. Evaluation at the identity recovers \(V\), so this description also identifies the isomorphism on finite representatives. Tensoring the associated bundle with a G-representation \(W\) changes its identity fibre to \(\operatorname{Res}_H^G W\otimes V\). Hence the \(R(G)\)-action on \(R(H)\) is restriction followed by multiplication.
+
+## What this lesson does not prove
+
+The non-equivariant connection, product, associativity, essential-replacement and homotopy-comparison theorems used above are proved in the exact preceding lessons named in the introduction. Full crossed-product covariance and faithful regular-norm independence are proved in the two named crossed-product prerequisites. Continuous functional calculus, strict multiplier extension and the compact spectral theorem are the basic analysis and Hilbert-module prerequisites. The compact and noncompact Haar, cutoff, quotient and integration inputs have the complete proofs linked in the introduction and Lemma 7.4.
+
+The two Green–Julg theorems have the compact and discrete hypotheses stated above. General descent, its multiplicativity, proper actions and assembly belong to the following lessons. Compact Frobenius reciprocity (7.8) is not asserted here for arbitrary noncompact quotients.
+
+The linear equivariant Bott equivalence is proved in Section 9 of *Thom isomorphisms and K-orientations in KK*, using the compact-group product now constructed here. No Bott assertion was used in the proof of Theorem 2.3. 
+
+## References
+
+- B. Blackadar, [*K-Theory for Operator Algebras*, author-posted corrected second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf). The [author identifies this freely downloadable version](https://www.bruceblackadar.com/mathpubs.html) as a slightly corrected second edition. The source retains its author copyright and the usage terms stated on that page. Sections 20.1–20.5, printed pp. 205–210, for equivariant cycles, stabilization, technical partitions, Green–Julg, representation classes and induction. Their additional equivariant proofs are supplied in Sections 1–7 above, including orbit continuity, the compact and discrete cycle comparisons, and local induction averages.
+
+- The names attached to these constructions are recorded in that freely accessible account: Kasparov for equivariant KK, Mingo and Phillips for equivariant stabilization, Julg for the compact-group isomorphism, and Wassermann for compact Frobenius reciprocity. The programme proofs, rather than references in that account, supply every result used here.

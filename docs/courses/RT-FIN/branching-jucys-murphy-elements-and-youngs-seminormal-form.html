@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The symmetric groups II: branching, Jucys–Murphy elements and Young&#x27;s seminormal form · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/branching-jucys-murphy-elements-and-youngs-seminormal-form.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="young-tableaux-and-young-symmetrizers.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-14.md" download>Editable source</a><a href="characters-of-symmetric-groups-and-symmetric-functions.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1</a></li><li><a href="#lemma-2-1">Lemma 2.1</a></li><li><a href="#theorem-2-2">Theorem 2.2</a></li><li><a href="#proposition-3-1">Proposition 3.1</a></li><li><a href="#theorem-3-2">Theorem 3.2</a></li><li><a href="#lemma-4-1">Lemma 4.1</a></li><li><a href="#theorem-4-2">Theorem 4.2</a></li><li><a href="#corollary-4-3">Corollary 4.3</a></li><li><a href="#theorem-5-1">Theorem 5.1</a></li><li><a href="#theorem-5-2">Theorem 5.2</a></li><li><a href="#lemma-6-1">Lemma 6.1</a></li><li><a href="#lemma-6-2">Lemma 6.2</a></li><li><a href="#theorem-6-3">Theorem 6.3</a></li></ul></details><h1 id="the-symmetric-groups-ii-branching-jucys-murphy-elements-and-young-s-seminormal-form">The symmetric groups II: branching, Jucys–Murphy elements and Young's seminormal form</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026. Self-checked by the AI that wrote it. Independent AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>Deleting the largest entry of a standard tableau leaves a smaller standard tableau. The branching rule says that this elementary operation describes restriction of irreducible symmetric-group representations. We will prove the connection by constructing the representation matrices, rather than assuming a standard-tableau basis.</p>
+<p>The prerequisite is <a href="young-tableaux-and-young-symmetrizers.html">lesson 13</a>: its classification of the irreducibles <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, its tableau separation lemma, and its fixed left-ideal convention <span class="math" data-tex="\(V_\lambda=\mathbb C[S_n]a_tb_t\)">\(V_\lambda=\mathbb C[S_n]a_tb_t\)</span>. We also use the faithful Fourier decomposition of the group algebra from <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html">lesson 3</a>. All permutation products act from right to left.</p>
+<p>Our route uses Coxeter generators and Jucys–Murphy elements, as in the approach of Vershik–Okounkov [VO, §§5–6]. We first construct orthogonal matrices and verify every relation. A change of basis then gives a specified rational seminormal form. The hook formula will follow from the branching recursion and an elementary partial-fraction identity; no character formula or symmetric-function theorem is imported.</p>
+<h2 id="1-boxes-contents-and-adjacent-swaps">1. Boxes, contents and adjacent swaps</h2>
+<p>Write a box of a partition diagram as <span class="math" data-tex="\(b=(i,j)\)">\(b=(i,j)\)</span>, with row index increasing downwards and column index increasing to the right. Its <strong>content</strong> is</p>
+<span class="math math-display" data-tex="\[
+c(b)=j-i.
+\tag{1}
+\]">\[
+c(b)=j-i.
+\tag{1}
+\]</span>
+<p>For a standard tableau <span class="math" data-tex="\(T\)">\(T\)</span>, let <span class="math" data-tex="\(c_T(k)\)">\(c_T(k)\)</span> be the content of the box containing <span class="math" data-tex="\(k\)">\(k\)</span>. Its boxes carrying <span class="math" data-tex="\(1,\ldots,k\)">\(1,\ldots,k\)</span> form a partition diagram, denoted <span class="math" data-tex="\(\lambda^{(k)}(T)\)">\(\lambda^{(k)}(T)\)</span>. Indeed, every box above or to the left of one of these boxes has a smaller entry. Thus a tableau is equivalent to a path</p>
+<span class="math math-display" data-tex="\[
+\varnothing=\lambda^{(0)}
+\subset\lambda^{(1)}\subset\cdots\subset\lambda^{(n)}=\lambda
+\tag{2}
+\]">\[
+\varnothing=\lambda^{(0)}
+\subset\lambda^{(1)}\subset\cdots\subset\lambda^{(n)}=\lambda
+\tag{2}
+\]</span>
+<p>which adds one box at each step. Conversely, putting <span class="math" data-tex="\(k\)">\(k\)</span> in the box added at step <span class="math" data-tex="\(k\)">\(k\)</span> gives a standard tableau.</p>
+<p>An <strong>addable box</strong> can be adjoined while keeping a partition diagram; a <strong>removable box</strong> can be deleted while keeping one. The latter are the bottom-right corners of the diagram. Addable boxes in different rows have different contents. In rows <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> their contents are <span class="math" data-tex="\(\mu_i+1-i\)">\(\mu_i+1-i\)</span> and <span class="math" data-tex="\(\mu_j+1-j\)">\(\mu_j+1-j\)</span>, with a zero part allowed for a new bottom row; the first is strictly larger.</p>
+<p id="lemma-1-1" class="result-link"><strong>Lemma 1.1 (content and swap facts).</strong> The following statements hold.</p>
+<ol>
+<li>The full sequence <span class="math" data-tex="\((c_T(1),\ldots,c_T(n))\)">\((c_T(1),\ldots,c_T(n))\)</span> determines <span class="math" data-tex="\(T\)">\(T\)</span>, even when the shape is not specified.</li>
+<li>For <span class="math" data-tex="\(s_k=(k,k+1)\)">\(s_k=(k,k+1)\)</span>, the relabeled tableau <span class="math" data-tex="\(s_kT\)">\(s_kT\)</span> is standard exactly when <span class="math" data-tex="\(k,k+1\)">\(k,k+1\)</span> lie in different rows and different columns. In that case
+<span class="math math-display" data-tex="\[
+|r_T(k)|\geq2,\qquad r_T(k)=c_T(k+1)-c_T(k).
+\tag{3}
+\]">\[
+|r_T(k)|\geq2,\qquad r_T(k)=c_T(k+1)-c_T(k).
+\tag{3}
+\]</span>
+In the same row <span class="math" data-tex="\(r_T(k)=1\)">\(r_T(k)=1\)</span>; in the same column <span class="math" data-tex="\(r_T(k)=-1\)">\(r_T(k)=-1\)</span>.</li>
+<li>The three contents belonging to <span class="math" data-tex="\(k,k+1,k+2\)">\(k,k+1,k+2\)</span> are pairwise distinct.</li>
+<li>Any two standard tableaux of a fixed shape are connected by swaps <span class="math" data-tex="\(T\mapsto s_kT\)">\(T\mapsto s_kT\)</span> which remain standard.</li>
+</ol>
+<p><strong>Proof.</strong> Starting with the empty diagram, the next content selects a unique addable box, by the preceding observation. This proves statement 1 inductively.</p>
+<p>Order boxes by <span class="math" data-tex="\((i,j)\leq(i&#x27;,j&#x27;)\)">\((i,j)\leq(i&#x27;,j&#x27;)\)</span> when both coordinate inequalities hold. A standard tableau lists this finite partially ordered set in an order respecting all its comparisons: a linear extension. Row and column increase imply all these comparisons, by a path inside the diagram.</p>
+<p>Two consecutive entries in comparable boxes must lie in adjacent boxes of the same row or the same column. Otherwise there is a box strictly between them in the partial order, whose entry would be strictly between the two consecutive integers. Adjacent row boxes have content difference <span class="math" data-tex="\(1\)">\(1\)</span>, and adjacent column boxes have difference <span class="math" data-tex="\(-1\)">\(-1\)</span>. Swapping comparable consecutive entries violates their comparison. Swapping incomparable consecutive entries preserves every comparison, since all other entries are either smaller than both or larger than both. If incomparable boxes are <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>, <span class="math" data-tex="\((i&#x27;,j&#x27;)\)">\((i&#x27;,j&#x27;)\)</span> with <span class="math" data-tex="\(i&lt;i&#x27;\)">\(i&lt;i&#x27;\)</span>, then <span class="math" data-tex="\(j&gt;j&#x27;\)">\(j&gt;j&#x27;\)</span>; their contents differ in absolute value by <span class="math" data-tex="\((i&#x27;-i)+(j-j&#x27;)\geq2\)">\((i&#x27;-i)+(j-j&#x27;)\geq2\)</span>. This proves statement 2.</p>
+<p>Equal-content distinct boxes lie on the same diagonal. Say they are <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and <span class="math" data-tex="\((i+d,j+d)\)">\((i+d,j+d)\)</span>, <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. The boxes <span class="math" data-tex="\((i,j+1)\)">\((i,j+1)\)</span> and <span class="math" data-tex="\((i+1,j)\)">\((i+1,j)\)</span> both belong to the diagram and both have entries strictly between the entries of the two diagonal boxes. These are two distinct intervening entries. Consequently equal contents cannot occur at entry distance <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>, proving statement 3.</p>
+<p>For statement 4, compare two linear extensions. After their initial entries have been made equal, take the next box of the target extension and move it leftwards in the other extension. Every box it passes is incomparable with it: a predecessor would have to come first in the target as well, and a successor could not precede it in the current extension. Each move is an allowed adjacent swap. Repeat on the remaining boxes. The procedure terminates because each step increases the common initial segment. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, a tableau of shape <span class="math" data-tex="\((3,2)\)">\((3,2)\)</span>, together with its contents, is</p>
+<span class="math math-display" data-tex="\[
+T=
+\begin{array}{ccc}
+\boxed{1}&amp;\boxed{2}&amp;\boxed{5}\\
+\boxed{3}&amp;\boxed{4}&amp;
+\end{array},
+\qquad
+\begin{array}{ccc}
+\boxed{0}&amp;\boxed{1}&amp;\boxed{2}\\
+\boxed{-1}&amp;\boxed{0}&amp;
+\end{array}.
+\tag{4}
+\]">\[
+T=
+\begin{array}{ccc}
+\boxed{1}&amp;\boxed{2}&amp;\boxed{5}\\
+\boxed{3}&amp;\boxed{4}&amp;
+\end{array},
+\qquad
+\begin{array}{ccc}
+\boxed{0}&amp;\boxed{1}&amp;\boxed{2}\\
+\boxed{-1}&amp;\boxed{0}&amp;
+\end{array}.
+\tag{4}
+\]</span>
+<p>The corresponding content sequence is <span class="math" data-tex="\((0,1,-1,0,2)\)">\((0,1,-1,0,2)\)</span>. The repeated <span class="math" data-tex="\(0\)">\(0\)</span> does not cause ambiguity: the diagram present at each step determines where its next addable box can be.</p>
+<h2 id="2-constructing-the-orthogonal-matrices">2. Constructing the orthogonal matrices</h2>
+<p>Let <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span> have basis <span class="math" data-tex="\(u_T\)">\(u_T\)</span>, one vector for every standard tableau of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and declare these vectors orthonormal. Define</p>
+<span class="math math-display" data-tex="\[
+S_k u_T=
+\begin{cases}
+r^{-1}u_T+\sqrt{1-r^{-2}}\,u_{s_kT},
+&amp;s_kT\text{ standard},\\
+r^{-1}u_T,&amp;s_kT\text{ not standard},
+\end{cases}
+\qquad r=r_T(k).
+\tag{5}
+\]">\[
+S_k u_T=
+\begin{cases}
+r^{-1}u_T+\sqrt{1-r^{-2}}\,u_{s_kT},
+&amp;s_kT\text{ standard},\\
+r^{-1}u_T,&amp;s_kT\text{ not standard},
+\end{cases}
+\qquad r=r_T(k).
+\tag{5}
+\]</span>
+<p>The square root in (5) is the nonnegative real root. The second case is <span class="math" data-tex="\(+u_T\)">\(+u_T\)</span> in a row and <span class="math" data-tex="\(-u_T\)">\(-u_T\)</span> in a column. We must prove that these operators give a representation of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>.</p>
+<p>For completeness, the required presentation of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> is also elementary.</p>
+<p id="lemma-2-1" class="result-link"><strong>Lemma 2.1 (Coxeter presentation).</strong> The adjacent transpositions generate <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, and their complete defining relations are</p>
+<span class="math math-display" data-tex="\[
+s_k^2=1,\qquad s_ks_l=s_ls_k\ (|k-l|&gt;1),
+\qquad s_ks_{k+1}s_k=s_{k+1}s_ks_{k+1}.
+\tag{6}
+\]">\[
+s_k^2=1,\qquad s_ks_l=s_ls_k\ (|k-l|&gt;1),
+\qquad s_ks_{k+1}s_k=s_{k+1}s_ks_{k+1}.
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> Adjacent swaps sort any list of distinct integers, so they generate every permutation. They satisfy (6) as permutations. Let <span class="math" data-tex="\(G_n\)">\(G_n\)</span> be the abstract group defined by (6), and let <span class="math" data-tex="\(H\)">\(H\)</span> be the subgroup generated by <span class="math" data-tex="\(s_1,\ldots,s_{n-2}\)">\(s_1,\ldots,s_{n-2}\)</span>. Inductively <span class="math" data-tex="\(|H|\leq(n-1)!\)">\(|H|\leq(n-1)!\)</span>; it is a quotient of <span class="math" data-tex="\(G_{n-1}\)">\(G_{n-1}\)</span>.</p>
+<p>Put <span class="math" data-tex="\(d_n=1\)">\(d_n=1\)</span>, and <span class="math" data-tex="\(d_j=s_{n-1}s_{n-2}\cdots s_j\)">\(d_j=s_{n-1}s_{n-2}\cdots s_j\)</span> for <span class="math" data-tex="\(1\leq j&lt;n\)">\(1\leq j&lt;n\)</span>. Every element of <span class="math" data-tex="\(G_n\)">\(G_n\)</span> belongs to one of the sets <span class="math" data-tex="\(Hd_j\)">\(Hd_j\)</span>. To see this, their union contains <span class="math" data-tex="\(1\)">\(1\)</span> and is stable under right multiplication by each generator. For <span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span>, the relations give</p>
+<span class="math math-display" data-tex="\[
+d_js_i=
+\begin{cases}
+s_i d_j,&amp;i&lt;j-1,\\
+d_{j-1},&amp;i=j-1,\\
+d_{j+1},&amp;i=j,\\
+s_{i-1}d_j,&amp;i&gt;j.
+\end{cases}
+\tag{7}
+\]">\[
+d_js_i=
+\begin{cases}
+s_i d_j,&amp;i&lt;j-1,\\
+d_{j-1},&amp;i=j-1,\\
+d_{j+1},&amp;i=j,\\
+s_{i-1}d_j,&amp;i&gt;j.
+\end{cases}
+\tag{7}
+\]</span>
+<p>The last identity follows by commuting <span class="math" data-tex="\(s_i\)">\(s_i\)</span> left until it meets <span class="math" data-tex="\(s_{i-1}\)">\(s_{i-1}\)</span>, using the braid relation, and commuting the resulting <span class="math" data-tex="\(s_{i-1}\)">\(s_{i-1}\)</span> past the factors with larger indices. Every factor on the left of <span class="math" data-tex="\(d_j\)">\(d_j\)</span> in (7) lies in <span class="math" data-tex="\(H\)">\(H\)</span>. For <span class="math" data-tex="\(d_n\)">\(d_n\)</span>, right multiplication by <span class="math" data-tex="\(s_i\)">\(s_i\)</span> stays in <span class="math" data-tex="\(H\)">\(H\)</span> if <span class="math" data-tex="\(i&lt;n-1\)">\(i&lt;n-1\)</span>, and gives <span class="math" data-tex="\(d_{n-1}\)">\(d_{n-1}\)</span> otherwise. Thus <span class="math" data-tex="\(|G_n|\leq n|H|\leq n!\)">\(|G_n|\leq n|H|\leq n!\)</span>. The surjection <span class="math" data-tex="\(G_n\to S_n\)">\(G_n\to S_n\)</span> reaches <span class="math" data-tex="\(n!\)">\(n!\)</span> permutations, and hence is an isomorphism. The base <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-2-2" class="result-link"><strong>Theorem 2.2 (orthogonal construction).</strong> The operators (5) satisfy (6). They therefore define a real orthogonal representation <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span> of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>.</p>
+<p><strong>Proof.</strong> On a standard pair <span class="math" data-tex="\(T,T&#x27;=s_kT\)">\(T,T&#x27;=s_kT\)</span>, their matrix is</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+a&amp;b\\ b&amp;-a
+\end{pmatrix},
+\qquad a=\frac1r,\quad b=\sqrt{1-\frac1{r^2}}.
+\tag{8}
+\]">\[
+\begin{pmatrix}
+a&amp;b\\ b&amp;-a
+\end{pmatrix},
+\qquad a=\frac1r,\quad b=\sqrt{1-\frac1{r^2}}.
+\tag{8}
+\]</span>
+<p>It is symmetric and squares to the identity. On an unpaired tableau the operator is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. This proves <span class="math" data-tex="\(S_k^2=I\)">\(S_k^2=I\)</span> and orthogonality.</p>
+<p>For <span class="math" data-tex="\(|k-l|&gt;1\)">\(|k-l|&gt;1\)</span>, the two swaps involve disjoint pairs of entries. Each leaves the other's contents and standardness condition unchanged. Expanding both products on <span class="math" data-tex="\(u_T\)">\(u_T\)</span> therefore gives the same coefficients for the unchanged tableau, either singly swapped tableau and the doubly swapped tableau. This proves commutation.</p>
+<p>Here is the full braid calculation, including boundary cases. Freeze all entries except <span class="math" data-tex="\(k,k+1,k+2\)">\(k,k+1,k+2\)</span>, and write the contents of their three boxes as <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span>, in this order. By Lemma 1.1 they are distinct integers. Put</p>
+<span class="math math-display" data-tex="\[
+r=y-x,\quad t=z-y,\quad q=z-x=r+t,
+\qquad a=\frac1r,\quad d=\frac1t,\quad h=\frac1q,
+\tag{9}
+\]">\[
+r=y-x,\quad t=z-y,\quad q=z-x=r+t,
+\qquad a=\frac1r,\quad d=\frac1t,\quad h=\frac1q,
+\tag{9}
+\]</span>
+<p>and <span class="math" data-tex="\(b_r=\sqrt{1-r^{-2}}\)">\(b_r=\sqrt{1-r^{-2}}\)</span>, <span class="math" data-tex="\(b_t=\sqrt{1-t^{-2}}\)">\(b_t=\sqrt{1-t^{-2}}\)</span>, <span class="math" data-tex="\(b_q=\sqrt{1-q^{-2}}\)">\(b_q=\sqrt{1-q^{-2}}\)</span>. All three radicals are real because the differences are nonzero integers.</p>
+<p>Temporarily allow all six orders of these three boxes. Denote their formal basis vectors by their content orders <span class="math" data-tex="\(xyz,yxz,xzy,zxy,yzx,zyx\)">\(xyz,yxz,xzy,zxy,yzx,zyx\)</span>. Define the two adjacent-swap operators on this six-dimensional space by the same diagonal coefficient and square-root coefficient as (5), using a zero square-root coefficient when the difference is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Expansion gives the following coefficients on the vector <span class="math" data-tex="\(xyz\)">\(xyz\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Resulting order</th>
+<th><span class="math" data-tex="\(S_kS_{k+1}S_k\)">\(S_kS_{k+1}S_k\)</span></th>
+<th><span class="math" data-tex="\(S_{k+1}S_kS_{k+1}\)">\(S_{k+1}S_kS_{k+1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(xyz\)">\(xyz\)</span></td>
+<td><span class="math" data-tex="\(a^2d+(1-a^2)h\)">\(a^2d+(1-a^2)h\)</span></td>
+<td><span class="math" data-tex="\(d^2a+(1-d^2)h\)">\(d^2a+(1-d^2)h\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(yxz\)">\(yxz\)</span></td>
+<td><span class="math" data-tex="\(a b_r(d-h)\)">\(a b_r(d-h)\)</span></td>
+<td><span class="math" data-tex="\(d b_r h\)">\(d b_r h\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(xzy\)">\(xzy\)</span></td>
+<td><span class="math" data-tex="\(a b_t h\)">\(a b_t h\)</span></td>
+<td><span class="math" data-tex="\(d b_t(a-h)\)">\(d b_t(a-h)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(zxy\)">\(zxy\)</span></td>
+<td><span class="math" data-tex="\(a b_t b_q\)">\(a b_t b_q\)</span></td>
+<td><span class="math" data-tex="\(a b_t b_q\)">\(a b_t b_q\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(yzx\)">\(yzx\)</span></td>
+<td><span class="math" data-tex="\(d b_r b_q\)">\(d b_r b_q\)</span></td>
+<td><span class="math" data-tex="\(d b_r b_q\)">\(d b_r b_q\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(zyx\)">\(zyx\)</span></td>
+<td><span class="math" data-tex="\(b_r b_t b_q\)">\(b_r b_t b_q\)</span></td>
+<td><span class="math" data-tex="\(b_r b_t b_q\)">\(b_r b_t b_q\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The middle two equalities follow from</p>
+<span class="math math-display" data-tex="\[
+a(d-h)=dh,\qquad d(a-h)=ah.
+\tag{10}
+\]">\[
+a(d-h)=dh,\qquad d(a-h)=ah.
+\tag{10}
+\]</span>
+<p>For the first row, subtract <span class="math" data-tex="\(h\)">\(h\)</span> on both sides and use
+<span class="math" data-tex="\(a^2(d-h)=d^2(a-h)=1/(rtq)\)">\(a^2(d-h)=d^2(a-h)=1/(rtq)\)</span>. All the identities use only <span class="math" data-tex="\(q=r+t\)">\(q=r+t\)</span>. The last three rows already coincide. Replacing <span class="math" data-tex="\(xyz\)">\(xyz\)</span> by any other order gives the same calculation with its contents renamed, so the operators satisfy the braid relation on the entire six-dimensional space.</p>
+<p>The span of its standard orders is invariant: a swap taking a standard order to a nonstandard one has content difference <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, by Lemma 1.1, so its square-root coefficient is zero. Entries outside the three selected labels do not change their comparisons. Restricting the six-dimensional identity proves the braid relation on <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span>, even if only some of the six orders are standard. Lemma 2.1 now supplies the group action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The vanished coefficients at <span class="math" data-tex="\(r=\pm1\)">\(r=\pm1\)</span> are essential to the boundary argument. We have not treated a nonstandard tableau as an additional basis vector of <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span>.</p>
+<h2 id="3-jucys-murphy-operators-and-irreducibility">3. Jucys–Murphy operators and irreducibility</h2>
+<p>In <span class="math" data-tex="\(A_n=\mathbb C[S_n]\)">\(A_n=\mathbb C[S_n]\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+X_1=0,\qquad X_k=\sum_{i&lt;k}(i\,k).
+\tag{11}
+\]">\[
+X_1=0,\qquad X_k=\sum_{i&lt;k}(i\,k).
+\tag{11}
+\]</span>
+<p>Write <span class="math" data-tex="\(Z_k=\sum_{1\leq i&lt;j\leq k}(i\,j)\)">\(Z_k=\sum_{1\leq i&lt;j\leq k}(i\,j)\)</span>, with <span class="math" data-tex="\(Z_0=Z_1=0\)">\(Z_0=Z_1=0\)</span>. The element <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span> is central in <span class="math" data-tex="\(A_k\)">\(A_k\)</span>, since conjugation permutes its transpositions. Thus</p>
+<span class="math math-display" data-tex="\[
+X_k=Z_k-Z_{k-1}.
+\tag{12}
+\]">\[
+X_k=Z_k-Z_{k-1}.
+\tag{12}
+\]</span>
+<p id="proposition-3-1" class="result-link"><strong>Proposition 3.1 (commutation and content eigenvalues).</strong> The <span class="math" data-tex="\(X_k\)">\(X_k\)</span> commute in <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, and on the constructed model,</p>
+<span class="math math-display" data-tex="\[
+X_k u_T=c_T(k)u_T.
+\tag{13}
+\]">\[
+X_k u_T=c_T(k)u_T.
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(j\leq k\)">\(j\leq k\)</span>, the central element <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span> commutes with <span class="math" data-tex="\(Z_j\in A_k\)">\(Z_j\in A_k\)</span>. Hence all the <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span>, and therefore their differences, commute. This is a group-algebra proof; it does not depend on the constructed models.</p>
+<p>The transpositions also give</p>
+<span class="math math-display" data-tex="\[
+X_{k+1}=s_kX_ks_k+s_k.
+\tag{14}
+\]">\[
+X_{k+1}=s_kX_ks_k+s_k.
+\tag{14}
+\]</span>
+<p>Conjugation by <span class="math" data-tex="\(s_k\)">\(s_k\)</span> changes <span class="math" data-tex="\((i\,k)\)">\((i\,k)\)</span>, <span class="math" data-tex="\(i&lt;k\)">\(i&lt;k\)</span>, into <span class="math" data-tex="\((i\,k+1)\)">\((i\,k+1)\)</span>, and the extra summand is <span class="math" data-tex="\((k\,k+1)\)">\((k\,k+1)\)</span>.</p>
+<p>We prove (13) by induction on <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, both sides are zero. Suppose it holds for <span class="math" data-tex="\(k\)">\(k\)</span>, and take a standard pair <span class="math" data-tex="\(T,T&#x27;=s_kT\)">\(T,T&#x27;=s_kT\)</span>. Set <span class="math" data-tex="\(x=c_T(k)\)">\(x=c_T(k)\)</span>, <span class="math" data-tex="\(y=c_T(k+1)\)">\(y=c_T(k+1)\)</span>, <span class="math" data-tex="\(r=y-x\)">\(r=y-x\)</span>. On this pair <span class="math" data-tex="\(X_k=\operatorname{diag}(x,y)\)">\(X_k=\operatorname{diag}(x,y)\)</span>, and (8) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
+\begin{pmatrix}x&amp;0\\0&amp;y\end{pmatrix}
+\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
++\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
+=\begin{pmatrix}y&amp;0\\0&amp;x\end{pmatrix}.
+\tag{15}
+\]">\[
+\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
+\begin{pmatrix}x&amp;0\\0&amp;y\end{pmatrix}
+\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
++\begin{pmatrix}a&amp;b\\b&amp;-a\end{pmatrix}
+=\begin{pmatrix}y&amp;0\\0&amp;x\end{pmatrix}.
+\tag{15}
+\]</span>
+<p>Indeed, the off-diagonal entry is <span class="math" data-tex="\(b(a(x-y)+1)=0\)">\(b(a(x-y)+1)=0\)</span>. The upper diagonal entry is <span class="math" data-tex="\(y+a^2(x-y)+a=y\)">\(y+a^2(x-y)+a=y\)</span>, and the lower is <span class="math" data-tex="\(x+a^2(y-x)-a=x\)">\(x+a^2(y-x)-a=x\)</span>. If the swap is nonstandard, <span class="math" data-tex="\(r=\pm1\)">\(r=\pm1\)</span>, and (14) acts on <span class="math" data-tex="\(u_T\)">\(u_T\)</span> as <span class="math" data-tex="\(x+1/r=x+r=y\)">\(x+1/r=x+r=y\)</span>. This proves the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-3-2" class="result-link"><strong>Theorem 3.2 (irreducible models).</strong> The <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span> are irreducible and are pairwise nonisomorphic for different shapes.</p>
+<p><strong>Proof.</strong> Their joint eigenvectors for the <span class="math" data-tex="\(X_k\)">\(X_k\)</span> have distinct eigenvalue sequences, by Lemma 1.1. One can extract any selected vector from a linear combination by a polynomial in these operators. More explicitly, for a fixed tableau <span class="math" data-tex="\(T\)">\(T\)</span>, and each different tableau <span class="math" data-tex="\(U\)">\(U\)</span> in the same shape, choose an index <span class="math" data-tex="\(k(U)\)">\(k(U)\)</span> at which the contents differ. The operator</p>
+<span class="math math-display" data-tex="\[
+\prod_{U\neq T}
+\frac{X_{k(U)}-c_U(k(U))I}
+{c_T(k(U))-c_U(k(U))}
+\tag{16}
+\]">\[
+\prod_{U\neq T}
+\frac{X_{k(U)}-c_U(k(U))I}
+{c_T(k(U))-c_U(k(U))}
+\tag{16}
+\]</span>
+<p>is <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(u_T\)">\(u_T\)</span> and zero on every other basis vector.</p>
+<p>A nonzero invariant subspace is stable under (16), so contains some <span class="math" data-tex="\(u_T\)">\(u_T\)</span>. If <span class="math" data-tex="\(T&#x27;=s_kT\)">\(T&#x27;=s_kT\)</span> is standard, (5) and its nonzero square-root coefficient imply that the subspace also contains <span class="math" data-tex="\(u_{T&#x27;}\)">\(u_{T&#x27;}\)</span>. Connectivity from Lemma 1.1 gives every basis vector, proving irreducibility.</p>
+<p>An intertwining map between two models must commute with every <span class="math" data-tex="\(X_k\)">\(X_k\)</span>. It therefore preserves joint eigenvalue sequences. Different shapes have disjoint sets of such sequences, again by Lemma 1.1. Such a map is zero, proving nonisomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-identifying-the-labels-and-proving-branching">4. Identifying the labels and proving branching</h2>
+<p>We must still check that <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span> is the already defined <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, rather than another irreducible with a permuted partition label.</p>
+<p id="lemma-4-1" class="result-link"><strong>Lemma 4.1 (agreement with Young symmetrizers).</strong> There is an <span class="math" data-tex="\(S_n\)">\(S_n\)</span>-isomorphism <span class="math" data-tex="\(W_\lambda\simeq V_\lambda\)">\(W_\lambda\simeq V_\lambda\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 3.2 gives one pairwise distinct irreducible for each partition of <span class="math" data-tex="\(n\)">\(n\)</span>. Lesson 13, Theorem 4.3, gives exactly this many irreducibles. Thus
+<span class="math" data-tex="\(W_\lambda\simeq V_{\phi(\lambda)}\)">\(W_\lambda\simeq V_{\phi(\lambda)}\)</span> for a permutation <span class="math" data-tex="\(\phi\)">\(\phi\)</span> of the partitions.</p>
+<p>Let <span class="math" data-tex="\(t\)">\(t\)</span> be the tableau obtained by filling the rows of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> successively. All its labels in each row form an interval. Adjacent transpositions within that interval act as <span class="math" data-tex="\(+1\)">\(+1\)</span> on <span class="math" data-tex="\(u_t\)">\(u_t\)</span> by (5); they generate the row group <span class="math" data-tex="\(R_t\)">\(R_t\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+a_tu_t=|R_t|u_t\neq0.
+\tag{17}
+\]">\[
+a_tu_t=|R_t|u_t\neq0.
+\tag{17}
+\]</span>
+<p>Let <span class="math" data-tex="\(\mu=\phi(\lambda)\)">\(\mu=\phi(\lambda)\)</span>, and choose a tableau <span class="math" data-tex="\(v\)">\(v\)</span> of shape <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. If <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is not dominated by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, lesson 13, Lemma 2.2, gives
+<span class="math" data-tex="\(a_t x b_v=0\)">\(a_t x b_v=0\)</span> for every <span class="math" data-tex="\(x\in A_n\)">\(x\in A_n\)</span>. In particular
+<span class="math" data-tex="\(a_t x a_v b_v=0\)">\(a_t x a_v b_v=0\)</span>, so <span class="math" data-tex="\(a_t\)">\(a_t\)</span> acts as zero on <span class="math" data-tex="\(A_na_vb_v=V_\mu\)">\(A_na_vb_v=V_\mu\)</span>, contradicting (17). We obtain <span class="math" data-tex="\(\lambda\preceq\phi(\lambda)\)">\(\lambda\preceq\phi(\lambda)\)</span> in the dominance order.</p>
+<p>Following any cycle of the finite permutation <span class="math" data-tex="\(\phi\)">\(\phi\)</span> gives
+<span class="math" data-tex="\(\lambda\preceq\phi(\lambda)\preceq\cdots\preceq\lambda\)">\(\lambda\preceq\phi(\lambda)\preceq\cdots\preceq\lambda\)</span>. Antisymmetry of dominance forces equality at every step. Hence <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-4-2" class="result-link"><strong>Theorem 4.2 (branching rule).</strong> For the subgroup <span class="math" data-tex="\(S_{n-1}\)">\(S_{n-1}\)</span> fixing <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}^{S_n}_{S_{n-1}}V_\lambda
+\simeq
+\bigoplus_{\substack{\mu\subset\lambda\\|\lambda/\mu|=1}}V_\mu.
+\tag{18}
+\]">\[
+\operatorname{Res}^{S_n}_{S_{n-1}}V_\lambda
+\simeq
+\bigoplus_{\substack{\mu\subset\lambda\\|\lambda/\mu|=1}}V_\mu.
+\tag{18}
+\]</span>
+<p>Each summand occurs once.</p>
+<p><strong>Proof.</strong> In a standard tableau the box containing <span class="math" data-tex="\(n\)">\(n\)</span> must be removable. Group the basis of <span class="math" data-tex="\(W_\lambda\)">\(W_\lambda\)</span> according to that box. The operators <span class="math" data-tex="\(S_1,\ldots,S_{n-2}\)">\(S_1,\ldots,S_{n-2}\)</span> never move <span class="math" data-tex="\(n\)">\(n\)</span>, so each of these spans is invariant under <span class="math" data-tex="\(S_{n-1}\)">\(S_{n-1}\)</span>. Deleting the box of <span class="math" data-tex="\(n\)">\(n\)</span> identifies its basis bijectively with the standard tableaux of the resulting shape <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The contents and all coefficients (5) for the remaining entries are unchanged. The span is therefore isomorphic to <span class="math" data-tex="\(W_\mu\)">\(W_\mu\)</span>.</p>
+<p>These spans form a direct sum because they partition a basis. Different removable boxes give different partitions: they are row ends with a strict drop to the next row, so deleting different ends changes different parts. Lemma 4.1 identifies the models with <span class="math" data-tex="\(V_\lambda,V_\mu\)">\(V_\lambda,V_\mu\)</span>. This proves (18) and multiplicity one. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> uses the empty diagram and the one-dimensional representation of <span class="math" data-tex="\(S_0=\{1\}\)">\(S_0=\{1\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-4-3" class="result-link"><strong>Corollary 4.3 (Gelfand–Tsetlin lines and dimension).</strong> Iterated restriction along <span class="math" data-tex="\(S_1\subset\cdots\subset S_n\)">\(S_1\subset\cdots\subset S_n\)</span> decomposes <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> into canonical one-dimensional lines indexed by standard tableaux <span class="math" data-tex="\(T\)">\(T\)</span>. Choosing a nonzero vector on each line gives an adapted basis, unique up to a separate scalar on each line. In particular</p>
+<span class="math math-display" data-tex="\[
+\dim V_\lambda=f^\lambda
+=\#\{\text{standard tableaux of shape }\lambda\},
+\qquad
+f^\lambda=\sum_{\mu\nearrow\lambda}f^\mu,
+\quad f^\varnothing=1.
+\tag{19}
+\]">\[
+\dim V_\lambda=f^\lambda
+=\#\{\text{standard tableaux of shape }\lambda\},
+\qquad
+f^\lambda=\sum_{\mu\nearrow\lambda}f^\mu,
+\quad f^\varnothing=1.
+\tag{19}
+\]</span>
+<p><strong>Proof.</strong> At each restriction, the irreducible summands are nonisomorphic and occur with multiplicity one. Each summand is its isotypic component, so it is intrinsic, not dependent on a choice of decomposition. Iterating yields a nested sequence of intrinsic components, terminating in a one-dimensional <span class="math" data-tex="\(S_1\)">\(S_1\)</span>-module. The possible sequences are exactly paths (2), hence tableaux. In the model just constructed the resulting line is <span class="math" data-tex="\(\mathbb C u_T\)">\(\mathbb C u_T\)</span>, because fixing successive shapes fixes each added box. Counting the lines proves the dimension statement; grouping by the last box proves the recursion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The word “canonical” describes the lines. It does not select nonzero vectors on them or make arbitrary independent rescalings disappear.</p>
+<h2 id="5-the-gelfand-tsetlin-algebra-and-a-rational-seminormal-form">5. The Gelfand–Tsetlin algebra and a rational seminormal form</h2>
+<p>Let <span class="math" data-tex="\(\mathcal G_n\)">\(\mathcal G_n\)</span> be the unital subalgebra of <span class="math" data-tex="\(A_n\)">\(A_n\)</span> generated by the centers <span class="math" data-tex="\(Z(A_k)\)">\(Z(A_k)\)</span>, <span class="math" data-tex="\(1\leq k\leq n\)">\(1\leq k\leq n\)</span>, under the usual inclusions <span class="math" data-tex="\(A_k\subset A_n\)">\(A_k\subset A_n\)</span>. Its generators commute: a central element of <span class="math" data-tex="\(A_k\)">\(A_k\)</span> commutes with all of <span class="math" data-tex="\(A_j\)">\(A_j\)</span> when <span class="math" data-tex="\(j\leq k\)">\(j\leq k\)</span>.</p>
+<p id="theorem-5-1" class="result-link"><strong>Theorem 5.1 (the complete diagonal algebra).</strong> One has</p>
+<span class="math math-display" data-tex="\[
+\mathcal G_n=\mathbb C[X_1,\ldots,X_n].
+\tag{20}
+\]">\[
+\mathcal G_n=\mathbb C[X_1,\ldots,X_n].
+\tag{20}
+\]</span>
+<p>Under the Fourier decomposition
+<span class="math" data-tex="\(A_n\simeq\bigoplus_{\lambda\vdash n}\operatorname{End}(V_\lambda)\)">\(A_n\simeq\bigoplus_{\lambda\vdash n}\operatorname{End}(V_\lambda)\)</span>,
+this is exactly the algebra of all diagonal matrices in the tableau bases. It is maximal commutative: its commutant in <span class="math" data-tex="\(A_n\)">\(A_n\)</span> equals itself.</p>
+<p><strong>Proof.</strong> Equation (12) puts every <span class="math" data-tex="\(X_k\)">\(X_k\)</span> in <span class="math" data-tex="\(\mathcal G_n\)">\(\mathcal G_n\)</span>. Conversely, a central element of <span class="math" data-tex="\(A_k\)">\(A_k\)</span> acts as a scalar on each irreducible component of <span class="math" data-tex="\(V_\lambda|_{S_k}\)">\(V_\lambda|_{S_k}\)</span>, by Schur's lemma. Every tableau line belongs to such a component with shape <span class="math" data-tex="\(\lambda^{(k)}(T)\)">\(\lambda^{(k)}(T)\)</span>. Thus all of <span class="math" data-tex="\(\mathcal G_n\)">\(\mathcal G_n\)</span> acts diagonally.</p>
+<p>All tableau content sequences are distinct across all shapes. Also <span class="math" data-tex="\(|c_T(k)|\leq k-1\)">\(|c_T(k)|\leq k-1\)</span>, since the box belongs to a <span class="math" data-tex="\(k\)">\(k\)</span>-box diagram. Hence the polynomial</p>
+<span class="math math-display" data-tex="\[
+P_T=
+\prod_{k=1}^n
+\ \prod_{\substack{-(k-1)\leq d\leq k-1\\d\neq c_T(k)}}
+\frac{X_k-d}{c_T(k)-d}
+\tag{21}
+\]">\[
+P_T=
+\prod_{k=1}^n
+\ \prod_{\substack{-(k-1)\leq d\leq k-1\\d\neq c_T(k)}}
+\frac{X_k-d}{c_T(k)-d}
+\tag{21}
+\]</span>
+<p>acts as <span class="math" data-tex="\(1\)">\(1\)</span> on the line <span class="math" data-tex="\(u_T\)">\(u_T\)</span>, and as zero on every other tableau line in every irreducible. The inner indexed product for <span class="math" data-tex="\(k=1\)">\(k=1\)</span> is empty. Extra integer roots which do not occur in the spectrum cause no problem: all denominators in (21) are nonzero.</p>
+<p>The faithful Fourier isomorphism from lesson 3 now shows that the <span class="math" data-tex="\(P_T\)">\(P_T\)</span> are exactly the individual diagonal matrix units. Their linear span is the full diagonal algebra, and lies in <span class="math" data-tex="\(\mathbb C[X_1,\ldots,X_n]\)">\(\mathbb C[X_1,\ldots,X_n]\)</span>. Together with the two inclusions above, this proves (20).</p>
+<p>In one matrix block, a matrix commuting with all diagonal matrix units has every off-diagonal entry zero. Applying this to each Fourier block shows that the commutant of this diagonal algebra is itself. This proves maximal commutativity in the entire group algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the <span class="math" data-tex="\(P_T\)">\(P_T\)</span> are pairwise orthogonal idempotents and sum to <span class="math" data-tex="\(1\)">\(1\)</span>. Here “orthogonal” includes the algebraic relation <span class="math" data-tex="\(P_TP_U=0\)">\(P_TP_U=0\)</span> for <span class="math" data-tex="\(T\neq U\)">\(T\neq U\)</span>; in the orthonormal models they are orthogonal projections as well. They are primitive idempotents of <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, since each has rank one in one full matrix block. They generally differ from the normalized Young symmetrizers of lesson 13.</p>
+<p>A smaller projector formula follows from the path itself. The content spectrum proved in Theorem 5.1 will verify it in every Fourier block. If <span class="math" data-tex="\(U\)">\(U\)</span> has <span class="math" data-tex="\(k\)">\(k\)</span> boxes and shape <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and <span class="math" data-tex="\(T\)">\(T\)</span> extends it by a box of content <span class="math" data-tex="\(c\)">\(c\)</span>, then, in <span class="math" data-tex="\(A_{k+1}\)">\(A_{k+1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+P_T=P_U
+\prod_{\substack{b\text{ addable to }\mu\\c(b)\neq c}}
+\frac{X_{k+1}-c(b)}{c-c(b)}.
+\tag{22}
+\]">\[
+P_T=P_U
+\prod_{\substack{b\text{ addable to }\mu\\c(b)\neq c}}
+\frac{X_{k+1}-c(b)}{c-c(b)}.
+\tag{22}
+\]</span>
+<p><strong>Proof of (22).</strong> Under restriction, the included element <span class="math" data-tex="\(P_U\)">\(P_U\)</span> selects exactly the tableau lines whose first <span class="math" data-tex="\(k\)">\(k\)</span> boxes are <span class="math" data-tex="\(U\)">\(U\)</span>. The possible next contents are the distinct contents of the addable boxes of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. The second factor in (22) is the Lagrange interpolation polynomial which selects the desired one and kills the others. Its action therefore agrees with <span class="math" data-tex="\(P_T\)">\(P_T\)</span> on every irreducible, and Fourier faithfulness proves equality in <span class="math" data-tex="\(A_{k+1}\)">\(A_{k+1}\)</span>. This also proves directly that the included <span class="math" data-tex="\(P_U\)">\(P_U\)</span> is the sum of all its extension projectors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We now choose a different normalization of the same tableau lines. Put the boxes in row-reading order: first the first row, then the second, and so on. For an incomparable pair <span class="math" data-tex="\(p,q\)">\(p,q\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span> earlier in that order, set
+<span class="math" data-tex="\(\delta_{pq}=c(q)-c(p)\)">\(\delta_{pq}=c(q)-c(p)\)</span>. Such a pair has <span class="math" data-tex="\(p\)">\(p\)</span> above and to the right of <span class="math" data-tex="\(q\)">\(q\)</span>, so <span class="math" data-tex="\(\delta_{pq}\leq-2\)">\(\delta_{pq}\leq-2\)</span>. Define positive scalars</p>
+<span class="math math-display" data-tex="\[
+\alpha_T^2=
+\prod_{\substack{p\text{ earlier than }q\text{ in row order}\\
+T(p)&gt;T(q)}}
+\frac{\delta_{pq}-1}{\delta_{pq}+1},
+\qquad v_T=\alpha_Tu_T,
+\tag{23}
+\]">\[
+\alpha_T^2=
+\prod_{\substack{p\text{ earlier than }q\text{ in row order}\\
+T(p)&gt;T(q)}}
+\frac{\delta_{pq}-1}{\delta_{pq}+1},
+\qquad v_T=\alpha_Tu_T,
+\tag{23}
+\]</span>
+<p>where every inverted pair is automatically incomparable. Take the positive square root for <span class="math" data-tex="\(\alpha_T\)">\(\alpha_T\)</span>. The row-filled tableau has <span class="math" data-tex="\(\alpha_T=1\)">\(\alpha_T=1\)</span>.</p>
+<p id="theorem-5-2" class="result-link"><strong>Theorem 5.2 (our seminormal form).</strong> In the basis (23), with <span class="math" data-tex="\(r=c_T(k+1)-c_T(k)\)">\(r=c_T(k+1)-c_T(k)\)</span>, the action is</p>
+<span class="math math-display" data-tex="\[
+s_kv_T=
+\begin{cases}
+\displaystyle\frac1r v_T+
+\left(1+\frac1r\right)v_{s_kT},&amp;s_kT\text{ standard},\\[4pt]
+v_T,&amp;k,k+1\text{ in the same row},\\
+-v_T,&amp;k,k+1\text{ in the same column}.
+\end{cases}
+\tag{24}
+\]">\[
+s_kv_T=
+\begin{cases}
+\displaystyle\frac1r v_T+
+\left(1+\frac1r\right)v_{s_kT},&amp;s_kT\text{ standard},\\[4pt]
+v_T,&amp;k,k+1\text{ in the same row},\\
+-v_T,&amp;k,k+1\text{ in the same column}.
+\end{cases}
+\tag{24}
+\]</span>
+<p>Thus all the matrices in this seminormal basis have rational entries. The contents (13) and the Gelfand–Tsetlin lines are unchanged.</p>
+<p><strong>Proof.</strong> An allowed swap of consecutive entries changes the inversion status only of their two boxes. Every other entry is smaller than both or larger than both. If the swap introduces their inversion, (23) adds its factor; if it removes the inversion, it removes that factor. In both cases</p>
+<span class="math math-display" data-tex="\[
+\frac{\alpha_{s_kT}^2}{\alpha_T^2}
+=\frac{r-1}{r+1}.
+\tag{25}
+\]">\[
+\frac{\alpha_{s_kT}^2}{\alpha_T^2}
+=\frac{r-1}{r+1}.
+\tag{25}
+\]</span>
+<p>This number is positive for <span class="math" data-tex="\(|r|\geq2\)">\(|r|\geq2\)</span>. Scaling (5) gives off-diagonal coefficient</p>
+<span class="math math-display" data-tex="\[
+\frac{\alpha_T}{\alpha_{s_kT}}\sqrt{1-r^{-2}}
+=\sqrt{\frac{r+1}{r-1}\frac{r^2-1}{r^2}}
+=\frac{|r+1|}{|r|}
+=1+\frac1r.
+\tag{26}
+\]">\[
+\frac{\alpha_T}{\alpha_{s_kT}}\sqrt{1-r^{-2}}
+=\sqrt{\frac{r+1}{r-1}\frac{r^2-1}{r^2}}
+=\frac{|r+1|}{|r|}
+=1+\frac1r.
+\tag{26}
+\]</span>
+<p>The last equality holds for <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span> and <span class="math" data-tex="\(r\leq-2\)">\(r\leq-2\)</span>, separately. The diagonal coefficient remains <span class="math" data-tex="\(1/r\)">\(1/r\)</span>. In the unpaired cases the scalar remains <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. This proves (24); it is a change of basis in the representation already fully verified in Theorem 2.2. All <span class="math" data-tex="\(r\)">\(r\)</span> are integers, so its entries are rational. Diagonal operators still act by the same eigenvalues after rescaling. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On a pair <span class="math" data-tex="\(T,T&#x27;=s_kT\)">\(T,T&#x27;=s_kT\)</span>, formula (24) has matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+r^{-1}&amp;1-r^{-1}\\
+1+r^{-1}&amp;-r^{-1}
+\end{pmatrix}.
+\tag{27}
+\]">\[
+\begin{pmatrix}
+r^{-1}&amp;1-r^{-1}\\
+1+r^{-1}&amp;-r^{-1}
+\end{pmatrix}.
+\tag{27}
+\]</span>
+<p>The columns record images of <span class="math" data-tex="\(v_T,v_{T&#x27;}\)">\(v_T,v_{T&#x27;}\)</span>. This matrix is generally not orthogonal for the coordinate Euclidean form, because these vectors have different lengths. Formula (8) is the orthogonal form. Other seminormal normalizations, such as [VO, (6.3)–(6.4)], put <span class="math" data-tex="\(1\)">\(1\)</span> in one off-diagonal position and <span class="math" data-tex="\(1-r^{-2}\)">\(1-r^{-2}\)</span> in the other; they describe the same representation after another diagonal change of basis.</p>
+<h2 id="6-hooks-and-the-dimension-formula">6. Hooks and the dimension formula</h2>
+<p>For <span class="math" data-tex="\(b=(i,j)\in\lambda\)">\(b=(i,j)\in\lambda\)</span>, its <strong>hook</strong> consists of <span class="math" data-tex="\(b\)">\(b\)</span>, the boxes to its right in the same row, and the boxes below it in the same column. Its length is</p>
+<span class="math math-display" data-tex="\[
+h_\lambda(i,j)=\lambda_i-j+\lambda&#x27;_j-i+1.
+\tag{28}
+\]">\[
+h_\lambda(i,j)=\lambda_i-j+\lambda&#x27;_j-i+1.
+\tag{28}
+\]</span>
+<p>Write <span class="math" data-tex="\(H_\lambda=\prod_{b\in\lambda}h_\lambda(b)\)">\(H_\lambda=\prod_{b\in\lambda}h_\lambda(b)\)</span>. The empty product is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p id="lemma-6-1" class="result-link"><strong>Lemma 6.1 (row products).</strong> Pad <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with zeros to any fixed length <span class="math" data-tex="\(l\geq\ell(\lambda)\)">\(l\geq\ell(\lambda)\)</span>, and set
+<span class="math" data-tex="\(\beta_i=\lambda_i+l-i\)">\(\beta_i=\lambda_i+l-i\)</span>. Then <span class="math" data-tex="\(\beta_1&gt;\cdots&gt;\beta_l\geq0\)">\(\beta_1&gt;\cdots&gt;\beta_l\geq0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+H_\lambda=
+\frac{\prod_{i=1}^l\beta_i!}
+{\prod_{i&lt;j}(\beta_i-\beta_j)}.
+\tag{29}
+\]">\[
+H_\lambda=
+\frac{\prod_{i=1}^l\beta_i!}
+{\prod_{i&lt;j}(\beta_i-\beta_j)}.
+\tag{29}
+\]</span>
+<p><strong>Proof.</strong> Fix row <span class="math" data-tex="\(i\)">\(i\)</span>. Its hook lengths are distinct integers in <span class="math" data-tex="\(1,\ldots,\beta_i\)">\(1,\ldots,\beta_i\)</span>. We claim that the integers missing from that interval are exactly
+<span class="math" data-tex="\(\beta_i-\beta_j\)">\(\beta_i-\beta_j\)</span>, <span class="math" data-tex="\(j&gt;i\)">\(j&gt;i\)</span>.</p>
+<p>To prove the claim, let <span class="math" data-tex="\(a\)">\(a\)</span> of the lower rows have length greater than a positive integer <span class="math" data-tex="\(c\)">\(c\)</span>, and let the next <span class="math" data-tex="\(q\)">\(q\)</span> lower rows have length exactly <span class="math" data-tex="\(c\)">\(c\)</span>. The hook in column <span class="math" data-tex="\(c\)">\(c\)</span> of row <span class="math" data-tex="\(i\)">\(i\)</span> is
+<span class="math" data-tex="\(\lambda_i-c+1+a+q\)">\(\lambda_i-c+1+a+q\)</span>, while the next hook, if present, is <span class="math" data-tex="\(\lambda_i-c+a\)">\(\lambda_i-c+a\)</span>. The omitted integers between them are</p>
+<span class="math math-display" data-tex="\[
+\lambda_i-c+a+1,\ldots,\lambda_i-c+a+q.
+\tag{30}
+\]">\[
+\lambda_i-c+a+1,\ldots,\lambda_i-c+a+q.
+\tag{30}
+\]</span>
+<p>For these <span class="math" data-tex="\(q\)">\(q\)</span> rows the indices are <span class="math" data-tex="\(j=i+a+1,\ldots,i+a+q\)">\(j=i+a+1,\ldots,i+a+q\)</span>, so
+<span class="math" data-tex="\(\beta_i-\beta_j=\lambda_i-c+(j-i)\)">\(\beta_i-\beta_j=\lambda_i-c+(j-i)\)</span>, precisely (30). If <span class="math" data-tex="\(c=\lambda_i\)">\(c=\lambda_i\)</span>, the same calculation describes the integers below the last hook, with the next hook taken as zero. Lower zero rows supply the omitted integers above the first actual hook: they are <span class="math" data-tex="\(\lambda_i+(j-i)\)">\(\lambda_i+(j-i)\)</span>. These observations cover all gaps, since the hook decreases by one plus the number of lower rows ending at each successive column. They also cover an empty row: then all lower parts are zero, and the excluded integers are <span class="math" data-tex="\(1,\ldots,l-i=\beta_i\)">\(1,\ldots,l-i=\beta_i\)</span>, leaving no hooks.</p>
+<p>Consequently the product of row <span class="math" data-tex="\(i\)">\(i\)</span>'s hooks is
+<span class="math" data-tex="\(\beta_i!/\prod_{j&gt;i}(\beta_i-\beta_j)\)">\(\beta_i!/\prod_{j&gt;i}(\beta_i-\beta_j)\)</span>. Multiplying over rows proves (29). This proves the hook product identity directly with ordinary integers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="lemma-6-2" class="result-link"><strong>Lemma 6.2 (the recursion identity).</strong> For distinct numbers <span class="math" data-tex="\(\beta_1,\ldots,\beta_l\)">\(\beta_1,\ldots,\beta_l\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^l\beta_i
+\prod_{j\neq i}\frac{\beta_i-\beta_j-1}{\beta_i-\beta_j}
+=\sum_{i=1}^l\beta_i-\frac{l(l-1)}2.
+\tag{31}
+\]">\[
+\sum_{i=1}^l\beta_i
+\prod_{j\neq i}\frac{\beta_i-\beta_j-1}{\beta_i-\beta_j}
+=\sum_{i=1}^l\beta_i-\frac{l(l-1)}2.
+\tag{31}
+\]</span>
+<p><strong>Proof.</strong> Put
+<span class="math" data-tex="\(p_i=\prod_{j\neq i}(\beta_i-\beta_j-1)/(\beta_i-\beta_j)\)">\(p_i=\prod_{j\neq i}(\beta_i-\beta_j-1)/(\beta_i-\beta_j)\)</span>.
+The rational function</p>
+<span class="math math-display" data-tex="\[
+R(z)=\prod_{j=1}^l\frac{z-\beta_j-1}{z-\beta_j}
+\tag{32}
+\]">\[
+R(z)=\prod_{j=1}^l\frac{z-\beta_j-1}{z-\beta_j}
+\tag{32}
+\]</span>
+<p>has coefficient <span class="math" data-tex="\(-p_i\)">\(-p_i\)</span> at its possible simple pole <span class="math" data-tex="\(z=\beta_i\)">\(z=\beta_i\)</span>. Subtracting <span class="math" data-tex="\(1-\sum_i p_i/(z-\beta_i)\)">\(1-\sum_i p_i/(z-\beta_i)\)</span> removes all its poles and gives a rational function tending to zero at infinity, hence the zero function. Equivalently, after multiplying by <span class="math" data-tex="\(\prod_j(z-\beta_j)\)">\(\prod_j(z-\beta_j)\)</span>, the difference is a polynomial of degree less than <span class="math" data-tex="\(l\)">\(l\)</span> vanishing at all <span class="math" data-tex="\(l\)">\(l\)</span> distinct <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span>.</p>
+<p>Expand at infinity. The product of factors <span class="math" data-tex="\(1-1/(z-\beta_j)\)">\(1-1/(z-\beta_j)\)</span> has coefficient
+<span class="math" data-tex="\(\binom l2-\sum_j\beta_j\)">\(\binom l2-\sum_j\beta_j\)</span> at <span class="math" data-tex="\(z^{-2}\)">\(z^{-2}\)</span>: the single-factor contributions are <span class="math" data-tex="\(-\beta_j\)">\(-\beta_j\)</span>, and each pair contributes <span class="math" data-tex="\(1\)">\(1\)</span>. The partial-fraction expression has coefficient <span class="math" data-tex="\(-\sum_i\beta_i p_i\)">\(-\sum_i\beta_i p_i\)</span>. Equating these coefficients proves (31). The argument is algebraic and applies when some <span class="math" data-tex="\(p_i=0\)">\(p_i=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-6-3" class="result-link"><strong>Theorem 6.3 (hook length formula).</strong> For every partition of <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle f^\lambda=\dim V_\lambda
+=\frac{n!}{\prod_{b\in\lambda}h_\lambda(b)}}.
+\tag{33}
+\]">\[
+\boxed{\displaystyle f^\lambda=\dim V_\lambda
+=\frac{n!}{\prod_{b\in\lambda}h_\lambda(b)}}.
+\tag{33}
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(F(\lambda)=n!/H_\lambda\)">\(F(\lambda)=n!/H_\lambda\)</span>. It is <span class="math" data-tex="\(1\)">\(1\)</span> at the empty diagram. We show that it satisfies the recursion (19), which then determines it by induction on <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Keep a fixed padding length <span class="math" data-tex="\(l\)">\(l\)</span>. If deleting the end of row <span class="math" data-tex="\(i\)">\(i\)</span> gives a partition <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, its <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-vector replaces <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> by <span class="math" data-tex="\(\beta_i-1\)">\(\beta_i-1\)</span>. Formula (29) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\frac{F(\mu)}{F(\lambda)}
+=\frac{\beta_i}{n}
+\prod_{j\neq i}\frac{\beta_i-\beta_j-1}{\beta_i-\beta_j}.
+\tag{34}
+\]">\[
+\frac{F(\mu)}{F(\lambda)}
+=\frac{\beta_i}{n}
+\prod_{j\neq i}\frac{\beta_i-\beta_j-1}{\beta_i-\beta_j}.
+\tag{34}
+\]</span>
+<p>We may sum the right-hand side over all rows, including nonremovable ones. If <span class="math" data-tex="\(\lambda_i=\lambda_{i+1}\)">\(\lambda_i=\lambda_{i+1}\)</span>, then <span class="math" data-tex="\(\beta_i-\beta_{i+1}=1\)">\(\beta_i-\beta_{i+1}=1\)</span> and the product is zero. Among zero padded rows, all but the last have this same zero factor, and the last has <span class="math" data-tex="\(\beta_l=0\)">\(\beta_l=0\)</span>. Thus precisely the genuine removable rows can contribute. Since
+<span class="math" data-tex="\(\sum_i\beta_i=n+l(l-1)/2\)">\(\sum_i\beta_i=n+l(l-1)/2\)</span>, Lemma 6.2 says that the sum of (34) is <span class="math" data-tex="\(1\)">\(1\)</span>. Hence
+<span class="math" data-tex="\(F(\lambda)=\sum_{\mu\nearrow\lambda}F(\mu)\)">\(F(\lambda)=\sum_{\mu\nearrow\lambda}F(\mu)\)</span>.</p>
+<p>This is the same recursion and initial value as <span class="math" data-tex="\(f^\lambda\)">\(f^\lambda\)</span>, so induction proves (33), using Corollary 4.3 for its representation-theoretic interpretation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hook product identity and branching recursion above give the dimension formula within this course.</p>
+<h2 id="7-worked-models-and-dimensions">7. Worked models and dimensions</h2>
+<p>For shape <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>, order the basis by</p>
+<span class="math math-display" data-tex="\[
+A=\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array},
+\qquad
+B=\begin{array}{cc}\boxed{1}&amp;\boxed{3}\\\boxed{2}&amp;\end{array}.
+\tag{35}
+\]">\[
+A=\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array},
+\qquad
+B=\begin{array}{cc}\boxed{1}&amp;\boxed{3}\\\boxed{2}&amp;\end{array}.
+\tag{35}
+\]</span>
+<p>Their content sequences are <span class="math" data-tex="\((0,1,-1)\)">\((0,1,-1)\)</span> and <span class="math" data-tex="\((0,-1,1)\)">\((0,-1,1)\)</span>. In the seminormal normalization (23),</p>
+<span class="math math-display" data-tex="\[
+\rho(s_1)=
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+\rho(s_2)=
+\begin{pmatrix}-\tfrac12&amp;\tfrac32\\
+\tfrac12&amp;\tfrac12\end{pmatrix}.
+\tag{36}
+\]">\[
+\rho(s_1)=
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+\rho(s_2)=
+\begin{pmatrix}-\tfrac12&amp;\tfrac32\\
+\tfrac12&amp;\tfrac12\end{pmatrix}.
+\tag{36}
+\]</span>
+<p>For <span class="math" data-tex="\(A\)">\(A\)</span>, the axial distance at <span class="math" data-tex="\(k=2\)">\(k=2\)</span> is <span class="math" data-tex="\(-2\)">\(-2\)</span>; for <span class="math" data-tex="\(B\)">\(B\)</span> it is <span class="math" data-tex="\(2\)">\(2\)</span>. Here <span class="math" data-tex="\(\alpha_A=1,\alpha_B=\sqrt3\)">\(\alpha_A=1,\alpha_B=\sqrt3\)</span>. In the orthonormal basis, the off-diagonal entries of the second matrix would both be <span class="math" data-tex="\(\sqrt3/2\)">\(\sqrt3/2\)</span>. Restricting to <span class="math" data-tex="\(S_2\)">\(S_2\)</span> gives the trivial line <span class="math" data-tex="\(v_A\)">\(v_A\)</span> and the sign line <span class="math" data-tex="\(v_B\)">\(v_B\)</span>, in accordance with the two removable boxes.</p>
+<p>For shape <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, take tableaux with rows <span class="math" data-tex="\(1,2\,/\,3,4\)">\(1,2\,/\,3,4\)</span> and <span class="math" data-tex="\(1,3\,/\,2,4\)">\(1,3\,/\,2,4\)</span>, in that order. Their content sequences are respectively
+<span class="math" data-tex="\((0,1,-1,0)\)">\((0,1,-1,0)\)</span> and <span class="math" data-tex="\((0,-1,1,0)\)">\((0,-1,1,0)\)</span>. The matrices are</p>
+<span class="math math-display" data-tex="\[
+\rho(s_1)=\rho(s_3)=
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+\rho(s_2)=
+\begin{pmatrix}-\tfrac12&amp;\tfrac32\\
+\tfrac12&amp;\tfrac12\end{pmatrix}.
+\tag{37}
+\]">\[
+\rho(s_1)=\rho(s_3)=
+\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},
+\qquad
+\rho(s_2)=
+\begin{pmatrix}-\tfrac12&amp;\tfrac32\\
+\tfrac12&amp;\tfrac12\end{pmatrix}.
+\tag{37}
+\]</span>
+<p>The only removable box of <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> is <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>; deletion leaves <span class="math" data-tex="\((2,1)\)">\((2,1)\)</span>. Thus its restriction to <span class="math" data-tex="\(S_3\)">\(S_3\)</span> is irreducible. The fourth Jucys–Murphy operator is zero on both basis lines, because the box containing <span class="math" data-tex="\(4\)">\(4\)</span> has content zero.</p>
+<p>For <span class="math" data-tex="\(\lambda=(3,2)\)">\(\lambda=(3,2)\)</span>, the content array is the right-hand array in (4). Its hook lengths are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+\boxed{4}&amp;\boxed{3}&amp;\boxed{1}\\
+\boxed{2}&amp;\boxed{1}&amp;
+\end{array},
+\qquad
+f^{(3,2)}=\frac{120}{4\cdot3\cdot1\cdot2\cdot1}=5.
+\tag{38}
+\]">\[
+\begin{array}{ccc}
+\boxed{4}&amp;\boxed{3}&amp;\boxed{1}\\
+\boxed{2}&amp;\boxed{1}&amp;
+\end{array},
+\qquad
+f^{(3,2)}=\frac{120}{4\cdot3\cdot1\cdot2\cdot1}=5.
+\tag{38}
+\]</span>
+<p>There are two removable boxes, yielding <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> and <span class="math" data-tex="\((3,1)\)">\((3,1)\)</span>. The latter has hook product <span class="math" data-tex="\(4\cdot2=8\)">\(4\cdot2=8\)</span>, hence dimension <span class="math" data-tex="\(3\)">\(3\)</span>. The branching dimensions give <span class="math" data-tex="\(2+3=5\)">\(2+3=5\)</span>. This check involves actual restriction summands, rather than merely an equality between unrelated numbers.</p>
+<p>For a single row, every adjacent generator is <span class="math" data-tex="\(+1\)">\(+1\)</span>; for a single column, every one is <span class="math" data-tex="\(-1\)">\(-1\)</span>. The hook product is <span class="math" data-tex="\(n!\)">\(n!\)</span> in both cases, giving dimension <span class="math" data-tex="\(1\)">\(1\)</span>. The empty tableau supplies the base case at <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-1-easy-contents-hooks-and-a-three-way-restriction">Exercise 1 (easy). Contents, hooks and a three-way restriction</h3>
+<p>Compute the content and hook arrays of <span class="math" data-tex="\((4,2,1)\)">\((4,2,1)\)</span>, its dimension, and the dimensions of all its <span class="math" data-tex="\(S_6\)">\(S_6\)</span> restriction summands.</p>
+<p><strong>Solution.</strong> The two arrays, in the same box coordinates, are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{cccc}
+\boxed{0}&amp;\boxed{1}&amp;\boxed{2}&amp;\boxed{3}\\
+\boxed{-1}&amp;\boxed{0}&amp;&amp;\\
+\boxed{-2}&amp;&amp;&amp;
+\end{array},
+\qquad
+\begin{array}{cccc}
+\boxed{6}&amp;\boxed{4}&amp;\boxed{2}&amp;\boxed{1}\\
+\boxed{3}&amp;\boxed{1}&amp;&amp;\\
+\boxed{1}&amp;&amp;&amp;
+\end{array}.
+\tag{39}
+\]">\[
+\begin{array}{cccc}
+\boxed{0}&amp;\boxed{1}&amp;\boxed{2}&amp;\boxed{3}\\
+\boxed{-1}&amp;\boxed{0}&amp;&amp;\\
+\boxed{-2}&amp;&amp;&amp;
+\end{array},
+\qquad
+\begin{array}{cccc}
+\boxed{6}&amp;\boxed{4}&amp;\boxed{2}&amp;\boxed{1}\\
+\boxed{3}&amp;\boxed{1}&amp;&amp;\\
+\boxed{1}&amp;&amp;&amp;
+\end{array}.
+\tag{39}
+\]</span>
+<p>Their hook product is <span class="math" data-tex="\(144\)">\(144\)</span>, so <span class="math" data-tex="\(f^{(4,2,1)}=7!/144=35\)">\(f^{(4,2,1)}=7!/144=35\)</span>. All three row ends are removable. The resulting shapes are <span class="math" data-tex="\((3,2,1)\)">\((3,2,1)\)</span>, <span class="math" data-tex="\((4,1,1)\)">\((4,1,1)\)</span>, <span class="math" data-tex="\((4,2)\)">\((4,2)\)</span>. Their hook products are <span class="math" data-tex="\(45,72,80\)">\(45,72,80\)</span>, respectively: the first has row hooks <span class="math" data-tex="\(5,3,1\,/\,3,1\,/\,1\)">\(5,3,1\,/\,3,1\,/\,1\)</span>; the second <span class="math" data-tex="\(6,3,2,1\,/\,2\,/\,1\)">\(6,3,2,1\,/\,2\,/\,1\)</span>; the third <span class="math" data-tex="\(5,4,2,1\,/\,2,1\)">\(5,4,2,1\,/\,2,1\)</span>. Thus their dimensions are <span class="math" data-tex="\(720/45=16\)">\(720/45=16\)</span>, <span class="math" data-tex="\(720/72=10\)">\(720/72=10\)</span>, <span class="math" data-tex="\(720/80=9\)">\(720/80=9\)</span>, and <span class="math" data-tex="\(16+10+9=35\)">\(16+10+9=35\)</span>. Theorem 4.2 identifies the restriction as the direct sum of these three irreducibles.</p>
+<h3 id="exercise-2-medium-the-spectrum-in-s_3">Exercise 2 (medium). The spectrum in <span class="math" data-tex="\(S_3\)">\(S_3\)</span></h3>
+<p>Using (36), compute <span class="math" data-tex="\(X_1,X_2,X_3\)">\(X_1,X_2,X_3\)</span> on <span class="math" data-tex="\(V_{(2,1)}\)">\(V_{(2,1)}\)</span>. Check commutation, content eigenvalues, and the two corresponding projector polynomials in <span class="math" data-tex="\(\mathbb C[S_3]\)">\(\mathbb C[S_3]\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(D=\rho(s_1)\)">\(D=\rho(s_1)\)</span>, <span class="math" data-tex="\(M=\rho(s_2)\)">\(M=\rho(s_2)\)</span>. Then
+<span class="math" data-tex="\(X_1=0\)">\(X_1=0\)</span>, <span class="math" data-tex="\(\rho(X_2)=D\)">\(\rho(X_2)=D\)</span>, and <span class="math" data-tex="\(\rho(X_3)=M+MDM\)">\(\rho(X_3)=M+MDM\)</span>. Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+MDM=
+\begin{pmatrix}-\tfrac12&amp;-\tfrac32\\
+-\tfrac12&amp;\tfrac12\end{pmatrix},
+\qquad
+\rho(X_3)=
+\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.
+\tag{40}
+\]">\[
+MDM=
+\begin{pmatrix}-\tfrac12&amp;-\tfrac32\\
+-\tfrac12&amp;\tfrac12\end{pmatrix},
+\qquad
+\rho(X_3)=
+\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}.
+\tag{40}
+\]</span>
+<p>These diagonal matrices commute, and their eigenvalue sequences are exactly those following (35). The other irreducibles are the trivial and sign representations, with sequences <span class="math" data-tex="\((0,1,2)\)">\((0,1,2)\)</span> and <span class="math" data-tex="\((0,-1,-2)\)">\((0,-1,-2)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+P_A=\frac{(1+X_2)(2-X_3)}6,\qquad
+P_B=\frac{(1-X_2)(2+X_3)}6
+\tag{41}
+\]">\[
+P_A=\frac{(1+X_2)(2-X_3)}6,\qquad
+P_B=\frac{(1-X_2)(2+X_3)}6
+\tag{41}
+\]</span>
+<p>act as the two selected diagonal units in <span class="math" data-tex="\(V_{(2,1)}\)">\(V_{(2,1)}\)</span>, and as zero in the other irreducibles. For example, the first polynomial evaluates to <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span>, to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>, and to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\((-1,-2)\)">\((-1,-2)\)</span>. Fourier faithfulness proves that they are the stated idempotents in the group algebra itself. Their product is zero, but their sum is the central projector for <span class="math" data-tex="\(V_{(2,1)}\)">\(V_{(2,1)}\)</span>, rather than the full identity of <span class="math" data-tex="\(\mathbb C[S_3]\)">\(\mathbb C[S_3]\)</span>.</p>
+<h3 id="exercise-3-medium-prove-the-hook-branching-recursion">Exercise 3 (medium). Prove the hook branching recursion</h3>
+<p>Without assuming the hook length formula, prove that
+<span class="math" data-tex="\(F(\lambda)=|\lambda|!/\prod_{b\in\lambda}h_\lambda(b)\)">\(F(\lambda)=|\lambda|!/\prod_{b\in\lambda}h_\lambda(b)\)</span> satisfies
+<span class="math" data-tex="\(F(\lambda)=\sum_{\mu\nearrow\lambda}F(\mu)\)">\(F(\lambda)=\sum_{\mu\nearrow\lambda}F(\mu)\)</span>. Account for equal row lengths and trailing zero parts.</p>
+<p><strong>Solution.</strong> Choose a fixed length <span class="math" data-tex="\(l\)">\(l\)</span>, and put <span class="math" data-tex="\(\beta_i=\lambda_i+l-i\)">\(\beta_i=\lambda_i+l-i\)</span>. Lemma 6.1 expresses
+<span class="math" data-tex="\(F(\lambda)=n!\prod_{i&lt;j}(\beta_i-\beta_j)/\prod_i\beta_i!\)">\(F(\lambda)=n!\prod_{i&lt;j}(\beta_i-\beta_j)/\prod_i\beta_i!\)</span>, as a hook product identity independent of any tableau enumeration. For a removable row <span class="math" data-tex="\(i\)">\(i\)</span>, replace <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> by <span class="math" data-tex="\(\beta_i-1\)">\(\beta_i-1\)</span>. Each Vandermonde factor involving that coordinate contributes
+<span class="math" data-tex="\((\beta_i-\beta_j-1)/(\beta_i-\beta_j)\)">\((\beta_i-\beta_j-1)/(\beta_i-\beta_j)\)</span>; its factorial contributes <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span>, and <span class="math" data-tex="\((n-1)!/n!=1/n\)">\((n-1)!/n!=1/n\)</span>. Thus the ratio is (34).</p>
+<p>For an equal pair of consecutive row lengths, <span class="math" data-tex="\(\beta_i-\beta_{i+1}=1\)">\(\beta_i-\beta_{i+1}=1\)</span>, so this formal ratio is zero. The same holds for all but the last zero row; the last has factor <span class="math" data-tex="\(\beta_l=0\)">\(\beta_l=0\)</span>. Hence summing the formal ratios over all rows sums exactly over removable corners.</p>
+<p>To evaluate that sum, use (32). Removing its simple poles gives
+<span class="math" data-tex="\(R(z)=1-\sum_i p_i/(z-\beta_i)\)">\(R(z)=1-\sum_i p_i/(z-\beta_i)\)</span>, with <span class="math" data-tex="\(p_i\)">\(p_i\)</span> as in Lemma 6.2. Its product expansion has coefficient <span class="math" data-tex="\(\binom l2-\sum_i\beta_i=-n\)">\(\binom l2-\sum_i\beta_i=-n\)</span> at <span class="math" data-tex="\(z^{-2}\)">\(z^{-2}\)</span>. Its partial-fraction expansion has coefficient <span class="math" data-tex="\(-\sum_i\beta_i p_i\)">\(-\sum_i\beta_i p_i\)</span>. Therefore <span class="math" data-tex="\(\sum_i\beta_i p_i=n\)">\(\sum_i\beta_i p_i=n\)</span>, and the sum of the ratios (34) is <span class="math" data-tex="\(1\)">\(1\)</span>. Multiplying by <span class="math" data-tex="\(F(\lambda)\)">\(F(\lambda)\)</span> proves the recursion. At the empty diagram the product is empty and <span class="math" data-tex="\(F=1\)">\(F=1\)</span>. This proof uses no assumption that <span class="math" data-tex="\(F\)">\(F\)</span> is already a representation dimension.</p>
+<h3 id="exercise-4-hard-recover-the-commuting-algebra-from-its-spectrum">Exercise 4 (hard). Recover the commuting algebra from its spectrum</h3>
+<p>Give a complete proof of the commutation of the <span class="math" data-tex="\(X_k\)">\(X_k\)</span>, their content spectrum, and their generation of the Gelfand–Tsetlin algebra. Explain why checking one irreducible alone would be insufficient for the last assertion.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span> be the sum of transpositions of <span class="math" data-tex="\(S_k\)">\(S_k\)</span>. Conjugation permutes them, so <span class="math" data-tex="\(Z_k\)">\(Z_k\)</span> is central in <span class="math" data-tex="\(A_k\)">\(A_k\)</span>. For <span class="math" data-tex="\(j\leq k\)">\(j\leq k\)</span>, <span class="math" data-tex="\(Z_j\in A_k\)">\(Z_j\in A_k\)</span>, and hence <span class="math" data-tex="\(Z_kZ_j=Z_jZ_k\)">\(Z_kZ_j=Z_jZ_k\)</span>. Since <span class="math" data-tex="\(X_k=Z_k-Z_{k-1}\)">\(X_k=Z_k-Z_{k-1}\)</span>, the <span class="math" data-tex="\(X_k\)">\(X_k\)</span> commute in <span class="math" data-tex="\(A_n\)">\(A_n\)</span>.</p>
+<p>For the spectrum, begin with <span class="math" data-tex="\(X_1=0\)">\(X_1=0\)</span>. Suppose <span class="math" data-tex="\(X_k\)">\(X_k\)</span> acts by the content of <span class="math" data-tex="\(k\)">\(k\)</span>. The identity <span class="math" data-tex="\(X_{k+1}=s_kX_ks_k+s_k\)">\(X_{k+1}=s_kX_ks_k+s_k\)</span> follows by conjugating the individual transpositions in <span class="math" data-tex="\(X_k\)">\(X_k\)</span>. For a standard swap pair with contents <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, its orthogonal matrix is (8), <span class="math" data-tex="\(a=1/(y-x)\)">\(a=1/(y-x)\)</span>. Multiplication in (15) has off-diagonal entry <span class="math" data-tex="\(b(a(x-y)+1)=0\)">\(b(a(x-y)+1)=0\)</span>, and diagonal entries <span class="math" data-tex="\(y,x\)">\(y,x\)</span>, so it gives the contents of <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. In an unpaired case, the scalar is <span class="math" data-tex="\(x+1/r=x+r=y\)">\(x+1/r=x+r=y\)</span>, since <span class="math" data-tex="\(r=\pm1\)">\(r=\pm1\)</span>. Induction proves the content action in every <span class="math" data-tex="\(W_\lambda\simeq V_\lambda\)">\(W_\lambda\simeq V_\lambda\)</span>.</p>
+<p>Lemma 1.1 reconstructs a tableau from its content sequence, by selecting its successive addable boxes; their contents are distinct at each step. Therefore (21) selects one tableau line across the direct sum of all irreducibles. Its factors have nonzero denominators, and any different line has some distinct content, which supplies a zero factor. The <span class="math" data-tex="\(P_T\)">\(P_T\)</span> thus give every diagonal unit under the faithful Fourier isomorphism. Polynomials in the <span class="math" data-tex="\(X_k\)">\(X_k\)</span> are precisely the full diagonal algebra.</p>
+<p>Every center <span class="math" data-tex="\(Z(A_k)\)">\(Z(A_k)\)</span> acts scalarly on the <span class="math" data-tex="\(S_k\)">\(S_k\)</span> irreducible component specified by a tableau's first <span class="math" data-tex="\(k\)">\(k\)</span> boxes. It is therefore diagonal and belongs to that polynomial algebra. Conversely (12) puts each <span class="math" data-tex="\(X_k\)">\(X_k\)</span> in the algebra generated by these centers. The inclusions prove equality (20). A matrix commuting with every diagonal unit has no off-diagonal entry, in each irreducible block, so the algebra is also its own commutant.</p>
+<p>One irreducible representation does not give a faithful map from <span class="math" data-tex="\(A_n\)">\(A_n\)</span>; it loses all the other Fourier blocks. An equality or polynomial identity in that one block need not hold in the group algebra. The use of all irreducibles, and their globally distinct content sequences, is what closes this proof.</p>
+<p>The next lesson computes characters by symmetric functions and develops the Murnaghan–Nakayama rule. The dimension and branching results proved here will be available there without a forward character-theory dependency.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[VO] A. M. Vershik and A. Yu. Okounkov, <em>A New Approach to the Representation Theory of the Symmetric Groups. II</em>, revised 2005 paper, Theorem 5.8 and §6, Propositions 6.1–6.2, equations (6.3)–(6.5). <a href="https://arxiv.org/abs/math/0503040">Primary paper, arXiv:math/0503040</a>. These distinguish the tableau spectrum and the seminormal/orthogonal normalizations; our proofs use a direct matrix construction.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

@@ -1,0 +1,364 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Natural scalars on modules and finite abelian groups</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="natural-scalars-on-modules-and-finite-abelian-groups">Natural scalars on modules and finite abelian groups</h1>
+<p><em>Written with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Self-checked by the AI that wrote it. Original text: CC0.</em></p>
+<p>Multiplication by an integer gives an endomorphism of every abelian group and commutes with every group homomorphism. A natural scalar is any operation with these two properties. Which operations exist depends on the category. On all modules over a ring they are exactly its central elements. On finite abelian groups they form a much larger ring: one compatible sequence of residues for each prime.</p>
+<p>We assume modules, natural transformations and elementary integer arithmetic. The <a href="ring-actions-and-tensor-hom-in-abelian-categories.html#1-scalars-and-the-center-of-a-category">ring-action lesson</a> proves that the natural endomorphisms of the identity of an additive category form a commutative ring. The <a href="additive-localization-and-projector-decompositions.html#2-projectors-and-complementary-summands">projector lesson</a> explains how orthogonal projectors give finite direct-sum coordinates. We will construct the necessary projectors explicitly, so no classification theorem for finite abelian groups is needed.</p>
+<p>We fix a universe containing the ring and the underlying sets in question. Natural transformations on a large category can first be taken in a larger universe. The two computations below identify their rings with sets in the original universe. Basic open references are Mathlib's <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Center/Basic.html">category-center construction</a>, its <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Category/ModuleCat/FilteredColimits.html">module filtered-colimit construction</a>, and <a href="https://stacks.math.columbia.edu/tag/079A">Stacks, Grothendieck's AB conditions</a>.</p>
+<h2 id="1-the-regular-module-determines-every-component">1. The regular module determines every component</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be an associative unital ring, and let <span class="math" data-tex="\(R\text{-}\mathsf{Mod}\)">\(R\text{-}\mathsf{Mod}\)</span> denote its left modules. Multiplication in an endomorphism ring means composition: <span class="math" data-tex="\(uv=u\circ v\)">\(uv=u\circ v\)</span>. Write
+<span class="math math-display" data-tex="\[
+\mathfrak Z(\mathcal C)=\operatorname{End}(\operatorname{id}_{\mathcal C}).
+\]">\[
+\mathfrak Z(\mathcal C)=\operatorname{End}(\operatorname{id}_{\mathcal C}).
+\]</span>
+An element <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has components <span class="math" data-tex="\(\eta_X:X\to X\)">\(\eta_X:X\to X\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\eta_Y f=f\eta_X\qquad(f:X\to Y).
+\tag{1.1}
+\]">\[
+\eta_Y f=f\eta_X\qquad(f:X\to Y).
+\tag{1.1}
+\]</span>
+Addition is pointwise. The commutativity proved in the ring-action lesson uses (1.1) with <span class="math" data-tex="\(f\)">\(f\)</span> another component; it requires compatibility with all arrows, including these endomorphisms.</p>
+<p>The left regular module <span class="math" data-tex="\(R\)">\(R\)</span> is a useful probe. For each <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, the map
+<span class="math math-display" data-tex="\[
+f_x:R\longrightarrow M,\qquad f_x(r)=rx
+\tag{1.2}
+\]">\[
+f_x:R\longrightarrow M,\qquad f_x(r)=rx
+\tag{1.2}
+\]</span>
+is left linear. Conversely every left-linear map out of <span class="math" data-tex="\(R\)">\(R\)</span> has this form, with <span class="math" data-tex="\(x=f_x(1)\)">\(x=f_x(1)\)</span>. Thus evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> identifies <span class="math" data-tex="\(\operatorname{Hom}_R(R,M)\)">\(\operatorname{Hom}_R(R,M)\)</span> with the underlying additive group of <span class="math" data-tex="\(M\)">\(M\)</span>, naturally in <span class="math" data-tex="\(M\)">\(M\)</span>. In particular these maps detect every module homomorphism.</p>
+<p><strong>Theorem 1.1.</strong> There is a canonical ring isomorphism
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Z(R)\xrightarrow{\ \sim\ }
+\mathfrak Z(R\text{-}\mathsf{Mod}),\\
+z\longmapsto(x\mapsto zx),
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+Z(R)\xrightarrow{\ \sim\ }
+\mathfrak Z(R\text{-}\mathsf{Mod}),\\
+z\longmapsto(x\mapsto zx),
+\end{gathered}
+\tag{1.3}
+\]</span>
+where <span class="math" data-tex="\(Z(R)=\{z\in R:zr=rz\text{ for all }r\in R\}\)">\(Z(R)=\{z\in R:zr=rz\text{ for all }r\in R\}\)</span>.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, put <span class="math" data-tex="\(a=\eta_R(1)\)">\(a=\eta_R(1)\)</span>. Left linearity says
+<span class="math math-display" data-tex="\[
+\eta_R(r)=ra.
+\tag{1.4}
+\]">\[
+\eta_R(r)=ra.
+\tag{1.4}
+\]</span>
+This is right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>. For any <span class="math" data-tex="\(b\in R\)">\(b\in R\)</span>, right multiplication <span class="math" data-tex="\(\rho_b(r)=rb\)">\(\rho_b(r)=rb\)</span> is a left-linear endomorphism of <span class="math" data-tex="\(R\)">\(R\)</span>. Naturality at <span class="math" data-tex="\(\rho_b\)">\(\rho_b\)</span>, evaluated at <span class="math" data-tex="\(1\)">\(1\)</span>, gives
+<span class="math math-display" data-tex="\[
+ba=\eta_R(b)=\rho_b(a)=ab.
+\tag{1.5}
+\]">\[
+ba=\eta_R(b)=\rho_b(a)=ab.
+\tag{1.5}
+\]</span>
+Consequently <span class="math" data-tex="\(a\)">\(a\)</span> is central. Naturality at (1.2) then gives, for every module and every element,
+<span class="math math-display" data-tex="\[
+\eta_M(x)=f_x(\eta_R(1))=ax.
+\tag{1.6}
+\]">\[
+\eta_M(x)=f_x(\eta_R(1))=ax.
+\tag{1.6}
+\]</span>
+The component on the regular module therefore determines every component.</p>
+<p>Conversely, for central <span class="math" data-tex="\(a\)">\(a\)</span>, the rule <span class="math" data-tex="\(x\mapsto ax\)">\(x\mapsto ax\)</span> is additive and left linear: <span class="math" data-tex="\(a(rx)=r(ax)\)">\(a(rx)=r(ax)\)</span>. For a left-linear <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span>, we have <span class="math" data-tex="\(f(ax)=af(x)\)">\(f(ax)=af(x)\)</span>. The family is natural. Its value on <span class="math" data-tex="\(1\in R\)">\(1\in R\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>, so the constructions are inverse.</p>
+<p>Pointwise addition corresponds to <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, composition to <span class="math" data-tex="\(ab\)">\(ab\)</span>, and the identity family to <span class="math" data-tex="\(1\)">\(1\)</span>. This proves the ring assertion. The proof also covers the zero ring, for which every unital module is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the natural scalars on all abelian groups are the integers, by taking <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>. A noncentral element of a noncommutative ring does not define a scalar on all its left modules: on the regular module its left multiplication fails left linearity.</p>
+<p>The same regular-module probe appears in the Grothendieck structure of module categories. Here is the structural verification over an arbitrary ring. Kernels and quotient cokernels have the induced module structures; the map from a module modulo a kernel to the image is an isomorphism. Thus the category is abelian. Small direct sums exist, and the colimit of a small diagram is the quotient of the direct sum of its objects by the relations identifying an element with its image under each diagram arrow. The probe (1.2) is a generator.</p>
+<p>For a filtered diagram, every colimit element has a representative <span class="math" data-tex="\([j,x]\)">\([j,x]\)</span> at one stage. Two representatives are equal exactly when their images agree at a common later stage. This filtered equality rule follows from <a href="formal-colimits-and-compact-presentations.html">formal colimits</a>; parallel arrows can be equalized after a further transition. Sums use a common stage, and scalar multiplication is
+<span class="math math-display" data-tex="\[
+r[j,x]=[j,rx].
+\tag{1.7}
+\]">\[
+r[j,x]=[j,rx].
+\tag{1.7}
+\]</span>
+These operations are independent of the representatives because every transition is linear. They give the colimit its module structure and its universal property for linear maps, as in Mathlib's construction cited above.</p>
+<p>For a filtered diagram of short exact sequences, a representative in the first term that maps to zero becomes zero in the middle term at a later stage; injectivity there makes it zero in the first term. A middle representative mapping to zero in the last colimit becomes a kernel element at a later stage, where exactness supplies its preimage. A representative in the last term lifts at its own stage. These three statements prove exactness of the colimit sequence. Hence <span class="math" data-tex="\(R\text{-}\mathsf{Mod}\)">\(R\text{-}\mathsf{Mod}\)</span> is Grothendieck in the fixed universe. No commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> enters this argument.</p>
+<h2 id="2-cyclic-groups-give-compatible-residues">2. Cyclic groups give compatible residues</h2>
+<p>Let <span class="math" data-tex="\(\mathsf{FinAb}\)">\(\mathsf{FinAb}\)</span> be the category of finite abelian groups and all group homomorphisms. For a prime <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, set
+<span class="math math-display" data-tex="\[
+C_{p,n}=\mathbb Z/p^n\mathbb Z.
+\]">\[
+C_{p,n}=\mathbb Z/p^n\mathbb Z.
+\]</span>
+Every endomorphism of this cyclic group is multiplication by a unique residue. Thus a natural scalar <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives
+<span class="math math-display" data-tex="\[
+a_{p,n}=\eta_{C_{p,n}}(\overline1)
+\in\mathbb Z/p^n\mathbb Z.
+\tag{2.1}
+\]">\[
+a_{p,n}=\eta_{C_{p,n}}(\overline1)
+\in\mathbb Z/p^n\mathbb Z.
+\tag{2.1}
+\]</span>
+The quotient map <span class="math" data-tex="\(C_{p,n+1}\to C_{p,n}\)">\(C_{p,n+1}\to C_{p,n}\)</span> is a morphism in <span class="math" data-tex="\(\mathsf{FinAb}\)">\(\mathsf{FinAb}\)</span>. Applying naturality to <span class="math" data-tex="\(\overline1\)">\(\overline1\)</span> shows
+<span class="math math-display" data-tex="\[
+a_{p,n+1}\equiv a_{p,n}\pmod {p^n}.
+\tag{2.2}
+\]">\[
+a_{p,n+1}\equiv a_{p,n}\pmod {p^n}.
+\tag{2.2}
+\]</span></p>
+<p>We define the ring of <span class="math" data-tex="\(p\)">\(p\)</span>-adic integers algebraically. Its elements are sequences of residues <span class="math" data-tex="\(a_n\in\mathbb Z/p^n\mathbb Z\)">\(a_n\in\mathbb Z/p^n\mathbb Z\)</span>, for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, satisfying the compatibility below:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb Z_p=\varprojlim_{n\geq1}\mathbb Z/p^n\mathbb Z,\\
+a_{n+1}\equiv a_n\pmod {p^n}.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+\mathbb Z_p=\varprojlim_{n\geq1}\mathbb Z/p^n\mathbb Z,\\
+a_{n+1}\equiv a_n\pmod {p^n}.
+\end{gathered}
+\tag{2.3}
+\]</span>
+Its addition, multiplication and unit are coordinatewise; reduction is a ring homomorphism, so these operations preserve compatibility. No metric or convergence theorem is part of this definition.</p>
+<p>For an integer <span class="math" data-tex="\(m\)">\(m\)</span>, its residues give an element of <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. This map <span class="math" data-tex="\(\mathbb Z\to\mathbb Z_p\)">\(\mathbb Z\to\mathbb Z_p\)</span> is injective: an integer divisible by every <span class="math" data-tex="\(p^n\)">\(p^n\)</span> is zero, because <span class="math" data-tex="\(p^n\)">\(p^n\)</span> eventually exceeds its absolute value. Naturality has produced one such compatible sequence for each prime. To recover the operation on every finite group, we need its primary coordinates.</p>
+<h2 id="3-primary-coordinates-from-integer-projectors">3. Primary coordinates from integer projectors</h2>
+<p>For an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, write
+<span class="math math-display" data-tex="\[
+A_p=\{x\in A:\exists k\geq1,\ p^k x=0\}.
+\tag{3.1}
+\]">\[
+A_p=\{x\in A:\exists k\geq1,\ p^k x=0\}.
+\tag{3.1}
+\]</span>
+This is a subgroup: a common larger exponent kills the sum or difference of two of its elements. Every group homomorphism sends <span class="math" data-tex="\(A_p\)">\(A_p\)</span> into the corresponding subgroup of its target.</p>
+<p><strong>Proposition 3.1.</strong> Every finite abelian group has the canonical decomposition
+<span class="math math-display" data-tex="\[
+A=\bigoplus_p A_p,
+\tag{3.2}
+\]">\[
+A=\bigoplus_p A_p,
+\tag{3.2}
+\]</span>
+with only finitely many nonzero summands. Its component projections are multiplication by suitable integers on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Each element of a finite group has finite order, by repetition among its nonnegative multiples. A product of the finitely many element orders is a positive integer <span class="math" data-tex="\(N\)">\(N\)</span> annihilating <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, then <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, and the decomposition is empty. Otherwise factor
+<span class="math math-display" data-tex="\[
+N=\prod_{p\in S}p^{n_p},\qquad n_p\geq1.
+\tag{3.3}
+\]">\[
+N=\prod_{p\in S}p^{n_p},\qquad n_p\geq1.
+\tag{3.3}
+\]</span>
+For each <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, put <span class="math" data-tex="\(d_p=N/p^{n_p}\)">\(d_p=N/p^{n_p}\)</span>. Since <span class="math" data-tex="\(d_p\)">\(d_p\)</span> and <span class="math" data-tex="\(p^{n_p}\)">\(p^{n_p}\)</span> are coprime, Bézout's identity gives an integer <span class="math" data-tex="\(t_p\)">\(t_p\)</span> with
+<span class="math math-display" data-tex="\[
+t_p d_p\equiv1\pmod {p^{n_p}}.
+\]">\[
+t_p d_p\equiv1\pmod {p^{n_p}}.
+\]</span>
+Set <span class="math" data-tex="\(c_p=t_p d_p\)">\(c_p=t_p d_p\)</span>. It is <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(p^{n_p}\)">\(p^{n_p}\)</span>, and <span class="math" data-tex="\(0\)">\(0\)</span> modulo every <span class="math" data-tex="\(q^{n_q}\)">\(q^{n_q}\)</span> for <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>. Coprimality of these prime powers implies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{p\in S}c_p\equiv1\pmod N,\\
+c_p^2\equiv c_p\pmod N,\\
+c_pc_q\equiv0\pmod N\quad(p\ne q).
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+\sum_{p\in S}c_p\equiv1\pmod N,\\
+c_p^2\equiv c_p\pmod N,\\
+c_pc_q\equiv0\pmod N\quad(p\ne q).
+\end{gathered}
+\tag{3.4}
+\]</span>
+Indeed each congruence holds modulo every factor in (3.3), and an integer divisible by all these coprime factors is divisible by their product.</p>
+<p>Multiplication by <span class="math" data-tex="\(c_p\)">\(c_p\)</span> is therefore an idempotent <span class="math" data-tex="\(e_p\)">\(e_p\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>; the <span class="math" data-tex="\(e_p\)">\(e_p\)</span> are orthogonal and sum to the identity. Its image is
+<span class="math math-display" data-tex="\[
+e_p A=\ker(p^{n_p}:A\to A).
+\tag{3.5}
+\]">\[
+e_p A=\ker(p^{n_p}:A\to A).
+\tag{3.5}
+\]</span>
+For the forward inclusion, <span class="math" data-tex="\(p^{n_p}c_p\)">\(p^{n_p}c_p\)</span> is a multiple of <span class="math" data-tex="\(N\)">\(N\)</span>. For the reverse inclusion, <span class="math" data-tex="\(c_p-1\)">\(c_p-1\)</span> is a multiple of <span class="math" data-tex="\(p^{n_p}\)">\(p^{n_p}\)</span>, so <span class="math" data-tex="\(e_p x=x\)">\(e_p x=x\)</span> when <span class="math" data-tex="\(p^{n_p}x=0\)">\(p^{n_p}x=0\)</span>.</p>
+<p>Every <span class="math" data-tex="\(x\)">\(x\)</span> is the sum of its <span class="math" data-tex="\(e_p x\)">\(e_p x\)</span>. If <span class="math" data-tex="\(\sum_p x_p=0\)">\(\sum_p x_p=0\)</span> with <span class="math" data-tex="\(x_p\in e_p A\)">\(x_p\in e_p A\)</span>, applying <span class="math" data-tex="\(e_q\)">\(e_q\)</span> gives <span class="math" data-tex="\(x_q=0\)">\(x_q=0\)</span>. This proves the direct-sum isomorphism and its inverse coordinates.</p>
+<p>It remains to identify these images intrinsically with (3.1). Suppose <span class="math" data-tex="\(p^k x=0\)">\(p^k x=0\)</span>. Decompose <span class="math" data-tex="\(x\)">\(x\)</span> into the just-constructed coordinates. For <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, its <span class="math" data-tex="\(q\)">\(q\)</span>-coordinate is killed by both <span class="math" data-tex="\(p^k\)">\(p^k\)</span> and <span class="math" data-tex="\(q^{n_q}\)">\(q^{n_q}\)</span>. Bézout's identity makes that coordinate zero. If <span class="math" data-tex="\(p\notin S\)">\(p\notin S\)</span>, all coordinates vanish; otherwise only <span class="math" data-tex="\(e_p x\)">\(e_p x\)</span> remains. Conversely (3.5) consists of elements of <span class="math" data-tex="\(A_p\)">\(A_p\)</span>. Hence the summands and projections do not depend on <span class="math" data-tex="\(N\)">\(N\)</span> or the chosen <span class="math" data-tex="\(t_p\)">\(t_p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, on <span class="math" data-tex="\(\mathbb Z/12\mathbb Z\)">\(\mathbb Z/12\mathbb Z\)</span>, multiplication by <span class="math" data-tex="\(9\)">\(9\)</span> projects to its <span class="math" data-tex="\(2\)">\(2\)</span>-primary subgroup, and multiplication by <span class="math" data-tex="\(4\)">\(4\)</span> to its <span class="math" data-tex="\(3\)">\(3\)</span>-primary subgroup. These integers are orthogonal idempotents modulo <span class="math" data-tex="\(12\)">\(12\)</span>, and <span class="math" data-tex="\(9+4=1\)">\(9+4=1\)</span> there. The projection onto the <span class="math" data-tex="\(2\)">\(2\)</span>-primary summand is preserved by every homomorphism of finite abelian groups, even though different groups can require different integer representatives for it.</p>
+<h2 id="4-reconstructing-every-natural-scalar">4. Reconstructing every natural scalar</h2>
+<p><strong>Theorem 4.1.</strong> The cyclic residues (2.1) give a ring isomorphism
+<span class="math math-display" data-tex="\[
+\mathfrak Z(\mathsf{FinAb})
+\xrightarrow{\ \sim\ }
+\prod_{p\text{ prime}}\mathbb Z_p.
+\tag{4.1}
+\]">\[
+\mathfrak Z(\mathsf{FinAb})
+\xrightarrow{\ \sim\ }
+\prod_{p\text{ prime}}\mathbb Z_p.
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> Start with a family <span class="math" data-tex="\(\alpha=(\alpha_p)_p\)">\(\alpha=(\alpha_p)_p\)</span>, where <span class="math" data-tex="\(\alpha_p=(a_{p,n})_{n\geq1}\)">\(\alpha_p=(a_{p,n})_{n\geq1}\)</span> is compatible. On <span class="math" data-tex="\(A_p\)">\(A_p\)</span> for finite <span class="math" data-tex="\(A\)">\(A\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> such that <span class="math" data-tex="\(p^n A_p=0\)">\(p^n A_p=0\)</span>, and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> act by multiplication by any integer representing <span class="math" data-tex="\(a_{p,n}\)">\(a_{p,n}\)</span>. Changing that integer changes it by a multiple of <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, which acts by zero. Choosing a larger exponent gives the same operation by compatibility. Two arbitrary choices can be compared at their maximum, so the operation is independent of the exponent.</p>
+<p>Use (3.2) to define
+<span class="math math-display" data-tex="\[
+\eta^\alpha_A\left(\sum_p x_p\right)
+=\sum_p a_{p,n_p}x_p.
+\tag{4.2}
+\]">\[
+\eta^\alpha_A\left(\sum_p x_p\right)
+=\sum_p a_{p,n_p}x_p.
+\tag{4.2}
+\]</span>
+Here residues act by integer representatives, and the sums have finite support. The decomposition is unique, so this is a well-defined group endomorphism.</p>
+<p>For a homomorphism <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, we have <span class="math" data-tex="\(f(A_p)\subseteq B_p\)">\(f(A_p)\subseteq B_p\)</span>. Choose a common exponent killing both of these finite primary subgroups. On this summand,
+<span class="math math-display" data-tex="\[
+f(a_{p,n}x)=a_{p,n}f(x).
+\tag{4.3}
+\]">\[
+f(a_{p,n}x)=a_{p,n}f(x).
+\tag{4.3}
+\]</span>
+Adding the finitely many primary components proves naturality. On <span class="math" data-tex="\(C_{p,n}\)">\(C_{p,n}\)</span>, the operation is exactly multiplication by <span class="math" data-tex="\(a_{p,n}\)">\(a_{p,n}\)</span>, so its residues recover <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(\eta\)">\(\eta\)</span> be natural and let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be its cyclic residues. For <span class="math" data-tex="\(x\in A_p\)">\(x\in A_p\)</span> with <span class="math" data-tex="\(p^n x=0\)">\(p^n x=0\)</span>, the map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_x:C_{p,n}\longrightarrow A,\\
+u_x(\overline m)=mx
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+u_x:C_{p,n}\longrightarrow A,\\
+u_x(\overline m)=mx
+\end{gathered}
+\tag{4.4}
+\]</span>
+is well defined. Naturality gives
+<span class="math math-display" data-tex="\[
+\eta_A(x)=u_x(\eta_{C_{p,n}}(\overline1))
+=a_{p,n}x.
+\tag{4.5}
+\]">\[
+\eta_A(x)=u_x(\eta_{C_{p,n}}(\overline1))
+=a_{p,n}x.
+\tag{4.5}
+\]</span>
+By additivity and (3.2), this determines <span class="math" data-tex="\(\eta_A\)">\(\eta_A\)</span> on every element and is exactly (4.2). The two constructions are inverse.</p>
+<p>On each primary component, adding operations adds the residues, and composing operations multiplies them. The identity gives residue <span class="math" data-tex="\(1\)">\(1\)</span> at every prime and exponent. Thus the bijection preserves the entire ring structure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The integer operation <span class="math" data-tex="\(x\mapsto mx\)">\(x\mapsto mx\)</span> corresponds to the diagonal residue family of <span class="math" data-tex="\(m\)">\(m\)</span>. Every finite group sees only finitely many primes and finite residue levels. The ring (4.1) also permits a separate compatible choice at each prime, without requiring one integer to realize all choices simultaneously.</p>
+<p>For each prime <span class="math" data-tex="\(p\)">\(p\)</span>, take <span class="math" data-tex="\(\alpha_p=1\)">\(\alpha_p=1\)</span> and all other coordinates zero. Its natural operation is the projection onto <span class="math" data-tex="\(A_p\)">\(A_p\)</span>. On each finite group the nonzero primary projectors form a finite orthogonal identity sum. There is no assertion of an infinite sum in the endomorphism ring: (4.2) is an elementwise finite sum.</p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: a noncommutative ring).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field and <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span>. Compute the natural scalars on all left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Use the matrix units to determine the center, and explain why the action of <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> on the regular module is not a component of a natural scalar.</p>
+<p><strong>Solution.</strong> Write a central matrix as
+<span class="math math-display" data-tex="\[
+B=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\]">\[
+B=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\]</span>
+The equality <span class="math" data-tex="\(BE_{11}=E_{11}B\)">\(BE_{11}=E_{11}B\)</span> forces <span class="math" data-tex="\(b=c=0\)">\(b=c=0\)</span>. The equality with <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> then forces <span class="math" data-tex="\(a=d\)">\(a=d\)</span>. Conversely every <span class="math" data-tex="\(aI_2\)">\(aI_2\)</span> commutes with all matrices. Hence <span class="math" data-tex="\(Z(R)=kI_2\)">\(Z(R)=kI_2\)</span>, and Theorem 1.1 identifies all natural scalars with <span class="math" data-tex="\(k\)">\(k\)</span>: each acts on every module by <span class="math" data-tex="\(x\mapsto(aI_2)x\)">\(x\mapsto(aI_2)x\)</span>.</p>
+<p>Left multiplication by <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> on <span class="math" data-tex="\(R\)">\(R\)</span> fails left linearity. In fact
+<span class="math math-display" data-tex="\[
+E_{11}(E_{12}I_2)=E_{12},\qquad
+E_{12}(E_{11}I_2)=0.
+\]">\[
+E_{11}(E_{12}I_2)=E_{12},\qquad
+E_{12}(E_{11}I_2)=0.
+\]</span>
+Thus it is not even an <span class="math" data-tex="\(R\)">\(R\)</span>-module endomorphism of the left regular module. Right multiplication by <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> is left linear, but fails naturality: it does not commute with right multiplication by <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>. Formula (1.5) detects precisely this failure. Both tests distinguish an individual matrix action from an operation compatible with every module map.</p>
+<p><strong>Exercise 2 (intermediate: a bounded exponent).</strong> Fix a positive integer <span class="math" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-tex="\(\mathsf{FinAb}_N\)">\(\mathsf{FinAb}_N\)</span> be the full category of finite abelian groups annihilated by <span class="math" data-tex="\(N\)">\(N\)</span>. Determine its natural scalar ring, including <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. For <span class="math" data-tex="\(N=12\)">\(N=12\)</span>, compute the primary projectors and the operation of residue <span class="math" data-tex="\(7\)">\(7\)</span> on <span class="math" data-tex="\(\mathbb Z/4\oplus\mathbb Z/3\)">\(\mathbb Z/4\oplus\mathbb Z/3\)</span>.</p>
+<p><strong>Solution.</strong> The group <span class="math" data-tex="\(C_N=\mathbb Z/N\mathbb Z\)">\(C_N=\mathbb Z/N\mathbb Z\)</span> belongs to the category. A natural operation on it is multiplication by a unique <span class="math" data-tex="\(a\in\mathbb Z/N\mathbb Z\)">\(a\in\mathbb Z/N\mathbb Z\)</span>. Every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> gives a homomorphism <span class="math" data-tex="\(C_N\to A\)">\(C_N\to A\)</span> taking <span class="math" data-tex="\(\overline1\)">\(\overline1\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. Naturality forces the operation on <span class="math" data-tex="\(A\)">\(A\)</span> to be <span class="math" data-tex="\(x\mapsto ax\)">\(x\mapsto ax\)</span>. Conversely this rule is well defined because <span class="math" data-tex="\(NA=0\)">\(NA=0\)</span>, and every group homomorphism commutes with it. Addition and composition correspond to the two operations on residues. Therefore
+<span class="math math-display" data-tex="\[
+\mathfrak Z(\mathsf{FinAb}_N)\simeq\mathbb Z/N\mathbb Z.
+\tag{5.1}
+\]">\[
+\mathfrak Z(\mathsf{FinAb}_N)\simeq\mathbb Z/N\mathbb Z.
+\tag{5.1}
+\]</span>
+For <span class="math" data-tex="\(N=1\)">\(N=1\)</span>, every object is zero, so there is just one natural transformation and its ring is the zero ring <span class="math" data-tex="\(\mathbb Z/1\mathbb Z\)">\(\mathbb Z/1\mathbb Z\)</span>.</p>
+<p>For <span class="math" data-tex="\(12=4\cdot3\)">\(12=4\cdot3\)</span>, the residues <span class="math" data-tex="\(c_2=9\)">\(c_2=9\)</span> and <span class="math" data-tex="\(c_3=4\)">\(c_3=4\)</span> have the required values:
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cc}
+&amp;\bmod4&amp;\bmod3\\\hline
+9&amp;1&amp;0\\
+4&amp;0&amp;1
+\end{array}
+\]">\[
+\begin{array}{c|cc}
+&amp;\bmod4&amp;\bmod3\\\hline
+9&amp;1&amp;0\\
+4&amp;0&amp;1
+\end{array}
+\]</span>
+Their sum is <span class="math" data-tex="\(13\equiv1\pmod {12}\)">\(13\equiv1\pmod {12}\)</span>, their product is <span class="math" data-tex="\(36\equiv0\)">\(36\equiv0\)</span>, and their squares are themselves modulo <span class="math" data-tex="\(12\)">\(12\)</span>. Thus on the indicated direct sum they are respectively <span class="math" data-tex="\((x,y)\mapsto(x,0)\)">\((x,y)\mapsto(x,0)\)</span> and <span class="math" data-tex="\((x,y)\mapsto(0,y)\)">\((x,y)\mapsto(0,y)\)</span>. Since <span class="math" data-tex="\(7\equiv3\pmod4\)">\(7\equiv3\pmod4\)</span> and <span class="math" data-tex="\(7\equiv1\pmod3\)">\(7\equiv1\pmod3\)</span>, its operation is
+<span class="math math-display" data-tex="\[
+(x,y)\longmapsto(3x,y).
+\tag{5.2}
+\]">\[
+(x,y)\longmapsto(3x,y).
+\tag{5.2}
+\]</span></p>
+<p><strong>Exercise 3 (advanced: finite probes cannot force one integer).</strong> Consider the natural operation <span class="math" data-tex="\(e_2\)">\(e_2\)</span> projecting each finite abelian group onto its <span class="math" data-tex="\(2\)">\(2\)</span>-primary summand. Prove that it is a nonzero idempotent and cannot be multiplication by one integer on all finite abelian groups. Prove nevertheless that, for any finite list of finite abelian groups, a single integer gives its operation on every group in that list.</p>
+<p><strong>Solution.</strong> The family corresponding to <span class="math" data-tex="\(\alpha_2=1\)">\(\alpha_2=1\)</span> and <span class="math" data-tex="\(\alpha_p=0\)">\(\alpha_p=0\)</span> for <span class="math" data-tex="\(p\ne2\)">\(p\ne2\)</span> is <span class="math" data-tex="\(e_2\)">\(e_2\)</span>, by Theorem 4.1. Its square has the same residues, so it is idempotent. On <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> it is the identity and is nonzero.</p>
+<p>If one integer <span class="math" data-tex="\(m\)">\(m\)</span> realized it everywhere, then the groups <span class="math" data-tex="\(\mathbb Z/2^n\)">\(\mathbb Z/2^n\)</span> would give <span class="math" data-tex="\(m\equiv1\pmod {2^n}\)">\(m\equiv1\pmod {2^n}\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Hence <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. The groups <span class="math" data-tex="\(\mathbb Z/3^n\)">\(\mathbb Z/3^n\)</span> would give <span class="math" data-tex="\(m\equiv0\pmod {3^n}\)">\(m\equiv0\pmod {3^n}\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, hence <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. This is impossible.</p>
+<p>For a finite list, choose a common positive annihilator <span class="math" data-tex="\(N\)">\(N\)</span>, for instance a product of the annihilators used in Proposition 3.1. Write <span class="math" data-tex="\(N=2^a b\)">\(N=2^a b\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span> odd. If <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span>, Bézout's identity for <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(2^a\)">\(2^a\)</span> supplies an integer <span class="math" data-tex="\(t\)">\(t\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t\equiv1\pmod {2^a},\\ t\equiv0\pmod b.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+t\equiv1\pmod {2^a},\\ t\equiv0\pmod b.
+\end{gathered}
+\tag{5.3}
+\]</span>
+For example take <span class="math" data-tex="\(t=sb\)">\(t=sb\)</span> where <span class="math" data-tex="\(sb\equiv1\pmod {2^a}\)">\(sb\equiv1\pmod {2^a}\)</span>. Its action is identity on every <span class="math" data-tex="\(2\)">\(2\)</span>-primary component and zero on every odd-primary component in the list. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, use <span class="math" data-tex="\(t=0\)">\(t=0\)</span>; if <span class="math" data-tex="\(b=1\)">\(b=1\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, use <span class="math" data-tex="\(t=1\)">\(t=1\)</span>. When <span class="math" data-tex="\(N=1\)">\(N=1\)</span> all groups are zero and any integer works. Thus every finite list has an integer representative, although all finite groups together do not.</p>
+<p><strong>Exercise 4 (advanced: torsion groups and a Prüfer group).</strong> Let <span class="math" data-tex="\(\mathsf{TorsAb}\)">\(\mathsf{TorsAb}\)</span> be the category of all torsion abelian groups: every element is killed by a positive integer. Prove that restriction gives a ring isomorphism
+<span class="math math-display" data-tex="\[
+\mathfrak Z(\mathsf{TorsAb})
+\xrightarrow{\ \sim\ }
+\mathfrak Z(\mathsf{FinAb}).
+\tag{5.4}
+\]">\[
+\mathfrak Z(\mathsf{TorsAb})
+\xrightarrow{\ \sim\ }
+\mathfrak Z(\mathsf{FinAb}).
+\tag{5.4}
+\]</span>
+For <span class="math" data-tex="\(P_p=\mathbb Z[1/p]/\mathbb Z\)">\(P_p=\mathbb Z[1/p]/\mathbb Z\)</span>, compute <span class="math" data-tex="\(\operatorname{End}(P_p)\)">\(\operatorname{End}(P_p)\)</span> and identify how a natural scalar acts on it.</p>
+<p><strong>Solution.</strong> A subgroup generated by finitely many torsion elements is finite. For two generators killed by <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, it is an image of the finite group <span class="math" data-tex="\(\mathbb Z/m\oplus\mathbb Z/n\)">\(\mathbb Z/m\oplus\mathbb Z/n\)</span>; the same argument works for any finite number. An element of a torsion group lies in a finite cyclic subgroup and therefore has a finite, unique primary decomposition. The decompositions agree on inclusions of finite subgroups, since the primary subgroups are defined intrinsically by (3.1).</p>
+<p>Given <span class="math" data-tex="\(\alpha\in\prod_p\mathbb Z_p\)">\(\alpha\in\prod_p\mathbb Z_p\)</span>, act on each element by its finite primary decomposition and compatible residues, as in (4.2). To check additivity for <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, put them in their finite generated subgroup and use the already-proved finite-group action there. Every homomorphism preserves primary elements, and choosing an exponent killing an element and its image proves (4.3). Thus these operations form a natural scalar on all torsion groups.</p>
+<p>Any natural scalar on torsion groups is determined by its finite cyclic components: if <span class="math" data-tex="\(mx=0\)">\(mx=0\)</span>, naturality at <span class="math" data-tex="\(\mathbb Z/m\to A\)">\(\mathbb Z/m\to A\)</span>, <span class="math" data-tex="\(\overline1\mapsto x\)">\(\overline1\mapsto x\)</span>, determines its value at <span class="math" data-tex="\(x\)">\(x\)</span>. Its restriction is therefore injective, and the construction from <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> proves surjectivity. Since restriction preserves addition, composition and identity, it is the ring isomorphism (5.4).</p>
+<p>For the Prüfer group, let
+<span class="math math-display" data-tex="\[
+u_n=p^{-n}+\mathbb Z\in P_p.
+\]">\[
+u_n=p^{-n}+\mathbb Z\in P_p.
+\]</span>
+It has order <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, satisfies <span class="math" data-tex="\(p u_{n+1}=u_n\)">\(p u_{n+1}=u_n\)</span>, and its cyclic subgroups exhaust <span class="math" data-tex="\(P_p\)">\(P_p\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+P_p[p^n]=\langle u_n\rangle\simeq C_{p,n}.
+\tag{5.5}
+\]">\[
+P_p[p^n]=\langle u_n\rangle\simeq C_{p,n}.
+\tag{5.5}
+\]</span>
+Indeed, choose a representative <span class="math" data-tex="\(q\in\mathbb Z[1/p]\)">\(q\in\mathbb Z[1/p]\)</span> of a class killed by <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. Then <span class="math" data-tex="\(p^n q\)">\(p^n q\)</span> is an integer, and the class is <span class="math" data-tex="\((p^n q)u_n\)">\((p^n q)u_n\)</span>.</p>
+<p>Every endomorphism <span class="math" data-tex="\(h\)">\(h\)</span> preserves (5.5), giving unique residues <span class="math" data-tex="\(a_n\)">\(a_n\)</span> with <span class="math" data-tex="\(h(u_n)=a_nu_n\)">\(h(u_n)=a_nu_n\)</span>. Applying <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(p u_{n+1}=u_n\)">\(p u_{n+1}=u_n\)</span> gives <span class="math" data-tex="\(a_{n+1}\equiv a_n\pmod {p^n}\)">\(a_{n+1}\equiv a_n\pmod {p^n}\)</span>. Conversely compatible residues give compatible endomorphisms of the increasing cyclic subgroups: the inclusion sends <span class="math" data-tex="\(u_n\)">\(u_n\)</span> to <span class="math" data-tex="\(p u_{n+1}\)">\(p u_{n+1}\)</span>, and this equality is respected. They therefore define one homomorphism on the union. Addition and composition are coordinatewise addition and multiplication of residues, proving
+<span class="math math-display" data-tex="\[
+\operatorname{End}(P_p)\simeq\mathbb Z_p.
+\tag{5.6}
+\]">\[
+\operatorname{End}(P_p)\simeq\mathbb Z_p.
+\tag{5.6}
+\]</span>
+Under (5.4) and (4.1), a natural scalar <span class="math" data-tex="\((\alpha_q)_q\)">\((\alpha_q)_q\)</span> acts on <span class="math" data-tex="\(P_p\)">\(P_p\)</span> by exactly <span class="math" data-tex="\(\alpha_p\)">\(\alpha_p\)</span>; every element is <span class="math" data-tex="\(p\)">\(p\)</span>-primary. Its values at all <span class="math" data-tex="\(u_n\)">\(u_n\)</span> specify the endomorphism completely.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lean community, <em>Mathlib</em>, <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Center/Basic.html">Center of a category</a>. Natural endomorphisms of the identity, their commutative multiplication and component action.</li>
+<li>Lean community, <em>Mathlib</em>, <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Category/ModuleCat/FilteredColimits.html">Filtered colimits of modules</a>, and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Category/ModuleCat/AB.html">AB conditions for modules</a>. These constructions allow arbitrary unital rings.</li>
+<li>The Stacks Project Authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/tag/079A">Grothendieck's AB conditions, Section 19.10</a>. Exactness of filtered colimits and generators in abelian categories.</li>
+</ul>
+</main></body></html>

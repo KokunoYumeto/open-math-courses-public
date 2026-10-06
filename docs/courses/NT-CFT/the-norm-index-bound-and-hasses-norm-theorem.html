@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The norm index bound and Hasse&#x27;s norm theorem · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-norm-index-bound-and-hasses-norm-theorem.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a></li><li><a href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics</a></li><li><a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a></li><li><a href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-norm-index-bound-and-hasse-s-norm-theorem">The norm index bound and Hasse's norm theorem</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>The preceding lesson proved that a cyclic extension of degree <span class="math" data-tex="\(n\)">\(n\)</span> has idèle-class norm index at least <span class="math" data-tex="\(n\)">\(n\)</span>. We now prove the reverse bound. Kummer theory supplies a subgroup of precisely the required index; restriction and norm reduce arbitrary Galois groups to prime cyclic extensions. In function-field characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, an adelic argument supplies the case that roots of unity cannot reach.</p>
+<p>The equality of the two bounds gives Hasse's norm theorem and the local-global principle for conics. After the ray-prime theorem is proved in lesson 22, its section 6A develops the full Hasse–Minkowski theorem from these conic results.</p>
+<p>We use <a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a>, <a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a>, and <a href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group</a>. Write <span class="math" data-tex="\(J_F\)">\(J_F\)</span> for the idèles, <span class="math" data-tex="\(C_F=J_F/F^\times\)">\(C_F=J_F/F^\times\)</span>, <span class="math" data-tex="\(J_F^S\)">\(J_F^S\)</span> for unrestricted components in <span class="math" data-tex="\(S\)">\(S\)</span> and unit components elsewhere, and <span class="math" data-tex="\(E_S=F^\times\cap J_F^S\)">\(E_S=F^\times\cap J_F^S\)</span>.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-15">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-the-bound-and-the-class-field-axiom">1. The bound and the class field axiom</h2>
+<p><strong>Theorem 15.1.</strong> If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is a finite Galois extension of global fields, then
+<span class="math math-display" data-tex="\[
+[C_K:N_{L/K}C_L]\leq [L:K].
+\tag{1}
+\]">\[
+[C_K:N_{L/K}C_L]\leq [L:K].
+\tag{1}
+\]</span>
+If the extension is cyclic of degree <span class="math" data-tex="\(n\)">\(n\)</span>, then
+<span class="math math-display" data-tex="\[
+\bigl|\widehat H^0(\operatorname{Gal}(L/K),C_L)\bigr|=n,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(L/K),C_L)=0.
+\tag{2}
+\]">\[
+\bigl|\widehat H^0(\operatorname{Gal}(L/K),C_L)\bigr|=n,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(L/K),C_L)=0.
+\tag{2}
+\]</span>
+Thus idèle classes satisfy the cyclic class field axiom.</p>
+<p>We first note that the quotient in (1) is finite, without using global reciprocity. The idèle norm image is open, by the local norm theorem and surjectivity on units outside finitely many places. Its image in <span class="math" data-tex="\(C_K\)">\(C_K\)</span> is open. Also
+<span class="math math-display" data-tex="\[
+|N_{L/K}x|_K=|x|_L.
+\tag{3}
+\]">\[
+|N_{L/K}x|_K=|x|_L.
+\tag{3}
+\]</span>
+For number fields the right side takes every positive real value. For function fields it takes a nonzero subgroup of the discrete group of possible contents, so has finite index there. The compactness of <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, proved in the preceding lesson, now makes the remaining discrete quotient finite. Moreover this quotient is killed by <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>, because the norm of an embedded <span class="math" data-tex="\(K\)">\(K\)</span>-idèle is its <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>th power.</p>
+<p>After proving (1), (2) follows immediately from the preceding lesson:
+<span class="math math-display" data-tex="\[
+[C_K:NC_L]
+=n\,\bigl|\widehat H^{-1}(G,C_L)\bigr|.
+\tag{4}
+\]">\[
+[C_K:NC_L]
+=n\,\bigl|\widehat H^{-1}(G,C_L)\bigr|.
+\tag{4}
+\]</span>
+The argument below proves (1) algebraically whenever the prime cyclic degrees differ from the characteristic. Sections 5–7 prove the remaining function-field case.</p>
+<h2 id="2-local-power-indices">2. Local power indices</h2>
+<p>Let <span class="math" data-tex="\(n=\ell^m\)">\(n=\ell^m\)</span>, with <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>, and suppose <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>. For every place <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+|K_v^\times/K_v^{\times n}|=\frac{n^2}{|n|_v}.
+\tag{5}
+\]">\[
+|K_v^\times/K_v^{\times n}|=\frac{n^2}{|n|_v}.
+\tag{5}
+\]</span>
+At a finite place where <span class="math" data-tex="\(n\)">\(n\)</span> is a unit, deep principal units are uniquely <span class="math" data-tex="\(n\)">\(n\)</span>-divisible: solve <span class="math" data-tex="\((1+z)^n=1+t\)">\((1+z)^n=1+t\)</span> by successive residue corrections, since the linear coefficient is a unit. Reduction identifies the unit quotient with the residue-field power quotient, of order <span class="math" data-tex="\(n\)">\(n\)</span>; the <span class="math" data-tex="\(n\)">\(n\)</span> distinct roots of unity remain distinct in the residue field. Valuations supply the second factor <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>At a finite place dividing <span class="math" data-tex="\(n\)">\(n\)</span>, put <span class="math" data-tex="\(s_v=v(n)\)">\(s_v=v(n)\)</span>. For <span class="math" data-tex="\(k&gt;s_v\)">\(k&gt;s_v\)</span>, the map
+<span class="math math-display" data-tex="\[
+U^k\xrightarrow{(\cdot)^n}U^{k+s_v}
+\tag{6}
+\]">\[
+U^k\xrightarrow{(\cdot)^n}U^{k+s_v}
+\tag{6}
+\]</span>
+is bijective. Indeed, on <span class="math" data-tex="\(z\in\pi^k\mathcal O_v\)">\(z\in\pi^k\mathcal O_v\)</span>, the equation
+<span class="math math-display" data-tex="\[
+z=\frac{t-\sum_{j\geq2}\binom nj z^j}{n}
+\]">\[
+z=\frac{t-\sum_{j\geq2}\binom nj z^j}{n}
+\]</span>
+is a contraction when <span class="math" data-tex="\(t\in\pi^{k+s_v}\mathcal O_v\)">\(t\in\pi^{k+s_v}\mathcal O_v\)</span>: the nonlinear part has Lipschitz valuation at least <span class="math" data-tex="\(k-s_v&gt;0\)">\(k-s_v&gt;0\)</span>. The same estimate proves injectivity. No nontrivial <span class="math" data-tex="\(n\)">\(n\)</span>th root of unity lies in <span class="math" data-tex="\(U^k\)">\(U^k\)</span>. The map <span class="math" data-tex="\(U/U^k\to U^n/U^{k+s_v}\)">\(U/U^k\to U^n/U^{k+s_v}\)</span> therefore has kernel <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>, of order <span class="math" data-tex="\(n\)">\(n\)</span>. Counting its image gives
+<span class="math math-display" data-tex="\[
+[U:U^n]=nq_v^{s_v}.
+\]">\[
+[U:U^n]=nq_v^{s_v}.
+\]</span>
+Together with valuations this proves (5). In <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> the quotient is trivial and <span class="math" data-tex="\(|n|_v=n^2\)">\(|n|_v=n^2\)</span>. A real place permits <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> only when <span class="math" data-tex="\(n=2\)">\(n=2\)</span>; its quotient has order <span class="math" data-tex="\(2=4/|2|_v\)">\(2=4/|2|_v\)</span>.</p>
+<p>Choose a finite, nonempty <span class="math" data-tex="\(S\)">\(S\)</span> containing the archimedean places, the places dividing <span class="math" data-tex="\(n\)">\(n\)</span>, and any specified ramified places, enlarged so that <span class="math" data-tex="\(J_K=K^\times J_K^S\)">\(J_K=K^\times J_K^S\)</span>. Such an <span class="math" data-tex="\(S\)">\(S\)</span> exists by the preceding lesson. Put <span class="math" data-tex="\(s=|S|\)">\(s=|S|\)</span>. The product formula applied to <span class="math" data-tex="\(n\)">\(n\)</span> gives
+<span class="math math-display" data-tex="\[
+\left|\prod_{v\in S}K_v^\times/K_v^{\times n}\right|=n^{2s}.
+\tag{7}
+\]">\[
+\left|\prod_{v\in S}K_v^\times/K_v^{\times n}\right|=n^{2s}.
+\tag{7}
+\]</span>
+The <span class="math" data-tex="\(S\)">\(S\)</span>-unit theorem gives
+<span class="math math-display" data-tex="\[
+E_S/E_S^n\simeq(\mathbf Z/n)^s.
+\tag{8}
+\]">\[
+E_S/E_S^n\simeq(\mathbf Z/n)^s.
+\tag{8}
+\]</span>
+Here the rank is <span class="math" data-tex="\(s-1\)">\(s-1\)</span>, and the finite cyclic torsion contains <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. Also <span class="math" data-tex="\(E_S/E_S^n\to K^\times/K^{\times n}\)">\(E_S/E_S^n\to K^\times/K^{\times n}\)</span> is injective: an <span class="math" data-tex="\(n\)">\(n\)</span>th root of an <span class="math" data-tex="\(S\)">\(S\)</span>-unit has zero valuations outside <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<h2 id="3-the-kummer-subgroup">3. The Kummer subgroup</h2>
+<p><strong>Proposition 15.2.</strong> Suppose <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>, <span class="math" data-tex="\(n=\ell^m\)">\(n=\ell^m\)</span> is prime to the characteristic, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L/K)\simeq(\mathbf Z/n)^r.
+\]">\[
+\operatorname{Gal}(L/K)\simeq(\mathbf Z/n)^r.
+\]</span>
+With <span class="math" data-tex="\(S\)">\(S\)</span> as above, including every ramified place, there is a set <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(s-r\)">\(s-r\)</span> further finite places, all splitting completely in <span class="math" data-tex="\(L\)">\(L\)</span>, such that
+<span class="math math-display" data-tex="\[
+\Delta=\{u\in E_S:u^{1/n}\in L\}
+=\ker\left(E_S\longrightarrow
+\prod_{v\in T}K_v^\times/K_v^{\times n}\right).
+\tag{9}
+\]">\[
+\Delta=\{u\in E_S:u^{1/n}\in L\}
+=\ker\left(E_S\longrightarrow
+\prod_{v\in T}K_v^\times/K_v^{\times n}\right).
+\tag{9}
+\]</span>
+For
+<span class="math math-display" data-tex="\[
+I(S,T)=
+\prod_{v\in S}K_v^{\times n}
+\times\prod_{v\in T}K_v^\times
+\times\prod_{v\notin S\cup T}U_v,
+\qquad C(S,T)=\operatorname{im}(I(S,T)\to C_K),
+\tag{10}
+\]">\[
+I(S,T)=
+\prod_{v\in S}K_v^{\times n}
+\times\prod_{v\in T}K_v^\times
+\times\prod_{v\notin S\cup T}U_v,
+\qquad C(S,T)=\operatorname{im}(I(S,T)\to C_K),
+\tag{10}
+\]</span>
+one has
+<span class="math math-display" data-tex="\[
+[C_K:C(S,T)]=n^r=[L:K],
+\qquad C(S,T)\subseteq N_{L/K}C_L.
+\tag{11}
+\]">\[
+[C_K:C(S,T)]=n^r=[L:K],
+\qquad C(S,T)\subseteq N_{L/K}C_L.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> Every Kummer radical class for <span class="math" data-tex="\(L/K\)">\(L/K\)</span> has an <span class="math" data-tex="\(S\)">\(S\)</span>-unit representative. If <span class="math" data-tex="\(a^{1/n}\in L\)">\(a^{1/n}\in L\)</span>, then at an unramified place outside <span class="math" data-tex="\(S\)">\(S\)</span>, valuation in the unramified local extension shows <span class="math" data-tex="\(n\mid v(a)\)">\(n\mid v(a)\)</span>. Form an idèle having valuation <span class="math" data-tex="\(v(a)/n\)">\(v(a)/n\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>, with components <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. Write it as <span class="math" data-tex="\(b j\)">\(b j\)</span>, with <span class="math" data-tex="\(b\in K^\times\)">\(b\in K^\times\)</span> and <span class="math" data-tex="\(j\in J_K^S\)">\(j\in J_K^S\)</span>. Then <span class="math" data-tex="\(a/b^n\in E_S\)">\(a/b^n\in E_S\)</span>.</p>
+<p>Let <span class="math" data-tex="\(N=K(E_S^{1/n})\)">\(N=K(E_S^{1/n})\)</span>. By (8) and the perfect Kummer pairing proved in lesson 3,
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(N/K)\simeq(\mathbf Z/n)^s,\qquad L\subseteq N.
+\]">\[
+\operatorname{Gal}(N/K)\simeq(\mathbf Z/n)^s,\qquad L\subseteq N.
+\]</span>
+The restriction onto <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, a free <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-module, splits by lifting a basis. Its kernel <span class="math" data-tex="\(H\)">\(H\)</span> is free of rank <span class="math" data-tex="\(s-r\)">\(s-r\)</span>. For completeness, over <span class="math" data-tex="\(\mathbf Z/\ell^m\)">\(\mathbf Z/\ell^m\)</span>, a surjective matrix onto a free module has a unit pivot; elementary row and column operations remove one pivot at a time, leaving a free kernel. Choose a basis <span class="math" data-tex="\(\sigma_1,\ldots,\sigma_{s-r}\)">\(\sigma_1,\ldots,\sigma_{s-r}\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Set <span class="math" data-tex="\(F_i=N^{\langle\sigma_i\rangle}\)">\(F_i=N^{\langle\sigma_i\rangle}\)</span>. The cyclic prime-power extension <span class="math" data-tex="\(N/F_i\)">\(N/F_i\)</span> has infinitely many unramified inert primes, by the stronger splitting consequence proved in lesson 14. Choose one above a place <span class="math" data-tex="\(v_i\)">\(v_i\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, avoiding <span class="math" data-tex="\(S\)">\(S\)</span> and previously chosen places. Its decomposition group in the abelian extension <span class="math" data-tex="\(N/K\)">\(N/K\)</span> is cyclic of order at most <span class="math" data-tex="\(n\)">\(n\)</span>, and contains <span class="math" data-tex="\(\langle\sigma_i\rangle\)">\(\langle\sigma_i\rangle\)</span>, which already has order <span class="math" data-tex="\(n\)">\(n\)</span>. Hence it equals <span class="math" data-tex="\(\langle\sigma_i\rangle\)">\(\langle\sigma_i\rangle\)</span>. In particular <span class="math" data-tex="\(v_i\)">\(v_i\)</span> splits in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in E_S\)">\(u\in E_S\)</span>, its <span class="math" data-tex="\(n\)">\(n\)</span>th root is in <span class="math" data-tex="\(K_{v_i}\)">\(K_{v_i}\)</span> precisely when its Kummer character kills <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span>. Thus <span class="math" data-tex="\(T=\{v_i\}\)">\(T=\{v_i\}\)</span> gives (9). Each <span class="math" data-tex="\(v_i\)">\(v_i\)</span> is outside the divisors of <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> is a unit there. The kernel index is <span class="math" data-tex="\(n^{s-r}\)">\(n^{s-r}\)</span>, which equals the order of <span class="math" data-tex="\(\prod_{v\in T}U_v/U_v^n\)">\(\prod_{v\in T}U_v/U_v^n\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+E_S\longrightarrow\prod_{v\in T}U_v/U_v^n
+\quad\text{is surjective}.
+\tag{12}
+\]">\[
+E_S\longrightarrow\prod_{v\in T}U_v/U_v^n
+\quad\text{is surjective}.
+\tag{12}
+\]</span>
+The case <span class="math" data-tex="\(s=r\)">\(s=r\)</span> simply has <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>.</p>
+<p>The crucial principal intersection is
+<span class="math math-display" data-tex="\[
+K^\times\cap I(S,T)=E_{S\cup T}^{\,n}.
+\tag{13}
+\]">\[
+K^\times\cap I(S,T)=E_{S\cup T}^{\,n}.
+\tag{13}
+\]</span>
+One inclusion is clear. For the other, take <span class="math" data-tex="\(y\)">\(y\)</span> in the left side and put <span class="math" data-tex="\(M=K(y^{1/n})\)">\(M=K(y^{1/n})\)</span>, a cyclic extension of degree dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Given any idèle class, represent it by <span class="math" data-tex="\(x\in J_K^S\)">\(x\in J_K^S\)</span>. Its components in <span class="math" data-tex="\(T\)">\(T\)</span> are units. By (12), choose <span class="math" data-tex="\(a\in E_S\)">\(a\in E_S\)</span> so that <span class="math" data-tex="\(x/a\)">\(x/a\)</span> is an <span class="math" data-tex="\(n\)">\(n\)</span>th power at every place in <span class="math" data-tex="\(T\)">\(T\)</span>. At places in <span class="math" data-tex="\(S\)">\(S\)</span>, the extension <span class="math" data-tex="\(M\)">\(M\)</span> splits, because <span class="math" data-tex="\(y\)">\(y\)</span> is already an <span class="math" data-tex="\(n\)">\(n\)</span>th power. Outside <span class="math" data-tex="\(S\cup T\)">\(S\cup T\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> is a unit and <span class="math" data-tex="\(n\)">\(n\)</span> is invertible, so <span class="math" data-tex="\(M\)">\(M\)</span> is unramified and the unit <span class="math" data-tex="\(x/a\)">\(x/a\)</span> is a local norm. At <span class="math" data-tex="\(T\)">\(T\)</span>, its being an <span class="math" data-tex="\(n\)">\(n\)</span>th power makes it a local norm as well: every local degree divides <span class="math" data-tex="\(n\)">\(n\)</span>. Choose unit norm preimages outside finitely many places to obtain an idèle norm. Thus <span class="math" data-tex="\(NC_M=C_K\)">\(NC_M=C_K\)</span>. The cyclic lower bound from lesson 14 forces <span class="math" data-tex="\([M:K]=1\)">\([M:K]=1\)</span>. Consequently <span class="math" data-tex="\(y=b^n\)">\(y=b^n\)</span>, and its valuations show <span class="math" data-tex="\(b\in E_{S\cup T}\)">\(b\in E_{S\cup T}\)</span>, proving (13).</p>
+<p>Now <span class="math" data-tex="\(J_K=K^\times J_K^{S\cup T}\)">\(J_K=K^\times J_K^{S\cup T}\)</span>, and
+<span class="math math-display" data-tex="\[
+[J_K^{S\cup T}:I(S,T)]=n^{2s},\qquad
+[E_{S\cup T}:E_{S\cup T}^{\,n}]=n^{s+|T|}=n^{2s-r}.
+\]">\[
+[J_K^{S\cup T}:I(S,T)]=n^{2s},\qquad
+[E_{S\cup T}:E_{S\cup T}^{\,n}]=n^{s+|T|}=n^{2s-r}.
+\]</span>
+Dividing these indices using (13) proves the first assertion of (11).</p>
+<p>Finally, every component in (10) is a local norm from <span class="math" data-tex="\(L\)">\(L\)</span>. At <span class="math" data-tex="\(S\)">\(S\)</span>, the local abelian Galois group has exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>; local reciprocity identifies it with the local norm quotient, so that quotient kills <span class="math" data-tex="\(n\)">\(n\)</span>th powers. This uses the exponent, not the potentially larger local degree. At <span class="math" data-tex="\(T\)">\(T\)</span>, the extension splits. Elsewhere it is unramified and unit norms are surjective. Unit preimages at almost all places give an idèle norm, proving the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-descent-and-arbitrary-galois-groups">4. Descent and arbitrary Galois groups</h2>
+<p>First let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be cyclic of prime degree <span class="math" data-tex="\(\ell\ne\operatorname{char}K\)">\(\ell\ne\operatorname{char}K\)</span>. Put <span class="math" data-tex="\(K&#x27;=K(\mu_\ell)\)">\(K&#x27;=K(\mu_\ell)\)</span>, <span class="math" data-tex="\(L&#x27;=LK&#x27;\)">\(L&#x27;=LK&#x27;\)</span>, and <span class="math" data-tex="\(d=[K&#x27;:K]\)">\(d=[K&#x27;:K]\)</span>. Then <span class="math" data-tex="\(d\mid\ell-1\)">\(d\mid\ell-1\)</span>, <span class="math" data-tex="\(L\cap K&#x27;=K\)">\(L\cap K&#x27;=K\)</span>, and <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> is cyclic of degree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Proposition 15.2 gives index at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span> over <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>.</p>
+<p>Restriction of idèles and norm back induce maps
+<span class="math math-display" data-tex="\[
+C_K/NC_L\longrightarrow C_{K&#x27;}/NC_{L&#x27;}
+\longrightarrow C_K/NC_L
+\tag{14}
+\]">\[
+C_K/NC_L\longrightarrow C_{K&#x27;}/NC_{L&#x27;}
+\longrightarrow C_K/NC_L
+\tag{14}
+\]</span>
+whose composite is <span class="math" data-tex="\(x\mapsto x^d\)">\(x\mapsto x^d\)</span>. These maps are well-defined by base change for field norms and transitivity; the same identities hold componentwise for idèles and principal elements. The first quotient is killed by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so the first map is injective. Its order is therefore at most <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>In any tower <span class="math" data-tex="\(K\subset M\subset L\)">\(K\subset M\subset L\)</span>,
+<span class="math math-display" data-tex="\[
+[C_K:N_{L/K}C_L]\leq
+[C_K:N_{M/K}C_M]\,[C_M:N_{L/M}C_L].
+\tag{15}
+\]">\[
+[C_K:N_{L/K}C_L]\leq
+[C_K:N_{M/K}C_M]\,[C_M:N_{L/M}C_L].
+\tag{15}
+\]</span>
+Indeed the kernel of the map between the first two quotients is the image, under <span class="math" data-tex="\(N_{M/K}\)">\(N_{M/K}\)</span>, of <span class="math" data-tex="\(C_M/N_{L/M}C_L\)">\(C_M/N_{L/M}C_L\)</span>. Prime towers prove (1) for cyclic extensions and for Galois groups of prime-power order, provided the relevant prime cyclic case is known.</p>
+<p>Here is the reduction for every finite Galois group <span class="math" data-tex="\(G\)">\(G\)</span>; a composition series with cyclic factors would not suffice. Write <span class="math" data-tex="\(|G|=p^a m\)">\(|G|=p^a m\)</span>, <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>. There is a subgroup <span class="math" data-tex="\(P\)">\(P\)</span> of order <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. An elementary proof is to let <span class="math" data-tex="\(G\)">\(G\)</span> act on its subsets of size <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. The number <span class="math" data-tex="\(\binom{p^a m}{p^a}\)">\(\binom{p^a m}{p^a}\)</span> is congruent to <span class="math" data-tex="\(m\)">\(m\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>, by taking the coefficient of <span class="math" data-tex="\(X^{p^a}\)">\(X^{p^a}\)</span> in <span class="math" data-tex="\((1+X)^{p^a m}\)">\((1+X)^{p^a m}\)</span>. Some orbit has size prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Its stabilizer has order divisible by <span class="math" data-tex="\(p^a\)">\(p^a\)</span>, and acts freely on that subset, so its order also divides <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. This is the required <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>A nontrivial <span class="math" data-tex="\(p\)">\(p\)</span>-group has nontrivial center by its conjugacy-class equation. Taking a central element of order <span class="math" data-tex="\(p\)">\(p\)</span> and inducting on the quotient supplies a tower of prime cyclic extensions. Thus (15) bounds the norm quotient for <span class="math" data-tex="\(L/M\)">\(L/M\)</span>, where <span class="math" data-tex="\(M=L^P\)">\(M=L^P\)</span>, by <span class="math" data-tex="\(|P|\)">\(|P|\)</span>.</p>
+<p>Restriction to <span class="math" data-tex="\(M\)">\(M\)</span> and norm back have composite <span class="math" data-tex="\(x\mapsto x^{[M:K]}\)">\(x\mapsto x^{[M:K]}\)</span>. Restriction is well-defined on the norm quotients: on <span class="math" data-tex="\(J_L\)">\(J_L\)</span>, group the product <span class="math" data-tex="\(\prod_{g\in G}g(y)\)">\(\prod_{g\in G}g(y)\)</span> into the cosets <span class="math" data-tex="\(Pr\)">\(Pr\)</span> to obtain a <span class="math" data-tex="\(P\)">\(P\)</span>-norm. Because <span class="math" data-tex="\([M:K]\)">\([M:K]\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, restriction injects the <span class="math" data-tex="\(p\)">\(p\)</span>-primary part of <span class="math" data-tex="\(C_K/NC_L\)">\(C_K/NC_L\)</span> into <span class="math" data-tex="\(C_M/N_{L/M}C_L\)">\(C_M/N_{L/M}C_L\)</span>. Hence that primary part has order at most <span class="math" data-tex="\(p^a\)">\(p^a\)</span>. Multiplying over the primes dividing <span class="math" data-tex="\(|G|\)">\(|G|\)</span> proves (1).</p>
+<p>This completes the algebraic argument for number fields and for prime cyclic degrees different from the function-field characteristic. We next supply that missing characteristic case without assuming global class field theory.</p>
+<h2 id="5-additive-duality-for-function-fields">5. Additive duality for function fields</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> have full constant field <span class="math" data-tex="\(k=\mathbf F_q\)">\(k=\mathbf F_q\)</span> of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. The preceding lesson gave a separating parameter, a finite separable extension <span class="math" data-tex="\(F/E\)">\(F/E\)</span> with <span class="math" data-tex="\(E=k(t)\)">\(E=k(t)\)</span>, and discreteness and compact quotient for <span class="math" data-tex="\(F\subset\mathbb A_F\)">\(F\subset\mathbb A_F\)</span>.</p>
+<p>On <span class="math" data-tex="\(\mathbb A_E\)">\(\mathbb A_E\)</span>, define
+<span class="math math-display" data-tex="\[
+\Psi_E(x)=
+\exp\left(\frac{2\pi i}{p}
+\operatorname{Tr}_{k/\mathbf F_p}
+\sum_v\operatorname{res}_v(x_v\,dt)\right).
+\tag{16}
+\]">\[
+\Psi_E(x)=
+\exp\left(\frac{2\pi i}{p}
+\operatorname{Tr}_{k/\mathbf F_p}
+\sum_v\operatorname{res}_v(x_v\,dt)\right).
+\tag{16}
+\]</span>
+At a finite place the residue includes the residue-field trace to <span class="math" data-tex="\(k\)">\(k\)</span>. Only finitely many terms are nonzero. Partial fractions prove the residue theorem for rational differentials on <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span>: each finite principal part contributes the negative of its contribution at infinity, and a polynomial contributes zero. Thus <span class="math" data-tex="\(\Psi_E\)">\(\Psi_E\)</span> is trivial on <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>We need the stronger assertion
+<span class="math math-display" data-tex="\[
+E^\perp=E
+\quad\text{under }(x,y)\longmapsto\Psi_E(xy).
+\tag{17}
+\]">\[
+E^\perp=E
+\quad\text{under }(x,y)\longmapsto\Psi_E(xy).
+\tag{17}
+\]</span>
+Subtract from <span class="math" data-tex="\(y\in E^\perp\)">\(y\in E^\perp\)</span> a rational function to put its remainder in the compact representative set
+<span class="math math-display" data-tex="\[
+\prod_{P\text{ finite}}\mathcal O_P\times t^{-1}k[[t^{-1}]]
+\]">\[
+\prod_{P\text{ finite}}\mathcal O_P\times t^{-1}k[[t^{-1}]]
+\]</span>
+constructed in lesson 14. Write its infinity component as <span class="math" data-tex="\(\sum_{j\geq1}c_jt^{-j}\)">\(\sum_{j\geq1}c_jt^{-j}\)</span>. Testing against <span class="math" data-tex="\(a t^{j-1}\)">\(a t^{j-1}\)</span>, <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span>, gives <span class="math" data-tex="\(\operatorname{Tr}_{k/\mathbf F_p}(a c_j)=0\)">\(\operatorname{Tr}_{k/\mathbf F_p}(a c_j)=0\)</span>, so all <span class="math" data-tex="\(c_j\)">\(c_j\)</span> vanish. Now test against arbitrary proper fractions <span class="math" data-tex="\(a(t)/P^r\)">\(a(t)/P^r\)</span>. Other places give zero, and these fractions represent every principal part at <span class="math" data-tex="\(P\)">\(P\)</span>. The local residue pairing between principal parts and <span class="math" data-tex="\(\mathcal O_P\)">\(\mathcal O_P\)</span> is nondegenerate: expand in the parameter <span class="math" data-tex="\(P\)">\(P\)</span>, and use nondegeneracy of the finite-field trace for the first nonzero coefficient. The derivative <span class="math" data-tex="\(P&#x27;(t)\)">\(P&#x27;(t)\)</span> is a unit at <span class="math" data-tex="\(P\)">\(P\)</span>, so replacing <span class="math" data-tex="\(dP\)">\(dP\)</span> by <span class="math" data-tex="\(dt\)">\(dt\)</span> does not change this assertion. Each finite component therefore vanishes. This proves (17).</p>
+<p>The pairing also gives every continuous additive character of <span class="math" data-tex="\(\mathbb A_E\)">\(\mathbb A_E\)</span>. Locally, a character is a linear map to the <span class="math" data-tex="\(p\)">\(p\)</span>th roots of unity, killed by some parameter-power ideal. Coefficient expansion and the finite-field trace identify it uniquely with a Laurent series through the residue pairing. Globally, continuity kills all unit components outside a finite set, so the representing Laurent series form an adèle. Conversely an adèle gives a continuous character. This establishes self-duality, not just nondegeneracy.</p>
+<p>Put <span class="math" data-tex="\(\Psi_F(x)=\Psi_E(\operatorname{Tr}_{F/E}x)\)">\(\Psi_F(x)=\Psi_E(\operatorname{Tr}_{F/E}x)\)</span>. Choose trace-dual <span class="math" data-tex="\(E\)">\(E\)</span>-bases of <span class="math" data-tex="\(F\)">\(F\)</span>. Under the topological isomorphism <span class="math" data-tex="\(\mathbb A_F\simeq\mathbb A_E^{[F:E]}\)">\(\mathbb A_F\simeq\mathbb A_E^{[F:E]}\)</span> proved in lesson 14, the pairing <span class="math" data-tex="\(\Psi_F(xy)\)">\(\Psi_F(xy)\)</span> is the coordinatewise pairing between those dual bases. Thus <span class="math" data-tex="\(\mathbb A_F\)">\(\mathbb A_F\)</span> is self-dual and
+<span class="math math-display" data-tex="\[
+F^\perp=F.
+\tag{18}
+\]">\[
+F^\perp=F.
+\tag{18}
+\]</span>
+This argument avoids assuming a geometric residue or duality theorem for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For each <span class="math" data-tex="\(w\)">\(w\)</span>, let <span class="math" data-tex="\(N_w\)">\(N_w\)</span> be the largest integer such that the local character is trivial on <span class="math" data-tex="\(\pi_w^{-N_w}\mathcal O_w\)">\(\pi_w^{-N_w}\mathcal O_w\)</span>. It is nontrivial at each place by the nondegenerate local trace. Outside finitely many places the extension of <span class="math" data-tex="\(E\)">\(E\)</span> is unramified, its integral trace pairing is perfect, and the base character has conductor <span class="math" data-tex="\(N_w=0\)">\(N_w=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\kappa=\sum_w N_w w
+\tag{19}
+\]">\[
+\kappa=\sum_w N_w w
+\tag{19}
+\]</span>
+is a finite divisor. The local annihilator calculation from the rank-one Fourier theory in lesson 12 gives, for every divisor <span class="math" data-tex="\(D=\sum d_w w\)">\(D=\sum d_w w\)</span>,
+<span class="math math-display" data-tex="\[
+B(D)=\prod_w\pi_w^{-d_w}\mathcal O_w,\qquad
+B(D)^\perp=B(\kappa-D).
+\tag{20}
+\]">\[
+B(D)=\prod_w\pi_w^{-d_w}\mathcal O_w,\qquad
+B(D)^\perp=B(\kappa-D).
+\tag{20}
+\]</span></p>
+<h2 id="6-riemann-roch-and-finite-order-hecke-functions">6. Riemann–Roch and finite-order Hecke functions</h2>
+<p>Define <span class="math" data-tex="\(H^0(D)=F\cap B(D)\)">\(H^0(D)=F\cap B(D)\)</span>, and <span class="math" data-tex="\(l(D)=\dim_k H^0(D)\)">\(l(D)=\dim_k H^0(D)\)</span>. It is finite: a discrete subgroup meets a compact set in finitely many points. The quotient
+<span class="math" data-tex="\(\mathbb A_F/(F+B(D))\)">\(\mathbb A_F/(F+B(D))\)</span> is finite because <span class="math" data-tex="\(\mathbb A_F/F\)">\(\mathbb A_F/F\)</span> is compact and the image of <span class="math" data-tex="\(B(D)\)">\(B(D)\)</span> is open. By (18)–(20), its characters are exactly <span class="math" data-tex="\(H^0(\kappa-D)\)">\(H^0(\kappa-D)\)</span>. A finite abelian group has as many characters as elements, so that quotient has order <span class="math" data-tex="\(q^{l(\kappa-D)}\)">\(q^{l(\kappa-D)}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(c\)">\(c\)</span> be the Haar volume of <span class="math" data-tex="\(\mathbb A_F/F\)">\(\mathbb A_F/F\)</span>. The image of <span class="math" data-tex="\(B(D)\)">\(B(D)\)</span> has volume <span class="math" data-tex="\(\operatorname{vol}(B(D))/q^{l(D)}\)">\(\operatorname{vol}(B(D))/q^{l(D)}\)</span>. Counting its cosets gives
+<span class="math math-display" data-tex="\[
+\frac{\operatorname{vol}(B(D))}{c}
+=q^{l(D)-l(\kappa-D)}.
+\tag{21}
+\]">\[
+\frac{\operatorname{vol}(B(D))}{c}
+=q^{l(D)-l(\kappa-D)}.
+\tag{21}
+\]</span>
+The ratio of the left sides for <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> is <span class="math" data-tex="\(q^{\deg D}\)">\(q^{\deg D}\)</span>. Functions integral everywhere are the constants: they form a finite <span class="math" data-tex="\(k\)">\(k\)</span>-algebra inside <span class="math" data-tex="\(F\)">\(F\)</span>, hence a finite field contained in the full constant field <span class="math" data-tex="\(k\)">\(k\)</span>. Thus <span class="math" data-tex="\(l(0)=1\)">\(l(0)=1\)</span>. Put <span class="math" data-tex="\(g=l(\kappa)\)">\(g=l(\kappa)\)</span>. Equation (21) yields
+<span class="math math-display" data-tex="\[
+l(D)-l(\kappa-D)=\deg D+1-g.
+\tag{22}
+\]">\[
+l(D)-l(\kappa-D)=\deg D+1-g.
+\tag{22}
+\]</span>
+Applying it to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> gives <span class="math" data-tex="\(\deg\kappa=2g-2\)">\(\deg\kappa=2g-2\)</span>. A negative-degree divisor has no nonzero section, by the product formula. Consequently
+<span class="math math-display" data-tex="\[
+\deg D&gt;2g-2\quad\Longrightarrow\quad l(D)=\deg D+1-g.
+\tag{23}
+\]">\[
+\deg D&gt;2g-2\quad\Longrightarrow\quad l(D)=\deg D+1-g.
+\tag{23}
+\]</span>
+This is the needed Riemann–Roch theorem, proved from the additive quotient and its exact duality.</p>
+<p>Now let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a finite-order character of <span class="math" data-tex="\(C_F\)">\(C_F\)</span>, with conductor divisor <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>. Let <span class="math" data-tex="\(U(\mathfrak f)\)">\(U(\mathfrak f)\)</span> be deep principal units at its support and full units elsewhere. The ray group
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathfrak f}=C_F/\operatorname{im}U(\mathfrak f)
+\]">\[
+\Gamma_{\mathfrak f}=C_F/\operatorname{im}U(\mathfrak f)
+\]</span>
+is discrete, and its degree-zero subgroup is finite by compactness of <span class="math" data-tex="\(C_F^1\)">\(C_F^1\)</span>. Denote its order by <span class="math" data-tex="\(h_{\mathfrak f}\)">\(h_{\mathfrak f}\)</span>, and write the degree image as <span class="math" data-tex="\(\delta\mathbf Z\)">\(\delta\mathbf Z\)</span>. No assertion <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span> is needed here. Weak approximation makes any idèle principal times an idèle congruent to <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>; taking its other valuations shows that every ray class is represented by a divisor prime to <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>.</p>
+<p>For <span class="math" data-tex="\(\mathfrak f&gt;0\)">\(\mathfrak f&gt;0\)</span>, fix such a representative <span class="math" data-tex="\(A\)">\(A\)</span> of large degree <span class="math" data-tex="\(d\)">\(d\)</span>. The functions producing effective divisors in its ray class are
+<span class="math math-display" data-tex="\[
+a\in H^0(A),\qquad a\equiv1\pmod{\mathfrak f}.
+\]">\[
+a\in H^0(A),\qquad a\equiv1\pmod{\mathfrak f}.
+\]</span>
+Evaluation onto <span class="math" data-tex="\(\mathcal O/\mathfrak f\)">\(\mathcal O/\mathfrak f\)</span> is surjective: its kernel is <span class="math" data-tex="\(H^0(A-\mathfrak f)\)">\(H^0(A-\mathfrak f)\)</span>, and (23) makes the dimension difference <span class="math" data-tex="\(\deg\mathfrak f\)">\(\deg\mathfrak f\)</span>, the dimension of the target. The indicated fiber therefore has
+<span class="math math-display" data-tex="\[
+q^{d-\deg\mathfrak f+1-g}
+\tag{24}
+\]">\[
+q^{d-\deg\mathfrak f+1-g}
+\tag{24}
+\]</span>
+elements. Different functions in this fiber give different divisors, since the only constant congruent to <span class="math" data-tex="\(1\)">\(1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(\mathfrak f=0\)">\(\mathfrak f=0\)</span>, divide the nonzero sections by <span class="math" data-tex="\(k^\times\)">\(k^\times\)</span>; the count instead is
+<span class="math math-display" data-tex="\[
+\frac{q^{d+1-g}-1}{q-1}.
+\tag{25}
+\]">\[
+\frac{q^{d+1-g}-1}{q-1}.
+\tag{25}
+\]</span>
+These counts depend only on the degree, not on the ray class.</p>
+<p>The Euler product
+<span class="math math-display" data-tex="\[
+L(\chi,T)=\prod_{w\notin\operatorname{supp}\mathfrak f}
+(1-\chi(w)T^{\deg w})^{-1}
+\tag{26}
+\]">\[
+L(\chi,T)=\prod_{w\notin\operatorname{supp}\mathfrak f}
+(1-\chi(w)T^{\deg w})^{-1}
+\tag{26}
+\]</span>
+is the generating function for these effective divisors with their character weights. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial on the finite degree-zero subgroup of <span class="math" data-tex="\(\Gamma_{\mathfrak f}\)">\(\Gamma_{\mathfrak f}\)</span>, character summation on each fixed-degree coset makes all sufficiently large coefficients zero. Hence <span class="math" data-tex="\(L(\chi,T)\)">\(L(\chi,T)\)</span> is a polynomial.</p>
+<p>Otherwise <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a degree character, say <span class="math" data-tex="\(\chi(D)=\lambda^{\deg D}\)">\(\chi(D)=\lambda^{\deg D}\)</span>, with <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span>. It is unramified, so its minimal conductor is zero. Formula (25) shows that
+<span class="math math-display" data-tex="\[
+\zeta_F(T)
+=\text{a polynomial}+
+\sum_{\substack{d\geq d_0\\d\in\delta\mathbf Z}}
+h_0\frac{q^{d+1-g}-1}{q-1}T^d.
+\tag{27}
+\]">\[
+\zeta_F(T)
+=\text{a polynomial}+
+\sum_{\substack{d\geq d_0\\d\in\delta\mathbf Z}}
+h_0\frac{q^{d+1-g}-1}{q-1}T^d.
+\tag{27}
+\]</span>
+Thus its only possible denominator factors are <span class="math" data-tex="\(1-T^\delta\)">\(1-T^\delta\)</span> and <span class="math" data-tex="\(1-q^\delta T^\delta\)">\(1-q^\delta T^\delta\)</span>. At <span class="math" data-tex="\(T=q^{-1}\)">\(T=q^{-1}\)</span> it has a simple pole with positive nonzero leading coefficient. A nontrivial degree character has <span class="math" data-tex="\(\lambda^\delta\ne1\)">\(\lambda^\delta\ne1\)</span>, so
+<span class="math" data-tex="\(L(\chi,T)=\zeta_F(\lambda T)\)">\(L(\chi,T)=\zeta_F(\lambda T)\)</span> is holomorphic there. These divisor counts also justify absolute convergence of the Euler products for <span class="math" data-tex="\(|T|&lt;q^{-1}\)">\(|T|&lt;q^{-1}\)</span>.</p>
+<p>Replacing <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span>, we have proved: <span class="math" data-tex="\(\zeta_F(s)\)">\(\zeta_F(s)\)</span> has a simple pole at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, and every nontrivial finite-order Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-function is holomorphic at <span class="math" data-tex="\(1\)">\(1\)</span>. For number fields these exact analytic inputs are the proved Theorems 10.1 and 10.2 and Corollary 10.4 in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a>. The function-field proof above uses neither reciprocity nor the norm index bound.</p>
+<h2 id="7-weber-s-argument">7. Weber's argument</h2>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be Galois of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and set <span class="math" data-tex="\(A=C_K/NC_L\)">\(A=C_K/NC_L\)</span>, a finite group by section 1. Its characters are finite-order Hecke characters, unramified outside a finite set <span class="math" data-tex="\(S\)">\(S\)</span>. For <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, let <span class="math" data-tex="\(a_v\in A\)">\(a_v\in A\)</span> be the class of an idèle uniformizer. Character orthogonality and the Euler logarithms give, for real <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\log\prod_{\chi\in A^\vee}L_S(s,\chi)
+=|A|\sum_{\substack{v\notin S\\a_v=1}}(Nv)^{-s}+O(1).
+\tag{28}
+\]">\[
+\log\prod_{\chi\in A^\vee}L_S(s,\chi)
+=|A|\sum_{\substack{v\notin S\\a_v=1}}(Nv)^{-s}+O(1).
+\tag{28}
+\]</span>
+Indeed the terms of first degree have character sum <span class="math" data-tex="\(|A|\)">\(|A|\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>; all higher powers have bounded total near <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(\sum_v(Nv)^{-2s}\)">\(\sum_v(Nv)^{-2s}\)</span> converges there. The logarithm defined by the Euler products is real, and their product is positive.</p>
+<p>The principal factor has a simple pole. Each nonprincipal factor is holomorphic at <span class="math" data-tex="\(1\)">\(1\)</span>, by section 6 for function fields or the cited internal analytic theorem for number fields. If its zero order there is <span class="math" data-tex="\(m_\chi\geq0\)">\(m_\chi\geq0\)</span>, taking real logarithms of absolute values in (28) gives
+<span class="math math-display" data-tex="\[
+|A|\sum_{a_v=1}(Nv)^{-s}
+=\left(1-\sum_{\chi\ne1}m_\chi\right)
+\log\frac1{s-1}+O(1).
+\tag{29}
+\]">\[
+|A|\sum_{a_v=1}(Nv)^{-s}
+=\left(1-\sum_{\chi\ne1}m_\chi\right)
+\log\frac1{s-1}+O(1).
+\tag{29}
+\]</span>
+We have not assumed nonvanishing.</p>
+<p>For the primes splitting completely in <span class="math" data-tex="\(L\)">\(L\)</span>, the Euler logarithm of <span class="math" data-tex="\(\zeta_L\)">\(\zeta_L\)</span> gives
+<span class="math math-display" data-tex="\[
+n\sum_{v\text{ split completely}}(Nv)^{-s}
+=\log\frac1{s-1}+O(1).
+\tag{30}
+\]">\[
+n\sum_{v\text{ split completely}}(Nv)^{-s}
+=\log\frac1{s-1}+O(1).
+\tag{30}
+\]</span>
+At a nonsplit unramified prime every residue degree is at least <span class="math" data-tex="\(2\)">\(2\)</span>, so its contribution is bounded by a constant times <span class="math" data-tex="\((Nv)^{-2s}\)">\((Nv)^{-2s}\)</span>; ramified primes are finite. Every completely split prime has <span class="math" data-tex="\(a_v=1\)">\(a_v=1\)</span>, since its uniformizer is an idèle norm. Comparing (29) and (30) proves
+<span class="math math-display" data-tex="\[
+\frac{|A|}{n}\leq1-\sum_{\chi\ne1}m_\chi\leq1.
+\]">\[
+\frac{|A|}{n}\leq1-\sum_{\chi\ne1}m_\chi\leq1.
+\]</span>
+This proves (1) for all global fields, including characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> extensions of degree divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, and completes Theorem 15.1.</p>
+<h2 id="8-hasse-s-norm-theorem-and-conics">8. Hasse's norm theorem and conics</h2>
+<p><strong>Theorem 15.3 (Hasse's norm theorem).</strong> For a finite cyclic extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of global fields, an element <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> is a field norm if and only if it is a norm from <span class="math" data-tex="\(L\otimes_K K_v\)">\(L\otimes_K K_v\)</span> at every place <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> Apply the cyclic Tate hexagon to
+<span class="math math-display" data-tex="\[
+1\longrightarrow L^\times\longrightarrow J_L
+\longrightarrow C_L\longrightarrow1.
+\]">\[
+1\longrightarrow L^\times\longrightarrow J_L
+\longrightarrow C_L\longrightarrow1.
+\]</span>
+Its relevant exact segment is
+<span class="math math-display" data-tex="\[
+\widehat H^{-1}(G,C_L)\longrightarrow
+K^\times/NL^\times\longrightarrow J_K/NJ_L.
+\tag{31}
+\]">\[
+\widehat H^{-1}(G,C_L)\longrightarrow
+K^\times/NL^\times\longrightarrow J_K/NJ_L.
+\tag{31}
+\]</span>
+The first group is zero by (2). Thus the last map is injective. An element in all local norm images gives an idèle norm: outside finitely many ramified places it is a unit and has a unit norm preimage. Its image in the last group is zero, so its field-norm class is zero. The reverse implication follows by completion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Cyclicity is essential; the theorem need not hold for general noncyclic abelian extensions.</p>
+<p>This cyclic result is also the input for the planned lesson <em>The principal genus theorem</em> in the Noether course, where the more general cohomological comparison is developed.</p>
+<p><strong>Corollary 15.4.</strong> A smooth conic over a global field has a rational point if and only if it has a point over every completion. In characteristic different from <span class="math" data-tex="\(2\)">\(2\)</span>, this applies to
+<span class="math math-display" data-tex="\[
+aX^2+bY^2=Z^2,\qquad a,b\in K^\times,
+\tag{32}
+\]">\[
+aX^2+bY^2=Z^2,\qquad a,b\in K^\times,
+\tag{32}
+\]</span>
+has a <span class="math" data-tex="\(K\)">\(K\)</span>-point if and only if it has a point over every <span class="math" data-tex="\(K_v\)">\(K_v\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(b\)">\(b\)</span> is a square, <span class="math" data-tex="\(X=0\)">\(X=0\)</span> gives a point. Otherwise put <span class="math" data-tex="\(L=K(\sqrt b)\)">\(L=K(\sqrt b)\)</span>. A point in (32) must have <span class="math" data-tex="\(X\ne0\)">\(X\ne0\)</span>, and the equation becomes
+<span class="math math-display" data-tex="\[
+a=N_{L/K}\left(Z/X+(Y/X)\sqrt b\right).
+\]">\[
+a=N_{L/K}\left(Z/X+(Y/X)\sqrt b\right).
+\]</span>
+Over a completion where <span class="math" data-tex="\(b\)">\(b\)</span> becomes a square the split norm is surjective; the conic has a point automatically. At other completions the same equivalence holds. Theorem 15.3 proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This treats every smooth conic in characteristic different from <span class="math" data-tex="\(2\)">\(2\)</span>: diagonalize its nondegenerate ternary form and scale the last coefficient to obtain (32). Diagonal ternary equations in characteristic <span class="math" data-tex="\(2\)">\(2\)</span> are not smooth conics. The corresponding smooth equation
+<span class="math math-display" data-tex="\[
+X^2+XY+bY^2=aZ^2
+\tag{33}
+\]">\[
+X^2+XY+bY^2=aZ^2
+\tag{33}
+\]</span>
+also has the local-global principle in characteristic <span class="math" data-tex="\(2\)">\(2\)</span>: if <span class="math" data-tex="\(T^2+T+b\)">\(T^2+T+b\)</span> splits there is an immediate point; otherwise the left side is the norm of <span class="math" data-tex="\(X+Y\theta\)">\(X+Y\theta\)</span> from the cyclic Artin–Schreier quadratic field. A point then has <span class="math" data-tex="\(Z\ne0\)">\(Z\ne0\)</span>, and Theorem 15.3 applies. Every smooth characteristic-<span class="math" data-tex="\(2\)">\(2\)</span> conic either already has a rational point or has this form. Its polar form has rank <span class="math" data-tex="\(2\)">\(2\)</span>; choose a paired basis and a radical vector to write its equation as
+<span class="math" data-tex="\(A X^2+XY+B Y^2+C Z^2=0\)">\(A X^2+XY+B Y^2+C Z^2=0\)</span>.
+Smoothness forces <span class="math" data-tex="\(C\ne0\)">\(C\ne0\)</span>, since a zero of the quadratic form on its polar radical would be a singular point. If <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, there is a rational point. Otherwise divide by <span class="math" data-tex="\(A\)">\(A\)</span> and replace <span class="math" data-tex="\(Y\)">\(Y\)</span> by <span class="math" data-tex="\(A Y&#x27;\)">\(A Y&#x27;\)</span>, obtaining (33) with <span class="math" data-tex="\(b=AB\)">\(b=AB\)</span> and <span class="math" data-tex="\(a=C/A\)">\(a=C/A\)</span>. This completes the characteristic-<span class="math" data-tex="\(2\)">\(2\)</span> case as well.</p>
+<p>For example, in <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span> every odd prime <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span> must have even valuation in a norm. At <span class="math" data-tex="\(2\)">\(2\)</span>, the norm subgroup is
+<span class="math math-display" data-tex="\[
+2^{\mathbf Z}(1+4\mathbf Z_2),
+\]">\[
+2^{\mathbf Z}(1+4\mathbf Z_2),
+\]</span>
+as computed in the preceding idèle lesson. Thus <span class="math" data-tex="\(3\)">\(3\)</span> fails at both <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, and <span class="math" data-tex="\(7\)">\(7\)</span> fails at both <span class="math" data-tex="\(7\)">\(7\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>. The number <span class="math" data-tex="\(5=1^2+2^2\)">\(5=1^2+2^2\)</span> is a norm globally.</p>
+<span id="9-general-quadratic-forms" aria-hidden="true"></span><h2 id="9-from-conics-to-quadratic-forms">9. From conics to quadratic forms</h2>
+<p>The norm theorem proves the local-to-global principle for conics here. The full Hasse–Minkowski theorem for nondegenerate quadratic forms over number fields is proved in <a href="the-chebotarev-density-theorem.html#6a-general-quadratic-forms">The Chebotarev density theorem, section 6A</a>, after reciprocity, existence and the ray-prime theorem. That argument retains all dimensions and uses the conic theorem above for its ternary base case.</p>
+<h2 id="10-exercises-and-complete-solutions">10. Exercises and complete solutions</h2>
+<h3 id="exercise-1-gaussian-norms-easy">Exercise 1 — Gaussian norms (easy)</h3>
+<p>Decide whether <span class="math" data-tex="\(3,5,7\)">\(3,5,7\)</span> are norms from <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, identifying local obstructions.</p>
+<p><strong>Solution.</strong> At an inert odd prime, norm valuations are even. The valuations of <span class="math" data-tex="\(3\)">\(3\)</span> at <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(7\)">\(7\)</span> at <span class="math" data-tex="\(7\)">\(7\)</span>, are odd, so both fail. Their odd <span class="math" data-tex="\(2\)">\(2\)</span>-adic units are <span class="math" data-tex="\(3\pmod4\)">\(3\pmod4\)</span>, so they also fail at <span class="math" data-tex="\(2\)">\(2\)</span>. The element <span class="math" data-tex="\(1+2i\)">\(1+2i\)</span> has norm <span class="math" data-tex="\(5\)">\(5\)</span>; equivalently all its local tests pass and Hasse's norm theorem applies. Positive sign at the real place is satisfied by all three.</p>
+<h3 id="exercise-2-the-cohomological-injection-medium">Exercise 2 — The cohomological injection (medium)</h3>
+<p>Derive Hasse's norm theorem directly from <span class="math" data-tex="\(\widehat H^{-1}(G,C_L)=0\)">\(\widehat H^{-1}(G,C_L)=0\)</span>.</p>
+<p><strong>Solution.</strong> Invariants in <span class="math" data-tex="\(L^\times\)">\(L^\times\)</span> and <span class="math" data-tex="\(J_L\)">\(J_L\)</span> are <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span> and <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. The Tate hexagon for their exact sequence with <span class="math" data-tex="\(C_L\)">\(C_L\)</span> gives (31). Vanishing makes the field-norm quotient inject into the idèle-norm quotient. Local norm preimages can be chosen to be units almost everywhere, so a locally norm element dies in the latter quotient; injectivity kills its field-norm class. This explains both the local-to-idèle step and the exact cohomological step.</p>
+<h3 id="exercise-3-the-kummer-index-medium">Exercise 3 — The Kummer index (medium)</h3>
+<p>In Proposition 15.2, prove the exact index of <span class="math" data-tex="\(C(S,T)\)">\(C(S,T)\)</span>, including the principal intersection.</p>
+<p><strong>Solution.</strong> The kernel of <span class="math" data-tex="\(E_S\to\prod_T U_v/U_v^n\)">\(E_S\to\prod_T U_v/U_v^n\)</span> is the radical <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, so its index is <span class="math" data-tex="\(n^{s-r}\)">\(n^{s-r}\)</span>; this equals the target order and proves surjectivity. For <span class="math" data-tex="\(y\in K^\times\cap I(S,T)\)">\(y\in K^\times\cap I(S,T)\)</span>, the cyclic field <span class="math" data-tex="\(K(y^{1/n})\)">\(K(y^{1/n})\)</span> splits at <span class="math" data-tex="\(S\)">\(S\)</span>, is unramified outside <span class="math" data-tex="\(S\cup T\)">\(S\cup T\)</span>, and has every idèle class as a norm after multiplying a representative by the <span class="math" data-tex="\(S\)">\(S\)</span>-unit supplied by that surjectivity at <span class="math" data-tex="\(T\)">\(T\)</span>. The lower norm bound forces this field to be <span class="math" data-tex="\(K\)">\(K\)</span>, and the root is an <span class="math" data-tex="\(S\cup T\)">\(S\cup T\)</span>-unit. Hence the principal intersection is exactly <span class="math" data-tex="\(E_{S\cup T}^n\)">\(E_{S\cup T}^n\)</span>. The unrestricted <span class="math" data-tex="\(S\)">\(S\)</span>-local power quotients have product order <span class="math" data-tex="\(n^{2s}\)">\(n^{2s}\)</span> by (5) and the product formula; principal <span class="math" data-tex="\(S\cup T\)">\(S\cup T\)</span>-units remove a subgroup of order <span class="math" data-tex="\(n^{s+|T|}=n^{2s-r}\)">\(n^{s+|T|}=n^{2s-r}\)</span>. The resulting index is <span class="math" data-tex="\(n^r\)">\(n^r\)</span>. Merely counting local factors without proving the principal intersection would not establish it.</p>
+<h3 id="exercise-4-the-analytic-norm-bound-hard">Exercise 4 — The analytic norm bound (hard)</h3>
+<p>Assume the simple pole of the global zeta functions at <span class="math" data-tex="\(1\)">\(1\)</span> and holomorphy there of every nonprincipal finite-order Hecke function. Prove (1) without assuming their nonvanishing.</p>
+<p><strong>Solution.</strong> The finite norm quotient <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(|A|\)">\(|A|\)</span> characters. Orthogonality in its Euler products gives (28). If the nonprincipal functions have total zero order <span class="math" data-tex="\(m\)">\(m\)</span>, their product with the principal one has logarithm <span class="math" data-tex="\((1-m)\log(1/(s-1))+O(1)\)">\((1-m)\log(1/(s-1))+O(1)\)</span>. Thus the primes with trivial uniformizer class have logarithmic density <span class="math" data-tex="\((1-m)/|A|\)">\((1-m)/|A|\)</span>. Independently the Euler product of <span class="math" data-tex="\(\zeta_L\)">\(\zeta_L\)</span> gives density <span class="math" data-tex="\(1/n\)">\(1/n\)</span> for completely split primes: exactly those have <span class="math" data-tex="\(n\)">\(n\)</span> terms of norm <span class="math" data-tex="\(Nv\)">\(Nv\)</span>, and all other unramified terms have degree at least <span class="math" data-tex="\(2\)">\(2\)</span>. Complete splitting implies trivial norm-quotient class. Therefore
+<span class="math math-display" data-tex="\[
+\frac1n\leq\frac{1-m}{|A|}\leq\frac1{|A|},
+\]">\[
+\frac1n\leq\frac{1-m}{|A|}\leq\frac1{|A|},
+\]</span>
+proving <span class="math" data-tex="\(|A|\leq n\)">\(|A|\leq n\)</span>. This also forces <span class="math" data-tex="\(m=0\)">\(m=0\)</span> for these characters. Finite omitted Euler factors are nonzero at <span class="math" data-tex="\(1\)">\(1\)</span>, so they change neither zero orders nor the argument.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The Kummer norm-index bound includes Sylow descent. The function-field proof treats prime-to-characteristic radicals and characteristic-p additive duality separately. The cyclic Hasse norm theorem and the quadratic-form deduction retain their exact analytic and approximation prerequisites.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-herbrand-quotient-of-the-idele-class-group.html">← The Herbrand quotient of the idèle class group</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-global-reciprocity-law.html">The global reciprocity law →</a></span></nav>
+<p class="small source-link"><a href="files/the-norm-index-bound-and-hasses-norm-theorem.md">Markdown source of this lesson</a> · <a download href="files/the-norm-index-bound-and-hasses-norm-theorem.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

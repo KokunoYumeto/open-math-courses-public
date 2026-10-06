@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Airy functions and fold model operators</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="airy-functions-and-fold-model-operators">Airy functions and fold model operators</h1>
+<p>At a fold, two stationary points merge. The cubic integral retains both points in one smooth function: the Airy function. This lesson proves the derivative estimates needed for that function, realizes the full fold model by two Airy coefficients, and proves the model's local <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound at order <span class="math" data-tex="\(-1/6\)">\(-1/6\)</span>.</p>
+<p>The phase, density and normalization are those of <a href="referenced-prerequisite-statements.html#reference-cd294a5b3cae">Fold amplitudes and critical densities</a>. The uniform even/odd coefficient construction is in <a href="folds-reflections-and-uniform-descent.html">Folds, reflections and uniform smooth descent</a>. We use the one-dimensional stationary-phase theorem of <a href="stationary-phase-and-critical-manifolds.html">Stationary phase and critical manifolds</a>, the principal-symbol isomorphism of <a href="gaussian-lines-and-invariant-symbols.html">Gaussian lines, densities and invariant symbols</a>, and the every-order regularity criterion of <a href="intrinsic-lagrangian-regularity.html">Recognizing a Lagrangian distribution intrinsically</a>.</p>
+<p>Two exact prerequisites are imported from <a href="euclidean-symbol-calculus.html">AN-03, Euclidean symbol calculus</a>: the support-preserving symbol sum E6 in §2 and the bounded-derivative <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimate E23 in §6. E23 requires finitely many bounded base and frequency derivatives; it requires no ordinary frequency-order improvement. We prove those bounds for the Airy amplitude below. Fourier inversion and Plancherel use the same AN-03 conventions. The source contexts are [Hörmander I, §7.6] and [Hörmander IV, §25.3]. Every symbol coefficient below is an ordinary <span class="math" data-tex="\(S_{1,0}\)">\(S_{1,0}\)</span> symbol; the combined Airy amplitude need not be one.</p>
+<h2 id="define-the-cubic-integral-and-justify-all-its-derivatives"><span id="1-define-the-cubic-integral-and-justify-all-its-derivatives"></span><span id="section-1"></span>1. Define the cubic integral and justify all its derivatives</h2>
+<p>Our Fourier convention is <span class="math" data-tex="\(\widehat f(t)=\int e^{-irt}f(r)\,dr\)">\(\widehat f(t)=\int e^{-irt}f(r)\,dr\)</span>, with inverse factor <span class="math" data-tex="\((2\pi)^{-1}\)">\((2\pi)^{-1}\)</span>. Define the Airy distribution by
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}=\mathcal F^{-1}\big(e^{it^3/3}\big).
+\tag{1.1}
+\]">\[
+\operatorname{Ai}=\mathcal F^{-1}\big(e^{it^3/3}\big).
+\tag{1.1}
+\]</span>
+The multiplier has absolute value one on the real line, so it defines a tempered distribution. An unqualified Lebesgue integral of that multiplier is not the definition.</p>
+<p><strong>Lemma 1.1 (smooth cutoff realization).</strong> For <span class="math" data-tex="\(\eta\in C_c^\infty(\mathbb R)\)">\(\eta\in C_c^\infty(\mathbb R)\)</span> equal to one near zero, the functions
+<span class="math math-display" data-tex="\[
+I_\varepsilon(r)=\frac1{2\pi}\int
+e^{i(t^3/3+rt)}\eta(\varepsilon t)\,dt
+\tag{1.2}
+\]">\[
+I_\varepsilon(r)=\frac1{2\pi}\int
+e^{i(t^3/3+rt)}\eta(\varepsilon t)\,dt
+\tag{1.2}
+\]</span>
+converge in <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span> on every compact real <span class="math" data-tex="\(r\)">\(r\)</span> interval as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Their limit is (1.1), independently of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. In particular
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}^{(k)}(r)=\frac1{2\pi}\operatorname{Os}\!\int
+(it)^k e^{i(t^3/3+rt)}\,dt
+\quad(k\geq0).
+\tag{1.3}
+\]">\[
+\operatorname{Ai}^{(k)}(r)=\frac1{2\pi}\operatorname{Os}\!\int
+(it)^k e^{i(t^3/3+rt)}\,dt
+\quad(k\geq0).
+\tag{1.3}
+\]</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(|r|\leq M\)">\(|r|\leq M\)</span>, and split the integral with a smooth cutoff equal to one on <span class="math" data-tex="\(|t|\leq T\)">\(|t|\leq T\)</span>, where <span class="math" data-tex="\(T^2&gt;2M+2\)">\(T^2&gt;2M+2\)</span>. On the complementary support,
+<span class="math math-display" data-tex="\[
+q_r(t)=t^2+r,\qquad |q_r(t)|\geq t^2/2.
+\]">\[
+q_r(t)=t^2+r,\qquad |q_r(t)|\geq t^2/2.
+\]</span>
+For every fixed number of <span class="math" data-tex="\(t,r\)">\(t,r\)</span> derivatives, <span class="math" data-tex="\(1/q_r\)">\(1/q_r\)</span> has the corresponding polynomial bounds. The transpose of the field <span class="math" data-tex="\((iq_r)^{-1}\partial_t\)">\((iq_r)^{-1}\partial_t\)</span> is
+<span class="math math-display" data-tex="\[
+P_r a=-\partial_t\left(\frac{a}{i q_r}\right).
+\tag{1.4}
+\]">\[
+P_r a=-\partial_t\left(\frac{a}{i q_r}\right).
+\tag{1.4}
+\]</span>
+It sends a function with <span class="math" data-tex="\(j\)">\(j\)</span>-th <span class="math" data-tex="\(t\)">\(t\)</span> derivative bounded by <span class="math" data-tex="\(C_j\langle t\rangle^{d-j}\)">\(C_j\langle t\rangle^{d-j}\)</span> to one with weight <span class="math" data-tex="\(d-3\)">\(d-3\)</span>. The estimates are uniform for <span class="math" data-tex="\(|r|\leq M\)">\(|r|\leq M\)</span>. Indeed <span class="math" data-tex="\(1/q_r\)">\(1/q_r\)</span> has weight <span class="math" data-tex="\(-2\)">\(-2\)</span>, and the final derivative loses one more power. Derivatives in <span class="math" data-tex="\(r\)">\(r\)</span> only improve the denominator or differentiate other bounded factors.</p>
+<p>For a prescribed derivative <span class="math" data-tex="\(k\)">\(k\)</span>, apply (1.4) <span class="math" data-tex="\(N\)">\(N\)</span> times to the complementary part of <span class="math" data-tex="\((it)^k\eta(\varepsilon t)\)">\((it)^k\eta(\varepsilon t)\)</span>. Derivatives of <span class="math" data-tex="\(\eta(\varepsilon t)\)">\(\eta(\varepsilon t)\)</span> satisfy the same weighted estimates uniformly in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>: on their supports <span class="math" data-tex="\(|t|\asymp\varepsilon^{-1}\)">\(|t|\asymp\varepsilon^{-1}\)</span>, so each derivative costs <span class="math" data-tex="\(\langle t\rangle^{-1}\)">\(\langle t\rangle^{-1}\)</span>. The result is bounded by <span class="math" data-tex="\(C\langle t\rangle^{k-3N}\)">\(C\langle t\rangle^{k-3N}\)</span>. Choose <span class="math" data-tex="\(3N&gt;k+1\)">\(3N&gt;k+1\)</span>. It is integrable uniformly in <span class="math" data-tex="\(r,\varepsilon\)">\(r,\varepsilon\)</span>, and converges locally with every prescribed derivative as the cutoff recedes. Integrating by parts before removing the cutoff removes all boundary terms. Dominated convergence now gives uniform convergence of the differentiated tail; on the fixed inner interval ordinary dominated convergence applies. This proves convergence for every <span class="math" data-tex="\(k\)">\(k\)</span>, and hence smoothness and (1.3).</p>
+<p>Pairing (1.2) with a Schwartz test function gives an integral of <span class="math" data-tex="\(e^{it^3/3}\eta(\varepsilon t)\)">\(e^{it^3/3}\eta(\varepsilon t)\)</span> against a Schwartz Fourier transform. Dominated convergence identifies the distributional limit with (1.1). Its smooth realization is therefore unique, including for different cutoffs. ∎</p>
+<p><strong>Lemma 1.2 (contour and differential equation).</strong> The smooth function in Lemma 1.1 extends to an entire function. For every <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}(z)=\frac1{2\pi}\int_{\mathbb R}
+\exp\left(i\left(\frac{(t+ia)^3}{3}+z(t+ia)\right)\right)dt.
+\tag{1.5}
+\]">\[
+\operatorname{Ai}(z)=\frac1{2\pi}\int_{\mathbb R}
+\exp\left(i\left(\frac{(t+ia)^3}{3}+z(t+ia)\right)\right)dt.
+\tag{1.5}
+\]</span>
+The integral is independent of <span class="math" data-tex="\(a\)">\(a\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}&#x27;&#x27;(z)=z\operatorname{Ai}(z).
+\tag{1.6}
+\]">\[
+\operatorname{Ai}&#x27;&#x27;(z)=z\operatorname{Ai}(z).
+\tag{1.6}
+\]</span></p>
+<p><strong>Proof.</strong> For real <span class="math" data-tex="\(r\)">\(r\)</span>, the real part of the exponent in (1.5) is
+<span class="math math-display" data-tex="\[
+-a t^2+a^3/3-ar.
+\tag{1.7}
+\]">\[
+-a t^2+a^3/3-ar.
+\tag{1.7}
+\]</span>
+For <span class="math" data-tex="\(z\)">\(z\)</span> in a compact complex set there is additionally a term <span class="math" data-tex="\(-t\operatorname{Im}z\)">\(-t\operatorname{Im}z\)</span>; the Gaussian still dominates every polynomial. Thus the integral and all <span class="math" data-tex="\(z\)">\(z\)</span> derivatives converge locally uniformly. It is entire.</p>
+<p>On a compact positive <span class="math" data-tex="\(a\)">\(a\)</span> interval, the derivative of the integrand with respect to <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(i\)">\(i\)</span> times its <span class="math" data-tex="\(t\)">\(t\)</span> derivative. Integrating that derivative gives zero, since both ends decay with a Gaussian. This proves independence of <span class="math" data-tex="\(a\)">\(a\)</span>. To identify the real restriction, pair it with <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R)\)">\(f\in C_c^\infty(\mathbb R)\)</span>. The resulting <span class="math" data-tex="\(t\)">\(t\)</span> integral contains
+<span class="math math-display" data-tex="\[
+e^{i(t+ia)^3/3}\int e^{itr-ar}f(r)\,dr.
+\]">\[
+e^{i(t+ia)^3/3}\int e^{itr-ar}f(r)\,dr.
+\]</span>
+The first factor has absolute value at most <span class="math" data-tex="\(e^{a^3/3}\)">\(e^{a^3/3}\)</span>; the second has uniform Schwartz bounds for <span class="math" data-tex="\(0&lt;a\leq1\)">\(0&lt;a\leq1\)</span>, by the fixed compact support of <span class="math" data-tex="\(f\)">\(f\)</span>. Dominated convergence as <span class="math" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span> gives precisely the pairing in (1.1). This proves (1.5).</p>
+<p>Differentiating twice in <span class="math" data-tex="\(z\)">\(z\)</span> produces <span class="math" data-tex="\(-(t+ia)^2\)">\(-(t+ia)^2\)</span>. The integral of the <span class="math" data-tex="\(t\)">\(t\)</span> derivative of the exponential is zero, and that derivative is <span class="math" data-tex="\(i((t+ia)^2+z)\)">\(i((t+ia)^2+z)\)</span> times the exponential. Consequently the second <span class="math" data-tex="\(z\)">\(z\)</span> derivative equals <span class="math" data-tex="\(z\)">\(z\)</span> times the original integral. This proves (1.6), with its sign. ∎</p>
+<p><strong>Theorem 1.3 (all Airy derivative bounds).</strong> For every integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+|\operatorname{Ai}^{(k)}(r)|
+\leq C_k(1+|r|)^{k/2-1/4}
+\quad(r\in\mathbb R).
+\tag{1.8}
+\]">\[
+|\operatorname{Ai}^{(k)}(r)|
+\leq C_k(1+|r|)^{k/2-1/4}
+\quad(r\in\mathbb R).
+\tag{1.8}
+\]</span>
+More precisely, for <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+|\operatorname{Ai}^{(k)}(R)|
+\leq C_k R^{k/2-1/4}e^{-2R^{3/2}/3},
+\tag{1.9}
+\]">\[
+|\operatorname{Ai}^{(k)}(R)|
+\leq C_k R^{k/2-1/4}e^{-2R^{3/2}/3},
+\tag{1.9}
+\]</span>
+whereas
+<span class="math math-display" data-tex="\[
+\begin{split}
+\operatorname{Ai}^{(k)}(-R)
+={}&amp;\pi^{-1/2}R^{k/2-1/4}
+\cos\left(\frac23R^{3/2}-\frac\pi4-\frac{k\pi}2\right)\\
+&amp;+O_k\left(R^{k/2-7/4}\right).
+\end{split}
+\tag{1.10}
+\]">\[
+\begin{split}
+\operatorname{Ai}^{(k)}(-R)
+={}&amp;\pi^{-1/2}R^{k/2-1/4}
+\cos\left(\frac23R^{3/2}-\frac\pi4-\frac{k\pi}2\right)\\
+&amp;+O_k\left(R^{k/2-7/4}\right).
+\end{split}
+\tag{1.10}
+\]</span>
+Each exponent in (1.8) is optimal as a uniform polynomial bound on the negative real ray.</p>
+<p><strong>Proof.</strong> For the positive ray choose <span class="math" data-tex="\(a=\sqrt R\)">\(a=\sqrt R\)</span> in (1.5). To evaluate the <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative at <span class="math" data-tex="\(R\)">\(R\)</span>, first differentiate at a fixed <span class="math" data-tex="\(a\)">\(a\)</span>, then choose this value of <span class="math" data-tex="\(a\)">\(a\)</span>; no derivative of <span class="math" data-tex="\(\sqrt R\)">\(\sqrt R\)</span> is taken. We obtain
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}^{(k)}(R)=\frac{e^{-2R^{3/2}/3}}{2\pi}
+\int (i(t+i\sqrt R))^k e^{-\sqrt R t^2}e^{it^3/3}\,dt.
+\tag{1.11}
+\]">\[
+\operatorname{Ai}^{(k)}(R)=\frac{e^{-2R^{3/2}/3}}{2\pi}
+\int (i(t+i\sqrt R))^k e^{-\sqrt R t^2}e^{it^3/3}\,dt.
+\tag{1.11}
+\]</span>
+The polynomial is bounded by <span class="math" data-tex="\(C_k(|t|^k+R^{k/2})\)">\(C_k(|t|^k+R^{k/2})\)</span>. Substituting <span class="math" data-tex="\(v=R^{1/4}t\)">\(v=R^{1/4}t\)</span> in the Gaussian integrals bounds the two terms by constants times <span class="math" data-tex="\(R^{-(k+1)/4}\)">\(R^{-(k+1)/4}\)</span> and <span class="math" data-tex="\(R^{k/2-1/4}\)">\(R^{k/2-1/4}\)</span>. For <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span> the former is no larger than the latter. This proves (1.9).</p>
+<p>For the negative ray use <span class="math" data-tex="\(t=\sqrt R\,u\)">\(t=\sqrt R\,u\)</span>, <span class="math" data-tex="\(\lambda=R^{3/2}\)">\(\lambda=R^{3/2}\)</span>, and
+<span class="math math-display" data-tex="\[
+\psi(u)=u^3/3-u.
+\]">\[
+\psi(u)=u^3/3-u.
+\]</span>
+Then (1.3) becomes
+<span class="math math-display" data-tex="\[
+\operatorname{Ai}^{(k)}(-R)
+=\frac{R^{(k+1)/2}}{2\pi}
+\operatorname{Os}\!\int e^{i\lambda\psi(u)}(iu)^k\,du.
+\tag{1.12}
+\]">\[
+\operatorname{Ai}^{(k)}(-R)
+=\frac{R^{(k+1)/2}}{2\pi}
+\operatorname{Os}\!\int e^{i\lambda\psi(u)}(iu)^k\,du.
+\tag{1.12}
+\]</span>
+The stationary points are <span class="math" data-tex="\(u=1,-1\)">\(u=1,-1\)</span>, with values <span class="math" data-tex="\(-2/3,2/3\)">\(-2/3,2/3\)</span> and Hessians <span class="math" data-tex="\(2,-2\)">\(2,-2\)</span>. Fix disjoint compact cutoffs equal to one near these points. The one-dimensional stationary-phase theorem gives for their integrals
+<span class="math math-display" data-tex="\[
+\left(\frac\pi\lambda\right)^{1/2}
+\left[i^k e^{-2i\lambda/3+i\pi/4}
+      +(-i)^k e^{2i\lambda/3-i\pi/4}\right]
++O_k(\lambda^{-3/2}).
+\tag{1.13}
+\]">\[
+\left(\frac\pi\lambda\right)^{1/2}
+\left[i^k e^{-2i\lambda/3+i\pi/4}
+      +(-i)^k e^{2i\lambda/3-i\pi/4}\right]
++O_k(\lambda^{-3/2}).
+\tag{1.13}
+\]</span>
+Its hypotheses concern only two fixed compact neighborhoods and their nonzero Hessians.</p>
+<p>On the remaining bounded interval <span class="math" data-tex="\(\psi&#x27;\)">\(\psi&#x27;\)</span> is bounded away from zero, giving <span class="math" data-tex="\(O(\lambda^{-N})\)">\(O(\lambda^{-N})\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>. On <span class="math" data-tex="\(|u|\geq2\)">\(|u|\geq2\)</span>, the transpose field is
+<span class="math math-display" data-tex="\[
+-\frac1{i\lambda}\partial_u\left(\frac{\,cdot\,}{u^2-1}\right).
+\]">\[
+-\frac1{i\lambda}\partial_u\left(\frac{\,cdot\,}{u^2-1}\right).
+\]</span>
+Each application loses three powers of <span class="math" data-tex="\(u\)">\(u\)</span> and one power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Start with a receding cutoff as in Lemma 1.1. For <span class="math" data-tex="\(3N&gt;k+1\)">\(3N&gt;k+1\)</span>, the final amplitude is bounded by <span class="math" data-tex="\(C_k\lambda^{-N}\langle u\rangle^{k-3N}\)">\(C_k\lambda^{-N}\langle u\rangle^{k-3N}\)</span>, uniformly as the cutoff recedes. Thus its limit is also <span class="math" data-tex="\(O_k(\lambda^{-N})\)">\(O_k(\lambda^{-N})\)</span>. Taking <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span> as well makes this smaller than the remainder in (1.13). This explicitly handles the noncompact amplitude; the compact stationary-phase theorem was not applied to the whole real line.</p>
+<p>The bracket in (1.13) is twice the cosine in (1.10). Multiplication by <span class="math" data-tex="\(R^{(k+1)/2}/(2\pi)\)">\(R^{(k+1)/2}/(2\pi)\)</span> gives (1.10), including the error exponent. Its absolute bound gives (1.8) on <span class="math" data-tex="\(r\leq-1\)">\(r\leq-1\)</span>; (1.9) gives it on <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and smoothness handles the middle interval. Finally choose a sequence of <span class="math" data-tex="\(R\)">\(R\)</span> tending to infinity for which the cosine in (1.10) equals one. The relative error is <span class="math" data-tex="\(O(R^{-3/2})\)">\(O(R^{-3/2})\)</span>, so the magnitude is bounded below by a positive constant times <span class="math" data-tex="\(R^{k/2-1/4}\)">\(R^{k/2-1/4}\)</span> along that sequence. No smaller polynomial exponent can hold everywhere. ∎</p>
+<p><img class="course-figure" loading="lazy" decoding="async" src="figures/airy-transition-and-derivative.svg" alt="Numerical samples of the Airy transition and its weighted derivative" data-source-sha256="FF6ACACF51B2F97CEECE21941EE290B161E2461FA03857E83133E74FAF74D557"></p>
+<p>The curves are numerical samples on a finite real interval, drawn from the standard Airy function with the normalization (1.1). The lower panel divides each curve by its weight in (1.8). These samples illustrate oscillation and decay; the uniform bounds and their optimality are proved in Theorem 1.3, independently of this plot.</p>
+<h2 id="put-the-two-airy-coefficients-on-the-fold-model"><span id="2-put-the-two-airy-coefficients-on-the-fold-model"></span><span id="section-2"></span>2. Put the two Airy coefficients on the fold model</h2>
+<p>Let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, <span class="math" data-tex="\(\xi&#x27;=(\xi_2,\ldots,\xi_n)\)">\(\xi&#x27;=(\xi_2,\ldots,\xi_n)\)</span>, and <span class="math" data-tex="\(\rho=\xi_n&gt;0\)">\(\rho=\xi_n&gt;0\)</span>. The canonical relation is
+<span class="math math-display" data-tex="\[
+\xi=\eta=(s^2\rho,\xi&#x27;),\qquad
+y_1=x_1+s,\quad y_j=x_j\ (2\leq j&lt;n),\quad
+y_n=x_n-s^3/3.
+\tag{2.1}
+\]">\[
+\xi=\eta=(s^2\rho,\xi&#x27;),\qquad
+y_1=x_1+s,\quad y_j=x_j\ (2\leq j&lt;n),\quad
+y_n=x_n-s^3/3.
+\tag{2.1}
+\]</span>
+Its kernel Lagrangian has covectors <span class="math" data-tex="\((\xi,-\eta)\)">\((\xi,-\eta)\)</span>. The degree-zero cubic parameter <span class="math" data-tex="\(s\)">\(s\)</span> belongs to the expression
+<span class="math math-display" data-tex="\[
+\Phi=(x-y)\cdot\xi+s\xi_1-s^3\rho/3.
+\tag{2.2}
+\]">\[
+\Phi=(x-y)\cdot\xi+s\xi_1-s^3\rho/3.
+\tag{2.2}
+\]</span>
+The actual homogeneous auxiliary parameter is <span class="math" data-tex="\(\tau=\rho s\)">\(\tau=\rho s\)</span>. The preceding density lesson proves that the cubic convention has amplitude order <span class="math" data-tex="\(m+1/2\)">\(m+1/2\)</span>, prefactor <span class="math" data-tex="\((2\pi)^{-n-1/2}\)">\((2\pi)^{-n-1/2}\)</span>, and critical half density <span class="math" data-tex="\(|dx\,ds\,d\xi&#x27;|^{1/2}\)">\(|dx\,ds\,d\xi&#x27;|^{1/2}\)</span>.</p>
+<p>Choose ordinary coefficients
+<span class="math math-display" data-tex="\[
+b_0\in S^{m+1/6},\qquad b_1\in S^{m-1/6},
+\tag{2.3}
+\]">\[
+b_0\in S^{m+1/6},\qquad b_1\in S^{m-1/6},
+\tag{2.3}
+\]</span>
+with fixed compact <span class="math" data-tex="\(x\)">\(x\)</span> support when a global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> estimate is desired. We work at high frequency, with smooth radial cutoffs so that
+<span class="math math-display" data-tex="\[
+\rho\geq1,\qquad |\xi|\leq C\rho
+\quad\text{on their supports}.
+\tag{2.4}
+\]">\[
+\rho\geq1,\qquad |\xi|\leq C\rho
+\quad\text{on their supports}.
+\tag{2.4}
+\]</span>
+Changes within a bounded frequency set give smooth localized kernels and can be added separately. All estimates involving fractional powers of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> are made on (2.4), not at <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+r(\xi)=-\xi_1\rho^{-1/3},\qquad
+\widehat a(x,\xi)
+=\operatorname{Ai}(r(\xi))b_0(x,\xi)
+ +\operatorname{Ai}&#x27;(r(\xi))b_1(x,\xi).
+\tag{2.5}
+\]">\[
+r(\xi)=-\xi_1\rho^{-1/3},\qquad
+\widehat a(x,\xi)
+=\operatorname{Ai}(r(\xi))b_0(x,\xi)
+ +\operatorname{Ai}&#x27;(r(\xi))b_1(x,\xi).
+\tag{2.5}
+\]</span>
+The hat here names the Fourier-side amplitude; it does not assert that it is the Fourier transform of a chosen base symbol. Define, initially on Schwartz functions,
+<span class="math math-display" data-tex="\[
+Bf(x)=(2\pi)^{-n+1/2}
+\int e^{ix\cdot\xi}\widehat a(x,\xi)\widehat f(\xi)\,d\xi.
+\tag{2.6}
+\]">\[
+Bf(x)=(2\pi)^{-n+1/2}
+\int e^{ix\cdot\xi}\widehat a(x,\xi)\widehat f(\xi)\,d\xi.
+\tag{2.6}
+\]</span>
+Theorem 1.3 and (2.4) give polynomial growth of every fixed base derivative of the integrand's amplitude. Since <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> is Schwartz, the integral and every base derivative converge absolutely on compact <span class="math" data-tex="\(x\)">\(x\)</span> sets. It defines a continuous operator into smooth functions, and its kernel is defined distributionally by the same Fourier formula.</p>
+<h2 id="the-noncompact-cubic-tail-is-a-smoothing-symbol"><span id="3-the-noncompact-cubic-tail-is-a-smoothing-symbol"></span><span id="section-3"></span>3. The noncompact cubic tail is a smoothing symbol</h2>
+<p><strong>Lemma 3.1 (exact cubic realization).</strong> With oscillatory integrals defined by receding smooth cutoffs,
+<span class="math math-display" data-tex="\[
+\begin{split}
+\operatorname{Os}\!\int e^{i(s\xi_1-s^3\rho/3)}\,ds
+ &amp;=2\pi\rho^{-1/3}\operatorname{Ai}(r),\\
+\operatorname{Os}\!\int s e^{i(s\xi_1-s^3\rho/3)}\,ds
+ &amp;=2\pi i\rho^{-2/3}\operatorname{Ai}&#x27;(r).
+\end{split}
+\tag{3.1}
+\]">\[
+\begin{split}
+\operatorname{Os}\!\int e^{i(s\xi_1-s^3\rho/3)}\,ds
+ &amp;=2\pi\rho^{-1/3}\operatorname{Ai}(r),\\
+\operatorname{Os}\!\int s e^{i(s\xi_1-s^3\rho/3)}\,ds
+ &amp;=2\pi i\rho^{-2/3}\operatorname{Ai}&#x27;(r).
+\end{split}
+\tag{3.1}
+\]</span>
+Consequently, with
+<span class="math math-display" data-tex="\[
+a_\infty(x,s,\xi)
+=\rho^{1/3}b_0(x,\xi)-is\rho^{2/3}b_1(x,\xi),
+\tag{3.2}
+\]">\[
+a_\infty(x,s,\xi)
+=\rho^{1/3}b_0(x,\xi)-is\rho^{2/3}b_1(x,\xi),
+\tag{3.2}
+\]</span>
+the oscillatory <span class="math" data-tex="\(s\)">\(s\)</span> integral equals <span class="math" data-tex="\(2\pi\widehat a\)">\(2\pi\widehat a\)</span>.</p>
+<p><strong>Proof.</strong> Substitute <span class="math" data-tex="\(t=-\rho^{1/3}s\)">\(t=-\rho^{1/3}s\)</span>. Reversing the integration limits cancels the negative Jacobian, so the measure factor is <span class="math" data-tex="\(\rho^{-1/3}\)">\(\rho^{-1/3}\)</span>. The phase becomes <span class="math" data-tex="\(t^3/3+rt\)">\(t^3/3+rt\)</span>. The factor <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(-\rho^{-1/3}t\)">\(-\rho^{-1/3}t\)</span>, and (1.3) with <span class="math" data-tex="\(k=1\)">\(k=1\)</span> gives <span class="math" data-tex="\(\operatorname{Os}\int t e^{i(t^3/3+rt)}dt=(2\pi/i)\operatorname{Ai}&#x27;(r)\)">\(\operatorname{Os}\int t e^{i(t^3/3+rt)}dt=(2\pi/i)\operatorname{Ai}&#x27;(r)\)</span>. Their product is the positive <span class="math" data-tex="\(i\)">\(i\)</span> in the second line of (3.1). Multiplying it by the negative <span class="math" data-tex="\(i\)">\(i\)</span> in (3.2) gives <span class="math" data-tex="\(2\pi b_1\operatorname{Ai}&#x27;(r)\)">\(2\pi b_1\operatorname{Ai}&#x27;(r)\)</span>. Cutoff independence in Lemma 1.1 justifies the scaled cutoffs. ∎</p>
+<p><strong>Lemma 3.2 (all differentiated tail estimates).</strong> Choose <span class="math" data-tex="\(S&gt;1\)">\(S&gt;1\)</span> with <span class="math" data-tex="\(S^2&gt;2C\)">\(S^2&gt;2C\)</span>, and <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span> equal to one on <span class="math" data-tex="\([-S,S]\)">\([-S,S]\)</span>. Then
+<span class="math math-display" data-tex="\[
+T(x,\xi)=\operatorname{Os}\!\int
+e^{i(s\xi_1-s^3\rho/3)}(1-\chi(s))a_\infty(x,s,\xi)\,ds
+\tag{3.3}
+\]">\[
+T(x,\xi)=\operatorname{Os}\!\int
+e^{i(s\xi_1-s^3\rho/3)}(1-\chi(s))a_\infty(x,s,\xi)\,ds
+\tag{3.3}
+\]</span>
+is an ordinary <span class="math" data-tex="\(S^{-\infty}\)">\(S^{-\infty}\)</span> symbol on the cone (2.4), extended by zero with the specified smooth frequency cutoffs. For all <span class="math" data-tex="\(M,\alpha,\beta\)">\(M,\alpha,\beta\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_\xi^\beta T(x,\xi)|
+\leq C_{M,\alpha,\beta}\langle\xi\rangle^{-M-|\beta|}.
+\tag{3.4}
+\]">\[
+|\partial_x^\alpha\partial_\xi^\beta T(x,\xi)|
+\leq C_{M,\alpha,\beta}\langle\xi\rangle^{-M-|\beta|}.
+\tag{3.4}
+\]</span></p>
+<p><strong>Proof.</strong> On the support of <span class="math" data-tex="\(1-\chi\)">\(1-\chi\)</span>,
+<span class="math math-display" data-tex="\[
+q(s,\xi)=\xi_1-s^2\rho,
+\qquad |q|\geq s^2\rho/2.
+\tag{3.5}
+\]">\[
+q(s,\xi)=\xi_1-s^2\rho,
+\qquad |q|\geq s^2\rho/2.
+\tag{3.5}
+\]</span>
+Here <span class="math" data-tex="\(|\xi_1|\leq C\rho\)">\(|\xi_1|\leq C\rho\)</span> and <span class="math" data-tex="\(|s|\geq S\)">\(|s|\geq S\)</span>. Writing <span class="math" data-tex="\(q=\rho(\xi_1/\rho-s^2)\)">\(q=\rho(\xi_1/\rho-s^2)\)</span>, the chain rule and homogeneity give for every <span class="math" data-tex="\(p,\gamma\)">\(p,\gamma\)</span>
+<span class="math math-display" data-tex="\[
+|\partial_s^p\partial_\xi^\gamma(q^{-1})|
+\leq C_{p,\gamma}\rho^{-1-|\gamma|}
+\langle s\rangle^{-2-p}.
+\tag{3.6}
+\]">\[
+|\partial_s^p\partial_\xi^\gamma(q^{-1})|
+\leq C_{p,\gamma}\rho^{-1-|\gamma|}
+\langle s\rangle^{-2-p}.
+\tag{3.6}
+\]</span>
+For example a <span class="math" data-tex="\(\rho\)">\(\rho\)</span> derivative differentiates <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(-s^2\)">\(-s^2\)</span>, but its two denominator factors still leave weight <span class="math" data-tex="\(s^{-2}\)">\(s^{-2}\)</span>. Each derivative of the bounded degree-zero angular ratio costs one power of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Iterating these observations proves (3.6); the denominator remains uniformly separated from zero.</p>
+<p>Put <span class="math" data-tex="\(\mu=m+1/2\)">\(\mu=m+1/2\)</span>. The amplitude <span class="math" data-tex="\((1-\chi)a_\infty\)">\((1-\chi)a_\infty\)</span> has mixed estimates of frequency order <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> weight one:
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_s^p\partial_\xi^\gamma
+((1-\chi)a_\infty)|
+\leq C_{\alpha,p,\gamma}\rho^{\mu-|\gamma|}
+\langle s\rangle^{1-p}.
+\tag{3.7}
+\]">\[
+|\partial_x^\alpha\partial_s^p\partial_\xi^\gamma
+((1-\chi)a_\infty)|
+\leq C_{\alpha,p,\gamma}\rho^{\mu-|\gamma|}
+\langle s\rangle^{1-p}.
+\tag{3.7}
+\]</span>
+Derivatives of the fixed transition cutoff have bounded <span class="math" data-tex="\(s\)">\(s\)</span> support and also satisfy this estimate. The transpose field
+<span class="math math-display" data-tex="\[
+P_\xi a=-\partial_s\left(\frac{a}{i q}\right)
+\tag{3.8}
+\]">\[
+P_\xi a=-\partial_s\left(\frac{a}{i q}\right)
+\tag{3.8}
+\]</span>
+sends frequency order <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, <span class="math" data-tex="\(s\)">\(s\)</span> weight <span class="math" data-tex="\(d\)">\(d\)</span> to order <span class="math" data-tex="\(\nu-1\)">\(\nu-1\)</span>, weight <span class="math" data-tex="\(d-3\)">\(d-3\)</span>, with all mixed estimates. This follows from (3.6), the product rule and the final <span class="math" data-tex="\(s\)">\(s\)</span> derivative. After <span class="math" data-tex="\(N\)">\(N\)</span> integrations the amplitude therefore has order <span class="math" data-tex="\(\mu-N\)">\(\mu-N\)</span> and weight <span class="math" data-tex="\(1-3N\)">\(1-3N\)</span>.</p>
+<p>To justify the integrations, first insert <span class="math" data-tex="\(\eta(s/R)\)">\(\eta(s/R)\)</span> with <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. Its derivatives obey the weighted bounds used in Lemma 1.1. Already <span class="math" data-tex="\(N=1\)">\(N=1\)</span> gives the integrable weight <span class="math" data-tex="\(-2\)">\(-2\)</span>; larger <span class="math" data-tex="\(N\)">\(N\)</span> allow every derivative below. A frequency derivative of the exponential contributes <span class="math" data-tex="\(is\)">\(is\)</span> or <span class="math" data-tex="\(-is^3/3\)">\(-is^3/3\)</span>; the phase is linear in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Thus a derivative of total order <span class="math" data-tex="\(|\beta|\)">\(|\beta|\)</span> introduces a polynomial of degree at most <span class="math" data-tex="\(3|\beta|\)">\(3|\beta|\)</span>. After differentiating the integrated expression <span class="math" data-tex="\(N\)">\(N\)</span> times in the sense of (3.8), its absolute integrand is bounded by a finite sum dominated by
+<span class="math math-display" data-tex="\[
+C\rho^{\mu-N}\langle s\rangle^{1-3N+3|\beta|}.
+\tag{3.9}
+\]">\[
+C\rho^{\mu-N}\langle s\rangle^{1-3N+3|\beta|}.
+\tag{3.9}
+\]</span>
+Possible frequency derivatives of the amplitude improve its <span class="math" data-tex="\(\rho\)">\(\rho\)</span> order, and <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>, so this bound is sufficient. Choose <span class="math" data-tex="\(N\)">\(N\)</span> with
+<span class="math math-display" data-tex="\[
+3N&gt;2+3|\beta|,\qquad N\geq\mu+M+|\beta|.
+\tag{3.10}
+\]">\[
+3N&gt;2+3|\beta|,\qquad N\geq\mu+M+|\beta|.
+\tag{3.10}
+\]</span>
+The first inequality makes (3.9) integrable in <span class="math" data-tex="\(s\)">\(s\)</span>; the second gives (3.4), since <span class="math" data-tex="\(\rho\asymp\langle\xi\rangle\)">\(\rho\asymp\langle\xi\rangle\)</span> on (2.4). All derivatives of the receding cutoff disappear locally, and dominated convergence supplies the limit and its derivatives. The resulting expressions are independent of the number of integrations, since each is the same cutoff limit. Base derivatives merely differentiate the coefficients. This proves every seminorm in (3.4), not only the undifferentiated tail. ∎</p>
+<p>This tail has noncompact <span class="math" data-tex="\(s\)">\(s\)</span> support. It is different from the excluded first-frequency tail with compact <span class="math" data-tex="\(s\)">\(s\)</span> support in the density lesson. The two arguments use different nonstationary regions.</p>
+<h2 id="membership-symbol-and-the-whole-local-representation"><span id="4-membership-symbol-and-the-whole-local-representation"></span><span id="section-4"></span>4. Membership, symbol and the whole local representation</h2>
+<p><strong>Theorem 4.1 (Airy model realization).</strong> The kernel of (2.6) belongs locally to <span class="math" data-tex="\(I^m(C&#x27;)\)">\(I^m(C&#x27;)\)</span> for (2.1). In the phase frame fixed by (2.2), its principal symbol is represented by
+<span class="math math-display" data-tex="\[
+\begin{split}
+a_c(x,s,\xi&#x27;)
+={}&amp;\rho^{1/3}b_0(x,s^2\rho,\xi&#x27;)\\
+&amp;-is\rho^{2/3}b_1(x,s^2\rho,\xi&#x27;),
+\end{split}
+\tag{4.1}
+\]">\[
+\begin{split}
+a_c(x,s,\xi&#x27;)
+={}&amp;\rho^{1/3}b_0(x,s^2\rho,\xi&#x27;)\\
+&amp;-is\rho^{2/3}b_1(x,s^2\rho,\xi&#x27;),
+\end{split}
+\tag{4.1}
+\]</span>
+times <span class="math" data-tex="\(|dx\,ds\,d\xi&#x27;|^{1/2}\)">\(|dx\,ds\,d\xi&#x27;|^{1/2}\)</span>, modulo one lower order. Every locally supported model kernel in <span class="math" data-tex="\(I^m(C&#x27;)\)">\(I^m(C&#x27;)\)</span>, whose entire wavefront is compactly generated inside the chart and in <span class="math" data-tex="\(|\xi|\leq C_2\rho\)">\(|\xi|\leq C_2\rho\)</span>, has a representation of the form (2.6) modulo a smooth localized kernel, with coefficients (2.3) in a fixed slightly larger cone.</p>
+<p><strong>Proof of membership and symbol.</strong> Lemma 3.1 identifies the full cubic integral with <span class="math" data-tex="\(2\pi\widehat a\)">\(2\pi\widehat a\)</span>. Lemma 3.2 removes its noncompact tail modulo a smoothing symbol. Consequently the kernel of (2.6), modulo a smooth kernel, is
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n-1/2}\iint
+e^{i\Phi(x,y,s,\xi)}\chi(s)
+\left(\rho^{1/3}b_0-is\rho^{2/3}b_1\right)ds\,d\xi.
+\tag{4.2}
+\]">\[
+(2\pi)^{-n-1/2}\iint
+e^{i\Phi(x,y,s,\xi)}\chi(s)
+\left(\rho^{1/3}b_0-is\rho^{2/3}b_1\right)ds\,d\xi.
+\tag{4.2}
+\]</span>
+This equality is distributional. It can first be tested with compact frequency cutoffs, where Lemma 3.1 identifies the inner oscillatory integral; the polynomial bounds and Schwartz test transforms permit removal of the frequency cutoff. The factor <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> changes <span class="math" data-tex="\((2\pi)^{-n-1/2}\)">\((2\pi)^{-n-1/2}\)</span> to exactly <span class="math" data-tex="\((2\pi)^{-n+1/2}\)">\((2\pi)^{-n+1/2}\)</span>.</p>
+<p>On compact <span class="math" data-tex="\(s\)">\(s\)</span> support the amplitude in (4.2) is an ordinary symbol of order <span class="math" data-tex="\(m+1/2\)">\(m+1/2\)</span>. The density lesson converts it to an amplitude of order <span class="math" data-tex="\(m-1/2\)">\(m-1/2\)</span> for the actual homogeneous phase with <span class="math" data-tex="\(n+1\)">\(n+1\)</span> auxiliary variables and base dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>. The normalized phase-integral theorem then gives order <span class="math" data-tex="\(m\)">\(m\)</span>, with wavefront in <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>. Its critical density in cubic parameters is <span class="math" data-tex="\(|dx\,ds\,d\xi&#x27;|\)">\(|dx\,ds\,d\xi&#x27;|\)</span>. Critical points have <span class="math" data-tex="\(\xi_1=s^2\rho\)">\(\xi_1=s^2\rho\)</span>. Whenever either coefficient is nonzero there, <span class="math" data-tex="\(s^2\leq C&lt;S^2\)">\(s^2\leq C&lt;S^2\)</span>, so <span class="math" data-tex="\(\chi(s)=1\)">\(\chi(s)=1\)</span>. This proves (4.1), including the odd sign, density and phase frame. On bounded <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> sets one may insert a compact base cutoff equal to one there to apply the local phase theorem. ∎</p>
+<p><strong>Proof of surjectivity.</strong> First prescribe a critical coefficient <span class="math" data-tex="\(a_c\in S^{m+1/2}\)">\(a_c\in S^{m+1/2}\)</span> in a fixed compact <span class="math" data-tex="\((x,s)\)">\((x,s)\)</span> set and angular cone. The uniform descent theorem splits it exactly as
+<span class="math math-display" data-tex="\[
+a_c(x,s,\xi&#x27;)=F_0(x,s^2,\xi&#x27;)+sF_1(x,s^2,\xi&#x27;),
+\tag{4.3}
+\]">\[
+a_c(x,s,\xi&#x27;)=F_0(x,s^2,\xi&#x27;)+sF_1(x,s^2,\xi&#x27;),
+\tag{4.3}
+\]</span>
+with smooth full-neighborhood extensions <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, all finite mixed symbol seminorms, and a fixed angular/support neighborhood. It supplies coefficients
+<span class="math math-display" data-tex="\[
+\begin{split}
+b_0(x,\xi)&amp;=\rho^{-1/3}F_0(x,\xi_1/\rho,\xi&#x27;),\\
+b_1(x,\xi)&amp;=i\rho^{-2/3}F_1(x,\xi_1/\rho,\xi&#x27;),
+\end{split}
+\tag{4.4}
+\]">\[
+\begin{split}
+b_0(x,\xi)&amp;=\rho^{-1/3}F_0(x,\xi_1/\rho,\xi&#x27;),\\
+b_1(x,\xi)&amp;=i\rho^{-2/3}F_1(x,\xi_1/\rho,\xi&#x27;),
+\end{split}
+\tag{4.4}
+\]</span>
+with ordinary orders <span class="math" data-tex="\(m+1/6,m-1/6\)">\(m+1/6,m-1/6\)</span>. Use its support cutoffs so that (4.4) agrees on the entire prescribed critical support. The negative-square extension is needed for smoothness across <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>; its unprescribed values never meet the critical equation <span class="math" data-tex="\(\xi_1=s^2\rho\)">\(\xi_1=s^2\rho\)</span>. Substitution in (4.1) gives exactly (4.3), because <span class="math" data-tex="\((-i)i=1\)">\((-i)i=1\)</span>.</p>
+<p>For a whole compact <span class="math" data-tex="\(s\)">\(s\)</span> interval, the near-zero construction is joined to the explicit attained-side formulas
+<span class="math math-display" data-tex="\[
+F_0(v)=\frac{a_c(\sqrt v)+a_c(-\sqrt v)}2,\qquad
+F_1(v)=\frac{a_c(\sqrt v)-a_c(-\sqrt v)}{2\sqrt v}
+\quad(v&gt;0),
+\tag{4.5}
+\]">\[
+F_0(v)=\frac{a_c(\sqrt v)+a_c(-\sqrt v)}2,\qquad
+F_1(v)=\frac{a_c(\sqrt v)-a_c(-\sqrt v)}{2\sqrt v}
+\quad(v&gt;0),
+\tag{4.5}
+\]</span>
+with the other parameters retained. On intervals separated from zero, their differentiated symbol bounds follow from the ordinary chain rule and a lower bound for <span class="math" data-tex="\(\sqrt v\)">\(\sqrt v\)</span>. Near zero the uniform descent theorem proves the matching smooth jets. The formulas agree on their overlap, so a fixed square-variable partition joins them without changing (4.3). If <span class="math" data-tex="\(a_c\)">\(a_c\)</span> is zero outside <span class="math" data-tex="\(|s|\leq S_0\)">\(|s|\leq S_0\)</span>, both attained-side functions are zero for <span class="math" data-tex="\(v&gt;S_0^2\)">\(v&gt;S_0^2\)</span>; the fixed negative extension has compact support as well. Thus the construction covers the whole prescribed interval, not merely its germ at zero.</p>
+<p>Now let <span class="math" data-tex="\(A\in I^m(C&#x27;)\)">\(A\in I^m(C&#x27;)\)</span> satisfy the stated whole-wavefront localization. The symbol isomorphism gives its leading coefficient in the fixed phase frame. Formula (4.4) and membership construct <span class="math" data-tex="\(B_0\)">\(B_0\)</span> with that same symbol. The kernel part of the isomorphism gives <span class="math" data-tex="\(A-B_0\in I^{m-1}\)">\(A-B_0\in I^{m-1}\)</span>. Repeat on the residual to construct coefficients
+<span class="math math-display" data-tex="\[
+b_{0,j}\in S^{m+1/6-j},\qquad
+b_{1,j}\in S^{m-1/6-j},\qquad j=0,1,\ldots.
+\tag{4.6}
+\]">\[
+b_{0,j}\in S^{m+1/6-j},\qquad
+b_{1,j}\in S^{m-1/6-j},\qquad j=0,1,\ldots.
+\tag{4.6}
+\]</span>
+Here the support induction needs care. Choose once a compact <span class="math" data-tex="\(x\)">\(x\)</span> neighborhood, a compact angular <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span> neighborhood and a symmetric interval <span class="math" data-tex="\(|s|\leq S_0\)">\(|s|\leq S_0\)</span> containing the original critical wavefront support, with fixed larger cutoff neighborhoods in the full model. Call their product <span class="math" data-tex="\(K\)">\(K\)</span>. Its symmetry is essential: splitting a coefficient into even and odd parts uses its values at both <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(-s\)">\(-s\)</span>. It can create lower-order terms on the reflected sheet even when the sum of the leading coefficients cancels there. We do not assert that each realizing operator has wavefront only in the original set.</p>
+<p>Inductively suppose the residual's critical wavefront is contained in <span class="math" data-tex="\(K\)">\(K\)</span>. Fourier-graph symbol extraction in the density lesson gives a representative rapidly decreasing, with all derivatives, on closed parameter neighborhoods disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>; smooth critical-coordinate and frame changes preserve this property. Formulas (4.5) only use the two reflected parameter points. Outside the fixed symmetric interval, or the fixed <span class="math" data-tex="\(x,\xi&#x27;\)">\(x,\xi&#x27;\)</span> neighborhoods, both are outside <span class="math" data-tex="\(K\)">\(K\)</span>, so every prescribed derivative of the descended coefficients is rapidly decreasing there. At zero the same conclusion follows from the finite mixed-seminorm estimates of the descent and extension. The unattained-side extension meets no critical point. The phase wavefront theorem consequently places the realizing operator's entire critical wavefront in <span class="math" data-tex="\(K\)">\(K\)</span>, and the new residual's wavefront is also in <span class="math" data-tex="\(K\)">\(K\)</span>. Fixed larger cutoffs discard only rapidly decreasing coefficients. This proves the induction with one symmetric neighborhood, without successive support growth or a false claim about the individual sheets.</p>
+<p>Apply the imported E6 separately to the two sequences, with base variable <span class="math" data-tex="\(x\)">\(x\)</span>, full frequency variable <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and their fixed supports. It gives ordinary coefficients <span class="math" data-tex="\(b_0,b_1\)">\(b_0,b_1\)</span> satisfying, for every <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+b_0-\sum_{j&lt;N}b_{0,j}\in S^{m+1/6-N},\qquad
+b_1-\sum_{j&lt;N}b_{1,j}\in S^{m-1/6-N}.
+\tag{4.7}
+\]">\[
+b_0-\sum_{j&lt;N}b_{0,j}\in S^{m+1/6-N},\qquad
+b_1-\sum_{j&lt;N}b_{1,j}\in S^{m-1/6-N}.
+\tag{4.7}
+\]</span>
+The membership argument is linear in the coefficients and respects these orders: a remainder in (4.7) gives a kernel in <span class="math" data-tex="\(I^{m-N}\)">\(I^{m-N}\)</span>, with a smooth tail by Lemma 3.2. The finite residual after <span class="math" data-tex="\(N\)">\(N\)</span> symbol matches has that same order. Hence <span class="math" data-tex="\(A-B(b_0,b_1)\in I^{m-N}\)">\(A-B(b_0,b_1)\in I^{m-N}\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>. The every-order Lagrangian regularity criterion makes this residual smooth. This proves the full representation, including all lower orders. Matching only the leading symbol would have given one lower order, not a smooth residual. ∎</p>
+<h2 id="bound-the-model-without-ordinary-symbol-improvement"><span id="5-bound-the-model-without-ordinary-symbol-improvement"></span><span id="section-5"></span>5. Bound the model without ordinary symbol improvement</h2>
+<p><strong>Lemma 5.1 (bounded mixed derivatives).</strong> On (2.4), for every <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_\xi^\beta\widehat a(x,\xi)|
+\leq C_{\alpha,\beta}\langle\xi\rangle^{m+1/6}.
+\tag{5.1}
+\]">\[
+|\partial_x^\alpha\partial_\xi^\beta\widehat a(x,\xi)|
+\leq C_{\alpha,\beta}\langle\xi\rangle^{m+1/6}.
+\tag{5.1}
+\]</span>
+This exponent does not decrease by <span class="math" data-tex="\(|\beta|\)">\(|\beta|\)</span>. In particular all mixed derivatives are bounded if <span class="math" data-tex="\(m\leq-1/6\)">\(m\leq-1/6\)</span>.</p>
+<p><strong>Proof.</strong> On the cone, <span class="math" data-tex="\(|r|\leq C\rho^{2/3}\)">\(|r|\leq C\rho^{2/3}\)</span>. Homogeneity and differentiation of <span class="math" data-tex="\(-\xi_1\rho^{-1/3}\)">\(-\xi_1\rho^{-1/3}\)</span> give
+<span class="math math-display" data-tex="\[
+|\partial_\xi^\gamma r|\leq C_\gamma\rho^{2/3-|\gamma|}
+\quad(|\gamma|\geq1).
+\tag{5.2}
+\]">\[
+|\partial_\xi^\gamma r|\leq C_\gamma\rho^{2/3-|\gamma|}
+\quad(|\gamma|\geq1).
+\tag{5.2}
+\]</span>
+For a derivative of order <span class="math" data-tex="\(\ell\geq1\)">\(\ell\geq1\)</span> of <span class="math" data-tex="\(\operatorname{Ai}(r)\)">\(\operatorname{Ai}(r)\)</span>, the chain rule has finitely many terms of the form <span class="math" data-tex="\(\operatorname{Ai}^{(q)}(r)\prod_{j=1}^q\partial_\xi^{\gamma_j}r\)">\(\operatorname{Ai}^{(q)}(r)\prod_{j=1}^q\partial_\xi^{\gamma_j}r\)</span>, with <span class="math" data-tex="\(1\leq q\leq\ell\)">\(1\leq q\leq\ell\)</span>, <span class="math" data-tex="\(\sum|\gamma_j|=\ell\)">\(\sum|\gamma_j|=\ell\)</span>. Theorem 1.3 and <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span> imply
+<span class="math math-display" data-tex="\[
+|\operatorname{Ai}^{(q)}(r)|\leq C\rho^{q/3-1/6}.
+\]">\[
+|\operatorname{Ai}^{(q)}(r)|\leq C\rho^{q/3-1/6}.
+\]</span>
+Together with (5.2), this term is at most <span class="math" data-tex="\(C\rho^{q-\ell-1/6}\leq C\rho^{-1/6}\)">\(C\rho^{q-\ell-1/6}\leq C\rho^{-1/6}\)</span>. For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, <span class="math" data-tex="\(\operatorname{Ai}(r)\)">\(\operatorname{Ai}(r)\)</span> is uniformly bounded by (1.8).</p>
+<p>For <span class="math" data-tex="\(\operatorname{Ai}&#x27;(r)\)">\(\operatorname{Ai}&#x27;(r)\)</span>, including <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>, the corresponding term has <span class="math" data-tex="\(q\)">\(q\)</span> chain factors and derivative <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Its bound is
+<span class="math math-display" data-tex="\[
+C\rho^{(q+1)/3-1/6+2q/3-\ell}
+=C\rho^{q-\ell+1/6}
+\leq C\rho^{1/6}.
+\tag{5.3}
+\]">\[
+C\rho^{(q+1)/3-1/6+2q/3-\ell}
+=C\rho^{q-\ell+1/6}
+\leq C\rho^{1/6}.
+\tag{5.3}
+\]</span>
+Here <span class="math" data-tex="\(q=0\)">\(q=0\)</span> is the undifferentiated case, and otherwise <span class="math" data-tex="\(q\leq\ell\)">\(q\leq\ell\)</span>. Product derivatives of <span class="math" data-tex="\(b_0\)">\(b_0\)</span> have order at most <span class="math" data-tex="\(m+1/6\)">\(m+1/6\)</span>, since every actual frequency derivative lowers their ordinary order. Thus the first term of (2.5) satisfies (5.1). Derivatives of the second term are bounded by <span class="math" data-tex="\(C\rho^{m-1/6+1/6}=C\rho^m\)">\(C\rho^{m-1/6+1/6}=C\rho^m\)</span>, which is no larger than <span class="math" data-tex="\(C\rho^{m+1/6}\)">\(C\rho^{m+1/6}\)</span> for <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>. Base derivatives act only on <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, with the same orders. Smooth cone/radial cutoffs obey the same estimates. This proves every mixed derivative in (5.1). ∎</p>
+<p><strong>Theorem 5.2 (model <span class="math" data-tex="\(L^2\)">\(L^2\)</span> theorem).</strong> If the coefficients in (2.3) have compact base support and <span class="math" data-tex="\(m\leq-1/6\)">\(m\leq-1/6\)</span>, then (2.6) extends continuously to <span class="math" data-tex="\(L^2(\mathbb R^n)\)">\(L^2(\mathbb R^n)\)</span>. Its norm is bounded by finitely many ordinary symbol seminorms of <span class="math" data-tex="\(b_0,b_1\)">\(b_0,b_1\)</span>, with constants depending on the fixed cone, support and dimension. Every model kernel covered by Theorem 4.1 is consequently continuous from <span class="math" data-tex="\(L^2\)">\(L^2\)</span> on a fixed compact input set to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> on a fixed compact output set.</p>
+<p><strong>Proof.</strong> With the ordinary inverse-Fourier normalization,
+<span class="math math-display" data-tex="\[
+B=(2\pi)^{1/2}\operatorname{Op}(\widehat a).
+\tag{5.4}
+\]">\[
+B=(2\pi)^{1/2}\operatorname{Op}(\widehat a).
+\tag{5.4}
+\]</span>
+Choose the finite derivative count <span class="math" data-tex="\(L_n\)">\(L_n\)</span> in the imported E23. Lemma 5.1 bounds every derivative of total order at most <span class="math" data-tex="\(L_n\)">\(L_n\)</span>. Its constants use finitely many derivatives of the two coefficients and the fixed Airy constants. E23 therefore gives
+<span class="math math-display" data-tex="\[
+\|Bf\|_2\leq (2\pi)^{1/2} C_n
+\max_{|\alpha|+|\beta|\leq L_n}
+\|\partial_x^\alpha\partial_\xi^\beta\widehat a\|_\infty
+\|f\|_2.
+\tag{5.5}
+\]">\[
+\|Bf\|_2\leq (2\pi)^{1/2} C_n
+\max_{|\alpha|+|\beta|\leq L_n}
+\|\partial_x^\alpha\partial_\xi^\beta\widehat a\|_\infty
+\|f\|_2.
+\tag{5.5}
+\]</span>
+The bounded extension agrees with (2.6) on Schwartz functions by that theorem and density. No <span class="math" data-tex="\(S^0_{1,0}\)">\(S^0_{1,0}\)</span> assertion about <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> was used.</p>
+<p>For a localized general model kernel, use its representation from Theorem 4.1 after compact base localization. The representing coefficients can be chosen with compact <span class="math" data-tex="\(x\)">\(x\)</span> support. Its Airy operator is bounded by (5.5). The remaining smooth kernel, restricted to the fixed compact input and output sets, has finite <span class="math" data-tex="\(L^2\)">\(L^2\)</span> kernel norm and is Hilbert–Schmidt. Input and output multiplication by fixed cutoffs are bounded on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Adding these pieces gives the stated local result. Smoothness alone on a noncompact product would not have justified a global Hilbert–Schmidt claim. ∎</p>
+<p><strong>Example 5.3 (a bounded amplitude with no ordinary derivative gain).</strong> Take <span class="math" data-tex="\(m=-1/6\)">\(m=-1/6\)</span>, <span class="math" data-tex="\(b_1=0\)">\(b_1=0\)</span>, and let <span class="math" data-tex="\(b_0\)">\(b_0\)</span> be one on a high-frequency conic neighborhood of <span class="math" data-tex="\(\xi_1=\rho\)">\(\xi_1=\rho\)</span>, with compact <span class="math" data-tex="\(x\)">\(x\)</span> support and <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span> in an inner base region. On that region,
+<span class="math math-display" data-tex="\[
+\partial_{\xi_1}\widehat a
+=-\rho^{-1/3}\operatorname{Ai}&#x27;(-\rho^{2/3}).
+\tag{5.6}
+\]">\[
+\partial_{\xi_1}\widehat a
+=-\rho^{-1/3}\operatorname{Ai}&#x27;(-\rho^{2/3}).
+\tag{5.6}
+\]</span>
+Formula (1.10) with <span class="math" data-tex="\(k=1\)">\(k=1\)</span> gives
+<span class="math math-display" data-tex="\[
+\partial_{\xi_1}\widehat a
+=-\pi^{-1/2}\rho^{-1/6}
+\sin(2\rho/3-\pi/4)+O(\rho^{-7/6}).
+\tag{5.7}
+\]">\[
+\partial_{\xi_1}\widehat a
+=-\pi^{-1/2}\rho^{-1/6}
+\sin(2\rho/3-\pi/4)+O(\rho^{-7/6}).
+\tag{5.7}
+\]</span>
+Along <span class="math" data-tex="\(\rho_j=\tfrac32(3\pi/4+2\pi j)\)">\(\rho_j=\tfrac32(3\pi/4+2\pi j)\)</span>, the sine equals one. Thus (5.6) is not <span class="math" data-tex="\(O(\rho^{-1})\)">\(O(\rho^{-1})\)</span>. The amplitude is bounded with all mixed derivatives by Lemma 5.1, but it is not an ordinary <span class="math" data-tex="\(S^0_{1,0}\)">\(S^0_{1,0}\)</span> symbol. The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> proof above still applies.</p>
+<h2 id="exercises-with-complete-solutions"><span id="6-exercises-with-complete-solutions"></span><span id="section-6"></span>6. Exercises with complete solutions</h2>
+<p><strong>Exercise 6.1 (contour height; introductory).</strong> For real <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, compute the real part of <span class="math" data-tex="\(i((t+ia)^3/3+r(t+ia))\)">\(i((t+ia)^3/3+r(t+ia))\)</span>. Why does choosing <span class="math" data-tex="\(a=\sqrt r\)">\(a=\sqrt r\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> give exponential decay? Does differentiating (1.11) as an expression in <span class="math" data-tex="\(R\)">\(R\)</span> prove its formula for arbitrary <span class="math" data-tex="\(k\)">\(k\)</span>?</p>
+<p><strong>Solution.</strong> Expansion gives real part <span class="math" data-tex="\(-at^2+a^3/3-ar\)">\(-at^2+a^3/3-ar\)</span>. If <span class="math" data-tex="\(a=\sqrt r\)">\(a=\sqrt r\)</span>, the constant part is <span class="math" data-tex="\(-2r^{3/2}/3\)">\(-2r^{3/2}/3\)</span>, and the Gaussian is <span class="math" data-tex="\(e^{-\sqrt r t^2}\)">\(e^{-\sqrt r t^2}\)</span>. The formula for the <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative is obtained by differentiating (1.5) with <span class="math" data-tex="\(a\)">\(a\)</span> held fixed, inserting <span class="math" data-tex="\((i(t+ia))^k\)">\((i(t+ia))^k\)</span>, then choosing <span class="math" data-tex="\(a=\sqrt R\)">\(a=\sqrt R\)</span> at the evaluation point. Differentiating the displayed <span class="math" data-tex="\(R\)">\(R\)</span>-dependent expression naively introduces derivatives of the contour height and its prefactor; those terms must cancel by contour independence. Holding the height fixed avoids that extra argument and proves exactly (1.11).</p>
+<p><strong>Exercise 6.2 (both stationary points; intermediate).</strong> Derive the leading terms of <span class="math" data-tex="\(\operatorname{Ai}(-R)\)">\(\operatorname{Ai}(-R)\)</span> and <span class="math" data-tex="\(\operatorname{Ai}&#x27;(-R)\)">\(\operatorname{Ai}&#x27;(-R)\)</span> from the stationary points of <span class="math" data-tex="\(u^3/3-u\)">\(u^3/3-u\)</span>. Explain why discarding either point gives a wrong real answer.</p>
+<p><strong>Solution.</strong> The points <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> have Hessians <span class="math" data-tex="\(2,-2\)">\(2,-2\)</span>, values <span class="math" data-tex="\(-2/3,2/3\)">\(-2/3,2/3\)</span>, and stationary factors <span class="math" data-tex="\(e^{i\pi/4},e^{-i\pi/4}\)">\(e^{i\pi/4},e^{-i\pi/4}\)</span>. With <span class="math" data-tex="\(\theta=2R^{3/2}/3-\pi/4\)">\(\theta=2R^{3/2}/3-\pi/4\)</span>, their contributions for <span class="math" data-tex="\(k=0\)">\(k=0\)</span> sum to <span class="math" data-tex="\(2\cos\theta\)">\(2\cos\theta\)</span>, and for <span class="math" data-tex="\(k=1\)">\(k=1\)</span> to <span class="math" data-tex="\(2\sin\theta\)">\(2\sin\theta\)</span>. The prefactor calculation in (1.12) gives <span class="math" data-tex="\(\pi^{-1/2}R^{-1/4}\cos\theta\)">\(\pi^{-1/2}R^{-1/4}\cos\theta\)</span> and <span class="math" data-tex="\(\pi^{-1/2}R^{1/4}\sin\theta\)">\(\pi^{-1/2}R^{1/4}\sin\theta\)</span>, with errors <span class="math" data-tex="\(O(R^{-7/4})\)">\(O(R^{-7/4})\)</span> and <span class="math" data-tex="\(O(R^{-5/4})\)">\(O(R^{-5/4})\)</span>. A single contribution is complex and has half the real cosine/sine combination. The conjugate stationary point is required by the real Airy integral; neither its signature nor its amplitude may be omitted.</p>
+<p><strong>Exercise 6.3 (how many tail integrations; intermediate).</strong> In (1.12), consider derivative <span class="math" data-tex="\(k=8\)">\(k=8\)</span>. Give an integer <span class="math" data-tex="\(N\)">\(N\)</span> which both makes the noncompact tail integrable and makes it smaller than the compact stationary-phase error. What is its <span class="math" data-tex="\(R\)">\(R\)</span> order after the prefactor is restored?</p>
+<p><strong>Solution.</strong> We require <span class="math" data-tex="\(3N&gt;9\)">\(3N&gt;9\)</span> and <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span>, so <span class="math" data-tex="\(N=4\)">\(N=4\)</span> works. The amplitude then has weight <span class="math" data-tex="\(8-12=-4\)">\(8-12=-4\)</span>, which is integrable, and the oscillatory estimate is <span class="math" data-tex="\(O(\lambda^{-4})\)">\(O(\lambda^{-4})\)</span>. The restored factor is <span class="math" data-tex="\(R^{9/2}\)">\(R^{9/2}\)</span>, while <span class="math" data-tex="\(\lambda^{-4}=R^{-6}\)">\(\lambda^{-4}=R^{-6}\)</span>; hence the tail is <span class="math" data-tex="\(O(R^{-3/2})\)">\(O(R^{-3/2})\)</span>. The stationary-phase error is <span class="math" data-tex="\(O(R^{4-7/4})=O(R^{9/4})\)">\(O(R^{4-7/4})=O(R^{9/4})\)</span>. Thus the tail is smaller. A single integration would leave weight five and would not even supply an absolute integrable remainder for this derivative.</p>
+<p><strong>Exercise 6.4 (odd cubic sign; introductory).</strong> For <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>, derive <span class="math" data-tex="\(\operatorname{Os}\int s e^{i(s\xi_1-s^3\rho/3)}ds\)">\(\operatorname{Os}\int s e^{i(s\xi_1-s^3\rho/3)}ds\)</span> by differentiating the first line of (3.1) with respect to <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>. What sign would using <span class="math" data-tex="\(+is\rho^{2/3}b_1\)">\(+is\rho^{2/3}b_1\)</span> in (3.2) produce?</p>
+<p><strong>Solution.</strong> Differentiation of the first line gives <span class="math" data-tex="\(i\operatorname{Os}\int s e^{i(s\xi_1-s^3\rho/3)}ds=-2\pi\rho^{-2/3}\operatorname{Ai}&#x27;(r)\)">\(i\operatorname{Os}\int s e^{i(s\xi_1-s^3\rho/3)}ds=-2\pi\rho^{-2/3}\operatorname{Ai}&#x27;(r)\)</span>. Division by <span class="math" data-tex="\(i\)">\(i\)</span> gives <span class="math" data-tex="\(+2\pi i\rho^{-2/3}\operatorname{Ai}&#x27;(r)\)">\(+2\pi i\rho^{-2/3}\operatorname{Ai}&#x27;(r)\)</span>, as in (3.1). Multiplying by <span class="math" data-tex="\(+i\rho^{2/3}b_1\)">\(+i\rho^{2/3}b_1\)</span> gives <span class="math" data-tex="\(-2\pi b_1\operatorname{Ai}&#x27;\)">\(-2\pi b_1\operatorname{Ai}&#x27;\)</span>, reversing the desired term. The negative <span class="math" data-tex="\(i\)">\(i\)</span> in (3.2) is forced by the inverse-Fourier convention.</p>
+<p><strong>Exercise 6.5 (a differentiated smoothing tail; advanced).</strong> In Lemma 3.2 take <span class="math" data-tex="\(m=1/2\)">\(m=1/2\)</span>, so <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span>, and ask for <span class="math" data-tex="\(|\beta|=3\)">\(|\beta|=3\)</span> and <span class="math" data-tex="\(M=5\)">\(M=5\)</span>. Choose <span class="math" data-tex="\(N\)">\(N\)</span> proving (3.4). Give the resulting <span class="math" data-tex="\(s\)">\(s\)</span> weight and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> power in (3.9).</p>
+<p><strong>Solution.</strong> Conditions (3.10) require <span class="math" data-tex="\(3N&gt;11\)">\(3N&gt;11\)</span> and <span class="math" data-tex="\(N\geq1+5+3=9\)">\(N\geq1+5+3=9\)</span>; choose <span class="math" data-tex="\(N=9\)">\(N=9\)</span>. The weight is <span class="math" data-tex="\(1-27+9=-17\)">\(1-27+9=-17\)</span>, integrable on the two tails. The frequency factor is <span class="math" data-tex="\(\rho^{1-9}=\rho^{-8}\)">\(\rho^{1-9}=\rho^{-8}\)</span>, exactly the requested <span class="math" data-tex="\(\rho^{-M-|\beta|}\)">\(\rho^{-M-|\beta|}\)</span>. The constants involve finitely many coefficient and cutoff derivatives. Integrating once would give only an undifferentiated <span class="math" data-tex="\(s^{-2}\)">\(s^{-2}\)</span> weight, which the three phase derivatives could change to <span class="math" data-tex="\(s^7\)">\(s^7\)</span>; it would not prove this differentiated estimate.</p>
+<p><strong>Exercise 6.6 (orders in a concrete model; intermediate).</strong> For <span class="math" data-tex="\(n=2,m=-1/6\)">\(n=2,m=-1/6\)</span>, give the orders of <span class="math" data-tex="\(b_0,b_1\)">\(b_0,b_1\)</span>, of the two terms in (3.2) on compact <span class="math" data-tex="\(s\)">\(s\)</span> support, and of the homogeneous amplitude. Give both kernel prefactors before and after the <span class="math" data-tex="\(s\)">\(s\)</span> integral.</p>
+<p><strong>Solution.</strong> The coefficient orders are <span class="math" data-tex="\(0,-1/3\)">\(0,-1/3\)</span>. Multiplication by <span class="math" data-tex="\(\rho^{1/3}\)">\(\rho^{1/3}\)</span> or <span class="math" data-tex="\(\rho^{2/3}\)">\(\rho^{2/3}\)</span> makes both cubic terms order <span class="math" data-tex="\(1/3=m+1/2\)">\(1/3=m+1/2\)</span>; the compact factor <span class="math" data-tex="\(s\)">\(s\)</span> does not change order. The homogeneous change <span class="math" data-tex="\(\tau=\rho s\)">\(\tau=\rho s\)</span> divides that amplitude by <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, giving order <span class="math" data-tex="\(-2/3=m-1/2\)">\(-2/3=m-1/2\)</span>. The normalized cubic kernel factor is <span class="math" data-tex="\((2\pi)^{-5/2}\)">\((2\pi)^{-5/2}\)</span>, while the Airy Fourier factor is <span class="math" data-tex="\((2\pi)^{-3/2}\)">\((2\pi)^{-3/2}\)</span>. Their ratio is <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, the factor in Lemma 3.1. Relative to the ordinary <span class="math" data-tex="\((2\pi)^{-2}\)">\((2\pi)^{-2}\)</span> pseudodifferential normalization the operator factor is <span class="math" data-tex="\((2\pi)^{1/2}\)">\((2\pi)^{1/2}\)</span>.</p>
+<p><strong>Exercise 6.7 (extend to negative square values; intermediate).</strong> On the attained side let <span class="math" data-tex="\(a_c=\langle\xi&#x27;\rangle^{m+1/2}(1+s+s^2)\)">\(a_c=\langle\xi&#x27;\rangle^{m+1/2}(1+s+s^2)\)</span>, with fixed support cutoffs. Compute the local <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> and the corresponding coefficients. Why must <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> be defined for negative <span class="math" data-tex="\(\xi_1/\rho\)">\(\xi_1/\rho\)</span> as well?</p>
+<p><strong>Solution.</strong> On the inner region <span class="math" data-tex="\(F_0(x,v,\xi&#x27;)=\langle\xi&#x27;\rangle^{m+1/2}(1+v)\)">\(F_0(x,v,\xi&#x27;)=\langle\xi&#x27;\rangle^{m+1/2}(1+v)\)</span> and <span class="math" data-tex="\(F_1(x,v,\xi&#x27;)=\langle\xi&#x27;\rangle^{m+1/2}\)">\(F_1(x,v,\xi&#x27;)=\langle\xi&#x27;\rangle^{m+1/2}\)</span>. Thus <span class="math" data-tex="\(b_0=\rho^{-1/3}\langle\xi&#x27;\rangle^{m+1/2}(1+\xi_1/\rho)\)">\(b_0=\rho^{-1/3}\langle\xi&#x27;\rangle^{m+1/2}(1+\xi_1/\rho)\)</span> and <span class="math" data-tex="\(b_1=i\rho^{-2/3}\langle\xi&#x27;\rangle^{m+1/2}\)">\(b_1=i\rho^{-2/3}\langle\xi&#x27;\rangle^{m+1/2}\)</span>, with the controlled outer cutoffs. Their orders are those of (2.3), since <span class="math" data-tex="\(\langle\xi&#x27;\rangle\asymp\rho\)">\(\langle\xi&#x27;\rangle\asymp\rho\)</span> on the angular cone. Restriction to <span class="math" data-tex="\(\xi_1=s^2\rho\)">\(\xi_1=s^2\rho\)</span> reproduces <span class="math" data-tex="\(1+s^2+s\)">\(1+s^2+s\)</span>. A full frequency amplitude must be smooth across <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>, so values on the negative side are needed even though that side is not attained critically. Setting arbitrary nonzero boundary data to zero immediately on that side would fail smoothness. The controlled extension theorem supplies matching jets without imposing analytic continuation.</p>
+<p><strong>Exercise 6.8 (bounded derivatives and the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> theorem; advanced).</strong> Explain exactly why Example 5.3 violates <span class="math" data-tex="\(S^0_{1,0}\)">\(S^0_{1,0}\)</span>, while meeting the imported E23 contract. Does boundedness of <span class="math" data-tex="\(\widehat a\)">\(\widehat a\)</span> alone meet that contract?</p>
+<p><strong>Solution.</strong> Ordinary order zero would require its first <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span> derivative to be bounded by <span class="math" data-tex="\(C\langle\xi\rangle^{-1}\)">\(C\langle\xi\rangle^{-1}\)</span>. On the specified interior sequence the derivative has size asymptotic to <span class="math" data-tex="\(\pi^{-1/2}\rho_j^{-1/6}\)">\(\pi^{-1/2}\rho_j^{-1/6}\)</span>; multiplying by <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> tends to infinity. Therefore no such constant exists. Lemma 5.1 nevertheless bounds every mixed derivative at <span class="math" data-tex="\(m=-1/6\)">\(m=-1/6\)</span>, including the finite set of total order at most <span class="math" data-tex="\(L_n\)">\(L_n\)</span> required by E23. That finite set, with the normalization (5.4), proves <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedness. Zeroth boundedness alone does not meet E23: its contract explicitly includes the prescribed positive-order derivatives, which must be checked.</p>
+<p><strong>Exercise 6.9 (why matching one symbol is insufficient; intermediate).</strong> Suppose an Airy operator <span class="math" data-tex="\(B_0\)">\(B_0\)</span> matches the principal symbol of <span class="math" data-tex="\(A\in I^m(C&#x27;)\)">\(A\in I^m(C&#x27;)\)</span>. State the guaranteed residual order. Explain the two coefficient sums needed to make it smooth, and why summing the critical coefficients only is insufficient for the claimed Fourier representation.</p>
+<p><strong>Solution.</strong> The symbol isomorphism gives <span class="math" data-tex="\(A-B_0\in I^{m-1}\)">\(A-B_0\in I^{m-1}\)</span>. That class can have nonsmooth kernels. Recursively construct both sequences (4.6), then sum them as actual ordinary symbols in <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> by E6. The two summed coefficients satisfy (4.7), so membership leaves a residual in <span class="math" data-tex="\(I^{m-N}\)">\(I^{m-N}\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>, which is smooth by the every-order criterion. A sum expressed only on <span class="math" data-tex="\((x,s,\xi&#x27;)\)">\((x,s,\xi&#x27;)\)</span> has not yet produced smooth full-frequency coefficients on both sides of <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>, with their separate orders and fixed supports. The descent and two coefficient sums supply those missing data and preserve the actual Airy formula.</p>
+<p><strong>Exercise 6.10 (localization and a smooth remainder; advanced).</strong> A local representation has a smooth residual kernel on a coordinate neighborhood. Explain how to conclude the compact-input/compact-output <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound, and give a smooth kernel showing why a global Hilbert–Schmidt claim needs more than smoothness.</p>
+<p><strong>Solution.</strong> Insert fixed smooth cutoffs supported in that coordinate neighborhood on the input and output. The residual is then a smooth compactly supported kernel, whose square is integrable, so its operator is Hilbert–Schmidt and bounded. The Airy part is bounded by Theorem 5.2, and the cutoffs are bounded multipliers; their sum yields the local estimate. The globally constant kernel <span class="math" data-tex="\(K(x,y)=1\)">\(K(x,y)=1\)</span> on <span class="math" data-tex="\(\mathbb R^n\times\mathbb R^n\)">\(\mathbb R^n\times\mathbb R^n\)</span> is smooth but has infinite squared kernel integral. It does not define a bounded operator on all <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: for <span class="math" data-tex="\(f_R=|E_R|^{-1/2}\mathbf1_{E_R}\)">\(f_R=|E_R|^{-1/2}\mathbf1_{E_R}\)</span>, with finite sets of volume tending to infinity, its formal output is the nonzero constant <span class="math" data-tex="\(|E_R|^{1/2}\)">\(|E_R|^{1/2}\)</span>, which is not in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Thus the localized smooth remainder and its support, not smoothness alone, complete the argument.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Hörmander I, §7.6] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Definition 7.6.8 and formulas (7.6.16)–(7.6.21). The cutoff, contour, noncompact stationary-phase tail and every derivative estimate used here are proved explicitly in §1.</li>
+<li>[Hörmander IV, §25.3] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 1985, formulas (25.3.9)–(25.3.12) and Theorem 25.3.10. This lesson proves the localized model representation and continuity statement with its exact coefficient orders, supports, frame and constants. The invariant manifold and all-real Sobolev theorem 25.3.11 requires the subsequent canonical-localization argument.</li>
+<li>[AN-03, Euclidean symbol calculus] The existing exact prerequisite supplies support-preserving ordinary asymptotic summation E6 and the finite mixed-derivative bound E23. Its pseudodifferential calculus is imported rather than reauthored.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text and numerical illustration: public domain (CC0), with font-license exceptions recorded separately.</em></p>
+<footer><p>Original text: CC0.</p><p><a href="src/airy-functions-and-fold-model-operators.md">Editable original Markdown</a>. Source commit 39ee5c0c073550633578b12a80111fc27c86d250.</p></footer></main></body></html>

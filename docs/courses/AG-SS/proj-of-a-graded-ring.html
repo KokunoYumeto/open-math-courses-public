@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proj of a graded ring · Sheaves and schemes</title>
+<meta name="description" content="A lesson of the course Sheaves and schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-SS/proj-of-a-graded-ring.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Sheaves and schemes</a> <span aria-hidden="true">›</span> <span>Lesson 11 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="proj-of-a-graded-ring">Proj of a graded ring</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).</em></p>
+<p>Projective coordinates become ordinary functions after dividing by a coordinate that does not vanish. The Proj construction makes this observation work for an arbitrary graded ring: invert a positive-degree element, then retain degree zero. Degrees need not all be one, the base ring need not be a field, and the ring need not be finitely generated. These freedoms make it important to distinguish the construction itself from the extra hypotheses that make twisting sheaves invertible.</p>
+<p>We use affine schemes, gluing, and quasi-coherent modules from the preceding lessons. Grading conventions agree with <a href="../AG-CA/AG-CA-10.html">Graded modules and Hilbert–Samuel functions</a>, Section 1. Our ring is <span class="math" data-tex="\(S=\bigoplus_{r\geq0}S_r\)">\(S=\bigoplus_{r\geq0}S_r\)</span>, with <span class="math" data-tex="\(1\in S_0\)">\(1\in S_0\)</span>, while modules may be <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-graded. Put <span class="math" data-tex="\(S_+=\bigoplus_{r&gt;0}S_r\)">\(S_+=\bigoplus_{r&gt;0}S_r\)</span>. References [Stacks] and [Vakil] develop the same construction.</p>
+<h2 id="1-homogeneous-primes-and-degree-zero-fractions">1. Homogeneous primes and degree-zero fractions</h2>
+<p>A homogeneous ideal contains the homogeneous components of each of its elements. Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Proj}S=\{\mathfrak p\subset S:
+\mathfrak p\text{ is a homogeneous prime},\ S_+\not\subset\mathfrak p\}.
+\]">\[
+\operatorname{Proj}S=\{\mathfrak p\subset S:
+\mathfrak p\text{ is a homogeneous prime},\ S_+\not\subset\mathfrak p\}.
+\]</span>
+<p>For a homogeneous ideal <span class="math" data-tex="\(I\)">\(I\)</span>, let <span class="math" data-tex="\(V_+(I)\)">\(V_+(I)\)</span> be the subset of these primes containing <span class="math" data-tex="\(I\)">\(I\)</span>. These are the closed sets. Products of ideals give finite unions, and sums give intersections. For homogeneous <span class="math" data-tex="\(f\)">\(f\)</span> of positive degree define <span class="math" data-tex="\(D_+(f)=\operatorname{Proj}S\setminus V_+(f)\)">\(D_+(f)=\operatorname{Proj}S\setminus V_+(f)\)</span>. Then <span class="math" data-tex="\(D_+(f)\cap D_+(g)=D_+(fg)\)">\(D_+(f)\cap D_+(g)=D_+(fg)\)</span>.</p>
+<p>These opens form a basis. Indeed the complement of <span class="math" data-tex="\(V_+(I)\)">\(V_+(I)\)</span> is a union of nonvanishing loci of homogeneous elements of <span class="math" data-tex="\(I\)">\(I\)</span>. If such an element <span class="math" data-tex="\(a\)">\(a\)</span> has degree zero, at each relevant prime outside its vanishing set choose a positive-degree <span class="math" data-tex="\(h\)">\(h\)</span> outside the prime. The open <span class="math" data-tex="\(D_+(ah)\)">\(D_+(ah)\)</span> is a neighbourhood contained in that nonvanishing locus. Thus degree-zero elements do not require additional basis opens.</p>
+<p>For homogeneous <span class="math" data-tex="\(f\)">\(f\)</span> of degree <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, localization has the grading <span class="math" data-tex="\(\deg(a/f^r)=\deg a-rd\)">\(\deg(a/f^r)=\deg a-rd\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+S_{(f)}=(S_f)_0,
+\qquad M_{(f)}=(M_f)_0.
+\tag{1.1}
+\]">\[
+S_{(f)}=(S_f)_0,
+\qquad M_{(f)}=(M_f)_0.
+\tag{1.1}
+\]</span>
+<p>In the ring formula, fractions have <span class="math" data-tex="\(a\in S_{rd}\)">\(a\in S_{rd}\)</span>. Equality means that some power of <span class="math" data-tex="\(f\)">\(f\)</span> annihilates the cross-multiplied difference; cancellation is not presumed.</p>
+<p><strong>Lemma 1.1 (the chart prime correspondence).</strong> The map</p>
+<span class="math math-display" data-tex="\[
+D_+(f)\longrightarrow\operatorname{Spec}S_{(f)},
+\qquad\mathfrak p\longmapsto\mathfrak pS_f\cap S_{(f)}
+\tag{1.2}
+\]">\[
+D_+(f)\longrightarrow\operatorname{Spec}S_{(f)},
+\qquad\mathfrak p\longmapsto\mathfrak pS_f\cap S_{(f)}
+\tag{1.2}
+\]</span>
+<p>is a homeomorphism.</p>
+<p><strong>Proof.</strong> Localization identifies the left side with the homogeneous primes of the <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-graded ring <span class="math" data-tex="\(B=S_f\)">\(B=S_f\)</span>. Put <span class="math" data-tex="\(A=B_0\)">\(A=B_0\)</span>; the element <span class="math" data-tex="\(f\in B_d\)">\(f\in B_d\)</span> is a unit. Given a prime <span class="math" data-tex="\(P\subset A\)">\(P\subset A\)</span>, define a graded subset <span class="math" data-tex="\(Q\subset B\)">\(Q\subset B\)</span> by declaring, for homogeneous <span class="math" data-tex="\(b\in B_e\)">\(b\in B_e\)</span>,</p>
+<span class="math math-display" data-tex="\[
+b\in Q\quad\Longleftrightarrow\quad b^d/f^e\in P.
+\tag{1.3}
+\]">\[
+b\in Q\quad\Longleftrightarrow\quad b^d/f^e\in P.
+\tag{1.3}
+\]</span>
+<p>Negative <span class="math" data-tex="\(e\)">\(e\)</span> causes no problem because <span class="math" data-tex="\(f\)">\(f\)</span> is invertible. We check that this prescription gives a prime ideal. If <span class="math" data-tex="\(b,c\in Q\)">\(b,c\in Q\)</span> have degree <span class="math" data-tex="\(e\)">\(e\)</span>, each term of <span class="math" data-tex="\((b+c)^{2d}/f^{2e}\)">\((b+c)^{2d}/f^{2e}\)</span> has at least <span class="math" data-tex="\(d\)">\(d\)</span> factors of <span class="math" data-tex="\(b\)">\(b\)</span> or of <span class="math" data-tex="\(c\)">\(c\)</span>. It factors in <span class="math" data-tex="\(A\)">\(A\)</span> through <span class="math" data-tex="\(b^d/f^e\)">\(b^d/f^e\)</span> or <span class="math" data-tex="\(c^d/f^e\)">\(c^d/f^e\)</span>, so belongs to <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(P\)">\(P\)</span> is radical, <span class="math" data-tex="\((b+c)^d/f^e\in P\)">\((b+c)^d/f^e\in P\)</span>. This gives additivity in each degree. Negatives and multiplication by homogeneous elements follow from (1.3), so taking the direct sum of these degree pieces gives an ideal. If homogeneous <span class="math" data-tex="\(bc\)">\(bc\)</span> belongs to it, the product of their two normalized powers belongs to <span class="math" data-tex="\(P\)">\(P\)</span>; primality gives <span class="math" data-tex="\(b\in Q\)">\(b\in Q\)</span> or <span class="math" data-tex="\(c\in Q\)">\(c\in Q\)</span>.</p>
+<p>This homogeneous test implies ordinary primality: in the graded quotient, the product of the highest nonzero components of two nonzero finite sums is the highest component of their product and is nonzero. The quotient is therefore a domain. Also <span class="math" data-tex="\(1\notin Q\)">\(1\notin Q\)</span>, and <span class="math" data-tex="\(Q\cap A=P\)">\(Q\cap A=P\)</span>, since for degree zero (1.3) is <span class="math" data-tex="\(b^d\in P\)">\(b^d\in P\)</span>.</p>
+<p>Conversely, a homogeneous prime of <span class="math" data-tex="\(B\)">\(B\)</span> is uniquely determined by its contraction to <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(b\)">\(b\)</span> belongs to it exactly when <span class="math" data-tex="\(b^d/f^e\)">\(b^d/f^e\)</span> does. Thus (1.3) gives the inverse bijection. Under it, the nonvanishing locus of a homogeneous <span class="math" data-tex="\(g\in S_e\)">\(g\in S_e\)</span> inside <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span> corresponds to
+<span class="math" data-tex="\(D(g^d/f^e)\subset\operatorname{Spec}A\)">\(D(g^d/f^e)\subset\operatorname{Spec}A\)</span>.
+These are open. The contraction map is continuous, and the basis description makes it open, giving the homeomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-gluing-the-affine-charts">2. Gluing the affine charts</h2>
+<p>For homogeneous <span class="math" data-tex="\(f,g\)">\(f,g\)</span> of degrees <span class="math" data-tex="\(d,e&gt;0\)">\(d,e&gt;0\)</span>, set <span class="math" data-tex="\(h=g^d/f^e\in S_{(f)}\)">\(h=g^d/f^e\in S_{(f)}\)</span>. There are canonical identifications</p>
+<span class="math math-display" data-tex="\[
+(S_{(f)})_h\cong S_{(fg)},
+\qquad (M_{(f)})_h\cong M_{(fg)}.
+\tag{2.1}
+\]">\[
+(S_{(f)})_h\cong S_{(fg)},
+\qquad (M_{(f)})_h\cong M_{(fg)}.
+\tag{2.1}
+\]</span>
+<p>To see them explicitly, first invert <span class="math" data-tex="\(f\)">\(f\)</span>. Inverting <span class="math" data-tex="\(h\)">\(h\)</span> makes <span class="math" data-tex="\(g^d=hf^e\)">\(g^d=hf^e\)</span> invertible, hence makes <span class="math" data-tex="\(g\)">\(g\)</span> invertible. Conversely, a degree-zero fraction <span class="math" data-tex="\(a/(f^r g^s)\)">\(a/(f^r g^s)\)</span> in the double localization can be rewritten with <span class="math" data-tex="\(s\)">\(s\)</span> a multiple <span class="math" data-tex="\(kd\)">\(kd\)</span>: multiply its numerator and denominator by the needed power of <span class="math" data-tex="\(g\)">\(g\)</span>. It then equals</p>
+<span class="math math-display" data-tex="\[
+\left(a&#x27; /f^{r+ke}\right)h^{-k},
+\]">\[
+\left(a&#x27; /f^{r+ke}\right)h^{-k},
+\]</span>
+<p>whose parenthesized factor has degree zero. This proves surjectivity; injectivity follows from the localization equality criterion, or by taking the degree-zero part of the inverse graded-localization maps. The same argument uses homogeneous module numerators and proves the module assertion.</p>
+<p><strong>Theorem 2.1 (the scheme and its size).</strong> The space <span class="math" data-tex="\(\operatorname{Proj}S\)">\(\operatorname{Proj}S\)</span> has a canonical scheme structure with affine charts</p>
+<span class="math math-display" data-tex="\[
+D_+(f)=\operatorname{Spec}S_{(f)}.
+\]">\[
+D_+(f)=\operatorname{Spec}S_{(f)}.
+\]</span>
+<p>It has a structure morphism to <span class="math" data-tex="\(\operatorname{Spec}S_0\)">\(\operatorname{Spec}S_0\)</span>, sending <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> to <span class="math" data-tex="\(\mathfrak p\cap S_0\)">\(\mathfrak p\cap S_0\)</span>. It is quasi-compact if and only if finitely many positive-degree homogeneous elements <span class="math" data-tex="\(f_1,\ldots,f_r\)">\(f_1,\ldots,f_r\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+S_+\subset\sqrt{(f_1,\ldots,f_r)}.
+\tag{2.2}
+\]">\[
+S_+\subset\sqrt{(f_1,\ldots,f_r)}.
+\tag{2.2}
+\]</span>
+<p><strong>Proof.</strong> Lemma 1.1 identifies intersections of charts with the distinguished opens in (2.1). Those ring identifications give scheme isomorphisms on the intersections. On triple overlaps they are all induced by the identity on the localization in which the three elements are inverted, so satisfy the cocycle condition. The scheme-gluing theorem constructs the scheme. Its topology is the one already defined because the chart homeomorphisms and their overlap identifications are precisely (1.2). The maps <span class="math" data-tex="\(S_0\to S_{(f)}\)">\(S_0\to S_{(f)}\)</span> agree on overlaps, hence glue to the structure morphism, with the asserted contraction formula.</p>
+<p>We need the radical test
+<span class="math" data-tex="\(V_+(I)=\varnothing\)">\(V_+(I)=\varnothing\)</span> if and only if <span class="math" data-tex="\(S_+\subset\sqrt I\)">\(S_+\subset\sqrt I\)</span>, for homogeneous <span class="math" data-tex="\(I\)">\(I\)</span>. One direction follows from the definition of relevant primes. For the other, if the containment fails, some positive-degree homogeneous <span class="math" data-tex="\(g\)">\(g\)</span> is not nilpotent modulo <span class="math" data-tex="\(I\)">\(I\)</span>. Otherwise every homogeneous component of every element of <span class="math" data-tex="\(S_+\)">\(S_+\)</span> would be nilpotent modulo <span class="math" data-tex="\(I\)">\(I\)</span>, and their finite sums would also be nilpotent. The graded ring <span class="math" data-tex="\((S/I)_g\)">\((S/I)_g\)</span> is nonzero, so its degree-zero subring is nonzero and has a prime. Lemma 1.1 lifts it to a relevant homogeneous prime of <span class="math" data-tex="\(S/I\)">\(S/I\)</span>, and then of <span class="math" data-tex="\(S\)">\(S\)</span>, containing <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(V_+(I)\ne\varnothing\)">\(V_+(I)\ne\varnothing\)</span>.</p>
+<p>Condition (2.2) now says exactly that the indicated finitely many affine opens cover Proj. Conversely, a quasi-compact Proj has a finite subcover from its standard affine cover, and the same test yields (2.2). The finite list is allowed to be empty. In particular Proj is empty when every positive-degree element is nilpotent, including when <span class="math" data-tex="\(S_+\)">\(S_+\)</span> is a nilpotent ideal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.2 (the domain of a graded map).</strong> Let <span class="math" data-tex="\(\varphi:A\to B\)">\(\varphi:A\to B\)</span> be a degree-preserving homomorphism of nonnegative graded rings. Put <span class="math" data-tex="\(I=B\varphi(A_+)\)">\(I=B\varphi(A_+)\)</span>. There is a morphism</p>
+<span class="math math-display" data-tex="\[
+r_\varphi:U\longrightarrow\operatorname{Proj}A,
+\qquad
+U=\operatorname{Proj}B\setminus V_+(I)
+=\bigcup_{f\in A_+\text{ homogeneous}}D_+(\varphi(f)).
+\]">\[
+r_\varphi:U\longrightarrow\operatorname{Proj}A,
+\qquad
+U=\operatorname{Proj}B\setminus V_+(I)
+=\bigcup_{f\in A_+\text{ homogeneous}}D_+(\varphi(f)).
+\]</span>
+<p>It sends <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> to <span class="math" data-tex="\(\varphi^{-1}(\mathfrak q)\)">\(\varphi^{-1}(\mathfrak q)\)</span>, and its inverse image of <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span> is <span class="math" data-tex="\(D_+(\varphi(f))\)">\(D_+(\varphi(f))\)</span>. On that chart it is induced by</p>
+<span class="math math-display" data-tex="\[
+A_{(f)}\longrightarrow B_{(\varphi(f))},
+\qquad \frac{a}{f^r}\longmapsto\frac{\varphi(a)}{\varphi(f)^r}.
+\tag{2.3}
+\]">\[
+A_{(f)}\longrightarrow B_{(\varphi(f))},
+\qquad \frac{a}{f^r}\longmapsto\frac{\varphi(a)}{\varphi(f)^r}.
+\tag{2.3}
+\]</span>
+<p>These chart prescriptions determine the morphism uniquely. Its domain is all of <span class="math" data-tex="\(\operatorname{Proj}B\)">\(\operatorname{Proj}B\)</span> if and only if <span class="math" data-tex="\(B_+\subset\sqrt I\)">\(B_+\subset\sqrt I\)</span>.</p>
+<p><strong>Proof.</strong> The ideal <span class="math" data-tex="\(I\)">\(I\)</span> is homogeneous. A relevant homogeneous prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span> lies outside <span class="math" data-tex="\(V_+(I)\)">\(V_+(I)\)</span> exactly when some positive-degree homogeneous <span class="math" data-tex="\(f\)">\(f\)</span> has <span class="math" data-tex="\(\varphi(f)\notin\mathfrak q\)">\(\varphi(f)\notin\mathfrak q\)</span>. Its contraction is then a homogeneous prime that does not contain <span class="math" data-tex="\(A_+\)">\(A_+\)</span>, hence is a point of <span class="math" data-tex="\(\operatorname{Proj}A\)">\(\operatorname{Proj}A\)</span>. This also proves the stated inverse-image formula on points.</p>
+<p>For each such <span class="math" data-tex="\(f\)">\(f\)</span>, localization gives a graded ring map <span class="math" data-tex="\(A_f\to B_{\varphi(f)}\)">\(A_f\to B_{\varphi(f)}\)</span>. Taking degree zero gives (2.3). It is well defined even with zero divisors: an equality of fractions is witnessed by multiplication by a power of <span class="math" data-tex="\(f\)">\(f\)</span>, and applying <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> gives the corresponding witness in <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(\varphi(f)=0\)">\(\varphi(f)=0\)</span>, its localized ring is zero and its chart is empty. Lemma 1.1, with its explicit prime correspondence, shows that the scheme morphism supplied by (2.3) has the asserted contraction map on points.</p>
+<p>It remains to check the sheaf maps on overlaps. For <span class="math" data-tex="\(\deg f=d\)">\(\deg f=d\)</span>, <span class="math" data-tex="\(\deg g=e\)">\(\deg g=e\)</span>, the function defining <span class="math" data-tex="\(D_+(fg)\)">\(D_+(fg)\)</span> inside <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span> is <span class="math" data-tex="\(g^d/f^e\)">\(g^d/f^e\)</span>. Map (2.3) sends it to <span class="math" data-tex="\(\varphi(g)^d/\varphi(f)^e\)">\(\varphi(g)^d/\varphi(f)^e\)</span>, so its inverse image is the distinguished open <span class="math" data-tex="\(D_+(\varphi(fg))\)">\(D_+(\varphi(fg))\)</span>. After restricting both chart morphisms to this open, (2.1) identifies their ring maps with the same map
+<span class="math" data-tex="\(A_{(fg)}\to B_{(\varphi(fg))}\)">\(A_{(fg)}\to B_{(\varphi(fg))}\)</span>. Both send every homogeneous degree-zero fraction to its image under <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. They therefore agree as scheme morphisms, including their structure-sheaf maps. The gluing theorem produces <span class="math" data-tex="\(r_\varphi\)">\(r_\varphi\)</span>; uniqueness follows because these opens cover <span class="math" data-tex="\(U\)">\(U\)</span>. Finally the homogeneous radical test proved in Theorem 2.1 gives <span class="math" data-tex="\(V_+(I)=\varnothing\)">\(V_+(I)=\varnothing\)</span> exactly when <span class="math" data-tex="\(B_+\subset\sqrt I\)">\(B_+\subset\sqrt I\)</span>. No finite-generation or Noetherian hypothesis is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An arbitrary graded map can thus have a proper domain on Proj. For example, over a field <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(A=k[\epsilon]/(\epsilon^2)\)">\(A=k[\epsilon]/(\epsilon^2)\)</span> and <span class="math" data-tex="\(B=k[t]\)">\(B=k[t]\)</span>, with both generators in degree one, and send <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to zero. Here <span class="math" data-tex="\(I=0\)">\(I=0\)</span> and <span class="math" data-tex="\(U=\varnothing\)">\(U=\varnothing\)</span>. Every prime of <span class="math" data-tex="\(A\)">\(A\)</span> contains its nilpotent positive ideal, so <span class="math" data-tex="\(\operatorname{Proj}A=\varnothing\)">\(\operatorname{Proj}A=\varnothing\)</span>, while the single chart <span class="math" data-tex="\(D_+(t)\)">\(D_+(t)\)</span> identifies <span class="math" data-tex="\(\operatorname{Proj}B\)">\(\operatorname{Proj}B\)</span> with <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. There cannot be a morphism from this nonempty scheme to <span class="math" data-tex="\(\operatorname{Proj}A\)">\(\operatorname{Proj}A\)</span>. Proposition 2.2 is the general functoriality statement of [Stacks, Tag 01MY]; it supplies the domain qualification needed for the graded-map assertion in [Kedlaya, Section 1].</p>
+<h2 id="3-sheaves-from-graded-modules">3. Sheaves from graded modules</h2>
+<p><strong>Theorem 3.1 (associated sheaves).</strong> For every graded <span class="math" data-tex="\(S\)">\(S\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, there is a quasi-coherent sheaf <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> on Proj with</p>
+<span class="math math-display" data-tex="\[
+\Gamma(D_+(f),\widetilde M)=M_{(f)}.
+\tag{3.1}
+\]">\[
+\Gamma(D_+(f),\widetilde M)=M_{(f)}.
+\tag{3.1}
+\]</span>
+<p>Graded maps of degree zero induce sheaf maps, and <span class="math" data-tex="\(M\mapsto\widetilde M\)">\(M\mapsto\widetilde M\)</span> is exact.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span>, take the affine sheaf associated to the <span class="math" data-tex="\(S_{(f)}\)">\(S_{(f)}\)</span>-module <span class="math" data-tex="\(M_{(f)}\)">\(M_{(f)}\)</span>. The module identity (2.1) gives compatible identifications on overlaps; on triple overlaps all maps are localization maps. Sheaf gluing constructs <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span>, and affine quasi-coherence gives the global property. Its sections on a whole chart are exactly the affine module, giving (3.1). Graded maps commute with these identifications. Localization of modules is exact, and a graded exact sequence is exact in degree zero. Hence the sheaf sequence is exact on each affine chart, and therefore on all stalks. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At a homogeneous prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, the stalk is <span class="math" data-tex="\(M_{(\mathfrak p)}\)">\(M_{(\mathfrak p)}\)</span>, the degree-zero part of localization at homogeneous elements outside <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Indeed the chart localizations at degree-zero ratios invert exactly those homogeneous denominators: if <span class="math" data-tex="\(g\notin\mathfrak p\)">\(g\notin\mathfrak p\)</span> has degree <span class="math" data-tex="\(e\)">\(e\)</span>, the ratio <span class="math" data-tex="\(g^d/f^e\)">\(g^d/f^e\)</span> is invertible at the chart prime, which makes <span class="math" data-tex="\(g\)">\(g\)</span> invertible. Conversely all such ratios have denominators outside <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. The corresponding structure stalk is <span class="math" data-tex="\(S_{(\mathfrak p)}\)">\(S_{(\mathfrak p)}\)</span>.</p>
+<p>The shift convention is <span class="math" data-tex="\(M(n)_r=M_{r+n}\)">\(M(n)_r=M_{r+n}\)</span>. Define <span class="math" data-tex="\(\mathcal O(n)=\widetilde{S(n)}\)">\(\mathcal O(n)=\widetilde{S(n)}\)</span>. A homogeneous element of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> gives a global section by its compatible fractions on the charts, so there is a natural map</p>
+<span class="math math-display" data-tex="\[
+S_n\longrightarrow\Gamma(\operatorname{Proj}S,\mathcal O(n)).
+\tag{3.2}
+\]">\[
+S_n\longrightarrow\Gamma(\operatorname{Proj}S,\mathcal O(n)).
+\tag{3.2}
+\]</span>
+<p>It need not be an isomorphism. Multiplication of homogeneous fractions gives natural maps <span class="math" data-tex="\(\mathcal O(n)\otimes\mathcal O(m)\to\mathcal O(n+m)\)">\(\mathcal O(n)\otimes\mathcal O(m)\to\mathcal O(n+m)\)</span>, also without a general isomorphism claim.</p>
+<p><strong>Theorem 3.2 (degree-one generation and twists).</strong> Suppose <span class="math" data-tex="\(S\)">\(S\)</span> is generated over <span class="math" data-tex="\(S_0\)">\(S_0\)</span> by degree-one elements <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, with no finiteness assumption on the index set. Then the opens <span class="math" data-tex="\(D_+(x_i)\)">\(D_+(x_i)\)</span> cover Proj, all <span class="math" data-tex="\(\mathcal O(n)\)">\(\mathcal O(n)\)</span> are invertible, and multiplication gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal O(n)\otimes\mathcal O(m)\cong\mathcal O(n+m),
+\qquad\widetilde M\otimes\mathcal O(n)\cong\widetilde{M(n)}.
+\tag{3.3}
+\]">\[
+\mathcal O(n)\otimes\mathcal O(m)\cong\mathcal O(n+m),
+\qquad\widetilde M\otimes\mathcal O(n)\cong\widetilde{M(n)}.
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> The <span class="math" data-tex="\(x_i\)">\(x_i\)</span> generate <span class="math" data-tex="\(S_+\)">\(S_+\)</span> as an ideal, so no relevant prime contains all of them. On <span class="math" data-tex="\(D_+(x_i)\)">\(D_+(x_i)\)</span>, multiplication by <span class="math" data-tex="\(x_i^n\)">\(x_i^n\)</span> identifies degree-zero fractions in <span class="math" data-tex="\(S_{x_i}\)">\(S_{x_i}\)</span> with degree-<span class="math" data-tex="\(n\)">\(n\)</span> fractions, for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. This is a trivialization of <span class="math" data-tex="\(\mathcal O(n)\)">\(\mathcal O(n)\)</span>, with inverse multiplication by <span class="math" data-tex="\(x_i^{-n}\)">\(x_i^{-n}\)</span>. Under these trivializations, both maps in (3.3) are ordinary multiplication with a free rank-one module. They are isomorphisms on the cover and hence globally. On an overlap the frames satisfy <span class="math" data-tex="\(x_j^n=(x_j/x_i)^n x_i^n\)">\(x_j^n=(x_j/x_i)^n x_i^n\)</span>, fixing the transition convention. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any quasi-coherent <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> in this degree-one situation, define <span class="math" data-tex="\(\mathcal F(n)=\mathcal F\otimes\mathcal O(n)\)">\(\mathcal F(n)=\mathcal F\otimes\mathcal O(n)\)</span> and
+<span class="math" data-tex="\(\Gamma_*(\mathcal F)=\bigoplus_{n\in\mathbb Z}\Gamma(\operatorname{Proj}S,\mathcal F(n))\)">\(\Gamma_*(\mathcal F)=\bigoplus_{n\in\mathbb Z}\Gamma(\operatorname{Proj}S,\mathcal F(n))\)</span>.
+The section maps (3.2) and multiplication make this a graded <span class="math" data-tex="\(S\)">\(S\)</span>-module. For an associated sheaf, a degree-<span class="math" data-tex="\(n\)">\(n\)</span> element gives a section of <span class="math" data-tex="\(\widetilde{M(n)}\)">\(\widetilde{M(n)}\)</span>, hence a natural graded map <span class="math" data-tex="\(M\to\Gamma_*(\widetilde M)\)">\(M\to\Gamma_*(\widetilde M)\)</span>. It can forget low-degree data: Exercise 5 explains why associated sheaves only see the tail.</p>
+<h2 id="4-polynomial-rings-and-global-sections">4. Polynomial rings and global sections</h2>
+<p>Put <span class="math" data-tex="\(\mathbb P^r_A=\operatorname{Proj}A[T_0,\ldots,T_r]\)">\(\mathbb P^r_A=\operatorname{Proj}A[T_0,\ldots,T_r]\)</span>, with every variable of degree one. Its standard chart is</p>
+<span class="math math-display" data-tex="\[
+D_+(T_i)=\operatorname{Spec}A[T_0/T_i,\ldots,T_r/T_i],
+\quad T_i/T_i=1.
+\tag{4.1}
+\]">\[
+D_+(T_i)=\operatorname{Spec}A[T_0/T_i,\ldots,T_r/T_i],
+\quad T_i/T_i=1.
+\tag{4.1}
+\]</span>
+<p>Thus it is affine <span class="math" data-tex="\(r\)">\(r\)</span>-space on each chart. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, the two charts glue by <span class="math" data-tex="\(u=t^{-1}\)">\(u=t^{-1}\)</span>, agreeing with the earlier projective line. For <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, on the overlap of the zeroth and first charts, coordinates <span class="math" data-tex="\(a=T_1/T_0\)">\(a=T_1/T_0\)</span>, <span class="math" data-tex="\(b=T_2/T_0\)">\(b=T_2/T_0\)</span> become <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>, <span class="math" data-tex="\(b/a\)">\(b/a\)</span>; the overlap is <span class="math" data-tex="\(D(a)\)">\(D(a)\)</span> in the zeroth chart.</p>
+<p><strong>Theorem 4.1 (sections of projective-space twists).</strong> For every ring <span class="math" data-tex="\(A\)">\(A\)</span>, every <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and every integer <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Gamma(\mathbb P^r_A,\mathcal O(n))=
+\begin{cases}
+A[T_0,\ldots,T_r]_n,&amp;n\geq0,\\
+0,&amp;n&lt;0.
+\end{cases}
+\tag{4.2}
+\]">\[
+\Gamma(\mathbb P^r_A,\mathcal O(n))=
+\begin{cases}
+A[T_0,\ldots,T_r]_n,&amp;n\geq0,\\
+0,&amp;n&lt;0.
+\end{cases}
+\tag{4.2}
+\]</span>
+<p>For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, instead <span class="math" data-tex="\(\mathbb P^0_A=\operatorname{Spec}A\)">\(\mathbb P^0_A=\operatorname{Spec}A\)</span> and <span class="math" data-tex="\(\Gamma(\mathbb P^0_A,\mathcal O(n))=A\)">\(\Gamma(\mathbb P^0_A,\mathcal O(n))=A\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, with frame <span class="math" data-tex="\(T_0^n\)">\(T_0^n\)</span>.</p>
+<p><strong>Proof.</strong> Sections on the <span class="math" data-tex="\(i\)">\(i\)</span>-th chart are the degree-<span class="math" data-tex="\(n\)">\(n\)</span> part of <span class="math" data-tex="\(A[T_0,\ldots,T_r,T_i^{-1}]\)">\(A[T_0,\ldots,T_r,T_i^{-1}]\)</span>. Embed all these modules in the degree-<span class="math" data-tex="\(n\)">\(n\)</span> part of the Laurent ring
+<span class="math" data-tex="\(L=A[T_0^{\pm1},\ldots,T_r^{\pm1}]\)">\(L=A[T_0^{\pm1},\ldots,T_r^{\pm1}]\)</span>.
+These embeddings are injective over any <span class="math" data-tex="\(A\)">\(A\)</span>, because polynomial and Laurent monomials are free <span class="math" data-tex="\(A\)">\(A\)</span>-bases; there is no domain assumption. Compatibility on pairwise overlaps makes a global section one Laurent polynomial lying in every chart module. Conversely such an element gives compatible chart sections.</p>
+<p>The <span class="math" data-tex="\(i\)">\(i\)</span>-th chart allows a negative exponent only for <span class="math" data-tex="\(T_i\)">\(T_i\)</span>. Since <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, for each variable <span class="math" data-tex="\(T_j\)">\(T_j\)</span> choose another chart <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Membership there forces the exponent of <span class="math" data-tex="\(T_j\)">\(T_j\)</span> in every monomial with nonzero coefficient to be nonnegative. Uniqueness of the Laurent expansion makes this coefficientwise argument valid even with zero divisors. The intersection is therefore exactly the homogeneous polynomial module of degree <span class="math" data-tex="\(n\)">\(n\)</span>, which is zero when <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>. This proves (4.2). For <span class="math" data-tex="\(r=0\)">\(r=0\)</span> there is just one chart, allowing arbitrary integer powers of <span class="math" data-tex="\(T_0\)">\(T_0\)</span>, and its degree-<span class="math" data-tex="\(n\)">\(n\)</span> part is <span class="math" data-tex="\(A T_0^n\)">\(A T_0^n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, the monomials give a free <span class="math" data-tex="\(A\)">\(A\)</span>-basis of size <span class="math" data-tex="\(\binom{r+n}{r}\)">\(\binom{r+n}{r}\)</span>. The dimension-zero exception also shows why (3.2) can fail for a negative shift. On <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, the frames <span class="math" data-tex="\(T_0^{-1},T_1^{-1}\)">\(T_0^{-1},T_1^{-1}\)</span> satisfy <span class="math" data-tex="\(T_1^{-1}=t^{-1}T_0^{-1}\)">\(T_1^{-1}=t^{-1}T_0^{-1}\)</span>, so <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span> is exactly the globally sectionless line bundle constructed in the preceding lesson.</p>
+<h2 id="5-changing-the-grading-scale">5. Changing the grading scale</h2>
+<p>For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, the <strong>Veronese ring</strong> is <span class="math" data-tex="\(S^{(d)}=\bigoplus_{n\geq0}S_{nd}\)">\(S^{(d)}=\bigoplus_{n\geq0}S_{nd}\)</span>, regraded so that <span class="math" data-tex="\(S_{nd}\)">\(S_{nd}\)</span> has degree <span class="math" data-tex="\(n\)">\(n\)</span>. For a graded module define <span class="math" data-tex="\(M^{(d)}_n=M_{nd}\)">\(M^{(d)}_n=M_{nd}\)</span>.</p>
+<p><strong>Theorem 5.1 (Veronese invariance).</strong> There is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+i:\operatorname{Proj}S\xrightarrow{\sim}\operatorname{Proj}S^{(d)},
+\qquad i^*\mathcal O_{\operatorname{Proj}S^{(d)}}(n)
+\cong\mathcal O_{\operatorname{Proj}S}(nd).
+\tag{5.1}
+\]">\[
+i:\operatorname{Proj}S\xrightarrow{\sim}\operatorname{Proj}S^{(d)},
+\qquad i^*\mathcal O_{\operatorname{Proj}S^{(d)}}(n)
+\cong\mathcal O_{\operatorname{Proj}S}(nd).
+\tag{5.1}
+\]</span>
+<p>More generally <span class="math" data-tex="\(i^*\widetilde{M^{(d)}}\cong\widetilde M\)">\(i^*\widetilde{M^{(d)}}\cong\widetilde M\)</span>.</p>
+<p><strong>Proof.</strong> Contraction of a homogeneous prime to <span class="math" data-tex="\(S^{(d)}\)">\(S^{(d)}\)</span> is a relevant homogeneous prime: any positive-degree <span class="math" data-tex="\(f\)">\(f\)</span> outside the first prime has <span class="math" data-tex="\(f^d\)">\(f^d\)</span> outside its contraction. On the chart <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span>, there are literal fraction identifications</p>
+<span class="math math-display" data-tex="\[
+S_{(f)}=(S^{(d)})_{(f^d)},
+\qquad M_{(f)}=(M^{(d)})_{(f^d)}.
+\tag{5.2}
+\]">\[
+S_{(f)}=(S^{(d)})_{(f^d)},
+\qquad M_{(f)}=(M^{(d)})_{(f^d)}.
+\tag{5.2}
+\]</span>
+<p>Indeed, replace a fraction <span class="math" data-tex="\(m/f^a\)">\(m/f^a\)</span> by <span class="math" data-tex="\(mf^b/f^{a+b}\)">\(mf^b/f^{a+b}\)</span>, choosing <span class="math" data-tex="\(a+b\)">\(a+b\)</span> divisible by <span class="math" data-tex="\(d\)">\(d\)</span>. Its new numerator has degree divisible by <span class="math" data-tex="\(d\)">\(d\)</span>, so is a Veronese numerator. The reverse map is inclusion of these fractions, and equality is the same localization equality on both sides: a power of <span class="math" data-tex="\(f\)">\(f\)</span> killing a difference can be increased to a power of <span class="math" data-tex="\(f^d\)">\(f^d\)</span>.</p>
+<p>The chart prime correspondences show that contraction identifies <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span> with <span class="math" data-tex="\(D_+(f^d)\)">\(D_+(f^d)\)</span>. These latter charts cover the new Proj: any positive-degree homogeneous <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(S^{(d)}\)">\(S^{(d)}\)</span> is already homogeneous in <span class="math" data-tex="\(S\)">\(S\)</span>, and <span class="math" data-tex="\(D_+(g)=D_+(g^d)\)">\(D_+(g)=D_+(g^d)\)</span> in the new Proj. The isomorphisms (5.2) agree on overlaps, since they are fraction identities. They therefore glue to the scheme isomorphism and the module-sheaf isomorphism. Finally <span class="math" data-tex="\((S(nd))^{(d)}=S^{(d)}(n)\)">\((S(nd))^{(d)}=S^{(d)}(n)\)</span>, so the module assertion gives the twist formula. No tensor-product identification of Veronese modules is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.2 (a conic).</strong> The second Veronese ring of <span class="math" data-tex="\(k[s,t]\)">\(k[s,t]\)</span> is generated by <span class="math" data-tex="\(s^2,st,t^2\)">\(s^2,st,t^2\)</span>. The map
+<span class="math" data-tex="\(k[x,y,z]/(xz-y^2)\to k[s,t]^{(2)}\)">\(k[x,y,z]/(xz-y^2)\to k[s,t]^{(2)}\)</span>
+sending the three variables to those generators is an isomorphism. It is surjective because every even-total-degree monomial is a product of quadratic monomials. For injectivity, division by the monic relation in <span class="math" data-tex="\(y\)">\(y\)</span> leaves <span class="math" data-tex="\(a(x,z)+yb(x,z)\)">\(a(x,z)+yb(x,z)\)</span>. Its substitution has exponent pairs respectively both even or both odd, and distinct monomials stay distinct, so no nonzero remainder vanishes. Theorem 5.1 identifies the conic's Proj with <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span>; its <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> corresponds to <span class="math" data-tex="\(\mathcal O_{\mathbb P^1}(2)\)">\(\mathcal O_{\mathbb P^1}(2)\)</span>.</p>
+<p><strong>Example 5.3 (a weighted twist).</strong> For <span class="math" data-tex="\(S=k[x,y,z]\)">\(S=k[x,y,z]\)</span> with weights <span class="math" data-tex="\(1,1,2\)">\(1,1,2\)</span>, on <span class="math" data-tex="\(D_+(z)\)">\(D_+(z)\)</span> put</p>
+<span class="math math-display" data-tex="\[
+a=x^2/z,\quad b=xy/z,\quad c=y^2/z.
+\]">\[
+a=x^2/z,\quad b=xy/z,\quad c=y^2/z.
+\]</span>
+<p>The chart ring is <span class="math" data-tex="\(A=k[a,b,c]/(ac-b^2)\)">\(A=k[a,b,c]/(ac-b^2)\)</span>: the even monomials in <span class="math" data-tex="\(x,y\)">\(x,y\)</span> generate it, and the same even/odd exponent-pair test verifies the only relation. The module for <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is generated over <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. Every numerator of odd weight contains one of them, leaving an even-weight coefficient after division. At the vertex <span class="math" data-tex="\(\mathfrak m=(a,b,c)\)">\(\mathfrak m=(a,b,c)\)</span>, its fibre has basis the images of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, as proved in Solution 4. Its dimension is two, so this twist is not invertible there. Degree-one generation in Theorem 3.2 is a substantive hypothesis.</p>
+<figure><img src="figures/weighted-twist-fibre.png" alt="The even chart ring and the two-dimensional fibre of the odd twist" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The exact chart and module calculation in Example 5.3. At the vertex the coefficients <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> vanish, but the two odd generators remain independent. An invertible sheaf would have a one-dimensional fibre. The boxes describe rings and modules; they are not a geometric picture of the entire weighted projective plane.</em></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Glue sections of <span class="math" data-tex="\(\mathcal O(n)\)">\(\mathcal O(n)\)</span> on the two standard charts of <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span>. Give a basis and handle <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>.</li>
+<li><strong>Medium.</strong> Verify the conic identification in Example 5.2 on its <span class="math" data-tex="\(x\)">\(x\)</span>- and <span class="math" data-tex="\(z\)">\(z\)</span>-charts. What becomes of its twisting sheaf?</li>
+<li><strong>Medium.</strong> In (5.2), verify the fraction equality criterion for modules with torsion. Deduce Veronese invariance of associated sheaves and the twist formula.</li>
+<li><strong>Medium.</strong> Prove that <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> on the weighted plane in Example 5.3 is not invertible at its vertex, in every characteristic.</li>
+<li><strong>Medium.</strong> If <span class="math" data-tex="\(M_j=0\)">\(M_j=0\)</span> for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>, prove <span class="math" data-tex="\(\widetilde M=0\)">\(\widetilde M=0\)</span>. Prove that <span class="math" data-tex="\(M_{\geq n}\to M\)">\(M_{\geq n}\to M\)</span> induces an isomorphism of associated sheaves, for every integer <span class="math" data-tex="\(n\)">\(n\)</span>.</li>
+<li><strong>Hard.</strong> Show that <span class="math" data-tex="\(\operatorname{Proj}k[T_1,T_2,\ldots]\)">\(\operatorname{Proj}k[T_1,T_2,\ldots]\)</span>, with all variables of degree one, is not quasi-compact. Also construct a nonzero graded ring with empty Proj.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> On <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, use frame <span class="math" data-tex="\(T_0^n\)">\(T_0^n\)</span> and coordinate <span class="math" data-tex="\(t=T_1/T_0\)">\(t=T_1/T_0\)</span>; on <span class="math" data-tex="\(U_1\)">\(U_1\)</span>, use frame <span class="math" data-tex="\(T_1^n\)">\(T_1^n\)</span> and <span class="math" data-tex="\(u=t^{-1}\)">\(u=t^{-1}\)</span>. A pair of polynomial coefficients <span class="math" data-tex="\(a(t),b(u)\)">\(a(t),b(u)\)</span> agrees exactly when
+<span class="math" data-tex="\(a(t)=t^n b(t^{-1})\)">\(a(t)=t^n b(t^{-1})\)</span>.
+For <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, both sides allow precisely the powers <span class="math" data-tex="\(t^j\)">\(t^j\)</span> with <span class="math" data-tex="\(0\leq j\leq n\)">\(0\leq j\leq n\)</span>. Their homogeneous forms are <span class="math" data-tex="\(T_0^{n-j}T_1^j\)">\(T_0^{n-j}T_1^j\)</span>, giving a basis of size <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. For <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, the right side has only powers at most <span class="math" data-tex="\(n\)">\(n\)</span>, while the left has powers at least zero, so both are zero. This fixes the sign of the transition and agrees with Theorem 4.1.</p>
+<p><strong>Solution 2.</strong> On <span class="math" data-tex="\(D_+(x)\)">\(D_+(x)\)</span>, set <span class="math" data-tex="\(v=y/x\)">\(v=y/x\)</span>. The relation forces <span class="math" data-tex="\(z/x=v^2\)">\(z/x=v^2\)</span>, so the chart is <span class="math" data-tex="\(\operatorname{Spec}k[v]\)">\(\operatorname{Spec}k[v]\)</span>. On <span class="math" data-tex="\(D_+(z)\)">\(D_+(z)\)</span>, put <span class="math" data-tex="\(w=y/z\)">\(w=y/z\)</span>; then <span class="math" data-tex="\(x/z=w^2\)">\(x/z=w^2\)</span>. On their intersection <span class="math" data-tex="\(vw=y^2/(xz)=1\)">\(vw=y^2/(xz)=1\)</span>, hence <span class="math" data-tex="\(w=v^{-1}\)">\(w=v^{-1}\)</span>. These charts cover the conic because a prime containing <span class="math" data-tex="\(x,z\)">\(x,z\)</span> also contains <span class="math" data-tex="\(y\)">\(y\)</span>. They glue to <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>. The frame transition for the conic's <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is <span class="math" data-tex="\(z=(z/x)x=v^2x\)">\(z=(z/x)x=v^2x\)</span>, so it is the degree-two twist on <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, also as stated by the Veronese formula.</p>
+<p><strong>Solution 3.</strong> A fraction equality on the left of (5.2) is witnessed by some <span class="math" data-tex="\(f^r\)">\(f^r\)</span> annihilating a homogeneous cross-difference. Increase <span class="math" data-tex="\(r\)">\(r\)</span> to a multiple of <span class="math" data-tex="\(d\)">\(d\)</span>; then the same equality is witnessed by a power of <span class="math" data-tex="\(f^d\)">\(f^d\)</span> on the right. Conversely every right-hand witness is a left-hand witness. Padding denominators to multiples of <span class="math" data-tex="\(d\)">\(d\)</span> preserves fractions and places numerators in <span class="math" data-tex="\(M^{(d)}\)">\(M^{(d)}\)</span>, proving bijectivity without cancellation. These identifications commute with further localization and with graded maps, so glue to the sheaf identification. Apply it to <span class="math" data-tex="\(M=S(nd)\)">\(M=S(nd)\)</span>, whose Veronese module has degree-<span class="math" data-tex="\(j\)">\(j\)</span> piece <span class="math" data-tex="\(S_{d(j+n)}\)">\(S_{d(j+n)}\)</span>, exactly <span class="math" data-tex="\(S^{(d)}(n)_j\)">\(S^{(d)}(n)_j\)</span>. This proves the twist assertion for positive, zero and negative <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Solution 4.</strong> In <span class="math" data-tex="\(k[x,y,z,z^{-1}]\)">\(k[x,y,z,z^{-1}]\)</span>, give <span class="math" data-tex="\(x,y\)">\(x,y\)</span> an auxiliary total degree one and <span class="math" data-tex="\(z^{\pm1}\)">\(z^{\pm1}\)</span> degree zero. The chart ring consists of even auxiliary-degree monomials, and its maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is generated by the auxiliary-degree-two elements <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>. The module <span class="math" data-tex="\(M=(S(1)_z)_0\)">\(M=(S(1)_z)_0\)</span> consists of odd auxiliary degrees and is generated by <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. Every element of <span class="math" data-tex="\(\mathfrak mM\)">\(\mathfrak mM\)</span> has auxiliary degree at least three. Thus no nonzero <span class="math" data-tex="\(k\)">\(k\)</span>-linear combination of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, of auxiliary degree one, belongs to <span class="math" data-tex="\(\mathfrak mM\)">\(\mathfrak mM\)</span>. Since they generate, <span class="math" data-tex="\(M/\mathfrak mM\cong k^2\)">\(M/\mathfrak mM\cong k^2\)</span>. Localizing at <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> leaves this fibre unchanged. A free rank-one stalk would have fibre <span class="math" data-tex="\(k\)">\(k\)</span>, a contradiction. This argument uses monomials and grading, and remains valid in characteristic two.</p>
+<p><strong>Solution 5.</strong> On <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span>, a degree-zero fraction is <span class="math" data-tex="\(m/f^r\)">\(m/f^r\)</span> with <span class="math" data-tex="\(\deg m=r\deg f\)">\(\deg m=r\deg f\)</span>. Multiplying numerator and denominator by <span class="math" data-tex="\(f^a\)">\(f^a\)</span> raises the numerator degree arbitrarily. If all sufficiently high pieces vanish, the fraction becomes zero. Hence every chart module is zero. Apply this to <span class="math" data-tex="\(M/M_{\geq n}\)">\(M/M_{\geq n}\)</span>, whose high pieces vanish. The exact associated-sheaf functor turns the inclusion into an isomorphism. More generally modules identified in all sufficiently high degrees have identified tails, and therefore isomorphic associated sheaves; the low-degree pieces do not affect this construction.</p>
+<p><strong>Solution 6.</strong> The opens <span class="math" data-tex="\(D_+(T_i)\)">\(D_+(T_i)\)</span> cover. Given finitely many selected indices, choose <span class="math" data-tex="\(j\)">\(j\)</span> outside them. The homogeneous prime generated by all variables except <span class="math" data-tex="\(T_j\)">\(T_j\)</span> has quotient <span class="math" data-tex="\(k[T_j]\)">\(k[T_j]\)</span>, so is prime and relevant. It belongs to <span class="math" data-tex="\(D_+(T_j)\)">\(D_+(T_j)\)</span> and none of the selected opens. Thus this cover has no finite subcover. Equivalently the finite-list radical criterion fails. For an empty Proj take <span class="math" data-tex="\(S=k[\epsilon]/(\epsilon^2)\)">\(S=k[\epsilon]/(\epsilon^2)\)</span> with <span class="math" data-tex="\(\deg\epsilon=1\)">\(\deg\epsilon=1\)</span>. Its positive ideal is nilpotent, so every prime contains it and none is relevant. The ring is nonzero, while its Proj and every associated sheaf on that Proj are empty.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>All five assigned targets are proved: the scheme and quasi-compactness criterion, the exact associated-sheaf construction, invertibility under degree-one generation, the global-section calculation, and Veronese invariance. Proposition 2.2 additionally proves the domain criterion for an arbitrary graded map. The section formula includes its necessary dimension-zero exception. Graded rings and shifts are the previously written algebraic conventions; the prime correspondence, chart localizations and scheme proofs are supplied here. Separatedness belongs to the course on morphisms.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, read in the AI Integrated Stacks Project English edition: <em>Constructions of Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-standard-open">Tag 01M4</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-proj-sheaves">Tag 01M7</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-standard-open-proj">Tag 01MA</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-proj-scheme">Tag 01MB</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-proj-quasi-compact">Tag 01MD</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-structure-morphism-proj">Tag 01ME</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-when-invertible">Tag 01MS</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-d-uple">Tag 0B5J</a>.</li>
+<li><strong>[Vakil]</strong> Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, Sections 4.5, 14.6 and 15.1. <a href="https://math.stanford.edu/~vakil/216blog/">Author's book page</a>; <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">consulted public draft</a> (personal viewing and downloading only; no redistribution or derivative works).</li>
+<li><strong>[Stacks, functoriality]</strong> The same AI Integrated Stacks Project edition, <em>Constructions of Schemes</em>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-morphism-proj">Tag 01MY</a>. Source checked at revision <code>565b10e987aba5969b21145a0833f42d69f96790</code>.</li>
+<li><strong>[Kedlaya]</strong> Kiran S. Kedlaya, <em>Projective spaces, part 1</em>, MIT OpenCourseWare 18.726, Spring 2009, Section 1. <a href="https://ocw.mit.edu/courses/18-726-algebraic-geometry-spring-2009/9a1598a1423305b49e4fb064b437a952_MIT18_726s09_lec09_projective.pdf">Lecture PDF</a>. OCW material is under CC BY-NC-SA 4.0, subject to its stated exceptions. Proposition 2.2 is an independently written proof, checked against Tag 01MY, that corrects the general graded-map assertion; no OCW text is reproduced. Added and self-checked by GPT-6.1 Sol (OpenAI), Codex, Ultra, on 2 October 2026.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="closed-subschemes-and-scheme-theoretic-images.html">← Closed subschemes and scheme-theoretic images</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="projective-space-relative-proj-and-maps-to-projective-space.html">Projective space, relative Proj and maps to projective space →</a></span></nav>
+<p class="small source-link"><a href="src/proj-of-a-graded-ring.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-SS">Repository</a></nav>
+</footer>
+</body>
+</html>

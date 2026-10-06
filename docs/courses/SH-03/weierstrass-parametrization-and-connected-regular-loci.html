@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weierstrass parametrization and connected regular loci · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/weierstrass-parametrization-and-connected-regular-loci.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Weierstrass parametrization and connected regular loci</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the writing AI. Independent programme text is public domain (CC0); the identified contour-division component retains Demailly’s custom reuse terms.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="weierstrass-parametrization-and-connected-regular-loci">Weierstrass parametrization and connected regular loci</h1>
+<p><em>Written by GPT-6 Astra (OpenAI), Ultra, with exercises developed from GPT-6.1 Sol's programme material, October 2026. Self-checked by the writing AI. Independent programme exposition is public domain (CC0); the identified contour-division component retains Demailly's reuse terms.</em></p>
+<p>A local branch and a global component answer different questions. A local branch records which holomorphic equations remain inseparable near one point. A global component can return to the same point through several such branches. The curve <span class="math" data-tex="\(y^2=x^2(x+1)\)">\(y^2=x^2(x+1)\)</span>, for example, has a connected regular locus but two branches at its node. We will prove that the connected components of the regular locus of an analytic set determine its global irreducible components, and then find a connected dense region on each component where a holomorphic map has constant maximal rank.</p>
+<p>All analytic subsets in this lesson are reduced and closed in their ambient complex manifold. Regularity means that the underlying subset is a complex submanifold near the point. The ambient manifold is Hausdorff and second countable. No pure-dimensional hypothesis or codimension-one restriction is imposed. When a union has several components, being regular on one component is weaker than being regular on the union.</p>
+<h2 id="local-tools-and-where-their-proofs-enter">Local tools and where their proofs enter</h2>
+<p>Here are the local results used in the global argument. The links lead to complete earlier programme proofs; the assertions below specify the exact inputs rather than asking a citation to stand in for a proof.</p>
+<ol>
+<li><a href="../AG-QC/complex-analytic-spaces-and-analytification.html#2-local-analytic-algebra">Preparation and division, and Lemma 2.1 on Noetherianity</a> establish Weierstrass preparation and division for <span class="math" data-tex="\(\mathcal O_n=\mathbb C\{z_1,\ldots,z_n\}\)">\(\mathcal O_n=\mathbb C\{z_1,\ldots,z_n\}\)</span>. The proof counts fibre zeros with multiplicity by a contour integral, obtains the coefficients from Newton's identities, and proves uniqueness by divisibility with multiplicity. The bounded common-domain version is supplied in the next section.</li>
+<li><a href="../complex-analytic-spaces-and-coherent-sheaves/the-local-ring-of-holomorphic-germs.html#2-weierstrass-polynomials">The local ring of holomorphic germs, §§2–4</a> proves the coefficient-order estimate, the correspondence between analytic and polynomial factorizations, factoriality, and finite generation over a coordinate subring. The estimate is <span class="math" data-tex="\(a_j(z&#x27;)=O(|z&#x27;|^j)\)">\(a_j(z&#x27;)=O(|z&#x27;|^j)\)</span> when the chosen vertical order equals the total order of the germ; an arbitrary regular vertical direction does not supply that stronger hypothesis. A common such direction for finitely many nonzero germs exists by avoiding the zeros of the product of their first nonzero homogeneous parts. Integral closedness follows directly: if a reduced fraction <span class="math" data-tex="\(a/b\)">\(a/b\)</span> in a factorial domain satisfies a monic equation of degree <span class="math" data-tex="\(s\)">\(s\)</span>, multiplying by <span class="math" data-tex="\(b^s\)">\(b^s\)</span> shows that <span class="math" data-tex="\(b\mid a^s\)">\(b\mid a^s\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> is a unit.</li>
+<li><a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#1-germs-of-analytic-sets-and-their-ideals">Analytic germs, Propositions 1.1–1.2</a> identifies irreducibility with a prime vanishing ideal and gives a finite irredundant decomposition of every analytic germ. <a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#2-coordinates-adapted-to-a-prime-ideal">Proposition 2.2 and Corollary 2.3</a> choose adapted linear coordinates and prove the cone estimate <span class="math" data-tex="\(|z&#x27;&#x27;|\leq C|z&#x27;|\)">\(|z&#x27;&#x27;|\leq C|z&#x27;|\)</span>. Taking the base radius small enough that <span class="math" data-tex="\(Cr&#x27;&lt;r&#x27;&#x27;\)">\(Cr&#x27;&lt;r&#x27;&#x27;\)</span> keeps the vertical coordinates away from the boundary and makes the projection proper.</li>
+<li><a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#3-the-finite-extension-and-a-primitive-element">The finite-extension construction, Lemmas 3.1–3.4</a> works for a prime ideal <span class="math" data-tex="\(J\)">\(J\)</span> in arbitrary codimension. Put <span class="math" data-tex="\(K=\operatorname{Frac}\mathcal O_d\)">\(K=\operatorname{Frac}\mathcal O_d\)</span>, <span class="math" data-tex="\(L=\operatorname{Frac}(\mathcal O_n/J)\)">\(L=\operatorname{Frac}(\mathcal O_n/J)\)</span>, and <span class="math" data-tex="\(q=[L:K]\)">\(q=[L:K]\)</span>. Localization of the finite domain <span class="math" data-tex="\(\mathcal O_n/J\)">\(\mathcal O_n/J\)</span> at the nonzero elements of <span class="math" data-tex="\(\mathcal O_d\)">\(\mathcal O_d\)</span> is a finite-dimensional domain over <span class="math" data-tex="\(K\)">\(K\)</span>. Multiplication by a nonzero element is an injective linear endomorphism, hence surjective; that element is invertible. This localization is therefore the field <span class="math" data-tex="\(L\)">\(L\)</span>, establishing the finite degree. A constant linear combination <span class="math" data-tex="\(u\)">\(u\)</span> of the transverse coordinates is primitive; with the <span class="math" data-tex="\(q\)">\(q\)</span> distinct embeddings denoted by <span class="math" data-tex="\(\sigma_\mu\)">\(\sigma_\mu\)</span>, its monic minimal polynomial <span class="math" data-tex="\(W_u\)">\(W_u\)</span> has discriminant <span class="math" data-tex="\(\delta=\prod_{\mu&lt;\nu}(\sigma_\mu u-\sigma_\nu u)^2\ne0\)">\(\delta=\prod_{\mu&lt;\nu}(\sigma_\mu u-\sigma_\nu u)^2\ne0\)</span>. The construction gives polynomials <span class="math" data-tex="\(B_k\)">\(B_k\)</span> of degree less than <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(u\)">\(u\)</span> and an ideal</li>
+</ol>
+<span class="math math-display" data-tex="\[
+G=(W_u,\,\delta z_{d+1}-B_{d+1},\ldots,\delta z_n-B_n),
+\qquad
+G\subset J,\quad \delta^mJ\subset G,
+\quad m=\max\{q,(n-d)(q-1)\}.
+\tag{1}
+\]">\[
+G=(W_u,\,\delta z_{d+1}-B_{d+1},\ldots,\delta z_n-B_n),
+\qquad
+G\subset J,\quad \delta^mJ\subset G,
+\quad m=\max\{q,(n-d)(q-1)\}.
+\tag{1}
+\]</span>
+<p>This denominator-clearing statement identifies the analytic set with the reconstructed roots over <span class="math" data-tex="\(\delta\ne0\)">\(\delta\ne0\)</span>. It is needed for more than hypersurfaces.
+5. <a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#4-the-local-parametrization-theorem">Local parametrization, Theorem 4.1 and Lemma 4.2</a> provides a sufficiently small representative <span class="math" data-tex="\(B\)">\(B\)</span> of each irreducible germ and a proper finite projection <span class="math" data-tex="\(\pi:B\to\Delta&#x27;\)">\(\pi:B\to\Delta&#x27;\)</span>. The subset <span class="math" data-tex="\(B^\circ=B\setminus\pi^{-1}\{\delta=0\}\)">\(B^\circ=B\setminus\pi^{-1}\{\delta=0\}\)</span> is a connected complex manifold, dense and open in <span class="math" data-tex="\(B\)">\(B\)</span>, and is a <span class="math" data-tex="\(q\)">\(q\)</span>-sheeted covering of the discriminant complement. Every exceptional fibre has at most <span class="math" data-tex="\(q\)">\(q\)</span> points. The proof establishes connectedness using the symmetric polynomials of hypothetical covering components, extends their bounded coefficients across the discriminant, and applies primality. Its separate density argument treats exceptional fibres; it does not assume density merely from finiteness of the projection.
+6. <a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html#5-the-nullstellensatz-and-dimension">Dimension and proper analytic subgerms, Theorem 5.4 and Proposition 5.5</a> identify the dimension with <span class="math" data-tex="\(\dim\mathcal O_n/I(B)\)">\(\dim\mathcal O_n/I(B)\)</span> and show that a proper analytic subgerm of an irreducible germ has smaller dimension and empty interior. <a href="../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#4-the-riemann-extension-theorem">The Riemann extension theorem and Corollary 4.4</a> prove that deleting a proper analytic subset of a connected complex manifold leaves a connected dense subset. They also extend locally bounded holomorphic functions across that subset. These statements pass to manifolds by coordinate charts.</p>
+<p>The projection in item 5 is surjective also over the discriminant. Indeed, approach any base point by points outside the discriminant, take one preimage of each, and use properness over the compact set formed by that sequence and its limit to obtain a limiting preimage. The finite-sheet statement alone would not justify this conclusion without properness.</p>
+<p>For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, an irreducible reduced germ has a representative consisting of one point; the covering and connectedness assertions are interpreted accordingly. When <span class="math" data-tex="\(J=0\)">\(J=0\)</span>, there are no transverse coordinates, the representative is a polydisc, and the discriminant can be taken to be <span class="math" data-tex="\(1\)">\(1\)</span>. These cases require no deletion.</p>
+<h2 id="division-with-one-domain-for-all-bounded-inputs">Division with one domain for all bounded inputs</h2>
+<p><strong>Human source and terms for this component.</strong> The contour formulas in this section are C. L. Siegel's method as presented by Jean-Pierre Demailly, <em>Complex Analytic and Differential Geometry</em>, 21 June 2012, II, Theorems 2.1 and 2.3, pp. 79–81, and adapted in the linked programme proof. Demailly's <a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html">custom OpenContent grant</a> permits copying, modification and redistribution with authorship retained. This contour-division component is distributed under that grant and excluded from the CC0 dedication. The estimates below spell out how to choose constants independently of the input function.</p>
+<p>Let <span class="math" data-tex="\(P(z&#x27;,w)\)">\(P(z&#x27;,w)\)</span> be a monic Weierstrass polynomial of degree <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, holomorphic on a neighbourhood of <span class="math" data-tex="\(\overline D\times\{|w|\leq R\}\)">\(\overline D\times\{|w|\leq R\}\)</span>, where <span class="math" data-tex="\(D\)">\(D\)</span> is a small base polydisc. Shrink <span class="math" data-tex="\(D\)">\(D\)</span> so that all roots of every <span class="math" data-tex="\(P(z&#x27;,\cdot)\)">\(P(z&#x27;,\cdot)\)</span>, for <span class="math" data-tex="\(z&#x27;\in\overline D\)">\(z&#x27;\in\overline D\)</span>, have modulus less than a number <span class="math" data-tex="\(a&lt;R\)">\(a&lt;R\)</span>. Fix</p>
+<span class="math math-display" data-tex="\[
+a&lt;r&lt;\rho&lt;R,\qquad
+\mu=\min_{z&#x27;\in\overline D,\ |\zeta|=\rho}|P(z&#x27;,\zeta)|&gt;0.
+\tag{2}
+\]">\[
+a&lt;r&lt;\rho&lt;R,\qquad
+\mu=\min_{z&#x27;\in\overline D,\ |\zeta|=\rho}|P(z&#x27;,\zeta)|&gt;0.
+\tag{2}
+\]</span>
+<p>The choices depend only on <span class="math" data-tex="\(P\)">\(P\)</span> and the domains. For any bounded holomorphic <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(D\times\{|w|&lt;R\}\)">\(D\times\{|w|&lt;R\}\)</span>, define, for <span class="math" data-tex="\(|w|&lt;\rho\)">\(|w|&lt;\rho\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q(z&#x27;,w)&amp;=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{f(z&#x27;,\zeta)}{P(z&#x27;,\zeta)(\zeta-w)}\,d\zeta,\\
+T(z&#x27;,w)&amp;=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{f(z&#x27;,\zeta)}{P(z&#x27;,\zeta)}
+\frac{P(z&#x27;,\zeta)-P(z&#x27;,w)}{\zeta-w}\,d\zeta.
+\end{aligned}
+\tag{3}
+\]">\[
+\begin{aligned}
+Q(z&#x27;,w)&amp;=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{f(z&#x27;,\zeta)}{P(z&#x27;,\zeta)(\zeta-w)}\,d\zeta,\\
+T(z&#x27;,w)&amp;=\frac{1}{2\pi i}\int_{|\zeta|=\rho}
+\frac{f(z&#x27;,\zeta)}{P(z&#x27;,\zeta)}
+\frac{P(z&#x27;,\zeta)-P(z&#x27;,w)}{\zeta-w}\,d\zeta.
+\end{aligned}
+\tag{3}
+\]</span>
+<p>The contour lies strictly within the domain of every such <span class="math" data-tex="\(f\)">\(f\)</span>; there is no requirement that <span class="math" data-tex="\(f\)">\(f\)</span> extend to the boundary <span class="math" data-tex="\(|w|=R\)">\(|w|=R\)</span>. Parameterwise differentiation on smaller compact subsets proves holomorphy of the integrals. Cauchy's formula gives <span class="math" data-tex="\(f=PQ+T\)">\(f=PQ+T\)</span>. The divided difference is a polynomial of degree at most <span class="math" data-tex="\(s-1\)">\(s-1\)</span> in <span class="math" data-tex="\(w\)">\(w\)</span>, so the same is true of <span class="math" data-tex="\(T\)">\(T\)</span>. If two such divisions existed, their remainder difference would be a polynomial of degree below <span class="math" data-tex="\(s\)">\(s\)</span> divisible holomorphically by <span class="math" data-tex="\(P\)">\(P\)</span>. Counting all roots with multiplicity makes that difference zero, and then the quotient difference is zero.</p>
+<p>To record the uniform estimates, put</p>
+<span class="math math-display" data-tex="\[
+H=\max_{z&#x27;\in\overline D,\ |\zeta|=\rho,\ |w|\leq r}
+\left|\frac{P(z&#x27;,\zeta)-P(z&#x27;,w)}{\zeta-w}\right|.
+\]">\[
+H=\max_{z&#x27;\in\overline D,\ |\zeta|=\rho,\ |w|\leq r}
+\left|\frac{P(z&#x27;,\zeta)-P(z&#x27;,w)}{\zeta-w}\right|.
+\]</span>
+<p>This is finite since <span class="math" data-tex="\(\rho-r&gt;0\)">\(\rho-r&gt;0\)</span>. Bounding the contour length by <span class="math" data-tex="\(2\pi\rho\)">\(2\pi\rho\)</span> in (3) yields</p>
+<span class="math math-display" data-tex="\[
+\|Q\|_{D\times\Delta_r}\leq
+\frac{\rho}{\mu(\rho-r)}\|f\|_{D\times\Delta_R},
+\qquad
+\|T\|_{D\times\Delta_r}\leq
+\frac{\rho H}{\mu}\|f\|_{D\times\Delta_R}.
+\tag{4}
+\]">\[
+\|Q\|_{D\times\Delta_r}\leq
+\frac{\rho}{\mu(\rho-r)}\|f\|_{D\times\Delta_R},
+\qquad
+\|T\|_{D\times\Delta_r}\leq
+\frac{\rho H}{\mu}\|f\|_{D\times\Delta_R}.
+\tag{4}
+\]</span>
+<p>Both output functions are therefore controlled on the same fixed smaller polydisc for every bounded input. For division by a prepared function <span class="math" data-tex="\(g=vP\)">\(g=vP\)</span>, shrink once so the unit <span class="math" data-tex="\(v\)">\(v\)</span> is bounded away from zero on the output domain. Replace <span class="math" data-tex="\(Q\)">\(Q\)</span> by <span class="math" data-tex="\(Q/v\)">\(Q/v\)</span>; the first constant in (4) is multiplied by <span class="math" data-tex="\(\|v^{-1}\|\)">\(\|v^{-1}\|\)</span>. Degree zero is division by a unit with zero remainder.</p>
+<h2 id="continuing-local-branches-across-the-whole-analytic-set">Continuing local branches across the whole analytic set</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a closed reduced complex analytic subset of a Hausdorff complex manifold <span class="math" data-tex="\(M\)">\(M\)</span>. A <em>global irreducible analytic subset</em> is a nonempty closed analytic subset which cannot be written as the union of two proper closed analytic subsets. This is a global condition; its germ at a point may have several irreducible branches.</p>
+<p>We use two local conclusions already proved in <a href="../complex-analytic-spaces-and-coherent-sheaves/analytic-germs-local-parametrization-and-the-nullstellensatz.html">Analytic germs, local parametrization and the Nullstellensatz</a>. Proposition 1.2 gives the finite irredundant decomposition of an analytic germ. Theorem 4.1 gives, for each irreducible germ, arbitrarily small representatives <span class="math" data-tex="\(B\)">\(B\)</span> containing an open connected smooth subset <span class="math" data-tex="\(H\)">\(H\)</span> dense in <span class="math" data-tex="\(B\)">\(B\)</span>. This is the smooth part over the complement of the discriminant in the local parametrization theorem. The construction below requires neither a globally chosen projection nor an analytic description of the singular locus.</p>
+<p>We will prove that the closures of the connected components of <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span> are exactly the global irreducible components of <span class="math" data-tex="\(A\)">\(A\)</span>, and that this family is locally finite in <span class="math" data-tex="\(M\)">\(M\)</span>. We will then isolate a connected region on each component where a holomorphic map has maximal rank and the whole set <span class="math" data-tex="\(A\)">\(A\)</span> is regular.</p>
+<h3 id="deleting-a-proper-analytic-subset-preserves-connectedness">Deleting a proper analytic subset preserves connectedness</h3>
+<p>We first record the deletion argument in the form needed below. If <span class="math" data-tex="\(P\)">\(P\)</span> is a connected complex manifold and <span class="math" data-tex="\(Z\subsetneq P\)">\(Z\subsetneq P\)</span> is closed analytic, then <span class="math" data-tex="\(P\setminus Z\)">\(P\setminus Z\)</span> is connected and dense. This conclusion is also proved by bounded holomorphic extension in <a href="../complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#4-the-riemann-extension-theorem">Holomorphic functions of several variables, Corollary 4.4 and §5</a>.</p>
+<p>An analytic subset with interior in <span class="math" data-tex="\(P\)">\(P\)</span> equals <span class="math" data-tex="\(P\)">\(P\)</span>. Indeed its interior is also closed: near a limit of interior points, take a connected coordinate neighborhood on which finitely many holomorphic equations define the subset. Each equation vanishes on a nonempty open part of that neighborhood, hence everywhere there by the identity theorem. Connectedness now proves the assertion. Thus a proper analytic subset has empty interior, and its complement is dense.</p>
+<p>For connectedness of the complement, first work in a convex coordinate polydisc with two points <span class="math" data-tex="\(a,b\notin Z\)">\(a,b\notin Z\)</span>. A linear combination of the local defining equations can be chosen nonzero at both points: the excluded coefficient choices are at most two proper complex hyperplanes. Restrict that function to the affine complex line through <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. It is not identically zero, so its zeros near the compact segment from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> are finite. Small detours in that line around these zeros give a path inside the polydisc avoiding its zero set, and therefore avoiding <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p>A connected manifold is path connected. Cover a path in <span class="math" data-tex="\(P\)">\(P\)</span> by finitely many such polydiscs, ordered with successive open overlaps. Density supplies intermediate points outside <span class="math" data-tex="\(Z\)">\(Z\)</span> in those overlaps. The local paths join them in <span class="math" data-tex="\(P\setminus Z\)">\(P\setminus Z\)</span>. The dimension-zero case is a single point and an empty deletion.</p>
+<p>Finite unions of closed analytic subsets are analytic: locally, products of their defining functions give equations for the union. The same is true for a locally finite union, since near any ambient point only finitely many members occur. Consequently the deletion argument also applies to such a union whenever it is proper.</p>
+<h3 id="a-finite-branch-calculation-controls-global-continuation">A finite branch calculation controls global continuation</h3>
+<p>Fix <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>. On a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> represent the distinct irreducible germs of <span class="math" data-tex="\(A\)">\(A\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> by closed analytic sets <span class="math" data-tex="\(B_1,\ldots,B_s\)">\(B_1,\ldots,B_s\)</span>, with
+<span class="math math-display" data-tex="\[
+A\cap W=B_1\cup\cdots\cup B_s.
+\tag{GC1}
+\]">\[
+A\cap W=B_1\cup\cdots\cup B_s.
+\tag{GC1}
+\]</span>
+The representatives can be chosen on one neighborhood because the list is finite and the germ equalities hold after shrinking.</p>
+<p>For each <span class="math" data-tex="\(i\)">\(i\)</span>, apply local parametrization to its branch, inside <span class="math" data-tex="\(W\)">\(W\)</span>. Obtain a neighborhood <span class="math" data-tex="\(W_i\)">\(W_i\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> and an open connected smooth subset
+<span class="math math-display" data-tex="\[
+H_i\subset B_i\cap W_i,
+\qquad
+\overline{H_i}^{\,W_i}=B_i\cap W_i.
+\tag{GC2}
+\]">\[
+H_i\subset B_i\cap W_i,
+\qquad
+\overline{H_i}^{\,W_i}=B_i\cap W_i.
+\tag{GC2}
+\]</span>
+For <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, the analytic subset <span class="math" data-tex="\(H_i\cap B_j\)">\(H_i\cap B_j\)</span> is proper. Otherwise closedness of <span class="math" data-tex="\(B_j\)">\(B_j\)</span> and (GC2) would give <span class="math" data-tex="\(B_i\cap W_i\subset B_j\)">\(B_i\cap W_i\subset B_j\)</span>, contradicting the irredundant germ decomposition. A proper analytic subset of the connected <span class="math" data-tex="\(H_i\)">\(H_i\)</span> has empty interior. Their finite union is therefore proper, and the deletion argument shows that
+<span class="math math-display" data-tex="\[
+K_i=H_i\setminus\bigcup_{j\ne i}B_j
+\tag{GC3}
+\]">\[
+K_i=H_i\setminus\bigcup_{j\ne i}B_j
+\tag{GC3}
+\]</span>
+is connected and dense in <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, hence dense in <span class="math" data-tex="\(B_i\cap W_i\)">\(B_i\cap W_i\)</span>.</p>
+<p>Every point of <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is regular for <span class="math" data-tex="\(A\)">\(A\)</span>: near it the other finitely many closed branches are absent, and <span class="math" data-tex="\(A\)">\(A\)</span> agrees with the smooth branch <span class="math" data-tex="\(B_i\)">\(B_i\)</span>. Thus <span class="math" data-tex="\(K_i\)">\(K_i\)</span> lies in one connected component <span class="math" data-tex="\(R_i\)">\(R_i\)</span> of <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span>. These sets also show that <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span> is dense in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Choose a common neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> contained in all <span class="math" data-tex="\(W_i\)">\(W_i\)</span>. We retain the full connected <span class="math" data-tex="\(K_i\)">\(K_i\)</span> in its original neighborhood. The smaller set <span class="math" data-tex="\(K_i\cap U\)">\(K_i\cap U\)</span> is not required to be connected.</p>
+<p>For every connected component <span class="math" data-tex="\(R\)">\(R\)</span> of <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span>, we claim
+<span class="math math-display" data-tex="\[
+\overline R^{\,M}\cap U
+=\bigcup_{\{i:R_i=R\}}(B_i\cap U).
+\tag{GC4}
+\]">\[
+\overline R^{\,M}\cap U
+=\bigcup_{\{i:R_i=R\}}(B_i\cap U).
+\tag{GC4}
+\]</span>
+Here is the point that makes the formula global. If <span class="math" data-tex="\(a\in R\cap B_i\cap U\)">\(a\in R\cap B_i\cap U\)</span>, choose an ambient neighborhood <span class="math" data-tex="\(V\subset W_i\)">\(V\subset W_i\)</span> of <span class="math" data-tex="\(a\)">\(a\)</span> whose intersection with <span class="math" data-tex="\(A\)">\(A\)</span> lies in <span class="math" data-tex="\(R\)">\(R\)</span>. Such a neighborhood exists because <span class="math" data-tex="\(R\)">\(R\)</span> is open in <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span>, and <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span> is open in <span class="math" data-tex="\(A\)">\(A\)</span>. Density in (GC3) gives <span class="math" data-tex="\(V\cap K_i\ne\varnothing\)">\(V\cap K_i\ne\varnothing\)</span>. Since <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is connected, its assigned component is <span class="math" data-tex="\(R_i=R\)">\(R_i=R\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+R\cap U\subset\bigcup_{\{i:R_i=R\}}(B_i\cap U).
+\]">\[
+R\cap U\subset\bigcup_{\{i:R_i=R\}}(B_i\cap U).
+\]</span>
+The right side is closed relative to <span class="math" data-tex="\(U\)">\(U\)</span>; taking closure inside <span class="math" data-tex="\(U\)">\(U\)</span> proves one inclusion in (GC4). For the reverse inclusion, each assigned <span class="math" data-tex="\(K_i\subset R\)">\(K_i\subset R\)</span> is dense in <span class="math" data-tex="\(B_i\cap W_i\)">\(B_i\cap W_i\)</span>, so every point of <span class="math" data-tex="\(B_i\cap U\)">\(B_i\cap U\)</span> belongs to <span class="math" data-tex="\(\overline R^{\,M}\)">\(\overline R^{\,M}\)</span>.</p>
+<p>No assertion about analytic continuation through an arbitrary small intersection was used: the larger connected sets <span class="math" data-tex="\(K_i\)">\(K_i\)</span> determine the assignments, and only the final equality is restricted to <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<h3 id="the-global-component-theorem">The global component theorem</h3>
+<p>For each connected component <span class="math" data-tex="\(R\)">\(R\)</span> of <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span>, set <span class="math" data-tex="\(C_R=\overline R^{\,M}\)">\(C_R=\overline R^{\,M}\)</span>. Formula (GC4) shows that <span class="math" data-tex="\(C_R\)">\(C_R\)</span> is analytic near every point of <span class="math" data-tex="\(A\)">\(A\)</span>. It is absent near a point outside <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(A\)">\(A\)</span> is closed. Thus <span class="math" data-tex="\(C_R\)">\(C_R\)</span> is a closed analytic subset of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Only finitely many <span class="math" data-tex="\(C_R\)">\(C_R\)</span> meet the neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> in (GC4): each such <span class="math" data-tex="\(R\)">\(R\)</span> is one of the finitely many assignments <span class="math" data-tex="\(R_i\)">\(R_i\)</span>. The family <span class="math" data-tex="\(\{C_R\}\)">\(\{C_R\}\)</span> is therefore locally finite in the ambient manifold, including at singular points and points outside its members. It covers <span class="math" data-tex="\(A\)">\(A\)</span>, again by (GC4).</p>
+<p>Connected components are closed in any topological space. Since <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span> is open in <span class="math" data-tex="\(A\)">\(A\)</span>, this gives the useful identity
+<span class="math math-display" data-tex="\[
+C_R\cap A_{\mathrm{reg}}=R.
+\tag{GC5}
+\]">\[
+C_R\cap A_{\mathrm{reg}}=R.
+\tag{GC5}
+\]</span>
+In particular, distinct <span class="math" data-tex="\(C_R\)">\(C_R\)</span> do not contain one another: a point of <span class="math" data-tex="\(R\)">\(R\)</span> belongs to <span class="math" data-tex="\(C_R\)">\(C_R\)</span> and, by (GC5), to no <span class="math" data-tex="\(C_{R&#x27;}\)">\(C_{R&#x27;}\)</span> with <span class="math" data-tex="\(R&#x27;\ne R\)">\(R&#x27;\ne R\)</span>.</p>
+<p>Each <span class="math" data-tex="\(C_R\)">\(C_R\)</span> is globally irreducible. To see this, suppose <span class="math" data-tex="\(C_R=D\cup E\)">\(C_R=D\cup E\)</span> with <span class="math" data-tex="\(D,E\)">\(D,E\)</span> closed analytic. Their intersections with the connected complex manifold <span class="math" data-tex="\(R\)">\(R\)</span> are analytic. If both were proper, they would be closed with empty interior and their finite union could not cover <span class="math" data-tex="\(R\)">\(R\)</span>. Hence one contains <span class="math" data-tex="\(R\)">\(R\)</span>, and its closedness makes it contain <span class="math" data-tex="\(C_R\)">\(C_R\)</span>.</p>
+<p>Apply the construction to any nonempty globally irreducible analytic set <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(B_{\mathrm{reg}}\)">\(B_{\mathrm{reg}}\)</span> had two or more connected components, choose one closure <span class="math" data-tex="\(C_R\)">\(C_R\)</span> and let <span class="math" data-tex="\(E\)">\(E\)</span> be the union of all the other closures. Local finiteness makes <span class="math" data-tex="\(E\)">\(E\)</span> closed analytic. Both <span class="math" data-tex="\(C_R\)">\(C_R\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> are proper by (GC5), contradicting irreducibility of <span class="math" data-tex="\(B=C_R\cup E\)">\(B=C_R\cup E\)</span>. Thus
+<span class="math math-display" data-tex="\[
+B_{\mathrm{reg}}\ \text{is connected and dense in }B.
+\tag{GC6}
+\]">\[
+B_{\mathrm{reg}}\ \text{is connected and dense in }B.
+\tag{GC6}
+\]</span>
+This conclusion applies in particular to every <span class="math" data-tex="\(C_R\)">\(C_R\)</span>. Its intrinsic regular locus may contain points singular for the larger union <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>It remains to verify maximality, so that the constructed sets really are the global irreducible components. Let <span class="math" data-tex="\(B\subset A\)">\(B\subset A\)</span> be any nonempty globally irreducible closed analytic subset. By (GC6), <span class="math" data-tex="\(B_{\mathrm{reg}}\)">\(B_{\mathrm{reg}}\)</span> is connected and dense in <span class="math" data-tex="\(B\)">\(B\)</span>. Near one of its points, only finitely many <span class="math" data-tex="\(C_R\)">\(C_R\)</span> occur. Their intersections with a small regular neighborhood cover that neighborhood. One of those intersections has interior; otherwise finitely many closed analytic subsets with empty interior would cover a manifold. The identity theorem on the connected <span class="math" data-tex="\(B_{\mathrm{reg}}\)">\(B_{\mathrm{reg}}\)</span> then gives <span class="math" data-tex="\(B_{\mathrm{reg}}\subset C_R\)">\(B_{\mathrm{reg}}\subset C_R\)</span>, and closedness gives <span class="math" data-tex="\(B\subset C_R\)">\(B\subset C_R\)</span>. Together with noncontainment, this proves maximality and uniqueness.</p>
+<p>We have established the global component theorem in arbitrary codimension. It also proves the equivalence
+<span class="math math-display" data-tex="\[
+A\ne\varnothing\text{ is globally irreducible}
+\quad\Longleftrightarrow\quad
+A_{\mathrm{reg}}\text{ is connected}.
+\tag{GC7}
+\]">\[
+A\ne\varnothing\text{ is globally irreducible}
+\quad\Longleftrightarrow\quad
+A_{\mathrm{reg}}\text{ is connected}.
+\tag{GC7}
+\]</span>
+If <span class="math" data-tex="\(M\)">\(M\)</span> is second countable, the family of components is at most countable: its indexing sets <span class="math" data-tex="\(R\)">\(R\)</span> are disjoint nonempty open subsets of the second-countable manifold <span class="math" data-tex="\(A_{\mathrm{reg}}\)">\(A_{\mathrm{reg}}\)</span>. Local finiteness, rather than global finiteness, is the conclusion used below.</p>
+<h3 id="a-connected-maximal-rank-region-inside-the-regular-carrier">A connected maximal-rank region inside the regular carrier</h3>
+<p>Let <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> be holomorphic, and let <span class="math" data-tex="\(C=C_R\)">\(C=C_R\)</span> be one global component of <span class="math" data-tex="\(A\)">\(A\)</span>. The connected manifold <span class="math" data-tex="\(P=C_{\mathrm{reg}}\)">\(P=C_{\mathrm{reg}}\)</span> has one complex dimension <span class="math" data-tex="\(d\)">\(d\)</span>. The integer rank of
+<span class="math math-display" data-tex="\[
+df_p|_{T_pC}:T_pC\longrightarrow T_{f(p)}N
+\]">\[
+df_p|_{T_pC}:T_pC\longrightarrow T_{f(p)}N
+\]</span>
+lies in <span class="math" data-tex="\(\{0,\ldots,d\}\)">\(\{0,\ldots,d\}\)</span>; its maximum <span class="math" data-tex="\(r\)">\(r\)</span> is therefore attained without any compactness assumption.</p>
+<p>The rank-drop set <span class="math" data-tex="\(Z_f=\{p\in P:\operatorname{rank}(df_p|_{T_pC})&lt;r\}\)">\(Z_f=\{p\in P:\operatorname{rank}(df_p|_{T_pC})&lt;r\}\)</span> is closed analytic in <span class="math" data-tex="\(P\)">\(P\)</span>: in manifold and target coordinates it is cut out by the <span class="math" data-tex="\(r\)">\(r\)</span>-minors. These equations agree in their zero loci under coordinate changes. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, put <span class="math" data-tex="\(Z_f=\varnothing\)">\(Z_f=\varnothing\)</span>. It is proper by the definition of <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Also put
+<span class="math math-display" data-tex="\[
+Z_{\mathrm{int}}
+=P\cap\bigcup_{D\ne C}D,
+\qquad
+U_C=P\setminus(Z_f\cup Z_{\mathrm{int}}),
+\tag{GC8}
+\]">\[
+Z_{\mathrm{int}}
+=P\cap\bigcup_{D\ne C}D,
+\qquad
+U_C=P\setminus(Z_f\cup Z_{\mathrm{int}}),
+\tag{GC8}
+\]</span>
+where <span class="math" data-tex="\(D\)">\(D\)</span> ranges over the other global components. Their union is closed analytic by ambient local finiteness, so <span class="math" data-tex="\(Z_{\mathrm{int}}\)">\(Z_{\mathrm{int}}\)</span> is analytic in <span class="math" data-tex="\(P\)">\(P\)</span>. It is proper: every point of the nonempty <span class="math" data-tex="\(R\subset P\)">\(R\subset P\)</span> avoids the other components by (GC5).</p>
+<p>Both deleted sets are proper analytic subsets of connected <span class="math" data-tex="\(P\)">\(P\)</span>; their union is still proper. The deletion lemma proves that <span class="math" data-tex="\(U_C\)">\(U_C\)</span> is nonempty, connected and dense in <span class="math" data-tex="\(P\)">\(P\)</span>, hence dense in <span class="math" data-tex="\(C\)">\(C\)</span>. It is a complex submanifold, and <span class="math" data-tex="\(f|_{U_C}\)">\(f|_{U_C}\)</span> has constant rank <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>At any point of <span class="math" data-tex="\(P\setminus Z_{\mathrm{int}}\)">\(P\setminus Z_{\mathrm{int}}\)</span>, ambient local finiteness supplies a neighborhood meeting no other component. There <span class="math" data-tex="\(A=C\)">\(A=C\)</span>, so the point is regular for <span class="math" data-tex="\(A\)">\(A\)</span> and the tangent spaces of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> agree. Conversely every point of <span class="math" data-tex="\(R\)">\(R\)</span> has these properties. Consequently
+<span class="math math-display" data-tex="\[
+P\setminus Z_{\mathrm{int}}=R,
+\qquad
+U_C=\{p\in R:\operatorname{rank}(df_p|_{T_pA})=r\}.
+\tag{GC9}
+\]">\[
+P\setminus Z_{\mathrm{int}}=R,
+\qquad
+U_C=\{p\in R:\operatorname{rank}(df_p|_{T_pA})=r\}.
+\tag{GC9}
+\]</span>
+Deleting intersections is thus exactly what makes the rank statement concern the regular locus of the whole carrier.</p>
+<p>For a holomorphic cotangent projection, this gives one connected dense region on each irreducible analytic component where the carrier is regular and the projection has its maximal rank. Any propagation of a sheaf coefficient type from that region still uses the separate microlocal continuity theorem. Neither a hypersurface equation nor local irreducibility of the global component has been assumed.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="1-multiplicities-determine-the-remainder">1. Multiplicities determine the remainder</h3>
+<p><em>Difficulty: Introductory.</em> Divide <span class="math" data-tex="\(e^w\)">\(e^w\)</span> by <span class="math" data-tex="\(w^3\)">\(w^3\)</span> in the ring of holomorphic germs at zero. Why would testing only the distinct roots of the divisor give an insufficient uniqueness argument?</p>
+<p><strong>Solution.</strong> Taylor expansion gives</p>
+<span class="math math-display" data-tex="\[
+e^w=w^3Q(w)+1+w+\tfrac12w^2,
+\qquad Q(w)=\sum_{j=0}^{\infty}\frac{w^j}{(j+3)!}.
+\]">\[
+e^w=w^3Q(w)+1+w+\tfrac12w^2,
+\qquad Q(w)=\sum_{j=0}^{\infty}\frac{w^j}{(j+3)!}.
+\]</span>
+<p>The series for <span class="math" data-tex="\(Q\)">\(Q\)</span> converges everywhere and has value <span class="math" data-tex="\(1/6\)">\(1/6\)</span> at zero. A polynomial remainder difference must vanish to order at least three, not just vanish at zero. The polynomial <span class="math" data-tex="\(w\)">\(w\)</span> passes the latter test but fails the former. A polynomial of degree at most two with a triple zero is zero, which gives uniqueness.</p>
+<h3 id="2-sheets-can-belong-to-one-component">2. Sheets can belong to one component</h3>
+<p><em>Difficulty: Intermediate.</em> For the cusp <span class="math" data-tex="\(y^2=x^3\)">\(y^2=x^3\)</span>, describe a parametrization, the regular locus and the covering over a punctured <span class="math" data-tex="\(x\)">\(x\)</span>-disc. Decide whether the two sheets define two irreducible germs.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(x=t^2\)">\(x=t^2\)</span>, <span class="math" data-tex="\(y=t^3\)">\(y=t^3\)</span>. If a point of the curve is nonzero, then <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, and <span class="math" data-tex="\(t=y/x\)">\(t=y/x\)</span> is its unique parameter. At the origin use <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The gradient of <span class="math" data-tex="\(y^2-x^3\)">\(y^2-x^3\)</span> is <span class="math" data-tex="\((-3x^2,2y)\)">\((-3x^2,2y)\)</span>, which vanishes on the curve only at the origin; the implicit-function theorem therefore proves smoothness away from that point. Over a nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, the two choices <span class="math" data-tex="\(t=\pm\sqrt{x}\)">\(t=\pm\sqrt{x}\)</span> are exchanged by a loop around zero. The resulting two-sheeted covering is connected.</p>
+<p>For an algebraic check of germ irreducibility, a factorization of the monic quadratic <span class="math" data-tex="\(y^2-x^3\)">\(y^2-x^3\)</span> over <span class="math" data-tex="\(\mathbb C\{x\}\)">\(\mathbb C\{x\}\)</span> would give a holomorphic root <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span>. Then <span class="math" data-tex="\(2\operatorname{ord}_0h=3\)">\(2\operatorname{ord}_0h=3\)</span>, an impossibility. The polynomial is irreducible, and the Weierstrass factorization result in the local-ring prerequisite makes it irreducible in <span class="math" data-tex="\(\mathbb C\{x,y\}\)">\(\mathbb C\{x,y\}\)</span>. That ring is factorial, so its principal ideal is prime. The two sheets therefore belong to one irreducible germ.</p>
+<p>The origin is singular for a further reason. The finite projection gives dimension one. If the curve were a submanifold there, choose a holomorphic local coordinate <span class="math" data-tex="\(s\)">\(s\)</span> on that smooth curve. Neither ambient coordinate function is identically zero, and <span class="math" data-tex="\(y(s)^2=x(s)^3\)">\(y(s)^2=x(s)^3\)</span> gives <span class="math" data-tex="\(2\operatorname{ord}_s y=3\operatorname{ord}_s x\)">\(2\operatorname{ord}_s y=3\operatorname{ord}_s x\)</span>. Hence both orders are at least two. The derivative of the inclusion into <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> would vanish, contradicting the immersion property of a submanifold. The regular locus is therefore exactly the punctured curve, biholomorphic to the punctured parameter disc.</p>
+<h3 id="3-one-global-component-two-branches-at-a-node">3. One global component, two branches at a node</h3>
+<p><em>Difficulty: Advanced.</em> Study <span class="math" data-tex="\(C=\{y^2=x^2(x+1)\}\subset\mathbb C^2\)">\(C=\{y^2=x^2(x+1)\}\subset\mathbb C^2\)</span> by the parameter <span class="math" data-tex="\(x=t^2-1\)">\(x=t^2-1\)</span>, <span class="math" data-tex="\(y=t(t^2-1)\)">\(y=t(t^2-1)\)</span>. Determine its global components and its local branches at the origin.</p>
+<p><strong>Solution.</strong> The only point with <span class="math" data-tex="\(x=0\)">\(x=0\)</span> is <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. Elsewhere <span class="math" data-tex="\(t=y/x\)">\(t=y/x\)</span>, and the equation gives <span class="math" data-tex="\(t^2=x+1\)">\(t^2=x+1\)</span>, proving that the parameter recovers every such point uniquely. Its derivative <span class="math" data-tex="\((2t,3t^2-1)\)">\((2t,3t^2-1)\)</span> is never zero. The defining function has gradient <span class="math" data-tex="\((-3x^2-2x,2y)\)">\((-3x^2-2x,2y)\)</span>; solving the gradient equations together with the curve equation leaves only <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. The two parameters <span class="math" data-tex="\(t=1,-1\)">\(t=1,-1\)</span> map to that node. Consequently</p>
+<span class="math math-display" data-tex="\[
+C_{\mathrm{reg}}\cong\mathbb C\setminus\{-1,1\}.
+\]">\[
+C_{\mathrm{reg}}\cong\mathbb C\setminus\{-1,1\}.
+\]</span>
+<p>This is connected, and its closure is <span class="math" data-tex="\(C\)">\(C\)</span>, so the global-component theorem makes <span class="math" data-tex="\(C\)">\(C\)</span> irreducible. On a disc about <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, a holomorphic square root of <span class="math" data-tex="\(1+x\)">\(1+x\)</span> exists, for example by its convergent binomial series. The two distinct germs <span class="math" data-tex="\(y=x\sqrt{1+x}\)">\(y=x\sqrt{1+x}\)</span> and <span class="math" data-tex="\(y=-x\sqrt{1+x}\)">\(y=-x\sqrt{1+x}\)</span> are smooth and form the curve germ. Global irreducibility does not require every germ to be irreducible.</p>
+<p><img src="src/figures/global-branches.svg" alt="A connected complex parameter plane and the two local branches of a nodal curve" class="course-figure" style="max-width:100%;height:auto"></p>
+<p>The left panel shows the complex parameter plane with <span class="math" data-tex="\(t=\pm1\)">\(t=\pm1\)</span> omitted. A path between the two punctured neighbourhoods stays in this connected domain. The right panel shows only the real trace of <span class="math" data-tex="\(C\)">\(C\)</span>; the full complex curve lies in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Both omitted parameters map to the node, and their neighbourhoods produce its two local branches. This is the distinction proved in (GC4)–(GC7), with the exact parametrization checked in this solution. Figure by GPT-6 Astra (OpenAI), Ultra, CC0. <a href="src/figures/global-branches.svg">Full-size figure</a> · <a href="src/figures/draw_global_branches.py">Reproducible plotting source</a>.</p>
+<h3 id="4-a-margin-that-makes-a-projection-proper">4. A margin that makes a projection proper</h3>
+<p><em>Difficulty: Intermediate.</em> Intersect the line <span class="math" data-tex="\(w=z\)">\(w=z\)</span> with <span class="math" data-tex="\(\Delta_{r_z}\times\Delta_{r_w}\)">\(\Delta_{r_z}\times\Delta_{r_w}\)</span>. Compare the projection to <span class="math" data-tex="\(\Delta_{r_z}\)">\(\Delta_{r_z}\)</span> when <span class="math" data-tex="\(r_z&lt;r_w\)">\(r_z&lt;r_w\)</span> and when <span class="math" data-tex="\(r_w&lt;r_z\)">\(r_w&lt;r_z\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(r_z&lt;r_w\)">\(r_z&lt;r_w\)</span>, the intersection is the graph over the entire base disc. The projection is a homeomorphism, so every compact base set has compact inverse image. The strict vertical margin is uniform on compact subsets of the base.</p>
+<p>If <span class="math" data-tex="\(r_w&lt;r_z\)">\(r_w&lt;r_z\)</span>, the image omits the points with <span class="math" data-tex="\(r_w\leq|z|&lt;r_z\)">\(r_w\leq|z|&lt;r_z\)</span>. Choose real <span class="math" data-tex="\(z_j\uparrow r_w\)">\(z_j\uparrow r_w\)</span> and the compact base subset <span class="math" data-tex="\(K=\{z_j:j\geq1\}\cup\{r_w\}\)">\(K=\{z_j:j\geq1\}\cup\{r_w\}\)</span>. Its inverse image consists of <span class="math" data-tex="\((z_j,z_j)\)">\((z_j,z_j)\)</span>, whose only ambient limit is <span class="math" data-tex="\((r_w,r_w)\)">\((r_w,r_w)\)</span>, outside the product of open discs. That inverse image is not compact. The projection is neither surjective nor proper in this second case.</p>
+<h3 id="5-intrinsic-regularity-and-regularity-of-the-carrier">5. Intrinsic regularity and regularity of the carrier</h3>
+<p><em>Difficulty: Intermediate.</em> Let <span class="math" data-tex="\(A=\{xy=0\}\)">\(A=\{xy=0\}\)</span> and <span class="math" data-tex="\(f(x,y)=x\)">\(f(x,y)=x\)</span>. Find the intrinsic regular locus and maximal-rank region of each global component, then require the points also to be regular on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(C_h=\{y=0\}\)">\(C_h=\{y=0\}\)</span> and <span class="math" data-tex="\(C_v=\{x=0\}\)">\(C_v=\{x=0\}\)</span>. Each is a smooth complex line, and each is its own intrinsic regular locus. The restriction of <span class="math" data-tex="\(f\)">\(f\)</span> has rank one on <span class="math" data-tex="\(C_h\)">\(C_h\)</span> and rank zero on <span class="math" data-tex="\(C_v\)">\(C_v\)</span>, with no rank-drop points on either. The origin nevertheless fails to be regular on the union: a submanifold germ is irreducible, whereas these two distinct line germs meet there. Removing that intersection leaves <span class="math" data-tex="\(C_h\setminus\{0\}\)">\(C_h\setminus\{0\}\)</span> and <span class="math" data-tex="\(C_v\setminus\{0\}\)">\(C_v\setminus\{0\}\)</span>, both connected and dense. For the vertical component the deletion is needed for carrier regularity even though rank zero is already constant.</p>
+<h3 id="6-infinite-components-and-ambient-accumulation">6. Infinite components and ambient accumulation</h3>
+<p><em>Difficulty: Advanced.</em> Compare the zero set of <span class="math" data-tex="\(\sin(\pi z)\)">\(\sin(\pi z)\)</span> in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> with <span class="math" data-tex="\(E=\{0\}\cup\{1/j:j\geq1\}\)">\(E=\{0\}\cup\{1/j:j\geq1\}\)</span>. Which admits a locally finite analytic component decomposition near zero?</p>
+<p><strong>Solution.</strong> Using <span class="math" data-tex="\(\sin(\pi z)=(e^{i\pi z}-e^{-i\pi z})/(2i)\)">\(\sin(\pi z)=(e^{i\pi z}-e^{-i\pi z})/(2i)\)</span>, its zeros satisfy <span class="math" data-tex="\(e^{2\pi iz}=1\)">\(e^{2\pi iz}=1\)</span>, hence are exactly the integers. Each integer is an isolated point and an irreducible component. Each such component is smooth and zero-dimensional, and every map restricted to it has rank zero. A bounded neighbourhood meets only finitely many integers, so the family is locally finite in the ambient plane, although it is globally infinite.</p>
+<p>In contrast, every neighbourhood of zero meets infinitely many singleton subsets of <span class="math" data-tex="\(E\)">\(E\)</span>. If finitely many holomorphic equations defined <span class="math" data-tex="\(E\)">\(E\)</span> near zero, each defining function would vanish at all sufficiently small <span class="math" data-tex="\(1/j\)">\(1/j\)</span>. The one-variable identity theorem would make every one of those functions identically zero near zero. Their common zero set would contain a whole disc, a contradiction. Local finiteness must hold near every ambient point, not merely near each isolated member of a proposed family.</p>
+<h2 id="human-sources-and-the-microlocal-application">Human sources and the microlocal application</h2>
+<p>Jean-Pierre Demailly's freely available <em><a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf">Complex Analytic and Differential Geometry</a></em>, version of 21 June 2012, supplies the preparation and finite-parametrization mathematics developed in the earlier analytic prerequisites. Demailly credits the contour method to C. L. Siegel. The contour component above and the linked adapted proof retain Demailly's authorship and <a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/documents.html">custom reuse grant</a>; that grant is not replaced by a Creative Commons licence. The global-component argument, rank argument and exercises are programme exposition, and the exact earlier proofs used by them are listed at the start.</p>
+<p>For an analytic Lagrangian subset of <span class="math" data-tex="\(T^*X\)">\(T^*X\)</span>, take the holomorphic map to be <span class="math" data-tex="\(\pi:T^*X\to X\)">\(\pi:T^*X\to X\)</span>. The maximal-rank region proved above is the geometric input for <a href="how-simple-sheaf-shifts-change-along-a-lagrangian.html">how simple sheaf shifts change along a Lagrangian</a>. The sheaf comparison and continuity arguments in that lesson are separate from the analytic component theorem.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/weierstrass-parametrization-and-connected-regular-loci.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

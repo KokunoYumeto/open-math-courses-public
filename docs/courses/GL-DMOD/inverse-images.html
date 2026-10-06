@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inverse images · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/inverse-images.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Inverse images</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="inverse-images">Inverse images</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The fiber of the point module at its own supporting point is zero as an ordinary tensor product. Its derived fiber is one-dimensional. This is the first reason inverse image of differential equations must be derived. A second issue is coherence: restricting the regular differential-operator module to a point leaves infinitely many derivative directions. Smooth maps and non-characteristic maps provide useful situations where these problems are controlled.</p>
+<p>Let <span class="math" data-tex="$k$">$k$</span> have characteristic zero. All varieties are smooth, separated and of finite type, with pure dimensions. Geometric characteristic varieties use an algebraically closed <span class="math" data-tex="$k$">$k$</span>; analytic statements use <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Modules are left differential-operator modules, quasi-coherent over the structure sheaf. For <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span>, this chapter uses</p>
+<span class="math math-display" data-tex="\[
+f^!:=Lf^*[d_X-d_Y].
+\tag{0.1}
+\]">\[
+f^!:=Lf^*[d_X-d_Y].
+\tag{0.1}
+\]</span>
+<p>The star before deriving means the ordinary right-exact pullback. The exclamation mark means this particular shifted derived pullback. We have not defined another inverse image by duality. Our prerequisites are <a href="d-modules-flat-connections-and-local-systems.html">connections and left/right conventions</a> and <a href="holonomic-d-modules-and-duality.html">holonomic modules and duality</a>, together with derived tensor products and Koszul complexes.</p>
+<h2 id="1-the-chain-rule-and-the-transfer-bimodule">1. The chain rule and the transfer bimodule</h2>
+<p>The differential of <span class="math" data-tex="$f$">$f$</span> is the map</p>
+<span class="math math-display" data-tex="\[
+df:T_X\longrightarrow
+\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}T_Y.
+\tag{1.1}
+\]">\[
+df:T_X\longrightarrow
+\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}T_Y.
+\tag{1.1}
+\]</span>
+<p>If <span class="math" data-tex="$df(\xi)=\sum_\nu a_\nu\otimes\eta_\nu$">$df(\xi)=\sum_\nu a_\nu\otimes\eta_\nu$</span>, define on the ordinary pullback</p>
+<span class="math math-display" data-tex="\[
+\xi(b\otimes m)=
+\xi(b)\otimes m+
+\sum_\nu b a_\nu\otimes\eta_\nu m,
+\qquad
+f^*M=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}M.
+\tag{1.2}
+\]">\[
+\xi(b\otimes m)=
+\xi(b)\otimes m+
+\sum_\nu b a_\nu\otimes\eta_\nu m,
+\qquad
+f^*M=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}M.
+\tag{1.2}
+\]</span>
+<p>This is independent of the tensor expression for <span class="math" data-tex="$df(\xi)$">$df(\xi)$</span>, since the action of vector fields on <span class="math" data-tex="$M$">$M$</span> is <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>-linear in the vector field.</p>
+<p>To check balancing, move <span class="math" data-tex="$h\in\mathcal O_Y$">$h\in\mathcal O_Y$</span> across the tensor. Acting on <span class="math" data-tex="$bf^*h\otimes m$">$bf^*h\otimes m$</span> produces the extra term <span class="math" data-tex="$b\xi(f^*h)\otimes m$">$b\xi(f^*h)\otimes m$</span>. Acting instead on <span class="math" data-tex="$b\otimes hm$">$b\otimes hm$</span> produces <span class="math" data-tex="$\sum_\nu ba_\nu f^*(\eta_\nu h)\otimes m$">$\sum_\nu ba_\nu f^*(\eta_\nu h)\otimes m$</span>, equal to the same term by (1.1). The remaining terms coincide. Thus (1.2) descends to the tensor product.</p>
+<h3 id="proposition-1-1-the-canonical-differential-operator-action">Proposition 1.1. The canonical differential-operator action</h3>
+<p>Formula (1.2) makes <span class="math" data-tex="$f^*M$">$f^*M$</span> a left <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-module. If <span class="math" data-tex="$M$">$M$</span> is a finite integrable connection, this is its usual pullback connection.</p>
+<p><strong>Proof.</strong> The product commutator is immediate:</p>
+<span class="math math-display" data-tex="\[
+[\xi,b]\,(c\otimes m)=\xi(b)c\otimes m.
+\]">\[
+[\xi,b]\,(c\otimes m)=\xi(b)c\otimes m.
+\]</span>
+<p>For the Lie bracket relation, work in commuting étale coordinates <span class="math" data-tex="$y_1,\ldots,y_{d_Y}$">$y_1,\ldots,y_{d_Y}$</span> on <span class="math" data-tex="$Y$">$Y$</span>. Formula (1.2) becomes</p>
+<span class="math math-display" data-tex="\[
+\nabla^f_\xi=\xi\otimes1+
+\sum_j\xi(f^*y_j)\,\partial_{y_j}.
+\tag{1.3}
+\]">\[
+\nabla^f_\xi=\xi\otimes1+
+\sum_j\xi(f^*y_j)\,\partial_{y_j}.
+\tag{1.3}
+\]</span>
+<p>On a tensor <span class="math" data-tex="$b\otimes m$">$b\otimes m$</span>, the commutator of two such operators has derivative coefficients</p>
+<span class="math math-display" data-tex="\[
+\xi\bigl(\zeta(f^*y_j)\bigr)
+-\zeta\bigl(\xi(f^*y_j)\bigr)
+=[\xi,\zeta](f^*y_j).
+\]">\[
+\xi\bigl(\zeta(f^*y_j)\bigr)
+-\zeta\bigl(\xi(f^*y_j)\bigr)
+=[\xi,\zeta](f^*y_j).
+\]</span>
+<p>The terms containing two <span class="math" data-tex="$\partial_y$">$\partial_y$</span> commute and cancel, and the remaining action on <span class="math" data-tex="$b$">$b$</span> is <span class="math" data-tex="$[\xi,\zeta](b)$">$[\xi,\zeta](b)$</span>. Hence <span class="math" data-tex="$[\nabla^f_\xi,\nabla^f_\zeta]=\nabla^f_{[\xi,\zeta]}$">$[\nabla^f_\xi,\nabla^f_\zeta]=\nabla^f_{[\xi,\zeta]}$</span>. The relations for functions and vector fields defining <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> are all satisfied. This constructs its action and proves uniqueness. The construction in terms of <span class="math" data-tex="$df$">$df$</span> glues across coordinate changes.</p>
+<p>For a connection <span class="math" data-tex="$\nabla:M\to\Omega_Y^1\otimes M$">$\nabla:M\to\Omega_Y^1\otimes M$</span>, let <span class="math" data-tex="$\rho:f^*\Omega_Y^1\to\Omega_X^1$">$\rho:f^*\Omega_Y^1\to\Omega_X^1$</span> be the map on differential forms. The usual pullback connection is</p>
+<span class="math math-display" data-tex="\[
+\nabla^f(b\otimes m)
+=db\otimes m+b(\rho\otimes1)(1\otimes\nabla m).
+\]">\[
+\nabla^f(b\otimes m)
+=db\otimes m+b(\rho\otimes1)(1\otimes\nabla m).
+\]</span>
+<p>Its contraction with <span class="math" data-tex="$\xi$">$\xi$</span> is exactly (1.2). The coefficient-derivative term makes the whole formula balanced; <span class="math" data-tex="$\nabla$">$\nabla$</span> is not being treated as an <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>-linear map to which ordinary tensor pullback could be applied alone. The bracket calculation proves flatness. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Take <span class="math" data-tex="$M=\mathcal D_Y$">$M=\mathcal D_Y$</span>, with its left regular action. The resulting module is</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_{X\to Y}
+=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y.
+\tag{1.4}
+\]">\[
+\mathcal D_{X\to Y}
+=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y.
+\tag{1.4}
+\]</span>
+<p>Right multiplication on the second factor commutes with every operation in (1.2), so (1.4) is a <span class="math" data-tex="$(\mathcal D_X,f^{-1}\mathcal D_Y)$">$(\mathcal D_X,f^{-1}\mathcal D_Y)$</span>-bimodule. It is the <strong>transfer module</strong>.</p>
+<p>Multiplication gives a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_{X\to Y}
+\otimes_{f^{-1}\mathcal D_Y}f^{-1}M
+\simeq f^*M.
+\tag{1.5}
+\]">\[
+\mathcal D_{X\to Y}
+\otimes_{f^{-1}\mathcal D_Y}f^{-1}M
+\simeq f^*M.
+\tag{1.5}
+\]</span>
+<p>Explicitly <span class="math" data-tex="$(b\otimes P)\otimes m\mapsto b\otimes Pm$">$(b\otimes P)\otimes m\mapsto b\otimes Pm$</span>; its inverse sends <span class="math" data-tex="$b\otimes m$">$b\otimes m$</span> to <span class="math" data-tex="$(b\otimes1)\otimes m$">$(b\otimes1)\otimes m$</span>. The chain rule verifies <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-linearity.</p>
+<p>Kashiwara–Schapira use <span class="math" data-tex="$f:Y\to X$">$f:Y\to X$</span> and therefore write <span class="math" data-tex="$\mathcal D_{Y\to X}$">$\mathcal D_{Y\to X}$</span>. Equation (1.4) uses the source first for our <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span>. Beilinson–Drinfeld denote the ordinary left-module pullback by <span class="math" data-tex="$f^\dagger$">$f^\dagger$</span> in Section 7.2.8. In this chapter it is <span class="math" data-tex="$f^*$">$f^*$</span>.</p>
+<h2 id="2-deriving-pullback-and-composing-it">2. Deriving pullback and composing it</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+Lf^*M=
+\mathcal D_{X\to Y}
+\otimes^{L}_{f^{-1}\mathcal D_Y}f^{-1}M.
+\tag{2.1}
+\]">\[
+Lf^*M=
+\mathcal D_{X\to Y}
+\otimes^{L}_{f^{-1}\mathcal D_Y}f^{-1}M.
+\tag{2.1}
+\]</span>
+<p>Its underlying derived structure-sheaf module is</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X
+\otimes^{L}_{f^{-1}\mathcal O_Y}f^{-1}M.
+\tag{2.2}
+\]">\[
+\mathcal O_X
+\otimes^{L}_{f^{-1}\mathcal O_Y}f^{-1}M.
+\tag{2.2}
+\]</span>
+<p>Indeed, a resolution of <span class="math" data-tex="$M$">$M$</span> by locally free differential-operator modules is also flat over <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>, by PBW. Applying (1.5) term by term computes both expressions. For an <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>-flat connection there is no higher pullback cohomology, but this conclusion does not hold for an arbitrary coherent <span class="math" data-tex="$\mathcal D_Y$">$\mathcal D_Y$</span>-module.</p>
+<p>Locally the regular ring <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span> has finite global dimension bounded by <span class="math" data-tex="$d_Y$">$d_Y$</span>. Thus (2.2) takes bounded complexes to bounded complexes. This statement only asserts boundedness; coherence of the resulting differential-operator cohomology needs additional arguments.</p>
+<h3 id="theorem-2-1-composition">Theorem 2.1. Composition</h3>
+<p>For <span class="math" data-tex="$X\xrightarrow fY\xrightarrow gZ$">$X\xrightarrow fY\xrightarrow gZ$</span>, there are canonical natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+L(gf)^*\simeq Lf^*Lg^*,
+\qquad
+(gf)^!\simeq f^!g^!.
+\tag{2.3}
+\]">\[
+L(gf)^*\simeq Lf^*Lg^*,
+\qquad
+(gf)^!\simeq f^!g^!.
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> The underived transfer identity is</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_{X\to Y}
+\otimes_{f^{-1}\mathcal D_Y}f^{-1}\mathcal D_{Y\to Z}
+\simeq\mathcal D_{X\to Z}.
+\tag{2.4}
+\]">\[
+\mathcal D_{X\to Y}
+\otimes_{f^{-1}\mathcal D_Y}f^{-1}\mathcal D_{Y\to Z}
+\simeq\mathcal D_{X\to Z}.
+\tag{2.4}
+\]</span>
+<p>Canceling the middle regular <span class="math" data-tex="$\mathcal D_Y$">$\mathcal D_Y$</span> factor identifies its left side with <span class="math" data-tex="$\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_{Y\to Z}$">$\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_{Y\to Z}$</span>, and then with <span class="math" data-tex="$\mathcal O_X\otimes_{(gf)^{-1}\mathcal O_Z}(gf)^{-1}\mathcal D_Z$">$\mathcal O_X\otimes_{(gf)^{-1}\mathcal O_Z}(gf)^{-1}\mathcal D_Z$</span>. The left action is that of <span class="math" data-tex="$d(gf)$">$d(gf)$</span> because the two chain-rule terms combine by the differential's composition law. Right multiplication is preserved as well.</p>
+<p>There are no hidden higher Tor terms in this particular transfer product. As a left <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>-module, <span class="math" data-tex="$\mathcal D_{Y\to Z}$">$\mathcal D_{Y\to Z}$</span> is locally a direct sum of copies of <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>: use PBW for <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span> and then pull its coefficient modules to <span class="math" data-tex="$Y$">$Y$</span>. Hence it is <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>-flat. Applying the comparison (2.1)–(2.2) to this module proves the derived version of (2.4).</p>
+<p>Derived tensor associativity now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Lf^*Lg^*M
+&amp;\simeq
+\left(\mathcal D_{X\to Y}
+\otimes^L_{f^{-1}\mathcal D_Y}
+f^{-1}\mathcal D_{Y\to Z}\right)
+\otimes^L_{(gf)^{-1}\mathcal D_Z}(gf)^{-1}M\\
+&amp;\simeq L(gf)^*M.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+Lf^*Lg^*M
+&amp;\simeq
+\left(\mathcal D_{X\to Y}
+\otimes^L_{f^{-1}\mathcal D_Y}
+f^{-1}\mathcal D_{Y\to Z}\right)
+\otimes^L_{(gf)^{-1}\mathcal D_Z}(gf)^{-1}M\\
+&amp;\simeq L(gf)^*M.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Exactness of inverse image of sheaves and flat resolutions justify these associations. All maps are the multiplication and chain-rule maps above, so the isomorphism is natural and compatible with a third composition. Finally</p>
+<span class="math math-display" data-tex="\[
+(d_X-d_Y)+(d_Y-d_Z)=d_X-d_Z.
+\]">\[
+(d_X-d_Y)+(d_Y-d_Z)=d_X-d_Z.
+\]</span>
+<p>Adding the shifts from (0.1) proves the second assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-smooth-maps-exactness-and-characteristic-support">3. Smooth maps: exactness and characteristic support</h2>
+<p>Write the cotangent maps as</p>
+<span class="math math-display" data-tex="\[
+X\times_YT^*Y
+\xrightarrow{\,f_d\,}T^*X,
+\qquad
+X\times_YT^*Y
+\xrightarrow{\,f_\pi\,}T^*Y.
+\tag{3.1}
+\]">\[
+X\times_YT^*Y
+\xrightarrow{\,f_d\,}T^*X,
+\qquad
+X\times_YT^*Y
+\xrightarrow{\,f_\pi\,}T^*Y.
+\tag{3.1}
+\]</span>
+<p>Here <span class="math" data-tex="$f_d(x,\eta)=(x,df_x^*\eta)$">$f_d(x,\eta)=(x,df_x^*\eta)$</span>, and <span class="math" data-tex="$f_\pi(x,\eta)=(f(x),\eta)$">$f_\pi(x,\eta)=(f(x),\eta)$</span>.</p>
+<h3 id="theorem-3-1-smooth-pullback">Theorem 3.1. Smooth pullback</h3>
+<p>If <span class="math" data-tex="$f$">$f$</span> is smooth of relative dimension <span class="math" data-tex="$r=d_X-d_Y$">$r=d_X-d_Y$</span>, then <span class="math" data-tex="$f^*$">$f^*$</span> is exact and preserves coherent differential-operator modules. For coherent <span class="math" data-tex="$M$">$M$</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ch}(f^*M)
+=f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\tag{3.2}
+\]">\[
+\operatorname{Ch}(f^*M)
+=f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\tag{3.2}
+\]</span>
+<p>In particular it preserves holonomic modules.</p>
+<p><strong>Proof.</strong> Smoothness implies flatness of <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> over <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>; see <a href="https://stacks.math.columbia.edu/tag/01VF">Stacks, Tag 01VF</a>. Equations (1.5) and (2.2) then prove exactness and vanishing of higher pullback cohomology.</p>
+<p>Work locally in étale coordinates adapted to the smooth map: lift coordinates <span class="math" data-tex="$y_1,\ldots,y_{d_Y}$">$y_1,\ldots,y_{d_Y}$</span> and append relative coordinates <span class="math" data-tex="$t_1,\ldots,t_r$">$t_1,\ldots,t_r$</span>. The coordinate vector fields in the <span class="math" data-tex="$y$">$y$</span> directions lift those on <span class="math" data-tex="$Y$">$Y$</span>, while the <span class="math" data-tex="$t$">$t$</span> directions act only on coefficients from <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. Thus the transfer module is generated over <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> by <span class="math" data-tex="$1\otimes1$">$1\otimes1$</span>, with relative derivatives killing that generator. Pulling back a finite presentation of <span class="math" data-tex="$M$">$M$</span> gives finite differential-operator generators and relations locally; equivalently, the following good-filtration calculation proves coherence directly.</p>
+<p>Choose a good order filtration <span class="math" data-tex="$F$">$F$</span> of <span class="math" data-tex="$M$">$M$</span> and give <span class="math" data-tex="$N=f^*M$">$N=f^*M$</span> the filtration <span class="math" data-tex="$F_pN=f^*F_pM$">$F_pN=f^*F_pM$</span>. Flatness makes these inclusions and gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{gr}N\simeq
+\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\operatorname{gr}M.
+\tag{3.3}
+\]">\[
+\operatorname{gr}N\simeq
+\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\operatorname{gr}M.
+\tag{3.3}
+\]</span>
+<p>The pulled-back base derivatives act on its symbols as their counterparts on <span class="math" data-tex="$\operatorname{gr}M$">$\operatorname{gr}M$</span>. Relative derivatives preserve <span class="math" data-tex="$F_pN$">$F_pN$</span> and therefore have zero degree-one action on <span class="math" data-tex="$\operatorname{gr}N$">$\operatorname{gr}N$</span>. This makes (3.3) finite over</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X[\xi_y,\xi_t],
+\quad\text{with }\xi_t\operatorname{gr}N=0.
+\]">\[
+\mathcal O_X[\xi_y,\xi_t],
+\quad\text{with }\xi_t\operatorname{gr}N=0.
+\]</span>
+<p>Its filtration pieces are coherent over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> and bounded below, so the filtration is good and <span class="math" data-tex="$N$">$N$</span> is coherent.</p>
+<p>Geometrically (3.3) is the pullback of the graded sheaf along <span class="math" data-tex="$f_\pi$">$f_\pi$</span>, followed by its pushforward along the closed immersion <span class="math" data-tex="$f_d$">$f_d$</span>. The latter is a closed immersion because the cotangent map of a smooth morphism is injective. Support under flat base change is exactly the inverse image: at a point lying over the original support the corresponding local flat map is faithfully flat, so the finite module cannot become zero. This proves (3.2), including smooth maps that are not surjective.</p>
+<p>The map <span class="math" data-tex="$f_\pi$">$f_\pi$</span> is smooth of relative dimension <span class="math" data-tex="$r$">$r$</span>. If <span class="math" data-tex="$M$">$M$</span> is holonomic, its nonempty characteristic components have dimension <span class="math" data-tex="$d_Y$">$d_Y$</span>, so every component of their pullback has dimension <span class="math" data-tex="$d_Y+r=d_X$">$d_Y+r=d_X$</span>. The closed immersion <span class="math" data-tex="$f_d$">$f_d$</span> preserves this dimension. Therefore <span class="math" data-tex="$N$">$N$</span> is holonomic, or zero if the support is missed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="projection-examples">Projection examples</h3>
+<p>For <span class="math" data-tex="$p:\mathbb A_x^1\times\mathbb A_t^1\to\mathbb A_x^1$">$p:\mathbb A_x^1\times\mathbb A_t^1\to\mathbb A_x^1$</span>,</p>
+<span class="math math-display" data-tex="\[
+p^*M=k[t]\otimes_kM,
+\quad
+\partial_x(h\otimes m)=h\otimes\partial_xm,
+\quad
+\partial_t(h\otimes m)=h&#x27;\otimes m.
+\tag{3.4}
+\]">\[
+p^*M=k[t]\otimes_kM,
+\quad
+\partial_x(h\otimes m)=h\otimes\partial_xm,
+\quad
+\partial_t(h\otimes m)=h&#x27;\otimes m.
+\tag{3.4}
+\]</span>
+<p>Coordinates act on their respective factors. Thus <span class="math" data-tex="$p^*\mathcal O_{\mathbb A^1}=\mathcal O_{\mathbb A^2}$">$p^*\mathcal O_{\mathbb A^1}=\mathcal O_{\mathbb A^2}$</span>. Pulling back <span class="math" data-tex="$\delta_0$">$\delta_0$</span> gives a holonomic module supported on the divisor <span class="math" data-tex="$x=0$">$x=0$</span>, with characteristic set <span class="math" data-tex="$x=0,\ \xi_t=0$">$x=0,\ \xi_t=0$</span> and free covectors <span class="math" data-tex="$\xi_x$">$\xi_x$</span>.</p>
+<p>For a cyclic <span class="math" data-tex="$M=A_1/A_1P$">$M=A_1/A_1P$</span>, the presentation is</p>
+<span class="math math-display" data-tex="\[
+p^*M\simeq
+A_2/(A_2P+A_2\partial_t).
+\tag{3.5}
+\]">\[
+p^*M\simeq
+A_2/(A_2P+A_2\partial_t).
+\tag{3.5}
+\]</span>
+<p>The cyclic generator satisfies both equations. PBW with <span class="math" data-tex="$t,\partial_t$">$t,\partial_t$</span> separated from <span class="math" data-tex="$x,\partial_x$">$x,\partial_x$</span> identifies its quotient with <span class="math" data-tex="$k[t]\otimes M$">$k[t]\otimes M$</span>, proving the presentation. The shifted pullback is <span class="math" data-tex="$p^!M=p^*M[1]$">$p^!M=p^*M[1]$</span>, concentrated in cohomological degree <span class="math" data-tex="$-1$">$-1$</span>.</p>
+<h2 id="4-closed-embeddings-and-koszul-fibers">4. Closed embeddings and Koszul fibers</h2>
+<p>Let <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span> be a smooth closed subvariety of codimension <span class="math" data-tex="$c$">$c$</span>. It is a regular immersion; see <a href="https://stacks.math.columbia.edu/tag/067U">Stacks, Tag 067U</a>. Locally its ideal is generated by a regular sequence <span class="math" data-tex="$x_1,\ldots,x_c$">$x_1,\ldots,x_c$</span>, chosen as normal coordinates.</p>
+<h3 id="proposition-4-1-derived-pullback-by-a-closed-embedding">Proposition 4.1. Derived pullback by a closed embedding</h3>
+<p>The underlying derived pullback is represented locally by</p>
+<span class="math math-display" data-tex="\[
+Li^*M\simeq K(x_1,\ldots,x_c;M),
+\qquad
+i^!M\simeq K(x_1,\ldots,x_c;M)[-c].
+\tag{4.1}
+\]">\[
+Li^*M\simeq K(x_1,\ldots,x_c;M),
+\qquad
+i^!M\simeq K(x_1,\ldots,x_c;M)[-c].
+\tag{4.1}
+\]</span>
+<p>The Koszul complex has terms <span class="math" data-tex="$\bigwedge^a k^c\otimes M$">$\bigwedge^a k^c\otimes M$</span> in degree <span class="math" data-tex="$-a$">$-a$</span>, with differential</p>
+<span class="math math-display" data-tex="\[
+d(e_{j_1}\wedge\cdots\wedge e_{j_a}\otimes m)
+=\sum_{b=1}^{a}(-1)^{b-1}
+e_{j_1}\wedge\cdots\widehat{e_{j_b}}\cdots
+\wedge e_{j_a}\otimes x_{j_b}m.
+\tag{4.2}
+\]">\[
+d(e_{j_1}\wedge\cdots\wedge e_{j_a}\otimes m)
+=\sum_{b=1}^{a}(-1)^{b-1}
+e_{j_1}\wedge\cdots\widehat{e_{j_b}}\cdots
+\wedge e_{j_a}\otimes x_{j_b}m.
+\tag{4.2}
+\]</span>
+<p>These are commuting multiplication operators; no normal derivative appears in this differential.</p>
+<p><strong>Proof.</strong> A regular sequence has an augmented Koszul resolution of the quotient structure sheaf. To see the exactness, begin with the two-term resolution for a single nonzerodivisor. Tensor successively with the next two-term complex. At each stage multiplication by the next normal equation is injective on the previous quotient, so its cone has cohomology only in degree zero, equal to the new quotient. This proves the finite free resolution of <span class="math" data-tex="$\mathcal O_Z$">$\mathcal O_Z$</span>; compare <a href="https://stacks.math.columbia.edu/tag/062F">Stacks, Tag 062F</a>.</p>
+<p>Tensor this resolution with <span class="math" data-tex="$M$">$M$</span> in (2.2). Since the resolution terms are locally free, the result computes the derived tensor product even when the normal equations are zerodivisors on <span class="math" data-tex="$M$">$M$</span>. Its differential is (4.2), proving the first formula. Since <span class="math" data-tex="$d_Z-d_X=-c$">$d_Z-d_X=-c$</span>, (0.1) gives the second.</p>
+<p>The canonical <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>-structure is that of the transfer construction (2.1). In adapted coordinates, tangent derivatives commute with multiplication by the normal equations and give its action on Koszul cohomology. Each normal equation acts null-homotopically on the Koszul complex, so the cohomology is a module over the quotient structure sheaf. The individual terms <span class="math" data-tex="$M$">$M$</span> of this underlying Koszul model need not be annihilated by the ideal of <span class="math" data-tex="$Z$">$Z$</span>; they are not separately being asserted to be <span class="math" data-tex="$\mathcal O_Z$">$\mathcal O_Z$</span>-modules. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="three-fibers-at-the-origin">Three fibers at the origin</h3>
+<p>For <span class="math" data-tex="$i_0:\{0\}\hookrightarrow\mathbb A^1$">$i_0:\{0\}\hookrightarrow\mathbb A^1$</span>, the complex is</p>
+<span class="math math-display" data-tex="\[
+[M\xrightarrow{x}M]\quad\text{in degrees }-1,0.
+\tag{4.3}
+\]">\[
+[M\xrightarrow{x}M]\quad\text{in degrees }-1,0.
+\tag{4.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="$H^{-1}(Li_0^*M)=\ker x$">$H^{-1}(Li_0^*M)=\ker x$</span>, <span class="math" data-tex="$H^0(Li_0^*M)=M/xM$">$H^0(Li_0^*M)=M/xM$</span>, and <span class="math" data-tex="$i_0^!=Li_0^*[-1]$">$i_0^!=Li_0^*[-1]$</span>.</p>
+<p>For <span class="math" data-tex="$M=k[x]$">$M=k[x]$</span>, multiplication by <span class="math" data-tex="$x$">$x$</span> is injective and its cokernel is <span class="math" data-tex="$k$">$k$</span>. Thus <span class="math" data-tex="$Li_0^*\mathcal O=k$">$Li_0^*\mathcal O=k$</span> in degree zero, while <span class="math" data-tex="$i_0^!\mathcal O=k[-1]$">$i_0^!\mathcal O=k[-1]$</span> has its only cohomology in degree one.</p>
+<p>For <span class="math" data-tex="$\delta_0=k[\partial]v$">$\delta_0=k[\partial]v$</span> with <span class="math" data-tex="$xv=0$">$xv=0$</span>, the identity</p>
+<span class="math math-display" data-tex="\[
+x\partial^jv=-j\partial^{j-1}v
+\tag{4.4}
+\]">\[
+x\partial^jv=-j\partial^{j-1}v
+\tag{4.4}
+\]</span>
+<p>shows that <span class="math" data-tex="$x$">$x$</span> is surjective and has kernel <span class="math" data-tex="$kv$">$kv$</span>. Hence the ordinary fiber <span class="math" data-tex="$i_0^*\delta_0$">$i_0^*\delta_0$</span> is zero, <span class="math" data-tex="$Li_0^*\delta_0\simeq k[1]$">$Li_0^*\delta_0\simeq k[1]$</span>, and <span class="math" data-tex="$i_0^!\delta_0\simeq k$">$i_0^!\delta_0\simeq k$</span> in degree zero.</p>
+<p>For <span class="math" data-tex="$L=k[x,x^{-1}]=j_*\mathcal O_{\mathbb G_m}$">$L=k[x,x^{-1}]=j_*\mathcal O_{\mathbb G_m}$</span>, <span class="math" data-tex="$x$">$x$</span> is invertible, so both terms of (4.3) cancel: <span class="math" data-tex="$Li_0^*L=i_0^!L=0$">$Li_0^*L=i_0^!L=0$</span>.</p>
+<p>For comparison, <span class="math" data-tex="$Li_0^*\mathcal D_{\mathbb A^1}$">$Li_0^*\mathcal D_{\mathbb A^1}$</span> has only degree-zero cohomology <span class="math" data-tex="$A_1/xA_1$">$A_1/xA_1$</span>, with basis <span class="math" data-tex="$1,\partial,\partial^2,\ldots$">$1,\partial,\partial^2,\ldots$</span>. This is infinite-dimensional over <span class="math" data-tex="$\mathcal D_{\{0\}}=k$">$\mathcal D_{\{0\}}=k$</span>. It disproves preservation of coherence by arbitrary pullback.</p>
+<h2 id="5-a-power-map-including-its-ramification-point">5. A power map, including its ramification point</h2>
+<p>Let <span class="math" data-tex="$f_m:\mathbb A_z^1\to\mathbb A_x^1$">$f_m:\mathbb A_z^1\to\mathbb A_x^1$</span> be <span class="math" data-tex="$x=z^m$">$x=z^m$</span>, with <span class="math" data-tex="$m\geq1$">$m\geq1$</span>. On <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> a rank-one connection with <span class="math" data-tex="$\partial_xe=\lambda x^{-1}e$">$\partial_xe=\lambda x^{-1}e$</span> pulls back to</p>
+<span class="math math-display" data-tex="\[
+\partial_ze=mz^{m-1}\lambda z^{-m}e
+=m\lambda z^{-1}e.
+\tag{5.1}
+\]">\[
+\partial_ze=mz^{m-1}\lambda z^{-m}e
+=m\lambda z^{-1}e.
+\tag{5.1}
+\]</span>
+<p>Thus <span class="math" data-tex="$\mathcal O x^\lambda$">$\mathcal O x^\lambda$</span> pulls back to <span class="math" data-tex="$\mathcal O z^{m\lambda}$">$\mathcal O z^{m\lambda}$</span>. The whole affine-line pullback of <span class="math" data-tex="$Q_\lambda=A_1/A_1(x\partial_x-\lambda)$">$Q_\lambda=A_1/A_1(x\partial_x-\lambda)$</span> needs more care.</p>
+<p>The ring <span class="math" data-tex="$k[z]$">$k[z]$</span> is free of rank <span class="math" data-tex="$m$">$m$</span> over <span class="math" data-tex="$k[x]$">$k[x]$</span>, with basis <span class="math" data-tex="$1,z,\ldots,z^{m-1}$">$1,z,\ldots,z^{m-1}$</span>. Indeed grouping polynomial monomials by their exponent modulo <span class="math" data-tex="$m$">$m$</span> gives unique coefficients in <span class="math" data-tex="$k[z^m]$">$k[z^m]$</span>. Therefore this map is flat and <span class="math" data-tex="$Lf_m^*=f_m^*$">$Lf_m^*=f_m^*$</span>, even though it is not smooth at zero for <span class="math" data-tex="$m&gt;1$">$m&gt;1$</span>.</p>
+<p>Put <span class="math" data-tex="$E_\alpha=k[z,z^{-1}]e_\alpha$">$E_\alpha=k[z,z^{-1}]e_\alpha$</span> with <span class="math" data-tex="$\partial_ze_\alpha=\alpha z^{-1}e_\alpha$">$\partial_ze_\alpha=\alpha z^{-1}e_\alpha$</span>. Write <span class="math" data-tex="$L_z=k[z,z^{-1}]$">$L_z=k[z,z^{-1}]$</span> and <span class="math" data-tex="$J_z=A_1(z)/A_1(z)(z\partial_z)$">$J_z=A_1(z)/A_1(z)(z\partial_z)$</span>.</p>
+<h3 id="proposition-5-1-full-euler-pullback">Proposition 5.1. Full Euler pullback</h3>
+<p>There are isomorphisms</p>
+<span class="math math-display" data-tex="\[
+f_m^*Q_\lambda\simeq
+\begin{cases}
+E_{m\lambda},&amp;\lambda\notin\mathbb Z,\\
+L_z,&amp;\lambda\in\mathbb Z_{&lt;0},\\
+J_z,&amp;\lambda\in\mathbb Z_{\geq0}.
+\end{cases}
+\tag{5.2}
+\]">\[
+f_m^*Q_\lambda\simeq
+\begin{cases}
+E_{m\lambda},&amp;\lambda\notin\mathbb Z,\\
+L_z,&amp;\lambda\in\mathbb Z_{&lt;0},\\
+J_z,&amp;\lambda\in\mathbb Z_{\geq0}.
+\end{cases}
+\tag{5.2}
+\]</span>
+<p>If <span class="math" data-tex="$\lambda\notin\mathbb Z$">$\lambda\notin\mathbb Z$</span> but <span class="math" data-tex="$m\lambda\in\mathbb Z$">$m\lambda\in\mathbb Z$</span>, the first answer is isomorphic to <span class="math" data-tex="$L_z$">$L_z$</span>. It need not be <span class="math" data-tex="$Q_{m\lambda}$">$Q_{m\lambda}$</span> with its usual cyclic generator.</p>
+<p><strong>Proof.</strong> Normal forms in <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span> consist of <span class="math" data-tex="$x^av$">$x^av$</span>, <span class="math" data-tex="$a\geq0$">$a\geq0$</span>, and <span class="math" data-tex="$\partial_x^bv$">$\partial_x^bv$</span>, <span class="math" data-tex="$b\geq1$">$b\geq1$</span>. Its mixed terms reduce by</p>
+<span class="math math-display" data-tex="\[
+x\partial_x^bv=(\lambda-b+1)\partial_x^{b-1}v.
+\tag{5.3}
+\]">\[
+x\partial_x^bv=(\lambda-b+1)\partial_x^{b-1}v.
+\tag{5.3}
+\]</span>
+<p>For <span class="math" data-tex="$\lambda\notin\mathbb Z$">$\lambda\notin\mathbb Z$</span>, map <span class="math" data-tex="$v$">$v$</span> to the Laurent-connection generator <span class="math" data-tex="$e_\lambda$">$e_\lambda$</span>. The two branches map to <span class="math" data-tex="$x^ae_\lambda$">$x^ae_\lambda$</span> and <span class="math" data-tex="$(\lambda)_b x^{-b}e_\lambda$">$(\lambda)_b x^{-b}e_\lambda$</span>, where all falling-factorial coefficients are nonzero. Their distinct exponents prove bijectivity onto the full Laurent connection. The same argument works for every negative integer <span class="math" data-tex="$\lambda$">$\lambda$</span>, and the resulting connection is isomorphic to <span class="math" data-tex="$L_x$">$L_x$</span> by <span class="math" data-tex="$e_\lambda\mapsto x^\lambda$">$e_\lambda\mapsto x^\lambda$</span>.</p>
+<p>For <span class="math" data-tex="$\lambda=\ell\geq0$">$\lambda=\ell\geq0$</span>, use the basis of <span class="math" data-tex="$J_x$">$J_x$</span> from the duality chapter and map <span class="math" data-tex="$v$">$v$</span> to <span class="math" data-tex="$x^\ell v_0$">$x^\ell v_0$</span>. Successive derivatives first give nonzero multiples of <span class="math" data-tex="$x^{\ell-b}v_0$">$x^{\ell-b}v_0$</span> for <span class="math" data-tex="$b\leq\ell$">$b\leq\ell$</span>, then <span class="math" data-tex="$\ell!\partial_xv_0$">$\ell!\partial_xv_0$</span> and its higher derivatives. The positive branch supplies the higher powers of <span class="math" data-tex="$x$">$x$</span>. Again the images are exactly its independent basis vectors, so <span class="math" data-tex="$Q_\ell\simeq J_x$">$Q_\ell\simeq J_x$</span>.</p>
+<p>Pulling back a Laurent connection tensors its coefficient ring to <span class="math" data-tex="$k[z,z^{-1}]$">$k[z,z^{-1}]$</span>; (5.1) gives its derivative action. This proves the first case and the negative-integer case of (5.2).</p>
+<p>It remains to pull back <span class="math" data-tex="$J_x$">$J_x$</span>. Flatness pulls its nonsplit extension to</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow f_m^*\delta_{0,x}
+\longrightarrow f_m^*J_x\longrightarrow k[z]\longrightarrow0.
+\tag{5.4}
+\]">\[
+0\longrightarrow f_m^*\delta_{0,x}
+\longrightarrow f_m^*J_x\longrightarrow k[z]\longrightarrow0.
+\tag{5.4}
+\]</span>
+<p>The description <span class="math" data-tex="$\delta_{0,x}=L_x/k[x]$">$\delta_{0,x}=L_x/k[x]$</span> gives</p>
+<span class="math math-display" data-tex="\[
+f_m^*\delta_{0,x}
+=L_z/k[z]=\delta_{0,z},
+\tag{5.5}
+\]">\[
+f_m^*\delta_{0,x}
+=L_z/k[z]=\delta_{0,z},
+\tag{5.5}
+\]</span>
+<p>with the usual derivative action by the chain rule. Under this identification, the vector <span class="math" data-tex="$\partial_xv_0$">$\partial_xv_0$</span> in the point submodule maps to <span class="math" data-tex="$[z^{-m}]$">$[z^{-m}]$</span>. If <span class="math" data-tex="$U=1\otimes v_0$">$U=1\otimes v_0$</span>, then</p>
+<span class="math math-display" data-tex="\[
+\partial_zU=mz^{m-1}\otimes\partial_xv_0
+=m[z^{-1}].
+\tag{5.6}
+\]">\[
+\partial_zU=mz^{m-1}\otimes\partial_xv_0
+=m[z^{-1}].
+\tag{5.6}
+\]</span>
+<p>In particular <span class="math" data-tex="$z\partial_zU=0$">$z\partial_zU=0$</span>, so <span class="math" data-tex="$v_0\mapsto U$">$v_0\mapsto U$</span> defines <span class="math" data-tex="$J_z\to f_m^*J_x$">$J_z\to f_m^*J_x$</span>. It maps its point submodule isomorphically to the point submodule of (5.4), since <span class="math" data-tex="$m\ne0$">$m\ne0$</span>, and induces the identity on the polynomial quotient. The short exact sequences then show it is an isomorphism. This proves the last case.</p>
+<p>Finally if <span class="math" data-tex="$\alpha=m\lambda\in\mathbb Z$">$\alpha=m\lambda\in\mathbb Z$</span>, the map <span class="math" data-tex="$e_\alpha\mapsto z^\alpha$">$e_\alpha\mapsto z^\alpha$</span> identifies <span class="math" data-tex="$E_\alpha$">$E_\alpha$</span> with <span class="math" data-tex="$L_z$">$L_z$</span>. For example <span class="math" data-tex="$\lambda=1/2,m=2$">$\lambda=1/2,m=2$</span> gives <span class="math" data-tex="$L_z$">$L_z$</span>, whereas <span class="math" data-tex="$Q_1\simeq J_z$">$Q_1\simeq J_z$</span>. The naive pulled-back cyclic vector satisfies Euler eigenvalue <span class="math" data-tex="$1$">$1$</span>, but its derivatives cannot produce all inverse powers; the full tensor product still contains them. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="6-non-characteristic-maps-the-stated-general-theorem">6. Non-characteristic maps: the stated general theorem</h2>
+<p>For coherent <span class="math" data-tex="$M$">$M$</span>, the morphism <span class="math" data-tex="$f$">$f$</span> is <strong>non-characteristic</strong> if</p>
+<span class="math math-display" data-tex="\[
+f_\pi^{-1}\operatorname{Ch}(M)\cap\ker f_d
+\subseteq X\times_Y(\text{zero section of }T^*Y).
+\tag{6.1}
+\]">\[
+f_\pi^{-1}\operatorname{Ch}(M)\cap\ker f_d
+\subseteq X\times_Y(\text{zero section of }T^*Y).
+\tag{6.1}
+\]</span>
+<p>For a closed embedding this says that characteristic covectors contain no nonzero conormal covector to the embedded variety. For a smooth map <span class="math" data-tex="$\ker f_d=0$">$\ker f_d=0$</span>, so every coherent module is non-characteristic. For a finite connection its characteristic support is the zero section, so every morphism is non-characteristic.</p>
+<p><strong>Non-characteristic pullback theorem — statement.</strong> Under (6.1), <span class="math" data-tex="$Lf^*M$">$Lf^*M$</span> is concentrated in degree zero, its module <span class="math" data-tex="$f^*M$">$f^*M$</span> is coherent, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ch}(f^*M)
+=f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\tag{6.2}
+\]">\[
+\operatorname{Ch}(f^*M)
+=f_d\bigl(f_\pi^{-1}\operatorname{Ch}(M)\bigr).
+\tag{6.2}
+\]</span>
+<p>The analytic statement is Kashiwara–Schapira, Definition 11.2.11 and Proposition 11.2.12. An algebraic version, with non-characteristic expressed as finiteness of <span class="math" data-tex="$f_d$">$f_d$</span> on the pulled-back conic support, is Schnell, <a href="https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf"><em>D-modules</em>, Theorem 16.5</a>, pages 79–83. For conic support the kernel condition and that finiteness condition agree. The general theorem is stated here; the smooth case was proved completely in Section 3.</p>
+<p>At the origin of a line, the polynomial connection is non-characteristic and <span class="math" data-tex="$\delta_0$">$\delta_0$</span> is characteristic. Their Koszul computations show the corresponding presence or absence of higher pullback cohomology. For <span class="math" data-tex="$m&gt;1$">$m&gt;1$</span>, <span class="math" data-tex="$f_m$">$f_m$</span> is characteristic at zero for <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span>, whose characteristic support includes the whole cotangent fiber there. Nevertheless its flatness eliminates higher Tor in Section 5. Non-characteristic is a sufficient condition, and its failure does not force higher cohomology in every example.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-7-1-easy-the-shifted-point-fibers">Exercise 7.1 — easy: the shifted point fibers</h3>
+<p>Compute every <span class="math" data-tex="$H^j(i_0^!\delta_0)$">$H^j(i_0^!\delta_0)$</span> and <span class="math" data-tex="$H^j(i_0^!\mathcal O_{\mathbb A^1})$">$H^j(i_0^!\mathcal O_{\mathbb A^1})$</span>.</p>
+<p><strong>Solution.</strong> Formula (4.4) makes <span class="math" data-tex="$\ker x$">$\ker x$</span> on <span class="math" data-tex="$\delta_0$">$\delta_0$</span> one-dimensional and <span class="math" data-tex="$x$">$x$</span> surjective. In the two-term Koszul complex the only cohomology is therefore <span class="math" data-tex="$H^{-1}=k$">$H^{-1}=k$</span>. Shifting by <span class="math" data-tex="$[-1]$">$[-1]$</span> moves it to degree zero: <span class="math" data-tex="$H^0(i_0^!\delta_0)=k$">$H^0(i_0^!\delta_0)=k$</span> and all other groups vanish.</p>
+<p>On <span class="math" data-tex="$k[x]$">$k[x]$</span>, <span class="math" data-tex="$x$">$x$</span> is injective with one-dimensional cokernel, so the Koszul cohomology is <span class="math" data-tex="$k$">$k$</span> in degree zero. The same shift moves it to degree one: <span class="math" data-tex="$H^1(i_0^!\mathcal O)=k$">$H^1(i_0^!\mathcal O)=k$</span> and every other group is zero.</p>
+<h3 id="exercise-7-2-easy-a-pulled-back-connection">Exercise 7.2 — easy: a pulled-back connection</h3>
+<p>Show directly that pulling back a flat connection produces the usual flat pullback connection.</p>
+<p><strong>Solution.</strong> Formula (1.2) differentiates a coefficient on <span class="math" data-tex="$X$">$X$</span> and then applies the original connection through <span class="math" data-tex="$df$">$df$</span>. In a local frame with connection matrix <span class="math" data-tex="$\Gamma=\sum_j\Gamma_jdy_j$">$\Gamma=\sum_j\Gamma_jdy_j$</span>, its matrix on <span class="math" data-tex="$X$">$X$</span> is <span class="math" data-tex="$\sum_j f^*(\Gamma_j)d(f^*y_j)$">$\sum_j f^*(\Gamma_j)d(f^*y_j)$</span>. Its curvature is the pullback of <span class="math" data-tex="$d\Gamma+\Gamma\wedge\Gamma$">$d\Gamma+\Gamma\wedge\Gamma$</span>, since pullback commutes with exterior differentiation and wedge product. The original curvature is zero, so the new one is zero. This is the connection in Proposition 1.1. A finite connection is locally free over <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span>, so its derived pullback has no higher Tor.</p>
+<h3 id="exercise-7-3-medium-a-closed-embedding-followed-by-a-smooth-map">Exercise 7.3 — medium: a closed embedding followed by a smooth map</h3>
+<p>Prove (2.3) when <span class="math" data-tex="$f:X\hookrightarrow Y$">$f:X\hookrightarrow Y$</span> is a closed embedding and <span class="math" data-tex="$g:Y\to Z$">$g:Y\to Z$</span> is smooth, and identify the resulting shift.</p>
+<p><strong>Solution.</strong> Locally let <span class="math" data-tex="$x_1,\ldots,x_c$">$x_1,\ldots,x_c$</span> be the equations of the embedding. Since <span class="math" data-tex="$g$">$g$</span> is flat, <span class="math" data-tex="$Lg^*M=g^*M$">$Lg^*M=g^*M$</span> for a module, or termwise pullback for a flat complex model. Its pullback by <span class="math" data-tex="$f$">$f$</span> is the Koszul complex</p>
+<span class="math math-display" data-tex="\[
+K(x_1,\ldots,x_c;\mathcal O_Y\otimes_{\mathcal O_Z}M).
+\]">\[
+K(x_1,\ldots,x_c;\mathcal O_Y\otimes_{\mathcal O_Z}M).
+\]</span>
+<p>This computes <span class="math" data-tex="$\mathcal O_X\otimes^L_{\mathcal O_Z}M$">$\mathcal O_X\otimes^L_{\mathcal O_Z}M$</span>: the Koszul terms are locally free over <span class="math" data-tex="$\mathcal O_Y$">$\mathcal O_Y$</span> and hence flat over <span class="math" data-tex="$\mathcal O_Z$">$\mathcal O_Z$</span>, while their augmentation resolves <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. The transfer chain-rule action is that of the composite by (2.4), so this is an isomorphism of differential-operator complexes, not just of vector spaces. If <span class="math" data-tex="$g$">$g$</span> has relative dimension <span class="math" data-tex="$r$">$r$</span>, the total shift is <span class="math" data-tex="$[-c][r]=[r-c]=[d_X-d_Z]$">$[-c][r]=[r-c]=[d_X-d_Z]$</span>, proving <span class="math" data-tex="$(gf)^!=f^!g^!$">$(gf)^!=f^!g^!$</span>.</p>
+<h3 id="exercise-7-4-medium-exponent-multiplication">Exercise 7.4 — medium: exponent multiplication</h3>
+<p>Pull back <span class="math" data-tex="$\mathcal O_{\mathbb G_m}x^\lambda$">$\mathcal O_{\mathbb G_m}x^\lambda$</span> along <span class="math" data-tex="$z\mapsto z^m$">$z\mapsto z^m$</span>. Explain what may change for the affine-line extension.</p>
+<p><strong>Solution.</strong> The chain rule gives <span class="math" data-tex="$\partial_ze=m\lambda z^{-1}e$">$\partial_ze=m\lambda z^{-1}e$</span>, as in (5.1), so the answer on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> is <span class="math" data-tex="$\mathcal O z^{m\lambda}$">$\mathcal O z^{m\lambda}$</span>. No higher Tor appears because the original connection is locally free.</p>
+<p>For the affine-line Euler extension use (5.2), retaining the sign and integrality of the original <span class="math" data-tex="$\lambda$">$\lambda$</span>. In particular a nonintegral <span class="math" data-tex="$\lambda$">$\lambda$</span> with integral <span class="math" data-tex="$m\lambda$">$m\lambda$</span> pulls back to the full Laurent extension. The example <span class="math" data-tex="$\lambda=1/2,m=2$">$\lambda=1/2,m=2$</span> gives <span class="math" data-tex="$L_z$">$L_z$</span>, rather than <span class="math" data-tex="$Q_1=J_z$">$Q_1=J_z$</span>. The cyclic presentation and the full tensor product have different generators at the ramification point.</p>
+<h3 id="exercise-7-5-hard-holonomic-pullback-of-a-closed-embedding">Exercise 7.5 — hard: holonomic pullback of a closed embedding</h3>
+<p>Assume the general preservation theorem assigned to the later chapter <em>Preservation of holonomicity and minimal extensions</em>. Deduce that <span class="math" data-tex="$i^!K$">$i^!K$</span> has holonomic cohomology for a smooth closed embedding <span class="math" data-tex="$i:Z\hookrightarrow X$">$i:Z\hookrightarrow X$</span> and <span class="math" data-tex="$K\in D_h^b(\mathcal D_X)$">$K\in D_h^b(\mathcal D_X)$</span>.</p>
+<p><strong>Solution.</strong> The assumed theorem says that <span class="math" data-tex="$Lf^*$">$Lf^*$</span> sends bounded complexes with holonomic cohomology to such complexes on the source for every morphism of smooth varieties. A confirmed external formulation is Schnell, Theorem 18.5(b), page 91. Applying it to <span class="math" data-tex="$i$">$i$</span> gives <span class="math" data-tex="$Li^*K\in D_h^b(\mathcal D_Z)$">$Li^*K\in D_h^b(\mathcal D_Z)$</span>. Its additional shift is <span class="math" data-tex="$[-c]$">$[-c]$</span>, which reindexes cohomology and preserves holonomicity. Therefore <span class="math" data-tex="$i^!K\in D_h^b(\mathcal D_Z)$">$i^!K\in D_h^b(\mathcal D_Z)$</span>.</p>
+<p>More concretely, (4.1) computes it by the finite Koszul total complex. For a module, the assumed theorem makes each of that complex's cohomology modules holonomic. For a bounded complex <span class="math" data-tex="$K$">$K$</span>, use the finite truncation triangles that assemble <span class="math" data-tex="$K$">$K$</span> from its holonomic cohomology modules. Applying <span class="math" data-tex="$Li^*$">$Li^*$</span> preserves these triangles, and the holonomic Serre property makes the cohomology of each successive cone holonomic. This proves the complex version without identifying every individual Koszul term with a coherent <span class="math" data-tex="$\mathcal D_Z$">$\mathcal D_Z$</span>-module. The general preservation theorem is the explicit hypothesis of this exercise, not a consequence of the elementary Koszul formula alone.</p>
+<h3 id="exercise-7-6-hard-the-opposite-extension-at-its-boundary">Exercise 7.6 — hard: the opposite extension at its boundary</h3>
+<p>Compute the cohomology of <span class="math" data-tex="$i_0^!J$">$i_0^!J$</span>, where <span class="math" data-tex="$J=A_1/A_1(x\partial)$">$J=A_1/A_1(x\partial)$</span>, and compare it with the Laurent extension.</p>
+<p><strong>Solution.</strong> In the basis from the duality chapter, <span class="math" data-tex="$x$">$x$</span> sends <span class="math" data-tex="$x^av$">$x^av$</span> to <span class="math" data-tex="$x^{a+1}v$">$x^{a+1}v$</span>, and sends <span class="math" data-tex="$\partial^bv$">$\partial^bv$</span> to <span class="math" data-tex="$-(b-1)\partial^{b-1}v$">$-(b-1)\partial^{b-1}v$</span>. Hence its kernel is <span class="math" data-tex="$k\partial v$">$k\partial v$</span>, while its cokernel is <span class="math" data-tex="$kv$">$kv$</span>: the derivative branch is entirely in its image and the positive branch misses just <span class="math" data-tex="$v$">$v$</span>. Thus <span class="math" data-tex="$Li_0^*J$">$Li_0^*J$</span> has <span class="math" data-tex="$k$">$k$</span> in degrees <span class="math" data-tex="$-1$">$-1$</span> and <span class="math" data-tex="$0$">$0$</span>. Shifting by <span class="math" data-tex="$[-1]$">$[-1]$</span> gives</p>
+<span class="math math-display" data-tex="\[
+H^0(i_0^!J)=k,\qquad H^1(i_0^!J)=k,
+\]">\[
+H^0(i_0^!J)=k,\qquad H^1(i_0^!J)=k,
+\]</span>
+<p>with all other groups zero. Over a point every finite complex of vector spaces is isomorphic to the direct sum of its cohomology, so <span class="math" data-tex="$i_0^!J\simeq k\oplus k[-1]$">$i_0^!J\simeq k\oplus k[-1]$</span>, with no preferred splitting asserted. For <span class="math" data-tex="$L$">$L$</span>, multiplication by <span class="math" data-tex="$x$">$x$</span> is invertible and the entire derived fiber is zero. Their equal restrictions to <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> therefore do not determine their shifted fibers at zero.</p>
+<h2 id="references-and-proof-boundary">References and proof boundary</h2>
+<p>The chain-rule module structure, pullback of connections, derived transfer composition, smooth coherence and holonomicity, the Koszul formula, all point and projection examples, and the full ramified Euler pullback are proved here. All six exercises have complete solutions, with the fifth using its explicitly assigned later preservation theorem. The general non-characteristic theorem and the general preservation theorem used in that exercise are stated external inputs.</p>
+<p>Beilinson–Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em></a>, Section 7.2.8, treats ordinary left-module pullback and its relation with the differential-form formalism. Non-characteristic pullback of analytic D-modules is treated in M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §10.2.</p>
+<p>For algebraic pullback and the point examples see Schnell, <a href="https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf"><em>D-modules</em></a>, Lecture 14, Definition 14.2, Examples 14.3–14.5 and Lemma 14.6. Theorem 16.5 gives non-characteristic pullback; its smooth case is discussed on pages 79–81. Theorem 18.5(b) is the stated preservation input for Exercise 7.5.</p>
+<p><a href="https://stacks.math.columbia.edu/tag/0FL5">Stacks, Tag 0FL5</a> concerns base change of the relative differential-form sheaves in a cartesian square. It supports the usual functorial differential-form background; it does not by itself assert the differential-operator transfer identity or arbitrary derived pullback composition proved in Section 2.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/inverse-images.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

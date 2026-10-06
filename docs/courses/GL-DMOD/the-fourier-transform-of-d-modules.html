@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Fourier transform of D-modules · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/the-fourier-transform-of-d-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-fourier-transform-of-d-modules">The Fourier transform of D-modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Fourier transformation turns a position into a differentiation operator. For algebraic differential equations this is an exact operation, with no integral convergence condition. An exponential kernel gives the same operation geometrically. On an abelian variety the kernel changes: a universal line bundle with connection replaces the exponential, and the answer lives on a space of flat line bundles.</p>
+<p>The algebraic arguments work over a field <span class="math" data-tex="$k$">$k$</span> of characteristic zero. Geometric varieties are smooth over an algebraically closed such field; the comparison with topological sheaves uses <span class="math" data-tex="$k=\mathbb C$">$k=\mathbb C$</span>. Modules are left D-modules, quasi-coherent over the structure sheaf. Complexes have cohomological grading. We use <a href="the-bernstein-filtration-and-holonomic-modules.html">the Bernstein filtration</a>, direct images, <a href="adjunctions-base-change-and-the-projection-formula.html">base change and the projection formula</a>, and <a href="regular-singularities.html">regular singularities</a>. The sheaf transform belongs to <a href="../sheaf-proof-readings/SH02-fourier-sato.html">Fourier kernels as radial averaging</a>.</p>
+<p>Our signs and shifts will be fixed by two tests:
+<span class="math math-display" data-tex="\[
+\mathcal F(\delta_a)=\mathcal O_{\mathbb A^1}e^{-ay},
+\qquad
+\mathcal F^2=(-1)^*
+\quad\text{without a shift}.                              \tag{0.1}
+\]">\[
+\mathcal F(\delta_a)=\mathcal O_{\mathbb A^1}e^{-ay},
+\qquad
+\mathcal F^2=(-1)^*
+\quad\text{without a shift}.                              \tag{0.1}
+\]</span>
+Here <span class="math" data-tex="$\mathcal O e^f$">$\mathcal O e^f$</span> denotes the algebraic rank-one module with generator <span class="math" data-tex="$e$">$e$</span> and <span class="math" data-tex="$\partial(e)=\partial(f)e$">$\partial(e)=\partial(f)e$</span>. This notation does not assert that the exponential is an algebraic function. A horizontal section has coefficient proportional to <span class="math" data-tex="$e^{-f}$">$e^{-f}$</span>.</p>
+<h2 id="1-transporting-a-weyl-module">1. Transporting a Weyl module</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+A_x=k\langle x_1,\ldots,x_n,\partial_{x_1},\ldots,\partial_{x_n}\rangle,
+\qquad [\partial_{x_i},x_j]=\delta_{ij},
+\]">\[
+A_x=k\langle x_1,\ldots,x_n,\partial_{x_1},\ldots,\partial_{x_n}\rangle,
+\qquad [\partial_{x_i},x_j]=\delta_{ij},
+\]</span>
+and use <span class="math" data-tex="$y_i,\partial_{y_i}$">$y_i,\partial_{y_i}$</span> for a second copy. Define
+<span class="math math-display" data-tex="\[
+\sigma:A_x\longrightarrow A_y,\qquad
+x_i\longmapsto-\partial_{y_i},\quad
+\partial_{x_i}\longmapsto y_i.                            \tag{1.1}
+\]">\[
+\sigma:A_x\longrightarrow A_y,\qquad
+x_i\longmapsto-\partial_{y_i},\quad
+\partial_{x_i}\longmapsto y_i.                            \tag{1.1}
+\]</span>
+Indeed <span class="math" data-tex="$[y_i,-\partial_{y_j}]=\delta_{ij}$">$[y_i,-\partial_{y_j}]=\delta_{ij}$</span>, and the other required commutators vanish. The inverse sends <span class="math" data-tex="$y_i$">$y_i$</span> to <span class="math" data-tex="$\partial_{x_i}$">$\partial_{x_i}$</span> and <span class="math" data-tex="$\partial_{y_i}$">$\partial_{y_i}$</span> to <span class="math" data-tex="$-x_i$">$-x_i$</span>, so this is an isomorphism.</p>
+<p>For a left module set
+<span class="math math-display" data-tex="\[
+\mathcal F(M)=A_y\otimes_{\sigma,A_x}M.                   \tag{1.2}
+\]">\[
+\mathcal F(M)=A_y\otimes_{\sigma,A_x}M.                   \tag{1.2}
+\]</span>
+Transport identifies its underlying vector space with that of <span class="math" data-tex="$M$">$M$</span>, with actions
+<span class="math math-display" data-tex="\[
+y_i\cdot m=\partial_{x_i}m,\qquad
+\partial_{y_i}\cdot m=-x_i m.                             \tag{1.3}
+\]">\[
+y_i\cdot m=\partial_{x_i}m,\qquad
+\partial_{y_i}\cdot m=-x_i m.                             \tag{1.3}
+\]</span>
+The direction matters: these are the actions of the inverse of (1.1) on the underlying vector space. Restricting an action along (1.1) would define the opposite Fourier convention.</p>
+<p>Transport preserves exact sequences, finite generation, and all colimits. It extends termwise to complexes. Applying (1.3) twice changes both generators to their negatives; hence the identity on underlying vectors gives a natural isomorphism
+<span class="math math-display" data-tex="\[
+\mathcal F_{y\to z}\mathcal F_{x\to y}(M)
+\simeq a^*M,\qquad a(x)=-x.                              \tag{1.4}
+\]">\[
+\mathcal F_{y\to z}\mathcal F_{x\to y}(M)
+\simeq a^*M,\qquad a(x)=-x.                              \tag{1.4}
+\]</span>
+This already proves the algebraic square formula. Section 3 will also prove it directly from the kernel.</p>
+<p><strong>Theorem 1.1.</strong> Fourier transformation preserves holonomicity. More precisely, it preserves Bernstein dimension and Bernstein multiplicity.</p>
+<p><strong>Proof.</strong> Give every <span class="math" data-tex="$x_i$">$x_i$</span> and <span class="math" data-tex="$\partial_{x_i}$">$\partial_{x_i}$</span> degree one. The Bernstein piece <span class="math" data-tex="$B_jA_x$">$B_jA_x$</span> consists of operators of total degree at most <span class="math" data-tex="$j$">$j$</span>. Equation (1.1) identifies it with <span class="math" data-tex="$B_jA_y$">$B_jA_y$</span>. If <span class="math" data-tex="$G_\bullet M$">$G_\bullet M$</span> is a good Bernstein filtration, use the identical filtered vector space on <span class="math" data-tex="$\mathcal F(M)$">$\mathcal F(M)$</span>. For example, if
+<span class="math" data-tex="$G_jM=\sum_\nu B_{j-b_\nu}A_x\,m_\nu$">$G_jM=\sum_\nu B_{j-b_\nu}A_x\,m_\nu$</span>, transport gives
+<span class="math" data-tex="$G_j\mathcal F(M)=\sum_\nu B_{j-b_\nu}A_y\,m_\nu$">$G_j\mathcal F(M)=\sum_\nu B_{j-b_\nu}A_y\,m_\nu$</span>.
+Thus it remains a good filtration, and every filtered dimension is unchanged. Its eventual Hilbert polynomial has the same degree and leading coefficient.</p>
+<p>For a nonzero finitely generated Weyl module, the Bernstein dimension equals the dimension of its ordinary characteristic variety, as established in lesson 4. Bernstein's inequality makes this dimension at least <span class="math" data-tex="$n$">$n$</span>, and holonomicity means equality. It therefore holds for <span class="math" data-tex="$M$">$M$</span> precisely when it holds for <span class="math" data-tex="$\mathcal F(M)$">$\mathcal F(M)$</span>. The zero module is preserved too. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This argument rotates the <em>Bernstein</em> graded support. It does not say that the usual order characteristic variety always rotates in <span class="math" data-tex="$T^*\mathbb A^n$">$T^*\mathbb A^n$</span>: the order filtration assigns degree zero to <span class="math" data-tex="$x_i$">$x_i$</span> and degree one to <span class="math" data-tex="$\partial_i$">$\partial_i$</span>, and is not preserved by <span class="math" data-tex="$\sigma$">$\sigma$</span>. Miličić's <em>Lectures on Algebraic Theory of D-Modules</em>, Chapter I, §§5–8, proves the holonomicity statement by the same filtration argument, with the Fourier convention (1.3).</p>
+<h3 id="point-modules-euler-modules-and-a-gaussian">Point modules, Euler modules, and a Gaussian</h3>
+<p>On the line write <span class="math" data-tex="$D=A_1$">$D=A_1$</span> and
+<span class="math math-display" data-tex="\[
+\mathcal O=D/D\partial_x,\qquad
+\delta_a=D/D(x-a).
+\]">\[
+\mathcal O=D/D\partial_x,\qquad
+\delta_a=D/D(x-a).
+\]</span>
+For a cyclic quotient transport carries the entire left ideal to the corresponding left ideal, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal F(\mathcal O)&amp;=D_y/D_y y=\delta_0,\\
+\mathcal F(\delta_a)&amp;=D_y/D_y(\partial_y+a)
+                    =\mathcal O e^{-ay}.                 \tag{1.5}
+\end{aligned}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{aligned}
+\mathcal F(\mathcal O)&amp;=D_y/D_y y=\delta_0,\\
+\mathcal F(\delta_a)&amp;=D_y/D_y(\partial_y+a)
+                    =\mathcal O e^{-ay}.                 \end{aligned}
+\tag{1.5}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{aligned}
+\mathcal F(\mathcal O)&amp;=D_y/D_y y=\delta_0,\\
+\mathcal F(\delta_a)&amp;=D_y/D_y(\partial_y+a)
+                    =\mathcal O e^{-ay}.                 \end{aligned}
+\tag{1.5}
+\]</span>
+For the second identification, move every derivative to the right using the Weyl relation and then use <span class="math" data-tex="$(\partial_y+a)e=0$">$(\partial_y+a)e=0$</span>. Every class is a polynomial in <span class="math" data-tex="$y$">$y$</span> times <span class="math" data-tex="$e$">$e$</span>. Conversely the action
+<span class="math" data-tex="$\partial_y(fe)=f&#x27;e-afe$">$\partial_y(fe)=f&#x27;e-afe$</span> defines a module on <span class="math" data-tex="$k[y]e$">$k[y]e$</span> with precisely this presentation. In particular <span class="math" data-tex="$\mathcal F(\delta_0)=\mathcal O$">$\mathcal F(\delta_0)=\mathcal O$</span>.</p>
+<p>Let <span class="math" data-tex="$\theta_x=x\partial_x$">$\theta_x=x\partial_x$</span> and <span class="math" data-tex="$Q_\lambda=D/D(\theta_x-\lambda)$">$Q_\lambda=D/D(\theta_x-\lambda)$</span>. Then
+<span class="math math-display" data-tex="\[
+\sigma(\theta_x-\lambda)
+=-\partial_y y-\lambda
+=-(y\partial_y+\lambda+1),
+\]">\[
+\sigma(\theta_x-\lambda)
+=-\partial_y y-\lambda
+=-(y\partial_y+\lambda+1),
+\]</span>
+and consequently
+<span class="math math-display" data-tex="\[
+\mathcal F(Q_\lambda)
+=D_y/D_y(\partial_y y+\lambda)
+=Q_{-\lambda-1}.                                        \tag{1.6}
+\]">\[
+\mathcal F(Q_\lambda)
+=D_y/D_y(\partial_y y+\lambda)
+=Q_{-\lambda-1}.                                        \tag{1.6}
+\]</span>
+The extra <span class="math" data-tex="$1$">$1$</span> comes from <span class="math" data-tex="$\partial_y y=y\partial_y+1$">$\partial_y y=y\partial_y+1$</span>. It cannot be removed by treating the generators as commuting variables. The parameter involution <span class="math" data-tex="$\lambda\mapsto-\lambda-1$">$\lambda\mapsto-\lambda-1$</span> squares to the identity, as it should: negation preserves the Euler operator.</p>
+<p>Finally
+<span class="math math-display" data-tex="\[
+\mathcal O e^{x^2/2}=D/D(\partial_x-x).
+\]">\[
+\mathcal O e^{x^2/2}=D/D(\partial_x-x).
+\]</span>
+Its defining operator becomes <span class="math" data-tex="$y+\partial_y$">$y+\partial_y$</span>, whence
+<span class="math math-display" data-tex="\[
+\mathcal F(\mathcal O e^{x^2/2})
+=D_y/D_y(\partial_y+y)
+=\mathcal O e^{-y^2/2}.                                  \tag{1.7}
+\]">\[
+\mathcal F(\mathcal O e^{x^2/2})
+=D_y/D_y(\partial_y+y)
+=\mathcal O e^{-y^2/2}.                                  \tag{1.7}
+\]</span>
+The quotient identification follows by the same derivative reduction as in (1.5), now with <span class="math" data-tex="$\partial_y(fe)=(f&#x27;-yf)e$">$\partial_y(fe)=(f&#x27;-yf)e$</span>.</p>
+<p><strong>A regular module with an irregular transform.</strong> The point module <span class="math" data-tex="$\delta_1$">$\delta_1$</span> is regular holonomic: it is the closed direct image of the one-dimensional module on a point. Its transform is <span class="math" data-tex="$\mathcal O e^{-y}$">$\mathcal O e^{-y}$</span>. In the coordinate <span class="math" data-tex="$w=1/y$">$w=1/y$</span> at infinity its connection satisfies
+<span class="math math-display" data-tex="\[
+\partial_w e=w^{-2}e.                                    \tag{1.8}
+\]">\[
+\partial_w e=w^{-2}e.                                    \tag{1.8}
+\]</span>
+Changing a meromorphic frame multiplies it by <span class="math" data-tex="$g\in k((w))^\times$">$g\in k((w))^\times$</span> and changes the coefficient by <span class="math" data-tex="$g&#x27;/g$">$g&#x27;/g$</span>. Writing <span class="math" data-tex="$g=w^m u$">$g=w^m u$</span> with <span class="math" data-tex="$u\in k[[w]]^\times$">$u\in k[[w]]^\times$</span> gives
+<span class="math" data-tex="$g&#x27;/g=m/w+u&#x27;/u$">$g&#x27;/g=m/w+u&#x27;/u$</span>, which has no double pole. Thus no meromorphic frame makes (1.8) logarithmic. The rank-one criterion in lesson 13 proves irregularity at infinity. Algebraic regularity includes this boundary condition.</p>
+<h2 id="2-the-exponential-kernel-on-a-vector-bundle">2. The exponential kernel on a vector bundle</h2>
+<p>Let <span class="math" data-tex="$S$">$S$</span> be smooth of dimension <span class="math" data-tex="$m$">$m$</span>, let <span class="math" data-tex="$E\to S$">$E\to S$</span> have rank <span class="math" data-tex="$n$">$n$</span>, and put
+<span class="math math-display" data-tex="\[
+Z=E\times_S E^\vee,\qquad
+p_1:Z\to E,\quad p_2:Z\to E^\vee,\quad
+\varphi(x,y)=\langle x,y\rangle.
+\]">\[
+Z=E\times_S E^\vee,\qquad
+p_1:Z\to E,\quad p_2:Z\to E^\vee,\quad
+\varphi(x,y)=\langle x,y\rangle.
+\]</span>
+The dimensions are <span class="math" data-tex="$d_E=m+n$">$d_E=m+n$</span> and <span class="math" data-tex="$d_Z=m+2n$">$d_Z=m+2n$</span>. The exponential <span class="math" data-tex="$\operatorname{Exp}(-\varphi)$">$\operatorname{Exp}(-\varphi)$</span> is <span class="math" data-tex="$\mathcal O_Z e$">$\mathcal O_Z e$</span> with connection
+<span class="math" data-tex="$\nabla e=-d\varphi\,e$">$\nabla e=-d\varphi\,e$</span>.</p>
+<p>For a smooth variety <span class="math" data-tex="$V$">$V$</span>, our tensor product is
+<span class="math math-display" data-tex="\[
+M\otimes^!N=(M\otimes_{\mathcal O_V}^{L}N)[-d_V].
+\]">\[
+M\otimes^!N=(M\otimes_{\mathcal O_V}^{L}N)[-d_V].
+\]</span>
+For a smooth map of relative dimension <span class="math" data-tex="$r$">$r$</span>, <span class="math" data-tex="$f^!=f^\dagger[r]$">$f^!=f^\dagger[r]$</span>, where <span class="math" data-tex="$f^\dagger$">$f^\dagger$</span> is the usual unshifted left-module pullback. These are the conventions of lessons 7–10. Define the normalized kernel and transform by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_E&amp;=\operatorname{Exp}(-\varphi)[d_E],\\
+\mathcal F_E(M)&amp;=p_{2,\mathrm{dR},*}
+                  (p_1^!M\otimes^!K_E).                  \tag{2.1}
+\end{aligned}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{aligned}
+K_E&amp;=\operatorname{Exp}(-\varphi)[d_E],\\
+\mathcal F_E(M)&amp;=p_{2,\mathrm{dR},*}
+                  (p_1^!M\otimes^!K_E).                  \end{aligned}
+\tag{2.1}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{aligned}
+K_E&amp;=\operatorname{Exp}(-\varphi)[d_E],\\
+\mathcal F_E(M)&amp;=p_{2,\mathrm{dR},*}
+                  (p_1^!M\otimes^!K_E).                  \end{aligned}
+\tag{2.1}
+\]</span>
+The symbol <span class="math" data-tex="$p_{2,\mathrm{dR},*}$">$p_{2,\mathrm{dR},*}$</span> is D-module direct image, computed by the relative de Rham complex; it is not ordinary pushforward of the underlying module.</p>
+<p>The shift inside the direct image cancels:
+<span class="math math-display" data-tex="\[
+n+d_E-d_Z=0.                                             \tag{2.2}
+\]">\[
+n+d_E-d_Z=0.                                             \tag{2.2}
+\]</span>
+Thus its integrand, in ordinary left-module notation, is
+<span class="math" data-tex="$p_1^\dagger M\otimes_{\mathcal O_Z}\operatorname{Exp}(-\varphi)$">$p_1^\dagger M\otimes_{\mathcal O_Z}\operatorname{Exp}(-\varphi)$</span>
+in degree zero when <span class="math" data-tex="$M$">$M$</span> is a module. The exponential is locally free over <span class="math" data-tex="$\mathcal O_Z$">$\mathcal O_Z$</span>, so its tensor has no additional derived correction. Using the unshifted exponential in (2.1) instead would give <span class="math" data-tex="$\mathcal F_E(M)[-d_E]$">$\mathcal F_E(M)[-d_E]$</span>. The base dimension matters in this course's absolute <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span> convention.</p>
+<p><strong>Theorem 2.1.</strong> On a trivialized bundle, (2.1) is transport along (1.1) in the fiber Weyl algebra, with the base action unchanged. In particular it is an exact equivalence on quasi-coherent D-modules and induces an equivalence on their derived categories.</p>
+<p><strong>Proof.</strong> Work on an affine trivializing open in <span class="math" data-tex="$S$">$S$</span>. Because <span class="math" data-tex="$p_2$">$p_2$</span> is affine, its direct image is the relative Spencer complex on <span class="math" data-tex="$M[y_1,\ldots,y_n]$">$M[y_1,\ldots,y_n]$</span>. It is the Koszul complex for the commuting operators
+<span class="math math-display" data-tex="\[
+T_i=D_i-y_i,\qquad D_i=\partial_{x_i}|_M,                 \tag{2.3}
+\]">\[
+T_i=D_i-y_i,\qquad D_i=\partial_{x_i}|_M,                 \tag{2.3}
+\]</span>
+placed in degrees <span class="math" data-tex="$-n,\ldots,0$">$-n,\ldots,0$</span>. This degree convention is the one for direct images in lesson 8.</p>
+<p>Here is an exactness argument valid for every <span class="math" data-tex="$M$">$M$</span>, without assuming finite generation or local freeness. On polynomials with coefficients in <span class="math" data-tex="$M$">$M$</span> form
+<span class="math math-display" data-tex="\[
+U=\exp\!\left(-\sum_iD_i\partial_{y_i}\right).
+\]">\[
+U=\exp\!\left(-\sum_iD_i\partial_{y_i}\right).
+\]</span>
+Each exponential series is finite on each polynomial because <span class="math" data-tex="$\partial_{y_i}$">$\partial_{y_i}$</span> lowers degree. Its inverse uses the positive sign. The commutator formula gives
+<span class="math" data-tex="$Uy_iU^{-1}=y_i-D_i$">$Uy_iU^{-1}=y_i-D_i$</span>, so <span class="math" data-tex="$T_i=-Uy_iU^{-1}$">$T_i=-Uy_iU^{-1}$</span>. This identifies the Koszul complex (2.3), up to the harmless signs of its exterior generators, with the Koszul complex for multiplication by the <span class="math" data-tex="$y_i$">$y_i$</span> on <span class="math" data-tex="$M[y]$">$M[y]$</span>.</p>
+<p>Multiplication by <span class="math" data-tex="$y_1$">$y_1$</span> is injective, and its quotient is <span class="math" data-tex="$M[y_2,\ldots,y_n]$">$M[y_2,\ldots,y_n]$</span>; repeat for every remaining variable. Tensoring these one-variable complexes, or induction on their number, shows that their only cohomology is <span class="math" data-tex="$M$">$M$</span> in degree zero. Therefore (2.3) has no negative cohomology either.</p>
+<p>Its degree-zero quotient has the natural identification with <span class="math" data-tex="$M$">$M$</span> given by evaluation of a polynomial <span class="math" data-tex="$P(y)m$">$P(y)m$</span> at the commuting operators <span class="math" data-tex="$D_i$">$D_i$</span>:
+<span class="math math-display" data-tex="\[
+[P(y)m]\longmapsto P(D)m.                                \tag{2.4}
+\]">\[
+[P(y)m]\longmapsto P(D)m.                                \tag{2.4}
+\]</span>
+Indeed this kills all <span class="math" data-tex="$T_i$">$T_i$</span>, and the conjugation above proves it is an isomorphism; constants represent every class. Multiplication by <span class="math" data-tex="$y_i$">$y_i$</span> acts there by <span class="math" data-tex="$D_i$">$D_i$</span>. The output derivative acts before passing to the quotient by
+<span class="math" data-tex="$\partial_{y_i}-x_i$">$\partial_{y_i}-x_i$</span>. It commutes with all <span class="math" data-tex="$T_j$">$T_j$</span>, since the two scalar commutators cancel. On a constant representative it acts by <span class="math" data-tex="$-x_i$">$-x_i$</span>. These are exactly (1.3). In a trivialization the pairing has no base-coordinate derivative, so base differential operators retain their action on <span class="math" data-tex="$M$">$M$</span>. All constructions are natural in <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>The geometric definition (2.1) is intrinsic. Consequently these local identifications glue on changes of bundle frame, with the base differential operators transformed as part of the same connection. The exact local equivalences and their inverses therefore give the asserted equivalence globally. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For bounded complexes with holonomic cohomology, the relative transform preserves holonomicity. One can use the preservation results of lesson 11 directly: smooth inverse image, tensor with a rank-one connection, and de Rham direct image preserve holonomicity. In a vector space Theorem 1.1 gives the sharper Bernstein-filtration proof.</p>
+<h2 id="3-computing-the-square-from-the-kernel-on-the-line">3. Computing the square from the kernel on the line</h2>
+<p>We now compute the entire convolution kernel, rather than only its action on a cyclic generator. Let <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$z$">$z$</span> be the input and output coordinates and let <span class="math" data-tex="$y$">$y$</span> be the middle coordinate. On the triple product both pulled-back kernels acquire a shift <span class="math" data-tex="$[1]$">$[1]$</span> from smooth <span class="math" data-tex="$!$">$!$</span>-pullback in addition to their own <span class="math" data-tex="$[1]$">$[1]$</span>. Their <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span> subtracts the triple-product dimension <span class="math" data-tex="$3$">$3$</span>. Thus the integrand for kernel composition is
+<span class="math math-display" data-tex="\[
+\operatorname{Exp}(-xy-yz)[1].
+\]">\[
+\operatorname{Exp}(-xy-yz)[1].
+\]</span>
+This is the kernel composition formula from lesson 10, with its shifts included.</p>
+<p>Set <span class="math" data-tex="$w=x+z$">$w=x+z$</span>. Integration in <span class="math" data-tex="$y$">$y$</span> computes the complex
+<span class="math math-display" data-tex="\[
+R\xrightarrow{\ T=\partial_y-w\ }R,\qquad
+R=k[x,w,y],                                             \tag{3.1}
+\]">\[
+R\xrightarrow{\ T=\partial_y-w\ }R,\qquad
+R=k[x,w,y],                                             \tag{3.1}
+\]</span>
+in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>, followed by the shift <span class="math" data-tex="$[1]$">$[1]$</span>.</p>
+<p>The map <span class="math" data-tex="$T$">$T$</span> is injective. If a nonzero polynomial has highest <span class="math" data-tex="$y$">$y$</span>-coefficient <span class="math" data-tex="$f_b(x,w)$">$f_b(x,w)$</span>, the highest coefficient of <span class="math" data-tex="$Tf$">$Tf$</span> is <span class="math" data-tex="$-wf_b$">$-wf_b$</span>, which is nonzero. In its cokernel the identities
+<span class="math math-display" data-tex="\[
+[wy^b]=b[y^{b-1}]\quad(b\geq1),\qquad [w]=0             \tag{3.2}
+\]">\[
+[wy^b]=b[y^{b-1}]\quad(b\geq1),\qquad [w]=0             \tag{3.2}
+\]</span>
+reduce every polynomial to a unique polynomial in <span class="math" data-tex="$x,y$">$x,y$</span>. To verify uniqueness, define a <span class="math" data-tex="$k[x]$">$k[x]$</span>-linear reduction map by
+<span class="math math-display" data-tex="\[
+\pi(w^a y^b)=
+\begin{cases}
+\dfrac{b!}{(b-a)!}\,y^{b-a},&amp;a\leq b,\\
+0,&amp;a&gt;b.
+\end{cases}                                             \tag{3.3}
+\]">\[
+\pi(w^a y^b)=
+\begin{cases}
+\dfrac{b!}{(b-a)!}\,y^{b-a},&amp;a\leq b,\\
+0,&amp;a&gt;b.
+\end{cases}                                             \tag{3.3}
+\]</span>
+It annihilates <span class="math" data-tex="$T(w^a y^b)=b w^a y^{b-1}-w^{a+1}y^b$">$T(w^a y^b)=b w^a y^{b-1}-w^{a+1}y^b$</span>. Conversely repeated use of this very relation, including <span class="math" data-tex="$T(w^{a-1})=-w^a$">$T(w^{a-1})=-w^a$</span>, reduces a polynomial modulo <span class="math" data-tex="$\operatorname{im}T$">$\operatorname{im}T$</span> to its image under <span class="math" data-tex="$\pi$">$\pi$</span>. Since <span class="math" data-tex="$\pi$">$\pi$</span> is the identity on <span class="math" data-tex="$k[x,y]$">$k[x,y]$</span>, this proves uniqueness and describes the full cokernel.</p>
+<p>The output operators in the <span class="math" data-tex="$(x,w)$">$(x,w)$</span> coordinates act by ordinary differentiation in <span class="math" data-tex="$x$">$x$</span> and by <span class="math" data-tex="$\partial_w-y$">$\partial_w-y$</span> in the normal direction. On its representative polynomials the latter acts by <span class="math" data-tex="$-y$">$-y$</span>, while <span class="math" data-tex="$w$">$w$</span> acts by <span class="math" data-tex="$\partial_y$">$\partial_y$</span> through (3.2). Let
+<span class="math math-display" data-tex="\[
+i:\mathbb A^1_x\hookrightarrow\mathbb A^2_{x,w},
+\qquad w=0.
+\]">\[
+i:\mathbb A^1_x\hookrightarrow\mathbb A^2_{x,w},
+\qquad w=0.
+\]</span>
+Kashiwara's normal-coordinate presentation of <span class="math" data-tex="$i_*\mathcal O_x$">$i_*\mathcal O_x$</span> has generator <span class="math" data-tex="$\delta$">$\delta$</span> killed by <span class="math" data-tex="$w$">$w$</span> and freely adjoins its normal derivatives. The map
+<span class="math math-display" data-tex="\[
+\partial_w^b\delta\longmapsto(-1)^b[y^b]                 \tag{3.4}
+\]">\[
+\partial_w^b\delta\longmapsto(-1)^b[y^b]                 \tag{3.4}
+\]</span>
+intertwines <span class="math" data-tex="$\partial_w$">$\partial_w$</span>, <span class="math" data-tex="$w$">$w$</span>, and the tangent operators:
+<span class="math" data-tex="$w\partial_w^b\delta=-b\partial_w^{b-1}\delta$">$w\partial_w^b\delta=-b\partial_w^{b-1}\delta$</span>, which maps to (3.2) with precisely the same sign. It is an isomorphism by the unique normal forms just proved. Hence (3.1) has cokernel <span class="math" data-tex="$i_*\mathcal O_x$">$i_*\mathcal O_x$</span> and no other cohomology.</p>
+<p>Returning to <span class="math" data-tex="$(x,z)$">$(x,z)$</span>, this is the graph <span class="math" data-tex="$z=-x$">$z=-x$</span>. The normalized composition kernel is therefore
+<span class="math math-display" data-tex="\[
+K\circ K\simeq i_*\mathcal O_x[1],
+\qquad i(x)=(x,-x).                                     \tag{3.5}
+\]">\[
+K\circ K\simeq i_*\mathcal O_x[1],
+\qquad i(x)=(x,-x).                                     \tag{3.5}
+\]</span></p>
+<p><strong>Theorem 3.1.</strong> For every quasi-coherent D-module complex on the line,
+<span class="math" data-tex="$\mathcal F^2(M)\simeq a^*M$">$\mathcal F^2(M)\simeq a^*M$</span> naturally, with no shift.</p>
+<p><strong>Proof.</strong> The transform with (3.5) is
+<span class="math" data-tex="$p_{z,\mathrm{dR},*}(p_x^!M\otimes^!i_*\mathcal O_x[1])$">$p_{z,\mathrm{dR},*}(p_x^!M\otimes^!i_*\mathcal O_x[1])$</span>.
+Apply the closed-embedding projection formula in lesson 10 to rewrite the tensor as
+<span class="math math-display" data-tex="\[
+i_*\bigl(i^!p_x^!M\otimes^!\mathcal O_x[1]\bigr).
+\]">\[
+i_*\bigl(i^!p_x^!M\otimes^!\mathcal O_x[1]\bigr).
+\]</span>
+Transitivity gives <span class="math" data-tex="$i^!p_x^!M=M$">$i^!p_x^!M=M$</span> because <span class="math" data-tex="$p_xi=\mathrm{id}$">$p_xi=\mathrm{id}$</span>. On the line,
+<span class="math" data-tex="$M\otimes^!\mathcal O_x[1]=(M\otimes_{\mathcal O_x}^{L}\mathcal O_x)[-1+1]=M$">$M\otimes^!\mathcal O_x[1]=(M\otimes_{\mathcal O_x}^{L}\mathcal O_x)[-1+1]=M$</span>.
+Composing the two direct images now gives <span class="math" data-tex="$a_{\mathrm{dR},*}M$">$a_{\mathrm{dR},*}M$</span>, which is canonically <span class="math" data-tex="$a^*M$">$a^*M$</span> for the involutive isomorphism <span class="math" data-tex="$a$">$a$</span>. This proves the natural formula, including every shift. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a trivial rank-<span class="math" data-tex="$n$">$n$</span> bundle the computation is the tensor product of these <span class="math" data-tex="$n$">$n$</span> normal-direction computations, over the base. The graph kernel is <span class="math" data-tex="$i_*\mathcal O_E[d_E]$">$i_*\mathcal O_E[d_E]$</span>: the triple-product shifts give <span class="math" data-tex="$[m+n]=[d_E]$">$[m+n]=[d_E]$</span>. The same projection formula proves <span class="math" data-tex="$\mathcal F_{E^\vee}\mathcal F_E\simeq a_E^*$">$\mathcal F_{E^\vee}\mathcal F_E\simeq a_E^*$</span>. Local bundle trivializations suffice because (2.1) and the graph construction are intrinsic.</p>
+<h2 id="4-the-monodromic-comparison">4. The monodromic comparison</h2>
+<p>For a Weyl module on <span class="math" data-tex="$V=\mathbb A^n$">$V=\mathbb A^n$</span> put
+<span class="math" data-tex="$\theta=\sum_i x_i\partial_{x_i}$">$\theta=\sum_i x_i\partial_{x_i}$</span>. Call it <strong>monodromic</strong> when <span class="math" data-tex="$\theta$">$\theta$</span> acts locally finitely: each vector lies in a finite-dimensional <span class="math" data-tex="$\theta$">$\theta$</span>-stable subspace. This permits arbitrary eigenvalues and generalized eigenvectors; it is weaker than an algebraic strong <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>-linearization.</p>
+<p>Transport gives
+<span class="math math-display" data-tex="\[
+\sigma(\theta_x)=-\theta_y-n.                            \tag{4.1}
+\]">\[
+\sigma(\theta_x)=-\theta_y-n.                            \tag{4.1}
+\]</span>
+Local finiteness is therefore preserved. The modules <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span> illustrate this for every <span class="math" data-tex="$\lambda$">$\lambda$</span>, including resonant integral values. Their generator has Euler eigenvalue <span class="math" data-tex="$\lambda$">$\lambda$</span>, and pure powers <span class="math" data-tex="$x^j u$">$x^j u$</span>, <span class="math" data-tex="$\partial_x^j u$">$\partial_x^j u$</span> have eigenvalues <span class="math" data-tex="$\lambda+j$">$\lambda+j$</span>, <span class="math" data-tex="$\lambda-j$">$\lambda-j$</span>. Moving mixed powers into this span with the relation <span class="math" data-tex="$\theta u=\lambda u$">$\theta u=\lambda u$</span> shows that every vector has a finite Euler orbit. These modules are regular by their Kummer connections and the regular extensions discussed in lessons 6 and 13.</p>
+<p>For topological sheaves on a complex vector space, monodromicity means that cohomology sheaves are locally constant on the <span class="math" data-tex="$\mathbb C^\times$">$\mathbb C^\times$</span>-orbits. Such a sheaf is also conic for positive real scaling. Use the underlying real pairing
+<span class="math" data-tex="$\operatorname{Re}\langle x,y\rangle$">$\operatorname{Re}\langle x,y\rangle$</span> and define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_-(F)&amp;=Rq_!\bigl(p^{-1}F\otimes
+       \mathbb C_{\{\operatorname{Re}\langle x,y\rangle\leq0\}}\bigr),\\
+T_+(F)&amp;=Rq_!\bigl(p^{-1}F\otimes
+       \mathbb C_{\{\operatorname{Re}\langle x,y\rangle\geq0\}}\bigr).
+\end{aligned}                                            \tag{4.2}
+\]">\[
+\begin{aligned}
+T_-(F)&amp;=Rq_!\bigl(p^{-1}F\otimes
+       \mathbb C_{\{\operatorname{Re}\langle x,y\rangle\leq0\}}\bigr),\\
+T_+(F)&amp;=Rq_!\bigl(p^{-1}F\otimes
+       \mathbb C_{\{\operatorname{Re}\langle x,y\rangle\geq0\}}\bigr).
+\end{aligned}                                            \tag{4.2}
+\]</span>
+The constant sheaves on these closed sets are extended by zero; <span class="math" data-tex="$q_!$">$q_!$</span> is proper-support sheaf image. Changing <span class="math" data-tex="$y$">$y$</span> to <span class="math" data-tex="$-y$">$-y$</span> identifies <span class="math" data-tex="$T_+$">$T_+$</span> with <span class="math" data-tex="$a_{V^\vee}^*T_-$">$a_{V^\vee}^*T_-$</span>. The SH-02 lesson linked above uses <span class="math" data-tex="$T_-$">$T_-$</span>. Real rank is <span class="math" data-tex="$2n$">$2n$</span>, whereas the perverse normalization below uses complex rank <span class="math" data-tex="$n$">$n$</span>.</p>
+<p><strong>Theorem 4.1 (Brylinski; stated).</strong> If <span class="math" data-tex="$M$">$M$</span> is a regular holonomic monodromic algebraic D-module on a complex vector space <span class="math" data-tex="$V$">$V$</span> of dimension <span class="math" data-tex="$n$">$n$</span>, then <span class="math" data-tex="$\mathcal F(M)$">$\mathcal F(M)$</span> is again regular holonomic and monodromic. With the perverse-normalized de Rham functor of lesson 12,
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_{V^\vee}\mathcal F(M)
+\simeq T_+\bigl(\operatorname{DR}_V M\bigr)[n].            \tag{4.3}
+\]">\[
+\operatorname{DR}_{V^\vee}\mathcal F(M)
+\simeq T_+\bigl(\operatorname{DR}_V M\bigr)[n].            \tag{4.3}
+\]</span>
+This extends to bounded derived complexes with such cohomology. The normalized transform on the right preserves monodromic perverse sheaves.</p>
+<p>The precise source is Brylinski, <em>Transformations canoniques…</em>, Proposition 7.12 and Theorem 7.24, with Corollary 7.23 for perversity. His Definition 7.16 transports <span class="math" data-tex="$x_i$">$x_i$</span> to <span class="math" data-tex="$\partial_{y_i}$">$\partial_{y_i}$</span> and <span class="math" data-tex="$\partial_{x_i}$">$\partial_{x_i}$</span> to <span class="math" data-tex="$-y_i$">$-y_i$</span>, the inverse of (1.1), and his topological transform uses the negative halfspace. Postcomposing both sides by negation gives exactly (4.3). His §6, following Proposition 6.13, inserts the complex-rank shift <span class="math" data-tex="$[n]$">$[n]$</span>.</p>
+<p>The normalization has concrete checks:
+<span class="math" data-tex="$T_-(\mathbb C_V)=\mathbb C_{\{0\}}[-2n]$">$T_-(\mathbb C_V)=\mathbb C_{\{0\}}[-2n]$</span> and
+<span class="math" data-tex="$T_-(\mathbb C_{\{0\}})=\mathbb C_{V^\vee}$">$T_-(\mathbb C_{\{0\}})=\mathbb C_{V^\vee}$</span>, and the same formulas hold for <span class="math" data-tex="$T_+$">$T_+$</span>. Hence (4.3) sends
+<span class="math" data-tex="$\operatorname{DR}(\mathcal O_V)=\mathbb C_V[n]$">$\operatorname{DR}(\mathcal O_V)=\mathbb C_V[n]$</span>
+to <span class="math" data-tex="$\mathbb C_{\{0\}}$">$\mathbb C_{\{0\}}$</span>, and sends the point module to <span class="math" data-tex="$\mathbb C_{V^\vee}[n]$">$\mathbb C_{V^\vee}[n]$</span>. The sheaf square has real-rank shift <span class="math" data-tex="$[-2n]$">$[-2n]$</span>; applying the normalization twice cancels it, consistently with Theorem 3.1. These sheaf identities and inversion are part of the Fourier-Sato theory in SH-02.</p>
+<p>Equation (1.8) explains why the regularity hypothesis alone is insufficient. Indeed <span class="math" data-tex="$\mathcal O e^{-y}$">$\mathcal O e^{-y}$</span> is not monodromic: the vectors <span class="math" data-tex="$\theta^j e$">$\theta^j e$</span> have polynomial coefficients with successively increasing degree and nonzero leading coefficient. Fourier-Sato comparison for ordinary constructible sheaves cannot be applied to this example by omitting monodromicity. Theorem 4.1 is not a consequence of moving an arbitrary irregular exponential kernel through the regular Riemann-Hilbert correspondence.</p>
+<h2 id="5-flat-line-bundles-as-the-abelian-spectral-space">5. Flat line bundles as the abelian spectral space</h2>
+<p>Let <span class="math" data-tex="$A$">$A$</span> be an abelian variety of dimension <span class="math" data-tex="$g$">$g$</span> in characteristic zero, and let
+<span class="math" data-tex="$\widehat A=\operatorname{Pic}^0(A)$">$\widehat A=\operatorname{Pic}^0(A)$</span> be its dual. Denote by <span class="math" data-tex="$A_{\mathrm{conn}}$">$A_{\mathrm{conn}}$</span> the moduli scheme of degree-zero line bundles with integrable connection <strong>on <span class="math" data-tex="$A$">$A$</span></strong>, rigidified at its identity. This rigidification removes their scalar automorphisms and supplies a universal line bundle. There is an exact sequence of algebraic groups
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^0(A,\Omega_A^1)_{\mathrm{add}}
+\longrightarrow A_{\mathrm{conn}}
+\longrightarrow\widehat A
+\longrightarrow0.                                       \tag{5.1}
+\]">\[
+0\longrightarrow H^0(A,\Omega_A^1)_{\mathrm{add}}
+\longrightarrow A_{\mathrm{conn}}
+\longrightarrow\widehat A
+\longrightarrow0.                                       \tag{5.1}
+\]</span>
+It is the universal vector extension of <span class="math" data-tex="$\widehat A$">$\widehat A$</span>, and is smooth of dimension <span class="math" data-tex="$2g$">$2g$</span>. These facts are stated here with Laumon, Theorems 2.1.2 and 2.2.1. For a fixed line bundle, its connections form an affine space under invariant one-forms; there is no canonical origin for that space in general. The fiber over the trivial bundle does have the origin <span class="math" data-tex="$d$">$d$</span>.</p>
+<p>Some authors write <span class="math" data-tex="$A^\natural$">$A^\natural$</span> for <span class="math" data-tex="$A_{\mathrm{conn}}$">$A_{\mathrm{conn}}$</span>; others attach the superscript to the abelian variety being extended, and write <span class="math" data-tex="$\widehat A^\natural$">$\widehat A^\natural$</span> for the same space. Definition (5.1), rather than the superscript alone, specifies our meaning. For D-modules on <span class="math" data-tex="$A$">$A$</span> it is flat lines on <span class="math" data-tex="$A$">$A$</span>, not flat lines on <span class="math" data-tex="$\widehat A$">$\widehat A$</span>, that form this spectral space.</p>
+<p>Let <span class="math" data-tex="$\mathcal P^\nabla$">$\mathcal P^\nabla$</span> be the universal rigidified line bundle on
+<span class="math" data-tex="$A\times A_{\mathrm{conn}}$">$A\times A_{\mathrm{conn}}$</span>, with its connection in the <span class="math" data-tex="$A$">$A$</span> directions. Write <span class="math" data-tex="$p$">$p$</span> and <span class="math" data-tex="$q$">$q$</span> for the projections to <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$A_{\mathrm{conn}}$">$A_{\mathrm{conn}}$</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_A(M)&amp;=Rq_*
+  \operatorname{DR}_{/A_{\mathrm{conn}}}
+       (\mathcal P^\nabla\otimes^L Lp^*M),\\
+G_A(N)&amp;=Rp_*(\mathcal P^\nabla\otimes^L Lq^*N).            \tag{5.2}
+\end{aligned}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{aligned}
+F_A(M)&amp;=Rq_*
+  \operatorname{DR}_{/A_{\mathrm{conn}}}
+       (\mathcal P^\nabla\otimes^L Lp^*M),\\
+G_A(N)&amp;=Rp_*(\mathcal P^\nabla\otimes^L Lq^*N).            \end{aligned}
+\tag{5.2}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{aligned}
+F_A(M)&amp;=Rq_*
+  \operatorname{DR}_{/A_{\mathrm{conn}}}
+       (\mathcal P^\nabla\otimes^L Lp^*M),\\
+G_A(N)&amp;=Rp_*(\mathcal P^\nabla\otimes^L Lq^*N).            \end{aligned}
+\tag{5.2}
+\]</span>
+The relative de Rham complex in the first line has terms
+<span class="math" data-tex="$[\mathcal P^\nabla\otimes Lp^*M\to\Omega^1_{/A_{\mathrm{conn}}}\otimes
+\mathcal P^\nabla\otimes Lp^*M\to\cdots]$">$[\mathcal P^\nabla\otimes Lp^*M\to\Omega^1_{/A_{\mathrm{conn}}}\otimes
+\mathcal P^\nabla\otimes Lp^*M\to\cdots]$</span>
+in degrees <span class="math" data-tex="$-g,\ldots,0$">$-g,\ldots,0$</span>. The second line uses ordinary derived quasi-coherent image and retains the partial D-action in the <span class="math" data-tex="$A$">$A$</span> directions. There is no relative de Rham operation in the parameter directions in that line.</p>
+<p><strong>Theorem 5.1 (Laumon–Rothstein; stated).</strong> The functors (5.2) give equivalences of bounded derived quasi-coherent categories and preserve the bounded coherent subcategories. Their compositions are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_AF_A&amp;\simeq a_A^*[-g],\\
+F_AG_A&amp;\simeq a_{\mathrm{conn}}^*[-g],                    \tag{5.3}
+\end{aligned}
+\]" data-render-adaptation="whole-display-tag-outside-subenvironment-v1" data-render-tex="\[
+\begin{aligned}
+G_AF_A&amp;\simeq a_A^*[-g],\\
+F_AG_A&amp;\simeq a_{\mathrm{conn}}^*[-g],                    \end{aligned}
+\tag{5.3}
+\]" title="Display-only adjustment: the unchanged whole-display label is outside aligned/gathered; original TeX is retained in data-tex.">\[
+\begin{aligned}
+G_AF_A&amp;\simeq a_A^*[-g],\\
+F_AG_A&amp;\simeq a_{\mathrm{conn}}^*[-g],                    \end{aligned}
+\tag{5.3}
+\]</span>
+where the two <span class="math" data-tex="$a$">$a$</span>'s are inversion in the respective groups. In particular <span class="math" data-tex="$F_A$">$F_A$</span> has inverse <span class="math" data-tex="$a_A^*G_A[g]$">$a_A^*G_A[g]$</span>.</p>
+<p>The confirmed locator for these formulas is Laumon, <em>Transformation de Fourier généralisée</em>, §3.1 and Theorem 3.2.1, with Corollaries 3.1.3 and 3.2.5 for coherence. Rothstein's <em>Sheaves with connection on abelian varieties</em> is the independent original construction. This is a derived equivalence; it does not identify the ordinary module hearts as abelian categories.</p>
+<p>It is useful to renormalize the first line:
+<span class="math math-display" data-tex="\[
+\widehat F_A=a_{\mathrm{conn}}^*F_A[g].
+\]">\[
+\widehat F_A=a_{\mathrm{conn}}^*F_A[g].
+\]</span>
+Universality of <span class="math" data-tex="$\mathcal P^\nabla$">$\mathcal P^\nabla$</span> gives
+<span class="math" data-tex="$G_Aa_{\mathrm{conn}}^*\simeq a_A^*G_A$">$G_Aa_{\mathrm{conn}}^*\simeq a_A^*G_A$</span>: inversion of a flat line is its dual, also obtained by pullback along inversion of <span class="math" data-tex="$A$">$A$</span>. Together with (5.3) this makes <span class="math" data-tex="$\widehat F_A$">$\widehat F_A$</span> inverse to <span class="math" data-tex="$G_A$">$G_A$</span>.</p>
+<p>For a point <span class="math" data-tex="$\ell=(L,\nabla)$">$\ell=(L,\nabla)$</span>, the pullback of its skyscraper to the product and tensor with <span class="math" data-tex="$\mathcal P^\nabla$">$\mathcal P^\nabla$</span> restricts to <span class="math" data-tex="$(L,\nabla)$">$(L,\nabla)$</span> on <span class="math" data-tex="$A\times\{\ell\}$">$A\times\{\ell\}$</span>. Its ordinary pushforward to <span class="math" data-tex="$A$">$A$</span> is that same flat line, with no higher image or shift. Thus, as a consequence of the stated equivalence,
+<span class="math math-display" data-tex="\[
+G_A(k_\ell)=(L,\nabla),\qquad
+\widehat F_A(L,\nabla)=k_\ell.                            \tag{5.4}
+\]">\[
+G_A(k_\ell)=(L,\nabla),\qquad
+\widehat F_A(L,\nabla)=k_\ell.                            \tag{5.4}
+\]</span>
+In the unrenormalized convention <span class="math" data-tex="$F_A(L,\nabla)=k_{\ell^{-1}}[-g]$">$F_A(L,\nabla)=k_{\ell^{-1}}[-g]$</span>. The shift in (5.4) differs from (5.3) because the functor itself has been renormalized.</p>
+<h3 id="an-explicit-family-of-commuting-equations">An explicit family of commuting equations</h3>
+<p>Put <span class="math" data-tex="$V=\operatorname{Lie}(A)$">$V=\operatorname{Lie}(A)$</span> and
+<span class="math" data-tex="$B=\operatorname{Sym}_k V=k[V^*]$">$B=\operatorname{Sym}_k V=k[V^*]$</span>. Translation trivializes <span class="math" data-tex="$T_A$">$T_A$</span> by commuting invariant vector fields. Choose a basis <span class="math" data-tex="$v_1,\ldots,v_g$">$v_1,\ldots,v_g$</span>. Their ordered monomials give, by the PBW theorem, a global isomorphism
+<span class="math math-display" data-tex="\[
+\mathcal D_A\simeq\mathcal O_A\otimes_k B
+\quad\text{as a right }B\text{-module}.                  \tag{5.5}
+\]">\[
+\mathcal D_A\simeq\mathcal O_A\otimes_k B
+\quad\text{as a right }B\text{-module}.                  \tag{5.5}
+\]</span>
+To see surjectivity, subtract the highest-order symbol of a differential operator using these monomials and induct on order; injectivity follows from independence of their symbols. Since <span class="math" data-tex="$\Gamma(A,\mathcal O_A)=k$">$\Gamma(A,\mathcal O_A)=k$</span>, taking global sections in this direct-sum decomposition gives
+<span class="math math-display" data-tex="\[
+\Gamma(A,\mathcal D_A)=B.                                \tag{5.6}
+\]">\[
+\Gamma(A,\mathcal D_A)=B.                                \tag{5.6}
+\]</span>
+Global sections here commute with direct sums of these quasi-coherent summands, as <span class="math" data-tex="$A$">$A$</span> is quasi-compact and separated. Thus no additional global differential operators are missing.</p>
+<p>For any <span class="math" data-tex="$B$">$B$</span>-module <span class="math" data-tex="$N$">$N$</span> form
+<span class="math math-display" data-tex="\[
+M_N=\mathcal D_A\otimes_B N
+    \simeq\mathcal O_A\otimes_k N.
+\]">\[
+M_N=\mathcal D_A\otimes_B N
+    \simeq\mathcal O_A\otimes_k N.
+\]</span>
+This tensor is exact by the right-<span class="math" data-tex="$B$">$B$</span> freeness in (5.5). The action is explicitly
+<span class="math math-display" data-tex="\[
+v(f\otimes n)=v(f)\otimes n+f\otimes vn.                  \tag{5.7}
+\]">\[
+v(f\otimes n)=v(f)\otimes n+f\otimes vn.                  \tag{5.7}
+\]</span>
+Indeed <span class="math" data-tex="$vf=fv+v(f)$">$vf=fv+v(f)$</span> in <span class="math" data-tex="$\mathcal D_A$">$\mathcal D_A$</span>, and its commuting invariant vector fields give an integrable connection. The formula extends to bounded complexes.</p>
+<p>For the character <span class="math" data-tex="$k_\lambda$">$k_\lambda$</span> at <span class="math" data-tex="$\lambda\in V^*$">$\lambda\in V^*$</span> this is the flat line on the trivial bundle with connection <span class="math" data-tex="$d+\alpha_\lambda$">$d+\alpha_\lambda$</span>, where <span class="math" data-tex="$\alpha_\lambda(v)=\lambda(v)$">$\alpha_\lambda(v)=\lambda(v)$</span>. Equivalently,
+<span class="math math-display" data-tex="\[
+M_{k_\lambda}
+=\mathcal D_A\Big/\sum_i
+       \mathcal D_A(v_i-\lambda(v_i)).                   \tag{5.8}
+\]">\[
+M_{k_\lambda}
+=\mathcal D_A\Big/\sum_i
+       \mathcal D_A(v_i-\lambda(v_i)).                   \tag{5.8}
+\]</span>
+On a simply connected analytic coordinate chart its horizontal coefficient is
+<span class="math" data-tex="$\exp(-\sum_i\lambda(v_i)t_i)$">$\exp(-\sum_i\lambda(v_i)t_i)$</span>. The minus sign is the distinction between the action on the chosen frame and the equation for its horizontal coefficient.</p>
+<p>Identify <span class="math" data-tex="$V^*=H^0(A,\Omega_A^1)$">$V^*=H^0(A,\Omega_A^1)$</span> with the fiber over the trivial line in (5.1), and let <span class="math" data-tex="$j:V^*\hookrightarrow A_{\mathrm{conn}}$">$j:V^*\hookrightarrow A_{\mathrm{conn}}$</span> be its inclusion. The universal connection restricted to <span class="math" data-tex="$A\times V^*$">$A\times V^*$</span> is exactly (5.7), with the coordinate functions on <span class="math" data-tex="$V^*$">$V^*$</span> acting on <span class="math" data-tex="$N$">$N$</span>. The projection <span class="math" data-tex="$A\times V^*\to A$">$A\times V^*\to A$</span> is affine, so its ordinary derived image has no higher terms on quasi-coherent sheaves. We have therefore proved directly that
+<span class="math math-display" data-tex="\[
+G_A(j_*\widetilde N)=M_N.
+\]">\[
+G_A(j_*\widetilde N)=M_N.
+\]</span>
+Applying the stated equivalence gives the entire family, not only its closed points:
+<span class="math math-display" data-tex="\[
+\widehat F_A(M_N)\simeq j_*\widetilde N.                   \tag{5.9}
+\]">\[
+\widehat F_A(M_N)\simeq j_*\widetilde N.                   \tag{5.9}
+\]</span>
+Here <span class="math" data-tex="$\widetilde N$">$\widetilde N$</span> is the quasi-coherent sheaf on the affine space <span class="math" data-tex="$V^*$">$V^*$</span>. In particular a finitely generated <span class="math" data-tex="$B$">$B$</span>-module gives a coherent D-module and a coherent spectral sheaf.</p>
+<p>For <span class="math" data-tex="$A=\operatorname{Jac}(X)$">$A=\operatorname{Jac}(X)$</span>, the tangent space is
+<span class="math" data-tex="$H^1(X,\mathcal O_X)$">$H^1(X,\mathcal O_X)$</span> and its dual is <span class="math" data-tex="$H^0(X,\Omega_X^1)$">$H^0(X,\Omega_X^1)$</span> by Serre duality. Thus (5.7)–(5.9) give the concrete family discussed in Frenkel, §§4.4–4.5: a one-form specifies scalar eigenvalues for the invariant vector fields. Arbitrary coherent spectral sheaves need not have finite support. The point correspondence (5.4) is not a claim that finite sums and cones of skyscrapers generate every coherent sheaf.</p>
+<h3 id="two-appearances-in-geometric-langlands">Two appearances in geometric Langlands</h3>
+<p>The Jacobian version is the finite-dimensional Fourier–Mukai–Laumon ingredient in the abelian geometric Langlands correspondence. Arinkin–Gaitsgory, §11.2, places it beside the degree component and the derived stabilizer factors of the Picard stack; their statement uses the presentable DG categories. The calculation for <span class="math" data-tex="$B\mathbb G_m$">$B\mathbb G_m$</span> and for the discrete degree set in <a href="stacks-ind-schemes-and-the-de-rham-prestack.html">lesson 17</a> supplies those other factors. They are not part of the ordinary scheme <span class="math" data-tex="$A_{\mathrm{conn}}$">$A_{\mathrm{conn}}$</span> and cannot be discarded by restricting to degree-zero line bundles.</p>
+<p>There is also an infinite-dimensional Weyl construction in Hilburn–Raskin, <em>Tate's thesis in the de Rham setting</em>. Their §4 builds the required <span class="math" data-tex="$\operatorname{IndCoh}^*$">$\operatorname{IndCoh}^*$</span> categories, and §5.1 constructs compact objects <span class="math" data-tex="$\mathcal F_n$">$\mathcal F_n$</span> from the scheme of a flat line together with a horizontal section of bounded pole order. They carry actions of the opposite finite Weyl algebras; the commutator is the negative residue pairing. Section 7.1 states full faithfulness of the associated finite-stage functor. These are stated inputs here, discussed further in lesson 17. The use of an opposite algebra changes the commutator sign, so it must be translated before comparing it with <span class="math" data-tex="$[\partial,x]=1$">$[\partial,x]=1$</span> in (1.1).</p>
+<p>The three constructions have different spaces of parameters: linear dual coordinates for (2.1), flat line bundles for (5.2), and formal local-system/section data for Hilburn–Raskin. The explicit point and Gaussian calculations do not by themselves prove the latter two equivalences.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 18.1 (easy).</strong> Compute <span class="math" data-tex="$\mathcal F(\mathcal O)$">$\mathcal F(\mathcal O)$</span>, <span class="math" data-tex="$\mathcal F(\delta_0)$">$\mathcal F(\delta_0)$</span>, and <span class="math" data-tex="$\mathcal F(\delta_a)$">$\mathcal F(\delta_a)$</span> with the fixed sign.</p>
+<p><strong>Solution.</strong> Apply <span class="math" data-tex="$\sigma$">$\sigma$</span> to the defining left ideals. The ideal <span class="math" data-tex="$D\partial_x$">$D\partial_x$</span> becomes <span class="math" data-tex="$D_y y$">$D_y y$</span>, giving <span class="math" data-tex="$\delta_0$">$\delta_0$</span>. The ideal <span class="math" data-tex="$Dx$">$Dx$</span> becomes <span class="math" data-tex="$D_y(-\partial_y)=D_y\partial_y$">$D_y(-\partial_y)=D_y\partial_y$</span>, giving <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>. Finally <span class="math" data-tex="$D(x-a)$">$D(x-a)$</span> becomes <span class="math" data-tex="$D_y(-\partial_y-a)$">$D_y(-\partial_y-a)$</span>, giving the quotient by <span class="math" data-tex="$\partial_y+a$">$\partial_y+a$</span>. It is the free <span class="math" data-tex="$k[y]$">$k[y]$</span>-module on <span class="math" data-tex="$e$">$e$</span> with <span class="math" data-tex="$\partial_y(fe)=(f&#x27;-af)e$">$\partial_y(fe)=(f&#x27;-af)e$</span>, namely <span class="math" data-tex="$\mathcal O e^{-ay}$">$\mathcal O e^{-ay}$</span>. None of these transports changes degree. Applying the transform twice sends <span class="math" data-tex="$\delta_a$">$\delta_a$</span> to <span class="math" data-tex="$\delta_{-a}$">$\delta_{-a}$</span>, agreeing with negation.</p>
+<p><strong>Exercise 18.2 (easy).</strong> Exhibit a regular holonomic module whose transform is irregular, and prove the irregularity.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="$\delta_1$">$\delta_1$</span>. Closed direct image from a point preserves regular holonomicity, so it is regular. Exercise 18.1 gives its transform <span class="math" data-tex="$\mathcal O e^{-y}$">$\mathcal O e^{-y}$</span>. At infinity <span class="math" data-tex="$\partial_w e=w^{-2}e$">$\partial_w e=w^{-2}e$</span>. A meromorphic frame change adds <span class="math" data-tex="$g&#x27;/g$">$g&#x27;/g$</span>, and for <span class="math" data-tex="$g=w^m u$">$g=w^m u$</span> this is <span class="math" data-tex="$m/w+u&#x27;/u$">$m/w+u&#x27;/u$</span>, with <span class="math" data-tex="$u&#x27;/u$">$u&#x27;/u$</span> regular. The double pole survives every such change; hence there is no logarithmic lattice in rank one. By the boundary criterion of lesson 13 the transform is irregular. This does not contradict preservation of holonomicity in Theorem 1.1.</p>
+<p><strong>Exercise 18.3 (medium).</strong> Compute <span class="math" data-tex="$\mathcal F(D/D(x\partial_x-\lambda))$">$\mathcal F(D/D(x\partial_x-\lambda))$</span> and check the parameter after a second transform.</p>
+<p><strong>Solution.</strong> The image of the operator is
+<span class="math" data-tex="$-\partial_y y-\lambda$">$-\partial_y y-\lambda$</span>. Multiplication by the nonzero scalar <span class="math" data-tex="$-1$">$-1$</span> does not change its generated left ideal. Thus the quotient is
+<span class="math" data-tex="$D_y/D_y(\partial_y y+\lambda)
+=D_y/D_y(y\partial_y+\lambda+1)$">$D_y/D_y(\partial_y y+\lambda)
+=D_y/D_y(y\partial_y+\lambda+1)$</span>.
+Its Euler parameter is <span class="math" data-tex="$-\lambda-1$">$-\lambda-1$</span>, for every <span class="math" data-tex="$\lambda$">$\lambda$</span>; no nonresonance assumption was used. Applying the same rule again gives
+<span class="math" data-tex="$-(-\lambda-1)-1=\lambda$">$-(-\lambda-1)-1=\lambda$</span>. Negation fixes <span class="math" data-tex="$x\partial_x$">$x\partial_x$</span>, so this is also the answer dictated by the square formula.</p>
+<p><strong>Exercise 18.4 (medium).</strong> Prove preservation of holonomicity for finitely generated <span class="math" data-tex="$A_n$">$A_n$</span>-modules using a good filtration. Explain why an order-filtration argument would be invalid.</p>
+<p><strong>Solution.</strong> Use the total-degree Bernstein filtration <span class="math" data-tex="$B_\bullet A_n$">$B_\bullet A_n$</span>. The images of its degree-one generators under <span class="math" data-tex="$\sigma$">$\sigma$</span> again have degree one, and the inverse has the same property, so <span class="math" data-tex="$\sigma(B_j)=B_j$">$\sigma(B_j)=B_j$</span>. Transport a good filtration with its chosen finite generators and their filtration shifts. Every vector-space piece, and therefore its Hilbert polynomial, is identical before and after transport. Lesson 4 identifies its degree with the characteristic dimension. Thus the degree equals <span class="math" data-tex="$n$">$n$</span> before transport exactly when it equals <span class="math" data-tex="$n$">$n$</span> afterward, proving holonomicity in both directions; the zero case is immediate. The order filtration is not preserved because <span class="math" data-tex="$x$">$x$</span> has order zero while <span class="math" data-tex="$\sigma(x)=-\partial_y$">$\sigma(x)=-\partial_y$</span> has order one. It cannot be substituted in this proof.</p>
+<p><strong>Exercise 18.5 (hard).</strong> Prove the square formula on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> from the exponential kernel, including the natural isomorphism and the shift.</p>
+<p><strong>Solution.</strong> Each kernel is <span class="math" data-tex="$\operatorname{Exp}(-xy)[1]$">$\operatorname{Exp}(-xy)[1]$</span>. Pulling the two kernels to the triple product contributes two further shifts <span class="math" data-tex="$[1]$">$[1]$</span>, and its <span class="math" data-tex="$\otimes^!$">$\otimes^!$</span> contributes <span class="math" data-tex="$[-3]$">$[-3]$</span>. Their composition is therefore middle-variable direct image of <span class="math" data-tex="$\operatorname{Exp}(-y(x+z))[1]$">$\operatorname{Exp}(-y(x+z))[1]$</span>.</p>
+<p>Put <span class="math" data-tex="$w=x+z$">$w=x+z$</span>. The relative direct image is the two-term complex (3.1), followed by <span class="math" data-tex="$[1]$">$[1]$</span>. Its kernel vanishes by the highest-<span class="math" data-tex="$y$">$y$</span>-coefficient test. Relations (3.2) reduce its cokernel to <span class="math" data-tex="$k[x,y]$">$k[x,y]$</span>, and the explicit map (3.3) proves these representatives are unique: it kills the differential, and reduction changes a polynomial only by its image. The output normal operator is <span class="math" data-tex="$-y$">$-y$</span>, with <span class="math" data-tex="$w$">$w$</span> acting by <span class="math" data-tex="$\partial_y$">$\partial_y$</span>. Map the normal derivatives of the delta generator to <span class="math" data-tex="$(-1)^b y^b$">$(-1)^b y^b$</span> as in (3.4). This identifies the full output D-module with <span class="math" data-tex="$i_*\mathcal O_x$">$i_*\mathcal O_x$</span> on the graph <span class="math" data-tex="$z=-x$">$z=-x$</span>. Hence the composition kernel is (3.5), with shift <span class="math" data-tex="$[1]$">$[1]$</span>.</p>
+<p>For an arbitrary <span class="math" data-tex="$M$">$M$</span>, the closed projection formula identifies its transform with
+<span class="math" data-tex="$p_{z,\mathrm{dR},*}i_*(i^!p_x^!M\otimes^!\mathcal O_x[1])$">$p_{z,\mathrm{dR},*}i_*(i^!p_x^!M\otimes^!\mathcal O_x[1])$</span>.
+The first argument is <span class="math" data-tex="$M$">$M$</span> by transitivity; the tensor is <span class="math" data-tex="$M[-1+1]=M$">$M[-1+1]=M$</span>. The composition of direct images is <span class="math" data-tex="$a_{\mathrm{dR},*}M=a^*M$">$a_{\mathrm{dR},*}M=a^*M$</span>. Every identification used a natural kernel map or a functorial projection formula, so this proves a natural isomorphism on the whole category and on complexes, with no residual shift.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Riemann-Hilbert comparison with Fourier-Sato, including regularity preservation in the monodromic case and perverse exactness, is Theorem 4.1 stated with Brylinski's exact locators. The conic sheaf-transform inversion and its normalization are developed in SH-02.</p>
+<p>The representability and universal-extension assertions (5.1), and the full Laumon–Rothstein equivalence (5.3), are stated with Laumon's Theorems 2.1.2, 2.2.1, and 3.2.1 and the coherence corollaries. The point and commuting-vector-field calculations are proved here relative to that stated equivalence; they are not a proof of its essential surjectivity. The presentable DG Picard-stack comparison in Arinkin–Gaitsgory, §11.2, and the Hilburn–Raskin §5/§7 spectral construction are likewise stated external inputs.</p>
+<p>The proofs of Bernstein dimension equals characteristic dimension, Kashiwara's equivalence, and the functor composition/projection formulas are earlier course results. This lesson proves the Weyl transport, its holonomicity preservation, its agreement with the normalized vector-bundle kernel, the full line-kernel square, the examples, and all five exercise solutions.</p>
+<h2 id="references">References</h2>
+<p>Miličić, <a href="https://www.math.utah.edu/~milicic/Eprints/dmodules.pdf"><em>Lectures on Algebraic Theory of D-Modules</em></a>, Chapter I, §§5–8: the Fourier automorphism of the Weyl algebra and the Bernstein filtration, the equality of Bernstein dimension and characteristic dimension, and preservation of holonomicity under Fourier transformation.</p>
+<p>Brylinski, <a href="https://www.numdam.org/item/AST_1986__140-141__3_0/"><em>Transformations canoniques, dualité projective, théorie de Lefschetz, transformations de Fourier et sommes trigonométriques</em></a>, Astérisque 140–141 (1986), 3–134: §6 normalization, Definition 7.16, Proposition 7.12, Corollary 7.23, and Theorem 7.24.</p>
+<p>Laumon, <a href="https://arxiv.org/abs/alg-geom/9603004"><em>Transformation de Fourier généralisée</em></a>: Theorems 2.1.2 and 2.2.1, §3.1, Theorem 3.2.1, Corollaries 3.1.3 and 3.2.5.</p>
+<p>Rothstein, <a href="https://arxiv.org/abs/alg-geom/9602023"><em>Sheaves with connection on abelian varieties</em></a>, Duke Mathematical Journal 84 (1996), 565–598: independent original abelian construction.</p>
+<p>Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172"><em>Lectures on the Langlands program and conformal field theory</em></a>, §§4.4–4.5: the Jacobian example and its commuting differential operators.</p>
+<p>Arinkin and Gaitsgory, <a href="https://arxiv.org/abs/1201.6343"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em></a>, §11.2: the torus/Picard-stack comparison.</p>
+<p>Hilburn and Raskin, <a href="https://arxiv.org/abs/2107.11325"><em>Tate's thesis in the de Rham setting</em></a>, §4, §5.1, and §7.1: the categories, opposite-Weyl action, and full-faithfulness statement for the local spectral construction.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="stacks-ind-schemes-and-the-de-rham-prestack.html">← D-modules on stacks, ind-schemes and the de Rham prestack</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-fourier-transform-of-d-modules.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Localizing functors through formal objects</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: GPT-6 Astra, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="localizing-functors-through-formal-objects">Localizing functors through formal objects</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>Inverting selected arrows changes which maps can be compared. A functor need not invert those arrows itself. We can still collect its values after all permitted changes of an object. The collection always defines a formal filtered object. Whether it represents an actual object is a stronger question than whether its ordinary colimit exists. That distinction determines whether every further functor preserves the localization.</p>
+<p>We use the localization calculus of <a href="https://stacks.math.columbia.edu/tag/04VB">Stacks, Section 4.27</a> by reference. Our denominators point out of the object: a localized map is represented by <span class="math" data-tex="\(X\to Y&#x27;\leftarrow Y\)">\(X\to Y&#x27;\leftarrow Y\)</span>, with the second arrow a denominator. This is the calculus called <strong>left</strong> in that reference. Read <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a> for filtered extension and <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a> for realization. The representability criterion in <a href="retracts-and-stabilization-of-formal-objects.html">Retracts and stabilization of formal objects</a> can test the formal values constructed here. No additive or triangulated structure is assumed.</p>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. All categories below are locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, and all presentations of formal objects are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Larger functor categories can be taken in an ambient universe.</p>
+<h2 id="1-a-localized-object-as-a-presheaf">1. A localized object as a presheaf</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be an outgoing multiplicative system in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>: it contains isomorphisms and is closed under composition; it satisfies the outgoing square and cancellation axioms of the referenced left calculus. Denote its localization by</p>
+<span class="math math-display" data-tex="\[
+Q:\mathsf C\longrightarrow\mathsf L=\mathsf C[S^{-1}].
+\]">\[
+Q:\mathsf C\longrightarrow\mathsf L=\mathsf C[S^{-1}].
+\]</span>
+<p>For <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, let <span class="math" data-tex="\(\mathsf D_X\)">\(\mathsf D_X\)</span> have objects <span class="math" data-tex="\(s:X\to X_s\)">\(s:X\to X_s\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>, and arrows <span class="math" data-tex="\(h:s\to t\)">\(h:s\to t\)</span> given by <span class="math" data-tex="\(h:X_s\to X_t\)">\(h:X_s\to X_t\)</span> with <span class="math" data-tex="\(hs=t\)">\(hs=t\)</span>. The arrow <span class="math" data-tex="\(h\)">\(h\)</span> need not belong to <span class="math" data-tex="\(S\)">\(S\)</span>. The calculus supplies filteredness of <span class="math" data-tex="\(\mathsf D_X\)">\(\mathsf D_X\)</span> and the natural formula</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf L}(QT,QX)
+&amp;{}\\
+\simeq\operatorname{colim}_{s\in\mathsf D_X}
+\operatorname{Hom}_{\mathsf C}(T,X_s).&amp;{}
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\mathsf L}(QT,QX)
+&amp;{}\\
+\simeq\operatorname{colim}_{s\in\mathsf D_X}
+\operatorname{Hom}_{\mathsf C}(T,X_s).&amp;{}
+\end{aligned}
+\tag{1.1}
+\]</span>
+<p>Assume each <span class="math" data-tex="\(\mathsf D_X\)">\(\mathsf D_X\)</span> is cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Colimits over it mean colimits over a small full cofinal subcategory, with the canonical identifications between choices. Formula (1.1) makes the localized Hom sets <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_X(T)&amp;=\operatorname{Hom}_{\mathsf L}(QT,QX),\\
+A_X&amp;\simeq\operatorname{colim}_{s\in\mathsf D_X}h_{X_s}.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+A_X(T)&amp;=\operatorname{Hom}_{\mathsf L}(QT,QX),\\
+A_X&amp;\simeq\operatorname{colim}_{s\in\mathsf D_X}h_{X_s}.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(A_X\)">\(A_X\)</span> is an ind-object of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Postcomposition in <span class="math" data-tex="\(\mathsf L\)">\(\mathsf L\)</span> gives a functor</p>
+<span class="math math-display" data-tex="\[
+\alpha:\mathsf L\longrightarrow\operatorname{Ind}(\mathsf C).
+\]">\[
+\alpha:\mathsf L\longrightarrow\operatorname{Ind}(\mathsf C).
+\]</span>
+<p><strong>Theorem 1.1.</strong> The functor <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is fully faithful. There is a canonical natural transformation <span class="math" data-tex="\(\eta:\iota_{\mathsf C}\to\alpha Q\)">\(\eta:\iota_{\mathsf C}\to\alpha Q\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(X,Y\in\mathsf C\)">\(X,Y\in\mathsf C\)</span>, the presentation (1.2), Yoneda, and the Hom formula give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(A_X,A_Y)
+&amp;{}\\
+\simeq\lim_{s\in\mathsf D_X^{\mathrm{op}}}
+\operatorname{Hom}_{\mathsf L}(QX_s,QY).&amp;{}
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(A_X,A_Y)
+&amp;{}\\
+\simeq\lim_{s\in\mathsf D_X^{\mathrm{op}}}
+\operatorname{Hom}_{\mathsf L}(QX_s,QY).&amp;{}
+\end{aligned}
+\tag{1.3}
+\]</span>
+<p>The compatible family associated to <span class="math" data-tex="\(f:QX\to QY\)">\(f:QX\to QY\)</span> is <span class="math" data-tex="\((fQ(s)^{-1})_s\)">\((fQ(s)^{-1})_s\)</span>. Conversely, a compatible family <span class="math" data-tex="\((f_s)_s\)">\((f_s)_s\)</span> has <span class="math" data-tex="\(f_sQ(s)=f_{1_X}\)">\(f_sQ(s)=f_{1_X}\)</span>, since <span class="math" data-tex="\(s\)">\(s\)</span> itself is an arrow from <span class="math" data-tex="\(1_X\)">\(1_X\)</span> to <span class="math" data-tex="\(s\)">\(s\)</span> in <span class="math" data-tex="\(\mathsf D_X\)">\(\mathsf D_X\)</span>. Hence <span class="math" data-tex="\(f_s=f_{1_X}Q(s)^{-1}\)">\(f_s=f_{1_X}Q(s)^{-1}\)</span>. These operations are inverse. One can compute the limit over the full <span class="math" data-tex="\(\mathsf D_X\)">\(\mathsf D_X\)</span>, because its diagram is canonically isomorphic to the constant diagram with value <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf L}(QX,QY)\)">\(\operatorname{Hom}_{\mathsf L}(QX,QY)\)</span>; equivalently the same calculation on a small cofinal subcategory gives (1.3). Filteredness ensures the nonempty connected index needed for that constant limit.</p>
+<p>This bijection is precisely the map induced by postcomposition on the restricted presheaves: its component on <span class="math" data-tex="\(h_{X_s}\)">\(h_{X_s}\)</span> sends the represented localized arrow to its composite with <span class="math" data-tex="\(f\)">\(f\)</span>. It therefore preserves identities and composition. All objects of the fraction model <span class="math" data-tex="\(\mathsf L\)">\(\mathsf L\)</span> are <span class="math" data-tex="\(QX\)">\(QX\)</span>, so this proves full faithfulness.</p>
+<p>Finally, send an ordinary map <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span> to its image under <span class="math" data-tex="\(Q\)">\(Q\)</span>. This defines <span class="math" data-tex="\(\eta_X:h_X\to A_X\)">\(\eta_X:h_X\to A_X\)</span>, naturally in <span class="math" data-tex="\(X\)">\(X\)</span>. It is the structural map of the stage <span class="math" data-tex="\(1_X\)">\(1_X\)</span> in (1.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(\lambda_s:h_{X_s}\to A_X\)">\(\lambda_s:h_{X_s}\to A_X\)</span> for any structural map. The proof also identifies it as</p>
+<span class="math math-display" data-tex="\[
+\lambda_s=\alpha(Q(s))^{-1}\eta_{X_s}.
+\tag{1.4}
+\]">\[
+\lambda_s=\alpha(Q(s))^{-1}\eta_{X_s}.
+\tag{1.4}
+\]</span>
+<p>The embedding into ind-objects need not agree with the constant embedding. For example, take the ordered category <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, with one arrow <span class="math" data-tex="\(n\to m\)">\(n\to m\)</span> when <span class="math" data-tex="\(n\le m\)">\(n\le m\)</span>, and invert every arrow. Common upper bounds verify the square axiom; parallel arrows are already equal. Its localization is terminal. The presheaf <span class="math" data-tex="\(A_n(k)\)">\(A_n(k)\)</span> is a singleton for every <span class="math" data-tex="\(k\)">\(k\)</span>, whereas <span class="math" data-tex="\(h_n(k)\)">\(h_n(k)\)</span> is empty for <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span>. Thus <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span> is not an isomorphism. The formal tail records maps from arbitrarily late test objects.</p>
+<h2 id="2-the-universal-ordinary-colimit">2. The universal ordinary colimit</h2>
+<p>Let <span class="math" data-tex="\(F:\mathsf C\to\mathsf B\)">\(F:\mathsf C\to\mathsf B\)</span>, and first suppose <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> has small filtered colimits. Its filtered extension is <span class="math" data-tex="\(J_F:\operatorname{Ind}(\mathsf C)\to\mathsf B\)">\(J_F:\operatorname{Ind}(\mathsf C)\to\mathsf B\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_SF&amp;=J_F\alpha,\\
+\tau&amp;:F\longrightarrow R_SF\,Q
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+R_SF&amp;=J_F\alpha,\\
+\tau&amp;:F\longrightarrow R_SF\,Q
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>using <span class="math" data-tex="\(J_F\eta\)">\(J_F\eta\)</span> and <span class="math" data-tex="\(J_F\iota\simeq F\)">\(J_F\iota\simeq F\)</span>. At an object its value is</p>
+<span class="math math-display" data-tex="\[
+(R_SF)(QX)\simeq
+\operatorname{colim}_{s\in\mathsf D_X}F(X_s).
+\tag{2.2}
+\]">\[
+(R_SF)(QX)\simeq
+\operatorname{colim}_{s\in\mathsf D_X}F(X_s).
+\tag{2.2}
+\]</span>
+<p>A <em>right localization</em> of <span class="math" data-tex="\(F\)">\(F\)</span> means a pair <span class="math" data-tex="\((R,\tau:F\to RQ)\)">\((R,\tau:F\to RQ)\)</span> for which precomposition with <span class="math" data-tex="\(\tau\)">\(\tau\)</span> gives, for every <span class="math" data-tex="\(G:\mathsf L\to\mathsf B\)">\(G:\mathsf L\to\mathsf B\)</span>, a bijection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(R,G)
+\simeq\operatorname{Nat}(F,GQ).
+\tag{2.3}
+\]">\[
+\operatorname{Nat}(R,G)
+\simeq\operatorname{Nat}(F,GQ).
+\tag{2.3}
+\]</span>
+<p>This terminology refers to the outgoing colimit in (2.2). The pair, if it exists, is unique up to the unique isomorphism respecting its unit.</p>
+<p><strong>Theorem 2.1.</strong> The pair (2.1) is a right localization. The construction is functorial in <span class="math" data-tex="\(F\)">\(F\)</span>, and gives a left adjoint to restriction along <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\beta:F\to GQ\)">\(\beta:F\to GQ\)</span>, the maps</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(X_s)\xrightarrow{\beta_{X_s}}G(QX_s)
+&amp;{}\\
+\xrightarrow{G(Q(s))^{-1}}G(QX)&amp;{}
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+F(X_s)\xrightarrow{\beta_{X_s}}G(QX_s)
+&amp;{}\\
+\xrightarrow{G(Q(s))^{-1}}G(QX)&amp;{}
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>form a cocone. Indeed, if <span class="math" data-tex="\(h:X_s\to X_t\)">\(h:X_s\to X_t\)</span> and <span class="math" data-tex="\(hs=t\)">\(hs=t\)</span>, naturality of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> and <span class="math" data-tex="\(Q(h)Q(s)=Q(t)\)">\(Q(h)Q(s)=Q(t)\)</span> give the cocone equation. Notice that <span class="math" data-tex="\(Q(h)\)">\(Q(h)\)</span> is invertible even if <span class="math" data-tex="\(h\notin S\)">\(h\notin S\)</span>. The colimit gives a map <span class="math" data-tex="\(r_X:(R_SF)(QX)\to G(QX)\)">\(r_X:(R_SF)(QX)\to G(QX)\)</span>.</p>
+<p>To check naturality, take <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> and <span class="math" data-tex="\(s:X\to X_s\)">\(s:X\to X_s\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span>. The square axiom provides <span class="math" data-tex="\(u:Y\to Y_u\)">\(u:Y\to Y_u\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(h:X_s\to Y_u\)">\(h:X_s\to Y_u\)</span> with <span class="math" data-tex="\(hs=uf\)">\(hs=uf\)</span>. Formula (1.4) or direct postcomposition in (1.2) gives</p>
+<span class="math math-display" data-tex="\[
+(R_SF)(Qf)\lambda_s=\lambda_uF(h),
+\tag{2.5}
+\]">\[
+(R_SF)(Qf)\lambda_s=\lambda_uF(h),
+\tag{2.5}
+\]</span>
+<p>where the symbols <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> now denote the realized structural maps. On this stage, (2.4) implies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_Y(R_SF)(Qf)\lambda_s
+&amp;=G(Qu)^{-1}\beta_{Y_u}F(h)\\
+&amp;=G(Qu)^{-1}G(Qh)\beta_{X_s}\\
+&amp;=G(Qf)G(Qs)^{-1}\beta_{X_s}\\
+&amp;=G(Qf)r_X\lambda_s.
+\end{aligned}
+\]">\[
+\begin{aligned}
+r_Y(R_SF)(Qf)\lambda_s
+&amp;=G(Qu)^{-1}\beta_{Y_u}F(h)\\
+&amp;=G(Qu)^{-1}G(Qh)\beta_{X_s}\\
+&amp;=G(Qf)G(Qs)^{-1}\beta_{X_s}\\
+&amp;=G(Qf)r_X\lambda_s.
+\end{aligned}
+\]</span>
+<p>Maps from the stages determine a map from the colimit, proving naturality for every <span class="math" data-tex="\(Qf\)">\(Qf\)</span>. Both functors invert every <span class="math" data-tex="\(Qs\)">\(Qs\)</span>; naturality for such an invertible arrow implies naturality for its inverse. Every localized arrow is a composite <span class="math" data-tex="\(Q(t)^{-1}Q(f)\)">\(Q(t)^{-1}Q(f)\)</span>. Hence <span class="math" data-tex="\(r\)">\(r\)</span> is natural on <span class="math" data-tex="\(\mathsf L\)">\(\mathsf L\)</span>.</p>
+<p>The identity stage in (2.4) says <span class="math" data-tex="\(rQ\circ\tau=\beta\)">\(rQ\circ\tau=\beta\)</span>. Conversely, any transformation with this property is forced on every structural map by the realized form of (1.4):</p>
+<span class="math math-display" data-tex="\[
+r_X\lambda_s=G(Qs)^{-1}\beta_{X_s}.
+\]">\[
+r_X\lambda_s=G(Qs)^{-1}\beta_{X_s}.
+\]</span>
+<p>Thus it is uniquely the transformation just constructed. This proves (2.3). Postcomposition with a transformation of <span class="math" data-tex="\(G\)">\(G\)</span> commutes with (2.4). A transformation <span class="math" data-tex="\(F\to F&#x27;\)">\(F\to F&#x27;\)</span> induces the corresponding maps of colimits, and the same formula checks naturality in <span class="math" data-tex="\(F\)">\(F\)</span>. The bijections are therefore the asserted adjunction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> lacks these colimits, <span class="math" data-tex="\(\operatorname{Ind}(\mathsf B)\)">\(\operatorname{Ind}(\mathsf B)\)</span> still has them. There is always a formal right localization</p>
+<span class="math math-display" data-tex="\[
+\mathbb R_SF=\operatorname{Ind}(F)\alpha:
+\mathsf L\longrightarrow\operatorname{Ind}(\mathsf B),
+\tag{2.6}
+\]">\[
+\mathbb R_SF=\operatorname{Ind}(F)\alpha:
+\mathsf L\longrightarrow\operatorname{Ind}(\mathsf B),
+\tag{2.6}
+\]</span>
+<p>with unit <span class="math" data-tex="\(\iota_{\mathsf B}F\to\mathbb R_SF\,Q\)">\(\iota_{\mathsf B}F\to\mathbb R_SF\,Q\)</span>. It is the right localization of <span class="math" data-tex="\(\iota_{\mathsf B}F\)">\(\iota_{\mathsf B}F\)</span>. If ordinary filtered colimits exist in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>, realization gives</p>
+<span class="math math-display" data-tex="\[
+\sigma_{\mathsf B}\mathbb R_SF\simeq R_SF,
+\tag{2.7}
+\]">\[
+\sigma_{\mathsf B}\mathbb R_SF\simeq R_SF,
+\tag{2.7}
+\]</span>
+<p>including the units. This follows from <span class="math" data-tex="\(J_F\simeq\sigma_{\mathsf B}\operatorname{Ind}(F)\)">\(J_F\simeq\sigma_{\mathsf B}\operatorname{Ind}(F)\)</span>: both sides are the filtered extension with the specified restriction <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="3-representation-is-the-test-for-universality">3. Representation is the test for universality</h2>
+<p>Call <span class="math" data-tex="\(F\)">\(F\)</span> <em>universally right localizable</em> if it has a right localization and, for every functor <span class="math" data-tex="\(K:\mathsf B\to\mathsf B&#x27;\)">\(K:\mathsf B\to\mathsf B&#x27;\)</span>, the pair <span class="math" data-tex="\((K R_SF,K\tau)\)">\((K R_SF,K\tau)\)</span> is a right localization of <span class="math" data-tex="\(KF\)">\(KF\)</span>. Equivalently, the canonical comparison <span class="math" data-tex="\(R_S(KF)\to K R_SF\)">\(R_S(KF)\to K R_SF\)</span> exists and is an isomorphism respecting the units. No colimit preservation is imposed on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>We call <span class="math" data-tex="\(F\)">\(F\)</span> <em>right localizable at <span class="math" data-tex="\(X\)">\(X\)</span></em> when its formal value <span class="math" data-tex="\(\mathbb R_SF(QX)\)">\(\mathbb R_SF(QX)\)</span> is constant, or equivalently when the presheaf colimit of <span class="math" data-tex="\(h_{F(X_s)}\)">\(h_{F(X_s)}\)</span> represents an object of <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> The following conditions are equivalent:</p>
+<ol>
+<li>For every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, the formal object <span class="math" data-tex="\(\mathbb R_SF(QX)\)">\(\mathbb R_SF(QX)\)</span> is isomorphic to a constant <span class="math" data-tex="\(\iota_{\mathsf B}B_X\)">\(\iota_{\mathsf B}B_X\)</span>.</li>
+<li>The functor <span class="math" data-tex="\(F\)">\(F\)</span> is universally right localizable.</li>
+</ol>
+<p>At a single object, representability of its formal value is preserved by every functor <span class="math" data-tex="\(K\)">\(K\)</span>, even when the values at other objects are not representable.</p>
+<p><strong>Proof.</strong> Suppose (1). Since <span class="math" data-tex="\(\iota_{\mathsf B}\)">\(\iota_{\mathsf B}\)</span> is fully faithful, the representing objects and the transported maps define a functor <span class="math" data-tex="\(H:\mathsf L\to\mathsf B\)">\(H:\mathsf L\to\mathsf B\)</span> and an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\iota_{\mathsf B}H\simeq\mathbb R_SF.
+\tag{3.1}
+\]">\[
+\iota_{\mathsf B}H\simeq\mathbb R_SF.
+\tag{3.1}
+\]</span>
+<p>The choices can be made in the ambient universe; changing them yields the unique natural isomorphism respecting (3.1). The formal unit transports, by full faithfulness, to <span class="math" data-tex="\(\tau:F\to HQ\)">\(\tau:F\to HQ\)</span>. For every <span class="math" data-tex="\(G:\mathsf L\to\mathsf B\)">\(G:\mathsf L\to\mathsf B\)</span>, Theorem 2.1 in the ind-category gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Nat}(H,G)
+&amp;\simeq\operatorname{Nat}(\iota H,\iota G)\\
+&amp;\simeq\operatorname{Nat}(\mathbb R_SF,\iota G)\\
+&amp;\simeq\operatorname{Nat}(\iota F,\iota GQ)\\
+&amp;\simeq\operatorname{Nat}(F,GQ).
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+\operatorname{Nat}(H,G)
+&amp;\simeq\operatorname{Nat}(\iota H,\iota G)\\
+&amp;\simeq\operatorname{Nat}(\mathbb R_SF,\iota G)\\
+&amp;\simeq\operatorname{Nat}(\iota F,\iota GQ)\\
+&amp;\simeq\operatorname{Nat}(F,GQ).
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>The composite is induced by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> is a right localization.</p>
+<p>For arbitrary <span class="math" data-tex="\(K:\mathsf B\to\mathsf B&#x27;\)">\(K:\mathsf B\to\mathsf B&#x27;\)</span>, compatibility of ind-extension with composition and constants gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb R_S(KF)
+&amp;\simeq\operatorname{Ind}(K)\mathbb R_SF\\
+&amp;\simeq\operatorname{Ind}(K)\iota_{\mathsf B}H\\
+&amp;\simeq\iota_{\mathsf B&#x27;}KH.
+\end{aligned}
+\tag{3.3}
+\]">\[
+\begin{aligned}
+\mathbb R_S(KF)
+&amp;\simeq\operatorname{Ind}(K)\mathbb R_SF\\
+&amp;\simeq\operatorname{Ind}(K)\iota_{\mathsf B}H\\
+&amp;\simeq\iota_{\mathsf B&#x27;}KH.
+\end{aligned}
+\tag{3.3}
+\]</span>
+<p>These identifications send the formal unit to the image of <span class="math" data-tex="\(K\tau\)">\(K\tau\)</span>, since each comes from the specified identifications on constants. Applying (3.2) with <span class="math" data-tex="\(\mathsf B&#x27;\)">\(\mathsf B&#x27;\)</span> shows that <span class="math" data-tex="\((KH,K\tau)\)">\((KH,K\tau)\)</span> is a right localization of <span class="math" data-tex="\(KF\)">\(KF\)</span>. This proves (2).</p>
+<p>Conversely, apply universal right localizability to <span class="math" data-tex="\(K=\iota_{\mathsf B}\)">\(K=\iota_{\mathsf B}\)</span>. The formal localization from (2.6) and the resulting pair <span class="math" data-tex="\((\iota_{\mathsf B}R_SF,\iota_{\mathsf B}\tau)\)">\((\iota_{\mathsf B}R_SF,\iota_{\mathsf B}\tau)\)</span> have the same universal property. Its uniqueness gives their natural isomorphism. Every formal value is therefore constant, proving (1).</p>
+<p>For the last assertion, (3.3)'s first isomorphism holds without representability assumptions. If its value at <span class="math" data-tex="\(QX\)">\(QX\)</span> is <span class="math" data-tex="\(\iota B_X\)">\(\iota B_X\)</span>, applying <span class="math" data-tex="\(\operatorname{Ind}(K)\)">\(\operatorname{Ind}(K)\)</span> gives <span class="math" data-tex="\(\iota K(B_X)\)">\(\iota K(B_X)\)</span>. This proves the assertion at that object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An ordinary colimit can exist while the corresponding formal value is nonconstant. Equation (2.7) then computes a right localization, but does not make it universally right localizable. Exercise 4 exhibits the distinction and an explicit functor that detects it.</p>
+<h2 id="4-two-variables-use-two-sets-of-denominators">4. Two variables use two sets of denominators</h2>
+<p>Let <span class="math" data-tex="\((\mathsf C&#x27;,S&#x27;)\)">\((\mathsf C&#x27;,S&#x27;)\)</span> satisfy the same hypotheses. The system <span class="math" data-tex="\(S\times S&#x27;\)">\(S\times S&#x27;\)</span> in <span class="math" data-tex="\(\mathsf C\times\mathsf C&#x27;\)">\(\mathsf C\times\mathsf C&#x27;\)</span> satisfies the outgoing axioms: construct each required square or equalizing arrow in its own coordinate. Its denominator category at <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> is <span class="math" data-tex="\(\mathsf D_X\times\mathsf D&#x27;_Y\)">\(\mathsf D_X\times\mathsf D&#x27;_Y\)</span>, filtered and cofinally small. The canonical comparison</p>
+<span class="math math-display" data-tex="\[
+(\mathsf C\times\mathsf C&#x27;)[(S\times S&#x27;)^{-1}]
+\longrightarrow\mathsf L\times\mathsf L&#x27;
+\tag{4.1}
+\]">\[
+(\mathsf C\times\mathsf C&#x27;)[(S\times S&#x27;)^{-1}]
+\longrightarrow\mathsf L\times\mathsf L&#x27;
+\tag{4.1}
+\]</span>
+<p>is an equivalence. It is surjective on the objects of the fraction models. For Hom sets, (1.1) gives a colimit over the product of the two independent indices of the product of their Hom sets. Choosing representatives separately, and moving equal representatives later in each coordinate, identifies this with the product of the two colimits. These bijections are induced by the two projections, so preserve identities and composition. They prove full faithfulness and hence (4.1).</p>
+<p>For a bifunctor <span class="math" data-tex="\(F:\mathsf C\times\mathsf C&#x27;\to\mathsf B\)">\(F:\mathsf C\times\mathsf C&#x27;\to\mathsf B\)</span>, its formal localization consequently has value</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb R_{S,S&#x27;}F(QX,Q&#x27;Y)
+&amp;{}\\
+\simeq\operatorname{colim}_{(s,t)\in\mathsf D_X\times\mathsf D&#x27;_Y}
+\iota_{\mathsf B}F(X_s,Y_t).&amp;{}
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+\mathbb R_{S,S&#x27;}F(QX,Q&#x27;Y)
+&amp;{}\\
+\simeq\operatorname{colim}_{(s,t)\in\mathsf D_X\times\mathsf D&#x27;_Y}
+\iota_{\mathsf B}F(X_s,Y_t).&amp;{}
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>Apply Theorems 2.1 and 3.1 to the product category. Ordinary filtered colimits compute its right localization when they exist; representation of every formal value is equivalent to universal right localizability. Formula (4.2) uses independent denominators in the two variables, without identifying their indices.</p>
+<h2 id="5-reverse-the-localization-and-compare-its-two-values">5. Reverse the localization and compare its two values</h2>
+<p>The dual universal property defines a <strong>left localization</strong>: a functor <span class="math" data-tex="\(L_SF:\mathsf L\to\mathsf B\)">\(L_SF:\mathsf L\to\mathsf B\)</span>, with a counit <span class="math" data-tex="\(\sigma:L_SFQ\to F\)">\(\sigma:L_SFQ\to F\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Nat}(G,L_SF)
+\simeq\operatorname{Nat}(GQ,F)
+\tag{5.1}
+\]">\[
+\operatorname{Nat}(G,L_SF)
+\simeq\operatorname{Nat}(GQ,F)
+\tag{5.1}
+\]</span>
+<p>by <span class="math" data-tex="\(u\mapsto\sigma\circ uQ\)">\(u\mapsto\sigma\circ uQ\)</span>, for every <span class="math" data-tex="\(G:\mathsf L\to\mathsf B\)">\(G:\mathsf L\to\mathsf B\)</span>. It is universally left localizable when <span class="math" data-tex="\((KL_SF,K\sigma)\)">\((KL_SF,K\sigma)\)</span> has this property for every further <span class="math" data-tex="\(K\)">\(K\)</span>. Apply the right-localization statements to <span class="math" data-tex="\(F^{\mathrm{op}}\)">\(F^{\mathrm{op}}\)</span>, reversing source and target categories. In that application the incoming denominator calculus replaces our outgoing calculus. Its formal values are pro-objects; cofinally small incoming denominator categories and the appropriate small cofiltered limits yield ordinary left-localized values. Thus the definition and the dual criterion retain their actual variance and size conditions.</p>
+<p>When both localizations exist, their units and counits produce a canonical comparison</p>
+<span class="math math-display" data-tex="\[
+L_SF\longrightarrow R_SF.
+\tag{5.2}
+\]">\[
+L_SF\longrightarrow R_SF.
+\tag{5.2}
+\]</span>
+<p>Indeed, compose <span class="math" data-tex="\(L_SFQ\xrightarrow{\sigma}F\xrightarrow{\tau}R_SFQ\)">\(L_SFQ\xrightarrow{\sigma}F\xrightarrow{\tau}R_SFQ\)</span>. Both endpoint functors are restricted from <span class="math" data-tex="\(\mathsf L\)">\(\mathsf L\)</span>. Full faithfulness of restriction along <span class="math" data-tex="\(Q\)">\(Q\)</span> supplies a unique transformation (5.2) whose restriction is this composite. Its construction is natural in maps between functors whenever the corresponding localization maps are formed using their universal properties.</p>
+<p>This comparison can fail to be invertible. Take the category with two objects <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span> and invert every arrow. It admits both calculi: an outgoing square uses a common upper bound, an incoming square a common lower bound, and parallel arrows are unique. Its localization is terminal. A functor to <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span> is simply a function <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span>. A transformation from this diagram to a constant set <span class="math" data-tex="\(Z\)">\(Z\)</span> is determined by its component <span class="math" data-tex="\(B\to Z\)">\(B\to Z\)</span>; its other component is the composite with <span class="math" data-tex="\(u\)">\(u\)</span>. Hence the right localization is <span class="math" data-tex="\(B\)">\(B\)</span>, with unit having components <span class="math" data-tex="\(u,1_B\)">\(u,1_B\)</span>. A transformation from a constant <span class="math" data-tex="\(Z\)">\(Z\)</span> into the diagram is determined by <span class="math" data-tex="\(Z\to A\)">\(Z\to A\)</span>, so the left localization is <span class="math" data-tex="\(A\)">\(A\)</span>, with counit <span class="math" data-tex="\(1_A,u\)">\(1_A,u\)</span>. These descriptions use only composition, so both are universal after every further functor. The canonical comparison (5.2) is exactly <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span>, and an arbitrary function need not be a bijection.</p>
+<p>For localization through replacement objects without a cofinal-smallness hypothesis, see <a href="descent-through-replacement-objects.html">Descent through replacement objects</a>. Saturation and the ordinary comma interfaces are developed in <a href="one-sided-fractions-and-saturation.html">One-sided fractions and saturation</a>.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 1 (grade 1: a functor that already descends).</strong> Suppose <span class="math" data-tex="\(F(s)\)">\(F(s)\)</span> is invertible for every <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. Show that <span class="math" data-tex="\(\mathbb R_SF(QX)\simeq\iota F(X)\)">\(\mathbb R_SF(QX)\simeq\iota F(X)\)</span> and identify <span class="math" data-tex="\(R_SF\)">\(R_SF\)</span>.</p>
+<p><strong>Solution.</strong> At the stage <span class="math" data-tex="\(s:X\to X_s\)">\(s:X\to X_s\)</span>, use <span class="math" data-tex="\(F(s)^{-1}:F(X_s)\to F(X)\)">\(F(s)^{-1}:F(X_s)\to F(X)\)</span>. If <span class="math" data-tex="\(hs=t\)">\(hs=t\)</span>, then <span class="math" data-tex="\(F(t)^{-1}F(h)=F(s)^{-1}\)">\(F(t)^{-1}F(h)=F(s)^{-1}\)</span>, so these isomorphisms identify the stage diagram with the constant diagram at <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>. Its pointwise presheaf colimit is <span class="math" data-tex="\(h_{F(X)}\)">\(h_{F(X)}\)</span>: the index is nonempty and connected. Thus its formal colimit is <span class="math" data-tex="\(\iota F(X)\)">\(\iota F(X)\)</span>. Theorem 3.1 supplies a universal right localization. It is the ordinary descended functor <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> satisfying <span class="math" data-tex="\(\overline FQ\simeq F\)">\(\overline FQ\simeq F\)</span>; the unit is this identification. Its universal property follows also from full faithfulness of restriction for the localization. No filtered-colimit hypothesis on <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> is needed.</p>
+<p><strong>Exercise 2 (grade 2: a final comparison stage).</strong> Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be the ordered diamond <span class="math" data-tex="\(0&lt;a,b&lt;1\)">\(0&lt;a,b&lt;1\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> incomparable, and invert every arrow. For any <span class="math" data-tex="\(F:\mathsf C\to\mathsf B\)">\(F:\mathsf C\to\mathsf B\)</span>, compute its formal and universal right localization.</p>
+<p><strong>Solution.</strong> Every two objects have the common upper bound <span class="math" data-tex="\(1\)">\(1\)</span>; this verifies the square axiom. The cancellation axiom holds because parallel arrows in a poset coincide. Inverting every arrow yields a terminal category: the arrows to <span class="math" data-tex="\(1\)">\(1\)</span> identify all objects, and each localized Hom set is a singleton by (1.1). For each <span class="math" data-tex="\(X\)">\(X\)</span>, the denominator category is the interval of objects above <span class="math" data-tex="\(X\)">\(X\)</span>, with terminal object <span class="math" data-tex="\(X\to1\)">\(X\to1\)</span>. Its stage diagram has formal colimit <span class="math" data-tex="\(\iota F(1)\)">\(\iota F(1)\)</span>. Theorem 3.1 therefore gives the constant functor on the terminal localization with value <span class="math" data-tex="\(F(1)\)">\(F(1)\)</span>, and unit the maps <span class="math" data-tex="\(F(X\to1)\)">\(F(X\to1)\)</span>. Under an arbitrary <span class="math" data-tex="\(K\)">\(K\)</span>, the same terminal stage gives <span class="math" data-tex="\(K(F(1))\)">\(K(F(1))\)</span>, including its unit. The two incomparable middle values impose no extra choice of a colimit in <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span>.</p>
+<p><strong>Exercise 3 (grade 3: an idempotent denominator).</strong> Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> have one object <span class="math" data-tex="\(c\)">\(c\)</span> and endomorphisms <span class="math" data-tex="\(1,e\)">\(1,e\)</span>, where <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, and set <span class="math" data-tex="\(S=\{1,e\}\)">\(S=\{1,e\}\)</span>. A functor <span class="math" data-tex="\(F:\mathsf C\to\mathsf{Set}\)">\(F:\mathsf C\to\mathsf{Set}\)</span> is a set <span class="math" data-tex="\(X\)">\(X\)</span> with an idempotent map <span class="math" data-tex="\(E\)">\(E\)</span>. Compute its universal right localization, including when <span class="math" data-tex="\(E\)">\(E\)</span> is not bijective.</p>
+<p><strong>Solution.</strong> All arrows commute and multiplication by <span class="math" data-tex="\(e\)">\(e\)</span> makes them equal to <span class="math" data-tex="\(e\)">\(e\)</span>. In any required square choose both new arrows to be <span class="math" data-tex="\(e\)">\(e\)</span>; in cancellation choose the further denominator <span class="math" data-tex="\(e\)">\(e\)</span>. Thus the outgoing axioms hold. The localization is terminal, since an invertible idempotent equals the identity. The denominator category has objects <span class="math" data-tex="\(1,e\)">\(1,e\)</span>, an arrow <span class="math" data-tex="\(1\to e\)">\(1\to e\)</span>, and the two endomorphisms of <span class="math" data-tex="\(e\)">\(e\)</span>; its corresponding values are two copies of <span class="math" data-tex="\(X\)">\(X\)</span>, with the nonidentity maps given by <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Put <span class="math" data-tex="\(Z=\operatorname{im}E\)">\(Z=\operatorname{im}E\)</span>. For every test set <span class="math" data-tex="\(T\)">\(T\)</span>, the colimit of the stage sets of maps <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span> identifies a map <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(Ef\)">\(Ef\)</span>. At the <span class="math" data-tex="\(e\)">\(e\)</span>-stage every map has the same class as <span class="math" data-tex="\(Ef\)">\(Ef\)</span>; maps fixed by <span class="math" data-tex="\(E\)">\(E\)</span> are exactly the maps <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>. Two such maps have equal classes only if they coincide, since all transition maps fix them. Hence the formal colimit is naturally <span class="math" data-tex="\(h_Z\)">\(h_Z\)</span>. Theorem 3.1 gives value <span class="math" data-tex="\(Z\)">\(Z\)</span> and unit <span class="math" data-tex="\(p:X\to Z\)">\(p:X\to Z\)</span>, <span class="math" data-tex="\(p(x)=E(x)\)">\(p(x)=E(x)\)</span>. Although <span class="math" data-tex="\(E\)">\(E\)</span> need not be invertible, its formal localization is representable. For any further functor <span class="math" data-tex="\(K\)">\(K\)</span>, the maps <span class="math" data-tex="\(p\)">\(p\)</span> and the inclusion <span class="math" data-tex="\(i:Z\to X\)">\(i:Z\to X\)</span> retain the identities <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>, <span class="math" data-tex="\(ip=E\)">\(ip=E\)</span> after applying <span class="math" data-tex="\(K\)">\(K\)</span>. The universal value is <span class="math" data-tex="\(KZ\)">\(KZ\)</span>, consistently with the theorem.</p>
+<p><strong>Exercise 4 (grade 4: a colimit that fails universality).</strong> Take <span class="math" data-tex="\(\mathsf C=\mathbb N\)">\(\mathsf C=\mathbb N\)</span>, invert every arrow, and let <span class="math" data-tex="\(F(n)=\{0,\ldots,n\}\)">\(F(n)=\{0,\ldots,n\}\)</span> with inclusion maps, valued in sets. Compute <span class="math" data-tex="\(R_SF\)">\(R_SF\)</span>. Show that it is not universally right localizable, both by its formal value and by an explicit further functor.</p>
+<p><strong>Solution.</strong> The localization is terminal as in Section 1. Each denominator category is a tail of <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, so (2.2) gives the ordinary value <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. The formal value <span class="math" data-tex="\(A\)">\(A\)</span>, tested on a set <span class="math" data-tex="\(T\)">\(T\)</span>, consists of maps <span class="math" data-tex="\(T\to\mathbb N\)">\(T\to\mathbb N\)</span> whose image is contained in one finite initial segment. These are exactly the maps with finite image. The natural map <span class="math" data-tex="\(A\to h_{\mathbb N}\)">\(A\to h_{\mathbb N}\)</span> is a bijection at a singleton, but misses the identity at the test set <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> were representable by <span class="math" data-tex="\(D\)">\(D\)</span>, this natural map would be induced by a map <span class="math" data-tex="\(D\to\mathbb N\)">\(D\to\mathbb N\)</span>; its singleton component would make that map bijective, forcing all components to be bijective. This contradiction proves nonrepresentability.</p>
+<p>More concretely, take <span class="math" data-tex="\(K(T)=\operatorname{Hom}_{\mathsf{Set}}(\mathbb N,T)\)">\(K(T)=\operatorname{Hom}_{\mathsf{Set}}(\mathbb N,T)\)</span>. The right localization of <span class="math" data-tex="\(KF\)">\(KF\)</span> exists, since sets have filtered colimits. Its value is the union of the sets of functions into the finite initial segments: precisely the functions <span class="math" data-tex="\(\mathbb N\to\mathbb N\)">\(\mathbb N\to\mathbb N\)</span> with finite image. The comparison to <span class="math" data-tex="\(K(R_SF)=\mathbb N^{\mathbb N}\)">\(K(R_SF)=\mathbb N^{\mathbb N}\)</span> is the inclusion. The identity function is missing, so the comparison is not an isomorphism. This witnesses failure of universality without relying only on an abstract criterion.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/04VB">Localization in categories</a>, especially the outgoing fraction construction, Remark 4.27.7 and Lemma 4.27.8. These results are used by reference; their text is not reproduced.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.7 and Chapter 3, for ind-objects and the localization of categories and functors.</li>
+</ul>
+</main></body></html>

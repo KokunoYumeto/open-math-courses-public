@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fundamental groups of proper schemes and the homotopy exact sequence · Descent and the étale fundamental group</title>
+<meta name="description" content="A lesson of the course Descent and the étale fundamental group. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-DFG/proper-fundamental-groups.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Descent and the étale fundamental group</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 7</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="fundamental-groups-of-proper-schemes-and-the-homotopy-exact-sequence">Fundamental groups of proper schemes and the homotopy exact sequence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Finite étale covers ignore nilpotent structure and purely inseparable identifications. Properness gives a second rigidity: a cover of a special fibre over a henselian local base extends uniquely, and extending an algebraically closed ground field adds no covers of a proper scheme. We import finite-cover invariance under thickenings, prove its extension to universal homeomorphisms and the properness statements at their full stated generality, then use the finite étale part of Stein factorization to prove the homotopy exact sequence.</p>
+<p>Connected schemes and connected fibres are nonempty throughout. Fibre functors, continuous group maps and their conjugacy conventions are those of <a href="etale-fundamental-group.html"><em>The étale fundamental group</em></a>. The sequence for a proper family will be exact in the middle and surjective on the right; it will not assert injectivity of its left arrow.</p>
+<h2 id="1-topological-invariance">1. Topological invariance</h2>
+<p>A <strong>thickening</strong> is a closed immersion <span class="math" data-tex="\(i:Z\hookrightarrow X\)">\(i:Z\hookrightarrow X\)</span> inducing a homeomorphism on underlying spaces. On affines its defining ideal is contained in the nilradical. It need not have a globally bounded nilpotence exponent.</p>
+<p>We import finite étale invariance, including finiteness of every lift and all morphisms, from <a href="../AG-FSE/infinitesimal-lifting-and-invariance-under-thickenings.html#6-keeping-the-lift-finite"><em>Infinitesimal lifting and invariance under thickenings</em>, Theorem 6.2</a>. Its proof applies to every thickening defined by a nil ideal, without a uniform nilpotence bound. We record the equivalence and derive its fundamental-group consequence here.</p>
+<p><strong>Proposition 1.1.</strong> Restriction gives
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(X)\simeq\operatorname{F\acute Et}(Z).
+\tag{1.1}
+\]">\[
+\operatorname{F\acute Et}(X)\simeq\operatorname{F\acute Et}(Z).
+\tag{1.1}
+\]</span>
+In particular <span class="math" data-tex="\(\pi_1(X_{\mathrm{red}})\to\pi_1(X)\)">\(\pi_1(X_{\mathrm{red}})\to\pi_1(X)\)</span> is an isomorphism whenever <span class="math" data-tex="\(X\)">\(X\)</span> is connected. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-thickening">Stacks, Tag 0BQB</a></p>
+<p><em>Proof of the fundamental-group consequence.</em> The categorical equivalence (1.1) is the exact prerequisite import just cited. The geometric fibres are unchanged by a thickening. Their canonical identification makes an equivalence of these categories identify their automorphism groups as topological groups, by <a href="galois-categories.html"><em>Galois categories</em></a>, Theorem 4.1. The reduction immersion is a thickening even in the non-Noetherian case, which gives the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>universal homeomorphism</strong> is a morphism that becomes a homeomorphism after every base change. Equivalently it is integral, surjective and universally injective <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-universal-homeomorphism">Stacks, Tag 04DF</a>. Universal injectivity is also called being radicial; it includes purely inseparable extensions of residue fields.</p>
+<p><strong>Theorem 1.2.</strong> For every universal homeomorphism <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, base change gives an equivalence
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(S)\simeq\operatorname{F\acute Et}(X).
+\tag{1.2}
+\]">\[
+\operatorname{F\acute Et}(S)\simeq\operatorname{F\acute Et}(X).
+\tag{1.2}
+\]</span>
+For connected schemes it induces an isomorphism of fundamental groups. No finite-type, separation or quasi-compactness hypothesis on <span class="math" data-tex="\(S\)">\(S\)</span> is imposed. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-proposition-universal-homeomorphism">Stacks, Tag 0BQN</a></p>
+<p><em>Proof.</em> Because <span class="math" data-tex="\(f\)">\(f\)</span> is integral, it is separated. Its diagonal
+<span class="math" data-tex="\(\Delta:X\to X\times_SX\)">\(\Delta:X\to X\times_SX\)</span> is a closed immersion, and universal injectivity makes it surjective <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-universally-injective">Stacks, Tag 01S4</a>. It is a thickening. The analogous diagonal <span class="math" data-tex="\(X\to X\times_SX\times_SX\)">\(X\to X\times_SX\times_SX\)</span> is a thickening too.</p>
+<p>Let <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> be finite étale. Its two pullbacks to <span class="math" data-tex="\(X\times_SX\)">\(X\times_SX\)</span> restrict along <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to the same object <span class="math" data-tex="\(U\)">\(U\)</span>. Proposition 1.1 therefore gives a unique isomorphism between these pullbacks whose restriction is the identity. On the triple product its two compositions and its third pullback agree on the triple diagonal. Full faithfulness in Proposition 1.1 makes them equal everywhere. Thus this isomorphism is a descent datum.</p>
+<p>Effective integral descent in <a href="AG-DFG-03.html"><em>Descending properties of schemes and morphisms</em></a>, Theorem 6.4, applies to the integral surjection <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>. The object <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> is quasi-compact and separated étale, so the datum gives a quasi-compact separated étale <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span>, with <span class="math" data-tex="\(U\simeq X\times_SV\)">\(U\simeq X\times_SV\)</span>. We check finiteness rather than presume that arbitrary integral descent preserves it.</p>
+<p>The composite <span class="math" data-tex="\(U\to S\)">\(U\to S\)</span> is integral, as a composite of the finite map <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span> and integral <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>. The map <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> is the base change of <span class="math" data-tex="\(X\to S\)">\(X\to S\)</span>, so is integral and universally surjective. For any <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span> and closed subset <span class="math" data-tex="\(C\subset V_T\)">\(C\subset V_T\)</span>, its inverse image in <span class="math" data-tex="\(U_T\)">\(U_T\)</span> is closed, and its image in <span class="math" data-tex="\(T\)">\(T\)</span> is closed because <span class="math" data-tex="\(U_T\to T\)">\(U_T\to T\)</span> is integral. Surjectivity makes this image exactly the image of <span class="math" data-tex="\(C\)">\(C\)</span>. Hence <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span> is universally closed. Since it is quasi-compact, separated and étale, it is proper quasi-finite, and therefore finite. This proves essential surjectivity.</p>
+<p>For full faithfulness take a map between two pulled-back covers over <span class="math" data-tex="\(X\)">\(X\)</span>. On the double product its two compatibility expressions agree on the diagonal. Proposition 1.1 makes them agree on the whole product. Integral full faithfulness from the same descent lesson gives a unique map over <span class="math" data-tex="\(S\)">\(S\)</span>. Finally the homeomorphism preserves connectedness, and a geometric fibre identifies the fibre functors in (1.2). Their automorphism groups therefore agree topologically. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, if <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> is any algebraic purely inseparable extension, then <span class="math" data-tex="\(X_{k&#x27;}\to X\)">\(X_{k&#x27;}\to X\)</span> is a universal homeomorphism. Integrality comes from the scalar extension, and each geometric fibre has a single underlying point with purely inseparable residue extension; these properties persist after base change. Thus (1.2) proves purely inseparable invariance, including infinite extensions. The direct perfection proof in the preceding lesson is a special case.</p>
+<p><strong>Proposition 1.3.</strong> Suppose <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> is a morphism inducing an equivalence of finite étale categories. It preserves connectedness. If both schemes are quasi-compact and quasi-separated, it also gives a homeomorphism <span class="math" data-tex="\(\pi_0(X)\to\pi_0(S)\)">\(\pi_0(X)\to\pi_0(S)\)</span> of their spaces of connected components. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-what-equivalence-gives">Stacks, Tag 0BQA</a></p>
+<p><em>Proof.</em> Open-and-closed subsets are precisely the finite étale subobjects of the terminal object. An equivalence carries the terminal object and its subobjects bijectively. Hence inverse image is an isomorphism of the Boolean algebras of open-and-closed subsets, proving the connectedness assertion.</p>
+<p>For the assertion about components, use the standard spectral-space facts: a quasi-compact quasi-separated scheme is spectral, its components are intersections of their open-and-closed neighbourhoods, and its component space with the quotient topology is compact Hausdorff and totally disconnected [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-lemma-quasi-compact-quasi-separated-spectral">094L</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/topology.html#topology-lemma-connected-component-intersection">005F</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/topology.html#topology-lemma-pi0-profinite">0900</a>]. Every ultrafilter of open-and-closed subsets is realized by a point: its members are closed and have the finite-intersection property, so quasi-compactness makes their intersection nonempty. The intersection is one component, by the stated intersection description. Thus the Boolean-algebra isomorphism identifies the component sets. The map is continuous for their quotient topologies, and is a bijection between compact Hausdorff spaces. It is a homeomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument about subobjects uses their preservation as categorical subobjects, not a presumption that <span class="math" data-tex="\(f\)">\(f\)</span> is surjective.</p>
+<h2 id="2-covers-over-a-complete-local-base">2. Covers over a complete local base</h2>
+<p>Let <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> be a complete Noetherian local ring, and let <span class="math" data-tex="\(X\)">\(X\)</span> be proper over <span class="math" data-tex="\(A\)">\(A\)</span>. Set
+<span class="math math-display" data-tex="\[
+X_n=X\times_A\operatorname{Spec}(A/\mathfrak m^{n+1}),
+\qquad n\ge0.
+\]">\[
+X_n=X\times_A\operatorname{Spec}(A/\mathfrak m^{n+1}),
+\qquad n\ge0.
+\]</span></p>
+<p>We use Grothendieck's existence theorem from the formal-cohomology prerequisite in its coherent form: completion is an equivalence from coherent modules on a proper <span class="math" data-tex="\(A\)">\(A\)</span>-scheme to compatible systems of coherent modules on the <span class="math" data-tex="\(X_n\)">\(X_n\)</span> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-theorem-grothendieck-existence">Stacks, Tag 088E</a>. This includes full faithfulness for maps. Completion commutes with tensor products of coherent modules. We will algebraize finite algebra structures with this theorem, rather than assert that a formal étale cover is automatically an algebraic one.</p>
+<p>A useful properness observation is that every nonempty closed subset of a proper <span class="math" data-tex="\(A\)">\(A\)</span>-scheme meets its closed fibre. Its image in <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> is nonempty and closed, so contains the closed point. In particular an open subset containing the entire closed fibre contains the entire scheme if its complement is closed.</p>
+<p><strong>Theorem 2.1 (complete case).</strong> Restriction gives an equivalence
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(X)\simeq
+\operatorname{F\acute Et}(X_0).
+\tag{2.1}
+\]">\[
+\operatorname{F\acute Et}(X)\simeq
+\operatorname{F\acute Et}(X_0).
+\tag{2.1}
+\]</span>
+It identifies connected components, and for connected <span class="math" data-tex="\(X\)">\(X\)</span> identifies its fundamental group with that of <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-on-proper-over-henselian">Stacks, Tag 0A48, complete case</a></p>
+<p><em>Proof: essential surjectivity.</em> Start with <span class="math" data-tex="\(Y_0\to X_0\)">\(Y_0\to X_0\)</span> finite étale. Proposition 1.1 lifts it successively to finite étale <span class="math" data-tex="\(Y_n\to X_n\)">\(Y_n\to X_n\)</span>. Choose the transition identifications lifting the given ones. Full faithfulness makes their further compatibilities unique. Let
+<span class="math math-display" data-tex="\[
+\mathcal B_n=(Y_n\to X_n)_*\mathcal O_{Y_n}.
+\]">\[
+\mathcal B_n=(Y_n\to X_n)_*\mathcal O_{Y_n}.
+\]</span>
+These are compatible coherent finite locally free algebras. Existence gives a coherent module <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> restricting to each <span class="math" data-tex="\(\mathcal B_n\)">\(\mathcal B_n\)</span>. Full faithfulness algebraizes the compatible multiplication and unit maps. Associativity, commutativity and the unit identities hold because their two sides have equal completions and completion is faithful. Thus <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is a coherent algebra, and <span class="math" data-tex="\(Y=\underline{\operatorname{Spec}}_X\mathcal B\)">\(Y=\underline{\operatorname{Spec}}_X\mathcal B\)</span> is finite over <span class="math" data-tex="\(X\)">\(X\)</span>, with all the required restrictions.</p>
+<p>We verify that <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is locally free. At <span class="math" data-tex="\(x\in X_0\)">\(x\in X_0\)</span>, write <span class="math" data-tex="\(R=\mathcal O_{X,x}\)">\(R=\mathcal O_{X,x}\)</span>, <span class="math" data-tex="\(J=\mathfrak mR\)">\(J=\mathfrak mR\)</span>, and <span class="math" data-tex="\(M=\mathcal B_x\)">\(M=\mathcal B_x\)</span>. The ring <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian local. Each <span class="math" data-tex="\(M/J^{n+1}M\)">\(M/J^{n+1}M\)</span> is free of the same finite rank <span class="math" data-tex="\(r\)">\(r\)</span> over <span class="math" data-tex="\(R/J^{n+1}\)">\(R/J^{n+1}\)</span>. Lift a basis modulo <span class="math" data-tex="\(J\)">\(J\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span> elements of <span class="math" data-tex="\(M\)">\(M\)</span>. Nakayama makes <span class="math" data-tex="\(R^r\to M\)">\(R^r\to M\)</span> surjective, and modulo each <span class="math" data-tex="\(J^{n+1}\)">\(J^{n+1}\)</span> the lifted basis is again a basis by Nakayama. Its kernel is therefore contained in
+<span class="math" data-tex="\(\bigcap_n J^{n+1}R^r=0\)">\(\bigcap_n J^{n+1}R^r=0\)</span>, by Noetherian Krull intersection <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-intersection-powers-ideal-module">Stacks, Tag 00IQ</a>. So <span class="math" data-tex="\(M\)">\(M\)</span> is free. The local-freeness locus of a coherent module on the Noetherian scheme <span class="math" data-tex="\(X\)">\(X\)</span> is open. Its closed complement misses <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, so is empty by properness. This proves local freeness everywhere.</p>
+<p>The finite algebra's module of relative differentials is coherent. Its restriction to <span class="math" data-tex="\(X_0\)">\(X_0\)</span> vanishes, because <span class="math" data-tex="\(Y_0\to X_0\)">\(Y_0\to X_0\)</span> is étale. Nakayama makes it vanish at points of the closed fibre; its closed support then misses that fibre and is empty by the same properness observation, applied to <span class="math" data-tex="\(Y\)">\(Y\)</span>. Hence <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> is finite locally free and unramified, therefore finite étale by the finite étale algebra criterion from the <a href="../AG-FSE/etale-morphisms-and-their-local-structure.html#1-a-definition-and-its-geometric-tests">étale-morphism prerequisite</a>. This proves essential surjectivity.</p>
+<p><em>Proof: full faithfulness by graphs.</em> Let <span class="math" data-tex="\(U,V\)">\(U,V\)</span> be finite étale over <span class="math" data-tex="\(X\)">\(X\)</span>, and let <span class="math" data-tex="\(\alpha_0:U_0\to V_0\)">\(\alpha_0:U_0\to V_0\)</span> be an <span class="math" data-tex="\(X_0\)">\(X_0\)</span>-map. Its graph is an open-and-closed immersion
+<span class="math math-display" data-tex="\[
+U_0\longrightarrow U_0\times_{X_0}V_0,
+\]">\[
+U_0\longrightarrow U_0\times_{X_0}V_0,
+\]</span>
+since both covers are étale and separated. The scheme <span class="math" data-tex="\(P=U\times_XV\)">\(P=U\times_XV\)</span> is proper over <span class="math" data-tex="\(A\)">\(A\)</span>. Essential surjectivity just proved, now applied to <span class="math" data-tex="\(P\)">\(P\)</span>, lifts the graph to a finite étale <span class="math" data-tex="\(W\to P\)">\(W\to P\)</span>. The projection <span class="math" data-tex="\(W\to U\)">\(W\to U\)</span> is finite étale: it is a map between finite étale <span class="math" data-tex="\(X\)">\(X\)</span>-schemes, as proved in the preceding lesson. Its restriction over <span class="math" data-tex="\(U_0\)">\(U_0\)</span> is an isomorphism.</p>
+<p>The locus on <span class="math" data-tex="\(U\)">\(U\)</span> where its locally free degree differs from one is open and closed, and misses <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. It is closed and proper over <span class="math" data-tex="\(A\)">\(A\)</span>, so empty. A finite locally free algebra of rank one is its base algebra, by the unit and Nakayama argument in the preceding lesson. Thus <span class="math" data-tex="\(W\to U\)">\(W\to U\)</span> is an isomorphism. Composing its inverse with <span class="math" data-tex="\(W\to V\)">\(W\to V\)</span> gives a lift of <span class="math" data-tex="\(\alpha_0\)">\(\alpha_0\)</span>.</p>
+<p>For uniqueness, the equalizer of two <span class="math" data-tex="\(X\)">\(X\)</span>-maps <span class="math" data-tex="\(U\to V\)">\(U\to V\)</span> is open and closed in <span class="math" data-tex="\(U\)">\(U\)</span>, by the finite étale diagonal. If they agree on <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, the complementary closed subset misses <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. Properness makes it empty. Thus the lift is unique, proving full faithfulness.</p>
+<p>The component assertion follows from Proposition 1.3, since proper schemes over Noetherian affine bases are quasi-compact and quasi-separated. For connected <span class="math" data-tex="\(X\)">\(X\)</span>, the equivalence and the geometric fibre at a point of <span class="math" data-tex="\(X_0\)">\(X_0\)</span> give the topological group isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two uses of properness are substantive: they let the coherent existence theorem apply and ensure that bad loci cannot escape the closed fibre.</p>
+<h3 id="2-2-the-precisely-stated-henselian-inputs">2.2. The precisely stated henselian inputs</h3>
+<p>A henselian pair <span class="math" data-tex="\((A,I)\)">\((A,I)\)</span> has <span class="math" data-tex="\(I\)">\(I\)</span> in the Jacobson radical and has the coprime monic factorization-lifting property. A henselian local ring is the case <span class="math" data-tex="\(I=\mathfrak m\)">\(I=\mathfrak m\)</span>. We use these three results as named inputs, allowed by the course programme:</p>
+<ul>
+<li>For a henselian pair, finite étale <span class="math" data-tex="\(A\)">\(A\)</span>-algebras and finite étale <span class="math" data-tex="\(A/I\)">\(A/I\)</span>-algebras form equivalent categories <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-gabber">Stacks, Tag 09ZS</a>.</li>
+<li>For any henselian local ring <span class="math" data-tex="\(A\)">\(A\)</span> and any proper <span class="math" data-tex="\(X/A\)">\(X/A\)</span>, restriction to the closed fibre is an equivalence of finite étale categories <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-on-proper-over-henselian">Stacks, Tag 0A48</a>.</li>
+<li>For any henselian pair <span class="math" data-tex="\((A,I)\)">\((A,I)\)</span> and any proper <span class="math" data-tex="\(X/A\)">\(X/A\)</span>, restriction to <span class="math" data-tex="\(X\times_A\operatorname{Spec}(A/I)\)">\(X\times_A\operatorname{Spec}(A/I)\)</span> is such an equivalence <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-on-proper-over-henselian-pair">Stacks, Tag 0GS2</a>.</li>
+</ul>
+<p>No Noetherian or completeness assumption is imposed in these statements. Theorem 2.1 proves the complete Noetherian local case directly. Passing from that case to general henselian bases requires algebraization and approximation; it is not justified merely by completing the ring.</p>
+<p>One consequence used below is that every open-and-closed decomposition of the special fibre of a proper scheme over a henselian local ring lifts uniquely to an open-and-closed decomposition of the whole scheme. This follows from the subobject argument of Proposition 1.3, which did not require quasi-compactness for its Boolean-algebra assertion.</p>
+<h2 id="3-algebraically-closed-extensions-and-properness">3. Algebraically closed extensions and properness</h2>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span> is an extension of algebraically closed fields and <span class="math" data-tex="\(X\)">\(X\)</span> is proper over <span class="math" data-tex="\(k\)">\(k\)</span>, then base change gives
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(X)\simeq
+\operatorname{F\acute Et}(X_{k&#x27;}).
+\tag{3.1}
+\]">\[
+\operatorname{F\acute Et}(X)\simeq
+\operatorname{F\acute Et}(X_{k&#x27;}).
+\tag{3.1}
+\]</span>
+For connected <span class="math" data-tex="\(X\)">\(X\)</span> the induced fundamental-group map is an isomorphism. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-invariant-over-proper">Stacks, Tag 0A49</a></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> as the filtered union of its finitely generated <span class="math" data-tex="\(k\)">\(k\)</span>-subalgebras <span class="math" data-tex="\(R\)">\(R\)</span>. These are domains. A finite étale <span class="math" data-tex="\(Y&#x27;\to X_{k&#x27;}\)">\(Y&#x27;\to X_{k&#x27;}\)</span> descends to a finite étale <span class="math" data-tex="\(Y_R\to X_R\)">\(Y_R\to X_R\)</span> for some such <span class="math" data-tex="\(R\)">\(R\)</span>, by finite-presentation approximation from the preceding lesson, including eventual finiteness and étaleness. The nonzero finite-type algebra <span class="math" data-tex="\(R\)">\(R\)</span> has a <span class="math" data-tex="\(k\)">\(k\)</span>-valued closed point <span class="math" data-tex="\(t\)">\(t\)</span>, by the Nullstellensatz. Set <span class="math" data-tex="\(Y=(Y_R)_t\)">\(Y=(Y_R)_t\)</span>, a finite étale cover of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B=R_{\mathfrak m_t}^h\)">\(B=R_{\mathfrak m_t}^h\)</span>, the henselization of the local ring at <span class="math" data-tex="\(t\)">\(t\)</span>. Both <span class="math" data-tex="\((Y_R)_B\)">\((Y_R)_B\)</span> and <span class="math" data-tex="\(Y_B\)">\(Y_B\)</span> restrict to <span class="math" data-tex="\(Y\)">\(Y\)</span> over the closed fibre <span class="math" data-tex="\(X\)">\(X\)</span>. The henselian proper input in Section 2.2 gives an isomorphism
+<span class="math math-display" data-tex="\[
+(Y_R)_B\simeq Y_B
+\quad\text{over }X_B.
+\tag{3.2}
+\]">\[
+(Y_R)_B\simeq Y_B
+\quad\text{over }X_B.
+\tag{3.2}
+\]</span></p>
+<p>We explain why there is a ring map <span class="math" data-tex="\(B\to k&#x27;\)">\(B\to k&#x27;\)</span> extending <span class="math" data-tex="\(R\subset k&#x27;\)">\(R\subset k&#x27;\)</span>, rather than regard the chosen closed point as an embedding into the generic field. Localizing <span class="math" data-tex="\(R\)">\(R\)</span> first gives an embedding of <span class="math" data-tex="\(R_{\mathfrak m_t}\)">\(R_{\mathfrak m_t}\)</span> into its fraction field <span class="math" data-tex="\(F=\operatorname{Frac}R\subset k&#x27;\)">\(F=\operatorname{Frac}R\subset k&#x27;\)</span>. Henselization is faithfully flat and is a filtered colimit of étale neighbourhood algebras. Its generic fibre <span class="math" data-tex="\(B\otimes_R F\)">\(B\otimes_R F\)</span> is nonzero; choose a prime of it. The residue field at that prime is algebraic separable over <span class="math" data-tex="\(F\)">\(F\)</span>: the neighbourhood algebras become finite étale algebras over <span class="math" data-tex="\(F\)">\(F\)</span>, and their residue fields at the compatible primes are finite separable extensions. Since <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> is algebraically closed, this residue field embeds into <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> extending the given <span class="math" data-tex="\(F\)">\(F\)</span>-embedding. The composite
+<span class="math" data-tex="\(B\to B\otimes_RF\to\kappa(\mathfrak p)\to k&#x27;\)">\(B\to B\otimes_RF\to\kappa(\mathfrak p)\to k&#x27;\)</span>
+is the desired map. Pulling (3.2) back along it identifies <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span> with <span class="math" data-tex="\(Y_{k&#x27;}\)">\(Y_{k&#x27;}\)</span>. This proves essential surjectivity.</p>
+<p>For fullness let <span class="math" data-tex="\(U,V\)">\(U,V\)</span> be finite étale over <span class="math" data-tex="\(X\)">\(X\)</span> and let
+<span class="math" data-tex="\(\alpha&#x27;:U_{k&#x27;}\to V_{k&#x27;}\)">\(\alpha&#x27;:U_{k&#x27;}\to V_{k&#x27;}\)</span> be an <span class="math" data-tex="\(X_{k&#x27;}\)">\(X_{k&#x27;}\)</span>-map. Approximation descends it to a map between <span class="math" data-tex="\(U_R,V_R\)">\(U_R,V_R\)</span> for some <span class="math" data-tex="\(R\)">\(R\)</span>. Choose <span class="math" data-tex="\(t,B\)">\(t,B\)</span> as above. Its fibre <span class="math" data-tex="\(\alpha_t:U\to V\)">\(\alpha_t:U\to V\)</span> is an <span class="math" data-tex="\(X\)">\(X\)</span>-map. Full faithfulness of the henselian proper equivalence makes the descended map over <span class="math" data-tex="\(B\)">\(B\)</span> equal to the base change of <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span>, because these two maps have the same closed fibre. A map <span class="math" data-tex="\(B\to k&#x27;\)">\(B\to k&#x27;\)</span> then proves <span class="math" data-tex="\(\alpha&#x27;=(\alpha_t)_{k&#x27;}\)">\(\alpha&#x27;=(\alpha_t)_{k&#x27;}\)</span>. For faithfulness, equality after a faithfully flat field extension detects equality of morphisms, by <a href="faithfully-flat-descent.html"><em>Faithfully flat descent</em></a>. Thus (3.1) is an equivalence with all maps.</p>
+<p>Connectedness is preserved here; alternatively it follows from the standard geometric connectedness criterion over a separably closed field <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-separably-closed-field-connected-components">Stacks, Tag 0363</a>. The canonical geometric-fibre identification and (3.1) now identify the fundamental groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a useful distinction. For a connected scheme over an algebraically closed field, a field extension preserves connectedness of every connected finite étale cover, by the same geometric connectedness criterion. The surjectivity criterion in <a href="galois-categories.html"><em>Galois categories</em></a> therefore makes the base-change functor fully faithful. Properness in Theorem 3.1 supplies essential surjectivity. The next example shows exactly how new objects can appear without it.</p>
+<h2 id="4-new-covers-of-the-affine-line-in-characteristic-p">4. New covers of the affine line in characteristic <span class="math" data-tex="\(p\)">\(p\)</span></h2>
+<p>Let <span class="math" data-tex="\(k\subsetneq k&#x27;\)">\(k\subsetneq k&#x27;\)</span> be algebraically closed fields of characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, and choose <span class="math" data-tex="\(a\in k&#x27;\setminus k\)">\(a\in k&#x27;\setminus k\)</span>. Consider
+<span class="math math-display" data-tex="\[
+W_a=\operatorname{Spec}
+ k&#x27;[x,y]/(y^p-y-a x)\longrightarrow\mathbf A^1_{k&#x27;}.
+\tag{4.1}
+\]">\[
+W_a=\operatorname{Spec}
+ k&#x27;[x,y]/(y^p-y-a x)\longrightarrow\mathbf A^1_{k&#x27;}.
+\tag{4.1}
+\]</span>
+It is finite étale of degree <span class="math" data-tex="\(p\)">\(p\)</span>, and is connected: eliminating <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, identifies its source with <span class="math" data-tex="\(\operatorname{Spec}k&#x27;[y]\)">\(\operatorname{Spec}k&#x27;[y]\)</span>. Translations by <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> make it a Galois cover.</p>
+<p><strong>Proposition 4.1.</strong> The underlying cover <span class="math" data-tex="\(W_a\)">\(W_a\)</span> is not isomorphic to the base change of any finite étale cover of <span class="math" data-tex="\(\mathbf A^1_k\)">\(\mathbf A^1_k\)</span>. Thus the functor in (3.1) can fail to be essentially surjective without properness. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-remark-invariance">Stacks, Tag 0A47, for the Artin–Schreier cohomology calculation</a></p>
+<p>We prove the assertion about underlying covers, including why forgetting the chosen translations cannot make descent possible.</p>
+<p>First, every <span class="math" data-tex="\(\mathbf Z/p\mathbf Z\)">\(\mathbf Z/p\mathbf Z\)</span>-torsor over <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>, with <span class="math" data-tex="\(R=k[x]\)">\(R=k[x]\)</span>, has an equation
+<span class="math math-display" data-tex="\[
+z^p-z=h(x),\qquad h\in k[x].
+\tag{4.2}
+\]">\[
+z^p-z=h(x),\qquad h\in k[x].
+\tag{4.2}
+\]</span>
+Here is an algebraic proof. Let its finite étale algebra be <span class="math" data-tex="\(B\)">\(B\)</span>, and let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> be the generator acting on <span class="math" data-tex="\(B\)">\(B\)</span>. The trace <span class="math" data-tex="\(B\to R\)">\(B\to R\)</span> is surjective: on an étale covering splitting the torsor it is the sum map <span class="math" data-tex="\(R^p\to R\)">\(R^p\to R\)</span>, which is surjective, and faithful flatness detects surjectivity. Choose <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with trace one, and put
+<span class="math math-display" data-tex="\[
+z=-\sum_{i=0}^{p-1}i\,\sigma^i(b).
+\tag{4.3}
+\]">\[
+z=-\sum_{i=0}^{p-1}i\,\sigma^i(b).
+\tag{4.3}
+\]</span>
+Reindexing the sum gives <span class="math" data-tex="\(\sigma(z)-z=1\)">\(\sigma(z)-z=1\)</span>. Hence <span class="math" data-tex="\(z^p-z\)">\(z^p-z\)</span> is invariant and belongs to <span class="math" data-tex="\(R\)">\(R\)</span>. The invariants are <span class="math" data-tex="\(R\)">\(R\)</span> by faithfully flat affine descent: the torsor relation identifies its double fibre product with the disjoint union indexed by the group. On a geometric fibre, the <span class="math" data-tex="\(p\)">\(p\)</span> values of <span class="math" data-tex="\(z\)">\(z\)</span> differ by all elements of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. The algebra map from the rank-<span class="math" data-tex="\(p\)">\(p\)</span> finite locally free algebra in (4.2) to <span class="math" data-tex="\(B\)">\(B\)</span> is therefore an isomorphism on every geometric fibre. Locally a map between free modules of the same rank with invertible determinant on residue fibres is an isomorphism. This proves (4.2), with its translation action.</p>
+<p>Two equations of the form (4.2), with their specified translation actions, define isomorphic torsors precisely when their right sides differ by <span class="math" data-tex="\(v^p-v\)">\(v^p-v\)</span> for some <span class="math" data-tex="\(v\in k[x]\)">\(v\in k[x]\)</span>. Indeed an equivariant isomorphism makes the two coordinates differ by an invariant element <span class="math" data-tex="\(v\)">\(v\)</span>, and substitution gives that condition; a coordinate translation supplies its converse.</p>
+<p>Every polynomial has, modulo these differences, a unique representative of the form
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1,\ p\nmid n}\lambda_n x^n.
+\tag{4.4}
+\]">\[
+\sum_{n\ge1,\ p\nmid n}\lambda_n x^n.
+\tag{4.4}
+\]</span>
+To see existence, remove the constant using surjectivity of <span class="math" data-tex="\(c\mapsto c^p-c\)">\(c\mapsto c^p-c\)</span> on algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span>. A term <span class="math" data-tex="\(d x^{pm}\)">\(d x^{pm}\)</span> can be replaced by <span class="math" data-tex="\(d^{1/p}x^m\)">\(d^{1/p}x^m\)</span>, subtracting
+<span class="math" data-tex="\((d^{1/p}x^m)^p-d^{1/p}x^m\)">\((d^{1/p}x^m)^p-d^{1/p}x^m\)</span>. Repeating lowers the relevant exponents and terminates. All coefficients stay in <span class="math" data-tex="\(k\)">\(k\)</span>. For uniqueness, a nonconstant difference <span class="math" data-tex="\(v^p-v\)">\(v^p-v\)</span> has highest exponent <span class="math" data-tex="\(p\deg v\)">\(p\deg v\)</span>, divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, whereas a nonzero polynomial of the form (4.4) does not. A constant difference cannot change (4.4).</p>
+<p>Now suppose <span class="math" data-tex="\(W_a\simeq V_{k&#x27;}\)">\(W_a\simeq V_{k&#x27;}\)</span> for a cover <span class="math" data-tex="\(V\)">\(V\)</span> over <span class="math" data-tex="\(\mathbf A^1_k\)">\(\mathbf A^1_k\)</span>. The cover <span class="math" data-tex="\(V\)">\(V\)</span> is connected of degree <span class="math" data-tex="\(p\)">\(p\)</span>. Base change on finite étale categories is fully faithful here, by the observation at the end of Section 3: every connected finite étale <span class="math" data-tex="\(k\)">\(k\)</span>-cover remains connected over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-separably-closed-field-connected-components">Stacks, Tag 0363</a>, so the Galois-category surjectivity criterion applies. Thus every deck transformation of <span class="math" data-tex="\(W_a\)">\(W_a\)</span> descends to a deck transformation of <span class="math" data-tex="\(V\)">\(V\)</span>, once the proposed isomorphism is chosen.</p>
+<p>There are exactly <span class="math" data-tex="\(p\)">\(p\)</span> deck transformations of <span class="math" data-tex="\(W_a\)">\(W_a\)</span>. The <span class="math" data-tex="\(p\)">\(p\)</span> translations already exist, and connected-object one-point uniqueness bounds their number by the fibre degree <span class="math" data-tex="\(p\)">\(p\)</span>. In particular the chosen generator <span class="math" data-tex="\(y\mapsto y+1\)">\(y\mapsto y+1\)</span> descends to a generator on <span class="math" data-tex="\(V\)">\(V\)</span>. Its action on each geometric fibre is free by the same one-point uniqueness and hence transitive, so <span class="math" data-tex="\(V\)">\(V\)</span> is a <span class="math" data-tex="\(\mathbf Z/p\mathbf Z\)">\(\mathbf Z/p\mathbf Z\)</span>-torsor for this descended action. Apply (4.2): it has an equation with <span class="math" data-tex="\(h\in k[x]\)">\(h\in k[x]\)</span>. The proposed isomorphism, with this choice of descended generator, is equivariant. Thus over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> we would have
+<span class="math math-display" data-tex="\[
+a x-h=v^p-v,\qquad v\in k&#x27;[x].
+\tag{4.5}
+\]">\[
+a x-h=v^p-v,\qquad v\in k&#x27;[x].
+\tag{4.5}
+\]</span>
+Reduce <span class="math" data-tex="\(h\)">\(h\)</span> using (4.4) over <span class="math" data-tex="\(k\)">\(k\)</span>. Its reduced coefficients lie in <span class="math" data-tex="\(k\)">\(k\)</span>, and the same reduction remains valid over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>. The reduced representative of <span class="math" data-tex="\(a x\)">\(a x\)</span> is <span class="math" data-tex="\(a x\)">\(a x\)</span>. Uniqueness of (4.4) over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> forces the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> in the reduced <span class="math" data-tex="\(h\)">\(h\)</span> to be <span class="math" data-tex="\(a\)">\(a\)</span>, contradicting <span class="math" data-tex="\(a\notin k\)">\(a\notin k\)</span>. This proves Proposition 4.1.</p>
+<p>The source's Artin–Schreier sequence computes the same phenomenon as
+<span class="math" data-tex="\(H^1_{\mathrm{\acute et}}(\mathbf A^1_k,\mathbf Z/p\mathbf Z)\)">\(H^1_{\mathrm{\acute et}}(\mathbf A^1_k,\mathbf Z/p\mathbf Z)\)</span>;
+the trace construction above supplies the torsor equations directly. There is no conflict with purely inseparable invariance: these algebraically closed field extensions add new transcendental coefficients.</p>
+<h2 id="5-the-finite-étale-part-of-stein-factorization">5. The finite étale part of Stein factorization</h2>
+<p>For a proper <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, the candidate Stein space is
+<span class="math math-display" data-tex="\[
+S&#x27;=\underline{\operatorname{Spec}}_S(f_*\mathcal O_X),
+\tag{5.1}
+\]">\[
+S&#x27;=\underline{\operatorname{Spec}}_S(f_*\mathcal O_X),
+\tag{5.1}
+\]</span>
+with its evaluation map <span class="math" data-tex="\(X\to S&#x27;\)">\(X\to S&#x27;\)</span>. Under the hypotheses below, we prove directly that this algebra is finite étale and that the evaluation map has geometrically connected fibres.</p>
+<p>We need one precise cohomology input. If <span class="math" data-tex="\(f\)">\(f\)</span> is proper, flat and of finite presentation, then
+<span class="math math-display" data-tex="\[
+E=Rf_*\mathcal O_X
+\]">\[
+E=Rf_*\mathcal O_X
+\]</span>
+is perfect and its formation commutes with arbitrary base change <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-flat-proper-perfect-direct-image-general">Stacks, Tag 0B91</a>. Locally a perfect complex is represented by a bounded complex of finite projective modules. In particular flat base change computes <span class="math" data-tex="\(H^0\)">\(H^0\)</span> by tensoring, and at any residue field its degree-zero cohomology is the global functions of the fibre. This is a cohomology-and-base-change prerequisite, not the Stein conclusion we are about to prove.</p>
+<p>We will also use the elementary description of global functions on a proper geometrically reduced scheme <span class="math" data-tex="\(Z\)">\(Z\)</span> over a field <span class="math" data-tex="\(F\)">\(F\)</span>:
+<span class="math math-display" data-tex="\[
+H^0(Z,\mathcal O_Z)
+\text{ is a finite product of finite separable extensions of }F.
+\tag{5.2}
+\]">\[
+H^0(Z,\mathcal O_Z)
+\text{ is a finite product of finite separable extensions of }F.
+\tag{5.2}
+\]</span>
+For completeness, coherent proper finiteness makes this algebra finite-dimensional <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-proper-over-affine-cohomology-finite">Stacks, Tag 02O6</a>. Reducedness makes it a reduced Artinian algebra, hence a product of fields. Flat base change for global functions, proved in <a href="AG-DFG-03.html"><em>Descending properties of schemes and morphisms</em></a>, makes its tensor product with an algebraic closure reduced when <span class="math" data-tex="\(Z\)">\(Z\)</span> is geometrically reduced. A finite field extension with that property is separable. Idempotents correspond exactly to open-and-closed decompositions of <span class="math" data-tex="\(Z\)">\(Z\)</span>, so the field factors correspond to its connected components. Over a separably closed field, (5.2) is a product of copies of that field. In particular a geometrically connected geometrically reduced proper scheme has only its ground field as global functions <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-proper-geometrically-reduced-global-sections">Stacks, Tag 0BUG</a>.</p>
+<h3 id="5-1-a-finite-complex-calculation">5.1. A finite-complex calculation</h3>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be local with residue field <span class="math" data-tex="\(F\)">\(F\)</span>, and let <span class="math" data-tex="\(C^\bullet\)">\(C^\bullet\)</span> be a bounded finite-free complex with no negative-degree cohomology after tensoring with <span class="math" data-tex="\(F\)">\(F\)</span>. Cancelling split contractible summands in its negative degrees gives a representative starting in degree zero. Here is why: in the lowest negative degree the differential is injective modulo the maximal ideal. Some full-rank minor is a unit, so that differential is a split inclusion. Cancel its source and image, and repeat in the next negative degree.</p>
+<p>Suppose also that
+<span class="math math-display" data-tex="\[
+H^0(C^\bullet)\longrightarrow H^0(C^\bullet\otimes_R F)
+\tag{5.3}
+\]">\[
+H^0(C^\bullet)\longrightarrow H^0(C^\bullet\otimes_R F)
+\tag{5.3}
+\]</span>
+is surjective, and let the dimension of the latter be <span class="math" data-tex="\(r\)">\(r\)</span>. Choose actual cycles <span class="math" data-tex="\(c_1,\ldots,c_r\)">\(c_1,\ldots,c_r\)</span> lifting a basis. Their reductions are independent in <span class="math" data-tex="\(C^0\otimes F\)">\(C^0\otimes F\)</span>, so they extend to a basis of <span class="math" data-tex="\(C^0\)">\(C^0\)</span>. Write <span class="math" data-tex="\(C^0=R^r\oplus Q\)">\(C^0=R^r\oplus Q\)</span>, with the first summand spanned by these cycles. The differential is zero on <span class="math" data-tex="\(R^r\)">\(R^r\)</span>, and is injective on <span class="math" data-tex="\(Q\)">\(Q\)</span> modulo the maximal ideal: the entire kernel modulo that ideal is spanned by the <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. A unit minor again makes <span class="math" data-tex="\(Q\to C^1\)">\(Q\to C^1\)</span> a split inclusion. Its image has zero further differential. Cancelling this contractible pair leaves
+<span class="math math-display" data-tex="\[
+C^\bullet\simeq R^r[0]\oplus P^\bullet,
+\qquad P^\bullet \text{ finite free and starting in degree }1.
+\tag{5.4}
+\]">\[
+C^\bullet\simeq R^r[0]\oplus P^\bullet,
+\qquad P^\bullet \text{ finite free and starting in degree }1.
+\tag{5.4}
+\]</span>
+Thus <span class="math" data-tex="\(H^0(C^\bullet)=R^r\)">\(H^0(C^\bullet)=R^r\)</span>, and its formation commutes with every base change. At a stalk of a scheme these finitely many cycles, bases and unit minors spread to an open neighbourhood, so the same conclusions hold locally there. This proves the degree-zero case of the splitting calculation <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-better-cut-complex-in-two">Stacks, Tag 0A1U</a>, including the algebra needed below.</p>
+<h3 id="5-2-lifting-the-fibre-basis-and-proving-finiteness">5.2. Lifting the fibre basis and proving finiteness</h3>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> be proper, flat and of finite presentation, with geometrically reduced fibres. Then <span class="math" data-tex="\(f_*\mathcal O_X\)">\(f_*\mathcal O_X\)</span> is a finite locally free algebra, commutes with arbitrary base change, and is finite étale. Consequently (5.1) gives a factorization
+<span class="math math-display" data-tex="\[
+X\xrightarrow{q}S&#x27;\xrightarrow{h}S
+\tag{5.5}
+\]">\[
+X\xrightarrow{q}S&#x27;\xrightarrow{h}S
+\tag{5.5}
+\]</span>
+with <span class="math" data-tex="\(h\)">\(h\)</span> finite étale and <span class="math" data-tex="\(q\)">\(q\)</span> proper with geometrically connected fibres. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-stein-factorization-etale">Stacks, Tag 0BUN</a></p>
+<p><em>Proof.</em> Work at <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, with <span class="math" data-tex="\(R=\mathcal O_{S,s}\)">\(R=\mathcal O_{S,s}\)</span> and <span class="math" data-tex="\(F=\kappa(s)\)">\(F=\kappa(s)\)</span>. Choose a strictly henselian local extension <span class="math" data-tex="\(R^{sh}\)">\(R^{sh}\)</span>, with separable-closure residue field <span class="math" data-tex="\(F^s\)">\(F^s\)</span>. Its faithful flatness is part of the <a href="../AG-FSE/etale-neighbourhoods-henselization-and-quasi-finite-morphisms.html#3-the-two-colimits-of-local-choices">henselization prerequisite</a>. By (5.2), the global functions of the proper geometrically reduced fibre over <span class="math" data-tex="\(F^s\)">\(F^s\)</span> are <span class="math" data-tex="\((F^s)^r\)">\((F^s)^r\)</span> for some <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>.</p>
+<p>Each coordinate idempotent in this algebra specifies an open-and-closed component of that fibre. The proper henselian equivalence from Section 2.2 lifts the decomposition to <span class="math" data-tex="\(X_{R^{sh}}\)">\(X_{R^{sh}}\)</span>. Its characteristic functions are global idempotents lifting those coordinate idempotents. Multiplying them by lifts of elements of <span class="math" data-tex="\(F^s\)">\(F^s\)</span> in <span class="math" data-tex="\(R^{sh}\)">\(R^{sh}\)</span> shows that
+<span class="math math-display" data-tex="\[
+H^0(X_{R^{sh}},\mathcal O)\longrightarrow
+H^0(X_{F^s},\mathcal O)
+\]">\[
+H^0(X_{R^{sh}},\mathcal O)\longrightarrow
+H^0(X_{F^s},\mathcal O)
+\]</span>
+is surjective. Flat base change identifies the left side with
+<span class="math" data-tex="\(H^0(X_R,\mathcal O)\otimes_RR^{sh}\)">\(H^0(X_R,\mathcal O)\otimes_RR^{sh}\)</span>, and identifies the target with
+<span class="math" data-tex="\(H^0(X_F,\mathcal O)\otimes_FF^s\)">\(H^0(X_F,\mathcal O)\otimes_FF^s\)</span>.
+Faithful flatness of the field extension <span class="math" data-tex="\(F^s/F\)">\(F^s/F\)</span> therefore makes
+<span class="math math-display" data-tex="\[
+H^0(X_R,\mathcal O)\longrightarrow H^0(X_F,\mathcal O)
+\tag{5.6}
+\]">\[
+H^0(X_R,\mathcal O)\longrightarrow H^0(X_F,\mathcal O)
+\tag{5.6}
+\]</span>
+surjective.</p>
+<p>Apply the perfect-complex input to <span class="math" data-tex="\(E\)">\(E\)</span> at <span class="math" data-tex="\(s\)">\(s\)</span>. Its residue-field complex computes coherent cohomology of the fibre, so has no negative-degree cohomology. The preceding calculation removes negative terms. Surjectivity (5.6) is exactly (5.3), so (5.4) proves that <span class="math" data-tex="\(H^0(E)\)">\(H^0(E)\)</span> is locally free of finite rank near <span class="math" data-tex="\(s\)">\(s\)</span>, and that its formation commutes with arbitrary base change there. This argument works at every <span class="math" data-tex="\(s\)">\(s\)</span>, including the case of an empty fibre, where <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. It proves the asserted finiteness, local freeness and base-change statement on all of <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>By (5.2) every residue-field algebra is finite étale. A finite locally free algebra is of finite presentation; its module of relative differentials is finitely generated. Tensoring that module with each residue field gives zero, so Nakayama at every point of its spectrum makes the module zero. The finite flat unramified criterion makes the algebra finite étale. This proves the assertion about <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>The evaluation map <span class="math" data-tex="\(q\)">\(q\)</span> exists by the relative-spectrum adjunction. It is proper: its graph in <span class="math" data-tex="\(X\times_SS&#x27;\)">\(X\times_SS&#x27;\)</span> is closed because <span class="math" data-tex="\(S&#x27;\to S\)">\(S&#x27;\to S\)</span> is separated, and projection from that product to <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> is a base change of the proper map <span class="math" data-tex="\(f\)">\(f\)</span>. For a geometric point <span class="math" data-tex="\(\bar s=\operatorname{Spec}\Omega\to S\)">\(\bar s=\operatorname{Spec}\Omega\to S\)</span>, base change gives
+<span class="math math-display" data-tex="\[
+S&#x27;_{\bar s}=\operatorname{Spec}H^0(X_{\bar s},\mathcal O)
+=\operatorname{Spec}\Omega^r.
+\]">\[
+S&#x27;_{\bar s}=\operatorname{Spec}H^0(X_{\bar s},\mathcal O)
+=\operatorname{Spec}\Omega^r.
+\]</span>
+The primitive idempotents on the right select exactly the connected components of the reduced proper scheme <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>. The fibre of <span class="math" data-tex="\(q\)">\(q\)</span> at one of these points is that component. It is nonempty and connected; after an algebraically closed extension it remains connected by <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-separably-closed-field-connected-components">Stacks, Tag 0363</a>. Thus the fibres of <span class="math" data-tex="\(q\)">\(q\)</span> are geometrically connected. This proves (5.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If the geometric fibres of <span class="math" data-tex="\(f\)">\(f\)</span> are also connected, the algebra has rank one at every point. Its unit is an isomorphism, as for finite rank-one algebras in the preceding lesson. Therefore
+<span class="math math-display" data-tex="\[
+f_*\mathcal O_X=\mathcal O_S,
+\tag{5.7}
+\]">\[
+f_*\mathcal O_X=\mathcal O_S,
+\tag{5.7}
+\]</span>
+and this remains true after every base change. The evaluation factorization is then <span class="math" data-tex="\(X\to S\to S\)">\(X\to S\to S\)</span>.</p>
+<p>For any finite étale <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span>, the composite <span class="math" data-tex="\(Y\to S\)">\(Y\to S\)</span> still satisfies the hypotheses of Theorem 5.1: flatness and finite presentation compose, properness composes, and a finite étale cover of a geometrically reduced fibre is geometrically reduced. Its Stein space
+<span class="math math-display" data-tex="\[
+T_Y=\underline{\operatorname{Spec}}_S((Y\to S)_*\mathcal O_Y)
+\tag{5.8}
+\]">\[
+T_Y=\underline{\operatorname{Spec}}_S((Y\to S)_*\mathcal O_Y)
+\tag{5.8}
+\]</span>
+is consequently finite étale over <span class="math" data-tex="\(S\)">\(S\)</span>. Its geometric fibre is the finite set of connected components of <span class="math" data-tex="\(Y_{\bar s}\)">\(Y_{\bar s}\)</span>. These are precisely the components needed in the homotopy argument.</p>
+<h2 id="6-the-homotopy-exact-sequence">6. The homotopy exact sequence</h2>
+<p><strong>Theorem 6.1.</strong> Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> be proper, flat and of finite presentation, with geometrically connected and geometrically reduced fibres. Suppose <span class="math" data-tex="\(S\)">\(S\)</span> is connected. For a geometric point <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> and a geometric point <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> of <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>, there is an exact sequence
+<span class="math math-display" data-tex="\[
+\pi_1(X_{\bar s},\bar x)\xrightarrow{b}
+\pi_1(X,\bar x)\xrightarrow{a}
+\pi_1(S,\bar s)\longrightarrow1.
+\tag{6.1}
+\]">\[
+\pi_1(X_{\bar s},\bar x)\xrightarrow{b}
+\pi_1(X,\bar x)\xrightarrow{a}
+\pi_1(S,\bar s)\longrightarrow1.
+\tag{6.1}
+\]</span>
+Exactness means <span class="math" data-tex="\(\operatorname{im}b=\ker a\)">\(\operatorname{im}b=\ker a\)</span> and that <span class="math" data-tex="\(a\)">\(a\)</span> is surjective. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-proposition-first-homotopy-sequence">Stacks, Tag 0C0J</a></p>
+<p><em>Proof.</em> First <span class="math" data-tex="\(X\)">\(X\)</span> is connected. More generally a proper surjection with nonempty connected fibres over a connected base has connected source. If its source decomposed into two open-and-closed pieces, their images would be closed by properness. A connected fibre could meet only one piece, so these images would give a disjoint closed partition of the base. Connectedness makes one piece empty. The same argument after base change shows that <span class="math" data-tex="\(X_U=U\times_SX\)">\(X_U=U\times_SX\)</span> is connected for every connected finite étale <span class="math" data-tex="\(U\to S\)">\(U\to S\)</span>.</p>
+<p>The exact functors underlying the two group arrows are
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(S)\xrightarrow{f^*}
+\operatorname{F\acute Et}(X)\xrightarrow{i^*}
+\operatorname{F\acute Et}(X_{\bar s}).
+\tag{6.2}
+\]">\[
+\operatorname{F\acute Et}(S)\xrightarrow{f^*}
+\operatorname{F\acute Et}(X)\xrightarrow{i^*}
+\operatorname{F\acute Et}(X_{\bar s}).
+\tag{6.2}
+\]</span>
+We verify all categorical tests from <a href="galois-categories.html"><em>Galois categories</em></a>, Section 4.</p>
+<p><strong>Surjectivity on the right and full faithfulness.</strong> The preceding connectedness argument shows that <span class="math" data-tex="\(f^*\)">\(f^*\)</span> preserves connected objects, so <span class="math" data-tex="\(a\)">\(a\)</span> is surjective. There is also a useful explicit proof of full faithfulness. For finite étale <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span>, let <span class="math" data-tex="\(T_Y\)">\(T_Y\)</span> be (5.8). For finite étale <span class="math" data-tex="\(U\to S\)">\(U\to S\)</span>, relative-spectrum adjunction gives
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(Y,U\times_SX)
+=\operatorname{Hom}_S(Y,U)
+=\operatorname{Hom}_S(T_Y,U).
+\tag{6.3}
+\]">\[
+\operatorname{Hom}_X(Y,U\times_SX)
+=\operatorname{Hom}_S(Y,U)
+=\operatorname{Hom}_S(T_Y,U).
+\tag{6.3}
+\]</span>
+The last equality includes all maps, since <span class="math" data-tex="\(U\)">\(U\)</span> is affine over <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(T_Y\)">\(T_Y\)</span> is the relative spectrum of the pushforward algebra. This makes <span class="math" data-tex="\(Y\mapsto T_Y\)">\(Y\mapsto T_Y\)</span> left adjoint to <span class="math" data-tex="\(f^*\)">\(f^*\)</span>. Equation (5.7), after base change to <span class="math" data-tex="\(U\)">\(U\)</span>, gives <span class="math" data-tex="\(T_{U\times_SX}=U\)">\(T_{U\times_SX}=U\)</span>, compatibly with morphisms. In (6.3) set <span class="math" data-tex="\(Y=V\times_SX\)">\(Y=V\times_SX\)</span> to obtain
+<span class="math" data-tex="\(\operatorname{Hom}_X(V\times_SX,U\times_SX)=\operatorname{Hom}_S(V,U)\)">\(\operatorname{Hom}_X(V\times_SX,U\times_SX)=\operatorname{Hom}_S(V,U)\)</span>.
+This proves full faithfulness directly.</p>
+<p><strong>Trivial composite.</strong> The restriction of <span class="math" data-tex="\(f^*U\)">\(f^*U\)</span> to <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span> is a finite disjoint union of copies of <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>, since <span class="math" data-tex="\(U_{\bar s}\)">\(U_{\bar s}\)</span> is a finite set of geometric points. Thus <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span>, where <span class="math" data-tex="\(1\)">\(1\)</span> denotes the trivial homomorphism.</p>
+<p><strong>Normality of the fibre image.</strong> Let <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> be a connected finite étale cover whose restriction to <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span> has a section. The section image is an open-and-closed connected component <span class="math" data-tex="\(Z\)">\(Z\)</span> isomorphic to <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>. In (5.8), <span class="math" data-tex="\(T_Y\)">\(T_Y\)</span> is connected, because the surjective evaluation map <span class="math" data-tex="\(Y\to T_Y\)">\(Y\to T_Y\)</span> has connected source. Hence <span class="math" data-tex="\(T_Y\times_SX\)">\(T_Y\times_SX\)</span> is connected by the initial argument.</p>
+<p>There is a map of finite étale <span class="math" data-tex="\(X\)">\(X\)</span>-schemes
+<span class="math math-display" data-tex="\[
+\lambda:Y\longrightarrow T_Y\times_SX.
+\tag{6.4}
+\]">\[
+\lambda:Y\longrightarrow T_Y\times_SX.
+\tag{6.4}
+\]</span>
+It is finite étale by the map-between-covers observation in the preceding lesson. The component <span class="math" data-tex="\(Z\)">\(Z\)</span> corresponds to one point <span class="math" data-tex="\(\bar t\in(T_Y)_{\bar s}\)">\(\bar t\in(T_Y)_{\bar s}\)</span>, by Theorem 5.1. Choose a closed point of <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>; it is rational over the algebraically closed residue field of <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>, because the fibre is nonempty of finite type. The fibre of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> over that point together with <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span> is the fibre of <span class="math" data-tex="\(Z\to X_{\bar s}\)">\(Z\to X_{\bar s}\)</span>, so has degree one. The degree of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is locally constant on its connected target. It is consequently one everywhere, and the rank-one algebra argument makes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> an isomorphism.</p>
+<p>Thus a connected <span class="math" data-tex="\(Y\)">\(Y\)</span> with one section on the chosen fibre becomes completely trivial on that fibre. The normality criterion of <a href="galois-categories.html"><em>Galois categories</em></a>, Theorem 4.5, says exactly that <span class="math" data-tex="\(\operatorname{im}b\)">\(\operatorname{im}b\)</span> is normal in <span class="math" data-tex="\(\pi_1(X)\)">\(\pi_1(X)\)</span>.</p>
+<p><strong>The whole kernel.</strong> Suppose now <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span>, not necessarily connected, becomes trivial on <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>. Decompose it into its finitely many connected covers <span class="math" data-tex="\(Y_j\)">\(Y_j\)</span>, as in the preceding lesson. Each nonempty <span class="math" data-tex="\(Y_j\)">\(Y_j\)</span> surjects onto connected <span class="math" data-tex="\(X\)">\(X\)</span>, so its fibre is nonempty. Since that fibre is trivial, it contains a section. The argument for (6.4) gives
+<span class="math math-display" data-tex="\[
+Y_j\simeq T_{Y_j}\times_SX.
+\]">\[
+Y_j\simeq T_{Y_j}\times_SX.
+\]</span>
+Taking the disjoint union proves <span class="math" data-tex="\(Y\simeq f^*T\)">\(Y\simeq f^*T\)</span> for the finite étale
+<span class="math" data-tex="\(T=\coprod_jT_{Y_j}\)">\(T=\coprod_jT_{Y_j}\)</span> over <span class="math" data-tex="\(S\)">\(S\)</span>; the empty case uses the empty <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Consequently <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is fully faithful, its composite with <span class="math" data-tex="\(i^*\)">\(i^*\)</span> trivializes objects, and every object trivialized by <span class="math" data-tex="\(i^*\)">\(i^*\)</span> lies in its essential image, in particular is an epic image of an object in that image. The closed-normal-kernel criterion of <a href="galois-categories.html"><em>Galois categories</em></a>, Theorem 4.4, identifies <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> with the closed normal subgroup generated by <span class="math" data-tex="\(\operatorname{im}b\)">\(\operatorname{im}b\)</span>. This image is already normal, and is closed because the source is profinite and the target Hausdorff. Therefore <span class="math" data-tex="\(\ker a=\operatorname{im}b\)">\(\ker a=\operatorname{im}b\)</span>. This completes every exactness condition in (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Flatness, finite presentation and geometric reducedness entered Theorem 5.1. Properness controlled both the global-functions algebra and the connectedness argument. Geometric connectedness made (5.7) hold and gave surjectivity on the right. These uses do not establish a converse saying that failure of any single hypothesis forces nonexactness in every example.</p>
+<h2 id="7-examples-and-complete-solutions">7. Examples and complete solutions</h2>
+<p>We first record the cover-subgroup calculation used in the disconnected-fibre example.</p>
+<p><strong>Lemma 7.1.</strong> If <span class="math" data-tex="\(S\)">\(S\)</span> is connected and <span class="math" data-tex="\(U\to S\)">\(U\to S\)</span> is connected finite étale of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span> is a point over <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>, then
+<span class="math" data-tex="\(\pi_1(U,\bar u)\to\pi_1(S,\bar s)\)">\(\pi_1(U,\bar u)\to\pi_1(S,\bar s)\)</span> is injective with open image of index <span class="math" data-tex="\(n\)">\(n\)</span>, equal to the stabilizer of <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span> in the fibre action.</p>
+<p><em>Proof.</em> Composition gives an equivalence
+<span class="math math-display" data-tex="\[
+\operatorname{F\acute Et}(U)\simeq
+\operatorname{F\acute Et}(S)/U.
+\]">\[
+\operatorname{F\acute Et}(U)\simeq
+\operatorname{F\acute Et}(S)/U.
+\]</span>
+A map to <span class="math" data-tex="\(U\)">\(U\)</span> from a finite étale <span class="math" data-tex="\(S\)">\(S\)</span>-scheme is finite étale over <span class="math" data-tex="\(U\)">\(U\)</span>, and composition preserves finiteness and étaleness, so this includes all objects and all maps. Put <span class="math" data-tex="\(\Pi=\pi_1(S,\bar s)\)">\(\Pi=\pi_1(S,\bar s)\)</span>. The reconstruction theorem identifies <span class="math" data-tex="\(U\)">\(U\)</span>'s fibre with <span class="math" data-tex="\(\Pi/H\)">\(\Pi/H\)</span>, for the open stabilizer <span class="math" data-tex="\(H\)">\(H\)</span> at <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span>. Finite <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-sets over <span class="math" data-tex="\(\Pi/H\)">\(\Pi/H\)</span> are equivalent to finite continuous <span class="math" data-tex="\(H\)">\(H\)</span>-sets: take the fibre over <span class="math" data-tex="\(H\)">\(H\)</span>, with inverse the induced set <span class="math" data-tex="\(\Pi\times_HE\)">\(\Pi\times_HE\)</span>. The latter is finite because <span class="math" data-tex="\(H\)">\(H\)</span> has finite index; its action is continuous because the kernel of a finite <span class="math" data-tex="\(H\)">\(H\)</span>-action contains an open subgroup whose core in <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is open. The fibre functor at <span class="math" data-tex="\(\bar u\)">\(\bar u\)</span> is the underlying-set functor on this <span class="math" data-tex="\(H\)">\(H\)</span>-category. Its automorphism group is <span class="math" data-tex="\(H\)">\(H\)</span>, by <a href="galois-categories.html"><em>Galois categories</em></a>, Lemma 1.1. The functorial map is its inclusion in <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, and <span class="math" data-tex="\([\Pi:H]=n\)">\([\Pi:H]=n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="7-1-the-projective-line-over-a-connected-base">7.1. The projective line over a connected base</h3>
+<p>For any connected scheme <span class="math" data-tex="\(S\)">\(S\)</span>, the projection <span class="math" data-tex="\(\mathbf P^1_S\to S\)">\(\mathbf P^1_S\to S\)</span> is proper, smooth and of finite presentation, with geometrically connected reduced fibres. The fibre group is trivial by the preceding lesson's all-characteristic projective-line computation. Theorem 6.1 therefore gives
+<span class="math math-display" data-tex="\[
+\pi_1(\mathbf P^1_S)\simeq\pi_1(S).
+\tag{7.1}
+\]">\[
+\pi_1(\mathbf P^1_S)\simeq\pi_1(S).
+\tag{7.1}
+\]</span>
+The section <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span> supplies the inverse group map after compatible base points are chosen. A section alone makes the projection map surjective and the section map injective; injectivity of the projection in (7.1) comes from the trivial fibre group and exactness.</p>
+<h3 id="7-2-a-connected-double-cover-with-disconnected-fibres">7.2. A connected double cover with disconnected fibres</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field of characteristic different from two. The scheme
+<span class="math math-display" data-tex="\[
+U=\operatorname{Spec}k[x,t,t^{-1}]/(x^2-t)
+\longrightarrow\mathbf G_{m,k}
+\tag{7.2}
+\]">\[
+U=\operatorname{Spec}k[x,t,t^{-1}]/(x^2-t)
+\longrightarrow\mathbf G_{m,k}
+\tag{7.2}
+\]</span>
+is <span class="math" data-tex="\(\mathbf G_{m,k}\)">\(\mathbf G_{m,k}\)</span> itself in coordinate <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(x\)">\(x\)</span> is invertible and <span class="math" data-tex="\(t=x^2\)">\(t=x^2\)</span>. It is connected and finite étale of degree two: the algebra is free with basis <span class="math" data-tex="\(1,x\)">\(1,x\)</span>, and derivative <span class="math" data-tex="\(2x\)">\(2x\)</span> is invertible. Its deck involution is <span class="math" data-tex="\(x\mapsto-x\)">\(x\mapsto-x\)</span>, so it is Galois.</p>
+<p>Lemma 7.1 identifies the image of its group map as an open subgroup of index two, the kernel of the quotient
+<span class="math math-display" data-tex="\[
+\pi_1(\mathbf G_{m,k})\twoheadrightarrow\mathbf Z/2\mathbf Z
+\]">\[
+\pi_1(\mathbf G_{m,k})\twoheadrightarrow\mathbf Z/2\mathbf Z
+\]</span>
+defined by this cover. It is not surjective. All geometric fibres have two points. Thus (7.2) satisfies properness, flatness, finite presentation and geometric reducedness, but fails geometric connectedness. This is the needed counterexample to omitting that hypothesis. When <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed of characteristic zero, compatible roots identify the group with <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, and the subgroup is <span class="math" data-tex="\(2\widehat{\mathbf Z}\)">\(2\widehat{\mathbf Z}\)</span>.</p>
+<p><strong>Exercise 7.1 (easy).</strong> Show that reduction preserves the fundamental group.</p>
+<p><em>Solution.</em> The immersion <span class="math" data-tex="\(X_{\mathrm{red}}\hookrightarrow X\)">\(X_{\mathrm{red}}\hookrightarrow X\)</span> is defined on every affine by its nilradical and is a thickening. Proposition 1.1 gives an equivalence of finite étale categories, including every map. Restriction preserves the geometric fibre at a chosen geometric point of <span class="math" data-tex="\(X_{\mathrm{red}}\)">\(X_{\mathrm{red}}\)</span>. It therefore preserves the natural automorphism group of that fibre functor and its topology of agreement on finite fibres. For connected <span class="math" data-tex="\(X\)">\(X\)</span> this proves
+<span class="math" data-tex="\(\pi_1(X_{\mathrm{red}})\simeq\pi_1(X)\)">\(\pi_1(X_{\mathrm{red}})\simeq\pi_1(X)\)</span>. No global nilpotence bound is needed.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Prove purely inseparable invariance for an arbitrary algebraic purely inseparable extension <span class="math" data-tex="\(k&#x27;/k\)">\(k&#x27;/k\)</span>.</p>
+<p><em>Solution.</em> The projection <span class="math" data-tex="\(X_{k&#x27;}\to X\)">\(X_{k&#x27;}\to X\)</span> is integral, since the scalars in <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> satisfy monic equations over <span class="math" data-tex="\(k\)">\(k\)</span>. After any base change it is surjective, and each point has a unique lift with purely inseparable residue extension. This is checked for finite subextensions by the equations <span class="math" data-tex="\(T^{p^r}-c\)">\(T^{p^r}-c\)</span>, whose geometric zero sets have one point, and then for their filtered union by compatible unique extensions of primes. Thus it is a universal homeomorphism <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-universal-homeomorphism">Stacks, Tag 04DF</a>. Theorem 1.2 gives the finite étale category equivalence with geometric fibres identified, and hence the asserted fundamental-group isomorphism for connected schemes. The same proof includes infinite extensions; no finite-presentation condition is used.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Compute the image of the group map in (7.2), and identify the failed homotopy hypothesis.</p>
+<p><em>Solution.</em> The ring identifies the source with <span class="math" data-tex="\(k[x,x^{-1}]\)">\(k[x,x^{-1}]\)</span>, so it is connected. The finite étale degree is two, and the nontrivial deck involution exchanges the two points of each geometric fibre. The fibre is the transitive regular two-element set for the quotient <span class="math" data-tex="\(\mathbf Z/2\mathbf Z\)">\(\mathbf Z/2\mathbf Z\)</span> of the target fundamental group. The stabilizer of a chosen point is its quotient kernel. Lemma 7.1 proves that the source group maps injectively onto this stabilizer, of index two. The map is therefore not surjective. Its fibres are reduced but disconnected; the other hypotheses hold because the morphism is finite étale. This isolates the geometric-connectedness failure without imposing a characteristic-zero assumption.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Compute <span class="math" data-tex="\(\pi_1(\mathbf P^1_S)\)">\(\pi_1(\mathbf P^1_S)\)</span> for connected <span class="math" data-tex="\(S\)">\(S\)</span>, and explain the role of a section.</p>
+<p><em>Solution.</em> The projection is proper flat and of finite presentation, and every geometric fibre is <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> over an algebraically closed field. These fibres are geometrically connected and reduced, and have trivial fundamental group by the differential-degree proof in the preceding lesson. The homotopy sequence becomes
+<span class="math math-display" data-tex="\[
+1\longrightarrow\pi_1(\mathbf P^1_S)\xrightarrow{f_*}
+\pi_1(S)\longrightarrow1,
+\]">\[
+1\longrightarrow\pi_1(\mathbf P^1_S)\xrightarrow{f_*}
+\pi_1(S)\longrightarrow1,
+\]</span>
+where the first <span class="math" data-tex="\(1\)">\(1\)</span> denotes the trivial fibre image, not an additional claim about injectivity of a general homotopy arrow. Exactness proves both trivial kernel and surjectivity of <span class="math" data-tex="\(f_*\)">\(f_*\)</span>. The section <span class="math" data-tex="\(s=[1:0]\)">\(s=[1:0]\)</span>, with compatible geometric base point, satisfies <span class="math" data-tex="\(f_*s_*=\mathrm{id}\)">\(f_*s_*=\mathrm{id}\)</span>. Since <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is already injective, it follows that <span class="math" data-tex="\(s_*f_*=\mathrm{id}\)">\(s_*f_*=\mathrm{id}\)</span> too. Hence the section supplies the inverse in (7.1). It is exactness and fibre triviality that prove injectivity of <span class="math" data-tex="\(f_*\)">\(f_*\)</span>, not merely the existence of the section.</p>
+<p><strong>Exercise 7.5 (hard).</strong> For algebraically closed <span class="math" data-tex="\(k\subsetneq k&#x27;\)">\(k\subsetneq k&#x27;\)</span> of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, prove that (4.1), with <span class="math" data-tex="\(a\notin k\)">\(a\notin k\)</span>, cannot descend even as a cover with its group action forgotten.</p>
+<p><em>Solution.</em> If it descended to <span class="math" data-tex="\(V\)">\(V\)</span>, that <span class="math" data-tex="\(V\)">\(V\)</span> would be connected of degree <span class="math" data-tex="\(p\)">\(p\)</span>, because base change is faithfully flat. Every connected finite étale cover over algebraically closed <span class="math" data-tex="\(k\)">\(k\)</span> stays connected over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>, by <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-separably-closed-field-connected-components">Stacks, Tag 0363</a>. Thus the Galois-category test makes this base-change functor fully faithful. Its bijection on endomorphisms makes the translation <span class="math" data-tex="\(y\mapsto y+1\)">\(y\mapsto y+1\)</span> descend to an automorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(V\)">\(V\)</span>. Its order is <span class="math" data-tex="\(p\)">\(p\)</span>, and it acts freely on geometric fibres by connected-object one-point uniqueness. Since those fibres have <span class="math" data-tex="\(p\)">\(p\)</span> points, it gives a torsor action.</p>
+<p>For its algebra <span class="math" data-tex="\(B/k[x]\)">\(B/k[x]\)</span>, choose <span class="math" data-tex="\(b\)">\(b\)</span> of trace one; trace is surjective after a split étale covering, hence before it. The sum (4.3) gives <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(\sigma z-z=1\)">\(\sigma z-z=1\)</span>. Thus <span class="math" data-tex="\(B=k[x,z]/(z^p-z-h)\)">\(B=k[x,z]/(z^p-z-h)\)</span> for <span class="math" data-tex="\(h\in k[x]\)">\(h\in k[x]\)</span>, by the fibre-isomorphism argument of Section 4. Under the proposed isomorphism to <span class="math" data-tex="\(W_a\)">\(W_a\)</span>, the coordinates differ by an invariant polynomial in <span class="math" data-tex="\(k&#x27;[x]\)">\(k&#x27;[x]\)</span>, so <span class="math" data-tex="\(a x-h\)">\(a x-h\)</span> is an Artin–Schreier difference.</p>
+<p>Remove constants and reduce all <span class="math" data-tex="\(p\)">\(p\)</span>-divisible exponents of <span class="math" data-tex="\(h\)">\(h\)</span> by taking <span class="math" data-tex="\(p\)">\(p\)</span>th roots of their coefficients in <span class="math" data-tex="\(k\)">\(k\)</span>, as in (4.4). This leaves a polynomial with coefficients in <span class="math" data-tex="\(k\)">\(k\)</span> and only positive exponents prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Its difference from <span class="math" data-tex="\(a x\)">\(a x\)</span> has the same form. A nonconstant Artin–Schreier difference has highest exponent divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, so that reduced difference must be zero. Its coefficient of <span class="math" data-tex="\(x\)">\(x\)</span> then gives <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span>, a contradiction. This proves failure of essential surjectivity, even for the underlying cover, and therefore failure of proper-field invariance without properness.</p>
+<h2 id="8-what-this-lesson-does-not-prove">8. What this lesson does not prove</h2>
+<p>We have proved finite étale topological invariance, the complete Noetherian local equivalence, proper algebraically closed field invariance, the finite étale Stein factorization, the homotopy exact sequence, both counterexamples, and all five solutions. We used these precise inputs:</p>
+<ul>
+<li>Finite étale invariance under arbitrary thickenings, including every morphism and finiteness of the lift, is imported from <a href="../AG-FSE/infinitesimal-lifting-and-invariance-under-thickenings.html#6-keeping-the-lift-finite"><em>Infinitesimal lifting and invariance under thickenings</em>, Theorem 6.2</a>. Proposition 1.1 derives the geometric-fibre and fundamental-group consequences. The integral-surjection descent theorem and full faithfulness were proved in <a href="AG-DFG-03.html"><em>Descending properties of schemes and morphisms</em></a> at their full quasi-compact separated étale generality.</li>
+<li>The characterization of universal homeomorphisms and the surjective-diagonal criterion for universal injectivity [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-universal-homeomorphism">04DF</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-universally-injective">01S4</a>]. Proper quasi-finite finiteness is the stated Zariski Main consequence from the <a href="../AG-FSE/etale-neighbourhoods-henselization-and-quasi-finite-morphisms.html#4-extracting-the-finite-branches">quasi-finite-morphism prerequisite</a>.</li>
+<li>Coherent Grothendieck existence for a proper scheme over a complete Noetherian local ring, with full faithfulness and tensor compatibility <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-theorem-grothendieck-existence">Stacks, Tag 088E</a>, from the formal-cohomology prerequisite. Noetherian Krull intersection <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-intersection-powers-ideal-module">Stacks, Tag 00IQ</a>, Nakayama, and openness of the local-freeness locus for coherent modules are the accompanying commutative-algebra facts.</li>
+<li>The three full henselian statements in Section 2.2 [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-gabber">09ZS</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-on-proper-over-henselian">0A48</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-finite-etale-on-proper-over-henselian-pair">0GS2</a>]. Their general approximation proofs are permitted inputs. Flatness and the étale-neighbourhood description of henselization and strict henselization belong to the <a href="../AG-FSE/etale-neighbourhoods-henselization-and-quasi-finite-morphisms.html#3-the-two-colimits-of-local-choices">henselization prerequisite</a>.</li>
+<li>Finite-presentation approximation of objects, maps and equality [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-finite-presentation">01ZM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-finite-finite-presentation">01ZO</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/limits.html#limits-lemma-descend-etale">07RP</a>], already stated precisely in the preceding lesson. The Nullstellensatz supplies the specialization point in Section 3.</li>
+<li>Perfect direct image and arbitrary derived base change for <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> under proper flat finite-presentation morphisms <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-flat-proper-perfect-direct-image-general">Stacks, Tag 0B91</a>, and coherent proper finiteness <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-proper-over-affine-cohomology-finite">Stacks, Tag 02O6</a>, from cohomology and base change. Sections 5.1–5.2 proved the needed degree-zero splitting and every further step producing the finite étale algebra; the Stein assertion itself was not assumed.</li>
+<li>The connected-component invariance over a separably closed field <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-separably-closed-field-connected-components">Stacks, Tag 0363</a>, valid for arbitrary schemes and field extensions; the spectral-space component facts [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/properties.html#properties-lemma-quasi-compact-quasi-separated-spectral">094L</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/topology.html#topology-lemma-connected-component-intersection">005F</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/topology.html#topology-lemma-pi0-profinite">0900</a>], used only with the explicit quasi-compact quasi-separated hypotheses in Proposition 1.3.</li>
+<li>The finite étale algebra criterion, geometric reducedness under étale maps, and basic smoothness and properness of projective space, from the étale and scheme prerequisites. All Galois-category tests used here were proved in <a href="galois-categories.html"><em>Galois categories</em></a>.</li>
+</ul>
+<p>The next lesson uses the henselian proper equivalence to compare generic and special fibres. It will keep the hypotheses of specialization and of tame ramification separate: an exact homotopy sequence alone does not identify all the fundamental groups in a family.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="etale-fundamental-group.html">← The étale fundamental group</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="specialization-and-tame-ramification.html">Specialization maps and tame ramification →</a></span></nav>
+<p class="small source-link"><a href="src/proper-fundamental-groups.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-DFG">Repository</a></nav>
+</footer>
+</body>
+</html>

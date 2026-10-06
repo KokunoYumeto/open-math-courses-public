@@ -1,0 +1,376 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Testing exactness with doubled objects</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="testing-exactness-with-doubled-objects">Testing exactness with doubled objects</h1>
+<p><em>Written with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Self-checked by the AI that wrote it. Original text: CC0.</em></p>
+<p>An additive functor already respects finite sums. Its failure of exactness lies in the maps attached to those sums: a kernel may cease to be a kernel, or a quotient may cease to be a quotient. Doubling an object along a subobject, or doubling it over a quotient, packages these failures into a pair of parallel arrows. This gives tests that use only monomorphisms or only epimorphisms, while still detecting preservation of every finite limit or colimit.</p>
+<p>The first prerequisite is the kernel, cokernel and image factorization in an abelian category. We use the ordinary kernel-pair and self-pushout descriptions proved in <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>, Section 3. For additive functors and finite sums, see <a href="formal-linear-combinations-and-finite-sums.html">Formal linear combinations and finite sums</a>. The full exactness criterion is proved in <a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>, Lemma 2.1. All categories in this lesson are locally small abelian categories, and all diagrams below are finite.</p>
+<p>Basic references are the <a href="https://stacks.math.columbia.edu/tag/00ZX">Stacks Project, Abelian categories</a>, its <a href="https://stacks.math.columbia.edu/tag/010N">short-exact criteria for additive functors, Lemma 12.7.2</a>, and its <a href="https://stacks.math.columbia.edu/tag/010H">snake lemma with open row ends, Lemma 12.5.17</a>. The short-exact criteria are used in Section 1; the precise weak-row snake construction is used in Section 4.</p>
+<h2 id="1-witnesses-for-a-kernel-or-a-quotient">1. Witnesses for a kernel or a quotient</h2>
+<p>Write <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span> and <span class="math" data-tex="\(v:B\to C\)">\(v:B\to C\)</span>, with <span class="math" data-tex="\(vu=0\)">\(vu=0\)</span>. To say that <span class="math" data-tex="\(0\to A\xrightarrow{u}B\xrightarrow{v}C\)">\(0\to A\xrightarrow{u}B\xrightarrow{v}C\)</span> is exact means precisely that <span class="math" data-tex="\(u\)">\(u\)</span> presents the kernel of <span class="math" data-tex="\(v\)">\(v\)</span>. For fixed <span class="math" data-tex="\(W\)">\(W\)</span>, put <span class="math" data-tex="\(H(T)=\operatorname{Hom}(W,T)\)">\(H(T)=\operatorname{Hom}(W,T)\)</span>. Consequently, for every object <span class="math" data-tex="\(W\)">\(W\)</span>, the sequence</p>
+<span class="math math-display" data-tex="\[
+0\to H(A)
+\to H(B)
+\to H(C)
+\tag{1.1}
+\]">\[
+0\to H(A)
+\to H(B)
+\to H(C)
+\tag{1.1}
+\]</span>
+<p>is exact. Conversely, its initial injectivity and middle exactness say that every map <span class="math" data-tex="\(t:W\to B\)">\(t:W\to B\)</span> killed by <span class="math" data-tex="\(v\)">\(v\)</span> has a unique factor through <span class="math" data-tex="\(u\)">\(u\)</span>. Varying <span class="math" data-tex="\(W\)">\(W\)</span> gives exactly the kernel universal property. This proves both directions without assuming that <span class="math" data-tex="\(v\)">\(v\)</span> is epic.</p>
+<p>For an exact sequence <span class="math" data-tex="\(A\xrightarrow{u}B\xrightarrow{v}C\to0\)">\(A\xrightarrow{u}B\xrightarrow{v}C\to0\)</span>, use maps out of the objects. For fixed <span class="math" data-tex="\(W\)">\(W\)</span>, put <span class="math" data-tex="\(D(T)=\operatorname{Hom}(T,W)\)">\(D(T)=\operatorname{Hom}(T,W)\)</span>. The corresponding condition is exactness, for every <span class="math" data-tex="\(W\)">\(W\)</span>, of</p>
+<span class="math math-display" data-tex="\[
+0\to D(C)
+\to D(B)
+\to D(A).
+\tag{1.2}
+\]">\[
+0\to D(C)
+\to D(B)
+\to D(A).
+\tag{1.2}
+\]</span>
+<p>Here injectivity of precomposition by <span class="math" data-tex="\(v\)">\(v\)</span>, together with middle exactness, says that every <span class="math" data-tex="\(t:B\to W\)">\(t:B\to W\)</span> with <span class="math" data-tex="\(tu=0\)">\(tu=0\)</span> factors uniquely through <span class="math" data-tex="\(v\)">\(v\)</span>. This is the cokernel universal property. These are the two Hom tests of <a href="https://stacks.math.columbia.edu/tag/05AA">Stacks, Lemma 12.5.8</a>; the arguments above supply the universal-property proofs. A single probe need not suffice. In particular, a general abelian category need not have an object whose maps into every object detect all kernels.</p>
+<p>We also use the short-exact tests of <a href="https://stacks.math.columbia.edu/tag/010M">Stacks, Lemma 12.7.2</a>. For an additive functor <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span>, left exactness is equivalent to preserving the left three terms of every short exact sequence; right exactness has the corresponding right three-term test. Left exactness means preservation of finite limits, and right exactness means preservation of finite colimits. The lemma supplies both implications in their full abelian generality.</p>
+<p>For later use, full exactness is also equivalent to preserving every sequence <span class="math" data-tex="\(A\to B\to C\)">\(A\to B\to C\)</span> exact at <span class="math" data-tex="\(B\)">\(B\)</span>. Indeed, if <span class="math" data-tex="\(F\)">\(F\)</span> is exact, it preserves all kernels and cokernels by Lemma 2.1. In an exact three-term sequence, factor the first arrow as <span class="math" data-tex="\(A\twoheadrightarrow I\hookrightarrow B\)">\(A\twoheadrightarrow I\hookrightarrow B\)</span>, where <span class="math" data-tex="\(I=\ker(B\to C)\)">\(I=\ker(B\to C)\)</span>. Its image under <span class="math" data-tex="\(F\)">\(F\)</span> is an epimorphism followed by the kernel of <span class="math" data-tex="\(F(B)\to F(C)\)">\(F(B)\to F(C)\)</span>, proving middle exactness. Conversely, preservation of all three-term exact sequences tests every monomorphism on <span class="math" data-tex="\(0\to A\to B\)">\(0\to A\to B\)</span>, every epimorphism on <span class="math" data-tex="\(B\to C\to0\)">\(B\to C\to0\)</span>, and the middle of every short exact sequence on <span class="math" data-tex="\(A\to B\to C\)">\(A\to B\to C\)</span>. Since an additive functor sends a zero object to a zero object, these three tests give preservation of the full short exact sequence.</p>
+<h2 id="2-the-two-doubled-objects">2. The two doubled objects</h2>
+<p>Let <span class="math" data-tex="\(i:K\hookrightarrow Y\)">\(i:K\hookrightarrow Y\)</span> be monic and let <span class="math" data-tex="\(q:Y \twoheadrightarrow Q\)">\(q:Y \twoheadrightarrow Q\)</span> be its cokernel. Its self-pushout has the description</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=Y\amalg_KY\cong Y\oplus Q,\\
+j_1=\binom{1_Y}{0},\qquad
+j_2=\binom{1_Y}{q}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+P=Y\amalg_KY\cong Y\oplus Q,\\
+j_1=\binom{1_Y}{0},\qquad
+j_2=\binom{1_Y}{q}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The notation is a biproduct matrix, so it makes sense without elements. If <span class="math" data-tex="\(s:Q\to Y\oplus Q\)">\(s:Q\to Y\oplus Q\)</span> is the second inclusion, then</p>
+<span class="math math-display" data-tex="\[
+j_2-j_1=sq.
+\tag{2.2}
+\]">\[
+j_2-j_1=sq.
+\tag{2.2}
+\]</span>
+<p>The map <span class="math" data-tex="\(s\)">\(s\)</span> is split monic. Thus the equalizer of <span class="math" data-tex="\(j_1,j_2\)">\(j_1,j_2\)</span> is the kernel of <span class="math" data-tex="\(q\)">\(q\)</span>, namely <span class="math" data-tex="\(i\)">\(i\)</span>. The doubled object remembers the quotient through the difference of its two inclusions.</p>
+<p>Now let <span class="math" data-tex="\(q:X \twoheadrightarrow Y\)">\(q:X \twoheadrightarrow Y\)</span> be epic, with kernel <span class="math" data-tex="\(i:K\hookrightarrow X\)">\(i:K\hookrightarrow X\)</span>. Its kernel pair has the description</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=X\times_YX\cong X\oplus K,\\
+p_1=(1_X,0),\qquad p_2=(1_X,i).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+R=X\times_YX\cong X\oplus K,\\
+p_1=(1_X,0),\qquad p_2=(1_X,i).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>If <span class="math" data-tex="\(r:X\oplus K\to K\)">\(r:X\oplus K\to K\)</span> is the second projection, then</p>
+<span class="math math-display" data-tex="\[
+p_2-p_1=ir.
+\tag{2.4}
+\]">\[
+p_2-p_1=ir.
+\tag{2.4}
+\]</span>
+<p>The projection <span class="math" data-tex="\(r\)">\(r\)</span> is split epic. Hence the coequalizer of <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> is the cokernel of <span class="math" data-tex="\(i\)">\(i\)</span>, namely <span class="math" data-tex="\(q\)">\(q\)</span>. The difference of the two projections remembers the subobject that was quotiented out.</p>
+<p>Additivity of <span class="math" data-tex="\(F\)">\(F\)</span> identifies <span class="math" data-tex="\(F(Y\oplus Q)\)">\(F(Y\oplus Q)\)</span> with <span class="math" data-tex="\(FY\oplus FQ\)">\(FY\oplus FQ\)</span>, and similarly for <span class="math" data-tex="\(X\oplus K\)">\(X\oplus K\)</span>. It also preserves split monomorphisms and split epimorphisms: the equations for their one-sided inverses survive application of any functor. In particular, <span class="math" data-tex="\(Fs\)">\(Fs\)</span> is monic and <span class="math" data-tex="\(Fr\)">\(Fr\)</span> is epic. These observations concern the displayed biproducts and maps. They do not presume that <span class="math" data-tex="\(F\)">\(F\)</span> preserves the pushout or pullback universal property used to construct them.</p>
+<h2 id="3-testing-one-side-of-exactness">3. Testing one side of exactness</h2>
+<p>An exact fork <span class="math" data-tex="\(K\to Y\rightrightarrows P\)">\(K\to Y\rightrightarrows P\)</span> means that its first arrow is the equalizer of the parallel pair. An exact cofork <span class="math" data-tex="\(R\rightrightarrows X\to Y\)">\(R\rightrightarrows X\to Y\)</span> means that its last arrow is their coequalizer. Thus the fork includes monicity of its first arrow, and the cofork includes epicity of its last arrow.</p>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be additive between abelian categories. The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is left exact.</li>
+<li>For every monomorphism <span class="math" data-tex="\(i:K\hookrightarrow Y\)">\(i:K\hookrightarrow Y\)</span>, its self-pushout gives an exact fork</li>
+</ol>
+<span class="math math-display" data-tex="\[
+FK\xrightarrow{Fi}FY
+\mathrel{\substack{\xrightarrow{Fj_1}\\[-3pt]\xrightarrow{Fj_2}}}FP.
+\tag{3.1}
+\]">\[
+FK\xrightarrow{Fi}FY
+\mathrel{\substack{\xrightarrow{Fj_1}\\[-3pt]\xrightarrow{Fj_2}}}FP.
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is left exact, it preserves the equalizer identified in Section 2, giving the fork in (3.1).</p>
+<p>Conversely, suppose every such fork is exact. By (2.2) and additivity, <span class="math" data-tex="\(Fj_2-Fj_1=(Fs)(Fq)\)">\(Fj_2-Fj_1=(Fs)(Fq)\)</span>. Because <span class="math" data-tex="\(Fs\)">\(Fs\)</span> is monic, the kernels of this composite and of <span class="math" data-tex="\(Fq\)">\(Fq\)</span> agree. The test therefore says that <span class="math" data-tex="\(Fi\)">\(Fi\)</span> is monic and is the kernel of <span class="math" data-tex="\(Fq\)">\(Fq\)</span>. In particular, <span class="math" data-tex="\(F\)">\(F\)</span> preserves every monomorphism, since every monomorphism is included in a tested fork.</p>
+<p>Take any morphism <span class="math" data-tex="\(f:Y\to Z\)">\(f:Y\to Z\)</span>, and choose its image factorization</p>
+<span class="math math-display" data-tex="\[
+Y\xrightarrow{e}I\xrightarrow{m}Z,
+\qquad f=me,
+\tag{3.2}
+\]">\[
+Y\xrightarrow{e}I\xrightarrow{m}Z,
+\qquad f=me,
+\tag{3.2}
+\]</span>
+<p>with <span class="math" data-tex="\(e\)">\(e\)</span> epic and <span class="math" data-tex="\(m\)">\(m\)</span> monic. Let <span class="math" data-tex="\(k:\ker f\hookrightarrow Y\)">\(k:\ker f\hookrightarrow Y\)</span>. In an abelian category <span class="math" data-tex="\(e\)">\(e\)</span> is the cokernel of <span class="math" data-tex="\(k\)">\(k\)</span>. The fork test for <span class="math" data-tex="\(k\)">\(k\)</span> says that <span class="math" data-tex="\(Fk\)">\(Fk\)</span> is the kernel of <span class="math" data-tex="\(Fe\)">\(Fe\)</span>. The already proved preservation of monomorphisms makes <span class="math" data-tex="\(Fm\)">\(Fm\)</span> monic. Therefore <span class="math" data-tex="\(\ker(Fm\,Fe)=\ker(Fe)\)">\(\ker(Fm\,Fe)=\ker(Fe)\)</span>, and <span class="math" data-tex="\(Fk\)">\(Fk\)</span> is the kernel of <span class="math" data-tex="\(Ff\)">\(Ff\)</span>.</p>
+<p>So <span class="math" data-tex="\(F\)">\(F\)</span> preserves all kernels. Equalizers in an abelian category are kernels of differences, and additivity preserves differences. Finite products and a terminal zero object are already preserved by additivity. Every finite limit is an equalizer between finite products; hence <span class="math" data-tex="\(F\)">\(F\)</span> preserves every finite limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2.</strong> Under the same hypotheses, <span class="math" data-tex="\(F\)">\(F\)</span> is right exact if and only if the kernel pair of every epimorphism <span class="math" data-tex="\(q:X \twoheadrightarrow Y\)">\(q:X \twoheadrightarrow Y\)</span> gives an exact cofork</p>
+<span class="math math-display" data-tex="\[
+FR\mathrel{\substack{\xrightarrow{Fp_1}\\[-3pt]\xrightarrow{Fp_2}}}
+FX\xrightarrow{Fq}FY.
+\tag{3.3}
+\]">\[
+FR\mathrel{\substack{\xrightarrow{Fp_1}\\[-3pt]\xrightarrow{Fp_2}}}
+FX\xrightarrow{Fq}FY.
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> A right exact functor preserves the coequalizer described in Section 2, giving (3.3).</p>
+<p>Suppose instead that every tested cofork is exact. Equation (2.4) gives <span class="math" data-tex="\(Fp_2-Fp_1=(Fi)(Fr)\)">\(Fp_2-Fp_1=(Fi)(Fr)\)</span>. Since <span class="math" data-tex="\(Fr\)">\(Fr\)</span> is epic, a map out of <span class="math" data-tex="\(FX\)">\(FX\)</span> kills this composite exactly when it kills <span class="math" data-tex="\(Fi\)">\(Fi\)</span>. The cokernel universal properties are therefore the same. The test says that <span class="math" data-tex="\(Fq\)">\(Fq\)</span> is epic and is the cokernel of <span class="math" data-tex="\(Fi\)">\(Fi\)</span>. In particular <span class="math" data-tex="\(F\)">\(F\)</span> preserves every epimorphism.</p>
+<p>Take an arbitrary <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span> and factor it as <span class="math" data-tex="\(f=me\)">\(f=me\)</span>, with <span class="math" data-tex="\(e:A \twoheadrightarrow I\)">\(e:A \twoheadrightarrow I\)</span> epic and <span class="math" data-tex="\(m:I\hookrightarrow B\)">\(m:I\hookrightarrow B\)</span> monic. Let <span class="math" data-tex="\(q_f:B\twoheadrightarrow Q_f\)">\(q_f:B\twoheadrightarrow Q_f\)</span> be its cokernel. Then <span class="math" data-tex="\(m\)">\(m\)</span> is the kernel of <span class="math" data-tex="\(q_f\)">\(q_f\)</span>. Testing this epimorphism says that <span class="math" data-tex="\(Fq_f\)">\(Fq_f\)</span> is the cokernel of <span class="math" data-tex="\(Fm\)">\(Fm\)</span>. Since <span class="math" data-tex="\(Fe\)">\(Fe\)</span> is epic, a map out of <span class="math" data-tex="\(FB\)">\(FB\)</span> kills <span class="math" data-tex="\(Fm\,Fe\)">\(Fm\,Fe\)</span> exactly when it kills <span class="math" data-tex="\(Fm\)">\(Fm\)</span>. Thus <span class="math" data-tex="\(Fq_f\)">\(Fq_f\)</span> is the cokernel of <span class="math" data-tex="\(Ff\)">\(Ff\)</span>.</p>
+<p>The functor preserves all cokernels. Coequalizers are cokernels of differences, and finite coproducts together with an initial zero object are already preserved. Expressing a finite colimit as a coequalizer between finite coproducts proves right exactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, a tensor functor can keep the middle of a tested fork exact even when its first map loses monicity. Exercise 1 computes this phenomenon for every pair of positive integers. The corresponding missing epicity in a cofork is exhibited in Exercise 2.</p>
+<h2 id="4-how-composition-changes-kernels-and-quotients">4. How composition changes kernels and quotients</h2>
+<p>The kernels and cokernels of two consecutive maps are related even when their composite is nonzero. Write <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, and, for each map <span class="math" data-tex="\(h\)">\(h\)</span>, write <span class="math" data-tex="\(k_h:K_h\hookrightarrow\operatorname{dom}h\)">\(k_h:K_h\hookrightarrow\operatorname{dom}h\)</span> and <span class="math" data-tex="\(q_h:\operatorname{cod}h\twoheadrightarrow Q_h\)">\(q_h:\operatorname{cod}h\twoheadrightarrow Q_h\)</span> for its kernel and cokernel.</p>
+<p>There are canonical arrows <span class="math" data-tex="\(a:K_f\to K_{gf}\)">\(a:K_f\to K_{gf}\)</span> and <span class="math" data-tex="\(b:K_{gf}\to K_g\)">\(b:K_{gf}\to K_g\)</span>, characterized by</p>
+<span class="math math-display" data-tex="\[
+k_{gf}a=k_f,\qquad k_gb=fk_{gf}.
+\tag{4.1}
+\]">\[
+k_{gf}a=k_f,\qquad k_gb=fk_{gf}.
+\tag{4.1}
+\]</span>
+<p>There are also canonical arrows</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c=q_fk_g:K_g\to Q_f,\\
+d:Q_f\to Q_{gf},\qquad dq_f=q_{gf}g,\\
+e:Q_{gf}\to Q_g,\qquad eq_{gf}=q_g.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+c=q_fk_g:K_g\to Q_f,\\
+d:Q_f\to Q_{gf},\qquad dq_f=q_{gf}g,\\
+e:Q_{gf}\to Q_g,\qquad eq_{gf}=q_g.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The defining equations for <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> have unique solutions because the displayed maps kill <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(gf\)">\(gf\)</span>, respectively. With these choices, the following two lines form one exact sequence, joined at their occurrence of <span class="math" data-tex="\(K_g\)">\(K_g\)</span>:</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_f\xrightarrow{a}K_{gf}
+\xrightarrow{b}K_g,
+\tag{4.3}
+\]">\[
+0\longrightarrow K_f\xrightarrow{a}K_{gf}
+\xrightarrow{b}K_g,
+\tag{4.3}
+\]</span>
+<span class="math math-display" data-tex="\[
+K_g\xrightarrow{c}Q_f\xrightarrow{d}Q_{gf}
+\xrightarrow{e}Q_g\longrightarrow0.
+\tag{4.4}
+\]">\[
+K_g\xrightarrow{c}Q_f\xrightarrow{d}Q_{gf}
+\xrightarrow{e}Q_g\longrightarrow0.
+\tag{4.4}
+\]</span>
+<p>Here is the precise reduction to <a href="https://stacks.math.columbia.edu/tag/010H">Stacks snake lemma, Lemma 12.5.17</a>. Use the two rows</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X\xrightarrow{f}Y\xrightarrow{q_f}Q_f\longrightarrow0,\\
+0\longrightarrow Z\xrightarrow{1_Z}Z\longrightarrow0.
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+X\xrightarrow{f}Y\xrightarrow{q_f}Q_f\longrightarrow0,\\
+0\longrightarrow Z\xrightarrow{1_Z}Z\longrightarrow0.
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>The vertical arrows, in order, are <span class="math" data-tex="\(gf:X\to Z\)">\(gf:X\to Z\)</span>, <span class="math" data-tex="\(g:Y\to Z\)">\(g:Y\to Z\)</span>, and <span class="math" data-tex="\(0:Q_f\to0\)">\(0:Q_f\to0\)</span>. The rows are exact, both squares commute, and the snake lemma gives the following exact sequence, displayed in two lines joined at <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_{gf}\xrightarrow{b}K_g\xrightarrow{c}Q_f,\\
+Q_f\xrightarrow{d}Q_{gf}\xrightarrow{e}Q_g\longrightarrow0.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+K_{gf}\xrightarrow{b}K_g\xrightarrow{c}Q_f,\\
+Q_f\xrightarrow{d}Q_{gf}\xrightarrow{e}Q_g\longrightarrow0.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>To identify the sign of its connecting arrow, its defining pullback is <span class="math" data-tex="\(Y\times_{Q_f}Q_f\cong Y\)">\(Y\times_{Q_f}Q_f\cong Y\)</span>, using the identity on <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>. Its defining pushout is <span class="math" data-tex="\(Q_{gf}\amalg_ZZ\cong Q_{gf}\)">\(Q_{gf}\amalg_ZZ\cong Q_{gf}\)</span>, using the identity on <span class="math" data-tex="\(Z\)">\(Z\)</span> and the map <span class="math" data-tex="\(q_{gf}:Z\to Q_{gf}\)">\(q_{gf}:Z\to Q_{gf}\)</span>. The snake defining square therefore says exactly <span class="math" data-tex="\(dq_f=q_{gf}g\)">\(dq_f=q_{gf}g\)</span>, with the positive sign used in (4.2). No monicity of <span class="math" data-tex="\(f\)">\(f\)</span>, epicity of <span class="math" data-tex="\(g\)">\(g\)</span>, or vanishing of <span class="math" data-tex="\(gf\)">\(gf\)</span> was introduced.</p>
+<p>It remains to prepend <span class="math" data-tex="\(0\to K_f\)">\(0\to K_f\)</span>. The arrow <span class="math" data-tex="\(a\)">\(a\)</span> is monic because <span class="math" data-tex="\(k_{gf}a=k_f\)">\(k_{gf}a=k_f\)</span> is monic. For an arbitrary <span class="math" data-tex="\(t:W\to K_{gf}\)">\(t:W\to K_{gf}\)</span> with <span class="math" data-tex="\(bt=0\)">\(bt=0\)</span>, equation (4.1) gives <span class="math" data-tex="\(fk_{gf}t=0\)">\(fk_{gf}t=0\)</span>. There is a unique <span class="math" data-tex="\(r:W\to K_f\)">\(r:W\to K_f\)</span> with <span class="math" data-tex="\(k_fr=k_{gf}t\)">\(k_fr=k_{gf}t\)</span>. Monicity of <span class="math" data-tex="\(k_{gf}\)">\(k_{gf}\)</span> gives <span class="math" data-tex="\(ar=t\)">\(ar=t\)</span>. Uniqueness follows from monicity of <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(a\)">\(a\)</span> is the kernel of <span class="math" data-tex="\(b\)">\(b\)</span>, completing (4.3)–(4.4).</p>
+<p>The entire sequence is natural in a commuting pair of squares between two composable pairs. More explicitly, if <span class="math" data-tex="\(\alpha:X\to X&#x27;\)">\(\alpha:X\to X&#x27;\)</span>, <span class="math" data-tex="\(\beta:Y\to Y&#x27;\)">\(\beta:Y\to Y&#x27;\)</span>, <span class="math" data-tex="\(\gamma:Z\to Z&#x27;\)">\(\gamma:Z\to Z&#x27;\)</span> satisfy <span class="math" data-tex="\(\beta f=f&#x27;\alpha\)">\(\beta f=f&#x27;\alpha\)</span> and <span class="math" data-tex="\(\gamma g=g&#x27;\beta\)">\(\gamma g=g&#x27;\beta\)</span>, universality induces maps between all six kernel and cokernel objects. For <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, composing with the target kernel inclusions reduces the required equalities to these two square equations. For <span class="math" data-tex="\(c\)">\(c\)</span>, its formula <span class="math" data-tex="\(q_fk_g\)">\(q_fk_g\)</span> does the same. For <span class="math" data-tex="\(d,e\)">\(d,e\)</span>, precomposing with the source cokernel epimorphisms reduces them to the square equations and the defining formulas in (4.2). Monicity and epicity then give the required equalities. Thus no choice of element representatives is needed for the connecting map.</p>
+<h2 id="5-kernels-in-a-diagram-with-open-right-ends">5. Kernels in a diagram with open right ends</h2>
+<p>Consider three exact rows, indexed by <span class="math" data-tex="\(i=0,1,2\)">\(i=0,1,2\)</span></p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow L_i\xrightarrow{a_i}M_i
+\xrightarrow{b_i}R_i,
+\tag{5.1}
+\]">\[
+0\longrightarrow L_i\xrightarrow{a_i}M_i
+\xrightarrow{b_i}R_i,
+\tag{5.1}
+\]</span>
+<p>so that each <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is the kernel of <span class="math" data-tex="\(b_i\)">\(b_i\)</span>. Between consecutive rows let the vertical arrows be <span class="math" data-tex="\(\ell_i:L_i\to L_{i+1}\)">\(\ell_i:L_i\to L_{i+1}\)</span>, <span class="math" data-tex="\(m_i:M_i\to M_{i+1}\)">\(m_i:M_i\to M_{i+1}\)</span>, and <span class="math" data-tex="\(r_i:R_i\to R_{i+1}\)">\(r_i:R_i\to R_{i+1}\)</span>, for <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>. Assume every square commutes:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{i+1}\ell_i=m_i a_i,\\
+b_{i+1}m_i=r_i b_i.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+a_{i+1}\ell_i=m_i a_i,\\
+b_{i+1}m_i=r_i b_i.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p><strong>Theorem 5.1.</strong> Suppose <span class="math" data-tex="\(0\to M_0\xrightarrow{m_0}M_1\xrightarrow{m_1}M_2\)">\(0\to M_0\xrightarrow{m_0}M_1\xrightarrow{m_1}M_2\)</span> is exact and <span class="math" data-tex="\(r_0\)">\(r_0\)</span> is monic. Then</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow L_0\xrightarrow{\ell_0}L_1
+\xrightarrow{\ell_1}L_2
+\tag{5.3}
+\]">\[
+0\longrightarrow L_0\xrightarrow{\ell_0}L_1
+\xrightarrow{\ell_1}L_2
+\tag{5.3}
+\]</span>
+<p>is exact. In particular the conclusion holds if the right column <span class="math" data-tex="\(0\to R_0\to R_1\to R_2\)">\(0\to R_0\to R_1\to R_2\)</span> is exact.</p>
+<p><strong>Proof.</strong> First, <span class="math" data-tex="\(a_2\ell_1\ell_0=m_1m_0a_0=0\)">\(a_2\ell_1\ell_0=m_1m_0a_0=0\)</span>. Since <span class="math" data-tex="\(a_2\)">\(a_2\)</span> is monic, the left column is a complex. The equality <span class="math" data-tex="\(a_1\ell_0=m_0a_0\)">\(a_1\ell_0=m_0a_0\)</span>, with both <span class="math" data-tex="\(m_0\)">\(m_0\)</span> and <span class="math" data-tex="\(a_0\)">\(a_0\)</span> monic, makes <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> monic.</p>
+<p>Take an arbitrary <span class="math" data-tex="\(t:W\to L_1\)">\(t:W\to L_1\)</span> with <span class="math" data-tex="\(\ell_1t=0\)">\(\ell_1t=0\)</span>. Then <span class="math" data-tex="\(m_1a_1t=a_2\ell_1t=0\)">\(m_1a_1t=a_2\ell_1t=0\)</span>. The middle column is a kernel sequence, so there is a unique <span class="math" data-tex="\(s:W\to M_0\)">\(s:W\to M_0\)</span> such that <span class="math" data-tex="\(m_0s=a_1t\)">\(m_0s=a_1t\)</span>. Next,</p>
+<span class="math math-display" data-tex="\[
+r_0b_0s=b_1m_0s=b_1a_1t=0.
+\tag{5.4}
+\]">\[
+r_0b_0s=b_1m_0s=b_1a_1t=0.
+\tag{5.4}
+\]</span>
+<p>Monicity of <span class="math" data-tex="\(r_0\)">\(r_0\)</span> gives <span class="math" data-tex="\(b_0s=0\)">\(b_0s=0\)</span>. Row 0 is a kernel sequence, so there is a unique <span class="math" data-tex="\(u:W\to L_0\)">\(u:W\to L_0\)</span> with <span class="math" data-tex="\(a_0u=s\)">\(a_0u=s\)</span>. Finally,</p>
+<span class="math math-display" data-tex="\[
+a_1\ell_0u=m_0a_0u=m_0s=a_1t.
+\tag{5.5}
+\]">\[
+a_1\ell_0u=m_0a_0u=m_0s=a_1t.
+\tag{5.5}
+\]</span>
+<p>Monicity of <span class="math" data-tex="\(a_1\)">\(a_1\)</span> gives <span class="math" data-tex="\(\ell_0u=t\)">\(\ell_0u=t\)</span>; monicity of <span class="math" data-tex="\(\ell_0\)">\(\ell_0\)</span> gives uniqueness. Section 1 therefore proves (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is no terminal zero in (5.1), and none is needed: the maps <span class="math" data-tex="\(b_i\)">\(b_i\)</span> may fail to be epic. The proof uses only initial monicity in the right column, so it proves more than the version with both middle and right columns exact. It makes no claim of exactness at <span class="math" data-tex="\(L_2\)">\(L_2\)</span>. Exercise 4 supplies a concrete diagram and shows how the conclusion can fail if <span class="math" data-tex="\(r_0\)">\(r_0\)</span> loses monicity.</p>
+<h2 id="6-four-exercises-and-complete-solutions">6. Four exercises and complete solutions</h2>
+<p><strong>Exercise 1 (calculation and diagnosis).</strong> Let <span class="math" data-tex="\(m,n\)">\(m,n\)</span> be positive integers and put <span class="math" data-tex="\(d=\gcd(m,n)\)">\(d=\gcd(m,n)\)</span>. Form the self-pushout of <span class="math" data-tex="\(i:\mathbb Z\hookrightarrow\mathbb Z\)">\(i:\mathbb Z\hookrightarrow\mathbb Z\)</span>, <span class="math" data-tex="\(i(t)=nt\)">\(i(t)=nt\)</span>. Apply the tensor functor <span class="math" data-tex="\(F(A)=A\otimes\mathbb Z/m\)">\(F(A)=A\otimes\mathbb Z/m\)</span>, with tensor product over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Compute the difference of the two arrows out of <span class="math" data-tex="\(F\mathbb Z\)">\(F\mathbb Z\)</span>, its kernel, and the image and kernel of <span class="math" data-tex="\(Fi\)">\(Fi\)</span>. For which <span class="math" data-tex="\(m,n\)">\(m,n\)</span> is this particular fork exact? Does equality of the middle image and kernel suffice?</p>
+<p><strong>Solution.</strong> The cokernel of <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(\mathbb Z/n\)">\(\mathbb Z/n\)</span>. By (2.1), the doubled object is <span class="math" data-tex="\(\mathbb Z\oplus\mathbb Z/n\)">\(\mathbb Z\oplus\mathbb Z/n\)</span>. We have natural identifications</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F\mathbb Z=\mathbb Z/m,\\
+F(\mathbb Z/n)\cong\mathbb Z/d,\\
+FP\cong\mathbb Z/m\oplus\mathbb Z/d.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+F\mathbb Z=\mathbb Z/m,\\
+F(\mathbb Z/n)\cong\mathbb Z/d,\\
+FP\cong\mathbb Z/m\oplus\mathbb Z/d.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>For the second identification, tensor the generators and relation presentation of <span class="math" data-tex="\(\mathbb Z/n\)">\(\mathbb Z/n\)</span>: its tensor product is <span class="math" data-tex="\((\mathbb Z/m)/n(\mathbb Z/m)\)">\((\mathbb Z/m)/n(\mathbb Z/m)\)</span>. The subgroup generated by <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span> is the subgroup generated by <span class="math" data-tex="\(d\)">\(d\)</span>, since Bezout gives <span class="math" data-tex="\(d=an+bm\)">\(d=an+bm\)</span>. Its quotient is <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>. Equivalently, the mutually inverse tensor maps send <span class="math" data-tex="\(\bar a\otimes\bar b\)">\(\bar a\otimes\bar b\)</span> to <span class="math" data-tex="\(\overline{ab}\)">\(\overline{ab}\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span>, and the generator <span class="math" data-tex="\(\bar1\)">\(\bar1\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\(\bar1\otimes\bar1\)">\(\bar1\otimes\bar1\)</span>. The relation <span class="math" data-tex="\(d=an+bm\)">\(d=an+bm\)</span> makes the latter well-defined.</p>
+<p>Under (6.1), the two arrows are <span class="math" data-tex="\(x\mapsto(x,0)\)">\(x\mapsto(x,0)\)</span> and <span class="math" data-tex="\(x\mapsto(x,\bar x)\)">\(x\mapsto(x,\bar x)\)</span>. Their difference is <span class="math" data-tex="\(x\mapsto(0,\bar x)\)">\(x\mapsto(0,\bar x)\)</span>, with <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> taken modulo <span class="math" data-tex="\(d\)">\(d\)</span>. Hence its kernel is <span class="math" data-tex="\(d(\mathbb Z/m)\)">\(d(\mathbb Z/m)\)</span>. The map <span class="math" data-tex="\(Fi\)">\(Fi\)</span> is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, whose image is exactly this same subgroup.</p>
+<p>Writing <span class="math" data-tex="\(m=dm&#x27;\)">\(m=dm&#x27;\)</span>, <span class="math" data-tex="\(n=dn&#x27;\)">\(n=dn&#x27;\)</span>, with <span class="math" data-tex="\(m&#x27;,n&#x27;\)">\(m&#x27;,n&#x27;\)</span> coprime, its kernel consists of the multiples of <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> modulo <span class="math" data-tex="\(m\)">\(m\)</span>: divisibility <span class="math" data-tex="\(m\mid nx\)">\(m\mid nx\)</span> is equivalent to <span class="math" data-tex="\(m&#x27;\mid x\)">\(m&#x27;\mid x\)</span>. This kernel has <span class="math" data-tex="\(d\)">\(d\)</span> elements. Thus <span class="math" data-tex="\(Fi\)">\(Fi\)</span> is monic exactly when <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. The tested fork is exact precisely in that case. For <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, it has middle image equal to middle kernel, but its first arrow is not monic, so it is not an equalizer fork. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> all objects here are zero; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the map <span class="math" data-tex="\(i\)">\(i\)</span> is the identity. Both give <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and pass the test, as required.</p>
+<p><strong>Exercise 2 (a missing quotient).</strong> Let <span class="math" data-tex="\(m,n\)">\(m,n\)</span> be positive and let <span class="math" data-tex="\(T_m(A)=A[m]=\{a\in A:ma=0\}\)">\(T_m(A)=A[m]=\{a\in A:ma=0\}\)</span>, viewed as the additive functor <span class="math" data-tex="\(\operatorname{Hom}(\mathbb Z/m,-)\)">\(\operatorname{Hom}(\mathbb Z/m,-)\)</span> on abelian groups. Apply it to the kernel pair of <span class="math" data-tex="\(q:\mathbb Z\twoheadrightarrow\mathbb Z/n\)">\(q:\mathbb Z\twoheadrightarrow\mathbb Z/n\)</span>. When is the resulting cofork exact? Use the answer to decide whether <span class="math" data-tex="\(T_m\)">\(T_m\)</span> can be right exact when <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span>.</p>
+<p><strong>Solution.</strong> The kernel of <span class="math" data-tex="\(q\)">\(q\)</span> is <span class="math" data-tex="\(n\mathbb Z\)">\(n\mathbb Z\)</span>, embedded by inclusion. Its kernel pair is <span class="math" data-tex="\(\mathbb Z\oplus n\mathbb Z\)">\(\mathbb Z\oplus n\mathbb Z\)</span>, with projections <span class="math" data-tex="\((x,k)\mapsto x\)">\((x,k)\mapsto x\)</span> and <span class="math" data-tex="\((x,k)\mapsto x+k\)">\((x,k)\mapsto x+k\)</span>. Both this direct sum and <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> are torsion-free, so their <span class="math" data-tex="\(m\)">\(m\)</span>-torsion groups vanish.</p>
+<p>Put <span class="math" data-tex="\(d=\gcd(m,n)\)">\(d=\gcd(m,n)\)</span>, and write <span class="math" data-tex="\(n=dn&#x27;\)">\(n=dn&#x27;\)</span>, <span class="math" data-tex="\(m=dm&#x27;\)">\(m=dm&#x27;\)</span>. A residue <span class="math" data-tex="\(x\)">\(x\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span> is killed by <span class="math" data-tex="\(m\)">\(m\)</span> exactly when <span class="math" data-tex="\(n&#x27;\mid x\)">\(n&#x27;\mid x\)</span>, since <span class="math" data-tex="\(m&#x27;,n&#x27;\)">\(m&#x27;,n&#x27;\)</span> are coprime. Therefore <span class="math" data-tex="\((\mathbb Z/n)[m]\)">\((\mathbb Z/n)[m]\)</span> is generated by <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span>, and is cyclic of order <span class="math" data-tex="\(d\)">\(d\)</span>. The image cofork is consequently</p>
+<span class="math math-display" data-tex="\[
+0\rightrightarrows0\longrightarrow\mathbb Z/d.
+\tag{6.2}
+\]">\[
+0\rightrightarrows0\longrightarrow\mathbb Z/d.
+\tag{6.2}
+\]</span>
+<p>The cokernel of the difference <span class="math" data-tex="\(0\to0\)">\(0\to0\)</span> is zero, so this is an exact cofork exactly when <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. For <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span> its last arrow is not epic. Taking <span class="math" data-tex="\(n=m&gt;1\)">\(n=m&gt;1\)</span> gives a failed epimorphism test, and Theorem 3.2 shows that <span class="math" data-tex="\(T_m\)">\(T_m\)</span> is not right exact. When <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(T_m\)">\(T_m\)</span> is the zero functor, which is exact. When <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span> but <span class="math" data-tex="\(m,n\)">\(m,n\)</span> are coprime, this particular cofork passes; that alone says nothing about all the other tests required for right exactness.</p>
+<p><strong>Exercise 3 (a composition obstruction).</strong> Take</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f:\mathbb Z\to\mathbb Z^2,\qquad f(t)=(2t,0),\\
+g:\mathbb Z^2\to\mathbb Z,\\
+g(a,b)=3a+2b.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+f:\mathbb Z\to\mathbb Z^2,\qquad f(t)=(2t,0),\\
+g:\mathbb Z^2\to\mathbb Z,\\
+g(a,b)=3a+2b.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>Compute all six objects and all arrows of (4.3)–(4.4). Verify its nontrivial exactness directly, including the map from <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> to <span class="math" data-tex="\(Q_{gf}\)">\(Q_{gf}\)</span>.</p>
+<p><strong>Solution.</strong> Both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(gf:t\mapsto6t\)">\(gf:t\mapsto6t\)</span> are injective, so <span class="math" data-tex="\(K_f=K_{gf}=0\)">\(K_f=K_{gf}=0\)</span>. The equation <span class="math" data-tex="\(3a+2b=0\)">\(3a+2b=0\)</span> forces <span class="math" data-tex="\(a=2t\)">\(a=2t\)</span>, <span class="math" data-tex="\(b=-3t\)">\(b=-3t\)</span>, uniquely, so <span class="math" data-tex="\(K_g\cong\mathbb Z\)">\(K_g\cong\mathbb Z\)</span>, embedded by <span class="math" data-tex="\(t\mapsto(2t,-3t)\)">\(t\mapsto(2t,-3t)\)</span>. The cokernels are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_f\cong\mathbb Z/2\oplus\mathbb Z,\\
+Q_{gf}\cong\mathbb Z/6,\qquad Q_g=0.
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+Q_f\cong\mathbb Z/2\oplus\mathbb Z,\\
+Q_{gf}\cong\mathbb Z/6,\qquad Q_g=0.
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>For <span class="math" data-tex="\(Q_g=0\)">\(Q_g=0\)</span>, note that <span class="math" data-tex="\(g(1,-1)=1\)">\(g(1,-1)=1\)</span>, so <span class="math" data-tex="\(g\)">\(g\)</span> is onto. The first two kernel arrows have zero domain. The map <span class="math" data-tex="\(c=q_fk_g\)">\(c=q_fk_g\)</span> is <span class="math" data-tex="\(t\mapsto(0,-3t)\)">\(t\mapsto(0,-3t)\)</span>. The defining formula for <span class="math" data-tex="\(d\)">\(d\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+d(\bar a,b)=\overline{3a+2b}\quad\text{in }\mathbb Z/6.
+\tag{6.5}
+\]">\[
+d(\bar a,b)=\overline{3a+2b}\quad\text{in }\mathbb Z/6.
+\tag{6.5}
+\]</span>
+<p>Changing the integer representative <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(2s\)">\(2s\)</span> changes <span class="math" data-tex="\(3a+2b\)">\(3a+2b\)</span> by <span class="math" data-tex="\(6s\)">\(6s\)</span>, so the formula is well-defined. The arrow <span class="math" data-tex="\(e\)">\(e\)</span> is the unique map to zero. Thus the nontrivial portion is</p>
+<span class="math math-display" data-tex="\[
+0\to\mathbb Z
+\xrightarrow{c}
+\mathbb Z/2\oplus\mathbb Z
+\xrightarrow{d}\mathbb Z/6\to0.
+\tag{6.6}
+\]">\[
+0\to\mathbb Z
+\xrightarrow{c}
+\mathbb Z/2\oplus\mathbb Z
+\xrightarrow{d}\mathbb Z/6\to0.
+\tag{6.6}
+\]</span>
+<p>The first map is injective. If <span class="math" data-tex="\(d(\bar a,b)=0\)">\(d(\bar a,b)=0\)</span>, reduction modulo 2 gives <span class="math" data-tex="\(\bar a=0\)">\(\bar a=0\)</span>. Choosing <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the remaining condition is <span class="math" data-tex="\(6\mid2b\)">\(6\mid2b\)</span>, hence <span class="math" data-tex="\(3\mid b\)">\(3\mid b\)</span>. These are exactly the pairs <span class="math" data-tex="\((0,-3t)\)">\((0,-3t)\)</span>. Finally <span class="math" data-tex="\(d(\bar1,-1)=\bar1\)">\(d(\bar1,-1)=\bar1\)</span>, so <span class="math" data-tex="\(d\)">\(d\)</span> is onto. This checks every nonzero exactness condition. The composite <span class="math" data-tex="\(gf\)">\(gf\)</span> is nonzero, demonstrating that this sequence of defects does not require the original pair to be a complex.</p>
+<p><strong>Exercise 4 (kernel columns and a necessary hypothesis).</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, use <span class="math" data-tex="\(M_0=R_0=k^2\)">\(M_0=R_0=k^2\)</span>, <span class="math" data-tex="\(M_1=R_1=k^3\)">\(M_1=R_1=k^3\)</span>, and <span class="math" data-tex="\(M_2=R_2=k\)">\(M_2=R_2=k\)</span>. In each vertical column use the inclusion <span class="math" data-tex="\((x,y)\mapsto(x,y,0)\)">\((x,y)\mapsto(x,y,0)\)</span>, followed by <span class="math" data-tex="\((x,y,z)\mapsto z\)">\((x,y,z)\mapsto z\)</span>. Define the row maps by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_0(a,b)=(a,0),\\
+b_1(a,b,c)=(a,0,c),\\
+b_2=1_k.
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+b_0(a,b)=(a,0),\\
+b_1(a,b,c)=(a,0,c),\\
+b_2=1_k.
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>Find their kernels and the induced left column, and check the conclusion of Theorem 5.1 despite failure of row surjectivity. Then find a diagram with exact middle column and kernel-exact rows for which dropping monicity of <span class="math" data-tex="\(r_0\)">\(r_0\)</span> makes the conclusion false.</p>
+<p><strong>Solution.</strong> The two nontrivial squares commute: both composites from <span class="math" data-tex="\(M_0\)">\(M_0\)</span> to <span class="math" data-tex="\(R_1\)">\(R_1\)</span> send <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\((a,0,0)\)">\((a,0,0)\)</span>; both from <span class="math" data-tex="\(M_1\)">\(M_1\)</span> to <span class="math" data-tex="\(R_2\)">\(R_2\)</span> send <span class="math" data-tex="\((a,b,c)\)">\((a,b,c)\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span>. Each middle and right column is exact at its first two positions: the first arrow is injective and its image is exactly the kernel of the last-coordinate projection.</p>
+<p>Identify <span class="math" data-tex="\(L_0\cong k\)">\(L_0\cong k\)</span> by <span class="math" data-tex="\(b\mapsto(0,b)\)">\(b\mapsto(0,b)\)</span>, and <span class="math" data-tex="\(L_1\cong k\)">\(L_1\cong k\)</span> by <span class="math" data-tex="\(b\mapsto(0,b,0)\)">\(b\mapsto(0,b,0)\)</span>. We have <span class="math" data-tex="\(L_2=0\)">\(L_2=0\)</span>. The induced arrows are the identity <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span> and the zero map <span class="math" data-tex="\(k\to0\)">\(k\to0\)</span>, so the kernel column is <span class="math" data-tex="\(0\to k\xrightarrow{1}k\to0\)">\(0\to k\xrightarrow{1}k\to0\)</span>, which is exact. Yet <span class="math" data-tex="\(b_0\)">\(b_0\)</span> misses <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and <span class="math" data-tex="\(b_1\)">\(b_1\)</span> misses <span class="math" data-tex="\((0,1,0)\)">\((0,1,0)\)</span>. Thus the rows are the kernel sequences specified in (5.1), with no terminal zero that could assert surjectivity.</p>
+<p>For failure without monicity, take the middle column <span class="math" data-tex="\(M_0=k\xrightarrow{1}M_1=k\to M_2=0\)">\(M_0=k\xrightarrow{1}M_1=k\to M_2=0\)</span>. Take the right column <span class="math" data-tex="\(R_0=k\to R_1=0\to R_2=0\)">\(R_0=k\to R_1=0\to R_2=0\)</span>, so <span class="math" data-tex="\(r_0=0\)">\(r_0=0\)</span> is not monic. Use <span class="math" data-tex="\(b_0=1_k\)">\(b_0=1_k\)</span>, <span class="math" data-tex="\(b_1:k\to0\)">\(b_1:k\to0\)</span> zero, and the unique <span class="math" data-tex="\(b_2:0\to0\)">\(b_2:0\to0\)</span>. The squares commute, and the row kernels are <span class="math" data-tex="\(L_0=0\)">\(L_0=0\)</span>, <span class="math" data-tex="\(L_1=k\)">\(L_1=k\)</span>, <span class="math" data-tex="\(L_2=0\)">\(L_2=0\)</span>. The induced left column <span class="math" data-tex="\(0\to0\to k\to0\)">\(0\to0\to k\to0\)</span> is not exact at <span class="math" data-tex="\(k\)">\(k\)</span>: the preceding image is zero while the following kernel is all of <span class="math" data-tex="\(k\)">\(k\)</span>. This is exactly the point where (5.4) would require cancellation of <span class="math" data-tex="\(r_0\)">\(r_0\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://stacks.math.columbia.edu/tag/05AA">The Stacks Project, Lemma 12.5.8</a>, for the two Hom tests.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/010H">The Stacks Project, Lemma 12.5.17</a>, for the weak-row snake lemma used in Section 4.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/010M">The Stacks Project, Section 12.7</a>, especially Lemma 12.7.2, for the retained additive exactness criteria.</li>
+<li><a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>, Section 3, for the ordinary doubled-object constructions.</li>
+<li><a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>, Lemma 2.1, for preservation of kernels and cokernels by an exact additive functor.</li>
+<li>The Stacks Project, <a href="https://stacks.math.columbia.edu/tag/010N">Lemma 12.7.2</a>, gives both directions of the short-exact criteria used in Section 1. <a href="https://stacks.math.columbia.edu/tag/010H">Lemma 12.5.17</a> gives the weak-row snake construction used in Section 4, with the maps and connecting-arrow sign identified there. The doubled-object arguments and four exercise solutions are supplied in this lesson and its precise owned prerequisites.</li>
+</ul>
+</main></body></html>

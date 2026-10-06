@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unbounded regular operators · Hilbert C*-modules and Morita equivalence</title>
+<meta name="description" content="A lesson of the course Hilbert C*-modules and Morita equivalence. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/hilbert-c-star-modules-and-morita-equivalence/unbounded-regular-operators.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert C*-modules and Morita equivalence</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="unbounded-regular-operators">Unbounded regular operators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An unbounded differential operator needs a domain, and its domain is part of the operator. On a Hilbert module, closedness and a densely defined adjoint still do not give all the familiar Hilbert-space consequences. Regularity supplies the missing graph decomposition. It lets us replace an unbounded operator by a bounded contraction without losing its domain, and gives self-adjoint operators resolvents and continuous functional calculus.</p>
+<p>We use <a href="adjointable-operators.html">Adjointable operators</a>, the dense polar-unitary lemma in <a href="kasparovs-stabilization-theorem.html">Kasparov's stabilization theorem</a>, <a href="tensor-products-and-c-star-correspondences.html">Tensor products and C*-correspondences</a>, and <a href="fredholm-operators-and-the-k0-index.html">Fredholm operators and the K₀ index</a>. Coefficient algebras and modules are arbitrary unless an additional hypothesis is stated. Inner products are linear in the second variable.</p>
+<h2 id="1-domains-adjoints-and-graphs">1. Domains, adjoints and graphs</h2>
+<p>A densely defined operator <span class="math" data-tex="\(T\)">\(T\)</span> on a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(E\)">\(E\)</span> means a right <span class="math" data-tex="\(A\)">\(A\)</span>-linear operator on a dense <span class="math" data-tex="\(A\)">\(A\)</span>-submodule <span class="math" data-tex="\(\operatorname{Dom}T\)">\(\operatorname{Dom}T\)</span>. Its adjoint has domain
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}T^*=
+\{y\in E:\ \exists z\in E,\ 
+\langle Tx,y\rangle=\langle x,z\rangle
+\text{ for all }x\in\operatorname{Dom}T\},
+\tag{1.1}
+\]">\[
+\operatorname{Dom}T^*=
+\{y\in E:\ \exists z\in E,\ 
+\langle Tx,y\rangle=\langle x,z\rangle
+\text{ for all }x\in\operatorname{Dom}T\},
+\tag{1.1}
+\]</span>
+and <span class="math" data-tex="\(T^*y=z\)">\(T^*y=z\)</span>. Density makes <span class="math" data-tex="\(z\)">\(z\)</span> unique. The adjoint is closed: convergence of <span class="math" data-tex="\(y_n\)">\(y_n\)</span> and <span class="math" data-tex="\(T^*y_n\)">\(T^*y_n\)</span> permits passage to the limit in (1.1). When its domain is dense, <span class="math" data-tex="\(T^{**}\)">\(T^{**}\)</span> is defined and extends <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Closedness means that the graph
+<span class="math math-display" data-tex="\[
+G(T)=\{(x,Tx):x\in\operatorname{Dom}T\}\subseteq E\oplus E
+\]">\[
+G(T)=\{(x,Tx):x\in\operatorname{Dom}T\}\subseteq E\oplus E
+\]</span>
+is closed. It then has the complete graph inner product
+<span class="math" data-tex="\(\langle x,y\rangle_T=\langle x,y\rangle+\langle Tx,Ty\rangle\)">\(\langle x,y\rangle_T=\langle x,y\rangle+\langle Tx,Ty\rangle\)</span>.
+A core is a submodule of the domain dense for this graph norm.</p>
+<p><strong>Definition 1.1.</strong> A regular operator is closed and densely defined, its adjoint is densely defined, and
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{ran}(1+T^*T)}=E.
+\tag{1.2}
+\]">\[
+\overline{\operatorname{ran}(1+T^*T)}=E.
+\tag{1.2}
+\]</span>
+The domain of the product is
+<span class="math" data-tex="\(\{x\in\operatorname{Dom}T:Tx\in\operatorname{Dom}T^*\}\)">\(\{x\in\operatorname{Dom}T:Tx\in\operatorname{Dom}T^*\}\)</span>.
+Symmetry means <span class="math" data-tex="\(T\subseteq T^*\)">\(T\subseteq T^*\)</span>; self-adjointness means equality of operators, including domains.</p>
+<p><strong>Theorem 1.2 (The graph criterion).</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be closed and densely defined, with densely defined adjoint. Put <span class="math" data-tex="\(v(x,y)=(-y,x)\)">\(v(x,y)=(-y,x)\)</span>. Then <span class="math" data-tex="\(T\)">\(T\)</span> is regular exactly when
+<span class="math math-display" data-tex="\[
+E\oplus E=G(T)\oplus vG(T^*)
+\tag{1.3}
+\]">\[
+E\oplus E=G(T)\oplus vG(T^*)
+\tag{1.3}
+\]</span>
+as an orthogonal direct sum. In that case <span class="math" data-tex="\(T^{**}=T\)">\(T^{**}=T\)</span>, <span class="math" data-tex="\(T^*\)">\(T^*\)</span> is regular, and <span class="math" data-tex="\(1+T^*T\)">\(1+T^*T\)</span> and <span class="math" data-tex="\(1+TT^*\)">\(1+TT^*\)</span> are bijective.</p>
+<p><em>Proof.</em> The adjoint definition gives <span class="math" data-tex="\(G(T)^\perp=vG(T^*)\)">\(G(T)^\perp=vG(T^*)\)</span>. The sum of these two closed orthogonal submodules is closed: each component of a sum has norm at most the norm of the sum, by positivity of the inner products, so Cauchy sums have Cauchy components.</p>
+<p>For <span class="math" data-tex="\(x\in\operatorname{Dom}T^*T\)">\(x\in\operatorname{Dom}T^*T\)</span>,
+<span class="math math-display" data-tex="\[
+(x,Tx)+v(-Tx,-T^*Tx)=((1+T^*T)x,0).
+\]">\[
+(x,Tx)+v(-Tx,-T^*Tx)=((1+T^*T)x,0).
+\]</span>
+Regularity therefore puts <span class="math" data-tex="\(E\oplus0\)">\(E\oplus0\)</span> in the closed sum. For <span class="math" data-tex="\(y\in\operatorname{Dom}T^*\)">\(y\in\operatorname{Dom}T^*\)</span>, the vector <span class="math" data-tex="\(v(y,T^*y)=(-T^*y,y)\)">\(v(y,T^*y)=(-T^*y,y)\)</span> lies in the sum; adding <span class="math" data-tex="\((T^*y,0)\)">\((T^*y,0)\)</span> puts <span class="math" data-tex="\((0,y)\)">\((0,y)\)</span> there too. Density of <span class="math" data-tex="\(\operatorname{Dom}T^*\)">\(\operatorname{Dom}T^*\)</span> proves (1.3).</p>
+<p>Conversely, decompose <span class="math" data-tex="\((z,0)\)">\((z,0)\)</span> as <span class="math" data-tex="\((x,Tx)+(-T^*y,y)\)">\((x,Tx)+(-T^*y,y)\)</span>. The second coordinate gives <span class="math" data-tex="\(y=-Tx\)">\(y=-Tx\)</span>, so <span class="math" data-tex="\(x\in\operatorname{Dom}T^*T\)">\(x\in\operatorname{Dom}T^*T\)</span> and <span class="math" data-tex="\(z=(1+T^*T)x\)">\(z=(1+T^*T)x\)</span>. This proves surjectivity. Injectivity follows from
+<span class="math math-display" data-tex="\[
+\langle x,(1+T^*T)x\rangle
+=\langle x,x\rangle+\langle Tx,Tx\rangle:
+\]">\[
+\langle x,(1+T^*T)x\rangle
+=\langle x,x\rangle+\langle Tx,Tx\rangle:
+\]</span>
+if the left side is zero, positivity forces <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p>The graph is complemented, so <span class="math" data-tex="\(G(T)^{\perp\perp}=G(T)\)">\(G(T)^{\perp\perp}=G(T)\)</span>. The adjoint definition identifies this double orthogonal with <span class="math" data-tex="\(G(T^{**})\)">\(G(T^{**})\)</span>; hence <span class="math" data-tex="\(T^{**}=T\)">\(T^{**}=T\)</span>. Apply <span class="math" data-tex="\(v\)">\(v\)</span> to (1.3), interchange its summands, and repeat the preceding argument for <span class="math" data-tex="\(T^*\)">\(T^*\)</span>. This proves its regularity and bijectivity of <span class="math" data-tex="\(1+TT^*\)">\(1+TT^*\)</span>. ∎</p>
+<p>Thus regularity is stronger than closedness. The closed graph theorem for everywhere defined Banach-space maps does not assert that an unbounded closed graph is orthogonally complemented.</p>
+<h2 id="2-recovering-the-operator-from-a-contraction">2. Recovering the operator from a contraction</h2>
+<p><strong>Theorem 2.1 (Bounded transform).</strong> For regular <span class="math" data-tex="\(T\)">\(T\)</span>, set
+<span class="math math-display" data-tex="\[
+h=(1+T^*T)^{-1/2}.
+\]">\[
+h=(1+T^*T)^{-1/2}.
+\]</span>
+Then <span class="math" data-tex="\(h\in\mathcal L(E)\)">\(h\in\mathcal L(E)\)</span>, <span class="math" data-tex="\(hE=\operatorname{Dom}T\)">\(hE=\operatorname{Dom}T\)</span>, and
+<span class="math math-display" data-tex="\[
+F_T=Th\in\mathcal L(E),\qquad
+\|F_T\|\leq1,\qquad
+F_T^*=F_{T^*},\qquad h^2=1-F_T^*F_T.
+\tag{2.1}
+\]">\[
+F_T=Th\in\mathcal L(E),\qquad
+\|F_T\|\leq1,\qquad
+F_T^*=F_{T^*},\qquad h^2=1-F_T^*F_T.
+\tag{2.1}
+\]</span>
+The domain <span class="math" data-tex="\(\operatorname{Dom}T^*T\)">\(\operatorname{Dom}T^*T\)</span> is a core for <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the orthogonal graph projection and let
+<span class="math" data-tex="\(j:G(T)\to E\)">\(j:G(T)\to E\)</span> take the first coordinate. It is adjointable, with
+<span class="math" data-tex="\(j^*z=P(z,0)\)">\(j^*z=P(z,0)\)</span>. The computation in Theorem 1.2 shows
+<span class="math math-display" data-tex="\[
+j j^*=R=(1+T^*T)^{-1}.
+\tag{2.2}
+\]">\[
+j j^*=R=(1+T^*T)^{-1}.
+\tag{2.2}
+\]</span>
+In particular this inverse is positive, adjointable and contractive.</p>
+<p>Both <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(j^*\)">\(j^*\)</span> have dense range. For <span class="math" data-tex="\(j\)">\(j\)</span> this is density of the domain. For <span class="math" data-tex="\(j^*\)">\(j^*\)</span>, observe that
+<span class="math math-display" data-tex="\[
+P(0,y)=P(T^*y,0)\quad(y\in\operatorname{Dom}T^*),
+\]">\[
+P(0,y)=P(T^*y,0)\quad(y\in\operatorname{Dom}T^*),
+\]</span>
+because <span class="math" data-tex="\((-T^*y,y)\)">\((-T^*y,y)\)</span> is orthogonal to the graph. Density of that domain and <span class="math" data-tex="\(P(E\oplus E)=G(T)\)">\(P(E\oplus E)=G(T)\)</span> prove the assertion. Hence <span class="math" data-tex="\(R E=j j^*E\)">\(R E=j j^*E\)</span> is dense in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Apply the dense polar-unitary lemma to <span class="math" data-tex="\(j^*:E\to G(T)\)">\(j^*:E\to G(T)\)</span>. It gives a unitary <span class="math" data-tex="\(U:E\to G(T)\)">\(U:E\to G(T)\)</span> with <span class="math" data-tex="\(j^*=Uh\)">\(j^*=Uh\)</span>, where <span class="math" data-tex="\(h=R^{1/2}\)">\(h=R^{1/2}\)</span>. Taking adjoints gives <span class="math" data-tex="\(j=hU^*\)">\(j=hU^*\)</span>, so <span class="math" data-tex="\(jU=h\)">\(jU=h\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+Ux=(hx,Fx),\qquad F=\operatorname{pr}_2U\in\mathcal L(E).
+\tag{2.3}
+\]">\[
+Ux=(hx,Fx),\qquad F=\operatorname{pr}_2U\in\mathcal L(E).
+\tag{2.3}
+\]</span>
+Surjectivity of <span class="math" data-tex="\(U\)">\(U\)</span> proves <span class="math" data-tex="\(hE=\operatorname{Dom}T\)">\(hE=\operatorname{Dom}T\)</span>, and its graph membership gives <span class="math" data-tex="\(F=Th\)">\(F=Th\)</span>. Its isometry identity gives <span class="math" data-tex="\(h^2+F^*F=1\)">\(h^2+F^*F=1\)</span>. Also <span class="math" data-tex="\(j^*z=(Rz,TRz)\)">\(j^*z=(Rz,TRz)\)</span>; density of its range in the graph proves the core assertion.</p>
+<p>Apply the same construction to <span class="math" data-tex="\(T^*\)">\(T^*\)</span>, writing <span class="math" data-tex="\(l=(1+TT^*)^{-1/2}\)">\(l=(1+TT^*)^{-1/2}\)</span> and <span class="math" data-tex="\(F&#x27;=F_{T^*}\)">\(F&#x27;=F_{T^*}\)</span>. The two graph unitaries together give a unitary
+<span class="math math-display" data-tex="\[
+W=\begin{pmatrix}h&amp;-F&#x27;\\F&amp;l\end{pmatrix}.
+\]">\[
+W=\begin{pmatrix}h&amp;-F&#x27;\\F&amp;l\end{pmatrix}.
+\]</span>
+Its bottom-row identity gives <span class="math" data-tex="\(l^2=1-FF^*\)">\(l^2=1-FF^*\)</span>, while orthogonality of its columns gives <span class="math" data-tex="\(hF&#x27;=F^*l\)">\(hF&#x27;=F^*l\)</span>. Functional calculus applied to <span class="math" data-tex="\(F(F^*F)=(FF^*)F\)">\(F(F^*F)=(FF^*)F\)</span> gives <span class="math" data-tex="\(hF^*=F^*l\)">\(hF^*=F^*l\)</span>. Therefore <span class="math" data-tex="\(h(F&#x27;-F^*)=0\)">\(h(F&#x27;-F^*)=0\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> is positive with dense range, its kernel is zero, and <span class="math" data-tex="\(F&#x27;=F^*\)">\(F&#x27;=F^*\)</span>. This proves (2.1).</p>
+<p>The notation for <span class="math" data-tex="\(h\)">\(h\)</span> is justified by the bounded positive inverse (2.2), without assuming an unbounded spectral theorem in advance. Indeed <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span>, with domain <span class="math" data-tex="\(RE\)">\(RE\)</span>, is self-adjoint: the adjoint identity tested on <span class="math" data-tex="\(Rx\)">\(Rx\)</span> says that an adjoint-domain vector <span class="math" data-tex="\(y\)">\(y\)</span> equals <span class="math" data-tex="\(Rz\)">\(Rz\)</span>. Thus <span class="math" data-tex="\(T^*T=R^{-1}-1\)">\(T^*T=R^{-1}-1\)</span> is positive self-adjoint on that domain. ∎</p>
+<p><strong>Theorem 2.2 (Inverse bounded transform).</strong> The map <span class="math" data-tex="\(T\mapsto F_T\)">\(T\mapsto F_T\)</span> is a bijection from regular operators to contractions <span class="math" data-tex="\(F\in\mathcal L(E)\)">\(F\in\mathcal L(E)\)</span> for which <span class="math" data-tex="\(1-F^*F\)">\(1-F^*F\)</span> has dense range. Its inverse is
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}T=hE,\qquad T(hx)=Fx,\qquad
+h=(1-F^*F)^{1/2}.
+\tag{2.4}
+\]">\[
+\operatorname{Dom}T=hE,\qquad T(hx)=Fx,\qquad
+h=(1-F^*F)^{1/2}.
+\tag{2.4}
+\]</span></p>
+<p><em>Proof.</em> Density of <span class="math" data-tex="\((1-F^*F)E=h^2E\)">\((1-F^*F)E=h^2E\)</span> implies density of <span class="math" data-tex="\(hE\)">\(hE\)</span> and injectivity of <span class="math" data-tex="\(h\)">\(h\)</span>, so (2.4) is well defined on a dense domain. Put <span class="math" data-tex="\(l=(1-FF^*)^{1/2}\)">\(l=(1-FF^*)^{1/2}\)</span>. Polynomial approximation gives
+<span class="math" data-tex="\(Fh=lF\)">\(Fh=lF\)</span>. Thus <span class="math" data-tex="\(\overline{lE}\)">\(\overline{lE}\)</span> contains <span class="math" data-tex="\(FE\)">\(FE\)</span>, since <span class="math" data-tex="\(hE\)">\(hE\)</span> is dense. It contains <span class="math" data-tex="\(l^2E\)">\(l^2E\)</span> too, and
+<span class="math" data-tex="\(x=FF^*x+l^2x\)">\(x=FF^*x+l^2x\)</span> proves <span class="math" data-tex="\(\overline{lE}=E\)">\(\overline{lE}=E\)</span>.</p>
+<p>The matrix
+<span class="math math-display" data-tex="\[
+W_F=\begin{pmatrix}h&amp;-F^*\\F&amp;l\end{pmatrix}
+\tag{2.5}
+\]">\[
+W_F=\begin{pmatrix}h&amp;-F^*\\F&amp;l\end{pmatrix}
+\tag{2.5}
+\]</span>
+is unitary, by the defect identities and <span class="math" data-tex="\(hF^*=F^*l\)">\(hF^*=F^*l\)</span>. Its first column has range exactly the graph in (2.4), so that graph is closed. Its second column is its orthogonal complement. Applying the adjoint definition identifies that complement with
+<span class="math math-display" data-tex="\[
+\{(-T^*y,y):y\in\operatorname{Dom}T^*\}
+=\{(-F^*x,lx):x\in E\}.
+\]">\[
+\{(-T^*y,y):y\in\operatorname{Dom}T^*\}
+=\{(-F^*x,lx):x\in E\}.
+\]</span>
+Therefore <span class="math" data-tex="\(\operatorname{Dom}T^*=lE\)">\(\operatorname{Dom}T^*=lE\)</span> and <span class="math" data-tex="\(T^*(lx)=F^*x\)">\(T^*(lx)=F^*x\)</span>; in particular the adjoint domain is dense. Theorem 1.2 proves regularity.</p>
+<p>The upper-left entry of the graph projection, the product of the first column of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> with its adjoint, is <span class="math" data-tex="\(h^2\)">\(h^2\)</span>. Equation (2.2) then shows <span class="math" data-tex="\((1+T^*T)^{-1}=h^2\)">\((1+T^*T)^{-1}=h^2\)</span>, and <span class="math" data-tex="\(F_T=Th=F\)">\(F_T=Th=F\)</span>. Conversely (2.4) recovers any original regular operator by Theorem 2.1. ∎</p>
+<p>In particular a regular operator is self-adjoint exactly when its bounded transform is self-adjoint. For a bounded adjointable <span class="math" data-tex="\(T\)">\(T\)</span>, the definition reduces to the ordinary bounded functional calculus and regularity is automatic. A contraction with dense defect need not have an inverse modulus bounded below: that is exactly how an unbounded domain occurs.</p>
+<h2 id="3-resolvents-and-functional-calculus">3. Resolvents and functional calculus</h2>
+<p>Let <span class="math" data-tex="\(D=D^*\)">\(D=D^*\)</span> be regular, <span class="math" data-tex="\(F=F_D=F^*\)">\(F=F_D=F^*\)</span> and <span class="math" data-tex="\(h=(1-F^2)^{1/2}\)">\(h=(1-F^2)^{1/2}\)</span>. They commute, and <span class="math" data-tex="\(F^2+h^2=1\)">\(F^2+h^2=1\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> The operators <span class="math" data-tex="\(D\pm i:\operatorname{Dom}D\to E\)">\(D\pm i:\operatorname{Dom}D\to E\)</span> are bijective, with adjointable inverses of norm at most one. There is a nondegenerate *-homomorphism
+<span class="math math-display" data-tex="\[
+C_0(\mathbb R)\longrightarrow\mathcal L(E),\qquad f\longmapsto f(D),
+\tag{3.1}
+\]">\[
+C_0(\mathbb R)\longrightarrow\mathcal L(E),\qquad f\longmapsto f(D),
+\tag{3.1}
+\]</span>
+given by bounded functional calculus at <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(F\pm ih\)">\(F\pm ih\)</span> are mutually inverse unitaries,
+<span class="math math-display" data-tex="\[
+(D\pm i)h=F\pm ih,\qquad
+(D\pm i)^{-1}=h(F\mp ih).
+\tag{3.2}
+\]">\[
+(D\pm i)h=F\pm ih,\qquad
+(D\pm i)^{-1}=h(F\mp ih).
+\tag{3.2}
+\]</span>
+The range of <span class="math" data-tex="\(h\)">\(h\)</span> is exactly the domain of <span class="math" data-tex="\(D\)">\(D\)</span>, so these are two-sided inverses on the indicated domains.</p>
+<p>The homeomorphism
+<span class="math math-display" data-tex="\[
+b(t)=\frac{t}{\sqrt{1+t^2}}:\mathbb R\longrightarrow(-1,1)
+\]">\[
+b(t)=\frac{t}{\sqrt{1+t^2}}:\mathbb R\longrightarrow(-1,1)
+\]</span>
+identifies <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span> with the continuous functions on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> vanishing at both endpoints. For <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, define
+<span class="math math-display" data-tex="\[
+g_f(s)=
+\begin{cases}
+f\!\left(s/\sqrt{1-s^2}\right),&amp;|s|&lt;1,\\
+0,&amp;s=\pm1,
+\end{cases}
+\qquad f(D)=g_f(F).
+\tag{3.3}
+\]">\[
+g_f(s)=
+\begin{cases}
+f\!\left(s/\sqrt{1-s^2}\right),&amp;|s|&lt;1,\\
+0,&amp;s=\pm1,
+\end{cases}
+\qquad f(D)=g_f(F).
+\tag{3.3}
+\]</span>
+Continuity at the endpoints follows from vanishing at infinity. Bounded continuous functional calculus proves the *-homomorphism assertion and <span class="math" data-tex="\(\|f(D)\|\leq\|f\|_\infty\)">\(\|f(D)\|\leq\|f\|_\infty\)</span>. For <span class="math" data-tex="\(f(t)=(1+t^2)^{-1/2}\)">\(f(t)=(1+t^2)^{-1/2}\)</span>, its value is <span class="math" data-tex="\(h\)">\(h\)</span>, whose range is dense. Thus (3.1) is nondegenerate. Substituting the two resolvent functions in (3.3) agrees with (3.2). ∎</p>
+<p>The same argument for real <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>, or substitution in (3.3), gives
+<span class="math math-display" data-tex="\[
+(D\pm i\lambda)^{-1}\in\mathcal L(E),\qquad
+\|(D\pm i\lambda)^{-1}\|\leq|\lambda|^{-1}.
+\tag{3.4}
+\]">\[
+(D\pm i\lambda)^{-1}\in\mathcal L(E),\qquad
+\|(D\pm i\lambda)^{-1}\|\leq|\lambda|^{-1}.
+\tag{3.4}
+\]</span>
+More explicitly their formula is
+<span class="math math-display" data-tex="\[
+(D\pm i\lambda)^{-1}
+=h(F\mp i\lambda h)(F^2+\lambda^2h^2)^{-1}.
+\]">\[
+(D\pm i\lambda)^{-1}
+=h(F\mp i\lambda h)(F^2+\lambda^2h^2)^{-1}.
+\]</span>
+The last denominator is at least <span class="math" data-tex="\(\min(1,\lambda^2)1\)">\(\min(1,\lambda^2)1\)</span>. Thus <span class="math" data-tex="\(F\pm i\lambda h\)">\(F\pm i\lambda h\)</span> is invertible, and the displayed inverse has range exactly <span class="math" data-tex="\(hE=\operatorname{Dom}D\)">\(hE=\operatorname{Dom}D\)</span>. Multiplication can be checked on that graph parameter; the norm bound follows from the scalar resolvent function.</p>
+<p><strong>Proposition 3.2 (A resolvent criterion).</strong> A closed densely defined symmetric operator <span class="math" data-tex="\(D\)">\(D\)</span> is self-adjoint and regular if both <span class="math" data-tex="\(D+i\lambda\)">\(D+i\lambda\)</span> and <span class="math" data-tex="\(D-i\lambda\)">\(D-i\lambda\)</span> have dense range for one <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>.</p>
+<p><em>Proof.</em> Symmetry cancels the mixed terms in
+<span class="math math-display" data-tex="\[
+\langle(D\pm i\lambda)x,(D\pm i\lambda)x\rangle
+=\langle Dx,Dx\rangle+\lambda^2\langle x,x\rangle.
+\]">\[
+\langle(D\pm i\lambda)x,(D\pm i\lambda)x\rangle
+=\langle Dx,Dx\rangle+\lambda^2\langle x,x\rangle.
+\]</span>
+Thus each is bounded below by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and has closed range, using closedness of <span class="math" data-tex="\(D\)">\(D\)</span>. The dense ranges are therefore all of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>If <span class="math" data-tex="\(y\in\operatorname{Dom}D^*\)">\(y\in\operatorname{Dom}D^*\)</span>, choose <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span> with
+<span class="math" data-tex="\((D-i\lambda)x=(D^*-i\lambda)y\)">\((D-i\lambda)x=(D^*-i\lambda)y\)</span>. Then <span class="math" data-tex="\(y-x\)">\(y-x\)</span> lies in the kernel of <span class="math" data-tex="\(D^*-i\lambda\)">\(D^*-i\lambda\)</span>, which is orthogonal to the surjective range of <span class="math" data-tex="\(D+i\lambda\)">\(D+i\lambda\)</span>. It is zero. Thus <span class="math" data-tex="\(D=D^*\)">\(D=D^*\)</span>.</p>
+<p>The inverse operators <span class="math" data-tex="\(r_\pm=(D\pm i\lambda)^{-1}\)">\(r_\pm=(D\pm i\lambda)^{-1}\)</span> are bounded and mutually adjoint, by the defining inner-product identity. They commute, by expanding the resolvent identity; <span class="math" data-tex="\(R_\lambda=r_+r_-\)">\(R_\lambda=r_+r_-\)</span> is positive, has norm at most <span class="math" data-tex="\(\lambda^{-2}\)">\(\lambda^{-2}\)</span>, and is the inverse of <span class="math" data-tex="\(\lambda^2+D^2\)">\(\lambda^2+D^2\)</span> with range <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>. The bounded positive operator
+<span class="math math-display" data-tex="\[
+1+(1-\lambda^2)R_\lambda
+\]">\[
+1+(1-\lambda^2)R_\lambda
+\]</span>
+is invertible: it is at least <span class="math" data-tex="\(1\)">\(1\)</span> if <span class="math" data-tex="\(\lambda\leq1\)">\(\lambda\leq1\)</span>, and at least <span class="math" data-tex="\(\lambda^{-2}1\)">\(\lambda^{-2}1\)</span> if <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span>. Factoring <span class="math" data-tex="\(1+D^2\)">\(1+D^2\)</span> through <span class="math" data-tex="\(\lambda^2+D^2\)">\(\lambda^2+D^2\)</span> now proves its surjectivity. This is regularity. ∎</p>
+<p><strong>Corollary 3.3 (Bounded self-adjoint perturbations).</strong> If <span class="math" data-tex="\(D\)">\(D\)</span> is self-adjoint regular and <span class="math" data-tex="\(V=V^*\in\mathcal L(E)\)">\(V=V^*\in\mathcal L(E)\)</span>, then <span class="math" data-tex="\(D+V\)">\(D+V\)</span>, on <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>, is self-adjoint regular.</p>
+<p><em>Proof.</em> It is closed, densely defined and symmetric. For <span class="math" data-tex="\(\lambda&gt;\|V\|\)">\(\lambda&gt;\|V\|\)</span>,
+<span class="math math-display" data-tex="\[
+D+V\pm i\lambda
+=\bigl(1+V(D\pm i\lambda)^{-1}\bigr)(D\pm i\lambda).
+\]">\[
+D+V\pm i\lambda
+=\bigl(1+V(D\pm i\lambda)^{-1}\bigr)(D\pm i\lambda).
+\]</span>
+The first factor is invertible by the Neumann series, so both ranges are all of <span class="math" data-tex="\(E\)">\(E\)</span>. Proposition 3.2 applies. ∎</p>
+<h2 id="4-compact-resolvent-and-bounded-fredholm-models">4. Compact resolvent and bounded Fredholm models</h2>
+<p><strong>Theorem 4.1.</strong> For self-adjoint regular <span class="math" data-tex="\(D\)">\(D\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\((1+D^2)^{-1}\in\mathcal K(E)\)">\((1+D^2)^{-1}\in\mathcal K(E)\)</span>.</li>
+<li><span class="math" data-tex="\(f(D)\in\mathcal K(E)\)">\(f(D)\in\mathcal K(E)\)</span> for every <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>.</li>
+<li>Both resolvents <span class="math" data-tex="\((D\pm i)^{-1}\)">\((D\pm i)^{-1}\)</span> are compact.</li>
+</ol>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(r(t)=(1+t^2)^{-1}\)">\(r(t)=(1+t^2)^{-1}\)</span>. If <span class="math" data-tex="\(r(D)\)">\(r(D)\)</span> is compact, choose continuous compactly supported cutoffs <span class="math" data-tex="\(\chi_n\)">\(\chi_n\)</span> equal to one on <span class="math" data-tex="\([-n,n]\)">\([-n,n]\)</span>. For <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span>, <span class="math" data-tex="\(f_n=f\chi_n\)">\(f_n=f\chi_n\)</span> tends uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>, and
+<span class="math math-display" data-tex="\[
+f_n(D)=r(D)\bigl((1+t^2)f_n(t)\bigr)(D)
+\]">\[
+f_n(D)=r(D)\bigl((1+t^2)f_n(t)\bigr)(D)
+\]</span>
+is compact. The ideal is norm closed, proving <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>. The resolvent functions belong to <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, so <span class="math" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span>. Finally
+<span class="math" data-tex="\((1+D^2)^{-1}=(D+i)^{-1}(D-i)^{-1}\)">\((1+D^2)^{-1}=(D+i)^{-1}(D-i)^{-1}\)</span>, proving <span class="math" data-tex="\(3\Rightarrow1\)">\(3\Rightarrow1\)</span>. ∎</p>
+<p>When these conditions hold, <span class="math" data-tex="\(1-F_D^2\)">\(1-F_D^2\)</span> is compact, so <span class="math" data-tex="\(F_D\)">\(F_D\)</span> is Fredholm with itself as a parametrix. Its ungraded endomorphism index is zero: <span class="math" data-tex="\(F_D+i(1-F_D^2)\)">\(F_D+i(1-F_D^2)\)</span> is an invertible compact perturbation, since <span class="math" data-tex="\(s+i(1-s^2)\)">\(s+i(1-s^2)\)</span> has no zero on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. In the graded case the useful even index comes instead from the off-diagonal component: if
+<span class="math math-display" data-tex="\[
+E=E^+\oplus E^-,\qquad
+F_D=\begin{pmatrix}0&amp;(F_D^+)^*\\F_D^+&amp;0\end{pmatrix},
+\]">\[
+E=E^+\oplus E^-,\qquad
+F_D=\begin{pmatrix}0&amp;(F_D^+)^*\\F_D^+&amp;0\end{pmatrix},
+\]</span>
+then the two diagonal compact defects show that <span class="math" data-tex="\(F_D^+:E^+\to E^-\)">\(F_D^+:E^+\to E^-\)</span> is Fredholm. For countably generated modules its index is the Fredholm-triple class developed in the preceding lesson.</p>
+<p>Global compact resolvent is stronger than the condition needed for an unbounded Kasparov module. If <span class="math" data-tex="\(\phi:C\to\mathcal L(E)\)">\(\phi:C\to\mathcal L(E)\)</span> is a left action, the local condition is
+<span class="math math-display" data-tex="\[
+\phi(c)(1+D^2)^{-1}\in\mathcal K(E)\quad(c\in C).
+\tag{4.1}
+\]">\[
+\phi(c)(1+D^2)^{-1}\in\mathcal K(E)\quad(c\in C).
+\tag{4.1}
+\]</span>
+Equivalently <span class="math" data-tex="\(\phi(c)h\)">\(\phi(c)h\)</span> is compact for every <span class="math" data-tex="\(c\)">\(c\)</span>: indeed
+<span class="math math-display" data-tex="\[
+\left\|h-h^2(h+\varepsilon)^{-1}\right\|\leq\varepsilon
+\]">\[
+\left\|h-h^2(h+\varepsilon)^{-1}\right\|\leq\varepsilon
+\]</span>
+shows one implication by norm approximation, and multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> gives the other. If <span class="math" data-tex="\(C\)">\(C\)</span> is unital and acts unitally, taking <span class="math" data-tex="\(c=1\)">\(c=1\)</span> recovers global compact resolvent. It cannot be recovered that way for a general nonunital left algebra.</p>
+<p>For a countably generated graded <span class="math" data-tex="\(E\)">\(E\)</span>, an even action <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, an odd self-adjoint regular <span class="math" data-tex="\(D\)">\(D\)</span>, and a dense *-subalgebra <span class="math" data-tex="\(\mathcal C\subseteq C\)">\(\mathcal C\subseteq C\)</span> preserving <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> with bounded adjointable commutators <span class="math" data-tex="\([D,\phi(c)]\)">\([D,\phi(c)]\)</span>, condition (4.1) gives a bounded Kasparov module <span class="math" data-tex="\((E,\phi,F_D)\)">\((E,\phi,F_D)\)</span>. Here this means that <span class="math" data-tex="\(F_D\)">\(F_D\)</span> is odd and self-adjoint and that
+<span class="math math-display" data-tex="\[
+(1-F_D^2)\phi(c),\quad [F_D,\phi(c)]
+\quad\text{are compact for all }c\in C.
+\tag{4.2}
+\]">\[
+(1-F_D^2)\phi(c),\quad [F_D,\phi(c)]
+\quad\text{are compact for all }c\in C.
+\tag{4.2}
+\]</span>
+The exact programme dependency for this general local-compactness implication is <em>Unbounded Kasparov modules and spectral triples</em>, Section 2, in <em>Kasparov’s KK-theory</em>. Its assigned proof is planned and concerns precisely self-adjoint regular odd operators, local compactness and bounded commutators on a dense algebra. The graph and regularity results it needs are proved here independently; the planned transform proof is not used in those arguments. Blackadar, Proposition 17.11.3, and Mesland, Section 2.2, credit Baaj–Julg’s theorem. We do not import the assertion that global compact resolvent is necessary.</p>
+<p>For comparison, we can prove the commutator assertion directly in the global compact-resolvent case. Write <span class="math" data-tex="\(a=\phi(c)\)">\(a=\phi(c)\)</span>, <span class="math" data-tex="\(B=[D,a]\)">\(B=[D,a]\)</span> for <span class="math" data-tex="\(c\in\mathcal C\)">\(c\in\mathcal C\)</span>, and <span class="math" data-tex="\(q=\sqrt{1+\lambda^2}\)">\(q=\sqrt{1+\lambda^2}\)</span>. Domain preservation gives
+<span class="math math-display" data-tex="\[
+[(D\pm iq)^{-1},a]=-(D\pm iq)^{-1}B(D\pm iq)^{-1}.
+\tag{4.3}
+\]">\[
+[(D\pm iq)^{-1},a]=-(D\pm iq)^{-1}B(D\pm iq)^{-1}.
+\tag{4.3}
+\]</span>
+Both factors are compact by Theorem 4.1, and the norm is at most <span class="math" data-tex="\(\|B\|/q^2\)">\(\|B\|/q^2\)</span>. Since
+<span class="math math-display" data-tex="\[
+D(D^2+q^2)^{-1}
+=\tfrac12\bigl((D-iq)^{-1}+(D+iq)^{-1}\bigr),
+\]">\[
+D(D^2+q^2)^{-1}
+=\tfrac12\bigl((D-iq)^{-1}+(D+iq)^{-1}\bigr),
+\]</span>
+its commutator has the same bound and is compact. The scalar identity
+<span class="math math-display" data-tex="\[
+\frac{t}{\sqrt{1+t^2}}
+=\frac2\pi\int_0^\infty\frac{t}{1+t^2+\lambda^2}\,d\lambda
+\tag{4.4}
+\]">\[
+\frac{t}{\sqrt{1+t^2}}
+=\frac2\pi\int_0^\infty\frac{t}{1+t^2+\lambda^2}\,d\lambda
+\tag{4.4}
+\]</span>
+now makes <span class="math" data-tex="\([F_D,a]\)">\([F_D,a]\)</span> a norm-convergent integral of compact commutators: the bound <span class="math" data-tex="\(\|B\|/(1+\lambda^2)\)">\(\|B\|/(1+\lambda^2)\)</span> is integrable.</p>
+<p>To justify identifying that integral with the commutator, truncate (4.4) at <span class="math" data-tex="\(R\)">\(R\)</span>. The resulting functions belong to <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, are bounded by one, and converge uniformly on every compact interval to <span class="math" data-tex="\(b(t)\)">\(b(t)\)</span>. Their functional calculi converge pointwise on <span class="math" data-tex="\(E\)">\(E\)</span> to <span class="math" data-tex="\(F_D\)">\(F_D\)</span>: first test on <span class="math" data-tex="\(g(D)E\)">\(g(D)E\)</span> for <span class="math" data-tex="\(g\in C_0(\mathbb R)\)">\(g\in C_0(\mathbb R)\)</span>, using uniform convergence of the products, then use the dense span from Theorem 3.1. Thus the norm limit of their commutators equals <span class="math" data-tex="\([F_D,a]\)">\([F_D,a]\)</span>. Norm density of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> gives (4.2) for all <span class="math" data-tex="\(c\)">\(c\)</span>. This proof requires no domain preservation for <span class="math" data-tex="\(D^2\)">\(D^2\)</span>.</p>
+<h2 id="5-extending-coefficients">5. Extending coefficients</h2>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be self-adjoint regular on a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(E\)">\(E\)</span>, and let <span class="math" data-tex="\(G\)">\(G\)</span> be an <span class="math" data-tex="\(A\)">\(A\)</span>-<span class="math" data-tex="\(B\)">\(B\)</span> correspondence. The algebraic operator
+<span class="math math-display" data-tex="\[
+D\odot1:\operatorname{Dom}D\odot_A G\longrightarrow E\otimes_A G,
+\qquad x\otimes y\longmapsto Dx\otimes y
+\tag{5.1}
+\]">\[
+D\odot1:\operatorname{Dom}D\odot_A G\longrightarrow E\otimes_A G,
+\qquad x\otimes y\longmapsto Dx\otimes y
+\tag{5.1}
+\]</span>
+has a self-adjoint regular closure <span class="math" data-tex="\(D_G\)">\(D_G\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+F_{D_G}=F_D\otimes1,\qquad f(D_G)=f(D)\otimes1
+\quad(f\in C_0(\mathbb R)).
+\tag{5.2}
+\]">\[
+F_{D_G}=F_D\otimes1,\qquad f(D_G)=f(D)\otimes1
+\quad(f\in C_0(\mathbb R)).
+\tag{5.2}
+\]</span>
+The left action on <span class="math" data-tex="\(G\)">\(G\)</span> may be degenerate.</p>
+<p><em>Proof.</em> Tensoring adjointable operators gives a unital *-homomorphism
+<span class="math" data-tex="\(\Psi:\mathcal L(E)\to\mathcal L(E\otimes_A G)\)">\(\Psi:\mathcal L(E)\to\mathcal L(E\otimes_A G)\)</span>, with the usual trivial interpretation if the tensor module is zero. Set <span class="math" data-tex="\(F&#x27;=\Psi(F_D)\)">\(F&#x27;=\Psi(F_D)\)</span>, <span class="math" data-tex="\(h&#x27;=\Psi(h)\)">\(h&#x27;=\Psi(h)\)</span>. Functional calculus gives <span class="math" data-tex="\(h&#x27;=(1-(F&#x27;)^2)^{1/2}\)">\(h&#x27;=(1-(F&#x27;)^2)^{1/2}\)</span>. Its range is dense: approximate any elementary tensor <span class="math" data-tex="\(x\otimes y\)">\(x\otimes y\)</span> by <span class="math" data-tex="\(hz_n\otimes y=h&#x27;(z_n\otimes y)\)">\(hz_n\otimes y=h&#x27;(z_n\otimes y)\)</span>, since <span class="math" data-tex="\(hE\)">\(hE\)</span> is dense. Its square has dense range as well, either by the same argument for <span class="math" data-tex="\(h^2E\)">\(h^2E\)</span>, or by positive regularization. Theorem 2.2 defines a self-adjoint regular <span class="math" data-tex="\(D_G\)">\(D_G\)</span> with <span class="math" data-tex="\(D_G(h&#x27;z)=F&#x27;z\)">\(D_G(h&#x27;z)=F&#x27;z\)</span>.</p>
+<p>Every <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span> is <span class="math" data-tex="\(hu\)">\(hu\)</span>, so
+<span class="math math-display" data-tex="\[
+(x\otimes y,Dx\otimes y)
+=(h&#x27;(u\otimes y),F&#x27;(u\otimes y)).
+\]">\[
+(x\otimes y,Dx\otimes y)
+=(h&#x27;(u\otimes y),F&#x27;(u\otimes y)).
+\]</span>
+These pairs lie in <span class="math" data-tex="\(G(D_G)\)">\(G(D_G)\)</span>. In particular null vectors in the balanced tensor quotient give zero values, so the algebraic operator is well defined. The column <span class="math" data-tex="\((h&#x27;,F&#x27;)\)">\((h&#x27;,F&#x27;)\)</span> is a unitary from the tensor module onto this graph; elementary <span class="math" data-tex="\(u\otimes y\)">\(u\otimes y\)</span> span a dense submodule. Hence the displayed algebraic graph is dense in the full graph, proving the closure assertion. Formula (3.3), and preservation of bounded continuous functional calculus by <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, prove (5.2). ∎</p>
+<p>Compact resolvent need not survive this construction without a condition on the correspondence. If the left action of <span class="math" data-tex="\(A\)">\(A\)</span> is compact and <span class="math" data-tex="\(D\)">\(D\)</span> has compact resolvent, tensor compactness from the preceding tensor-product lesson makes <span class="math" data-tex="\(f(D_G)\)">\(f(D_G)\)</span> compact. For a general left action that conclusion fails. For example, tensor the zero operator on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> with an infinite-dimensional Hilbert space; the resulting zero operator has identity resolvent, which is not compact.</p>
+<h2 id="6-multipliers-and-differential-operator-families">6. Multipliers and differential-operator families</h2>
+<p><strong>Example 6.1 (Continuous multiplication).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be locally compact Hausdorff and <span class="math" data-tex="\(m:X\to\mathbb R\)">\(m:X\to\mathbb R\)</span> continuous. On <span class="math" data-tex="\(E=C_0(X)\)">\(E=C_0(X)\)</span>, define
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}D_m=\{a\in C_0(X):ma\in C_0(X)\},\qquad D_ma=ma.
+\tag{6.1}
+\]">\[
+\operatorname{Dom}D_m=\{a\in C_0(X):ma\in C_0(X)\},\qquad D_ma=ma.
+\tag{6.1}
+\]</span>
+Compactly supported continuous functions give a dense domain. The operator is closed: uniform convergence of <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and <span class="math" data-tex="\(ma_n\)">\(ma_n\)</span> identifies the limit pointwise with multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>. Testing the adjoint identity against compactly supported functions gives <span class="math" data-tex="\(D_m^*b=mb\)">\(D_m^*b=mb\)</span>, with exactly the same domain. The bounded continuous functions
+<span class="math math-display" data-tex="\[
+\frac1{m\pm i},\qquad
+\frac1{1+m^2},\qquad
+\frac{m}{\sqrt{1+m^2}}
+\]">\[
+\frac1{m\pm i},\qquad
+\frac1{1+m^2},\qquad
+\frac{m}{\sqrt{1+m^2}}
+\]</span>
+act adjointably as multipliers. The first two supply the resolvents and the inverse of <span class="math" data-tex="\(1+D_m^2\)">\(1+D_m^2\)</span>; thus <span class="math" data-tex="\(D_m\)">\(D_m\)</span> is self-adjoint regular and the last is its bounded transform.</p>
+<p>Since <span class="math" data-tex="\(\mathcal K(C_0(X))=C_0(X)\)">\(\mathcal K(C_0(X))=C_0(X)\)</span>, it has compact resolvent exactly when <span class="math" data-tex="\(m\)">\(m\)</span> is proper. Indeed <span class="math" data-tex="\((1+m^2)^{-1}\)">\((1+m^2)^{-1}\)</span> vanishes at infinity exactly when every set <span class="math" data-tex="\(\{|m|\leq R\}\)">\(\{|m|\leq R\}\)</span> is compact. Multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span> is the simplest instance. Unboundedness of <span class="math" data-tex="\(m\)">\(m\)</span> alone does not imply properness: <span class="math" data-tex="\(m(x,y)=x\)">\(m(x,y)=x\)</span> on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> has noncompact strips.</p>
+<p><strong>Example 6.2 (Momentum over a parameter space).</strong> On <span class="math" data-tex="\(H=L^2(\mathbb R)\)">\(H=L^2(\mathbb R)\)</span>, let
+<span class="math math-display" data-tex="\[
+P=\mathcal F^{-1}M_\xi\mathcal F,\qquad
+\operatorname{Dom}P=\{u\mid \xi\widehat u\in L^2(\mathbb R)\},
+\]">\[
+P=\mathcal F^{-1}M_\xi\mathcal F,\qquad
+\operatorname{Dom}P=\{u\mid \xi\widehat u\in L^2(\mathbb R)\},
+\]</span>
+where <span class="math" data-tex="\(\mathcal F u(\xi)=(2\pi)^{-1/2}\int e^{-ix\xi}u(x)\,dx\)">\(\mathcal F u(\xi)=(2\pi)^{-1/2}\int e^{-ix\xi}u(x)\,dx\)</span> initially on <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>. Its unitary extension is <a href="../HA-LCA/HA-LCA-08.html">The Plancherel theorem</a>, Theorem 1.1, with the angular-frequency normalization (22).</p>
+<p>Here is the weak-derivative identification needed in this example. For a Schwartz function, integration by parts gives <span class="math" data-tex="\(\mathcal F(-iu&#x27;)=\xi\mathcal Fu\)">\(\mathcal F(-iu&#x27;)=\xi\mathcal Fu\)</span>; differentiating under the integral and integrating by parts also show that the transform preserves the Schwartz test space. For <span class="math" data-tex="\(u,g\in L^2\)">\(u,g\in L^2\)</span>, the equation <span class="math" data-tex="\(u&#x27;=g\)">\(u&#x27;=g\)</span> in distributions means <span class="math" data-tex="\(\int u\varphi&#x27;=-\int g\varphi\)">\(\int u\varphi&#x27;=-\int g\varphi\)</span> for compactly supported smooth tests. It remains true for Schwartz tests by multiplying them by cutoffs tending to one: their derivatives converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, so both pairings converge. Unitarity and the Schwartz identity transfer this equality to <span class="math" data-tex="\(\xi\widehat u=-i\widehat g\)">\(\xi\widehat u=-i\widehat g\)</span> as a distribution. Conversely that multiplier equality transfers back to the weak-derivative equation. An <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function defines the zero distribution only if it is zero almost everywhere, since smooth compactly supported functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> (approximate step functions on finite intervals by smooth cutoffs). Consequently <span class="math" data-tex="\(u\)">\(u\)</span> has an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> weak derivative exactly when <span class="math" data-tex="\(\xi\widehat u\in L^2\)">\(\xi\widehat u\in L^2\)</span>, and <span class="math" data-tex="\(P=-i\,d/dx\)">\(P=-i\,d/dx\)</span> has domain <span class="math" data-tex="\(H^1(\mathbb R)\)">\(H^1(\mathbb R)\)</span>. Teschl, Theorem 7.5 and (7.12)–(7.15), gives the classical comparison.</p>
+<p>Multiplication by <span class="math" data-tex="\(\xi\)">\(\xi\)</span> on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> is self-adjoint: the adjoint identity on compactly supported test vectors forces the same maximal multiplication domain. It is closed by an almost-everywhere subsequence argument, and multiplication by <span class="math" data-tex="\((\xi\pm i)^{-1}\)">\((\xi\pm i)^{-1}\)</span> gives surjective resolvents. Thus it is regular, either by Proposition 3.2 or directly by the multiplier inverse of <span class="math" data-tex="\(1+\xi^2\)">\(1+\xi^2\)</span>.</p>
+<p>For any locally compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, consider <span class="math" data-tex="\(C_0(X,H)\)">\(C_0(X,H)\)</span>. The correspondence construction of Theorem 5.1, applied to <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>, gives the constant momentum family
+<span class="math math-display" data-tex="\[
+(\mathcal P u)(s)=Pu(s),\qquad
+\operatorname{Dom}\mathcal P
+=\{u\in C_0(X,H):u(s)\in H^1,\ Pu\in C_0(X,H)\}.
+\tag{6.2}
+\]">\[
+(\mathcal P u)(s)=Pu(s),\qquad
+\operatorname{Dom}\mathcal P
+=\{u\in C_0(X,H):u(s)\in H^1,\ Pu\in C_0(X,H)\}.
+\tag{6.2}
+\]</span>
+The equality of this domain with the tensor-domain closure follows from the graph unitary <span class="math" data-tex="\((h,F)\)">\((h,F)\)</span>: a section satisfying the right side has graph parameter <span class="math" data-tex="\(hu+F\mathcal P u\)">\(hu+F\mathcal P u\)</span>, since <span class="math" data-tex="\(h^2+F^2=1\)">\(h^2+F^2=1\)</span>. Its resolvents act pointwise by the constant bounded Hilbert-space resolvents. This is a self-adjoint regular differential-operator family.</p>
+<p>It does not have compact resolvent when <span class="math" data-tex="\(X\ne\varnothing\)">\(X\ne\varnothing\)</span>. On <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>, the nonzero multiplier <span class="math" data-tex="\((1+\xi^2)^{-1}\)">\((1+\xi^2)^{-1}\)</span> is not compact: choose infinitely many disjoint measurable subsets in an interval where it is bounded below and their normalized characteristic vectors. Their images are orthogonal with a uniform positive norm. A module compact induces a compact operator on each evaluation fibre, by the rank-one fibre formula, so the family resolvent cannot be compact.</p>
+<p><strong>Example 6.3 (Circle Dirac families).</strong> On <span class="math" data-tex="\(H=\ell^2(\mathbb Z)\)">\(H=\ell^2(\mathbb Z)\)</span>, put <span class="math" data-tex="\(D_0 e_n=n e_n\)">\(D_0 e_n=n e_n\)</span>. Its domain consists of square-summable vectors with <span class="math" data-tex="\((n u_n)\)">\((n u_n)\)</span> square summable. The diagonal contraction and inverse modulus
+<span class="math math-display" data-tex="\[
+F_0e_n=\frac n{\sqrt{1+n^2}}e_n,\qquad
+h_0e_n=\frac1{\sqrt{1+n^2}}e_n
+\]">\[
+F_0e_n=\frac n{\sqrt{1+n^2}}e_n,\qquad
+h_0e_n=\frac1{\sqrt{1+n^2}}e_n
+\]</span>
+satisfy Theorem 2.2: finite coordinate vectors show dense defect range. Thus <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is self-adjoint regular. Its resolvent is compact, since diagonal entries tend to zero and truncations converge in norm. On finite sequences the coefficient map to trigonometric polynomials sends <span class="math" data-tex="\(D_0\)">\(D_0\)</span> to <span class="math" data-tex="\(-i\,d/d\theta\)">\(-i\,d/d\theta\)</span>, since <span class="math" data-tex="\(-i\,d(e^{in\theta})/d\theta=n e^{in\theta}\)">\(-i\,d(e^{in\theta})/d\theta=n e^{in\theta}\)</span>. Orthogonality of these modes for normalized circle measure gives exactly the <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> norm. The Hilbert completion of these polynomials is the circle Dirac model used here.</p>
+<p>For compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, the constant family on <span class="math" data-tex="\(C(X,H)\)">\(C(X,H)\)</span> is self-adjoint regular with compact resolvent. Its finite diagonal truncations are module compact: constant coordinate vectors provide the required finite rank-one sums. Adding any norm-continuous bounded self-adjoint potential family <span class="math" data-tex="\(V_s\)">\(V_s\)</span> gives a regular family <span class="math" data-tex="\(D_0+V_s\)">\(D_0+V_s\)</span>, by Corollary 3.3. Its resolvent remains compact: for <span class="math" data-tex="\(\lambda&gt;\sup_s\|V_s\|\)">\(\lambda&gt;\sup_s\|V_s\|\)</span>, the inverse is
+<span class="math math-display" data-tex="\[
+(D_0\pm i\lambda)^{-1}
+\bigl(1+V(D_0\pm i\lambda)^{-1}\bigr)^{-1},
+\]">\[
+(D_0\pm i\lambda)^{-1}
+\bigl(1+V(D_0\pm i\lambda)^{-1}\bigr)^{-1},
+\]</span>
+which is compact; the resolvent identity then gives compactness at <span class="math" data-tex="\(i\)">\(i\)</span>. These are explicit varying Dirac-type families, without an appeal to a general elliptic-family theorem.</p>
+<p>On a noncompact parameter space the same constant circle family has only local compactness. To see why its resolvent is not module compact, observe that a rank-one section operator has fibre norm at most <span class="math" data-tex="\(\|x(s)\|\|y(s)\|\)">\(\|x(s)\|\|y(s)\|\)</span>, which vanishes at infinity. Finite sums have the same property, and norm limits preserve it, since evaluation is contractive. Thus every module compact has fibre norms vanishing at infinity. The constant resolvent has a nonzero constant fibre norm, so fails this necessary condition. Multiplying by <span class="math" data-tex="\(a\in C_0(X)\)">\(a\in C_0(X)\)</span> makes its finite diagonal approximations compact: factor each scalar coefficient function as a product of two <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> functions and use rank-one section operators. Norm convergence of the diagonal truncations proves <span class="math" data-tex="\(a(1+D_0^2)^{-1}\)">\(a(1+D_0^2)^{-1}\)</span> compact. This illustrates (4.1).</p>
+<h2 id="7-a-closed-symmetric-operator-that-is-not-regular">7. A closed symmetric operator that is not regular</h2>
+<p>Let <span class="math" data-tex="\(A=C([0,1])\)">\(A=C([0,1])\)</span>, <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span> and <span class="math" data-tex="\(E=C([0,1],H)\)">\(E=C([0,1],H)\)</span>. Write <span class="math" data-tex="\(D_0e_n=n e_n\)">\(D_0e_n=n e_n\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be its constant self-adjoint regular family. Its domain consists of sections <span class="math" data-tex="\(\xi\)">\(\xi\)</span> for which <span class="math" data-tex="\((n\xi_n)\)">\((n\xi_n)\)</span> is again a continuous <span class="math" data-tex="\(H\)">\(H\)</span>-valued section. This follows from the same diagonal graph parameter used in Example 6.3.</p>
+<p>On <span class="math" data-tex="\(\operatorname{Dom}D_0\)">\(\operatorname{Dom}D_0\)</span>, the linear functional
+<span class="math math-display" data-tex="\[
+\ell(u)=\sum_{n\geq1}u_n
+\]">\[
+\ell(u)=\sum_{n\geq1}u_n
+\]</span>
+is continuous in the graph norm, since
+<span class="math math-display" data-tex="\[
+|\ell(u)|\leq
+\left(\sum_{n\geq1}n^{-2}\right)^{1/2}\|D_0u\|.
+\tag{7.1}
+\]">\[
+|\ell(u)|\leq
+\left(\sum_{n\geq1}n^{-2}\right)^{1/2}\|D_0u\|.
+\tag{7.1}
+\]</span>
+It is not continuous in the Hilbert norm. Define the restriction
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}T
+=\{\xi\in\operatorname{Dom}\mathcal D:\ell(\xi(0))=0\},
+\qquad T\xi=\mathcal D\xi.
+\tag{7.2}
+\]">\[
+\operatorname{Dom}T
+=\{\xi\in\operatorname{Dom}\mathcal D:\ell(\xi(0))=0\},
+\qquad T\xi=\mathcal D\xi.
+\tag{7.2}
+\]</span></p>
+<p><strong>Proposition 7.1.</strong> This <span class="math" data-tex="\(T\)">\(T\)</span> is closed, densely defined and symmetric, its adjoint is densely defined, but <span class="math" data-tex="\(T\)">\(T\)</span> is not regular.</p>
+<p><em>Proof.</em> The constraint in (7.2) is graph continuous by (7.1), so the restriction is closed. It is an <span class="math" data-tex="\(A\)">\(A\)</span>-submodule constraint because multiplication changes the boundary functional by the scalar <span class="math" data-tex="\(a(0)\)">\(a(0)\)</span>. It is symmetric as a restriction of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>.</p>
+<p>To prove density, first approximate any continuous section uniformly by finitely many coordinates; uniformity follows from compactness of its image in <span class="math" data-tex="\(H\)">\(H\)</span>. For a section supported in its first <span class="math" data-tex="\(m\)">\(m\)</span> coordinates, put <span class="math" data-tex="\(c=\ell(\xi(0))\)">\(c=\ell(\xi(0))\)</span>, and subtract the constant finite-coordinate section
+<span class="math math-display" data-tex="\[
+\frac cN\sum_{n=m+1}^{m+N}e_n.
+\]">\[
+\frac cN\sum_{n=m+1}^{m+N}e_n.
+\]</span>
+The new section belongs to <span class="math" data-tex="\(\operatorname{Dom}T\)">\(\operatorname{Dom}T\)</span> and differs by <span class="math" data-tex="\(|c|/\sqrt N\)">\(|c|/\sqrt N\)</span> in the module norm. Let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>, proving density.</p>
+<p>We claim <span class="math" data-tex="\(T^*=\mathcal D\)">\(T^*=\mathcal D\)</span>. Inclusion <span class="math" data-tex="\(\mathcal D\subseteq T^*\)">\(\mathcal D\subseteq T^*\)</span> follows from symmetry of the original self-adjoint family. Conversely, let <span class="math" data-tex="\(y\in\operatorname{Dom}T^*\)">\(y\in\operatorname{Dom}T^*\)</span> with <span class="math" data-tex="\(z=T^*y\in E\)">\(z=T^*y\in E\)</span>. At any <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, test the adjoint identity against finite-coordinate sections supported away from zero. It gives <span class="math" data-tex="\(z_n(s)=n y_n(s)\)">\(z_n(s)=n y_n(s)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Continuity extends these equalities to <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Since <span class="math" data-tex="\(z\)">\(z\)</span> is a continuous <span class="math" data-tex="\(H\)">\(H\)</span>-valued section, <span class="math" data-tex="\(y\in\operatorname{Dom}\mathcal D\)">\(y\in\operatorname{Dom}\mathcal D\)</span> and <span class="math" data-tex="\(\mathcal D y=z\)">\(\mathcal D y=z\)</span>. This proves the claim.</p>
+<p>In particular <span class="math" data-tex="\(T^{**}=\mathcal D\ne T\)">\(T^{**}=\mathcal D\ne T\)</span>: the constant section <span class="math" data-tex="\(e_1\)">\(e_1\)</span> belongs to the former domain and violates the boundary constraint of the latter. The graph criterion already disproves regularity.</p>
+<p>We can see the failure in (1.2) directly. Let <span class="math" data-tex="\(R=(1+\mathcal D^2)^{-1}\)">\(R=(1+\mathcal D^2)^{-1}\)</span>, the diagonal operator with entries <span class="math" data-tex="\((1+n^2)^{-1}\)">\((1+n^2)^{-1}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\operatorname{ran}(1+T^*T)
+=\{g\in E:\ell((Rg)(0))=0\}.
+\tag{7.3}
+\]">\[
+\operatorname{ran}(1+T^*T)
+=\{g\in E:\ell((Rg)(0))=0\}.
+\tag{7.3}
+\]</span>
+Indeed <span class="math" data-tex="\(\operatorname{Dom}T^*T=\operatorname{Dom}\mathcal D^2\cap\operatorname{Dom}T\)">\(\operatorname{Dom}T^*T=\operatorname{Dom}\mathcal D^2\cap\operatorname{Dom}T\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> is the inverse of <span class="math" data-tex="\(1+\mathcal D^2\)">\(1+\mathcal D^2\)</span> onto that domain before the constraint. The functional in (7.3) is a nonzero bounded functional on <span class="math" data-tex="\(E\)">\(E\)</span>, since its coefficient sequence <span class="math" data-tex="\(((1+n^2)^{-1})\)">\(((1+n^2)^{-1})\)</span> is square summable. Its kernel is a proper closed hyperplane, so the range is not dense. ∎</p>
+<p>The example has a dense adjoint domain and a proper closed range for <span class="math" data-tex="\(1+T^*T\)">\(1+T^*T\)</span>, isolating the regularity condition.</p>
+<p>For a closed densely defined symmetric <span class="math" data-tex="\(T\)">\(T\)</span>, one can test the missing condition on Hilbert spaces. For a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, form the scalar-inner-product completion of <span class="math" data-tex="\(E\)">\(E\)</span> using <span class="math" data-tex="\(\omega(\langle x,y\rangle)\)">\(\omega(\langle x,y\rangle)\)</span>. The localization <span class="math" data-tex="\(T^\omega\)">\(T^\omega\)</span> is the closure of the operator induced on the image of <span class="math" data-tex="\(\operatorname{Dom}T\)">\(\operatorname{Dom}T\)</span>. Symmetry makes it well defined and closable by testing against the dense image of that domain. The local-global theorem says
+<span class="math math-display" data-tex="\[
+T\text{ is self-adjoint and regular}
+\quad\Longleftrightarrow\quad
+T^\omega\text{ is self-adjoint for every state }\omega.
+\tag{7.4}
+\]">\[
+T\text{ is self-adjoint and regular}
+\quad\Longleftrightarrow\quad
+T^\omega\text{ is self-adjoint for every state }\omega.
+\tag{7.4}
+\]</span>
+We now prove this criterion, including the separation step responsible for the quantifier “every state.” The result is due to Kaad–Lesch [Theorem 4.2(2)].</p>
+<p><strong>Lemma 7.2 (A state detects a proper closed submodule).</strong> If <span class="math" data-tex="\(F\subset E\)">\(F\subset E\)</span> is a closed right submodule and <span class="math" data-tex="\(y\notin F\)">\(y\notin F\)</span>, there is a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> for which the image of <span class="math" data-tex="\(y\)">\(y\)</span> is outside the closure of the image of <span class="math" data-tex="\(F\)">\(F\)</span> in the scalar completion <span class="math" data-tex="\(E^\omega\)">\(E^\omega\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(d=\operatorname{dist}(y,F)&gt;0\)">\(d=\operatorname{dist}(y,F)&gt;0\)</span>. In the real Banach space <span class="math" data-tex="\(A_{\mathrm{sa}}\)">\(A_{\mathrm{sa}}\)</span>, consider the convex set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal C&amp;=\operatorname{conv}
+\{\langle y-x,y-x\rangle:x\in F\}\\
+&amp;\quad+A_+.
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+\mathcal C&amp;=\operatorname{conv}
+\{\langle y-x,y-x\rangle:x\in F\}\\
+&amp;\quad+A_+.
+\end{aligned}
+\tag{7.5}
+\]</span>
+Every element of this set has norm at least <span class="math" data-tex="\(d^2\)">\(d^2\)</span>. Indeed, for nonnegative weights <span class="math" data-tex="\(t_j\)">\(t_j\)</span> summing to one, set <span class="math" data-tex="\(\bar x=\sum_jt_jx_j\in F\)">\(\bar x=\sum_jt_jx_j\in F\)</span>. Expansion gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_jt_j\langle y-x_j,y-x_j\rangle\\
+&amp;=\langle y-\bar x,y-\bar x\rangle\\
+&amp;\quad+\sum_jt_j\langle x_j-\bar x,x_j-\bar x\rangle.
+\end{aligned}
+\tag{7.6}
+\]">\[
+\begin{aligned}
+&amp;\sum_jt_j\langle y-x_j,y-x_j\rangle\\
+&amp;=\langle y-\bar x,y-\bar x\rangle\\
+&amp;\quad+\sum_jt_j\langle x_j-\bar x,x_j-\bar x\rangle.
+\end{aligned}
+\tag{7.6}
+\]</span>
+The remaining terms are positive, so order monotonicity of the norm gives the bound. The closed convex hull therefore also avoids the open ball of radius <span class="math" data-tex="\(d^2\)">\(d^2\)</span> about zero. Real Hahn–Banach separation supplies a nonzero bounded real functional <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with <span class="math" data-tex="\(f(b)\geq c\)">\(f(b)\geq c\)</span> on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Because <span class="math" data-tex="\(\mathcal C+A_+=\mathcal C\)">\(\mathcal C+A_+=\mathcal C\)</span>, adding arbitrary positive multiples of a positive element forces <span class="math" data-tex="\(f(A_+)\geq0\)">\(f(A_+)\geq0\)</span>. Its complex extension is a positive functional. Normalize it to the state <span class="math" data-tex="\(\omega=f/\|f\|\)">\(\omega=f/\|f\|\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|y^\omega-x^\omega\|^2\\
+=\omega(\langle y-x,y-x\rangle)\\
+\geq c/\|f\|&gt;0\quad(x\in F).
+\end{gathered}
+\tag{7.7}
+\]">\[
+\begin{gathered}
+\|y^\omega-x^\omega\|^2\\
+=\omega(\langle y-x,y-x\rangle)\\
+\geq c/\|f\|&gt;0\quad(x\in F).
+\end{gathered}
+\tag{7.7}
+\]</span>
+Thus the image of <span class="math" data-tex="\(F\)">\(F\)</span> is not dense at <span class="math" data-tex="\(y^\omega\)">\(y^\omega\)</span>. No orthogonal projection onto <span class="math" data-tex="\(F\)">\(F\)</span> was assumed. ∎</p>
+<p><strong>Theorem 7.3 (Local-global self-adjoint regularity).</strong> Equivalence (7.4) holds for every closed densely defined symmetric operator on every Hilbert C*-module.</p>
+<p><em>Proof.</em> For such a <span class="math" data-tex="\(T\)">\(T\)</span>, symmetry gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle(T\pm i)x,(T\pm i)x\rangle\\
+=\langle Tx,Tx\rangle+\langle x,x\rangle.
+\end{gathered}
+\tag{7.8}
+\]">\[
+\begin{gathered}
+\langle(T\pm i)x,(T\pm i)x\rangle\\
+=\langle Tx,Tx\rangle+\langle x,x\rangle.
+\end{gathered}
+\tag{7.8}
+\]</span>
+Consequently <span class="math" data-tex="\(\|(T\pm i)x\|\geq\|x\|\)">\(\|(T\pm i)x\|\geq\|x\|\)</span>. Each range <span class="math" data-tex="\(F_\pm=\operatorname{ran}(T\pm i)\)">\(F_\pm=\operatorname{ran}(T\pm i)\)</span> is closed: if <span class="math" data-tex="\((T\pm i)x_n\)">\((T\pm i)x_n\)</span> converges, the estimate makes <span class="math" data-tex="\(x_n\)">\(x_n\)</span> Cauchy, and <span class="math" data-tex="\(Tx_n=(T\pm i)x_n\mp ix_n\)">\(Tx_n=(T\pm i)x_n\mp ix_n\)</span> converges too. Closedness of <span class="math" data-tex="\(T\)">\(T\)</span> supplies the limit in its graph. These ranges are right submodules.</p>
+<p>Assume every closed localization <span class="math" data-tex="\(T^\omega\)">\(T^\omega\)</span> is self-adjoint. If <span class="math" data-tex="\(F_+\ne E\)">\(F_+\ne E\)</span>, Lemma 7.2 supplies a state with nondense image of <span class="math" data-tex="\(F_+\)">\(F_+\)</span>. But the graph-core definition of <span class="math" data-tex="\(T^\omega\)">\(T^\omega\)</span> makes
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{ran}(T^\omega+i)}
+=\overline{(F_+)^\omega}.
+\tag{7.9}
+\]">\[
+\overline{\operatorname{ran}(T^\omega+i)}
+=\overline{(F_+)^\omega}.
+\tag{7.9}
+\]</span>
+Both inclusions follow by approximating a localized graph vector by images of original domain vectors. A self-adjoint Hilbert-space operator has surjective <span class="math" data-tex="\(T^\omega+i\)">\(T^\omega+i\)</span>, contradicting (7.9). The same argument applies to <span class="math" data-tex="\(F_-\)">\(F_-\)</span>. Both original ranges are therefore all of <span class="math" data-tex="\(E\)">\(E\)</span>, and Proposition 3.2 makes <span class="math" data-tex="\(T\)">\(T\)</span> self-adjoint and regular.</p>
+<p>Conversely, self-adjoint regularity gives bounded adjointable resolvents <span class="math" data-tex="\((T\pm i)^{-1}\)">\((T\pm i)^{-1}\)</span>. The operator order estimate for adjointable maps makes their scalar localizations bounded. Approximate a scalar-completion vector by images of module vectors. Applying a resolvent to these approximants gives a convergent sequence whose operator images also converge, so the closed localization has both resolvents and both ranges equal to the whole scalar Hilbert space. It is closed and symmetric; surjectivity of the two shifted operators implies Hilbert-space self-adjointness. Thus every <span class="math" data-tex="\(T^\omega\)">\(T^\omega\)</span> is self-adjoint. The zero module is immediate. ∎</p>
+<p>The criterion concerns closed localizations and all states. This proof does not replace them by pure states. Its mechanism is that a missing module range is detected by a positive separating functional, even when the submodule has no orthogonal complement.</p>
+<h2 id="8-exercises-with-solutions">8. Exercises with solutions</h2>
+<p><strong>Exercise 8.1 (Basic: multiplication).</strong> Show that multiplication by a continuous real function <span class="math" data-tex="\(m\)">\(m\)</span>, possibly unbounded, is self-adjoint regular on <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>.</p>
+<p><em>Solution.</em> Use the maximal domain (6.1). It contains <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>, so is dense; uniform limits in the graph identify the product pointwise and prove closedness. The adjoint identity tested on <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> forces <span class="math" data-tex="\(mb\in C_0(X)\)">\(mb\in C_0(X)\)</span> and gives <span class="math" data-tex="\(D_m^*b=mb\)">\(D_m^*b=mb\)</span>, so the adjoint has precisely the original domain. Multiplication by <span class="math" data-tex="\((m\pm i)^{-1}\)">\((m\pm i)^{-1}\)</span> maps <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> into that domain, because <span class="math" data-tex="\(m/(m\pm i)\)">\(m/(m\pm i)\)</span> is bounded continuous, and supplies both inverse resolvents. Proposition 3.2 proves regularity. Its bounded transform is multiplication by <span class="math" data-tex="\(m/\sqrt{1+m^2}\)">\(m/\sqrt{1+m^2}\)</span>. ∎</p>
+<p><strong>Exercise 8.2 (Intermediate: the transformed adjoint).</strong> Prove <span class="math" data-tex="\(F_T^*=F_{T^*}\)">\(F_T^*=F_{T^*}\)</span>.</p>
+<p><em>Solution.</em> The graph unitaries give
+<span class="math math-display" data-tex="\[
+W=\begin{pmatrix}h&amp;-F_{T^*}\\F_T&amp;l\end{pmatrix}
+\]">\[
+W=\begin{pmatrix}h&amp;-F_{T^*}\\F_T&amp;l\end{pmatrix}
+\]</span>
+unitary, with <span class="math" data-tex="\(h^2=1-F_T^*F_T\)">\(h^2=1-F_T^*F_T\)</span>, <span class="math" data-tex="\(l^2=1-F_TF_T^*\)">\(l^2=1-F_TF_T^*\)</span> and
+<span class="math" data-tex="\(hF_{T^*}=F_T^*l\)">\(hF_{T^*}=F_T^*l\)</span>. Polynomial approximation of square roots in
+<span class="math" data-tex="\(F_T(F_T^*F_T)=(F_TF_T^*)F_T\)">\(F_T(F_T^*F_T)=(F_TF_T^*)F_T\)</span> also gives <span class="math" data-tex="\(hF_T^*=F_T^*l\)">\(hF_T^*=F_T^*l\)</span>. Subtracting gives <span class="math" data-tex="\(h(F_{T^*}-F_T^*)=0\)">\(h(F_{T^*}-F_T^*)=0\)</span>. Dense range of the positive <span class="math" data-tex="\(h\)">\(h\)</span> implies its kernel is zero, so the two operators agree. The identity compares bounded transforms; it does not assume equality of the two unbounded domains. ∎</p>
+<p><strong>Exercise 8.3 (Intermediate: compact-resolvent tests).</strong> Prove the equivalence of the first two conditions of Theorem 4.1.</p>
+<p><em>Solution.</em> If every <span class="math" data-tex="\(f(D)\)">\(f(D)\)</span> is compact, choose <span class="math" data-tex="\(f(t)=(1+t^2)^{-1}\)">\(f(t)=(1+t^2)^{-1}\)</span>. Conversely approximate an arbitrary <span class="math" data-tex="\(f\in C_0(\mathbb R)\)">\(f\in C_0(\mathbb R)\)</span> uniformly by <span class="math" data-tex="\(f_n=f\chi_n\)">\(f_n=f\chi_n\)</span> with compact support. Each <span class="math" data-tex="\((1+t^2)f_n(t)\)">\((1+t^2)f_n(t)\)</span> is in <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, so the homomorphism property gives
+<span class="math math-display" data-tex="\[
+f_n(D)=(1+D^2)^{-1}\bigl((1+t^2)f_n(t)\bigr)(D).
+\]">\[
+f_n(D)=(1+D^2)^{-1}\bigl((1+t^2)f_n(t)\bigr)(D).
+\]</span>
+The product is compact. Contractivity of the calculus makes <span class="math" data-tex="\(f_n(D)\to f(D)\)">\(f_n(D)\to f(D)\)</span> in norm, and the compact ideal is norm closed. No discrete-spectrum claim for Hilbert modules is required. ∎</p>
+<p><strong>Exercise 8.4 (Advanced: tensoring a regular operator).</strong> Prove self-adjoint regularity of the closure of <span class="math" data-tex="\(D\odot1\)">\(D\odot1\)</span> for an arbitrary correspondence.</p>
+<p><em>Solution.</em> Tensor the self-adjoint contraction <span class="math" data-tex="\(F_D\)">\(F_D\)</span> and its positive inverse modulus <span class="math" data-tex="\(h\)">\(h\)</span>, giving <span class="math" data-tex="\(F&#x27;=F_D\otimes1\)">\(F&#x27;=F_D\otimes1\)</span> and <span class="math" data-tex="\(h&#x27;=h\otimes1\)">\(h&#x27;=h\otimes1\)</span>. The tensor *-homomorphism preserves <span class="math" data-tex="\(h&#x27;^2=1-(F&#x27;)^2\)">\(h&#x27;^2=1-(F&#x27;)^2\)</span>. The range of <span class="math" data-tex="\(h&#x27;^2\)">\(h&#x27;^2\)</span> is dense because <span class="math" data-tex="\(h^2E\)">\(h^2E\)</span> is dense and every elementary tensor is approximated by <span class="math" data-tex="\((h^2x)\otimes y\)">\((h^2x)\otimes y\)</span>. The inverse bounded-transform theorem gives a self-adjoint regular <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> on <span class="math" data-tex="\(h&#x27;(E\otimes_A G)\)">\(h&#x27;(E\otimes_A G)\)</span>, with <span class="math" data-tex="\(D&#x27;h&#x27;z=F&#x27;z\)">\(D&#x27;h&#x27;z=F&#x27;z\)</span>.</p>
+<p>For <span class="math" data-tex="\(x=hu\)">\(x=hu\)</span>, its elementary graph pair is
+<span class="math" data-tex="\((x\otimes y,Dx\otimes y)=(h&#x27;(u\otimes y),F&#x27;(u\otimes y))\)">\((x\otimes y,Dx\otimes y)=(h&#x27;(u\otimes y),F&#x27;(u\otimes y))\)</span>.
+The column <span class="math" data-tex="\((h&#x27;,F&#x27;)\)">\((h&#x27;,F&#x27;)\)</span> is a graph unitary, so these pairs span a dense submodule of <span class="math" data-tex="\(G(D&#x27;)\)">\(G(D&#x27;)\)</span>. Thus <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> is exactly the closure of the algebraic operator, including the balanced null quotient. Nondegeneracy or compactness of the left action is unnecessary for this regularity result. Compactness of the resolvent needs the additional compact-action hypothesis discussed after Theorem 5.1. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The prerequisites supply bounded C*-algebra functional calculus, adjointable graph-coordinate maps on complemented modules, the dense polar-unitary lemma [<em>Kasparov's stabilization theorem</em>, Lemma 2.2], tensoring of adjointable maps and its compact-action criterion [<em>Tensor products and C*-correspondences</em>, Theorems 2.1 and 2.4], and the Fredholm-triple index. We prove the graph criterion, both directions of the bounded-transform correspondence, adjoint comparison, resolvents, continuous unbounded functional calculus, compact-resolvent equivalence and coefficient extension here.</p>
+<p>The general Baaj–Julg passage from local compactness and bounded commutators to a bounded Kasparov module has the exact planned programme provider <em>Unbounded Kasparov modules and spectral triples</em>, Section 2, with the statement and dependency direction specified in Section 4 here. We prove its globally compact-resolvent commutator case, but not the classification of all KK-classes by unbounded cycles or the unbounded Kasparov product.</p>
+<p>The written Fourier prerequisite is <a href="../HA-LCA/HA-LCA-08.html">The Plancherel theorem</a>, Theorem 1.1 and normalization (22). Example 6.2 proves its identification of weak differentiation with multiplication; Teschl remains a classical reference. The local-global regularity criterion and its state-separation lemma are proved in Section 7. Our symmetric nonregular example is proved directly. We do not invoke a general elliptic-family regularity theorem, Sobolev calculus on smooth operator modules, or the stronger notion of regularity of a spectral triple defined by iterated commutators.</p>
+<h2 id="references">References</h2>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Definition 13.3.1, Proposition 13.3.2 and Section 17.11. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+<p>[Mesland 2013] Bram Mesland, “Spectral triples and KK-theory: a survey,” the section “C*-modules and regular operators.” <a href="https://arxiv.org/abs/1304.3802">Author's preprint</a>.</p>
+<p>[Mesland 2009] Bram Mesland, “Unbounded bivariant K-theory and correspondences in noncommutative geometry,” <em>Journal für die reine und angewandte Mathematik</em> 691 (2014), 101–172, Sections 1.3, 2.2 and 4.5. <a href="https://arxiv.org/abs/0904.4383">Author's preprint</a>.</p>
+<p>[Kaad–Lesch] Jens Kaad and Matthias Lesch, “A local global principle for regular operators in Hilbert C*-modules,” <em>Journal of Functional Analysis</em> 262 (2012), 4540–4569, Theorem 4.2. <a href="https://www.math.uni-bonn.de/people/lesch/dl/pap/2011-KaaLes-ArXiv-v2.pdf">Author's version</a>.</p>
+<p>[Teschl] Gerald Teschl, <em>Mathematical Methods in Quantum Mechanics</em>, first edition, American Mathematical Society, 2009, Section 7.1. <a href="https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf">Author's online edition</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="fredholm-operators-and-the-k0-index.html">← Fredholm operators and the K₀ index</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="continuous-fields-over-locally-compact-spaces.html">Continuous fields over locally compact spaces →</a></span></nav>
+<p class="small source-link"><a href="src/unbounded-regular-operators.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/hilbert-c-star-modules-and-morita-equivalence">Repository</a></nav>
+</footer>
+</body>
+</html>

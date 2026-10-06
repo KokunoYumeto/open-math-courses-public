@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entropy defect and abelian models · Entropy of automorphisms</title>
+<meta name="description" content="A lesson of the course Entropy of automorphisms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/entropy-of-automorphisms/entropy-defect-and-abelian-models.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Entropy of automorphisms</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="entropy-defect-and-abelian-models">Entropy defect and abelian models</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), September 2026, revised October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October revisions are self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>In classical ergodic theory the entropy of a finite partition <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of a probability space is
+<span class="math" data-tex="\(H(\alpha)=\sum_{a\in\alpha}\eta(\mu(a))\)">\(H(\alpha)=\sum_{a\in\alpha}\eta(\mu(a))\)</span>, with <span class="math" data-tex="\(\eta(s)=-s\log s\)">\(\eta(s)=-s\log s\)</span>, and the entropy of a transformation is built
+from the entropies of the joins <span class="math" data-tex="\(\alpha\vee T^{-1}\alpha\vee\dots\vee T^{-k+1}\alpha\)">\(\alpha\vee T^{-1}\alpha\vee\dots\vee T^{-k+1}\alpha\)</span>. A noncommutative version must
+replace the partitions by finite-dimensional &quot;observations&quot; of a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> in a state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and it must
+say how much information a finite family of such observations carries jointly. This lesson constructs that quantity,
+<span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\)</span>, for an arbitrary unital C*-algebra and an arbitrary state, and proves its
+basic properties. It is the static half of the dynamical entropy of a state-preserving automorphism, which is the
+subject of the lesson &quot;Dynamical entropy of C*-algebras and von Neumann algebras&quot;.</p>
+<p>Two features make the problem harder than in the tracial case treated in &quot;Entropy of finite-dimensional subalgebras&quot;.
+First, a general C*-algebra may have no finite-dimensional subalgebra other than the scalars, so the observations
+are unital completely positive maps <span class="math" data-tex="\(\gamma_j:A_j\to A\)">\(\gamma_j:A_j\to A\)</span> whose domains <span class="math" data-tex="\(A_j\)">\(A_j\)</span> are finite-dimensional C*-algebras, not
+subalgebras.
+Second, for a state that is not a trace the restriction <span class="math" data-tex="\(\varphi|_N\)">\(\varphi|_N\)</span> to a subalgebra is badly behaved: there is in
+general no <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-preserving conditional expectation onto <span class="math" data-tex="\(N\)">\(N\)</span>, and the von Neumann entropy of <span class="math" data-tex="\(\varphi|_N\)">\(\varphi|_N\)</span> is
+not monotone in <span class="math" data-tex="\(N\)">\(N\)</span>. The remedy is to compare the noncommutative situation with <em>abelian models</em>: completely positive
+maps <span class="math" data-tex="\(P:A\to B\)">\(P:A\to B\)</span> into finite-dimensional abelian algebras with a state <span class="math" data-tex="\(\mu\)">\(\mu\)</span> such that <span class="math" data-tex="\(\mu\circ P=\varphi\)">\(\mu\circ P=\varphi\)</span>. Such a
+model is the same thing as a decomposition <span class="math" data-tex="\(\varphi=\sum_x\mu_x\varphi_x\)">\(\varphi=\sum_x\mu_x\varphi_x\)</span> of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> into states, that is, a
+&quot;measurement&quot;. The Shannon entropy <span class="math" data-tex="\(S(\mu)\)">\(S(\mu)\)</span> of the model overestimates the information it gives about <span class="math" data-tex="\(A\)">\(A\)</span>, and the
+amount of overestimation is the <em>entropy defect</em> <span class="math" data-tex="\(s_\mu(P)\)">\(s_\mu(P)\)</span>. The entropy <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\)</span> is the
+supremum, over all abelian models with <span class="math" data-tex="\(n\)">\(n\)</span> marked subalgebras, of the Shannon entropy of the join minus the sum of all
+entropy defects.</p>
+<p>The lesson is organized as follows.</p>
+<ol>
+<li>Unital positive maps into finite-dimensional abelian algebras and the canonical conditional expectations (Section 1).</li>
+<li>Relative entropy of positive functionals on an arbitrary unital C*-algebra, <em>defined</em> by a variational expression,
+with all properties used later proved from that definition; in finite dimensions it agrees with the Umegaki formula
+<span class="math" data-tex="\(\operatorname{Tr}\rho_\psi(\log\rho_\psi-\log\rho_\varphi)\)">\(\operatorname{Tr}\rho_\psi(\log\rho_\psi-\log\rho_\varphi)\)</span> (Section 2).</li>
+<li>Von Neumann entropy and the entropy of mixtures (Section 3).</li>
+<li>The Holevo quantity <span class="math" data-tex="\(\varepsilon_\mu(P)\)">\(\varepsilon_\mu(P)\)</span> and the entropy defect <span class="math" data-tex="\(s_\mu(P)\)">\(s_\mu(P)\)</span> of a map into an abelian algebra
+(Section 4), including the subadditivity of the defect under joins (Theorem 4.8).</li>
+<li>Completely positive maps out of matrix algebras, and the approximation of nuclear C*-algebras (Section 5).</li>
+<li>Abelian models and the definition of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> (Section 6), with its description by decompositions of
+<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> (Proposition 6.4) and its value for abelian algebras (Proposition 6.6).</li>
+<li>Monotonicity, subadditivity, convexity and concavity properties of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> (Section 7).</li>
+<li>Continuity of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> in the norm topology, with an explicit modulus (Section 8).</li>
+</ol>
+<p><em>What is assumed.</em> Basic C*-algebra theory, states and the GNS construction, and completely positive maps; for two
+remarks, enveloping von Neumann algebras and conditional expectations. &quot;Results used from other lessons&quot; lists these
+facts with the place where each is proved. From classical
+information theory we use the elementary properties of the Shannon entropy of finite random variables. The lesson
+&quot;Entropy of finite-dimensional subalgebras&quot; of this course is useful motivation but is not used. Everything else,
+including all the properties of relative entropy that are needed, is proved here; the facts used from other lessons
+are listed below, with the place where each is proved.</p>
+<p>Basic references are [Connes–Narnhofer–Thirring 1987], [Connes–Størmer 1975], [Kosaki 1986] and [Connes 1994].</p>
+<h2 id="results-used-from-other-lessons">Results used from other lessons</h2>
+<p><strong>(B1) Finite-dimensional C*-algebras.</strong> A finite-dimensional C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> is isomorphic to
+<span class="math" data-tex="\(\bigoplus_{k=1}^r M_{n_k}(\mathbb C)\)">\(\bigoplus_{k=1}^r M_{n_k}(\mathbb C)\)</span>. Its <em>canonical trace</em> <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> is the sum of the usual matrix
+traces; it takes the value <span class="math" data-tex="\(1\)">\(1\)</span> on every minimal projection. Put <span class="math" data-tex="\(N(A)=\operatorname{Tr}(1)=\sum_kn_k\)">\(N(A)=\operatorname{Tr}(1)=\sum_kn_k\)</span>, so
+<span class="math" data-tex="\(N(A)\le\dim A\)">\(N(A)\le\dim A\)</span>. Every linear functional <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> has a unique <em>density</em> <span class="math" data-tex="\(\rho_\omega\in A\)">\(\rho_\omega\in A\)</span> with
+<span class="math" data-tex="\(\omega(a)=\operatorname{Tr}(\rho_\omega a)\)">\(\omega(a)=\operatorname{Tr}(\rho_\omega a)\)</span>; <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is positive iff <span class="math" data-tex="\(\rho_\omega\ge0\)">\(\rho_\omega\ge0\)</span>, and
+<span class="math" data-tex="\(\|\omega\|=\|\rho_\omega\|_1:=\operatorname{Tr}|\rho_\omega|\)">\(\|\omega\|=\|\rho_\omega\|_1:=\operatorname{Tr}|\rho_\omega|\)</span>. For <span class="math" data-tex="\(a,b,c\in A\)">\(a,b,c\in A\)</span> one has
+<span class="math" data-tex="\(|\operatorname{Tr}(b)|\le\|b\|_1\)">\(|\operatorname{Tr}(b)|\le\|b\|_1\)</span> and <span class="math" data-tex="\(\|abc\|_1\le\|a\|\,\|b\|_1\,\|c\|\)">\(\|abc\|_1\le\|a\|\,\|b\|_1\,\|c\|\)</span>. Every self-adjoint <span class="math" data-tex="\(z\in A\)">\(z\in A\)</span> can be
+written <span class="math" data-tex="\(z=\sum_{k=1}^{N(A)}\lambda_ke_k\)">\(z=\sum_{k=1}^{N(A)}\lambda_ke_k\)</span> with pairwise orthogonal minimal projections <span class="math" data-tex="\(e_k\)">\(e_k\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> summing to
+<span class="math" data-tex="\(1\)">\(1\)</span>; the <span class="math" data-tex="\(\lambda_k\)">\(\lambda_k\)</span> are the <em>eigenvalues</em> of <span class="math" data-tex="\(z\)">\(z\)</span> counted with multiplicity, and
+<span class="math" data-tex="\(\operatorname{Tr}f(z)=\sum_kf(\lambda_k)\)">\(\operatorname{Tr}f(z)=\sum_kf(\lambda_k)\)</span>. The structure and the traces are proved in <a href="../NCG-FOLIATIONS/companions/af-algebras.html#OA-FND-AF-01">AF-algebras, Section 2 and
+Lemma 10.2</a>; by Lemma 2.2(1) there a self-adjoint element is a real combination of orthogonal
+projections, and splitting these into minimal ones gives the eigenvalue decomposition. Densities, the trace norm and the
+inequalities for it are the finite-dimensional case of <a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-05">Compact and trace-class operators, Sections 4–6</a>
+(Corollary 4.4(a) and Theorem 4.6 for the inequalities, Section 6 for the duality <span class="math" data-tex="\(\|\omega\|=\|\rho_\omega\|_1\)">\(\|\omega\|=\|\rho_\omega\|_1\)</span>),
+applied in each summand.</p>
+<p><strong>(B2) Completely positive maps.</strong> Compositions and sums of completely positive maps are completely positive;
+<span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms and compressions <span class="math" data-tex="\(a\mapsto v^*av\)">\(a\mapsto v^*av\)</span> (with <span class="math" data-tex="\(v\)">\(v\)</span> a rectangular matrix over the algebra) are
+completely positive. A unital completely positive map <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> satisfies <span class="math" data-tex="\(\|\gamma\|=1\)">\(\|\gamma\|=1\)</span> and the <em>Kadison–Schwarz
+inequality</em> <span class="math" data-tex="\(\gamma(a)^*\gamma(a)\le\gamma(a^*a)\)">\(\gamma(a)^*\gamma(a)\le\gamma(a^*a)\)</span>. A positive map whose domain is abelian is completely positive
+(Stinespring's theorem). A <em>conditional expectation</em> of a C*-algebra <span class="math" data-tex="\(A_0\)">\(A_0\)</span> onto a C*-subalgebra <span class="math" data-tex="\(A\ni1\)">\(A\ni1\)</span> is a
+positive unital map <span class="math" data-tex="\(E:A_0\to A\)">\(E:A_0\to A\)</span> with <span class="math" data-tex="\(E(a)=a\)">\(E(a)=a\)</span> and <span class="math" data-tex="\(E(a b a&#x27;)=aE(b)a&#x27;\)">\(E(a b a&#x27;)=aE(b)a&#x27;\)</span> for <span class="math" data-tex="\(a,a&#x27;\in A\)">\(a,a&#x27;\in A\)</span>, <span class="math" data-tex="\(b\in A_0\)">\(b\in A_0\)</span>; it is
+automatically completely positive (Tomiyama's theorem). Proved in <a href="../foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-03">Completely positive maps</a>:
+compositions, sums and <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms are completely positive by definition, and compressions by Theorem 6.1(1) and
+Example 6.4 there; the Kadison–Schwarz inequality and <span class="math" data-tex="\(\|\gamma\|=\|\gamma(1)\|\)">\(\|\gamma\|=\|\gamma(1)\|\)</span> are Theorem 4.1(1)–(2); positive maps
+with abelian domain are completely positive by Theorem 5.4(2). For a conditional expectation, the criterion of
+Proposition 3.2(1) there applies directly: for <span class="math" data-tex="\(x_i\in A_0\)">\(x_i\in A_0\)</span> and <span class="math" data-tex="\(y_i\in A\)">\(y_i\in A\)</span>,
+<span class="math" data-tex="\(\sum_{i,j}y_i^*E(x_i^*x_j)y_j=E\big((\sum_ix_iy_i)^*(\sum_jx_jy_j)\big)\ge0\)">\(\sum_{i,j}y_i^*E(x_i^*x_j)y_j=E\big((\sum_ix_iy_i)^*(\sum_jx_jy_j)\big)\ge0\)</span>. The version for norm-one projections is
+<span class="unlinked">Contractive retractions and the algebraic structure of expectations, §§CE-004 and CE-006</span>.
+See also [Tomiyama 1957].</p>
+<p><strong>(B3) GNS and dominated functionals.</strong> Let <span class="math" data-tex="\((\pi_\varphi,H_\varphi,\xi_\varphi)\)">\((\pi_\varphi,H_\varphi,\xi_\varphi)\)</span> be the GNS triple of a positive
+functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a positive functional with <span class="math" data-tex="\(\psi\le\varphi\)">\(\psi\le\varphi\)</span>, there is a unique
+<span class="math" data-tex="\(t\in\pi_\varphi(A)&#x27;\)">\(t\in\pi_\varphi(A)&#x27;\)</span> with <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span> and <span class="math" data-tex="\(\psi(a)=\langle\xi_\varphi,t\pi_\varphi(a)\xi_\varphi\rangle\)">\(\psi(a)=\langle\xi_\varphi,t\pi_\varphi(a)\xi_\varphi\rangle\)</span> for
+all <span class="math" data-tex="\(a\)">\(a\)</span>; conversely every such <span class="math" data-tex="\(t\)">\(t\)</span> defines a positive functional <span class="math" data-tex="\(\psi\le\varphi\)">\(\psi\le\varphi\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is abelian,
+<span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span> is abelian (an abelian von Neumann algebra with a cyclic vector is maximal abelian). Proved in <a href="../foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-10">Representations and positive
+functionals, Lemma 8.1</a> and <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-15">Projections and types of von Neumann algebras, Lemma
+11.1</a>.</p>
+<p><strong>(B4) Shannon entropy.</strong> For random variables <span class="math" data-tex="\(U,V,W\)">\(U,V,W\)</span> with finitely many values on a finite probability space, with
+<span class="math" data-tex="\(H(U)=\sum_u\eta(P(U=u))\)">\(H(U)=\sum_u\eta(P(U=u))\)</span> and <span class="math" data-tex="\(H(U\mid V)=H(U,V)-H(V)\)">\(H(U\mid V)=H(U,V)-H(V)\)</span>: <span class="math" data-tex="\(H(U)\le H(U,V)\)">\(H(U)\le H(U,V)\)</span>;
+<span class="math" data-tex="\(H(U,V)\le H(U)+H(V)\)">\(H(U,V)\le H(U)+H(V)\)</span>; <span class="math" data-tex="\(H(U\mid V,W)\le H(U\mid V)\)">\(H(U\mid V,W)\le H(U\mid V)\)</span>; <span class="math" data-tex="\(H(U_1,\dots,U_n\mid V)\le\sum_jH(U_j\mid V)\)">\(H(U_1,\dots,U_n\mid V)\le\sum_jH(U_j\mid V)\)</span>. For
+probability vectors <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> and <span class="math" data-tex="\(\lambda\in[0,1]\)">\(\lambda\in[0,1]\)</span>,
+<span class="math" data-tex="\(\lambda H(p_1)+(1-\lambda)H(p_2)\le H(\lambda p_1+(1-\lambda)p_2)\le\lambda H(p_1)+(1-\lambda)H(p_2)+h(\lambda)\)">\(\lambda H(p_1)+(1-\lambda)H(p_2)\le H(\lambda p_1+(1-\lambda)p_2)\le\lambda H(p_1)+(1-\lambda)H(p_2)+h(\lambda)\)</span>,
+where <span class="math" data-tex="\(h(\lambda)=\eta(\lambda)+\eta(1-\lambda)\)">\(h(\lambda)=\eta(\lambda)+\eta(1-\lambda)\)</span>. Proved in <a href="operator-convex-functions-and-the-continuity-of-entropy.html#section-4">Operator convex functions and the continuity of
+entropy, Proposition 4.1</a>.</p>
+<p><strong>(B5) Nuclear C*-algebras.</strong> A C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> is nuclear iff it has the <em>completely positive approximation
+property</em>: there are nets of completely positive contractions <span class="math" data-tex="\(\sigma_i:A\to M_{n_i}(\mathbb C)\)">\(\sigma_i:A\to M_{n_i}(\mathbb C)\)</span> and
+<span class="math" data-tex="\(\tau_i:M_{n_i}(\mathbb C)\to A\)">\(\tau_i:M_{n_i}(\mathbb C)\to A\)</span> with <span class="math" data-tex="\(\|\tau_i\sigma_i(a)-a\|\to0\)">\(\|\tau_i\sigma_i(a)-a\|\to0\)</span> for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> (the Choi–Effros
+theorem and its converse). Abelian C*-algebras are nuclear. Proved in the course <em>Positive maps and
+finite-dimensional approximation</em>: the equivalence in <a href="../OA-APPROX/tensor-positivity-nuclearity.html#3-nuclearity-produces-finite-models">Tensor positivity and nuclearity, Theorem
+3.1</a>; abelian algebras have the approximation property by <a href="../OA-APPROX/completely-positive-finite-models.html#3-finite-models-that-we-can-see">Completely
+positive finite models, Theorem 3.3</a>.</p>
+<p><strong>(B6) Takesaki's theorem.</strong> Fix a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> with a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and a von Neumann
+subalgebra <span class="math" data-tex="\(N\subset M\)">\(N\subset M\)</span>. There is a conditional expectation <span class="math" data-tex="\(E:M\to N\)">\(E:M\to N\)</span> with <span class="math" data-tex="\(\omega\circ E=\omega\)">\(\omega\circ E=\omega\)</span> iff
+<span class="math" data-tex="\(\sigma^\omega_t(N)=N\)">\(\sigma^\omega_t(N)=N\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>; it is then unique. Proved in <span class="unlinked">Conditional expectations from modular
+invariance, §§ME-01 and ME-08</span>. See also [Takesaki 1972]. (Used only in Remark 1.5.)</p>
+<p><strong>(B7) Relative entropy of normal states.</strong> For positive functionals on a C*-algebra, the quantity <span class="math" data-tex="\(D(\psi\|\varphi)\)">\(D(\psi\|\varphi)\)</span>
+of Definition 2.1 equals the relative entropy of the normal extensions of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to the enveloping von
+Neumann algebra, defined through the relative modular operator. Reference: [Kosaki 1986]; see also [Araki 1976].
+(Used only in Remark 2.8.)</p>
+<h2 id="1-positive-maps-into-abelian-algebras">1. Positive maps into abelian algebras</h2>
+<p>Throughout, <span class="math" data-tex="\(A\)">\(A\)</span> is a unital C*-algebra, <span class="math" data-tex="\(A^*_+\)">\(A^*_+\)</span> its positive linear functionals and <span class="math" data-tex="\(\Sigma(A)\)">\(\Sigma(A)\)</span> its states. All
+maps between C*-algebras are linear. For a finite set <span class="math" data-tex="\(X\)">\(X\)</span> we write <span class="math" data-tex="\(C(X)=\mathbb C^X\)">\(C(X)=\mathbb C^X\)</span>, <span class="math" data-tex="\(\delta_x\)">\(\delta_x\)</span> for evaluation at
+<span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(1_K\)">\(1_K\)</span> for the indicator of <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span>. A state <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> is a probability vector
+<span class="math" data-tex="\(\mu_x=\mu(1_{\{x\}})\)">\(\mu_x=\mu(1_{\{x\}})\)</span>, and <span class="math" data-tex="\(\mu(K)=\mu(1_K)\)">\(\mu(K)=\mu(1_K)\)</span>. Every finite-dimensional abelian C*-algebra is of the form <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> <em>(a) If <span class="math" data-tex="\((\omega_x)_{x\in X}\)">\((\omega_x)_{x\in X}\)</span> is a family of states on <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(P(a)(x)=\omega_x(a)\)">\(P(a)(x)=\omega_x(a)\)</span> defines a
+unital completely positive map <span class="math" data-tex="\(P:A\to C(X)\)">\(P:A\to C(X)\)</span>. Every unital positive map <span class="math" data-tex="\(P:A\to C(X)\)">\(P:A\to C(X)\)</span> arises in this way, from
+<span class="math" data-tex="\(\omega_x=P_x:=\delta_x\circ P\)">\(\omega_x=P_x:=\delta_x\circ P\)</span>; in particular it is completely positive.</em></p>
+<p><em>(b) The unital positive maps <span class="math" data-tex="\(A\to C(X)\)">\(A\to C(X)\)</span> form a convex set, closed under pointwise limits. Its extreme points are the
+maps <span class="math" data-tex="\(P\)">\(P\)</span> for which every <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is a pure state.</em></p>
+<p><strong>Proof.</strong> (a) Each <span class="math" data-tex="\(\omega_x\)">\(\omega_x\)</span> is positive and <span class="math" data-tex="\(\omega_x(1)=1\)">\(\omega_x(1)=1\)</span>, so <span class="math" data-tex="\(P\)">\(P\)</span> is unital and positive. For complete
+positivity let <span class="math" data-tex="\([a_{ij}]\in M_m(A)\)">\([a_{ij}]\in M_m(A)\)</span> be positive. The element <span class="math" data-tex="\([P(a_{ij})]\)">\([P(a_{ij})]\)</span> of <span class="math" data-tex="\(M_m(C(X))=C(X,M_m(\mathbb C))\)">\(M_m(C(X))=C(X,M_m(\mathbb C))\)</span> is
+positive iff for every <span class="math" data-tex="\(x\)">\(x\)</span> the scalar matrix <span class="math" data-tex="\([\omega_x(a_{ij})]\)">\([\omega_x(a_{ij})]\)</span> is positive. For <span class="math" data-tex="\(\zeta\in\mathbb C^m\)">\(\zeta\in\mathbb C^m\)</span> let
+<span class="math" data-tex="\(v\in M_{m,1}(A)\)">\(v\in M_{m,1}(A)\)</span> be the column with entries <span class="math" data-tex="\(\zeta_j1\)">\(\zeta_j1\)</span>. Then
+<span class="math" data-tex="\(\sum_{i,j}\bar\zeta_i\omega_x(a_{ij})\zeta_j=\omega_x(v^*[a_{ij}]v)\ge0\)">\(\sum_{i,j}\bar\zeta_i\omega_x(a_{ij})\zeta_j=\omega_x(v^*[a_{ij}]v)\ge0\)</span>, because <span class="math" data-tex="\(v^*[a_{ij}]v\ge0\)">\(v^*[a_{ij}]v\ge0\)</span>. Conversely,
+if <span class="math" data-tex="\(P\)">\(P\)</span> is unital and positive, each <span class="math" data-tex="\(\delta_x\circ P\)">\(\delta_x\circ P\)</span> is a state and <span class="math" data-tex="\(P(a)(x)=(\delta_x\circ P)(a)\)">\(P(a)(x)=(\delta_x\circ P)(a)\)</span>.</p>
+<p>(b) By (a), <span class="math" data-tex="\(P\mapsto(P_x)_{x\in X}\)">\(P\mapsto(P_x)_{x\in X}\)</span> is an affine bijection onto <span class="math" data-tex="\(\Sigma(A)^X\)">\(\Sigma(A)^X\)</span>, and pointwise limits of unital
+positive maps are unital positive. If some <span class="math" data-tex="\(P_{x_0}\)">\(P_{x_0}\)</span> is not pure, write
+<span class="math" data-tex="\(P_{x_0}=\tfrac12(\omega&#x27;+\omega&#x27;&#x27;)\)">\(P_{x_0}=\tfrac12(\omega&#x27;+\omega&#x27;&#x27;)\)</span> with states <span class="math" data-tex="\(\omega&#x27;\ne\omega&#x27;&#x27;\)">\(\omega&#x27;\ne\omega&#x27;&#x27;\)</span> and let <span class="math" data-tex="\(P&#x27;,P&#x27;&#x27;\)">\(P&#x27;,P&#x27;&#x27;\)</span> agree with <span class="math" data-tex="\(P\)">\(P\)</span> except
+that <span class="math" data-tex="\(P&#x27;_{x_0}=\omega&#x27;\)">\(P&#x27;_{x_0}=\omega&#x27;\)</span>, <span class="math" data-tex="\(P&#x27;&#x27;_{x_0}=\omega&#x27;&#x27;\)">\(P&#x27;&#x27;_{x_0}=\omega&#x27;&#x27;\)</span>; then <span class="math" data-tex="\(P=\tfrac12(P&#x27;+P&#x27;&#x27;)\)">\(P=\tfrac12(P&#x27;+P&#x27;&#x27;)\)</span> with <span class="math" data-tex="\(P&#x27;\ne P&#x27;&#x27;\)">\(P&#x27;\ne P&#x27;&#x27;\)</span>. Conversely, if every
+<span class="math" data-tex="\(P_x\)">\(P_x\)</span> is pure and <span class="math" data-tex="\(P=tP&#x27;+(1-t)P&#x27;&#x27;\)">\(P=tP&#x27;+(1-t)P&#x27;&#x27;\)</span> with <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, then <span class="math" data-tex="\(P_x=tP&#x27;_x+(1-t)P&#x27;&#x27;_x\)">\(P_x=tP&#x27;_x+(1-t)P&#x27;&#x27;_x\)</span> forces <span class="math" data-tex="\(P&#x27;_x=P&#x27;&#x27;_x=P_x\)">\(P&#x27;_x=P&#x27;&#x27;_x=P_x\)</span> for every
+<span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2.</strong> <em>Every unital <span class="math" data-tex="\(*\)">\(*\)</span>-subalgebra <span class="math" data-tex="\(C\subset C(X)\)">\(C\subset C(X)\)</span> is the algebra of functions constant on the blocks of a
+unique partition <span class="math" data-tex="\(\pi(C)\)">\(\pi(C)\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span>, and its minimal projections are the <span class="math" data-tex="\(1_K\)">\(1_K\)</span>, <span class="math" data-tex="\(K\in\pi(C)\)">\(K\in\pi(C)\)</span>. The subalgebra
+<span class="math" data-tex="\(C_1\vee C_2\)">\(C_1\vee C_2\)</span> generated by <span class="math" data-tex="\(C_1\)">\(C_1\)</span> and <span class="math" data-tex="\(C_2\)">\(C_2\)</span> corresponds to the common refinement
+<span class="math" data-tex="\(\pi(C_1)\vee\pi(C_2)=\{K\cap L\ne\emptyset:K\in\pi(C_1),L\in\pi(C_2)\}\)">\(\pi(C_1)\vee\pi(C_2)=\{K\cap L\ne\emptyset:K\in\pi(C_1),L\in\pi(C_2)\}\)</span>.</em></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(C\)">\(C\)</span> is a finite-dimensional abelian C*-algebra, so it is spanned by its minimal projections, which are
+pairwise orthogonal and sum to <span class="math" data-tex="\(1\)">\(1\)</span>. A projection in <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> is an indicator <span class="math" data-tex="\(1_K\)">\(1_K\)</span>; orthogonal indicators with sum
+<span class="math" data-tex="\(1\)">\(1\)</span> are the indicators of the blocks of a partition. The algebra generated by <span class="math" data-tex="\(C_1\)">\(C_1\)</span> and <span class="math" data-tex="\(C_2\)">\(C_2\)</span> is spanned by the
+products <span class="math" data-tex="\(1_K1_L=1_{K\cap L}\)">\(1_K1_L=1_{K\cap L}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 1.3.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a state on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> and <span class="math" data-tex="\(C\subset C(X)\)">\(C\subset C(X)\)</span> a unital <span class="math" data-tex="\(*\)">\(*\)</span>-subalgebra with partition
+<span class="math" data-tex="\(\pi=\pi(C)\)">\(\pi=\pi(C)\)</span>. The <em>canonical conditional expectation</em> <span class="math" data-tex="\(E^\mu_C:C(X)\to C\)">\(E^\mu_C:C(X)\to C\)</span> is
+<span class="math math-display" data-tex="\[
+E^\mu_C(f)=\sum_{K\in\pi}m_K(f)1_K,\qquad
+m_K(f)=\begin{cases}\mu(f1_K)/\mu(K)&amp;\text{if }\mu(K)&gt;0,\\ |K|^{-1}\sum_{x\in K}f(x)&amp;\text{if }\mu(K)=0.\end{cases}
+\]">\[
+E^\mu_C(f)=\sum_{K\in\pi}m_K(f)1_K,\qquad
+m_K(f)=\begin{cases}\mu(f1_K)/\mu(K)&amp;\text{if }\mu(K)&gt;0,\\ |K|^{-1}\sum_{x\in K}f(x)&amp;\text{if }\mu(K)=0.\end{cases}
+\]</span></p>
+<p><strong>Lemma 1.4.</strong> <em>(a) <span class="math" data-tex="\(E^\mu_C\)">\(E^\mu_C\)</span> is a conditional expectation onto <span class="math" data-tex="\(C\)">\(C\)</span> and <span class="math" data-tex="\(\mu\circ E^\mu_C=\mu\)">\(\mu\circ E^\mu_C=\mu\)</span>.</em></p>
+<p><em>(b) If <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> is any conditional expectation onto <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\mu\circ E&#x27;=\mu\)">\(\mu\circ E&#x27;=\mu\)</span>, then <span class="math" data-tex="\(E&#x27;(f)1_K=E^\mu_C(f)1_K\)">\(E&#x27;(f)1_K=E^\mu_C(f)1_K\)</span> for
+every block <span class="math" data-tex="\(K\)">\(K\)</span> with <span class="math" data-tex="\(\mu(K)&gt;0\)">\(\mu(K)&gt;0\)</span>.</em></p>
+<p><em>(c) If <span class="math" data-tex="\(C_1\subset C_2\)">\(C_1\subset C_2\)</span>, then <span class="math" data-tex="\(E^\mu_{C_1}\circ E^\mu_{C_2}\)">\(E^\mu_{C_1}\circ E^\mu_{C_2}\)</span> agrees with <span class="math" data-tex="\(E^\mu_{C_1}\)">\(E^\mu_{C_1}\)</span> on every block of
+<span class="math" data-tex="\(\pi(C_1)\)">\(\pi(C_1)\)</span> of positive measure.</em></p>
+<p><strong>Proof.</strong> (a) Each <span class="math" data-tex="\(m_K\)">\(m_K\)</span> is a state, so <span class="math" data-tex="\(E^\mu_C\)">\(E^\mu_C\)</span> is unital and positive. If <span class="math" data-tex="\(g\in C\)">\(g\in C\)</span> takes the value <span class="math" data-tex="\(g_K\)">\(g_K\)</span> on
+<span class="math" data-tex="\(K\)">\(K\)</span>, then <span class="math" data-tex="\(m_K(gf)=g_Km_K(f)\)">\(m_K(gf)=g_Km_K(f)\)</span>, which gives <span class="math" data-tex="\(E^\mu_C(gf)=gE^\mu_C(f)\)">\(E^\mu_C(gf)=gE^\mu_C(f)\)</span>, and <span class="math" data-tex="\(E^\mu_C(g)=g\)">\(E^\mu_C(g)=g\)</span>. Finally
+<span class="math" data-tex="\(\mu(E^\mu_C(f))=\sum_{\mu(K)&gt;0}\mu(K)m_K(f)=\sum_K\mu(f1_K)=\mu(f)\)">\(\mu(E^\mu_C(f))=\sum_{\mu(K)&gt;0}\mu(K)m_K(f)=\sum_K\mu(f1_K)=\mu(f)\)</span>.</p>
+<p>(b) Write <span class="math" data-tex="\(E&#x27;(f)=\sum_Kc_K1_K\)">\(E&#x27;(f)=\sum_Kc_K1_K\)</span>. Bimodularity and invariance give
+<span class="math" data-tex="\(c_K\mu(K)=\mu(E&#x27;(f)1_K)=\mu(E&#x27;(f1_K))=\mu(f1_K)\)">\(c_K\mu(K)=\mu(E&#x27;(f)1_K)=\mu(E&#x27;(f1_K))=\mu(f1_K)\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(E^\mu_{C_1}\circ E^\mu_{C_2}\)">\(E^\mu_{C_1}\circ E^\mu_{C_2}\)</span> is a <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-preserving conditional expectation onto <span class="math" data-tex="\(C_1\)">\(C_1\)</span> (a composition of
+unital positive maps, <span class="math" data-tex="\(C_1\)">\(C_1\)</span>-bimodular because <span class="math" data-tex="\(C_1\subset C_2\)">\(C_1\subset C_2\)</span>, equal to the identity on <span class="math" data-tex="\(C_1\)">\(C_1\)</span>); apply (b).
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The values of <span class="math" data-tex="\(E^\mu_C\)">\(E^\mu_C\)</span> on null blocks play no role anywhere below; the convention only makes the expectation
+unique.</p>
+<p><strong>Remark 1.5 (vocabulary).</strong> For later use we collect the terminology. A map between C*-algebras is <em>unital</em> if it
+preserves the unit, and <em>completely positive</em> if all its matrix amplifications
+<span class="math" data-tex="\([a_{ij}]\mapsto[\gamma(a_{ij})]\)">\([a_{ij}]\mapsto[\gamma(a_{ij})]\)</span> are positive. Unital completely positive maps are closed under composition and
+form a convex set closed under pointwise norm limits; <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms, in particular inclusions of unital
+subalgebras, are among them. They satisfy the Kadison–Schwarz inequality (B2). Positive maps into or out of abelian
+algebras are completely positive (Lemma 1.1 and (B2)), and conditional expectations are completely positive (B2). For
+a faithful normal state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of a von Neumann algebra, a subalgebra admits an <span class="math" data-tex="\(\omega\)">\(\omega\)</span>-preserving conditional
+expectation iff it is invariant under the modular group of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and then the expectation is unique (B6); we call
+it canonically associated with <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. For abelian finite-dimensional algebras the modular group is trivial and
+Lemma 1.4 is the elementary form of this statement, with the null blocks treated by convention.</p>
+<h2 id="2-relative-entropy"><span id="section-2"></span>2. Relative entropy</h2>
+<p>We define the relative entropy of two positive functionals on any
+unital C*-algebra by a variational expression. Every property used later follows from the definition, and in finite
+dimensions the definition gives back the familiar formula (Theorem 2.3).</p>
+<p><strong>Definition 2.1.</strong> A <em>path</em> in <span class="math" data-tex="\(A\)">\(A\)</span> is a function <span class="math" data-tex="\(x:(0,\infty)\to A\)">\(x:(0,\infty)\to A\)</span> for which there are
+<span class="math" data-tex="\(0&lt;t_0&lt;t_1&lt;\dots&lt;t_m\)">\(0&lt;t_0&lt;t_1&lt;\dots&lt;t_m\)</span> such that <span class="math" data-tex="\(x(t)=0\)">\(x(t)=0\)</span> for <span class="math" data-tex="\(t&lt;t_0\)">\(t&lt;t_0\)</span>, <span class="math" data-tex="\(x(t)=1\)">\(x(t)=1\)</span> for <span class="math" data-tex="\(t\ge t_m\)">\(t\ge t_m\)</span>, and <span class="math" data-tex="\(x\)">\(x\)</span> is constant on each
+<span class="math" data-tex="\([t_{k-1},t_k)\)">\([t_{k-1},t_k)\)</span>. Put <span class="math" data-tex="\(y(t)=1-x(t)\)">\(y(t)=1-x(t)\)</span>. For <span class="math" data-tex="\(\psi,\varphi\in A^*_+\)">\(\psi,\varphi\in A^*_+\)</span> let
+<span class="math math-display" data-tex="\[
+F_x(\psi\|\varphi)=\int_0^\infty\Bigl(\frac{\psi(1)}{1+t}-\psi\bigl(y(t)^*y(t)\bigr)
+-\frac1t\,\varphi\bigl(x(t)x(t)^*\bigr)\Bigr)\frac{dt}t,
+\qquad
+D(\psi\|\varphi)=\sup_xF_x(\psi\|\varphi).
+\tag{2.1}
+\]">\[
+F_x(\psi\|\varphi)=\int_0^\infty\Bigl(\frac{\psi(1)}{1+t}-\psi\bigl(y(t)^*y(t)\bigr)
+-\frac1t\,\varphi\bigl(x(t)x(t)^*\bigr)\Bigr)\frac{dt}t,
+\qquad
+D(\psi\|\varphi)=\sup_xF_x(\psi\|\varphi).
+\tag{2.1}
+\]</span>
+<span class="math" data-tex="\(D(\psi\|\varphi)\)">\(D(\psi\|\varphi)\)</span> is the <em>relative entropy of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with respect to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span></em>.</p>
+<p>We write <span class="math" data-tex="\(I_{\psi,\varphi}(t,x)\)">\(I_{\psi,\varphi}(t,x)\)</span> for the integrand of (2.1) at time <span class="math" data-tex="\(t\)">\(t\)</span> and a fixed element <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> <em>For every path <span class="math" data-tex="\(x\)">\(x\)</span> the integral in (2.1) converges absolutely, and there are <span class="math" data-tex="\(a_x=a_x^*\in A\)">\(a_x=a_x^*\in A\)</span> and
+<span class="math" data-tex="\(b_x\in A_+\)">\(b_x\in A_+\)</span>, depending only on <span class="math" data-tex="\(x\)">\(x\)</span>, with <span class="math" data-tex="\(F_x(\psi\|\varphi)=\psi(a_x)-\varphi(b_x)\)">\(F_x(\psi\|\varphi)=\psi(a_x)-\varphi(b_x)\)</span>. In particular <span class="math" data-tex="\(F_x\)">\(F_x\)</span> is
+jointly linear in <span class="math" data-tex="\((\psi,\varphi)\)">\((\psi,\varphi)\)</span> and weak* continuous.</em></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(t&lt;t_0\)">\(t&lt;t_0\)</span> the integrand equals <span class="math" data-tex="\(t^{-1}(\psi(1)(1+t)^{-1}-\psi(1))=-\psi(1)(1+t)^{-1}\)">\(t^{-1}(\psi(1)(1+t)^{-1}-\psi(1))=-\psi(1)(1+t)^{-1}\)</span>; for <span class="math" data-tex="\(t\ge t_m\)">\(t\ge t_m\)</span>
+it equals <span class="math" data-tex="\(\psi(1)t^{-1}(1+t)^{-1}-\varphi(1)t^{-2}\)">\(\psi(1)t^{-1}(1+t)^{-1}-\varphi(1)t^{-2}\)</span>; on <span class="math" data-tex="\([t_0,t_m)\)">\([t_0,t_m)\)</span> it is bounded. So the integral converges
+absolutely, and it equals <span class="math" data-tex="\(\psi(a_x)-\varphi(b_x)\)">\(\psi(a_x)-\varphi(b_x)\)</span> with
+<span class="math" data-tex="\(a_x=\int_0^\infty\bigl((1+t)^{-1}-y(t)^*y(t)\bigr)t^{-1}dt\)">\(a_x=\int_0^\infty\bigl((1+t)^{-1}-y(t)^*y(t)\bigr)t^{-1}dt\)</span> and <span class="math" data-tex="\(b_x=\int_{t_0}^\infty x(t)x(t)^*t^{-2}dt\)">\(b_x=\int_{t_0}^\infty x(t)x(t)^*t^{-2}dt\)</span>,
+which are finite sums of elements of <span class="math" data-tex="\(A\)">\(A\)</span> with explicit scalar coefficients. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (finite dimensions).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional and <span class="math" data-tex="\(\psi,\varphi\in A^*_+\)">\(\psi,\varphi\in A^*_+\)</span> with densities
+<span class="math" data-tex="\(\rho_\psi,\rho_\varphi\)">\(\rho_\psi,\rho_\varphi\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+D(\psi\|\varphi)=\begin{cases}\operatorname{Tr}\bigl(\rho_\psi\log\rho_\psi\bigr)-\operatorname{Tr}\bigl(\rho_\psi
+\log\rho_\varphi\bigr)&amp;\text{if }\operatorname{supp}\rho_\psi\le\operatorname{supp}\rho_\varphi,\\
++\infty&amp;\text{otherwise,}\end{cases}
+\tag{2.2}
+\]">\[
+D(\psi\|\varphi)=\begin{cases}\operatorname{Tr}\bigl(\rho_\psi\log\rho_\psi\bigr)-\operatorname{Tr}\bigl(\rho_\psi
+\log\rho_\varphi\bigr)&amp;\text{if }\operatorname{supp}\rho_\psi\le\operatorname{supp}\rho_\varphi,\\
++\infty&amp;\text{otherwise,}\end{cases}
+\tag{2.2}
+\]</span>
+<em>where <span class="math" data-tex="\(\log\)">\(\log\)</span> is taken on the support (<span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>).</em></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\rho_\varphi=\sum_a\alpha_ap_a\)">\(\rho_\varphi=\sum_a\alpha_ap_a\)</span> and <span class="math" data-tex="\(\rho_\psi=\sum_b\beta_bq_b\)">\(\rho_\psi=\sum_b\beta_bq_b\)</span> with distinct eigenvalues and the
+corresponding spectral projections <span class="math" data-tex="\(p_a,q_b\in A\)">\(p_a,q_b\in A\)</span> (eigenvalue <span class="math" data-tex="\(0\)">\(0\)</span> allowed), and put
+<span class="math" data-tex="\(w_{ab}=\operatorname{Tr}(p_aq_b)=\|p_aq_b\|_2^2\ge0\)">\(w_{ab}=\operatorname{Tr}(p_aq_b)=\|p_aq_b\|_2^2\ge0\)</span>, where <span class="math" data-tex="\(\|z\|_2^2=\operatorname{Tr}(z^*z)\)">\(\|z\|_2^2=\operatorname{Tr}(z^*z)\)</span>. Then
+<span class="math" data-tex="\(\sum_aw_{ab}=\operatorname{Tr}q_b\)">\(\sum_aw_{ab}=\operatorname{Tr}q_b\)</span>, <span class="math" data-tex="\(\sum_bw_{ab}=\operatorname{Tr}p_a\)">\(\sum_bw_{ab}=\operatorname{Tr}p_a\)</span> and <span class="math" data-tex="\(w_{ab}=0\)">\(w_{ab}=0\)</span> iff <span class="math" data-tex="\(p_aq_b=0\)">\(p_aq_b=0\)</span>.</p>
+<p><em>Step 1: the pointwise infimum.</em> Fix <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and put <span class="math" data-tex="\(q_t(x)=\psi((1-x)^*(1-x))+t^{-1}\varphi(xx^*)\)">\(q_t(x)=\psi((1-x)^*(1-x))+t^{-1}\varphi(xx^*)\)</span> for <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>.
+With <span class="math" data-tex="\(x_{ab}=p_axq_b\)">\(x_{ab}=p_axq_b\)</span>,
+<span class="math math-display" data-tex="\[
+\psi(y^*y)=\operatorname{Tr}(y\rho_\psi y^*)=\sum_{a,b}\beta_b\|p_ayq_b\|_2^2,\qquad
+\varphi(xx^*)=\operatorname{Tr}(\rho_\varphi xx^*)=\sum_{a,b}\alpha_a\|p_axq_b\|_2^2,
+\]">\[
+\psi(y^*y)=\operatorname{Tr}(y\rho_\psi y^*)=\sum_{a,b}\beta_b\|p_ayq_b\|_2^2,\qquad
+\varphi(xx^*)=\operatorname{Tr}(\rho_\varphi xx^*)=\sum_{a,b}\alpha_a\|p_axq_b\|_2^2,
+\]</span>
+so <span class="math" data-tex="\(q_t(x)=\sum_{a,b}\bigl(\beta_b\|p_aq_b-x_{ab}\|_2^2+t^{-1}\alpha_a\|x_{ab}\|_2^2\bigr)\)">\(q_t(x)=\sum_{a,b}\bigl(\beta_b\|p_aq_b-x_{ab}\|_2^2+t^{-1}\alpha_a\|x_{ab}\|_2^2\bigr)\)</span>. The map
+<span class="math" data-tex="\(x\mapsto(x_{ab})\)">\(x\mapsto(x_{ab})\)</span> is a linear bijection of <span class="math" data-tex="\(A\)">\(A\)</span> onto <span class="math" data-tex="\(\bigoplus_{a,b}p_aAq_b\)">\(\bigoplus_{a,b}p_aAq_b\)</span> (inverse <span class="math" data-tex="\((x_{ab})\mapsto\sum
+x_{ab}\)">\((x_{ab})\mapsto\sum
+x_{ab}\)</span>), so we may minimize each summand separately over <span class="math" data-tex="\(z\in p_aAq_b\)">\(z\in p_aAq_b\)</span>, a Hilbert space for
+<span class="math" data-tex="\(\langle z,z&#x27;\rangle=\operatorname{Tr}(z^*z&#x27;)\)">\(\langle z,z&#x27;\rangle=\operatorname{Tr}(z^*z&#x27;)\)</span> containing <span class="math" data-tex="\(c=p_aq_b\)">\(c=p_aq_b\)</span>. For <span class="math" data-tex="\(\beta,\kappa\ge0\)">\(\beta,\kappa\ge0\)</span> with
+<span class="math" data-tex="\(\beta+\kappa&gt;0\)">\(\beta+\kappa&gt;0\)</span>, completing the square gives
+<span class="math" data-tex="\(\beta\|c-z\|^2+\kappa\|z\|^2=(\beta+\kappa)\|z-\tfrac\beta{\beta+\kappa}c\|^2+\tfrac{\beta\kappa}{\beta+\kappa}\|c\|^2\)">\(\beta\|c-z\|^2+\kappa\|z\|^2=(\beta+\kappa)\|z-\tfrac\beta{\beta+\kappa}c\|^2+\tfrac{\beta\kappa}{\beta+\kappa}\|c\|^2\)</span>.
+With <span class="math" data-tex="\(\kappa=\alpha_a/t\)">\(\kappa=\alpha_a/t\)</span> we obtain
+<span class="math math-display" data-tex="\[
+\min_xq_t(x)=\sum_{a,b}w_{ab}\,\frac{\alpha_a\beta_b}{\alpha_a+t\beta_b},
+\qquad\text{attained at}\quad x_t=\sum_{a,b}c_{ab}(t)\,p_aq_b,\quad c_{ab}(t)=\frac{t\beta_b}{t\beta_b+\alpha_a},
+\tag{2.3}
+\]">\[
+\min_xq_t(x)=\sum_{a,b}w_{ab}\,\frac{\alpha_a\beta_b}{\alpha_a+t\beta_b},
+\qquad\text{attained at}\quad x_t=\sum_{a,b}c_{ab}(t)\,p_aq_b,\quad c_{ab}(t)=\frac{t\beta_b}{t\beta_b+\alpha_a},
+\tag{2.3}
+\]</span>
+with the conventions that a fraction with vanishing denominator is <span class="math" data-tex="\(0\)">\(0\)</span>. Since <span class="math" data-tex="\(\psi(1)=\sum_{a,b}w_{ab}\beta_b\)">\(\psi(1)=\sum_{a,b}w_{ab}\beta_b\)</span>, the
+function <span class="math" data-tex="\(g(t)=\sup_xI_{\psi,\varphi}(t,x)=t^{-1}\bigl(\psi(1)(1+t)^{-1}-\min q_t\bigr)\)">\(g(t)=\sup_xI_{\psi,\varphi}(t,x)=t^{-1}\bigl(\psi(1)(1+t)^{-1}-\min q_t\bigr)\)</span> is
+<span class="math" data-tex="\(g=\sum_{a,b}w_{ab}g_{ab}\)">\(g=\sum_{a,b}w_{ab}g_{ab}\)</span> with
+<span class="math math-display" data-tex="\[
+g_{ab}(t)=\begin{cases}0&amp;\beta_b=0,\\ \beta_b\,t^{-1}(1+t)^{-1}&amp;\alpha_a=0&lt;\beta_b,\\
+\beta_b\,\dfrac{\beta_b-\alpha_a}{(1+t)(\alpha_a+t\beta_b)}&amp;\alpha_a,\beta_b&gt;0.\end{cases}
+\]">\[
+g_{ab}(t)=\begin{cases}0&amp;\beta_b=0,\\ \beta_b\,t^{-1}(1+t)^{-1}&amp;\alpha_a=0&lt;\beta_b,\\
+\beta_b\,\dfrac{\beta_b-\alpha_a}{(1+t)(\alpha_a+t\beta_b)}&amp;\alpha_a,\beta_b&gt;0.\end{cases}
+\]</span></p>
+<p><em>Step 2: integration.</em> For <span class="math" data-tex="\(\alpha,\beta&gt;0\)">\(\alpha,\beta&gt;0\)</span>, <span class="math" data-tex="\(\alpha\ne\beta\)">\(\alpha\ne\beta\)</span>, partial fractions give
+<span class="math" data-tex="\(\frac{1}{(1+t)(\alpha+\beta t)}=\frac1{\alpha-\beta}\bigl(\frac1{1+t}-\frac\beta{\alpha+\beta t}\bigr)\)">\(\frac{1}{(1+t)(\alpha+\beta t)}=\frac1{\alpha-\beta}\bigl(\frac1{1+t}-\frac\beta{\alpha+\beta t}\bigr)\)</span>, hence
+<span class="math math-display" data-tex="\[
+\int_0^\infty\frac{\beta-\alpha}{(1+t)(\alpha+\beta t)}\,dt=-\bigl[\log(1+t)-\log(\alpha+\beta t)\bigr]_0^\infty
+=\log\frac\beta\alpha,
+\tag{2.4}
+\]">\[
+\int_0^\infty\frac{\beta-\alpha}{(1+t)(\alpha+\beta t)}\,dt=-\bigl[\log(1+t)-\log(\alpha+\beta t)\bigr]_0^\infty
+=\log\frac\beta\alpha,
+\tag{2.4}
+\]</span>
+which also holds for <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. So <span class="math" data-tex="\(\int_0^\infty g_{ab}=\beta_b\log(\beta_b/\alpha_a)\)">\(\int_0^\infty g_{ab}=\beta_b\log(\beta_b/\alpha_a)\)</span> if
+<span class="math" data-tex="\(\alpha_a,\beta_b&gt;0\)">\(\alpha_a,\beta_b&gt;0\)</span>, <span class="math" data-tex="\(=0\)">\(=0\)</span> if <span class="math" data-tex="\(\beta_b=0\)">\(\beta_b=0\)</span>, and <span class="math" data-tex="\(=+\infty\)">\(=+\infty\)</span> if <span class="math" data-tex="\(\alpha_a=0&lt;\beta_b\)">\(\alpha_a=0&lt;\beta_b\)</span>. Therefore
+<span class="math" data-tex="\(\int_0^\infty g(t)\,dt=\sum_{a,b:\beta_b&gt;0}w_{ab}\beta_b\log(\beta_b/\alpha_a)\)">\(\int_0^\infty g(t)\,dt=\sum_{a,b:\beta_b&gt;0}w_{ab}\beta_b\log(\beta_b/\alpha_a)\)</span>, which is <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> iff
+<span class="math" data-tex="\(w_{ab}&gt;0\)">\(w_{ab}&gt;0\)</span> for some <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(\alpha_a=0&lt;\beta_b\)">\(\alpha_a=0&lt;\beta_b\)</span>, that is, iff <span class="math" data-tex="\(q_b\)">\(q_b\)</span> meets the kernel projection of
+<span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> for some <span class="math" data-tex="\(\beta_b&gt;0\)">\(\beta_b&gt;0\)</span>, that is, iff <span class="math" data-tex="\(\operatorname{supp}\rho_\psi\not\le
+\operatorname{supp}\rho_\varphi\)">\(\operatorname{supp}\rho_\psi\not\le
+\operatorname{supp}\rho_\varphi\)</span>. In the finite case, <span class="math" data-tex="\(\sum_{a,b}w_{ab}\beta_b\log\beta_b=
+\operatorname{Tr}\rho_\psi\log\rho_\psi\)">\(\sum_{a,b}w_{ab}\beta_b\log\beta_b=
+\operatorname{Tr}\rho_\psi\log\rho_\psi\)</span> and <span class="math" data-tex="\(\sum_{a:\alpha_a&gt;0}\sum_bw_{ab}\beta_b\log\alpha_a=
+\operatorname{Tr}(\rho_\psi\log\rho_\varphi)\)">\(\sum_{a:\alpha_a&gt;0}\sum_bw_{ab}\beta_b\log\alpha_a=
+\operatorname{Tr}(\rho_\psi\log\rho_\varphi)\)</span>, so <span class="math" data-tex="\(\int_0^\infty g\)">\(\int_0^\infty g\)</span> equals the right side of (2.2).</p>
+<p><em>Step 3: <span class="math" data-tex="\(D\le\int g\)">\(D\le\int g\)</span>.</em> For every path, <span class="math" data-tex="\(I_{\psi,\varphi}(t,x(t))\le g(t)\)">\(I_{\psi,\varphi}(t,x(t))\le g(t)\)</span>, so
+<span class="math" data-tex="\(F_x(\psi\|\varphi)\le\int_0^\infty g\)">\(F_x(\psi\|\varphi)\le\int_0^\infty g\)</span> (trivial if <span class="math" data-tex="\(\int g=+\infty\)">\(\int g=+\infty\)</span>; otherwise <span class="math" data-tex="\(g\)">\(g\)</span> is integrable).</p>
+<p><em>Step 4: <span class="math" data-tex="\(D\ge\int g\)">\(D\ge\int g\)</span>.</em> Let <span class="math" data-tex="\(0&lt;\delta&lt;T\)">\(0&lt;\delta&lt;T\)</span>. The coefficients <span class="math" data-tex="\(c_{ab}(t)\)">\(c_{ab}(t)\)</span> are continuous on <span class="math" data-tex="\([\delta,T]\)">\([\delta,T]\)</span> (each is
+either constant or a continuous fraction with positive denominator), so <span class="math" data-tex="\(t\mapsto x_t\)">\(t\mapsto x_t\)</span> is continuous, and
+<span class="math" data-tex="\(I_{\psi,\varphi}(t,x)\)">\(I_{\psi,\varphi}(t,x)\)</span> is jointly continuous on <span class="math" data-tex="\([\delta,T]\times A\)">\([\delta,T]\times A\)</span>. By uniform continuity on the compact set
+<span class="math" data-tex="\(\{(t,x_s):t,s\in[\delta,T]\}\)">\(\{(t,x_s):t,s\in[\delta,T]\}\)</span> there is a partition <span class="math" data-tex="\(\delta=s_0&lt;\dots&lt;s_m=T\)">\(\delta=s_0&lt;\dots&lt;s_m=T\)</span> such that the path
+<span class="math" data-tex="\(x(t)=0\)">\(x(t)=0\)</span> for <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>, <span class="math" data-tex="\(x(t)=x_{s_{k-1}}\)">\(x(t)=x_{s_{k-1}}\)</span> on <span class="math" data-tex="\([s_{k-1},s_k)\)">\([s_{k-1},s_k)\)</span>, <span class="math" data-tex="\(x(t)=1\)">\(x(t)=1\)</span> for <span class="math" data-tex="\(t\ge T\)">\(t\ge T\)</span>, satisfies
+<span class="math" data-tex="\(\int_\delta^T I(t,x(t))dt\ge\int_\delta^Tg-\theta\)">\(\int_\delta^T I(t,x(t))dt\ge\int_\delta^Tg-\theta\)</span>, for a given <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span>. By the computation in Lemma 2.2,
+<span class="math" data-tex="\(|\int_0^\delta I(t,0)\,dt|\le\psi(1)\delta\)">\(|\int_0^\delta I(t,0)\,dt|\le\psi(1)\delta\)</span> and <span class="math" data-tex="\(|\int_T^\infty I(t,1)\,dt|\le(\psi(1)+\varphi(1))/T\)">\(|\int_T^\infty I(t,1)\,dt|\le(\psi(1)+\varphi(1))/T\)</span>. Hence
+<span class="math" data-tex="\(D(\psi\|\varphi)\ge\int_\delta^Tg-\theta-\psi(1)\delta-(\psi(1)+\varphi(1))/T\)">\(D(\psi\|\varphi)\ge\int_\delta^Tg-\theta-\psi(1)\delta-(\psi(1)+\varphi(1))/T\)</span>. As <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span>, <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>,
+<span class="math" data-tex="\(\int_\delta^Tg\to\int_0^\infty g\)">\(\int_\delta^Tg\to\int_0^\infty g\)</span> termwise (each <span class="math" data-tex="\(g_{ab}\)">\(g_{ab}\)</span> is either integrable or positive), and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is
+arbitrary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The right side of (2.2) is the <em>Umegaki relative entropy</em>. For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span> it reads
+<span class="math" data-tex="\(D(\beta\|\alpha)=\beta\log(\beta/\alpha)\)">\(D(\beta\|\alpha)=\beta\log(\beta/\alpha)\)</span> for <span class="math" data-tex="\(\alpha,\beta\ge0\)">\(\alpha,\beta\ge0\)</span> (with <span class="math" data-tex="\(0\log\frac0\alpha=0\)">\(0\log\frac0\alpha=0\)</span> and
+<span class="math" data-tex="\(\beta\log\frac\beta0=+\infty\)">\(\beta\log\frac\beta0=+\infty\)</span> for <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>).</p>
+<p><strong>Remark 2.4.</strong> One may enlarge the class of paths to step functions with finitely many values that vanish near <span class="math" data-tex="\(0\)">\(0\)</span>,
+with no condition at infinity; the supremum does not change. Indeed, if <span class="math" data-tex="\(x(t)=x_\infty\)">\(x(t)=x_\infty\)</span> for large <span class="math" data-tex="\(t\)">\(t\)</span> and
+<span class="math" data-tex="\(\psi(y_\infty^*y_\infty)&gt;0\)">\(\psi(y_\infty^*y_\infty)&gt;0\)</span>, the integral is <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. If <span class="math" data-tex="\(\psi(y_\infty^*y_\infty)=0\)">\(\psi(y_\infty^*y_\infty)=0\)</span>, replacing <span class="math" data-tex="\(x\)">\(x\)</span> by
+<span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\([T,\infty)\)">\([T,\infty)\)</span> changes the integral by <span class="math" data-tex="\((\varphi(x_\infty x_\infty^*)-\varphi(1))/T\)">\((\varphi(x_\infty x_\infty^*)-\varphi(1))/T\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span>.
+This is the form of the variational expression found in [Kosaki 1986], which builds on work of Pusz and Woronowicz.</p>
+<p><strong>Proposition 2.5 (general properties).</strong> <em>Let <span class="math" data-tex="\(\psi,\psi_i,\varphi,\varphi_i\)">\(\psi,\psi_i,\varphi,\varphi_i\)</span> be positive functionals on a unital
+C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>.</em></p>
+<p><em>(a) Joint convexity and homogeneity: <span class="math" data-tex="\(D(\lambda\psi\|\lambda\varphi)=\lambda D(\psi\|\varphi)\)">\(D(\lambda\psi\|\lambda\varphi)=\lambda D(\psi\|\varphi)\)</span> for <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>,
+and <span class="math" data-tex="\(D(\sum_i\lambda_i\psi_i\|\sum_i\lambda_i\varphi_i)\le\sum_i\lambda_iD(\psi_i\|\varphi_i)\)">\(D(\sum_i\lambda_i\psi_i\|\sum_i\lambda_i\varphi_i)\le\sum_i\lambda_iD(\psi_i\|\varphi_i)\)</span> for <span class="math" data-tex="\(\lambda_i\ge0\)">\(\lambda_i\ge0\)</span>,
+<span class="math" data-tex="\(\sum\lambda_i=1\)">\(\sum\lambda_i=1\)</span>. Equivalently, <span class="math" data-tex="\(D(\sum_i\psi_i\|\sum_i\varphi_i)\le\sum_iD(\psi_i\|\varphi_i)\)">\(D(\sum_i\psi_i\|\sum_i\varphi_i)\le\sum_iD(\psi_i\|\varphi_i)\)</span>.</em></p>
+<p><em>(b) Lower semicontinuity: <span class="math" data-tex="\((\psi,\varphi)\mapsto D(\psi\|\varphi)\in(-\infty,+\infty]\)">\((\psi,\varphi)\mapsto D(\psi\|\varphi)\in(-\infty,+\infty]\)</span> is jointly lower semicontinuous
+for the weak* topology.</em></p>
+<p><em>(c) Antitonicity in the reference: <span class="math" data-tex="\(\varphi_1\le\varphi_2\)">\(\varphi_1\le\varphi_2\)</span> implies <span class="math" data-tex="\(D(\psi\|\varphi_1)\ge D(\psi\|\varphi_2)\)">\(D(\psi\|\varphi_1)\ge D(\psi\|\varphi_2)\)</span>.</em></p>
+<p><em>(d) Monotonicity: if <span class="math" data-tex="\(\gamma:A_0\to A\)">\(\gamma:A_0\to A\)</span> is a unital map satisfying the Kadison–Schwarz inequality (for instance a
+unital completely positive map), then <span class="math" data-tex="\(D(\psi\circ\gamma\|\varphi\circ\gamma)\le D(\psi\|\varphi)\)">\(D(\psi\circ\gamma\|\varphi\circ\gamma)\le D(\psi\|\varphi)\)</span>. In particular
+<span class="math" data-tex="\(D(\psi|_{A_0}\|\varphi|_{A_0})\le D(\psi\|\varphi)\)">\(D(\psi|_{A_0}\|\varphi|_{A_0})\le D(\psi\|\varphi)\)</span> for a unital C*-subalgebra <span class="math" data-tex="\(A_0\)">\(A_0\)</span>.</em></p>
+<p><em>(e) Invariance: if moreover there is a unital Kadison–Schwarz map <span class="math" data-tex="\(\beta:A\to A_0\)">\(\beta:A\to A_0\)</span> with <span class="math" data-tex="\(\gamma\circ\beta=\mathrm{id}_A\)">\(\gamma\circ\beta=\mathrm{id}_A\)</span>,
+then <span class="math" data-tex="\(D(\psi\circ\gamma\|\varphi\circ\gamma)=D(\psi\|\varphi)\)">\(D(\psi\circ\gamma\|\varphi\circ\gamma)=D(\psi\|\varphi)\)</span>. In particular, if <span class="math" data-tex="\(E:A_0\to A\)">\(E:A_0\to A\)</span> is a conditional
+expectation onto a subalgebra <span class="math" data-tex="\(A\subset A_0\)">\(A\subset A_0\)</span>, then <span class="math" data-tex="\(D(\psi\circ E\|\varphi\circ E)=D(\psi\|\varphi)\)">\(D(\psi\circ E\|\varphi\circ E)=D(\psi\|\varphi)\)</span>.</em></p>
+<p><em>(f) Lower bound: <span class="math" data-tex="\(D(\psi\|\varphi)\ge\psi(1)\log\bigl(\psi(1)/\varphi(1)\bigr)\)">\(D(\psi\|\varphi)\ge\psi(1)\log\bigl(\psi(1)/\varphi(1)\bigr)\)</span>, with the conventions of Theorem 2.3
+for <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>. In particular <span class="math" data-tex="\(D(\psi\|\varphi)\ge0\)">\(D(\psi\|\varphi)\ge0\)</span> if <span class="math" data-tex="\(\psi(1)=\varphi(1)\)">\(\psi(1)=\varphi(1)\)</span>.</em></p>
+<p><em>(g) Scaling: for <span class="math" data-tex="\(\lambda,\kappa&gt;0\)">\(\lambda,\kappa&gt;0\)</span>,
+<span class="math" data-tex="\(D(\lambda\psi\|\kappa\varphi)=\lambda D(\psi\|\varphi)+\lambda\psi(1)\log(\lambda/\kappa)\)">\(D(\lambda\psi\|\kappa\varphi)=\lambda D(\psi\|\varphi)+\lambda\psi(1)\log(\lambda/\kappa)\)</span>.</em></p>
+<p><em>(h) <span class="math" data-tex="\(D(\psi\|\psi)=0\)">\(D(\psi\|\psi)=0\)</span> and <span class="math" data-tex="\(D(0\|\varphi)=0\)">\(D(0\|\varphi)=0\)</span>.</em></p>
+<p><em>(i) Convergence: if <span class="math" data-tex="\(\gamma_\nu:A\to A\)">\(\gamma_\nu:A\to A\)</span> are unital completely positive maps with <span class="math" data-tex="\(\|\gamma_\nu(a)-a\|\to0\)">\(\|\gamma_\nu(a)-a\|\to0\)</span> for every
+<span class="math" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-tex="\(D(\psi\circ\gamma_\nu\|\varphi\circ\gamma_\nu)\to D(\psi\|\varphi)\)">\(D(\psi\circ\gamma_\nu\|\varphi\circ\gamma_\nu)\to D(\psi\|\varphi)\)</span>.</em></p>
+<p><strong>Proof.</strong> (a) and (b): by Lemma 2.2, <span class="math" data-tex="\(D\)">\(D\)</span> is a supremum of jointly linear, positively homogeneous, weak*
+continuous functions; a supremum of such functions is jointly convex, positively homogeneous and lower semicontinuous.
+Subadditivity follows from <span class="math" data-tex="\(\sup_x(F_x(\psi_1\|\varphi_1)+F_x(\psi_2\|\varphi_2))\le D(\psi_1\|\varphi_1)
++D(\psi_2\|\varphi_2)\)">\(\sup_x(F_x(\psi_1\|\varphi_1)+F_x(\psi_2\|\varphi_2))\le D(\psi_1\|\varphi_1)
++D(\psi_2\|\varphi_2)\)</span>, and conversely subadditivity and homogeneity give convexity. That <span class="math" data-tex="\(D&gt;-\infty\)">\(D&gt;-\infty\)</span> follows from
+(f) below.</p>
+<p>(c) <span class="math" data-tex="\(b_x\ge0\)">\(b_x\ge0\)</span> in Lemma 2.2, so each <span class="math" data-tex="\(F_x(\psi\|\cdot)\)">\(F_x(\psi\|\cdot)\)</span> is decreasing.</p>
+<p>(d) Let <span class="math" data-tex="\(x\)">\(x\)</span> be a path in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. Then <span class="math" data-tex="\(\gamma\circ x\)">\(\gamma\circ x\)</span> is a path in <span class="math" data-tex="\(A\)">\(A\)</span> (since <span class="math" data-tex="\(\gamma(0)=0\)">\(\gamma(0)=0\)</span>,
+<span class="math" data-tex="\(\gamma(1)=1\)">\(\gamma(1)=1\)</span>) with <span class="math" data-tex="\(1-\gamma(x(t))=\gamma(y(t))\)">\(1-\gamma(x(t))=\gamma(y(t))\)</span>. The Kadison–Schwarz inequality gives
+<span class="math" data-tex="\(\gamma(y)^*\gamma(y)\le\gamma(y^*y)\)">\(\gamma(y)^*\gamma(y)\le\gamma(y^*y)\)</span>, and applied to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> (a positive map preserves adjoints) it gives
+<span class="math" data-tex="\(\gamma(x)\gamma(x)^*\le\gamma(xx^*)\)">\(\gamma(x)\gamma(x)^*\le\gamma(xx^*)\)</span>. Hence, pointwise in <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math" data-tex="\(I_{\psi\circ\gamma,\varphi\circ\gamma}(t,x(t))\le I_{\psi,\varphi}(t,\gamma(x(t)))\)">\(I_{\psi\circ\gamma,\varphi\circ\gamma}(t,x(t))\le I_{\psi,\varphi}(t,\gamma(x(t)))\)</span>, so
+<span class="math" data-tex="\(F_x(\psi\circ\gamma\|\varphi\circ\gamma)\le F_{\gamma\circ x}(\psi\|\varphi)\le D(\psi\|\varphi)\)">\(F_x(\psi\circ\gamma\|\varphi\circ\gamma)\le F_{\gamma\circ x}(\psi\|\varphi)\le D(\psi\|\varphi)\)</span>. The inclusion of a
+unital subalgebra is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism, hence a Kadison–Schwarz map.</p>
+<p>(e) Apply (d) twice: <span class="math" data-tex="\(D(\psi\|\varphi)=D(\psi\circ\gamma\circ\beta\|\varphi\circ\gamma\circ\beta)\le
+D(\psi\circ\gamma\|\varphi\circ\gamma)\le D(\psi\|\varphi)\)">\(D(\psi\|\varphi)=D(\psi\circ\gamma\circ\beta\|\varphi\circ\gamma\circ\beta)\le
+D(\psi\circ\gamma\|\varphi\circ\gamma)\le D(\psi\|\varphi)\)</span>. For a conditional expectation take <span class="math" data-tex="\(\beta\)">\(\beta\)</span> the
+inclusion; it is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism, and <span class="math" data-tex="\(E\)">\(E\)</span> is unital completely positive by (B2).</p>
+<p>(f) Apply (d) to <span class="math" data-tex="\(\gamma:\mathbb C\to A\)">\(\gamma:\mathbb C\to A\)</span>, <span class="math" data-tex="\(\lambda\mapsto\lambda1\)">\(\lambda\mapsto\lambda1\)</span>, and use Theorem 2.3 for <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>.</p>
+<p>(g) Fix a path <span class="math" data-tex="\(x\)">\(x\)</span> and put <span class="math" data-tex="\(c=\kappa/\lambda\)">\(c=\kappa/\lambda\)</span>. The substitution <span class="math" data-tex="\(t=cs\)">\(t=cs\)</span> turns <span class="math" data-tex="\(\kappa t^{-1}\)">\(\kappa t^{-1}\)</span> into
+<span class="math" data-tex="\(\lambda s^{-1}\)">\(\lambda s^{-1}\)</span> and leaves <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> invariant, so with the path <span class="math" data-tex="\(\tilde x(s)=x(cs)\)">\(\tilde x(s)=x(cs)\)</span>,
+<span class="math math-display" data-tex="\[
+F_x(\lambda\psi\|\kappa\varphi)=\lambda F_{\tilde x}(\psi\|\varphi)
++\lambda\psi(1)\int_0^\infty\Bigl(\frac1{1+cs}-\frac1{1+s}\Bigr)\frac{ds}s
+=\lambda F_{\tilde x}(\psi\|\varphi)+\lambda\psi(1)\log\frac1c,
+\]">\[
+F_x(\lambda\psi\|\kappa\varphi)=\lambda F_{\tilde x}(\psi\|\varphi)
++\lambda\psi(1)\int_0^\infty\Bigl(\frac1{1+cs}-\frac1{1+s}\Bigr)\frac{ds}s
+=\lambda F_{\tilde x}(\psi\|\varphi)+\lambda\psi(1)\log\frac1c,
+\]</span>
+where the last integral is <span class="math" data-tex="\(\int_0^\infty\frac{1-c}{(1+s)(1+cs)}ds=-\log c\)">\(\int_0^\infty\frac{1-c}{(1+s)(1+cs)}ds=-\log c\)</span> by (2.4). Since <span class="math" data-tex="\(x\mapsto\tilde x\)">\(x\mapsto\tilde x\)</span> is a
+bijection of paths, taking suprema gives (g).</p>
+<p>(h) By (f), <span class="math" data-tex="\(D(\psi\|\psi)\ge0\)">\(D(\psi\|\psi)\ge0\)</span>. For the converse we show <span class="math" data-tex="\(I_{\psi,\psi}(t,x)\le0\)">\(I_{\psi,\psi}(t,x)\le0\)</span> for all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>.
+Put <span class="math" data-tex="\(m=\psi(1)\)">\(m=\psi(1)\)</span>, <span class="math" data-tex="\(y=1-x\)">\(y=1-x\)</span> and <span class="math" data-tex="\(c=\psi(xx^*)^{1/2}\)">\(c=\psi(xx^*)^{1/2}\)</span>. The Cauchy–Schwarz inequality for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> gives
+<span class="math" data-tex="\(|\psi(x)|^2\le\psi(xx^*)\psi(1)\)">\(|\psi(x)|^2\le\psi(xx^*)\psi(1)\)</span> and <span class="math" data-tex="\(|\psi(y)|^2\le\psi(1)\psi(y^*y)\)">\(|\psi(y)|^2\le\psi(1)\psi(y^*y)\)</span>. If <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> and <span class="math" data-tex="\(c\le\sqrt m\)">\(c\le\sqrt m\)</span>, then
+<span class="math" data-tex="\(\psi(y^*y)\ge|m-\psi(x)|^2/m\ge(m-c\sqrt m)^2/m=(\sqrt m-c)^2\)">\(\psi(y^*y)\ge|m-\psi(x)|^2/m\ge(m-c\sqrt m)^2/m=(\sqrt m-c)^2\)</span>, so
+<span class="math math-display" data-tex="\[
+\psi(y^*y)+t^{-1}\psi(xx^*)\ge(\sqrt m-c)^2+c^2/t\ge\min_{u\ge0}\bigl((\sqrt m-u)^2+u^2/t\bigr)=\frac m{1+t},
+\]">\[
+\psi(y^*y)+t^{-1}\psi(xx^*)\ge(\sqrt m-c)^2+c^2/t\ge\min_{u\ge0}\bigl((\sqrt m-u)^2+u^2/t\bigr)=\frac m{1+t},
+\]</span>
+the minimum being attained at <span class="math" data-tex="\(u=\sqrt m\,t/(1+t)\)">\(u=\sqrt m\,t/(1+t)\)</span>; if <span class="math" data-tex="\(c&gt;\sqrt m\)">\(c&gt;\sqrt m\)</span>, the left side is at least <span class="math" data-tex="\(m/t\ge m/(1+t)\)">\(m/t\ge m/(1+t)\)</span>.
+Thus <span class="math" data-tex="\(I_{\psi,\psi}(t,x)=t^{-1}\bigl(m(1+t)^{-1}-\psi(y^*y)-t^{-1}\psi(xx^*)\bigr)\le0\)">\(I_{\psi,\psi}(t,x)=t^{-1}\bigl(m(1+t)^{-1}-\psi(y^*y)-t^{-1}\psi(xx^*)\bigr)\le0\)</span>, and <span class="math" data-tex="\(D(\psi\|\psi)\le0\)">\(D(\psi\|\psi)\le0\)</span>.
+(For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> all terms vanish.) Finally <span class="math" data-tex="\(F_x(0\|\varphi)=-\varphi(b_x)\le0\)">\(F_x(0\|\varphi)=-\varphi(b_x)\le0\)</span>, and for the path equal to <span class="math" data-tex="\(0\)">\(0\)</span> on
+<span class="math" data-tex="\((0,T)\)">\((0,T)\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> afterwards <span class="math" data-tex="\(F_x(0\|\varphi)=-\varphi(1)/T\to0\)">\(F_x(0\|\varphi)=-\varphi(1)/T\to0\)</span>.</p>
+<p>(i) <span class="math" data-tex="\(\psi\circ\gamma_\nu\to\psi\)">\(\psi\circ\gamma_\nu\to\psi\)</span> and <span class="math" data-tex="\(\varphi\circ\gamma_\nu\to\varphi\)">\(\varphi\circ\gamma_\nu\to\varphi\)</span> weak*, because
+<span class="math" data-tex="\(|\psi(\gamma_\nu(a))-\psi(a)|\le\|\psi\|\,\|\gamma_\nu(a)-a\|\)">\(|\psi(\gamma_\nu(a))-\psi(a)|\le\|\psi\|\,\|\gamma_\nu(a)-a\|\)</span>. By (b),
+<span class="math" data-tex="\(\liminf_\nu D(\psi\circ\gamma_\nu\|\varphi\circ\gamma_\nu)\ge D(\psi\|\varphi)\)">\(\liminf_\nu D(\psi\circ\gamma_\nu\|\varphi\circ\gamma_\nu)\ge D(\psi\|\varphi)\)</span>, and by (d) each term is at most
+<span class="math" data-tex="\(D(\psi\|\varphi)\)">\(D(\psi\|\varphi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.6 (finite dimensions).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional and <span class="math" data-tex="\(\psi,\varphi,\psi_1,\dots,\psi_m\in A^*_+\)">\(\psi,\varphi,\psi_1,\dots,\psi_m\in A^*_+\)</span>.</em></p>
+<p><em>(a) If <span class="math" data-tex="\(\psi(1)=\varphi(1)\)">\(\psi(1)=\varphi(1)\)</span>, then <span class="math" data-tex="\(D(\psi\|\varphi)\ge0\)">\(D(\psi\|\varphi)\ge0\)</span>, with equality iff <span class="math" data-tex="\(\psi=\varphi\)">\(\psi=\varphi\)</span>.</em></p>
+<p><em>(b) Chain rule: if <span class="math" data-tex="\(\psi=\sum_k\psi_k\)">\(\psi=\sum_k\psi_k\)</span> and <span class="math" data-tex="\(D(\psi\|\varphi)&lt;\infty\)">\(D(\psi\|\varphi)&lt;\infty\)</span>, then</em>
+<span class="math math-display" data-tex="\[
+\sum_kD(\psi_k\|\varphi)=\sum_kD(\psi_k\|\psi)+D(\psi\|\varphi),
+\tag{2.5}
+\]">\[
+\sum_kD(\psi_k\|\varphi)=\sum_kD(\psi_k\|\psi)+D(\psi\|\varphi),
+\tag{2.5}
+\]</span>
+<em>and all terms are finite.</em></p>
+<p><em>(c) Superadditivity: <span class="math" data-tex="\(D(\sum_k\psi_k\|\varphi)\ge\sum_kD(\psi_k\|\varphi)\)">\(D(\sum_k\psi_k\|\varphi)\ge\sum_kD(\psi_k\|\varphi)\)</span>.</em></p>
+<p><strong>Proof.</strong> (a) Keep the notation of the proof of Theorem 2.3; if <span class="math" data-tex="\(D=+\infty\)">\(D=+\infty\)</span> then the supports differ and
+<span class="math" data-tex="\(\psi\ne\varphi\)">\(\psi\ne\varphi\)</span>. Otherwise, using <span class="math" data-tex="\(\beta\log(\beta/\alpha)\ge\beta-\alpha\)">\(\beta\log(\beta/\alpha)\ge\beta-\alpha\)</span> for <span class="math" data-tex="\(\alpha,\beta&gt;0\)">\(\alpha,\beta&gt;0\)</span>, with equality
+iff <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>,
+<span class="math math-display" data-tex="\[
+D(\psi\|\varphi)=\sum_{a,b:\beta_b&gt;0}w_{ab}\beta_b\log\frac{\beta_b}{\alpha_a}\ge
+\sum_{a,b:\beta_b&gt;0}w_{ab}(\beta_b-\alpha_a)\ge\sum_{a,b}w_{ab}(\beta_b-\alpha_a)=\psi(1)-\varphi(1)=0.
+\]">\[
+D(\psi\|\varphi)=\sum_{a,b:\beta_b&gt;0}w_{ab}\beta_b\log\frac{\beta_b}{\alpha_a}\ge
+\sum_{a,b:\beta_b&gt;0}w_{ab}(\beta_b-\alpha_a)\ge\sum_{a,b}w_{ab}(\beta_b-\alpha_a)=\psi(1)-\varphi(1)=0.
+\]</span>
+Equality forces <span class="math" data-tex="\(\alpha_a=\beta_b\)">\(\alpha_a=\beta_b\)</span> whenever <span class="math" data-tex="\(w_{ab}&gt;0\)">\(w_{ab}&gt;0\)</span> (for <span class="math" data-tex="\(\beta_b&gt;0\)">\(\beta_b&gt;0\)</span> from the first inequality, for
+<span class="math" data-tex="\(\beta_b=0\)">\(\beta_b=0\)</span> from the second). Since <span class="math" data-tex="\(p_aq_b=0\)">\(p_aq_b=0\)</span> when <span class="math" data-tex="\(w_{ab}=0\)">\(w_{ab}=0\)</span>, we get
+<span class="math" data-tex="\(\rho_\varphi=\sum_{a,b}\alpha_ap_aq_b=\sum_{a,b}\beta_bp_aq_b=\rho_\psi\)">\(\rho_\varphi=\sum_{a,b}\alpha_ap_aq_b=\sum_{a,b}\beta_bp_aq_b=\rho_\psi\)</span>.</p>
+<p>(b) The supports satisfy <span class="math" data-tex="\(\operatorname{supp}\rho_{\psi_k}\le\operatorname{supp}\rho_\psi\le
+\operatorname{supp}\rho_\varphi\)">\(\operatorname{supp}\rho_{\psi_k}\le\operatorname{supp}\rho_\psi\le
+\operatorname{supp}\rho_\varphi\)</span> (because <span class="math" data-tex="\(\rho_{\psi_k}\le\rho_\psi\)">\(\rho_{\psi_k}\le\rho_\psi\)</span>), so every term is finite by (2.2), and
+<span class="math" data-tex="\(D(\psi_k\|\varphi)-D(\psi_k\|\psi)=\operatorname{Tr}\rho_{\psi_k}(\log\rho_\psi-\log\rho_\varphi)\)">\(D(\psi_k\|\varphi)-D(\psi_k\|\psi)=\operatorname{Tr}\rho_{\psi_k}(\log\rho_\psi-\log\rho_\varphi)\)</span>. Summing over
+<span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(D(\psi\|\varphi)\)">\(D(\psi\|\varphi)\)</span>.</p>
+<p>(c) If <span class="math" data-tex="\(D(\psi\|\varphi)=\infty\)">\(D(\psi\|\varphi)=\infty\)</span> there is nothing to prove. Otherwise use (2.5) and <span class="math" data-tex="\(D(\psi_k\|\psi)\le
+D(\psi_k\|\psi_k)=0\)">\(D(\psi_k\|\psi)\le
+D(\psi_k\|\psi_k)=0\)</span>, by Proposition 2.5(c) and (h). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 2.7.</strong> Proposition 2.5 contains the familiar list of properties: joint convexity, scaling, positivity,
+antitonicity, monotonicity under completely positive maps, invariance under conditional expectations, and convergence
+along approximations of the identity. Restriction to a subalgebra is the special case of (d) for an inclusion. Because
+of (a), convexity and subadditivity in both arguments are the same property.</p>
+<p><strong>Remark 2.8.</strong> By (B7), for normal positive functionals on a von Neumann algebra <span class="math" data-tex="\(D(\psi\|\varphi)\)">\(D(\psi\|\varphi)\)</span> is Araki's
+relative entropy (with the arguments in the order written here). [Connes–Narnhofer–Thirring 1987] writes the relative entropy of
+<span class="math" data-tex="\(\psi\)">\(\psi\)</span> with respect to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> as <span class="math" data-tex="\(S(\varphi,\psi)\)">\(S(\varphi,\psi)\)</span>, with the arguments in the opposite order. Nothing below uses (B7).</p>
+<h2 id="3-von-neumann-entropy-and-mixtures"><span id="section-3"></span>3. Von Neumann entropy and mixtures</h2>
+<p>In this section <span class="math" data-tex="\(A\)">\(A\)</span> is finite-dimensional, <span class="math" data-tex="\(\eta(s)=-s\log s\)">\(\eta(s)=-s\log s\)</span> and <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>.</p>
+<p><strong>Definition 3.1.</strong> For <span class="math" data-tex="\(z\in A_+\)">\(z\in A_+\)</span> put <span class="math" data-tex="\(S(z)=\operatorname{Tr}\eta(z)\)">\(S(z)=\operatorname{Tr}\eta(z)\)</span>, and for <span class="math" data-tex="\(\sigma\in A^*_+\)">\(\sigma\in A^*_+\)</span> put
+<span class="math" data-tex="\(S(\sigma)=S(\rho_\sigma)\)">\(S(\sigma)=S(\rho_\sigma)\)</span>, the <em>von Neumann entropy</em>. For a state <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> this is the Shannon entropy
+<span class="math" data-tex="\(S(\mu)=\sum_x\eta(\mu_x)\)">\(S(\mu)=\sum_x\eta(\mu_x)\)</span>.</p>
+<p><strong>Lemma 3.2.</strong> <em>Let <span class="math" data-tex="\(\sigma,\sigma_1,\sigma_2\in A^*_+\)">\(\sigma,\sigma_1,\sigma_2\in A^*_+\)</span> and <span class="math" data-tex="\(\varphi\in\Sigma(A)\)">\(\varphi\in\Sigma(A)\)</span>.</em></p>
+<p><em>(a) <span class="math" data-tex="\(S(\sigma)=-D(\sigma\|\operatorname{Tr})\)">\(S(\sigma)=-D(\sigma\|\operatorname{Tr})\)</span>, and <span class="math" data-tex="\(S(\lambda\sigma)=\lambda S(\sigma)+\eta(\lambda)\sigma(1)\)">\(S(\lambda\sigma)=\lambda S(\sigma)+\eta(\lambda)\sigma(1)\)</span>
+for <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>.</em></p>
+<p><em>(b) Concavity: <span class="math" data-tex="\(S(\lambda\sigma_1+(1-\lambda)\sigma_2)\ge\lambda S(\sigma_1)+(1-\lambda)S(\sigma_2)\)">\(S(\lambda\sigma_1+(1-\lambda)\sigma_2)\ge\lambda S(\sigma_1)+(1-\lambda)S(\sigma_2)\)</span>.</em></p>
+<p><em>(c) <span class="math" data-tex="\(0\le S(\varphi)\le\log N(A)\)">\(0\le S(\varphi)\le\log N(A)\)</span>, and <span class="math" data-tex="\(S(\varphi)=0\)">\(S(\varphi)=0\)</span> iff <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is pure iff <span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> is a minimal
+projection.</em></p>
+<p><em>(d) <span class="math" data-tex="\(S(z)\)">\(S(z)\)</span> depends only on the nonzero eigenvalues of <span class="math" data-tex="\(z\)">\(z\)</span>, counted with multiplicity in each simple summand.</em></p>
+<p><strong>Proof.</strong> (a) The first formula is (2.2) with <span class="math" data-tex="\(\rho_\varphi=1\)">\(\rho_\varphi=1\)</span>. The second follows from
+<span class="math" data-tex="\(\eta(\lambda s)=\lambda\eta(s)+s\eta(\lambda)\)">\(\eta(\lambda s)=\lambda\eta(s)+s\eta(\lambda)\)</span>.</p>
+<p>(b) By (a) and the joint convexity of <span class="math" data-tex="\(D\)">\(D\)</span> (Proposition 2.5(a)), applied with the same second argument.</p>
+<p>(c) Write <span class="math" data-tex="\(\rho_\varphi=\sum_{k=1}^{N(A)}\lambda_ke_k\)">\(\rho_\varphi=\sum_{k=1}^{N(A)}\lambda_ke_k\)</span> as in (B1). Then <span class="math" data-tex="\(S(\varphi)=\sum_k\eta(\lambda_k)\ge0\)">\(S(\varphi)=\sum_k\eta(\lambda_k)\ge0\)</span> since
+<span class="math" data-tex="\(\lambda_k\in[0,1]\)">\(\lambda_k\in[0,1]\)</span>, with equality iff one <span class="math" data-tex="\(\lambda_k\)">\(\lambda_k\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, that is, iff <span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> is a minimal
+projection. By (a) and Proposition 2.5(g), <span class="math" data-tex="\(D(\varphi\|N(A)^{-1}\operatorname{Tr})=-S(\varphi)+\log N(A)\)">\(D(\varphi\|N(A)^{-1}\operatorname{Tr})=-S(\varphi)+\log N(A)\)</span>, which is
+<span class="math" data-tex="\(\ge0\)">\(\ge0\)</span> by Proposition 2.5(f). If <span class="math" data-tex="\(\rho_\varphi=e\)">\(\rho_\varphi=e\)</span> is a minimal projection and <span class="math" data-tex="\(\varphi=t\varphi_1+(1-t)\varphi_2\)">\(\varphi=t\varphi_1+(1-t)\varphi_2\)</span>
+with <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, then <span class="math" data-tex="\(0\le t\rho_{\varphi_1}\le e\)">\(0\le t\rho_{\varphi_1}\le e\)</span>, so <span class="math" data-tex="\((1-e)\rho_{\varphi_1}(1-e)=0\)">\((1-e)\rho_{\varphi_1}(1-e)=0\)</span>, hence
+<span class="math" data-tex="\(\rho_{\varphi_1}^{1/2}(1-e)=0\)">\(\rho_{\varphi_1}^{1/2}(1-e)=0\)</span> and <span class="math" data-tex="\(\rho_{\varphi_1}\in eAe=\mathbb Ce\)">\(\rho_{\varphi_1}\in eAe=\mathbb Ce\)</span>; so <span class="math" data-tex="\(\varphi_1=\varphi\)">\(\varphi_1=\varphi\)</span>, and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>
+is pure. If <span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> is not a minimal projection, two of the <span class="math" data-tex="\(\lambda_k\)">\(\lambda_k\)</span> are nonzero and
+<span class="math" data-tex="\(\varphi=\sum_k\lambda_k\operatorname{Tr}(e_k\,\cdot)\)">\(\varphi=\sum_k\lambda_k\operatorname{Tr}(e_k\,\cdot)\)</span> is a nontrivial convex combination of distinct states.</p>
+<p>(d) <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.3 (pinching).</strong> <em>Let <span class="math" data-tex="\(Z\in M_m(A)_+\)">\(Z\in M_m(A)_+\)</span> and let <span class="math" data-tex="\(\Delta(Z)\)">\(\Delta(Z)\)</span> be its diagonal part
+<span class="math" data-tex="\(\operatorname{diag}(Z_{11},\dots,Z_{mm})\)">\(\operatorname{diag}(Z_{11},\dots,Z_{mm})\)</span>. Then <span class="math" data-tex="\(S(Z)\le S(\Delta(Z))\)">\(S(Z)\le S(\Delta(Z))\)</span>, with equality iff <span class="math" data-tex="\(Z=\Delta(Z)\)">\(Z=\Delta(Z)\)</span>. Here
+<span class="math" data-tex="\(M_m(A)\)">\(M_m(A)\)</span> carries its canonical trace <span class="math" data-tex="\(\operatorname{Tr}_m(Z)=\sum_i\operatorname{Tr}(Z_{ii})\)">\(\operatorname{Tr}_m(Z)=\sum_i\operatorname{Tr}(Z_{ii})\)</span>.</em></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is the <span class="math" data-tex="\(\operatorname{Tr}_m\)">\(\operatorname{Tr}_m\)</span>-preserving conditional expectation onto the diagonal subalgebra
+<span class="math" data-tex="\(A^m\)">\(A^m\)</span>. Let <span class="math" data-tex="\(e=1-\operatorname{supp}\Delta(Z)\)">\(e=1-\operatorname{supp}\Delta(Z)\)</span>, a diagonal projection. Then <span class="math" data-tex="\(\Delta(eZe)=e\Delta(Z)e=0\)">\(\Delta(eZe)=e\Delta(Z)e=0\)</span>, so
+<span class="math" data-tex="\(\operatorname{Tr}_m(eZe)=0\)">\(\operatorname{Tr}_m(eZe)=0\)</span>, <span class="math" data-tex="\(eZe=0\)">\(eZe=0\)</span> and <span class="math" data-tex="\(Ze=0\)">\(Ze=0\)</span>; hence <span class="math" data-tex="\(\operatorname{supp}Z\le\operatorname{supp}\Delta(Z)\)">\(\operatorname{supp}Z\le\operatorname{supp}\Delta(Z)\)</span>
+and <span class="math" data-tex="\(D(Z\|\Delta(Z))\)">\(D(Z\|\Delta(Z))\)</span>, the relative entropy of the functionals with these densities, is finite. The element
+<span class="math" data-tex="\(\log\Delta(Z)\)">\(\log\Delta(Z)\)</span> (on the support) is diagonal, and <span class="math" data-tex="\(\operatorname{Tr}_m(Zb)=\operatorname{Tr}_m(\Delta(Z)b)\)">\(\operatorname{Tr}_m(Zb)=\operatorname{Tr}_m(\Delta(Z)b)\)</span> for
+diagonal <span class="math" data-tex="\(b\)">\(b\)</span>, so by (2.2)
+<span class="math math-display" data-tex="\[
+D(Z\|\Delta(Z))=\operatorname{Tr}_m(Z\log Z)-\operatorname{Tr}_m(\Delta(Z)\log\Delta(Z))=S(\Delta(Z))-S(Z).
+\]">\[
+D(Z\|\Delta(Z))=\operatorname{Tr}_m(Z\log Z)-\operatorname{Tr}_m(\Delta(Z)\log\Delta(Z))=S(\Delta(Z))-S(Z).
+\]</span>
+Both functionals have total mass <span class="math" data-tex="\(\operatorname{Tr}_mZ\)">\(\operatorname{Tr}_mZ\)</span>; Corollary 2.6(a) finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.4 (entropy of a mixture).</strong> <em>Let <span class="math" data-tex="\(\sigma_1,\dots,\sigma_m\in A^*_+\)">\(\sigma_1,\dots,\sigma_m\in A^*_+\)</span> and <span class="math" data-tex="\(\sigma=\sum_x\sigma_x\)">\(\sigma=\sum_x\sigma_x\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+0\le\sum_xS(\sigma_x)-S(\sigma)=-\sum_xD(\sigma_x\|\sigma),
+\tag{3.1}
+\]">\[
+0\le\sum_xS(\sigma_x)-S(\sigma)=-\sum_xD(\sigma_x\|\sigma),
+\tag{3.1}
+\]</span>
+<em>and equality <span class="math" data-tex="\(S(\sigma)=\sum_xS(\sigma_x)\)">\(S(\sigma)=\sum_xS(\sigma_x)\)</span> holds iff <span class="math" data-tex="\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)">\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)</span> for all <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>.</em></p>
+<p><strong>Proof.</strong> The identity: <span class="math" data-tex="\(\operatorname{supp}\rho_{\sigma_x}\le\operatorname{supp}\rho_\sigma\)">\(\operatorname{supp}\rho_{\sigma_x}\le\operatorname{supp}\rho_\sigma\)</span>, so by (2.2)
+<span class="math" data-tex="\(D(\sigma_x\|\sigma)=-S(\sigma_x)-\operatorname{Tr}(\rho_{\sigma_x}\log\rho_\sigma)\)">\(D(\sigma_x\|\sigma)=-S(\sigma_x)-\operatorname{Tr}(\rho_{\sigma_x}\log\rho_\sigma)\)</span>, and summing,
+<span class="math" data-tex="\(\sum_x\operatorname{Tr}(\rho_{\sigma_x}\log\rho_\sigma)=-S(\sigma)\)">\(\sum_x\operatorname{Tr}(\rho_{\sigma_x}\log\rho_\sigma)=-S(\sigma)\)</span>.</p>
+<p>The inequality: let <span class="math" data-tex="\(r_x=\rho_{\sigma_x}^{1/2}\)">\(r_x=\rho_{\sigma_x}^{1/2}\)</span> and let <span class="math" data-tex="\(V\in M_{m,1}(A)\)">\(V\in M_{m,1}(A)\)</span> be the column <span class="math" data-tex="\((r_1,\dots,r_m)^T\)">\((r_1,\dots,r_m)^T\)</span>. Then
+<span class="math" data-tex="\(V^*V=\sum_x\rho_{\sigma_x}=\rho_\sigma\in A\)">\(V^*V=\sum_x\rho_{\sigma_x}=\rho_\sigma\in A\)</span> and <span class="math" data-tex="\(VV^*=[r_xr_y]_{x,y}\in M_m(A)\)">\(VV^*=[r_xr_y]_{x,y}\in M_m(A)\)</span>. In each simple summand
+<span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> the corresponding blocks of <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> and <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> are <span class="math" data-tex="\(W^*W\)">\(W^*W\)</span> and <span class="math" data-tex="\(WW^*\)">\(WW^*\)</span> for a matrix
+<span class="math" data-tex="\(W\)">\(W\)</span> of size <span class="math" data-tex="\(mn\times n\)">\(mn\times n\)</span>, which have the same nonzero eigenvalues with multiplicity. By Lemma 3.2(d),
+<span class="math" data-tex="\(S(\sigma)=S(V^*V)=S(VV^*)\)">\(S(\sigma)=S(V^*V)=S(VV^*)\)</span>, and by Lemma 3.3, <span class="math" data-tex="\(S(VV^*)\le S(\Delta(VV^*))=S(\operatorname{diag}(\rho_{\sigma_x}))
+=\sum_xS(\sigma_x)\)">\(S(VV^*)\le S(\Delta(VV^*))=S(\operatorname{diag}(\rho_{\sigma_x}))
+=\sum_xS(\sigma_x)\)</span>. Equality holds iff <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> is diagonal, that is, <span class="math" data-tex="\(r_xr_y=0\)">\(r_xr_y=0\)</span> for <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>. This is equivalent to
+<span class="math" data-tex="\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)">\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)</span>: one direction is <span class="math" data-tex="\(\rho_{\sigma_x}\rho_{\sigma_y}=r_x(r_xr_y)r_y\)">\(\rho_{\sigma_x}\rho_{\sigma_y}=r_x(r_xr_y)r_y\)</span>; for the
+other, <span class="math" data-tex="\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)">\(\rho_{\sigma_x}\rho_{\sigma_y}=0\)</span> implies that <span class="math" data-tex="\(\rho_{\sigma_x}\)">\(\rho_{\sigma_x}\)</span> and <span class="math" data-tex="\(\rho_{\sigma_y}\)">\(\rho_{\sigma_y}\)</span> commute and
+<span class="math" data-tex="\(p(\rho_{\sigma_x})\rho_{\sigma_y}=0\)">\(p(\rho_{\sigma_x})\rho_{\sigma_y}=0\)</span> for polynomials <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(p(0)=0\)">\(p(0)=0\)</span>, hence <span class="math" data-tex="\(f(\rho_{\sigma_x})
+\rho_{\sigma_y}=0\)">\(f(\rho_{\sigma_x})
+\rho_{\sigma_y}=0\)</span> for continuous <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>; taking <span class="math" data-tex="\(f=\sqrt\cdot\)">\(f=\sqrt\cdot\)</span> twice gives <span class="math" data-tex="\(r_xr_y=0\)">\(r_xr_y=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In normalized form, with <span class="math" data-tex="\(\sigma_x=\mu_x\varphi_x\)">\(\sigma_x=\mu_x\varphi_x\)</span> for states <span class="math" data-tex="\(\varphi_x\)">\(\varphi_x\)</span> and a probability vector <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, (3.1)
+and Lemma 3.2 give the two-sided estimate
+<span class="math math-display" data-tex="\[
+\sum_x\mu_xS(\varphi_x)\le S\Bigl(\sum_x\mu_x\varphi_x\Bigr)\le\sum_x\mu_xS(\varphi_x)+S(\mu).
+\tag{3.2}
+\]">\[
+\sum_x\mu_xS(\varphi_x)\le S\Bigl(\sum_x\mu_x\varphi_x\Bigr)\le\sum_x\mu_xS(\varphi_x)+S(\mu).
+\tag{3.2}
+\]</span></p>
+<h2 id="4-the-entropy-defect-of-a-map-into-an-abelian-algebra">4. The entropy defect of a map into an abelian algebra</h2>
+<p>A reference for this section is [Connes–Narnhofer–Thirring 1987]. Fix a unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a finite set <span class="math" data-tex="\(X\)">\(X\)</span>,
+a unital positive map <span class="math" data-tex="\(P:A\to C(X)\)">\(P:A\to C(X)\)</span> with coordinate states <span class="math" data-tex="\(P_x\)">\(P_x\)</span> (Lemma 1.1), and a state <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. The
+state <span class="math" data-tex="\(P^*\mu:=\mu\circ P=\sum_x\mu_xP_x\)">\(P^*\mu:=\mu\circ P=\sum_x\mu_xP_x\)</span> is a convex combination of the <span class="math" data-tex="\(P_x\)">\(P_x\)</span>. Conversely every decomposition
+<span class="math" data-tex="\(\varphi=\sum_x\mu_x\varphi_x\)">\(\varphi=\sum_x\mu_x\varphi_x\)</span> of a state into states arises from the map with <span class="math" data-tex="\(P_x=\varphi_x\)">\(P_x=\varphi_x\)</span>. One should think of
+<span class="math" data-tex="\(x\)">\(x\)</span> as the outcome of a measurement performed on the system in the state <span class="math" data-tex="\(\varphi=\mu\circ P\)">\(\varphi=\mu\circ P\)</span>: the outcome <span class="math" data-tex="\(x\)">\(x\)</span>
+occurs with probability <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> and leaves the &quot;conditional state&quot; <span class="math" data-tex="\(P_x\)">\(P_x\)</span>.</p>
+<p><strong>Definition 4.1.</strong> The <em>Holevo quantity</em> of <span class="math" data-tex="\((P,\mu)\)">\((P,\mu)\)</span> is
+<span class="math math-display" data-tex="\[
+\varepsilon_\mu(P)=\sum_{x:\mu_x&gt;0}\mu_x\,D(P_x\|\mu\circ P),
+\]">\[
+\varepsilon_\mu(P)=\sum_{x:\mu_x&gt;0}\mu_x\,D(P_x\|\mu\circ P),
+\]</span>
+and the <em>entropy defect</em> of <span class="math" data-tex="\(P\)">\(P\)</span> with respect to <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is <span class="math" data-tex="\(s_\mu(P)=S(\mu)-\varepsilon_\mu(P)\)">\(s_\mu(P)=S(\mu)-\varepsilon_\mu(P)\)</span>.</p>
+<p><strong>Lemma 4.2.</strong> <em><span class="math" data-tex="\(0\le\varepsilon_\mu(P)\le S(\mu)\)">\(0\le\varepsilon_\mu(P)\le S(\mu)\)</span>, so <span class="math" data-tex="\(0\le s_\mu(P)\le S(\mu)\)">\(0\le s_\mu(P)\le S(\mu)\)</span>. Moreover</em>
+<span class="math math-display" data-tex="\[
+s_\mu(P)=-\sum_{x\in X}D(\mu_xP_x\,\|\,\mu\circ P).
+\tag{4.1}
+\]">\[
+s_\mu(P)=-\sum_{x\in X}D(\mu_xP_x\,\|\,\mu\circ P).
+\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\varphi=\mu\circ P\)">\(\varphi=\mu\circ P\)</span>. For <span class="math" data-tex="\(\mu_x&gt;0\)">\(\mu_x&gt;0\)</span>, <span class="math" data-tex="\(D(P_x\|\varphi)\ge0\)">\(D(P_x\|\varphi)\ge0\)</span> by Proposition 2.5(f). Since
+<span class="math" data-tex="\(\varphi\ge\mu_xP_x\)">\(\varphi\ge\mu_xP_x\)</span>, Proposition 2.5(c), (g), (h) give <span class="math" data-tex="\(D(P_x\|\varphi)\le D(P_x\|\mu_xP_x)=-\log\mu_x\)">\(D(P_x\|\varphi)\le D(P_x\|\mu_xP_x)=-\log\mu_x\)</span>. Multiplying
+by <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> and summing gives <span class="math" data-tex="\(\varepsilon_\mu(P)\le S(\mu)\)">\(\varepsilon_\mu(P)\le S(\mu)\)</span>. By Proposition 2.5(g),
+<span class="math" data-tex="\(D(\mu_xP_x\|\varphi)=\mu_xD(P_x\|\varphi)+\mu_x\log\mu_x\)">\(D(\mu_xP_x\|\varphi)=\mu_xD(P_x\|\varphi)+\mu_x\log\mu_x\)</span> for <span class="math" data-tex="\(\mu_x&gt;0\)">\(\mu_x&gt;0\)</span>, and <span class="math" data-tex="\(D(0\|\varphi)=0\)">\(D(0\|\varphi)=0\)</span>; summing gives
+(4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So <span class="math" data-tex="\(\varepsilon_\mu(P)\)">\(\varepsilon_\mu(P)\)</span> is always finite, and it measures how far the conditional states are, on average, from their
+barycentre. The defect <span class="math" data-tex="\(s_\mu(P)\)">\(s_\mu(P)\)</span> measures by how much the Shannon entropy <span class="math" data-tex="\(S(\mu)\)">\(S(\mu)\)</span> of the outcome overestimates
+this.</p>
+<p><strong>Example 4.3 (a useless measurement).</strong> If <span class="math" data-tex="\(P_x=\varphi\)">\(P_x=\varphi\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(\varepsilon_\mu(P)=0\)">\(\varepsilon_\mu(P)=0\)</span> and
+<span class="math" data-tex="\(s_\mu(P)=S(\mu)\)">\(s_\mu(P)=S(\mu)\)</span>, which can be as large as <span class="math" data-tex="\(\log|X|\)">\(\log|X|\)</span> although nothing is learned about <span class="math" data-tex="\(A\)">\(A\)</span>. A model whose Shannon
+entropy is to count as information about <span class="math" data-tex="\(A\)">\(A\)</span> must therefore pay its defect.</p>
+<p><strong>Proposition 4.4 (general <span class="math" data-tex="\(A\)">\(A\)</span>).</strong> <em>(a) Convexity in <span class="math" data-tex="\(P\)">\(P\)</span>: for unital positive <span class="math" data-tex="\(P&#x27;,P&#x27;&#x27;:A\to C(X)\)">\(P&#x27;,P&#x27;&#x27;:A\to C(X)\)</span> and
+<span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>,
+<span class="math" data-tex="\(\varepsilon_\mu(\lambda P&#x27;+(1-\lambda)P&#x27;&#x27;)\le\lambda\varepsilon_\mu(P&#x27;)+(1-\lambda)\varepsilon_\mu(P&#x27;&#x27;)\)">\(\varepsilon_\mu(\lambda P&#x27;+(1-\lambda)P&#x27;&#x27;)\le\lambda\varepsilon_\mu(P&#x27;)+(1-\lambda)\varepsilon_\mu(P&#x27;&#x27;)\)</span>; hence
+<span class="math" data-tex="\(s_\mu\)">\(s_\mu\)</span> is concave in <span class="math" data-tex="\(P\)">\(P\)</span>.</em></p>
+<p><em>(b) Monotonicity: for a unital completely positive <span class="math" data-tex="\(\gamma:A_0\to A\)">\(\gamma:A_0\to A\)</span>, <span class="math" data-tex="\(\varepsilon_\mu(P\circ\gamma)\le
+\varepsilon_\mu(P)\)">\(\varepsilon_\mu(P\circ\gamma)\le
+\varepsilon_\mu(P)\)</span> and <span class="math" data-tex="\(s_\mu(P\circ\gamma)\ge s_\mu(P)\)">\(s_\mu(P\circ\gamma)\ge s_\mu(P)\)</span>. Equality holds if <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has a unital completely
+positive right inverse <span class="math" data-tex="\(\beta:A\to A_0\)">\(\beta:A\to A_0\)</span>, <span class="math" data-tex="\(\gamma\circ\beta=\mathrm{id}_A\)">\(\gamma\circ\beta=\mathrm{id}_A\)</span>; in particular if <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is a conditional
+expectation of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> onto a subalgebra <span class="math" data-tex="\(A\)">\(A\)</span>.</em></p>
+<p><strong>Proof.</strong> (a) Put <span class="math" data-tex="\(P=\lambda P&#x27;+(1-\lambda)P&#x27;&#x27;\)">\(P=\lambda P&#x27;+(1-\lambda)P&#x27;&#x27;\)</span>. Then <span class="math" data-tex="\(P_x=\lambda P&#x27;_x+(1-\lambda)P&#x27;&#x27;_x\)">\(P_x=\lambda P&#x27;_x+(1-\lambda)P&#x27;&#x27;_x\)</span> and
+<span class="math" data-tex="\(\mu\circ P=\lambda\mu\circ P&#x27;+(1-\lambda)\mu\circ P&#x27;&#x27;\)">\(\mu\circ P=\lambda\mu\circ P&#x27;+(1-\lambda)\mu\circ P&#x27;&#x27;\)</span>; joint convexity (Proposition 2.5(a)) gives
+<span class="math" data-tex="\(D(P_x\|\mu\circ P)\le\lambda D(P&#x27;_x\|\mu\circ P&#x27;)+(1-\lambda)D(P&#x27;&#x27;_x\|\mu\circ P&#x27;&#x27;)\)">\(D(P_x\|\mu\circ P)\le\lambda D(P&#x27;_x\|\mu\circ P&#x27;)+(1-\lambda)D(P&#x27;&#x27;_x\|\mu\circ P&#x27;&#x27;)\)</span>. Multiply by <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> and sum.</p>
+<p>(b) <span class="math" data-tex="\((P\circ\gamma)_x=P_x\circ\gamma\)">\((P\circ\gamma)_x=P_x\circ\gamma\)</span> and <span class="math" data-tex="\(\mu\circ P\circ\gamma=(\mu\circ P)\circ\gamma\)">\(\mu\circ P\circ\gamma=(\mu\circ P)\circ\gamma\)</span>; apply Proposition
+2.5(d) termwise. For the equality, <span class="math" data-tex="\(\varepsilon_\mu(P)=\varepsilon_\mu(P\circ\gamma\circ\beta)\le
+\varepsilon_\mu(P\circ\gamma)\)">\(\varepsilon_\mu(P)=\varepsilon_\mu(P\circ\gamma\circ\beta)\le
+\varepsilon_\mu(P\circ\gamma)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.5 (finite-dimensional <span class="math" data-tex="\(A\)">\(A\)</span>).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional, <span class="math" data-tex="\(P:A\to C(X)\)">\(P:A\to C(X)\)</span> unital positive, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> a
+state on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> and <span class="math" data-tex="\(\varphi=\mu\circ P\)">\(\varphi=\mu\circ P\)</span>.</em></p>
+<p><em>(a) (Holevo's bound.) <span class="math" data-tex="\(\varepsilon_\mu(P)=S(\varphi)-\sum_x\mu_xS(P_x)\)">\(\varepsilon_\mu(P)=S(\varphi)-\sum_x\mu_xS(P_x)\)</span>. Hence <span class="math" data-tex="\(\varepsilon_\mu(P)\le S(\varphi)\)">\(\varepsilon_\mu(P)\le S(\varphi)\)</span>,
+with equality iff <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is pure for every <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\mu_x&gt;0\)">\(\mu_x&gt;0\)</span>.</em></p>
+<p><em>(b) <span class="math" data-tex="\(s_\mu(P)=\sum_xS(\mu_xP_x)-S(\varphi)\)">\(s_\mu(P)=\sum_xS(\mu_xP_x)-S(\varphi)\)</span>, and <span class="math" data-tex="\(s_\mu(P)=0\)">\(s_\mu(P)=0\)</span> iff the densities of the functionals <span class="math" data-tex="\(\mu_xP_x\)">\(\mu_xP_x\)</span> are
+pairwise orthogonal.</em></p>
+<p><em>(c) <span class="math" data-tex="\(S(\varphi)=\max\{\varepsilon_\nu(Q)\}\)">\(S(\varphi)=\max\{\varepsilon_\nu(Q)\}\)</span>, the maximum over all finite sets <span class="math" data-tex="\(Y\)">\(Y\)</span>, unital positive
+<span class="math" data-tex="\(Q:A\to C(Y)\)">\(Q:A\to C(Y)\)</span> and states <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\(C(Y)\)">\(C(Y)\)</span> with <span class="math" data-tex="\(\nu\circ Q=\varphi\)">\(\nu\circ Q=\varphi\)</span>.</em></p>
+<p><em>(d) For <span class="math" data-tex="\(P\)">\(P\)</span> extreme among the unital positive maps <span class="math" data-tex="\(A\to C(X)\)">\(A\to C(X)\)</span>, <span class="math" data-tex="\(s_\mu(P)=S(\mu)-S(\mu\circ P)\)">\(s_\mu(P)=S(\mu)-S(\mu\circ P)\)</span>.</em></p>
+<p><em>(e) Concavity in <span class="math" data-tex="\(\mu\)">\(\mu\)</span>: if <span class="math" data-tex="\(\mu=\sum_i\lambda_i\mu_i\)">\(\mu=\sum_i\lambda_i\mu_i\)</span> is a convex combination of states on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>, then
+<span class="math" data-tex="\(\varepsilon_\mu(P)=\sum_i\lambda_i\varepsilon_{\mu_i}(P)+\bigl(S(\mu\circ P)-\sum_i\lambda_iS(\mu_i\circ P)\bigr)
+\ge\sum_i\lambda_i\varepsilon_{\mu_i}(P)\)">\(\varepsilon_\mu(P)=\sum_i\lambda_i\varepsilon_{\mu_i}(P)+\bigl(S(\mu\circ P)-\sum_i\lambda_iS(\mu_i\circ P)\bigr)
+\ge\sum_i\lambda_i\varepsilon_{\mu_i}(P)\)</span>.</em></p>
+<p><strong>Proof.</strong> (a) Apply (3.1) to <span class="math" data-tex="\(\sigma_x=\mu_xP_x\)">\(\sigma_x=\mu_xP_x\)</span>: by (4.1), <span class="math" data-tex="\(s_\mu(P)=\sum_xS(\mu_xP_x)-S(\varphi)\)">\(s_\mu(P)=\sum_xS(\mu_xP_x)-S(\varphi)\)</span>, and
+<span class="math" data-tex="\(S(\mu_xP_x)=\mu_xS(P_x)+\eta(\mu_x)\)">\(S(\mu_xP_x)=\mu_xS(P_x)+\eta(\mu_x)\)</span> by Lemma 3.2(a). So <span class="math" data-tex="\(\varepsilon_\mu(P)=S(\mu)-s_\mu(P)=S(\varphi)-
+\sum_x\mu_xS(P_x)\)">\(\varepsilon_\mu(P)=S(\mu)-s_\mu(P)=S(\varphi)-
+\sum_x\mu_xS(P_x)\)</span>. Since <span class="math" data-tex="\(S(P_x)\ge0\)">\(S(P_x)\ge0\)</span> with equality iff <span class="math" data-tex="\(P_x\)">\(P_x\)</span> is pure (Lemma 3.2(c)), the rest follows.</p>
+<p>(b) The formula was obtained in (a); the equality case is Theorem 3.4.</p>
+<p>(c) By (a), <span class="math" data-tex="\(\varepsilon_\nu(Q)\le S(\varphi)\)">\(\varepsilon_\nu(Q)\le S(\varphi)\)</span>. Conversely write <span class="math" data-tex="\(\rho_\varphi=\sum_k\lambda_ke_k\)">\(\rho_\varphi=\sum_k\lambda_ke_k\)</span> as in (B1),
+<span class="math" data-tex="\(Y=\{k\}\)">\(Y=\{k\}\)</span>, <span class="math" data-tex="\(\nu_k=\lambda_k\)">\(\nu_k=\lambda_k\)</span>, <span class="math" data-tex="\(Q_k=\operatorname{Tr}(e_k\,\cdot)\)">\(Q_k=\operatorname{Tr}(e_k\,\cdot)\)</span>: the <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span> are pure and <span class="math" data-tex="\(\nu\circ Q=\varphi\)">\(\nu\circ Q=\varphi\)</span>, so
+<span class="math" data-tex="\(\varepsilon_\nu(Q)=S(\varphi)\)">\(\varepsilon_\nu(Q)=S(\varphi)\)</span>.</p>
+<p>(d) By Lemma 1.1(b) all <span class="math" data-tex="\(P_x\)">\(P_x\)</span> are pure, so (a) gives <span class="math" data-tex="\(\varepsilon_\mu(P)=S(\mu\circ P)\)">\(\varepsilon_\mu(P)=S(\mu\circ P)\)</span>.</p>
+<p>(e) The term <span class="math" data-tex="\(\sum_x\mu_xS(P_x)\)">\(\sum_x\mu_xS(P_x)\)</span> in (a) is linear in <span class="math" data-tex="\(\mu\)">\(\mu\)</span>; the remaining term is <span class="math" data-tex="\(S(\mu\circ P)\)">\(S(\mu\circ P)\)</span>, and
+<span class="math" data-tex="\(S(\mu\circ P)-\sum_i\lambda_iS(\mu_i\circ P)\ge0\)">\(S(\mu\circ P)-\sum_i\lambda_iS(\mu_i\circ P)\ge0\)</span> by concavity (Lemma 3.2(b)). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.6 (zero defect).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a state, and
+<span class="math" data-tex="\(A_\varphi=\{a:\varphi(ab)=\varphi(ba)\ \forall b\}\)">\(A_\varphi=\{a:\varphi(ab)=\varphi(ba)\ \forall b\}\)</span> its centralizer. Since
+<span class="math" data-tex="\(\varphi(ab)-\varphi(ba)=\operatorname{Tr}((\rho_\varphi a-a\rho_\varphi)b)\)">\(\varphi(ab)-\varphi(ba)=\operatorname{Tr}((\rho_\varphi a-a\rho_\varphi)b)\)</span>, <span class="math" data-tex="\(A_\varphi\)">\(A_\varphi\)</span> is the relative commutant of
+<span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>: a direct sum of full matrix algebras over the eigenspaces of <span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> in each simple
+summand. Choose a maximal abelian subalgebra <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(A_\varphi\)">\(A_\varphi\)</span>. Its minimal projections <span class="math" data-tex="\(e_1,\dots,e_N\)">\(e_1,\dots,e_N\)</span> are
+minimal projections of <span class="math" data-tex="\(A_\varphi\)">\(A_\varphi\)</span>, hence of <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(\rho_\varphi\in B\)">\(\rho_\varphi\in B\)</span> because <span class="math" data-tex="\(\rho_\varphi\)">\(\rho_\varphi\)</span> commutes with
+<span class="math" data-tex="\(A_\varphi\supset B\)">\(A_\varphi\supset B\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> is maximal abelian in <span class="math" data-tex="\(A_\varphi\)">\(A_\varphi\)</span>. So <span class="math" data-tex="\(\rho_\varphi=\sum_i\lambda_ie_i\)">\(\rho_\varphi=\sum_i\lambda_ie_i\)</span>. The map
+<span class="math" data-tex="\(E(a)=\sum_i\operatorname{Tr}(e_ia)e_i\)">\(E(a)=\sum_i\operatorname{Tr}(e_ia)e_i\)</span> is a conditional expectation of <span class="math" data-tex="\(A\)">\(A\)</span> onto <span class="math" data-tex="\(B\cong C(\{1,\dots,N\})\)">\(B\cong C(\{1,\dots,N\})\)</span> (note
+<span class="math" data-tex="\(e_iae_i=\operatorname{Tr}(e_ia)e_i\)">\(e_iae_i=\operatorname{Tr}(e_ia)e_i\)</span>), with <span class="math" data-tex="\(\varphi\circ E=\sum_i\lambda_i\operatorname{Tr}(e_i\,\cdot)=\varphi\)">\(\varphi\circ E=\sum_i\lambda_i\operatorname{Tr}(e_i\,\cdot)=\varphi\)</span>.
+With <span class="math" data-tex="\(\mu=\varphi|_B\)">\(\mu=\varphi|_B\)</span>, the coordinate states <span class="math" data-tex="\(E_i=\operatorname{Tr}(e_i\,\cdot)\)">\(E_i=\operatorname{Tr}(e_i\,\cdot)\)</span> are pure with orthogonal
+densities, so <span class="math" data-tex="\(s_\mu(E)=0\)">\(s_\mu(E)=0\)</span> by Theorem 4.5(b), and <span class="math" data-tex="\(\varepsilon_\mu(E)=S(\mu)=S(\varphi)\)">\(\varepsilon_\mu(E)=S(\mu)=S(\varphi)\)</span>. This is the prototype of a
+map with zero entropy defect: an optimal measurement that commutes with the state.</p>
+<p>For the next result we need the defect of a coarse-grained map. Let <span class="math" data-tex="\(Q:A\to C(X)\)">\(Q:A\to C(X)\)</span> be unital positive, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> a state
+on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> and <span class="math" data-tex="\(C\subset C(X)\)">\(C\subset C(X)\)</span> a unital subalgebra with partition <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Identify <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(C(\pi)\)">\(C(\pi)\)</span>. The map
+<span class="math" data-tex="\(E^\mu_C\circ Q:A\to C\)">\(E^\mu_C\circ Q:A\to C\)</span> has coordinates <span class="math" data-tex="\(\sum_{x\in K}\mu_xQ_x/\mu(K)\)">\(\sum_{x\in K}\mu_xQ_x/\mu(K)\)</span> for <span class="math" data-tex="\(\mu(K)&gt;0\)">\(\mu(K)&gt;0\)</span>, and
+<span class="math" data-tex="\((\mu|_C)\circ E^\mu_C\circ Q=\mu\circ Q\)">\((\mu|_C)\circ E^\mu_C\circ Q=\mu\circ Q\)</span>. So (4.1), applied in <span class="math" data-tex="\(C\)">\(C\)</span>, gives
+<span class="math math-display" data-tex="\[
+s_{\mu|_C}\bigl(E^\mu_C\circ Q\bigr)=-\sum_{K\in\pi}D\Bigl(\sum_{x\in K}\mu_xQ_x\,\Big\|\,\mu\circ Q\Bigr).
+\tag{4.2}
+\]">\[
+s_{\mu|_C}\bigl(E^\mu_C\circ Q\bigr)=-\sum_{K\in\pi}D\Bigl(\sum_{x\in K}\mu_xQ_x\,\Big\|\,\mu\circ Q\Bigr).
+\tag{4.2}
+\]</span>
+Here, and always below, the defect of a map into <span class="math" data-tex="\(C\)">\(C\)</span> is computed with the state <span class="math" data-tex="\(\mu|_C\)">\(\mu|_C\)</span>, that is, with the Shannon
+entropy <span class="math" data-tex="\(S(\mu|_C)\)">\(S(\mu|_C)\)</span> of the coarse outcome.</p>
+<p><strong>Theorem 4.7 (defect of a join).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional and let <span class="math" data-tex="\((\sigma_{kl})_{k\in K,l\in L}\)">\((\sigma_{kl})_{k\in K,l\in L}\)</span> be a
+finite family in <span class="math" data-tex="\(A^*_+\)">\(A^*_+\)</span> with sum <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, row sums <span class="math" data-tex="\(\sigma^1_k=\sum_l\sigma_{kl}\)">\(\sigma^1_k=\sum_l\sigma_{kl}\)</span> and column sums
+<span class="math" data-tex="\(\sigma^2_l=\sum_k\sigma_{kl}\)">\(\sigma^2_l=\sum_k\sigma_{kl}\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+-\sum_{k,l}D(\sigma_{kl}\|\sigma)\le-\sum_kD(\sigma^1_k\|\sigma)-\sum_lD(\sigma^2_l\|\sigma).
+\]">\[
+-\sum_{k,l}D(\sigma_{kl}\|\sigma)\le-\sum_kD(\sigma^1_k\|\sigma)-\sum_lD(\sigma^2_l\|\sigma).
+\]</span></p>
+<p><strong>Proof.</strong> All relative entropies here are finite, since each functional is dominated by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. For fixed <span class="math" data-tex="\(l\)">\(l\)</span>,
+the chain rule (2.5) with <span class="math" data-tex="\(\psi=\sigma^2_l\)">\(\psi=\sigma^2_l\)</span> and <span class="math" data-tex="\(\varphi=\sigma\)">\(\varphi=\sigma\)</span> gives
+<span class="math" data-tex="\(\sum_kD(\sigma_{kl}\|\sigma)=\sum_kD(\sigma_{kl}\|\sigma^2_l)+D(\sigma^2_l\|\sigma)\)">\(\sum_kD(\sigma_{kl}\|\sigma)=\sum_kD(\sigma_{kl}\|\sigma^2_l)+D(\sigma^2_l\|\sigma)\)</span>. Summing over <span class="math" data-tex="\(l\)">\(l\)</span> and using
+the subadditivity of <span class="math" data-tex="\(D\)">\(D\)</span> (Proposition 2.5(a)) for each fixed <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{k,l}D(\sigma_{kl}\|\sigma)-\sum_lD(\sigma^2_l\|\sigma)=\sum_k\sum_lD(\sigma_{kl}\|\sigma^2_l)\ge
+\sum_kD\Bigl(\sum_l\sigma_{kl}\Big\|\sum_l\sigma^2_l\Bigr)=\sum_kD(\sigma^1_k\|\sigma).\qquad\square
+\]">\[
+\sum_{k,l}D(\sigma_{kl}\|\sigma)-\sum_lD(\sigma^2_l\|\sigma)=\sum_k\sum_lD(\sigma_{kl}\|\sigma^2_l)\ge
+\sum_kD\Bigl(\sum_l\sigma_{kl}\Big\|\sum_l\sigma^2_l\Bigr)=\sum_kD(\sigma^1_k\|\sigma).\qquad\square
+\]</span></p>
+<p><strong>Theorem 4.8 (subadditivity of the defect).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional, <span class="math" data-tex="\(Q:A\to C(X)\)">\(Q:A\to C(X)\)</span> unital positive,
+<span class="math" data-tex="\(\mu\)">\(\mu\)</span> a state on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>, and <span class="math" data-tex="\(B_1,B_2\subset C(X)\)">\(B_1,B_2\subset C(X)\)</span> unital subalgebras. Write <span class="math" data-tex="\(Q_C=E^\mu_C\circ Q\)">\(Q_C=E^\mu_C\circ Q\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+s_{\mu|_{B_1\vee B_2}}\bigl(Q_{B_1\vee B_2}\bigr)\le s_{\mu|_{B_1}}\bigl(Q_{B_1}\bigr)+s_{\mu|_{B_2}}\bigl(Q_{B_2}\bigr).
+\]">\[
+s_{\mu|_{B_1\vee B_2}}\bigl(Q_{B_1\vee B_2}\bigr)\le s_{\mu|_{B_1}}\bigl(Q_{B_1}\bigr)+s_{\mu|_{B_2}}\bigl(Q_{B_2}\bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\pi_1,\pi_2\)">\(\pi_1,\pi_2\)</span> be the partitions and put <span class="math" data-tex="\(\sigma_{KL}=\sum_{x\in K\cap L}\mu_xQ_x\)">\(\sigma_{KL}=\sum_{x\in K\cap L}\mu_xQ_x\)</span> for
+<span class="math" data-tex="\(K\in\pi_1\)">\(K\in\pi_1\)</span>, <span class="math" data-tex="\(L\in\pi_2\)">\(L\in\pi_2\)</span> (zero if <span class="math" data-tex="\(K\cap L=\emptyset\)">\(K\cap L=\emptyset\)</span>). By Lemma 1.2 the blocks of <span class="math" data-tex="\(B_1\vee B_2\)">\(B_1\vee B_2\)</span> are the
+nonempty <span class="math" data-tex="\(K\cap L\)">\(K\cap L\)</span>, and <span class="math" data-tex="\(D(0\|\cdot)=0\)">\(D(0\|\cdot)=0\)</span>. So by (4.2) the three defects are the three sums of Theorem 4.7 with
+<span class="math" data-tex="\(\sigma=\mu\circ Q\)">\(\sigma=\mu\circ Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-completely-positive-maps-from-matrix-algebras-and-nuclear-algebras"><span id="section-5"></span>5. Completely positive maps from matrix algebras, and nuclear algebras</h2>
+<p>The observations of Section 6 are unital completely positive maps into <span class="math" data-tex="\(A\)">\(A\)</span> whose domains are finite-dimensional
+C*-algebras. This section shows that there are plenty of them and that matrix algebras suffice.</p>
+<p><strong>Lemma 5.1 (Choi's correspondence).</strong> <em>Let <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> be the matrix units of <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>. A map
+<span class="math" data-tex="\(\theta:M_n(\mathbb C)\to A\)">\(\theta:M_n(\mathbb C)\to A\)</span> is completely positive iff <span class="math" data-tex="\([\theta(e_{ij})]_{i,j}\in M_n(A)\)">\([\theta(e_{ij})]_{i,j}\in M_n(A)\)</span> is positive, and it is
+unital iff <span class="math" data-tex="\(\sum_i\theta(e_{ii})=1\)">\(\sum_i\theta(e_{ii})=1\)</span>. Thus unital completely positive maps <span class="math" data-tex="\(M_n(\mathbb C)\to A\)">\(M_n(\mathbb C)\to A\)</span> correspond
+bijectively to the positive <span class="math" data-tex="\(X\in M_n(A)\)">\(X\in M_n(A)\)</span> with <span class="math" data-tex="\(\sum_iX_{ii}=1\)">\(\sum_iX_{ii}=1\)</span>.</em></p>
+<p><strong>Proof.</strong> The matrix <span class="math" data-tex="\(\mathbf E=[e_{ij}]\in M_n(M_n(\mathbb C))\)">\(\mathbf E=[e_{ij}]\in M_n(M_n(\mathbb C))\)</span> satisfies <span class="math" data-tex="\(\mathbf E^*=\mathbf E\)">\(\mathbf E^*=\mathbf E\)</span> and
+<span class="math" data-tex="\(\mathbf E^2=n\mathbf E\)">\(\mathbf E^2=n\mathbf E\)</span>, so <span class="math" data-tex="\(\mathbf E\ge0\)">\(\mathbf E\ge0\)</span>, and <span class="math" data-tex="\([\theta(e_{ij})]=\theta^{(n)}(\mathbf E)\ge0\)">\([\theta(e_{ij})]=\theta^{(n)}(\mathbf E)\ge0\)</span> if <span class="math" data-tex="\(\theta\)">\(\theta\)</span>
+is completely positive. Conversely let <span class="math" data-tex="\(X=[x_{ij}]\ge0\)">\(X=[x_{ij}]\ge0\)</span>, write <span class="math" data-tex="\(X=V^*V\)">\(X=V^*V\)</span> with <span class="math" data-tex="\(V=X^{1/2}\in M_n(A)\)">\(V=X^{1/2}\in M_n(A)\)</span>, and let
+<span class="math" data-tex="\(w_k\in M_{n,1}(A)\)">\(w_k\in M_{n,1}(A)\)</span> be the column with entries <span class="math" data-tex="\(v_{k1},\dots,v_{kn}\)">\(v_{k1},\dots,v_{kn}\)</span>. Define <span class="math" data-tex="\(\theta(b)=\sum_{i,j}b_{ij}x_{ij}\)">\(\theta(b)=\sum_{i,j}b_{ij}x_{ij}\)</span>. Since
+<span class="math" data-tex="\(x_{ij}=\sum_kv_{ki}^*v_{kj}\)">\(x_{ij}=\sum_kv_{ki}^*v_{kj}\)</span>, we get <span class="math" data-tex="\(\theta(b)=\sum_kw_k^*(b\otimes1_A)w_k\)">\(\theta(b)=\sum_kw_k^*(b\otimes1_A)w_k\)</span>, where <span class="math" data-tex="\(b\mapsto b\otimes1_A=
+[b_{ij}1_A]\in M_n(A)\)">\(b\mapsto b\otimes1_A=
+[b_{ij}1_A]\in M_n(A)\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism. So <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is completely positive by (B2), and
+<span class="math" data-tex="\(\theta(e_{ij})=x_{ij}\)">\(\theta(e_{ij})=x_{ij}\)</span>. A linear map on <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> is determined by its values on the <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span>, and
+<span class="math" data-tex="\(\theta(1)=\sum_i\theta(e_{ii})\)">\(\theta(1)=\sum_i\theta(e_{ii})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2 (unital approximations).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a unital nuclear C*-algebra.</em></p>
+<p><em>(a) For every finite set <span class="math" data-tex="\(F\subset A\)">\(F\subset A\)</span> and <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> there are <span class="math" data-tex="\(n\)">\(n\)</span> and unital completely positive maps
+<span class="math" data-tex="\(\sigma:A\to M_n(\mathbb C)\)">\(\sigma:A\to M_n(\mathbb C)\)</span>, <span class="math" data-tex="\(\tau:M_n(\mathbb C)\to A\)">\(\tau:M_n(\mathbb C)\to A\)</span> with <span class="math" data-tex="\(\|\tau\sigma(a)-a\|\le\delta\)">\(\|\tau\sigma(a)-a\|\le\delta\)</span> for <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>.</em></p>
+<p><em>(b) If <span class="math" data-tex="\(A\)">\(A\)</span> is separable, there is a sequence <span class="math" data-tex="\(\theta_\nu=\tau_\nu\circ\sigma_\nu\)">\(\theta_\nu=\tau_\nu\circ\sigma_\nu\)</span> of unital completely positive
+maps <span class="math" data-tex="\(A\to A\)">\(A\to A\)</span>, each factoring through a matrix algebra by unital completely positive maps as in (a), with
+<span class="math" data-tex="\(\|\theta_\nu(a)-a\|\to0\)">\(\|\theta_\nu(a)-a\|\to0\)</span> for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>.</em></p>
+<p><em>(c) Conversely, if such a sequence exists (with finite-dimensional intermediate algebras), then <span class="math" data-tex="\(A\)">\(A\)</span> is separable.</em></p>
+<p><strong>Proof.</strong> (a) Let <span class="math" data-tex="\(0&lt;\delta&#x27;&lt;1\)">\(0&lt;\delta&#x27;&lt;1\)</span>. By (B5) there are completely positive contractions <span class="math" data-tex="\(\sigma_0:A\to M_n\)">\(\sigma_0:A\to M_n\)</span> and
+<span class="math" data-tex="\(\tau_0:M_n\to A\)">\(\tau_0:M_n\to A\)</span> with <span class="math" data-tex="\(\|\tau_0\sigma_0(a)-a\|\le\delta&#x27;\)">\(\|\tau_0\sigma_0(a)-a\|\le\delta&#x27;\)</span> for <span class="math" data-tex="\(a\in F\cup\{1\}\)">\(a\in F\cup\{1\}\)</span>. Put <span class="math" data-tex="\(h=\sigma_0(1)\)">\(h=\sigma_0(1)\)</span>, so
+<span class="math" data-tex="\(0\le h\le1\)">\(0\le h\le1\)</span>, fix a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>, and let <span class="math" data-tex="\(\sigma(a)=\sigma_0(a)+\omega(a)(1-h)\)">\(\sigma(a)=\sigma_0(a)+\omega(a)(1-h)\)</span>. This is completely
+positive (a sum of completely positive maps; <span class="math" data-tex="\(a\mapsto\omega(a)(1-h)\)">\(a\mapsto\omega(a)(1-h)\)</span> is completely positive because <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is and
+<span class="math" data-tex="\(1-h\ge0\)">\(1-h\ge0\)</span>) and unital. Let <span class="math" data-tex="\(k=\tau_0(1)\)">\(k=\tau_0(1)\)</span>. Then <span class="math" data-tex="\(\tau_0(h)\le k\le1\)">\(\tau_0(h)\le k\le1\)</span>, and <span class="math" data-tex="\(\|1-\tau_0(h)\|\le\delta&#x27;\)">\(\|1-\tau_0(h)\|\le\delta&#x27;\)</span> gives
+<span class="math" data-tex="\(\tau_0(h)\ge1-\delta&#x27;\)">\(\tau_0(h)\ge1-\delta&#x27;\)</span>; so <span class="math" data-tex="\(k\ge1-\delta&#x27;\)">\(k\ge1-\delta&#x27;\)</span> is invertible and
+<span class="math" data-tex="\(\|\tau_0(1-h)\|=\|k-\tau_0(h)\|\le\|1-\tau_0(h)\|\le\delta&#x27;\)">\(\|\tau_0(1-h)\|=\|k-\tau_0(h)\|\le\|1-\tau_0(h)\|\le\delta&#x27;\)</span>, because <span class="math" data-tex="\(0\le k-\tau_0(h)\le1-\tau_0(h)\)">\(0\le k-\tau_0(h)\le1-\tau_0(h)\)</span>. Put
+<span class="math" data-tex="\(\tau(b)=k^{-1/2}\tau_0(b)k^{-1/2}\)">\(\tau(b)=k^{-1/2}\tau_0(b)k^{-1/2}\)</span>, a unital completely positive map. For <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, with <span class="math" data-tex="\(z=\tau_0\sigma(a)\)">\(z=\tau_0\sigma(a)\)</span> and
+<span class="math" data-tex="\(\|z\|\le\|a\|\)">\(\|z\|\le\|a\|\)</span>,
+<span class="math math-display" data-tex="\[
+\|\tau\sigma(a)-a\|\le\|k^{-1/2}zk^{-1/2}-z\|+|\omega(a)|\,\|\tau_0(1-h)\|+\|\tau_0\sigma_0(a)-a\|
+\le\|a\|\Bigl(\frac1{1-\delta&#x27;}-1\Bigr)+\|a\|\delta&#x27;+\delta&#x27;,
+\]">\[
+\|\tau\sigma(a)-a\|\le\|k^{-1/2}zk^{-1/2}-z\|+|\omega(a)|\,\|\tau_0(1-h)\|+\|\tau_0\sigma_0(a)-a\|
+\le\|a\|\Bigl(\frac1{1-\delta&#x27;}-1\Bigr)+\|a\|\delta&#x27;+\delta&#x27;,
+\]</span>
+using <span class="math" data-tex="\(\|k^{-1/2}zk^{-1/2}-z\|\le\|k^{-1/2}-1\|(\|k^{-1/2}\|+1)\|z\|\le((1-\delta&#x27;)^{-1/2}-1)((1-\delta&#x27;)^{-1/2}+1)\|z\|\)">\(\|k^{-1/2}zk^{-1/2}-z\|\le\|k^{-1/2}-1\|(\|k^{-1/2}\|+1)\|z\|\le((1-\delta&#x27;)^{-1/2}-1)((1-\delta&#x27;)^{-1/2}+1)\|z\|\)</span>.
+Choose <span class="math" data-tex="\(\delta&#x27;\)">\(\delta&#x27;\)</span> small.</p>
+<p>(b) Let <span class="math" data-tex="\((a_k)\)">\((a_k)\)</span> be dense in <span class="math" data-tex="\(A\)">\(A\)</span> and choose <span class="math" data-tex="\(\sigma_\nu,\tau_\nu\)">\(\sigma_\nu,\tau_\nu\)</span> by (a) for <span class="math" data-tex="\(F=\{a_1,\dots,a_\nu\}\)">\(F=\{a_1,\dots,a_\nu\}\)</span> and
+<span class="math" data-tex="\(\delta=1/\nu\)">\(\delta=1/\nu\)</span>. Given <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span>, pick <span class="math" data-tex="\(a_k\)">\(a_k\)</span> with <span class="math" data-tex="\(\|a-a_k\|&lt;\theta\)">\(\|a-a_k\|&lt;\theta\)</span>. Since <span class="math" data-tex="\(\|\theta_\nu\|=1\)">\(\|\theta_\nu\|=1\)</span>, for
+<span class="math" data-tex="\(\nu\ge k\)">\(\nu\ge k\)</span>: <span class="math" data-tex="\(\|\theta_\nu(a)-a\|\le2\theta+1/\nu\)">\(\|\theta_\nu(a)-a\|\le2\theta+1/\nu\)</span>.</p>
+<p>(c) Each <span class="math" data-tex="\(\theta_\nu\)">\(\theta_\nu\)</span> has finite-dimensional range, and every <span class="math" data-tex="\(a\)">\(a\)</span> is a limit of elements of the union of these
+ranges, whose closure is separable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Remark 5.3.</strong> For nonseparable nuclear algebras, such as the abelian algebra <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span>, part (c)
+shows that no <em>sequence</em> can do this; nets must be used. Part (a) provides one: index the maps <span class="math" data-tex="\(\tau\sigma\)">\(\tau\sigma\)</span> of (a) by
+the pairs <span class="math" data-tex="\((F,\delta)\)">\((F,\delta)\)</span>, ordered by <span class="math" data-tex="\((F,\delta)\le(F&#x27;,\delta&#x27;)\)">\((F,\delta)\le(F&#x27;,\delta&#x27;)\)</span> iff <span class="math" data-tex="\(F\subset F&#x27;\)">\(F\subset F&#x27;\)</span> and <span class="math" data-tex="\(\delta&#x27;\le\delta\)">\(\delta&#x27;\le\delta\)</span>; the
+resulting net <span class="math" data-tex="\(\theta_{F,\delta}\)">\(\theta_{F,\delta}\)</span> of unital completely positive maps, each factoring through a matrix algebra,
+satisfies <span class="math" data-tex="\(\|\theta_{F,\delta}(a)-a\|\to0\)">\(\|\theta_{F,\delta}(a)-a\|\to0\)</span> for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. <em>Reference:</em> [Connes–Narnhofer–Thirring 1987] states the
+existence of a sequence for every nuclear unital C*-algebra; this fails for <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span>, so we prove it
+for separable algebras and use nets otherwise.</p>
+<p><strong>Lemma 5.4.</strong> <em>Every finite-dimensional C*-algebra <span class="math" data-tex="\(A_0\)">\(A_0\)</span> is a unital subalgebra of some <span class="math" data-tex="\(M_N(\mathbb C)\)">\(M_N(\mathbb C)\)</span> onto
+which there is a conditional expectation <span class="math" data-tex="\(E:M_N(\mathbb C)\to A_0\)">\(E:M_N(\mathbb C)\to A_0\)</span>.</em></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(A_0=\bigoplus_{k=1}^rM_{n_k}\)">\(A_0=\bigoplus_{k=1}^rM_{n_k}\)</span> embedded block-diagonally in <span class="math" data-tex="\(M_N\)">\(M_N\)</span>, <span class="math" data-tex="\(N=\sum n_k\)">\(N=\sum n_k\)</span>, and let <span class="math" data-tex="\(f_k\)">\(f_k\)</span> be
+the block projections. <span class="math" data-tex="\(E(m)=\sum_kf_kmf_k\)">\(E(m)=\sum_kf_kmf_k\)</span> is unital and completely positive, maps into <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, is the identity on
+<span class="math" data-tex="\(A_0\)">\(A_0\)</span>, and <span class="math" data-tex="\(E(ama&#x27;)=aE(m)a&#x27;\)">\(E(ama&#x27;)=aE(m)a&#x27;\)</span> for <span class="math" data-tex="\(a,a&#x27;\in A_0\)">\(a,a&#x27;\in A_0\)</span> because <span class="math" data-tex="\(a,a&#x27;\)">\(a,a&#x27;\)</span> commute with the <span class="math" data-tex="\(f_k\)">\(f_k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-abelian-models-and-the-function-h_-varphi">6. Abelian models and the function <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span></h2>
+<p>A reference for this section is [Connes–Narnhofer–Thirring 1987]. Fix a state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of a unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>,
+finite-dimensional C*-algebras <span class="math" data-tex="\(A_1,\dots,A_n\)">\(A_1,\dots,A_n\)</span> and unital completely positive maps <span class="math" data-tex="\(\gamma_j:A_j\to A\)">\(\gamma_j:A_j\to A\)</span>.</p>
+<p><strong>Definition 6.1.</strong> An <em>abelian model</em> for <span class="math" data-tex="\((A,\varphi,n)\)">\((A,\varphi,n)\)</span> consists of</p>
+<ol>
+<li>a finite-dimensional abelian C*-algebra <span class="math" data-tex="\(B=C(X)\)">\(B=C(X)\)</span> with a state <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and unital <span class="math" data-tex="\(*\)">\(*\)</span>-subalgebras
+<span class="math" data-tex="\(B_1,\dots,B_n\subset B\)">\(B_1,\dots,B_n\subset B\)</span>;</li>
+<li>a unital completely positive map <span class="math" data-tex="\(P:A\to B\)">\(P:A\to B\)</span> with <span class="math" data-tex="\(\mu\circ P=\varphi\)">\(\mu\circ P=\varphi\)</span>.</li>
+</ol>
+<p>With <span class="math" data-tex="\(E_j=E^\mu_{B_j}\)">\(E_j=E^\mu_{B_j}\)</span>, the maps <span class="math" data-tex="\(\rho_j=E_j\circ P\circ\gamma_j:A_j\to B_j\)">\(\rho_j=E_j\circ P\circ\gamma_j:A_j\to B_j\)</span> are unital completely positive, and
+<span class="math" data-tex="\(\mu\circ\rho_j=\varphi\circ\gamma_j\)">\(\mu\circ\rho_j=\varphi\circ\gamma_j\)</span>. The <em>entropy of the model</em> for <span class="math" data-tex="\((\gamma_1,\dots,\gamma_n)\)">\((\gamma_1,\dots,\gamma_n)\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal E\bigl(B,\mu,(B_j),P;(\gamma_j)\bigr)=S\bigl(\mu|_{B_1\vee\dots\vee B_n}\bigr)-\sum_{j=1}^ns_{\mu|_{B_j}}(\rho_j).
+\tag{6.1}
+\]">\[
+\mathcal E\bigl(B,\mu,(B_j),P;(\gamma_j)\bigr)=S\bigl(\mu|_{B_1\vee\dots\vee B_n}\bigr)-\sum_{j=1}^ns_{\mu|_{B_j}}(\rho_j).
+\tag{6.1}
+\]</span>
+Note that a model does not depend on the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>; only its entropy does.</p>
+<p><strong>Definition 6.2.</strong> <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\)</span> is the supremum of the entropies of all abelian models for
+<span class="math" data-tex="\((A,\varphi,n)\)">\((A,\varphi,n)\)</span>. When the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> are inclusions of finite-dimensional subalgebras <span class="math" data-tex="\(N_j\subset A\)">\(N_j\subset A\)</span> we write
+<span class="math" data-tex="\(H_\varphi(N_1,\dots,N_n)\)">\(H_\varphi(N_1,\dots,N_n)\)</span>.</p>
+<p>The first term of (6.1) is the Shannon entropy of the joint outcome of the <span class="math" data-tex="\(n\)">\(n\)</span> coarse measurements; each defect
+subtracts what the <span class="math" data-tex="\(j\)">\(j\)</span>-th coarse measurement fails to tell about the observation <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>.</p>
+<p><strong>Proposition 6.3.</strong> <em>For every abelian model,</em>
+<span class="math math-display" data-tex="\[
+\mathcal E=\Bigl(S(\mu|_{\vee_jB_j})-\sum_jS(\mu|_{B_j})\Bigr)+\sum_j\Bigl(S(\varphi\circ\gamma_j)-
+\sum_{K\in\pi(B_j),\,\mu(K)&gt;0}\mu(K)\,S\bigl((\rho_j)_K\bigr)\Bigr)\le\sum_{j=1}^nS(\varphi\circ\gamma_j).
+\]">\[
+\mathcal E=\Bigl(S(\mu|_{\vee_jB_j})-\sum_jS(\mu|_{B_j})\Bigr)+\sum_j\Bigl(S(\varphi\circ\gamma_j)-
+\sum_{K\in\pi(B_j),\,\mu(K)&gt;0}\mu(K)\,S\bigl((\rho_j)_K\bigr)\Bigr)\le\sum_{j=1}^nS(\varphi\circ\gamma_j).
+\]</span>
+<em>Consequently <span class="math" data-tex="\(0\le H_\varphi(\gamma_1,\dots,\gamma_n)\le\sum_jS(\varphi\circ\gamma_j)&lt;\infty\)">\(0\le H_\varphi(\gamma_1,\dots,\gamma_n)\le\sum_jS(\varphi\circ\gamma_j)&lt;\infty\)</span>.</em></p>
+<p><strong>Proof.</strong> By definition <span class="math" data-tex="\(s_{\mu|_{B_j}}(\rho_j)=S(\mu|_{B_j})-\varepsilon_{\mu|_{B_j}}(\rho_j)\)">\(s_{\mu|_{B_j}}(\rho_j)=S(\mu|_{B_j})-\varepsilon_{\mu|_{B_j}}(\rho_j)\)</span>, and Theorem 4.5(a),
+applied to <span class="math" data-tex="\(\rho_j:A_j\to B_j\)">\(\rho_j:A_j\to B_j\)</span> with <span class="math" data-tex="\(\mu|_{B_j}\circ\rho_j=\varphi\circ\gamma_j\)">\(\mu|_{B_j}\circ\rho_j=\varphi\circ\gamma_j\)</span>, evaluates <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The first
+bracket is <span class="math" data-tex="\(\le0\)">\(\le0\)</span> by the subadditivity of Shannon entropy (B4) (the join <span class="math" data-tex="\(\vee_jB_j\)">\(\vee_jB_j\)</span> is generated by the
+<span class="math" data-tex="\(B_j\)">\(B_j\)</span>), and <span class="math" data-tex="\(S((\rho_j)_K)\ge0\)">\(S((\rho_j)_K)\ge0\)</span>. The model <span class="math" data-tex="\(B=\mathbb C\)">\(B=\mathbb C\)</span> has entropy <span class="math" data-tex="\(0\)">\(0\)</span>, because every defect of a map into
+<span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> vanishes (Lemma 4.2 with <span class="math" data-tex="\(S(\mu)=0\)">\(S(\mu)=0\)</span>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The next result describes <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> through decompositions of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, which is how it is used in practice. A
+<em>decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of shape <span class="math" data-tex="\((I_1,\dots,I_n)\)">\((I_1,\dots,I_n)\)</span></em>, for finite sets <span class="math" data-tex="\(I_j\)">\(I_j\)</span>, is a family
+<span class="math" data-tex="\((\psi_i)_{i\in I}\)">\((\psi_i)_{i\in I}\)</span> of positive functionals indexed by <span class="math" data-tex="\(I=I_1\times\dots\times I_n\)">\(I=I_1\times\dots\times I_n\)</span> with <span class="math" data-tex="\(\sum_i\psi_i=\varphi\)">\(\sum_i\psi_i=\varphi\)</span>. Its
+<em>marginals</em> are <span class="math" data-tex="\(\psi^{(j)}_k=\sum_{i:i_j=k}\psi_i\)">\(\psi^{(j)}_k=\sum_{i:i_j=k}\psi_i\)</span> for <span class="math" data-tex="\(k\in I_j\)">\(k\in I_j\)</span>. Its <em>entropy</em> relative to
+<span class="math" data-tex="\((\gamma_1,\dots,\gamma_n)\)">\((\gamma_1,\dots,\gamma_n)\)</span> is
+<span class="math math-display" data-tex="\[
+\mathcal E_\gamma(\psi)=\sum_{i\in I}\eta\bigl(\psi_i(1)\bigr)+\sum_{j=1}^n\sum_{k\in I_j}
+D\bigl(\psi^{(j)}_k\circ\gamma_j\,\big\|\,\varphi\circ\gamma_j\bigr).
+\tag{6.2}
+\]">\[
+\mathcal E_\gamma(\psi)=\sum_{i\in I}\eta\bigl(\psi_i(1)\bigr)+\sum_{j=1}^n\sum_{k\in I_j}
+D\bigl(\psi^{(j)}_k\circ\gamma_j\,\big\|\,\varphi\circ\gamma_j\bigr).
+\tag{6.2}
+\]</span>
+The relative entropies in (6.2) are <span class="math" data-tex="\(\le0\)">\(\le0\)</span>, because <span class="math" data-tex="\(\psi^{(j)}_k\circ\gamma_j\le\varphi\circ\gamma_j\)">\(\psi^{(j)}_k\circ\gamma_j\le\varphi\circ\gamma_j\)</span>.</p>
+<p><strong>Proposition 6.4 (decompositions).</strong> <em><span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)=\sup\mathcal E_\gamma(\psi)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)=\sup\mathcal E_\gamma(\psi)\)</span>, the supremum over
+all decompositions of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of all shapes. More precisely, every abelian model has the same entropy as some
+decomposition, and conversely.</em></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\((C(X),\mu,(B_j),P)\)">\((C(X),\mu,(B_j),P)\)</span> be a model with partitions <span class="math" data-tex="\(\pi_j=\pi(B_j)\)">\(\pi_j=\pi(B_j)\)</span>. Take <span class="math" data-tex="\(I_j=\pi_j\)">\(I_j=\pi_j\)</span> and
+<span class="math" data-tex="\(\psi_i=\sum_{x\in K_1\cap\dots\cap K_n}\mu_xP_x\)">\(\psi_i=\sum_{x\in K_1\cap\dots\cap K_n}\mu_xP_x\)</span> for <span class="math" data-tex="\(i=(K_1,\dots,K_n)\)">\(i=(K_1,\dots,K_n)\)</span>. Then <span class="math" data-tex="\(\sum_i\psi_i=\mu\circ P=\varphi\)">\(\sum_i\psi_i=\mu\circ P=\varphi\)</span>, and
+<span class="math" data-tex="\(\psi^{(j)}_K=\sum_{x\in K}\mu_xP_x\)">\(\psi^{(j)}_K=\sum_{x\in K}\mu_xP_x\)</span>. The atoms of <span class="math" data-tex="\(\vee_jB_j\)">\(\vee_jB_j\)</span> are the nonempty intersections
+<span class="math" data-tex="\(K_1\cap\dots\cap K_n\)">\(K_1\cap\dots\cap K_n\)</span> (Lemma 1.2), of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-measure <span class="math" data-tex="\(\psi_i(1)\)">\(\psi_i(1)\)</span>, so <span class="math" data-tex="\(S(\mu|_{\vee B_j})=\sum_i\eta(\psi_i(1))\)">\(S(\mu|_{\vee B_j})=\sum_i\eta(\psi_i(1))\)</span>.
+Applying (4.2) to <span class="math" data-tex="\(Q=P\circ\gamma_j:A_j\to C(X)\)">\(Q=P\circ\gamma_j:A_j\to C(X)\)</span> gives
+<span class="math" data-tex="\(s_{\mu|_{B_j}}(\rho_j)=-\sum_{K\in\pi_j}D(\psi^{(j)}_K\circ\gamma_j\|\varphi\circ\gamma_j)\)">\(s_{\mu|_{B_j}}(\rho_j)=-\sum_{K\in\pi_j}D(\psi^{(j)}_K\circ\gamma_j\|\varphi\circ\gamma_j)\)</span>. So the entropy of the
+model is <span class="math" data-tex="\(\mathcal E_\gamma(\psi)\)">\(\mathcal E_\gamma(\psi)\)</span>.</p>
+<p>Conversely, given a decomposition of shape <span class="math" data-tex="\((I_j)\)">\((I_j)\)</span>, let <span class="math" data-tex="\(X=I\)">\(X=I\)</span>, <span class="math" data-tex="\(\mu_i=\psi_i(1)\)">\(\mu_i=\psi_i(1)\)</span>, <span class="math" data-tex="\(P_i=\psi_i/\psi_i(1)\)">\(P_i=\psi_i/\psi_i(1)\)</span> if
+<span class="math" data-tex="\(\psi_i\ne0\)">\(\psi_i\ne0\)</span> and <span class="math" data-tex="\(P_i=\varphi\)">\(P_i=\varphi\)</span> otherwise, and let <span class="math" data-tex="\(B_j\)">\(B_j\)</span> be the functions on <span class="math" data-tex="\(I\)">\(I\)</span> depending only on the <span class="math" data-tex="\(j\)">\(j\)</span>-th
+coordinate. Then <span class="math" data-tex="\(\mu_iP_i=\psi_i\)">\(\mu_iP_i=\psi_i\)</span>, so <span class="math" data-tex="\(\mu\circ P=\varphi\)">\(\mu\circ P=\varphi\)</span>, and by the first part (whose construction returns the same
+family, since the blocks of <span class="math" data-tex="\(B_j\)">\(B_j\)</span> are indexed by <span class="math" data-tex="\(I_j\)">\(I_j\)</span>) the entropy of this model is <span class="math" data-tex="\(\mathcal E_\gamma(\psi)\)">\(\mathcal E_\gamma(\psi)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.5 (other forms).</strong> <em>Write <span class="math" data-tex="\(\hat\sigma=\sigma/\sigma(1)\)">\(\hat\sigma=\sigma/\sigma(1)\)</span> for <span class="math" data-tex="\(\sigma\ne0\)">\(\sigma\ne0\)</span> and
+<span class="math" data-tex="\(p^{(j)}_k=\psi^{(j)}_k(1)\)">\(p^{(j)}_k=\psi^{(j)}_k(1)\)</span>. For a decomposition <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>,</em>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal E_\gamma(\psi)&amp;=\sum_i\eta(\psi_i(1))-\sum_j\sum_k\eta(p^{(j)}_k)+\sum_j\sum_kp^{(j)}_k\,
+D\bigl(\hat\psi^{(j)}_k\circ\gamma_j\,\|\,\varphi\circ\gamma_j\bigr)\\
+&amp;=\sum_i\eta(\psi_i(1))-\sum_j\sum_k\eta(p^{(j)}_k)+\sum_j\Bigl(S(\varphi\circ\gamma_j)-\sum_kp^{(j)}_k\,
+S\bigl(\hat\psi^{(j)}_k\circ\gamma_j\bigr)\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal E_\gamma(\psi)&amp;=\sum_i\eta(\psi_i(1))-\sum_j\sum_k\eta(p^{(j)}_k)+\sum_j\sum_kp^{(j)}_k\,
+D\bigl(\hat\psi^{(j)}_k\circ\gamma_j\,\|\,\varphi\circ\gamma_j\bigr)\\
+&amp;=\sum_i\eta(\psi_i(1))-\sum_j\sum_k\eta(p^{(j)}_k)+\sum_j\Bigl(S(\varphi\circ\gamma_j)-\sum_kp^{(j)}_k\,
+S\bigl(\hat\psi^{(j)}_k\circ\gamma_j\bigr)\Bigr),
+\end{aligned}
+\]</span>
+<em>(sums over <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(p^{(j)}_k&gt;0\)">\(p^{(j)}_k&gt;0\)</span>). Moreover decompositions of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of shape <span class="math" data-tex="\((I_j)\)">\((I_j)\)</span> correspond bijectively,
+via <span class="math" data-tex="\(\psi_i=\langle\xi_\varphi,t_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)">\(\psi_i=\langle\xi_\varphi,t_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)</span>, to families <span class="math" data-tex="\((t_i)_{i\in I}\)">\((t_i)_{i\in I}\)</span> of positive
+elements of <span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span> with <span class="math" data-tex="\(\sum_it_i=1\)">\(\sum_it_i=1\)</span>. So</em>
+<span class="math math-display" data-tex="\[
+H_\varphi(\gamma_1,\dots,\gamma_n)=\sup_{(t_i)}\Bigl[\sum_i\eta\bigl(\langle\xi_\varphi,t_i\xi_\varphi\rangle\bigr)
++\sum_j\sum_{k\in I_j}D\bigl(\langle\xi_\varphi,t^{(j)}_k\pi_\varphi(\gamma_j(\cdot))\xi_\varphi\rangle\,\big\|\,
+\varphi\circ\gamma_j\bigr)\Bigr],\qquad t^{(j)}_k=\sum_{i:i_j=k}t_i.
+\]">\[
+H_\varphi(\gamma_1,\dots,\gamma_n)=\sup_{(t_i)}\Bigl[\sum_i\eta\bigl(\langle\xi_\varphi,t_i\xi_\varphi\rangle\bigr)
++\sum_j\sum_{k\in I_j}D\bigl(\langle\xi_\varphi,t^{(j)}_k\pi_\varphi(\gamma_j(\cdot))\xi_\varphi\rangle\,\big\|\,
+\varphi\circ\gamma_j\bigr)\Bigr],\qquad t^{(j)}_k=\sum_{i:i_j=k}t_i.
+\]</span></p>
+<p><strong>Proof.</strong> The first line is Proposition 2.5(g), <span class="math" data-tex="\(D(p\hat\sigma\|\varphi)=pD(\hat\sigma\|\varphi)-\eta(p)\)">\(D(p\hat\sigma\|\varphi)=pD(\hat\sigma\|\varphi)-\eta(p)\)</span>. The second
+uses (2.2) as in the proof of Theorem 3.4: <span class="math" data-tex="\(\sum_kp^{(j)}_kD(\hat\psi^{(j)}_k\circ\gamma_j\|\varphi\circ\gamma_j)=
+S(\varphi\circ\gamma_j)-\sum_kp^{(j)}_kS(\hat\psi^{(j)}_k\circ\gamma_j)\)">\(\sum_kp^{(j)}_kD(\hat\psi^{(j)}_k\circ\gamma_j\|\varphi\circ\gamma_j)=
+S(\varphi\circ\gamma_j)-\sum_kp^{(j)}_kS(\hat\psi^{(j)}_k\circ\gamma_j)\)</span>, both sides being finite. The last statement
+is (B3): each <span class="math" data-tex="\(\psi_i\le\varphi\)">\(\psi_i\le\varphi\)</span> has a unique <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, and <span class="math" data-tex="\(\sum_it_i\)">\(\sum_it_i\)</span> represents <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, so it equals <span class="math" data-tex="\(1\)">\(1\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.6 (the abelian case).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be abelian and let <span class="math" data-tex="\(N_1,\dots,N_n\)">\(N_1,\dots,N_n\)</span> be finite-dimensional unital
+subalgebras, with <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> the inclusions. Then <span class="math" data-tex="\(H_\varphi(N_1,\dots,N_n)=S(\varphi|_{N_1\vee\dots\vee N_n})\)">\(H_\varphi(N_1,\dots,N_n)=S(\varphi|_{N_1\vee\dots\vee N_n})\)</span>.</em></p>
+<p><strong>Proof.</strong> The minimal projections of <span class="math" data-tex="\(N_j\)">\(N_j\)</span> form a partition of unity <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>; the join
+<span class="math" data-tex="\(N=N_1\vee\dots\vee N_n\)">\(N=N_1\vee\dots\vee N_n\)</span> is finite-dimensional, with minimal projections the nonzero products
+<span class="math" data-tex="\(c=a_1\cdots a_n\)">\(c=a_1\cdots a_n\)</span>, <span class="math" data-tex="\(a_j\in\alpha_j\)">\(a_j\in\alpha_j\)</span>. Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of shape <span class="math" data-tex="\((I_j)\)">\((I_j)\)</span>. The numbers
+<span class="math" data-tex="\(p(i,c)=\psi_i(c)\)">\(p(i,c)=\psi_i(c)\)</span>, for <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> a minimal projection of <span class="math" data-tex="\(N\)">\(N\)</span>, form a probability distribution. On this
+finite probability space let <span class="math" data-tex="\(\xi_j(i,c)=i_j\)">\(\xi_j(i,c)=i_j\)</span>, <span class="math" data-tex="\(\zeta_j(i,c)=\)">\(\zeta_j(i,c)=\)</span> the element of <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span> above <span class="math" data-tex="\(c\)">\(c\)</span>, and
+<span class="math" data-tex="\(\zeta=(\zeta_1,\dots,\zeta_n)\)">\(\zeta=(\zeta_1,\dots,\zeta_n)\)</span>, which determines <span class="math" data-tex="\(c\)">\(c\)</span>. For the abelian algebra <span class="math" data-tex="\(N_j\)">\(N_j\)</span>, (2.2) is a classical sum, and
+<span class="math math-display" data-tex="\[
+\sum_kD\bigl(\psi^{(j)}_k|_{N_j}\,\|\,\varphi|_{N_j}\bigr)=\sum_{k,a}p(\xi_j=k,\zeta_j=a)
+\log\frac{p(\xi_j=k,\zeta_j=a)}{p(\zeta_j=a)}=-H(\xi_j\mid\zeta_j).
+\]">\[
+\sum_kD\bigl(\psi^{(j)}_k|_{N_j}\,\|\,\varphi|_{N_j}\bigr)=\sum_{k,a}p(\xi_j=k,\zeta_j=a)
+\log\frac{p(\xi_j=k,\zeta_j=a)}{p(\zeta_j=a)}=-H(\xi_j\mid\zeta_j).
+\]</span>
+With <span class="math" data-tex="\(\xi=(\xi_1,\dots,\xi_n)\)">\(\xi=(\xi_1,\dots,\xi_n)\)</span> we get <span class="math" data-tex="\(\mathcal E_\gamma(\psi)=H(\xi)-\sum_jH(\xi_j\mid\zeta_j)\)">\(\mathcal E_\gamma(\psi)=H(\xi)-\sum_jH(\xi_j\mid\zeta_j)\)</span>. By (B4),
+<span class="math math-display" data-tex="\[
+H(\xi)\le H(\xi,\zeta)=H(\zeta)+H(\xi\mid\zeta)\le H(\zeta)+\sum_jH(\xi_j\mid\zeta)\le H(\zeta)+\sum_jH(\xi_j\mid\zeta_j),
+\]">\[
+H(\xi)\le H(\xi,\zeta)=H(\zeta)+H(\xi\mid\zeta)\le H(\zeta)+\sum_jH(\xi_j\mid\zeta)\le H(\zeta)+\sum_jH(\xi_j\mid\zeta_j),
+\]</span>
+so <span class="math" data-tex="\(\mathcal E_\gamma(\psi)\le H(\zeta)=S(\varphi|_N)\)">\(\mathcal E_\gamma(\psi)\le H(\zeta)=S(\varphi|_N)\)</span>, and <span class="math" data-tex="\(H_\varphi\le S(\varphi|_N)\)">\(H_\varphi\le S(\varphi|_N)\)</span> by Proposition 6.4. For
+the converse take <span class="math" data-tex="\(I_j=\alpha_j\)">\(I_j=\alpha_j\)</span> and <span class="math" data-tex="\(\psi_{(a_1,\dots,a_n)}=\varphi(a_1\cdots a_n\,\cdot)\)">\(\psi_{(a_1,\dots,a_n)}=\varphi(a_1\cdots a_n\,\cdot)\)</span>, a positive functional
+because <span class="math" data-tex="\(a_1\cdots a_n\)">\(a_1\cdots a_n\)</span> is a central projection. Then <span class="math" data-tex="\(\xi_j=\zeta_j\)">\(\xi_j=\zeta_j\)</span> almost surely, so
+<span class="math" data-tex="\(\mathcal E_\gamma(\psi)=H(\zeta)\)">\(\mathcal E_\gamma(\psi)=H(\zeta)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So for abelian algebras <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> is the classical entropy of the joined partition, and the entropy defects of
+the optimal model vanish.</p>
+<h2 id="7-properties-of-h_-varphi">7. Properties of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span></h2>
+<p>Throughout, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a state, and <span class="math" data-tex="\(\gamma_j:A_j\to A\)">\(\gamma_j:A_j\to A\)</span> are unital completely positive maps whose domains <span class="math" data-tex="\(A_j\)">\(A_j\)</span>
+are finite-dimensional C*-algebras.</p>
+<p><strong>Theorem 7.1.</strong> <em>(a) Monotonicity in the observations: if the <span class="math" data-tex="\(A&#x27;_j\)">\(A&#x27;_j\)</span> are finite-dimensional C*-algebras and
+<span class="math" data-tex="\(\theta_j:A&#x27;_j\to A_j\)">\(\theta_j:A&#x27;_j\to A_j\)</span> are unital completely positive maps, then <span class="math" data-tex="\(H_\varphi(\gamma_1\circ\theta_1,\dots,\gamma_n\circ\theta_n)\le
+H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1\circ\theta_1,\dots,\gamma_n\circ\theta_n)\le
+H_\varphi(\gamma_1,\dots,\gamma_n)\)</span>. Equality holds if each <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> has a unital completely positive right inverse;
+in particular if each <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> is a conditional expectation of <span class="math" data-tex="\(A&#x27;_j\)">\(A&#x27;_j\)</span> onto the subalgebra <span class="math" data-tex="\(A_j\)">\(A_j\)</span>.</em></p>
+<p><em>(b) Invariance: if <span class="math" data-tex="\(\theta:A\to A\)">\(\theta:A\to A\)</span> is unital positive with <span class="math" data-tex="\(\varphi\circ\theta=\varphi\)">\(\varphi\circ\theta=\varphi\)</span>, then
+<span class="math" data-tex="\(H_\varphi(\theta\circ\gamma_1,\dots,\theta\circ\gamma_n)\le H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\theta\circ\gamma_1,\dots,\theta\circ\gamma_n)\le H_\varphi(\gamma_1,\dots,\gamma_n)\)</span>, with equality if
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-preserving automorphism. (If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is not completely positive, the maps
+<span class="math" data-tex="\(\theta\circ\gamma_j\)">\(\theta\circ\gamma_j\)</span> are only unital positive; Definitions 6.1 and 6.2 and Proposition 6.4 apply to them verbatim,
+since they use only that the maps <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> into abelian algebras are unital positive.)</em></p>
+<p><em>(c) <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\)</span> depends only on the set <span class="math" data-tex="\(\{\gamma_1,\dots,\gamma_n\}\)">\(\{\gamma_1,\dots,\gamma_n\}\)</span>: it is symmetric, and
+<span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n,\gamma_n)=H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n,\gamma_n)=H_\varphi(\gamma_1,\dots,\gamma_n)\)</span>.</em></p>
+<p><em>(d) For finite sets <span class="math" data-tex="\(\mathsf X,\mathsf Y\)">\(\mathsf X,\mathsf Y\)</span> of such maps,
+<span class="math" data-tex="\(\max\{H_\varphi(\mathsf X),H_\varphi(\mathsf Y)\}\le H_\varphi(\mathsf X\cup\mathsf Y)\le H_\varphi(\mathsf X)+
+H_\varphi(\mathsf Y)\)">\(\max\{H_\varphi(\mathsf X),H_\varphi(\mathsf Y)\}\le H_\varphi(\mathsf X\cup\mathsf Y)\le H_\varphi(\mathsf X)+
+H_\varphi(\mathsf Y)\)</span>.</em></p>
+<p><em>(e) Convexity in the observations: for unital completely positive <span class="math" data-tex="\(\gamma_j,\gamma&#x27;_j:A_j\to A\)">\(\gamma_j,\gamma&#x27;_j:A_j\to A\)</span> and <span class="math" data-tex="\(0\le\lambda\le1\)">\(0\le\lambda\le1\)</span>,</em>
+<span class="math math-display" data-tex="\[
+H_\varphi\bigl(\lambda\gamma_1+(1-\lambda)\gamma&#x27;_1,\dots,\lambda\gamma_n+(1-\lambda)\gamma&#x27;_n\bigr)\le
+\lambda H_\varphi(\gamma_1,\dots,\gamma_n)+(1-\lambda)H_\varphi(\gamma&#x27;_1,\dots,\gamma&#x27;_n).
+\]">\[
+H_\varphi\bigl(\lambda\gamma_1+(1-\lambda)\gamma&#x27;_1,\dots,\lambda\gamma_n+(1-\lambda)\gamma&#x27;_n\bigr)\le
+\lambda H_\varphi(\gamma_1,\dots,\gamma_n)+(1-\lambda)H_\varphi(\gamma&#x27;_1,\dots,\gamma&#x27;_n).
+\]</span></p>
+<p><strong>Proof.</strong> We use Proposition 6.4 throughout.</p>
+<p>(a) For a decomposition <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, Proposition 2.5(d) gives
+<span class="math" data-tex="\(D(\psi^{(j)}_k\circ\gamma_j\circ\theta_j\|\varphi\circ\gamma_j\circ\theta_j)\le
+D(\psi^{(j)}_k\circ\gamma_j\|\varphi\circ\gamma_j)\)">\(D(\psi^{(j)}_k\circ\gamma_j\circ\theta_j\|\varphi\circ\gamma_j\circ\theta_j)\le
+D(\psi^{(j)}_k\circ\gamma_j\|\varphi\circ\gamma_j)\)</span>, so <span class="math" data-tex="\(\mathcal E_{\gamma\circ\theta}(\psi)\le\mathcal E_\gamma(\psi)\)">\(\mathcal E_{\gamma\circ\theta}(\psi)\le\mathcal E_\gamma(\psi)\)</span>.
+If <span class="math" data-tex="\(\theta_j\circ\beta_j=\mathrm{id}\)">\(\theta_j\circ\beta_j=\mathrm{id}\)</span>, then <span class="math" data-tex="\(\gamma_j=(\gamma_j\circ\theta_j)\circ\beta_j\)">\(\gamma_j=(\gamma_j\circ\theta_j)\circ\beta_j\)</span> and the inequality just
+proved gives the reverse inequality.</p>
+<p>(b) If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, then <span class="math" data-tex="\(\psi\circ\theta=(\psi_i\circ\theta)_i\)">\(\psi\circ\theta=(\psi_i\circ\theta)_i\)</span> is a decomposition of
+<span class="math" data-tex="\(\varphi\circ\theta=\varphi\)">\(\varphi\circ\theta=\varphi\)</span> (positivity of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>), with <span class="math" data-tex="\(\psi_i(\theta(1))=\psi_i(1)\)">\(\psi_i(\theta(1))=\psi_i(1)\)</span>, so
+<span class="math" data-tex="\(\mathcal E_{\theta\circ\gamma}(\psi)=\mathcal E_\gamma(\psi\circ\theta)\le H_\varphi(\gamma)\)">\(\mathcal E_{\theta\circ\gamma}(\psi)=\mathcal E_\gamma(\psi\circ\theta)\le H_\varphi(\gamma)\)</span>. If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is an
+automorphism, apply this to <span class="math" data-tex="\(\theta^{-1}\)">\(\theta^{-1}\)</span> and the maps <span class="math" data-tex="\(\theta\circ\gamma_j\)">\(\theta\circ\gamma_j\)</span>.</p>
+<p>(c) Symmetry: permute the coordinates of the shape. Next, a decomposition <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of shape <span class="math" data-tex="\((I_1,\dots,I_n)\)">\((I_1,\dots,I_n)\)</span> gives
+one of shape <span class="math" data-tex="\((I_1,\dots,I_n,\{*\})\)">\((I_1,\dots,I_n,\{*\})\)</span> with the same <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-terms and an extra term
+<span class="math" data-tex="\(D(\varphi\circ\gamma_n\|\varphi\circ\gamma_n)=0\)">\(D(\varphi\circ\gamma_n\|\varphi\circ\gamma_n)=0\)</span>; so <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n,\gamma_n)\ge
+H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n,\gamma_n)\ge
+H_\varphi(\gamma_1,\dots,\gamma_n)\)</span>. Conversely let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> have shape <span class="math" data-tex="\((I_1,\dots,I_{n+1})\)">\((I_1,\dots,I_{n+1})\)</span> and regard it as a
+decomposition <span class="math" data-tex="\(\psi&#x27;\)">\(\psi&#x27;\)</span> of shape <span class="math" data-tex="\((I_1,\dots,I_{n-1},I_n\times I_{n+1})\)">\((I_1,\dots,I_{n-1},I_n\times I_{n+1})\)</span>. The <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-terms and the terms for
+<span class="math" data-tex="\(j&lt;n\)">\(j&lt;n\)</span> agree. For the last coordinate, Theorem 4.7, applied on <span class="math" data-tex="\(A_n\)">\(A_n\)</span> to the family
+<span class="math" data-tex="\(\sigma_{kl}=\psi&#x27;^{(n)}_{(k,l)}\circ\gamma_n\)">\(\sigma_{kl}=\psi&#x27;^{(n)}_{(k,l)}\circ\gamma_n\)</span> with row and column sums <span class="math" data-tex="\(\psi^{(n)}_k\circ\gamma_n\)">\(\psi^{(n)}_k\circ\gamma_n\)</span> and
+<span class="math" data-tex="\(\psi^{(n+1)}_l\circ\gamma_n\)">\(\psi^{(n+1)}_l\circ\gamma_n\)</span>, gives
+<span class="math" data-tex="\(\sum_{k,l}D(\sigma_{kl}\|\varphi\circ\gamma_n)\ge\sum_kD(\psi^{(n)}_k\circ\gamma_n\|\varphi\circ\gamma_n)+
+\sum_lD(\psi^{(n+1)}_l\circ\gamma_n\|\varphi\circ\gamma_n)\)">\(\sum_{k,l}D(\sigma_{kl}\|\varphi\circ\gamma_n)\ge\sum_kD(\psi^{(n)}_k\circ\gamma_n\|\varphi\circ\gamma_n)+
+\sum_lD(\psi^{(n+1)}_l\circ\gamma_n\|\varphi\circ\gamma_n)\)</span>. Hence <span class="math" data-tex="\(\mathcal E_{(\gamma_1,\dots,\gamma_n)}(\psi&#x27;)\ge
+\mathcal E_{(\gamma_1,\dots,\gamma_n,\gamma_n)}(\psi)\)">\(\mathcal E_{(\gamma_1,\dots,\gamma_n)}(\psi&#x27;)\ge
+\mathcal E_{(\gamma_1,\dots,\gamma_n,\gamma_n)}(\psi)\)</span>.</p>
+<p>(d) By (c) we may compute with tuples. Adding trivial coordinates as in (c) gives the first inequality. For the second,
+let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a decomposition of shape <span class="math" data-tex="\((I_1,\dots,I_{k+p})\)">\((I_1,\dots,I_{k+p})\)</span> for the concatenated tuple, and let <span class="math" data-tex="\(\psi&#x27;,\psi&#x27;&#x27;\)">\(\psi&#x27;,\psi&#x27;&#x27;\)</span> be
+the decompositions of shapes <span class="math" data-tex="\((I_1,\dots,I_k)\)">\((I_1,\dots,I_k)\)</span> and <span class="math" data-tex="\((I_{k+1},\dots,I_{k+p})\)">\((I_{k+1},\dots,I_{k+p})\)</span> obtained by summing over the other
+coordinates. They have the same marginals as <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, so the relative entropy terms split exactly, and by (B4),
+<span class="math" data-tex="\(\sum_i\eta(\psi_i(1))\le\sum\eta(\psi&#x27;(1))+\sum\eta(\psi&#x27;&#x27;(1))\)">\(\sum_i\eta(\psi_i(1))\le\sum\eta(\psi&#x27;(1))+\sum\eta(\psi&#x27;&#x27;(1))\)</span> (subadditivity of the Shannon entropy of the pair
+of coordinate blocks). So <span class="math" data-tex="\(\mathcal E(\psi)\le\mathcal E(\psi&#x27;)+\mathcal E(\psi&#x27;&#x27;)\)">\(\mathcal E(\psi)\le\mathcal E(\psi&#x27;)+\mathcal E(\psi&#x27;&#x27;)\)</span>.</p>
+<p>(e) Fix a decomposition <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-terms do not depend on the maps, and joint convexity gives
+<span class="math math-display" data-tex="\[
+D\bigl(\lambda\psi^{(j)}_k\gamma_j+(1-\lambda)\psi^{(j)}_k\gamma&#x27;_j\,\big\|\,\lambda\varphi\gamma_j+
+(1-\lambda)\varphi\gamma&#x27;_j\bigr)\le\lambda D(\psi^{(j)}_k\gamma_j\|\varphi\gamma_j)+(1-\lambda)
+D(\psi^{(j)}_k\gamma&#x27;_j\|\varphi\gamma&#x27;_j).
+\]">\[
+D\bigl(\lambda\psi^{(j)}_k\gamma_j+(1-\lambda)\psi^{(j)}_k\gamma&#x27;_j\,\big\|\,\lambda\varphi\gamma_j+
+(1-\lambda)\varphi\gamma&#x27;_j\bigr)\le\lambda D(\psi^{(j)}_k\gamma_j\|\varphi\gamma_j)+(1-\lambda)
+D(\psi^{(j)}_k\gamma&#x27;_j\|\varphi\gamma&#x27;_j).
+\]</span>
+So <span class="math" data-tex="\(\mathcal E_{\lambda\gamma+(1-\lambda)\gamma&#x27;}(\psi)\le\lambda\mathcal E_\gamma(\psi)+(1-\lambda)
+\mathcal E_{\gamma&#x27;}(\psi)\le\lambda H_\varphi(\gamma)+(1-\lambda)H_\varphi(\gamma&#x27;)\)">\(\mathcal E_{\lambda\gamma+(1-\lambda)\gamma&#x27;}(\psi)\le\lambda\mathcal E_\gamma(\psi)+(1-\lambda)
+\mathcal E_{\gamma&#x27;}(\psi)\le\lambda H_\varphi(\gamma)+(1-\lambda)H_\varphi(\gamma&#x27;)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2 (dependence on the state).</strong> <em>Let <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> be states, <span class="math" data-tex="\(0&lt;\lambda&lt;1\)">\(0&lt;\lambda&lt;1\)</span>,
+<span class="math" data-tex="\(\varphi=\lambda\varphi_1+(1-\lambda)\varphi_2\)">\(\varphi=\lambda\varphi_1+(1-\lambda)\varphi_2\)</span> and <span class="math" data-tex="\(h(\lambda)=\eta(\lambda)+\eta(1-\lambda)\)">\(h(\lambda)=\eta(\lambda)+\eta(1-\lambda)\)</span>.</em></p>
+<p><em>(a) <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\ge\lambda H_{\varphi_1}(\gamma_1,\dots,\gamma_n)+(1-\lambda)
+H_{\varphi_2}(\gamma_1,\dots,\gamma_n)-(n-1)h(\lambda)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\ge\lambda H_{\varphi_1}(\gamma_1,\dots,\gamma_n)+(1-\lambda)
+H_{\varphi_2}(\gamma_1,\dots,\gamma_n)-(n-1)h(\lambda)\)</span>.</em></p>
+<p><em>(b) Suppose that the element <span class="math" data-tex="\(t\in\pi_\varphi(A)&#x27;\)">\(t\in\pi_\varphi(A)&#x27;\)</span> with <span class="math" data-tex="\(\lambda\varphi_1=\langle\xi_\varphi,t\pi_\varphi(\cdot)
+\xi_\varphi\rangle\)">\(\lambda\varphi_1=\langle\xi_\varphi,t\pi_\varphi(\cdot)
+\xi_\varphi\rangle\)</span> (see (B3)) commutes with <span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+H_\varphi(\gamma_1,\dots,\gamma_n)\le\lambda H_{\varphi_1}(\gamma_1,\dots,\gamma_n)+(1-\lambda)H_{\varphi_2}(\gamma_1,
+\dots,\gamma_n)+h(\lambda).
+\]">\[
+H_\varphi(\gamma_1,\dots,\gamma_n)\le\lambda H_{\varphi_1}(\gamma_1,\dots,\gamma_n)+(1-\lambda)H_{\varphi_2}(\gamma_1,
+\dots,\gamma_n)+h(\lambda).
+\]</span>
+<em>The hypothesis of (b) holds if <span class="math" data-tex="\(A\)">\(A\)</span> is abelian, and if <span class="math" data-tex="\(\lambda\varphi_1=\varphi(z\,\cdot)\)">\(\lambda\varphi_1=\varphi(z\,\cdot)\)</span> for some central element
+<span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(0\le z\le1\)">\(0\le z\le1\)</span>.</em></p>
+<p><strong>Proof.</strong> (a) Let <span class="math" data-tex="\(\psi^1\)">\(\psi^1\)</span>, <span class="math" data-tex="\(\psi^2\)">\(\psi^2\)</span> be decompositions of <span class="math" data-tex="\(\varphi_1,\varphi_2\)">\(\varphi_1,\varphi_2\)</span> of shapes <span class="math" data-tex="\((I^1_j)\)">\((I^1_j)\)</span>, <span class="math" data-tex="\((I^2_j)\)">\((I^2_j)\)</span>.
+Put <span class="math" data-tex="\(I_j=I^1_j\sqcup I^2_j\)">\(I_j=I^1_j\sqcup I^2_j\)</span>, and let <span class="math" data-tex="\(\psi_i=\lambda\psi^1_i\)">\(\psi_i=\lambda\psi^1_i\)</span> if all coordinates of <span class="math" data-tex="\(i\)">\(i\)</span> lie in the first copies,
+<span class="math" data-tex="\(\psi_i=(1-\lambda)\psi^2_i\)">\(\psi_i=(1-\lambda)\psi^2_i\)</span> if all lie in the second copies, and <span class="math" data-tex="\(\psi_i=0\)">\(\psi_i=0\)</span> otherwise. This is a decomposition of
+<span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> whose marginals are <span class="math" data-tex="\(\lambda\psi^{1,(j)}_k\)">\(\lambda\psi^{1,(j)}_k\)</span> (<span class="math" data-tex="\(k\in I^1_j\)">\(k\in I^1_j\)</span>) and <span class="math" data-tex="\((1-\lambda)\psi^{2,(j)}_k\)">\((1-\lambda)\psi^{2,(j)}_k\)</span>
+(<span class="math" data-tex="\(k\in I^2_j\)">\(k\in I^2_j\)</span>). Since <span class="math" data-tex="\(\eta(\lambda s)=\lambda\eta(s)+s\eta(\lambda)\)">\(\eta(\lambda s)=\lambda\eta(s)+s\eta(\lambda)\)</span> and <span class="math" data-tex="\(\sum_i\psi^1_i(1)=1\)">\(\sum_i\psi^1_i(1)=1\)</span>,
+<span class="math" data-tex="\(\sum_i\eta(\psi_i(1))=\lambda\sum\eta(\psi^1_i(1))+(1-\lambda)\sum\eta(\psi^2_i(1))+h(\lambda)\)">\(\sum_i\eta(\psi_i(1))=\lambda\sum\eta(\psi^1_i(1))+(1-\lambda)\sum\eta(\psi^2_i(1))+h(\lambda)\)</span>. For the <span class="math" data-tex="\(j\)">\(j\)</span>-th
+relative entropy term, write it with (3.1) as <span class="math" data-tex="\(S(\varphi\circ\gamma_j)-\sum_kS(\cdot)\)">\(S(\varphi\circ\gamma_j)-\sum_kS(\cdot)\)</span> over the marginals. By Lemma
+3.2(a) the marginal entropies add up to <span class="math" data-tex="\(\lambda\sum_kS(\psi^{1,(j)}_k\gamma_j)+(1-\lambda)\sum_kS(\psi^{2,(j)}_k
+\gamma_j)+h(\lambda)\)">\(\lambda\sum_kS(\psi^{1,(j)}_k\gamma_j)+(1-\lambda)\sum_kS(\psi^{2,(j)}_k
+\gamma_j)+h(\lambda)\)</span>, and by concavity <span class="math" data-tex="\(S(\varphi\gamma_j)\ge\lambda S(\varphi_1\gamma_j)+(1-\lambda)
+S(\varphi_2\gamma_j)\)">\(S(\varphi\gamma_j)\ge\lambda S(\varphi_1\gamma_j)+(1-\lambda)
+S(\varphi_2\gamma_j)\)</span>. Hence the <span class="math" data-tex="\(j\)">\(j\)</span>-th term is at least <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> times the corresponding term for <span class="math" data-tex="\(\psi^1\)">\(\psi^1\)</span>, plus
+<span class="math" data-tex="\((1-\lambda)\)">\((1-\lambda)\)</span> times that for <span class="math" data-tex="\(\psi^2\)">\(\psi^2\)</span>, minus <span class="math" data-tex="\(h(\lambda)\)">\(h(\lambda)\)</span>. Adding up,
+<span class="math" data-tex="\(\mathcal E_\gamma(\psi)\ge\lambda\mathcal E_\gamma(\psi^1)+(1-\lambda)\mathcal E_\gamma(\psi^2)-(n-1)h(\lambda)\)">\(\mathcal E_\gamma(\psi)\ge\lambda\mathcal E_\gamma(\psi^1)+(1-\lambda)\mathcal E_\gamma(\psi^2)-(n-1)h(\lambda)\)</span>.
+Take suprema.</p>
+<p>(b) Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be a decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, with <span class="math" data-tex="\(\psi_i=\langle\xi_\varphi,t_i\pi_\varphi(\cdot)\xi_\varphi
+\rangle\)">\(\psi_i=\langle\xi_\varphi,t_i\pi_\varphi(\cdot)\xi_\varphi
+\rangle\)</span>, <span class="math" data-tex="\(t_i\in\pi_\varphi(A)&#x27;_+\)">\(t_i\in\pi_\varphi(A)&#x27;_+\)</span> (Corollary 6.5). Since <span class="math" data-tex="\(t\)">\(t\)</span> commutes with <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, <span class="math" data-tex="\(tt_i\)">\(tt_i\)</span> and <span class="math" data-tex="\((1-t)t_i\)">\((1-t)t_i\)</span> are
+positive elements of <span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span>, so
+<span class="math" data-tex="\(\psi^1_i=\lambda^{-1}\langle\xi_\varphi,tt_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)">\(\psi^1_i=\lambda^{-1}\langle\xi_\varphi,tt_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)</span> and
+<span class="math" data-tex="\(\psi^2_i=(1-\lambda)^{-1}\langle\xi_\varphi,(1-t)t_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)">\(\psi^2_i=(1-\lambda)^{-1}\langle\xi_\varphi,(1-t)t_i\pi_\varphi(\cdot)\xi_\varphi\rangle\)</span> are decompositions of
+<span class="math" data-tex="\(\varphi_1\)">\(\varphi_1\)</span> and <span class="math" data-tex="\(\varphi_2\)">\(\varphi_2\)</span> of the same shape, with <span class="math" data-tex="\(\psi_i=\lambda\psi^1_i+(1-\lambda)\psi^2_i\)">\(\psi_i=\lambda\psi^1_i+(1-\lambda)\psi^2_i\)</span> and the same
+relation for the marginals. By (B4), <span class="math" data-tex="\(\sum_i\eta(\psi_i(1))\le\lambda\sum_i\eta(\psi^1_i(1))+(1-\lambda)\sum_i
+\eta(\psi^2_i(1))+h(\lambda)\)">\(\sum_i\eta(\psi_i(1))\le\lambda\sum_i\eta(\psi^1_i(1))+(1-\lambda)\sum_i
+\eta(\psi^2_i(1))+h(\lambda)\)</span>, and by joint convexity each relative entropy term of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is at most <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> times
+that of <span class="math" data-tex="\(\psi^1\)">\(\psi^1\)</span> plus <span class="math" data-tex="\((1-\lambda)\)">\((1-\lambda)\)</span> times that of <span class="math" data-tex="\(\psi^2\)">\(\psi^2\)</span>. So <span class="math" data-tex="\(\mathcal E_\gamma(\psi)\le\lambda
+H_{\varphi_1}+(1-\lambda)H_{\varphi_2}+h(\lambda)\)">\(\mathcal E_\gamma(\psi)\le\lambda
+H_{\varphi_1}+(1-\lambda)H_{\varphi_2}+h(\lambda)\)</span>.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is abelian, <span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span> is abelian by (B3). If <span class="math" data-tex="\(\lambda\varphi_1=\varphi(z\,\cdot)\)">\(\lambda\varphi_1=\varphi(z\,\cdot)\)</span> with <span class="math" data-tex="\(z\)">\(z\)</span>
+central, then <span class="math" data-tex="\(\pi_\varphi(z)\in\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(z)\in\pi_\varphi(A)&#x27;\)</span> represents <span class="math" data-tex="\(\lambda\varphi_1\)">\(\lambda\varphi_1\)</span>, so <span class="math" data-tex="\(t=\pi_\varphi(z)\)">\(t=\pi_\varphi(z)\)</span> by
+uniqueness, and <span class="math" data-tex="\(t\in\pi_\varphi(A)&#x27;&#x27;\)">\(t\in\pi_\varphi(A)&#x27;&#x27;\)</span> commutes with <span class="math" data-tex="\(\pi_\varphi(A)&#x27;\)">\(\pi_\varphi(A)&#x27;\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypothesis in (b) is exactly what is needed to split an arbitrary decomposition of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> into decompositions
+of <span class="math" data-tex="\(\varphi_1\)">\(\varphi_1\)</span> and <span class="math" data-tex="\(\varphi_2\)">\(\varphi_2\)</span>. Without it the splitting can be impossible:</p>
+<p><strong>Example 7.3.</strong> Let <span class="math" data-tex="\(A=M_2(\mathbb C)\)">\(A=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\varphi=\operatorname{tr}\)">\(\varphi=\operatorname{tr}\)</span> the normalized trace, <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> the diagonal
+matrix units and <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span> the spectral projections of <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>. Then
+<span class="math" data-tex="\(\varphi=\tfrac12\omega_{e_1}+\tfrac12\omega_{e_2}=\tfrac12\omega_{f_1}+\tfrac12\omega_{f_2}\)">\(\varphi=\tfrac12\omega_{e_1}+\tfrac12\omega_{e_2}=\tfrac12\omega_{f_1}+\tfrac12\omega_{f_2}\)</span>, where
+<span class="math" data-tex="\(\omega_e=\operatorname{Tr}(e\,\cdot)\)">\(\omega_e=\operatorname{Tr}(e\,\cdot)\)</span>. Suppose <span class="math" data-tex="\(\psi^1_1+\psi^1_2=\omega_{f_1}\)">\(\psi^1_1+\psi^1_2=\omega_{f_1}\)</span> with
+<span class="math" data-tex="\(\tfrac12\psi^1_k\le\tfrac12\omega_{e_k}\)">\(\tfrac12\psi^1_k\le\tfrac12\omega_{e_k}\)</span> and <span class="math" data-tex="\(\psi^1_k\ge0\)">\(\psi^1_k\ge0\)</span>. The pure state <span class="math" data-tex="\(\omega_{e_k}\)">\(\omega_{e_k}\)</span> dominates only its own
+multiples (as in the proof of Lemma 3.2(c)), so <span class="math" data-tex="\(\psi^1_k=c_k\omega_{e_k}\)">\(\psi^1_k=c_k\omega_{e_k}\)</span> and <span class="math" data-tex="\(\omega_{f_1}=c_1\omega_{e_1}+c_2\omega_{e_2}\)">\(\omega_{f_1}=c_1\omega_{e_1}+c_2\omega_{e_2}\)</span> has a
+diagonal density, which is false. So the decomposition <span class="math" data-tex="\((\tfrac12\omega_{e_1},\tfrac12\omega_{e_2})\)">\((\tfrac12\omega_{e_1},\tfrac12\omega_{e_2})\)</span> of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>
+cannot be written as <span class="math" data-tex="\(\tfrac12\psi^1+\tfrac12\psi^2\)">\(\tfrac12\psi^1+\tfrac12\psi^2\)</span> with decompositions <span class="math" data-tex="\(\psi^1,\psi^2\)">\(\psi^1,\psi^2\)</span> of <span class="math" data-tex="\(\omega_{f_1}\)">\(\omega_{f_1}\)</span>,
+<span class="math" data-tex="\(\omega_{f_2}\)">\(\omega_{f_2}\)</span>: the positive cone of the dual of a noncommutative algebra lacks the Riesz decomposition property. (For
+<span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(\gamma_1=\mathrm{id}\)">\(\gamma_1=\mathrm{id}\)</span> the upper estimate itself holds here: by Exercise 9.3(a) it reads
+<span class="math" data-tex="\(S(\operatorname{tr})\le\tfrac12S(\omega_{f_1})+\tfrac12S(\omega_{f_2})+\log2\)">\(S(\operatorname{tr})\le\tfrac12S(\omega_{f_1})+\tfrac12S(\omega_{f_2})+\log2\)</span>, that is, <span class="math" data-tex="\(\log2\le\log2\)">\(\log2\le\log2\)</span>.)</p>
+<p><em>Reference:</em> [Connes–Narnhofer–Thirring 1987] states the upper estimate of Theorem 7.2(b) without the commutation
+hypothesis; the splitting of decompositions on which it rests fails in general (Example 7.3), so we prove it under the
+hypothesis stated. We have neither a proof nor a counterexample for the upper estimate without it.</p>
+<p><strong>Proposition 7.4 (matrix observations suffice).</strong> <em>(a) For each <span class="math" data-tex="\(j\)">\(j\)</span>, choose by Lemma 5.4 an embedding
+<span class="math" data-tex="\(A_j\subset M_{N_j}(\mathbb C)\)">\(A_j\subset M_{N_j}(\mathbb C)\)</span> and a conditional expectation <span class="math" data-tex="\(E_j:M_{N_j}(\mathbb C)\to A_j\)">\(E_j:M_{N_j}(\mathbb C)\to A_j\)</span>. Then
+<span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)=H_\varphi(\gamma_1\circ E_1,\dots,\gamma_n\circ E_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)=H_\varphi(\gamma_1\circ E_1,\dots,\gamma_n\circ E_n)\)</span>.</em></p>
+<p><em>(b) For <span class="math" data-tex="\(X\in M_N(A)_+\)">\(X\in M_N(A)_+\)</span> with <span class="math" data-tex="\(\sum_iX_{ii}=1\)">\(\sum_iX_{ii}=1\)</span>, let <span class="math" data-tex="\(\gamma_X:M_N(\mathbb C)\to A\)">\(\gamma_X:M_N(\mathbb C)\to A\)</span> be the unital completely
+positive map with <span class="math" data-tex="\(\gamma_X(e_{ij})=X_{ij}\)">\(\gamma_X(e_{ij})=X_{ij}\)</span> (Lemma 5.1). Then <span class="math" data-tex="\(H_\varphi(\gamma_{X_1},\dots,\gamma_{X_n})\)">\(H_\varphi(\gamma_{X_1},\dots,\gamma_{X_n})\)</span> is
+unchanged if some <span class="math" data-tex="\(X_j\)">\(X_j\)</span> is replaced by <span class="math" data-tex="\(X_j\oplus0\in M_{N_j+1}(A)\)">\(X_j\oplus0\in M_{N_j+1}(A)\)</span>. Consequently <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> is a well-defined
+function on the finite subsets of</em>
+<span class="math math-display" data-tex="\[
+\mathcal X(A)=\bigcup_N\Bigl\{X\in M_N(A)_+:\sum_iX_{ii}=1\Bigr\}\Big/\bigl(X\sim X\oplus0\bigr),
+\]">\[
+\mathcal X(A)=\bigcup_N\Bigl\{X\in M_N(A)_+:\sum_iX_{ii}=1\Bigr\}\Big/\bigl(X\sim X\oplus0\bigr),
+\]</span>
+<em>and every value <span class="math" data-tex="\(H_\varphi(\gamma_1,\dots,\gamma_n)\)">\(H_\varphi(\gamma_1,\dots,\gamma_n)\)</span> is a value of this function.</em></p>
+<p><strong>Proof.</strong> (a) is Theorem 7.1(a) with <span class="math" data-tex="\(\theta_j=E_j\)">\(\theta_j=E_j\)</span>, a conditional expectation onto <span class="math" data-tex="\(A_j\)">\(A_j\)</span>. (b) Let
+<span class="math" data-tex="\(c:M_{N+1}\to M_N\)">\(c:M_{N+1}\to M_N\)</span> be the compression to the upper left corner, a unital completely positive map. Then
+<span class="math" data-tex="\(\gamma_{X\oplus0}=\gamma_X\circ c\)">\(\gamma_{X\oplus0}=\gamma_X\circ c\)</span>, because both send <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> to <span class="math" data-tex="\(X_{ij}\)">\(X_{ij}\)</span> for <span class="math" data-tex="\(i,j\le N\)">\(i,j\le N\)</span> and to <span class="math" data-tex="\(0\)">\(0\)</span>
+otherwise. The map <span class="math" data-tex="\(\beta(b)=b\oplus\operatorname{tr}(b)\)">\(\beta(b)=b\oplus\operatorname{tr}(b)\)</span> is a unital completely positive right inverse of <span class="math" data-tex="\(c\)">\(c\)</span>, so
+Theorem 7.1(a) gives equality. Together with Theorem 7.1(c), (a), and Lemma 5.1 (which writes <span class="math" data-tex="\(\gamma_j\circ E_j\)">\(\gamma_j\circ E_j\)</span> as
+some <span class="math" data-tex="\(\gamma_{X_j}\)">\(\gamma_{X_j}\)</span>), this proves the last assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Proposition 5.2, for a nuclear algebra there are many such <span class="math" data-tex="\(X\)">\(X\)</span>; this is the setting in which the dynamical entropy
+is built in the lesson &quot;Dynamical entropy of C*-algebras and von Neumann algebras&quot;.</p>
+<h2 id="8-continuity-in-the-norm-topology">8. Continuity in the norm topology</h2>
+<p>For maps <span class="math" data-tex="\(\gamma,\gamma&#x27;:A_0\to A\)">\(\gamma,\gamma&#x27;:A_0\to A\)</span> put <span class="math" data-tex="\(\|\gamma-\gamma&#x27;\|=\sup_{\|a\|\le1}\|\gamma(a)-\gamma&#x27;(a)\|\)">\(\|\gamma-\gamma&#x27;\|=\sup_{\|a\|\le1}\|\gamma(a)-\gamma&#x27;(a)\|\)</span>. For <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> let
+<span class="math math-display" data-tex="\[
+F_N(\varepsilon)=3\varepsilon\Bigl(\frac12+\log\Bigl(1+\frac N\varepsilon\Bigr)\Bigr)\quad(\varepsilon&gt;0),\qquad
+F_N(0)=0.
+\]">\[
+F_N(\varepsilon)=3\varepsilon\Bigl(\frac12+\log\Bigl(1+\frac N\varepsilon\Bigr)\Bigr)\quad(\varepsilon&gt;0),\qquad
+F_N(0)=0.
+\]</span>
+<span class="math" data-tex="\(F_N\)">\(F_N\)</span> is continuous and increasing on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, since the derivative of <span class="math" data-tex="\(\varepsilon\log(1+N/\varepsilon)\)">\(\varepsilon\log(1+N/\varepsilon)\)</span> is
+<span class="math" data-tex="\(\log(1+u)-u/(1+u)&gt;0\)">\(\log(1+u)-u/(1+u)&gt;0\)</span> with <span class="math" data-tex="\(u=N/\varepsilon\)">\(u=N/\varepsilon\)</span>.</p>
+<p><strong>Lemma 8.1 (continuity of entropy).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional and <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> states with
+<span class="math" data-tex="\(\|\varphi-\psi\|=\varepsilon\)">\(\|\varphi-\psi\|=\varepsilon\)</span>. Then <span class="math" data-tex="\(|S(\varphi)-S(\psi)|\le F_{N(A)}(\varepsilon)\le F_{\dim A}(\varepsilon)\)">\(|S(\varphi)-S(\psi)|\le F_{N(A)}(\varepsilon)\le F_{\dim A}(\varepsilon)\)</span>.</em></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(s\in[0,1]\)">\(s\in[0,1]\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> put <span class="math" data-tex="\(f_t(s)=\frac s{s+t}-\frac s{1+t}=\frac{s(1-s)}{(s+t)(1+t)}\in[0,1]\)">\(f_t(s)=\frac s{s+t}-\frac s{1+t}=\frac{s(1-s)}{(s+t)(1+t)}\in[0,1]\)</span>.
+Then <span class="math" data-tex="\(\int_0^\infty f_t(s)\,dt=s\bigl[\log\frac{s+t}{1+t}\bigr]_0^\infty=\eta(s)\)">\(\int_0^\infty f_t(s)\,dt=s\bigl[\log\frac{s+t}{1+t}\bigr]_0^\infty=\eta(s)\)</span>, so
+<span class="math" data-tex="\(S(\varphi)-S(\psi)=\int_0^\infty\operatorname{Tr}\bigl(f_t(\rho_\varphi)-f_t(\rho_\psi)\bigr)dt\)">\(S(\varphi)-S(\psi)=\int_0^\infty\operatorname{Tr}\bigl(f_t(\rho_\varphi)-f_t(\rho_\psi)\bigr)dt\)</span>, where
+<span class="math" data-tex="\(N=N(A)\)">\(N=N(A)\)</span>. Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. For <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>, both traces lie in <span class="math" data-tex="\([0,N]\)">\([0,N]\)</span>, so the integral over <span class="math" data-tex="\((0,\delta)\)">\((0,\delta)\)</span> is at
+most <span class="math" data-tex="\(\delta N\)">\(\delta N\)</span> in absolute value. For <span class="math" data-tex="\(t\ge\delta\)">\(t\ge\delta\)</span> put <span class="math" data-tex="\(R_\varphi=(\rho_\varphi+t)^{-1}\)">\(R_\varphi=(\rho_\varphi+t)^{-1}\)</span>,
+<span class="math" data-tex="\(R_\psi=(\rho_\psi+t)^{-1}\)">\(R_\psi=(\rho_\psi+t)^{-1}\)</span> and <span class="math" data-tex="\(\Delta=\rho_\varphi-\rho_\psi\)">\(\Delta=\rho_\varphi-\rho_\psi\)</span>, so <span class="math" data-tex="\(\|\Delta\|_1=\varepsilon\)">\(\|\Delta\|_1=\varepsilon\)</span> by (B1). Since
+<span class="math" data-tex="\(f_t(\rho)=1-tR-\rho/(1+t)\)">\(f_t(\rho)=1-tR-\rho/(1+t)\)</span> and <span class="math" data-tex="\(R_\psi-R_\varphi=R_\varphi\Delta R_\psi\)">\(R_\psi-R_\varphi=R_\varphi\Delta R_\psi\)</span>,
+<span class="math math-display" data-tex="\[
+f_t(\rho_\varphi)-f_t(\rho_\psi)=tR_\varphi\Delta R_\psi-\frac\Delta{1+t}
+=\frac{1}{1+t}R_\varphi\bigl(t\Delta-t\rho_\varphi\Delta-t\Delta\rho_\psi-\rho_\varphi\Delta\rho_\psi\bigr)R_\psi,
+\]">\[
+f_t(\rho_\varphi)-f_t(\rho_\psi)=tR_\varphi\Delta R_\psi-\frac\Delta{1+t}
+=\frac{1}{1+t}R_\varphi\bigl(t\Delta-t\rho_\varphi\Delta-t\Delta\rho_\psi-\rho_\varphi\Delta\rho_\psi\bigr)R_\psi,
+\]</span>
+as one checks by writing <span class="math" data-tex="\(\Delta=R_\varphi(\rho_\varphi+t)\Delta(\rho_\psi+t)R_\psi\)">\(\Delta=R_\varphi(\rho_\varphi+t)\Delta(\rho_\psi+t)R_\psi\)</span> and expanding. Now
+<span class="math" data-tex="\(\|R_\varphi\|,\|R_\psi\|\le1/t\)">\(\|R_\varphi\|,\|R_\psi\|\le1/t\)</span>, <span class="math" data-tex="\(\|R_\varphi\rho_\varphi\|,\|\rho_\psi R_\psi\|\le1\)">\(\|R_\varphi\rho_\varphi\|,\|\rho_\psi R_\psi\|\le1\)</span> and, since
+<span class="math" data-tex="\(s/(s+t)\le1/(1+t)\)">\(s/(s+t)\le1/(1+t)\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(\|R_\varphi\rho_\varphi\|,\|\rho_\psi R_\psi\|\le(1+t)^{-1}\)">\(\|R_\varphi\rho_\varphi\|,\|\rho_\psi R_\psi\|\le(1+t)^{-1}\)</span>. Using
+<span class="math" data-tex="\(\|abc\|_1\le\|a\|\|b\|_1\|c\|\)">\(\|abc\|_1\le\|a\|\|b\|_1\|c\|\)</span>, the four terms have trace norm at most <span class="math" data-tex="\(\varepsilon/t\)">\(\varepsilon/t\)</span>, <span class="math" data-tex="\(\varepsilon/t\)">\(\varepsilon/t\)</span>,
+<span class="math" data-tex="\(\varepsilon/t\)">\(\varepsilon/t\)</span> and <span class="math" data-tex="\(\varepsilon/(1+t)^2\)">\(\varepsilon/(1+t)^2\)</span>. Hence, with <span class="math" data-tex="\(|\operatorname{Tr}z|\le\|z\|_1\)">\(|\operatorname{Tr}z|\le\|z\|_1\)</span>,
+<span class="math math-display" data-tex="\[
+|S(\varphi)-S(\psi)|\le\delta N+\varepsilon\int_\delta^\infty\Bigl(\frac3{t(1+t)}+\frac1{(1+t)^3}\Bigr)dt
+\le\delta N+\varepsilon\Bigl(3\log\Bigl(1+\frac1\delta\Bigr)+\frac12\Bigr).
+\]">\[
+|S(\varphi)-S(\psi)|\le\delta N+\varepsilon\int_\delta^\infty\Bigl(\frac3{t(1+t)}+\frac1{(1+t)^3}\Bigr)dt
+\le\delta N+\varepsilon\Bigl(3\log\Bigl(1+\frac1\delta\Bigr)+\frac12\Bigr).
+\]</span>
+For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> take <span class="math" data-tex="\(\delta=\varepsilon/N\)">\(\delta=\varepsilon/N\)</span>. Finally <span class="math" data-tex="\(N(A)\le\dim A\)">\(N(A)\le\dim A\)</span> and <span class="math" data-tex="\(F_N\)">\(F_N\)</span> increases with <span class="math" data-tex="\(N\)">\(N\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 8.2 (continuity of the defect).</strong> <em>Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> a state on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> and
+<span class="math" data-tex="\(\rho,\rho&#x27;:A\to C(X)\)">\(\rho,\rho&#x27;:A\to C(X)\)</span> unital positive maps with <span class="math" data-tex="\(\|\rho-\rho&#x27;\|=\varepsilon\)">\(\|\rho-\rho&#x27;\|=\varepsilon\)</span>. Then
+<span class="math" data-tex="\(|s_\mu(\rho)-s_\mu(\rho&#x27;)|\le2F_{N(A)}(\varepsilon)\)">\(|s_\mu(\rho)-s_\mu(\rho&#x27;)|\le2F_{N(A)}(\varepsilon)\)</span>.</em></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(|s_\mu(\rho)-s_\mu(\rho&#x27;)|=|\varepsilon_\mu(\rho)-\varepsilon_\mu(\rho&#x27;)|\)">\(|s_\mu(\rho)-s_\mu(\rho&#x27;)|=|\varepsilon_\mu(\rho)-\varepsilon_\mu(\rho&#x27;)|\)</span>, and by Theorem 4.5(a)
+<span class="math" data-tex="\(\varepsilon_\mu(\rho)=S(\mu\circ\rho)-\sum_x\mu_xS(\rho_x)\)">\(\varepsilon_\mu(\rho)=S(\mu\circ\rho)-\sum_x\mu_xS(\rho_x)\)</span>. For <span class="math" data-tex="\(\|a\|\le1\)">\(\|a\|\le1\)</span>,
+<span class="math" data-tex="\(|\rho_x(a)-\rho&#x27;_x(a)|\le\|\rho(a)-\rho&#x27;(a)\|\le\varepsilon\)">\(|\rho_x(a)-\rho&#x27;_x(a)|\le\|\rho(a)-\rho&#x27;(a)\|\le\varepsilon\)</span> and likewise for <span class="math" data-tex="\(\mu\circ\rho\)">\(\mu\circ\rho\)</span>, so all the relevant
+states are within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of each other. By Lemma 8.1 and the monotonicity of <span class="math" data-tex="\(F_N\)">\(F_N\)</span>,
+<span class="math" data-tex="\(|\varepsilon_\mu(\rho)-\varepsilon_\mu(\rho&#x27;)|\le F_N(\varepsilon)+\sum_x\mu_xF_N(\varepsilon)=2F_N(\varepsilon)\)">\(|\varepsilon_\mu(\rho)-\varepsilon_\mu(\rho&#x27;)|\le F_N(\varepsilon)+\sum_x\mu_xF_N(\varepsilon)=2F_N(\varepsilon)\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 8.3 (norm continuity of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>).</strong> <em>Let <span class="math" data-tex="\(\gamma_j,\gamma&#x27;_j:A_j\to A\)">\(\gamma_j,\gamma&#x27;_j:A_j\to A\)</span> be unital completely positive,
+<span class="math" data-tex="\(d=\max_j\dim A_j\)">\(d=\max_j\dim A_j\)</span> and <span class="math" data-tex="\(\varepsilon=\max_j\|\gamma_j-\gamma&#x27;_j\|\)">\(\varepsilon=\max_j\|\gamma_j-\gamma&#x27;_j\|\)</span>. Then</em>
+<span class="math math-display" data-tex="\[
+\bigl|H_\varphi(\gamma_1,\dots,\gamma_n)-H_\varphi(\gamma&#x27;_1,\dots,\gamma&#x27;_n)\bigr|\le2nF_d(\varepsilon)=
+6n\varepsilon\Bigl(\frac12+\log\Bigl(1+\frac d\varepsilon\Bigr)\Bigr).
+\]">\[
+\bigl|H_\varphi(\gamma_1,\dots,\gamma_n)-H_\varphi(\gamma&#x27;_1,\dots,\gamma&#x27;_n)\bigr|\le2nF_d(\varepsilon)=
+6n\varepsilon\Bigl(\frac12+\log\Bigl(1+\frac d\varepsilon\Bigr)\Bigr).
+\]</span></p>
+<p><strong>Proof.</strong> Fix an abelian model. The maps <span class="math" data-tex="\(E_j\circ P:A\to B_j\)">\(E_j\circ P:A\to B_j\)</span> are unital positive maps into abelian algebras, whose
+coordinates are states, so they are contractions for the sup norm. Hence <span class="math" data-tex="\(\rho_j=E_jP\gamma_j\)">\(\rho_j=E_jP\gamma_j\)</span> and
+<span class="math" data-tex="\(\rho&#x27;_j=E_jP\gamma&#x27;_j\)">\(\rho&#x27;_j=E_jP\gamma&#x27;_j\)</span> satisfy <span class="math" data-tex="\(\|\rho_j-\rho&#x27;_j\|\le\varepsilon\)">\(\|\rho_j-\rho&#x27;_j\|\le\varepsilon\)</span>, and by Lemma 8.2 (with <span class="math" data-tex="\(N(A_j)\le d\)">\(N(A_j)\le d\)</span> and
+<span class="math" data-tex="\(F_N\)">\(F_N\)</span> increasing in <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>) <span class="math" data-tex="\(|s(\rho_j)-s(\rho&#x27;_j)|\le2F_d(\varepsilon)\)">\(|s(\rho_j)-s(\rho&#x27;_j)|\le2F_d(\varepsilon)\)</span>. The first term of
+(6.1) does not depend on the <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>'s, so the entropies of the model for <span class="math" data-tex="\((\gamma_j)\)">\((\gamma_j)\)</span> and for <span class="math" data-tex="\((\gamma&#x27;_j)\)">\((\gamma&#x27;_j)\)</span>
+differ by at most <span class="math" data-tex="\(2nF_d(\varepsilon)\)">\(2nF_d(\varepsilon)\)</span>. Taking suprema over all models gives
+<span class="math" data-tex="\(H_\varphi(\gamma)\le H_\varphi(\gamma&#x27;)+2nF_d(\varepsilon)\)">\(H_\varphi(\gamma)\le H_\varphi(\gamma&#x27;)+2nF_d(\varepsilon)\)</span> and the symmetric inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span> is uniformly continuous on the set of <span class="math" data-tex="\(n\)">\(n\)</span>-tuples of unital completely positive maps from
+algebras of dimension at most <span class="math" data-tex="\(d\)">\(d\)</span>, and the modulus of continuity does not depend on <span class="math" data-tex="\(A\)">\(A\)</span> or <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>Exercise 9.1 (the classical case).</strong> Let <span class="math" data-tex="\(A=C(Y)\)">\(A=C(Y)\)</span> with <span class="math" data-tex="\(Y\)">\(Y\)</span> finite, <span class="math" data-tex="\(P:A\to C(X)\)">\(P:A\to C(X)\)</span> unital positive and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> a
+state on <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. Put <span class="math" data-tex="\(p(x,y)=\mu_xP_x(\{y\})\)">\(p(x,y)=\mu_xP_x(\{y\})\)</span>, a probability on <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> with random variables <span class="math" data-tex="\(\xi(x,y)=x\)">\(\xi(x,y)=x\)</span>,
+<span class="math" data-tex="\(\zeta(x,y)=y\)">\(\zeta(x,y)=y\)</span>. Show that <span class="math" data-tex="\(\varepsilon_\mu(P)=H(\xi)+H(\zeta)-H(\xi,\zeta)\)">\(\varepsilon_\mu(P)=H(\xi)+H(\zeta)-H(\xi,\zeta)\)</span> (the mutual information) and
+<span class="math" data-tex="\(s_\mu(P)=H(\xi\mid\zeta)\)">\(s_\mu(P)=H(\xi\mid\zeta)\)</span>.</p>
+<p><em>Solution.</em> Here <span class="math" data-tex="\(\varphi=\mu\circ P\)">\(\varphi=\mu\circ P\)</span> is the distribution of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and by (2.2)
+<span class="math" data-tex="\(D(P_x\|\varphi)=\sum_yP_x(\{y\})\log\frac{P_x(\{y\})}{p(\zeta=y)}\)">\(D(P_x\|\varphi)=\sum_yP_x(\{y\})\log\frac{P_x(\{y\})}{p(\zeta=y)}\)</span>. Multiplying by <span class="math" data-tex="\(\mu_x\)">\(\mu_x\)</span> and summing,
+<span class="math" data-tex="\(\varepsilon_\mu(P)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(\xi=x)p(\zeta=y)}=H(\xi)+H(\zeta)-H(\xi,\zeta)\)">\(\varepsilon_\mu(P)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(\xi=x)p(\zeta=y)}=H(\xi)+H(\zeta)-H(\xi,\zeta)\)</span>. Then
+<span class="math" data-tex="\(s_\mu(P)=S(\mu)-\varepsilon_\mu(P)=H(\xi)-\varepsilon_\mu(P)=H(\xi,\zeta)-H(\zeta)=H(\xi\mid\zeta)\)">\(s_\mu(P)=S(\mu)-\varepsilon_\mu(P)=H(\xi)-\varepsilon_\mu(P)=H(\xi,\zeta)-H(\zeta)=H(\xi\mid\zeta)\)</span>. So the
+defect vanishes iff the outcome <span class="math" data-tex="\(x\)">\(x\)</span> is a function of <span class="math" data-tex="\(y\)">\(y\)</span> almost surely, in accordance with Theorem 4.5(b).</p>
+<p><strong>Exercise 9.2.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional. Show that <span class="math" data-tex="\(s_\mu(P)=S(\mu)\)">\(s_\mu(P)=S(\mu)\)</span> iff <span class="math" data-tex="\(P_x=\mu\circ P\)">\(P_x=\mu\circ P\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>
+with <span class="math" data-tex="\(\mu_x&gt;0\)">\(\mu_x&gt;0\)</span>.</p>
+<p><em>Solution.</em> <span class="math" data-tex="\(s_\mu(P)=S(\mu)\)">\(s_\mu(P)=S(\mu)\)</span> iff <span class="math" data-tex="\(\varepsilon_\mu(P)=0\)">\(\varepsilon_\mu(P)=0\)</span> iff <span class="math" data-tex="\(D(P_x\|\mu\circ P)=0\)">\(D(P_x\|\mu\circ P)=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span> with
+<span class="math" data-tex="\(\mu_x&gt;0\)">\(\mu_x&gt;0\)</span>, since each term is <span class="math" data-tex="\(\ge0\)">\(\ge0\)</span>. By Corollary 2.6(a), for states this happens iff <span class="math" data-tex="\(P_x=\mu\circ P\)">\(P_x=\mu\circ P\)</span>.</p>
+<p><strong>Exercise 9.3.</strong> (a) Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite-dimensional. Show that <span class="math" data-tex="\(H_\varphi(\mathrm{id}_A)=S(\varphi)\)">\(H_\varphi(\mathrm{id}_A)=S(\varphi)\)</span>.
+(b) Let <span class="math" data-tex="\(A=M_2(\mathbb C)\)">\(A=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\varphi=\operatorname{tr}\)">\(\varphi=\operatorname{tr}\)</span>, and let <span class="math" data-tex="\(D,D&#x27;\)">\(D,D&#x27;\)</span> be the diagonal subalgebra and the
+subalgebra generated by <span class="math" data-tex="\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>. Show that <span class="math" data-tex="\(H_{\operatorname{tr}}(D,D&#x27;)=\log2\)">\(H_{\operatorname{tr}}(D,D&#x27;)=\log2\)</span>,
+whereas <span class="math" data-tex="\(S(\operatorname{tr}|_D)+S(\operatorname{tr}|_{D&#x27;})=2\log2\)">\(S(\operatorname{tr}|_D)+S(\operatorname{tr}|_{D&#x27;})=2\log2\)</span>.</p>
+<p><em>Solution.</em> (a) By Proposition 6.3, <span class="math" data-tex="\(H_\varphi(\mathrm{id}_A)\le S(\varphi)\)">\(H_\varphi(\mathrm{id}_A)\le S(\varphi)\)</span>. Write <span class="math" data-tex="\(\rho_\varphi=\sum_k\lambda_ke_k\)">\(\rho_\varphi=\sum_k\lambda_ke_k\)</span>
+and take the decomposition <span class="math" data-tex="\(\psi_k=\lambda_k\operatorname{Tr}(e_k\,\cdot)\)">\(\psi_k=\lambda_k\operatorname{Tr}(e_k\,\cdot)\)</span> (shape <span class="math" data-tex="\((I_1)\)">\((I_1)\)</span>, <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, over <span class="math" data-tex="\(k\)">\(k\)</span> with
+<span class="math" data-tex="\(\lambda_k&gt;0\)">\(\lambda_k&gt;0\)</span>). By (2.2), <span class="math" data-tex="\(D(\psi_k\|\varphi)=\lambda_k\log\lambda_k-\lambda_k\log\lambda_k=0\)">\(D(\psi_k\|\varphi)=\lambda_k\log\lambda_k-\lambda_k\log\lambda_k=0\)</span>, because
+<span class="math" data-tex="\(\log\rho_\varphi\)">\(\log\rho_\varphi\)</span> equals <span class="math" data-tex="\(\log\lambda_k\)">\(\log\lambda_k\)</span> on <span class="math" data-tex="\(e_k\)">\(e_k\)</span>. So <span class="math" data-tex="\(\mathcal E(\psi)=\sum_k\eta(\lambda_k)=S(\varphi)\)">\(\mathcal E(\psi)=\sum_k\eta(\lambda_k)=S(\varphi)\)</span>.</p>
+<p>(b) Upper bound: by Theorem 7.1(a) (with <span class="math" data-tex="\(\theta_1,\theta_2\)">\(\theta_1,\theta_2\)</span> the inclusions of <span class="math" data-tex="\(D,D&#x27;\)">\(D,D&#x27;\)</span> and
+<span class="math" data-tex="\(\gamma_1=\gamma_2=\mathrm{id}\)">\(\gamma_1=\gamma_2=\mathrm{id}\)</span>), Theorem 7.1(c) and (a), <span class="math" data-tex="\(H_{\operatorname{tr}}(D,D&#x27;)\le
+H_{\operatorname{tr}}(\mathrm{id},\mathrm{id})=H_{\operatorname{tr}}(\mathrm{id})=S(\operatorname{tr})=\log2\)">\(H_{\operatorname{tr}}(D,D&#x27;)\le
+H_{\operatorname{tr}}(\mathrm{id},\mathrm{id})=H_{\operatorname{tr}}(\mathrm{id})=S(\operatorname{tr})=\log2\)</span>. Lower
+bound: take shape <span class="math" data-tex="\((\{1,2\},\{*\})\)">\((\{1,2\},\{*\})\)</span> and <span class="math" data-tex="\(\psi_{(k,*)}=\tfrac12\operatorname{Tr}(e_k\,\cdot)\)">\(\psi_{(k,*)}=\tfrac12\operatorname{Tr}(e_k\,\cdot)\)</span>. The <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-terms give
+<span class="math" data-tex="\(\log2\)">\(\log2\)</span>. Restricted to <span class="math" data-tex="\(D\cong C(\{1,2\})\)">\(D\cong C(\{1,2\})\)</span>, <span class="math" data-tex="\(\psi_{(k,*)}\)">\(\psi_{(k,*)}\)</span> is <span class="math" data-tex="\(\tfrac12\delta_k\)">\(\tfrac12\delta_k\)</span> and
+<span class="math" data-tex="\(\operatorname{tr}|_D=(\tfrac12,\tfrac12)\)">\(\operatorname{tr}|_D=(\tfrac12,\tfrac12)\)</span>, so <span class="math" data-tex="\(D(\tfrac12\delta_k\|\operatorname{tr}|_D)=\tfrac12\log1=0\)">\(D(\tfrac12\delta_k\|\operatorname{tr}|_D)=\tfrac12\log1=0\)</span>. The only
+marginal for the second coordinate is <span class="math" data-tex="\(\operatorname{tr}\)">\(\operatorname{tr}\)</span>, with relative entropy <span class="math" data-tex="\(0\)">\(0\)</span>. So
+<span class="math" data-tex="\(H_{\operatorname{tr}}(D,D&#x27;)\ge\log2\)">\(H_{\operatorname{tr}}(D,D&#x27;)\ge\log2\)</span>. Finally <span class="math" data-tex="\(S(\operatorname{tr}|_D)=S(\operatorname{tr}|_{D&#x27;})=\log2\)">\(S(\operatorname{tr}|_D)=S(\operatorname{tr}|_{D&#x27;})=\log2\)</span>. The two
+observations are &quot;complementary&quot;: together they carry no more information than the whole algebra.</p>
+<p><strong>Exercise 9.4.</strong> Let <span class="math" data-tex="\(N\subset A\)">\(N\subset A\)</span> be a finite-dimensional unital subalgebra and suppose there is a conditional
+expectation <span class="math" data-tex="\(E:A\to N\)">\(E:A\to N\)</span> with <span class="math" data-tex="\(\varphi\circ E=\varphi\)">\(\varphi\circ E=\varphi\)</span>. Show that <span class="math" data-tex="\(H_\varphi(N)=S(\varphi|_N)\)">\(H_\varphi(N)=S(\varphi|_N)\)</span>.</p>
+<p><em>Solution.</em> By Proposition 6.3, <span class="math" data-tex="\(H_\varphi(N)\le S(\varphi|_N)\)">\(H_\varphi(N)\le S(\varphi|_N)\)</span>. Write the density of <span class="math" data-tex="\(\varphi|_N\)">\(\varphi|_N\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> as
+<span class="math" data-tex="\(\sum_k\lambda_ke_k\)">\(\sum_k\lambda_ke_k\)</span> with minimal projections <span class="math" data-tex="\(e_k\)">\(e_k\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span>, and put <span class="math" data-tex="\(\psi_k=\lambda_k\operatorname{Tr}_N(e_k
+E(\cdot))\)">\(\psi_k=\lambda_k\operatorname{Tr}_N(e_k
+E(\cdot))\)</span>. These are positive functionals on <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(\sum_k\psi_k=\varphi|_N\circ E=\varphi\)">\(\sum_k\psi_k=\varphi|_N\circ E=\varphi\)</span>, and
+<span class="math" data-tex="\(\psi_k|_N=\lambda_k\operatorname{Tr}_N(e_k\,\cdot)\)">\(\psi_k|_N=\lambda_k\operatorname{Tr}_N(e_k\,\cdot)\)</span> because <span class="math" data-tex="\(E\)">\(E\)</span> is the identity on <span class="math" data-tex="\(N\)">\(N\)</span>. The computation of
+Exercise 9.3(a), carried out in <span class="math" data-tex="\(N\)">\(N\)</span>, gives <span class="math" data-tex="\(\mathcal E(\psi)=S(\varphi|_N)\)">\(\mathcal E(\psi)=S(\varphi|_N)\)</span>. For instance, in Exercise 9.3(b)
+the trace-preserving expectations onto <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> give <span class="math" data-tex="\(H_{\operatorname{tr}}(D)=H_{\operatorname{tr}}(D&#x27;)=\log2\)">\(H_{\operatorname{tr}}(D)=H_{\operatorname{tr}}(D&#x27;)=\log2\)</span>,
+while the pair has <span class="math" data-tex="\(H_{\operatorname{tr}}(D,D&#x27;)=\log2\)">\(H_{\operatorname{tr}}(D,D&#x27;)=\log2\)</span> as well.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Connes–Narnhofer–Thirring 1987] A. Connes, H. Narnhofer and W. Thirring, Dynamical entropy of C* algebras and von
+Neumann algebras, Comm. Math. Phys. 112 (1987), no. 4, 691–719. Free at https://alainconnes.org/wp-content/uploads/entropy.pdf</li>
+<li>[Connes–Størmer 1975] A. Connes and E. Størmer, Entropy for automorphisms of II₁ von Neumann algebras, Acta Math.
+134 (1975), no. 3–4, 289–306. Free at https://doi.org/10.1007/BF02392105</li>
+<li>[Connes 1994] A. Connes, <em>Noncommutative geometry</em>, Academic Press, San Diego, CA, 1994. Free at
+https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf</li>
+<li>[Araki 1976] H. Araki, Relative entropy of states of von Neumann algebras, Publ. Res. Inst. Math. Sci. 11
+(1975/76), no. 3, 809–833. https://doi.org/10.2977/prims/1195191148</li>
+<li>[Kosaki 1986] H. Kosaki, Relative entropy of states: a variational expression, J. Operator Theory 16 (1986), no. 2,
+335–348. https://www.theta.ro/jot/archive/1986-016-002/1986-016-002-010.html</li>
+<li>[Takesaki 1972] M. Takesaki, Conditional expectations in von Neumann algebras, J. Functional Analysis 9 (1972),
+306–321. https://doi.org/10.1016/0022-1236(72)90004-3. Free at https://linkinghub.elsevier.com/retrieve/pii/0022123672900043</li>
+<li>[Tomiyama 1957] J. Tomiyama, On the projection of norm one in W*-algebras, Proc. Japan Acad. 33 (1957), 608–612.
+https://doi.org/10.3792/pja/1195524885</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="the-entropy-of-a-trace-preserving-automorphism.html">← The entropy of a trace-preserving automorphism</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="dynamical-entropy-of-c-star-algebras-and-von-neumann-algebras.html">Dynamical entropy of C\*-algebras and von Neumann algebras →</a></span></nav>
+<p class="small source-link"><a href="src/entropy-defect-and-abelian-models.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/entropy-of-automorphisms">Repository</a></nav>
+</footer>
+</body>
+</html>

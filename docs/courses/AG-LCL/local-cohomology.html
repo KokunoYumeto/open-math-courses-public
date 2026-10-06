@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local cohomology · Local cohomology, Lefschetz theorems and purity</title>
+<meta name="description" content="A lesson of the course Local cohomology, Lefschetz theorems and purity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LCL/local-cohomology.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local cohomology, Lefschetz theorems and purity</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="local-cohomology">Local cohomology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it. Public domain (CC0).</em></p>
+<p>A regular function on a punctured affine space can extend across the missing point even when the punctured space is not affine. These are two different questions. Local cohomology separates them: its first two degrees measure extension of sections, while its higher degrees measure cohomology of the open complement. This lesson builds a calculable version of that distinction and shows how depth and dimension control it.</p>
+<p>We assume modules, localization, injective resolutions, associated primes, regular sequences, and the correspondence between modules and quasi-coherent sheaves on affine schemes. The construction of the localization triangle is in Sheaves of modules and their derived categories, Section 13. We use that construction and prove its consequences for schemes. The completion facts used near the end are stated explicitly there.</p>
+<p>Basic references are [Stacks] for the algebraic and sheaf formulations and [Grothendieck–Laszlo] for the classical theory. Our route starts with the open complement and concrete calculations, then proves the algebraic computation and the general bounds. Rings are commutative and Noetherian unless a statement says otherwise. Complexes have cohomological degrees. The depth and support dimension of the zero module are respectively infinity and minus infinity.</p>
+<h2 id="1-what-removal-of-a-closed-set-changes">1. What removal of a closed set changes</h2>
+<p>Let <span class="math" data-tex="\(Z\)">\(Z\)</span> be closed in a scheme <span class="math" data-tex="\(X\)">\(X\)</span>. For a sheaf <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, a section is supported in <span class="math" data-tex="\(Z\)">\(Z\)</span> when its restriction to <span class="math" data-tex="\(X\setminus Z\)">\(X\setminus Z\)</span> is zero. Write <span class="math" data-tex="\(\Gamma_Z(X,\mathcal F)\)">\(\Gamma_Z(X,\mathcal F)\)</span> for these sections and <span class="math" data-tex="\(H^i_Z(X,\mathcal F)\)">\(H^i_Z(X,\mathcal F)\)</span> for the right derived functors. These are groups of global sections with support; the sheaves obtained by deriving the sheaf-valued support functor are different objects.</p>
+<p><strong>Proposition 1.1 (the two exact sequences).</strong> A short exact sequence of sheaves gives a long exact sequence of cohomology with support in <span class="math" data-tex="\(Z\)">\(Z\)</span>. If <span class="math" data-tex="\(U=X\setminus Z\)">\(U=X\setminus Z\)</span>, there is also a natural long exact sequence</p>
+<span class="math math-display" data-tex="\[
+\cdots\longrightarrow H^i_Z(X,\mathcal F)
+\longrightarrow H^i(X,\mathcal F)
+\longrightarrow H^i(U,\mathcal F|_U)
+\longrightarrow H^{i+1}_Z(X,\mathcal F)\longrightarrow\cdots.
+\]">\[
+\cdots\longrightarrow H^i_Z(X,\mathcal F)
+\longrightarrow H^i(X,\mathcal F)
+\longrightarrow H^i(U,\mathcal F|_U)
+\longrightarrow H^{i+1}_Z(X,\mathcal F)\longrightarrow\cdots.
+\]</span>
+<p><strong>Proof.</strong> Resolve a short exact sequence by a termwise split short exact sequence of injective resolutions. Applying the additive support-section functor leaves it termwise exact, so the cohomology sequence of these complexes gives the first assertion. For the second assertion apply derived global sections to the localization triangle from the prerequisite lesson. Restriction to an open set preserves injectives: it is right adjoint to the exact extension-by-zero functor. Thus derived global sections of the open direct image are precisely the cohomology of <span class="math" data-tex="\(U\)">\(U\)</span>. Taking cohomology of the triangle gives the displayed sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (excision).</strong> If <span class="math" data-tex="\(V\subset X\)">\(V\subset X\)</span> is open and contains <span class="math" data-tex="\(Z\)">\(Z\)</span>, restriction gives</p>
+<span class="math math-display" data-tex="\[
+H^i_Z(X,\mathcal F)\cong H^i_Z(V,\mathcal F|_V).
+\]">\[
+H^i_Z(X,\mathcal F)\cong H^i_Z(V,\mathcal F|_V).
+\]</span>
+<p><strong>Proof.</strong> At degree zero a section on <span class="math" data-tex="\(V\)">\(V\)</span> supported in <span class="math" data-tex="\(Z\)">\(Z\)</span> glues with zero on <span class="math" data-tex="\(X\setminus Z\)">\(X\setminus Z\)</span>. They agree on <span class="math" data-tex="\(V\setminus Z\)">\(V\setminus Z\)</span>, and this is an open cover of <span class="math" data-tex="\(X\)">\(X\)</span>. This identifies the support-section functors. Restrict an injective resolution to <span class="math" data-tex="\(V\)">\(V\)</span>; it is still an injective resolution by the adjunction used above. The degree-zero identification is an identification of the resulting complexes, proving the assertion in every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(X=\operatorname{Spec}A\)">\(X=\operatorname{Spec}A\)</span>, <span class="math" data-tex="\(I\subset A\)">\(I\subset A\)</span>, and an <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\Gamma_I(M)=\{m\in M:I^n m=0\text{ for some }n\geq1\},
+\qquad H^i_I(M)=R^i\Gamma_I(M).
+\]">\[
+\Gamma_I(M)=\{m\in M:I^n m=0\text{ for some }n\geq1\},
+\qquad H^i_I(M)=R^i\Gamma_I(M).
+\]</span>
+<p>An element with support in <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span> is killed by a power of <span class="math" data-tex="\(I\)">\(I\)</span>: its cyclic module has annihilator whose radical contains <span class="math" data-tex="\(I\)">\(I\)</span>, and finite generation of <span class="math" data-tex="\(I\)">\(I\)</span> converts that inclusion into a power inclusion. The converse is immediate. This explains the degree-zero connection with the sheaf theory. We will prove the connection in all degrees.</p>
+<h2 id="2-fractions-remember-the-missing-locus">2. Fractions remember the missing locus</h2>
+<p>Choose <span class="math" data-tex="\(I=(f_1,\ldots,f_r)\)">\(I=(f_1,\ldots,f_r)\)</span>. Define the extended Čech complex by</p>
+<span class="math math-display" data-tex="\[
+C_I(M)^0=M,\qquad
+C_I(M)^q=\bigoplus_{i_1&lt;\cdots&lt;i_q}M_{f_{i_1}\cdots f_{i_q}}quad(1\leq q\leq r).
+\]">\[
+C_I(M)^0=M,\qquad
+C_I(M)^q=\bigoplus_{i_1&lt;\cdots&lt;i_q}M_{f_{i_1}\cdots f_{i_q}}quad(1\leq q\leq r).
+\]</span>
+<p>Its differential is alternating restriction: on an ordered subset <span class="math" data-tex="\(J=\{j_0&lt;\cdots&lt;j_q\}\)">\(J=\{j_0&lt;\cdots&lt;j_q\}\)</span>, the next component is <span class="math" data-tex="\(\sum_{a=0}^q(-1)^a s_{J\setminus\{j_a\}}\)">\(\sum_{a=0}^q(-1)^a s_{J\setminus\{j_a\}}\)</span>, localized to that intersection. In degree zero the map is diagonal restriction. The signs make the square of the differential zero because deleting two indices in the two possible orders gives opposite signs. All the sums here are finite, so they can equally be written as products.</p>
+<p>For one variable this is just</p>
+<span class="math math-display" data-tex="\[
+k[t]\longrightarrow k[t,t^{-1}].
+\]">\[
+k[t]\longrightarrow k[t,t^{-1}].
+\]</span>
+<p>Its kernel is zero, and its cokernel has basis <span class="math" data-tex="\(t^{-1},t^{-2},\ldots\)">\(t^{-1},t^{-2},\ldots\)</span>. Removing the origin creates fractions with poles; local cohomology records their classes modulo regular functions.</p>
+<p>For two variables the complex is</p>
+<span class="math math-display" data-tex="\[
+k[x,y]\longrightarrow k[x,x^{-1},y]\oplus k[x,y,y^{-1}]
+\longrightarrow k[x,x^{-1},y,y^{-1}],
+\]">\[
+k[x,y]\longrightarrow k[x,x^{-1},y]\oplus k[x,y,y^{-1}]
+\longrightarrow k[x,x^{-1},y,y^{-1}],
+\]</span>
+<p>where the last map sends <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\(b-a\)">\(b-a\)</span>. The intersection of the two singly localized rings inside the last ring is <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span>. Thus its cohomology in degrees zero and one is zero. In degree two the quotient has basis <span class="math" data-tex="\(x^{-a}y^{-b}\)">\(x^{-a}y^{-b}\)</span>, <span class="math" data-tex="\(a,b\geq1\)">\(a,b\geq1\)</span>: every monomial with at least one nonnegative exponent belongs to one of the two images, and the remaining Laurent monomials are linearly independent modulo their sum.</p>
+<p><strong>Theorem 2.1 (the Čech computation).</strong> For every <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^q(C_I(M))\cong H^q_I(M)
+\cong H^q_{V(I)}(\operatorname{Spec}A,\widetilde M).
+\]">\[
+H^q(C_I(M))\cong H^q_I(M)
+\cong H^q_{V(I)}(\operatorname{Spec}A,\widetilde M).
+\]</span>
+<p>The isomorphisms are natural in <span class="math" data-tex="\(M\)">\(M\)</span>. In particular <span class="math" data-tex="\(H^q_I(M)=0\)">\(H^q_I(M)=0\)</span> for <span class="math" data-tex="\(q&gt;r\)">\(q&gt;r\)</span>.</p>
+<p><strong>Proof.</strong> We first show that this complex computes the derived module functor, including when a generator is a zero divisor. The kernel in degree zero is <span class="math" data-tex="\(\Gamma_I(M)\)">\(\Gamma_I(M)\)</span>: localization kills an element exactly when a power of each generator kills it, and then a sufficiently large power of <span class="math" data-tex="\(I\)">\(I\)</span> kills it.</p>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be injective. For any ideal <span class="math" data-tex="\(K\)">\(K\)</span>, the submodule <span class="math" data-tex="\(\Gamma_K(J)\)">\(\Gamma_K(J)\)</span> is injective. Here is the needed argument. By Baer's criterion it suffices to extend a map <span class="math" data-tex="\(u:\mathfrak b\to\Gamma_K(J)\)">\(u:\mathfrak b\to\Gamma_K(J)\)</span> from an ideal. Since <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> is finite, some <span class="math" data-tex="\(K^n\)">\(K^n\)</span> kills its image. Artin–Rees gives an <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(\mathfrak b\cap K^m\subset K^n\mathfrak b\)">\(\mathfrak b\cap K^m\subset K^n\mathfrak b\)</span>. The map on <span class="math" data-tex="\(\mathfrak b+K^m\)">\(\mathfrak b+K^m\)</span> that equals <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> and zero on <span class="math" data-tex="\(K^m\)">\(K^m\)</span> is well defined. Extend it to <span class="math" data-tex="\(A\)">\(A\)</span> using injectivity of <span class="math" data-tex="\(J\)">\(J\)</span>. The image of <span class="math" data-tex="\(1\)">\(1\)</span> is killed by <span class="math" data-tex="\(K^m\)">\(K^m\)</span>, so the extension takes values in <span class="math" data-tex="\(\Gamma_K(J)\)">\(\Gamma_K(J)\)</span>. This proves the claim.</p>
+<p>Next <span class="math" data-tex="\(J\to J_f\)">\(J\to J_f\)</span> is surjective for any <span class="math" data-tex="\(f\in A\)">\(f\in A\)</span>. The ideals <span class="math" data-tex="\(\operatorname{Ann}(f^b)\)">\(\operatorname{Ann}(f^b)\)</span> stabilize. Given <span class="math" data-tex="\(e/f^a\)">\(e/f^a\)</span>, choose <span class="math" data-tex="\(b\)">\(b\)</span> in that stable range. The map</p>
+<span class="math math-display" data-tex="\[
+(f^{a+b})\longrightarrow J,\qquad r f^{a+b}\longmapsto r f^b e
+\]">\[
+(f^{a+b})\longrightarrow J,\qquad r f^{a+b}\longmapsto r f^b e
+\]</span>
+<p>is well defined, because <span class="math" data-tex="\(\operatorname{Ann}(f^{a+b})=\operatorname{Ann}(f^b)\)">\(\operatorname{Ann}(f^{a+b})=\operatorname{Ann}(f^b)\)</span>. Its extension to <span class="math" data-tex="\(A\)">\(A\)</span> provides <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(f^{a+b}v=f^b e\)">\(f^{a+b}v=f^b e\)</span>. In <span class="math" data-tex="\(J_f\)">\(J_f\)</span>, this says <span class="math" data-tex="\(v=e/f^a\)">\(v=e/f^a\)</span>. Consequently the two-term complex <span class="math" data-tex="\([J\to J_f]\)">\([J\to J_f]\)</span> has only degree-zero cohomology, namely the injective module <span class="math" data-tex="\(\Gamma_{(f)}(J)\)">\(\Gamma_{(f)}(J)\)</span>.</p>
+<p>The full Čech complex is the tensor product of the flat two-term complexes <span class="math" data-tex="\([A\to A_{f_i}]\)">\([A\to A_{f_i}]\)</span>, tensored with <span class="math" data-tex="\(J\)">\(J\)</span>. A bounded complex of flat modules preserves quasi-isomorphisms under tensor product. Replace the first two-term factor applied to <span class="math" data-tex="\(J\)">\(J\)</span> by its degree-zero cohomology, then repeat. At every step that cohomology is injective by the preceding claim. The final complex is quasi-isomorphic to</p>
+<span class="math math-display" data-tex="\[
+\Gamma_{(f_r)}\cdots\Gamma_{(f_1)}(J)=\Gamma_I(J)
+\]">\[
+\Gamma_{(f_r)}\cdots\Gamma_{(f_1)}(J)=\Gamma_I(J)
+\]</span>
+<p>in degree zero. Thus the higher Čech cohomology functors vanish on injectives. Localization is exact, so a short exact sequence of modules gives a short exact sequence of Čech complexes. The associated cohomology functors form an effaceable cohomological functor with degree zero <span class="math" data-tex="\(\Gamma_I\)">\(\Gamma_I\)</span>; resolving by injectives identifies it with <span class="math" data-tex="\(R^q\Gamma_I\)">\(R^q\Gamma_I\)</span>. More concretely, the double complex obtained by applying Čech to an injective resolution computes both complexes by taking its cohomology in the two orders. Its Čech direction is bounded, so the comparison converges in every degree.</p>
+<p>For the sheaf assertion, the distinguished affine opens <span class="math" data-tex="\(D(f_i)\)">\(D(f_i)\)</span> cover <span class="math" data-tex="\(U=X\setminus V(I)\)">\(U=X\setminus V(I)\)</span>. Their finite intersections are affine. Quasi-coherent sheaves have no higher cohomology on these intersections, so the ordinary Čech complex of this cover computes <span class="math" data-tex="\(R\Gamma(U,\widetilde M)\)">\(R\Gamma(U,\widetilde M)\)</span>. The localization triangle identifies supported cohomology with the fibre of <span class="math" data-tex="\(M\to R\Gamma(U,\widetilde M)\)">\(M\to R\Gamma(U,\widetilde M)\)</span>. That fibre is exactly the extended complex above, including its degree-zero term. This proves the natural comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-local-cohomology-noetherian">Tag 0955</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-compute-local-cohomology-noetherian">Tag 0956</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-local-cohomology-is-local-cohomology">Tag 0A6T</a>].</p>
+<p><strong>Corollary 2.2 (the complement formula).</strong> For <span class="math" data-tex="\(U=\operatorname{Spec}A\setminus V(I)\)">\(U=\operatorname{Spec}A\setminus V(I)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^0_I(M)\longrightarrow M
+\longrightarrow\Gamma(U,\widetilde M)
+\longrightarrow H^1_I(M)\longrightarrow0,
+\]">\[
+0\longrightarrow H^0_I(M)\longrightarrow M
+\longrightarrow\Gamma(U,\widetilde M)
+\longrightarrow H^1_I(M)\longrightarrow0,
+\]</span>
+<p>and <span class="math" data-tex="\(H^p(U,\widetilde M)\cong H^{p+1}_I(M)\)">\(H^p(U,\widetilde M)\cong H^{p+1}_I(M)\)</span> for <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>.</p>
+<p><strong>Proof.</strong> In Proposition 1.1 the affine cohomology groups of <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> vanish in positive degree. Substitute Theorem 2.1 and read the resulting exact sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This includes arbitrary quasi-coherent sheaves <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. To see this directly, <span class="math" data-tex="\(j_*\mathcal G\)">\(j_*\mathcal G\)</span> is quasi-coherent: on a distinguished open, compute its sections as the kernel of the first map in the finite Čech complex for the cover by <span class="math" data-tex="\(D(f_i)\)">\(D(f_i)\)</span>; localizing this kernel gives the corresponding kernel on that distinguished open. Hence <span class="math" data-tex="\(j_*\mathcal G=\widetilde N\)">\(j_*\mathcal G=\widetilde N\)</span> for <span class="math" data-tex="\(N=\Gamma(U,\mathcal G)\)">\(N=\Gamma(U,\mathcal G)\)</span>. Its restriction is <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, and Corollary 2.2 applied to <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(H^0_I(N)=H^1_I(N)=0\)">\(H^0_I(N)=H^1_I(N)=0\)</span>. The degree-zero kernel computation also proves the claimed quasi-coherence without a finiteness condition on <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>.</p>
+<h2 id="3-the-polynomial-calculation-in-every-dimension">3. The polynomial calculation in every dimension</h2>
+<p><strong>Proposition 3.1.</strong> Set <span class="math" data-tex="\(A=k[x_1,\ldots,x_n]\)">\(A=k[x_1,\ldots,x_n]\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and <span class="math" data-tex="\(\mathfrak m=(x_1,\ldots,x_n)\)">\(\mathfrak m=(x_1,\ldots,x_n)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+H^i_{\mathfrak m}(A)=0\quad(i\ne n),\qquad
+H^n_{\mathfrak m}(A)=
+\bigoplus_{a_1,\ldots,a_n\geq1}k\,x_1^{-a_1}\cdots x_n^{-a_n}.
+\]">\[
+H^i_{\mathfrak m}(A)=0\quad(i\ne n),\qquad
+H^n_{\mathfrak m}(A)=
+\bigoplus_{a_1,\ldots,a_n\geq1}k\,x_1^{-a_1}\cdots x_n^{-a_n}.
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(x_i\)">\(x_i\)</span> decreases <span class="math" data-tex="\(a_i\)">\(a_i\)</span> by one, with the result zero if <span class="math" data-tex="\(a_i=1\)">\(a_i=1\)</span>.</p>
+<p><strong>Proof.</strong> Over <span class="math" data-tex="\(k\)">\(k\)</span> the Čech complex is the tensor product of the <span class="math" data-tex="\(n\)">\(n\)</span> complexes</p>
+<span class="math math-display" data-tex="\[
+[k[x_i]\longrightarrow k[x_i,x_i^{-1}]].
+\]">\[
+[k[x_i]\longrightarrow k[x_i,x_i^{-1}]].
+\]</span>
+<p>Each has only degree-one cohomology, freely spanned by its strictly negative powers. Complexes of vector spaces split into their cohomology plus contractible summands: choose complements of boundaries in cycles and of cycles in each term. Tensoring a contractible summand with another complex stays contractible. The tensor product therefore has only the tensor product of those degree-one groups, in degree <span class="math" data-tex="\(n\)">\(n\)</span>. Its basis and multiplication are exactly as stated. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the punctured affine space <span class="math" data-tex="\(U=\mathbb A^n_k\setminus\{0\}\)">\(U=\mathbb A^n_k\setminus\{0\}\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\Gamma(U,\mathcal O_U)=k[x_1,\ldots,x_n],\qquad
+H^{n-1}(U,\mathcal O_U)\ne0.
+\]">\[
+\Gamma(U,\mathcal O_U)=k[x_1,\ldots,x_n],\qquad
+H^{n-1}(U,\mathcal O_U)\ne0.
+\]</span>
+<p>It is not affine.</p>
+<p><strong>Proof.</strong> Proposition 3.1 kills both <span class="math" data-tex="\(H^0_{\mathfrak m}\)">\(H^0_{\mathfrak m}\)</span> and <span class="math" data-tex="\(H^1_{\mathfrak m}\)">\(H^1_{\mathfrak m}\)</span>, giving the assertion about sections. It leaves the nonzero top group, which Corollary 2.2 shifts to degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>. An affine scheme has zero higher cohomology for every quasi-coherent sheaf, so this nonzero group rules out affineness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inverse-monomial module is not finite: multiplication by every <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is surjective, so finite generation would contradict Nakayama after localization at <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> (this localization preserves the nonzero module, since it is <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power torsion). Its elements are nevertheless killed by powers of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. The duality lesson will explain its Artinian property.</p>
+<h2 id="4-the-algebra-behind-the-computation">4. The algebra behind the computation</h2>
+<p><strong>Proposition 4.1 (Ext and Koszul descriptions).</strong> There are natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+H^i_I(M)=\varinjlim_n\operatorname{Ext}^i_A(A/I^n,M).
+\]">\[
+H^i_I(M)=\varinjlim_n\operatorname{Ext}^i_A(A/I^n,M).
+\]</span>
+<p>The Čech complex is also the filtered colimit of the cochain Koszul complexes on <span class="math" data-tex="\(f_1^n,\ldots,f_r^n\)">\(f_1^n,\ldots,f_r^n\)</span>, tensored with <span class="math" data-tex="\(M\)">\(M\)</span>. On the component indexed by a subset <span class="math" data-tex="\(J\)">\(J\)</span>, the transition from <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is multiplication by <span class="math" data-tex="\(\prod_{j\in J}f_j\)">\(\prod_{j\in J}f_j\)</span>.</p>
+<p><strong>Proof.</strong> In degree zero the first formula is the union of the submodules killed by <span class="math" data-tex="\(I^n\)">\(I^n\)</span>. Apply it termwise to an injective resolution. Filtered colimits of modules are exact, so they commute with kernels, images and cohomology. This gives the Ext formula.</p>
+<p>For the second formula use the tensor product of the complexes <span class="math" data-tex="\([A\xrightarrow{f_i^n}A]\)">\([A\xrightarrow{f_i^n}A]\)</span> in degrees zero and one. The prescribed transition maps commute with their differentials. In a component <span class="math" data-tex="\(J\)">\(J\)</span>, send an element <span class="math" data-tex="\(m\)">\(m\)</span> at stage <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(m/(\prod_{j\in J}f_j)^n\)">\(m/(\prod_{j\in J}f_j)^n\)</span>. Its colimit is <span class="math" data-tex="\(M_{\prod_{j\in J}f_j}\)">\(M_{\prod_{j\in J}f_j}\)</span>, while the empty component stays <span class="math" data-tex="\(M\)">\(M\)</span>. These identifications convert the Koszul differential into alternating localization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In each Koszul complex multiplication by <span class="math" data-tex="\(f_i^n\)">\(f_i^n\)</span> is null-homotopic: contraction with the <span class="math" data-tex="\(i\)">\(i\)</span>-th basis vector gives a homotopy whose commutator with the differential is that multiplication. Thus each class in its cohomology is killed by every <span class="math" data-tex="\(f_i^n\)">\(f_i^n\)</span>, and therefore by <span class="math" data-tex="\(I^{r(n-1)+1}\)">\(I^{r(n-1)+1}\)</span>. Proposition 4.1 shows that every local-cohomology module is <span class="math" data-tex="\(I\)">\(I\)</span>-power torsion. This fact is useful even though these modules need not be finite.</p>
+<p><strong>Proposition 4.2 (independence and change of rings).</strong> Local cohomology depends only on <span class="math" data-tex="\(\sqrt I\)">\(\sqrt I\)</span>, commutes with filtered colimits of modules, and satisfies</p>
+<span class="math math-display" data-tex="\[
+H^i_I(M)\otimes_A B\cong H^i_{IB}(M\otimes_A B)
+\]">\[
+H^i_I(M)\otimes_A B\cong H^i_{IB}(M\otimes_A B)
+\]</span>
+<p>for a flat ring map <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>. If <span class="math" data-tex="\(N\)">\(N\)</span> is a <span class="math" data-tex="\(B\)">\(B\)</span>-module, its local cohomology for <span class="math" data-tex="\(IB\)">\(IB\)</span>, regarded as an <span class="math" data-tex="\(A\)">\(A\)</span>-module, is <span class="math" data-tex="\(H^i_I(N)\)">\(H^i_I(N)\)</span>, without a flatness hypothesis.</p>
+<p><strong>Proof.</strong> If two finitely generated ideals have the same radical, powers of each are contained in the other. Their torsion functors are then identical on every module, so their derived functors are identical. Localization and finite direct sums commute with filtered colimits, and the colimit functor is exact; apply this to the Čech complex. Flat tensor product is exact and takes that complex to the Čech complex of the images of the generators in <span class="math" data-tex="\(B\)">\(B\)</span>, proving flat base change. For the last assertion the two Čech complexes are already identical after forgetting the <span class="math" data-tex="\(B\)">\(B\)</span>-module structure, because localization at an element of <span class="math" data-tex="\(A\)">\(A\)</span> is localization at its image in <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For complexes the same calculation gives derived base change</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_I(K)\otimes_A^{\mathbf L}B
+\cong R\Gamma_{IB}(K\otimes_A^{\mathbf L}B).
+\]">\[
+R\Gamma_I(K)\otimes_A^{\mathbf L}B
+\cong R\Gamma_{IB}(K\otimes_A^{\mathbf L}B).
+\]</span>
+<p>The finite Čech complex has flat terms; taking a flat resolution of <span class="math" data-tex="\(K\)">\(K\)</span> therefore proves this formula even when <span class="math" data-tex="\(B\)">\(B\)</span> is not flat. Ordinary cohomology base change in Proposition 4.2 used flatness to commute tensor product with cohomology.</p>
+<h2 id="5-depth-is-the-first-obstruction">5. Depth is the first obstruction</h2>
+<p>For finite <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(IM\ne M\)">\(IM\ne M\)</span>, let <span class="math" data-tex="\(\operatorname{depth}_I M\)">\(\operatorname{depth}_I M\)</span> be the maximal length of an <span class="math" data-tex="\(M\)">\(M\)</span>-regular sequence in <span class="math" data-tex="\(I\)">\(I\)</span>. A regular sequence acts injectively successively on the quotients, and its final quotient is required to be nonzero. We use the prerequisite facts that this length is finite, that quotienting by a regular element lowers it by one, and that replacing the members of a regular sequence by positive powers preserves regularity.</p>
+<p><strong>Theorem 5.1 (depth detection).</strong> Under these assumptions,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{depth}_I M
+=\min\{i:\operatorname{Ext}^i_A(A/I,M)\ne0\}
+=\min\{i:H^i_I(M)\ne0\}.
+\]">\[
+\operatorname{depth}_I M
+=\min\{i:\operatorname{Ext}^i_A(A/I,M)\ne0\}
+=\min\{i:H^i_I(M)\ne0\}.
+\]</span>
+<p>Also <span class="math" data-tex="\(\operatorname{Ext}^i_A(N,M)=0\)">\(\operatorname{Ext}^i_A(N,M)=0\)</span> for <span class="math" data-tex="\(i&lt;\operatorname{depth}_I M\)">\(i&lt;\operatorname{depth}_I M\)</span> when <span class="math" data-tex="\(N\)">\(N\)</span> is finite and killed by a power of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(t=\operatorname{depth}_I M\)">\(t=\operatorname{depth}_I M\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, every element of <span class="math" data-tex="\(I\)">\(I\)</span> is a zero divisor on <span class="math" data-tex="\(M\)">\(M\)</span>. The zero divisors form the union of its finitely many associated primes. Prime avoidance puts <span class="math" data-tex="\(I\)">\(I\)</span> in one associated prime <span class="math" data-tex="\(\mathfrak p=\operatorname{Ann}(m)\)">\(\mathfrak p=\operatorname{Ann}(m)\)</span>, where <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>. Thus <span class="math" data-tex="\(m\)">\(m\)</span> gives a nonzero map <span class="math" data-tex="\(A/I\to M\)">\(A/I\to M\)</span>.</p>
+<p>If <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, choose a regular <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span> and put <span class="math" data-tex="\(\overline M=M/fM\)">\(\overline M=M/fM\)</span>. Apply <span class="math" data-tex="\(\operatorname{Ext}_A(A/I,-)\)">\(\operatorname{Ext}_A(A/I,-)\)</span> to</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M\xrightarrow{f}M\longrightarrow\overline M\longrightarrow0.
+\]">\[
+0\longrightarrow M\xrightarrow{f}M\longrightarrow\overline M\longrightarrow0.
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> on these Ext groups is zero: the two module actions agree, and <span class="math" data-tex="\(f\)">\(f\)</span> kills the first argument <span class="math" data-tex="\(A/I\)">\(A/I\)</span>. This agreement follows by lifting its zero multiplication map to a projective resolution; that lift is null-homotopic. Hence the long exact sequence gives</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\operatorname{Ext}^i_A(A/I,M)
+\longrightarrow\operatorname{Ext}^i_A(A/I,\overline M)
+\longrightarrow\operatorname{Ext}^{i+1}_A(A/I,M)\longrightarrow0.
+\]">\[
+0\longrightarrow\operatorname{Ext}^i_A(A/I,M)
+\longrightarrow\operatorname{Ext}^i_A(A/I,\overline M)
+\longrightarrow\operatorname{Ext}^{i+1}_A(A/I,M)\longrightarrow0.
+\]</span>
+<p>Induction, together with <span class="math" data-tex="\(\operatorname{Hom}(A/I,M)=0\)">\(\operatorname{Hom}(A/I,M)=0\)</span>, shows vanishing below <span class="math" data-tex="\(t\)">\(t\)</span> and nonvanishing in degree <span class="math" data-tex="\(t\)">\(t\)</span>. The initial Hom vanishing follows because an <span class="math" data-tex="\(I\)">\(I\)</span>-annihilated element would be killed by the injective multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>The depth for <span class="math" data-tex="\(I^n\)">\(I^n\)</span> is also <span class="math" data-tex="\(t\)">\(t\)</span>. Inclusion <span class="math" data-tex="\(I^n\subset I\)">\(I^n\subset I\)</span> gives one inequality; raising a maximal regular sequence in <span class="math" data-tex="\(I\)">\(I\)</span> to its <span class="math" data-tex="\(n\)">\(n\)</span>-th powers gives the other. Thus <span class="math" data-tex="\(\operatorname{Ext}^i(A/I^n,M)=0\)">\(\operatorname{Ext}^i(A/I^n,M)=0\)</span> for <span class="math" data-tex="\(i&lt;t\)">\(i&lt;t\)</span>. To obtain the asserted vanishing for an arbitrary finite <span class="math" data-tex="\(I\)">\(I\)</span>-power-torsion module <span class="math" data-tex="\(N\)">\(N\)</span>, choose a presentation</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow N&#x27;\longrightarrow(A/I^n)^a\longrightarrow N\longrightarrow0.
+\]">\[
+0\longrightarrow N&#x27;\longrightarrow(A/I^n)^a\longrightarrow N\longrightarrow0.
+\]</span>
+<p>The case <span class="math" data-tex="\(i=0\)">\(i=0\)</span> follows by embedding Hom into the Hom of the middle term. For <span class="math" data-tex="\(0&lt;i&lt;t\)">\(0&lt;i&lt;t\)</span>, the Ext sequence expresses <span class="math" data-tex="\(\operatorname{Ext}^i(N,M)\)">\(\operatorname{Ext}^i(N,M)\)</span> as a quotient of <span class="math" data-tex="\(\operatorname{Ext}^{i-1}(N&#x27;,M)\)">\(\operatorname{Ext}^{i-1}(N&#x27;,M)\)</span>, because <span class="math" data-tex="\(\operatorname{Ext}^i((A/I^n)^a,M)=0\)">\(\operatorname{Ext}^i((A/I^n)^a,M)=0\)</span>. Induction on <span class="math" data-tex="\(i\)">\(i\)</span>, simultaneously for all such modules, proves the vanishing.</p>
+<p>Proposition 4.1 now gives <span class="math" data-tex="\(H^i_I(M)=0\)">\(H^i_I(M)=0\)</span> for <span class="math" data-tex="\(i&lt;t\)">\(i&lt;t\)</span>. For each <span class="math" data-tex="\(n\)">\(n\)</span>, apply Ext to</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow I/I^n\longrightarrow A/I^n\longrightarrow A/I\longrightarrow0.
+\]">\[
+0\longrightarrow I/I^n\longrightarrow A/I^n\longrightarrow A/I\longrightarrow0.
+\]</span>
+<p>The preceding vanishing makes <span class="math" data-tex="\(\operatorname{Ext}^t(A/I,M)\to\operatorname{Ext}^t(A/I^n,M)\)">\(\operatorname{Ext}^t(A/I,M)\to\operatorname{Ext}^t(A/I^n,M)\)</span> injective; for <span class="math" data-tex="\(t=0\)">\(t=0\)</span> injectivity follows directly from left exactness of Hom. These maps are compatible with the direct system. Every nonzero element at stage one therefore survives in its colimit, so <span class="math" data-tex="\(H^t_I(M)\ne0\)">\(H^t_I(M)\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dualizing.html#dualizing-lemma-depth">Tag 0AVZ</a>].</p>
+<p><strong>Corollary 5.2 (Hartogs extension).</strong> If <span class="math" data-tex="\(\operatorname{depth}_I M\geq2\)">\(\operatorname{depth}_I M\geq2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+M\xrightarrow{\sim}\Gamma(\operatorname{Spec}A\setminus V(I),\widetilde M).
+\]">\[
+M\xrightarrow{\sim}\Gamma(\operatorname{Spec}A\setminus V(I),\widetilde M).
+\]</span>
+<p><strong>Proof.</strong> Theorem 5.1 kills the two outside groups in the five-term sequence of Corollary 2.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.3 (two components meet too thinly).</strong> Let</p>
+<span class="math math-display" data-tex="\[
+S=k[x,y,z,w]_{(x,y,z,w)},\quad
+P=(x,y),\quad Q=(z,w),\quad A=S/(P\cap Q).
+\]">\[
+S=k[x,y,z,w]_{(x,y,z,w)},\quad
+P=(x,y),\quad Q=(z,w),\quad A=S/(P\cap Q).
+\]</span>
+<p>There is an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow A\longrightarrow S/P\oplus S/Q
+\xrightarrow{(a,b)\mapsto a(0)-b(0)} k\longrightarrow0.
+\]">\[
+0\longrightarrow A\longrightarrow S/P\oplus S/Q
+\xrightarrow{(a,b)\mapsto a(0)-b(0)} k\longrightarrow0.
+\]</span>
+<p>Both plane rings are regular local of dimension two. Theorem 5.1 kills their supported cohomology in degrees zero and one; <span class="math" data-tex="\(k\)">\(k\)</span> is entirely supported at the closed point and has only degree-zero local cohomology. The long exact sequence therefore gives</p>
+<span class="math math-display" data-tex="\[
+H^0_{\mathfrak m}(A)=0,\qquad H^1_{\mathfrak m}(A)\cong k.
+\]">\[
+H^0_{\mathfrak m}(A)=0,\qquad H^1_{\mathfrak m}(A)\cong k.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\dim A=2\)">\(\dim A=2\)</span> and <span class="math" data-tex="\(\operatorname{depth}A=1\)">\(\operatorname{depth}A=1\)</span>. Geometrically the punctured spectrum is the disjoint union of the two punctured planes. Each plane has all its functions extending across its origin, so the open sections are <span class="math" data-tex="\(S/P\oplus S/Q\)">\(S/P\oplus S/Q\)</span>; the quotient by <span class="math" data-tex="\(A\)">\(A\)</span> records the two independently chosen constant terms. This is exactly the degree-one defect above.</p>
+<h2 id="6-dimension-puts-an-upper-boundary-on-the-obstruction">6. Dimension puts an upper boundary on the obstruction</h2>
+<p><strong>Theorem 6.1 (Grothendieck vanishing).</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> is finite, then</p>
+<span class="math math-display" data-tex="\[
+H^i_I(M)=0\qquad\text{for }i&gt;\dim\operatorname{Supp}M.
+\]">\[
+H^i_I(M)=0\qquad\text{for }i&gt;\dim\operatorname{Supp}M.
+\]</span>
+<p><strong>Proof.</strong> When the support dimension is infinite there is nothing to prove. Otherwise a finite prime filtration of <span class="math" data-tex="\(M\)">\(M\)</span>, and the long exact sequences, reduce the assertion to <span class="math" data-tex="\(M=A/\mathfrak p\)">\(M=A/\mathfrak p\)</span>. By the change-of-rings assertion of Proposition 4.2 we may therefore assume that <span class="math" data-tex="\(A\)">\(A\)</span> is a domain of finite dimension <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(M=A\)">\(M=A\)</span>. We prove these domain cases, and hence the finite-module cases, by induction on <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>If <span class="math" data-tex="\(I=0\)">\(I=0\)</span>, the support functor is the identity and the assertion is immediate. Otherwise choose <span class="math" data-tex="\(0\ne f\in I\)">\(0\ne f\in I\)</span>. All supported cohomology of <span class="math" data-tex="\(A_f\)">\(A_f\)</span> is zero: its Čech complex has a contracting factor because <span class="math" data-tex="\(f\)">\(f\)</span> is a unit. Since <span class="math" data-tex="\(A\)">\(A\)</span> is a domain, there is a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow A\longrightarrow A_f\longrightarrow A_f/A\longrightarrow0.
+\]">\[
+0\longrightarrow A\longrightarrow A_f\longrightarrow A_f/A\longrightarrow0.
+\]</span>
+<p>The quotient is the filtered colimit of <span class="math" data-tex="\(A/f^nA\)">\(A/f^nA\)</span>, with transition multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>; the map from stage <span class="math" data-tex="\(n\)">\(n\)</span> sends <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a/f^n\)">\(a/f^n\)</span>. The support of each quotient has dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>: a prime chain containing <span class="math" data-tex="\(f\)">\(f\)</span> can be lengthened at the bottom by the zero prime of the domain. By induction and commutation with colimits, <span class="math" data-tex="\(H^j_I(A_f/A)=0\)">\(H^j_I(A_f/A)=0\)</span> for <span class="math" data-tex="\(j&gt;d-1\)">\(j&gt;d-1\)</span>. The long exact sequence identifies <span class="math" data-tex="\(H^i_I(A)\)">\(H^i_I(A)\)</span> with <span class="math" data-tex="\(H^{i-1}_I(A_f/A)\)">\(H^{i-1}_I(A_f/A)\)</span> for <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>. It therefore vanishes for <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, a nonzero <span class="math" data-tex="\(f\)">\(f\)</span> is a unit and the quotient is zero, giving the same argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-dimension">Tag 0DXC</a>].</p>
+<p>We next prove nonvanishing without using local duality. The needed structural input is Cohen's theorem: a complete Noetherian local ring has a coefficient field in equal characteristic, or a map from a complete Cohen discrete valuation ring in mixed characteristic, inducing its residue field [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-cohen-structure-theorem">Tag 032A</a>]. We also use these commutative-algebra prerequisites: completion is faithfully flat and preserves dimension; complete local rings are universally catenary; a nonzero principal ideal in a complete local domain of dimension <span class="math" data-tex="\(d\)">\(d\)</span> has quotient dimension <span class="math" data-tex="\(d-1\)">\(d-1\)</span>; and a regular local ring has a regular system of parameters. These facts are independent of local-cohomology nonvanishing.</p>
+<p><strong>Lemma 6.2 (a parameter subring).</strong> A complete local domain <span class="math" data-tex="\(B\)">\(B\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span> is a finite torsion-free module over a complete regular local subring <span class="math" data-tex="\(R\)">\(R\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(\sqrt{\mathfrak m_RB}=\mathfrak m_B\)">\(\sqrt{\mathfrak m_RB}=\mathfrak m_B\)</span>.</p>
+<p><strong>Proof.</strong> In equal characteristic choose a coefficient field <span class="math" data-tex="\(k\)">\(k\)</span> and a system of parameters <span class="math" data-tex="\(b_1,\ldots,b_d\)">\(b_1,\ldots,b_d\)</span>. Map <span class="math" data-tex="\(R=k[[t_1,\ldots,t_d]]\)">\(R=k[[t_1,\ldots,t_d]]\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(t_i\mapsto b_i\)">\(t_i\mapsto b_i\)</span>. In mixed characteristic the coefficient ring <span class="math" data-tex="\(C\)">\(C\)</span> injects into the domain <span class="math" data-tex="\(B\)">\(B\)</span>, since its uniformizer <span class="math" data-tex="\(p\)">\(p\)</span> maps to a nonzero element. Extend <span class="math" data-tex="\(p\)">\(p\)</span> to a system of parameters <span class="math" data-tex="\(p,b_2,\ldots,b_d\)">\(p,b_2,\ldots,b_d\)</span>, using <span class="math" data-tex="\(\dim B/pB=d-1\)">\(\dim B/pB=d-1\)</span>. Map <span class="math" data-tex="\(R=C[[t_2,\ldots,t_d]]\)">\(R=C[[t_2,\ldots,t_d]]\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> by the analogous rule.</p>
+<p>In either case <span class="math" data-tex="\(B/\mathfrak m_RB\)">\(B/\mathfrak m_RB\)</span> is finite dimensional over the common residue field. Lift a basis to finitely many elements <span class="math" data-tex="\(v_1,\ldots,v_a\)">\(v_1,\ldots,v_a\)</span>. Every element of <span class="math" data-tex="\(B\)">\(B\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear combination of these modulo <span class="math" data-tex="\(\mathfrak m_RB\)">\(\mathfrak m_RB\)</span>. Apply that assertion recursively to the remainders: after <span class="math" data-tex="\(n\)">\(n\)</span> steps it is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear combination modulo <span class="math" data-tex="\(\mathfrak m_R^n B\)">\(\mathfrak m_R^n B\)</span>, with successive changes in the coefficients in <span class="math" data-tex="\(\mathfrak m_R^n\)">\(\mathfrak m_R^n\)</span>. The coefficients converge in <span class="math" data-tex="\(R\)">\(R\)</span>; the remainders tend to zero in <span class="math" data-tex="\(B\)">\(B\)</span> because its parameter-ideal and maximal-ideal topologies agree. Thus the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> generate <span class="math" data-tex="\(B\)">\(B\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The finite map makes <span class="math" data-tex="\(B\)">\(B\)</span> integral over the image of <span class="math" data-tex="\(R\)">\(R\)</span>, so that image has dimension <span class="math" data-tex="\(d\)">\(d\)</span>. A nonzero kernel in the domain <span class="math" data-tex="\(R\)">\(R\)</span> would lower its dimension: a chain of primes containing that kernel can be lengthened by <span class="math" data-tex="\((0)\)">\((0)\)</span>. Hence the kernel is zero. Since <span class="math" data-tex="\(B\)">\(B\)</span> is a domain, it is torsion-free over this subring. The radical assertion follows from the choice of parameters. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.3 (Grothendieck nonvanishing).</strong> For a Noetherian local ring <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^d_{\mathfrak m}(A)\ne0.
+\]">\[
+H^d_{\mathfrak m}(A)\ne0.
+\]</span>
+<p><strong>Proof.</strong> By flat base change and faithful flatness it suffices to prove the assertion after completion. Choose a minimal prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of the completed ring with <span class="math" data-tex="\(\dim(A/\mathfrak p)=d\)">\(\dim(A/\mathfrak p)=d\)</span>, and put <span class="math" data-tex="\(B=A/\mathfrak p\)">\(B=A/\mathfrak p\)</span>. Theorem 6.1 applied to <span class="math" data-tex="\(\mathfrak p\subset A\)">\(\mathfrak p\subset A\)</span> kills <span class="math" data-tex="\(H^{d+1}_{\mathfrak m}(\mathfrak p)\)">\(H^{d+1}_{\mathfrak m}(\mathfrak p)\)</span>, so the map <span class="math" data-tex="\(H^d_{\mathfrak m}(A)\to H^d_{\mathfrak m_B}(B)\)">\(H^d_{\mathfrak m}(A)\to H^d_{\mathfrak m_B}(B)\)</span> is surjective. We may therefore prove nonvanishing for the complete domain <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Use Lemma 6.2. As a finite torsion-free <span class="math" data-tex="\(R\)">\(R\)</span>-module, <span class="math" data-tex="\(B\)">\(B\)</span> embeds in <span class="math" data-tex="\(R^a\)">\(R^a\)</span>: choose a basis of <span class="math" data-tex="\(B\otimes_R\operatorname{Frac}(R)\)">\(B\otimes_R\operatorname{Frac}(R)\)</span> and multiply its coordinate maps by a common nonzero denominator. The cokernel <span class="math" data-tex="\(T\)">\(T\)</span> is finite torsion, so its support has dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. The exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow B\longrightarrow R^a\longrightarrow T\longrightarrow0
+\]">\[
+0\longrightarrow B\longrightarrow R^a\longrightarrow T\longrightarrow0
+\]</span>
+<p>and Theorem 6.1 give a surjection <span class="math" data-tex="\(H^d_{\mathfrak m_R}(B)\to H^d_{\mathfrak m_R}(R)^a\)">\(H^d_{\mathfrak m_R}(B)\to H^d_{\mathfrak m_R}(R)^a\)</span>. The left side equals <span class="math" data-tex="\(H^d_{\mathfrak m_B}(B)\)">\(H^d_{\mathfrak m_B}(B)\)</span> by Proposition 4.2 and the radical statement of the lemma.</p>
+<p>It remains to check <span class="math" data-tex="\(H^d_{\mathfrak m_R}(R)\ne0\)">\(H^d_{\mathfrak m_R}(R)\ne0\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span> it is <span class="math" data-tex="\(R\)">\(R\)</span>. Otherwise let <span class="math" data-tex="\(t_1,\ldots,t_d\)">\(t_1,\ldots,t_d\)</span> be a regular system of parameters. The Koszul calculation in Proposition 4.1 identifies the top group with</p>
+<span class="math math-display" data-tex="\[
+\varinjlim_n R/(t_1^n,\ldots,t_d^n),
+\]">\[
+\varinjlim_n R/(t_1^n,\ldots,t_d^n),
+\]</span>
+<p>where the transition is multiplication by <span class="math" data-tex="\(t_1\cdots t_d\)">\(t_1\cdots t_d\)</span>. These maps are injective. Indeed, regular sequences in a local ring may be permuted, and their powers remain regular. Taking successive colons by <span class="math" data-tex="\(t_1,\ldots,t_d\)">\(t_1,\ldots,t_d\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+((t_1^{n+1},\ldots,t_d^{n+1}):t_1\cdots t_d)
+=(t_1^n,\ldots,t_d^n).
+\]">\[
+((t_1^{n+1},\ldots,t_d^{n+1}):t_1\cdots t_d)
+=(t_1^n,\ldots,t_d^n).
+\]</span>
+<p>For each single colon, reduce modulo the powers of the other parameters; its remaining parameter is a nonzero divisor, so <span class="math" data-tex="\((t_i^{n+1}):t_i=(t_i^n)\)">\((t_i^{n+1}):t_i=(t_i^n)\)</span> in that quotient. This proves the displayed identity. The class of <span class="math" data-tex="\(1\)">\(1\)</span> at the first stage is nonzero and survives, proving nonvanishing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-maximal">Tag 0DXE</a>].</p>
+<p><strong>Corollary 6.4.</strong> If <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> is a finite Cohen–Macaulay module over a local ring, of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, then its local cohomology supported at the maximal ideal vanishes outside degree <span class="math" data-tex="\(d\)">\(d\)</span>, and is nonzero in degree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> Depth equals dimension. Theorem 5.1 gives vanishing below <span class="math" data-tex="\(d\)">\(d\)</span> and nonvanishing at <span class="math" data-tex="\(d\)">\(d\)</span>; Theorem 6.1 gives vanishing above it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The support condition matters. For example, the regular local ring <span class="math" data-tex="\(k[x,y]_{(x,y)}\)">\(k[x,y]_{(x,y)}\)</span> is Cohen–Macaulay, but local cohomology supported at <span class="math" data-tex="\((x)\)">\((x)\)</span> occurs in degree one, not its dimension two.</p>
+<h2 id="7-completion-changes-coefficients-not-supported-elements">7. Completion changes coefficients, not supported elements</h2>
+<p>For a Noetherian local ring, its completion <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> is flat and <span class="math" data-tex="\(A/\mathfrak m^n=\widehat A/\mathfrak m^n\widehat A\)">\(A/\mathfrak m^n=\widehat A/\mathfrak m^n\widehat A\)</span>. An <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power-torsion module <span class="math" data-tex="\(N\)">\(N\)</span> therefore has a canonical <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-action: to multiply an element killed by <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span>, reduce the coefficient modulo <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span>. Independence of <span class="math" data-tex="\(n\)">\(n\)</span> follows by reducing to a common larger power. Moreover,</p>
+<span class="math math-display" data-tex="\[
+N\otimes_A\widehat A\cong N.
+\]">\[
+N\otimes_A\widehat A\cong N.
+\]</span>
+<p>To prove this, write <span class="math" data-tex="\(N\)">\(N\)</span> as the union of <span class="math" data-tex="\(N[\mathfrak m^n]\)">\(N[\mathfrak m^n]\)</span>. Each submodule has tensor product with <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> equal to itself because the two quotient rings agree, and tensor product commutes with this union. Hence flat base change gives</p>
+<span class="math math-display" data-tex="\[
+H^i_{\mathfrak m\widehat A}(M\otimes_A\widehat A)
+\cong H^i_{\mathfrak m}(M).
+\]">\[
+H^i_{\mathfrak m\widehat A}(M\otimes_A\widehat A)
+\cong H^i_{\mathfrak m}(M).
+\]</span>
+<p>This is an equality after the canonical coefficient extension just described, not an assertion that <span class="math" data-tex="\(M\)">\(M\)</span> itself is unchanged by completion. The argument applies to all maximal-ideal-power-torsion modules, including infinite ones.</p>
+<h2 id="8-exercises-and-solutions">8. Exercises and solutions</h2>
+<p><strong>Exercise 8.1 (first computations; introductory).</strong> Compute local cohomology of <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> supported at <span class="math" data-tex="\((t)\)">\((t)\)</span> and of <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span> supported at <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>. In the second case compute the effect of multiplication by <span class="math" data-tex="\(xy\)">\(xy\)</span>.</p>
+<p><strong>Solution.</strong> In the first case the only nonzero group is <span class="math" data-tex="\(H^1=k[t,t^{-1}]/k[t]\)">\(H^1=k[t,t^{-1}]/k[t]\)</span>. In the second it is <span class="math" data-tex="\(H^2=\bigoplus_{a,b\geq1}k x^{-a}y^{-b}\)">\(H^2=\bigoplus_{a,b\geq1}k x^{-a}y^{-b}\)</span>, by the complexes in Section 2. Multiplication by <span class="math" data-tex="\(xy\)">\(xy\)</span> sends <span class="math" data-tex="\(x^{-a}y^{-b}\)">\(x^{-a}y^{-b}\)</span> to <span class="math" data-tex="\(x^{-(a-1)}y^{-(b-1)}\)">\(x^{-(a-1)}y^{-(b-1)}\)</span> when <span class="math" data-tex="\(a,b&gt;1\)">\(a,b&gt;1\)</span>, and to zero otherwise. Every basis vector is an image, but the kernel contains all vectors with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> or <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. Surjective multiplication on this infinite module does not imply injective multiplication.</p>
+<p><strong>Exercise 8.2 (extension and affineness; intermediate).</strong> Show that all regular functions on <span class="math" data-tex="\(\mathbb A^2_k\setminus\{0\}\)">\(\mathbb A^2_k\setminus\{0\}\)</span> extend, although that open set is not affine.</p>
+<p><strong>Solution.</strong> Sections are pairs in <span class="math" data-tex="\(A_x\oplus A_y\)">\(A_x\oplus A_y\)</span> agreeing in <span class="math" data-tex="\(A_{xy}\)">\(A_{xy}\)</span>, so they form <span class="math" data-tex="\(A_x\cap A_y=A\)">\(A_x\cap A_y=A\)</span>. The intersection equality follows by comparing Laurent monomials: belonging to both rings forces both exponents to be nonnegative. In degree one the open Čech complex has cokernel <span class="math" data-tex="\(A_{xy}/(A_x+A_y)\)">\(A_{xy}/(A_x+A_y)\)</span>, containing the nonzero class <span class="math" data-tex="\(1/(xy)\)">\(1/(xy)\)</span>. Thus its structure sheaf has nonzero <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, contradicting affine quasi-coherent vanishing.</p>
+<p><strong>Exercise 8.3 (Hartogs for modules; intermediate).</strong> Let <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> be local and <span class="math" data-tex="\(M\)">\(M\)</span> finite of depth at least two. Prove that every section of <span class="math" data-tex="\(\widetilde M\)">\(\widetilde M\)</span> on the punctured spectrum extends uniquely. Explain the roles of the two depth inequalities one and two.</p>
+<p><strong>Solution.</strong> Theorem 5.1 says <span class="math" data-tex="\(H^0_{\mathfrak m}(M)=H^1_{\mathfrak m}(M)=0\)">\(H^0_{\mathfrak m}(M)=H^1_{\mathfrak m}(M)=0\)</span>. Corollary 2.2 makes restriction an isomorphism. Vanishing of <span class="math" data-tex="\(H^0\)">\(H^0\)</span> alone says a global section cannot disappear on the punctured spectrum, so extension is unique whenever it exists. Vanishing of <span class="math" data-tex="\(H^1\)">\(H^1\)</span> says there is no obstruction to existence. The two assertions have different positions in the exact sequence.</p>
+<p><strong>Exercise 8.4 (changing equations; intermediate).</strong> Prove radical independence directly for <span class="math" data-tex="\(I=(x,y)\)">\(I=(x,y)\)</span> and <span class="math" data-tex="\(J=(x^2,y^3)\)">\(J=(x^2,y^3)\)</span> in an arbitrary Noetherian <span class="math" data-tex="\(k\)">\(k\)</span>-algebra. Then give the argument for any two ideals with the same radical.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span> and <span class="math" data-tex="\(I^4\subset J\)">\(I^4\subset J\)</span>: every monomial of total degree four has either <span class="math" data-tex="\(x\)">\(x\)</span>-exponent at least two or <span class="math" data-tex="\(y\)">\(y\)</span>-exponent at least three. Thus an element killed by a power of one ideal is killed by a power of the other. For general finitely generated ideals of the same radical, a power of each is contained in the other, by taking powers of finitely many generators and the same counting argument. The torsion functors coincide on every module and morphism. Applying them to the same injective resolution proves the equality of their derived functors.</p>
+<p><strong>Exercise 8.5 (a disconnected punctured spectrum; advanced).</strong> For the two-plane local ring in Example 5.3, recover its depth from sections on its punctured spectrum, without using a regular sequence calculation in the quotient ring.</p>
+<p><strong>Solution.</strong> The intersection of the planes consists of the closed point; deleting it separates the spectrum into two nonempty open-and-closed punctured planes. Each plane has sections equal to its local coordinate ring by Corollary 5.2, since it has depth two. Hence the sections on the union are <span class="math" data-tex="\(S/P\oplus S/Q\)">\(S/P\oplus S/Q\)</span>. The image of <span class="math" data-tex="\(A\)">\(A\)</span> is precisely the pairs with equal residues, and its kernel is zero. Its cokernel is <span class="math" data-tex="\(k\)">\(k\)</span>, represented for example by the section that is one on one component and zero on the other. Corollary 2.2 gives <span class="math" data-tex="\(H^0_{\mathfrak m}(A)=0\)">\(H^0_{\mathfrak m}(A)=0\)</span> and <span class="math" data-tex="\(H^1_{\mathfrak m}(A)=k\)">\(H^1_{\mathfrak m}(A)=k\)</span>. Theorem 5.1 gives depth one. A local ring of depth at least two could not have this idempotent section: it would extend to a nontrivial idempotent in a local ring, which is impossible.</p>
+<h2 id="proof-inputs">Proof inputs</h2>
+<p>The written commutative-algebra lessons supply the algebra used throughout this course: <a href="../AG-CA/AG-CA-03.html">Noetherian and Artinian rings</a>, Theorems 5.1 and 6.1, prove Artin–Rees and Krull intersection; <a href="../AG-CA/AG-CA-04.html">Associated primes and primary decomposition</a>, Sections 1–3 and Solution 8.5, prove the zero-divisor, prime-filtration, localization and prime-avoidance assertions; <a href="../AG-CA/AG-CA-12.html">Regular sequences, depth and Cohen–Macaulay modules</a>, Proposition 1.3 and Sections 2, 5 and 6, supply powers, depth and Cohen–Macaulay localization; <a href="../AG-CA/AG-CA-11.html">Dimension theory of Noetherian local rings</a>, Theorem 2.1, supplies systems of parameters; and <a href="../AG-CA/AG-CA-19.html">Completion</a>, Theorems 3.1–3.3 and 4.1, proves exactness, faithful flatness and preservation of local dimension. Baer's criterion has the exact elementary open proof at <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-characterize-injective-bis">Stacks, Tag 0AVF</a>.</p>
+<p>The sheaf localization triangle is proved in the linked prerequisite. The affine vanishing and affine module–sheaf correspondence are the usual quasi-coherent foundations. From commutative algebra we use Baer's criterion, Artin–Rees, associated primes and prime filtrations, prime avoidance, regular-sequence depth and powers, existence of systems of parameters, and the flatness and dimension properties of completion. We also use Cohen's structure theorem [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-cohen-structure-theorem">Tag 032A</a>], universal catenarity of complete local rings (Cohen's theorem together with [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-CM-ring-catenary">Tag 00NM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-regular-ring-CM">Tag 00NQ</a>]), and the resulting principal-quotient dimension formula. The linked full open proofs of Cohen's theorem and universal catenarity supply these structural inputs; the principal-quotient dimension formula follows from catenary chains. Every local-cohomology calculation and theorem stated above is proved here.</p>
+<h2 id="references">References</h2>
+<p>Linked Stacks proofs retain their <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>. The CC0 dedication covers the independently written exposition here.</p>
+<ul>
+<li>[Stacks] The Stacks Project authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/">official project</a>. The tag references use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers. Its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">English reader</a> retains the upstream tags. Relevant sections are Local Cohomology, “Generalities” and “Cohomological dimension,” and Dualizing Complexes, “Local cohomology” and “Depth.”</li>
+<li>[Grothendieck–Laszlo] A. Grothendieck, <em>Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux (SGA 2)</em>, revised edition edited by Y. Laszlo, <a href="https://arxiv.org/abs/math/0511279">arXiv:math/0511279</a>, especially Exposés I–III. Historical and mathematical reference; this lesson uses its own teaching organization and exposition.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="local-duality-and-finiteness.html">Local duality and finiteness →</a></span></nav>
+<p class="small source-link"><a href="src/local-cohomology.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-LCL">Repository</a></nav>
+</footer>
+</body>
+</html>

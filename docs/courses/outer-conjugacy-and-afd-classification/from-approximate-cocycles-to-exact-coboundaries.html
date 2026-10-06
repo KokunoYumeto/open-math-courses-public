@@ -1,0 +1,261 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From approximate cocycles to exact coboundaries · Open Mathematics Courses</title><meta name="description" content="From approximate cocycles to exact coboundaries: lesson draft with 8 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>The fixed-coordinate diagonal and finite tower estimates are proved here. The locally finite consequence uses the included finite free-action theorem. The final compatibility application and transitive operator-algebra foundations retain their stated programme prerequisites. This lesson does not derive general amenable projection existence from Følner sets alone.</p></aside><article class="lesson"><h1 id="from-approximate-cocycles-to-exact-coboundaries">From approximate cocycles to exact coboundaries</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it (GPT-6.1 Sol), under the stated prerequisites. New original text is public domain (CC0).</em></p>
+<p><em>Source and prerequisite revision by GPT-6 Astra (OpenAI), Ultra, October 2026. The remaining programme foundations are identified below.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>A cocycle may admit a different approximate solution for every finite collection of group elements. These solutions need not converge, and successive solutions need not agree. In an asymptotic centralizer, we can nevertheless construct one exact solution. We do so by controlling the representatives in the original algebra, while keeping the prescribed cocycle fixed.</p>
+<p>This gives exact cohomology vanishing for free actions of countable locally finite groups from the programme's finite-group theorem. It also separates two steps in the general amenable argument: constructing relative towers, and using those towers to solve the cocycle equation. We prove the second step with an explicit estimate for boundary mass, uncovered trace and covariance error. The required general tower construction is stated precisely.</p>
+<p>For the asymptotic centralizer, use <span class="unlinked">Central sequence algebras and exact lifts</span>: <span class="unlinked">Proposition 2.1</span> proves its state-independent trace, <span class="unlinked">Theorem 3.1</span> proves the finite von Neumann algebra and induced normal action, and <span class="unlinked">Theorem 5.1</span>, with both prescribed endpoint projections equal to 1, supplies exact unitary representatives. That provider divides the squared sharp seminorm by 2; equation (1.2) below records our conversion. The finite-group input is the theorem in Section 1.3, with its proof in Sections 3–10, of <a href="finite-free-actions-and-coboundaries.html">Finite free actions and exact coboundaries</a>. Its nonfactor scope is essential because an asymptotic centralizer need not be a factor. <span class="unbundled-lesson">Inner approximations compatible with characteristic data <small>(lesson outside this selection)</small></span>, Theorem 4.1, supplies only the final approximation consequence.</p>
+<p>The controlled-diagonal method has its classical cyclic antecedent in [Connes], Theorem 2.1.3. Here the finite tests keep every prescribed cocycle coordinate fixed, treat arbitrary countable groups under the stated approximation hypothesis, and separate equal-weight tower estimates from projection existence. [Jones–Takesaki], Lemma 2.5.6 is the context for the final compatibility consequence; its invoked general cohomology theorem is not used in place of a proof here.</p>
+<h2 id="1-the-finite-approximate-equations">1. The finite approximate equations</h2>
+<p>Let <span class="math">\(M\)</span> be a factor with separable predual, let <span class="math">\(\omega\)</span> be a free ultrafilter on <span class="math">\(\mathbb N\)</span>, and put <span class="math">\(F=M_\omega\)</span>. Fix a faithful normal state <span class="math">\(\varphi\)</span> on <span class="math">\(M\)</span>. The canonical tracial state of <span class="math">\(F\)</span> is denoted by <span class="math">\(\tau\)</span>. Use</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\|X\|_2=\tau(X^*X)^{1/2},\\
+\|x\|_\varphi^\sharp
+=\bigl(\varphi(x^*x)+\varphi(xx^*)\bigr)^{1/2}.
+\end{gathered}
+
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>For a strongly central representative <span class="math">\((x_j)\)</span> of <span class="math">\(X\)</span>, the trace and quotient ideal give</p>
+<div class="equation"><div class="math math-display">\[
+\lim_{j\to\omega}\|x_j\|_\varphi^\sharp
+=\sqrt2\,\|X\|_2.
+
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Indeed both squared terms have the same limit, since <span class="math">\(\tau\)</span> is tracial. A strongly central sequence with vanishing seminorm belongs to the strong-star null ideal.</p>
+<p>Let <span class="math">\(Q\)</span> be a countable group and <span class="math">\(\gamma:Q\to\operatorname{Aut}(F)\)</span> an action. Assume each <span class="math">\(\gamma_q\)</span> is induced by a specified automorphism <span class="math">\(\beta_q\)</span> of <span class="math">\(M\)</span>. We require the induced maps to form an action; the chosen <span class="math">\(\beta_q\)</span> need not form an action on <span class="math">\(M\)</span>.</p>
+<p>Let <span class="math">\(V\)</span> be a genuine unitary cocycle:</p>
+<div class="equation"><div class="math math-display">\[
+V_{pq}=V_p\gamma_p(V_q),\qquad V_e=1.
+
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>Choose exact unitary strongly central representatives <span class="math">\(v_{q,j}\)</span> of every <span class="math">\(V_q\)</span>, once and for all.</p>
+<p>The finite approximate condition is:</p>
+<p>For every finite <span class="math">\(D\subset Q\)</span> and every <span class="math">\(\varepsilon&gt;0\)</span>, there is <span class="math">\(Z\in\mathcal U(F)\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+\|Z^*V_q\gamma_q(Z)-1\|_2&lt;\varepsilon
+\qquad(q\in D).
+
+\]</div><span class="equation-tag">(1.4)</span></div>
+<p>By unitary invariance of the tracial norm, this is equivalent to
+<span class="math">\(\|V_q-Z\gamma_q(Z^*)\|_2&lt;\varepsilon\)</span>.
+It imposes no compatibility between solutions for different <span class="math">\(D\)</span> or <span class="math">\(\varepsilon\)</span>.</p>
+<h2 id="2-one-diagonal-gives-an-exact-solution">2. One diagonal gives an exact solution</h2>
+<p><strong>Theorem 2.1.</strong> Under the setting in Section 1, condition (1.4) implies that there is <span class="math">\(Z\in\mathcal U(F)\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+V_q=Z\gamma_q(Z^*)\qquad(q\in Q).
+
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p><em>Proof.</em> Enumerate <span class="math">\(Q\)</span> and choose increasing finite sets <span class="math">\(D_r\)</span> whose union is <span class="math">\(Q\)</span>. Choose a norm-dense sequence <span class="math">\((\psi_l)\)</span> in the unit ball of <span class="math">\(M_*\)</span>. Condition (1.4) supplies <span class="math">\(Z_r\in\mathcal U(F)\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+\|Z_r^*V_q\gamma_q(Z_r)-1\|_2
+&lt;\frac1{4r}\qquad(q\in D_r).
+
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>Lift <span class="math">\(Z_r\)</span> to exact unitary representatives <span class="math">\(z_{r,j}\)</span> which are strongly central along <span class="math">\(\omega\)</span>. Keep the previously chosen <span class="math">\(v_{q,j}\)</span> unchanged.</p>
+<p>Let <span class="math">\(E_r\)</span> be the set of <span class="math">\(j\ge r\)</span> satisfying all of the following finite tests:</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+\|[z_{r,j},\psi_l]\|&amp;&lt;1/r &amp;&amp;(l\le r),\\
+\|z_{r,j}^*v_{q,j}\beta_q(z_{r,j})-1
+  \|_\varphi^\sharp&amp;&lt;1/r &amp;&amp;(q\in D_r).
+\end{aligned}
+
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p>Each <span class="math">\(E_r\)</span> belongs to <span class="math">\(\omega\)</span>. Strong centrality gives the first limits. By (1.2) and (2.2), each second limit is less than <span class="math">\(\sqrt2/(4r)&lt;1/r\)</span>. The finite intersection of the corresponding large sets is still large.</p>
+<p>Put <span class="math">\(A_r=E_1\cap\cdots\cap E_r\)</span>, and define</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+k(j)=\max\bigl(\{r\le j:j\in A_r\}\cup\{0\}\bigr),\\
+z_j=
+\begin{cases}
+z_{k(j),j},&amp;k(j)&gt;0,\\
+1,&amp;k(j)=0.
+\end{cases}
+\end{gathered}
+
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>The maximum is finite. Every <span class="math">\(z_j\)</span> is an exact unitary. For fixed <span class="math">\(R\)</span>, membership in <span class="math">\(A_R\)</span> gives <span class="math">\(j\ge R\)</span> and <span class="math">\(k(j)\ge R\)</span>; hence</p>
+<div class="equation"><div class="math math-display">\[
+k(j)\longrightarrow\infty
+\quad\text{along }\omega.
+
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>If <span class="math">\(k(j)&gt;0\)</span>, then <span class="math">\(j\in E_{k(j)}\)</span>. Thus (2.3) controls the particular lift selected in (2.4).</p>
+<p>For each fixed <span class="math">\(l\)</span>, the first bound in (2.3) tends to zero. For an arbitrary normal functional, the estimate</p>
+<div class="equation"><div class="math math-display">\[
+\|[z_j,\psi]\|
+\le\|[z_j,\psi_l]\|+2\|\psi-\psi_l\|
+
+\]</div><span class="equation-tag">(2.6)</span></div>
+<p>extends centrality from the dense family, first on the unit ball and then by scaling. Therefore <span class="math">\(Z=[(z_j)]\)</span> belongs to <span class="math">\(\mathcal U(F)\)</span>.</p>
+<p>Fix <span class="math">\(q\)</span>, and choose <span class="math">\(R\)</span> with <span class="math">\(q\in D_R\)</span>. On the large set <span class="math">\(A_R\)</span>, (2.3) gives</p>
+<div class="equation"><div class="math math-display">\[
+\|z_j^*v_{q,j}\beta_q(z_j)-1\|_\varphi^\sharp
+&lt;1/k(j).
+
+\]</div><span class="equation-tag">(2.7)</span></div>
+<p>The sequence here is strongly central: automorphisms preserve centrality, as do products and adjoints. Equations (2.5) and (2.7) make it strong-star null. Taking its quotient class gives
+<span class="math">\(Z^*V_q\gamma_q(Z)=1\)</span>, equivalent to (2.1). This holds for every <span class="math">\(q\)</span>. <span class="math">\(\square\)</span></p>
+<p>The proof takes no limit of <span class="math">\(Z_r\)</span> in <span class="math">\(F\)</span>. It makes one controlled diagonal from their lifts in <span class="math">\(M\)</span>. It also does not reindex the cocycle separately: every test uses the original <span class="math">\(v_{q,j}\)</span>.</p>
+<h2 id="3-exact-vanishing-for-locally-finite-groups">3. Exact vanishing for locally finite groups</h2>
+<p>A group is <strong>locally finite</strong> if every finitely generated subgroup is finite. If it is countable, enumeration gives</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+K_r=\langle q_1,\ldots,q_r\rangle,\\
+K_r\subset K_{r+1},\qquad Q=\bigcup_rK_r,
+\end{gathered}
+
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>with every <span class="math">\(K_r\)</span> finite.</p>
+<p>An action on a finite von Neumann algebra is <strong>free</strong> here if, for <span class="math">\(q\ne e\)</span>, there is no nonzero <span class="math">\(a\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+ax=\gamma_q(x)a\qquad(x\in F).
+
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>This is the intertwiner convention of the cited finite-group theorem.</p>
+<p><strong>Theorem 3.1.</strong> Suppose <span class="math">\(Q\)</span> is countable locally finite and <span class="math">\(\gamma\)</span> is free in the setting of Section 1. Then every unitary <span class="math">\(\gamma\)</span>-cocycle is a coboundary.</p>
+<p><em>Proof.</em> A finite <span class="math">\(D\subset Q\)</span> lies in some <span class="math">\(K_r\)</span>. The restricted action of <span class="math">\(K_r\)</span> remains free. The theorem in Section 1.3 of <a href="finite-free-actions-and-coboundaries.html">Finite free actions and exact coboundaries</a> gives <span class="math">\(v_r\in\mathcal U(F)\)</span> with <span class="math">\(V_q=v_r^*\gamma_q(v_r)\)</span> for <span class="math">\(q\in K_r\)</span>. Taking <span class="math">\(Z_r=v_r^*\)</span> gives exactly <span class="math">\(V_q=Z_r\gamma_q(Z_r^*)\)</span>, with no change of cocycle convention. Thus (1.4) holds with zero error for every finite <span class="math">\(D\)</span>. Theorem 2.1 completes the proof. <span class="math">\(\square\)</span></p>
+<p>Countable torsion abelian groups are locally finite: finitely many torsion generators give an image of a finite product of finite cyclic groups. Local finiteness also includes nonabelian groups, such as the finite-support permutations of <span class="math">\(\mathbb N\)</span>, the union of its increasing finite symmetric groups.</p>
+<p>A finite Følner set in an amenable group is generally not a subgroup. We cannot apply the finite-group cohomology theorem by merely substituting such a set for <span class="math">\(K_r\)</span>. Instead we next prove how projection towers over finite sets can provide approximate solutions.</p>
+<h2 id="4-a-finite-tower-produces-an-approximate-coboundary">4. A finite tower produces an approximate coboundary</h2>
+<p>In this section <span class="math">\(F\)</span> is any finite von Neumann algebra with faithful normal tracial state <span class="math">\(\tau\)</span>, <span class="math">\(\gamma\)</span> is a trace-preserving group action, and <span class="math">\(V\)</span> is a genuine unitary cocycle. Choose finitely many nonempty finite shapes <span class="math">\(S_i\subset Q\)</span>. Suppose there are mutually orthogonal projections <span class="math">\(E_{i,s}\)</span>, indexed by <span class="math">\(s\in S_i\)</span>, such that</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+P=\sum_{i,s}E_{i,s},\quad E_0=1-P,\\
+\tau(E_{i,s})=t_i,\quad
+\delta=\tau(E_0),\\
+E_{i,s}V_s=V_sE_{i,s}.
+\end{gathered}
+
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>Only commutation with the projection's own labelled unitary is required. A tower in the relative commutant of all the <span class="math">\(V_s\)</span> meets this condition.</p>
+<p>Define</p>
+<div class="equation"><div class="math math-display">\[
+Z=\sum_{i,s}V_sE_{i,s}+E_0.
+
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>Each summand acts unitarily on its own projection corner. More explicitly, <span class="math">\(V_sE_{i,s}\)</span> has initial and final projection <span class="math">\(E_{i,s}\)</span>. Distinct summands have orthogonal initial and final projections, and the residual summand has projection <span class="math">\(E_0\)</span>. Therefore <span class="math">\(Z^*Z=ZZ^*=1\)</span>.</p>
+<p>Fix <span class="math">\(g\in Q\)</span>, and assume exact interior covariance:</p>
+<div class="equation"><div class="math math-display">\[
+\gamma_g(E_{i,s})=E_{i,gs}
+\quad\text{if }s,gs\in S_i.
+
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>The interior projection and boundary mass are</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+P_g=\sum_i\sum_{t\in S_i\cap gS_i}E_{i,t},\\
+B_g=\sum_i t_i|S_i\setminus gS_i|,\\
+\tau(1-P_g)=\delta+B_g.
+\end{gathered}
+
+\]</div><span class="equation-tag">(4.4)</span></div>
+<p>The use of left translation <span class="math">\(gS_i\)</span> matches the cocycle convention (1.3).</p>
+<p><strong>Lemma 4.1.</strong> Under (4.1)–(4.3),</p>
+<div class="equation"><div class="math math-display">\[
+\|V_g-Z\gamma_g(Z^*)\|_2
+\le2\sqrt{\delta+B_g}.
+
+\]</div><span class="equation-tag">(4.5)</span></div>
+<p><em>Proof.</em> Put <span class="math">\(D=V_g\gamma_g(Z)-Z\)</span>. If <span class="math">\(t=gs\)</span> lies in the interior of the <span class="math">\(i\)</span>-th shape, orthogonality and (4.3) give</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+V_g\gamma_g(Z)E_{i,t}
+&amp;=V_g\gamma_g(V_s)E_{i,t}\\
+&amp;=V_tE_{i,t}=ZE_{i,t}.
+\end{aligned}
+
+\]</div><span class="equation-tag">(4.6)</span></div>
+<p>The middle equality is the exact cocycle law. Thus <span class="math">\(DP_g=0\)</span>. Since <span class="math">\(D\)</span> is a difference of two unitaries, <span class="math">\(\|D\|\le2\)</span>, whence</p>
+<div class="equation"><div class="math math-display">\[
+\|D\|_2^2
+\le4\tau(1-P_g)=4(\delta+B_g).
+
+\]</div><span class="equation-tag">(4.7)</span></div>
+<p>Right multiplication by the unitary <span class="math">\(\gamma_g(Z^*)\)</span> gives
+<span class="math">\(D\gamma_g(Z^*)=V_g-Z\gamma_g(Z^*)\)</span> and preserves the tracial norm. Taking square roots proves (4.5). <span class="math">\(\square\)</span></p>
+<p><img src="figures/cocycle-diagonal-and-boundary.svg" alt="Tower boundary and the controlled diagonal"></p>
+<p><em>Figure 1.</em> Top: the finite label set <span class="math">\(S=\{0,1,2\}^2\)</span> and <span class="math">\(g=(1,0)\)</span>. The six blue labels are <span class="math">\(S\cap gS\)</span>; the three orange labels form <span class="math">\(S\setminus gS\)</span>. If the tower has no residual corner and each labelled projection has trace <span class="math">\(1/9\)</span>, then <span class="math">\(B_g=1/3\)</span>, so Lemma 4.1 gives <span class="math">\(2/\sqrt3\)</span>. This depicts labels and trace weights, rather than an asserted construction of projections for a given action. Bottom: an illustrative diagonal with cofinite test sets <span class="math">\(E_r=\{j:j\ge r^2\}\)</span>, giving <span class="math">\(k(j)=\lfloor\sqrt j\rfloor\)</span>. The proof of Theorem 2.1 also allows large test sets which are not cofinite. The reproducible drawing source accompanies the figure.</p>
+<h2 id="5-covariance-error-and-the-general-tower-condition">5. Covariance error and the general tower condition</h2>
+<p>The same construction allows imperfect interior covariance. Retain (4.1), define</p>
+<div class="equation"><div class="math math-display">\[
+\eta_g=
+\sum_i\sum_{\substack{s\in S_i\\gs\in S_i}}
+\|\gamma_g(E_{i,s})-E_{i,gs}\|_2,
+
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>and define <span class="math">\(B_g\)</span> as in (4.4).</p>
+<p><strong>Lemma 5.1.</strong> Without assuming (4.3), the unitary (4.2) satisfies</p>
+<div class="equation"><div class="math math-display">\[
+\|V_g-Z\gamma_g(Z^*)\|_2
+\le\eta_g+2\sqrt{B_g}+2\sqrt\delta.
+
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p><em>Proof.</em> Expand <span class="math">\(D=V_g\gamma_g(Z)-Z\)</span>. Pair every left term with <span class="math">\(s,gs\in S_i\)</span> with its right term indexed by <span class="math">\(gs\)</span>. The cocycle law makes that pair</p>
+<div class="equation"><div class="math math-display">\[
+V_{gs}\bigl(\gamma_g(E_{i,s})-E_{i,gs}\bigr).
+
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>The triangle inequality bounds their total by <span class="math">\(\eta_g\)</span>.</p>
+<p>Unmatched left labels have <span class="math">\(s\in S_i\)</span> and <span class="math">\(gs\notin S_i\)</span>. Their terms before multiplication by <span class="math">\(V_g\)</span> are the images under <span class="math">\(\gamma_g\)</span> of the corresponding summands in (4.2). Those summands have orthogonal initial and final projections. Their total squared tracial norm is therefore the sum of their projection traces. Left multiplication by <span class="math">\(V_g\)</span> and the trace-preserving map <span class="math">\(\gamma_g\)</span> preserve this norm.</p>
+<p>The number of unmatched left labels is <span class="math">\(|S_i\setminus g^{-1}S_i|\)</span>. Its cardinality equals <span class="math">\(|S_i\setminus gS_i|\)</span>, because both are <span class="math">\(|S_i|-|S_i\cap gS_i|\)</span> after translation. Hence the unmatched left total has norm <span class="math">\(\sqrt{B_g}\)</span>. The unmatched right total has the same norm, by its own orthogonal corners.</p>
+<p>The residual terms <span class="math">\(V_g\gamma_g(E_0)\)</span> and <span class="math">\(E_0\)</span> each have norm <span class="math">\(\sqrt\delta\)</span>. Summing these bounds gives (5.2) for <span class="math">\(D\)</span>. As in Lemma 4.1, right multiplication by <span class="math">\(\gamma_g(Z^*)\)</span> gives the stated error. <span class="math">\(\square\)</span></p>
+<p>Suppose for every finite <span class="math">\(D\subset Q\)</span>, every cocycle <span class="math">\(V\)</span>, and every <span class="math">\(\varepsilon&gt;0\)</span>, the action admits shapes and projections satisfying (4.1) with</p>
+<div class="equation"><div class="math math-display">\[
+\begin{gathered}
+\delta&lt;\varepsilon^2/64,\qquad
+B_g&lt;\varepsilon^2/64,\\
+\eta_g&lt;\varepsilon/2\qquad(g\in D).
+\end{gathered}
+
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>Lemma 5.1 then gives error less than <span class="math">\(\varepsilon\)</span>, so these relative towers imply condition (1.4). Theorem 2.1 makes the cocycle an exact coboundary when the action is induced on the asymptotic centralizer.</p>
+<p>If every shape has left Følner ratio less than <span class="math">\(b\)</span> for <span class="math">\(g\in D\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+\begin{aligned}
+|S_i\setminus gS_i|&amp;&lt;b|S_i|,\\
+B_g&amp;&lt;b\sum_i t_i|S_i|\le b.
+\end{aligned}
+
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p>Multiple shapes are allowed. We do not require one shape to tile the group.</p>
+<p>Constructing the relative projections, with the commutation, coverage and covariance bounds in (5.4), is the remaining general amenable tower step. Følner sets alone do not provide those projections. The estimate proves exactly what such a construction must supply, rather than assuming that ordinary outerness already supplies it.</p>
+<h2 id="6-returning-to-characteristic-compatible-approximation">6. Returning to characteristic-compatible approximation</h2>
+<p>For an action <span class="math">\(\sigma:G\to\operatorname{Aut}(M)\)</span>, write</p>
+<div class="equation"><div class="math math-display">\[
+N=\{n:\sigma_n\text{ is inner}\},\qquad Q=G/N.
+
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>The quotient acts on <span class="math">\(M_\omega\)</span>. A section <span class="math">\(s:Q\to G\)</span> supplies lifts <span class="math">\(\beta_q=\sigma_{s(q)}\)</span>. Their induced maps form the quotient action, although the section need not be a homomorphism.</p>
+<p>Suppose <span class="math">\(\pi\)</span> is approximately inner and <span class="math">\((\pi,w)\)</span> is a genuine comparison pair compatible on <span class="math">\(N\)</span>, in the exact sense of <span class="unbundled-lesson">Inner approximations compatible with characteristic data <small>(lesson outside this selection)</small></span>, Section 2.</p>
+<p><strong>Corollary 6.1.</strong> If the quotient action is free and <span class="math">\(Q\)</span> is locally finite, then <span class="math">\((\pi,w)\)</span> is a limit of compatible inner pairs. The same conclusion follows for a general countable quotient whenever it has the relative tower property (5.4).</p>
+<p><em>Proof.</em> In the first case Theorem 3.1 proves the cohomology hypothesis of the cited Theorem 4.1. In the second case Lemma 5.1 and Theorem 2.1 prove that hypothesis. Apply that theorem, including both moving-multiplier estimates and the ordinary subsequence extraction. <span class="math">\(\square\)</span></p>
+<p>For <span class="math">\(M=R_\infty\)</span>, the existing <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Trace scaling on the hyperfinite semifinite factor</a>, Theorem 4.2, gives <span class="math">\(\operatorname{Ct}(R_\infty)=\operatorname{Inn}(R_\infty)\)</span> under its stated programme prerequisites. The proper-outerness argument in <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a>, Lemma 2.1, then makes the quotient action free. A trace-preserving <span class="math">\(\pi\)</span> is approximately inner by <span class="unbundled-lesson">Inner approximations compatible with a crossed product <small>(lesson outside this selection)</small></span>, Proposition 2.1. Thus the locally finite quotient case is fully covered under these exact foundations, including nonabelian quotients.</p>
+<p>For abelian <span class="math">\(G\)</span>, the character-extension proof in the comparison lesson can first correct a scalar compatibility phase on <span class="math">\(N\)</span>. For nonabelian <span class="math">\(G\)</span>, compatibility must be supplied: the quaternion obstruction in that lesson rules out arbitrary extension.</p>
+<p>The relative tower construction for arbitrary amenable quotients, the initial characteristic-and-trace isotropy comparison, model absorption, outer-isotropy gluing and continuous reconstruction remain distinct requirements of the full classification argument.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1. The square-root constant. Level 1.</strong> Prove (1.2) and explain the choice <span class="math">\(1/(4r)\)</span> in (2.2).</p>
+<p><em>Solution.</em> The limits of the two squared seminorm terms are <span class="math">\(\tau(X^*X)\)</span> and <span class="math">\(\tau(XX^*)\)</span>. Traciality makes them equal, giving (1.2). Thus the limit in the second line of (2.3) is less than <span class="math">\(\sqrt2/(4r)&lt;1/r\)</span>; a strict large-set inequality follows.</p>
+<p><strong>Exercise 7.2. The selected representative. Level 2.</strong> Show that <span class="math">\(k(j)\to\infty\)</span> along <span class="math">\(\omega\)</span>, and identify which set controls <span class="math">\(z_j\)</span>.</p>
+<p><em>Solution.</em> For fixed <span class="math">\(R\)</span>, <span class="math">\(A_R\in\omega\)</span>, and every <span class="math">\(j\in A_R\)</span> satisfies <span class="math">\(j\ge R\)</span> and <span class="math">\(k(j)\ge R\)</span>. This proves divergence along <span class="math">\(\omega\)</span>. For <span class="math">\(k(j)&gt;0\)</span>, membership in <span class="math">\(A_{k(j)}\)</span> implies membership in <span class="math">\(E_{k(j)}\)</span>, whose tests involve the chosen <span class="math">\(z_{k(j),j}\)</span>. Tests for an older, different lift would not suffice.</p>
+<p><strong>Exercise 7.3. Finite support, nonabelian group. Level 1.</strong> Prove that the finite-support permutations of <span class="math">\(\mathbb N\)</span> form a countable locally finite group.</p>
+<p><em>Solution.</em> They are the union of the finite symmetric groups on <span class="math">\(\{1,\ldots,r\}\)</span>, so the group is countable. Finitely many permutations have joint support in one finite initial segment. Their generated subgroup lies in its finite symmetric group. For <span class="math">\(r\ge3\)</span>, that subgroup need not be abelian.</p>
+<p><strong>Exercise 7.4. Scalar cocycles. Level 2.</strong> If <span class="math">\(V_q=\chi(q)1\)</span> for a character and Theorem 3.1 applies, find the resulting eigenunitary equation.</p>
+<p><em>Solution.</em> The coboundary equation gives <span class="math">\(\chi(q)1=Z\gamma_q(Z^*)\)</span>. Taking its adjoint after left multiplying by <span class="math">\(Z^*\)</span> gives
+<span class="math">\(\gamma_q(Z)=\overline{\chi(q)}Z\)</span>. This conclusion uses freeness and the finite-algebra input; it does not require <span class="math">\(Q\)</span> to be abelian.</p>
+<p><strong>Exercise 7.5. The missing subgroup. Level 2.</strong> Why can one not use a finite Følner square in <span class="math">\(\mathbb Z^2\)</span> directly in Theorem 3.1?</p>
+<p><em>Solution.</em> A finite square is not a subgroup: adding two of its elements can leave the square. The restricted maps therefore do not define an action of a finite group on that square. The finite-group theorem has no such input. The tower estimates in Sections 4–5 instead use the square only as a label shape.</p>
+<p><strong>Exercise 7.6. A square boundary. Level 1.</strong> Let <span class="math">\(S=\{0,\ldots,n-1\}^2\)</span> and <span class="math">\(g=(1,0)\)</span>. Compute its boundary ratio and the bound (4.5) for one complete equal-trace tower.</p>
+<p><em>Solution.</em> The square has <span class="math">\(n^2\)</span> labels. Its intersection with <span class="math">\(gS\)</span> has <span class="math">\(n(n-1)\)</span>, leaving <span class="math">\(n\)</span> labels. With trace <span class="math">\(1/n^2\)</span> per projection and <span class="math">\(\delta=0\)</span>, we get <span class="math">\(B_g=1/n\)</span>, so the bound is <span class="math">\(2/\sqrt n\)</span>. This is a bound under the specified tower, not an assertion that a particular action admits it.</p>
+<p><strong>Exercise 7.7. Left and right boundary counts. Level 2.</strong> Prove the cardinality identity used in Lemma 5.1.</p>
+<p><em>Solution.</em> Translation by <span class="math">\(g\)</span> bijects <span class="math">\(S\cap g^{-1}S\)</span> with <span class="math">\(gS\cap S\)</span>. Their cardinalities are equal. Subtracting each from <span class="math">\(|S|\)</span> gives
+<span class="math">\(|S\setminus g^{-1}S|=|S\setminus gS|\)</span>. Trace equality within each shape then gives the same unmatched mass on the two sides.</p>
+<p><strong>Exercise 7.8. Budgeting three errors. Level 2.</strong> Verify that (5.4) makes (5.2) less than <span class="math">\(\varepsilon\)</span>. Explain why small boundary alone does not suffice.</p>
+<p><em>Solution.</em> The two square-root terms are each less than <span class="math">\(\varepsilon/4\)</span>, and the covariance sum is less than <span class="math">\(\varepsilon/2\)</span>. Their sum is less than <span class="math">\(\varepsilon\)</span>. Small boundary says nothing about uncovered trace or about the action moving a projection to its labelled neighbour; both also require control.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Connes] Alain Connes, “Outer conjugacy classes of automorphisms of factors,” <em>Annales scientifiques de l'École Normale Supérieure</em>, série 4, <strong>8</strong> (1975), 383–419. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>. Theorem 2.1.3 and its proof give the cyclic controlled-diagonal antecedent. The present countable-group diagonal and separate weighted tower estimates are written out above.</li>
+<li>[Jones–Takesaki] Vaughan F. R. Jones and Masamichi Takesaki, “Actions of compact abelian groups on semifinite injective factors,” <em>Acta Mathematica</em> <strong>153</strong> (1984), 213–258. <a href="https://projecteuclid.org/journals/acta-mathematica/volume-153/issue-none/Actions-of-compact-abelian-groups-on-semifinite-injective-factors/10.1007/BF02392378.pdf">Publisher text</a>. Lemma 2.5.6 supplies the characteristic-compatible relative-density context.</li>
+</ul>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/from-approximate-cocycles-to-exact-coboundaries.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

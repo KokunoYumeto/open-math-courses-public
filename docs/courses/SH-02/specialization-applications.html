@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-SA — What a normal limit preserves · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/specialization-applications.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-SA — What a normal limit preserves</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-sa-what-a-normal-limit-preserves">SH02-SA — What a normal limit preserves</h1>
+<p>The specialization theory used here goes back to M. Kashiwara and P. Schapira,
+<a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>,
+Astérisque 128 (1985), §2.2. This lesson proves removal, homogeneous
+recovery, and three comparison constructions. It also gives an explicit
+counterexample to an unrestricted support equality and states the valid
+closed-set version. Public domain (CC0).</p>
+<h2 id="sh02-sa-setup-coefficients-supports-and-the-available-maps">SH02-SA-SETUP — Coefficients, supports, and the available maps</h2>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be a commutative unital ring of finite global dimension. Manifolds
+are finite dimensional, Hausdorff, and countable at infinity; maps and
+embedded submanifolds are <span class="math" data-tex="$C^\infty$">$C^\infty$</span>. Real analytic manifolds are included.
+No constructibility, finite rank, field, orientability, or compactness
+hypothesis is imposed on the sheaves in the general statements. All inputs
+are bounded complexes of sheaves of <span class="math" data-tex="$k$">$k$</span>-modules. Write</p>
+<span class="math math-display" data-tex="$$
+i:M\hookrightarrow X,\qquad E=N_MX,
+\qquad \nu=\nu_M:D^b(k_X)\longrightarrow D^b(k_E)
+$$">$$
+i:M\hookrightarrow X,\qquad E=N_MX,
+\qquad \nu=\nu_M:D^b(k_X)\longrightarrow D^b(k_E)
+$$</span>
+<p>for a closed embedded submanifold and its specialization. For a locally
+closed submanifold, use an open ambient neighborhood in which it is closed;
+the constructions below respect subsequent restriction.</p>
+<p>For a locally closed subset <span class="math" data-tex="$S$">$S$</span>, <span class="math" data-tex="$k_S$">$k_S$</span> denotes its constant sheaf extended
+by zero, using open extension inside its closure followed by closed direct
+image. It has stalk <span class="math" data-tex="$k$">$k$</span> on <span class="math" data-tex="$S$">$S$</span> and zero stalk off <span class="math" data-tex="$S$">$S$</span>. The support used in
+normal-cone estimates is the <strong>closed support</strong>, the closure of the union
+of the nonzero cohomology stalks. Thus, when <span class="math" data-tex="$k\ne0$">$k\ne0$</span>,
+<span class="math" data-tex="$\operatorname{supp}k_S=\overline S$">$\operatorname{supp}k_S=\overline S$</span>, including points where the stalk
+itself is zero. We use <span class="math" data-tex="$H^a(A[n])=H^{a+n}(A)$">$H^a(A[n])=H^{a+n}(A)$</span> and derived tensor products.
+In particular, <span class="math" data-tex="$k[-1]$">$k[-1]$</span> has its nonzero cohomology in degree one.</p>
+<p>The proofs use these precise contracts:</p>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Input needed in this lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SH02-NG-CONSTRUCTION, SH02-NG-CONE-SEQUENCES, SH02-NG-CONE-CONSEQUENCES</td>
+<td>Deformation charts, the sequence criterion, closure invariance and finite-union behavior of normal cones</td>
+</tr>
+<tr>
+<td>SH02-SP-BOUNDARY, SH02-SP-CONIC</td>
+<td>The definition <span class="math" data-tex="$\nu F=s^{-1}Rj_*r^{-1}F$">$\nu F=s^{-1}Rj_*r^{-1}F$</span>, its boundedness, conicity, and the closed-support upper bound</td>
+</tr>
+<tr>
+<td>SH02-SP-PROPER-GEOMETRY, SH02-SP-PROPER</td>
+<td>Proper direct-image comparison with all three support and normal-cone conditions</td>
+</tr>
+<tr>
+<td>SH02-SP-TENSOR</td>
+<td>The unital, natural tensor comparison <span class="math" data-tex="$\nu A\otimes^L\nu B\to\nu(A\otimes^L B)$">$\nu A\otimes^L\nu B\to\nu(A\otimes^L B)$</span></td>
+</tr>
+<tr>
+<td>SH02-CON-COMPARISON, SH02-CON-CYLINDER</td>
+<td>Normalized transport for an arbitrary bounded conic complex and descent along an interval</td>
+</tr>
+<tr>
+<td>SH02-MIC-DEFINITION</td>
+<td>Microlocalization is the negative-pairing Fourier transform of specialization</td>
+</tr>
+<tr>
+<td>SH02-MD-BOUNDED-HOM</td>
+<td>Internal derived Hom of arbitrary bounded sheaves is bounded on a finite-dimensional manifold</td>
+</tr>
+<tr>
+<td>SH02-IMP-OPEN-ZERO, SH02-IMP-LOCALIZATION</td>
+<td>Exact open extension and the closed-support localization triangle</td>
+</tr>
+<tr>
+<td>SH02-IMP-ADJUNCTION, SH02-IMP-RHOM, SH02-EX-EMBEDDING</td>
+<td>Ordinary and supported adjunctions, tensor-Hom adjunction, and the identification of closed-support sections with internal Hom from the constant sheaf of that closed subset</td>
+</tr>
+<tr>
+<td>SH02-IMP-PROPER-BASECHANGE</td>
+<td>Ordinary base change for proper maps, applied on each closed support</td>
+</tr>
+<tr>
+<td>SH02-MD-DIMENSION</td>
+<td>Finite cohomological amplitude of ordinary direct image and closed-support sections on finite-dimensional manifolds</td>
+</tr>
+<tr>
+<td>SH02-CA-INTERVAL</td>
+<td>Ordinary cohomology of a constant sheaf with arbitrary coefficient module on a nonempty compact interval</td>
+</tr>
+</tbody>
+</table>
+<p>These are linked through <a href="../sheaf-proof-readings/SH02-specialization.html">specialization</a>,
+<span class="unlinked">normal geometry</span>, <a href="../sheaf-proof-readings/SH02-conic-descent.html">conic transport</a>,
+<a href="../sheaf-proof-readings/SH02-microlocalization.html">microlocalization</a>,
+<a href="../sheaf-proof-readings/SH02-manifold-duality.html">manifold duality</a>,
+<a href="../sheaf-proof-readings/SH02-open-prerequisites.html">open prerequisite contracts</a>,
+<a href="../sheaf-proof-readings/SH02-exceptional-operations.html">exceptional adjunctions</a>, and
+<a href="../sheaf-proof-readings/SH02-convex-acyclicity.html">convex cohomology</a>. The Hom bound is needed: boundedness
+of the two arguments alone is not a formal reason for their derived Hom
+to be bounded in an arbitrary sheaf category.</p>
+<h2 id="sh02-sa-removal-removing-a-closed-set-removes-its-normal-cone">SH02-SA-REMOVAL — Removing a closed set removes its normal cone</h2>
+<p>Let <span class="math" data-tex="$S\subset X$">$S\subset X$</span> be closed, and put</p>
+<span class="math math-display" data-tex="$$
+U=X\setminus S,\quad j_U:U\hookrightarrow X,
+\qquad V=E\setminus C_M(S),\quad a:V\hookrightarrow E.
+$$">$$
+U=X\setminus S,\quad j_U:U\hookrightarrow X,
+\qquad V=E\setminus C_M(S),\quad a:V\hookrightarrow E.
+$$</span>
+<p>There is a natural exact functor</p>
+<span class="math math-display" data-tex="$$
+\nu^{\mathrm{away}\,S}:D^b(k_U)\longrightarrow D^b(k_V),
+\qquad
+\nu^{\mathrm{away}\,S}(G)=a^{-1}\nu(j_{U!}G),
+\tag{SA1}
+$$">$$
+\nu^{\mathrm{away}\,S}:D^b(k_U)\longrightarrow D^b(k_V),
+\qquad
+\nu^{\mathrm{away}\,S}(G)=a^{-1}\nu(j_{U!}G),
+\tag{SA1}
+$$</span>
+<p>and a natural isomorphism of functors on <span class="math" data-tex="$D^b(k_X)$">$D^b(k_X)$</span>,</p>
+<span class="math math-display" data-tex="$$
+\nu^{\mathrm{away}\,S}\,j_U^{-1}\simeq a^{-1}\nu.
+\tag{SA2}
+$$">$$
+\nu^{\mathrm{away}\,S}\,j_U^{-1}\simeq a^{-1}\nu.
+\tag{SA2}
+$$</span>
+<p>The functor can equally be computed as <span class="math" data-tex="$a^{-1}\nu Rj_{U*}$">$a^{-1}\nu Rj_{U*}$</span>.</p>
+<p><strong>Proof.</strong> Open extension by zero is exact, so SA1 preserves boundedness;
+specialization and inverse image also do so. Consider the open/closed
+localization triangle, with <span class="math" data-tex="$h:S\hookrightarrow X$">$h:S\hookrightarrow X$</span>,</p>
+<span class="math math-display" data-tex="$$
+j_{U!}j_U^{-1}F\longrightarrow F\longrightarrow h_*h^{-1}F
+\xrightarrow{+1}.
+$$">$$
+j_{U!}j_U^{-1}F\longrightarrow F\longrightarrow h_*h^{-1}F
+\xrightarrow{+1}.
+$$</span>
+<p>The third object has closed support in <span class="math" data-tex="$S$">$S$</span>. Its specialization is therefore
+supported in <span class="math" data-tex="$C_M(S)$">$C_M(S)$</span> by SH02-SP-CONIC. Apply <span class="math" data-tex="$a^{-1}\nu$">$a^{-1}\nu$</span> to this triangle.
+The third term vanishes, and its first arrow is the natural isomorphism
+in SA2. This specifies the isomorphism by a restriction counit, without
+choosing an extension of <span class="math" data-tex="$j_U^{-1}F$">$j_U^{-1}F$</span> separately for each <span class="math" data-tex="$F$">$F$</span>.</p>
+<p>The other localization triangle is</p>
+<span class="math math-display" data-tex="$$
+R\Gamma_S F\longrightarrow F\longrightarrow Rj_{U*}j_U^{-1}F
+\xrightarrow{+1}.
+$$">$$
+R\Gamma_S F\longrightarrow F\longrightarrow Rj_{U*}j_U^{-1}F
+\xrightarrow{+1}.
+$$</span>
+<p>Its first term is supported in <span class="math" data-tex="$S$">$S$</span>, so it gives the natural isomorphism
+<span class="math" data-tex="$a^{-1}\nu F\simeq a^{-1}\nu Rj_{U*}j_U^{-1}F$">$a^{-1}\nu F\simeq a^{-1}\nu Rj_{U*}j_U^{-1}F$</span>. The comparison
+<span class="math" data-tex="$j_{U!}G\to Rj_{U*}G$">$j_{U!}G\to Rj_{U*}G$</span> restricts to the identity on <span class="math" data-tex="$U$">$U$</span>; its cone is supported
+in <span class="math" data-tex="$S$">$S$</span>. Its specialization consequently becomes an isomorphism on <span class="math" data-tex="$V$">$V$</span>.
+This identifies the two formulas for the functor and their comparison
+maps. The direct-image boundedness here uses the finite-dimensional
+manifold bound, not properness of <span class="math" data-tex="$j_U$">$j_U$</span>.</p>
+<p>One can also express this construction as descent through a derived
+quotient. Let <span class="math" data-tex="$D^b_S(k_X)$">$D^b_S(k_X)$</span> be the full subcategory of complexes supported
+in <span class="math" data-tex="$S$">$S$</span>. Restriction kills exactly that subcategory, and <span class="math" data-tex="$j_{U!}$">$j_{U!}$</span> is an
+exact section of restriction. The first localization triangle makes
+<span class="math" data-tex="$j_{U!}j_U^{-1}F\to F$">$j_{U!}j_U^{-1}F\to F$</span> an isomorphism after quotienting by <span class="math" data-tex="$D^b_S(k_X)$">$D^b_S(k_X)$</span>.
+These facts prove the equivalence</p>
+<span class="math math-display" data-tex="$$
+D^b(k_X)/D^b_S(k_X)\simeq D^b(k_U).
+$$">$$
+D^b(k_X)/D^b_S(k_X)\simeq D^b(k_U).
+$$</span>
+<p>Since <span class="math" data-tex="$a^{-1}\nu$">$a^{-1}\nu$</span> kills <span class="math" data-tex="$D^b_S(k_X)$">$D^b_S(k_X)$</span>, it descends through this quotient,
+and the explicit representative of the descended functor is SA1.
+This proves both the existence and the compatible restriction diagram.
+<span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Directions over a removed point may remain. For instance, take
+<span class="math" data-tex="$X=\mathbb R$">$X=\mathbb R$</span>, <span class="math" data-tex="$M=S=\{0\}$">$M=S=\{0\}$</span>. Then <span class="math" data-tex="$V$">$V$</span> is the punctured normal line.
+The constant sheaf on the positive component of <span class="math" data-tex="$U$">$U$</span> is sent to the
+constant sheaf on the positive component of <span class="math" data-tex="$V$">$V$</span>. This follows from the
+conic recovery theorem below applied to its open extension. Thus SA1
+contains boundary-direction information even though <span class="math" data-tex="$M\cap U$">$M\cap U$</span> is empty.</p>
+<h2 id="sh02-sa-conic-bundle-a-homogeneous-object-already-is-its-normal-limit">SH02-SA-CONIC-BUNDLE — A homogeneous object already is its normal limit</h2>
+<p>Let <span class="math" data-tex="$p:E\to Z$">$p:E\to Z$</span> be any finite-rank real vector bundle, and identify <span class="math" data-tex="$Z$">$Z$</span> with
+its zero section. The normal bundle <span class="math" data-tex="$N_ZE$">$N_ZE$</span> has the canonical identification
+with <span class="math" data-tex="$E$">$E$</span> given by the vertical tangent vector. For every
+<span class="math" data-tex="$F\in D^b_{\mathbb R_{&gt;0}}(k_E)$">$F\in D^b_{\mathbb R_{&gt;0}}(k_E)$</span> there are canonical natural isomorphisms</p>
+<span class="math math-display" data-tex="$$
+\nu_Z F\simeq F,\qquad \mu_ZF\simeq F^\wedge.
+\tag{SA3}
+$$">$$
+\nu_Z F\simeq F,\qquad \mu_ZF\simeq F^\wedge.
+\tag{SA3}
+$$</span>
+<p>The second identification is on <span class="math" data-tex="$E^*$">$E^*$</span>. Our convention is</p>
+<span class="math math-display" data-tex="$$
+F^\wedge=Rq_!\left(\operatorname{pr}_E^{-1}F
+\otimes^L k_{\{\langle v,\xi\rangle\le0\}}\right),
+\qquad q:E\times_ZE^*\to E^*.
+\tag{SA4}
+$$">$$
+F^\wedge=Rq_!\left(\operatorname{pr}_E^{-1}F
+\otimes^L k_{\{\langle v,\xi\rangle\le0\}}\right),
+\qquad q:E\times_ZE^*\to E^*.
+\tag{SA4}
+$$</span>
+<p>There is no orientation tensor, degree shift, or antipodal map in SA3.</p>
+<p><strong>Proof.</strong> The deformation along the zero section is globally
+<span class="math" data-tex="$E\times\mathbb R$">$E\times\mathbb R$</span>, with projection to <span class="math" data-tex="$E$">$E$</span> given by <span class="math" data-tex="$(v,t)\mapsto tv$">$(v,t)\mapsto tv$</span>.
+This follows directly from a bundle trivialization, and the formulas agree
+on overlaps because the transition functions are fibrewise linear. The
+central identification is the vertical-tangent identification just specified.</p>
+<p>Write <span class="math" data-tex="$b:E\times\mathbb R\to E$">$b:E\times\mathbb R\to E$</span> for the first projection and
+<span class="math" data-tex="$j:E\times\mathbb R_{&gt;0}\hookrightarrow E\times\mathbb R$">$j:E\times\mathbb R_{&gt;0}\hookrightarrow E\times\mathbb R$</span> for the
+positive inclusion. On the positive chamber, normalized conic transport
+gives a natural isomorphism</p>
+<span class="math math-display" data-tex="$$
+(bj)^{-1}F\xrightarrow{\ \theta_F\ }[(v,t)\mapsto tv]^{-1}F.
+$$">$$
+(bj)^{-1}F\xrightarrow{\ \theta_F\ }[(v,t)\mapsto tv]^{-1}F.
+$$</span>
+<p>It is normalized to the identity at <span class="math" data-tex="$t=1$">$t=1$</span> by SH02-CON-COMPARISON.
+Use it to identify the specialization with
+<span class="math" data-tex="$s^{-1}Rj_*j^{-1}b^{-1}F$">$s^{-1}Rj_*j^{-1}b^{-1}F$</span>. The open adjunction unit gives the natural map</p>
+<span class="math math-display" data-tex="$$
+F=s^{-1}b^{-1}F\longrightarrow s^{-1}Rj_*j^{-1}b^{-1}F.
+\tag{SA5}
+$$">$$
+F=s^{-1}b^{-1}F\longrightarrow s^{-1}Rj_*j^{-1}b^{-1}F.
+\tag{SA5}
+$$</span>
+<p>It is an isomorphism. Indeed, product neighborhoods of <span class="math" data-tex="$(v,0)$">$(v,0)$</span> have positive
+part <span class="math" data-tex="$W\times(0,\epsilon)$">$W\times(0,\epsilon)$</span>, and interval descent identifies their derived
+sections of <span class="math" data-tex="$b^{-1}F$">$b^{-1}F$</span> with <span class="math" data-tex="$R\Gamma(W;F)$">$R\Gamma(W;F)$</span>. In each degree, the filtered
+colimit over neighborhoods <span class="math" data-tex="$W$">$W$</span> is <span class="math" data-tex="$H^a(F)_v$">$H^a(F)_v$</span>. This last assertion is the
+usual stalk computation using an injective resolution and exact filtered
+colimits; it does not require acyclicity of <span class="math" data-tex="$F$">$F$</span> on every neighborhood.
+The unit in SA5 induces precisely these identifications. Thus it is an
+isomorphism on all cohomology stalks. Invert it after using <span class="math" data-tex="$\theta_F$">$\theta_F$</span> to
+obtain the first isomorphism in SA3. Every map is global and natural, so
+this argument covers a nontrivial bundle as well as a trivial one.</p>
+<p>Microlocalization is defined as Fourier transformation after specialization.
+Applying SA4 to the first isomorphism gives the second. The normal and
+conormal identifications are <span class="math" data-tex="$E$">$E$</span> and <span class="math" data-tex="$E^*$">$E^*$</span> with their evaluation pairing;
+no dualizing functor is inserted. This proves the absence of additional
+twists or signs. Rank zero gives <span class="math" data-tex="$\nu_ZF=\mu_ZF=F$">$\nu_ZF=\mu_ZF=F$</span> with the same unit map.
+<span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-sa-closed-support-closed-subsets-retain-every-normal-direction">SH02-SA-CLOSED-SUPPORT — Closed subsets retain every normal direction</h2>
+<p>For a closed subset <span class="math" data-tex="$A\subset X$">$A\subset X$</span>, there is a natural morphism</p>
+<span class="math math-display" data-tex="$$
+c_A:k_{C_M(A)}\longrightarrow\nu_M k_A.
+\tag{SA6}
+$$">$$
+c_A:k_{C_M(A)}\longrightarrow\nu_M k_A.
+\tag{SA6}
+$$</span>
+<p>If <span class="math" data-tex="$k\ne0$">$k\ne0$</span>, then</p>
+<span class="math math-display" data-tex="$$
+\operatorname{supp}\nu_Mk_A=C_M(A).
+\tag{SA7}
+$$">$$
+\operatorname{supp}\nu_Mk_A=C_M(A).
+\tag{SA7}
+$$</span>
+<p>In fact <span class="math" data-tex="$H^0(\nu_Mk_A)_v$">$H^0(\nu_Mk_A)_v$</span> contains a canonical copy of <span class="math" data-tex="$k$">$k$</span> for every
+<span class="math" data-tex="$v\in C_M(A)$">$v\in C_M(A)$</span>, supplied by SA6. Equality of supports does not say that
+SA6 is an isomorphism.</p>
+<p><strong>Construction of the map.</strong> The constant unit in SH02-SP-TENSOR gives
+<span class="math" data-tex="$\nu_Mk_X\simeq k_E$">$\nu_Mk_X\simeq k_E$</span>. Specializing the restriction <span class="math" data-tex="$k_X\to k_A$">$k_X\to k_A$</span> gives
+<span class="math" data-tex="$k_E\to\nu_Mk_A$">$k_E\to\nu_Mk_A$</span>. The target is supported in the closed subset
+<span class="math" data-tex="$C=C_M(A)$">$C=C_M(A)$</span>. For its closed inclusion <span class="math" data-tex="$h:C\hookrightarrow E$">$h:C\hookrightarrow E$</span>, the
+adjunction with ordinary restriction identifies that target with
+<span class="math" data-tex="$h_*h^{-1}\nu_Mk_A$">$h_*h^{-1}\nu_Mk_A$</span>. The adjunction therefore uniquely factors the map
+as <span class="math" data-tex="$k_E\to k_C\xrightarrow{c_A}\nu_Mk_A$">$k_E\to k_C\xrightarrow{c_A}\nu_Mk_A$</span>.</p>
+<p><strong>Proof of the support statement.</strong> Recall the deformation notation
+<span class="math" data-tex="$\nu_Mk_A=s^{-1}Rj_*r^{-1}k_A$">$\nu_Mk_A=s^{-1}Rj_*r^{-1}k_A$</span>. The subset <span class="math" data-tex="$r^{-1}A$">$r^{-1}A$</span> is closed in the
+positive chamber, and <span class="math" data-tex="$r^{-1}k_A=k_{r^{-1}A}$">$r^{-1}k_A=k_{r^{-1}A}$</span>. As the input is in degree
+zero and both <span class="math" data-tex="$s^{-1}$">$s^{-1}$</span> and <span class="math" data-tex="$r^{-1}$">$r^{-1}$</span> are exact, the degree-zero stalk at
+<span class="math" data-tex="$v\in E$">$v\in E$</span> is</p>
+<span class="math math-display" data-tex="$$
+H^0(\nu_Mk_A)_v
+=\varinjlim_{W\ni v}\Gamma(W\cap\Omega;k_{r^{-1}A}).
+\tag{SA8}
+$$">$$
+H^0(\nu_Mk_A)_v
+=\varinjlim_{W\ni v}\Gamma(W\cap\Omega;k_{r^{-1}A}).
+\tag{SA8}
+$$</span>
+<p>Here <span class="math" data-tex="$W$">$W$</span> ranges over open deformation neighborhoods of <span class="math" data-tex="$v$">$v$</span>. Since
+<span class="math" data-tex="$r^{-1}A$">$r^{-1}A$</span> is closed in <span class="math" data-tex="$\Omega$">$\Omega$</span>, the displayed sections are ordinary
+sections of the constant sheaf on <span class="math" data-tex="$W\cap r^{-1}A$">$W\cap r^{-1}A$</span>. If <span class="math" data-tex="$v\in C_M(A)$">$v\in C_M(A)$</span>,
+every such intersection is nonempty. A coefficient <span class="math" data-tex="$a\in k$">$a\in k$</span> determines
+the constant section with value <span class="math" data-tex="$a$">$a$</span> there. A nonzero <span class="math" data-tex="$a$">$a$</span> remains nonzero
+after every neighborhood restriction, because every smaller intersection
+remains nonempty. Hence these constant sections give an injection
+<span class="math" data-tex="$k\hookrightarrow H^0(\nu_Mk_A)_v$">$k\hookrightarrow H^0(\nu_Mk_A)_v$</span>. This is the stalk map induced by
+the construction of <span class="math" data-tex="$c_A$">$c_A$</span>.</p>
+<p>The support upper bound gives the opposite containment, so SA7 follows.
+No local contractibility of <span class="math" data-tex="$A$">$A$</span> is needed. Higher cohomology and additional
+degree-zero sections are allowed. For the zero ring all these complexes
+vanish; the support-equality assertion consequently requires the stated
+<span class="math" data-tex="$k\ne0$">$k\ne0$</span> qualification. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a locally closed subset <span class="math" data-tex="$S$">$S$</span>, the universally valid conclusion from
+the support theorem is</p>
+<span class="math math-display" data-tex="$$
+\operatorname{supp}\nu_Mk_S
+\subset C_M(\overline S)=C_M(S).
+\tag{SA9}
+$$">$$
+\operatorname{supp}\nu_Mk_S
+\subset C_M(\overline S)=C_M(S).
+\tag{SA9}
+$$</span>
+<p>The proof of SA8 cannot be reused to prove equality: an open extension
+inside <span class="math" data-tex="$\overline S$">$\overline S$</span> need not admit the constant section one across its
+missing boundary. The next example shows that this is an actual failure,
+even for a set given by polynomial inequalities.</p>
+<h2 id="sh02-sa-collapsing-strip-a-nonempty-cone-with-zero-specialization">SH02-SA-COLLAPSING-STRIP — A nonempty cone with zero specialization</h2>
+<p>Assume <span class="math" data-tex="$k\ne0$">$k\ne0$</span>, let <span class="math" data-tex="$X=\mathbb R^2$">$X=\mathbb R^2$</span>, and specialize at the origin. Set</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+D&amp;=\{(x,y):x\ge0,\ 0\le y\le x^4\},\\
+B&amp;=\{(x,0):x\ge0\},\qquad S=D\setminus B,\\
+L&amp;=\{(u,0):u\ge0\}\subset T_0X.
+\end{aligned}
+\tag{SA10}
+$$">$$
+\begin{aligned}
+D&amp;=\{(x,y):x\ge0,\ 0\le y\le x^4\},\\
+B&amp;=\{(x,0):x\ge0\},\qquad S=D\setminus B,\\
+L&amp;=\{(u,0):u\ge0\}\subset T_0X.
+\end{aligned}
+\tag{SA10}
+$$</span>
+<p>The set <span class="math" data-tex="$S=D\cap\{y&gt;0\}$">$S=D\cap\{y&gt;0\}$</span> is locally closed, its closure is <span class="math" data-tex="$D$">$D$</span>, and</p>
+<span class="math math-display" data-tex="$$
+C_0(S)=C_0(D)=C_0(B)=L,
+\qquad \nu_0k_S=0.
+\tag{SA11}
+$$">$$
+C_0(S)=C_0(D)=C_0(B)=L,
+\qquad \nu_0k_S=0.
+\tag{SA11}
+$$</span>
+<p>Thus SA9 can be a strict inclusion with its left side empty. This refutes
+the unqualified equality for an arbitrary locally closed set; no published
+erratum is being claimed here.</p>
+<p><strong>The cone calculation.</strong> Suppose <span class="math" data-tex="$(x_n,y_n)\in D$">$(x_n,y_n)\in D$</span> tends to zero,
+<span class="math" data-tex="$c_n&gt;0$">$c_n&gt;0$</span>, and <span class="math" data-tex="$(c_nx_n,c_ny_n)$">$(c_nx_n,c_ny_n)$</span> has a finite limit. Since <span class="math" data-tex="$0\le y_n\le x_n^4$">$0\le y_n\le x_n^4$</span>,</p>
+<span class="math math-display" data-tex="$$
+0\le c_ny_n\le(c_nx_n)x_n^3\longrightarrow0.
+$$">$$
+0\le c_ny_n\le(c_nx_n)x_n^3\longrightarrow0.
+$$</span>
+<p>Its limiting first component is nonnegative, proving <span class="math" data-tex="$C_0(D)\subset L$">$C_0(D)\subset L$</span>.
+For <span class="math" data-tex="$u&gt;0$">$u&gt;0$</span>, take <span class="math" data-tex="$x_n=u/n$">$x_n=u/n$</span>, <span class="math" data-tex="$y_n=x_n^4/2$">$y_n=x_n^4/2$</span>, and <span class="math" data-tex="$c_n=n$">$c_n=n$</span> to obtain
+<span class="math" data-tex="$(u,0)$">$(u,0)$</span> as a normal limit from <span class="math" data-tex="$S$">$S$</span>. For the zero vector use
+<span class="math" data-tex="$x_n=n^{-2}$">$x_n=n^{-2}$</span>, <span class="math" data-tex="$y_n=x_n^4/2$">$y_n=x_n^4/2$</span>, and <span class="math" data-tex="$c_n=n$">$c_n=n$</span>. Hence <span class="math" data-tex="$L\subset C_0(S)$">$L\subset C_0(S)$</span>.
+Inclusion and closure invariance prove the first two equalities in SA11;
+the cone of the closed ray <span class="math" data-tex="$B$">$B$</span> is <span class="math" data-tex="$L$">$L$</span> directly.</p>
+<p><strong>A proper-map calculation of the sheaf.</strong> Let <span class="math" data-tex="$\pi:X\to\mathbb R$">$\pi:X\to\mathbb R$</span>
+be <span class="math" data-tex="$(x,y)\mapsto x$">$(x,y)\mapsto x$</span>. It is proper on <span class="math" data-tex="$D$">$D$</span>: the inverse image in <span class="math" data-tex="$D$">$D$</span> of
+a compact subset of the line is closed and bounded. It is also proper
+on <span class="math" data-tex="$B$">$B$</span>. The fibres in <span class="math" data-tex="$D$">$D$</span> are empty for <span class="math" data-tex="$x&lt;0$">$x&lt;0$</span> and the compact intervals
+<span class="math" data-tex="$[0,x^4]$">$[0,x^4]$</span> for <span class="math" data-tex="$x\ge0$">$x\ge0$</span>, including the one-point fibre at zero. The fibres
+in <span class="math" data-tex="$B$">$B$</span> are the corresponding endpoints <span class="math" data-tex="$\{0\}$">$\{0\}$</span>. Proper base change and
+constant-coefficient interval cohomology therefore give</p>
+<span class="math math-display" data-tex="$$
+R\pi_*k_D\longrightarrow R\pi_*k_B
+\quad\text{an isomorphism}.
+\tag{SA12}
+$$">$$
+R\pi_*k_D\longrightarrow R\pi_*k_B
+\quad\text{an isomorphism}.
+\tag{SA12}
+$$</span>
+<p>This is the actual map obtained by restricting from <span class="math" data-tex="$D$">$D$</span> to <span class="math" data-tex="$B$">$B$</span>. At every
+nonempty fibre it is evaluation of a constant section on a connected
+interval at its endpoint, hence the identity of <span class="math" data-tex="$k$">$k$</span> in degree zero; all
+higher fibre groups vanish. On empty fibres both sides vanish. Equivalently,
+both objects and the map identify with <span class="math" data-tex="$k_{[0,\infty)}$">$k_{[0,\infty)}$</span> and its identity.
+The open/closed triangle</p>
+<span class="math math-display" data-tex="$$
+k_S\longrightarrow k_D\longrightarrow k_B\xrightarrow{+1}
+$$">$$
+k_S\longrightarrow k_D\longrightarrow k_B\xrightarrow{+1}
+$$</span>
+<p>now gives <span class="math" data-tex="$R\pi_*k_S=0$">$R\pi_*k_S=0$</span>.</p>
+<p>We must justify passing this calculation through specialization. Use the
+map of pairs <span class="math" data-tex="$(X,\{0\})\to(\mathbb R,\{0\})$">$(X,\{0\})\to(\mathbb R,\{0\})$</span>. Its normal map is
+<span class="math" data-tex="$\pi_N:T_0X\to\mathbb R$">$\pi_N:T_0X\to\mathbb R$</span>, <span class="math" data-tex="$(u,v)\mapsto u$">$(u,v)\mapsto u$</span>. The three hypotheses of
+SH02-SP-PROPER, for the closed support <span class="math" data-tex="$D$">$D$</span> of <span class="math" data-tex="$k_S$">$k_S$</span>, are all satisfied:
+<span class="math" data-tex="$\pi|_D$">$\pi|_D$</span> is proper as just proved; <span class="math" data-tex="$\pi_N|_{C_0(D)}=\pi_N|_L$">$\pi_N|_{C_0(D)}=\pi_N|_L$</span> is a
+homeomorphism to a closed ray and is proper; and
+<span class="math" data-tex="$D\cap\pi^{-1}(0)=\{0\}$">$D\cap\pi^{-1}(0)=\{0\}$</span>. The resulting comparison gives</p>
+<span class="math math-display" data-tex="$$
+R\pi_{N*}\nu_0k_S\simeq\nu_0 R\pi_*k_S=0.
+\tag{SA13}
+$$">$$
+R\pi_{N*}\nu_0k_S\simeq\nu_0 R\pi_*k_S=0.
+\tag{SA13}
+$$</span>
+<p>Finally, <span class="math" data-tex="$K=\nu_0k_S$">$K=\nu_0k_S$</span> is supported in <span class="math" data-tex="$L$">$L$</span> by the support upper bound.
+If <span class="math" data-tex="$h:L\hookrightarrow T_0X$">$h:L\hookrightarrow T_0X$</span>, then <span class="math" data-tex="$K\simeq h_*h^{-1}K$">$K\simeq h_*h^{-1}K$</span>. The composite
+<span class="math" data-tex="$\pi_Nh$">$\pi_Nh$</span> is a homeomorphism of <span class="math" data-tex="$L$">$L$</span> onto the closed ray in the line,
+followed by its closed inclusion. Its direct image is exact and fully
+faithful. Thus <span class="math" data-tex="$R\pi_{N*}K=0$">$R\pi_{N*}K=0$</span> implies <span class="math" data-tex="$K=0$">$K=0$</span>. This proves SA11 in all
+cohomological degrees. In particular, no interchange with an infinite
+product, approximation by constructible inputs, or nonproper ordinary
+base change occurs in this argument. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-sa-hom-comparison-specializing-an-evaluation-map">SH02-SA-HOM-COMPARISON — Specializing an evaluation map</h2>
+<p>For arbitrary <span class="math" data-tex="$F,G\in D^b(k_X)$">$F,G\in D^b(k_X)$</span>, there is a natural morphism</p>
+<span class="math math-display" data-tex="$$
+b_{G,F}:\nu_MR\mathcal Hom(G,F)
+\longrightarrow R\mathcal Hom(\nu_MG,\nu_MF).
+\tag{SA14}
+$$">$$
+b_{G,F}:\nu_MR\mathcal Hom(G,F)
+\longrightarrow R\mathcal Hom(\nu_MG,\nu_MF).
+\tag{SA14}
+$$</span>
+<p>It is covariant in <span class="math" data-tex="$F$">$F$</span> and contravariant in <span class="math" data-tex="$G$">$G$</span>.</p>
+<p><strong>Construction and proof.</strong> Set <span class="math" data-tex="$A=R\mathcal Hom(G,F)$">$A=R\mathcal Hom(G,F)$</span>, which is bounded
+by SH02-MD-BOUNDED-HOM. Apply the specialization tensor comparison to
+<span class="math" data-tex="$A,G$">$A,G$</span>, followed by specialization of evaluation:</p>
+<span class="math math-display" data-tex="$$
+\nu_MA\otimes^L\nu_MG
+\longrightarrow\nu_M(A\otimes^LG)
+\xrightarrow{\ \nu_M(\mathrm{ev})\ }\nu_MF.
+\tag{SA15}
+$$">$$
+\nu_MA\otimes^L\nu_MG
+\longrightarrow\nu_M(A\otimes^LG)
+\xrightarrow{\ \nu_M(\mathrm{ev})\ }\nu_MF.
+\tag{SA15}
+$$</span>
+<p>Tensor-Hom adjunction turns this specified composite into SA14. The
+boundedness theorem also bounds the target. Naturality follows from
+naturality of evaluation and of the tensor comparison. The construction
+does not exchange specialization with an internal Hom by an assumed
+isomorphism, nor does it require <span class="math" data-tex="$G$">$G$</span> to be perfect. The tensor symmetry
+is the usual Koszul symmetry when factors are reordered; the displayed
+order needs no reordering or extra sign. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-sa-support-comparison-taking-supported-sections-before-a-limit">SH02-SA-SUPPORT-COMPARISON — Taking supported sections before a limit</h2>
+<p>For a closed subset <span class="math" data-tex="$A\subset X$">$A\subset X$</span> and <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span>, there is a natural
+morphism</p>
+<span class="math math-display" data-tex="$$
+d_{A,F}:\nu_MR\Gamma_A F
+\longrightarrow R\Gamma_{C_M(A)}\nu_MF.
+\tag{SA16}
+$$">$$
+d_{A,F}:\nu_MR\Gamma_A F
+\longrightarrow R\Gamma_{C_M(A)}\nu_MF.
+\tag{SA16}
+$$</span>
+<p><strong>Construction.</strong> The support counit <span class="math" data-tex="$R\Gamma_A F\to F$">$R\Gamma_A F\to F$</span> specializes to
+a map <span class="math" data-tex="$K\to\nu_MF$">$K\to\nu_MF$</span>, where <span class="math" data-tex="$K=\nu_MR\Gamma_A F$">$K=\nu_MR\Gamma_A F$</span>. The complex
+<span class="math" data-tex="$R\Gamma_A F$">$R\Gamma_A F$</span> has closed support in <span class="math" data-tex="$A$">$A$</span>, so <span class="math" data-tex="$K$">$K$</span> has closed support in
+<span class="math" data-tex="$C=C_M(A)$">$C=C_M(A)$</span>. The inclusion of the category of complexes supported in <span class="math" data-tex="$C$">$C$</span>
+has right adjoint <span class="math" data-tex="$R\Gamma_C$">$R\Gamma_C$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Hom}(K,R\Gamma_C\nu_MF)
+\simeq\operatorname{Hom}(K,\nu_MF).
+$$">$$
+\operatorname{Hom}(K,R\Gamma_C\nu_MF)
+\simeq\operatorname{Hom}(K,\nu_MF).
+$$</span>
+<p>The map corresponding to the specialized support counit is SA16. This
+defines a canonical morphism in the derived category and proves its
+naturality. The boundedness of local cohomology and of the other operations
+is covered by the explicit finite-dimensional bounds in the setup.</p>
+<p>This map is also obtained by combining SA6 and SA14. For a closed subset,
+the canonical identification
+<span class="math" data-tex="$R\mathcal Hom(k_A,F)=R\Gamma_A F$">$R\mathcal Hom(k_A,F)=R\Gamma_A F$</span> follows from the adjunction for its
+closed inclusion. Use it in the following composite:</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\nu_MR\Gamma_A F
+&amp;\xrightarrow{b_{k_A,F}}
+R\mathcal Hom(\nu_Mk_A,\nu_MF)\\
+&amp;\xrightarrow{c_A^*}
+R\mathcal Hom(k_C,\nu_MF)
+\simeq R\Gamma_C\nu_MF.
+\end{aligned}
+\tag{SA17}
+$$">$$
+\begin{aligned}
+\nu_MR\Gamma_A F
+&amp;\xrightarrow{b_{k_A,F}}
+R\mathcal Hom(\nu_Mk_A,\nu_MF)\\
+&amp;\xrightarrow{c_A^*}
+R\mathcal Hom(k_C,\nu_MF)
+\simeq R\Gamma_C\nu_MF.
+\end{aligned}
+\tag{SA17}
+$$</span>
+<p>To check that this is the same map, compose it with the support counit
+to <span class="math" data-tex="$\nu_MF$">$\nu_MF$</span>. Under tensor-Hom adjunction, that composition is evaluation
+after precomposition with <span class="math" data-tex="$k_E\to k_C\to\nu_Mk_A$">$k_E\to k_C\to\nu_Mk_A$</span>. By the construction
+of <span class="math" data-tex="$c_A$">$c_A$</span>, the latter map is specialization of <span class="math" data-tex="$k_X\to k_A$">$k_X\to k_A$</span>, with the
+constant-unit identification. Naturality and the unit property of the
+specialization tensor comparison reduce SA15 to specialization of
+<span class="math" data-tex="$R\mathcal Hom(k_A,F)\to R\mathcal Hom(k_X,F)=F$">$R\mathcal Hom(k_A,F)\to R\mathcal Hom(k_X,F)=F$</span>. This is precisely the
+support counit used to define SA16. The supported adjunction then proves
+equality of the two maps. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-sa-tangent-circles-a-compact-model-retaining-two-approaching-pieces">SH02-SA-TANGENT-CIRCLES — A compact model retaining two approaching pieces</h2>
+<p>Let <span class="math" data-tex="$X=\mathbb R^2$">$X=\mathbb R^2$</span>, <span class="math" data-tex="$M=\{0\}$">$M=\{0\}$</span>, and <span class="math" data-tex="$k\ne0$">$k\ne0$</span>. Consider the two circles</p>
+<span class="math math-display" data-tex="$$
+P=\{x^2+(y-2)^2=4\},\qquad
+Q=\{x^2+(y+3)^2=9\},
+\qquad L=\{(u,0):u\in\mathbb R\}\subset T_0X.
+\tag{SA18}
+$$">$$
+P=\{x^2+(y-2)^2=4\},\qquad
+Q=\{x^2+(y+3)^2=9\},
+\qquad L=\{(u,0):u\in\mathbb R\}\subset T_0X.
+\tag{SA18}
+$$</span>
+<p>They meet only at the origin. Indeed, their equations say
+<span class="math" data-tex="$x^2+y^2=4y=-6y$">$x^2+y^2=4y=-6y$</span>, forcing <span class="math" data-tex="$x=y=0$">$x=y=0$</span>. Each is a compact smooth curve with
+tangent line <span class="math" data-tex="$L$">$L$</span> at zero. The normal cones along the point are thus</p>
+<span class="math math-display" data-tex="$$
+C_0(P)=C_0(Q)=C_0(P\cup Q)=L.
+$$">$$
+C_0(P)=C_0(Q)=C_0(P\cup Q)=L.
+$$</span>
+<p>There are natural identifications</p>
+<span class="math math-display" data-tex="$$
+\nu_0k_P\simeq k_L,
+\qquad \nu_0k_Q\simeq k_L,
+\qquad \nu_0k_{\{0\}}\simeq k_{\{0\}}.
+\tag{SA19}
+$$">$$
+\nu_0k_P\simeq k_L,
+\qquad \nu_0k_Q\simeq k_L,
+\qquad \nu_0k_{\{0\}}\simeq k_{\{0\}}.
+\tag{SA19}
+$$</span>
+<p><strong>Proof with the properness conditions.</strong> For the inclusion of <span class="math" data-tex="$P$">$P$</span> into
+<span class="math" data-tex="$X$">$X$</span>, specialize the constant sheaf on the manifold <span class="math" data-tex="$P$">$P$</span> along its point
+zero. In a local coordinate at that point the constant sheaf specializes
+to the constant sheaf on <span class="math" data-tex="$T_0P$">$T_0P$</span>: the positive deformation chart is a
+product and interval descent computes the limit. This is also the unit
+case <span class="math" data-tex="$\nu k_P=k_{T_0P}$">$\nu k_P=k_{T_0P}$</span> in the specialization tensor theorem. The original
+inclusion is proper because <span class="math" data-tex="$P$">$P$</span> is closed, its normal derivative is the
+closed linear embedding <span class="math" data-tex="$T_0P\hookrightarrow T_0X$">$T_0P\hookrightarrow T_0X$</span> and is proper, and
+the preimage of the target center is exactly the source center. The
+proper comparison consequently identifies specialization of its closed
+direct image with <span class="math" data-tex="$k_L$">$k_L$</span>. The argument for <span class="math" data-tex="$Q$">$Q$</span> is identical with its own
+derivative. The point calculation uses the same theorem for the inclusion
+of a point, or the supported-object computation in SH02-SP-ZERO.</p>
+<p>In all three cases the identification is compatible with restriction to
+the origin: it is built from the same units and restriction maps in the
+proper comparison. Hence specializing <span class="math" data-tex="$k_P\to k_{\{0\}}$">$k_P\to k_{\{0\}}$</span> or
+<span class="math" data-tex="$k_Q\to k_{\{0\}}$">$k_Q\to k_{\{0\}}$</span> gives the usual <span class="math" data-tex="$k_L\to k_{\{0\}}$">$k_L\to k_{\{0\}}$</span>.
+No orientation shift occurs in SA19 because these are ordinary direct
+images and constant-unit specialization. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-sa-closed-map-failure-one-normal-direction-need-not-mean-one-section">SH02-SA-CLOSED-MAP-FAILURE — One normal direction need not mean one section</h2>
+<p>Put <span class="math" data-tex="$A=P\cup Q$">$A=P\cup Q$</span> in the circle model. Its constant sheaf fits into the
+short exact sequence</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow k_A\longrightarrow k_P\oplus k_Q
+\xrightarrow{\mathrm{res}_P-\mathrm{res}_Q}k_{\{0\}}
+\longrightarrow0.
+\tag{SA20}
+$$">$$
+0\longrightarrow k_A\longrightarrow k_P\oplus k_Q
+\xrightarrow{\mathrm{res}_P-\mathrm{res}_Q}k_{\{0\}}
+\longrightarrow0.
+\tag{SA20}
+$$</span>
+<p>Exactness can be checked on stalks: off the intersection the surviving
+summand is the identity, and at the origin the sequence is
+<span class="math" data-tex="$0\to k\xrightarrow{(1,1)}k^2\xrightarrow{(1,-1)}k\to0$">$0\to k\xrightarrow{(1,1)}k^2\xrightarrow{(1,-1)}k\to0$</span>.
+Specialize this sequence and use SA19. It follows that <span class="math" data-tex="$\nu_0k_A$">$\nu_0k_A$</span> is a
+sheaf in degree zero, with stalk</p>
+<span class="math math-display" data-tex="$$
+(\nu_0k_A)_v\simeq
+\begin{cases}
+k^2,&amp;v\in L\setminus\{0\},\\
+k,&amp;v=0,\\
+0,&amp;v\notin L.
+\end{cases}
+\tag{SA21}
+$$">$$
+(\nu_0k_A)_v\simeq
+\begin{cases}
+k^2,&amp;v\in L\setminus\{0\},\\
+k,&amp;v=0,\\
+0,&amp;v\notin L.
+\end{cases}
+\tag{SA21}
+$$</span>
+<p>There is no additional cohomology: the difference map from <span class="math" data-tex="$k_L^2$">$k_L^2$</span> to
+<span class="math" data-tex="$k_{\{0\}}$">$k_{\{0\}}$</span> is surjective on every stalk. Its kernel is the displayed
+specialization sheaf. At a nonzero <span class="math" data-tex="$v\in L$">$v\in L$</span>, the map</p>
+<span class="math math-display" data-tex="$$
+c_A:k_L\longrightarrow\nu_0k_A
+$$">$$
+c_A:k_L\longrightarrow\nu_0k_A
+$$</span>
+<p>has stalk <span class="math" data-tex="$k\to k^2$">$k\to k^2$</span>, <span class="math" data-tex="$a\mapsto(a,a)$">$a\mapsto(a,a)$</span>. This follows by composing the
+constant restriction map with the two restrictions in SA20, which both
+send the constant value <span class="math" data-tex="$a$">$a$</span> to <span class="math" data-tex="$a$">$a$</span>. Its cokernel is a copy of <span class="math" data-tex="$k$">$k$</span>, so it
+is not an isomorphism for any nonzero <span class="math" data-tex="$k$">$k$</span>. At zero it is the identity.
+Thus the full support equality SA7 holds while its natural coefficient
+comparison fails. The normal cone records the common direction, whereas
+the specialization retains two independent local sections away from zero.</p>
+<h2 id="sh02-sa-hom-and-support-failure-coincident-directions-enlarge-both-targets">SH02-SA-HOM-AND-SUPPORT-FAILURE — Coincident directions enlarge both targets</h2>
+<p>Keep the same circles and take <span class="math" data-tex="$G=k_P$">$G=k_P$</span>, <span class="math" data-tex="$F=k_Q$">$F=k_Q$</span>, and the closed support
+set <span class="math" data-tex="$A=P$">$A=P$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+R\mathcal Hom(k_P,k_Q)=R\Gamma_Pk_Q
+\simeq k_{\{0\}}[-1].
+\tag{SA22}
+$$">$$
+R\mathcal Hom(k_P,k_Q)=R\Gamma_Pk_Q
+\simeq k_{\{0\}}[-1].
+\tag{SA22}
+$$</span>
+<p>To verify the degree and coefficient, let <span class="math" data-tex="$q:Q\hookrightarrow X$">$q:Q\hookrightarrow X$</span> and
+<span class="math" data-tex="$z:\{0\}\hookrightarrow Q$">$z:\{0\}\hookrightarrow Q$</span>. Closed direct image identifies the support
+functor with support in the intersection, so
+<span class="math" data-tex="$R\Gamma_Pk_Q=q_*R\Gamma_{\{0\}}k_Q$">$R\Gamma_Pk_Q=q_*R\Gamma_{\{0\}}k_Q$</span> with the constant sheaf on <span class="math" data-tex="$Q$">$Q$</span>
+understood on the right. The costalk of this constant sheaf at zero is
+<span class="math" data-tex="$z^!k_Q=k[-1]$">$z^!k_Q=k[-1]$</span>, after orienting a local coordinate on <span class="math" data-tex="$Q$">$Q$</span> by increasing
+<span class="math" data-tex="$x$">$x$</span>. Directly, a small interval in <span class="math" data-tex="$Q$">$Q$</span> is cut into two intervals by zero;
+the localization map on constant sections is <span class="math" data-tex="$k\to k\oplus k$">$k\to k\oplus k$</span>,
+<span class="math" data-tex="$a\mapsto(a,a)$">$a\mapsto(a,a)$</span>. Its kernel is zero and its cokernel is <span class="math" data-tex="$k$">$k$</span>, so the
+supported cohomology is <span class="math" data-tex="$k$">$k$</span> in degree one only. This also derives SA22
+without suppressing the degree shift. A different orientation changes
+the chosen generator, not the following nonisomorphism assertion.</p>
+<p>By SA19 and exactness of specialization,</p>
+<span class="math math-display" data-tex="$$
+\nu_0R\mathcal Hom(k_P,k_Q)
+\simeq\nu_0R\Gamma_Pk_Q
+\simeq k_{\{0\}}[-1].
+\tag{SA23}
+$$">$$
+\nu_0R\mathcal Hom(k_P,k_Q)
+\simeq\nu_0R\Gamma_Pk_Q
+\simeq k_{\{0\}}[-1].
+\tag{SA23}
+$$</span>
+<p>The two comparison targets, however, are</p>
+<span class="math math-display" data-tex="$$
+R\mathcal Hom(\nu_0k_P,\nu_0k_Q)
+\simeq R\mathcal Hom(k_L,k_L)\simeq k_L,
+\qquad
+R\Gamma_{C_0(P)}\nu_0k_Q\simeq R\Gamma_Lk_L\simeq k_L.
+\tag{SA24}
+$$">$$
+R\mathcal Hom(\nu_0k_P,\nu_0k_Q)
+\simeq R\mathcal Hom(k_L,k_L)\simeq k_L,
+\qquad
+R\Gamma_{C_0(P)}\nu_0k_Q\simeq R\Gamma_Lk_L\simeq k_L.
+\tag{SA24}
+$$</span>
+<p>For the Hom identification, closed adjunction reduces both arguments to
+the constant sheaf on <span class="math" data-tex="$L$">$L$</span>, and the internal Hom from the tensor unit to
+itself is <span class="math" data-tex="$k_L$">$k_L$</span>. For the support identification, <span class="math" data-tex="$k_L$">$k_L$</span> already has support
+in <span class="math" data-tex="$L$">$L$</span>, so the support counit is an isomorphism. At every nonzero point
+of <span class="math" data-tex="$L$">$L$</span>, the source in SA23 has zero stalk and each target in SA24 has
+stalk <span class="math" data-tex="$k$">$k$</span>. Thus both SA14 and SA16 fail to be isomorphisms. These are
+failures for compact, smooth individual supports and bounded sheaves with
+free rank-one coefficients; no pathological space or infinite family is
+needed. The actual maps remain the adjunction morphisms constructed above.</p>
+<h2 id="sh02-sa-problems-exercises-with-complete-solutions">SH02-SA-PROBLEMS — Exercises with complete solutions</h2>
+<p><strong>Problem 1: independence of an extension.</strong> Let <span class="math" data-tex="$S\subset X$">$S\subset X$</span> be closed,
+and suppose <span class="math" data-tex="$F_1,F_2\in D^b(k_X)$">$F_1,F_2\in D^b(k_X)$</span> are joined by a morphism that becomes an
+isomorphism on <span class="math" data-tex="$X\setminus S$">$X\setminus S$</span>. Show that their specializations become
+isomorphic on <span class="math" data-tex="$E\setminus C_M(S)$">$E\setminus C_M(S)$</span>. Explain why the specified morphism,
+rather than just the two restricted objects, matters.</p>
+<p><strong>Solution.</strong> The cone of the morphism restricts to zero on <span class="math" data-tex="$X\setminus S$">$X\setminus S$</span>,
+so its cohomology sheaves have support in <span class="math" data-tex="$S$">$S$</span>. The specialization support
+bound places the support of its specialization in <span class="math" data-tex="$C_M(S)$">$C_M(S)$</span>. Apply
+specialization to the triangle and then restrict to the complementary
+open set. The cone vanishes there, so the specialized morphism is an
+isomorphism. If only an isomorphism between the two restrictions is given,
+SA1 applies functorially to that isomorphism and SA2 identifies the
+result with the two restricted specializations. Without choosing such
+an isomorphism, one obtains no preferred identification of the outputs.</p>
+<p><strong>Problem 2: do the bundle identifications remember orientability?</strong> Let
+<span class="math" data-tex="$E\to S^1$">$E\to S^1$</span> be a nonorientable real line bundle and let <span class="math" data-tex="$A$">$A$</span> be any bounded
+complex of <span class="math" data-tex="$k$">$k$</span>-modules. Put <span class="math" data-tex="$F=A_E$">$F=A_E$</span>, the constant complex on the total
+space. Determine <span class="math" data-tex="$\nu_{S^1}F$">$\nu_{S^1}F$</span>, and specify <span class="math" data-tex="$\mu_{S^1}F$">$\mu_{S^1}F$</span> without choosing
+an orientation of <span class="math" data-tex="$E$">$E$</span>.</p>
+<p><strong>Solution.</strong> The constant complex is conic, so SA3 gives
+<span class="math" data-tex="$\nu_{S^1}F=A_E$">$\nu_{S^1}F=A_E$</span>. The second output is the globally defined Fourier
+transform in SA4, with <span class="math" data-tex="$F=A_E$">$F=A_E$</span>. This is a complete orientation-independent
+specification of its canonical identification with <span class="math" data-tex="$\mu_{S^1}F$">$\mu_{S^1}F$</span>: the
+pairing <span class="math" data-tex="$E\times_{S^1}E^*\to\mathbb R$">$E\times_{S^1}E^*\to\mathbb R$</span> is intrinsic. If one subsequently
+computes the Fourier transform of a fibrewise constant object as an object
+on the zero section of the dual bundle, the usual orientation complex of
+the fibre appears in that Fourier calculation. It is not an extra twist
+in the equality between microlocalization and that transform. No
+trivialization of the nonorientable line is needed for either statement.</p>
+<p><strong>Problem 3: a coefficient module in the collapsing strip.</strong> In SA10,
+replace <span class="math" data-tex="$k_S$">$k_S$</span> by <span class="math" data-tex="$A_S$">$A_S$</span> for an arbitrary nonzero <span class="math" data-tex="$k$">$k$</span>-module <span class="math" data-tex="$A$">$A$</span>. Prove the
+same vanishing of specialization without assuming <span class="math" data-tex="$A$">$A$</span> flat or finite.</p>
+<p><strong>Solution.</strong> There is a short exact sequence
+<span class="math" data-tex="$0\to A_S\to A_D\to A_B\to0$">$0\to A_S\to A_D\to A_B\to0$</span>, as its stalk sequences show. A constant
+sheaf with coefficient <span class="math" data-tex="$A$">$A$</span> on a compact interval has ordinary sections
+<span class="math" data-tex="$A$">$A$</span> and no positive cohomology; the constant-endpoint restriction is the
+identity of <span class="math" data-tex="$A$">$A$</span>. Proper base change therefore makes
+<span class="math" data-tex="$R\pi_*A_D\to R\pi_*A_B$">$R\pi_*A_D\to R\pi_*A_B$</span> an isomorphism, giving <span class="math" data-tex="$R\pi_*A_S=0$">$R\pi_*A_S=0$</span>.
+The closed support of <span class="math" data-tex="$A_S$">$A_S$</span> is <span class="math" data-tex="$D$">$D$</span>, and the three proper-specialization
+conditions are exactly the geometric conditions checked after SA12.
+Consequently <span class="math" data-tex="$R\pi_{N*}\nu_0A_S=0$">$R\pi_{N*}\nu_0A_S=0$</span>, and the same fully faithful closed-ray
+argument gives <span class="math" data-tex="$\nu_0A_S=0$">$\nu_0A_S=0$</span>. This proof uses no derived tensoring with a
+nonflat module and no finite-generation assertion.</p>
+<p><strong>Problem 4: locate the two different failures.</strong> In the circle model,
+compare the stalks at zero and at a nonzero <span class="math" data-tex="$v\in L$">$v\in L$</span> of SA6 for <span class="math" data-tex="$A=P\cup Q$">$A=P\cup Q$</span>
+and of SA16 for <span class="math" data-tex="$A=P$">$A=P$</span>, <span class="math" data-tex="$F=k_Q$">$F=k_Q$</span>.</p>
+<p><strong>Solution.</strong> For SA6 the source and target at zero are both <span class="math" data-tex="$k$">$k$</span>, and the
+map is the identity; at <span class="math" data-tex="$v\ne0$">$v\ne0$</span> it is the diagonal <span class="math" data-tex="$k\to k^2$">$k\to k^2$</span>. For SA16
+the zero-stalk source is <span class="math" data-tex="$k[-1]$">$k[-1]$</span> and the zero-stalk target is <span class="math" data-tex="$k$">$k$</span>; they
+have nonzero cohomology in different degrees. At <span class="math" data-tex="$v\ne0$">$v\ne0$</span> its source is
+zero and its target is <span class="math" data-tex="$k$">$k$</span>. Thus the first comparison fails through extra
+independent sections in a shared direction, while the second fails
+through local cohomology concentrated before specialization at the
+intersection point. Both calculations distinguish a closed support from
+the subset of directions where a particular degree has a nonzero stalk.</p>
+<h2 id="sh02-sa-boundary-statements-proved-and-the-remaining-audit-boundary">SH02-SA-BOUNDARY — Statements proved and the remaining audit boundary</h2>
+<p>Removal has a functorial quotient construction, and conic recovery holds
+on arbitrary vector bundles with all bounded coefficient complexes allowed.
+The three comparison maps are defined by their units, tensor evaluation,
+and supported adjunction, with their compatibility verified. The compact
+circle model gives an explicit failure for each comparison. For set
+coefficients, equality of normal cone and specialization support is proved
+for closed subsets and nonzero coefficients. For arbitrary locally closed
+subsets only SA9 holds in general, as the fully computed strip example
+demonstrates. That discrepancy remains visible in the source correspondence;
+it is not silently counted as a proof of the stronger assertion.</p>
+<p>These results suggest two concrete further questions. One can seek geometric
+conditions on a locally closed subset that exclude the half-open collapsing
+fibres of SA10 and restore support equality. One can also seek hypotheses
+on two sheaves that make their tensor evaluation commute with the normal
+limit, thereby turning SA14 into an isomorphism. Neither property follows
+from the boundedness or compactness conditions used in this lesson.</p>
+<p>All proofs remain relative to the exact prerequisite contracts above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><span class="unlinked">Editable Markdown source of this lesson</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

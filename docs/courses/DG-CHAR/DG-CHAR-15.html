@@ -1,0 +1,1264 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Combinatorial L-classes and piecewise linear fibres · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-15.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="combinatorial-l-classes-and-piecewise-linear-fibres">Combinatorial L-classes and piecewise linear fibres</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0. No independent AI review is recorded.</em></p>
+<p>A generic fibre of a piecewise linear map has a signature even when its source is only a rational homology manifold. We prove that this signature is independent of the generic value and of the map's homotopy representative. Sphere maps then determine unique rational L-classes, and stabilization removes the dimension restriction. Six original graded exercises have complete solutions.</p>
+<p>This chapter proves the generic-fibre and stable-range construction, its sphere stabilization, and the duality and approximation results used here. The <a href="DG-CHAR-15B.html">smooth-comparison companion</a> proves compatibility with tangent L-classes for a given smooth triangulation and supplies the lens-space application. <a href="DG-CHAR-15C.html">The triangulation companion</a> proves existence, relative extension and the precise integral-refinement obstruction.</p>
+<p>The exact proved prerequisites are <a href="DG-CHAR-06.html">Thom and Euler classes</a> for singular excision, products, coefficient comparisons and right cap; <a href="DG-CHAR-08B.html">Frame fields</a> for degree classification, first Hurewicz, homotopy extension and the full cellular comparison; <a href="DG-CHAR-13B.html">Homotopy fibres</a> for filtered chains and relative CW compression; <a href="DG-CHAR-13C.html">Rational homotopy</a> for sphere finiteness with its complete proof; <a href="DG-CHAR-07.html">Manifold duality</a> for the exact cap boundary convention; <a href="DG-CHAR-11.html">Characteristic numbers</a> for integral Newton identities; <a href="DG-CHAR-14.html">The signature theorem</a> for the full rational form algebra and universal multiplicative sequences; and <a href="DG-CHAR-14B.html">Odd-prime operations</a> for normalization and the realization comparison. The actual complete used proofs, coefficients and dimension conditions were checked.</p>
+<h2 id="a-generic-simplicial-fibres-and-their-local-homology">A. Generic simplicial fibres and their local homology</h2>
+<p>The coefficient field in this chapter is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. A locally finite simplicial complex <span class="math" data-tex="\(K\)">\(K\)</span> is a <strong>rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold without boundary</strong> if
+<span class="math math-display" data-tex="\[
+H_j(K,K-\{x\};\mathbb Q)=
+\begin{cases}\mathbb Q&amp;j=n,\\0&amp;j\ne n,\end{cases}
+\tag{A.1}
+\]">\[
+H_j(K,K-\{x\};\mathbb Q)=
+\begin{cases}\mathbb Q&amp;j=n,\\0&amp;j\ne n,\end{cases}
+\tag{A.1}
+\]</span>
+at every point <span class="math" data-tex="\(x\)">\(x\)</span>. This definition is a statement about local homology; it does not assert that a neighbourhood is a Euclidean ball. Compactness makes such a locally finite complex finite: finitely many local neighbourhoods, each meeting only finitely many simplices, cover it.</p>
+<p>We first prove the local product assertion needed for generic fibres. Neither a differentiable implicit-function theorem nor a PL transversality theorem is assumed.</p>
+<p><span id="DG-CHAR-15.lemma-A.1"></span><strong>Lemma A.1 — Product over an open target simplex.</strong> Let <span class="math" data-tex="\(K,L\)">\(K,L\)</span> be locally finite simplicial complexes, let <span class="math" data-tex="\(f:K\to L\)">\(f:K\to L\)</span> be a simplicial map, let <span class="math" data-tex="\(V\)">\(V\)</span> be the interior of a simplex <span class="math" data-tex="\(\sigma=[w_0,\ldots,w_s]\)">\(\sigma=[w_0,\ldots,w_s]\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>, and choose <span class="math" data-tex="\(y=\sum_j t_j w_j\in V\)">\(y=\sum_j t_j w_j\in V\)</span>, with each <span class="math" data-tex="\(t_j&gt;0\)">\(t_j&gt;0\)</span>. There is a homeomorphism
+<span class="math math-display" data-tex="\[
+f^{-1}(V)\longrightarrow V\times f^{-1}(y)
+\tag{A.2}
+\]">\[
+f^{-1}(V)\longrightarrow V\times f^{-1}(y)
+\tag{A.2}
+\]</span>
+whose first coordinate is <span class="math" data-tex="\(f\)">\(f\)</span>. This assertion concerns the open simplex, with no claim over its closed boundary.</p>
+<p><strong>Proof.</strong> For a point <span class="math" data-tex="\(x\in f^{-1}(V)\)">\(x\in f^{-1}(V)\)</span>, every vertex in the support of its barycentric coordinates maps to one of the <span class="math" data-tex="\(w_j\)">\(w_j\)</span>'s. Indeed all coordinate contributions are nonnegative, and a contribution at another target vertex would put <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> outside <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Write <span class="math" data-tex="\(c_v\)">\(c_v\)</span> for these source coordinates and
+<span class="math" data-tex="\(s_j=\sum_{f(v)=w_j}c_v\)">\(s_j=\sum_{f(v)=w_j}c_v\)</span>.
+Every <span class="math" data-tex="\(s_j\)">\(s_j\)</span> is positive, because <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> is in the interior. Define
+<span class="math math-display" data-tex="\[
+x_y=\sum_j\sum_{f(v)=w_j}\frac{t_j}{s_j}c_v v.
+\tag{A.3}
+\]">\[
+x_y=\sum_j\sum_{f(v)=w_j}\frac{t_j}{s_j}c_v v.
+\tag{A.3}
+\]</span>
+Its coordinates are nonnegative and sum to <span class="math" data-tex="\(\sum_jt_j=1\)">\(\sum_jt_j=1\)</span>. It has the same support as <span class="math" data-tex="\(x\)">\(x\)</span>, so remains in its source simplex, and its image is <span class="math" data-tex="\(y\)">\(y\)</span>. Send <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\((\sum_j s_jw_j,x_y)\)">\((\sum_j s_jw_j,x_y)\)</span>.</p>
+<p>Conversely, for <span class="math" data-tex="\(y&#x27;=\sum_j s_jw_j\in V\)">\(y&#x27;=\sum_j s_jw_j\in V\)</span> and a point <span class="math" data-tex="\(z\in f^{-1}(y)\)">\(z\in f^{-1}(y)\)</span>, multiply every coordinate of <span class="math" data-tex="\(z\)">\(z\)</span> at a vertex mapping to <span class="math" data-tex="\(w_j\)">\(w_j\)</span> by <span class="math" data-tex="\(s_j/t_j\)">\(s_j/t_j\)</span>. The resulting point has the same source support and image <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>. These two coordinate rules are inverse. They agree on common source faces and are continuous on each simplex, since their denominators are positive on the indicated open set. The weak simplex topology gives global continuity; for a locally finite complex it can also be checked in a finite union of simplices near every point. This proves the homeomorphism. ∎</p>
+<p><span id="DG-CHAR-15.lemma-A.2"></span><strong>Lemma A.2 — Removing an ordinary local factor.</strong> If <span class="math" data-tex="\(Z\)">\(Z\)</span> is Hausdorff, <span class="math" data-tex="\(V\)">\(V\)</span> is an open <span class="math" data-tex="\(s\)">\(s\)</span>-simplex, and <span class="math" data-tex="\(v\in V,z\in Z\)">\(v\in V,z\in Z\)</span>, then
+<span class="math math-display" data-tex="\[
+H_j(V\times Z,(V\times Z)-\{(v,z)\};\mathbb Q)
+\cong H_{j-s}(Z,Z-\{z\};\mathbb Q).
+\tag{A.4}
+\]">\[
+H_j(V\times Z,(V\times Z)-\{(v,z)\};\mathbb Q)
+\cong H_{j-s}(Z,Z-\{z\};\mathbb Q).
+\tag{A.4}
+\]</span>
+The isomorphism uses the positive local generator of the oriented <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> The punctured product is
+<span class="math" data-tex="\((V-\{v\})\times Z\ \cup\ V\times(Z-\{z\})\)">\((V-\{v\})\times Z\ \cup\ V\times(Z-\{z\})\)</span>.
+Both punctured factors are open. Thus the full relative external-chain product comparison of the Thom chapter applies to this union. It identifies the pair's chains up to chain homotopy with
+<span class="math math-display" data-tex="\[
+C_*(V,V-\{v\};\mathbb Q)\otimes
+C_*(Z,Z-\{z\};\mathbb Q).
+\]">\[
+C_*(V,V-\{v\};\mathbb Q)\otimes
+C_*(Z,Z-\{z\};\mathbb Q).
+\]</span>
+The first complex has homology <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> only in degree <span class="math" data-tex="\(s\)">\(s\)</span>, by the proved local ball/sphere calculation. Splitting cycles and boundaries in a vector-space complex gives an actual chain homotopy equivalence with <span class="math" data-tex="\(\mathbb Q[s]\)">\(\mathbb Q[s]\)</span>. Tensoring that equivalence gives (A.4), with its generator and shift specified. This includes <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. ∎</p>
+<p><span id="DG-CHAR-15.proposition-A.3"></span><strong>Proposition A.3 — Generic fibre local homology.</strong> Suppose <span class="math" data-tex="\(K\)">\(K\)</span> is a compact rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold, <span class="math" data-tex="\(L\)">\(L\)</span> is a triangulated <span class="math" data-tex="\(s\)">\(s\)</span>-sphere and <span class="math" data-tex="\(f:K\to L\)">\(f:K\to L\)</span> is simplicial. For every point <span class="math" data-tex="\(y\)">\(y\)</span> in the interior of a top-dimensional target simplex, <span class="math" data-tex="\(f^{-1}(y)\)">\(f^{-1}(y)\)</span> is a compact finite polyhedron satisfying (A.1) in dimension <span class="math" data-tex="\(n-s\)">\(n-s\)</span>, or it is empty.</p>
+<p><strong>Proof.</strong> The fibre is closed in the compact complex, hence compact. In each source simplex its defining equations fix the sums of coordinates in the vertex groups of Lemma A.1. The solution is either empty or a convex polytope, specifically a product of scaled simplices. Its faces are the intersections with source faces. These finitely many polytopes can be triangulated compatibly: choose a barycentre in every nonempty face and use the simplices indexed by strictly nested face chains. Induction in face dimension proves this triangulation by coning the already triangulated boundary to the barycentre; convexity makes these cones cover the face with disjoint interiors. The choices on a shared face are identical. Thus the fibre is a finite polyhedron.</p>
+<p>At a fibre point, Lemma A.1 identifies its neighbourhood in <span class="math" data-tex="\(K\)">\(K\)</span> with a neighbourhood in <span class="math" data-tex="\(V\times f^{-1}(y)\)">\(V\times f^{-1}(y)\)</span>. Relative excision identifies their point-local homology, and Lemma A.2 removes <span class="math" data-tex="\(V\)">\(V\)</span>. Condition (A.1) on <span class="math" data-tex="\(K\)">\(K\)</span> gives exactly one copy of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> in fibre degree <span class="math" data-tex="\(n-s\)">\(n-s\)</span>, zero elsewhere. If <span class="math" data-tex="\(s&gt;n\)">\(s&gt;n\)</span>, this required group would be in a negative degree, which cannot occur, so every such fibre is empty. ∎</p>
+<p>These results prove the local-homology part of the generic-fibre construction. Orientation, duality, equality of the signatures in different target simplex interiors and their homotopy additivity require further proofs below; local product alone does not establish them.</p>
+<h2 id="b-recovering-pontryagin-classes-from-the-l-classes">B. Recovering Pontryagin classes from the L-classes</h2>
+<p>The first formulas <span class="math" data-tex="\(L_1=p_1/3\)">\(L_1=p_1/3\)</span> and <span class="math" data-tex="\(L_2=(7p_2-p_1^2)/45\)">\(L_2=(7p_2-p_1^2)/45\)</span> suggest recursive recovery of the <span class="math" data-tex="\(p_i\)">\(p_i\)</span>'s. We need a proof that the coefficient of <span class="math" data-tex="\(p_i\)">\(p_i\)</span> is nonzero for <strong>every</strong> <span class="math" data-tex="\(i\)">\(i\)</span>, not an extrapolation from these examples.</p>
+<p><span id="DG-CHAR-15.lemma-B.1"></span><strong>Lemma B.1 — Every indecomposable L-coefficient is positive.</strong> In the rational polynomial <span class="math" data-tex="\(L_j(p_1,\ldots,p_j)\)">\(L_j(p_1,\ldots,p_j)\)</span>, the coefficient <span class="math" data-tex="\(c_j\)">\(c_j\)</span> of the term <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is strictly positive. Thus
+<span class="math math-display" data-tex="\[
+L_j=c_jp_j+R_j(p_1,\ldots,p_{j-1})
+\tag{B.1}
+\]">\[
+L_j=c_jp_j+R_j(p_1,\ldots,p_{j-1})
+\tag{B.1}
+\]</span>
+and each <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is uniquely expressible as a rational polynomial in <span class="math" data-tex="\(L_1,\ldots,L_j\)">\(L_1,\ldots,L_j\)</span>.</p>
+<p><strong>Proof.</strong> All series here are formal over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Set
+<span class="math" data-tex="\(F(s)=s\cot s=s\cos s/\sin s\)">\(F(s)=s\cot s=s\cos s/\sin s\)</span>,
+where cancellation of the leading <span class="math" data-tex="\(s\)">\(s\)</span> makes the quotient a well-defined even series with constant term one. The formal derivative identities for sine and cosine give
+<span class="math math-display" data-tex="\[
+sF&#x27;=F-F^2-s^2.
+\tag{B.2}
+\]">\[
+sF&#x27;=F-F^2-s^2.
+\tag{B.2}
+\]</span>
+Write <span class="math" data-tex="\(F=1-\sum_{j\geq1}b_js^{2j}=1-B\)">\(F=1-\sum_{j\geq1}b_js^{2j}=1-B\)</span>. Comparing coefficients gives
+<span class="math math-display" data-tex="\[
+(2j+1)b_j=\mathbf1_{j=1}
+ +\sum_{\substack{a+b=j\\a,b\geq1}}b_a b_b.
+\tag{B.3}
+\]">\[
+(2j+1)b_j=\mathbf1_{j=1}
+ +\sum_{\substack{a+b=j\\a,b\geq1}}b_a b_b.
+\tag{B.3}
+\]</span>
+It follows that <span class="math" data-tex="\(b_1=1/3&gt;0\)">\(b_1=1/3&gt;0\)</span>. For <span class="math" data-tex="\(j&gt;1\)">\(j&gt;1\)</span> the sum contains <span class="math" data-tex="\(b_1b_{j-1}&gt;0\)">\(b_1b_{j-1}&gt;0\)</span>, and all other terms are nonnegative by induction, so <span class="math" data-tex="\(b_j&gt;0\)">\(b_j&gt;0\)</span>.</p>
+<p>If <span class="math" data-tex="\(f(t)=\sqrt t/\tanh\sqrt t\)">\(f(t)=\sqrt t/\tanh\sqrt t\)</span> is the formal L-series, substitution into its sine/cosine definitions gives <span class="math" data-tex="\(f(-s^2)=F(s)\)">\(f(-s^2)=F(s)\)</span>. This identity needs no choice of a complex square root: the coefficients of <span class="math" data-tex="\(\sinh s/s\)">\(\sinh s/s\)</span> and <span class="math" data-tex="\(\cosh s\)">\(\cosh s\)</span> become those of <span class="math" data-tex="\(\sin s/s\)">\(\sin s/s\)</span> and <span class="math" data-tex="\(\cos s\)">\(\cos s\)</span> under <span class="math" data-tex="\(s^2\mapsto-s^2\)">\(s^2\mapsto-s^2\)</span>. Since
+<span class="math" data-tex="\(\log(1-B)=-\sum_{m\geq1}B^m/m\)">\(\log(1-B)=-\sum_{m\geq1}B^m/m\)</span>,
+every coefficient of <span class="math" data-tex="\(s^{2j}\)">\(s^{2j}\)</span> in <span class="math" data-tex="\(\log F\)">\(\log F\)</span> is strictly negative; the term <span class="math" data-tex="\(m=1\)">\(m=1\)</span> already contributes <span class="math" data-tex="\(-b_j\)">\(-b_j\)</span>, and all other terms are nonpositive. Hence the coefficient <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> of <span class="math" data-tex="\(t^j\)">\(t^j\)</span> in <span class="math" data-tex="\(\log f(t)\)">\(\log f(t)\)</span> has sign <span class="math" data-tex="\((-1)^{j-1}\)">\((-1)^{j-1}\)</span> and is nonzero.</p>
+<p>In formal roots <span class="math" data-tex="\(z_a\)">\(z_a\)</span>, the multiplicative-sequence theorem gives
+<span class="math math-display" data-tex="\[
+\log L(p)=\sum_a\log f(z_a)
+ =\sum_{j\geq1}\lambda_j\sum_a z_a^j.
+\]">\[
+\log L(p)=\sum_a\log f(z_a)
+ =\sum_{j\geq1}\lambda_j\sum_a z_a^j.
+\]</span>
+The integral Newton identity already proved in Characteristic numbers, (2.3), says the power sum of weight <span class="math" data-tex="\(j\)">\(j\)</span> has coefficient <span class="math" data-tex="\((-1)^{j-1}j\)">\((-1)^{j-1}j\)</span> on <span class="math" data-tex="\(p_j\)">\(p_j\)</span>, with all remaining terms in lower <span class="math" data-tex="\(p\)">\(p\)</span>'s. Exponentiating the logarithm adds in weight <span class="math" data-tex="\(j\)">\(j\)</span> only products of smaller positive weights; they involve no <span class="math" data-tex="\(p_j\)">\(p_j\)</span>. Thus
+<span class="math" data-tex="\(c_j=(-1)^{j-1}j\lambda_j&gt;0\)">\(c_j=(-1)^{j-1}j\lambda_j&gt;0\)</span>.
+This proves (B.1). Solve it recursively:
+<span class="math math-display" data-tex="\[
+p_j=c_j^{-1}\bigl(L_j-R_j(p_1,\ldots,p_{j-1})\bigr).
+\]">\[
+p_j=c_j^{-1}\bigl(L_j-R_j(p_1,\ldots,p_{j-1})\bigr).
+\]</span>
+Starting at <span class="math" data-tex="\(p_1=3L_1\)">\(p_1=3L_1\)</span>, induction supplies both existence and uniqueness of the rational polynomial expressions. The argument proves the required nonvanishing directly; it makes no unproved assertion about Bernoulli-number signs. ∎</p>
+<h2 id="c-sphere-maps-detect-the-rational-cohomology-in-the-required-range">C. Sphere maps detect the rational cohomology in the required range</h2>
+<p>We prove the precise comparison used later. The input is a <strong>finite</strong> CW complex <span class="math" data-tex="\(X\)">\(X\)</span> of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span> satisfies
+<span class="math math-display" data-tex="\[
+n&lt;2k-1.
+\tag{C.1}
+\]">\[
+n&lt;2k-1.
+\tag{C.1}
+\]</span>
+The positive integral generator of <span class="math" data-tex="\(H^k(S^k;\mathbb Z)\)">\(H^k(S^k;\mathbb Z)\)</span> is <span class="math" data-tex="\(u\)">\(u\)</span>. The full prerequisites are the degree classification in <a href="DG-CHAR-08B.html">Frame fields</a>, LemmaB.1; its arbitrary-CW cellular coefficient comparison, LemmaG.1; the relative compression and cell-dimension proofs in <a href="DG-CHAR-13B.html">Homotopy fibres</a>, SectionB; and sphere finiteness with its actual proof in <a href="DG-CHAR-13C.html">Rational homotopy</a>, TheoremH.3.</p>
+<h3 id="c-1-the-group-operation-and-degree-maps">C.1. The group operation and degree maps</h3>
+<p>Let <span class="math" data-tex="\(\pi^k(X)=[X,S^k]\)">\(\pi^k(X)=[X,S^k]\)</span>, taking unbased homotopy classes. We construct its abelian group structure under (C.1). First suppose <span class="math" data-tex="\(X\)">\(X\)</span> connected and choose a vertex. Since the target is simply connected, these classes coincide with based classes: a path moves a vertex value to the basepoint by homotopy extension; the vertex path in a homotopy between based maps is a loop, whose null-homotopy and homotopy extension make that homotopy based. Treat the finitely many components separately otherwise.</p>
+<p><span id="DG-CHAR-15.lemma-C.1"></span><strong>Lemma C.1 — The wedge comparison.</strong> For every finite number <span class="math" data-tex="\(a\)">\(a\)</span> of factors, the inclusion
+<span class="math math-display" data-tex="\[
+\bigvee_{j=1}^a S^k\longrightarrow\prod_{j=1}^a S^k
+\tag{C.2}
+\]">\[
+\bigvee_{j=1}^a S^k\longrightarrow\prod_{j=1}^a S^k
+\tag{C.2}
+\]</span>
+induces a bijection on homotopy classes of maps from <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Proof.</strong> Give each sphere its one-vertex, one-<span class="math" data-tex="\(k\)">\(k\)</span>-cell structure. The product has cells indexed by the chosen positive cells in a subset of its factors. The wedge consists of its zero-cell and single-factor cells. Every remaining cell has dimension at least <span class="math" data-tex="\(2k\)">\(2k\)</span>. The pair is therefore <span class="math" data-tex="\((2k-1)\)">\((2k-1)\)</span>-connected by the full cell-dimension argument in homotopy SectionB.2. Relative compression moves every map of <span class="math" data-tex="\(X\)">\(X\)</span> into the wedge. It also moves a homotopy, whose source pair <span class="math" data-tex="\((X\times I,X\times\partial I)\)">\((X\times I,X\times\partial I)\)</span> has dimension at most <span class="math" data-tex="\(n+1&lt;2k\)">\(n+1&lt;2k\)</span>, into the wedge while fixing its endpoints. Thus the induced map is surjective and injective. The same proof permits fixing chosen source vertices. ∎</p>
+<p>For <span class="math" data-tex="\(f,g:X\to S^k\)">\(f,g:X\to S^k\)</span>, lift the pair map <span class="math" data-tex="\((f,g)\)">\((f,g)\)</span> uniquely up to homotopy to the two-sphere wedge and then fold its two copies by their positive identity maps. Define <span class="math" data-tex="\(f+g\)">\(f+g\)</span> by this composition. Lemma C.1 makes it well defined. The three-factor version proves associativity: both parenthesizations lift the same triple of coordinates, and their final fold is the identity on each copy. Permuting the two factors and then folding gives the same map, proving commutativity. The constant map is an identity, since a lift of <span class="math" data-tex="\((f,0)\)">\((f,0)\)</span> lies explicitly in its first wedge copy.</p>
+<p>To prove the inverse rule, let <span class="math" data-tex="\(R:S^k\to S^k\)">\(R:S^k\to S^k\)</span> be a coordinate reflection fixing the basepoint, of degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. The map <span class="math" data-tex="\((1,R):S^k\to S^k\times S^k\)">\((1,R):S^k\to S^k\times S^k\)</span> has a wedge lift obtained by pinching the sphere into two positive spheres and applying <span class="math" data-tex="\(R\)">\(R\)</span> to the second copy. Its two coordinate maps have degrees <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, hence are homotopic to <span class="math" data-tex="\(1,R\)">\(1,R\)</span> by the complete degree theorem. Folding has degree zero, and is null-homotopic by that same theorem. Composing this lift with <span class="math" data-tex="\(f\)">\(f\)</span> gives a lift of <span class="math" data-tex="\((f,Rf)\)">\((f,Rf)\)</span>. Thus <span class="math" data-tex="\(Rf\)">\(Rf\)</span> is the inverse of <span class="math" data-tex="\(f\)">\(f\)</span>. We have proved an abelian group, with all its axioms.</p>
+<p>The construction is natural under precomposition. Also
+<span class="math math-display" data-tex="\[
+h:\pi^k(X)\longrightarrow H^k(X;\mathbb Z),\qquad
+h([f])=f^*u
+\tag{C.3}
+\]">\[
+h:\pi^k(X)\longrightarrow H^k(X;\mathbb Z),\qquad
+h([f])=f^*u
+\tag{C.3}
+\]</span>
+is a homomorphism: on the wedge, the folded generator is the sum of the two pulled-back coordinate generators. The cohomology of the wedge in degree <span class="math" data-tex="\(k\)">\(k\)</span> is its two free cell generators, so this equality follows by its restriction to each copy.</p>
+<p><span id="DG-CHAR-15.lemma-C.2"></span><strong>Lemma C.2 — A degree-<span class="math" data-tex="\(d\)">\(d\)</span> target map acts as multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>.</strong> If <span class="math" data-tex="\(\delta_d:S^k\to S^k\)">\(\delta_d:S^k\to S^k\)</span> has degree <span class="math" data-tex="\(d\)">\(d\)</span>, postcomposition by <span class="math" data-tex="\(\delta_d\)">\(\delta_d\)</span> on <span class="math" data-tex="\(\pi^k(X)\)">\(\pi^k(X)\)</span> is multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, pinch a sphere into <span class="math" data-tex="\(d\)">\(d\)</span> positively oriented copies and fold. Its degree is <span class="math" data-tex="\(d\)">\(d\)</span>, so it is homotopic to <span class="math" data-tex="\(\delta_d\)">\(\delta_d\)</span>. The pinch has each coordinate projection of degree one. Composing with <span class="math" data-tex="\(f\)">\(f\)</span>, Lemma C.1 therefore identifies it with the unique wedge lift of the <span class="math" data-tex="\(d\)">\(d\)</span>-tuple <span class="math" data-tex="\((f,\ldots,f)\)">\((f,\ldots,f)\)</span>. Its fold represents the sum of <span class="math" data-tex="\(d\)">\(d\)</span> copies of <span class="math" data-tex="\(f\)">\(f\)</span>. Degree zero gives the null map by degree classification, and negative degrees use the reflection inverse just proved. ∎</p>
+<p>We will also use the resulting statement on ordinary homotopy groups of the sphere in dimensions <span class="math" data-tex="\(j&lt;2k-1\)">\(j&lt;2k-1\)</span>. For <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, the group operation just constructed on <span class="math" data-tex="\([S^j,S^k]\)">\([S^j,S^k]\)</span> agrees with its usual homotopy group operation. Indeed the usual source pinch followed by <span class="math" data-tex="\(f\vee g\)">\(f\vee g\)</span> is a wedge lift of <span class="math" data-tex="\((f,g)\)">\((f,g)\)</span>: its coordinate collapses are based degree-one maps of <span class="math" data-tex="\(S^j\)">\(S^j\)</span>, hence homotopic to the identity by the degree theorem. Folding gives the usual concatenation class. For <span class="math" data-tex="\(j=1\)">\(j=1\)</span> both groups are zero because <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>. Thus the target degree map acts on <span class="math" data-tex="\(\pi_j(S^k)\)">\(\pi_j(S^k)\)</span> as multiplication by <span class="math" data-tex="\(d\)">\(d\)</span> in every required degree.</p>
+<h3 id="c-2-a-rational-telescope-and-a-one-group-replacement">C.2. A rational telescope and a one-group replacement</h3>
+<p><span id="DG-CHAR-15.theorem-C.3"></span><strong>Theorem C.3 — Rational cohomotopy comparison.</strong> Under (C.1), (C.3) induces a natural isomorphism
+<span class="math math-display" data-tex="\[
+\pi^k(X)\otimes_{\mathbb Z}\mathbb Q
+\ \xrightarrow{\ \cong\ }\ H^k(X;\mathbb Q).
+\tag{C.4}
+\]">\[
+\pi^k(X)\otimes_{\mathbb Z}\mathbb Q
+\ \xrightarrow{\ \cong\ }\ H^k(X;\mathbb Q).
+\tag{C.4}
+\]</span>
+In particular, rational cohomology is spanned by the classes <span class="math" data-tex="\(f^*u\)">\(f^*u\)</span>, and every element in the kernel of (C.3) is torsion in the cohomotopy group. Here the natural comparison <span class="math" data-tex="\(H^k(X;\mathbb Z)\otimes\mathbb Q\cong H^k(X;\mathbb Q)\)">\(H^k(X;\mathbb Z)\otimes\mathbb Q\cong H^k(X;\mathbb Q)\)</span> uses the finite free cellular cochain complex: tensoring it with the flat module <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> preserves its cycles and boundaries, and the full cellular comparison identifies both cohomologies with their singular versions.</p>
+<p><strong>Proof: the telescope.</strong> If <span class="math" data-tex="\(n&lt;k\)">\(n&lt;k\)</span>, cellular compression makes every map to <span class="math" data-tex="\(S^k\)">\(S^k\)</span> null-homotopic and cellular cohomology makes the target zero, so assume <span class="math" data-tex="\(n\geq k\)">\(n\geq k\)</span>. Form the mapping telescope
+<span class="math math-display" data-tex="\[
+S^k\xrightarrow{\delta_{2!}}S^k
+\xrightarrow{\delta_{3!}}S^k
+\xrightarrow{\delta_{4!}}\cdots ,
+\tag{C.5}
+\]">\[
+S^k\xrightarrow{\delta_{2!}}S^k
+\xrightarrow{\delta_{3!}}S^k
+\xrightarrow{\delta_{4!}}\cdots ,
+\tag{C.5}
+\]</span>
+using based cellular degree maps. A mapping cylinder has its usual CW structure, with the cylinder cells of each sphere cell and the target sphere cells; these structures glue to a CW telescope <span class="math" data-tex="\(T\)">\(T\)</span>. Its continuous height coordinate is bounded on every compact subset. Consequently every map from a compact sphere, every sphere homotopy, every map from the finite complex <span class="math" data-tex="\(X\)">\(X\)</span>, and every such homotopy lies in a finite subtelescope. Each finite subtelescope deformation retracts onto its last sphere, by the mapping-cylinder retraction. Therefore
+<span class="math math-display" data-tex="\[
+\pi_j(T)=\varinjlim \pi_j(S^k),\qquad
+[X,T]=\varinjlim [X,S^k].
+\tag{C.6}
+\]">\[
+\pi_j(T)=\varinjlim \pi_j(S^k),\qquad
+[X,T]=\varinjlim [X,S^k].
+\tag{C.6}
+\]</span>
+The transition maps are the actual degree maps of (C.5). For based homotopy groups, use the telescope's basepoint spine to identify each stage basepoint with the first one. The cylinder retractions preserve this spine, so the displayed comparison is also the based comparison; its simply connected targets introduce no path ambiguity.</p>
+<p>For <span class="math" data-tex="\(j\leq n&lt;2k-1\)">\(j\leq n&lt;2k-1\)</span>, Lemma C.2 identifies their maps on homotopy groups with multiplication by their degrees. The sphere connectivity and finiteness theorem say the groups are zero below <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span>, and finite for <span class="math" data-tex="\(k&lt;j\leq n\)">\(k&lt;j\leq n\)</span>. Every element in one of these finite groups is eventually killed: some later factorial degree is divisible by its order. At <span class="math" data-tex="\(k\)">\(k\)</span>, the direct limit is <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. More explicitly, if <span class="math" data-tex="\(D_m\)">\(D_m\)</span> is the product of the first <span class="math" data-tex="\(m\)">\(m\)</span> degrees, the generator at stage <span class="math" data-tex="\(m\)">\(m\)</span> represents <span class="math" data-tex="\(1/D_m\)">\(1/D_m\)</span>. Every positive integer divides some <span class="math" data-tex="\(D_m\)">\(D_m\)</span>, so these fractions form all of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\pi_j(T)=
+\begin{cases}\mathbb Q&amp;j=k,\\0&amp;1\leq j\leq n,\ j\ne k.\end{cases}
+\tag{C.7}
+\]">\[
+\pi_j(T)=
+\begin{cases}\mathbb Q&amp;j=k,\\0&amp;1\leq j\leq n,\ j\ne k.\end{cases}
+\tag{C.7}
+\]</span>
+Likewise, for the abelian group <span class="math" data-tex="\(A=\pi^k(X)\)">\(A=\pi^k(X)\)</span>, (C.6) and Lemma C.2 identify
+<span class="math math-display" data-tex="\[
+[X,T]=\varinjlim(A\xrightarrow{2!}A\xrightarrow{3!}\cdots)
+=A\otimes\mathbb Q.
+\tag{C.8}
+\]">\[
+[X,T]=\varinjlim(A\xrightarrow{2!}A\xrightarrow{3!}\cdots)
+=A\otimes\mathbb Q.
+\tag{C.8}
+\]</span>
+The algebraic identification sends a stage-<span class="math" data-tex="\(m\)">\(m\)</span> element <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(a/D_m\)">\(a/D_m\)</span>. Common denominators prove surjectivity; a fraction that is zero means <span class="math" data-tex="\(a\)">\(a\)</span> is torsion, and a sufficiently late factorial kills it, proving injectivity. This is the localization/tensor comparison already proved in the coefficient foundations, and needs no finite-generation hypothesis on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof: removing the unused higher groups.</strong> For <span class="math" data-tex="\(j=n+1,n+2,\ldots\)">\(j=n+1,n+2,\ldots\)</span>, attach a <span class="math" data-tex="\((j+1)\)">\((j+1)\)</span>-cell for each element of the current <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span>, using cellular representatives. The cell-dimension theorem preserves every lower group and maps the old <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> onto the new one. Each old representative now bounds its attached disk, so the new <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> is zero. At the union <span class="math" data-tex="\(Y\)">\(Y\)</span>, compact sphere maps and homotopies have finite CW carriers and lie in a finite construction stage; this proves that the fixed lower groups stay fixed and all the higher groups are zero. This is the complete cell-killing argument of rational SectionF.4, applied here without a finite-generation assumption. We obtain a CW complex with exactly one positive homotopy group, <span class="math" data-tex="\(\pi_k(Y)=\mathbb Q\)">\(\pi_k(Y)=\mathbb Q\)</span>.</p>
+<p>The pair <span class="math" data-tex="\((Y,T)\)">\((Y,T)\)</span> has no relative cells in dimensions at most <span class="math" data-tex="\(n+1\)">\(n+1\)</span>. Relative compression on <span class="math" data-tex="\(X\)">\(X\)</span> and its endpoint-fixed homotopies consequently gives
+<span class="math math-display" data-tex="\[
+[X,T]\xrightarrow{\ \cong\ }[X,Y].
+\tag{C.9}
+\]">\[
+[X,T]\xrightarrow{\ \cong\ }[X,Y].
+\tag{C.9}
+\]</span></p>
+<p><strong>Proof: the cellular cohomology classification.</strong> We supply the needed classification of maps into <span class="math" data-tex="\(Y\)">\(Y\)</span>, rather than referring to a representation theorem. By its <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-connectivity, homotopy extension and cellular compression make a map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> constant on <span class="math" data-tex="\(X^{k-1}\)">\(X^{k-1}\)</span>. On each positive <span class="math" data-tex="\(k\)">\(k\)</span>-cell it then determines an element <span class="math" data-tex="\(a_e\in\pi_k(Y)=\mathbb Q\)">\(a_e\in\pi_k(Y)=\mathbb Q\)</span>, giving a cellular <span class="math" data-tex="\(k\)">\(k\)</span>-cochain <span class="math" data-tex="\(a\)">\(a\)</span>. An attaching <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-sphere has image in <span class="math" data-tex="\(Y\)">\(Y\)</span> whose first Hurewicz class is <span class="math" data-tex="\((\delta a)\)">\((\delta a)\)</span> on that cell. To verify this, collapse <span class="math" data-tex="\(X^{k-1}\)">\(X^{k-1}\)</span>, express the attaching sphere in the oriented relative <span class="math" data-tex="\(k\)">\(k\)</span>-cell generators, and evaluate their incidence coefficients; this is exactly the full relative-chain definition of the cellular differential in Frame fields, LemmaG.1. The first Hurewicz isomorphism detects its homotopy class. Hence extension across that cell is equivalent to <span class="math" data-tex="\(\delta a=0\)">\(\delta a=0\)</span>. All later cells extend since every <span class="math" data-tex="\(\pi_j(Y)\)">\(\pi_j(Y)\)</span> for <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span> is zero. Every cellular cocycle is therefore realized by a map.</p>
+<p>Two normalized maps with cochains <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span> are homotopic precisely when <span class="math" data-tex="\(a_1-a_0=\delta b\)">\(a_1-a_0=\delta b\)</span> for a cellular <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-cochain <span class="math" data-tex="\(b\)">\(b\)</span>. Construct the homotopy constant below dimension <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. On the cylinder of each <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-cell, the endpoints and side are constant; its collapsed boundary gives a <span class="math" data-tex="\(k\)">\(k\)</span>-sphere, on which any chosen value <span class="math" data-tex="\(b_e\in\mathbb Q=\pi_k(Y)\)">\(b_e\in\mathbb Q=\pi_k(Y)\)</span> can be realized. On a <span class="math" data-tex="\(k\)">\(k\)</span>-cell cylinder the remaining obstruction is
+<span class="math math-display" data-tex="\[
+a_1-a_0-\delta b.
+\tag{C.10}
+\]">\[
+a_1-a_0-\delta b.
+\tag{C.10}
+\]</span>
+The signs are fixed by the ordinary prism convention
+<span class="math" data-tex="\(\partial P+P\partial=f_{1\#}-f_{0\#}\)">\(\partial P+P\partial=f_{1\#}-f_{0\#}\)</span>:
+evaluation of a cocycle on its oriented cell generators gives exactly the endpoint difference minus evaluation on the side prisms. Those side evaluations are the cellular incidence differential <span class="math" data-tex="\(\delta b\)">\(\delta b\)</span>. The first Hurewicz isomorphism again detects this obstruction. If it is zero fill the cylinder; all higher cylinders fill because their boundary dimensions exceed <span class="math" data-tex="\(k\)">\(k\)</span>. This proves sufficiency. For necessity, first make a given homotopy constant on the cylinders of <span class="math" data-tex="\(X^{k-2}\)">\(X^{k-2}\)</span>, relative to its already normalized endpoints. Their relative dimension is at most <span class="math" data-tex="\(k-1\)">\(k-1\)</span>, so connectivity and homotopy extension permit this normalization. The remaining <span class="math" data-tex="\((k-1)\)">\((k-1)\)</span>-cell cylinders then have the prism values <span class="math" data-tex="\(b_e\)">\(b_e\)</span> just described, and the same boundary identity gives (C.10). Homotopy extension and weak topology justify the assembled maps and homotopies on all characteristic disks.</p>
+<p>There is a class <span class="math" data-tex="\(\upsilon\in H^k(Y;\mathbb Q)\)">\(\upsilon\in H^k(Y;\mathbb Q)\)</span> evaluating as the identity on <span class="math" data-tex="\(\pi_k(Y)=H_k(Y;\mathbb Z)=\mathbb Q\)">\(\pi_k(Y)=H_k(Y;\mathbb Z)=\mathbb Q\)</span>. The first Hurewicz theorem and the coefficient theorem give this class uniquely, since all the lower positive homology groups vanish. The cellular values just calculated show that <span class="math" data-tex="\(f\mapsto f^*\upsilon\)">\(f\mapsto f^*\upsilon\)</span> is precisely the bijection
+<span class="math math-display" data-tex="\[
+[X,Y]\xrightarrow{\ \cong\ }H^k(X;\mathbb Q).
+\tag{C.11}
+\]">\[
+[X,Y]\xrightarrow{\ \cong\ }H^k(X;\mathbb Q).
+\tag{C.11}
+\]</span>
+It is natural under maps of the finite source complexes: it is actual cohomology pullback, rather than only a count of cell choices.</p>
+<p>Finally identify the comparison itself. The inclusion of the stage-<span class="math" data-tex="\(m\)">\(m\)</span> sphere into <span class="math" data-tex="\(Y\)">\(Y\)</span> sends its homotopy generator to <span class="math" data-tex="\(1/D_m\)">\(1/D_m\)</span>, so pulls <span class="math" data-tex="\(\upsilon\)">\(\upsilon\)</span> back to <span class="math" data-tex="\(u/D_m\)">\(u/D_m\)</span>. Thus the composite of (C.8), (C.9) and (C.11) sends <span class="math" data-tex="\(a/D_m\)">\(a/D_m\)</span> to <span class="math" data-tex="\(h(a)/D_m\)">\(h(a)/D_m\)</span>. This is exactly (C.4). It is a homomorphism because (C.3) is one; its proved bijectivity gives the claimed group isomorphism. No finite-kernel assertion was needed or inferred from rational tensoring. ∎</p>
+<h3 id="c-3-the-unique-functional-on-cohomology">C.3. The unique functional on cohomology</h3>
+<p><span id="DG-CHAR-15.corollary-C.4"></span><strong>Corollary C.4.</strong> Under (C.1), every homomorphism
+<span class="math" data-tex="\(\sigma:\pi^k(X)\to\mathbb Z\)">\(\sigma:\pi^k(X)\to\mathbb Z\)</span> determines one and only one rational-linear functional
+<span class="math math-display" data-tex="\[
+\sigma_{\mathbb Q}:H^k(X;\mathbb Q)\longrightarrow\mathbb Q
+\quad\text{with}\quad \sigma_{\mathbb Q}(f^*u)=\sigma([f]).
+\tag{C.12}
+\]">\[
+\sigma_{\mathbb Q}:H^k(X;\mathbb Q)\longrightarrow\mathbb Q
+\quad\text{with}\quad \sigma_{\mathbb Q}(f^*u)=\sigma([f]).
+\tag{C.12}
+\]</span></p>
+<p><strong>Proof.</strong> A homomorphism to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> kills torsion. Thus <span class="math" data-tex="\(\sigma\otimes1\)">\(\sigma\otimes1\)</span> is well defined on <span class="math" data-tex="\(\pi^k(X)\otimes\mathbb Q\)">\(\pi^k(X)\otimes\mathbb Q\)</span>; transport it across (C.4). Equivalently, assign <span class="math" data-tex="\(\sigma(a)/d\)">\(\sigma(a)/d\)</span> to <span class="math" data-tex="\(h(a)/d\)">\(h(a)/d\)</span>. If two such fractions represent the same cohomology class, their difference represents a torsion cohomotopy element by (C.4), whose signature is zero. The assignment is therefore well defined. Those fractions span all rational cohomology, proving uniqueness. ∎</p>
+<p>For a compact rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold and <span class="math" data-tex="\(k=n-4i\)">\(k=n-4i\)</span>, condition (C.1) is exactly <span class="math" data-tex="\(4i&lt;(n-1)/2\)">\(4i&lt;(n-1)/2\)</span>. The later fibre-signature argument must still supply the homomorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and the rational Poincaré pairing; this comparison alone does not assert either one.</p>
+<h2 id="d-duality-for-finite-rational-homology-manifolds">D. Duality for finite rational homology manifolds</h2>
+<p>We need duality for the polyhedra in Section A, whose links can be rational homology spheres without being spheres. Here is a chain proof over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. It also proves the boundary version used by a homotopy of generic fibres.</p>
+<h3 id="d-1-links-orientations-and-the-boundary-condition">D.1. Links, orientations and the boundary condition</h3>
+<p>For a simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of a finite complex <span class="math" data-tex="\(K\)">\(K\)</span>, its <strong>link</strong> consists of the simplices <span class="math" data-tex="\(\eta\)">\(\eta\)</span> disjoint from <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> for which <span class="math" data-tex="\(\sigma\cup\eta\)">\(\sigma\cup\eta\)</span> is a simplex of <span class="math" data-tex="\(K\)">\(K\)</span>. Include the empty face. Reduced homology uses the augmented convention: the empty link has one copy of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, and no other group.</p>
+<p><span id="DG-CHAR-15.lemma-D.1"></span><strong>Lemma D.1 — Local homology is link homology with the correct shift.</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> is in the interior of a <span class="math" data-tex="\(p\)">\(p\)</span>-simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, then
+<span class="math math-display" data-tex="\[
+H_j(K,K-\{x\};\mathbb Q)
+ \cong\widetilde H_{j-p-1}(\operatorname{lk}_K\sigma;\mathbb Q).
+\tag{D.1}
+\]">\[
+H_j(K,K-\{x\};\mathbb Q)
+ \cong\widetilde H_{j-p-1}(\operatorname{lk}_K\sigma;\mathbb Q).
+\tag{D.1}
+\]</span></p>
+<p><strong>Proof.</strong> Points near <span class="math" data-tex="\(x\)">\(x\)</span> have positive coordinates at every vertex of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The sum <span class="math" data-tex="\(t\)">\(t\)</span> of those coordinates is positive. Divide them by <span class="math" data-tex="\(t\)">\(t\)</span> to obtain a point of <span class="math" data-tex="\(\operatorname{int}\sigma\)">\(\operatorname{int}\sigma\)</span>; the remaining coordinates, divided by <span class="math" data-tex="\(1-t\)">\(1-t\)</span> when it is nonzero, give a point of the link. The outside height is <span class="math" data-tex="\(1-t\)">\(1-t\)</span>, and at height zero its link coordinate is irrelevant. Restricting the normalized <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-coordinate to a small open neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> and the height to <span class="math" data-tex="\([0,\epsilon)\)">\([0,\epsilon)\)</span> gives an actual homeomorphism with
+<span class="math math-display" data-tex="\[
+V^p\times \operatorname{cone}_{[0,\epsilon)}
+          (\operatorname{lk}_K\sigma).
+\]">\[
+V^p\times \operatorname{cone}_{[0,\epsilon)}
+          (\operatorname{lk}_K\sigma).
+\]</span>
+The coordinate rules and their inverse agree on all faces. The empty-link case means the cone consists only of its apex. Lemma A.2 removes <span class="math" data-tex="\(V\)">\(V\)</span>. The cone is contractible and its punctured cone retracts onto the link by changing the positive height to a fixed height. The exact sequence of this pair therefore identifies its local homology with the reduced link homology shifted by one. Excision gives (D.1). ∎</p>
+<p>Consequently the local condition (A.1) is equivalent to every <span class="math" data-tex="\(p\)">\(p\)</span>-simplex link having the rational reduced homology of <span class="math" data-tex="\(S^{n-p-1}\)">\(S^{n-p-1}\)</span>. In particular, <span class="math" data-tex="\(K\)">\(K\)</span> is pure of dimension <span class="math" data-tex="\(n\)">\(n\)</span>: a maximal <span class="math" data-tex="\(p\)">\(p\)</span>-simplex has empty link, so (D.1) forces <span class="math" data-tex="\(p=n\)">\(p=n\)</span>. A codimension-one face has a zero-dimensional link with reduced <span class="math" data-tex="\(H_0=\mathbb Q\)">\(H_0=\mathbb Q\)</span>, hence belongs to exactly two top simplices.</p>
+<p>For the boundary version, a finite pair <span class="math" data-tex="\((K,M)\)">\((K,M)\)</span>, with <span class="math" data-tex="\(M\)">\(M\)</span> a subcomplex, is a <strong>rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold with boundary</strong> in the following precise sense. Off <span class="math" data-tex="\(M\)">\(M\)</span> it satisfies (A.1); at every point of <span class="math" data-tex="\(M\)">\(M\)</span> its ordinary point-local homology is zero in every degree; and <span class="math" data-tex="\(M\)">\(M\)</span> is a rational homology <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-manifold without boundary. By (D.1), links of interior simplices are rational spheres, links of boundary simplices in <span class="math" data-tex="\(K\)">\(K\)</span> are rationally acyclic, and their links in <span class="math" data-tex="\(M\)">\(M\)</span> are rational spheres of one lower dimension. These are local homology hypotheses, with no collar or Euclidean half-ball assumption.</p>
+<p>This pair is pure of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. To check the only possible issue, a maximal simplex in <span class="math" data-tex="\(M\)">\(M\)</span> has dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span> by purity of <span class="math" data-tex="\(M\)">\(M\)</span>; it cannot also be maximal in <span class="math" data-tex="\(K\)">\(K\)</span>, since its empty <span class="math" data-tex="\(K\)">\(K\)</span>-link would have nonzero reduced homology. An extension to a maximal <span class="math" data-tex="\(K\)">\(K\)</span>-simplex is therefore outside <span class="math" data-tex="\(M\)">\(M\)</span> and has dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Every other maximal simplex is already interior and has that dimension. An interior <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-face belongs to two top simplices, and a boundary <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-face belongs to one: its <span class="math" data-tex="\(K\)">\(K\)</span>-link is a nonempty acyclic finite set.</p>
+<p>Fix one total ordering of the vertices and use its induced orientation for every simplex. Write <span class="math" data-tex="\([\tau:\sigma]\in\{0,1,-1\}\)">\([\tau:\sigma]\in\{0,1,-1\}\)</span> for the simplicial boundary coefficient of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. An <strong>orientation</strong> here is a choice of top-simplex signs <span class="math" data-tex="\(\epsilon_\rho\in\{1,-1\}\)">\(\epsilon_\rho\in\{1,-1\}\)</span> for which
+<span class="math math-display" data-tex="\[
+c=\sum_{\dim\rho=n}\epsilon_\rho\rho,
+\qquad \partial c\in C_{n-1}(M;\mathbb Q).
+\tag{D.2}
+\]">\[
+c=\sum_{\dim\rho=n}\epsilon_\rho\rho,
+\qquad \partial c\in C_{n-1}(M;\mathbb Q).
+\tag{D.2}
+\]</span>
+For a closed complex take <span class="math" data-tex="\(M=\varnothing\)">\(M=\varnothing\)</span>. Thus the two contributions at each interior codimension-one face cancel. This is the usual coherent simplex orientation. On a triangulated oriented manifold, restricting its local orientation to the top-simplex interiors gives these signs; the elementary oriented-face boundary formula gives their cancellation. We use (D.2) as the explicit orientation datum also for homology manifolds.</p>
+<p>At every interior point <span class="math" data-tex="\(c\)">\(c\)</span> has a nonzero local class. Indeed, around a <span class="math" data-tex="\(p\)">\(p\)</span>-simplex, its link chain is the sum of its incident top-link simplices with coefficients equal to the nonzero signed incidences in (D.2). Its boundary is zero by the same face cancellation. It is nonzero as a top-dimensional chain and cannot be a boundary, since the link has no higher-dimensional simplices. Its homology group has dimension one by (D.1), so it is a generator. This identifies the fundamental class <span class="math" data-tex="\([K,M]=[c]\)">\([K,M]=[c]\)</span> and its coherent positive local values. At a boundary top face the coefficient of <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, since there is exactly one incident top simplex. The same link argument in <span class="math" data-tex="\(M\)">\(M\)</span>, using <span class="math" data-tex="\(\partial^2c=0\)">\(\partial^2c=0\)</span>, shows that <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span> is its fundamental cycle. We give <span class="math" data-tex="\(M\)">\(M\)</span> this boundary orientation and thus have
+<span class="math math-display" data-tex="\[
+\partial[K,M]=[M].
+\tag{D.3}
+\]">\[
+\partial[K,M]=[M].
+\tag{D.3}
+\]</span>
+In smooth half-ball coordinates it is the outward-normal-first convention, by the usual boundary of an oriented simplex. The arguments below use the explicit identity (D.3).</p>
+<h3 id="d-2-dual-blocks-and-their-relative-generators">D.2. Dual blocks and their relative generators</h3>
+<p>Let <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> be the barycentric subdivision. Write <span class="math" data-tex="\(b_\tau\)">\(b_\tau\)</span> for the barycentre of a simplex <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its simplices are strictly increasing face chains. The <strong>closed dual block</strong> of a <span class="math" data-tex="\(p\)">\(p\)</span>-simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is the order complex
+<span class="math math-display" data-tex="\[
+D_\sigma=\{\sigma\leq\tau_0&lt;\cdots&lt;\tau_a\}.
+\]">\[
+D_\sigma=\{\sigma\leq\tau_0&lt;\cdots&lt;\tau_a\}.
+\]</span>
+Here <span class="math" data-tex="\(\sigma\leq\tau_0\)">\(\sigma\leq\tau_0\)</span> allows a face chain to start at a proper coface. The boundary block <span class="math" data-tex="\(\dot D_\sigma\)">\(\dot D_\sigma\)</span> consists of the chains all of whose faces are proper cofaces of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Thus
+<span class="math math-display" data-tex="\[
+D_\sigma=b_\sigma*\dot D_\sigma,
+\qquad
+\dot D_\sigma\cong(\operatorname{lk}_K\sigma)&#x27;.
+\tag{D.4}
+\]">\[
+D_\sigma=b_\sigma*\dot D_\sigma,
+\qquad
+\dot D_\sigma\cong(\operatorname{lk}_K\sigma)&#x27;.
+\tag{D.4}
+\]</span>
+The latter identification sends the proper coface <span class="math" data-tex="\(\sigma\cup\eta\)">\(\sigma\cup\eta\)</span> to the nonempty link face <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and preserves inclusion. In particular <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span> is a cone. The cone pair and its exact sequence give
+<span class="math math-display" data-tex="\[
+H_j(D_\sigma,\dot D_\sigma;\mathbb Q)=
+\begin{cases}
+\mathbb Q&amp;j=n-p,\quad \sigma\notin M,\\
+0&amp;\text{otherwise}.
+\end{cases}
+\tag{D.5}
+\]">\[
+H_j(D_\sigma,\dot D_\sigma;\mathbb Q)=
+\begin{cases}
+\mathbb Q&amp;j=n-p,\quad \sigma\notin M,\\
+0&amp;\text{otherwise}.
+\end{cases}
+\tag{D.5}
+\]</span>
+For a top simplex its boundary block is empty and (D.5) says <span class="math" data-tex="\(H_0(\{b_\sigma\})=\mathbb Q\)">\(H_0(\{b_\sigma\})=\mathbb Q\)</span>. For a boundary simplex its link is acyclic, so its cone pair has zero homology in every degree.</p>
+<p>The following explicit chain fixes both the generator and all incidence signs. For an interior <span class="math" data-tex="\(p\)">\(p\)</span>-simplex put
+<span class="math math-display" data-tex="\[
+z_\sigma=
+\sum_{\sigma=\tau_p&lt;\tau_{p+1}&lt;\cdots&lt;\tau_n}
+ \epsilon_{\tau_n}
+ \prod_{j=p}^{n-1}[\tau_{j+1}:\tau_j]\,
+ [b_{\tau_p},b_{\tau_{p+1}},\ldots,b_{\tau_n}],
+\tag{D.6}
+\]">\[
+z_\sigma=
+\sum_{\sigma=\tau_p&lt;\tau_{p+1}&lt;\cdots&lt;\tau_n}
+ \epsilon_{\tau_n}
+ \prod_{j=p}^{n-1}[\tau_{j+1}:\tau_j]\,
+ [b_{\tau_p},b_{\tau_{p+1}},\ldots,b_{\tau_n}],
+\tag{D.6}
+\]</span>
+where every face in the flag has its indicated dimension. Orient a barycentric simplex in its displayed, increasing-dimension order.</p>
+<p><span id="DG-CHAR-15.lemma-D.2"></span><strong>Lemma D.2 — The dual incidence identity.</strong> For interior <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>,
+<span class="math math-display" data-tex="\[
+\partial z_\sigma=
+\sum_{\substack{\tau&gt;\sigma\\\dim\tau=p+1}}
+[\tau:\sigma]z_\tau.
+\tag{D.7}
+\]">\[
+\partial z_\sigma=
+\sum_{\substack{\tau&gt;\sigma\\\dim\tau=p+1}}
+[\tau:\sigma]z_\tau.
+\tag{D.7}
+\]</span>
+Moreover <span class="math" data-tex="\(z_\sigma\)">\(z_\sigma\)</span> represents a generator in (D.5).</p>
+<p><strong>Proof.</strong> Delete a vertex of a flag in (D.6). Deleting its first vertex has boundary sign <span class="math" data-tex="\(+1\)">\(+1\)</span>. After grouping by <span class="math" data-tex="\(\tau_{p+1}\)">\(\tau_{p+1}\)</span>, its coefficient is precisely <span class="math" data-tex="\([\tau_{p+1}:\sigma]\)">\([\tau_{p+1}:\sigma]\)</span> times (D.6) for that coface. Every coface of an interior simplex is interior, because <span class="math" data-tex="\(M\)">\(M\)</span> is a subcomplex.</p>
+<p>Deleting a vertex strictly between the first and last leaves a gap of two face dimensions. Summing over its possible intermediate faces gives
+<span class="math math-display" data-tex="\[
+\sum_{\tau_j}
+[\tau_{j+1}:\tau_j][\tau_j:\tau_{j-1}]=0,
+\]">\[
+\sum_{\tau_j}
+[\tau_{j+1}:\tau_j][\tau_j:\tau_{j-1}]=0,
+\]</span>
+the coefficient of <span class="math" data-tex="\(\tau_{j-1}\)">\(\tau_{j-1}\)</span> in <span class="math" data-tex="\(\partial^2\tau_{j+1}\)">\(\partial^2\tau_{j+1}\)</span>. All other factors and the deletion sign are shared, so these terms cancel.</p>
+<p>Deleting the last vertex gives the coefficient of a fixed <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-face in <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span>, times the earlier flag factors and its common deletion sign. That face contains the interior <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so is outside <span class="math" data-tex="\(M\)">\(M\)</span>; (D.2) makes its coefficient zero. These three kinds of deletion prove (D.7). If <span class="math" data-tex="\(p=n\)">\(p=n\)</span>, <span class="math" data-tex="\(z_\sigma=\epsilon_\sigma[b_\sigma]\)">\(z_\sigma=\epsilon_\sigma[b_\sigma]\)</span> has zero boundary, which is also (D.7).</p>
+<p>Equation (D.7) lies in <span class="math" data-tex="\(\dot D_\sigma\)">\(\dot D_\sigma\)</span>, so <span class="math" data-tex="\(z_\sigma\)">\(z_\sigma\)</span> is a relative cycle. Its top flag coefficients are nonzero. There are no chains of dimension above <span class="math" data-tex="\(n-p\)">\(n-p\)</span> in <span class="math" data-tex="\(D_\sigma\)">\(D_\sigma\)</span>, and no chains of dimension <span class="math" data-tex="\(n-p\)">\(n-p\)</span> in <span class="math" data-tex="\(\dot D_\sigma\)">\(\dot D_\sigma\)</span>. Consequently it is not a relative boundary. Since (D.5) has dimension one, it is a generator. ∎</p>
+<p>Filter <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> by subcomplexes
+<span class="math math-display" data-tex="\[
+F_q=\bigcup_{\dim\sigma\geq n-q}D_\sigma
+ \quad(0\leq q\leq n),\qquad F_{-1}=\varnothing.
+\tag{D.8}
+\]">\[
+F_q=\bigcup_{\dim\sigma\geq n-q}D_\sigma
+ \quad(0\leq q\leq n),\qquad F_{-1}=\varnothing.
+\tag{D.8}
+\]</span>
+The first stage is the set of top-simplex barycentres and the last is all of <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. At stage <span class="math" data-tex="\(q\)">\(q\)</span> add the blocks for the <span class="math" data-tex="\((n-q)\)">\((n-q)\)</span>-simplices. Two distinct new blocks intersect only in their boundary blocks, and their intersection with <span class="math" data-tex="\(F_{q-1}\)">\(F_{q-1}\)</span> is exactly their boundary block. This follows directly from the face-chain description: a chain that contains one of the new minimal faces cannot contain another of the same dimension.</p>
+<p>On simplicial relative chains there is therefore an exact direct-sum decomposition
+<span class="math math-display" data-tex="\[
+C_*(F_q,F_{q-1};\mathbb Q)
+ =\bigoplus_{\dim\sigma=n-q}
+   C_*(D_\sigma,\dot D_\sigma;\mathbb Q).
+\tag{D.9}
+\]">\[
+C_*(F_q,F_{q-1};\mathbb Q)
+ =\bigoplus_{\dim\sigma=n-q}
+   C_*(D_\sigma,\dot D_\sigma;\mathbb Q).
+\tag{D.9}
+\]</span>
+Indeed a barycentric simplex not already in <span class="math" data-tex="\(F_{q-1}\)">\(F_{q-1}\)</span> has a unique minimal face of dimension <span class="math" data-tex="\(n-q\)">\(n-q\)</span>, which places it in exactly one summand; its boundary either retains that face or is killed in the relative quotient. Simplicial-to-singular comparison for these finite pairs identifies the same relative homology. Its proof uses the dimension filtration: each relative simplex is sent to its singular disk generator; excision gives the disk relative groups; the pair exact sequences induct on the finite skeleta. This is the constant-coefficient specialization of the full relative-cell comparison in <a href="DG-CHAR-08B.html">Frame fields</a>, LemmaG.1, also proved for realizations in <a href="DG-CHAR-14B.html">Odd-prime powers</a>, SectionI.4. Thus (D.9) proves the required relative splitting without assuming a collar of a dual-block boundary.</p>
+<h3 id="d-3-identifying-the-duality-map-with-right-cap">D.3. Identifying the duality map with right cap</h3>
+<p>Put <span class="math" data-tex="\(B_q=C^{n-q}(K,M;\mathbb Q)\)">\(B_q=C^{n-q}(K,M;\mathbb Q)\)</span>, the relative simplicial cochains reindexed as a chain complex, and give it differential
+<span class="math math-display" data-tex="\[
+d_B a=(-1)^q\delta a,\qquad a\in B_q.
+\tag{D.10}
+\]">\[
+d_B a=(-1)^q\delta a,\qquad a\in B_q.
+\tag{D.10}
+\]</span>
+It is a differential since <span class="math" data-tex="\(\delta^2=0\)">\(\delta^2=0\)</span>; its homology is the ordinary relative cohomology in degree <span class="math" data-tex="\(n-q\)">\(n-q\)</span>. Set
+<span class="math math-display" data-tex="\[
+\gamma_p=(-1)^{\,n(n+1)/2+np-p(p-1)/2}.
+\tag{D.11}
+\]">\[
+\gamma_p=(-1)^{\,n(n+1)/2+np-p(p-1)/2}.
+\tag{D.11}
+\]</span>
+The exponent is an integer, <span class="math" data-tex="\(\gamma_n=1\)">\(\gamma_n=1\)</span>, and
+<span class="math" data-tex="\(\gamma_p=(-1)^{n-p}\gamma_{p+1}\)">\(\gamma_p=(-1)^{n-p}\gamma_{p+1}\)</span>.
+For the cochain <span class="math" data-tex="\(\sigma^*\)">\(\sigma^*\)</span> evaluating as one on an interior oriented <span class="math" data-tex="\(p\)">\(p\)</span>-simplex and as zero on the other <span class="math" data-tex="\(p\)">\(p\)</span>-simplices, define
+<span class="math math-display" data-tex="\[
+\Phi(\sigma^*)=\gamma_p z_\sigma.
+\tag{D.12}
+\]">\[
+\Phi(\sigma^*)=\gamma_p z_\sigma.
+\tag{D.12}
+\]</span>
+Equation (D.7) and the displayed relation between the <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>'s show that <span class="math" data-tex="\(\partial\Phi=\Phi d_B\)">\(\partial\Phi=\Phi d_B\)</span>, including the precise signs.</p>
+<p><span id="DG-CHAR-15.lemma-D.3"></span><strong>Lemma D.3 — This chain map is an isomorphism on homology.</strong> The map (D.12) gives
+<span class="math math-display" data-tex="\[
+H^p(K,M;\mathbb Q)\cong H_{n-p}(K;\mathbb Q).
+\tag{D.13}
+\]">\[
+H^p(K,M;\mathbb Q)\cong H_{n-p}(K;\mathbb Q).
+\tag{D.13}
+\]</span></p>
+<p><strong>Proof.</strong> Filter <span class="math" data-tex="\(B\)">\(B\)</span> by its terms of chain degree at most <span class="math" data-tex="\(q\)">\(q\)</span>, and filter the target simplicial chain complex by (D.8). The map preserves filtration. At the first relative-homology page, the source has one basis vector in chain degree <span class="math" data-tex="\(q\)">\(q\)</span> for each interior <span class="math" data-tex="\((n-q)\)">\((n-q)\)</span>-simplex and has zero homology in every other chain degree. Equations (D.5) and (D.9) give exactly the same description for the target. The induced map sends each basis vector to the nonzero generator <span class="math" data-tex="\(\gamma_pz_\sigma\)">\(\gamma_pz_\sigma\)</span>, so is an isomorphism on that page.</p>
+<p>Apply the fully proved filtered-chain construction in <a href="DG-CHAR-13B.html">Homotopy fibres</a>, TheoremA.1. Isomorphism on one page gives isomorphism on its next page by taking kernels and images of the commuting differentials. Induction gives isomorphism on the limiting page and thus on every successive quotient of the homology filtrations. Both filtrations have only the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> stages in (D.8). The short exact sequences for successive stages show by induction that the homology map itself is an isomorphism: surjectivity lifts first in the quotient and then in the preceding stage; injectivity moves a zero-image element to the preceding stage and uses its injectivity. This proves (D.13), with no splitting assumption about the filtration. ∎</p>
+<p>We must still identify (D.13) with the actual cup-product duality map. Recall the right cap convention from the Thom chapter:
+<span class="math math-display" data-tex="\[
+R_a[v_0,\ldots,v_m]
+ =a([v_{m-p},\ldots,v_m])[v_0,\ldots,v_{m-p}],
+ \qquad |a|=p.
+\]">\[
+R_a[v_0,\ldots,v_m]
+ =a([v_{m-p},\ldots,v_m])[v_0,\ldots,v_{m-p}],
+ \qquad |a|=p.
+\]</span>
+Its full boundary identity, proved in manifold (1.3), is
+<span class="math math-display" data-tex="\[
+\partial R_a t=R_a\partial t+(-1)^{m-p}R_{\delta a}t,
+\qquad t\in C_m.
+\tag{D.14}
+\]">\[
+\partial R_a t=R_a\partial t+(-1)^{m-p}R_{\delta a}t,
+\qquad t\in C_m.
+\tag{D.14}
+\]</span>
+Since <span class="math" data-tex="\(a\)">\(a\)</span> vanishes on <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(R_a\partial c=0\)">\(R_a\partial c=0\)</span>. Hence <span class="math" data-tex="\(a\mapsto R_a c\)">\(a\mapsto R_a c\)</span> is another chain map from (D.10), now into the original simplicial chains. Compose it with subdivision to obtain
+<span class="math math-display" data-tex="\[
+\Psi(a)=\operatorname{Sd}(R_a c)\in C_*(K&#x27;;\mathbb Q).
+\tag{D.15}
+\]">\[
+\Psi(a)=\operatorname{Sd}(R_a c)\in C_*(K&#x27;;\mathbb Q).
+\tag{D.15}
+\]</span>
+Subdivision commutes with boundary by its simplex-coning proof, so (D.14) proves <span class="math" data-tex="\(\partial\Psi=\Psi d_B\)">\(\partial\Psi=\Psi d_B\)</span>.</p>
+<p><span id="DG-CHAR-15.lemma-D.4"></span><strong>Lemma D.4 — The two maps are chain homotopic.</strong> Equations (D.12) and (D.15) induce the same homology map.</p>
+<p><strong>Proof.</strong> For a basis cochain <span class="math" data-tex="\(\sigma^*\)">\(\sigma^*\)</span>, both outputs are carried in the subdivided closed star of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Formula (D.6) is carried there. In <span class="math" data-tex="\(R_{\sigma^*}c\)">\(R_{\sigma^*}c\)</span>, every contributing top simplex contains <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and all its retained faces lie in that closed star. A closed star is a cone: it is <span class="math" data-tex="\(\sigma*\operatorname{lk}\sigma\)">\(\sigma*\operatorname{lk}\sigma\)</span>, and coning chains to any fixed vertex of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives an augmented contraction. Its subdivision has the same vanishing reduced homology, by the just-proved simplicial comparison, so every augmented cycle there can be filled.</p>
+<p>Construct a homotopy <span class="math" data-tex="\(H_q:B_q\to C_{q+1}(K&#x27;)\)">\(H_q:B_q\to C_{q+1}(K&#x27;)\)</span> in increasing chain degree <span class="math" data-tex="\(q\)">\(q\)</span>. In degree zero, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is a top simplex. Its <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>-value is <span class="math" data-tex="\(\epsilon_\sigma[b_\sigma]\)">\(\epsilon_\sigma[b_\sigma]\)</span>, because <span class="math" data-tex="\(\gamma_n=1\)">\(\gamma_n=1\)</span>. Its <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>-value is <span class="math" data-tex="\(\epsilon_\sigma[v_0]\)">\(\epsilon_\sigma[v_0]\)</span>, where <span class="math" data-tex="\(v_0\)">\(v_0\)</span> is that simplex's first vertex. The difference has augmentation zero and lies in its closed star, so fill it there to define <span class="math" data-tex="\(H_0(\sigma^*)\)">\(H_0(\sigma^*)\)</span>.</p>
+<p>Suppose the lower-degree homotopy is defined. For a degree-<span class="math" data-tex="\(q\)">\(q\)</span> basis cochain <span class="math" data-tex="\(a=\sigma^*\)">\(a=\sigma^*\)</span>, the residual
+<span class="math math-display" data-tex="\[
+\Phi(a)-\Psi(a)-H_{q-1}(d_Ba)
+\]">\[
+\Phi(a)-\Psi(a)-H_{q-1}(d_Ba)
+\]</span>
+is a <span class="math" data-tex="\(q\)">\(q\)</span>-cycle: applying boundary and the previously established homotopy identity cancels its first two derivatives, and <span class="math" data-tex="\(d_B^2=0\)">\(d_B^2=0\)</span> cancels the last remaining term. Each basis cochain in <span class="math" data-tex="\(d_Ba\)">\(d_Ba\)</span> is a coface <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Its closed star is contained in the closed star of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so the entire residual is still carried in that contractible star. For <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> fill it there and use that filling as <span class="math" data-tex="\(H_q(a)\)">\(H_q(a)\)</span>. Extend linearly. This gives in every degree
+<span class="math math-display" data-tex="\[
+\Phi-\Psi=\partial H+H d_B.
+\tag{D.16}
+\]">\[
+\Phi-\Psi=\partial H+H d_B.
+\tag{D.16}
+\]</span>
+The construction also covers the last degree, since a cycle above the star's dimension is zero and has the zero filling. ∎</p>
+<p>The simplicial comparison used above preserves the cap formula exactly on affine simplex generators: restricting a singular cochain to their terminal faces is its simplicial cochain, and their retained front faces are the same affine simplices. It induces an isomorphism in cohomology by the rational coefficient theorem applied to the proved homology comparison. Thus every singular cohomology class can be compared through that restriction.</p>
+<p>We also compare the two subdivision chain maps explicitly. Let <span class="math" data-tex="\(J,J&#x27;\)">\(J,J&#x27;\)</span> send the chosen oriented simplex generators of <span class="math" data-tex="\(K,K&#x27;\)">\(K,K&#x27;\)</span> to their affine singular simplices. The maps <span class="math" data-tex="\(J&#x27;\operatorname{Sd}\)">\(J&#x27;\operatorname{Sd}\)</span> and <span class="math" data-tex="\(\operatorname{Sd}_{\rm sing}J\)">\(\operatorname{Sd}_{\rm sing}J\)</span> are chain maps carried in each original simplex and agree on augmentations. They can differ when the chosen order reverses a subdivided simplex, since a reversed singular parametrization is not literally the negative singular chain. Construct their homotopy on the original simplex basis in increasing dimension. In dimension zero their difference is zero. Having defined the homotopy on faces, subtract its value on the boundary from the difference on the current simplex. The residual is a cycle in that simplex: its boundary cancels by the already established face identity and <span class="math" data-tex="\(\partial^2=0\)">\(\partial^2=0\)</span>. In positive dimension the standard-simplex augmented contraction proved in the Thom chapter fills it there. Use that filler as the homotopy value and extend linearly. Faces lie in the same original simplex, so every step has the stated carrier and the induction gives the full chain-homotopy identity. It preserves subcomplexes as well.</p>
+<p>Singular subdivision is itself chain homotopic to the identity by the full prism/coning proof in the Thom chapter. Therefore <span class="math" data-tex="\(J&#x27;\operatorname{Sd}\)">\(J&#x27;\operatorname{Sd}\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> induce the same homology map. Consequently (D.15) represents precisely the singular right cap with <span class="math" data-tex="\([c]\)">\([c]\)</span>. Lemmas D.3–D.4 prove an isomorphism for that actual map, rather than merely for a choice of groups with the same ranks.</p>
+<p><span id="DG-CHAR-15.theorem-D.5"></span><strong>Theorem D.5 — Rational Poincaré and Lefschetz duality.</strong> For a finite oriented rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold pair satisfying D.1's boundary conditions, right cap with (D.2) gives isomorphisms
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^p(K,M;\mathbb Q)&amp;\xrightarrow{\cong}H_{n-p}(K;\mathbb Q),\\
+H^p(K;\mathbb Q)&amp;\xrightarrow{\cong}H_{n-p}(K,M;\mathbb Q).
+\end{aligned}
+\tag{D.17}
+\]">\[
+\begin{aligned}
+H^p(K,M;\mathbb Q)&amp;\xrightarrow{\cong}H_{n-p}(K;\mathbb Q),\\
+H^p(K;\mathbb Q)&amp;\xrightarrow{\cong}H_{n-p}(K,M;\mathbb Q).
+\end{aligned}
+\tag{D.17}
+\]</span>
+The pairing
+<span class="math math-display" data-tex="\[
+H^{n-p}(K,M;\mathbb Q)\times H^p(K;\mathbb Q)
+ \longrightarrow\mathbb Q,\qquad
+(y,a)\longmapsto\langle y\smile a,[K,M]\rangle
+\tag{D.18}
+\]">\[
+H^{n-p}(K,M;\mathbb Q)\times H^p(K;\mathbb Q)
+ \longrightarrow\mathbb Q,\qquad
+(y,a)\longmapsto\langle y\smile a,[K,M]\rangle
+\tag{D.18}
+\]</span>
+is perfect. In particular, when <span class="math" data-tex="\(M\)">\(M\)</span> is empty this is the usual perfect closed Poincaré pairing.</p>
+<p><strong>Proof of the remaining assertions.</strong> All groups are finite dimensional: the finite simplicial chain complexes compute their singular homology, and the rational coefficient theorem computes cohomology as its vector-space dual. The first map of (D.17) was just proved. Its evaluation identity is
+<span class="math math-display" data-tex="\[
+\langle a,R_yc\rangle=\langle a\smile y,c\rangle.
+\tag{D.19}
+\]">\[
+\langle a,R_yc\rangle=\langle a\smile y,c\rangle.
+\tag{D.19}
+\]</span>
+Thus the pairing with factor order <span class="math" data-tex="\(a,y\)">\(a,y\)</span> is perfect. Graded commutativity switches it to (D.18) by the fixed invertible sign <span class="math" data-tex="\((-1)^{p(n-p)}\)">\((-1)^{p(n-p)}\)</span>.</p>
+<p>For an absolute cocycle <span class="math" data-tex="\(a\)">\(a\)</span>, (D.14) shows <span class="math" data-tex="\(R_ac\)">\(R_ac\)</span> is a relative cycle modulo <span class="math" data-tex="\(M\)">\(M\)</span>. Changing either representative changes it by a relative boundary, again by (D.14). Its evaluation against relative <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(\langle y\smile a,c\rangle\)">\(\langle y\smile a,c\rangle\)</span>. Relative cohomology is the full dual of relative homology, and (D.18) is perfect, so this second right-cap map is an isomorphism. This proves both its existence and its identification in (D.17). ∎</p>
+<h3 id="d-4-the-signature-of-a-rational-homology-boundary">D.4. The signature of a rational homology boundary</h3>
+<p>For a finite closed oriented rational homology <span class="math" data-tex="\(4i\)">\(4i\)</span>-manifold <span class="math" data-tex="\(F\)">\(F\)</span>, define <span class="math" data-tex="\(\sigma(F)\)">\(\sigma(F)\)</span> as the signature of the symmetric perfect form
+<span class="math math-display" data-tex="\[
+(x,y)\longmapsto\langle x\smile y,[F]\rangle
+\quad\text{on }H^{2i}(F;\mathbb Q).
+\tag{D.20}
+\]">\[
+(x,y)\longmapsto\langle x\smile y,[F]\rangle
+\quad\text{on }H^{2i}(F;\mathbb Q).
+\tag{D.20}
+\]</span>
+The finite-dimensional form proofs in <a href="DG-CHAR-14.html">The signature theorem</a>, SectionA, apply over this same field. In dimension zero this is the signed point count. Use zero signature in dimensions not divisible by four, and for the empty space.</p>
+<p><span id="DG-CHAR-15.theorem-D.6"></span><strong>Theorem D.6 — Boundary vanishing.</strong> If <span class="math" data-tex="\((K,M)\)">\((K,M)\)</span> is a finite oriented rational homology <span class="math" data-tex="\((4i+1)\)">\((4i+1)\)</span>-manifold with boundary as defined in D.1, then <span class="math" data-tex="\(\sigma(M)=0\)">\(\sigma(M)=0\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(m=2i\)">\(m=2i\)</span>, let <span class="math" data-tex="\(j:M\to K\)">\(j:M\to K\)</span> be inclusion, and let
+<span class="math" data-tex="\(\delta:H^m(M;\mathbb Q)\to H^{m+1}(K,M;\mathbb Q)\)">\(\delta:H^m(M;\mathbb Q)\to H^{m+1}(K,M;\mathbb Q)\)</span>
+be the pair connecting map. For <span class="math" data-tex="\(x\in H^m(M;\mathbb Q)\)">\(x\in H^m(M;\mathbb Q)\)</span>, extend a representing cocycle to an absolute cochain <span class="math" data-tex="\(X\)">\(X\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. This can be done simplex by simplex, because boundary simplices are a subset of the singular-simplex basis. Then <span class="math" data-tex="\(\delta X\)">\(\delta X\)</span> is a relative cocycle representing <span class="math" data-tex="\(\delta x\)">\(\delta x\)</span>. For an absolute cocycle <span class="math" data-tex="\(A\)">\(A\)</span> representing <span class="math" data-tex="\(a\in H^m(K;\mathbb Q)\)">\(a\in H^m(K;\mathbb Q)\)</span>, the cup differential identity and (D.3) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\delta x\smile a,[K,M]\rangle
+ &amp;=\langle\delta(X\smile A),c\rangle\\
+ &amp;=\langle X\smile A,\partial c\rangle\\
+ &amp;=\langle x\smile j^*a,[M]\rangle.
+\end{aligned}
+\tag{D.21}
+\]">\[
+\begin{aligned}
+\langle\delta x\smile a,[K,M]\rangle
+ &amp;=\langle\delta(X\smile A),c\rangle\\
+ &amp;=\langle X\smile A,\partial c\rangle\\
+ &amp;=\langle x\smile j^*a,[M]\rangle.
+\end{aligned}
+\tag{D.21}
+\]</span>
+Hence the image <span class="math" data-tex="\(L=\operatorname{im}j^*\)">\(L=\operatorname{im}j^*\)</span> is equal to its orthogonal complement in the perfect middle form on <span class="math" data-tex="\(M\)">\(M\)</span>. One inclusion follows because <span class="math" data-tex="\(\delta j^*=0\)">\(\delta j^*=0\)</span>. For the other, if <span class="math" data-tex="\(x\)">\(x\)</span> pairs to zero with every <span class="math" data-tex="\(j^*a\)">\(j^*a\)</span>, (D.21) and the perfect relative–absolute pairing (D.18) imply <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span>; the pair exact sequence then puts <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Nondegeneracy gives <span class="math" data-tex="\(\dim L+\dim L^\perp=\dim H^m(M;\mathbb Q)\)">\(\dim L+\dim L^\perp=\dim H^m(M;\mathbb Q)\)</span>, so <span class="math" data-tex="\(L=L^\perp\)">\(L=L^\perp\)</span> is an isotropic half. The signature chapter's full diagonalization and isotropic-half proof, LemmaA.2, gives zero signature. This includes <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, when it says the induced signed boundary points sum to zero. Every step used the local homology and chain orientation conditions stated here, with no smooth collar assumption. ∎</p>
+<h2 id="e-finite-pl-refinements-and-relative-approximation">E. Finite PL refinements and relative approximation</h2>
+<p>A map of finite polyhedra is <strong>piecewise linear</strong>, abbreviated PL, if there are finite triangulations on which its restriction to each source simplex is affine in Euclidean realization coordinates. Changes of triangulation in this section are PL changes. A continuous homeomorphism is not assumed PL. In particular, the lemmas here do not by themselves prove smooth-compatible triangulation of a manifold.</p>
+<h3 id="e-1-refinements-that-make-a-pl-map-simplicial">E.1. Refinements that make a PL map simplicial</h3>
+<p><span id="DG-CHAR-15.lemma-E.1"></span><strong>Lemma E.1 — Common refinements and map triangulation.</strong> Two finite PL triangulations of the same polyhedron have a common subdivision. A single PL map of finite polyhedra can be made simplicial by subdivisions of its source and target, refining any prescribed finite PL subdivisions there.</p>
+<p><strong>Proof.</strong> Work first in a fixed finite Euclidean realization. Cut every simplex by the finitely many affine hyperplanes containing the facets of the simplices in either triangulation, including hyperplanes defining their lower-dimensional affine hulls. The nonempty intersections are convex polytopes. Take all of their faces, identifying a shared face only once. This gives a finite polyhedral complex subdividing both triangulations. Choose a point in the relative interior of every face and cone its already triangulated boundary to that point, in increasing face dimension. Convexity shows these cones cover the face with intersections exactly their shared faces. The choices are shared on the overlaps, so this produces a common triangulation.</p>
+<p>For a PL identification between different realizations, cut first into its finitely many affine pieces and perform the same construction there and in their images. Pulling back target affine cuts is again an affine cut on a source piece. Thus the preceding argument applies to the common abstract polyhedron as well.</p>
+<p>For a PL map <span class="math" data-tex="\(f:P\to Q\)">\(f:P\to Q\)</span>, start with its affine source pieces and all their faces, and their convex image polytopes. Cut the target simplices by the affine hulls and facet hyperplanes of all these image polytopes. Then each image is a union of the resulting target cells. Cut each source piece by the inverse images of all these target cuts. The nonempty source cells <span class="math" data-tex="\(A\)">\(A\)</span> map onto target cells <span class="math" data-tex="\(B\)">\(B\)</span>, including cells of smaller dimension: explicitly the cells are the nonempty intersections with <span class="math" data-tex="\(f^{-1}(B)\)">\(f^{-1}(B)\)</span>, and each target cell included in an image has its full preimage there. A face of a cut source cell is an original source face further intersected with inverse images of target faces. Since the images of all original source faces were included among the cuts, its image is again a target cell. Include all source and target faces.</p>
+<p>Choose the target interior point <span class="math" data-tex="\(b_B\)">\(b_B\)</span> in every target face <span class="math" data-tex="\(B\)">\(B\)</span>. For each source face <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(f(A)=B\)">\(f(A)=B\)</span>, choose an interior point <span class="math" data-tex="\(a_A\)">\(a_A\)</span> with <span class="math" data-tex="\(f(a_A)=b_B\)">\(f(a_A)=b_B\)</span>. Such a point exists for a surjective affine map of convex polytopes. To see this directly, the average <span class="math" data-tex="\(a_0\)">\(a_0\)</span> of all source vertices is an interior point. Its image <span class="math" data-tex="\(b_0\)">\(b_0\)</span> is interior in <span class="math" data-tex="\(B\)">\(B\)</span>, since an affine supporting functional attaining its minimum at <span class="math" data-tex="\(b_0\)">\(b_0\)</span> would attain that minimum at every source vertex and hence everywhere in <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(b_0=b_B\)">\(b_0=b_B\)</span> use <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Otherwise, because <span class="math" data-tex="\(b_B\)">\(b_B\)</span> is interior, extend the segment from <span class="math" data-tex="\(b_0\)">\(b_0\)</span> through <span class="math" data-tex="\(b_B\)">\(b_B\)</span> a little to <span class="math" data-tex="\(b_1\in B\)">\(b_1\in B\)</span>. Lift <span class="math" data-tex="\(b_1\)">\(b_1\)</span> to <span class="math" data-tex="\(a_1\in A\)">\(a_1\in A\)</span>. Express <span class="math" data-tex="\(b_B=(1-t)b_0+tb_1\)">\(b_B=(1-t)b_0+tb_1\)</span> with <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>; its lift <span class="math" data-tex="\((1-t)a_0+ta_1\)">\((1-t)a_0+ta_1\)</span> is interior, since its positive <span class="math" data-tex="\(a_0\)">\(a_0\)</span> contribution keeps every defining nonconstant face inequality strict.</p>
+<p>Triangulate both complexes by their face-chain cones at these chosen points. A nested source face chain maps to a weakly nested target face chain. Repeated image faces give repeated vertices and are simply removed from the image chain. Consequently each source simplex maps affinely to a target simplex, with its vertices sent to the chosen target vertices. This makes the actual map <span class="math" data-tex="\(f\)">\(f\)</span> simplicial, without altering its values.</p>
+<p>The cutting construction can incorporate finitely many prescribed source and target PL subdivisions by using their common refinements at its start. This proves the stated single-map refinement assertion. ∎</p>
+<p><span id="DG-CHAR-15.lemma-E.2"></span><strong>Lemma E.2 — The compatible prism triangulation.</strong> Give the vertices of a finite complex <span class="math" data-tex="\(P\)">\(P\)</span> one total order. The prisms <span class="math" data-tex="\(\sigma\times I\)">\(\sigma\times I\)</span> have a compatible finite triangulation. For <span class="math" data-tex="\(\sigma=[v_0,\ldots,v_p]\)">\(\sigma=[v_0,\ldots,v_p]\)</span>, its top simplices are
+<span class="math math-display" data-tex="\[
+[(v_0,0),\ldots,(v_j,0),(v_j,1),\ldots,(v_p,1)]
+\quad(0\leq j\leq p).
+\tag{E.1}
+\]">\[
+[(v_0,0),\ldots,(v_j,0),(v_j,1),\ldots,(v_p,1)]
+\quad(0\leq j\leq p).
+\tag{E.1}
+\]</span></p>
+<p><strong>Proof.</strong> If a point of the prism has source coordinates <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> and height <span class="math" data-tex="\(t\)">\(t\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> so that
+<span class="math math-display" data-tex="\[
+\sum_{i&gt;j}\lambda_i\leq t\leq\sum_{i\geq j}\lambda_i.
+\]">\[
+\sum_{i&gt;j}\lambda_i\leq t\leq\sum_{i\geq j}\lambda_i.
+\]</span>
+Use the lower vertices for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, the upper vertices for <span class="math" data-tex="\(i&gt;j\)">\(i&gt;j\)</span>, and split the coefficient <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> between its two copies with upper part <span class="math" data-tex="\(t-\sum_{i&gt;j}\lambda_i\)">\(t-\sum_{i&gt;j}\lambda_i\)</span>. This writes the point in the indicated simplex, with nonnegative coefficients summing to one. An equality at one of the inequalities is exactly its shared face with an adjacent prism simplex. Zero source coordinates give the same construction on a source face, because the order is inherited. Thus the prisms fit compatibly. ∎</p>
+<p>We will also need a PL retraction
+<span class="math math-display" data-tex="\[
+P\times I\longrightarrow P\times\{1\}\ \cup\ A\times I
+\tag{E.2}
+\]">\[
+P\times I\longrightarrow P\times\{1\}\ \cup\ A\times I
+\tag{E.2}
+\]</span>
+for a subcomplex <span class="math" data-tex="\(A\subset P\)">\(A\subset P\)</span>. Here is its construction. Process the source simplices outside <span class="math" data-tex="\(A\)">\(A\)</span> in decreasing dimension. In the prism of a maximal remaining <span class="math" data-tex="\(\sigma=[v_0,\ldots,v_p]\)">\(\sigma=[v_0,\ldots,v_p]\)</span>, remove the simplex with <span class="math" data-tex="\(j=p\)">\(j=p\)</span> in (E.1) together with its free bottom face. Then remove the simplex with <span class="math" data-tex="\(j=p-1\)">\(j=p-1\)</span> together with its now free face shared with the first one, and continue down to <span class="math" data-tex="\(j=0\)">\(j=0\)</span>. The removed simplices leave exactly the top and side faces of this prism. The bottom face is free because its larger source cofaces outside <span class="math" data-tex="\(A\)">\(A\)</span> were already processed; no coface in <span class="math" data-tex="\(A\)">\(A\)</span> can contain a simplex outside <span class="math" data-tex="\(A\)">\(A\)</span>. All intermediate shared faces are free for the same reason. After all source simplices have been processed, the remaining subcomplex is the union in (E.2).</p>
+<p>Each elementary removal has a PL retraction. If a simplex <span class="math" data-tex="\(T=v*\tau\)">\(T=v*\tau\)</span> has free facet <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, its remaining faces are <span class="math" data-tex="\(v*\partial\tau\)">\(v*\partial\tau\)</span>. Insert an interior point <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, triangulate <span class="math" data-tex="\(T\)">\(T\)</span> by the cones with vertices <span class="math" data-tex="\(v,b\)">\(v,b\)</span> and a face of <span class="math" data-tex="\(\partial\tau\)">\(\partial\tau\)</span>, and send <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(v\)">\(v\)</span>, fixing every vertex on <span class="math" data-tex="\(v*\partial\tau\)">\(v*\partial\tau\)</span>. This defines an affine map on each of those simplices onto the remaining faces, fixes those faces pointwise and thus glues to the identity outside <span class="math" data-tex="\(T\)">\(T\)</span>. If <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a vertex, the same construction is just the constant map from its edge to the other vertex. A straight homotopy inside <span class="math" data-tex="\(T\)">\(T\)</span> is a deformation retraction fixing the remaining faces. Composing these finitely many PL retractions, with common refinements from Lemma E.1 when needed, proves (E.2). This is a proved finite PL homotopy-extension retraction, not a collar assumption on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h3 id="e-2-relative-approximation-and-fixed-endpoint-homotopies">E.2. Relative approximation and fixed-endpoint homotopies</h3>
+<p><span id="DG-CHAR-15.lemma-E.3"></span><strong>Lemma E.3 — Relative PL approximation.</strong> Let <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> be finite polyhedra and <span class="math" data-tex="\(A\subset P\)">\(A\subset P\)</span> a subpolyhedron. If <span class="math" data-tex="\(F:P\to Q\)">\(F:P\to Q\)</span> is continuous and its restriction to <span class="math" data-tex="\(A\)">\(A\)</span> is PL, then <span class="math" data-tex="\(F\)">\(F\)</span> is homotopic relative to <span class="math" data-tex="\(A\)">\(A\)</span> to a PL map agreeing there exactly with <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> Choose triangulations with <span class="math" data-tex="\(A\)">\(A\)</span> a subcomplex. The full finite simplicial approximation proof in <a href="DG-CHAR-08B.html">Frame fields</a>, LemmaA.1, supplies a simplicial approximation <span class="math" data-tex="\(g\)">\(g\)</span> and its straight homotopy from <span class="math" data-tex="\(F\)">\(F\)</span>, after source subdivision. Its actual carrier property is that <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> and <span class="math" data-tex="\(g(x)\)">\(g(x)\)</span> lie together in a target simplex for every <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>On <span class="math" data-tex="\(A\)">\(A\)</span>, both endpoint maps <span class="math" data-tex="\(F|_A\)">\(F|_A\)</span> and <span class="math" data-tex="\(g|_A\)">\(g|_A\)</span> are PL. Refine <span class="math" data-tex="\(A\)">\(A\)</span> into polyhedral cells on which both maps are affine and each of their images lies in a single minimal target face. At a relative interior point of any such source cell, each affine image lies in the relative interior of its minimal image face: if a target vertex coordinate vanishes at an interior point, its nonnegative affine value vanishes on the entire cell. The carrier property therefore implies the two minimal image faces span a common target simplex. Both entire cell images lie in that simplex.</p>
+<p>Triangulate these cells and use the prism triangulation (E.1). Send a bottom vertex to its <span class="math" data-tex="\(F\)">\(F\)</span>-value and a top vertex to its <span class="math" data-tex="\(g\)">\(g\)</span>-value, extending affinely on the prism simplices. The common carrier just proved keeps each image in <span class="math" data-tex="\(Q\)">\(Q\)</span>. This gives a PL homotopy
+<span class="math math-display" data-tex="\[
+b:A\times I\to Q,\qquad b_0=F|_A,\quad b_1=g|_A.
+\]">\[
+b:A\times I\to Q,\qquad b_0=F|_A,\quad b_1=g|_A.
+\]</span>
+It is homotopic relative to its endpoints to the original straight homotopy on <span class="math" data-tex="\(A\)">\(A\)</span>: interpolate their values inside their shared target simplex on each source prism. These interpolations agree on common faces.</p>
+<p>Define the PL map on <span class="math" data-tex="\(P\times\{1\}\cup A\times I\)">\(P\times\{1\}\cup A\times I\)</span> to be <span class="math" data-tex="\(g\)">\(g\)</span> on the first part and <span class="math" data-tex="\(b\)">\(b\)</span> on the second. They agree on the intersection. Compose with (E.2). Its restriction <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(P\times\{0\}\)">\(P\times\{0\}\)</span> is PL and equals <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span>; the composite is a homotopy from <span class="math" data-tex="\(h\)">\(h\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span> whose restriction to <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>For clarity, the homotopy from <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(h\)">\(h\)</span> can be made relative to <span class="math" data-tex="\(A\)">\(A\)</span>, not only unrestricted. The original homotopy <span class="math" data-tex="\(F\to g\)">\(F\to g\)</span> can first be changed to have restriction exactly <span class="math" data-tex="\(b\)">\(b\)</span>, fixing both endpoints: apply the already proved CW homotopy extension property to
+<span class="math" data-tex="\((P\times I,P\times\partial I\cup A\times I)\)">\((P\times I,P\times\partial I\cup A\times I)\)</span>
+and the just-constructed interpolation on <span class="math" data-tex="\(A\)">\(A\)</span>. Concatenate this modified homotopy with the reverse of <span class="math" data-tex="\(h\to g\)">\(h\to g\)</span>. On <span class="math" data-tex="\(A\)">\(A\)</span> it traverses <span class="math" data-tex="\(b\)">\(b\)</span> forward and backward. This loop of paths contracts to its constant initial value by continuously shortening the maximum parameter of <span class="math" data-tex="\(b\)">\(b\)</span>, keeping its two endpoint values fixed. Apply homotopy extension to the same pair once more to extend this contraction. At its final stage the full homotopy <span class="math" data-tex="\(F\to h\)">\(F\to h\)</span> is constant on <span class="math" data-tex="\(A\)">\(A\)</span>. The homotopy-extension proof being used is the explicit disk-cylinder retraction in Frame fields, SectionE, (E.1), followed by its cellwise extension; every pair here is a finite CW pair after the prism triangulation. This proves the relative assertion. ∎</p>
+<p>In particular, two homotopic PL maps <span class="math" data-tex="\(f,g:P\to Q\)">\(f,g:P\to Q\)</span> have a <strong>PL homotopy with exactly those endpoints</strong>. Apply Lemma E.3 to a continuous homotopy on <span class="math" data-tex="\(P\times I\)">\(P\times I\)</span>, with the subpolyhedron <span class="math" data-tex="\(P\times\partial I\)">\(P\times\partial I\)</span>; its endpoint restrictions are already PL. Lemma E.1 can then make that homotopy simplicial, while retaining its endpoint subcomplexes and the actual endpoint maps. No redefinition of the homotopy classes at the ends is required.</p>
+<h3 id="e-3-moving-points-in-a-pl-sphere">E.3. Moving points in a PL sphere</h3>
+<p>Our target sphere is the boundary of a <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-simplex, with its usual PL structure and positive orientation. Any subdivision or PL reparametrization represents the same finite polyhedron.</p>
+<p><span id="DG-CHAR-15.lemma-E.4"></span><strong>Lemma E.4 — The point movement needed for generic fibres.</strong> Let <span class="math" data-tex="\(U_1,U_2\)">\(U_1,U_2\)</span> be nonempty open subsets of this PL <span class="math" data-tex="\(k\)">\(k\)</span>-sphere, <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. There are points <span class="math" data-tex="\(y_i\in U_i\)">\(y_i\in U_i\)</span> and an orientation-preserving PL homeomorphism <span class="math" data-tex="\(u\)">\(u\)</span> homotopic to the identity with <span class="math" data-tex="\(u(y_1)=y_2\)">\(u(y_1)=y_2\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(y_i\)">\(y_i\)</span> in the interiors of standard top-dimensional facets, since the union of these interiors is dense. Inside one such facet, small neighbourhoods have affine Euclidean charts. Distinct standard facets meet in a codimension-one face. At an interior point of that face, flatten their two adjacent half-simplex neighbourhoods linearly onto the opposite sides of a Euclidean hyperplane, using the same affine coordinates on the shared face. This is a PL chart. A path from <span class="math" data-tex="\(y_1\)">\(y_1\)</span> to <span class="math" data-tex="\(y_2\)">\(y_2\)</span> can therefore be chosen within the union of facet interiors and these codimension-one charts, crossing a shared face at an interior point. Cover this compact path by finitely many charts, and subdivide its parameter interval until each consecutive pair of points lies in one chart and in the interior of a convex polytope contained in that chart.</p>
+<p>For two such points <span class="math" data-tex="\(a,b\)">\(a,b\)</span> inside a convex polytope <span class="math" data-tex="\(B\)">\(B\)</span>, triangulate <span class="math" data-tex="\(\partial B\)">\(\partial B\)</span>, cone it first to <span class="math" data-tex="\(a\)">\(a\)</span> and then to <span class="math" data-tex="\(b\)">\(b\)</span>, and send the cone vertex <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> while fixing the boundary vertices. Each cone simplex maps affinely to the corresponding cone simplex. Both conings cover <span class="math" data-tex="\(B\)">\(B\)</span> with the same boundary incidences, so this is a PL homeomorphism of <span class="math" data-tex="\(B\)">\(B\)</span>, equal to the identity on its boundary. Extend it by the identity outside <span class="math" data-tex="\(B\)">\(B\)</span>. Lemma E.1 provides a common refinement at that boundary, so the extension is PL on the sphere.</p>
+<p>It is isotopic to the identity: replace <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(a_t=(1-t)a+tb\)">\(a_t=(1-t)a+tb\)</span> in the same cone formulas. Every <span class="math" data-tex="\(a_t\)">\(a_t\)</span> is interior in <span class="math" data-tex="\(B\)">\(B\)</span>, so each stage is a homeomorphism and the family is continuous. This also shows it preserves orientation. Compose the finitely many such supported homeomorphisms along the chosen path. Their composition takes <span class="math" data-tex="\(y_1\)">\(y_1\)</span> to <span class="math" data-tex="\(y_2\)">\(y_2\)</span>, is PL and is homotopic to the identity by concatenating their isotopies. ∎</p>
+<p>The open-set formulation is enough: each generic fibre has a whole target simplex interior on which its oriented homeomorphism type is constant. It avoids assuming an unproved chart theorem for an arbitrary triangulated topological sphere. Only the stated standard PL sphere and its PL subdivisions are used.</p>
+<h2 id="f-fibre-signatures-and-the-stable-range-l-class">F. Fibre signatures and the stable-range L-class</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a finite closed oriented rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold. Take the target <span class="math" data-tex="\(S^k\)">\(S^k\)</span> with its positive standard PL orientation, and put <span class="math" data-tex="\(d=n-k\)">\(d=n-k\)</span>. A <strong>generic value</strong> of a PL map means a point outside the lower-dimensional skeleton of a target triangulation making that map simplicial. Such values form an open dense subset. The signature results below concern <span class="math" data-tex="\(d=4i\)">\(d=4i\)</span>; the fibre-dimension and orientation constructions also apply to other nonnegative <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<h3 id="f-1-induced-orientation-including-a-homotopy-boundary">F.1. Induced orientation, including a homotopy boundary</h3>
+<p><span id="DG-CHAR-15.lemma-F.1"></span><strong>Lemma F.1 — Oriented generic fibres.</strong> For a PL map <span class="math" data-tex="\(f:K\to S^k\)">\(f:K\to S^k\)</span>, a generic fibre <span class="math" data-tex="\(F_y=f^{-1}(y)\)">\(F_y=f^{-1}(y)\)</span> is a finite closed oriented rational homology <span class="math" data-tex="\(d\)">\(d\)</span>-manifold, or empty. The induced convention is <strong>fibre first, target last</strong>:
+<span class="math math-display" data-tex="\[
+\text{orientation of }K
+ =\text{orientation of }F_y\ \times\
+   \text{positive local orientation of }S^k.
+\tag{F.1}
+\]">\[
+\text{orientation of }K
+ =\text{orientation of }F_y\ \times\
+   \text{positive local orientation of }S^k.
+\tag{F.1}
+\]</span>
+For a PL homotopy <span class="math" data-tex="\(h:I\times K\to S^k\)">\(h:I\times K\to S^k\)</span> from <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span>, the generic fibre is a rational homology <span class="math" data-tex="\((d+1)\)">\((d+1)\)</span>-manifold pair with boundary, oriented by the same convention using <span class="math" data-tex="\(I\times K\)">\(I\times K\)</span>. Its induced boundary is
+<span class="math math-display" data-tex="\[
+\partial h^{-1}(y)=g^{-1}(y)\ \sqcup\ (-f^{-1}(y)).
+\tag{F.2}
+\]">\[
+\partial h^{-1}(y)=g^{-1}(y)\ \sqcup\ (-f^{-1}(y)).
+\tag{F.2}
+\]</span></p>
+<p><strong>Proof of the closed assertion and orientation.</strong> Lemma E.1 makes <span class="math" data-tex="\(f\)">\(f\)</span> simplicial. Proposition A.3 supplies the finite polyhedron and its local rational homology. In a top source simplex that maps onto the target top simplex, the fibre polytope has dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Give it the ordinary linear orientation determined by (F.1). This rule can be checked in the actual product coordinates of Lemma A.1: reorder those coordinates to fibre first and target last, and use the relative cross product to remove the positive target local generator.</p>
+<p>These top-polytope orientations induce coherent signs on their triangulations. Across an internal triangulation face they cancel by the ordinary boundary of an oriented convex polytope. A shared facet of two different fibre polytopes lies in a codimension-one source face which still maps onto the full target simplex. Indeed the defining positive vertex-group sums impose <span class="math" data-tex="\(k\)">\(k\)</span> independent affine conditions on that source face; its fibre has dimension <span class="math" data-tex="\(\dim(\text{source face})-k\)">\(\dim(\text{source face})-k\)</span>, so a <span class="math" data-tex="\(d-1\)">\(d-1\)</span> facet has source dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. That face has two incident top source simplices. Their boundary orientation contributions cancel by the orientation cycle of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>In the product coordinates over the open target simplex, this is exactly the cancellation of the fibre facet contributions. The product boundary formula is
+<span class="math math-display" data-tex="\[
+\partial(a\times b)=(\partial a)\times b+(-1)^{|a|}a\times\partial b.
+\tag{F.3}
+\]">\[
+\partial(a\times b)=(\partial a)\times b+(-1)^{|a|}a\times\partial b.
+\tag{F.3}
+\]</span>
+There is no local target boundary in its open simplex. Thus the first summands must cancel, with the same fibre-first convention on both sides. This proves the top fibre signs satisfy (D.2) with empty boundary. Lemma D.1 then shows their top cycle has a generator at every local point. It is the induced orientation in (F.1), not merely a sign choice on its smooth part.</p>
+<p>For two values in the same target simplex interior, the fibre homeomorphism in (A.3) rescales the source coordinates in each vertex group by positive constants. Interpolating the positive target coordinates joins it to the identity in those product coordinates, so it preserves this induced orientation. It is affine on each fibre polytope. Therefore the oriented fibre type, and its signature when defined, is constant throughout that open simplex.</p>
+<p><strong>Proof of the homotopy assertion.</strong> The finite prism triangulation makes <span class="math" data-tex="\(I\times K\)">\(I\times K\)</span> a polyhedron with its endpoint subcomplexes. Give it the ordered product orientation with <span class="math" data-tex="\(I\)">\(I\)</span> first. It has the rational homology boundary conditions of D.1. In its interior this follows from the interval version of Lemma A.2. At an endpoint the local interval pair
+<span class="math" data-tex="\(([0,\epsilon),[0,\epsilon)-\{0\})\)">\(([0,\epsilon),[0,\epsilon)-\{0\})\)</span>
+has zero homology in every degree: both spaces are contractible and their nonempty inclusion induces the same <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. The relative chain product therefore makes every ordinary local homology group at an endpoint zero. Its endpoint subcomplexes are copies of <span class="math" data-tex="\(K\)">\(K\)</span> and have the required closed local homology. Formula (F.3) gives their fundamental cycle as <span class="math" data-tex="\(K\)">\(K\)</span> at time one minus <span class="math" data-tex="\(K\)">\(K\)</span> at time zero.</p>
+<p>By Lemma E.1 make the actual homotopy simplicial, retaining its endpoint subcomplexes. Lemma A.1 preserves source support, so its local product homeomorphism also preserves these subcomplexes. The fibre meets them exactly in the endpoint fibres. At an interior fibre point, Lemma A.2 gives the closed local homology in dimension <span class="math" data-tex="\(d+1\)">\(d+1\)</span>. At an endpoint fibre point, the same removal of the target local factor gives zero ordinary local homology in every degree. The endpoint fibres separately have the closed local homology of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, by Proposition A.3. Thus this fibre pair satisfies every boundary hypothesis of D.1.</p>
+<p>The oriented top-polytope construction above applies now with ambient boundary. Every interior facet cancels; each boundary facet has one incident top polytope and carries its induced boundary sign. To check that sign, in a product orientation write the outward interval direction first, then the endpoint fibre tangent orientation, and then the target orientation. Removing the last target factor gives exactly the outward-first orientation of the fibre boundary. In <span class="math" data-tex="\(I\times K\)">\(I\times K\)</span>, the endpoint signs are <span class="math" data-tex="\(+\)">\(+\)</span> at one and <span class="math" data-tex="\(-\)">\(-\)</span> at zero. This proves (F.2). If endpoint fibres or the full fibre are empty the same statements hold with their zero cycles. ∎</p>
+<h3 id="f-2-independence-of-generic-value-and-homotopy">F.2. Independence of generic value and homotopy</h3>
+<p><span id="DG-CHAR-15.theorem-F.2"></span><strong>Theorem F.2 — Generic signature invariance (MS20.3–20.4).</strong> Suppose <span class="math" data-tex="\(d=4i\geq0\)">\(d=4i\geq0\)</span> and <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. The integer <span class="math" data-tex="\(\sigma(f^{-1}(y))\)">\(\sigma(f^{-1}(y))\)</span> is the same for all generic values of any PL representative <span class="math" data-tex="\(f\)">\(f\)</span>, independent of its PL triangulations and of its homotopy class representative. Denote it by <span class="math" data-tex="\(\sigma(f)\)">\(\sigma(f)\)</span>. Every continuous map has a PL representative, so this defines an integer on continuous homotopy classes as well.</p>
+<p><strong>Proof: equality at common generic values.</strong> If PL maps <span class="math" data-tex="\(f,g\)">\(f,g\)</span> are homotopic, Lemma E.3 supplies a PL homotopy with the exact endpoints. Triangulate it and its endpoint subcomplexes. For every value generic for this common triangulation, Lemma F.1 gives the oriented rational homology boundary (F.2). Theorem D.6 and direct-sum additivity of the middle form give
+<span class="math math-display" data-tex="\[
+0=\sigma(h^{-1}(y)\text{ boundary})
+ =\sigma(g^{-1}(y))-\sigma(f^{-1}(y)).
+\tag{F.4}
+\]">\[
+0=\sigma(h^{-1}(y)\text{ boundary})
+ =\sigma(g^{-1}(y))-\sigma(f^{-1}(y)).
+\tag{F.4}
+\]</span>
+This proves the equality on an open dense set, before asserting constancy between different target simplices.</p>
+<p><strong>Proof: constancy for one map.</strong> Fix two target top-simplex interiors <span class="math" data-tex="\(V_1,V_2\)">\(V_1,V_2\)</span> for <span class="math" data-tex="\(f\)">\(f\)</span>. Lemma F.1 makes the fibre signature constant on each, with respective values <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span>. By Lemma E.4 choose <span class="math" data-tex="\(y_j\in V_j\)">\(y_j\in V_j\)</span> and an orientation-preserving PL homeomorphism <span class="math" data-tex="\(u\)">\(u\)</span>, homotopic to the identity, taking <span class="math" data-tex="\(y_1\)">\(y_1\)</span> to <span class="math" data-tex="\(y_2\)">\(y_2\)</span>. The map <span class="math" data-tex="\(uf\)">\(uf\)</span> is PL and homotopic to <span class="math" data-tex="\(f\)">\(f\)</span>. Its fibre signature on <span class="math" data-tex="\(u(V_1)\)">\(u(V_1)\)</span> is <span class="math" data-tex="\(a_1\)">\(a_1\)</span>, because its fibre sets are those of <span class="math" data-tex="\(f\)">\(f\)</span> at <span class="math" data-tex="\(u^{-1}(y)\)">\(u^{-1}(y)\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> preserves the last orientation factor in (F.1).</p>
+<p>The intersection <span class="math" data-tex="\(u(V_1)\cap V_2\)">\(u(V_1)\cap V_2\)</span> is a nonempty open neighbourhood of <span class="math" data-tex="\(y_2\)">\(y_2\)</span>. Choose a point there avoiding all the finitely many lower-dimensional skeleta used to triangulate <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(uf\)">\(uf\)</span> and their PL homotopy. Their union has empty interior: each of its simplices has lower affine dimension in a top-dimensional target simplex, and finitely many such pieces cannot contain an open set. At the chosen point (F.4) gives <span class="math" data-tex="\(a_1=a_2\)">\(a_1=a_2\)</span>. Thus every target simplex has the same generic signature.</p>
+<p>The same common-generic-value argument now proves full homotopy invariance for two maps, using their established individual constancy. A further triangulation does not change any actual fibre or its orientation at a common generic point, so it does not change the integer. Every continuous map has a PL representative by the finite approximation lemma; two choices are continuously homotopic and hence have PL-homotopic representatives by Lemma E.3. This proves all assertions. ∎</p>
+<p>The word generic is essential here. A fibre over a lower-dimensional target face need not have the closed local homology or the dimension required by (D.20).</p>
+<h3 id="f-3-additivity-and-the-unique-stable-range-class">F.3. Additivity and the unique stable-range class</h3>
+<p>Assume now <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span> and <span class="math" data-tex="\(n&lt;2k-1\)">\(n&lt;2k-1\)</span>, so Section C has constructed the abelian group <span class="math" data-tex="\(\pi^k(K)\)">\(\pi^k(K)\)</span>.</p>
+<p><span id="DG-CHAR-15.proposition-F.3"></span><strong>Proposition F.3 — Signature is a cohomotopy homomorphism.</strong>
+<span class="math math-display" data-tex="\[
+\sigma:\pi^k(K)\longrightarrow\mathbb Z
+\tag{F.5}
+\]">\[
+\sigma:\pi^k(K)\longrightarrow\mathbb Z
+\tag{F.5}
+\]</span>
+is a homomorphism when <span class="math" data-tex="\(n-k=4i\)">\(n-k=4i\)</span>.</p>
+<p><strong>Proof.</strong> Lift a pair of maps to the two-sphere wedge as in Lemma C.1. Choose a PL representative <span class="math" data-tex="\(a:K\to S^k\vee S^k\)">\(a:K\to S^k\vee S^k\)</span> by finite approximation. Its two coordinate projections <span class="math" data-tex="\(f&#x27;,g&#x27;\)">\(f&#x27;,g&#x27;\)</span> are PL representatives of the original maps; the wedge collapse and fold are PL on their standard sphere complexes. The fold composite represents their sum.</p>
+<p>For <span class="math" data-tex="\(y\)">\(y\)</span> different from the wedge basepoint, its fold fibre is exactly the disjoint union of <span class="math" data-tex="\(f&#x27;^{-1}(y)\)">\(f&#x27;^{-1}(y)\)</span> and <span class="math" data-tex="\(g&#x27;^{-1}(y)\)">\(g&#x27;^{-1}(y)\)</span>. On a neighbourhood of the first fibre the fold equals <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span>, and on a neighbourhood of the second it equals <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span>; the two sets are disjoint. The identities on the two positively oriented sphere copies make their induced orientations agree. Choose <span class="math" data-tex="\(y\)">\(y\)</span> also generic for all three maps, which is possible by avoiding their finite lower skeleta and the basepoint. The form of this disjoint union is their orthogonal direct sum. Therefore
+<span class="math" data-tex="\(\sigma(f&#x27;+g&#x27;)=\sigma(f&#x27;)+\sigma(g&#x27;)\)">\(\sigma(f&#x27;+g&#x27;)=\sigma(f&#x27;)+\sigma(g&#x27;)\)</span>.
+Homotopy invariance identifies these integers with the original classes. A constant map has an empty fibre at a generic value different from its image, so has signature zero. This proves (F.5). ∎</p>
+<p><span id="DG-CHAR-15.theorem-F.4"></span><strong>Theorem F.4 — The stable-range rational L-class (MS20.6).</strong> For
+<span class="math math-display" data-tex="\[
+4i&lt;\frac{n-1}{2},
+\tag{F.6}
+\]">\[
+4i&lt;\frac{n-1}{2},
+\tag{F.6}
+\]</span>
+there is a unique class <span class="math" data-tex="\(\ell_i(K)\in H^{4i}(K;\mathbb Q)\)">\(\ell_i(K)\in H^{4i}(K;\mathbb Q)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\big\langle \ell_i(K)\smile f^*u,[K]\big\rangle
+ =\sigma(f)
+\quad\text{for every }f:K\to S^{n-4i}.
+\tag{F.7}
+\]">\[
+\big\langle \ell_i(K)\smile f^*u,[K]\big\rangle
+ =\sigma(f)
+\quad\text{for every }f:K\to S^{n-4i}.
+\tag{F.7}
+\]</span>
+It is preserved by PL homeomorphisms.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(k=n-4i\)">\(k=n-4i\)</span>. Condition (F.6) is exactly <span class="math" data-tex="\(n&lt;2k-1\)">\(n&lt;2k-1\)</span>; it also ensures <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>. Proposition F.3 and Corollary C.4 give a unique rational-linear functional <span class="math" data-tex="\(\sigma_{\mathbb Q}\)">\(\sigma_{\mathbb Q}\)</span> on <span class="math" data-tex="\(H^k(K;\mathbb Q)\)">\(H^k(K;\mathbb Q)\)</span> taking <span class="math" data-tex="\(f^*u\)">\(f^*u\)</span> to <span class="math" data-tex="\(\sigma(f)\)">\(\sigma(f)\)</span>. Theorem D.5's perfect closed pairing identifies the dual of this cohomology group with <span class="math" data-tex="\(H^{n-k}(K;\mathbb Q)=H^{4i}(K;\mathbb Q)\)">\(H^{n-k}(K;\mathbb Q)=H^{4i}(K;\mathbb Q)\)</span>. It gives the unique <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span> in (F.7). In particular the proof uses all sphere-pullback classes spanning rational cohomology, rather than only some chosen maps.</p>
+<p>For an orientation-preserving PL homeomorphism <span class="math" data-tex="\(\lambda:K&#x27;\to K\)">\(\lambda:K&#x27;\to K\)</span>, the actual fibre homeomorphism <span class="math" data-tex="\(\lambda^{-1}(f^{-1}(y))\to f^{-1}(y)\)">\(\lambda^{-1}(f^{-1}(y))\to f^{-1}(y)\)</span> preserves the induced orientation. Hence its signature is equal, and <span class="math" data-tex="\(\lambda_*[K&#x27;]=[K]\)">\(\lambda_*[K&#x27;]=[K]\)</span>. Pullback of (F.7) and uniqueness give <span class="math" data-tex="\(\ell_i(K&#x27;)=\lambda^*\ell_i(K)\)">\(\ell_i(K&#x27;)=\lambda^*\ell_i(K)\)</span>.</p>
+<p>Reversing the orientation on one component negates both its fundamental class and every fibre signature contribution from that component, so leaves the defining class unchanged. Maps and cohomology split over the finitely many components, and their fibre forms split as direct sums. Thus the same conclusion holds for any PL homeomorphism, with its componentwise orientation changes accounted for. ∎</p>
+<p>This theorem is presently in the strict range (F.6). The extension to all indices by products with spheres, and comparison with smooth tangent L-classes, require the further arguments below.</p>
+<h3 id="f-4-the-generic-fibre-represents-the-pulled-back-sphere-class">F.4. The generic fibre represents the pulled-back sphere class</h3>
+<p>The following identity supplies a useful compatibility for those arguments. It is also a check on the order in (F.1).</p>
+<p><span id="DG-CHAR-15.lemma-F.5"></span><strong>Lemma F.5 — Fibre cap and evaluation.</strong> For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, <span class="math" data-tex="\(d=n-k\geq0\)">\(d=n-k\geq0\)</span>, a PL map <span class="math" data-tex="\(f\)">\(f\)</span>, and its oriented generic fibre inclusion <span class="math" data-tex="\(j:F_y\to K\)">\(j:F_y\to K\)</span>, one has
+<span class="math math-display" data-tex="\[
+j_*[F_y]=R_{f^*u}[K]\in H_d(K;\mathbb Q).
+\tag{F.8}
+\]">\[
+j_*[F_y]=R_{f^*u}[K]\in H_d(K;\mathbb Q).
+\tag{F.8}
+\]</span>
+Consequently, for <span class="math" data-tex="\(a\in H^d(K;\mathbb Q)\)">\(a\in H^d(K;\mathbb Q)\)</span>,
+<span class="math math-display" data-tex="\[
+\langle a\smile f^*u,[K]\rangle
+ =\langle j^*a,[F_y]\rangle.
+\tag{F.9}
+\]">\[
+\langle a\smile f^*u,[K]\rangle
+ =\langle j^*a,[F_y]\rangle.
+\tag{F.9}
+\]</span></p>
+<p><strong>Proof.</strong> A positive generator of <span class="math" data-tex="\(H^k(S^k,S^k-\{y\};\mathbb Q)\)">\(H^k(S^k,S^k-\{y\};\mathbb Q)\)</span> maps to <span class="math" data-tex="\(u\)">\(u\)</span>. The local cone/ball computation proves this: the corresponding positive local top homology generator is the restriction of the sphere fundamental class, so the coefficient theorem evaluates the relative generator as one on that restriction and its absolute image as one on the sphere. Pull it back to the pair <span class="math" data-tex="\((K,K-F_y)\)">\((K,K-F_y)\)</span>.</p>
+<p>Excision restricts this pair near <span class="math" data-tex="\(F_y\)">\(F_y\)</span> to the open product of Lemma A.1, reordered as <span class="math" data-tex="\(F_y\times V\)">\(F_y\times V\)</span>, where <span class="math" data-tex="\(y\in V\)">\(y\in V\)</span>. The class is the last-factor local generator <span class="math" data-tex="\(1\times u_y\)">\(1\times u_y\)</span>. The relative fundamental class on this product is
+<span class="math" data-tex="\([F_y]\times\mu_y\)">\([F_y]\times\mu_y\)</span>, with <span class="math" data-tex="\(\mu_y\in H_k(V,V-\{y\};\mathbb Q)\)">\(\mu_y\in H_k(V,V-\{y\};\mathbb Q)\)</span> positive. To verify this identification, relative chain products give
+<span class="math math-display" data-tex="\[
+H_n(F_y\times V,F_y\times(V-\{y\});\mathbb Q)
+ \cong H_d(F_y;\mathbb Q)\otimes\mathbb Q\mu_y.
+\]">\[
+H_n(F_y\times V,F_y\times(V-\{y\});\mathbb Q)
+ \cong H_d(F_y;\mathbb Q)\otimes\mathbb Q\mu_y.
+\]</span>
+The image of <span class="math" data-tex="\([K]\)">\([K]\)</span> on this pair has the induced positive local values prescribed by (F.1). A top homology class of <span class="math" data-tex="\(F_y\)">\(F_y\)</span> is determined by its values at the interiors of its finitely many top simplices: its simplicial representative is a top cycle, with no chains above that degree, and each such local restriction detects that simplex's coefficient. The two indicated classes therefore agree. This verifies the relative fundamental comparison without a tubular-neighbourhood theorem.</p>
+<p>Right cap by <span class="math" data-tex="\(1\times u_y\)">\(1\times u_y\)</span> removes exactly the last factor and sends this relative product class to <span class="math" data-tex="\([F_y]\)">\([F_y]\)</span> at a point of <span class="math" data-tex="\(V\)">\(V\)</span>. Here is its sign check at chains. Use normalized singular cochains, whose comparison and Alexander–Whitney compatibility are proved in odd-prime LemmaG.1, a coefficient-independent normalization argument. In the shuffle cross product of a degree-<span class="math" data-tex="\(d\)">\(d\)</span> fibre simplex and a degree-<span class="math" data-tex="\(k\)">\(k\)</span> target simplex, the evaluated last <span class="math" data-tex="\(k\)">\(k\)</span> vertices project to a nondegenerate target simplex only for the shuffle with all fibre steps first and all target steps last. Every other projection has a repeated vertex and has zero value under the normalized <span class="math" data-tex="\(u_y\)">\(u_y\)</span>. This remaining shuffle has sign <span class="math" data-tex="\(+1\)">\(+1\)</span>; its retained front face is the fibre simplex at the first target vertex. The local generator evaluates as one on <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>. Moving that vertex to <span class="math" data-tex="\(y\)">\(y\)</span> inside the contractible <span class="math" data-tex="\(V\)">\(V\)</span> changes the fibre inclusion by a homotopy. Thus the resulting cap class is its fundamental class included at <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>Cap naturality, excision's small-chain comparison, and the relative pullback show that this local computation gives exactly the absolute right cap <span class="math" data-tex="\(R_{f^*u}[K]\)">\(R_{f^*u}[K]\)</span> after inclusion in <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(F_y\)">\(F_y\)</span> is empty, the pullback relative class lives in the zero pair <span class="math" data-tex="\((K,K)\)">\((K,K)\)</span>, so both sides are zero. Finally evaluate <span class="math" data-tex="\(a\)">\(a\)</span> and use the already proved right-cap identity <span class="math" data-tex="\(\langle a,R_bc\rangle=\langle a\smile b,c\rangle\)">\(\langle a,R_bc\rangle=\langle a\smile b,c\rangle\)</span>. This gives (F.9). ∎</p>
+<h2 id="g-stabilization-beyond-the-cohomotopy-range">G. Stabilization beyond the cohomotopy range</h2>
+<p>Section F defines <span class="math" data-tex="\(\ell_i(K)\)">\(\ell_i(K)\)</span> only when <span class="math" data-tex="\(4i&lt;(n-1)/2\)">\(4i&lt;(n-1)/2\)</span>. We now prove an extension for every finite closed oriented rational homology manifold and every <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>. The construction is independent of an auxiliary sphere's dimension and has the expected signature normalization.</p>
+<p>Products of finite polyhedra are finite polyhedra: products of their simplices are convex polytopes, their intersections are common product faces, and face-chain coning gives a compatible finite triangulation. For <span class="math" data-tex="\(K^n\times S^m\)">\(K^n\times S^m\)</span>, a sphere chart and Lemma A.2 give the local rational homology in dimension <span class="math" data-tex="\(n+m\)">\(n+m\)</span>. Its orientation is the ordered product orientation, with <span class="math" data-tex="\(K\)">\(K\)</span> first. The chain product and its boundary formula give its coherent top-simplex orientation and fundamental class
+<span class="math math-display" data-tex="\[
+[K\times S^m]=[K]\times[S^m].
+\tag{G.1}
+\]">\[
+[K\times S^m]=[K]\times[S^m].
+\tag{G.1}
+\]</span>
+This can also be checked by triangulating each oriented simplex product: the shuffle simplices cover it, interior facets cancel in pairs, and its boundary facets are exactly (F.3).</p>
+<h3 id="g-1-a-localized-degree-one-product-map">G.1. A localized degree-one product map</h3>
+<p><span id="DG-CHAR-15.lemma-G.1"></span><strong>Lemma G.1 — Product suspension with the same generic fibre.</strong> Let <span class="math" data-tex="\(f:K^n\to S^k\)">\(f:K^n\to S^k\)</span> be PL, where <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, <span class="math" data-tex="\(d=n-k\geq0\)">\(d=n-k\geq0\)</span>, and let <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. There is a PL map
+<span class="math math-display" data-tex="\[
+F:K\times S^m\longrightarrow S^{k+m}
+\tag{G.2}
+\]">\[
+F:K\times S^m\longrightarrow S^{k+m}
+\tag{G.2}
+\]</span>
+for which
+<span class="math math-display" data-tex="\[
+F^*U=f^*u\times v,
+\tag{G.3}
+\]">\[
+F^*U=f^*u\times v,
+\tag{G.3}
+\]</span>
+with <span class="math" data-tex="\(u,v,U\)">\(u,v,U\)</span> the positive sphere generators. On a nonempty open subset of its target its fibres are oriented homeomorphic to a generic fibre of <span class="math" data-tex="\(f\)">\(f\)</span>. In particular, if <span class="math" data-tex="\(d\)">\(d\)</span> is divisible by four then <span class="math" data-tex="\(\sigma(F)=\sigma(f)\)">\(\sigma(F)=\sigma(f)\)</span>.</p>
+<p><strong>Proof of the PL product map.</strong> Choose a generic target simplex interior for <span class="math" data-tex="\(f\)">\(f\)</span>, and a positive affine chart there. Choose also a positive chart of <span class="math" data-tex="\(S^m\)">\(S^m\)</span>. Inside their ordered product chart choose two concentric homothetic <span class="math" data-tex="\((k+m)\)">\((k+m)\)</span>-simplices, an inner <span class="math" data-tex="\(D_0\)">\(D_0\)</span> and an outer <span class="math" data-tex="\(D_1\)">\(D_1\)</span>, with <span class="math" data-tex="\(D_0\subset\operatorname{int}D_1\)">\(D_0\subset\operatorname{int}D_1\)</span>. Denote <span class="math" data-tex="\(N=k+m\)">\(N=k+m\)</span>. Triangulate <span class="math" data-tex="\(S^N\)">\(S^N\)</span> as the boundary of an <span class="math" data-tex="\((N+1)\)">\((N+1)\)</span>-simplex, and pick one facet <span class="math" data-tex="\(T\)">\(T\)</span>, with the complement the cone <span class="math" data-tex="\(b*\partial T\)">\(b*\partial T\)</span> from its opposite vertex <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Define <span class="math" data-tex="\(q:S^k\times S^m\to S^N\)">\(q:S^k\times S^m\to S^N\)</span> to take <span class="math" data-tex="\(D_0\)">\(D_0\)</span> affinely and positively onto <span class="math" data-tex="\(T\)">\(T\)</span>, and the complement of <span class="math" data-tex="\(\operatorname{int}D_1\)">\(\operatorname{int}D_1\)</span> constantly to <span class="math" data-tex="\(b\)">\(b\)</span>. On the annulus between the two homothetic simplices, use its face prisms: a face of <span class="math" data-tex="\(D_0\)">\(D_0\)</span> and its corresponding face of <span class="math" data-tex="\(D_1\)">\(D_1\)</span> bound a convex truncated cone, subdivided into the staircase simplices of its face prism. Send the inner face vertices to the corresponding vertices of <span class="math" data-tex="\(\partial T\)">\(\partial T\)</span> and the outer face vertices to <span class="math" data-tex="\(b\)">\(b\)</span>, and extend affinely on that subdivision. Each image lies in the corresponding cone face of <span class="math" data-tex="\(b*\partial T\)">\(b*\partial T\)</span>. The rules agree on common faces and on the two annulus boundaries. This defines a continuous PL map <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>For completeness, that staircase subdivision gives genuine straight simplices in each truncated cone. Put the common centre at zero, write the inner scale as <span class="math" data-tex="\(a\in(0,1)\)">\(a\in(0,1)\)</span>, and normalize a chosen outer facet by its affine supporting equation <span class="math" data-tex="\(\lambda(u)=1\)">\(\lambda(u)=1\)</span>, with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> linear. The projective map
+<span class="math math-display" data-tex="\[
+(u,t)\longmapsto \frac{a\,u}{1-(1-a)t}
+\quad (u\text{ in that facet},\ 0\leq t\leq1)
+\]">\[
+(u,t)\longmapsto \frac{a\,u}{1-(1-a)t}
+\quad (u\text{ in that facet},\ 0\leq t\leq1)
+\]</span>
+takes its ordinary prism bijectively onto the truncated cone between the scales <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. The denominator is positive. It takes lines to lines, and convex combinations to convex combinations with positive rescaled coefficients. Hence it takes each simplex in (E.1) onto the straight convex hull of its corresponding inner and outer vertices, preserving the common-face intersections and the covering. The inverse uses <span class="math" data-tex="\(r=\lambda(x)\)">\(r=\lambda(x)\)</span>, <span class="math" data-tex="\(u=x/r\)">\(u=x/r\)</span> and <span class="math" data-tex="\(t=(1-a/r)/(1-a)\)">\(t=(1-a/r)/(1-a)\)</span>, so is continuous. Use this map only to verify the straight triangulation; the definition of <span class="math" data-tex="\(q\)">\(q\)</span> is the affine vertex map on each resulting simplex. The same construction agrees on adjacent outer facets and their subfaces.</p>
+<p>Every point of <span class="math" data-tex="\(\operatorname{int}T\)">\(\operatorname{int}T\)</span> has exactly one preimage under <span class="math" data-tex="\(q\)">\(q\)</span>, in <span class="math" data-tex="\(\operatorname{int}D_0\)">\(\operatorname{int}D_0\)</span>, with positive local orientation. Formula (F.9), applied to this map between equal-dimensional oriented manifolds with <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, gives
+<span class="math" data-tex="\(\langle q^*U,[S^k\times S^m]\rangle=1\)">\(\langle q^*U,[S^k\times S^m]\rangle=1\)</span>.
+Field Künneth makes <span class="math" data-tex="\(H^{k+m}(S^k\times S^m;\mathbb Q)\)">\(H^{k+m}(S^k\times S^m;\mathbb Q)\)</span> the one-dimensional space generated by <span class="math" data-tex="\(u\times v\)">\(u\times v\)</span>, whose evaluation on the product fundamental class is one. Hence
+<span class="math math-display" data-tex="\[
+q^*U=u\times v.
+\tag{G.4}
+\]">\[
+q^*U=u\times v.
+\tag{G.4}
+\]</span></p>
+<p>Set <span class="math" data-tex="\(F=q(f\times1)\)">\(F=q(f\times1)\)</span>. It is PL by common refinements of its finitely many affine pieces. Pulling back (G.4) gives (G.3). For <span class="math" data-tex="\(z\in\operatorname{int}T\)">\(z\in\operatorname{int}T\)</span>, write its unique preimage as <span class="math" data-tex="\((y,t)\)">\((y,t)\)</span> in <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+F^{-1}(z)=f^{-1}(y)\times\{t\}.
+\]">\[
+F^{-1}(z)=f^{-1}(y)\times\{t\}.
+\]</span>
+All such <span class="math" data-tex="\(y\)">\(y\)</span> lie in the one chosen generic simplex interior for <span class="math" data-tex="\(f\)">\(f\)</span>. The derivative of the affine <span class="math" data-tex="\(D_0\to T\)">\(D_0\to T\)</span> preserves the ordered target orientation <span class="math" data-tex="\(S^k,S^m\)">\(S^k,S^m\)</span>. With the product source ordered <span class="math" data-tex="\(K,S^m\)">\(K,S^m\)</span>, the fibre-first convention has factor order <span class="math" data-tex="\(F_y,S^k,S^m\)">\(F_y,S^k,S^m\)</span>, so its fibre orientation is exactly that of <span class="math" data-tex="\(f^{-1}(y)\)">\(f^{-1}(y)\)</span>. Thus these fibres have the asserted oriented type. Theorem F.2's established generic constancy supplies the signature statement after avoiding any additional skeleton from a triangulation of the composite. ∎</p>
+<h3 id="g-2-restriction-of-stable-range-classes">G.2. Restriction of stable-range classes</h3>
+<p><span id="DG-CHAR-15.lemma-G.2"></span><strong>Lemma G.2 — Restriction under a sphere factor.</strong> Suppose a finite closed rational homology manifold <span class="math" data-tex="\(P^N\)">\(P^N\)</span> satisfies <span class="math" data-tex="\(4i&lt;(N-1)/2\)">\(4i&lt;(N-1)/2\)</span>, and <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. If <span class="math" data-tex="\(j:P\to P\times S^s\)">\(j:P\to P\times S^s\)</span> includes any slice, then
+<span class="math math-display" data-tex="\[
+j^*\ell_i(P\times S^s)=\ell_i(P).
+\tag{G.5}
+\]">\[
+j^*\ell_i(P\times S^s)=\ell_i(P).
+\tag{G.5}
+\]</span>
+If <span class="math" data-tex="\(s&gt;4i\)">\(s&gt;4i\)</span>, the stronger identity is
+<span class="math math-display" data-tex="\[
+\ell_i(P\times S^s)=\operatorname{pr}_P^*\ell_i(P).
+\tag{G.6}
+\]">\[
+\ell_i(P\times S^s)=\operatorname{pr}_P^*\ell_i(P).
+\tag{G.6}
+\]</span></p>
+<p><strong>Proof.</strong> Both spaces are in the strict range. Field Künneth decomposes the larger class uniquely as
+<span class="math math-display" data-tex="\[
+\ell_i(P\times S^s)=\alpha\times1+\beta\times v_s,
+\]">\[
+\ell_i(P\times S^s)=\alpha\times1+\beta\times v_s,
+\]</span>
+where <span class="math" data-tex="\(\alpha\in H^{4i}(P;\mathbb Q)\)">\(\alpha\in H^{4i}(P;\mathbb Q)\)</span>, and
+<span class="math" data-tex="\(\beta\in H^{4i-s}(P;\mathbb Q)\)">\(\beta\in H^{4i-s}(P;\mathbb Q)\)</span>; a negative degree means zero. The slice restriction is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, independently of its point since the sphere is path connected.</p>
+<p>Put <span class="math" data-tex="\(k=N-4i\)">\(k=N-4i\)</span>. For every PL <span class="math" data-tex="\(f:P\to S^k\)">\(f:P\to S^k\)</span>, Lemma G.1 gives the product map <span class="math" data-tex="\(F:P\times S^s\to S^{k+s}\)">\(F:P\times S^s\to S^{k+s}\)</span>, with pullback <span class="math" data-tex="\(f^*u\times v_s\)">\(f^*u\times v_s\)</span> and the same signature. Equation (F.7) on the larger product therefore gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sigma(f)
+ &amp;=\big\langle(\alpha\times1+\beta\times v_s)
+          \smile(f^*u\times v_s),[P]\times[S^s]\big\rangle\\
+ &amp;=\langle\alpha\smile f^*u,[P]\rangle.
+\end{aligned}
+\tag{G.7}
+\]">\[
+\begin{aligned}
+\sigma(f)
+ &amp;=\big\langle(\alpha\times1+\beta\times v_s)
+          \smile(f^*u\times v_s),[P]\times[S^s]\big\rangle\\
+ &amp;=\langle\alpha\smile f^*u,[P]\rangle.
+\end{aligned}
+\tag{G.7}
+\]</span>
+The <span class="math" data-tex="\(\beta\)">\(\beta\)</span> term is zero since <span class="math" data-tex="\(v_s^2=0\)">\(v_s^2=0\)</span> for positive-dimensional spheres. The other term has no cup/external-product sign: its first class has sphere degree zero. The positive <span class="math" data-tex="\(v_s\)">\(v_s\)</span> evaluates as one. Theorem F.4's uniqueness now forces <span class="math" data-tex="\(\alpha=\ell_i(P)\)">\(\alpha=\ell_i(P)\)</span>, proving (G.5). If <span class="math" data-tex="\(s&gt;4i\)">\(s&gt;4i\)</span>, the group for <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is zero, giving (G.6). ∎</p>
+<h3 id="g-3-choice-independence-and-normalization">G.3. Choice independence and normalization</h3>
+<p>For arbitrary <span class="math" data-tex="\(K^n\)">\(K^n\)</span> choose a positive integer <span class="math" data-tex="\(m\)">\(m\)</span> with
+<span class="math math-display" data-tex="\[
+m&gt;4i,\qquad 4i&lt;\frac{n+m-1}{2}.
+\tag{G.8}
+\]">\[
+m&gt;4i,\qquad 4i&lt;\frac{n+m-1}{2}.
+\tag{G.8}
+\]</span>
+Such integers exist. Field Künneth says that projection gives an isomorphism
+<span class="math math-display" data-tex="\[
+H^{4i}(K;\mathbb Q)\xrightarrow{\cong}
+ H^{4i}(K\times S^m;\mathbb Q)
+\]">\[
+H^{4i}(K;\mathbb Q)\xrightarrow{\cong}
+ H^{4i}(K\times S^m;\mathbb Q)
+\]</span>
+because its other sphere summand has degree <span class="math" data-tex="\(4i-m&lt;0\)">\(4i-m&lt;0\)</span>. Define the unrestricted <span class="math" data-tex="\(\ell_i(K)\)">\(\ell_i(K)\)</span> to be the slice pullback of the already constructed strict-range class on this product.</p>
+<p><span id="DG-CHAR-15.theorem-G.3"></span><strong>Theorem G.3 — Stabilized rational L-classes.</strong> This definition is independent of <span class="math" data-tex="\(m\)">\(m\)</span>, the slice point and the positive sphere triangulation. It agrees with Theorem F.4 wherever that theorem applies, is preserved by PL homeomorphisms, and has
+<span class="math math-display" data-tex="\[
+\ell_0(K)=1,\qquad \ell_i(K)=0\quad(4i&gt;n).
+\tag{G.9}
+\]">\[
+\ell_0(K)=1,\qquad \ell_i(K)=0\quad(4i&gt;n).
+\tag{G.9}
+\]</span>
+For a finite closed oriented rational homology <span class="math" data-tex="\(4i\)">\(4i\)</span>-manifold,
+<span class="math math-display" data-tex="\[
+\langle\ell_i(K),[K]\rangle=\sigma(K).
+\tag{G.10}
+\]">\[
+\langle\ell_i(K),[K]\rangle=\sigma(K).
+\tag{G.10}
+\]</span></p>
+<p><strong>Proof of choice independence.</strong> Slice point independence follows from path homotopy in the sphere. Let <span class="math" data-tex="\(m,m&#x27;\)">\(m,m&#x27;\)</span> be two integers satisfying (G.8), and let <span class="math" data-tex="\(\alpha_m,\alpha_{m&#x27;}\)">\(\alpha_m,\alpha_{m&#x27;}\)</span> be their slice classes. On
+<span class="math" data-tex="\(K\times S^m\times S^{m&#x27;}\)">\(K\times S^m\times S^{m&#x27;}\)</span>,
+apply (G.6) first with base <span class="math" data-tex="\(K\times S^m\)">\(K\times S^m\)</span>, which is in strict range, and added sphere <span class="math" data-tex="\(S^{m&#x27;}\)">\(S^{m&#x27;}\)</span>, whose dimension exceeds <span class="math" data-tex="\(4i\)">\(4i\)</span>. Its class is
+<span class="math" data-tex="\(\operatorname{pr}_K^*\alpha_m\)">\(\operatorname{pr}_K^*\alpha_m\)</span>.
+Apply it instead with base <span class="math" data-tex="\(K\times S^{m&#x27;}\)">\(K\times S^{m&#x27;}\)</span> and added sphere <span class="math" data-tex="\(S^m\)">\(S^m\)</span>. Swapping the two sphere factors is a PL homeomorphism. Theorem F.4's orientation-independent PL invariance identifies the second ordered product's class with that of the first, even when the swap changes the product orientation by <span class="math" data-tex="\((-1)^{mm&#x27;}\)">\((-1)^{mm&#x27;}\)</span>. Its class is therefore also
+<span class="math" data-tex="\(\operatorname{pr}_K^*\alpha_{m&#x27;}\)">\(\operatorname{pr}_K^*\alpha_{m&#x27;}\)</span>.
+Restrict to any <span class="math" data-tex="\(K\)">\(K\)</span>-slice in the double product to obtain <span class="math" data-tex="\(\alpha_m=\alpha_{m&#x27;}\)">\(\alpha_m=\alpha_{m&#x27;}\)</span>.</p>
+<p>Lemma G.2 gives agreement with the strict-range class if the base <span class="math" data-tex="\(K\)">\(K\)</span> itself lies in that range. Changing a sphere's PL triangulation or applying a PL homeomorphism to <span class="math" data-tex="\(K\)">\(K\)</span> gives a product PL homeomorphism; Theorem F.4 and pullback to slices show invariance. Thus all indicated choices have been removed.</p>
+<p><strong>Proof of the zero and unit assertions.</strong> The degree vanishing in (G.9) follows from the finite simplicial cohomology complex of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. For a strict-range base of dimension <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(i=0\)">\(i=0\)</span>, the target dimension is <span class="math" data-tex="\(N\)">\(N\)</span>. Its generic fibres are signed zero-manifolds. Lemma F.5, evaluated with <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, says their signed count is <span class="math" data-tex="\(\langle f^*u,[K]\rangle\)">\(\langle f^*u,[K]\rangle\)</span>. This is their signature by (D.20). The unique class of Theorem F.4 is consequently the degree-zero unit <span class="math" data-tex="\(1\)">\(1\)</span>. Apply this to a product satisfying (G.8) and pull back to <span class="math" data-tex="\(K\)">\(K\)</span> to obtain <span class="math" data-tex="\(\ell_0(K)=1\)">\(\ell_0(K)=1\)</span>, also in dimensions zero and one.</p>
+<p><strong>Proof of the top normalization.</strong> When <span class="math" data-tex="\(n=4i\)">\(n=4i\)</span>, choose <span class="math" data-tex="\(m&gt;4i+1\)">\(m&gt;4i+1\)</span>. The product lies in the strict range. Its projection to <span class="math" data-tex="\(S^m\)">\(S^m\)</span> has generic fibre <span class="math" data-tex="\(K\)">\(K\)</span> with its original orientation, because the source order is <span class="math" data-tex="\(K,S^m\)">\(K,S^m\)</span>. Equation (F.7) gives
+<span class="math math-display" data-tex="\[
+\big\langle\operatorname{pr}_K^*\ell_i(K)
+      \smile\operatorname{pr}_{S^m}^*v,
+      [K]\times[S^m]\big\rangle
+ =\sigma(K).
+\]">\[
+\big\langle\operatorname{pr}_K^*\ell_i(K)
+      \smile\operatorname{pr}_{S^m}^*v,
+      [K]\times[S^m]\big\rangle
+ =\sigma(K).
+\]</span>
+The first factor is pulled back from <span class="math" data-tex="\(K\)">\(K\)</span> by (G.8), and <span class="math" data-tex="\(v\)">\(v\)</span> evaluates as one. Product evaluation proves (G.10). Disconnected spaces and signed zero-dimensional components are included because the forms and fundamental classes split over their components. ∎</p>
+<p><span id="DG-CHAR-15.corollary-G.4"></span><strong>Corollary G.4 — The fibre formula beyond the strict range.</strong> For every PL <span class="math" data-tex="\(f:K^n\to S^{n-4i}\)">\(f:K^n\to S^{n-4i}\)</span> with <span class="math" data-tex="\(n-4i\geq1\)">\(n-4i\geq1\)</span>, the unrestricted class satisfies (F.7).</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(m\)">\(m\)</span> satisfying (G.8). Apply Lemma G.1 to <span class="math" data-tex="\(f\)">\(f\)</span>; the larger product lies in strict range, so its defining pairing evaluates to <span class="math" data-tex="\(\sigma(f)\)">\(\sigma(f)\)</span>. Its L-class is <span class="math" data-tex="\(\operatorname{pr}_K^*\ell_i(K)\)">\(\operatorname{pr}_K^*\ell_i(K)\)</span> by the definition and Künneth. Equation (G.3) and product evaluation reduce that pairing to the left side of (F.7) on <span class="math" data-tex="\(K\)">\(K\)</span>. ∎</p>
+<p>Finally define rational combinatorial Pontryagin classes recursively by
+<span class="math math-display" data-tex="\[
+\mathfrak p_j(K)
+ =c_j^{-1}\bigl(\ell_j(K)
+       -R_j(\mathfrak p_1(K),\ldots,\mathfrak p_{j-1}(K))\bigr),
+\tag{G.11}
+\]">\[
+\mathfrak p_j(K)
+ =c_j^{-1}\bigl(\ell_j(K)
+       -R_j(\mathfrak p_1(K),\ldots,\mathfrak p_{j-1}(K))\bigr),
+\tag{G.11}
+\]</span>
+where <span class="math" data-tex="\(c_j&gt;0\)">\(c_j&gt;0\)</span> and <span class="math" data-tex="\(R_j\)">\(R_j\)</span> are proved in Lemma B.1. All terms have degree <span class="math" data-tex="\(4j\)">\(4j\)</span>, the recursion is unique, and every operation is rational cohomology addition or multiplication. Theorem G.3 therefore makes these classes PL invariants. Their identification with <span class="math" data-tex="\(p_j(TK)\)">\(p_j(TK)\)</span> when the PL space comes from a smooth manifold uses the smooth comparison theorem proved in <a href="DG-CHAR-15B.html">the comparison companion</a>, with existence supplied in <a href="DG-CHAR-15C.html">the triangulation companion</a>. No topological-homeomorphism invariance is asserted here.</p>
+<h2 id="h-six-graded-exercises-with-solutions">H. Six graded exercises with solutions</h2>
+<p><span id="DG-CHAR-15.exercise-H.1"></span><strong>Exercise H.1 — Easy: an actual fibre polytope.</strong> Map the six vertices of <span class="math" data-tex="\(\Delta^5\)">\(\Delta^5\)</span> to the vertices <span class="math" data-tex="\(w_0,w_1,w_2\)">\(w_0,w_1,w_2\)</span> of <span class="math" data-tex="\(\Delta^2\)">\(\Delta^2\)</span>, in groups of sizes <span class="math" data-tex="\(2,3,1\)">\(2,3,1\)</span>. Describe the fibre over <span class="math" data-tex="\(y=t_0w_0+t_1w_1+t_2w_2\)">\(y=t_0w_0+t_1w_1+t_2w_2\)</span>, with every <span class="math" data-tex="\(t_j&gt;0\)">\(t_j&gt;0\)</span>. Write the homeomorphism between its fibre and the fibre at another such <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>. Explain why replacing the target open simplex by its closed simplex would invalidate the product assertion.</p>
+<p><strong>Solution.</strong> The source barycentric coordinates in the three groups have respective fixed sums <span class="math" data-tex="\(t_0,t_1,t_2\)">\(t_0,t_1,t_2\)</span>. Each group is a scaled simplex, giving the product
+<span class="math math-display" data-tex="\[
+t_0\Delta^1\times t_1\Delta^2\times t_2\Delta^0.
+\]">\[
+t_0\Delta^1\times t_1\Delta^2\times t_2\Delta^0.
+\]</span>
+Its dimension is <span class="math" data-tex="\(1+2+0=3=5-2\)">\(1+2+0=3=5-2\)</span>. To change to <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>, multiply each coordinate in group <span class="math" data-tex="\(j\)">\(j\)</span> by <span class="math" data-tex="\(t&#x27;_j/t_j\)">\(t&#x27;_j/t_j\)</span>. These positive multipliers preserve the source support and all face incidences, and the inverse multipliers give the inverse homeomorphism.</p>
+<p>At the target vertex <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, the second and third sums become zero. Its fibre is just <span class="math" data-tex="\(\Delta^1\)">\(\Delta^1\)</span>, with dimension one. It is not homeomorphic to the three-dimensional product at an interior value. Thus a product over the entire closed target simplex would have unequal fibre types. The positive denominators and the open-simplex qualification in Lemma A.1 have real content.</p>
+<p><span id="DG-CHAR-15.exercise-H.2"></span><strong>Exercise H.2 — Easy: the strict range and its repair.</strong> For <span class="math" data-tex="\(i=1\)">\(i=1\)</span>, does Theorem F.4 apply in dimensions <span class="math" data-tex="\(n=9\)">\(n=9\)</span> and <span class="math" data-tex="\(n=10\)">\(n=10\)</span>? For an arbitrary <span class="math" data-tex="\(K^n\)">\(K^n\)</span>, express the two integer requirements on the auxiliary sphere dimension in (G.8). Find the least permitted <span class="math" data-tex="\(m\)">\(m\)</span> for <span class="math" data-tex="\(n=4\)">\(n=4\)</span>, <span class="math" data-tex="\(i=1\)">\(i=1\)</span>.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(n=9\)">\(n=9\)</span>, the inequality is <span class="math" data-tex="\(4&lt;4\)">\(4&lt;4\)</span>, which fails. At <span class="math" data-tex="\(n=10\)">\(n=10\)</span>, it is <span class="math" data-tex="\(4&lt;9/2\)">\(4&lt;9/2\)</span>, which holds. In integer form (G.8) is
+<span class="math math-display" data-tex="\[
+m\geq4i+1,\qquad n+m\geq8i+2.
+\]">\[
+m\geq4i+1,\qquad n+m\geq8i+2.
+\]</span>
+Hence the least positive integer allowed is
+<span class="math" data-tex="\(\max(1,4i+1,8i+2-n)\)">\(\max(1,4i+1,8i+2-n)\)</span>.
+For <span class="math" data-tex="\(n=4,i=1\)">\(n=4,i=1\)</span>, this is <span class="math" data-tex="\(\max(1,5,6)=6\)">\(\max(1,5,6)=6\)</span>. The resulting product has dimension ten and the positive cohomology degree four is smaller than the sphere dimension six, exactly the two facts used in stabilization.</p>
+<p><span id="DG-CHAR-15.exercise-H.3"></span><strong>Exercise H.3 — Medium: a torsion kernel is sufficient.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be an abelian group, <span class="math" data-tex="\(V\)">\(V\)</span> a rational vector space, and <span class="math" data-tex="\(h:A\to V\)">\(h:A\to V\)</span> a homomorphism inducing <span class="math" data-tex="\(A\otimes\mathbb Q\cong V\)">\(A\otimes\mathbb Q\cong V\)</span>. Prove that every homomorphism <span class="math" data-tex="\(s:A\to\mathbb Z\)">\(s:A\to\mathbb Z\)</span> has a unique rational-linear extension to <span class="math" data-tex="\(V\)">\(V\)</span>. Does this hypothesis alone imply that <span class="math" data-tex="\(\ker h\)">\(\ker h\)</span> is finite?</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(a\)">\(a\)</span> is torsion, then <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span> is torsion in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, hence zero. Localizing <span class="math" data-tex="\(s\)">\(s\)</span> therefore gives the well-defined map <span class="math" data-tex="\(A\otimes\mathbb Q\to\mathbb Q\)">\(A\otimes\mathbb Q\to\mathbb Q\)</span>, with <span class="math" data-tex="\(a/d\mapsto s(a)/d\)">\(a/d\mapsto s(a)/d\)</span>. Transport it across the given isomorphism. The elements <span class="math" data-tex="\(h(a)/d\)">\(h(a)/d\)</span> span <span class="math" data-tex="\(V\)">\(V\)</span>, so the extension is unique.</p>
+<p>For a direct verification, an equality <span class="math" data-tex="\(h(a)/d=h(b)/e\)">\(h(a)/d=h(b)/e\)</span> says <span class="math" data-tex="\(ea-db\)">\(ea-db\)</span> has zero rationalization. Localization says some nonzero integer kills it, so <span class="math" data-tex="\(s(ea-db)=0\)">\(s(ea-db)=0\)</span>; the prescribed rational values agree. No finiteness of the torsion subgroup was used.</p>
+<p>Take <span class="math" data-tex="\(A=\mathbb Z\oplus\bigoplus_{j\geq1}\mathbb Z/2\)">\(A=\mathbb Z\oplus\bigoplus_{j\geq1}\mathbb Z/2\)</span> and <span class="math" data-tex="\(h(a,t)=a\in\mathbb Q\)">\(h(a,t)=a\in\mathbb Q\)</span>. Then <span class="math" data-tex="\(A\otimes\mathbb Q\cong\mathbb Q\)">\(A\otimes\mathbb Q\cong\mathbb Q\)</span>, but the kernel is the infinite direct sum of order-two groups. This shows exactly why rational comparison proves the sufficient torsion-kernel assertion without proving a finite kernel.</p>
+<p><span id="DG-CHAR-15.exercise-H.4"></span><strong>Exercise H.4 — Medium: inspect the dual chains on a circle.</strong> Orient the boundary of <span class="math" data-tex="\([0,1,2]\)">\([0,1,2]\)</span> by
+<span class="math math-display" data-tex="\[
+c=[1,2]-[0,2]+[0,1].
+\]">\[
+c=[1,2]-[0,2]+[0,1].
+\]</span>
+Compute the three vertex dual chains <span class="math" data-tex="\(z_0,z_1,z_2\)">\(z_0,z_1,z_2\)</span> in (D.6). Verify (D.7) at vertex zero and identify the sum of their phased chains with positive subdivision of <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(b_i\)">\(b_i\)</span> for a vertex barycentre and <span class="math" data-tex="\(b_{ij}\)">\(b_{ij}\)</span> for an edge barycentre. The incidence of its initial vertex in an increasing ordered edge is <span class="math" data-tex="\(-1\)">\(-1\)</span>, and that of its terminal vertex is <span class="math" data-tex="\(+1\)">\(+1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+z_0&amp;=-[b_0,b_{01}]+[b_0,b_{02}],\\
+z_1&amp;=[b_1,b_{01}]-[b_1,b_{12}],\\
+z_2&amp;=-[b_2,b_{02}]+[b_2,b_{12}].
+\end{aligned}
+\]">\[
+\begin{aligned}
+z_0&amp;=-[b_0,b_{01}]+[b_0,b_{02}],\\
+z_1&amp;=[b_1,b_{01}]-[b_1,b_{12}],\\
+z_2&amp;=-[b_2,b_{02}]+[b_2,b_{12}].
+\end{aligned}
+\]</span>
+Their respective edge dual zero-chains are
+<span class="math" data-tex="\(z_{01}=[b_{01}]\)">\(z_{01}=[b_{01}]\)</span>, <span class="math" data-tex="\(z_{02}=-[b_{02}]\)">\(z_{02}=-[b_{02}]\)</span>, and
+<span class="math" data-tex="\(z_{12}=[b_{12}]\)">\(z_{12}=[b_{12}]\)</span>.
+At vertex zero,
+<span class="math math-display" data-tex="\[
+\partial z_0=-[b_{01}]+[b_{02}]
+ =[01:0]z_{01}+[02:0]z_{02},
+\]">\[
+\partial z_0=-[b_{01}]+[b_{02}]
+ =[01:0]z_{01}+[02:0]z_{02},
+\]</span>
+as required.</p>
+<p>For <span class="math" data-tex="\(n=1,p=0\)">\(n=1,p=0\)</span>, (D.11) gives <span class="math" data-tex="\(\gamma_0=-1\)">\(\gamma_0=-1\)</span>. Hence <span class="math" data-tex="\(-z_0-z_1-z_2\)">\(-z_0-z_1-z_2\)</span> is the sum of the paths
+<span class="math" data-tex="\([b_0,b_{01}]-[b_1,b_{01}]\)">\([b_0,b_{01}]-[b_1,b_{01}]\)</span>,
+<span class="math" data-tex="\(-[b_0,b_{02}]+[b_2,b_{02}]\)">\(-[b_0,b_{02}]+[b_2,b_{02}]\)</span>, and
+<span class="math" data-tex="\([b_1,b_{12}]-[b_2,b_{12}]\)">\([b_1,b_{12}]-[b_2,b_{12}]\)</span>.
+Each is the positive subdivision of its signed original edge: the second segment of an increasing edge is the negative of the reversed segment from its terminal vertex to its barycentre. Their sum is therefore <span class="math" data-tex="\(\operatorname{Sd}c\)">\(\operatorname{Sd}c\)</span>. This verifies the global orientation phase as well as the local incidence.</p>
+<p><span id="DG-CHAR-15.exercise-H.5"></span><strong>Exercise H.5 — Medium: boundary duality in dimension one.</strong> For the positive interval <span class="math" data-tex="\(W=[0,1]\)">\(W=[0,1]\)</span>, describe its induced boundary middle form, the restriction image <span class="math" data-tex="\(L\subset H^0(\partial W;\mathbb Q)\)">\(L\subset H^0(\partial W;\mathbb Q)\)</span>, and <span class="math" data-tex="\(L^\perp\)">\(L^\perp\)</span>. Verify its zero signature directly. Explain why this does not say that every boundary cohomology class extends.</p>
+<p><strong>Solution.</strong> In the basis given by the points zero and one, the boundary fundamental cycle is <span class="math" data-tex="\([1]-[0]\)">\([1]-[0]\)</span>. The cup-evaluation form is
+<span class="math math-display" data-tex="\[
+b((x_0,x_1),(y_0,y_1))=-x_0y_0+x_1y_1.
+\]">\[
+b((x_0,x_1),(y_0,y_1))=-x_0y_0+x_1y_1.
+\]</span>
+The interval's degree-zero classes are constants, so restriction has image
+<span class="math" data-tex="\(L=\mathbb Q(1,1)\)">\(L=\mathbb Q(1,1)\)</span>.
+A vector <span class="math" data-tex="\((x_0,x_1)\)">\((x_0,x_1)\)</span> is orthogonal to this image exactly when
+<span class="math" data-tex="\(-x_0+x_1=0\)">\(-x_0+x_1=0\)</span>, giving <span class="math" data-tex="\(L^\perp=L\)">\(L^\perp=L\)</span>. It is an isotropic one-dimensional half of the nondegenerate two-dimensional form. Its diagonal entries <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span> give signature zero directly. A class such as <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is not constant and does not extend; the connecting map detects precisely that failure. This is the lowest-dimensional case of (D.21).</p>
+<p><span id="DG-CHAR-15.exercise-H.6"></span><strong>Exercise H.6 — Hard: stabilization and recursive Pontryagin recovery.</strong> Reprove independence of the two sphere dimensions <span class="math" data-tex="\(m,m&#x27;\)">\(m,m&#x27;\)</span> in (G.8), accounting for the orientation of their interchange. Then express <span class="math" data-tex="\(\mathfrak p_1,\mathfrak p_2\)">\(\mathfrak p_1,\mathfrak p_2\)</span> in terms of <span class="math" data-tex="\(\ell_1,\ell_2\)">\(\ell_1,\ell_2\)</span>. State what further theorem is needed to identify these formal PL invariants with smooth tangent Pontryagin classes.</p>
+<p><strong>Solution.</strong> Both <span class="math" data-tex="\(K\times S^m\)">\(K\times S^m\)</span> and <span class="math" data-tex="\(K\times S^{m&#x27;}\)">\(K\times S^{m&#x27;}\)</span> lie in strict range, and both sphere dimensions exceed <span class="math" data-tex="\(4i\)">\(4i\)</span>. Lemma G.2 on the double product gives its L-class as the pullback of the class on <span class="math" data-tex="\(K\times S^m\)">\(K\times S^m\)</span>, and hence as <span class="math" data-tex="\(\operatorname{pr}_K^*\alpha_m\)">\(\operatorname{pr}_K^*\alpha_m\)</span>. Applying the same lemma with the two spheres interchanged gives <span class="math" data-tex="\(\operatorname{pr}_K^*\alpha_{m&#x27;}\)">\(\operatorname{pr}_K^*\alpha_{m&#x27;}\)</span>. The sphere interchange is PL and changes the ordered product orientation by <span class="math" data-tex="\((-1)^{mm&#x27;}\)">\((-1)^{mm&#x27;}\)</span>. Theorem F.4 is independent of orientation choice, because changing a component orientation negates both sides of its defining fibre-signature pairing. It therefore identifies the two larger classes despite that sign. Pullback to a <span class="math" data-tex="\(K\)">\(K\)</span>-slice gives <span class="math" data-tex="\(\alpha_m=\alpha_{m&#x27;}\)">\(\alpha_m=\alpha_{m&#x27;}\)</span>.</p>
+<p>The proved first multiplicative-sequence formulas give
+<span class="math math-display" data-tex="\[
+\ell_1=\frac{\mathfrak p_1}{3},\qquad
+\ell_2=\frac{7\mathfrak p_2-\mathfrak p_1^2}{45}.
+\]">\[
+\ell_1=\frac{\mathfrak p_1}{3},\qquad
+\ell_2=\frac{7\mathfrak p_2-\mathfrak p_1^2}{45}.
+\]</span>
+Solving them, in order, yields
+<span class="math math-display" data-tex="\[
+\mathfrak p_1=3\ell_1,\qquad
+\mathfrak p_2=\frac{45\ell_2+9\ell_1^2}{7}.
+\]">\[
+\mathfrak p_1=3\ell_1,\qquad
+\mathfrak p_2=\frac{45\ell_2+9\ell_1^2}{7}.
+\]</span>
+The denominator seven is legitimate over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Lemma B.1 gives the analogous invertible leading coefficient in every degree, so this recursion always works. Their identification with <span class="math" data-tex="\(p_j(TM)\)">\(p_j(TM)\)</span> uses the smooth comparison
+<span class="math" data-tex="\(\ell_j(K)=t^*L_j(p(TM))\)">\(\ell_j(K)=t^*L_j(p(TM))\)</span>
+for a compatible smooth triangulation <span class="math" data-tex="\(t:K\to M\)">\(t:K\to M\)</span>, proved in <a href="DG-CHAR-15B.html">the comparison companion</a>. <a href="DG-CHAR-15C.html">the triangulation companion</a> supplies existence in the stated smooth scope. Formal inversion and PL invariance alone would not establish that comparison.</p>
+<h2 id="i-the-construction-for-a-homology-manifold-with-boundary">I. The construction for a homology manifold with boundary</h2>
+<p>Let <span class="math" data-tex="\((K,M)\)">\((K,M)\)</span> be a finite oriented rational homology <span class="math" data-tex="\(n\)">\(n\)</span>-manifold pair with the full boundary conditions of Lemma D.1. In particular, <span class="math" data-tex="\(M\)">\(M\)</span> is its rational homology <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-manifold boundary, and <span class="math" data-tex="\([K,M]\)">\([K,M]\)</span> is the coherent relative fundamental class constructed there. We give the relative extension mentioned in Milnor's 1957 notes, Chapter XVI, Section 4.</p>
+<h3 id="i-1-relative-sphere-maps">I.1. Relative sphere maps</h3>
+<p>For <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span> and <span class="math" data-tex="\(n&lt;2k-1\)">\(n&lt;2k-1\)</span>, let <span class="math" data-tex="\(\pi^k(K,M)\)">\(\pi^k(K,M)\)</span> be homotopy classes of maps
+<span class="math math-display" data-tex="\[
+f:(K,M)\longrightarrow(S^k,*),
+\]">\[
+f:(K,M)\longrightarrow(S^k,*),
+\]</span>
+with homotopies fixed at the basepoint on <span class="math" data-tex="\(M\)">\(M\)</span>. This is a natural abelian group, and pullback of the positive sphere generator gives a natural isomorphism
+<span class="math math-display" data-tex="\[
+\pi^k(K,M)\otimes\mathbb Q
+ \xrightarrow{\cong}H^k(K,M;\mathbb Q).
+\tag{I.1}
+\]">\[
+\pi^k(K,M)\otimes\mathbb Q
+ \xrightarrow{\cong}H^k(K,M;\mathbb Q).
+\tag{I.1}
+\]</span></p>
+<p><strong>Proof.</strong> Collapsing the subcomplex <span class="math" data-tex="\(M\)">\(M\)</span> gives a finite CW complex <span class="math" data-tex="\(K/M\)">\(K/M\)</span> of dimension at most <span class="math" data-tex="\(n\)">\(n\)</span>, with the collapsed point as basepoint. If <span class="math" data-tex="\(M\)">\(M\)</span> is empty, use <span class="math" data-tex="\(K\)">\(K\)</span> with a disjoint basepoint instead. Maps and homotopies of the indicated pairs are exactly based maps and based homotopies of this quotient. Its positive reduced cohomology is the relative cohomology: the quotient cellular complex consists of the cells outside <span class="math" data-tex="\(M\)">\(M\)</span>, with precisely the relative attaching incidences. The full simplicial/singular cellular comparison in Section C identifies this calculation with singular relative cohomology.</p>
+<p>Every step of C.1–C.3 permits fixing the source basepoint. The relative wedge comparison therefore gives the abelian group; the factorial telescope and the cellular cocycle classification give (I.1), with the same pulled-back generator, rather than an unspecified vector-space isomorphism. Homotopy extension at the quotient basepoint supplies the based homotopies used in that argument. All of these constructions commute with maps of pairs. ∎</p>
+<h3 id="i-2-the-relative-fibre-functional">I.2. The relative fibre functional</h3>
+<p>Suppose <span class="math" data-tex="\(i\geq0\)">\(i\geq0\)</span>, <span class="math" data-tex="\(k=n-4i\geq2\)">\(k=n-4i\geq2\)</span>, and <span class="math" data-tex="\(n&lt;2k-1\)">\(n&lt;2k-1\)</span>. A PL map of pairs as above has a closed oriented rational homology <span class="math" data-tex="\(4i\)">\(4i\)</span>-manifold as its fibre over every generic value away from <span class="math" data-tex="\(*\)">\(*\)</span>, or an empty fibre. Its signature defines a homomorphism
+<span class="math math-display" data-tex="\[
+\sigma_i:\pi^k(K,M)\longrightarrow\mathbb Z.
+\tag{I.2}
+\]">\[
+\sigma_i:\pi^k(K,M)\longrightarrow\mathbb Z.
+\tag{I.2}
+\]</span>
+There is a unique class <span class="math" data-tex="\(\ell_i(K,M)\in H^{4i}(K;\mathbb Q)\)">\(\ell_i(K,M)\in H^{4i}(K;\mathbb Q)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\langle \ell_i(K,M)\smile f^*u,[K,M]\rangle
+ =\operatorname{sign}f^{-1}(y).
+\tag{I.3}
+\]">\[
+\langle \ell_i(K,M)\smile f^*u,[K,M]\rangle
+ =\operatorname{sign}f^{-1}(y).
+\tag{I.3}
+\]</span>
+The notation records the boundary pair; the class itself is in absolute cohomology.</p>
+<p><strong>Proof.</strong> Use E.3 to make any continuous pair map PL while keeping its boundary value fixed. The generic fibre avoids <span class="math" data-tex="\(M\)">\(M\)</span>, and is compact because <span class="math" data-tex="\(K\)">\(K\)</span> is compact. At each of its points the ambient local homology is the interior copy of <span class="math" data-tex="\(\mathbb Q[n]\)">\(\mathbb Q[n]\)</span>. The exact product calculation A.1–A.3 gives its local homology in degree <span class="math" data-tex="\(4i\)">\(4i\)</span>. Orient its top polytopes with the fibre-first, target-last convention of F.1; the ambient relative fundamental chain supplies the same coherent signs at every interior point.</p>
+<p>For a pair homotopy, the vertical boundary <span class="math" data-tex="\(I\times M\)">\(I\times M\)</span> maps to the basepoint. Thus a generic fibre in <span class="math" data-tex="\(I\times K\)">\(I\times K\)</span> misses that vertical boundary. Its only boundary is the terminal fibre minus the initial fibre, with the order and orientations of F.1. The full local boundary calculation and Theorem D.6 give equal endpoint signatures. E.3 provides the required PL homotopy relative to the fixed boundary.</p>
+<p>To compare two generic values, choose the target-point isotopy in E.4 inside <span class="math" data-tex="\(S^k-\{*\}\)">\(S^k-\{*\}\)</span>. This is possible because that punctured sphere is connected and has the same local convex charts used in E.4; a compact path can be covered by finitely many smaller chart balls avoiding <span class="math" data-tex="\(*\)">\(*\)</span>. The resulting PL homeomorphism is the identity at <span class="math" data-tex="\(*\)">\(*\)</span>, has positive orientation and is homotopic to the identity while fixing <span class="math" data-tex="\(*\)">\(*\)</span>. The common-generic-value argument of F.2 now applies to maps of pairs. It proves value independence, as well as independence of subdivisions and representatives.</p>
+<p>The wedge lift can also be chosen relative to <span class="math" data-tex="\(M\)">\(M\)</span>. Away from the wedge point, the folded generic fibre is the oriented disjoint union of its two coordinate fibres. Signature is their sum. A constant map has empty such fibre. This proves (I.2).</p>
+<p>A homomorphism to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> kills torsion, so (I.1) extends this functional uniquely to <span class="math" data-tex="\(H^k(K,M;\mathbb Q)\)">\(H^k(K,M;\mathbb Q)\)</span>. The perfect absolute/relative pairing of Theorem D.5 represents it by exactly one absolute degree-<span class="math" data-tex="\(4i\)">\(4i\)</span> class. This is (I.3). Reversing an ambient component orientation reverses both its fibre signatures and <span class="math" data-tex="\([K,M]\)">\([K,M]\)</span>; hence the class is independent of that orientation choice. PL homeomorphisms of boundary pairs preserve the construction by pulling back the pair maps and the local orientations. ∎</p>
+<h3 id="i-3-stabilization-and-the-relative-cap-formula">I.3. Stabilization and the relative cap formula</h3>
+<p>The relative construction extends uniquely to every dimension by the same sphere stabilization:
+<span class="math math-display" data-tex="\[
+\ell_i(K,M)=j^*\ell_i(K\times S^s,M\times S^s),
+\qquad s&gt;4i,\quad n+s\geq8i+2.
+\tag{I.4}
+\]">\[
+\ell_i(K,M)=j^*\ell_i(K\times S^s,M\times S^s),
+\qquad s&gt;4i,\quad n+s\geq8i+2.
+\tag{I.4}
+\]</span>
+Here <span class="math" data-tex="\(j(x)=(x,z)\)">\(j(x)=(x,z)\)</span> for any fixed sphere point. This expression is independent of <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(z\)">\(z\)</span>, subdivisions and the chosen orientations. It agrees with Section G when <span class="math" data-tex="\(M\)">\(M\)</span> is empty. For <span class="math" data-tex="\(n-4i\geq1\)">\(n-4i\geq1\)</span>, every PL pair map to <span class="math" data-tex="\(S^{n-4i}\)">\(S^{n-4i}\)</span> satisfies the unrestricted fibre identity (I.3). Its fibre class is characterized by
+<span class="math math-display" data-tex="\[
+f^*u\frown[K,M]=[f^{-1}(y)]
+ \quad\hbox{in }H_{4i}(K,M;\mathbb Q),
+\tag{I.5}
+\]">\[
+f^*u\frown[K,M]=[f^{-1}(y)]
+ \quad\hbox{in }H_{4i}(K,M;\mathbb Q),
+\tag{I.5}
+\]</span>
+where the right side is the image of the closed fibre's fundamental class.</p>
+<p><strong>Proof.</strong> First compare a strict-range pair and its product with <span class="math" data-tex="\(S^s\)">\(S^s\)</span>, <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. Choose the supported degree-one product map of G.1 so that its support lies in a ball disjoint from <span class="math" data-tex="\(\{*\}\times S^s\)">\(\{*\}\times S^s\)</span>. Composing it with <span class="math" data-tex="\(f\times1\)">\(f\times1\)</span> gives a pair map: the entire new boundary still maps to the basepoint. A generic value in its positive target facet has exactly the same oriented fibre as <span class="math" data-tex="\(f\)">\(f\)</span>. Its pulled-back generator is <span class="math" data-tex="\(f^*u\times v\)">\(f^*u\times v\)</span>, with <span class="math" data-tex="\(v[S^s]=1\)">\(v[S^s]=1\)</span>. The relative external-chain product, followed by the rational coefficient theorem, gives the relative Künneth decomposition. The corresponding absolute decomposition writes the product L-class as
+<span class="math math-display" data-tex="\[
+\alpha\times1+\beta\times v,
+\qquad
+\alpha\in H^{4i}(K;\mathbb Q),\quad
+\beta\in H^{4i-s}(K;\mathbb Q).
+\]">\[
+\alpha\times1+\beta\times v,
+\qquad
+\alpha\in H^{4i}(K;\mathbb Q),\quad
+\beta\in H^{4i-s}(K;\mathbb Q).
+\]</span>
+Evaluation against every class <span class="math" data-tex="\(f^*u\times v\)">\(f^*u\times v\)</span> gives <span class="math" data-tex="\(\alpha=\ell_i(K,M)\)">\(\alpha=\ell_i(K,M)\)</span>, using (I.1), (I.3) and the perfect pairing. If <span class="math" data-tex="\(s&gt;4i\)">\(s&gt;4i\)</span>, the group containing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is zero. Thus in that case the full product class is the pullback of the original class.</p>
+<p>For two allowed dimensions <span class="math" data-tex="\(s,s&#x27;\)">\(s,s&#x27;\)</span>, apply this product calculation to the double product and then restrict to a <span class="math" data-tex="\(K\)">\(K\)</span>-slice. Interchanging the spheres changes the ordered orientation by <span class="math" data-tex="\((-1)^{ss&#x27;}\)">\((-1)^{ss&#x27;}\)</span>; orientation independence in I.2 cancels this sign. Both restrictions coincide, proving independence in (I.4). Changing <span class="math" data-tex="\(z\)">\(z\)</span> is a homotopy of slice inclusions. If the original pair was already in strict range, the same calculation proves agreement with I.2. Empty boundary recovers the identical closed construction.</p>
+<p>For a map below strict range, use the supported product map with <span class="math" data-tex="\(s\)">\(s\)</span> as in (I.4). Its unchanged generic fibre and generator <span class="math" data-tex="\(f^*u\times v\)">\(f^*u\times v\)</span> give (I.3) after product evaluation. Degree <span class="math" data-tex="\(4i&gt;n\)">\(4i&gt;n\)</span> gives the zero class automatically; <span class="math" data-tex="\(i=0\)">\(i=0\)</span> gives the unit by the signed zero-dimensional fibre count. No sphere map of degree zero is needed for either statement.</p>
+<p>For (I.5), take a small target ball at <span class="math" data-tex="\(y\)">\(y\)</span> disjoint from the basepoint. The relative sphere generator pulls back to the supported class on <span class="math" data-tex="\((K,K-f^{-1}(y))\)">\((K,K-f^{-1}(y))\)</span>. Since <span class="math" data-tex="\(M\subset K-f^{-1}(y)\)">\(M\subset K-f^{-1}(y)\)</span>, it also determines the given class in <span class="math" data-tex="\(H^k(K,M)\)">\(H^k(K,M)\)</span>. The local product and normalized shuffle calculation in F.5 take cap with the ambient local generator to the positive fibre generator. Their signs are the same fibre-first, target-last signs; the boundary is outside the support. Coherence of the relative fundamental chain identifies these local generators with the fibre's fundamental class. Finally the natural map to <span class="math" data-tex="\(H_{4i}(K,M)\)">\(H_{4i}(K,M)\)</span> gives (I.5). ∎</p>
+<h2 id="j-local-chains-from-oriented-links">J. Local chains from oriented links</h2>
+<p>Gaifullin's local-formula approach uses the combinatorial link at each simplex. We prove its chain criterion directly. In this section a <strong>combinatorial manifold</strong> has sphere links, with the indicated compatible PL orientations; this is a more specific input than the rational homology manifolds of Sections A–I. Include the empty face in simplicial joins and use augmented chains when describing their orientations.</p>
+<h3 id="j-1-the-complex-of-oriented-links">J.1. The complex of oriented links</h3>
+<p>For <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, let <span class="math" data-tex="\(T_q\)">\(T_q\)</span> be the abelian group generated by oriented combinatorial <span class="math" data-tex="\((q-1)\)">\((q-1)\)</span>-spheres, modulo orientation-preserving isomorphism and
+<span class="math math-display" data-tex="\[
+[-L]=-[L].
+\]">\[
+[-L]=-[L].
+\]</span>
+Put <span class="math" data-tex="\(T_0=\mathbb Z\)">\(T_0=\mathbb Z\)</span>, with the oriented empty sphere as its generator. The vertex-link differential and oriented join are
+<span class="math math-display" data-tex="\[
+\partial_T[L]=\sum_{v\in V(L)}[\operatorname{lk}_L v],
+\qquad [L][R]=[L*R].
+\tag{J.1}
+\]">\[
+\partial_T[L]=\sum_{v\in V(L)}[\operatorname{lk}_L v],
+\qquad [L][R]=[L*R].
+\tag{J.1}
+\]</span>
+For <span class="math" data-tex="\(q=1\)">\(q=1\)</span> the first expression is zero: the two points of the oriented zero-sphere have opposite empty-link signs. These operations are well defined and obey
+<span class="math math-display" data-tex="\[
+\partial_T^2=0,\qquad
+[L][R]=(-1)^{qr}[R][L],\qquad
+\partial_T([L][R])=(\partial_T[L])[R]+(-1)^q[L]\partial_T[R]
+\tag{J.2}
+\]">\[
+\partial_T^2=0,\qquad
+[L][R]=(-1)^{qr}[R][L],\qquad
+\partial_T([L][R])=(\partial_T[L])[R]+(-1)^q[L]\partial_T[R]
+\tag{J.2}
+\]</span>
+when <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> have degrees <span class="math" data-tex="\(q,r\)">\(q,r\)</span>.</p>
+<p><strong>Proof.</strong> Encode the sphere orientation by its coherent augmented top cycle. For an oriented simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, orient its link so that concatenating the ordered vertices of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and a top link simplex has the ambient top-simplex sign. Isomorphisms preserve this rule; reversing the ambient orientation reverses every induced link orientation. Thus (J.1) respects the defining relations.</p>
+<p>In the double differential, each edge with vertices <span class="math" data-tex="\(v,w\)">\(v,w\)</span> contributes the link obtained first at <span class="math" data-tex="\(v\)">\(v\)</span>, then at <span class="math" data-tex="\(w\)">\(w\)</span>, and the link obtained in the reverse order. Their concatenations differ by the transposition of <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, so the induced orientations are opposite and the two terms cancel. At the last augmented degree, the empty-link signs give the same cancellation. This proves <span class="math" data-tex="\(\partial_T^2=0\)">\(\partial_T^2=0\)</span>.</p>
+<p>Concatenating the top cycles orients a join. To check that it is a PL sphere, first use the given PL sphere identifications in the two factors; joining their simplicial refinements gives a PL identification with the join of two simplex boundaries. Realize those simplices <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> about the origin in complementary vector spaces. If <span class="math" data-tex="\(\mu_P,\mu_Q\)">\(\mu_P,\mu_Q\)</span> are their piecewise linear gauges, their convex free sum is
+<span class="math math-display" data-tex="\[
+R=\{(x,y):\mu_P(x)+\mu_Q(y)\leq1\}.
+\]">\[
+R=\{(x,y):\mu_P(x)+\mu_Q(y)\leq1\}.
+\]</span>
+The boundary is the join: a join point with parameter <span class="math" data-tex="\(t\)">\(t\)</span> and boundary points <span class="math" data-tex="\(a,b\)">\(a,b\)</span> maps to <span class="math" data-tex="\((ta,(1-t)b)\)">\((ta,(1-t)b)\)</span>. On each join of boundary facets this map is affine in the join barycentric coordinates, and its inverse is unique except at the two collapsed ends, exactly as in the definition of a join. Hence it is a PL homeomorphism.</p>
+<p>For completeness, the boundary of <span class="math" data-tex="\(R\)">\(R\)</span> is PL homeomorphic to the boundary of a simplex containing the same origin. Intersect their finite face cones to form a common polyhedral fan, then triangulate that fan compatibly by choosing one interior ray in every face cone and using its face chains. Cut each simplicial cone by the two polytope boundaries. Each cut is a simplex in its containing facet, with corresponding vertices on the same rays. Map those vertices to each other and extend affinely. The simplices cover both boundaries, their intersections are their common faces, and the inverse uses the same face data. This is the required PL homeomorphism. Thus the join is a combinatorial sphere.</p>
+<p>Concatenation is associative, with the empty sphere as unit. Swapping the two ordered vertex blocks has sign <span class="math" data-tex="\((-1)^{qr}\)">\((-1)^{qr}\)</span>, because their respective lengths are <span class="math" data-tex="\(q,r\)">\(q,r\)</span>. This proves supercommutativity.</p>
+<p>A vertex of <span class="math" data-tex="\(L\)">\(L\)</span> has link <span class="math" data-tex="\((\operatorname{lk}_L v)*R\)">\((\operatorname{lk}_L v)*R\)</span> with that ordered orientation. For a vertex of <span class="math" data-tex="\(R\)">\(R\)</span>, moving its first vertex past the <span class="math" data-tex="\(q\)">\(q\)</span> vertices of a top <span class="math" data-tex="\(L\)">\(L\)</span>-simplex gives the sign <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span>; its link is <span class="math" data-tex="\(L*(\operatorname{lk}_R v)\)">\(L*(\operatorname{lk}_R v)\)</span> with that sign. Summing these two sets of vertices gives the Leibniz identity. The opposite signs at the two vertices of a zero-sphere also verify the degree-one edge case. ∎</p>
+<p>Set <span class="math" data-tex="\(T^q=\operatorname{Hom}(T_q,\mathbb Q)\)">\(T^q=\operatorname{Hom}(T_q,\mathbb Q)\)</span>, and define
+<span class="math math-display" data-tex="\[
+(\delta f)([L])=(-1)^q\sum_{v\in V(L)}f([\operatorname{lk}_L v]).
+\tag{J.3}
+\]">\[
+(\delta f)([L])=(-1)^q\sum_{v\in V(L)}f([\operatorname{lk}_L v]).
+\tag{J.3}
+\]</span>
+Then <span class="math" data-tex="\(\delta^2=0\)">\(\delta^2=0\)</span> by (J.2). If a sphere has an orientation-reversing automorphism, its generator satisfies <span class="math" data-tex="\(2[L]=0\)">\(2[L]=0\)</span>, so every rational-valued <span class="math" data-tex="\(f\)">\(f\)</span> vanishes on it. Dualizing the join gives a bilinear functional on <span class="math" data-tex="\(T_q\times T_r\)">\(T_q\times T_r\)</span>, that is, an element of <span class="math" data-tex="\(\operatorname{Hom}(T_q\otimes T_r,\mathbb Q)\)">\(\operatorname{Hom}(T_q\otimes T_r,\mathbb Q)\)</span>. This target is available without a finite-generation assumption.</p>
+<h3 id="j-2-the-exact-local-chain-criterion">J.2. The exact local-chain criterion</h3>
+<p>For a closed oriented combinatorial <span class="math" data-tex="\(m\)">\(m\)</span>-manifold <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(f\in T^q\)">\(f\in T^q\)</span>, <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, <span class="math" data-tex="\(m\geq q\)">\(m\geq q\)</span>, define
+<span class="math math-display" data-tex="\[
+f_\sharp(K)=\sum_{\dim\sigma=m-q}
+ f([\operatorname{lk}_K\sigma])\,\sigma.
+\tag{J.4}
+\]">\[
+f_\sharp(K)=\sum_{\dim\sigma=m-q}
+ f([\operatorname{lk}_K\sigma])\,\sigma.
+\tag{J.4}
+\]</span>
+Orient each <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> arbitrarily, with the induced link orientation of J.1. Changing that orientation changes both factors' signs, so the summand is unambiguous. The chain identity, with these explicit conventions, is
+<span class="math math-display" data-tex="\[
+\partial f_\sharp(K)=(-1)^m(\delta f)_\sharp(K).
+\tag{J.5}
+\]">\[
+\partial f_\sharp(K)=(-1)^m(\delta f)_\sharp(K).
+\tag{J.5}
+\]</span>
+In particular, <span class="math" data-tex="\(f_\sharp(K)\)">\(f_\sharp(K)\)</span> is a cycle for every such <span class="math" data-tex="\(K\)">\(K\)</span> if and only if <span class="math" data-tex="\(\delta f=0\)">\(\delta f=0\)</span>. For <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, changing <span class="math" data-tex="\(f\)">\(f\)</span> by a coboundary changes every cycle by a boundary, and hence gives the same cohomology class under Poincaré duality.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(d=m-q\)">\(d=m-q\)</span>. For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, fix an oriented <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>-simplex <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional cofaces are <span class="math" data-tex="\(\sigma=\tau\cup\{v\}\)">\(\sigma=\tau\cup\{v\}\)</span>, indexed by the vertices of <span class="math" data-tex="\(\operatorname{lk}_K\tau\)">\(\operatorname{lk}_K\tau\)</span>. Let <span class="math" data-tex="\(\epsilon=[\sigma:\tau]\)">\(\epsilon=[\sigma:\tau]\)</span>. With <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> ordered as <span class="math" data-tex="\([v,\tau]\)">\([v,\tau]\)</span>, <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>. Moving <span class="math" data-tex="\(v\)">\(v\)</span> through the <span class="math" data-tex="\(d\)">\(d\)</span> vertices of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> compares <span class="math" data-tex="\([v,\tau,\rho]\)">\([v,\tau,\rho]\)</span> with <span class="math" data-tex="\([\tau,v,\rho]\)">\([\tau,v,\rho]\)</span>. Therefore, in general,
+<span class="math math-display" data-tex="\[
+[\operatorname{lk}_K\sigma]
+ =\epsilon(-1)^d
+ [\operatorname{lk}_{\operatorname{lk}_K\tau}v].
+\]">\[
+[\operatorname{lk}_K\sigma]
+ =\epsilon(-1)^d
+ [\operatorname{lk}_{\operatorname{lk}_K\tau}v].
+\]</span>
+The coefficient of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in the left side of (J.5) is thus
+<span class="math math-display" data-tex="\[
+(-1)^d\sum_v f([\operatorname{lk}_{\operatorname{lk}_K\tau}v])
+ =(-1)^{d+q}(\delta f)([\operatorname{lk}_K\tau])
+ =(-1)^m(\delta f)([\operatorname{lk}_K\tau]).
+\]">\[
+(-1)^d\sum_v f([\operatorname{lk}_{\operatorname{lk}_K\tau}v])
+ =(-1)^{d+q}(\delta f)([\operatorname{lk}_K\tau])
+ =(-1)^m(\delta f)([\operatorname{lk}_K\tau]).
+\]</span>
+This proves the identity at every simplex. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the ordinary boundary of a zero-chain is zero and the right side has no simplices in its negative dimension, so both sides are zero.</p>
+<p>If <span class="math" data-tex="\(\delta f=0\)">\(\delta f=0\)</span>, (J.5) proves the cycle assertion. Conversely, let <span class="math" data-tex="\(L\)">\(L\)</span> be any oriented combinatorial <span class="math" data-tex="\(q\)">\(q\)</span>-sphere, and take the closed <span class="math" data-tex="\((q+1)\)">\((q+1)\)</span>-sphere <span class="math" data-tex="\(K=L*S^0\)">\(K=L*S^0\)</span>. Orient it so that the link of the positive suspension vertex is <span class="math" data-tex="\(L\)">\(L\)</span>. The coefficient at that vertex in (J.5) is <span class="math" data-tex="\((-1)^{q+1}(\delta f)([L])\)">\((-1)^{q+1}(\delta f)([L])\)</span>. Universal vanishing of the boundary therefore forces <span class="math" data-tex="\(\delta f\)">\(\delta f\)</span> to vanish on every generator. This proves the converse.</p>
+<p>For <span class="math" data-tex="\(f&#x27;=f+\delta h\)">\(f&#x27;=f+\delta h\)</span>, <span class="math" data-tex="\(h\in T^{q-1}\)">\(h\in T^{q-1}\)</span>, equation (J.5) gives
+<span class="math math-display" data-tex="\[
+f&#x27;_\sharp(K)-f_\sharp(K)=(-1)^m\partial h_\sharp(K).
+\]">\[
+f&#x27;_\sharp(K)-f_\sharp(K)=(-1)^m\partial h_\sharp(K).
+\]</span>
+The homology classes coincide. The perfect duality proved in D.5 assigns a unique degree-<span class="math" data-tex="\(q\)">\(q\)</span> cohomology class to each of them, so those classes coincide too. ∎</p>
+<p>The cohomology class defined by an arbitrary cocycle in (J.3) can be tested against the L-classes already constructed. In degree four it computes the first rational Pontryagin class precisely when, for every complementary class <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+\langle a,[f_\sharp(K)]\rangle
+ =\langle 3\ell_1(K)\smile a,[K]\rangle.
+\tag{J.6}
+\]">\[
+\langle a,[f_\sharp(K)]\rangle
+ =\langle 3\ell_1(K)\smile a,[K]\rangle.
+\tag{J.6}
+\]</span>
+The equivalence follows from the perfect pairing and <span class="math" data-tex="\(\mathfrak p_1=3\ell_1\)">\(\mathfrak p_1=3\ell_1\)</span>; the cycle criterion by itself does not supply this normalization.</p>
+<h3 id="j-3-graph-paths-and-rational-coefficients">J.3. Graph paths and rational coefficients</h3>
+<p>The passage from cycle values to an edge cochain in the bistellar-move method has a useful purely algebraic form. Let <span class="math" data-tex="\(G\)">\(G\)</span> be a connected graph, possibly infinite and with loops or multiple edges. Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be an involution fixing a base vertex <span class="math" data-tex="\(o\)">\(o\)</span>, and let
+<span class="math math-display" data-tex="\[
+c:H_1(G;\mathbb Q)\longrightarrow\mathbb Q
+\]">\[
+c:H_1(G;\mathbb Q)\longrightarrow\mathbb Q
+\]</span>
+satisfy <span class="math" data-tex="\(c(\tau_*z)=-c(z)\)">\(c(\tau_*z)=-c(z)\)</span>. All individual chains have finite support. Choose paths <span class="math" data-tex="\(p_v\)">\(p_v\)</span> from <span class="math" data-tex="\(o\)">\(o\)</span> to each vertex <span class="math" data-tex="\(v\)">\(v\)</span>, with <span class="math" data-tex="\(p_o=0\)">\(p_o=0\)</span>, and put
+<span class="math math-display" data-tex="\[
+\xi_v=\tfrac12(p_v+\tau_*p_{\tau v}).
+\tag{J.7}
+\]">\[
+\xi_v=\tfrac12(p_v+\tau_*p_{\tau v}).
+\tag{J.7}
+\]</span>
+Then <span class="math" data-tex="\(\partial\xi_v=v-o\)">\(\partial\xi_v=v-o\)</span>, <span class="math" data-tex="\(\xi_{\tau v}=\tau_*\xi_v\)">\(\xi_{\tau v}=\tau_*\xi_v\)</span>, and for an oriented edge <span class="math" data-tex="\(e:v\to w\)">\(e:v\to w\)</span>,
+<span class="math math-display" data-tex="\[
+h(e)=c(e+\xi_v-\xi_w)
+\tag{J.8}
+\]">\[
+h(e)=c(e+\xi_v-\xi_w)
+\tag{J.8}
+\]</span>
+is an anti-invariant rational edge cochain representing <span class="math" data-tex="\(c\)">\(c\)</span>. Its cohomology class is independent of the paths.</p>
+<p><strong>Proof.</strong> The two boundaries in (J.7) are both <span class="math" data-tex="\(v-o\)">\(v-o\)</span>, since <span class="math" data-tex="\(\tau o=o\)">\(\tau o=o\)</span>. Applying <span class="math" data-tex="\(\tau\)">\(\tau\)</span> proves its equivariance. The argument of <span class="math" data-tex="\(c\)">\(c\)</span> in (J.8) is a cycle, so it lies in the stated domain. Reversing an edge reverses that cycle; applying <span class="math" data-tex="\(\tau\)">\(\tau\)</span> applies <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span> to it. Thus (J.8) defines an anti-invariant cochain. A graph has no two-cells, so every edge cochain is a cocycle. On a finite cycle <span class="math" data-tex="\(z\)">\(z\)</span>, the coefficients of the path terms at each vertex cancel because <span class="math" data-tex="\(\partial z=0\)">\(\partial z=0\)</span>. Consequently <span class="math" data-tex="\(h(z)=c(z)\)">\(h(z)=c(z)\)</span>, as required.</p>
+<p>For another family <span class="math" data-tex="\(\xi&#x27;_v\)">\(\xi&#x27;_v\)</span> with the same boundaries, put <span class="math" data-tex="\(t_v=\xi&#x27;_v-\xi_v\)">\(t_v=\xi&#x27;_v-\xi_v\)</span>; each <span class="math" data-tex="\(t_v\)">\(t_v\)</span> is a cycle. The change in (J.8) is <span class="math" data-tex="\(c(t_v)-c(t_w)=-d a(e)\)">\(c(t_v)-c(t_w)=-d a(e)\)</span>, where <span class="math" data-tex="\(a(v)=c(t_v)\)">\(a(v)=c(t_v)\)</span> and <span class="math" data-tex="\(d a(e)=a(w)-a(v)\)">\(d a(e)=a(w)-a(v)\)</span>. It is a coboundary. This proves path independence and includes loops and an infinite graph, since every evaluated chain remains finite. ∎</p>
+<p>More generally, if a complexity-decreasing recursion reaches <span class="math" data-tex="\(o\)">\(o\)</span> and chooses finitely many edges <span class="math" data-tex="\(\beta_j:v\to v_j\)">\(\beta_j:v\to v_j\)</span>, an averaged choice is
+<span class="math math-display" data-tex="\[
+\xi_v=\frac1r\sum_{j=1}^r(\xi_{v_j}-\beta_j).
+\tag{J.9}
+\]">\[
+\xi_v=\frac1r\sum_{j=1}^r(\xi_{v_j}-\beta_j).
+\tag{J.9}
+\]</span>
+Induction proves <span class="math" data-tex="\(\partial\xi_v=v-o\)">\(\partial\xi_v=v-o\)</span>: each summand has boundary <span class="math" data-tex="\((v_j-o)-(v_j-v)=v-o\)">\((v_j-o)-(v_j-v)=v-o\)</span>. The decreasing recursion and finite branching make each <span class="math" data-tex="\(\xi_v\)">\(\xi_v\)</span> a finite rational chain. Rational coefficients must be retained throughout this averaging step. Decomposition of a resulting rational cycle into integral elementary-cycle generators gives rational coefficients in that decomposition. Choosing single paths instead keeps those paths integral; (J.8)'s independence proof still applies. This explains the coefficient convention needed in Gaifullin's Section 6 algorithm.</p>
+<h2 id="sources-and-contributions">Sources and contributions</h2>
+<p>John Milnor's <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf">1957 lectures, with notes by James Stasheff</a>, Chapter XVI, Sections 1–4, develop the generic-fibre construction and credit René Thom for the combinatorial characteristic classes. The complete duality, approximation, rational comparison and stabilization proofs above supply the steps compressed in that source. Its smooth-triangulation comparison is developed in the two linked companions.</p>
+<p>Alexander A. Gaifullin's <a href="https://arxiv.org/html/0912.3933v1">2009 paper</a>, Sections 2 and 4–6, develops the oriented-link complex and the bistellar-move approach to local Pontryagin formulae. Section J gives complete independent proofs of the chain criterion and graph-cochain steps used here. The paper credits Norman Levitt and Colin Rourke for local existence results, Udo Pachner for the bistellar-equivalence theorem, and Victor M. Buchstaber and G. I. Sharygin for the acknowledged problem suggestion and discussion. Its explicit first-Pontryagin formula and its global classification of local cocycles are further results in the cited work.</p>
+<p>The chapter's exposition, expanded proofs and six exercise solutions were independently written and self-checked by the named writing AI. The cited human mathematical contributions retain their attribution; no source prose or figures have been imported.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-14B.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-15B.html">Next chapter</a></nav><p><a href="combinatorial-l-classes-and-piecewise-linear-fibres.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

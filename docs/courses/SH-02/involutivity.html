@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-INV — Hamiltonian motion forced by a sheaf · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/involutivity.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-INV — Hamiltonian motion forced by a sheaf</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-inv-hamiltonian-motion-forced-by-a-sheaf">SH02-INV — Hamiltonian motion forced by a sheaf</h1>
+<p>The geometric and local propagation arguments below are complete relative to the exact course imports listed next; the microlocal Hom estimate, its detection theorem, and their dependencies remain subject to independent verification. The unit is not admitted, formalized, translated, or published.</p>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be a commutative ring of finite global dimension. Manifolds are finite dimensional and countable at infinity. Sheaf complexes belong to <span class="math" data-tex="$D^b(k_X)$">$D^b(k_X)$</span> unless another category is specified. No constructibility, finite generation, or field hypothesis is imposed.</p>
+<p>The main result concerns the whole closed set <span class="math" data-tex="$\operatorname{SS}(F)$">$\operatorname{SS}(F)$</span>, including its singular points and the zero section. Its geometric meaning is that certain limiting tangent directions cannot be absent. We first establish the geometric language and the local sheaf argument that detect an absent direction, and then obtain both involutivity and propagation of individual microlocal sections.</p>
+<h2 id="sh02-inv-imports-exact-inputs-and-their-status">SH02-INV-IMPORTS — Exact inputs and their status</h2>
+<p>The following are mathematical dependencies, not additional restrictions on <span class="math" data-tex="$F$">$F$</span> or <span class="math" data-tex="$G$">$G$</span>.</p>
+<p><strong>Directional tests.</strong> The <span class="math" data-tex="$C^1$">$C^1$</span> support-test definition of microsupport, its invariance under <span class="math" data-tex="$C^1$">$C^1$</span> coordinate changes, closedness, conicity, and the triangle estimate are <code>SH02-MST-TEST</code> and <code>SH02-MST-FORMAL</code> in <a href="../sheaf-proof-readings/SH02-microsupport-tests.html">the directional test unit</a>. The same unit proves the directional propagation theorem <code>SH02-MST-PROPAGATION</code> and both directions of cone cutoff, <code>SH02-MST-CUTOFF-FORWARD</code> and <code>SH02-MST-CUTOFF-CONVERSE</code>, relative to its stated sheaf foundations.</p>
+<p><strong>Directional topology.</strong> The topology associated with an arbitrary closed convex cone, its fully faithful inverse image, and its section comparison are in <a href="../sheaf-proof-readings/SH02-cone-topology.html">the cone topology unit</a>. Constant sheaves on convex sets are acyclic by <a href="../sheaf-proof-readings/SH02-convex-acyclicity.html">the convex acyclicity unit</a>. These results retain their recorded coefficient and continuity dependencies.</p>
+<p><strong>Microlocal Hom estimate.</strong> For <span class="math" data-tex="$F,G\in D^b(k_X)$">$F,G\in D^b(k_X)$</span>, put <span class="math" data-tex="$M=T^*X$">$M=T^*X$</span> and <span class="math" data-tex="$K=\mu\mathcal Hom(G,F)$">$K=\mu\mathcal Hom(G,F)$</span>. We use <span class="math" data-tex="$K\in D^b(k_M)$">$K\in D^b(k_M)$</span> from the exact contract <code>SH02-MH-BOUNDED</code> in <a href="../sheaf-proof-readings/SH02-microlocal-hom.html">the microlocal Hom unit</a>, including its finite-dimensional internal-Hom and microlocalization amplitude dependencies. Boundedness of the two inputs alone is not offered as a proof of this derived-Hom assertion. The exact microsupport estimate used here is</p>
+<span class="math math-display" data-tex="\[
+-H\bigl(\operatorname{SS}(K)\bigr)
+\subset C\bigl(\operatorname{SS}(F),\operatorname{SS}(G)\bigr)
+\subset TM.
+\tag{I1}
+\]">\[
+-H\bigl(\operatorname{SS}(K)\bigr)
+\subset C\bigl(\operatorname{SS}(F),\operatorname{SS}(G)\bigr)
+\subset TM.
+\tag{I1}
+\]</span>
+<p>The map <span class="math" data-tex="$H:T^*M\to TM$">$H:T^*M\to TM$</span> and the order of the two sets are fixed below. This is the contract <code>SH02-CHE-004</code> in <a href="../sheaf-proof-readings/SH02-characteristic-estimates.html">the characteristic estimates unit</a>; its proof uses the specialization estimate and the cotangent Fourier identification. That draft and its exact dependencies still await verification. Merely naming the contract does not close it.</p>
+<p><strong>Support and identity detection.</strong> One has</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\mu\mathcal Hom(G,F)
+\subset\operatorname{SS}(G)\cap\operatorname{SS}(F),
+\qquad
+\bigl(\mu\mathcal Hom(F,F)\bigr)_p=0
+\Longleftrightarrow p\notin\operatorname{SS}(F).
+\tag{I2}
+\]">\[
+\operatorname{supp}\mu\mathcal Hom(G,F)
+\subset\operatorname{SS}(G)\cap\operatorname{SS}(F),
+\qquad
+\bigl(\mu\mathcal Hom(F,F)\bigr)_p=0
+\Longleftrightarrow p\notin\operatorname{SS}(F).
+\tag{I2}
+\]</span>
+<p>The second assertion is the exact identity-detection contract <code>SH02-MC-IDENTITY</code> in <a href="../sheaf-proof-readings/SH02-microlocal-categories.html">the localized category unit</a>, including its localized Hom and quotient-category dependencies. The first is <code>SH02-MO-MICROLOCAL-SUPPORT</code> in <a href="../sheaf-proof-readings/SH02-microsupport-operations.html">the microsupport operations unit</a>. These are used separately: support containment gives an open region of vanishing, whereas identity detection gives a contradiction at a specified point.</p>
+<p>The proof of involutivity below does not assume that an involutivity result is already available in any of these imports. In particular, the local cone argument is proved from directional propagation rather than inferred from the theorem it will establish. The noncharacteristic deformation import underlying directional propagation uses the corrected closed moving fronts; a submersive-map hypothesis in the source foundations is never replaced by mere differentiability.</p>
+<h2 id="sh02-inv-secants-two-different-limiting-constructions">SH02-INV-SECANTS — Two different limiting constructions</h2>
+<p>Let <span class="math" data-tex="$A,B$">$A,B$</span> be subsets of a manifold <span class="math" data-tex="$M$">$M$</span>, and let <span class="math" data-tex="$p\in\overline A\cap\overline B$">$p\in\overline A\cap\overline B$</span>. Choose coordinates centered at <span class="math" data-tex="$p$">$p$</span>. Define the two-set normal cone at <span class="math" data-tex="$p$">$p$</span> by</p>
+<span class="math math-display" data-tex="\[
+C_p(A,B)=
+\left\{
+\lim_{n\to\infty}\frac{a_n-b_n}{h_n}:
+a_n\in A,\ b_n\in B,\ a_n,b_n\to p,\ h_n&gt;0,\ h_n\to0
+\right\}.
+\tag{I3}
+\]">\[
+C_p(A,B)=
+\left\{
+\lim_{n\to\infty}\frac{a_n-b_n}{h_n}:
+a_n\in A,\ b_n\in B,\ a_n,b_n\to p,\ h_n&gt;0,\ h_n\to0
+\right\}.
+\tag{I3}
+\]</span>
+<p>Only convergent quotients enter this definition. The tangent cone based at the fixed point is</p>
+<span class="math math-display" data-tex="\[
+C_p(A)=C_p(A,\{p\}).
+\tag{I4}
+\]">\[
+C_p(A)=C_p(A,\{p\}).
+\tag{I4}
+\]</span>
+<p>The union of the cones in (I3) over the relevant base points is written <span class="math" data-tex="$C(A,B)\subset TM$">$C(A,B)\subset TM$</span>. The order matters: <span class="math" data-tex="$C_p(B,A)=-C_p(A,B)$">$C_p(B,A)=-C_p(A,B)$</span>. In particular <span class="math" data-tex="$C_p(A,A)$">$C_p(A,A)$</span> is symmetric under sign, even though <span class="math" data-tex="$C_p(A)$">$C_p(A)$</span> need not be symmetric. Both are closed cones, and <span class="math" data-tex="$C_p(A)\subset C_p(A,A)$">$C_p(A)\subset C_p(A,A)$</span> when <span class="math" data-tex="$p\in A$">$p\in A$</span>.</p>
+<p>Here and below, a cone is closed under multiplication by positive scalars; the limiting constructions at a point of the set also contain zero. Closedness follows by a diagonal choice: for a convergent sequence of candidate vectors, select one term from each witnessing sequence so that its two points, parameter, and quotient differ from their required limits by less than the reciprocal of the index.</p>
+<p>These definitions do not depend on the coordinates. For a <span class="math" data-tex="$C^1$">$C^1$</span> coordinate change <span class="math" data-tex="$f$">$f$</span>,</p>
+<span class="math math-display" data-tex="\[
+f(a_n)-f(b_n)
+=df_p(a_n-b_n)+o(|a_n-b_n|).
+\tag{I5}
+\]">\[
+f(a_n)-f(b_n)
+=df_p(a_n-b_n)+o(|a_n-b_n|).
+\tag{I5}
+\]</span>
+<p>Indeed integrate the derivative along the coordinate segment and use its uniform convergence to <span class="math" data-tex="$df_p$">$df_p$</span> as both endpoints approach <span class="math" data-tex="$p$">$p$</span>. Since <span class="math" data-tex="$|a_n-b_n|/h_n$">$|a_n-b_n|/h_n$</span> is bounded, division by <span class="math" data-tex="$h_n$">$h_n$</span> proves that the cone transforms by <span class="math" data-tex="$df_p$">$df_p$</span>. Applying the inverse coordinate change gives equality, not just containment. This also proves that tangent cones are carried correctly by a <span class="math" data-tex="$C^1$">$C^1$</span> flow box.</p>
+<p>Two elementary observations will be used repeatedly.</p>
+<p><strong>A vanishing function kills all secants.</strong> If a <span class="math" data-tex="$C^1$">$C^1$</span> function <span class="math" data-tex="$f$">$f$</span> vanishes on <span class="math" data-tex="$S$">$S$</span> near <span class="math" data-tex="$p$">$p$</span>, then</p>
+<span class="math math-display" data-tex="\[
+C_p(S,S)\subset\ker df_p.
+\tag{I6}
+\]">\[
+C_p(S,S)\subset\ker df_p.
+\tag{I6}
+\]</span>
+<p>Apply (I5) to <span class="math" data-tex="$f$">$f$</span>; its left side is zero. More generally, if <span class="math" data-tex="$A\subset\{f\geq0\}$">$A\subset\{f\geq0\}$</span> and <span class="math" data-tex="$B\subset\{f\leq0\}$">$B\subset\{f\leq0\}$</span>, with <span class="math" data-tex="$f(p)=0$">$f(p)=0$</span>, then</p>
+<span class="math math-display" data-tex="\[
+C_p(A,B)\subset\{w:df_p(w)\geq0\}.
+\tag{I7}
+\]">\[
+C_p(A,B)\subset\{w:df_p(w)\geq0\}.
+\tag{I7}
+\]</span>
+<p>Here <span class="math" data-tex="$f(a_n)-f(b_n)\geq0$">$f(a_n)-f(b_n)\geq0$</span>, and the same quotient limit proves the assertion. If <span class="math" data-tex="$df_p=0$">$df_p=0$</span>, the right side is the whole tangent space; we do not replace this inclusion by an unjustified equality at a critical point.</p>
+<p><strong>An absent tangent direction gives an empty cone.</strong> Suppose <span class="math" data-tex="$p\in S$">$p\in S$</span> and <span class="math" data-tex="$v\neq0$">$v\neq0$</span> is not in <span class="math" data-tex="$C_p(S)$">$C_p(S)$</span>. In suitable linear coordinates, <span class="math" data-tex="$v=(1,0)$">$v=(1,0)$</span> and there are <span class="math" data-tex="$b&gt;0$">$b&gt;0$</span> and a neighborhood <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$0$">$0$</span> such that</p>
+<span class="math math-display" data-tex="\[
+S\cap W\cap\Gamma_b=\varnothing,
+\qquad
+\Gamma_b=\{(t,y):t&gt;b|y|\}.
+\tag{I8}
+\]">\[
+S\cap W\cap\Gamma_b=\varnothing,
+\qquad
+\Gamma_b=\{(t,y):t&gt;b|y|\}.
+\tag{I8}
+\]</span>
+<p>Otherwise choose points of <span class="math" data-tex="$S\setminus\{p\}$">$S\setminus\{p\}$</span> approaching <span class="math" data-tex="$p$">$p$</span> whose unit directions approach <span class="math" data-tex="$v/|v|$">$v/|v|$</span>. Rescaling their differences from <span class="math" data-tex="$p$">$p$</span> to length <span class="math" data-tex="$|v|$">$|v|$</span> gives a sequence in (I4) converging to <span class="math" data-tex="$v$">$v$</span>, a contradiction. A smaller circular cone around <span class="math" data-tex="$v$">$v$</span> then has the form in (I8). This argument uses the fixed-point cone, not the two-set cone.</p>
+<h2 id="sh02-inv-local-flows-the-regularity-needed-for-a-flow-box">SH02-INV-LOCAL-FLOWS — The regularity needed for a flow box</h2>
+<p>The differential-equation input used below is the following local fact. A <span class="math" data-tex="$C^1$">$C^1$</span> vector field has a unique local flow, that flow is <span class="math" data-tex="$C^1$">$C^1$</span> in time and initial point, and near a point where the field is nonzero there are <span class="math" data-tex="$C^1$">$C^1$</span> coordinates making it <span class="math" data-tex="$\partial_t$">$\partial_t$</span>. These statements require neither a compact manifold nor a complete vector field.</p>
+<p>Here is a proof, with the ordinary <span class="math" data-tex="$C^1$">$C^1$</span> inverse function theorem as the sole coordinate-calculus input to the final step. In a relatively compact coordinate ball, bound <span class="math" data-tex="$|v|$">$|v|$</span> by <span class="math" data-tex="$M$">$M$</span> and <span class="math" data-tex="$|Dv|$">$|Dv|$</span> by <span class="math" data-tex="$L$">$L$</span>. For an initial point <span class="math" data-tex="$z$">$z$</span> in a smaller ball and a sufficiently short interval <span class="math" data-tex="$[-T,T]$">$[-T,T]$</span>, the operator</p>
+<span class="math math-display" data-tex="\[
+\mathcal P_z(c)(t)=z+\int_0^t v(c(s))\,ds
+\]">\[
+\mathcal P_z(c)(t)=z+\int_0^t v(c(s))\,ds
+\]</span>
+<p>takes continuous paths in the larger closed ball to themselves and contracts their uniform distance by at most <span class="math" data-tex="$LT&lt;1$">$LT&lt;1$</span>. Iterating from the constant path produces a uniformly Cauchy sequence, since successive differences are bounded by a geometric series. Its limit is the unique fixed point, hence a <span class="math" data-tex="$C^1$">$C^1$</span> solution. The same estimate gives uniqueness among solutions on this interval; subdividing any larger common interval gives uniqueness there too.</p>
+<p>The integral equation for two initial points gives the bound</p>
+<span class="math math-display" data-tex="\[
+|c_z(t)-c_w(t)|\leq e^{L|t|}|z-w|.
+\]">\[
+|c_z(t)-c_w(t)|\leq e^{L|t|}|z-w|.
+\]</span>
+<p>This follows by iterating the integral inequality, whose <span class="math" data-tex="$n$">$n$</span>th iterated kernel contributes <span class="math" data-tex="$L^n|t|^n/n!$">$L^n|t|^n/n!$</span>. For differentiability in <span class="math" data-tex="$z$">$z$</span>, let <span class="math" data-tex="$U_z$">$U_z$</span> solve the linear integral equation</p>
+<span class="math math-display" data-tex="\[
+U_z(t)=1+\int_0^t Dv(c_z(s))U_z(s)\,ds.
+\]">\[
+U_z(t)=1+\int_0^t Dv(c_z(s))U_z(s)\,ds.
+\]</span>
+<p>The same iteration constructs <span class="math" data-tex="$U_z$">$U_z$</span> continuously in <span class="math" data-tex="$(t,z)$">$(t,z)$</span>. Subtract this equation, multiplied by a small initial displacement <span class="math" data-tex="$h$">$h$</span>, from the equations for <span class="math" data-tex="$c_{z+h}-c_z$">$c_{z+h}-c_z$</span>. Uniform continuity of <span class="math" data-tex="$Dv$">$Dv$</span> on the compact ball makes the inhomogeneous remainder <span class="math" data-tex="$o(|h|)$">$o(|h|)$</span> uniformly in time; the preceding integral bound then gives <span class="math" data-tex="$c_{z+h}(t)-c_z(t)-U_z(t)h=o(|h|)$">$c_{z+h}(t)-c_z(t)-U_z(t)h=o(|h|)$</span> uniformly. Thus <span class="math" data-tex="$D_zc_z(t)=U_z(t)$">$D_zc_z(t)=U_z(t)$</span> and is continuous. Time differentiability follows from <span class="math" data-tex="$\partial_tc_z(t)=v(c_z(t))$">$\partial_tc_z(t)=v(c_z(t))$</span>.</p>
+<p>Uniqueness gives the local flow identity <span class="math" data-tex="$c_{c_z(s)}(t)=c_z(s+t)$">$c_{c_z(s)}(t)=c_z(s+t)$</span>. Local solutions consequently glue over the union of their compatible time intervals to a unique solution on a maximal open interval. At a point <span class="math" data-tex="$p$">$p$</span> with <span class="math" data-tex="$v(p)\neq0$">$v(p)\neq0$</span>, choose a transverse affine hyperplane <span class="math" data-tex="$E$">$E$</span> through <span class="math" data-tex="$p$">$p$</span>. The map <span class="math" data-tex="$(t,y)\mapsto c_y(t)$">$(t,y)\mapsto c_y(t)$</span> has derivative <span class="math" data-tex="$(a,w)\mapsto av(p)+w$">$(a,w)\mapsto av(p)+w$</span> at <span class="math" data-tex="$(0,p)$">$(0,p)$</span>, an isomorphism from <span class="math" data-tex="$\mathbb R\times T_pE$">$\mathbb R\times T_pE$</span>. The <span class="math" data-tex="$C^1$">$C^1$</span> inverse function theorem supplies the desired local coordinates, and the flow identity identifies the vector field with <span class="math" data-tex="$\partial_t$">$\partial_t$</span>. This proves the stated local fact.</p>
+<h2 id="sh02-inv-hamilton-signs-level-sets-and-time-intervals">SH02-INV-HAMILTON — Signs, level sets, and time intervals</h2>
+<p>On <span class="math" data-tex="$M=T^*X$">$M=T^*X$</span>, in cotangent coordinates <span class="math" data-tex="$(x,\xi)$">$(x,\xi)$</span>, set</p>
+<span class="math math-display" data-tex="\[
+H\left(\sum_j a_j\,dx_j+b_j\,d\xi_j\right)
+=\sum_j b_j\frac{\partial}{\partial x_j}
+-a_j\frac{\partial}{\partial\xi_j}.
+\tag{I9}
+\]">\[
+H\left(\sum_j a_j\,dx_j+b_j\,d\xi_j\right)
+=\sum_j b_j\frac{\partial}{\partial x_j}
+-a_j\frac{\partial}{\partial\xi_j}.
+\tag{I9}
+\]</span>
+<p>For the canonical symplectic form <span class="math" data-tex="$\omega=\sum_jd\xi_j\wedge dx_j$">$\omega=\sum_jd\xi_j\wedge dx_j$</span>, this means <span class="math" data-tex="$\iota_{H\theta}\omega=-\theta$">$\iota_{H\theta}\omega=-\theta$</span>. The definition is therefore coordinate independent. The identity needed for (I1) is</p>
+<span class="math math-display" data-tex="\[
+\langle-H\alpha,\beta\rangle
+=\langle\alpha,H\beta\rangle.
+\tag{I10}
+\]">\[
+\langle-H\alpha,\beta\rangle
+=\langle\alpha,H\beta\rangle.
+\tag{I10}
+\]</span>
+<p>It follows directly from (I9), or from the skew symmetry of <span class="math" data-tex="$\omega$">$\omega$</span>.</p>
+<p>Let <span class="math" data-tex="$\phi\in C^2(U;\mathbb R)$">$\phi\in C^2(U;\mathbb R)$</span> on an open subset <span class="math" data-tex="$U\subset M$">$U\subset M$</span>. Its Hamiltonian vector field <span class="math" data-tex="$H_\phi=H(d\phi)$">$H_\phi=H(d\phi)$</span> is <span class="math" data-tex="$C^1$">$C^1$</span>. The solution through <span class="math" data-tex="$p$">$p$</span> has a maximal open time interval <span class="math" data-tex="$(a_p,b_p)$">$(a_p,b_p)$</span> containing zero and satisfies</p>
+<span class="math math-display" data-tex="\[
+\dot x_j=\frac{\partial\phi}{\partial\xi_j},
+\qquad
+\dot\xi_j=-\frac{\partial\phi}{\partial x_j}.
+\tag{I11}
+\]">\[
+\dot x_j=\frac{\partial\phi}{\partial\xi_j},
+\qquad
+\dot\xi_j=-\frac{\partial\phi}{\partial x_j}.
+\tag{I11}
+\]</span>
+<p>There is no completeness assumption. The positive trajectory means its image for <span class="math" data-tex="$0\leq t&lt;b_p$">$0\leq t&lt;b_p$</span>; the negative trajectory uses <span class="math" data-tex="$a_p&lt;t\leq0$">$a_p&lt;t\leq0$</span>. Local existence, uniqueness, and the meaning of the maximal interval were established in <code>SH02-INV-LOCAL-FLOWS</code>. The derivative of <span class="math" data-tex="$\phi$">$\phi$</span> along a solution is zero by (I10), so a trajectory starting in <span class="math" data-tex="$V_0=\{\phi=0\}$">$V_0=\{\phi=0\}$</span> stays there while it exists in <span class="math" data-tex="$U$">$U$</span>.</p>
+<p>If <span class="math" data-tex="$d\phi_p=0$">$d\phi_p=0$</span>, the constant curve at <span class="math" data-tex="$p$">$p$</span> is the unique solution through <span class="math" data-tex="$p$">$p$</span>. If <span class="math" data-tex="$h$">$h$</span> is <span class="math" data-tex="$C^2$">$C^2$</span> and positive near <span class="math" data-tex="$p$">$p$</span>, then on <span class="math" data-tex="$V_0$">$V_0$</span> one has <span class="math" data-tex="$H_{h\phi}=hH_\phi$">$H_{h\phi}=hH_\phi$</span>. Thus <span class="math" data-tex="$\phi$">$\phi$</span> and <span class="math" data-tex="$h\phi$">$h\phi$</span> have the same locally oriented trajectories in <span class="math" data-tex="$V_0$">$V_0$</span>: their time variables are related by a strictly increasing solution of <span class="math" data-tex="$dt/ds=h(b(t))$">$dt/ds=h(b(t))$</span>. The parametrizations, and potentially the maximal time intervals, can differ. Reversing the sign of <span class="math" data-tex="$\phi$">$\phi$</span> reverses the direction.</p>
+<h2 id="sh02-inv-nagumo-a-tangent-field-cannot-leave-a-closed-set">SH02-INV-NAGUMO — A tangent field cannot leave a closed set</h2>
+<p>Let <span class="math" data-tex="$Z$">$Z$</span> be a manifold, <span class="math" data-tex="$S\subset Z$">$S\subset Z$</span> closed, and <span class="math" data-tex="$v$">$v$</span> a <span class="math" data-tex="$C^1$">$C^1$</span> vector field. Assume</p>
+<span class="math math-display" data-tex="\[
+v(q)\in C_q(S)\qquad(q\in S).
+\tag{I12}
+\]">\[
+v(q)\in C_q(S)\qquad(q\in S).
+\tag{I12}
+\]</span>
+<p>Then every maximal forward trajectory of <span class="math" data-tex="$v$">$v$</span> starting in <span class="math" data-tex="$S$">$S$</span> remains in <span class="math" data-tex="$S$">$S$</span> for its entire interval of existence.</p>
+<p><strong>Proof.</strong> We give a local distance argument; it supplies both the regularity and the endpoint control. Work in a coordinate ball on which <span class="math" data-tex="$v$">$v$</span> has Lipschitz constant <span class="math" data-tex="$L$">$L$</span>. A trajectory starting at <span class="math" data-tex="$q_0\in S$">$q_0\in S$</span> stays, for a short time, in a much smaller concentric ball. Intersect <span class="math" data-tex="$S$">$S$</span> with a closed ball still inside the coordinate chart. This intersection is compact. By choosing the short time smaller if necessary, every closest point to the trajectory lies in the interior of that closed ball: <span class="math" data-tex="$q_0$">$q_0$</span> is an available competitor, while points on its boundary are uniformly farther away.</p>
+<p>Fix a point <span class="math" data-tex="$x$">$x$</span> of this short trajectory and a closest point <span class="math" data-tex="$q\in S$">$q\in S$</span>. Let <span class="math" data-tex="$r=x-q$">$r=x-q$</span>. Tangency (I12) supplies <span class="math" data-tex="$h_n\downarrow0$">$h_n\downarrow0$</span> and <span class="math" data-tex="$q_n\in S$">$q_n\in S$</span> with</p>
+<span class="math math-display" data-tex="\[
+q_n=q+h_nv(q)+o(h_n).
+\]">\[
+q_n=q+h_nv(q)+o(h_n).
+\]</span>
+<p>Minimality of <span class="math" data-tex="$q$">$q$</span> gives <span class="math" data-tex="$|x-q_n|^2\geq|x-q|^2$">$|x-q_n|^2\geq|x-q|^2$</span>. Subtract, divide by <span class="math" data-tex="$h_n$">$h_n$</span>, and let <span class="math" data-tex="$n$">$n$</span> tend to infinity. The result is</p>
+<span class="math math-display" data-tex="\[
+\langle r,v(q)\rangle\leq0.
+\tag{I13}
+\]">\[
+\langle r,v(q)\rangle\leq0.
+\tag{I13}
+\]</span>
+<p>Write <span class="math" data-tex="$d(t)^2=\operatorname{dist}(x(t),S)^2$">$d(t)^2=\operatorname{dist}(x(t),S)^2$</span> using the compact local intersection just chosen. For <span class="math" data-tex="$h&gt;0$">$h&gt;0$</span> use the same nearest point <span class="math" data-tex="$q$">$q$</span> at time <span class="math" data-tex="$t$">$t$</span> as a competitor at time <span class="math" data-tex="$t+h$">$t+h$</span>. Since <span class="math" data-tex="$x(t+h)=x(t)+hv(x(t))+o(h)$">$x(t+h)=x(t)+hv(x(t))+o(h)$</span>, the upper right Dini derivative satisfies</p>
+<span class="math math-display" data-tex="\[
+D^+d(t)^2
+\leq2\langle x(t)-q,v(x(t))\rangle
+\leq2L\,d(t)^2.
+\tag{I14}
+\]">\[
+D^+d(t)^2
+\leq2\langle x(t)-q,v(x(t))\rangle
+\leq2L\,d(t)^2.
+\tag{I14}
+\]</span>
+<p>The second inequality is (I13) and the Lipschitz bound. The continuous function <span class="math" data-tex="$e^{-2Lt}d(t)^2$">$e^{-2Lt}d(t)^2$</span> has nonpositive upper right Dini derivative and is therefore nonincreasing. Here is the elementary comparison. If a continuous function with nonpositive upper right Dini derivative increased between two endpoints, subtracting a sufficiently small positive multiple of time would preserve that increase and make the derivative strictly negative. The resulting function attains a minimum on the interval at a point before its right endpoint. All sufficiently short positive increments there are nonnegative, contradicting the strictly negative upper right derivative. Thus <span class="math" data-tex="$d(0)=0$">$d(0)=0$</span> implies <span class="math" data-tex="$d(t)=0$">$d(t)=0$</span> throughout the short interval.</p>
+<p>This proves local forward invariance at every point of <span class="math" data-tex="$S$">$S$</span>. On a given maximal trajectory, if the interval of times already proved to lie in <span class="math" data-tex="$S$">$S$</span> had a finite endpoint strictly inside the existence interval, closedness would put that endpoint in <span class="math" data-tex="$S$">$S$</span>, and local forward invariance would extend it. This is a contradiction. Hence the entire positive existence interval is contained in <span class="math" data-tex="$S$">$S$</span>. No compactness of <span class="math" data-tex="$S$">$S$</span> or of the full trajectory has been used. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-inv-definition-involutivity-without-a-smoothness-assumption">SH02-INV-DEFINITION — Involutivity without a smoothness assumption</h2>
+<p>A locally closed subset <span class="math" data-tex="$S\subset M=T^*X$">$S\subset M=T^*X$</span> is <strong>involutive at <span class="math" data-tex="$p\in S$">$p\in S$</span></strong> when</p>
+<span class="math math-display" data-tex="\[
+C_p(S,S)\subset\ker\theta
+\quad\Longrightarrow\quad
+-H\theta\in C_p(S)
+\qquad(\theta\in T_p^*M).
+\tag{I15}
+\]">\[
+C_p(S,S)\subset\ker\theta
+\quad\Longrightarrow\quad
+-H\theta\in C_p(S)
+\qquad(\theta\in T_p^*M).
+\tag{I15}
+\]</span>
+<p>It is involutive when this holds at every point. Because both <span class="math" data-tex="$\theta$">$\theta$</span> and <span class="math" data-tex="$-\theta$">$-\theta$</span> annihilate the same set, (I15) also forces <span class="math" data-tex="$H\theta\in C_p(S)$">$H\theta\in C_p(S)$</span>. This equivalence explains why one may use either sign for the test vector in a contradiction argument; it does not change the convention in (I9).</p>
+<p>For a <span class="math" data-tex="$C^1$">$C^1$</span> submanifold, both cones are its tangent space: straighten the submanifold and apply (I5). Since <span class="math" data-tex="$H$">$H$</span> takes its annihilator to its symplectic orthogonal, (I15) then says</p>
+<span class="math math-display" data-tex="\[
+(T_pS)^\omega\subset T_pS.
+\tag{I16}
+\]">\[
+(T_pS)^\omega\subset T_pS.
+\tag{I16}
+\]</span>
+<p>Thus the definition recovers the usual coisotropic condition at smooth points. At a singular point it retains more information than any choice of smooth strata.</p>
+<p><strong>Hamiltonian invariance.</strong> If <span class="math" data-tex="$S$">$S$</span> is closed in <span class="math" data-tex="$U$">$U$</span>, involutive, and <span class="math" data-tex="$\phi\in C^2(U)$">$\phi\in C^2(U)$</span> vanishes on <span class="math" data-tex="$S$">$S$</span>, then <span class="math" data-tex="$S$">$S$</span> is a union of entire maximal trajectories of <span class="math" data-tex="$H_\phi$">$H_\phi$</span> in <span class="math" data-tex="$U$">$U$</span>.</p>
+<p>Indeed (I6) and (I15), applied to <span class="math" data-tex="$d\phi$">$d\phi$</span> and its negative, give both <span class="math" data-tex="$H_\phi(q)$">$H_\phi(q)$</span> and <span class="math" data-tex="$-H_\phi(q)$">$-H_\phi(q)$</span> in <span class="math" data-tex="$C_q(S)$">$C_q(S)$</span> for every <span class="math" data-tex="$q\in S$">$q\in S$</span>. Apply <code>SH02-INV-NAGUMO</code> first to <span class="math" data-tex="$H_\phi$">$H_\phi$</span> and then to <span class="math" data-tex="$-H_\phi$">$-H_\phi$</span>. Critical points are included because their trajectories are constant. Closedness in <span class="math" data-tex="$U$">$U$</span>, rather than in a larger ambient space, is exactly what the continuation argument requires. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-inv-cone-vanishing-an-empty-cone-detects-a-zero-stalk">SH02-INV-CONE-VANISHING — An empty cone detects a zero stalk</h2>
+<p>Let <span class="math" data-tex="$K\in D^b(k_W)$">$K\in D^b(k_W)$</span> on a neighborhood <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$0$">$0$</span> in <span class="math" data-tex="$\mathbb R\times\mathbb R^{m-1}$">$\mathbb R\times\mathbb R^{m-1}$</span>, with coordinates <span class="math" data-tex="$(t,y)$">$(t,y)$</span>. Suppose for some <span class="math" data-tex="$b&gt;0$">$b&gt;0$</span> that</p>
+<span class="math math-display" data-tex="\[
+K|_{W\cap\{t&gt;b|y|\}}=0,
+\qquad
+\operatorname{SS}(K)\cap T_0^*W\subset\{\tau=0\}.
+\tag{I17}
+\]">\[
+K|_{W\cap\{t&gt;b|y|\}}=0,
+\qquad
+\operatorname{SS}(K)\cap T_0^*W\subset\{\tau=0\}.
+\tag{I17}
+\]</span>
+<p>Then <span class="math" data-tex="$K_0=0$">$K_0=0$</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="$a&gt;b$">$a&gt;b$</span> and the closed pointed cone</p>
+<span class="math math-display" data-tex="\[
+C=\{(t,y):t\geq a|y|\},\qquad
+C^{\circ a}=\{(\tau,\eta):\tau\leq0,\ |\eta|\leq-a\tau\}.
+\tag{I18}
+\]">\[
+C=\{(t,y):t\geq a|y|\},\qquad
+C^{\circ a}=\{(\tau,\eta):\tau\leq0,\ |\eta|\leq-a\tau\}.
+\tag{I18}
+\]</span>
+<p>Every nonzero covector in <span class="math" data-tex="$C^{\circ a}$">$C^{\circ a}$</span> has <span class="math" data-tex="$\tau&lt;0$">$\tau&lt;0$</span>. Its unit section is compact, so closedness and conicity of microsupport, together with (I17), give a smaller neighborhood <span class="math" data-tex="$W_1$">$W_1$</span> on which</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(K)\cap
+\bigl(W_1\times(C^{\circ a}\setminus\{0\})\bigr)=\varnothing.
+\tag{I19}
+\]">\[
+\operatorname{SS}(K)\cap
+\bigl(W_1\times(C^{\circ a}\setminus\{0\})\bigr)=\varnothing.
+\tag{I19}
+\]</span>
+<p>To justify the neighborhood uniformly, a failure would give base points tending to zero and unit covectors in this compact section; a convergent subsequence would contradict (I17).</p>
+<p>Put <span class="math" data-tex="$O_0=\{t&gt;b|y|\}$">$O_0=\{t&gt;b|y|\}$</span> and, for <span class="math" data-tex="$\epsilon&gt;0$">$\epsilon&gt;0$</span>, put</p>
+<span class="math math-display" data-tex="\[
+O_{1,\epsilon}=O_0\cup\bigl(-\epsilon(1,0)+\operatorname{Int}C\bigr).
+\tag{I20}
+\]">\[
+O_{1,\epsilon}=O_0\cup\bigl(-\epsilon(1,0)+\operatorname{Int}C\bigr).
+\tag{I20}
+\]</span>
+<p>These are <span class="math" data-tex="$C$">$C$</span>-open sets, and <span class="math" data-tex="$0\in O_{1,\epsilon}$">$0\in O_{1,\epsilon}$</span>. The difference from <span class="math" data-tex="$O_0$">$O_0$</span> has compact closure of diameter <span class="math" data-tex="$O(\epsilon)$">$O(\epsilon)$</span>. Indeed a point of its closure satisfies</p>
+<span class="math math-display" data-tex="\[
+-\epsilon+a|y|\leq t\leq b|y|,
+\]">\[
+-\epsilon+a|y|\leq t\leq b|y|,
+\]</span>
+<p>so <span class="math" data-tex="$|y|\leq\epsilon/(a-b)$">$|y|\leq\epsilon/(a-b)$</span> and <span class="math" data-tex="$|t|$">$|t|$</span> has the same kind of bound. For every <span class="math" data-tex="$x\in O_{1,\epsilon}$">$x\in O_{1,\epsilon}$</span>, the closed set <span class="math" data-tex="$(x+C)\setminus O_0$">$(x+C)\setminus O_0$</span> is contained in this fixed bounded cap; it is compact. For sufficiently small <span class="math" data-tex="$\epsilon$">$\epsilon$</span>, all such caps lie in <span class="math" data-tex="$W_1$">$W_1$</span>.</p>
+<p>Apply <code>SH02-MST-PROPAGATION</code> with <span class="math" data-tex="$X=W$">$X=W$</span>, the cone <span class="math" data-tex="$C$">$C$</span>, the smaller region <span class="math" data-tex="$W_1$">$W_1$</span>, and the pair <span class="math" data-tex="$O_0\subset O_{1,\epsilon}$">$O_0\subset O_{1,\epsilon}$</span>. Its microsupport avoidance follows from (I19), its difference lies in <span class="math" data-tex="$W_1$">$W_1$</span>, and the preceding bound verifies its compactness hypothesis. Restriction therefore gives</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(O_{1,\epsilon}\cap W;K)
+\simeq R\Gamma(O_0\cap W;K)=0.
+\tag{I21}
+\]">\[
+R\Gamma(O_{1,\epsilon}\cap W;K)
+\simeq R\Gamma(O_0\cap W;K)=0.
+\tag{I21}
+\]</span>
+<p>It remains to pass to the vertex; this is not a closed-fiber base-change argument. Let <span class="math" data-tex="$Z=W\setminus O_0$">$Z=W\setminus O_0$</span> and let <span class="math" data-tex="$i:Z\hookrightarrow W$">$i:Z\hookrightarrow W$</span>. Because <span class="math" data-tex="$K$">$K$</span> vanishes off <span class="math" data-tex="$Z$">$Z$</span>, the closed-support equivalence identifies <span class="math" data-tex="$K\simeq i_*i^{-1}K$">$K\simeq i_*i^{-1}K$</span>. The sets <span class="math" data-tex="$O_{1,\epsilon}\cap Z$">$O_{1,\epsilon}\cap Z$</span> are relative open neighborhoods of zero in <span class="math" data-tex="$Z$">$Z$</span>. The displayed cap bound makes them cofinal among those neighborhoods as <span class="math" data-tex="$\epsilon\downarrow0$">$\epsilon\downarrow0$</span>. Taking the filtered colimit of the cohomology groups in (I21) therefore gives every cohomology group of <span class="math" data-tex="$(i^{-1}K)_0$">$(i^{-1}K)_0$</span>. They are all zero, so <span class="math" data-tex="$K_0=0$">$K_0=0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-inv-theorem-microsupport-is-involutive">SH02-INV-THEOREM — Microsupport is involutive</h2>
+<p>For every <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span>, the closed conic subset <span class="math" data-tex="$S=\operatorname{SS}(F)$">$S=\operatorname{SS}(F)$</span> is involutive in the sense of (I15).</p>
+<p><strong>Proof relative to (I1)–(I2).</strong> Fix <span class="math" data-tex="$p\in S$">$p\in S$</span> and a covector <span class="math" data-tex="$\theta\in T_p^*T^*X$">$\theta\in T_p^*T^*X$</span> annihilating <span class="math" data-tex="$C_p(S,S)$">$C_p(S,S)$</span>. It suffices to prove that <span class="math" data-tex="$H\theta\in C_p(S)$">$H\theta\in C_p(S)$</span>, since the same proof then applies to <span class="math" data-tex="$-\theta$">$-\theta$</span>.</p>
+<p>Suppose to the contrary that <span class="math" data-tex="$v=H\theta$">$v=H\theta$</span> is absent from <span class="math" data-tex="$C_p(S)$">$C_p(S)$</span>. It is nonzero. Use (I8) to choose coordinates with <span class="math" data-tex="$p=0$">$p=0$</span>, <span class="math" data-tex="$v=(1,0)$">$v=(1,0)$</span>, and an open cone <span class="math" data-tex="$\Gamma_b$">$\Gamma_b$</span> containing no point of <span class="math" data-tex="$S$">$S$</span> near zero. Set <span class="math" data-tex="$K=\mu\mathcal Hom(F,F)$">$K=\mu\mathcal Hom(F,F)$</span>. By support containment in (I2), <span class="math" data-tex="$K$">$K$</span> vanishes on this open cone.</p>
+<p>For <span class="math" data-tex="$\alpha\in\operatorname{SS}(K)\cap T_p^*T^*X$">$\alpha\in\operatorname{SS}(K)\cap T_p^*T^*X$</span>, the estimate (I1) puts <span class="math" data-tex="$-H\alpha$">$-H\alpha$</span> in <span class="math" data-tex="$C_p(S,S)$">$C_p(S,S)$</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+0=\langle-H\alpha,\theta\rangle
+=\langle\alpha,H\theta\rangle
+=\langle\alpha,v\rangle.
+\tag{I22}
+\]">\[
+0=\langle-H\alpha,\theta\rangle
+=\langle\alpha,H\theta\rangle
+=\langle\alpha,v\rangle.
+\tag{I22}
+\]</span>
+<p>Thus the second condition of (I17) holds in these coordinates as well. The cone-vanishing lemma gives <span class="math" data-tex="$K_p=0$">$K_p=0$</span>. Identity detection in (I2) then says <span class="math" data-tex="$p\notin S$">$p\notin S$</span>, contradicting its choice. This proves (I15) at every point, without removing singular points or the zero section. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Combining this theorem with <code>SH02-INV-DEFINITION</code>, if <span class="math" data-tex="$\phi\in C^2(U)$">$\phi\in C^2(U)$</span> vanishes on <span class="math" data-tex="$\operatorname{SS}(F)\cap U$">$\operatorname{SS}(F)\cap U$</span>, that set is a union of maximal Hamiltonian trajectories in <span class="math" data-tex="$U$">$U$</span>. This assertion is about the closed set itself. The next result keeps track of a particular cohomology section, which carries more directional information.</p>
+<h2 id="sh02-inv-section-flow-the-support-of-a-section-moves-forward">SH02-INV-SECTION-FLOW — The support of a section moves forward</h2>
+<p>Let <span class="math" data-tex="$Z$">$Z$</span> be a manifold, <span class="math" data-tex="$v$">$v$</span> a <span class="math" data-tex="$C^1$">$C^1$</span> vector field, and <span class="math" data-tex="$K\in D^b(k_Z)$">$K\in D^b(k_Z)$</span>. Assume</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(K)\subset
+\{(z,\alpha):\langle\alpha,v(z)\rangle\geq0\}.
+\tag{I23}
+\]">\[
+\operatorname{SS}(K)\subset
+\{(z,\alpha):\langle\alpha,v(z)\rangle\geq0\}.
+\tag{I23}
+\]</span>
+<p>For every integer <span class="math" data-tex="$j$">$j$</span> and every section <span class="math" data-tex="$u\in\Gamma(Z;\mathcal H^j(K))$">$u\in\Gamma(Z;\mathcal H^j(K))$</span>, its support is forward invariant under <span class="math" data-tex="$v$">$v$</span>: if <span class="math" data-tex="$u_p\neq0$">$u_p\neq0$</span>, then <span class="math" data-tex="$u_{b(t)}\neq0$">$u_{b(t)}\neq0$</span> for every <span class="math" data-tex="$0\leq t&lt;b_p$">$0\leq t&lt;b_p$</span> on the maximal trajectory through <span class="math" data-tex="$p$">$p$</span>.</p>
+<p>The support here is the closed set of points where the germ of this particular section is nonzero. It can be smaller than the support of <span class="math" data-tex="$\mathcal H^j(K)$">$\mathcal H^j(K)$</span>. The conclusion applies to a section on an open subset by restricting the vector field and using its trajectories in that open subset.</p>
+<p><strong>Proof.</strong> At a zero of <span class="math" data-tex="$v$">$v$</span>, the unique trajectory is constant. At a point where <span class="math" data-tex="$v\neq0$">$v\neq0$</span>, the <span class="math" data-tex="$C^1$">$C^1$</span> flow-box theorem supplies coordinates <span class="math" data-tex="$I\times Y$">$I\times Y$</span> in which <span class="math" data-tex="$v=\partial_t$">$v=\partial_t$</span>. Microsupport is invariant under this coordinate change by its <span class="math" data-tex="$C^1$">$C^1$</span> test definition. An increasing <span class="math" data-tex="$C^1$">$C^1$</span> diffeomorphism from the interval <span class="math" data-tex="$I$">$I$</span> to <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> changes <span class="math" data-tex="$v$">$v$</span> by a positive scalar, preserving (I23). We may thus work on <span class="math" data-tex="$\mathbb R\times Y$">$\mathbb R\times Y$</span> with the inequality <span class="math" data-tex="$\tau\geq0$">$\tau\geq0$</span>.</p>
+<p>For the cone <span class="math" data-tex="$C=(-\infty,0]\subset\mathbb R$">$C=(-\infty,0]\subset\mathbb R$</span>, let</p>
+<span class="math math-display" data-tex="\[
+q:\mathbb R\times Y\longrightarrow\mathbb R_C\times Y
+\]">\[
+q:\mathbb R\times Y\longrightarrow\mathbb R_C\times Y
+\]</span>
+<p>be the map to the directional topology in the first variable. Its open sets in that variable are the ordinary open sets stable under moving left. Condition (I23) is precisely the cone-cutoff condition, so</p>
+<span class="math math-display" data-tex="\[
+K\simeq q^{-1}Rq_*K,
+\qquad
+\mathcal H^j(K)\simeq q^{-1}A,
+\quad A=\mathcal H^j(Rq_*K).
+\tag{I24}
+\]">\[
+K\simeq q^{-1}Rq_*K,
+\qquad
+\mathcal H^j(K)\simeq q^{-1}A,
+\quad A=\mathcal H^j(Rq_*K).
+\tag{I24}
+\]</span>
+<p>The second identity uses exactness of inverse image; it is not an assertion that microsupport always commutes with taking cohomology sheaves. Fully faithful descent gives <span class="math" data-tex="$q_*q^{-1}A\simeq A$">$q_*q^{-1}A\simeq A$</span>, so a section over this whole flow box corresponds to a section of <span class="math" data-tex="$A$">$A$</span> on its directional version.</p>
+<p>Restrict to the line <span class="math" data-tex="$\mathbb R\times\{y\}$">$\mathbb R\times\{y\}$</span>. Inverse images commute in the square formed by that line and its directional version. Consequently the restricted sheaf is <span class="math" data-tex="$q_C^{-1}L$">$q_C^{-1}L$</span> for a sheaf <span class="math" data-tex="$L$">$L$</span> on <span class="math" data-tex="$\mathbb R_C$">$\mathbb R_C$</span>, and the section is the inverse image of a section <span class="math" data-tex="$\ell$">$\ell$</span> of <span class="math" data-tex="$L$">$L$</span>. For <span class="math" data-tex="$s&gt;t$">$s&gt;t$</span>, every directional neighborhood of <span class="math" data-tex="$s$">$s$</span> also contains <span class="math" data-tex="$t$">$t$</span>: such a neighborhood contains a left ray <span class="math" data-tex="$(-\infty,s+\delta)$">$(-\infty,s+\delta)$</span>. If the germ <span class="math" data-tex="$\ell_s$">$\ell_s$</span> is zero, it vanishes on one such neighborhood and hence its germ at <span class="math" data-tex="$t$">$t$</span> is zero. Taking the contrapositive proves that a nonzero germ at <span class="math" data-tex="$t$">$t$</span> remains nonzero at <span class="math" data-tex="$s$">$s$</span>.</p>
+<p>This proves forward invariance as long as the trajectory stays in one flow box. The support of <span class="math" data-tex="$u$">$u$</span> is closed because the locus of zero germs is open. The same continuation argument as in <code>SH02-INV-NAGUMO</code> now extends the conclusion over the whole positive existence interval. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>On any open time interval, a closed forward-invariant subset is empty, the whole interval, or its intersection with a closed ray <span class="math" data-tex="$[c,\infty)$">$[c,\infty)$</span>. The theorem therefore rules out the disappearance of a nonzero germ along positive time; it does not rule out a first appearance.</p>
+<h2 id="sh02-inv-microlocal-flow-sections-between-opposite-sides-of-a-level-set">SH02-INV-MICROLOCAL-FLOW — Sections between opposite sides of a level set</h2>
+<p>Let <span class="math" data-tex="$U\subset T^*X$">$U\subset T^*X$</span> be open, let <span class="math" data-tex="$\phi\in C^2(U;\mathbb R)$">$\phi\in C^2(U;\mathbb R)$</span>, and write</p>
+<span class="math math-display" data-tex="\[
+V_+=\{\phi\geq0\},\qquad
+V_-=\{\phi\leq0\},\qquad
+V_0=\{\phi=0\}.
+\tag{I25}
+\]">\[
+V_+=\{\phi\geq0\},\qquad
+V_-=\{\phi\leq0\},\qquad
+V_0=\{\phi=0\}.
+\tag{I25}
+\]</span>
+<p>Let <span class="math" data-tex="$F,G\in D^b(k_X)$">$F,G\in D^b(k_X)$</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(F)\cap U\subset V_+,
+\qquad
+\operatorname{SS}(G)\cap U\subset V_-.
+\tag{I26}
+\]">\[
+\operatorname{SS}(F)\cap U\subset V_+,
+\qquad
+\operatorname{SS}(G)\cap U\subset V_-.
+\tag{I26}
+\]</span>
+<p>Then for every integer <span class="math" data-tex="$j$">$j$</span> and section</p>
+<span class="math math-display" data-tex="\[
+u\in\Gamma\bigl(U;\mathcal H^j\mu\mathcal Hom(G,F)\bigr),
+\]">\[
+u\in\Gamma\bigl(U;\mathcal H^j\mu\mathcal Hom(G,F)\bigr),
+\]</span>
+<p>its support lies in <span class="math" data-tex="$V_0$">$V_0$</span> and is a union of positive maximal Hamiltonian trajectories of <span class="math" data-tex="$H_\phi$">$H_\phi$</span> within <span class="math" data-tex="$U$">$U$</span>.</p>
+<p><strong>Proof relative to (I1)–(I2).</strong> Put <span class="math" data-tex="$K=\mu\mathcal Hom(G,F)|_U$">$K=\mu\mathcal Hom(G,F)|_U$</span>. Support containment gives <span class="math" data-tex="$\operatorname{supp}(K)\subset V_0$">$\operatorname{supp}(K)\subset V_0$</span>. If <span class="math" data-tex="$(p,\alpha)\in\operatorname{SS}(K)$">$(p,\alpha)\in\operatorname{SS}(K)$</span>, then <span class="math" data-tex="$p\in V_0$">$p\in V_0$</span>, and (I1), (I7), and (I10) give</p>
+<span class="math math-display" data-tex="\[
+\langle\alpha,H_\phi(p)\rangle
+=\langle-H\alpha,d\phi_p\rangle\geq0.
+\tag{I27}
+\]">\[
+\langle\alpha,H_\phi(p)\rangle
+=\langle-H\alpha,d\phi_p\rangle\geq0.
+\tag{I27}
+\]</span>
+<p>In using (I7), the two sequences lie in <span class="math" data-tex="$\operatorname{SS}(F)$">$\operatorname{SS}(F)$</span> and <span class="math" data-tex="$\operatorname{SS}(G)$">$\operatorname{SS}(G)$</span> in exactly that order. They eventually lie in <span class="math" data-tex="$U$">$U$</span>, so only the hypotheses in (I26) are needed. At a critical point, (I27) remains valid and the associated trajectory is constant. Apply <code>SH02-INV-SECTION-FLOW</code> to <span class="math" data-tex="$K$">$K$</span> and <span class="math" data-tex="$H_\phi$">$H_\phi$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Reversing <span class="math" data-tex="$F$">$F$</span> and <span class="math" data-tex="$G$">$G$</span> reverses the normal-cone order and hence the propagation sign. Interchanging <span class="math" data-tex="$V_+$">$V_+$</span> and <span class="math" data-tex="$V_-$">$V_-$</span> without also reversing the Hamiltonian direction would give a false statement.</p>
+<h2 id="sh02-inv-two-endpoints-a-calculation-with-two-outgoing-rays">SH02-INV-TWO-ENDPOINTS — A calculation with two outgoing rays</h2>
+<p>Choose real numbers <span class="math" data-tex="$a&lt;b$">$a&lt;b$</span> and a nonzero <span class="math" data-tex="$k$">$k$</span>-module <span class="math" data-tex="$N$">$N$</span>. On <span class="math" data-tex="$X=\mathbb R$">$X=\mathbb R$</span>, take</p>
+<span class="math math-display" data-tex="\[
+F=N_{(a,b)},\qquad
+G=k_{\{a\}}\oplus k_{\{b\}},\qquad
+\phi(t,\tau)=(t-a)(b-t).
+\tag{I28}
+\]">\[
+F=N_{(a,b)},\qquad
+G=k_{\{a\}}\oplus k_{\{b\}},\qquad
+\phi(t,\tau)=(t-a)(b-t).
+\tag{I28}
+\]</span>
+<p>The subscript denotes extension by zero from the indicated locally closed set. The closure of the support of <span class="math" data-tex="$F$">$F$</span> is <span class="math" data-tex="$[a,b]$">$[a,b]$</span>; consequently its microsupport lies over <span class="math" data-tex="$[a,b]$">$[a,b]$</span>, where <span class="math" data-tex="$\phi\geq0$">$\phi\geq0$</span>. The microsupport of <span class="math" data-tex="$G$">$G$</span> lies over the endpoints, where <span class="math" data-tex="$\phi=0$">$\phi=0$</span>. Thus (I26) holds.</p>
+<p>There is a direct calculation</p>
+<span class="math math-display" data-tex="\[
+\mu\mathcal Hom(G,F)
+\simeq
+N_{\{t=a,\ \tau\leq0\}}[-1]
+\oplus
+N_{\{t=b,\ \tau\geq0\}}[-1].
+\tag{I29}
+\]">\[
+\mu\mathcal Hom(G,F)
+\simeq
+N_{\{t=a,\ \tau\leq0\}}[-1]
+\oplus
+N_{\{t=b,\ \tau\geq0\}}[-1].
+\tag{I29}
+\]</span>
+<p>Here we use the point-support identification <span class="math" data-tex="$\mu\mathcal Hom(k_{\{c\}},F)\simeq j_{c*}\mu_{\{c\}}F$">$\mu\mathcal Hom(k_{\{c\}},F)\simeq j_{c*}\mu_{\{c\}}F$</span>, where <span class="math" data-tex="$j_c:T_c^*X\hookrightarrow T^*X$">$j_c:T_c^*X\hookrightarrow T^*X$</span>, from <code>SH02-MH-SUBMANIFOLD</code> in <a href="../sheaf-proof-readings/SH02-microlocal-hom.html">the microlocal Hom construction</a>. We also use the specialization/Fourier descriptions from <a href="../sheaf-proof-readings/SH02-microlocalization.html">microlocalization</a>. These exact identifications are additional dependencies of this worked calculation, not of <code>SH02-INV-THEOREM</code>.</p>
+<p>To verify (I29), use the oriented normal coordinate <span class="math" data-tex="$r=t-a$">$r=t-a$</span> at the left endpoint. Specialization of <span class="math" data-tex="$F$">$F$</span> there is <span class="math" data-tex="$N_{\{r&gt;0\}}$">$N_{\{r&gt;0\}}$</span>. In the negative-pairing Fourier presentation, a covector <span class="math" data-tex="$\tau$">$\tau$</span> has the compactly supported coefficient complex of</p>
+<span class="math math-display" data-tex="\[
+\{r&gt;0:r\tau\leq0\}.
+\]">\[
+\{r&gt;0:r\tau\leq0\}.
+\]</span>
+<p>This is empty when <span class="math" data-tex="$\tau&gt;0$">$\tau&gt;0$</span> and is the open ray when <span class="math" data-tex="$\tau\leq0$">$\tau\leq0$</span>. More precisely, on the support <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, the kernel inequality is equivalent to <span class="math" data-tex="$\tau\leq0$">$\tau\leq0$</span>, so the kernel is the exterior product on <span class="math" data-tex="$(0,\infty)\times(-\infty,0]$">$(0,\infty)\times(-\infty,0]$</span>. Its proper direct image is therefore the constant compact-support complex of the first factor on the closed second factor, extended by zero. The open ray has compactly supported cohomology <span class="math" data-tex="$N[-1]$">$N[-1]$</span>, as is seen by compactifying it to an interval and taking the relative complex at both endpoints. This product description verifies the sheaf comparison maps at <span class="math" data-tex="$\tau=0$">$\tau=0$</span> as well as its stalk. At the right endpoint the normal ray is <span class="math" data-tex="$r=t-b&lt;0$">$r=t-b&lt;0$</span>, which reverses the inequality. The two point-supported summands of <span class="math" data-tex="$G$">$G$</span> are disjoint and Hom is additive for this finite direct sum. This proves (I29), including its shift and endpoints; no flatness of <span class="math" data-tex="$N$">$N$</span> is required.</p>
+<p>At <span class="math" data-tex="$t=a$">$t=a$</span>, the Hamiltonian field is <span class="math" data-tex="$-(b-a)\partial_\tau$">$-(b-a)\partial_\tau$</span>; at <span class="math" data-tex="$t=b$">$t=b$</span>, it is <span class="math" data-tex="$(b-a)\partial_\tau$">$(b-a)\partial_\tau$</span>. A chosen nonzero element of <span class="math" data-tex="$N$">$N$</span> gives a section of <span class="math" data-tex="$\mathcal H^1$">$\mathcal H^1$</span> on either summand of (I29), or independently on both. Each support is exactly the positive Hamiltonian ray beginning at the corresponding zero covector. Neither ray is invariant under the negative flow. This example also shows why the zero covectors must remain in the statement: they are the initial points of these closed supports.</p>
+<h2 id="sh02-inv-point-tangent-failure-why-moving-both-points-matters">SH02-INV-POINT-TANGENT-FAILURE — Why moving both points matters</h2>
+<p>Here is an explicit microsupport for which replacing <span class="math" data-tex="$C_p(S,S)$">$C_p(S,S)$</span> by <span class="math" data-tex="$C_p(S)$">$C_p(S)$</span> in (I15) would be wrong. Take <span class="math" data-tex="$k\neq0$">$k\neq0$</span>, coordinates <span class="math" data-tex="$(x,y)$">$(x,y)$</span> on <span class="math" data-tex="$\mathbb R^2$">$\mathbb R^2$</span>, and</p>
+<span class="math math-display" data-tex="\[
+Z=\{(x,y):-x^4&lt;y\leq x^4\},\qquad F=k_Z.
+\tag{I30}
+\]">\[
+Z=\{(x,y):-x^4&lt;y\leq x^4\},\qquad F=k_Z.
+\tag{I30}
+\]</span>
+<p>We will calculate its microsupport and the two different cones at the zero covector above the origin. The unequal open and closed edges of this narrowing band determine the sign.</p>
+<p>First, for any <span class="math" data-tex="$C^1$">$C^1$</span> function <span class="math" data-tex="$f(x)$">$f(x)$</span> the closed hypograph <span class="math" data-tex="$A_f=\{y\leq f(x)\}$">$A_f=\{y\leq f(x)\}$</span> has microsupport</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(k_{A_f})=
+\{(x,y;0,0):y\leq f(x)\}
+\cup
+\{(x,f(x);-f&#x27;(x)\eta,\eta):\eta\leq0\}.
+\tag{I31}
+\]">\[
+\operatorname{SS}(k_{A_f})=
+\{(x,y;0,0):y\leq f(x)\}
+\cup
+\{(x,f(x);-f&#x27;(x)\eta,\eta):\eta\leq0\}.
+\tag{I31}
+\]</span>
+<p>To check this formula without a stratification assumption, straighten the boundary by the <span class="math" data-tex="$C^1$">$C^1$</span> diffeomorphism <span class="math" data-tex="$(x,y)\mapsto(x,s=y-f(x))$">$(x,y)\mapsto(x,s=y-f(x))$</span>. For <span class="math" data-tex="$\{s\leq0\}$">$\{s\leq0\}$</span>, use the cone <span class="math" data-tex="$C=\mathbb R\times[0,\infty)$">$C=\mathbb R\times[0,\infty)$</span>. If <span class="math" data-tex="$O$">$O$</span> is a convex open set, <span class="math" data-tex="$O\cap\{s\leq0\}$">$O\cap\{s\leq0\}$</span> and <span class="math" data-tex="$(O+C)\cap\{s\leq0\}$">$(O+C)\cap\{s\leq0\}$</span> are simultaneously empty or nonempty convex sets. Their constant-sheaf cohomology and the restriction map are respectively zero or the identity on <span class="math" data-tex="$k$">$k$</span> in degree zero, by convex acyclicity. The directional section comparison therefore gives <span class="math" data-tex="$P_Ck_{\{s\leq0\}}\simeq k_{\{s\leq0\}}$">$P_Ck_{\{s\leq0\}}\simeq k_{\{s\leq0\}}$</span>. The forward cutoff estimate puts its nonzero covectors among <span class="math" data-tex="$\xi=0,\eta\leq0$">$\xi=0,\eta\leq0$</span>. At the boundary every negative multiple of <span class="math" data-tex="$ds$">$ds$</span> is present: the test function <span class="math" data-tex="$-s$">$-s$</span> has support set <span class="math" data-tex="$\{s\leq0\}$">$\{s\leq0\}$</span>, and its support-test stalk is <span class="math" data-tex="$k\neq0$">$k\neq0$</span>. In the interior the sheaf is constant, and outside it is zero; the elementary support tests give precisely the stated zero section. Transforming the covectors back proves (I31).</p>
+<p>Put <span class="math" data-tex="$A=\{y\leq x^4\}$">$A=\{y\leq x^4\}$</span> and <span class="math" data-tex="$B=\{y\leq-x^4\}$">$B=\{y\leq-x^4\}$</span>. Since <span class="math" data-tex="$B\subset A$">$B\subset A$</span> are closed, localization gives</p>
+<span class="math math-display" data-tex="\[
+k_Z\longrightarrow k_A\longrightarrow k_B\xrightarrow{+1}.
+\tag{I32}
+\]">\[
+k_Z\longrightarrow k_A\longrightarrow k_B\xrightarrow{+1}.
+\tag{I32}
+\]</span>
+<p>At the origin the two right-hand stalks are <span class="math" data-tex="$k$">$k$</span> and their map is the identity, so <span class="math" data-tex="$F_0=0$">$F_0=0$</span>. Formula (I31) and the triangle estimate nevertheless show that the microsupport fiber there is contained in <span class="math" data-tex="$\{\xi=0,\eta\leq0\}$">$\{\xi=0,\eta\leq0\}$</span>. All its nonzero points occur: they are limits of the covectors on either boundary at <span class="math" data-tex="$x\neq0$">$x\neq0$</span>, where only one boundary is present. At a point of the lower boundary away from the origin, (I32) identifies <span class="math" data-tex="$F$">$F$</span> with the open upper-halfspace sheaf. Its nonzero conormals have <span class="math" data-tex="$\eta\leq0$">$\eta\leq0$</span>: the triangle between that open halfspace, the constant sheaf, and the closed lower halfspace gives equality of their nonzero microsupports by applying the triangle estimate in both directions. At an upper boundary point, (I31) applies directly. We obtain the complete closed set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S=\operatorname{SS}(F)
+={}&amp;\{(x,y;0,0):|y|\leq x^4\}\\
+&amp;\cup\{(x,x^4;-4x^3\eta,\eta):\eta\leq0\}\\
+&amp;\cup\{(x,-x^4;4x^3\eta,\eta):\eta\leq0\}.
+\end{aligned}
+\tag{I33}
+\]">\[
+\begin{aligned}
+S=\operatorname{SS}(F)
+={}&amp;\{(x,y;0,0):|y|\leq x^4\}\\
+&amp;\cup\{(x,x^4;-4x^3\eta,\eta):\eta\leq0\}\\
+&amp;\cup\{(x,-x^4;4x^3\eta,\eta):\eta\leq0\}.
+\end{aligned}
+\tag{I33}
+\]</span>
+<p>Let <span class="math" data-tex="$p=(0,0;0,0)$">$p=(0,0;0,0)$</span>. In tangent coordinates <span class="math" data-tex="$(\dot x,\dot y;\dot\xi,\dot\eta)$">$(\dot x,\dot y;\dot\xi,\dot\eta)$</span>, (I33) gives</p>
+<span class="math math-display" data-tex="\[
+C_p(S)=
+\{(r,0;0,s):r\in\mathbb R,\ s\leq0\}.
+\tag{I34}
+\]">\[
+C_p(S)=
+\{(r,0;0,s):r\in\mathbb R,\ s\leq0\}.
+\tag{I34}
+\]</span>
+<p>For the inclusion, if a point of <span class="math" data-tex="$S$">$S$</span> divided by <span class="math" data-tex="$h_n\downarrow0$">$h_n\downarrow0$</span> converges, then <span class="math" data-tex="$x_n=O(h_n)$">$x_n=O(h_n)$</span> and <span class="math" data-tex="$\eta_n=O(h_n)$">$\eta_n=O(h_n)$</span>. The bounds <span class="math" data-tex="$|y_n|\leq x_n^4$">$|y_n|\leq x_n^4$</span> and <span class="math" data-tex="$|\xi_n|\leq4|x_n|^3|\eta_n|$">$|\xi_n|\leq4|x_n|^3|\eta_n|$</span> force the second and third limiting coordinates to vanish. The final coordinate is nonpositive. Conversely, for prescribed <span class="math" data-tex="$r$">$r$</span> and <span class="math" data-tex="$s\leq0$">$s\leq0$</span>, choose <span class="math" data-tex="$x_n=h_nr$">$x_n=h_nr$</span>, <span class="math" data-tex="$\eta_n=h_ns$">$\eta_n=h_ns$</span> on the upper boundary; their rescaled points converge to the vector in (I34).</p>
+<p>Thus <span class="math" data-tex="$C_p(S)\subset\ker dy$">$C_p(S)\subset\ker dy$</span>. But <span class="math" data-tex="$-H(dy)=\partial_\eta$">$-H(dy)=\partial_\eta$</span> is not in (I34). The proposed stronger definition using the one-point cone would reject this actual microsupport.</p>
+<p>The two-set cone explains the discrepancy concretely. Let <span class="math" data-tex="$r_n\downarrow0$">$r_n\downarrow0$</span> and choose two zero covectors of (I33) above <span class="math" data-tex="$(r_n,r_n^4)$">$(r_n,r_n^4)$</span> and <span class="math" data-tex="$(r_n,-r_n^4)$">$(r_n,-r_n^4)$</span>. Their difference divided by <span class="math" data-tex="$2r_n^4$">$2r_n^4$</span> is exactly <span class="math" data-tex="$\partial_y$">$\partial_y$</span>. Both points tend to <span class="math" data-tex="$p$">$p$</span>, so</p>
+<span class="math math-display" data-tex="\[
+\partial_y\in C_p(S,S),\qquad
+C_p(S,S)\not\subset\ker dy.
+\tag{I35}
+\]">\[
+\partial_y\in C_p(S,S),\qquad
+C_p(S,S)\not\subset\ker dy.
+\tag{I35}
+\]</span>
+<p>The actual involutivity definition never demands the missing direction for this particular <span class="math" data-tex="$dy$">$dy$</span>. Its hypothesis has correctly retained the relative motion of the two boundary branches.</p>
+<p>The calculation has a useful uniform version. Replace <span class="math" data-tex="$x^4$">$x^4$</span> by <span class="math" data-tex="$x^{2m}$">$x^{2m}$</span> for any integer <span class="math" data-tex="$m\geq1$">$m\geq1$</span>, and replace <span class="math" data-tex="$4x^3$">$4x^3$</span> in (I33) by <span class="math" data-tex="$2m x^{2m-1}$">$2m x^{2m-1}$</span>. The same hypograph triangle gives exactly that microsupport. In the fixed-point cone calculation, <span class="math" data-tex="$|y_n|/h_n=O(h_n^{2m-1})$">$|y_n|/h_n=O(h_n^{2m-1})$</span> and <span class="math" data-tex="$|\xi_n|/h_n=O(h_n^{2m-1})$">$|\xi_n|/h_n=O(h_n^{2m-1})$</span>, so (I34) is unchanged. The two-set witnesses use the scale <span class="math" data-tex="$2r_n^{2m}$">$2r_n^{2m}$</span>. This proves the phenomenon for quadratic narrowing as well as the quartic example displayed here, with the same open and closed edge conventions.</p>
+<h2 id="sh02-inv-problems-exercises-with-complete-solutions">SH02-INV-PROBLEMS — Exercises with complete solutions</h2>
+<p><strong>1. Finite time is not a failure of invariance.</strong> On <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>, let <span class="math" data-tex="$v(x)=x^2\partial_x$">$v(x)=x^2\partial_x$</span> and <span class="math" data-tex="$S=[1,\infty)$">$S=[1,\infty)$</span>. Verify (I12), compute the trajectory starting at <span class="math" data-tex="$1$">$1$</span>, and state exactly what the tangent-field theorem concludes.</p>
+<p><em>Solution.</em> At <span class="math" data-tex="$1$">$1$</span>, the tangent cone is <span class="math" data-tex="$[0,\infty)$">$[0,\infty)$</span> and <span class="math" data-tex="$v(1)=1$">$v(1)=1$</span>. At every larger point the tangent cone is all of <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>. The solution is <span class="math" data-tex="$x(t)=1/(1-t)$">$x(t)=1/(1-t)$</span> on its maximal interval <span class="math" data-tex="$(-\infty,1)$">$(-\infty,1)$</span>. Its positive portion lies in <span class="math" data-tex="$S$">$S$</span> for <span class="math" data-tex="$0\leq t&lt;1$">$0\leq t&lt;1$</span>. The theorem gives no point at <span class="math" data-tex="$t=1$">$t=1$</span> and makes no assertion of a solution for all positive time.</p>
+<p><strong>2. Rescale a Hamiltonian and check its sign.</strong> Suppose <span class="math" data-tex="$\phi=0$">$\phi=0$</span> on a closed involutive set <span class="math" data-tex="$S\subset U$">$S\subset U$</span> and <span class="math" data-tex="$h\in C^2(U)$">$h\in C^2(U)$</span> is positive. Prove that the trajectories of <span class="math" data-tex="$H_{h\phi}$">$H_{h\phi}$</span> and <span class="math" data-tex="$H_\phi$">$H_\phi$</span> in <span class="math" data-tex="$S$">$S$</span> have the same local orientations. What happens for <span class="math" data-tex="$h&lt;0$">$h&lt;0$</span>?</p>
+<p><em>Solution.</em> The product rule and linearity of <span class="math" data-tex="$H$">$H$</span> give <span class="math" data-tex="$H_{h\phi}=hH_\phi+\phi H_h$">$H_{h\phi}=hH_\phi+\phi H_h$</span>. The second term vanishes on <span class="math" data-tex="$S$">$S$</span>. A solution <span class="math" data-tex="$b(t)$">$b(t)$</span> of <span class="math" data-tex="$H_\phi$">$H_\phi$</span> becomes one of <span class="math" data-tex="$H_{h\phi}$">$H_{h\phi}$</span> after solving <span class="math" data-tex="$dt/ds=h(b(t))$">$dt/ds=h(b(t))$</span>. A positive right side preserves orientation; a negative one reverses it. At a zero of <span class="math" data-tex="$H_\phi$">$H_\phi$</span>, both fields vanish and uniqueness fixes the point. A global assertion about the equality of time domains does not follow from this calculation.</p>
+<p><strong>3. A critical level needs an inclusion.</strong> On the symplectic plane with coordinates <span class="math" data-tex="$(x,\xi)$">$(x,\xi)$</span>, let <span class="math" data-tex="$\phi=x^3$">$\phi=x^3$</span> and <span class="math" data-tex="$p=(0,0)$">$p=(0,0)$</span>. Compute <span class="math" data-tex="$C_p(V_+,V_-)$">$C_p(V_+,V_-)$</span> and compare it with <span class="math" data-tex="$\{w:d\phi_p(w)\geq0\}$">$\{w:d\phi_p(w)\geq0\}$</span>.</p>
+<p><em>Solution.</em> Here <span class="math" data-tex="$V_+=\{x\geq0\}$">$V_+=\{x\geq0\}$</span> and <span class="math" data-tex="$V_-=\{x\leq0\}$">$V_-=\{x\leq0\}$</span>. Their scaled differences have nonnegative <span class="math" data-tex="$x$">$x$</span> coordinate and arbitrary <span class="math" data-tex="$\xi$">$\xi$</span> coordinate, and every such vector is realized by linear sequences. Thus <span class="math" data-tex="$C_p(V_+,V_-)=\{\dot x\geq0\}$">$C_p(V_+,V_-)=\{\dot x\geq0\}$</span>. On the other hand <span class="math" data-tex="$d\phi_p=0$">$d\phi_p=0$</span>, so its stated halfspace is the whole tangent plane. The inclusion (I7) is strict. Since <span class="math" data-tex="$H_\phi(p)=0$">$H_\phi(p)=0$</span>, the directed propagation theorem at this point concerns only the constant trajectory and remains valid.</p>
+<p><strong>4. Why does an empty cone need a microsupport condition?</strong> Give a sheaf on <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span> that vanishes on <span class="math" data-tex="$t&gt;0$">$t&gt;0$</span> and has a nonzero stalk at <span class="math" data-tex="$0$">$0$</span>. Identify the covectors that violate (I17).</p>
+<p><em>Solution.</em> Take <span class="math" data-tex="$K=k_{(-\infty,0]}$">$K=k_{(-\infty,0]}$</span> with <span class="math" data-tex="$k\neq0$">$k\neq0$</span>. Its stalk at zero is <span class="math" data-tex="$k$">$k$</span>. The support test with <span class="math" data-tex="$f(t)=-t$">$f(t)=-t$</span> is nonzero there, so the negative covectors belong to its microsupport. In dimension one the condition <span class="math" data-tex="$\tau=0$">$\tau=0$</span> excludes all those covectors. Thus the open-cone vanishing hypothesis alone is insufficient, exactly as the proof of <code>SH02-INV-CONE-VANISHING</code> requires.</p>
+<p><strong>5. The support of a section and the support of a sheaf.</strong> Let <span class="math" data-tex="$k=\mathbb Z$">$k=\mathbb Z$</span>, let <span class="math" data-tex="$K=k_{[0,\infty)}\oplus k_{[2,\infty)}$">$K=k_{[0,\infty)}\oplus k_{[2,\infty)}$</span>, and let <span class="math" data-tex="$v=\partial_t$">$v=\partial_t$</span>. Describe the supports of all global sections of <span class="math" data-tex="$\mathcal H^0(K)$">$\mathcal H^0(K)$</span>.</p>
+<p><em>Solution.</em> A section is a pair <span class="math" data-tex="$(m,n)\in\mathbb Z^2$">$(m,n)\in\mathbb Z^2$</span>, constant on the two closed rays. Its support is empty if both entries vanish, <span class="math" data-tex="$[0,\infty)$">$[0,\infty)$</span> if <span class="math" data-tex="$m\neq0$">$m\neq0$</span>, and <span class="math" data-tex="$[2,\infty)$">$[2,\infty)$</span> if <span class="math" data-tex="$m=0$">$m=0$</span> and <span class="math" data-tex="$n\neq0$">$n\neq0$</span>. The microsupport is contained in <span class="math" data-tex="$\tau\geq0$">$\tau\geq0$</span> by the halfspace calculation. Every listed support is forward invariant, and the second nonempty possibility is strictly smaller than the support <span class="math" data-tex="$[0,\infty)$">$[0,\infty)$</span> of the whole sheaf. Thus the section theorem contains information that cannot be recovered by replacing <span class="math" data-tex="$u$">$u$</span> with <span class="math" data-tex="$K$">$K$</span> in its conclusion.</p>
+<h2 id="sh02-inv-research-what-the-argument-suggests-next">SH02-INV-RESEARCH — What the argument suggests next</h2>
+<p>The central mechanism is a compatibility between three operations: taking relative secants of a closed set, transporting those secants by the Hamiltonian identification, and continuing a sheaf section through an open cone. This gives a useful route for studying singular examples: compute the two-set cone before choosing any stratification, then test which Hamiltonians annihilate it. The quartic-band calculation shows that fixed-point tangents alone can discard the interaction one needs.</p>
+<p>A second route is to compare the supports of different cohomology sections of the same microlocal Hom object. The directed theorem imposes an order along each characteristic even when the ambient microsupport is invariant in both directions. The two-endpoint calculation gives an elementary model in which these section supports have genuine initial points.</p>
+<p>The involutivity of the micro-support and the propagation of microlocal sections are theorems of Kashiwara and Schapira; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §3.2 and §6.4. This exposition uses a distance comparison for closed-set invariance, an explicit shrinking cone cap for stalk vanishing, and worked calculations.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/involutivity.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

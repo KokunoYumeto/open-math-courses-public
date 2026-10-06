@@ -1,0 +1,409 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complete reducibility: Casimir elements and Weyl&#x27;s theorem · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><style>main{max-width:76rem;margin:auto;padding:1.5rem}.lesson{max-width:66rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}img{max-width:100%;height:auto}table{display:block;overflow-x:auto}td,th{padding:.4rem} .math-display{display:block;overflow-x:auto}details{margin:1rem 0}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a href="#main" class="skip-link">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav><a href="index.html">Semisimple Lie algebras</a> · <a href="proof-crosswalk.html">Proof index</a> · <a href="sources.html">Sources and terms</a></nav></div></header><main id="main"><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-04.md" download>Editable source</a><a href="RT-LIE-03.html">← Previous lesson</a><a href="RT-LIE-05.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1.</a></li><li><a href="#lemma-1-2">Lemma 1.2.</a></li><li><a href="#proposition-2-1">Proposition 2.1 (Casimir construction).</a></li><li><a href="#lemma-3-1">Lemma 3.1.</a></li><li><a href="#lemma-3-2">Lemma 3.2.</a></li><li><a href="#theorem-3-3">Theorem 3.3 (Weyl, algebraically closed case).</a></li><li><a href="#theorem-4-1">Theorem 4.1 (Weyl over an arbitrary field).</a></li><li><a href="#lemma-4-2">Lemma 4.2 (Jordan parts over \(k\) ).</a></li><li><a href="#theorem-5-1">Theorem 5.1.</a></li><li><a href="#proposition-6-1">Proposition 6.1.</a></li></ul></details><article class="lesson"><h1 id="complete-reducibility-casimir-elements-and-weyl-s-theorem">Complete reducibility: Casimir elements and Weyl's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An invariant subspace need not have an invariant complement. Semisimplicity of the acting Lie algebra makes every finite-dimensional extension split in characteristic zero. The mechanism in this lesson is an operator made by contracting a representation against its own trace form. First it splits an extension with a one-dimensional quotient; a space of linear maps then converts that special case into every case.</p>
+<p>The prerequisite is <a href="RT-LIE-03.html">The Killing form and Cartan's criteria</a>, together with the enveloping-algebra construction in <a href="RT-LIE-01.html">Lie algebras: definitions, examples and first constructions</a>. Lie algebras and modules are finite-dimensional until Section 6. The main course works over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; the Casimir scalar assertion below holds over any algebraically closed characteristic-zero field. Weyl's theorem, the basic Casimir construction, its adjoint normalization and preservation of Jordan decomposition are proved over every characteristic-zero field.</p>
+<p>References for comparison are [Milne, Lie algebras] and [Milne, Algebraic groups]. The normalization of the adjoint Casimir is also used in [Deligne, p. 321].</p>
+<h2 id="section-1"><span id="1-what-an-invariant-complement-means"></span>1. What an invariant complement means</h2>
+<p>A module is <strong>simple</strong> or <strong>irreducible</strong> if it is nonzero and has no proper nonzero submodule. It is <strong>completely reducible</strong> if it is a direct sum of simple modules.</p>
+<p id="lemma-1-1"><strong>Lemma 1.1.</strong> For a finite-dimensional module over any Lie algebra and any field, the following conditions are equivalent:</p>
+<ol>
+<li>It is a sum of simple submodules.</li>
+<li>It is a direct sum of simple submodules.</li>
+<li>Every submodule has a submodule complement.</li>
+</ol>
+<p><strong>Proof.</strong> If a module is a sum of simple submodules, build a direct sum by adding a simple summand outside the sum already chosen. Its intersection with that sum is zero, because it is a submodule of a simple module and cannot be the entire simple module. Each addition increases dimension, so the process reaches the whole module. This proves <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>; the reverse is immediate.</p>
+<p>Suppose <span class="math" data-tex="\(M=\sum S_i\)">\(M=\sum S_i\)</span> with every <span class="math" data-tex="\(S_i\)">\(S_i\)</span> simple, and let <span class="math" data-tex="\(W\subseteq M\)">\(W\subseteq M\)</span> be a submodule. Start with <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, so <span class="math" data-tex="\(W\cap T=0\)">\(W\cap T=0\)</span>. If <span class="math" data-tex="\(W+T\ne M\)">\(W+T\ne M\)</span>, some <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is not contained in <span class="math" data-tex="\(W+T\)">\(W+T\)</span>. Simplicity makes <span class="math" data-tex="\(S_i\cap(W+T)=0\)">\(S_i\cap(W+T)=0\)</span>, so replacing <span class="math" data-tex="\(T\)">\(T\)</span> by <span class="math" data-tex="\(T\oplus S_i\)">\(T\oplus S_i\)</span> preserves <span class="math" data-tex="\(W\cap T=0\)">\(W\cap T=0\)</span>. Finite dimension eventually gives <span class="math" data-tex="\(M=W\oplus T\)">\(M=W\oplus T\)</span>. Thus <span class="math" data-tex="\(1\Rightarrow3\)">\(1\Rightarrow3\)</span>.</p>
+<p>For <span class="math" data-tex="\(3\Rightarrow2\)">\(3\Rightarrow2\)</span>, choose a nonzero submodule of least dimension; it is simple. It has a complement. Every submodule of the complement also has a complement inside it: intersect a complement in <span class="math" data-tex="\(M\)">\(M\)</span> with that first complement, and use the direct-sum decomposition to check the claim. Induction on dimension now expresses the complement, and therefore <span class="math" data-tex="\(M\)">\(M\)</span>, as a direct sum of simple modules. The zero module is the empty sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A semisimple Lie algebra is perfect, by the preceding lesson: <span class="math" data-tex="\([\mathfrak g,\mathfrak g]=\mathfrak g\)">\([\mathfrak g,\mathfrak g]=\mathfrak g\)</span>. Consequently all its one-dimensional modules are trivial. Indeed, the scalar action is a linear map <span class="math" data-tex="\(\chi:\mathfrak g\to k\)">\(\chi:\mathfrak g\to k\)</span>, and <span class="math" data-tex="\(\chi([x,y])=[\chi(x),\chi(y)]=0\)">\(\chi([x,y])=[\chi(x),\chi(y)]=0\)</span>. Perfectness makes <span class="math" data-tex="\(\chi=0\)">\(\chi=0\)</span>.</p>
+<p>Complete reducibility of the adjoint module alone does not imply semisimplicity of the algebra. A nonzero one-dimensional abelian algebra has a trivial, simple adjoint module, but its radical is the entire algebra. This supplies a counterexample to the converse stated in [Milne, Lie algebras, Theorem 5.20(a)]. Weyl's theorem below asserts the forward direction with its characteristic-zero condition.</p>
+<p>We shall also use Schur's lemma in its scalar version, with its field condition included.</p>
+<p id="lemma-1-2"><strong>Lemma 1.2.</strong> On an irreducible finite-dimensional module over an algebraically closed field, every commuting endomorphism is scalar.</p>
+<p><strong>Proof.</strong> Such an endomorphism <span class="math" data-tex="\(T\)">\(T\)</span> has an eigenvalue <span class="math" data-tex="\(a\)">\(a\)</span>. The nonzero kernel of <span class="math" data-tex="\(T-a1\)">\(T-a1\)</span> is a submodule because <span class="math" data-tex="\(T\)">\(T\)</span> commutes with the action; irreducibility makes that kernel the entire module. Thus <span class="math" data-tex="\(T=a1\)">\(T=a1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over a field that is not algebraically closed, a commuting endomorphism need not be scalar. For example, the real operator <span class="math" data-tex="\(J=\begin{psmallmatrix}0&amp;-1\\1&amp;0\end{psmallmatrix}\)">\(J=\begin{psmallmatrix}0&amp;-1\\1&amp;0\end{psmallmatrix}\)</span> makes <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> an irreducible module for a one-dimensional real Lie algebra; <span class="math" data-tex="\(J\)">\(J\)</span> commutes with its action and is not a real scalar. The characteristic-zero descent argument in Section 4 will not use the scalar assertion over that field.</p>
+<h2 id="section-2"><span id="2-contracting-a-representation-against-a-bilinear-form"></span>2. Contracting a representation against a bilinear form</h2>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be a nondegenerate invariant symmetric bilinear form on <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. For a basis <span class="math" data-tex="\(x_1,\ldots,x_d\)">\(x_1,\ldots,x_d\)</span>, write <span class="math" data-tex="\(y_1,\ldots,y_d\)">\(y_1,\ldots,y_d\)</span> for its <span class="math" data-tex="\(B\)">\(B\)</span>-dual basis:
+<span class="math math-display" data-tex="\[
+B(x_i,y_j)=\delta_{ij}.
+\]">\[
+B(x_i,y_j)=\delta_{ij}.
+\]</span>
+The element
+<span class="math math-display" data-tex="\[
+\Omega_B=\sum_i x_i\otimes y_i\in\mathfrak g\otimes\mathfrak g
+\tag{2.1}
+\]">\[
+\Omega_B=\sum_i x_i\otimes y_i\in\mathfrak g\otimes\mathfrak g
+\tag{2.1}
+\]</span>
+is independent of the basis and invariant under the diagonal adjoint action.</p>
+<p>To see both claims, identify <span class="math" data-tex="\(\mathfrak g\otimes\mathfrak g\)">\(\mathfrak g\otimes\mathfrak g\)</span> with <span class="math" data-tex="\(\operatorname{End}(\mathfrak g)\)">\(\operatorname{End}(\mathfrak g)\)</span> by
+<span class="math math-display" data-tex="\[
+u\otimes v\longmapsto\bigl(z\longmapsto uB(v,z)\bigr).
+\]">\[
+u\otimes v\longmapsto\bigl(z\longmapsto uB(v,z)\bigr).
+\]</span>
+Nondegeneracy makes this an isomorphism: in a dual pair of bases these are precisely matrix units. The tensor (2.1) corresponds to the identity. Invariance of <span class="math" data-tex="\(B\)">\(B\)</span> gives
+<span class="math" data-tex="\(B([a,v],z)=-B(v,[a,z])\)">\(B([a,v],z)=-B(v,[a,z])\)</span>, so the tensor action of <span class="math" data-tex="\(a\)">\(a\)</span> corresponds to commutator with <span class="math" data-tex="\(\operatorname{ad}a\)">\(\operatorname{ad}a\)</span>. The identity commutes with it. Thus
+<span class="math math-display" data-tex="\[
+\sum_i[a,x_i]\otimes y_i+x_i\otimes[a,y_i]=0.
+\tag{2.2}
+\]">\[
+\sum_i[a,x_i]\otimes y_i+x_i\otimes[a,y_i]=0.
+\tag{2.2}
+\]</span></p>
+<p id="proposition-2-1"><strong>Proposition 2.1 (Casimir construction).</strong> Multiplication in <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span> sends this tensor to a central, basis-independent element
+<span class="math math-display" data-tex="\[
+C_B=\sum_i x_i y_i.
+\tag{2.3}
+\]">\[
+C_B=\sum_i x_i y_i.
+\tag{2.3}
+\]</span>
+In any representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, the operator
+<span class="math math-display" data-tex="\[
+c_B=\sum_i\rho(x_i)\rho(y_i)
+\tag{2.4}
+\]">\[
+c_B=\sum_i\rho(x_i)\rho(y_i)
+\tag{2.4}
+\]</span>
+commutes with <span class="math" data-tex="\(\rho(\mathfrak g)\)">\(\rho(\mathfrak g)\)</span>. If <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is semisimple and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> faithful, its trace form
+<span class="math" data-tex="\(B_\rho(x,y)=\operatorname{tr}(\rho(x)\rho(y))\)">\(B_\rho(x,y)=\operatorname{tr}(\rho(x)\rho(y))\)</span> is nondegenerate and
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_V(c_{B_\rho})=\dim\mathfrak g.
+\tag{2.5}
+\]">\[
+\operatorname{tr}_V(c_{B_\rho})=\dim\mathfrak g.
+\tag{2.5}
+\]</span>
+If in addition the field is algebraically closed and <span class="math" data-tex="\(V\)">\(V\)</span> irreducible, then
+<span class="math math-display" data-tex="\[
+c_{B_\rho}=\frac{\dim\mathfrak g}{\dim V}\,1_V.
+\tag{2.6}
+\]">\[
+c_{B_\rho}=\frac{\dim\mathfrak g}{\dim V}\,1_V.
+\tag{2.6}
+\]</span></p>
+<p><strong>Proof.</strong> In the enveloping algebra,
+<span class="math" data-tex="\([a,uv]=[a,u]v+u[a,v]\)">\([a,uv]=[a,u]v+u[a,v]\)</span>. Multiplying (2.2) therefore gives <span class="math" data-tex="\([a,C_B]=0\)">\([a,C_B]=0\)</span> for all <span class="math" data-tex="\(a\in\mathfrak g\)">\(a\in\mathfrak g\)</span>. These elements generate <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span>, so <span class="math" data-tex="\(C_B\)">\(C_B\)</span> is central. The representation extends to <span class="math" data-tex="\(U(\mathfrak g)\)">\(U(\mathfrak g)\)</span>, sending <span class="math" data-tex="\(C_B\)">\(C_B\)</span> to (2.4), which proves commutation and basis independence.</p>
+<p>The preceding lesson proved nondegeneracy of <span class="math" data-tex="\(B_\rho\)">\(B_\rho\)</span>: its radical is an ideal, Cartan's criterion makes that radical solvable in the faithful image, and semisimplicity makes it zero. For its dual bases,
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(c_{B_\rho})=\sum_i B_\rho(x_i,y_i)=d.
+\]">\[
+\operatorname{tr}(c_{B_\rho})=\sum_i B_\rho(x_i,y_i)=d.
+\]</span>
+Lemma 1.2 makes the operator scalar on an irreducible module over the algebraically closed field. Taking its trace gives (2.6); division by the positive integer <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> is valid in characteristic zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same construction may be applied to the faithful image <span class="math" data-tex="\(\rho(\mathfrak g)\)">\(\rho(\mathfrak g)\)</span> when <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has a kernel. That image is semisimple because it is a quotient of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. Its trace form is the one belonging to the represented image. Formula (2.5) then reads <span class="math" data-tex="\(\dim\rho(\mathfrak g)\)">\(\dim\rho(\mathfrak g)\)</span>.</p>
+<p>The form is part of the normalization. If <span class="math" data-tex="\(B'=aB\)">\(B'=aB\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, dual vectors scale by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>, and
+<span class="math math-display" data-tex="\[
+C_{B'}=a^{-1}C_B,\qquad c_{B'}=a^{-1}c_B.
+\tag{2.7}
+\]">\[
+C_{B'}=a^{-1}C_B,\qquad c_{B'}=a^{-1}c_B.
+\tag{2.7}
+\]</span>
+In particular <span class="math" data-tex="\(C_\kappa\)">\(C_\kappa\)</span>, defined with the Killing form, differs from a Casimir defined using a module's trace form.</p>
+<h2 id="section-3"><span id="3-a-one-dimensional-quotient-is-enough"></span>3. A one-dimensional quotient is enough</h2>
+<p>Work first over an algebraically closed characteristic-zero field.</p>
+<p id="lemma-3-1"><strong>Lemma 3.1.</strong> If <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is semisimple and <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span> is an irreducible submodule of codimension one, then <span class="math" data-tex="\(W\)">\(W\)</span> has an invariant complement.</p>
+<p><strong>Proof.</strong> The quotient is a one-dimensional module, hence trivial, so <span class="math" data-tex="\(\mathfrak gV\subseteq W\)">\(\mathfrak gV\subseteq W\)</span>. If the action on <span class="math" data-tex="\(V\)">\(V\)</span> is zero, any vector-space complement works. Otherwise its image <span class="math" data-tex="\(\mathfrak l=\rho(\mathfrak g)\)">\(\mathfrak l=\rho(\mathfrak g)\)</span> is a nonzero semisimple algebra. Form its Casimir <span class="math" data-tex="\(c\)">\(c\)</span> using the trace form of the faithful action on <span class="math" data-tex="\(V\)">\(V\)</span>. It commutes with the action, maps <span class="math" data-tex="\(V\)">\(V\)</span> into <span class="math" data-tex="\(W\)">\(W\)</span>, and acts on <span class="math" data-tex="\(W\)">\(W\)</span> as a scalar <span class="math" data-tex="\(a\)">\(a\)</span>, by Lemma 1.2. Its quotient action is zero, so
+<span class="math math-display" data-tex="\[
+a\dim W=\operatorname{tr}_V(c)=\dim\mathfrak l\ne0.
+\]">\[
+a\dim W=\operatorname{tr}_V(c)=\dim\mathfrak l\ne0.
+\]</span>
+Thus <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, and <span class="math" data-tex="\(c|_W\)">\(c|_W\)</span> is invertible. Its image is <span class="math" data-tex="\(W\)">\(W\)</span>, so rank–nullity makes its kernel one-dimensional. That kernel is invariant, meets <span class="math" data-tex="\(W\)">\(W\)</span> trivially and has complementary dimension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here the form is the trace form on the whole extension <span class="math" data-tex="\(V\)">\(V\)</span>. We did not assume that the action on its irreducible submodule was faithful, nor did we use a Casimir eigenvalue computed from that different module.</p>
+<p id="lemma-3-2"><strong>Lemma 3.2.</strong> Every codimension-one submodule of a finite-dimensional <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-module has an invariant complement.</p>
+<p><strong>Proof.</strong> Induct on <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>. The case <span class="math" data-tex="\(W=0\)">\(W=0\)</span> is immediate; the irreducible case is Lemma 3.1. Otherwise choose a proper nonzero submodule <span class="math" data-tex="\(U\subset W\)">\(U\subset W\)</span>. By induction, <span class="math" data-tex="\(W/U\subset V/U\)">\(W/U\subset V/U\)</span> has a one-dimensional invariant complement <span class="math" data-tex="\(\overline L\)">\(\overline L\)</span>. Let <span class="math" data-tex="\(T\)">\(T\)</span> be its inverse image in <span class="math" data-tex="\(V\)">\(V\)</span>. Then
+<span class="math math-display" data-tex="\[
+V=W+T,\qquad W\cap T=U,\qquad \dim(T/U)=1.
+\]">\[
+V=W+T,\qquad W\cap T=U,\qquad \dim(T/U)=1.
+\]</span>
+Since <span class="math" data-tex="\(U\ne W\)">\(U\ne W\)</span>, <span class="math" data-tex="\(\dim T&lt;\dim V\)">\(\dim T&lt;\dim V\)</span>. Induction applied to <span class="math" data-tex="\(U\subset T\)">\(U\subset T\)</span> gives <span class="math" data-tex="\(T=U\oplus L\)">\(T=U\oplus L\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> an invariant line. Therefore <span class="math" data-tex="\(V=W\oplus L\)">\(V=W\oplus L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-3-3"><strong>Theorem 3.3 (Weyl, algebraically closed case).</strong> Every finite-dimensional representation of a semisimple algebra is completely reducible.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span> be an invariant subspace. The cases <span class="math" data-tex="\(W=0,V\)">\(W=0,V\)</span> are immediate. On <span class="math" data-tex="\(\operatorname{Hom}_k(V,W)\)">\(\operatorname{Hom}_k(V,W)\)</span> the action is
+<span class="math math-display" data-tex="\[
+(x\cdot P)(v)=x\cdot P(v)-P(x\cdot v).
+\tag{3.1}
+\]">\[
+(x\cdot P)(v)=x\cdot P(v)-P(x\cdot v).
+\tag{3.1}
+\]</span>
+Expansion shows that this is a representation. Consider its subspaces
+<span class="math math-display" data-tex="\[
+A=\{P:P|_W=a1_W\text{ for some }a\in k\},
+\qquad B=\{P:P|_W=0\}.
+\]">\[
+A=\{P:P|_W=a1_W\text{ for some }a\in k\},
+\qquad B=\{P:P|_W=0\}.
+\]</span>
+For <span class="math" data-tex="\(P\in A\)">\(P\in A\)</span> and <span class="math" data-tex="\(w\in W\)">\(w\in W\)</span>, (3.1) gives
+<span class="math" data-tex="\((x\cdot P)(w)=a\,xw-a\,xw=0\)">\((x\cdot P)(w)=a\,xw-a\,xw=0\)</span>. Hence <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are submodules and <span class="math" data-tex="\(\mathfrak gA\subseteq B\)">\(\mathfrak gA\subseteq B\)</span>. Extending <span class="math" data-tex="\(1_W\)">\(1_W\)</span> linearly to <span class="math" data-tex="\(V\)">\(V\)</span> shows that the coefficient map <span class="math" data-tex="\(A\to k\)">\(A\to k\)</span>, <span class="math" data-tex="\(P\mapsto a\)">\(P\mapsto a\)</span>, is surjective with kernel <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> has codimension one in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Lemma 3.2 supplies <span class="math" data-tex="\(A=B\oplus L\)">\(A=B\oplus L\)</span> for an invariant line <span class="math" data-tex="\(L\)">\(L\)</span>. Perfectness makes its action trivial. A nonzero <span class="math" data-tex="\(P\in L\)">\(P\in L\)</span> therefore commutes with <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, and its restriction is <span class="math" data-tex="\(a1_W\)">\(a1_W\)</span> with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. Rescale to obtain <span class="math" data-tex="\(P|_W=1_W\)">\(P|_W=1_W\)</span>. Then <span class="math" data-tex="\(P\)">\(P\)</span> is an invariant projection onto <span class="math" data-tex="\(W\)">\(W\)</span>, and
+<span class="math math-display" data-tex="\[
+V=W\oplus\ker P.
+\]">\[
+V=W\oplus\ker P.
+\]</span>
+Every submodule has a complement. Lemma 1.1 proves complete reducibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-4"><span id="4-descent-to-every-characteristic-zero-field"></span>4. Descent to every characteristic-zero field</h2>
+<p id="theorem-4-1"><strong>Theorem 4.1 (Weyl over an arbitrary field).</strong> If <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero and <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> is semisimple over <span class="math" data-tex="\(k\)">\(k\)</span>, every finite-dimensional <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-module is completely reducible.</p>
+<p><strong>Proof.</strong> Extend scalars to an algebraic closure <span class="math" data-tex="\(K\)">\(K\)</span>. The preceding lesson's Killing-form criterion shows that <span class="math" data-tex="\(\mathfrak g_K\)">\(\mathfrak g_K\)</span> is semisimple: its nondegenerate Killing matrix stays nondegenerate. For any submodule <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span>, Theorem 3.3 gives a <span class="math" data-tex="\(\mathfrak g_K\)">\(\mathfrak g_K\)</span>-equivariant projection <span class="math" data-tex="\(P_K:V_K\to W_K\)">\(P_K:V_K\to W_K\)</span> with <span class="math" data-tex="\(P_K|_{W_K}=1\)">\(P_K|_{W_K}=1\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(k\)">\(k\)</span>-bases of <span class="math" data-tex="\(\mathfrak g,V,W\)">\(\mathfrak g,V,W\)</span>, the basis of <span class="math" data-tex="\(V\)">\(V\)</span> beginning with that of <span class="math" data-tex="\(W\)">\(W\)</span>. The conditions
+<span class="math math-display" data-tex="\[
+P|_W=1_W,\qquad P\rho_V(x)=\rho_W(x)P
+\tag{4.1}
+\]">\[
+P|_W=1_W,\qquad P\rho_V(x)=\rho_W(x)P
+\tag{4.1}
+\]</span>
+for every basis element <span class="math" data-tex="\(x\in\mathfrak g\)">\(x\in\mathfrak g\)</span> form finitely many linear equations in the entries of <span class="math" data-tex="\(P\)">\(P\)</span>, all with coefficients in <span class="math" data-tex="\(k\)">\(k\)</span>. Their solution over <span class="math" data-tex="\(K\)">\(K\)</span> implies a solution over <span class="math" data-tex="\(k\)">\(k\)</span>. Indeed, row reduction over <span class="math" data-tex="\(k\)">\(k\)</span> either gives an inconsistent row <span class="math" data-tex="\(0=b\)">\(0=b\)</span>, <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, which remains inconsistent over <span class="math" data-tex="\(K\)">\(K\)</span>, or gives a consistent system whose free variables can be set to zero in <span class="math" data-tex="\(k\)">\(k\)</span>. The first alternative is excluded by <span class="math" data-tex="\(P_K\)">\(P_K\)</span>. Thus a projection <span class="math" data-tex="\(P\)">\(P\)</span> satisfying (4.1) exists over <span class="math" data-tex="\(k\)">\(k\)</span>. Its kernel is an invariant complement to <span class="math" data-tex="\(W\)">\(W\)</span>. Lemma 1.1 completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A complement obtained over the larger field was not assumed to be defined over the smaller one. The finite system for a projection provides the descent.</p>
+<p>We will also extend the Jordan terminology to these fields. An endomorphism over <span class="math" data-tex="\(k\)">\(k\)</span> is called <strong>semisimple</strong> if it becomes diagonalizable over an algebraic closure.</p>
+<p id="lemma-4-2"><strong>Lemma 4.2 (Jordan parts over <span class="math" data-tex="\(k\)">\(k\)</span>).</strong> In characteristic zero, the commuting semisimple and nilpotent parts of an endomorphism <span class="math" data-tex="\(X\)">\(X\)</span> are defined over <span class="math" data-tex="\(k\)">\(k\)</span>, are polynomials in <span class="math" data-tex="\(X\)">\(X\)</span>, and are unique. Both polynomials can have zero constant term.</p>
+<p><strong>Proof.</strong> The case of the zero space is immediate. Factor the minimal polynomial over <span class="math" data-tex="\(k\)">\(k\)</span> as
+<span class="math math-display" data-tex="\[
+m_X(t)=\prod_j f_j(t)^{r_j},
+\]">\[
+m_X(t)=\prod_j f_j(t)^{r_j},
+\]</span>
+where the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> are distinct monic irreducibles. The coprime residue construction of the preceding lesson gives the primary direct sum on which <span class="math" data-tex="\(f_j(X)^{r_j}=0\)">\(f_j(X)^{r_j}=0\)</span>. Work on one such summand and put
+<span class="math" data-tex="\(R=k[t]/(f^r)\)">\(R=k[t]/(f^r)\)</span>, with the nilpotent ideal <span class="math" data-tex="\(J=(f)/(f^r)\)">\(J=(f)/(f^r)\)</span>.</p>
+<p>In characteristic zero the irreducible polynomial <span class="math" data-tex="\(f\)">\(f\)</span> is separable: its derivative is nonzero of smaller degree, so <span class="math" data-tex="\(\gcd(f,f')=1\)">\(\gcd(f,f')=1\)</span>. Bézout therefore makes <span class="math" data-tex="\(f'(t)\)">\(f'(t)\)</span> invertible modulo <span class="math" data-tex="\(f^r\)">\(f^r\)</span>. Starting with <span class="math" data-tex="\(a_0=t\)">\(a_0=t\)</span> in <span class="math" data-tex="\(R\)">\(R\)</span>, define
+<span class="math math-display" data-tex="\[
+a_{q+1}=a_q-f(a_q)f'(a_q)^{-1}.
+\tag{4.2}
+\]">\[
+a_{q+1}=a_q-f(a_q)f'(a_q)^{-1}.
+\tag{4.2}
+\]</span>
+All these expressions belong to <span class="math" data-tex="\(R\)">\(R\)</span>. In fact <span class="math" data-tex="\(a_q\equiv t\pmod J\)">\(a_q\equiv t\pmod J\)</span>, so <span class="math" data-tex="\(f'(a_q)\)">\(f'(a_q)\)</span> reduces to the unit <span class="math" data-tex="\(f'(t)\)">\(f'(t)\)</span> modulo <span class="math" data-tex="\(J\)">\(J\)</span>, and is a unit in <span class="math" data-tex="\(R\)">\(R\)</span>. To justify that lifting assertion, if <span class="math" data-tex="\(uv=1-j\)">\(uv=1-j\)</span> with <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, multiply <span class="math" data-tex="\(v\)">\(v\)</span> by the finite sum <span class="math" data-tex="\(1+j+\cdots+j^{r-1}\)">\(1+j+\cdots+j^{r-1}\)</span>.</p>
+<p>For commuting elements the polynomial identity
+<span class="math" data-tex="\(f(a+b)=f(a)+f'(a)b+b^2Q(a,b)\)">\(f(a+b)=f(a)+f'(a)b+b^2Q(a,b)\)</span> follows by binomial expansion. Hence <span class="math" data-tex="\(f(a_q)\in J^{2^q}\)">\(f(a_q)\in J^{2^q}\)</span> by induction, and (4.2) makes <span class="math" data-tex="\(f(a_{q+1})\in J^{2^{q+1}}\)">\(f(a_{q+1})\in J^{2^{q+1}}\)</span>. Once <span class="math" data-tex="\(2^q\ge r\)">\(2^q\ge r\)</span>, <span class="math" data-tex="\(f(a_q)=0\)">\(f(a_q)=0\)</span>. Set <span class="math" data-tex="\(S=a_q(X)\)">\(S=a_q(X)\)</span> on this primary summand. It satisfies <span class="math" data-tex="\(f(S)=0\)">\(f(S)=0\)</span>; after algebraic closure the roots of <span class="math" data-tex="\(f\)">\(f\)</span> are distinct, so the eigenspace construction of the preceding lesson makes <span class="math" data-tex="\(S\)">\(S\)</span> diagonalizable. Since <span class="math" data-tex="\(a_q\equiv t\pmod J\)">\(a_q\equiv t\pmod J\)</span>, <span class="math" data-tex="\(N=X-S\)">\(N=X-S\)</span> is a multiple of <span class="math" data-tex="\(f(X)\)">\(f(X)\)</span>, and <span class="math" data-tex="\(N^r=0\)">\(N^r=0\)</span>. Both operators are polynomials in <span class="math" data-tex="\(X\)">\(X\)</span>, so commute.</p>
+<p>Combine their polynomials on the primary summands by the coprime residue construction. This gives <span class="math" data-tex="\(X=S+N\)">\(X=S+N\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. Uniqueness follows by extending scalars and using uniqueness of the algebraically closed Jordan decomposition. If zero is a root of <span class="math" data-tex="\(m_X\)">\(m_X\)</span>, the construction on its primary summand gives <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, so its polynomial can be chosen with constant term zero. If zero is not a root, replace a polynomial <span class="math" data-tex="\(p\)">\(p\)</span> for <span class="math" data-tex="\(S\)">\(S\)</span> by
+<span class="math math-display" data-tex="\[
+p(t)-\frac{p(0)}{m_X(0)}m_X(t).
+\]">\[
+p(t)-\frac{p(0)}{m_X(0)}m_X(t).
+\]</span>
+This changes no operator and makes the constant term zero. The polynomial <span class="math" data-tex="\(t-p(t)\)">\(t-p(t)\)</span> for <span class="math" data-tex="\(N\)">\(N\)</span> then also has constant term zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This finite Newton construction is only a computation in a quotient polynomial ring; it assumes no convergence or infinite series.</p>
+<p>The abstract Jordan decomposition of the preceding lesson consequently exists over every characteristic-zero field in this extended terminology. Apply Lemma 4.2 to <span class="math" data-tex="\(\operatorname{ad}x\)">\(\operatorname{ad}x\)</span>. After algebraic closure its two parts are derivations, by the generalized-eigenspace proof there. The derivation identities are equalities of <span class="math" data-tex="\(k\)">\(k\)</span>-linear maps; scalar extension is injective, so the identities hold over <span class="math" data-tex="\(k\)">\(k\)</span>. The inner-derivation theorem over <span class="math" data-tex="\(k\)">\(k\)</span> supplies unique <span class="math" data-tex="\(x_s,x_n\)">\(x_s,x_n\)</span> inducing these parts. The zero centre then gives <span class="math" data-tex="\(x=x_s+x_n\)">\(x=x_s+x_n\)</span> and <span class="math" data-tex="\([x_s,x_n]=0\)">\([x_s,x_n]=0\)</span>. Uniqueness is inherited from the operator decomposition.</p>
+<h2 id="section-5"><span id="5-representations-preserve-jordan-decomposition"></span>5. Representations preserve Jordan decomposition</h2>
+<p id="theorem-5-1"><strong>Theorem 5.1.</strong> For a semisimple Lie algebra over any characteristic-zero field, every finite-dimensional representation satisfies
+<span class="math math-display" data-tex="\[
+\rho(x_s)=\rho(x)_s,\qquad \rho(x_n)=\rho(x)_n.
+\tag{5.1}
+\]">\[
+\rho(x_s)=\rho(x)_s,\qquad \rho(x_n)=\rho(x)_n.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> We first prove the theorem over an algebraically closed field. The zero representation is immediate. Let
+<span class="math" data-tex="\(\mathfrak l=\rho(\mathfrak g)\subseteq\mathfrak{gl}(V)\)">\(\mathfrak l=\rho(\mathfrak g)\subseteq\mathfrak{gl}(V)\)</span>, a semisimple algebra, and set
+<span class="math math-display" data-tex="\[
+T=\rho(x)=S+N
+\]">\[
+T=\rho(x)=S+N
+\]</span>
+for its operator Jordan decomposition. On <span class="math" data-tex="\(\operatorname{End}(V)\)">\(\operatorname{End}(V)\)</span>, the Jordan parts of <span class="math" data-tex="\(\operatorname{ad}T\)">\(\operatorname{ad}T\)</span> are <span class="math" data-tex="\(\operatorname{ad}S,\operatorname{ad}N\)">\(\operatorname{ad}S,\operatorname{ad}N\)</span>, by the preceding lesson. They are polynomials in <span class="math" data-tex="\(\operatorname{ad}T\)">\(\operatorname{ad}T\)</span>, so preserve its invariant subspace <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>. Their restrictions to <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> are commuting derivations, respectively semisimple and nilpotent. Restriction preserves these two properties: a diagonalizable operator's invariant subspace is a sum of its eigenspaces using polynomial projections, and the same nilpotent power still vanishes.</p>
+<p>All derivations of <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> are inner. Thus there are unique <span class="math" data-tex="\(a,b\in\mathfrak l\)">\(a,b\in\mathfrak l\)</span> with
+<span class="math math-display" data-tex="\[
+[S,z]=[a,z],\qquad [N,z]=[b,z]\quad(z\in\mathfrak l).
+\]">\[
+[S,z]=[a,z],\qquad [N,z]=[b,z]\quad(z\in\mathfrak l).
+\]</span>
+Adding these equations gives <span class="math" data-tex="\(T=a+b\)">\(T=a+b\)</span>, because <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> has zero centre. Commutation of the two derivations gives <span class="math" data-tex="\([a,b]=0\)">\([a,b]=0\)</span>. Their semisimple and nilpotent properties identify <span class="math" data-tex="\(a,b\)">\(a,b\)</span> as the intrinsic Jordan parts of <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>.</p>
+<p>These intrinsic parts are <span class="math" data-tex="\(\rho(x_s),\rho(x_n)\)">\(\rho(x_s),\rho(x_n)\)</span>. To verify this without assuming (5.1), split the ideal <span class="math" data-tex="\(\ker\rho\)">\(\ker\rho\)</span>:
+<span class="math" data-tex="\(\mathfrak g=\ker\rho\oplus I\)">\(\mathfrak g=\ker\rho\oplus I\)</span>, with <span class="math" data-tex="\(I\)">\(I\)</span> an ideal mapping isomorphically onto <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>. The restrictions of <span class="math" data-tex="\(\operatorname{ad}x_s,\operatorname{ad}x_n\)">\(\operatorname{ad}x_s,\operatorname{ad}x_n\)</span> to <span class="math" data-tex="\(I\)">\(I\)</span> are semisimple and nilpotent and transport under this isomorphism to
+<span class="math" data-tex="\(\operatorname{ad}_{\mathfrak l}\rho(x_s),\operatorname{ad}_{\mathfrak l}\rho(x_n)\)">\(\operatorname{ad}_{\mathfrak l}\rho(x_s),\operatorname{ad}_{\mathfrak l}\rho(x_n)\)</span>.
+They commute and sum to <span class="math" data-tex="\(\operatorname{ad}_{\mathfrak l}T\)">\(\operatorname{ad}_{\mathfrak l}T\)</span>. Intrinsic uniqueness in <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> therefore gives <span class="math" data-tex="\(a=\rho(x_s)\)">\(a=\rho(x_s)\)</span>, <span class="math" data-tex="\(b=\rho(x_n)\)">\(b=\rho(x_n)\)</span>.</p>
+<p>It remains to identify the intrinsic parts with the operator parts. The difference <span class="math" data-tex="\(S-a\)">\(S-a\)</span> centralizes <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>. By Weyl's theorem <span class="math" data-tex="\(V\)">\(V\)</span> is a direct sum of irreducible <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>-modules <span class="math" data-tex="\(W\)">\(W\)</span>. Each <span class="math" data-tex="\(W\)">\(W\)</span> is preserved by <span class="math" data-tex="\(a\in\mathfrak l\)">\(a\in\mathfrak l\)</span> and by <span class="math" data-tex="\(S\)">\(S\)</span>, a polynomial in <span class="math" data-tex="\(T\)">\(T\)</span>. Lemma 1.2 makes <span class="math" data-tex="\((S-a)|_W=c_W1_W\)">\((S-a)|_W=c_W1_W\)</span>. Since <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> is perfect, every represented element of it has trace zero on <span class="math" data-tex="\(W\)">\(W\)</span>: it is a sum of commutators. Also <span class="math" data-tex="\(N|_W\)">\(N|_W\)</span> is nilpotent, so
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_W(S)=\operatorname{tr}_W(T)=0,
+\qquad \operatorname{tr}_W(a)=0.
+\]">\[
+\operatorname{tr}_W(S)=\operatorname{tr}_W(T)=0,
+\qquad \operatorname{tr}_W(a)=0.
+\]</span>
+Hence <span class="math" data-tex="\(c_W\dim W=0\)">\(c_W\dim W=0\)</span>, giving <span class="math" data-tex="\(c_W=0\)">\(c_W=0\)</span> in characteristic zero. Thus <span class="math" data-tex="\(S=a\)">\(S=a\)</span> on every summand and on <span class="math" data-tex="\(V\)">\(V\)</span>; subtracting gives <span class="math" data-tex="\(N=b\)">\(N=b\)</span>. This proves (5.1) over the algebraically closed field.</p>
+<p>For general <span class="math" data-tex="\(k\)">\(k\)</span>, extend to an algebraic closure. Semisimplicity persists, and Lemma 4.2 and the abstract construction following it show that both intrinsic and operator Jordan parts are the extensions of those defined over <span class="math" data-tex="\(k\)">\(k\)</span>. The identities just proved over the closure descend because scalar extension is injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Merely normalizing a matrix Lie algebra does not put an operator inside it: its centralizer is an additional possibility. Complete reducibility, Schur's lemma and the trace-zero calculation are precisely what eliminate that possibility here.</p>
+<h2 id="section-6"><span id="6-why-the-adjoint-eigenvalue-is-exactly-one"></span>6. Why the adjoint eigenvalue is exactly one</h2>
+<p id="proposition-6-1"><strong>Proposition 6.1.</strong> Let <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> be semisimple over any characteristic-zero field. The element <span class="math" data-tex="\(C_\kappa\in U(\mathfrak g)\)">\(C_\kappa\in U(\mathfrak g)\)</span> defined using the Killing form acts on its adjoint module as the identity.</p>
+<p><strong>Proof.</strong> Its action is
+<span class="math math-display" data-tex="\[
+Qz=\sum_i[x_i,[y_i,z]]
+\]">\[
+Qz=\sum_i[x_i,[y_i,z]]
+\]</span>
+for Killing-dual bases <span class="math" data-tex="\(x_i,y_i\)">\(x_i,y_i\)</span>. For <span class="math" data-tex="\(w\in\mathfrak g\)">\(w\in\mathfrak g\)</span>, invariance and symmetry give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa(Qz,w)
+&amp;=\sum_i\kappa([y_i,z],[w,x_i])\\
+&amp;=\sum_i\kappa(-\operatorname{ad}z(y_i),\operatorname{ad}w(x_i))\\
+&amp;=\sum_i\kappa(y_i,\operatorname{ad}z\,\operatorname{ad}w(x_i))\\
+&amp;=\operatorname{tr}_{\mathfrak g}(\operatorname{ad}z\,\operatorname{ad}w)
+=\kappa(z,w).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa(Qz,w)
+&amp;=\sum_i\kappa([y_i,z],[w,x_i])\\
+&amp;=\sum_i\kappa(-\operatorname{ad}z(y_i),\operatorname{ad}w(x_i))\\
+&amp;=\sum_i\kappa(y_i,\operatorname{ad}z\,\operatorname{ad}w(x_i))\\
+&amp;=\operatorname{tr}_{\mathfrak g}(\operatorname{ad}z\,\operatorname{ad}w)
+=\kappa(z,w).
+\end{aligned}
+\]</span>
+The penultimate equality is the dual-basis formula for an operator trace: its <span class="math" data-tex="\(i\)">\(i\)</span>-th diagonal coefficient in the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>-basis is its pairing with <span class="math" data-tex="\(y_i\)">\(y_i\)</span>. Nondegeneracy makes <span class="math" data-tex="\(Qz=z\)">\(Qz=z\)</span>. The zero algebra is included, with the unique operator on the zero space. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof does not require simplicity or an irreducible adjoint representation. The value <span class="math" data-tex="\(1\)">\(1\)</span> uses the Killing form, the normalization in [Deligne, p. 321].</p>
+<h2 id="section-7"><span id="7-normalizations-and-the-three-boundaries-of-the-theorem"></span>7. Normalizations and the three boundaries of the theorem</h2>
+<p>For <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>, use
+<span class="math math-display" data-tex="\[
+e=E_{12},\qquad h=\operatorname{diag}(1,-1),\qquad f=E_{21}.
+\]">\[
+e=E_{12},\qquad h=\operatorname{diag}(1,-1),\qquad f=E_{21}.
+\]</span>
+In the standard two-dimensional representation, the trace form has
+<span class="math" data-tex="\(B(h,h)=2\)">\(B(h,h)=2\)</span>, <span class="math" data-tex="\(B(e,f)=B(f,e)=1\)">\(B(e,f)=B(f,e)=1\)</span>, and all other pairings zero. For the ordered basis <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span>, its dual is <span class="math" data-tex="\(f,h/2,e\)">\(f,h/2,e\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+C_B=ef+fe+\tfrac12h^2,\qquad
+c_B=\tfrac32\,1_{\mathbb C^2}.
+\tag{7.1}
+\]">\[
+C_B=ef+fe+\tfrac12h^2,\qquad
+c_B=\tfrac32\,1_{\mathbb C^2}.
+\tag{7.1}
+\]</span>
+The Killing form is <span class="math" data-tex="\(\kappa=4B\)">\(\kappa=4B\)</span>, by the preceding lesson, so
+<span class="math math-display" data-tex="\[
+C_\kappa=\tfrac14(ef+fe)+\tfrac18h^2,
+\qquad c_\kappa|_{\mathbb C^2}=\tfrac38\,1.
+\tag{7.2}
+\]">\[
+C_\kappa=\tfrac14(ef+fe)+\tfrac18h^2,
+\qquad c_\kappa|_{\mathbb C^2}=\tfrac38\,1.
+\tag{7.2}
+\]</span>
+On the adjoint module it instead has eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span>. These values belong to specified forms and specified modules.</p>
+<p>The following examples show why all hypotheses in Weyl's theorem matter.</p>
+<p><strong>A solvable algebra.</strong> Let <span class="math" data-tex="\(\mathfrak a=kx\oplus ky\)">\(\mathfrak a=kx\oplus ky\)</span>, <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>, act on <span class="math" data-tex="\(k^2\)">\(k^2\)</span> by
+<span class="math math-display" data-tex="\[
+\rho(x)=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+\rho(y)=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.
+\]">\[
+\rho(x)=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+\rho(y)=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.
+\]</span>
+The commutator is <span class="math" data-tex="\(\rho(y)\)">\(\rho(y)\)</span>, so this is a representation. The line <span class="math" data-tex="\(ku_1\)">\(ku_1\)</span> is invariant. Any complementary line has a generator <span class="math" data-tex="\(u_2+au_1\)">\(u_2+au_1\)</span>, whose image under <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(u_1\)">\(u_1\)</span>. This nonzero vector lies outside that complementary line, so no complement is invariant. The module is not completely reducible.</p>
+<p><strong>An infinite-dimensional module in characteristic zero.</strong> On the space with basis <span class="math" data-tex="\(v_0,v_1,\ldots\)">\(v_0,v_1,\ldots\)</span>, define
+<span class="math math-display" data-tex="\[
+fv_j=v_{j+1},\qquad hv_j=-2jv_j,\qquad
+ev_j=j(1-j)v_{j-1},
+\tag{7.3}
+\]">\[
+fv_j=v_{j+1},\qquad hv_j=-2jv_j,\qquad
+ev_j=j(1-j)v_{j-1},
+\tag{7.3}
+\]</span>
+with <span class="math" data-tex="\(ev_0=0\)">\(ev_0=0\)</span>. The first two bracket identities follow by comparing adjacent <span class="math" data-tex="\(h\)">\(h\)</span>-weights. For the third,
+<span class="math math-display" data-tex="\[
+(ef-fe)v_j=\bigl((j+1)(-j)-j(1-j)\bigr)v_j=-2jv_j=hv_j.
+\]">\[
+(ef-fe)v_j=\bigl((j+1)(-j)-j(1-j)\bigr)v_j=-2jv_j=hv_j.
+\]</span>
+Thus these formulas give an <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span>-module. The subspace
+<span class="math" data-tex="\(W=\langle v_1,v_2,\ldots\rangle\)">\(W=\langle v_1,v_2,\ldots\rangle\)</span> is invariant: <span class="math" data-tex="\(ev_1=0\)">\(ev_1=0\)</span>, and every other action stays in that span. Its quotient is a trivial line.</p>
+<p>If <span class="math" data-tex="\(W\)">\(W\)</span> had an invariant complement, that complement would be a one-dimensional trivial module, because <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> is perfect. Its generator would be killed by <span class="math" data-tex="\(h\)">\(h\)</span>. Distinct characteristic-zero weights in (7.3) make <span class="math" data-tex="\(\ker h=kv_0\)">\(\ker h=kv_0\)</span>, but <span class="math" data-tex="\(fv_0=v_1\ne0\)">\(fv_0=v_1\ne0\)</span>. No such complement exists. This explicitly constructed module is the highest-weight-zero Verma module; its enveloping-algebra realization will be proved in <em>Highest weights and Verma modules</em>.</p>
+<p><strong>Prime characteristic.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> have characteristic <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>. The same three-dimensional matrix algebra <span class="math" data-tex="\(\mathfrak{sl}_2(k)\)">\(\mathfrak{sl}_2(k)\)</span> is simple: <span class="math" data-tex="\(\operatorname{ad}h\)">\(\operatorname{ad}h\)</span> has three distinct eigenvalues <span class="math" data-tex="\(2,0,-2\)">\(2,0,-2\)</span>, so a nonzero ideal contains some <span class="math" data-tex="\(e,h\)">\(e,h\)</span> or <span class="math" data-tex="\(f\)">\(f\)</span>, by polynomial eigenprojections. The brackets <span class="math" data-tex="\([e,f]=h\)">\([e,f]=h\)</span>, <span class="math" data-tex="\([h,e]=2e\)">\([h,e]=2e\)</span>, <span class="math" data-tex="\([h,f]=-2f\)">\([h,f]=-2f\)</span> then put all three in the ideal. It is therefore semisimple in the radical-zero sense.</p>
+<p>It acts on the homogeneous degree-<span class="math" data-tex="\(p\)">\(p\)</span> polynomials <span class="math" data-tex="\(V=k[u,v]_p\)">\(V=k[u,v]_p\)</span> by
+<span class="math math-display" data-tex="\[
+e=u\partial_v,\qquad f=v\partial_u,\qquad
+h=u\partial_u-v\partial_v.
+\tag{7.4}
+\]">\[
+e=u\partial_v,\qquad f=v\partial_u,\qquad
+h=u\partial_u-v\partial_v.
+\tag{7.4}
+\]</span>
+Their commutators, computed by the product rule, are the same three <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> relations. The submodule
+<span class="math math-display" data-tex="\[
+U=ku^p\oplus kv^p
+\]">\[
+U=ku^p\oplus kv^p
+\]</span>
+is trivial, since the derivatives and the <span class="math" data-tex="\(h\)">\(h\)</span>-weights of these two monomials are zero. An invariant complement would give a commuting projection <span class="math" data-tex="\(P:V\to U\)">\(P:V\to U\)</span> with <span class="math" data-tex="\(P|_U=1\)">\(P|_U=1\)</span>. But
+<span class="math math-display" data-tex="\[
+e(u^{p-1}v)=u^p
+\]">\[
+e(u^{p-1}v)=u^p
+\]</span>
+would force
+<span class="math math-display" data-tex="\[
+u^p=P\,e(u^{p-1}v)=e\,P(u^{p-1}v)=0,
+\]">\[
+u^p=P\,e(u^{p-1}v)=e\,P(u^{p-1}v)=0,
+\]</span>
+a contradiction. This <span class="math" data-tex="\((p+1)\)">\((p+1)\)</span>-dimensional module is not completely reducible, even though its acting algebra is simple. The broader modular setting is surveyed in [Premet–Strade]; this example has been checked directly.</p>
+<p>The modular action is faithful: its kernel is an ideal of the simple algebra, and <span class="math" data-tex="\(e(u^{p-1}v)\ne0\)">\(e(u^{p-1}v)\ne0\)</span>. Its image therefore has dimension <span class="math" data-tex="\(3\)">\(3\)</span>. In particular, for <span class="math" data-tex="\(p=5\)">\(p=5\)</span> this dimension is not divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, while the module still fails to split. This contradicts the sufficiency of that dimension condition suggested in [Milne, Lie algebras, Aside 5.22].</p>
+<p>The trace form itself is already zero in this six-dimensional example. The <span class="math" data-tex="\(h\)">\(h\)</span>-weights are <span class="math" data-tex="\(0,3,1,4,2,0\)">\(0,3,1,4,2,0\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span>, with squares summing to <span class="math" data-tex="\(30=0\)">\(30=0\)</span>. The diagonal coefficients of <span class="math" data-tex="\(ef\)">\(ef\)</span> are <span class="math" data-tex="\(0,3,4,3,0,0\)">\(0,3,4,3,0,0\)</span>, summing to <span class="math" data-tex="\(10=0\)">\(10=0\)</span>; trace cyclicity gives the same trace for <span class="math" data-tex="\(fe\)">\(fe\)</span>. Every other basis product is off-diagonal. Thus all trace-form pairings vanish, and the nondegenerate-form step of the characteristic-zero proof is unavailable.</p>
+<h2 id="section-8"><span id="8-exercises-with-complete-solutions"></span>8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute the Casimir of <span class="math" data-tex="\(\mathfrak{sl}_2\)">\(\mathfrak{sl}_2\)</span> for the trace form on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, its standard-module eigenvalue and its relation to the Killing-form Casimir.</p>
+<p><strong>Solution.</strong> Matrix multiplication gives
+<span class="math math-display" data-tex="\[
+\operatorname{tr}(h^2)=2,\quad
+\operatorname{tr}(ef)=\operatorname{tr}(fe)=1,
+\]">\[
+\operatorname{tr}(h^2)=2,\quad
+\operatorname{tr}(ef)=\operatorname{tr}(fe)=1,
+\]</span>
+with the other basis pairings zero. Thus the dual basis to <span class="math" data-tex="\(e,h,f\)">\(e,h,f\)</span> is <span class="math" data-tex="\(f,h/2,e\)">\(f,h/2,e\)</span>, and multiplication in <span class="math" data-tex="\(U(\mathfrak{sl}_2)\)">\(U(\mathfrak{sl}_2)\)</span> gives
+<span class="math" data-tex="\(C_B=ef+fe+h^2/2\)">\(C_B=ef+fe+h^2/2\)</span>.
+On the two-dimensional module, <span class="math" data-tex="\(ef=E_{11}\)">\(ef=E_{11}\)</span>, <span class="math" data-tex="\(fe=E_{22}\)">\(fe=E_{22}\)</span> and <span class="math" data-tex="\(h^2=1\)">\(h^2=1\)</span>, so the eigenvalue is <span class="math" data-tex="\(3/2\)">\(3/2\)</span>. Since <span class="math" data-tex="\(\kappa=4B\)">\(\kappa=4B\)</span>, the Killing duals are a quarter of these duals and <span class="math" data-tex="\(C_\kappa=C_B/4\)">\(C_\kappa=C_B/4\)</span>, with eigenvalue <span class="math" data-tex="\(3/8\)">\(3/8\)</span> there. The adjoint eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span> belongs to <span class="math" data-tex="\(C_\kappa\)">\(C_\kappa\)</span>, not to the different trace normalization <span class="math" data-tex="\(C_B\)">\(C_B\)</span>.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove that <span class="math" data-tex="\(C_\kappa\)">\(C_\kappa\)</span> acts as the identity on the adjoint representation, without assuming the algebra simple.</p>
+<p><strong>Solution.</strong> Its action on <span class="math" data-tex="\(z\)">\(z\)</span> is <span class="math" data-tex="\(Qz=\sum_i[x_i,[y_i,z]]\)">\(Qz=\sum_i[x_i,[y_i,z]]\)</span> for Killing-dual bases. Pair with any <span class="math" data-tex="\(w\)">\(w\)</span>. Twice using invariance gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa(Qz,w)
+&amp;=\sum_i\kappa([y_i,z],[w,x_i])\\
+&amp;=\sum_i\kappa(y_i,\operatorname{ad}z\,\operatorname{ad}w(x_i))
+=\operatorname{tr}(\operatorname{ad}z\,\operatorname{ad}w)
+=\kappa(z,w).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa(Qz,w)
+&amp;=\sum_i\kappa([y_i,z],[w,x_i])\\
+&amp;=\sum_i\kappa(y_i,\operatorname{ad}z\,\operatorname{ad}w(x_i))
+=\operatorname{tr}(\operatorname{ad}z\,\operatorname{ad}w)
+=\kappa(z,w).
+\end{aligned}
+\]</span>
+The dual-basis sum is precisely the trace in the <span class="math" data-tex="\(x_i\)">\(x_i\)</span>-basis. Nondegeneracy yields <span class="math" data-tex="\(Qz=z\)">\(Qz=z\)</span>. No irreducibility assumption was used, so this applies simultaneously to all simple ideals and to their direct sum.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Give a non-completely-reducible two-dimensional representation of <span class="math" data-tex="\([x,y]=y\)">\([x,y]=y\)</span>, and prove that its invariant line has no invariant complement.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(x=\operatorname{diag}(1,0)\)">\(x=\operatorname{diag}(1,0)\)</span>, <span class="math" data-tex="\(y=E_{12}\)">\(y=E_{12}\)</span> on a basis <span class="math" data-tex="\(u_1,u_2\)">\(u_1,u_2\)</span>. Their commutator is <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span>, so the assignment is a representation. The line <span class="math" data-tex="\(ku_1\)">\(ku_1\)</span> is invariant. Every vector-space complement is generated by <span class="math" data-tex="\(u_2+au_1\)">\(u_2+au_1\)</span>; <span class="math" data-tex="\(y\)">\(y\)</span> sends this generator to <span class="math" data-tex="\(u_1\)">\(u_1\)</span>, which is nonzero and not in that complement. Hence none is a submodule. Lemma 1.1 makes the module non-completely-reducible.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Prove Weyl's theorem over every characteristic-zero field, including the codimension-one step, the reduction to that step and descent.</p>
+<p><strong>Solution.</strong> First extend attention to an algebraically closed characteristic-zero field. If an irreducible submodule <span class="math" data-tex="\(W\subseteq V\)">\(W\subseteq V\)</span> has codimension one, perfectness makes its quotient trivial. For a nonzero represented image <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>, use the Casimir for its faithful action on <span class="math" data-tex="\(V\)">\(V\)</span>. It maps <span class="math" data-tex="\(V\)">\(V\)</span> into <span class="math" data-tex="\(W\)">\(W\)</span>, commutes with the action and is scalar <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>. Its trace is <span class="math" data-tex="\(\dim\mathfrak l\)">\(\dim\mathfrak l\)</span>, whereas its quotient action is zero. Thus <span class="math" data-tex="\(a\dim W=\dim\mathfrak l\ne0\)">\(a\dim W=\dim\mathfrak l\ne0\)</span>. Its kernel is an invariant complementary line. If the entire action is zero, every complement is invariant.</p>
+<p>For arbitrary codimension-one <span class="math" data-tex="\(W\)">\(W\)</span>, induct on <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>. A proper nonzero submodule <span class="math" data-tex="\(U\subset W\)">\(U\subset W\)</span> gives, by induction, a complementary line to <span class="math" data-tex="\(W/U\)">\(W/U\)</span> in <span class="math" data-tex="\(V/U\)">\(V/U\)</span>. Its inverse image <span class="math" data-tex="\(T\)">\(T\)</span> satisfies <span class="math" data-tex="\(T\cap W=U\)">\(T\cap W=U\)</span> and has smaller dimension than <span class="math" data-tex="\(V\)">\(V\)</span>. A complement to <span class="math" data-tex="\(U\)">\(U\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span>, again by induction, is then a complement to <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>For general <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span>, give <span class="math" data-tex="\(\operatorname{Hom}(V,W)\)">\(\operatorname{Hom}(V,W)\)</span> its commutator action, and form
+<span class="math math-display" data-tex="\[
+A=\{P:P|_W=a1_W\},\qquad B=\{P:P|_W=0\}.
+\]">\[
+A=\{P:P|_W=a1_W\},\qquad B=\{P:P|_W=0\}.
+\]</span>
+Restriction is a surjective scalar-coefficient map <span class="math" data-tex="\(A\to k\)">\(A\to k\)</span>, since a linear extension of <span class="math" data-tex="\(1_W\)">\(1_W\)</span> exists. Its kernel is <span class="math" data-tex="\(B\)">\(B\)</span>, and <span class="math" data-tex="\(\mathfrak gA\subseteq B\)">\(\mathfrak gA\subseteq B\)</span>. The codimension-one assertion splits <span class="math" data-tex="\(A=B\oplus L\)">\(A=B\oplus L\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> an invariant line. The action on <span class="math" data-tex="\(L\)">\(L\)</span> is trivial by perfectness. Normalize a nonzero <span class="math" data-tex="\(P\in L\)">\(P\in L\)</span> to have restriction <span class="math" data-tex="\(1_W\)">\(1_W\)</span>. It commutes with the action, so <span class="math" data-tex="\(\ker P\)">\(\ker P\)</span> is the required complement. Lemma 1.1 converts these complements into a sum of irreducibles.</p>
+<p>Finally let the original field <span class="math" data-tex="\(k\)">\(k\)</span> be arbitrary of characteristic zero. Nondegeneracy of the Killing form shows that scalar extension to an algebraic closure is semisimple. The projection equations <span class="math" data-tex="\(P|_W=1\)">\(P|_W=1\)</span> and <span class="math" data-tex="\(P\rho_V(x)=\rho_W(x)P\)">\(P\rho_V(x)=\rho_W(x)P\)</span> have coefficients in <span class="math" data-tex="\(k\)">\(k\)</span> and a solution over that closure. Row reduction over <span class="math" data-tex="\(k\)">\(k\)</span> shows that they have a solution over <span class="math" data-tex="\(k\)">\(k\)</span>: an inconsistent row would stay inconsistent after extension. Its invariant kernel gives the complement over <span class="math" data-tex="\(k\)">\(k\)</span>. This proves the theorem with its full field scope.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The preceding lessons supply the enveloping algebra and extension of representations to it; trace cyclicity; Cartan's criteria; ideal and quotient semisimplicity; perfectness; inner derivations; and the algebraically closed operator and abstract Jordan decompositions. They are used at their proved characteristic and dimension hypotheses.</p>
+<p>All new Lie-algebra assertions here have proofs. Schur's scalar lemma and the finite module-complement criterion are proved explicitly. Field descent is a finite linear-system argument. Lemma 4.2 constructs Jordan parts over the ground field by finite polynomial operations, so representation compatibility holds over every characteristic-zero field. The future identification of (7.3) with an induced Verma module is not needed for its bracket identities or its nonsplitting proof. No unitary trick, compact group, Whitehead lemma or root classification is imported into Weyl's proof.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne, Lie algebras]</strong> J. S. Milne, <em>Lie Algebras, Algebraic Groups, and Lie Groups</em>, version 2.00, 2013, Chapter I §5, especially the Casimir construction, Weyl's theorem and Jordan decomposition. <a href="https://www.jmilne.org/math/CourseNotes/LAG.pdf">Author's notes</a>.</li>
+<li><strong>[Milne, Algebraic groups]</strong> J. S. Milne, <em>Algebraic Groups: The Theory of Group Schemes of Finite Type over a Field</em>, corrected 2021 text, published 2022, §22c, Casimir operators and Lemma 22.40. The group argument is a comparison; the Lie-algebra proof is supplied here. <a href="https://www.jmilne.org/math/Books/AG.pdf">Author's corrected 2021 edition</a>.</li>
+<li><strong>[Deligne]</strong> P. Deligne, “La série exceptionnelle de groupes de Lie,” <em>C. R. Acad. Sci. Paris</em>, Série I <strong>322</strong> (1996), 321–326, p. 321. The Killing-form normalization there gives adjoint Casimir <span class="math" data-tex="\(1\)">\(1\)</span>. <a href="https://publications.ias.edu/sites/default/files/75_LaSerie.pdf">Freely accessible IAS PDF</a>.</li>
+<li><strong>[Premet–Strade]</strong> A. Premet and H. Strade, <em>Classification of finite dimensional simple Lie algebras in prime characteristics</em>, survey, 2006, introduction and §1. <a href="https://arxiv.org/abs/math/0601380">arXiv preprint</a>.</li>
+</ul>
+</article><nav class="lesson-nav"><a href="index.html">Course contents</a><a href="src/RT-LIE-04.md" download>Editable source</a><a href="RT-LIE-03.html">← Previous lesson</a><a href="RT-LIE-05.html">Next lesson →</a></nav></main></body></html>

@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mean values of Dirichlet polynomials and of zeta on the critical line · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-16.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 16 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="mean-values-of-dirichlet-polynomials-and-zeta">Mean values of Dirichlet polynomials and zeta</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculation scripts are public domain (CC0).</em></p>
+<p>The functions <span class="math" data-tex="$n^{-it}$">$n^{-it}$</span> have different frequencies. Integrating a squared Dirichlet polynomial leaves a diagonal term and oscillating off-diagonal terms. Closely spaced frequencies make a termwise absolute-value estimate wasteful; Hilbert's inequality controls all of them together. This gives the second moment of zeta and a first zero-density theorem. A second contour decomposition, now for <span class="math" data-tex="$\zeta^2$">$\zeta^2$</span>, also gives Ingham's fourth moment with its leading constant.</p>
+<p>We use measure and integration, the functional equation and growth estimates from the earlier lessons, and the first derivative test from <a href="NT-ZETA-07.html">Exponential sums and subconvexity</a>, Lemma 1.1. The Fourier norm identity needed below was proved in <a href="NT-ZETA-14.html">Equivalent formulations of the Riemann hypothesis</a>, Lemma 7.2. No hypothesis about the locations of zeta zeros is used. Write <span class="math" data-tex="$\chi(s)$">$\chi(s)$</span> for the factor in <span class="math" data-tex="$\zeta(s)=\chi(s)\zeta(1-s)$">$\zeta(s)=\chi(s)\zeta(1-s)$</span> and
+<span class="math math-display" data-tex="$$
+N(\sigma,T)=\#\{\rho=\beta+i\gamma:\ \beta\ge\sigma,\ 0&lt;\gamma\le T\},
+$$">$$
+N(\sigma,T)=\#\{\rho=\beta+i\gamma:\ \beta\ge\sigma,\ 0&lt;\gamma\le T\},
+$$</span>
+with multiplicities. Constants are absolute unless a parameter is displayed.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-frequency-spacing-and-hilbert-s-inequality">1. Frequency spacing and Hilbert's inequality</h2>
+<p><strong>Theorem 1.1 (Montgomery--Vaughan).</strong> For distinct real numbers <span class="math" data-tex="$\lambda_1,\ldots,\lambda_N$">$\lambda_1,\ldots,\lambda_N$</span>, let <span class="math" data-tex="$\delta_n=\min_{m\ne n}|\lambda_m-\lambda_n|$">$\delta_n=\min_{m\ne n}|\lambda_m-\lambda_n|$</span>. If <span class="math" data-tex="$N\ge2$">$N\ge2$</span>, then
+<span class="math math-display" data-tex="$$
+\left|\sum_{m\ne n}\frac{a_m\overline{b_n}}{\lambda_m-\lambda_n}\right|
+\le\frac{3\pi}{2}
+\left(\sum_n\frac{|a_n|^2}{\delta_n}\right)^{1/2}
+\left(\sum_n\frac{|b_n|^2}{\delta_n}\right)^{1/2}.
+\tag{1.1}
+$$">$$
+\left|\sum_{m\ne n}\frac{a_m\overline{b_n}}{\lambda_m-\lambda_n}\right|
+\le\frac{3\pi}{2}
+\left(\sum_n\frac{|a_n|^2}{\delta_n}\right)^{1/2}
+\left(\sum_n\frac{|b_n|^2}{\delta_n}\right)^{1/2}.
+\tag{1.1}
+$$</span>
+In particular the quadratic form is at most <span class="math" data-tex="$(3\pi/2)\sum |a_n|^2/\delta_n$">$(3\pi/2)\sum |a_n|^2/\delta_n$</span>. The one-term case has zero off-diagonal form.</p>
+<p>Here is a proof with the stated constant. Relabel the frequencies increasingly and set <span class="math" data-tex="$I_n=[\lambda_n-\delta_n/2,\lambda_n+\delta_n/2]$">$I_n=[\lambda_n-\delta_n/2,\lambda_n+\delta_n/2]$</span>. These intervals have disjoint interiors: the gap between adjacent centers is at least each adjacent <span class="math" data-tex="$\delta$">$\delta$</span>.</p>
+<p>We first establish the three estimates used in the matrix argument:
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\sum_{n\ne r}\frac{\delta_n}{(\lambda_n-\lambda_r)^2}&amp;\le\frac4{\delta_r},\\
+\sum_{n\ne r}\frac{\delta_n}{(\lambda_n-\lambda_r)^4}&amp;\le\frac8{3\delta_r^3},\\
+\sum_{n\ne r,s}\frac{\delta_n}{(\lambda_n-\lambda_r)^2(\lambda_n-\lambda_s)^2}
+&amp;\le\frac4{(\lambda_r-\lambda_s)^2}
+\left(\frac1{\delta_r}+\frac1{\delta_s}\right)\quad(r\ne s).
+\end{aligned}
+\tag{1.2}
+$$">$$
+\begin{aligned}
+\sum_{n\ne r}\frac{\delta_n}{(\lambda_n-\lambda_r)^2}&amp;\le\frac4{\delta_r},\\
+\sum_{n\ne r}\frac{\delta_n}{(\lambda_n-\lambda_r)^4}&amp;\le\frac8{3\delta_r^3},\\
+\sum_{n\ne r,s}\frac{\delta_n}{(\lambda_n-\lambda_r)^2(\lambda_n-\lambda_s)^2}
+&amp;\le\frac4{(\lambda_r-\lambda_s)^2}
+\left(\frac1{\delta_r}+\frac1{\delta_s}\right)\quad(r\ne s).
+\end{aligned}
+\tag{1.2}
+$$</span>
+For a positive decreasing convex function <span class="math" data-tex="$F$">$F$</span> on <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span>, convexity gives
+<span class="math" data-tex="$\delta_n F(\lambda_n-\lambda_r)\le\int_{I_n}F(u-\lambda_r)du$">$\delta_n F(\lambda_n-\lambda_r)\le\int_{I_n}F(u-\lambda_r)du$</span> for <span class="math" data-tex="$n&gt;r$">$n&gt;r$</span>. Separate the nearest right neighbor, whose gap is <span class="math" data-tex="$h$">$h$</span>. All remaining intervals lie to the right of <span class="math" data-tex="$\lambda_r+h$">$\lambda_r+h$</span>, so
+<span class="math math-display" data-tex="$$
+\sum_{n&gt;r}\delta_n F(\lambda_n-\lambda_r)
+\le hF(h)+\int_h^\infty F(u)du.
+$$">$$
+\sum_{n&gt;r}\delta_n F(\lambda_n-\lambda_r)
+\le hF(h)+\int_h^\infty F(u)du.
+$$</span>
+Take <span class="math" data-tex="$F(u)=u^{-2}$">$F(u)=u^{-2}$</span> and <span class="math" data-tex="$u^{-4}$">$u^{-4}$</span> and use <span class="math" data-tex="$h\ge\delta_r$">$h\ge\delta_r$</span>; repeat on the left. This proves the first two estimates.</p>
+<p>For the third, put <span class="math" data-tex="$d=\lambda_r-\lambda_s$">$d=\lambda_r-\lambda_s$</span> and <span class="math" data-tex="$F(u)=[(u-\lambda_r)(u-\lambda_s)]^{-2}$">$F(u)=[(u-\lambda_r)(u-\lambda_s)]^{-2}$</span>. It is convex on each interval avoiding its poles, since
+<span class="math math-display" data-tex="$$
+(\log F)&#x27;&#x27;=2(u-\lambda_r)^{-2}+2(u-\lambda_s)^{-2}&gt;0,
+\qquad F&#x27;&#x27;=F\big((\log F)&#x27;&#x27;+((\log F)&#x27;)^2\big)&gt;0.
+$$">$$
+(\log F)&#x27;&#x27;=2(u-\lambda_r)^{-2}+2(u-\lambda_s)^{-2}&gt;0,
+\qquad F&#x27;&#x27;=F\big((\log F)&#x27;&#x27;+((\log F)&#x27;)^2\big)&gt;0.
+$$</span>
+Thus the left side is at most <span class="math" data-tex="$\int_{\mathbb R\setminus(I_r\cup I_s)}F(u)du$">$\int_{\mathbb R\setminus(I_r\cup I_s)}F(u)du$</span>. Expand
+<span class="math math-display" data-tex="$$
+F(u)=\frac1{d^2}\left\{
+\frac1{(u-\lambda_r)^2}+\frac1{(u-\lambda_s)^2}
+-\frac2{(u-\lambda_r)(u-\lambda_s)}\right\}.
+$$">$$
+F(u)=\frac1{d^2}\left\{
+\frac1{(u-\lambda_r)^2}+\frac1{(u-\lambda_s)^2}
+-\frac2{(u-\lambda_r)(u-\lambda_s)}\right\}.
+$$</span>
+The first two integrals are bounded by <span class="math" data-tex="$4/(d^2\delta_r)$">$4/(d^2\delta_r)$</span> and <span class="math" data-tex="$4/(d^2\delta_s)$">$4/(d^2\delta_s)$</span>. The last integral is nonpositive. Indeed split it as
+<span class="math" data-tex="$-2d^{-3}(u-\lambda_r)^{-1}+2d^{-3}(u-\lambda_s)^{-1}$">$-2d^{-3}(u-\lambda_r)^{-1}+2d^{-3}(u-\lambda_s)^{-1}$</span>. Each term has principal-value integral zero outside its own symmetric interval. Removing the other interval removes a positive function: on <span class="math" data-tex="$I_s$">$I_s$</span> the first term is positive, and on <span class="math" data-tex="$I_r$">$I_r$</span> the second is positive. Taking symmetric limits at infinity proves the assertion and completes (1.2).</p>
+<p>Now let <span class="math" data-tex="$A$">$A$</span> be the matrix with <span class="math" data-tex="$A_{rn}=\sqrt{\delta_r\delta_n}/(\lambda_r-\lambda_n)$">$A_{rn}=\sqrt{\delta_r\delta_n}/(\lambda_r-\lambda_n)$</span> off the diagonal and zero on it. Since <span class="math" data-tex="$A^*=-A$">$A^*=-A$</span>, the finite-dimensional spectral theorem reduces its norm to a unit eigenvector <span class="math" data-tex="$u$">$u$</span> with <span class="math" data-tex="$Au=i\kappa u$">$Au=i\kappa u$</span>, <span class="math" data-tex="$\kappa\in\mathbb R$">$\kappa\in\mathbb R$</span>. Expand <span class="math" data-tex="$\|Au\|^2$">$\|Au\|^2$</span>. The diagonal contribution is at most four by (1.2). In the off-diagonal contribution use
+<span class="math math-display" data-tex="$$
+\frac{\delta_m}{(\lambda_m-\lambda_r)(\lambda_m-\lambda_s)}
+=\frac1{\lambda_r-\lambda_s}
+\left(\frac{\delta_m}{\lambda_m-\lambda_r}
+-\frac{\delta_m}{\lambda_m-\lambda_s}\right).
+$$">$$
+\frac{\delta_m}{(\lambda_m-\lambda_r)(\lambda_m-\lambda_s)}
+=\frac1{\lambda_r-\lambda_s}
+\left(\frac{\delta_m}{\lambda_m-\lambda_r}
+-\frac{\delta_m}{\lambda_m-\lambda_s}\right).
+$$</span>
+Adding back respectively <span class="math" data-tex="$m=s$">$m=s$</span> and <span class="math" data-tex="$m=r$">$m=r$</span> separates that contribution into
+<span class="math math-display" data-tex="$$
+\sum_{r\ne s}\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}{(\lambda_r-\lambda_s)^2}u_r\overline{u_s}
+$$">$$
+\sum_{r\ne s}\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}{(\lambda_r-\lambda_s)^2}u_r\overline{u_s}
+$$</span>
+and two terms that cancel. To check the cancellation, write <span class="math" data-tex="$B_r=\sum_{m\ne r}\delta_m/(\lambda_m-\lambda_r)$">$B_r=\sum_{m\ne r}\delta_m/(\lambda_m-\lambda_r)$</span>. The two terms are both <span class="math" data-tex="$-i\kappa\sum_r|u_r|^2 B_r$">$-i\kappa\sum_r|u_r|^2 B_r$</span>, using the eigenvector equation once and its conjugate once.</p>
+<p>Let
+<span class="math math-display" data-tex="$$
+U=\sum_{r\ne s}\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}{(\lambda_r-\lambda_s)^2}|u_ru_s|.
+$$">$$
+U=\sum_{r\ne s}\frac{\sqrt{\delta_r\delta_s}(\delta_r+\delta_s)}{(\lambda_r-\lambda_s)^2}|u_ru_s|.
+$$</span>
+By symmetry, <span class="math" data-tex="$U/2=\sum_r |u_r|\sqrt{\delta_r}\sum_{s\ne r}\delta_s^{3/2}|u_s|/(\lambda_r-\lambda_s)^2$">$U/2=\sum_r |u_r|\sqrt{\delta_r}\sum_{s\ne r}\delta_s^{3/2}|u_s|/(\lambda_r-\lambda_s)^2$</span>. Cauchy--Schwarz, followed by expansion of the second squared sum, gives
+<span class="math math-display" data-tex="$$
+(U/2)^2\le
+\sum_{s,t}\delta_s^{3/2}\delta_t^{3/2}|u_su_t|
+\sum_{r\ne s,t}\frac{\delta_r}{(\lambda_r-\lambda_s)^2(\lambda_r-\lambda_t)^2}
+\le\frac83+4U.
+$$">$$
+(U/2)^2\le
+\sum_{s,t}\delta_s^{3/2}\delta_t^{3/2}|u_su_t|
+\sum_{r\ne s,t}\frac{\delta_r}{(\lambda_r-\lambda_s)^2(\lambda_r-\lambda_t)^2}
+\le\frac83+4U.
+$$</span>
+For <span class="math" data-tex="$s=t$">$s=t$</span> use the second estimate in (1.2); for <span class="math" data-tex="$s\ne t$">$s\ne t$</span> use the third. Therefore <span class="math" data-tex="$U\le8+4\sqrt{14/3}$">$U\le8+4\sqrt{14/3}$</span> and
+<span class="math math-display" data-tex="$$
+\|Au\|^2\le12+4\sqrt{14/3}&lt;\frac{9\pi^2}{4}.
+$$">$$
+\|Au\|^2\le12+4\sqrt{14/3}&lt;\frac{9\pi^2}{4}.
+$$</span>
+For example <span class="math" data-tex="$\sqrt{14/3}&lt;13/6$">$\sqrt{14/3}&lt;13/6$</span> and <span class="math" data-tex="$\pi&gt;31/10$">$\pi&gt;31/10$</span> verify the last comparison. Apply this matrix bound to <span class="math" data-tex="$a_n/\sqrt{\delta_n}$">$a_n/\sqrt{\delta_n}$</span> and <span class="math" data-tex="$b_n/\sqrt{\delta_n}$">$b_n/\sqrt{\delta_n}$</span> to obtain (1.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For integer frequencies the smaller constant <span class="math" data-tex="$\pi$">$\pi$</span> has an elementary Fourier proof. With <span class="math" data-tex="$A(x)=\sum a_m e^{imx}$">$A(x)=\sum a_m e^{imx}$</span> and <span class="math" data-tex="$B(x)=\sum b_n e^{inx}$">$B(x)=\sum b_n e^{inx}$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{m\ne n}\frac{a_m\overline{b_n}}{m-n}
+=\frac1{2\pi}\int_0^{2\pi}i(x-\pi)A(x)\overline{B(x)}dx.
+\tag{1.3}
+$$">$$
+\sum_{m\ne n}\frac{a_m\overline{b_n}}{m-n}
+=\frac1{2\pi}\int_0^{2\pi}i(x-\pi)A(x)\overline{B(x)}dx.
+\tag{1.3}
+$$</span>
+Integration by parts computes the nonzero Fourier coefficients of the sawtooth; its constant coefficient is zero. Its absolute value is at most <span class="math" data-tex="$\pi$">$\pi$</span>, and orthogonality gives the bound <span class="math" data-tex="$\pi\|a\|_2\|b\|_2$">$\pi\|a\|_2\|b\|_2$</span>. This constant is sharp even for finite sequences. To see this, take
+<span class="math" data-tex="$A_M(x)=M^{-1/2}\sum_{n=0}^{M-1}e^{in(x-x_0)}$">$A_M(x)=M^{-1/2}\sum_{n=0}^{M-1}e^{in(x-x_0)}$</span> and <span class="math" data-tex="$B_M=A_M$">$B_M=A_M$</span>. The kernels <span class="math" data-tex="$|A_M|^2/(2\pi)$">$|A_M|^2/(2\pi)$</span> have integral one and concentrate at <span class="math" data-tex="$x_0$">$x_0$</span>: outside any fixed neighborhood their mass is <span class="math" data-tex="$O(1/M)$">$O(1/M)$</span> by the geometric-sum formula. Thus the form tends to <span class="math" data-tex="$i(x_0-\pi)$">$i(x_0-\pi)$</span>; let <span class="math" data-tex="$x_0\downarrow0$">$x_0\downarrow0$</span>. Shifting all indices by one gives positive integer sequences with the same form.</p>
+<h2 id="2-the-mean-value-theorem">2. The mean value theorem</h2>
+<p><strong>Theorem 2.1.</strong> For any complex coefficients <span class="math" data-tex="$a_1,\ldots,a_N$">$a_1,\ldots,a_N$</span>, any real <span class="math" data-tex="$T_0$">$T_0$</span> and <span class="math" data-tex="$T\ge0$">$T\ge0$</span>,
+<span class="math math-display" data-tex="$$
+\int_{T_0}^{T_0+T}\left|\sum_{n\le N}a_n n^{-it}\right|^2dt
+=T\sum_{n\le N}|a_n|^2+O\left(\sum_{n\le N}n|a_n|^2\right).
+\tag{2.1}
+$$">$$
+\int_{T_0}^{T_0+T}\left|\sum_{n\le N}a_n n^{-it}\right|^2dt
+=T\sum_{n\le N}|a_n|^2+O\left(\sum_{n\le N}n|a_n|^2\right).
+\tag{2.1}
+$$</span>
+The error has absolute value at most <span class="math" data-tex="$6\pi\sum n|a_n|^2$">$6\pi\sum n|a_n|^2$</span>. Equivalently it can be written <span class="math" data-tex="$\sum |a_n|^2(T+O(n))$">$\sum |a_n|^2(T+O(n))$</span>.</p>
+<p><strong>Proof.</strong> Absorb <span class="math" data-tex="$n^{-iT_0}$">$n^{-iT_0}$</span> into the coefficients. Expanding the square gives the diagonal and
+<span class="math math-display" data-tex="$$
+\sum_{m\ne n}a_m\overline{a_n}
+\frac{e^{-iT(\log m-\log n)}-1}{-i(\log m-\log n)}.
+$$">$$
+\sum_{m\ne n}a_m\overline{a_n}
+\frac{e^{-iT(\log m-\log n)}-1}{-i(\log m-\log n)}.
+$$</span>
+Apply (1.1) separately to its two endpoint forms with <span class="math" data-tex="$\lambda_n=\log n$">$\lambda_n=\log n$</span>. Each nearest-neighbor gap is at least <span class="math" data-tex="$1/(n+1)$">$1/(n+1)$</span>, because <span class="math" data-tex="$\log(n+1)-\log n=\int_n^{n+1}du/u\ge1/(n+1)$">$\log(n+1)-\log n=\int_n^{n+1}du/u\ge1/(n+1)$</span>; the left gap is larger. Thus the error is at most <span class="math" data-tex="$3\pi\sum(n+1)|a_n|^2\le6\pi\sum n|a_n|^2$">$3\pi\sum(n+1)|a_n|^2\le6\pi\sum n|a_n|^2$</span>. The one-term case is exact. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Consequently
+<span class="math math-display" data-tex="$$
+\int_{T_0}^{T_0+T}\left|\sum_{n\le N}a_n n^{-it}\right|^2dt
+\ll(T+N)\sum_{n\le N}|a_n|^2.
+\tag{2.2}
+$$">$$
+\int_{T_0}^{T_0+T}\left|\sum_{n\le N}a_n n^{-it}\right|^2dt
+\ll(T+N)\sum_{n\le N}|a_n|^2.
+\tag{2.2}
+$$</span>
+If <span class="math" data-tex="$\sum |a_n|&lt;\infty$">$\sum |a_n|&lt;\infty$</span> and <span class="math" data-tex="$\sum n|a_n|^2&lt;\infty$">$\sum n|a_n|^2&lt;\infty$</span>, uniform convergence on the real axis and passage to the limit extend (2.1) to the infinite series.</p>
+<p>For <span class="math" data-tex="$a_n=n^{-1/2}$">$a_n=n^{-1/2}$</span> the diagonal is <span class="math" data-tex="$TH_N=T\log N+\gamma T+O(T/N)$">$TH_N=T\log N+\gamma T+O(T/N)$</span>, whereas the error is <span class="math" data-tex="$O(N)$">$O(N)$</span>. Thus a polynomial of length comparable to <span class="math" data-tex="$T$">$T$</span> still has a main term of order <span class="math" data-tex="$T\log T$">$T\log T$</span>. The error <span class="math" data-tex="$O(N)\sum |a_n|^2$">$O(N)\sum |a_n|^2$</span> in (2.2) cannot generally be replaced by <span class="math" data-tex="$o(N)\sum |a_n|^2$">$o(N)\sum |a_n|^2$</span>. For <span class="math" data-tex="$a_n=1$">$a_n=1$</span>, Euler summation gives <span class="math" data-tex="$\sum_{n\le N}n^{-it}=N^{1-it}/(1-it)+O(1+|t|\log N)$">$\sum_{n\le N}n^{-it}=N^{1-it}/(1-it)+O(1+|t|\log N)$</span> on <span class="math" data-tex="$0\le t\le1$">$0\le t\le1$</span>. The integral of its squared modulus there is <span class="math" data-tex="$\gg N^2$">$\gg N^2$</span>, whereas its diagonal is only <span class="math" data-tex="$N$">$N$</span>.</p>
+<p><strong>Lemma 2.2 (Gallagher's window inequality).</strong> Let <span class="math" data-tex="$S(t)=\sum a_n e^{2\pi i\lambda_n t}$">$S(t)=\sum a_n e^{2\pi i\lambda_n t}$</span> be a finite sum, <span class="math" data-tex="$T&gt;0$">$T&gt;0$</span>, and <span class="math" data-tex="$h=1/(2T)$">$h=1/(2T)$</span>. Then
+<span class="math math-display" data-tex="$$
+\int_{-T}^{T}|S(t)|^2dt
+\le\pi^2T^2\int_{\mathbb R}
+\left|\sum_{x-h\le\lambda_n\le x}a_n\right|^2dx.
+\tag{2.3}
+$$">$$
+\int_{-T}^{T}|S(t)|^2dt
+\le\pi^2T^2\int_{\mathbb R}
+\left|\sum_{x-h\le\lambda_n\le x}a_n\right|^2dx.
+\tag{2.3}
+$$</span>
+Endpoint choices in the window affect only a null set.</p>
+<p><strong>Proof.</strong> The function on the right is <span class="math" data-tex="$D(x)=\sum a_n\mathbf1_{[\lambda_n,\lambda_n+h]}(x)$">$D(x)=\sum a_n\mathbf1_{[\lambda_n,\lambda_n+h]}(x)$</span>. Its Fourier transform is
+<span class="math" data-tex="$\widehat D(t)=S(-t)e^{-\pi iht}\sin(\pi ht)/(\pi t)$">$\widehat D(t)=S(-t)e^{-\pi iht}\sin(\pi ht)/(\pi t)$</span> under the <span class="math" data-tex="$e^{-2\pi itx}$">$e^{-2\pi itx}$</span> convention. The Fourier norm identity from lesson fourteen, with <span class="math" data-tex="$t$">$t$</span> rescaled by <span class="math" data-tex="$2\pi$">$2\pi$</span>, gives
+<span class="math math-display" data-tex="$$
+\int|D|^2=\int|S(-t)|^2\left(\frac{\sin\pi ht}{\pi t}\right)^2dt.
+$$">$$
+\int|D|^2=\int|S(-t)|^2\left(\frac{\sin\pi ht}{\pi t}\right)^2dt.
+$$</span>
+For <span class="math" data-tex="$|t|\le T$">$|t|\le T$</span>, concavity of sine on <span class="math" data-tex="$[0,\pi/2]$">$[0,\pi/2]$</span> makes the factor at least <span class="math" data-tex="$2h/\pi$">$2h/\pi$</span>. Restrict the integral to that interval and rearrange. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-long-dirichlet-sums-and-the-second-moment">3. Long Dirichlet sums and the second moment</h2>
+<p>The following truncation is long enough that its remainder is small without a second sum from the functional equation.</p>
+<p><strong>Lemma 3.1.</strong> Uniformly for <span class="math" data-tex="$T\le t\le2T$">$T\le t\le2T$</span>, <span class="math" data-tex="$T\ge2$">$T\ge2$</span>, and <span class="math" data-tex="$1/2\le\sigma\le2$">$1/2\le\sigma\le2$</span>, with the integer <span class="math" data-tex="$X=\lceil4T\rceil$">$X=\lceil4T\rceil$</span>,
+<span class="math math-display" data-tex="$$
+\zeta(\sigma+it)=\sum_{n\le X}n^{-\sigma-it}+O(T^{-\sigma}).
+\tag{3.1}
+$$">$$
+\zeta(\sigma+it)=\sum_{n\le X}n^{-\sigma-it}+O(T^{-\sigma}).
+\tag{3.1}
+$$</span></p>
+<p><strong>Proof.</strong> The height-truncation theorem in <a href="NT-ZETA-06.html">Growth in the critical strip</a>, Theorem 1.1, proved uniformly for <span class="math" data-tex="$\sigma&gt;0$">$\sigma&gt;0$</span>, <span class="math" data-tex="$s\ne1$">$s\ne1$</span> and real <span class="math" data-tex="$X\ge|t|+4$">$X\ge|t|+4$</span>, gives
+<span class="math math-display" data-tex="$$
+\zeta(s)=\sum_{n\le X}n^{-s}
++\frac{X^{1-s}}{s-1}+O(X^{-\sigma}).
+\tag{3.2}
+$$">$$
+\zeta(s)=\sum_{n\le X}n^{-s}
++\frac{X^{1-s}}{s-1}+O(X^{-\sigma}).
+\tag{3.2}
+$$</span>
+Its proof includes Euler summation, the Abel-damped sawtooth series and the nonstationary tail integrals; we use that already proved estimate. Here <span class="math" data-tex="$X=\lceil4T\rceil\ge2T+4\ge|t|+4$">$X=\lceil4T\rceil\ge2T+4\ge|t|+4$</span>, and <span class="math" data-tex="$|s-1|\ge T$">$|s-1|\ge T$</span>. Therefore <span class="math" data-tex="$X^{1-\sigma}/|s-1|\ll T^{-\sigma}$">$X^{1-\sigma}/|s-1|\ll T^{-\sigma}$</span> uniformly on the stated range. This proves (3.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2.</strong> For <span class="math" data-tex="$T\ge2$">$T\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\int_0^T|\zeta(1/2+it)|^2dt=T\log T+O(T).
+\tag{3.3}
+$$">$$
+\int_0^T|\zeta(1/2+it)|^2dt=T\log T+O(T).
+\tag{3.3}
+$$</span>
+For every fixed <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>,
+<span class="math math-display" data-tex="$$
+\int_1^T|\zeta(\sigma+it)|^2dt\sim\zeta(2\sigma)T.
+\tag{3.4}
+$$">$$
+\int_1^T|\zeta(\sigma+it)|^2dt\sim\zeta(2\sigma)T.
+\tag{3.4}
+$$</span>
+For <span class="math" data-tex="$\sigma\ne1$">$\sigma\ne1$</span> the lower endpoint in (3.4) can be zero. At <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>, the integral from zero diverges because <span class="math" data-tex="$\zeta(1+it)\sim1/(it)$">$\zeta(1+it)\sim1/(it)$</span>; excluding that pole is essential.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="$[T,2T]$">$[T,2T]$</span>, (2.1) and (3.1) at <span class="math" data-tex="$\sigma=1/2$">$\sigma=1/2$</span> give the polynomial norm squared
+<span class="math" data-tex="$T H_X+O(X)=T\log T+O(T)$">$T H_X+O(X)=T\log T+O(T)$</span> and remainder norm <span class="math" data-tex="$O(1)$">$O(1)$</span>. The difference of the squared norms is at most <span class="math" data-tex="$2\|P\|_2\|R\|_2+\|R\|_2^2=O(\sqrt{T\log T})$">$2\|P\|_2\|R\|_2+\|R\|_2^2=O(\sqrt{T\log T})$</span>, which is <span class="math" data-tex="$O(T)$">$O(T)$</span>. Sum over dyadic intervals. In fact
+<span class="math" data-tex="$\sum_{j\ge1}(T/2^j)\log(T/2^j)=T\log T-2T\log2$">$\sum_{j\ge1}(T/2^j)\log(T/2^j)=T\log T-2T\log2$</span>; truncating when the endpoint is bounded changes this by <span class="math" data-tex="$O(T)$">$O(T)$</span>. The initial compact interval contributes a constant.</p>
+<p>For fixed <span class="math" data-tex="$1/2&lt;\sigma\le2$">$1/2&lt;\sigma\le2$</span> the same calculation gives
+<span class="math math-display" data-tex="$$
+\int_T^{2T}|P(t)|^2dt
+=T\sum_{n\le X}n^{-2\sigma}+O\left(\sum_{n\le X}n^{1-2\sigma}\right)
+=\zeta(2\sigma)T+o_\sigma(T).
+$$">$$
+\int_T^{2T}|P(t)|^2dt
+=T\sum_{n\le X}n^{-2\sigma}+O\left(\sum_{n\le X}n^{1-2\sigma}\right)
+=\zeta(2\sigma)T+o_\sigma(T).
+$$</span>
+The omitted diagonal tail is <span class="math" data-tex="$O_\sigma(TX^{1-2\sigma})=o(T)$">$O_\sigma(TX^{1-2\sigma})=o(T)$</span>, and the error sum is <span class="math" data-tex="$o(T)$">$o(T)$</span>, including its logarithmic case <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>. The remainder has squared norm <span class="math" data-tex="$O(T^{1-2\sigma})=o(T)$">$O(T^{1-2\sigma})=o(T)$</span>, so the norm inequality gives the same asymptotic for zeta. Dyadic summation proves (3.4): given an error tolerance, all sufficiently high blocks meet it and the finitely many low blocks contribute <span class="math" data-tex="$o(T)$">$o(T)$</span>. For <span class="math" data-tex="$\sigma&gt;2$">$\sigma&gt;2$</span>, use absolute convergence and termwise integration, or the same argument with constants depending on <span class="math" data-tex="$\sigma$">$\sigma$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We will also need a bound uniform as the line approaches <span class="math" data-tex="$1/2$">$1/2$</span>. For <span class="math" data-tex="$T\ge3$">$T\ge3$</span> and <span class="math" data-tex="$0&lt;\delta\le1/2$">$0&lt;\delta\le1/2$</span>, (3.1), (2.1), and <span class="math" data-tex="$\sum n^{-1-2\delta}\le1+(2\delta)^{-1}$">$\sum n^{-1-2\delta}\le1+(2\delta)^{-1}$</span> give
+<span class="math math-display" data-tex="$$
+\int_T^{2T}|\zeta(1/2+\delta+it)|^2dt\ll\frac T\delta.
+\tag{3.5}
+$$">$$
+\int_T^{2T}|\zeta(1/2+\delta+it)|^2dt\ll\frac T\delta.
+\tag{3.5}
+$$</span>
+Indeed the weighted error is at most <span class="math" data-tex="$C\sum_{n\le X}n^{-2\delta}\le CX\ll T$">$C\sum_{n\le X}n^{-2\delta}\le CX\ll T$</span>, and the remainder norm squared is <span class="math" data-tex="$O(T^{-2\delta})$">$O(T^{-2\delta})$</span>. Summing above any fixed positive height gives the same bound up to <span class="math" data-tex="$T$">$T$</span>. On the initial compact height interval separated from zero, zeta is uniformly bounded for <span class="math" data-tex="$1/2\le\sigma\le1$">$1/2\le\sigma\le1$</span>. Separating that interval is necessary: at <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>, zeta has a pole at <span class="math" data-tex="$t=0$">$t=0$</span>.</p>
+<h2 id="4-littlewood-s-rectangle-identity-and-zero-density">4. Littlewood's rectangle identity and zero density</h2>
+<p><strong>Theorem 4.1 (Littlewood's lemma).</strong> Let <span class="math" data-tex="$f$">$f$</span> be holomorphic on a neighborhood of the closed rectangle <span class="math" data-tex="$a\le\Re s\le b$">$a\le\Re s\le b$</span>, <span class="math" data-tex="$c\le\Im s\le d$">$c\le\Im s\le d$</span>, and nonzero on its boundary. Choose a continuous logarithm along the right edge. On each horizontal segment continue its argument from that edge. Then
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+2\pi\sum_{\substack{a&lt;\beta&lt;b\\ c&lt;\gamma&lt;d}}(\beta-a)
+={}&amp;\int_c^d\log|f(a+it)|dt-\int_c^d\log|f(b+it)|dt\\
+&amp;+\int_a^b\arg f(u+id)du-\int_a^b\arg f(u+ic)du.
+\end{aligned}
+\tag{4.1}
+$$">$$
+\begin{aligned}
+2\pi\sum_{\substack{a&lt;\beta&lt;b\\ c&lt;\gamma&lt;d}}(\beta-a)
+={}&amp;\int_c^d\log|f(a+it)|dt-\int_c^d\log|f(b+it)|dt\\
+&amp;+\int_a^b\arg f(u+id)du-\int_a^b\arg f(u+ic)du.
+\end{aligned}
+\tag{4.1}
+$$</span>
+The sum is over zeros with multiplicities. The essential right-edge condition is that it contain no zero. Zeros on the other edges are handled by limits: left-edge zeros have weight zero; to count <span class="math" data-tex="$c&lt;\gamma\le d$">$c&lt;\gamma\le d$</span>, take limits from heights just above both <span class="math" data-tex="$c$">$c$</span> and <span class="math" data-tex="$d$">$d$</span>. The horizontal arguments then mean those one-sided limits. Vertical logarithmic singularities are integrated improperly and are integrable.</p>
+<p><strong>Proof.</strong> There are only finitely many zeros in the rectangle. For a height not equal to an ordinate, continue <span class="math" data-tex="$\log f$">$\log f$</span> horizontally from the chosen right-edge logarithm and write it as <span class="math" data-tex="$u+iv$">$u+iv$</span>. Off the horizontal cuts from each zero to the left edge, the Cauchy--Riemann equations give <span class="math" data-tex="$u_\sigma=v_t$">$u_\sigma=v_t$</span>. If a zero <span class="math" data-tex="$\rho$">$\rho$</span> has multiplicity <span class="math" data-tex="$m$">$m$</span>, the local factor <span class="math" data-tex="$(s-\rho)^m$">$(s-\rho)^m$</span> shows that, as height increases through <span class="math" data-tex="$\gamma$">$\gamma$</span>, this horizontal argument jumps by <span class="math" data-tex="$2\pi m$">$2\pi m$</span> at every <span class="math" data-tex="$\sigma&lt;\beta$">$\sigma&lt;\beta$</span> and has no jump at <span class="math" data-tex="$\sigma&gt;\beta$">$\sigma&gt;\beta$</span>. For a single factor this is the change from the lower to the upper argument on the negative real axis; the nonzero holomorphic factor has no jump.</p>
+<p>Integrate <span class="math" data-tex="$u_\sigma=v_t$">$u_\sigma=v_t$</span> separately between the cut heights, first in height and then in <span class="math" data-tex="$\sigma$">$\sigma$</span>. Tiny neighborhoods of zeros contribute vanishing integrals of <span class="math" data-tex="$\log|s-\rho|$">$\log|s-\rho|$</span>. The result is
+<span class="math math-display" data-tex="$$
+\int_c^d\big(u(b,t)-u(a,t)\big)dt
+=\int_a^b\big(v(\sigma,d)-v(\sigma,c)\big)d\sigma
+-2\pi\sum_\rho m_\rho(\beta-a).
+$$">$$
+\int_c^d\big(u(b,t)-u(a,t)\big)dt
+=\int_a^b\big(v(\sigma,d)-v(\sigma,c)\big)d\sigma
+-2\pi\sum_\rho m_\rho(\beta-a).
+$$</span>
+This is (4.1). Adding <span class="math" data-tex="$2\pi k$">$2\pi k$</span> to the initial right-edge branch adds it to both horizontal arguments and cancels. For the boundary variants apply the proved identity to nearby rectangles with no boundary zeros. The local logarithmic form gives convergence of the improper vertical integrals and the specified horizontal limits; the zero weights and inclusion conventions converge as stated. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We need a quantitative bound on the horizontal terms for zeta. For <span class="math" data-tex="$T\ge4$">$T\ge4$</span> with no zero on <span class="math" data-tex="$[1/2,2]+iT$">$[1/2,2]+iT$</span>, the arguments continued from <span class="math" data-tex="$2+iT$">$2+iT$</span> obey
+<span class="math math-display" data-tex="$$
+\sup_{1/2\le u\le2}|\arg\zeta(u+iT)|\ll\log T.
+\tag{4.2}
+$$">$$
+\sup_{1/2\le u\le2}|\arg\zeta(u+iT)|\ll\log T.
+\tag{4.2}
+$$</span>
+To prove this, consider <span class="math" data-tex="$G_T(z)=(\zeta(z+iT)+\zeta(z-iT))/2$">$G_T(z)=(\zeta(z+iT)+\zeta(z-iT))/2$</span>. It is holomorphic on <span class="math" data-tex="$|z-2|\le7/4$">$|z-2|\le7/4$</span>, since its poles are outside this disk. The height truncation and convexity bounds from <a href="NT-ZETA-06.html">Growth in the critical strip</a>, Theorems 1.1 and 3.1, give <span class="math" data-tex="$\max|G_T|\le CT^C$">$\max|G_T|\le CT^C$</span>, while
+<span class="math" data-tex="$G_T(2)=\Re\zeta(2+iT)\ge2-\zeta(2)&gt;0$">$G_T(2)=\Re\zeta(2+iT)\ge2-\zeta(2)&gt;0$</span>. Jensen's formula between radii <span class="math" data-tex="$8/5$">$8/5$</span> and <span class="math" data-tex="$7/4$">$7/4$</span> therefore bounds its zeros in the smaller disk by <span class="math" data-tex="$C\log T$">$C\log T$</span>. All real points of <span class="math" data-tex="$[1/2,2]$">$[1/2,2]$</span> are in that smaller disk, and on the real axis <span class="math" data-tex="$G_T(u)=\Re\zeta(u+iT)$">$G_T(u)=\Re\zeta(u+iT)$</span>. Between consecutive zeros of this real part a continuous argument stays in one half-plane, so its variation is at most <span class="math" data-tex="$\pi$">$\pi$</span>. The right-edge argument from the absolutely convergent series for <span class="math" data-tex="$\log\zeta(2+it)$">$\log\zeta(2+it)$</span> is bounded by <span class="math" data-tex="$\log\zeta(2)$">$\log\zeta(2)$</span>. These observations prove (4.2).</p>
+<p><strong>Theorem 4.2 (Bohr--Landau).</strong> For fixed <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>, <span class="math" data-tex="$N(\sigma,T)=O_\sigma(T)$">$N(\sigma,T)=O_\sigma(T)$</span>. More quantitatively, for <span class="math" data-tex="$T\ge e^2$">$T\ge e^2$</span>,
+<span class="math math-display" data-tex="$$
+N(\sigma,T)\ll\frac{T}{\sigma-1/2}
+\log\frac2{\sigma-1/2},
+\qquad \frac12+\frac1{\log T}\le\sigma\le1.
+\tag{4.3}
+$$">$$
+N(\sigma,T)\ll\frac{T}{\sigma-1/2}
+\log\frac2{\sigma-1/2},
+\qquad \frac12+\frac1{\log T}\le\sigma\le1.
+\tag{4.3}
+$$</span>
+Hence for every fixed <span class="math" data-tex="$\epsilon&gt;0$">$\epsilon&gt;0$</span>, all but <span class="math" data-tex="$O_\epsilon(T)=o(N(T))$">$O_\epsilon(T)=o(N(T))$</span> of the zeros with <span class="math" data-tex="$0&lt;\gamma\le T$">$0&lt;\gamma\le T$</span> satisfy <span class="math" data-tex="$|\beta-1/2|&lt;\epsilon$">$|\beta-1/2|&lt;\epsilon$</span>.</p>
+<p><strong>Proof.</strong> There are no zeros at or to the right of one by the earlier zero-free-line theorem, so only <span class="math" data-tex="$1/2&lt;\sigma&lt;1$">$1/2&lt;\sigma&lt;1$</span> needs work. Put <span class="math" data-tex="$\delta=\sigma-1/2$">$\delta=\sigma-1/2$</span>, and choose <span class="math" data-tex="$a$">$a$</span> between <span class="math" data-tex="$1/2+\delta/3$">$1/2+\delta/3$</span> and <span class="math" data-tex="$1/2+\delta/2$">$1/2+\delta/2$</span> that is not a zero abscissa. Fix a small positive height <span class="math" data-tex="$c$">$c$</span> for which the whole segment <span class="math" data-tex="$[1/2,2]+ic$">$[1/2,2]+ic$</span> is zero-free. Such a height exists: zeta has no zero on the positive real axis, its pole at one has a punctured zero-free neighborhood, and compactness covers the remaining real segment. It can also be chosen below every zero ordinate in this strip.</p>
+<p>Apply (4.1) to <span class="math" data-tex="$f=\zeta$">$f=\zeta$</span>, <span class="math" data-tex="$b=2$">$b=2$</span>, and a height <span class="math" data-tex="$d\in(T,T+1)$">$d\in(T,T+1)$</span> whose horizontal edge contains no zero. Every counted zero with <span class="math" data-tex="$\beta\ge\sigma$">$\beta\ge\sigma$</span> contributes at least <span class="math" data-tex="$\delta/2$">$\delta/2$</span>. The right vertical integral is <span class="math" data-tex="$O(1)$">$O(1)$</span>, since termwise integration of
+<span class="math" data-tex="$\log\zeta(2+it)=\sum_{n\ge2}\Lambda(n)n^{-2-it}/\log n$">$\log\zeta(2+it)=\sum_{n\ge2}\Lambda(n)n^{-2-it}/\log n$</span>
+is bounded by <span class="math" data-tex="$2\sum\Lambda(n)/(n^2\log^2n)&lt;\infty$">$2\sum\Lambda(n)/(n^2\log^2n)&lt;\infty$</span>. The horizontal terms are <span class="math" data-tex="$O(\log T)$">$O(\log T)$</span> by (4.2), with a bounded lower-height term.</p>
+<p>Finally (3.5), summed above <span class="math" data-tex="$c$">$c$</span>, gives <span class="math" data-tex="$\int_c^d|\zeta(a+it)|^2dt\ll T/\delta$">$\int_c^d|\zeta(a+it)|^2dt\ll T/\delta$</span>. Concavity of logarithm gives
+<span class="math math-display" data-tex="$$
+\int_c^d\log|\zeta(a+it)|dt
+\le\frac{d-c}{2}\log\left(\frac1{d-c}\int_c^d|\zeta(a+it)|^2dt\right)
+\ll T\log(2/\delta).
+$$">$$
+\int_c^d\log|\zeta(a+it)|dt
+\le\frac{d-c}{2}\log\left(\frac1{d-c}\int_c^d|\zeta(a+it)|^2dt\right)
+\ll T\log(2/\delta).
+$$</span>
+Insert these bounds in (4.1) and divide by <span class="math" data-tex="$\delta$">$\delta$</span>. This proves (4.3), and the same proof gives <span class="math" data-tex="$O_\sigma(T)$">$O_\sigma(T)$</span> for each fixed <span class="math" data-tex="$\sigma$">$\sigma$</span>. Symmetry <span class="math" data-tex="$\beta\leftrightarrow1-\beta$">$\beta\leftrightarrow1-\beta$</span> bounds the left exceptional strip by the same count. Lesson ten proved <span class="math" data-tex="$N(T)\sim T\log T/(2\pi)$">$N(T)\sim T\log T/(2\pi)$</span>, so <span class="math" data-tex="$O_\epsilon(T)=o(N(T))$">$O_\epsilon(T)=o(N(T))$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is a density conclusion, not a proof that any specified zero lies on the line. The exceptional count is small compared with the total count but may still tend to infinity.</p>
+<h2 id="5-the-arithmetic-coefficient-in-the-fourth-moment">5. The arithmetic coefficient in the fourth moment</h2>
+<p>Let <span class="math" data-tex="$d_k(n)$">$d_k(n)$</span> count ordered factorizations of <span class="math" data-tex="$n$">$n$</span> into <span class="math" data-tex="$k$">$k$</span> positive factors, and write <span class="math" data-tex="$d=d_2$">$d=d_2$</span>. The two estimates we need are
+<span class="math math-display" data-tex="$$
+\sum_{n\le X}d(n)^2\ll X\log^3(2X),\qquad
+\sum_{n\le X}\frac{d(n)^2}{n}
+=\frac{\log^4X}{4\pi^2}+O(\log^3(2X)).
+\tag{5.1}
+$$">$$
+\sum_{n\le X}d(n)^2\ll X\log^3(2X),\qquad
+\sum_{n\le X}\frac{d(n)^2}{n}
+=\frac{\log^4X}{4\pi^2}+O(\log^3(2X)).
+\tag{5.1}
+$$</span>
+We prove them directly. At a prime power <span class="math" data-tex="$d(p^r)^2=(r+1)^2$">$d(p^r)^2=(r+1)^2$</span>, and
+<span class="math" data-tex="$\sum_{r\ge0}(r+1)^2z^r=(1-z^2)/(1-z)^4$">$\sum_{r\ge0}(r+1)^2z^r=(1-z^2)/(1-z)^4$</span>. Comparing Euler products in their absolutely convergent half-plane gives the exact coefficient identity
+<span class="math math-display" data-tex="$$
+d(n)^2=\sum_{k^2\mid n}\mu(k)d_4(n/k^2).
+\tag{5.2}
+$$">$$
+d(n)^2=\sum_{k^2\mid n}\mu(k)d_4(n/k^2).
+\tag{5.2}
+$$</span>
+Induction on <span class="math" data-tex="$j$">$j$</span>, starting with harmonic sums, gives
+<span class="math math-display" data-tex="$$
+\sum_{n\le X}d_j(n)\ll_j X\log^{j-1}(2X),\qquad
+\sum_{n\le X}\frac{d_j(n)}n
+=\frac{\log^jX}{j!}+O_j(\log^{j-1}(2X)).
+\tag{5.3}
+$$">$$
+\sum_{n\le X}d_j(n)\ll_j X\log^{j-1}(2X),\qquad
+\sum_{n\le X}\frac{d_j(n)}n
+=\frac{\log^jX}{j!}+O_j(\log^{j-1}(2X)).
+\tag{5.3}
+$$</span>
+For the first use <span class="math" data-tex="$d_j=1*d_{j-1}$">$d_j=1*d_{j-1}$</span> and sum <span class="math" data-tex="$X/m$">$X/m$</span> against the preceding logarithmic bound. For the second the same recursion reduces the main term to
+<span class="math math-display" data-tex="$$
+\sum_{m\le X}\frac{\log^{j-1}(X/m)}m
+=\int_1^X\frac{\log^{j-1}(X/u)}u du+O(\log^{j-1}(2X))
+=\frac{\log^jX}{j}+O(\log^{j-1}(2X)).
+$$">$$
+\sum_{m\le X}\frac{\log^{j-1}(X/m)}m
+=\int_1^X\frac{\log^{j-1}(X/u)}u du+O(\log^{j-1}(2X))
+=\frac{\log^jX}{j}+O(\log^{j-1}(2X)).
+$$</span>
+The integrand is nonnegative decreasing, so the sum-integral error is at most its first value. The preceding error sums to <span class="math" data-tex="$O(\log^{j-1}(2X))$">$O(\log^{j-1}(2X))$</span>, including <span class="math" data-tex="$j=2$">$j=2$</span>; this closes the induction.</p>
+<p>Taking absolute values in (5.2) and using (5.3) proves the first part of (5.1), since <span class="math" data-tex="$\sum k^{-2}&lt;\infty$">$\sum k^{-2}&lt;\infty$</span>. For the second,
+<span class="math math-display" data-tex="$$
+\sum_{n\le X}\frac{d(n)^2}n
+=\sum_{k\le\sqrt X}\frac{\mu(k)}{k^2}
+\left\{\frac{\log^4(X/k^2)}{24}+O(\log^3(2X))\right\}.
+$$">$$
+\sum_{n\le X}\frac{d(n)^2}n
+=\sum_{k\le\sqrt X}\frac{\mu(k)}{k^2}
+\left\{\frac{\log^4(X/k^2)}{24}+O(\log^3(2X))\right\}.
+$$</span>
+Expand the fourth power. Every lower term is <span class="math" data-tex="$O(\log^3(2X))$">$O(\log^3(2X))$</span>, because <span class="math" data-tex="$\sum k^{-2}\log^j k$">$\sum k^{-2}\log^j k$</span> converges for <span class="math" data-tex="$0\le j\le4$">$0\le j\le4$</span>. The leading coefficient is
+<span class="math" data-tex="$\sum\mu(k)/k^2=1/\zeta(2)=6/\pi^2$">$\sum\mu(k)/k^2=1/\zeta(2)=6/\pi^2$</span>; extending the sum past <span class="math" data-tex="$\sqrt X$">$\sqrt X$</span> costs <span class="math" data-tex="$O(X^{-1/2}\log^4(2X))$">$O(X^{-1/2}\log^4(2X))$</span>. Thus its coefficient after division by <span class="math" data-tex="$24$">$24$</span> is <span class="math" data-tex="$1/(4\pi^2)$">$1/(4\pi^2)$</span>, as claimed.</p>
+<p>Partial summation consequently gives, for fixed <span class="math" data-tex="$\alpha&gt;0$">$\alpha&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{n\le Y}d(n)^2n^{-1+\alpha}\ll_\alpha Y^\alpha\log^3(2Y),
+\qquad
+\sum_{n&gt;Y}d(n)^2n^{-1-\alpha}\ll_\alpha Y^{-\alpha}\log^3(2Y).
+\tag{5.4}
+$$">$$
+\sum_{n\le Y}d(n)^2n^{-1+\alpha}\ll_\alpha Y^\alpha\log^3(2Y),
+\qquad
+\sum_{n&gt;Y}d(n)^2n^{-1-\alpha}\ll_\alpha Y^{-\alpha}\log^3(2Y).
+\tag{5.4}
+$$</span>
+Also <span class="math" data-tex="$\sum_{n\le Y}d(n)/\sqrt n\ll\sqrt Y\log(2Y)$">$\sum_{n\le Y}d(n)/\sqrt n\ll\sqrt Y\log(2Y)$</span>, by the <span class="math" data-tex="$j=2$">$j=2$</span> case of (5.3).</p>
+<h2 id="6-ingham-s-fourth-moment">6. Ingham's fourth moment</h2>
+<p><strong>Theorem 6.1 (Ingham).</strong> For <span class="math" data-tex="$T\ge2$">$T\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\int_0^T|\zeta(1/2+it)|^4dt
+=\frac{T\log^4T}{2\pi^2}+O(T\log^{7/2}(2T)).
+\tag{6.1}
+$$">$$
+\int_0^T|\zeta(1/2+it)|^4dt
+=\frac{T\log^4T}{2\pi^2}+O(T\log^{7/2}(2T)).
+\tag{6.1}
+$$</span>
+In particular the integral is asymptotic to its displayed main term and is <span class="math" data-tex="$\ll T\log^4(2T)$">$\ll T\log^4(2T)$</span>.</p>
+<p><strong>Proof.</strong> We prove the corresponding estimate on <span class="math" data-tex="$[T,2T]$">$[T,2T]$</span> and then sum dyadically. All cutoffs in this proof are fixed throughout such an interval. Set <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>, <span class="math" data-tex="$x=y=T/8$">$x=y=T/8$</span>, and
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+M_1(t)&amp;=\sum_{n\le x}d(n)n^{-s},&amp;
+M_2(t)&amp;=\chi(s)^2\sum_{n\le y}d(n)n^{s-1},\\
+S_1(t)&amp;=\sum_{n\le x}d(n)n^{-s}(1-n/x)^2,&amp;
+R_1(t)&amp;=M_1(t)-S_1(t).
+\end{aligned}
+$$">$$
+\begin{aligned}
+M_1(t)&amp;=\sum_{n\le x}d(n)n^{-s},&amp;
+M_2(t)&amp;=\chi(s)^2\sum_{n\le y}d(n)n^{s-1},\\
+S_1(t)&amp;=\sum_{n\le x}d(n)n^{-s}(1-n/x)^2,&amp;
+R_1(t)&amp;=M_1(t)-S_1(t).
+\end{aligned}
+$$</span>
+We show that <span class="math" data-tex="$\zeta(s)^2=M_1+M_2-R$">$\zeta(s)^2=M_1+M_2-R$</span> with
+<span class="math math-display" data-tex="$$
+\|R\|_{L^2[T,2T]}\ll\sqrt T\log^{3/2}(2T).
+\tag{6.2}
+$$">$$
+\|R\|_{L^2[T,2T]}\ll\sqrt T\log^{3/2}(2T).
+\tag{6.2}
+$$</span>
+This estimate is an averaged approximate functional equation; its proof is included here.</p>
+<p>Put <span class="math" data-tex="$K_x(w)=2x^w/[w(w+1)(w+2)]$">$K_x(w)=2x^w/[w(w+1)(w+2)]$</span>, <span class="math" data-tex="$\phi=-3/4$">$\phi=-3/4$</span> and <span class="math" data-tex="$\theta=1/4$">$\theta=1/4$</span>. The inverse Mellin identity
+<span class="math math-display" data-tex="$$
+\frac1{2\pi i}\int_{(1)}K_x(w)n^{-w}dw
+=\begin{cases}(1-n/x)^2,&amp;n&lt;x,\\0,&amp;n\ge x\end{cases}
+$$">$$
+\frac1{2\pi i}\int_{(1)}K_x(w)n^{-w}dw
+=\begin{cases}(1-n/x)^2,&amp;n&lt;x,\\0,&amp;n\ge x\end{cases}
+$$</span>
+follows by closing the contour left or right; the three residues on the left are <span class="math" data-tex="$1,-2n/x,(n/x)^2$">$1,-2n/x,(n/x)^2$</span>. The integral is absolutely convergent, and the value at <span class="math" data-tex="$n=x$">$n=x$</span> is zero. Since the series for <span class="math" data-tex="$\zeta(s+w)^2$">$\zeta(s+w)^2$</span> converges absolutely on <span class="math" data-tex="$\Re w=1$">$\Re w=1$</span>,
+<span class="math math-display" data-tex="$$
+S_1=\frac1{2\pi i}\int_{(1)}\zeta(s+w)^2K_x(w)dw.
+$$">$$
+S_1=\frac1{2\pi i}\int_{(1)}\zeta(s+w)^2K_x(w)dw.
+$$</span>
+Move this line to <span class="math" data-tex="$\Re w=\phi$">$\Re w=\phi$</span>. Only <span class="math" data-tex="$w=0$">$w=0$</span> and the double pole <span class="math" data-tex="$w=1-s$">$w=1-s$</span> are crossed; <span class="math" data-tex="$-1,-2$">$-1,-2$</span> are not crossed. At large <span class="math" data-tex="$|t+\Im w|$">$|t+\Im w|$</span>, the functional equation and lesson six's Corollary 1.2 and Theorem 3.1 give <span class="math" data-tex="$\zeta(s+w)^2\ll(1+|t+\Im w|)^{3/2}\log^2(2+|t+\Im w|)$">$\zeta(s+w)^2\ll(1+|t+\Im w|)^{3/2}\log^2(2+|t+\Im w|)$</span> uniformly between these lines, whereas the kernel decays cubically. Horizontal integrals tend to zero, and both vertical integrals converge; the finite-height pole is accounted for by its residue. Thus
+<span class="math math-display" data-tex="$$
+S_1=\zeta(s)^2+R_2+
+\frac1{2\pi i}\int_{(\phi)}\chi(s+w)^2\zeta(1-s-w)^2K_x(w)dw.
+\tag{6.3}
+$$">$$
+S_1=\zeta(s)^2+R_2+
+\frac1{2\pi i}\int_{(\phi)}\chi(s+w)^2\zeta(1-s-w)^2K_x(w)dw.
+\tag{6.3}
+$$</span>
+Here <span class="math" data-tex="$R_2$">$R_2$</span> is the double-pole residue. If <span class="math" data-tex="$w_0=1-s$">$w_0=1-s$</span> and <span class="math" data-tex="$A(w)=K_x(w)$">$A(w)=K_x(w)$</span>, its exact value is <span class="math" data-tex="$A&#x27;(w_0)+2\gamma A(w_0)$">$A&#x27;(w_0)+2\gamma A(w_0)$</span>. Therefore
+<span class="math" data-tex="$R_2\ll x^{1/2}T^{-3}\log(2T)$">$R_2\ll x^{1/2}T^{-3}\log(2T)$</span>.</p>
+<p>On the <span class="math" data-tex="$\phi$">$\phi$</span> line the dual Dirichlet series converges absolutely. Split it at <span class="math" data-tex="$y$">$y$</span>. Call the integral of its tail <span class="math" data-tex="$R_3$">$R_3$</span>. In the finite initial part move the contour from <span class="math" data-tex="$\phi$">$\phi$</span> to <span class="math" data-tex="$\theta$">$\theta$</span>. The factor <span class="math" data-tex="$\chi(s+w)$">$\chi(s+w)$</span> has no pole in this strip; its real part as an argument is between <span class="math" data-tex="$-1/4$">$-1/4$</span> and <span class="math" data-tex="$3/4$">$3/4$</span>. The only crossed pole is <span class="math" data-tex="$w=0$">$w=0$</span>, of residue <span class="math" data-tex="$M_2$">$M_2$</span>. Consequently that initial integral is <span class="math" data-tex="$R_4-M_2$">$R_4-M_2$</span>, where
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+R_3(t)&amp;=\frac1{2\pi i}\int_{(\phi)}\chi(s+w)^2
+\sum_{n&gt;y}d(n)n^{s+w-1}K_x(w)dw,\\
+R_4(t)&amp;=\frac1{2\pi i}\int_{(\theta)}\chi(s+w)^2
+\sum_{n\le y}d(n)n^{s+w-1}K_x(w)dw.
+\end{aligned}
+$$">$$
+\begin{aligned}
+R_3(t)&amp;=\frac1{2\pi i}\int_{(\phi)}\chi(s+w)^2
+\sum_{n&gt;y}d(n)n^{s+w-1}K_x(w)dw,\\
+R_4(t)&amp;=\frac1{2\pi i}\int_{(\theta)}\chi(s+w)^2
+\sum_{n\le y}d(n)n^{s+w-1}K_x(w)dw.
+\end{aligned}
+$$</span>
+The same cubic decay justifies this second shift. Rearranging (6.3) gives the claimed exact decomposition with <span class="math" data-tex="$R=R_1+R_2+R_3+R_4$">$R=R_1+R_2+R_3+R_4$</span>.</p>
+<p>We now bound all four terms, rather than relying on a pointwise sharp cutoff estimate. Since <span class="math" data-tex="$1-(1-n/x)^2\le2n/x$">$1-(1-n/x)^2\le2n/x$</span>, (2.1) and (5.1) give
+<span class="math math-display" data-tex="$$
+\|R_1\|_2^2\ll\frac{T+x}{x^2}\sum_{n\le x}n d(n)^2
+\ll(T+x)\log^3(2x).
+$$">$$
+\|R_1\|_2^2\ll\frac{T+x}{x^2}\sum_{n\le x}n d(n)^2
+\ll(T+x)\log^3(2x).
+$$</span>
+The estimate for <span class="math" data-tex="$R_2$">$R_2$</span> above is more than sufficient for (6.2).</p>
+<p>For <span class="math" data-tex="$u=\phi$">$u=\phi$</span> or <span class="math" data-tex="$\theta$">$\theta$</span>, write
+<span class="math" data-tex="$W_u(t,v)=|\chi(1/2+u+i(t+v))^2K_x(u+iv)|$">$W_u(t,v)=|\chi(1/2+u+i(t+v))^2K_x(u+iv)|$</span>. Stirling's bound, extended over compact height intervals, gives
+<span class="math math-display" data-tex="$$
+W_u(t,v)\ll x^u(1+|t+v|)^{-2u}(1+|v|)^{-3}
+\ll x^uT^{-2u}(1+|v|)^{-p_u},
+\tag{6.4}
+$$">$$
+W_u(t,v)\ll x^u(1+|t+v|)^{-2u}(1+|v|)^{-3}
+\ll x^uT^{-2u}(1+|v|)^{-p_u},
+\tag{6.4}
+$$</span>
+with <span class="math" data-tex="$p_\phi=3/2$">$p_\phi=3/2$</span> and <span class="math" data-tex="$p_\theta=5/2$">$p_\theta=5/2$</span>, both greater than one. For <span class="math" data-tex="$\phi$">$\phi$</span> use <span class="math" data-tex="$1+|t+v|\le C T(1+|v|)$">$1+|t+v|\le C T(1+|v|)$</span>. For <span class="math" data-tex="$\theta$">$\theta$</span>, split at <span class="math" data-tex="$|v|=T/2$">$|v|=T/2$</span>: below it <span class="math" data-tex="$|t+v|\ge T/2$">$|t+v|\ge T/2$</span>, and above it <span class="math" data-tex="$(1+|t+v|)^{-1/2}\le1\ll T^{-1/2}(1+|v|)^{1/2}$">$(1+|t+v|)^{-1/2}\le1\ll T^{-1/2}(1+|v|)^{1/2}$</span>. These checks include <span class="math" data-tex="$v$">$v$</span> near <span class="math" data-tex="$-t$">$-t$</span>.</p>
+<p>Uniformly in a translation <span class="math" data-tex="$v$">$v$</span>, (2.1), including its infinite-series version, and (5.4) give
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\int_T^{2T}\left|\sum_{n&gt;y}d(n)n^{-1/2+\phi+i(t+v)}\right|^2dt
+&amp;\ll(T+y)y^{2\phi}\log^3(2y),\\
+\int_T^{2T}\left|\sum_{n\le y}d(n)n^{-1/2+\theta+i(t+v)}\right|^2dt
+&amp;\ll(T+y)y^{2\theta}\log^3(2y).
+\end{aligned}
+$$">$$
+\begin{aligned}
+\int_T^{2T}\left|\sum_{n&gt;y}d(n)n^{-1/2+\phi+i(t+v)}\right|^2dt
+&amp;\ll(T+y)y^{2\phi}\log^3(2y),\\
+\int_T^{2T}\left|\sum_{n\le y}d(n)n^{-1/2+\theta+i(t+v)}\right|^2dt
+&amp;\ll(T+y)y^{2\theta}\log^3(2y).
+\end{aligned}
+$$</span>
+The first series is absolutely convergent and its weighted square sum converges, since <span class="math" data-tex="$\phi&lt;-1/2$">$\phi&lt;-1/2$</span>. Apply the triangle inequality for <span class="math" data-tex="$L^2$">$L^2$</span> integrals to <span class="math" data-tex="$R_3,R_4$">$R_3,R_4$</span>, using the integrable majorants (6.4). The resulting estimates are
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\|R_3\|_2^2&amp;\ll(T+y)(xy/T^2)^{2\phi}\log^3(2y),\\
+\|R_4\|_2^2&amp;\ll(T+y)(xy/T^2)^{2\theta}\log^3(2y).
+\end{aligned}
+$$">$$
+\begin{aligned}
+\|R_3\|_2^2&amp;\ll(T+y)(xy/T^2)^{2\phi}\log^3(2y),\\
+\|R_4\|_2^2&amp;\ll(T+y)(xy/T^2)^{2\theta}\log^3(2y).
+\end{aligned}
+$$</span>
+Because <span class="math" data-tex="$x=y=T/8$">$x=y=T/8$</span>, these are <span class="math" data-tex="$O(T\log^3(2T))$">$O(T\log^3(2T))$</span>. This proves (6.2). The argument was for sufficiently large <span class="math" data-tex="$T$">$T$</span> so the cutoffs exceed one; the remaining bounded range is absorbed by a constant.</p>
+<p>The two main squared norms follow from (2.1) and (5.1):
+<span class="math math-display" data-tex="$$
+\|M_1\|_2^2=\frac{T\log^4T}{4\pi^2}+O(T\log^3(2T)),
+\qquad \|M_2\|_2^2=\|M_1\|_2^2.
+\tag{6.5}
+$$">$$
+\|M_1\|_2^2=\frac{T\log^4T}{4\pi^2}+O(T\log^3(2T)),
+\qquad \|M_2\|_2^2=\|M_1\|_2^2.
+\tag{6.5}
+$$</span>
+The second equality uses <span class="math" data-tex="$x=y$">$x=y$</span> and <span class="math" data-tex="$|\chi(1/2+it)|=1$">$|\chi(1/2+it)|=1$</span>. It remains to check that the two sums do not create another leading diagonal through their cross term.</p>
+<p>Define <span class="math" data-tex="$\vartheta(t)=\Im\log\Gamma(1/4+it/2)-(t/2)\log\pi$">$\vartheta(t)=\Im\log\Gamma(1/4+it/2)-(t/2)\log\pi$</span>, with the gamma logarithm continued from the positive real axis. The functional equation gives <span class="math" data-tex="$\chi(1/2+it)=e^{-2i\vartheta(t)}$">$\chi(1/2+it)=e^{-2i\vartheta(t)}$</span>. Stirling's formula gives
+<span class="math math-display" data-tex="$$
+\vartheta(t)=F(t)+O(1/t),\qquad
+F(t)=\frac t2\log\frac t{2\pi}-\frac t2-\frac\pi8.
+$$">$$
+\vartheta(t)=F(t)+O(1/t),\qquad
+F(t)=\frac t2\log\frac t{2\pi}-\frac t2-\frac\pi8.
+$$</span>
+Since <span class="math" data-tex="$M_2=e^{-4i\vartheta}\overline{M_1}$">$M_2=e^{-4i\vartheta}\overline{M_1}$</span>,
+<span class="math math-display" data-tex="$$
+\int_T^{2T}M_1\overline{M_2}dt
+=\sum_{m,n\le T/8}\frac{d(m)d(n)}{\sqrt{mn}}
+\int_T^{2T}e^{i(4F(t)-t\log(mn))}dt+O(\log^4(2T)).
+$$">$$
+\int_T^{2T}M_1\overline{M_2}dt
+=\sum_{m,n\le T/8}\frac{d(m)d(n)}{\sqrt{mn}}
+\int_T^{2T}e^{i(4F(t)-t\log(mn))}dt+O(\log^4(2T)).
+$$</span>
+The error is bounded by <span class="math" data-tex="$C T^{-1}\|M_1\|_2^2$">$C T^{-1}\|M_1\|_2^2$</span>. For every pair,
+<span class="math math-display" data-tex="$$
+\frac d{dt}\big(4F(t)-t\log(mn)\big)
+=\log\frac{t^2}{4\pi^2mn}\ge\log\frac{16}{\pi^2}&gt;0.
+$$">$$
+\frac d{dt}\big(4F(t)-t\log(mn)\big)
+=\log\frac{t^2}{4\pi^2mn}\ge\log\frac{16}{\pi^2}&gt;0.
+$$</span>
+It is monotone, so the first derivative test bounds the integral by an absolute constant. Therefore the cross term is <span class="math" data-tex="$O(T\log^2(2T))$">$O(T\log^2(2T))$</span> by the last estimate in Section 5. In particular it is lower order than (6.5).</p>
+<p>Thus <span class="math" data-tex="$\|M_1+M_2\|_2^2=T\log^4T/(2\pi^2)+O(T\log^3(2T))$">$\|M_1+M_2\|_2^2=T\log^4T/(2\pi^2)+O(T\log^3(2T))$</span>. Changing this by <span class="math" data-tex="$R$">$R$</span> changes its square by at most
+<span class="math" data-tex="$2\|M_1+M_2\|_2\|R\|_2+\|R\|_2^2=O(T\log^{7/2}(2T))$">$2\|M_1+M_2\|_2\|R\|_2+\|R\|_2^2=O(T\log^{7/2}(2T))$</span>.
+This proves the dyadic version of (6.1). Expanding <span class="math" data-tex="$(\log T-j\log2)^4$">$(\log T-j\log2)^4$</span> and using <span class="math" data-tex="$\sum_{j\ge1}j^k2^{-j}&lt;\infty$">$\sum_{j\ge1}j^k2^{-j}&lt;\infty$</span> shows that the sum of the dyadic main terms is <span class="math" data-tex="$T\log^4T/(2\pi^2)+O(T\log^3(2T))$">$T\log^4T/(2\pi^2)+O(T\log^3(2T))$</span>. The dyadic errors sum to <span class="math" data-tex="$O(T\log^{7/2}(2T))$">$O(T\log^{7/2}(2T))$</span>, and the initial compact interval is bounded. This proves (6.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 6.2 (a narrow strip and separated heights).</strong> Uniformly for <span class="math" data-tex="$T\ge60$">$T\ge60$</span> and <span class="math" data-tex="$|\sigma-1/2|\le2/\log T$">$|\sigma-1/2|\le2/\log T$</span>,
+<span class="math math-display" data-tex="$$
+\int_0^T|\zeta(\sigma+it)|^4dt\ll T\log^4T.
+\tag{6.6}
+$$">$$
+\int_0^T|\zeta(\sigma+it)|^4dt\ll T\log^4T.
+\tag{6.6}
+$$</span>
+Moreover
+<span class="math math-display" data-tex="$$
+\int_0^T|\zeta(1/2+it)\zeta&#x27;(1/2+it)|^2dt\ll T\log^6T.
+\tag{6.7}
+$$">$$
+\int_0^T|\zeta(1/2+it)\zeta&#x27;(1/2+it)|^2dt\ll T\log^6T.
+\tag{6.7}
+$$</span>
+If <span class="math" data-tex="$\delta/2\le t_1&lt;\cdots&lt;t_R\le T-\delta/2$">$\delta/2\le t_1&lt;\cdots&lt;t_R\le T-\delta/2$</span> and <span class="math" data-tex="$t_{r+1}-t_r\ge\delta&gt;0$">$t_{r+1}-t_r\ge\delta&gt;0$</span>, then
+<span class="math math-display" data-tex="$$
+\sum_{r=1}^R|\zeta(1/2+it_r)|^4
+\ll(\delta^{-1}+\log T)T\log^4T.
+\tag{6.8}
+$$">$$
+\sum_{r=1}^R|\zeta(1/2+it_r)|^4
+\ll(\delta^{-1}+\log T)T\log^4T.
+\tag{6.8}
+$$</span></p>
+<p><strong>Proof.</strong> For a large dyadic block <span class="math" data-tex="$[U,2U]$">$[U,2U]$</span>, repeat the contour decomposition with <span class="math" data-tex="$s=\sigma+it$">$s=\sigma+it$</span>, <span class="math" data-tex="$x=y=U/8$">$x=y=U/8$</span>. For <span class="math" data-tex="$|\sigma-1/2|\le2/\log U$">$|\sigma-1/2|\le2/\log U$</span>, take <span class="math" data-tex="$U$">$U$</span> large enough that <span class="math" data-tex="$0.45\le\sigma\le0.55$">$0.45\le\sigma\le0.55$</span>. The same lines <span class="math" data-tex="$\phi,\theta$">$\phi,\theta$</span> stay away from all poles; the dual series on <span class="math" data-tex="$\phi$">$\phi$</span> still converges absolutely. Stirling now contributes <span class="math" data-tex="$U^{1-2\sigma-2u}$">$U^{1-2\sigma-2u}$</span> in place of <span class="math" data-tex="$U^{-2u}$">$U^{-2u}$</span> in (6.4), with integrable majorants having exponents at least <span class="math" data-tex="$7/5$">$7/5$</span> for <span class="math" data-tex="$\phi$">$\phi$</span> and <span class="math" data-tex="$12/5$">$12/5$</span> for <span class="math" data-tex="$\theta$">$\theta$</span>. The dual coefficient square sums are
+<span class="math" data-tex="$\ll(U+y)y^{2\sigma+2u-1}\log^3(2y)$">$\ll(U+y)y^{2\sigma+2u-1}\log^3(2y)$</span>, with tails for <span class="math" data-tex="$u=\phi$">$u=\phi$</span> and initial sums for <span class="math" data-tex="$u=\theta$">$u=\theta$</span>. Consequently the squared norms of <span class="math" data-tex="$R_3,R_4$">$R_3,R_4$</span> are <span class="math" data-tex="$\ll U^{2-2\sigma}\log^3U\ll U\log^3U$">$\ll U^{2-2\sigma}\log^3U\ll U\log^3U$</span>. The same bound holds for <span class="math" data-tex="$R_1$">$R_1$</span>; <span class="math" data-tex="$R_2$">$R_2$</span> remains negligible. For the main sums, <span class="math" data-tex="$n^{\pm2(\sigma-1/2)}$">$n^{\pm2(\sigma-1/2)}$</span> and <span class="math" data-tex="$U^{\pm4(\sigma-1/2)}$">$U^{\pm4(\sigma-1/2)}$</span> are bounded by absolute constants for <span class="math" data-tex="$n\le U/8$">$n\le U/8$</span>. Thus (2.1) and (5.1) give <span class="math" data-tex="$\|M_1\|_2^2+\|M_2\|_2^2\ll U\log^4U$">$\|M_1\|_2^2+\|M_2\|_2^2\ll U\log^4U$</span>. No cross-term asymptotic is needed for this upper bound. Sum the blocks: the global strip width is no larger than each block's width. The remaining bounded height range is compact; for <span class="math" data-tex="$60\le T$">$60\le T$</span> in the bounded parameter range one has <span class="math" data-tex="$\sigma\le1/2+2/\log60&lt;1$">$\sigma\le1/2+2/\log60&lt;1$</span>, so it contains no zeta pole. This proves (6.6).</p>
+<p>Apply Cauchy's formula to <span class="math" data-tex="$H(s)=\zeta(s)^2$">$H(s)=\zeta(s)^2$</span> on the circle <span class="math" data-tex="$|w|=1/\log T$">$|w|=1/\log T$</span>:
+<span class="math" data-tex="$|H&#x27;(s)|^2\le(\log T)^2(2\pi)^{-1}\int_0^{2\pi}|H(s+e^{i\theta}/\log T)|^2d\theta$">$|H&#x27;(s)|^2\le(\log T)^2(2\pi)^{-1}\int_0^{2\pi}|H(s+e^{i\theta}/\log T)|^2d\theta$</span>.
+Integrate at <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>, <span class="math" data-tex="$0\le t\le T$">$0\le t\le T$</span>. The small height translations remain within <span class="math" data-tex="$[-1,2T]$">$[-1,2T]$</span>, and their real parts fall within the strip permitted by (6.6) at height <span class="math" data-tex="$2T$">$2T$</span> for large <span class="math" data-tex="$T$">$T$</span>. The negative compact interval is bounded by conjugation and compactness. Since <span class="math" data-tex="$H&#x27;=2\zeta\zeta&#x27;$">$H&#x27;=2\zeta\zeta&#x27;$</span>, (6.7) follows.</p>
+<p>Finally for a nonnegative differentiable function <span class="math" data-tex="$h$">$h$</span> on an interval <span class="math" data-tex="$I$">$I$</span> of length <span class="math" data-tex="$\delta$">$\delta$</span> containing <span class="math" data-tex="$t_r$">$t_r$</span>,
+<span class="math" data-tex="$h(t_r)\le\delta^{-1}\int_Ih+\int_I|h&#x27;|$">$h(t_r)\le\delta^{-1}\int_Ih+\int_I|h&#x27;|$</span>; integrate the fundamental theorem of calculus over the starting point in <span class="math" data-tex="$I$">$I$</span>. Apply this to <span class="math" data-tex="$h=|\zeta(1/2+it)|^4$">$h=|\zeta(1/2+it)|^4$</span> on the disjoint intervals <span class="math" data-tex="$[t_r-\delta/2,t_r+\delta/2]$">$[t_r-\delta/2,t_r+\delta/2]$</span>. Its derivative is at most <span class="math" data-tex="$4|\zeta|^2|\zeta\zeta&#x27;|$">$4|\zeta|^2|\zeta\zeta&#x27;|$</span>. Cauchy--Schwarz, (6.1) and (6.7) bound the derivative integral by <span class="math" data-tex="$C T\log^5T$">$C T\log^5T$</span>. This gives (6.8). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="7-the-moment-conjecture">7. The moment conjecture</h2>
+<p>For a positive integer <span class="math" data-tex="$k$">$k$</span>, the moment conjecture predicts
+<span class="math math-display" data-tex="$$
+\int_0^T|\zeta(1/2+it)|^{2k}dt\sim c_kT\log^{k^2}T,
+\qquad c_k=a_k f_k,
+\tag{7.1}
+$$">$$
+\int_0^T|\zeta(1/2+it)|^{2k}dt\sim c_kT\log^{k^2}T,
+\qquad c_k=a_k f_k,
+\tag{7.1}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+a_k=\prod_p(1-p^{-1})^{k^2}
+\sum_{r\ge0}\binom{r+k-1}{k-1}^{\!2}p^{-r},
+\qquad
+f_k=\prod_{j=0}^{k-1}\frac{j!}{(j+k)!}.
+\tag{7.2}
+$$">$$
+a_k=\prod_p(1-p^{-1})^{k^2}
+\sum_{r\ge0}\binom{r+k-1}{k-1}^{\!2}p^{-r},
+\qquad
+f_k=\prod_{j=0}^{k-1}\frac{j!}{(j+k)!}.
+\tag{7.2}
+$$</span>
+The arithmetic factor comes from the coefficients of <span class="math" data-tex="$\zeta^k$">$\zeta^k$</span>; the factorial factor is the Keating--Snaith random-unitary-matrix prediction. Each local arithmetic factor is <span class="math" data-tex="$1+O_k(p^{-2})$">$1+O_k(p^{-2})$</span>, because its terms of order <span class="math" data-tex="$p^{-1}$">$p^{-1}$</span> cancel, so the positive product converges. For <span class="math" data-tex="$k=1$">$k=1$</span>, <span class="math" data-tex="$a_1=f_1=1$">$a_1=f_1=1$</span>. For <span class="math" data-tex="$k=2$">$k=2$</span>, the prime-power identity in Section 5 gives <span class="math" data-tex="$a_2=\prod_p(1-p^{-2})=6/\pi^2$">$a_2=\prod_p(1-p^{-2})=6/\pi^2$</span> and <span class="math" data-tex="$f_2=1/12$">$f_2=1/12$</span>. Thus the two constants proved here are <span class="math" data-tex="$c_1=1$">$c_1=1$</span> and <span class="math" data-tex="$c_2=1/(2\pi^2)$">$c_2=1/(2\pi^2)$</span>. The general prediction is a conjecture; it is not an input to any of our proofs. The broader moment perspective belongs to the programme's course on explicit formulas and positivity.</p>
+<h2 id="8-computations-and-a-view-of-the-frequencies">8. Computations and a view of the frequencies</h2>
+<p><strong>Example 8.1 (the second moment at moderate height).</strong> Direct numerical quadrature gives</p>
+<p>| <span class="math" data-tex="$T$">$T$</span> | <span class="math" data-tex="$\int_0^T|\zeta(1/2+it)|^2dt$">$\int_0^T|\zeta(1/2+it)|^2dt$</span> | Ratio to <span class="math" data-tex="$T\log T$">$T\log T$</span> |
+|---:|---:|---:|
+| <span class="math" data-tex="$100$">$100$</span> | <span class="math" data-tex="$295.6350991$">$295.6350991$</span> | <span class="math" data-tex="$0.64196346$">$0.64196346$</span> |
+| <span class="math" data-tex="$1000$">$1000$</span> | <span class="math" data-tex="$5212.5077633$">$5212.5077633$</span> | <span class="math" data-tex="$0.75458779$">$0.75458779$</span> |</p>
+<p>These are numerical approximations, not interval certificates. The supplied <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/downloads/mean-square-calculation.py">calculation script</a> uses Gauss--Legendre quadrature on unit intervals with both 16 and 32 nodes. The change is below <span class="math" data-tex="$1.1\cdot10^{-11}$">$1.1\cdot10^{-11}$</span> in these calculations; six sample zeta values were compared with 40-decimal evaluation, differing by less than <span class="math" data-tex="$4.4\cdot10^{-13}$">$4.4\cdot10^{-13}$</span>. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/downloads/mean-square-calculation.json">calculation record</a> retains the unrounded results and method. Agreement under refinement is a numerical check, not a proof of the error bound. The theorem says that the ratio approaches one; it does not say that these moderate heights must already be close to one.</p>
+<p><strong>Example 8.2 (the Gram matrix).</strong> For <span class="math" data-tex="$m,n\le16$">$m,n\le16$</span>, the normalized frequency inner product is
+<span class="math math-display" data-tex="$$
+G_{mn}(T)=\frac1T\int_0^T m^{-it}n^{it}dt,
+\qquad
+|G_{mn}(T)|=
+\begin{cases}1,&amp;m=n,\\
+\left|\dfrac{\sin((T/2)\log(m/n))}{(T/2)\log(m/n)}\right|,&amp;m\ne n.
+\end{cases}
+\tag{8.1}
+$$">$$
+G_{mn}(T)=\frac1T\int_0^T m^{-it}n^{it}dt,
+\qquad
+|G_{mn}(T)|=
+\begin{cases}1,&amp;m=n,\\
+\left|\dfrac{\sin((T/2)\log(m/n))}{(T/2)\log(m/n)}\right|,&amp;m\ne n.
+\end{cases}
+\tag{8.1}
+$$</span>
+The nearest-neighbor gap <span class="math" data-tex="$\log(1+1/n)$">$\log(1+1/n)$</span> shrinks as <span class="math" data-tex="$n$">$n$</span> increases, explaining why higher neighboring indices can remain correlated over a short window. Equation (2.1) controls the complete off-diagonal form, including its cancellations.</p>
+<figure><img src="figures/NT-ZETA-16/frequency_gram.png" alt="Frequency correlations over two integration windows" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Absolute values of the exact normalized Gram entries (8.1), with the same color scale in both panels. The diagonal is one; the off-diagonal values are computed from the displayed sine quotient. Increasing the integration length suppresses correlations overall, though an individual sine quotient need not decrease monotonically. This illustrates the spacing mechanism behind Theorems 1.1 and 2.1. Original CC0 figure with reproducible source.</em></p>
+<h2 id="9-exercises-and-worked-solutions">9. Exercises and worked solutions</h2>
+<p><strong>Exercise 1 (medium).</strong> Prove the bilinear Hilbert inequality for integer frequencies by the Fourier series of a sawtooth, with an explicit constant. Show that <span class="math" data-tex="$\pi$">$\pi$</span> is sharp.</p>
+<p><strong>Exercise 2 (medium).</strong> Deduce the weighted Dirichlet-polynomial mean value theorem from Theorem 1.1, keeping track of its two endpoint forms.</p>
+<p><strong>Exercise 3 (medium).</strong> Prove <span class="math" data-tex="$\int_T^{2T}|\sum_{n\le N}a_n n^{-it}|^2dt\ll(T+N)\sum|a_n|^2$">$\int_T^{2T}|\sum_{n\le N}a_n n^{-it}|^2dt\ll(T+N)\sum|a_n|^2$</span>, uniformly in the coefficients.</p>
+<p><strong>Exercise 4 (medium).</strong> Prove Littlewood's lemma, including the branch convention for its horizontal arguments.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove the uniform dependence on <span class="math" data-tex="$\sigma$">$\sigma$</span> in (4.3) for <span class="math" data-tex="$1/2+1/\log T\le\sigma\le1$">$1/2+1/\log T\le\sigma\le1$</span>.</p>
+<p><strong>Exercise 6 (hard).</strong> In the fourth-moment decomposition, why does the choice <span class="math" data-tex="$x=y=T/8$">$x=y=T/8$</span> remove stationary points from the cross term? Determine a sufficient range of constants <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span> for <span class="math" data-tex="$x=y=cT$">$x=y=cT$</span> and explain why the leading coefficient does not depend on that fixed <span class="math" data-tex="$c$">$c$</span>.</p>
+<p><strong>Solution 1.</strong> For <span class="math" data-tex="$k\ne0$">$k\ne0$</span>, integration by parts gives <span class="math" data-tex="$(2\pi)^{-1}\int_0^{2\pi}i(x-\pi)e^{ikx}dx=1/k$">$(2\pi)^{-1}\int_0^{2\pi}i(x-\pi)e^{ikx}dx=1/k$</span>; the zero coefficient vanishes. Expanding the finite polynomials gives (1.3), so Cauchy--Schwarz and orthogonality yield <span class="math" data-tex="$\pi\|a\|_2\|b\|_2$">$\pi\|a\|_2\|b\|_2$</span>. This also proves the infinite-sequence version by <span class="math" data-tex="$\ell^2$">$\ell^2$</span> approximation. For sharpness choose the normalized geometric polynomials <span class="math" data-tex="$A_M=B_M$">$A_M=B_M$</span> in Section 1. Their squared moduli concentrate at a fixed <span class="math" data-tex="$x_0\in(0,2\pi)$">$x_0\in(0,2\pi)$</span> with total integral <span class="math" data-tex="$2\pi$">$2\pi$</span>. Splitting the integral into a small neighborhood of <span class="math" data-tex="$x_0$">$x_0$</span> and its complement shows that their forms tend to <span class="math" data-tex="$i(x_0-\pi)$">$i(x_0-\pi)$</span>. Choose <span class="math" data-tex="$x_0$">$x_0$</span> arbitrarily close to zero to make the modulus arbitrarily close to <span class="math" data-tex="$\pi$">$\pi$</span>. Thus no smaller universal constant works.</p>
+<p><strong>Solution 2.</strong> Translate the interval to zero by replacing <span class="math" data-tex="$a_n$">$a_n$</span> by <span class="math" data-tex="$a_n n^{-iT_0}$">$a_n n^{-iT_0}$</span>. The diagonal integrates to <span class="math" data-tex="$T\sum|a_n|^2$">$T\sum|a_n|^2$</span>. For <span class="math" data-tex="$m\ne n$">$m\ne n$</span>, the integral is the difference of the forms with coefficient vectors <span class="math" data-tex="$(a_n n^{-iT})$">$(a_n n^{-iT})$</span> and <span class="math" data-tex="$(a_n)$">$(a_n)$</span>, divided by <span class="math" data-tex="$-i(\log m-\log n)$">$-i(\log m-\log n)$</span>. Each form has modulus at most <span class="math" data-tex="$(3\pi/2)\sum|a_n|^2/\delta_n$">$(3\pi/2)\sum|a_n|^2/\delta_n$</span>. The logarithmic frequency gaps obey <span class="math" data-tex="$\delta_n\ge1/(n+1)$">$\delta_n\ge1/(n+1)$</span>, so their sum is at most <span class="math" data-tex="$3\pi\sum(n+1)|a_n|^2\le6\pi\sum n|a_n|^2$">$3\pi\sum(n+1)|a_n|^2\le6\pi\sum n|a_n|^2$</span>. This proves the claimed weighted error without replacing each individual off-diagonal term by its absolute value.</p>
+<p><strong>Solution 3.</strong> Apply Solution 2 with initial height <span class="math" data-tex="$T$">$T$</span> and length <span class="math" data-tex="$T$">$T$</span>. Its error is at most <span class="math" data-tex="$6\pi\sum n|a_n|^2\le6\pi N\sum|a_n|^2$">$6\pi\sum n|a_n|^2\le6\pi N\sum|a_n|^2$</span>. Add the nonnegative diagonal term to get the stated bound. The translation changes phases only, not coefficient magnitudes.</p>
+<p><strong>Solution 4.</strong> Fix the continuous argument on the right edge and extend it horizontally at all heights other than zero ordinates. If a zero has multiplicity <span class="math" data-tex="$m$">$m$</span>, factor <span class="math" data-tex="$f=(s-\rho)^m g$">$f=(s-\rho)^m g$</span> locally with <span class="math" data-tex="$g$">$g$</span> nonzero. The argument of <span class="math" data-tex="$g$">$g$</span> is continuous and the horizontal argument of the power jumps upward by <span class="math" data-tex="$2\pi m$">$2\pi m$</span> to the left of <span class="math" data-tex="$\rho$">$\rho$</span>. Between jumps, <span class="math" data-tex="$\partial_\sigma\log|f|=\partial_t\arg f$">$\partial_\sigma\log|f|=\partial_t\arg f$</span>. Integrating over each height strip and summing subtracts all argument jumps from the difference of the top and bottom arguments. Integrating next in <span class="math" data-tex="$\sigma$">$\sigma$</span> gives a contribution <span class="math" data-tex="$2\pi m(\beta-a)$">$2\pi m(\beta-a)$</span> for each cut. Rearrangement gives (4.1), with the vertical difference in the order left minus right. Local logarithmic integrability justifies deletion of tiny neighborhoods and the limiting boundary variants. A change of initial branch cancels between the two horizontal integrals.</p>
+<p><strong>Solution 5.</strong> Set <span class="math" data-tex="$\delta=\sigma-1/2$">$\delta=\sigma-1/2$</span>. At <span class="math" data-tex="$\sigma=1$">$\sigma=1$</span>, the count is zero; otherwise choose <span class="math" data-tex="$a-1/2\in[\delta/3,\delta/2]$">$a-1/2\in[\delta/3,\delta/2]$</span> avoiding zero abscissae. Formula (3.5) gives <span class="math" data-tex="$\int_c^d|\zeta(a+it)|^2dt\le C T/\delta$">$\int_c^d|\zeta(a+it)|^2dt\le C T/\delta$</span>, with an absolute <span class="math" data-tex="$C$">$C$</span> and a fixed pole-free lower height <span class="math" data-tex="$c$">$c$</span>. Jensen's inequality bounds the logarithmic integral by <span class="math" data-tex="$(d-c)\log(C/\delta)/2$">$(d-c)\log(C/\delta)/2$</span>. Choose a zero-free <span class="math" data-tex="$d\in(T,T+1)$">$d\in(T,T+1)$</span>; its horizontal argument is <span class="math" data-tex="$O(\log T)$">$O(\log T)$</span> uniformly in <span class="math" data-tex="$a$">$a$</span>. The right vertical integral and the lower horizontal one are bounded independently of <span class="math" data-tex="$a$">$a$</span>. Each zero with <span class="math" data-tex="$\beta\ge\sigma$">$\beta\ge\sigma$</span>, <span class="math" data-tex="$\gamma\le T$">$\gamma\le T$</span> contributes at least <span class="math" data-tex="$\delta/2$">$\delta/2$</span> in Littlewood's sum. Therefore
+<span class="math" data-tex="$\pi\delta N(\sigma,T)\le C T\log(C/\delta)+C\log T+C$">$\pi\delta N(\sigma,T)\le C T\log(C/\delta)+C\log T+C$</span>. Since <span class="math" data-tex="$0&lt;\delta\le1/2$">$0&lt;\delta\le1/2$</span>, <span class="math" data-tex="$\log(C/\delta)\ll\log(2/\delta)$">$\log(C/\delta)\ll\log(2/\delta)$</span>, and <span class="math" data-tex="$\log T\ll T\log(2/\delta)$">$\log T\ll T\log(2/\delta)$</span>. Division proves the required uniform bound. This argument in fact needs no lower restriction on positive <span class="math" data-tex="$\delta$">$\delta$</span>; the stated range is included.</p>
+<p><strong>Solution 6.</strong> The cross phase derivative for <span class="math" data-tex="$m,n\le cT$">$m,n\le cT$</span> is <span class="math" data-tex="$\log(t^2/(4\pi^2mn))\ge\log(1/(4\pi^2c^2))$">$\log(t^2/(4\pi^2mn))\ge\log(1/(4\pi^2c^2))$</span>. Every fixed <span class="math" data-tex="$0&lt;c&lt;1/(2\pi)$">$0&lt;c&lt;1/(2\pi)$</span> makes this positive and bounded away from zero. The derivative test then bounds each integral by a constant depending on <span class="math" data-tex="$c$">$c$</span>, and the coefficient sum is <span class="math" data-tex="$O_c(T\log^2T)$">$O_c(T\log^2T)$</span>. In particular <span class="math" data-tex="$c=1/8$">$c=1/8$</span> is permitted. The two remainder norms retain their order because <span class="math" data-tex="$xy/T^2=c^2$">$xy/T^2=c^2$</span> is a fixed positive constant. Finally <span class="math" data-tex="$\log^4(cT)=\log^4T+O_c(\log^3T)$">$\log^4(cT)=\log^4T+O_c(\log^3T)$</span>, so both diagonal leading coefficients are unchanged. The smaller fixed cutoff discards terms into the controlled averaged remainder, rather than asserting a pointwise sharp approximate functional equation at that cutoff.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>H. L. Montgomery and R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/571s25/montgomery-vaughanII.pdf"><em>Multiplicative Number Theory II: Primes and Sieves</em></a>, freely readable author-hosted 472-page draft. Appendix G: Hilbert’s inequality.</li>
+<li>H. L. Montgomery and R. C. Vaughan, <a href="https://personal.science.psu.edu/rcv4/Vol3/Vol3.pdf"><em>Multiplicative Number Theory III</em></a>, freely readable author-hosted 367-page draft. Chapter 26: second and fourth moments.</li>
+<li>E. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a>, freely readable official Clay Mathematics Institute paper.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a>, arXiv:2602.04022v1 (2026).</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-15.html">← Oscillation of the error term</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-17.html">Zeros on the critical line: Hardy&#x27;s theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-16.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

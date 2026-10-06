@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Constant-strength inverses with causal support</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="constant-strength-inverses-with-causal-support">Constant-strength inverses with causal support</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.</em></p>
+<p>Freezing coefficients gives a local inverse, but an arbitrary frozen inverse can bring information from the wrong side of a time surface. We choose a frozen kernel whose support already has the desired direction. Differentiation and multiplication preserve that support restriction. The perturbation series then keeps the restriction even when the coefficients vary. Its convergence must be in a topology that passes vanishing on an open set to the limit.</p>
+<p>Read <a href="AN02-L007.html">Freezing coefficients without losing strength</a>, <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, <a href="AN02-L040.html">Causal fundamental solutions and lower order expansions</a>, <a href="AN02-L065.html">Local supported solutions with the exact symbol gain</a>, <a href="AN02-L069.html">Analytic root barriers and supported solvability</a>.</p>
+<p>The hyperbolic branch assumes the two analytic zero-order and homogeneous hyperbolic-cone theorems stated in the causal-kernel prerequisite. The support theorem's evolution branch uses only the necessary root-barrier implication. Its final component-stability remark separately assumes noncharacteristic Holmgren. These dependencies retain their stated scope.</p>
+<h2 id="the-two-support-geometries-and-the-full-local-theorem">The two support geometries and the full local theorem</h2>
+<p>Use <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, the Fourier transform <span class="math" data-tex="\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)</span>, and <span class="math" data-tex="\(\|f\|_{p,k}=(2\pi)^{-n/p}\|k\widehat f\|_p\)">\(\|f\|_{p,k}=(2\pi)^{-n/p}\|k\widehat f\|_p\)</span>. A moderate weight has the shift bound used in the weighted-space lesson. Let <span class="math" data-tex="\(A(x,D)\)">\(A(x,D)\)</span> have smooth coefficients and constant strength near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, with nonzero frozen polynomial <span class="math" data-tex="\(P=A(x_0,\cdot)\)">\(P=A(x_0,\cdot)\)</span>. The fixed weaker-polynomial basis gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(x,D)\\
+=P(D)+\sum_{\nu=1}^q c_\nu(x)Q_\nu(D),\\
+Q_\nu\prec P,\\
+c_\nu(x_0)\\
+=0.
+\end{gathered}
+\tag{SC1}
+\]">\[
+\begin{gathered}
+A(x,D)\\
+=P(D)+\sum_{\nu=1}^q c_\nu(x)Q_\nu(D),\\
+Q_\nu\prec P,\\
+c_\nu(x_0)\\
+=0.
+\end{gathered}
+\tag{SC1}
+\]</span></p>
+<p>There are two alternatives. If <span class="math" data-tex="\(P\)">\(P\)</span> is hyperbolic with respect to <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, let <span class="math" data-tex="\(F_m\)">\(F_m\)</span> be its principal homogeneous part and set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma\\
+=\Gamma(F_m,N),\\
+C\\
+=\{z:z\cdot\theta\\
+\ge0\text{ for every }\theta\in\Gamma\}.
+\end{gathered}
+\tag{SC2}
+\]">\[
+\begin{gathered}
+\Gamma\\
+=\Gamma(F_m,N),\\
+C\\
+=\{z:z\cdot\theta\\
+\ge0\text{ for every }\theta\in\Gamma\}.
+\end{gathered}
+\tag{SC2}
+\]</span>
+This is the closed forward propagation cone, including its boundary. In the second alternative, <span class="math" data-tex="\(P\)">\(P\)</span> is an evolution symbol for <span class="math" data-tex="\(H_N=\{z:z\cdot N\ge0\}\)">\(H_N=\{z:z\cdot N\ge0\}\)</span>; set <span class="math" data-tex="\(C=H_N\)">\(C=H_N\)</span>. Here an evolution symbol can be specified by the existence of a global fundamental distribution supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, or directly by the necessary analytic normal-root barrier. The written necessary implication converts the former specification to the latter. The argument below needs only a compact local regular kernel, not a global regular kernel in this second alternative.</p>
+<p>Both choices of <span class="math" data-tex="\(C\)">\(C\)</span> are closed cones with <span class="math" data-tex="\(0\in C\)">\(0\in C\)</span> and <span class="math" data-tex="\(C+C=C\)">\(C+C=C\)</span>. A cone here may contain lines. No proper addition of two unrestricted half-space-supported distributions will be used.</p>
+<p><strong>Theorem 1.</strong> There are a neighborhood <span class="math" data-tex="\(X\)">\(X\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and one linear map <span class="math" data-tex="\(E:\mathcal E&#x27;(\mathbb R^n)\to\mathcal E&#x27;(\mathbb R^n)\)">\(E:\mathcal E&#x27;(\mathbb R^n)\to\mathcal E&#x27;(\mathbb R^n)\)</span>, independent of <span class="math" data-tex="\(p,k\)">\(p,k\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(x,D)Ef\\
+=f\\
+\text{in }X\\
+(f\in\mathcal E&#x27;(\mathbb R^n)),\\
+EA(x,D)u\\
+=u\\
+\text{in }X\\
+(u\in\mathcal E&#x27;(X)).
+\end{gathered}
+\tag{SC3}
+\]">\[
+\begin{gathered}
+A(x,D)Ef\\
+=f\\
+\text{in }X\\
+(f\in\mathcal E&#x27;(\mathbb R^n)),\\
+EA(x,D)u\\
+=u\\
+\text{in }X\\
+(u\in\mathcal E&#x27;(X)).
+\end{gathered}
+\tag{SC3}
+\]</span>
+For every moderate <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|Ef\|_{p,kS_P}\le C_{p,k}\|f\|_{p,k}
+\\
+\quad(f\in\mathcal E&#x27;\cap B_{p,k}),
+\\
+\qquad
+\operatorname{supp}Ef\subset C+\operatorname{supp}f.
+\end{gathered}
+\tag{SC4}
+\]">\[
+\begin{gathered}
+\|Ef\|_{p,kS_P}\le C_{p,k}\|f\|_{p,k}
+\\
+\quad(f\in\mathcal E&#x27;\cap B_{p,k}),
+\\
+\qquad
+\operatorname{supp}Ef\subset C+\operatorname{supp}f.
+\end{gathered}
+\tag{SC4}
+\]</span>
+The output supports are also contained in one fixed compact set. The support assertion is an inclusion, not a statement that the solution is nonzero at every point of that set. It is a property of this choice of inverse; it is not local uniqueness for every solution of the variable-coefficient equation.</p>
+<h2 id="select-a-compact-frozen-kernel-before-selecting-a-weight">Select a compact frozen kernel before selecting a weight</h2>
+<p>Choose a bounded neighborhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> with closure in the coefficient neighborhood. Choose an open bounded <span class="math" data-tex="\(V\)">\(V\)</span> containing a neighborhood of <span class="math" data-tex="\(\overline{U_0}-\overline{U_0}\)">\(\overline{U_0}-\overline{U_0}\)</span>. We first obtain one compact distribution <span class="math" data-tex="\(F\)">\(F\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F\in B_{\infty,S_P},\\
+\qquad
+\operatorname{supp}F\subset C,\\
+\qquad
+P(D)F-\delta_0=0\\
+\quad\text{in }V.
+\end{gathered}
+\tag{SC5}
+\]">\[
+\begin{gathered}
+F\in B_{\infty,S_P},\\
+\qquad
+\operatorname{supp}F\subset C,\\
+\qquad
+P(D)F-\delta_0=0\\
+\quad\text{in }V.
+\end{gathered}
+\tag{SC5}
+\]</span></p>
+<p>In the hyperbolic alternative, take the regular causal fundamental solution <span class="math" data-tex="\(E_0\)">\(E_0\)</span> of the linked kernel theorem. It is supported in <span class="math" data-tex="\(C\)">\(C\)</span> and belongs to <span class="math" data-tex="\(B_{\infty,S_P}^{\mathrm{loc}}\)">\(B_{\infty,S_P}^{\mathrm{loc}}\)</span>. Multiply it by a compact smooth cutoff equal to one near <span class="math" data-tex="\(\overline V\)">\(\overline V\)</span>. The result has all three properties in(SC5): the differentiated cutoff is zero there, and multiplication cannot enlarge support.</p>
+<p>In the evolution alternative, rotate the normal direction to the time coordinate and use the root-barrier adapter. The local supported existence theorem with <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, datum <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, and equation set <span class="math" data-tex="\(V\)">\(V\)</span> gives(SC5) directly. The Fourier transform of <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> is one. The theorem's solution is compact, belongs to <span class="math" data-tex="\(B_{\infty,S_P}\)">\(B_{\infty,S_P}\)</span>, and is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>. Orthogonal coordinates preserve compactness, the half-space, and equivalent polynomial derivative norms; transporting back retains these properties. No assertion about a globally regular evolution fundamental solution is needed.</p>
+<p>For every <span class="math" data-tex="\(g\in\mathcal E&#x27;(U_0)\)">\(g\in\mathcal E&#x27;(U_0)\)</span>, locality in the convolution gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)(F*g)=g\\
+\quad\text{in }U_0,
+\\
+\qquad F*P(D)g=g\\
+\quad\text{in }U_0.
+\end{gathered}
+\tag{SC6}
+\]">\[
+\begin{gathered}
+P(D)(F*g)=g\\
+\quad\text{in }U_0,
+\\
+\qquad F*P(D)g=g\\
+\quad\text{in }U_0.
+\end{gathered}
+\tag{SC6}
+\]</span>
+Indeed the error <span class="math" data-tex="\(R=P(D)F-\delta_0\)">\(R=P(D)F-\delta_0\)</span> is supported outside <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\(x\in U_0\)">\(x\in U_0\)</span> and <span class="math" data-tex="\(y\in\operatorname{supp}g\subset U_0\)">\(y\in\operatorname{supp}g\subset U_0\)</span>, then <span class="math" data-tex="\(x-y\in V\)">\(x-y\in V\)</span>. On a compact set of output tests, those differences lie a positive distance inside <span class="math" data-tex="\(V\)">\(V\)</span>; the compact convolution pairing therefore makes <span class="math" data-tex="\(R*g\)">\(R*g\)</span> zero on that set. The second equality follows from commutation of constant derivatives with compact convolution. All distributions in this convolution are compact, so addition is proper without any half-space properness assumption.</p>
+<h2 id="one-contraction-for-all-fourier-scales">One contraction for all Fourier scales</h2>
+<p>Choose <span class="math" data-tex="\(w\in C_c^\infty\)">\(w\in C_c^\infty\)</span> equal to one near the closed unit ball and supported in the ball of radius two. Put <span class="math" data-tex="\(w_r(x)=w((x-x_0)/r)\)">\(w_r(x)=w((x-x_0)/r)\)</span>, with <span class="math" data-tex="\(r\)">\(r\)</span> small enough that <span class="math" data-tex="\(\operatorname{supp}w_r\subset U_0\)">\(\operatorname{supp}w_r\subset U_0\)</span>. Extend <span class="math" data-tex="\(w_rc_\nu\)">\(w_rc_\nu\)</span> smoothly by zero off <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_\nu\\
+=\sup_{\xi}|Q_\nu(\xi)\widehat F(\xi)|&lt;\infty,\\
+K_rg\\
+=\sum_{\nu=1}^q w_rc_\nu Q_\nu(D)(F*g).
+\end{gathered}
+\tag{SC7}
+\]">\[
+\begin{gathered}
+M_\nu\\
+=\sup_{\xi}|Q_\nu(\xi)\widehat F(\xi)|&lt;\infty,\\
+K_rg\\
+=\sum_{\nu=1}^q w_rc_\nu Q_\nu(D)(F*g).
+\end{gathered}
+\tag{SC7}
+\]</span>
+The constants are finite because <span class="math" data-tex="\(|Q_\nu|\le S_{Q_\nu}\le C_\nu S_P\)">\(|Q_\nu|\le S_{Q_\nu}\le C_\nu S_P\)</span> and(SC5) holds. Fourier multiplication shows that each <span class="math" data-tex="\(Q_\nu(D)F*\)">\(Q_\nu(D)F*\)</span> has norm at most <span class="math" data-tex="\(M_\nu\)">\(M_\nu\)</span> on every <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>. This bound is independent of <span class="math" data-tex="\(p\)">\(p\)</span> and of the weight.</p>
+<p>The coefficient-cutoff lemma in the freezing lesson gives <span class="math" data-tex="\(\|w_rc_\nu\|_{1,1}=O(r)\)">\(\|w_rc_\nu\|_{1,1}=O(r)\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span>, before choosing <span class="math" data-tex="\(p,k\)">\(p,k\)</span>, so that
+<span class="math math-display" data-tex="\[
+2\sum_{\nu=1}^q M_\nu\|w_rc_\nu\|_{1,1}&lt;\tfrac12.
+\tag{SC8}
+\]">\[
+2\sum_{\nu=1}^q M_\nu\|w_rc_\nu\|_{1,1}&lt;\tfrac12.
+\tag{SC8}
+\]</span>
+For any given moderate <span class="math" data-tex="\(k\)">\(k\)</span>, choose a sufficiently slow equivalent weight <span class="math" data-tex="\(k_\delta\)">\(k_\delta\)</span> for the finite family <span class="math" data-tex="\(w_rc_\nu,w_r\)">\(w_rc_\nu,w_r\)</span>. The slow-weight multiplier lemma then gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|K_rg\|_{p,k_\delta}\\
+\le\tfrac12\|g\|_{p,k_\delta},\\
+\|w_rf\|_{p,k_\delta}\\
+\le2\|w_r\|_{1,1}\|f\|_{p,k_\delta}.
+\end{gathered}
+\tag{SC9}
+\]">\[
+\begin{gathered}
+\|K_rg\|_{p,k_\delta}\\
+\le\tfrac12\|g\|_{p,k_\delta},\\
+\|w_rf\|_{p,k_\delta}\\
+\le2\|w_r\|_{1,1}\|f\|_{p,k_\delta}.
+\end{gathered}
+\tag{SC9}
+\]</span>
+The same <span class="math" data-tex="\(\delta\)">\(\delta\)</span> works for every <span class="math" data-tex="\(p\)">\(p\)</span> for this fixed finite family and weight. Endpoints are included in the multiplier and convolution estimates. The equation
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g+K_rg=w_rf,
+\\
+\qquad
+g=\sum_{j=0}^{\infty}(-K_r)^j(w_rf)
+\end{gathered}
+\tag{SC10}
+\]">\[
+\begin{gathered}
+g+K_rg=w_rf,
+\\
+\qquad
+g=\sum_{j=0}^{\infty}(-K_r)^j(w_rf)
+\end{gathered}
+\tag{SC10}
+\]</span>
+therefore has a unique solution in <span class="math" data-tex="\(B_{p,k_\delta}=B_{p,k}\)">\(B_{p,k_\delta}=B_{p,k}\)</span> whenever the datum belongs to that space. It converges in that Banach norm. Both terms on the right of <span class="math" data-tex="\(g=w_rf-K_rg\)">\(g=w_rf-K_rg\)</span> have support in the fixed compact <span class="math" data-tex="\(\operatorname{supp}w_r\)">\(\operatorname{supp}w_r\)</span>, so <span class="math" data-tex="\(g\in\mathcal E&#x27;(U_0)\)">\(g\in\mathcal E&#x27;(U_0)\)</span>.</p>
+<p>For arbitrary compact <span class="math" data-tex="\(f\)">\(f\)</span>, its finite-order estimate on a compact neighborhood of its support gives a polynomial bound on its Fourier transform. Hence it belongs to some <span class="math" data-tex="\(B_{\infty,\langle\xi\rangle^{-L}}\)">\(B_{\infty,\langle\xi\rangle^{-L}}\)</span>. Construct <span class="math" data-tex="\(g\)">\(g\)</span> in that space using its equivalent slow weight. It is unique among all compact distributions: the difference of two compact solutions is in a single sufficiently negative weighted supremum space, and(SC9) applied to its homogeneous equation makes the difference zero. Thus different choices of <span class="math" data-tex="\(p,k,\delta\)">\(p,k,\delta\)</span> give the same <span class="math" data-tex="\(g\)">\(g\)</span>. This proves linearity and independence of the weighted realization.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Ef\\
+=F*g,\\
+\|Ef\|_{p,kS_P}\\
+\le\|F\|_{\infty,S_P}\|g\|_{p,k}.
+\end{gathered}
+\tag{SC11}
+\]">\[
+\begin{gathered}
+Ef\\
+=F*g,\\
+\|Ef\|_{p,kS_P}\\
+\le\|F\|_{\infty,S_P}\|g\|_{p,k}.
+\end{gathered}
+\tag{SC11}
+\]</span>
+Equivalence of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k_\delta\)">\(k_\delta\)</span>, followed by(SC9), proves the norm assertion in(SC4). The fixed output compact is <span class="math" data-tex="\(\operatorname{supp}F+\operatorname{supp}w_r\)">\(\operatorname{supp}F+\operatorname{supp}w_r\)</span>. On a smaller ball <span class="math" data-tex="\(X\)">\(X\)</span> where <span class="math" data-tex="\(w_r=1\)">\(w_r=1\)</span>, equations(SC6) and(SC10) give <span class="math" data-tex="\(AEf=g+\sum c_\nu Q_\nu(F*g)=f\)">\(AEf=g+\sum c_\nu Q_\nu(F*g)=f\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in\mathcal E&#x27;(X)\)">\(u\in\mathcal E&#x27;(X)\)</span>, let <span class="math" data-tex="\(g_0=P(D)u\)">\(g_0=P(D)u\)</span>. Equation(SC6) makes <span class="math" data-tex="\(F*g_0=u\)">\(F*g_0=u\)</span> throughout <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, including the support of <span class="math" data-tex="\(w_r\)">\(w_r\)</span>. Since <span class="math" data-tex="\(w_r=1\)">\(w_r=1\)</span> near the support of <span class="math" data-tex="\(u\)">\(u\)</span> and its derivatives,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_0+K_rg_0
+\\
+=P(D)u+w_r\sum_\nu c_\nu Q_\nu(D)u
+\\
+=w_rA(x,D)u.
+\end{gathered}
+\tag{SC12}
+\]">\[
+\begin{gathered}
+g_0+K_rg_0
+\\
+=P(D)u+w_r\sum_\nu c_\nu Q_\nu(D)u
+\\
+=w_rA(x,D)u.
+\end{gathered}
+\tag{SC12}
+\]</span>
+Compact-distribution uniqueness in(SC10) identifies <span class="math" data-tex="\(g_0\)">\(g_0\)</span> as the auxiliary datum used for <span class="math" data-tex="\(EAu\)">\(EAu\)</span>. Another application of(SC6) proves its equality to <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(X\)">\(X\)</span>. This proves both local identities.</p>
+<h2 id="pass-the-support-restriction-through-the-infinite-series">Pass the support restriction through the infinite series</h2>
+<p>Let <span class="math" data-tex="\(S=\operatorname{supp}f\)">\(S=\operatorname{supp}f\)</span>, a compact set. The empty support means <span class="math" data-tex="\(f=0\)">\(f=0\)</span> and <span class="math" data-tex="\(Ef=0\)">\(Ef=0\)</span>, so assume <span class="math" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>. The sum <span class="math" data-tex="\(C+S\)">\(C+S\)</span> is closed: for a convergent sequence <span class="math" data-tex="\(c_j+s_j\)">\(c_j+s_j\)</span>, compactness gives a subsequence <span class="math" data-tex="\(s_j\to s\in S\)">\(s_j\to s\in S\)</span>, and then <span class="math" data-tex="\(c_j\to c\in C\)">\(c_j\to c\in C\)</span>. Differentiation and smooth multiplication do not enlarge support. Compact convolution therefore gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{supp}(K_rv)
+\subset C+\operatorname{supp}v
+\\
+\quad(v\in\mathcal E&#x27;).
+\end{gathered}
+\tag{SC13}
+\]">\[
+\begin{gathered}
+\operatorname{supp}(K_rv)
+\subset C+\operatorname{supp}v
+\\
+\quad(v\in\mathcal E&#x27;).
+\end{gathered}
+\tag{SC13}
+\]</span>
+Since <span class="math" data-tex="\(0\in C\)">\(0\in C\)</span>, the zeroth term <span class="math" data-tex="\(w_rf\)">\(w_rf\)</span> is supported in <span class="math" data-tex="\(C+S\)">\(C+S\)</span>. Induction, using <span class="math" data-tex="\(C+C=C\)">\(C+C=C\)</span>, puts every other term of(SC10) in the same closed set. The partial sums converge in a weighted supremum space continuously included in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. Every compact test supported outside <span class="math" data-tex="\(C+S\)">\(C+S\)</span> pairs to zero with all partial sums and consequently with their limit. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{supp}g\\
+\subset C+S,\\
+\operatorname{supp}Ef
+\\
+\subset C+\operatorname{supp}g
+\\
+\subset C+C+S\\
+=C+S.
+\end{gathered}
+\tag{SC14}
+\]">\[
+\begin{gathered}
+\operatorname{supp}g\\
+\subset C+S,\\
+\operatorname{supp}Ef
+\\
+\subset C+\operatorname{supp}g
+\\
+\subset C+C+S\\
+=C+S.
+\end{gathered}
+\tag{SC14}
+\]</span>
+This is the exact support assertion. It does not rely on norm density of compact tests at <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>, a positive cone kernel, or convergence at individual points. Only continuity into distributions and closed-set support were used. In the half-space branch, all the factors are compact, so lineality of <span class="math" data-tex="\(H_N\)">\(H_N\)</span> causes no convolution obstruction. The theorem is proved.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> has degree zero, constant strength forces <span class="math" data-tex="\(A(x,D)=a(x)\ne0\)">\(A(x,D)=a(x)\ne0\)</span>. Choose a compact smooth <span class="math" data-tex="\(\rho\)">\(\rho\)</span> supported in the coefficient neighborhood and equal to <span class="math" data-tex="\(1/a\)">\(1/a\)</span> near <span class="math" data-tex="\(X\)">\(X\)</span>, and set <span class="math" data-tex="\(Ef=\rho f\)">\(Ef=\rho f\)</span>. This has both local identities, all weighted multiplier bounds, fixed compact output support, and the stronger <span class="math" data-tex="\(\operatorname{supp}Ef\subset\operatorname{supp}f\)">\(\operatorname{supp}Ef\subset\operatorname{supp}f\)</span>. It supplies the scalar endpoint without invoking a positive-order cone construction.</p>
+<h2 id="the-frozen-hyperbolic-cones-are-identical">The frozen hyperbolic cones are identical</h2>
+<p>The preceding theorem only needs the kernel of <span class="math" data-tex="\(P=A(x_0,\cdot)\)">\(P=A(x_0,\cdot)\)</span>. There is also a useful exact interpretation of its cone. Suppose the order is <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> is hyperbolic in direction <span class="math" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-tex="\(Q=A(x,\cdot)\)">\(Q=A(x,\cdot)\)</span> for another point and let <span class="math" data-tex="\(G\)">\(G\)</span> be its principal part. Equal strength gives equal degree. Scaling the finite derivative-vector inequalities at <span class="math" data-tex="\(rv\)">\(rv\)</span>, dividing by <span class="math" data-tex="\(r^m\)">\(r^m\)</span>, and taking <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|G(v)|\le C_x|F_m(v)|,
+\\
+\qquad |F_m(v)|\le C&#x27;_x|G(v)|
+\\
+\quad(v\in\mathbb R^n).
+\end{gathered}
+\tag{SC15}
+\]">\[
+\begin{gathered}
+|G(v)|\le C_x|F_m(v)|,
+\\
+\qquad |F_m(v)|\le C&#x27;_x|G(v)|
+\\
+\quad(v\in\mathbb R^n).
+\end{gathered}
+\tag{SC15}
+\]</span>
+In particular <span class="math" data-tex="\(G(N)\ne0\)">\(G(N)\ne0\)</span>. The homogeneous hyperbolic-root contract says that <span class="math" data-tex="\(s\mapsto F_m(v+sN)\)">\(s\mapsto F_m(v+sN)\)</span> has all its <span class="math" data-tex="\(m\)">\(m\)</span> roots real, with multiplicity. At each root, the first inequality in(SC15) forces <span class="math" data-tex="\(G(v+sN)\)">\(G(v+sN)\)</span> to vanish to at least the same order: otherwise the quotient has an unbounded power as real <span class="math" data-tex="\(s\)">\(s\)</span> approaches that root. Both polynomials have degree <span class="math" data-tex="\(m\)">\(m\)</span>, so comparison of the coefficient of <span class="math" data-tex="\(s^m\)">\(s^m\)</span> yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(v+sN)\\
+=\frac{G(N)}{F_m(N)}F_m(v+sN),\\
+G\\
+=\frac{G(N)}{F_m(N)}F_m.
+\end{gathered}
+\tag{SC16}
+\]">\[
+\begin{gathered}
+G(v+sN)\\
+=\frac{G(N)}{F_m(N)}F_m(v+sN),\\
+G\\
+=\frac{G(N)}{F_m(N)}F_m.
+\end{gathered}
+\tag{SC16}
+\]</span>
+The second identity follows by setting <span class="math" data-tex="\(s=0\)">\(s=0\)</span> for every real <span class="math" data-tex="\(v\)">\(v\)</span>, then equality of polynomial coefficients. The scalar can be complex and is nonzero. It does not change the homogeneous zero set, its component containing <span class="math" data-tex="\(N\)">\(N\)</span>, or its dual cone.</p>
+<p>The lower-order hyperbolicity theorem says <span class="math" data-tex="\(P\)">\(P\)</span> has equal strength to <span class="math" data-tex="\(F_m\)">\(F_m\)</span>. Hence <span class="math" data-tex="\(Q\)">\(Q\)</span> has equal strength to <span class="math" data-tex="\(G\)">\(G\)</span>. Applying its same-direction characterization with principal part <span class="math" data-tex="\(G\)">\(G\)</span>, which is hyperbolic by(SC16), proves that <span class="math" data-tex="\(Q\)">\(Q\)</span> too is hyperbolic with direction <span class="math" data-tex="\(N\)">\(N\)</span>. All the frozen cones in this constant-strength family are therefore the same <span class="math" data-tex="\(C\)">\(C\)</span>. This argument imports exactly the homogeneous hyperbolic-root contract already declared by the lower-order theorem. It makes no nonlinear coordinate-invariance assertion.</p>
+<p>For evolution symbols, smoothness makes <span class="math" data-tex="\(x\mapsto A(x,\cdot)\)">\(x\mapsto A(x,\cdot)\)</span> continuous in the finite-dimensional weaker-symbol space. On a connected coefficient region its image is connected. The already written component-stability theorem then shows that all frozen symbols are evolution symbols in the same half-space if one is. This last contextual consequence retains the component theorem's own planned sufficient-direction Holmgren input; it is not used in the construction or support proof of Theorem 1.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: a thin propagation cone).</strong> Take <span class="math" data-tex="\(A=D_t+b(z,t)\)">\(A=D_t+b(z,t)\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span> globally smooth and <span class="math" data-tex="\(b(0,0)=0\)">\(b(0,0)=0\)</span>. Identify the frozen propagation cone. For compact smooth <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>, verify a causal solution of <span class="math" data-tex="\(Au=\delta_0(z)h(t)\)">\(Au=\delta_0(z)h(t)\)</span> and its spatial support.</p>
+<p><strong>Solution.</strong> The polynomial at the origin is <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its homogeneous component containing <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span> is <span class="math" data-tex="\(\{(\xi,\tau):\tau&gt;0\}\)">\(\{(\xi,\tau):\tau&gt;0\}\)</span>. Testing all tangential covectors of either sign in its dual forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>; testing positive <span class="math" data-tex="\(\tau\)">\(\tau\)</span> gives <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. Thus the closed cone is the forward time ray, not the whole half-space. The basis correction is a multiple of the constant polynomial, which is dominated by <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in the enlarged-window sense. Constant strength follows from stable strength.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(z,t)\\
+=i\delta_0(z)\int_{-\infty}^t
+\exp\!\left(-i\int_s^t b(0,r)\,dr\right)h(s)\,ds.
+\end{gathered}
+\tag{SC17}
+\]">\[
+\begin{gathered}
+u(z,t)\\
+=i\delta_0(z)\int_{-\infty}^t
+\exp\!\left(-i\int_s^t b(0,r)\,dr\right)h(s)\,ds.
+\end{gathered}
+\tag{SC17}
+\]</span>
+The integral is over a finite relevant interval on each compact time set, because <span class="math" data-tex="\(h\)">\(h\)</span> is compact and the upper limit is finite. It defines a smooth time function. Calling the integral <span class="math" data-tex="\(J(t)\)">\(J(t)\)</span>, differentiation gives <span class="math" data-tex="\(J&#x27;=h-i b(0,t)J\)">\(J&#x27;=h-i b(0,t)J\)</span>. Hence <span class="math" data-tex="\(D_t(iJ)+b(0,t)iJ=J&#x27;+i b(0,t)J=h\)">\(D_t(iJ)+b(0,t)iJ=J&#x27;+i b(0,t)J=h\)</span>. Multiplication by <span class="math" data-tex="\(b(z,t)\)">\(b(z,t)\)</span> on <span class="math" data-tex="\(\delta_0(z)\)">\(\delta_0(z)\)</span> uses its value <span class="math" data-tex="\(b(0,t)\)">\(b(0,t)\)</span>, so this verifies the distributional equation. The solution is zero before <span class="math" data-tex="\(\min\operatorname{supp}h\)">\(\min\operatorname{supp}h\)</span>, and its spatial support is contained in <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. It has the cone inclusion even though its time support may be unbounded. The local theorem chooses a compact output extension of a local solution; it does not claim this global expression is compact.</p>
+<p><strong>Exercise 2 (intermediate: the choice of frozen inverse matters).</strong> For <span class="math" data-tex="\(P=D_t\)">\(P=D_t\)</span> on the line, construct a compact local regular kernel supported on both sides of zero. Use it in the unperturbed freezing construction to show why the support assertion does not hold for every local inverse.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> equal to one on <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>, and put <span class="math" data-tex="\(F=(i/2)\chi\operatorname{sgn}t\)">\(F=(i/2)\chi\operatorname{sgn}t\)</span>. Since <span class="math" data-tex="\(\partial_t\operatorname{sgn}t=2\delta_0\)">\(\partial_t\operatorname{sgn}t=2\delta_0\)</span>, <span class="math" data-tex="\(D_tF=\delta_0\)">\(D_tF=\delta_0\)</span> on <span class="math" data-tex="\((-2,2)\)">\((-2,2)\)</span>. On the entire line its derivative is <span class="math" data-tex="\(\delta_0+(1/2)\chi&#x27;\operatorname{sgn}t\)">\(\delta_0+(1/2)\chi&#x27;\operatorname{sgn}t\)</span>, a finite measure of compact support. Fourier transformation gives <span class="math" data-tex="\(|\xi\widehat F(\xi)|\le C\)">\(|\xi\widehat F(\xi)|\le C\)</span>. Also <span class="math" data-tex="\(|\widehat F|\le\|F\|_1\)">\(|\widehat F|\le\|F\|_1\)</span>, so <span class="math" data-tex="\(\sqrt{1+\xi^2}|\widehat F|\)">\(\sqrt{1+\xi^2}|\widehat F|\)</span> is bounded: <span class="math" data-tex="\(F\in B_{\infty,S_{D_t}}\)">\(F\in B_{\infty,S_{D_t}}\)</span>. It is a valid local regular kernel.</p>
+<p>With no variable correction, <span class="math" data-tex="\(K_r=0\)">\(K_r=0\)</span> and <span class="math" data-tex="\(Ef=F*(w_rf)\)">\(Ef=F*(w_rf)\)</span>. For <span class="math" data-tex="\(f=\delta_0\)">\(f=\delta_0\)</span> and <span class="math" data-tex="\(w_r(0)=1\)">\(w_r(0)=1\)</span>, this gives <span class="math" data-tex="\(E\delta_0=F\)">\(E\delta_0=F\)</span>, nonzero on a negative-time interval. Yet the local right and compact-input left identities still hold by(SC6). The causal cone for <span class="math" data-tex="\(D_t\)">\(D_t\)</span> is <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, so the support inclusion fails for this choice. Selecting the causal frozen kernel is essential.</p>
+<p><strong>Exercise 3 (advanced: a wave equation with a smooth potential).</strong> In two variables <span class="math" data-tex="\((z,t)\)">\((z,t)\)</span>, let <span class="math" data-tex="\(A=D_t^2-D_z^2+V(z,t)\)">\(A=D_t^2-D_z^2+V(z,t)\)</span>, with smooth possibly complex <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(V(0,0)=0\)">\(V(0,0)=0\)</span>. Establish constant strength. Suppose the compact forcing is supported in the rectangle <span class="math" data-tex="\(S=\{|z|\le a,\ t_0\le t\le t_1\}\)">\(S=\{|z|\le a,\ t_0\le t\le t_1\}\)</span>, with <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Give the exact cone support bound and explain what it says about the solution inside that bound.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(P(\xi,\tau)=\tau^2-\xi^2\)">\(P(\xi,\tau)=\tau^2-\xi^2\)</span>. Its derivative norm satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\xi,\tau)^2\\
+=(\tau^2-\xi^2)^2+4\tau^2+4\xi^2+8.
+\end{gathered}
+\tag{SC18}
+\]">\[
+\begin{gathered}
+S_P(\xi,\tau)^2\\
+=(\tau^2-\xi^2)^2+4\tau^2+4\xi^2+8.
+\end{gathered}
+\tag{SC18}
+\]</span>
+At enlarged scale <span class="math" data-tex="\(T\)">\(T\)</span>, the two second derivatives contribute <span class="math" data-tex="\(8T^4\)">\(8T^4\)</span>, so <span class="math" data-tex="\(S_P(\xi,\tau,T)\ge\sqrt8\,T^2\)">\(S_P(\xi,\tau,T)\ge\sqrt8\,T^2\)</span>. Therefore the constant polynomial is dominated by <span class="math" data-tex="\(P\)">\(P\)</span>: the defining uniform ratio is at most <span class="math" data-tex="\(1/(\sqrt8 T^2)\to0\)">\(1/(\sqrt8 T^2)\to0\)</span>. Every frozen addition <span class="math" data-tex="\(V(z,t)\)">\(V(z,t)\)</span> preserves strength. The principal hyperbolic component is <span class="math" data-tex="\(\{(\xi,\tau):\tau&gt;|\xi|\}\)">\(\{(\xi,\tau):\tau&gt;|\xi|\}\)</span>, whose dual is <span class="math" data-tex="\(C=\{(z,t):t\ge|z|\}\)">\(C=\{(z,t):t\ge|z|\}\)</span>.</p>
+<p>For a point in <span class="math" data-tex="\(C+S\)">\(C+S\)</span>, write <span class="math" data-tex="\(z=z_s+z_c\)">\(z=z_s+z_c\)</span> and <span class="math" data-tex="\(t=t_s+t_c\)">\(t=t_s+t_c\)</span>, with <span class="math" data-tex="\(|z_s|\le a\)">\(|z_s|\le a\)</span>, <span class="math" data-tex="\(t_s\ge t_0\)">\(t_s\ge t_0\)</span>, and <span class="math" data-tex="\(t_c\ge|z_c|\)">\(t_c\ge|z_c|\)</span>. Then <span class="math" data-tex="\(t\ge t_0+\operatorname{dist}(z,[-a,a])\)">\(t\ge t_0+\operatorname{dist}(z,[-a,a])\)</span>. Conversely, choose <span class="math" data-tex="\(z_s\)">\(z_s\)</span> as the nearest point of <span class="math" data-tex="\([-a,a]\)">\([-a,a]\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span>, set <span class="math" data-tex="\(t_s=t_0\)">\(t_s=t_0\)</span>, and <span class="math" data-tex="\(t_c=t-t_0\)">\(t_c=t-t_0\)</span>. This proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C+S\\
+=\{(z,t):t\\
+\ge t_0+\max(0,|z|-a)\}.
+\end{gathered}
+\tag{SC19}
+\]">\[
+\begin{gathered}
+C+S\\
+=\{(z,t):t\\
+\ge t_0+\max(0,|z|-a)\}.
+\end{gathered}
+\tag{SC19}
+\]</span>
+Theorem 1 makes <span class="math" data-tex="\(Ef\)">\(Ef\)</span> vanish outside this set. It gives no equality of supports or sign of the solution inside it. Cancellations, special forcing and the compact output cutoff may leave substantial zero regions there. In the same conventions, the constant wave kernel is <span class="math" data-tex="\(-\tfrac12H(t-z)H(t+z)\)">\(-\tfrac12H(t-z)H(t+z)\)</span>: applying <span class="math" data-tex="\(-4\partial_{t-z}\partial_{t+z}\)">\(-4\partial_{t-z}\partial_{t+z}\)</span> gives <span class="math" data-tex="\(2\delta(t-z)\delta(t+z)=\delta(t)\delta(z)\)">\(2\delta(t-z)\delta(t+z)=\delta(t)\delta(z)\)</span>, fixing its source normalization. The kernel has the required cone support; its sign plays no role in the perturbation-support argument.</p>
+<h2 id="an-exact-support-diagram">An exact support diagram</h2>
+<p><a href="assets/AN02-L088/constant-strength-causal-support-A1ABC7462ADB3122A58665B633FF372229CC9963EFEC9F1AB9D1D5555F6B2186.png" title="Open full-size figure"><img src="assets/AN02-L088/constant-strength-causal-support-A1ABC7462ADB3122A58665B633FF372229CC9963EFEC9F1AB9D1D5555F6B2186.png" alt="The rectangular forcing support and its closed wave-cone sum; two allowed displacements remain in the same cone." class="course-figure" width="2400" height="1200" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="constant-strength-causal-support" data-asset-sha256="A1ABC7462ADB3122A58665B633FF372229CC9963EFEC9F1AB9D1D5555F6B2186"></a><br><a href="assets/AN02-L088/constant-strength-causal-support-A1ABC7462ADB3122A58665B633FF372229CC9963EFEC9F1AB9D1D5555F6B2186.png">Open full-size figure</a></p>
+<p>The blue set is the upper bound <span class="math" data-tex="\(C+S\)">\(C+S\)</span> in(SC19), in the normalized coordinates <span class="math" data-tex="\(z/r,t/r\)">\(z/r,t/r\)</span>. The rectangle is <span class="math" data-tex="\([-1/5,1/5]\times[-3/10,-1/10]\)">\([-1/5,1/5]\times[-3/10,-1/10]\)</span>; the dashed circle is the local ball after its admissible radius has been normalized to one. The two displacement vectors are <span class="math" data-tex="\((-7/20,9/20)\)">\((-7/20,9/20)\)</span> and <span class="math" data-tex="\((7/20,2/5)\)">\((7/20,2/5)\)</span>. Their sum is <span class="math" data-tex="\((0,17/20)\)">\((0,17/20)\)</span>, still strictly inside <span class="math" data-tex="\(t\ge|z|\)">\(t\ge|z|\)</span>. These are geometric support displacements, not sampled values of the operator or its solution. SC13–SC14 prove that finite terms and their distributional limit retain this support bound. Neither the shading nor the diagram claims that the whole blue set is occupied. The editable SVG and exact geometry record are retained with the reproducible rendering script. Human-source provenance is the constant-strength support theorem in Hörmander; this coordinate diagram is original.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, sections 13.3–13.5.</li>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture notes, University of Copenhagen, 2007–2008, <a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture-note index</a>.</li>
+
+</ul>
+</main></body></html>

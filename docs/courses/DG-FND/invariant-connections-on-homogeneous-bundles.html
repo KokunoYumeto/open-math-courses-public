@@ -1,0 +1,1462 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Invariant connections on homogeneous bundles</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main id="main"><nav aria-label="Chapter contents"><ul><li><a style="display:block" href="#part-a">A. Closed subgroups and transitive actions</a></li><li><a style="display:block" href="#part-b">B. The linear data of a homogeneous connection</a></li><li><a style="display:block" href="#part-c">C. Holonomy from the linear connection data</a></li><li><a style="display:block" href="#part-d">D. Complete computations on homogeneous bundles</a></li><li><a style="display:block" href="#part-e">E. Invariant connections for arbitrary group actions</a></li><li><a style="display:block" href="#part-f">F. Sections, gauge actions and nontransitive examples</a></li><li><a style="display:block" href="#part-g">G. Smooth functions of squared radius</a></li><li><a style="display:block" href="#part-h">H. Rotational connections, Euclidean lifts and flat examples</a></li></ul></nav><article class="lesson"><h1 id="invariant-connections-on-homogeneous-bundles">Invariant connections on homogeneous bundles</h1>
+<p>Symmetry reduces a connection to linear data, but isotropy, disconnected groups and smoothness at singular orbits still matter. We prove the closed-subgroup and transitive-orbit prerequisites, classify homogeneous connections, compute curvature and holonomy, and reconstruct invariant connections for arbitrary group actions. Complete examples include integral Hopf weights, noncommutative rectangle transport, gauge obstructions, dilation, rotational connections and both lifts of Euclidean symmetry. Smooth-jet and even-function proofs establish the classification at the origin.</p>
+<p>All used prerequisites are proved here or at exact earlier programme locators. The four freely accessible construction versions are credited in the relevant parts; external sources do not replace programme proofs.</p>
+<h2 id="part-a">A. Closed subgroups and transitive actions</h2>
+<p>All manifolds and Lie groups are finite dimensional, Hausdorff, second countable and smooth. Groups need not be connected. <strong>Local</strong> refers to <a href="local-tools-for-bundles-and-transport.html">Local tools for bundles and transport</a>, <strong>PB</strong> to <a href="principal-bundles-and-associated-bundles.html">Principal bundles and associated bundles</a>, and <strong>Conn</strong> to <a href="connections-and-parallel-transport.html">Connections and parallel transport</a>. The proofs below use the complete earlier proofs of finite dimensional compactness, differentiation, local inversion, constant rank, ordinary differential equations and the group exponential in Local 0.1–0.4, 1.2–1.4 and 2.1–2.3. No closed-subgroup theorem is assumed by those earlier results.</p>
+<p>The freely accessible construction source for this part is Peter W. Michor's <a href="https://www.mat.univie.ac.at/~michor/dgbook.pdf">author manuscript, <em>Topics in Differential Geometry</em></a>, §5.5 and §6.4, printed pages 64–65 and 70. We supply the transitivity argument and all other needed proofs below or at exact earlier programme results. We do not use the manuscript's onward references as proof providers.</p>
+<p id="theorem-a-1"><strong>Theorem A.1 (a closed subgroup is embedded).</strong> Every closed subgroup <span class="math" data-tex="\(L\)">\(L\)</span> of a Lie group <span class="math" data-tex="\(K\)">\(K\)</span> is an embedded Lie subgroup. Its Lie algebra is
+<span class="math math-display" data-tex="\[
+\mathfrak l=\{X\in\mathfrak k:\exp(tX)\in L\text{ for every }t\in\mathbb R\}.
+\tag{A.1}
+\]">\[
+\mathfrak l=\{X\in\mathfrak k:\exp(tX)\in L\text{ for every }t\in\mathbb R\}.
+\tag{A.1}
+\]</span>
+Consequently <span class="math" data-tex="\(K/L\)">\(K/L\)</span>, with its quotient topology, is a smooth Hausdorff second countable manifold, and <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span> is a principal <span class="math" data-tex="\(L\)">\(L\)</span>-bundle with smooth local sections.</p>
+<p><strong>Proof.</strong> Initially define <span class="math" data-tex="\(E\subset\mathfrak k=T_eK\)">\(E\subset\mathfrak k=T_eK\)</span> as the set of velocities <span class="math" data-tex="\(c'(0)\)">\(c'(0)\)</span> of smooth curves in <span class="math" data-tex="\(K\)">\(K\)</span> defined near zero, taking values in <span class="math" data-tex="\(L\)">\(L\)</span>, with <span class="math" data-tex="\(c(0)=e\)">\(c(0)=e\)</span>. This definition uses only the ambient smooth structure. The constant curve gives zero. If <span class="math" data-tex="\(c_1,c_2\)">\(c_1,c_2\)</span> have velocities <span class="math" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span>, then <span class="math" data-tex="\(c_1(at)c_2(bt)\)">\(c_1(at)c_2(bt)\)</span>, restricted to a common interval, has velocity <span class="math" data-tex="\(aX_1+bX_2\)">\(aX_1+bX_2\)</span>. Indeed multiplication has derivative <span class="math" data-tex="\((X,Y)\mapsto X+Y\)">\((X,Y)\mapsto X+Y\)</span> at <span class="math" data-tex="\((e,e)\)">\((e,e)\)</span>, by differentiating separately on its two factors. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is a vector subspace.</p>
+<p>We first record the effect of closedness. Suppose <span class="math" data-tex="\(s_j&gt;0\)">\(s_j&gt;0\)</span>, <span class="math" data-tex="\(s_j\to0\)">\(s_j\to0\)</span>, <span class="math" data-tex="\(X_j\to X\)">\(X_j\to X\)</span>, and <span class="math" data-tex="\(\exp(s_jX_j)\in L\)">\(\exp(s_jX_j)\in L\)</span>. For each fixed real <span class="math" data-tex="\(t\)">\(t\)</span>, choose an integer <span class="math" data-tex="\(m_j\)">\(m_j\)</span> with
+<span class="math math-display" data-tex="\[
+m_js_j\le t&lt;(m_j+1)s_j.
+\]">\[
+m_js_j\le t&lt;(m_j+1)s_j.
+\]</span>
+Then <span class="math" data-tex="\(m_js_jX_j\to tX\)">\(m_js_jX_j\to tX\)</span>. The exponential law of Local 2.3 and the subgroup property give
+<span class="math math-display" data-tex="\[
+\exp(m_js_jX_j)=\exp(s_jX_j)^{m_j}\in L.
+\]">\[
+\exp(m_js_jX_j)=\exp(s_jX_j)^{m_j}\in L.
+\]</span>
+Continuity of the exponential and closedness of <span class="math" data-tex="\(L\)">\(L\)</span> imply <span class="math" data-tex="\(\exp(tX)\in L\)">\(\exp(tX)\in L\)</span>. Negative <span class="math" data-tex="\(m_j\)">\(m_j\)</span> cause no problem because inverses belong to <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>For a curve defining <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span>, take its logarithm <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span> in the exponential chart of Local 2.3. Since <span class="math" data-tex="\(d\exp_0\)">\(d\exp_0\)</span> is the identity, <span class="math" data-tex="\(v(0)=0\)">\(v(0)=0\)</span> and <span class="math" data-tex="\(v'(0)=X\)">\(v'(0)=X\)</span>. For sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>, put <span class="math" data-tex="\(s_j=1/j\)">\(s_j=1/j\)</span>, <span class="math" data-tex="\(X_j=jv(1/j)\)">\(X_j=jv(1/j)\)</span>. Then <span class="math" data-tex="\(X_j\to X\)">\(X_j\to X\)</span> and <span class="math" data-tex="\(\exp(s_jX_j)=c(1/j)\in L\)">\(\exp(s_jX_j)=c(1/j)\in L\)</span>. The preceding argument proves that the entire one-parameter subgroup of <span class="math" data-tex="\(X\)">\(X\)</span> is in <span class="math" data-tex="\(L\)">\(L\)</span>. Conversely such a one-parameter subgroup is itself a curve defining <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span>. This proves the equality in (A.1) with <span class="math" data-tex="\(E\)">\(E\)</span> in place of <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>.</p>
+<p>Choose a vector-space complement <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> in <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>, using Local 0.2, and a Euclidean norm. There is a neighbourhood <span class="math" data-tex="\(W_0\)">\(W_0\)</span> of zero in <span class="math" data-tex="\(V\)">\(V\)</span> for which
+<span class="math math-display" data-tex="\[
+\exp(W_0)\cap L=\{e\}.
+\tag{A.2}
+\]">\[
+\exp(W_0)\cap L=\{e\}.
+\tag{A.2}
+\]</span>
+Otherwise, choose nonzero <span class="math" data-tex="\(Y_j\in V\)">\(Y_j\in V\)</span> with <span class="math" data-tex="\(Y_j\to0\)">\(Y_j\to0\)</span> and <span class="math" data-tex="\(\exp(Y_j)\in L\)">\(\exp(Y_j)\in L\)</span>, staying inside the injective exponential chart. Compactness of the unit sphere, Local 0.1, gives a subsequence on which <span class="math" data-tex="\(Y_j/\|Y_j\|\to Y\in V\)">\(Y_j/\|Y_j\|\to Y\in V\)</span> with <span class="math" data-tex="\(\|Y\|=1\)">\(\|Y\|=1\)</span>. Apply the preceding closedness argument with <span class="math" data-tex="\(s_j=\|Y_j\|\)">\(s_j=\|Y_j\|\)</span>. It shows <span class="math" data-tex="\(\exp(tY)\in L\)">\(\exp(tY)\in L\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(Y\in E\cap V=\{0\}\)">\(Y\in E\cap V=\{0\}\)</span>, a contradiction. If <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, (A.2) holds immediately.</p>
+<p>The map
+<span class="math math-display" data-tex="\[
+F:E\times V\longrightarrow K,\qquad F(X,Y)=\exp(X)\exp(Y)
+\]">\[
+F:E\times V\longrightarrow K,\qquad F(X,Y)=\exp(X)\exp(Y)
+\]</span>
+has derivative <span class="math" data-tex="\((X,Y)\mapsto X+Y\)">\((X,Y)\mapsto X+Y\)</span> at zero. Local 1.2 gives product neighbourhoods <span class="math" data-tex="\(U_E,U_V\)">\(U_E,U_V\)</span>, with <span class="math" data-tex="\(U_V\subset W_0\)">\(U_V\subset W_0\)</span>, on which it is a diffeomorphism onto an open neighbourhood <span class="math" data-tex="\(O\)">\(O\)</span> of <span class="math" data-tex="\(e\)">\(e\)</span>. If <span class="math" data-tex="\(F(X,Y)\in L\)">\(F(X,Y)\in L\)</span>, then <span class="math" data-tex="\(\exp(X)\in L\)">\(\exp(X)\in L\)</span> by (A.1), so <span class="math" data-tex="\(\exp(Y)=\exp(-X)F(X,Y)\in L\)">\(\exp(Y)=\exp(-X)F(X,Y)\in L\)</span>. Equation (A.2) and injectivity force <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span>. Conversely <span class="math" data-tex="\(F(X,0)\in L\)">\(F(X,0)\in L\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+O\cap L=F(U_E\times\{0\}).
+\tag{A.3}
+\]">\[
+O\cap L=F(U_E\times\{0\}).
+\tag{A.3}
+\]</span>
+Left translation by every element of <span class="math" data-tex="\(L\)">\(L\)</span> supplies such a slice chart at every point of <span class="math" data-tex="\(L\)">\(L\)</span>. These are embedded-submanifold charts with the subspace topology. In particular <span class="math" data-tex="\(T_eL=E\)">\(T_eL=E\)</span>, and Hausdorffness and second countability are inherited from <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The restrictions of ambient multiplication and inversion to <span class="math" data-tex="\(L\)">\(L\)</span> are smooth as maps into <span class="math" data-tex="\(L\)">\(L\)</span>: in a target slice chart their transverse coordinates vanish, and the remaining coordinates are restrictions of smooth ambient functions. Their domains are the corresponding product or single submanifold charts. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is a Lie group. Its bracket agrees with the restriction of the bracket on <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>. For completeness, the left invariant ambient field for <span class="math" data-tex="\(X\in E\)">\(X\in E\)</span> is tangent to <span class="math" data-tex="\(L\)">\(L\)</span>, because at <span class="math" data-tex="\(l\in L\)">\(l\in L\)</span> it is the velocity of <span class="math" data-tex="\(l\exp(tX)\)">\(l\exp(tX)\)</span>. In slice coordinates a tangent field has zero transverse coefficients along the slice. Tangential derivatives of these zero restrictions also vanish. The coordinate commutator formula of PB C.3 consequently makes the bracket of two such fields tangent to the slice. Evaluating at <span class="math" data-tex="\(e\)">\(e\)</span> proves bracket closure and agreement. This proves the embedded Lie-subgroup assertion and (A.1).</p>
+<p>Local 4.1 now applies with its embeddedness hypothesis established. Its complete quotient-chart proof gives the stated topology, countability, local sections and principal-bundle trivializations. This also covers discrete subgroups and zero-dimensional groups. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (transitivity gives a submersion).</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> act smoothly and transitively on a nonempty manifold <span class="math" data-tex="\(M\)">\(M\)</span>. Fix <span class="math" data-tex="\(x_0\in M\)">\(x_0\in M\)</span>, put <span class="math" data-tex="\(L=\{k\in K:kx_0=x_0\}\)">\(L=\{k\in K:kx_0=x_0\}\)</span>, and let <span class="math" data-tex="\(a(k)=kx_0\)">\(a(k)=kx_0\)</span>. Then <span class="math" data-tex="\(a\)">\(a\)</span> is a submersion and
+<span class="math math-display" data-tex="\[
+\bar a:K/L\longrightarrow M,\qquad kL\longmapsto kx_0
+\tag{A.4}
+\]">\[
+\bar a:K/L\longrightarrow M,\qquad kL\longmapsto kx_0
+\tag{A.4}
+\]</span>
+is a diffeomorphism. No connectedness of <span class="math" data-tex="\(K\)">\(K\)</span> or <span class="math" data-tex="\(L\)">\(L\)</span> is required.</p>
+<p><strong>Proof.</strong> The stabilizer is a subgroup, and is closed as the inverse image of the closed point <span class="math" data-tex="\(x_0\)">\(x_0\)</span> under <span class="math" data-tex="\(a\)">\(a\)</span>. Theorem A.1 gives its embedded structure and the smooth quotient. Define the fundamental field
+<span class="math math-display" data-tex="\[
+X_M(x)=\left.\frac{d}{dt}\right|_0\exp(tX)x.
+\]">\[
+X_M(x)=\left.\frac{d}{dt}\right|_0\exp(tX)x.
+\]</span>
+It is smooth by differentiation of the smooth action. The curve <span class="math" data-tex="\(t\mapsto\exp(tX)x\)">\(t\mapsto\exp(tX)x\)</span> solves this field's differential equation: use <span class="math" data-tex="\(\exp((t+s)X)=\exp(sX)\exp(tX)\)">\(\exp((t+s)X)=\exp(sX)\exp(tX)\)</span> and differentiate in <span class="math" data-tex="\(s\)">\(s\)</span>. If <span class="math" data-tex="\(X_M(x_0)=0\)">\(X_M(x_0)=0\)</span>, the constant curve at <span class="math" data-tex="\(x_0\)">\(x_0\)</span> solves the same equation. Uniqueness in Local 2.1 makes <span class="math" data-tex="\(\exp(tX)x_0=x_0\)">\(\exp(tX)x_0=x_0\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>; uniqueness propagates along every finite interval. Conversely that identity immediately gives <span class="math" data-tex="\(X_M(x_0)=0\)">\(X_M(x_0)=0\)</span>. By A.1,
+<span class="math math-display" data-tex="\[
+\ker da_e=\mathfrak l.
+\tag{A.5}
+\]">\[
+\ker da_e=\mathfrak l.
+\tag{A.5}
+\]</span></p>
+<p>The map (A.4) is a bijection by transitivity and the definition of <span class="math" data-tex="\(L\)">\(L\)</span>. It is smooth: composing a smooth local section of <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> gives its expression on that quotient chart. The quotient projection has kernel <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> at <span class="math" data-tex="\(e\)">\(e\)</span>, as its product charts in Local 4.1 show. Thus (A.5) makes <span class="math" data-tex="\(d\bar a\)">\(d\bar a\)</span> injective at <span class="math" data-tex="\(eL\)">\(eL\)</span>. Equivariance under the diffeomorphisms given by left translation and the action of <span class="math" data-tex="\(K\)">\(K\)</span> makes it injective everywhere. Hence <span class="math" data-tex="\(\bar a\)">\(\bar a\)</span> is an immersion of dimension <span class="math" data-tex="\(r=\dim K-\dim L\)">\(r=\dim K-\dim L\)</span> into <span class="math" data-tex="\(M\)">\(M\)</span>, whose dimension is <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(r\le n\)">\(r\le n\)</span>.</p>
+<p>We prove <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, including the countability step. Suppose instead that <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>. Local 1.4 gives each point of <span class="math" data-tex="\(K/L\)">\(K/L\)</span> an open coordinate neighbourhood on which <span class="math" data-tex="\(\bar a\)">\(\bar a\)</span> is an embedding into a coordinate <span class="math" data-tex="\(r\)">\(r\)</span>-plane in an open chart of <span class="math" data-tex="\(M\)">\(M\)</span>. These neighbourhoods have a countable subcover. Indeed from a countable basis select, for each basis member contained in one of the neighbourhoods, one such neighbourhood; the selected collection covers every point. Inside each selected source chart, closed coordinate balls with rational centres and positive rational radii whose closures stay in the chart give a countable compact cover. Their compactness is Local 0.1. Enumerate all these compact subsets as <span class="math" data-tex="\(C_j\)">\(C_j\)</span>.</p>
+<p>Each <span class="math" data-tex="\(\bar a(C_j)\)">\(\bar a(C_j)\)</span> is compact by continuity and closed in the Hausdorff space <span class="math" data-tex="\(M\)">\(M\)</span>. The latter elementary assertion follows by separating a point outside a compact set from each of its points, choosing a finite subcover of the resulting neighbourhoods of the compact set, and intersecting the finitely many disjoint neighbourhoods of the outside point. Its interior is empty: it lies in a coordinate <span class="math" data-tex="\(r\)">\(r\)</span>-plane, which contains no open <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional ball when <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>. Thus <span class="math" data-tex="\(M\)">\(M\)</span>, by the surjectivity of <span class="math" data-tex="\(\bar a\)">\(\bar a\)</span>, would be a countable union of closed sets with empty interior.</p>
+<p>Here that is impossible by the following direct nested-ball argument. Choose a closed positive-radius ball <span class="math" data-tex="\(B_0\)">\(B_0\)</span> in one coordinate chart of <span class="math" data-tex="\(M\)">\(M\)</span>, with its closure inside the chart. Since <span class="math" data-tex="\(\bar a(C_1)\)">\(\bar a(C_1)\)</span> is closed and has empty interior, the interior of <span class="math" data-tex="\(B_0\)">\(B_0\)</span> contains a smaller closed positive-radius ball <span class="math" data-tex="\(B_1\)">\(B_1\)</span> disjoint from it. Continue with
+<span class="math math-display" data-tex="\[
+B_j\subset\operatorname{int}B_{j-1}\setminus\bar a(C_j),
+\qquad \operatorname{radius}(B_j)&lt;2^{-j}.
+\]">\[
+B_j\subset\operatorname{int}B_{j-1}\setminus\bar a(C_j),
+\qquad \operatorname{radius}(B_j)&lt;2^{-j}.
+\]</span>
+At each step the indicated set is a nonempty open subset of the fixed coordinate chart. The centres have a convergent subsequence in the compact ball <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. For every fixed <span class="math" data-tex="\(j\)">\(j\)</span>, all later centres belong to the closed set <span class="math" data-tex="\(B_j\)">\(B_j\)</span>, so the limit belongs to every <span class="math" data-tex="\(B_j\)">\(B_j\)</span>. It belongs to none of the sets <span class="math" data-tex="\(\bar a(C_j)\)">\(\bar a(C_j)\)</span>, contradicting their covering of <span class="math" data-tex="\(M\)">\(M\)</span>. The case <span class="math" data-tex="\(n=0\)">\(n=0\)</span> cannot have <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span> in the first place.</p>
+<p>It follows that <span class="math" data-tex="\(d\bar a\)">\(d\bar a\)</span> is everywhere bijective. Local 1.2 makes <span class="math" data-tex="\(\bar a\)">\(\bar a\)</span> a local diffeomorphism. Its bijectivity makes the local smooth inverses agree to give a global smooth inverse. Finally <span class="math" data-tex="\(a=\bar a\circ q\)">\(a=\bar a\circ q\)</span>, with <span class="math" data-tex="\(q:K\to K/L\)">\(q:K\to K/L\)</span> a submersion by A.1, proves the submersion assertion. □</p>
+<h2 id="part-b">B. The linear data of a homogeneous connection</h2>
+<p>Continue the conventions of Part A. <strong>Curv</strong> denotes <a href="curvature-and-holonomy-groups.html">Curvature and holonomy groups</a>. The construction source is Hsien-Chung Wang's freely accessible original article, <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/7AC585E9DDCEF66E15F24C3481EEF592/S0027763000023461a.pdf/on-invariant-connections-over-a-principal-fibre-bundle.pdf"><em>On Invariant Connections over a Principal Fibre Bundle</em>, Nagoya Mathematical Journal 13 (1958), 1–19</a>, §§3–6, especially Theorem 1 on pages 8–9. We use the programme's right principal action, positive value on fundamental vectors and curvature <span class="math" data-tex="\(d\omega+\frac12[\omega,\omega]\)">\(d\omega+\frac12[\omega,\omega]\)</span>. The formulas and signs are derived below in these conventions; the article uses a left structure-group action and a different normalization. No external citation replaces a proof.</p>
+<p id="theorem-b-1"><strong>Theorem B.1 (the bundle determined by isotropy).</strong> Suppose <span class="math" data-tex="\(K\)">\(K\)</span> acts smoothly on a right principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> by principal automorphisms and acts transitively on <span class="math" data-tex="\(M\)">\(M\)</span>. Choose <span class="math" data-tex="\(p_0\in P_{x_0}\)">\(p_0\in P_{x_0}\)</span>, let <span class="math" data-tex="\(L=K_{x_0}\)">\(L=K_{x_0}\)</span>, and define <span class="math" data-tex="\(\lambda:L\to G\)">\(\lambda:L\to G\)</span> by
+<span class="math math-display" data-tex="\[
+lp_0=p_0\lambda(l).
+\tag{B.1}
+\]">\[
+lp_0=p_0\lambda(l).
+\tag{B.1}
+\]</span>
+Then <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a smooth group homomorphism, and
+<span class="math math-display" data-tex="\[
+P_\lambda=(K\times G)/L,\qquad
+(k,g)\cdot l=(kl,\lambda(l)^{-1}g),
+\tag{B.2}
+\]">\[
+P_\lambda=(K\times G)/L,\qquad
+(k,g)\cdot l=(kl,\lambda(l)^{-1}g),
+\tag{B.2}
+\]</span>
+is a right principal <span class="math" data-tex="\(G\)">\(G\)</span>-bundle over <span class="math" data-tex="\(K/L\)">\(K/L\)</span>. The map
+<span class="math math-display" data-tex="\[
+\Xi:P_\lambda\longrightarrow P,\qquad [k,g]\longmapsto kp_0g
+\tag{B.3}
+\]">\[
+\Xi:P_\lambda\longrightarrow P,\qquad [k,g]\longmapsto kp_0g
+\tag{B.3}
+\]</span>
+is a smooth principal-bundle isomorphism covering A.2 and intertwining the left <span class="math" data-tex="\(K\)">\(K\)</span>-actions. Conversely every smooth homomorphism <span class="math" data-tex="\(\lambda:L\to G\)">\(\lambda:L\to G\)</span>, for a closed subgroup <span class="math" data-tex="\(L\subset K\)">\(L\subset K\)</span>, defines such a homogeneous principal bundle by (B.2).</p>
+<p><strong>Proof.</strong> Freeness and transitivity of the principal action on a fibre give a unique <span class="math" data-tex="\(\lambda(l)\)">\(\lambda(l)\)</span>. PB A.2's smooth division map gives <span class="math" data-tex="\(\lambda(l)=\delta(p_0,lp_0)\)">\(\lambda(l)=\delta(p_0,lp_0)\)</span>, so it is smooth. Since the <span class="math" data-tex="\(K\)">\(K\)</span>-action commutes with the principal action,
+<span class="math math-display" data-tex="\[
+(l_1l_2)p_0=l_1(p_0\lambda(l_2))
+=p_0\lambda(l_1)\lambda(l_2).
+\]">\[
+(l_1l_2)p_0=l_1(p_0\lambda(l_2))
+=p_0\lambda(l_1)\lambda(l_2).
+\]</span>
+Freeness proves the homomorphism identity. A.1 makes <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span> a principal <span class="math" data-tex="\(L\)">\(L\)</span>-bundle. Apply the associated-bundle construction PB B.1 to the left <span class="math" data-tex="\(L\)">\(L\)</span>-action <span class="math" data-tex="\(l:g\mapsto\lambda(l)g\)">\(l:g\mapsto\lambda(l)g\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span>. It gives precisely (B.2), its actual quotient topology and its smooth Hausdorff second countable total space. Its quotient map <span class="math" data-tex="\(q:K\times G\to P_\lambda\)">\(q:K\times G\to P_\lambda\)</span> is a submersion and a principal <span class="math" data-tex="\(L\)">\(L\)</span>-bundle.</p>
+<p>Right multiplication <span class="math" data-tex="\([k,g]h=[k,gh]\)">\([k,g]h=[k,gh]\)</span> is well defined because it commutes with the equivalence in (B.2). For a local section <span class="math" data-tex="\(\sigma:U\to K\)">\(\sigma:U\to K\)</span> of <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span>, the associated-bundle chart is
+<span class="math math-display" data-tex="\[
+U\times G\longrightarrow P_\lambda|_U,
+\qquad(x,g)\longmapsto[\sigma(x),g].
+\tag{B.4}
+\]">\[
+U\times G\longrightarrow P_\lambda|_U,
+\qquad(x,g)\longmapsto[\sigma(x),g].
+\tag{B.4}
+\]</span>
+It intertwines right multiplication with multiplication in the second factor, proving the principal-bundle assertion. Left multiplication <span class="math" data-tex="\(a[k,g]=[ak,g]\)">\(a[k,g]=[ak,g]\)</span> is well defined and smooth. To check joint smoothness without a quotient-action assumption, lift a point locally using (B.4); the expression <span class="math" data-tex="\((a,x,g)\mapsto q(a\sigma(x),g)\)">\((a,x,g)\mapsto q(a\sigma(x),g)\)</span> is smooth. These local expressions cover the domain. The left action commutes with the right action and induces the transitive left action on <span class="math" data-tex="\(K/L\)">\(K/L\)</span>.</p>
+<p>Equation (B.3) is independent of the representative because
+<span class="math math-display" data-tex="\[
+(kl)p_0\lambda(l)^{-1}g=kp_0g.
+\]">\[
+(kl)p_0\lambda(l)^{-1}g=kp_0g.
+\]</span>
+It is onto: for <span class="math" data-tex="\(p\in P_x\)">\(p\in P_x\)</span>, choose <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(kx_0=x\)">\(kx_0=x\)</span>, then divide in the fibre to get the unique <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(p=kp_0g\)">\(p=kp_0g\)</span>. If <span class="math" data-tex="\(kp_0g=k'p_0g'\)">\(kp_0g=k'p_0g'\)</span>, the base equality gives <span class="math" data-tex="\(k'=kl\)">\(k'=kl\)</span> for some <span class="math" data-tex="\(l\in L\)">\(l\in L\)</span>; freeness then gives <span class="math" data-tex="\(g=\lambda(l)g'\)">\(g=\lambda(l)g'\)</span>, exactly the relation (B.2). Thus it is also one-to-one.</p>
+<p>In the chart (B.4), it is <span class="math" data-tex="\((x,g)\mapsto\sigma(x)p_0g\)">\((x,g)\mapsto\sigma(x)p_0g\)</span>. Here <span class="math" data-tex="\(x\mapsto\sigma(x)p_0\)">\(x\mapsto\sigma(x)p_0\)</span> is a smooth section over <span class="math" data-tex="\(U\)">\(U\)</span> after the base identification A.2. PB A.2 proves that this map and its inverse are smooth bundle charts. Hence <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> is a diffeomorphism. Its two equivariances follow directly from (B.3). The converse uses only the construction (B.2)–(B.4), already proved for an arbitrary smooth <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (Wang's classification with the full isotropy group).</strong> Put <span class="math" data-tex="\(\lambda_*=d\lambda_e\)">\(\lambda_*=d\lambda_e\)</span>. Invariant principal connections on <span class="math" data-tex="\(P_\lambda\)">\(P_\lambda\)</span> correspond bijectively to linear maps <span class="math" data-tex="\(W:\mathfrak k\to\mathfrak g\)">\(W:\mathfrak k\to\mathfrak g\)</span> such that
+<span class="math math-display" data-tex="\[
+W|_{\mathfrak l}=\lambda_*,\qquad
+W(\operatorname{Ad}(l)X)=\operatorname{Ad}(\lambda(l))W(X)
+\quad(l\in L,\ X\in\mathfrak k).
+\tag{B.5}
+\]">\[
+W|_{\mathfrak l}=\lambda_*,\qquad
+W(\operatorname{Ad}(l)X)=\operatorname{Ad}(\lambda(l))W(X)
+\quad(l\in L,\ X\in\mathfrak k).
+\tag{B.5}
+\]</span>
+Write <span class="math" data-tex="\(b(k)=[k,e]\)">\(b(k)=[k,e]\)</span>, and let <span class="math" data-tex="\(\theta^K,\theta^G\)">\(\theta^K,\theta^G\)</span> be the left Maurer forms. The correspondence and its reconstruction are
+<span class="math math-display" data-tex="\[
+W=(b^*\omega)_e,\qquad
+q^*\omega=\operatorname{Ad}(g^{-1})W(\theta^K)+\theta^G
+\quad\text{on }K\times G.
+\tag{B.6}
+\]">\[
+W=(b^*\omega)_e,\qquad
+q^*\omega=\operatorname{Ad}(g^{-1})W(\theta^K)+\theta^G
+\quad\text{on }K\times G.
+\tag{B.6}
+\]</span>
+The conditions in (B.5) concern every component of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be invariant. The equality <span class="math" data-tex="\(b(ak)=a\,b(k)\)">\(b(ak)=a\,b(k)\)</span> makes <span class="math" data-tex="\(b^*\omega\)">\(b^*\omega\)</span> left invariant on <span class="math" data-tex="\(K\)">\(K\)</span>, hence equal to <span class="math" data-tex="\(W\theta^K\)">\(W\theta^K\)</span>: evaluating a left invariant one-form on <span class="math" data-tex="\(dL_kX\)">\(dL_kX\)</span> recovers its value at <span class="math" data-tex="\(e\)">\(e\)</span>. For <span class="math" data-tex="\(Z\in\mathfrak l\)">\(Z\in\mathfrak l\)</span>, the homomorphism <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> carries <span class="math" data-tex="\(\exp(tZ)\)">\(\exp(tZ)\)</span> to <span class="math" data-tex="\(\exp(t\lambda_*Z)\)">\(\exp(t\lambda_*Z)\)</span>. This follows by differentiating its homomorphism identity along the one-parameter subgroup and using the uniqueness of the invariant equation, Local 2.1–2.3. Therefore
+<span class="math math-display" data-tex="\[
+b(\exp(tZ))=[e,\lambda(\exp(tZ))]=p_0\exp(t\lambda_*Z),
+\]">\[
+b(\exp(tZ))=[e,\lambda(\exp(tZ))]=p_0\exp(t\lambda_*Z),
+\]</span>
+where <span class="math" data-tex="\(p_0=[e,e]\)">\(p_0=[e,e]\)</span>. Vertical reproduction in Conn A.2 gives <span class="math" data-tex="\(W(Z)=\lambda_*Z\)">\(W(Z)=\lambda_*Z\)</span>. For <span class="math" data-tex="\(l\in L\)">\(l\in L\)</span>,
+<span class="math math-display" data-tex="\[
+b(lkl^{-1})=l\,b(k)\lambda(l)^{-1}.
+\]">\[
+b(lkl^{-1})=l\,b(k)\lambda(l)^{-1}.
+\]</span>
+Pull back <span class="math" data-tex="\(\omega\)">\(\omega\)</span> through this identity, using <span class="math" data-tex="\(K\)">\(K\)</span>-invariance and right equivariance from Conn A.2, and evaluate at <span class="math" data-tex="\(k=e\)">\(k=e\)</span>. It gives the second identity of (B.5), with <span class="math" data-tex="\(\operatorname{Ad}(\lambda(l))\)">\(\operatorname{Ad}(\lambda(l))\)</span> on the right. This argument includes disconnected isotropy.</p>
+<p>Since <span class="math" data-tex="\(q(k,g)=b(k)g\)">\(q(k,g)=b(k)g\)</span>, splitting its differential between its two factors and using reproduction and equivariance gives (B.6), by exactly the calculation in Conn A.3. In particular <span class="math" data-tex="\(W\)">\(W\)</span> determines <span class="math" data-tex="\(q^*\omega\)">\(q^*\omega\)</span>. A submersion has surjective differential, so equality of pullbacks of one-forms implies equality of the forms; hence this proves uniqueness.</p>
+<p>Conversely suppose (B.5) holds and call the right side of (B.6) <span class="math" data-tex="\(\widetilde\omega\)">\(\widetilde\omega\)</span>. We verify that it descends through <span class="math" data-tex="\(q\)">\(q\)</span>. For fixed <span class="math" data-tex="\(l\in L\)">\(l\in L\)</span>, the transformation in (B.2) sends <span class="math" data-tex="\(\theta^K\)">\(\theta^K\)</span> to <span class="math" data-tex="\(\operatorname{Ad}(l^{-1})\theta^K\)">\(\operatorname{Ad}(l^{-1})\theta^K\)</span> and leaves <span class="math" data-tex="\(\theta^G\)">\(\theta^G\)</span> unchanged, since the latter factor is left multiplication by a constant. Its first term becomes
+<span class="math math-display" data-tex="\[
+\operatorname{Ad}(g^{-1}\lambda(l))W(\operatorname{Ad}(l^{-1})\theta^K)
+=\operatorname{Ad}(g^{-1})W(\theta^K),
+\]">\[
+\operatorname{Ad}(g^{-1}\lambda(l))W(\operatorname{Ad}(l^{-1})\theta^K)
+=\operatorname{Ad}(g^{-1})W(\theta^K),
+\]</span>
+using (B.5). Thus <span class="math" data-tex="\(\widetilde\omega\)">\(\widetilde\omega\)</span> is invariant under the entire <span class="math" data-tex="\(L\)">\(L\)</span>-action.</p>
+<p>The vertical tangent for <span class="math" data-tex="\(q\)">\(q\)</span> generated by <span class="math" data-tex="\(Z\in\mathfrak l\)">\(Z\in\mathfrak l\)</span> at <span class="math" data-tex="\((k,g)\)">\((k,g)\)</span> is the velocity of
+<span class="math math-display" data-tex="\[
+(k\exp(tZ),\exp(-t\lambda_*Z)g).
+\]">\[
+(k\exp(tZ),\exp(-t\lambda_*Z)g).
+\]</span>
+The first Maurer value is <span class="math" data-tex="\(Z\)">\(Z\)</span>. The second Maurer value is <span class="math" data-tex="\(-\operatorname{Ad}(g^{-1})\lambda_*Z\)">\(-\operatorname{Ad}(g^{-1})\lambda_*Z\)</span>, by the right-translation identity for the left Maurer form in Conn A.3. Therefore <span class="math" data-tex="\(\widetilde\omega\)">\(\widetilde\omega\)</span> vanishes on this vertical vector by <span class="math" data-tex="\(W(Z)=\lambda_*Z\)">\(W(Z)=\lambda_*Z\)</span>. These vectors span <span class="math" data-tex="\(\ker dq\)">\(\ker dq\)</span>, since B.1 identifies <span class="math" data-tex="\(q\)">\(q\)</span> as a principal <span class="math" data-tex="\(L\)">\(L\)</span>-bundle.</p>
+<p>Here is the descent argument explicitly. At <span class="math" data-tex="\(z\in P_\lambda\)">\(z\in P_\lambda\)</span>, choose a lift <span class="math" data-tex="\(\tilde z\)">\(\tilde z\)</span> and for <span class="math" data-tex="\(v\in T_zP_\lambda\)">\(v\in T_zP_\lambda\)</span> a tangent lift <span class="math" data-tex="\(\tilde v\)">\(\tilde v\)</span>, and set <span class="math" data-tex="\(\omega_z(v)=\widetilde\omega_{\tilde z}(\tilde v)\)">\(\omega_z(v)=\widetilde\omega_{\tilde z}(\tilde v)\)</span>. Two tangent lifts at the same point differ by a vertical vector, on which the form vanishes. Two point lifts differ by a unique element of <span class="math" data-tex="\(L\)">\(L\)</span>; translating a tangent lift by that fixed element and using invariance proves independence of the point lift. Linearity follows by choosing all tangent lifts at one point. In a smooth local section <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span>, the defined form is <span class="math" data-tex="\(s^*\widetilde\omega\)">\(s^*\widetilde\omega\)</span>, proving smoothness. Local sections exist by B.1 and PB B.1. This constructs the unique descended one-form.</p>
+<p>Left multiplication on the <span class="math" data-tex="\(K\)">\(K\)</span>-factor preserves both terms of <span class="math" data-tex="\(\widetilde\omega\)">\(\widetilde\omega\)</span>, so the descended form is <span class="math" data-tex="\(K\)">\(K\)</span>-invariant. Right multiplication on the <span class="math" data-tex="\(G\)">\(G\)</span>-factor sends it to <span class="math" data-tex="\(\operatorname{Ad}(h^{-1})\widetilde\omega\)">\(\operatorname{Ad}(h^{-1})\widetilde\omega\)</span>, by Conn A.3's Maurer identity and <span class="math" data-tex="\(\operatorname{Ad}((gh)^{-1})=\operatorname{Ad}(h^{-1})\operatorname{Ad}(g^{-1})\)">\(\operatorname{Ad}((gh)^{-1})=\operatorname{Ad}(h^{-1})\operatorname{Ad}(g^{-1})\)</span>. Its value on the principal <span class="math" data-tex="\(G\)">\(G\)</span>-fundamental vector represented by <span class="math" data-tex="\((0,dL_gY)\)">\((0,dL_gY)\)</span> is <span class="math" data-tex="\(Y\)">\(Y\)</span>. These identities descend, so Conn A.2 proves that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a principal connection. Evaluating its pullback at <span class="math" data-tex="\((e,e)\)">\((e,e)\)</span> on <span class="math" data-tex="\((X,0)\)">\((X,0)\)</span> recovers <span class="math" data-tex="\(W(X)\)">\(W(X)\)</span>. Both constructions are inverse. □</p>
+<p id="theorem-b-3"><strong>Theorem B.3 (curvature is the bracket defect).</strong> For the connection associated to <span class="math" data-tex="\(W\)">\(W\)</span>, define
+<span class="math math-display" data-tex="\[
+C_W(X,Y)=[W(X),W(Y)]-W([X,Y]).
+\tag{B.7}
+\]">\[
+C_W(X,Y)=[W(X),W(Y)]-W([X,Y]).
+\tag{B.7}
+\]</span>
+Then <span class="math" data-tex="\(\Omega=d\omega+\frac12[\omega,\omega]\)">\(\Omega=d\omega+\frac12[\omega,\omega]\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(b^*\Omega)_k(dL_kX,dL_kY)&amp;=C_W(X,Y),\\
+(q^*\Omega)_{(k,g)}((v,\eta),(w,\xi))
+&amp;=\operatorname{Ad}(g^{-1})C_W(\theta^K_kv,\theta^K_kw).
+\end{aligned}
+\tag{B.8}
+\]">\[
+\begin{aligned}
+(b^*\Omega)_k(dL_kX,dL_kY)&amp;=C_W(X,Y),\\
+(q^*\Omega)_{(k,g)}((v,\eta),(w,\xi))
+&amp;=\operatorname{Ad}(g^{-1})C_W(\theta^K_kv,\theta^K_kw).
+\end{aligned}
+\tag{B.8}
+\]</span>
+In particular <span class="math" data-tex="\(C_W\)">\(C_W\)</span> vanishes when either argument is in <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>, and the connection is flat exactly when <span class="math" data-tex="\(W\)">\(W\)</span> is a Lie algebra homomorphism.</p>
+<p><strong>Proof.</strong> Curv A.1–A.4 prove the exterior-bracket identities, the exterior evaluation formula, the Maurer identity, and the curvature's horizontality and right equivariance. Pulling back the curvature and using B.2 gives
+<span class="math math-display" data-tex="\[
+b^*\Omega=d(W\theta^K)+\tfrac12[W\theta^K,W\theta^K].
+\]">\[
+b^*\Omega=d(W\theta^K)+\tfrac12[W\theta^K,W\theta^K].
+\]</span>
+On the left invariant fields for <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, the one-form has constant values <span class="math" data-tex="\(W(X),W(Y)\)">\(W(X),W(Y)\)</span>. The exterior evaluation formula, Curv A.2, makes its derivative equal to <span class="math" data-tex="\(-W([X,Y])\)">\(-W([X,Y])\)</span>; Curv A.1 makes the half bracket equal to <span class="math" data-tex="\([W(X),W(Y)]\)">\([W(X),W(Y)]\)</span>. This proves the first formula in (B.8).</p>
+<p>For <span class="math" data-tex="\(q(k,g)=b(k)g\)">\(q(k,g)=b(k)g\)</span>, its differential applied to <span class="math" data-tex="\((v,\eta)\)">\((v,\eta)\)</span> is the sum of <span class="math" data-tex="\(dR_g\,db(v)\)">\(dR_g\,db(v)\)</span> and a principal vertical vector. Horizontality of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> removes that vertical term from each argument, and right equivariance extracts <span class="math" data-tex="\(\operatorname{Ad}(g^{-1})\)">\(\operatorname{Ad}(g^{-1})\)</span>. The first formula, writing <span class="math" data-tex="\(v=dL_k\theta^K_kv\)">\(v=dL_k\theta^K_kv\)</span>, proves the second. This also proves that all curvature values are accounted for, because <span class="math" data-tex="\(q\)">\(q\)</span> is a submersion.</p>
+<p>To check the isotropy vanishing directly, put <span class="math" data-tex="\(l=\exp(tZ)\)">\(l=\exp(tZ)\)</span> in (B.5) with <span class="math" data-tex="\(Z\in\mathfrak l\)">\(Z\in\mathfrak l\)</span> and differentiate at zero. Curv A.3 gives
+<span class="math math-display" data-tex="\[
+W([Z,Y])=[\lambda_*Z,W(Y)]=[W(Z),W(Y)].
+\]">\[
+W([Z,Y])=[\lambda_*Z,W(Y)]=[W(Z),W(Y)].
+\]</span>
+Thus <span class="math" data-tex="\(C_W(Z,Y)=0\)">\(C_W(Z,Y)=0\)</span>, and antisymmetry handles the other argument. Finally <span class="math" data-tex="\(\Omega=0\)">\(\Omega=0\)</span> implies <span class="math" data-tex="\(C_W=0\)">\(C_W=0\)</span> by the first formula at <span class="math" data-tex="\(e\)">\(e\)</span>, and <span class="math" data-tex="\(C_W=0\)">\(C_W=0\)</span> implies <span class="math" data-tex="\(q^*\Omega=0\)">\(q^*\Omega=0\)</span> by the second. Surjectivity of <span class="math" data-tex="\(dq\)">\(dq\)</span> then gives <span class="math" data-tex="\(\Omega=0\)">\(\Omega=0\)</span>. By its definition (B.7), <span class="math" data-tex="\(C_W=0\)">\(C_W=0\)</span> is exactly bracket preservation by the linear map <span class="math" data-tex="\(W\)">\(W\)</span>. □</p>
+<h2 id="part-c">C. Holonomy from the linear connection data</h2>
+<p>The free primary source for the homogeneous holonomy formula is Wang's <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/7AC585E9DDCEF66E15F24C3481EEF592/S0027763000023461a.pdf/on-invariant-connections-over-a-principal-fibre-bundle.pdf">original article</a>, §9, Theorem 3. Its reductive construction is §6, Corollary 3. The proof below uses the complete curvature-generation proof in <strong>Curv G.3</strong>, together with the intrinsic holonomy groups proved in <strong>Curv C.5</strong>. <strong>Flat</strong> denotes <a href="flat-connections-and-infinitesimal-holonomy.html">Flat connections and infinitesimal holonomy</a>; its A.1 proves uniqueness of the connected immersed subgroup integrating a Lie subalgebra. None of Wang's onward references is used in place of these programme proofs.</p>
+<p id="theorem-c-1"><strong>Theorem C.1 (the homogeneous holonomy algebra).</strong> Assume that <span class="math" data-tex="\(M=K/L\)">\(M=K/L\)</span> is connected. Let <span class="math" data-tex="\(W\)">\(W\)</span> satisfy (B.5) and let <span class="math" data-tex="\(C_W\)">\(C_W\)</span> be its bracket defect (B.7). Define subspaces of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> recursively by
+<span class="math math-display" data-tex="\[
+V_0=\operatorname{span}_{\mathbb R}\{C_W(X,Y):X,Y\in\mathfrak k\},
+\qquad
+V_{j+1}=V_j+\operatorname{span}_{\mathbb R}\{[W(X),Z]:X\in\mathfrak k,\ Z\in V_j\}.
+\tag{C.1}
+\]">\[
+V_0=\operatorname{span}_{\mathbb R}\{C_W(X,Y):X,Y\in\mathfrak k\},
+\qquad
+V_{j+1}=V_j+\operatorname{span}_{\mathbb R}\{[W(X),Z]:X\in\mathfrak k,\ Z\in V_j\}.
+\tag{C.1}
+\]</span>
+The increasing sequence stabilizes after finitely many steps. Its final space <span class="math" data-tex="\(V\)">\(V\)</span> is the Lie algebra of both full and restricted holonomy at <span class="math" data-tex="\(p_0=[e,e]\)">\(p_0=[e,e]\)</span>. In particular <span class="math" data-tex="\(V\)">\(V\)</span> is a Lie subalgebra, and
+<span class="math math-display" data-tex="\[
+\operatorname{Hol}_{p_0}^{0}
+=\langle\exp(tZ):t\in\mathbb R,\ Z\in V\rangle
+\tag{C.2}
+\]">\[
+\operatorname{Hol}_{p_0}^{0}
+=\langle\exp(tZ):t\in\mathbb R,\ Z\in V\rangle
+\tag{C.2}
+\]</span>
+with its intrinsic connected immersed Lie-group structure. The formula determines restricted holonomy, not the discrete components of full holonomy. Neither <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(L\)">\(L\)</span>, nor <span class="math" data-tex="\(G\)">\(G\)</span> is required to be connected.</p>
+<p><strong>Proof.</strong> Every <span class="math" data-tex="\(V_j\)">\(V_j\)</span> is a subspace of the finite dimensional vector space <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>. A strict inclusion increases dimension. Once <span class="math" data-tex="\(V_{j+1}=V_j\)">\(V_{j+1}=V_j\)</span>, that space is preserved by every <span class="math" data-tex="\(\operatorname{ad}(W(X))\)">\(\operatorname{ad}(W(X))\)</span>, so the recursion remains stationary. Thus it stabilizes; this includes <span class="math" data-tex="\(V_0=\{0\}\)">\(V_0=\{0\}\)</span>. Its final space is precisely the smallest vector subspace containing <span class="math" data-tex="\(V_0\)">\(V_0\)</span> and preserved by all these adjoint operators. We do not assume bracket closure at this stage.</p>
+<p>Write <span class="math" data-tex="\(H^0\)">\(H^0\)</span> and <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> for the restricted holonomy group and its Lie algebra, as constructed in Curv C.5. Curv G.3 implies <span class="math" data-tex="\(V_0\subset\mathfrak h\)">\(V_0\subset\mathfrak h\)</span>, by evaluating curvature at the initial point and using B.3. We show that <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> is preserved by <span class="math" data-tex="\(\operatorname{ad}(W(X))\)">\(\operatorname{ad}(W(X))\)</span>. Fix <span class="math" data-tex="\(X\in\mathfrak k\)">\(X\in\mathfrak k\)</span> and put
+<span class="math math-display" data-tex="\[
+k(t)=\exp(tX),\qquad
+p(t)=k(t)p_0\exp(-tW(X)).
+\tag{C.3}
+\]">\[
+k(t)=\exp(tX),\qquad
+p(t)=k(t)p_0\exp(-tW(X)).
+\tag{C.3}
+\]</span>
+Formula (B.6) gives
+<span class="math math-display" data-tex="\[
+\omega(p'(t))
+=\operatorname{Ad}(\exp(tW(X)))W(X)-W(X)=0.
+\]">\[
+\omega(p'(t))
+=\operatorname{Ad}(\exp(tW(X)))W(X)-W(X)=0.
+\]</span>
+Here conjugation by the one-parameter subgroup fixes its generator, by differentiating its commutation with itself. Thus (C.3) is the horizontal lift, from <span class="math" data-tex="\(p_0\)">\(p_0\)</span>, of <span class="math" data-tex="\(k(t)L\)">\(k(t)L\)</span>.</p>
+<p>A connection-preserving principal automorphism carries a horizontal lift to a horizontal lift: it preserves the zero value of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, and uniqueness of transport identifies the resulting lift. Acting by <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> therefore identifies the holonomy groups at <span class="math" data-tex="\(p_0\)">\(p_0\)</span> and <span class="math" data-tex="\(k(t)p_0\)">\(k(t)p_0\)</span> as the same subgroups of <span class="math" data-tex="\(G\)">\(G\)</span>. This holds for restricted groups too, because the base diffeomorphism sends a based contraction to a based contraction. On the other hand Curv C.5 identifies the restricted group at the horizontally transported <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> with <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, and its change-of-frame formula gives
+<span class="math math-display" data-tex="\[
+H^0
+=\exp(tW(X))H^0\exp(-tW(X)).
+\tag{C.4}
+\]">\[
+H^0
+=\exp(tW(X))H^0\exp(-tW(X)).
+\tag{C.4}
+\]</span>
+This equality also identifies the intrinsic smooth structures. In Curv C.5 that structure is built from all smooth identity-containing parameter families in the subgroup; conjugation in <span class="math" data-tex="\(G\)">\(G\)</span> carries this family to itself when it preserves the subgroup. The same word charts used there make the restriction of conjugation a smooth automorphism. Differentiating it in the subgroup gives
+<span class="math" data-tex="\(\operatorname{Ad}(\exp(tW(X)))\mathfrak h=\mathfrak h\)">\(\operatorname{Ad}(\exp(tW(X)))\mathfrak h=\mathfrak h\)</span>.
+For <span class="math" data-tex="\(Z\in\mathfrak h\)">\(Z\in\mathfrak h\)</span>, differentiate this curve of vectors at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. A finite dimensional subspace contains the derivative of any curve lying in it, as projection onto a linear complement verifies. Curv A.3 now gives <span class="math" data-tex="\([W(X),Z]\in\mathfrak h\)">\([W(X),Z]\in\mathfrak h\)</span>. The minimality just proved for <span class="math" data-tex="\(V\)">\(V\)</span> implies
+<span class="math math-display" data-tex="\[
+V\subseteq\mathfrak h.
+\tag{C.5}
+\]">\[
+V\subseteq\mathfrak h.
+\tag{C.5}
+\]</span></p>
+<p>For the opposite inclusion take any finitely piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> base path <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> starting at <span class="math" data-tex="\(eL\)">\(eL\)</span>. The principal <span class="math" data-tex="\(L\)">\(L\)</span>-bundle <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span> has a smooth connection by Conn B.1, with no invariance required of this auxiliary connection. Its global lifting theorem Conn C.1, extended to this time regularity in Curv C.2, gives a finitely piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> lift <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> with <span class="math" data-tex="\(k(0)=e\)">\(k(0)=e\)</span>. Set
+<span class="math math-display" data-tex="\[
+u(t)=\theta^K_{k(t)}k'(t),\qquad a(t)=W(u(t)).
+\]">\[
+u(t)=\theta^K_{k(t)}k'(t),\qquad a(t)=W(u(t)).
+\]</span>
+These are continuous on each closed time piece. By Local 2.2 the equation
+<span class="math math-display" data-tex="\[
+g'(t)=-(dR_{g(t)})_e a(t),\qquad g(0)=e,
+\tag{C.6}
+\]">\[
+g'(t)=-(dR_{g(t)})_e a(t),\qquad g(0)=e,
+\tag{C.6}
+\]</span>
+has a unique solution on the entire path interval. Formula (B.6) and the left Maurer form of (C.6) show that <span class="math" data-tex="\([k(t),g(t)]\)">\([k(t),g(t)]\)</span> is horizontal, so it is the lift of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> from <span class="math" data-tex="\(p_0\)">\(p_0\)</span>.</p>
+<p>We claim <span class="math" data-tex="\(\operatorname{Ad}(g(t)^{-1})V=V\)">\(\operatorname{Ad}(g(t)^{-1})V=V\)</span>. Put <span class="math" data-tex="\(T(t)=\operatorname{Ad}(g(t)^{-1})\)">\(T(t)=\operatorname{Ad}(g(t)^{-1})\)</span>. On each time piece, differentiation of the adjoint homomorphism, using Curv A.3, gives
+<span class="math math-display" data-tex="\[
+T'(t)=T(t)\operatorname{ad}(a(t)),\qquad T(0)=I.
+\tag{C.7}
+\]">\[
+T'(t)=T(t)\operatorname{ad}(a(t)),\qquad T(0)=I.
+\tag{C.7}
+\]</span>
+To verify the order and sign intrinsically, the right logarithmic derivative in (C.6) is <span class="math" data-tex="\(-a(t)\)">\(-a(t)\)</span>. Differentiating <span class="math" data-tex="\(\operatorname{Ad}(g(t))\)">\(\operatorname{Ad}(g(t))\)</span> gives <span class="math" data-tex="\(-\operatorname{ad}(a(t))\operatorname{Ad}(g(t))\)">\(-\operatorname{ad}(a(t))\operatorname{Ad}(g(t))\)</span>; differentiate the identity between this operator and its inverse to obtain (C.7). These are derivatives of group multiplication, not a matrix assumption on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Choose a complement of <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, Local 0.2. Since <span class="math" data-tex="\(\operatorname{ad}(a(t))\)">\(\operatorname{ad}(a(t))\)</span> preserves <span class="math" data-tex="\(V\)">\(V\)</span>, its block from <span class="math" data-tex="\(V\)">\(V\)</span> to the complement is zero. In the equation (C.7), the corresponding lower-left block <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> of <span class="math" data-tex="\(T(t)\)">\(T(t)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+B'=B A_{11}(t),\qquad B(0)=0,
+\]">\[
+B'=B A_{11}(t),\qquad B(0)=0,
+\]</span>
+where <span class="math" data-tex="\(A_{11}\)">\(A_{11}\)</span> is the restriction of <span class="math" data-tex="\(\operatorname{ad}(a(t))\)">\(\operatorname{ad}(a(t))\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>. Uniqueness for this linear equation gives <span class="math" data-tex="\(B=0\)">\(B=0\)</span>. The uniqueness proof in Local 2.1 applies to continuous time coefficients, as explicitly verified in Local 2.2; transpose the equation if desired to give a right matrix equation. Apply this on successive pieces, passing the zero endpoint value forward. Consequently <span class="math" data-tex="\(T(t)V\subset V\)">\(T(t)V\subset V\)</span>. Since <span class="math" data-tex="\(T(t)\)">\(T(t)\)</span> is invertible and <span class="math" data-tex="\(V\)">\(V\)</span> has finite dimension, its restriction has image of the same dimension, hence <span class="math" data-tex="\(T(t)V=V\)">\(T(t)V=V\)</span>. If <span class="math" data-tex="\(V\)">\(V\)</span> or its complement has dimension zero the same assertion is immediate.</p>
+<p>At every point of this horizontal lift, formula (B.8) puts all curvature values in
+<span class="math" data-tex="\(\operatorname{Ad}(g(t)^{-1})V_0\subset V\)">\(\operatorname{Ad}(g(t)^{-1})V_0\subset V\)</span>.
+Every point horizontally reachable from <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is obtained by such a path. Curv G.3 says that the ordinary linear span of exactly these values is <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. Thus <span class="math" data-tex="\(\mathfrak h\subseteq V\)">\(\mathfrak h\subseteq V\)</span>, completing equality with (C.5). This proves bracket closure too, since <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> is a Lie algebra. Curv C.5 identifies restricted holonomy as the full group's connected identity component, and Flat A.1 gives (C.2) with the asserted smooth structure. No discrete-component assertion follows from a Lie algebra computation. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (reductive splittings and the canonical connection).</strong> Suppose
+<span class="math math-display" data-tex="\[
+\mathfrak k=\mathfrak l\oplus\mathfrak m,
+\qquad\operatorname{Ad}(l)\mathfrak m=\mathfrak m\quad(l\in L).
+\tag{C.8}
+\]">\[
+\mathfrak k=\mathfrak l\oplus\mathfrak m,
+\qquad\operatorname{Ad}(l)\mathfrak m=\mathfrak m\quad(l\in L).
+\tag{C.8}
+\]</span>
+For any smooth <span class="math" data-tex="\(\lambda:L\to G\)">\(\lambda:L\to G\)</span>, invariant connections on <span class="math" data-tex="\(P_\lambda\)">\(P_\lambda\)</span> correspond to the linear maps <span class="math" data-tex="\(\alpha:\mathfrak m\to\mathfrak g\)">\(\alpha:\mathfrak m\to\mathfrak g\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\alpha(\operatorname{Ad}(l)X)=\operatorname{Ad}(\lambda(l))\alpha(X).
+\tag{C.9}
+\]">\[
+\alpha(\operatorname{Ad}(l)X)=\operatorname{Ad}(\lambda(l))\alpha(X).
+\tag{C.9}
+\]</span>
+Their Wang maps are <span class="math" data-tex="\(W(Z+X)=\lambda_*Z+\alpha(X)\)">\(W(Z+X)=\lambda_*Z+\alpha(X)\)</span>. In particular <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span> defines the canonical connection for the chosen splitting. For <span class="math" data-tex="\(X,Y\in\mathfrak m\)">\(X,Y\in\mathfrak m\)</span>, their curvature defects are
+<span class="math math-display" data-tex="\[
+C_W(X,Y)=[\alpha(X),\alpha(Y)]
+-\lambda_*([X,Y]_{\mathfrak l})-\alpha([X,Y]_{\mathfrak m}).
+\tag{C.10}
+\]">\[
+C_W(X,Y)=[\alpha(X),\alpha(Y)]
+-\lambda_*([X,Y]_{\mathfrak l})-\alpha([X,Y]_{\mathfrak m}).
+\tag{C.10}
+\]</span>
+On <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span> itself, take <span class="math" data-tex="\(G=L\)">\(G=L\)</span> and <span class="math" data-tex="\(\lambda=\mathrm{id}\)">\(\lambda=\mathrm{id}\)</span>; the canonical horizontal space at <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(dL_k\mathfrak m\)">\(dL_k\mathfrak m\)</span>.</p>
+<p><strong>Proof.</strong> The subspace <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> is preserved by <span class="math" data-tex="\(\operatorname{Ad}(L)\)">\(\operatorname{Ad}(L)\)</span>, because conjugation by <span class="math" data-tex="\(L\)">\(L\)</span> maps its embedded subgroup to itself. Together with (C.8) this means that the two projections in that direct sum commute with <span class="math" data-tex="\(\operatorname{Ad}(l)\)">\(\operatorname{Ad}(l)\)</span>. Differentiating
+<span class="math" data-tex="\(\lambda(lhl^{-1})=\lambda(l)\lambda(h)\lambda(l)^{-1}\)">\(\lambda(lhl^{-1})=\lambda(l)\lambda(h)\lambda(l)^{-1}\)</span>
+at <span class="math" data-tex="\(h=e\)">\(h=e\)</span> gives
+<span class="math" data-tex="\(\lambda_*\operatorname{Ad}(l)=\operatorname{Ad}(\lambda(l))\lambda_*\)">\(\lambda_*\operatorname{Ad}(l)=\operatorname{Ad}(\lambda(l))\lambda_*\)</span> on <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span>. Therefore a map with the prescribed restriction <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span> satisfies (B.5) precisely when its remaining component satisfies (C.9). B.2 proves the classification and existence for <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Substitution in (B.7) gives (C.10); B.3 already proves that pairs involving <span class="math" data-tex="\(\mathfrak l\)">\(\mathfrak l\)</span> contribute zero.</p>
+<p>For the last assertion, the map <span class="math" data-tex="\([k,h]\mapsto kh\)">\([k,h]\mapsto kh\)</span> identifies <span class="math" data-tex="\(K\times_L L\)">\(K\times_L L\)</span> with <span class="math" data-tex="\(K\)">\(K\)</span>; its inverse is <span class="math" data-tex="\(k\mapsto[k,e]\)">\(k\mapsto[k,e]\)</span>, and the local charts B.4 verify smoothness in both directions. The canonical one-form on <span class="math" data-tex="\(K\)">\(K\)</span> is consequently <span class="math" data-tex="\(\operatorname{pr}_{\mathfrak l}\theta^K\)">\(\operatorname{pr}_{\mathfrak l}\theta^K\)</span>, by (B.6). Its kernel is exactly <span class="math" data-tex="\(dL_k\mathfrak m\)">\(dL_k\mathfrak m\)</span>. In particular it is a connection for the full subgroup <span class="math" data-tex="\(L\)">\(L\)</span>, including its disconnected components. □</p>
+<h2 id="part-d">D. Complete computations on homogeneous bundles</h2>
+<p>These examples use the free-source constructions proved in Parts A–C. The circle, Hopf bundle and its connection are constructed and proved in <strong>PB E.1</strong>, <strong>Conn E.1–E.3</strong> and <strong>Curv D.1</strong>. We give the additional matrix algebra, isotropy calculations and transport equations explicitly. The historical exercise statements are used only to check coverage; their former solutions supply none of these proofs.</p>
+<p id="example-d-1"><strong>Example D.1 (the special unitary model of the Hopf bundle).</strong> For <span class="math" data-tex="\(z=(z_0,z_1)\in S^3\subset\mathbb C^2\)">\(z=(z_0,z_1)\in S^3\subset\mathbb C^2\)</span>, put
+<span class="math math-display" data-tex="\[
+k(z)=\begin{pmatrix}z_0&amp;-\bar z_1\\z_1&amp;\bar z_0\end{pmatrix}.
+\tag{D.1}
+\]">\[
+k(z)=\begin{pmatrix}z_0&amp;-\bar z_1\\z_1&amp;\bar z_0\end{pmatrix}.
+\tag{D.1}
+\]</span>
+These matrices form <span class="math" data-tex="\(K=\mathrm{SU}(2)\)">\(K=\mathrm{SU}(2)\)</span>, with its smooth group structure identified with <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. Its transitive action on <span class="math" data-tex="\(\mathbb {CP}^1\)">\(\mathbb {CP}^1\)</span> has stabilizer
+<span class="math math-display" data-tex="\[
+L=\left\{\begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix}:a\in U(1)\right\}
+\tag{D.2}
+\]">\[
+L=\left\{\begin{pmatrix}a&amp;0\\0&amp;a^{-1}\end{pmatrix}:a\in U(1)\right\}
+\tag{D.2}
+\]</span>
+at <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span>. A real basis of its Lie algebra is
+<span class="math math-display" data-tex="\[
+H=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+E=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad
+F=\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},
+\tag{D.3}
+\]">\[
+H=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+E=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad
+F=\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},
+\tag{D.3}
+\]</span>
+with
+<span class="math math-display" data-tex="\[
+[H,E]=-2F,\qquad [H,F]=2E,\qquad [E,F]=-2H.
+\tag{D.4}
+\]">\[
+[H,E]=-2F,\qquad [H,F]=2E,\qquad [E,F]=-2H.
+\tag{D.4}
+\]</span>
+The splitting <span class="math" data-tex="\(\mathfrak {su}(2)=\mathbb RH\oplus\operatorname{span}_{\mathbb R}\{E,F\}\)">\(\mathfrak {su}(2)=\mathbb RH\oplus\operatorname{span}_{\mathbb R}\{E,F\}\)</span> is <span class="math" data-tex="\(\operatorname{Ad}(L)\)">\(\operatorname{Ad}(L)\)</span>-invariant. For <span class="math" data-tex="\(\lambda_1(\operatorname{diag}(a,a^{-1}))=a\)">\(\lambda_1(\operatorname{diag}(a,a^{-1}))=a\)</span>, the homogeneous principal <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>-bundle is the Hopf bundle of PB E.1.</p>
+<p><strong>Proof.</strong> The columns of (D.1) have length one and inner product zero, and its determinant is <span class="math" data-tex="\(|z_0|^2+|z_1|^2=1\)">\(|z_0|^2+|z_1|^2=1\)</span>. Conversely, for a unitary determinant-one matrix with first column <span class="math" data-tex="\(z\)">\(z\)</span>, its second column must be <span class="math" data-tex="\(c(-\bar z_1,\bar z_0)\)">\(c(-\bar z_1,\bar z_0)\)</span> for some <span class="math" data-tex="\(c\in U(1)\)">\(c\in U(1)\)</span>. To see the one-dimensional orthogonal complement directly, solve <span class="math" data-tex="\(\bar z_0u+\bar z_1v=0\)">\(\bar z_0u+\bar z_1v=0\)</span> using whichever component of <span class="math" data-tex="\(z\)">\(z\)</span> is nonzero; unit length gives <span class="math" data-tex="\(|c|=1\)">\(|c|=1\)</span>. The determinant equals <span class="math" data-tex="\(c\)">\(c\)</span>, so <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. This proves the bijection with the set of unitary determinant-one matrices. That set is closed under multiplication and inverse: conjugate-transpose multiplication reverses the factors, and determinants of two-by-two matrices multiply by direct expansion. In (D.1) and its inverse, which extracts the first column, all coordinates are real polynomial expressions. PB E.1 proves the smooth sphere structure; the resulting group operations are smooth restrictions of matrix multiplication and conjugate transpose. Thus this is a Lie group smoothly identified with <span class="math" data-tex="\(S^3\)">\(S^3\)</span>.</p>
+<p>Its linear action on complex lines is smooth: in either projective chart from PB E.1, use a spanning column <span class="math" data-tex="\((1,w)\)">\((1,w)\)</span> or <span class="math" data-tex="\((v,1)\)">\((v,1)\)</span>, multiply by the matrix, and divide by the nonzero output component. These formulas cover the action domain. Every line contains a unit vector, and (D.1) maps <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> to that vector, proving transitivity. A matrix preserving the first coordinate line has first column <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>, <span class="math" data-tex="\(|a|=1\)">\(|a|=1\)</span>, and the proved second-column formula gives (D.2). The stabilizer is closed, and A.2 identifies <span class="math" data-tex="\(K/L\)">\(K/L\)</span> smoothly with <span class="math" data-tex="\(\mathbb {CP}^1\)">\(\mathbb {CP}^1\)</span>.</p>
+<p>At <span class="math" data-tex="\(z=(1,0)\)">\(z=(1,0)\)</span>, differentiation of the sphere equation gives a tangent first component <span class="math" data-tex="\(ir\)">\(ir\)</span>, <span class="math" data-tex="\(r\in\mathbb R\)">\(r\in\mathbb R\)</span>, and an arbitrary second component <span class="math" data-tex="\(u+iv\)">\(u+iv\)</span>. Differentiating (D.1) therefore gives exactly <span class="math" data-tex="\(rH+uE+vF\)">\(rH+uE+vF\)</span>, proving the basis assertion. Matrix multiplication and subtraction give (D.4), with the matrix Lie-bracket convention proved in Curv A.3. Conjugation by <span class="math" data-tex="\(\operatorname{diag}(a,a^{-1})\)">\(\operatorname{diag}(a,a^{-1})\)</span> fixes <span class="math" data-tex="\(H\)">\(H\)</span> and sends a matrix with zero diagonal to one with zero diagonal; within this real Lie algebra those are exactly the span of <span class="math" data-tex="\(E,F\)">\(E,F\)</span>. It is invertible, proving preservation of that plane in both directions. This proves the splitting assertion.</p>
+<p>The map
+<span class="math math-display" data-tex="\[
+[k,a]\longmapsto k(1,0)^T a
+\tag{D.5}
+\]">\[
+[k,a]\longmapsto k(1,0)^T a
+\tag{D.5}
+\]</span>
+is the bundle identification B.3, applied to the unit-column Hopf bundle and the natural left action of <span class="math" data-tex="\(K\)">\(K\)</span>. Indeed the action commutes with scalar multiplication, and the isotropy formula at <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> is exactly <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span>. B.1 proves that (D.5) is a smooth principal-bundle isomorphism. This verifies the Hopf identification with the same right-action convention as PB E.1. □</p>
+<p id="exercise-d-2"><strong>Exercise D.2 (all integral Hopf weights).</strong> For <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>, let
+<span class="math math-display" data-tex="\[
+\lambda_m(\operatorname{diag}(a,a^{-1}))=a^m,\qquad
+P_m=\mathrm{SU}(2)\times_{\lambda_m}U(1).
+\tag{D.6}
+\]">\[
+\lambda_m(\operatorname{diag}(a,a^{-1}))=a^m,\qquad
+P_m=\mathrm{SU}(2)\times_{\lambda_m}U(1).
+\tag{D.6}
+\]</span>
+Determine all invariant connections, their curvature and both holonomy groups. Identify the case <span class="math" data-tex="\(m=1\)">\(m=1\)</span> with the earlier Hopf connection.</p>
+<p><strong>Solution.</strong> Every integer power is a smooth homomorphism of <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, including negative powers by smooth inversion. Differentiating a product of <span class="math" data-tex="\(m\)">\(m\)</span> factors, or its inverse for <span class="math" data-tex="\(m&lt;0\)">\(m&lt;0\)</span>, gives <span class="math" data-tex="\((\lambda_m)_*(H)=im\)">\((\lambda_m)_*(H)=im\)</span>. The target Lie algebra is <span class="math" data-tex="\(i\mathbb R\)">\(i\mathbb R\)</span> with trivial adjoint action. For the particular isotropy element <span class="math" data-tex="\(l=\operatorname{diag}(i,-i)\)">\(l=\operatorname{diag}(i,-i)\)</span>, direct matrix conjugation sends both <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> to their negatives. Thus (B.5) forces <span class="math" data-tex="\(W(E)=W(F)=0\)">\(W(E)=W(F)=0\)</span>; its other condition forces <span class="math" data-tex="\(W(H)=im\)">\(W(H)=im\)</span>. Conversely this map is equivariant for all of <span class="math" data-tex="\(L\)">\(L\)</span>, because D.1 proves that <span class="math" data-tex="\(H\)">\(H\)</span> is fixed and its complementary plane is invariant. There is therefore exactly one invariant connection for each <span class="math" data-tex="\(m\)">\(m\)</span>, namely the canonical connection C.2 with
+<span class="math math-display" data-tex="\[
+W_m(rH+uE+vF)=imr.
+\tag{D.7}
+\]">\[
+W_m(rH+uE+vF)=imr.
+\tag{D.7}
+\]</span></p>
+<p>For vectors represented at <span class="math" data-tex="\(p_0\)">\(p_0\)</span> by <span class="math" data-tex="\(E,F\)">\(E,F\)</span>, equations (B.7) and (D.4) give
+<span class="math math-display" data-tex="\[
+C_{W_m}(E,F)=2im,
+\qquad C_{W_m}(H,E)=C_{W_m}(H,F)=0.
+\tag{D.8}
+\]">\[
+C_{W_m}(E,F)=2im,
+\qquad C_{W_m}(H,E)=C_{W_m}(H,F)=0.
+\tag{D.8}
+\]</span>
+These determine the curvature at every point by (B.8). More concretely, for a local section <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(K\to K/L\)">\(K\to K/L\)</span>, the corresponding section <span class="math" data-tex="\([\sigma,e]\)">\([\sigma,e]\)</span> of <span class="math" data-tex="\(P_m\)">\(P_m\)</span> has potential <span class="math" data-tex="\(W_m\sigma^*\theta^K\)">\(W_m\sigma^*\theta^K\)</span>, hence <span class="math" data-tex="\(m\)">\(m\)</span> times the potential for <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<p>In the identification D.1 with <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, the one-form <span class="math" data-tex="\(z^*dz\)">\(z^*dz\)</span> of Conn E.3 is invariant under <span class="math" data-tex="\(K\)">\(K\)</span>, because for a constant unitary matrix <span class="math" data-tex="\(k\)">\(k\)</span> one has <span class="math" data-tex="\((kz)^*d(kz)=z^*k^*k\,dz=z^*dz\)">\((kz)^*d(kz)=z^*k^*k\,dz=z^*dz\)</span>. Its values at <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> on the velocities <span class="math" data-tex="\(H(1,0), E(1,0), F(1,0)\)">\(H(1,0), E(1,0), F(1,0)\)</span> are <span class="math" data-tex="\(i,0,0\)">\(i,0,0\)</span>. Thus it is the unique <span class="math" data-tex="\(m=1\)">\(m=1\)</span> connection just determined. The unit section of Conn E.3 consequently gives the potential and curvature for every <span class="math" data-tex="\(m\)">\(m\)</span>:
+<span class="math math-display" data-tex="\[
+A_m=m\,\frac{\bar w\,dw-w\,d\bar w}{2(1+|w|^2)},
+\qquad
+F_m=\frac{2im}{(1+x^2+y^2)^2}\,dx\wedge dy,
+\quad w=x+iy.
+\tag{D.9}
+\]">\[
+A_m=m\,\frac{\bar w\,dw-w\,d\bar w}{2(1+|w|^2)},
+\qquad
+F_m=\frac{2im}{(1+x^2+y^2)^2}\,dx\wedge dy,
+\quad w=x+iy.
+\tag{D.9}
+\]</span>
+The curvature computation for <span class="math" data-tex="\(m=1\)">\(m=1\)</span> is Curv D.1; the target is abelian, so exterior differentiation gives the displayed scaling for every integer <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>The base is connected. For example every finite projective coordinate <span class="math" data-tex="\(w\)">\(w\)</span> is joined to zero by <span class="math" data-tex="\(t\mapsto tw\)">\(t\mapsto tw\)</span>; the remaining line lies in the second coordinate chart and is joined there to a point of the overlap. If <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, (D.8) spans all of <span class="math" data-tex="\(i\mathbb R\)">\(i\mathbb R\)</span>. Theorem C.1 makes this the restricted holonomy algebra. Its integrated connected subgroup is all of <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, since the circle exponential in Conn E.1 is onto and (C.2) includes every such exponential. Consequently full and restricted holonomy are both <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>.</p>
+<p>For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the isotropy homomorphism is trivial. The map <span class="math" data-tex="\([k,a]\mapsto(kL,a)\)">\([k,a]\mapsto(kL,a)\)</span> and its chartwise inverse identify <span class="math" data-tex="\(P_0\)">\(P_0\)</span> with the product bundle. Formula (D.7) gives <span class="math" data-tex="\(W_0=0\)">\(W_0=0\)</span>, so (B.6) is just the left Maurer form on the second factor. Thus the global product potential is zero, transport preserves that coordinate, and both holonomy groups are the identity group. This last conclusion uses the actual product transport, rather than inferring full holonomy from a zero Lie algebra. □</p>
+<p id="exercise-d-3"><strong>Exercise D.3 (central holonomy and the rectangle sign).</strong> On <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let the structure group <span class="math" data-tex="\(N\)">\(N\)</span> consist of upper triangular real three-by-three matrices with diagonal entries one. Put <span class="math" data-tex="\(P=E_{12}\)">\(P=E_{12}\)</span>, <span class="math" data-tex="\(Q=E_{23}\)">\(Q=E_{23}\)</span>, <span class="math" data-tex="\(Z=E_{13}\)">\(Z=E_{13}\)</span>, and take potential <span class="math" data-tex="\(A=P\,dx+Q\,dy\)">\(A=P\,dx+Q\,dy\)</span>. Determine curvature, full and restricted holonomy, and the exact transport around the rectangle traversed right, up, left, down.</p>
+<p><strong>Solution.</strong> Write an element as <span class="math" data-tex="\(I+uP+vQ+wZ\)">\(I+uP+vQ+wZ\)</span>. Matrix multiplication gives
+<span class="math math-display" data-tex="\[
+(u,v,w)(u',v',w')=(u+u',v+v',w+w'+uv'),
+\qquad
+(u,v,w)^{-1}=(-u,-v,uv-w).
+\tag{D.10}
+\]">\[
+(u,v,w)(u',v',w')=(u+u',v+v',w+w'+uv'),
+\qquad
+(u,v,w)^{-1}=(-u,-v,uv-w).
+\tag{D.10}
+\]</span>
+These polynomial formulas make <span class="math" data-tex="\(N\)">\(N\)</span> a Lie group on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>. Its tangent algebra consists of <span class="math" data-tex="\(uP+vQ+wZ\)">\(uP+vQ+wZ\)</span>; direct products give <span class="math" data-tex="\(PQ=Z\)">\(PQ=Z\)</span>, <span class="math" data-tex="\(QP=0\)">\(QP=0\)</span>, and every product of <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(P,Q,Z\)">\(P,Q,Z\)</span> is zero. Hence <span class="math" data-tex="\([P,Q]=Z\)">\([P,Q]=Z\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span> is central. The local curvature formula in Curv A.4 gives
+<span class="math math-display" data-tex="\[
+F=Z\,dx\wedge dy.
+\tag{D.11}
+\]">\[
+F=Z\,dx\wedge dy.
+\tag{D.11}
+\]</span>
+Translations of the base, leaving the group coordinate fixed, preserve the potential, so this is also the homogeneous case with <span class="math" data-tex="\(K=\mathbb R^2\)">\(K=\mathbb R^2\)</span>, <span class="math" data-tex="\(L=\{0\}\)">\(L=\{0\}\)</span>, and <span class="math" data-tex="\(W(a,b)=aP+bQ\)">\(W(a,b)=aP+bQ\)</span>. In C.1, <span class="math" data-tex="\(V_0=\mathbb RZ\)">\(V_0=\mathbb RZ\)</span> and all further adjoint brackets vanish. Thus restricted holonomy has algebra <span class="math" data-tex="\(\mathbb RZ\)">\(\mathbb RZ\)</span> and group <span class="math" data-tex="\(\{I+cZ:c\in\mathbb R\}\)">\(\{I+cZ:c\in\mathbb R\}\)</span>, since <span class="math" data-tex="\(t\mapsto I+tcZ\)">\(t\mapsto I+tcZ\)</span> is the one-parameter subgroup with tangent <span class="math" data-tex="\(cZ\)">\(cZ\)</span>.</p>
+<p>We also compute every loop transport directly, which proves the full-group assertion and the sign. For a path <span class="math" data-tex="\((x(t),y(t))\)">\((x(t),y(t))\)</span> starting at <span class="math" data-tex="\((x_0,y_0)\)">\((x_0,y_0)\)</span>, write its identity-starting group lift as <span class="math" data-tex="\(g(t)=I+u(t)P+v(t)Q+w(t)Z\)">\(g(t)=I+u(t)P+v(t)Q+w(t)Z\)</span>. The equation from Conn C.1 is <span class="math" data-tex="\(g'=-(Px'+Qy')g\)">\(g'=-(Px'+Qy')g\)</span>, so
+<span class="math math-display" data-tex="\[
+u'=-x',\qquad v'=-y',\qquad w'=-x'v.
+\tag{D.12}
+\]">\[
+u'=-x',\qquad v'=-y',\qquad w'=-x'v.
+\tag{D.12}
+\]</span>
+With zero initial values, <span class="math" data-tex="\(u=x_0-x\)">\(u=x_0-x\)</span>, <span class="math" data-tex="\(v=y_0-y\)">\(v=y_0-y\)</span>, and
+<span class="math math-display" data-tex="\[
+w(t)=\int_0^t (y(s)-y_0)x'(s)\,ds.
+\tag{D.13}
+\]">\[
+w(t)=\int_0^t (y(s)-y_0)x'(s)\,ds.
+\tag{D.13}
+\]</span>
+The integrals are taken on each of the finitely many <span class="math" data-tex="\(C^1\)">\(C^1\)</span> pieces. Local 0.3 and (D.12) verify the equations and initial values; uniqueness identifies the lift. For a loop the endpoint has <span class="math" data-tex="\(u=v=0\)">\(u=v=0\)</span>, so every full holonomy element is central. On a rectangle of side lengths <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, only its leftward edge contributes to (D.13), giving <span class="math" data-tex="\(-ab\)">\(-ab\)</span>. Therefore its exact multiplier is
+<span class="math math-display" data-tex="\[
+I-abZ=\exp(-abZ).
+\tag{D.14}
+\]">\[
+I-abZ=\exp(-abZ).
+\tag{D.14}
+\]</span>
+With positive sides this yields every negative central parameter by varying the area, and reversing the loop yields every positive parameter; zero comes from the constant loop. All these loops contract linearly in the plane. Consequently both full and restricted holonomy are exactly <span class="math" data-tex="\(\{I+cZ:c\in\mathbb R\}\)">\(\{I+cZ:c\in\mathbb R\}\)</span>. Starting at any other group coordinate multiplies it on the right of these endpoint multipliers, by principal equivariance. □</p>
+<p id="exercise-d-4"><strong>Exercise D.4 (isotropy and flat circle monodromy).</strong> Let <span class="math" data-tex="\(K=\mathbb R\)">\(K=\mathbb R\)</span>, <span class="math" data-tex="\(L=2\pi\mathbb Z\)">\(L=2\pi\mathbb Z\)</span>, <span class="math" data-tex="\(G=U(1)\)">\(G=U(1)\)</span>, and
+<span class="math math-display" data-tex="\[
+\lambda(2\pi n)=e^{2\pi i\beta n},\qquad W(1)=i\alpha,
+\quad\alpha,\beta\in\mathbb R.
+\tag{D.15}
+\]">\[
+\lambda(2\pi n)=e^{2\pi i\beta n},\qquad W(1)=i\alpha,
+\quad\alpha,\beta\in\mathbb R.
+\tag{D.15}
+\]</span>
+Compute positive-generator transport on <span class="math" data-tex="\(P_\lambda\)">\(P_\lambda\)</span>, give its potential in a global section, and determine its holonomy groups.</p>
+<p><strong>Solution.</strong> Conn E.1 proves that <span class="math" data-tex="\(t\mapsto e^{it}\)">\(t\mapsto e^{it}\)</span> identifies <span class="math" data-tex="\(\mathbb R/2\pi\mathbb Z\)">\(\mathbb R/2\pi\mathbb Z\)</span> with the circle and gives smooth local inverse angles. The subgroup <span class="math" data-tex="\(L\)">\(L\)</span> is closed and discrete, so <span class="math" data-tex="\(\mathfrak l=0\)">\(\mathfrak l=0\)</span>. Both adjoint actions in (B.5) are trivial. Thus every real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> defines an invariant connection with
+<span class="math math-display" data-tex="\[
+q^*\omega=i\alpha\,dt+g^{-1}dg.
+\tag{D.16}
+\]">\[
+q^*\omega=i\alpha\,dt+g^{-1}dg.
+\tag{D.16}
+\]</span>
+Its curvature is zero, either by B.3 or because the base is one dimensional. Along the positive generator parametrized by <span class="math" data-tex="\(0\le t\le2\pi\)">\(0\le t\le2\pi\)</span>, the horizontal lift from <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is <span class="math" data-tex="\([t,e^{-i\alpha t}]\)">\([t,e^{-i\alpha t}]\)</span>, as substitution in (D.16) verifies. Since <span class="math" data-tex="\([t+2\pi n,g]=[t,e^{2\pi i\beta n}g]\)">\([t+2\pi n,g]=[t,e^{2\pi i\beta n}g]\)</span>, its endpoint is
+<span class="math math-display" data-tex="\[
+[0,e^{2\pi i(\beta-\alpha)}].
+\tag{D.17}
+\]">\[
+[0,e^{2\pi i(\beta-\alpha)}].
+\tag{D.17}
+\]</span></p>
+<p>The rule
+<span class="math math-display" data-tex="\[
+s(e^{it})=[t,e^{-i\beta t}]
+\tag{D.18}
+\]">\[
+s(e^{it})=[t,e^{-i\beta t}]
+\tag{D.18}
+\]</span>
+is independent of the chosen angle: replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(t+2\pi n\)">\(t+2\pi n\)</span> cancels the two factors <span class="math" data-tex="\(e^{2\pi i\beta n}\)">\(e^{2\pi i\beta n}\)</span> and <span class="math" data-tex="\(e^{-2\pi i\beta n}\)">\(e^{-2\pi i\beta n}\)</span>. It is smooth in every local angle chart and is a global section. Pulling (D.16) back gives
+<span class="math math-display" data-tex="\[
+A=i(\alpha-\beta)\,d\theta.
+\tag{D.19}
+\]">\[
+A=i(\alpha-\beta)\,d\theta.
+\tag{D.19}
+\]</span>
+Here <span class="math" data-tex="\(d\theta\)">\(d\theta\)</span> is a globally defined one-form: local inverse angles differ by a locally constant multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, so their differentials agree. The potential also checks the sign in (D.17), using Conn E.1's negative sign in the horizontal equation.</p>
+<p>Flat F.2 proves <span class="math" data-tex="\(\pi_1(U(1))=\mathbb Z\)">\(\pi_1(U(1))=\mathbb Z\)</span> by lifting angles, and Flat E.1 proves homotopy invariance of transport for flat connections. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{Hol}_{[0,1]}
+=\langle e^{2\pi i(\beta-\alpha)}\rangle,
+\qquad \operatorname{Hol}_{[0,1]}^0=\{1\}.
+\tag{D.20}
+\]">\[
+\operatorname{Hol}_{[0,1]}
+=\langle e^{2\pi i(\beta-\alpha)}\rangle,
+\qquad \operatorname{Hol}_{[0,1]}^0=\{1\}.
+\tag{D.20}
+\]</span>
+For instance <span class="math" data-tex="\(\alpha=0,\beta=1/2\)">\(\alpha=0,\beta=1/2\)</span> gives the nontrivial group <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, even though <span class="math" data-tex="\(W=0\)">\(W=0\)</span>. For <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>, transport is trivial. These computations exhibit precisely the discrete data that C.1's Lie algebra formula does not recover. The holonomy representation convention in Flat E.2 uses the inverse of the actual multiplier (D.17). □</p>
+<p id="exercise-d-5"><strong>Exercise D.5 (disconnected isotropy cannot be omitted).</strong> Let <span class="math" data-tex="\(K=\mathbb R\rtimes\{1,-1\}\)">\(K=\mathbb R\rtimes\{1,-1\}\)</span> act on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by <span class="math" data-tex="\((a,\varepsilon)x=a+\varepsilon x\)">\((a,\varepsilon)x=a+\varepsilon x\)</span>, and lift it to <span class="math" data-tex="\(\mathbb R\times U(1)\)">\(\mathbb R\times U(1)\)</span> by leaving the group coordinate fixed. Classify its invariant connections, and compare checking the full isotropy condition with checking only its differential.</p>
+<p><strong>Solution.</strong> The multiplication
+<span class="math" data-tex="\((a,\varepsilon)(b,\delta)=(a+\varepsilon b,\varepsilon\delta)\)">\((a,\varepsilon)(b,\delta)=(a+\varepsilon b,\varepsilon\delta)\)</span>
+and inverse <span class="math" data-tex="\((a,\varepsilon)^{-1}=(-\varepsilon a,\varepsilon)\)">\((a,\varepsilon)^{-1}=(-\varepsilon a,\varepsilon)\)</span> give a Lie group with two line components. Its action is smooth and transitive. At <span class="math" data-tex="\(0\)">\(0\)</span>, the stabilizer is <span class="math" data-tex="\(L=\{(0,1),(0,-1)\}\)">\(L=\{(0,1),(0,-1)\}\)</span>; at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> in the principal bundle the homomorphism <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is trivial because the lifted action fixes the group coordinate. The Lie algebra of <span class="math" data-tex="\(K\)">\(K\)</span> is the translation line, and conjugation by <span class="math" data-tex="\((0,-1)\)">\((0,-1)\)</span> sends its generator to its negative. Equation (B.5) therefore gives
+<span class="math math-display" data-tex="\[
+W(-X)=W(X).
+\]">\[
+W(-X)=W(X).
+\]</span>
+Linearity implies <span class="math" data-tex="\(W=0\)">\(W=0\)</span>. Conversely this map satisfies both conditions in B.5 and determines a unique invariant connection. In the global section <span class="math" data-tex="\(s(x)=(x,1)\)">\(s(x)=(x,1)\)</span>, this is the zero potential, since the translation orbit of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is that section and its Wang values vanish.</p>
+<p>If one checked only infinitesimal isotropy, <span class="math" data-tex="\(\mathfrak l=0\)">\(\mathfrak l=0\)</span> would impose no condition. Every map <span class="math" data-tex="\(W(1)=ic\)">\(W(1)=ic\)</span>, <span class="math" data-tex="\(c\in\mathbb R\)">\(c\in\mathbb R\)</span>, would then appear to qualify. Its actual potential is <span class="math" data-tex="\(ic\,dx\)">\(ic\,dx\)</span>, invariant under translations, but reflection pulls it back to <span class="math" data-tex="\(-ic\,dx\)">\(-ic\,dx\)</span>. It is invariant under the specified full action precisely when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Thus the full-group condition excludes exactly the spurious nonzero family. □</p>
+<h2 id="part-e">E. Invariant connections for arbitrary group actions</h2>
+<p>Transitivity is not needed if connection data are given on submanifolds transverse to the group orbits. This part reconstructs the general classification from Maximilian Hanusch's free corrected author version, <a href="https://arxiv.org/abs/1310.0318v3"><em>A Characterization of Invariant Connections</em>, arXiv:1310.0318v3, 27 January 2015</a>, §§2–4, especially Theorem 4.9. The source is available under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>; the exposition and complete proofs below are newly written. We use our existing notation <span class="math" data-tex="\(K\)">\(K\)</span> for the symmetry group and <span class="math" data-tex="\(G\)">\(G\)</span> for the principal structure group. The source's externally cited stabilizer facts are proved here from A.1 and the programme's differential-equation results.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> act smoothly by principal automorphisms on <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span>, with no transitivity, properness or constant orbit-dimension assumption. Its induced base action is smooth: in a local section <span class="math" data-tex="\(s\)">\(s\)</span> it is <span class="math" data-tex="\((k,x)\mapsto\pi(ks(x))\)">\((k,x)\mapsto\pi(ks(x))\)</span>, independent of the section because the action commutes with right multiplication. Define
+<span class="math math-display" data-tex="\[
+Q=K\times G,\qquad
+\Theta((k,a),p)=kp a^{-1},\qquad
+\rho(k,a)=\operatorname{Ad}(a).
+\tag{E.1}
+\]">\[
+Q=K\times G,\qquad
+\Theta((k,a),p)=kp a^{-1},\qquad
+\rho(k,a)=\operatorname{Ad}(a).
+\tag{E.1}
+\]</span>
+The product-group law makes <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> a left action: applying <span class="math" data-tex="\((k_2,a_2)\)">\((k_2,a_2)\)</span> and then <span class="math" data-tex="\((k_1,a_1)\)">\((k_1,a_1)\)</span> gives <span class="math" data-tex="\(k_1k_2p a_2^{-1}a_1^{-1}\)">\(k_1k_2p a_2^{-1}a_1^{-1}\)</span>. The map <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a representation by PB C.3. Write <span class="math" data-tex="\(\Theta_q\)">\(\Theta_q\)</span> for the diffeomorphism associated with a fixed <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(X_P\)">\(X_P\)</span> for the fundamental field of <span class="math" data-tex="\(X\in\mathfrak k\)">\(X\in\mathfrak k\)</span>, and <span class="math" data-tex="\(A^\#\)">\(A^\#\)</span> for the principal fundamental field of <span class="math" data-tex="\(A\in\mathfrak g\)">\(A\in\mathfrak g\)</span>. Then
+<span class="math math-display" data-tex="\[
+D_p(X,A,v)=X_P(p)-A^\#(p)+v
+\tag{E.2}
+\]">\[
+D_p(X,A,v)=X_P(p)-A^\#(p)+v
+\tag{E.2}
+\]</span>
+is the derivative of <span class="math" data-tex="\(Q\times P\to P\)">\(Q\times P\to P\)</span> at <span class="math" data-tex="\((e,p)\)">\((e,p)\)</span>. We identify tangents of an injectively immersed submanifold with their images in the ambient tangent space. Its own manifold topology is retained; global embeddedness is not assumed.</p>
+<p id="lemma-e-1"><strong>Lemma E.1 (transverse patches and their coordinates).</strong> An injectively immersed submanifold <span class="math" data-tex="\(S\subset P\)">\(S\subset P\)</span> is called a transverse patch when
+<span class="math math-display" data-tex="\[
+T_pP=T_pS+\{X_P(p):X\in\mathfrak k\}+V_pP
+\quad(p\in S).
+\tag{E.3}
+\]">\[
+T_pP=T_pS+\{X_P(p):X\in\mathfrak k\}+V_pP
+\quad(p\in S).
+\tag{E.3}
+\]</span>
+The sum need not be direct. For such a patch the action map
+<span class="math math-display" data-tex="\[
+F_S:Q\times S\to P,\qquad(q,p)\mapsto\Theta_q(p)
+\tag{E.4}
+\]">\[
+F_S:Q\times S\to P,\qquad(q,p)\mapsto\Theta_q(p)
+\tag{E.4}
+\]</span>
+is a submersion. At every <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, some submanifold <span class="math" data-tex="\(H\subset Q\)">\(H\subset Q\)</span> through <span class="math" data-tex="\(e\)">\(e\)</span> and neighbourhood <span class="math" data-tex="\(S'\subset S\)">\(S'\subset S\)</span> give a diffeomorphism <span class="math" data-tex="\(F_S:H\times S'\to U\)">\(F_S:H\times S'\to U\)</span> onto an open neighbourhood of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>. Conversely, existence of these coordinates at every point implies (E.3).</p>
+<p>A family <span class="math" data-tex="\((S_\alpha)\)">\((S_\alpha)\)</span> is a transverse covering when <span class="math" data-tex="\(\bigcup_\alpha Q S_\alpha=P\)">\(\bigcup_\alpha Q S_\alpha=P\)</span>, equivalently when every base <span class="math" data-tex="\(K\)">\(K\)</span>-orbit meets some <span class="math" data-tex="\(\pi(S_\alpha)\)">\(\pi(S_\alpha)\)</span>. Such coverings exist. At <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, with <span class="math" data-tex="\(x=\pi(p)\)">\(x=\pi(p)\)</span>,
+<span class="math math-display" data-tex="\[
+\dim S\ge\dim M-\dim K+\dim K_x.
+\tag{E.5}
+\]">\[
+\dim S\ge\dim M-\dim K+\dim K_x.
+\tag{E.5}
+\]</span>
+At each prescribed point there exists a local patch attaining equality there. In particular, zero-dimensional patches are permitted wherever the <span class="math" data-tex="\(Q\)">\(Q\)</span>-orbit has full tangent dimension.</p>
+<p><strong>Proof.</strong> The orbit derivative of <span class="math" data-tex="\(Q\)">\(Q\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> has image <span class="math" data-tex="\(\{X_P(p)-A^\#(p)\}\)">\(\{X_P(p)-A^\#(p)\}\)</span>. Conn A.2 identifies the principal fundamental vectors with all of <span class="math" data-tex="\(V_pP\)">\(V_pP\)</span>. Hence (E.3) says exactly that (E.2), with <span class="math" data-tex="\(v\in T_pS\)">\(v\in T_pS\)</span>, is onto. For general <span class="math" data-tex="\(q\)">\(q\)</span>, differentiation of the action identity gives
+<span class="math math-display" data-tex="\[
+dF_S|_{(q,p)}(dL_q(X,A),v)
+=d\Theta_q|_p\,D_p(X,A,v).
+\tag{E.6}
+\]">\[
+dF_S|_{(q,p)}(dL_q(X,A),v)
+=d\Theta_q|_p\,D_p(X,A,v).
+\tag{E.6}
+\]</span>
+The left and right differentials of the fixed group actions are isomorphisms. Surjectivity follows everywhere, proving the submersion assertion.</p>
+<p>Choose a subspace of the orbit image complementary to <span class="math" data-tex="\(T_pS\)">\(T_pS\)</span> in <span class="math" data-tex="\(T_pP\)">\(T_pP\)</span>, and choose a subspace <span class="math" data-tex="\(J\subset\mathfrak q\)">\(J\subset\mathfrak q\)</span> which the orbit derivative maps isomorphically to that complement. These finite dimensional choices are supplied by Local 0.2: choose bases of the complement and tangent preimages. The local exponential identifies a neighbourhood of zero in <span class="math" data-tex="\(J\)">\(J\)</span> with a submanifold <span class="math" data-tex="\(H\subset Q\)">\(H\subset Q\)</span> through <span class="math" data-tex="\(e\)">\(e\)</span>, by Local 2.3. Restricted to <span class="math" data-tex="\(T_eH\oplus T_pS\)">\(T_eH\oplus T_pS\)</span>, the derivative in (E.6) at <span class="math" data-tex="\(q=e\)">\(q=e\)</span> is a linear isomorphism. Local 1.2, in a manifold chart on <span class="math" data-tex="\(S\)">\(S\)</span>, gives a local diffeomorphism from a neighbourhood in <span class="math" data-tex="\(H\times S\)">\(H\times S\)</span>. Restrict to a product of two open neighbourhoods inside it. Its image remains open, and the restricted map remains a diffeomorphism. This proves the required coordinates, even if the original immersion of <span class="math" data-tex="\(S\)">\(S\)</span> is not globally embedded. Conversely their derivative at <span class="math" data-tex="\((e,p)\)">\((e,p)\)</span> is onto and is a restriction of (E.2), proving (E.3).</p>
+<p>For the dimension statement we verify the stabilizer calculation without transitivity. For any smooth action of a Lie group <span class="math" data-tex="\(B\)">\(B\)</span> on a manifold and a point <span class="math" data-tex="\(z\)">\(z\)</span>, its stabilizer <span class="math" data-tex="\(B_z\)">\(B_z\)</span> is closed and thus embedded by A.1. A vector <span class="math" data-tex="\(Y\in\mathfrak b\)">\(Y\in\mathfrak b\)</span> belongs to the kernel of the orbit derivative precisely when its fundamental field vanishes at <span class="math" data-tex="\(z\)">\(z\)</span>. The curve <span class="math" data-tex="\(\exp(tY)z\)">\(\exp(tY)z\)</span> solves that field's equation, by differentiation of the action law. If the field vanishes at <span class="math" data-tex="\(z\)">\(z\)</span>, the constant curve is also a solution; uniqueness in Local 2.1 gives <span class="math" data-tex="\(\exp(tY)z=z\)">\(\exp(tY)z=z\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. A.1 now gives <span class="math" data-tex="\(Y\in\mathfrak b_z\)">\(Y\in\mathfrak b_z\)</span>. The converse follows by differentiating this same identity. Thus the kernel is exactly <span class="math" data-tex="\(\mathfrak b_z\)">\(\mathfrak b_z\)</span>.</p>
+<p>Apply this first to <span class="math" data-tex="\(K_x\)">\(K_x\)</span>. For <span class="math" data-tex="\(k\in K_x\)">\(k\in K_x\)</span>, principal division defines the smooth homomorphism <span class="math" data-tex="\(\lambda_p(k)=\delta(p,kp)\)">\(\lambda_p(k)=\delta(p,kp)\)</span>. Smoothness is PB A.2, and <span class="math" data-tex="\((k_1k_2)p=p\lambda_p(k_1)\lambda_p(k_2)\)">\((k_1k_2)p=p\lambda_p(k_1)\lambda_p(k_2)\)</span> proves the homomorphism identity by freeness. It follows that
+<span class="math math-display" data-tex="\[
+Q_p=\{(k,\lambda_p(k)):k\in K_x\}.
+\tag{E.7}
+\]">\[
+Q_p=\{(k,\lambda_p(k)):k\in K_x\}.
+\tag{E.7}
+\]</span>
+The displayed graph map and its inverse projection are smooth in the embedded structures. For the graph map, its ambient smooth expression takes values in <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span>, and target submanifold charts make it smooth into <span class="math" data-tex="\(Q_p\)">\(Q_p\)</span>, as in the slice argument in A.1. Consequently <span class="math" data-tex="\(\dim Q_p=\dim K_x\)">\(\dim Q_p=\dim K_x\)</span>. The orbit derivative of <span class="math" data-tex="\(Q\)">\(Q\)</span> therefore has rank <span class="math" data-tex="\(\dim Q-\dim Q_p=\dim K+\dim G-\dim K_x\)">\(\dim Q-\dim Q_p=\dim K+\dim G-\dim K_x\)</span>. Equation (E.3), together with <span class="math" data-tex="\(\dim P=\dim M+\dim G\)">\(\dim P=\dim M+\dim G\)</span>, proves (E.5).</p>
+<p>To attain equality at a fixed <span class="math" data-tex="\(p\)">\(p\)</span>, choose a complement <span class="math" data-tex="\(V\)">\(V\)</span> to the orbit image in <span class="math" data-tex="\(T_pP\)">\(T_pP\)</span>. A linear subspace in a coordinate chart on <span class="math" data-tex="\(P\)">\(P\)</span> gives a local embedded submanifold through <span class="math" data-tex="\(p\)">\(p\)</span> with tangent <span class="math" data-tex="\(V\)">\(V\)</span>. Choose <span class="math" data-tex="\(J\subset\mathfrak q\)">\(J\subset\mathfrak q\)</span> mapping isomorphically to the orbit image and take <span class="math" data-tex="\(H=\exp(J)\)">\(H=\exp(J)\)</span> locally. The same inverse-function argument gives a diffeomorphism on <span class="math" data-tex="\(H\times S\)">\(H\times S\)</span> after shrinking. Its derivative stays invertible at every <span class="math" data-tex="\((e,p')\)">\((e,p')\)</span> in this product, so this <span class="math" data-tex="\(S\)">\(S\)</span> is a transverse patch throughout. Its dimension is the right side of (E.5) at the chosen point. This proves the minimality assertion without requiring constant orbit dimension near <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Finally, the images of local principal-bundle sections are embedded submanifolds with tangent complement to <span class="math" data-tex="\(V_pP\)">\(V_pP\)</span>, by the bundle charts in PB A.2. They satisfy (E.3) for any symmetry action. A principal atlas thus supplies a transverse covering. For the claimed equivalence in the definition, if <span class="math" data-tex="\(\pi(p)=k\pi(p_\alpha)\)">\(\pi(p)=k\pi(p_\alpha)\)</span>, then <span class="math" data-tex="\(p=kp_\alpha b\)">\(p=kp_\alpha b\)</span> for a unique <span class="math" data-tex="\(b\in G\)">\(b\in G\)</span>, so <span class="math" data-tex="\(p=\Theta((k,b^{-1}),p_\alpha)\)">\(p=\Theta((k,b^{-1}),p_\alpha)\)</span>. The converse follows by applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. □</p>
+<p>Fix a transverse covering. A collection of reduced data consists of smooth maps
+<span class="math math-display" data-tex="\[
+\psi_\alpha:\mathfrak k\times TS_\alpha\longrightarrow\mathfrak g,
+\tag{E.8}
+\]">\[
+\psi_\alpha:\mathfrak k\times TS_\alpha\longrightarrow\mathfrak g,
+\tag{E.8}
+\]</span>
+whose restrictions to <span class="math" data-tex="\(\mathfrak k\oplus T_pS_\alpha\)">\(\mathfrak k\oplus T_pS_\alpha\)</span> are jointly linear for each <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(\psi_\alpha(X,v)\)">\(\psi_\alpha(X,v)\)</span> splits linearly between <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>; the value of the zero tangent specifies its base point. Impose the following two conditions for every <span class="math" data-tex="\(q=(k,a)\in Q\)">\(q=(k,a)\in Q\)</span> and every <span class="math" data-tex="\(p\in S_\alpha\)">\(p\in S_\alpha\)</span>, <span class="math" data-tex="\(p'\in S_\beta\)">\(p'\in S_\beta\)</span> with <span class="math" data-tex="\(p'=\Theta_q(p)\)">\(p'=\Theta_q(p)\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{split}
+&amp;D_{p'}(X,A,v')=d\Theta_q(v),\quad
+v\in T_pS_\alpha,\ v'\in T_{p'}S_\beta\\
+&amp;\hspace{8mm}\Longrightarrow\quad
+\psi_\beta(X,v')-A=\rho(q)\psi_\alpha(0,v),
+\end{split}
+\tag{E.9}
+\]">\[
+\begin{split}
+&amp;D_{p'}(X,A,v')=d\Theta_q(v),\quad
+v\in T_pS_\alpha,\ v'\in T_{p'}S_\beta\\
+&amp;\hspace{8mm}\Longrightarrow\quad
+\psi_\beta(X,v')-A=\rho(q)\psi_\alpha(0,v),
+\end{split}
+\tag{E.9}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\psi_\beta(\operatorname{Ad}(k)X,0_{p'})
+=\rho(q)\psi_\alpha(X,0_p)
+\quad(X\in\mathfrak k).
+\tag{E.10}
+\]">\[
+\psi_\beta(\operatorname{Ad}(k)X,0_{p'})
+=\rho(q)\psi_\alpha(X,0_p)
+\quad(X\in\mathfrak k).
+\tag{E.10}
+\]</span>
+In (E.9), <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> range over <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span> and <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, respectively. In particular <span class="math" data-tex="\(d\Theta_q(v)\)">\(d\Theta_q(v)\)</span> is not assumed tangent to <span class="math" data-tex="\(S_\beta\)">\(S_\beta\)</span>; the other terms of the decomposition are essential.</p>
+<p id="theorem-e-2"><strong>Theorem E.2 (Hanusch's reconstruction).</strong> For an arbitrary smooth action of <span class="math" data-tex="\(K\)">\(K\)</span> by principal automorphisms, invariant principal connections on <span class="math" data-tex="\(P\)">\(P\)</span> correspond bijectively to the reduced data (E.8) satisfying (E.9)–(E.10). The forward map is
+<span class="math math-display" data-tex="\[
+\psi_\alpha(X,v)=\omega_p(X_P(p)+v),\qquad v\in T_pS_\alpha.
+\tag{E.11}
+\]">\[
+\psi_\alpha(X,v)=\omega_p(X_P(p)+v),\qquad v\in T_pS_\alpha.
+\tag{E.11}
+\]</span>
+For reconstruction put
+<span class="math math-display" data-tex="\[
+\lambda_{\alpha,p}(X,A,v)=\psi_\alpha(X,v)-A.
+\tag{E.12}
+\]">\[
+\lambda_{\alpha,p}(X,A,v)=\psi_\alpha(X,v)-A.
+\tag{E.12}
+\]</span>
+This factors uniquely as <span class="math" data-tex="\(\lambda_{\alpha,p}=\ell_{\alpha,p}\circ D_p\)">\(\lambda_{\alpha,p}=\ell_{\alpha,p}\circ D_p\)</span>, with <span class="math" data-tex="\(\ell_{\alpha,p}:T_pP\to\mathfrak g\)">\(\ell_{\alpha,p}:T_pP\to\mathfrak g\)</span> linear. The reconstructed form is
+<span class="math math-display" data-tex="\[
+\omega_{\Theta_q(p)}(w)
+=\rho(q)\ell_{\alpha,p}(d\Theta_{q^{-1}}w).
+\tag{E.13}
+\]">\[
+\omega_{\Theta_q(p)}(w)
+=\rho(q)\ell_{\alpha,p}(d\Theta_{q^{-1}}w).
+\tag{E.13}
+\]</span>
+It is independent of all choices and smooth on the entire bundle, including points on singular orbits.</p>
+<p><strong>Proof.</strong> An invariant principal connection satisfies
+<span class="math" data-tex="\(\Theta_q^*\omega=\rho(q)\omega\)">\(\Theta_q^*\omega=\rho(q)\omega\)</span>: the <span class="math" data-tex="\(K\)">\(K\)</span>-action preserves it and right multiplication by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> pulls it back by <span class="math" data-tex="\(\operatorname{Ad}(a)\)">\(\operatorname{Ad}(a)\)</span>, Conn A.2. Applying this identity and vertical reproduction to (E.2) gives (E.9). For (E.10), differentiate
+<span class="math math-display" data-tex="\[
+\Theta_q(\exp(tX)p)=\exp(t\operatorname{Ad}(k)X)\Theta_q(p),
+\tag{E.14}
+\]">\[
+\Theta_q(\exp(tX)p)=\exp(t\operatorname{Ad}(k)X)\Theta_q(p),
+\tag{E.14}
+\]</span>
+which follows from the exponential conjugation identity and commutation with the principal action. Invariance then gives (E.10). Formula (E.11) is smooth and jointly linear as required. This proves necessity.</p>
+<p>Conversely take reduced data satisfying the two conditions. Set <span class="math" data-tex="\(q=e\)">\(q=e\)</span>, <span class="math" data-tex="\(\beta=\alpha\)">\(\beta=\alpha\)</span>, and <span class="math" data-tex="\(v=0_p\)">\(v=0_p\)</span> in (E.9). It gives
+<span class="math math-display" data-tex="\[
+D_p(X,A,v')=0\quad\Longrightarrow\quad
+\lambda_{\alpha,p}(X,A,v')=0.
+\tag{E.15}
+\]">\[
+D_p(X,A,v')=0\quad\Longrightarrow\quad
+\lambda_{\alpha,p}(X,A,v')=0.
+\tag{E.15}
+\]</span>
+Since <span class="math" data-tex="\(D_p\)">\(D_p\)</span> is onto by E.1, define <span class="math" data-tex="\(\ell_{\alpha,p}(w)\)">\(\ell_{\alpha,p}(w)\)</span> by evaluating <span class="math" data-tex="\(\lambda_{\alpha,p}\)">\(\lambda_{\alpha,p}\)</span> on any preimage of <span class="math" data-tex="\(w\)">\(w\)</span>. Two preimages differ by a vector in <span class="math" data-tex="\(\ker D_p\)">\(\ker D_p\)</span>, and (E.15) makes their values equal. Linearity of <span class="math" data-tex="\(D_p\)">\(D_p\)</span> and <span class="math" data-tex="\(\lambda_{\alpha,p}\)">\(\lambda_{\alpha,p}\)</span> proves linearity of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Surjectivity proves uniqueness. In particular,
+<span class="math math-display" data-tex="\[
+\ell_{\alpha,p}(X_P(p))=\psi_\alpha(X,0_p),\quad
+\ell_{\alpha,p}(v)=\psi_\alpha(0,v),\quad
+\ell_{\alpha,p}(A^\#(p))=A.
+\tag{E.16}
+\]">\[
+\ell_{\alpha,p}(X_P(p))=\psi_\alpha(X,0_p),\quad
+\ell_{\alpha,p}(v)=\psi_\alpha(0,v),\quad
+\ell_{\alpha,p}(A^\#(p))=A.
+\tag{E.16}
+\]</span>
+For the last identity, use the preimage <span class="math" data-tex="\((0,-A,0_p)\)">\((0,-A,0_p)\)</span>.</p>
+<p>The implication (E.15) is the kernel inclusion <span class="math" data-tex="\(\ker D_p\subseteq\ker\lambda_{\alpha,p}\)">\(\ker D_p\subseteq\ker\lambda_{\alpha,p}\)</span> needed for factorization. The displayed inclusion in the cited version's Lemma 4.7(3) is reversed; its compatibility condition gives (E.15), which is what we have proved and use here.</p>
+<p>We next prove compatibility on all ambient tangent vectors at patch points. If <span class="math" data-tex="\(p'=\Theta_q(p)\)">\(p'=\Theta_q(p)\)</span>, then
+<span class="math math-display" data-tex="\[
+\ell_{\beta,p'}\circ d\Theta_q=\rho(q)\ell_{\alpha,p}
+\quad\text{on }T_pP.
+\tag{E.17}
+\]">\[
+\ell_{\beta,p'}\circ d\Theta_q=\rho(q)\ell_{\alpha,p}
+\quad\text{on }T_pP.
+\tag{E.17}
+\]</span>
+For a vector <span class="math" data-tex="\(X_P(p)\)">\(X_P(p)\)</span>, this is (E.14), (E.16) and (E.10). For a principal vector, differentiating
+<span class="math" data-tex="\(\Theta_q(p\exp(tA))=p'\exp(t\operatorname{Ad}(a)A)\)">\(\Theta_q(p\exp(tA))=p'\exp(t\operatorname{Ad}(a)A)\)</span>
+and using (E.16) proves it. For <span class="math" data-tex="\(v\in T_pS_\alpha\)">\(v\in T_pS_\alpha\)</span>, surjectivity at <span class="math" data-tex="\(p'\)">\(p'\)</span> provides <span class="math" data-tex="\(X,A,v'\)">\(X,A,v'\)</span> with <span class="math" data-tex="\(D_{p'}(X,A,v')=d\Theta_q(v)\)">\(D_{p'}(X,A,v')=d\Theta_q(v)\)</span>. Condition (E.9) and the factorization of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> give (E.17) on <span class="math" data-tex="\(v\)">\(v\)</span>. These three types of vectors span <span class="math" data-tex="\(T_pP\)">\(T_pP\)</span> by (E.3), proving (E.17) everywhere.</p>
+<p>Every point of <span class="math" data-tex="\(P\)">\(P\)</span> can be represented as <span class="math" data-tex="\(\Theta_q(p)\)">\(\Theta_q(p)\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span> on a patch. To check independence in (E.13), suppose also <span class="math" data-tex="\(z=\Theta_r(p')\)">\(z=\Theta_r(p')\)</span>. Then <span class="math" data-tex="\(p'=\Theta_{r^{-1}q}(p)\)">\(p'=\Theta_{r^{-1}q}(p)\)</span>. Applying (E.17) with <span class="math" data-tex="\(r^{-1}q\)">\(r^{-1}q\)</span>, and using <span class="math" data-tex="\(\rho(r)\rho(r^{-1}q)=\rho(q)\)">\(\rho(r)\rho(r^{-1}q)=\rho(q)\)</span>, proves equality of the two expressions in (E.13). The chain rule supplies the same identity for the tangent maps. Thus the formula defines a linear form on every tangent space, without yet assuming smoothness.</p>
+<p>Its covariance under <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is immediate from the definition: representing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\((q,p)\)">\((q,p)\)</span> represents <span class="math" data-tex="\(\Theta_hz\)">\(\Theta_hz\)</span> by <span class="math" data-tex="\((hq,p)\)">\((hq,p)\)</span>, so
+<span class="math math-display" data-tex="\[
+\omega_{\Theta_hz}(d\Theta_hw)=\rho(h)\omega_z(w).
+\tag{E.18}
+\]">\[
+\omega_{\Theta_hz}(d\Theta_hw)=\rho(h)\omega_z(w).
+\tag{E.18}
+\]</span>
+Vertical reproduction holds at patch points by (E.16). At <span class="math" data-tex="\(z=\Theta_{(k,a)}p\)">\(z=\Theta_{(k,a)}p\)</span>, the inverse differential sends <span class="math" data-tex="\(A^\#(z)\)">\(A^\#(z)\)</span> to <span class="math" data-tex="\((\operatorname{Ad}(a^{-1})A)^\#(p)\)">\((\operatorname{Ad}(a^{-1})A)^\#(p)\)</span>, by the same principal-vector identity used in (E.17). Formula (E.13) therefore gives <span class="math" data-tex="\(\omega_z(A^\#(z))=A\)">\(\omega_z(A^\#(z))=A\)</span>.</p>
+<p>It remains to establish smoothness; this is the step for which transversality matters. On <span class="math" data-tex="\(Q\times S_\alpha\)">\(Q\times S_\alpha\)</span>, define the one-form
+<span class="math math-display" data-tex="\[
+\eta_\alpha|_{(q,p)}(\dot q,v)
+=\rho(q)\lambda_{\alpha,p}(\theta^Q_q\dot q,v),
+\tag{E.19}
+\]">\[
+\eta_\alpha|_{(q,p)}(\dot q,v)
+=\rho(q)\lambda_{\alpha,p}(\theta^Q_q\dot q,v),
+\tag{E.19}
+\]</span>
+where <span class="math" data-tex="\(\theta^Q_q\dot q\in\mathfrak q=\mathfrak k\oplus\mathfrak g\)">\(\theta^Q_q\dot q\in\mathfrak q=\mathfrak k\oplus\mathfrak g\)</span> supplies the first two arguments of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The Maurer form is smooth, <span class="math" data-tex="\(\psi_\alpha\)">\(\psi_\alpha\)</span> is smooth, and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is smooth, so (E.19) is a smooth one-form. Formula (E.6), the factorization of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and (E.13) give the pointwise pullback identity
+<span class="math math-display" data-tex="\[
+F_{S_\alpha}^*\omega=\eta_\alpha.
+\tag{E.20}
+\]">\[
+F_{S_\alpha}^*\omega=\eta_\alpha.
+\tag{E.20}
+\]</span>
+E.1 supplies a diffeomorphism <span class="math" data-tex="\(f:H\times S'\to U\)">\(f:H\times S'\to U\)</span> obtained by restricting this action map. Thus on <span class="math" data-tex="\(U\)">\(U\)</span>, the defined form is <span class="math" data-tex="\((f^{-1})^*(\eta_\alpha|_{H\times S'})\)">\((f^{-1})^*(\eta_\alpha|_{H\times S'})\)</span>, which is smooth. Translates <span class="math" data-tex="\(\Theta_q(U)\)">\(\Theta_q(U)\)</span> cover <span class="math" data-tex="\(P\)">\(P\)</span>; equation (E.18) expresses <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on each translate as the pullback of this smooth local form by <span class="math" data-tex="\(\Theta_{q^{-1}}\)">\(\Theta_{q^{-1}}\)</span>, followed by the fixed linear map <span class="math" data-tex="\(\rho(q)\)">\(\rho(q)\)</span>. This proves global smoothness, with no assumption about orbit dimensions elsewhere.</p>
+<p>Taking <span class="math" data-tex="\(h=(k,e)\)">\(h=(k,e)\)</span> in (E.18) gives <span class="math" data-tex="\(K\)">\(K\)</span>-invariance. Taking <span class="math" data-tex="\(h=(e,a^{-1})\)">\(h=(e,a^{-1})\)</span> gives principal equivariance under right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>. Together with the proved reproduction identity, Conn A.2 shows that <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is a principal connection. At <span class="math" data-tex="\(q=e\)">\(q=e\)</span> and <span class="math" data-tex="\(w=X_P(p)+v\)">\(w=X_P(p)+v\)</span>, equations (E.12)–(E.13) recover <span class="math" data-tex="\(\psi_\alpha(X,v)\)">\(\psi_\alpha(X,v)\)</span>. Conversely an invariant connection with these data must satisfy the factorization and (E.13), so it is uniquely determined. This proves both inverse identities and the bijection.</p>
+<p>For comparison, in the transitive situation a single patch <span class="math" data-tex="\(S=\{p_0\}\)">\(S=\{p_0\}\)</span> suffices. In (E.9) there is then no patch tangent, and <span class="math" data-tex="\(D_{p_0}(X,A,0)=0\)">\(D_{p_0}(X,A,0)=0\)</span> means <span class="math" data-tex="\(X\in\mathfrak k_{x_0}\)">\(X\in\mathfrak k_{x_0}\)</span>, <span class="math" data-tex="\(A=(\lambda_{p_0})_*X\)">\(A=(\lambda_{p_0})_*X\)</span>, by the stabilizer calculation in E.1. Thus (E.9) reduces to the restriction of <span class="math" data-tex="\(W\)">\(W\)</span> in (B.5). The returning elements <span class="math" data-tex="\(q\)">\(q\)</span> are exactly the graph (E.7), so (E.10) reduces to its full isotropy-equivariance condition. This recovers B.2 with the same signs. □</p>
+<h2 id="part-f">F. Sections, gauge actions and nontransitive examples</h2>
+<p>The construction source for this part is Maximilian Hanusch's free <a href="https://arxiv.org/abs/1310.0318v3">corrected author version, <em>A Characterization of Invariant Connections</em>, arXiv:1310.0318v3</a>, the single-patch discussion in §4.1, Example 4.10 and §5. Its <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 terms</a> are retained here with the attribution. All arguments below are written out using E.1–E.2 and the exact earlier programme results. In particular, the gauge-change and radial formulas are derived directly with our right principal action; source formulas are not accepted without checking them.</p>
+<p id="theorem-f-1"><strong>Theorem F.1 (a transverse section with constant stabilizer).</strong> Let <span class="math" data-tex="\(N\)">\(N\)</span> be an injectively immersed submanifold of <span class="math" data-tex="\(M\)">\(M\)</span> meeting each <span class="math" data-tex="\(K\)">\(K\)</span>-orbit in exactly one point. Suppose
+<span class="math math-display" data-tex="\[
+T_xN+\{X_M(x):X\in\mathfrak k\}=T_xM
+\quad(x\in N),
+\tag{F.1}
+\]">\[
+T_xN+\{X_M(x):X\in\mathfrak k\}=T_xM
+\quad(x\in N),
+\tag{F.1}
+\]</span>
+and let <span class="math" data-tex="\(s:N\to P\)">\(s:N\to P\)</span> be a smooth section. Suppose the stabilizer <span class="math" data-tex="\(K_x=H\)">\(K_x=H\)</span> and the homomorphism <span class="math" data-tex="\(\lambda_x:H\to G\)">\(\lambda_x:H\to G\)</span>, defined by <span class="math" data-tex="\(h s(x)=s(x)\lambda_x(h)\)">\(h s(x)=s(x)\lambda_x(h)\)</span>, are independent of <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>; write the common homomorphism as <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Assume also
+<span class="math math-display" data-tex="\[
+\dim N=\dim M-\dim K+\dim H.
+\tag{F.2}
+\]">\[
+\dim N=\dim M-\dim K+\dim H.
+\tag{F.2}
+\]</span>
+Then invariant connections correspond bijectively to a smooth family <span class="math" data-tex="\(W_x:\mathfrak k\to\mathfrak g\)">\(W_x:\mathfrak k\to\mathfrak g\)</span> of linear maps and a smooth <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued one-form <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{split}
+W_x(Z)&amp;=\lambda_*Z &amp;&amp;(Z\in\mathfrak h),\\
+W_x(\operatorname{Ad}(h)X)&amp;=\operatorname{Ad}(\lambda(h))W_x(X)
+ &amp;&amp;(h\in H),\\
+\mu_x(v)&amp;=\operatorname{Ad}(\lambda(h))\mu_x(v)
+ &amp;&amp;(h\in H,\ v\in T_xN).
+\end{split}
+\tag{F.3}
+\]">\[
+\begin{split}
+W_x(Z)&amp;=\lambda_*Z &amp;&amp;(Z\in\mathfrak h),\\
+W_x(\operatorname{Ad}(h)X)&amp;=\operatorname{Ad}(\lambda(h))W_x(X)
+ &amp;&amp;(h\in H),\\
+\mu_x(v)&amp;=\operatorname{Ad}(\lambda(h))\mu_x(v)
+ &amp;&amp;(h\in H,\ v\in T_xN).
+\end{split}
+\tag{F.3}
+\]</span>
+Equivalently, the constant-stabilizer hypothesis says that <span class="math" data-tex="\(Q_{s(x)}\subset K\times G\)">\(Q_{s(x)}\subset K\times G\)</span> is the same subgroup for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>.</p>
+<p>The corresponding reduced data on <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span> are
+<span class="math" data-tex="\(\psi(X,ds(v))=W_x(X)+\mu_x(v)\)">\(\psi(X,ds(v))=W_x(X)+\mu_x(v)\)</span>. No compactness or connectedness of <span class="math" data-tex="\(H\)">\(H\)</span> is required.</p>
+<p><strong>Proof.</strong> By (E.7), <span class="math" data-tex="\(Q_{s(x)}\)">\(Q_{s(x)}\)</span> is the graph of <span class="math" data-tex="\(\lambda_x:K_x\to G\)">\(\lambda_x:K_x\to G\)</span>. Equality of these graphs implies equality of their first-coordinate projections, hence a common subgroup <span class="math" data-tex="\(H=K_x\)">\(H=K_x\)</span>. For each <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, equality of the unique second coordinate in the graph then gives a common value <span class="math" data-tex="\(\lambda_x(h)\)">\(\lambda_x(h)\)</span>. Conversely, common <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> give equal graphs. This proves the stated equivalence, including all disconnected components.</p>
+<p>Since <span class="math" data-tex="\(\pi s\)">\(\pi s\)</span> is the inclusion of <span class="math" data-tex="\(N\)">\(N\)</span>, the map <span class="math" data-tex="\(s\)">\(s\)</span> is an injective immersion, with its own manifold structure. Equation (F.1) implies that <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span> is a transverse patch: project an arbitrary tangent vector to <span class="math" data-tex="\(M\)">\(M\)</span>, write its projection as a sum of an orbit vector and an <span class="math" data-tex="\(N\)">\(N\)</span>-tangent, lift these using <span class="math" data-tex="\(X_P\)">\(X_P\)</span> and <span class="math" data-tex="\(ds\)">\(ds\)</span>, and represent the remaining vertical vector by Conn A.2. Each base orbit meets <span class="math" data-tex="\(N\)">\(N\)</span>, so E.1 makes this a transverse covering with one patch.</p>
+<p>The orbit image at <span class="math" data-tex="\(x\)">\(x\)</span> has dimension <span class="math" data-tex="\(\dim K-\dim H\)">\(\dim K-\dim H\)</span>, by E.1's stabilizer-kernel proof. Equations (F.1)–(F.2) therefore make the sum in (F.1) direct. If two points of <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span> belong to the same <span class="math" data-tex="\(Q\)">\(Q\)</span>-orbit, their base points belong to the same <span class="math" data-tex="\(K\)">\(K\)</span>-orbit and hence are equal. As <span class="math" data-tex="\(s\)">\(s\)</span> is a section, the two points themselves are equal. The returning elements are exactly <span class="math" data-tex="\((h,\lambda(h))\)">\((h,\lambda(h))\)</span>, by (E.7). Each such element fixes every point of <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span>, since <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are common to the entire section. Its differential on <span class="math" data-tex="\(T s(N)\)">\(T s(N)\)</span> is consequently the identity, as follows by differentiating curves in <span class="math" data-tex="\(s(N)\)">\(s(N)\)</span>.</p>
+<p>At <span class="math" data-tex="\(p=s(x)\)">\(p=s(x)\)</span>, the equality
+<span class="math math-display" data-tex="\[
+D_p(X,A,ds(v'))=ds(v)
+\tag{F.4}
+\]">\[
+D_p(X,A,ds(v'))=ds(v)
+\tag{F.4}
+\]</span>
+projects to <span class="math" data-tex="\(X_M(x)+v'=v\)">\(X_M(x)+v'=v\)</span>. Directness of (F.1) gives <span class="math" data-tex="\(X\in\mathfrak h\)">\(X\in\mathfrak h\)</span> and <span class="math" data-tex="\(v'=v\)">\(v'=v\)</span>. Differentiating <span class="math" data-tex="\(\exp(tX)s(x)=s(x)\lambda(\exp(tX))\)">\(\exp(tX)s(x)=s(x)\lambda(\exp(tX))\)</span> then shows that (F.4) is equivalent to these conditions together with <span class="math" data-tex="\(A=\lambda_*X\)">\(A=\lambda_*X\)</span>, because principal fundamental vectors are injectively parametrized. Thus the kernel condition in (E.9), with <span class="math" data-tex="\(q=e\)">\(q=e\)</span>, is precisely the first identity of (F.3).</p>
+<p>For a returning <span class="math" data-tex="\(q=(h,\lambda(h))\)">\(q=(h,\lambda(h))\)</span>, its differential fixes <span class="math" data-tex="\(ds(v)\)">\(ds(v)\)</span>. In (E.9) we again have exactly (F.4). Subtracting <span class="math" data-tex="\(A=\lambda_*X\)">\(A=\lambda_*X\)</span> leaves <span class="math" data-tex="\(\mu_x(v)\)">\(\mu_x(v)\)</span> on the left, and the right is <span class="math" data-tex="\(\operatorname{Ad}(\lambda(h))\mu_x(v)\)">\(\operatorname{Ad}(\lambda(h))\mu_x(v)\)</span>. This is the last identity of (F.3). Condition (E.10) is exactly the middle identity. Every jointly linear smooth <span class="math" data-tex="\(\psi\)">\(\psi\)</span> splits uniquely as <span class="math" data-tex="\(W+\mu\)">\(W+\mu\)</span>, so necessity, sufficiency and the bijection all follow from E.2. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (actions by gauge transformations).</strong> Suppose every element of <span class="math" data-tex="\(K\)">\(K\)</span> induces the identity on <span class="math" data-tex="\(M\)">\(M\)</span>. Choose local sections <span class="math" data-tex="\(s_\alpha:U_\alpha\to P\)">\(s_\alpha:U_\alpha\to P\)</span>. On an overlap define the smooth map <span class="math" data-tex="\(\delta_{k,\alpha\beta}:U_\alpha\cap U_\beta\to G\)">\(\delta_{k,\alpha\beta}:U_\alpha\cap U_\beta\to G\)</span> by
+<span class="math math-display" data-tex="\[
+s_\beta(x)=k s_\alpha(x)\,\delta_{k,\alpha\beta}(x).
+\tag{F.5}
+\]">\[
+s_\beta(x)=k s_\alpha(x)\,\delta_{k,\alpha\beta}(x).
+\tag{F.5}
+\]</span>
+Invariant connections correspond bijectively to families <span class="math" data-tex="\(A_\alpha\in\Omega^1(U_\alpha,\mathfrak g)\)">\(A_\alpha\in\Omega^1(U_\alpha,\mathfrak g)\)</span> satisfying, for every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>,
+<span class="math math-display" data-tex="\[
+A_\beta
+=\operatorname{Ad}(\delta_{k,\alpha\beta}^{-1})A_\alpha
+ +\delta_{k,\alpha\beta}^*\theta^G.
+\tag{F.6}
+\]">\[
+A_\beta
+=\operatorname{Ad}(\delta_{k,\alpha\beta}^{-1})A_\alpha
+ +\delta_{k,\alpha\beta}^*\theta^G.
+\tag{F.6}
+\]</span>
+Here <span class="math" data-tex="\(k\)">\(k\)</span> is held fixed when differentiating <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For <span class="math" data-tex="\(k=e\)">\(k=e\)</span> this is the usual transition rule for local connection potentials.</p>
+<p><strong>Proof.</strong> Smoothness of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, jointly in <span class="math" data-tex="\(k,x\)">\(k,x\)</span>, follows from the principal division map PB A.2. If <span class="math" data-tex="\(h_{\alpha\beta}=\delta_{e,\alpha\beta}\)">\(h_{\alpha\beta}=\delta_{e,\alpha\beta}\)</span> and <span class="math" data-tex="\(k s_\alpha(x)=s_\alpha(x)\lambda_{\alpha,x}(k)\)">\(k s_\alpha(x)=s_\alpha(x)\lambda_{\alpha,x}(k)\)</span>, freeness gives
+<span class="math" data-tex="\(\delta_{k,\alpha\beta}=\lambda_{\alpha,x}(k)^{-1}h_{\alpha\beta}\)">\(\delta_{k,\alpha\beta}=\lambda_{\alpha,x}(k)^{-1}h_{\alpha\beta}\)</span>.
+An invariant connection has potential <span class="math" data-tex="\(A_\alpha\)">\(A_\alpha\)</span> in the section <span class="math" data-tex="\(k s_\alpha\)">\(k s_\alpha\)</span> as well as in <span class="math" data-tex="\(s_\alpha\)">\(s_\alpha\)</span>. Applying the proved change-of-section formula Conn A.3 to (F.5) gives (F.6), including its inverse inside the adjoint.</p>
+<p>Conversely, the <span class="math" data-tex="\(k=e\)">\(k=e\)</span> identities glue the family to a unique principal connection <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, by Conn A.3. For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, its pullback <span class="math" data-tex="\(k^*\omega\)">\(k^*\omega\)</span> is a principal connection: the automorphism commutes with right translations and carries <span class="math" data-tex="\(A^\#\)">\(A^\#\)</span> to <span class="math" data-tex="\(A^\#\)">\(A^\#\)</span>, so both axioms of Conn A.2 hold. Let <span class="math" data-tex="\(B_\alpha=s_\alpha^*k^*\omega\)">\(B_\alpha=s_\alpha^*k^*\omega\)</span>, the potential of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> in <span class="math" data-tex="\(k s_\alpha\)">\(k s_\alpha\)</span>. The actual change-of-section identity is
+<span class="math math-display" data-tex="\[
+A_\beta=\operatorname{Ad}(\delta_{k,\alpha\beta}^{-1})B_\alpha
+ +\delta_{k,\alpha\beta}^*\theta^G.
+\]">\[
+A_\beta=\operatorname{Ad}(\delta_{k,\alpha\beta}^{-1})B_\alpha
+ +\delta_{k,\alpha\beta}^*\theta^G.
+\]</span>
+Compare with (F.6), taking <span class="math" data-tex="\(\beta=\alpha\)">\(\beta=\alpha\)</span> on <span class="math" data-tex="\(U_\alpha\)">\(U_\alpha\)</span>. Invertibility of the adjoint gives <span class="math" data-tex="\(B_\alpha=A_\alpha\)">\(B_\alpha=A_\alpha\)</span> throughout every chart. A connection is determined by these potentials, again by Conn A.3. Hence <span class="math" data-tex="\(k^*\omega=\omega\)">\(k^*\omega=\omega\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>. This proves the converse and uniqueness. The source's displayed gauge-consistency equation uses <span class="math" data-tex="\(\operatorname{Ad}(\delta)\)">\(\operatorname{Ad}(\delta)\)</span> with the same convention (F.5); the direct calculation above gives <span class="math" data-tex="\(\operatorname{Ad}(\delta^{-1})\)">\(\operatorname{Ad}(\delta^{-1})\)</span>, which is the formula used here. □</p>
+<p id="theorem-f-3"><strong>Theorem F.3 (one patch at a common orbit-closure point).</strong> Suppose <span class="math" data-tex="\(x_0\)">\(x_0\)</span> belongs to the closure of every base <span class="math" data-tex="\(K\)">\(K\)</span>-orbit. If a transverse patch <span class="math" data-tex="\(S\subset P\)">\(S\subset P\)</span> contains any point over <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, then <span class="math" data-tex="\(\{S\}\)">\(\{S\}\)</span> is a transverse covering. Thus E.2 describes all invariant connections from the reduced data on that single patch, with both of its compatibility conditions retained.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(p_0\in S\)">\(p_0\in S\)</span> over <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, E.1 gives a diffeomorphism from <span class="math" data-tex="\(H\times S'\)">\(H\times S'\)</span> onto an open neighbourhood <span class="math" data-tex="\(U\subset P\)">\(U\subset P\)</span>, where <span class="math" data-tex="\(S'\subset S\)">\(S'\subset S\)</span>. The principal projection is open: in each bundle chart it is a product projection, which maps a union of open rectangles to a union of open base sets. Thus <span class="math" data-tex="\(\pi(U)\)">\(\pi(U)\)</span> is an open neighbourhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Every base orbit meets it, by the definition of closure. Given such an intersection point, choose <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span> over it and write <span class="math" data-tex="\(z=\Theta_q(p)\)">\(z=\Theta_q(p)\)</span> with <span class="math" data-tex="\(p\in S'\)">\(p\in S'\)</span>. Its projection belongs to the orbit of <span class="math" data-tex="\(\pi(p)\)">\(\pi(p)\)</span>. Therefore every orbit meets <span class="math" data-tex="\(\pi(S)\)">\(\pi(S)\)</span>, and E.1's covering criterion applies. E.2 now gives the claimed classification. □</p>
+<p id="theorem-f-4"><strong>Theorem F.4 (partial translations, curvature and a rectangle).</strong> Let a finite dimensional real vector space split as <span class="math" data-tex="\(X=V\oplus W\)">\(X=V\oplus W\)</span>, and let <span class="math" data-tex="\(K=(V,+)\)">\(K=(V,+)\)</span> act on <span class="math" data-tex="\(X\times G\)">\(X\times G\)</span> by translation in <span class="math" data-tex="\(V\)">\(V\)</span> and trivially in the principal coordinate. Every invariant connection is determined by an arbitrary smooth family <span class="math" data-tex="\(a_w:V\to\mathfrak g\)">\(a_w:V\to\mathfrak g\)</span> of linear maps and an arbitrary <span class="math" data-tex="\(\beta\in\Omega^1(W,\mathfrak g)\)">\(\beta\in\Omega^1(W,\mathfrak g)\)</span>. Its potential in the global identity section and its full form are
+<span class="math math-display" data-tex="\[
+\begin{split}
+A_{(v,w)}(u,z)&amp;=a_w(u)+\beta_w(z),\\
+\omega_{(v,w,g)}(u,z,\eta)&amp;=
+\operatorname{Ad}(g^{-1})\bigl(a_w(u)+\beta_w(z)\bigr)+\theta^G_g(\eta).
+\end{split}
+\tag{F.7}
+\]">\[
+\begin{split}
+A_{(v,w)}(u,z)&amp;=a_w(u)+\beta_w(z),\\
+\omega_{(v,w,g)}(u,z,\eta)&amp;=
+\operatorname{Ad}(g^{-1})\bigl(a_w(u)+\beta_w(z)\bigr)+\theta^G_g(\eta).
+\end{split}
+\tag{F.7}
+\]</span>
+On constant vectors <span class="math" data-tex="\((u,z),(u',z')\)">\((u,z),(u',z')\)</span>, its curvature potential is
+<span class="math math-display" data-tex="\[
+\begin{split}
+F((u,z),(u',z'))={}&amp;(da)_w[z](u')-(da)_w[z'](u)
+ +(d\beta)_w(z,z')\\
+&amp;+[a_w(u)+\beta_w(z),\ a_w(u')+\beta_w(z')].
+\end{split}
+\tag{F.8}
+\]">\[
+\begin{split}
+F((u,z),(u',z'))={}&amp;(da)_w[z](u')-(da)_w[z'](u)
+ +(d\beta)_w(z,z')\\
+&amp;+[a_w(u)+\beta_w(z),\ a_w(u')+\beta_w(z')].
+\end{split}
+\tag{F.8}
+\]</span></p>
+<p>For the additive structure group <span class="math" data-tex="\(G=(\mathbb R,+)\)">\(G=(\mathbb R,+)\)</span> on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, the potential <span class="math" data-tex="\(A=y^2dx\)">\(A=y^2dx\)</span> has <span class="math" data-tex="\(F=-2y\,dx\wedge dy\)">\(F=-2y\,dx\wedge dy\)</span>. Horizontal transport around the rectangle starting at <span class="math" data-tex="\((0,y_0)\)">\((0,y_0)\)</span>, then moving right by <span class="math" data-tex="\(a\)">\(a\)</span>, up by <span class="math" data-tex="\(b\)">\(b\)</span>, left by <span class="math" data-tex="\(a\)">\(a\)</span> and down by <span class="math" data-tex="\(b\)">\(b\)</span>, adds
+<span class="math math-display" data-tex="\[
+a\bigl(2y_0b+b^2\bigr)
+\tag{F.9}
+\]">\[
+a\bigl(2y_0b+b^2\bigr)
+\tag{F.9}
+\]</span>
+to the principal coordinate.</p>
+<p><strong>Proof.</strong> The patch <span class="math" data-tex="\(S=W\times\{e\}\)">\(S=W\times\{e\}\)</span> gives the global action map
+<span class="math math-display" data-tex="\[
+(V\times G)\times (W\times\{e\})\longrightarrow X\times G,
+\qquad ((v,g),(w,e))\longmapsto(v+w,g^{-1}).
+\]">\[
+(V\times G)\times (W\times\{e\})\longrightarrow X\times G,
+\qquad ((v,g),(w,e))\longmapsto(v+w,g^{-1}).
+\]</span>
+Its inverse is <span class="math" data-tex="\((v+w,h)\mapsto((v,h^{-1}),(w,e))\)">\((v+w,h)\mapsto((v,h^{-1}),(w,e))\)</span>, where the unique <span class="math" data-tex="\(v,w\)">\(v,w\)</span> are the two linear projections of <span class="math" data-tex="\(X=V\oplus W\)">\(X=V\oplus W\)</span>. Both maps are smooth by linearity and smooth group inversion, and substitution verifies both inverse identities. Thus this action map is a diffeomorphism; every orbit meets the patch once and its stabilizers are trivial.</p>
+<p>By Conn A.3 every connection is uniquely described by a smooth <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued one-form <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. The lifted translation preserves the global identity section. Therefore it preserves <span class="math" data-tex="\(\omega\)">\(\omega\)</span> exactly when it preserves <span class="math" data-tex="\(A\)">\(A\)</span>, since pullback connections are determined by their potentials. In the linear product coordinates this says that all coefficients of <span class="math" data-tex="\(A\)">\(A\)</span> are independent of <span class="math" data-tex="\(v\)">\(v\)</span>. Splitting a tangent into its <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> components gives the unique <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> in (F.7), with their smoothness and linearity. Conversely such a form is invariant under every translation, and its full expression follows from Conn A.3.</p>
+<p>For two constant vector fields their bracket is zero. The exterior derivative formula in Curvature A.2 gives the first three terms of (F.8); the coefficient <span class="math" data-tex="\(\frac12[A,A]\)">\(\frac12[A,A]\)</span> on the two vectors is the last bracket, by Curvature A.1. Curvature A.4 gives <span class="math" data-tex="\(F=dA+\frac12[A,A]\)">\(F=dA+\frac12[A,A]\)</span>, proving the formula.</p>
+<p>In the additive example the Lie bracket vanishes and direct differentiation gives <span class="math" data-tex="\(d(y^2dx)=2y\,dy\wedge dx\)">\(d(y^2dx)=2y\,dy\wedge dx\)</span>. The horizontal equation is <span class="math" data-tex="\(g'=-y^2x'\)">\(g'=-y^2x'\)</span>, by Conn C.1. Only the horizontal sides contribute to its integral; the integral of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(a y_0^2-a(y_0+b)^2\)">\(a y_0^2-a(y_0+b)^2\)</span>. Taking its negative yields (F.9). This is the actual transport with the stated orientation, rather than a curvature-area approximation. □</p>
+<p id="example-f-5"><strong>Example F.5 (why a cubic section is insufficient).</strong> Let horizontal translations act on <span class="math" data-tex="\(\mathbb R^2\times G\)">\(\mathbb R^2\times G\)</span> as in F.4, and assume <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> contains a nonzero <span class="math" data-tex="\(B\)">\(B\)</span>. The smooth embedded curve
+<span class="math math-display" data-tex="\[
+s(t)=((t,t^3),e),\qquad t\in\mathbb R,
+\]">\[
+s(t)=((t,t^3),e),\qquad t\in\mathbb R,
+\]</span>
+meets each base orbit once, but fails transversality at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The smooth jointly linear data
+<span class="math math-display" data-tex="\[
+\psi_t(u,ds_t(r))=3trB
+\tag{F.10}
+\]">\[
+\psi_t(u,ds_t(r))=3trB
+\tag{F.10}
+\]</span>
+obey the algebraic compatibility conditions (E.9)–(E.10) wherever those conditions are interpreted on this curve. Nevertheless no smooth invariant connection induces them.</p>
+<p><strong>Proof.</strong> The curve is embedded because projection to the first coordinate is its smooth inverse onto the parameter line, and its derivative has first coordinate one. Cubing is a bijection of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, so each horizontal orbit meets the curve exactly once. At zero, its base tangent is horizontal, equal to the orbit tangent, and their sum has dimension one rather than two. Hence (E.3) fails.</p>
+<p>Two curve points lie in the same <span class="math" data-tex="\(Q\)">\(Q\)</span>-orbit only when their parameters agree, and then the returning element is the identity: a translation fixing a point is zero and freeness forces its principal component to be <span class="math" data-tex="\(e\)">\(e\)</span>. Thus (E.10) is automatic. In (E.9), the equality of tangents is
+<span class="math math-display" data-tex="\[
+(u+r',\ 3t^2r',\ -A)=(r,\ 3t^2r,\ 0)
+\]">\[
+(u+r',\ 3t^2r',\ -A)=(r,\ 3t^2r,\ 0)
+\]</span>
+at the principal identity. If <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>, it gives <span class="math" data-tex="\(r'=r\)">\(r'=r\)</span>, <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, it gives <span class="math" data-tex="\(u+r'=r\)">\(u+r'=r\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, and both values in (F.10) are zero. Thus (E.9) holds in both cases.</p>
+<p>By F.4, the potential of any putative invariant connection is <span class="math" data-tex="\(A=a(y)dx+b(y)dy\)">\(A=a(y)dx+b(y)dy\)</span>, with smooth <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>-valued coefficients. Its reduced data would be
+<span class="math math-display" data-tex="\[
+a(t^3)(u+r)+3t^2 b(t^3)r.
+\]">\[
+a(t^3)(u+r)+3t^2 b(t^3)r.
+\]</span>
+Comparing the coefficient of <span class="math" data-tex="\(u\)">\(u\)</span> with (F.10) shows <span class="math" data-tex="\(a=0\)">\(a=0\)</span> everywhere. Comparing the coefficient of <span class="math" data-tex="\(r\)">\(r\)</span> then gives <span class="math" data-tex="\(b(t^3)=B/t\)">\(b(t^3)=B/t\)</span> for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. Choose a linear coordinate of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> nonzero on <span class="math" data-tex="\(B\)">\(B\)</span>; its value diverges as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. This contradicts continuity of <span class="math" data-tex="\(b\)">\(b\)</span>. Thus algebraic compatibility on a nontransverse set does not supply the smooth reconstruction in E.2. □</p>
+<p id="example-f-6"><strong>Example F.6 (gauge symmetries can exclude every connection).</strong> For a smooth real function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, let <span class="math" data-tex="\(K=(\mathbb R,+)\)">\(K=(\mathbb R,+)\)</span> act on <span class="math" data-tex="\(M\times U(1)\)">\(M\times U(1)\)</span> by
+<span class="math math-display" data-tex="\[
+t\cdot(x,g)=(x,e^{it f(x)}g).
+\tag{F.11}
+\]">\[
+t\cdot(x,g)=(x,e^{it f(x)}g).
+\tag{F.11}
+\]</span>
+If <span class="math" data-tex="\(df\)">\(df\)</span> is nonzero at any point, no invariant connection exists. If <span class="math" data-tex="\(df=0\)">\(df=0\)</span> everywhere, every connection is invariant. In particular <span class="math" data-tex="\(f(x)=x\)">\(f(x)=x\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> gives the first case, whereas constant <span class="math" data-tex="\(f\)">\(f\)</span> gives the second.</p>
+<p><strong>Proof.</strong> The exponential identity proves the action law, and it commutes with the principal action. Let <span class="math" data-tex="\(A\)">\(A\)</span> be any potential in the global identity section. By Conn A.3, its potential after pullback by <span class="math" data-tex="\(t\)">\(t\)</span> is
+<span class="math math-display" data-tex="\[
+A+(e^{it f})^{-1}d(e^{it f})=A+it\,df,
+\]">\[
+A+(e^{it f})^{-1}d(e^{it f})=A+it\,df,
+\]</span>
+since the adjoint representation of the abelian group <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> is the identity. Differentiation of sine and cosine gives the displayed derivative directly. Equality for every <span class="math" data-tex="\(t\)">\(t\)</span> is therefore equivalent to <span class="math" data-tex="\(df=0\)">\(df=0\)</span>, independent of <span class="math" data-tex="\(A\)">\(A\)</span>. Conn A.3 identifies equality of potentials with equality of full connections, proving both assertions. □</p>
+<p id="example-f-7"><strong>Example F.7 (an upper-triangular obstruction).</strong> Let <span class="math" data-tex="\(B\subset\operatorname{GL}(2,\mathbb R)\)">\(B\subset\operatorname{GL}(2,\mathbb R)\)</span> be the subgroup of invertible upper-triangular matrices. The principal bundle
+<span class="math math-display" data-tex="\[
+\operatorname{GL}(2,\mathbb R)\longrightarrow\operatorname{GL}(2,\mathbb R)/B
+\tag{F.12}
+\]">\[
+\operatorname{GL}(2,\mathbb R)\longrightarrow\operatorname{GL}(2,\mathbb R)/B
+\tag{F.12}
+\]</span>
+has no connection invariant under left multiplication by <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> The group <span class="math" data-tex="\(B\)">\(B\)</span> is closed in <span class="math" data-tex="\(\operatorname{GL}(2,\mathbb R)\)">\(\operatorname{GL}(2,\mathbb R)\)</span>, since its lower-left entry is zero. It is a subgroup by direct multiplication and the inverse formula. A.1 makes it an embedded Lie subgroup, with Lie algebra <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> all upper-triangular matrices: tangents have lower-left entry zero, and every such tangent is realized by <span class="math" data-tex="\(I+tT\)">\(I+tT\)</span> for sufficiently small <span class="math" data-tex="\(t\)">\(t\)</span>. Local 4.1 therefore proves that (F.12) is a smooth principal <span class="math" data-tex="\(B\)">\(B\)</span>-bundle. Left multiplication commutes with its principal right action.</p>
+<p>If an invariant connection existed, its value <span class="math" data-tex="\(L=\omega_I:\mathfrak{gl}(2,\mathbb R)\to\mathfrak b\)">\(L=\omega_I:\mathfrak{gl}(2,\mathbb R)\to\mathfrak b\)</span> would be the identity on <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>, by vertical reproduction. For each <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, the map <span class="math" data-tex="\(p\mapsto b p b^{-1}\)">\(p\mapsto b p b^{-1}\)</span> fixes <span class="math" data-tex="\(I\)">\(I\)</span>. Left invariance and right principal equivariance imply
+<span class="math math-display" data-tex="\[
+L(bTb^{-1})=bL(T)b^{-1}.
+\tag{F.13}
+\]">\[
+L(bTb^{-1})=bL(T)b^{-1}.
+\tag{F.13}
+\]</span>
+Set <span class="math" data-tex="\(U=E_{12}\)">\(U=E_{12}\)</span>, <span class="math" data-tex="\(V=E_{21}\)">\(V=E_{21}\)</span>, <span class="math" data-tex="\(H=E_{11}-E_{22}\)">\(H=E_{11}-E_{22}\)</span>, and <span class="math" data-tex="\(b=I+U\)">\(b=I+U\)</span>. Then <span class="math" data-tex="\(U^2=0\)">\(U^2=0\)</span>, so <span class="math" data-tex="\(b^{-1}=I-U\)">\(b^{-1}=I-U\)</span>, and multiplication gives
+<span class="math math-display" data-tex="\[
+bVb^{-1}=V+H-U.
+\]">\[
+bVb^{-1}=V+H-U.
+\]</span>
+By linearity and reproduction, (F.13) gives
+<span class="math" data-tex="\(H-U=bL(V)b^{-1}-L(V)\)">\(H-U=bL(V)b^{-1}-L(V)\)</span>.
+For an upper-triangular matrix <span class="math" data-tex="\(T=\left(\begin{smallmatrix}a&amp;c\\0&amp;d\end{smallmatrix}\right)\)">\(T=\left(\begin{smallmatrix}a&amp;c\\0&amp;d\end{smallmatrix}\right)\)</span>, multiplication gives
+<span class="math" data-tex="\(bTb^{-1}-T=\left(\begin{smallmatrix}0&amp;d-a\\0&amp;0\end{smallmatrix}\right)\)">\(bTb^{-1}-T=\left(\begin{smallmatrix}0&amp;d-a\\0&amp;0\end{smallmatrix}\right)\)</span>.
+Its diagonal is zero. The left side <span class="math" data-tex="\(H-U\)">\(H-U\)</span> has first diagonal entry one, a contradiction. No orbit decomposition or externally cited structural theorem is needed. □</p>
+<p id="theorem-f-8"><strong>Theorem F.8 (dilation and smoothness at the origin).</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and let <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> act on <span class="math" data-tex="\(\mathbb R^n\times G\)">\(\mathbb R^n\times G\)</span> by <span class="math" data-tex="\(\lambda\cdot(x,g)=(\lambda x,g)\)">\(\lambda\cdot(x,g)=(\lambda x,g)\)</span>. The only invariant connection on the whole bundle has potential <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, hence full form <span class="math" data-tex="\(\theta^G\)">\(\theta^G\)</span>.</p>
+<p>On the punctured bundle, put <span class="math" data-tex="\(r=\|x\|\)">\(r=\|x\|\)</span> and <span class="math" data-tex="\(n_x=x/r\)">\(n_x=x/r\)</span>. Every invariant connection instead has an arbitrary smooth function <span class="math" data-tex="\(b:S^{n-1}\to\mathfrak g\)">\(b:S^{n-1}\to\mathfrak g\)</span> and arbitrary <span class="math" data-tex="\(\beta\in\Omega^1(S^{n-1},\mathfrak g)\)">\(\beta\in\Omega^1(S^{n-1},\mathfrak g)\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{split}
+A_x(v)&amp;=b(n_x)\frac{\langle n_x,v\rangle}{r}
+ +\beta_{n_x}\left(\frac{v-n_x\langle n_x,v\rangle}{r}\right),\\
+\omega_{(x,g)}(v,\eta)&amp;=\operatorname{Ad}(g^{-1})A_x(v)+\theta^G_g(\eta).
+\end{split}
+\tag{F.14}
+\]">\[
+\begin{split}
+A_x(v)&amp;=b(n_x)\frac{\langle n_x,v\rangle}{r}
+ +\beta_{n_x}\left(\frac{v-n_x\langle n_x,v\rangle}{r}\right),\\
+\omega_{(x,g)}(v,\eta)&amp;=\operatorname{Ad}(g^{-1})A_x(v)+\theta^G_g(\eta).
+\end{split}
+\tag{F.14}
+\]</span>
+It extends smoothly across the origin precisely when both <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> vanish.</p>
+<p><strong>Proof.</strong> The global identity section is preserved by dilation, so invariance of the connection is exactly
+<span class="math" data-tex="\(\lambda A_{\lambda x}(v)=A_x(v)\)">\(\lambda A_{\lambda x}(v)=A_x(v)\)</span>, by Conn A.3. On the whole space, continuity of <span class="math" data-tex="\(A\)">\(A\)</span> at the origin makes <span class="math" data-tex="\(A_{\lambda x}(v)\)">\(A_{\lambda x}(v)\)</span> bounded as <span class="math" data-tex="\(\lambda\downarrow0\)">\(\lambda\downarrow0\)</span>, for fixed <span class="math" data-tex="\(x,v\)">\(x,v\)</span>. Multiplication by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives <span class="math" data-tex="\(A_x(v)=0\)">\(A_x(v)=0\)</span>. Conversely the zero potential is preserved by all dilations.</p>
+<p>On the punctured space the polar-coordinate map <span class="math" data-tex="\((r,n)\mapsto rn\)">\((r,n)\mapsto rn\)</span> is a smooth diffeomorphism from <span class="math" data-tex="\(\mathbb R_{&gt;0}\times S^{n-1}\)">\(\mathbb R_{&gt;0}\times S^{n-1}\)</span>, with inverse <span class="math" data-tex="\((\|x\|,x/\|x\|)\)">\((\|x\|,x/\|x\|)\)</span>. The sphere's charts are obtained by solving a nonzero coordinate as <span class="math" data-tex="\(\pm\sqrt{1-\sum y_i^2}\)">\(\pm\sqrt{1-\sum y_i^2}\)</span>; the square root is smooth on the positive half-line by the inverse-function theorem Local 1.2. These charts also show <span class="math" data-tex="\(T_nS^{n-1}=n^\perp\)">\(T_nS^{n-1}=n^\perp\)</span> by differentiating <span class="math" data-tex="\(\langle n,n\rangle=1\)">\(\langle n,n\rangle=1\)</span>; every orthogonal vector is realized by differentiating <span class="math" data-tex="\((n+tz)/\|n+tz\|\)">\((n+tz)/\|n+tz\|\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the sphere has two discrete points and the angular tangent space is zero, with the same formulas.</p>
+<p>Write the polar pullback as <span class="math" data-tex="\(C_{(r,n)}(\dot r,z)\)">\(C_{(r,n)}(\dot r,z)\)</span>. Dilation sends <span class="math" data-tex="\((r,n)\)">\((r,n)\)</span> to <span class="math" data-tex="\((\lambda r,n)\)">\((\lambda r,n)\)</span> and the tangent to <span class="math" data-tex="\((\lambda\dot r,z)\)">\((\lambda\dot r,z)\)</span>. Invariance, applied with <span class="math" data-tex="\(\lambda=1/r\)">\(\lambda=1/r\)</span>, gives
+<span class="math math-display" data-tex="\[
+C_{(r,n)}(\dot r,z)=C_{(1,n)}(\dot r/r,z)
+=b(n)\dot r/r+\beta_n(z).
+\]">\[
+C_{(r,n)}(\dot r,z)=C_{(1,n)}(\dot r/r,z)
+=b(n)\dot r/r+\beta_n(z).
+\]</span>
+Here <span class="math" data-tex="\(b(n)=C_{(1,n)}(1,0)\)">\(b(n)=C_{(1,n)}(1,0)\)</span> and <span class="math" data-tex="\(\beta_n(z)=C_{(1,n)}(0,z)\)">\(\beta_n(z)=C_{(1,n)}(0,z)\)</span>; these are smooth, unique and arbitrary. Differentiation gives <span class="math" data-tex="\(dr_x(v)=\langle n_x,v\rangle\)">\(dr_x(v)=\langle n_x,v\rangle\)</span> and <span class="math" data-tex="\(d(n_x)(v)=(v-n_x\langle n_x,v\rangle)/r\)">\(d(n_x)(v)=(v-n_x\langle n_x,v\rangle)/r\)</span>, proving (F.14). Conversely this expression is smooth on the punctured space and is invariant by the same calculation. Conn A.3 gives its full principal form.</p>
+<p>If such a connection extends smoothly over zero, each dilated pullback equals it off zero and hence also at zero by continuity of the coefficients. Its extension is therefore invariant on the whole space and must have zero potential by the first paragraph. The uniqueness of <span class="math" data-tex="\(b,\beta\)">\(b,\beta\)</span> then forces both to vanish. Conversely their vanishing gives the smooth zero extension. For instance, <span class="math" data-tex="\(b=B\ne0\)">\(b=B\ne0\)</span>, <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> gives <span class="math" data-tex="\(A=B\,dr/r\)">\(A=B\,dr/r\)</span>, a smooth invariant punctured potential with no extension. The angular factor <span class="math" data-tex="\(1/r\)">\(1/r\)</span> and the adjoint factor in (F.14) are both required by differentiation and principal equivariance. □</p>
+<p id="theorem-f-9"><strong>Theorem F.9 (an arbitrary lift on a trivial bundle).</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> act by principal automorphisms on <span class="math" data-tex="\(P=M\times G\)">\(P=M\times G\)</span>. There is a unique smooth map <span class="math" data-tex="\(c:K\times M\to G\)">\(c:K\times M\to G\)</span> with
+<span class="math math-display" data-tex="\[
+k\cdot(x,g)=(\varphi_k(x),c(k,x)g),\qquad
+c(kk',x)=c(k,\varphi_{k'}x)c(k',x).
+\tag{F.15}
+\]">\[
+k\cdot(x,g)=(\varphi_k(x),c(k,x)g),\qquad
+c(kk',x)=c(k,\varphi_{k'}x)c(k',x).
+\tag{F.15}
+\]</span>
+Invariant connections correspond exactly to smooth <span class="math" data-tex="\(A\in\Omega^1(M,\mathfrak g)\)">\(A\in\Omega^1(M,\mathfrak g)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+A_x(v)=\operatorname{Ad}(c(k,x)^{-1})
+A_{\varphi_kx}(d\varphi_kv)
+ +(c(k,\cdot)^*\theta^G)_x(v)
+\tag{F.16}
+\]">\[
+A_x(v)=\operatorname{Ad}(c(k,x)^{-1})
+A_{\varphi_kx}(d\varphi_kv)
+ +(c(k,\cdot)^*\theta^G)_x(v)
+\tag{F.16}
+\]</span>
+for every <span class="math" data-tex="\(k,x,v\)">\(k,x,v\)</span>. Set
+<span class="math" data-tex="\(\chi_x(X)=\left.\frac{d}{dt}\right|_0c(\exp(tX),x)\in T_eG=\mathfrak g\)">\(\chi_x(X)=\left.\frac{d}{dt}\right|_0c(\exp(tX),x)\in T_eG=\mathfrak g\)</span>.
+The reduced data on the transverse covering <span class="math" data-tex="\(M\times\{e\}\)">\(M\times\{e\}\)</span> are then
+<span class="math math-display" data-tex="\[
+\psi_x(X,v)=A_x(X_M(x)+v)+\chi_x(X).
+\tag{F.17}
+\]">\[
+\psi_x(X,v)=A_x(X_M(x)+v)+\chi_x(X).
+\tag{F.17}
+\]</span>
+In particular <span class="math" data-tex="\(A_x(v)=\psi_x(0,v)\)">\(A_x(v)=\psi_x(0,v)\)</span>; reduced data satisfying E.2 recover precisely (F.16)–(F.17), with no additional arbitrary symmetry-direction term.</p>
+<p><strong>Proof.</strong> Apply the automorphism to <span class="math" data-tex="\((x,e)\)">\((x,e)\)</span> to define <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span>; smoothness is inherited from the action. Commutation with right multiplication gives its value on <span class="math" data-tex="\((x,g)\)">\((x,g)\)</span>, and composing two actions proves the cocycle identity. The identity element acts trivially, so <span class="math" data-tex="\(c(e,x)=e\)">\(c(e,x)=e\)</span>. Differentiation at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> therefore defines the smooth family of linear maps <span class="math" data-tex="\(\chi_x\)">\(\chi_x\)</span>; linearity also follows from its being the derivative in the group variable at <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>By Conn A.3, an arbitrary connection is uniquely given by
+<span class="math" data-tex="\(\omega_{(x,g)}(v,\eta)=\operatorname{Ad}(g^{-1})A_x(v)+\theta^G_g(\eta)\)">\(\omega_{(x,g)}(v,\eta)=\operatorname{Ad}(g^{-1})A_x(v)+\theta^G_g(\eta)\)</span>.
+Pulling this formula back along <span class="math" data-tex="\(x\mapsto k\cdot(x,e)=(\varphi_kx,c(k,x))\)">\(x\mapsto k\cdot(x,e)=(\varphi_kx,c(k,x))\)</span> gives exactly the right side of (F.16). The pullback by a principal automorphism is a principal connection, as checked in F.2; equality with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is thus equivalent to equality of these potentials in the identity section. This proves necessity and sufficiency of (F.16), as well as uniqueness.</p>
+<p>The fundamental field at <span class="math" data-tex="\((x,e)\)">\((x,e)\)</span> is <span class="math" data-tex="\((X_M(x),\chi_x(X))\)">\((X_M(x),\chi_x(X))\)</span>. Adding the section tangent <span class="math" data-tex="\((v,0)\)">\((v,0)\)</span> and applying the formula for <span class="math" data-tex="\(\omega\)">\(\omega\)</span> at <span class="math" data-tex="\(g=e\)">\(g=e\)</span> proves (F.17). The identity section is a transverse covering by E.1. Hence E.2 says exactly that every admissible <span class="math" data-tex="\(\psi\)">\(\psi\)</span> arises from the unique invariant connection just described. Taking <span class="math" data-tex="\(X=0\)">\(X=0\)</span> gives <span class="math" data-tex="\(A\)">\(A\)</span>, and substituting back gives its forced value on symmetry directions. This proves the last assertion in both directions. When <span class="math" data-tex="\(c(k,x)\)">\(c(k,x)\)</span> is independent of <span class="math" data-tex="\(x\)">\(x\)</span>, (F.16) reduces to <span class="math" data-tex="\(\varphi_k^*A=\operatorname{Ad}(c(k))A\)">\(\varphi_k^*A=\operatorname{Ad}(c(k))A\)</span>; for the trivial lift it reduces to ordinary invariance of <span class="math" data-tex="\(A\)">\(A\)</span>. □</p>
+<h2 id="part-g">G. Smooth functions of squared radius</h2>
+<p>The next two proofs supply the smooth-extension step needed at the origin. For the jet construction we use Bill Casselman's freely accessible author note <a href="https://personal.math.ubc.ca/~cass/research/pdf/Emile.pdf"><em>Variations on a theorem of Émile Borel</em>, revised 21 October 2020</a>, §1, Theorem 1.1 and Lemma 1.2, native pages 1–3. We write out the estimates and convergence argument below. Smooth cutoffs are already proved in Local 3.1; integration and uniform-limit estimates are proved in Local 0.2–0.3. No external extension theorem is a proof provider.</p>
+<p id="lemma-g-1"><strong>Lemma G.1 (prescribing a smooth jet at one point).</strong> For every real sequence <span class="math" data-tex="\((a_j)_{j\ge0}\)">\((a_j)_{j\ge0}\)</span>, there is a smooth <span class="math" data-tex="\(b:\mathbb R\to\mathbb R\)">\(b:\mathbb R\to\mathbb R\)</span> with <span class="math" data-tex="\(b^{(j)}(0)=a_j\)">\(b^{(j)}(0)=a_j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Proof.</strong> Choose a smooth cutoff <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, equal to one near zero and supported in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, by Local 3.1. For <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> set
+<span class="math math-display" data-tex="\[
+b_j(t)=\frac{a_j}{j!}t^j\phi(t/\varepsilon_j).
+\tag{G.1}
+\]">\[
+b_j(t)=\frac{a_j}{j!}t^j\phi(t/\varepsilon_j).
+\tag{G.1}
+\]</span>
+The higher product rule, obtained by induction from Local 0.3, gives, for <span class="math" data-tex="\(0\le k&lt;j\)">\(0\le k&lt;j\)</span>,
+<span class="math math-display" data-tex="\[
+\sup_{t\in\mathbb R}|b_j^{(k)}(t)|
+\le |a_j|\sum_{i=0}^k
+\binom{k}{i}\frac{\sup|\phi^{(i)}|}{(j-k+i)!}
+\varepsilon_j^{j-k}.
+\tag{G.2}
+\]">\[
+\sup_{t\in\mathbb R}|b_j^{(k)}(t)|
+\le |a_j|\sum_{i=0}^k
+\binom{k}{i}\frac{\sup|\phi^{(i)}|}{(j-k+i)!}
+\varepsilon_j^{j-k}.
+\tag{G.2}
+\]</span>
+Indeed the <span class="math" data-tex="\(i\)">\(i\)</span>-th derivative falling on the cutoff contributes <span class="math" data-tex="\(\varepsilon_j^{-i}\)">\(\varepsilon_j^{-i}\)</span>, while the polynomial contributes <span class="math" data-tex="\(t^{j-k+i}/(j-k+i)!\)">\(t^{j-k+i}/(j-k+i)!\)</span>; all terms vanish outside <span class="math" data-tex="\(|t|\le\varepsilon_j\)">\(|t|\le\varepsilon_j\)</span>. The suprema are finite by compactness, Local 0.1. Since <span class="math" data-tex="\(j-k&gt;0\)">\(j-k&gt;0\)</span>, choose <span class="math" data-tex="\(0&lt;\varepsilon_j\le2^{-j}\)">\(0&lt;\varepsilon_j\le2^{-j}\)</span> so that (G.2) is at most <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span> for every <span class="math" data-tex="\(k&lt;j\)">\(k&lt;j\)</span>. There are only finitely many such requirements for each <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S_N=a_0+\sum_{j=1}^N b_j\)">\(S_N=a_0+\sum_{j=1}^N b_j\)</span>. For every fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the derivatives <span class="math" data-tex="\(S_N^{(k)}\)">\(S_N^{(k)}\)</span> converge uniformly on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> to a continuous function <span class="math" data-tex="\(u_k\)">\(u_k\)</span>: the finitely many terms <span class="math" data-tex="\(j\le k\)">\(j\le k\)</span> cause no convergence issue, and the remaining tail is bounded by <span class="math" data-tex="\(\sum_{j&gt;k}2^{-j}\)">\(\sum_{j&gt;k}2^{-j}\)</span>. Completeness and the uniform continuity-of-limit argument are Local 0.2. To justify differentiation of the limit, fix <span class="math" data-tex="\(s,t\)">\(s,t\)</span>. Local 0.3 gives
+<span class="math math-display" data-tex="\[
+S_N^{(k)}(t)-S_N^{(k)}(s)
+=\int_s^t S_N^{(k+1)}(v)\,dv.
+\]">\[
+S_N^{(k)}(t)-S_N^{(k)}(s)
+=\int_s^t S_N^{(k+1)}(v)\,dv.
+\]</span>
+Uniform convergence and the integral bound in Local 0.3 allow passage to the limit. Thus <span class="math" data-tex="\(u_k(t)-u_k(s)=\int_s^t u_{k+1}(v)\,dv\)">\(u_k(t)-u_k(s)=\int_s^t u_{k+1}(v)\,dv\)</span>, so <span class="math" data-tex="\(u_k'=u_{k+1}\)">\(u_k'=u_{k+1}\)</span>. Induction proves that <span class="math" data-tex="\(b=u_0\)">\(b=u_0\)</span> is smooth with derivatives <span class="math" data-tex="\(u_k\)">\(u_k\)</span>. Near zero each individual <span class="math" data-tex="\(b_j\)">\(b_j\)</span> equals <span class="math" data-tex="\(a_jt^j/j!\)">\(a_jt^j/j!\)</span>. Consequently <span class="math" data-tex="\(b_j^{(k)}(0)\)">\(b_j^{(k)}(0)\)</span> is <span class="math" data-tex="\(a_j\)">\(a_j\)</span> if <span class="math" data-tex="\(j=k\)">\(j=k\)</span> and zero otherwise; evaluation of the uniformly convergent derivative series at zero proves <span class="math" data-tex="\(b^{(k)}(0)=a_k\)">\(b^{(k)}(0)=a_k\)</span>. □</p>
+<p id="lemma-g-2"><strong>Lemma G.2 (even and odd smooth extension).</strong> If <span class="math" data-tex="\(f:\mathbb R\to\mathbb R\)">\(f:\mathbb R\to\mathbb R\)</span> is smooth and even, there is a smooth <span class="math" data-tex="\(F:\mathbb R\to\mathbb R\)">\(F:\mathbb R\to\mathbb R\)</span> with <span class="math" data-tex="\(f(r)=F(r^2)\)">\(f(r)=F(r^2)\)</span>. The restriction of <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> is unique. If <span class="math" data-tex="\(b\)">\(b\)</span> is smooth and odd, it has the form <span class="math" data-tex="\(b(r)=rG(r^2)\)">\(b(r)=rG(r^2)\)</span> with smooth <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. If <span class="math" data-tex="\(c\)">\(c\)</span> is smooth and even with <span class="math" data-tex="\(c(0)=0\)">\(c(0)=0\)</span>, then <span class="math" data-tex="\(c(r)=r^2H(r^2)\)">\(c(r)=r^2H(r^2)\)</span> with smooth <span class="math" data-tex="\(H\)">\(H\)</span>. The restrictions of <span class="math" data-tex="\(G,H\)">\(G,H\)</span> to the nonnegative half-line are also unique.</p>
+<p><strong>Proof.</strong> Define <span class="math" data-tex="\(h(s)=f(\sqrt{s})\)">\(h(s)=f(\sqrt{s})\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and <span class="math" data-tex="\(h(0)=f(0)\)">\(h(0)=f(0)\)</span>. Smoothness away from zero follows from Local 1.2 applied to squaring on the positive half-line. We first prove that <span class="math" data-tex="\(h\)">\(h\)</span> has derivatives of every order continuous from the right at zero.</p>
+<p>All odd derivatives of <span class="math" data-tex="\(f\)">\(f\)</span> vanish at zero: differentiate <span class="math" data-tex="\(f(-r)=f(r)\)">\(f(-r)=f(r)\)</span> and set <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Fix <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>, and subtract the even polynomial
+<span class="math math-display" data-tex="\[
+P_N(r)=\sum_{j=0}^N\frac{f^{(2j)}(0)}{(2j)!}r^{2j}.
+\tag{G.3}
+\]">\[
+P_N(r)=\sum_{j=0}^N\frac{f^{(2j)}(0)}{(2j)!}r^{2j}.
+\tag{G.3}
+\]</span>
+The remainder <span class="math" data-tex="\(R_N=f-P_N\)">\(R_N=f-P_N\)</span> and all its derivatives through order <span class="math" data-tex="\(2N+1\)">\(2N+1\)</span> vanish at zero. Its <span class="math" data-tex="\((2N+2)\)">\((2N+2)\)</span>-nd derivative is bounded near zero by Local 0.1. Repeated integration from zero using Local 0.3 gives, for <span class="math" data-tex="\(0\le i\le2N+2\)">\(0\le i\le2N+2\)</span>,
+<span class="math math-display" data-tex="\[
+|R_N^{(i)}(r)|\le C_N\frac{|r|^{2N+2-i}}{(2N+2-i)!}
+\quad\text{for sufficiently small }|r|.
+\tag{G.4}
+\]">\[
+|R_N^{(i)}(r)|\le C_N\frac{|r|^{2N+2-i}}{(2N+2-i)!}
+\quad\text{for sufficiently small }|r|.
+\tag{G.4}
+\]</span>
+For negative <span class="math" data-tex="\(r\)">\(r\)</span>, reverse the integral orientation and apply the same bound.</p>
+<p>For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, differentiation in <span class="math" data-tex="\(s=r^2\)">\(s=r^2\)</span> is the operator <span class="math" data-tex="\(L=(2r)^{-1}d/dr\)">\(L=(2r)^{-1}d/dr\)</span>. By induction, <span class="math" data-tex="\(L^k\)">\(L^k\)</span>, for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, is a finite linear combination of operators <span class="math" data-tex="\(r^{i-2k}(d/dr)^i\)">\(r^{i-2k}(d/dr)^i\)</span> with <span class="math" data-tex="\(1\le i\le k\)">\(1\le i\le k\)</span>: differentiating a coefficient and differentiating the function give exactly the next exponents. Equation (G.4) therefore implies
+<span class="math math-display" data-tex="\[
+L^kR_N(r)=O(r^{2N+2-2k})\qquad(0\le k\le N),
+\tag{G.5}
+\]">\[
+L^kR_N(r)=O(r^{2N+2-2k})\qquad(0\le k\le N),
+\tag{G.5}
+\]</span>
+where <span class="math" data-tex="\(k=0\)">\(k=0\)</span> is (G.4) itself. Applying this to the polynomial (G.3) shows that every derivative of <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> has a finite right limit at zero, namely
+<span class="math math-display" data-tex="\[
+\lim_{s\downarrow0}h^{(k)}(s)
+=\frac{k!}{(2k)!}f^{(2k)}(0)=:d_k.
+\tag{G.6}
+\]">\[
+\lim_{s\downarrow0}h^{(k)}(s)
+=\frac{k!}{(2k)!}f^{(2k)}(0)=:d_k.
+\tag{G.6}
+\]</span>
+For each fixed <span class="math" data-tex="\(k\)">\(k\)</span>, use any <span class="math" data-tex="\(N\ge k\)">\(N\ge k\)</span> in (G.5).</p>
+<p>These limits are genuine one-sided derivatives of the continuous extensions. On <span class="math" data-tex="\([\epsilon,s]\)">\([\epsilon,s]\)</span>, the fundamental theorem gives the difference of consecutive derivatives as the integral of the next one. Let <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>. Boundedness of the extended next derivative makes its integral on <span class="math" data-tex="\([0,\epsilon]\)">\([0,\epsilon]\)</span> tend to zero, so
+<span class="math" data-tex="\(h^{(k)}(s)-d_k=\int_0^s h^{(k+1)}(t)\,dt\)">\(h^{(k)}(s)-d_k=\int_0^s h^{(k+1)}(t)\,dt\)</span>.
+Local 0.3 at the endpoint now proves the assertion for all orders.</p>
+<p>Apply G.1 to the sequence <span class="math" data-tex="\((d_k)\)">\((d_k)\)</span>, obtaining a smooth <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with these derivatives at zero. On <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> the function <span class="math" data-tex="\(h-b\)">\(h-b\)</span> has every right derivative equal to zero at zero. Extend it to be zero on the negative half-line. This extension <span class="math" data-tex="\(q\)">\(q\)</span> is smooth: its piecewise <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative is continuous at zero for every <span class="math" data-tex="\(k\)">\(k\)</span>; the preceding integral identity proves its derivative at zero is the next, zero, value. Inducting on <span class="math" data-tex="\(k\)">\(k\)</span> verifies all derivatives across the join. Set <span class="math" data-tex="\(F=b+q\)">\(F=b+q\)</span>. It is smooth everywhere and equals <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Evenness of <span class="math" data-tex="\(f\)">\(f\)</span> gives <span class="math" data-tex="\(f(r)=F(r^2)\)">\(f(r)=F(r^2)\)</span> for both signs of <span class="math" data-tex="\(r\)">\(r\)</span>, and every nonnegative number is a square, proving uniqueness on that half-line.</p>
+<p>For the remaining assertions, any smooth function <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u(0)=0\)">\(u(0)=0\)</span> admits the smooth division
+<span class="math math-display" data-tex="\[
+u(r)=r\,v(r),\qquad v(r)=\int_0^1 u'(tr)\,dt.
+\tag{G.7}
+\]">\[
+u(r)=r\,v(r),\qquad v(r)=\int_0^1 u'(tr)\,dt.
+\tag{G.7}
+\]</span>
+The identity is Local 0.3. To verify smoothness, difference quotients of the integrand converge uniformly for <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span> on compact <span class="math" data-tex="\(r\)">\(r\)</span>-intervals, by the segment formula and uniform continuity of the next derivative. The integral bound therefore gives <span class="math" data-tex="\(v^{(j)}(r)=\int_0^1t^ju^{(j+1)}(tr)\,dt\)">\(v^{(j)}(r)=\int_0^1t^ju^{(j+1)}(tr)\,dt\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, with continuous derivatives. If <span class="math" data-tex="\(u\)">\(u\)</span> is odd, <span class="math" data-tex="\(v\)">\(v\)</span> is even, first for <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span> by division and then at zero by continuity. Apply the proved even case to <span class="math" data-tex="\(v\)">\(v\)</span>. If <span class="math" data-tex="\(u=c\)">\(u=c\)</span> is even and vanishes at zero, its first quotient is odd and vanishes at zero, so applying (G.7) once more yields a smooth even second quotient. Applying the even case to it proves the quadratic factorization. Uniqueness for positive squared radius follows by division; continuity determines the value at zero. □</p>
+<h2 id="part-h">H. Rotational connections, Euclidean lifts and flat examples</h2>
+<p>The free construction source is Maximilian Hanusch's <a href="https://arxiv.org/abs/1310.0318v3"><em>A Characterization of Invariant Connections</em>, corrected arXiv:1310.0318v3</a>, Example 5.8, Example 5.12 and Appendix B, under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>. We prove the matrix, representation and smooth-extension ingredients here; in particular G.1–G.2 replace the external smooth-function references used in that source. The arguments and worked calculations below are newly written.</p>
+<p id="lemma-h-1"><strong>Lemma H.1 (the adjoint rotations and their normalization).</strong> Define
+<span class="math math-display" data-tex="\[
+\tau_1=\begin{pmatrix}0&amp;-i\\-i&amp;0\end{pmatrix},\quad
+\tau_2=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad
+\tau_3=\begin{pmatrix}-i&amp;0\\0&amp;i\end{pmatrix},\qquad
+\zeta(v)=v_1\tau_1+v_2\tau_2+v_3\tau_3.
+\tag{H.1}
+\]">\[
+\tau_1=\begin{pmatrix}0&amp;-i\\-i&amp;0\end{pmatrix},\quad
+\tau_2=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\quad
+\tau_3=\begin{pmatrix}-i&amp;0\\0&amp;i\end{pmatrix},\qquad
+\zeta(v)=v_1\tau_1+v_2\tau_2+v_3\tau_3.
+\tag{H.1}
+\]</span>
+Then <span class="math" data-tex="\(\zeta:\mathbb R^3\to\mathfrak{su}(2)\)">\(\zeta:\mathbb R^3\to\mathfrak{su}(2)\)</span> is a linear isomorphism, and
+<span class="math math-display" data-tex="\[
+\zeta(u)\zeta(v)=-\langle u,v\rangle I+\zeta(u\times v),\qquad
+[\zeta(u),\zeta(v)]=2\zeta(u\times v).
+\tag{H.2}
+\]">\[
+\zeta(u)\zeta(v)=-\langle u,v\rangle I+\zeta(u\times v),\qquad
+[\zeta(u),\zeta(v)]=2\zeta(u\times v).
+\tag{H.2}
+\]</span>
+Every <span class="math" data-tex="\(\sigma\in\mathrm{SU}(2)\)">\(\sigma\in\mathrm{SU}(2)\)</span> has the unique form <span class="math" data-tex="\(aI+\zeta(b)\)">\(aI+\zeta(b)\)</span>, with <span class="math" data-tex="\(a^2+|b|^2=1\)">\(a^2+|b|^2=1\)</span>. The equation
+<span class="math math-display" data-tex="\[
+\sigma\zeta(v)\sigma^{-1}=\zeta(R_\sigma v)
+\tag{H.3}
+\]">\[
+\sigma\zeta(v)\sigma^{-1}=\zeta(R_\sigma v)
+\tag{H.3}
+\]</span>
+defines a smooth surjective homomorphism <span class="math" data-tex="\(\mathrm{SU}(2)\to\mathrm{SO}(3)\)">\(\mathrm{SU}(2)\to\mathrm{SO}(3)\)</span>, with kernel <span class="math" data-tex="\(\{I,-I\}\)">\(\{I,-I\}\)</span>, which is a two-sheeted covering. Explicitly,
+<span class="math math-display" data-tex="\[
+R_{aI+\zeta(b)}v=(a^2-|b|^2)v+2b\langle b,v\rangle+2a(b\times v).
+\tag{H.4}
+\]">\[
+R_{aI+\zeta(b)}v=(a^2-|b|^2)v+2b\langle b,v\rangle+2a(b\times v).
+\tag{H.4}
+\]</span>
+The map <span class="math" data-tex="\(J(v)w=v\times w\)">\(J(v)w=v\times w\)</span> identifies <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span> with <span class="math" data-tex="\(\mathfrak{so}(3)\)">\(\mathfrak{so}(3)\)</span>, and
+<span class="math math-display" data-tex="\[
+[J(u),J(v)]=J(u\times v),\qquad
+RJ(v)R^{-1}=J(Rv)\quad(R\in\mathrm{SO}(3)).
+\tag{H.5}
+\]">\[
+[J(u),J(v)]=J(u\times v),\qquad
+RJ(v)R^{-1}=J(Rv)\quad(R\in\mathrm{SO}(3)).
+\tag{H.5}
+\]</span></p>
+<p><strong>Proof.</strong> D.1's sphere coordinates for <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span> give the unique expression <span class="math" data-tex="\(aI+\zeta(b)\)">\(aI+\zeta(b)\)</span>: in those coordinates <span class="math" data-tex="\(z_0=a-ib_3\)">\(z_0=a-ib_3\)</span>, <span class="math" data-tex="\(z_1=b_2-ib_1\)">\(z_1=b_2-ib_1\)</span>. Differentiating the sphere equation at <span class="math" data-tex="\((a,b)=(1,0)\)">\((a,b)=(1,0)\)</span> leaves precisely the three <span class="math" data-tex="\(b\)">\(b\)</span>-coordinates, proving the asserted Lie algebra identification. Direct multiplication of the three matrices gives
+<span class="math" data-tex="\(\tau_i\tau_j=-\delta_{ij}I+\sum_k\epsilon_{ijk}\tau_k\)">\(\tau_i\tau_j=-\delta_{ij}I+\sum_k\epsilon_{ijk}\tau_k\)</span>.
+For equal indices this is <span class="math" data-tex="\(\tau_i^2=-I\)">\(\tau_i^2=-I\)</span>; the three cyclic products are <span class="math" data-tex="\(\tau_1\tau_2=\tau_3\)">\(\tau_1\tau_2=\tau_3\)</span>, <span class="math" data-tex="\(\tau_2\tau_3=\tau_1\)">\(\tau_2\tau_3=\tau_1\)</span>, <span class="math" data-tex="\(\tau_3\tau_1=\tau_2\)">\(\tau_3\tau_1=\tau_2\)</span>, and reversing a distinct pair changes its sign. Bilinearity proves (H.2). In particular
+<span class="math math-display" data-tex="\[
+(aI+\zeta(b))(cI+\zeta(d))
+=(ac-b\cdot d)I+\zeta(ad+cb+b\times d),
+\tag{H.6}
+\]">\[
+(aI+\zeta(b))(cI+\zeta(d))
+=(ac-b\cdot d)I+\zeta(ad+cb+b\times d),
+\tag{H.6}
+\]</span>
+and the inverse of a unit element is <span class="math" data-tex="\(aI-\zeta(b)\)">\(aI-\zeta(b)\)</span>.</p>
+<p>Conjugation preserves the real tangent space <span class="math" data-tex="\(\mathfrak{su}(2)\)">\(\mathfrak{su}(2)\)</span>, by differentiating curves in the group, so (H.3) defines an invertible real linear map. Applying conjugation to the symmetric and antisymmetric parts of (H.2) shows that it preserves inner products and cross products. Thus it is orthogonal and carries an oriented orthonormal basis to an oriented orthonormal basis; its determinant is one. Group composition proves the homomorphism property. Formula (H.6), applied twice, yields (H.4), and gives smoothness directly. If the conjugation is trivial, <span class="math" data-tex="\(\zeta(b)\)">\(\zeta(b)\)</span> commutes with all <span class="math" data-tex="\(\zeta(v)\)">\(\zeta(v)\)</span>. By (H.2), <span class="math" data-tex="\(b\times v=0\)">\(b\times v=0\)</span> for every <span class="math" data-tex="\(v\)">\(v\)</span>, forcing <span class="math" data-tex="\(b=0\)">\(b=0\)</span>; hence the kernel is exactly <span class="math" data-tex="\(\{I,-I\}\)">\(\{I,-I\}\)</span>.</p>
+<p>For surjectivity, let <span class="math" data-tex="\(R\in\mathrm{SO}(3)\)">\(R\in\mathrm{SO}(3)\)</span>. The determinant identities give
+<span class="math math-display" data-tex="\[
+\det(I-R)=\det(R^{-1}-I)=\det(R^T-I)
+=\det(R-I)=-\det(I-R).
+\]">\[
+\det(I-R)=\det(R^{-1}-I)=\det(R^T-I)
+=\det(R-I)=-\det(I-R).
+\]</span>
+Thus <span class="math" data-tex="\(R\)">\(R\)</span> fixes a unit vector <span class="math" data-tex="\(n\)">\(n\)</span>. It preserves <span class="math" data-tex="\(n^\perp\)">\(n^\perp\)</span>. Choose a unit <span class="math" data-tex="\(e\perp n\)">\(e\perp n\)</span>; the pair <span class="math" data-tex="\((e,n\times e)\)">\((e,n\times e)\)</span> orients that plane. Its restriction there is a two-dimensional orthogonal matrix of determinant one, hence has matrix <span class="math" data-tex="\(\left(\begin{smallmatrix}c&amp;-d\\d&amp;c\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}c&amp;-d\\d&amp;c\end{smallmatrix}\right)\)</span>, with <span class="math" data-tex="\(c^2+d^2=1\)">\(c^2+d^2=1\)</span>, by its orthonormal columns. If <span class="math" data-tex="\(c=-1\)">\(c=-1\)</span>, take <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, <span class="math" data-tex="\(b=n\)">\(b=n\)</span>. Otherwise take <span class="math" data-tex="\(a=\sqrt{(1+c)/2}\)">\(a=\sqrt{(1+c)/2}\)</span>, <span class="math" data-tex="\(b=(d/(2a))n\)">\(b=(d/(2a))n\)</span>. The unit equation holds, and (H.4) agrees with <span class="math" data-tex="\(R\)">\(R\)</span> on both <span class="math" data-tex="\(n\)">\(n\)</span> and its orthogonal plane. This proves surjectivity.</p>
+<p>For completeness, <span class="math" data-tex="\(\mathrm{SO}(3)\)">\(\mathrm{SO}(3)\)</span> is a closed subgroup of the matrix Lie group <span class="math" data-tex="\(\mathrm{GL}(3,\mathbb R)\)">\(\mathrm{GL}(3,\mathbb R)\)</span>, defined by <span class="math" data-tex="\(R^TR=I\)">\(R^TR=I\)</span>, <span class="math" data-tex="\(\det R=1\)">\(\det R=1\)</span>; the ambient group operations are smooth by matrix multiplication and the determinant inverse formula. A.1 supplies its embedded smooth structure. Differentiation shows its Lie algebra is contained in the skew matrices. Conversely, for skew <span class="math" data-tex="\(T\)">\(T\)</span>, Local 2.3's exponential solves <span class="math" data-tex="\(U'=TU\)">\(U'=TU\)</span>; differentiation gives <span class="math" data-tex="\((U^TU)'=0\)">\((U^TU)'=0\)</span>. Thus <span class="math" data-tex="\(\exp(tT)\)">\(\exp(tT)\)</span> is orthogonal, with determinant one by continuity from <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, proving the reverse inclusion. All skew matrices have the unique form <span class="math" data-tex="\(J(v)\)">\(J(v)\)</span>. Differentiating (H.3) at the identity gives <span class="math" data-tex="\(\zeta(b)\mapsto2J(b)\)">\(\zeta(b)\mapsto2J(b)\)</span>, an isomorphism. Local 1.2 therefore gives a neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> on which <span class="math" data-tex="\(\sigma\mapsto R_\sigma\)">\(\sigma\mapsto R_\sigma\)</span> is a diffeomorphism onto an open neighbourhood. Shrink <span class="math" data-tex="\(V\)">\(V\)</span> to be disjoint from <span class="math" data-tex="\(-V\)">\(-V\)</span>. Every point over its image differs from its unique preimage in <span class="math" data-tex="\(V\)">\(V\)</span> by a kernel element, so the full preimage is the disjoint union <span class="math" data-tex="\(V\cup(-V)\)">\(V\cup(-V)\)</span>. Translation gives such neighbourhoods everywhere, proving the two-sheeted covering assertion.</p>
+<p>Finally, coordinate expansion of the cross product gives
+<span class="math" data-tex="\(u\times(v\times w)=v(u\cdot w)-w(u\cdot v)\)">\(u\times(v\times w)=v(u\cdot w)-w(u\cdot v)\)</span>.
+One way to check every component is the contraction identity
+<span class="math" data-tex="\(\sum_k\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}\)">\(\sum_k\epsilon_{ijk}\epsilon_{klm}=\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl}\)</span>; if a pair of indices repeats both sides reduce to the corresponding two Kronecker terms, and if the distinct pairs differ both sides vanish. Applying the triple-product identity twice gives the commutator in (H.5). An orientation-preserving orthogonal map preserves the cross product, since <span class="math" data-tex="\(\langle u\times v,w\rangle=\det(u,v,w)\)">\(\langle u\times v,w\rangle=\det(u,v,w)\)</span>; this proves the conjugation identity in (H.5). □</p>
+<p id="theorem-h-2"><strong>Theorem H.2 (all smooth rotational connections, including the origin).</strong> Let <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span> act on <span class="math" data-tex="\(\mathbb R^3\times\mathrm{SU}(2)\)">\(\mathbb R^3\times\mathrm{SU}(2)\)</span> by
+<span class="math" data-tex="\(\sigma\cdot(x,g)=(R_\sigma x,\sigma g)\)">\(\sigma\cdot(x,g)=(R_\sigma x,\sigma g)\)</span>.
+Its invariant connections are exactly
+<span class="math math-display" data-tex="\[
+\begin{split}
+\omega_{(x,g)}(v,\eta)&amp;=\operatorname{Ad}(g^{-1})A_x(v)+g^{-1}\eta,\\
+A_x(v)&amp;=\zeta\bigl(f(s)v+g_0(s)(x\times v)+h(s)x\langle x,v\rangle\bigr),
+\qquad s=|x|^2,
+\end{split}
+\tag{H.7}
+\]">\[
+\begin{split}
+\omega_{(x,g)}(v,\eta)&amp;=\operatorname{Ad}(g^{-1})A_x(v)+g^{-1}\eta,\\
+A_x(v)&amp;=\zeta\bigl(f(s)v+g_0(s)(x\times v)+h(s)x\langle x,v\rangle\bigr),
+\qquad s=|x|^2,
+\end{split}
+\tag{H.7}
+\]</span>
+where <span class="math" data-tex="\(f,g_0,h\)">\(f,g_0,h\)</span> are arbitrary smooth real functions on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Their restrictions to <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> are uniquely determined by the connection; their values at negative arguments are immaterial. In particular, <span class="math" data-tex="\(A_0(v)=f(0)\zeta(v)\)">\(A_0(v)=f(0)\zeta(v)\)</span>.</p>
+<p>In the alternative double-bracket notation the same potential is
+<span class="math math-display" data-tex="\[
+A_x(v)=(f+sh)\zeta(v)
+ +\frac{g_0}{2}[\zeta(x),\zeta(v)]
+ +\frac h4[\zeta(x),[\zeta(x),\zeta(v)]],
+\tag{H.8}
+\]">\[
+A_x(v)=(f+sh)\zeta(v)
+ +\frac{g_0}{2}[\zeta(x),\zeta(v)]
+ +\frac h4[\zeta(x),[\zeta(x),\zeta(v)]],
+\tag{H.8}
+\]</span>
+with all coefficient functions evaluated at <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Proof.</strong> By F.9 and the constant principal lift <span class="math" data-tex="\(c(\sigma,x)=\sigma\)">\(c(\sigma,x)=\sigma\)</span>, invariance is exactly
+<span class="math math-display" data-tex="\[
+A_{R_\sigma x}(R_\sigma v)=\operatorname{Ad}(\sigma)A_x(v).
+\]">\[
+A_{R_\sigma x}(R_\sigma v)=\operatorname{Ad}(\sigma)A_x(v).
+\]</span>
+Use H.1 to write <span class="math" data-tex="\(A_x(v)=\zeta(B(x)v)\)">\(A_x(v)=\zeta(B(x)v)\)</span>. Then <span class="math" data-tex="\(B\)">\(B\)</span> is a smooth real <span class="math" data-tex="\(3\)">\(3\)</span>-by-<span class="math" data-tex="\(3\)">\(3\)</span> matrix-valued function and the condition becomes
+<span class="math math-display" data-tex="\[
+B(Rx)=RB(x)R^{-1}\qquad(R\in\mathrm{SO}(3)).
+\tag{H.9}
+\]">\[
+B(Rx)=RB(x)R^{-1}\qquad(R\in\mathrm{SO}(3)).
+\tag{H.9}
+\]</span>
+At <span class="math" data-tex="\(x=re_3\)">\(x=re_3\)</span>, rotations about <span class="math" data-tex="\(e_3\)">\(e_3\)</span> fix the base point. Commutation with the half-turn about that axis makes both off-diagonal blocks between <span class="math" data-tex="\(\mathbb R e_3\)">\(\mathbb R e_3\)</span> and its orthogonal plane zero. Commutation with the quarter-turn <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;-1\\1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;-1\\1&amp;0\end{smallmatrix}\right)\)</span> makes the planar block <span class="math" data-tex="\(\left(\begin{smallmatrix}a&amp;-b\\b&amp;a\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}a&amp;-b\\b&amp;a\end{smallmatrix}\right)\)</span>, by multiplying a general two-by-two matrix on the two sides. Hence
+<span class="math math-display" data-tex="\[
+B(re_3)=\begin{pmatrix}a(r)&amp;-b(r)&amp;0\\b(r)&amp;a(r)&amp;0\\0&amp;0&amp;c(r)\end{pmatrix}.
+\tag{H.10}
+\]">\[
+B(re_3)=\begin{pmatrix}a(r)&amp;-b(r)&amp;0\\b(r)&amp;a(r)&amp;0\\0&amp;0&amp;c(r)\end{pmatrix}.
+\tag{H.10}
+\]</span>
+Its entries are smooth functions of all real <span class="math" data-tex="\(r\)">\(r\)</span>. The half-turn about <span class="math" data-tex="\(e_1\)">\(e_1\)</span> sends <span class="math" data-tex="\(re_3\)">\(re_3\)</span> to <span class="math" data-tex="\(-re_3\)">\(-re_3\)</span> and conjugates the planar rotation generator to its negative. Equation (H.9) therefore makes <span class="math" data-tex="\(a,c\)">\(a,c\)</span> even and <span class="math" data-tex="\(b\)">\(b\)</span> odd.</p>
+<p>At zero, <span class="math" data-tex="\(B(0)\)">\(B(0)\)</span> commutes with every rotation. Commutation with the half-turns about the three coordinate axes kills every off-diagonal entry; commutation with quarter-turns interchanging each pair of coordinate axes makes the three diagonal entries equal. Consequently <span class="math" data-tex="\(a(0)=c(0)\)">\(a(0)=c(0)\)</span> and <span class="math" data-tex="\(b(0)=0\)">\(b(0)=0\)</span>. The complete extension lemma G.2 now gives smooth functions on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with
+<span class="math math-display" data-tex="\[
+a(r)=f(r^2),\qquad b(r)=r g_0(r^2),\qquad
+c(r)-a(r)=r^2h(r^2).
+\tag{H.11}
+\]">\[
+a(r)=f(r^2),\qquad b(r)=r g_0(r^2),\qquad
+c(r)-a(r)=r^2h(r^2).
+\tag{H.11}
+\]</span>
+The matrix expression <span class="math" data-tex="\(f(|x|^2)I+g_0(|x|^2)J(x)+h(|x|^2)xx^T\)">\(f(|x|^2)I+g_0(|x|^2)J(x)+h(|x|^2)xx^T\)</span> agrees with (H.10) on the entire axis. Both this expression and <span class="math" data-tex="\(B\)">\(B\)</span> satisfy (H.9). Every nonzero vector is a rotation of a point on the positive axis: complete its unit direction to an oriented orthonormal basis, whose column matrix is such a rotation. Thus the two expressions agree everywhere, including zero, proving necessity of (H.7).</p>
+<p>Conversely the displayed expression in (H.7) is smooth in <span class="math" data-tex="\(x\)">\(x\)</span>, linear in <span class="math" data-tex="\(v\)">\(v\)</span>, and satisfies (H.9) because dot products and cross products are preserved by rotations. F.9 and Conn A.3 prove that it yields an invariant principal connection. Equations (H.10)–(H.11) determine the three functions for positive squared radius; continuity determines their values at zero. This gives the stated uniqueness. Finally <span class="math" data-tex="\(x\times(x\times v)=x\langle x,v\rangle-sv\)">\(x\times(x\times v)=x\langle x,v\rangle-sv\)</span>, and (H.2) converts each bracket to twice a cross product. Substitution proves (H.8), including its factors two and four. □</p>
+<p id="theorem-h-3"><strong>Theorem H.3 (the rotational curvature).</strong> For (H.7), write <span class="math" data-tex="\(g_0=g_0(s)\)">\(g_0=g_0(s)\)</span>, with primes denoting differentiation in <span class="math" data-tex="\(s\)">\(s\)</span>. Set
+<span class="math math-display" data-tex="\[
+T=\langle x,v\rangle w-\langle x,w\rangle v,\quad
+C=v\times w,\quad D=x\langle x,C\rangle.
+\]">\[
+T=\langle x,v\rangle w-\langle x,w\rangle v,\quad
+C=v\times w,\quad D=x\langle x,C\rangle.
+\]</span>
+The curvature potential is
+<span class="math math-display" data-tex="\[
+\begin{split}
+F_x(v,w)=\zeta\bigl(&amp;[2f'-h-2g_0(f+sh)]T\\
+&amp;+[2g_0+2f^2+2s(g_0'+fh)]C\\
+&amp;+[2g_0^2-2g_0'-2fh]D\bigr).
+\end{split}
+\tag{H.12}
+\]">\[
+\begin{split}
+F_x(v,w)=\zeta\bigl(&amp;[2f'-h-2g_0(f+sh)]T\\
+&amp;+[2g_0+2f^2+2s(g_0'+fh)]C\\
+&amp;+[2g_0^2-2g_0'-2fh]D\bigr).
+\end{split}
+\tag{H.12}
+\]</span>
+The full principal curvature is its adjoint-equivariant horizontal extension as in Curvature A.4. At the origin, <span class="math" data-tex="\(F_0(v,w)=2(g_0(0)+f(0)^2)\zeta(v\times w)\)">\(F_0(v,w)=2(g_0(0)+f(0)^2)\zeta(v\times w)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a_x(v)=\zeta^{-1}A_x(v)\)">\(a_x(v)=\zeta^{-1}A_x(v)\)</span> and introduce
+<span class="math" data-tex="\(U=\langle x,v\rangle(x\times w)-\langle x,w\rangle(x\times v)\)">\(U=\langle x,v\rangle(x\times w)-\langle x,w\rangle(x\times v)\)</span>.
+The cross-product identity in H.1 gives <span class="math" data-tex="\(U=sC-D\)">\(U=sC-D\)</span>. For constant vector fields <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, differentiate the three terms of <span class="math" data-tex="\(a\)">\(a\)</span>. The derivatives of <span class="math" data-tex="\(s\)">\(s\)</span> are <span class="math" data-tex="\(2\langle x,v\rangle\)">\(2\langle x,v\rangle\)</span>; the two terms involving <span class="math" data-tex="\(h'\)">\(h'\)</span> cancel. The remaining terms give
+<span class="math math-display" data-tex="\[
+(da)_x(v,w)=(2f'-h)T+2g_0'U+2g_0C.
+\tag{H.13}
+\]">\[
+(da)_x(v,w)=(2f'-h)T+2g_0'U+2g_0C.
+\tag{H.13}
+\]</span>
+For clarity, differentiating <span class="math" data-tex="\(h(s)x\langle x,w\rangle\)">\(h(s)x\langle x,w\rangle\)</span> and subtracting its version with <span class="math" data-tex="\(v,w\)">\(v,w\)</span> exchanged leaves <span class="math" data-tex="\(-hT\)">\(-hT\)</span>; the terms containing <span class="math" data-tex="\(x\langle v,w\rangle\)">\(x\langle v,w\rangle\)</span> also cancel.</p>
+<p>Expanding the cross product of the two values of <span class="math" data-tex="\(a\)">\(a\)</span> gives
+<span class="math math-display" data-tex="\[
+a_x(v)\times a_x(w)
+=f^2C-g_0(f+sh)T+fhU+g_0^2D.
+\tag{H.14}
+\]">\[
+a_x(v)\times a_x(w)
+=f^2C-g_0(f+sh)T+fhU+g_0^2D.
+\tag{H.14}
+\]</span>
+Here the terms with coefficients <span class="math" data-tex="\(fg_0,fh,g_0h,g_0^2\)">\(fg_0,fh,g_0h,g_0^2\)</span> are respectively <span class="math" data-tex="\(-fg_0T,fhU,-sg_0hT,g_0^2D\)">\(-fg_0T,fhU,-sg_0hT,g_0^2D\)</span>, and the <span class="math" data-tex="\(h^2\)">\(h^2\)</span>-term is zero. Each follows by the triple-product identity in H.1; in particular <span class="math" data-tex="\((x\times v)\times(x\times w)=x\langle x,v\times w\rangle\)">\((x\times v)\times(x\times w)=x\langle x,v\times w\rangle\)</span>. This last equality also follows directly by contracting the same two epsilon symbols used there.</p>
+<p>Curvature A.4 gives <span class="math" data-tex="\(F=dA+\frac12[A,A]\)">\(F=dA+\frac12[A,A]\)</span>. By (H.2), its vector counterpart is <span class="math" data-tex="\(da(v,w)+2a(v)\times a(w)\)">\(da(v,w)+2a(v)\times a(w)\)</span>. Add (H.13) and twice (H.14), then replace <span class="math" data-tex="\(U\)">\(U\)</span> by <span class="math" data-tex="\(sC-D\)">\(sC-D\)</span>. The result is (H.12). At zero, <span class="math" data-tex="\(T=D=0\)">\(T=D=0\)</span> and <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, giving the claimed value. □</p>
+<p id="theorem-h-4"><strong>Theorem H.4 (two lifts of Euclidean symmetry).</strong> For <span class="math" data-tex="\(S=\mathrm{SU}(2)\)">\(S=\mathrm{SU}(2)\)</span>, put <span class="math" data-tex="\(R_\sigma\)">\(R_\sigma\)</span> as in H.1; for <span class="math" data-tex="\(S=\mathrm{SO}(3)\)">\(S=\mathrm{SO}(3)\)</span>, put <span class="math" data-tex="\(R_\sigma=\sigma\)">\(R_\sigma=\sigma\)</span>. The semidirect group <span class="math" data-tex="\(\mathbb R^3\rtimes S\)">\(\mathbb R^3\rtimes S\)</span> has two principal lifts on <span class="math" data-tex="\(\mathbb R^3\times S\)">\(\mathbb R^3\times S\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{split}
+(a,\sigma)\cdot(x,g)&amp;=(a+R_\sigma x,\sigma g),\\
+(a,\sigma)\cdot_0(x,g)&amp;=(a+R_\sigma x,g).
+\end{split}
+\tag{H.15}
+\]">\[
+\begin{split}
+(a,\sigma)\cdot(x,g)&amp;=(a+R_\sigma x,\sigma g),\\
+(a,\sigma)\cdot_0(x,g)&amp;=(a+R_\sigma x,g).
+\end{split}
+\tag{H.15}
+\]</span>
+For the first lift, every invariant potential is <span class="math" data-tex="\(A_x(v)=c\zeta(v)\)">\(A_x(v)=c\zeta(v)\)</span> in the <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span> case, or <span class="math" data-tex="\(A_x(v)=cJ(v)\)">\(A_x(v)=cJ(v)\)</span> in the <span class="math" data-tex="\(\mathrm{SO}(3)\)">\(\mathrm{SO}(3)\)</span> case, with arbitrary real constant <span class="math" data-tex="\(c\)">\(c\)</span>. Its curvature is respectively <span class="math" data-tex="\(2c^2\zeta(v\times w)\)">\(2c^2\zeta(v\times w)\)</span> or <span class="math" data-tex="\(c^2J(v\times w)\)">\(c^2J(v\times w)\)</span>. For the second lift the only invariant potential is zero. In both cases the full connection is given by Conn A.3.</p>
+<p><strong>Proof.</strong> The multiplication is <span class="math" data-tex="\((a,\sigma)(b,\tau)=(a+R_\sigma b,\sigma\tau)\)">\((a,\sigma)(b,\tau)=(a+R_\sigma b,\sigma\tau)\)</span>, and its inverse is <span class="math" data-tex="\((-R_{\sigma^{-1}}a,\sigma^{-1})\)">\((-R_{\sigma^{-1}}a,\sigma^{-1})\)</span>. The homomorphism property of <span class="math" data-tex="\(R\)">\(R\)</span> verifies associativity and the action laws in (H.15); all operations are smooth. Both actions commute with principal right multiplication.</p>
+<p>For either lift, translations force the potential to be constant in <span class="math" data-tex="\(x\)">\(x\)</span>, by F.4 with the whole space as the translation subspace. Write it as a linear map <span class="math" data-tex="\(W:\mathbb R^3\to\mathfrak s\)">\(W:\mathbb R^3\to\mathfrak s\)</span>. For the first lift, F.9 requires <span class="math" data-tex="\(W(R_\sigma v)=\operatorname{Ad}(\sigma)W(v)\)">\(W(R_\sigma v)=\operatorname{Ad}(\sigma)W(v)\)</span>. In the <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span> case, write <span class="math" data-tex="\(W=\zeta\circ T\)">\(W=\zeta\circ T\)</span>, and in the <span class="math" data-tex="\(\mathrm{SO}(3)\)">\(\mathrm{SO}(3)\)</span> case write <span class="math" data-tex="\(W=J\circ T\)">\(W=J\circ T\)</span>. By (H.3) or (H.5), the condition is that <span class="math" data-tex="\(T\)">\(T\)</span> commute with all rotations. H.2's half-turn and quarter-turn calculation proves <span class="math" data-tex="\(T=cI\)">\(T=cI\)</span>. Conversely every such map obeys the condition and hence defines an invariant connection. Its exterior derivative is zero, so Curvature A.4 and the brackets (H.2), (H.5) give the stated curvatures.</p>
+<p>For the second lift, F.9 instead requires <span class="math" data-tex="\(W(Rv)=W(v)\)">\(W(Rv)=W(v)\)</span> for every rotation <span class="math" data-tex="\(R\)">\(R\)</span>. For each nonzero <span class="math" data-tex="\(v\)">\(v\)</span>, a half-turn about any perpendicular unit axis sends <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(-v\)">\(-v\)</span>; such a rotation is present in either group by H.1. Linearity then gives <span class="math" data-tex="\(W(v)=-W(v)\)">\(W(v)=-W(v)\)</span>, hence <span class="math" data-tex="\(W=0\)">\(W=0\)</span>. The zero potential is invariant, completing the classification. □</p>
+<p id="example-h-5"><strong>Example H.5 (continuous extension is weaker than smooth extension).</strong> On the punctured <span class="math" data-tex="\(\mathbb R^3\times\mathrm{SU}(2)\)">\(\mathbb R^3\times\mathrm{SU}(2)\)</span>, the rotational potential <span class="math" data-tex="\(A_x(v)=\zeta(v)/|x|\)">\(A_x(v)=\zeta(v)/|x|\)</span> has no continuous extension across zero. Replacing <span class="math" data-tex="\(1/|x|\)">\(1/|x|\)</span> by <span class="math" data-tex="\(|x|\)">\(|x|\)</span> gives a continuous extension but no smooth one.</p>
+<p><strong>Proof.</strong> Both satisfy rotational covariance by (H.3), so Conn A.3 gives invariant punctured connections. Restrict to <span class="math" data-tex="\(x=te_3\)">\(x=te_3\)</span> and evaluate on the fixed vector <span class="math" data-tex="\(e_1\)">\(e_1\)</span>. In the first case the <span class="math" data-tex="\(\tau_1\)">\(\tau_1\)</span>-coefficient is <span class="math" data-tex="\(1/|t|\)">\(1/|t|\)</span>, which has no finite limit. A continuous full connection would pull back to a continuous potential in the identity section, so it cannot exist. In the second case the potential tends to the zero linear map as <span class="math" data-tex="\(x\to0\)">\(x\to0\)</span>; the estimate <span class="math" data-tex="\(\|A_x(v)\|\le C|x|\,|v|\)">\(\|A_x(v)\|\le C|x|\,|v|\)</span>, for a fixed norm constant of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, proves continuity of that extension. On the same line its coefficient is <span class="math" data-tex="\(|t|\)">\(|t|\)</span>, whose left and right derivatives at zero differ. Any continuous extension is forced to have the value zero there; thus no differentiable, and in particular no smooth, extension exists. □</p>
+<p id="example-h-6"><strong>Example H.6 (a nonzero flat rotational connection).</strong> For <span class="math" data-tex="\(c\in\mathbb R\)">\(c\in\mathbb R\)</span>, put <span class="math" data-tex="\(u_c(x)=\exp(c\zeta(x))\)">\(u_c(x)=\exp(c\zeta(x))\)</span>. The potential <span class="math" data-tex="\(A=u_c^{-1}du_c\)">\(A=u_c^{-1}du_c\)</span> is smooth, rotationally invariant in the sense of H.2, and flat. In (H.7), its coefficients for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, with <span class="math" data-tex="\(r=\sqrt{s}\)">\(r=\sqrt{s}\)</span>, are
+<span class="math math-display" data-tex="\[
+f(s)=\frac{\sin(2cr)}{2r},\qquad
+g_0(s)=-\left(\frac{\sin(cr)}r\right)^2,\qquad
+h(s)=\frac{c-f(s)}s.
+\tag{H.16}
+\]">\[
+f(s)=\frac{\sin(2cr)}{2r},\qquad
+g_0(s)=-\left(\frac{\sin(cr)}r\right)^2,\qquad
+h(s)=\frac{c-f(s)}s.
+\tag{H.16}
+\]</span>
+They extend smoothly as functions of squared radius, with
+<span class="math math-display" data-tex="\[
+f(0)=c,\qquad g_0(0)=-c^2,\qquad h(0)=\frac23c^3.
+\tag{H.17}
+\]">\[
+f(0)=c,\qquad g_0(0)=-c^2,\qquad h(0)=\frac23c^3.
+\tag{H.17}
+\]</span>
+For <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> the connection has a nonzero potential, even though its curvature vanishes.</p>
+<p><strong>Proof.</strong> Smoothness of the group exponential is proved in Local 2.3, so <span class="math" data-tex="\(u_c\)">\(u_c\)</span>, its inverse, and its Maurer pullback are smooth on the whole space. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, (H.2) gives <span class="math" data-tex="\(\zeta(x)^2=-r^2I\)">\(\zeta(x)^2=-r^2I\)</span>. The matrix curve
+<span class="math" data-tex="\(\cos(tr)I+\sin(tr)\zeta(x)/r\)">\(\cos(tr)I+\sin(tr)\zeta(x)/r\)</span>
+solves <span class="math" data-tex="\(U'=\zeta(x)U\)">\(U'=\zeta(x)U\)</span>, <span class="math" data-tex="\(U(0)=I\)">\(U(0)=I\)</span>, by direct differentiation. Uniqueness in Local 2.1 identifies it with <span class="math" data-tex="\(\exp(t\zeta(x))\)">\(\exp(t\zeta(x))\)</span>. Thus <span class="math" data-tex="\(u_c=aI+\zeta(b)\)">\(u_c=aI+\zeta(b)\)</span>, where <span class="math" data-tex="\(a=\cos(cr)\)">\(a=\cos(cr)\)</span>, <span class="math" data-tex="\(b=q x\)">\(b=q x\)</span>, and <span class="math" data-tex="\(q=\sin(cr)/r\)">\(q=\sin(cr)/r\)</span>.</p>
+<p>Differentiate (H.6). Since <span class="math" data-tex="\(a^2+|b|^2=1\)">\(a^2+|b|^2=1\)</span>, the scalar part of <span class="math" data-tex="\(u_c^{-1}du_c\)">\(u_c^{-1}du_c\)</span> is zero, and its vector part is
+<span class="math math-display" data-tex="\[
+a\,db-b\,da-b\times db.
+\tag{H.18}
+\]">\[
+a\,db-b\,da-b\times db.
+\tag{H.18}
+\]</span>
+For a tangent <span class="math" data-tex="\(v\)">\(v\)</span>, insert <span class="math" data-tex="\(db(v)=qv+2q'(s)x\langle x,v\rangle\)">\(db(v)=qv+2q'(s)x\langle x,v\rangle\)</span> and <span class="math" data-tex="\(da(v)=2a'(s)\langle x,v\rangle\)">\(da(v)=2a'(s)\langle x,v\rangle\)</span>. The three coefficients in (H.7) are
+<span class="math" data-tex="\(f=aq\)">\(f=aq\)</span>, <span class="math" data-tex="\(g_0=-q^2\)">\(g_0=-q^2\)</span>, <span class="math" data-tex="\(h=2(aq'-a'q)\)">\(h=2(aq'-a'q)\)</span>.
+Using <span class="math" data-tex="\(dr/ds=1/(2r)\)">\(dr/ds=1/(2r)\)</span> and differentiating sine and cosine reduces these to (H.16). In particular the last coefficient is <span class="math" data-tex="\(c/r^2-\sin(2cr)/(2r^3)\)">\(c/r^2-\sin(2cr)/(2r^3)\)</span>, equal to the stated <span class="math" data-tex="\((c-f)/s\)">\((c-f)/s\)</span>.</p>
+<p>To justify the values and smoothness at zero without relying on the quotients there, use
+<span class="math" data-tex="\(\sin(cr)/r=c\int_0^1\cos(ctr)\,dt\)">\(\sin(cr)/r=c\int_0^1\cos(ctr)\,dt\)</span>.
+The right side is a smooth even function of all real <span class="math" data-tex="\(r\)">\(r\)</span>, by the differentiation-under-the-integral argument in G.2. So are <span class="math" data-tex="\(aq\)">\(aq\)</span>, <span class="math" data-tex="\(-q^2\)">\(-q^2\)</span>, and <span class="math" data-tex="\(c-aq\)">\(c-aq\)</span>; the last vanishes at zero. G.2 provides the smooth squared-radius extensions of all three coefficients, using its quadratic division for <span class="math" data-tex="\(h\)">\(h\)</span>. The first two values in (H.17) follow directly. For the last, write <span class="math" data-tex="\(f(r^2)=c\int_0^1\cos(2ctr)\,dt\)">\(f(r^2)=c\int_0^1\cos(2ctr)\,dt\)</span>; its second derivative in <span class="math" data-tex="\(r\)">\(r\)</span> at zero is <span class="math" data-tex="\(-4c^3/3\)">\(-4c^3/3\)</span>. Twice applying the fundamental theorem as in (G.4) gives <span class="math" data-tex="\(h(0)=-\tfrac12(-4c^3/3)=2c^3/3\)">\(h(0)=-\tfrac12(-4c^3/3)=2c^3/3\)</span>.</p>
+<p>The resulting formula has exactly the form (H.7), proving rotational invariance. The Maurer equation is completely proved in Curvature A.3. Pullback commutes with exterior differentiation and the valued bracket by Curvature A.1–A.2; hence <span class="math" data-tex="\(dA+\frac12[A,A]=0\)">\(dA+\frac12[A,A]=0\)</span>, proving flatness everywhere, including zero. Finally <span class="math" data-tex="\(A_0(v)=c\zeta(v)\)">\(A_0(v)=c\zeta(v)\)</span>, which is nonzero for <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> and suitable <span class="math" data-tex="\(v\)">\(v\)</span>. This also checks the origin term in (H.12): <span class="math" data-tex="\(g_0(0)+f(0)^2=0\)">\(g_0(0)+f(0)^2=0\)</span>. □</p>
+</article><footer><p><a href="src/invariant-connections-on-homogeneous-bundles.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0. Human construction sources and their distinct terms are credited in each part. The corrected Hanusch source retains its CC BY-NC-SA 3.0 attribution; no source prose or native source files are redistributed.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

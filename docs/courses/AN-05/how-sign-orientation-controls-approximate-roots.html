@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>How sign orientation controls approximate roots</title><link rel="stylesheet" href="style.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,tags:'ams'},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><a href="index.html">Subellipticity and unique continuation</a> · Self-checked by the writing AI</header><main><h1 id="how-sign-orientation-controls-approximate-roots">How sign orientation controls approximate roots</h1>
+<p>A large positive transverse derivative makes a zero of a smooth function close to the zero of its linear part. The oriented sign condition controls the true zero. Taylor's remainder then transfers that control to the approximate zero, with an explicit error.</p>
+<p>We will prove a bound for the intercept, a two-time inequality for the intercept divided by the slope, and a differential version. We also prove their versions with a positive regularized denominator. The second transverse derivative controls the position error; its time derivative controls the differential error. These are distinct uses of the hypotheses.</p>
+<p>The geometric prerequisite is the aligned-gradient theorem in <a href="how-sign-orientation-aligns-transverse-gradients.html">How sign orientation aligns transverse gradients</a>, specialized to one transverse dimension. We give the polynomial interpolation argument and the root construction explicitly. The argument uses Taylor's formula, the intermediate value theorem and ordinary differentiation. Its application to the canonical symbol is a subsequent step.</p>
+<h2 id="1-the-quantitative-quotient-theorem">1. The quantitative quotient theorem</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a real smooth function on</p>
+<span class="math math-display" data-tex="\[
+U=\{(t,y):|t|&lt;1,\ |y|&lt;1\}.
+\tag{1.1}
+\]">\[
+U=\{(t,y):|t|&lt;1,\ |y|&lt;1\}.
+\tag{1.1}
+\]</span>
+<p>Put <span class="math" data-tex="\(f(t)=F(t,0)\)">\(f(t)=F(t,0)\)</span> and <span class="math" data-tex="\(b(t)=\partial_yF(t,0)\)">\(b(t)=\partial_yF(t,0)\)</span>. Fix an integer <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, and assume</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial_y^2F|\leq1,\qquad
+|\partial_t\partial_y^2F|\leq1\quad\hbox{on }U,\\
+|f(t)|\leq1,\qquad |b^{(k)}(t)|\leq1
+\quad(|t|&lt;1),\\
+F(s,y)&gt;0\ \Longrightarrow\ F(t,y)\geq0
+\quad(-1&lt;s&lt;t&lt;1, |y|&lt;1).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+|\partial_y^2F|\leq1,\qquad
+|\partial_t\partial_y^2F|\leq1\quad\hbox{on }U,\\
+|f(t)|\leq1,\qquad |b^{(k)}(t)|\leq1
+\quad(|t|&lt;1),\\
+F(s,y)&gt;0\ \Longrightarrow\ F(t,y)\geq0
+\quad(-1&lt;s&lt;t&lt;1, |y|&lt;1).
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>The last implication forbids a positive value from becoming a later negative value at a fixed <span class="math" data-tex="\(y\)">\(y\)</span>. It does not assert that <span class="math" data-tex="\(F\)">\(F\)</span> is increasing in time.</p>
+<p>The positive supremum</p>
+<span class="math math-display" data-tex="\[
+N=\sup_{|t|&lt;1}b(t)
+\tag{1.3}
+\]">\[
+N=\sup_{|t|&lt;1}b(t)
+\tag{1.3}
+\]</span>
+<p>is finite: the degree-<span class="math" data-tex="\((k-1)\)">\((k-1)\)</span> Taylor polynomial of <span class="math" data-tex="\(b\)">\(b\)</span> at zero has finite coefficients, and its remainder is bounded by <span class="math" data-tex="\(1/k!\)">\(1/k!\)</span> throughout this interval. We require <span class="math" data-tex="\(N\)">\(N\)</span> to exceed a constant depending only on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Here are permissible explicit constants. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_k=\frac{[8(k+1)]^{k-1}}{(k-1)!},\qquad
+N_0=32K_k,\\
+C_1=6K_k,\qquad C_0=4C_1,\\
+C_2=8C_1^2,\qquad C_3=24C_1^2.
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+K_k=\frac{[8(k+1)]^{k-1}}{(k-1)!},\qquad
+N_0=32K_k,\\
+C_1=6K_k,\qquad C_0=4C_1,\\
+C_2=8C_1^2,\qquad C_3=24C_1^2.
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>All depend only on <span class="math" data-tex="\(k\)">\(k\)</span>. They are not claimed to be optimal.</p>
+<p><strong>Theorem 1.1 (intercept and approximate-root control).</strong> If <span class="math" data-tex="\(N\geq N_0\)">\(N\geq N_0\)</span>, then for <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f(s)|\leq \frac{C_1b(s)}N+\frac{C_1^2}{2N^2}.
+\tag{1.5}
+\]">\[
+|f(s)|\leq \frac{C_1b(s)}N+\frac{C_1^2}{2N^2}.
+\tag{1.5}
+\]</span>
+<p>For <span class="math" data-tex="\(-1/2&lt;t&lt;s&lt;1/2\)">\(-1/2&lt;t&lt;s&lt;1/2\)</span>, if <span class="math" data-tex="\(N\min(b(s),b(t))&gt;C_0\)">\(N\min(b(s),b(t))&gt;C_0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{f(t)}{b(t)}-\frac{f(s)}{b(s)}\\
+&amp;\quad\leq\frac{C_2}{N^2b(s)}
++\frac{C_2}{N^2b(t)}.
+\end{aligned}
+\tag{1.6}
+\]">\[
+\begin{aligned}
+&amp;\frac{f(t)}{b(t)}-\frac{f(s)}{b(s)}\\
+&amp;\quad\leq\frac{C_2}{N^2b(s)}
++\frac{C_2}{N^2b(t)}.
+\end{aligned}
+\tag{1.6}
+\]</span>
+<p>For <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span>, if <span class="math" data-tex="\(Nb(s)&gt;C_0\)">\(Nb(s)&gt;C_0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;b(s)\frac{d}{ds}\left(\frac{f(s)}{b(s)}\right)\\
+&amp;\qquad\geq-\frac{C_2}{N^2}
+\left(1+\frac{|b&#x27;(s)|}{b(s)}\right).
+\end{aligned}
+\tag{1.7}
+\]">\[
+\begin{aligned}
+&amp;b(s)\frac{d}{ds}\left(\frac{f(s)}{b(s)}\right)\\
+&amp;\qquad\geq-\frac{C_2}{N^2}
+\left(1+\frac{|b&#x27;(s)|}{b(s)}\right).
+\end{aligned}
+\tag{1.7}
+\]</span>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+G(s)=b(s)+C_1/N.
+\tag{1.8}
+\]">\[
+G(s)=b(s)+C_1/N.
+\tag{1.8}
+\]</span>
+<p>Then <span class="math" data-tex="\(G(s)\geq C_1/(2N)&gt;0\)">\(G(s)\geq C_1/(2N)&gt;0\)</span> on <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span>. The regularized inequalities are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{f(t)}{G(t)}-\frac{f(s)}{G(s)}\\
+&amp;\quad\leq\frac{C_3}{N^2G(s)}
++\frac{C_3}{N^2G(t)}
+\end{aligned}
+\tag{1.9}
+\]">\[
+\begin{aligned}
+&amp;\frac{f(t)}{G(t)}-\frac{f(s)}{G(s)}\\
+&amp;\quad\leq\frac{C_3}{N^2G(s)}
++\frac{C_3}{N^2G(t)}
+\end{aligned}
+\tag{1.9}
+\]</span>
+<p>when <span class="math" data-tex="\(-1/2&lt;t&lt;s&lt;1/2\)">\(-1/2&lt;t&lt;s&lt;1/2\)</span> and <span class="math" data-tex="\(N\min(G(s),G(t))&gt;C_0+2C_1\)">\(N\min(G(s),G(t))&gt;C_0+2C_1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;G(s)\frac{d}{ds}\left(\frac{f(s)}{G(s)}\right)\\
+&amp;\qquad\geq-\frac{C_3}{N^2}
+\left(1+\frac{|G&#x27;(s)|}{G(s)}\right)
+\end{aligned}
+\tag{1.10}
+\]">\[
+\begin{aligned}
+&amp;G(s)\frac{d}{ds}\left(\frac{f(s)}{G(s)}\right)\\
+&amp;\qquad\geq-\frac{C_3}{N^2}
+\left(1+\frac{|G&#x27;(s)|}{G(s)}\right)
+\end{aligned}
+\tag{1.10}
+\]</span>
+<p>when <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span> and <span class="math" data-tex="\(NG(s)&gt;C_0+2C_1\)">\(NG(s)&gt;C_0+2C_1\)</span>.</p>
+<p>The denominator is positive everywhere on the inner interval, but the quantitative quotient inequalities still have the stated lower thresholds. Positivity alone does not discharge those thresholds.</p>
+<h2 id="2-large-slopes-occur-on-both-sides-of-the-inner-interval">2. Large slopes occur on both sides of the inner interval</h2>
+<p>The one-dimensional aligned-gradient theorem gives a direction <span class="math" data-tex="\(e\in\{-1,1\}\)">\(e\in\{-1,1\}\)</span> with <span class="math" data-tex="\(eb(t)\geq-3\)">\(eb(t)\geq-3\)</span> for all <span class="math" data-tex="\(|t|&lt;1\)">\(|t|&lt;1\)</span>. Since <span class="math" data-tex="\(N&gt;3\)">\(N&gt;3\)</span>, some slope is greater than three. Consequently <span class="math" data-tex="\(e=-1\)">\(e=-1\)</span> is impossible, and</p>
+<span class="math math-display" data-tex="\[
+b(t)\geq-3\quad(|t|&lt;1).
+\tag{2.1}
+\]">\[
+b(t)\geq-3\quad(|t|&lt;1).
+\tag{2.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be the Taylor polynomial of <span class="math" data-tex="\(b\)">\(b\)</span> at zero of degree at most <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. Taylor's integral remainder gives</p>
+<span class="math math-display" data-tex="\[
+|T(t)-b(t)|\leq1/k!\quad(|t|&lt;1).
+\tag{2.2}
+\]">\[
+|T(t)-b(t)|\leq1/k!\quad(|t|&lt;1).
+\tag{2.2}
+\]</span>
+<p>For <span class="math" data-tex="\(j=0,\ldots,k-1\)">\(j=0,\ldots,k-1\)</span>, choose the actual interpolation nodes</p>
+<span class="math math-display" data-tex="\[
+s_j^-=-1+\frac{j+1}{2(k+1)},\qquad s_j^+=-s_j^-.
+\tag{2.3}
+\]">\[
+s_j^-=-1+\frac{j+1}{2(k+1)},\qquad s_j^+=-s_j^-.
+\tag{2.3}
+\]</span>
+<p>Every negative node lies in <span class="math" data-tex="\((-1,-1/2)\)">\((-1,-1/2)\)</span>, and every positive node lies in <span class="math" data-tex="\((1/2,1)\)">\((1/2,1)\)</span>. Their spacing in absolute value is <span class="math" data-tex="\(h=1/[2(k+1)]\)">\(h=1/[2(k+1)]\)</span>.</p>
+<p>For either set of nodes, Lagrange interpolation expresses the entire polynomial as</p>
+<span class="math math-display" data-tex="\[
+T(t)=\sum_{j=0}^{k-1}T(s_j^\pm)
+\prod_{\substack{0\leq l&lt;k\\l\ne j}}
+\frac{t-s_l^\pm}{s_j^\pm-s_l^\pm}.
+\tag{2.4}
+\]">\[
+T(t)=\sum_{j=0}^{k-1}T(s_j^\pm)
+\prod_{\substack{0\leq l&lt;k\\l\ne j}}
+\frac{t-s_l^\pm}{s_j^\pm-s_l^\pm}.
+\tag{2.4}
+\]</span>
+<p>For <span class="math" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>, each numerator factor has absolute value at most two. The absolute denominator product is <span class="math" data-tex="\(h^{k-1}j!(k-1-j)!\)">\(h^{k-1}j!(k-1-j)!\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sup_{|t|\leq1}|T(t)|
+&amp;\leq \max_j|T(s_j^\pm)|\,
+\left(\frac2h\right)^{k-1}
+\sum_{j=0}^{k-1}\frac1{j!(k-1-j)!}\\
+&amp;=K_k\max_j|T(s_j^\pm)|.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+\sup_{|t|\leq1}|T(t)|
+&amp;\leq \max_j|T(s_j^\pm)|\,
+\left(\frac2h\right)^{k-1}
+\sum_{j=0}^{k-1}\frac1{j!(k-1-j)!}\\
+&amp;=K_k\max_j|T(s_j^\pm)|.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, the products are empty and equal one; this is interpolation of a constant. The formula therefore includes that endpoint.</p>
+<p>Equations (2.2) and (1.3) imply <span class="math" data-tex="\(\sup|T|\geq N-1/k!\geq N/2\)">\(\sup|T|\geq N-1/k!\geq N/2\)</span>. Thus each node set has a node with <span class="math" data-tex="\(|T(s_j^\pm)|\geq N/(2K_k)\)">\(|T(s_j^\pm)|\geq N/(2K_k)\)</span>. At such a node <span class="math" data-tex="\(T\)">\(T\)</span> cannot be negative: <span class="math" data-tex="\(N/(2K_k)\geq16\)">\(N/(2K_k)\geq16\)</span>, whereas (2.1) and (2.2) give <span class="math" data-tex="\(T\geq-3-1/k!\geq-4\)">\(T\geq-3-1/k!\geq-4\)</span>. It follows that there are times</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_-\in(-1,-1/2),\qquad t_+\in(1/2,1),\\
+b(t_-)\geq c_kN,\qquad b(t_+)\geq c_kN,\\
+c_k=(4K_k)^{-1}.
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+t_-\in(-1,-1/2),\qquad t_+\in(1/2,1),\\
+b(t_-)\geq c_kN,\qquad b(t_+)\geq c_kN,\\
+c_k=(4K_k)^{-1}.
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(N/(2K_k)-1/k!\geq N/(4K_k)\)">\(N/(2K_k)-1/k!\geq N/(4K_k)\)</span>. No attainment of the supremum in (1.3) was used. The full interpolation inequality, rather than a bound on one selected derivative, produces slopes on both sides.</p>
+<h2 id="3-trap-all-inner-zeros-in-a-narrow-strip">3. Trap all inner zeros in a narrow strip</h2>
+<p>Define the exact transverse Taylor remainder</p>
+<span class="math math-display" data-tex="\[
+R(t,y)=F(t,y)-f(t)-b(t)y.
+\tag{3.1}
+\]">\[
+R(t,y)=F(t,y)-f(t)-b(t)y.
+\tag{3.1}
+\]</span>
+<p>The two curvature hypotheses give</p>
+<span class="math math-display" data-tex="\[
+|R(t,y)|\leq y^2/2,\qquad
+|\partial_tR(t,y)|\leq y^2/2.
+\tag{3.2}
+\]">\[
+|R(t,y)|\leq y^2/2,\qquad
+|\partial_tR(t,y)|\leq y^2/2.
+\tag{3.2}
+\]</span>
+<p>For the second estimate, apply Taylor's formula in <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(\partial_tF\)">\(\partial_tF\)</span>. Its value and first transverse derivative at zero are <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>, respectively. Thus it is exactly the time derivative of the remainder in (3.1).</p>
+<p>At either time in (2.6), the term <span class="math" data-tex="\(b(t_\pm)y\)">\(b(t_\pm)y\)</span> determines the sign of <span class="math" data-tex="\(F\)">\(F\)</span> whenever <span class="math" data-tex="\(c_kN|y|&gt;3/2\)">\(c_kN|y|&gt;3/2\)</span>, since <span class="math" data-tex="\(|f|+|R|\leq1+1/2\)">\(|f|+|R|\leq1+1/2\)</span> on <span class="math" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\delta=C_1/N=3/(2c_kN)&lt;1.
+\tag{3.3}
+\]">\[
+\delta=C_1/N=3/(2c_kN)&lt;1.
+\tag{3.3}
+\]</span>
+<p>For <span class="math" data-tex="\(y&gt;\delta\)">\(y&gt;\delta\)</span>, the earlier value <span class="math" data-tex="\(F(t_-,y)\)">\(F(t_-,y)\)</span> is positive, so the sign implication makes <span class="math" data-tex="\(F(s,y)\geq0\)">\(F(s,y)\geq0\)</span> throughout <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span>. For <span class="math" data-tex="\(y&lt;-\delta\)">\(y&lt;-\delta\)</span>, the later value <span class="math" data-tex="\(F(t_+,y)\)">\(F(t_+,y)\)</span> is negative. An earlier positive value would contradict the same implication. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(s,y)\geq0\quad(\delta&lt;y&lt;1),\\
+F(s,y)\leq0\quad(-1&lt;y&lt;-\delta),\\
+|s|&lt;1/2.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+F(s,y)\geq0\quad(\delta&lt;y&lt;1),\\
+F(s,y)\leq0\quad(-1&lt;y&lt;-\delta),\\
+|s|&lt;1/2.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>The weak inequalities are sufficient. Passing to <span class="math" data-tex="\(y=\pm\delta\)">\(y=\pm\delta\)</span> by continuity and using (3.2) gives</p>
+<span class="math math-display" data-tex="\[
+-b(s)\delta-\delta^2/2
+\leq f(s)\leq b(s)\delta+\delta^2/2.
+\tag{3.5}
+\]">\[
+-b(s)\delta-\delta^2/2
+\leq f(s)\leq b(s)\delta+\delta^2/2.
+\tag{3.5}
+\]</span>
+<p>This proves (1.5). The interval in (3.5) must be nonempty, so also</p>
+<span class="math math-display" data-tex="\[
+b(s)\geq-\delta/2=-C_1/(2N).
+\tag{3.6}
+\]">\[
+b(s)\geq-\delta/2=-C_1/(2N).
+\tag{3.6}
+\]</span>
+<p>Equation (3.6) proves the asserted positive lower bound for <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="4-construct-a-true-zero-near-the-linear-zero">4. Construct a true zero near the linear zero</h2>
+<p>Fix <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span> with <span class="math" data-tex="\(Nb(s)&gt;C_0\)">\(Nb(s)&gt;C_0\)</span>, and abbreviate <span class="math" data-tex="\(b=b(s)&gt;0\)">\(b=b(s)&gt;0\)</span>, <span class="math" data-tex="\(f=f(s)\)">\(f=f(s)\)</span>. Since <span class="math" data-tex="\(Nb&gt;C_0=4C_1\)">\(Nb&gt;C_0=4C_1\)</span>, (1.5) implies</p>
+<span class="math math-display" data-tex="\[
+|f|\leq2C_1b/N,\qquad
+h=-f/b,\qquad |h|\leq2C_1/N&lt;1/2.
+\tag{4.1}
+\]">\[
+|f|\leq2C_1b/N,\qquad
+h=-f/b,\qquad |h|\leq2C_1/N&lt;1/2.
+\tag{4.1}
+\]</span>
+<p>If <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, take <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, which is already a true zero. Suppose <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+e=2h^2/b&lt;|h|.
+\tag{4.2}
+\]">\[
+e=2h^2/b&lt;|h|.
+\tag{4.2}
+\]</span>
+<p>The strict inequality follows from <span class="math" data-tex="\(b&gt;4C_1/N\geq2|h|\)">\(b&gt;4C_1/N\geq2|h|\)</span>. At <span class="math" data-tex="\(y=h+e\)">\(y=h+e\)</span> and <span class="math" data-tex="\(y=h-e\)">\(y=h-e\)</span>, all arguments have <span class="math" data-tex="\(|y|&lt;2|h|&lt;1\)">\(|y|&lt;2|h|&lt;1\)</span>. Equation (3.2) gives <span class="math" data-tex="\(|R(s,y)|\leq2h^2=be\)">\(|R(s,y)|\leq2h^2=be\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(s,h+e)=be+R(s,h+e)\geq0,\\
+F(s,h-e)=-be+R(s,h-e)\leq0.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+F(s,h+e)=be+R(s,h+e)\geq0,\\
+F(s,h-e)=-be+R(s,h-e)\leq0.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>The intermediate value theorem supplies a zero <span class="math" data-tex="\(r=h+z\)">\(r=h+z\)</span> between those endpoints. In both the zero and nonzero cases,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(s,r)=0,\qquad |r|\leq2|h|\leq4C_1/N,\\
+|z|\leq2h^2/b\leq\frac{8C_1^2}{N^2b}.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+F(s,r)=0,\qquad |r|\leq2|h|\leq4C_1/N,\\
+|z|\leq2h^2/b\leq\frac{8C_1^2}{N^2b}.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>This construction also gives a positive transverse derivative at the zero. Integrating <span class="math" data-tex="\(|F_{yy}|\leq1\)">\(|F_{yy}|\leq1\)</span> from zero yields</p>
+<span class="math math-display" data-tex="\[
+\partial_yF(s,r)\geq b-|r|&gt;0.
+\tag{4.5}
+\]">\[
+\partial_yF(s,r)\geq b-|r|&gt;0.
+\tag{4.5}
+\]</span>
+<p>When <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, use <span class="math" data-tex="\(|r|\leq2|h|&lt;b\)">\(|r|\leq2|h|&lt;b\)</span>; when <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, this derivative is exactly <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. A sufficiently small negative perturbation of <span class="math" data-tex="\(r\)">\(r\)</span> consequently gives a strictly negative value of <span class="math" data-tex="\(F(s,\cdot)\)">\(F(s,\cdot)\)</span>. This last point handles the linear zero <span class="math" data-tex="\(h=0\)">\(h=0\)</span> as well; no division by <span class="math" data-tex="\(|h|\)">\(|h|\)</span> is permitted there.</p>
+<h2 id="5-transfer-sign-orientation-to-the-approximate-quotient">5. Transfer sign orientation to the approximate quotient</h2>
+<p>Let <span class="math" data-tex="\(-1/2&lt;t&lt;s&lt;1/2\)">\(-1/2&lt;t&lt;s&lt;1/2\)</span>, with both endpoint slopes above <span class="math" data-tex="\(C_0/N\)">\(C_0/N\)</span>, and use the true zero from Section 4 at the later time <span class="math" data-tex="\(s\)">\(s\)</span>. For all sufficiently small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, (4.5) gives <span class="math" data-tex="\(F(s,r-\varepsilon)&lt;0\)">\(F(s,r-\varepsilon)&lt;0\)</span>. The sign implication in (1.2) then gives <span class="math" data-tex="\(F(t,r-\varepsilon)\leq0\)">\(F(t,r-\varepsilon)\leq0\)</span>: an earlier positive value is forbidden. Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives <span class="math" data-tex="\(F(t,r)\leq0\)">\(F(t,r)\leq0\)</span>. Expand at the earlier time:</p>
+<span class="math math-display" data-tex="\[
+f(t)+b(t)(-f(s)/b(s)+z)+R(t,r)\leq0.
+\tag{5.1}
+\]">\[
+f(t)+b(t)(-f(s)/b(s)+z)+R(t,r)\leq0.
+\tag{5.1}
+\]</span>
+<p>Division by <span class="math" data-tex="\(b(t)&gt;0\)">\(b(t)&gt;0\)</span>, followed by (3.2) and (4.4), yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{f(t)}{b(t)}-\frac{f(s)}{b(s)}
+&amp;\leq |z|+\frac{r^2}{2b(t)}\\
+&amp;\leq\frac{8C_1^2}{N^2}
+\left(\frac1{b(s)}+\frac1{b(t)}\right).
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+\frac{f(t)}{b(t)}-\frac{f(s)}{b(s)}
+&amp;\leq |z|+\frac{r^2}{2b(t)}\\
+&amp;\leq\frac{8C_1^2}{N^2}
+\left(\frac1{b(s)}+\frac1{b(t)}\right).
+\end{aligned}
+\tag{5.2}
+\]</span>
+<p>This is (1.6). The proof uses only a true zero at the later time. It does not assume a globally differentiable zero curve.</p>
+<p>At any zero <span class="math" data-tex="\((s,r)\)">\((s,r)\)</span> in the open rectangle, the same sign implication forces</p>
+<span class="math math-display" data-tex="\[
+\partial_tF(s,r)\geq0.
+\tag{5.3}
+\]">\[
+\partial_tF(s,r)\geq0.
+\tag{5.3}
+\]</span>
+<p>If that derivative were negative, for small positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> the earlier value <span class="math" data-tex="\(F(s-\varepsilon,r)\)">\(F(s-\varepsilon,r)\)</span> would be positive and the later value <span class="math" data-tex="\(F(s+\varepsilon,r)\)">\(F(s+\varepsilon,r)\)</span> negative. This contradicts (1.2). This argument is local in time and does not require that the zero be simple in the time direction.</p>
+<p>Using <span class="math" data-tex="\(r=-f/b+z\)">\(r=-f/b+z\)</span> in (5.3), we obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;f&#x27;(s)-\frac{b&#x27;(s)f(s)}{b(s)}\\
+&amp;\quad\geq-|b&#x27;(s)|\,|z|-|\partial_tR(s,r)|\\
+&amp;\quad\geq-\frac{8C_1^2}{N^2}
+\left(1+\frac{|b&#x27;(s)|}{b(s)}\right).
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+&amp;f&#x27;(s)-\frac{b&#x27;(s)f(s)}{b(s)}\\
+&amp;\quad\geq-|b&#x27;(s)|\,|z|-|\partial_tR(s,r)|\\
+&amp;\quad\geq-\frac{8C_1^2}{N^2}
+\left(1+\frac{|b&#x27;(s)|}{b(s)}\right).
+\end{aligned}
+\tag{5.4}
+\]</span>
+<p>The expression on the left is exactly <span class="math" data-tex="\(b(s)(f/b)&#x27;(s)\)">\(b(s)(f/b)&#x27;(s)\)</span>. This proves (1.7), including every contribution from the time-dependent remainder. A bound on <span class="math" data-tex="\(R\)">\(R\)</span> alone would not bound that derivative contribution.</p>
+<h2 id="6-regularize-the-denominator-without-losing-the-estimates">6. Regularize the denominator without losing the estimates</h2>
+<p>Assume <span class="math" data-tex="\(NG(s)&gt;C_0+2C_1\)">\(NG(s)&gt;C_0+2C_1\)</span>. Because <span class="math" data-tex="\(G=b+C_1/N\)">\(G=b+C_1/N\)</span>, this implies <span class="math" data-tex="\(Nb(s)&gt;C_0+C_1\)">\(Nb(s)&gt;C_0+C_1\)</span>. In particular the preceding quotient estimates apply. Let</p>
+<span class="math math-display" data-tex="\[
+a=\frac{C_0+2C_1}{C_0+C_1}=\frac65.
+\tag{6.1}
+\]">\[
+a=\frac{C_0+2C_1}{C_0+C_1}=\frac65.
+\tag{6.1}
+\]</span>
+<p>At every such point,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1\leq G/b\leq a,\\
+\left|f\left(\frac1G-\frac1b\right)\right|
+\leq\frac{2C_1^2}{N^2G}.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+1\leq G/b\leq a,\\
+\left|f\left(\frac1G-\frac1b\right)\right|
+\leq\frac{2C_1^2}{N^2G}.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>For the second inequality use <span class="math" data-tex="\(|f|\leq2C_1b/N\)">\(|f|\leq2C_1b/N\)</span> and <span class="math" data-tex="\(G-b=C_1/N\)">\(G-b=C_1/N\)</span>. This retains both denominators rather than estimating them by a common lower constant.</p>
+<p>Apply (6.2) at <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span>. Equation (1.6) and <span class="math" data-tex="\(1/b\leq a/G\)">\(1/b\leq a/G\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{f(t)}{G(t)}-\frac{f(s)}{G(s)}\\
+&amp;\quad\leq\frac{aC_2+2C_1^2}{N^2G(s)}
++\frac{aC_2+2C_1^2}{N^2G(t)}.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+&amp;\frac{f(t)}{G(t)}-\frac{f(s)}{G(s)}\\
+&amp;\quad\leq\frac{aC_2+2C_1^2}{N^2G(s)}
++\frac{aC_2+2C_1^2}{N^2G(t)}.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>Since <span class="math" data-tex="\(aC_2+2C_1^2\leq C_3\)">\(aC_2+2C_1^2\leq C_3\)</span>, this proves (1.9).</p>
+<p>The additive correction to <span class="math" data-tex="\(b\)">\(b\)</span> is constant in time, so <span class="math" data-tex="\(G&#x27;=b&#x27;\)">\(G&#x27;=b&#x27;\)</span>. Compute the full derivative identity:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G(f/G)&#x27;&amp;=f&#x27;-b&#x27;f/G\\
+&amp;=b(f/b)&#x27;\\
+&amp;\quad+b&#x27;f\left(\frac1b-\frac1G\right).
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+G(f/G)&#x27;&amp;=f&#x27;-b&#x27;f/G\\
+&amp;=b(f/b)&#x27;\\
+&amp;\quad+b&#x27;f\left(\frac1b-\frac1G\right).
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>The extra term has absolute value at most
+<span class="math" data-tex="\(2C_1^2N^{-2}|G&#x27;|/G\)">\(2C_1^2N^{-2}|G&#x27;|/G\)</span>, by (6.2). Also <span class="math" data-tex="\(|b&#x27;|/b\leq a|G&#x27;|/G\)">\(|b&#x27;|/b\leq a|G&#x27;|/G\)</span>. Thus (1.7) implies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;G(f/G)&#x27;\\
+&amp;\quad\geq-\frac{C_2}{N^2}\\
+&amp;\qquad-\frac{aC_2+2C_1^2}{N^2}\frac{|G&#x27;|}{G}\\
+&amp;\quad\geq-\frac{C_3}{N^2}
+\left(1+\frac{|G&#x27;|}{G}\right).
+\end{aligned}
+\tag{6.5}
+\]">\[
+\begin{aligned}
+&amp;G(f/G)&#x27;\\
+&amp;\quad\geq-\frac{C_2}{N^2}\\
+&amp;\qquad-\frac{aC_2+2C_1^2}{N^2}\frac{|G&#x27;|}{G}\\
+&amp;\quad\geq-\frac{C_3}{N^2}
+\left(1+\frac{|G&#x27;|}{G}\right).
+\end{aligned}
+\tag{6.5}
+\]</span>
+<p>This proves (1.10) and completes Theorem 1.1. ∎</p>
+<p>The proof makes three separate transfers. Polynomial interpolation produces large positive slopes before and after the inner interval. Sign orientation traps its zeros. The true-to-linear zero error then controls both time comparisons and differentiation. Adding a fixed positive denominator correction is a fourth, purely algebraic step.</p>
+<h2 id="7-graded-exercises-with-solutions">7. Graded exercises with solutions</h2>
+<p><strong>Exercise 1 — basic.</strong> For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, compute the constants in (1.4) and the two interpolation nodes. Explain why no derivative of a nonconstant polynomial occurs in Section 2.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(K_1=1\)">\(K_1=1\)</span>, <span class="math" data-tex="\(N_0=32\)">\(N_0=32\)</span>, <span class="math" data-tex="\(C_1=6\)">\(C_1=6\)</span>, <span class="math" data-tex="\(C_0=24\)">\(C_0=24\)</span>, <span class="math" data-tex="\(C_2=288\)">\(C_2=288\)</span> and <span class="math" data-tex="\(C_3=864\)">\(C_3=864\)</span>. The negative node is <span class="math" data-tex="\(-3/4\)">\(-3/4\)</span>, and the positive node is <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. The Taylor polynomial of <span class="math" data-tex="\(b\)">\(b\)</span> has degree zero. The empty products in (2.4) equal one; (2.2) follows from <span class="math" data-tex="\(|b&#x27;|\leq1\)">\(|b&#x27;|\leq1\)</span>. No polynomial derivative bound was silently added.</p>
+<p><strong>Exercise 2 — basic.</strong> Suppose <span class="math" data-tex="\(F(t,y)=Ny-f_*(t)\)">\(F(t,y)=Ny-f_*(t)\)</span>, with <span class="math" data-tex="\(|f_*|\leq1\)">\(|f_*|\leq1\)</span>. What condition on <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is equivalent to the sign implication? Relate its true zero to the quotient in the theorem.</p>
+<p><strong>Solution.</strong> The implication is equivalent to <span class="math" data-tex="\(f_*\)">\(f_*\)</span> being nonincreasing. If it increased between <span class="math" data-tex="\(s&lt;t\)">\(s&lt;t\)</span>, choose <span class="math" data-tex="\(Ny\)">\(Ny\)</span> strictly between those two values; these values lie in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>, so the chosen <span class="math" data-tex="\(|y|&lt;1\)">\(|y|&lt;1\)</span> when <span class="math" data-tex="\(N&gt;1\)">\(N&gt;1\)</span>. Then <span class="math" data-tex="\(F(s,y)&gt;0&gt;F(t,y)\)">\(F(s,y)&gt;0&gt;F(t,y)\)</span>, a contradiction. Conversely, a nonincreasing <span class="math" data-tex="\(f_*\)">\(f_*\)</span> makes <span class="math" data-tex="\(F(t,y)\)">\(F(t,y)\)</span> nondecreasing for every <span class="math" data-tex="\(y\)">\(y\)</span>, so the implication holds. Here <span class="math" data-tex="\(f=-f_*\)">\(f=-f_*\)</span>, <span class="math" data-tex="\(b=N\)">\(b=N\)</span>, and the true and linear zero are both <span class="math" data-tex="\(f_*/N\)">\(f_*/N\)</span>. Thus <span class="math" data-tex="\(f/b=-f_*/N\)">\(f/b=-f_*/N\)</span> is exactly nondecreasing. The theorem permits a small error for a curved transverse graph.</p>
+<p><strong>Exercise 3 — intermediate.</strong> Justify the two-time proof when <span class="math" data-tex="\(f(s)=0\)">\(f(s)=0\)</span>. Why is an argument that chooses a nonzero perturbation bounded strictly by <span class="math" data-tex="\(4C_1|h|/(Nb)\)">\(4C_1|h|/(Nb)\)</span> incomplete in that case?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, and <span class="math" data-tex="\(r=0\)">\(r=0\)</span> is a true zero with <span class="math" data-tex="\(F_y(s,0)=b(s)&gt;0\)">\(F_y(s,0)=b(s)&gt;0\)</span>. Hence <span class="math" data-tex="\(F(s,-\varepsilon)&lt;0\)">\(F(s,-\varepsilon)&lt;0\)</span> for all sufficiently small positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Orientation gives <span class="math" data-tex="\(F(t,-\varepsilon)\leq0\)">\(F(t,-\varepsilon)\leq0\)</span>, and continuity gives <span class="math" data-tex="\(f(t)\leq0\)">\(f(t)\leq0\)</span>. The left side of (1.6) is then <span class="math" data-tex="\(f(t)/b(t)\leq0\)">\(f(t)/b(t)\leq0\)</span>. A strictly positive perturbation bound proportional to <span class="math" data-tex="\(|h|\)">\(|h|\)</span> becomes zero here and cannot supply the required perturbation. The limiting argument retains this endpoint without division by the linear zero.</p>
+<p><strong>Exercise 4 — intermediate.</strong> Let <span class="math" data-tex="\(N\geq32\)">\(N\geq32\)</span>, <span class="math" data-tex="\(r=1/(2N)\)">\(r=1/(2N)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+F(t,y)=(y-r)\left(N+\frac t2(y+r)\right).
+\tag{7.1}
+\]">\[
+F(t,y)=(y-r)\left(N+\frac t2(y+r)\right).
+\tag{7.1}
+\]</span>
+<p>Verify the derivative, size and sign hypotheses (1.2) for every <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. When applying the theorem, also take <span class="math" data-tex="\(N\geq N_0(k)\)">\(N\geq N_0(k)\)</span>. Show that exact monotonicity of <span class="math" data-tex="\(f/b\)">\(f/b\)</span> is false even though the true zero is constant. Compute the size of its normalized negative derivative.</p>
+<p><strong>Solution.</strong> The second factor is positive on the full rectangle, since it is at least <span class="math" data-tex="\(N-(1+r)/2&gt;0\)">\(N-(1+r)/2&gt;0\)</span>. Thus the sign of <span class="math" data-tex="\(F\)">\(F\)</span> is the fixed sign of <span class="math" data-tex="\(y-r\)">\(y-r\)</span>, so orientation holds. Expanding gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F=Ny-Nr+\tfrac t2(y^2-r^2),\\
+F_{yy}=t,\qquad F_{tyy}=1,\\
+b=N,\qquad b^{(k)}=0,\\
+f=-\tfrac12-\frac{t}{8N^2}.
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+F=Ny-Nr+\tfrac t2(y^2-r^2),\\
+F_{yy}=t,\qquad F_{tyy}=1,\\
+b=N,\qquad b^{(k)}=0,\\
+f=-\tfrac12-\frac{t}{8N^2}.
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>The required absolute bounds hold and the slope supremum is exactly <span class="math" data-tex="\(N\)">\(N\)</span>. Yet</p>
+<span class="math math-display" data-tex="\[
+(f/b)&#x27;=-\frac1{8N^3},\qquad
+b(f/b)&#x27;=-\frac1{8N^2}.
+\tag{7.3}
+\]">\[
+(f/b)&#x27;=-\frac1{8N^3},\qquad
+b(f/b)&#x27;=-\frac1{8N^2}.
+\tag{7.3}
+\]</span>
+<p>The true zero remains <span class="math" data-tex="\(r\)">\(r\)</span>; its linear approximation is <span class="math" data-tex="\(r+t/(8N^3)\)">\(r+t/(8N^3)\)</span>. Consequently the negative error in the normalized differential inequality can have order <span class="math" data-tex="\(N^{-2}\)">\(N^{-2}\)</span>. Replacing that error by zero is false. The additive regularization of the denominator retains a negative derivative here as well.</p>
+<p><strong>Exercise 5 — advanced.</strong> In the previous example replace <span class="math" data-tex="\(t\)">\(t\)</span> in (7.1) by <span class="math" data-tex="\(\sin(Lt)\)">\(\sin(Lt)\)</span>, with <span class="math" data-tex="\(L&gt;1\)">\(L&gt;1\)</span>. Explain why the time derivative of the curvature is a separate hypothesis.</p>
+<p><strong>Solution.</strong> The positive factor argument, <span class="math" data-tex="\(|F_{yy}|\leq1\)">\(|F_{yy}|\leq1\)</span>, <span class="math" data-tex="\(|f|\leq1\)">\(|f|\leq1\)</span>, and all derivatives of the constant slope remain valid. But <span class="math" data-tex="\(F_{tyy}=L\cos(Lt)\)">\(F_{tyy}=L\cos(Lt)\)</span>, whose supremum is <span class="math" data-tex="\(L\)">\(L\)</span>. At zero,</p>
+<span class="math math-display" data-tex="\[
+b(f/b)&#x27;(0)=-L/(8N^2).
+\tag{7.4}
+\]">\[
+b(f/b)&#x27;(0)=-L/(8N^2).
+\tag{7.4}
+\]</span>
+<p>Thus no universal constant depending only on <span class="math" data-tex="\(k\)">\(k\)</span> can give (1.7) if that time-curvature bound is removed and <span class="math" data-tex="\(L\)">\(L\)</span> is unrestricted. The position and two-time estimates use the first curvature bound; the differential estimate uses its time derivative too.</p>
+<p><strong>Exercise 6 — advanced.</strong> For the regularized denominator, derive the threshold on <span class="math" data-tex="\(Nb\)">\(Nb\)</span> and the comparison <span class="math" data-tex="\(G/b\)">\(G/b\)</span> directly from <span class="math" data-tex="\(NG&gt;C_0+2C_1\)">\(NG&gt;C_0+2C_1\)</span>. Verify that both endpoint correction terms and the differentiated correction appear in Section 6.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(Nb=NG-C_1\)">\(Nb=NG-C_1\)</span>, the threshold implies <span class="math" data-tex="\(Nb&gt;C_0+C_1\)">\(Nb&gt;C_0+C_1\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G/b&amp;=1+C_1/(Nb)\\
+&amp;\leq(C_0+2C_1)/(C_0+C_1)=a.
+\end{aligned}
+\tag{7.5}
+\]">\[
+\begin{aligned}
+G/b&amp;=1+C_1/(Nb)\\
+&amp;\leq(C_0+2C_1)/(C_0+C_1)=a.
+\end{aligned}
+\tag{7.5}
+\]</span>
+The reciprocal correction is exactly <span class="math" data-tex="\(-C_1/(NbG)\)">\(-C_1/(NbG)\)</span>; multiplying by <span class="math" data-tex="\(|f|\leq2C_1b/N\)">\(|f|\leq2C_1b/N\)</span> gives <span class="math" data-tex="\(2C_1^2/(N^2G)\)">\(2C_1^2/(N^2G)\)</span> at each endpoint. Both are needed in (6.3). Differentiation gives (6.4), including <span class="math" data-tex="\(b&#x27;f(1/b-1/G)\)">\(b&#x27;f(1/b-1/G)\)</span>. That term costs <span class="math" data-tex="\(2C_1^2N^{-2}|G&#x27;|/G\)">\(2C_1^2N^{-2}|G&#x27;|/G\)</span>, while converting <span class="math" data-tex="\(|b&#x27;|/b\)">\(|b&#x27;|/b\)</span> to <span class="math" data-tex="\(|G&#x27;|/G\)">\(|G&#x27;|/G\)</span> costs the factor <span class="math" data-tex="\(a\)">\(a\)</span>. These are exactly the two contributions in (6.5).</p>
+<h2 id="references">References</h2>
+<p>The theorem is the full scalar quotient lemma in Hörmander, <a href="https://link.springer.com/book/10.1007/978-3-642-00136-9"><em>The Analysis of Linear Partial Differential Operators IV</em>, Chapter 27, Section 27.4</a> P, Lemma 27.4.13 and its regularized-denominator conclusions. The proof above supplies the interpolation constants, true-root construction, zero-intercept endpoint and all regularization terms explicitly. The aligned-gradient prerequisite and every bridge used here are proved in this course; the book citation supplies mathematical credit. This lesson does not assume the subsequent two-variable local subelliptic estimate.</p>
+<p>P = paywalled source; access may require institutional access or payment. The citation preserves human-source credit; every proof used here is supplied in this lesson or its exact linked programme prerequisites.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+</main><footer>Original lessons: CC0. Mathematics rendered with MathJax 3.2.2, Apache License 2.0; <a href="assets/mathjax/LICENSE">license</a>.</footer></body></html>

@@ -1,0 +1,11 @@
+# Component terms and scholarly credit
+
+The independently authored Section 11C exposition and proofs, exercises 112–114 and solutions, diagram geometry and labels, and `draw_graph_dirac.py` are dedicated to [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). This dedication describes original AI expression; it assigns no invented human or AI rights holder.
+
+The mathematical question and requested local transverse Bott pairing are credited to Alain Connes, *A survey of foliations and operator algebras*, in *Operator Algebras and Applications, Part I*, Proceedings of Symposia in Pure Mathematics 38, American Mathematical Society, 1982 ([author’s text](https://alainconnes.org/wp-content/uploads/foliationsfine.pdf)). The present proofs and illustration are independently expressed. No survey text, source-page image, book body or human figure is bundled or relicensed.
+
+The bundled DejaVu typefaces `DejaVuSans.ttf`, `DejaVuSans-Bold.ttf`, `DejaVuSans-Oblique.ttf` and `DejaVuSansDisplay.ttf`, and their glyph outlines in the SVG, retain the complete Bitstream Vera/Arev notices in [fonts/LICENSE_DEJAVU.txt](fonts/LICENSE_DEJAVU.txt). DejaVu changes are public domain; Bitstream/Arev components retain their stated permissions, notice conditions, renaming conditions and restrictions on selling a typeface by itself. The actual font binaries are unmodified.
+
+The bundled `STIXGeneralItalic.ttf` and its actual glyph outlines retain the [STIX font notice](fonts/LICENSE_STIX.txt), including its SIL Open Font License 1.1 terms. The font is unmodified. Font notices also accompany the outlined SVG. The CC0 dedication does not relicense these typefaces.
+
+Matplotlib 3.10.9 is an external rendering dependency under the Matplotlib Development Team’s licence; its complete installed notice is supplied as [MATPLOTLIB-LICENSE.txt](MATPLOTLIB-LICENSE.txt). NumPy 2.4.4 is an external numerical dependency under its supplied BSD notice and separately identified bundled-library notices in [NUMPY-LICENSE.txt](NUMPY-LICENSE.txt). These notices document the actual reference environment. Neither library, its binary components, Python nor Pillow is distributed in this packet; requiring those packages does not claim that their software is CC0. The generator calls their public APIs and incorporates no modified Matplotlib or NumPy code.

@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compatible systems and global L-functions · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/compatible-systems-and-global-l-functions.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="compatible-systems-and-global-l-functions">Compatible systems and global L-functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An elliptic curve supplies a Tate module for every prime. These vector spaces have different coefficient fields, yet their Frobenius polynomials at a good prime are the same integer polynomial. The resulting Euler product is attached to the curve, rather than to a chosen Tate module. To include the bad primes, one must compare monodromy as well as Frobenius. To obtain a functional equation, one needs an additional analytic theorem.</p>
+<h2 id="1-the-convention-and-the-compatibility-data">1. The convention and the compatibility data</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field. For a finite place <span class="math" data-tex="\(v\)">\(v\)</span>, put <span class="math" data-tex="\(q_v=\#k_v\)">\(q_v=\#k_v\)</span> and let <span class="math" data-tex="\(p(v)\)">\(p(v)\)</span> be its residue characteristic. Write <span class="math" data-tex="\(\operatorname{Fr}_v\)">\(\operatorname{Fr}_v\)</span> for <strong>arithmetic</strong> Frobenius and <span class="math" data-tex="\(\Phi_v=\operatorname{Fr}_v^{-1}\)">\(\Phi_v=\operatorname{Fr}_v^{-1}\)</span> for geometric Frobenius. The local norm and reciprocity convention remain
+<span class="math math-display" data-tex="\[
+\|\Phi_v\|=q_v^{-1},\qquad
+\operatorname{Art}_v(\varpi_v)=\Phi_v\quad\text{in }W_{K_v}^{\mathrm{ab}}.
+\tag{1}
+\]">\[
+\|\Phi_v\|=q_v^{-1},\qquad
+\operatorname{Art}_v(\varpi_v)=\Phi_v\quad\text{in }W_{K_v}^{\mathrm{ab}}.
+\tag{1}
+\]</span>
+In global Euler polynomials we use arithmetic Frobenius. Thus, for an unramified representation <span class="math" data-tex="\(R\)">\(R\)</span>,
+<span class="math math-display" data-tex="\[
+P_v(R,X)=\det(1-R(\operatorname{Fr}_v)X),\qquad
+L_v(s,R)=P_v(R,q_v^{-s})^{-1}.
+\tag{2}
+\]">\[
+P_v(R,X)=\det(1-R(\operatorname{Fr}_v)X),\qquad
+L_v(s,R)=P_v(R,q_v^{-s})^{-1}.
+\tag{2}
+\]</span>
+At such a place the local factor defined earlier using geometric Frobenius satisfies
+<span class="math math-display" data-tex="\[
+L_v(s,R)=L\bigl(s,\operatorname{WD}_v(R^\vee)\bigr).
+\tag{3}
+\]">\[
+L_v(s,R)=L\bigl(s,\operatorname{WD}_v(R^\vee)\bigr).
+\tag{3}
+\]</span>
+Indeed, the eigenvalues of <span class="math" data-tex="\(R^\vee(\Phi_v)\)">\(R^\vee(\Phi_v)\)</span> are those of <span class="math" data-tex="\(R(\operatorname{Fr}_v)\)">\(R(\operatorname{Fr}_v)\)</span>. The dual in (3) is essential.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a number field of coefficients and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> range over its finite places, with residue characteristic <span class="math" data-tex="\(\ell(\lambda)\)">\(\ell(\lambda)\)</span>. Consider continuous representations
+<span class="math math-display" data-tex="\[
+R_\lambda:G_K\longrightarrow\mathrm{GL}_d(E_\lambda).
+\]">\[
+R_\lambda:G_K\longrightarrow\mathrm{GL}_d(E_\lambda).
+\]</span>
+We use the following <em>finite-place</em> notions of compatibility. They make no assertion about a local representation at a place above its coefficient prime; that requires the theory introduced in the p-adic Hodge lesson.</p>
+<p><strong>Definition 1.1 (weak compatibility).</strong> There is a finite set <span class="math" data-tex="\(S\)">\(S\)</span> of finite places of <span class="math" data-tex="\(K\)">\(K\)</span>, and for each <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span> a polynomial <span class="math" data-tex="\(P_v\in E[X]\)">\(P_v\in E[X]\)</span>, with constant term one and degree <span class="math" data-tex="\(d\)">\(d\)</span>, such that whenever <span class="math" data-tex="\(\ell(\lambda)\ne p(v)\)">\(\ell(\lambda)\ne p(v)\)</span>, the representation <span class="math" data-tex="\(R_\lambda\)">\(R_\lambda\)</span> is unramified at <span class="math" data-tex="\(v\)">\(v\)</span> and its polynomial (2) is <span class="math" data-tex="\(P_v\)">\(P_v\)</span>.</p>
+<p><strong>Definition 1.2 (strict compatibility).</strong> In addition, for every finite <span class="math" data-tex="\(v\)">\(v\)</span> there is a Frobenius-semisimple Weil–Deligne isomorphism class <span class="math" data-tex="\(D_v\)">\(D_v\)</span> over <span class="math" data-tex="\(\overline E\)">\(\overline E\)</span>, invariant under <span class="math" data-tex="\(\operatorname{Gal}(\overline E/E)\)">\(\operatorname{Gal}(\overline E/E)\)</span>, whose scalar extensions give
+<span class="math math-display" data-tex="\[
+\operatorname{WD}_v(R_\lambda)^{\mathrm{F\!ss}}
+\simeq D_v\otimes_{\overline E,\iota_\lambda}\overline E_\lambda
+\qquad\bigl(\ell(\lambda)\ne p(v)\bigr)
+\tag{4}
+\]">\[
+\operatorname{WD}_v(R_\lambda)^{\mathrm{F\!ss}}
+\simeq D_v\otimes_{\overline E,\iota_\lambda}\overline E_\lambda
+\qquad\bigl(\ell(\lambda)\ne p(v)\bigr)
+\tag{4}
+\]</span>
+for every embedding <span class="math" data-tex="\(\iota_\lambda\)">\(\iota_\lambda\)</span> extending the coefficient embedding. At <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, this class is unramified and <span class="math" data-tex="\(\det(1-D_v(\Phi_v^{-1})X)=P_v(X)\)">\(\det(1-D_v(\Phi_v^{-1})X)=P_v(X)\)</span>.</p>
+<p>Invariance of an isomorphism class is weaker than the existence of matrices over <span class="math" data-tex="\(E\)">\(E\)</span>. Here is a concrete proof of that distinction. The quaternion group has a two-dimensional complex representation with generators
+<span class="math math-display" data-tex="\[
+I=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]">\[
+I=\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},
+\qquad J=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\]</span>
+Its character has values <span class="math" data-tex="\(2,-2,0\)">\(2,-2,0\)</span>, with corresponding characteristic polynomials <span class="math" data-tex="\((T-1)^2,(T+1)^2,T^2+1\)">\((T-1)^2,(T+1)^2,T^2+1\)</span>, all rational. The characteristic-polynomial Brauer–Nesbitt theorem proved in the first lesson therefore makes its class Galois-invariant. It has no real, hence no rational, two-dimensional realization. Indeed a real matrix with square <span class="math" data-tex="\(-1\)">\(-1\)</span> has a basis in which it is <span class="math" data-tex="\(\begin{psmallmatrix}0&amp;-1\\1&amp;0\end{psmallmatrix}\)">\(\begin{psmallmatrix}0&amp;-1\\1&amp;0\end{psmallmatrix}\)</span>. A real matrix anticommuting with it has form <span class="math" data-tex="\(\begin{psmallmatrix}a&amp;b\\b&amp;-a\end{psmallmatrix}\)">\(\begin{psmallmatrix}a&amp;b\\b&amp;-a\end{psmallmatrix}\)</span>, whose square is <span class="math" data-tex="\((a^2+b^2)1\)">\((a^2+b^2)1\)</span>, never <span class="math" data-tex="\(-1\)">\(-1\)</span>. This is an example of a Schur-index obstruction.</p>
+<p>Definition 1.2 allows that obstruction. Isomorphic local pairs have the same invariant spaces, Frobenius determinants and nilpotent block lengths, so it supplies coefficient-independent local factors, conductors and monodromy lengths; the conductor integer is proved in the conductor lesson. Taylor uses “strongly compatible” for the comparison at every prime, within a definition that also includes de Rham and Hodge–Tate conditions [Taylor, §1, pp.81–83]. Those additional conditions are separate from our finite-place definitions.</p>
+<p>Why is the stronger condition useful? The local pairs
+<span class="math math-display" data-tex="\[
+(1\oplus\|\cdot\|,0),\qquad \mathrm{Sp}(2)
+\tag{5}
+\]">\[
+(1\oplus\|\cdot\|,0),\qquad \mathrm{Sp}(2)
+\tag{5}
+\]</span>
+have the same underlying Frobenius polynomial. Their local factors are respectively
+<span class="math math-display" data-tex="\[
+\frac{1}{(1-q^{-s})(1-q^{-s-1})},\qquad
+\frac{1}{1-q^{-s-1}},
+\]">\[
+\frac{1}{(1-q^{-s})(1-q^{-s-1})},\qquad
+\frac{1}{1-q^{-s-1}},
+\]</span>
+and their conductors are zero and one. Monodromy accounts for the difference. This is a local illustration of missing information, not a claimed example of two global semisimple systems with the same good-prime data.</p>
+<p><strong>Definition 1.3 (arithmetic weight).</strong> A weakly compatible system is pure of weight <span class="math" data-tex="\(w\)">\(w\)</span> if the inverse roots <span class="math" data-tex="\(\alpha_{v,j}\)">\(\alpha_{v,j}\)</span> in
+<span class="math math-display" data-tex="\[
+P_v(X)=\prod_{j=1}^d(1-\alpha_{v,j}X)
+\]">\[
+P_v(X)=\prod_{j=1}^d(1-\alpha_{v,j}X)
+\]</span>
+satisfy <span class="math" data-tex="\(|\sigma(\alpha_{v,j})|=q_v^{w/2}\)">\(|\sigma(\alpha_{v,j})|=q_v^{w/2}\)</span> for every complex embedding <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, at all <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>. Enlarging <span class="math" data-tex="\(S\)">\(S\)</span> is allowed. Weights here refer to arithmetic Frobenius. The covariant elliptic Tate module has weight <span class="math" data-tex="\(1\)">\(1\)</span>; its dual has arithmetic weight <span class="math" data-tex="\(-1\)">\(-1\)</span>, and geometric Frobenius on that dual has weight <span class="math" data-tex="\(1\)">\(1\)</span>. The cyclotomic character <span class="math" data-tex="\(\chi_\ell\)">\(\chi_\ell\)</span> has arithmetic weight <span class="math" data-tex="\(2\)">\(2\)</span>, since <span class="math" data-tex="\(\chi_\ell(\operatorname{Fr}_v)=q_v\)">\(\chi_\ell(\operatorname{Fr}_v)=q_v\)</span>. Tensoring by <span class="math" data-tex="\(\chi_\ell^m\)">\(\chi_\ell^m\)</span> adds <span class="math" data-tex="\(2m\)">\(2m\)</span> to an arithmetic weight. In the geometric convention it subtracts <span class="math" data-tex="\(2m\)">\(2m\)</span>.</p>
+<h2 id="2-the-elliptic-system-and-its-exceptional-set">2. The elliptic system and its exceptional set</h2>
+<p>Write <span class="math" data-tex="\(A/K\)">\(A/K\)</span> for an elliptic curve, reserving <span class="math" data-tex="\(E\)">\(E\)</span> for coefficients. The system <span class="math" data-tex="\((V_\ell A)_\ell\)">\((V_\ell A)_\ell\)</span> has coefficient field <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Let <span class="math" data-tex="\(S_A\)">\(S_A\)</span> be the finite set of places of bad reduction. Its finiteness follows by choosing one global Weierstrass equation: outside the finitely many denominators of its coefficients and prime divisors of its nonzero discriminant, its integral projective cubic is smooth and gives a good model, as proved in the Tate-module lesson.</p>
+<p><strong>Theorem 2.1 (good-prime independence).</strong> At a good place <span class="math" data-tex="\(v\)">\(v\)</span>, for every <span class="math" data-tex="\(\ell\ne p(v)\)">\(\ell\ne p(v)\)</span>,
+<span class="math math-display" data-tex="\[
+P_v(V_\ell A,X)=1-a_vX+q_vX^2,
+\qquad a_v=q_v+1-\#\widetilde A(k_v).
+\tag{6}
+\]">\[
+P_v(V_\ell A,X)=1-a_vX+q_vX^2,
+\qquad a_v=q_v+1-\#\widetilde A(k_v).
+\tag{6}
+\]</span>
+In particular <span class="math" data-tex="\((V_\ell A)_\ell\)">\((V_\ell A)_\ell\)</span> is weakly compatible and pure of arithmetic weight <span class="math" data-tex="\(1\)">\(1\)</span>, with exceptional set <span class="math" data-tex="\(S_A\)">\(S_A\)</span>.</p>
+<p><em>Proof.</em> Good reduction identifies the prime-to-<span class="math" data-tex="\(p(v)\)">\(p(v)\)</span> torsion with that of <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span>, equivariantly for arithmetic Frobenius. The Tate-module lesson proved that the Frobenius endomorphism has determinant <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, and that <span class="math" data-tex="\(\deg(1-\operatorname{Fr}_v)=\#\widetilde A(k_v)\)">\(\deg(1-\operatorname{Fr}_v)=\#\widetilde A(k_v)\)</span>. Consequently its trace is <span class="math" data-tex="\(q_v+1-\#\widetilde A(k_v)\)">\(q_v+1-\#\widetilde A(k_v)\)</span>, proving (6). Each quantity comes from the curve over its residue field and is independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>Here is the required Hasse inequality. For any integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, the degree–determinant theorem, valid also for inseparable endomorphisms, gives
+<span class="math math-display" data-tex="\[
+0\le\deg([m]+[n]\operatorname{Fr}_v)
+=m^2+a_vmn+q_vn^2.
+\tag{6A}
+\]">\[
+0\le\deg([m]+[n]\operatorname{Fr}_v)
+=m^2+a_vmn+q_vn^2.
+\tag{6A}
+\]</span>
+If <span class="math" data-tex="\(a_v^2&gt;4q_v\)">\(a_v^2&gt;4q_v\)</span>, the real polynomial <span class="math" data-tex="\(z^2+a_vz+q_v\)">\(z^2+a_vz+q_v\)</span> is negative on an open interval. Choose a rational number <span class="math" data-tex="\(m/n\)">\(m/n\)</span> in that interval and multiply by <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, contradicting (6A). Thus <span class="math" data-tex="\(|a_v|\le2\sqrt{q_v}\)">\(|a_v|\le2\sqrt{q_v}\)</span>. The roots of <span class="math" data-tex="\(T^2-a_vT+q_v\)">\(T^2-a_vT+q_v\)</span> are consequently a complex-conjugate pair, or the repeated real root <span class="math" data-tex="\(\pm\sqrt{q_v}\)">\(\pm\sqrt{q_v}\)</span>; their product is <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, so each has absolute value <span class="math" data-tex="\(\sqrt{q_v}\)">\(\sqrt{q_v}\)</span>. Every embedding gives the same two roots. This proves purity. ∎</p>
+<p>We next prove the comparison at potentially good primes in arbitrary dimension. The extra geometry required at semistable primes is identified separately below.</p>
+<p><strong>Lemma 2.2 (endomorphisms have one characteristic polynomial).</strong> Let <span class="math" data-tex="\(B/k\)">\(B/k\)</span> be an abelian variety of dimension <span class="math" data-tex="\(g\)">\(g\)</span>, over any field, and <span class="math" data-tex="\(u\in\operatorname{End}(B)\)">\(u\in\operatorname{End}(B)\)</span>. There is a monic <span class="math" data-tex="\(P_u(T)\in\mathbf Q[T]\)">\(P_u(T)\in\mathbf Q[T]\)</span> of degree <span class="math" data-tex="\(2g\)">\(2g\)</span> whose image in every <span class="math" data-tex="\(\mathbf Q_\ell[T]\)">\(\mathbf Q_\ell[T]\)</span>, <span class="math" data-tex="\(\ell\ne\operatorname{char}k\)">\(\ell\ne\operatorname{char}k\)</span>, is <span class="math" data-tex="\(\det(T-u\mid V_\ell B)\)">\(\det(T-u\mid V_\ell B)\)</span>. The same conclusion holds for quasi-endomorphisms, with rational coefficients.</p>
+<p><strong>Proof.</strong> We use the actual earlier geometric proofs in <em>Abelian varieties</em>: the normalized cube, Proposition 4.4; the multivariable Euler polynomial, Lemma 5.2; Euler homogeneity, Proposition 5.5; finite-flat Euler comparison, Corollary 5.6; and isogeny kernels and prime-to-characteristic Tate torsion, §§6–7. Here are the remaining steps, including the coefficient comparison that a citation alone would not supply.</p>
+<p>Extend the ground field to its algebraic closure. Choose a symmetric ample bundle <span class="math" data-tex="\(H\)">\(H\)</span>. Define <span class="math" data-tex="\(\delta(f)=\deg(f)\)">\(\delta(f)=\deg(f)\)</span> for isogenies, and zero for other endomorphisms. Then
+<span class="math math-display" data-tex="\[
+\delta(f)=\frac{\chi(B,f^*H)}{\chi(B,H)}.
+\tag{6B}
+\]">\[
+\delta(f)=\frac{\chi(B,f^*H)}{\chi(B,H)}.
+\tag{6B}
+\]</span>
+For an isogeny this is Corollary 5.6. Otherwise factor <span class="math" data-tex="\(f\)">\(f\)</span> through its image, an abelian subvariety of dimension less than <span class="math" data-tex="\(g\)">\(g\)</span>. Proper pushforward and the Euler-polynomial degree bound show that <span class="math" data-tex="\(\chi(B,(f^*H)^a)\)">\(\chi(B,(f^*H)^a)\)</span> has degree less than <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(a\)">\(a\)</span>. Euler homogeneity says it is <span class="math" data-tex="\(a^g\chi(B,f^*H)\)">\(a^g\chi(B,f^*H)\)</span>, so its coefficient is zero. The denominator in (6B) is positive by Proposition 5.5.</p>
+<p>For fixed <span class="math" data-tex="\(f,h\)">\(f,h\)</span>, pull the cube back along <span class="math" data-tex="\((nf+h,f,f)\)">\((nf+h,f,f)\)</span>. It says that the classes of <span class="math" data-tex="\((nf+h)^*H\)">\((nf+h)^*H\)</span> have constant second difference; they are quadratic polynomials in <span class="math" data-tex="\(n\)">\(n\)</span> with values in the rational Picard group. The multivariable Euler polynomial has total degree at most <span class="math" data-tex="\(g\)">\(g\)</span>. Formula (6B) therefore makes <span class="math" data-tex="\(\delta(nf+h)\)">\(\delta(nf+h)\)</span> a rational polynomial of degree at most <span class="math" data-tex="\(2g\)">\(2g\)</span>. Moreover <span class="math" data-tex="\(\delta(nf)=n^{2g}\delta(f)\)">\(\delta(nf)=n^{2g}\delta(f)\)</span>, by the degree of multiplication.</p>
+<p>These assertions extend <span class="math" data-tex="\(\delta\)">\(\delta\)</span> to <span class="math" data-tex="\(\operatorname{End}(B)\otimes\mathbf Q\)">\(\operatorname{End}(B)\otimes\mathbf Q\)</span> by <span class="math" data-tex="\(\delta(f/n)=n^{-2g}\delta(f)\)">\(\delta(f/n)=n^{-2g}\delta(f)\)</span>, independently of the denominator. They make it a homogeneous polynomial function of degree <span class="math" data-tex="\(2g\)">\(2g\)</span> on every finite-dimensional subspace. To check the last assertion, choose coordinates on such a subspace and interpolate in each coordinate at <span class="math" data-tex="\(2g+1\)">\(2g+1\)</span> distinct rational values. The line-degree bound produces a polynomial in all coordinates. Substituting arbitrary rational affine lines forces its total degree to be at most <span class="math" data-tex="\(2g\)">\(2g\)</span>; homogeneity forces its nonzero terms to have degree <span class="math" data-tex="\(2g\)">\(2g\)</span>. Multiplicativity <span class="math" data-tex="\(\delta(fh)=\delta(f)\delta(h)\)">\(\delta(fh)=\delta(f)\delta(h)\)</span> holds: degrees multiply for isogenies, and a composition containing a map with smaller-dimensional image again has smaller-dimensional image. Polynomial interpolation extends this identity after any extension of the rational coefficient field.</p>
+<p>Set <span class="math" data-tex="\(P_u(T)=\delta(T-u)\)">\(P_u(T)=\delta(T-u)\)</span>. Its leading coefficient is <span class="math" data-tex="\(\delta(1)=1\)">\(\delta(1)=1\)</span>, and its degree is <span class="math" data-tex="\(2g\)">\(2g\)</span>. If <span class="math" data-tex="\(a_i\)">\(a_i\)</span> are its roots, multiplicativity after scalar extension gives, for any <span class="math" data-tex="\(F\in\mathbf Q[T]\)">\(F\in\mathbf Q[T]\)</span>,
+<span class="math math-display" data-tex="\[
+\delta(F(u))=\prod_{i=1}^{2g}F(a_i).
+\tag{6C}
+\]">\[
+\delta(F(u))=\prod_{i=1}^{2g}F(a_i).
+\tag{6C}
+\]</span>
+Indeed, factor <span class="math" data-tex="\(F(T)=c\prod_j(T-b_j)\)">\(F(T)=c\prod_j(T-b_j)\)</span>, apply multiplicativity and homogeneity to <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span>, and interchange the two finite products. The even degree <span class="math" data-tex="\(2g\)">\(2g\)</span> removes the possible sign.</p>
+<p>For an isogeny <span class="math" data-tex="\(h\)">\(h\)</span>, its kernel has <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary order <span class="math" data-tex="\(\ell^{v_\ell(\deg h)}\)">\(\ell^{v_\ell(\deg h)}\)</span>, for <span class="math" data-tex="\(\ell\ne\operatorname{char}k\)">\(\ell\ne\operatorname{char}k\)</span>. Here are the scheme-length details. The actual isogeny theorem identifies its degree with the rank of its finite kernel, and its rank-annihilation lemma kills that kernel by this integer. Chinese-remainder multiplication idempotents split it into its primary factors. A factor killed by a power of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a subgroup of the finite étale group <span class="math" data-tex="\(B[\ell^r]\)">\(B[\ell^r]\)</span>, so is étale. For a different primary factor, its geometric point group has order a power of its own prime. Its connected part is trivial in characteristic zero. In characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, its connected part is killed by a power of <span class="math" data-tex="\(p\)">\(p\)</span>: multiplication by every prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> integer is étale with trivial connected kernel, so is an automorphism on that finite connected part. Its rank is a power of <span class="math" data-tex="\(p\)">\(p\)</span>, since it is a subgroup of <span class="math" data-tex="\(B[p^r]\)">\(B[p^r]\)</span> and the finite subgroup quotient is a torsor whose ranks multiply. Thus no other factor contributes to the <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-valuation of the rank. This proves the claimed <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary order, including inseparable isogenies.</p>
+<p>The <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-primary point kernel is the kernel on <span class="math" data-tex="\((\mathbf Q_\ell/\mathbf Z_\ell)^{2g}\)">\((\mathbf Q_\ell/\mathbf Z_\ell)^{2g}\)</span>. Diagonalizing the integral map <span class="math" data-tex="\(T_\ell h\)">\(T_\ell h\)</span> by the DVR module theorem identifies this kernel with its finite lattice cokernel. Consequently
+<span class="math math-display" data-tex="\[
+|\delta(h)|_\ell=|\det(T_\ell h)|_\ell.
+\tag{6D}
+\]">\[
+|\delta(h)|_\ell=|\det(T_\ell h)|_\ell.
+\tag{6D}
+\]</span>
+For a nonisogeny both sides are zero: its positive-dimensional reduced kernel has nonzero rational Tate module. The Tate ranks and the finite-kernel length, including its inseparable characteristic-primary part, are exactly the earlier kernel results just specified. Thus (6D) applies to every <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span> with integral <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Let <span class="math" data-tex="\(b_i\)">\(b_i\)</span> be the eigenvalues of <span class="math" data-tex="\(T_\ell u\)">\(T_\ell u\)</span>. Equations (6C)–(6D) imply
+<span class="math math-display" data-tex="\[
+\left|\prod_iF(a_i)\right|_\ell
+=\left|\prod_iF(b_i)\right|_\ell
+\quad(F\in\mathbf Z[T]).
+\tag{6E}
+\]">\[
+\left|\prod_iF(a_i)\right|_\ell
+=\left|\prod_iF(b_i)\right|_\ell
+\quad(F\in\mathbf Z[T]).
+\tag{6E}
+\]</span>
+Continuity, and then clearing a common denominator, give the same equality for <span class="math" data-tex="\(F\in\mathbf Q_\ell[T]\)">\(F\in\mathbf Q_\ell[T]\)</span>. We verify that it forces equality of the two monic polynomials. For any algebraic <span class="math" data-tex="\(z\)">\(z\)</span> with minimal polynomial <span class="math" data-tex="\(F_z\)">\(F_z\)</span> over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, Galois invariance of each multiset and uniqueness of the extended valuation give
+<span class="math math-display" data-tex="\[
+\left|\prod_iF_z(a_i)\right|_\ell
+=|P_u(z)|_\ell^{[\mathbf Q_\ell(z):\mathbf Q_\ell]},
+\]">\[
+\left|\prod_iF_z(a_i)\right|_\ell
+=|P_u(z)|_\ell^{[\mathbf Q_\ell(z):\mathbf Q_\ell]},
+\]</span>
+and the analogous identity for <span class="math" data-tex="\(Q(T)=\prod_i(T-b_i)\)">\(Q(T)=\prod_i(T-b_i)\)</span>. Hence <span class="math" data-tex="\(|P_u(z)|_\ell=|Q(z)|_\ell\)">\(|P_u(z)|_\ell=|Q(z)|_\ell\)</span>. Approach a root <span class="math" data-tex="\(a\)">\(a\)</span> by algebraic <span class="math" data-tex="\(z=a+\ell^j c\)">\(z=a+\ell^j c\)</span> avoiding the finitely many roots. For large <span class="math" data-tex="\(j\)">\(j\)</span>, all distances to roots unequal to <span class="math" data-tex="\(a\)">\(a\)</span> are constant. The valuation of <span class="math" data-tex="\(P_u(z)\)">\(P_u(z)\)</span> has slope equal to the multiplicity of <span class="math" data-tex="\(a\)">\(a\)</span>, and that of <span class="math" data-tex="\(Q(z)\)">\(Q(z)\)</span> has slope equal to its multiplicity there. Equality forces those multiplicities to agree. Applying this to every root proves <span class="math" data-tex="\(P_u=Q\)">\(P_u=Q\)</span>. Finally clear a denominator to obtain the quasi-endomorphism assertion. ∎</p>
+<p><strong>Lemma 2.3 (potentially good compatibility, in every dimension).</strong> If an abelian variety <span class="math" data-tex="\(B/F\)">\(B/F\)</span>, over a characteristic-zero nonarchimedean local field, acquires good reduction over a finite extension, then all its <span class="math" data-tex="\(V_\ell B\)">\(V_\ell B\)</span>, <span class="math" data-tex="\(\ell\ne p(F)\)">\(\ell\ne p(F)\)</span>, have one Galois-invariant Frobenius-semisimple Weil–Deligne class over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>; its monodromy is zero.</p>
+<p><strong>Proof.</strong> Choose a finite Galois extension <span class="math" data-tex="\(F&#x27;/F\)">\(F&#x27;/F\)</span> of good reduction. Functoriality and uniqueness of the Néron model extend the descent action to its abelian scheme over <span class="math" data-tex="\(\mathcal O_{F&#x27;}\)">\(\mathcal O_{F&#x27;}\)</span>. Reduction of invertible torsion is equivariant and identifies its Tate module with that of the special abelian variety <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. This is the written <em>Néron models</em>, Lemma 7.1, applied after strict henselization; properness identifies every generic torsion point with a model section. The common subgroup <span class="math" data-tex="\(I_{F&#x27;}\)">\(I_{F&#x27;}\)</span> consequently acts trivially, so <span class="math" data-tex="\(N_\ell=0\)">\(N_\ell=0\)</span>.</p>
+<p>An element <span class="math" data-tex="\(w\in W_F\)">\(w\in W_F\)</span> of nonnegative residue exponent acts on the special torsion through an algebraic endomorphism: compose the relative residue Frobenius with the descent isomorphism from the Frobenius-twisted special fibre back to <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. On geometric points this is precisely the semilinear descent action of <span class="math" data-tex="\(w\)">\(w\)</span>. Relative Frobenius is an isogeny, and the descent map is an isomorphism. A negative exponent is handled by the inverse quasi-isogeny. Lemma 2.2 therefore makes the trace, and indeed the characteristic polynomial, of every <span class="math" data-tex="\(w\)">\(w\)</span> rational and independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. This compares <span class="math" data-tex="\(w\)">\(w\)</span> with its inertia component present; it is more information than the trace of an unramified Frobenius power.</p>
+<p>For completeness, this character comparison gives a common algebraic isomorphism class. The fixed finite group <span class="math" data-tex="\(I_F/I_{F&#x27;}\)">\(I_F/I_{F&#x27;}\)</span> works for every coefficient prime, without requiring that its action be faithful. Some power <span class="math" data-tex="\(\Phi^m\)">\(\Phi^m\)</span> centralizes it. The unipotent part of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> consequently commutes with inertia: its <span class="math" data-tex="\(m\)">\(m\)</span>-th power is the unipotent part of that centralizing power, and the unipotent <span class="math" data-tex="\(m\)">\(m\)</span>-th root is its finite binomial polynomial. It commutes with the semisimple part of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> as well. Removing it preserves all traces of <span class="math" data-tex="\(i\Phi^a\)">\(i\Phi^a\)</span>: the product of its nilpotent part with any commuting operator has trace zero, as follows by the filtration by kernels of its powers. After Frobenius semisimplification, <span class="math" data-tex="\(\Phi^m\)">\(\Phi^m\)</span> is semisimple, with algebraic eigenvalues by Lemma 2.2. On an eigenspace with eigenvalue <span class="math" data-tex="\(c\)">\(c\)</span>, choose an algebraic <span class="math" data-tex="\(m\)">\(m\)</span>-th root <span class="math" data-tex="\(b\)">\(b\)</span> of <span class="math" data-tex="\(c\)">\(c\)</span>, and replace <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> there by <span class="math" data-tex="\(b^{-1}\Phi\)">\(b^{-1}\Phi\)</span>. Inertia together with this operator is a representation of a finite cyclic extension of its finite inertia group, because the new operator has <span class="math" data-tex="\(m\)">\(m\)</span>-th power one. Over an algebraically closed field of characteristic zero, the group algebra of a finite group splits into matrix blocks: averaging complements gives semisimplicity, and Schur's lemma identifies a block with the full matrix algebra on its simple module. The simple modules can all be defined over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>, by splitting that finite group algebra there. Thus the original semisimple Weil representation has an algebraic model.</p>
+<p>Equal traces on every group element force equal simple multiplicities. One can see this without choosing complex embeddings: for the finite-dimensional semisimple image algebra, its central idempotents and matrix units isolate each simple block, and equality of trace functionals on their spanning group elements gives its multiplicity. This is also the characteristic-zero case of the proved Brauer–Nesbitt theorem in the first lesson. The common rational traces are fixed by every automorphism of <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>, so the common isomorphism class is Galois-invariant. ∎</p>
+<p><strong>Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).</strong> For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>.</p>
+<p>The potentially good case has the full proof in Lemma 2.3. General semistable reduction is actually proved in <em>Néron models</em>, Theorem 8.19, with identity-component base change in Theorem 8.20. Those results alone do not identify the monodromy filtration. The remaining proof must identify its toric graded pieces and their monodromy pairing and compare the abelian graded piece, equivariantly for the finite descent group. No actual earlier proof of that general monodromy assertion has yet been bound here. Deligne's freely accessible Example 8.10, printed p.571, states the full theorem but supplies no proof of it; it does not discharge this obligation. The theorem is retained in full generality, and this edition does not claim its full proof complete.</p>
+<p>For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in <em>Elliptic curves over local fields and their Weil–Deligne representations</em>, §§3–5: the common quadratic splitting character <span class="math" data-tex="\(\eta_v\)">\(\eta_v\)</span> and the common block are
+<span class="math math-display" data-tex="\[
+D_v=\eta_v\otimes\mathrm{Sp}(2);
+\tag{7}
+\]">\[
+D_v=\eta_v\otimes\mathrm{Sp}(2);
+\tag{7}
+\]</span>
+The quadratic character depends on the curve, not on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. These cases prove strict compatibility for the elliptic system. They preserve the higher-dimensional theorem and its outstanding proof; they do not replace it with an elliptic statement.</p>
+<p>The cyclotomic system has <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, <span class="math" data-tex="\(P_v(X)=1-q_vX\)">\(P_v(X)=1-q_vX\)</span>, and common local pair <span class="math" data-tex="\((\|\cdot\|,0)\)">\((\|\cdot\|,0)\)</span>. It is therefore strictly compatible and has weight <span class="math" data-tex="\(2\)">\(2\)</span>. The coefficient prime is excluded separately in (4); it is not added permanently to <span class="math" data-tex="\(S\)">\(S\)</span> for each member of the family.</p>
+<p>For comparison, a finite-image Artin representation defined over a number field of coefficients gives a strictly compatible system by scalar extension. Its exceptional set consists of its ramified places, its local monodromy is zero, and its weight is zero, because every Frobenius eigenvalue is a root of unity.</p>
+<h2 id="3-artin-l-functions-including-the-missing-places">3. Artin L-functions, including the missing places</h2>
+<p>Let <span class="math" data-tex="\(\rho:G_K\to\mathrm{GL}_d(\mathbf C)\)">\(\rho:G_K\to\mathrm{GL}_d(\mathbf C)\)</span> have finite image. Its local factor at a finite place is
+<span class="math math-display" data-tex="\[
+L_v(s,\rho)=
+\det\bigl(1-\rho(\operatorname{Fr}_v)q_v^{-s}\mid V^{I_v}\bigr)^{-1}.
+\tag{8}
+\]">\[
+L_v(s,\rho)=
+\det\bigl(1-\rho(\operatorname{Fr}_v)q_v^{-s}\mid V^{I_v}\bigr)^{-1}.
+\tag{8}
+\]</span>
+A lift of Frobenius acts unambiguously on the invariants. With our geometric local convention this is <span class="math" data-tex="\(L(s,\rho_v^\vee|_{W_{K_v}})\)">\(L(s,\rho_v^\vee|_{W_{K_v}})\)</span>. Finite inertia averaging identifies <span class="math" data-tex="\((V^{I_v})^\vee\)">\((V^{I_v})^\vee\)</span> with <span class="math" data-tex="\((V^\vee)^{I_v}\)">\((V^\vee)^{I_v}\)</span>, so this statement also holds at ramified places.</p>
+<p><strong>Proposition 3.1 (formalism at every prime).</strong> Direct sums multiply Artin L-functions, inflation preserves them, and for every finite extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span>,
+<span class="math math-display" data-tex="\[
+L_K(s,\operatorname{Ind}_{G_M}^{G_K}\tau)=L_M(s,\tau).
+\tag{8A}
+\]">\[
+L_K(s,\operatorname{Ind}_{G_M}^{G_K}\tau)=L_M(s,\tau).
+\tag{8A}
+\]</span>
+All these products converge absolutely and locally uniformly, and are nonzero, on <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>.</p>
+<p><strong>Proof.</strong> Eigenvalues of finite-image operators are roots of unity. The absolute logarithmic series at <span class="math" data-tex="\(v\)">\(v\)</span> is bounded by <span class="math" data-tex="\(d\sum_{m\ge1}q_v^{-m\sigma}/m\)">\(d\sum_{m\ge1}q_v^{-m\sigma}/m\)</span>. If <span class="math" data-tex="\(n=[K:\mathbf Q]\)">\(n=[K:\mathbf Q]\)</span>, at most <span class="math" data-tex="\(n\)">\(n\)</span> places lie above a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, each with norm at least <span class="math" data-tex="\(p\)">\(p\)</span>. Thus its global sum is bounded by <span class="math" data-tex="\(n d\sum_p\sum_{m\ge1}p^{-m\sigma}/m\)">\(n d\sum_p\sum_{m\ge1}p^{-m\sigma}/m\)</span>, finite for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>. Fixing <span class="math" data-tex="\(\sigma_0&gt;1\)">\(\sigma_0&gt;1\)</span> below the real parts on a compact parameter set gives uniform convergence. Exponentiating proves holomorphy and nonvanishing.</p>
+<p>Direct sums give block determinants. In a quotient Galois group the decomposition and inertia groups map onto their corresponding groups and Frobenius maps to Frobenius; hence inflation preserves the invariant space and its operator.</p>
+<p>For induction choose a finite Galois extension containing <span class="math" data-tex="\(M\)">\(M\)</span> and killing <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Write its group as <span class="math" data-tex="\(G\)">\(G\)</span>, the subgroup fixing <span class="math" data-tex="\(M\)">\(M\)</span> as <span class="math" data-tex="\(H\)">\(H\)</span>, and local decomposition and inertia as <span class="math" data-tex="\(D,I\)">\(D,I\)</span>. The coset model gives
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_D\operatorname{Ind}_H^G V
+=\bigoplus_{g\in D\backslash G/H}\operatorname{Ind}_{J_g}^{D}V_g,
+\qquad J_g=D\cap gHg^{-1}.
+\tag{8B}
+\]">\[
+\operatorname{Res}_D\operatorname{Ind}_H^G V
+=\bigoplus_{g\in D\backslash G/H}\operatorname{Ind}_{J_g}^{D}V_g,
+\qquad J_g=D\cap gHg^{-1}.
+\tag{8B}
+\]</span>
+Indeed, partition the coset basis into <span class="math" data-tex="\(D\)">\(D\)</span>-orbits; the stabilizer and its fibre are <span class="math" data-tex="\(J_g,V_g\)">\(J_g,V_g\)</span>. The double cosets are the places <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> above <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>In one summand, an inertia-invariant vector on each <span class="math" data-tex="\(I\)">\(I\)</span>-orbit is determined by an initial vector fixed by <span class="math" data-tex="\(I\cap J_g\)">\(I\cap J_g\)</span>. Hence the invariant space consists of <span class="math" data-tex="\(f=[D:IJ_g]\)">\(f=[D:IJ_g]\)</span> copies of <span class="math" data-tex="\(V_g^{I\cap J_g}\)">\(V_g^{I\cap J_g}\)</span>. Arithmetic Frobenius cyclically permutes them, and after <span class="math" data-tex="\(f\)">\(f\)</span> steps acts by arithmetic Frobenius <span class="math" data-tex="\(A\)">\(A\)</span> at <span class="math" data-tex="\(u\)">\(u\)</span>. For such a cyclic block operator <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>,
+<span class="math math-display" data-tex="\[
+\det(1-T\Psi)=\det(1-T^f A).
+\tag{8C}
+\]">\[
+\det(1-T\Psi)=\det(1-T^f A).
+\tag{8C}
+\]</span>
+Choose bases making its first <span class="math" data-tex="\(f-1\)">\(f-1\)</span> transition maps identities. Block elimination of <span class="math" data-tex="\(1-T\Psi\)">\(1-T\Psi\)</span> leaves identity diagonal blocks and the final block <span class="math" data-tex="\(1-T^fA\)">\(1-T^fA\)</span>. The calculation over <span class="math" data-tex="\(\mathbf C(T)\)">\(\mathbf C(T)\)</span> proves the polynomial identity. Since <span class="math" data-tex="\(q_u=q_v^f\)">\(q_u=q_v^f\)</span>, the summand contributes exactly the factor at <span class="math" data-tex="\(u\)">\(u\)</span>. Multiplying over double cosets proves (8A), even when <span class="math" data-tex="\(I\ne1\)">\(I\ne1\)</span>. Absolute convergence justifies the global multiplication. ∎</p>
+<p>The conductor ideal is
+<span class="math math-display" data-tex="\[
+\mathfrak f(\rho)=\prod_{v&lt;\infty}\mathfrak p_v^{a_v(\rho)},
+\qquad C(\rho)=|D_K|^d\operatorname N_{K/\mathbf Q}\mathfrak f(\rho).
+\tag{9}
+\]">\[
+\mathfrak f(\rho)=\prod_{v&lt;\infty}\mathfrak p_v^{a_v(\rho)},
+\qquad C(\rho)=|D_K|^d\operatorname N_{K/\mathbf Q}\mathfrak f(\rho).
+\tag{9}
+\]</span>
+Its integer exponents are proved in <em>Conductors of Weil group representations</em>, Theorem 2.6, before the ideal is defined. That lesson's Proposition 2.3 proves the finite induction formula and Lemma 1.4 proves different transitivity and the trace-dual discriminant formula. They imply
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak f_K(\operatorname{Ind}_M^K\tau)
+&amp;=\mathfrak d_{M/K}^{\dim\tau}
+  \operatorname N_{M/K}\mathfrak f_M(\tau),\\
+|D_M|&amp;=|D_K|^{[M:K]}
+       \operatorname N_{K/\mathbf Q}\mathfrak d_{M/K},\\
+C_K(\operatorname{Ind}_M^K\tau)&amp;=C_M(\tau).
+\end{aligned}
+\tag{9A}
+\]">\[
+\begin{aligned}
+\mathfrak f_K(\operatorname{Ind}_M^K\tau)
+&amp;=\mathfrak d_{M/K}^{\dim\tau}
+  \operatorname N_{M/K}\mathfrak f_M(\tau),\\
+|D_M|&amp;=|D_K|^{[M:K]}
+       \operatorname N_{K/\mathbf Q}\mathfrak d_{M/K},\\
+C_K(\operatorname{Ind}_M^K\tau)&amp;=C_M(\tau).
+\end{aligned}
+\tag{9A}
+\]</span>
+Here is the global passage, including the residue factors. At <span class="math" data-tex="\(v\)">\(v\)</span>, (8B) partitions induction into places <span class="math" data-tex="\(u\mid v\)">\(u\mid v\)</span>. Its conductor exponent is
+<span class="math" data-tex="\(\sum_{u\mid v}(\dim\tau\, f(u/v)d_{M_u/K_v}+f(u/v)a_u(\tau))\)">\(\sum_{u\mid v}(\dim\tau\, f(u/v)d_{M_u/K_v}+f(u/v)a_u(\tau))\)</span>.
+The first sum is the valuation of the relative discriminant, and the second is the valuation of the ideal norm of <span class="math" data-tex="\(\mathfrak f_M(\tau)\)">\(\mathfrak f_M(\tau)\)</span>. This proves the first formula. For the second, complete the integral trace lattice at a rational prime. It is the product of the completed integer lattices above that prime; traces and trace determinants respect that product. The tower identity for their trace-dual differents, followed by their norm exponents <span class="math" data-tex="\(f d\)">\(f d\)</span>, gives the displayed valuation identity at each rational prime. Equality of these positive integers follows. Insert the first two identities into (9) to obtain the third.</p>
+<p>The archimedean factors use
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathbf R}(s)=\pi^{-s/2}\Gamma(s/2),\qquad
+\Gamma_{\mathbf C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]">\[
+\Gamma_{\mathbf R}(s)=\pi^{-s/2}\Gamma(s/2),\qquad
+\Gamma_{\mathbf C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]</span>
+At a real place let <span class="math" data-tex="\(d_v^+\)">\(d_v^+\)</span> and <span class="math" data-tex="\(d_v^-\)">\(d_v^-\)</span> be the multiplicities of <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> for complex conjugation. The factor is
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathbf R}(s)^{d_v^+}\Gamma_{\mathbf R}(s+1)^{d_v^-}.
+\tag{10}
+\]">\[
+\Gamma_{\mathbf R}(s)^{d_v^+}\Gamma_{\mathbf R}(s+1)^{d_v^-}.
+\tag{10}
+\]</span>
+At a complex place it is <span class="math" data-tex="\(\Gamma_{\mathbf C}(s)^d\)">\(\Gamma_{\mathbf C}(s)^d\)</span>. These are the archimedean Weil-group factors of the local-factor lesson. If <span class="math" data-tex="\(\Gamma_\infty(s,\rho)\)">\(\Gamma_\infty(s,\rho)\)</span> denotes their product, the completed function
+<span class="math math-display" data-tex="\[
+\Lambda(s,\rho)=C(\rho)^{s/2}\Gamma_\infty(s,\rho)L(s,\rho)
+\tag{11}
+\]">\[
+\Lambda(s,\rho)=C(\rho)^{s/2}\Gamma_\infty(s,\rho)L(s,\rho)
+\tag{11}
+\]</span>
+has the functional equation
+<span class="math math-display" data-tex="\[
+\Lambda(s,\rho)=W(\rho)\Lambda(1-s,\rho^\vee),\qquad |W(\rho)|=1.
+\tag{12}
+\]">\[
+\Lambda(s,\rho)=W(\rho)\Lambda(1-s,\rho^\vee),\qquad |W(\rho)|=1.
+\tag{12}
+\]</span>
+We now prove this assertion. The analytic prerequisite is an actual written proof, rather than a reference to a free theorem statement.</p>
+<p><strong>Lemma 3.2 (the Hecke theorem and its normalization).</strong> For any number field <span class="math" data-tex="\(M\)">\(M\)</span> and continuous unitary Hecke character <span class="math" data-tex="\(\omega:\mathbb A_M^\times/M^\times\to S^1\)">\(\omega:\mathbb A_M^\times/M^\times\to S^1\)</span>, let <span class="math" data-tex="\(\mathfrak f_\omega\)">\(\mathfrak f_\omega\)</span> be its intrinsic finite conductor and <span class="math" data-tex="\(Q_\omega=|D_M|N\mathfrak f_\omega\)">\(Q_\omega=|D_M|N\mathfrak f_\omega\)</span>. At real places write <span class="math" data-tex="\(\omega_v=\operatorname{sgn}^{e_v}|\cdot|^{it_v}\)">\(\omega_v=\operatorname{sgn}^{e_v}|\cdot|^{it_v}\)</span>, and at complex places <span class="math" data-tex="\(\omega_v=(z/|z|_{\mathrm{usual}})^{n_v}|\cdot|_v^{it_v}\)">\(\omega_v=(z/|z|_{\mathrm{usual}})^{n_v}|\cdot|_v^{it_v}\)</span>. Set
+<span class="math math-display" data-tex="\[
+\Gamma_\infty(s,\omega)=
+\prod_{v\text{ real}}\Gamma_{\mathbf R}(s+it_v+e_v)
+\prod_{v\text{ complex}}\Gamma_{\mathbf C}(s+it_v+|n_v|/2).
+\tag{12A}
+\]">\[
+\Gamma_\infty(s,\omega)=
+\prod_{v\text{ real}}\Gamma_{\mathbf R}(s+it_v+e_v)
+\prod_{v\text{ complex}}\Gamma_{\mathbf C}(s+it_v+|n_v|/2).
+\tag{12A}
+\]</span>
+Then <span class="math" data-tex="\(\Lambda_M(s,\omega)=Q_\omega^{s/2}\Gamma_\infty(s,\omega)L_M(s,\omega)\)">\(\Lambda_M(s,\omega)=Q_\omega^{s/2}\Gamma_\infty(s,\omega)L_M(s,\omega)\)</span> continues meromorphically and satisfies
+<span class="math math-display" data-tex="\[
+\Lambda_M(s,\omega)=W_M(\omega)\Lambda_M(1-s,\omega^{-1}),
+\qquad |W_M(\omega)|=1.
+\tag{12B}
+\]">\[
+\Lambda_M(s,\omega)=W_M(\omega)\Lambda_M(1-s,\omega^{-1}),
+\qquad |W_M(\omega)|=1.
+\tag{12B}
+\]</span>
+It is entire unless <span class="math" data-tex="\(\omega=|\cdot|^{i\tau}\)">\(\omega=|\cdot|^{i\tau}\)</span>, in which case its only poles are simple poles at <span class="math" data-tex="\(-i\tau,1-i\tau\)">\(-i\tau,1-i\tau\)</span>. The constant is the product of its normalized rank-one local constants.</p>
+<p><strong>Proof with its earlier analytic locators.</strong> The written programme lessons <em>Idèles and the idèle class group</em>, Theorem 3.3, and <em>Additive characters, self-dual measures and Poisson summation on the adèles</em>, Theorems 5.4–5.5, prove compactness of <span class="math" data-tex="\(C_M^1\)">\(C_M^1\)</span>, adelic self-duality, covolume one and Poisson summation. The full continuation argument is actually written in <em>Tate's global theory: continuation and functional equation</em>, Proposition 9.1, its Theta lemma, and Theorem 9.2, equations (15)–(24). Its proof unfolds a Schwartz integral
+<span class="math math-display" data-tex="\[
+Z(f,\omega,s)=\int_{\mathbb A_M^\times}
+ f(x)\omega(x)|x|^s\,d^\times x
+\]">\[
+Z(f,\omega,s)=\int_{\mathbb A_M^\times}
+ f(x)\omega(x)|x|^s\,d^\times x
+\]</span>
+to the idèle class group. The large-norm part <span class="math" data-tex="\(G(f,\omega,s)\)">\(G(f,\omega,s)\)</span> is entire: compact norm-one representatives reduce its theta sum to one fractional-ideal lattice, and Schwartz decay bounds the nonzero sum by <span class="math" data-tex="\(O(|x|^{-B})\)">\(O(|x|^{-B})\)</span> for every <span class="math" data-tex="\(B\)">\(B\)</span>. Poisson summation on the small-norm part gives the actual continuation
+<span class="math math-display" data-tex="\[
+Z(f,\omega,s)=G(f,\omega,s)
++G(\widehat f,\omega^{-1},1-s)
++\begin{cases}
+\kappa\bigl(\widehat f(0)/(s+i\tau-1)-f(0)/(s+i\tau)\bigr),
+ &amp;\omega=|\cdot|^{i\tau},\\
+0,&amp;\omega|_{C_M^1}\ne1.
+\end{cases}
+\tag{12C}
+\]">\[
+Z(f,\omega,s)=G(f,\omega,s)
++G(\widehat f,\omega^{-1},1-s)
++\begin{cases}
+\kappa\bigl(\widehat f(0)/(s+i\tau-1)-f(0)/(s+i\tau)\bigr),
+ &amp;\omega=|\cdot|^{i\tau},\\
+0,&amp;\omega|_{C_M^1}\ne1.
+\end{cases}
+\tag{12C}
+\]</span>
+Translation in the compact group kills its average unless the character is trivial there. Fourier inversion interchanges the two entire terms and preserves the correction, proving <span class="math" data-tex="\(Z(f,\omega,s)=Z(\widehat f,\omega^{-1},1-s)\)">\(Z(f,\omega,s)=Z(\widehat f,\omega^{-1},1-s)\)</span>. This use of the earlier theta estimate includes arbitrary number fields and the whole Schwartz space, not just <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>Take <span class="math" data-tex="\(f_v=1_{\mathcal O_v}\)">\(f_v=1_{\mathcal O_v}\)</span> at unramified finite places, <span class="math" data-tex="\(f_v=\omega_v^{-1}1_{\mathcal O_v^\times}\)">\(f_v=\omega_v^{-1}1_{\mathcal O_v^\times}\)</span> at ramified places, <span class="math" data-tex="\(x^{e_v}e^{-\pi x^2}\)">\(x^{e_v}e^{-\pi x^2}\)</span> at real places, and the matching angular Gaussian at complex places. The actual local integral proofs are <em>Tate's local theory at the finite places</em>, Theorems 7.2–7.3, and <em>Tate's local theory at the infinite places</em>, Theorem 8.1 and Propositions 8.2–8.4. They make <span class="math" data-tex="\(Z(f,\omega,s)\)">\(Z(f,\omega,s)\)</span> exactly <span class="math" data-tex="\(\Gamma_\infty(s,\omega)L_M(s,\omega)\)">\(\Gamma_\infty(s,\omega)L_M(s,\omega)\)</span>, with no extra scalar.</p>
+<p>For the trace character, let <span class="math" data-tex="\(d_v\)">\(d_v\)</span> be the different exponent and <span class="math" data-tex="\(a_v\)">\(a_v\)</span> the character conductor. The finite formulas give
+<span class="math math-display" data-tex="\[
+\epsilon_v(s,\omega_v)=W_vq_v^{(a_v+d_v)(1/2-s)},\qquad |W_v|=1.
+\tag{12D}
+\]">\[
+\epsilon_v(s,\omega_v)=W_vq_v^{(a_v+d_v)(1/2-s)},\qquad |W_v|=1.
+\tag{12D}
+\]</span>
+For a ramified character, <span class="math" data-tex="\(v(b)=a_v+d_v\)">\(v(b)=a_v+d_v\)</span> and
+<span class="math math-display" data-tex="\[
+W_v=\omega_v(b)q_v^{-a_v/2}
+\sum_{u\in(\mathcal O_v/\mathfrak p_v^{a_v})^\times}
+\omega_v(u)^{-1}\psi_v(u/b).
+\tag{12E}
+\]">\[
+W_v=\omega_v(b)q_v^{-a_v/2}
+\sum_{u\in(\mathcal O_v/\mathfrak p_v^{a_v})^\times}
+\omega_v(u)^{-1}\psi_v(u/b).
+\tag{12E}
+\]</span>
+The finite Fourier calculation in Theorem 7.3 proves that the sum has absolute value <span class="math" data-tex="\(q_v^{a_v/2}\)">\(q_v^{a_v/2}\)</span>; changing <span class="math" data-tex="\(b\)">\(b\)</span> by a unit cancels between its two factors. For an unramified character <span class="math" data-tex="\(W_v=\omega_v(\delta_v)\)">\(W_v=\omega_v(\delta_v)\)</span>, where <span class="math" data-tex="\(\delta_v\)">\(\delta_v\)</span> generates the different. Infinite constants for the negative trace character are <span class="math" data-tex="\((-i)^{e_v}\)">\((-i)^{e_v}\)</span> and <span class="math" data-tex="\((-i)^{|n_v|}\)">\((-i)^{|n_v|}\)</span>, proved by Gaussian Fourier transforms in Proposition 8.3. Product trace-dual discriminants give <span class="math" data-tex="\(\prod_{v&lt;\infty}q_v^{d_v}=|D_M|\)">\(\prod_{v&lt;\infty}q_v^{d_v}=|D_M|\)</span>; hence the product of local constants is <span class="math" data-tex="\(W_M(\omega)Q_\omega^{1/2-s}\)">\(W_M(\omega)Q_\omega^{1/2-s}\)</span>. Apply the local equations to (12C), then multiply by <span class="math" data-tex="\(Q_\omega^{s/2}\)">\(Q_\omega^{s/2}\)</span>, to obtain (12B).</p>
+<p>Formula (12C) gives no poles for characters nontrivial on <span class="math" data-tex="\(C_M^1\)">\(C_M^1\)</span>. A character trivial there is a pure norm character, so its standard Gaussian is a shifted trivial-character test with both zero terms nonzero. Its two stated poles therefore have nonzero residues. This completes the same full Hecke proof written in <em>Hecke L-functions and the Dedekind zeta function</em>, Theorem 10.1 and equations (3)–(8). The freely readable Tate thesis, §4.4, Theorem 4.4.11 and its proof, is primary reading material; the proof obligation is discharged by the actual written arguments just identified. ∎</p>
+<p><strong>Corollary 3.2a (all continuous complex Hecke characters).</strong> Every continuous <span class="math" data-tex="\(\theta:C_M\to\mathbb C^\times\)">\(\theta:C_M\to\mathbb C^\times\)</span> has the form <span class="math" data-tex="\(\theta=\omega|\cdot|^a\)">\(\theta=\omega|\cdot|^a\)</span> with <span class="math" data-tex="\(\omega\)">\(\omega\)</span> unitary and <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>. Its completed primitive Hecke function continues meromorphically and satisfies
+<span class="math math-display" data-tex="\[
+\Lambda_M(s,\theta)=Q_\theta^{-a}W_M(\omega)
+ \Lambda_M(1-s,\theta^{-1}).
+\tag{12B&#x27;}
+\]">\[
+\Lambda_M(s,\theta)=Q_\theta^{-a}W_M(\omega)
+ \Lambda_M(1-s,\theta^{-1}).
+\tag{12B&#x27;}
+\]</span>
+Its analytic constant equals the product of its normalized local constants, and has absolute value <span class="math" data-tex="\(Q_\theta^{-a}\)">\(Q_\theta^{-a}\)</span>. It is entire unless <span class="math" data-tex="\(\theta=|\cdot|^{a+i\tau}\)">\(\theta=|\cdot|^{a+i\tau}\)</span>; in that case its poles are simple, at <span class="math" data-tex="\(-a-i\tau\)">\(-a-i\tau\)</span> and <span class="math" data-tex="\(1-a-i\tau\)">\(1-a-i\tau\)</span>.</p>
+<p><strong>Proof.</strong> The absolute value of a continuous character on the compact group <span class="math" data-tex="\(C_M^1\)">\(C_M^1\)</span> is one: its image is a compact subgroup of <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>, whose logarithm is a compact additive subgroup of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, necessarily zero since the multiples of any nonzero member are unbounded. The norm splitting from the actual idèle-class proof identifies the remaining positive real character with <span class="math" data-tex="\(t\mapsto t^a\)">\(t\mapsto t^a\)</span>. Indeed its logarithm is a continuous additive function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; rational linearity follows by integer division and real linearity by density. Dividing <span class="math" data-tex="\(\theta\)">\(\theta\)</span> by that norm power produces <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>Unit restrictions, and hence the conductor, are unchanged. Every Euler and Gamma factor is shifted from <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(s+a\)">\(s+a\)</span>, so
+<span class="math" data-tex="\(\Lambda(s,\theta)=Q^{-a/2}\Lambda(s+a,\omega)\)">\(\Lambda(s,\theta)=Q^{-a/2}\Lambda(s+a,\omega)\)</span>.
+Similarly <span class="math" data-tex="\(\Lambda(1-s,\theta^{-1})=Q^{a/2}\Lambda(1-s-a,\omega^{-1})\)">\(\Lambda(1-s,\theta^{-1})=Q^{a/2}\Lambda(1-s-a,\omega^{-1})\)</span>. Lemma 3.2 now gives (12B') and its poles. Its finite local exponent formula gives the central-product multiplier <span class="math" data-tex="\(Q^{-a}\)">\(Q^{-a}\)</span>; infinite phases are unchanged by radial shifts. Thus the local product gives exactly the same constant. ∎</p>
+<p><strong>Theorem 3.3 (Artin meromorphy and functional equation).</strong> Equations (11)–(12) hold for every finite-image complex representation of <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, including reducible representations and all ramified places.</p>
+<p><strong>Proof.</strong> Take a finite Galois quotient <span class="math" data-tex="\(G\)">\(G\)</span> through which <span class="math" data-tex="\(\rho\)">\(\rho\)</span> factors. The actual integer line-induction theorem in the earlier <em>Brauer's induction theorem</em>, Theorem 5.1, gives
+<span class="math math-display" data-tex="\[
+[\rho]=\sum_jm_j[\operatorname{Ind}_{H_j}^G\chi_j],
+\qquad m_j\in\mathbf Z,\quad\dim\chi_j=1.
+\tag{12F}
+\]">\[
+[\rho]=\sum_jm_j[\operatorname{Ind}_{H_j}^G\chi_j],
+\qquad m_j\in\mathbf Z,\quad\dim\chi_j=1.
+\tag{12F}
+\]</span>
+Its proof in §§1–5 proves nilpotent monomiality, local induction ideals at every prime, integral descent and the final Bezout combination. Thus this is integer induction from lines, with negative coefficients permitted; rational Artin induction would not suffice. Put <span class="math" data-tex="\(M_j=L^{H_j}\)">\(M_j=L^{H_j}\)</span>. The one-dimensional character gives the finite-order Hecke character <span class="math" data-tex="\(\omega_j\)">\(\omega_j\)</span> by arithmetic reciprocity. The actual local-to-global reciprocity and character construction are the preceding Weil lesson, §6 and Proposition 6.1, with its written class-field provider. In that provider's geometric convention apply the correspondence to <span class="math" data-tex="\(\chi_j^\vee\)">\(\chi_j^\vee\)</span>: geometric reciprocity is the inverse of arithmetic reciprocity, so the two inversions give precisely <span class="math" data-tex="\(\omega_j(x)=\chi_j(\operatorname{rec}_{\mathrm{arith}}(x))\)">\(\omega_j(x)=\chi_j(\operatorname{rec}_{\mathrm{arith}}(x))\)</span>. At a ramified place the Artin invariant line is zero exactly when the Hecke character is nontrivial on units. At an unramified place arithmetic reciprocity sends a uniformizer to arithmetic Frobenius. Hence their primitive Euler factors agree in both cases. The unit conductor equals the Artin conductor by the proved conductor lesson, Lemma 2.4.</p>
+<p>Proposition 3.1 now gives <span class="math" data-tex="\(L_K(s,\rho)=\prod_jL_{M_j}(s,\omega_j)^{m_j}\)">\(L_K(s,\rho)=\prod_jL_{M_j}(s,\omega_j)^{m_j}\)</span> on <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>. Equation (9A) gives equality of the conductor scales. At a real place, induction from a complex place gives one even and one odd line; induction from real places preserves their signs. At a complex place all dimensions simply add. Thus induction preserves the archimedean product, because
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s).
+\tag{12G}
+\]">\[
+\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s).
+\tag{12G}
+\]</span>
+This identity has an actual proof in the infinite Tate lesson, Proposition 8.4: the beta integral, the substitution <span class="math" data-tex="\(t=(1+a)/2\)">\(t=(1+a)/2\)</span>, and then <span class="math" data-tex="\(a^2=b\)">\(a^2=b\)</span> give the Gamma duplication formula, and <span class="math" data-tex="\(\Gamma(1/2)=\sqrt\pi\)">\(\Gamma(1/2)=\sqrt\pi\)</span> follows from the Gaussian integral. Consequently
+<span class="math math-display" data-tex="\[
+\Lambda_K(s,\rho)=\prod_j\Lambda_{M_j}(s,\omega_j)^{m_j}.
+\tag{12H}
+\]">\[
+\Lambda_K(s,\rho)=\prod_j\Lambda_{M_j}(s,\omega_j)^{m_j}.
+\tag{12H}
+\]</span>
+Lemma 3.2 continues this product meromorphically. The finite coset pairing identifies the dual of an induction with induction of the dual: pair corresponding coset fibres and sum their pairings. Apply (12B) to each factor in (12H). The resulting constant is <span class="math" data-tex="\(W(\rho)=\prod_jW_{M_j}(\omega_j)^{m_j}\)">\(W(\rho)=\prod_jW_{M_j}(\omega_j)^{m_j}\)</span>, of absolute value one, and gives exactly (12).</p>
+<p>These continuations and constants are independent of the chosen Brauer expression. The Euler products agree on the common nonempty half-plane, so their meromorphic continuations agree by the identity theorem. On an open set where the dual completed function is finite and nonzero, their quotient determines the constant uniquely. Such an open set exists by the nonzero initial Euler product and meromorphic continuation. This proves the theorem, without asserting holomorphy of the negative-power product. ∎</p>
+<p>The precise written analytic and character-theory scopes have thus been used. Their transitive free-source provenance and currently accessible public editions remain under verification; mathematical existence of those written proofs does not by itself certify their source chain. Section 4 proves the further local-product identity from the actual orthogonal and global Brauer proofs.</p>
+<p><strong>Artin's holomorphy conjecture.</strong> If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is nontrivial and irreducible, <span class="math" data-tex="\(L(s,\rho)\)">\(L(s,\rho)\)</span> is entire. Meromorphic continuation is a theorem; removal of all possible poles in this generality is the conjecture. Brauer induction gives products with negative as well as positive powers, which explains why it yields meromorphy. A nontrivial irreducible representation induced from a one-dimensional character has an entire L-function, by induction and the Hecke theorem. This argument requires that induced-character hypothesis; solvability of a finite group by itself does not supply it.</p>
+<p><strong>Example 3.1 (Dedekind factorization).</strong> Let <span class="math" data-tex="\(M/K\)">\(M/K\)</span> be finite Galois with group <span class="math" data-tex="\(G\)">\(G\)</span>. The regular representation decomposes as
+<span class="math math-display" data-tex="\[
+\mathbf C[G]\simeq\bigoplus_{\tau\in\widehat G}\tau^{\oplus\dim\tau}.
+\]">\[
+\mathbf C[G]\simeq\bigoplus_{\tau\in\widehat G}\tau^{\oplus\dim\tau}.
+\]</span>
+Induction of the trivial representation from <span class="math" data-tex="\(G_M\)">\(G_M\)</span> has L-function <span class="math" data-tex="\(\zeta_M(s)\)">\(\zeta_M(s)\)</span>. The formalism therefore gives
+<span class="math math-display" data-tex="\[
+\zeta_M(s)=\prod_{\tau\in\widehat G}L_K(s,\tau)^{\dim\tau}.
+\tag{13}
+\]">\[
+\zeta_M(s)=\prod_{\tau\in\widehat G}L_K(s,\tau)^{\dim\tau}.
+\tag{13}
+\]</span>
+This includes ramified Euler factors. For <span class="math" data-tex="\(M=\mathbf Q(i)\)">\(M=\mathbf Q(i)\)</span>, the two characters are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>, so <span class="math" data-tex="\(\zeta_M=\zeta L(\chi_{-4})\)">\(\zeta_M=\zeta L(\chi_{-4})\)</span>. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, the factor is <span class="math" data-tex="\((1-p^{-s})^{-2}\)">\((1-p^{-s})^{-2}\)</span> if <span class="math" data-tex="\(p\equiv1\pmod4\)">\(p\equiv1\pmod4\)</span>, and <span class="math" data-tex="\((1-p^{-2s})^{-1}\)">\((1-p^{-2s})^{-1}\)</span> if <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span>, inertia acts nontrivially on <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>, leaving only the trivial line: the factor is <span class="math" data-tex="\((1-2^{-s})^{-1}\)">\((1-2^{-s})^{-1}\)</span>. The character at 2 is nontrivial on <span class="math" data-tex="\(1+2\mathbf Z_2\)">\(1+2\mathbf Z_2\)</span>, since it is minus one at <span class="math" data-tex="\(-1\)">\(-1\)</span>, and trivial on <span class="math" data-tex="\(1+4\mathbf Z_2\)">\(1+4\mathbf Z_2\)</span>; thus its unit conductor exponent is exactly two by Lemma 2.4 of the conductor lesson. Hence <span class="math" data-tex="\(\mathfrak f(\chi_{-4})=(4)\)">\(\mathfrak f(\chi_{-4})=(4)\)</span>, so <span class="math" data-tex="\(C(1\oplus\chi_{-4})=4\)">\(C(1\oplus\chi_{-4})=4\)</span>, agreeing with <span class="math" data-tex="\(|D_M|\)">\(|D_M|\)</span>. The gamma factors also agree, since the duplication formula gives <span class="math" data-tex="\(\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s)\)">\(\Gamma_{\mathbf R}(s)\Gamma_{\mathbf R}(s+1)=\Gamma_{\mathbf C}(s)\)</span>.</p>
+<p><strong>Example 3.2 (a character that detects the dual).</strong> Let <span class="math" data-tex="\(\zeta_3=e^{2\pi i/3}\)">\(\zeta_3=e^{2\pi i/3}\)</span>. Define the primitive character modulo <span class="math" data-tex="\(7\)">\(7\)</span> by <span class="math" data-tex="\(\chi(3)=\zeta_3\)">\(\chi(3)=\zeta_3\)</span>, since <span class="math" data-tex="\(3\)">\(3\)</span> generates <span class="math" data-tex="\((\mathbf Z/7\mathbf Z)^\times\)">\((\mathbf Z/7\mathbf Z)^\times\)</span>. Then <span class="math" data-tex="\(2\equiv3^2\pmod7\)">\(2\equiv3^2\pmod7\)</span>, so <span class="math" data-tex="\(\chi(2)=\zeta_3^2\)">\(\chi(2)=\zeta_3^2\)</span>. The corresponding Artin representation acts on arithmetic Frobenius at <span class="math" data-tex="\(2\)">\(2\)</span> by <span class="math" data-tex="\(\zeta_3^2\)">\(\zeta_3^2\)</span>, and its Euler factor is
+<span class="math math-display" data-tex="\[
+L_2(s,\chi)=\frac{1}{1-\zeta_3^2\,2^{-s}}.
+\tag{14}
+\]">\[
+L_2(s,\chi)=\frac{1}{1-\zeta_3^2\,2^{-s}}.
+\tag{14}
+\]</span>
+It is even, because <span class="math" data-tex="\(-1\equiv3^3\)">\(-1\equiv3^3\)</span>, so its infinite factor is <span class="math" data-tex="\(\Gamma_{\mathbf R}(s)\)">\(\Gamma_{\mathbf R}(s)\)</span>. Its conductor is <span class="math" data-tex="\(7\)">\(7\)</span>, its factor at <span class="math" data-tex="\(7\)">\(7\)</span> is one, and <span class="math" data-tex="\(L(s,\chi)=\sum_{n\ge1}\chi(n)n^{-s}\)">\(L(s,\chi)=\sum_{n\ge1}\chi(n)n^{-s}\)</span>, with <span class="math" data-tex="\(\chi(n)=0\)">\(\chi(n)=0\)</span> when <span class="math" data-tex="\(7\mid n\)">\(7\mid n\)</span>. If one uses this representation itself in the geometric local-factor definition, its eigenvalue at <span class="math" data-tex="\(\Phi_2\)">\(\Phi_2\)</span> is <span class="math" data-tex="\(\zeta_3\)">\(\zeta_3\)</span>, giving the factor for <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span>. Applying that definition to the dual gives (14). A quadratic character would not expose the error.</p>
+<h2 id="4-root-numbers-and-the-global-additive-character">4. Root numbers and the global additive character</h2>
+<p>Choose a nontrivial continuous unitary additive character <span class="math" data-tex="\(\psi:\mathbf A_K/K\to\mathbf C^\times\)">\(\psi:\mathbf A_K/K\to\mathbf C^\times\)</span>, with local components <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span>, and at each place use the self-dual Haar measure <span class="math" data-tex="\(dx_{\psi_v}\)">\(dx_{\psi_v}\)</span>. At a complex place the absolute value means the squared usual absolute value. This convention makes <span class="math" data-tex="\(\prod_v|a|_v=1\)">\(\prod_v|a|_v=1\)</span> for <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>.</p>
+<p>The actual written adelic self-duality and Poisson proofs are <em>Additive characters, self-dual measures and Poisson summation on the adèles</em>, Theorems 5.4–5.5. They prove that the product self-dual measure has covolume one. The first theorem identifies the annihilator of <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span> with <span class="math" data-tex="\(K\)">\(K\)</span> by a rational trace-dual basis, so every nontrivial additive character on <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span> is <span class="math" data-tex="\(\psi_a(x)=\psi(ax)\)">\(\psi_a(x)=\psi(ax)\)</span> for a unique <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>.</p>
+<p>Put <span class="math" data-tex="\(r_v=\rho_v^\vee|_{W_{K_v}}\)">\(r_v=\rho_v^\vee|_{W_{K_v}}\)</span>. At infinity use the analogous finite-image Weil representation. Define
+<span class="math math-display" data-tex="\[
+\epsilon(s,\rho,\psi)=
+\prod_v\epsilon_v(s,r_v,\psi_v,dx_{\psi_v}),\qquad
+W_{\mathrm{loc}}(\rho)=\epsilon(1/2,\rho,\psi).
+\tag{15}
+\]">\[
+\epsilon(s,\rho,\psi)=
+\prod_v\epsilon_v(s,r_v,\psi_v,dx_{\psi_v}),\qquad
+W_{\mathrm{loc}}(\rho)=\epsilon(1/2,\rho,\psi).
+\tag{15}
+\]</span>
+Almost every finite place is unramified both for <span class="math" data-tex="\(r_v\)">\(r_v\)</span> and for the additive character, with <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> of self-dual volume one. Its constant is one, so the product has only finitely many nontrivial terms. Finite-image representations are unitary: average any positive Hermitian form over their finite image. The proved local-factor lesson, Theorem 3.0 and §§4–5, therefore gives absolute value one for every central local factor.</p>
+<p><strong>Proposition 4.0 (the complete conductor power).</strong> The product in (15) has the form
+<span class="math math-display" data-tex="\[
+\epsilon(s,\rho,\psi)
+=W_{\mathrm{loc}}(\rho)C(\rho)^{1/2-s},
+\qquad |W_{\mathrm{loc}}(\rho)|=1.
+\tag{15A}
+\]">\[
+\epsilon(s,\rho,\psi)
+=W_{\mathrm{loc}}(\rho)C(\rho)^{1/2-s},
+\qquad |W_{\mathrm{loc}}(\rho)|=1.
+\tag{15A}
+\]</span></p>
+<p><strong>Proof.</strong> First take the standard trace character. The local exponent formula in the actually written local-factor lesson gives
+<span class="math math-display" data-tex="\[
+\epsilon_v(s,r_v,\psi_v)
+=\epsilon_v(1/2,r_v,\psi_v)
+ q_v^{(a_v(\rho)+d\,d_v)(1/2-s)}.
+\]">\[
+\epsilon_v(s,r_v,\psi_v)
+=\epsilon_v(1/2,r_v,\psi_v)
+ q_v^{(a_v(\rho)+d\,d_v)(1/2-s)}.
+\]</span>
+Here <span class="math" data-tex="\(d_v\)">\(d_v\)</span> is the local different exponent of <span class="math" data-tex="\(K_v/\mathbf Q_p\)">\(K_v/\mathbf Q_p\)</span>; the character conductor is <span class="math" data-tex="\(d_v\)">\(d_v\)</span> by that lesson's trace-dual Lemma 2.2. Duality preserves every invariant codimension in the conductor formula, hence <span class="math" data-tex="\(a(r_v)=a(\rho_v)\)">\(a(r_v)=a(\rho_v)\)</span>. At infinity the finite-image real parameter is a sum of trivial and sign lines, and the complex parameter is trivial; their Gaussian epsilon factors do not depend on <span class="math" data-tex="\(s\)">\(s\)</span>. Taking the product and using <span class="math" data-tex="\(\prod_{v&lt;\infty}q_v^{d_v}=|D_K|\)">\(\prod_{v&lt;\infty}q_v^{d_v}=|D_K|\)</span> gives exactly (15A). Local unitary normalization gives the absolute value assertion. Proposition 4.1 below extends the formula to every global additive character. ∎</p>
+<p><strong>Theorem 4.2 (global factorization).</strong> The analytic constant in Theorem 3.3 equals <span class="math" data-tex="\(W_{\mathrm{loc}}(\rho)\)">\(W_{\mathrm{loc}}(\rho)\)</span>. Equivalently,
+<span class="math math-display" data-tex="\[
+\epsilon(s,\rho,\psi)=W(\rho)C(\rho)^{1/2-s}.
+\tag{16}
+\]">\[
+\epsilon(s,\rho,\psi)=W(\rho)C(\rho)^{1/2-s}.
+\tag{16}
+\]</span>
+<strong>Proof.</strong> The rank-one case has the complete proof in Lemma 3.2. Local induction, proved in the local-factor lesson for virtual dimension zero, gives for an actual representation <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of a local extension <span class="math" data-tex="\(M_u/K_v\)">\(M_u/K_v\)</span>
+<span class="math math-display" data-tex="\[
+W_{K_v}(\operatorname{Ind}\tau)
+=\lambda(M_u/K_v)^{\dim\tau}W_{M_u}(\tau),
+\quad
+\lambda(M_u/K_v)=
+\frac{W_{K_v}(\operatorname{Ind}1)}{W_{M_u}(1)}.
+\tag{16A}
+\]">\[
+W_{K_v}(\operatorname{Ind}\tau)
+=\lambda(M_u/K_v)^{\dim\tau}W_{M_u}(\tau),
+\quad
+\lambda(M_u/K_v)=
+\frac{W_{K_v}(\operatorname{Ind}1)}{W_{M_u}(1)}.
+\tag{16A}
+\]</span>
+This follows by applying dimension-zero induction to <span class="math" data-tex="\(\tau-(\dim\tau)1\)">\(\tau-(\dim\tau)1\)</span> and then restoring the trivial factors. Over all places it reduces Theorem 4.2, by (12F), to the exact assertion
+<span class="math math-display" data-tex="\[
+\prod_v\prod_{u\mid v}\lambda(M_u/K_v)=1
+\quad\text{for every finite number-field extension }M/K.
+\tag{16B}
+\]">\[
+\prod_v\prod_{u\mid v}\lambda(M_u/K_v)=1
+\quad\text{for every finite number-field extension }M/K.
+\tag{16B}
+\]</span>
+Here are the complete steps proving (16B). Write <span class="math" data-tex="\(P=\operatorname{Ind}_{G_M}^{G_K}1\)">\(P=\operatorname{Ind}_{G_M}^{G_K}1\)</span>, <span class="math" data-tex="\(n=[M:K]\)">\(n=[M:K]\)</span>, <span class="math" data-tex="\(\eta=\det P\)">\(\eta=\det P\)</span>, and
+<span class="math math-display" data-tex="\[
+A=P-\eta-(n-1)1.
+\tag{16C}
+\]">\[
+A=P-\eta-(n-1)1.
+\tag{16C}
+\]</span>
+The permutation matrices give <span class="math" data-tex="\(P\)">\(P\)</span> a real orthogonal realization; <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a real line. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is a finite-image virtual real representation with dimension zero and determinant one. The preceding local-factor lesson actually proves its orthogonal theorem in Theorem 7.4, with the real induction, Clifford cocycle and quadratic Fourier calculations in Lemmas 7.5–7.8. It gives at every completion
+<span class="math math-display" data-tex="\[
+W_{K_v}(A_v)=
+\exp\bigl(2\pi i\operatorname{inv}_v(b_v)\bigr),
+\qquad b=\operatorname{cl}(w_2(A))\in\operatorname{Br}(K).
+\tag{16D}
+\]">\[
+W_{K_v}(A_v)=
+\exp\bigl(2\pi i\operatorname{inv}_v(b_v)\bigr),
+\qquad b=\operatorname{cl}(w_2(A))\in\operatorname{Br}(K).
+\tag{16D}
+\]</span>
+The class is global: pull back the degree-two sign cocycle of the finite real representation along <span class="math" data-tex="\(G_K\)">\(G_K\)</span> and embed its signs in <span class="math" data-tex="\(\bar K^\times\)">\(\bar K^\times\)</span>. Restriction of that cocycle gives each <span class="math" data-tex="\(b_v\)">\(b_v\)</span>. The actual earlier <em>Brauer groups of local and global fields</em>, §4 and Theorem 24.4, proves finite support and <span class="math" data-tex="\(\sum_v\operatorname{inv}_v(b_v)=0\)">\(\sum_v\operatorname{inv}_v(b_v)=0\)</span>. Its written proof first proves injectivity by cyclic norms and Sylow restriction, constructs a cyclic splitting extension for the finite local support, and then obtains the sum law from the principal reciprocity law. Hence (16D) gives <span class="math" data-tex="\(W_{\mathrm{loc}}(A)=1\)">\(W_{\mathrm{loc}}(A)=1\)</span>.</p>
+<p>The trivial character has global root one directly from the Gaussian and finite unramified calculations in Lemma 3.2: its central finite factors for the trace character are one, as are its infinite factors. If <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>, let <span class="math" data-tex="\(M&#x27;/K\)">\(M&#x27;/K\)</span> be its quadratic field. Proposition 3.1, (9A) and the real/complex Gamma induction in (12G) identify its completed function with the quotient of the completed zeta functions of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>. The trivial-character case of Lemma 3.2 gives each zeta function root one. Consequently its quotient has analytic root one, and the proved rank-one factorization gives <span class="math" data-tex="\(W_{\mathrm{loc}}(\eta)=1\)">\(W_{\mathrm{loc}}(\eta)=1\)</span>. This is also true when <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>. Multiplicativity in (16C) now gives <span class="math" data-tex="\(W_{\mathrm{loc}}(P)=1\)">\(W_{\mathrm{loc}}(P)=1\)</span>.</p>
+<p>At <span class="math" data-tex="\(v\)">\(v\)</span>, restricting the global permutation module decomposes it as the sum of <span class="math" data-tex="\(\operatorname{Ind}_{W_{M_u}}^{W_{K_v}}1\)">\(\operatorname{Ind}_{W_{M_u}}^{W_{K_v}}1\)</span> over <span class="math" data-tex="\(u\mid v\)">\(u\mid v\)</span>, by the same coset decomposition as (8B), also at the real and complex places. Therefore the numerator in the product of (16A)'s constants is <span class="math" data-tex="\(W_{\mathrm{loc}}(P)=1\)">\(W_{\mathrm{loc}}(P)=1\)</span>, while its denominator is the trivial-character product over <span class="math" data-tex="\(M\)">\(M\)</span>, also one. This proves (16B) for every finite extension, including non-Galois extensions and ramified completions.</p>
+<p>For a finite-order line <span class="math" data-tex="\(\chi\)">\(\chi\)</span> over <span class="math" data-tex="\(M\)">\(M\)</span>, equations (16A)–(16B) give
+<span class="math" data-tex="\(W_{\mathrm{loc}}(\operatorname{Ind}_M^K\chi)=W_{\mathrm{loc}}(\chi)=W(\chi)\)">\(W_{\mathrm{loc}}(\operatorname{Ind}_M^K\chi)=W_{\mathrm{loc}}(\chi)=W(\chi)\)</span>.
+Apply the integer Brauer identity (12F). Multiplicativity of the actual local epsilon family gives the product of these constants with the signed integers <span class="math" data-tex="\(m_j\)">\(m_j\)</span>; the analytic construction (12H) gives the identical product. Thus <span class="math" data-tex="\(W_{\mathrm{loc}}(\rho)=W(\rho)\)">\(W_{\mathrm{loc}}(\rho)=W(\rho)\)</span> for every finite-image <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Proposition 4.0 proves (16). All the higher-dimensional inputs used here are actual earlier written proofs; their free-source chain and publication checks remain the programme's separate integration obligations. ∎</p>
+<p>The product of constants at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> has absolute value <span class="math" data-tex="\(C(\rho)^{1/2}\)">\(C(\rho)^{1/2}\)</span>, by (15A). For instance its absolute value for <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> is <span class="math" data-tex="\(2\)">\(2\)</span>, whereas its central product has absolute value one. Taking constants at zero does not give the normalized root.</p>
+<p><strong>Proposition 4.1 (independence of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>).</strong> Replacing the global additive character, with its corresponding self-dual local measures, leaves <span class="math" data-tex="\(\epsilon(s,\rho,\psi)\)">\(\epsilon(s,\rho,\psi)\)</span> and <span class="math" data-tex="\(W_{\mathrm{loc}}(\rho)\)">\(W_{\mathrm{loc}}(\rho)\)</span> unchanged. The analytic <span class="math" data-tex="\(W(\rho)\)">\(W(\rho)\)</span> is uniquely fixed by (12).</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\psi_{v,a}(x)=\psi_v(ax)\)">\(\psi_{v,a}(x)=\psi_v(ax)\)</span>. Self-duality changes the measure by
+<span class="math math-display" data-tex="\[
+dx_{\psi_{v,a}}=|a|_v^{1/2}dx_{\psi_v}.
+\]">\[
+dx_{\psi_{v,a}}=|a|_v^{1/2}dx_{\psi_v}.
+\]</span>
+The measure and character laws proved in the local-factor lesson, valid also at infinity by Tate's one-dimensional formulas and induction, give
+<span class="math math-display" data-tex="\[
+\epsilon_v(s,r_v,\psi_{v,a},dx_{\psi_{v,a}})
+=\det r_v(\operatorname{Art}_v(a))
+|a|_v^{d(s-1/2)}
+\epsilon_v(s,r_v,\psi_v,dx_{\psi_v}).
+\tag{17}
+\]">\[
+\epsilon_v(s,r_v,\psi_{v,a},dx_{\psi_{v,a}})
+=\det r_v(\operatorname{Art}_v(a))
+|a|_v^{d(s-1/2)}
+\epsilon_v(s,r_v,\psi_v,dx_{\psi_v}).
+\tag{17}
+\]</span>
+For clarity the product formula itself follows here from norms: the product of the real and squared complex absolute values is <span class="math" data-tex="\(|N_{K/\mathbf Q}(a)|\)">\(|N_{K/\mathbf Q}(a)|\)</span>, while the finite product is <span class="math" data-tex="\(\prod_p p^{-v_p(N_{K/\mathbf Q}a)}=|N_{K/\mathbf Q}(a)|^{-1}\)">\(\prod_p p^{-v_p(N_{K/\mathbf Q}a)}=|N_{K/\mathbf Q}(a)|^{-1}\)</span>. The local norm valuation <span class="math" data-tex="\(f v\)">\(f v\)</span> was proved in the first lesson; factoring the completed trace lattice gives this global factorization.</p>
+<p>The determinant character corresponds, by the actual preceding Weil lesson's §6 and Proposition 6.1, to a character of <span class="math" data-tex="\(C_K=\mathbb A_K^\times/K^\times\)">\(C_K=\mathbb A_K^\times/K^\times\)</span>, with these local restrictions. Evaluating it on the principal idèle <span class="math" data-tex="\(a\)">\(a\)</span> gives one, since that idèle represents the identity of <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Thus both products of multipliers in (17) are one. All but finitely many factors are one, so their multiplication is legitimate. Every other nontrivial global additive character is <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span>, by the actual self-duality theorem identified above. This proves the full assertion. ∎</p>
+<p>At <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> the norm multiplier is already one at each place. The determinant multipliers still require the global principal-idèle cancellation. Thus the product is independent even when individual local roots vary. Theorem 4.2 identifies that invariant product with the analytic root number.</p>
+<h2 id="5-the-hasse-weil-product-and-its-convergence">5. The Hasse–Weil product and its convergence</h2>
+<p>For an elliptic curve <span class="math" data-tex="\(A/\mathbf Q\)">\(A/\mathbf Q\)</span>, write <span class="math" data-tex="\(a_p=p+1-\#\widetilde A(\mathbf F_p)\)">\(a_p=p+1-\#\widetilde A(\mathbf F_p)\)</span> at good primes. At bad primes define <span class="math" data-tex="\(a_p=1\)">\(a_p=1\)</span> for split multiplicative reduction, <span class="math" data-tex="\(a_p=-1\)">\(a_p=-1\)</span> for nonsplit multiplicative reduction, and <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> for additive reduction. The local elliptic lesson proved the factors
+<span class="math math-display" data-tex="\[
+L_p(A,s)=
+\begin{cases}
+(1-a_pp^{-s}+p^{1-2s})^{-1},&amp;p\text{ good},\\
+(1-a_pp^{-s})^{-1},&amp;p\text{ bad}.
+\end{cases}
+\tag{18}
+\]">\[
+L_p(A,s)=
+\begin{cases}
+(1-a_pp^{-s}+p^{1-2s})^{-1},&amp;p\text{ good},\\
+(1-a_pp^{-s})^{-1},&amp;p\text{ bad}.
+\end{cases}
+\tag{18}
+\]</span>
+The second line is one in the additive case. These factors are <span class="math" data-tex="\(L(s,\operatorname{WD}_p(V_\ell A^\vee))\)">\(L(s,\operatorname{WD}_p(V_\ell A^\vee))\)</span>, for any <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>. Set
+<span class="math math-display" data-tex="\[
+L(A,s)=\prod_p L_p(A,s),\qquad
+N(A)=\prod_p p^{a(\operatorname{WD}_p(V_\ell A))}.
+\tag{19}
+\]">\[
+L(A,s)=\prod_p L_p(A,s),\qquad
+N(A)=\prod_p p^{a(\operatorname{WD}_p(V_\ell A))}.
+\tag{19}
+\]</span>
+Local compatibility makes both definitions independent of coefficient choices. The conductor is also unchanged by duality, as proved in the local elliptic lesson.</p>
+<p><strong>Theorem 5.1 (absolute convergence).</strong> The Euler product in (19) converges absolutely, locally uniformly, to a nonzero holomorphic function on <span class="math" data-tex="\(\operatorname{Re}s&gt;3/2\)">\(\operatorname{Re}s&gt;3/2\)</span>.</p>
+<p><em>Proof.</em> For a good prime, factor
+<span class="math math-display" data-tex="\[
+1-a_pX+pX^2=(1-\alpha_pX)(1-\beta_pX),
+\qquad |\alpha_p|=|\beta_p|=\sqrt p
+\]">\[
+1-a_pX+pX^2=(1-\alpha_pX)(1-\beta_pX),
+\qquad |\alpha_p|=|\beta_p|=\sqrt p
+\]</span>
+by Theorem 2.1. If <span class="math" data-tex="\(\sigma=\operatorname{Re}s&gt;3/2\)">\(\sigma=\operatorname{Re}s&gt;3/2\)</span>, then <span class="math" data-tex="\(|\alpha_pp^{-s}|=|\beta_pp^{-s}|=p^{1/2-\sigma}&lt;1\)">\(|\alpha_pp^{-s}|=|\beta_pp^{-s}|=p^{1/2-\sigma}&lt;1\)</span>. The logarithm defined by its power series gives
+<span class="math math-display" data-tex="\[
+\log L_p(A,s)
+=\sum_{m\ge1}\frac{\alpha_p^m+\beta_p^m}{m\,p^{ms}}.
+\tag{20}
+\]">\[
+\log L_p(A,s)
+=\sum_{m\ge1}\frac{\alpha_p^m+\beta_p^m}{m\,p^{ms}}.
+\tag{20}
+\]</span>
+Its absolute value, and indeed the sum of the absolute values of its terms, is at most
+<span class="math math-display" data-tex="\[
+2\sum_{m\ge1}\frac{p^{-m(\sigma-1/2)}}m
+\le \frac{2p^{-(\sigma-1/2)}}{1-p^{-(\sigma-1/2)}}.
+\tag{21}
+\]">\[
+2\sum_{m\ge1}\frac{p^{-m(\sigma-1/2)}}m
+\le \frac{2p^{-(\sigma-1/2)}}{1-p^{-(\sigma-1/2)}}.
+\tag{21}
+\]</span>
+On a compact subset of the half-plane, choose <span class="math" data-tex="\(\sigma_0&gt;3/2\)">\(\sigma_0&gt;3/2\)</span> below all real parts there and put <span class="math" data-tex="\(b=\sigma_0-1/2&gt;1\)">\(b=\sigma_0-1/2&gt;1\)</span>. The bound is at most <span class="math" data-tex="\(2p^{-b}/(1-2^{-b})\)">\(2p^{-b}/(1-2^{-b})\)</span>, uniformly on that compact set. Its sum over primes converges, since <span class="math" data-tex="\(\sum_p p^{-b}\le\sum_{n\ge2}n^{-b}&lt;\infty\)">\(\sum_p p^{-b}\le\sum_{n\ge2}n^{-b}&lt;\infty\)</span>. Thus the double logarithmic series converges absolutely and locally uniformly. Its exponential is holomorphic and nonzero, and is the limit of the products over good primes.</p>
+<p>There are only finitely many bad primes. Their nontrivial factors have <span class="math" data-tex="\(a_p=\pm1\)">\(a_p=\pm1\)</span>, so their denominators cannot vanish when <span class="math" data-tex="\(\operatorname{Re}s&gt;3/2\)">\(\operatorname{Re}s&gt;3/2\)</span>. Multiplication by this finite product proves the assertion. ∎</p>
+<p>This is a statement in a right half-plane. It does not construct the continuation through that half-plane's boundary.</p>
+<p><strong>Example 5.2 (the conductor-11 curve).</strong> Take
+<span class="math math-display" data-tex="\[
+A\colon\quad y^2+y=x^3-x^2.
+\]">\[
+A\colon\quad y^2+y=x^3-x^2.
+\]</span>
+Its discriminant is <span class="math" data-tex="\(-11\)">\(-11\)</span>. The previous lesson proved that at <span class="math" data-tex="\(11\)">\(11\)</span> it has split multiplicative reduction of type <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, conductor exponent one, and <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span>. At every other prime it has good reduction. Hence
+<span class="math math-display" data-tex="\[
+N(A)=11,\qquad
+L(A,s)=\frac{1}{1-11^{-s}}
+\prod_{p\ne11}\frac{1}{1-a_pp^{-s}+p^{1-2s}}.
+\tag{22}
+\]">\[
+N(A)=11,\qquad
+L(A,s)=\frac{1}{1-11^{-s}}
+\prod_{p\ne11}\frac{1}{1-a_pp^{-s}+p^{1-2s}}.
+\tag{22}
+\]</span>
+Here are direct good-prime counts. The middle column lists the numbers of <span class="math" data-tex="\(y\)">\(y\)</span>-solutions as <span class="math" data-tex="\(x\)">\(x\)</span> runs from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(p-1\)">\(p-1\)</span>; the projective point at infinity contributes one more.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th style="text-align:left">Numbers of <span class="math" data-tex="\(y\)">\(y\)</span>-solutions for successive <span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\#A(\mathbf F_p)\)">\(\#A(\mathbf F_p)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_p\)">\(a_p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:left"><span class="math" data-tex="\(2,2\)">\(2,2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:left"><span class="math" data-tex="\(2,2,0\)">\(2,2,0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:left"><span class="math" data-tex="\(2,2,0,0,0\)">\(2,2,0,0,0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:left"><span class="math" data-tex="\(2,2,0,0,2,2,1\)">\(2,2,0,0,2,2,1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example the factors at <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(5\)">\(5\)</span> are
+<span class="math math-display" data-tex="\[
+(1+2\,2^{-s}+2^{1-2s})^{-1},\qquad
+(1-5^{-s}+5^{1-2s})^{-1}.
+\]">\[
+(1+2\,2^{-s}+2^{1-2s})^{-1},\qquad
+(1-5^{-s}+5^{1-2s})^{-1}.
+\]</span>
+One must use the linear bad factor at <span class="math" data-tex="\(11\)">\(11\)</span>, not a degree-two factor obtained from a singular cubic's total point count.</p>
+<p>The elliptic completed function, in its usual normalization, is
+<span class="math math-display" data-tex="\[
+\Lambda(A,s)=N(A)^{s/2}(2\pi)^{-s}\Gamma(s)L(A,s).
+\tag{23}
+\]">\[
+\Lambda(A,s)=N(A)^{s/2}(2\pi)^{-s}\Gamma(s)L(A,s).
+\tag{23}
+\]</span>
+The local archimedean factor is <span class="math" data-tex="\(\Gamma_{\mathbf C}(s)\)">\(\Gamma_{\mathbf C}(s)\)</span>; dividing it by the constant two gives the conventional factor in (23), without changing the functional equation.</p>
+<p><strong>Theorem 5.3 (modularity and analytic continuation; remaining modularity proof).</strong> Every elliptic curve over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> has the same L-function as a weight-two cuspidal newform of level <span class="math" data-tex="\(N(A)\)">\(N(A)\)</span>. The function (23) is entire and
+<span class="math math-display" data-tex="\[
+\Lambda(A,s)=w(A)\Lambda(A,2-s),\qquad w(A)\in\{1,-1\}.
+\tag{24}
+\]">\[
+\Lambda(A,s)=w(A)\Lambda(A,2-s),\qquad w(A)\in\{1,-1\}.
+\tag{24}
+\]</span>
+The modularity assertion is retained for every elliptic curve over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. The freely readable author manuscript of Breuil–Conrad–Diamond–Taylor states it as Theorem A and discusses the conductor-level equivalences in its introduction. Reading that statement does not prove it in this programme. No actual earlier proof of general modularity, of the exact conductor-level comparison, or of the complete local newform/elliptic comparison has yet been bound here. These remain core proof obligations.</p>
+<p>Here is the full analytic deduction once those modularity data are supplied. It replaces the former appeal to an unspecified Mellin-transform theorem.</p>
+<p><strong>Lemma 5.4 (the Mellin deduction).</strong> Suppose <span class="math" data-tex="\(f(z)=\sum_{n\ge1}b_ne^{2\pi inz}\)">\(f(z)=\sum_{n\ge1}b_ne^{2\pi inz}\)</span> is a weight-two cusp form with the same Euler coefficients as <span class="math" data-tex="\(A\)">\(A\)</span>, and is a Fricke eigenfunction
+<span class="math math-display" data-tex="\[
+\frac1{Nz^2}f\left(-\frac1{Nz}\right)=\eta f(z),
+\qquad \eta\in\{1,-1\},\quad N=N(A).
+\tag{24A}
+\]">\[
+\frac1{Nz^2}f\left(-\frac1{Nz}\right)=\eta f(z),
+\qquad \eta\in\{1,-1\},\quad N=N(A).
+\tag{24A}
+\]</span>
+Then (23) is entire and satisfies (24) with <span class="math" data-tex="\(w(A)=-\eta\)">\(w(A)=-\eta\)</span>.</p>
+<p><strong>Proof.</strong> At a good prime the coefficients of the reciprocal quadratic factor satisfy
+<span class="math" data-tex="\(b_{p^r}=\sum_{j=0}^r\alpha_p^j\beta_p^{r-j}\)">\(b_{p^r}=\sum_{j=0}^r\alpha_p^j\beta_p^{r-j}\)</span>, so
+<span class="math" data-tex="\(|b_{p^r}|\le(r+1)p^{r/2}\)">\(|b_{p^r}|\le(r+1)p^{r/2}\)</span>. The multiplicative factors have coefficients bounded by one, and the additive factors have all positive coefficients zero. Multiplying prime-power bounds gives <span class="math" data-tex="\(|b_n|\le d(n)n^{1/2}\)">\(|b_n|\le d(n)n^{1/2}\)</span>. Since
+<span class="math" data-tex="\(\sum_n d(n)n^{-b}=\sum_{u,v}(uv)^{-b}&lt;\infty\)">\(\sum_n d(n)n^{-b}=\sum_{u,v}(uv)^{-b}&lt;\infty\)</span> for <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span>, the Dirichlet series and its termwise Mellin integral converge absolutely on <span class="math" data-tex="\(\Re s&gt;3/2\)">\(\Re s&gt;3/2\)</span>. Integrating <span class="math" data-tex="\(e^{-2\pi ny}y^s\,dy/y\)">\(e^{-2\pi ny}y^s\,dy/y\)</span> gives
+<span class="math math-display" data-tex="\[
+(2\pi)^{-s}\Gamma(s)L(A,s)=\int_0^\infty f(iy)y^s\,\frac{dy}{y}.
+\tag{24B}
+\]">\[
+(2\pi)^{-s}\Gamma(s)L(A,s)=\int_0^\infty f(iy)y^s\,\frac{dy}{y}.
+\tag{24B}
+\]</span>
+Set <span class="math" data-tex="\(F(u)=f(iu/\sqrt N)\)">\(F(u)=f(iu/\sqrt N)\)</span>. Cusp holomorphy gives exponential decay as <span class="math" data-tex="\(u\to\infty\)">\(u\to\infty\)</span>: its convergent Fourier series has zero constant term. Equation (24A) says <span class="math" data-tex="\(F(1/u)=-\eta u^2F(u)\)">\(F(1/u)=-\eta u^2F(u)\)</span>. Therefore <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span> has <span class="math" data-tex="\(O(u^{-2}e^{-c/u})\)">\(O(u^{-2}e^{-c/u})\)</span> decay at zero. On any compact set of complex <span class="math" data-tex="\(s\)">\(s\)</span>, these two bounds dominate the Mellin integrand and every parameter derivative, so its integral is entire. Equivalently, put
+<span class="math math-display" data-tex="\[
+A(s)=\int_1^\infty F(u)u^s\,\frac{du}{u}.
+\]">\[
+A(s)=\int_1^\infty F(u)u^s\,\frac{du}{u}.
+\]</span>
+This is entire, and substitution <span class="math" data-tex="\(u\mapsto1/u\)">\(u\mapsto1/u\)</span> in the small part gives
+<span class="math math-display" data-tex="\[
+\Lambda(A,s)=A(s)-\eta A(2-s).
+\tag{24C}
+\]">\[
+\Lambda(A,s)=A(s)-\eta A(2-s).
+\tag{24C}
+\]</span>
+The same formula at <span class="math" data-tex="\(2-s\)">\(2-s\)</span>, and <span class="math" data-tex="\(\eta^2=1\)">\(\eta^2=1\)</span>, give <span class="math" data-tex="\(\Lambda(A,s)=-\eta\Lambda(A,2-s)\)">\(\Lambda(A,s)=-\eta\Lambda(A,2-s)\)</span>. Initially (24B) identifies this entire function with (23); the identity theorem supplies its continuation. ∎</p>
+<p>This proof establishes the analytic implication completely. It does not construct the cusp form or establish its exact level or Fricke data; those are the identified remaining parts of Theorem 5.3.</p>
+<p>The full root-number comparison in Theorem 5.3 asserts that <span class="math" data-tex="\(w(A)\)">\(w(A)\)</span> is the product of the local constants for the dual elliptic parameters at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. Its proof additionally requires the complete local comparison with the conductor-level newform; an Artin finite-image theorem alone would not prove this infinite-image assertion. The following local normalization calculation is independent of that remaining global comparison. At a finite place the dual elliptic determinant is <span class="math" data-tex="\(\|\cdot\|^{-1}\)">\(\|\cdot\|^{-1}\)</span>. Consequently the scaling law (17), with <span class="math" data-tex="\(d=2\)">\(d=2\)</span> and <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, has multiplier
+<span class="math math-display" data-tex="\[
+|a|_v^{-1}|a|_v^{2(1-1/2)}=1.
+\]">\[
+|a|_v^{-1}|a|_v^{2(1-1/2)}=1.
+\]</span>
+This also holds for the determinant of the elliptic archimedean parameter. Thus in this case each normalized local root is independent of the local additive character.</p>
+<p>For the curve in Example 5.2, use the standard global character of <span class="math" data-tex="\(\mathbf A_{\mathbf Q}/\mathbf Q\)">\(\mathbf A_{\mathbf Q}/\mathbf Q\)</span>, with <span class="math" data-tex="\(x\mapsto e^{2\pi ix}\)">\(x\mapsto e^{2\pi ix}\)</span> at infinity and conductor zero at every finite place. The good-prime constants are one. At <span class="math" data-tex="\(11\)">\(11\)</span>, the dual parameter is <span class="math" data-tex="\(\|\cdot\|^{-1}\mathrm{Sp}(2)\)">\(\|\cdot\|^{-1}\mathrm{Sp}(2)\)</span>, and the block calculation in the monodromy lesson gives
+<span class="math math-display" data-tex="\[
+\epsilon_{11}(s)=-11^{1-s},\qquad w_{11}(A)=-1.
+\]">\[
+\epsilon_{11}(s)=-11^{1-s},\qquad w_{11}(A)=-1.
+\]</span>
+The real parameter is
+<span class="math" data-tex="\(\operatorname{Ind}_{W_{\mathbf C}}^{W_{\mathbf R}}(z/|z|_{\mathrm{usual}})\otimes\|\cdot\|^{-1/2}\)">\(\operatorname{Ind}_{W_{\mathbf C}}^{W_{\mathbf R}}(z/|z|_{\mathrm{usual}})\otimes\|\cdot\|^{-1/2}\)</span>.
+Its epsilon factor is <span class="math" data-tex="\(-1\)">\(-1\)</span>. The actual infinite Tate Gaussian proof gives, for the positive character, <span class="math" data-tex="\(\epsilon_{\mathbf R}(1)=1\)">\(\epsilon_{\mathbf R}(1)=1\)</span>, <span class="math" data-tex="\(\epsilon_{\mathbf R}(\mathrm{sgn})=i\)">\(\epsilon_{\mathbf R}(\mathrm{sgn})=i\)</span>, and the angular complex character's constant <span class="math" data-tex="\(i\)">\(i\)</span>. Dimension-zero induction in the local-factor lesson gives the induction constant <span class="math" data-tex="\(i\)">\(i\)</span>, since <span class="math" data-tex="\(\operatorname{Ind}1=1\oplus\mathrm{sgn}\)">\(\operatorname{Ind}1=1\oplus\mathrm{sgn}\)</span>. Thus the induced angular constant is <span class="math" data-tex="\(i\cdot i=-1\)">\(i\cdot i=-1\)</span>. The Gaussian formula is constant under radial twists, so the factor <span class="math" data-tex="\(\|\cdot\|^{-1/2}\)">\(\|\cdot\|^{-1/2}\)</span> does not change it. The local product is consequently one; under the root-number comparison asserted in Theorem 5.3 this gives
+<span class="math math-display" data-tex="\[
+w(A)=w_\infty(A)w_{11}(A)=(-1)(-1)=1.
+\tag{25}
+\]">\[
+w(A)=w_\infty(A)w_{11}(A)=(-1)(-1)=1.
+\tag{25}
+\]</span>
+This calculation fixes the sign in (24); it does not determine the order of vanishing at the central point.</p>
+<h2 id="6-artin-hecke-and-geometric-functions-in-one-framework">6. Artin, Hecke and geometric functions in one framework</h2>
+<p>Three sources of Euler products now fit together. An Artin representation has finite image, weight zero, and arithmetic Euler factors (8). An algebraic Hecke character has compatible one-dimensional <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic realizations. We prove that construction rather than treating the words “through class field theory” as a proof.</p>
+<p><strong>Proposition 6.1 (algebraic Hecke realizations).</strong> Let <span class="math" data-tex="\(\theta:C_K\to\mathbb C^\times\)">\(\theta:C_K\to\mathbb C^\times\)</span> be a continuous Hecke character whose infinite component is
+<span class="math math-display" data-tex="\[
+\theta_\infty(x_\infty)=\epsilon_\infty(x_\infty)
+ \prod_{\tau:K\hookrightarrow\mathbb C}\tau(x_\infty)^{-n_\tau},
+\qquad n_\tau\in\mathbb Z,
+\tag{26}
+\]">\[
+\theta_\infty(x_\infty)=\epsilon_\infty(x_\infty)
+ \prod_{\tau:K\hookrightarrow\mathbb C}\tau(x_\infty)^{-n_\tau},
+\qquad n_\tau\in\mathbb Z,
+\tag{26}
+\]</span>
+where <span class="math" data-tex="\(\epsilon_\infty\)">\(\epsilon_\infty\)</span> is a product of real sign characters. There is a number field <span class="math" data-tex="\(E\)">\(E\)</span> containing all its finite-component values and a continuous character <span class="math" data-tex="\(\rho_\lambda:G_K\to E_\lambda^\times\)">\(\rho_\lambda:G_K\to E_\lambda^\times\)</span> for every finite place <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>. At every finite <span class="math" data-tex="\(v\nmid\ell\)">\(v\nmid\ell\)</span>, the finite-inertia local characters and Frobenius values are independent of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, after the specified embeddings. In particular they form a strictly compatible system away from the residue characteristic; at a place where <span class="math" data-tex="\(\theta_v\)">\(\theta_v\)</span> is unramified their arithmetic polynomial is <span class="math" data-tex="\(1-\theta_v(\varpi_v)X\)">\(1-\theta_v(\varpi_v)X\)</span>.</p>
+<p><strong>Proof.</strong> The finite character <span class="math" data-tex="\(\theta_f\)">\(\theta_f\)</span> has finite image on <span class="math" data-tex="\(U_f=\prod_{v&lt;\infty}\mathcal O_v^\times\)">\(U_f=\prod_{v&lt;\infty}\mathcal O_v^\times\)</span>. To prove this directly, choose an arc about one in the unit circle containing no nontrivial subgroup: every nontrivial unit complex number has a power outside an arc of length less than a semicircle. The absolute value of the image of a compact group is one. Continuity and the basis of open subgroups in <span class="math" data-tex="\(U_f\)">\(U_f\)</span> now give an open subgroup mapped into that arc, hence into one. Thus the character factors through a finite quotient on <span class="math" data-tex="\(U_f\)">\(U_f\)</span>; it is unramified outside finitely many places.</p>
+<p>The actual earlier <em>Idèles and the idèle class group</em>, Theorem 3.3 and Corollary 3.4, proves finiteness of the ideal class group using norm-one compactness. Choose finitely many finite idèles <span class="math" data-tex="\(t_j\)">\(t_j\)</span> representing its classes. Every finite idèle has the form <span class="math" data-tex="\(a t_j u\)">\(a t_j u\)</span>, with <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> and <span class="math" data-tex="\(u\in U_f\)">\(u\in U_f\)</span>, by removing its principal ideal. Triviality on principal idèles gives
+<span class="math" data-tex="\(\theta_f(a)=\epsilon_\infty(a)^{-1}\prod_\tau\tau(a)^{n_\tau}\)">\(\theta_f(a)=\epsilon_\infty(a)^{-1}\prod_\tau\tau(a)^{n_\tau}\)</span>.
+These values lie in a fixed normal closure of <span class="math" data-tex="\(K\)">\(K\)</span>. If the ideal class of <span class="math" data-tex="\(t_j\)">\(t_j\)</span> has order <span class="math" data-tex="\(h_j\)">\(h_j\)</span>, then <span class="math" data-tex="\(t_j^{h_j}=a_j u_j\)">\(t_j^{h_j}=a_j u_j\)</span>, so <span class="math" data-tex="\(\theta_f(t_j)\)">\(\theta_f(t_j)\)</span> is an <span class="math" data-tex="\(h_j\)">\(h_j\)</span>-th root of an algebraic number. Adjoining the finitely many such values and the finite unit-image roots of unity gives a number field <span class="math" data-tex="\(E\)">\(E\)</span> containing every finite value. Enlarge it to contain the normal closure of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(i_\lambda:E\hookrightarrow E_\lambda\subset\overline{\mathbb Q}_\ell\)">\(i_\lambda:E\hookrightarrow E_\lambda\subset\overline{\mathbb Q}_\ell\)</span>. For each <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, let <span class="math" data-tex="\(u_\tau\mid\ell\)">\(u_\tau\mid\ell\)</span> be the place of <span class="math" data-tex="\(K\)">\(K\)</span> defined by <span class="math" data-tex="\(i_\lambda\tau\)">\(i_\lambda\tau\)</span>; that embedding extends continuously from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(K_{u_\tau}\)">\(K_{u_\tau}\)</span>. Define on idèles
+<span class="math math-display" data-tex="\[
+R_\lambda(x)=i_\lambda(\theta_f(x_f))\epsilon_\infty(x_\infty)
+ \prod_\tau (i_\lambda\tau)(x_{u_\tau})^{-n_\tau}.
+\tag{27}
+\]">\[
+R_\lambda(x)=i_\lambda(\theta_f(x_f))\epsilon_\infty(x_\infty)
+ \prod_\tau (i_\lambda\tau)(x_{u_\tau})^{-n_\tau}.
+\tag{27}
+\]</span>
+All factors are continuous: the finite character is locally constant on finite units, its valuation coordinates are discrete in an idèle chart, and the additional factors are continuous powers at the finitely many places above <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Its values lie in <span class="math" data-tex="\(E_\lambda\)">\(E_\lambda\)</span>. Formula (26) makes (27) one on <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>. It is also one on the connected archimedean component, because the only remaining infinite factors are signs.</p>
+<p>The actual earlier <em>The global reciprocity isomorphism</em>, Proposition 17.3 and its preceding compact-group lemma, proves that the arithmetic reciprocity map identifies <span class="math" data-tex="\(G_K^{\mathrm{ab}}\)">\(G_K^{\mathrm{ab}}\)</span> with <span class="math" data-tex="\(C_K/D_K\)">\(C_K/D_K\)</span>, where <span class="math" data-tex="\(D_K\)">\(D_K\)</span> is the closure of that connected archimedean image. Its proof passes through all finite reciprocity quotients and the compact norm-one group. Continuity makes (27) kill that closure, so it descends to the required <span class="math" data-tex="\(\rho_\lambda\)">\(\rho_\lambda\)</span>. Here arithmetic reciprocity is the inverse of the geometric convention in that provider. This change of convention does not change its kernel or topology.</p>
+<p>For <span class="math" data-tex="\(v\nmid\ell\)">\(v\nmid\ell\)</span>, insert a local idèle at <span class="math" data-tex="\(v\)">\(v\)</span> in (27). Every correction factor above <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is one. The resulting local character is exactly <span class="math" data-tex="\(i_\lambda\theta_v\)">\(i_\lambda\theta_v\)</span> under arithmetic reciprocity, including its finite unit character and its value on a uniformizer. Its geometric Weil parameter therefore sends geometric Frobenius to <span class="math" data-tex="\(\theta_v(\varpi_v)^{-1}\)">\(\theta_v(\varpi_v)^{-1}\)</span>, with the common finite inertia character obtained by inversion of reciprocity. It has <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, and this common one-dimensional pair proves strict compatibility. Arithmetic Frobenius has the asserted inverse-root value. This proves every claim. ∎</p>
+<p>The Euler product of this system is the primitive Hecke product after the same Frobenius translation. General continuous complex Hecke characters need not have the integer exponents (26), and the construction above does not assert that they all have such realizations.</p>
+<p>For a smooth projective variety <span class="math" data-tex="\(X/K\)">\(X/K\)</span>, the general cohomological assertions are that its étale cohomology supplies geometric Galois representations, its good-prime characteristic polynomials are independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and its geometric-Frobenius eigenvalues on <span class="math" data-tex="\(H^j_{\mathrm{et}}\)">\(H^j_{\mathrm{et}}\)</span> have absolute value <span class="math" data-tex="\(q_v^{j/2}\)">\(q_v^{j/2}\)</span>. These assertions retain their full scope here, but their construction, smooth proper comparison, trace formula and general purity proofs have not been supplied in an actual earlier lesson inspected for this edition. They remain core proof obligations. The elliptic <span class="math" data-tex="\(H^1_{\mathrm{et}}=V_\ell A^\vee\)">\(H^1_{\mathrm{et}}=V_\ell A^\vee\)</span> comparison is available from the actual torsion and Kummer proof in the Tate-module lesson. With the arithmetic convention (2), dualizing a geometric cohomology representation makes arithmetic Frobenius have the same eigenvalues as geometric Frobenius on the original space: if a matrix is <span class="math" data-tex="\(B\)">\(B\)</span>, that dual arithmetic matrix is <span class="math" data-tex="\((B^{-1})^{-t}=B^t\)">\((B^{-1})^{-t}=B^t\)</span>.</p>
+<p>An algebraic correspondence which has an idempotent Galois-equivariant action <span class="math" data-tex="\(e\)">\(e\)</span> separates a representation into <span class="math" data-tex="\(\operatorname{im}e\oplus\ker e\)">\(\operatorname{im}e\oplus\ker e\)</span>: write <span class="math" data-tex="\(v=ev+(v-ev)\)">\(v=ev+(v-ev)\)</span>, and the intersection is zero since <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>. Every Frobenius matrix is block diagonal in that decomposition, so its characteristic polynomial and Euler factor split as the product of those of the pieces. Purity passes to a piece because its eigenvalues form a submultiset. Establishing the cohomological action, finding the required correspondences, and comparing their factors for all coefficient primes require further geometric proofs; the linear-algebra argument alone does not construct those correspondences. In dimension zero the permutation calculation in Proposition 3.1 gives the Artin and Dedekind factors. In dimension one the proved elliptic Tate modules supply a concrete geometric example.</p>
+<p>A pure arithmetic weight <span class="math" data-tex="\(w\)">\(w\)</span> suggests a functional equation with center <span class="math" data-tex="\((w+1)/2\)">\((w+1)/2\)</span>: weight zero gives <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and the covariant elliptic system of weight one gives <span class="math" data-tex="\(1\)">\(1\)</span>. Purity and weak compatibility alone do not prove such an equation, nor do they supply all bad-prime monodromy data. General motivic continuation and functional equations over number fields require additional theorems or remain conjectural. The unconditional elliptic statement (24) is specifically over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<p>There is a useful distinction in Deligne's §9: its global field is a function field over a finite field. Theorem 9.8 compares ordinary local semisimplifications and explicitly warns on p.578 that it does not retain <span class="math" data-tex="\(N\)">\(N\)</span>. It must not be read as a theorem that good-prime compatibility automatically supplies full bad-prime Weil–Deligne compatibility for an arbitrary number-field system.</p>
+<h2 id="7-proof-scopes-and-remaining-obligations">7. Proof scopes and remaining obligations</h2>
+<p>The local elliptic classification, the Tate-curve and dual factors, and the conductor calculations are imported from <em>Elliptic curves over local fields and their Weil–Deligne representations</em>, Theorems 3.1, 4.1 and 5.1. The good-reduction torsion comparison, determinant–degree identity and Hasse bound are imported from <em>The ℓ-adic Tate module of an elliptic curve</em>, Theorems 3.1, 2.2 and 4.1 respectively. Their combination proving common good-prime polynomials is Theorem 2.1 here.</p>
+<p>Lemma 2.2 proves the common characteristic polynomial for every abelian-variety endomorphism; its exact geometric prerequisites are the written cube and Euler-characteristic proofs in <em>Abelian varieties</em>, Proposition 4.4, Lemma 5.2, Proposition 5.5 and Corollary 5.6, and the finite kernels and Tate modules in §§6–7. Lemma 2.3 proves strict local compatibility for potentially good abelian varieties of every dimension, using the actual torsion-specialization proof in <em>Néron models</em>, Lemma 7.1. For elliptic curves, potentially multiplicative descent and the proved Tate curve complete the local comparison. The full arbitrary-abelian-variety theorem, Theorem 2.4, still needs the semistable monodromy filtration, its toric pairing and equivariant descent comparison. Semistable reduction alone does not prove that representation theorem. No assertion at <span class="math" data-tex="\(\ell=p(v)\)">\(\ell=p(v)\)</span> is part of strict compatibility here.</p>
+<p>Proposition 3.1 proves all ramified Euler induction and convergence. The conductor lesson's Theorems 2.6 and 4.1 prove integrality and induction, yielding (9A). Lemma 3.2 gives the rank-one analytic proof with the actual earlier adelic Poisson and Tate proofs: NT-ADL-03, Theorem 3.3; NT-ADL-05, Theorems 5.4–5.5; NT-ADL-07, Theorems 7.2–7.3; NT-ADL-08, Theorem 8.1 and Propositions 8.2–8.4; NT-ADL-09, Theorem 9.2; and NT-ADL-10, Theorem 10.1. Theorem 3.3 then proves the full Artin meromorphic functional equation through the actually written integer induction theorem RT-FIN-11, Theorem 5.1. General Artin holomorphy remains a conjecture; meromorphic quotients in (12H) do not prove it. Proposition 6.1 proves algebraic Hecke realizations using NT-CFT-17, Proposition 17.3.</p>
+<p>The earlier local-factor lesson's Theorem 3.0 and §§3A–3D supply the actual local epsilon existence proof and all Brauer relations. Its Lemma 2.2 proves the trace conductor, §§4–5 prove scaling and normalization, and Theorem 7.4 with Lemmas 7.5–7.8 proves the local orthogonal formula. Theorem 4.2 here proves the global product of induction constants, hence the full Artin root-number identity, using the actual global invariant-sum proof NT-CFT-24, §4 and Theorem 24.4. Proposition 4.1 proves additive-character independence with the actual adelic annihilator theorem NT-ADL-05, Theorem 5.4, and the preceding Weil lesson's Proposition 6.1.</p>
+<p>The full modularity, exact conductor level and local newform/elliptic comparison of Theorem 5.3 remain without an actual programme proof. Lemma 5.4 proves the complete Mellin analytic deduction once those data are available, including entireness and the exact Fricke sign. The elliptic global root-number comparison also needs that local automorphic comparison. The general cohomological construction, comparison and purity assertions in §6 remain without the corresponding written proofs. These are genuine retained mathematical obligations, so this edition is not certified as a fully proved lesson.</p>
+<p>The earlier programme locators above identify inspected written arguments, not a certificate of their public availability or transitive free-source origin. Those two checks are separate programme integration work. A private fetched file, a theorem title, a free statement, or a promised later chapter cannot discharge either a proof or a publication obligation.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Check strict finite-place compatibility for the cyclotomic system and the elliptic Tate-module system. Give exceptional sets and arithmetic weights.</p>
+<p><strong>Solution.</strong> Fix a finite place <span class="math" data-tex="\(v\)">\(v\)</span> and a coefficient prime <span class="math" data-tex="\(\ell\ne p(v)\)">\(\ell\ne p(v)\)</span>. Prime-to-<span class="math" data-tex="\(p(v)\)">\(p(v)\)</span> roots of unity lie in the maximal unramified local extension. Arithmetic Frobenius raises them to the <span class="math" data-tex="\(q_v\)">\(q_v\)</span>-th power, so the cyclotomic character is unramified and has polynomial <span class="math" data-tex="\(1-q_vX\)">\(1-q_vX\)</span>. Its geometric local pair is <span class="math" data-tex="\((\|\cdot\|,0)\)">\((\|\cdot\|,0)\)</span>, independently of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. This applies to every finite <span class="math" data-tex="\(v\)">\(v\)</span>: take <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>. The sole inverse root is <span class="math" data-tex="\(q_v\)">\(q_v\)</span>, of absolute value <span class="math" data-tex="\(q_v^{2/2}\)">\(q_v^{2/2}\)</span>, giving weight two.</p>
+<p>For <span class="math" data-tex="\(V_\ell A\)">\(V_\ell A\)</span>, take <span class="math" data-tex="\(S=S_A\)">\(S=S_A\)</span>. At every <span class="math" data-tex="\(v\notin S_A\)">\(v\notin S_A\)</span>, Theorem 2.1 supplies the same integral polynomial <span class="math" data-tex="\(1-a_vX+q_vX^2\)">\(1-a_vX+q_vX^2\)</span>, and its inverse roots have absolute value <span class="math" data-tex="\(\sqrt{q_v}\)">\(\sqrt{q_v}\)</span>. Hence weak compatibility and weight one hold. At a potentially good place, Lemma 2.3 proves a common finite-inertia parameter with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, including all its Frobenius and inertia character values. At a potentially multiplicative place the Tate-curve calculation and quadratic descent in the preceding local elliptic lesson give explicitly <span class="math" data-tex="\(\eta_v\mathrm{Sp}(2)\)">\(\eta_v\mathrm{Sp}(2)\)</span>, with the fixed splitting character <span class="math" data-tex="\(\eta_v\)">\(\eta_v\)</span>. The integral-<span class="math" data-tex="\(j\)">\(j\)</span> potential-good proof and the nonintegral-<span class="math" data-tex="\(j\)">\(j\)</span> Tate descent in that lesson show these alternatives exhaust the elliptic case. Thus every finite <span class="math" data-tex="\(v\)">\(v\)</span>, including <span class="math" data-tex="\(v\in S_A\)">\(v\in S_A\)</span>, has the common class <span class="math" data-tex="\(D_v\)">\(D_v\)</span> required by (4); no appeal to the still incomplete general semistable-abelian Theorem 2.4 is needed in this elliptic solution. A different coefficient prime creates no new permanent exceptional place, because the comparison excludes that prime's residue characteristic locally. These statements include no assertion at <span class="math" data-tex="\(\ell=p(v)\)">\(\ell=p(v)\)</span>.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Give a Dirichlet-series proof of absolute convergence on <span class="math" data-tex="\(\operatorname{Re}s&gt;3/2\)">\(\operatorname{Re}s&gt;3/2\)</span>. Define its coefficients from the Euler factors and bound them.</p>
+<p><strong>Solution.</strong> At a good prime let <span class="math" data-tex="\(b_{p,0}=1\)">\(b_{p,0}=1\)</span> and write
+<span class="math math-display" data-tex="\[
+\frac1{1-a_pX+pX^2}=\sum_{r\ge0}b_{p,r}X^r.
+\]">\[
+\frac1{1-a_pX+pX^2}=\sum_{r\ge0}b_{p,r}X^r.
+\]</span>
+Multiplication gives <span class="math" data-tex="\(b_{p,1}=a_p\)">\(b_{p,1}=a_p\)</span> and <span class="math" data-tex="\(b_{p,r}=a_pb_{p,r-1}-pb_{p,r-2}\)">\(b_{p,r}=a_pb_{p,r-1}-pb_{p,r-2}\)</span> for <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span>. Using the two roots, including the repeated-root case by the same product of geometric series, gives
+<span class="math math-display" data-tex="\[
+b_{p,r}=\sum_{j=0}^r\alpha_p^j\beta_p^{r-j},\qquad
+|b_{p,r}|\le(r+1)p^{r/2}.
+\]">\[
+b_{p,r}=\sum_{j=0}^r\alpha_p^j\beta_p^{r-j},\qquad
+|b_{p,r}|\le(r+1)p^{r/2}.
+\]</span>
+At a multiplicative prime the coefficients are <span class="math" data-tex="\(b_{p,r}=a_p^r\)">\(b_{p,r}=a_p^r\)</span>, bounded by one. At an additive prime, <span class="math" data-tex="\(b_{p,0}=1\)">\(b_{p,0}=1\)</span> and <span class="math" data-tex="\(b_{p,r}=0\)">\(b_{p,r}=0\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Define <span class="math" data-tex="\(b_n=\prod_{p^r\parallel n}b_{p,r}\)">\(b_n=\prod_{p^r\parallel n}b_{p,r}\)</span>. The uniform bound is
+<span class="math math-display" data-tex="\[
+|b_n|\le d(n)n^{1/2},
+\]">\[
+|b_n|\le d(n)n^{1/2},
+\]</span>
+where <span class="math" data-tex="\(d(n)=\prod_{p^r\parallel n}(r+1)\)">\(d(n)=\prod_{p^r\parallel n}(r+1)\)</span> is the number of positive divisors. For <span class="math" data-tex="\(\sigma&gt;3/2\)">\(\sigma&gt;3/2\)</span>, put <span class="math" data-tex="\(b=\sigma-1/2&gt;1\)">\(b=\sigma-1/2&gt;1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}|b_n|n^{-\sigma}
+\le\sum_{n\ge1}d(n)n^{-b}
+=\sum_{u,v\ge1}(uv)^{-b}
+=\zeta(b)^2&lt;\infty.
+\]">\[
+\sum_{n\ge1}|b_n|n^{-\sigma}
+\le\sum_{n\ge1}d(n)n^{-b}
+=\sum_{u,v\ge1}(uv)^{-b}
+=\zeta(b)^2&lt;\infty.
+\]</span>
+Absolute convergence permits multiplication and regrouping of the prime-power series, proving equality with the Euler product. The same bound with a fixed <span class="math" data-tex="\(\sigma_0&gt;3/2\)">\(\sigma_0&gt;3/2\)</span> gives local uniform convergence. Nonvanishing follows from the convergent logarithmic series (20), whose positive sign is the expansion of <span class="math" data-tex="\(-\log(1-z)\)">\(-\log(1-z)\)</span>.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Let <span class="math" data-tex="\(\rho=\operatorname{Ind}_{G_{\mathbf Q(i)}}^{G_{\mathbf Q}}1\)">\(\rho=\operatorname{Ind}_{G_{\mathbf Q(i)}}^{G_{\mathbf Q}}1\)</span>. Write its Artin L-function and compute its Euler factor at <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>Solution.</strong> The representation is the permutation action on the two cosets of the index-two subgroup. The sum of the two basis vectors spans a trivial line, and their difference spans the quadratic line <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span>. Therefore <span class="math" data-tex="\(\rho=1\oplus\chi_{-4}\)">\(\rho=1\oplus\chi_{-4}\)</span>, and multiplicativity gives <span class="math" data-tex="\(L(s,\rho)=\zeta(s)L(s,\chi_{-4})=\zeta_{\mathbf Q(i)}(s)\)">\(L(s,\rho)=\zeta(s)L(s,\chi_{-4})=\zeta_{\mathbf Q(i)}(s)\)</span>.</p>
+<p>The prime <span class="math" data-tex="\(2\)">\(2\)</span> ramifies: <span class="math" data-tex="\(2=-i(1+i)^2\)">\(2=-i(1+i)^2\)</span>, up to the displayed unit, and the residue field at <span class="math" data-tex="\(1+i\)">\(1+i\)</span> has two elements. Thus inertia is the whole group of order two. It fixes the sum line and acts by minus one on the difference line. The invariant space is one-dimensional, and arithmetic Frobenius on it is the identity. Formula (8) gives <span class="math" data-tex="\(L_2(s,\rho)=(1-2^{-s})^{-1}\)">\(L_2(s,\rho)=(1-2^{-s})^{-1}\)</span>. Equivalently the trivial character supplies this factor and the ramified quadratic character supplies one. It would be wrong to omit the trivial line merely because the extension ramifies.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Prove that the global Artin root number is independent of the global additive character, with the self-dual measure and the geometric/arithmetic translation explicit.</p>
+<p><strong>Solution.</strong> The local parameter to use for the arithmetic Artin L-function is <span class="math" data-tex="\(r_v=\rho_v^\vee\)">\(r_v=\rho_v^\vee\)</span>, not <span class="math" data-tex="\(\rho_v\)">\(\rho_v\)</span>. For <span class="math" data-tex="\(\psi_a(x)=\psi(ax)\)">\(\psi_a(x)=\psi(ax)\)</span>, the self-dual measure is <span class="math" data-tex="\(|a|_v^{1/2}dx_{\psi_v}\)">\(|a|_v^{1/2}dx_{\psi_v}\)</span>. The character law at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> contributes <span class="math" data-tex="\(\det r_v(\operatorname{Art}_v(a))|a|_v^{-d}\)">\(\det r_v(\operatorname{Art}_v(a))|a|_v^{-d}\)</span>; twisting by <span class="math" data-tex="\(\|\cdot\|^s\)">\(\|\cdot\|^s\)</span> contributes an additional <span class="math" data-tex="\(|a|_v^{sd}\)">\(|a|_v^{sd}\)</span> to this determinant, and rescaling the measure contributes <span class="math" data-tex="\(|a|_v^{d/2}\)">\(|a|_v^{d/2}\)</span>. Their combined multiplier is
+<span class="math math-display" data-tex="\[
+\det r_v(\operatorname{Art}_v(a))|a|_v^{d(s-1/2)}.
+\]">\[
+\det r_v(\operatorname{Art}_v(a))|a|_v^{d(s-1/2)}.
+\]</span>
+At the root-number point <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, the absolute-value multiplier is one at every place. The remaining product is <span class="math" data-tex="\(\det\rho^\vee\)">\(\det\rho^\vee\)</span> evaluated on the global Artin image of the principal idele <span class="math" data-tex="\(a\)">\(a\)</span>, so it is one by reciprocity. More generally the product formula cancels the absolute values for every <span class="math" data-tex="\(s\)">\(s\)</span>. The finite exceptional set may grow under scaling, but all factors outside its union remain one, so the multiplication is legitimate. Additive adelic self-duality says that every other nontrivial global character has this form with <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>. Hence the normalized product (15), identified with the analytic root by Theorem 4.2, is independent of the character. Dropping the measure change would lose the <span class="math" data-tex="\(|a|_v^{d/2}\)">\(|a|_v^{d/2}\)</span> contribution; taking constants at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> would also fail to give the normalized local roots.</p>
+<h2 id="freely-readable-primary-materials">Freely readable primary materials</h2>
+<p>The following verified free texts were read for the specified mathematical scopes. They provide materials and conventions; they do not replace the proofs or settle the remaining obligations in §7.</p>
+<ul>
+<li>Richard Taylor, <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0/"><em>Galois representations</em> (2004), published primary article</a>, §§1–2, pp.80–84, for compatible-system definitions and the arithmetic elliptic convention.</li>
+<li>Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em> (1973), free IAS text</a>, §§3.9–3.12 for ramified induction and Artin continuation, §§5.8–5.11 for local and global normalization, §§8.5–8.12 for algebraic local classes, and the warning after Theorem 9.8 on p.578. Example 8.10 states general abelian compatibility without supplying its geometric proof there.</li>
+<li>Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate's thesis</em>, lecture notes for MIT 18.786 (2015)</a>, §5.10, Theorem 5.16 and its proof through adelic Poisson summation (Theorem 5.7 and Lemma 5.18), for the rank-one global analytic mechanism of John Tate's 1950 thesis.</li>
+<li>James Milne, <a href="https://jmilne.org/math/CourseNotes/AV.pdf"><em>Abelian Varieties</em>, free author notes</a>, §10, especially Propositions 10.12, 10.19 and 10.20, pp.46–53, for degree-polynomial and Tate characteristic-polynomial comparisons. Lemma 2.2 supplies the actual argument with its written geometric prerequisites.</li>
+<li>Jean-Pierre Serre and John Tate, <a href="https://wstein.org/papers/bib/Serre-Tate-Good_Reduction_of_Abelian_Varieties.pdf"><em>Good reduction of abelian varieties</em> (1968), primary article</a>, §2, Theorem 2, pp.496–497, for the full potentially good scope. The independent proof in Lemmas 2.2–2.3 closes the endomorphism-character input.</li>
+<li>Christophe Breuil, Brian Conrad, Fred Diamond and Richard Taylor, <a href="https://virtualmath1.stanford.edu/~conrad/papers/tswfinal.pdf"><em>On the modularity of elliptic curves over Q: Wild 3-adic exercises</em> (2001), author manuscript</a>, Theorem A and Introduction, pp.1–3. This reading verifies the full theorem's scope; its statement is not counted as a programme proof of Theorem 5.3.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="elliptic-curves-over-local-fields.html">← Elliptic curves over local fields and their Weil–Deligne representations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="modular-curves-and-the-eichler-shimura-congruence.html">Modular curves over Q and the Eichler–Shimura congruence →</a></span></nav>
+<p class="small source-link"><a href="src/compatible-systems-and-global-l-functions.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

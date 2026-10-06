@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Partial smoothing and polynomial coefficients</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="partial-smoothing-and-polynomial-coefficients">Partial smoothing and polynomial coefficients</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Convolution can smooth selected variables while leaving the others untouched. An equation may then force smoothness in the remaining variables even though it is not hypoelliptic on the whole space. The deciding condition concerns complex zeros whose real components in the smoothed variables stay bounded.</p>
+<p>Read <a href="AN02-L021.html">Hypoellipticity and complex zeros</a> and <a href="AN02-L022.html">Weighted interior estimates and operator strength</a>. We use the Fourier conventions and multiplier estimates from <a href="AN02-L002.html">Weighted Fourier spaces</a>. Grubb [Grubb] supplies the distribution and Fourier background; Coste [Coste] gives context for the semialgebraic growth mechanism proved in <a href="AN02-L018.html">Symbols at infinity</a>.</p>
+<p>Keep <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. Polynomial coefficients may be complex. Split coordinates and frequencies as
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=(x&#x27;,x&#x27;&#x27;),\qquad \xi=(\xi&#x27;,\xi&#x27;&#x27;),\\
+x&#x27;\in\mathbb R^j,\qquad x&#x27;&#x27;\in\mathbb R^{n-j},\\
+0\leq j&lt;n.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+x=(x&#x27;,x&#x27;&#x27;),\qquad \xi=(\xi&#x27;,\xi&#x27;&#x27;),\\
+x&#x27;\in\mathbb R^j,\qquad x&#x27;&#x27;\in\mathbb R^{n-j},\\
+0\leq j&lt;n.
+\end{gathered}
+\tag{1}
+\]</span>
+The double-prime block has positive dimension. When <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, the assertions reduce to ordinary hypoellipticity; a test function on the zero-dimensional prime block is a scalar.</p>
+<h2 id="where-a-partial-convolution-is-defined">Where a partial convolution is defined</h2>
+<p>For <span class="math" data-tex="\(\psi\in C_c^\infty(\mathbb R^j)\)">\(\psi\in C_c^\infty(\mathbb R^j)\)</span>, set
+<span class="math math-display" data-tex="\[
+T_\psi=\psi\otimes\delta_0,
+\qquad
+u*&#x27;\psi=u*T_\psi.
+\tag{2}
+\]">\[
+T_\psi=\psi\otimes\delta_0,
+\qquad
+u*&#x27;\psi=u*T_\psi.
+\tag{2}
+\]</span>
+For an ordinary function this would be
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(u*&#x27;\psi)(x&#x27;,x&#x27;&#x27;)\\
+&amp;\quad=\int_{\mathbb R^j}u(x&#x27;-y&#x27;,x&#x27;&#x27;)\psi(y&#x27;)\,dy&#x27;.
+\end{aligned}
+\tag{3}
+\]">\[
+\begin{aligned}
+&amp;(u*&#x27;\psi)(x&#x27;,x&#x27;&#x27;)\\
+&amp;\quad=\int_{\mathbb R^j}u(x&#x27;-y&#x27;,x&#x27;&#x27;)\psi(y&#x27;)\,dy&#x27;.
+\end{aligned}
+\tag{3}
+\]</span>
+We use the distributional compact-convolution definition. If <span class="math" data-tex="\(u\)">\(u\)</span> is given only on an open <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, the appropriate domain is
+<span class="math math-display" data-tex="\[
+X_\psi=\{x:x-(\operatorname{supp}\psi\times\{0\})\subset X\}.
+\tag{4}
+\]">\[
+X_\psi=\{x:x-(\operatorname{supp}\psi\times\{0\})\subset X\}.
+\tag{4}
+\]</span>
+This domain need not be contained in <span class="math" data-tex="\(X\)">\(X\)</span>. It records the source points used in (3), with the minus sign fixed by convolution.</p>
+<p>The set <span class="math" data-tex="\(X_\psi\)">\(X_\psi\)</span> is open. At each of its points the translated compact support is contained in the open set <span class="math" data-tex="\(X\)">\(X\)</span>; a small change in that point preserves the containment. If <span class="math" data-tex="\(\psi=0\)">\(\psi=0\)</span>, the support is empty, <span class="math" data-tex="\(X_\psi=\mathbb R^n\)">\(X_\psi=\mathbb R^n\)</span>, and the convolution is the zero distribution.</p>
+<p><strong>Lemma 1.1.</strong> Suppose <span class="math" data-tex="\(u\in B_{p,k_1}^{\mathrm{loc}}(X)\)">\(u\in B_{p,k_1}^{\mathrm{loc}}(X)\)</span>, where <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span> and the weights are positive and moderate. If
+<span class="math math-display" data-tex="\[
+k_2(\xi)\leq C\langle\xi&#x27;\rangle^N k_1(\xi)
+\tag{5}
+\]">\[
+k_2(\xi)\leq C\langle\xi&#x27;\rangle^N k_1(\xi)
+\tag{5}
+\]</span>
+for some finite <span class="math" data-tex="\(N\)">\(N\)</span>, then <span class="math" data-tex="\(u*&#x27;\psi\in B_{p,k_2}^{\mathrm{loc}}(X_\psi)\)">\(u*&#x27;\psi\in B_{p,k_2}^{\mathrm{loc}}(X_\psi)\)</span>. The partial convolution is continuous with these local topologies. It is also continuous on distributions and commutes with constant-coefficient differentiation on <span class="math" data-tex="\(X_\psi\)">\(X_\psi\)</span>.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\phi\in C_c^\infty(X_\psi)\)">\(\phi\in C_c^\infty(X_\psi)\)</span>. The compact set
+<span class="math math-display" data-tex="\[
+\operatorname{supp}\phi-
+(\operatorname{supp}\psi\times\{0\})
+\]">\[
+\operatorname{supp}\phi-
+(\operatorname{supp}\psi\times\{0\})
+\]</span>
+lies in <span class="math" data-tex="\(X\)">\(X\)</span>. Choose <span class="math" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one on a neighborhood of this set. Near <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>, the partial convolution is <span class="math" data-tex="\((\chi u)*T_\psi\)">\((\chi u)*T_\psi\)</span>, defined globally. Its Fourier transform is
+<span class="math math-display" data-tex="\[
+\widehat{(\chi u)*T_\psi}(\xi)
+=\widehat{\chi u}(\xi)\widehat\psi(\xi&#x27;).
+\tag{6}
+\]">\[
+\widehat{(\chi u)*T_\psi}(\xi)
+=\widehat{\chi u}(\xi)\widehat\psi(\xi&#x27;).
+\tag{6}
+\]</span>
+Because <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> decreases faster than every power on real prime frequency space,
+<span class="math math-display" data-tex="\[
+\sup_\xi
+\frac{k_2(\xi)}{k_1(\xi)}
+|\widehat\psi(\xi&#x27;)|&lt;\infty.
+\tag{7}
+\]">\[
+\sup_\xi
+\frac{k_2(\xi)}{k_1(\xi)}
+|\widehat\psi(\xi&#x27;)|&lt;\infty.
+\tag{7}
+\]</span>
+Multiplication by this factor is bounded on weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, including the supremum endpoint. The cutoff bound in <span class="math" data-tex="\(B_{p,k_2}\)">\(B_{p,k_2}\)</span> therefore gives
+<span class="math math-display" data-tex="\[
+\|\phi(u*&#x27;\psi)\|_{p,k_2}
+\leq C_{\phi,\psi}\|\chi u\|_{p,k_1}.
+\tag{8}
+\]">\[
+\|\phi(u*&#x27;\psi)\|_{p,k_2}
+\leq C_{\phi,\psi}\|\chi u\|_{p,k_1}.
+\tag{8}
+\]</span>
+This proves both local membership and continuity.</p>
+<p>For distributional continuity, pairing the output with a compact test means pairing <span class="math" data-tex="\(u\)">\(u\)</span> with that test convolved with the reflected compact kernel. All such source tests have compact support in <span class="math" data-tex="\(X\)">\(X\)</span>, and the operation is continuous on each test-function support space. The transpose defines the continuous distribution map. Differentiation commutes with compact convolution by the distributional convolution identities; localization uses the same translated support set. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus partial convolution provides every prescribed polynomial gain in <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span>, while its Fourier multiplier supplies no decay in <span class="math" data-tex="\(\xi&#x27;&#x27;\)">\(\xi&#x27;&#x27;\)</span>.</p>
+<h2 id="a-condition-on-zeros-and-coefficients">A condition on zeros and coefficients</h2>
+<p>For a nonzero polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, let <span class="math" data-tex="\(d_P(\xi)\)">\(d_P(\xi)\)</span> be the distance from a real point <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to its complex zero set. Set <span class="math" data-tex="\(d_P=\infty\)">\(d_P=\infty\)</span> for a nonzero constant. Use the full and positive-order derivative norms <span class="math" data-tex="\(S_P,J_P\)">\(S_P,J_P\)</span> from the weighted-interior lesson. For a constant, <span class="math" data-tex="\(S_P=|P|\)">\(S_P=|P|\)</span> and <span class="math" data-tex="\(J_P=0\)">\(J_P=0\)</span>.</p>
+<p>Expand uniquely in prime variables:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(\xi&#x27;,\xi&#x27;&#x27;)=\sum_\gamma
+P_\gamma(\xi&#x27;&#x27;)(\xi&#x27;)^\gamma,\\
+P_\gamma(\xi&#x27;&#x27;)
+=\frac{\partial_{\xi&#x27;}^\gamma P(0,\xi&#x27;&#x27;)}{\gamma!}.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+P(\xi&#x27;,\xi&#x27;&#x27;)=\sum_\gamma
+P_\gamma(\xi&#x27;&#x27;)(\xi&#x27;)^\gamma,\\
+P_\gamma(\xi&#x27;&#x27;)
+=\frac{\partial_{\xi&#x27;}^\gamma P(0,\xi&#x27;&#x27;)}{\gamma!}.
+\end{gathered}
+\tag{9}
+\]</span>
+Only finitely many coefficients are nonzero.</p>
+<p><strong>Theorem 2.1.</strong> The following seven conditions are equivalent.</p>
+<ol>
+<li>
+<p>Along the complex zeros of <span class="math" data-tex="\(P\)">\(P\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\operatorname{Im}\zeta|+
+|\operatorname{Re}\zeta&#x27;|\longrightarrow\infty\\
+\text{as }|\zeta|\longrightarrow\infty.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+|\operatorname{Im}\zeta|+
+|\operatorname{Re}\zeta&#x27;|\longrightarrow\infty\\
+\text{as }|\zeta|\longrightarrow\infty.
+\end{gathered}
+\tag{10}
+\]</span></p>
+</li>
+<li>
+<p>In (9), <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is nonzero and hypoelliptic in the double-prime variables, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_\gamma(\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)\longrightarrow0\\
+(|\xi&#x27;&#x27;|\to\infty,\ \gamma\ne0).
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+P_\gamma(\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)\longrightarrow0\\
+(|\xi&#x27;&#x27;|\to\infty,\ \gamma\ne0).
+\end{gathered}
+\tag{11}
+\]</span></p>
+</li>
+<li>
+<p>The same <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is nonzero and hypoelliptic, and some <span class="math" data-tex="\(a,C&gt;0\)">\(a,C&gt;0\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{|P_\gamma(\xi&#x27;&#x27;)|}{1+|P_0(\xi&#x27;&#x27;)|}
+\leq C\langle\xi&#x27;&#x27;\rangle^{-a}\\
+(\gamma\ne0).
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+\frac{|P_\gamma(\xi&#x27;&#x27;)|}{1+|P_0(\xi&#x27;&#x27;)|}
+\leq C\langle\xi&#x27;&#x27;\rangle^{-a}\\
+(\gamma\ne0).
+\end{gathered}
+\tag{12}
+\]</span></p>
+</li>
+<li>
+<p><span class="math" data-tex="\(d_P(\xi)\to\infty\)">\(d_P(\xi)\to\infty\)</span> whenever <span class="math" data-tex="\(|\xi&#x27;&#x27;|\to\infty\)">\(|\xi&#x27;&#x27;|\to\infty\)</span> while <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span> remains bounded.</p>
+</li>
+<li>
+<p>For some <span class="math" data-tex="\(a,C&gt;0\)">\(a,C&gt;0\)</span>, globally
+<span class="math math-display" data-tex="\[
+\langle\xi\rangle^{2a}
+\leq C(1+d_P(\xi)^2)\langle\xi&#x27;\rangle^2.
+\tag{13}
+\]">\[
+\langle\xi\rangle^{2a}
+\leq C(1+d_P(\xi)^2)\langle\xi&#x27;\rangle^2.
+\tag{13}
+\]</span></p>
+</li>
+<li>
+<p>On every bounded-prime strip, <span class="math" data-tex="\(P\)">\(P\)</span> is nonzero once <span class="math" data-tex="\(|\xi&#x27;&#x27;|\)">\(|\xi&#x27;&#x27;|\)</span> is sufficiently large, and
+<span class="math math-display" data-tex="\[
+\frac{\partial^\alpha P(\xi)}{P(\xi)}
+\longrightarrow0\qquad(\alpha\ne0)
+\tag{14}
+\]">\[
+\frac{\partial^\alpha P(\xi)}{P(\xi)}
+\longrightarrow0\qquad(\alpha\ne0)
+\tag{14}
+\]</span>
+as <span class="math" data-tex="\(|\xi&#x27;&#x27;|\to\infty\)">\(|\xi&#x27;&#x27;|\to\infty\)</span> with <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span> bounded. These are derivatives in all variables.</p>
+</li>
+<li>
+<p>For some <span class="math" data-tex="\(a,C&gt;0\)">\(a,C&gt;0\)</span>, globally
+<span class="math math-display" data-tex="\[
+\frac{J_P(\xi)}{S_P(\xi)}
+\leq C\langle\xi&#x27;\rangle\langle\xi\rangle^{-a}.
+\tag{15}
+\]">\[
+\frac{J_P(\xi)}{S_P(\xi)}
+\leq C\langle\xi&#x27;\rangle\langle\xi\rangle^{-a}.
+\tag{15}
+\]</span></p>
+</li>
+</ol>
+<p>The positive exponents and constants may change between conditions. Quotients by <span class="math" data-tex="\(P_0\)">\(P_0\)</span> are taken at large double-prime frequencies, where hypoellipticity makes it nonzero.</p>
+<p><strong>Proof: zeros and real strips.</strong> For a nonconstant <span class="math" data-tex="\(P\)">\(P\)</span>, its closed complex zero set is nonempty and closest zeros exist. If condition 4 fails, choose real points with bounded <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span>, unbounded <span class="math" data-tex="\(\xi&#x27;&#x27;\)">\(\xi&#x27;&#x27;\)</span>, and uniformly bounded distance to closest zeros <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Those zeros tend to infinity while both <span class="math" data-tex="\(\operatorname{Im}\zeta\)">\(\operatorname{Im}\zeta\)</span> and <span class="math" data-tex="\(\operatorname{Re}\zeta&#x27;\)">\(\operatorname{Re}\zeta&#x27;\)</span> stay bounded, contradicting 1. Conversely, if 1 fails, unbounded complex zeros with these two bounded quantities have real parts with bounded prime components and unbounded double-prime components. Their distance to the zero set is at most <span class="math" data-tex="\(|\operatorname{Im}\zeta|\)">\(|\operatorname{Im}\zeta|\)</span>, contradicting 4.</p>
+<p>The distance lemma of the complex-zeros lesson compares <span class="math" data-tex="\(d_P^{-1}\)">\(d_P^{-1}\)</span> with the finite sum of fractional roots of every positive derivative ratio. On any fixed bounded-prime strip it shows that 4 and 6 are equivalent. Eventual nonvanishing on that strip is included explicitly; real zeros there cannot escape under condition 4.</p>
+<p><strong>Proof: the uniform power estimates.</strong> Assume 4 and set
+<span class="math math-display" data-tex="\[
+F(\xi)=(1+d_P(\xi)^2)\langle\xi&#x27;\rangle^2.
+\tag{16}
+\]">\[
+F(\xi)=(1+d_P(\xi)^2)\langle\xi&#x27;\rangle^2.
+\tag{16}
+\]</span>
+This continuous semialgebraic function tends to infinity as <span class="math" data-tex="\(|\xi|\to\infty\)">\(|\xi|\to\infty\)</span>. Otherwise a sequence with bounded <span class="math" data-tex="\(F\)">\(F\)</span> would have bounded <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span> and bounded <span class="math" data-tex="\(d_P\)">\(d_P\)</span>; its double-prime part would tend to infinity, contrary to 4.</p>
+<p>The minimum of <span class="math" data-tex="\(F\)">\(F\)</span> on each real sphere is attained and semialgebraic, by the distance and projection arguments already proved in the complex-zeros and symbols-at-infinity lessons. It tends to infinity, so its one-parameter asymptotics give a positive power lower bound. Reducing the positive exponent and increasing the constant to cover bounded frequencies proves (13). This proves 4 implies 5. Condition 5 immediately implies 4 on a bounded-prime strip.</p>
+<p>The Cauchy estimate in the distance lemma also gives a global bound
+<span class="math math-display" data-tex="\[
+\frac{J_P(\xi)}{S_P(\xi)}
+\leq \frac{C}{\sqrt{1+d_P(\xi)^2}}.
+\tag{17}
+\]">\[
+\frac{J_P(\xi)}{S_P(\xi)}
+\leq \frac{C}{\sqrt{1+d_P(\xi)^2}}.
+\tag{17}
+\]</span>
+For <span class="math" data-tex="\(d_P\geq1\)">\(d_P\geq1\)</span>, sum its positive derivative bounds relative to <span class="math" data-tex="\(|P|\)">\(|P|\)</span> and use <span class="math" data-tex="\(|P|\leq S_P\)">\(|P|\leq S_P\)</span>; for <span class="math" data-tex="\(d_P\leq1\)">\(d_P\leq1\)</span>, use <span class="math" data-tex="\(J_P/S_P\leq1\)">\(J_P/S_P\leq1\)</span> and enlarge <span class="math" data-tex="\(C\)">\(C\)</span>. Combining (13) and (17) proves (15).</p>
+<p>Finally, (15) implies <span class="math" data-tex="\(J_P/S_P\to0\)">\(J_P/S_P\to0\)</span> on every bounded-prime strip. The identity <span class="math" data-tex="\(S_P^2=|P|^2+J_P^2\)">\(S_P^2=|P|^2+J_P^2\)</span> then gives <span class="math" data-tex="\(|P|/S_P\to1\)">\(|P|/S_P\to1\)</span>, proving eventual nonvanishing and (14). We have now proved all equivalences among 1, 4, 5, 6, and 7.</p>
+<p><strong>Proof: the coefficient tests.</strong> Assume 6. At <span class="math" data-tex="\(\xi&#x27;=0\)">\(\xi&#x27;=0\)</span>, <span class="math" data-tex="\(P=P_0\)">\(P=P_0\)</span>. The double-prime derivative ratios and eventual nonvanishing make <span class="math" data-tex="\(P_0\)">\(P_0\)</span> nonzero and hypoelliptic by the complex-zeros criterion. The prime derivatives in (9) give (11) for every <span class="math" data-tex="\(\gamma\ne0\)">\(\gamma\ne0\)</span>. Moreover, (15) at <span class="math" data-tex="\(\xi&#x27;=0\)">\(\xi&#x27;=0\)</span>, together with <span class="math" data-tex="\(|P_0|/S_P(0,\xi&#x27;&#x27;)\to1\)">\(|P_0|/S_P(0,\xi&#x27;&#x27;)\to1\)</span>, gives (12) outside a ball. On the ball its denominator is positive and its numerator bounded, so enlarging <span class="math" data-tex="\(C\)">\(C\)</span> proves it everywhere. The finitely many coefficients permit one common exponent and constant. Thus 6 implies both 2 and 3.</p>
+<p>Condition 3 implies 2. If <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is nonconstant and hypoelliptic, then <span class="math" data-tex="\(|P_0(\xi&#x27;&#x27;)|\to\infty\)">\(|P_0(\xi&#x27;&#x27;)|\to\infty\)</span>: divide a nonzero constant highest derivative by <span class="math" data-tex="\(P_0\)">\(P_0\)</span> and use the derivative criterion. Hence <span class="math" data-tex="\((1+|P_0|)/|P_0|\)">\((1+|P_0|)/|P_0|\)</span> stays bounded at infinity. The same ratio is a fixed finite number when <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is constant. Equation (12) gives (11) in either case.</p>
+<p>It remains to prove 2 implies 6. For <span class="math" data-tex="\(\gamma\ne0\)">\(\gamma\ne0\)</span>, (11) and the quotient criterion of Theorem 6.1 in the weighted-interior lesson give
+<span class="math math-display" data-tex="\[
+P_\gamma\ll P_0.
+\tag{18}
+\]">\[
+P_\gamma\ll P_0.
+\tag{18}
+\]</span>
+Every derivative of <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span> is weaker than <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span>. A polynomial weaker than a dominated polynomial is also dominated: its unit derivative norm is bounded by that polynomial's unit norm, so divide by the same expanding denominator in the definition of domination. Thus all derivatives of <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span> are dominated by <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, and the same quotient criterion gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\partial_{\xi&#x27;&#x27;}^\beta P_\gamma}{P_0}
+\longrightarrow0\\
+(\gamma\ne0,\ \beta\text{ arbitrary}).
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+\frac{\partial_{\xi&#x27;&#x27;}^\beta P_\gamma}{P_0}
+\longrightarrow0\\
+(\gamma\ne0,\ \beta\text{ arbitrary}).
+\end{gathered}
+\tag{19}
+\]</span>
+For <span class="math" data-tex="\(\gamma=0,\beta\ne0\)">\(\gamma=0,\beta\ne0\)</span>, the quotient tends to zero by hypoellipticity of <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. In the finite sum (9), uniformly for <span class="math" data-tex="\(\xi&#x27;\)">\(\xi&#x27;\)</span> in any fixed bounded set, these facts imply
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(\xi&#x27;,\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)\longrightarrow1,\\
+\partial^\alpha P(\xi&#x27;,\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)
+\longrightarrow0\quad(\alpha\ne0).
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+P(\xi&#x27;,\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)\longrightarrow1,\\
+\partial^\alpha P(\xi&#x27;,\xi&#x27;&#x27;)/P_0(\xi&#x27;&#x27;)
+\longrightarrow0\quad(\alpha\ne0).
+\end{gathered}
+\tag{20}
+\]</span>
+Dividing the second limit by the first proves 6. Zero coefficient polynomials contribute nothing to these arguments.</p>
+<p>For completeness, a nonzero constant <span class="math" data-tex="\(P\)">\(P\)</span> satisfies 1 vacuously, has <span class="math" data-tex="\(P_0=P\)">\(P_0=P\)</span> and all other coefficients zero, has <span class="math" data-tex="\(d_P=\infty\)">\(d_P=\infty\)</span>, and has <span class="math" data-tex="\(J_P=0\)">\(J_P=0\)</span>. Every assertion is then immediate, with (13) interpreted as an extended-real inequality. No ratio <span class="math" data-tex="\(\infty/\infty\)">\(\infty/\infty\)</span> is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> <strong>partially hypoelliptic with respect to the plane <span class="math" data-tex="\(x&#x27;&#x27;=0\)">\(x&#x27;&#x27;=0\)</span></strong> when these conditions hold. Equivalently, <span class="math" data-tex="\(P\)">\(P\)</span> is partially hypoelliptic in the double-prime frequencies. The plane names the variables in which convolution smooths; the coefficient tests describe the remaining frequencies.</p>
+<h2 id="two-different-kinds-of-escape">Two different kinds of escape</h2>
+<p>Consider <span class="math" data-tex="\(P(s,t)=t^2+s\)">\(P(s,t)=t^2+s\)</span>, with <span class="math" data-tex="\(s\)">\(s\)</span> prime and <span class="math" data-tex="\(t\)">\(t\)</span> double-prime. The coefficient at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> is <span class="math" data-tex="\(P_0(t)=t^2\)">\(P_0(t)=t^2\)</span>, a hypoelliptic one-variable polynomial. The only other coefficient is one, whose quotient by <span class="math" data-tex="\(t^2\)">\(t^2\)</span> tends to zero. Hence <span class="math" data-tex="\(P\)">\(P\)</span> is partially hypoelliptic in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>It is not fully hypoelliptic: its real zeros <span class="math" data-tex="\((-t^2,t)\)">\((-t^2,t)\)</span> are unbounded. They do satisfy the partial escape condition because their prime real component grows. Partial convolution can suppress these frequencies through <span class="math" data-tex="\(\widehat\psi(-t^2)\)">\(\widehat\psi(-t^2)\)</span>.</p>
+<p>In contrast <span class="math" data-tex="\(P(s,t)=st+1\)">\(P(s,t)=st+1\)</span> has the real zeros <span class="math" data-tex="\((-1/t,t)\)">\((-1/t,t)\)</span>, <span class="math" data-tex="\(t\to+\infty\)">\(t\to+\infty\)</span>. Their prime component stays bounded and their imaginary parts vanish, so (10) fails. The next lesson proves that this failure prevents universal smoothing by partial convolution, even in a single fixed local weighted solution space.</p>
+<p>If all variables are smoothed, <span class="math" data-tex="\(j=n\)">\(j=n\)</span>, the usual convolution with a compact smooth function is smooth on its translated source domain for every distribution and every polynomial. The nonempty remaining block in (1) is needed for the coefficient characterization; the formula demanding a nonzero <span class="math" data-tex="\(P_0=P(0)\)">\(P_0=P(0)\)</span> should not be applied to this separate case.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1. The translated domain.</strong> Let <span class="math" data-tex="\(X=(0,4)\times\mathbb R\)">\(X=(0,4)\times\mathbb R\)</span>, smooth in the first variable, and let <span class="math" data-tex="\(\operatorname{supp}\psi=[1,2]\)">\(\operatorname{supp}\psi=[1,2]\)</span>. Compute <span class="math" data-tex="\(X_\psi\)">\(X_\psi\)</span>. Explain why its portion outside <span class="math" data-tex="\(X\)">\(X\)</span> causes no problem.</p>
+<p><strong>Solution.</strong> The source interval is <span class="math" data-tex="\([x&#x27;-2,x&#x27;-1]\)">\([x&#x27;-2,x&#x27;-1]\)</span>. It lies in <span class="math" data-tex="\((0,4)\)">\((0,4)\)</span> exactly when <span class="math" data-tex="\(x&#x27;&gt;2\)">\(x&#x27;&gt;2\)</span> and <span class="math" data-tex="\(x&#x27;&lt;5\)">\(x&#x27;&lt;5\)</span>. Thus <span class="math" data-tex="\(X_\psi=(2,5)\times\mathbb R\)">\(X_\psi=(2,5)\times\mathbb R\)</span>. A point such as <span class="math" data-tex="\(x&#x27;=9/2\)">\(x&#x27;=9/2\)</span>, outside <span class="math" data-tex="\(X\)">\(X\)</span>, uses source points between <span class="math" data-tex="\(5/2\)">\(5/2\)</span> and <span class="math" data-tex="\(7/2\)">\(7/2\)</span>, all inside <span class="math" data-tex="\(X\)">\(X\)</span>. Convolution is determined by these source points rather than by a value of <span class="math" data-tex="\(u\)">\(u\)</span> at the output point. Strict endpoint inequalities are necessary because the closed support must lie in the open interval.</p>
+<p><strong>Exercise 2. A lower prime-dependent term.</strong> Show that <span class="math" data-tex="\(P(s,t)=t^3+it+s^2t\)">\(P(s,t)=t^3+it+s^2t\)</span> is partially hypoelliptic in <span class="math" data-tex="\(t\)">\(t\)</span>, but is not fully hypoelliptic.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(P_0=t^3+it\)">\(P_0=t^3+it\)</span>, whose derivative ratios tend to zero along the real line and which is nonzero for large real <span class="math" data-tex="\(|t|\)">\(|t|\)</span>. It is hypoelliptic by the complex-zeros criterion. The only nonzero coefficient with positive prime index is <span class="math" data-tex="\(P_2=t\)">\(P_2=t\)</span>, and <span class="math" data-tex="\(P_2/P_0=1/(t^2+i)\to0\)">\(P_2/P_0=1/(t^2+i)\to0\)</span>. The coefficient test proves partial hypoellipticity. On the other hand <span class="math" data-tex="\(P(s,0)=0\)">\(P(s,0)=0\)</span> for every real <span class="math" data-tex="\(s\)">\(s\)</span>, giving unbounded real zeros and failure of full hypoellipticity.</p>
+<p><strong>Exercise 3. A coefficient of the wrong size.</strong> For <span class="math" data-tex="\(P(s,t)=st+1\)">\(P(s,t)=st+1\)</span>, identify the failure in the coefficient criterion, and check it against the zeros in the preceding example.</p>
+<p><strong>Solution.</strong> Its <span class="math" data-tex="\(P_0=1\)">\(P_0=1\)</span> is hypoelliptic, but <span class="math" data-tex="\(P_1=t\)">\(P_1=t\)</span> does not tend to zero relative to <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. Thus the presence of a hypoelliptic constant coefficient alone is insufficient. The zero path <span class="math" data-tex="\((s,t)=(-1/t,t)\)">\((s,t)=(-1/t,t)\)</span> has bounded prime real part and zero imaginary part, while its norm tends to infinity. It fails exactly the escape condition equivalent to the coefficient test.</p>
+<p><strong>Exercise 4. More than one remaining variable.</strong> Let <span class="math" data-tex="\(s\)">\(s\)</span> be prime and <span class="math" data-tex="\((t_1,t_2)\)">\((t_1,t_2)\)</span> double-prime. Compare
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P&amp;=s+t_1^2+it_2,\\
+Q&amp;=s t_1^2+t_1^2+it_2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+P&amp;=s+t_1^2+it_2,\\
+Q&amp;=s t_1^2+t_1^2+it_2.
+\end{aligned}
+\]</span></p>
+<p><strong>Solution.</strong> Both have <span class="math" data-tex="\(P_0=Q_0=t_1^2+it_2\)">\(P_0=Q_0=t_1^2+it_2\)</span>, the heat-type polynomial already shown hypoelliptic in the complex-zeros lesson. Its modulus tends to infinity on real double-prime space, so the other coefficient one in <span class="math" data-tex="\(P\)">\(P\)</span> has vanishing quotient. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is partially hypoelliptic. For <span class="math" data-tex="\(Q\)">\(Q\)</span>, the other coefficient is <span class="math" data-tex="\(t_1^2\)">\(t_1^2\)</span>, whose quotient by <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> equals one on <span class="math" data-tex="\((t_1,t_2)=(r,0)\)">\((t_1,t_2)=(r,0)\)</span>, <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>. It fails the criterion. The real zeros <span class="math" data-tex="\((s,t_1,t_2)=(-1,r,0)\)">\((s,t_1,t_2)=(-1,r,0)\)</span> confirm this failure with bounded prime frequency.</p>
+<p><strong>Exercise 5. A constant base coefficient.</strong> Suppose <span class="math" data-tex="\(P_0\ne0\)">\(P_0\ne0\)</span> is constant. Prove that <span class="math" data-tex="\(P\)">\(P\)</span> is partially hypoelliptic if and only if <span class="math" data-tex="\(P\)">\(P\)</span> itself is constant.</p>
+<p><strong>Solution.</strong> The coefficient test would require every <span class="math" data-tex="\(P_\gamma\)">\(P_\gamma\)</span>, <span class="math" data-tex="\(\gamma\ne0\)">\(\gamma\ne0\)</span>, to tend to zero at infinity on <span class="math" data-tex="\(\mathbb R^{n-j}\)">\(\mathbb R^{n-j}\)</span>. A nonzero constant polynomial does not tend to zero. A positive-degree polynomial has a real ray where its nonzero highest homogeneous part is nonzero, and it grows on that ray. Therefore the only polynomial tending to zero in this sense is zero. All other coefficients vanish and <span class="math" data-tex="\(P=P_0\)">\(P=P_0\)</span>. Conversely a nonzero constant satisfies all the tests.</p>
+<p><strong>Exercise 6. Why the strip condition gives a global power.</strong> In the proof of (13), explain why knowing a separate distance bound on each bounded-prime strip is not itself a quantitative proof. What supplies the global estimate?</p>
+<p><strong>Solution.</strong> Separate strip bounds do not specify how their constants change as the prime bound grows, nor do they give a common rate in double-prime frequency. The function <span class="math" data-tex="\(F=(1+d_P^2)\langle\xi&#x27;\rangle^2\)">\(F=(1+d_P^2)\langle\xi&#x27;\rangle^2\)</span> combines both escapes. Any sequence making <span class="math" data-tex="\(F\)">\(F\)</span> bounded would keep both the prime part and the distance bounded, contradicting the strip condition at infinity. Thus its spherical minimum tends to infinity. Semialgebraicity, projection, and the one-parameter power theorem then yield a single positive power valid on every sphere; bounded frequencies are absorbed by enlarging the constant. The polynomial rate comes from this algebraic argument, not from compactness alone.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Grubb]</strong> Gerd Grubb, <em>Distributions and Operators</em>, open lectures, sections on distributions, Fourier transformation, and local regularity. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li><strong>[Coste]</strong> Michel Coste, <em>Real Algebraic Sets</em>, lecture notes, 2003, §1.1 and §1.5. <a href="https://indico.ictp.it/event/a02455/session/9/contribution/6/material/0/0.pdf">ICTP notes</a>.</li>
+</ul>
+</main></body></html>

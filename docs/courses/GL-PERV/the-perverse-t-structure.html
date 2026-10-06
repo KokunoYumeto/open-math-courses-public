@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The perverse t-structure · Perverse sheaves and intersection cohomology</title>
+<meta name="description" content="A lesson of the course Perverse sheaves and intersection cohomology. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/the-perverse-t-structure.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Perverse sheaves and intersection cohomology</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-perverse-t-structure">The perverse t-structure</h1>
+<p><em>Rewritten and self-checked by GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>A local system on a curve and a vector space at one point can belong to the same abelian category, although their nonzero ordinary cohomology occurs in different degrees. This lesson constructs that category by cutting a complex on a smooth open set and then correcting the cut on its boundary. Explicit curve and surface calculations show what the boundary correction detects. We subsequently construct descent and prove finite length.</p>
+<p>Our coefficients are a field <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. We retain both the classical complex-algebraic setting and the finite or rational-adic étale settings of <span class="unlinked">Constructible complexes on algebraic varieties</span>. In the étale setting the torsion characteristic is invertible on the varieties. The adic statements require the normalized operations and comparison maps listed in that lesson; their unfinished proof obligations remain obligations here. Dimension means complex dimension classically and algebraic dimension étale-locally. A shift has <span class="math" data-tex="\(\mathcal H^q(K[m])=\mathcal H^{q+m}K\)">\(\mathcal H^q(K[m])=\mathcal H^{q+m}K\)</span>.</p>
+<p>The mathematical source for the dimension conditions is the freely readable author-hosted edition of BBD, especially §§2.1–2.2 and 4.0. We use the reconstructed adjunction, localization and heart arguments of <span class="unlinked">Gluing t-structures</span>. Below, an external reference identifies source material; the written arguments and their explicitly identified programme prerequisites carry the proof obligations.</p>
+<h2 id="1-degrees-at-a-puncture">1. Degrees at a puncture</h2>
+<p>Begin with a disc, its punctured open part <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span>, and the centre <span class="math" data-tex="\(i:\{0\}\hookrightarrow X\)">\(i:\{0\}\hookrightarrow X\)</span>. A local system on <span class="math" data-tex="\(U\)">\(U\)</span> is specified by a finite-dimensional space <span class="math" data-tex="\(V\)">\(V\)</span> and an invertible monodromy <span class="math" data-tex="\(T\)">\(T\)</span>. Write <span class="math" data-tex="\(S=T-1\)">\(S=T-1\)</span>. The first lesson's Proposition 1.1 and Appendix A compute the actual boundary complex:</p>
+<span class="math math-display" data-tex="\[
+i^*Rj_*L[1]=[V\xrightarrow{S}V],
+\qquad\text{in degrees }-1,0.
+\tag{1.1}
+\]">\[
+i^*Rj_*L[1]=[V\xrightarrow{S}V],
+\qquad\text{in degrees }-1,0.
+\tag{1.1}
+\]</span>
+<p>Thus moving a local system into degree <span class="math" data-tex="\(-1\)">\(-1\)</span> does not force everything at the missing point into degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. There can be degree-zero boundary information. The attaching construction and its morphisms, proved in Exercise 5 and Appendix B of the preceding lesson, describe the heart for the open placement <span class="math" data-tex="\(L[1]\)">\(L[1]\)</span> and the closed placement <span class="math" data-tex="\(E[0]\)">\(E[0]\)</span> by</p>
+<span class="math math-display" data-tex="\[
+V\xrightarrow{u}W\xrightarrow{v}V,
+\qquad vu=T-1.
+\tag{1.2}
+\]">\[
+V\xrightarrow{u}W\xrightarrow{v}V,
+\qquad vu=T-1.
+\tag{1.2}
+\]</span>
+<p>Its stalk and costalk are respectively <span class="math" data-tex="\([V\xrightarrow uW]\)">\([V\xrightarrow uW]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> and <span class="math" data-tex="\([W\xrightarrow vV]\)">\([W\xrightarrow vV]\)</span> in degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. The invertibility conditions in that description hold because <span class="math" data-tex="\(1+vu=T\)">\(1+vu=T\)</span> is invertible; explicitly
+<span class="math" data-tex="\((1+uv)^{-1}=1-u(1+vu)^{-1}v\)">\((1+uv)^{-1}=1-u(1+vu)^{-1}v\)</span>.
+For the familiar extensions the diagrams are</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th><span class="math" data-tex="\(W\)">\(W\)</span></th>
+<th><span class="math" data-tex="\(u\)">\(u\)</span></th>
+<th><span class="math" data-tex="\(v\)">\(v\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(j_!L[1]\)">\(j_!L[1]\)</span></td>
+<td><span class="math" data-tex="\(V\)">\(V\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(S\)">\(S\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(Rj_*L[1]\)">\(Rj_*L[1]\)</span></td>
+<td><span class="math" data-tex="\(V\)">\(V\)</span></td>
+<td><span class="math" data-tex="\(S\)">\(S\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(j_{!*}L[1]\)">\(j_{!*}L[1]\)</span></td>
+<td><span class="math" data-tex="\(\operatorname{im}S\)">\(\operatorname{im}S\)</span></td>
+<td><span class="math" data-tex="\(S\)">\(S\)</span></td>
+<td>inclusion</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(i_*E\)">\(i_*E\)</span></td>
+<td><span class="math" data-tex="\(E\)">\(E\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The third row has stalk <span class="math" data-tex="\(\ker S\)">\(\ker S\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and costalk <span class="math" data-tex="\(\operatorname{coker}S\)">\(\operatorname{coker}S\)</span> in degree <span class="math" data-tex="\(1\)">\(1\)</span>. The zero-degree boundary subobject and quotient have been removed. These are calculations in the previously proved recollement heart, before any assertion about all varieties. They suggest the placements to glue: degree <span class="math" data-tex="\(-s\)">\(-s\)</span> for a local system on a smooth stratum of dimension <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<h2 id="2-constructing-the-dimension-cuts">2. Constructing the dimension cuts</h2>
+<p>For a constructible sheaf, define its support dimension as the dimension of the closure of its nonzero locus, with dimension <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> for zero. On the full bounded constructible category set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+{}^pD^{\leq0}(X)&amp;=\{K:\dim\operatorname{Supp}\mathcal H^qK\leq-q
+\text{ for every }q\},\\
+{}^pD^{\geq0}(X)&amp;=\{K:D_XK\in{}^pD^{\leq0}(X)\}.
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+{}^pD^{\leq0}(X)&amp;=\{K:\dim\operatorname{Supp}\mathcal H^qK\leq-q
+\text{ for every }q\},\\
+{}^pD^{\geq0}(X)&amp;=\{K:D_XK\in{}^pD^{\leq0}(X)\}.
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_X\)">\(D_X\)</span> is structural Verdier duality. This is a definition by support dimensions, not by codimension in an embedding. Components of different dimensions are allowed.</p>
+<h3 id="the-local-tests-and-the-input-they-require">The local tests and the input they require</h3>
+<p>Choose finitely many smooth pure-dimensional locally closed pieces on which the needed restrictions and exceptional restrictions have lisse cohomology. Classically the first lesson's Appendices I–K construct suitable algebraic Whitney refinements and their operation properties. Our étale base fields, a finite field or its algebraic closure, are perfect, so a reduced variety has a dense smooth open; bounded constructibility of the finitely many complexes and their images permits successive refinement of the lower-dimensional boundary. We use only the finite list of objects in the argument: no arbitrary smooth partition is asserted to be stable under all boundary operations. The needed smooth-open algebraic argument is included in the first lesson, M.1. The normalized adic operation and duality comparisons remain among the stated foundations.</p>
+<p>Write <span class="math" data-tex="\(a:S\hookrightarrow X\)">\(a:S\hookrightarrow X\)</span> and <span class="math" data-tex="\(s=\dim S\)">\(s=\dim S\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+K\in{}^pD^{\leq0}\iff H^q(a^*K)=0\ (q&gt;-s),
+\qquad
+K\in{}^pD^{\geq0}\iff H^q(a^!K)=0\ (q&lt;-s).
+\tag{2.2}
+\]">\[
+K\in{}^pD^{\leq0}\iff H^q(a^*K)=0\ (q&gt;-s),
+\qquad
+K\in{}^pD^{\geq0}\iff H^q(a^!K)=0\ (q&lt;-s).
+\tag{2.2}
+\]</span>
+<p>For the first assertion, the support of a nonzero lisse sheaf on a connected piece has dimension <span class="math" data-tex="\(s\)">\(s\)</span>; the support dimension of a sheaf on a finite partition is the maximum of those dimensions. For the second use <span class="math" data-tex="\(a^*D_XK=D_Sa^!K\)">\(a^*D_XK=D_Sa^!K\)</span>. Smooth duality over a field gives</p>
+<span class="math math-display" data-tex="\[
+H^q(D_SF)=\bigl(H^{-q-2s}F\bigr)^\vee(s)
+\tag{2.3}
+\]">\[
+H^q(D_SF)=\bigl(H^{-q-2s}F\bigr)^\vee(s)
+\tag{2.3}
+\]</span>
+<p>for bounded lisse <span class="math" data-tex="\(F\)">\(F\)</span>; omit the twist classically. Indeed local finite-dimensional dualization reverses cohomological degree, and the dualizing complex supplies the shift <span class="math" data-tex="\(2s\)">\(2s\)</span>. Exactness of vector-space dualization gives the formula on cohomology. The bound <span class="math" data-tex="\(q\leq-s\)">\(q\leq-s\)</span> for the dual is precisely the bound <span class="math" data-tex="\(q\geq-s\)">\(q\geq-s\)</span> for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For an open–closed pair <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span>, <span class="math" data-tex="\(i:F\hookrightarrow X\)">\(i:F\hookrightarrow X\)</span>, (2.1) consequently satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K\in{}^pD^{\leq0}(X)&amp;\iff j^*K\in{}^pD^{\leq0}(U),\ i^*K\in{}^pD^{\leq0}(F),\\
+K\in{}^pD^{\geq0}(X)&amp;\iff j^*K\in{}^pD^{\geq0}(U),\ i^!K\in{}^pD^{\geq0}(F).
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+K\in{}^pD^{\leq0}(X)&amp;\iff j^*K\in{}^pD^{\leq0}(U),\ i^*K\in{}^pD^{\leq0}(F),\\
+K\in{}^pD^{\geq0}(X)&amp;\iff j^*K\in{}^pD^{\geq0}(U),\ i^!K\in{}^pD^{\geq0}(F).
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>The upper equivalence also follows directly by decomposing the support into its open and closed parts. Duality and its restriction exchanges give the lower one.</p>
+<h3 id="an-actual-truncation-triangle">An actual truncation triangle</h3>
+<p><strong>Theorem 2.1.</strong> The pair (2.1) is a bounded t-structure. Its heart, <span class="math" data-tex="\(\operatorname{Perv}(X)\)">\(\operatorname{Perv}(X)\)</span>, is independent of the partition used to compute it. Duality is an exact anti-equivalence of this heart.</p>
+<p><strong>Proof.</strong> We induct on dimension, with the empty space as the initial case. In dimension zero the assertion is the ordinary bounded t-structure on finite collections of finite-dimensional coefficient representations. Shift closure follows at once from (2.1).</p>
+<p>For orthogonality take <span class="math" data-tex="\(A\in{}^pD^{\leq0}(X)\)">\(A\in{}^pD^{\leq0}(X)\)</span>, <span class="math" data-tex="\(B\in{}^pD^{\geq1}(X)\)">\(B\in{}^pD^{\geq1}(X)\)</span>. Choose a dense open <span class="math" data-tex="\(U\)">\(U\)</span> which is a disjoint union of smooth pure-dimensional pieces and on which both objects have lisse cohomology. Its complement <span class="math" data-tex="\(F\)">\(F\)</span> has smaller dimension. On a piece of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, the restrictions of <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have ordinary bounds <span class="math" data-tex="\(\leq-s\)">\(\leq-s\)</span> and <span class="math" data-tex="\(\geq1-s\)">\(\geq1-s\)</span>, so their Hom is zero by ordinary truncation. On <span class="math" data-tex="\(F\)">\(F\)</span>, (2.4) and induction give <span class="math" data-tex="\(\operatorname{Hom}(i^*A,i^!B)=0\)">\(\operatorname{Hom}(i^*A,i^!B)=0\)</span>. Apply <span class="math" data-tex="\(\operatorname{Hom}(-,B)\)">\(\operatorname{Hom}(-,B)\)</span> to
+<span class="math" data-tex="\(j_!j^*A\to A\to i_*i^*A\to\)">\(j_!j^*A\to A\to i_*i^*A\to\)</span>.
+Adjunction identifies its two outside Hom terms with the two zero groups just obtained. Hence <span class="math" data-tex="\(\operatorname{Hom}(A,B)=0\)">\(\operatorname{Hom}(A,B)=0\)</span>.</p>
+<p>Now take an arbitrary <span class="math" data-tex="\(K\)">\(K\)</span>, choose such a dense smooth <span class="math" data-tex="\(U\)">\(U\)</span> for its ordinary cohomology, and form on each component
+<span class="math" data-tex="\(U_0=\tau_{\mathrm{ord}}^{\leq-s}j^*K\)">\(U_0=\tau_{\mathrm{ord}}^{\leq-s}j^*K\)</span>.
+These complexes assemble on the disjoint components. Make the first cone and then a cut on its closed part:</p>
+<span class="math math-display" data-tex="\[
+j_!U_0\longrightarrow K\longrightarrow K_1\longrightarrow,
+\qquad
+F_0={}^p\tau_F^{\leq0}i^!K_1.
+\tag{2.5}
+\]">\[
+j_!U_0\longrightarrow K\longrightarrow K_1\longrightarrow,
+\qquad
+F_0={}^p\tau_F^{\leq0}i^!K_1.
+\tag{2.5}
+\]</span>
+<p>The second cut exists by induction. Adjunction and its truncation map give <span class="math" data-tex="\(i_*F_0\to K_1\)">\(i_*F_0\to K_1\)</span>; complete it to
+<span class="math" data-tex="\(i_*F_0\to K_1\to B\to\)">\(i_*F_0\to K_1\to B\to\)</span>.
+The octahedron for <span class="math" data-tex="\(K\to K_1\to B\)">\(K\to K_1\to B\)</span> supplies</p>
+<span class="math math-display" data-tex="\[
+A\longrightarrow K\longrightarrow B\longrightarrow,
+\qquad
+j_!U_0\longrightarrow A\longrightarrow i_*F_0\longrightarrow.
+\tag{2.6}
+\]">\[
+A\longrightarrow K\longrightarrow B\longrightarrow,
+\qquad
+j_!U_0\longrightarrow A\longrightarrow i_*F_0\longrightarrow.
+\tag{2.6}
+\]</span>
+<p>Applying <span class="math" data-tex="\(j^*,i^*\)">\(j^*,i^*\)</span> to the second triangle gives <span class="math" data-tex="\(j^*A=U_0\)">\(j^*A=U_0\)</span>, <span class="math" data-tex="\(i^*A=F_0\)">\(i^*A=F_0\)</span>, so (2.4) puts <span class="math" data-tex="\(A\)">\(A\)</span> in the upper half. The first cut gives <span class="math" data-tex="\(j^*B=\tau_{\mathrm{ord}}^{\geq1-s}j^*K\)">\(j^*B=\tau_{\mathrm{ord}}^{\geq1-s}j^*K\)</span>. Applying <span class="math" data-tex="\(i^!\)">\(i^!\)</span> to the triangle defining <span class="math" data-tex="\(B\)">\(B\)</span> gives <span class="math" data-tex="\(i^!B={}^p\tau_F^{\geq1}i^!K_1\)">\(i^!B={}^p\tau_F^{\geq1}i^!K_1\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is in the lower half shifted to degree one. All these objects remain bounded constructible by the earlier operation theorems. This is the required truncation triangle, using the same cone construction as the gluing theorem of Lesson 2.</p>
+<p>The categorical uniqueness argument in that lesson's Appendix A makes these cuts functorial and independent of every open set and cone choice. The classes themselves were intrinsic in (2.1), so a compatible refinement cannot change them. Boundedness can also be checked without a uniform partition for the whole category: a fixed complex and its dual have only finitely many nonzero cohomology sheaves of finite support dimension. Sufficient shifts put each in the upper half of (2.1), and biduality supplies a lower bound.</p>
+<p>Finally, (2.1) and biduality exchange the two halves. Duality reverses a triangle representing a short exact sequence of heart objects. The heart long exact sequence therefore reverses that short exact sequence. It is an exact anti-equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, a lisse <span class="math" data-tex="\(L\)">\(L\)</span> on smooth pure <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional <span class="math" data-tex="\(X\)">\(X\)</span> gives <span class="math" data-tex="\(L[d]\in\operatorname{Perv}(X)\)">\(L[d]\in\operatorname{Perv}(X)\)</span>. Its dual is <span class="math" data-tex="\(L^\vee[d]\)">\(L^\vee[d]\)</span> classically and <span class="math" data-tex="\(L^\vee(d)[d]\)">\(L^\vee(d)[d]\)</span> étale-locally. A point-supported vector space belongs in degree zero. These assertions concern field coefficients. Already on a point, <span class="math" data-tex="\(\ell^n\mathbf Z_\ell\)">\(\ell^n\mathbf Z_\ell\)</span> gives an infinite descending chain in <span class="math" data-tex="\(\mathbf Z_\ell\)">\(\mathbf Z_\ell\)</span>, and derived integral dualization need not preserve the same heart.</p>
+<h3 id="why-the-generic-points-matter">Why the generic points matter</h3>
+<p>For an algebraic point <span class="math" data-tex="\(x\)">\(x\)</span>, put <span class="math" data-tex="\(d_x=\dim\overline{\{x\}}\)">\(d_x=\dim\overline{\{x\}}\)</span>. Use a geometric stalk over <span class="math" data-tex="\(x\)">\(x\)</span>. For exceptional restriction to a nonclosed point, first apply exceptional restriction to its closure and then pass to its generic point. With this convention the two conditions are</p>
+<span class="math math-display" data-tex="\[
+H^q(i_x^*K)=0\ (q&gt;-d_x),\qquad
+H^q(i_x^!K)=0\ (q&lt;-d_x).
+\tag{2.7}
+\]">\[
+H^q(i_x^*K)=0\ (q&gt;-d_x),\qquad
+H^q(i_x^!K)=0\ (q&lt;-d_x).
+\tag{2.7}
+\]</span>
+<p>Here is the comparison, including the lower bound. Let <span class="math" data-tex="\(x\)">\(x\)</span> lie in a smooth stratum <span class="math" data-tex="\(S\)">\(S\)</span> of dimension <span class="math" data-tex="\(s\)">\(s\)</span>. Take a smooth dense open <span class="math" data-tex="\(T\)">\(T\)</span> in its closure inside <span class="math" data-tex="\(S\)">\(S\)</span>, of dimension <span class="math" data-tex="\(t=d_x\)">\(t=d_x\)</span>; work near its generic point. For <span class="math" data-tex="\(b:T\hookrightarrow S\)">\(b:T\hookrightarrow S\)</span> and a lisse complex <span class="math" data-tex="\(F\)">\(F\)</span>, smooth duality and the exceptional-restriction exchange give</p>
+<span class="math math-display" data-tex="\[
+b^!F=b^*F(t-s)[2t-2s].
+\tag{2.8}
+\]">\[
+b^!F=b^*F(t-s)[2t-2s].
+\tag{2.8}
+\]</span>
+<p>One obtains this formula by dualizing on <span class="math" data-tex="\(S\)">\(S\)</span>, restricting, and dualizing on <span class="math" data-tex="\(T\)">\(T\)</span>: the two coefficient dualizations cancel, and their shifts and twists subtract. Ordinary restriction preserves an upper bound <span class="math" data-tex="\(-s\)">\(-s\)</span>, which is no larger than <span class="math" data-tex="\(-t\)">\(-t\)</span>. The exceptional restriction changes a lower bound <span class="math" data-tex="\(-s\)">\(-s\)</span> into <span class="math" data-tex="\(-s+2(s-t)=-t+(s-t)\)">\(-s+2(s-t)=-t+(s-t)\)</span>, which is at least <span class="math" data-tex="\(-t\)">\(-t\)</span>. Hence (2.2) implies (2.7). Conversely use the generic point of each irreducible stratum. There <span class="math" data-tex="\(t=s\)">\(t=s\)</span>, and vanishing of a lisse cohomology sheaf at that point implies its vanishing everywhere on the stratum. This proves the equivalence.</p>
+<p>These are BBD's all-point conditions in §4.0, with its convention from §2.2.12. Ordinary classical points do not include generic points of algebraic strata. On a smooth complex curve the unshifted constant sheaf has stalk only in degree zero and closed-point costalk only in degree two. It passes inequalities <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> and <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span> at every such point, yet fails the dimension-one upper test. Classical perversity must use (2.1) or (2.2).</p>
+<h2 id="3-reading-the-boundary-cohomology">3. Reading the boundary cohomology</h2>
+<h3 id="curves">Curves</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a reduced curve of pure dimension one. Given a constructible complex, choose a finite closed set <span class="math" data-tex="\(F\)">\(F\)</span> containing the singularities of <span class="math" data-tex="\(X\)">\(X\)</span> and its cohomology sheaves; write <span class="math" data-tex="\(U=X\setminus F\)">\(U=X\setminus F\)</span>. The boundary complex <span class="math" data-tex="\(i^*Rj_*L[1]\)">\(i^*Rj_*L[1]\)</span> for a lisse <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> has cohomology only in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>.</p>
+<p>Classically, the branch neighborhoods and their punctures are constructed in the first lesson's Appendix L. They give finitely many punctured discs. The explicit cochains of its Appendix A prove the claim on each branch, and the finite disjoint union takes their direct sum.</p>
+<p>For finite étale coefficients, make the assertion locally at a boundary point. On an affine curve neighborhood choose a function vanishing at that point but not identically on any branch. Prime avoidance supplies it. Its other zeros form a finite set; removing those makes the given puncture a principal affine open. Theorem 6.2 of the earlier programme lesson <a href="../ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html">Cohomological dimension and the Künneth formula, §6</a> proves the affine support bound: for a sheaf with support dimension at most one, <span class="math" data-tex="\(R^qj_*L\)">\(R^qj_*L\)</span> is supported in points of dimension at most <span class="math" data-tex="\(1-q\)">\(1-q\)</span>. It is therefore zero for <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>. This uses that theorem's strict-local stalk argument, not ordinary cohomology of the geometric fibre of a nonproper map. The remaining cohomology stalks are finite by the first lesson's finite-coefficient image theorem, Appendix M.</p>
+<p>For an adic lattice and its finite quotients, the same degrees occur at every finite level. In each fixed finite cohomology group, the images from later levels form a descending chain and eventually stabilize. For a countable inverse system with this property, the map
+<span class="math" data-tex="\(1-\mathrm{shift}:\prod A_n\to\prod A_n\)">\(1-\mathrm{shift}:\prod A_n\to\prod A_n\)</span>
+is onto: first solve recursively in the stable images, whose transition maps are onto; in the quotient system each fixed coordinate eventually receives only zero, so the finite-coordinate sums solve the same equation there. Lifting a quotient solution leaves an error in the stable images, removed by the first solution. Its kernel is <span class="math" data-tex="\(\varprojlim A_n\)">\(\varprojlim A_n\)</span>, so the product-cone model of derived limit adds no cohomology group. Thus the bound passes to the lattice and then, by exact localization, to rational coefficients, <strong>provided</strong> the actual normalized stalk/image and derived-limit comparison maps have the properties required in the first lesson. Those adic comparisons are still an identified proof obligation. No tame-monodromy description is assumed for a wild étale local system.</p>
+<p><strong>Proposition 3.1 (curve criterion).</strong> At these coefficient settings, with their stated operation prerequisites, a bounded constructible <span class="math" data-tex="\(K\)">\(K\)</span> is perverse precisely when</p>
+<ol>
+<li>its only possible ordinary cohomology sheaves are <span class="math" data-tex="\(M=\mathcal H^{-1}K\)">\(M=\mathcal H^{-1}K\)</span> and <span class="math" data-tex="\(N=\mathcal H^0K\)">\(N=\mathcal H^0K\)</span>;</li>
+<li><span class="math" data-tex="\(N\)">\(N\)</span> is supported at finitely many points;</li>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> has no nonzero sections supported at a point.</li>
+</ol>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is perverse, its restriction to <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(L[1]\)">\(L[1]\)</span>. The upper bound at the points of <span class="math" data-tex="\(F\)">\(F\)</span> excludes all positive ordinary cohomology. For the lower ordinary degrees, use the actual localization triangle at a point:</p>
+<span class="math math-display" data-tex="\[
+i_x^!K\longrightarrow i_x^*K\longrightarrow i_x^*Rj_*L[1]\longrightarrow.
+\tag{3.1}
+\]">\[
+i_x^!K\longrightarrow i_x^*K\longrightarrow i_x^*Rj_*L[1]\longrightarrow.
+\tag{3.1}
+\]</span>
+<p>The first term has no negative cohomology; the last has degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Hence the middle has none below <span class="math" data-tex="\(-1\)">\(-1\)</span>. Degree-zero ordinary cohomology vanishes on <span class="math" data-tex="\(U\)">\(U\)</span>, proving the first two claims. The ordinary truncation triangle now is
+<span class="math" data-tex="\(M[1]\to K\to N\to M[2]\)">\(M[1]\to K\to N\to M[2]\)</span>.
+Exceptional restriction of <span class="math" data-tex="\(N\)">\(N\)</span> at a point is concentrated in degree zero. For the sheaf <span class="math" data-tex="\(M\)">\(M\)</span>, it is the right derived functor of sections with that support, and has no negative cohomology. The long exact sequence therefore gives</p>
+<span class="math math-display" data-tex="\[
+H^{-1}(i_x^!K)=H^0(i_x^!M)
+=\{\text{germs of sections of }M\text{ supported at }x\}.
+\tag{3.2}
+\]">\[
+H^{-1}(i_x^!K)=H^0(i_x^!M)
+=\{\text{germs of sections of }M\text{ supported at }x\}.
+\tag{3.2}
+\]</span>
+<p>The lower perverse bound gives the third claim. In the converse direction, the three assumptions make the open restriction lisse in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> after a finite refinement. All closed stalk bounds hold. Equation (3.2) removes degree <span class="math" data-tex="\(-1\)">\(-1\)</span> in the costalk, and the same truncation triangle shows that there are no still lower groups. Thus all tests in (2.2) hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant sheaf has no section supported at a nonisolated point: a locally constant nonzero germ remains nonzero on a neighborhood, which contains another point. Consequently <span class="math" data-tex="\(\Lambda_X[1]\)">\(\Lambda_X[1]\)</span> is perverse for a reduced <strong>pure</strong> curve, including nodes. An isolated zero-dimensional component would instead require degree zero. The disc diagrams in §1 also prove that <span class="math" data-tex="\(j_!\Lambda[1]\)">\(j_!\Lambda[1]\)</span> and <span class="math" data-tex="\(Rj_*\Lambda[1]\)">\(Rj_*\Lambda[1]\)</span> are perverse for <span class="math" data-tex="\(\mathbf C^*\hookrightarrow\mathbf C\)">\(\mathbf C^*\hookrightarrow\mathbf C\)</span>.</p>
+<h3 id="isolated-surface-singularities">Isolated surface singularities</h3>
+<p>Let the punctured neighborhood of an isolated complex surface singularity <span class="math" data-tex="\(x\)">\(x\)</span> have compact link <span class="math" data-tex="\(M\)">\(M\)</span>. The normal cone neighborhoods of the first lesson, I.6, identify sufficiently small neighborhoods with an open cone on <span class="math" data-tex="\(M\)">\(M\)</span>. Its Appendix C supplies the relative cochain comparison, and J.4 identifies this relative complex with the sheaf costalk. The cone is contractible and its puncture retracts to <span class="math" data-tex="\(M\)">\(M\)</span>, whence</p>
+<span class="math math-display" data-tex="\[
+H^k(i_x^!\Lambda_X[2])=\widetilde H^{k+1}(M;\Lambda).
+\tag{3.3}
+\]">\[
+H^k(i_x^!\Lambda_X[2])=\widetilde H^{k+1}(M;\Lambda).
+\tag{3.3}
+\]</span>
+<p>Since <span class="math" data-tex="\(M\ne\varnothing\)">\(M\ne\varnothing\)</span>, the negative costalk groups vanish exactly when <span class="math" data-tex="\(\widetilde H^0(M)=0\)">\(\widetilde H^0(M)=0\)</span>. The open smooth surface and the closed stalk already satisfy their tests. Thus <span class="math" data-tex="\(\Lambda_X[2]\)">\(\Lambda_X[2]\)</span> is perverse near the singularity exactly when <span class="math" data-tex="\(M\)">\(M\)</span> is connected. In particular, <span class="math" data-tex="\(H^1(M)\)">\(H^1(M)\)</span> occurs in allowed costalk degree zero, not in an obstructing negative degree.</p>
+<p>For the two coordinate planes in <span class="math" data-tex="\(\mathbf C^4\)">\(\mathbf C^4\)</span>, namely
+<span class="math" data-tex="\(\{z_3=z_4=0\}\cup\{z_1=z_2=0\}\)">\(\{z_3=z_4=0\}\cup\{z_1=z_2=0\}\)</span>,
+the link is <span class="math" data-tex="\(S^3\sqcup S^3\)">\(S^3\sqcup S^3\)</span>. Reduced cohomology is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree zero and <span class="math" data-tex="\(\Lambda^2\)">\(\Lambda^2\)</span> in degree three. Equation (3.3) gives costalk degrees <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, respectively, so the shifted constant complex is not perverse.</p>
+<p>For a normal analytic surface germ, connectedness has a short proof using the analytic definition of normality: locally bounded holomorphic functions on the regular locus extend holomorphically over the germ. If its conical puncture were disconnected, assign values zero and one to a nontrivial partition of its components. This gives a bounded holomorphic function on the puncture. Its normal extension is continuous at the vertex, whereas both values approach the vertex along radial cone lines. This is impossible. Hence the link is connected and the shifted constant complex is perverse. This uses the definition and equivalent local-ring formulation in Demailly, Chapter II, §7. The equivalence with the algebraic normality hypothesis for an algebraic surface is a required analytic-comparison foundation; it is not proved merely by citing that definition, and is retained as an open prerequisite below.</p>
+<p>For a normal isolated surface singularity, rational smoothness is the stronger requirement that its link have the rational cohomology of <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. The link is a connected closed oriented three-manifold: away from the vertex the surface is a complex manifold, and a transverse radial level inherits the boundary orientation. The compact oriented duality constructed in the first lesson identifies its degree-one and degree-two cohomology dually, while degrees zero and three are <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Thus rational smoothness here is equivalent to <span class="math" data-tex="\(H^1(M;\mathbf Q)=0\)">\(H^1(M;\mathbf Q)=0\)</span>. For a cone over a smooth plane cubic, the first lesson's Thom–Gysin and plane-curve calculations give Betti numbers <span class="math" data-tex="\(1,2,2,1\)">\(1,2,2,1\)</span>. Its constant complex shifted by two is perverse but the vertex is not rationally smooth. We use rational coefficients for this particular Betti-number assertion.</p>
+<h2 id="4-constructing-objects-from-local-data">4. Constructing objects from local data</h2>
+<p>The support and cosupport tests are local for open restrictions. They are also local for étale pullback: local dimensions agree, and ordinary and exceptional restrictions satisfy the étale base-change comparisons. Thus an étale pullback <span class="math" data-tex="\(f^*\)">\(f^*\)</span> is t-exact; if <span class="math" data-tex="\(f\)">\(f\)</span> is surjective it is conservative, as geometric stalks show. Its derived right adjoint <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span> preserves the lower half. Indeed, for <span class="math" data-tex="\(A\in{}^pD^{\leq-1}\)">\(A\in{}^pD^{\leq-1}\)</span>, <span class="math" data-tex="\(B\in{}^pD^{\geq0}\)">\(B\in{}^pD^{\geq0}\)</span>, adjunction gives <span class="math" data-tex="\(\operatorname{Hom}(A,Rf_*B)=\operatorname{Hom}(f^*A,B)=0\)">\(\operatorname{Hom}(A,Rf_*B)=\operatorname{Hom}(f^*A,B)=0\)</span>; the orthogonality characterization of a t-structure yields the assertion.</p>
+<p><strong>Proposition 4.1 (effective descent).</strong> Perverse sheaves and their morphisms glue uniquely from descent data on algebraic open or étale covers. On topological open covers the same statement holds for a fixed compatible finite stratification. With varying stratifications, global finite constructibility must be imposed.</p>
+<p><strong>Proof.</strong> First take a quasi-compact separated étale surjection <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span>. A finite disjoint union of algebraic opens is included in this case. Let <span class="math" data-tex="\(P_Y\)">\(P_Y\)</span> be perverse and let <span class="math" data-tex="\(\theta:p_1^*P_Y\to p_0^*P_Y\)">\(\theta:p_1^*P_Y\to p_0^*P_Y\)</span> on <span class="math" data-tex="\(Y\times_XY\)">\(Y\times_XY\)</span> satisfy the cocycle condition. Write <span class="math" data-tex="\(g:Y\times_XY\to X\)">\(g:Y\times_XY\to X\)</span>. Adjunction and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> give two maps</p>
+<span class="math math-display" data-tex="\[
+C^0={}^pH^0(Rf_*P_Y)\quad\rightrightarrows\quad
+C^1={}^pH^0(Rg_*p_0^*P_Y).
+\tag{4.1}
+\]">\[
+C^0={}^pH^0(Rf_*P_Y)\quad\rightrightarrows\quad
+C^1={}^pH^0(Rg_*p_0^*P_Y).
+\tag{4.1}
+\]</span>
+<p>Define <span class="math" data-tex="\(P\)">\(P\)</span> as their equalizer, or the kernel of their difference, in the already constructed heart. The images in (4.1) exist as bounded constructible complexes by the operation theorems. They lie in perverse degrees at least zero, by the preceding adjunction argument.</p>
+<p>We check effectiveness without assuming descent of complexes. Pull back to <span class="math" data-tex="\(Y\)">\(Y\)</span>. T-exactness commutes with <span class="math" data-tex="\({}^pH^0\)">\({}^pH^0\)</span> and kernels; étale base change identifies the result with the first two direct images for the pulled-back cover <span class="math" data-tex="\(Y\times_XY\to Y\)">\(Y\times_XY\to Y\)</span>. This cover has its diagonal section. The cocycle <span class="math" data-tex="\(\theta\)">\(\theta\)</span> identifies its coefficient system with the pullback of <span class="math" data-tex="\(P_Y\)">\(P_Y\)</span>. Inserting the diagonal section gives an augmentation <span class="math" data-tex="\(a:P_Y\to f^*C^0\)">\(a:P_Y\to f^*C^0\)</span>, a retraction <span class="math" data-tex="\(h^0:f^*C^0\to P_Y\)">\(h^0:f^*C^0\to P_Y\)</span>, and a map <span class="math" data-tex="\(h^1:f^*C^1\to f^*C^0\)">\(h^1:f^*C^1\to f^*C^0\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+h^0a=1,\qquad h^1(d^0-d^1)=1-ah^0.
+\tag{4.2}
+\]">\[
+h^0a=1,\qquad h^1(d^0-d^1)=1-ah^0.
+\tag{4.2}
+\]</span>
+<p>For completeness these identities already hold before perverse cohomology. The map <span class="math" data-tex="\(h^0\)">\(h^0\)</span> restricts a section on the cover to the chosen section; <span class="math" data-tex="\(h^1\)">\(h^1\)</span> restricts a two-fold section to the pair consisting of that chosen lift and the variable lift. The two faces then give, respectively, the original section and its value at the chosen lift transported by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Their difference is <span class="math" data-tex="\(1-ah^0\)">\(1-ah^0\)</span>. The cocycle condition makes these transports agree on triples. These are maps induced by units, pullbacks and the section, so the same identities hold for their derived maps and after <span class="math" data-tex="\({}^pH^0\)">\({}^pH^0\)</span>. Equation (4.2) identifies the equalizer with <span class="math" data-tex="\(P_Y\)">\(P_Y\)</span>. The induced identifications on the double overlap are precisely <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, again by its cocycle. Thus <span class="math" data-tex="\(f^*P\simeq P_Y\)">\(f^*P\simeq P_Y\)</span> with the prescribed descent datum.</p>
+<p>A compatible morphism of descent data induces maps of the two terms of (4.1), hence a map of equalizers. It restricts to the prescribed morphism by (4.2). Uniqueness follows because a conservative exact functor on abelian categories is faithful: the image of a morphism which pulls back to zero pulls back to zero, and is consequently zero. This proves full descent, not just existence of an object.</p>
+<p>An arbitrary étale cover of a finite-type scheme has a finite subcover by quasi-compact separated étale charts: refine the domains by affine opens and use quasi-compactness of the target. Apply the construction to their disjoint union. On every additional chart its restriction is the prescribed object, because this can be checked after the already chosen covering base change; the uniqueness just proved makes these identifications compatible. This includes arbitrary algebraic open covers.</p>
+<p>Here are the extra details for arbitrary classical topological open covers. One may temporarily work in bounded-below complexes of all sheaves, with the finite fixed stratification and perversities <span class="math" data-tex="\(-\dim S\)">\(-\dim S\)</span>. The ordinary shifted structures on individual strata glue by Lesson 2; no constructibility or duality is needed for this auxiliary structure. Its restriction to the constructible category is the structure already proved. For the local homeomorphism <span class="math" data-tex="\(f:\coprod U_\alpha\to X\)">\(f:\coprod U_\alpha\to X\)</span>, restriction is exact and t-exact for these stratum tests. Its right adjoint preserves the lower half, and its open base change is obtained simply by restricting sections and their injective resolutions. Form (4.1) in this larger heart. The same diagonal-section identities prove that its restriction is the prescribed perverse object on each open. It is therefore locally lisse of finite rank along the fixed strata. With the stipulated global finite constructibility, it lies in the required constructible category. Its ordinary cohomology is uniformly in degrees <span class="math" data-tex="\([-\dim X,0]\)">\([-\dim X,0]\)</span>: the upper bound follows from the stalk tests, and the lower bound follows by induction from <span class="math" data-tex="\(i_*i^!K\to K\to Rj_*j^*K\to\)">\(i_*i^!K\to K\to Rj_*j^*K\to\)</span> and left exactness of ordinary right derived images. Thus boundedness is also global. The previous faithful-exact argument proves uniqueness of morphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-finite-chains-of-subobjects">5. Finite chains of subobjects</h2>
+<p>We first show that allowing finer singular strata does not create new kinds of subobjects of a shifted local system on a smooth variety.</p>
+<p><strong>Lemma 5.1.</strong> If <span class="math" data-tex="\(X\)">\(X\)</span> is smooth connected of dimension <span class="math" data-tex="\(s\)">\(s\)</span>, the subobjects and quotients of <span class="math" data-tex="\(L[s]\)">\(L[s]\)</span> in <span class="math" data-tex="\(\operatorname{Perv}(X)\)">\(\operatorname{Perv}(X)\)</span> are exactly the shifted sub-local systems and quotient local systems.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F\subsetneq X\)">\(F\subsetneq X\)</span> be closed and <span class="math" data-tex="\(T\subset F\)">\(T\subset F\)</span> a smooth piece of dimension <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. The restriction of <span class="math" data-tex="\(L[s]\)">\(L[s]\)</span> is concentrated in degree <span class="math" data-tex="\(-s&lt;-t\)">\(-s&lt;-t\)</span>; its exceptional restriction is concentrated in degree <span class="math" data-tex="\(s-2t&gt;-t\)">\(s-2t&gt;-t\)</span>, by (2.8). The strict-boundary test of Lesson 2, Lemma 3.1, says that <span class="math" data-tex="\(L[s]\)">\(L[s]\)</span> has no nonzero boundary subobject or quotient.</p>
+<p>For a subobject <span class="math" data-tex="\(Q\subset L[s]\)">\(Q\subset L[s]\)</span>, choose a dense smooth open <span class="math" data-tex="\(U\)">\(U\)</span> on which <span class="math" data-tex="\(Q\)">\(Q\)</span> and its quotient are shifted local systems. We need to extend the corresponding sub-local system <span class="math" data-tex="\(M_U\subset L|_U\)">\(M_U\subset L|_U\)</span> to a sub-local system <span class="math" data-tex="\(L&#x27;\subset L\)">\(L&#x27;\subset L\)</span> on all of <span class="math" data-tex="\(X\)">\(X\)</span>. Here is the construction, with the classical and étale inputs separated.</p>
+<p><strong>Classical extension across the boundary.</strong> Put <span class="math" data-tex="\(F=X\setminus U\)">\(F=X\setminus U\)</span>. Around each point of <span class="math" data-tex="\(X\)">\(X\)</span>, choose a real coordinate ball <span class="math" data-tex="\(B\)">\(B\)</span>, convex in its coordinates, on which <span class="math" data-tex="\(L\)">\(L\)</span> is constant with fibre <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the boundary is empty and there is nothing to extend. Otherwise <span class="math" data-tex="\(F\cap B\)">\(F\cap B\)</span> has a finite smooth stratification of real dimensions at most <span class="math" data-tex="\(2s-2\)">\(2s-2\)</span>, by the algebraic stratification constructed in Lesson 1, Appendix K. We first prove that <span class="math" data-tex="\(B\setminus F\)">\(B\setminus F\)</span> is path connected.</p>
+<p>Write <span class="math" data-tex="\(m=2s\)">\(m=2s\)</span>, and fix <span class="math" data-tex="\(p\in B\setminus F\)">\(p\in B\setminus F\)</span>. An endpoint <span class="math" data-tex="\(z\)">\(z\)</span> for which the segment from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span> meets a stratum <span class="math" data-tex="\(S\)">\(S\)</span> lies in the image of</p>
+<span class="math math-display" data-tex="\[
+S\times[1,\infty)\longrightarrow\mathbf R^m,
+\qquad (y,t)\longmapsto p+t(y-p).
+\tag{5.0}
+\]">\[
+S\times[1,\infty)\longrightarrow\mathbf R^m,
+\qquad (y,t)\longmapsto p+t(y-p).
+\tag{5.0}
+\]</span>
+<p>Each smooth stratum is covered by countably many coordinate pieces with compact parameter boxes. Restricting also <span class="math" data-tex="\(t\)">\(t\)</span> to compact intervals makes this a Lipschitz map from a box of dimension at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>: its derivative is bounded on a slightly larger compact box, and integration along a segment bounds differences. Such an image can be covered by boxes of arbitrarily small total <span class="math" data-tex="\(m\)">\(m\)</span>-dimensional volume. Indeed subdivision of a bounded <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional parameter box into mesh <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> gives <span class="math" data-tex="\(O(\epsilon^{-d})\)">\(O(\epsilon^{-d})\)</span> image boxes of side <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span>, whose total volume is <span class="math" data-tex="\(O(\epsilon^{m-d})\)">\(O(\epsilon^{m-d})\)</span>, tending to zero for <span class="math" data-tex="\(d&lt;m\)">\(d&lt;m\)</span>. For countably many compact pieces choose the volume budgets <span class="math" data-tex="\(\delta/2^n\)">\(\delta/2^n\)</span>. The union then has a covering of total volume at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, for every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>.</p>
+<p>Such a union cannot contain a coordinate ball. To see this without any measure-theoretic transversality theorem, put a closed cube inside that ball and use open covering boxes with total volume less than the cube's volume. Compactness would give a finite subcover. Partitioning along their finitely many coordinate faces shows that the volume of a covered cube is at most the sum of the covering volumes, a contradiction. Consequently the forbidden endpoints for <span class="math" data-tex="\(p\)">\(p\)</span> have empty interior; the same covering argument applies to the union of the forbidden endpoints for any two fixed points <span class="math" data-tex="\(p,q\in B\setminus F\)">\(p,q\in B\setminus F\)</span>. Choose <span class="math" data-tex="\(z\in B\)">\(z\in B\)</span> outside that union. The two segments <span class="math" data-tex="\([p,z]\)">\([p,z]\)</span> and <span class="math" data-tex="\([z,q]\)">\([z,q]\)</span> stay in the convex ball and avoid <span class="math" data-tex="\(F\)">\(F\)</span>. This proves path connectedness.</p>
+<p>In the chosen trivialization of <span class="math" data-tex="\(L\)">\(L\)</span>, the image of each fibre of <span class="math" data-tex="\(M_U\)">\(M_U\)</span> is a subspace of the same <span class="math" data-tex="\(V\)">\(V\)</span>. These subspaces are locally constant on <span class="math" data-tex="\(B\setminus F\)">\(B\setminus F\)</span>: on a neighborhood where both local systems are trivial, a sheaf morphism is given by a constant linear map. The connectedness just proved makes the image one fixed subspace <span class="math" data-tex="\(W_B\subset V\)">\(W_B\subset V\)</span>. Thus <span class="math" data-tex="\(M_U|_{B\setminus F}\)">\(M_U|_{B\setminus F}\)</span> is exactly the constant subsheaf with fibre <span class="math" data-tex="\(W_B\)">\(W_B\)</span>, and it extends to that constant subsheaf on <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>These extensions agree on overlaps. Around any point of an overlap choose a connected ball <span class="math" data-tex="\(D\)">\(D\)</span> inside it. The two ambient trivializations differ on <span class="math" data-tex="\(D\)">\(D\)</span> by a constant invertible matrix. Since <span class="math" data-tex="\(U\)">\(U\)</span> is dense, <span class="math" data-tex="\(D\cap U\)">\(D\cap U\)</span> is nonempty; there both subspaces describe the given <span class="math" data-tex="\(M_U\)">\(M_U\)</span>. Their constant descriptions consequently agree on all of <span class="math" data-tex="\(D\)">\(D\)</span>. They therefore glue to a sub-local system <span class="math" data-tex="\(L&#x27;\subset L\)">\(L&#x27;\subset L\)</span>, with <span class="math" data-tex="\(L&#x27;|_U=M_U\)">\(L&#x27;|_U=M_U\)</span>. The quotient <span class="math" data-tex="\(L/L&#x27;\)">\(L/L&#x27;\)</span> is locally the constant quotient <span class="math" data-tex="\(V/W_B\)">\(V/W_B\)</span>, so it too is a local system. The same argument proves uniqueness: any extension agrees on the dense open part of every sufficiently small trivializing ball, hence on the whole ball. This constructs the actual subsystem without importing a classification of local systems on an arbitrary variety.</p>
+<p><strong>Étale extension.</strong> In this setting we use the finite-cover correspondence and regular-local-ring normality among the stated algebraic foundations. Every connected finite étale cover of smooth connected <span class="math" data-tex="\(X\)">\(X\)</span> is regular, hence normal and integral; distinct irreducible components of a normal noetherian scheme are disjoint. Its nonempty dense open preimage of <span class="math" data-tex="\(U\)">\(U\)</span> remains integral and connected. This implies surjectivity of <span class="math" data-tex="\(\pi_1(U)\to\pi_1(X)\)">\(\pi_1(U)\to\pi_1(X)\)</span>, as follows. The image <span class="math" data-tex="\(H\)">\(H\)</span> is closed, since a continuous image of a compact profinite group is compact in a Hausdorff group. If <span class="math" data-tex="\(H\)">\(H\)</span> were proper, choose <span class="math" data-tex="\(g\notin H\)">\(g\notin H\)</span> and an open normal subgroup <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(gN\cap H=\varnothing\)">\(gN\cap H=\varnothing\)</span>. Then <span class="math" data-tex="\(HN\)">\(HN\)</span> is a proper open subgroup. The finite connected cover corresponding to the transitive coset set <span class="math" data-tex="\(\pi_1(X)/HN\)">\(\pi_1(X)/HN\)</span> would become disconnected over <span class="math" data-tex="\(U\)">\(U\)</span>: <span class="math" data-tex="\(H\)">\(H\)</span> fixes the identity coset and cannot act transitively on this set of more than one element. This contradicts the connectedness just proved. A fibre subspace invariant under <span class="math" data-tex="\(\pi_1(U)\)">\(\pi_1(U)\)</span> is therefore invariant under <span class="math" data-tex="\(\pi_1(X)\)">\(\pi_1(X)\)</span>. The lisse representation correspondence supplies <span class="math" data-tex="\(L&#x27;\subset L\)">\(L&#x27;\subset L\)</span> and its lisse quotient. For adic coefficients the correspondence and normalized passage remain the separately identified prerequisites; the finite-cover argument does not prove them.</p>
+<p>Now map <span class="math" data-tex="\({}^pH^0j_!(L&#x27;|_U[s])\)">\({}^pH^0j_!(L&#x27;|_U[s])\)</span> into <span class="math" data-tex="\(Q\)">\(Q\)</span>. Its image has no boundary quotient, by the left heart adjunction, and no boundary subobject, since it embeds in <span class="math" data-tex="\(L[s]\)">\(L[s]\)</span>. The uniqueness of intermediate extension identifies that image with <span class="math" data-tex="\(L&#x27;[s]\)">\(L&#x27;[s]\)</span>, which satisfies the same two strict tests. The quotient <span class="math" data-tex="\(Q/L&#x27;[s]\)">\(Q/L&#x27;[s]\)</span> embeds in <span class="math" data-tex="\((L/L&#x27;)[s]\)">\((L/L&#x27;)[s]\)</span> and is supported on <span class="math" data-tex="\(F\)">\(F\)</span>; the strict test makes it zero. This proves the subobject statement. Taking its quotient proves the quotient statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2.</strong> Every perverse sheaf with field coefficients has finite length.</p>
+<p><strong>Proof.</strong> We prove both chain conditions by induction on dimension. In dimension zero, a strict chain of subrepresentations changes vector-space dimension, so it has finitely many steps. The same holds for a shifted local system on a smooth variety by Lemma 5.1.</p>
+<p>For <span class="math" data-tex="\(P\)">\(P\)</span>, choose a dense disjoint smooth open <span class="math" data-tex="\(U\)">\(U\)</span> on which <span class="math" data-tex="\(j^*P\)">\(j^*P\)</span> is shifted lisse on each component. Its complement <span class="math" data-tex="\(F\)">\(F\)</span> has smaller dimension. For any heart object <span class="math" data-tex="\(R\)">\(R\)</span>, the two localization triangles and their perverse cohomology yield</p>
+<span class="math math-display" data-tex="\[
+E(R)=i_*{}^pH^0(i^!R)\hookrightarrow R,
+\qquad
+R\twoheadrightarrow Q(R)=i_*{}^pH^0(i^*R).
+\tag{5.1}
+\]">\[
+E(R)=i_*{}^pH^0(i^!R)\hookrightarrow R,
+\qquad
+R\twoheadrightarrow Q(R)=i_*{}^pH^0(i^*R).
+\tag{5.1}
+\]</span>
+<p>The first map is injective because <span class="math" data-tex="\(Rj_*j^*R\)">\(Rj_*j^*R\)</span> has perverse degrees at least zero; the second is onto because <span class="math" data-tex="\(j_!j^*R\)">\(j_!j^*R\)</span> has degrees at most zero. Heart adjunction shows that every boundary subobject factors through <span class="math" data-tex="\(E(R)\)">\(E(R)\)</span>, and every boundary quotient factors through <span class="math" data-tex="\(Q(R)\)">\(Q(R)\)</span>. Both objects have finite length by induction on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Consider an ascending chain <span class="math" data-tex="\(P_1\subset P_2\subset\cdots\subset P\)">\(P_1\subset P_2\subset\cdots\subset P\)</span>. Its restriction to <span class="math" data-tex="\(U\)">\(U\)</span> stabilizes, since it is a chain of sub-local systems of the fixed finite-rank <span class="math" data-tex="\(j^*P\)">\(j^*P\)</span>. Choose <span class="math" data-tex="\(n\)">\(n\)</span> after stabilization. All <span class="math" data-tex="\(P_m/P_n\)">\(P_m/P_n\)</span>, <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, are boundary subobjects of the single object <span class="math" data-tex="\(P/P_n\)">\(P/P_n\)</span>; they therefore lie in <span class="math" data-tex="\(E(P/P_n)\)">\(E(P/P_n)\)</span>. That object has finite length, so this chain, and hence the original chain, stabilizes.</p>
+<p>For a descending chain <span class="math" data-tex="\(P_1\supset P_2\supset\cdots\)">\(P_1\supset P_2\supset\cdots\)</span>, choose <span class="math" data-tex="\(n\)">\(n\)</span> after the open restrictions stabilize. Every quotient <span class="math" data-tex="\(P_n/P_m\)">\(P_n/P_m\)</span>, <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, is supported on <span class="math" data-tex="\(F\)">\(F\)</span>. The quotient map factors through <span class="math" data-tex="\(Q(P_n)\)">\(Q(P_n)\)</span>, so every <span class="math" data-tex="\(P_m\)">\(P_m\)</span> contains the fixed kernel of <span class="math" data-tex="\(P_n\to Q(P_n)\)">\(P_n\to Q(P_n)\)</span>. Their images are a descending chain of subobjects in the finite-length object <span class="math" data-tex="\(Q(P_n)\)">\(Q(P_n)\)</span>; they stabilize. Thus the original chain stabilizes too.</p>
+<p>Finally, the ascending chain condition guarantees a maximal proper subobject of any nonzero object: otherwise repeated strict enlargement would contradict that condition. Choose one, then a maximal proper subobject inside it, and continue. The descending chain condition makes this process terminate. The successive quotients are simple, giving a finite composition series. No exactness of intermediate extension has been assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For integral coefficients the failure on a point noted after Theorem 2.1 already prevents this conclusion. The two integral t-structures exchanged by duality in BBD §4.0(a)–(b) should not be identified with the single self-dual field-coefficient heart used here.</p>
+<h2 id="6-exercises-and-solutions">6. Exercises and solutions</h2>
+<p><strong>Exercise 1 (easy: a smooth piece).</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be lisse on a smooth pure <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional variety. Check its perverse placement and compute the dual.</p>
+<p><strong>Solution.</strong> For the one-piece partition, ordinary and exceptional restrictions are the identity. Both inequalities in (2.2) hold precisely for the degree <span class="math" data-tex="\(-d\)">\(-d\)</span> placement <span class="math" data-tex="\(L[d]\)">\(L[d]\)</span>. Smooth duality gives <span class="math" data-tex="\(D_XL=L^\vee(d)[2d]\)">\(D_XL=L^\vee(d)[2d]\)</span> in the étale setting and <span class="math" data-tex="\(L^\vee[2d]\)">\(L^\vee[2d]\)</span> classically. Since duality reverses shifts, the dual of <span class="math" data-tex="\(L[d]\)">\(L[d]\)</span> is <span class="math" data-tex="\(L^\vee(d)[d]\)">\(L^\vee(d)[d]\)</span>, or <span class="math" data-tex="\(L^\vee[d]\)">\(L^\vee[d]\)</span> classically. The Tate twist changes the coefficient representation, not its cohomological placement.</p>
+<p><strong>Exercise 2 (easy: a closed point).</strong> For a closed point <span class="math" data-tex="\(i:x\hookrightarrow X\)">\(i:x\hookrightarrow X\)</span>, determine the perverse placement, subobjects and dual of a finite-dimensional coefficient representation <span class="math" data-tex="\(V\)">\(V\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Solution.</strong> Open restriction of <span class="math" data-tex="\(i_*V\)">\(i_*V\)</span> is zero, and <span class="math" data-tex="\(i^*i_*V=i^!i_*V=V\)">\(i^*i_*V=i^!i_*V=V\)</span>. The zero-dimensional bounds in (2.4) therefore put it in the heart in degree zero. Any subobject restricts to zero off <span class="math" data-tex="\(x\)">\(x\)</span>, and closed direct image is fully faithful and t-exact. Thus the subobjects are exactly subrepresentations of <span class="math" data-tex="\(V\)">\(V\)</span>; for a geometric point these are all vector subspaces. Proper duality gives <span class="math" data-tex="\(D_Xi_*V=i_*V^\vee\)">\(D_Xi_*V=i_*V^\vee\)</span>. Over a nongeometric closed point the Galois action is dualized as well.</p>
+<p><strong>Exercise 3 (medium: detecting a curve object).</strong> Prove the ordinary-cohomology criterion for perversity on a pure reduced curve, and compute the shifted constant complex at a node.</p>
+<p><strong>Solution.</strong> Choose the smooth lisse open and finite boundary as in §3. Perverse upper bounds give ordinary cohomology at most zero and point support in degree zero. In (3.1), the costalk has lower bound zero and the puncture term has lower bound <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the stalk has lower bound <span class="math" data-tex="\(-1\)">\(-1\)</span>. This leaves <span class="math" data-tex="\(M=\mathcal H^{-1}K\)">\(M=\mathcal H^{-1}K\)</span>, <span class="math" data-tex="\(N=\mathcal H^0K\)">\(N=\mathcal H^0K\)</span>. Apply point support to <span class="math" data-tex="\(M[1]\to K\to N\to\)">\(M[1]\to K\to N\to\)</span>: because <span class="math" data-tex="\(N\)">\(N\)</span> is point supported and the derived support of a sheaf starts in degree zero, its only possibly forbidden group is exactly <span class="math" data-tex="\(H^0(i_x^!M)\)">\(H^0(i_x^!M)\)</span> in (3.2). This proves necessity. Conversely these three properties give the open placement, the closed upper bounds and the vanishing of all negative closed costalk groups by the same exact sequence, proving sufficiency.</p>
+<p>For the node the first lesson proves that a small puncture has two branches. The constant section map is the diagonal <span class="math" data-tex="\(\Lambda\to\Lambda^2\)">\(\Lambda\to\Lambda^2\)</span>. The actual support fiber consequently has cohomology <span class="math" data-tex="\(\operatorname{coker}(\Lambda\to\Lambda^2)=\Lambda\)">\(\operatorname{coker}(\Lambda\to\Lambda^2)=\Lambda\)</span> in degree one and the two circle classes <span class="math" data-tex="\(\Lambda^2\)">\(\Lambda^2\)</span> in degree two. After shifting by one, the costalk has degrees zero and one, while the stalk is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. All perverse bounds hold. A degree-zero costalk can give a point-supported <strong>perverse</strong> subobject; this does not contradict the absence of point-supported sections of the ordinary sheaf <span class="math" data-tex="\(\Lambda_X\)">\(\Lambda_X\)</span>.</p>
+<p><strong>Exercise 4 (medium: a surface obstruction).</strong> Compute the costalk of the shifted constant complex on two planes meeting only at their origins, and compare it over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> with the cone over a smooth plane cubic.</p>
+<p><strong>Solution.</strong> Each punctured plane retracts to <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, and they remain disjoint after removing the origin. Their reduced link cohomology has ranks one in degree zero and two in degree three. The shift in (3.3) places these in degrees <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>. The first violates the closed-point lower bound, so the shifted constant complex is not perverse. For the cubic cone, the connected link has rational Betti numbers <span class="math" data-tex="\(1,2,2,1\)">\(1,2,2,1\)</span>; reduced degree zero is absent. Formula (3.3) puts the groups of ranks <span class="math" data-tex="\(2,2,1\)">\(2,2,1\)</span> in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>. Perversity holds, but the nonzero first and second link cohomology rule out rational smoothness.</p>
+<p><strong>Exercise 5 (hard: the projective line with one exceptional point).</strong> Classify the classical perverse sheaves on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> constructible for the strata <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and <span class="math" data-tex="\(\mathbf P^1\setminus\{0\}\)">\(\mathbf P^1\setminus\{0\}\)</span>. Determine all indecomposables and their multiplicities.</p>
+<p><strong>Solution.</strong> The open part is the complex affine line. Straight contraction makes it simply connected, and path transport identifies every local system with a constant space <span class="math" data-tex="\(V\)">\(V\)</span>. Its boundary monodromy is the identity. The global attaching fiber construction of Lesson 2 still applies: its open derived maps are the maps of constant systems, and its boundary complex is <span class="math" data-tex="\([V\xrightarrow0V]\)">\([V\xrightarrow0V]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. The full morphism computation there therefore gives exactly the category</p>
+<span class="math math-display" data-tex="\[
+V\xrightarrow uW\xrightarrow vV,\qquad vu=0.
+\tag{6.1}
+\]">\[
+V\xrightarrow uW\xrightarrow vV,\qquad vu=0.
+\tag{6.1}
+\]</span>
+<p>There is no omitted global attachment parameter. In particular the open derived Hom in negative degrees vanishes by the ordinary heart property, and in degree zero it is <span class="math" data-tex="\(\operatorname{Hom}(V,V&#x27;)\)">\(\operatorname{Hom}(V,V&#x27;)\)</span>; the boundary mapping fiber is the one computed in the preceding lesson. Kernels and cokernels are componentwise. The extra invertibility is automatic since <span class="math" data-tex="\((uv)^2=0\)">\((uv)^2=0\)</span>, giving inverse <span class="math" data-tex="\(1-uv\)">\(1-uv\)</span> for <span class="math" data-tex="\(1+uv\)">\(1+uv\)</span>.</p>
+<p>We prove the classification by splitting homogeneous nilpotent chains, rather than assuming a representation-classification theorem. Put <span class="math" data-tex="\(E=V\oplus W\)">\(E=V\oplus W\)</span>, with its two summands as a grading, and let <span class="math" data-tex="\(N\)">\(N\)</span> exchange them by <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. The relation implies
+<span class="math" data-tex="\(N^2|_V=0\)">\(N^2|_V=0\)</span>, <span class="math" data-tex="\(N^3=0\)">\(N^3=0\)</span>.
+Choose a basis <span class="math" data-tex="\(z_i\)">\(z_i\)</span> of <span class="math" data-tex="\(\operatorname{im}N^2\subset W\)">\(\operatorname{im}N^2\subset W\)</span>, lift it to <span class="math" data-tex="\(w_i\in W\)">\(w_i\in W\)</span> with <span class="math" data-tex="\(N^2w_i=z_i\)">\(N^2w_i=z_i\)</span>, and set <span class="math" data-tex="\(e_i=Nw_i\in V\)">\(e_i=Nw_i\in V\)</span>. These length-three chains are linearly independent. Choose functionals <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(\lambda_i(z_j)=\delta_{ij}\)">\(\lambda_i(z_j)=\delta_{ij}\)</span>, <span class="math" data-tex="\(\lambda_i(w_j)=0\)">\(\lambda_i(w_j)=0\)</span>; the independence of the <span class="math" data-tex="\(w_j,z_j\)">\(w_j,z_j\)</span> permits this. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi_V(x)&amp;=\sum_i\lambda_i(Nx)e_i,\\
+\pi_W(y)&amp;=\sum_i\bigl(\lambda_i(N^2y)w_i+\lambda_i(y)z_i\bigr).
+\end{aligned}
+\tag{6.2}
+\]">\[
+\begin{aligned}
+\pi_V(x)&amp;=\sum_i\lambda_i(Nx)e_i,\\
+\pi_W(y)&amp;=\sum_i\bigl(\lambda_i(N^2y)w_i+\lambda_i(y)z_i\bigr).
+\end{aligned}
+\tag{6.2}
+\]</span>
+<p>Both are identity on the respective chain spaces, and direct substitution using <span class="math" data-tex="\(N^3=0\)">\(N^3=0\)</span>, <span class="math" data-tex="\(N^2|_V=0\)">\(N^2|_V=0\)</span> gives <span class="math" data-tex="\(\pi N=N\pi\)">\(\pi N=N\pi\)</span>. Thus <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a graded projection onto those chains and its kernel is a graded invariant complement. On that complement <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>, since its image under <span class="math" data-tex="\(N^2\)">\(N^2\)</span> lies both in the chain space and in the kernel.</p>
+<p>For the remaining square-zero operator choose a homogeneous basis <span class="math" data-tex="\(b_j\)">\(b_j\)</span> of <span class="math" data-tex="\(\operatorname{im}N\)">\(\operatorname{im}N\)</span> and homogeneous lifts <span class="math" data-tex="\(a_j\)">\(a_j\)</span> in the opposite grade with <span class="math" data-tex="\(Na_j=b_j\)">\(Na_j=b_j\)</span>. The <span class="math" data-tex="\(a_j,b_j\)">\(a_j,b_j\)</span> are independent. Extend the coordinate functionals of the <span class="math" data-tex="\(b_j\)">\(b_j\)</span> to homogeneous functionals <span class="math" data-tex="\(\mu_j\)">\(\mu_j\)</span> which vanish on all <span class="math" data-tex="\(a_j\)">\(a_j\)</span>. The map
+<span class="math" data-tex="\(x\mapsto\sum_j(\mu_j(Nx)a_j+\mu_j(x)b_j)\)">\(x\mapsto\sum_j(\mu_j(Nx)a_j+\mu_j(x)b_j)\)</span>
+is again a graded projection commuting with <span class="math" data-tex="\(N\)">\(N\)</span>. Its image consists of the length-two chains. Its kernel has <span class="math" data-tex="\(N=0\)">\(N=0\)</span> and splits into one-dimensional homogeneous spaces. This proves an exhaustive decomposition into the following blocks:</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Dimensions <span class="math" data-tex="\((\dim V,\dim W)\)">\((\dim V,\dim W)\)</span></th>
+<th>Arrows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(S_V\)">\(S_V\)</span></td>
+<td><span class="math" data-tex="\((1,0)\)">\((1,0)\)</span></td>
+<td>zero</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(S_W\)">\(S_W\)</span></td>
+<td><span class="math" data-tex="\((0,1)\)">\((0,1)\)</span></td>
+<td>zero</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E_u\)">\(E_u\)</span></td>
+<td><span class="math" data-tex="\((1,1)\)">\((1,1)\)</span></td>
+<td><span class="math" data-tex="\(u=1,\ v=0\)">\(u=1,\ v=0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(E_v\)">\(E_v\)</span></td>
+<td><span class="math" data-tex="\((1,1)\)">\((1,1)\)</span></td>
+<td><span class="math" data-tex="\(u=0,\ v=1\)">\(u=0,\ v=1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(P_W\)">\(P_W\)</span></td>
+<td><span class="math" data-tex="\((1,2)\)">\((1,2)\)</span></td>
+<td><span class="math" data-tex="\(w_1\xmapsto v e\xmapsto u w_2\)">\(w_1\xmapsto v e\xmapsto u w_2\)</span>, <span class="math" data-tex="\(v(w_2)=0\)">\(v(w_2)=0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The one-dimensional blocks are simple. Either two-dimensional block cannot split because its one nonzero arrow would then have to be zero. A three-dimensional block has <span class="math" data-tex="\(N^2\ne0\)">\(N^2\ne0\)</span>, whereas every block of dimension at most two has square zero; a nontrivial decomposition of this block would force <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span>. Hence it too is indecomposable. This proves exactly five indecomposable isomorphism classes.</p>
+<p>The number of length-three chains is <span class="math" data-tex="\(r=\operatorname{rank}(uv)\)">\(r=\operatorname{rank}(uv)\)</span>. Subtracting their contributions from <span class="math" data-tex="\(\operatorname{rank}u\)">\(\operatorname{rank}u\)</span>, <span class="math" data-tex="\(\operatorname{rank}v\)">\(\operatorname{rank}v\)</span>, and the two dimensions gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+m_{P_W}&amp;=r,&amp;m_{E_u}&amp;=\operatorname{rank}u-r,&amp;m_{E_v}&amp;=\operatorname{rank}v-r,\\
+m_{S_V}&amp;=\dim V-\operatorname{rank}u-\operatorname{rank}v+r,&amp;&amp;
+m_{S_W}&amp;=\dim W-\operatorname{rank}u-\operatorname{rank}v.
+\end{aligned}
+\tag{6.3}
+\]">\[
+\begin{aligned}
+m_{P_W}&amp;=r,&amp;m_{E_u}&amp;=\operatorname{rank}u-r,&amp;m_{E_v}&amp;=\operatorname{rank}v-r,\\
+m_{S_V}&amp;=\dim V-\operatorname{rank}u-\operatorname{rank}v+r,&amp;&amp;
+m_{S_W}&amp;=\dim W-\operatorname{rank}u-\operatorname{rank}v.
+\end{aligned}
+\tag{6.3}
+\]</span>
+<p>The actual splitting proves these integers nonnegative; their intrinsic expressions also prove uniqueness of the multiplicities. The simple sheaves are <span class="math" data-tex="\(S_V=\Lambda_{\mathbf P^1}[1]\)">\(S_V=\Lambda_{\mathbf P^1}[1]\)</span> and <span class="math" data-tex="\(S_W=i_*\Lambda\)">\(S_W=i_*\Lambda\)</span>. Every simple diagram has total dimension one, and exact sequences are componentwise, so every diagram has length <span class="math" data-tex="\(\dim V+\dim W\)">\(\dim V+\dim W\)</span>. This classification is classical: the entire étale category of the affine line in positive characteristic also contains wild nonconstant local systems, and is not the constant-open category (6.1).</p>
+<h2 id="proof-dependencies-still-requiring-closure">Proof dependencies still requiring closure</h2>
+<p>The constructions above preserve the assigned classical and étale scope. Their prerequisites must be tracked at that same scope. Lesson 1 contains written classical resolutions, localization, normal-cone geometry, constructible duality and operations in Appendices A–K, and branch geometry in Appendix L; its finite-coefficient image and duality reconstruction is in Appendix M. Lesson 2 supplies the categorical heart, gluing, strict-boundary and attaching-complex proofs. Their own source provenance and transitive proofs remain subject to the course audit.</p>
+<p>The finite étale curve bound uses the exact earlier affine-support theorem named in §3, including its strict-local, continuity, algebraic-dimension and curve-cohomology prerequisites. The finite-coefficient operation and exceptional-adjoint foundations used by Lesson 1 are not cleared merely because Appendix M has been written. The normalized adic operations, boundedness, biduality and stalk/derived-limit comparisons remain required unfinished inputs. The étale local-system argument also requires the finite-cover correspondence and the algebraic normality facts used explicitly in Lemma 5.1.</p>
+<p>The normal-surface argument is written for a normal analytic germ via bounded holomorphic extension. The equivalence of that formulation with algebraic normality for the assigned algebraic examples needs its analytic-comparison proof. The compact oriented duality and cubic-link calculations must likewise be checked through their exact earlier proofs. The new equalizer argument in §4 removes a separate appeal to general descent of complexes; it still uses the specified operation adjunctions and étale base-change maps. These remaining obligations prevent whole-lesson P514 or source-independence clearance.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson, J. Bernstein and P. Deligne, with contributions by O. Gabber, <a href="https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf"><em>Faisceaux pervers</em>, freely readable author-hosted edition</a>, Astérisque 100 (1982), §§2.1–2.2 and 4.0. Used for the dimension conditions, gluing framework, locality and coefficient distinctions.</li>
+<li>Y. Laszlo and M. Olsson, <a href="https://www.cmls.polytechnique.fr/perso/laszlo/articleweb/faisceaux-pervers.pdf"><em>Perverse t-structure on Artin stacks</em>, free author copy</a>, §2. Comparison for the recollement construction and its precise categorical hypotheses.</li>
+<li>M. A. A. de Cataldo and L. Migliorini, <a href="https://arxiv.org/abs/0712.0349"><em>The decomposition theorem, perverse sheaves and the topology of algebraic maps</em></a>, §2.3 and Example 2.5.1. Comparison for finite length, the normal-surface conclusion and the degree of the link contribution.</li>
+<li>J.-P. Demailly, <a href="https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf"><em>Complex Analytic and Differential Geometry</em>, free author text</a>, 2012 version, Chapter II, §7, especially Theorem 7.3 and Definition 7.4. Used for the analytic normality formulation; its algebraic comparison is not treated as a proof supplied by the citation.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Gluing t-structures</span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="intermediate-extensions-and-intersection-complexes.html">Intermediate extensions and intersection complexes →</a></span></nav>
+<p class="small source-link"><a href="src/the-perverse-t-structure.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-PERV">Repository</a></nav>
+</footer>
+</body>
+</html>

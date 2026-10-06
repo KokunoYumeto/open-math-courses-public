@@ -1,0 +1,285 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Testing equivalence with arrows and finite characters</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="testing-equivalence-with-arrows-and-finite-characters">Testing equivalence with arrows and finite characters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text: CC0.</em></p>
+<p>An equivalence retains the maps that distinguish objects, even when it changes their labels. This gives a way to rule out an equivalence with an opposite category: an incoming-map property of an initial object would have to become an outgoing-map property of a terminal object. Finite abelian groups pass a different test. Their characters recover every point, and precomposition reverses every homomorphism without losing information.</p>
+<p>We use categories with ambient sets of objects and locally small Hom sets. Sets, relations, rings and finite groups lie in a fixed universe containing the natural numbers. Rings are associative and unital, their homomorphisms preserve the unit, and the zero ring is allowed. The needed set constructions, including the usual encodings of integers, rationals and their quotients, follow from <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">Universes and small categories</a>. Our categorical prerequisites are the full inverse and cancellation proofs in <a href="relations-and-cancellation-in-categories.html#1-inverses-and-one-sided-inverses">Relations and cancellation in categories</a>, the universal-object and zero-map proofs in <a href="zero-maps-components-and-subobjects.html#2-universal-endpoints-and-their-zero-maps">Zero maps, components and subobjects</a>, and the equivalence and skeleton constructions in <a href="equivalences-and-chosen-representatives.html#3-choosing-convenient-object-labels">Equivalences and chosen representatives</a>. For characters we retain the complete group and cyclic calculations specified in Section 5.</p>
+<h2 id="1-extreme-objects-remember-an-arrow-direction">1. Extreme objects remember an arrow direction</h2>
+<p><strong>Proposition 1.1.</strong> If a category has an initial object <span class="math" data-tex="\(I\)">\(I\)</span>, a terminal object <span class="math" data-tex="\(T\)">\(T\)</span>, and an arrow <span class="math" data-tex="\(b:T\to I\)">\(b:T\to I\)</span>, then <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> are isomorphic.</p>
+<p><strong>Proof.</strong> Initiality supplies <span class="math" data-tex="\(a:I\to T\)">\(a:I\to T\)</span>. The composites <span class="math" data-tex="\(ba\)">\(ba\)</span> and <span class="math" data-tex="\(ab\)">\(ab\)</span> are endomorphisms of <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>, respectively. Each of those endomorphism sets is a singleton containing its identity, by initiality of <span class="math" data-tex="\(I\)">\(I\)</span> and terminality of <span class="math" data-tex="\(T\)">\(T\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+ba=1_I,\qquad ab=1_T.
+\tag{1.1}
+\]">\[
+ba=1_I,\qquad ab=1_T.
+\tag{1.1}
+\]</span>
+<p>These are both inverse equations. In particular the object is both initial and terminal, with the existing zero-map construction in the prerequisite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consider the following property of an initial object:</p>
+<span class="math math-display" data-tex="\[
+\text{every arrow }X\to I\text{ is invertible}.
+\tag{1.2}
+\]">\[
+\text{every arrow }X\to I\text{ is invertible}.
+\tag{1.2}
+\]</span>
+<p><strong>Lemma 1.2.</strong> Equivalences preserve initial objects and property (1.2).</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F:C\to D\)">\(F:C\to D\)</span> be an equivalence. The complete equivalence criterion in the prerequisite makes it fully faithful and essentially surjective. For any <span class="math" data-tex="\(Y\in D\)">\(Y\in D\)</span>, choose an isomorphism <span class="math" data-tex="\(c:FX\to Y\)">\(c:FX\to Y\)</span>. Postcomposition with <span class="math" data-tex="\(c\)">\(c\)</span> and full faithfulness identify</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_D(FI,Y)\\
+\simeq\operatorname{Hom}_D(FI,FX)\\
+\simeq\operatorname{Hom}_C(I,X).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_D(FI,Y)\\
+\simeq\operatorname{Hom}_D(FI,FX)\\
+\simeq\operatorname{Hom}_C(I,X).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The final set is a singleton, so <span class="math" data-tex="\(FI\)">\(FI\)</span> is initial. If <span class="math" data-tex="\(h:Y\to FI\)">\(h:Y\to FI\)</span>, fullness writes <span class="math" data-tex="\(hc=F(u)\)">\(hc=F(u)\)</span> for <span class="math" data-tex="\(u:X\to I\)">\(u:X\to I\)</span>. If (1.2) holds in <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is invertible; functoriality preserves its inverse, so <span class="math" data-tex="\(hc\)">\(hc\)</span> is invertible. Since <span class="math" data-tex="\(c\)">\(c\)</span> is an isomorphism, <span class="math" data-tex="\(h=F(u)c^{-1}\)">\(h=F(u)c^{-1}\)</span> is invertible. This proves preservation for every incoming arrow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.3.</strong> The category of sets in the universe is not equivalent to its opposite.</p>
+<p><strong>Proof.</strong> Its initial object is the empty set. A function <span class="math" data-tex="\(X\to\varnothing\)">\(X\to\varnothing\)</span> can exist only if <span class="math" data-tex="\(X\)">\(X\)</span> is empty, and then is the identity of the empty set. Thus (1.2) holds.</p>
+<p>An initial object in the opposite category is a terminal set, hence a singleton: maps from a singleton into a terminal set identify its elements with a singleton Hom set. For any singleton <span class="math" data-tex="\(T\)">\(T\)</span>, an inclusion <span class="math" data-tex="\(T\to\{0,1\}\)">\(T\to\{0,1\}\)</span> gives an arrow <span class="math" data-tex="\(\{0,1\}\to T\)">\(\{0,1\}\to T\)</span> in the opposite category. It is not invertible, since the original function is not a bijection. Thus no initial object there satisfies (1.2). Lemma 1.2 rules out an equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An equivalence does not preserve the literal name of an initial object. The argument works because every terminal set is a singleton and the obstruction applies to each such object.</p>
+<h2 id="2-a-category-with-at-most-one-arrow-becomes-an-order">2. A category with at most one arrow becomes an order</h2>
+<p><strong>Theorem 2.1.</strong> If every Hom set of <span class="math" data-tex="\(C\)">\(C\)</span> has at most one element, then <span class="math" data-tex="\(C\)">\(C\)</span> is equivalent to the category of a partially ordered set. The empty category is included.</p>
+<p><strong>Proof.</strong> Retain the complete ambient skeleton construction, Corollary 3.2 of <a href="equivalences-and-chosen-representatives.html#3-choosing-convenient-object-labels">Equivalences and chosen representatives</a>. It supplies a full skeletal subcategory <span class="math" data-tex="\(K\)">\(K\)</span> and an equivalence <span class="math" data-tex="\(K\hookrightarrow C\)">\(K\hookrightarrow C\)</span>, with all needed representative choices, conjugated arrows and functor laws already proved. Fullness means the Hom sets of <span class="math" data-tex="\(K\)">\(K\)</span> still have at most one element.</p>
+<p>On its ambient object set define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X\leq Y\\
+\Longleftrightarrow\\
+\operatorname{Hom}_K(X,Y)\ne\varnothing.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+X\leq Y\\
+\Longleftrightarrow\\
+\operatorname{Hom}_K(X,Y)\ne\varnothing.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Identities prove reflexivity, and composition proves transitivity. If <span class="math" data-tex="\(X\leq Y\)">\(X\leq Y\)</span> and <span class="math" data-tex="\(Y\leq X\)">\(Y\leq X\)</span>, choose the two arrows <span class="math" data-tex="\(f,g\)">\(f,g\)</span>. Each composite is an endomorphism in a Hom set with at most one element, so it is the corresponding identity. Thus <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> are isomorphic. Since <span class="math" data-tex="\(K\)">\(K\)</span> is skeletal, they are equal, proving antisymmetry.</p>
+<p>The order category has exactly the same objects and existence of arrows as <span class="math" data-tex="\(K\)">\(K\)</span>. Sending its unique arrow to the corresponding unique arrow of <span class="math" data-tex="\(K\)">\(K\)</span> is a bijection on each Hom set and preserves identities and composition because each relevant Hom set has at most one member. Its inverse has the same properties. This gives a category isomorphism with <span class="math" data-tex="\(K\)">\(K\)</span>, and the retained equivalence with <span class="math" data-tex="\(C\)">\(C\)</span> proves the assertion. For empty <span class="math" data-tex="\(C\)">\(C\)</span>, its skeleton and this ordered set are empty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The order is partial, rather than necessarily linear: there can be two objects with no arrow in either direction.</p>
+<h2 id="3-two-complete-inverse-tests">3. Two complete inverse tests</h2>
+<p>There are two useful stronger results already proved in the prerequisites. We retain their whole arguments and make the substitutions explicit.</p>
+<p><strong>Proposition 3.1.</strong> If <span class="math" data-tex="\(X\xrightarrow fY\xrightarrow gZ\)">\(X\xrightarrow fY\xrightarrow gZ\)</span>, <span class="math" data-tex="\(gf\)">\(gf\)</span> is invertible and <span class="math" data-tex="\(g\)">\(g\)</span> is monic, then both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> are invertible.</p>
+<p><strong>Proof interface.</strong> Put <span class="math" data-tex="\(h=(gf)^{-1}\)">\(h=(gf)^{-1}\)</span> and <span class="math" data-tex="\(s=fh:Z\to Y\)">\(s=fh:Z\to Y\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+gs=gf\,h=1_Z.
+\tag{3.1}
+\]">\[
+gs=gf\,h=1_Z.
+\tag{3.1}
+\]</span>
+<p>Use the complete one-sided inverse calculation in <a href="relations-and-cancellation-in-categories.html#1-inverses-and-one-sided-inverses">Relations and cancellation, Section 1</a>, with its monic retraction <span class="math" data-tex="\(r=g\)">\(r=g\)</span> and section <span class="math" data-tex="\(s=fh\)">\(s=fh\)</span>. It proves <span class="math" data-tex="\(sg=1_Y\)">\(sg=1_Y\)</span>, hence <span class="math" data-tex="\(g^{-1}=s\)">\(g^{-1}=s\)</span>. The same section proves that compositions of invertible arrows are invertible. Since <span class="math" data-tex="\(f=g^{-1}(gf)\)">\(f=g^{-1}(gf)\)</span>, it proves invertibility of <span class="math" data-tex="\(f\)">\(f\)</span> too; its inverse is <span class="math" data-tex="\(hg\)">\(hg\)</span>. Both statements retain their full existing proof, without an additional balanced-category hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> In a category with a zero object, <span class="math" data-tex="\(1_X=0_{XX}\)">\(1_X=0_{XX}\)</span> implies <span class="math" data-tex="\(X\simeq0\)">\(X\simeq0\)</span>.</p>
+<p><strong>Proof interface.</strong> Exercise 2 and its full solution in <a href="zero-maps-components-and-subobjects.html#5-four-graded-exercises-with-full-solutions">Zero maps, components and subobjects</a> prove the stronger assertion that <span class="math" data-tex="\(1_X=0_{XX}\)">\(1_X=0_{XX}\)</span> holds exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is a zero object. That proof uses only the two absorption laws for zero maps and treats both incoming and outgoing Hom sets. Proposition 2.1 of the same lesson gives the unique isomorphism between initial objects, applied to the now initial <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. This supplies the required isomorphism in an arbitrary category with a zero object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Neither test assumes that Hom sets have an addition.</p>
+<h2 id="4-a-ring-epimorphism-need-not-be-surjective">4. A ring epimorphism need not be surjective</h2>
+<p>For sets, retain the complete proof in Exercise 1 of <a href="relations-and-cancellation-in-categories.html#5-four-graded-exercises-with-full-solutions">Relations and cancellation</a>: monomorphisms are precisely injections and epimorphisms are precisely surjections, with the singleton witnesses for a failed injection, two-valued witnesses for a failed surjection and all empty cases.</p>
+<p><strong>Theorem 4.1.</strong> In the category of associative unital rings, the inclusion <span class="math" data-tex="\(\mathbb Z\to\mathbb Q\)">\(\mathbb Z\to\mathbb Q\)</span> is both monic and epic and is not invertible. The ring <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is initial, and the zero ring is terminal.</p>
+<p><strong>Proof.</strong> The inclusion is injective on underlying sets. If two parallel ring maps become equal after this inclusion, equality of their values and injectivity give equality before it. Thus the inclusion is monic.</p>
+<p>For epicity, let <span class="math" data-tex="\(v,w:\mathbb Q\to R\)">\(v,w:\mathbb Q\to R\)</span> be ring maps agreeing on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Every nonzero integer <span class="math" data-tex="\(b\)">\(b\)</span>, regarded in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, is a unit. Its images are therefore units and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(a/b)=v(a)v(b)^{-1},\\
+w(a/b)=w(a)w(b)^{-1}.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+v(a/b)=v(a)v(b)^{-1},\\
+w(a/b)=w(a)w(b)^{-1}.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>The images of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> agree. A two-sided inverse is unique by the elementary multiplication calculation: if <span class="math" data-tex="\(xy=yx=1\)">\(xy=yx=1\)</span> and <span class="math" data-tex="\(xz=zx=1\)">\(xz=zx=1\)</span>, then <span class="math" data-tex="\(y=y(xz)=(yx)z=z\)">\(y=y(xz)=(yx)z=z\)</span>. Consequently the two right sides in (4.1) agree. Every rational has this form, so <span class="math" data-tex="\(v=w\)">\(v=w\)</span>, proving epicity. This proof applies to noncommutative target rings too.</p>
+<p>It is not an isomorphism: the underlying function omits <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, whereas applying an inverse ring map would give an inverse function.</p>
+<p>A unital ring map <span class="math" data-tex="\(\mathbb Z\to R\)">\(\mathbb Z\to R\)</span> is forced to send <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(n1_R\)">\(n1_R\)</span>. This rule is a ring map: repeated addition and additive inverses give <span class="math" data-tex="\((a+b)1_R=a1_R+b1_R\)">\((a+b)1_R=a1_R+b1_R\)</span>; distributivity gives <span class="math" data-tex="\((a1_R)(b1_R)=ab1_R\)">\((a1_R)(b1_R)=ab1_R\)</span>, first for nonnegative integers and then for negatives by additive inverses. It sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1_R\)">\(1_R\)</span>. Thus exactly one map exists, proving initiality. Every ring has exactly one function to the one-element zero ring. It preserves addition, multiplication and the unit since <span class="math" data-tex="\(0=1\)">\(0=1\)</span> there, and is therefore the unique ring map. This proves terminality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When a target has no map from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the epimorphism test has no competing pair of maps to that target. It does not require such maps to exist.</p>
+<h2 id="5-finite-characters-recover-every-point-and-map">5. Finite characters recover every point and map</h2>
+<p>Let <span class="math" data-tex="\(E=\mathbb Q/\mathbb Z\)">\(E=\mathbb Q/\mathbb Z\)</span>, with its additive group structure. For a finite abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+D(A)=\operatorname{Hom}_{\mathbb Z}(A,E).
+\tag{5.1}
+\]">\[
+D(A)=\operatorname{Hom}_{\mathbb Z}(A,E).
+\tag{5.1}
+\]</span>
+<p>Addition is pointwise. For a homomorphism <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, set <span class="math" data-tex="\(D(f)(\chi)=\chi f\)">\(D(f)(\chi)=\chi f\)</span>. Retain the complete stronger precomposition construction and both contravariant functor laws in <a href="character-duals-and-one-sided-injectivity.html#1-evaluation-preserves-the-module-side">Character duals and one-sided injectivity, Section 1</a>, with <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>. Thus <span class="math" data-tex="\(D(gf)=D(f)D(g)\)">\(D(gf)=D(f)D(g)\)</span>, with identity and addition preserved, already holds for all abelian groups. We will prove that <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> is finite, so those same laws restrict to the finite category.</p>
+<p><strong>Retained extension and cyclic interfaces.</strong> The complete stronger proof of <a href="https://stacks.math.columbia.edu/tag/01D6">Stacks, Lemma 15.55.1</a>, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L14153-L14214">pinned structured source</a>, proves that divisible abelian groups are injective. Here <span class="math" data-tex="\(E\)">\(E\)</span> is divisible: a rational representative <span class="math" data-tex="\(q\)">\(q\)</span> of a class has <span class="math" data-tex="\(q/n+\mathbb Z\)">\(q/n+\mathbb Z\)</span> as an <span class="math" data-tex="\(n\)">\(n\)</span>-th root for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore every character of a subgroup extends to the whole abelian group. We retain that full extension proof; no finite decomposition theorem is needed.</p>
+<p>For <span class="math" data-tex="\(C_n=\mathbb Z/n\mathbb Z\)">\(C_n=\mathbb Z/n\mathbb Z\)</span>, retain Exercise 1 and its full cyclic calculation in <a href="character-duals-and-one-sided-injectivity.html#4-exercises-with-complete-solutions">Character duals and one-sided injectivity</a>. It identifies every character as</p>
+<span class="math math-display" data-tex="\[
+\chi_j(a)=aj/n+\mathbb Z,
+\qquad j\in C_n,
+\tag{5.2}
+\]">\[
+\chi_j(a)=aj/n+\mathbb Z,
+\qquad j\in C_n,
+\tag{5.2}
+\]</span>
+<p>proves <span class="math" data-tex="\(|D(C_n)|=n\)">\(|D(C_n)|=n\)</span>, computes double evaluation, and includes the trivial group <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. That exact character count will be the induction base.</p>
+<p><strong>Lemma 5.1.</strong> For every finite abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> is finite with <span class="math" data-tex="\(|D(A)|=|A|\)">\(|D(A)|=|A|\)</span>. Characters separate nonzero elements of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> First, if <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the order of its cyclic subgroup divides <span class="math" data-tex="\(|A|\)">\(|A|\)</span>: its distinct cosets partition <span class="math" data-tex="\(A\)">\(A\)</span>, and translation gives each coset the same cardinality as that subgroup. Thus <span class="math" data-tex="\(|A|a=0\)">\(|A|a=0\)</span>, so every character value lies in <span class="math" data-tex="\(E[|A|]\)">\(E[|A|]\)</span>. By the retained cyclic computation this is the finite subgroup consisting of the classes <span class="math" data-tex="\(j/|A|+\mathbb Z\)">\(j/|A|+\mathbb Z\)</span>. The character set is therefore a subset of a finite function set, so is finite and lies in the fixed universe.</p>
+<p>We prove the cardinality statement by induction on <span class="math" data-tex="\(|A|\)">\(|A|\)</span>. The trivial group and all cyclic groups are covered by the retained computation. If <span class="math" data-tex="\(A\)">\(A\)</span> is not cyclic, choose a nonzero <span class="math" data-tex="\(a\)">\(a\)</span> and put <span class="math" data-tex="\(H=\langle a\rangle\)">\(H=\langle a\rangle\)</span>. Then <span class="math" data-tex="\(1&lt;|H|&lt;|A|\)">\(1&lt;|H|&lt;|A|\)</span>, and <span class="math" data-tex="\(|A/H|&lt;|A|\)">\(|A/H|&lt;|A|\)</span>. Restriction</p>
+<span class="math math-display" data-tex="\[
+D(A)\longrightarrow D(H)
+\tag{5.3}
+\]">\[
+D(A)\longrightarrow D(H)
+\tag{5.3}
+\]</span>
+<p>is surjective by the retained extension theorem. Its kernel is exactly <span class="math" data-tex="\(D(A/H)\)">\(D(A/H)\)</span>: a character vanishing on <span class="math" data-tex="\(H\)">\(H\)</span> descends to the quotient by <span class="math" data-tex="\(x+H\mapsto\chi(x)\)">\(x+H\mapsto\chi(x)\)</span>, which is well-defined precisely because it vanishes there; conversely precomposition with the quotient gives such a character. These are inverse group maps. Each fibre of a surjective group homomorphism is a coset of its kernel, by translation by any one member of that fibre. Induction and the same coset count now give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|D(A)|=|D(H)|\,|D(A/H)|\\
+=|H|\,|A/H|=|A|.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+|D(A)|=|D(H)|\,|D(A/H)|\\
+=|H|\,|A/H|=|A|.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>For separation, retain the stronger injective evaluation theorem in <a href="https://stacks.math.columbia.edu/tag/01D8">Stacks, Lemma 15.56.7</a>, whose <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L14407-L14431">complete structured proof</a> extends a nonzero cyclic character using the general extension theorem. If every character vanished at <span class="math" data-tex="\(a\)">\(a\)</span>, evaluation would send <span class="math" data-tex="\(a\)">\(a\)</span> to zero, and that injectivity would give <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Therefore each nonzero <span class="math" data-tex="\(a\)">\(a\)</span> is separated by a character, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2.</strong> Character duality is an equivalence from the category <span class="math" data-tex="\(\mathsf{Ab}_{\mathrm f}\)">\(\mathsf{Ab}_{\mathrm f}\)</span> of finite abelian groups to its opposite. Its double comparison is point evaluation.</p>
+<p><strong>Proof.</strong> Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_A:A\longrightarrow D(D(A)),\\
+e_A(a)(\chi)=\chi(a).
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+e_A:A\longrightarrow D(D(A)),\\
+e_A(a)(\chi)=\chi(a).
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>Retain Proposition 1.1 and its full proof in <a href="character-duals-and-one-sided-injectivity.html#1-evaluation-preserves-the-module-side">Character duals and one-sided injectivity, Section 1</a>, specialized to <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>. It proves that <span class="math" data-tex="\(e_A\)">\(e_A\)</span> is an additive, injective homomorphism and that these maps are natural for every abelian group. The new finite cardinality result in Lemma 5.1, applied twice, makes its source and target have the same size. It is therefore bijective. The inverse of a bijective group homomorphism is additive: apply the given homomorphism to the desired addition equation and use injectivity. Hence <span class="math" data-tex="\(e_A\)">\(e_A\)</span> is a group isomorphism.</p>
+<p>For <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, evaluation at <span class="math" data-tex="\(\chi\in D(B)\)">\(\chi\in D(B)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(D(f))e_A(a)(\chi)\\
+=\chi(f(a))\\
+=e_B(f(a))(\chi).
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+D(D(f))e_A(a)(\chi)\\
+=\chi(f(a))\\
+=e_B(f(a))(\chi).
+\end{gathered}
+\tag{5.6}
+\]</span>
+<p>This is exactly the retained naturality equation under our notation. The functor <span class="math" data-tex="\(D:\mathsf{Ab}_{\mathrm f}\to\mathsf{Ab}_{\mathrm f}^{\mathrm{op}}\)">\(D:\mathsf{Ab}_{\mathrm f}\to\mathsf{Ab}_{\mathrm f}^{\mathrm{op}}\)</span> and its opposite <span class="math" data-tex="\(D^{\mathrm{op}}\)">\(D^{\mathrm{op}}\)</span> have both composites given by double duality. The components <span class="math" data-tex="\(e_A\)">\(e_A\)</span> give the natural isomorphism from the identity to double duality on the original category. Reversing them in the opposite category gives the natural isomorphism from double duality to its identity there. These are quasi-inverse comparisons, proving the equivalence.</p>
+<p>The comparisons satisfy the useful evaluation identity</p>
+<span class="math math-display" data-tex="\[
+D(e_A)e_{D(A)}=1_{D(A)}.
+\tag{5.7}
+\]">\[
+D(e_A)e_{D(A)}=1_{D(A)}.
+\tag{5.7}
+\]</span>
+<p>Indeed its value at <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and then at <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(e_{D(A)}(\chi)(e_A(a))=e_A(a)(\chi)=\chi(a)\)">\(e_{D(A)}(\chi)(e_A(a))=e_A(a)(\chi)=\chi(a)\)</span>.</p>
+<p>In particular every homomorphism <span class="math" data-tex="\(b:D(B)\to D(A)\)">\(b:D(B)\to D(A)\)</span> comes from exactly one <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>. An explicit inverse to <span class="math" data-tex="\(f\mapsto D(f)\)">\(f\mapsto D(f)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+f=e_B^{-1}D(b)e_A.
+\tag{5.8}
+\]">\[
+f=e_B^{-1}D(b)e_A.
+\tag{5.8}
+\]</span>
+<p>For a given <span class="math" data-tex="\(f\)">\(f\)</span>, naturality (5.6) makes (5.8) recover <span class="math" data-tex="\(f\)">\(f\)</span> from <span class="math" data-tex="\(b=D(f)\)">\(b=D(f)\)</span>. Conversely (5.7), with the comparisons invertible, gives <span class="math" data-tex="\(D(e_A)=e_{D(A)}^{-1}\)">\(D(e_A)=e_{D(A)}^{-1}\)</span> and <span class="math" data-tex="\(D(e_B^{-1})=e_{D(B)}\)">\(D(e_B^{-1})=e_{D(B)}\)</span>. Naturality for <span class="math" data-tex="\(b:D(B)\to D(A)\)">\(b:D(B)\to D(A)\)</span> gives <span class="math" data-tex="\(D(D(b))e_{D(B)}=e_{D(A)}b\)">\(D(D(b))e_{D(B)}=e_{D(A)}b\)</span>. Applying <span class="math" data-tex="\(D\)">\(D\)</span> to (5.8) and substituting these identities gives <span class="math" data-tex="\(D(f)=b\)">\(D(f)=b\)</span>. This checks both Hom inverses explicitly. The trivial group has one character and every formula remains valid. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The relation category also reverses arrows without losing information. Retain the exact converse-relation proof in Section 4 of <a href="relations-and-cancellation-in-categories.html#4-relations-form-a-category">Relations and cancellation</a>: <span class="math" data-tex="\((SR)^{\mathrm t}=R^{\mathrm t}S^{\mathrm t}\)">\((SR)^{\mathrm t}=R^{\mathrm t}S^{\mathrm t}\)</span>, <span class="math" data-tex="\((R^{\mathrm t})^{\mathrm t}=R\)">\((R^{\mathrm t})^{\mathrm t}=R\)</span>, and the converse of a diagonal is the same diagonal. These identities provide literal inverse functors between the relation category and its opposite, including empty underlying sets.</p>
+<p>For <span class="math" data-tex="\(C_4\)">\(C_4\)</span>, the complete cyclic pairing is visible as a table. The column headings record the input point. Entries are classes modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cccc}
+\chi_j(a)&amp;0&amp;1&amp;2&amp;3\\ \hline
+j=0&amp;0&amp;0&amp;0&amp;0\\
+j=1&amp;0&amp;1/4&amp;1/2&amp;3/4\\
+j=2&amp;0&amp;1/2&amp;0&amp;1/2\\
+j=3&amp;0&amp;3/4&amp;1/2&amp;1/4
+\end{array}
+\tag{5.9}
+\]">\[
+\begin{array}{c|cccc}
+\chi_j(a)&amp;0&amp;1&amp;2&amp;3\\ \hline
+j=0&amp;0&amp;0&amp;0&amp;0\\
+j=1&amp;0&amp;1/4&amp;1/2&amp;3/4\\
+j=2&amp;0&amp;1/2&amp;0&amp;1/2\\
+j=3&amp;0&amp;3/4&amp;1/2&amp;1/4
+\end{array}
+\tag{5.9}
+\]</span>
+<p><em>Figure 5.1. Rows are all four characters from (5.2). Column <span class="math" data-tex="\(a\)">\(a\)</span> is exactly the character <span class="math" data-tex="\(e_{C_4}(a)\)">\(e_{C_4}(a)\)</span> of the row group. All four columns are distinct, showing injectivity of evaluation; they exhaust the four characters of that group. The editable array gives the full exact pairing, with no sampled or approximate values.</em></p>
+<h2 id="6-four-exercises-with-full-solutions">6. Four exercises with full solutions</h2>
+<h3 id="exercise-1-quotient-four-labels-to-two-positions">Exercise 1 — quotient four labels to two positions</h3>
+<p><em>Foundation.</em> Let <span class="math" data-tex="\(C\)">\(C\)</span> have objects <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>. There is one arrow <span class="math" data-tex="\(x\to y\)">\(x\to y\)</span> exactly when either <span class="math" data-tex="\(x,y\in\{a,b\}\)">\(x,y\in\{a,b\}\)</span>, or <span class="math" data-tex="\(x,y\in\{c,d\}\)">\(x,y\in\{c,d\}\)</span>, or <span class="math" data-tex="\(x\in\{a,b\}\)">\(x\in\{a,b\}\)</span> and <span class="math" data-tex="\(y\in\{c,d\}\)">\(y\in\{c,d\}\)</span>. Composition is the unique arrow with the resulting endpoints. Identify its initial and terminal objects, construct its ordered model, and determine whether an arrow from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(c\)">\(c\)</span> is monic, epic or invertible.</p>
+<p><strong>Solution.</strong> The displayed relation is reflexive and transitive, so identities exist and every composable pair has the asserted composite. Both associativity expressions have the same endpoints and hence are the same unique arrow. The identity laws follow the same way.</p>
+<p>There is exactly one arrow from each of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to every object, making both initial. Neither <span class="math" data-tex="\(c\)">\(c\)</span> nor <span class="math" data-tex="\(d\)">\(d\)</span> is initial, since neither maps to <span class="math" data-tex="\(a\)">\(a\)</span>. Dually <span class="math" data-tex="\(c,d\)">\(c,d\)</span> are exactly the terminal objects. The arrows each way between <span class="math" data-tex="\(a,b\)">\(a,b\)</span> compose to the unique endomorphisms, which are identities, so <span class="math" data-tex="\(a\simeq b\)">\(a\simeq b\)</span>. Likewise <span class="math" data-tex="\(c\simeq d\)">\(c\simeq d\)</span>; the two classes are not isomorphic, since no arrow goes from the upper class to the lower one.</p>
+<p>Send <span class="math" data-tex="\(a,b\)">\(a,b\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(c,d\)">\(c,d\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> in the order <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>. This assignment preserves arrow existence, identities and composites. For every pair of source objects, both Hom sets are either empty or singletons in exactly the same cases; its Hom maps are thus bijective. Both target objects occur. The complete equivalence criterion proves it is an equivalence.</p>
+<p>Every arrow of <span class="math" data-tex="\(C\)">\(C\)</span> is monic and epic because every parallel test pair already consists of the same arrow. In particular <span class="math" data-tex="\(a\to c\)">\(a\to c\)</span> has both cancellation properties. It has no inverse because <span class="math" data-tex="\(c\to a\)">\(c\to a\)</span> does not exist. Also there is no arrow from any terminal object to any initial one, consistent with Proposition 1.1.</p>
+<h3 id="exercise-2-targets-which-accept-rational-scalars">Exercise 2 — targets which accept rational scalars</h3>
+<p><em>Intermediate.</em> Determine the number of unital ring maps from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> to each of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <span class="math" data-tex="\(M_2(\mathbb Q)\)">\(M_2(\mathbb Q)\)</span>, <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> for prime <span class="math" data-tex="\(p\)">\(p\)</span>, and the zero ring. Explain how these examples fit the epimorphism test for <span class="math" data-tex="\(\mathbb Z\to\mathbb Q\)">\(\mathbb Z\to\mathbb Q\)</span>.</p>
+<p><strong>Solution.</strong> Theorem 4.1 implies that two such maps to any fixed target must agree: both restrict to the unique unital map from <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. So every count is at most one.</p>
+<p>For <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the identity is one map. For <span class="math" data-tex="\(M_2(\mathbb Q)\)">\(M_2(\mathbb Q)\)</span>, <span class="math" data-tex="\(q\mapsto qI_2\)">\(q\mapsto qI_2\)</span> preserves addition, multiplication and the unit, so is one map, even though the target ring is noncommutative. The unique map to the zero ring preserves the unit because its sole element is also its unit.</p>
+<p>There is no map to <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. If <span class="math" data-tex="\(v\)">\(v\)</span> were one, applying it to <span class="math" data-tex="\(p(1/p)=1\)">\(p(1/p)=1\)</span> would give</p>
+<span class="math math-display" data-tex="\[
+0\cdot v(1/p)=1
+\quad\text{in }\mathbb F_p,
+\tag{6.1}
+\]">\[
+0\cdot v(1/p)=1
+\quad\text{in }\mathbb F_p,
+\tag{6.1}
+\]</span>
+<p>which is impossible in this nonzero ring. The four counts are therefore <span class="math" data-tex="\(1,1,0,1\)">\(1,1,0,1\)</span>. Epicity asserts uniqueness when a competing pair exists; the zero count is permitted. The inclusion itself still omits <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so these uniqueness assertions do not make it an isomorphism.</p>
+<h3 id="exercise-3-extend-a-character-across-a-cyclic-subgroup">Exercise 3 — extend a character across a cyclic subgroup</h3>
+<p><em>Intermediate.</em> Let <span class="math" data-tex="\(A=C_4\)">\(A=C_4\)</span>, <span class="math" data-tex="\(H=\{0,2\}\)">\(H=\{0,2\}\)</span>, and let <span class="math" data-tex="\(\theta:H\to E\)">\(\theta:H\to E\)</span> send <span class="math" data-tex="\(2\)">\(2\)</span> to <span class="math" data-tex="\(1/2+\mathbb Z\)">\(1/2+\mathbb Z\)</span>. List every extension to <span class="math" data-tex="\(A\)">\(A\)</span>, compute restriction <span class="math" data-tex="\(D(A)\to D(H)\)">\(D(A)\to D(H)\)</span>, and identify its kernel with <span class="math" data-tex="\(D(A/H)\)">\(D(A/H)\)</span>.</p>
+<p><strong>Solution.</strong> The complete cyclic coordinates (5.2) write every character of <span class="math" data-tex="\(A\)">\(A\)</span> as <span class="math" data-tex="\(\chi_j(a)=aj/4+\mathbb Z\)">\(\chi_j(a)=aj/4+\mathbb Z\)</span>, <span class="math" data-tex="\(j\in C_4\)">\(j\in C_4\)</span>. Restriction at the generator <span class="math" data-tex="\(2\)">\(2\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span> has value <span class="math" data-tex="\(j/2+\mathbb Z\)">\(j/2+\mathbb Z\)</span>. It equals <span class="math" data-tex="\(\theta(2)\)">\(\theta(2)\)</span> exactly when <span class="math" data-tex="\(j\)">\(j\)</span> is odd. Hence the two extensions are <span class="math" data-tex="\(\chi_1,\chi_3\)">\(\chi_1,\chi_3\)</span>.</p>
+<p>Under <span class="math" data-tex="\(H\simeq C_2\)">\(H\simeq C_2\)</span>, the full restriction map is reduction</p>
+<span class="math math-display" data-tex="\[
+C_4\longrightarrow C_2,\qquad j\longmapsto j\bmod2.
+\tag{6.2}
+\]">\[
+C_4\longrightarrow C_2,\qquad j\longmapsto j\bmod2.
+\tag{6.2}
+\]</span>
+<p>Its kernel consists of <span class="math" data-tex="\(\chi_0,\chi_2\)">\(\chi_0,\chi_2\)</span>. The quotient <span class="math" data-tex="\(A/H\)">\(A/H\)</span> is <span class="math" data-tex="\(C_2\)">\(C_2\)</span>; pulling its character with value <span class="math" data-tex="\(t/2+\mathbb Z\)">\(t/2+\mathbb Z\)</span> at the quotient generator back to <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(\chi_{2t}\)">\(\chi_{2t}\)</span>. This is an injective map whose image is exactly the kernel just listed. Each of the two restriction fibres has two elements, checking the product count in (5.4). Evaluation still distinguishes <span class="math" data-tex="\(1\)">\(1\)</span> from <span class="math" data-tex="\(3\)">\(3\)</span>, since <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> takes the different values <span class="math" data-tex="\(1/4,3/4\)">\(1/4,3/4\)</span> there.</p>
+<h3 id="exercise-4-reverse-a-noninvertible-finite-group-map">Exercise 4 — reverse a noninvertible finite-group map</h3>
+<p><em>Advanced.</em> For a homomorphism of finite abelian groups <span class="math" data-tex="\(f:A\to B\)">\(f:A\to B\)</span>, prove that <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span> is surjective exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is injective, and injective exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is surjective. For <span class="math" data-tex="\(f:C_4\to C_6\)">\(f:C_4\to C_6\)</span> with <span class="math" data-tex="\(f(1)=3\)">\(f(1)=3\)</span>, compute <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span>, its kernel and image in cyclic coordinates, and compare them with the original map.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is injective, identify <span class="math" data-tex="\(A\)">\(A\)</span> with the subgroup <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span>. A character on <span class="math" data-tex="\(A\)">\(A\)</span> defines a character there by <span class="math" data-tex="\(f(a)\mapsto\chi(a)\)">\(f(a)\mapsto\chi(a)\)</span>. The retained extension theorem extends it to <span class="math" data-tex="\(B\)">\(B\)</span>, proving surjectivity of <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is not injective, choose nonzero <span class="math" data-tex="\(a\in\ker f\)">\(a\in\ker f\)</span>. A character on <span class="math" data-tex="\(A\)">\(A\)</span> separating <span class="math" data-tex="\(a\)">\(a\)</span> from zero exists by Lemma 5.1. Every character pulled back from <span class="math" data-tex="\(B\)">\(B\)</span> vanishes at <span class="math" data-tex="\(a\)">\(a\)</span>, so this character cannot be in the image. Thus <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span> is not surjective.</p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is surjective, two characters on <span class="math" data-tex="\(B\)">\(B\)</span> agreeing after <span class="math" data-tex="\(f\)">\(f\)</span> agree at every element of <span class="math" data-tex="\(B\)">\(B\)</span>, proving injectivity of <span class="math" data-tex="\(D(f)\)">\(D(f)\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is not surjective, the finite quotient <span class="math" data-tex="\(B/f(A)\)">\(B/f(A)\)</span> is nontrivial. Choose a nonzero class and a character separating it from zero. Pulling that character back to <span class="math" data-tex="\(B\)">\(B\)</span> gives a nonzero character vanishing on <span class="math" data-tex="\(f(A)\)">\(f(A)\)</span>. It and the zero character have the same pullback along <span class="math" data-tex="\(f\)">\(f\)</span>, disproving injectivity. These arguments include maps involving the trivial group.</p>
+<p>For the given <span class="math" data-tex="\(f\)">\(f\)</span>, the relation <span class="math" data-tex="\(4\cdot3=0\)">\(4\cdot3=0\)</span> in <span class="math" data-tex="\(C_6\)">\(C_6\)</span> makes it well-defined. Its kernel is <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span>, and its image is <span class="math" data-tex="\(\{0,3\}\)">\(\{0,3\}\)</span>. Precomposing <span class="math" data-tex="\(\chi_j:C_6\to E\)">\(\chi_j:C_6\to E\)</span> gives value <span class="math" data-tex="\(3j/6=j/2\)">\(3j/6=j/2\)</span> at <span class="math" data-tex="\(1\in C_4\)">\(1\in C_4\)</span>. In the <span class="math" data-tex="\(C_4\)">\(C_4\)</span> coordinates this is <span class="math" data-tex="\(2j/4\)">\(2j/4\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(f):C_6\longrightarrow C_4,\\
+j\longmapsto2j\bmod4.
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+D(f):C_6\longrightarrow C_4,\\
+j\longmapsto2j\bmod4.
+\end{gathered}
+\tag{6.3}
+\]</span>
+<p>Its kernel is <span class="math" data-tex="\(\{0,2,4\}\)">\(\{0,2,4\}\)</span>, and its image is <span class="math" data-tex="\(\{0,2\}\)">\(\{0,2\}\)</span>. The original map is neither injective nor surjective; its dual has neither property, consistently with both proved equivalences. The sizes also agree with the annihilator calculations: characters vanishing on the two-element image form a group of size <span class="math" data-tex="\(6/2=3\)">\(6/2=3\)</span>, whereas the characters factoring through the two-element quotient by <span class="math" data-tex="\(\ker f\)">\(\ker f\)</span> form its two-element dual.</p>
+<h2 id="7-references">7. References</h2>
+<ul>
+<li><strong>Categorical proofs retained in full:</strong> <a href="relations-and-cancellation-in-categories.html#1-inverses-and-one-sided-inverses">Relations and cancellation in categories</a>, <a href="zero-maps-components-and-subobjects.html#2-universal-endpoints-and-their-zero-maps">Zero maps, components and subobjects</a>, and <a href="equivalences-and-chosen-representatives.html#3-choosing-convenient-object-labels">Equivalences and chosen representatives</a>.</li>
+<li><strong>Cyclic characters retained in full:</strong> <a href="character-duals-and-one-sided-injectivity.html#4-exercises-with-complete-solutions">Character duals and one-sided injectivity, Exercise 1</a>, including cyclic and finite direct-sum evaluation, restriction and reduction.</li>
+<li><strong>Stronger general extension proof:</strong> The Stacks Project authors, <a href="https://stacks.math.columbia.edu/tag/01D6">Lemma 15.55.1</a>, divisible abelian groups are injective. The consulted <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L14153-L14214">pinned structured source</a> retains the complete maximal-extension and one-generator argument. Its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a> is GFDL 1.2 or later; no source expression is incorporated here.</li>
+<li><strong>Stronger evaluation proof:</strong> The Stacks Project authors, <a href="https://stacks.math.columbia.edu/tag/01D8">Lemma 15.56.7</a>, with its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/more-algebra.tex#L14407-L14431">complete cyclic-character extension argument</a>. It has the same GFDL licence; no source expression is incorporated here.</li>
+</ul>
+</main></body></html>

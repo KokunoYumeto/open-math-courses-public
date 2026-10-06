@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Integral extensions: lying over, going up and going down · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/integral-extensions-lying-over-going-up-and-going-down.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="integral-extensions-lying-over-going-up-and-going-down">Integral
+extensions: lying over, going up and going down</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A polynomial equation can express two very different kinds of
+control. The equation <span class="math inline">\(ax=b\)</span> allows
+division only where <span class="math inline">\(a\)</span> is
+invertible. A monic equation for <span class="math inline">\(x\)</span>,
+by contrast, reduces every high power of <span
+class="math inline">\(x\)</span> to a fixed finite list of lower powers.
+This finite control explains why integral extensions lift prime ideals,
+preserve chains of specializations, and give closed maps of spectra.
+Normality will provide the extra control needed to lift a specialization
+downward from a prescribed point upstairs.</p>
+<p>All rings are commutative with identity, and maps preserve identity.
+No Noetherian hypothesis is imposed unless stated. We use the fraction
+construction, prime correspondence and residue-field fibres from <a
+href="AG-CA-02.html"><em>Localization, local properties and
+support</em></a>, and the Artinian structure theorem from <a
+href="AG-CA-03.html"><em>Noetherian and Artinian rings</em></a>. A
+<strong>finite algebra</strong> is finite as a module; an algebra
+<strong>of finite type</strong> has finitely many algebra generators.
+These conditions differ.</p>
+<h2 id="a-monic-equation-is-finite-control">1. A monic equation is
+finite control</h2>
+<p>Let <span class="math inline">\(R\to S\)</span> be a ring map. An
+element <span class="math inline">\(x\in S\)</span> is <strong>integral
+over <span class="math inline">\(R\)</span></strong> if, for some <span
+class="math inline">\(n\geq1\)</span>,</p>
+<p><span class="math display">\[
+x^n+a_1x^{n-1}+\cdots+a_n=0,
+\qquad a_i\in R,
+\]</span></p>
+<p>where coefficients act through the ring map. The map is
+<strong>integral</strong> if every element of <span
+class="math inline">\(S\)</span> is integral. Write <span
+class="math inline">\(R[x]\)</span> for the image of the evaluation map
+<span class="math inline">\(R[X]\to S\)</span>; this notation does not
+require the map <span class="math inline">\(R\to S\)</span> to be
+injective.</p>
+<p><strong>Theorem 1.1 (four tests for integrality).</strong> The
+following conditions on <span class="math inline">\(x\in S\)</span> are
+equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(x\)</span> is integral over <span
+class="math inline">\(R\)</span>.</li>
+<li><span class="math inline">\(R[x]\)</span> is a finite <span
+class="math inline">\(R\)</span>-module.</li>
+<li>Some <span class="math inline">\(R\)</span>-subalgebra <span
+class="math inline">\(C\subset S\)</span>, containing <span
+class="math inline">\(x\)</span> and the identity of <span
+class="math inline">\(S\)</span>, is a finite <span
+class="math inline">\(R\)</span>-module.</li>
+<li>There is a faithful <span class="math inline">\(R[x]\)</span>-module
+<span class="math inline">\(M\)</span> which is finite as an <span
+class="math inline">\(R\)</span>-module.</li>
+</ol>
+<p><strong>Proof.</strong> A monic equation of degree <span
+class="math inline">\(n\)</span> expresses <span
+class="math inline">\(x^n\)</span> in the span of <span
+class="math inline">\(1,x,\ldots,x^{n-1}\)</span>. Multiplying this
+relation repeatedly by <span class="math inline">\(x\)</span> reduces
+every higher power, so that span is <span
+class="math inline">\(R[x]\)</span>. Thus (1) implies (2), and (2)
+implies (3) by taking <span class="math inline">\(C=R[x]\)</span>. If
+(3) holds, multiplication makes <span class="math inline">\(C\)</span> a
+faithful <span class="math inline">\(R[x]\)</span>-module: an element
+acting as zero kills <span class="math inline">\(1\)</span>, hence is
+zero. This gives (4).</p>
+<p>For (4), choose generators <span
+class="math inline">\(m_1,\ldots,m_r\)</span> over <span
+class="math inline">\(R\)</span>, adding a zero generator if necessary
+so <span class="math inline">\(r\geq1\)</span>. Write</p>
+<p><span class="math display">\[
+x m_i=\sum_{j=1}^r a_{ij}m_j,\qquad a_{ij}\in R.
+\]</span></p>
+<p>The matrix <span class="math inline">\(xI-(a_{ij})\)</span> kills the
+column of these generators. Multiplication by its adjugate shows that
+the monic polynomial</p>
+<p><span class="math display">\[
+P(X)=\det(XI-(a_{ij}))\in R[X]
+\]</span></p>
+<p>satisfies <span class="math inline">\(P(x)m_i=0\)</span> for every
+<span class="math inline">\(i\)</span>. It kills all of <span
+class="math inline">\(M\)</span>, and faithfulness over <span
+class="math inline">\(R[x]\)</span> gives <span
+class="math inline">\(P(x)=0\)</span> in <span
+class="math inline">\(R[x]\)</span>, hence in <span
+class="math inline">\(S\)</span>. This proves (1). <span
+class="math inline">\(\square\)</span></p>
+<p>The faithfulness in the fourth test is over <span
+class="math inline">\(R[x]\)</span>. The determinant first proves an
+equation for an operator on <span class="math inline">\(M\)</span>;
+faithfulness is what turns it into an equation for the element of the
+algebra. The third test also requires a subalgebra containing <span
+class="math inline">\(1\)</span>, so that the action detects
+elements.</p>
+<p><strong>Theorem 1.2 (closure, transitivity and finiteness).</strong>
+The elements of <span class="math inline">\(S\)</span> integral over
+<span class="math inline">\(R\)</span> form an <span
+class="math inline">\(R\)</span>-subalgebra, called the <strong>integral
+closure of <span class="math inline">\(R\)</span> in <span
+class="math inline">\(S\)</span></strong>. Integrality is transitive: if
+<span class="math inline">\(R\to S\to T\)</span> are integral, then
+<span class="math inline">\(R\to T\)</span> is integral. An <span
+class="math inline">\(R\)</span>-algebra is finite if and only if it is
+integral and of finite type.</p>
+<p><strong>Proof.</strong> If <span
+class="math inline">\(x_1,\ldots,x_r\)</span> are integral, choose a
+monic equation of degree <span class="math inline">\(n_i\)</span> for
+each. Reducing powers shows that the monomials</p>
+<p><span class="math display">\[
+x_1^{e_1}\cdots x_r^{e_r},\qquad 0\leq e_i&lt;n_i,
+\]</span></p>
+<p>span <span class="math inline">\(R[x_1,\ldots,x_r]\)</span> as an
+<span class="math inline">\(R\)</span>-module. Every element of this
+finite subalgebra is integral by Theorem 1.1. In particular, sums,
+negatives and products of integral elements are integral, and elements
+from <span class="math inline">\(R\)</span> satisfy degree-one monic
+equations. This proves the subalgebra assertion.</p>
+<p>If <span class="math inline">\(t\in T\)</span> is integral over <span
+class="math inline">\(S\)</span>, only finitely many coefficients <span
+class="math inline">\(s_1,\ldots,s_r\)</span> occur in a monic equation
+for it. The algebra <span
+class="math inline">\(C=R[s_1,\ldots,s_r]\subset S\)</span> is finite
+over <span class="math inline">\(R\)</span>. The image algebra <span
+class="math inline">\(C[t]\subset T\)</span> is finite over <span
+class="math inline">\(C\)</span>. Products of a finite list of <span
+class="math inline">\(R\)</span>-module generators of <span
+class="math inline">\(C\)</span> with a finite list of <span
+class="math inline">\(C\)</span>-module generators of <span
+class="math inline">\(C[t]\)</span> generate <span
+class="math inline">\(C[t]\)</span> over <span
+class="math inline">\(R\)</span>. Theorem 1.1 now proves that <span
+class="math inline">\(t\)</span> is integral over <span
+class="math inline">\(R\)</span>.</p>
+<p>An integral algebra with finitely many algebra generators is finite
+by the bounded-monomial argument. Conversely, if <span
+class="math inline">\(S\)</span> is finite over <span
+class="math inline">\(R\)</span>, Theorem 1.1 applied to the subalgebra
+<span class="math inline">\(S\)</span> proves every element integral.
+Module generators also generate <span class="math inline">\(S\)</span>
+as an algebra, since every element is already their <span
+class="math inline">\(R\)</span>-linear combination. <span
+class="math inline">\(\square\)</span></p>
+<p>For example, <span class="math inline">\(\mathbb Q\)</span> is
+generated by fractions, but is not integral over <span
+class="math inline">\(\mathbb Z\)</span>: a monic equation for <span
+class="math inline">\(1/2\)</span>, after multiplication by the
+appropriate power of <span class="math inline">\(2\)</span>, would say
+that an odd integer is zero. In the other direction, the algebraic
+closure of <span class="math inline">\(\mathbb Q\)</span> is integral
+over <span class="math inline">\(\mathbb Q\)</span> but is not finite.
+If its dimension were <span class="math inline">\(N\)</span>, the
+irreducible polynomials <span class="math inline">\(X^m-2\)</span>, for
+primes <span class="math inline">\(m&gt;N\)</span>, would give a
+subfield of degree <span class="math inline">\(m\)</span>, a
+contradiction. Their irreducibility follows from Eisenstein at <span
+class="math inline">\(2\)</span>: reducing a hypothetical factorization
+of primitive integer polynomials modulo <span
+class="math inline">\(2\)</span> forces both constant terms divisible by
+<span class="math inline">\(2\)</span>, contradicting the constant term
+<span class="math inline">\(-2\)</span>. The primitive-factor reduction
+used here is also proved below.</p>
+<p><strong>Proposition 1.3 (quotients and base localization).</strong>
+If <span class="math inline">\(R\to S\)</span> is integral, then <span
+class="math inline">\(R\to S/J\)</span> is integral for every ideal
+<span class="math inline">\(J\subset S\)</span>. If <span
+class="math inline">\(U\subset R\)</span> is multiplicative, then <span
+class="math inline">\(U^{-1}R\to U^{-1}S\)</span> is integral. If <span
+class="math inline">\(R\to S\)</span> is finite, then <span
+class="math inline">\(R&#39;\to S\otimes_R R&#39;\)</span> is finite for
+every <span class="math inline">\(R\)</span>-algebra <span
+class="math inline">\(R&#39;\)</span>.</p>
+<p><strong>Proof.</strong> Monic equations descend to a quotient. An
+equation for <span class="math inline">\(s\)</span> becomes, after
+division by <span class="math inline">\(u^n\)</span>, a monic equation
+for <span class="math inline">\(s/u\)</span> with degree-<span
+class="math inline">\(i\)</span> coefficient <span
+class="math inline">\(a_i/u^i\)</span>. Every element of <span
+class="math inline">\(U^{-1}S\)</span> has this form. Finally, the
+images of module generators of <span class="math inline">\(S\)</span>
+generate its tensor product over <span
+class="math inline">\(R&#39;\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="integral-closure-survives-localization">2. Integral closure
+survives localization</h2>
+<p>The <strong>normalization</strong> of a domain <span
+class="math inline">\(R\)</span> is its integral closure in its fraction
+field <span class="math inline">\(K\)</span>. The domain is
+<strong>normal</strong> when this closure equals <span
+class="math inline">\(R\)</span>. We first prove a statement that allows
+zero divisors in the larger algebra.</p>
+<p><strong>Theorem 2.1 (localization of integral closure).</strong> Let
+<span class="math inline">\(C\subset S\)</span> be the integral closure
+of <span class="math inline">\(R\)</span> in an <span
+class="math inline">\(R\)</span>-algebra <span
+class="math inline">\(S\)</span>, and let <span
+class="math inline">\(U\subset R\)</span> be multiplicative. Inside
+<span class="math inline">\(U^{-1}S\)</span>, the integral closure of
+<span class="math inline">\(U^{-1}R\)</span> is <span
+class="math inline">\(U^{-1}C\)</span>.</p>
+<p><strong>Proof.</strong> An element <span
+class="math inline">\(c/u\)</span>, with <span
+class="math inline">\(c\in C\)</span>, is integral over <span
+class="math inline">\(U^{-1}R\)</span> by the same division of a monic
+equation used in Proposition 1.3. Conversely, suppose <span
+class="math inline">\(z=b/u\)</span> satisfies</p>
+<p><span class="math display">\[
+z^n+\sum_{i=1}^n\frac{a_i}{v_i}z^{n-i}=0
+\quad\text{in }U^{-1}S,
+\qquad a_i\in R,\quad v_i\in U.
+\]</span></p>
+<p>Put <span class="math inline">\(v=u\prod_i v_i\)</span> and <span
+class="math inline">\(c=(\prod_i v_i)b\in S\)</span>. Then <span
+class="math inline">\(c/1=vz\)</span>. Multiplication of the equation by
+<span class="math inline">\(v^n\)</span> gives</p>
+<p><span class="math display">\[
+P(c)=c^n+\sum_{i=1}^n r_i c^{n-i}=0
+\quad\text{in }U^{-1}S,
+\qquad r_i=\frac{v^i}{v_i}a_i\in R.
+\]</span></p>
+<p>Here <span class="math inline">\(v^i/v_i\)</span> means the product
+obtained by deleting one displayed factor <span
+class="math inline">\(v_i\)</span>; it involves no division in <span
+class="math inline">\(R\)</span>. Since this equation vanishes in the
+localization, some <span class="math inline">\(h\in U\)</span> satisfies
+<span class="math inline">\(hP(c)=0\)</span> in <span
+class="math inline">\(S\)</span>. Consequently <span
+class="math inline">\(d=hc\)</span> satisfies the equation in the
+original algebra</p>
+<p><span class="math display">\[
+d^n+\sum_{i=1}^n h^i r_i d^{n-i}
+=h^n P(c)=0.
+\]</span></p>
+<p>It is monic, so <span class="math inline">\(d\in C\)</span>. Finally
+<span class="math inline">\(z=d/(hv)\)</span>, proving the reverse
+inclusion. The argument also covers a multiplicative set containing
+zero, when both localized algebras are zero. <span
+class="math inline">\(\square\)</span></p>
+<p>The multiplier <span class="math inline">\(h\)</span> matters. In
+<span class="math inline">\(S=k[u,v]/(uv)\)</span>, the element <span
+class="math inline">\(v\)</span> becomes zero after inverting <span
+class="math inline">\(u\)</span>, although it is not integral over the
+embedded <span class="math inline">\(k[u]\)</span>. Indeed, reduction
+modulo <span class="math inline">\(u\)</span> of a proposed monic
+equation would make the indeterminate <span
+class="math inline">\(v\)</span> algebraic over <span
+class="math inline">\(k\)</span>. Clearing coefficient denominators in
+the equation <span class="math inline">\(v/1=0\)</span> does not give
+<span class="math inline">\(v=0\)</span> in <span
+class="math inline">\(S\)</span>. Multiplication by <span
+class="math inline">\(u\)</span> supplies the missing equality.</p>
+<p><strong>Theorem 2.2 (normality is local).</strong> For a domain <span
+class="math inline">\(R\)</span>, the following are equivalent: <span
+class="math inline">\(R\)</span> is normal; every <span
+class="math inline">\(R_{\mathfrak p}\)</span>, for <span
+class="math inline">\(\mathfrak p\in\operatorname{Spec}R\)</span>, is
+normal; every <span class="math inline">\(R_{\mathfrak m}\)</span>, for
+<span class="math inline">\(\mathfrak m\)</span> maximal, is normal.
+Every localization of a normal domain by nonzero elements is normal.</p>
+<p><strong>Proof.</strong> All these localizations have the same
+fraction field <span class="math inline">\(K\)</span>. Theorem 2.1
+proves that a localization of a normal domain is normal, giving the
+forward implications. Suppose all maximal localizations are normal, and
+<span class="math inline">\(\alpha\in K\)</span> is integral over <span
+class="math inline">\(R\)</span>. It is integral over every <span
+class="math inline">\(R_{\mathfrak m}\)</span>, so belongs to each.
+Consider the denominator ideal</p>
+<p><span class="math display">\[
+D=\{r\in R:r\alpha\in R\}.
+\]</span></p>
+<p>Membership <span class="math inline">\(\alpha\in R_{\mathfrak
+m}\)</span> gives a denominator outside <span
+class="math inline">\(\mathfrak m\)</span> in <span
+class="math inline">\(D\)</span>. Thus no maximal ideal contains <span
+class="math inline">\(D\)</span>. Every proper ideal is contained in a
+maximal ideal, so <span class="math inline">\(D=R\)</span>, and <span
+class="math inline">\(1\in D\)</span> gives <span
+class="math inline">\(\alpha\in R\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 2.3 (factorial domains are normal).</strong>
+Every unique factorization domain is normal. In particular, principal
+ideal domains and <span class="math inline">\(k[X_1,\ldots,X_r]\)</span>
+for a field <span class="math inline">\(k\)</span> are normal.</p>
+<p><strong>Proof.</strong> Write an integral fraction as <span
+class="math inline">\(a/b\)</span> with coprime numerator and
+denominator. Clearing <span class="math inline">\(b^n\)</span> from a
+monic equation shows <span class="math inline">\(b\mid a^n\)</span>.
+Unique factorization forces every irreducible factor of <span
+class="math inline">\(b\)</span> to divide <span
+class="math inline">\(a\)</span>, so <span
+class="math inline">\(b\)</span> has no irreducible factors and is a
+unit. Thus the fraction belongs to the domain.</p>
+<p>For completeness, here is the polynomial factorization needed for the
+examples. In a unique factorization domain <span
+class="math inline">\(A\)</span>, the <strong>content</strong> of a
+polynomial is a greatest common divisor of its coefficients, up to a
+unit; a polynomial is <strong>primitive</strong> when its content is a
+unit. The product of two primitive polynomials is primitive. Otherwise
+an irreducible <span class="math inline">\(p\)</span> would divide every
+coefficient of the product. Reduction modulo <span
+class="math inline">\(p\)</span> gives a product of two nonzero
+polynomials equal to zero over the domain <span
+class="math inline">\(A/(p)\)</span>, which is impossible. Factoring out
+the contents then shows that content is multiplicative up to a unit.</p>
+<p>Let <span class="math inline">\(F=\operatorname{Frac}(A)\)</span>.
+Every nonzero polynomial over <span class="math inline">\(F\)</span> is
+a scalar in <span class="math inline">\(F\)</span> times a primitive
+polynomial over <span class="math inline">\(A\)</span>, by clearing
+denominators and removing the content. Moreover, if two primitive
+polynomials over <span class="math inline">\(A\)</span> differ by a
+scalar <span class="math inline">\(a/b\in F\)</span>, with <span
+class="math inline">\(a,b\)</span> coprime, comparison of coefficients
+shows that <span class="math inline">\(b\)</span> divides every
+coefficient of one of them and hence is a unit. Primitivity of the other
+then makes <span class="math inline">\(a\)</span> a unit as well.
+Factorization over the Euclidean ring <span
+class="math inline">\(F[X]\)</span> therefore gives, after these scalar
+adjustments, a factorization of every primitive polynomial over <span
+class="math inline">\(A\)</span> into primitive factors corresponding to
+irreducibles over <span class="math inline">\(F\)</span>. Such factors
+are irreducible over <span class="math inline">\(A\)</span>: a
+factorization there would either give a nontrivial factorization over
+<span class="math inline">\(F\)</span>, or have a constant nonunit
+factor contrary to primitivity. Uniqueness follows from uniqueness over
+<span class="math inline">\(F\)</span>, the primitive-scalar
+observation, and uniqueness of contents in <span
+class="math inline">\(A\)</span>. This proves that <span
+class="math inline">\(A[X]\)</span> is a unique factorization domain.
+Inducting from the field <span class="math inline">\(k\)</span> proves
+the assertion for polynomial rings. A principal ideal domain has unique
+factorization: nonzero principal ideals satisfy ACC, which gives
+factorization into irreducibles, and Bezout’s identity makes
+irreducibles prime, giving uniqueness. <span
+class="math inline">\(\square\)</span></p>
+<p>The ACC used for a principal ideal domain follows because every ideal
+is finitely generated, by Theorem 1.1 of <em>Noetherian and Artinian
+rings</em>. More explicitly, in an ascending chain the union is an
+ideal; its single generator already belongs to one member, so the chain
+stabilizes there. Bezout’s identity follows because the ideal generated
+by two elements is principal.</p>
+<h2 id="lifting-points-and-specializations">3. Lifting points and
+specializations</h2>
+<p>For an inclusion <span class="math inline">\(R\subset S\)</span>, a
+prime <span class="math inline">\(\mathfrak q\)</span> <strong>lies
+over</strong> <span class="math inline">\(\mathfrak p\)</span> when
+<span class="math inline">\(\mathfrak q\cap R=\mathfrak p\)</span>.
+Recall that inclusion of prime ideals is the specialization order on a
+spectrum.</p>
+<p><strong>Lemma 3.1 (integral domains and fields).</strong> If domains
+<span class="math inline">\(A\subset B\)</span> form an integral
+extension, then <span class="math inline">\(A\)</span> is a field if and
+only if <span class="math inline">\(B\)</span> is a field.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(B\)</span> is
+a field and <span class="math inline">\(0\ne a\in A\)</span>, its
+inverse satisfies a monic equation over <span
+class="math inline">\(A\)</span>. Multiplication of that equation by
+<span class="math inline">\(a^{n-1}\)</span> expresses <span
+class="math inline">\(a^{-1}\)</span> as an element of <span
+class="math inline">\(A\)</span>. Conversely, if <span
+class="math inline">\(A\)</span> is a field and <span
+class="math inline">\(0\ne b\in B\)</span>, the algebra <span
+class="math inline">\(A[b]\)</span> is a finite-dimensional <span
+class="math inline">\(A\)</span>-vector space and a domain.
+Multiplication by <span class="math inline">\(b\)</span> is injective,
+hence surjective on this vector space. Its image contains <span
+class="math inline">\(1\)</span>, giving an inverse for <span
+class="math inline">\(b\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (lying over and going up).</strong> If <span
+class="math inline">\(R\subset S\)</span> is integral, every prime of
+<span class="math inline">\(R\)</span> has a prime above it. For any
+integral map <span class="math inline">\(R\to S\)</span>, if <span
+class="math inline">\(\mathfrak q\)</span> lies over <span
+class="math inline">\(\mathfrak p\)</span> and <span
+class="math inline">\(\mathfrak p\subset\mathfrak p&#39;\)</span>, there
+is <span class="math inline">\(\mathfrak q&#39;\supset\mathfrak
+q\)</span> lying over <span class="math inline">\(\mathfrak
+p&#39;\)</span>.</p>
+<p><strong>Proof.</strong> For lying over, fix <span
+class="math inline">\(\mathfrak p\)</span> and put <span
+class="math inline">\(U=R\setminus\mathfrak p\)</span>. Localization
+preserves the inclusion, so <span class="math inline">\(R_{\mathfrak
+p}\subset U^{-1}S\)</span> is an integral inclusion of nonzero rings.
+Choose a maximal ideal <span class="math inline">\(\mathfrak n\)</span>
+of <span class="math inline">\(U^{-1}S\)</span>. If <span
+class="math inline">\(\mathfrak m\)</span> is its contraction, the
+inclusion</p>
+<p><span class="math display">\[
+R_{\mathfrak p}/\mathfrak m\ \subset\ (U^{-1}S)/\mathfrak n
+\]</span></p>
+<p>is integral, its source is a domain and its target a field. Lemma 3.1
+makes <span class="math inline">\(\mathfrak m\)</span> maximal. The only
+maximal ideal of <span class="math inline">\(R_{\mathfrak p}\)</span> is
+<span class="math inline">\(\mathfrak pR_{\mathfrak p}\)</span>, so
+prime correspondence contracts <span class="math inline">\(\mathfrak
+n\)</span> to a prime of <span class="math inline">\(S\)</span> over
+<span class="math inline">\(\mathfrak p\)</span>.</p>
+<p>For going up, the induced map <span class="math inline">\(R/\mathfrak
+p\to S/\mathfrak q\)</span> is an injective integral map. Apply lying
+over to the prime <span class="math inline">\(\mathfrak p&#39;/\mathfrak
+p\)</span> and take the inverse image of the resulting prime of <span
+class="math inline">\(S/\mathfrak q\)</span>. It contains <span
+class="math inline">\(\mathfrak q\)</span> and has the required
+contraction. <span class="math inline">\(\square\)</span></p>
+<p>Lying over over the whole base spectrum requires injectivity. An
+arbitrary integral map has image <span class="math inline">\(V(\ker(R\to
+S))\)</span>, by applying lying over to its image ring.</p>
+<p><strong>Theorem 3.3 (incomparability and maximal ideals).</strong>
+For an integral map <span class="math inline">\(R\to S\)</span>,
+distinct primes with the same contraction are incomparable. A prime
+<span class="math inline">\(\mathfrak q\subset S\)</span> is maximal if
+and only if its contraction <span class="math inline">\(\mathfrak
+p\subset R\)</span> is maximal.</p>
+<p><strong>Proof.</strong> The fibre ring</p>
+<p><span class="math display">\[
+C=S\otimes_R\kappa(\mathfrak p)
+=(R\setminus\mathfrak p)^{-1}(S/\mathfrak pS)
+\]</span></p>
+<p>is integral over <span class="math inline">\(\kappa(\mathfrak
+p)\)</span>, by Proposition 1.3 and the monic equations. Every prime
+quotient of <span class="math inline">\(C\)</span> is a domain integral
+over the embedded field <span class="math inline">\(\kappa(\mathfrak
+p)\)</span>, hence a field by Lemma 3.1. Thus every prime of <span
+class="math inline">\(C\)</span> is maximal. Primes of <span
+class="math inline">\(S\)</span> over <span
+class="math inline">\(\mathfrak p\)</span> correspond, with their
+inclusions, to primes of <span class="math inline">\(C\)</span>. Two
+comparable such primes are therefore equal. For the second assertion
+apply Lemma 3.1 directly to the injective integral map <span
+class="math inline">\(R/\mathfrak p\subset S/\mathfrak q\)</span>. Its
+two domains are fields simultaneously. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.4 (closed maps and finite fibres).</strong> An
+integral map <span class="math inline">\(R\to S\)</span> induces a
+closed map of spectra. More precisely, for every ideal <span
+class="math inline">\(J\subset S\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{image}(V_S(J))
+=V_R\bigl(\varphi^{-1}(J)\bigr).
+\]</span></p>
+<p>A finite ring map has finite fibres. Each fibre, with its induced
+topology, is a finite discrete space.</p>
+<p><strong>Proof.</strong> The quotient inclusion <span
+class="math inline">\(R/\varphi^{-1}(J)\subset S/J\)</span> is integral.
+Lying over proves precisely the displayed equality, which gives
+closedness.</p>
+<p>For finiteness, the fibre algebra <span
+class="math inline">\(C=S\otimes_R\kappa(\mathfrak p)\)</span> is
+finite-dimensional over <span class="math inline">\(\kappa(\mathfrak
+p)\)</span>. A chain of ideals is a chain of vector subspaces, so <span
+class="math inline">\(C\)</span> is Artinian. The Artinian structure
+theorem gives finitely many primes, all maximal. Every point of <span
+class="math inline">\(\operatorname{Spec}C\)</span> is consequently
+closed, and a finite space with closed points is discrete, since the
+complement of any one point is a finite union of closed points. The
+prime correspondence identifies this spectrum homeomorphically with the
+fibre subspace. One can check the topology directly: a basic open of the
+fibre algebra, defined by a fraction <span
+class="math inline">\(s/u\)</span>, corresponds to the intersection of
+the fibre with <span class="math inline">\(D_S(s)\)</span>. A zero fibre
+algebra gives the empty fibre. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="going-down-why-the-normal-base-matters">4. Going down: why the
+normal base matters</h2>
+<p>Going up starts with a point upstairs and follows a specialization of
+its image. Going down asks for a point <em>below a prescribed point
+upstairs</em>. Quotienting alone cannot solve this: the proof must
+control denominators at that prescribed point. Normality makes the
+coefficients of a minimal polynomial available in the base ring.</p>
+<p><strong>Lemma 4.1 (monic factors over a normal domain).</strong> Let
+<span class="math inline">\(R\)</span> be normal, with fraction field
+<span class="math inline">\(K\)</span>. If a monic <span
+class="math inline">\(Q\in K[X]\)</span> divides a monic <span
+class="math inline">\(P\in R[X]\)</span>, then <span
+class="math inline">\(Q\in R[X]\)</span>. If all nonleading coefficients
+of <span class="math inline">\(P\)</span> belong to an ideal <span
+class="math inline">\(I\subset R\)</span>, all nonleading coefficients
+of <span class="math inline">\(Q\)</span> belong to <span
+class="math inline">\(\sqrt I\)</span>.</p>
+<p><strong>Proof.</strong> Obtain a splitting field of <span
+class="math inline">\(P\)</span> by repeatedly adjoining a root of an
+irreducible factor: the quotient by that factor is a field, and division
+by the new linear factor decreases the remaining degree. In this field
+every root of <span class="math inline">\(P\)</span> is integral over
+<span class="math inline">\(R\)</span>, since <span
+class="math inline">\(P\)</span> is monic. The roots of <span
+class="math inline">\(Q\)</span>, counted with multiplicities, form a
+sublist of these roots. The coefficients of <span
+class="math inline">\(Q\)</span> are signed elementary symmetric
+expressions in that sublist, hence integral over <span
+class="math inline">\(R\)</span> by Theorem 1.2. They lie in <span
+class="math inline">\(K\)</span>, so normality puts them in <span
+class="math inline">\(R\)</span>. This argument allows inseparable
+polynomials and repeated roots.</p>
+<p>Monic division in <span class="math inline">\(R[X]\)</span> now shows
+<span class="math inline">\(P=QH\)</span> with monic <span
+class="math inline">\(H\in R[X]\)</span>: the remainder is zero because
+division over <span class="math inline">\(K\)</span> has zero remainder.
+For any prime <span class="math inline">\(\mathfrak p\supset I\)</span>,
+reduction modulo <span class="math inline">\(\mathfrak p\)</span>
+gives</p>
+<p><span class="math display">\[
+X^{\deg P}=\overline Q\,\overline H
+\quad\text{in }(R/\mathfrak p)[X].
+\]</span></p>
+<p>Over the fraction field of this domain, the only monic divisors of a
+power of <span class="math inline">\(X\)</span> are powers of <span
+class="math inline">\(X\)</span>. Thus <span
+class="math inline">\(\overline Q=X^{\deg Q}\)</span>. Every other
+coefficient of <span class="math inline">\(Q\)</span> belongs to every
+prime over <span class="math inline">\(I\)</span>, whose intersection is
+<span class="math inline">\(\sqrt I\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>In particular, an element integral over a normal domain has its monic
+minimal polynomial over <span class="math inline">\(K\)</span> in <span
+class="math inline">\(R[X]\)</span>. Indeed, that minimal polynomial
+divides any polynomial over <span class="math inline">\(K\)</span>
+vanishing at the element, by Euclidean division. The
+intersection-of-primes description of radicals used here is Theorem 1.2
+of <a href="AG-CA-01.html"><em>Spectra of rings</em></a>.</p>
+<p>An element <span class="math inline">\(y\)</span> of an <span
+class="math inline">\(R\)</span>-algebra is <strong>integral over an
+ideal <span class="math inline">\(I\)</span></strong> if it satisfies an
+equation</p>
+<p><span class="math display">\[
+y^n+c_1y^{n-1}+\cdots+c_n=0,
+\qquad c_i\in I^i.
+\]</span></p>
+<p>The powers on the coefficients record how strongly the element is
+controlled by <span class="math inline">\(I\)</span>.</p>
+<p><strong>Lemma 4.2 (integrality over an ideal).</strong> If <span
+class="math inline">\(S\)</span> is integral over <span
+class="math inline">\(R\)</span>, every element of <span
+class="math inline">\(IS\)</span> is integral over <span
+class="math inline">\(I\)</span>. For an arbitrary <span
+class="math inline">\(R\)</span>-algebra <span
+class="math inline">\(S\)</span>, an element <span
+class="math inline">\(y\in S\)</span> is integral over <span
+class="math inline">\(I\)</span> if and only if <span
+class="math inline">\(yT\in S[T]\)</span> is integral over the
+subalgebra</p>
+<p><span class="math display">\[
+\mathcal R(I)=\bigoplus_{j\geq0} I^jT^j\subset R[T].
+\]</span></p>
+<p><strong>Proof.</strong> Write <span
+class="math inline">\(y=\sum_{j=1}^r a_js_j\)</span>, with <span
+class="math inline">\(a_j\in I\)</span>. The subalgebra <span
+class="math inline">\(C=R[s_1,\ldots,s_r]\subset S\)</span> is finite
+over <span class="math inline">\(R\)</span>. Choose module generators
+<span class="math inline">\(m_1,\ldots,m_e\)</span>. Since <span
+class="math inline">\(yC\subset IC\)</span>, write <span
+class="math inline">\(ym_i=\sum_j b_{ij}m_j\)</span> with all <span
+class="math inline">\(b_{ij}\in I\)</span>. In <span
+class="math inline">\(\det(XI-(b_{ij}))\)</span>, the degree-<span
+class="math inline">\(i\)</span> coefficient below the leading term is a
+sum of products of <span class="math inline">\(i\)</span> entries, hence
+belongs to <span class="math inline">\(I^i\)</span>. The adjugate
+argument makes this polynomial evaluated at <span
+class="math inline">\(y\)</span> kill <span
+class="math inline">\(C\)</span>. It therefore kills <span
+class="math inline">\(1\)</span> and vanishes in <span
+class="math inline">\(S\)</span>, giving the required equation.</p>
+<p>For the second assertion, multiplying such an equation by <span
+class="math inline">\(T^n\)</span> immediately gives a monic equation
+for <span class="math inline">\(yT\)</span> over <span
+class="math inline">\(\mathcal R(I)\)</span>. Conversely, suppose</p>
+<p><span class="math display">\[
+(yT)^n+\sum_{i=1}^n A_i(T)(yT)^{n-i}=0,
+\qquad A_i(T)\in\mathcal R(I).
+\]</span></p>
+<p>Taking the coefficient of <span class="math inline">\(T^n\)</span>
+gives <span class="math inline">\(y^n+\sum_i c_i y^{n-i}=0\)</span>,
+where <span class="math inline">\(c_i\)</span> is the coefficient of
+<span class="math inline">\(T^i\)</span> in <span
+class="math inline">\(A_i(T)\)</span>. By the definition of <span
+class="math inline">\(\mathcal R(I)\)</span>, it belongs to <span
+class="math inline">\(I^i\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 4.3 (going down).</strong> Let <span
+class="math inline">\(R\subset S\)</span> be an integral inclusion of
+domains, with <span class="math inline">\(R\)</span> normal. Given
+primes <span class="math inline">\(\mathfrak p\subset\mathfrak
+p&#39;\)</span> of <span class="math inline">\(R\)</span> and a prime
+<span class="math inline">\(\mathfrak q&#39;\)</span> of <span
+class="math inline">\(S\)</span> over <span
+class="math inline">\(\mathfrak p&#39;\)</span>, there is a prime <span
+class="math inline">\(\mathfrak q\subset\mathfrak q&#39;\)</span> over
+<span class="math inline">\(\mathfrak p\)</span>.</p>
+<p><strong>Proof.</strong> We will show</p>
+<p><span class="math display">\[
+\mathfrak p S_{\mathfrak q&#39;}\cap R=\mathfrak p.
+\tag{1}
+\]</span></p>
+<p>The inclusion from right to left is immediate. If <span
+class="math inline">\(z\in R\)</span> belongs to the left side, combine
+denominators to write <span class="math inline">\(z=y/g\)</span> in
+<span class="math inline">\(S_{\mathfrak q&#39;}\)</span>, with <span
+class="math inline">\(y\in\mathfrak pS\)</span> and <span
+class="math inline">\(g\in S\setminus\mathfrak q&#39;\)</span>. Since
+<span class="math inline">\(S\)</span> is a domain, its localization
+embeds in its fraction field, and <span
+class="math inline">\(zg=y\)</span> holds in <span
+class="math inline">\(S\)</span>. If <span
+class="math inline">\(z=0\)</span>, it belongs to <span
+class="math inline">\(\mathfrak p\)</span>; assume otherwise.</p>
+<p>Let <span class="math inline">\(K=\operatorname{Frac}(R)\)</span>.
+The element <span class="math inline">\(g\)</span> is algebraic over
+<span class="math inline">\(K\)</span>, with monic minimal
+polynomial</p>
+<p><span class="math display">\[
+Q(X)=X^n+a_1X^{n-1}+\cdots+a_n\in R[X],
+\]</span></p>
+<p>by Lemma 4.1. At least one <span class="math inline">\(a_i\)</span>
+is outside <span class="math inline">\(\mathfrak p\)</span>. Otherwise
+the equation would put <span class="math inline">\(g^n\)</span> in <span
+class="math inline">\(\mathfrak pS\subset\mathfrak q&#39;\)</span>,
+forcing <span class="math inline">\(g\in\mathfrak q&#39;\)</span>.</p>
+<p>Because <span class="math inline">\(z\ne0\)</span> lies in <span
+class="math inline">\(K\)</span>, the monic minimal polynomial of <span
+class="math inline">\(y=zg\)</span> is</p>
+<p><span class="math display">\[
+Q_z(X)=z^nQ(X/z)
+=X^n+za_1X^{n-1}+\cdots+z^na_n.
+\]</span></p>
+<p>To verify minimality, a smaller-degree polynomial vanishing at <span
+class="math inline">\(zg\)</span>, after substitution <span
+class="math inline">\(X\mapsto zX\)</span>, would give a smaller-degree
+polynomial vanishing at <span class="math inline">\(g\)</span>. Lemma
+4.2 gives a monic equation <span class="math inline">\(P(y)=0\)</span>
+whose nonleading coefficients belong to <span
+class="math inline">\(\mathfrak p^i\)</span>, hence to <span
+class="math inline">\(\mathfrak p\)</span>. The minimal polynomial <span
+class="math inline">\(Q_z\)</span> divides <span
+class="math inline">\(P\)</span>, so Lemma 4.1 gives</p>
+<p><span class="math display">\[
+z^i a_i\in\sqrt{\mathfrak p}=\mathfrak p
+\quad(1\leq i\leq n).
+\]</span></p>
+<p>Choose <span class="math inline">\(i\)</span> with <span
+class="math inline">\(a_i\notin\mathfrak p\)</span>. Primality forces
+<span class="math inline">\(z\in\mathfrak p\)</span>, proving (1).</p>
+<p>The ideal <span class="math inline">\(\mathfrak pS_{\mathfrak
+q&#39;}\)</span> is therefore disjoint from the multiplicative set given
+by the image of <span class="math inline">\(R\setminus\mathfrak
+p\)</span>. Prime separation, proved in Lemma 1.1 of <em>Spectra of
+rings</em>, supplies a prime <span class="math inline">\(P\)</span> of
+<span class="math inline">\(S_{\mathfrak q&#39;}\)</span> containing
+this ideal and disjoint from that set. Its contraction to <span
+class="math inline">\(R\)</span> is exactly <span
+class="math inline">\(\mathfrak p\)</span>. Prime correspondence for
+<span class="math inline">\(S\to S_{\mathfrak q&#39;}\)</span> contracts
+<span class="math inline">\(P\)</span> to a prime <span
+class="math inline">\(\mathfrak q\subset\mathfrak q&#39;\)</span>, with
+<span class="math inline">\(\mathfrak q\cap R=\mathfrak p\)</span>.
+<span class="math inline">\(\square\)</span></p>
+<p>The proof used neither finite generation of <span
+class="math inline">\(S\)</span> as an algebra nor Noetherianity of
+either domain. Normality was used in the coefficient lemma, and the
+domain hypothesis on <span class="math inline">\(S\)</span> justified
+the equality <span class="math inline">\(zg=y\)</span> before forming
+minimal polynomials.</p>
+<h2 id="chains-and-dimension">5. Chains and dimension</h2>
+<p>The <strong>length</strong> of a finite chain of prime ideals</p>
+<p><span class="math display">\[
+\mathfrak p_0\subsetneq\mathfrak p_1\subsetneq\cdots\subsetneq\mathfrak
+p_n
+\]</span></p>
+<p>is <span class="math inline">\(n\)</span>. The <strong>Krull
+dimension</strong> <span class="math inline">\(\dim R\)</span> is the
+supremum of these lengths. We set the supremum of the empty set to <span
+class="math inline">\(-\infty\)</span>, so the zero ring has dimension
+<span class="math inline">\(-\infty\)</span>; unbounded lengths give
+dimension <span class="math inline">\(+\infty\)</span>. The
+<strong>height</strong> of a prime <span class="math inline">\(\mathfrak
+p\)</span> is the supremum of lengths of chains ending at <span
+class="math inline">\(\mathfrak p\)</span>, equivalently <span
+class="math inline">\(\dim R_{\mathfrak p}\)</span> by prime
+correspondence. The later dimension lessons will develop further tools;
+here finite chains suffice.</p>
+<p><strong>Theorem 5.1 (dimension under integral inclusions).</strong>
+If <span class="math inline">\(R\subset S\)</span> is integral, then
+<span class="math inline">\(\dim R=\dim S\)</span>. For <span
+class="math inline">\(\mathfrak q\in\operatorname{Spec}S\)</span>, with
+<span class="math inline">\(\mathfrak p=\mathfrak q\cap R\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{ht}(\mathfrak q)\leq\operatorname{ht}(\mathfrak p).
+\]</span></p>
+<p>If the extension has going down, equality holds for every such
+pair.</p>
+<p><strong>Proof.</strong> Contraction turns a strict chain in <span
+class="math inline">\(S\)</span> into a strict chain in <span
+class="math inline">\(R\)</span>: adjacent contractions cannot agree, by
+incomparability. This proves <span class="math inline">\(\dim S\leq\dim
+R\)</span>, and the same argument for chains ending at <span
+class="math inline">\(\mathfrak q\)</span> proves the height inequality.
+Conversely, start with any finite strict chain in <span
+class="math inline">\(R\)</span>. Lying over lifts its first prime;
+repeated going up lifts the rest. The lifted inclusions are strict
+because their contractions are distinct. Thus <span
+class="math inline">\(\dim S\geq\dim R\)</span>.</p>
+<p>If going down holds and a chain ends at <span
+class="math inline">\(\mathfrak p\)</span>, start at the prescribed
+<span class="math inline">\(\mathfrak q\)</span> and lift the chain
+backward, one step at a time. This gives a chain of the same length
+ending at <span class="math inline">\(\mathfrak q\)</span>, so the
+reverse height inequality follows. These arguments compare all finite
+lengths, even when the suprema are infinite. If <span
+class="math inline">\(R=0\)</span>, the unital inclusion forces <span
+class="math inline">\(S=0\)</span>, giving equality with the
+empty-spectrum convention. <span
+class="math inline">\(\square\)</span></p>
+<p>Equality of dimensions is a statement about integral
+<strong>inclusions</strong>. For a general integral map, the same
+argument instead gives <span class="math inline">\(\dim
+S=\dim(R/\ker\varphi)\)</span>.</p>
+<h2 id="arithmetic-and-normalization-examples">6. Arithmetic and
+normalization examples</h2>
+<p><strong>Three fibres of the Gaussian integers.</strong> The inclusion
+<span class="math inline">\(\mathbb Z\subset\mathbb Z[i]\)</span> is
+finite, with module basis <span class="math inline">\(1,i\)</span>. Its
+fibre at <span class="math inline">\((p)\)</span> is</p>
+<p><span class="math display">\[
+\mathbb F_p[T]/(T^2+1).
+\]</span></p>
+<p>At <span class="math inline">\(p=2\)</span>, the polynomial is <span
+class="math inline">\((T+1)^2\)</span>, so there is one prime above
+<span class="math inline">\((2)\)</span>, namely <span
+class="math inline">\((2,i+1)=(1+i)\)</span>. For the equality, <span
+class="math inline">\(2=(1+i)(1-i)\)</span>, so both generators on the
+left lie in <span class="math inline">\((1+i)\)</span>; conversely <span
+class="math inline">\(1+i\)</span> is a generator on the left. The fibre
+is nonreduced: the class of <span class="math inline">\(T+1\)</span> is
+nonzero and square-zero. At <span class="math inline">\(p=3\)</span>,
+the squares are <span class="math inline">\(0,1\)</span>, so <span
+class="math inline">\(T^2+1\)</span> is irreducible; the unique prime is
+<span class="math inline">\((3)\)</span>, with residue field of nine
+elements. At <span class="math inline">\(p=5\)</span>, the roots are
+<span class="math inline">\(2,-2\)</span>, giving the two primes <span
+class="math inline">\((5,i-2)\)</span> and <span
+class="math inline">\((5,i+2)\)</span>, each with residue field <span
+class="math inline">\(\mathbb F_5\)</span>. Finite fibres need not have
+constant cardinality or be reduced.</p>
+<p><strong>The cusp.</strong> Let <span
+class="math inline">\(C=k[t^2,t^3]\subset k[t]\)</span>. Its elements
+are exactly polynomials with no <span
+class="math inline">\(t\)</span>-term: every exponent at least two is a
+nonnegative combination of <span class="math inline">\(2\)</span> and
+<span class="math inline">\(3\)</span>. Thus <span
+class="math inline">\(t\notin C\)</span>, while <span
+class="math inline">\(t\)</span> is integral over <span
+class="math inline">\(C\)</span> by the equation <span
+class="math inline">\(X^2-t^2=0\)</span>. Also <span
+class="math inline">\(t=t^3/t^2\)</span> in <span
+class="math inline">\(\operatorname{Frac}(C)\)</span>, so that fraction
+field is <span class="math inline">\(k(t)\)</span>. The polynomial ring
+<span class="math inline">\(k[t]\)</span> is normal and integral over
+<span class="math inline">\(C\)</span>. Any element of <span
+class="math inline">\(k(t)\)</span> integral over <span
+class="math inline">\(C\)</span> is integral over <span
+class="math inline">\(k[t]\)</span>, using the same monic equation,
+hence belongs to <span class="math inline">\(k[t]\)</span>. Therefore
+<span class="math inline">\(k[t]\)</span> is the normalization of <span
+class="math inline">\(C\)</span>. The inclusion is finite with
+generators <span class="math inline">\(1,t\)</span>.</p>
+<p><strong>The node.</strong> Assume <span
+class="math inline">\(\operatorname{char}k\ne2\)</span> and set</p>
+<p><span class="math display">\[
+A_0=k[x,y]/\bigl(y^2-x^2(x+1)\bigr).
+\]</span></p>
+<p>The parametrization</p>
+<p><span class="math display">\[
+x=t^2-1,\qquad y=t(t^2-1)
+\tag{2}
+\]</span></p>
+<p>embeds <span class="math inline">\(A_0\)</span> in <span
+class="math inline">\(k[t]\)</span>. To prove injectivity, monic
+division in <span class="math inline">\(y\)</span> gives a unique
+representative <span class="math inline">\(f(x)+yg(x)\)</span>. Under
+(2), the first term has only even powers of <span
+class="math inline">\(t\)</span>, and the second only odd powers. If
+their sum vanishes, both vanish. Substitution <span
+class="math inline">\(k[x]\to k[t]\)</span>, <span
+class="math inline">\(x\mapsto t^2-1\)</span>, is injective by comparing
+highest degrees, so <span class="math inline">\(f=0\)</span>; the domain
+property of <span class="math inline">\(k[t]\)</span> then gives <span
+class="math inline">\(g=0\)</span>.</p>
+<p>The element <span class="math inline">\(t\)</span> satisfies <span
+class="math inline">\(t^2=x+1\)</span>, so <span
+class="math inline">\(k[t]=A_0+A_0t\)</span> is finite over <span
+class="math inline">\(A_0\)</span>. Since <span
+class="math inline">\(t=y/x\)</span> in the fraction field, <span
+class="math inline">\(\operatorname{Frac}(A_0)=k(t)\)</span>. Normality
+of <span class="math inline">\(k[t]\)</span> proves that it is the
+normalization, exactly as for the cusp. It is a proper extension: every
+element of <span class="math inline">\(A_0\)</span> has the same value
+at <span class="math inline">\(t=1\)</span> and <span
+class="math inline">\(t=-1\)</span>, whereas <span
+class="math inline">\(t\)</span> has different values there. The fibre
+over <span class="math inline">\((x,y)\)</span> is <span
+class="math inline">\(k[t]/(t^2-1)\)</span>, with two primes <span
+class="math inline">\((t-1)\)</span> and <span
+class="math inline">\((t+1)\)</span>. They separate the two branches
+meeting at the node. Away from this point, <span
+class="math inline">\(x\)</span> is invertible and <span
+class="math inline">\(t=y/x\)</span>, so <span
+class="math inline">\((A_0)_x=k[t]_x\)</span>.</p>
+<p><strong>Going down can fail.</strong> Add a variable <span
+class="math inline">\(z\)</span>: put <span
+class="math inline">\(A=A_0[z]\subset B=k[t,z]\)</span>, with the same
+parametrization. The inclusion is still finite, and <span
+class="math inline">\(A_x=B_x\)</span>. Let</p>
+<p><span class="math display">\[
+\mathfrak q_D=(z-t+1),\qquad
+\mathfrak p=\mathfrak q_D\cap A,\qquad
+\mathfrak p&#39;=(x,y,z),\qquad
+\mathfrak q&#39;=(t+1,z).
+\]</span></p>
+<p>The ideal <span class="math inline">\(\mathfrak q_D\)</span> is
+prime, since its quotient is <span class="math inline">\(k[t]\)</span>.
+Evaluation at <span class="math inline">\(t=1,z=0\)</span> annihilates
+it and, on <span class="math inline">\(A\)</span>, is evaluation at
+<span class="math inline">\(x=y=z=0\)</span>. Thus <span
+class="math inline">\(\mathfrak p\subset\mathfrak p&#39;\)</span>. This
+inclusion is strict: the image of <span class="math inline">\(z\)</span>
+in <span class="math inline">\(B/\mathfrak q_D\)</span> is <span
+class="math inline">\(t-1\ne0\)</span>, so <span
+class="math inline">\(z\notin\mathfrak p\)</span>, whereas <span
+class="math inline">\(z\in\mathfrak p&#39;\)</span>. The prime <span
+class="math inline">\(\mathfrak q&#39;\)</span> contracts to <span
+class="math inline">\(\mathfrak p&#39;\)</span>, by evaluation at <span
+class="math inline">\(t=-1,z=0\)</span>.</p>
+<p>There is only one prime of <span class="math inline">\(B\)</span>
+over <span class="math inline">\(\mathfrak p\)</span>. Indeed, <span
+class="math inline">\(x\notin\mathfrak p\)</span>, because its image
+modulo <span class="math inline">\(\mathfrak q_D\)</span> is <span
+class="math inline">\(t^2-1\ne0\)</span>. All primes over <span
+class="math inline">\(\mathfrak p\)</span> therefore lie in <span
+class="math inline">\(D_B(x)\)</span>, where <span
+class="math inline">\(A_x=B_x\)</span>; prime correspondence gives a
+unique one, namely <span class="math inline">\(\mathfrak q_D\)</span>.
+But the generator <span class="math inline">\(z-t+1\)</span> has value
+<span class="math inline">\(2\ne0\)</span> at <span
+class="math inline">\(t=-1,z=0\)</span>, so <span
+class="math inline">\(\mathfrak q_D\not\subset\mathfrak q&#39;\)</span>.
+There is no prime below <span class="math inline">\(\mathfrak
+q&#39;\)</span> over <span class="math inline">\(\mathfrak p\)</span>,
+as going down would require. The base <span
+class="math inline">\(A\)</span> is not normal: <span
+class="math inline">\(t=y/x\)</span> is integral and is absent from
+<span class="math inline">\(A\)</span>, as evaluation at the two points
+again shows.</p>
+<h2 id="exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy: quadratic integers).</strong> Let <span
+class="math inline">\(d\ne0,1\)</span> be a squarefree integer, allowing
+negative <span class="math inline">\(d\)</span>. Determine the integral
+closure of <span class="math inline">\(\mathbb Z\)</span> in <span
+class="math inline">\(\mathbb Q(\sqrt d)\)</span>. Show that it is <span
+class="math inline">\(\mathbb Z[\sqrt d]\)</span> if <span
+class="math inline">\(d\not\equiv1\pmod4\)</span>, and <span
+class="math inline">\(\mathbb Z[(1+\sqrt d)/2]\)</span> if <span
+class="math inline">\(d\equiv1\pmod4\)</span>. Explain separately the
+case <span class="math inline">\(d=1\)</span>.</p>
+<p><strong>Exercise 7.2 (easy: the missing linear term).</strong> For a
+field <span class="math inline">\(k\)</span>, prove that <span
+class="math inline">\(k[t^2,t^3]\)</span> is not normal and determine
+its normalization. Give a finite set of module generators for the
+normalization over the original ring.</p>
+<p><strong>Exercise 7.3 (medium: the topology of a finite
+fibre).</strong> For a finite map <span class="math inline">\(R\to
+S\)</span>, prove directly that the fibre over each <span
+class="math inline">\(\mathfrak p\in\operatorname{Spec}R\)</span> is
+finite and discrete. Give an upper bound for its cardinality using <span
+class="math inline">\(\dim_{\kappa(\mathfrak
+p)}(S\otimes_R\kappa(\mathfrak p))\)</span>, and include the empty
+case.</p>
+<p><strong>Exercise 7.4 (medium: heights at a prescribed
+point).</strong> Let <span class="math inline">\(R\subset S\)</span> be
+integral. For a prime <span class="math inline">\(\mathfrak q\)</span>
+with contraction <span class="math inline">\(\mathfrak p\)</span>, prove
+<span class="math inline">\(\operatorname{ht}(\mathfrak
+q)\leq\operatorname{ht}(\mathfrak p)\)</span>, with equality if going
+down holds. Your argument should also handle infinite heights.</p>
+<p><strong>Exercise 7.5 (medium: separating the wrong branch).</strong>
+Verify the failure of going down for <span
+class="math inline">\(A\subset B\)</span> in the final example of
+Section 6. Prove that <span class="math inline">\(\mathfrak
+p\subsetneq\mathfrak p&#39;\)</span>, identify the contraction of <span
+class="math inline">\(\mathfrak q&#39;\)</span>, and justify uniqueness
+of the prime above <span class="math inline">\(\mathfrak p\)</span>.</p>
+<p><strong>Exercise 7.6 (hard: orbits over the invariant ring).</strong>
+Let a finite group <span class="math inline">\(G\)</span> act by
+automorphisms on an arbitrary ring <span
+class="math inline">\(S\)</span>. Put <span
+class="math inline">\(R=S^G\)</span>. Prove that <span
+class="math inline">\(S\)</span> is integral over <span
+class="math inline">\(R\)</span> and that <span
+class="math inline">\(G\)</span> acts transitively on the primes of
+<span class="math inline">\(S\)</span> above any given prime of <span
+class="math inline">\(R\)</span>. Do not assume that <span
+class="math inline">\(S\)</span> is of finite type over <span
+class="math inline">\(R\)</span>.</p>
+<h2 id="solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> Put <span
+class="math inline">\(K=\mathbb Q(\sqrt d)\)</span>. Since <span
+class="math inline">\(d\)</span> is squarefree and is neither zero nor
+one, it is not a rational square, so <span class="math inline">\(1,\sqrt
+d\)</span> form a <span class="math inline">\(\mathbb Q\)</span>-basis.
+Write an integral element as <span class="math inline">\(\alpha=a+b\sqrt
+d\)</span>, with <span class="math inline">\(a,b\in\mathbb Q\)</span>.
+If <span class="math inline">\(b=0\)</span>, normality of <span
+class="math inline">\(\mathbb Z\)</span> makes <span
+class="math inline">\(a\)</span> an integer. Suppose <span
+class="math inline">\(b\ne0\)</span>. The minimal polynomial is</p>
+<p><span class="math display">\[
+X^2-2aX+(a^2-db^2),
+\]</span></p>
+<p>and its coefficients are integers by Lemma 4.1 applied to the normal
+domain <span class="math inline">\(\mathbb Z\)</span>. Thus <span
+class="math inline">\(u=2a\in\mathbb Z\)</span> and <span
+class="math inline">\(N=a^2-db^2\in\mathbb Z\)</span>. The identity</p>
+<p><span class="math display">\[
+d(2b)^2=u^2-4N\in\mathbb Z
+\]</span></p>
+<p>forces <span class="math inline">\(v=2b\in\mathbb Z\)</span>. To see
+this, express <span class="math inline">\(2b=r/s\)</span> in lowest
+terms with <span class="math inline">\(s&gt;0\)</span>. Then <span
+class="math inline">\(s^2\mid dr^2\)</span>, and coprimality gives <span
+class="math inline">\(s^2\mid d\)</span>. Squarefreeness of <span
+class="math inline">\(|d|\)</span> forces <span
+class="math inline">\(s=1\)</span>.</p>
+<p>The remaining norm condition is <span class="math inline">\(u^2\equiv
+dv^2\pmod4\)</span>. If <span class="math inline">\(v\)</span> is even,
+then <span class="math inline">\(u\)</span> is even. If <span
+class="math inline">\(v\)</span> is odd, then <span
+class="math inline">\(v^2\equiv1\pmod4\)</span>, and the congruence
+requires <span class="math inline">\(u\)</span> odd and <span
+class="math inline">\(d\equiv1\pmod4\)</span>: a squarefree even <span
+class="math inline">\(d\)</span> is <span
+class="math inline">\(2\pmod4\)</span>, which is not a square modulo
+four. Hence, when <span
+class="math inline">\(d\not\equiv1\pmod4\)</span>, both <span
+class="math inline">\(u,v\)</span> are even and <span
+class="math inline">\(\alpha\in\mathbb Z[\sqrt d]\)</span>. When <span
+class="math inline">\(d\equiv1\pmod4\)</span>, they have the same parity
+and</p>
+<p><span class="math display">\[
+\alpha=\frac{u-v}{2}+v\frac{1+\sqrt d}{2}
+\in\mathbb Z\left[\frac{1+\sqrt d}{2}\right].
+\]</span></p>
+<p>Conversely, <span class="math inline">\(\sqrt d\)</span> satisfies
+<span class="math inline">\(X^2-d=0\)</span>. If <span
+class="math inline">\(d\equiv1\pmod4\)</span>, the element <span
+class="math inline">\(\omega=(1+\sqrt d)/2\)</span> satisfies <span
+class="math inline">\(X^2-X+(1-d)/4=0\)</span>, a monic integer
+polynomial. The integral elements form a subring, so each proposed ring
+consists of integral elements. This proves both equalities. For <span
+class="math inline">\(d=1\)</span>, the field is just <span
+class="math inline">\(\mathbb Q\)</span> and its integral closure of
+<span class="math inline">\(\mathbb Z\)</span> is <span
+class="math inline">\(\mathbb Z\)</span>.</p>
+<p><strong>Solution 7.2.</strong> The monomials occurring in <span
+class="math inline">\(C=k[t^2,t^3]\)</span> have exponents <span
+class="math inline">\(2a+3b\)</span> with <span
+class="math inline">\(a,b\geq0\)</span>. These exponents are zero and
+all integers at least two: an even integer uses only <span
+class="math inline">\(2\)</span>, and an odd integer at least three is
+<span class="math inline">\(3\)</span> plus an even integer. Linear
+independence of polynomial monomials therefore shows <span
+class="math inline">\(t\notin C\)</span>. But <span
+class="math inline">\(t=t^3/t^2\)</span> belongs to <span
+class="math inline">\(\operatorname{Frac}(C)\)</span> and satisfies the
+monic equation <span class="math inline">\(X^2-t^2=0\)</span>, proving
+nonnormality. The same identity shows <span
+class="math inline">\(\operatorname{Frac}(C)=k(t)\)</span>. Reduction of
+powers using <span class="math inline">\(t^2\in C\)</span> gives <span
+class="math inline">\(k[t]=C+Ct\)</span>, a finite integral extension.
+By Proposition 2.3, <span class="math inline">\(k[t]\)</span> is normal.
+An element of <span class="math inline">\(k(t)\)</span> integral over
+<span class="math inline">\(C\)</span> is integral over <span
+class="math inline">\(k[t]\)</span>, since its monic equation has
+coefficients there, so it lies in <span
+class="math inline">\(k[t]\)</span>. Conversely every element of <span
+class="math inline">\(k[t]\)</span> is integral over <span
+class="math inline">\(C\)</span>. The normalization is exactly <span
+class="math inline">\(k[t]\)</span>, generated as a <span
+class="math inline">\(C\)</span>-module by <span
+class="math inline">\(1,t\)</span>.</p>
+<p><strong>Solution 7.3.</strong> Let <span
+class="math inline">\(F=\kappa(\mathfrak p)\)</span>, <span
+class="math inline">\(C=S\otimes_R F\)</span>, and <span
+class="math inline">\(n=\dim_F C\)</span>, which is finite because
+module generators of <span class="math inline">\(S\)</span> descend to
+generators of <span class="math inline">\(C\)</span>. Prime
+correspondence identifies the fibre with <span
+class="math inline">\(\operatorname{Spec}C\)</span>. For any prime <span
+class="math inline">\(\mathfrak n\subset C\)</span>, its quotient is a
+finite-dimensional domain over the embedded field <span
+class="math inline">\(F\)</span>. Multiplication by a nonzero element is
+injective and hence surjective, so this quotient is a field. Thus all
+primes of <span class="math inline">\(C\)</span> are maximal.</p>
+<p>Any <span class="math inline">\(r\)</span> distinct maximal ideals
+are pairwise comaximal. The Chinese remainder theorem gives a
+surjection</p>
+<p><span class="math display">\[
+C\longrightarrow\prod_{j=1}^r C/\mathfrak n_j.
+\]</span></p>
+<p>Each factor is a nonzero <span
+class="math inline">\(F\)</span>-vector space, so <span
+class="math inline">\(r\leq n\)</span>. There can therefore be at most
+<span class="math inline">\(n\)</span> primes. They are closed points;
+since there are finitely many, the complement of any point is closed,
+and the spectrum is discrete. The homeomorphism with the fibre is the
+one verified in Theorem 3.4. If <span
+class="math inline">\(n=0\)</span>, then <span
+class="math inline">\(C=0\)</span> and the fibre is empty. This argument
+does not impose any finiteness assumption on <span
+class="math inline">\(R\)</span> itself.</p>
+<p><strong>Solution 7.4.</strong> A strict finite chain ending at <span
+class="math inline">\(\mathfrak q\)</span> contracts to a chain ending
+at <span class="math inline">\(\mathfrak p\)</span>. If any adjacent
+contractions agreed, the corresponding comparable primes upstairs would
+agree by Theorem 3.3, contradicting strictness. Hence every length
+occurring in the height of <span class="math inline">\(\mathfrak
+q\)</span> occurs in that of <span class="math inline">\(\mathfrak
+p\)</span>, which proves the inequality. Under going down, start with a
+finite chain ending at <span class="math inline">\(\mathfrak p\)</span>.
+Prescribe <span class="math inline">\(\mathfrak q\)</span> as its last
+lift and lift each preceding prime backward. The inclusions are strict
+because their contractions are distinct, so the resulting chain ends at
+<span class="math inline">\(\mathfrak q\)</span> and has the same
+length. This proves the reverse inequality. We have compared all finite
+lengths, so the argument also proves equality when arbitrarily long
+chains exist; it does not require a chain attaining an infinite
+supremum.</p>
+<p><strong>Solution 7.5.</strong> The embedding <span
+class="math inline">\(A_0\subset k[t]\)</span> in Section 6 extends
+coefficientwise to <span class="math inline">\(A=A_0[z]\subset
+k[t,z]=B\)</span>. The equation <span
+class="math inline">\(t^2=x+1\)</span> makes it finite, with generators
+<span class="math inline">\(1,t\)</span>, and <span
+class="math inline">\(t=y/x\)</span> gives <span
+class="math inline">\(A_x=B_x\)</span>. The ideal <span
+class="math inline">\(\mathfrak q_D=(z-t+1)\)</span> is prime, with
+quotient obtained by putting <span class="math inline">\(z=t-1\)</span>.
+Evaluation at <span class="math inline">\(t=1\)</span> on this quotient
+corresponds to evaluation at the origin on <span
+class="math inline">\(A\)</span>; thus its contracted prime <span
+class="math inline">\(\mathfrak p\)</span> is contained in <span
+class="math inline">\(\mathfrak p&#39;=(x,y,z)\)</span>. The image of
+<span class="math inline">\(z\)</span> is <span
+class="math inline">\(t-1\)</span>, which is not zero, whereas <span
+class="math inline">\(z\in\mathfrak p&#39;\)</span>; this proves strict
+containment. Evaluation at <span class="math inline">\(t=-1,z=0\)</span>
+maps <span class="math inline">\(x,y,z\)</span> to zero and its
+restriction to <span class="math inline">\(A\)</span> has kernel
+precisely <span class="math inline">\((x,y,z)\)</span>. Thus <span
+class="math inline">\(\mathfrak q&#39;=(t+1,z)\)</span> lies over <span
+class="math inline">\(\mathfrak p&#39;\)</span>.</p>
+<p>The image of <span class="math inline">\(x\)</span> modulo <span
+class="math inline">\(\mathfrak q_D\)</span> is <span
+class="math inline">\(t^2-1\ne0\)</span>, so <span
+class="math inline">\(x\notin\mathfrak p\)</span>. Every prime above
+<span class="math inline">\(\mathfrak p\)</span> avoids <span
+class="math inline">\(x\)</span> and corresponds to a prime of <span
+class="math inline">\(B_x=A_x\)</span> with contraction <span
+class="math inline">\(\mathfrak pA_x\)</span>. Since this is an equality
+of rings, the only such localized prime is <span
+class="math inline">\(\mathfrak pA_x\)</span>. Contracting back gives
+the already known prime <span class="math inline">\(\mathfrak
+q_D\)</span>. Finally, <span class="math inline">\(z-t+1\)</span>
+evaluates to <span class="math inline">\(2\ne0\)</span> modulo <span
+class="math inline">\(\mathfrak q&#39;\)</span>, so <span
+class="math inline">\(\mathfrak q_D\)</span> is not contained in <span
+class="math inline">\(\mathfrak q&#39;\)</span>. No prime over <span
+class="math inline">\(\mathfrak p\)</span> lies below that prescribed
+prime, and going down fails.</p>
+<p><strong>Solution 7.6.</strong> For each <span
+class="math inline">\(s\in S\)</span>, the polynomial</p>
+<p><span class="math display">\[
+P_s(X)=\prod_{g\in G}(X-g(s))
+\]</span></p>
+<p>is monic and vanishes at <span class="math inline">\(s\)</span>,
+since the identity element is among the factors. Every group element
+permutes the factors, so every coefficient is fixed by <span
+class="math inline">\(G\)</span> and lies in <span
+class="math inline">\(R\)</span>. Thus <span
+class="math inline">\(S\)</span> is integral over <span
+class="math inline">\(R\)</span>. In particular, lying over gives a
+nonempty fibre above every prime of <span
+class="math inline">\(R\)</span>.</p>
+<p>Let <span class="math inline">\(\mathfrak q,\mathfrak q&#39;\)</span>
+have the same contraction <span class="math inline">\(\mathfrak
+p\)</span>. Each <span class="math inline">\(g(\mathfrak
+q&#39;)\)</span> also contracts to <span class="math inline">\(\mathfrak
+p\)</span>, since <span class="math inline">\(g\)</span> fixes <span
+class="math inline">\(R\)</span>. Suppose <span
+class="math inline">\(\mathfrak q\)</span> is not among these orbit
+primes. Incomparability then says <span class="math inline">\(\mathfrak
+q\)</span> is contained in none of them. After deleting repetitions,
+they are a finite family of pairwise incomparable primes <span
+class="math inline">\(\mathfrak r_1,\ldots,\mathfrak r_e\)</span>.
+Choose <span class="math inline">\(a_i\in\mathfrak q\setminus\mathfrak
+r_i\)</span>, and for <span class="math inline">\(j\ne i\)</span> choose
+<span class="math inline">\(b_{ij}\in\mathfrak r_j\setminus\mathfrak
+r_i\)</span>. Put <span class="math inline">\(c_i=\prod_{j\ne
+i}b_{ij}\)</span>, with empty product <span
+class="math inline">\(1\)</span>. Then</p>
+<p><span class="math display">\[
+x=\sum_{i=1}^e a_i c_i\in\mathfrak q
+\]</span></p>
+<p>lies outside every <span class="math inline">\(\mathfrak
+r_i\)</span>: modulo <span class="math inline">\(\mathfrak r_i\)</span>,
+all terms except <span class="math inline">\(a_ic_i\)</span> vanish, and
+that term is nonzero by primality. This is the finite prime-avoidance
+argument, valid in arbitrary rings.</p>
+<p>Consider <span class="math inline">\(N(x)=\prod_{g\in
+G}g(x)\)</span>. It belongs to <span class="math inline">\(R\)</span>,
+since the action permutes the factors, and belongs to <span
+class="math inline">\(\mathfrak q\)</span>, since one factor is <span
+class="math inline">\(x\)</span>. Thus <span
+class="math inline">\(N(x)\in\mathfrak p\subset\mathfrak
+q&#39;\)</span>. But no factor <span class="math inline">\(g(x)\)</span>
+lies in <span class="math inline">\(\mathfrak q&#39;\)</span>: otherwise
+<span class="math inline">\(x\in g^{-1}(\mathfrak q&#39;)\)</span>,
+contrary to its choice. Primality says their product cannot lie in <span
+class="math inline">\(\mathfrak q&#39;\)</span>, a contradiction. Hence
+<span class="math inline">\(\mathfrak q=g(\mathfrak q&#39;)\)</span> for
+some <span class="math inline">\(g\)</span>, proving transitivity.
+Nothing here asserts that <span class="math inline">\(S\)</span> is
+finite over its invariant ring; the monic equations and finite orbit of
+primes are sufficient.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra. Integral-element tests and closure: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-integral-element">Tag
+052I</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-closure-is-ring">Tag
+00GO</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-transitive">Tag
+00GN</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-finite-in-terms-of-integral">Tag
+02JJ</a>. Localization and normality: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-closure-localize">Tag
+0307</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-normality-is-local">Tag
+030B</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-UFD-normal">Tag
+0AFV</a>.</li>
+<li>The same work, prime lifting and fibres: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-overring-surjective">Tag
+00GQ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-going-up">Tag
+00GU</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-no-inclusion">Tag
+00GT</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-under-field">Tag
+00GR</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-going-up-closed">Tag
+00HZ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-finite-fibres">Tag
+05DR</a>. Going down and dimension: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-integral-ideal">Tag
+00H3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-minimal-polynomial-normal-domain">Tag
+00H7</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-going-down-normal-integral">Tag
+00H8</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-sub-dim-equal">Tag
+00OK</a>. The links use the AI Integrated Stacks Project English reader
+described in the course introduction.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 5.4 on normality,
+Section 8.2 on lying over and going up, and the node and finite-fibre
+passages in Section 8.3. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

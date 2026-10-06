@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spherical Hecke algebras as functions on the affine Grassmannian · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 1</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="spherical-hecke-algebras-as-functions-on-the-affine-grassmannian">Spherical Hecke algebras as functions on the affine Grassmannian</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>A Hecke product counts intermediate lattices. A Satake coefficient counts lattices in a prescribed triangular position. These two observations let us see the geometry behind the spherical Hecke algebra before introducing sheaves. We will calculate both counts, including the first example in which an orbit indicator fails to correspond to an irreducible character.</p>
+<p>For the algebraic comparison, see <a href="../LG-GLOB/LG-GLOB-02.html">The Satake isomorphism for unramified groups and unramified L-factors</a>, Theorem 4.3. We fix its measure convention in §4 and prove the counts and the rank-two injectivity needed here. The earlier lessons <a href="../AG-RG/AG-RG-04.html">Root data and Weyl groups</a>, §§5–6, and <a href="../AG-RG/AG-RG-06.html">Automorphisms, forms and parabolic subgroups</a>, Theorems 2.1 and 7.1, prove the root coordinates, projective flag schemes and flag cells used below. We prove the split-group Cartan decomposition and Iwasawa partition in this lesson, including the uniqueness that makes the orbit indexing complete.</p>
+<p>Frenkel's freely accessible lectures, §§5.1–5.4, and Zhu's freely accessible introduction, §§1.2 and 5.6, provide further reading. Semi-infinite orbits and weight functors will give a geometric meaning to the triangular position; intersection complexes will explain the correction to the orbit indicator.</p>
+<h2 id="1-a-finite-calculation-that-asks-for-a-geometric-explanation">1. A finite calculation that asks for a geometric explanation</h2>
+<p>Put <span class="math">\(F=\mathbb F_q((t))\)</span>, <span class="math">\(O=\mathbb F_q[[t]]\)</span>, and <span class="math">\(K=G(O)\)</span>, where <span class="math">\(G\)</span> is a split connected reductive group over <span class="math">\(\mathbb F_q\)</span>. Choose a split maximal torus <span class="math">\(T\subset B\)</span>, with unipotent radical <span class="math">\(N\)</span>. Positive roots are the roots in <span class="math">\(\operatorname{Lie}N\)</span>, and <span class="math">\(\rho\)</span> is their half-sum. A coweight is a homomorphism <span class="math">\(\mathbb G_m\to T\)</span>; write <span class="math">\(a_\nu=\nu(t)\)</span>. Dominance means <span class="math">\(\langle\alpha,\lambda\rangle\geq0\)</span> for every positive root <span class="math">\(\alpha\)</span>.</p>
+<p>Normalize Haar measures by <span class="math">\(\operatorname{vol}(K)=1\)</span> and <span class="math">\(\operatorname{vol}(N(O))=1\)</span>. The spherical Hecke algebra <span class="math">\(\mathcal H_G\)</span> consists of compactly supported <span class="math">\(K\)</span>-bi-invariant complex functions on <span class="math">\(G(F)\)</span>. Its orbit basis is</p>
+<p><span class="math math-display">\[
+c_\lambda=\mathbf1_{K a_\lambda K},\qquad
+\lambda\in X_*(T)^+.
+\]</span></p>
+<p>For <span class="math">\(GL_2\)</span>, denote <span class="math">\(c_{(1,0)}\)</span> by <span class="math">\(T_1\)</span> and <span class="math">\(c_{(1,1)}\)</span> by <span class="math">\(R\)</span>. We will prove</p>
+<p><span class="math math-display">\[
+T_1*T_1=c_{(2,0)}+(q+1)R,
+\qquad
+S(c_{(2,0)})=q(x_1^2+x_1x_2+x_2^2)-x_1x_2.
+\]</span></p>
+<p>Thus <span class="math">\(c_{(2,0)}\)</span>, even after its leading normalization, has the wrong middle coefficient for the character of <span class="math">\(\operatorname{Sym}^2(\mathbb C^2)\)</span>. The corrected function is</p>
+<p><span class="math math-display">\[
+h_{(2,0)}=q^{-1}(c_{(2,0)}+R).
+\]</span></p>
+<p>The added term is supported at the smaller orbit in the same connected component. Later it will come from the intersection complex at the singular point of the orbit closure.</p>
+<h2 id="2-passing-from-integrals-to-cosets">2. Passing from integrals to cosets</h2>
+<p>For the counts in this lesson, define <span class="math">\(\operatorname{Gr}_G(\mathbb F_q)\)</span> to be the coset set <span class="math">\(G(F)/K\)</span>. Its scheme and moduli constructions come in the next two lessons. The following finite-field framing calculation explains why no nontrivial disc torsor adds a point to this coset description. For <span class="math">\(GL_n\)</span>, a coset <span class="math">\(gK\)</span> is the lattice <span class="math">\(gO^n\subset F^n\)</span>. A lattice is a free <span class="math">\(O\)</span>-module of rank <span class="math">\(n\)</span> spanning <span class="math">\(F^n\)</span>. Two matrices give the same lattice exactly when they differ on the right by <span class="math">\(GL_n(O)\)</span>.</p>
+<p><strong>Lemma 2.A (finite-field frames).</strong> A torsor under a connected smooth group <span class="math">\(G/\mathbb F_q\)</span> has an <span class="math">\(\mathbb F_q\)</span>-point. A <span class="math">\(G\)</span>-torsor on <span class="math">\(O=\mathbb F_q[[t]]\)</span> is trivial. Consequently its punctured-disc trivialization is an element of <span class="math">\(G(F)\)</span>, determined up to right multiplication by <span class="math">\(G(O)\)</span>.</p>
+<p><em>Proof.</em> Work first over <span class="math">\(\overline{\mathbb F}_q\)</span> and write <span class="math">\(\mathrm{Fr}\)</span> for the <span class="math">\(q\)</span>-power Frobenius morphism. For any <span class="math">\(x\in G\)</span>, the map
+<span class="math math-display">\[
+h\longmapsto h x\,\mathrm{Fr}(h)^{-1}
+\]</span>
+is étale: its differential is an invertible translation of the differential of the first factor, since the differential of <span class="math">\(\mathrm{Fr}\)</span> is zero. Its image is open. These images are the orbits of the twisted action <span class="math">\(h\cdot x=h x\mathrm{Fr}(h)^{-1}\)</span>, so they partition the geometric points into open orbits. Connectedness permits only one orbit: otherwise one open orbit and the union of the others would disconnect <span class="math">\(G\)</span>. Thus every <span class="math">\(a\in G(\overline{\mathbb F}_q)\)</span> has the form <span class="math">\(b\,\mathrm{Fr}(b)^{-1}\)</span>.</p>
+<p>For a torsor <span class="math">\(P\)</span>, choose a geometric point <span class="math">\(p\)</span>, and write <span class="math">\(\mathrm{Fr}(p)=p a\)</span>. Choose <span class="math">\(b\)</span> with <span class="math">\(a=b\,\mathrm{Fr}(b)^{-1}\)</span>. Then <span class="math">\(p b\)</span> is fixed by Frobenius, and hence is defined over <span class="math">\(\mathbb F_q\)</span>. It trivializes <span class="math">\(P\)</span>.</p>
+<p>Apply this to the special fibre of a torsor on <span class="math">\(O\)</span>. Smoothness lifts its point successively through <span class="math">\(O/(t^m)\)</span>. On an affine neighbourhood of the initial point these compatible lifts define an <span class="math">\(O\)</span>-point: the coordinate algebra is finitely presented and <span class="math">\(O=\varprojlim_m O/(t^m)\)</span>. This point trivializes the torsor. Two integral frames differ by <span class="math">\(G(O)\)</span>, proving the quotient identification. <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 2.0 (elementary divisors).</strong> Every matrix <span class="math">\(g\in GL_n(F)\)</span> has a factorization</p>
+<p><span class="math math-display">\[
+g=k_1\operatorname{diag}(t^{\lambda_1},\ldots,t^{\lambda_n})k_2,
+\qquad k_1,k_2\in GL_n(O),\quad
+\lambda_1\geq\cdots\geq\lambda_n.
+\]</span></p>
+<p>The ordered exponents are unique.</p>
+<p><em>Proof.</em> Multiply <span class="math">\(g\)</span> by a scalar power of <span class="math">\(t\)</span> to make all entries integral. Choose a nonzero entry of least valuation. Move it to the upper left using permutation matrices. Every entry is divisible by this pivot in the discrete valuation ring <span class="math">\(O\)</span>, so integral elementary row and column operations clear its column and row. The resulting lower block is invertible over <span class="math">\(F\)</span>. Repeat on that block. The new entries remain divisible by the previous pivot, since they were obtained by subtracting integral multiples of entries divisible by it. The diagonal valuations are consequently nondecreasing before we reverse their order. Absorb diagonal units into the integral matrices, and undo the initial scalar multiplication.</p>
+<p>For uniqueness, the ideal generated by all <span class="math">\(r\)</span>-rowed minors is unchanged by multiplication by an invertible integral matrix on either side: the Cauchy–Binet expansion gives one inclusion, and multiplication by the inverse gives the other. On the displayed diagonal its valuation is <span class="math">\(\lambda_{n-r+1}+\cdots+\lambda_n\)</span>. Successive differences recover every exponent. <span class="math">\(\square\)</span></p>
+<p>Thus the <span class="math">\(GL_n(O)\)</span>-orbits are exactly the ordered tuples in Lemma 2.0. The following proof gives the corresponding statement for every split reductive group.</p>
+<p><strong>Theorem 2.C (split Cartan decomposition).</strong> For any field <span class="math">\(k\)</span>, a split connected reductive group <span class="math">\(G\)</span>, <span class="math">\(O=k[[t]]\)</span>, and <span class="math">\(K=G(O)\)</span>, every element of <span class="math">\(G(k((t)))\)</span> lies in exactly one double coset <span class="math">\(Kt^\lambda K\)</span>, with <span class="math">\(\lambda\)</span> dominant.</p>
+<p><em>Proof.</em> We use the ordered root products, big cell, commutator identities and ordinary field Bruhat decomposition proved in <a href="../AG-RG/AG-RG-04.html">Root data and Weyl groups</a>, §§5–6, and the rank-one homomorphisms proved in <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one</a>, Theorem 7.1. We construct the required affine normal form from these results.</p>
+<p>Let <span class="math">\(k\)</span> be any field, <span class="math">\(O=k[[t]]\)</span>, <span class="math">\(F=k((t))\)</span>, and <span class="math">\(G\)</span> split connected reductive, with pinned <span class="math">\(T\subset B\)</span>. Write <span class="math">\(I=\{g\in G(O):g(0)\in B\}\)</span>, <span class="math">\(Q^\vee=\mathbb Z\Phi ^\vee\)</span>, and <span class="math">\(\widetilde W=X_*(T)\rtimes W\)</span>. For a root <span class="math">\(\alpha\)</span> put <span class="math">\(r(\alpha )=0\)</span> if <span class="math">\(\alpha &gt;0\)</span> and <span class="math">\(r(\alpha )=1\)</span> if <span class="math">\(\alpha &lt;0\)</span>. The positive real affine roots are <span class="math">\(a=\alpha +n\)</span> with <span class="math">\(n\geq r(\alpha )\)</span>; their one-coefficient root groups are <span class="math">\(x_a(c)=u_\alpha (ct^n)\)</span>. Torus congruence coefficients have positive degrees <span class="math">\(n\delta\)</span>. With these root-parameter conventions, the apartment action of <span class="math">\(n_w=t^\eta n_v\)</span> is <span class="math">\(x\mapsto v x-\eta\)</span>. Thus <span class="math">\(w^{-1}(\alpha +n)=v^{-1}\alpha +n-\langle \alpha ,\eta \rangle\)</span>, and the reflection in <span class="math">\(\alpha (x)+n=0\)</span> is represented by <span class="math">\(t^{n\alpha^\vee}n_{s_\alpha }\)</span>. In particular the coweight label of <span class="math">\(t^\eta\)</span> is <span class="math">\(\eta\)</span> while its apartment translation is <span class="math">\(-\eta\)</span>; all root thresholds and alcove signs below use this convention.</p>
+<p><strong>Integral big-cell test.</strong> For every positive system, the big cell <span class="math">\(U^-TU^+\)</span> is the principal open of a regular function <span class="math">\(\Delta\)</span> whose value in its product coordinates is a nonzero scalar times a torus character. Here is a proof sufficient for the valuative use. Its complement is stable under left <span class="math">\(U^-\)</span>, right <span class="math">\(U^+\)</span>, and both torus actions. Choose a nonzero regular function vanishing on the complement, and take the finite-dimensional translation module generated by it. Such a module is finite dimensional because comultiplication of a regular function is a finite sum, and a finite coefficient coalgebra contains all its translates. In a finite-dimensional rational representation of a split unipotent group there is a nonzero fixed vector: for <span class="math">\(G_a\)</span>, take a highest nonzero coefficient of the polynomial orbit map; translation leaves that coefficient fixed. A central series with additive quotients gives the assertion by induction, using the root-height series of <span class="math">\(U^-\times U^+\)</span>. The fixed subspace is torus stable, so choose a nonzero torus eigenvector <span class="math">\(\Delta\)</span> in the complement ideal. On the big cell its two unipotent invariances make it a Laurent polynomial in the torus alone, and its torus eigencharacter makes it a single nonzero Laurent monomial. It therefore vanishes exactly on the complement. Consequently, if an <span class="math">\(O\)</span>-point has generic big-cell coordinates with torus coordinate in <span class="math">\(T(O)\)</span>, its <span class="math">\(\Delta\)</span>-value is a unit; the point belongs to the big cell over <span class="math">\(O\)</span>, and all its root coordinates are integral. This also holds after any conjugation changing the positive system.</p>
+<p>The assertion about a finite-dimensional translation module can be checked directly. If <span class="math">\(\Delta _G(f)=\sum f_j\otimes h_j\)</span>, choose the <span class="math">\(h_j\)</span> linearly independent. Coassociativity makes the span <span class="math">\(M\)</span> of the <span class="math">\(f_j\)</span> stable under right translation, and the counit puts <span class="math">\(f\)</span> in <span class="math">\(M\)</span>. For a basis <span class="math">\(m_i\)</span> of <span class="math">\(M\)</span>, write <span class="math">\(\Delta _G(m_i)=\sum _j m_j\otimes c_{ji}\)</span>. Coassociativity gives <span class="math">\(\Delta _G(c_{ji})=\sum _h c_{jh}\otimes c_{hi}\)</span>. Thus the finite span <span class="math">\(C\)</span> of these matrix coefficients is stable under both left and right translations; applying the counit to the first factor puts <span class="math">\(f\)</span> in <span class="math">\(C\)</span>. Intersect <span class="math">\(C\)</span> with the complement ideal to obtain the finite module for the two unipotents and two tori used above. This ideal is stable under those actions, so the invariant eigenvector still vanishes on the complement. The invariant-vector argument uses polynomial orbit maps and the torus weight decomposition, both defined over <span class="math">\(k\)</span>; it does not use density of <span class="math">\(k\)</span>-points or algebraic closedness. If the complement is empty, use <span class="math">\(\Delta =1\)</span>.</p>
+<p><strong>Intersections of Iwahoris.</strong> Representatives <span class="math">\(n_w\)</span> of <span class="math">\(w\in \widetilde W\)</span> lie in <span class="math">\(N_G(T)(F)\)</span>, and <span class="math">\(N_G(T)(F)/T(O)=\widetilde W\)</span>. If <span class="math">\(w=t^\eta v\)</span>, then</p>
+<p><span class="math">\(wIw^{-1}\)</span> has root threshold <span class="math">\(r_w(\alpha )=r(v^{-1}\alpha )+\langle \alpha ,\eta \rangle\)</span>.</p>
+<p>In the ordinary ordered big-cell coordinates of <span class="math">\(I\)</span>, membership in <span class="math">\(I\cap wIw^{-1}\)</span> is precisely the requirement that each root coordinate have valuation at least <span class="math">\(\max(r(\alpha ),r_w(\alpha ))\)</span>; every torus arc is allowed. To verify necessity, conjugate those coordinates by <span class="math">\(w^{-1}\)</span>. They are big-cell coordinates for the positive system <span class="math">\(v^{-1}\Phi ^+\)</span>, with torus coordinate still an integral unit. If the result belongs to <span class="math">\(I\)</span>, the integral big-cell test makes all these coordinates integral. Reduction belongs to <span class="math">\(B\)</span> exactly when every coordinate of a negative root for <span class="math">\(B\)</span> vanishes. For this last assertion, order the positive roots of <span class="math">\(B\)</span> by first those negative for the other system and then those positive for it; the earlier ordered-product theorem identifies <span class="math">\(B\)</span> in the other big cell by setting precisely the roots outside <span class="math">\(B\)</span> to zero. These are exactly the displayed valuation requirements. Conversely, these requirements make the conjugated factors integral and their reduction lie in <span class="math">\(B\)</span>, proving sufficiency.</p>
+<p>This is also a scheme calculation on finite jets: the requirements set specified coefficients to zero in the root product coordinates. Choose a congruence depth larger than all thresholds. Both Iwahori and stabilizer quotients are smooth connected finite-dimensional schemes, and their quotient has dimension</p>
+<p><span class="math">\(d(w)=\sum _{\alpha \in \Phi } \max(0,r_w(\alpha )-r(\alpha ))\)</span>.</p>
+<p>Equivalently <span class="math">\(d(w)\)</span> counts positive real affine roots <span class="math">\(a\)</span> for which <span class="math">\(w^{-1}a\)</span> is negative: for a fixed <span class="math">\(\alpha\)</span>, exactly the integers <span class="math">\(r(\alpha )\leq n&lt;r_w(\alpha )\)</span> contribute. One may construct the quotient coordinates without a quotient theorem. Order these finitely many inversion-root coefficients first, followed by the common-Iwahori coefficients. Each set is closed under addition whenever the sum is a real root. No two inversion roots can sum to a positive imaginary root, since <span class="math">\(w\)</span> fixes <span class="math">\(\delta\)</span> and would turn that sum negative. Reordering with the root commutator formula therefore stays in the respective set. Choose a rational interior point of the fundamental alcove and clear its denominators. This assigns a positive integer height to every positive real affine root and to the positive imaginary degrees; height is additive in commutators. Only finitely many coefficients have bounded height. Opposite-root interchanges use the rank-one Gauss identity with denominator <span class="math">\(1+uv\)</span>. Their two positive affine levels have positive sum, so <span class="math">\(uv\in tO\)</span>, <span class="math">\(1+uv\)</span> is a unit, and its inverse is the convergent geometric series. The resulting torus factor has positive congruence degree. Constant torus factors are placed last by rescaling root parameters.</p>
+<p>At each successive height, swapping two factors changes their coefficients only at larger heights; coefficients of equal root and height add. Thus the change from the original ordered big-cell coordinates to the new order has identity as its leading map at each height. Given the earlier coefficients, the next coefficients are recovered uniquely by subtraction. This constructs a unique inverse recursively, rather than assuming uniqueness of a different order. At every bounded height the coordinate changes and their inverses are polynomial, since only finitely many coefficients contribute. Passing to the inverse limit gives the desired factorization. The bounded-height filtration and the <span class="math">\(t\)</span>-adic filtration are cofinal, since the finite-root contribution to height is bounded. Dividing by the common coefficients leaves exactly the inversion-root coefficients, an affine space of dimension <span class="math">\(d(w)\)</span>. Thus the orbit <span class="math">\(In_wI/I\)</span> has this dimension even before any exhaustivity or disjointness assertion.</p>
+<p><strong>The affine reflection geometry.</strong> In the semisimple real cocharacter space consider the hyperplanes <span class="math">\(\alpha (x)+n=0\)</span>. Take the alcove <span class="math">\(A\)</span> adjacent to the origin on the positive-chamber side; equivalently <span class="math">\(0&lt;\alpha (x)&lt;1\)</span> for every positive root. The centre contributes an unrestricted real vector factor. Let <span class="math">\(S\)</span> be the reflections in its walls. The reflection in <span class="math">\(\alpha +n=0\)</span> is <span class="math">\(x\mapsto x-(\alpha (x)+n)\alpha^\vee\)</span>. The affine reflection group is <span class="math">\(W_a=Q^\vee\rtimes W\)</span>: the product of the parallel reflections at levels zero and one is translation by a coroot, and the zero-level reflections give <span class="math">\(W\)</span>. The wall reflections generate it. Indeed, a path between interior points of alcoves crosses finitely many hyperplanes; at each crossing the reflection carrying the current alcove to its neighbour is conjugate to a wall reflection of <span class="math">\(A\)</span>. This inductively reaches every alcove. It reaches every affine reflection as well, by reaching either alcove adjacent to its wall.</p>
+<p>The action on alcoves is free. If an element of <span class="math">\(W_a\)</span> fixes <span class="math">\(A\)</span>, it sends zero to an element <span class="math">\(\eta \in Q^\vee\)</span> in <span class="math">\(\overline A\)</span>. Hence <span class="math">\(\eta\)</span> is dominant and <span class="math">\(0\leq \langle \alpha ,\eta \rangle \leq 1\)</span> for every positive root. A dominant coroot-lattice element has nonnegative simple-coroot coefficients: write its positive and negative coefficient parts as <span class="math">\(\eta _+-\eta _-\)</span>; distinct simple coroots have nonpositive inner product, so if <span class="math">\(\eta _-\ne 0\)</span>, <span class="math">\((\eta ,\eta _-)=(\eta _+,\eta _-)-\Vert \eta _-\Vert ^2&lt;0\)</span>, contradicting dominance. Now repeatedly subtract a simple coroot of positive coefficient having positive pairing with the current coweight, until reaching zero. Such a coroot exists because the inner product of the current nonzero positive combination with itself is positive. Every chosen pairing is one: initially all root pairings have absolute value at most one, and subtracting a simple coroot with pairing one is its Weyl reflection, preserving that property and preserving the norm. Reaching zero would therefore force <span class="math">\(\eta =0\)</span>. The element fixing <span class="math">\(A\)</span> consequently has zero translation and preserves the positive finite chamber; the finite chamber theorem makes it the identity. This proves freeness.</p>
+<p>It follows that <span class="math">\(\widetilde W=W_a\rtimes \Omega\)</span>, where <span class="math">\(\Omega\)</span> is the alcove stabilizer; <span class="math">\(\Omega \simeq X_*(T)/Q^\vee\)</span>. Representatives of <span class="math">\(\Omega\)</span> normalize <span class="math">\(I\)</span>, since they preserve exactly its positive affine root thresholds. The gallery proof of finite Weyl length from the earlier programme applies word for word to this locally finite hyperplane arrangement: a generic segment crosses each separating hyperplane once, and every gallery crosses all of them. Thus <span class="math">\(\ell (w)=d(w)\)</span> is the minimum number of wall crossings for the affine part of <span class="math">\(w\)</span>, and multiplying by a wall reflection changes length by one. Reflection permutes all positive affine roots except its own wall root <span class="math">\(a\)</span>, which it makes negative. This follows by comparing the signs on the two adjacent alcoves; every other hyperplane has the same sign on them.</p>
+<p><strong>One-wall multiplication.</strong> For a wall root <span class="math">\(a\)</span>, let <span class="math">\(s=s_a\)</span> and <span class="math">\(I_a=I\cap n_s I n_s^{-1}\)</span>. The intersection calculation gives both factorizations <span class="math">\(I=I_a x_a(k)=x_a(k)I_a\)</span>, because only the one wall-root coefficient is omitted. Also <span class="math">\(n_s I_a n_s^{-1}=I_a\)</span>. Put <span class="math">\(D_w=In_wI\)</span>. Then</p>
+<p><span class="math math-display">\[
+D_sD_w=\begin{cases}D_{sw},&amp;w^{-1}a&gt;0,\\D_{sw}\cup D_w,&amp;w^{-1}a&lt;0.\end{cases}
+\]</span></p>
+<p>Indeed the factorization reduces the product to the double cosets of <span class="math">\(x_{-a}(c)n_s n_w\)</span>, <span class="math">\(c\in k\)</span>. If <span class="math">\(w^{-1}a&gt;0\)</span>, their root parameter is absorbed on the right of <span class="math">\(n_sn_w\)</span>, so every term is <span class="math">\(D_{sw}\)</span>. If <span class="math">\(w^{-1}a&lt;0\)</span>, the zero parameter gives <span class="math">\(D_{sw}\)</span>. For a nonzero parameter, the rank-one identity expresses <span class="math">\(x_{-a}(c)n_s\)</span> as an element of <span class="math">\(I\)</span> times a nonzero <span class="math">\(x_{-a}\)</span> factor; now <span class="math">\(w^{-1}(-a)&gt;0\)</span>, so this last factor is absorbed on the right of <span class="math">\(n_w\)</span>, giving <span class="math">\(D_w\)</span>. For clarity, the nonzero-parameter identity in the root copy of <span class="math">\(SL_2\)</span>, with affine powers of <span class="math">\(t\)</span> inserted in the off-diagonal entries, is
+<span class="math math-display">\[
+\begin{pmatrix}1&amp;0\\c&amp;1\end{pmatrix}
+\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}
+=
+\begin{pmatrix}-c^{-1}&amp;-1\\0&amp;-c\end{pmatrix}
+\begin{pmatrix}1&amp;0\\-c^{-1}&amp;1\end{pmatrix}
+\qquad(c\ne0).
+\]</span>
+The first factor lies in the positive wall-root group times <span class="math">\(T(O)\)</span>, and the second in the negative wall-root group. These determinant-one identities remain valid in every characteristic. Representatives differ only by <span class="math">\(T(O)\)</span>, which has no effect on these cosets.</p>
+<p><strong>Exhaustivity and disjointness.</strong> The earlier field Bruhat theorem generates <span class="math">\(G(F)\)</span> by <span class="math">\(T(F)\)</span> and root groups. Every <span class="math">\(u_\alpha (z)\)</span> is in the group generated by <span class="math">\(I\)</span> and normalizer elements: conjugate it by a sufficiently large power of <span class="math">\(t^{\alpha^\vee}\)</span> to make its parameter satisfy <span class="math">\(r(\alpha )\)</span>, using <span class="math">\(\langle \alpha ,\alpha^\vee\rangle =2\)</span>. Representatives of the normalizer are products of wall representatives and alcove stabilizers. Repeated one-wall multiplication therefore proves that the <span class="math">\(D_w\)</span> cover <span class="math">\(G(F)\)</span>.</p>
+<p>They are disjoint. Double cosets, as actual equivalence classes, are either equal or disjoint. Suppose <span class="math">\(D_w=D_v\)</span>; their orbit dimensions give <span class="math">\(\ell (w)=\ell (v)\)</span>. Induct on this common length. At length zero, both labels lie in <span class="math">\(\Omega\)</span>, normalize <span class="math">\(I\)</span>, and equality forces their quotient to lie in <span class="math">\(I\cap N(F)=T(O)\)</span>, so their labels agree. To justify the normalizer intersection, an integral normalizer point is a unit torus point times a finite Weyl representative; this follows from the ordinary Bruhat cells and their root coordinates. Its reduction lies in <span class="math">\(B\)</span> precisely when its Weyl element is the identity. Thus <span class="math">\(I\cap N(F)=T(O)\)</span>. Otherwise choose a left wall descent <span class="math">\(s\)</span> of <span class="math">\(w\)</span>. Since <span class="math">\(D_{sw}\subset D_sD_w=D_sD_v\subset D_{sv}\cup D_v\)</span>, it equals one of those two double cosets. It cannot equal <span class="math">\(D_v\)</span>, since their dimensions differ by one. Hence <span class="math">\(D_{sw}=D_{sv}\)</span>; dimensions make <span class="math">\(s\)</span> a descent of <span class="math">\(v\)</span> as well, and induction gives <span class="math">\(sw=sv\)</span>, hence <span class="math">\(w=v\)</span>. This establishes the affine normal form without importing an affine Bruhat theorem.</p>
+<p>Finally <span class="math">\(K=G(O)=\bigcup _{v\in W}D_v\)</span>, by reduction and the earlier ordinary Bruhat theorem. One-wall multiplication for the finite simple reflections shows</p>
+<p><span class="math">\(Kn_wK=\bigcup _{x\in WwW}D_x\)</span>.</p>
+<p>Every product term remains in that finite-Weyl double coset, and conversely its normalizer representative already belongs to <span class="math">\(Kn_wK\)</span>. Finite-Weyl double cosets in <span class="math">\(X_*(T)\rtimes W\)</span> are precisely Weyl orbits of coweights, each with its unique dominant representative. Thus</p>
+<p><span class="math">\(G(F)=\coprod _{\lambda \in X_*(T)^+}Kt^\lambda K\)</span>.</p>
+<p>All arguments used polynomial root identities, integral arc coordinates, and finite affine-root counts, so this proof covers split connected reductive groups in every characteristic, including non-simply-connected groups and central torus factors. <span class="math">\(\square\)</span></p>
+<p>We use the notation</p>
+<p><span class="math math-display">\[
+\operatorname{Gr}^{\lambda}(\mathbb F_q)=K a_\lambda K/K.
+\]</span></p>
+<p>The support of a Hecke function is a finite union of double cosets. Each such orbit has finitely many rational points, so the corresponding function on <span class="math">\(G(F)/K\)</span> has finite support. Conversely a finitely supported, left <span class="math">\(K\)</span>-invariant function on that quotient defines a Hecke function.</p>
+<p><strong>Proposition 2.1 (intermediate points).</strong> With the convolution convention</p>
+<p><span class="math math-display">\[
+(f*g)(x)=\int_{G(F)}f(y)g(y^{-1}x)\,dy,
+\]</span></p>
+<p>one has</p>
+<p><span class="math math-display">\[
+(f*g)(x)=\sum_{yK\in G(F)/K}f(y)g(y^{-1}x).
+\]</span></p>
+<p>Consequently</p>
+<p><span class="math math-display">\[
+c_\lambda*c_\mu=\sum_\nu c_{\lambda\mu}^{\nu}(q)c_\nu,
+\quad
+c_{\lambda\mu}^{\nu}(q)
+=\#\{yK\in\operatorname{Gr}^{\lambda}(\mathbb F_q):
+y^{-1}a_\nu\in K a_\mu K\}.
+\]</span></p>
+<p><em>Proof.</em> The integrand is constant on every right coset <span class="math">\(yK\)</span>: replacing <span class="math">\(y\)</span> by <span class="math">\(yk\)</span> leaves <span class="math">\(f(y)\)</span> fixed and changes the argument of <span class="math">\(g\)</span> by left multiplication by <span class="math">\(k^{-1}\)</span>. Every right coset has volume one. Compact support makes the displayed sum finite. Evaluate it at <span class="math">\(a_\nu\)</span> and use the bi-invariance of the convolution. This proves the formula for its coefficient in the orbit basis. <span class="math">\(\square\)</span></p>
+<p>An element of the displayed set is an intermediate modification: first from the standard point to <span class="math">\(yK\)</span>, then from <span class="math">\(yK\)</span> to <span class="math">\(a_\nu K\)</span>. Thus the displayed set is the fibre of the convolution correspondence of coset sets with these two relative positions. Its geometric construction will give the corresponding convolution morphism. The equality of counts here uses only cosets.</p>
+<h2 id="3-the-size-of-an-orbit">3. The size of an orbit</h2>
+<p>For a positive root <span class="math">\(\alpha\)</span>, set <span class="math">\(m_\alpha=\langle\alpha,\lambda\rangle\)</span>, and put</p>
+<p><span class="math math-display">\[
+d_\lambda=\sum_{\alpha&gt;0}m_\alpha
+=\langle2\rho,\lambda\rangle,
+\qquad
+b_\lambda=\#\{\alpha&gt;0:m_\alpha&gt;0\}.
+\]</span></p>
+<p>Let <span class="math">\(P_\lambda^-\)</span> be the parabolic generated by <span class="math">\(T\)</span>, all negative root groups, and the positive root groups with <span class="math">\(m_\alpha=0\)</span>. Its flag variety has dimension <span class="math">\(b_\lambda\)</span>. Replacing it by the conjugate opposite parabolic gives the same rational point count.</p>
+<p><strong>Theorem 3.1 (orbit count).</strong></p>
+<p><span class="math math-display">\[
+\#\operatorname{Gr}^{\lambda}(\mathbb F_q)
+=q^{d_\lambda-b_\lambda}\#(G/P_\lambda^-)(\mathbb F_q).
+\]</span></p>
+<p><em>Proof.</em> The stabilizer of <span class="math">\(a_\lambda K\)</span> in <span class="math">\(K\)</span> is</p>
+<p><span class="math math-display">\[
+H_\lambda=K\cap a_\lambda K a_\lambda^{-1}.
+\]</span></p>
+<p>Reduction modulo <span class="math">\(t\)</span> sends <span class="math">\(H_\lambda\)</span> onto <span class="math">\(P_\lambda^-(\mathbb F_q)\)</span>. To see the root conditions, use</p>
+<p><span class="math math-display">\[
+a_\lambda u_\alpha(z)a_\lambda^{-1}
+=u_\alpha(t^{\langle\alpha,\lambda\rangle}z).
+\]</span></p>
+<p>For a positive root with <span class="math">\(m_\alpha&gt;0\)</span>, membership in <span class="math">\(H_\lambda\)</span> requires the root parameter to lie in <span class="math">\(t^{m_\alpha}O\)</span>. Negative root parameters have no additional restriction inside <span class="math">\(K\)</span>; roots with zero pairing and torus parameters also have none. These conditions also show surjectivity onto the indicated parabolic, using its Levi and root subgroups.</p>
+<p>Let <span class="math">\(K_1=\ker(K\to G(\mathbb F_q))\)</span>. The reduction map gives a surjection of finite coset sets</p>
+<p><span class="math math-display">\[
+K/H_\lambda\longrightarrow G(\mathbb F_q)/P_\lambda^-(\mathbb F_q),
+\]</span></p>
+<p>whose fibres have size <span class="math">\([K_1:K_1\cap H_\lambda]\)</span>. The ordered root decomposition in the big cell is valid on <span class="math">\(K_1\)</span>: every element reducing to the identity has unique negative-root, torus, and positive-root coordinates, all reducing to those of the identity. In these coordinates the quotient keeps, for each positive root with <span class="math">\(m_\alpha&gt;0\)</span>, the coefficients of <span class="math">\(t,t^2,\ldots,t^{m_\alpha-1}\)</span>. There are <span class="math">\(q^{m_\alpha-1}\)</span> choices. All other coordinates cancel. Hence</p>
+<p><span class="math math-display">\[
+[K_1:K_1\cap H_\lambda]
+=\prod_{m_\alpha&gt;0}q^{m_\alpha-1}
+=q^{d_\lambda-b_\lambda}.
+\]</span></p>
+<p>The root-coordinate computation can be performed in the finite jet group modulo <span class="math">\(t^M\)</span>, for <span class="math">\(M&gt;\max m_\alpha\)</span>: the subgroup <span class="math">\(K_M\)</span> lies in <span class="math">\(H_\lambda\)</span>, so the two finite root-coordinate counts give the stated index. Finally <span class="math">\(G(\mathbb F_q)/P_\lambda^-(\mathbb F_q)=(G/P_\lambda^-)(\mathbb F_q)\)</span>, since each Bruhat cell of this split flag variety has a representative in <span class="math">\(G(\mathbb F_q)\)</span>. Multiplying fibre and base counts proves the assertion. <span class="math">\(\square\)</span></p>
+<p>For <span class="math">\(GL_n\)</span>, the roots are <span class="math">\(e_i-e_j\)</span>, <span class="math">\(i&lt;j\)</span>, so</p>
+<p><span class="math math-display">\[
+d_\lambda=\sum_{i&lt;j}(\lambda_i-\lambda_j),
+\qquad
+b_\lambda=\#\{i&lt;j:\lambda_i&gt;\lambda_j\}.
+\]</span></p>
+<p>Here the finite flag remembers the filtration on <span class="math">\(\Lambda/t\Lambda\)</span> associated to its distinct elementary-divisor levels; the additional root coefficients remember how the flag lifts through the intervening powers of <span class="math">\(t\)</span>. This gives the same count directly with matrices representing lattices.</p>
+<p>For <span class="math">\(GL_2\)</span>, if <span class="math">\(a&gt;b\)</span>, the flag is a line and the additional coordinates number <span class="math">\(a-b-1\)</span>. Therefore</p>
+<p><span class="math math-display">\[
+\#\operatorname{Gr}^{(a,b)}(\mathbb F_q)
+=(q+1)q^{a-b-1}.
+\]</span></p>
+<p>If <span class="math">\(a=b\)</span>, the orbit is the single lattice <span class="math">\(t^aO^2\)</span>. For <span class="math">\(GL_3\)</span> and <span class="math">\(\lambda=(1,0,0)\)</span>, the additional exponent is zero and the flag variety is <span class="math">\(\mathbb P^2\)</span>. Its count is <span class="math">\(q^2+q+1\)</span>.</p>
+<h2 id="4-a-triangular-position-and-its-measure">4. A triangular position and its measure</h2>
+<p>Define a semi-infinite orbit on rational points by</p>
+<p><span class="math math-display">\[
+S_\nu=N(F)a_\nu K/K.
+\]</span></p>
+<p><strong>Lemma 4.0 (Iwasawa partition).</strong> For every split connected reductive <span class="math">\(G\)</span> over <span class="math">\(k=\mathbb F_q\)</span>,
+<span class="math math-display">\[
+G(F)=N(F)T(F)K,\qquad
+G(F)/K=\coprod_{\nu\in X_*(T)}S_\nu.
+\]</span></p>
+<p><em>Proof.</em> The earlier parabolic-group lesson proves that <span class="math">\(G/B\)</span> is projective and that <span class="math">\(G\to G/B\)</span> is a smooth <span class="math">\(B\)</span>-torsor. For <span class="math">\(g\in G(F)\)</span>, consider the flag <span class="math">\(g^{-1}B\)</span>. Embed <span class="math">\(G/B\)</span> in a projective space over <span class="math">\(k\)</span>. Scale its finitely many homogeneous <span class="math">\(F\)</span>-coordinates by a common power of <span class="math">\(t\)</span> so that all lie in <span class="math">\(O\)</span> and at least one is a unit. They define an <span class="math">\(O\)</span>-point of projective space. Every homogeneous equation of <span class="math">\(G/B\)</span> vanishes on it, since it vanishes over <span class="math">\(F\)</span> and <span class="math">\(O\)</span> injects into <span class="math">\(F\)</span>. We have therefore extended the flag to an <span class="math">\(O\)</span>-point <span class="math">\(z\)</span>.</p>
+<p>The reduction <span class="math">\(\bar z\in(G/B)(k)\)</span> lies in one of the flag cells proved in Theorem 7.1 of that earlier lesson. Its root coordinates and Weyl representative give a lift <span class="math">\(h_1\in G(k)\)</span>. Pull <span class="math">\(G\to G/B\)</span> back by <span class="math">\(z\)</span>. This is a smooth affine <span class="math">\(O\)</span>-scheme with the point <span class="math">\(h_1\)</span> in its special fibre. Smoothness successively lifts that point from <span class="math">\(O/t^m\)</span> to <span class="math">\(O/t^{m+1}\)</span>. Concretely, in smooth local coordinates the correction to the defining equations is a linear system with a surjective Jacobian, so it has a solution in the square-zero ideal <span class="math">\(t^mO/t^{m+1}O\)</span>. All lifts remain in the same coordinate open, since an element which is a unit modulo <span class="math">\(t\)</span> remains a unit. Affineness and finite presentation identify the compatible solutions with a solution over <span class="math">\(O=\varprojlim_m O/t^mO\)</span>. This gives <span class="math">\(h\in K\)</span> lifting <span class="math">\(z\)</span>.</p>
+<p>Hence <span class="math">\(g^{-1}B=hB\)</span>, so <span class="math">\(g=b h^{-1}\)</span> for some <span class="math">\(b\in B(F)\)</span>. The earlier root-coordinate proof gives <span class="math">\(B=N\rtimes T\)</span>, and a split torus satisfies
+<span class="math math-display">\[
+T(F)=\coprod_{\nu\in X_*(T)}a_\nu T(O)
+\]</span>
+by taking the valuations of its coordinates. Absorb <span class="math">\(T(O)\)</span> into <span class="math">\(K\)</span>. This proves existence.</p>
+<p>For uniqueness, suppose <span class="math">\(na_\nu K=n'a_{\nu'}K\)</span>. Then <span class="math">\(a_{\nu'}^{-1}n'^{-1}na_\nu\)</span> lies in <span class="math">\(B(F)\cap G(O)=B(O)\)</span>. The equality follows because <span class="math">\(B\)</span> is closed in <span class="math">\(G\)</span>: its defining equations hold over <span class="math">\(F\)</span>, hence over <span class="math">\(O\)</span>. Projection to <span class="math">\(T\)</span> sends this element to <span class="math">\(a_{\nu-\nu'}\in T(O)\)</span>; all its character valuations are zero, forcing <span class="math">\(\nu=\nu'\)</span>.</p>
+<p>For <span class="math">\(GL_n\)</span>, one can see the same construction directly from a lattice. Put <span class="math">\(V_i=\operatorname{span}_F(e_1,\ldots,e_i)\)</span>. The image of <span class="math">\(\Lambda\cap V_i\)</span> in <span class="math">\(V_i/V_{i-1}\simeq F\)</span> is an ideal <span class="math">\(t^{\nu_i}O\)</span>. Choose a lift of its generator; these lifts give an upper triangular lattice basis with diagonal <span class="math">\(t^{\nu_i}\)</span>. They identify the unique triangular position without choosing a projective embedding. <span class="math">\(\square\)</span></p>
+<p>Write</p>
+<p><span class="math math-display">\[
+\delta(a)=|\det(\operatorname{Ad}(a)|_{\operatorname{Lie}N})|_F,
+\qquad
+\delta(a_\nu)=q^{-\langle2\rho,\nu\rangle}.
+\]</span></p>
+<p>We use the normalized transform</p>
+<p><span class="math math-display">\[
+S(f)=\sum_\nu
+q^{\langle\rho,\nu\rangle}
+\left(\int_{N(F)}f(na_\nu)\,dn\right)e^\nu.
+\tag{4.1}
+\]</span></p>
+<p>Changing variables <span class="math">\(n'=a_\nu n a_\nu^{-1}\)</span> gives <span class="math">\(dn'=\delta(a_\nu)dn\)</span>. Thus the coefficient in (4.1) also equals</p>
+<p><span class="math math-display">\[
+\delta(a_\nu)^{1/2}\int_{N(F)}f(a_\nu n)\,dn.
+\]</span></p>
+<p>The order of the two factors matters when converting an integral into a count.</p>
+<p><strong>Proposition 4.1 (Satake coefficients).</strong></p>
+<p><span class="math math-display">\[
+[e^\nu]S(c_\lambda)
+=q^{-\langle\rho,\nu\rangle}
+\#(S_\nu\cap\operatorname{Gr}^{\lambda})(\mathbb F_q).
+\]</span></p>
+<p><em>Proof.</em> The stabilizer of <span class="math">\(a_\nu K\)</span> in <span class="math">\(N(F)\)</span> is <span class="math">\(a_\nu N(O)a_\nu^{-1}\)</span>. Indeed <span class="math">\(N(F)\cap K=N(O)\)</span>, and <span class="math">\(a_\nu\)</span> normalizes <span class="math">\(N\)</span>. Its volume is <span class="math">\(\delta(a_\nu)\)</span>, by the same change of variables. The map <span class="math">\(n\mapsto na_\nu K\)</span> identifies the intersection in the proposition with the cosets of this stabilizer on which the integrand is one. Every such coset has that volume. Hence the integral in (4.1) is the count multiplied by <span class="math">\(q^{-\langle2\rho,\nu\rangle}\)</span>. Multiplication by <span class="math">\(q^{\langle\rho,\nu\rangle}\)</span> proves the result. <span class="math">\(\square\)</span></p>
+<p>In particular the measure of the stabilizer is not one unless <span class="math">\(\langle2\rho,\nu\rangle=0\)</span>. Omitting it reverses the normalization of the answer.</p>
+<h2 id="5-explicit-lattices-in-rank-two-and-three">5. Explicit lattices in rank two and three</h2>
+<p>For <span class="math">\(GL_2\)</span>, a lattice in <span class="math">\(S_{(r,s)}\)</span> has a unique presentation</p>
+<p><span class="math math-display">\[
+\Lambda=O(t^re_1)+O(ze_1+t^se_2),
+\qquad z\in F/t^rO.
+\tag{5.1}
+\]</span></p>
+<p>Its determinant valuation is <span class="math">\(r+s\)</span>. When <span class="math">\(\Lambda\subset O^2\)</span>, the smaller elementary-divisor exponent is <span class="math">\(\min(r,s,v_t(z))\)</span>, with <span class="math">\(v_t(0)=+\infty\)</span>: it is the valuation of the ideal generated by the matrix entries. The larger exponent is determined by the determinant. This tests orbit membership without invoking a character formula.</p>
+<p>For elementary divisors <span class="math">\((1,0)\)</span>, equation (5.1) yields <span class="math">\(q\)</span> lattices for <span class="math">\((r,s)=(1,0)\)</span>, with <span class="math">\(z\in O/tO\)</span>, and one for <span class="math">\((0,1)\)</span>. Since <span class="math">\(\langle\rho,(r,s)\rangle=(r-s)/2\)</span>,</p>
+<p><span class="math math-display">\[
+S(c_{(1,0)})=q^{1/2}(x_1+x_2).
+\]</span></p>
+<p>For elementary divisors <span class="math">\((2,0)\)</span>, containment in <span class="math">\(O^2\)</span> implies <span class="math">\(r,s\geq0\)</span> and <span class="math">\(r+s=2\)</span>. The possibilities are</p>
+<table>
+<thead>
+<tr>
+<th>Triangular position</th>
+<th>Allowed parameter</th>
+<th style="text-align:right">Count</th>
+<th style="text-align:right">Normalized coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math">\((2,0)\)</span></td>
+<td><span class="math">\(z\in O/t^2O\)</span></td>
+<td style="text-align:right"><span class="math">\(q^2\)</span></td>
+<td style="text-align:right"><span class="math">\(q\)</span></td>
+</tr>
+<tr>
+<td><span class="math">\((1,1)\)</span></td>
+<td><span class="math">\(z\in(O/tO)^\times\)</span></td>
+<td style="text-align:right"><span class="math">\(q-1\)</span></td>
+<td style="text-align:right"><span class="math">\(q-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math">\((0,2)\)</span></td>
+<td><span class="math">\(z=0\pmod O\)</span></td>
+<td style="text-align:right"><span class="math">\(1\)</span></td>
+<td style="text-align:right"><span class="math">\(q\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Their sum is <span class="math">\(q^2+q=(q+1)q\)</span>, as predicted by Theorem 3.1. The missing value <span class="math">\(z=0\)</span> in the middle row gives the central lattice <span class="math">\(tO^2\)</span>, whose elementary divisors are <span class="math">\((1,1)\)</span>. Thus</p>
+<p><span class="math math-display">\[
+\begin{gathered}
+S(c_{(2,0)})=q(x_1^2+x_2^2)+(q-1)x_1x_2,\\
+S(R)=x_1x_2.
+\end{gathered}
+\]</span></p>
+<p>The identity <span class="math">\(S(h_{(2,0)})=\chi_{\operatorname{Sym}^2}\)</span> follows. We can prove its uniqueness without using the full Satake isomorphism.</p>
+<p><strong>Lemma 5.1 (injectivity in rank two).</strong> The transform (4.1) on <span class="math">\(\mathcal H_{GL_2}\)</span> is injective.</p>
+<p><em>Proof.</em> First the elementary-divisor algorithm gives the orbit basis <span class="math">\(c_{(a,b)}\)</span>, <span class="math">\(a\geq b\)</span>. After multiplying a matrix by a power of <span class="math">\(t\)</span>, choose an entry of smallest valuation as pivot and move it to the first diagonal position. Its divisibility into every entry allows invertible row and column operations over <span class="math">\(O\)</span> to clear its column and row. The other diagonal entry is divisible by it; determinant valuation fixes its exponent. Rescale the two unit factors and, if necessary, permute the two basis vectors. This gives the diagonal elementary divisors, uniquely determined by the ideal of matrix entries and the determinant. Undoing the power of <span class="math">\(t\)</span> proves the assertion for every invertible Laurent matrix.</p>
+<p>Fix determinant valuation <span class="math">\(d=a+b\)</span>. Multiplication of a lattice by <span class="math">\(t^{-b}\)</span> reduces its type to <span class="math">\((m,0)\)</span>, <span class="math">\(m=a-b\)</span>. The latter lattice is contained in <span class="math">\(O^2\)</span>. In presentation (5.1), its triangular positions satisfy <span class="math">\(r,s\geq0\)</span> and <span class="math">\(r+s=m\)</span>. After undoing the central translation, the first exponent of every weight in <span class="math">\(S(c_{(a,b)})\)</span> is therefore at most <span class="math">\(a\)</span>. At the position <span class="math">\((a,b)\)</span>, all <span class="math">\(q^m\)</span> choices of <span class="math">\(z\in O/t^mO\)</span> give smaller elementary divisor zero before translation. Proposition 4.1 gives the nonzero leading coefficient <span class="math">\(q^{m/2}\)</span>.</p>
+<p>In a nonzero finite linear combination of orbit indicators of determinant <span class="math">\(d\)</span>, take the largest <span class="math">\(a\)</span> with nonzero coefficient. The coefficient of <span class="math">\(x_1^ax_2^{d-a}\)</span> in its transform receives a contribution from that orbit and none from the others, so cannot vanish. Different determinant valuations give Laurent monomials of different total degrees and cannot cancel one another. This proves injectivity. <span class="math">\(\square\)</span></p>
+<p>Consequently the counted function <span class="math">\(q^{-1}(c_{(2,0)}+R)\)</span> is the unique function with transform <span class="math">\(\chi_{\operatorname{Sym}^2}\)</span>.</p>
+<p>To compute <span class="math">\(T_1*T_1\)</span>, an intermediate lattice has</p>
+<p><span class="math math-display">\[
+O^2\supset\Lambda_1\supset\Lambda_2,
+\qquad \dim_{\mathbb F_q}(O^2/\Lambda_1)
+=\dim_{\mathbb F_q}(\Lambda_1/\Lambda_2)=1.
+\]</span></p>
+<p>The total quotient has length two. If it is cyclic, of type <span class="math">\((2,0)\)</span>, its unique length-one submodule gives one intermediate lattice. If it is killed by <span class="math">\(t\)</span>, of type <span class="math">\((1,1)\)</span>, the intermediate lattices correspond to lines in <span class="math">\(\mathbb F_q^2\)</span>, giving <span class="math">\(q+1\)</span>. These are all length-two elementary-divisor types. Proposition 2.1 proves the stated product.</p>
+<p>For <span class="math">\(GL_3\)</span>, lattices in the orbit <span class="math">\((1,0,0)\)</span> satisfy</p>
+<p><span class="math math-display">\[
+tO^3\subset\Lambda\subset O^3,
+\qquad\dim_{\mathbb F_q}(O^3/\Lambda)=1.
+\]</span></p>
+<p>They are hyperplanes in <span class="math">\(\mathbb F_q^3\)</span>, so form <span class="math">\(\mathbb P^2\)</span>. Row elimination relative to the standard flag separates them into cells of sizes <span class="math">\(q^2,q,1\)</span>. Their triangular positions are <span class="math">\(e_1,e_2,e_3\)</span>, respectively. Here <span class="math">\(\rho=(1,0,-1)\)</span>, so all three normalized coefficients are <span class="math">\(q\)</span>. Therefore</p>
+<p><span class="math math-display">\[
+S(c_{(1,0,0)})=q(x_1+x_2+x_3)=q\chi_{\mathrm{std}}.
+\]</span></p>
+<p>For a split torus, there are no roots and <span class="math">\(N=1\)</span>. Every orbit is a point. Hence <span class="math">\(\mathcal H_T=\mathbb C[X_*(T)]\)</span>, convolution adds coweights, and <span class="math">\(S\)</span> is the identity. In particular <span class="math">\(\mathcal H_{\mathbb G_m}=\mathbb C[\mathbb Z]\)</span>.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Count the <span class="math">\(GL_2\)</span> orbit with elementary divisors <span class="math">\((a,b)\)</span>, including <span class="math">\(a=b\)</span>.</p>
+<p><em>Solution.</em> Multiplication of every lattice by <span class="math">\(t^{-b}\)</span> reduces to <span class="math">\((m,0)\)</span>, <span class="math">\(m=a-b\)</span>. For <span class="math">\(m&gt;0\)</span>, reduction of its stabilizer preserves a line, giving <span class="math">\(q+1\)</span> choices. The positive-root coordinate retains <span class="math">\(m-1\)</span> coefficients, giving <span class="math">\(q^{m-1}\)</span> choices over each line. The answer is <span class="math">\((q+1)q^{m-1}\)</span>. For <span class="math">\(m=0\)</span>, the only lattice is <span class="math">\(O^2\)</span>, so the answer is one. In particular the formula with <span class="math">\(q^{m-1}\)</span> must not be used at <span class="math">\(m=0\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.2 (easy).</strong> Compute <span class="math">\(S(c_{(1,0)})\)</span> directly and identify the coefficient of each weight.</p>
+<p><em>Solution.</em> In (5.1), the positions <span class="math">\((1,0)\)</span> and <span class="math">\((0,1)\)</span> have <span class="math">\(q\)</span> and one points. Multiply by <span class="math">\(q^{-1/2}\)</span> and <span class="math">\(q^{1/2}\)</span>, respectively. Both coefficients become <span class="math">\(q^{1/2}\)</span>, giving <span class="math">\(q^{1/2}(x_1+x_2)\)</span>, the normalized unramified <span class="math">\(GL_2\)</span> Hecke parameter convention. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.3 (medium).</strong> Count the two fibres of the convolution of two length-one lattice modifications.</p>
+<p><em>Solution.</em> For the cyclic quotient <span class="math">\(O/t^2O\)</span>, the unique intermediate submodule is <span class="math">\(tO/t^2O\)</span>. For the quotient <span class="math">\((O/tO)^2\)</span>, intermediate submodules are its one-dimensional subspaces. These yield counts one and <span class="math">\(q+1\)</span>, so <span class="math">\(c_{(1,0)}^2=c_{(2,0)}+(q+1)c_{(1,1)}\)</span>. There is no other support because total length is two and both modifications are inclusions. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.4 (medium).</strong> Identify the three semi-infinite intersections for the <span class="math">\(GL_3\)</span> orbit <span class="math">\((1,0,0)\)</span>.</p>
+<p><em>Solution.</em> Write a hyperplane as the kernel of a nonzero covector, up to scalar. Stratify according to the first nonzero entry of its covector. Representatives are <span class="math">\((1,u,v)\)</span>, <span class="math">\((0,1,u)\)</span>, and <span class="math">\((0,0,1)\)</span>, with <span class="math">\(u,v\in\mathbb F_q\)</span>. Upper-triangular elimination gives positions <span class="math">\(e_1,e_2,e_3\)</span>. Thus the counts are <span class="math">\(q^2,q,1\)</span>, with pairings <span class="math">\(\langle\rho,e_i\rangle=1,0,-1\)</span>. Multiplying gives <span class="math">\(q,q,q\)</span> and hence <span class="math">\(S(c_{(1,0,0)})=q\chi_{\mathrm{std}}\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.5 (hard).</strong> Determine the function with Satake transform <span class="math">\(\chi_{\operatorname{Sym}^2}\)</span> by counting lattices, and explain why no other answer is possible.</p>
+<p><em>Solution.</em> A determinant-two lattice of type <span class="math">\((2,0)\)</span> has the three presentations in the table of §5. The middle presentation has <span class="math">\(q-1\)</span> possibilities, since a zero parameter raises the smaller elementary divisor to one. Therefore its transform has coefficients <span class="math">\(q,q-1,q\)</span>. The central point contributes <span class="math">\(x_1x_2\)</span>. Their sum, divided by <span class="math">\(q\)</span>, is <span class="math">\(x_1^2+x_1x_2+x_2^2\)</span>, so the required function is <span class="math">\(q^{-1}(c_{(2,0)}+c_{(1,1)})\)</span>. Any other answer would differ by a function with zero Satake transform, which is zero by Lemma 5.1. <span class="math">\(\square\)</span></p>
+<h2 id="7-from-counts-to-sheaves">7. From counts to sheaves</h2>
+<p>The two length-two quotients distinguish a smooth orbit from its singular boundary. A cyclic quotient has a unique intermediate lattice. At the central lattice the quotient is <span class="math">\(k^2\)</span>, and the choices form a projective line.</p>
+<p><img src="assets/convolution-fibres.png" alt="The cyclic length-two quotient has one intermediate lattice; the quotient killed by t has a projective line of choices." /></p>
+<p><em>Figure 1. The quotient modules and the fibres counted in Proposition 2.1 and §5. Each intermediate lattice is the inverse image of the displayed submodule. Over <span class="math">\(k=\mathbb F_q\)</span>, the two counts are <span class="math">\(1\)</span> and <span class="math">\(q+1\)</span>.</em></p>
+<p>Intersection cohomology assigns a complex to the entire orbit closure. Its contribution at the smaller orbit is what the raw orbit indicator misses. The rank-two calculation specifies the function that such a construction must produce: <span class="math">\(q^{-1}(c_{(2,0)}+c_{(1,1)})\)</span>. Identifying it with the normalized trace function of an intersection complex is a further theorem, to be proved in Consequences and examples.</p>
+<p>The coefficient <span class="math">\(q^{-1}\)</span> also fixes an easily missed convention. In Frenkel's §5.4, the displayed expansion of <span class="math">\(H_\lambda\)</span> says that all full lower coefficients belong to <span class="math">\(\mathbb Z_{\geq0}[q]\)</span>. Our count gives a counterexample to that unqualified assertion. Factoring out <span class="math">\(q^{-\langle\rho,\lambda\rangle}\)</span> before discussing the remaining coefficients removes this particular discrepancy.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>E. Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172v1"><em>Lectures on the Langlands program and conformal field theory</em></a>, freely accessible lecture notes (2005), §§5.1–5.4.</li>
+<li>X. Zhu, <a href="https://arxiv.org/abs/1603.05593v2"><em>An introduction to affine Grassmannians and the geometric Satake equivalence</em></a>, freely accessible lecture notes (2016), §§1.2 and 5.6.</li>
+<li>I. Satake, <a href="https://www.numdam.org/item/PMIHES_1963__18__5_0/"><em>Theory of spherical functions on reductive algebraic groups over p-adic fields</em></a>, freely accessible original article, Publications Mathématiques de l'IHÉS <strong>18</strong> (1963), 5–69.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

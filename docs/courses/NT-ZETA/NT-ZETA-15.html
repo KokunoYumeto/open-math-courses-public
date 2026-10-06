@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oscillation of the error term · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-15.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="oscillation-of-the-error-term">Oscillation of the error term</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition, figures and calculation scripts are public domain (CC0).</em></p>
+<p>A zero of zeta produces an oscillating term in prime counting. A bound on just one side of the error already limits how far right such a zero can lie. We first prove this using positivity of Mellin integrals. At the square-root boundary we need the residue itself, rather than just the location of its pole. We then prove Littlewood's stronger oscillations by smoothing the explicit formula with a positive kernel. The same kernel makes both an explicit Skewes bound and the computational disproof of Mertens's conjecture accessible.</p>
+<p>We use the functional equation and real nonvanishing from <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>, the product constant from <a href="NT-ZETA-05.html">The Hadamard product and partial fractions</a>, the zero count from <a href="NT-ZETA-10.html">Counting the zeros</a>, and the sharp and integrated formulas from <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>. The preceding lesson, <a href="NT-ZETA-14.html">The Riemann hypothesis and its standard equivalents</a>, proves the bounds under RH used below. All these lessons are written. No assumption about rational independence of zero ordinates is needed.</p>
+<p>Write
+<span class="math math-display" data-tex="$$
+E(x)=\psi(x)-x,\qquad M(x)=\sum_{n\le x}\mu(n),\qquad
+\Theta=\sup_\rho\Re\rho.
+$$">$$
+E(x)=\psi(x)-x,\qquad M(x)=\sum_{n\le x}\mu(n),\qquad
+\Theta=\sup_\rho\Re\rho.
+$$</span>
+Zeros are counted with multiplicity. Set <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Ei}(\log x)$">$\operatorname{li}(x)=\operatorname{Ei}(\log x)$</span>; the integral starting at two differs by a constant. For positive <span class="math" data-tex="$g$">$g$</span>, the notation <span class="math" data-tex="$f=\Omega_+(g)$">$f=\Omega_+(g)$</span> means <span class="math" data-tex="$\limsup f/g&gt;0$">$\limsup f/g&gt;0$</span>, and <span class="math" data-tex="$f=\Omega_-(g)$">$f=\Omega_-(g)$</span> means <span class="math" data-tex="$\liminf f/g&lt;0$">$\liminf f/g&lt;0$</span>. We write <span class="math" data-tex="$\Omega_\pm$">$\Omega_\pm$</span> when both hold, and <span class="math" data-tex="$\Omega(g)$">$\Omega(g)$</span> when <span class="math" data-tex="$\limsup|f|/g&gt;0$">$\limsup|f|/g&gt;0$</span>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-positivity-puts-a-singularity-on-the-real-boundary">1. Positivity puts a singularity on the real boundary</h2>
+<p><strong>Theorem 1.1 (Landau's theorem for Mellin integrals).</strong> Let <span class="math" data-tex="$A$">$A$</span> be locally integrable on <span class="math" data-tex="$[1,\infty)$">$[1,\infty)$</span> and nonnegative for all sufficiently large arguments. Suppose the integral
+<span class="math math-display" data-tex="$$
+F(s)=\int_1^\infty A(u)u^{-s-1}\,du
+\tag{1.1}
+$$">$$
+F(s)=\int_1^\infty A(u)u^{-s-1}\,du
+\tag{1.1}
+$$</span>
+has a finite abscissa of convergence <span class="math" data-tex="$\sigma_c$">$\sigma_c$</span>. Then its holomorphic function on <span class="math" data-tex="$\Re s&gt;\sigma_c$">$\Re s&gt;\sigma_c$</span> does not extend holomorphically to a neighbourhood of the real point <span class="math" data-tex="$\sigma_c$">$\sigma_c$</span>.</p>
+<p><strong>Proof.</strong> Removing a finite initial interval changes <span class="math" data-tex="$F$">$F$</span> by an entire function and does not change its abscissa. We can therefore suppose <span class="math" data-tex="$A\ge0$">$A\ge0$</span> everywhere. Convergence on a real line implies absolute convergence to its right. On a compact subset strictly to the right of <span class="math" data-tex="$\sigma_c$">$\sigma_c$</span>, a convergent integral on a slightly more leftward real line supplies an integrable majorant, also after multiplication by any fixed power of <span class="math" data-tex="$\log u$">$\log u$</span>. Consequently
+<span class="math math-display" data-tex="$$
+F^{(n)}(a)=(-1)^n\int_1^\infty A(u)(\log u)^n u^{-a-1}\,du
+\qquad(a&gt;\sigma_c).
+\tag{1.2}
+$$">$$
+F^{(n)}(a)=(-1)^n\int_1^\infty A(u)(\log u)^n u^{-a-1}\,du
+\qquad(a&gt;\sigma_c).
+\tag{1.2}
+$$</span></p>
+<p>Suppose an extension existed in <span class="math" data-tex="$|s-\sigma_c|&lt;r$">$|s-\sigma_c|&lt;r$</span>. Together with the original half-plane this gives a Taylor disk about some <span class="math" data-tex="$a&gt;\sigma_c$">$a&gt;\sigma_c$</span> whose radius exceeds <span class="math" data-tex="$a-\sigma_c$">$a-\sigma_c$</span>. Indeed choose <span class="math" data-tex="$a-\sigma_c&lt;r/4$">$a-\sigma_c&lt;r/4$</span>: the disk <span class="math" data-tex="$|s-a|&lt;r/2$">$|s-a|&lt;r/2$</span> lies in that union. Choose a real <span class="math" data-tex="$b&lt;\sigma_c$">$b&lt;\sigma_c$</span> in this Taylor disk. Taylor expansion and monotone convergence, applied to nonnegative terms, give
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+F(b)&amp;=\sum_{n\ge0}\frac{(a-b)^n}{n!}
+\int_1^\infty A(u)(\log u)^n u^{-a-1}\,du\\
+&amp;=\int_1^\infty A(u)u^{-a-1}e^{(a-b)\log u}\,du
+=\int_1^\infty A(u)u^{-b-1}\,du&lt;\infty.
+\end{aligned}
+$$">$$
+\begin{aligned}
+F(b)&amp;=\sum_{n\ge0}\frac{(a-b)^n}{n!}
+\int_1^\infty A(u)(\log u)^n u^{-a-1}\,du\\
+&amp;=\int_1^\infty A(u)u^{-a-1}e^{(a-b)\log u}\,du
+=\int_1^\infty A(u)u^{-b-1}\,du&lt;\infty.
+\end{aligned}
+$$</span>
+This contradicts the definition of <span class="math" data-tex="$\sigma_c$">$\sigma_c$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The theorem concerns a finite boundary. When the integral converges at every real <span class="math" data-tex="$s$">$s$</span>, there is no finite <span class="math" data-tex="$\sigma_c$">$\sigma_c$</span> to which its assertion applies. The substitution <span class="math" data-tex="$u=e^y$">$u=e^y$</span> gives the identical result for Laplace integrals of eventually nonnegative functions.</p>
+<h2 id="2-a-bound-on-one-side-controls-every-zero">2. A bound on one side controls every zero</h2>
+<p>For <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>, partial summation gives the exact transform
+<span class="math math-display" data-tex="$$
+G(s)=\int_1^\infty E(u)u^{-s-1}\,du
+=-\frac{\zeta&#x27;(s)}{s\zeta(s)}-\frac1{s-1}.
+\tag{2.1}
+$$">$$
+G(s)=\int_1^\infty E(u)u^{-s-1}\,du
+=-\frac{\zeta&#x27;(s)}{s\zeta(s)}-\frac1{s-1}.
+\tag{2.1}
+$$</span>
+The pole at one cancels. At a nontrivial zero <span class="math" data-tex="$\rho$">$\rho$</span> of order <span class="math" data-tex="$m$">$m$</span>, the meromorphic expression has residue <span class="math" data-tex="$-m/\rho$">$-m/\rho$</span>. It is holomorphic near every positive real point: zeta has no real zeros in <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, as the alternating-series formula proves, and it is positive and nonzero above one. These real points, including one, are the crucial continuation path.</p>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="$1/2\le\alpha&lt;1$">$1/2\le\alpha&lt;1$</span>. If, for some <span class="math" data-tex="$c\ge0$">$c\ge0$</span>, either
+<span class="math math-display" data-tex="$$
+E(x)\ge-cx^\alpha\quad\hbox{eventually},
+\qquad\hbox{or}\qquad E(x)\le cx^\alpha\quad\hbox{eventually},
+\tag{2.2}
+$$">$$
+E(x)\ge-cx^\alpha\quad\hbox{eventually},
+\qquad\hbox{or}\qquad E(x)\le cx^\alpha\quad\hbox{eventually},
+\tag{2.2}
+$$</span>
+then every nontrivial zero has real part at most <span class="math" data-tex="$\alpha$">$\alpha$</span>.</p>
+<p><strong>Proof.</strong> In the first case apply Theorem 1.1 to <span class="math" data-tex="$A(u)=E(u)+cu^\alpha$">$A(u)=E(u)+cu^\alpha$</span>, after discarding a finite initial interval. Its transform is
+<span class="math math-display" data-tex="$$
+G(s)+\frac{c}{s-\alpha}+H(s),
+\tag{2.3}
+$$">$$
+G(s)+\frac{c}{s-\alpha}+H(s),
+\tag{2.3}
+$$</span>
+where <span class="math" data-tex="$H$">$H$</span> is entire and accounts for the discarded interval. Its abscissa is at most one, since Chebyshev's estimate gives <span class="math" data-tex="$E(u)=O(u)$">$E(u)=O(u)$</span>. If that abscissa were greater than <span class="math" data-tex="$\alpha$">$\alpha$</span>, the real continuation of (2.3) would be holomorphic at the abscissa, contrary to Landau's theorem. Thus the integral is holomorphic in <span class="math" data-tex="$\Re s&gt;\alpha$">$\Re s&gt;\alpha$</span>; an abscissa of minus infinity gives this conclusion directly.</p>
+<p>Meromorphic continuation and the identity theorem identify (2.3) with that holomorphic integral throughout this half-plane. A zero there would contribute the nonzero residue <span class="math" data-tex="$-m/\rho$">$-m/\rho$</span>. The other terms cannot cancel it, since <span class="math" data-tex="$\rho$">$\rho$</span> is nonreal. Hence there is no such zero. For the second case use <span class="math" data-tex="$A(u)=cu^\alpha-E(u)$">$A(u)=cu^\alpha-E(u)$</span> and replace <span class="math" data-tex="$G$">$G$</span> by <span class="math" data-tex="$-G$">$-G$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 2.2.</strong> If <span class="math" data-tex="$1/2\le\alpha&lt;\Theta$">$1/2\le\alpha&lt;\Theta$</span>, then
+<span class="math math-display" data-tex="$$
+\limsup_{x\to\infty}\frac{E(x)}{x^\alpha}=+\infty,
+\qquad
+\liminf_{x\to\infty}\frac{E(x)}{x^\alpha}=-\infty.
+\tag{2.4}
+$$">$$
+\limsup_{x\to\infty}\frac{E(x)}{x^\alpha}=+\infty,
+\qquad
+\liminf_{x\to\infty}\frac{E(x)}{x^\alpha}=-\infty.
+\tag{2.4}
+$$</span></p>
+<p><strong>Proof.</strong> A finite upper limsup would give an eventual upper bound in (2.2), with a larger positive <span class="math" data-tex="$c$">$c$</span>. A finite lower liminf would similarly give a lower bound. Either would exclude a zero of real part greater than <span class="math" data-tex="$\alpha$">$\alpha$</span>, although the definition of the supremum guarantees such a zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We have <span class="math" data-tex="$\Theta\ge1/2$">$\Theta\ge1/2$</span>: the zero set is nonempty by lesson five, and the functional equation pairs real parts <span class="math" data-tex="$\beta$">$\beta$</span> and <span class="math" data-tex="$1-\beta$">$1-\beta$</span>. This argument neither assumes a critical-line zero nor assumes that the supremum is attained.</p>
+<h2 id="3-what-happens-exactly-at-the-square-root-boundary">3. What happens exactly at the square-root boundary</h2>
+<p><strong>Theorem 3.1.</strong> Unconditionally,
+<span class="math math-display" data-tex="$$
+\psi(x)-x=\Omega_\pm(\sqrt x).
+\tag{3.1}
+$$">$$
+\psi(x)-x=\Omega_\pm(\sqrt x).
+\tag{3.1}
+$$</span>
+If RH holds and <span class="math" data-tex="$\rho=1/2+i\gamma$">$\rho=1/2+i\gamma$</span> has order <span class="math" data-tex="$m$">$m$</span>, then more precisely
+<span class="math math-display" data-tex="$$
+\limsup\frac{E(x)}{\sqrt x}\ge\frac{m}{|\rho|},
+\qquad
+\liminf\frac{E(x)}{\sqrt x}\le-\frac{m}{|\rho|}.
+\tag{3.2}
+$$">$$
+\limsup\frac{E(x)}{\sqrt x}\ge\frac{m}{|\rho|},
+\qquad
+\liminf\frac{E(x)}{\sqrt x}\le-\frac{m}{|\rho|}.
+\tag{3.2}
+$$</span></p>
+<p><strong>Proof.</strong> If RH fails, symmetry gives <span class="math" data-tex="$\Theta&gt;1/2$">$\Theta&gt;1/2$</span>, and (2.4) with <span class="math" data-tex="$\alpha=1/2$">$\alpha=1/2$</span> is stronger than (3.1). Suppose RH holds. Then <span class="math" data-tex="$E(x)=O(\sqrt x\log^2x)$">$E(x)=O(\sqrt x\log^2x)$</span> by lesson fourteen, so all the following integrals converge for <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>.</p>
+<p>Suppose first that <span class="math" data-tex="$E(x)\ge-c\sqrt x$">$E(x)\ge-c\sqrt x$</span> eventually. The eventually nonnegative function <span class="math" data-tex="$A=E+c\sqrt x$">$A=E+c\sqrt x$</span>, with its finite initial interval removed, has transform <span class="math" data-tex="$F=G+c/(s-1/2)+H$">$F=G+c/(s-1/2)+H$</span>. Positivity gives
+<span class="math math-display" data-tex="$$
+|F(\sigma+i\gamma)|\le F(\sigma).
+\tag{3.3}
+$$">$$
+|F(\sigma+i\gamma)|\le F(\sigma).
+\tag{3.3}
+$$</span>
+At the real boundary <span class="math" data-tex="$G$">$G$</span> and <span class="math" data-tex="$H$">$H$</span> are holomorphic, so <span class="math" data-tex="$(\sigma-1/2)F(\sigma)\to c$">$(\sigma-1/2)F(\sigma)\to c$</span>. At <span class="math" data-tex="$\rho$">$\rho$</span>, their pole has residue <span class="math" data-tex="$-m/\rho$">$-m/\rho$</span>, while the added term and <span class="math" data-tex="$H$">$H$</span> are holomorphic. Multiplying (3.3) by <span class="math" data-tex="$\sigma-1/2$">$\sigma-1/2$</span> and taking the limit gives <span class="math" data-tex="$m/|\rho|\le c$">$m/|\rho|\le c$</span>. If the claimed lower liminf in (3.2) failed, one could choose <span class="math" data-tex="$c&lt;m/|\rho|$">$c&lt;m/|\rho|$</span> for which this eventual lower bound held, a contradiction.</p>
+<p>For the upper limsup use <span class="math" data-tex="$A=c\sqrt x-E$">$A=c\sqrt x-E$</span> instead. The residue changes sign but its modulus stays <span class="math" data-tex="$m/|\rho|$">$m/|\rho|$</span>, giving the other inequality. RH places every existing nontrivial zero on this line, so some such <span class="math" data-tex="$\rho$">$\rho$</span> exists. This completes both cases. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 3.2.</strong> For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)-x=\Omega_\pm(x^{\Theta-\varepsilon}).
+\tag{3.4}
+$$">$$
+\psi(x)-x=\Omega_\pm(x^{\Theta-\varepsilon}).
+\tag{3.4}
+$$</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$\Theta-\varepsilon\ge1/2$">$\Theta-\varepsilon\ge1/2$</span>, use (2.4). If it is smaller, (3.1) gives both signs at the larger square-root scale, which proves the assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.3.</strong> We have
+<span class="math math-display" data-tex="$$
+\limsup_{x\to\infty}\frac{|M(x)|}{\sqrt x}&gt;0.
+\tag{3.5}
+$$">$$
+\limsup_{x\to\infty}\frac{|M(x)|}{\sqrt x}&gt;0.
+\tag{3.5}
+$$</span>
+If RH fails, or if a critical-line zero is multiple, this limsup is infinite. If <span class="math" data-tex="$\rho$">$\rho$</span> is a simple critical-line zero and the limsup is finite, it is at least <span class="math" data-tex="$|1/(\rho\zeta&#x27;(\rho))|$">$|1/(\rho\zeta&#x27;(\rho))|$</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+\frac1{s\zeta(s)}=\int_1^\infty M(u)u^{-s-1}\,du.
+\tag{3.6}
+$$">$$
+\frac1{s\zeta(s)}=\int_1^\infty M(u)u^{-s-1}\,du.
+\tag{3.6}
+$$</span>
+An eventual bound <span class="math" data-tex="$|M(u)|\le c\sqrt u$">$|M(u)|\le c\sqrt u$</span> makes the integral holomorphic for <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, forcing RH by the functional equation. It also gives, uniformly in <span class="math" data-tex="$t$">$t$</span>,
+<span class="math math-display" data-tex="$$
+\left|\frac1{s\zeta(s)}\right|
+\le\frac{c}{\sigma-1/2}+O(1)
+\quad(\sigma\downarrow1/2).
+\tag{3.7}
+$$">$$
+\left|\frac1{s\zeta(s)}\right|
+\le\frac{c}{\sigma-1/2}+O(1)
+\quad(\sigma\downarrow1/2).
+\tag{3.7}
+$$</span>
+A pole of order at least two violates this estimate. At a simple zero <span class="math" data-tex="$\rho$">$\rho$</span> its residue is <span class="math" data-tex="$1/(\rho\zeta&#x27;(\rho))$">$1/(\rho\zeta&#x27;(\rho))$</span>, whose modulus must therefore be at most <span class="math" data-tex="$c$">$c$</span>. If the limsup in (3.5) were zero, arbitrary positive <span class="math" data-tex="$c$">$c$</span> would be available, contradicting this nonzero residue. The statements about a finite positive limsup follow by taking <span class="math" data-tex="$c$">$c$</span> above that limsup and letting it decrease. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="4-a-positive-kernel-with-finitely-many-zero-frequencies">4. A positive kernel with finitely many zero frequencies</h2>
+<p>We now supply the smoothing argument needed for the logarithmic improvement. The Fourier convention is <span class="math" data-tex="$\widehat K(v)=\int_{\mathbb R}K(u)e^{-ivu}du$">$\widehat K(v)=\int_{\mathbb R}K(u)e^{-ivu}du$</span>.</p>
+<p><strong>Lemma 4.1.</strong> Put
+<span class="math math-display" data-tex="$$
+\begin{split}
+w(v)&amp;=(1-|v|)\cos(\pi v)+\frac{\sin(\pi|v|)}\pi
+\quad(|v|\le1),\\
+w(v)&amp;=0\quad(|v|&gt;1),\qquad
+K(u)=\frac{4\pi\cos^2(u/2)}{(\pi^2-u^2)^2}.
+\end{split}
+\tag{4.1}
+$$">$$
+\begin{split}
+w(v)&amp;=(1-|v|)\cos(\pi v)+\frac{\sin(\pi|v|)}\pi
+\quad(|v|\le1),\\
+w(v)&amp;=0\quad(|v|&gt;1),\qquad
+K(u)=\frac{4\pi\cos^2(u/2)}{(\pi^2-u^2)^2}.
+\end{split}
+\tag{4.1}
+$$</span>
+The apparent singularities of <span class="math" data-tex="$K$">$K$</span> at <span class="math" data-tex="$u=\pm\pi$">$u=\pm\pi$</span> are removable. We have <span class="math" data-tex="$K\ge0$">$K\ge0$</span>, <span class="math" data-tex="$\int K=1$">$\int K=1$</span>, <span class="math" data-tex="$\widehat K=w$">$\widehat K=w$</span>, and <span class="math" data-tex="$w(v)\ge1/\pi$">$w(v)\ge1/\pi$</span> for <span class="math" data-tex="$|v|\le1/2$">$|v|\le1/2$</span>. Also <span class="math" data-tex="$K,K&#x27;=O((1+|u|)^{-4})$">$K,K&#x27;=O((1+|u|)^{-4})$</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$\phi(v)=\cos(\pi v)$">$\phi(v)=\cos(\pi v)$</span> on <span class="math" data-tex="$[-1/2,1/2]$">$[-1/2,1/2]$</span> and zero elsewhere. Direct integration gives
+<span class="math math-display" data-tex="$$
+h(u)=\frac1{2\pi}\int\phi(v)e^{ivu}dv
+=\frac{\cos(u/2)}{\pi^2-u^2},
+\qquad \int h(u)^2du=\frac1{2\pi}\int\phi(v)^2dv=\frac1{4\pi}.
+$$">$$
+h(u)=\frac1{2\pi}\int\phi(v)e^{ivu}dv
+=\frac{\cos(u/2)}{\pi^2-u^2},
+\qquad \int h(u)^2du=\frac1{2\pi}\int\phi(v)^2dv=\frac1{4\pi}.
+$$</span>
+Thus <span class="math" data-tex="$K=4\pi h^2$">$K=4\pi h^2$</span> is nonnegative with integral one. The Fourier product rule gives <span class="math" data-tex="$\widehat K=2\phi*\phi$">$\widehat K=2\phi*\phi$</span>; integrating the two cosines over their overlapping intervals gives precisely (4.1). For <span class="math" data-tex="$0&lt;v&lt;1$">$0&lt;v&lt;1$</span>, differentiation yields <span class="math" data-tex="$w&#x27;(v)=-\pi(1-v)\sin(\pi v)\le0$">$w&#x27;(v)=-\pi(1-v)\sin(\pi v)\le0$</span>, and <span class="math" data-tex="$w(1/2)=1/\pi$">$w(1/2)=1/\pi$</span>. The formula for <span class="math" data-tex="$K$">$K$</span>, with its limiting values at <span class="math" data-tex="$\pm\pi$">$\pm\pi$</span>, proves the decay and the derivative bound. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the kernel used by Jurkat and Peyerimhoff and by Odlyzko and te Riele. We have proved its needed properties directly; no optimization property of the kernel is being assumed. Define <span class="math" data-tex="$K_T(u)=TK(Tu)$">$K_T(u)=TK(Tu)$</span>, whose transform is <span class="math" data-tex="$w(v/T)$">$w(v/T)$</span>.</p>
+<p>Assume RH for the next two lemmas. Write <span class="math" data-tex="$y=\log x$">$y=\log x$</span> and
+<span class="math math-display" data-tex="$$
+f(y)=e^{-y/2}E(e^y)\quad(y&gt;0),\qquad f(y)=0\quad(y\le0).
+$$">$$
+f(y)=e^{-y/2}E(e^y)\quad(y&gt;0),\qquad f(y)=0\quad(y\le0).
+$$</span>
+Define the uniformly convergent bounded primitive
+<span class="math math-display" data-tex="$$
+V(y)=\sum_\rho\frac{e^{i\gamma y}}{i\gamma\rho},
+\qquad
+S_T(y)=\sum_{|\gamma|&lt;T}w(\gamma/T)\frac{e^{i\gamma y}}\rho.
+\tag{4.2}
+$$">$$
+V(y)=\sum_\rho\frac{e^{i\gamma y}}{i\gamma\rho},
+\qquad
+S_T(y)=\sum_{|\gamma|&lt;T}w(\gamma/T)\frac{e^{i\gamma y}}\rho.
+\tag{4.2}
+$$</span>
+The first sum converges absolutely because <span class="math" data-tex="$\sum |\gamma|^{-2}&lt;\infty$">$\sum |\gamma|^{-2}&lt;\infty$</span> and there are no real nontrivial zeros. Multiplicity is retained in both sums.</p>
+<p><strong>Lemma 4.2 (the smoothed explicit formula).</strong> For <span class="math" data-tex="$T\ge1$">$T\ge1$</span> and <span class="math" data-tex="$y\ge T/2$">$y\ge T/2$</span>,
+<span class="math math-display" data-tex="$$
+(f*K_T)(y)=-S_T(y)+o(1)\qquad(T\to\infty),
+\tag{4.3}
+$$">$$
+(f*K_T)(y)=-S_T(y)+o(1)\qquad(T\to\infty),
+\tag{4.3}
+$$</span>
+uniformly in such <span class="math" data-tex="$y$">$y$</span>. The contribution to this average from <span class="math" data-tex="$u\notin[y/2,2y]$">$u\notin[y/2,2y]$</span> is also <span class="math" data-tex="$o(1)$">$o(1)$</span>.</p>
+<p><strong>Proof.</strong> The sharp formula of lesson eleven, after multiplication by <span class="math" data-tex="$e^{-y/2}$">$e^{-y/2}$</span>, says locally on <span class="math" data-tex="$y&gt;0$">$y&gt;0$</span>
+<span class="math math-display" data-tex="$$
+f(y)=-V&#x27;(y)+r(y),\qquad
+r(y)=-e^{-y/2}\log(2\pi)-\tfrac12e^{-y/2}\log(1-e^{-2y}).
+\tag{4.4}
+$$">$$
+f(y)=-V&#x27;(y)+r(y),\qquad
+r(y)=-e^{-y/2}\log(2\pi)-\tfrac12e^{-y/2}\log(1-e^{-2y}).
+\tag{4.4}
+$$</span>
+Here <span class="math" data-tex="$V&#x27;$">$V&#x27;$</span> is a locally integrable weak derivative. To justify this formulation, integrate the finite symmetric zero sums against a smooth compactly supported test function in <span class="math" data-tex="$y&gt;0$">$y&gt;0$</span>. Integration by parts moves their derivative onto the test function; the primitives converge uniformly. The sharp formula converges with a uniformly bounded error on each such interval and pointwise away from prime powers, by its stated remainder and convergence theorem. Dominated convergence then identifies the derivative with the locally integrable function in (4.4). Averaged values at prime powers do not affect integrals.</p>
+<p>On the full real line, integration by parts and uniform convergence of <span class="math" data-tex="$V$">$V$</span> give
+<span class="math math-display" data-tex="$$
+V&#x27;*K_T=\sum_\rho\frac{\widehat K_T(\gamma)e^{i\gamma y}}\rho=S_T(y).
+\tag{4.5}
+$$">$$
+V&#x27;*K_T=\sum_\rho\frac{\widehat K_T(\gamma)e^{i\gamma y}}\rho=S_T(y).
+\tag{4.5}
+$$</span>
+Indeed <span class="math" data-tex="$V*K_T&#x27;$">$V*K_T&#x27;$</span> is absolutely defined, and each integral of <span class="math" data-tex="$e^{i\gamma u}K_T&#x27;(y-u)$">$e^{i\gamma u}K_T&#x27;(y-u)$</span> is <span class="math" data-tex="$i\gamma e^{i\gamma y}w(\gamma/T)$">$i\gamma e^{i\gamma y}w(\gamma/T)$</span>. Only finitely many frequencies survive. On <span class="math" data-tex="$y&lt;0$">$y&lt;0$</span> the derivative remains locally integrable: conjugate pairing gives
+<span class="math math-display" data-tex="$$
+V&#x27;(-y)=-V&#x27;(y)+2\sum_{\gamma&gt;0}\frac{\cos(\gamma y)}{\gamma^2+1/4},
+$$">$$
+V&#x27;(-y)=-V&#x27;(y)+2\sum_{\gamma&gt;0}\frac{\cos(\gamma y)}{\gamma^2+1/4},
+$$</span>
+where the added series converges absolutely. Both sides are interpreted with their locally integrable values. Near zero (4.4) and <span class="math" data-tex="$\psi(e^y)=0$">$\psi(e^y)=0$</span> for <span class="math" data-tex="$0&lt;y&lt;\log2$">$0&lt;y&lt;\log2$</span> give only an integrable logarithmic singularity. Under RH, lesson fourteen bounds their growth by <span class="math" data-tex="$O((1+|y|)^2)$">$O((1+|y|)^2)$</span>, so convolution with <span class="math" data-tex="$K_T$">$K_T$</span> is absolutely valid.</p>
+<p>The difference between (4.3) and (4.5) consists of the <span class="math" data-tex="$r$">$r$</span> integral on <span class="math" data-tex="$u&gt;0$">$u&gt;0$</span> and the <span class="math" data-tex="$V&#x27;$">$V&#x27;$</span> integral on <span class="math" data-tex="$u&lt;0$">$u&lt;0$</span>. For large <span class="math" data-tex="$T$">$T$</span> the latter is bounded by
+<span class="math math-display" data-tex="$$
+\|V\|_\infty\left(K_T(y)+\int_y^\infty|K_T&#x27;(v)|dv\right)
+\ll T^{-2}y^{-3}.
+$$">$$
+\|V\|_\infty\left(K_T(y)+\int_y^\infty|K_T&#x27;(v)|dv\right)
+\ll T^{-2}y^{-3}.
+$$</span>
+For <span class="math" data-tex="$r$">$r$</span>, use its integrability near zero and exponential decay at infinity. Splitting at <span class="math" data-tex="$u=y/2$">$u=y/2$</span> bounds its convolution by <span class="math" data-tex="$O(T^{-3}y^{-4}+e^{-y/4})$">$O(T^{-3}y^{-4}+e^{-y/4})$</span>. These estimates are uniform for <span class="math" data-tex="$y\ge T/2$">$y\ge T/2$</span>. The same integration by parts on the two parts of <span class="math" data-tex="$u&gt;0$">$u&gt;0$</span> outside <span class="math" data-tex="$[y/2,2y]$">$[y/2,2y]$</span>, including their endpoints, bounds the <span class="math" data-tex="$V&#x27;$">$V&#x27;$</span> contribution by <span class="math" data-tex="$O(T^{-2}y^{-3})$">$O(T^{-2}y^{-3})$</span> and the <span class="math" data-tex="$r$">$r$</span> contribution by the preceding bound. This proves both assertions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 4.3 (simultaneous recurrence with a size bound).</strong> For large <span class="math" data-tex="$T$">$T$</span> there is an integer <span class="math" data-tex="$q\ge T$">$q\ge T$</span>, with
+<span class="math math-display" data-tex="$$
+q\le T+Q^{N(T)},\qquad Q=\lceil T^3\rceil,
+\tag{4.6}
+$$">$$
+q\le T+Q^{N(T)},\qquad Q=\lceil T^3\rceil,
+\tag{4.6}
+$$</span>
+such that <span class="math" data-tex="$|\gamma q-2\pi n_\gamma|\le 4\pi T/Q$">$|\gamma q-2\pi n_\gamma|\le 4\pi T/Q$</span> for every positive ordinate <span class="math" data-tex="$\gamma&lt;T$">$\gamma&lt;T$</span>, with suitable integers <span class="math" data-tex="$n_\gamma$">$n_\gamma$</span>.</p>
+<p><strong>Proof.</strong> Divide the <span class="math" data-tex="$N(T)$">$N(T)$</span>-dimensional unit cube into <span class="math" data-tex="$Q^{N(T)}$">$Q^{N(T)}$</span> equal boxes. Two of the points <span class="math" data-tex="$j(\gamma/(2\pi))_\gamma$">$j(\gamma/(2\pi))_\gamma$</span> modulo one, for <span class="math" data-tex="$0\le j\le Q^{N(T)}$">$0\le j\le Q^{N(T)}$</span>, fall in the same box. Subtracting their indices gives <span class="math" data-tex="$1\le q_0\le Q^{N(T)}$">$1\le q_0\le Q^{N(T)}$</span> with each phase error at most <span class="math" data-tex="$2\pi/Q$">$2\pi/Q$</span>. If <span class="math" data-tex="$q_0&lt;T$">$q_0&lt;T$</span>, multiply it by <span class="math" data-tex="$\lceil T/q_0\rceil\le2T$">$\lceil T/q_0\rceil\le2T$</span>; otherwise retain it. The resulting <span class="math" data-tex="$q$">$q$</span> satisfies the assertion and (4.6). Repeated ordinates add no difficulty. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="5-littlewood-s-logarithmic-improvement">5. Littlewood's logarithmic improvement</h2>
+<p><strong>Theorem 5.1 (Littlewood).</strong> Unconditionally,
+<span class="math math-display" data-tex="$$
+\psi(x)-x=\Omega_\pm\bigl(\sqrt x\log\log\log x\bigr).
+\tag{5.1}
+$$">$$
+\psi(x)-x=\Omega_\pm\bigl(\sqrt x\log\log\log x\bigr).
+\tag{5.1}
+$$</span></p>
+<p><strong>Proof.</strong> If RH fails, choose <span class="math" data-tex="$1/2&lt;\alpha&lt;\Theta$">$1/2&lt;\alpha&lt;\Theta$</span>. Corollary 2.2 gives both signs at the larger scale <span class="math" data-tex="$x^\alpha$">$x^\alpha$</span>, which proves (5.1). Suppose RH holds. Pair the conjugate terms in <span class="math" data-tex="$S_T$">$S_T$</span>:
+<span class="math math-display" data-tex="$$
+S_T(y)=2\sum_{0&lt;\gamma&lt;T}w(\gamma/T)
+\frac{\tfrac12\cos(\gamma y)+\gamma\sin(\gamma y)}{\gamma^2+1/4}.
+\tag{5.2}
+$$">$$
+S_T(y)=2\sum_{0&lt;\gamma&lt;T}w(\gamma/T)
+\frac{\tfrac12\cos(\gamma y)+\gamma\sin(\gamma y)}{\gamma^2+1/4}.
+\tag{5.2}
+$$</span>
+Take <span class="math" data-tex="$q$">$q$</span> from Lemma 4.3 and set <span class="math" data-tex="$h=1/T$">$h=1/T$</span>. At the perfectly aligned phases, the sine contribution at <span class="math" data-tex="$q+h$">$q+h$</span> is positive for every <span class="math" data-tex="$0&lt;\gamma&lt;T$">$0&lt;\gamma&lt;T$</span>, and at <span class="math" data-tex="$q-h$">$q-h$</span> it is negative. In the block <span class="math" data-tex="$T/4&lt;\gamma\le T/2$">$T/4&lt;\gamma\le T/2$</span>, <span class="math" data-tex="$w\ge1/\pi$">$w\ge1/\pi$</span> and <span class="math" data-tex="$\sin(\gamma/T)\ge c\gamma/T$">$\sin(\gamma/T)\ge c\gamma/T$</span>, so this contribution has absolute value at least
+<span class="math math-display" data-tex="$$
+\frac{c&#x27;}T\bigl(N(T/2)-N(T/4)\bigr)\ge c&#x27;&#x27;\log T.
+$$">$$
+\frac{c&#x27;}T\bigl(N(T/2)-N(T/4)\bigr)\ge c&#x27;&#x27;\log T.
+$$</span>
+The last inequality follows from the proved zero-count asymptotic. The cosine contribution is bounded by <span class="math" data-tex="$\sum_{\gamma&gt;0}(\gamma^2+1/4)^{-1}&lt;\infty$">$\sum_{\gamma&gt;0}(\gamma^2+1/4)^{-1}&lt;\infty$</span>. The actual phase error changes (5.2) by
+<span class="math math-display" data-tex="$$
+O\left(T^{-2}\sum_{0&lt;\gamma&lt;T}|\rho|^{-1}\right)
+=O(T^{-2}\log^2 T)=o(1).
+$$">$$
+O\left(T^{-2}\sum_{0&lt;\gamma&lt;T}|\rho|^{-1}\right)
+=O(T^{-2}\log^2 T)=o(1).
+$$</span>
+Consequently <span class="math" data-tex="$S_T(q+h)\ge c_0\log T-C$">$S_T(q+h)\ge c_0\log T-C$</span> and <span class="math" data-tex="$S_T(q-h)\le-c_0\log T+C$">$S_T(q-h)\le-c_0\log T+C$</span>. Lemma 4.2 gives the opposite signs for the averages of <span class="math" data-tex="$f$">$f$</span>, of the same order.</p>
+<p>The tail assertion of that lemma removes all <span class="math" data-tex="$u$">$u$</span> outside <span class="math" data-tex="$[y/2,2y]$">$[y/2,2y]$</span> from each average at <span class="math" data-tex="$y=q\pm h$">$y=q\pm h$</span>, with an <span class="math" data-tex="$o(1)$">$o(1)$</span> change. Since <span class="math" data-tex="$K_T\ge0$">$K_T\ge0$</span> and has total mass one, a positive average of size <span class="math" data-tex="$c\log T$">$c\log T$</span> gives a point in that interval with <span class="math" data-tex="$f(u)\ge c\log T$">$f(u)\ge c\log T$</span>; a negative one gives <span class="math" data-tex="$f(u)\le-c\log T$">$f(u)\le-c\log T$</span>. Such points lie in <span class="math" data-tex="$[q/3,3q]$">$[q/3,3q]$</span> for large <span class="math" data-tex="$T$">$T$</span>.</p>
+<p>The zero count and (4.6) give <span class="math" data-tex="$\log q\le C T(\log T)^2$">$\log q\le C T(\log T)^2$</span>. Thus <span class="math" data-tex="$\log\log u\le C_1\log T$">$\log\log u\le C_1\log T$</span> at these points, while <span class="math" data-tex="$u\ge T/3\to\infty$">$u\ge T/3\to\infty$</span>. Setting <span class="math" data-tex="$x=e^u$">$x=e^u$</span> gives <span class="math" data-tex="$\log\log\log x=\log\log u$">$\log\log\log x=\log\log u$</span> and proves both signs in (5.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>There is no inhomogeneous phase problem here: we align all phases near zero, and the two small shifts make their sine terms have opposite signs. Arbitrary prescribed phases, as used later for Mertens's conjecture, require an additional search.</p>
+<h2 id="6-passing-to-the-prime-counting-function">6. Passing to the prime-counting function</h2>
+<p>Under RH put
+<span class="math math-display" data-tex="$$
+g(y)=y e^{-y/2}\bigl(\pi(e^y)-\operatorname{li}(e^y)\bigr),
+\qquad D(y)=e^{-y/2}\bigl(\psi(e^y)-\theta(e^y)\bigr).
+$$">$$
+g(y)=y e^{-y/2}\bigl(\pi(e^y)-\operatorname{li}(e^y)\bigr),
+\qquad D(y)=e^{-y/2}\bigl(\psi(e^y)-\theta(e^y)\bigr).
+$$</span>
+Prime squares give the main term of <span class="math" data-tex="$D$">$D$</span>: the prime number theorem and Chebyshev's bounds give
+<span class="math math-display" data-tex="$$
+\psi(x)-\theta(x)=\theta(\sqrt x)+O(x^{1/3}\log x)
+=\sqrt x+o(\sqrt x),\qquad D(y)=1+o(1).
+\tag{6.1}
+$$">$$
+\psi(x)-\theta(x)=\theta(\sqrt x)+O(x^{1/3}\log x)
+=\sqrt x+o(\sqrt x),\qquad D(y)=1+o(1).
+\tag{6.1}
+$$</span></p>
+<p><strong>Lemma 6.1.</strong> Under RH,
+<span class="math math-display" data-tex="$$
+g(y)=f(y)-1+o(1)\qquad(y\to\infty).
+\tag{6.2}
+$$">$$
+g(y)=f(y)-1+o(1)\qquad(y\to\infty).
+\tag{6.2}
+$$</span></p>
+<p><strong>Proof.</strong> Integrate the sharp explicit formula with respect to <span class="math" data-tex="$u=\log x$">$u=\log x$</span> from <span class="math" data-tex="$a=\log2$">$a=\log2$</span> to <span class="math" data-tex="$y$">$y$</span>. Its zero terms become
+<span class="math math-display" data-tex="$$
+-\sum_\rho\frac{e^{\rho y}-e^{\rho a}}{\rho^2},
+$$">$$
+-\sum_\rho\frac{e^{\rho y}-e^{\rho a}}{\rho^2},
+$$</span>
+an absolutely convergent series of size <span class="math" data-tex="$O(e^{y/2})$">$O(e^{y/2})$</span>. The constant and trivial-zero terms contribute <span class="math" data-tex="$O(1+y)$">$O(1+y)$</span>, which is absorbed in this bound. The justification is the compact bounded convergence in lesson eleven, or the primitive argument in Lemma 4.2. Subtracting prime powers adds <span class="math" data-tex="$O(\int_a^y e^{u/2}du)$">$O(\int_a^y e^{u/2}du)$</span>, by their proved <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span> bound. Hence
+<span class="math math-display" data-tex="$$
+P(y)=\int_a^y\bigl(\theta(e^u)-e^u\bigr)du=O(e^{y/2}).
+\tag{6.3}
+$$">$$
+P(y)=\int_a^y\bigl(\theta(e^u)-e^u\bigr)du=O(e^{y/2}).
+\tag{6.3}
+$$</span>
+Integration by parts, followed by splitting its remaining integral at <span class="math" data-tex="$y/2$">$y/2$</span>, gives
+<span class="math math-display" data-tex="$$
+\int_a^y\frac{\theta(e^u)-e^u}{u^2}du
+=\frac{P(y)}{y^2}+2\int_a^y\frac{P(u)}{u^3}du
+=O(e^{y/2}/y^2).
+$$">$$
+\int_a^y\frac{\theta(e^u)-e^u}{u^2}du
+=\frac{P(y)}{y^2}+2\int_a^y\frac{P(u)}{u^3}du
+=O(e^{y/2}/y^2).
+$$</span>
+The exact partial-summation formula for <span class="math" data-tex="$\pi$">$\pi$</span> now gives
+<span class="math math-display" data-tex="$$
+g(y)=e^{-y/2}\bigl(\theta(e^y)-e^y\bigr)+O(1/y)
+=f(y)-D(y)+O(1/y).
+\tag{6.4}
+$$">$$
+g(y)=e^{-y/2}\bigl(\theta(e^y)-e^y\bigr)+O(1/y)
+=f(y)-D(y)+O(1/y).
+\tag{6.4}
+$$</span>
+The fixed difference between the main-term integral starting at two and <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> contributes <span class="math" data-tex="$O(ye^{-y/2})$">$O(ye^{-y/2})$</span>. Using (6.1) proves (6.2). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>An absolute bound <span class="math" data-tex="$E(x)=O(\sqrt x\log^2x)$">$E(x)=O(\sqrt x\log^2x)$</span> inside the partial-summation integral would give a much larger error. The integrated zero series in (6.3) supplies the cancellation needed here.</p>
+<p><strong>Theorem 6.2 (Littlewood's prime-counting oscillation).</strong> Unconditionally,
+<span class="math math-display" data-tex="$$
+\pi(x)-\operatorname{li}(x)
+=\Omega_\pm\left(\frac{\sqrt x}{\log x}\log\log\log x\right).
+\tag{6.5}
+$$">$$
+\pi(x)-\operatorname{li}(x)
+=\Omega_\pm\left(\frac{\sqrt x}{\log x}\log\log\log x\right).
+\tag{6.5}
+$$</span>
+In particular this difference changes sign infinitely often.</p>
+<p><strong>Proof.</strong> Under RH combine (6.2) with the two sequences proved in Theorem 5.1. Suppose RH fails. We prove a stronger one-sided obstruction directly for <span class="math" data-tex="$\pi$">$\pi$</span>, rather than reversing an inequality through partial summation.</p>
+<p>Let <span class="math" data-tex="$J(x)=\sum_{k\ge1}\pi(x^{1/k})/k$">$J(x)=\sum_{k\ge1}\pi(x^{1/k})/k$</span>. Then <span class="math" data-tex="$J(x)-\pi(x)=O(\sqrt x)$">$J(x)-\pi(x)=O(\sqrt x)$</span> by Chebyshev's estimate and the finite prime-power sum. For <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span> its Mellin transform and the transform of <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> give
+<span class="math math-display" data-tex="$$
+B(s)=s\int_1^\infty(J(x)-\operatorname{li}(x))x^{-s-1}dx
+=\log\bigl((s-1)\zeta(s)\bigr).
+\tag{6.6}
+$$">$$
+B(s)=s\int_1^\infty(J(x)-\operatorname{li}(x))x^{-s-1}dx
+=\log\bigl((s-1)\zeta(s)\bigr).
+\tag{6.6}
+$$</span>
+For the second transform, put <span class="math" data-tex="$x=e^u$">$x=e^u$</span> and integrate <span class="math" data-tex="$s\int_\epsilon^\infty\operatorname{Ei}(u)e^{-su}du$">$s\int_\epsilon^\infty\operatorname{Ei}(u)e^{-su}du$</span> by parts. The expansions <span class="math" data-tex="$\operatorname{Ei}(\epsilon)=\gamma+\log\epsilon+o(1)$">$\operatorname{Ei}(\epsilon)=\gamma+\log\epsilon+o(1)$</span> and <span class="math" data-tex="$\int_\epsilon^\infty e^{-(s-1)u}du/u=-\gamma-\log((s-1)\epsilon)+o(1)$">$\int_\epsilon^\infty e^{-(s-1)u}du/u=-\gamma-\log((s-1)\epsilon)+o(1)$</span> give <span class="math" data-tex="$-\log(s-1)$">$-\log(s-1)$</span>. This proves (6.6), with the real Euler branch above one.</p>
+<p>Choose <span class="math" data-tex="$1/2&lt;\alpha&lt;\Theta$">$1/2&lt;\alpha&lt;\Theta$</span>. An eventual bound on either side of <span class="math" data-tex="$\pi-\operatorname{li}$">$\pi-\operatorname{li}$</span> by <span class="math" data-tex="$cx^\alpha$">$cx^\alpha$</span> would give such a bound for <span class="math" data-tex="$J-\operatorname{li}$">$J-\operatorname{li}$</span>, since <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span> is absorbed. The transform <span class="math" data-tex="$B(s)/s$">$B(s)/s$</span> has a holomorphic continuation along every real point <span class="math" data-tex="$s&gt;\alpha$">$s&gt;\alpha$</span>: <span class="math" data-tex="$(s-1)\zeta(s)$">$(s-1)\zeta(s)$</span> is positive and nonzero there, also at its removable value one. Landau's theorem applied after adding <span class="math" data-tex="$cx^\alpha$">$cx^\alpha$</span> or changing sign therefore makes <span class="math" data-tex="$B$">$B$</span> holomorphic in <span class="math" data-tex="$\Re s&gt;\alpha$">$\Re s&gt;\alpha$</span>. But on that half-plane the meromorphic identity
+<span class="math math-display" data-tex="$$
+B&#x27;(s)=\frac{\zeta&#x27;(s)}{\zeta(s)}+\frac1{s-1}
+$$">$$
+B&#x27;(s)=\frac{\zeta&#x27;(s)}{\zeta(s)}+\frac1{s-1}
+$$</span>
+would then have no poles. A zero of real part greater than <span class="math" data-tex="$\alpha$">$\alpha$</span> gives a nonzero pole residue, a contradiction. Thus both normalized limits at scale <span class="math" data-tex="$x^\alpha$">$x^\alpha$</span> are infinite with the respective signs. This implies (6.5). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="7-an-explicit-conditional-skewes-bound">7. An explicit conditional Skewes bound</h2>
+<p>Skewes proved in 1933 that, assuming RH, there is an <span class="math" data-tex="$x&lt;10^{10^{10^{34}}}$">$x&lt;10^{10^{10^{34}}}$</span> with <span class="math" data-tex="$\pi(x)&gt;\operatorname{li}(x)$">$\pi(x)&gt;\operatorname{li}(x)$</span>. This is an upper bound for a first crossing, not its location. We give a quantitative version of our argument which implies this bound. The constants below are deliberately generous; no numerical search for a crossing is used.</p>
+<p><strong>Lemma 7.1 (explicit bounds used in the smoothing argument).</strong> Under RH,
+<span class="math math-display" data-tex="$$
+C_2:=\sum_\rho|\rho|^{-2}=2+\gamma-\log(4\pi)&lt;\frac1{20},
+\qquad \|V\|_\infty&lt;\frac1{10}.
+\tag{7.1}
+$$">$$
+C_2:=\sum_\rho|\rho|^{-2}=2+\gamma-\log(4\pi)&lt;\frac1{20},
+\qquad \|V\|_\infty&lt;\frac1{10}.
+\tag{7.1}
+$$</span>
+For <span class="math" data-tex="$T\ge e^{20}$">$T\ge e^{20}$</span> the unconditional zero count satisfies
+<span class="math math-display" data-tex="$$
+N(T)\le T\log T,\qquad
+N(T/2)-N(T/4)\ge\frac{T}{8\pi}(\log T-10).
+\tag{7.2}
+$$">$$
+N(T)\le T\log T,\qquad
+N(T/2)-N(T/4)\ge\frac{T}{8\pi}(\log T-10).
+\tag{7.2}
+$$</span>
+Extend <span class="math" data-tex="$g$">$g$</span> to be zero on <span class="math" data-tex="$y&lt;\log2$">$y&lt;\log2$</span>. For <span class="math" data-tex="$T\ge1$">$T\ge1$</span>, <span class="math" data-tex="$y\ge200$">$y\ge200$</span>, both
+<span class="math math-display" data-tex="$$
+\bigl|(g*K_T)(y)+S_T(y)+1\bigr|
+\quad\hbox{and}\quad
+\left|\int_{\substack{u\ge\log2\\ u\notin[y/2,2y]}}
+g(u)K_T(y-u)du\right|
+$$">$$
+\bigl|(g*K_T)(y)+S_T(y)+1\bigr|
+\quad\hbox{and}\quad
+\left|\int_{\substack{u\ge\log2\\ u\notin[y/2,2y]}}
+g(u)K_T(y-u)du\right|
+$$</span>
+are at most
+<span class="math math-display" data-tex="$$
+\mathcal B(T,y)=\frac{10^{35}}{T^2y^3}
++\frac{200}{y}+10^5(1+y)e^{-y/16}.
+\tag{7.3}
+$$">$$
+\mathcal B(T,y)=\frac{10^{35}}{T^2y^3}
++\frac{200}{y}+10^5(1+y)e^{-y/16}.
+\tag{7.3}
+$$</span></p>
+<p><strong>Proof.</strong> Lesson five gives <span class="math" data-tex="$\sum\Re(1/\rho)=1+\gamma/2-\log(4\pi)/2$">$\sum\Re(1/\rho)=1+\gamma/2-\log(4\pi)/2$</span>. Under RH, <span class="math" data-tex="$\Re(1/\rho)=|\rho|^{-2}/2$">$\Re(1/\rho)=|\rho|^{-2}/2$</span>, proving the equality in (7.1). The elementary estimates <span class="math" data-tex="$\gamma&lt;0.58$">$\gamma&lt;0.58$</span> and <span class="math" data-tex="$\log(4\pi)&gt;2.53$">$\log(4\pi)&gt;2.53$</span> give its strict upper bound. For example the former follows by <span class="math" data-tex="$\gamma\le H_{1000}-\log1000&lt;0.58$">$\gamma\le H_{1000}-\log1000&lt;0.58$</span>, and the latter by <span class="math" data-tex="$\pi&gt;3.14$">$\pi&gt;3.14$</span> and <span class="math" data-tex="$e^{2.53}&lt;12.56$">$e^{2.53}&lt;12.56$</span>. Each conjugate pair contributes <span class="math" data-tex="$2/(\gamma^2+1/4)$">$2/(\gamma^2+1/4)$</span> to <span class="math" data-tex="$C_2$">$C_2$</span>, so every ordinate has <span class="math" data-tex="$|\gamma|&gt;6$">$|\gamma|&gt;6$</span>. Hence <span class="math" data-tex="$|\rho|/|\gamma|&lt;2$">$|\rho|/|\gamma|&lt;2$</span> and <span class="math" data-tex="$\|V\|_\infty\le2C_2&lt;1/10$">$\|V\|_\infty\le2C_2&lt;1/10$</span>.</p>
+<p>For <span class="math" data-tex="$t\ge10$">$t\ge10$</span>, the exact argument convention and explicit Backlund bound of lesson ten, Theorems 1.1 and 3.1, give <span class="math" data-tex="$|S(t)|\le7\log t+37$">$|S(t)|\le7\log t+37$</span>. Combining this with its gamma phase gives
+<span class="math math-display" data-tex="$$
+\left|N_*(t)-\left(\frac{t}{2\pi}\log\frac{t}{2\pi}
+-\frac{t}{2\pi}+\frac78\right)\right|
+\le100\log(t+4).
+\tag{7.4}
+$$">$$
+\left|N_*(t)-\left(\frac{t}{2\pi}\log\frac{t}{2\pi}
+-\frac{t}{2\pi}+\frac78\right)\right|
+\le100\log(t+4).
+\tag{7.4}
+$$</span>
+For the phase error, the explicit Stirling remainder in lesson three is bounded by <span class="math" data-tex="$1/(8\sin^2(\pi/4)|z|)$">$1/(8\sin^2(\pi/4)|z|)$</span> at <span class="math" data-tex="$z=1/4+it/2$">$z=1/4+it/2$</span>. In its main expression, use <span class="math" data-tex="$\log|z|=\log(t/2)+\tfrac12\log(1+1/(4t^2))$">$\log|z|=\log(t/2)+\tfrac12\log(1+1/(4t^2))$</span> and <span class="math" data-tex="$\arg z=\pi/2-\arctan(1/(2t))$">$\arg z=\pi/2-\arctan(1/(2t))$</span>. The elementary bounds <span class="math" data-tex="$\log(1+v)\le v$">$\log(1+v)\le v$</span> and <span class="math" data-tex="$\arctan v\le v$">$\arctan v\le v$</span> make the difference from <span class="math" data-tex="$t\log(t/(2\pi))/2-t/2-\pi/8$">$t\log(t/(2\pi))/2-t/2-\pi/8$</span> less than one for <span class="math" data-tex="$t\ge10$">$t\ge10$</span>. Thus <span class="math" data-tex="$7\log t+38$">$7\log t+38$</span> already bounds the error in the count, and is less than the right side of (7.4). Taking one-sided limits gives the same bound for <span class="math" data-tex="$N(t)$">$N(t)$</span>: the smooth main term is continuous.</p>
+<p>The main-term difference at <span class="math" data-tex="$T/2$">$T/2$</span> and <span class="math" data-tex="$T/4$">$T/4$</span> is exactly <span class="math" data-tex="$T(\log T-\log(2\pi)-1)/(8\pi)$">$T(\log T-\log(2\pi)-1)/(8\pi)$</span>. The two errors in (7.4) are smaller than the margin to <span class="math" data-tex="$T(\log T-10)/(8\pi)$">$T(\log T-10)/(8\pi)$</span> for <span class="math" data-tex="$T\ge e^{20}$">$T\ge e^{20}$</span>. The bound <span class="math" data-tex="$N(T)\le T\log T$">$N(T)\le T\log T$</span> follows at once from (7.4). This proves (7.2).</p>
+<p>We detail the error bounds in (7.3) to keep the numerical bound effective. Formula (4.1) gives
+<span class="math math-display" data-tex="$$
+|K(v)|+|K&#x27;(v)|\le200|v|^{-4}\quad(|v|\ge10),
+\qquad |K(v)|+|K&#x27;(v)|\le200\quad(v\in\mathbb R).
+$$">$$
+|K(v)|+|K&#x27;(v)|\le200|v|^{-4}\quad(|v|\ge10),
+\qquad |K(v)|+|K&#x27;(v)|\le200\quad(v\in\mathbb R).
+$$</span>
+The limiting values at <span class="math" data-tex="$\pm\pi$">$\pm\pi$</span> follow from the cosine integral defining <span class="math" data-tex="$h$">$h$</span>; bounding that integral and its first two derivatives proves the second inequality. Also <span class="math" data-tex="$\int_0^\infty|r(u)|du&lt;10$">$\int_0^\infty|r(u)|du&lt;10$</span> and <span class="math" data-tex="$|r(u)|\le4e^{-u/2}$">$|r(u)|\le4e^{-u/2}$</span> for <span class="math" data-tex="$u\ge1$">$u\ge1$</span>. The integration-by-parts bounds in Lemma 4.2 are therefore bounded by <span class="math" data-tex="$10^5(T^{-2}y^{-3}+e^{-y/4})$">$10^5(T^{-2}y^{-3}+e^{-y/4})$</span> for <span class="math" data-tex="$y\ge200$">$y\ge200$</span>.</p>
+<p>For the transfer to <span class="math" data-tex="$g$">$g$</span>, useful explicit elementary bounds are
+<span class="math math-display" data-tex="$$
+0\le D(u)\le20\quad(u\ge a),\qquad
+|D(u)-1|\le30(1+u)e^{-u/8}\quad(u\ge12),
+\tag{7.5}
+$$">$$
+0\le D(u)\le20\quad(u\ge a),\qquad
+|D(u)-1|\le30(1+u)e^{-u/8}\quad(u\ge12),
+\tag{7.5}
+$$</span>
+where <span class="math" data-tex="$a=\log2$">$a=\log2$</span>. The first follows from <span class="math" data-tex="$\theta(v)&lt;2v\log2$">$\theta(v)&lt;2v\log2$</span>: the square term contributes at most <span class="math" data-tex="$2\log2$">$2\log2$</span>, and the higher powers at most <span class="math" data-tex="$2u e^{-u/6}$">$2u e^{-u/6}$</span>, whose maximum is less than five. To see the second with an effective threshold, the integrated formula of lesson eleven and (7.1) give
+<span class="math math-display" data-tex="$$
+|\psi_1(v)-v^2/2|\le\tfrac1{20}v^{3/2}+2v+5\quad(v\ge1).
+$$">$$
+|\psi_1(v)-v^2/2|\le\tfrac1{20}v^{3/2}+2v+5\quad(v\ge1).
+$$</span>
+Here <span class="math" data-tex="$|\zeta&#x27;(-1)/\zeta(-1)|&lt;4$">$|\zeta&#x27;(-1)/\zeta(-1)|&lt;4$</span> follows by evaluating that formula at one, since <span class="math" data-tex="$|\rho+1|\ge|\rho|$">$|\rho+1|\ge|\rho|$</span>. Comparing differences of <span class="math" data-tex="$\psi_1$">$\psi_1$</span> over intervals of length <span class="math" data-tex="$v^{3/4}$">$v^{3/4}$</span> and using monotonicity of <span class="math" data-tex="$\psi$">$\psi$</span> gives <span class="math" data-tex="$|\psi(v)-v|\le10v^{3/4}$">$|\psi(v)-v|\le10v^{3/4}$</span> for <span class="math" data-tex="$v\ge256$">$v\ge256$</span>. For example the upper difference has main error <span class="math" data-tex="$v^{3/4}/2$">$v^{3/4}/2$</span> and zero-sum error at most <span class="math" data-tex="$0.13v^{3/4}$">$0.13v^{3/4}$</span>; its linear and constant terms add at most <span class="math" data-tex="$5v^{1/4}+10v^{-3/4}$">$5v^{1/4}+10v^{-3/4}$</span>. The lower difference is bounded the same way. Restoring the elementary prime-power bound gives <span class="math" data-tex="$|\theta(v)-v|\le20v^{3/4}$">$|\theta(v)-v|\le20v^{3/4}$</span> there. Apply this at <span class="math" data-tex="$v=e^{u/2}$">$v=e^{u/2}$</span> and bound all powers of order at least three by <span class="math" data-tex="$2u e^{-u/6}$">$2u e^{-u/6}$</span> after normalization; (7.5) follows.</p>
+<p>In (6.3) the absolute zero sum is at most <span class="math" data-tex="$(e^{y/2}+\sqrt2)/20$">$(e^{y/2}+\sqrt2)/20$</span>. The remaining terms have modulus at most <span class="math" data-tex="$2y+3$">$2y+3$</span>. Subtracting <span class="math" data-tex="$D(u)e^{u/2}$">$D(u)e^{u/2}$</span> and using <span class="math" data-tex="$D\le20$">$D\le20$</span> therefore gives <span class="math" data-tex="$|P(y)|\le45e^{y/2}$">$|P(y)|\le45e^{y/2}$</span>. In (6.4) write <span class="math" data-tex="$g=f-D+R$">$g=f-D+R$</span>. The integration-by-parts formula proves <span class="math" data-tex="$|R(y)|\le100/y$">$|R(y)|\le100/y$</span> for <span class="math" data-tex="$y\ge100$">$y\ge100$</span>: its endpoint is at most <span class="math" data-tex="$45/y$">$45/y$</span> after normalization; on <span class="math" data-tex="$[y/2,y]$">$[y/2,y]$</span> the remaining integral contributes at most <span class="math" data-tex="$1440/y^2$">$1440/y^2$</span>, and on <span class="math" data-tex="$[a,y/2]$">$[a,y/2]$</span> at most <span class="math" data-tex="$600ye^{-y/4}$">$600ye^{-y/4}$</span>. The fixed main-term constant contributes less than <span class="math" data-tex="$10ye^{-y/2}$">$10ye^{-y/2}$</span>. These four bounds sum to less than <span class="math" data-tex="$100/y$">$100/y$</span> when <span class="math" data-tex="$y\ge100$">$y\ge100$</span>.</p>
+<p>For the averages, split at <span class="math" data-tex="$u=y/2$">$u=y/2$</span>. On <span class="math" data-tex="$u\ge y/2$">$u\ge y/2$</span>, (7.5) and the last bound contribute at most <span class="math" data-tex="$200/y+10^5(1+y)e^{-y/16}$">$200/y+10^5(1+y)e^{-y/16}$</span>; the functions <span class="math" data-tex="$u e^{-u/8}$">$u e^{-u/8}$</span> decrease in this range. On <span class="math" data-tex="$100\le u&lt;y/2$">$100\le u&lt;y/2$</span>, the bounded terms <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$R$">$R$</span> contribute at most <span class="math" data-tex="$10^5/(T^3y^3)$">$10^5/(T^3y^3)$</span>, by the tail of <span class="math" data-tex="$K_T$">$K_T$</span>. On <span class="math" data-tex="$a\le u&lt;100$">$a\le u&lt;100$</span>, the elementary estimates <span class="math" data-tex="$\pi(e^u)\le e^u$">$\pi(e^u)\le e^u$</span>, <span class="math" data-tex="$\psi(e^u)\le e^u u$">$\psi(e^u)\le e^u u$</span>, and the integral defining <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> bound the integral of <span class="math" data-tex="$|g-f+1|$">$|g-f+1|$</span> by <span class="math" data-tex="$10^{30}$">$10^{30}$</span>. Its convolution is at most <span class="math" data-tex="$10^{34}/(T^3y^4)$">$10^{34}/(T^3y^4)$</span>. The zero extension on <span class="math" data-tex="$u&lt;a$">$u&lt;a$</span> and the bounded primitive are handled by the same endpoint and derivative bounds as in Lemma 4.2. All these terms fit inside (7.3). For the integral outside <span class="math" data-tex="$[y/2,2y]$">$[y/2,2y]$</span>, perform that integration by parts on each of its intervals; the constant term and bounded terms have the same kernel tail bounds, and <span class="math" data-tex="$|R(u)|\le100/u$">$|R(u)|\le100/u$</span> on the upper interval. Thus (7.3) bounds it as well. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 7.2 (conditional Skewes bound).</strong> If RH holds, there is a real <span class="math" data-tex="$x$">$x$</span> with
+<span class="math math-display" data-tex="$$
+2&lt;x&lt;\exp\!\bigl(\exp(\exp78)\bigr)
+&lt;10^{10^{10^{34}}},\qquad \pi(x)&gt;\operatorname{li}(x).
+\tag{7.6}
+$$">$$
+2&lt;x&lt;\exp\!\bigl(\exp(\exp78)\bigr)
+&lt;10^{10^{10^{34}}},\qquad \pi(x)&gt;\operatorname{li}(x).
+\tag{7.6}
+$$</span></p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$T=e^{68}$">$T=e^{68}$</span> and use Lemma 4.3. At <span class="math" data-tex="$y=q-1/T$">$y=q-1/T$</span>, the perfectly aligned sine terms in (5.2) are negative. In the block <span class="math" data-tex="$T/4&lt;\gamma\le T/2$">$T/4&lt;\gamma\le T/2$</span>, use <span class="math" data-tex="$w\ge1/\pi$">$w\ge1/\pi$</span> and <span class="math" data-tex="$\sin v\ge(19/20)v$">$\sin v\ge(19/20)v$</span> for <span class="math" data-tex="$0\le v\le1/2$">$0\le v\le1/2$</span>. Indeed <span class="math" data-tex="$\sin t\le t$">$\sin t\le t$</span> follows by integrating <span class="math" data-tex="$\cos t\le1$">$\cos t\le1$</span>, so
+<span class="math math-display" data-tex="$$
+\sin v=v-\int_0^v(v-t)\sin t\,dt
+\ge v-\frac{v^3}{6}\ge\frac{23}{24}v\ge\frac{19}{20}v.
+$$">$$
+\sin v=v-\int_0^v(v-t)\sin t\,dt
+\ge v-\frac{v^3}{6}\ge\frac{23}{24}v\ge\frac{19}{20}v.
+$$</span>
+Moreover <span class="math" data-tex="$e=\sum_{k\ge0}1/k!&gt;2$">$e=\sum_{k\ge0}1/k!&gt;2$</span>, and thus <span class="math" data-tex="$e^{136}&gt;2^{12}=4096&gt;3996$">$e^{136}&gt;2^{12}=4096&gt;3996$</span>. Since <span class="math" data-tex="$\gamma&gt;T/4$">$\gamma&gt;T/4$</span>, this gives
+$$
+\frac{\gamma^2}{\gamma^2+1/4}</p>
+<blockquote>
+<p>\frac1{1+4e^{-136}}&gt;\frac{999}{1000}.
+<span class="math math-display" data-tex="$$
+For the remaining rational bound on $\pi$, polynomial division and $\int_0^1(1+t^2)^{-1}dt=\arctan1=\pi/4$ give
+$$">$$
+For the remaining rational bound on $\pi$, polynomial division and $\int_0^1(1+t^2)^{-1}dt=\arctan1=\pi/4$ give
+$$</span>
+\begin{aligned}
+0&amp;&lt;\int_0^1\frac{t^4(1-t)^4}{1+t^2},dt\
+&amp;=\int_0^1\left(t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}\right)dt
+=\frac{22}{7}-\pi.
+\end{aligned}
+<span class="math math-display" data-tex="$$
+Consequently the paired sine coefficient in this block exceeds
+$$">$$
+Consequently the paired sine coefficient in this block exceeds
+$$</span>
+\frac2\pi\frac{19}{20}\frac{999}{1000}
+2\frac7{22}\frac{19}{20}\frac{999}{1000}
+=\frac{132867}{220000}&gt;\frac35.
+$<span class="math" data-tex="$
+Their total magnitude is therefore at least $">$
+Their total magnitude is therefore at least $</span>0.6(N(T/2)-N(T/4))/T<span class="math" data-tex="$. The other sine terms have the same sign. The cosine terms have total modulus at most $">$. The other sine terms have the same sign. The cosine terms have total modulus at most $</span>C_2/2&lt;0.025$.</p>
+</blockquote>
+<p>The phase error is at most <span class="math" data-tex="$4\pi T/Q$">$4\pi T/Q$</span>. Cauchy--Schwarz and (7.1)--(7.2) bound the resulting change in the sum by
+<span class="math math-display" data-tex="$$
+\frac{8\pi}{T^2}\sqrt{N(T)C_2/2}&lt;0.001.
+$$">$$
+\frac{8\pi}{T^2}\sqrt{N(T)C_2/2}&lt;0.001.
+$$</span>
+Consequently
+<span class="math math-display" data-tex="$$
+-S_T(y)\ge\frac{0.6(68-10)}{8\pi}-0.026&gt;1.35.
+$$">$$
+-S_T(y)\ge\frac{0.6(68-10)}{8\pi}-0.026&gt;1.35.
+$$</span>
+Here <span class="math" data-tex="$y\ge T-1/T&gt;T/2$">$y\ge T-1/T&gt;T/2$</span>, and (7.3) is less than <span class="math" data-tex="$0.01$">$0.01$</span>. Thus <span class="math" data-tex="$(g*K_T)(y)&gt;0.34$">$(g*K_T)(y)&gt;0.34$</span>, and removing the tail outside <span class="math" data-tex="$[y/2,2y]$">$[y/2,2y]$</span> leaves a positive integral. Positivity of <span class="math" data-tex="$K_T$">$K_T$</span> supplies some <span class="math" data-tex="$u$">$u$</span> in this interval with <span class="math" data-tex="$g(u)&gt;0$">$g(u)&gt;0$</span>.</p>
+<p>Finally <span class="math" data-tex="$Q\le2T^3$">$Q\le2T^3$</span> and <span class="math" data-tex="$N(T)\le T\log T$">$N(T)\le T\log T$</span>, so
+<span class="math math-display" data-tex="$$
+\log u\le\log\bigl(2(T+Q^{N(T)}+1)\bigr)
+&lt;\log4+4e^{68}\,68^2&lt;e^{78}.
+$$">$$
+\log u\le\log\bigl(2(T+Q^{N(T)}+1)\bigr)
+&lt;\log4+4e^{68}\,68^2&lt;e^{78}.
+$$</span>
+With <span class="math" data-tex="$x=e^u$">$x=e^u$</span>, this is the first upper bound in (7.6). Its comparison with the decimal tower follows from <span class="math" data-tex="$\log\log\log(10^{10^{10^{34}}})&gt;79&gt;78$">$\log\log\log(10^{10^{10^{34}}})&gt;79&gt;78$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proof is a separate quantitative derivation of the classical bound, using our kernel and generous estimates. It is not a claim to reproduce Skewes's exact historical calculations or to give a competitive modern crossing bound.</p>
+<h2 id="8-the-analytic-bridge-for-mertens-s-conjecture">8. The analytic bridge for Mertens's conjecture</h2>
+<p>Mertens's conjecture asserted <span class="math" data-tex="$|M(x)|&lt;\sqrt x$">$|M(x)|&lt;\sqrt x$</span> for <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>. Its disproof uses a finite zero sum with a positive averaging kernel. We prove the bridge from such a sum to an eventual one-sided bound before supplying a reproducible numerical certificate.</p>
+<p>Put <span class="math" data-tex="$m(y)=e^{-y/2}M(e^y)$">$m(y)=e^{-y/2}M(e^y)$</span> for <span class="math" data-tex="$y\ge0$">$y\ge0$</span> and zero for <span class="math" data-tex="$y&lt;0$">$y&lt;0$</span>. Initially, for <span class="math" data-tex="$\Re z&gt;1/2$">$\Re z&gt;1/2$</span>,
+<span class="math math-display" data-tex="$$
+H(z)=\int_0^\infty m(y)e^{-zy}dy
+=\frac1{(z+1/2)\zeta(z+1/2)}.
+\tag{8.1}
+$$">$$
+H(z)=\int_0^\infty m(y)e^{-zy}dy
+=\frac1{(z+1/2)\zeta(z+1/2)}.
+\tag{8.1}
+$$</span></p>
+<p><strong>Lemma 8.1.</strong> Suppose <span class="math" data-tex="$A&gt;0$">$A&gt;0$</span> and either <span class="math" data-tex="$m(y)\le A$">$m(y)\le A$</span> eventually or <span class="math" data-tex="$m(y)\ge-A$">$m(y)\ge-A$</span> eventually. Then RH holds, all nontrivial zeros are simple, and <span class="math" data-tex="$\int_0^Y|m(y)|dy=O_A(1+Y)$">$\int_0^Y|m(y)|dy=O_A(1+Y)$</span>.</p>
+<p><strong>Proof.</strong> In the upper-bound case the tail <span class="math" data-tex="$a(y)=A-m(y)$">$a(y)=A-m(y)$</span> is nonnegative. Its Laplace transform is <span class="math" data-tex="$A/z-H(z)$">$A/z-H(z)$</span> plus an entire finite-interval term. The meromorphic expression <span class="math" data-tex="$H$">$H$</span> is holomorphic at every positive real <span class="math" data-tex="$z$">$z$</span>; at <span class="math" data-tex="$z=1/2$">$z=1/2$</span> the pole of zeta produces a zero of its reciprocal. The Laplace version of Landau's theorem therefore puts the convergence abscissa at most zero. Hence <span class="math" data-tex="$H$">$H$</span> is holomorphic on <span class="math" data-tex="$\Re z&gt;0$">$\Re z&gt;0$</span> and there are no zeros of zeta with <span class="math" data-tex="$\beta&gt;1/2$">$\beta&gt;1/2$</span>. Symmetry gives RH.</p>
+<p>The positive transform <span class="math" data-tex="$F$">$F$</span> obeys <span class="math" data-tex="$|F(\sigma+it)|\le F(\sigma)=A/\sigma+O(1)$">$|F(\sigma+it)|\le F(\sigma)=A/\sigma+O(1)$</span> as <span class="math" data-tex="$\sigma\downarrow0$">$\sigma\downarrow0$</span>. A zero of order greater than one at <span class="math" data-tex="$1/2+i\gamma$">$1/2+i\gamma$</span> would create a higher-order pole of <span class="math" data-tex="$F$">$F$</span> at <span class="math" data-tex="$i\gamma$">$i\gamma$</span>, contradicting this inequality. All zeros are therefore simple. Also, for large <span class="math" data-tex="$Y$">$Y$</span>, positivity gives
+<span class="math math-display" data-tex="$$
+\int_{Y_0}^Y a(y)dy\le e\int_{Y_0}^\infty a(y)e^{-y/Y}dy
+=eF(1/Y)=O_A(Y).
+$$">$$
+\int_{Y_0}^Y a(y)dy\le e\int_{Y_0}^\infty a(y)e^{-y/Y}dy
+=eF(1/Y)=O_A(Y).
+$$</span>
+Since <span class="math" data-tex="$|m|\le A+a$">$|m|\le A+a$</span> on this tail, the asserted integral bound follows. For the lower-bound case use <span class="math" data-tex="$a=A+m$">$a=A+m$</span>, with the sign of <span class="math" data-tex="$H$">$H$</span> reversed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 8.2 (finite-sum obstruction, after Ingham).</strong> Let <span class="math" data-tex="$T&gt;0$">$T&gt;0$</span> not be a zero ordinate. Suppose an eventual one-sided bound as in Lemma 8.1 holds, and put
+<span class="math math-display" data-tex="$$
+h_T(y)=\sum_{|\gamma|&lt;T}
+w(\gamma/T)\frac{e^{i\gamma y}}{\rho\zeta&#x27;(\rho)}.
+\tag{8.2}
+$$">$$
+h_T(y)=\sum_{|\gamma|&lt;T}
+w(\gamma/T)\frac{e^{i\gamma y}}{\rho\zeta&#x27;(\rho)}.
+\tag{8.2}
+$$</span>
+Then an eventual upper bound <span class="math" data-tex="$m\le A$">$m\le A$</span> implies <span class="math" data-tex="$h_T(y_0)\le A$">$h_T(y_0)\le A$</span> for every real <span class="math" data-tex="$y_0$">$y_0$</span>; an eventual lower bound <span class="math" data-tex="$m\ge-A$">$m\ge-A$</span> implies <span class="math" data-tex="$h_T(y_0)\ge-A$">$h_T(y_0)\ge-A$</span> for every real <span class="math" data-tex="$y_0$">$y_0$</span>.</p>
+<p><strong>Proof.</strong> Lemma 8.1 supplies RH, simplicity and the integral growth bound. That bound and the decay of <span class="math" data-tex="$K_T$">$K_T$</span> make <span class="math" data-tex="$m*K_T$">$m*K_T$</span> absolutely defined. For <span class="math" data-tex="$\sigma&gt;0$">$\sigma&gt;0$</span>, Fourier inversion and Fubini give
+<span class="math math-display" data-tex="$$
+\int_0^\infty m(u)e^{-\sigma u}K_T(y-u)du
+=\frac1{2\pi}\int_{-T}^T
+w(t/T)H(\sigma+it)e^{ity}dt.
+\tag{8.3}
+$$">$$
+\int_0^\infty m(u)e^{-\sigma u}K_T(y-u)du
+=\frac1{2\pi}\int_{-T}^T
+w(t/T)H(\sigma+it)e^{ity}dt.
+\tag{8.3}
+$$</span>
+The exponentially weighted integral of <span class="math" data-tex="$|m|$">$|m|$</span> is finite, so Fubini here is an ordinary absolutely convergent interchange.</p>
+<p>On a neighbourhood of the imaginary segment <span class="math" data-tex="$[-iT,iT]$">$[-iT,iT]$</span>, subtract the finitely many simple poles of <span class="math" data-tex="$H$">$H$</span>:
+<span class="math math-display" data-tex="$$
+H(z)=\sum_{|\gamma|&lt;T}\frac{a_\gamma}{z-i\gamma}+R(z),
+\qquad a_\gamma=\frac1{\rho\zeta&#x27;(\rho)}.
+$$">$$
+H(z)=\sum_{|\gamma|&lt;T}\frac{a_\gamma}{z-i\gamma}+R(z),
+\qquad a_\gamma=\frac1{\rho\zeta&#x27;(\rho)}.
+$$</span>
+The remainder is holomorphic on a neighbourhood of that segment. In (8.3), its integral tends as <span class="math" data-tex="$\sigma\downarrow0$">$\sigma\downarrow0$</span> to the integral of <span class="math" data-tex="$w(t/T)R(it)e^{ity}$">$w(t/T)R(it)e^{ity}$</span>, which tends to zero as <span class="math" data-tex="$y\to\infty$">$y\to\infty$</span> by the Riemann--Lebesgue lemma. For completeness, that lemma follows for this integrable function by approximation in <span class="math" data-tex="$L^1$">$L^1$</span> by step functions, whose oscillatory integrals tend to zero; the approximation error bounds the integral uniformly in <span class="math" data-tex="$y$">$y$</span>.</p>
+<p>A pole term in (8.3) equals
+<span class="math math-display" data-tex="$$
+a_\gamma\int_0^\infty e^{-\sigma u}e^{i\gamma u}K_T(y-u)du.
+$$">$$
+a_\gamma\int_0^\infty e^{-\sigma u}e^{i\gamma u}K_T(y-u)du.
+$$</span>
+As <span class="math" data-tex="$\sigma\downarrow0$">$\sigma\downarrow0$</span>, this becomes
+<span class="math math-display" data-tex="$$
+a_\gamma e^{i\gamma y}\int_{-\infty}^y K_T(v)e^{-i\gamma v}dv
+=a_\gamma w(\gamma/T)e^{i\gamma y}+o(1)
+\quad(y\to\infty).
+$$">$$
+a_\gamma e^{i\gamma y}\int_{-\infty}^y K_T(v)e^{-i\gamma v}dv
+=a_\gamma w(\gamma/T)e^{i\gamma y}+o(1)
+\quad(y\to\infty).
+$$</span>
+The left side of (8.3) tends to <span class="math" data-tex="$m*K_T$">$m*K_T$</span> by dominated convergence, using the integral growth bound. Therefore
+<span class="math math-display" data-tex="$$
+(m*K_T)(y)=h_T(y)+o(1)\quad(y\to\infty).
+\tag{8.4}
+$$">$$
+(m*K_T)(y)=h_T(y)+o(1)\quad(y\to\infty).
+\tag{8.4}
+$$</span></p>
+<p>If <span class="math" data-tex="$m\le A$">$m\le A$</span> eventually, positivity and mass one give <span class="math" data-tex="$(m*K_T)(y)\le A+o(1)$">$(m*K_T)(y)\le A+o(1)$</span>; the finite initial interval contributes <span class="math" data-tex="$o(1)$">$o(1)$</span>. The lower-bound version is identical. The finite trigonometric sum <span class="math" data-tex="$h_T$">$h_T$</span> recurs arbitrarily far to the right: simultaneous approximation makes all its finitely many phases arbitrarily close to their initial values along unbounded positive shifts. To see unboundedness directly, apply the pigeonhole proof in Lemma 4.3 with a chosen minimum shift <span class="math" data-tex="$Y$">$Y$</span> and a partition fine enough that multiplication by at most <span class="math" data-tex="$2Y$">$2Y$</span> still leaves the prescribed phase error. Thus <span class="math" data-tex="$h_T(y_0)$">$h_T(y_0)$</span> is a limit of values at arguments tending to infinity. Apply (8.4) at these arguments to obtain the asserted inequalities. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The hypothesis in this lemma is an eventual bound to be contradicted. It supplies all-height RH and simplicity as consequences, so neither is an unproved assumption in the resulting disproof. The finite kernel sums themselves need only the zeros below their cutoff.</p>
+<h2 id="9-a-reproducible-certificate-disproving-mertens-s-conjecture">9. A reproducible certificate disproving Mertens's conjecture</h2>
+<p>Odlyzko and te Riele used lattice basis reduction to find phases making a finite sum large. Their 1985 paper reports <span class="math" data-tex="$\limsup M(x)/\sqrt x&gt;1.06$">$\limsup M(x)/\sqrt x&gt;1.06$</span> and <span class="math" data-tex="$\liminf M(x)/\sqrt x&lt;-1.009$">$\liminf M(x)/\sqrt x&lt;-1.009$</span>. We use their two reported decimal evaluation points as input, but independently recompute the spectral certificate with rigorous ball arithmetic. Finding a useful input by a search and checking the resulting finite inequalities are different operations; the proof requires the latter, not a theorem that the search always succeeds.</p>
+<p>Use the exact cutoff <span class="math" data-tex="$T=2515$">$T=2515$</span>, slightly below the paper's cutoff at the 2000th zero. The first 1999 positive zeros lie below this cutoff, and the 2000th is above it. The supplied script computes these zero enclosures afresh, evaluates <span class="math" data-tex="$\zeta&#x27;$">$\zeta&#x27;$</span> as the coefficient of degree one in its Taylor series, verifies that every derivative enclosure excludes zero, and adds
+<span class="math math-display" data-tex="$$
+h_T(y)=2\Re\sum_{j=1}^{1999}
+w(\gamma_j/2515)\frac{e^{i\gamma_jy}}{(1/2+i\gamma_j)\zeta&#x27;(1/2+i\gamma_j)}.
+\tag{9.1}
+$$">$$
+h_T(y)=2\Re\sum_{j=1}^{1999}
+w(\gamma_j/2515)\frac{e^{i\gamma_jy}}{(1/2+i\gamma_j)\zeta&#x27;(1/2+i\gamma_j)}.
+\tag{9.1}
+$$</span>
+The factor two accounts for the negative ordinates; dropping it would omit half of the conjugate sum.</p>
+<p>The two inputs are the exact terminating decimals <span class="math" data-tex="$y_+=-a-521505/10^6$">$y_+=-a-521505/10^6$</span> and <span class="math" data-tex="$y_-=b+697419/10^6$">$y_-=b+697419/10^6$</span>, where
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+a&amp;=140452896805929980467903616303997\cdot10^{32}\\
+&amp;\quad+81127400591999789738039965960762,\\
+b&amp;=320970257729226558697400001862113\cdot10^{32}\\
+&amp;\quad+07099797144540349062682805321651.
+\end{aligned}
+\tag{9.2}
+$$">$$
+\begin{aligned}
+a&amp;=140452896805929980467903616303997\cdot10^{32}\\
+&amp;\quad+81127400591999789738039965960762,\\
+b&amp;=320970257729226558697400001862113\cdot10^{32}\\
+&amp;\quad+07099797144540349062682805321651.
+\end{aligned}
+\tag{9.2}
+$$</span>
+These are phase locations from Table 3, rows 15 and 21, of the original paper. They are not evaluated counterexamples for <span class="math" data-tex="$M(e^y)$">$M(e^y)$</span>.</p>
+<p>At decimal precision 120, python-flint 0.9.0, using FLINT real and complex balls, gives the following enclosures. The shorter displayed intervals contain the full recorded enclosures:</p>
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+h_{2515}(y_+)&amp;\in[1.06154418799963148,\ 1.06154418799963150],\\
+h_{2515}(y_-)&amp;\in[-1.00974681386970627,\ -1.00974681386970625].
+\end{aligned}
+$$">$$
+\begin{aligned}
+h_{2515}(y_+)&amp;\in[1.06154418799963148,\ 1.06154418799963150],\\
+h_{2515}(y_-)&amp;\in[-1.00974681386970627,\ -1.00974681386970625].
+\end{aligned}
+$$</span>
+<p>The script uses <code>acb.zeta_zeros(1, 2000)</code> for consecutive certified zeros, ordered with disjoint ordinate enclosures, and <code>acb_series([rho, 1], 2).zeta()[1]</code> for the derivative enclosure. Each phase is evaluated from the enclosed ordinate and exact decimal input; its uncertainty is propagated through the exponential. The final full sum enclosures have radii less than <span class="math" data-tex="$8\cdot10^{-54}$">$8\cdot10^{-54}$</span>. They are therefore separated amply from <span class="math" data-tex="$1.06$">$1.06$</span> and <span class="math" data-tex="$-1.009$">$-1.009$</span>. This is a finite certificate based on the documented ball-arithmetic guarantees of FLINT; it is not a formal kernel proof of the numerical library.</p>
+<p>The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/downloads/mertens-certificate.py">calculation script</a>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/downloads/mertens-zero-balls.json">zero and derivative balls</a>, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/downloads/mertens-certificate-receipt.json">calculation receipt</a> accompany this lesson. The complete source archive also contains them. Run the script with Python and python-flint 0.9.0; it recomputes the enclosures instead of trusting a cached table.</p>
+<p><strong>Theorem 9.1 (Odlyzko--te Riele).</strong> Unconditionally,
+<span class="math math-display" data-tex="$$
+\limsup_{x\to\infty}\frac{M(x)}{\sqrt x}&gt;1.06,
+\qquad
+\liminf_{x\to\infty}\frac{M(x)}{\sqrt x}&lt;-1.009.
+\tag{9.3}
+$$">$$
+\limsup_{x\to\infty}\frac{M(x)}{\sqrt x}&gt;1.06,
+\qquad
+\liminf_{x\to\infty}\frac{M(x)}{\sqrt x}&lt;-1.009.
+\tag{9.3}
+$$</span>
+In particular Mertens's conjecture is false.</p>
+<p><strong>Proof.</strong> If the first inequality failed, <span class="math" data-tex="$m(y)\le A$">$m(y)\le A$</span> eventually for an <span class="math" data-tex="$A$">$A$</span> strictly between <span class="math" data-tex="$1.06$">$1.06$</span> and the certified value <span class="math" data-tex="$h_{2515}(y_+)$">$h_{2515}(y_+)$</span>. Lemma 8.2 would then give <span class="math" data-tex="$h_{2515}(y_+)\le A$">$h_{2515}(y_+)\le A$</span>, a contradiction. If the second failed, choose <span class="math" data-tex="$A$">$A$</span> strictly between <span class="math" data-tex="$1.009$">$1.009$</span> and <span class="math" data-tex="$-h_{2515}(y_-)$">$-h_{2515}(y_-)$</span> and use its lower-bound version. This proves both strict inequalities. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The proof shows infinitely many violations of both relevant one-sided bounds. It does not name a concrete integer at which <span class="math" data-tex="$M$">$M$</span> violates the conjecture. The enormous phase points in (9.2), and recurrence applied to them, are inputs to an average; a positive or negative average proves that some point in its range has the requisite value without evaluating that point.</p>
+<h2 id="10-small-computations-and-long-lasting-numerical-bias">10. Small computations and long-lasting numerical bias</h2>
+<p><strong>Example 10.1 (the first positive value of <span class="math" data-tex="$\psi(x)-x$">$\psi(x)-x$</span>).</strong> For an integer <span class="math" data-tex="$n\ge1$">$n\ge1$</span>,
+<span class="math math-display" data-tex="$$
+\psi(n)=\log\operatorname{lcm}(1,2,\ldots,n),
+\tag{10.1}
+$$">$$
+\psi(n)=\log\operatorname{lcm}(1,2,\ldots,n),
+\tag{10.1}
+$$</span>
+because the least common multiple contains <span class="math" data-tex="$p$">$p$</span> to the largest exponent <span class="math" data-tex="$k$">$k$</span> for which <span class="math" data-tex="$p^k\le n$">$p^k\le n$</span>. Computing the integer least common multiples and enclosing their logarithms gives <span class="math" data-tex="$\psi(n)-n&lt;0$">$\psi(n)-n&lt;0$</span> for every <span class="math" data-tex="$1\le n\le18$">$1\le n\le18$</span>, whereas
+<span class="math math-display" data-tex="$$
+\operatorname{lcm}(1,\ldots,19)=232792560,\qquad
+\psi(19)-19=0.26565831454797812053\ldots&gt;0.
+$$">$$
+\operatorname{lcm}(1,\ldots,19)=232792560,\qquad
+\psi(19)-19=0.26565831454797812053\ldots&gt;0.
+$$</span>
+Between consecutive integers the function <span class="math" data-tex="$\psi(x)-x$">$\psi(x)-x$</span> decreases with slope minus one. Hence the first change from negative to positive, for real <span class="math" data-tex="$x\ge1$">$x\ge1$</span>, occurs at the jump <span class="math" data-tex="$x=19$">$x=19$</span>. On <span class="math" data-tex="$[19,20)$">$[19,20)$</span> its next zero is at <span class="math" data-tex="$x=\log232792560=19.2656583145\ldots$">$x=\log232792560=19.2656583145\ldots$</span>, where it changes back to negative. The supplied plotting script verifies the integer signs with 60-digit balls, as well as computing the original graph.</p>
+<figure><img src="figures/NT-ZETA-15/first_sign.png" alt="The first positive jump of Chebyshev&#x27;s error" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The exact prime-power staircase minus <span class="math" data-tex="$x$">$x$</span>, with its first positive jump at 19. The right panel resolves the subsequent zero at <span class="math" data-tex="$\log232792560$">$\log232792560$</span>. Dots mark right-hand values; short vertical segments show jumps. The finite sign certificate is in the reproducible CC0 source. This early crossing concerns <span class="math" data-tex="$\psi-x$">$\psi-x$</span>.</em></p>
+<figure><img src="figures/NT-ZETA-15/positive_kernel.png" alt="The positive kernel and its finite frequency window" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 2. Left: the mass-one kernel <span class="math" data-tex="$K(u)$">$K(u)$</span> of (4.1), with its removable values at <span class="math" data-tex="$\pm\pi$">$\pm\pi$</span>. Right: its Fourier transform <span class="math" data-tex="$w(v)$">$w(v)$</span>, supported on <span class="math" data-tex="$[-1,1]$">$[-1,1]$</span>, and the bound <span class="math" data-tex="$w\ge1/\pi$">$w\ge1/\pi$</span> on <span class="math" data-tex="$[-1/2,1/2]$">$[-1/2,1/2]$</span>. Scaling to <span class="math" data-tex="$K_T$">$K_T$</span> keeps an average positive and retains exactly the zero frequencies <span class="math" data-tex="$|\gamma|&lt;T$">$|\gamma|&lt;T$</span>, as proved in Lemmas 4.1–4.2. Original CC0 figure and source.</em></p>
+<p><strong>Example 10.2 (finite checks and numerical bias for <span class="math" data-tex="$\pi$">$\pi$</span>).</strong> Fix <span class="math" data-tex="$B\ge2$">$B\ge2$</span>, and let <span class="math" data-tex="$p_1=2&lt;p_2&lt;\cdots&lt;p_N$">$p_1=2&lt;p_2&lt;\cdots&lt;p_N$</span> be the complete list of primes at most <span class="math" data-tex="$B$">$B$</span>. For the principal-value <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> used in this lesson,
+<span class="math math-display" data-tex="$$
+\pi(x)&lt;\operatorname{li}(x)\quad(2\le x\le B)
+\quad\Longleftrightarrow\quad
+\operatorname{li}(p_j)&gt;j\quad(1\le j\le N).
+\tag{10.2}
+$$">$$
+\pi(x)&lt;\operatorname{li}(x)\quad(2\le x\le B)
+\quad\Longleftrightarrow\quad
+\operatorname{li}(p_j)&gt;j\quad(1\le j\le N).
+\tag{10.2}
+$$</span>
+In particular, certified lower bounds <span class="math" data-tex="$L_j\le\operatorname{li}(p_j)$">$L_j\le\operatorname{li}(p_j)$</span> with <span class="math" data-tex="$L_j&gt;j$">$L_j&gt;j$</span> give a certificate for the entire real interval.</p>
+<p><strong>Proof.</strong> The definition of <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> in lesson two gives, for <span class="math" data-tex="$v\ge u&gt;1$">$v\ge u&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+\operatorname{li}(v)-\operatorname{li}(u)=\int_u^v\frac{dt}{\log t}.
+$$">$$
+\operatorname{li}(v)-\operatorname{li}(u)=\int_u^v\frac{dt}{\log t}.
+$$</span>
+The principal-value singularity cancels in this difference, so <span class="math" data-tex="$\operatorname{li}&#x27;(x)=1/\log x&gt;0$">$\operatorname{li}&#x27;(x)=1/\log x&gt;0$</span> on <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>. Necessity in (10.2) follows by evaluating at <span class="math" data-tex="$p_j$">$p_j$</span>, where <span class="math" data-tex="$\pi(p_j)=j$">$\pi(p_j)=j$</span>. For sufficiency, given <span class="math" data-tex="$x\in[2,B]$">$x\in[2,B]$</span>, take the largest prime <span class="math" data-tex="$p_j\le x$">$p_j\le x$</span>. Completeness of the list gives <span class="math" data-tex="$\pi(x)=j$">$\pi(x)=j$</span>, and monotonicity gives <span class="math" data-tex="$\operatorname{li}(x)\ge\operatorname{li}(p_j)&gt;j$">$\operatorname{li}(x)\ge\operatorname{li}(p_j)&gt;j$</span>. This includes <span class="math" data-tex="$x=B$">$x=B$</span>, even when <span class="math" data-tex="$B$">$B$</span> is itself prime.</p>
+<p>Completeness can also be certified by a finite procedure: among the integers <span class="math" data-tex="$2,\ldots,\lfloor B\rfloor$">$2,\ldots,\lfloor B\rfloor$</span>, mark the multiples <span class="math" data-tex="$d^2,d^2+d,\ldots$">$d^2,d^2+d,\ldots$</span> for every integer <span class="math" data-tex="$2\le d\le\lfloor\sqrt{\lfloor B\rfloor}\rfloor$">$2\le d\le\lfloor\sqrt{\lfloor B\rfloor}\rfloor$</span>. A marked integer has a proper divisor <span class="math" data-tex="$d$">$d$</span>, so is composite. Conversely, a composite integer <span class="math" data-tex="$n=uv$">$n=uv$</span> with <span class="math" data-tex="$2\le u\le v$">$2\le u\le v$</span> has <span class="math" data-tex="$u\le\sqrt n$">$u\le\sqrt n$</span> and occurs among the marked multiples starting at <span class="math" data-tex="$u^2$">$u^2$</span>. The unmarked integers are therefore exactly the primes. This endpoint certificate uses the complete prime list and proved lower bounds for <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> at every listed prime. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We can prove a small instance directly, without numerical software:
+<span class="math math-display" data-tex="$$
+\pi(x)&lt;\operatorname{li}(x)\qquad(2\le x&lt;5).
+\tag{10.3}
+$$">$$
+\pi(x)&lt;\operatorname{li}(x)\qquad(2\le x&lt;5).
+\tag{10.3}
+$$</span>
+Here are explicit rational bounds for its two prime endpoints. Lesson two, Lemma 4.1, proves <span class="math" data-tex="$\int_0^\infty e^{-t}\log t\,dt=-\gamma$">$\int_0^\infty e^{-t}\log t\,dt=-\gamma$</span>. Integration by parts consequently gives
+<span class="math math-display" data-tex="$$
+\int_\varepsilon^\infty\frac{e^{-t}}t\,dt
+=-\gamma-\log\varepsilon+o(1).
+$$">$$
+\int_\varepsilon^\infty\frac{e^{-t}}t\,dt
+=-\gamma-\log\varepsilon+o(1).
+$$</span>
+In the principal-value integral for <span class="math" data-tex="$\operatorname{Ei}(a)$">$\operatorname{Ei}(a)$</span>, substitute <span class="math" data-tex="$t\mapsto-t$">$t\mapsto-t$</span> on the negative half-axis and separate <span class="math" data-tex="$1/t$">$1/t$</span> from <span class="math" data-tex="$(e^t-1)/t$">$(e^t-1)/t$</span> on the positive interval. The preceding identity and termwise integration of the uniformly convergent series for <span class="math" data-tex="$(e^t-1)/t$">$(e^t-1)/t$</span> give, for <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\operatorname{Ei}(a)=\gamma+\log a+
+\sum_{k=1}^\infty\frac{a^k}{k\,k!}.
+\tag{10.4}
+$$">$$
+\operatorname{Ei}(a)=\gamma+\log a+
+\sum_{k=1}^\infty\frac{a^k}{k\,k!}.
+\tag{10.4}
+$$</span>
+The substitution <span class="math" data-tex="$x=e^a$">$x=e^a$</span> identifies this with <span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span>. Symmetric cutoffs about <span class="math" data-tex="$x=1$">$x=1$</span> become cutoffs whose ratio tends to one in the <span class="math" data-tex="$a$">$a$</span> variable, so they give the same principal value.</p>
+<p>Put <span class="math" data-tex="$a=\log2$">$a=\log2$</span> and <span class="math" data-tex="$b=\log3$">$b=\log3$</span>. For <span class="math" data-tex="$u,v&gt;0$">$u,v&gt;0$</span> and <span class="math" data-tex="$0\le\lambda\le1$">$0\le\lambda\le1$</span>, direct subtraction gives
+<span class="math math-display" data-tex="$$
+\frac{1-\lambda}{u}+\frac\lambda v-\frac1{(1-\lambda)u+\lambda v}
+=\frac{\lambda(1-\lambda)(u-v)^2}{uv((1-\lambda)u+\lambda v)}\ge0.
+$$">$$
+\frac{1-\lambda}{u}+\frac\lambda v-\frac1{(1-\lambda)u+\lambda v}
+=\frac{\lambda(1-\lambda)(u-v)^2}{uv((1-\lambda)u+\lambda v)}\ge0.
+$$</span>
+Integrating in <span class="math" data-tex="$\lambda$">$\lambda$</span> bounds the integral of <span class="math" data-tex="$1/t$">$1/t$</span> on each positive interval by its endpoint trapezoid. If <span class="math" data-tex="$u\ne v$">$u\ne v$</span>, the difference is positive for <span class="math" data-tex="$0&lt;\lambda&lt;1$">$0&lt;\lambda&lt;1$</span>, so the integral bound is strict. Summing these bounds on <span class="math" data-tex="$[2,n]$">$[2,n]$</span> gives
+<span class="math math-display" data-tex="$$
+\log(n/2)\le H_n-\frac54-\frac1{2n},
+\qquad\gamma\ge\frac54-\log2.
+$$">$$
+\log(n/2)\le H_n-\frac54-\frac1{2n},
+\qquad\gamma\ge\frac54-\log2.
+$$</span>
+To enclose the two logarithms, integrate the geometric series:
+<span class="math math-display" data-tex="$$
+\log\frac{1+z}{1-z}
+=2\sum_{m=0}^\infty\frac{z^{2m+1}}{2m+1}
+\qquad(0\le z&lt;1).
+$$">$$
+\log\frac{1+z}{1-z}
+=2\sum_{m=0}^\infty\frac{z^{2m+1}}{2m+1}
+\qquad(0\le z&lt;1).
+$$</span>
+For <span class="math" data-tex="$z=1/3$">$z=1/3$</span>, keeping the first two terms gives <span class="math" data-tex="$a&gt;56/81&gt;69/100$">$a&gt;56/81&gt;69/100$</span>. Bounding all later denominators below by five gives
+<span class="math math-display" data-tex="$$
+a&lt;2\left(\frac13+\frac1{81}+\frac1{1080}\right)&lt;\frac7{10}.
+$$">$$
+a&lt;2\left(\frac13+\frac1{81}+\frac1{1080}\right)&lt;\frac7{10}.
+$$</span>
+For <span class="math" data-tex="$z=1/2$">$z=1/2$</span>, the first two terms give <span class="math" data-tex="$b&gt;13/12$">$b&gt;13/12$</span>. Also, the same trapezoid bound on <span class="math" data-tex="$[a,1]$">$[a,1]$</span> gives <span class="math" data-tex="$\log a&gt;(a-a^{-1})/2$">$\log a&gt;(a-a^{-1})/2$</span>, while integration of <span class="math" data-tex="$1/t$">$1/t$</span> on <span class="math" data-tex="$[1,b]$">$[1,b]$</span> gives <span class="math" data-tex="$\log b\ge(b-1)/b$">$\log b\ge(b-1)/b$</span>. All the omitted terms of (10.4) are positive. Hence
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\operatorname{li}(2)
+&amp;&gt;\frac54+\frac{69/100-100/69}{2}
+  +\frac{(69/100)^2}{4}+\frac{(69/100)^3}{18}\\
+&amp;=1+\frac{1054019}{138000000}&gt;1,\\
+\operatorname{li}(3)
+&amp;&gt;\frac{11}{20}+\frac1{13}+\frac{13}{12}
+  +\frac{(13/12)^2}{4}
+ =2+\frac{137}{37440}&gt;2.
+\end{aligned}
+$$">$$
+\begin{aligned}
+\operatorname{li}(2)
+&amp;&gt;\frac54+\frac{69/100-100/69}{2}
+  +\frac{(69/100)^2}{4}+\frac{(69/100)^3}{18}\\
+&amp;=1+\frac{1054019}{138000000}&gt;1,\\
+\operatorname{li}(3)
+&amp;&gt;\frac{11}{20}+\frac1{13}+\frac{13}{12}
+  +\frac{(13/12)^2}{4}
+ =2+\frac{137}{37440}&gt;2.
+\end{aligned}
+$$</span>
+The only primes below five are two and three, so (10.2), or the same interval argument, proves (10.3).</p>
+<p>For <span class="math" data-tex="$B=10^{12}$">$B=10^{12}$</span> or <span class="math" data-tex="$10^{14}$">$10^{14}$</span>, (10.2) states exactly what a complete successful finite check would prove. Those large-range cases remain conditional here on the complete prime list and proved endpoint bounds; the unconditional instance just established is (10.3). Any such finite certificate is compatible with Theorem 6.2: its positive and negative sequences have arguments tending to infinity and therefore eventually exceed each fixed <span class="math" data-tex="$B$">$B$</span>. Thus a proved finite interval of negative bias cannot locate, or rule out, the later sign changes. The staircase (10.1) concerns <span class="math" data-tex="$\psi-x$">$\psi-x$</span> and supplies no prime-counting certificate.</p>
+<h2 id="11-exercises-and-worked-solutions">11. Exercises and worked solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove <span class="math" data-tex="$\Theta\ge1/2$">$\Theta\ge1/2$</span> from the existence of a nontrivial zero and the functional equation. Explain why a proof of Hardy's theorem is unnecessary for this conclusion.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove <span class="math" data-tex="$M(x)=\Omega(\sqrt x)$">$M(x)=\Omega(\sqrt x)$</span>. Show also that an eventual bound <span class="math" data-tex="$|M(x)|\le C\sqrt x$">$|M(x)|\le C\sqrt x$</span> implies RH and simplicity of all nontrivial zeros.</p>
+<p><strong>Exercise 3 (medium).</strong> Prove separately <span class="math" data-tex="$\psi(x)-x=\Omega_+(\sqrt x)$">$\psi(x)-x=\Omega_+(\sqrt x)$</span> and <span class="math" data-tex="$\Omega_-(\sqrt x)$">$\Omega_-(\sqrt x)$</span>, treating a possible failure of RH as well as the boundary case.</p>
+<p><strong>Exercise 4 (hard).</strong> Suppose <span class="math" data-tex="$1/2\le\alpha&lt;1$">$1/2\le\alpha&lt;1$</span> and <span class="math" data-tex="$\psi(x)-x\ge-cx^\alpha$">$\psi(x)-x\ge-cx^\alpha$</span> for all sufficiently large <span class="math" data-tex="$x$">$x$</span>. Prove every nontrivial zero has <span class="math" data-tex="$\beta\le\alpha$">$\beta\le\alpha$</span>. Explicitly justify holomorphy along the real segment <span class="math" data-tex="$(\alpha,1)$">$(\alpha,1)$</span> and removal of the singularity at one.</p>
+<p><strong>Exercise 5 (medium).</strong> Prove that a factor two is required in the real form (9.1). Explain why a certificate with <span class="math" data-tex="$h_T(y)&gt;1$">$h_T(y)&gt;1$</span> contradicts an eventual upper bound <span class="math" data-tex="$M(x)\le\sqrt x$">$M(x)\le\sqrt x$</span> without identifying an explicit counterexample integer.</p>
+<p><strong>Solution 1.</strong> Choose any nontrivial zero <span class="math" data-tex="$\beta+i\gamma$">$\beta+i\gamma$</span>, whose existence is proved by the Hadamard argument in lesson five. Its functional-equation partner has real part <span class="math" data-tex="$1-\beta$">$1-\beta$</span>. The larger of these two real parts is at least <span class="math" data-tex="$1/2$">$1/2$</span>, so their supremum is as well. Hardy's theorem, assigned to the later critical-line lesson, makes a stronger assertion about infinitely many zeros on the line; no such assertion entered this argument.</p>
+<p><strong>Solution 2.</strong> If <span class="math" data-tex="$M=o(\sqrt x)$">$M=o(\sqrt x)$</span>, then for every <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span> the tail in (3.6) is bounded in modulus by <span class="math" data-tex="$c/(\sigma-1/2)$">$c/(\sigma-1/2)$</span>. A finite initial interval adds a bounded holomorphic term as <span class="math" data-tex="$\sigma\downarrow1/2$">$\sigma\downarrow1/2$</span>. Holomorphy of the integral to the right of <span class="math" data-tex="$1/2$">$1/2$</span> excludes zeros there, and symmetry gives RH. At a multiple zero, the pole of <span class="math" data-tex="$1/(s\zeta(s))$">$1/(s\zeta(s))$</span> contradicts this first-order bound. At a simple zero, multiplying by <span class="math" data-tex="$\sigma-1/2$">$\sigma-1/2$</span> along <span class="math" data-tex="$s=\sigma+i\gamma$">$s=\sigma+i\gamma$</span> bounds the nonzero residue <span class="math" data-tex="$|1/(\rho\zeta&#x27;(\rho))|$">$|1/(\rho\zeta&#x27;(\rho))|$</span> by every <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, impossible. Thus <span class="math" data-tex="$M$">$M$</span> cannot be <span class="math" data-tex="$o(\sqrt x)$">$o(\sqrt x)$</span>, which is exactly the asserted <span class="math" data-tex="$\Omega$">$\Omega$</span> statement. A fixed eventual <span class="math" data-tex="$C$">$C$</span> supplies the same holomorphy and excludes higher-order poles, proving the final assertion.</p>
+<p><strong>Solution 3.</strong> If RH fails, <span class="math" data-tex="$\Theta&gt;1/2$">$\Theta&gt;1/2$</span>. Suppose an upper square-root bound held. Positivity of <span class="math" data-tex="$c\sqrt x-E(x)$">$c\sqrt x-E(x)$</span> and Landau's theorem would make <span class="math" data-tex="$-G(s)+c/(s-1/2)$">$-G(s)+c/(s-1/2)$</span> holomorphic on <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, contradicting a zero to the right. The same argument with <span class="math" data-tex="$E+c\sqrt x$">$E+c\sqrt x$</span> excludes a lower bound. Both corresponding normalized limits are therefore infinite with their respective signs. Under RH use a zero <span class="math" data-tex="$\rho$">$\rho$</span> of order <span class="math" data-tex="$m$">$m$</span> on the line and positivity as in (3.3). An upper bound forces <span class="math" data-tex="$c\ge m/|\rho|$">$c\ge m/|\rho|$</span>, and so does a lower bound. Choosing <span class="math" data-tex="$0&lt;c&lt;m/|\rho|$">$0&lt;c&lt;m/|\rho|$</span> shows there are arbitrarily large positive errors greater than <span class="math" data-tex="$c\sqrt x$">$c\sqrt x$</span> and negative errors less than <span class="math" data-tex="$-c\sqrt x$">$-c\sqrt x$</span>. This proves the two <span class="math" data-tex="$\Omega$">$\Omega$</span> assertions separately.</p>
+<p><strong>Solution 4.</strong> Remove the finite initial interval so <span class="math" data-tex="$A=E+cx^\alpha\ge0$">$A=E+cx^\alpha\ge0$</span> on its domain. Its transform is <span class="math" data-tex="$G(s)+c/(s-\alpha)+H(s)$">$G(s)+c/(s-\alpha)+H(s)$</span> for an entire <span class="math" data-tex="$H$">$H$</span>. On <span class="math" data-tex="$(\alpha,1)$">$(\alpha,1)$</span> zeta has no real zero: <span class="math" data-tex="$\eta(s)=\sum_{n\ge1}(-1)^{n-1}n^{-s}&gt;0$">$\eta(s)=\sum_{n\ge1}(-1)^{n-1}n^{-s}&gt;0$</span> by pairing successive terms, and <span class="math" data-tex="$\zeta(s)=\eta(s)/(1-2^{1-s})$">$\zeta(s)=\eta(s)/(1-2^{1-s})$</span> has a nonzero negative denominator. Locally uniform convergence of the paired series gives this identity for real <span class="math" data-tex="$s&gt;0$">$s&gt;0$</span> and its analytic continuation there. At one, <span class="math" data-tex="$\zeta&#x27;/\zeta=-1/(s-1)+$">$\zeta&#x27;/\zeta=-1/(s-1)+$</span> a holomorphic term, so <span class="math" data-tex="$-\zeta&#x27;/(s\zeta)-1/(s-1)$">$-\zeta&#x27;/(s\zeta)-1/(s-1)$</span> is holomorphic: its two pole residues cancel. Above one the Euler product supplies nonvanishing. Thus the continued transform is holomorphic near every real point greater than <span class="math" data-tex="$\alpha$">$\alpha$</span>. Its convergence abscissa is at most one; Landau excludes any finite abscissa greater than <span class="math" data-tex="$\alpha$">$\alpha$</span>. The actual integral is consequently holomorphic in <span class="math" data-tex="$\Re s&gt;\alpha$">$\Re s&gt;\alpha$</span>. A zero there has residue <span class="math" data-tex="$-m/\rho$">$-m/\rho$</span> in <span class="math" data-tex="$G$">$G$</span>, while the added terms are regular there, a contradiction.</p>
+<p><strong>Solution 5.</strong> Reality of the coefficients of zeta gives <span class="math" data-tex="$\zeta&#x27;(\overline\rho)=\overline{\zeta&#x27;(\rho)}$">$\zeta&#x27;(\overline\rho)=\overline{\zeta&#x27;(\rho)}$</span>. The contribution of <span class="math" data-tex="$\overline\rho=1/2-i\gamma$">$\overline\rho=1/2-i\gamma$</span> in (8.2) is the conjugate of the contribution of <span class="math" data-tex="$\rho$">$\rho$</span>; their sum is twice its real part. This proves (9.1). If an eventual upper bound <span class="math" data-tex="$m\le1$">$m\le1$</span> held, Lemma 8.1 would supply RH and simplicity, and Lemma 8.2 would give <span class="math" data-tex="$h_T(y)\le1$">$h_T(y)\le1$</span> at every real argument. A certified larger value contradicts it. The positive kernel only guarantees that some point contributes a sufficiently large value to its average; it need not determine which point. Moreover recurrence can move the finite sum far to the right even when the original certificate argument is negative.</p>
+<h2 id="freely-readable-sources-and-attribution">Freely readable sources and attribution</h2>
+<p>The exposition and supporting calculation scripts are original CC0. Sections 4–6 prove the sign-change theorems, Section 7 proves the conditional large bound, and Sections 8–9 supply the analytic Mertens argument and the independent ball certificate. The two decimal phase inputs in that certificate are credited to Table 3 of the freely readable CWI article below.</p>
+<ul>
+<li>E. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a>, official free Clay Mathematics Institute paper, Section II: sign-change context.</li>
+<li>A. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a> (2026), freely readable arXiv v1 survey, sign-change subsection. The unconditional proof in Section 6 treats both possibilities for RH.</li>
+<li>A. M. Odlyzko and H. J. J. te Riele, <a href="https://ir.cwi.nl/pub/1823/1823D.pdf"><em>Disproof of the Mertens conjecture</em></a> (1985), complete freely readable institutional version, 23 pages. Sections 2 and 4, especially formulas (2.17)–(2.21), (4.1), (4.4)–(4.8), and Table 3 on printed page 155 provide the source comparison and credited phase inputs. The local certificate recomputes its own enclosures; the paper’s lattice search is not claimed rerun.</li>
+<li>T. Kotnik, <a href="https://www.researchgate.net/publication/220391043_The_prime-counting_function_and_its_analytic_approximations"><em>The prime-counting function and its analytic approximations</em></a> (2008), complete freely readable author upload, Sections 2.1–2.3: comparison material for finite prime-endpoint checks and numerical evaluation. Example 10.2 proves its criterion and small instance locally.</li>
+<li><a href="https://python-flint.readthedocs.io/en/latest/acb.html">FLINT and python-flint complex ball documentation</a>, entries <code>zeta_zeros</code> and complex ball enclosures; <a href="https://python-flint.readthedocs.io/en/latest/acb_series.html">complex power-series documentation</a>. Our calling script and recorded enclosures are CC0. The supporting software retains its own licence.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-14.html">← The Riemann hypothesis and its standard equivalents</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-16.html">Mean values of Dirichlet polynomials and of zeta on the critical line →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-15.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

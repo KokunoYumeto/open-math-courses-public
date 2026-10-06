@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curve selection and Łojasiewicz inequalities</title>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body>
+<nav aria-label="Course"><a href="index.html">Analytic preparation, cells and curves</a></nav>
+<main>
+<h1 id="curve-selection-and-łojasiewicz-inequalities">Curve selection
+and Łojasiewicz inequalities</h1>
+<p><em>Human treatment: Guillaume Valette, <a
+href="https://arxiv.org/abs/2507.23622v1">On subanalytic geometry</a>,
+arXiv:2507.23622v1, 31 July 2025, §2.2, with the Puiseux statement from
+Proposition 1.8.4. Adapted by GPT-6.1 Sol (OpenAI), Ultra, October 2026.
+This adapted component is <a
+href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>;
+Guillaume Valette remains the author of the underlying exposition.
+Changes: notation and Markdown/MathML formatting; the vector in the
+inductive choice step is written explicitly; supremum, zero-fibre and
+uniform-constant details are supplied; the gradient proof explicitly
+chooses its final integer at least two. This adaptation implies no
+endorsement.</em></p>
+<p>Throughout this treatment, <strong>definable</strong> means globally
+subanalytic. Sets and functions have this property in their ambient
+Euclidean spaces; a function has it when its graph does. We use the
+following underlying results from Valette’s Chapter 1: finite analytic
+cell decomposition, closure under Boolean operations and projections,
+and the one-variable Puiseux theorem. These are distinct prerequisites,
+not conclusions of the arguments below. The last says that a definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>:</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>η</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">u:(0,\eta)\to\mathbb R</annotation></semantics></math></span>,
+on a smaller interval, has a convergent expansion</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mi>m</mi></mrow><mo accent="false">∞</mo></munderover><msub><mi>a</mi><mi>i</mi></msub><msup><mi>r</mi><mrow><mi>i</mi><mi>/</mi><mi>p</mi></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>m</mi><mo>∈</mo><mi mathvariant="double-struck">ℤ</mi><mo>,</mo><mspace width="1.0em"></mspace><mi>p</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℤ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u(r)=\sum_{i=m}^{\infty}a_i r^{i/p},\qquad m\in\mathbb Z,\quad p\in\mathbb Z_{&gt;0}.
+</annotation></semantics></math></span></p>
+<p>For a bounded
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>u</mi><annotation encoding="application/x-tex">u</annotation></semantics></math></span>,
+negative nonzero powers cannot occur. For finitely many bounded
+functions choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></span>
+to be twice a common denominator of their Puiseux exponents. Then all
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>t</mi><mi>p</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">u(t^p)</annotation></semantics></math></span>
+are analytic across zero and agree with the actual compositions for both
+signs of the parameter. Cell decomposition and Boolean/projection
+closure also make derivatives, distance functions and bounded fibrewise
+suprema definable. For example, the graph of a supremum consists of the
+pairs
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(r,s)</annotation></semantics></math></span>
+for which
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math></span>
+is an upper bound and every smaller number fails to be an upper bound;
+this is a formula with quantifiers over a definable graph.</p>
+<p>The <a href="analytic-finiteness-for-preparation.html">analytic
+finiteness treatment</a> proves the real Noetherian, Artin–Rees, Krull,
+formal-linear and finite-coefficient steps behind preparation, reusing
+the existing analytic division provider. Its later sections now prove
+the full cell, complement, one-variable Puiseux and parameterized
+Puiseux providers under the stated projective product convention. We use
+those proved inputs here.</p>
+<h2 id="definable-choice">Definable choice</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>m</mi></msup><mo>×</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A\subset\mathbb R^m\times\mathbb R^n</annotation></semantics></math></span>
+be definable, and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math></span>
+be its projection to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi mathvariant="double-struck">ℝ</mi><mi>m</mi></msup><annotation encoding="application/x-tex">\mathbb R^m</annotation></semantics></math></span>.
+There is a definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>B</mi><mo>→</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">f:B\to\mathbb R^n</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">(x,f(x))\in A</annotation></semantics></math></span>.</p>
+<p><strong>Proof.</strong> We prove it by induction on
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math></span>.
+First let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math></span>.
+Take a cylindrical cell decomposition compatible with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+refining the base decomposition as necessary. Over a base cell in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math></span>,
+select one of the finitely many cells in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+that projects onto it. For a graph, take its defining function. For a
+band with finite endpoints
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>&lt;</mo><msup><mi>ζ</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">\zeta&lt;\zeta&#39;</annotation></semantics></math></span>,
+take
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>ζ</mi><mo>+</mo><msup><mi>ζ</mi><mo>′</mo></msup><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">(\zeta+\zeta&#39;)/2</annotation></semantics></math></span>.
+For endpoints
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>,</mo><mi>+</mi><mi>∞</mi></mrow><annotation encoding="application/x-tex">\zeta,+\infty</annotation></semantics></math></span>,
+take
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ζ</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\zeta+1</annotation></semantics></math></span>;
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>∞</mi><mo>,</mo><msup><mi>ζ</mi><mo>′</mo></msup></mrow><annotation encoding="application/x-tex">-\infty,\zeta&#39;</annotation></semantics></math></span>,
+take
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ζ</mi><mo>′</mo></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\zeta&#39;-1</annotation></semantics></math></span>;
+for two infinite endpoints, take zero. Each choice lies in the fibre.
+Combining the finitely many base cells gives a definable function.</p>
+<p>For the induction, project
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>
+onto its first
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>+</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m+n-1</annotation></semantics></math></span>
+coordinates and call the image
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mo>′</mo></msup><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math></span>.
+The induction hypothesis selects
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>:</mo><mi>B</mi><mo>→</mo><msup><mi mathvariant="double-struck">ℝ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">g:B\to\mathbb R^{n-1}</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>A</mi><mo>′</mo></msup><annotation encoding="application/x-tex">A&#39;</annotation></semantics></math></span>.
+The one-coordinate case selects
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>:</mo><msup><mi>A</mi><mo>′</mo></msup><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">h:A&#39;\to\mathbb R</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo>,</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">(x,z,h(x,z))\in A</annotation></semantics></math></span>.
+Then</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="prefix">(</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mi>h</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>,</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo minsize="120%" maxsize="120%" stretchy="true" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">
+f(x)=\bigl(g(x),h(x,g(x))\bigr)
+</annotation></semantics></math></span></p>
+<p>is the required vector. Its graph is definable by Boolean operations
+and projection.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>Continuity of this selection is not asserted over all of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math></span>.
+On a sufficiently small one-dimensional interval, cell decomposition and
+Puiseux expansion provide the regularity used next.</p>
+<h2 id="curve-selection">Curve selection</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">A\subset\mathbb R^n</annotation></semantics></math></span>
+be definable and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>∈</mo><mover><mi>A</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">x_0\in\overline A</annotation></semantics></math></span>.
+There is an analytic arc
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>:</mo><mo stretchy="false" form="prefix">[</mo><mn>0</mn><mo>,</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\gamma:[0,\epsilon)\to\mathbb R^n</annotation></semantics></math></span>,
+analytic across its endpoint, with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><annotation encoding="application/x-tex">\gamma(0)=x_0</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>∈</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\gamma(r)\in A</annotation></semantics></math></span>
+for
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>&lt;</mo><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">0&lt;r&lt;\epsilon</annotation></semantics></math></span>.</p>
+<p><strong>Proof.</strong> Apply definable choice to</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">{</mo><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo>,</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mn>0</mn><mo>&lt;</mo><mi>r</mi><mo>&lt;</mo><mn>1</mn><mo>,</mo><mspace width="0.222em"></mspace><mi>x</mi><mo>∈</mo><mi>A</mi><mo>,</mo><mspace width="0.222em"></mspace><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>r</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\{(r,x):0&lt;r&lt;1,\ x\in A,\ |x-x_0|&lt;r\}.
+</annotation></semantics></math></span></p>
+<p>Every positive
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r&lt;1</annotation></semantics></math></span>
+has a nonempty fibre. We obtain a definable selection
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\beta(r)</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>β</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">|\beta(r)-x_0|&lt;r</annotation></semantics></math></span>.
+Thus it is bounded and tends to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math></span>.
+Apply the Puiseux theorem to its finitely many coordinates. A common
+denominator
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></span>
+and a smaller interval make
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>β</mi><mo stretchy="false" form="prefix">(</mo><msup><mi>t</mi><mi>p</mi></msup><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\gamma(t)=\beta(t^p)</annotation></semantics></math></span>
+analytic at zero; its constant term is
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mn>0</mn></msub><annotation encoding="application/x-tex">x_0</annotation></semantics></math></span>.
+The positive points stay in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>.
+The convergent power series supplies the stated analytic extension
+across zero.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<h2 id="an-inequality-detected-by-arcs">An inequality detected by
+arcs</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>,</mo><mi>g</mi><mo>:</mo><mi>A</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f,g:A\to\mathbb R</annotation></semantics></math></span>
+be definable functions on a definable set. Assume
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+is bounded. Assume also that along every definable arc
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo>:</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>ϵ</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\gamma:(0,\epsilon)\to A</annotation></semantics></math></span>,</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn><mspace width="1.0em"></mspace><mo>⇒</mo><mspace width="1.0em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+g(\gamma(t))\longrightarrow0
+\quad\Longrightarrow\quad f(\gamma(t))\longrightarrow0.
+</annotation></semantics></math></span></p>
+<p>Then there are a positive integer
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C&gt;0</annotation></semantics></math></span>
+such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mi>N</mi></msup><mo>≤</mo><mi>C</mi><mo stretchy="false" form="prefix">|</mo><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>∈</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|f(x)|^N\le C|g(x)|\qquad(x\in A).
+</annotation></semantics></math></span></p>
+<p><strong>Proof.</strong> Replace the functions by their absolute
+values. Constant arcs show that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g(x)=0</annotation></semantics></math></span>
+implies
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(x)=0</annotation></semantics></math></span>.
+For
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math></span>
+in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>A</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g(A)</annotation></semantics></math></span>,
+define</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">sup</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">{</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>:</mo><mi>x</mi><mo>∈</mo><mi>A</mi><mo>,</mo><mspace width="0.222em"></mspace><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>r</mi><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\phi(r)=\sup\{f(x):x\in A,\ g(x)=r\}.
+</annotation></semantics></math></span></p>
+<p>It is finite by boundedness and definable by the supremum formula. If
+it did not tend to zero as
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></span>
+tends to zero in its domain, some
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\delta&gt;0</annotation></semantics></math></span>
+would have arbitrarily small positive
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">\phi(r)&gt;\delta</annotation></semantics></math></span>.
+Definable choice would select
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">x(r)</annotation></semantics></math></span>
+with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">g(x(r))=r</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>δ</mi></mrow><annotation encoding="application/x-tex">f(x(r))&gt;\delta</annotation></semantics></math></span>.
+A definable subset of the line with zero as an accumulation point
+contains a positive interval ending at zero. Shrinking that interval,
+the selection is an arc by cell decomposition. It violates the
+hypothesis. Therefore
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi(r)\to0</annotation></semantics></math></span>.</p>
+<p>If positive values of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math></span>
+stay away from zero, boundedness of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+proves the result immediately. Otherwise its positive range contains
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mi>η</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">(0,\eta)</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ϕ</mi><annotation encoding="application/x-tex">\phi</annotation></semantics></math></span>
+vanishes on a smaller such interval, the same argument applies outside
+it. In the remaining case Puiseux expansion gives</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>a</mi><msup><mi>r</mi><mi>α</mi></msup><mo>+</mo><mtext mathvariant="normal">higher powers</mtext><mo>,</mo><mspace width="2.0em"></mspace><mi>a</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mspace width="1.0em"></mspace><mi>α</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℚ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\phi(r)=a r^\alpha+\text{higher powers},\qquad a&gt;0,\quad \alpha\in\mathbb Q_{&gt;0}.
+</annotation></semantics></math></span></p>
+<p>Thus
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ϕ</mi><mo stretchy="false" form="prefix">(</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>D</mi><msup><mi>r</mi><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">\phi(r)\le D r^\alpha</annotation></semantics></math></span>
+for small
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math></span>.
+Choose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≥</mo><mn>1</mn><mi>/</mi><mi>α</mi></mrow><annotation encoding="application/x-tex">N\ge1/\alpha</annotation></semantics></math></span>,
+shrink so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r&lt;1</annotation></semantics></math></span>,
+and obtain
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><msup><mo stretchy="false" form="postfix">)</mo><mi>N</mi></msup><mo>≤</mo><msup><mi>D</mi><mi>N</mi></msup><mi>g</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(x)^N\le D^N g(x)</annotation></semantics></math></span>
+for these fibres. On
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi><mo>≥</mo><mi>η</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">g\ge\eta&gt;0</annotation></semantics></math></span>,
+a bound
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>≤</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">f\le M</annotation></semantics></math></span>
+gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>f</mi><mi>N</mi></msup><mo>≤</mo><mo stretchy="false" form="prefix">(</mo><msup><mi>M</mi><mi>N</mi></msup><mi>/</mi><mi>η</mi><mo stretchy="false" form="postfix">)</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f^N\le(M^N/\eta)g</annotation></semantics></math></span>.
+The zero fibres were already checked. Taking the larger constant proves
+the claim.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>In particular, for continuous definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f,g</annotation></semantics></math></span>
+on a compact definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>,
+the condition
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>g</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo><mo>⊂</mo><msup><mi>f</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">g^{-1}(0)\subset f^{-1}(0)</annotation></semantics></math></span>
+suffices. Indeed, a bounded definable arc has a limit by coordinatewise
+Puiseux expansion. Compactness puts that limit in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></span>;
+continuity and the zero-set inclusion give the required implication
+along every arc.</p>
+<h2 id="the-gradient-inequality">The gradient inequality</h2>
+<p>Let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">ℝ</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">M\subset\mathbb R^n</annotation></semantics></math></span>
+be a definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math></span>
+submanifold, and let
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>:</mo><mi>M</mi><mo>→</mo><mi mathvariant="double-struck">ℝ</mi></mrow><annotation encoding="application/x-tex">f:M\to\mathbb R</annotation></semantics></math></span>
+be a definable
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>C</mi><mn>1</mn></msup><annotation encoding="application/x-tex">C^1</annotation></semantics></math></span>
+function. Write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi></mrow><annotation encoding="application/x-tex">\nabla_M f</annotation></semantics></math></span>
+for its gradient in the metric induced from Euclidean space. Suppose
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>∈</mo><mover><mi>M</mi><mo accent="true">¯</mo></mover></mrow><annotation encoding="application/x-tex">a\in\overline M</annotation></semantics></math></span>
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+extends continuously at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>.
+There are
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>C</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">C&gt;0</annotation></semantics></math></span>,
+a rational
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\rho\in(0,1)</annotation></semantics></math></span>,
+and a neighborhood of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>
+such that</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><msup><mo stretchy="false" form="prefix">|</mo><mi>ρ</mi></msup><mo>≤</mo><mi>C</mi><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mspace width="2.0em"></mspace><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo>∈</mo><mi>M</mi><mo stretchy="false" form="postfix">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|f(x)-f(a)|^\rho\le C|\nabla_M f(x)|\qquad(x\in M).
+</annotation></semantics></math></span></p>
+<p><strong>Proof of the preliminary radial estimate.</strong> First we
+prove</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><msub><mi>C</mi><mn>0</mn></msub><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><mi>a</mi><mo stretchy="false" form="prefix">|</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">
+|f(x)-f(a)|\le C_0|x-a|\,|\nabla_M f(x)|
+</annotation></semantics></math></span></p>
+<p>near
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math></span>.
+Translate so that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>0</mn><mo>,</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a=0,f(a)=0</annotation></semantics></math></span>.
+If no such uniform constant existed, definable choice applied to
+increasingly bad ratios would supply a definable arc
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\gamma(s)\to0</annotation></semantics></math></span>
+on which</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow></mfrac><mo>→</mo><mn>0</mn><mo>,</mo><mspace width="2.0em"></mspace><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≠</mo><mn>0</mn><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\frac{|\gamma(s)|\,|\nabla_M f(\gamma(s))|}{|f(\gamma(s))|}\longrightarrow0,
+\qquad f(\gamma(s))\ne0.
+</annotation></semantics></math></span></p>
+<p>One can select with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>&lt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">|\gamma(s)|&lt;s</annotation></semantics></math></span>
+and the ratio
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&lt;</mo><mi>s</mi></mrow><annotation encoding="application/x-tex">&lt;s</annotation></semantics></math></span>.
+Puiseux expansions give
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>b</mi><msup><mi>s</mi><mi>k</mi></msup><mo>+</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">\gamma(s)=bs^k+\cdots</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn><mo>,</mo><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b\ne0,k&gt;0</annotation></semantics></math></span>,
+and
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>d</mi><msup><mi>s</mi><mi>q</mi></msup><mo>+</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">f(\gamma(s))=d s^q+\cdots</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>≠</mo><mn>0</mn><mo>,</mo><mi>q</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">d\ne0,q&gt;0</annotation></semantics></math></span>.
+If the gradient vanished identically along the arc, the chain rule would
+make
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>∘</mo><mi>γ</mi></mrow><annotation encoding="application/x-tex">f\circ\gamma</annotation></semantics></math></span>
+constant, contrary to its nonzero values and zero limit. Otherwise write
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mi>c</mi><msup><mi>s</mi><mi>ℓ</mi></msup><mo>+</mo><mi>⋯</mi></mrow><annotation encoding="application/x-tex">\nabla_M f(\gamma(s))=c s^\ell+\cdots</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">c\ne0</annotation></semantics></math></span>.
+The chain rule and Cauchy–Schwarz give</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">|</mo><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>∘</mo><mi>γ</mi><msup><mo stretchy="false" form="postfix">)</mo><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mo>≤</mo><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mspace width="0.167em"></mspace><mo stretchy="false" form="prefix">|</mo><msup><mi>γ</mi><mo>′</mo></msup><mo stretchy="false" form="prefix">(</mo><mi>s</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+|(f\circ\gamma)&#39;(s)|
+\le|\nabla_M f(\gamma(s))|\,|\gamma&#39;(s)|.
+</annotation></semantics></math></span></p>
+<p>Comparison of leading powers forces
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>−</mo><mn>1</mn><mo>≥</mo><mi>ℓ</mi><mo>+</mo><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q-1\ge \ell+k-1</annotation></semantics></math></span>,
+so
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>≥</mo><mi>k</mi><mo>+</mo><mi>ℓ</mi></mrow><annotation encoding="application/x-tex">q\ge k+\ell</annotation></semantics></math></span>.
+The purported ratio consequently has order
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mi>ℓ</mi><mo>−</mo><mi>q</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k+\ell-q\le0</annotation></semantics></math></span>
+and cannot tend to zero. This contradiction proves the uniform estimate,
+including points where the gradient is zero.</p>
+<p><strong>From the radial estimate to the exponent.</strong> Choose a
+bounded neighborhood on which the radial estimate holds. It implies that
+a zero gradient has value
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math></span>.
+On the definable set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></span>
+where the gradient is nonzero, put</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mfrac><mrow><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow><mrow><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo></mrow></mfrac><mo>,</mo><mspace width="2.0em"></mspace><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+G(x)=\frac{|f(x)-f(a)|}{|\nabla_M f(x)|},
+\qquad H(x)=|f(x)-f(a)|.
+</annotation></semantics></math></span></p>
+<p>The radial estimate makes
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math></span>
+bounded. We check that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H\to0</annotation></semantics></math></span>
+along any definable arc in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math></span>
+implies
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G\to0</annotation></semantics></math></span>.
+Such an arc is bounded and has a limit
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>.
+For a constant arc with
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H\to0</annotation></semantics></math></span>,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G=0</annotation></semantics></math></span>.
+For a nonconstant arc with nonzero
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>,
+Puiseux expansions yield constants
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>&gt;</mo><mn>0</mn><mo>,</mo><mi>α</mi><mo>∈</mo><msub><mi mathvariant="double-struck">ℚ</mi><mrow><mo>&gt;</mo><mn>0</mn></mrow></msub></mrow><annotation encoding="application/x-tex">D&gt;0,\alpha\in\mathbb Q_{&gt;0}</annotation></semantics></math></span>
+such that
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><mi>D</mi><mo stretchy="false" form="prefix">|</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>b</mi><msup><mo stretchy="false" form="prefix">|</mo><mi>α</mi></msup></mrow><annotation encoding="application/x-tex">H(\gamma(t))\le D|\gamma(t)-b|^\alpha</annotation></semantics></math></span>.
+The arc lies eventually in the open submanifold</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>M</mi><mo>′</mo></msup><mo>=</mo><mo stretchy="false" form="prefix">{</mo><mi>x</mi><mo>∈</mo><mi>V</mi><mo>:</mo><mi>H</mi><mo stretchy="false" form="prefix">(</mo><mi>x</mi><mo stretchy="false" form="postfix">)</mo><mo>&lt;</mo><mn>2</mn><mi>D</mi><mo stretchy="false" form="prefix">|</mo><mi>x</mi><mo>−</mo><mi>b</mi><msup><mo stretchy="false" form="prefix">|</mo><mi>α</mi></msup><mo stretchy="false" form="postfix">}</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+M&#39;=\{x\in V:H(x)&lt;2D|x-b|^\alpha\}.
+</annotation></semantics></math></span></p>
+<p>On
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>M</mi><mo>′</mo></msup><annotation encoding="application/x-tex">M&#39;</annotation></semantics></math></span>,
+the restriction of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math></span>
+extends continuously at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+with value
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">f(a)</annotation></semantics></math></span>.
+Its intrinsic gradient equals
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi></mrow><annotation encoding="application/x-tex">\nabla_M f</annotation></semantics></math></span>,
+because
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>M</mi><mo>′</mo></msup><annotation encoding="application/x-tex">M&#39;</annotation></semantics></math></span>
+is open in
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math></span>.
+The radial estimate applied at
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math></span>
+gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo stretchy="false" form="prefix">(</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo stretchy="false" form="postfix">)</mo><mo>≤</mo><msub><mi>C</mi><mi>b</mi></msub><mo stretchy="false" form="prefix">|</mo><mi>γ</mi><mo stretchy="false" form="prefix">(</mo><mi>t</mi><mo stretchy="false" form="postfix">)</mo><mo>−</mo><mi>b</mi><mo stretchy="false" form="prefix">|</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G(\gamma(t))\le C_b|\gamma(t)-b|\to0</annotation></semantics></math></span>.
+If
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>H</mi><annotation encoding="application/x-tex">H</annotation></semantics></math></span>
+is identically zero on the arc,
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G=0</annotation></semantics></math></span>
+directly.</p>
+<p>The preceding arc inequality applied to
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>G</mi><mo>,</mo><mi>H</mi></mrow><annotation encoding="application/x-tex">G,H</annotation></semantics></math></span>
+now gives
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>G</mi><mi>N</mi></msup><mo>≤</mo><msub><mi>D</mi><mn>1</mn></msub><mi>H</mi></mrow><annotation encoding="application/x-tex">G^N\le D_1H</annotation></semantics></math></span>.
+Increase
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>
+to at least two if necessary: boundedness of
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math></span>
+preserves such an inequality after increasing the exponent and the
+constant. At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H&gt;0</annotation></semantics></math></span>,
+substitution and taking
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math></span>-th
+roots give</p>
+<p><span class="math display"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>H</mi><mrow><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mi>N</mi></mrow></msup><mo>≤</mo><msubsup><mi>D</mi><mn>1</mn><mrow><mn>1</mn><mi>/</mi><mi>N</mi></mrow></msubsup><mo stretchy="false" form="prefix">|</mo><msub><mi>∇</mi><mi>M</mi></msub><mi>f</mi><mo stretchy="false" form="prefix">|</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+H^{1-1/N}\le D_1^{1/N}|\nabla_M f|.
+</annotation></semantics></math></span></p>
+<p>At
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>H</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">H=0</annotation></semantics></math></span>
+the desired inequality holds directly. Set
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>1</mn><mo>−</mo><mn>1</mn><mi>/</mi><mi>N</mi><mo>∈</mo><mo stretchy="false" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mo>∩</mo><mi mathvariant="double-struck">ℚ</mi></mrow><annotation encoding="application/x-tex">\rho=1-1/N\in(0,1)\cap\mathbb Q</annotation></semantics></math></span>.
+This proves the gradient inequality.
+<span class="math inline"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></span></p>
+<p>The foundational cell and Puiseux theorems remain the explicit inputs
+of this treatment. No assertion about a globally finite triangulation of
+an arbitrary noncompact analytic manifold follows from these definable
+statements.</p>
+</main>
+</body>
+</html>

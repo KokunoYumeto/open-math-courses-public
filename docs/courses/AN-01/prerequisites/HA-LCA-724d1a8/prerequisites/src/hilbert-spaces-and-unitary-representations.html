@@ -1,0 +1,516 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="cc1b8a90c8f8a6436864722be988570922c96e85ec970b595a29e1e1d11bf703"><title>Hilbert spaces and unitary representations</title><link rel="stylesheet" href="../../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="hilbert-spaces-and-unitary-representations.md">Editable source</a> · <a href="../../LICENCES.html">Licences</a></nav><article><h1 id="hilbert-spaces-and-unitary-representations">Hilbert spaces and unitary representations</h1>
+<p><strong>Programme reading HA-LCA-PRE-HILBERT.</strong> This reading supplies the Hilbert-space foundations used by the positive-type lesson. Self-checked by the writing AI. Hilbert spaces may have arbitrary dimension, measure spaces need not be sigma-finite, and topological groups need not be abelian.</p>
+<p>Inner products are linear in the first variable and conjugate-linear in the second. The foundations are set theory with choice, the complete real and complex fields, and the definitions of topology and measure. Every additional result used below is proved here or linked to an exact earlier programme proof.</p>
+<p>The freely accessible mathematical sources are Jean Gallier and Jocelyn Quaintance, <a href="https://www.cis.upenn.edu/~jean/hilbert-spaces.pdf"><em>A Glimpse at Hilbert Spaces</em>, author notes dated 10 March 2017</a>, §§1.1–1.3 through Theorem 1.16; Michael Taylor, <a href="https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/banalg.pdf"><em>Lectures on Banach Algebras</em>, author-hosted notes</a>, §§4–5 and Proposition 6.1; D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt2.2016/mt244.tex"><em>Measure Theory</em>, §244, version of 6 March 2009</a>, 244D–G, 244N(a) and 244P(a)–(b),(e); and B. Bekka, P. de la Harpe and A. Valette, <a href="https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf"><em>Kazhdan's Property (T)</em>, free author draft dated 23 February 2007</a>, Appendix A.1–A.2 at the specific results discussed in Section 7. All source citations identify reading material; all proof obligations are discharged below.</p>
+<p>This combined reading is distributed under the <a href="../../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>, retaining Fremlin's original copyright 1995 for §244 and the unchanged <span class="unlinked">volume 2 source package</span>. The exposition is newly written; the other sources' prose and figures are not reproduced.</p>
+<h2 id="1-positive-forms-and-completion">1. Positive forms and completion</h2>
+<p>A sesquilinear form <span class="math" data-tex="\(B\)">\(B\)</span> on a complex vector space <span class="math" data-tex="\(V\)">\(V\)</span> is linear in its first variable and conjugate-linear in its second. Call it positive if <span class="math" data-tex="\(Q(x)=B(x,x)\)">\(Q(x)=B(x,x)\)</span> is real and nonnegative for every <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<a id="ha-lca-pre-hilbert-lemma-1-1"></a>
+<h3 id="lemma-1-1-positivity-cauchy-schwarz-and-the-null-quotient">Lemma 1.1. Positivity, Cauchy–Schwarz and the null quotient</h3>
+<p>A positive sesquilinear form satisfies
+<span class="math math-display" data-tex="\[
+ B(y,x)=\overline{B(x,y)},\qquad
+ |B(x,y)|^2\le Q(x)Q(y).
+\]">\[
+ B(y,x)=\overline{B(x,y)},\qquad
+ |B(x,y)|^2\le Q(x)Q(y).
+\]</span>
+Its null space <span class="math" data-tex="\(N=\{x:Q(x)=0\}\)">\(N=\{x:Q(x)=0\}\)</span> is a linear subspace and <span class="math" data-tex="\(B(N,V)=B(V,N)=0\)">\(B(N,V)=B(V,N)=0\)</span>. Consequently <span class="math" data-tex="\(B\)">\(B\)</span> induces an inner product on <span class="math" data-tex="\(V/N\)">\(V/N\)</span>. For an inner product, <span class="math" data-tex="\(\|x\|=\sqrt{B(x,x)}\)">\(\|x\|=\sqrt{B(x,x)}\)</span> is a norm, and
+<span class="math math-display" data-tex="\[
+ \|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.
+ \tag{1}
+\]">\[
+ \|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.
+ \tag{1}
+\]</span>
+Inner products are jointly continuous in their norms.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(a=B(x,y)\)">\(a=B(x,y)\)</span> and <span class="math" data-tex="\(b=B(y,x)\)">\(b=B(y,x)\)</span>. The imaginary parts of <span class="math" data-tex="\(Q(x+y)\)">\(Q(x+y)\)</span> and <span class="math" data-tex="\(Q(x+iy)\)">\(Q(x+iy)\)</span> vanish. Expanding gives <span class="math" data-tex="\(\operatorname{Im}(a+b)=0\)">\(\operatorname{Im}(a+b)=0\)</span> and <span class="math" data-tex="\(\operatorname{Re}(b-a)=0\)">\(\operatorname{Re}(b-a)=0\)</span>; hence <span class="math" data-tex="\(b=\bar a\)">\(b=\bar a\)</span>. If <span class="math" data-tex="\(Q(y)&gt;0\)">\(Q(y)&gt;0\)</span>, positivity at <span class="math" data-tex="\(x-B(x,y)y/Q(y)\)">\(x-B(x,y)y/Q(y)\)</span> gives <span class="math" data-tex="\(Q(x)-|B(x,y)|^2/Q(y)\ge0\)">\(Q(x)-|B(x,y)|^2/Q(y)\ge0\)</span>. If <span class="math" data-tex="\(Q(y)=0\)">\(Q(y)=0\)</span>, positivity of
+<span class="math math-display" data-tex="\[
+ Q(x+ty)=Q(x)+2\operatorname{Re}(\bar t B(x,y))
+\]">\[
+ Q(x+ty)=Q(x)+2\operatorname{Re}(\bar t B(x,y))
+\]</span>
+for every complex <span class="math" data-tex="\(t\)">\(t\)</span> forces <span class="math" data-tex="\(B(x,y)=0\)">\(B(x,y)=0\)</span>. This proves Cauchy–Schwarz, including the null case.</p>
+<p>Each null vector is orthogonal to every vector. Linearity then shows that every linear combination of null vectors is null, and that changing either representative modulo <span class="math" data-tex="\(N\)">\(N\)</span> leaves <span class="math" data-tex="\(B\)">\(B\)</span> unchanged. The quotient form is positive definite by the definition of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Homogeneity of the proposed norm follows from sesquilinearity, and definiteness follows from positive definiteness. Expanding <span class="math" data-tex="\(\|x+y\|^2\)">\(\|x+y\|^2\)</span> and applying Cauchy–Schwarz gives the triangle inequality. Direct expansion gives (1). The triangle inequality also gives <span class="math" data-tex="\(|\|x\|-\|y\||\le\|x-y\|\)">\(|\|x\|-\|y\||\le\|x-y\|\)</span>. Finally,
+<span class="math math-display" data-tex="\[
+ |\langle x,y\rangle-\langle x&#x27;,y&#x27;\rangle|
+ \le \|x-x&#x27;\|\,\|y\|+\|x&#x27;\|\,\|y-y&#x27;\|,
+\]">\[
+ |\langle x,y\rangle-\langle x&#x27;,y&#x27;\rangle|
+ \le \|x-x&#x27;\|\,\|y\|+\|x&#x27;\|\,\|y-y&#x27;\|,
+\]</span>
+which proves joint continuity. These computations also give the polarization identity
+<span class="math math-display" data-tex="\[
+ \langle x,y\rangle=\tfrac14\bigl(\|x+y\|^2-\|x-y\|^2
+                +i\|x+iy\|^2-i\|x-iy\|^2\bigr).
+ \tag{2}
+\]">\[
+ \langle x,y\rangle=\tfrac14\bigl(\|x+y\|^2-\|x-y\|^2
+                +i\|x+iy\|^2-i\|x-iy\|^2\bigr).
+ \tag{2}
+\]</span>
+Thus equality of the diagonal values of two sesquilinear forms implies equality of the forms whenever their difference has zero diagonal: apply the same expansion to that difference. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-1-2"></a>
+<h3 id="theorem-1-2-hilbert-completion-and-extension-from-a-dense-subspace">Theorem 1.2. Hilbert completion and extension from a dense subspace</h3>
+<p>Every inner-product space has an isometric dense linear embedding into a complete inner-product space, its Hilbert completion. Any bounded linear map from a dense linear subspace of a normed space into a Banach space extends uniquely and with the same norm to the closure of that subspace. An isometry between dense linear subspaces of Hilbert spaces, with dense range, extends to a surjective linear isometry.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be the vector space of Cauchy sequences in the given inner-product space <span class="math" data-tex="\(V\)">\(V\)</span>. Declare <span class="math" data-tex="\((x_n)\sim(y_n)\)">\((x_n)\sim(y_n)\)</span> when <span class="math" data-tex="\(\|x_n-y_n\|\to0\)">\(\|x_n-y_n\|\to0\)</span>. The triangle inequality proves that this is an equivalence relation compatible with addition and scalar multiplication. Every Cauchy sequence is bounded. Therefore the continuity estimate in Lemma 1.1 shows that <span class="math" data-tex="\(\langle x_n,y_n\rangle\)">\(\langle x_n,y_n\rangle\)</span> is a Cauchy sequence of scalars. Define the inner product of the two classes to be its limit. The same estimate proves independence of representatives. Its diagonal value is <span class="math" data-tex="\(\lim_n\|x_n\|^2\)">\(\lim_n\|x_n\|^2\)</span>, which is zero exactly for the zero class.</p>
+<p>Constant sequences embed <span class="math" data-tex="\(V\)">\(V\)</span> isometrically. The class <span class="math" data-tex="\(X=[(x_n)]\)">\(X=[(x_n)]\)</span> is the limit of the embedded vectors <span class="math" data-tex="\(x_k\)">\(x_k\)</span>: given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, for large <span class="math" data-tex="\(k\)">\(k\)</span> all sufficiently late <span class="math" data-tex="\(n\)">\(n\)</span> satisfy <span class="math" data-tex="\(\|x_k-x_n\|&lt;\varepsilon\)">\(\|x_k-x_n\|&lt;\varepsilon\)</span>, whence <span class="math" data-tex="\(\|x_k-X\|\le\varepsilon\)">\(\|x_k-X\|\le\varepsilon\)</span>. The image is dense.</p>
+<p>To prove completeness, let <span class="math" data-tex="\((X_n)\)">\((X_n)\)</span> be a Cauchy sequence of classes. Choose <span class="math" data-tex="\(v_n\in V\)">\(v_n\in V\)</span> with <span class="math" data-tex="\(\|v_n-X_n\|&lt;1/n\)">\(\|v_n-X_n\|&lt;1/n\)</span>, using density. The triangle inequality makes <span class="math" data-tex="\((v_n)\)">\((v_n)\)</span> Cauchy in <span class="math" data-tex="\(V\)">\(V\)</span>, so its class <span class="math" data-tex="\(X\)">\(X\)</span> exists. The preceding paragraph gives <span class="math" data-tex="\(v_n\to X\)">\(v_n\to X\)</span>, and consequently <span class="math" data-tex="\(X_n\to X\)">\(X_n\to X\)</span>.</p>
+<p>For the extension assertion, if <span class="math" data-tex="\(x_n\)">\(x_n\)</span> lies in the dense subspace and converges to <span class="math" data-tex="\(x\)">\(x\)</span>, the estimate <span class="math" data-tex="\(\|Tx_n-Tx_m\|\le\|T\|\|x_n-x_m\|\)">\(\|Tx_n-Tx_m\|\le\|T\|\|x_n-x_m\|\)</span> makes <span class="math" data-tex="\(Tx_n\)">\(Tx_n\)</span> Cauchy. Define the extension by its limit in the Banach target. Comparing two approximating sequences proves independence; passing to limits proves linearity, boundedness and uniqueness. The norm agrees because restriction cannot increase the supremum that defines the operator norm. For an isometry the extended map is again an isometry. Its range is closed: convergence of image vectors makes their preimages Cauchy and hence convergent. A closed dense range is the whole target. Polarization (2) shows that a linear isometry preserves inner products. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-projection-duality-and-bounded-forms">2. Projection, duality and bounded forms</h2>
+<a id="ha-lca-pre-hilbert-theorem-2-1"></a>
+<h3 id="theorem-2-1-projection-onto-a-closed-convex-set">Theorem 2.1. Projection onto a closed convex set</h3>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be a nonempty closed convex subset of a Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>. For every <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span> there is a unique <span class="math" data-tex="\(p\in C\)">\(p\in C\)</span> minimizing <span class="math" data-tex="\(\|u-p\|\)">\(\|u-p\|\)</span>. It is characterized by
+<span class="math math-display" data-tex="\[
+ \operatorname{Re}\langle u-p,z-p\rangle\le0\quad(z\in C).
+ \tag{3}
+\]">\[
+ \operatorname{Re}\langle u-p,z-p\rangle\le0\quad(z\in C).
+ \tag{3}
+\]</span>
+The resulting projection <span class="math" data-tex="\(P_C:H\to C\)">\(P_C:H\to C\)</span> satisfies <span class="math" data-tex="\(\|P_Cu-P_Cv\|\le\|u-v\|\)">\(\|P_Cu-P_Cv\|\le\|u-v\|\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(d=\inf_{z\in C}\|u-z\|\)">\(d=\inf_{z\in C}\|u-z\|\)</span>, which is finite because <span class="math" data-tex="\(C\ne\varnothing\)">\(C\ne\varnothing\)</span>. Choose <span class="math" data-tex="\(z_n\in C\)">\(z_n\in C\)</span> with <span class="math" data-tex="\(\|u-z_n\|\to d\)">\(\|u-z_n\|\to d\)</span>. Their midpoints belong to <span class="math" data-tex="\(C\)">\(C\)</span>, so (1) gives
+<span class="math math-display" data-tex="\[
+ \|z_n-z_m\|^2
+ =2\|u-z_n\|^2+2\|u-z_m\|^2
+       -4\|u-(z_n+z_m)/2\|^2
+ \le2\|u-z_n\|^2+2\|u-z_m\|^2-4d^2.
+\]">\[
+ \|z_n-z_m\|^2
+ =2\|u-z_n\|^2+2\|u-z_m\|^2
+       -4\|u-(z_n+z_m)/2\|^2
+ \le2\|u-z_n\|^2+2\|u-z_m\|^2-4d^2.
+\]</span>
+The right side tends to zero, also when <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. Completeness and closedness give a limit <span class="math" data-tex="\(p\in C\)">\(p\in C\)</span> with <span class="math" data-tex="\(\|u-p\|=d\)">\(\|u-p\|=d\)</span>. Applying the same inequality to two minimizing points makes their distance zero.</p>
+<p>For <span class="math" data-tex="\(z\in C\)">\(z\in C\)</span> and <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>, the point <span class="math" data-tex="\(p+t(z-p)\)">\(p+t(z-p)\)</span> belongs to <span class="math" data-tex="\(C\)">\(C\)</span>. Subtracting <span class="math" data-tex="\(d^2\)">\(d^2\)</span> from its squared distance to <span class="math" data-tex="\(u\)">\(u\)</span> yields
+<span class="math math-display" data-tex="\[
+ -2t\operatorname{Re}\langle u-p,z-p\rangle+t^2\|z-p\|^2\ge0.
+\]">\[
+ -2t\operatorname{Re}\langle u-p,z-p\rangle+t^2\|z-p\|^2\ge0.
+\]</span>
+Divide by <span class="math" data-tex="\(t\)">\(t\)</span> and let <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, obtaining (3). Conversely, expansion of <span class="math" data-tex="\(\|u-z\|^2\)">\(\|u-z\|^2\)</span> using (3) gives <span class="math" data-tex="\(\|u-z\|^2\ge\|u-p\|^2+\|z-p\|^2\)">\(\|u-z\|^2\ge\|u-p\|^2+\|z-p\|^2\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is the minimizing point.</p>
+<p>Write <span class="math" data-tex="\(p=P_Cu\)">\(p=P_Cu\)</span>, <span class="math" data-tex="\(q=P_Cv\)">\(q=P_Cv\)</span>. Applying (3) first to <span class="math" data-tex="\(q\)">\(q\)</span> and then to <span class="math" data-tex="\(p\)">\(p\)</span>, and subtracting the two real inequalities, gives
+<span class="math math-display" data-tex="\[
+ \|p-q\|^2\le\operatorname{Re}\langle u-v,p-q\rangle
+ \le\|u-v\|\|p-q\|.
+\]">\[
+ \|p-q\|^2\le\operatorname{Re}\langle u-v,p-q\rangle
+ \le\|u-v\|\|p-q\|.
+\]</span>
+If <span class="math" data-tex="\(p=q\)">\(p=q\)</span> the assertion is immediate; otherwise division proves it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-corollary-2-2"></a>
+<h3 id="corollary-2-2-orthogonal-decomposition">Corollary 2.2. Orthogonal decomposition</h3>
+<p>For a closed linear subspace <span class="math" data-tex="\(M\subseteq H\)">\(M\subseteq H\)</span>, every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> has a unique decomposition <span class="math" data-tex="\(x=m+n\)">\(x=m+n\)</span>, with <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> and <span class="math" data-tex="\(n\in M^\perp\)">\(n\in M^\perp\)</span>. The projection <span class="math" data-tex="\(P_Mx=m\)">\(P_Mx=m\)</span> is linear, has norm at most one, and satisfies
+<span class="math math-display" data-tex="\[
+ P_M^2=P_M,\qquad
+ \langle P_Mx,y\rangle=\langle x,P_My\rangle,\qquad
+ \|x\|^2=\|P_Mx\|^2+\|(I-P_M)x\|^2.
+ \tag{4}
+\]">\[
+ P_M^2=P_M,\qquad
+ \langle P_Mx,y\rangle=\langle x,P_My\rangle,\qquad
+ \|x\|^2=\|P_Mx\|^2+\|(I-P_M)x\|^2.
+ \tag{4}
+\]</span>
+For any subset <span class="math" data-tex="\(A\subseteq H\)">\(A\subseteq H\)</span>, <span class="math" data-tex="\(A^\perp\)">\(A^\perp\)</span> is closed and <span class="math" data-tex="\(A^{\perp\perp}=\overline{\operatorname{span}A}\)">\(A^{\perp\perp}=\overline{\operatorname{span}A}\)</span>.</p>
+<p><strong>Proof.</strong> In (3) put <span class="math" data-tex="\(z=P_Mx+tw\)">\(z=P_Mx+tw\)</span>, where <span class="math" data-tex="\(w\in M\)">\(w\in M\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> runs through positive and negative real and purely imaginary numbers. It follows that <span class="math" data-tex="\(\langle x-P_Mx,w\rangle=0\)">\(\langle x-P_Mx,w\rangle=0\)</span>. Orthogonal decompositions are unique because <span class="math" data-tex="\(M\cap M^\perp=\{0\}\)">\(M\cap M^\perp=\{0\}\)</span>. Adding and scaling decompositions proves linearity. Expansion of the squared norm gives (4), including contractivity and the inner-product identity.</p>
+<p>Each condition <span class="math" data-tex="\(\langle x,a\rangle=0\)">\(\langle x,a\rangle=0\)</span> defines a closed set by Lemma 1.1, so their intersection <span class="math" data-tex="\(A^\perp\)">\(A^\perp\)</span> is closed. Put <span class="math" data-tex="\(L=\overline{\operatorname{span}A}\)">\(L=\overline{\operatorname{span}A}\)</span>. Continuity shows <span class="math" data-tex="\(A^\perp=L^\perp\)">\(A^\perp=L^\perp\)</span>. If <span class="math" data-tex="\(x\in A^{\perp\perp}\)">\(x\in A^{\perp\perp}\)</span>, decompose <span class="math" data-tex="\(x=l+n\)">\(x=l+n\)</span>, with <span class="math" data-tex="\(n\in L^\perp\)">\(n\in L^\perp\)</span>. Then <span class="math" data-tex="\(0=\langle x,n\rangle=\|n\|^2\)">\(0=\langle x,n\rangle=\|n\|^2\)</span>, so <span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>. The reverse inclusion follows from orthogonality and continuity. In particular, the orthogonal complement of a proper closed linear subspace is nonzero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-2-3"></a>
+<h3 id="theorem-2-3-riesz-representation-for-the-hilbert-dual">Theorem 2.3. Riesz representation for the Hilbert dual</h3>
+<p>For every bounded linear functional <span class="math" data-tex="\(\ell:H\to\mathbb C\)">\(\ell:H\to\mathbb C\)</span>, there is a unique <span class="math" data-tex="\(v\in H\)">\(v\in H\)</span> with <span class="math" data-tex="\(\ell(x)=\langle x,v\rangle\)">\(\ell(x)=\langle x,v\rangle\)</span>, and <span class="math" data-tex="\(\|\ell\|=\|v\|\)">\(\|\ell\|=\|v\|\)</span>. The map <span class="math" data-tex="\(v\mapsto\langle\,\cdot\,,v\rangle\)">\(v\mapsto\langle\,\cdot\,,v\rangle\)</span> is conjugate-linear. A bounded conjugate-linear functional has instead the unique form <span class="math" data-tex="\(x\mapsto\langle v,x\rangle\)">\(x\mapsto\langle v,x\rangle\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> take <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Otherwise <span class="math" data-tex="\(M=\ker\ell\)">\(M=\ker\ell\)</span> is closed: convergence preserves the equation <span class="math" data-tex="\(\ell(x)=0\)">\(\ell(x)=0\)</span>. Choose <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(\ell(w)\ne0\)">\(\ell(w)\ne0\)</span> and set <span class="math" data-tex="\(a=w-P_Mw\)">\(a=w-P_Mw\)</span>. Then <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, <span class="math" data-tex="\(a\perp M\)">\(a\perp M\)</span>, and <span class="math" data-tex="\(\ell(a)=\ell(w)\ne0\)">\(\ell(a)=\ell(w)\ne0\)</span>. Every <span class="math" data-tex="\(x\)">\(x\)</span> satisfies <span class="math" data-tex="\(x-\ell(x)a/\ell(a)\in M\)">\(x-\ell(x)a/\ell(a)\in M\)</span>. Taking its inner product with <span class="math" data-tex="\(a\)">\(a\)</span> gives
+<span class="math math-display" data-tex="\[
+ \langle x,a\rangle=\ell(x)\|a\|^2/\ell(a).
+\]">\[
+ \langle x,a\rangle=\ell(x)\|a\|^2/\ell(a).
+\]</span>
+Thus <span class="math" data-tex="\(v=\overline{\ell(a)}a/\|a\|^2\)">\(v=\overline{\ell(a)}a/\|a\|^2\)</span> represents <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Cauchy–Schwarz gives <span class="math" data-tex="\(\|\ell\|\le\|v\|\)">\(\|\ell\|\le\|v\|\)</span>, and evaluation at <span class="math" data-tex="\(v/\|v\|\)">\(v/\|v\|\)</span>, when <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, gives equality. Two representing vectors differ by a vector orthogonal to all of <span class="math" data-tex="\(H\)">\(H\)</span>, and hence are equal. The scalar convention follows directly from sesquilinearity. For a conjugate-linear functional, conjugate its values, apply the linear assertion and conjugate back. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-proposition-2-4"></a>
+<h3 id="proposition-2-4-bounded-forms-and-adjoints">Proposition 2.4. Bounded forms and adjoints</h3>
+<p>Every sesquilinear form <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> satisfying <span class="math" data-tex="\(|B(x,y)|\le C\|x\|\|y\|\)">\(|B(x,y)|\le C\|x\|\|y\|\)</span> has a unique bounded linear operator <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(B(x,y)=\langle Tx,y\rangle\)">\(B(x,y)=\langle Tx,y\rangle\)</span>, and <span class="math" data-tex="\(\|T\|\le C\)">\(\|T\|\le C\)</span>. If <span class="math" data-tex="\(0\le B(x,x)\le c\|x\|^2\)">\(0\le B(x,x)\le c\|x\|^2\)</span>, the same conclusion holds with a self-adjoint operator <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(0\le T\le cI\)">\(0\le T\le cI\)</span>, and <span class="math" data-tex="\(\|T\|\le c\)">\(\|T\|\le c\)</span>. Here <span class="math" data-tex="\(S\ge0\)">\(S\ge0\)</span> means <span class="math" data-tex="\(\langle Sx,x\rangle\ge0\)">\(\langle Sx,x\rangle\ge0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Every bounded linear map <span class="math" data-tex="\(A:H\to K\)">\(A:H\to K\)</span> between Hilbert spaces has a unique bounded adjoint <span class="math" data-tex="\(A^*:K\to H\)">\(A^*:K\to H\)</span> characterized by
+<span class="math math-display" data-tex="\[
+ \langle Ax,y\rangle_K=\langle x,A^*y\rangle_H.
+ \tag{5}
+\]">\[
+ \langle Ax,y\rangle_K=\langle x,A^*y\rangle_H.
+ \tag{5}
+\]</span>
+It satisfies <span class="math" data-tex="\(\|A^*\|=\|A\|\)">\(\|A^*\|=\|A\|\)</span>, <span class="math" data-tex="\(A^{**}=A\)">\(A^{**}=A\)</span>, <span class="math" data-tex="\((BA)^*=A^*B^*\)">\((BA)^*=A^*B^*\)</span>, and <span class="math" data-tex="\((aA+bB)^*=\bar a A^*+\bar b B^*\)">\((aA+bB)^*=\bar a A^*+\bar b B^*\)</span> whenever the expressions are defined.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the functional <span class="math" data-tex="\(y\mapsto B(x,y)\)">\(y\mapsto B(x,y)\)</span> is bounded and conjugate-linear. Theorem 2.3 gives its representing vector <span class="math" data-tex="\(Tx\)">\(Tx\)</span>, with <span class="math" data-tex="\(\|Tx\|\le C\|x\|\)">\(\|Tx\|\le C\|x\|\)</span>. Uniqueness makes <span class="math" data-tex="\(x\mapsto Tx\)">\(x\mapsto Tx\)</span> linear and also proves uniqueness of <span class="math" data-tex="\(T\)">\(T\)</span>. Under the diagonal bound, Lemma 1.1 gives <span class="math" data-tex="\(|B(x,y)|\le c\|x\|\|y\|\)">\(|B(x,y)|\le c\|x\|\|y\|\)</span>, so the first assertion applies. Hermitian symmetry gives <span class="math" data-tex="\(\langle Tx,y\rangle=\langle x,Ty\rangle\)">\(\langle Tx,y\rangle=\langle x,Ty\rangle\)</span>. The two diagonal inequalities are exactly <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span> and <span class="math" data-tex="\(cI-T\ge0\)">\(cI-T\ge0\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(y\in K\)">\(y\in K\)</span>, the functional <span class="math" data-tex="\(x\mapsto\langle Ax,y\rangle\)">\(x\mapsto\langle Ax,y\rangle\)</span> is bounded and linear, with norm at most <span class="math" data-tex="\(\|A\|\|y\|\)">\(\|A\|\|y\|\)</span>. Theorem 2.3 gives <span class="math" data-tex="\(A^*y\)">\(A^*y\)</span> and the same bound. The conjugation in the second variable, together with uniqueness, makes <span class="math" data-tex="\(A^*\)">\(A^*\)</span> linear. Moreover <span class="math" data-tex="\(\|z\|=\sup_{\|y\|\le1}|\langle z,y\rangle|\)">\(\|z\|=\sup_{\|y\|\le1}|\langle z,y\rangle|\)</span>, by Cauchy–Schwarz and the choice <span class="math" data-tex="\(y=z/\|z\|\)">\(y=z/\|z\|\)</span> for <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \|Ax\|=\sup_{\|y\|\le1}|\langle x,A^*y\rangle|
+ \le\|x\|\|A^*\|,
+\]">\[
+ \|Ax\|=\sup_{\|y\|\le1}|\langle x,A^*y\rangle|
+ \le\|x\|\|A^*\|,
+\]</span>
+which, with the preceding bound, proves equality of the norms. Applying (5) twice proves <span class="math" data-tex="\(A^{**}=A\)">\(A^{**}=A\)</span>. Substitution into (5) proves the product and linear-combination formulas, with uniqueness identifying the adjoints. The identity obtained for the positive form says precisely <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-operator-argument">3. The operator argument</h2>
+<p>Write <span class="math" data-tex="\(\mathcal B(H)\)">\(\mathcal B(H)\)</span> for the bounded linear operators on <span class="math" data-tex="\(H\)">\(H\)</span>, with norm <span class="math" data-tex="\(\|T\|=\sup_{\|x\|\le1}\|Tx\|\)">\(\|T\|=\sup_{\|x\|\le1}\|Tx\|\)</span>. In this section assume <span class="math" data-tex="\(H\ne\{0\}\)">\(H\ne\{0\}\)</span>, so the identity <span class="math" data-tex="\(I\)">\(I\)</span> has norm one.</p>
+<a id="ha-lca-pre-hilbert-proposition-3-1"></a>
+<h3 id="proposition-3-1-the-banach-algebra-of-bounded-operators">Proposition 3.1. The Banach algebra of bounded operators</h3>
+<p>The space <span class="math" data-tex="\(\mathcal B(H)\)">\(\mathcal B(H)\)</span> is a unital Banach algebra with the adjoint operation of Proposition 2.4. It satisfies
+<span class="math math-display" data-tex="\[
+ \|T^*T\|=\|T\|^2.                                      \tag{6}
+\]">\[
+ \|T^*T\|=\|T\|^2.                                      \tag{6}
+\]</span>
+If <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span> belongs to a closed unital subalgebra <span class="math" data-tex="\(A\subseteq\mathcal B(H)\)">\(A\subseteq\mathcal B(H)\)</span>, then its spectral radius in <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\|S\|\)">\(\|S\|\)</span>, provided the norm on <span class="math" data-tex="\(A\)">\(A\)</span> is the operator norm.</p>
+<p><strong>Proof.</strong> The norm axioms follow by applying the vector norm axioms to each unit vector, and <span class="math" data-tex="\(\|STx\|\le\|S\|\|T\|\|x\|\)">\(\|STx\|\le\|S\|\|T\|\|x\|\)</span> gives submultiplicativity. If <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is Cauchy in operator norm, each <span class="math" data-tex="\(T_nx\)">\(T_nx\)</span> is Cauchy in <span class="math" data-tex="\(H\)">\(H\)</span>. Put <span class="math" data-tex="\(Tx=\lim_nT_nx\)">\(Tx=\lim_nT_nx\)</span>. The <span class="math" data-tex="\(T_n\)">\(T_n\)</span> have a common finite norm bound, so passing to limits proves linearity and boundedness of <span class="math" data-tex="\(T\)">\(T\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\|T_n-T_m\|\le\varepsilon\)">\(\|T_n-T_m\|\le\varepsilon\)</span> for <span class="math" data-tex="\(n,m\ge N\)">\(n,m\ge N\)</span>. Letting <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> at each unit vector gives <span class="math" data-tex="\(\|T_n-T\|\le\varepsilon\)">\(\|T_n-T\|\le\varepsilon\)</span>. This proves completeness. A closed subalgebra is complete by the same limit argument.</p>
+<p>One direction of (6) follows from submultiplicativity and <span class="math" data-tex="\(\|T^*\|=\|T\|\)">\(\|T^*\|=\|T\|\)</span>. For the other, <span class="math" data-tex="\(\|Tx\|^2=\langle T^*Tx,x\rangle\le\|T^*T\|\|x\|^2\)">\(\|Tx\|^2=\langle T^*Tx,x\rangle\le\|T^*T\|\|x\|^2\)</span>, by (5) and Lemma 1.1. Take the supremum over unit vectors. For self-adjoint <span class="math" data-tex="\(S\)">\(S\)</span>, (6) gives <span class="math" data-tex="\(\|S^2\|=\|S\|^2\)">\(\|S^2\|=\|S\|^2\)</span>. Every power <span class="math" data-tex="\(S^{2^n}\)">\(S^{2^n}\)</span> is self-adjoint, so iteration gives <span class="math" data-tex="\(\|S^{2^n}\|=\|S\|^{2^n}\)">\(\|S^{2^n}\|=\|S\|^{2^n}\)</span>. The already proved <a href="banach-spectrum.html#ha-lca-pre-banach-theorem-2-2">spectral-radius formula</a>, applied to the Banach algebra <span class="math" data-tex="\(A\)">\(A\)</span>, now gives <span class="math" data-tex="\(r_A(S)=\|S\|\)">\(r_A(S)=\|S\|\)</span> by taking this subsequence of the full radius limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-3-2"></a>
+<h3 id="theorem-3-2-continuous-calculus-for-one-self-adjoint-operator">Theorem 3.2. Continuous calculus for one self-adjoint operator</h3>
+<p>Let <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span>, <span class="math" data-tex="\(M=\|S\|\)">\(M=\|S\|\)</span>, and <span class="math" data-tex="\(A=\overline{\{p(S):p\text{ is a complex polynomial}\}}\)">\(A=\overline{\{p(S):p\text{ is a complex polynomial}\}}\)</span>. There is a nonempty compact set
+<span class="math math-display" data-tex="\[
+ K=\{\chi(S):\chi\in\Delta(A)\}\subseteq[-M,M]
+\]">\[
+ K=\{\chi(S):\chi\in\Delta(A)\}\subseteq[-M,M]
+\]</span>
+such that, for every continuous complex function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span>, a bounded operator <span class="math" data-tex="\(f(S)\in A\)">\(f(S)\in A\)</span> is defined, and
+<span class="math math-display" data-tex="\[
+ \|f(S)\|=\max_{t\in K}|f(t)|.                           \tag{7}
+\]">\[
+ \|f(S)\|=\max_{t\in K}|f(t)|.                           \tag{7}
+\]</span>
+The assignment preserves sums, products, constants and conjugation, sends <span class="math" data-tex="\(t\mapsto t\)">\(t\mapsto t\)</span> to <span class="math" data-tex="\(S\)">\(S\)</span>, and sends nonnegative real functions to positive operators. Every bounded operator commuting with <span class="math" data-tex="\(S\)">\(S\)</span> commutes with every <span class="math" data-tex="\(f(S)\)">\(f(S)\)</span>.</p>
+<p><strong>Proof.</strong> Products and adjoints of polynomials in <span class="math" data-tex="\(S\)">\(S\)</span> are again polynomials in <span class="math" data-tex="\(S\)">\(S\)</span>. The continuity of multiplication and of adjoints shows that <span class="math" data-tex="\(A\)">\(A\)</span> is a commutative closed unital algebra invariant under adjoints. Its character space is nonempty compact Hausdorff by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-theorem-4-2">character-space theorem</a>, and its characters are contractive by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-theorem-3-3">character and spectrum theorem</a>.</p>
+<p>We first show <span class="math" data-tex="\(\chi(S)\)">\(\chi(S)\)</span> is real. The series
+<span class="math math-display" data-tex="\[
+ E(t)=\sum_{n=0}^\infty (itS)^n/n!
+\]">\[
+ E(t)=\sum_{n=0}^\infty (itS)^n/n!
+\]</span>
+converges in operator norm. The scalar majorant <span class="math" data-tex="\(\sum(|t|M)^n/n!\)">\(\sum(|t|M)^n/n!\)</span> converges, and absolute convergence permits the Cauchy product: its tails are bounded by the corresponding tails of the product of the two scalar majorants. Grouping by total degree and using the finite binomial formula gives <span class="math" data-tex="\(E(t)E(u)=E(t+u)\)">\(E(t)E(u)=E(t+u)\)</span>. Termwise adjoints give <span class="math" data-tex="\(E(t)^*=E(-t)\)">\(E(t)^*=E(-t)\)</span>. Consequently <span class="math" data-tex="\(E(t)^*E(t)=I\)">\(E(t)^*E(t)=I\)</span>, and (6) gives <span class="math" data-tex="\(\|E(t)\|=1\)">\(\|E(t)\|=1\)</span>. A character therefore satisfies
+<span class="math math-display" data-tex="\[
+ |e^{it\chi(S)}|=|\chi(E(t))|\le1\qquad(t\in\mathbb R).
+\]">\[
+ |e^{it\chi(S)}|=|\chi(E(t))|\le1\qquad(t\in\mathbb R).
+\]</span>
+The scalar exponential identities are proved in the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-1-3">exponential-series lemma</a>. Explicitly, writing <span class="math" data-tex="\(\chi(S)=a+ib\)">\(\chi(S)=a+ib\)</span> gives <span class="math" data-tex="\(|e^{it(a+ib)}|=e^{-tb}\)">\(|e^{it(a+ib)}|=e^{-tb}\)</span>; for a positive real number <span class="math" data-tex="\(r\)">\(r\)</span>, its series gives <span class="math" data-tex="\(e^r&gt;1\)">\(e^r&gt;1\)</span>. If <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, choose <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(-tb&gt;0\)">\(-tb&gt;0\)</span>, a contradiction. Thus <span class="math" data-tex="\(\chi(S)\in\mathbb R\)">\(\chi(S)\in\mathbb R\)</span>, and contractivity bounds it by <span class="math" data-tex="\(M\)">\(M\)</span>. The coordinate map <span class="math" data-tex="\(\chi\mapsto\chi(S)\)">\(\chi\mapsto\chi(S)\)</span> is continuous, so <span class="math" data-tex="\(K\)">\(K\)</span> is compact and nonempty.</p>
+<p>For <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, approximating it by polynomials in <span class="math" data-tex="\(S\)">\(S\)</span> shows <span class="math" data-tex="\(\chi(b^*)=\overline{\chi(b)}\)">\(\chi(b^*)=\overline{\chi(b)}\)</span>: the identity holds for polynomials because <span class="math" data-tex="\(\chi(S)\)">\(\chi(S)\)</span> is real, and contractivity passes it to limits. The element <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> is self-adjoint. The spectrum theorem for commutative Banach algebras and Proposition 3.1 yield
+<span class="math math-display" data-tex="\[
+ \sup_{\chi\in\Delta(A)}|\chi(b)|^2
+ =r_A(b^*b)=\|b^*b\|=\|b\|^2.
+ \tag{8}
+\]">\[
+ \sup_{\chi\in\Delta(A)}|\chi(b)|^2
+ =r_A(b^*b)=\|b^*b\|=\|b\|^2.
+ \tag{8}
+\]</span>
+In particular, <span class="math" data-tex="\(\|p(S)\|=\max_K|p|\)">\(\|p(S)\|=\max_K|p|\)</span>.</p>
+<p>If <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>, the earlier <a href="uniform-approximation.html#ha-lca-pre-approx-lemma-1-1">Bernstein approximation proof</a>, after affine rescaling of the interval and separate approximation of real and imaginary parts, supplies polynomials <span class="math" data-tex="\(p_n\)">\(p_n\)</span> converging uniformly to <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span>. The last norm identity makes <span class="math" data-tex="\(p_n(S)\)">\(p_n(S)\)</span> Cauchy. Define <span class="math" data-tex="\(f(S)\)">\(f(S)\)</span> as its limit. The same identity proves independence of the polynomials and (7). Limits of sums, products and adjoints prove the asserted algebraic identities. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, then <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, <span class="math" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>, and define <span class="math" data-tex="\(f(S)=f(0)I\)">\(f(S)=f(0)I\)</span>, which gives the same conclusions.</p>
+<p>If <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span>, its continuous square root <span class="math" data-tex="\(g=\sqrt f\)">\(g=\sqrt f\)</span> is real and <span class="math" data-tex="\(f(S)=g(S)^*g(S)\)">\(f(S)=g(S)^*g(S)\)</span>, which is positive by (5). Continuity of the square root on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> follows, for example, from <span class="math" data-tex="\(|\sqrt a-\sqrt b|\le\sqrt{|a-b|}\)">\(|\sqrt a-\sqrt b|\le\sqrt{|a-b|}\)</span>, obtained by squaring and ordering <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Finally, an operator commuting with <span class="math" data-tex="\(S\)">\(S\)</span> commutes with each polynomial and hence with its operator-norm limit <span class="math" data-tex="\(f(S)\)">\(f(S)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-proposition-3-3"></a>
+<h3 id="proposition-3-3-positive-square-roots-and-separation-of-a-nonscalar-operator">Proposition 3.3. Positive square roots and separation of a nonscalar operator</h3>
+<p>Every bounded positive operator <span class="math" data-tex="\(S\)">\(S\)</span> has a unique bounded positive square root <span class="math" data-tex="\(R\)">\(R\)</span>, with <span class="math" data-tex="\(R^2=S\)">\(R^2=S\)</span>. This root commutes with every bounded operator commuting with <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>If a bounded self-adjoint <span class="math" data-tex="\(S\)">\(S\)</span> is not a scalar multiple of <span class="math" data-tex="\(I\)">\(I\)</span>, there are nonzero positive operators <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, obtained by the calculus in Theorem 3.2, such that <span class="math" data-tex="\(FG=0\)">\(FG=0\)</span>. Their closed ranges are nonzero orthogonal proper closed subspaces, each preserved by every bounded operator commuting with <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> Positivity implies self-adjointness: apply Lemma 1.1 to <span class="math" data-tex="\(B(x,y)=\langle Sx,y\rangle\)">\(B(x,y)=\langle Sx,y\rangle\)</span>, and then use (5). For this <span class="math" data-tex="\(S\)">\(S\)</span>, the set <span class="math" data-tex="\(K\)">\(K\)</span> of Theorem 3.2 is contained in <span class="math" data-tex="\([0,M]\)">\([0,M]\)</span>. Indeed, suppose <span class="math" data-tex="\(\lambda\in K\)">\(\lambda\in K\)</span> and <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>. Put <span class="math" data-tex="\(\varepsilon=-\lambda/2&gt;0\)">\(\varepsilon=-\lambda/2&gt;0\)</span>, <span class="math" data-tex="\(f(t)=\max(0,-\varepsilon-t)\)">\(f(t)=\max(0,-\varepsilon-t)\)</span>, and <span class="math" data-tex="\(A=f(S)\)">\(A=f(S)\)</span>. Since <span class="math" data-tex="\(f(\lambda)&gt;0\)">\(f(\lambda)&gt;0\)</span>, (7) gives <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. The function <span class="math" data-tex="\(h(t)=(-\varepsilon-t)f(t)^2\)">\(h(t)=(-\varepsilon-t)f(t)^2\)</span> is nonnegative on the whole interval. The calculus gives
+<span class="math math-display" data-tex="\[
+ 0\le\langle h(S)x,x\rangle
+ =-\varepsilon\|Ax\|^2-\langle S Ax,Ax\rangle.
+\]">\[
+ 0\le\langle h(S)x,x\rangle
+ =-\varepsilon\|Ax\|^2-\langle S Ax,Ax\rangle.
+\]</span>
+Positivity of <span class="math" data-tex="\(S\)">\(S\)</span> forces <span class="math" data-tex="\(Ax=0\)">\(Ax=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, a contradiction. Now apply the calculus to <span class="math" data-tex="\(r(t)=\sqrt{\max(t,0)}\)">\(r(t)=\sqrt{\max(t,0)}\)</span>. The operator <span class="math" data-tex="\(R=r(S)\)">\(R=r(S)\)</span> is positive, and <span class="math" data-tex="\(r(t)^2=t\)">\(r(t)^2=t\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, so (7) gives <span class="math" data-tex="\(R^2=S\)">\(R^2=S\)</span>. The commutation claim follows from Theorem 3.2.</p>
+<p>For uniqueness let <span class="math" data-tex="\(Q\ge0\)">\(Q\ge0\)</span>, <span class="math" data-tex="\(Q^2=S\)">\(Q^2=S\)</span>. Then <span class="math" data-tex="\(Q\)">\(Q\)</span> commutes with <span class="math" data-tex="\(S\)">\(S\)</span>, and hence with <span class="math" data-tex="\(R\)">\(R\)</span>. Set <span class="math" data-tex="\(C=Q-R\)">\(C=Q-R\)</span>, <span class="math" data-tex="\(D=Q+R\)">\(D=Q+R\)</span>. These are self-adjoint, <span class="math" data-tex="\(D\ge0\)">\(D\ge0\)</span>, and <span class="math" data-tex="\(CD=0\)">\(CD=0\)</span>. If <span class="math" data-tex="\(Dx=0\)">\(Dx=0\)</span>, then <span class="math" data-tex="\(0=\langle Qx,x\rangle+\langle Rx,x\rangle\)">\(0=\langle Qx,x\rangle+\langle Rx,x\rangle\)</span>, so both nonnegative terms vanish. Cauchy–Schwarz for each positive form, from Lemma 1.1, then gives <span class="math" data-tex="\(Qx=Rx=0\)">\(Qx=Rx=0\)</span>, hence <span class="math" data-tex="\(Cx=0\)">\(Cx=0\)</span>. Thus <span class="math" data-tex="\(C\)">\(C\)</span> vanishes both on <span class="math" data-tex="\(\ker D\)">\(\ker D\)</span> and on <span class="math" data-tex="\(\overline{\operatorname{ran}D}\)">\(\overline{\operatorname{ran}D}\)</span>. By (5), <span class="math" data-tex="\((\operatorname{ran}D)^\perp=\ker D\)">\((\operatorname{ran}D)^\perp=\ker D\)</span>; Corollary 2.2 therefore decomposes <span class="math" data-tex="\(H\)">\(H\)</span> as the orthogonal sum of these two spaces. Hence <span class="math" data-tex="\(C=0\)">\(C=0\)</span>.</p>
+<p>For the second assertion, if <span class="math" data-tex="\(K\)">\(K\)</span> were the singleton <span class="math" data-tex="\(\{c\}\)">\(\{c\}\)</span>, (7) applied to <span class="math" data-tex="\(t-c\)">\(t-c\)</span> would give <span class="math" data-tex="\(S=cI\)">\(S=cI\)</span>. Thus choose <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(c\in(a,b)\)">\(c\in(a,b)\)</span>. Set
+<span class="math math-display" data-tex="\[
+ F=(\max(c-t,0))(S),\qquad G=(\max(t-c,0))(S).
+\]">\[
+ F=(\max(c-t,0))(S),\qquad G=(\max(t-c,0))(S).
+\]</span>
+They are positive and nonzero by (7), and their product is zero. For any <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, (5) gives <span class="math" data-tex="\(\langle Fx,Gy\rangle=\langle GFx,y\rangle=0\)">\(\langle Fx,Gy\rangle=\langle GFx,y\rangle=0\)</span>; continuity extends this orthogonality to the two closed ranges. Neither range closure can be all of <span class="math" data-tex="\(H\)">\(H\)</span>, since the other is nonzero. An operator commuting with <span class="math" data-tex="\(S\)">\(S\)</span> commutes with <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, so it maps each range into itself and, by continuity, preserves each closure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-arbitrary-orthogonal-sums">4. Arbitrary orthogonal sums</h2>
+<p>For nonnegative real numbers <span class="math" data-tex="\((a_i)_{i\in I}\)">\((a_i)_{i\in I}\)</span>, define <span class="math" data-tex="\(\sum_{i\in I}a_i\)">\(\sum_{i\in I}a_i\)</span> as the supremum of their finite subsums, with value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> allowed. For vectors <span class="math" data-tex="\(x_i\)">\(x_i\)</span> in a normed space, <span class="math" data-tex="\(\sum_{i\in I}x_i=x\)">\(\sum_{i\in I}x_i=x\)</span> means that the finite subsums converge to <span class="math" data-tex="\(x\)">\(x\)</span>, directed by inclusion of their finite index sets.</p>
+<a id="ha-lca-pre-hilbert-lemma-4-1"></a>
+<h3 id="lemma-4-1-summability-of-an-orthogonal-family">Lemma 4.1. Summability of an orthogonal family</h3>
+<p>If <span class="math" data-tex="\(\sum_i a_i&lt;\infty\)">\(\sum_i a_i&lt;\infty\)</span>, at most countably many <span class="math" data-tex="\(a_i\)">\(a_i\)</span> are nonzero, and the sum outside a suitable finite subset is as small as desired. If <span class="math" data-tex="\((x_i)\)">\((x_i)\)</span> is an orthogonal family of vectors in a Hilbert space and <span class="math" data-tex="\(\sum_i\|x_i\|^2&lt;\infty\)">\(\sum_i\|x_i\|^2&lt;\infty\)</span>, then <span class="math" data-tex="\(\sum_i x_i\)">\(\sum_i x_i\)</span> exists and
+<span class="math math-display" data-tex="\[
+ \left\|\sum_i x_i\right\|^2=\sum_i\|x_i\|^2.
+ \tag{9}
+\]">\[
+ \left\|\sum_i x_i\right\|^2=\sum_i\|x_i\|^2.
+ \tag{9}
+\]</span>
+For a finite subset <span class="math" data-tex="\(F\subseteq I\)">\(F\subseteq I\)</span>, the squared norm of the omitted sum is <span class="math" data-tex="\(\sum_{i\notin F}\|x_i\|^2\)">\(\sum_{i\notin F}\|x_i\|^2\)</span>.</p>
+<p><strong>Proof.</strong> If the finite-subsums bound is <span class="math" data-tex="\(A\)">\(A\)</span>, the set <span class="math" data-tex="\(\{i:a_i\ge1/n\}\)">\(\{i:a_i\ge1/n\}\)</span> is finite: a finite subset with more than <span class="math" data-tex="\(nA\)">\(nA\)</span> members would contradict the bound. Their union contains every index with <span class="math" data-tex="\(a_i&gt;0\)">\(a_i&gt;0\)</span>. For any <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the definition of the supremum supplies a finite <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\sum_{i\in F}a_i&gt;A-\delta\)">\(\sum_{i\in F}a_i&gt;A-\delta\)</span>. Every finite subsum outside <span class="math" data-tex="\(F\)">\(F\)</span> is then at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, so its supremum is at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p>For the vector assertion, all nonzero vectors lie in the countable set just found for <span class="math" data-tex="\(a_i=\|x_i\|^2\)">\(a_i=\|x_i\|^2\)</span>. Enumerate it, or use a finite enumeration if it is finite. Orthogonality gives <span class="math" data-tex="\(\|\sum_{i\in E}x_i\|^2=\sum_{i\in E}\|x_i\|^2\)">\(\|\sum_{i\in E}x_i\|^2=\sum_{i\in E}\|x_i\|^2\)</span> for finite <span class="math" data-tex="\(E\)">\(E\)</span>, by expansion. The tail bound makes the enumerated partial sums Cauchy, hence convergent. For any finite <span class="math" data-tex="\(F\)">\(F\)</span>, subtract its sum and pass to the limit of the remaining enumerated sums; continuity of the norm gives the claimed tail identity. The same tail bound proves convergence of all finite subsums directed by inclusion, independently of the enumeration. Taking <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span> gives (9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-4-2"></a>
+<h3 id="theorem-4-2-orthogonal-expansions-and-hilbert-bases">Theorem 4.2. Orthogonal expansions and Hilbert bases</h3>
+<p>Let <span class="math" data-tex="\((e_i)_{i\in I}\)">\((e_i)_{i\in I}\)</span> be an orthonormal family in <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(M=\overline{\operatorname{span}\{e_i:i\in I\}}\)">\(M=\overline{\operatorname{span}\{e_i:i\in I\}}\)</span>. For <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, put <span class="math" data-tex="\(c_i=\langle x,e_i\rangle\)">\(c_i=\langle x,e_i\rangle\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \sum_i|c_i|^2\le\|x\|^2,\qquad
+ P_Mx=\sum_i c_i e_i,\qquad
+ \|P_Mx\|^2=\sum_i|c_i|^2.
+ \tag{10}
+\]">\[
+ \sum_i|c_i|^2\le\|x\|^2,\qquad
+ P_Mx=\sum_i c_i e_i,\qquad
+ \|P_Mx\|^2=\sum_i|c_i|^2.
+ \tag{10}
+\]</span>
+Every orthonormal set extends to one whose closed linear span is <span class="math" data-tex="\(H\)">\(H\)</span>. Such a set is a Hilbert basis. For a Hilbert basis and <span class="math" data-tex="\(x,y\in H\)">\(x,y\in H\)</span>,
+<span class="math math-display" data-tex="\[
+ x=\sum_i\langle x,e_i\rangle e_i,\qquad
+ \langle x,y\rangle=\sum_i\langle x,e_i\rangle
+                              \overline{\langle y,e_i\rangle}.
+ \tag{11}
+\]">\[
+ x=\sum_i\langle x,e_i\rangle e_i,\qquad
+ \langle x,y\rangle=\sum_i\langle x,e_i\rangle
+                              \overline{\langle y,e_i\rangle}.
+ \tag{11}
+\]</span>
+For an orthogonal family of nonzero vectors <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, the corresponding norm sum has weights <span class="math" data-tex="\(\|u_i\|^2\)">\(\|u_i\|^2\)</span>: if <span class="math" data-tex="\(d_i=\langle x,u_i\rangle/\|u_i\|^2\)">\(d_i=\langle x,u_i\rangle/\|u_i\|^2\)</span>, then
+<span class="math math-display" data-tex="\[
+ P_Mx=\sum_i d_i u_i,\qquad
+ \|P_Mx\|^2=\sum_i |d_i|^2\|u_i\|^2.                    \tag{12}
+\]">\[
+ P_Mx=\sum_i d_i u_i,\qquad
+ \|P_Mx\|^2=\sum_i |d_i|^2\|u_i\|^2.                    \tag{12}
+\]</span></p>
+<p><strong>Proof.</strong> For finite <span class="math" data-tex="\(F\)">\(F\)</span>, let <span class="math" data-tex="\(s_F=\sum_{i\in F}c_i e_i\)">\(s_F=\sum_{i\in F}c_i e_i\)</span>. The vector <span class="math" data-tex="\(x-s_F\)">\(x-s_F\)</span> is orthogonal to every <span class="math" data-tex="\(e_i\)">\(e_i\)</span> with <span class="math" data-tex="\(i\in F\)">\(i\in F\)</span>, by direct evaluation of its inner products. Thus
+<span class="math math-display" data-tex="\[
+ \|x\|^2=\|x-s_F\|^2+\sum_{i\in F}|c_i|^2.
+\]">\[
+ \|x\|^2=\|x-s_F\|^2+\sum_{i\in F}|c_i|^2.
+\]</span>
+Taking the supremum gives the first inequality in (10). Lemma 4.1 supplies <span class="math" data-tex="\(s=\sum_i c_i e_i\)">\(s=\sum_i c_i e_i\)</span>, lying in <span class="math" data-tex="\(M\)">\(M\)</span>. For each fixed <span class="math" data-tex="\(j\)">\(j\)</span>, all sufficiently large finite index sets include <span class="math" data-tex="\(j\)">\(j\)</span>, so continuity gives <span class="math" data-tex="\(\langle x-s,e_j\rangle=0\)">\(\langle x-s,e_j\rangle=0\)</span>. Hence <span class="math" data-tex="\(x-s\in M^\perp\)">\(x-s\in M^\perp\)</span>, proving <span class="math" data-tex="\(s=P_Mx\)">\(s=P_Mx\)</span> and the last equality in (10).</p>
+<p>Apply the maximal principle to the set of orthonormal subsets containing the given set, ordered by inclusion. A chain union is again an orthonormal set, since any two of its vectors belong together to some member of the chain. A maximal set therefore exists. If its closed span were proper, Corollary 2.2 would give a nonzero orthogonal vector; after normalization it could be added, contradicting maximality. For this basis <span class="math" data-tex="\(P_M=I\)">\(P_M=I\)</span>, giving the first formula in (11). The series in the second is absolutely convergent: finite-dimensional Cauchy–Schwarz, proved by Lemma 1.1 on <span class="math" data-tex="\(\mathbb C^F\)">\(\mathbb C^F\)</span>, bounds every finite subsum of its absolute values by <span class="math" data-tex="\(\|x\|\|y\|\)">\(\|x\|\|y\|\)</span>. Lemma 4.1 applied to these nonnegative absolute values gives countable support and arbitrarily small absolute tails. The triangle inequality bounds the absolute value of any scalar tail by its absolute sum, so the enumerated scalar series is Cauchy in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and all finite subsums converge to the same limit. Passing to limits of the finite expansions gives the identity. Finally put <span class="math" data-tex="\(e_i=u_i/\|u_i\|\)">\(e_i=u_i/\|u_i\|\)</span> in (10); substitution gives (12), including its weights. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-4-3"></a>
+<h3 id="theorem-4-3-hilbert-direct-sums">Theorem 4.3. Hilbert direct sums</h3>
+<p>For any family of Hilbert spaces <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, define
+<span class="math math-display" data-tex="\[
+ \bigoplus_{i\in I}H_i
+ =\{(x_i):x_i\in H_i,\ \sum_i\|x_i\|^2&lt;\infty\},\qquad
+ \langle x,y\rangle=\sum_i\langle x_i,y_i\rangle.
+ \tag{13}
+\]">\[
+ \bigoplus_{i\in I}H_i
+ =\{(x_i):x_i\in H_i,\ \sum_i\|x_i\|^2&lt;\infty\},\qquad
+ \langle x,y\rangle=\sum_i\langle x_i,y_i\rangle.
+ \tag{13}
+\]</span>
+This is a Hilbert space, and finite-support vectors are dense. If <span class="math" data-tex="\(H_i\)">\(H_i\)</span> are mutually orthogonal closed subspaces of <span class="math" data-tex="\(H\)">\(H\)</span>, their external direct sum maps isometrically onto <span class="math" data-tex="\(\overline{\operatorname{span}\bigcup_iH_i}\)">\(\overline{\operatorname{span}\bigcup_iH_i}\)</span> by <span class="math" data-tex="\((x_i)\mapsto\sum_i x_i\)">\((x_i)\mapsto\sum_i x_i\)</span>. In particular, a Hilbert basis identifies <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(\ell^2(I)=\bigoplus_{i\in I}\mathbb C\)">\(\ell^2(I)=\bigoplus_{i\in I}\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> The inequality <span class="math" data-tex="\(\|x_i+y_i\|^2\le2\|x_i\|^2+2\|y_i\|^2\)">\(\|x_i+y_i\|^2\le2\|x_i\|^2+2\|y_i\|^2\)</span> proves closure under addition; scalar multiplication is immediate. Cauchy–Schwarz in each coordinate and then for finite scalar families gives
+<span class="math math-display" data-tex="\[
+ \sum_{i\in F}|\langle x_i,y_i\rangle|
+ \le\left(\sum_{i\in F}\|x_i\|^2\right)^{1/2}
+       \left(\sum_{i\in F}\|y_i\|^2\right)^{1/2}
+ \le\|x\|\|y\|.
+\]">\[
+ \sum_{i\in F}|\langle x_i,y_i\rangle|
+ \le\left(\sum_{i\in F}\|x_i\|^2\right)^{1/2}
+       \left(\sum_{i\in F}\|y_i\|^2\right)^{1/2}
+ \le\|x\|\|y\|.
+\]</span>
+The scalar absolute-summability argument in Theorem 4.2 therefore defines (13) independently of ordering. Sesquilinearity and positive definiteness follow coordinatewise.</p>
+<p>Let <span class="math" data-tex="\(x^{(n)}\)">\(x^{(n)}\)</span> be Cauchy in the proposed norm. Each coordinate is Cauchy, since <span class="math" data-tex="\(\|x_i^{(n)}-x_i^{(m)}\|\le\|x^{(n)}-x^{(m)}\|\)">\(\|x_i^{(n)}-x_i^{(m)}\|\le\|x^{(n)}-x^{(m)}\|\)</span>, and hence has a limit <span class="math" data-tex="\(x_i\in H_i\)">\(x_i\in H_i\)</span>. For fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(\|x^{(n)}-x^{(m)}\|\le\varepsilon\)">\(\|x^{(n)}-x^{(m)}\|\le\varepsilon\)</span> for <span class="math" data-tex="\(n,m\ge N\)">\(n,m\ge N\)</span>. For any finite <span class="math" data-tex="\(F\)">\(F\)</span>, pass to the coordinate limits as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span>, obtaining
+<span class="math math-display" data-tex="\[
+ \sum_{i\in F}\|x_i^{(n)}-x_i\|^2\le\varepsilon^2
+ \qquad(n\ge N).
+\]">\[
+ \sum_{i\in F}\|x_i^{(n)}-x_i\|^2\le\varepsilon^2
+ \qquad(n\ge N).
+\]</span>
+Taking the supremum over finite <span class="math" data-tex="\(F\)">\(F\)</span> shows <span class="math" data-tex="\(x-x^{(n)}\)">\(x-x^{(n)}\)</span> belongs to the direct sum and has norm at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Thus <span class="math" data-tex="\(x\)">\(x\)</span> also belongs to the direct sum and <span class="math" data-tex="\(x^{(n)}\to x\)">\(x^{(n)}\to x\)</span>. This proves completeness. The finite-tail estimate in Lemma 4.1 proves density of finite-support vectors.</p>
+<p>For internal orthogonal subspaces, Lemma 4.1 defines the summation map and gives its isometry. It is linear by passage from finite sums to limits. Its range contains all finite sums of subspace vectors and is closed by completeness, as proved in Theorem 1.2, so the range is exactly the indicated closed span. Taking one-dimensional spaces generated by a Hilbert basis gives the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-weak-compactness">5. Weak compactness</h2>
+<p>The weak topology on <span class="math" data-tex="\(H\)">\(H\)</span> is the topology of pointwise convergence against its bounded linear functionals. By Theorem 2.3, it is equivalently generated by the coordinates <span class="math" data-tex="\(v\mapsto\langle v,x\rangle\)">\(v\mapsto\langle v,x\rangle\)</span>, <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, or their complex conjugates.</p>
+<a id="ha-lca-pre-hilbert-theorem-5-1"></a>
+<h3 id="theorem-5-1-weak-compactness-of-a-hilbert-ball">Theorem 5.1. Weak compactness of a Hilbert ball</h3>
+<p>For <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, the ball <span class="math" data-tex="\(B_R=\{v:\|v\|\le R\}\)">\(B_R=\{v:\|v\|\le R\}\)</span> is compact Hausdorff for the weak topology. The norm is weakly lower semicontinuous. Every net in <span class="math" data-tex="\(B_R\)">\(B_R\)</span> has a weakly convergent subnet with limit in <span class="math" data-tex="\(B_R\)">\(B_R\)</span>.</p>
+<p><strong>Proof.</strong> Map <span class="math" data-tex="\(v\in B_R\)">\(v\in B_R\)</span> to <span class="math" data-tex="\((\langle x,v\rangle)_{x\in H}\)">\((\langle x,v\rangle)_{x\in H}\)</span> in
+<span class="math math-display" data-tex="\[
+ P=\prod_{x\in H}\{z\in\mathbb C:|z|\le R\|x\|\}.
+\]">\[
+ P=\prod_{x\in H}\{z\in\mathbb C:|z|\le R\|x\|\}.
+\]</span>
+Each disk is compact by the earlier <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-1-1">finite-dimensional compactness proof</a>, and <span class="math" data-tex="\(P\)">\(P\)</span> is compact Hausdorff by <a href="banach-spectrum.html#ha-lca-pre-banach-lemma-4-1">arbitrary product compactness</a>. The image consists exactly of the points <span class="math" data-tex="\(z\in P\)">\(z\in P\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ z_{ax+by}=a z_x+b z_y \qquad(a,b\in\mathbb C,\ x,y\in H).
+\]">\[
+ z_{ax+by}=a z_x+b z_y \qquad(a,b\in\mathbb C,\ x,y\in H).
+\]</span>
+Necessity is sesquilinearity. Conversely these equations define a linear functional of norm at most <span class="math" data-tex="\(R\)">\(R\)</span>; Theorem 2.3 represents it as <span class="math" data-tex="\(x\mapsto\langle x,v\rangle\)">\(x\mapsto\langle x,v\rangle\)</span> with <span class="math" data-tex="\(\|v\|\le R\)">\(\|v\|\le R\)</span>. Each equation is closed, so the image is closed in <span class="math" data-tex="\(P\)">\(P\)</span> and compact. The map is injective by uniqueness in Theorem 2.3, and the definition of the weak topology makes it a homeomorphism onto its image. This proves compactness and the Hausdorff property. The same argument, or the identity
+<span class="math math-display" data-tex="\[
+ \|v\|=\sup_{\|x\|\le1}|\langle v,x\rangle|,
+\]">\[
+ \|v\|=\sup_{\|x\|\le1}|\langle v,x\rangle|,
+\]</span>
+shows that every norm sublevel set is weakly closed, which is lower semicontinuity.</p>
+<p>For completeness, the net conclusion follows directly from compactness as follows. Let <span class="math" data-tex="\((v_d)_{d\in D}\)">\((v_d)_{d\in D}\)</span> be a net in a compact space <span class="math" data-tex="\(K\)">\(K\)</span>. The closures of the tails <span class="math" data-tex="\(\{v_e:e\ge d\}\)">\(\{v_e:e\ge d\}\)</span> have the finite-intersection property: any finite family contains the tail for a common upper bound of its indices. Their intersection contains a point <span class="math" data-tex="\(v\)">\(v\)</span>, by compactness. Therefore every neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(v\)">\(v\)</span> meets every tail. Form the directed set of triples <span class="math" data-tex="\((d,U,e)\)">\((d,U,e)\)</span> with <span class="math" data-tex="\(e\ge d\)">\(e\ge d\)</span> and <span class="math" data-tex="\(v_e\in U\)">\(v_e\in U\)</span>, ordering triples by increase of both <span class="math" data-tex="\(d,e\)">\(d,e\)</span> and decrease of <span class="math" data-tex="\(U\)">\(U\)</span>. Given two triples, take an index larger than all their indices, intersect their neighbourhoods and choose a later <span class="math" data-tex="\(e\)">\(e\)</span> with <span class="math" data-tex="\(v_e\)">\(v_e\)</span> in that intersection. This gives an upper bound. The map <span class="math" data-tex="\((d,U,e)\mapsto e\)">\((d,U,e)\mapsto e\)</span> is order-preserving and cofinal; the resulting subnet converges to <span class="math" data-tex="\(v\)">\(v\)</span>, because later neighbourhoods lie inside any prescribed one. Apply this construction to <span class="math" data-tex="\(K=B_R\)">\(K=B_R\)</span> with its weak topology. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-l-2-on-a-general-measure-space">6. <span class="math" data-tex="\(L^2\)">\(L^2\)</span> on a general measure space</h2>
+<a id="ha-lca-pre-hilbert-theorem-6-1"></a>
+<h3 id="theorem-6-1-the-hilbert-space-l-2">Theorem 6.1. The Hilbert space <span class="math" data-tex="\(L^2\)">\(L^2\)</span></h3>
+<p>For any measure space <span class="math" data-tex="\((X,\Sigma,\mu)\)">\((X,\Sigma,\mu)\)</span>, the measurable complex functions with <span class="math" data-tex="\(\int|f|^2\,d\mu&lt;\infty\)">\(\int|f|^2\,d\mu&lt;\infty\)</span>, modulo almost-everywhere equality, form a Hilbert space with
+<span class="math math-display" data-tex="\[
+ \langle f,g\rangle=\int f\bar g\,d\mu,\qquad
+ \|f\|_2=\left(\int|f|^2\,d\mu\right)^{1/2}.
+ \tag{14}
+\]">\[
+ \langle f,g\rangle=\int f\bar g\,d\mu,\qquad
+ \|f\|_2=\left(\int|f|^2\,d\mu\right)^{1/2}.
+ \tag{14}
+\]</span>
+No sigma-finiteness is required. If <span class="math" data-tex="\(\sum_n\|g_n\|_2&lt;\infty\)">\(\sum_n\|g_n\|_2&lt;\infty\)</span>, then <span class="math" data-tex="\(\sum_n|g_n(x)|&lt;\infty\)">\(\sum_n|g_n(x)|&lt;\infty\)</span> almost everywhere and the resulting series converges in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, with norm at most <span class="math" data-tex="\(\sum_n\|g_n\|_2\)">\(\sum_n\|g_n\|_2\)</span>.</p>
+<p><strong>Proof.</strong> The pointwise inequality <span class="math" data-tex="\(2|f\bar g|\le|f|^2+|g|^2\)">\(2|f\bar g|\le|f|^2+|g|^2\)</span> makes the product integrable, using the <a href="integration-and-l1.html#ha-lca-pre-integral-theorem-1-2">integral and null-set properties</a> and <a href="integration-and-l1.html#ha-lca-pre-integral-lemma-2-1">complex integral inequalities</a>. Formula (14) is therefore well defined on classes and is sesquilinear. Its diagonal is nonnegative and vanishes exactly for the zero class by <a href="integration-and-l1.html#ha-lca-pre-integral-corollary-1-3">the zero-integral criterion</a>. The bound <span class="math" data-tex="\(|f+g|^2\le2|f|^2+2|g|^2\)">\(|f+g|^2\le2|f|^2+2|g|^2\)</span> proves closure under addition. Lemma 1.1 now proves Cauchy–Schwarz and the norm triangle inequality for <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>Choose finite measurable representatives of the <span class="math" data-tex="\(g_n\)">\(g_n\)</span>, modifying them on null sets if necessary; <a href="integration-and-l1.html#ha-lca-pre-integral-lemma-1-1">measurable operations</a> justify all the following functions. Put <span class="math" data-tex="\(h_N=\sum_{n\le N}|g_n|\)">\(h_N=\sum_{n\le N}|g_n|\)</span>. The triangle inequality gives
+<span class="math math-display" data-tex="\[
+ \int h_N^2\,d\mu\le\left(\sum_{n\le N}\|g_n\|_2\right)^2.
+\]">\[
+ \int h_N^2\,d\mu\le\left(\sum_{n\le N}\|g_n\|_2\right)^2.
+\]</span>
+Since <span class="math" data-tex="\(h_N^2\)">\(h_N^2\)</span> increases, the proved <a href="integration-and-l1.html#ha-lca-pre-integral-theorem-1-2">monotone convergence theorem</a> gives
+<span class="math math-display" data-tex="\[
+ \int\left(\sum_n|g_n|\right)^2\,d\mu
+ \le\left(\sum_n\|g_n\|_2\right)^2&lt;\infty.
+ \tag{15}
+\]">\[
+ \int\left(\sum_n|g_n|\right)^2\,d\mu
+ \le\left(\sum_n\|g_n\|_2\right)^2&lt;\infty.
+ \tag{15}
+\]</span>
+The sum of absolute values is finite almost everywhere by the same zero/infinity integral criteria. Define <span class="math" data-tex="\(g=\sum_n g_n\)">\(g=\sum_n g_n\)</span> where the series converges and <span class="math" data-tex="\(g=0\)">\(g=0\)</span> on the exceptional measurable null set. It is measurable by the earlier measurable-limit result and belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by (15). Applied to the tail, the same estimate gives
+<span class="math math-display" data-tex="\[
+ \left\|g-\sum_{n\le N}g_n\right\|_2
+ \le\sum_{n&gt;N}\|g_n\|_2\longrightarrow0.
+\]">\[
+ \left\|g-\sum_{n\le N}g_n\right\|_2
+ \le\sum_{n&gt;N}\|g_n\|_2\longrightarrow0.
+\]</span></p>
+<p>Finally let <span class="math" data-tex="\((f_n)\)">\((f_n)\)</span> be an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-Cauchy sequence. Choose a subsequence <span class="math" data-tex="\(f_{n_k}\)">\(f_{n_k}\)</span> such that <span class="math" data-tex="\(\|f_{n_{k+1}}-f_{n_k}\|_2\le2^{-k}\)">\(\|f_{n_{k+1}}-f_{n_k}\|_2\le2^{-k}\)</span>. Such a subsequence is obtained recursively from the Cauchy property with <span class="math" data-tex="\(n_{k+1}&gt;n_k\)">\(n_{k+1}&gt;n_k\)</span>. The series assertion applied to its differences gives an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit of the subsequence after adding <span class="math" data-tex="\(f_{n_1}\)">\(f_{n_1}\)</span>. The triangle inequality and the Cauchy property show that the whole sequence has that limit. This proves completeness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-proposition-6-2"></a>
+<h3 id="proposition-6-2-density-and-representatives">Proposition 6.2. Density and representatives</h3>
+<p>On any measure space, finite linear combinations of indicators of finite-measure sets are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>.</p>
+<p>Suppose additionally that <span class="math" data-tex="\(X\)">\(X\)</span> is locally compact Hausdorff, <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> contains its Borel sets, <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is finite on compact sets, and every finite-measure member of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is inner regular by compact sets. Then <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> is dense in <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span>. Nonnegative <span class="math" data-tex="\(L^2\)">\(L^2\)</span> classes admit nonnegative <span class="math" data-tex="\(C_c\)">\(C_c\)</span> approximants. Every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class has a Borel representative zero outside a countable union of compact sets.</p>
+<p><strong>Proof.</strong> For a finite measurable representative <span class="math" data-tex="\(f\)">\(f\)</span>, put <span class="math" data-tex="\(E_n=\{1/n\le|f|\le n\}\)">\(E_n=\{1/n\le|f|\le n\}\)</span>. Then <span class="math" data-tex="\(\mu(E_n)\le n^2\|f\|_2^2&lt;\infty\)">\(\mu(E_n)\le n^2\|f\|_2^2&lt;\infty\)</span>. The sets increase to <span class="math" data-tex="\(\{f\ne0\}\)">\(\{f\ne0\}\)</span>, and the already proved <a href="integration-and-l1.html#ha-lca-pre-integral-theorem-2-2">dominated convergence theorem</a>, applied to <span class="math" data-tex="\(|f|^2 1_{X\setminus E_n}\)">\(|f|^2 1_{X\setminus E_n}\)</span>, shows <span class="math" data-tex="\(f1_{E_n}\to f\)">\(f1_{E_n}\to f\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. On <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, round each of the bounded real and imaginary parts to a finite grid. With mesh <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, the pointwise error is at most <span class="math" data-tex="\(\sqrt2\delta\)">\(\sqrt2\delta\)</span>, and the squared <span class="math" data-tex="\(L^2\)">\(L^2\)</span> error is at most <span class="math" data-tex="\(2\delta^2\mu(E_n)\)">\(2\delta^2\mu(E_n)\)</span>. The resulting simple function has finite-measure level sets. Nonnegative real functions can be rounded down on a nonnegative grid. This proves the first assertion and its positive version.</p>
+<p>Let <span class="math" data-tex="\(E\in\Sigma\)">\(E\in\Sigma\)</span> have finite measure and fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Choose a compact <span class="math" data-tex="\(K\subseteq E\)">\(K\subseteq E\)</span> with <span class="math" data-tex="\(\mu(E\setminus K)&lt;\varepsilon\)">\(\mu(E\setminus K)&lt;\varepsilon\)</span>. The cutoff construction in the proof of the earlier <a href="integration-and-l1.html#ha-lca-pre-integral-theorem-3-1"><span class="math" data-tex="\(C_c\)">\(C_c\)</span>-density theorem</a>, applied to this compact Borel set, gives <span class="math" data-tex="\(u\in C_c(X)\)">\(u\in C_c(X)\)</span>, <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(\int|u-1_K|\,d\mu&lt;\varepsilon\)">\(\int|u-1_K|\,d\mu&lt;\varepsilon\)</span>. That construction uses only finite compact restrictions of the Borel measure, whose compact inner regularity follows from the present assumptions. Consequently
+<span class="math math-display" data-tex="\[
+ \|u-1_E\|_2^2
+ =\int_E|1-u|^2\,d\mu+\int_{X\setminus E}u^2\,d\mu
+ \le\mu(E\setminus K)+\int_{X\setminus K}u\,d\mu
+ &lt;2\varepsilon.
+\]">\[
+ \|u-1_E\|_2^2
+ =\int_E|1-u|^2\,d\mu+\int_{X\setminus E}u^2\,d\mu
+ \le\mu(E\setminus K)+\int_{X\setminus K}u\,d\mu
+ &lt;2\varepsilon.
+\]</span>
+Approximate the finitely many indicators in the simple approximation and use the triangle inequality. The coefficients are nonnegative in the positive case, so their cutoff combination is nonnegative.</p>
+<p>For the representative assertion, choose <span class="math" data-tex="\(u_n\in C_c(X)\)">\(u_n\in C_c(X)\)</span> with <span class="math" data-tex="\(\|u_n-f\|_2\le4^{-n}\)">\(\|u_n-f\|_2\le4^{-n}\)</span>. Then <span class="math" data-tex="\(\sum_n\|u_{n+1}-u_n\|_2&lt;\infty\)">\(\sum_n\|u_{n+1}-u_n\|_2&lt;\infty\)</span>. Theorem 6.1 shows that <span class="math" data-tex="\(u_n\)">\(u_n\)</span> converges pointwise almost everywhere and in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit is <span class="math" data-tex="\(f\)">\(f\)</span> by the chosen errors. The set on which a sequence of complex Borel functions converges is Borel: the Cauchy criterion expresses it using countable unions and intersections of inequalities <span class="math" data-tex="\(|u_m-u_n|\le1/k\)">\(|u_m-u_n|\le1/k\)</span>. Define <span class="math" data-tex="\(u\)">\(u\)</span> to be the pointwise limit there and zero elsewhere. The earlier measurable-limit result makes <span class="math" data-tex="\(u\)">\(u\)</span> Borel. It represents <span class="math" data-tex="\(f\)">\(f\)</span>, and it vanishes outside <span class="math" data-tex="\(\bigcup_n\operatorname{supp}u_n\)">\(\bigcup_n\operatorname{supp}u_n\)</span>. Thus it has the required support without a global countability assumption on <span class="math" data-tex="\(X\)">\(X\)</span> or <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-unitary-representations">7. Unitary representations</h2>
+<p>A unitary operator on <span class="math" data-tex="\(H\)">\(H\)</span> is a surjective linear isometry <span class="math" data-tex="\(U:H\to H\)">\(U:H\to H\)</span>. By (2) and (5), it preserves inner products and satisfies <span class="math" data-tex="\(U^*=U^{-1}\)">\(U^*=U^{-1}\)</span>. Conversely <span class="math" data-tex="\(U^*U=UU^*=I\)">\(U^*U=UU^*=I\)</span> implies both norm preservation and surjectivity. A unitary representation of a topological group <span class="math" data-tex="\(G\)">\(G\)</span> is a homomorphism <span class="math" data-tex="\(g\mapsto\pi(g)\)">\(g\mapsto\pi(g)\)</span> into these operators such that <span class="math" data-tex="\(g\mapsto\pi(g)x\)">\(g\mapsto\pi(g)x\)</span> is norm-continuous for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>.</p>
+<p>The free Bekka–de la Harpe–Valette draft supplies the representation definitions and comparison statements in A.1.1–A.1.7, A.1.10–A.1.11, A.2.1–A.2.3. The following proofs supply the Hilbert constructions, strong-continuity arguments and the operator step in Schur's lemma in full.</p>
+<a id="ha-lca-pre-hilbert-proposition-7-1"></a>
+<h3 id="proposition-7-1-continuity-and-cyclic-decomposition">Proposition 7.1. Continuity and cyclic decomposition</h3>
+<p>For a homomorphism <span class="math" data-tex="\(\pi:G\to U(H)\)">\(\pi:G\to U(H)\)</span>, strong continuity follows if <span class="math" data-tex="\(g\mapsto\pi(g)x\)">\(g\mapsto\pi(g)x\)</span> is continuous for every <span class="math" data-tex="\(x\)">\(x\)</span> in a dense linear subspace. Strong continuity is equivalent to continuity of every coefficient <span class="math" data-tex="\(g\mapsto\langle\pi(g)x,y\rangle\)">\(g\mapsto\langle\pi(g)x,y\rangle\)</span>; it also makes <span class="math" data-tex="\((g,x)\mapsto\pi(g)x\)">\((g,x)\mapsto\pi(g)x\)</span> jointly continuous.</p>
+<p>Every unitary representation is an orthogonal direct sum of cyclic representations. Here a vector <span class="math" data-tex="\(v\)">\(v\)</span> is cyclic when <span class="math" data-tex="\(\overline{\operatorname{span}\{\pi(g)v:g\in G\}}=H\)">\(\overline{\operatorname{span}\{\pi(g)v:g\in G\}}=H\)</span>. Arbitrary direct sums of unitary representations are strongly continuous.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, approximate it by <span class="math" data-tex="\(z\)">\(z\)</span> in the dense subspace and use
+<span class="math math-display" data-tex="\[
+ \|\pi(g)x-\pi(g_0)x\|
+ \le2\|x-z\|+\|\pi(g)z-\pi(g_0)z\|.
+ \tag{16}
+\]">\[
+ \|\pi(g)x-\pi(g_0)x\|
+ \le2\|x-z\|+\|\pi(g)z-\pi(g_0)z\|.
+ \tag{16}
+\]</span>
+This proves the first assertion directly from the neighbourhood definition of continuity. Strong continuity implies coefficient continuity by Cauchy–Schwarz. Conversely, continuity of all coefficients and the identity
+<span class="math math-display" data-tex="\[
+ \|\pi(g)x-\pi(g_0)x\|^2
+ =2\|x\|^2-2\operatorname{Re}\langle\pi(g)x,\pi(g_0)x\rangle
+\]">\[
+ \|\pi(g)x-\pi(g_0)x\|^2
+ =2\|x\|^2-2\operatorname{Re}\langle\pi(g)x,\pi(g_0)x\rangle
+\]</span>
+give strong continuity at every <span class="math" data-tex="\(g_0\)">\(g_0\)</span>. Joint continuity follows from
+<span class="math math-display" data-tex="\[
+ \|\pi(g)x-\pi(g_0)x_0\|
+ \le\|x-x_0\|+\|\pi(g)x_0-\pi(g_0)x_0\|.
+\]">\[
+ \|\pi(g)x-\pi(g_0)x_0\|
+ \le\|x-x_0\|+\|\pi(g)x_0-\pi(g_0)x_0\|.
+\]</span></p>
+<p>If a closed subspace <span class="math" data-tex="\(M\)">\(M\)</span> is invariant under all <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span>, then <span class="math" data-tex="\(\pi(g)M=M\)">\(\pi(g)M=M\)</span>, by applying invariance also to <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. Its orthogonal complement is invariant because
+<span class="math math-display" data-tex="\[
+ \langle\pi(g)x,m\rangle=\langle x,\pi(g^{-1})m\rangle=0
+ \quad(x\in M^\perp,\ m\in M).
+ \tag{17}
+\]">\[
+ \langle\pi(g)x,m\rangle=\langle x,\pi(g^{-1})m\rangle=0
+ \quad(x\in M^\perp,\ m\in M).
+ \tag{17}
+\]</span>
+For any <span class="math" data-tex="\(v\)">\(v\)</span>, its closed orbit span <span class="math" data-tex="\(H_v\)">\(H_v\)</span> is invariant: multiplying each orbit vector by <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> gives another orbit vector, and boundedness passes invariance to the closure. The restriction to <span class="math" data-tex="\(H_v\)">\(H_v\)</span> is a cyclic representation.</p>
+<p>Use the maximal principle on families of mutually orthogonal nonzero closed cyclic invariant subspaces, ordered by inclusion. These families form a set, as they consist of subsets of <span class="math" data-tex="\(H\)">\(H\)</span>. A chain union retains the required properties, so there is a maximal family <span class="math" data-tex="\((H_i)\)">\((H_i)\)</span>. If its closed span <span class="math" data-tex="\(M\)">\(M\)</span> were proper, Corollary 2.2 would give <span class="math" data-tex="\(0\ne v\in M^\perp\)">\(0\ne v\in M^\perp\)</span>. Equation (17) and the invariance of <span class="math" data-tex="\(M\)">\(M\)</span> put the whole cyclic space <span class="math" data-tex="\(H_v\)">\(H_v\)</span> in <span class="math" data-tex="\(M^\perp\)">\(M^\perp\)</span>. It could be added to the family, contradicting maximality. Thus <span class="math" data-tex="\(M=H\)">\(M=H\)</span>, and Theorem 4.3 identifies the representation with the orthogonal direct sum of its cyclic restrictions. The zero space corresponds to the empty sum.</p>
+<p>For a family <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>, the coordinatewise operator <span class="math" data-tex="\((x_i)\mapsto(\pi_i(g)x_i)\)">\((x_i)\mapsto(\pi_i(g)x_i)\)</span> is an isometry of the Hilbert direct sum and has inverse given by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. It is a homomorphism. On a vector with finite support, continuity follows by adding finitely many squared coordinate differences. Such vectors are dense by Theorem 4.3, so (16) proves strong continuity on the whole direct sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-theorem-7-2"></a>
+<h3 id="theorem-7-2-schur-s-lemma">Theorem 7.2. Schur's lemma</h3>
+<p>A unitary representation on a nonzero Hilbert space is called irreducible if its only closed invariant subspaces are <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>. It is irreducible if and only if its bounded commutant
+<span class="math math-display" data-tex="\[
+ \pi(G)&#x27;=\{T\in\mathcal B(H):T\pi(g)=\pi(g)T\text{ for every }g\in G\}
+\]">\[
+ \pi(G)&#x27;=\{T\in\mathcal B(H):T\pi(g)=\pi(g)T\text{ for every }g\in G\}
+\]</span>
+consists exactly of the scalar multiples of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Every nonzero vector in an irreducible representation is cyclic. If <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, its irreducible unitary representations are precisely its one-dimensional continuous unitary characters.</p>
+<p><strong>Proof.</strong> For a closed invariant subspace <span class="math" data-tex="\(M\)">\(M\)</span>, (17) shows that <span class="math" data-tex="\(M^\perp\)">\(M^\perp\)</span> is invariant as well. Decomposing <span class="math" data-tex="\(x=P_Mx+(I-P_M)x\)">\(x=P_Mx+(I-P_M)x\)</span> and applying <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span> shows, by uniqueness of the orthogonal decomposition, that <span class="math" data-tex="\(P_M\pi(g)=\pi(g)P_M\)">\(P_M\pi(g)=\pi(g)P_M\)</span>. Conversely, if this commutation holds, the range <span class="math" data-tex="\(M\)">\(M\)</span> of <span class="math" data-tex="\(P_M\)">\(P_M\)</span> is invariant. If all commuting operators are scalar, then <span class="math" data-tex="\(P_M=cI\)">\(P_M=cI\)</span>; from <span class="math" data-tex="\(P_M^2=P_M\)">\(P_M^2=P_M\)</span> and <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>, <span class="math" data-tex="\(c^2=c\)">\(c^2=c\)</span>, so <span class="math" data-tex="\(M\)">\(M\)</span> is zero or all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Now suppose the representation is irreducible. If <span class="math" data-tex="\(T\)">\(T\)</span> commutes with all <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span>, take adjoints of its commutation with <span class="math" data-tex="\(\pi(g^{-1})\)">\(\pi(g^{-1})\)</span> to see that <span class="math" data-tex="\(T^*\)">\(T^*\)</span> does too. Thus
+<span class="math math-display" data-tex="\[
+ S_1=(T+T^*)/2,\qquad S_2=(T-T^*)/(2i)
+\]">\[
+ S_1=(T+T^*)/2,\qquad S_2=(T-T^*)/(2i)
+\]</span>
+are self-adjoint members of the commutant, with <span class="math" data-tex="\(T=S_1+iS_2\)">\(T=S_1+iS_2\)</span>. If either <span class="math" data-tex="\(S_j\)">\(S_j\)</span> were nonscalar, Proposition 3.3 would supply a nonzero proper closed subspace preserved by every <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span>, a contradiction. Therefore both are scalar and so is <span class="math" data-tex="\(T\)">\(T\)</span>. Scalar operators plainly commute, proving the equivalence.</p>
+<p>The closed orbit span of a nonzero vector is a nonzero invariant subspace by Proposition 7.1 and hence is all of <span class="math" data-tex="\(H\)">\(H\)</span>. If <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, each <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span> belongs to the commutant, so <span class="math" data-tex="\(\pi(g)=\chi(g)I\)">\(\pi(g)=\chi(g)I\)</span> for a scalar of modulus one. Every one-dimensional subspace is then invariant. Such a subspace is closed: if <span class="math" data-tex="\(a_n v\)">\(a_n v\)</span> converges with <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the identity <span class="math" data-tex="\(\|(a_n-a_m)v\|=|a_n-a_m|\|v\|\)">\(\|(a_n-a_m)v\|=|a_n-a_m|\|v\|\)</span> makes <span class="math" data-tex="\(a_n\)">\(a_n\)</span> converge in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Irreducibility therefore forces <span class="math" data-tex="\(\dim H=1\)">\(\dim H=1\)</span>. For a unit vector <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(\chi(g)=\langle\pi(g)v,v\rangle\)">\(\chi(g)=\langle\pi(g)v,v\rangle\)</span> is continuous; the homomorphism law makes it a character. Conversely, a continuous character acts unitarily and continuously on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, whose only linear subspaces are zero and itself. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<a id="ha-lca-pre-hilbert-proposition-7-3"></a>
+<h3 id="proposition-7-3-tensor-and-conjugate-representations">Proposition 7.3. Tensor and conjugate representations</h3>
+<p>For Hilbert spaces <span class="math" data-tex="\(H,K\)">\(H,K\)</span>, there is a Hilbert tensor product <span class="math" data-tex="\(H\otimes K\)">\(H\otimes K\)</span> containing finite sums of elementary tensors as a dense subspace and satisfying
+<span class="math math-display" data-tex="\[
+ \langle x\otimes y,x&#x27;\otimes y&#x27;\rangle
+       =\langle x,x&#x27;\rangle\langle y,y&#x27;\rangle,\qquad
+ \|x\otimes y\|=\|x\|\|y\|.
+ \tag{18}
+\]">\[
+ \langle x\otimes y,x&#x27;\otimes y&#x27;\rangle
+       =\langle x,x&#x27;\rangle\langle y,y&#x27;\rangle,\qquad
+ \|x\otimes y\|=\|x\|\|y\|.
+ \tag{18}
+\]</span>
+If <span class="math" data-tex="\(\pi,\rho\)">\(\pi,\rho\)</span> are unitary representations of <span class="math" data-tex="\(G\)">\(G\)</span>, then
+<span class="math math-display" data-tex="\[
+ (\pi\otimes\rho)(g)(x\otimes y)=\pi(g)x\otimes\rho(g)y
+\]">\[
+ (\pi\otimes\rho)(g)(x\otimes y)=\pi(g)x\otimes\rho(g)y
+\]</span>
+extends to a strongly continuous unitary representation. Diagonal coefficients multiply:
+<span class="math math-display" data-tex="\[
+ \langle(\pi\otimes\rho)(g)(x\otimes y),x\otimes y\rangle
+ =\langle\pi(g)x,x\rangle\langle\rho(g)y,y\rangle.
+ \tag{19}
+\]">\[
+ \langle(\pi\otimes\rho)(g)(x\otimes y),x\otimes y\rangle
+ =\langle\pi(g)x,x\rangle\langle\rho(g)y,y\rangle.
+ \tag{19}
+\]</span>
+There is also a conjugate Hilbert space <span class="math" data-tex="\(\bar H\)">\(\bar H\)</span> and a conjugate representation whose diagonal coefficients are the complex conjugates of those of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p><strong>Proof.</strong> Begin with the free vector space on the symbols <span class="math" data-tex="\((x,y)\in H\times K\)">\((x,y)\in H\times K\)</span> and quotient by the relations expressing linearity separately in <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>. Write the class of <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> as <span class="math" data-tex="\(x\otimes y\)">\(x\otimes y\)</span>. On finite sums define the sesquilinear form by extending the right side of (18). Each defining relation has zero pairing with every symbol, in either variable, by sesquilinearity in the original Hilbert spaces. The form therefore descends to the quotient.</p>
+<p>To check positive definiteness, any given tensor has an expression involving finitely many <span class="math" data-tex="\(x\)">\(x\)</span>'s and <span class="math" data-tex="\(y\)">\(y\)</span>'s. Their finite spans have finite orthonormal bases: process the given spanning list in order, subtract its projections onto the already selected orthonormal vectors, omit a zero remainder and normalize a nonzero one. Direct inner-product evaluation proves orthogonality at each step, and induction shows that the resulting list spans the original finite list. In these bases <span class="math" data-tex="\(e_1,\ldots,e_r\)">\(e_1,\ldots,e_r\)</span> and <span class="math" data-tex="\(f_1,\ldots,f_s\)">\(f_1,\ldots,f_s\)</span>, bilinearity writes the tensor as <span class="math" data-tex="\(\sum_{i,j}a_{ij}e_i\otimes f_j\)">\(\sum_{i,j}a_{ij}e_i\otimes f_j\)</span>. Its squared norm by the proposed form is <span class="math" data-tex="\(\sum_{i,j}|a_{ij}|^2\)">\(\sum_{i,j}|a_{ij}|^2\)</span>. Thus a zero norm forces every coefficient to vanish and the tensor itself to be zero. This proves positive definiteness; Theorem 1.2 constructs its Hilbert completion and proves (18).</p>
+<p>The proposed action respects the quotient relations because <span class="math" data-tex="\(\pi(g)\)">\(\pi(g)\)</span> and <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span> are linear. Formula (18) shows it preserves the form on all finite sums, and the action at <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> is its inverse. Theorem 1.2 extends it to a surjective isometry of the completion. The homomorphism law holds on elementary tensors, then on their finite sums, and then everywhere by continuity. For an elementary tensor,
+<span class="math math-display" data-tex="\[
+ \|\pi(g)x\otimes\rho(g)y-\pi(g_0)x\otimes\rho(g_0)y\|
+ \le \|\pi(g)x-\pi(g_0)x\|\,\|y\|
+      +\|x\|\,\|\rho(g)y-\rho(g_0)y\|.
+\]">\[
+ \|\pi(g)x\otimes\rho(g)y-\pi(g_0)x\otimes\rho(g_0)y\|
+ \le \|\pi(g)x-\pi(g_0)x\|\,\|y\|
+      +\|x\|\,\|\rho(g)y-\rho(g_0)y\|.
+\]</span>
+This tends to zero. Finite sums are therefore continuous orbit vectors, and their density together with Proposition 7.1 proves strong continuity on the completion. Equation (19) is (18).</p>
+<p>Define <span class="math" data-tex="\(\bar H\)">\(\bar H\)</span> using symbols <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, with addition <span class="math" data-tex="\(\bar x+\bar y=\overline{x+y}\)">\(\bar x+\bar y=\overline{x+y}\)</span>, scalar action <span class="math" data-tex="\(a\bar x=\overline{\bar a x}\)">\(a\bar x=\overline{\bar a x}\)</span>, and inner product <span class="math" data-tex="\(\langle\bar x,\bar y\rangle_{\bar H}=\langle y,x\rangle_H\)">\(\langle\bar x,\bar y\rangle_{\bar H}=\langle y,x\rangle_H\)</span>. The vector-space axioms, sesquilinearity and positivity follow by substitution; the norm is <span class="math" data-tex="\(\|\bar x\|=\|x\|\)">\(\|\bar x\|=\|x\|\)</span>, so completeness follows from completeness of <span class="math" data-tex="\(H\)">\(H\)</span>. Define <span class="math" data-tex="\(\bar\pi(g)\bar x=\overline{\pi(g)x}\)">\(\bar\pi(g)\bar x=\overline{\pi(g)x}\)</span>. The scalar rule makes this map linear. Norm preservation, the inverse at <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>, the homomorphism law and strong continuity follow directly from those of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Finally its diagonal coefficient is <span class="math" data-tex="\(\langle x,\pi(g)x\rangle=\overline{\langle\pi(g)x,x\rangle}\)">\(\langle x,\pi(g)x\rangle=\overline{\langle\pi(g)x,x\rangle}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

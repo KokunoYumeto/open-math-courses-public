@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The upper half-plane and the modular group · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-upper-half-plane-and-the-modular-group">The upper half-plane and the modular group</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Changing a basis of a lattice in the complex plane changes its shape parameter by a fractional linear transformation. This observation will eventually connect modular forms with elliptic curves. First we need a precise answer to a geometric question: how can we choose one shape from each orbit, and what happens at shapes with extra symmetry?</p>
+<p>We use elementary differentiation and integration and the topology of the plane. The freely accessible background texts are [Wiese 2018] and [Voight open book]. The reduction and boundary arguments below are derived directly from integer rows and the imaginary-part identity. Their analytic and topological prerequisites are listed at the end; a background citation does not certify an earlier programme proof.</p>
+<p><strong>Lemma 0.1 (the integer arithmetic used below).</strong> For integers <span class="math" data-tex="\(a,c\)">\(a,c\)</span>, not both zero, the Euclidean algorithm terminates and produces integers <span class="math" data-tex="\(u,v\)">\(u,v\)</span> with <span class="math" data-tex="\(ua+vc=\gcd(a,c)\)">\(ua+vc=\gcd(a,c)\)</span>.</p>
+<p><em>Proof.</em> Change signs to start with nonnegative entries, exchanging them if needed; if the second entry is zero, the assertion is immediate. For positive <span class="math" data-tex="\(b\)">\(b\)</span>, integer division gives <span class="math" data-tex="\(a=qb+r\)">\(a=qb+r\)</span>, <span class="math" data-tex="\(0\le r&lt;b\)">\(0\le r&lt;b\)</span>. A common divisor of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is exactly a common divisor of <span class="math" data-tex="\(b,r\)">\(b,r\)</span>, since subtraction of <span class="math" data-tex="\(qb\)">\(qb\)</span> preserves divisibility. Repeat, replacing the pair by <span class="math" data-tex="\((b,r)\)">\((b,r)\)</span>. Its positive second entry strictly decreases until a zero remainder occurs. The last positive entry is therefore the gcd. At every stage each entry is an integer linear combination of the starting pair, because replacement uses subtraction and exchange. Back-substitution supplies <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, and undoing the initial signs gives the assertion for arbitrary integers. In particular a primitive row <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> can be completed to determinant one: from <span class="math" data-tex="\(uc+vd=1\)">\(uc+vd=1\)</span>, take <span class="math" data-tex="\(a=v,b=-u\)">\(a=v,b=-u\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write
+<span class="math math-display" data-tex="\[
+\mathfrak H=\{z=x+iy:y&gt;0\},\qquad
+\gamma z=\frac{az+b}{cz+d},\qquad
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\]">\[
+\mathfrak H=\{z=x+iy:y&gt;0\},\qquad
+\gamma z=\frac{az+b}{cz+d},\qquad
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\]</span>
+A matrix of positive determinant acts on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. Multiplying the matrix by a nonzero real scalar does not change the transformation. We distinguish <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb R)\)">\(\mathrm{SL}_2(\mathbb R)\)</span> from its quotient <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb R)=\mathrm{SL}_2(\mathbb R)/\{I,-I\}\)">\(\mathrm{PSL}_2(\mathbb R)=\mathrm{SL}_2(\mathbb R)/\{I,-I\}\)</span>.</p>
+<h2 id="1-geometry-preserved-by-a-change-of-coordinates">1. Geometry preserved by a change of coordinates</h2>
+<p><strong>Proposition 1.1.</strong> If <span class="math" data-tex="\(\det\gamma&gt;0\)">\(\det\gamma&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Im}(\gamma z)=\frac{\det(\gamma)y}{|cz+d|^2},
+\qquad (\gamma z)&#x27;=\frac{\det(\gamma)}{(cz+d)^2}.
+\]">\[
+\operatorname{Im}(\gamma z)=\frac{\det(\gamma)y}{|cz+d|^2},
+\qquad (\gamma z)&#x27;=\frac{\det(\gamma)}{(cz+d)^2}.
+\]</span>
+Consequently the length element <span class="math" data-tex="\(|dz|/y\)">\(|dz|/y\)</span>, the metric <span class="math" data-tex="\((dx^2+dy^2)/y^2\)">\((dx^2+dy^2)/y^2\)</span>, and the area measure <span class="math" data-tex="\(d\mu=dx\,dy/y^2\)">\(d\mu=dx\,dy/y^2\)</span> are invariant.</p>
+<p><em>Proof.</em> The denominator does not vanish in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. Subtract the conjugate of the fraction from the fraction itself. Its numerator is
+<span class="math math-display" data-tex="\[
+(az+b)(c\bar z+d)-(a\bar z+b)(cz+d)
+=(ad-bc)(z-\bar z).
+\]">\[
+(az+b)(c\bar z+d)-(a\bar z+b)(cz+d)
+=(ad-bc)(z-\bar z).
+\]</span>
+Division by <span class="math" data-tex="\(2i|cz+d|^2\)">\(2i|cz+d|^2\)</span> proves the first identity. The quotient rule proves the second. The derivative multiplies lengths by <span class="math" data-tex="\(\det(\gamma)/|cz+d|^2\)">\(\det(\gamma)/|cz+d|^2\)</span>, exactly the factor multiplying <span class="math" data-tex="\(y\)">\(y\)</span>. Its real Jacobian is the square of that factor. Dividing the transformed Euclidean area by the transformed height squared cancels it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (coordinates on the group).</strong> The action of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb R)\)">\(\mathrm{SL}_2(\mathbb R)\)</span> on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> is transitive, the stabilizer of <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(\mathrm{SO}(2)\)">\(\mathrm{SO}(2)\)</span>, and every <span class="math" data-tex="\(g\)">\(g\)</span> has a unique expression
+<span class="math math-display" data-tex="\[
+g=n(x)a(y)k(\theta),\quad
+n(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},\quad
+a(y)=\begin{pmatrix}\sqrt y&amp;0\\0&amp;1/\sqrt y\end{pmatrix},\quad
+k(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix},
+\]">\[
+g=n(x)a(y)k(\theta),\quad
+n(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},\quad
+a(y)=\begin{pmatrix}\sqrt y&amp;0\\0&amp;1/\sqrt y\end{pmatrix},\quad
+k(\theta)=\begin{pmatrix}\cos\theta&amp;-\sin\theta\\\sin\theta&amp;\cos\theta\end{pmatrix},
+\]</span>
+where <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is taken modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>.</p>
+<p><em>Proof.</em> The product <span class="math" data-tex="\(n(x)a(y)\)">\(n(x)a(y)\)</span> sends <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>, proving transitivity. The equation <span class="math" data-tex="\((ai+b)/(ci+d)=i\)">\((ai+b)/(ci+d)=i\)</span> gives <span class="math" data-tex="\(a=d\)">\(a=d\)</span>, <span class="math" data-tex="\(b=-c\)">\(b=-c\)</span>. The determinant equation becomes <span class="math" data-tex="\(a^2+c^2=1\)">\(a^2+c^2=1\)</span>, precisely the displayed rotations. For any <span class="math" data-tex="\(g\)">\(g\)</span>, set <span class="math" data-tex="\(x+iy=gi\)">\(x+iy=gi\)</span>. Then <span class="math" data-tex="\((n(x)a(y))^{-1}g\)">\((n(x)a(y))^{-1}g\)</span> fixes <span class="math" data-tex="\(i\)">\(i\)</span>, so it is a unique rotation. The image of <span class="math" data-tex="\(i\)">\(i\)</span> also proves uniqueness of <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. This is the Iwasawa decomposition. In the projective group the rotation angle is instead taken modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The projective action is faithful. Indeed, a matrix fixing every <span class="math" data-tex="\(z\)">\(z\)</span> satisfies <span class="math" data-tex="\(cz^2+(d-a)z-b=0\)">\(cz^2+(d-a)z-b=0\)</span> identically, so <span class="math" data-tex="\(c=b=0\)">\(c=b=0\)</span>, <span class="math" data-tex="\(d=a\)">\(d=a\)</span>, and determinant one leaves <span class="math" data-tex="\(I,-I\)">\(I,-I\)</span>.</p>
+<p><strong>Proposition 1.3 (fixed points).</strong> For <span class="math" data-tex="\(g\in\mathrm{SL}_2(\mathbb R)\setminus\{I,-I\}\)">\(g\in\mathrm{SL}_2(\mathbb R)\setminus\{I,-I\}\)</span>, the three possibilities are:</p>
+<ul>
+<li><span class="math" data-tex="\(|\operatorname{tr}g|&lt;2\)">\(|\operatorname{tr}g|&lt;2\)</span>: one fixed point in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, and its conjugate in the lower half-plane;</li>
+<li><span class="math" data-tex="\(|\operatorname{tr}g|=2\)">\(|\operatorname{tr}g|=2\)</span>: exactly one fixed point on <span class="math" data-tex="\(\mathbb P^1(\mathbb R)\)">\(\mathbb P^1(\mathbb R)\)</span>;</li>
+<li><span class="math" data-tex="\(|\operatorname{tr}g|&gt;2\)">\(|\operatorname{tr}g|&gt;2\)</span>: exactly two fixed points on <span class="math" data-tex="\(\mathbb P^1(\mathbb R)\)">\(\mathbb P^1(\mathbb R)\)</span>.</li>
+</ul>
+<p>These are called elliptic, parabolic and hyperbolic, respectively.</p>
+<p><em>Proof.</em> Fixed points are the eigenlines of <span class="math" data-tex="\(g\)">\(g\)</span>, or equivalently the roots of
+<span class="math math-display" data-tex="\[
+cz^2+(d-a)z-b=0.
+\]">\[
+cz^2+(d-a)z-b=0.
+\]</span>
+Its discriminant is <span class="math" data-tex="\((a+d)^2-4\)">\((a+d)^2-4\)</span>. Negative discriminant gives two nonreal conjugate roots. Zero discriminant gives a repeated real eigenline; a non-scalar matrix with repeated eigenvalue has only one eigenline. Positive discriminant gives two distinct real eigenlines. Describing them as lines includes <span class="math" data-tex="\(\infty\)">\(\infty\)</span> when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. The positive-imaginary-part root is unique in the first case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}
+\]">\[
+A=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}
+\]</span>
+has fixed points <span class="math" data-tex="\(r_\pm=(1\pm\sqrt5)/2\)">\(r_\pm=(1\pm\sqrt5)/2\)</span>. Its invariant geodesic is the semicircle with those endpoints, center <span class="math" data-tex="\(1/2\)">\(1/2\)</span> and radius <span class="math" data-tex="\(\sqrt5/2\)">\(\sqrt5/2\)</span>. To see the action explicitly, put <span class="math" data-tex="\(w=(z-r_-)/(r_+-z)\)">\(w=(z-r_-)/(r_+-z)\)</span>. This real fractional linear transformation maps that semicircle to the positive imaginary axis. The eigenvalues of <span class="math" data-tex="\(A\)">\(A\)</span> are <span class="math" data-tex="\(\lambda_\pm=(3\pm\sqrt5)/2\)">\(\lambda_\pm=(3\pm\sqrt5)/2\)</span>, with <span class="math" data-tex="\(\lambda_-\lambda_+=1\)">\(\lambda_-\lambda_+=1\)</span>, and direct substitution gives <span class="math" data-tex="\(w(Az)=\lambda_+^2w(z)\)">\(w(Az)=\lambda_+^2w(z)\)</span>. The vertical segment minimizes hyperbolic length between its endpoints: every piecewise differentiable path satisfies
+<span class="math math-display" data-tex="\[
+\int\frac{\sqrt{(dx)^2+(dy)^2}}y
+\ge\int\frac{|dy|}y
+\ge\left|\log\frac{y_2}{y_1}\right|,
+\]">\[
+\int\frac{\sqrt{(dx)^2+(dy)^2}}y
+\ge\int\frac{|dy|}y
+\ge\left|\log\frac{y_2}{y_1}\right|,
+\]</span>
+and the vertical segment attains equality. Proposition 1.1 carries this minimizing property to the semicircle. Hence <span class="math" data-tex="\(A\)">\(A\)</span> moves toward <span class="math" data-tex="\(r_+\)">\(r_+\)</span> by distance <span class="math" data-tex="\(2\log\lambda_+\)">\(2\log\lambda_+\)</span>, with no general geodesic classification required.</p>
+<h2 id="2-reducing-a-shape-without-an-infinite-search">2. Reducing a shape without an infinite search</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+\mathcal F=\{z\in\mathfrak H:|\operatorname{Re}z|\le\tfrac12,\ |z|\ge1\}.
+\]">\[
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},\qquad
+T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},\qquad
+\mathcal F=\{z\in\mathfrak H:|\operatorname{Re}z|\le\tfrac12,\ |z|\ge1\}.
+\]</span>
+The transformations are <span class="math" data-tex="\(Sz=-1/z\)">\(Sz=-1/z\)</span> and <span class="math" data-tex="\(Tz=z+1\)">\(Tz=z+1\)</span>. Matrix multiplication gives <span class="math" data-tex="\(S^2=(ST)^3=-I\)">\(S^2=(ST)^3=-I\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For each <span class="math" data-tex="\(z\in\mathfrak H\)">\(z\in\mathfrak H\)</span>, its modular orbit contains a point of maximal height.</p>
+<p><em>Proof.</em> Every possible bottom row <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> is a primitive integer pair, and every such pair occurs: Bezout's identity supplies <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ad-bc=1\)">\(ad-bc=1\)</span>. A point of height at least <span class="math" data-tex="\(y=\operatorname{Im}z\)">\(y=\operatorname{Im}z\)</span> must satisfy
+<span class="math math-display" data-tex="\[
+|cz+d|^2=c^2y^2+(cx+d)^2\le1.
+\]">\[
+|cz+d|^2=c^2y^2+(cx+d)^2\le1.
+\]</span>
+This bounds <span class="math" data-tex="\(|c|\le1/y\)">\(|c|\le1/y\)</span> and, for each <span class="math" data-tex="\(c\)">\(c\)</span>, bounds <span class="math" data-tex="\(d\)">\(d\)</span> in a finite interval. Only finitely many such pairs exist. The pair <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is among them, so the set is nonempty. Maximize <span class="math" data-tex="\(y/|cz+d|^2\)">\(y/|cz+d|^2\)</span> on this finite set; all remaining pairs give smaller height than <span class="math" data-tex="\(y\)">\(y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> Every orbit of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> meets <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. The following algorithm terminates: translate into <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>; if the result has modulus less than one, apply <span class="math" data-tex="\(S\)">\(S\)</span>, and repeat.</p>
+<p><em>Proof.</em> Translate a maximal-height point into the strip. If its modulus were less than one, applying <span class="math" data-tex="\(S\)">\(S\)</span> would increase its height, contrary to maximality. It lies in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<p>For the algorithm, each inversion that is actually performed strictly increases height, and translations preserve height. Every intermediate height at least the initial height belongs to the finite set of heights in Lemma 2.1. Thus only finitely many inversions are possible. Each translation is one integer shift, so the process terminates. This proof gives termination even when one has not first found a maximizing pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here is an exact reduction rather than a rounded calculation. Starting with <span class="math" data-tex="\(z=(5+i)/50\)">\(z=(5+i)/50\)</span>, inversion gives
+<span class="math math-display" data-tex="\[
+Sz=\frac{-125+25i}{13},\qquad
+T^{10}Sz=\frac{5+25i}{13}.
+\]">\[
+Sz=\frac{-125+25i}{13},\qquad
+T^{10}Sz=\frac{5+25i}{13}.
+\]</span>
+The final real part is <span class="math" data-tex="\(5/13\)">\(5/13\)</span>, and its squared modulus is <span class="math" data-tex="\(650/169&gt;1\)">\(650/169&gt;1\)</span>; it lies in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. The reducing word is <span class="math" data-tex="\(T^{10}S\)">\(T^{10}S\)</span>.</p>
+<h2 id="3-which-representatives-are-the-same">3. Which representatives are the same?</h2>
+<p><strong>Lemma 3.1.</strong> If <span class="math" data-tex="\(z\in\mathcal F\)">\(z\in\mathcal F\)</span> and <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> is a primitive integer pair, then <span class="math" data-tex="\(|cz+d|\ge1\)">\(|cz+d|\ge1\)</span>. Equality is possible only as follows:</p>
+<ul>
+<li><span class="math" data-tex="\(c=0,d=\pm1\)">\(c=0,d=\pm1\)</span>;</li>
+<li>up to simultaneous sign, <span class="math" data-tex="\((c,d)=(1,0)\)">\((c,d)=(1,0)\)</span>, with <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>;</li>
+<li>up to simultaneous sign, <span class="math" data-tex="\((c,d)=(1,1)\)">\((c,d)=(1,1)\)</span>, with <span class="math" data-tex="\(z=\rho=(-1+i\sqrt3)/2\)">\(z=\rho=(-1+i\sqrt3)/2\)</span>;</li>
+<li>up to simultaneous sign, <span class="math" data-tex="\((c,d)=(1,-1)\)">\((c,d)=(1,-1)\)</span>, with <span class="math" data-tex="\(z=\rho+1\)">\(z=\rho+1\)</span>.</li>
+</ul>
+<p><em>Proof.</em> We have <span class="math" data-tex="\(y\ge\sqrt3/2\)">\(y\ge\sqrt3/2\)</span>. If <span class="math" data-tex="\(|c|\ge2\)">\(|c|\ge2\)</span>, then <span class="math" data-tex="\(|cz+d|\ge|c|y\ge\sqrt3&gt;1\)">\(|cz+d|\ge|c|y\ge\sqrt3&gt;1\)</span>. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, primitivity gives <span class="math" data-tex="\(|d|=1\)">\(|d|=1\)</span>. Otherwise change the simultaneous sign to make <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the assertion is exactly <span class="math" data-tex="\(|z|\ge1\)">\(|z|\ge1\)</span>. For <span class="math" data-tex="\(|d|\ge2\)">\(|d|\ge2\)</span>, <span class="math" data-tex="\(|x+d|\ge3/2\)">\(|x+d|\ge3/2\)</span>, so equality is impossible. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>,
+<span class="math math-display" data-tex="\[
+|z+1|^2=|z|^2+2x+1\ge1,
+\]">\[
+|z+1|^2=|z|^2+2x+1\ge1,
+\]</span>
+and equality forces <span class="math" data-tex="\(|z|=1,x=-1/2\)">\(|z|=1,x=-1/2\)</span>. For <span class="math" data-tex="\(d=-1\)">\(d=-1\)</span>, the same argument gives the right corner. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (the closed fundamental domain).</strong> Two points of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> in the same modular orbit have equal height and can be identified by compositions of these side pairings:
+<span class="math math-display" data-tex="\[
+-\tfrac12+iy\longleftrightarrow\tfrac12+iy\quad(T),
+\qquad z\longleftrightarrow-1/z\quad(S,\ |z|=1).
+\]">\[
+-\tfrac12+iy\longleftrightarrow\tfrac12+iy\quad(T),
+\qquad z\longleftrightarrow-1/z\quad(S,\ |z|=1).
+\]</span>
+An interior point has exactly one representative in <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> and trivial stabilizer in <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb Z)\)">\(\mathrm{PSL}_2(\mathbb Z)\)</span>.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-tex="\(w=\gamma z\)">\(w=\gamma z\)</span> and <span class="math" data-tex="\(z,w\in\mathcal F\)">\(z,w\in\mathcal F\)</span>. Lemma 3.1 gives <span class="math" data-tex="\(\operatorname{Im}w\le\operatorname{Im}z\)">\(\operatorname{Im}w\le\operatorname{Im}z\)</span>; applying it to <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> gives the reverse inequality. Thus <span class="math" data-tex="\(|cz+d|=1\)">\(|cz+d|=1\)</span>.</p>
+<p>If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, then projectively <span class="math" data-tex="\(\gamma=T^a\)">\(\gamma=T^a\)</span>; a nonzero shift keeping both points in the strip must be <span class="math" data-tex="\(a=\pm1\)">\(a=\pm1\)</span> on its vertical sides. If <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, determinant one gives
+<span class="math math-display" data-tex="\[
+\gamma=\begin{pmatrix}a&amp;ad-1\\1&amp;d\end{pmatrix}=T^aST^d.
+\]">\[
+\gamma=\begin{pmatrix}a&amp;ad-1\\1&amp;d\end{pmatrix}=T^aST^d.
+\]</span>
+For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, inversion pairs the circular side, followed, only at its endpoints, by an allowed vertical pairing. For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(z\)">\(z\)</span> is the left corner: first <span class="math" data-tex="\(T\)">\(T\)</span> moves it to the right corner and then <span class="math" data-tex="\(S\)">\(S\)</span> back to the left corner; a final allowed translation moves between the corners. The case <span class="math" data-tex="\(d=-1\)">\(d=-1\)</span> is the reverse. These exhaust Lemma 3.1. For interior points only <span class="math" data-tex="\(c=0,a=0\)">\(c=0,a=0\)</span> remains, so <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is projectively the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The qualification about compositions matters at a corner: the same representative has nontrivial stabilizers such as <span class="math" data-tex="\(ST\)">\(ST\)</span>. To obtain a set with exactly one representative per orbit, retain the left vertical side, remove the right vertical side, and on the circular arc retain the half with nonpositive real part. The point <span class="math" data-tex="\(i\)">\(i\)</span> and the corner <span class="math" data-tex="\(\rho\)">\(\rho\)</span> remain.</p>
+<p><strong>Proposition 3.3.</strong> The stabilizers in <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb Z)\)">\(\mathrm{PSL}_2(\mathbb Z)\)</span> are trivial except for the orbits of <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. At these points they are cyclic of orders two and three, respectively:
+<span class="math math-display" data-tex="\[
+\operatorname{Stab}(i)=\langle S\rangle,\qquad
+\operatorname{Stab}(\rho)=\langle ST\rangle,
+\qquad \operatorname{Stab}(\rho+1)=\langle TS\rangle.
+\]">\[
+\operatorname{Stab}(i)=\langle S\rangle,\qquad
+\operatorname{Stab}(\rho)=\langle ST\rangle,
+\qquad \operatorname{Stab}(\rho+1)=\langle TS\rangle.
+\]</span>
+Their orders in <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> are four, six and six.</p>
+<p><em>Proof.</em> An element fixing a representative is among the equality cases in Theorem 3.2. A nonzero translation fixes no point of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. On the arc away from its endpoints, an element can only be <span class="math" data-tex="\(S\)">\(S\)</span>, and <span class="math" data-tex="\(Sz=z\)">\(Sz=z\)</span> gives <span class="math" data-tex="\(z=i\)">\(z=i\)</span>. At <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, solving the fixed-point equation directly gives
+<span class="math math-display" data-tex="\[
+a=d-c,\quad b=-c,\quad d^2-cd+c^2=1.
+\]">\[
+a=d-c,\quad b=-c,\quad d^2-cd+c^2=1.
+\]</span>
+The integer solutions <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> are <span class="math" data-tex="\((0,\pm1),(\pm1,0),(1,1),(-1,-1)\)">\((0,\pm1),(\pm1,0),(1,1),(-1,-1)\)</span>: completing the square bounds <span class="math" data-tex="\(|c|\le1\)">\(|c|\le1\)</span> and then checks these possibilities. The six matrices are exactly the powers of <span class="math" data-tex="\(ST\)">\(ST\)</span>. Conjugation by <span class="math" data-tex="\(T\)">\(T\)</span> gives the right-corner stabilizer, generated projectively by <span class="math" data-tex="\(TS\)">\(TS\)</span>. Reduction conjugates any other stabilizer to one of these. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a concrete orbit check, an image of <span class="math" data-tex="\(i\)">\(i\)</span> has height <span class="math" data-tex="\(1/(c^2+d^2)\)">\(1/(c^2+d^2)\)</span>. Height at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span> forces <span class="math" data-tex="\(c^2+d^2\le2\)">\(c^2+d^2\le2\)</span>. In the closed strip the only resulting points are
+<span class="math math-display" data-tex="\[
+i,\qquad(-1+i)/2,\qquad(1+i)/2.
+\]">\[
+i,\qquad(-1+i)/2,\qquad(1+i)/2.
+\]</span>
+All occur, using bottom rows <span class="math" data-tex="\((0,1),(1,1),(1,-1)\)">\((0,1),(1,1),(1,-1)\)</span>. An image of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has height <span class="math" data-tex="\((\sqrt3/2)/(c^2-cd+d^2)\)">\((\sqrt3/2)/(c^2-cd+d^2)\)</span>. A height of at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span> forces the positive integer denominator to be one. Hence in the closed strip the only points are <span class="math" data-tex="\(\rho,\rho+1\)">\(\rho,\rho+1\)</span>. The matrix <span class="math" data-tex="\(ST\)">\(ST\)</span> has trace one, fixes <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and has order six in the special linear group. The same assertions hold for <span class="math" data-tex="\(TS\)">\(TS\)</span> and <span class="math" data-tex="\(\rho+1\)">\(\rho+1\)</span>, with order three in the projective group.</p>
+<h2 id="4-generators-relations-and-finite-order-elements">4. Generators, relations and finite-order elements</h2>
+<p><strong>Proposition 4.1.</strong> The matrices <span class="math" data-tex="\(S,T\)">\(S,T\)</span> generate <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span>.</p>
+<p><em>Proof.</em> Apply row operations to the first column <span class="math" data-tex="\((a,c)^t\)">\((a,c)^t\)</span> of an integral determinant-one matrix. Left multiplication by <span class="math" data-tex="\(T^n\)">\(T^n\)</span> replaces <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(a+nc\)">\(a+nc\)</span>; left multiplication by <span class="math" data-tex="\(S\)">\(S\)</span> exchanges the entries up to sign. When <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, choose a remainder <span class="math" data-tex="\(r=a+nc\)">\(r=a+nc\)</span> with <span class="math" data-tex="\(0\le r&lt;|c|\)">\(0\le r&lt;|c|\)</span>, then exchange. The new lower entry has strictly smaller absolute value. The Euclidean algorithm terminates with lower entry zero. Since <span class="math" data-tex="\(\gcd(a,c)=1\)">\(\gcd(a,c)=1\)</span>, the remaining matrix is <span class="math" data-tex="\(\pm T^m\)">\(\pm T^m\)</span>. Finally <span class="math" data-tex="\(-I=S^2\)">\(-I=S^2\)</span>. Undoing the operations proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> With <span class="math" data-tex="\(s,u\)">\(s,u\)</span> denoting the projective classes of <span class="math" data-tex="\(S,ST\)">\(S,ST\)</span>,
+<span class="math math-display" data-tex="\[
+\mathrm{PSL}_2(\mathbb Z)=\langle s,u\mid s^2=u^3=1\rangle
+\cong C_2*C_3.
+\]">\[
+\mathrm{PSL}_2(\mathbb Z)=\langle s,u\mid s^2=u^3=1\rangle
+\cong C_2*C_3.
+\]</span></p>
+<p><em>Proof.</em> Generation gives a surjection from the displayed free product. We show that a nonempty reduced word cannot act identically. On the irrational real numbers let <span class="math" data-tex="\(A\)">\(A\)</span> be the positive ones and <span class="math" data-tex="\(B\)">\(B\)</span> the negative ones. They are disjoint. Directly,
+<span class="math math-display" data-tex="\[
+s(B)=A,\qquad u(A)\subset B,\qquad u^2(A)\subset B,
+\]">\[
+s(B)=A,\qquad u(A)\subset B,\qquad u^2(A)\subset B,
+\]</span>
+because <span class="math" data-tex="\(s(x)=-1/x\)">\(s(x)=-1/x\)</span>, <span class="math" data-tex="\(u(x)=-1/(x+1)\)">\(u(x)=-1/(x+1)\)</span>, and <span class="math" data-tex="\(u^2(x)=-(x+1)/x\)">\(u^2(x)=-(x+1)/x\)</span>.</p>
+<p>A reduced alternating word beginning and ending with <span class="math" data-tex="\(s\)">\(s\)</span> maps <span class="math" data-tex="\(B\)">\(B\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span>; one beginning and ending with a nonidentity power of <span class="math" data-tex="\(u\)">\(u\)</span> maps <span class="math" data-tex="\(A\)">\(A\)</span> into <span class="math" data-tex="\(B\)">\(B\)</span>. Both are nonidentity. This includes the one-letter words. If the first and last letters belong to different factors, invert the word if necessary so that it begins with <span class="math" data-tex="\(s\)">\(s\)</span> and ends with <span class="math" data-tex="\(u^e\)">\(u^e\)</span>, <span class="math" data-tex="\(e=1\)">\(e=1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. Choose <span class="math" data-tex="\(j\in\{1,2\}\)">\(j\in\{1,2\}\)</span> with <span class="math" data-tex="\(j\ne e\)">\(j\ne e\)</span>. Its conjugate <span class="math" data-tex="\(u^jwu^{-j}\)">\(u^jwu^{-j}\)</span> is reduced and begins and ends in the <span class="math" data-tex="\(u\)">\(u\)</span>-factor, since its last letter is <span class="math" data-tex="\(u^{e-j}\ne1\)">\(u^{e-j}\ne1\)</span>. It is therefore nonidentity, as is <span class="math" data-tex="\(w\)">\(w\)</span>. This proves injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.3.</strong> Every nonidentity finite-order element of <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb Z)\)">\(\mathrm{PSL}_2(\mathbb Z)\)</span> is conjugate to <span class="math" data-tex="\(s,u\)">\(s,u\)</span>, or <span class="math" data-tex="\(u^2\)">\(u^2\)</span>.</p>
+<p><em>Proof.</em> A finite-order nonidentity real projective transformation is elliptic. To verify this without a classification assumption, lift it to <span class="math" data-tex="\(g\in\mathrm{SL}_2(\mathbb R)\)">\(g\in\mathrm{SL}_2(\mathbb R)\)</span>. A hyperbolic matrix has eigenvalues of unequal absolute value and cannot have a scalar power. A nonscalar parabolic matrix has a nonzero Jordan term in every positive power and also cannot have a scalar power. Proposition 1.3 therefore supplies a fixed point in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. Reduce this point into <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Proposition 3.3 then places the conjugate in its order-two or order-three stabilizer, whose nonidentity elements are exactly those listed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-area-that-fixes-later-normalizations">5. The area that fixes later normalizations</h2>
+<p><strong>Proposition 5.1.</strong> The hyperbolic area of the modular quotient is <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>.</p>
+<p><em>Proof.</em> The boundary has area zero, and the lower boundary at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\sqrt{1-x^2}\)">\(\sqrt{1-x^2}\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\mu(\mathcal F)=\int_{-1/2}^{1/2}\int_{\sqrt{1-x^2}}^\infty\frac{dy\,dx}{y^2}
+=\int_{-1/2}^{1/2}\frac{dx}{\sqrt{1-x^2}}
+=2\arcsin(1/2)=\frac\pi3.
+\]">\[
+\mu(\mathcal F)=\int_{-1/2}^{1/2}\int_{\sqrt{1-x^2}}^\infty\frac{dy\,dx}{y^2}
+=\int_{-1/2}^{1/2}\frac{dx}{\sqrt{1-x^2}}
+=2\arcsin(1/2)=\frac\pi3.
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two circular endpoints have angles <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>, and the vertical sides meet at the ideal vertex <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, whose angle is zero. The same special angle calculation can be verified without a general area theorem: substitute <span class="math" data-tex="\(x=\cos\theta\)">\(x=\cos\theta\)</span> in the displayed integral, with <span class="math" data-tex="\(\theta\)">\(\theta\)</span> running from <span class="math" data-tex="\(2\pi/3\)">\(2\pi/3\)</span> down to <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>. It gives <span class="math" data-tex="\(2\pi/3-\pi/3=\pi/3\)">\(2\pi/3-\pi/3=\pi/3\)</span>. The conformal metric preserves the endpoint angles, so this also equals <span class="math" data-tex="\(\pi-\pi/3-\pi/3\)">\(\pi-\pi/3-\pi/3\)</span> for this domain.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Replace <span class="math" data-tex="\(g\)">\(g\)</span> in Proposition 1.1 by a positive-determinant matrix of determinant <span class="math" data-tex="\(7\)">\(7\)</span>. Derive the imaginary-part and Jacobian formulas, then verify invariance of <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span>.</li>
+<li><strong>Easy.</strong> Integrate over the portion of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> below height <span class="math" data-tex="\(Y\ge1\)">\(Y\ge1\)</span>, and recover its total area by taking a limit.</li>
+<li><strong>Medium.</strong> Determine every special linear integral matrix fixing <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, including its sign. Explain why counting six matrices gives an elliptic point of order three.</li>
+<li><strong>Medium.</strong> Prove that a finite-order nonidentity projective modular transformation is conjugate to <span class="math" data-tex="\(s,u\)">\(s,u\)</span>, or <span class="math" data-tex="\(u^2\)">\(u^2\)</span>. Deduce that its possible orders are two and three.</li>
+<li><strong>Hard.</strong> Using the positive and negative irrational half-lines, prove that the surjection <span class="math" data-tex="\(C_2*C_3\to\mathrm{PSL}_2(\mathbb Z)\)">\(C_2*C_3\to\mathrm{PSL}_2(\mathbb Z)\)</span> is injective. Include reduced words whose end letters belong to different factors.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> Subtraction of conjugates gives <span class="math" data-tex="\(\operatorname{Im}(gz)=7y/|cz+d|^2\)">\(\operatorname{Im}(gz)=7y/|cz+d|^2\)</span>. The complex derivative is <span class="math" data-tex="\(7/(cz+d)^2\)">\(7/(cz+d)^2\)</span>, so the real Jacobian is <span class="math" data-tex="\(49/|cz+d|^4\)">\(49/|cz+d|^4\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\frac{dx&#x27;\,dy&#x27;}{(y&#x27;)^2}
+=\frac{49|cz+d|^{-4}dx\,dy}{49y^2|cz+d|^{-4}}
+=\frac{dx\,dy}{y^2}.
+\]">\[
+\frac{dx&#x27;\,dy&#x27;}{(y&#x27;)^2}
+=\frac{49|cz+d|^{-4}dx\,dy}{49y^2|cz+d|^{-4}}
+=\frac{dx\,dy}{y^2}.
+\]</span>
+This also shows why replacing a matrix by a scalar multiple leaves the formulas consistent: determinant and denominator square both acquire the same factor.</p>
+<p><strong>2.</strong> Since <span class="math" data-tex="\(\sqrt{1-x^2}\le1\le Y\)">\(\sqrt{1-x^2}\le1\le Y\)</span>, integration up to <span class="math" data-tex="\(Y\)">\(Y\)</span> gives
+<span class="math math-display" data-tex="\[
+\int_{-1/2}^{1/2}\left(\frac1{\sqrt{1-x^2}}-\frac1Y\right)dx
+=\frac\pi3-\frac1Y.
+\]">\[
+\int_{-1/2}^{1/2}\left(\frac1{\sqrt{1-x^2}}-\frac1Y\right)dx
+=\frac\pi3-\frac1Y.
+\]</span>
+The omitted vertical tail has area <span class="math" data-tex="\(1/Y\)">\(1/Y\)</span>. Their sum is <span class="math" data-tex="\(\pi/3\)">\(\pi/3\)</span>, and the truncated area tends to it.</p>
+<p><strong>3.</strong> Use <span class="math" data-tex="\(\rho^2+\rho+1=0\)">\(\rho^2+\rho+1=0\)</span> in <span class="math" data-tex="\(c\rho^2+(d-a)\rho-b=0\)">\(c\rho^2+(d-a)\rho-b=0\)</span>. The real basis <span class="math" data-tex="\(1,\rho\)">\(1,\rho\)</span> gives <span class="math" data-tex="\(b=-c\)">\(b=-c\)</span>, <span class="math" data-tex="\(a=d-c\)">\(a=d-c\)</span>. Determinant one gives <span class="math" data-tex="\((d-c/2)^2+3c^2/4=1\)">\((d-c/2)^2+3c^2/4=1\)</span>, so <span class="math" data-tex="\(|c|\le1\)">\(|c|\le1\)</span>. For <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, <span class="math" data-tex="\(d=\pm1\)">\(d=\pm1\)</span>; for <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, <span class="math" data-tex="\(d=0,1\)">\(d=0,1\)</span>; for <span class="math" data-tex="\(c=-1\)">\(c=-1\)</span>, <span class="math" data-tex="\(d=0,-1\)">\(d=0,-1\)</span>. The matrices are <span class="math" data-tex="\(I,ST,(ST)^2,-I,-ST,-(ST)^2\)">\(I,ST,(ST)^2,-I,-ST,-(ST)^2\)</span>. Projectivization identifies each matrix with its negative, leaving three transformations.</p>
+<p><strong>4.</strong> A finite-order projective element has a lift whose power is <span class="math" data-tex="\(\pm I\)">\(\pm I\)</span>. A real matrix with trace of absolute value greater than two has real eigenvalues of unequal absolute value; no power is scalar. At trace of absolute value two, a nonscalar Jordan block retains a nonzero off-diagonal entry in every power. Thus the lift is elliptic and fixes a point of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. Conjugate that point into <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>. Its stabilizer, computed in Proposition 3.3, is trivial, <span class="math" data-tex="\(\langle s\rangle\)">\(\langle s\rangle\)</span>, or <span class="math" data-tex="\(\langle u\rangle\)">\(\langle u\rangle\)</span>. Nonidentity excludes the first possibility and yields exactly the asserted conjugacy classes and orders.</p>
+<p><strong>5.</strong> For <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>, <span class="math" data-tex="\(-1/x&gt;0\)">\(-1/x&gt;0\)</span>; for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, both <span class="math" data-tex="\(-1/(x+1)\)">\(-1/(x+1)\)</span> and <span class="math" data-tex="\(-(x+1)/x\)">\(-(x+1)/x\)</span> are negative. Irrational inputs remain irrational, so no pole or zero interrupts these actions. If the end letters of a reduced word belong to the same factor, successive applications, read from the right, alternate half-lines and send one half-line into the other. Hence the word is not identity. Otherwise replace it by its inverse so that it starts with <span class="math" data-tex="\(s\)">\(s\)</span> and ends with <span class="math" data-tex="\(u^e\)">\(u^e\)</span>. Conjugate by the other nonidentity power <span class="math" data-tex="\(u^j\)">\(u^j\)</span>, <span class="math" data-tex="\(j\ne e\)">\(j\ne e\)</span>. Neither end cancels, and the conjugate now starts and ends in the <span class="math" data-tex="\(u\)">\(u\)</span>-factor, a case already excluded. Therefore every nonempty reduced word has nonidentity image. Generation by <span class="math" data-tex="\(S,T\)">\(S,T\)</span> and <span class="math" data-tex="\(T=s u\)">\(T=s u\)</span> in the projective group gives surjectivity as well, proving the free-product description.</p>
+<h2 id="analytic-facts-for-subsequent-lessons">Analytic facts for subsequent lessons</h2>
+<p><strong>Lemma 0.2 (complex-analysis facts for the later lessons).</strong> A holomorphic function has a convergent power series on every sufficiently small disk. On a connected open set it is determined by its values on a set with an interior accumulation point. A holomorphic function on a neighborhood of a closed rectangle has modulus at most its maximum on the boundary. If it is instead meromorphic there, has no pole on the boundary, and has finitely many simple poles in the interior, its positively oriented boundary integral is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> times the sum of its residues. Locally uniform limits of holomorphic functions are holomorphic.</p>
+<p><strong>Proof.</strong> We include the contour foundations. For a closed triangle contained in the open set, subdivide into four similar triangles by joining side midpoints. The interior edges cancel in the sum of the oriented boundary integrals. If the original integral has modulus <span class="math" data-tex="\(J\)">\(J\)</span>, some subtriangle has integral modulus at least <span class="math" data-tex="\(J/4\)">\(J/4\)</span>. Iterating gives nested triangles <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, with diameters and perimeters respectively <span class="math" data-tex="\(2^{-n}d\)">\(2^{-n}d\)</span> and <span class="math" data-tex="\(2^{-n}l\)">\(2^{-n}l\)</span>, and integral modulus at least <span class="math" data-tex="\(4^{-n}J\)">\(4^{-n}J\)</span>. Their intersection is a single point <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. Complex differentiability gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)=f(z_0)+f&#x27;(z_0)(z-z_0)+r(z),\\
+|r(z)|\le\eta|z-z_0|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(z)=f(z_0)+f&#x27;(z_0)(z-z_0)+r(z),\\
+|r(z)|\le\eta|z-z_0|.
+\end{gathered}
+\]</span>
+on sufficiently small triangles, for every <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. The integrals of the constant and linear terms vanish, by their explicit polynomial primitives. The remaining integral is at most <span class="math" data-tex="\(\eta ld\,4^{-n}\)">\(\eta ld\,4^{-n}\)</span>. Thus <span class="math" data-tex="\(J\le\eta ld\)">\(J\le\eta ld\)</span> for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, forcing <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. Triangulating a polygon proves the same assertion for it. Shared edges cancel, including across a finite polygonal decomposition of a region with holes.</p>
+<p>On a disk, the triangle assertion gives a primitive of any holomorphic function: integrate from a fixed point along a line segment, and compare neighboring segments using their triangle. The change along the small joining segment, divided by its increment, tends to the value of the function by continuity. This proves the primitive derivative directly. The same construction on small disks shows that a contour integral is invariant under a homotopy avoiding singularities: subdivide the parameter square into sufficiently small rectangles whose images lie in disks with such primitives; their integrals cancel. Such a finite subdivision exists by uniform continuity and a finite disk cover of the compact homotopy image. This applies to piecewise smooth contour homotopies.</p>
+<p>Choose a closed filled disk contained in the open set, a point <span class="math" data-tex="\(z\)">\(z\)</span> in its interior, and apply this invariance to <span class="math" data-tex="\(f(\zeta)/(\zeta-z)\)">\(f(\zeta)/(\zeta-z)\)</span> on the annulus between the circle and a small circle about <span class="math" data-tex="\(z\)">\(z\)</span>. The latter integral tends to <span class="math" data-tex="\(2\pi i f(z)\)">\(2\pi i f(z)\)</span>: its constant part integrates to that value under <span class="math" data-tex="\(\zeta=z+re^{it}\)">\(\zeta=z+re^{it}\)</span>, and continuity bounds the remaining integral by <span class="math" data-tex="\(2\pi\sup_{|\zeta-z|=r}|f(\zeta)-f(z)|\to0\)">\(2\pi\sup_{|\zeta-z|=r}|f(\zeta)-f(z)|\to0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)=\frac1{2\pi i}\int_{|\zeta-p|=R}
+\frac{f(\zeta)}{\zeta-z}\,d\zeta,\\
+|z-p|&lt;R.
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(z)=\frac1{2\pi i}\int_{|\zeta-p|=R}
+\frac{f(\zeta)}{\zeta-z}\,d\zeta,\\
+|z-p|&lt;R.
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(|z-p|\le r&lt;R\)">\(|z-p|\le r&lt;R\)</span>, expand the denominator as the uniformly convergent geometric series in <span class="math" data-tex="\((z-p)/(\zeta-p)\)">\((z-p)/(\zeta-p)\)</span>. Integration gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(z)=\sum_{j\ge0}c_j(z-p)^j,\\
+c_j=\frac1{2\pi i}\int_{|\zeta-p|=R}
+\frac{f(\zeta)}{(\zeta-p)^{j+1}}\,d\zeta,\\
+|c_j|\le R^{-j}\max_{|\zeta-p|=R}|f(\zeta)|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(z)=\sum_{j\ge0}c_j(z-p)^j,\\
+c_j=\frac1{2\pi i}\int_{|\zeta-p|=R}
+\frac{f(\zeta)}{(\zeta-p)^{j+1}}\,d\zeta,\\
+|c_j|\le R^{-j}\max_{|\zeta-p|=R}|f(\zeta)|.
+\end{gathered}
+\]</span>
+These bounds also justify termwise differentiation on smaller disks. A nonzero series whose constant term is zero factors as <span class="math" data-tex="\((z-p)^h\)">\((z-p)^h\)</span> times a series with a nonzero constant, so its zero at <span class="math" data-tex="\(p\)">\(p\)</span> is isolated. If zeros accumulate, every coefficient at that limit point is zero and the function vanishes on a disk. The set of points with a vanishing neighborhood is then open and closed in the connected domain: at a limit point, an accumulating sequence of zeros forces the same conclusion. This proves the identity assertion, including equality of two functions by applying it to their difference.</p>
+<p>At an interior local maximum, rotate the function by a constant phase to make <span class="math" data-tex="\(f(p)=M\ge0\)">\(f(p)=M\ge0\)</span>. The circle formula at its centre says <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span> is the mean of <span class="math" data-tex="\(f\)">\(f\)</span> on every sufficiently small circle. There <span class="math" data-tex="\(\operatorname{Re}f\le|f|\le M\)">\(\operatorname{Re}f\le|f|\le M\)</span>, and the mean is <span class="math" data-tex="\(M\)">\(M\)</span>. The nonnegative continuous function <span class="math" data-tex="\(M-\operatorname{Re}f\)">\(M-\operatorname{Re}f\)</span> therefore has zero integral and is zero everywhere on that circle. Since <span class="math" data-tex="\(|f|\le M\)">\(|f|\le M\)</span>, its imaginary part is also zero. This holds on every such circle, giving constancy on a disk and then on the connected domain. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, the same conclusion is immediate. Compactness supplies a maximum on a closed rectangle; an interior maximum forces constancy, so in either case the boundary maximum bounds it.</p>
+<p>For the residue assertion, a simple pole at <span class="math" data-tex="\(p\)">\(p\)</span> means precisely that <span class="math" data-tex="\(f(z)-c_p/(z-p)\)">\(f(z)-c_p/(z-p)\)</span> extends holomorphically near <span class="math" data-tex="\(p\)">\(p\)</span>, where <span class="math" data-tex="\(c_p\)">\(c_p\)</span> is its residue. Subtract all these principal parts. The remainder is holomorphic on a neighborhood of the rectangle, so its boundary integral is zero by the triangle proof. The integral of <span class="math" data-tex="\(1/(z-p)\)">\(1/(z-p)\)</span> on the boundary is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>: shrink the rectangle around its interior point through contours avoiding <span class="math" data-tex="\(p\)">\(p\)</span>, and evaluate on a small circle as above. Adding the principal parts proves the claimed formula with its positive orientation.</p>
+<p>Finally a locally uniform limit may be passed through the circle formula, since its circle is compact. The resulting integral of the continuous limit has a convergent power series on every smaller disk by the same geometric expansion. Thus the limit is holomorphic. This also applies to integrals obtained as locally uniform limits of holomorphic finite integrals. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The freely available text of Lebl, Sections 2.4 and 3.2–3.3, provides background for these classical steps. The contour and power-series facts needed by the later lessons have been written here.</p>
+<p><strong>Local inverse consequence.</strong> If <span class="math" data-tex="\(f&#x27;(p)=a\ne0\)">\(f&#x27;(p)=a\ne0\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> has a holomorphic inverse on a neighborhood of <span class="math" data-tex="\(f(p)\)">\(f(p)\)</span>. To prove this, take a small closed disk of radius <span class="math" data-tex="\(R\)">\(R\)</span> on which <span class="math" data-tex="\(|f&#x27;(z)-a|\le|a|/2\)">\(|f&#x27;(z)-a|\le|a|/2\)</span>. Integration along a segment bounds the difference of <span class="math" data-tex="\(g(z)=f(z)-f(p)-a(z-p)\)">\(g(z)=f(z)-f(p)-a(z-p)\)</span> at two points by <span class="math" data-tex="\((|a|/2)|z_1-z_2|\)">\((|a|/2)|z_1-z_2|\)</span>. For <span class="math" data-tex="\(|w-f(p)|&lt;|a|R/2\)">\(|w-f(p)|&lt;|a|R/2\)</span>, iterate
+<span class="math math-display" data-tex="\[
+z_{j+1}=p+\frac{w-f(p)-g(z_j)}a,\qquad z_0=p.
+\]">\[
+z_{j+1}=p+\frac{w-f(p)-g(z_j)}a,\qquad z_0=p.
+\]</span>
+This map takes the disk to itself and contracts distances by at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Its successive differences form a bounded geometric series, so the iterates converge in the closed disk. Passing to the limit gives <span class="math" data-tex="\(f(z)=w\)">\(f(z)=w\)</span>, and the same contraction shows uniqueness. Each iterate is holomorphic in <span class="math" data-tex="\(w\)">\(w\)</span>; the geometric error bound is locally uniform, so Lemma 0.2 makes the limit holomorphic. For a slightly smaller target disk the image lies strictly inside the source disk, yielding the required local inverse.</p>
+<p>A nonconstant holomorphic map has a local form <span class="math" data-tex="\(u\mapsto u^r\)">\(u\mapsto u^r\)</span> in suitable coordinates: its convergent series gives <span class="math" data-tex="\(f(z)-f(p)=a(z-p)^r(1+h(z))\)">\(f(z)-f(p)=a(z-p)^r(1+h(z))\)</span>, with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> and <span class="math" data-tex="\(h(p)=0\)">\(h(p)=0\)</span>. Shrink until <span class="math" data-tex="\(|h|&lt;1\)">\(|h|&lt;1\)</span>. The convergent series for <span class="math" data-tex="\(\log(1+h)\)">\(\log(1+h)\)</span> gives a holomorphic logarithm there (differentiate its geometric series and fix its value zero at <span class="math" data-tex="\(p\)">\(p\)</span>). Choose one complex <span class="math" data-tex="\(r\)">\(r\)</span>-th root of <span class="math" data-tex="\(a\)">\(a\)</span> and set
+<span class="math" data-tex="\(u=a^{1/r}(z-p)\exp(\log(1+h(z))/r)\)">\(u=a^{1/r}(z-p)\exp(\log(1+h(z))/r)\)</span>.
+Then <span class="math" data-tex="\(u&#x27;(p)=a^{1/r}\ne0\)">\(u&#x27;(p)=a^{1/r}\ne0\)</span>, so the local inverse just proved makes <span class="math" data-tex="\(u\)">\(u\)</span> a coordinate, and the map is exactly <span class="math" data-tex="\(u^r\)">\(u^r\)</span>. This proves the local branching description used for the modular covering.</p>
+<p><strong>Lemma 0.3 (the continuous improper-integral interchanges used below).</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be an interval, possibly unbounded. All integrals in this lemma are limits over increasing compact subintervals. The following statements concern continuous functions; they make no assertion about arbitrary measurable functions.</p>
+<ol>
+<li>
+<p>Suppose <span class="math" data-tex="\(g_n\)">\(g_n\)</span> are continuous on <span class="math" data-tex="\(J\)">\(J\)</span>, their series converges uniformly on each compact subinterval, and <span class="math" data-tex="\(\sum_n\int_J|g_n|&lt;\infty\)">\(\sum_n\int_J|g_n|&lt;\infty\)</span>. Then its sum <span class="math" data-tex="\(g\)">\(g\)</span> is absolutely integrable and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_J g=\sum_n\int_Jg_n,\\
+\int_J\left|g-\sum_{n\le A}g_n\right|
+\le\sum_{n&gt;A}\int_J|g_n|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\int_J g=\sum_n\int_Jg_n,\\
+\int_J\left|g-\sum_{n\le A}g_n\right|
+\le\sum_{n&gt;A}\int_J|g_n|.
+\end{gathered}
+\]</span>
+For a locally uniformly convergent series of nonnegative continuous functions, the equality of the integral and the sum of integrals holds with infinity allowed, without assuming finiteness in advance. The same assertions hold on an open plane domain <span class="math" data-tex="\(D\)">\(D\)</span>, with an increasing compact exhaustion <span class="math" data-tex="\(K_j\subset\operatorname{int}K_{j+1}\)">\(K_j\subset\operatorname{int}K_{j+1}\)</span>, <span class="math" data-tex="\(\bigcup_jK_j=D\)">\(\bigcup_jK_j=D\)</span>, in which each <span class="math" data-tex="\(K_j\)">\(K_j\)</span> is a bounded region with finitely many piecewise continuously differentiable boundary arcs. Require continuity on <span class="math" data-tex="\(D\)">\(D\)</span>, uniform convergence on every compact subset, and one fixed nonnegative continuous density <span class="math" data-tex="\(w\)">\(w\)</span>; define the improper area integral by this exhaustion.</p>
+</li>
+<li>
+<p>Let <span class="math" data-tex="\(h\)">\(h\)</span> be continuous on <span class="math" data-tex="\(J\times I\)">\(J\times I\)</span>, where <span class="math" data-tex="\(J,I\)">\(J,I\)</span> are intervals, and suppose <span class="math" data-tex="\(|h(x,t)|\le p(x)q(t)\)">\(|h(x,t)|\le p(x)q(t)\)</span>, where <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are nonnegative continuous functions with finite improper integrals. Both iterated integrals exist absolutely and are equal. If continuous functions <span class="math" data-tex="\(h_\alpha\)">\(h_\alpha\)</span> share this same fixed majorant and converge uniformly on every compact rectangle to <span class="math" data-tex="\(h\)">\(h\)</span>, both iterated integrals converge to the corresponding integrals of <span class="math" data-tex="\(h\)">\(h\)</span>. Also, if continuous <span class="math" data-tex="\(u_\alpha\)">\(u_\alpha\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> converge uniformly on compact intervals to <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(|u_\alpha|\le p\)">\(|u_\alpha|\le p\)</span> for one continuous integrable <span class="math" data-tex="\(p\)">\(p\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is absolutely integrable and <span class="math" data-tex="\(\int_Ju_\alpha\to\int_Ju\)">\(\int_Ju_\alpha\to\int_Ju\)</span>.</p>
+</li>
+<li>
+<p>Suppose <span class="math" data-tex="\(H(s,x)\)">\(H(s,x)\)</span> is jointly continuous for <span class="math" data-tex="\(s\)">\(s\)</span> in an open complex set and <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, holomorphic in <span class="math" data-tex="\(s\)">\(s\)</span> for each <span class="math" data-tex="\(x\)">\(x\)</span>. If each compact set of parameters has a nonnegative continuous integrable majorant <span class="math" data-tex="\(p(x)\)">\(p(x)\)</span> for <span class="math" data-tex="\(|H(s,x)|\)">\(|H(s,x)|\)</span>, then <span class="math" data-tex="\(\int_JH(s,x)dx\)">\(\int_JH(s,x)dx\)</span> is holomorphic in <span class="math" data-tex="\(s\)">\(s\)</span>. The same conclusion holds for the plane integrals and fixed density in part 1.</p>
+</li>
+</ol>
+<p><strong>Proof.</strong> On a compact interval, uniform convergence permits passage through the integral: the error is at most the interval length times the uniform error. For part 1, apply this observation to the finite tail sums, and use the triangle inequality. On every compact subinterval their limit has integral of its absolute value bounded by <span class="math" data-tex="\(\sum_{n&gt;A}\int_J|g_n|\)">\(\sum_{n&gt;A}\int_J|g_n|\)</span>. Exhausting <span class="math" data-tex="\(J\)">\(J\)</span> proves the displayed bound, including absolute integrability at <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. Its right side tends to zero, so the integral identity follows. For a nonnegative series, each finite partial sum gives the lower bound <span class="math" data-tex="\(\sum_{n\le A}\int_Jg_n\le\int_Jg\)">\(\sum_{n\le A}\int_Jg_n\le\int_Jg\)</span>. Conversely, on a compact subinterval uniform convergence gives <span class="math" data-tex="\(\int_Kg=\sum_n\int_Kg_n\le\sum_n\int_Jg_n\)">\(\int_Kg=\sum_n\int_Kg_n\le\sum_n\int_Jg_n\)</span>. Exhaust <span class="math" data-tex="\(J\)">\(J\)</span> for the reverse bound. This proves the nonnegative assertion, also when either side is infinite.</p>
+<p>For the compact plane integrals, cover each of the finitely many boundary arcs by its continuously differentiable pieces. Its derivative is bounded on the compact parameter interval. Subdivide that interval into <span class="math" data-tex="\(O(1/\varepsilon)\)">\(O(1/\varepsilon)\)</span> pieces with image diameter at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Each image meets a bounded number of square-grid cells of side <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, so all boundary cells have total area <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span>. Uniform continuity controls the upper-minus-lower sum on the remaining interior cells by the region's area times the modulus of continuity at <span class="math" data-tex="\(\sqrt2\varepsilon\)">\(\sqrt2\varepsilon\)</span>. On boundary cells the error is at most twice the maximum modulus times their total area. Both errors tend to zero. This proves the compact area integral, also for a continuous density by applying the same argument to the product with <span class="math" data-tex="\(w\)">\(w\)</span>; holes add only finitely many boundary arcs.</p>
+<p>For the plane version of part 1, replace the interval length in the compact uniform error bound by the region's area times the maximum of its continuous density. The identical exhaustion and tail argument then applies.</p>
+<p>For part 2, each inner integral exists absolutely by the bound <span class="math" data-tex="\(p(x)q(t)\)">\(p(x)q(t)\)</span>. On a compact <span class="math" data-tex="\(x\)">\(x\)</span>-interval <span class="math" data-tex="\(K\)">\(K\)</span>, the omitted inner tail is at most <span class="math" data-tex="\(\max_Kp\)">\(\max_Kp\)</span> times the omitted <span class="math" data-tex="\(q\)">\(q\)</span>-integral. The inner integral is consequently a locally uniform limit of continuous compact integrals and is continuous in <span class="math" data-tex="\(x\)">\(x\)</span>. Its absolute value is at most <span class="math" data-tex="\(p(x)\int_Iq\)">\(p(x)\int_Iq\)</span>, so the outer integral exists absolutely. The same argument applies in the other order.</p>
+<p>On a compact rectangle the two integrals of a continuous function agree. Indeed uniform continuity makes the same rectangular Riemann sums approximate both orders: refine both partitions until the oscillation on every cell is less than a given number; the total error is at most this number times the rectangle area. For part 2, choose compact intervals <span class="math" data-tex="\(K,L\)">\(K,L\)</span> with small <span class="math" data-tex="\(p\)">\(p\)</span>- and <span class="math" data-tex="\(q\)">\(q\)</span>-integrals on their complements. Outside <span class="math" data-tex="\(K\times L\)">\(K\times L\)</span>, the absolute error in either order is at most
+<span class="math math-display" data-tex="\[
+ \left(\int_{J\setminus K}p\right)\left(\int q\right)
+ +\left(\int p\right)\left(\int_{I\setminus L}q\right).
+\]">\[
+ \left(\int_{J\setminus K}p\right)\left(\int q\right)
+ +\left(\int p\right)\left(\int_{I\setminus L}q\right).
+\]</span>
+It tends to zero independently of the order. On the retained rectangle use the equality just proved. This also proves the limiting assertion by first choosing the rectangle and then using uniform convergence there. For a one-variable limit with an integrable majorant the same argument uses a compact interval, with tail error at most twice the majorant integral outside it.</p>
+<p>For part 3, truncated integrals over a compact interval are locally uniform limits of holomorphic Riemann sums. Joint continuity on compact parameter products gives their uniform approximation. Lemma 0.2 proves that these truncated integrals are holomorphic. The integrable majorant makes their tails uniformly small on each compact parameter set. Another application of Lemma 0.2 therefore proves holomorphy of the full integral. For a compact plane region use fixed grid Riemann sums; the boundary-grid bound just proved and joint uniform continuity give locally uniform convergence in the parameters. The same majorant tail argument then applies to its exhaustion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These proofs justify the particular continuous series, Gaussian double integrals, and holomorphic-parameter integrals used later. A general measure-theoretic Tonelli, Fubini or dominated-convergence theorem is a separate foundational result.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Lemma 0.1 proves the Euclidean and Bezout statements used in reduction. The semicircle example includes its minimizing-length argument, and the area calculation uses a direct integral. Lemma 0.2 and its local inverse consequence supply the contour, power-series and branching facts needed later. Lemma 0.3 supplies the stated continuous improper-integral interchanges and holomorphic-parameter integrals. General measurable integration and plane change of variables are separate foundational results. Basic real differentiation, integration, integer division, the well-ordering of positive integers and elementary compactness of bounded closed subsets of the plane remain foundational prerequisites. Exact earlier programme proofs for those foundations have not been verified in this lesson, so the stronger all-dependencies proof-closure requirement remains open at that level. The invariant metric's general geodesic theory is not asserted.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>J. Lebl, <em>A Guide to Cultivating Complex Analysis</em>, freely distributed author text, version 1.9, Sections 2.4 and 3.2–3.3. <a href="https://www.jirka.org/ca/ca.pdf">Free author PDF</a>. Lemma 0.2 above gives the local proofs used in this course.</p>
+</li>
+<li>
+<p>[Wiese 2018] G. Wiese, <em>Computational Arithmetic of Modular Forms</em>, lecture notes, 2018, §§4.1–4.2. <a href="https://arxiv.org/abs/1809.04645">Open text</a>.</p>
+</li>
+<li>
+<p>[Voight open book] J. Voight, <em>Quaternion Algebras</em>, freely distributed stable post-publication version 1.0.5 (10 January 2024), §§33.3–33.6 and §35.1. <a href="https://jvoight.github.io/quat-book-v1.0.5.pdf">Author's stable free PDF</a>.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points →</a></span></nav>
+<p class="small source-link"><a href="src/the-upper-half-plane-and-the-modular-group.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

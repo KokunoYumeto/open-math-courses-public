@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kähler differentials · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/kahler-differentials.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="COPYING-GFDL-1.2.txt">GFDL-1.2-or-later</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="kähler-differentials">Kähler differentials</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra
+setting, October 2026. This edition incorporates an AI Integrated Stacks
+Project proof under GNU FDL 1.2; see the attribution and licence notice
+below.</em></p>
+<p>A polynomial equation constrains both its points and its first-order
+variations. Differentiating the equation produces a linear relation
+among those variations. The module of Kähler differentials makes this
+calculation intrinsic: it represents every derivation, works over any
+base ring, and keeps track of the relations introduced by a quotient.
+Its fibre dimensions also explain why a singular curve can require two
+infinitesimal directions even though its generic point requires only
+one.</p>
+<p>All rings are commutative with identity. No Noetherian hypothesis is
+implicit. Modules called finite are finitely generated. We use the <a
+href="AG-CA-02.html">localization lesson</a> for the universal property
+of localization and tensor products with fractions, and the <a
+href="AG-CA-07.html">flatness lesson</a> for right exactness of tensor
+product. One auxiliary result uses the proved exactness of Koszul
+complexes, Theorem 4.1 of the <a
+href="AG-CA-13.html">projective-dimension lesson</a>. We write <span
+class="math inline">\(\overline s\)</span> for the image of an element
+under a quotient map.</p>
+<h2 id="a-module-representing-differentiation">1. A module representing
+differentiation</h2>
+<p>For a ring map <span class="math inline">\(R\to S\)</span> and an
+<span class="math inline">\(S\)</span>-module <span
+class="math inline">\(M\)</span>, an <strong><span
+class="math inline">\(R\)</span>-derivation</strong> is an additive map
+<span class="math inline">\(D:S\to M\)</span> which vanishes on the
+image of <span class="math inline">\(R\)</span> and satisfies</p>
+<p><span class="math display">\[
+D(st)=sD(t)+tD(s).
+\tag{1}
+\]</span></p>
+<p>It is <span class="math inline">\(R\)</span>-linear. It is usually
+not <span class="math inline">\(S\)</span>-linear. The identity with
+<span class="math inline">\(s=t=1\)</span> gives <span
+class="math inline">\(D(1)=0\)</span>, and induction gives <span
+class="math inline">\(D(s^n)=ns^{n-1}D(s)\)</span> for positive integers
+<span class="math inline">\(n\)</span>. Derivations form an <span
+class="math inline">\(S\)</span>-module, denoted <span
+class="math inline">\(\operatorname{Der}_R(S,M)\)</span>. [Stacks, Tag
+00RN.]</p>
+<p><strong>Theorem 1.1 (universal differential).</strong> There is an
+<span class="math inline">\(S\)</span>-module <span
+class="math inline">\(\Omega_{S/R}\)</span> and an <span
+class="math inline">\(R\)</span>-derivation <span
+class="math inline">\(d:S\to\Omega_{S/R}\)</span> such that, for every
+<span class="math inline">\(M\)</span>, composition with <span
+class="math inline">\(d\)</span> gives a bijection</p>
+<p><span class="math display">\[
+\operatorname{Hom}_S(\Omega_{S/R},M)
+\simeq\operatorname{Der}_R(S,M).
+\tag{2}
+\]</span></p>
+<p>This pair is unique up to a unique isomorphism compatible with <span
+class="math inline">\(d\)</span>.</p>
+<p><strong>Proof.</strong> Take the free <span
+class="math inline">\(S\)</span>-module with one symbol <span
+class="math inline">\([s]\)</span> for each <span
+class="math inline">\(s\in S\)</span>. Divide by the submodule generated
+by</p>
+<p><span class="math display">\[
+[s+t]-[s]-[t],\qquad [st]-s[t]-t[s],\qquad
+[r]\quad(r\in\operatorname{im}R).
+\tag{3}
+\]</span></p>
+<p>The images <span class="math inline">\(ds\)</span> satisfy (1) and
+give a derivation. Given <span class="math inline">\(D\)</span>, the
+unique linear map sending <span class="math inline">\([s]\)</span> to
+<span class="math inline">\(D(s)\)</span> kills (3), so descends
+uniquely. Conversely any linear map out of this quotient gives a
+derivation. For two universal pairs, their universal properties give
+maps in both directions carrying each differential to the other. Both
+composites fix the generating differentials, hence are identities. <span
+class="math inline">\(\square\)</span></p>
+<p>This proof also shows that the <span
+class="math inline">\(ds\)</span> generate <span
+class="math inline">\(\Omega\)</span> as a module; it does not assert
+that every differential form is <span class="math inline">\(ds\)</span>
+for one <span class="math inline">\(s\)</span>. If <span
+class="math inline">\(R\to S\)</span> is surjective, all <span
+class="math inline">\(ds\)</span> vanish, so <span
+class="math inline">\(\Omega_{S/R}=0\)</span>. [Stacks, Tags 07BK, 00RO,
+00RP.]</p>
+<p>For later use, form the <strong>square-zero ring</strong> <span
+class="math inline">\(S\oplus M\)</span>, with multiplication <span
+class="math inline">\((s,m)(t,n)=(st,sn+tm)\)</span> and identity <span
+class="math inline">\((1,0)\)</span>. For three factors <span
+class="math inline">\((s,m),(t,n),(u,\ell)\)</span>, either product
+order has module component <span class="math inline">\(st\ell+su n+tu
+m\)</span>, proving associativity. Ring sections of its projection to
+<span class="math inline">\(S\)</span>, compatible with <span
+class="math inline">\(R\)</span>, have precisely the form <span
+class="math inline">\(s\mapsto(s,D(s))\)</span> for <span
+class="math inline">\(R\)</span>-derivations <span
+class="math inline">\(D\)</span>. This follows by comparing addition,
+multiplication and the images of base elements.</p>
+<h2 id="changing-rings-and-inverting-elements">2. Changing rings and
+inverting elements</h2>
+<p>A commutative square <span class="math inline">\(R\to S\)</span>,
+<span class="math inline">\(R&#39;\to S&#39;\)</span> induces a map
+<span
+class="math inline">\(S&#39;\otimes_S\Omega_{S/R}\to\Omega_{S&#39;/R&#39;}\)</span>,
+sending <span class="math inline">\(1\otimes ds\)</span> to the
+differential of the image of <span class="math inline">\(s\)</span>. The
+composite <span class="math inline">\(S\to
+S&#39;\to\Omega_{S&#39;/R&#39;}\)</span> is an <span
+class="math inline">\(R\)</span>-derivation, so (2) constructs the map.
+The same description proves compatibility with composition.</p>
+<p><strong>Theorem 2.1 (base change).</strong> Put <span
+class="math inline">\(S&#39;=S\otimes_R R&#39;\)</span>. There is a
+natural isomorphism</p>
+<p><span class="math display">\[
+\Omega_{S&#39;/R&#39;}\simeq S&#39;\otimes_S\Omega_{S/R}
+\simeq\Omega_{S/R}\otimes_R R&#39;.
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> In the module on the right define <span
+class="math inline">\(d&#39;(s\otimes r&#39;)=ds\otimes r&#39;\)</span>.
+This is balanced over <span class="math inline">\(R\)</span>, because
+<span class="math inline">\(d(rs)=r\,ds\)</span>; extend additively to
+sums of tensors. Checking products of pure tensors gives the Leibniz
+identity, hence the identity for arbitrary sums. Base elements have
+differential zero. An <span
+class="math inline">\(R&#39;\)</span>-derivation into an <span
+class="math inline">\(S&#39;\)</span>-module <span
+class="math inline">\(M\)</span> restricts along <span
+class="math inline">\(s\mapsto s\otimes1\)</span> to an <span
+class="math inline">\(R\)</span>-derivation. Conversely such a
+derivation <span class="math inline">\(D\)</span> extends by <span
+class="math inline">\(s\otimes r&#39;\mapsto r&#39;D(s)\)</span>;
+balancing and multiplication are verified in exactly the same way. These
+constructions are inverse. Thus <span
+class="math inline">\(d&#39;\)</span> represents all <span
+class="math inline">\(R&#39;\)</span>-derivations, and Theorem 1.1 gives
+(4). No flatness is needed. <span class="math inline">\(\square\)</span>
+[Stacks, Tag 00RV.]</p>
+<p><strong>Theorem 2.2 (localization).</strong> For any multiplicative
+subset <span class="math inline">\(U\subset S\)</span>,</p>
+<p><span class="math display">\[
+\Omega_{U^{-1}S/R}\simeq U^{-1}\Omega_{S/R},
+\qquad d(s/u)=u^{-1}ds-su^{-2}du.
+\tag{5}
+\]</span></p>
+<p>If elements of the base are inverted as well, their differentials are
+zero, so the same module represents derivations over the localized
+base.</p>
+<p><strong>Proof.</strong> Let <span class="math inline">\(M\)</span> be
+a module over <span class="math inline">\(S_U=U^{-1}S\)</span>, and let
+<span class="math inline">\(D:S\to M\)</span> be an <span
+class="math inline">\(R\)</span>-derivation. The map <span
+class="math inline">\(s\mapsto(s/1,D(s))\)</span> is a ring map into
+<span class="math inline">\(S_U\oplus M\)</span>. Each <span
+class="math inline">\(u\in U\)</span> maps to a unit, with inverse <span
+class="math inline">\((u^{-1},-u^{-2}D(u))\)</span>. The universal
+property of localization therefore extends this ring map uniquely to
+<span class="math inline">\(S_U\)</span>. Its first component is the
+identity, so its second is a derivation, necessarily given by (5).
+Restriction and extension are inverse. By (2) and the tensor adjunction,
+these derivations are represented by <span
+class="math inline">\(S_U\otimes_S\Omega_{S/R}\)</span>. The
+localization lesson identifies this tensor product with <span
+class="math inline">\(U^{-1}\Omega_{S/R}\)</span>. If a base element
+becomes invertible, (5) gives derivative zero for its inverse. The
+argument includes zero divisors and even localization to the zero ring;
+no cancellation of fractions was used. <span
+class="math inline">\(\square\)</span> [Stacks, Tag 00RT.]</p>
+<p><strong>Proposition 2.3 (directed colimits).</strong> Suppose <span
+class="math inline">\(R_i\to S_i\)</span> form a compatible directed
+system, with colimits <span class="math inline">\(R\to S\)</span>.
+Then</p>
+<p><span class="math display">\[
+\Omega_{S/R}\simeq\mathop{\operatorname{colim}}_i
+\bigl(S\otimes_{S_i}\Omega_{S_i/R_i}\bigr).
+\tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> For any <span
+class="math inline">\(S\)</span>-module <span
+class="math inline">\(M\)</span>, maps from the right-hand side to <span
+class="math inline">\(M\)</span> are compatible families of <span
+class="math inline">\(R_i\)</span>-derivations <span
+class="math inline">\(S_i\to M\)</span>. Such a family gives a
+well-defined additive map <span class="math inline">\(S\to M\)</span>:
+equality of two representatives holds at a later stage, where
+compatibility makes their values equal. Products and the Leibniz
+identity can also be checked at a common stage. Every base element comes
+from an <span class="math inline">\(R_i\)</span>, so the resulting
+derivation vanishes on <span class="math inline">\(R\)</span>.
+Restriction is the inverse operation. The right-hand side thus has the
+universal property (2), proving the assertion even when the transition
+maps are not injective. <span class="math inline">\(\square\)</span>
+[Stacks, Tag 031G.]</p>
+<h2 id="the-two-fundamental-sequences">3. The two fundamental
+sequences</h2>
+<p><strong>Theorem 3.1 (first fundamental sequence).</strong> For ring
+maps <span class="math inline">\(A\to B\to C\)</span>, the natural
+sequence</p>
+<p><span class="math display">\[
+C\otimes_B\Omega_{B/A}\xrightarrow{\alpha}
+\Omega_{C/A}\longrightarrow\Omega_{C/B}\longrightarrow0
+\tag{7}
+\]</span></p>
+<p>is exact, where <span class="math inline">\(\alpha(c\otimes
+db)=c\,d\overline b\)</span>.</p>
+<p><strong>Proof.</strong> Quotient <span
+class="math inline">\(\Omega_{C/A}\)</span> by the submodule generated
+by all <span class="math inline">\(d\overline b\)</span>. The resulting
+differential on <span class="math inline">\(C\)</span> vanishes on <span
+class="math inline">\(B\)</span>. A linear map from this quotient to a
+<span class="math inline">\(C\)</span>-module is exactly an <span
+class="math inline">\(A\)</span>-derivation on <span
+class="math inline">\(C\)</span> vanishing on <span
+class="math inline">\(B\)</span>, hence a <span
+class="math inline">\(B\)</span>-derivation. The quotient is therefore
+<span class="math inline">\(\Omega_{C/B}\)</span> by Theorem 1.1. Its
+defining submodule is the image of <span
+class="math inline">\(\alpha\)</span>, which proves every part of
+exactness. <span class="math inline">\(\square\)</span> [Stacks, Tag
+00RS.]</p>
+<p><strong>Proposition 3.2 (splitting test).</strong> The map <span
+class="math inline">\(\alpha\)</span> in (7) has a <span
+class="math inline">\(C\)</span>-linear left inverse if and only if
+every <span class="math inline">\(A\)</span>-derivation <span
+class="math inline">\(B\to M\)</span> extends to <span
+class="math inline">\(C\)</span>, for every <span
+class="math inline">\(C\)</span>-module <span
+class="math inline">\(M\)</span>.</p>
+<p><strong>Proof.</strong> Derivations on <span
+class="math inline">\(B\)</span> correspond to maps <span
+class="math inline">\(C\otimes_B\Omega_{B/A}\to M\)</span>. If <span
+class="math inline">\(\rho\alpha=1\)</span>, composing such a map with
+<span class="math inline">\(\rho\)</span> gives an extension. Conversely
+take <span class="math inline">\(M=C\otimes_B\Omega_{B/A}\)</span> and
+the derivation <span class="math inline">\(b\mapsto1\otimes db\)</span>.
+An extension supplies a map <span
+class="math inline">\(\rho:\Omega_{C/A}\to M\)</span>, with <span
+class="math inline">\(\rho\alpha=1\)</span> on generators and hence
+everywhere. A left inverse makes (7) split short exact. For example, if
+<span class="math inline">\(C=B[T_j]\)</span>, prescribing zero for the
+derivatives of the variables extends any derivation on <span
+class="math inline">\(B\)</span> by the polynomial product rule. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.3 (conormal sequence).</strong> Let <span
+class="math inline">\(C=S/I\)</span> for an ideal in an <span
+class="math inline">\(R\)</span>-algebra <span
+class="math inline">\(S\)</span>. There is an exact sequence</p>
+<p><span class="math display">\[
+I/I^2\xrightarrow{\delta}
+C\otimes_S\Omega_{S/R}\longrightarrow\Omega_{C/R}\longrightarrow0,
+\qquad \delta(\overline f)=1\otimes df.
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> The differential of a product of two elements
+of <span class="math inline">\(I\)</span> becomes zero after tensoring
+with <span class="math inline">\(C\)</span>. The same product rule shows
+<span class="math inline">\(d(sf)=s\,df\)</span> there for <span
+class="math inline">\(f\in I\)</span>, so <span
+class="math inline">\(\delta\)</span> is well-defined and <span
+class="math inline">\(C\)</span>-linear. Let <span
+class="math inline">\(Q\)</span> be its cokernel. The map <span
+class="math inline">\(S\to Q\)</span>, <span
+class="math inline">\(s\mapsto1\otimes ds\)</span>, kills <span
+class="math inline">\(I\)</span>, so defines an <span
+class="math inline">\(R\)</span>-derivation on <span
+class="math inline">\(C\)</span>. A derivation <span
+class="math inline">\(C\to M\)</span> pulls back to a derivation <span
+class="math inline">\(S\to M\)</span> killing <span
+class="math inline">\(I\)</span>, and its corresponding linear map kills
+the image of <span class="math inline">\(\delta\)</span>. These two
+operations are inverse, so <span class="math inline">\(Q\)</span>
+represents derivations on <span class="math inline">\(C\)</span>. Thus
+<span class="math inline">\(Q=\Omega_{C/R}\)</span>, proving (8). <span
+class="math inline">\(\square\)</span> [Stacks, Tags 00RR, 00RU.]</p>
+<p><strong>Proposition 3.4 (a split quotient).</strong> If <span
+class="math inline">\(q:S\to C=S/I\)</span> admits an <span
+class="math inline">\(R\)</span>-algebra section <span
+class="math inline">\(\sigma:C\to S\)</span>, (8) becomes a split short
+exact sequence, including injectivity of <span
+class="math inline">\(\delta\)</span>.</p>
+<p><strong>Proof.</strong> Set <span
+class="math inline">\(D(s)=s-\sigma(q(s))\pmod{I^2}\)</span>. The
+difference lies in <span class="math inline">\(I\)</span>. Writing <span
+class="math inline">\(s=\sigma(q(s))+i_s\)</span>, the product
+difference modulo <span class="math inline">\(I^2\)</span> is <span
+class="math inline">\(\sigma(q(s))i_t+\sigma(q(t))i_s\)</span>. This is
+exactly <span class="math inline">\(q(s)D(t)+q(t)D(s)\)</span> in the
+<span class="math inline">\(C\)</span>-module <span
+class="math inline">\(I/I^2\)</span>. Addition and vanishing on <span
+class="math inline">\(R\)</span> are immediate. The universal property
+gives a map <span class="math inline">\(\rho:C\otimes_S\Omega_{S/R}\to
+I/I^2\)</span>. For <span class="math inline">\(f\in I\)</span>, <span
+class="math inline">\(D(f)=\overline f\)</span>, so <span
+class="math inline">\(\rho\delta=1\)</span>. In the other direction,
+<span class="math inline">\(c\mapsto1\otimes d\sigma(c)\)</span> is an
+<span class="math inline">\(R\)</span>-derivation on <span
+class="math inline">\(C\)</span>, and its induced linear map is a right
+inverse to the last map of (8). <span
+class="math inline">\(\square\)</span> [Stacks, Tag 02HP.]</p>
+<p>A section of the quotient map has supplied a specific derivation.
+Merely having a ring retraction <span class="math inline">\(C\to
+B\)</span> in (7) does not guarantee a left inverse there. Take <span
+class="math inline">\(A=k\)</span>, <span
+class="math inline">\(B=k[t]\)</span>, <span
+class="math inline">\(C=B[u]/(tu)\)</span>, with retraction <span
+class="math inline">\(u\mapsto0\)</span>. The source of <span
+class="math inline">\(\alpha\)</span> is the free module <span
+class="math inline">\(C\,dt\)</span>. Its nonzero element <span
+class="math inline">\(u^2dt\)</span> maps to zero: differentiate <span
+class="math inline">\(tu^2=0\)</span>, obtaining <span
+class="math inline">\(u^2dt+2tu\,du=u^2dt=0\)</span>. The element <span
+class="math inline">\(u^2\)</span> is nonzero, as evaluation at <span
+class="math inline">\(t=0\)</span> shows. Thus <span
+class="math inline">\(\alpha\)</span> is not injective. The conormal
+counterexample in Exercise 8.5 will also show that a free module <span
+class="math inline">\(I/I^2\)</span> need not inject into the middle
+term of (8).</p>
+<h2 id="the-diagonal-ideal">4. The diagonal ideal</h2>
+<p><strong>Theorem 4.1 (differentials from the diagonal).</strong> Let
+<span class="math inline">\(J\)</span> be the kernel of multiplication
+<span class="math inline">\(\mu:S\otimes_R S\to S\)</span>. Regard <span
+class="math inline">\(J/J^2\)</span> as an <span
+class="math inline">\(S\)</span>-module through <span
+class="math inline">\(\mu\)</span>. Then</p>
+<p><span class="math display">\[
+\Omega_{S/R}\simeq J/J^2,
+\qquad ds\longleftrightarrow1\otimes s-s\otimes1\pmod{J^2}.
+\tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span
+class="math inline">\(\Delta(s)=1\otimes s-s\otimes1\)</span>. It is
+additive and vanishes on the base. Expanding gives <span
+class="math inline">\(\Delta(st)=(1\otimes
+s)\Delta(t)+(t\otimes1)\Delta(s)\)</span>. Modulo <span
+class="math inline">\(J^2\)</span>, the first coefficient can be
+replaced by <span class="math inline">\(s\otimes1\)</span>, since their
+difference belongs to <span class="math inline">\(J\)</span>. Thus <span
+class="math inline">\(\Delta\)</span> is a derivation into <span
+class="math inline">\(J/J^2\)</span>, inducing a map from <span
+class="math inline">\(\Omega\)</span>.</p>
+<p>Define an additive map <span class="math inline">\(T:S\otimes_R
+S\to\Omega_{S/R}\)</span> by <span class="math inline">\(T(a\otimes
+b)=a\,db\)</span>. It is balanced because <span
+class="math inline">\(d(rb)=r\,db\)</span>. On pure tensors the product
+rule gives <span
+class="math inline">\(T(uv)=\mu(u)T(v)+\mu(v)T(u)\)</span>, and
+bilinearity gives this for arbitrary tensors. Hence <span
+class="math inline">\(T\)</span> kills <span
+class="math inline">\(J^2\)</span>. Restricted to <span
+class="math inline">\(J\)</span>, it is linear for the action of <span
+class="math inline">\(S\)</span> through <span
+class="math inline">\(\mu\)</span>, by the same identity. It therefore
+gives a map <span class="math inline">\(J/J^2\to\Omega\)</span>, taking
+<span class="math inline">\(\Delta(s)\)</span> to <span
+class="math inline">\(ds\)</span>.</p>
+<p>Finally <span class="math inline">\(J\)</span> is generated by the
+<span class="math inline">\(\Delta(b)\)</span>. Indeed, if <span
+class="math inline">\(z=\sum a_i\otimes b_i\)</span> has <span
+class="math inline">\(\sum a_ib_i=0\)</span>, then <span
+class="math inline">\(z=\sum(a_i\otimes1)\Delta(b_i)\)</span>. Thus the
+two maps are inverse on generating sets on both sides. <span
+class="math inline">\(\square\)</span> [Stacks, Tag 00RW.]</p>
+<p>Algebraically, <span class="math inline">\(J\)</span> cuts out the
+diagonal. Passing to <span class="math inline">\(J/J^2\)</span> retains
+its first-order equations and discards their products. Formula (9)
+identifies these equations with universal differentials without any
+finite generation assumption.</p>
+<h2 id="polynomial-generators-and-jacobian-relations">5. Polynomial
+generators and Jacobian relations</h2>
+<p><strong>Theorem 5.1 (polynomials and quotients).</strong> For any set
+of variables,</p>
+<p><span class="math display">\[
+\Omega_{R[x_i:i\in E]/R}=\bigoplus_{i\in E}R[x_i:i\in E]\,dx_i.
+\tag{10}
+\]</span></p>
+<p>If <span class="math inline">\(P=R[x_i:i\in E]\)</span>, <span
+class="math inline">\(S=P/I\)</span>, then</p>
+<p><span class="math display">\[
+\Omega_{S/R}=\frac{\bigoplus_{i\in E}S\,dx_i}
+{\left\langle\sum_i\overline{\partial f/\partial x_i}\,dx_i:f\in
+I\right\rangle}.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> The product rule forces a derivation on <span
+class="math inline">\(P\)</span> to take a polynomial <span
+class="math inline">\(f\)</span> to <span
+class="math inline">\(\sum_i(\partial f/\partial x_i)D(x_i)\)</span>.
+Every sum is finite. Conversely, arbitrary chosen elements <span
+class="math inline">\(m_i\)</span> of a <span
+class="math inline">\(P\)</span>-module define a derivation by this
+formula: addition is immediate, and the polynomial product rule proves
+Leibniz. Thus the free module in (10) represents derivations. Applying
+(8) to <span class="math inline">\(P\to S\)</span> gives (11). If <span
+class="math inline">\(I=(f_j:j\in F)\)</span>, the relations for these
+generators suffice: differentiate <span class="math inline">\(f=\sum
+a_jf_j\)</span> and reduce modulo <span
+class="math inline">\(I\)</span>, obtaining <span
+class="math inline">\(df=\sum\overline a_j\,df_j\)</span>. <span
+class="math inline">\(\square\)</span> [Stacks, Tag 00RX.]</p>
+<p>For a finite presentation <span
+class="math inline">\(S=R[x_1,\ldots,x_n]/(f_1,\ldots,f_m)\)</span>,
+(11) is the <strong>Jacobian presentation</strong></p>
+<p><span class="math display">\[
+S^m\xrightarrow{(\partial f_j/\partial x_i)_{i,j}}S^n
+\longrightarrow\Omega_{S/R}\longrightarrow0.
+\tag{12}
+\]</span></p>
+<p>The columns correspond to equations and the rows to variables. It
+follows that a finite-type algebra has finite <span
+class="math inline">\(\Omega\)</span>, and a finitely presented algebra
+has finitely presented <span class="math inline">\(\Omega\)</span>, over
+an arbitrary base ring. Finite type and finite presentation of the
+algebra are different hypotheses. Over a Noetherian base they coincide:
+Hilbert basis, Theorem 2.1 of the <a
+href="AG-CA-03.html">Noetherian-ring lesson</a>, makes the kernel of a
+finite polynomial presentation finitely generated. [Stacks, Tag
+00RY.]</p>
+<p><strong>Proposition 5.2 (regular equations give a free conormal
+module).</strong> If <span class="math inline">\(f_1,\ldots,f_m\)</span>
+is a regular sequence in any ring <span
+class="math inline">\(P\)</span>, and <span
+class="math inline">\(I=(f_1,\ldots,f_m)\)</span>, then their classes
+form a basis of <span class="math inline">\(I/I^2\)</span> over <span
+class="math inline">\(P/I\)</span>.</p>
+<p><strong>Proof.</strong> They generate. Suppose <span
+class="math inline">\(\sum a_if_i\in I^2\)</span>. Express that sum as
+<span class="math inline">\(\sum b_if_i\)</span> with each <span
+class="math inline">\(b_i\in I\)</span>. Then the vector <span
+class="math inline">\((a_i-b_i)\)</span> is a first Koszul cycle.
+Exactness of the regular-sequence Koszul complex, Theorem 4.1 of the
+projective-dimension lesson, makes it a boundary. Each coefficient of a
+second Koszul boundary belongs to <span
+class="math inline">\(I\)</span>, since its entries are combinations of
+the <span class="math inline">\(f_i\)</span>. Therefore every <span
+class="math inline">\(a_i\in I\)</span>, proving independence. <span
+class="math inline">\(\square\)</span></p>
+<p>Even under this hypothesis, (8) need not start with zero. The
+derivative relations may have a kernel despite the freeness of the
+conormal module.</p>
+<p>For a <span class="math inline">\(k\)</span>-algebra <span
+class="math inline">\(S\)</span> and a maximal ideal <span
+class="math inline">\(\mathfrak m\)</span> with <span
+class="math inline">\(S/\mathfrak m=k\)</span> as a <span
+class="math inline">\(k\)</span>-algebra, the constants give a section
+of <span class="math inline">\(S\to k\)</span>. Proposition 3.4 and
+<span class="math inline">\(\Omega_{k/k}=0\)</span> give</p>
+<p><span class="math display">\[
+\mathfrak m/\mathfrak m^2\simeq k\otimes_S\Omega_{S/k}.
+\tag{13}
+\]</span></p>
+<p>Thus at a rational point the fibre of <span
+class="math inline">\(\Omega\)</span> is the cotangent space, with no
+finite-type assumption. Its <span
+class="math inline">\(k\)</span>-linear dual is the tangent space. For a
+general prime <span class="math inline">\(\mathfrak p\)</span>, a fibre
+means <span class="math inline">\(\Omega\otimes_S\kappa(\mathfrak
+p)\)</span>; residue-field differentials may then also contribute.</p>
+<h2 id="fields-separability-and-independent-variables">6. Fields:
+separability and independent variables</h2>
+<p>Let <span class="math inline">\(E=F(\alpha)\)</span> be a simple
+algebraic field extension, with monic minimal polynomial <span
+class="math inline">\(f\)</span>. The quotient presentation gives</p>
+<p><span class="math display">\[
+\Omega_{E/F}=\frac{E\,d\alpha}{f&#39;(\alpha)E\,d\alpha}.
+\tag{14}
+\]</span></p>
+<p>In particular it is zero for a separable algebraic generator and
+one-dimensional if <span class="math inline">\(f&#39;=0\)</span>.</p>
+<p><strong>Lemma 6.1 (extending a derivation through a separable
+generator).</strong> If <span class="math inline">\(K\subset F\subset
+E=F(\alpha)\)</span> and <span class="math inline">\(\alpha\)</span> is
+separable over <span class="math inline">\(F\)</span>, every <span
+class="math inline">\(K\)</span>-derivation <span
+class="math inline">\(D:F\to M\)</span>, for an <span
+class="math inline">\(E\)</span>-module <span
+class="math inline">\(M\)</span>, extends uniquely to <span
+class="math inline">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math inline">\(f(T)=\sum
+c_iT^i\)</span>. Any extension must satisfy</p>
+<p><span class="math display">\[
+D(\alpha)=-f&#39;(\alpha)^{-1}\sum_i\alpha^iD(c_i).
+\tag{15}
+\]</span></p>
+<p>The denominator is a nonzero field element, because separability
+means the minimal polynomial has no repeated root. To construct the
+extension, choose this value and define on <span
+class="math inline">\(F[T]\)</span> <span
+class="math inline">\(\widetilde D(\sum b_iT^i)=\sum\alpha^iD(b_i)+\sum
+i b_i\alpha^{i-1}D(\alpha)\)</span>. Give <span
+class="math inline">\(M\)</span> the <span
+class="math inline">\(F[T]\)</span>-action by evaluating at <span
+class="math inline">\(\alpha\)</span>. Expansion of products proves the
+Leibniz identity. Formula (15) makes <span
+class="math inline">\(\widetilde D(f)=0\)</span>, so Leibniz makes it
+kill the ideal <span class="math inline">\((f)\)</span>. It descends to
+<span class="math inline">\(E=F[T]/(f)\)</span>, and the forced value
+proves uniqueness. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (separably generated fields).</strong> An
+algebraic separable extension <span class="math inline">\(L/K\)</span>,
+finite or infinite, has <span
+class="math inline">\(\Omega_{L/K}=0\)</span>. More generally, if <span
+class="math inline">\(T\)</span> is a separating transcendence basis,
+meaning <span class="math inline">\(L\)</span> is algebraic separable
+over <span class="math inline">\(F=K(T)\)</span>, then</p>
+<p><span class="math display">\[
+\Omega_{L/K}\simeq\bigoplus_{t\in T}L\,dt,
+\qquad \dim_L\Omega_{L/K}=\operatorname{trdeg}_K L.
+\tag{16}
+\]</span></p>
+<p>For an infinite basis, the equality of dimensions is an equality of
+cardinal numbers.</p>
+<p><strong>Proof.</strong> A finite separable extension can be generated
+by finitely many separable elements. Apply Lemma 6.1 successively; each
+element remains separable over an intermediate field because its minimal
+polynomial divides a separable polynomial. Every derivation on the
+starting field extends uniquely. For an infinite algebraic separable
+extension, each finite set lies in a finite separable subextension. The
+unique extensions agree on intersections, or by comparison in a larger
+finite subextension, and therefore give one derivation on the union.</p>
+<p>For <span class="math inline">\(F=K\)</span>, the only derivation on
+the starting field vanishing on <span class="math inline">\(K\)</span>
+is zero, proving the first assertion via (2). For <span
+class="math inline">\(F=K(T)\)</span>, (10) and (5) show that its
+differentials are free on the <span class="math inline">\(dt\)</span>,
+even for infinite <span class="math inline">\(T\)</span>. Restriction
+and the unique extension just proved identify derivations <span
+class="math inline">\(L\to M\)</span> with derivations <span
+class="math inline">\(F\to M\)</span>, for every <span
+class="math inline">\(L\)</span>-module <span
+class="math inline">\(M\)</span>. These are represented by <span
+class="math inline">\(L\otimes_F\Omega_{F/K}\)</span>, yielding (16).
+<span class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 6.3 (finite purely inseparable
+extensions).</strong> A nontrivial finite purely inseparable extension
+<span class="math inline">\(L/K\)</span> has nonzero <span
+class="math inline">\(\Omega_{L/K}\)</span>. In particular, for <span
+class="math inline">\(K=\mathbb F_p(t)\)</span> and <span
+class="math inline">\(L=\mathbb F_p(u)\)</span>, <span
+class="math inline">\(u^p=t\)</span>, it has dimension one.</p>
+<p><strong>Proof.</strong> Choose a minimal finite list of field
+generators for <span class="math inline">\(L/K\)</span>, and let <span
+class="math inline">\(E\)</span> be generated by all but the last, <span
+class="math inline">\(\alpha\)</span>. Then <span
+class="math inline">\(\alpha\notin E\)</span>. Its minimal polynomial
+divides some <span class="math inline">\(T^{p^N}-a\)</span>, so has only
+one distinct root in an algebraic closure. A nonconstant irreducible
+polynomial with nonzero derivative is separable: its greatest common
+divisor with its derivative is one. Repeatedly extracting powers of
+<span class="math inline">\(T^p\)</span> from a polynomial with zero
+derivative writes this minimal polynomial as <span
+class="math inline">\(g(T^{p^e})\)</span>, with <span
+class="math inline">\(g&#39;\ne0\)</span>. Irreducibility is preserved
+for <span class="math inline">\(g\)</span>. Since there is only one
+distinct root, the separable polynomial <span
+class="math inline">\(g\)</span> has degree one. Thus the minimal
+polynomial is <span class="math inline">\(T^{p^e}-c\)</span>, with <span
+class="math inline">\(e\geq1\)</span>. By (14), <span
+class="math inline">\(\Omega_{L/E}=L\,d\alpha\ne0\)</span>. Sequence (7)
+makes it a quotient of <span
+class="math inline">\(\Omega_{L/K}\)</span>, proving nonvanishing.</p>
+<p>In the stated example, <span class="math inline">\(t\)</span> is not
+a <span class="math inline">\(p\)</span>-th power in <span
+class="math inline">\(K\)</span>: its order at <span
+class="math inline">\(t=0\)</span> is one, whereas every <span
+class="math inline">\(p\)</span>-th power has order divisible by <span
+class="math inline">\(p\)</span>. Since <span
+class="math inline">\(u^p=t\)</span>, the preceding minimal-polynomial
+argument shows its degree is <span class="math inline">\(p\)</span>, and
+(14) gives <span class="math inline">\(L\,du\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Finite separability and finite purely inseparable nontriviality are
+therefore visible to differentials. The finiteness in Proposition 6.3
+matters; Exercise 8.6 gives an infinite purely inseparable extension
+with zero differentials.</p>
+<h2 id="arithmetic-curves-and-a-two-term-complex">7. Arithmetic, curves
+and a two-term complex</h2>
+<p>For <span class="math inline">\(\mathbb C=\mathbb
+R[T]/(T^2+1)\)</span>, (14) gives <span
+class="math inline">\(\Omega_{\mathbb C/\mathbb R}=0\)</span>, since
+<span class="math inline">\(2i\)</span> is invertible. Over the integers
+the same equation gives</p>
+<p><span class="math display">\[
+\Omega_{\mathbb Z[i]/\mathbb Z}=\mathbb Z[i]/(2i)\,di.
+\tag{17}
+\]</span></p>
+<p>As <span class="math inline">\(i\)</span> is a unit, the annihilator
+is <span class="math inline">\((2)\)</span>. The identity <span
+class="math inline">\(2=-i(1+i)^2\)</span> shows its support is the
+unique prime <span class="math inline">\((1+i)\)</span> over two; the
+quotient by that ideal is <span class="math inline">\(\mathbb
+F_2\)</span>. There is no arithmetic differential away from that
+prime.</p>
+<p>For the cusp <span class="math inline">\(A=k[x,y]/(y^2-x^3)\)</span>,
+over any field,</p>
+<p><span class="math display">\[
+\Omega_{A/k}=(A\,dx\oplus A\,dy)/(2y\,dy-3x^2\,dx).
+\tag{18}
+\]</span></p>
+<p>The map <span class="math inline">\(k[x,y]\to k[t]\)</span> given by
+<span class="math inline">\(x\mapsto t^2\)</span>, <span
+class="math inline">\(y\mapsto t^3\)</span> has image <span
+class="math inline">\(k[t^2,t^3]\)</span> and kills <span
+class="math inline">\(y^2-x^3\)</span>. Division by the monic polynomial
+<span class="math inline">\(y^2-x^3\)</span> in <span
+class="math inline">\(y\)</span> gives every class in <span
+class="math inline">\(A\)</span> a representative <span
+class="math inline">\(a(x)+yb(x)\)</span>, with <span
+class="math inline">\(a,b\in k[x]\)</span>. Its image is <span
+class="math inline">\(a(t^2)+t^3b(t^2)\)</span>. The first summand has
+only even powers of <span class="math inline">\(t\)</span>, and the
+second only odd powers. If their sum is zero, independence of polynomial
+monomials forces every coefficient of both <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> to vanish. Thus the induced map <span
+class="math inline">\(A\to k[t^2,t^3]\)</span> is injective as well as
+surjective, proving <span class="math inline">\(A\simeq
+k[t^2,t^3]\)</span>, a domain, in every characteristic. Solution 7.2 of
+the <a href="AG-CA-05.html">integrality lesson</a> proves that the
+normalization of this subring is <span
+class="math inline">\(k[t]\)</span>.</p>
+<p>In its fraction field the displayed relation is nonzero: <span
+class="math inline">\(x,y\ne0\)</span> and the coefficients two and
+three cannot both vanish in a field. The generic fibre has dimension
+one. At <span class="math inline">\((x,y)\)</span> both coefficients
+vanish, so the fibre has dimension two. If <span
+class="math inline">\(\Omega\)</span> were free near that point, its
+rank would be two there and at the generic point, a contradiction. The
+formula handles characteristics two and three separately without
+dividing by either coefficient.</p>
+<p>For the split ordinary node <span
+class="math inline">\(B=k[x,y]/(xy)\)</span>,</p>
+<p><span class="math display">\[
+\Omega_{B/k}=(B\,dx\oplus B\,dy)/(y\,dx+x\,dy).
+\tag{19}
+\]</span></p>
+<p>At the origin the fibre has dimension two. At every other prime at
+least one of <span class="math inline">\(x,y\)</span> is a unit, and the
+relation has rank one over the residue field, so the fibre has dimension
+one. Local freeness again fails at the origin; each generic branch lies
+below that maximal ideal. Exercise 8.3 makes the chart calculation
+explicit.</p>
+<p>For a polynomial presentation <span
+class="math inline">\(P\twoheadrightarrow S\)</span> over <span
+class="math inline">\(R\)</span>, with kernel <span
+class="math inline">\(I\)</span>, package the conormal map into the
+two-term complex</p>
+<p><span class="math display">\[
+\left[I/I^2\xrightarrow{d}S\otimes_P\Omega_{P/R}\right],
+\tag{20}
+\]</span></p>
+<p>in homological degrees one and zero. Its degree-zero homology is
+<span class="math inline">\(\Omega_{S/R}\)</span>, by (8); its
+degree-one homology measures the failure of the conormal map to be
+injective. The canonical presentation uses one polynomial variable for
+every element of <span class="math inline">\(S\)</span>. The resulting
+complex is the <strong>naive cotangent complex</strong>.</p>
+<p><strong>Theorem 7.1 (comparison of presentations).</strong>
+Polynomial presentations of the same algebra give homotopy-equivalent
+two-term complexes. For a commuting square of base and target ring maps,
+lifts between polynomial presentations induce comparison maps unique up
+to homotopy, compatible with composition. These statements allow
+arbitrary sets of variables.</p>
+<p><strong>Proof.</strong> Write the presentations as <span
+class="math inline">\(P=R[X_t]\twoheadrightarrow S\)</span> and <span
+class="math inline">\(P&#39;=R&#39;[Y_u]\twoheadrightarrow
+S&#39;\)</span>, with kernels <span
+class="math inline">\(I,I&#39;\)</span>. For each <span
+class="math inline">\(X_t\)</span>, lift its prescribed image in <span
+class="math inline">\(S&#39;\)</span> to <span
+class="math inline">\(P&#39;\)</span>. These choices give a
+polynomial-algebra map <span class="math inline">\(\varphi:P\to
+P&#39;\)</span> lifting the square. It sends <span
+class="math inline">\(I\)</span> into <span
+class="math inline">\(I&#39;\)</span>, hence defines the degree-one map
+<span class="math inline">\([i]\mapsto[\varphi(i)]\)</span>, and the
+degree-zero map <span class="math inline">\(dp\otimes s\mapsto
+d\varphi(p)\otimes\phi(s)\)</span>, where <span
+class="math inline">\(\phi:S\to S&#39;\)</span> is the target map.
+Differentiation shows that these commute with the conormal
+differential.</p>
+<p>Let <span class="math inline">\(\psi\)</span> be another lift. Their
+difference has values in <span class="math inline">\(I&#39;\)</span>.
+Modulo <span class="math inline">\((I&#39;)^2\)</span> it is a
+derivation: <span class="math display">\[
+(\varphi-\psi)(pq)=\varphi(p)(\varphi-\psi)(q)+(\varphi-\psi)(p)\psi(q).
+\]</span> The two actions on <span
+class="math inline">\(I&#39;/(I&#39;)^2\)</span> agree, because their
+difference is multiplication by an element of <span
+class="math inline">\(I&#39;\)</span>. This common action factors
+through <span class="math inline">\(S\)</span>. Thus the universal
+property of differentials gives the homotopy <span
+class="math display">\[
+H(dp\otimes s)=\phi(s)[\varphi(p)-\psi(p)].
+\tag{20a}
+\]</span> On <span class="math inline">\([i]\in I/I^2\)</span>, the
+equality <span class="math inline">\(Hd[i]=[\varphi(i)-\psi(i)]\)</span>
+is the difference of the degree-one maps. On <span
+class="math inline">\(dp\otimes s\)</span>, differentiation of (20a)
+gives the difference of the degree-zero maps. Hence <span
+class="math inline">\(Hd=\varphi_1-\psi_1\)</span> and <span
+class="math inline">\(dH=\varphi_0-\psi_0\)</span>, exactly the
+chain-homotopy identities.</p>
+<p>Composition of chosen polynomial lifts gives the composite maps in
+both degrees by the displayed formulas. Changing any lift only changes
+this composite by a homotopy. For two presentations of the same algebra
+over the same base, choose lifts in both directions. Their composites
+lift the identity square and are homotopic to the identity lifts just
+proved. They are therefore homotopy inverses. This also compares each
+presentation with the canonical one and proves the theorem. No
+projectivity of <span class="math inline">\(I/I^2\)</span> was assumed.
+<span class="math inline">\(\square\)</span></p>
+<p>This is the presentation-independent two-term complex used in the
+following formal-smoothness lesson. Homotopy equivalence here is
+stronger than equality of its two homology modules; an acyclic canonical
+complex need not be literally the zero complex.</p>
+<h2 id="exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy: quadratic orders).</strong> For every
+integer <span class="math inline">\(d\)</span>, let <span
+class="math inline">\(A=\mathbb Z[\sqrt d]\)</span> be the actual
+subring of an algebraic closure of <span class="math inline">\(\mathbb
+Q\)</span>. Compute <span class="math inline">\(\Omega_{A/\mathbb
+Z}\)</span> and its support, distinguishing square integers from
+nonsquares.</p>
+<p><strong>Exercise 8.2 (easy: one invertible derivative).</strong> Let
+<span class="math inline">\(S=R[x]_g/(f)\)</span>, where <span
+class="math inline">\(g,f\in R[x]\)</span>. If the image of <span
+class="math inline">\(f&#39;\)</span> is a unit in <span
+class="math inline">\(S\)</span>, show that <span
+class="math inline">\(\Omega_{S/R}=0\)</span>, without a Noetherian
+hypothesis.</p>
+<p><strong>Exercise 8.3 (medium: the node at all points).</strong> For
+<span class="math inline">\(B=k[x,y]/(xy)\)</span>, compute <span
+class="math inline">\(\Omega_{B/k}\)</span>, its localizations on <span
+class="math inline">\(D(x)\)</span> and <span
+class="math inline">\(D(y)\)</span>, and the dimension of its fibre at
+every prime. Prove that it is not locally free at the origin.</p>
+<p><strong>Exercise 8.4 (medium: two algebraic behaviours).</strong>
+Show directly that a finite separable extension has zero differentials.
+Show that a nontrivial finite purely inseparable extension has nonzero
+differentials, allowing more than one field generator. Compute the
+degree-<span class="math inline">\(p\)</span> example <span
+class="math inline">\(\mathbb F_p(t^{1/p})/\mathbb F_p(t)\)</span>.</p>
+<p><strong>Exercise 8.5 (hard: a section and its absence).</strong>
+Construct the two splittings of (8) when <span
+class="math inline">\(S\to S/I\)</span> has an <span
+class="math inline">\(R\)</span>-algebra section. For <span
+class="math inline">\(S=k[t]\)</span> and <span
+class="math inline">\(I=(t^2)\)</span>, compute <span
+class="math inline">\(I/I^2\)</span>, the conormal map and its kernel in
+every characteristic. Explain why a regular defining equation does not
+ensure injectivity.</p>
+<p><strong>Exercise 8.6 (hard: a purely inseparable tower).</strong> In
+an algebraic closure of <span class="math inline">\(K=\mathbb
+F_p(t)\)</span>, choose <span class="math inline">\(u_0=t\)</span> and
+<span class="math inline">\(u_{n+1}^p=u_n\)</span>. Set <span
+class="math inline">\(L_n=\mathbb F_p(u_n)\)</span> and <span
+class="math inline">\(L=\bigcup_nL_n\)</span>. Prove that <span
+class="math inline">\([L_n:K]=p^n\)</span> and that <span
+class="math inline">\(L/K\)</span> is nontrivial and purely inseparable,
+yet <span class="math inline">\(\Omega_{L/K}=0\)</span>.</p>
+<h2 id="solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> If <span
+class="math inline">\(d=m^2\)</span> for an integer <span
+class="math inline">\(m\)</span>, then either choice of its root is an
+integer, so <span class="math inline">\(A=\mathbb Z\)</span> and <span
+class="math inline">\(\Omega=0\)</span>, with empty support. This
+includes <span class="math inline">\(d=0\)</span>; the actual ring is
+not the nonreduced quotient <span class="math inline">\(\mathbb
+Z[T]/(T^2)\)</span>.</p>
+<p>If <span class="math inline">\(d\)</span> is nonsquare, <span
+class="math inline">\(T^2-d\)</span> is irreducible over <span
+class="math inline">\(\mathbb Q\)</span>. Indeed a rational square root
+of an integer must be an integer, by writing it as a reduced fraction.
+Monic polynomial division in <span class="math inline">\(\mathbb
+Z[T]\)</span> leaves a remainder <span
+class="math inline">\(a+bT\)</span>. Its value at <span
+class="math inline">\(\alpha=\sqrt d\)</span> can vanish only if both
+coefficients vanish, because <span
+class="math inline">\(1,\alpha\)</span> are independent over <span
+class="math inline">\(\mathbb Q\)</span>. Thus <span
+class="math inline">\(A=\mathbb Z[T]/(T^2-d)\)</span>, and (11)
+gives</p>
+<p><span class="math display">\[
+\Omega_{A/\mathbb Z}=A/(2\alpha)\,d\alpha,
+\qquad\operatorname{Supp}_A\Omega=V(2\alpha)=V(2d).
+\tag{21}
+\]</span></p>
+<p>For the support equality, localization of a cyclic quotient at a
+prime is nonzero exactly when its annihilator is contained in that
+prime, by the localization lesson. A prime contains <span
+class="math inline">\(2\alpha\)</span> precisely when it contains two or
+<span class="math inline">\(\alpha\)</span>. Since <span
+class="math inline">\(\alpha^2=d\)</span>, this is precisely when it
+contains two or <span class="math inline">\(d\)</span>, hence <span
+class="math inline">\(2d\)</span>. Consequently the support consists of
+all primes over the rational primes dividing <span
+class="math inline">\(2d\)</span>. Negative nonsquare integers are
+included in the same calculation.</p>
+<p><strong>Solution 8.2.</strong> By (10) and (5), <span
+class="math inline">\(\Omega_{R[x]_g/R}=R[x]_g\,dx\)</span>. The
+quotient ideal is generated by <span class="math inline">\(f\)</span>,
+so (8) gives <span
+class="math inline">\(\Omega_{S/R}=S\,dx/(f&#39;\,dx)\)</span>. A unit
+<span class="math inline">\(f&#39;\)</span> generates the whole free
+rank-one module, and the quotient is zero. This also covers the zero
+algebra, where the differential module is zero.</p>
+<p><strong>Solution 8.3.</strong> Differentiating the single equation
+gives (19). On <span class="math inline">\(D(x)\)</span>, the relation
+<span class="math inline">\(xy=0\)</span> forces <span
+class="math inline">\(y=0\)</span>, and <span
+class="math inline">\(B_x=k[x,x^{-1}]\)</span>. Formula (5) identifies
+<span class="math inline">\((\Omega_{B/k})_x\)</span> with the free
+module <span class="math inline">\(B_x\,dx\)</span>; equivalently the
+relation in (19) becomes <span class="math inline">\(x\,dy=0\)</span>.
+On <span class="math inline">\(D(y)\)</span> the result is <span
+class="math inline">\(B_y\,dy\)</span>.</p>
+<p>Tensoring (19) with <span class="math inline">\(\kappa(\mathfrak
+p)\)</span> is right exact. The resulting relation is the vector <span
+class="math inline">\((\overline y,\overline x)\)</span> in a
+two-dimensional vector space. It is zero precisely if <span
+class="math inline">\(\mathfrak p\)</span> contains both <span
+class="math inline">\(x,y\)</span>, which forces <span
+class="math inline">\(\mathfrak p=(x,y)\)</span>, since the quotient by
+this ideal is a field. All other fibres have dimension one; the origin
+fibre has dimension two. If the localization at the origin were free,
+its rank would be two. Localizing further at the prime <span
+class="math inline">\((y)\)</span> would preserve that rank, whereas the
+generic <span class="math inline">\(x\)</span>-branch fibre has
+dimension one. This contradiction proves failure of local freeness.</p>
+<p><strong>Solution 8.4.</strong> Generate a finite separable extension
+by <span class="math inline">\(\alpha_1,\ldots,\alpha_r\)</span> and set
+<span class="math inline">\(E_i=K(\alpha_1,\ldots,\alpha_i)\)</span>.
+Each minimal polynomial is separable over <span
+class="math inline">\(E_{i-1}\)</span>, since it divides a separable
+polynomial over <span class="math inline">\(K\)</span>. Formula (14)
+gives <span class="math inline">\(\Omega_{E_i/E_{i-1}}=0\)</span>.
+Starting with <span class="math inline">\(\Omega_{K/K}=0\)</span>, (7)
+then inductively gives <span
+class="math inline">\(\Omega_{E_i/K}=0\)</span>, including <span
+class="math inline">\(i=r\)</span>.</p>
+<p>For a nontrivial finite purely inseparable extension, choose an
+irredundant generating list and remove its last element <span
+class="math inline">\(\alpha\)</span> to obtain a proper intermediate
+field <span class="math inline">\(E\)</span>. The minimal polynomial is
+<span class="math inline">\(T^{p^e}-c\)</span>, <span
+class="math inline">\(e\geq1\)</span>, by the unique-root argument in
+Proposition 6.3. Hence <span
+class="math inline">\(\Omega_{L/E}=L\,d\alpha\)</span>, and the
+surjection <span
+class="math inline">\(\Omega_{L/K}\to\Omega_{L/E}\)</span> in (7) proves
+nonvanishing. This avoids assuming the original extension is simple. For
+<span class="math inline">\(u^p=t\)</span>, the order at <span
+class="math inline">\(t=0\)</span> excludes a <span
+class="math inline">\(p\)</span>-th root in <span
+class="math inline">\(K\)</span>, and the unique-root minimal polynomial
+is <span class="math inline">\(T^p-t\)</span>. Its derivative vanishes,
+giving <span class="math inline">\(\Omega_{L/K}=L\,du\)</span>.</p>
+<p><strong>Solution 8.5.</strong> Put <span
+class="math inline">\(C=S/I\)</span> and take its section <span
+class="math inline">\(\sigma\)</span>. The derivation <span
+class="math inline">\(D(s)=s-\sigma(\overline s)\pmod{I^2}\)</span>,
+with its product computation in Proposition 3.4, induces a left inverse
+<span class="math inline">\(\rho\)</span> of the conormal map. The
+derivation <span class="math inline">\(c\mapsto1\otimes
+d\sigma(c)\)</span> induces a right inverse <span
+class="math inline">\(\eta\)</span> of the map to <span
+class="math inline">\(\Omega_{C/R}\)</span>. These are compatible: <span
+class="math inline">\(\rho\eta=0\)</span>, because <span
+class="math inline">\(D(\sigma(c))=0\)</span>. Every element of the
+middle term is uniquely the sum of an element of <span
+class="math inline">\(\delta(I/I^2)\)</span> and one of <span
+class="math inline">\(\eta(\Omega_{C/R})\)</span>: subtract its image
+under <span class="math inline">\(\eta\)</span> to enter the kernel, use
+(8), and use <span class="math inline">\(\rho\delta=1\)</span> for
+uniqueness.</p>
+<p>Now let <span class="math inline">\(C=k[t]/(t^2)\)</span>.
+Multiplication by <span class="math inline">\(t^2\)</span> identifies
+<span class="math inline">\(C\)</span> with <span
+class="math inline">\((t^2)/(t^4)=I/I^2\)</span>, since coefficient
+comparison gives exactly the kernel <span
+class="math inline">\((t^2)\)</span> before passing to the quotient. The
+middle module is <span class="math inline">\(C\,dt\)</span>. Thus (8)
+is</p>
+<p><span class="math display">\[
+C\xrightarrow{\,2t\,}C\,dt\longrightarrow\Omega_{C/k}\longrightarrow0.
+\tag{22}
+\]</span></p>
+<p>In characteristic different from two its kernel is <span
+class="math inline">\((t)\)</span>, because the annihilator of <span
+class="math inline">\(t\)</span> in <span
+class="math inline">\(C\)</span> consists exactly of multiples of <span
+class="math inline">\(t\)</span>. In characteristic two the map is zero
+and its kernel is all of <span class="math inline">\(C\)</span>. The
+defining element <span class="math inline">\(t^2\)</span> is a
+nonzerodivisor in <span class="math inline">\(k[t]\)</span>, so is a
+regular sequence of length one, and the conormal module is free.
+Nevertheless its differential map is not injective in either case. No
+compatible algebra section can exist, by the splitting theorem.</p>
+<p><strong>Solution 8.6.</strong> Each <span
+class="math inline">\(u_n\)</span> is transcendental over <span
+class="math inline">\(\mathbb F_p\)</span>, because a power of it equals
+the transcendental element <span class="math inline">\(t\)</span>. In
+the rational function field <span class="math inline">\(\mathbb
+F_p(u_n)\)</span>, the variable <span class="math inline">\(u_n\)</span>
+has order one at zero and is not a <span
+class="math inline">\(p\)</span>-th power. The unique-root
+minimal-polynomial argument applied to <span
+class="math inline">\(u_{n+1}^p=u_n\)</span> therefore gives <span
+class="math inline">\([L_{n+1}:L_n]=p\)</span>. Multiplying degrees
+proves <span class="math inline">\([L_n:K]=p^n\)</span>. Equivalently
+its defining minimal polynomial over <span
+class="math inline">\(K\)</span> is <span
+class="math inline">\(T^{p^n}-t\)</span>.</p>
+<p>For <span class="math inline">\(n\geq1\)</span>, (14) gives <span
+class="math inline">\(\Omega_{L_n/K}=L_n\,du_n\)</span>. Under passage
+to <span class="math inline">\(L_{n+1}\)</span>,</p>
+<p><span class="math display">\[
+du_n=d(u_{n+1}^p)=p u_{n+1}^{p-1}du_{n+1}=0.
+\tag{23}
+\]</span></p>
+<p>Every element of the directed system <span
+class="math inline">\(L\otimes_{L_n}\Omega_{L_n/K}\)</span> consequently
+becomes zero at the next stage. Its colimit is zero, and Proposition 2.3
+yields <span class="math inline">\(\Omega_{L/K}=0\)</span>. Every
+element of <span class="math inline">\(L\)</span> lies in one <span
+class="math inline">\(L_n\)</span> and has a sufficiently large <span
+class="math inline">\(p\)</span>-power in <span
+class="math inline">\(K\)</span>, so the extension is purely
+inseparable. It is nontrivial already at <span
+class="math inline">\(L_1\)</span>, and the unbounded degrees make it
+infinite. Thus zero differentials alone do not characterize algebraic
+separability for arbitrary infinite field extensions.</p>
+<h2 id="references-and-proof-scope">References and proof scope</h2>
+<p>The Stacks project supplies the reference framework for derivations,
+universal differentials, base change, localization, the fundamental
+sequences, polynomial presentations and the diagonal ideal, at the tags
+cited above. Ravi Vakil, <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf"><em>The
+Rising Sea: Foundations of Algebraic Geometry</em></a>, public draft of
+27 July 2024, §§21.2–21.3, provides complementary geometric
+interpretations and computations. Timothy J. Ford, <a
+href="https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf"><em>Commutative
+Algebra</em></a>, version of 23 September 2026, Chapter 10, Sections
+1–2, treats derivations, the module of differentials and its two
+fundamental exact sequences. The incorporated presentation-comparison
+proof retains its source credit and licence below.</p>
+<p>Verified tag references: <a
+href="https://stacks.math.columbia.edu/algebra.html#definition-derivation">Tag
+00RN</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#definition-differentials">Tag
+07BK</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-universal-omega">Tag
+00RO</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-trivial-differential-surjective">Tag
+00RP</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-colimit-differentials">Tag
+031G</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differential-surjective">Tag
+00RR</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-exact-sequence-differentials">Tag
+00RS</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differentials-localize">Tag
+00RT</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differential-seq">Tag
+00RU</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differential-seq-split">Tag
+02HP</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differentials-base-change">Tag
+00RV</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differentials-diagonal">Tag
+00RW</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differentials-polynomial-ring">Tag
+00RX</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-differentials-finitely-presented">Tag
+00RY</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#definition-naive-cotangent-complex">Tag
+07BN</a>, <a
+href="https://stacks.math.columbia.edu/algebra.html#lemma-NL-homotopy">Tag
+00S1</a>.</p>
+<p><strong>Proof dependencies and licence.</strong> Theorem 7.1 proves
+the full presentation-comparison statement [Stacks, Tags 07BN, 00S1].
+All differential constructions and the earlier splitting and field
+calculations are proved above, with earlier course results used at the
+stated locators. Formal smoothness, unramified maps and smooth algebras
+follow in the next two lessons.</p>
+<p>Theorem 7.1 incorporates the Stacks Project Authors’
+<code>lemma-NL-homotopy</code> in <a
+href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L36700">AI
+Integrated Stacks Project, pinned algebra source</a>, and the
+source-linked supplementary proof 44 by GPT-6 Astra, which spells out
+the two homotopy identities. GPT-6.1 Sol checked both identities and
+integrated them into the curve and conormal examples. This modified
+lesson is distributed under GNU Free Documentation License 1.2, with no
+Invariant Sections, no Front-Cover Texts and no Back-Cover Texts; the <a
+href="COPYING-GFDL-1.2.txt">licence text</a> accompanies the transparent
+source. History: Stacks Project Authors, <em>Commutative Algebra</em>,
+pinned AI Integrated Stacks Project revision; GPT-6 Astra, supplementary
+proof 44, September 2026; GPT-6.1 Sol, original CC0 lesson and this
+adaptation, October 2026. The previously released original material
+remains available under CC0.</p>
+<h2 id="copyright-and-licence">Copyright and licence</h2>
+<p>Copyright (C) 2005–2025 Johan de Jong. The incorporated source is
+<em>The Stacks Project</em>, as distributed in AI Integrated Stacks
+Project at revision
+<code>565b10e987aba5969b21145a0833f42d69f96790</code>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy
+is supplied as <a href="COPYING-GFDL-1.2.txt">GNU Free Documentation
+License 1.2</a>.</p>
+<p>The original course material remains available under its CC0
+dedication. This combined edition, including the incorporated and
+adapted proof, is distributed under GNU FDL 1.2 or later. The source
+authors, incorporated source titles and mathematical adaptations are
+identified above. History: Stacks Project Authors, original source; the
+credited AI Integrated Stacks Project editorial contributors, where
+used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

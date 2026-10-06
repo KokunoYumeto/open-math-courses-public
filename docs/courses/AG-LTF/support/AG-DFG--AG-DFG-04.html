@@ -1,0 +1,471 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Galois categories</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="galois-categories">Galois categories</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A finite cover can be studied through its finite fibre. The fibre forgets the geometry, but its symmetries remember how different fibres fit together. A Galois category packages the operations on finite covers that make this recovery possible. Its group is recovered from natural automorphisms of the fibre functor, with a topology that records all finite observations.</p>
+<p>We use basic category theory, finite Galois theory and compactness of products of finite discrete spaces. Covering-space classification will be an explicitly stated input in the topological example. We use the usual universe convention for products indexed by objects and pass to representatives of isomorphism classes when constructing inverse systems.</p>
+<h2 id="1-finite-actions-and-the-topology-of-a-fibre-functor">1. Finite actions and the topology of a fibre functor</h2>
+<p>A <strong>profinite group</strong> is a topological group isomorphic to an inverse limit of finite discrete groups. It is compact and Hausdorff, and the kernels of its finite-coordinate maps form a basis of open normal subgroups at the identity. Conversely a closed subgroup of a product of finite groups is the inverse limit of its images in finite subproducts: compatible coordinates give a point of the product, and closedness puts it in the subgroup. These facts explain both compactness and separation by finite quotients in the arguments below.</p>
+<p>For a topological group <span class="math" data-tex="\(G\)">\(G\)</span>, a <strong>finite continuous <span class="math" data-tex="\(G\)">\(G\)</span>-set</strong> is a finite set with a left <span class="math" data-tex="\(G\)">\(G\)</span>-action, whose stabilizers are open. This is equivalent to continuity of <span class="math" data-tex="\(G\times E\to E\)">\(G\times E\to E\)</span> with <span class="math" data-tex="\(E\)">\(E\)</span> discrete. Let <span class="math" data-tex="\(\operatorname{Fin}(G)\)">\(\operatorname{Fin}(G)\)</span> denote their category and <span class="math" data-tex="\(\omega_G\)">\(\omega_G\)</span> its forgetful functor.</p>
+<p>Every such action has an open normal subgroup of finite index in its kernel: take the intersection of the stabilizers of its finitely many elements. Write</p>
+<span class="math math-display" data-tex="\[
+\widehat G=\varprojlim_N G/N,
+\tag{1.1}
+\]">\[
+\widehat G=\varprojlim_N G/N,
+\tag{1.1}
+\]</span>
+<p>where <span class="math" data-tex="\(N\)">\(N\)</span> runs over open normal subgroups of finite index. This is the profinite completion of the topological group. For an abstract group we use its discrete topology. If <span class="math" data-tex="\(G\)">\(G\)</span> is already profinite, <span class="math" data-tex="\(G\to\widehat G\)">\(G\to\widehat G\)</span> is an isomorphism. Injectivity follows because finite quotients separate points. For surjectivity, a compatible family of cosets is a family of closed subsets of the compact space <span class="math" data-tex="\(G\)">\(G\)</span> with the finite intersection property. It has a point in its intersection. The resulting continuous bijection is a homeomorphism, since its source is compact and target Hausdorff.</p>
+<p><strong>Lemma 1.1.</strong> The forgetful functor identifies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Aut}(\omega_G)\simeq\widehat G
+\tag{1.2}
+\]">\[
+\operatorname{Aut}(\omega_G)\simeq\widehat G
+\tag{1.2}
+\]</span>
+<p>as topological groups. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-single-out-profinite">Stacks, Tag 0BMU</a></p>
+<p><em>Proof.</em> On the left regular <span class="math" data-tex="\(G\)">\(G\)</span>-set <span class="math" data-tex="\(G/N\)">\(G/N\)</span>, every right translation is <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant. Naturality forces an automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of the forgetful functor to commute with all these right translations. It is therefore left multiplication by the element</p>
+<span class="math math-display" data-tex="\[
+g_N=\alpha_{G/N}(N)\in G/N.
+\]">\[
+g_N=\alpha_{G/N}(N)\in G/N.
+\]</span>
+<p>Naturality for <span class="math" data-tex="\(G/N&#x27;\to G/N\)">\(G/N&#x27;\to G/N\)</span> makes the elements <span class="math" data-tex="\(g_N\)">\(g_N\)</span> compatible. Thus <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> determines an element of (1.1).</p>
+<p>Conversely, a compatible family <span class="math" data-tex="\((g_N)\)">\((g_N)\)</span> acts on every finite continuous <span class="math" data-tex="\(G\)">\(G\)</span>-set <span class="math" data-tex="\(E\)">\(E\)</span>: choose <span class="math" data-tex="\(N\)">\(N\)</span> acting trivially on <span class="math" data-tex="\(E\)">\(E\)</span>, and act by <span class="math" data-tex="\(g_N\)">\(g_N\)</span>. This does not depend on the choice, since the intersection of two possible <span class="math" data-tex="\(N\)">\(N\)</span>'s maps to both. It is natural in <span class="math" data-tex="\(E\)">\(E\)</span>. The two constructions are inverse. In particular, an automorphism is completely determined by its action on the regular quotients, rather than by an arbitrary permutation of each fibre.</p>
+<p>The topology on natural automorphisms is pointwise agreement on finitely many finite fibres. Every <span class="math" data-tex="\(E\)">\(E\)</span> is acted on by some finite quotient <span class="math" data-tex="\(G/N\)">\(G/N\)</span>, so its coordinate action is continuous for the inverse-limit topology. Conversely the coordinate on <span class="math" data-tex="\(G/N\)">\(G/N\)</span> recovers <span class="math" data-tex="\(g_N\)">\(g_N\)</span>. This proves the topological assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>More generally, if <span class="math" data-tex="\(F:\mathcal C\to\operatorname{FinSets}\)">\(F:\mathcal C\to\operatorname{FinSets}\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Aut}(F)\subset
+\prod_{X\in\mathcal C}\operatorname{Sym}(F(X))
+\tag{1.3}
+\]">\[
+\operatorname{Aut}(F)\subset
+\prod_{X\in\mathcal C}\operatorname{Sym}(F(X))
+\tag{1.3}
+\]</span>
+<p>by the naturality equations <span class="math" data-tex="\(\alpha_YF(f)=F(f)\alpha_X\)">\(\alpha_YF(f)=F(f)\alpha_X\)</span>. Each equation is closed in a product of finite discrete spaces. The subgroup (1.3) is therefore compact, Hausdorff and profinite, and its actions on all <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> are continuous [Stacks, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-aut-inverse-limit">0BMR</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-example-from-C-F-to-G-sets">0BMW</a>]. This is the topology we always use.</p>
+<p>Finite limits and colimits in <span class="math" data-tex="\(\operatorname{Fin}(G)\)">\(\operatorname{Fin}(G)\)</span> are the usual finite-set constructions with their induced actions. For colimits, take the quotient of the finite disjoint union by the generated equivalence relation. A common open normal subgroup acts trivially on all the finitely many inputs, and hence on the construction. Thus all these actions remain continuous. The functor <span class="math" data-tex="\(\omega_G\)">\(\omega_G\)</span> is exact and reflects isomorphisms. Its connected objects, in the sense defined below, are precisely nonempty transitive <span class="math" data-tex="\(G\)">\(G\)</span>-sets.</p>
+<p>We will need uniqueness of the finite fibre functor, not just (1.2).</p>
+<p><strong>Proposition 1.2.</strong> Every exact functor <span class="math" data-tex="\(T:\operatorname{Fin}(G)\to\operatorname{FinSets}\)">\(T:\operatorname{Fin}(G)\to\operatorname{FinSets}\)</span> is naturally isomorphic to <span class="math" data-tex="\(\omega_G\)">\(\omega_G\)</span>. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-second-fundamental-functor">Stacks, Tag 0BMV</a></p>
+<p><em>Proof.</em> Exactness sends the terminal object to a singleton and the initial object to the empty set. If <span class="math" data-tex="\(E\ne\varnothing\)">\(E\ne\varnothing\)</span>, the pushout of <span class="math" data-tex="\(1\leftarrow E\to1\)">\(1\leftarrow E\to1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. If <span class="math" data-tex="\(T(E)\)">\(T(E)\)</span> were empty, its image pushout would have two elements. Thus <span class="math" data-tex="\(T(E)\ne\varnothing\)">\(T(E)\ne\varnothing\)</span>.</p>
+<p>For <span class="math" data-tex="\(Q=G/N\)">\(Q=G/N\)</span>, diagonal left translation splits <span class="math" data-tex="\(Q\times Q\)">\(Q\times Q\)</span> into <span class="math" data-tex="\(|Q|\)">\(|Q|\)</span> orbits, each isomorphic to <span class="math" data-tex="\(Q\)">\(Q\)</span>. Exactness gives</p>
+<span class="math math-display" data-tex="\[
+|T(Q)|^2=|Q|\,|T(Q)|,
+\]">\[
+|T(Q)|^2=|Q|\,|T(Q)|,
+\]</span>
+<p>so <span class="math" data-tex="\(|T(Q)|=|Q|\)">\(|T(Q)|=|Q|\)</span>. The right translations act freely on <span class="math" data-tex="\(T(Q)\)">\(T(Q)\)</span>: for a nonidentity right translation, the equalizer with the identity is empty, and <span class="math" data-tex="\(T\)">\(T\)</span> preserves that equalizer. They therefore act transitively as well.</p>
+<p>Maps <span class="math" data-tex="\(G/N&#x27;\to G/N\)">\(G/N&#x27;\to G/N\)</span> are epimorphisms. An exact functor preserves them here: the fold map <span class="math" data-tex="\(Q\amalg_{Q&#x27;}Q\to Q\)">\(Q\amalg_{Q&#x27;}Q\to Q\)</span> is an isomorphism, and its image fold map can be an isomorphism only if <span class="math" data-tex="\(T(Q&#x27;)\to T(Q)\)">\(T(Q&#x27;)\to T(Q)\)</span> is surjective. Hence the sets <span class="math" data-tex="\(T(G/N)\)">\(T(G/N)\)</span> form a surjective inverse system of nonempty finite sets. Compactness gives a compatible family <span class="math" data-tex="\(t_N\)">\(t_N\)</span>.</p>
+<p>For <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>, choose <span class="math" data-tex="\(N\)">\(N\)</span> acting trivially on <span class="math" data-tex="\(E\)">\(E\)</span> and let <span class="math" data-tex="\(f_e:G/N\to E\)">\(f_e:G/N\to E\)</span> send <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(e\)">\(e\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\eta_E(e)=T(f_e)(t_N).
+\tag{1.4}
+\]">\[
+\eta_E(e)=T(f_e)(t_N).
+\tag{1.4}
+\]</span>
+<p>Refining to an intersection shows independence of <span class="math" data-tex="\(N\)">\(N\)</span>, and composition with a <span class="math" data-tex="\(G\)">\(G\)</span>-map proves naturality. On <span class="math" data-tex="\(G/N\)">\(G/N\)</span>, (1.4) is a bijection because the right translations move <span class="math" data-tex="\(t_N\)">\(t_N\)</span> freely through all <span class="math" data-tex="\(|G/N|\)">\(|G/N|\)</span> elements.</p>
+<p>For a transitive set <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, choose <span class="math" data-tex="\(N\subset H\)">\(N\subset H\)</span>, open and normal. It is the quotient of <span class="math" data-tex="\(G/N\)">\(G/N\)</span> by the right translations from <span class="math" data-tex="\(H/N\)">\(H/N\)</span>. Both functors preserve this finite coequalizer, so the bijection for <span class="math" data-tex="\(G/N\)">\(G/N\)</span> induces a bijection for <span class="math" data-tex="\(G/H\)">\(G/H\)</span>. Every finite <span class="math" data-tex="\(G\)">\(G\)</span>-set is a finite disjoint union of transitive ones; preservation of coproducts completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-axioms-and-their-immediate-force">2. The axioms and their immediate force</h2>
+<p>An object <span class="math" data-tex="\(X\)">\(X\)</span> of a category with an initial object <span class="math" data-tex="\(0\)">\(0\)</span> is <strong>connected</strong> if <span class="math" data-tex="\(X\not\simeq0\)">\(X\not\simeq0\)</span> and every monomorphism into <span class="math" data-tex="\(X\)">\(X\)</span> is either an isomorphism or has initial source.</p>
+<p>A <strong>Galois category</strong> is a pair <span class="math" data-tex="\((\mathcal C,F)\)">\((\mathcal C,F)\)</span>, with <span class="math" data-tex="\(F:\mathcal C\to\operatorname{FinSets}\)">\(F:\mathcal C\to\operatorname{FinSets}\)</span>, satisfying:</p>
+<ol>
+<li><span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has finite limits and finite colimits.</li>
+<li>Every object is a finite, possibly empty, coproduct of connected objects.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is exact: it preserves finite limits and finite colimits.</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> reflects isomorphisms.</li>
+</ol>
+<p>These are the Stacks axioms <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-definition-galois-category">Stacks, Tag 0BMY</a>. We use this one axiom system throughout; we do not silently exchange it for another formulation from SGA 1.</p>
+<p><strong>Proposition 2.1.</strong> In a Galois category:</p>
+<ul>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> is faithful.</li>
+<li>A map is monic exactly when its fibre map is injective, and epic exactly when its fibre map is surjective.</li>
+<li><span class="math" data-tex="\(F(X)=\varnothing\)">\(F(X)=\varnothing\)</span> exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is initial, and <span class="math" data-tex="\(|F(X)|=1\)">\(|F(X)|=1\)</span> exactly when <span class="math" data-tex="\(X\)">\(X\)</span> is terminal.</li>
+<li>A map between connected objects is epic.</li>
+<li>Two maps from a connected object agree if their fibre maps agree on one element.</li>
+<li>A map from a connected object to a coproduct of connected objects lands in one summand.</li>
+</ul>
+<p><em>Proof.</em> If <span class="math" data-tex="\(F(a)=F(b)\)">\(F(a)=F(b)\)</span>, their equalizer has the same fibre as their source. Reflection of isomorphisms makes the equalizer the whole source, so <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p>A map <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span> is monic if and only if its diagonal <span class="math" data-tex="\(X\to X\times_YX\)">\(X\to X\times_YX\)</span> is an isomorphism. Applying <span class="math" data-tex="\(F\)">\(F\)</span> and reflection of isomorphisms gives the injectivity assertion. Dually, <span class="math" data-tex="\(p\)">\(p\)</span> is epic if and only if the fold map <span class="math" data-tex="\(Y\amalg_XY\to Y\)">\(Y\amalg_XY\to Y\)</span> is an isomorphism. Indeed epicness makes the two maps <span class="math" data-tex="\(Y\to Y\amalg_XY\)">\(Y\to Y\amalg_XY\)</span> equal, and then either is inverse to the fold; the converse follows from the pushout universal property. Exactness and reflection therefore give the surjectivity assertion.</p>
+<p>The unique maps <span class="math" data-tex="\(0\to X\)">\(0\to X\)</span> and <span class="math" data-tex="\(X\to1\)">\(X\to1\)</span>, together with <span class="math" data-tex="\(F(0)=\varnothing\)">\(F(0)=\varnothing\)</span> and <span class="math" data-tex="\(F(1)=\{*\}\)">\(F(1)=\{*\}\)</span>, prove the initial and terminal assertions.</p>
+<p>Suppose <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> are connected and <span class="math" data-tex="\(p:X\to Y\)">\(p:X\to Y\)</span>. The equalizer of the two maps <span class="math" data-tex="\(Y\rightrightarrows Y\amalg_XY\)">\(Y\rightrightarrows Y\amalg_XY\)</span> contains the image of <span class="math" data-tex="\(X\)">\(X\)</span>, so its fibre is nonempty. It is a noninitial subobject of <span class="math" data-tex="\(Y\)">\(Y\)</span>, hence all of <span class="math" data-tex="\(Y\)">\(Y\)</span>. The two maps are equal; thus <span class="math" data-tex="\(p\)">\(p\)</span> is epic.</p>
+<p>For maps <span class="math" data-tex="\(a,b:X\to Y\)">\(a,b:X\to Y\)</span> agreeing on a fibre element, their equalizer is a subobject of connected <span class="math" data-tex="\(X\)">\(X\)</span> with nonempty fibre. It is therefore <span class="math" data-tex="\(X\)">\(X\)</span>. Finally, pull back each summand of a coproduct along a map from <span class="math" data-tex="\(X\)">\(X\)</span>. These are subobjects of <span class="math" data-tex="\(X\)">\(X\)</span>, hence initial or all of <span class="math" data-tex="\(X\)">\(X\)</span>. On fibres they partition the nonempty set <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>, so precisely one is all of <span class="math" data-tex="\(X\)">\(X\)</span>. This proves the last assertion. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-epi-mono">Stacks, Tag 0BN0</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The summand inclusions in a connected decomposition are monic, since their fibre maps are injective. In fact every subobject of <span class="math" data-tex="\(X=\coprod X_i\)">\(X=\coprod X_i\)</span> is a union of these summands: pull it back to each <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, use connectedness, and apply <span class="math" data-tex="\(F\)">\(F\)</span> and reflection to the resulting coproduct map. This proves uniqueness of the connected decomposition up to reordering and isomorphism.</p>
+<p>For a connected <span class="math" data-tex="\(X\)">\(X\)</span>, the group <span class="math" data-tex="\(\operatorname{Aut}_{\mathcal C}(X)\)">\(\operatorname{Aut}_{\mathcal C}(X)\)</span> acts freely on <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>. An automorphism fixing one element is the identity by Proposition 2.1. Hence it is finite, of order at most <span class="math" data-tex="\(|F(X)|\)">\(|F(X)|\)</span>. Call <span class="math" data-tex="\(X\)">\(X\)</span> <strong>Galois</strong> if this action is transitive, and consequently simply transitive.</p>
+<p><strong>Proposition 2.2 (Galois domination).</strong> Every connected object admits an epimorphism from a Galois object. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-galois">Stacks, Tag 0BN2</a></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(n=|F(X)|\)">\(n=|F(X)|\)</span>, and list all fibre elements as <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span>. Choose the connected component <span class="math" data-tex="\(Y\subset X^n\)">\(Y\subset X^n\)</span> containing that ordered tuple.</p>
+<p>Every tuple in <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> has pairwise distinct coordinates. Otherwise two coordinate maps <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> agree at a fibre element. Proposition 2.1 makes them equal everywhere, contradicting the distinct coordinates of the original tuple.</p>
+<p>Permutations of coordinates act on <span class="math" data-tex="\(X^n\)">\(X^n\)</span> and permute its connected components. Given two tuples in <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span>, each lists every element of <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>, so a coordinate permutation takes one tuple to the other. This permutation preserves <span class="math" data-tex="\(Y\)">\(Y\)</span>: its image component and <span class="math" data-tex="\(Y\)">\(Y\)</span> have a common fibre element, whereas distinct components have disjoint fibres. Its restriction is an automorphism of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Thus automorphisms act transitively on <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span>, making <span class="math" data-tex="\(Y\)">\(Y\)</span> Galois. Any coordinate projection <span class="math" data-tex="\(Y\to X\)">\(Y\to X\)</span> is a map of connected objects and hence epic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-reconstructing-every-object-and-every-map">3. Reconstructing every object and every map</h2>
+<p>Put <span class="math" data-tex="\(\Pi=\operatorname{Aut}(F)\)">\(\Pi=\operatorname{Aut}(F)\)</span>, with the topology (1.3). Naturality makes <span class="math" data-tex="\(F\)">\(F\)</span> a functor</p>
+<span class="math math-display" data-tex="\[
+\mathcal C\longrightarrow\operatorname{Fin}(\Pi).
+\tag{3.1}
+\]">\[
+\mathcal C\longrightarrow\operatorname{Fin}(\Pi).
+\tag{3.1}
+\]</span>
+<p>The central issue is that the action of all natural automorphisms is large enough to move any point of a connected fibre to any other point.</p>
+<p><strong>Lemma 3.1.</strong> For connected <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> acts transitively on <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>. Moreover <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is recovered from finite automorphism groups of Galois objects.</p>
+<p><em>Proof.</em> Choose a representative <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span> of each isomorphism class of Galois objects, and choose <span class="math" data-tex="\(y_i\in F(Y_i)\)">\(y_i\in F(Y_i)\)</span>. Order the classes by <span class="math" data-tex="\(i\ge j\)">\(i\ge j\)</span> when a map <span class="math" data-tex="\(Y_i\to Y_j\)">\(Y_i\to Y_j\)</span> exists. It can be uniquely normalized to send <span class="math" data-tex="\(y_i\)">\(y_i\)</span> to <span class="math" data-tex="\(y_j\)">\(y_j\)</span>: postcompose by an automorphism of <span class="math" data-tex="\(Y_j\)">\(Y_j\)</span>, then use the one-point uniqueness of Proposition 2.1. Denote this map <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span>. The normalized maps compose as <span class="math" data-tex="\(p_{jk}p_{ij}=p_{ik}\)">\(p_{jk}p_{ij}=p_{ik}\)</span>.</p>
+<p>This is a directed partially ordered set. Maps both ways imply equal finite fibre sizes and therefore isomorphisms. For directedness, take a connected component of <span class="math" data-tex="\(Y_i\times Y_j\)">\(Y_i\times Y_j\)</span>, dominate it by a Galois object, and project to the two factors. Normalization gives the required two pointed maps.</p>
+<p>Evaluation gives a natural bijection</p>
+<span class="math math-display" data-tex="\[
+F(X)\simeq\varinjlim_i\operatorname{Hom}_{\mathcal C}(Y_i,X),
+\qquad f\longmapsto F(f)(y_i).
+\tag{3.2}
+\]">\[
+F(X)\simeq\varinjlim_i\operatorname{Hom}_{\mathcal C}(Y_i,X),
+\qquad f\longmapsto F(f)(y_i).
+\tag{3.2}
+\]</span>
+<p>For injectivity, compare two maps at a common dominating <span class="math" data-tex="\(Y_k\)">\(Y_k\)</span>; equality at <span class="math" data-tex="\(y_k\)">\(y_k\)</span> implies equality everywhere. For surjectivity, choose the connected component containing the desired point of <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span>, dominate it by a Galois object, and precompose the domination map by an automorphism moving its chosen point to a suitable lift.</p>
+<p>Write <span class="math" data-tex="\(A_i=\operatorname{Aut}_{\mathcal C}(Y_i)\)">\(A_i=\operatorname{Aut}_{\mathcal C}(Y_i)\)</span>. For <span class="math" data-tex="\(i\ge j\)">\(i\ge j\)</span>, every <span class="math" data-tex="\(a\in A_i\)">\(a\in A_i\)</span> has a unique partner <span class="math" data-tex="\(\rho_{ij}(a)\in A_j\)">\(\rho_{ij}(a)\in A_j\)</span> with</p>
+<span class="math math-display" data-tex="\[
+p_{ij}a=\rho_{ij}(a)p_{ij}.
+\tag{3.3}
+\]">\[
+p_{ij}a=\rho_{ij}(a)p_{ij}.
+\tag{3.3}
+\]</span>
+<p>Choose the partner by its value at <span class="math" data-tex="\(y_j\)">\(y_j\)</span>; equality then follows by checking at <span class="math" data-tex="\(y_i\)">\(y_i\)</span>. Equation (3.3) proves that <span class="math" data-tex="\(\rho_{ij}\)">\(\rho_{ij}\)</span> is a homomorphism and that transition homomorphisms compose. It is surjective, since <span class="math" data-tex="\(F(p_{ij})\)">\(F(p_{ij})\)</span> is surjective and <span class="math" data-tex="\(A_i,A_j\)">\(A_i,A_j\)</span> act simply transitively on their fibres.</p>
+<p>Let <span class="math" data-tex="\(A=\varprojlim A_i\)">\(A=\varprojlim A_i\)</span>. Every projection <span class="math" data-tex="\(A\to A_i\)">\(A\to A_i\)</span> is surjective. To justify this even for a large directed index set, fix a desired coordinate in <span class="math" data-tex="\(A_i\)">\(A_i\)</span>. Any finitely many compatibility conditions can be solved at a common dominating index, using surjectivity onto <span class="math" data-tex="\(A_i\)">\(A_i\)</span>. These conditions define closed subsets of a product of finite groups with the finite intersection property, so compactness supplies a compatible family.</p>
+<p>Precomposition in (3.2) now gives an action of <span class="math" data-tex="\(A^{\mathrm{op}}\)">\(A^{\mathrm{op}}\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>. The opposite group is essential for this convention:</p>
+<span class="math math-display" data-tex="\[
+(f\circ b)\circ a=f\circ(ba).
+\]">\[
+(f\circ b)\circ a=f\circ(ba).
+\]</span>
+<p>The action is natural. On <span class="math" data-tex="\(F(Y_i)\)">\(F(Y_i)\)</span>, it is the right regular action after identifying a point <span class="math" data-tex="\(F(c)(y_i)\)">\(F(c)(y_i)\)</span> with <span class="math" data-tex="\(c\in A_i\)">\(c\in A_i\)</span>. Surjectivity of <span class="math" data-tex="\(A\to A_i\)">\(A\to A_i\)</span> makes this action transitive. Every connected <span class="math" data-tex="\(X\)">\(X\)</span> is an epic image of some <span class="math" data-tex="\(Y_i\)">\(Y_i\)</span>, so the induced action on <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> is transitive too.</p>
+<p>In fact</p>
+<span class="math math-display" data-tex="\[
+\Pi\simeq\varprojlim_i A_i^{\mathrm{op}}.
+\tag{3.4}
+\]">\[
+\Pi\simeq\varprojlim_i A_i^{\mathrm{op}}.
+\tag{3.4}
+\]</span>
+<p>For a natural automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, let <span class="math" data-tex="\(a_i\)">\(a_i\)</span> be the unique element of <span class="math" data-tex="\(A_i\)">\(A_i\)</span> with <span class="math" data-tex="\(F(a_i)(y_i)=\alpha_{Y_i}(y_i)\)">\(F(a_i)(y_i)=\alpha_{Y_i}(y_i)\)</span>. Naturality for <span class="math" data-tex="\(p_{ij}\)">\(p_{ij}\)</span> gives compatibility of these coordinates. Naturality for every map in (3.2) shows that precomposition by <span class="math" data-tex="\((a_i)\)">\((a_i)\)</span> recovers <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proving bijectivity in (3.4).</p>
+<p>Continuity follows because the action on any point of any finite <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> is computed at one stage of (3.2); finitely many points use finitely many stages. A continuous bijection between these compact Hausdorff groups is a homeomorphism. One may replace all the opposite groups in (3.4) by <span class="math" data-tex="\(A_i\)">\(A_i\)</span> using inversion, provided the corresponding inverse convention is retained in the actions. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-tame">Stacks, Tag 0BN3</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (the Galois-category theorem).</strong> The functor (3.1) is an equivalence. It sends connected components to <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-orbits, and Galois objects to regular finite quotients of <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-proposition-galois">Stacks, Tag 0BN4</a></p>
+<p><em>Proof.</em> Connected components have transitive fibres by Lemma 3.1, and their inclusions are <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-equivariant. Thus the connected components of any object correspond exactly to the orbits of its fibre.</p>
+<p>Faithfulness is Proposition 2.1. To prove fullness, let <span class="math" data-tex="\(s:F(X)\to F(Z)\)">\(s:F(X)\to F(Z)\)</span> be a <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-equivariant map. Its graph is an invariant subset of <span class="math" data-tex="\(F(X)\times F(Z)=F(X\times Z)\)">\(F(X)\times F(Z)=F(X\times Z)\)</span>, hence a union of orbits. The corresponding union <span class="math" data-tex="\(W\)">\(W\)</span> of connected components of <span class="math" data-tex="\(X\times Z\)">\(X\times Z\)</span> has fibre equal to this graph. Its projection to <span class="math" data-tex="\(X\)">\(X\)</span> is a bijection on fibres, so is an isomorphism. Composing its inverse with <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span> produces a morphism whose fibre map is <span class="math" data-tex="\(s\)">\(s\)</span>. This proves fullness.</p>
+<p>For essential surjectivity, it suffices to realize each transitive finite set <span class="math" data-tex="\(\Pi/H\)">\(\Pi/H\)</span>, with <span class="math" data-tex="\(H\)">\(H\)</span> open. By the definition of the topology, finitely many objects <span class="math" data-tex="\(X_1,\ldots,X_r\)">\(X_1,\ldots,X_r\)</span> have a common fibre-action kernel contained in <span class="math" data-tex="\(H\)">\(H\)</span>. Replace them by their connected components. Galois domination gives a Galois object <span class="math" data-tex="\(Y\)">\(Y\)</span> mapping epically to every resulting connected object: choose a component of their product and dominate it.</p>
+<p>The transitive <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-set <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> is <span class="math" data-tex="\(\Pi/N\)">\(\Pi/N\)</span> for the stabilizer of a chosen point. Its automorphism group in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> acts transitively on <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> and commutes with <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>. All point stabilizers for <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> are therefore equal, so <span class="math" data-tex="\(N\)">\(N\)</span> is normal. The action on <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> is the regular action of <span class="math" data-tex="\(\Pi/N\)">\(\Pi/N\)</span>. Since its maps onto all <span class="math" data-tex="\(F(X_j)\)">\(F(X_j)\)</span> are surjective, <span class="math" data-tex="\(N\)">\(N\)</span> acts trivially on them. Hence <span class="math" data-tex="\(N\subset H\)">\(N\subset H\)</span>.</p>
+<p>Fullness already proved identifies <span class="math" data-tex="\(\operatorname{Aut}_{\mathcal C}(Y)\)">\(\operatorname{Aut}_{\mathcal C}(Y)\)</span> with the group of right translations of <span class="math" data-tex="\(\Pi/N\)">\(\Pi/N\)</span>, namely <span class="math" data-tex="\((\Pi/N)^{\mathrm{op}}\)">\((\Pi/N)^{\mathrm{op}}\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be the subgroup of these automorphisms given by <span class="math" data-tex="\(H/N\)">\(H/N\)</span>. Form the quotient object <span class="math" data-tex="\(Y/M\)">\(Y/M\)</span> as the finite coequalizer of all the automorphisms in <span class="math" data-tex="\(M\)">\(M\)</span> and the identity. Exactness gives</p>
+<span class="math math-display" data-tex="\[
+F(Y/M)=(\Pi/N)/(H/N)=\Pi/H
+\]">\[
+F(Y/M)=(\Pi/N)/(H/N)=\Pi/H
+\]</span>
+<p>as a left <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-set. Finite coproducts realize an arbitrary finite continuous <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>-set. This completes the equivalence and the assertion about Galois objects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem proves that no extra maps or finite actions have been lost. Exactness supplies the quotient objects; connectedness supplies the orbit structure; reflection of isomorphisms turns fibrewise graphs into actual morphisms.</p>
+<h2 id="4-functors-become-homomorphisms-in-the-reverse-direction">4. Functors become homomorphisms, in the reverse direction</h2>
+<p>Let <span class="math" data-tex="\(T:(\mathcal C,F)\to(\mathcal D,E)\)">\(T:(\mathcal C,F)\to(\mathcal D,E)\)</span> be an exact functor. Write
+<span class="math" data-tex="\(\Pi_{\mathcal C}=\operatorname{Aut}(F)\)">\(\Pi_{\mathcal C}=\operatorname{Aut}(F)\)</span> and
+<span class="math" data-tex="\(\Pi_{\mathcal D}=\operatorname{Aut}(E)\)">\(\Pi_{\mathcal D}=\operatorname{Aut}(E)\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> There is a natural isomorphism <span class="math" data-tex="\(t:E\circ T\simeq F\)">\(t:E\circ T\simeq F\)</span>. Choosing it gives a continuous homomorphism</p>
+<span class="math math-display" data-tex="\[
+a:\Pi_{\mathcal D}\longrightarrow\Pi_{\mathcal C},
+\qquad
+a(g)_X=t_Xg_{T(X)}t_X^{-1}.
+\tag{4.1}
+\]">\[
+a:\Pi_{\mathcal D}\longrightarrow\Pi_{\mathcal C},
+\qquad
+a(g)_X=t_Xg_{T(X)}t_X^{-1}.
+\tag{4.1}
+\]</span>
+<p>Under the equivalences of Theorem 3.2, <span class="math" data-tex="\(T\)">\(T\)</span> is restriction of finite actions along <span class="math" data-tex="\(a\)">\(a\)</span>. Changing <span class="math" data-tex="\(t\)">\(t\)</span> conjugates <span class="math" data-tex="\(a\)">\(a\)</span> by an element of <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>. Conversely every continuous <span class="math" data-tex="\(a\)">\(a\)</span> produces such an exact functor. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-functoriality-galois">Stacks, Tag 0BN5</a></p>
+<p><em>Proof.</em> Transport <span class="math" data-tex="\(E\circ T\)">\(E\circ T\)</span> across <span class="math" data-tex="\(\mathcal C\simeq\operatorname{Fin}(\Pi_{\mathcal C})\)">\(\mathcal C\simeq\operatorname{Fin}(\Pi_{\mathcal C})\)</span>. It is an exact functor with finite values, so Proposition 1.2 supplies <span class="math" data-tex="\(t\)">\(t\)</span>. Formula (4.1) is natural in <span class="math" data-tex="\(X\)">\(X\)</span> and is a homomorphism. Its coordinate on <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> depends only on the coordinate of <span class="math" data-tex="\(g\)">\(g\)</span> at <span class="math" data-tex="\(T(X)\)">\(T(X)\)</span>, so it is continuous.</p>
+<p>The map <span class="math" data-tex="\(t_X\)">\(t_X\)</span> identifies the fibre of <span class="math" data-tex="\(T(X)\)">\(T(X)\)</span> with <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> carrying the restricted action. This gives the asserted functor identification on both objects and maps. Two choices of <span class="math" data-tex="\(t\)">\(t\)</span> differ by a natural automorphism <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, and replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(ct\)">\(ct\)</span> replaces <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(cac^{-1}\)">\(cac^{-1}\)</span>. Conversely restriction of actions preserves all finite limits and colimits, since their underlying finite-set constructions are unchanged. Transport it across the two equivalences to obtain <span class="math" data-tex="\(T\)">\(T\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, taking <span class="math" data-tex="\(T\)">\(T\)</span> to be the identity of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> shows that any two finite exact fibre functors on it are naturally isomorphic. The resulting isomorphism of their groups depends on that natural isomorphism only up to inner conjugation.</p>
+<p>We now prove the group-theoretic tests that will make this translation useful. A continuous image of a profinite group is compact and hence closed in a profinite target. Finite quotients separate a point from a closed subgroup <span class="math" data-tex="\(K\)">\(K\)</span>: if <span class="math" data-tex="\(g\notin K\)">\(g\notin K\)</span>, choose an open normal <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(gN\cap K=\varnothing\)">\(gN\cap K=\varnothing\)</span>. Then <span class="math" data-tex="\(KN\)">\(KN\)</span> is a proper open subgroup containing <span class="math" data-tex="\(K\)">\(K\)</span> and excluding <span class="math" data-tex="\(g\)">\(g\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+K=\bigcap_{H\supset K,\ H\ \mathrm{open}}H.
+\tag{4.2}
+\]">\[
+K=\bigcap_{H\supset K,\ H\ \mathrm{open}}H.
+\tag{4.2}
+\]</span>
+<p><strong>Theorem 4.2 (surjectivity).</strong> For <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> above, these conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(a\)">\(a\)</span> is surjective.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> sends connected objects to connected objects.</li>
+<li>If <span class="math" data-tex="\(X\)">\(X\)</span> is connected and <span class="math" data-tex="\(T(X)\)">\(T(X)\)</span> has a map from the terminal object of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, then <span class="math" data-tex="\(X\)">\(X\)</span> has a map from the terminal object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</li>
+<li>For every <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(T\)">\(T\)</span> induces a bijection between its sets of maps from the respective terminal objects.</li>
+</ol>
+<p><em>Proof.</em> Use Theorem 4.1 to identify <span class="math" data-tex="\(T\)">\(T\)</span> with restriction of actions, and put <span class="math" data-tex="\(K=a(\Pi_{\mathcal D})\)">\(K=a(\Pi_{\mathcal D})\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> is surjective, equivariant maps, orbits and fixed points are all unchanged. This proves conditions 2, 3 and 5. Condition 5 implies 4.</p>
+<p>Condition 3 also implies 4: a fixed point in a transitive set makes that set a singleton. The fibre of <span class="math" data-tex="\(X\)">\(X\)</span> then has one element, so <span class="math" data-tex="\(X\)">\(X\)</span> is terminal and has the required map. Condition 2 implies 5 because <span class="math" data-tex="\(T\)">\(T\)</span> preserves the terminal object.</p>
+<p>If <span class="math" data-tex="\(K\ne\Pi_{\mathcal C}\)">\(K\ne\Pi_{\mathcal C}\)</span>, choose a proper open subgroup <span class="math" data-tex="\(H\supset K\)">\(H\supset K\)</span> using (4.2). The transitive set <span class="math" data-tex="\(\Pi_{\mathcal C}/H\)">\(\Pi_{\mathcal C}/H\)</span> has more than one element and no <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>-fixed point, but its identity coset is fixed by <span class="math" data-tex="\(K\)">\(K\)</span>. Thus condition 4 fails. Conditions 2, 3 or 5 therefore also force surjectivity by the implications already proved. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-functoriality-galois-surjective">Stacks, Tag 0BN6</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of compactness is important: for an arbitrary abstract group map, preservation of finite orbits can only detect density in the appropriate profinite completion.</p>
+<p><strong>Theorem 4.3 (injectivity).</strong> The homomorphism <span class="math" data-tex="\(a\)">\(a\)</span> is injective if and only if every connected <span class="math" data-tex="\(Z\in\mathcal D\)">\(Z\in\mathcal D\)</span> admits a diagram</p>
+<span class="math math-display" data-tex="\[
+Z\ \longleftarrow\ W\ \longrightarrow\ T(X),
+\tag{4.3}
+\]">\[
+Z\ \longleftarrow\ W\ \longrightarrow\ T(X),
+\tag{4.3}
+\]</span>
+<p>with the left map epic and the right map monic, for some <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span>.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-tex="\(a\)">\(a\)</span> is injective. It identifies <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span> homeomorphically with a closed subgroup of <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>. Write the transitive fibre of <span class="math" data-tex="\(Z\)">\(Z\)</span> as <span class="math" data-tex="\(\Pi_{\mathcal D}/H\)">\(\Pi_{\mathcal D}/H\)</span>. Choose an open normal subgroup <span class="math" data-tex="\(N\subset\Pi_{\mathcal C}\)">\(N\subset\Pi_{\mathcal C}\)</span> with <span class="math" data-tex="\(a^{-1}(N)\subset H\)">\(a^{-1}(N)\subset H\)</span>, using the induced topology. Inside the restricted <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>-set <span class="math" data-tex="\(\Pi_{\mathcal C}/N\)">\(\Pi_{\mathcal C}/N\)</span>, the orbit of the identity coset is</p>
+<span class="math math-display" data-tex="\[
+\Pi_{\mathcal D}/a^{-1}(N).
+\]">\[
+\Pi_{\mathcal D}/a^{-1}(N).
+\]</span>
+<p>It is a subobject and maps surjectively to <span class="math" data-tex="\(\Pi_{\mathcal D}/H\)">\(\Pi_{\mathcal D}/H\)</span>. The equivalences of Theorem 3.2 turn these maps into (4.3).</p>
+<p>Conversely any element of <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> acts trivially on every restricted set <span class="math" data-tex="\(T(X)\)">\(T(X)\)</span>, hence on each of its subobjects and quotients. Condition (4.3) makes it act trivially on every transitive finite <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span>-set. Apply this to <span class="math" data-tex="\(\Pi_{\mathcal D}/N&#x27;\)">\(\Pi_{\mathcal D}/N&#x27;\)</span> for every open normal <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>. Finite quotients separate points, so the element is the identity. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-functoriality-galois-injective">Stacks, Tag 0BN7</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call an object <strong>trivial</strong> if it is a finite coproduct of terminal objects. Its group action is trivial. Suppose now that a second exact functor <span class="math" data-tex="\(U:\mathcal D\to\mathcal E\)">\(U:\mathcal D\to\mathcal E\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\Pi_{\mathcal E}\xrightarrow{b}
+\Pi_{\mathcal D}\xrightarrow{a}
+\Pi_{\mathcal C}.
+\tag{4.4}
+\]">\[
+\Pi_{\mathcal E}\xrightarrow{b}
+\Pi_{\mathcal D}\xrightarrow{a}
+\Pi_{\mathcal C}.
+\tag{4.4}
+\]</span>
+<p>Then <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span>, the trivial homomorphism, exactly when <span class="math" data-tex="\(U\circ T\)">\(U\circ T\)</span> sends every object to a trivial object. One implication is immediate from restriction of actions. For the other, if an element of the composite image were nonidentity, a finite regular quotient of <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span> would detect its nontrivial action. This proves the composition test <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-composition-trivial">Stacks, Tag 0BS8</a>. The composite is <span class="math" data-tex="\(U\circ T\)">\(U\circ T\)</span>, which has domain <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>; <span class="math" data-tex="\(T\circ U\)">\(T\circ U\)</span> is generally not defined.</p>
+<p><strong>Theorem 4.4 (the closed normal kernel test).</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(a\)">\(a\)</span> is surjective, <span class="math" data-tex="\(ab\)">\(ab\)</span> is trivial, and <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> is the smallest closed normal subgroup of <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span> containing <span class="math" data-tex="\(b(\Pi_{\mathcal E})\)">\(b(\Pi_{\mathcal E})\)</span>.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful, and <span class="math" data-tex="\(Y\in\mathcal D\)">\(Y\in\mathcal D\)</span> belongs to its essential image exactly when <span class="math" data-tex="\(U(Y)\)">\(U(Y)\)</span> is trivial.</li>
+<li><span class="math" data-tex="\(T\)">\(T\)</span> is fully faithful, <span class="math" data-tex="\(U\circ T\)">\(U\circ T\)</span> sends every object to a trivial object, and every <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(U(Y)\)">\(U(Y)\)</span> trivial admits an epimorphism <span class="math" data-tex="\(T(X)\to Y\)">\(T(X)\to Y\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Theorem 4.2 and the composition test make <span class="math" data-tex="\(a\)">\(a\)</span> surjective and <span class="math" data-tex="\(ab\)">\(ab\)</span> trivial under either categorical condition. Put</p>
+<span class="math math-display" data-tex="\[
+L=\overline{\langle g\,b(\Pi_{\mathcal E})\,g^{-1}
+\mid g\in\Pi_{\mathcal D}\rangle}.
+\]">\[
+L=\overline{\langle g\,b(\Pi_{\mathcal E})\,g^{-1}
+\mid g\in\Pi_{\mathcal D}\rangle}.
+\]</span>
+<p>It is a closed normal subgroup of <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>. A finite <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span>-set has trivial restricted <span class="math" data-tex="\(\Pi_{\mathcal E}\)">\(\Pi_{\mathcal E}\)</span>-action exactly when its action kernel contains <span class="math" data-tex="\(L\)">\(L\)</span>. It comes from a finite <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>-set exactly when its action kernel contains <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>. In the latter assertion continuity of the factored action follows from the quotient topology of the compact surjection <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>If <span class="math" data-tex="\(L=\ker a\)">\(L=\ker a\)</span>, the two classes of sets coincide, proving condition 2. Conversely, under condition 2, apply this coincidence to each regular quotient</p>
+<span class="math math-display" data-tex="\[
+\Pi_{\mathcal D}/(LN&#x27;),
+\qquad N&#x27;\subset\Pi_{\mathcal D}
+\text{ open and normal}.
+\]">\[
+\Pi_{\mathcal D}/(LN&#x27;),
+\qquad N&#x27;\subset\Pi_{\mathcal D}
+\text{ open and normal}.
+\]</span>
+<p>Its restricted <span class="math" data-tex="\(\Pi_{\mathcal E}\)">\(\Pi_{\mathcal E}\)</span>-action is trivial, so <span class="math" data-tex="\(\ker a\subset LN&#x27;\)">\(\ker a\subset LN&#x27;\)</span> for all <span class="math" data-tex="\(N&#x27;\)">\(N&#x27;\)</span>. The intersection of these open subgroups is <span class="math" data-tex="\(L\)">\(L\)</span>, by the same closed-subgroup separation argument as (4.2). Thus <span class="math" data-tex="\(\ker a=L\)">\(\ker a=L\)</span>.</p>
+<p>Condition 2 implies 3 by taking an object representing <span class="math" data-tex="\(Y\)">\(Y\)</span>. Under condition 3, <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span> acts trivially on <span class="math" data-tex="\(T(X)\)">\(T(X)\)</span>, and therefore on its epic image <span class="math" data-tex="\(Y\)">\(Y\)</span>. Hence every <span class="math" data-tex="\(Y\)">\(Y\)</span> with trivial <span class="math" data-tex="\(U(Y)\)">\(U(Y)\)</span> is in the essential image. The converse direction follows from the triviality of <span class="math" data-tex="\(U\circ T\)">\(U\circ T\)</span>, giving condition 2. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-functoriality-galois-ses">Stacks, Tag 0BS9</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This theorem tests a <strong>closed normal closure</strong>, rather than equality with the image of <span class="math" data-tex="\(b\)">\(b\)</span>. For ordinary exactness in the middle, we still need the following condition.</p>
+<p><strong>Theorem 4.5 (normality).</strong> The closed subgroup <span class="math" data-tex="\(b(\Pi_{\mathcal E})\)">\(b(\Pi_{\mathcal E})\)</span> is normal in <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span> if and only if, for every connected <span class="math" data-tex="\(Y\in\mathcal D\)">\(Y\in\mathcal D\)</span>, a map from the terminal object to <span class="math" data-tex="\(U(Y)\)">\(U(Y)\)</span> implies that <span class="math" data-tex="\(U(Y)\)">\(U(Y)\)</span> is trivial.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(K=b(\Pi_{\mathcal E})\)">\(K=b(\Pi_{\mathcal E})\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is normal and fixes one point in a transitive <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span>-set, it fixes all its translates: for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+k(gx)=g(g^{-1}kg)x=gx.
+\]">\[
+k(gx)=g(g^{-1}kg)x=gx.
+\]</span>
+<p>Thus the whole restricted action is trivial.</p>
+<p>Conversely let <span class="math" data-tex="\(H\)">\(H\)</span> be any open subgroup of <span class="math" data-tex="\(\Pi_{\mathcal D}\)">\(\Pi_{\mathcal D}\)</span> containing <span class="math" data-tex="\(K\)">\(K\)</span>. The identity coset in <span class="math" data-tex="\(\Pi_{\mathcal D}/H\)">\(\Pi_{\mathcal D}/H\)</span> is <span class="math" data-tex="\(K\)">\(K\)</span>-fixed. The asserted condition makes every coset <span class="math" data-tex="\(K\)">\(K\)</span>-fixed, so</p>
+<span class="math math-display" data-tex="\[
+g^{-1}Kg\subset H\qquad\text{for every }g.
+\]">\[
+g^{-1}Kg\subset H\qquad\text{for every }g.
+\]</span>
+<p>Intersect over all open <span class="math" data-tex="\(H\supset K\)">\(H\supset K\)</span>, using (4.2), to obtain <span class="math" data-tex="\(g^{-1}Kg\subset K\)">\(g^{-1}Kg\subset K\)</span>. Replace <span class="math" data-tex="\(g\)">\(g\)</span> by its inverse to get equality. This proves normality. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-functoriality-galois-normal">Stacks, Tag 0BTS</a> <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently (4.4), followed by <span class="math" data-tex="\(\Pi_{\mathcal C}\to1\)">\(\Pi_{\mathcal C}\to1\)</span>, is exact in the ordinary sense exactly when Theorem 4.4's categorical conditions and Theorem 4.5's normality condition both hold. If one also places <span class="math" data-tex="\(1\)">\(1\)</span> at the left, Theorem 4.3 supplies the additional injectivity condition. These distinctions will prevent a normal-generation statement from being mistaken for the full homotopy exact sequence.</p>
+<h2 id="5-fields-and-spaces">5. Fields and spaces</h2>
+<h3 id="5-1-finite-étale-algebras-over-an-arbitrary-field">5.1. Finite étale algebras over an arbitrary field</h3>
+<p>Fix a field <span class="math" data-tex="\(K\)">\(K\)</span> and a separable closure <span class="math" data-tex="\(K^s\)">\(K^s\)</span>. Let <span class="math" data-tex="\(\mathcal C_K\)">\(\mathcal C_K\)</span> be the <strong>opposite</strong> of the category of finite étale <span class="math" data-tex="\(K\)">\(K\)</span>-algebras, including the zero algebra. Its fibre functor is</p>
+<span class="math math-display" data-tex="\[
+F_K(A)=\operatorname{Hom}_{K\text{-alg}}(A,K^s).
+\tag{5.1}
+\]">\[
+F_K(A)=\operatorname{Hom}_{K\text{-alg}}(A,K^s).
+\tag{5.1}
+\]</span>
+<p>The opposite is necessary: an algebra map <span class="math" data-tex="\(B\to A\)">\(B\to A\)</span> induces the fibre map <span class="math" data-tex="\(F_K(A)\to F_K(B)\)">\(F_K(A)\to F_K(B)\)</span>. Equivalently, we are studying finite étale schemes over <span class="math" data-tex="\(\operatorname{Spec}K\)">\(\operatorname{Spec}K\)</span>. The zero algebra represents the empty scheme.</p>
+<p>We use the field-theory prerequisites that a finite étale algebra is a finite product of finite separable field extensions <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-over-field">Stacks, Tag 02GL</a>, and that a finite separable extension has a primitive element <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-primitive-element">Stacks, Tag 030N</a>. Thus every finite étale algebra becomes a finite product of copies of <span class="math" data-tex="\(L\)">\(L\)</span> over some finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> in <span class="math" data-tex="\(K^s\)">\(K^s\)</span>. Indeed take a finite splitting field for the finitely many separable minimal polynomials of its factors. The Chinese remainder theorem then gives</p>
+<span class="math math-display" data-tex="\[
+L\otimes_K A\simeq
+\prod_{e\in F_K(A)}L,
+\qquad \ell\otimes a\longmapsto(\ell e(a))_e.
+\tag{5.2}
+\]">\[
+L\otimes_K A\simeq
+\prod_{e\in F_K(A)}L,
+\qquad \ell\otimes a\longmapsto(\ell e(a))_e.
+\tag{5.2}
+\]</span>
+<p>All embeddings <span class="math" data-tex="\(e\)">\(e\)</span> in this formula have image in the chosen <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Write <span class="math" data-tex="\(G_K=\operatorname{Gal}(K^s/K)\)">\(G_K=\operatorname{Gal}(K^s/K)\)</span>. It is the inverse limit of the finite groups <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span> over finite Galois subextensions, with its <strong>Krull topology</strong>. To see the inverse-limit identification directly, <span class="math" data-tex="\(K^s\)">\(K^s\)</span> is the union of these <span class="math" data-tex="\(L\)">\(L\)</span>'s. A compatible family of their automorphisms defines a field automorphism of the union; its compatible inverses define the inverse. Restrictions between finite Galois groups are surjective by finite Galois theory. Compactness of the surjective finite inverse system also shows that every coordinate projection from <span class="math" data-tex="\(G_K\)">\(G_K\)</span> is surjective. This constructs the profinite topology without using the categorical theorem to assume the desired answer.</p>
+<p><strong>Theorem 5.1.</strong> The functor (5.1), with the action <span class="math" data-tex="\(g\cdot e=g\circ e\)">\(g\cdot e=g\circ e\)</span>, is an equivalence</p>
+<span class="math math-display" data-tex="\[
+\mathcal C_K\simeq\operatorname{Fin}(G_K).
+\tag{5.3}
+\]">\[
+\mathcal C_K\simeq\operatorname{Fin}(G_K).
+\tag{5.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\((\mathcal C_K,F_K)\)">\((\mathcal C_K,F_K)\)</span> is a Galois category and
+<span class="math" data-tex="\(\operatorname{Aut}(F_K)\simeq G_K\)">\(\operatorname{Aut}(F_K)\simeq G_K\)</span> as profinite groups. <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-lemma-sheaves-point">Stacks, Tag 03QR, restricted to finite objects</a></p>
+<p><em>Proof.</em> The action is continuous, since the finite set of embeddings is fixed by the subgroup fixing a suitable finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>.</p>
+<p>Conversely let <span class="math" data-tex="\(E\)">\(E\)</span> be a finite continuous <span class="math" data-tex="\(G_K\)">\(G_K\)</span>-set. Its action factors through <span class="math" data-tex="\(Q=\operatorname{Gal}(L/K)\)">\(Q=\operatorname{Gal}(L/K)\)</span> for some finite Galois subextension: its action kernel is open, and the kernels of the finite coordinate projections form a neighbourhood basis. Give <span class="math" data-tex="\(L^E\)">\(L^E\)</span>, the algebra of functions from <span class="math" data-tex="\(E\)">\(E\)</span> to <span class="math" data-tex="\(L\)">\(L\)</span>, the semilinear action</p>
+<span class="math math-display" data-tex="\[
+(q\cdot f)(e)=q\bigl(f(q^{-1}e)\bigr),
+\qquad B_E=(L^E)^Q.
+\tag{5.4}
+\]">\[
+(q\cdot f)(e)=q\bigl(f(q^{-1}e)\bigr),
+\qquad B_E=(L^E)^Q.
+\tag{5.4}
+\]</span>
+<p>This is an action by semilinear algebra automorphisms. The Galois form of faithfully flat algebra descent, proved in <a href="../support/AG-DFG--AG-DFG-02.html"><em>Faithfully flat descent</em></a>, gives the isomorphism</p>
+<span class="math math-display" data-tex="\[
+L\otimes_K B_E\longrightarrow L^E,
+\qquad \ell\otimes b\longmapsto \ell b.
+\tag{5.5}
+\]">\[
+L\otimes_K B_E\longrightarrow L^E,
+\qquad \ell\otimes b\longmapsto \ell b.
+\tag{5.5}
+\]</span>
+<p>Finite local freeness descends by that lesson, and étaleness descends by <a href="../support/AG-DFG--AG-DFG-03.html"><em>Descending properties of schemes and morphisms</em></a>, Theorem 2.1. Hence <span class="math" data-tex="\(B_E\)">\(B_E\)</span> is finite étale over <span class="math" data-tex="\(K\)">\(K\)</span>. Its fibre is <span class="math" data-tex="\(E\)">\(E\)</span>: after base change to <span class="math" data-tex="\(K^s\)">\(K^s\)</span>, (5.5) is <span class="math" data-tex="\((K^s)^E\)">\((K^s)^E\)</span>, whose algebra maps to <span class="math" data-tex="\(K^s\)">\(K^s\)</span> are precisely the coordinate evaluations. For <span class="math" data-tex="\(b\in B_E\)">\(b\in B_E\)</span>, invariance says</p>
+<span class="math math-display" data-tex="\[
+b(qe)=q(b(e)).
+\]">\[
+b(qe)=q(b(e)).
+\]</span>
+<p>If <span class="math" data-tex="\(g\in G_K\)">\(g\in G_K\)</span> restricts to <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>, this identity shows that <span class="math" data-tex="\(g\)">\(g\)</span> sends the evaluation at <span class="math" data-tex="\(e\)">\(e\)</span> to the evaluation at <span class="math" data-tex="\(qe\)">\(qe\)</span>. The identification of the fibre with <span class="math" data-tex="\(E\)">\(E\)</span> is therefore equivariant, including when <span class="math" data-tex="\(E\)">\(E\)</span> is empty.</p>
+<p>We also check every morphism. An equivariant map <span class="math" data-tex="\(h:E\to E&#x27;\)">\(h:E\to E&#x27;\)</span> gives the algebra map</p>
+<span class="math math-display" data-tex="\[
+L^{E&#x27;}\longrightarrow L^E,\qquad f\longmapsto f\circ h.
+\tag{5.6}
+\]">\[
+L^{E&#x27;}\longrightarrow L^E,\qquad f\longmapsto f\circ h.
+\tag{5.6}
+\]</span>
+<p>It commutes with (5.4), so descends uniquely to <span class="math" data-tex="\(B_{E&#x27;}\to B_E\)">\(B_{E&#x27;}\to B_E\)</span>. Conversely every unital <span class="math" data-tex="\(L\)">\(L\)</span>-algebra map <span class="math" data-tex="\(L^{E&#x27;}\to L^E\)">\(L^{E&#x27;}\to L^E\)</span> has form (5.6). For each coordinate of the target, the primitive idempotents of <span class="math" data-tex="\(L^{E&#x27;}\)">\(L^{E&#x27;}\)</span> must map to zeros and ones, with exactly one mapping to one. Thus that coordinate selects exactly one element of <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. Commutation with (5.4) is exactly equivariance of <span class="math" data-tex="\(h\)">\(h\)</span>. The same argument treats empty sets, with the usual zero-algebra convention. Faithfully flat descent makes the descended algebra map unique.</p>
+<p>For two finite étale algebras, choose a common finite Galois splitting field. Formula (5.2) identifies its canonical descent action with (5.4): acting on the tensor factor sends a function <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(e\mapsto q(f(q^{-1}e))\)">\(e\mapsto q(f(q^{-1}e))\)</span>. Hence (5.5) recovers the original algebra, and the preceding morphism argument proves full faithfulness as well as essential surjectivity. Enlarging the splitting field does not change this conclusion, since descent recovers the same original algebra and maps.</p>
+<p>Under (5.3), the fibre functor is the forgetful functor. Section 1 and the axioms in Section 2 therefore verify all Galois-category axioms and identify its natural automorphism group with <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. In particular the identification is topological. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Connected objects here are the finite separable field extensions, viewed oppositely. Galois objects are precisely the finite Galois extensions. For the latter assertion, a field embedding <span class="math" data-tex="\(A\to K^s\)">\(A\to K^s\)</span> is moved simply transitively by the automorphisms of <span class="math" data-tex="\(A/K\)">\(A/K\)</span> exactly when <span class="math" data-tex="\(A/K\)">\(A/K\)</span> is Galois. Equivalently, its stabilizer in <span class="math" data-tex="\(G_K\)">\(G_K\)</span> is normal, by Theorem 3.2. This recovers finite Galois theory inside the category of finite étale algebras.</p>
+<p><strong>Example 5.2 (finite fields).</strong> For <span class="math" data-tex="\(K=\mathbf F_q\)">\(K=\mathbf F_q\)</span>, the roots of <span class="math" data-tex="\(X^{q^n}-X\)">\(X^{q^n}-X\)</span> in an algebraic closure form a field of <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements. The derivative is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so there are exactly <span class="math" data-tex="\(q^n\)">\(q^n\)</span> distinct roots. Closure under sums, products and inverses follows from the Frobenius identities. Call this field <span class="math" data-tex="\(\mathbf F_{q^n}\)">\(\mathbf F_{q^n}\)</span>.</p>
+<p>Every degree-<span class="math" data-tex="\(n\)">\(n\)</span> extension of <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> has <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements, all satisfying <span class="math" data-tex="\(a^{q^n}=a\)">\(a^{q^n}=a\)</span>, so is this field up to <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-isomorphism. The automorphism <span class="math" data-tex="\(a\mapsto a^q\)">\(a\mapsto a^q\)</span> has order exactly <span class="math" data-tex="\(n\)">\(n\)</span>: its <span class="math" data-tex="\(n\)">\(n\)</span>th power is the identity, while a smaller positive power <span class="math" data-tex="\(d&lt;n\)">\(d&lt;n\)</span> cannot fix all <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements, since <span class="math" data-tex="\(X^{q^d}-X\)">\(X^{q^d}-X\)</span> has degree <span class="math" data-tex="\(q^d\)">\(q^d\)</span>. Finite Galois theory then gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(\mathbf F_{q^n}/\mathbf F_q)
+\simeq\mathbf Z/n\mathbf Z.
+\]">\[
+\operatorname{Gal}(\mathbf F_{q^n}/\mathbf F_q)
+\simeq\mathbf Z/n\mathbf Z.
+\]</span>
+<p>Restrictions send Frobenius to Frobenius. Every algebraic element lies in a finite extension, so</p>
+<span class="math math-display" data-tex="\[
+G_{\mathbf F_q}\simeq\varprojlim_n\mathbf Z/n\mathbf Z
+=\widehat{\mathbf Z}.
+\tag{5.7}
+\]">\[
+G_{\mathbf F_q}\simeq\varprojlim_n\mathbf Z/n\mathbf Z
+=\widehat{\mathbf Z}.
+\tag{5.7}
+\]</span>
+<p>Arithmetic Frobenius corresponds to <span class="math" data-tex="\(1\)">\(1\)</span> and topologically generates the group. The finite separable algebras over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> are thus encoded by a finite set and one permutation. A cycle of length <span class="math" data-tex="\(n\)">\(n\)</span> corresponds to <span class="math" data-tex="\(\mathbf F_{q^n}\)">\(\mathbf F_{q^n}\)</span>; a disjoint union of cycles corresponds to the product of their fields. For a separably closed field, the same construction gives the trivial group and only products of copies of the field.</p>
+<h3 id="5-2-finite-topological-covering-spaces">5.2. Finite topological covering spaces</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be nonempty, connected, locally path-connected and semilocally simply connected, and choose <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>. Local path-connectedness makes connectedness equivalent to path-connectedness. Semilocal simple connectivity means that every point has a neighbourhood whose loops become null-homotopic in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\operatorname{Cov}_f(X)\)">\(\operatorname{Cov}_f(X)\)</span> be the category of covering spaces of <span class="math" data-tex="\(X\)">\(X\)</span> with finite fibres, allowing the empty covering, and continuous maps over <span class="math" data-tex="\(X\)">\(X\)</span>. Put <span class="math" data-tex="\(\Gamma=\pi_1^{\mathrm{top}}(X,x)\)">\(\Gamma=\pi_1^{\mathrm{top}}(X,x)\)</span>, with the discrete topology. For loops, we multiply by traversing the first loop and then the second. If <span class="math" data-tex="\(L_\gamma\)">\(L_\gamma\)</span> is endpoint transport along a lifted loop, then</p>
+<span class="math math-display" data-tex="\[
+L_{\gamma\delta}=L_\delta L_\gamma.
+\]">\[
+L_{\gamma\delta}=L_\delta L_\gamma.
+\]</span>
+<p>We therefore use the left action</p>
+<span class="math math-display" data-tex="\[
+[\gamma]\cdot y=L_{\gamma^{-1}}(y)
+\quad\text{on }p^{-1}(x).
+\tag{5.8}
+\]">\[
+[\gamma]\cdot y=L_{\gamma^{-1}}(y)
+\quad\text{on }p^{-1}(x).
+\tag{5.8}
+\]</span>
+<p>This avoids turning a right action into a left action without changing the convention.</p>
+<p>Here are the lifting facts used in (5.8). A path has a unique lift from a chosen starting point: subdivide its compact parameter interval into finitely many pieces mapping to evenly covered neighbourhoods, and lift successively on sheets. A homotopy of paths with fixed endpoints has constant lifted endpoints. One can subdivide its parameter square into small rectangles mapping to evenly covered neighbourhoods; on each rectangle the chosen sheet gives the lift, and uniqueness on common edges makes these local lifts agree. The endpoints lie in discrete fibres and vary continuously, so are constant. Thus (5.8) depends only on the loop class. These are the path and homotopy lifting statements of Hatcher, §1.3, Proposition 1.30.</p>
+<p><strong>Theorem 5.3.</strong> Fibre with action (5.8) is an equivalence</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cov}_f(X)\simeq\operatorname{Fin}(\Gamma).
+\tag{5.9}
+\]">\[
+\operatorname{Cov}_f(X)\simeq\operatorname{Fin}(\Gamma).
+\tag{5.9}
+\]</span>
+<p>Consequently this is a Galois category, and its fibre-functor group is
+<span class="math" data-tex="\(\widehat{\pi_1^{\mathrm{top}}(X,x)}\)">\(\widehat{\pi_1^{\mathrm{top}}(X,x)}\)</span>, with its profinite topology.</p>
+<p><em>Proof.</em> A map over <span class="math" data-tex="\(X\)">\(X\)</span> commutes with path lifting by uniqueness, so its fibre map is equivariant. The orbits in a fibre are exactly the path components of its covering space: a path between two points over <span class="math" data-tex="\(x\)">\(x\)</span> projects to a loop, and every lifted loop is such a path. Each component meets the fibre over <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(X\)">\(X\)</span> is path-connected and one can lift a path from any base point to <span class="math" data-tex="\(x\)">\(x\)</span>. The covering space is locally path-connected, so these components are also connected components and are open. A finite covering consequently has finitely many of them.</p>
+<p>For a point <span class="math" data-tex="\(y\in p^{-1}(x)\)">\(y\in p^{-1}(x)\)</span>, its stabilizer <span class="math" data-tex="\(H_y\)">\(H_y\)</span> consists of the loop classes lifting to loops at <span class="math" data-tex="\(y\)">\(y\)</span>. Indeed inverse transport fixes <span class="math" data-tex="\(y\)">\(y\)</span> exactly when forward transport does. Thus</p>
+<span class="math math-display" data-tex="\[
+H_y=p_*\pi_1(Y_0,y),
+\tag{5.10}
+\]">\[
+H_y=p_*\pi_1(Y_0,y),
+\tag{5.10}
+\]</span>
+<p>where <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> is its component. Its transitive fibre is <span class="math" data-tex="\(\Gamma/H_y\)">\(\Gamma/H_y\)</span>.</p>
+<p>We use the following classification input from Hatcher, §1.3, Theorem 1.38: under the stated hypotheses on <span class="math" data-tex="\(X\)">\(X\)</span>, every subgroup <span class="math" data-tex="\(H\subset\Gamma\)">\(H\subset\Gamma\)</span> is realized by a pointed connected covering with subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, uniquely up to pointed isomorphism. Without a chosen point, isomorphism classes correspond to conjugacy classes of subgroups. The preceding orbit calculation shows that the number of sheets is <span class="math" data-tex="\([\Gamma:H]\)">\([\Gamma:H]\)</span>. It follows that every finite transitive <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-set is a fibre of a finite connected covering. Disjoint unions realize all finite <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-sets, including the empty one.</p>
+<p>For completeness, the morphism correspondence does not follow merely from a bijection on isomorphism classes. Let <span class="math" data-tex="\(h:p^{-1}(x)\to q^{-1}(x)\)">\(h:p^{-1}(x)\to q^{-1}(x)\)</span> be equivariant. On a connected component <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>, choose <span class="math" data-tex="\(y\)">\(y\)</span> over <span class="math" data-tex="\(x\)">\(x\)</span>, and put <span class="math" data-tex="\(z=h(y)\)">\(z=h(y)\)</span>. Equivariance implies <span class="math" data-tex="\(H_y\subset H_z\)">\(H_y\subset H_z\)</span>. For any <span class="math" data-tex="\(y&#x27;\in Y_0\)">\(y&#x27;\in Y_0\)</span>, choose a path <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> from <span class="math" data-tex="\(y\)">\(y\)</span> to <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> and define <span class="math" data-tex="\(f(y&#x27;)\)">\(f(y&#x27;)\)</span> as the endpoint of the lift of <span class="math" data-tex="\(p\lambda\)">\(p\lambda\)</span> starting at <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>If another path is chosen, their concatenation with one reversed projects to an element of <span class="math" data-tex="\(H_y\subset H_z\)">\(H_y\subset H_z\)</span>. Its lift at <span class="math" data-tex="\(z\)">\(z\)</span> closes, so the two candidate endpoints agree. This defines <span class="math" data-tex="\(f\)">\(f\)</span> unambiguously. It is continuous: near <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span>, choose a path-connected sheet neighbourhood over an evenly covered path-connected neighbourhood for both covers. Extend the chosen path by paths within this neighbourhood. There <span class="math" data-tex="\(f\)">\(f\)</span> is the composition of one sheet projection and the inverse of another, hence continuous. The construction is over <span class="math" data-tex="\(X\)">\(X\)</span> and agrees with <span class="math" data-tex="\(h\)">\(h\)</span> on the fibre, because every point of that fibre is reached by loop transport from <span class="math" data-tex="\(y\)">\(y\)</span>. It is unique, since any map over <span class="math" data-tex="\(X\)">\(X\)</span> must send lifted paths from <span class="math" data-tex="\(y\)">\(y\)</span> to the prescribed lifted paths from <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>Doing this on every open component produces the unique map realizing <span class="math" data-tex="\(h\)">\(h\)</span>. We have proved full faithfulness and essential surjectivity. The axioms follow from the equivalence and Section 1; Lemma 1.1 identifies the group as the profinite completion of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. No assumption that <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> embeds in that completion is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof also explains deck transformations. The automorphism group of the transitive fibre <span class="math" data-tex="\(\Gamma/H\)">\(\Gamma/H\)</span> is <span class="math" data-tex="\((N_\Gamma(H)/H)^{\mathrm{op}}\)">\((N_\Gamma(H)/H)^{\mathrm{op}}\)</span>, acting by right translations; inversion identifies this opposite group with <span class="math" data-tex="\(N_\Gamma(H)/H\)">\(N_\Gamma(H)/H\)</span>. The cover is Galois exactly when <span class="math" data-tex="\(H\)">\(H\)</span> is normal. To check the normality assertion directly, right translations are transitive on <span class="math" data-tex="\(\Gamma/H\)">\(\Gamma/H\)</span> exactly when <span class="math" data-tex="\(N_\Gamma(H)=\Gamma\)">\(N_\Gamma(H)=\Gamma\)</span>. This is the finite-cover case of Hatcher, §1.3, Proposition 1.39.</p>
+<p><strong>Example 5.4 (the circle).</strong> The covering</p>
+<span class="math math-display" data-tex="\[
+\mathbf R\longrightarrow S^1,\qquad t\longmapsto e^{2\pi i t}
+\]">\[
+\mathbf R\longrightarrow S^1,\qquad t\longmapsto e^{2\pi i t}
+\]</span>
+<p>computes <span class="math" data-tex="\(\pi_1(S^1,1)\simeq\mathbf Z\)">\(\pi_1(S^1,1)\simeq\mathbf Z\)</span>. A loop based at <span class="math" data-tex="\(1\)">\(1\)</span> lifts from <span class="math" data-tex="\(0\)">\(0\)</span> to an integer, and that integer is invariant under based homotopy. Concatenation adds these integers, since a lift of the second loop is translated by the endpoint of the first. Every integer occurs. If the endpoint is <span class="math" data-tex="\(0\)">\(0\)</span>, the lift is a loop in <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span> and contracts there, so its projection contracts in <span class="math" data-tex="\(S^1\)">\(S^1\)</span>. This proves the isomorphism, including injectivity.</p>
+<p>Its finite-index subgroups are <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. The degree-<span class="math" data-tex="\(n\)">\(n\)</span> connected cover is</p>
+<span class="math math-display" data-tex="\[
+S^1\longrightarrow S^1,\qquad z\longmapsto z^n,
+\tag{5.11}
+\]">\[
+S^1\longrightarrow S^1,\qquad z\longmapsto z^n,
+\tag{5.11}
+\]</span>
+<p>because the induced map on the computed fundamental groups multiplies winding number by <span class="math" data-tex="\(n\)">\(n\)</span>. Classification proves these are all connected finite covers. Arbitrary finite covers are their finite disjoint unions. Equivalently, a finite <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-set is a finite set with one permutation; its cycles are the connected covers. Lemma 1.1 gives the fibre group <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. Under convention (5.8), a positive loop sends <span class="math" data-tex="\(e^{2\pi i j/n}\)">\(e^{2\pi i j/n}\)</span> to <span class="math" data-tex="\(e^{2\pi i(j-1)/n}\)">\(e^{2\pi i(j-1)/n}\)</span>.</p>
+<p><strong>Example 5.5 (the punctured complex line).</strong> The homotopy</p>
+<span class="math math-display" data-tex="\[
+H(z,s)=z\bigl((1-s)+s/|z|\bigr)
+\]">\[
+H(z,s)=z\bigl((1-s)+s/|z|\bigr)
+\]</span>
+<p>retracts <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span> onto <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, fixing <span class="math" data-tex="\(S^1\)">\(S^1\)</span>. Its scalar factor is positive, so the homotopy never meets zero. It follows that <span class="math" data-tex="\(\pi_1(\mathbf C^\times,1)=\mathbf Z\)">\(\pi_1(\mathbf C^\times,1)=\mathbf Z\)</span>. The maps <span class="math" data-tex="\(z\mapsto z^n\)">\(z\mapsto z^n\)</span> on <span class="math" data-tex="\(\mathbf C^\times\)">\(\mathbf C^\times\)</span> are degree-<span class="math" data-tex="\(n\)">\(n\)</span> coverings: locally choose a continuous logarithm and the <span class="math" data-tex="\(n\)">\(n\)</span> resulting branches of the root. Their source is connected and their fundamental-group image is <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>. Theorem 5.3 and classification therefore give all connected finite covers, all Galois, and the fibre group <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>.</p>
+<p><strong>Example 5.6 (two circles joined at a point).</strong> Write <span class="math" data-tex="\(W=S^1\vee S^1\)">\(W=S^1\vee S^1\)</span>, with loops labelled <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Its universal cover can be described using the free group <span class="math" data-tex="\(F_2\)">\(F_2\)</span> of reduced words in <span class="math" data-tex="\(a^{\pm1},b^{\pm1}\)">\(a^{\pm1},b^{\pm1}\)</span>. Put a vertex at every reduced word <span class="math" data-tex="\(w\)">\(w\)</span>, an oriented edge labelled <span class="math" data-tex="\(a\)">\(a\)</span> from <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\(wa\)">\(wa\)</span>, and an oriented edge labelled <span class="math" data-tex="\(b\)">\(b\)</span> from <span class="math" data-tex="\(w\)">\(w\)</span> to <span class="math" data-tex="\(wb\)">\(wb\)</span>. Projection sends every vertex to the joining point and every labelled edge around the corresponding circle. At every vertex the four half-edges project bijectively onto the four half-edges of <span class="math" data-tex="\(W\)">\(W\)</span>, so this is a covering.</p>
+<p>The graph is connected by reading words. It has no non-backtracking closed edge path: such a path would give a nonempty reduced word representing the identity. It is therefore a tree. Contract it along the unique paths to its identity vertex; equivalently its finite subtrees contract and every loop has image in a finite subtree. In this locally finite graph this proves simple connectivity. Loop lifting identifies <span class="math" data-tex="\(\pi_1(W)\)">\(\pi_1(W)\)</span> with <span class="math" data-tex="\(F_2\)">\(F_2\)</span>: endpoints are reduced words, all occur, concatenation is multiplication of words, and a loop with identity endpoint lifts to a contractible loop in the tree. Thus Theorem 5.3 gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Aut}(\text{fibre on }\operatorname{Cov}_f(W))
+\simeq\widehat{F_2}.
+\tag{5.12}
+\]">\[
+\operatorname{Aut}(\text{fibre on }\operatorname{Cov}_f(W))
+\simeq\widehat{F_2}.
+\tag{5.12}
+\]</span>
+<p>A finite cover is specified by two arbitrary permutations <span class="math" data-tex="\(\sigma_a,\sigma_b\)">\(\sigma_a,\sigma_b\)</span> of a finite set <span class="math" data-tex="\(E\)">\(E\)</span>. With the left convention (5.8), draw the <span class="math" data-tex="\(a\)">\(a\)</span>-edge from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(\sigma_a^{-1}(e)\)">\(\sigma_a^{-1}(e)\)</span> and the <span class="math" data-tex="\(b\)">\(b\)</span>-edge from <span class="math" data-tex="\(e\)">\(e\)</span> to <span class="math" data-tex="\(\sigma_b^{-1}(e)\)">\(\sigma_b^{-1}(e)\)</span>. There is one incoming and one outgoing edge of each label at each vertex, so the resulting graph covers <span class="math" data-tex="\(W\)">\(W\)</span>. Its inverse loop transports are exactly the specified permutations. The graph is connected if and only if those two permutations generate a transitive action on <span class="math" data-tex="\(E\)">\(E\)</span>. Maps of covers are exactly functions commuting with both permutations.</p>
+<h2 id="6-exercises-and-complete-solutions">6. Exercises and complete solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Compute the automorphism group of the forgetful functor on finite <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-sets, including its topology.</p>
+<p><em>Solution.</em> The regular quotient <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span> has commuting translations. A natural automorphism must therefore be translation by an element <span class="math" data-tex="\(c_n\)">\(c_n\)</span>. Naturality for reduction modulo divisors gives <span class="math" data-tex="\(c_m\bmod n=c_n\)">\(c_m\bmod n=c_n\)</span> whenever <span class="math" data-tex="\(n\mid m\)">\(n\mid m\)</span>. Thus it determines <span class="math" data-tex="\((c_n)\in\widehat{\mathbf Z}\)">\((c_n)\in\widehat{\mathbf Z}\)</span>.</p>
+<p>Conversely a finite <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-set is a finite set with a permutation <span class="math" data-tex="\(s\)">\(s\)</span>. Choose <span class="math" data-tex="\(n\)">\(n\)</span> divisible by all its cycle lengths, so <span class="math" data-tex="\(s^n=1\)">\(s^n=1\)</span>, and let <span class="math" data-tex="\((c_m)\)">\((c_m)\)</span> act as <span class="math" data-tex="\(s^{c_n}\)">\(s^{c_n}\)</span>. Compatibility makes this independent of <span class="math" data-tex="\(n\)">\(n\)</span>, and it commutes with every equivariant map. On the regular quotients it recovers the translations, so these constructions are inverse group homomorphisms. The coordinate action on each finite set factors through some <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>; conversely the regular quotient recovers that coordinate. Hence the topology is precisely the inverse-limit topology, not the discrete topology.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Prove that every morphism between connected objects of a Galois category is epic.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, and form <span class="math" data-tex="\(P=Y\amalg_XY\)">\(P=Y\amalg_XY\)</span> with inclusions <span class="math" data-tex="\(i_1,i_2\)">\(i_1,i_2\)</span>. Their equalizer <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span> is monic. Exactness identifies its fibre with the equalizer of the two maps from <span class="math" data-tex="\(F(Y)\)">\(F(Y)\)</span> into <span class="math" data-tex="\(F(P)\)">\(F(P)\)</span>. This set contains <span class="math" data-tex="\(F(f)(F(X))\)">\(F(f)(F(X))\)</span>, which is nonempty since <span class="math" data-tex="\(X\)">\(X\)</span> is connected. Thus <span class="math" data-tex="\(Z\)">\(Z\)</span> is not initial. Connectedness of <span class="math" data-tex="\(Y\)">\(Y\)</span> makes <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span> an isomorphism, so <span class="math" data-tex="\(i_1=i_2\)">\(i_1=i_2\)</span>.</p>
+<p>If two maps <span class="math" data-tex="\(u,v:Y\to A\)">\(u,v:Y\to A\)</span> satisfy <span class="math" data-tex="\(uf=vf\)">\(uf=vf\)</span>, the pushout property supplies <span class="math" data-tex="\(P\to A\)">\(P\to A\)</span> restricting to <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Equality of <span class="math" data-tex="\(i_1,i_2\)">\(i_1,i_2\)</span> forces <span class="math" data-tex="\(u=v\)">\(u=v\)</span>. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> is epic. This argument uses neither a chosen Galois cover nor the reconstruction theorem.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Verify the Galois-category axioms for the opposite of finite étale <span class="math" data-tex="\(K\)">\(K\)</span>-algebras and identify its fibre-functor group.</p>
+<p><em>Solution.</em> Theorem 5.1 establishes an equivalence with <span class="math" data-tex="\(\operatorname{Fin}(G_K)\)">\(\operatorname{Fin}(G_K)\)</span>, where <span class="math" data-tex="\(G_K=\operatorname{Gal}(K^s/K)\)">\(G_K=\operatorname{Gal}(K^s/K)\)</span>, and identifies the fibre with the forgetful functor. Here is the verification of each axiom under that equivalence. Finite limits are the finite-set limits with induced action; finite colimits are the finite disjoint unions modulo the relations defining the colimit. For any finite diagram, a common open normal subgroup acts trivially on every input, so these constructions are continuous finite actions. Every finite action decomposes into its finitely many nonempty orbits; these are connected because a subobject is an invariant subset. The forgetful functor preserves all these constructions, so is exact. A map bijective on underlying sets has an equivariant inverse, so this functor reflects isomorphisms. All four axioms hold.</p>
+<p>In algebra language connected components correspond to the separable field factors; the zero algebra is the initial object of the opposite category, and <span class="math" data-tex="\(K\)">\(K\)</span> its terminal object. A natural automorphism on the regular finite quotient attached to a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is determined by one element of <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>, as in Lemma 1.1. These elements are compatible under restriction. The inverse limit is <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, and the coordinate topology is the Krull topology. Thus the identification is an isomorphism of profinite groups, with the action on embeddings given by postcomposition. The use of the opposite category is essential for this covariant fibre functor.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Show that finite coverings of <span class="math" data-tex="\(\mathbf C\setminus\{0\}\)">\(\mathbf C\setminus\{0\}\)</span> form a Galois category and compute its fibre-functor group.</p>
+<p><em>Solution.</em> The space is connected, locally path-connected and locally simply connected. Example 5.5 computes its fundamental group as <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> by the displayed retraction and the lifted-loop argument for the circle. Theorem 5.3 identifies its finite-cover category with finite sets equipped with one permutation. The four axioms follow exactly as in Exercise 6.3, replacing <span class="math" data-tex="\(G_K\)">\(G_K\)</span> by the discrete group <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Exercise 6.1 identifies the group with <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> in its inverse-limit topology.</p>
+<p>A transitive permutation is a single cycle of length <span class="math" data-tex="\(n\)">\(n\)</span>. Its corresponding connected cover has subgroup <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>, and is represented by <span class="math" data-tex="\(z\mapsto z^n\)">\(z\mapsto z^n\)</span>. All finite covers are finite disjoint unions of these. Their maps are the equivariant maps between cycles. Explicitly, a map from an <span class="math" data-tex="\(m\)">\(m\)</span>-cycle to an <span class="math" data-tex="\(n\)">\(n\)</span>-cycle exists exactly when <span class="math" data-tex="\(n\mid m\)">\(n\mid m\)</span>, and is then specified by the image of one element, with <span class="math" data-tex="\(n\)">\(n\)</span> choices. For the power covers these are the maps <span class="math" data-tex="\(z\mapsto\zeta z^{m/n}\)">\(z\mapsto\zeta z^{m/n}\)</span>, where <span class="math" data-tex="\(\zeta^n=1\)">\(\zeta^n=1\)</span>. This also verifies the morphism correspondence concretely.</p>
+<p><strong>Exercise 6.5 (hard).</strong> An exact functor <span class="math" data-tex="\(T:(\mathcal C,F)\to(\mathcal D,E)\)">\(T:(\mathcal C,F)\to(\mathcal D,E)\)</span> induces <span class="math" data-tex="\(a:\Pi_{\mathcal D}\to\Pi_{\mathcal C}\)">\(a:\Pi_{\mathcal D}\to\Pi_{\mathcal C}\)</span>, up to conjugacy. Prove that <span class="math" data-tex="\(a\)">\(a\)</span> is surjective exactly when <span class="math" data-tex="\(T\)">\(T\)</span> sends connected objects to connected objects.</p>
+<p><em>Solution.</em> Theorem 4.1 identifies <span class="math" data-tex="\(T\)">\(T\)</span> with restriction of actions along <span class="math" data-tex="\(a\)">\(a\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> is surjective, its image moves every point of a transitive <span class="math" data-tex="\(\Pi_{\mathcal C}\)">\(\Pi_{\mathcal C}\)</span>-set to every other point, so restriction preserves transitivity and hence connectedness.</p>
+<p>Conversely the image <span class="math" data-tex="\(K=a(\Pi_{\mathcal D})\)">\(K=a(\Pi_{\mathcal D})\)</span> is closed by compactness. Suppose it is proper and choose <span class="math" data-tex="\(g\notin K\)">\(g\notin K\)</span>. There is an open normal <span class="math" data-tex="\(N\subset\Pi_{\mathcal C}\)">\(N\subset\Pi_{\mathcal C}\)</span> with <span class="math" data-tex="\(gN\cap K=\varnothing\)">\(gN\cap K=\varnothing\)</span>. Then <span class="math" data-tex="\(H=KN\)">\(H=KN\)</span> is open, contains <span class="math" data-tex="\(K\)">\(K\)</span>, and excludes <span class="math" data-tex="\(g\)">\(g\)</span>, so is proper. The finite transitive set <span class="math" data-tex="\(\Pi_{\mathcal C}/H\)">\(\Pi_{\mathcal C}/H\)</span> has more than one point. Its identity coset is fixed by <span class="math" data-tex="\(K\)">\(K\)</span>. The restricted action consequently has a singleton orbit and at least one other orbit, so is not transitive. The corresponding connected object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> becomes disconnected in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, a contradiction. Thus <span class="math" data-tex="\(K=\Pi_{\mathcal C}\)">\(K=\Pi_{\mathcal C}\)</span>, proving surjectivity. The closed-image step explains why the conclusion is actual surjectivity for profinite groups.</p>
+<h2 id="7-what-this-lesson-does-not-prove">7. What this lesson does not prove</h2>
+<p>The reconstruction theorem, uniqueness of the finite exact fibre functor and all functoriality tests are proved above. The field example uses the earlier course proofs of faithfully flat algebra descent, finite local freeness and étale permanence. Its elementary field-theory inputs are the description of étale algebras over a field as products of finite separable extensions <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-over-field">Stacks, Tag 02GL</a>, the primitive element theorem for finite separable extensions <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-primitive-element">Stacks, Tag 030N</a>, and finite Galois theory: the fixed-field correspondence for a finite Galois extension, the order formula <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-finite-Galois">Stacks, Tag 09I1</a> and extension of embeddings to a finite normal splitting field <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-lift-maps">Stacks, Tag 0BME</a>. Existence of separable closures is also a field-theory prerequisite. None of these inputs is the infinite Galois-category equivalence being proved here.</p>
+<p>The topological example imports classification of pointed connected coverings by subgroups under connectedness, local path-connectedness and semilocal simple connectivity; after forgetting the point, conjugacy classes replace subgroups [Hatcher, <em>Algebraic Topology</em>, §1.3, Theorem 1.38, pp. 67–68]. The proof above supplies the finite categorical equivalence, its morphism correspondence and its profinite group. Basic compactness of products of finite discrete spaces and the usual existence of finite limits and colimits of sets are background inputs.</p>
+<p>For further study, Borceux, <em>Galois Theories of Fields and Rings</em>, Chapters 2–3, develops the finite algebra correspondence and the topology behind inverse limits. The next lesson, <a href="../support/AG-DFG--AG-DFG-05.html"><em>The étale fundamental group</em></a>, applies this categorical theorem to finite étale coverings of a connected scheme. The geometric work is to establish the axioms there; the reconstruction then supplies the group and its finite actions.</p>
+</article></main></body></html>

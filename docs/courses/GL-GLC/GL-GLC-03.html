@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sheaves and D-modules on Bun_G · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-02.html">Previous lesson</a> · <a href="GL-GLC-04.html">Next lesson</a></nav><aside class="notice">Working draft. Required proofs remain open; the full course is in progress.</aside><article class="lesson"><h1>Sheaves and D-modules on Bun_G</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under mathematical proof repair; full proof closure pending. Public domain (CC0).</em></p>
+<p>An automorphic category has to remember two kinds of geometry: how bundles vary, and how their automorphisms act. The second survives even when the space of isomorphism classes is a point. We will calculate this for <span class="math-inline">\(B\mathbb G_m\)</span>, then use it to describe the entire rank-one automorphic category.</p>
+<p>The statements using truncatability, a global normalized half root, nilpotent regularity, derived tempered Satake or general Riemann–Hilbert remain conditional on the exact complete proofs listed in §9. The categorical and algebraic calculations below do not supply those geometric assertions.</p>
+<p>Our standing assumptions are those of the <a href="GL-GLC-02.html">previous lesson</a>: <span class="math-inline">\(X\)</span> is a smooth projective connected curve over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero, and <span class="math-inline">\(G\)</span> is connected reductive. Write <span class="math-inline">\(Y=\operatorname{Bun}_G(X)\)</span>. Complexes have cohomological grading; <span class="math-inline">\(k[1]\)</span> lies in degree <span class="math-inline">\(-1\)</span>. A DG category here is a stable, presentable, <span class="math-inline">\(k\)</span>-linear category, and its tensor product is the tensor product of presentable categories. All limits and equivalences retain the complexes of morphisms and their homotopy coherences.</p>
+<p>We use right D-modules and exceptional pullback <span class="math-inline">\(f^!\)</span> for descent on stacks. On a smooth scheme we can convert to left D-modules by tensoring with the inverse canonical line; we will use left modules only for the elementary characteristic-variety calculation. In comparisons with topology, <span class="math-inline">\(k_Y\)</span> denotes the constant object in the Riemann–Hilbert normalization. Thus on a complex smooth space of dimension <span class="math-inline">\(d\)</span>, <span class="math-inline">\(p_Y^!k\)</span> corresponds to the dualizing complex <span class="math-inline">\(k_Y[2d]\)</span>. Shifts do not affect singular support or compactness, but we retain the shift when calculating the fibre adjunction in §5.</p>
+<p>The background is D-modules on smooth schemes, derived descent, and compact objects in a presentable category. The <a href="../GL-DMOD/index.html">D-module course</a> and <a href="../GL-PERV/index.html">perverse-sheaf course</a> supply the introductory material. Their planned units on stacks are not needed as unpublished references: the descent construction and the calculations used here are given below. The foundational D-module descent, base-change, and adjunction formalism is an input, not an assertion proved by treating stacks as sets of points.</p>
+<h2>1. Defining the category on an unbounded stack</h2>
+<p>On a smooth finite-type scheme <span class="math-inline">\(S\)</span>, <span class="math-inline">\(\operatorname{Dmod}(S)\)</span> is the unbounded derived category of quasicoherent right D-modules. The extension to a prestack is the category of crystals, expressed as a limit</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}(Y)
+  =\lim_{(S\to Y)}\operatorname{Dmod}(S),
+\]</span></p>
+<p>over affine schemes mapping to <span class="math-inline">\(Y\)</span>, with exceptional pullback as transition functor. For an algebraic stack, smooth descent gives the equivalent description using smooth charts and their Čech nerves. An object includes identifications between its pullbacks and coherent identifications on multiple overlaps. Dropping this higher descent data changes the category.</p>
+<p>Let <span class="math-inline">\(\mathcal U(Y)\)</span> be the poset of quasicompact open substacks. It is filtered: the union of two such opens is quasicompact. The intersections are quasicompact here because <span class="math-inline">\(Y\)</span> has affine diagonal.</p>
+<p><strong>Proposition 1.1.</strong> Restriction induces an equivalence</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}(Y)
+  \simeq \lim_{U\in\mathcal U(Y)^{\mathrm{op}}}
+            \operatorname{Dmod}(U).                 \tag{1.1}
+\]</span></p>
+<p>For <span class="math-inline">\(U\subset V\)</span>, the transition is <span class="math-inline">\(j^!\)</span>, also denoted <span class="math-inline">\(j^*\)</span> for this open embedding.</p>
+<p><strong>Proof.</strong> Every point of <span class="math-inline">\(Y\)</span> has a quasicompact open neighbourhood, so the opens in question cover <span class="math-inline">\(Y\)</span>. More strongly, a map from a quasicompact affine scheme <span class="math-inline">\(S\)</span> to <span class="math-inline">\(Y\)</span> factors through one of them: its image is quasicompact and is covered by finitely many such neighbourhoods; take their union.</p>
+<p>Suppose we have a compatible family <span class="math-inline">\(M_U\)</span>. For an affine map <span class="math-inline">\(f:S\to Y\)</span>, choose an open <span class="math-inline">\(U\)</span> through which it factors, and define <span class="math-inline">\(M_S=f^!M_U\)</span>. If two choices <span class="math-inline">\(U,V\)</span> are made, their union <span class="math-inline">\(W\)</span> identifies both answers with the pullback of <span class="math-inline">\(M_W\)</span>. The space of choices is filtered, so these identifications have coherent higher compatibilities, not merely pairwise isomorphisms. The same construction for maps between affine charts supplies a crystal on <span class="math-inline">\(Y\)</span>. Its restriction recovers the family.</p>
+<p>Conversely, pullbacks of a crystal give such a family. The two constructions compose to the identity. In particular their maps on morphism complexes are equivalences:</p>
+<p><span class="math-display">\[
+\operatorname{RHom}_Y(M,N)
+ \simeq \lim_U\operatorname{RHom}_U(M|_U,N|_U).
+\]</span></p>
+<p>This proves full faithfulness as well as essential surjectivity. The proof applies unchanged to a twisting gerbe pulled back to all charts. <span class="math-inline">\(\square\)</span></p>
+<p>This limit allows an object to have nonzero restrictions on arbitrarily unstable bundles and on infinitely many components. It does not impose finite support. Nor does the formula imply compact generation: limits of compactly generated categories need not be compactly generated.</p>
+<p>Here are the specific deep inputs we use from <a href="https://arxiv.org/abs/1112.2402v8">Drinfeld–Gaitsgory, Theorem 0.1.2 and Corollary 4.3.2, version 8</a>. Under our assumptions, <span class="math-inline">\(\operatorname{Dmod}(\operatorname{Bun}_G)\)</span> is compactly generated. There is a cofinal system <span class="math-inline">\(\mathcal U_{\mathrm{ct}}(Y)\)</span> of quasicompact <strong>co-truncative</strong> opens; for them restriction has a continuous left adjoint <span class="math-inline">\(j_!\)</span>. Define</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}_{\mathrm{co}}(Y)
+ :=\mathop{\operatorname{colim}}_{U\in\mathcal U_{\mathrm{ct}}(Y)}
+       \operatorname{Dmod}(U),
+ \qquad\text{transition }j_* .
+                                                        \tag{1.2}
+\]</span></p>
+<p>Then</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}(Y)^\vee
+ :=\operatorname{Funct}_{\mathrm{cont}}
+       (\operatorname{Dmod}(Y),\operatorname{Vect})
+ \simeq \operatorname{Dmod}_{\mathrm{co}}(Y).             \tag{1.3}
+\]</span></p>
+<p>The geometric construction of these opens and this duality theorem are imported. We compute (1.1)–(1.3) directly for a discrete stack in §6. In general, the transition functor matters: the same co-truncative system presents <span class="math-inline">\(\operatorname{Dmod}(Y)\)</span> by a colimit with <span class="math-inline">\(j_!\)</span>, whereas its dual uses <span class="math-inline">\(j_*\)</span>. The two extensions agree for open-and-closed components; they can differ at a boundary.</p>
+<h3>1.1. The formal compact-generation proof</h3>
+<p>Let <span class="math-inline">\(C\)</span> be a stable presentable category, and let <span class="math-inline">\(r_i:C\to C_i\)</span> be a jointly conservative family of continuous functors. Suppose each <span class="math-inline">\(C_i\)</span> has a set <span class="math-inline">\(G_i\)</span> of compact generators and <span class="math-inline">\(r_i\)</span> has a continuous left adjoint <span class="math-inline">\(l_i\)</span>. Then the objects <span class="math-inline">\(l_i(g)\)</span>, for <span class="math-inline">\(g\in G_i\)</span>, are compact generators of <span class="math-inline">\(C\)</span>.</p>
+<p>Indeed, for a filtered diagram <span class="math-inline">\(M_a\)</span>, adjunction and continuity give</p>
+<p><span class="math-display">\[
+\operatorname{RHom}_{\mathcal C}(l_i g,\operatorname{colim}_a M_a)
+ \simeq\operatorname{RHom}_{\mathcal C_i}
+ (g,\operatorname{colim}_a r_iM_a)
+ \simeq\operatorname{colim}_a
+ \operatorname{RHom}_{\mathcal C}(l_i g,M_a).
+\]</span></p>
+<p>Thus these objects are compact. If all their mapping complexes into <span class="math-inline">\(M\)</span> vanish, the generator property in <span class="math-inline">\(C_i\)</span> implies <span class="math-inline">\(r_iM=0\)</span> for every <span class="math-inline">\(i\)</span>; conservativity then gives <span class="math-inline">\(M=0\)</span>. Their localizing closure is all of <span class="math-inline">\(C\)</span>: the inclusion of the localizing subcategory generated by a set admits a right adjoint; the cofiber of its counit is right orthogonal to the generating set and therefore zero. Equivalently, successively attach coproducts of shifts of the generators to kill every mapping class, take the sequential colimit, and apply the same orthogonality test. This proves the generator assertion.</p>
+<p>For an open exhaustion the conservativity needed here is already proved by the restriction-limit argument of Proposition 1.1. If <span class="math-inline">\(l_i=j_{i!}\)</span> exists on the full category, this proof gives the precise generators <span class="math-inline">\(j_{i!}G_i\)</span>. It does not construct a single co-truncative open, prove finite-type QCA compact generation, or prove preservation of the half twist. Those are separate hypotheses requiring their own programme proofs.</p>
+<p>One can also prove the colimit presentation directly. Assume the system of opens is directed, and every transition has continuous extension <span class="math-inline">\(j_{ij!}\)</span> with the usual restriction and composition identities. For a compatible family <span class="math-inline">\(M=(M_i)\)</span> form</p>
+<p><span class="math-display">\[
+\operatorname{colim}_i j_{i!}M_i.
+\]</span></p>
+<p>For a fixed <span class="math-inline">\(a\)</span>, restriction to <span class="math-inline">\(U_a\)</span> agrees with <span class="math-inline">\(M_a\)</span> on the cofinal subposet of indices <span class="math-inline">\(i\)</span> containing <span class="math-inline">\(a\)</span>. The counit maps give the transition arrows. Restriction preserves colimits, so its restriction is <span class="math-inline">\(M_a\)</span>. Joint conservativity identifies the colimit with <span class="math-inline">\(M\)</span>. Conversely, a coherent cocone of continuous functors <span class="math-inline">\(T_i:C_i\to E\)</span>, compatible with <span class="math-inline">\(j_{ij!}\)</span>, extends by <span class="math-inline">\(M↦\operatorname{colim}_i T_iM_i\)</span>. The same restriction computation shows that this extension restricts to <span class="math-inline">\(T_i\)</span>; the displayed reconstruction makes it the unique continuous extension, including natural transformations. This proves <span class="math-inline">\(C\simeq \operatorname{colim}_{j_!}C_i\)</span> through its universal property.</p>
+<h3>1.2. Why the continuous dual uses the other extensions</h3>
+<p>The formal assertion needed here is the following conditional statement. Suppose the local categories <span class="math-inline">\(C_i\)</span> are compactly generated and have specified dualities <span class="math-inline">\(C_i^\vee\simeq C_i\)</span>. Suppose the restriction functor <span class="math-inline">\(r_{ij}:C_j\to C_i\)</span> is dual, under those specified pairings, to <span class="math-inline">\(e_{ij}:C_i\to C_j\)</span>. Assume <span class="math-inline">\(e_{ij}\)</span> preserves compact objects. Let</p>
+<p><span class="math-display">\[
+\mathcal E=\operatorname{colim}_{e_{ij}}\mathcal C_i.
+\]</span></p>
+<p>Then</p>
+<p><span class="math-display">\[
+\mathcal E^\vee\simeq\lim_{r_{ij}}\mathcal C_i,
+\qquad
+\left(\lim_{r_{ij}}\mathcal C_i\right)^\vee\simeq\mathcal E.
+\]</span></p>
+<p>Here is the construction. Let <span class="math-inline">\(D\)</span> be the idempotent completion of the small stable colimit of the categories <span class="math-inline">\(C_i^c\)</span> and their compact-preserving transitions. Its ind-completion satisfies the universal property of <span class="math-inline">\(E\)</span>: a continuous exact functor <span class="math-inline">\(\operatorname{Ind}(D)\to T\)</span> is exactly an exact functor on <span class="math-inline">\(D\)</span>, and that is exactly a coherent family of exact functors on the <span class="math-inline">\(C_i^c\)</span>. Extending those functors by colimits gives the coherent continuous cocones on <span class="math-inline">\(C_i\)</span>. Thus <span class="math-inline">\(E=\operatorname{Ind}(D)\)</span> and is compactly generated.</p>
+<p>For completeness, <span class="math-inline">\(\operatorname{Ind}(D)\)</span> has dual <span class="math-inline">\(\operatorname{Ind}(D^op)\)</span>. The evaluation on generators <span class="math-inline">\(d^op,d&#x27;\)</span> is <span class="math-inline">\(\operatorname{RHom}_D(d,d&#x27;)\)</span>, extended continuously in each argument. Its coevaluation is the diagonal bimodule. The two triangle identities are the enriched Yoneda identity: tensoring a representable with the diagonal reproduces that representable; continuous extension reproduces every object. Applying the construction twice returns <span class="math-inline">\(\operatorname{Ind}(D)\)</span>, so its canonical bidual map is an equivalence.</p>
+<p>Now a continuous functional <span class="math-inline">\(E\to \operatorname{Vect}\)</span> is, by the colimit universal property, precisely a coherent family of continuous functionals <span class="math-inline">\(C_i\to \operatorname{Vect}\)</span>. This identifies <span class="math-inline">\(E^\vee\)</span> with the limit of the local dual categories. Under the specified local dualities its transition is <span class="math-inline">\(r_{ij}\)</span>, because it is precomposition with <span class="math-inline">\(e_{ij}\)</span>. This proves the first formula; the bidual equivalence proves the second. It also proves that the dual of the <span class="math-inline">\(i\)</span>th restriction is the <span class="math-inline">\(i\)</span>th insertion into <span class="math-inline">\(E\)</span>.</p>
+<p>Apply this only after proving the local hypotheses. For D-modules the intended <span class="math-inline">\(e_{ij}\)</span> is <span class="math-inline">\(j_{ij*}\)</span>, and the resulting <span class="math-inline">\(E\)</span> is <span class="math-inline">\(\operatorname{Dmod}_{\mathrm{co}}(Y)\)</span>. The local dualities, the identity <span class="math-inline">\((j^!)^\vee=j_*\)</span>, and the compact-preservation condition must be established in the stack formalism. They are not consequences of the existence of <span class="math-inline">\(j_!\)</span> by notation. A proof that instead dualizes the <span class="math-inline">\(j_!\)</span> diagram while calling its arrows <span class="math-inline">\(j_*\)</span> omits this issue.</p>
+<p>The open-and-closed example in §6 verifies all these conditions directly for a discrete union. It cannot verify them at Harder–Narasimhan boundaries of a general bundle stack.</p>
+<h2>2. The half twist and its local meaning</h2>
+<p>The tangent complex at a bundle <span class="math-inline">\(P\)</span> is <span class="math-inline">\(R\Gamma(X,\operatorname{ad}(P))[1]\)</span>. For a perfect complex <span class="math-inline">\(V\)</span>, <span class="math-inline">\(\det(V[1])=\det(V)^{-1}\)</span> and <span class="math-inline">\(\det(V^\vee)=\det(V)^{-1}\)</span>. Consequently the determinant of the cotangent complex, namely the canonical line of the stack, has fibre</p>
+<p><span class="math-display">\[
+\omega_Y|_P=\det R\Gamma(X,\operatorname{ad}(P)).
+\]</span></p>
+<p>Following <a href="https://arxiv.org/abs/2405.03599">GLC I, §1.1.1</a>, use the normalized line</p>
+<p><span class="math-display">\[
+\mathcal D|_P
+ =\det R\Gamma(X,\operatorname{ad}(P))
+   \otimes
+   \det R\Gamma(X,\mathfrak g\otimes\mathcal O_X)^{-1}.
+                                                        \tag{2.1}
+\]</span></p>
+<p>It differs from <span class="math-inline">\(\omega_Y\)</span> by a constant line and is trivialized at the trivial bundle.</p>
+<p>The root gerbe <span class="math-inline">\(\sqrt{\mathcal D}\to Y\)</span> assigns to <span class="math-inline">\(S\to Y\)</span> pairs
+<span class="math-inline">\((L,\phi:L^{\otimes2}\simeq\mathcal D|_S)\)</span>. Its band is <span class="math-inline">\(\mu_2\)</span>. Define</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}_{1/2}(Y)
+ =\operatorname{Dmod}(\sqrt{\mathcal D})_{\mathrm{sign}},
+                                                        \tag{2.2}
+\]</span></p>
+<p>where the band acts through its nontrivial character. The definition exists whether or not a global square root has been selected.</p>
+<p>To see the differential operators in this definition, choose local frames of <span class="math-inline">\(\mathcal D\)</span> with coordinate transitions <span class="math-inline">\(g_{ab}\)</span>, and local roots <span class="math-inline">\(h_{ab}\)</span> satisfying <span class="math-inline">\(h_{ab}^2=g_{ab}\)</span>. If local sections of a root satisfy <span class="math-inline">\(f_a=h_{ab}f_b\)</span>, an operator changes by conjugation:</p>
+<p><span class="math-display">\[
+D_a=h_{ab}D_bh_{ab}^{-1},\qquad
+h_{ab}\partial h_{ab}^{-1}
+ =\partial-\frac12\,\partial\log(g_{ab}).                \tag{2.3}
+\]</span></p>
+<p>On a triple overlap the product of the <span class="math-inline">\(h\)</span>'s is a constant sign. Conjugation by that sign is the identity, so the sheaf of twisted differential operators glues. The sign remains in the descent of modules; the gerbe records it. This distinguishes the existence of the twisted category from the existence of a chosen global root line.</p>
+<p>A global root neutralizes the gerbe and gives an equivalence with the untwisted category. In local operator language, <span class="math-inline">\(M\mapsto L\otimes M\)</span> is an equivalence from ordinary D-modules to modules for the differential operators acting on <span class="math-inline">\(L\)</span>. This does not assert that <span class="math-inline">\(L\)</span> has an ordinary flat connection: the operators themselves have changed.</p>
+<p>For this particular stack, a choice of theta characteristic on <span class="math-inline">\(X\)</span> supplies a root of (2.1); this is the input in GLC I §1.1.2. The classical half-form construction for semisimple <span class="math-inline">\(G\)</span> is <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf">Beilinson–Drinfeld, §4.4.1, equation (209), PDF pp.163–164</a>. It uses Pfaffian data for the orthogonal adjoint representation. We use its normalized square-root assertion, not a claim that an arbitrary canonical line on an arbitrary stack has a square root.</p>
+<p>The twist is retained even after choosing an untwisting equivalence. GLC I §1.1, the remark following (1.1), explains its compatibility with the usual dual-group representation category in Hecke functors. Changing the root can change the chosen identification with ordinary D-modules; it does not change the definition (2.2).</p>
+<h3>2.1. The finite Pfaffian calculation and its family obligation</h3>
+<p>The finite-dimensional core of the Pfaffian construction has an equally precise scope. Let <span class="math-inline">\(E\)</span> be a vector bundle, and let <span class="math-inline">\(a:E\to E^\vee\)</span> be skew-symmetric. For the two-term complex <span class="math-inline">\(K=[E\to E^\vee]\)</span> in degrees zero and one,</p>
+<p><span class="math-display">\[
+\det K=\det E\otimes(\det E^\vee)^{-1}
+       =(\det E)^{\otimes2}.
+\]</span></p>
+<p>Thus <span class="math-inline">\(\det E\)</span> is a square root for this presentation. Stabilizing by an acyclic skew block supplies its Pfaffian trivialization: if the block is <span class="math-inline">\(F\to F^\vee\)</span> with invertible alternating form, its top exterior power gives the canonical trivialization of <span class="math-inline">\(\det F\)</span>; it squares to the corresponding determinant trivialization. Basis changes transform the top exterior form by the determinant, so this statement is independent of the chosen basis. Composition of orthogonal changes preserves these identifications. This proves the algebraic compatibility for such finite presentations.</p>
+<p>It does <strong>not</strong> yet produce a line on <span class="math-inline">\(\operatorname{Bun}_G\)</span>. To do that one must construct compatible skew-self-dual perfect representatives of <span class="math-inline">\(R\Gamma(X,\operatorname{ad}(P)\otimes \kappa)\)</span> in families, prove that the Pfaffian transitions across quasi-isomorphisms satisfy the cocycle, and prove the determinant comparison</p>
+<p><span class="math-display">\[
+\frac{\det R\Gamma(X,\operatorname{ad}(P)\otimes\kappa)}
+     {\det R\Gamma(X,\mathfrak g\otimes\kappa)}
+\simeq
+\frac{\det R\Gamma(X,\operatorname{ad}(P))}
+     {\det R\Gamma(X,\mathfrak g\otimes\mathcal O_X)}.
+\]</span></p>
+<p>The quotient notation means tensoring by the inverse constant line. Pointwise identities between cohomology determinants do not prove this family identity or its descent. Once those assertions are proved, the normalized Pfaffian ratio squares to (2.1), and its value at the trivial bundle is canonically trivial. The existing local conjugation formula (2.3) only proves the twisting-gerbe description; it proves neither the family comparison nor existence of a global root. The semisimple construction must additionally be extended to the connected reductive case actually used by the lesson, accounting for its central adjoint summand.</p>
+<h2>3. Singular support and what nilpotence requires</h2>
+<p>For a coherent D-module on a smooth scheme, a good filtration produces a finitely generated module over
+<span class="math-inline">\(\operatorname{gr}\mathcal D_S=\operatorname{Sym}_{\mathcal O_S}T_S\)</span>.
+Its support in <span class="math-inline">\(T^*S\)</span>, independent of the good filtration, is its characteristic variety. On a smooth stack this condition is tested on smooth charts and descends. For arbitrary objects the support condition is imposed in the corresponding category closed under colimits; it can have an ind-closed support. Thus a statement about a large category is not a claim that every object has a single finite good filtration.</p>
+<p>For a smooth map <span class="math-inline">\(f:S\to Y\)</span>, a covector on <span class="math-inline">\(Y\)</span> pulls back through <span class="math-inline">\(df^*\)</span> to one on <span class="math-inline">\(S\)</span>. This is the comparison used on charts; <span class="math-inline">\(T^*Y\)</span> must retain the stack cotangent geometry computed in Lesson 2. Twisting differential operators by a line does not change their associated graded algebra or this support condition.</p>
+<p><strong>Proposition 3.1.</strong> A finite-rank flat connection on a smooth scheme has characteristic variety the zero section over its nonzero fibres. A lisse object on a smooth stack has singular support contained in the zero section. For the nonzero constant object on <span class="math-inline">\(Y\)</span>, the support is the full zero section.</p>
+<p><strong>Proof.</strong> Convert to a left D-module <span class="math-inline">\(E\)</span>, and take the filtration <span class="math-inline">\(F_iE=0\)</span> for <span class="math-inline">\(i&lt;0\)</span>, <span class="math-inline">\(F_iE=E\)</span> for <span class="math-inline">\(i\ge0\)</span>. It is good: its associated graded is the finite-rank <span class="math-inline">\(\mathcal O_S\)</span>-module <span class="math-inline">\(E\)</span>, concentrated in filtration degree zero. The principal symbol of a vector field has positive degree and acts by zero on this graded module, since the connection maps <span class="math-inline">\(E\)</span> to <span class="math-inline">\(E\)</span>. All fibre-linear functions on <span class="math-inline">\(T^*S\)</span> therefore annihilate it. The support is precisely the zero section over the ordinary support of <span class="math-inline">\(E\)</span>. For a flat vector bundle this is a union of connected components.</p>
+<p>A bounded complex of connections has the same containment, by the support rule for exact triangles. The large lisse category is defined locally with the corresponding colimit closure. Smooth pullback tests the stack condition, so the containment descends. The constant connection is nonzero on every chart and every component; its support is the whole zero section. <span class="math-inline">\(\square\)</span></p>
+<p>The qualification about nonzero fibres is necessary: the zero object has empty singular support, and a local system supported on one open-and-closed component does not fill the other components.</p>
+<p>For a coherent D-module the converse on a smooth scheme is also useful. If its characteristic variety lies in the zero section, a power of the positive-symbol ideal annihilates its associated graded module. That module is therefore finite over <span class="math-inline">\(\mathcal O_S\)</span>, and its good filtration is bounded above locally. Hence the original module is <span class="math-inline">\(\mathcal O_S\)</span>-coherent and its D-action is an integrable connection. Such a coherent module with connection is locally free in characteristic zero. One can check this on a completed smooth local ring: commuting connection operators <span class="math-inline">\(\nabla_i\)</span> give the formal Taylor projection
+<span class="math-display">\[
+P(m)=\sum_{\alpha\ge0}
+       \frac{(-t)^\alpha}{\alpha!}\nabla^\alpha m .
+\]</span>
+The series converges in the maximal-ideal topology. The commutator
+<span class="math-inline">\([\nabla_i,t_j]=\delta_{ij}\)</span> shows <span class="math-inline">\(\nabla_iP(m)=0\)</span> and <span class="math-inline">\(P(t_im)=0\)</span>. Thus <span class="math-inline">\(P\)</span> identifies the fibre with horizontal lifts, and the inverse Taylor expansion identifies the completed module with the free module on that fibre. Faithful flatness of completion proves local freeness. Consequently coherent zero-support modules are precisely finite-rank flat connections; the large zero-support condition uses their ind and derived version.</p>
+<p>Using a nondegenerate invariant form when we identify adjoint and coadjoint bundles, the cotangent stack consists of Higgs bundles <span class="math-inline">\((P,\phi)\)</span>. Let</p>
+<p><span class="math-display">\[
+\operatorname{Nilp}_G
+ =\{(P,\phi):\phi\text{ is pointwise nilpotent}\}
+ =h^{-1}(0)\subset T^*Y .
+\]</span></p>
+<p>Nilpotence kills the central component of a Higgs field as well as its invariant polynomials in the semisimple directions. Define the full subcategory</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}_{1/2,\operatorname{Nilp}}(Y)
+ =\{M:\operatorname{SS}(M)\subset\operatorname{Nilp}_G\}.
+                                                        \tag{3.1}
+\]</span></p>
+<p>The constant object belongs to it. A general object of the full de Rham automorphic category need not: on the Picard variety of a positive-genus curve, a skyscraper D-module has the entire cotangent fibre as characteristic variety.</p>
+<p><strong>Imported regularity theorem.</strong> Under our characteristic-zero curve and group assumptions, (3.1) equals its subcategory obtained from ind-regular holonomic D-modules on affine charts, followed by descent. In particular its objects are locally ind-holonomic with regular singularities. The exact source is <a href="https://arxiv.org/abs/2010.01906">AGKRRV, Corollary 16.5.6</a>, headed “The regular singularity property”; <a href="https://arxiv.org/abs/2405.03599">GLC I, §4.2.1 and its footnote</a> states the equality and the chartwise meaning of ind-completion. We do not prove the spectral-projector argument establishing this theorem.</p>
+<p>The word “ind” matters. An infinite direct sum of regular connections is an allowed object, with no finite-rank assertion. On an unbounded stack, one must also distinguish global compactness, chartwise constructibility, and coherent or holonomic cohomology. The explicit counterexample in §5 prevents identifying these notions.</p>
+<p>Extension from an arbitrary open can add characteristic directions at its boundary. AGKRRV’s section “Preservation of nilpotence of singular support” constructs suitable bounded opens for which both extensions preserve the nilpotent condition. Its introductory main theorem, labelled <span class="math-inline">\(t:\mathrm{preserve\ Nilp\ Sing\ Supp\ prel}\)</span> in the consulted TeX, gives a cofinal system; it does not assert this for every open. We use this as a scoped input, not as a consequence of the definition of (3.1).</p>
+<h2>4. Betti, constructible, and tempered categories</h2>
+<p>Now suppose <span class="math-inline">\(k=\mathbb C\)</span>, and choose a coefficient field <span class="math-inline">\(E\)</span> of characteristic zero. The <strong>large Betti</strong> category consists of complexes of <span class="math-inline">\(E\)</span>-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is</p>
+<p><span class="math-display">\[
+\operatorname{Shv}^{\mathrm{Betti}}_{1/2,\operatorname{Nilp}}(Y)
+ \subset\operatorname{Shv}^{\mathrm{Betti}}_{1/2}(Y).
+                                                        \tag{4.1}
+\]</span></p>
+<p>Here singular support is the microlocal support on smooth analytic charts. The zero-support condition on a smooth space says that a sheaf is locally constant as a derived sheaf. “Derived” is essential on a stack: local systems include higher coherent monodromy, not just representations of its ordinary fundamental group.</p>
+<p>There is also a chartwise ind-constructible theory: on each finite-type affine chart, ind-complete the category of bounded complexes with algebraically constructible finite-dimensional cohomology, then descend. This is the theory denoted <span class="math-inline">\(\operatorname{Shv}^{\mathrm{Betti,constr}}\)</span> in GLC I. Its nilpotent subcategory is the <strong>restricted</strong> automorphic variant. It can be smaller than the large category. Compact objects of the large category are not defined by finite-dimensional stalks; §7 gives a rank-one example.</p>
+<p>Riemann–Hilbert, with ind-completion on charts, identifies the regular de Rham nilpotent category with this ind-constructible Betti nilpotent category for complex coefficients. It does not identify every algebraic D-module with every arbitrary topological sheaf. The precise comparison appears in GLC I §4.2.1; the large and restricted Betti variants are separated in §§3.1 and 3.6. In particular the Betti spectral stack has a restricted-variation version distinct from the entire character stack, even though they have the same field-valued local systems. Point sets cannot specify their categories of families.</p>
+<p>Over a finite field one instead uses <span class="math-inline">\(\ell\)</span>-adic sheaves, <span class="math-inline">\(\ell\ne\operatorname{char}(k)\)</span>, formed from constructible finite-type-chart categories with their ind-completions and descent. Frobenius descent supplies arithmetic trace functions. A Weil structure and a continuous étale representation are different conditions, as in Lesson 1. This paragraph specifies the sheaf theory used for motivation; it does not infer a positive-characteristic equivalence from the characteristic-zero proof.</p>
+<p>Temperedness is another condition. Its construction uses the spherical Hecke category at a point <span class="math-inline">\(x\)</span>, introduced in the Satake lesson. Derived Satake defines an anti-tempered subcategory <span class="math-inline">\(\mathcal C_{\mathrm{anti},x}\)</span> of the automorphic category <span class="math-inline">\(\mathcal C\)</span>. The quotient has a fully faithful left adjoint, so it can also be realized as a full subcategory:</p>
+<p><span class="math-display">\[
+\mathcal C_{\mathrm{temp},x}
+ =\mathcal C/\mathcal C_{\mathrm{anti},x},\qquad
+u:\mathcal C_{\mathrm{temp},x}\hookrightarrow\mathcal C,
+\qquad u\dashv u^R .                                  \tag{4.2}
+\]</span></p>
+<p>We import this local Hecke construction and its point independence. Confirmed locators are <a href="https://arxiv.org/abs/2207.02955">Færgeman–Raskin, the conventions subsection “Tempered D-modules,” “Local formalism” and “Global setting”</a>, and GLC I §§5.1.1 and 5.2.1. The original <a href="https://arxiv.org/abs/1201.6343">Arinkin–Gaitsgory §12.8.4</a> defines the Hecke-support condition and states point independence as a conjecture in that earlier work; the later sources establish it. The de Rham reference to “17.8.4” in GLC I §5.1.1 differs from the confirmed §12.8.4 in the consulted AG source and from GLC I’s own Betti citation.</p>
+<p>The notation
+<span class="math-inline">\(\operatorname{Dmod}_{1/2,\operatorname{Nilp}}(Y)_{\mathrm{temp}}\)</span>
+means the intersection of (3.1) with the full-subcategory realization in (4.2). The nilpotent condition uses covectors on <span class="math-inline">\(Y\)</span>; the tempered condition uses the local Hecke action and, on the spectral side, its zero singular-support part. Their supports live on different geometric objects.</p>
+<p>For a concrete distinction take <span class="math-inline">\(G=SL_2\)</span>. The zero element of <span class="math-inline">\(\mathfrak{sl}_2\)</span> is <strong>irregular</strong>: its centralizer has dimension three, greater than the rank one. Thus the constant object, whose support is the zero section, has support in the irregular part of the global nilpotent cone. The theorem in Færgeman–Raskin, Part I, “Irregular singular support on <span class="math-inline">\(\operatorname{Bun}_G\)</span>,” labelled <span class="math-inline">\(t:\mathrm{at}\)</span>, says objects with such support are anti-tempered. The constant object is nonzero, so it cannot also lie in the tempered image, since the quotient kills the anti-tempered category and is the identity on that image. This example uses the stated theorem; nilpotent support alone does not prove temperedness.</p>
+<p>The full proof of geometric Langlands and its relation to the tempered quotient belong to later lessons. The constructions here specify their automorphic categories.</p>
+<h2>5. A classifying stack computed by descent</h2>
+<p>Put</p>
+<p><span class="math-display">\[
+A=k[\epsilon]/(\epsilon^2),\qquad |\epsilon|=-1,\quad d\epsilon=0.
+                                                        \tag{5.1}
+\]</span></p>
+<p>The tensor product in
+<span class="math-inline">\(\operatorname{Spec}k\times^{\mathbf R}_{\mathbb A^1}\operatorname{Spec}k\)</span>
+is derived, with both maps landing at <span class="math-inline">\(0\)</span>. Resolving <span class="math-inline">\(k\)</span> over <span class="math-inline">\(k[t]\)</span> by its two-term Koszul complex gives</p>
+<p><span class="math-display">\[
+k\otimes^{\mathbf L}_{k[t]}k\simeq A.
+                                                        \tag{5.2}
+\]</span></p>
+<p>The ordinary fibre product would be a point and would lose <span class="math-inline">\(\epsilon\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> With the fibre normalization specified above,</p>
+<p><span class="math-display">\[
+\operatorname{Dmod}(B\mathbb G_m)
+ \simeq \operatorname{Mod}_A
+ \simeq
+\operatorname{QCoh}
+  (\operatorname{Spec}k\times^{\mathbf R}_{\mathbb A^1}\operatorname{Spec}k).
+                                                        \tag{5.3}
+\]</span></p>
+<p>The constant object corresponds to the augmentation module <span class="math-inline">\(k=A/(\epsilon)\)</span>; a compact generator corresponds to <span class="math-inline">\(A\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math-inline">\(p:\operatorname{Spec}k\to B\mathbb G_m\)</span> be the smooth atlas. Normalize its pullback <span class="math-inline">\(F\)</span> to take the ordinary fibre of a local system, so <span class="math-inline">\(F(k_{B\mathbb G_m})=k\)</span>. Over <span class="math-inline">\(\mathbb C\)</span>, this is <span class="math-inline">\(p^![-2]\)</span>, since the atlas has relative complex dimension one. Its left adjoint <span class="math-inline">\(L\)</span> is the correspondingly shifted compact-support direct image. This normalized adjunction has the same algebraic de Rham construction over any characteristic-zero <span class="math-inline">\(k\)</span>.</p>
+<p>The smooth-descent formalism makes <span class="math-inline">\(F\)</span> conservative and colimit preserving. Thus <span class="math-inline">\(Q=L(k)\)</span> is compact, because</p>
+<p><span class="math-display">\[
+\operatorname{RHom}(Q,M)=F(M)
+\]</span></p>
+<p>commutes with colimits. It generates: if that complex vanishes, smooth descent gives <span class="math-inline">\(M=0\)</span>.</p>
+<p>The fibre of the atlas over itself is <span class="math-inline">\(\mathbb G_m\)</span>. Exceptional base change identifies the monad <span class="math-inline">\(FL\)</span> with tensoring by its de Rham homology algebra, with multiplication induced by group multiplication. In the complex normalization its underlying complex is
+<span class="math-inline">\(R\Gamma_c(\mathbb G_m,k)[2]\)</span>: it has <span class="math-inline">\(k\)</span> in degrees <span class="math-inline">\(0,-1\)</span>.
+The algebraic calculation is equally explicit. The de Rham complex</p>
+<p><span class="math-display">\[
+k[t,t^{-1}]\longrightarrow k[t,t^{-1}]\,d\log t
+\]</span></p>
+<p>has a quasi-isomorphic subalgebra <span class="math-inline">\(k\oplus k\,d\log t\)</span>, with <span class="math-inline">\(d\log t\)</span> in degree one: every nonzero Laurent mode is exact because its integer exponent is invertible in <span class="math-inline">\(k\)</span>. This is a Hopf model, since multiplication pulls <span class="math-inline">\(d\log t\)</span> back to
+<span class="math-inline">\(d\log t_1+d\log t_2\)</span>. Its homological dual is (5.1), with the Pontryagin multiplication. Hence <span class="math-inline">\(FL\simeq A\otimes-\)</span> as a monad.</p>
+<p>The adjunction is monadic. To spell out the argument, the bar resolution of an <span class="math-inline">\(A\)</span>-module is built from free modules <span class="math-inline">\(A\otimes V\)</span>. Apply <span class="math-inline">\(L\)</span> to the corresponding free diagram and take its geometric realization. Applying <span class="math-inline">\(F\)</span>, which preserves that realization, recovers the module's bar resolution. Conversely the adjunction bar construction for any <span class="math-inline">\(M\)</span> maps to <span class="math-inline">\(M\)</span>; applying <span class="math-inline">\(F\)</span> makes that map an equivalence, and conservativity makes it an equivalence before applying <span class="math-inline">\(F\)</span>. This proves (5.3), including morphisms. The constant object has trivial group action and therefore the augmentation action; <span class="math-inline">\(L(k)\)</span> is the free module. <span class="math-inline">\(\square\)</span></p>
+<p>This calculation agrees with AG §11.2, the remark in “The case of a torus.” It uses D-module descent and base change, but proves the specific algebra and the formal equivalence instead of replacing <span class="math-inline">\(B\mathbb G_m\)</span> by its single isomorphism class.</p>
+<h3>5.1. The finite-cell compactness criterion</h3>
+<p>The compact-module criterion used in Proposition 5.2 can be supplied locally. A DG algebra <span class="math-inline">\(A\)</span> has a semifree resolution of every DG module: start with free cells mapping to representatives of every cohomology class, then attach free cells with chosen nullhomotopies to kill the cohomology of the mapping fiber, and repeat. The sequential union maps quasi-isomorphically to the module because every surviving fiber class is killed at a later stage. Every cell differential uses only finitely many cells from earlier stages. Consequently this semifree resolution is a filtered union of finite-cell submodules: close a finite set of cells under the finitely many differential dependencies, working down its finitely many construction stages.</p>
+<p>A finite-cell module is compact, because <span class="math-inline">\(\operatorname{RHom}_A(A,-)\)</span> is the underlying complex functor, and shifts and finite cofibers preserve compactness. Retracts preserve compactness too. Conversely, if <span class="math-inline">\(M\)</span> is compact, replace it by the semifree resolution <span class="math-inline">\(P\)</span>. The identity of <span class="math-inline">\(M\simeq P\)</span>, considered as a map into the filtered colimit of the finite-cell submodules of <span class="math-inline">\(P\)</span>, factors through one finite-cell module. Hence <span class="math-inline">\(M\)</span> is its retract in the derived category. This proves the criterion used in the noncompactness argument, rather than importing it under a generic prerequisite label.</p>
+<p><strong>Proposition 5.2.</strong> The constant object in (5.3) is coherent but not compact.</p>
+<p><strong>Proof.</strong> Its underlying <span class="math-inline">\(A\)</span>-module <span class="math-inline">\(k\)</span> has bounded finite-dimensional cohomology, so it is coherent. Resolve it by the semifree module</p>
+<p><span class="math-display">\[
+P=\bigoplus_{n\ge0}Ae_n,\quad |e_n|=-2n,\quad
+de_0=0,\quad de_n=\epsilon e_{n-1}\ (n\ge1).
+                                                        \tag{5.4}
+\]</span></p>
+<p>Its degree-zero cohomology is <span class="math-inline">\(ke_0\)</span>. Every <span class="math-inline">\(\epsilon e_n\)</span> is the boundary of <span class="math-inline">\(e_{n+1}\)</span>; every other <span class="math-inline">\(e_n\)</span>, <span class="math-inline">\(n&gt;0\)</span>, has nonzero differential. Thus <span class="math-inline">\(P\to k\)</span> is a quasi-isomorphism.</p>
+<p>Applying <span class="math-inline">\(\operatorname{Hom}_A(-,k)\)</span> gives one copy of <span class="math-inline">\(k\)</span> in each degree <span class="math-inline">\(2n\)</span>, with zero differential. The degree-two chain map sending <span class="math-inline">\(e_n\)</span> to <span class="math-inline">\(e_{n-1}\)</span> for <span class="math-inline">\(n\ge1\)</span>, and <span class="math-inline">\(e_0\)</span> to zero, generates the Yoneda products. Therefore</p>
+<p><span class="math-display">\[
+\operatorname{Ext}^*_A(k,k)=k[u],\qquad |u|=2.           \tag{5.5}
+\]</span></p>
+<p>Compact modules over a DG algebra are the retracts of finite cell modules. For a finite cell <span class="math-inline">\(A\)</span>-module <span class="math-inline">\(C\)</span>, <span class="math-inline">\(\operatorname{RHom}_A(C,k)\)</span> is bounded: start with
+<span class="math-inline">\(\operatorname{RHom}_A(A,k)=k\)</span>, and use finite shifts, cofibres, and retracts. Equation (5.5) is unbounded, so <span class="math-inline">\(k\)</span> cannot be compact. <span class="math-inline">\(\square\)</span></p>
+<p>The standard heart of <span class="math-inline">\(\operatorname{Mod}_A\)</span> is <span class="math-inline">\(\operatorname{Vect}_k\)</span>, since <span class="math-inline">\(H^0(A)=k\)</span>. But <span class="math-inline">\(\operatorname{Dmod}(B\mathbb G_m)\)</span> is not the ordinary derived category of that heart: the latter has no positive self-extensions of <span class="math-inline">\(k\)</span>, whereas (5.5) does. A connected stabilizer can be invisible in the heart while contributing higher morphisms.</p>
+<h2>6. The Picard stack and categorical support on degrees</h2>
+<p>Choose <span class="math-inline">\(x\in X(k)\)</span>, and write <span class="math-inline">\(J=\operatorname{Pic}^0(X)\)</span>. Rigidifying degree-zero line bundles along <span class="math-inline">\(x\)</span> gives the normalized Poincaré line bundle <span class="math-inline">\(\mathcal P\)</span> on <span class="math-inline">\(X\times J\)</span>. We use the representability of the rigidified Picard functor from Lesson 2.</p>
+<p>For <span class="math-inline">\(\mathbb G_m\)</span>, <span class="math-inline">\(\operatorname{ad}(P)=\mathcal O_X\)</span> canonically for every bundle. Thus the normalized determinant line (2.1) is trivial. Using its trivial root identifies the half-twisted category with the untwisted one in the rank-one calculations.</p>
+<p><strong>Theorem 6.1.</strong> The chosen point yields an equivalence of stacks</p>
+<p><span class="math-display">\[
+\operatorname{Bun}_{\mathbb G_m}
+ \simeq J\times B\mathbb G_m\times\underline{\mathbb Z}.
+                                                        \tag{6.1}
+\]</span></p>
+<p>For a family, its degree is locally constant; <span class="math-inline">\(\underline{\mathbb Z}\)</span> is the discrete scheme of all degrees.</p>
+<p><strong>Proof.</strong> Work on an open-and-closed part of a base <span class="math-inline">\(S\)</span> where the degree is <span class="math-inline">\(d\)</span>. For a line bundle <span class="math-inline">\(M\)</span> on <span class="math-inline">\(X\times S\)</span>, put</p>
+<p><span class="math-display">\[
+M_0=M\otimes\mathcal O_X(-dx),\quad
+N=M_0|_{x\times S},\quad
+M_{\mathrm{rig}}=M_0\otimes\pi_S^*N^{-1}.
+\]</span></p>
+<p>The last bundle has degree zero and a canonical rigidification at <span class="math-inline">\(x\)</span>. It gives a unique map <span class="math-inline">\(f:S\to J\)</span> and a rigidified isomorphism
+<span class="math-inline">\(M_{\mathrm{rig}}\simeq(1_X\times f)^*\mathcal P\)</span>.
+We recover</p>
+<p><span class="math-display">\[
+M\simeq(1_X\times f)^*\mathcal P
+        \otimes\pi_S^*N\otimes\mathcal O_X(dx).           \tag{6.2}
+\]</span></p>
+<p>Conversely <span class="math-inline">\(f,N,d\)</span> give (6.2). These constructions commute with base change. An isomorphism of line bundles preserves the degree and the rigidified Picard class and induces precisely an isomorphism of <span class="math-inline">\(N\)</span>. There are no additional automorphisms of a rigidified line bundle: global invertible functions on <span class="math-inline">\(X\times S\)</span> come from <span class="math-inline">\(S\)</span>, and their value at <span class="math-inline">\(x\)</span> is one. Here we use <span class="math-inline">\(\pi_*\mathcal O_{X\times S}=\mathcal O_S\)</span>, with its base-change compatibility for the proper geometrically connected curve.</p>
+<p>Thus the two constructions are inverse on arrows as well as objects, proving the equivalence. <span class="math-inline">\(\square\)</span></p>
+<p>The <span class="math-inline">\(J\)</span> in (6.1) is the degree-zero Picard scheme. Using the entire Picard scheme in that factor and also multiplying by <span class="math-inline">\(\mathbb Z\)</span> would count degrees twice.</p>
+<p><strong>Theorem 6.2.</strong> There are equivalences</p>
+<p><span class="math-display">\[
+\begin{aligned}
+\operatorname{Dmod}(\operatorname{Bun}_{\mathbb G_m})
+ &amp;\simeq
+ \prod_{d\in\mathbb Z}
+       \bigl(\operatorname{Dmod}(J)\otimes\operatorname{Mod}_A\bigr)\\
+ &amp;\simeq
+ \operatorname{Dmod}(J)\otimes
+ \operatorname{Dmod}(B\mathbb G_m)\otimes
+ \operatorname{Dmod}(\underline{\mathbb Z}).
+\end{aligned}                                         \tag{6.3}
+\]</span></p>
+<p><strong>Proof.</strong> First apply the atlas argument in Proposition 5.1 with coefficients in <span class="math-inline">\(\operatorname{Dmod}(J)\)</span>: pull back from <span class="math-inline">\(J\times B\mathbb G_m\)</span> to <span class="math-inline">\(J\)</span>. Base change now gives the monad <span class="math-inline">\(M\mapsto A\otimes M\)</span>, because the atlas fibre is the constant group <span class="math-inline">\(\mathbb G_m\)</span> over <span class="math-inline">\(J\)</span>. Pullback is conservative and preserves colimits. Its bar construction identifies the category with <span class="math-inline">\(A\)</span>-modules in <span class="math-inline">\(\operatorname{Dmod}(J)\)</span>, which is
+<span class="math-inline">\(\operatorname{Dmod}(J)\otimes\operatorname{Mod}_A\)</span>.</p>
+<p>Next, a sheaf or crystal on a disjoint union is exactly a family on its components. Proposition 1.1 applied to finite unions also gives this product, with componentwise colimits. Finally, in stable presentable categories the product <span class="math-inline">\(\prod_d\mathcal C_d\)</span> is also their categorical coproduct: every family is the coproduct of its individual component insertions. A continuous functor out of it is therefore uniquely determined by its continuous functors on the factors. The tensor product preserves this coproduct. Since
+<span class="math-inline">\(\operatorname{Dmod}(\underline{\mathbb Z})=\prod_d\operatorname{Vect}\)</span>,
+this proves the second line. <span class="math-inline">\(\square\)</span></p>
+<p>For <span class="math-inline">\(\underline{\mathbb Z}\)</span>, the quasicompact opens are the finite subsets <span class="math-inline">\(F\)</span>. The limit of their restriction categories is
+<span class="math-inline">\(\prod_{d\in\mathbb Z}\operatorname{Vect}\)</span>.
+The colimit in presentable categories of
+<span class="math-inline">\(\prod_{d\in F}\operatorname{Vect}\)</span>, using zero extension, is <strong>also</strong> this category: it includes all colimits of the finite-support insertions. In particular</p>
+<p><span class="math-display">\[
+(k)_{d\in\mathbb Z}
+ =\mathop{\operatorname{colim}}_{F\text{ finite}}
+        (k\text{ on }F,\ 0\text{ elsewhere}).           \tag{6.4}
+\]</span></p>
+<p>Thus <span class="math-inline">\(\operatorname{Dmod}_{\mathrm{co}}(\underline{\mathbb Z})\)</span>
+and <span class="math-inline">\(\operatorname{Dmod}(\underline{\mathbb Z})\)</span> are canonically equivalent in this example. Nonquasicompactness alone does not make them different.</p>
+<p>What changes is the compact-object calculation. A family <span class="math-inline">\(M=(M_d)\)</span> is compact exactly when its support is finite and each <span class="math-inline">\(M_d\)</span> is a perfect <span class="math-inline">\(k\)</span>-complex. Necessity of componentwise perfection follows by testing diagrams in one component. For finite support it is also sufficient, since</p>
+<p><span class="math-display">\[
+\operatorname{RHom}(M,N)
+ =\prod_{d\in\operatorname{supp}M}\operatorname{RHom}(M_d,N_d)
+\]</span></p>
+<p>is a finite product commuting with filtered colimits. If infinitely many <span class="math-inline">\(M_d\)</span> are nonzero, write <span class="math-inline">\(M\)</span> as the filtered colimit of its finite truncations. Compactness would make its identity factor through one of those truncations, forcing every component outside that finite set to be zero. This is a contradiction.</p>
+<p>The continuous dual of the product category is again the product. Explicitly, a family <span class="math-inline">\(V=(V_d)\)</span> defines the continuous functional</p>
+<p><span class="math-display">\[
+N\longmapsto\bigoplus_{d\in\mathbb Z}V_d\otimes N_d.
+                                                        \tag{6.5}
+\]</span></p>
+<p>Every continuous functional has this form, by the component decomposition of <span class="math-inline">\(N\)</span>. Its evaluation uses a direct sum of <strong>vector spaces</strong>, while its parameter <span class="math-inline">\(V\)</span> can have infinite support. Confusing these two levels would incorrectly turn (1.2) into a category consisting only of finite-support objects.</p>
+<p>For <span class="math-inline">\(X=\mathbb P^1\)</span>, <span class="math-inline">\(J\)</span> is a point, and (6.3) becomes
+<span class="math-inline">\(\prod_{d\in\mathbb Z}\operatorname{Mod}_A\)</span>.
+An object concentrated in one degree and equal to <span class="math-inline">\(A\)</span> is compact. The constant family of augmentation modules <span class="math-inline">\(k\)</span> is not compact, both because each component fails Proposition 5.2 and because its degree support is infinite. Its singular support is nevertheless zero.</p>
+<h2>7. Rank-one Betti nilpotent sheaves, including higher monodromy</h2>
+<p>For <span class="math-inline">\(\mathbb G_m\)</span>, the adjoint representation is trivial. The cotangent fibre at any line bundle is <span class="math-inline">\(H^0(X,\omega_X)\)</span>, and the invariant-polynomial map is the identity in these central directions. Therefore the nilpotent cone is exactly the zero section. The Betti nilpotent category consists of derived local systems on (6.1).</p>
+<p>For complex <span class="math-inline">\(X\)</span> of genus <span class="math-inline">\(g\)</span>, the analytic Jacobian is a real torus:
+<span class="math-inline">\(J^{\mathrm{an}}\simeq K(\mathbb Z^{2g},1)\)</span>. Its universal cover is a contractible complex vector space and its lattice is <span class="math-inline">\(H_1(X,\mathbb Z)\)</span>. Also
+<span class="math-inline">\(B\mathbb C^\times\simeq K(\mathbb Z,2)\)</span>, since
+<span class="math-inline">\(\mathbb C^\times\)</span> retracts onto <span class="math-inline">\(S^1\)</span>.
+For <span class="math-inline">\(R=E[\mathbb Z^{2g}]\)</span>, and <span class="math-inline">\(A_E=E[\epsilon]/(\epsilon^2)\)</span> as above, we obtain</p>
+<p><span class="math-display">\[
+\operatorname{Shv}^{\mathrm{Betti}}_{\operatorname{Nilp}}
+       (\operatorname{Bun}_{\mathbb G_m})
+ \simeq
+ \prod_{d\in\mathbb Z}\operatorname{Mod}_{R\otimes_E A_E}.
+                                                        \tag{7.1}
+\]</span></p>
+<p><strong>Derivation.</strong> A local system on a connected homotopy type <span class="math-inline">\(Z\)</span>, valued in complexes, is a module over <span class="math-inline">\(C_*(\Omega Z,E)\)</span>: evaluation at a base point and its left adjoint give the loop-chain monad, with the same bar argument as §5. For <span class="math-inline">\(J\)</span>, the loop components are the lattice and each component is contractible, giving <span class="math-inline">\(R\)</span>. For <span class="math-inline">\(B\mathbb C^\times\)</span>, loop chains give <span class="math-inline">\(A_E\)</span>. The product gives their tensor product; disjoint degrees give the categorical product. The vanishing-cycles criterion for locally constant sheaves identifies these with zero singular support. This proves (7.1). It is the rank-one calculation underlying <a href="https://arxiv.org/abs/1606.08523">Ben-Zvi–Nadler, §4.3 “Betti class field theory”</a>.</p>
+<p>The ordinary fundamental group of <span class="math-inline">\(B\mathbb C^\times\)</span> is trivial, but its loop-chain algebra has <span class="math-inline">\(\epsilon\)</span>. Replacing its derived local systems by representations of that fundamental group would replace <span class="math-inline">\(\operatorname{Mod}_{A_E}\)</span> by <span class="math-inline">\(\operatorname{Vect}_E\)</span> and erase (5.5).</p>
+<p>The restricted category can be described as <span class="math-inline">\(A_E\)</span>-modules with coefficients in the ind-completion of finite-dimensional derived local systems on <span class="math-inline">\(J\)</span>, one family in each degree. It is obtained by taking these ind-completions on charts before descent. For <span class="math-inline">\(g&gt;0\)</span> it does not contain the local system corresponding to the regular <span class="math-inline">\(R\)</span>-module <span class="math-inline">\(R\)</span>: at a point of <span class="math-inline">\(J\)</span> its fibre is infinite dimensional and its lattice action is not locally finite. Every vector in an ind-finite-dimensional lattice representation lies in a finite-dimensional invariant subspace; the orbit of <span class="math-inline">\(1\in R\)</span> spans all of <span class="math-inline">\(R\)</span>. This demonstrates the distinction without imposing finite support on the degree family.</p>
+<p>In contrast, <span class="math-inline">\(R\otimes A_E\)</span> is compact in the large module category in one fixed degree, since it is free of rank one over its defining algebra. It has infinite-dimensional fibre when <span class="math-inline">\(g&gt;0\)</span>. The constant object <span class="math-inline">\(E\)</span>, with trivial lattice and <span class="math-inline">\(\epsilon\)</span> actions, has finite-dimensional fibre but is not compact. Indeed use the finite Koszul resolution for the augmentation of the Laurent polynomial ring <span class="math-inline">\(R\)</span>, and tensor it with (5.4). Applying <span class="math-inline">\(\operatorname{Hom}(-,E)\)</span> retains the unbounded powers of <span class="math-inline">\(u\)</span> from (5.5). A perfect module has bounded such Hom, so the same contradiction proves noncompactness.</p>
+<p>In the de Rham nilpotent category, the <span class="math-inline">\(J\)</span>-factor is the category of ind-flat connections, and the <span class="math-inline">\(B\mathbb G_m\)</span>-factor remains (5.3). Since <span class="math-inline">\(J\)</span> is proper, finite-rank connections have no boundary at infinity at which irregular singularities could occur. Riemann–Hilbert identifies this with the restricted Betti description, consistent with the imported regularity theorem. All these are rank-one computations of categories; their Hecke eigenobjects and Fourier transform are developed in the class-field-theory lessons.</p>
+<h2>8. Exercises</h2>
+<p><strong>Exercise 8.1 — easy.</strong> For a finite-rank flat connection, compute the annihilator of its associated graded module using the filtration in Proposition 3.1. Explain exactly when “its support is the zero section” needs a qualification. Apply this to the constant object on <span class="math-inline">\(Y\)</span>.</p>
+<p><strong>Exercise 8.2 — easy.</strong> Construct the equivalence (6.1) on families and on their automorphisms. Identify what goes wrong if <span class="math-inline">\(J\)</span> is replaced by the entire degree-graded Picard scheme.</p>
+<p><strong>Exercise 8.3 — medium.</strong> Compute the derived algebra in (5.2), resolve its augmentation module, and prove that the constant object of <span class="math-inline">\(B\mathbb G_m\)</span> is not compact. Explain why its coherence and the semisimplicity of the heart do not contradict this.</p>
+<p><strong>Exercise 8.4 — medium.</strong> Describe the large Betti nilpotent category for <span class="math-inline">\(\mathbb G_m\)</span> on a curve of genus <span class="math-inline">\(g\)</span>. For <span class="math-inline">\(g=0\)</span>, simplify it. For <span class="math-inline">\(g&gt;0\)</span>, produce a compact object with infinite-dimensional fibre and an object in the large category excluded from the restricted one.</p>
+<p><strong>Exercise 8.5 — hard.</strong> Starting from finite subsets of <span class="math-inline">\(\mathbb Z\)</span>, compute the restriction limit, the zero-extension colimit in presentable categories, their compact objects, and the continuous dual. Use this to explain the role of <span class="math-inline">\(\operatorname{Dmod}_{\mathrm{co}}\)</span> without claiming that the two categories must differ on <span class="math-inline">\(\underline{\mathbb Z}\)</span>.</p>
+<h3>Solutions</h3>
+<p><strong>Solution 8.1.</strong> On a connected component where <span class="math-inline">\(E\ne0\)</span>, the graded module is locally a nonzero finite-rank free module over <span class="math-inline">\(\mathcal O_S\)</span>. Its annihilator in <span class="math-inline">\(\operatorname{Sym}T_S\)</span> is exactly the ideal generated by <span class="math-inline">\(T_S\)</span>, because every positive-degree symbol acts by zero and no nonzero function annihilates a free module. Thus the support is that component's zero section. If the rank vanishes on a component, the graded module there is zero and its support is empty. A zero complex also has empty support; a complex of connections has support on the components where some cohomology connection is nonzero. Passing to charts proves the stack containment. The constant object is nonzero on every component of <span class="math-inline">\(Y\)</span>, so its support is the entire zero section, contained in <span class="math-inline">\(\operatorname{Nilp}_G\)</span>.</p>
+<p><strong>Solution 8.2.</strong> Degree gives a locally constant map <span class="math-inline">\(d:S\to\mathbb Z\)</span>. On each degree part form
+<span class="math-inline">\(M_0=M(-dx)\)</span>, <span class="math-inline">\(N=M_0|_x\)</span>, and
+<span class="math-inline">\(M_{\mathrm{rig}}=M_0\otimes\pi_S^*N^{-1}\)</span>.
+The rigidified bundle determines <span class="math-inline">\(f:S\to J\)</span>. Reversing these operations gives (6.2), with a canonical isomorphism to the original <span class="math-inline">\(M\)</span>. An isomorphism <span class="math-inline">\(M\to M&#x27;\)</span> induces the same <span class="math-inline">\(f,d\)</span> and an isomorphism <span class="math-inline">\(N\to N&#x27;\)</span>. Conversely such an isomorphism of <span class="math-inline">\(N\)</span>'s induces one of <span class="math-inline">\(M\)</span>'s. For a fixed bundle its automorphism group is <span class="math-inline">\(\mathbb G_m(S)\)</span>, since a global invertible function on <span class="math-inline">\(X\times S\)</span> is pulled back from <span class="math-inline">\(S\)</span>; rigidification removes it from the <span class="math-inline">\(J\)</span>-factor and leaves it in <span class="math-inline">\(B\mathbb G_m\)</span>. Thus the equivalence retains stabilizers and is functorial in <span class="math-inline">\(S\)</span>. The entire Picard scheme already has a degree coordinate. Multiplying it by another <span class="math-inline">\(\mathbb Z\)</span> duplicates that coordinate instead of parameterizing line bundles once.</p>
+<p><strong>Solution 8.3.</strong> The free resolution of <span class="math-inline">\(k\)</span> over <span class="math-inline">\(k[t]\)</span> has generators <span class="math-inline">\(1,\eta\)</span>, <span class="math-inline">\(|\eta|=-1\)</span>, <span class="math-inline">\(d\eta=t\)</span>. Tensor with <span class="math-inline">\(k\)</span> at <span class="math-inline">\(t=0\)</span> to get <span class="math-inline">\(A\)</span> with <span class="math-inline">\(d\eta=0\)</span> and <span class="math-inline">\(\eta^2=0\)</span>; rename <span class="math-inline">\(\eta=\epsilon\)</span>. The augmentation <span class="math-inline">\(A\to k\)</span> has the resolution (5.4). The differential sends <span class="math-inline">\(e_n\)</span> bijectively to the span of <span class="math-inline">\(\epsilon e_{n-1}\)</span> for <span class="math-inline">\(n&gt;0\)</span>, so only <span class="math-inline">\(e_0\)</span> survives. Its derived Hom into <span class="math-inline">\(k\)</span> has one generator in every even nonnegative degree, and the shift map on the resolution proves their products are <span class="math-inline">\(u^n\)</span>. Hence <span class="math-inline">\(k\)</span> is not a finite-cell retract: otherwise that Hom would be bounded. The free module <span class="math-inline">\(A\)</span> is compact, while <span class="math-inline">\(k\)</span> is coherent with a nonzero <span class="math-inline">\(H^0\)</span> and no other cohomology. The heart is vector spaces, but (5.5) supplies morphisms absent from its ordinary derived category; coherence does not imply perfection over this derived algebra.</p>
+<p><strong>Solution 8.4.</strong> For a torus, every nonzero central Higgs field is non-nilpotent, so the nilpotent support condition is zero support. Formula (6.1) identifies its analytic components with
+<span class="math-inline">\(K(\mathbb Z^{2g},1)\times K(\mathbb Z,2)\)</span>.
+Loop-chain descent gives precisely (7.1); the <span class="math-inline">\(2g\)</span> generators of <span class="math-inline">\(R\)</span> act as commuting invertible monodromies, and <span class="math-inline">\(\epsilon\)</span> records the higher stabilizer monodromy. For <span class="math-inline">\(g=0\)</span>, <span class="math-inline">\(R=E\)</span>, giving
+<span class="math-inline">\(\prod_d\operatorname{Mod}_{A_E}\)</span>.
+For <span class="math-inline">\(g&gt;0\)</span>, choose one degree and the free module <span class="math-inline">\(R\otimes A_E\)</span> in it; this is compact and has infinite-dimensional fibre. It also provides an object excluded from the restricted category: its fibre contains <span class="math-inline">\(1\)</span>, whose lattice orbit spans an infinite-dimensional regular representation. Ind-finite-dimensional local systems have locally finite lattice actions. The same obstruction already applies to <span class="math-inline">\(R\)</span> with augmentation action of <span class="math-inline">\(A_E\)</span>. These examples change stalk size and monodromy, not the nilpotent support condition or the possibility of arbitrary degree families.</p>
+<p><strong>Solution 8.5.</strong> A compatible family on all finite subsets is uniquely the tuple of its restrictions to individual integers; morphisms are tuples too. This proves the restriction limit is <span class="math-inline">\(\prod_d\operatorname{Vect}\)</span>. For the colimit, a compatible family of continuous functors from the finite-subset categories to any presentable stable category <span class="math-inline">\(\mathcal E\)</span> determines functors <span class="math-inline">\(T_d:\operatorname{Vect}\to\mathcal E\)</span>. Their unique continuous extension to the product sends
+<span class="math-inline">\((N_d)\mapsto\bigoplus_dT_d(N_d)\)</span>.
+It restricts to the prescribed finite-subset functors. This is the universal property of the presentable colimit, proving the same answer for it; the colimit contains (6.4).</p>
+<p>A compact tuple has perfect components by testing one component. If its support were infinite, compactness applied to its finite truncations would factor its identity through one finite truncation, an impossibility on a nonzero outside component. Conversely a finite-support tuple of perfect complexes is compact because its Hom is a finite product of colimit-preserving Homs. The small category of these compact tuples contains only finite support; its ind-completion contains all tuples.</p>
+<p>Taking <span class="math-inline">\(\mathcal E=\operatorname{Vect}\)</span> in the functor calculation yields (6.5) and computes the continuous dual. All component inclusions are open-and-closed, so <span class="math-inline">\(j_!=j_*\)</span>, and the ordinary and co categories agree. For <span class="math-inline">\(\operatorname{Bun}_G\)</span>, the dual still uses the co construction, with the specified <span class="math-inline">\(j_*\)</span> transitions; open boundaries need not make these equal to <span class="math-inline">\(j_!\)</span>. The discrete example proves why the categorical colimit must admit infinite colimits and why compactness must be checked separately. It does not establish a counterexample to equivalence of the two categories.</p>
+<h2>9. Proof status and remaining geometric arguments</h2>
+<p>We proved the quasicompact-open restriction limit, the local half-operator gluing formula, the zero-support calculation for connections, the derived <span class="math-inline">\(B\mathbb G_m\)</span> algebra and its noncompact constant object, the Picard-stack splitting on families and arrows, its D-module factorization, the discrete duality calculation, and the full rank-one Betti nilpotent category. All five exercises have solutions.</p>
+<p>We imported the D-module descent and base-change formalism, the Picard representability input already specified in Lesson 2, the Drinfeld–Gaitsgory compact-generation and co-duality theorems, the normalized square-root construction on <span class="math-inline">\(\operatorname{Bun}_G\)</span>, the nilpotent regularity and suitable-open preservation theorems, Riemann–Hilbert, and the local tempered construction and its point independence. We did not prove the geometric truncatability estimates, Pfaffian construction, spectral projector, or derived Satake. Nor did we assert a positive-characteristic geometric Langlands equivalence.</p>
+<p>The conditional formal compact-generation and co-duality proofs above do not prove their geometric hypotheses for the bundle stack. The following arguments remain required within this lesson's original scope:</p>
+<ol>
+<li>
+<p><strong>Truncatability for arbitrary connected reductive <span class="math-inline">\(G\)</span>.</strong> Prove the Harder–Narasimhan bounded opens are quasi-compact and cofinal; construct the relevant parabolic/Levi neighborhoods; prove the contraction principle for D-modules; prove the curve cohomology estimates for each root direction; and use the contraction to show the boundary is truncative. Only then apply §1.1. The finite-type local QCA compact-generation and duality proofs must be tracked too. Current GL-DMOD-17, Theorem 6.1, explicitly states this theorem without its proof.</p>
+</li>
+<li>
+<p><strong>Normalized global half root.</strong> Complete the family Pfaffian construction and normalized determinant comparison specified in §2.1. The free BD draft, §4.4.1, equation (209), states the semisimple result with a reference to its earlier Pfaffian construction and determinant comparison. Its subsequent normalization annotations must not be used to guess a corrected formula. Current GL-DMOD-15, §7, also cites this construction rather than proving it.</p>
+</li>
+<li>
+<p><strong>Nilpotent regularity.</strong> Prove the spectral action and the Beilinson projector, identify its image with the singular-support subcategory, and prove that this image is chartwise ind-regular holonomic. The definition <span class="math-inline">\(\operatorname{SS}(M)\subset \operatorname{Nilp}\)</span> and the flat-connection calculation do not imply regular singularities for a general nilpotent covector. An irregular rank-one connection on an affine line has zero characteristic variety, so even zero characteristic variety on a nonproper chart is insufficient by itself. For the torus on the proper Picard variety the elementary argument is valid: its nilpotent cone is zero, coherent zero-support modules are flat vector bundles by the existing Taylor proof, and the proper Picard variety itself is a compactification with empty boundary. The general descent and nonabelian theorem remain separate obligations. Current GL-PERV-11 constructs perverse descent; it does not prove nilpotent regularity.</p>
+</li>
+<li>
+<p><strong>Preservation by suitable opens.</strong> Prove a cofinal choice of opens on which each of the two extensions preserves nilpotent support. General extension across an arbitrary boundary can introduce conormal directions. Neither the restriction-limit proof nor §1.1 proves this support assertion.</p>
+</li>
+<li>
+<p><strong>Tempered and anti-tempered statements actually used in §4.</strong> Prove the derived spherical action, the quotient/full-subcategory realization, point independence, and the irregular-support criterion used to put the constant <span class="math-inline">\(SL_2\)</span> object in the anti-tempered category. GL-SAT-13 is only a plan and its sketch explicitly states derived Satake; only GL-SAT-01 currently exists in the inspected outbox. Ordinary geometric Satake would not by itself prove any of these derived statements.</p>
+</li>
+<li>
+<p><strong>Riemann–Hilbert generality.</strong> The existing GL-DMOD-14 proves its affine-line monodromic correspondence, but states the general algebraic regular-holonomic theorem. The stack ind-regular comparison in the present lesson therefore has no complete earlier proof from that provider. The one-dimensional quiver proof cannot be cited for every smooth affine chart.</p>
+</li>
+</ol>
+<p>These items remain active proof work. None is marked completed by these formal calculations. External references identify comparison sources; they do not replace the required programme proofs.</p>
+<p>The source locators above are for the consulted versions. In addition to the inline references, the central rank-one comparison is AG §11.2, remark in “The case of a torus”; the large Betti definitions and torus calculation are Ben-Zvi–Nadler §§4.2–4.3. These older conjectural formulations are used for their category constructions, not presented as the current status of the theorem.</p>
+<p>The <a href="GL-GLC-04.html">next lesson</a> constructs Hecke functors on these automorphic categories and formulates their coherent eigencondition. Local systems and their derived moduli will be developed later, before the spectral categories.</p>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

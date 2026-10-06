@@ -1,0 +1,410 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Operators, matrix relations and internal tensor–Hom</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="operators-matrix-relations-and-internal-tensor-hom"><span id="ring-actions-and-tensor-hom-in-abelian-categories"></span>Operators, matrix relations and internal tensor–Hom</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original text: CC0. This reconstructed version has no independent review.</em></p>
+<p>An operator gives two useful objects: its kernel and its cokernel. They can have the same dimension while the map naturally joining them fails to be an isomorphism. We begin with that computation, then use finite matrices of operators to interpret module presentations in an abelian category. Infinite presentations require additional limits; the finite calculation tells us precisely which ones.</p>
+<p>Throughout, <span class="math" data-tex="\(k\)">\(k\)</span> is a commutative unital ring, <span class="math" data-tex="\(R\)">\(R\)</span> is an associative unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra with central scalars, and <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian category. Thus its morphism groups are <span class="math" data-tex="\(k\)">\(k\)</span>-modules and composition is <span class="math" data-tex="\(k\)">\(k\)</span>-bilinear. Neither <span class="math" data-tex="\(R\)">\(R\)</span> nor its internal actions need be commutative. Rings, ordinary modules and indexing sets belong to a fixed universe; morphism groups are small there, and categories may belong to a larger universe. A category need not be essentially small.</p>
+<p>We use the full kernel/cokernel and coimage–image proofs in <a href="kernels-cokernels-and-the-abelian-comparison.html#1-universal-maps-into-and-out-of-zero">Kernels, cokernels and the abelian comparison</a>. Section 6 gives the ordinary balanced-module construction needed for iteration. The constructions here do not require that an object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> have an underlying set.</p>
+<h2 id="1-a-kernel-and-a-quotient-joined-by-a-nonisomorphism">1. A kernel and a quotient joined by a nonisomorphism</h2>
+<p><strong>Worked problem.</strong> Let <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span>, first with <span class="math" data-tex="\(k\)">\(k\)</span> a field, and let <span class="math" data-tex="\(t\)">\(t\)</span> act on <span class="math" data-tex="\(X\)">\(X\)</span> by an operator <span class="math" data-tex="\(T\)">\(T\)</span>. What does the relation <span class="math" data-tex="\(t^n=0\)">\(t^n=0\)</span> select? A map into <span class="math" data-tex="\(X\)">\(X\)</span> that respects this relation has image in <span class="math" data-tex="\(\ker T^n\)">\(\ker T^n\)</span>. A map out of <span class="math" data-tex="\(X\)">\(X\)</span> on which this relation vanishes factors through <span class="math" data-tex="\(\operatorname{coker}T^n\)">\(\operatorname{coker}T^n\)</span>. Section 4 will prove that these are respectively <span class="math" data-tex="\(H_R(R/(t^n),X)\)">\(H_R(R/(t^n),X)\)</span> and <span class="math" data-tex="\(R/(t^n)\otimes_R X\)">\(R/(t^n)\otimes_R X\)</span>, using only a finite presentation.</p>
+<p>Take <span class="math" data-tex="\(X=k^3\)">\(X=k^3\)</span>, with <span class="math" data-tex="\(Te_1=0\)">\(Te_1=0\)</span>, <span class="math" data-tex="\(Te_2=e_1\)">\(Te_2=e_1\)</span>, <span class="math" data-tex="\(Te_3=e_2\)">\(Te_3=e_2\)</span>, and take <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. The specified comparison is
+<span class="math math-display" data-tex="\[
+\ker T^2\longrightarrow X\longrightarrow\operatorname{coker}T^2.
+\tag{1.1}
+\]">\[
+\ker T^2\longrightarrow X\longrightarrow\operatorname{coker}T^2.
+\tag{1.1}
+\]</span>
+The finite presentation <span class="math" data-tex="\(R\xrightarrow{t^n}R\to R/(t^n)\to0\)">\(R\xrightarrow{t^n}R\to R/(t^n)\to0\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R/(t^n)\otimes_R X=\operatorname{coker}T^n,\\
+H_R(R/(t^n),X)=\ker T^n.
+\end{gathered}
+\]">\[
+\begin{gathered}
+R/(t^n)\otimes_R X=\operatorname{coker}T^n,\\
+H_R(R/(t^n),X)=\ker T^n.
+\end{gathered}
+\]</span>
+For the given operator, <span class="math" data-tex="\(\ker T^2\)">\(\ker T^2\)</span> has basis <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>, and <span class="math" data-tex="\(\operatorname{im}T^2=ke_1\)">\(\operatorname{im}T^2=ke_1\)</span>. The cokernel has basis <span class="math" data-tex="\([e_2],[e_3]\)">\([e_2],[e_3]\)</span>. The requested map sends <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to zero and <span class="math" data-tex="\(e_2\)">\(e_2\)</span> to <span class="math" data-tex="\([e_2]\)">\([e_2]\)</span>, so its rank is one. Although the kernel and cokernel have equal dimensions here, their specified comparison is not an isomorphism.</p>
+<p>There is a short exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow R/(t)
+\xrightarrow{\;1\mapsto t\;}R/(t^2)
+\longrightarrow R/(t)\longrightarrow0.
+\]">\[
+0\longrightarrow R/(t)
+\xrightarrow{\;1\mapsto t\;}R/(t^2)
+\longrightarrow R/(t)\longrightarrow0.
+\]</span>
+Tensoring with the right module <span class="math" data-tex="\(R/(t)\)">\(R/(t)\)</span> means quotienting each term by the action of <span class="math" data-tex="\(t\)">\(t\)</span>. The first map becomes the zero map <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>, losing monicity. Applying <span class="math" data-tex="\(\operatorname{Hom}_R(R/(t),-)\)">\(\operatorname{Hom}_R(R/(t),-)\)</span> means taking the elements killed by <span class="math" data-tex="\(t\)">\(t\)</span>. In <span class="math" data-tex="\(R/(t^2)\)">\(R/(t^2)\)</span> these are the multiples of <span class="math" data-tex="\(t\)">\(t\)</span>, all of which map to zero in <span class="math" data-tex="\(R/(t)\)">\(R/(t)\)</span>. Thus the last induced map is zero <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>, losing surjectivity. This proves that the general one-sided exactness assertions cannot be strengthened to exactness.</p>
+<p>The maps matter as much as the objects: replacing (1.1) by some chosen vector-space isomorphism would erase the obstruction. This distinction will recur when a functor compares a matrix kernel or cokernel with the kernel or cokernel of its image.</p>
+<h2 id="2-actions-on-objects-and-equivariant-arrows">2. Actions on objects and equivariant arrows</h2>
+<p>Write <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> for the category of <em>internal left <span class="math" data-tex="\(R\)">\(R\)</span>-modules</em>. An object is a pair <span class="math" data-tex="\((X,\xi_X)\)">\((X,\xi_X)\)</span>, where <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span> and
+<span class="math math-display" data-tex="\[
+\xi_X: R\longrightarrow\operatorname{End}_{\mathcal C}(X)
+\]">\[
+\xi_X: R\longrightarrow\operatorname{End}_{\mathcal C}(X)
+\]</span>
+is a unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra homomorphism. An arrow <span class="math" data-tex="\(f: (X,\xi_X)\to(Y,\xi_Y)\)">\(f: (X,\xi_X)\to(Y,\xi_Y)\)</span> is an arrow in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> satisfying
+<span class="math math-display" data-tex="\[
+f\xi_X(r)=\xi_Y(r)f\qquad(r\in R).
+\]">\[
+f\xi_X(r)=\xi_Y(r)f\qquad(r\in R).
+\]</span>
+This definition is meaningful even when <span class="math" data-tex="\(X\)">\(X\)</span> has no chosen underlying set.</p>
+<p>Sums and scalar multiples of equivariant arrows are equivariant. The zero object carries its unique action, and a finite biproduct carries the diagonal action. The usual injections and projections are equivariant. Hence <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear and additive. Forgetting the action is a faithful <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor.</p>
+<p>It need not be full. For a nonzero field <span class="math" data-tex="\(k\)">\(k\)</span>, give the one-dimensional space <span class="math" data-tex="\(k\)">\(k\)</span> two <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span>-actions, with <span class="math" data-tex="\(t\)">\(t\)</span> acting respectively as zero and as the identity. The underlying identity map is not equivariant: commuting with <span class="math" data-tex="\(t\)">\(t\)</span> would assert <span class="math" data-tex="\(0=1\)">\(0=1\)</span>.</p>
+<p>The center <span class="math" data-tex="\(Z(R)\)">\(Z(R)\)</span> acts on equivariant morphism groups by
+<span class="math math-display" data-tex="\[
+zf=\xi_Y(z)f=f\xi_X(z).
+\]">\[
+zf=\xi_Y(z)f=f\xi_X(z).
+\]</span>
+For central <span class="math" data-tex="\(z\)">\(z\)</span>, this arrow remains equivariant; the action is compatible with composition. Thus <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> is <span class="math" data-tex="\(Z(R)\)">\(Z(R)\)</span>-linear, including <span class="math" data-tex="\(R\)">\(R\)</span>-linear when <span class="math" data-tex="\(R\)">\(R\)</span> is commutative.</p>
+<p>Two Hom groups have different sides:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(Y,X)\text{ is a left }R\text{-module},\\
+r\cdot h=\xi_X(r)h,\\
+\operatorname{Hom}_{\mathcal C}(X,Y)\text{ is a right }R\text{-module},\\
+h\cdot r=h\xi_X(r).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(Y,X)\text{ is a left }R\text{-module},\\
+r\cdot h=\xi_X(r)h,\\
+\operatorname{Hom}_{\mathcal C}(X,Y)\text{ is a right }R\text{-module},\\
+h\cdot r=h\xi_X(r).
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(Y\)">\(Y\)</span> is any object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, with no action required. For the right action, <span class="math" data-tex="\((h\cdot r)\cdot s=h\xi_X(rs)\)">\((h\cdot r)\cdot s=h\xi_X(rs)\)</span>; this checks the multiplication order explicitly.</p>
+<p>A <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor <span class="math" data-tex="\(F: \mathcal C\to\mathcal D\)">\(F: \mathcal C\to\mathcal D\)</span> sends <span class="math" data-tex="\((X,\xi_X)\)">\((X,\xi_X)\)</span> to <span class="math" data-tex="\((FX,F\xi_X)\)">\((FX,F\xi_X)\)</span>. It respects all algebra laws because it preserves composition, identities and <span class="math" data-tex="\(k\)">\(k\)</span>-linear sums. It sends equivariant arrows to equivariant arrows, and forgetting actions commutes with this lifted functor.</p>
+<p>For <span class="math" data-tex="\(\mathcal C=k\text{-}\mathsf{Mod}\)">\(\mathcal C=k\text{-}\mathsf{Mod}\)</span>, this construction is precisely the usual category of left <span class="math" data-tex="\(R\)">\(R\)</span>-modules: a left action consists of <span class="math" data-tex="\(k\)">\(k\)</span>-linear operators with these algebra laws, and an <span class="math" data-tex="\(R\)">\(R\)</span>-linear map is exactly an equivariant <span class="math" data-tex="\(k\)">\(k\)</span>-linear map.</p>
+<p>Taking opposites reverses the algebra as well:
+<span class="math math-display" data-tex="\[
+(\mathcal C_R)^{\mathrm{op}}\simeq
+(\mathcal C^{\mathrm{op}})_{R^{\mathrm{op}}}.
+\tag{2.1}
+\]">\[
+(\mathcal C_R)^{\mathrm{op}}\simeq
+(\mathcal C^{\mathrm{op}})_{R^{\mathrm{op}}}.
+\tag{2.1}
+\]</span>
+Indeed, <span class="math" data-tex="\(\operatorname{End}_{\mathcal C^{\mathrm{op}}}(X)\)">\(\operatorname{End}_{\mathcal C^{\mathrm{op}}}(X)\)</span> is the opposite of <span class="math" data-tex="\(\operatorname{End}_{\mathcal C}(X)\)">\(\operatorname{End}_{\mathcal C}(X)\)</span>. The same operators therefore define an <span class="math" data-tex="\(R^{\mathrm{op}}\)">\(R^{\mathrm{op}}\)</span>-action there. Reversing an equivariant arrow gives exactly the equivariance equation in the opposite category. This operation reverses back to the original objects and arrows, so (2.1) is an equivalence without additional choices.</p>
+<h2 id="3-kernels-and-cokernels-retain-the-action">3. Kernels and cokernels retain the action</h2>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear and abelian, then <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span>-linear and abelian. The forgetful functor creates kernels and cokernels and is exact. A left exact or right exact <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor lifts to a functor with the same exactness.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f: X\to Y\)">\(f: X\to Y\)</span> be equivariant, and let <span class="math" data-tex="\(i: K\to X\)">\(i: K\to X\)</span> be its kernel in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Since <span class="math" data-tex="\(f\xi_X(r)i=\xi_Y(r)fi=0\)">\(f\xi_X(r)i=\xi_Y(r)fi=0\)</span>, there is a unique operator <span class="math" data-tex="\(\xi_K(r)\)">\(\xi_K(r)\)</span> with
+<span class="math math-display" data-tex="\[
+i\xi_K(r)=\xi_X(r)i.
+\]">\[
+i\xi_K(r)=\xi_X(r)i.
+\]</span>
+Canceling the monomorphism <span class="math" data-tex="\(i\)">\(i\)</span> verifies every additive, multiplicative, scalar and unit law. If an equivariant arrow <span class="math" data-tex="\(h: Z\to X\)">\(h: Z\to X\)</span> satisfies <span class="math" data-tex="\(fh=0\)">\(fh=0\)</span>, its unique kernel factorization <span class="math" data-tex="\(h=i\bar h\)">\(h=i\bar h\)</span> is equivariant: compose the desired equation with <span class="math" data-tex="\(i\)">\(i\)</span> and cancel <span class="math" data-tex="\(i\)">\(i\)</span>. Thus this is the kernel in <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>.</p>
+<p>Let <span class="math" data-tex="\(q: Y\to L\)">\(q: Y\to L\)</span> be the cokernel of <span class="math" data-tex="\(f\)">\(f\)</span>. The equality <span class="math" data-tex="\(q\xi_Y(r)f=qf\xi_X(r)=0\)">\(q\xi_Y(r)f=qf\xi_X(r)=0\)</span> defines a unique <span class="math" data-tex="\(\xi_L(r)\)">\(\xi_L(r)\)</span> with
+<span class="math math-display" data-tex="\[
+\xi_L(r)q=q\xi_Y(r).
+\]">\[
+\xi_L(r)q=q\xi_Y(r).
+\]</span>
+Canceling the epimorphism <span class="math" data-tex="\(q\)">\(q\)</span> verifies the algebra laws. The same cancellation shows that every factorization of an equivariant arrow through <span class="math" data-tex="\(q\)">\(q\)</span> is equivariant. Hence this is the internal cokernel.</p>
+<p>The canonical coimage-to-image map is equivariant because all its constituent kernel and cokernel maps are. Its underlying map is an isomorphism in the abelian category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The inverse of an equivariant isomorphism is equivariant, by multiplying its commutation equation by the inverse on both sides. Thus <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span> is abelian.</p>
+<p>These constructions also show that exactness is detected on underlying objects: the image and kernel subobjects have the underlying image and kernel, and their comparison is an isomorphism exactly when its underlying map is. Finally, a left exact <span class="math" data-tex="\(F\)">\(F\)</span> preserves the underlying kernel diagrams, whose induced actions are fixed by uniqueness; its lift preserves kernels. A right exact <span class="math" data-tex="\(F\)">\(F\)</span> preserves the corresponding cokernel diagrams and their actions. Both lifts are additive, so these are the asserted exactness properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When a small limit or colimit exists in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the corresponding diagram of internal modules has one with the same underlying object. For a limit, define each operator by its composites with the limiting projections; for a colimit, define it by its composites with the coprojections. Joint uniqueness verifies the algebra laws and the equivariant universal property. In particular, the needed products or coproducts of internal modules exist under the corresponding assumptions on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<h2 id="4-finite-matrices-before-infinite-presentations"><span id="7-finite-presentations-require-only-finite-operations"></span>4. Finite matrices before infinite presentations</h2>
+<p>For a right module <span class="math" data-tex="\(N\)">\(N\)</span> and a left module <span class="math" data-tex="\(M\)">\(M\)</span>, the desired objects have different universal properties:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(N\otimes_R X,Y)\\
+\simeq\operatorname{Hom}_{R^{\mathrm{op}}}
+ (N,\operatorname{Hom}_{\mathcal C}(X,Y)),
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(N\otimes_R X,Y)\\
+\simeq\operatorname{Hom}_{R^{\mathrm{op}}}
+ (N,\operatorname{Hom}_{\mathcal C}(X,Y)),
+\end{gathered}
+\tag{4.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(Y,H_R(M,X))\\
+\simeq\operatorname{Hom}_{R}
+ (M,\operatorname{Hom}_{\mathcal C}(Y,X)).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal C}(Y,H_R(M,X))\\
+\simeq\operatorname{Hom}_{R}
+ (M,\operatorname{Hom}_{\mathcal C}(Y,X)).
+\end{gathered}
+\tag{4.2}
+\]</span>
+The inner Hom in (4.1) is a right module by precomposition; the inner Hom in (4.2) is a left module by postcomposition. The output is an object of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, whereas the outer module Hom is an ordinary morphism group. These formulas specify the objects even before we know that they exist.</p>
+<p><strong>Theorem 4.1 (finite presentation).</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is finitely presented as a right <span class="math" data-tex="\(R\)">\(R\)</span>-module, the object in (4.1) exists. If <span class="math" data-tex="\(M\)">\(M\)</span> is finitely presented as a left <span class="math" data-tex="\(R\)">\(R\)</span>-module, the object in (4.2) exists. Their specified universal properties give canonical, mutually compatible presentation comparisons and additive <span class="math" data-tex="\(k\)">\(k\)</span>-linear bifunctors, covariant in both tensor variables and contravariant in the first Hom variable. No infinite product or coproduct is needed.</p>
+<p><strong>Proof.</strong> Take a finite right-module presentation
+<span class="math math-display" data-tex="\[
+R^m\xrightarrow{d}R^q\longrightarrow N\longrightarrow0,
+\qquad d(e_j)=\sum_i e_i a_{ij}.
+\]">\[
+R^m\xrightarrow{d}R^q\longrightarrow N\longrightarrow0,
+\qquad d(e_j)=\sum_i e_i a_{ij}.
+\]</span>
+Define <span class="math" data-tex="\(D_X:X^m\to X^q\)">\(D_X:X^m\to X^q\)</span> by these same operators <span class="math" data-tex="\(\xi_X(a_{ij})\)">\(\xi_X(a_{ij})\)</span>, and put <span class="math" data-tex="\(T=\operatorname{coker}D_X\)">\(T=\operatorname{coker}D_X\)</span>. A map <span class="math" data-tex="\(X^q\to Y\)">\(X^q\to Y\)</span> is a family <span class="math" data-tex="\(h_i:X\to Y\)">\(h_i:X\to Y\)</span>. It kills <span class="math" data-tex="\(D_X\)">\(D_X\)</span> exactly when <span class="math" data-tex="\(\sum_i h_i\xi_X(a_{ij})=0\)">\(\sum_i h_i\xi_X(a_{ij})=0\)</span> for each <span class="math" data-tex="\(j\)">\(j\)</span>. Evaluation on the free basis identifies these with right-linear maps <span class="math" data-tex="\(R^q\to\operatorname{Hom}(X,Y)\)">\(R^q\to\operatorname{Hom}(X,Y)\)</span> killing <span class="math" data-tex="\(d\)">\(d\)</span>. Factoring through <span class="math" data-tex="\(N\)">\(N\)</span> gives (4.1), naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>For a finite left-module presentation <span class="math" data-tex="\(R^m\to R^q\to M\to0\)">\(R^m\to R^q\to M\to0\)</span>, write instead <span class="math" data-tex="\(d(e_j)=\sum_i a_{ij}e_i\)">\(d(e_j)=\sum_i a_{ij}e_i\)</span>. Define <span class="math" data-tex="\(E_X:X^q\to X^m\)">\(E_X:X^q\to X^m\)</span> by <span class="math" data-tex="\(\pi_jE_X=\sum_i\xi_X(a_{ij})\pi_i\)">\(\pi_jE_X=\sum_i\xi_X(a_{ij})\pi_i\)</span>. A map <span class="math" data-tex="\(Y\to X^q\)">\(Y\to X^q\)</span> lies in its kernel exactly when its components <span class="math" data-tex="\(h_i:Y\to X\)">\(h_i:Y\to X\)</span> satisfy <span class="math" data-tex="\(\sum_i\xi_X(a_{ij})h_i=0\)">\(\sum_i\xi_X(a_{ij})h_i=0\)</span>. These are the relations for a left-linear map <span class="math" data-tex="\(M\to\operatorname{Hom}(Y,X)\)">\(M\to\operatorname{Hom}(Y,X)\)</span>, proving (4.2) for <span class="math" data-tex="\(H=\ker E_X\)">\(H=\ker E_X\)</span>.</p>
+<p>Here is the presentation comparison immediately. Two objects with the same specified natural Hom bijections have unique comparison maps compatible with those bijections: evaluate one bijection on the identity of the other representing object. The composites correspond to identities, so the maps are inverse. For three presentations, a composite of two compatible comparisons is the third compatible comparison by uniqueness. Thus the comparisons satisfy the cocycle law.</p>
+<p>A right-module arrow <span class="math" data-tex="\(N\to N&#x27;\)">\(N\to N&#x27;\)</span> precomposes the module Hom in (4.1); it therefore gives <span class="math" data-tex="\(N\otimes_R X\to N&#x27;\otimes_R X\)">\(N\otimes_R X\to N&#x27;\otimes_R X\)</span>. An equivariant arrow <span class="math" data-tex="\(X\to X&#x27;\)">\(X\to X&#x27;\)</span> precomposes the inner Hom and gives the same covariant direction in the object variable. In (4.2), precomposition in <span class="math" data-tex="\(M\)">\(M\)</span> gives the reverse direction, and postcomposition in <span class="math" data-tex="\(X\)">\(X\)</span> gives the forward direction. The transformations in the two variables commute. Uniqueness proves identities, composition, their mutual commutation and naturality of every presentation comparison. The bijections are <span class="math" data-tex="\(k\)">\(k\)</span>-linear, so sums and scalar multiples of input arrows induce the corresponding sums and scalar multiples of output arrows. Zero objects and finite direct sums represent the zero and direct-sum Hom functors; this also proves additivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(k[t]/(t^n)\)">\(k[t]/(t^n)\)</span>, the one-relation matrix is <span class="math" data-tex="\(T^n\)">\(T^n\)</span>. Both formulas in the first worked problem now follow in every <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian category. A finite free presentation also computes the two functors explicitly, without choosing elements of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>The one-sided exactness proofs in Section 5 use only the selected presentation. Hence they already apply here to the object variable for every fixed finitely presented module, and to sequences whose ordinary module terms are all finitely presented. Over a general ring this does not assert that finitely presented modules form an abelian category.</p>
+<h2 id="5-which-infinite-operations-are-actually-needed"><span id="4-tensoring-a-module-with-an-object"></span><span id="5-an-internal-hom-object"></span>5. Which infinite operations are actually needed</h2>
+<p>Assume first that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all small coproducts. Every small right <span class="math" data-tex="\(R\)">\(R\)</span>-module has a presentation by small free modules, so the finite tensor matrix extends to a coproduct matrix. Each relation still has finite support.</p>
+<p><strong>Theorem 5.1 (arbitrary right modules).</strong> The object in (4.1) exists. These representing objects define a <span class="math" data-tex="\(k\)">\(k\)</span>-linear bifunctor
+<span class="math math-display" data-tex="\[
+(-\otimes_R-):
+\mathsf{Mod}\text{-}R\times\mathcal C_R\longrightarrow\mathcal C
+\]">\[
+(-\otimes_R-):
+\mathsf{Mod}\text{-}R\times\mathcal C_R\longrightarrow\mathcal C
+\]</span>
+that is additive and right exact in each variable. All choices of presentations give canonically compatible representing objects.</p>
+<p><strong>Proof of existence and functoriality.</strong> Choose a free right-module presentation
+<span class="math math-display" data-tex="\[
+R^{(J)}\xrightarrow{d}R^{(I)}\longrightarrow N\longrightarrow0.
+\]">\[
+R^{(J)}\xrightarrow{d}R^{(I)}\longrightarrow N\longrightarrow0.
+\]</span>
+Write <span class="math" data-tex="\(d(e_j)=\sum_i e_i a_{ij}\)">\(d(e_j)=\sum_i e_i a_{ij}\)</span>. For each <span class="math" data-tex="\(j\)">\(j\)</span>, only finitely many coefficients are nonzero. The map
+<span class="math math-display" data-tex="\[
+D_X: X^{(J)}\longrightarrow X^{(I)}
+\]">\[
+D_X: X^{(J)}\longrightarrow X^{(I)}
+\]</span>
+has, on the <span class="math" data-tex="\(j\)">\(j\)</span>-th summand, the finite sum of the injections of <span class="math" data-tex="\(\xi_X(a_{ij})\)">\(\xi_X(a_{ij})\)</span>. Set <span class="math" data-tex="\(T=\operatorname{coker}D_X\)">\(T=\operatorname{coker}D_X\)</span>.</p>
+<p>A map <span class="math" data-tex="\(X^{(I)}\to Y\)">\(X^{(I)}\to Y\)</span> is a family <span class="math" data-tex="\(h_i: X\to Y\)">\(h_i: X\to Y\)</span>. It kills <span class="math" data-tex="\(D_X\)">\(D_X\)</span> exactly when
+<span class="math math-display" data-tex="\[
+\sum_i h_i\xi_X(a_{ij})=0\qquad(j\in J).
+\tag{5.1}
+\]">\[
+\sum_i h_i\xi_X(a_{ij})=0\qquad(j\in J).
+\tag{5.1}
+\]</span>
+Evaluation at the basis vectors identifies these families with the right <span class="math" data-tex="\(R\)">\(R\)</span>-linear maps <span class="math" data-tex="\(R^{(I)}\to\operatorname{Hom}_{\mathcal C}(X,Y)\)">\(R^{(I)}\to\operatorname{Hom}_{\mathcal C}(X,Y)\)</span> that kill <span class="math" data-tex="\(d\)">\(d\)</span>. They are exactly the right-module maps from <span class="math" data-tex="\(N\)">\(N\)</span>. This proves (4.1), naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>If <span class="math" data-tex="\(a: N\to N&#x27;\)">\(a: N\to N&#x27;\)</span> is a right-module map, precomposition gives a transformation from the functor represented by <span class="math" data-tex="\(N&#x27;\otimes_R X\)">\(N&#x27;\otimes_R X\)</span> to the functor represented by <span class="math" data-tex="\(N\otimes_R X\)">\(N\otimes_R X\)</span>. The representing map has the direction <span class="math" data-tex="\(N\otimes_R X\to N&#x27;\otimes_R X\)">\(N\otimes_R X\to N&#x27;\otimes_R X\)</span>. If <span class="math" data-tex="\(b: X\to X&#x27;\)">\(b: X\to X&#x27;\)</span> is equivariant, precomposition <span class="math" data-tex="\(\operatorname{Hom}(X&#x27;,Y)\to\operatorname{Hom}(X,Y)\)">\(\operatorname{Hom}(X&#x27;,Y)\to\operatorname{Hom}(X,Y)\)</span> is right <span class="math" data-tex="\(R\)">\(R\)</span>-linear and gives <span class="math" data-tex="\(N\otimes_R X\to N\otimes_R X&#x27;\)">\(N\otimes_R X\to N\otimes_R X&#x27;\)</span>. These transformations commute. Uniqueness of representing maps proves identity and composition laws, hence bifunctoriality.</p>
+<p>The correspondence is <span class="math" data-tex="\(k\)">\(k\)</span>-linear. Therefore sums of input arrows induce sums of output arrows. A zero input represents the zero functor; a finite direct sum in either variable represents the direct sum of the two represented functors. Their canonical comparisons give the additive structure.</p>
+<p>Two presentations represent the same specified functor (4.1). There is a unique isomorphism compatible with that representation. Between three choices, the composite of two such isomorphisms has the same compatibility as the third, so uniqueness proves its equality with the third. The same argument gives naturality in both variables. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of right exactness.</strong> For <span class="math" data-tex="\(N_1\to N_2\to N_3\to0\)">\(N_1\to N_2\to N_3\to0\)</span>, maps from <span class="math" data-tex="\(N_3\)">\(N_3\)</span> to any right module are precisely the maps from <span class="math" data-tex="\(N_2\)">\(N_2\)</span> killing <span class="math" data-tex="\(N_1\)">\(N_1\)</span>. By (4.1), this says that <span class="math" data-tex="\(N_3\otimes_R X\)">\(N_3\otimes_R X\)</span> is the cokernel of <span class="math" data-tex="\(N_1\otimes_R X\to N_2\otimes_R X\)">\(N_1\otimes_R X\to N_2\otimes_R X\)</span>, with the specified structure map.</p>
+<p>Now fix <span class="math" data-tex="\(N\)">\(N\)</span> and its presentation, and let <span class="math" data-tex="\(X_1\xrightarrow{u}X_2\xrightarrow{q}X_3\to0\)">\(X_1\xrightarrow{u}X_2\xrightarrow{q}X_3\to0\)</span> be right exact in <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>. A map <span class="math" data-tex="\(N\otimes_R X_2\to Y\)">\(N\otimes_R X_2\to Y\)</span> is a family <span class="math" data-tex="\(h_i: X_2\to Y\)">\(h_i: X_2\to Y\)</span> satisfying (5.1). Its composite with <span class="math" data-tex="\(N\otimes_R X_1\)">\(N\otimes_R X_1\)</span> is zero exactly when all <span class="math" data-tex="\(h_i u\)">\(h_i u\)</span> vanish: the coproduct <span class="math" data-tex="\(X_1^{(I)}\)">\(X_1^{(I)}\)</span> maps epimorphically to <span class="math" data-tex="\(N\otimes_R X_1\)">\(N\otimes_R X_1\)</span>.</p>
+<p>Each such <span class="math" data-tex="\(h_i\)">\(h_i\)</span> uniquely descends to <span class="math" data-tex="\(\bar h_i: X_3\to Y\)">\(\bar h_i: X_3\to Y\)</span>, because <span class="math" data-tex="\(q\)">\(q\)</span> is the underlying cokernel of <span class="math" data-tex="\(u\)">\(u\)</span>. The relation for <span class="math" data-tex="\(\bar h_i\)">\(\bar h_i\)</span>, composed with <span class="math" data-tex="\(q\)">\(q\)</span>, is the relation for <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, since <span class="math" data-tex="\(q\)">\(q\)</span> is equivariant. Canceling <span class="math" data-tex="\(q\)">\(q\)</span> proves the relation for <span class="math" data-tex="\(\bar h_i\)">\(\bar h_i\)</span>. Thus maps from <span class="math" data-tex="\(N\otimes_R X_3\)">\(N\otimes_R X_3\)</span> to <span class="math" data-tex="\(Y\)">\(Y\)</span> are exactly maps from <span class="math" data-tex="\(N\otimes_R X_2\)">\(N\otimes_R X_2\)</span> that kill <span class="math" data-tex="\(N\otimes_R X_1\)">\(N\otimes_R X_1\)</span>. This is the cokernel property, for every <span class="math" data-tex="\(Y\)">\(Y\)</span>, so the tensor sequence is right exact. No exactness of infinite products or filtered colimits was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Assume instead that <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has all small products. Every small left module has a small free presentation. The corresponding product matrix exists because each output component uses only the finitely many coefficients of one relation; no infinite sum of endomorphisms is taken.</p>
+<p><strong>Theorem 5.2 (arbitrary left modules).</strong> The object in (4.2) exists and defines an additive <span class="math" data-tex="\(k\)">\(k\)</span>-linear bifunctor
+<span class="math math-display" data-tex="\[
+H_R: \bigl(R\text{-}\mathsf{Mod}\bigr)^{\mathrm{op}}
+\times\mathcal C_R\longrightarrow\mathcal C.
+\]">\[
+H_R: \bigl(R\text{-}\mathsf{Mod}\bigr)^{\mathrm{op}}
+\times\mathcal C_R\longrightarrow\mathcal C.
+\]</span>
+It is left exact in each variable, with contravariance in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> Choose a left-module presentation <span class="math" data-tex="\(R^{(J)}\to R^{(I)}\to M\to0\)">\(R^{(J)}\to R^{(I)}\to M\to0\)</span>, with <span class="math" data-tex="\(d(e_j)=\sum_i a_{ij}e_i\)">\(d(e_j)=\sum_i a_{ij}e_i\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_X: X^I\longrightarrow X^J,\\
+\pi_jE_X=\sum_i\xi_X(a_{ij})\pi_i.
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_X: X^I\longrightarrow X^J,\\
+\pi_jE_X=\sum_i\xi_X(a_{ij})\pi_i.
+\end{gathered}
+\]</span>
+The sum for each <span class="math" data-tex="\(j\)">\(j\)</span> is finite, so the map exists even though <span class="math" data-tex="\(I,J\)">\(I,J\)</span> can be infinite. Set <span class="math" data-tex="\(H=\ker E_X\)">\(H=\ker E_X\)</span>.</p>
+<p>An arrow <span class="math" data-tex="\(Y\to X^I\)">\(Y\to X^I\)</span> is a family <span class="math" data-tex="\(h_i: Y\to X\)">\(h_i: Y\to X\)</span>. It lands in <span class="math" data-tex="\(H\)">\(H\)</span> exactly when <span class="math" data-tex="\(\sum_i\xi_X(a_{ij})h_i=0\)">\(\sum_i\xi_X(a_{ij})h_i=0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. These are precisely the relations for a left-module map <span class="math" data-tex="\(M\to\operatorname{Hom}_{\mathcal C}(Y,X)\)">\(M\to\operatorname{Hom}_{\mathcal C}(Y,X)\)</span>. This proves (4.2), naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Precomposition in <span class="math" data-tex="\(M\)">\(M\)</span> and postcomposition in <span class="math" data-tex="\(X\)">\(X\)</span> define the indicated variance. The uniqueness argument in Section 5 proves all functor laws, additivity, <span class="math" data-tex="\(k\)">\(k\)</span>-linearity and compatibility of different presentations.</p>
+<p>For <span class="math" data-tex="\(M_1\to M_2\to M_3\to0\)">\(M_1\to M_2\to M_3\to0\)</span>, applying <span class="math" data-tex="\(\operatorname{Hom}_R(-,\operatorname{Hom}(Y,X))\)">\(\operatorname{Hom}_R(-,\operatorname{Hom}(Y,X))\)</span> gives the kernel description
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow H_R(M_3,X)
+&amp;\longrightarrow H_R(M_2,X)\\
+&amp;\longrightarrow H_R(M_1,X).
+\end{aligned}
+\]">\[
+\begin{aligned}
+0\longrightarrow H_R(M_3,X)
+&amp;\longrightarrow H_R(M_2,X)\\
+&amp;\longrightarrow H_R(M_1,X).
+\end{aligned}
+\]</span>
+Indeed, its Hom sequence from every <span class="math" data-tex="\(Y\)">\(Y\)</span> is the corresponding kernel sequence of module Homs. This is the required contravariant left exactness.</p>
+<p>For <span class="math" data-tex="\(0\to X_1\xrightarrow{i}X_2\xrightarrow{v}X_3\)">\(0\to X_1\xrightarrow{i}X_2\xrightarrow{v}X_3\)</span> exact in <span class="math" data-tex="\(\mathcal C_R\)">\(\mathcal C_R\)</span>, consider an arrow <span class="math" data-tex="\(Y\to H_R(M,X_2)\)">\(Y\to H_R(M,X_2)\)</span> whose composite into <span class="math" data-tex="\(H_R(M,X_3)\)">\(H_R(M,X_3)\)</span> vanishes. In the product description, every component <span class="math" data-tex="\(Y\to X_2\)">\(Y\to X_2\)</span> is killed by <span class="math" data-tex="\(v\)">\(v\)</span>, so uniquely factors through <span class="math" data-tex="\(i\)">\(i\)</span>. The relation for these factors follows by composing with the monomorphism <span class="math" data-tex="\(i\)">\(i\)</span>, using equivariance, and canceling <span class="math" data-tex="\(i\)">\(i\)</span>. They therefore determine a unique arrow <span class="math" data-tex="\(Y\to H_R(M,X_1)\)">\(Y\to H_R(M,X_1)\)</span>. This proves the kernel property and left exactness in <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can also obtain Theorem 5.2 from Theorem 5.1 in <span class="math" data-tex="\(\mathcal C^{\mathrm{op}}\)">\(\mathcal C^{\mathrm{op}}\)</span>, using (2.1). A left <span class="math" data-tex="\(R\)">\(R\)</span>-module is a right <span class="math" data-tex="\(R^{\mathrm{op}}\)">\(R^{\mathrm{op}}\)</span>-module, and a cokernel in the opposite category is a kernel in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. The direct proof above records the side and the variance.</p>
+<p>Infinite inputs cannot in general be used in a category having only finite operations. For example, take finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces and <span class="math" data-tex="\(X=k\)">\(X=k\)</span>, where <span class="math" data-tex="\(k\)">\(k\)</span> is a field, with <span class="math" data-tex="\(R=k\)">\(R=k\)</span>. If <span class="math" data-tex="\(N\)">\(N\)</span> or <span class="math" data-tex="\(M\)">\(M\)</span> is an infinite-dimensional vector space, the value at <span class="math" data-tex="\(Y=k\)">\(Y=k\)</span> of the desired represented functor is <span class="math" data-tex="\(\operatorname{Hom}_k(N,k)\)">\(\operatorname{Hom}_k(N,k)\)</span> or <span class="math" data-tex="\(\operatorname{Hom}_k(M,k)\)">\(\operatorname{Hom}_k(M,k)\)</span>, respectively. This vector space is infinite-dimensional: infinitely many coordinate functionals on a basis are linearly independent. A finite-dimensional representing object has a finite-dimensional Hom space at <span class="math" data-tex="\(k\)">\(k\)</span>, so it cannot represent that functor. The desired representing isomorphisms are <span class="math" data-tex="\(k\)">\(k\)</span>-linear, making the dimension obstruction decisive.</p>
+<h2 id="6-matrix-units-commuting-actions-and-composition"><span id="6-commuting-second-actions"></span>6. Matrix units, commuting actions and composition</h2>
+<p><strong>Worked calculation (matrix units).</strong> Set <span class="math" data-tex="\(R=M_2(k)\)">\(R=M_2(k)\)</span> and <span class="math" data-tex="\(e=E_{11}\)">\(e=E_{11}\)</span>. We compute <span class="math" data-tex="\(eR\otimes_R X\)">\(eR\otimes_R X\)</span> and <span class="math" data-tex="\(H_R(Re,X)\)">\(H_R(Re,X)\)</span> and identify the entire internal-module category. Both ordinary input modules are finitely presented, so Theorem 4.1 suffices.</p>
+<p>Indeed, the quotient <span class="math" data-tex="\(R\to eR\)">\(R\to eR\)</span>, <span class="math" data-tex="\(r\mapsto er\)">\(r\mapsto er\)</span>, has kernel <span class="math" data-tex="\((1-e)R\)">\((1-e)R\)</span>, giving a one-generator relation presentation on the right. The quotient <span class="math" data-tex="\(R\to Re\)">\(R\to Re\)</span>, <span class="math" data-tex="\(r\mapsto re\)">\(r\mapsto re\)</span>, has kernel <span class="math" data-tex="\(R(1-e)\)">\(R(1-e)\)</span>, giving the corresponding left presentation. These statements hold over every commutative scalar ring <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>The idempotent <span class="math" data-tex="\(\xi_X(e)\)">\(\xi_X(e)\)</span> splits in the abelian category: its image inclusion <span class="math" data-tex="\(i: eX\to X\)">\(i: eX\to X\)</span> and image projection <span class="math" data-tex="\(p: X\to eX\)">\(p: X\to eX\)</span> satisfy <span class="math" data-tex="\(ip=\xi_X(e)\)">\(ip=\xi_X(e)\)</span> and <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>. For example, <span class="math" data-tex="\(\xi_X(e)\)">\(\xi_X(e)\)</span> is the identity on its image by idempotence, which proves the second equality.</p>
+<p>A right-module map <span class="math" data-tex="\(eR\to A\)">\(eR\to A\)</span> is determined by <span class="math" data-tex="\(a=f(e)\)">\(a=f(e)\)</span>, satisfying <span class="math" data-tex="\(ae=a\)">\(ae=a\)</span>; its inverse sends <span class="math" data-tex="\(er\)">\(er\)</span> to <span class="math" data-tex="\(ar\)">\(ar\)</span>, which is well-defined because <span class="math" data-tex="\(a=ae\)">\(a=ae\)</span>. With <span class="math" data-tex="\(A=\operatorname{Hom}_{\mathcal C}(X,Y)\)">\(A=\operatorname{Hom}_{\mathcal C}(X,Y)\)</span>, this condition is <span class="math" data-tex="\(a\xi_X(e)=a\)">\(a\xi_X(e)=a\)</span>. Such maps are exactly the arrows <span class="math" data-tex="\(eX\to Y\)">\(eX\to Y\)</span>, by <span class="math" data-tex="\(a=\bar a p\)">\(a=\bar a p\)</span> and <span class="math" data-tex="\(\bar a=ai\)">\(\bar a=ai\)</span>. Formula (4.1) therefore gives <span class="math" data-tex="\(eR\otimes_R X\simeq eX\)">\(eR\otimes_R X\simeq eX\)</span>.</p>
+<p>A left-module map <span class="math" data-tex="\(Re\to B\)">\(Re\to B\)</span> is likewise determined by <span class="math" data-tex="\(b=f(e)\)">\(b=f(e)\)</span> satisfying <span class="math" data-tex="\(eb=b\)">\(eb=b\)</span>, with inverse <span class="math" data-tex="\(re\mapsto rb\)">\(re\mapsto rb\)</span>. For <span class="math" data-tex="\(B=\operatorname{Hom}_{\mathcal C}(Y,X)\)">\(B=\operatorname{Hom}_{\mathcal C}(Y,X)\)</span>, these are exactly the maps <span class="math" data-tex="\(Y\to eX\)">\(Y\to eX\)</span>. Formula (4.2) gives <span class="math" data-tex="\(H_R(Re,X)\simeq eX\)">\(H_R(Re,X)\simeq eX\)</span>. The left <span class="math" data-tex="\(eRe\)">\(eRe\)</span>-action on <span class="math" data-tex="\(eR\)">\(eR\)</span> and the right <span class="math" data-tex="\(eRe\)">\(eRe\)</span>-action on <span class="math" data-tex="\(Re\)">\(Re\)</span> induce the restriction of the given action to <span class="math" data-tex="\(eX\)">\(eX\)</span>; this can be checked at the determining element <span class="math" data-tex="\(e\)">\(e\)</span>. As <span class="math" data-tex="\(eRe\cong k\)">\(eRe\cong k\)</span>, this is the original scalar action.</p>
+<p>For the claimed equivalence, abbreviate <span class="math" data-tex="\(\xi_X(E_{ij})\)">\(\xi_X(E_{ij})\)</span> to <span class="math" data-tex="\(u_{ij}\)">\(u_{ij}\)</span>. There are arrows
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha: eX\oplus eX\longrightarrow X,\qquad
+\alpha=(i,\ u_{21}i),\\
+\beta: X\longrightarrow eX\oplus eX,\qquad
+\beta=\binom{p}{p u_{12}}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha: eX\oplus eX\longrightarrow X,\qquad
+\alpha=(i,\ u_{21}i),\\
+\beta: X\longrightarrow eX\oplus eX,\qquad
+\beta=\binom{p}{p u_{12}}.
+\end{gathered}
+\]</span>
+Using <span class="math" data-tex="\(u_{ij}u_{\ell m}=\delta_{j\ell}u_{im}\)">\(u_{ij}u_{\ell m}=\delta_{j\ell}u_{im}\)</span> and <span class="math" data-tex="\(u_{11}+u_{22}=1_X\)">\(u_{11}+u_{22}=1_X\)</span>, compute
+<span class="math math-display" data-tex="\[
+\alpha\beta=u_{11}+u_{21}u_{12}=u_{11}+u_{22}=1_X.
+\]">\[
+\alpha\beta=u_{11}+u_{21}u_{12}=u_{11}+u_{22}=1_X.
+\]</span>
+The four components of <span class="math" data-tex="\(\beta\alpha\)">\(\beta\alpha\)</span> are <span class="math" data-tex="\(1,0,0,1\)">\(1,0,0,1\)</span>, respectively: <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>, <span class="math" data-tex="\(pu_{21}i=0\)">\(pu_{21}i=0\)</span>, <span class="math" data-tex="\(pu_{12}i=0\)">\(pu_{12}i=0\)</span>, and <span class="math" data-tex="\(pu_{12}u_{21}i=pi=1\)">\(pu_{12}u_{21}i=pi=1\)</span>. Thus <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are inverse. The operators <span class="math" data-tex="\(u_{11},u_{22},u_{12},u_{21}\)">\(u_{11},u_{22},u_{12},u_{21}\)</span>, in these coordinates, are the four standard matrix units. Hence the isomorphism is <span class="math" data-tex="\(R\)">\(R\)</span>-equivariant.</p>
+<p>An equivariant map commutes with all four units. Commuting with the diagonal units forces a map in these coordinates to be diagonal; commuting with <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> forces its two diagonal entries to be the same. Thus it is uniquely <span class="math" data-tex="\(f\oplus f\)">\(f\oplus f\)</span> for an arrow of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. This proves full faithfulness and identifies all natural comparison maps. Conversely, <span class="math" data-tex="\(e(V\oplus V)\cong V\)">\(e(V\oplus V)\cong V\)</span>, and the preceding equivariant <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> identifies the other composite with the identity. These natural isomorphisms give the equivalence for every such <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, without requiring infinite products or sums.</p>
+<p>This is the pointwise matrix-algebra calculation used by the later <a href="local-module-categories-and-morita-equivalence.html">local module and Morita route</a>. Sheaf gluing and descent require their separate proofs there.</p>
+<p>The corner actions just computed are instances of the following general construction. It also makes iteration of tensor products possible.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be another unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra. An <span class="math" data-tex="\((S,R)\)">\((S,R)\)</span>-bimodule <span class="math" data-tex="\(N\)">\(N\)</span> has a left <span class="math" data-tex="\(S\)">\(S\)</span>-action and a commuting right <span class="math" data-tex="\(R\)">\(R\)</span>-action, with matching scalar actions. Equivalently, it is a left module over <span class="math" data-tex="\(S\otimes_k R^{\mathrm{op}}\)">\(S\otimes_k R^{\mathrm{op}}\)</span>.</p>
+<p>For each <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, multiplication <span class="math" data-tex="\(n\mapsto sn\)">\(n\mapsto sn\)</span> is a right <span class="math" data-tex="\(R\)">\(R\)</span>-linear endomorphism of <span class="math" data-tex="\(N\)">\(N\)</span>. Applying the covariant tensor functor gives an endomorphism of <span class="math" data-tex="\(N\otimes_R X\)">\(N\otimes_R X\)</span>. Functoriality and additivity give the algebra laws and the required scalar action. Thus
+<span class="math math-display" data-tex="\[
+N\otimes_R X\in\mathcal C_S.
+\tag{6.1}
+\]">\[
+N\otimes_R X\in\mathcal C_S.
+\tag{6.1}
+\]</span></p>
+<p>For a left <span class="math" data-tex="\(R\)">\(R\)</span>, right <span class="math" data-tex="\(S\)">\(S\)</span> bimodule <span class="math" data-tex="\(M\)">\(M\)</span>, multiplication <span class="math" data-tex="\(\rho_s: m\mapsto ms\)">\(\rho_s: m\mapsto ms\)</span> is left <span class="math" data-tex="\(R\)">\(R\)</span>-linear. The Hom functor is contravariant in <span class="math" data-tex="\(M\)">\(M\)</span>, so define the <span class="math" data-tex="\(S\)">\(S\)</span>-action on <span class="math" data-tex="\(H_R(M,X)\)">\(H_R(M,X)\)</span> by <span class="math" data-tex="\(H_R(\rho_s,1_X)\)">\(H_R(\rho_s,1_X)\)</span>. The multiplication order is correct:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho_t\rho_s=\rho_{st},\\
+H_R(\rho_s,1)H_R(\rho_t,1)
+=H_R(\rho_t\rho_s,1),\\
+H_R(\rho_t\rho_s,1)=H_R(\rho_{st},1).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho_t\rho_s=\rho_{st},\\
+H_R(\rho_s,1)H_R(\rho_t,1)
+=H_R(\rho_t\rho_s,1),\\
+H_R(\rho_t\rho_s,1)=H_R(\rho_{st},1).
+\end{gathered}
+\]</span>
+In the represented Hom module, this action is <span class="math" data-tex="\((s\cdot f)(m)=f(ms)\)">\((s\cdot f)(m)=f(ms)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+H_R(M,X)\in\mathcal C_S.
+\tag{6.2}
+\]">\[
+H_R(M,X)\in\mathcal C_S.
+\tag{6.2}
+\]</span>
+The unit, additive and scalar laws follow from the same functoriality and linearity. Bimodule maps and equivariant arrows in <span class="math" data-tex="\(X\)">\(X\)</span> induce <span class="math" data-tex="\(S\)">\(S\)</span>-equivariant output maps, since they commute with the multiplication operators. These statements preserve the given output actions, not merely the underlying objects.</p>
+<p>For the ordinary bimodule <span class="math" data-tex="\(P\otimes_S N\)">\(P\otimes_S N\)</span> used next, take the free <span class="math" data-tex="\(k\)">\(k\)</span>-module on the small set <span class="math" data-tex="\(P\times N\)">\(P\times N\)</span>. Quotient by additivity in each variable, the relations <span class="math" data-tex="\([ap,n]=a[p,n]=[p,an]\)">\([ap,n]=a[p,n]=[p,an]\)</span> for <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span>, and <span class="math" data-tex="\([ps,n]=[p,sn]\)">\([ps,n]=[p,sn]\)</span> for <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. A <span class="math" data-tex="\(k\)">\(k\)</span>-linear map from this quotient is exactly a biadditive <span class="math" data-tex="\(k\)">\(k\)</span>-balanced, <span class="math" data-tex="\(S\)">\(S\)</span>-balanced function; assignment on generators proves both directions and uniqueness. The operators <span class="math" data-tex="\(t[p,n]=[tp,n]\)">\(t[p,n]=[tp,n]\)</span> and <span class="math" data-tex="\([p,n]r=[p,nr]\)">\([p,n]r=[p,nr]\)</span> preserve every relation because the original actions commute. They satisfy the left <span class="math" data-tex="\(T\)">\(T\)</span>, right <span class="math" data-tex="\(R\)">\(R\)</span>, unit and scalar laws on generators and hence on the quotient. This proves the needed ordinary tensor property and its <span class="math" data-tex="\((T,R)\)">\((T,R)\)</span>-bimodule structure directly.</p>
+<p><strong>Proposition 6.3 (associativity and coherence).</strong> Suppose <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> has small coproducts. Let <span class="math" data-tex="\(N\)">\(N\)</span> be an <span class="math" data-tex="\((S,R)\)">\((S,R)\)</span>-bimodule, <span class="math" data-tex="\(P\)">\(P\)</span> a <span class="math" data-tex="\((T,S)\)">\((T,S)\)</span>-bimodule, and <span class="math" data-tex="\(X\in\mathcal C_R\)">\(X\in\mathcal C_R\)</span>. There is a canonical natural <span class="math" data-tex="\(T\)">\(T\)</span>-equivariant isomorphism
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(P\otimes_S N)\otimes_R X\\
+\simeq P\otimes_S(N\otimes_R X).
+\end{gathered}
+\tag{6.3}
+\]">\[
+\begin{gathered}
+(P\otimes_S N)\otimes_R X\\
+\simeq P\otimes_S(N\otimes_R X).
+\end{gathered}
+\tag{6.3}
+\]</span>
+For a further <span class="math" data-tex="\((U,T)\)">\((U,T)\)</span>-bimodule, all successive comparisons between parenthesizations agree.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(A=\operatorname{Hom}_{\mathcal C}(X,Y)\)">\(A=\operatorname{Hom}_{\mathcal C}(X,Y)\)</span>, a right <span class="math" data-tex="\(R\)">\(R\)</span>-module. The tensor representation identifies maps from the right side of (6.3) to <span class="math" data-tex="\(Y\)">\(Y\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{S^{\mathrm{op}}}
+\bigl(P,\operatorname{Hom}_{R^{\mathrm{op}}}(N,A)\bigr).
+\tag{6.4}
+\]">\[
+\operatorname{Hom}_{S^{\mathrm{op}}}
+\bigl(P,\operatorname{Hom}_{R^{\mathrm{op}}}(N,A)\bigr).
+\tag{6.4}
+\]</span>
+The right <span class="math" data-tex="\(S\)">\(S\)</span>-action on the inner Hom is <span class="math" data-tex="\((f\cdot s)(n)=f(sn)\)">\((f\cdot s)(n)=f(sn)\)</span>: it comes from precomposing with the left <span class="math" data-tex="\(S\)">\(S\)</span>-action on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Define a bijection from right <span class="math" data-tex="\(R\)">\(R\)</span>-linear maps <span class="math" data-tex="\(v: P\otimes_S N\to A\)">\(v: P\otimes_S N\to A\)</span> to (6.4) by <span class="math" data-tex="\(\widehat v(p)(n)=v(p\otimes n)\)">\(\widehat v(p)(n)=v(p\otimes n)\)</span>. Right <span class="math" data-tex="\(R\)">\(R\)</span>-linearity in <span class="math" data-tex="\(n\)">\(n\)</span> is immediate. The equality
+<span class="math math-display" data-tex="\[
+\widehat v(ps)(n)=v(ps\otimes n)
+=v(p\otimes sn)=\widehat v(p)(sn)
+\]">\[
+\widehat v(ps)(n)=v(ps\otimes n)
+=v(p\otimes sn)=\widehat v(p)(sn)
+\]</span>
+is exactly right <span class="math" data-tex="\(S\)">\(S\)</span>-linearity in <span class="math" data-tex="\(p\)">\(p\)</span>. Conversely, a member <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of (6.4) gives the biadditive balanced map <span class="math" data-tex="\((p,n)\mapsto\psi(p)(n)\)">\((p,n)\mapsto\psi(p)(n)\)</span>. It respects the matching <span class="math" data-tex="\(k\)">\(k\)</span>-actions and the right <span class="math" data-tex="\(R\)">\(R\)</span>-action; the ordinary balanced tensor property gives a unique right <span class="math" data-tex="\(R\)">\(R\)</span>-linear map <span class="math" data-tex="\(P\otimes_S N\to A\)">\(P\otimes_S N\to A\)</span>. The constructions recover one another on every <span class="math" data-tex="\(p,n\)">\(p,n\)</span>, so they are inverse and natural.</p>
+<p>By (4.1), the resulting natural Hom bijection represents the left side of (6.3), proving the isomorphism. The <span class="math" data-tex="\(T\)">\(T\)</span>-actions multiply <span class="math" data-tex="\(p\)">\(p\)</span>; the bijection commutes with that multiplication, so the representing comparison is <span class="math" data-tex="\(T\)">\(T\)</span>-equivariant. It is natural in both bimodules, in <span class="math" data-tex="\(X\)">\(X\)</span>, and in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>For an additional bimodule <span class="math" data-tex="\(L\)">\(L\)</span>, every sequence of the comparisons sends a represented map to the same function of <span class="math" data-tex="\(l,p,n\)">\(l,p,n\)</span>, obtained by successive evaluation. Ordinary tensor associativity is the unique comparison taking a nested pure tensor to the corresponding other parenthesization; balanced biadditivity gives this comparison and its inverse. Thus all parenthesized Hom descriptions agree on all triples and on their sums. Uniqueness of the representing map makes the resulting object comparisons equal. Iterating the same evaluation argument proves agreement for any finite list, including the usual pentagon with four factors. This establishes coherence of the specified comparisons, not just existence of unrelated isomorphisms.</p>
+<h2 id="7-exact-functors-and-a-zero-comparison-between-equal-dimensions">7. Exact functors and a zero comparison between equal dimensions</h2>
+<p>The first worked problem warns us to test the canonical map. A finite presentation gives canonical comparisons after applying an additive functor, but their being isomorphisms requires the appropriate one-sided exactness.</p>
+<p><strong>Theorem 7.1 (finite constructions and exact functors).</strong> Let <span class="math" data-tex="\(F: \mathcal C\to\mathcal D\)">\(F: \mathcal C\to\mathcal D\)</span> be <span class="math" data-tex="\(k\)">\(k\)</span>-linear between <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian categories. If <span class="math" data-tex="\(F\)">\(F\)</span> is right exact and <span class="math" data-tex="\(N\)">\(N\)</span> is a finitely presented right <span class="math" data-tex="\(R\)">\(R\)</span>-module, then
+<span class="math math-display" data-tex="\[
+N\otimes_R FX\simeq F(N\otimes_R X).
+\tag{7.1}
+\]">\[
+N\otimes_R FX\simeq F(N\otimes_R X).
+\tag{7.1}
+\]</span>
+If <span class="math" data-tex="\(F\)">\(F\)</span> is left exact and <span class="math" data-tex="\(M\)">\(M\)</span> is a finitely presented left <span class="math" data-tex="\(R\)">\(R\)</span>-module, then
+<span class="math math-display" data-tex="\[
+F H_R(M,X)\simeq H_R(M,FX).
+\tag{7.2}
+\]">\[
+F H_R(M,X)\simeq H_R(M,FX).
+\tag{7.2}
+\]</span>
+Both comparisons are natural in the module and the internal object and compatible with second actions. A <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive functor alone need not give either isomorphism.</p>
+<p><strong>Proof.</strong> In a finite presentation, the tensor object is the cokernel of the matrix map <span class="math" data-tex="\(X^m\to X^n\)">\(X^m\to X^n\)</span>. A <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive functor preserves finite biproducts with their specified injections and projections, and sends that matrix to the same matrix of operators on <span class="math" data-tex="\(FX\)">\(FX\)</span>. If <span class="math" data-tex="\(F\)">\(F\)</span> is right exact, it preserves the cokernel, giving (7.1). Its comparison is the canonical map induced from the cokernel diagram. A left exact <span class="math" data-tex="\(F\)">\(F\)</span> preserves the kernel of the finite product matrix defining <span class="math" data-tex="\(H_R(M,X)\)">\(H_R(M,X)\)</span>, giving the canonical comparison (7.2).</p>
+<p>Here is also a verification that the comparisons do not depend on the chosen presentation or on a module arrow. For an arrow of finitely presented modules, lift its images on the finitely many degree-zero free generators to the target free presentation. The resulting matrix carries the source relations into the kernel of the target quotient. The finitely many relation generators lift through the target relation presentation, giving a commuting pair of presentation matrices. This works because finite free modules are projective in the ordinary module category. In the right-module case the induced cokernel map is exactly the representing tensor map from Section 5: precomposition with a family satisfying the target relations gives the family obtained by the degree-zero lift. Hence all lifts yield the same map. In the left-module case the induced map between the product kernels is exactly the representing Hom map, by the same evaluation of the degree-zero matrix; its direction reverses.</p>
+<p>Applying <span class="math" data-tex="\(F\)">\(F\)</span> to each such commuting pair proves naturality in the module. Taking its arrow to be the identity proves compatibility of different presentations. An equivariant arrow of internal objects commutes with all matrix coefficients, so its finite diagrams commute too, proving naturality in <span class="math" data-tex="\(X\)">\(X\)</span>. Second actions are particular module endomorphisms, and this same naturality proves equivariance. Thus (7.1) and (7.2) are canonical with all the stated compatibilities.</p>
+<p>For the failures, let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(A=k[\epsilon]/(\epsilon^2)\)">\(A=k[\epsilon]/(\epsilon^2)\)</span>, and let <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> be finite-dimensional left <span class="math" data-tex="\(A\)">\(A\)</span>-modules. Take <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span>, <span class="math" data-tex="\(X=A\)">\(X=A\)</span>, with <span class="math" data-tex="\(t\)">\(t\)</span> acting by multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, and take the finite module presentation <span class="math" data-tex="\(R\xrightarrow{t}R\to R/(t)\to0\)">\(R\xrightarrow{t}R\to R/(t)\to0\)</span>.</p>
+<p>The <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive functor <span class="math" data-tex="\(F_1=\operatorname{Hom}_A(k,-)\)">\(F_1=\operatorname{Hom}_A(k,-)\)</span> sends <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(\epsilon A\cong k\)">\(\epsilon A\cong k\)</span>, on which <span class="math" data-tex="\(t\)">\(t\)</span> is zero. The tensor cokernel in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is <span class="math" data-tex="\(A/\epsilon A\cong k\)">\(A/\epsilon A\cong k\)</span>, so both sides of the proposed (7.1) have dimension one. But its canonical comparison is zero: the quotient <span class="math" data-tex="\(q: A\to k\)">\(q: A\to k\)</span> kills <span class="math" data-tex="\(\epsilon A\)">\(\epsilon A\)</span>, so <span class="math" data-tex="\(F_1q: \epsilon A\to k\)">\(F_1q: \epsilon A\to k\)</span> is zero. The comparison from the cokernel of <span class="math" data-tex="\(F_1(\epsilon)=0\)">\(F_1(\epsilon)=0\)</span> to <span class="math" data-tex="\(F_1(\operatorname{coker}\epsilon)\)">\(F_1(\operatorname{coker}\epsilon)\)</span> is therefore zero. Thus even equality of dimensions does not repair lack of right exactness.</p>
+<p>For (7.2), take the <span class="math" data-tex="\(k\)">\(k\)</span>-linear additive functor <span class="math" data-tex="\(F_2=k\otimes_A-\)">\(F_2=k\otimes_A-\)</span>. The internal Hom object is <span class="math" data-tex="\(\ker(\epsilon: A\to A)=\epsilon A\cong k\)">\(\ker(\epsilon: A\to A)=\epsilon A\cong k\)</span>. Both <span class="math" data-tex="\(F_2(\epsilon A)\)">\(F_2(\epsilon A)\)</span> and the kernel of the zero operator on <span class="math" data-tex="\(F_2A=k\)">\(F_2A=k\)</span> are one-dimensional. The canonical comparison is again zero: tensoring the inclusion <span class="math" data-tex="\(\epsilon A\hookrightarrow A\)">\(\epsilon A\hookrightarrow A\)</span> sends the class of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to its zero class in <span class="math" data-tex="\(A/\epsilon A\)">\(A/\epsilon A\)</span>. Thus <span class="math" data-tex="\(F_2\)">\(F_2\)</span> does not preserve this kernel, and mere additivity cannot replace left exactness.</p>
+<h2 id="8-universal-scalars-as-a-companion-construction"><span id="1-scalars-and-the-center-of-a-category"></span>8. Universal scalars as a companion construction</h2>
+<p>An additive category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is <em><span class="math" data-tex="\(k\)">\(k\)</span>-linear</em> when each morphism group is a <span class="math" data-tex="\(k\)">\(k\)</span>-module and composition is <span class="math" data-tex="\(k\)">\(k\)</span>-bilinear. A <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor preserves these scalar multiplications.</p>
+<p>There is a useful intrinsic description. Give the ring of natural endomorphisms of the identity functor pointwise addition and composition. For two such endomorphisms <span class="math" data-tex="\(\eta,\theta\)">\(\eta,\theta\)</span>, naturality of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> applied to the arrow <span class="math" data-tex="\(\theta_X\)">\(\theta_X\)</span> gives
+<span class="math math-display" data-tex="\[
+\eta_X\theta_X=\theta_X\eta_X.
+\]">\[
+\eta_X\theta_X=\theta_X\eta_X.
+\]</span>
+Thus this ring is commutative. Its elements are the endomorphisms that commute with every arrow of the category, rather than only with endomorphisms of one object.</p>
+<p><strong>Proposition 8.1.</strong> A <span class="math" data-tex="\(k\)">\(k\)</span>-linear structure on an additive category is equivalent to a unital ring homomorphism
+<span class="math math-display" data-tex="\[
+k\longrightarrow\operatorname{End}(\operatorname{id}_{\mathcal C}).
+\]">\[
+k\longrightarrow\operatorname{End}(\operatorname{id}_{\mathcal C}).
+\]</span>
+For every object <span class="math" data-tex="\(X\)">\(X\)</span>, it makes <span class="math" data-tex="\(\operatorname{End}_{\mathcal C}(X)\)">\(\operatorname{End}_{\mathcal C}(X)\)</span> a <span class="math" data-tex="\(k\)">\(k\)</span>-algebra with central scalars.</p>
+<p><strong>Proof.</strong> From a linear structure, assign to <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span> the family <span class="math" data-tex="\(a1_X\)">\(a1_X\)</span>. Bilinearity gives <span class="math" data-tex="\(f(a1_X)=(a1_Y)f\)">\(f(a1_X)=(a1_Y)f\)</span> for every <span class="math" data-tex="\(f: X\to Y\)">\(f: X\to Y\)</span>, so the family is natural. The module laws and bilinearity prove the additive, multiplicative and unit laws for the ring map.</p>
+<p>Conversely, let the image of <span class="math" data-tex="\(a\)">\(a\)</span> have components <span class="math" data-tex="\(\eta_X(a)\)">\(\eta_X(a)\)</span>. Define <span class="math" data-tex="\(af=\eta_Y(a)f=f\eta_X(a)\)">\(af=\eta_Y(a)f=f\eta_X(a)\)</span>. The equality is naturality. Additivity and multiplication of the ring map give the module laws on each morphism group; composition is bilinear by the same equality. Starting with either description and returning to it changes nothing: in a linear category <span class="math" data-tex="\(af=(a1_Y)f\)">\(af=(a1_Y)f\)</span>, and in the constructed structure <span class="math" data-tex="\(a1_X=\eta_X(a)\)">\(a1_X=\eta_X(a)\)</span>. Centrality in each endomorphism ring follows by taking <span class="math" data-tex="\(f\)">\(f\)</span> to be an endomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-graded-exercises-with-full-solutions"><span id="8-graded-exercises-with-full-solutions"></span>9. Graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (foundation: Jordan blocks).</strong> For the nilpotent block <span class="math" data-tex="\(J_m\)">\(J_m\)</span> with <span class="math" data-tex="\(Te_1=0\)">\(Te_1=0\)</span> and <span class="math" data-tex="\(Te_i=e_{i-1}\)">\(Te_i=e_{i-1}\)</span>, compute the rank of <span class="math" data-tex="\(\ker T^n\to\operatorname{coker}T^n\)">\(\ker T^n\to\operatorname{coker}T^n\)</span>, for every <span class="math" data-tex="\(m,n\geq1\)">\(m,n\geq1\)</span>. When is it an isomorphism? Extend the calculation to a finite direct sum of such blocks.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(s=\min(m,n)\)">\(s=\min(m,n)\)</span>. The kernel is spanned by <span class="math" data-tex="\(e_1,\ldots,e_s\)">\(e_1,\ldots,e_s\)</span>, and the image of <span class="math" data-tex="\(T^n\)">\(T^n\)</span> is spanned by <span class="math" data-tex="\(e_1,\ldots,e_{m-s}\)">\(e_1,\ldots,e_{m-s}\)</span>. A basis of the quotient consists of <span class="math" data-tex="\([e_{m-s+1}],\ldots,[e_m]\)">\([e_{m-s+1}],\ldots,[e_m]\)</span>. The surviving vectors from the kernel have indices <span class="math" data-tex="\(m-s+1\leq i\leq s\)">\(m-s+1\leq i\leq s\)</span>; therefore the rank is <span class="math" data-tex="\(\max(0,2s-m)\)">\(\max(0,2s-m)\)</span>. Kernel and quotient both have dimension <span class="math" data-tex="\(s\)">\(s\)</span>. The comparison is invertible exactly when this rank equals <span class="math" data-tex="\(s\)">\(s\)</span>, which, since <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, is equivalent to <span class="math" data-tex="\(s=m\)">\(s=m\)</span>, or <span class="math" data-tex="\(n\geq m\)">\(n\geq m\)</span>. On a finite direct sum, kernel, quotient and comparison all decompose by blocks. The ranks add; the map is invertible exactly when <span class="math" data-tex="\(n\)">\(n\)</span> is at least the length of every block.</p>
+<p><strong>Exercise 2 (intermediate: larger matrix actions).</strong> Generalize the matrix-unit equivalence to <span class="math" data-tex="\(M_d(k)\)">\(M_d(k)\)</span> for <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, in any <span class="math" data-tex="\(k\)">\(k\)</span>-linear abelian category. Give both comparison maps and determine all equivariant arrows.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(u_{ij}=\xi(E_{ij})\)">\(u_{ij}=\xi(E_{ij})\)</span> and split <span class="math" data-tex="\(u_{11}=ip\)">\(u_{11}=ip\)</span> with <span class="math" data-tex="\(pi=1\)">\(pi=1\)</span>, as in Section 6. Set <span class="math" data-tex="\(\alpha:(eX)^d\to X\)">\(\alpha:(eX)^d\to X\)</span> to have components <span class="math" data-tex="\(u_{i1}i\)">\(u_{i1}i\)</span>, and set <span class="math" data-tex="\(\beta:X\to(eX)^d\)">\(\beta:X\to(eX)^d\)</span> to have components <span class="math" data-tex="\(pu_{1i}\)">\(pu_{1i}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\alpha\beta=\sum_i u_{i1}ip u_{1i}
+=\sum_i u_{ii}=1_X.
+\]">\[
+\alpha\beta=\sum_i u_{i1}ip u_{1i}
+=\sum_i u_{ii}=1_X.
+\]</span>
+The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>-component of <span class="math" data-tex="\(\beta\alpha\)">\(\beta\alpha\)</span> is <span class="math" data-tex="\(pu_{1i}u_{j1}i=\delta_{ij}pi=\delta_{ij}\)">\(pu_{1i}u_{j1}i=\delta_{ij}pi=\delta_{ij}\)</span>. In these coordinates each <span class="math" data-tex="\(u_{ij}\)">\(u_{ij}\)</span> is the corresponding standard matrix operator, proving equivariance. An arrow commuting with all diagonal units has only diagonal entries, and commuting with every <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> identifies all of them with one arrow <span class="math" data-tex="\(eX\to eY\)">\(eX\to eY\)</span>. Conversely, any such arrow repeated <span class="math" data-tex="\(d\)">\(d\)</span> times commutes with every matrix. Thus <span class="math" data-tex="\(X\mapsto eX\)">\(X\mapsto eX\)</span> is fully faithful, and <span class="math" data-tex="\(V\mapsto V^d\)">\(V\mapsto V^d\)</span> is its inverse up to the displayed natural comparisons. All operations are finite; <span class="math" data-tex="\(d=1\)">\(d=1\)</span> gives the identity equivalence.</p>
+<p><strong>Exercise 3 (advanced: units and associativity).</strong> Prove canonical identifications <span class="math" data-tex="\(R\otimes_R X\simeq X\)">\(R\otimes_R X\simeq X\)</span> and <span class="math" data-tex="\(H_R(R,X)\simeq X\)">\(H_R(R,X)\simeq X\)</span>. For an <span class="math" data-tex="\((S,R)\)">\((S,R)\)</span>-bimodule <span class="math" data-tex="\(N\)">\(N\)</span>, prove that removing a tensor unit before or after the associativity comparison of Proposition 6.3 gives the same map.</p>
+<p><strong>Solution.</strong> Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> identifies a right-linear map <span class="math" data-tex="\(R\to\operatorname{Hom}(X,Y)\)">\(R\to\operatorname{Hom}(X,Y)\)</span> with an arbitrary map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>: the inverse sends <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(h\xi_X(r)\)">\(h\xi_X(r)\)</span>. Likewise a left-linear map <span class="math" data-tex="\(R\to\operatorname{Hom}(Y,X)\)">\(R\to\operatorname{Hom}(Y,X)\)</span> is determined by its value at <span class="math" data-tex="\(1\)">\(1\)</span>, with inverse <span class="math" data-tex="\(r\mapsto\xi_X(r)h\)">\(r\mapsto\xi_X(r)h\)</span>. Formulas (4.1) and (4.2) therefore represent <span class="math" data-tex="\(X\)">\(X\)</span>, and uniqueness gives the stated canonical identifications. They are natural, and any additional commuting action is respected because evaluation commutes with that action. Ordinary balanced tensors have the unit maps <span class="math" data-tex="\(s\otimes n\mapsto sn\)">\(s\otimes n\mapsto sn\)</span> and <span class="math" data-tex="\(n\otimes r\mapsto nr\)">\(n\otimes r\mapsto nr\)</span>, with inverses <span class="math" data-tex="\(n\mapsto1\otimes n\)">\(n\mapsto1\otimes n\)</span> and <span class="math" data-tex="\(n\mapsto n\otimes1\)">\(n\mapsto n\otimes1\)</span>. Each associativity comparison in Section 6 acts on represented maps by evaluation of the same balanced function. Evaluation followed by either unit map gives the same function, so uniqueness of the represented arrow proves equality of the object comparisons. This checks the unit triangles as actual maps.</p>
+<p><strong>Exercise 4 (expert: eliminate a matrix relation).</strong> For <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span>, present a right module by the columns <span class="math" data-tex="\((t,0)\)">\((t,0)\)</span> and <span class="math" data-tex="\((1,t)\)">\((1,t)\)</span>, and a left module by the analogous left relations. Identify both with <span class="math" data-tex="\(R/(t^2)\)">\(R/(t^2)\)</span>. For <span class="math" data-tex="\(t\)">\(t\)</span> acting as <span class="math" data-tex="\(T\)">\(T\)</span> on an internal object, give explicit inverse comparisons between the tensor matrix cokernel and <span class="math" data-tex="\(\operatorname{coker}T^2\)">\(\operatorname{coker}T^2\)</span>, and between the Hom matrix kernel and <span class="math" data-tex="\(\ker T^2\)">\(\ker T^2\)</span>.</p>
+<p><strong>Solution.</strong> The relations are <span class="math" data-tex="\(e_1t=0\)">\(e_1t=0\)</span> and <span class="math" data-tex="\(e_1+e_2t=0\)">\(e_1+e_2t=0\)</span> on the right; hence <span class="math" data-tex="\(e_1=-e_2t\)">\(e_1=-e_2t\)</span> and <span class="math" data-tex="\(e_2t^2=0\)">\(e_2t^2=0\)</span>. Sending <span class="math" data-tex="\(e_2\)">\(e_2\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(e_1\)">\(e_1\)</span> to <span class="math" data-tex="\(-t\)">\(-t\)</span> gives the quotient <span class="math" data-tex="\(R/(t^2)\)">\(R/(t^2)\)</span>; its inverse sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(e_2\)">\(e_2\)</span>. The same elimination on the left gives the left-module identification.</p>
+<p>The tensor matrix is <span class="math" data-tex="\(D(v,w)=(Tv+w,Tw)\)">\(D(v,w)=(Tv+w,Tw)\)</span>, notation for the two components of a biproduct arrow. The arrow <span class="math" data-tex="\((x,y)\mapsto[y-Tx]\)">\((x,y)\mapsto[y-Tx]\)</span> to <span class="math" data-tex="\(\operatorname{coker}T^2\)">\(\operatorname{coker}T^2\)</span> kills <span class="math" data-tex="\(D\)">\(D\)</span>, since its composite is <span class="math" data-tex="\([-T^2v]\)">\([-T^2v]\)</span>. It induces a map out of <span class="math" data-tex="\(\operatorname{coker}D\)">\(\operatorname{coker}D\)</span>, whose inverse takes <span class="math" data-tex="\([z]\)">\([z]\)</span> to the class of <span class="math" data-tex="\((0,z)\)">\((0,z)\)</span>. This is well defined: <span class="math" data-tex="\((0,T^2v)=D(-v,Tv)\)">\((0,T^2v)=D(-v,Tv)\)</span>. The composites are identities because <span class="math" data-tex="\((x,y)-(0,y-Tx)=(x,Tx)=D(0,x)\)">\((x,y)-(0,y-Tx)=(x,Tx)=D(0,x)\)</span>, while the composite on <span class="math" data-tex="\([z]\)">\([z]\)</span> is visibly <span class="math" data-tex="\([z]\)">\([z]\)</span>. These are equations of biproduct arrows and descend by the cokernel property, so they work without elements in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>The Hom matrix is <span class="math" data-tex="\(E(x,y)=(Tx,x+Ty)\)">\(E(x,y)=(Tx,x+Ty)\)</span>. Its kernel has <span class="math" data-tex="\(x=-Ty\)">\(x=-Ty\)</span> and <span class="math" data-tex="\(T^2y=0\)">\(T^2y=0\)</span>. Projection to <span class="math" data-tex="\(y\)">\(y\)</span> gives <span class="math" data-tex="\(\ker E\to\ker T^2\)">\(\ker E\to\ker T^2\)</span>, with inverse <span class="math" data-tex="\(y\mapsto(-Ty,y)\)">\(y\mapsto(-Ty,y)\)</span>. Substitution verifies both composites and both kernel factorizations. These are the specific comparisons induced by the module identifications, not merely some isomorphisms between objects of equal size.</p>
+<h2 id="10-references"><span id="9-references"></span>10. References</h2>
+<p><a href="https://stacks.math.columbia.edu/tag/00CV">The Stacks Project, Tensor products</a> gives the ordinary commutative-module foundations. <a href="local-module-categories-and-morita-equivalence.html">Local module categories and Morita equivalence</a> develops sheaf-bimodule descent. The pointwise matrix calculation here has its stated finite scope.</p>
+</main></body></html>

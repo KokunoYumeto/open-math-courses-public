@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equivariant and twisted D-modules · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/equivariant-and-twisted-d-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="equivariant-and-twisted-d-modules">Equivariant and twisted D-modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A symmetry of a differential equation can mean two different things. The group may transport the equation compatibly, or that transport may itself be horizontal in the group direction. The second condition is what allows the equation to live on a quotient stack. A twist changes another part of the data: it changes how local differential operators are identified when a line bundle changes frame.</p>
+<p>We work over an algebraically closed field <span class="math" data-tex="$k$">$k$</span> of characteristic zero. Varieties are smooth, and left D-modules are quasi-coherent over the structure sheaf. Groups are smooth algebraic groups of finite type; the Harish-Chandra and derived quotient constructions below use affine groups. We use ordinary, unshifted smooth pullback for the abelian descent category. For a smooth map of relative dimension <span class="math" data-tex="$r$">$r$</span> it equals <span class="math" data-tex="$f^![-r]$">$f^![-r]$</span> in the conventions of Inverse images. Derived descent retains the homotopies as well as these transition maps.</p>
+<p>The background is group actions and rational representations, faithfully flat descent for quasi-coherent modules, and the quotient stack defined by its torsors. The Weyl algebra computations use The Riemann-Hilbert correspondence.</p>
+<h2 id="1-when-equivariance-is-horizontal">1. When equivariance is horizontal</h2>
+<p>Let <span class="math" data-tex="$G$">$G$</span> act on <span class="math" data-tex="$X$">$X$</span>. Its action on functions is
+<span class="math math-display" data-tex="\[
+(g\cdot f)(x)=f(g^{-1}x).
+\]">\[
+(g\cdot f)(x)=f(g^{-1}x).
+\]</span>
+Write <span class="math" data-tex="$\mu:\mathfrak g\to\Gamma(X,T_X)$">$\mu:\mathfrak g\to\Gamma(X,T_X)$</span> for the differentiated action on functions. This is a Lie algebra homomorphism. With this convention <span class="math" data-tex="$\mu(\xi)$">$\mu(\xi)$</span> is the negative of the vector field obtained by differentiating <span class="math" data-tex="$\exp(t\xi)x$">$\exp(t\xi)x$</span>. In particular, for scaling on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span>,
+<span class="math math-display" data-tex="\[
+\mu(1)=-x\partial_x.                                      \tag{1.1}
+\]">\[
+\mu(1)=-x\partial_x.                                      \tag{1.1}
+\]</span></p>
+<p>A <strong>weakly equivariant</strong> D-module is an algebraic <span class="math" data-tex="$G$">$G$</span>-linearization of its quasi-coherent <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>-module, compatible with the transported D-action. Thus
+<span class="math math-display" data-tex="\[
+g(Pm)=(gP)(gm).
+\]">\[
+g(Pm)=(gP)(gm).
+\]</span>
+The linearization differentiates to an action <span class="math" data-tex="$d\rho$">$d\rho$</span> of <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span> on sections. Both <span class="math" data-tex="$d\rho(\xi)$">$d\rho(\xi)$</span> and <span class="math" data-tex="$\mu(\xi)$">$\mu(\xi)$</span> acting through <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> satisfy the same Leibniz rule. Weak compatibility also gives
+<span class="math math-display" data-tex="\[
+[d\rho(\xi),P]=[\mu(\xi),P].
+\]">\[
+[d\rho(\xi),P]=[\mu(\xi),P].
+\]</span>
+Consequently their difference
+<span class="math math-display" data-tex="\[
+\xi^\natural=d\rho(\xi)-\mu(\xi)                           \tag{1.2}
+\]">\[
+\xi^\natural=d\rho(\xi)-\mu(\xi)                           \tag{1.2}
+\]</span>
+is D-linear. The differences form a Lie algebra action: expand their bracket, use the preceding identity with <span class="math" data-tex="$P=\mu(\eta)$">$P=\mu(\eta)$</span>, and obtain
+<span class="math" data-tex="$[\xi^\natural,\eta^\natural]=[\xi,\eta]^\natural$">$[\xi^\natural,\eta^\natural]=[\xi,\eta]^\natural$</span>.</p>
+<p>The module is <strong>strongly equivariant</strong> if every <span class="math" data-tex="$\xi^\natural$">$\xi^\natural$</span> is zero. We will use “equivariant” in this strong sense. This is the condition in Beilinson–Drinfeld, §7.6.10.</p>
+<p>For example <span class="math" data-tex="$\mathcal O_G$">$\mathcal O_G$</span>, with its usual differentiation and left translation, is strongly equivariant. On a point, however, the D-action of <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span> is zero. A weakly equivariant D-module on a point is any rational <span class="math" data-tex="$G$">$G$</span>-representation; it is strong precisely when its differentiated representation is zero.</p>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="$G$">$G$</span> is connected, forgetting the strong linearization is fully faithful.</p>
+<p><strong>Proof.</strong> First observe a useful relative horizontality fact. For any quasi-coherent module <span class="math" data-tex="$M$">$M$</span> on <span class="math" data-tex="$X$">$X$</span>, a map between two pullbacks from <span class="math" data-tex="$X$">$X$</span> to <span class="math" data-tex="$G\times X$">$G\times X$</span> which commutes with differentiation in the <span class="math" data-tex="$G$">$G$</span> direction is determined by its restriction to <span class="math" data-tex="$\{1\}\times X$">$\{1\}\times X$</span>.</p>
+<p>To check this, take affine opens <span class="math" data-tex="$U\subset X$">$U\subset X$</span>, <span class="math" data-tex="$W\subset G$">$W\subset G$</span>. The image of any local section is a finite sum
+<span class="math" data-tex="$\sum_i f_i\otimes m_i$">$\sum_i f_i\otimes m_i$</span>, with <span class="math" data-tex="$f_i\in\mathcal O(W)$">$f_i\in\mathcal O(W)$</span> and with the <span class="math" data-tex="$m_i$">$m_i$</span> linearly independent over <span class="math" data-tex="$k$">$k$</span>. Differentiating in <span class="math" data-tex="$G$">$G$</span> makes every <span class="math" data-tex="$df_i$">$df_i$</span> zero. A regular function with zero differential on a smooth connected variety in characteristic zero is constant: its image in the function field has zero differential, hence is algebraic over <span class="math" data-tex="$k$">$k$</span>, hence belongs to <span class="math" data-tex="$k$">$k$</span>. A connected smooth algebraic group is irreducible, so the constants agree on overlapping opens. This proves the fact without a finite-rank hypothesis on <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>Now write <span class="math" data-tex="$a,p:G\times X\rightrightarrows X$">$a,p:G\times X\rightrightarrows X$</span> for action and projection. A strong linearization is a D-linear isomorphism between their unshifted smooth pullbacks. Indeed weak compatibility is D-linearity in the <span class="math" data-tex="$X$">$X$</span> directions, and (1.2) is exactly the remaining condition in the <span class="math" data-tex="$G$">$G$</span> directions. Those directions are generated by translated elements of <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>.</p>
+<p>Given a D-linear map <span class="math" data-tex="$u:M\to N$">$u:M\to N$</span>, compare the two maps obtained by pulling <span class="math" data-tex="$u$">$u$</span> back and using the two linearizations. After using one linearization to identify action and projection pullbacks, their difference is horizontal along <span class="math" data-tex="$G$">$G$</span>. Its restriction at the identity is zero. The relative fact shows that it vanishes. Thus <span class="math" data-tex="$u$">$u$</span> is equivariant. Faithfulness is immediate. Applying the same argument to the identity of <span class="math" data-tex="$M$">$M$</span> shows that two strong linearizations on <span class="math" data-tex="$M$">$M$</span> coincide. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Existence remains a condition. A module need not admit such a linearization. Connectedness also matters: for a finite group on a point, any representation is strong, and different representations can have the same underlying vector space.</p>
+<h2 id="2-the-quotient-category">2. The quotient category</h2>
+<p>Put <span class="math" data-tex="$\mathcal Y=[X/G]$">$\mathcal Y=[X/G]$</span>. Its atlas <span class="math" data-tex="$q:X\to\mathcal Y$">$q:X\to\mathcal Y$</span> has groupoid
+<span class="math math-display" data-tex="\[
+X\times_{\mathcal Y}X=G\times X,\qquad
+X\times_{\mathcal Y}X\times_{\mathcal Y}X=G\times G\times X.
+\]">\[
+X\times_{\mathcal Y}X=G\times X,\qquad
+X\times_{\mathcal Y}X\times_{\mathcal Y}X=G\times G\times X.
+\]</span>
+A D-module on <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> in the abelian sense means cartesian D-module data on smooth charts, using unshifted smooth pullback. In particular its datum on this atlas is a D-module <span class="math" data-tex="$M$">$M$</span> on <span class="math" data-tex="$X$">$X$</span> with a D-linear isomorphism
+<span class="math math-display" data-tex="\[
+p^\dagger M\simeq a^\dagger M                              \tag{2.1}
+\]">\[
+p^\dagger M\simeq a^\dagger M                              \tag{2.1}
+\]</span>
+satisfying the identity and multiplication cocycles.</p>
+<p><strong>Theorem 2.1.</strong> There is an equivalence
+<span class="math math-display" data-tex="\[
+\operatorname{Mod}(\mathcal D_{[X/G]})
+\simeq\operatorname{Mod}_G(\mathcal D_X).                    \tag{2.2}
+\]">\[
+\operatorname{Mod}(\mathcal D_{[X/G]})
+\simeq\operatorname{Mod}_G(\mathcal D_X).                    \tag{2.2}
+\]</span>
+If <span class="math" data-tex="$X\to Y$">$X\to Y$</span> is a principal <span class="math" data-tex="$G$">$G$</span>-bundle with smooth variety quotient <span class="math" data-tex="$Y$">$Y$</span>, this category is <span class="math" data-tex="$\operatorname{Mod}(\mathcal D_Y)$">$\operatorname{Mod}(\mathcal D_Y)$</span>.</p>
+<p><strong>Proof.</strong> Forgetting derivatives in the <span class="math" data-tex="$G$">$G$</span> direction in (2.1) gives an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-linearization with the group cocycle. D-linearity in the <span class="math" data-tex="$X$">$X$</span> directions gives weak compatibility. D-linearity in the <span class="math" data-tex="$G$">$G$</span> directions, differentiated at the identity, gives <span class="math" data-tex="$d\rho=\mu$">$d\rho=\mu$</span>. Conversely these two conditions give D-linearity in every direction on <span class="math" data-tex="$G\times X$">$G\times X$</span>, so a strong linearization supplies (2.1).</p>
+<p>This gives inverse functors on objects and morphisms for the displayed atlas. To see that it really defines data on all charts, refine any two smooth charts by their fiber product. Quasi-coherent descent glues the modules and maps. Derivations descend because the local actions agree after pullback; their Leibniz rules and bracket relations can be checked on a faithfully flat cover. Smooth maps are locally factorizable into an étale map and a projection, where the horizontal pullback action is the usual one. Thus atlas refinements produce the same cartesian category.</p>
+<p>For a principal bundle <span class="math" data-tex="$[X/G]\simeq Y$">$[X/G]\simeq Y$</span>: a map to the quotient stack is a <span class="math" data-tex="$G$">$G$</span>-torsor together with an equivariant map to <span class="math" data-tex="$X$">$X$</span>, which is precisely the pullback of <span class="math" data-tex="$X\to Y$">$X\to Y$</span>. Equivalently, apply the same effective descent argument directly to <span class="math" data-tex="$X\to Y$">$X\to Y$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This does <strong>not</strong> construct the stack category as modules over an ordinary sheaf of rings obtained by descending <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>. Smooth pullback of a ring of differential operators is not the ring of differential operators upstairs. Beilinson–Drinfeld, §§1.1.3–1.1.5, distinguishes these constructions; its additional “good stack” hypothesis concerns the particular ring of operators it constructs. The cartesian D-module category (2.2) does not require that hypothesis.</p>
+<p>There is also a derived distinction. The derived D-module category of <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span> uses homotopy-coherent smooth descent. It need not equal the derived category of the abelian category in (2.2). Section 6 gives a concrete difference.</p>
+<h2 id="3-twisting-operators-by-a-line-bundle">3. Twisting operators by a line bundle</h2>
+<p>Let <span class="math" data-tex="$L$">$L$</span> be a line bundle and <span class="math" data-tex="$\lambda\in k$">$\lambda\in k$</span>. Choose local frames <span class="math" data-tex="$e_i$">$e_i$</span> and write
+<span class="math" data-tex="$e_j=g_{ij}e_i$">$e_j=g_{ij}e_i$</span>. On overlaps identify copies of <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> by
+<span class="math math-display" data-tex="\[
+f\longmapsto f,\qquad
+\xi\longmapsto \xi+\lambda\,g_{ij}^{-1}\xi(g_{ij}).           \tag{3.1}
+\]">\[
+f\longmapsto f,\qquad
+\xi\longmapsto \xi+\lambda\,g_{ij}^{-1}\xi(g_{ij}).           \tag{3.1}
+\]</span>
+Here <span class="math" data-tex="$\xi$">$\xi$</span> is a vector field. There is no chosen logarithm; <span class="math" data-tex="$d\log g$">$d\log g$</span> means <span class="math" data-tex="$g^{-1}dg$">$g^{-1}dg$</span>.</p>
+<p><strong>Theorem 3.1.</strong> These identifications define a sheaf of filtered rings <span class="math" data-tex="$\mathcal D_L^\lambda$">$\mathcal D_L^\lambda$</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{gr}\mathcal D_L^\lambda\simeq
+\operatorname{Sym}_{\mathcal O_X}T_X.
+\]">\[
+\operatorname{gr}\mathcal D_L^\lambda\simeq
+\operatorname{Sym}_{\mathcal O_X}T_X.
+\]</span>
+For <span class="math" data-tex="$n\in\mathbb Z$">$n\in\mathbb Z$</span>,
+<span class="math math-display" data-tex="\[
+\mathcal D_L^n\simeq
+\operatorname{Diff}(L^{\otimes n},L^{\otimes n})
+\simeq L^{\otimes n}\otimes_{\mathcal O_X}\mathcal D_X
+       \otimes_{\mathcal O_X}L^{\otimes(-n)},                \tag{3.2}
+\]">\[
+\mathcal D_L^n\simeq
+\operatorname{Diff}(L^{\otimes n},L^{\otimes n})
+\simeq L^{\otimes n}\otimes_{\mathcal O_X}\mathcal D_X
+       \otimes_{\mathcal O_X}L^{\otimes(-n)},                \tag{3.2}
+\]</span>
+with the composition multiplication transported to the last expression.</p>
+<p><strong>Proof.</strong> Adding a function to a vector field preserves its commutator with functions. To check the bracket of two vector fields, put <span class="math" data-tex="$\alpha=\lambda\,d\log g$">$\alpha=\lambda\,d\log g$</span>. Then
+<span class="math math-display" data-tex="\[
+[\xi+\alpha(\xi),\eta+\alpha(\eta)]
+=[\xi,\eta]+\xi\alpha(\eta)-\eta\alpha(\xi)
+=[\xi,\eta]+\alpha([\xi,\eta]),
+\]">\[
+[\xi+\alpha(\xi),\eta+\alpha(\eta)]
+=[\xi,\eta]+\xi\alpha(\eta)-\eta\alpha(\xi)
+=[\xi,\eta]+\alpha([\xi,\eta]),
+\]</span>
+since <span class="math" data-tex="$d\alpha=0$">$d\alpha=0$</span>. Thus (3.1) preserves all defining relations of <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>. Its inverse uses <span class="math" data-tex="$g^{-1}$">$g^{-1}$</span>. On triple overlaps <span class="math" data-tex="$g_{ik}=g_{ij}g_{jk}$">$g_{ik}=g_{ij}g_{jk}$</span> and logarithmic differentials add, proving the cocycle. The maps preserve order and fix principal symbols. PBW therefore identifies the associated graded ring as claimed.</p>
+<p>For an integer <span class="math" data-tex="$n$">$n$</span>, a section <span class="math" data-tex="$s=f_i e_i^n=f_j e_j^n$">$s=f_i e_i^n=f_j e_j^n$</span> satisfies <span class="math" data-tex="$f_i=g_{ij}^n f_j$">$f_i=g_{ij}^n f_j$</span>. An operator <span class="math" data-tex="$P_i$">$P_i$</span> on its coefficients becomes
+<span class="math" data-tex="$P_j=g_{ij}^{-n}P_i g_{ij}^n$">$P_j=g_{ij}^{-n}P_i g_{ij}^n$</span>. On vector fields this is exactly (3.1) with <span class="math" data-tex="$\lambda=n$">$\lambda=n$</span>. This proves (3.2), including negative <span class="math" data-tex="$n$">$n$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A <strong><span class="math" data-tex="$\lambda$">$\lambda$</span>-twisted D-module</strong> is a module over this ring, quasi-coherent over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. For integer <span class="math" data-tex="$n$">$n$</span>, tensoring with <span class="math" data-tex="$L^n$">$L^n$</span> gives an equivalence from ordinary D-modules to <span class="math" data-tex="$\mathcal D_L^n$">$\mathcal D_L^n$</span>-modules; its inverse tensors with <span class="math" data-tex="$L^{-n}$">$L^{-n}$</span>. This is Morita equivalence, even when the line bundle has no flat connection.</p>
+<p>The punctured line bundle explains arbitrary <span class="math" data-tex="$\lambda$">$\lambda$</span>. Let <span class="math" data-tex="$\pi:L^\times\to X$">$\pi:L^\times\to X$</span>, and in a frame write a nonzero vector as <span class="math" data-tex="$t_i e_i$">$t_i e_i$</span>. Its vertical Euler field is <span class="math" data-tex="$E=t_i\partial_{t_i}$">$E=t_i\partial_{t_i}$</span>. Fiber-scaling invariant operators locally form
+<span class="math math-display" data-tex="\[
+\bigl(\pi_*\mathcal D_{L^\times}\bigr)^{\mathbb G_m}
+\simeq\mathcal D_{U_i}[E].
+\]">\[
+\bigl(\pi_*\mathcal D_{L^\times}\bigr)^{\mathbb G_m}
+\simeq\mathcal D_{U_i}[E].
+\]</span>
+Indeed a weight-zero fiber monomial is <span class="math" data-tex="$t^b\partial_t^b$">$t^b\partial_t^b$</span>, a falling-factorial polynomial in <span class="math" data-tex="$E$">$E$</span>; Laurent coefficients allow the same reduction for every invariant operator. The element <span class="math" data-tex="$E$">$E$</span> is central in this invariant ring.</p>
+<p>Since <span class="math" data-tex="$t_i=g_{ij}t_j$">$t_i=g_{ij}t_j$</span>, differentiation while holding <span class="math" data-tex="$t_i$">$t_i$</span> fixed gives
+<span class="math math-display" data-tex="\[
+\xi_i=\xi_j-(d\log g_{ij})(\xi)E.
+\]">\[
+\xi_i=\xi_j-(d\log g_{ij})(\xi)E.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+\mathcal D_L^\lambda=
+\bigl(\pi_*\mathcal D_{L^\times}\bigr)^{\mathbb G_m}/(E+\lambda).
+                                                               \tag{3.3}
+\]">\[
+\mathcal D_L^\lambda=
+\bigl(\pi_*\mathcal D_{L^\times}\bigr)^{\mathbb G_m}/(E+\lambda).
+                                                               \tag{3.3}
+\]</span>
+The minus sign in the prescribed Euler eigenvalue makes (3.3) agree with (3.2): coefficients of sections of <span class="math" data-tex="$L^n$">$L^n$</span> are homogeneous functions of fiber weight <span class="math" data-tex="$-n$">$-n$</span>.</p>
+<p>One can describe modules by twisted descent on <span class="math" data-tex="$L^\times$">$L^\times$</span>, with this prescribed scalar infinitesimal vertical action. Mere local finiteness of <span class="math" data-tex="$E$">$E$</span>, or allowing a nilpotent part at eigenvalue <span class="math" data-tex="$-\lambda$">$-\lambda$</span>, is a larger monodromic category and is not the fixed ring quotient (3.3).</p>
+<p>In particular <span class="math" data-tex="$\mathcal D_{\omega_X}^{1/2}$">$\mathcal D_{\omega_X}^{1/2}$</span> exists whether or not <span class="math" data-tex="$\omega_X$">$\omega_X$</span> has a square root. The notation specifies an operator twist, not an assertion that a fractional tensor power exists as a line bundle.</p>
+<h3 id="operators-on-the-projective-line">Operators on the projective line</h3>
+<p>Take <span class="math" data-tex="$L=\mathcal O(1)$">$L=\mathcal O(1)$</span>, with coordinate <span class="math" data-tex="$x$">$x$</span> on one chart and <span class="math" data-tex="$y=x^{-1}$">$y=x^{-1}$</span> on the other. Frames satisfy <span class="math" data-tex="$e_\infty=x e_0$">$e_\infty=x e_0$</span>. Formula (3.1) gives
+<span class="math math-display" data-tex="\[
+\partial_x=-y^2\partial_y+\lambda y
+\quad\text{in }\mathcal D_L^\lambda.                        \tag{3.4}
+\]">\[
+\partial_x=-y^2\partial_y+\lambda y
+\quad\text{in }\mathcal D_L^\lambda.                        \tag{3.4}
+\]</span>
+The following are global operators:
+<span class="math math-display" data-tex="\[
+e=\partial_x,\qquad h=-2x\partial_x+\lambda,\qquad
+f=-x^2\partial_x+\lambda x.                                 \tag{3.5}
+\]">\[
+e=\partial_x,\qquad h=-2x\partial_x+\lambda,\qquad
+f=-x^2\partial_x+\lambda x.                                 \tag{3.5}
+\]</span>
+They satisfy
+<span class="math math-display" data-tex="\[
+[h,e]=2e,\quad [h,f]=-2f,\quad [e,f]=h,\qquad
+h^2+2h+4fe=\lambda(\lambda+2).                              \tag{3.6}
+\]">\[
+[h,e]=2e,\quad [h,f]=-2f,\quad [e,f]=h,\qquad
+h^2+2h+4fe=\lambda(\lambda+2).                              \tag{3.6}
+\]</span>
+On the other chart they become, respectively,
+<span class="math" data-tex="$-y^2\partial_y+\lambda y$">$-y^2\partial_y+\lambda y$</span>, <span class="math" data-tex="$2y\partial_y-\lambda$">$2y\partial_y-\lambda$</span>, and <span class="math" data-tex="$\partial_y$">$\partial_y$</span>, so they are regular everywhere.</p>
+<p>For every <span class="math" data-tex="$\lambda$">$\lambda$</span>, these formulas actually identify
+<span class="math math-display" data-tex="\[
+\Gamma(\mathbb P^1,\mathcal D_{\mathcal O(1)}^\lambda)
+\simeq U(\mathfrak{sl}_2)/
+\bigl(h^2+2h+4fe-\lambda(\lambda+2)\bigr).                   \tag{3.7}
+\]">\[
+\Gamma(\mathbb P^1,\mathcal D_{\mathcal O(1)}^\lambda)
+\simeq U(\mathfrak{sl}_2)/
+\bigl(h^2+2h+4fe-\lambda(\lambda+2)\bigr).                   \tag{3.7}
+\]</span>
+Here is a proof that also rules out missing higher-order operators. The order filtration has exact sequences
+<span class="math math-display" data-tex="\[
+0\to F_{m-1}\mathcal D_L^\lambda\to F_m\mathcal D_L^\lambda
+\to\mathcal O(2m)\to0.
+\]">\[
+0\to F_{m-1}\mathcal D_L^\lambda\to F_m\mathcal D_L^\lambda
+\to\mathcal O(2m)\to0.
+\]</span>
+The elementary cohomology calculation on the two affine charts gives
+<span class="math" data-tex="$H^1(\mathbb P^1,\mathcal O(2m))=0$">$H^1(\mathbb P^1,\mathcal O(2m))=0$</span> for <span class="math" data-tex="$m\geq0$">$m\geq0$</span>. Induction gives <span class="math" data-tex="$H^1(F_m)=0$">$H^1(F_m)=0$</span>, so taking sections is surjective on every principal-symbol quotient. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{gr}\Gamma(\mathcal D_L^\lambda)
+=\bigoplus_{m\geq0}H^0(\mathbb P^1,\mathcal O(2m)).
+\]">\[
+\operatorname{gr}\Gamma(\mathcal D_L^\lambda)
+=\bigoplus_{m\geq0}H^0(\mathbb P^1,\mathcal O(2m)).
+\]</span>
+This is the even Veronese ring <span class="math" data-tex="$k[s^2,st,t^2]$">$k[s^2,st,t^2]$</span>. The symbols of <span class="math" data-tex="$e,h,f$">$e,h,f$</span> generate it: in homogeneous coordinates they correspond to <span class="math" data-tex="$s^2,-2st,-t^2$">$s^2,-2st,-t^2$</span>. Their sole relation is <span class="math" data-tex="$h^2+4fe=0$">$h^2+4fe=0$</span>.</p>
+<p>PBW gives the same associated graded ring for the right side of (3.7). Indeed the Casimir is central, and its leading term is the nonzero polynomial <span class="math" data-tex="$h^2+4fe$">$h^2+4fe$</span>. Every element of its principal ideal is its product with an element of <span class="math" data-tex="$U(\mathfrak{sl}_2)$">$U(\mathfrak{sl}_2)$</span>; leading terms multiply in the polynomial domain. Thus the associated graded ideal is exactly the principal symbol ideal. The filtered map from (3.5) is an isomorphism on associated graded rings, and induction on filtration degree makes it an isomorphism. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For integer <span class="math" data-tex="$\lambda=n$">$\lambda=n$</span>, <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span> itself is a twisted module. When <span class="math" data-tex="$n\geq0$">$n\geq0$</span>, its global sections have basis <span class="math" data-tex="$1,x,\ldots,x^n$">$1,x,\ldots,x^n$</span> in the first frame, and (3.5) acts by
+<span class="math math-display" data-tex="\[
+e(x^j)=j x^{j-1},\quad h(x^j)=(n-2j)x^j,\quad
+f(x^j)=(n-j)x^{j+1}.
+\]">\[
+e(x^j)=j x^{j-1},\quad h(x^j)=(n-2j)x^j,\quad
+f(x^j)=(n-j)x^{j+1}.
+\]</span>
+This finite-dimensional representation is a quotient representation of the infinite-dimensional ring (3.7); that ring is not its endomorphism ring. Negative <span class="math" data-tex="$n$">$n$</span> gives the same operator construction, although <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span> then has no global sections. For <span class="math" data-tex="$\lambda=1/2$">$\lambda=1/2$</span>, the ring and its regular left module still exist; there is no line bundle <span class="math" data-tex="$\mathcal O(1/2)$">$\mathcal O(1/2)$</span> on <span class="math" data-tex="$\mathbb P^1$">$\mathbb P^1$</span>.</p>
+<h2 id="4-localization-from-a-harish-chandra-pair">4. Localization from a Harish-Chandra pair</h2>
+<p>A <strong>Harish-Chandra pair</strong> <span class="math" data-tex="$(\mathfrak g,K)$">$(\mathfrak g,K)$</span> consists of a Lie algebra, an algebraic group acting on it by Lie automorphisms, and an injective map <span class="math" data-tex="$\operatorname{Lie}K\to\mathfrak g$">$\operatorname{Lie}K\to\mathfrak g$</span> whose differentiated action is the adjoint action. A module <span class="math" data-tex="$V$">$V$</span> has a <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>-action and a rational <span class="math" data-tex="$K$">$K$</span>-action, compatible with each other, such that
+<span class="math math-display" data-tex="\[
+d\rho_K(\xi)v=\xi v\quad(\xi\in\operatorname{Lie}K).         \tag{4.1}
+\]">\[
+d\rho_K(\xi)v=\xi v\quad(\xi\in\operatorname{Lie}K).         \tag{4.1}
+\]</span></p>
+<p>Suppose <span class="math" data-tex="$S$">$S$</span> is smooth with a compatible <span class="math" data-tex="$K$">$K$</span>-action and a <span class="math" data-tex="$K$">$K$</span>-equivariant Lie map <span class="math" data-tex="$\mathfrak g\to\Gamma(S,T_S)$">$\mathfrak g\to\Gamma(S,T_S)$</span> extending <span class="math" data-tex="$\mu$">$\mu$</span> on <span class="math" data-tex="$\operatorname{Lie}K$">$\operatorname{Lie}K$</span>. For <span class="math" data-tex="$\mathcal Y=[S/K]$">$\mathcal Y=[S/K]$</span> define
+<span class="math math-display" data-tex="\[
+\Delta_S(V)=\mathcal D_S\otimes_{U(\mathfrak g)}V.           \tag{4.2}
+\]">\[
+\Delta_S(V)=\mathcal D_S\otimes_{U(\mathfrak g)}V.           \tag{4.2}
+\]</span>
+The right <span class="math" data-tex="$U(\mathfrak g)$">$U(\mathfrak g)$</span>-action on <span class="math" data-tex="$\mathcal D_S$">$\mathcal D_S$</span> is multiplication by its vector fields. Give (4.2) the diagonal <span class="math" data-tex="$K$">$K$</span>-action. It is strong: differentiating on <span class="math" data-tex="$D\otimes v$">$D\otimes v$</span> gives
+<span class="math math-display" data-tex="\[
+[\mu(\xi),D]\otimes v+D\otimes\xi v
+=\mu(\xi)D\otimes v,
+\]">\[
+[\mu(\xi),D]\otimes v+D\otimes\xi v
+=\mu(\xi)D\otimes v,
+\]</span>
+because <span class="math" data-tex="$D\mu(\xi)\otimes v=D\otimes\xi v$">$D\mu(\xi)\otimes v=D\otimes\xi v$</span>. Thus Theorem 2.1 descends it to <span class="math" data-tex="$\Delta(V)$">$\Delta(V)$</span> on <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span>.</p>
+<p>For a D-module <span class="math" data-tex="$M$">$M$</span> on <span class="math" data-tex="$\mathcal Y$">$\mathcal Y$</span>, set
+<span class="math math-display" data-tex="\[
+\Gamma(M)=\Gamma(S,q^\dagger M).
+\]">\[
+\Gamma(M)=\Gamma(S,q^\dagger M).
+\]</span>
+The vector-field action gives its <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>-action, and the descent linearization gives its <span class="math" data-tex="$K$">$K$</span>-action. Strong equivariance gives (4.1).</p>
+<p><strong>Proposition 4.1.</strong> Localization is left adjoint to these global sections:
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal D_{\mathcal Y}}(\Delta V,M)
+\simeq \operatorname{Hom}_{(\mathfrak g,K)}(V,\Gamma M).
+                                                               \tag{4.3}
+\]">\[
+\operatorname{Hom}_{\mathcal D_{\mathcal Y}}(\Delta V,M)
+\simeq \operatorname{Hom}_{(\mathfrak g,K)}(V,\Gamma M).
+                                                               \tag{4.3}
+\]</span></p>
+<p><strong>Proof.</strong> A D-linear map from (4.2) is determined by <span class="math" data-tex="$1\otimes v$">$1\otimes v$</span>. The balancing relation says exactly that this assignment is <span class="math" data-tex="$\mathfrak g$">$\mathfrak g$</span>-linear. Requiring compatibility with the diagonal <span class="math" data-tex="$K$">$K$</span>-action says exactly that it is <span class="math" data-tex="$K$">$K$</span>-linear. Conversely any such assignment extends by <span class="math" data-tex="$D\otimes v\mapsto D\phi(v)$">$D\otimes v\mapsto D\phi(v)$</span>. These operations are inverse and natural, proving (4.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Adjunction does not imply equivalence. Transitivity, central characters and positivity will enter <a href="beilinson-bernstein-localization.html">Beilinson-Bernstein localization</a>. Central extensions produce twisted versions of (4.2): the central generator is prescribed a scalar, and the corresponding Lie algebroid acts through a TDO. For finite-dimensional algebraic data the same tensor-Hom proof gives the twisted adjunction. The loop-algebra version needs completed enveloping algebras and continuous modules; it cannot be justified by treating the loop algebra as a finite-dimensional pair.</p>
+<p>Frenkel, §§7.4–7.5, applies the completed construction to a smooth projective curve and <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span>. Its local fibers are coinvariants by the stabilizer Lie algebra. At integral level, the TDO acts on an actual determinant/theta line power; at arbitrary level the ring remains defined. This is a cited application here, rather than a proof of uniformization or the construction of its central extension.</p>
+<h2 id="5-scaling-and-two-boundary-spaces">5. Scaling and two boundary spaces</h2>
+<p>For <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> acting on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span>, put <span class="math" data-tex="$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$">$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$</span> and <span class="math" data-tex="$\theta=x\partial$">$\theta=x\partial$</span>. A rational <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>-action decomposes into character spaces. By (1.1), strong equivariance is precisely a semisimple integral <span class="math" data-tex="$\theta$">$\theta$</span>-action:
+<span class="math math-display" data-tex="\[
+M=\bigoplus_{n\in\mathbb Z}M_n,\qquad
+\theta|_{M_n}=n,\qquad g|_{M_n}=g^{-n}.                    \tag{5.1}
+\]">\[
+M=\bigoplus_{n\in\mathbb Z}M_n,\qquad
+\theta|_{M_n}=n,\qquad g|_{M_n}=g^{-n}.                    \tag{5.1}
+\]</span>
+Conversely this formula defines a rational linearization: every vector has finitely many components, <span class="math" data-tex="$x$">$x$</span> raises <span class="math" data-tex="$n$">$n$</span> by one and <span class="math" data-tex="$\partial$">$\partial$</span> lowers it by one, with exactly the required transformation of operators.</p>
+<p>The integer-block reconstruction proved in The Riemann-Hilbert correspondence, Theorem 2.1, now has zero nilpotent parts. Set
+<span class="math math-display" data-tex="\[
+V_0=M_0,\quad V_1=M_{-1},\qquad
+a=x:V_1\to V_0,\quad b=\partial:V_0\to V_1.
+\]">\[
+V_0=M_0,\quad V_1=M_{-1},\qquad
+a=x:V_1\to V_0,\quad b=\partial:V_0\to V_1.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+ab=0,\qquad ba=0.                                         \tag{5.2}
+\]">\[
+ab=0,\qquad ba=0.                                         \tag{5.2}
+\]</span>
+The first identity is <span class="math" data-tex="$\theta|_{M_0}=0$">$\theta|_{M_0}=0$</span>; the second is
+<span class="math" data-tex="$\partial x|_{M_{-1}}=(\theta+1)|_{M_{-1}}=0$">$\partial x|_{M_{-1}}=(\theta+1)|_{M_{-1}}=0$</span>. Both are necessary.</p>
+<p>Conversely any two spaces and arrows satisfying (5.2) reconstruct a module. Take <span class="math" data-tex="$M_n=V_0$">$M_n=V_0$</span> for <span class="math" data-tex="$n\geq0$">$n\geq0$</span> and <span class="math" data-tex="$M_n=V_1$">$M_n=V_1$</span> for <span class="math" data-tex="$n\leq-1$">$n\leq-1$</span>. Define the maps from weight <span class="math" data-tex="$n$">$n$</span> by
+<span class="math math-display" data-tex="\[
+x_n=\begin{cases}1&amp;n\geq0,\\a&amp;n=-1,\\n+1&amp;n\leq-2,\end{cases}
+\qquad
+\partial_n=\begin{cases}n&amp;n\geq1,\\b&amp;n=0,\\1&amp;n\leq-1.\end{cases} \tag{5.3}
+\]">\[
+x_n=\begin{cases}1&amp;n\geq0,\\a&amp;n=-1,\\n+1&amp;n\leq-2,\end{cases}
+\qquad
+\partial_n=\begin{cases}n&amp;n\geq1,\\b&amp;n=0,\\1&amp;n\leq-1.\end{cases} \tag{5.3}
+\]</span>
+The Weyl relation is immediate on each tail. At weight <span class="math" data-tex="$0$">$0$</span> its two terms are <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$ab=0$">$ab=0$</span>, and at weight <span class="math" data-tex="$-1$">$-1$</span> they are <span class="math" data-tex="$ba=0$">$ba=0$</span> and <span class="math" data-tex="$-1$">$-1$</span>. Thus it holds there too. Moreover <span class="math" data-tex="$\theta=n$">$\theta=n$</span> on every weight. The inverse identifications use the invertible nonexceptional maps, so they identify morphisms with pairs commuting with <span class="math" data-tex="$a,b$">$a,b$</span>. This proves the classification.</p>
+<p>The finite-dimensional diagrams are precisely the coherent modules in this category. One direction follows by choosing bases at weights <span class="math" data-tex="$0,-1$">$0,-1$</span>, which generate the reconstructed module; its Bernstein growth is at most linear, so it is holonomic. Conversely the finite-generation argument of the preceding lesson shows that all weight spaces are finite dimensional. Arbitrary quasi-coherent modules allow arbitrary spaces in (5.2).</p>
+<p>The basic examples are</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th><span class="math" data-tex="$V_0$">$V_0$</span></th>
+<th><span class="math" data-tex="$V_1$">$V_1$</span></th>
+<th><span class="math" data-tex="$a$">$a$</span></th>
+<th><span class="math" data-tex="$b$">$b$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="$\mathcal O_{\mathbb A^1}$">$\mathcal O_{\mathbb A^1}$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\delta_0=A/Ax$">$\delta_0=A/Ax$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$j_*\mathcal O_{\mathbb G_m}=k[x,x^{-1}]$">$j_*\mathcal O_{\mathbb G_m}=k[x,x^{-1}]$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$1$">$1$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$j_!\mathcal O_{\mathbb G_m}=A/A\theta$">$j_!\mathcal O_{\mathbb G_m}=A/A\theta$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$1$">$1$</span></td>
+</tr>
+</tbody>
+</table>
+<p>The two extensions differ despite having the same restriction to the open orbit. A logarithmic Jordan block with nonzero nilpotent residue, or an Euler connection with nonintegral exponent on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, is monodromic but is not strongly equivariant. For an integral exponent the Laurent Euler connection is isomorphic to <span class="math" data-tex="$\mathcal O_{\mathbb G_m}$">$\mathcal O_{\mathbb G_m}$</span>, and its strong linearization exists and is unique.</p>
+<h2 id="6-a-point-quotient-remembers-higher-cohomology">6. A point quotient remembers higher cohomology</h2>
+<p>For connected <span class="math" data-tex="$G$">$G$</span>, Theorem 1.1 on a point immediately gives
+<span class="math math-display" data-tex="\[
+\operatorname{Mod}(\mathcal D_{BG})\simeq\operatorname{Vect}_k.
+                                                               \tag{6.1}
+\]">\[
+\operatorname{Mod}(\mathcal D_{BG})\simeq\operatorname{Vect}_k.
+                                                               \tag{6.1}
+\]</span>
+Existence is the trivial representation. To verify that these are all the objects directly, a strong rational representation has zero derivative. Its orbit maps have zero differential and are constant on connected <span class="math" data-tex="$G$">$G$</span>, by the argument used in Theorem 1.1.</p>
+<p>The derived quotient has a different answer. Let <span class="math" data-tex="$\mathbf1_{BG}$">$\mathbf1_{BG}$</span> denote its constant object, allowing the dimension normalization shift appropriate to the chosen tensor unit. Self-Ext is unaffected by that common shift. Homotopy descent along <span class="math" data-tex="$\mathrm{pt}\to BG$">$\mathrm{pt}\to BG$</span> gives
+<span class="math math-display" data-tex="\[
+\operatorname{RHom}_{D\text{-}\mathrm{mod}(BG)}
+(\mathbf1_{BG},\mathbf1_{BG})
+\simeq \operatorname{Tot}R\Gamma_{\rm dR}(G^\bullet),
+\qquad
+\operatorname{Ext}^*(\mathbf1_{BG},\mathbf1_{BG})
+=H^*_{\rm dR}(BG).                                        \tag{6.2}
+\]">\[
+\operatorname{RHom}_{D\text{-}\mathrm{mod}(BG)}
+(\mathbf1_{BG},\mathbf1_{BG})
+\simeq \operatorname{Tot}R\Gamma_{\rm dR}(G^\bullet),
+\qquad
+\operatorname{Ext}^*(\mathbf1_{BG},\mathbf1_{BG})
+=H^*_{\rm dR}(BG).                                        \tag{6.2}
+\]</span>
+Indeed self-Hom of the pulled-back constant D-module on each smooth level is its unshifted de Rham complex, by the Spencer resolution. Composition is multiplication on these complexes. The descent definition makes the compatible maps and their homotopies the totalization, proving (6.2).</p>
+<p>Over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, (6.2) is <span class="math" data-tex="$H^*(BG^{\rm an},\mathbb C)$">$H^*(BG^{\rm an},\mathbb C)$</span>, the cohomology of the topological classifying space. Apply the algebraic de Rham comparison stated in The de Rham functor at every level <span class="math" data-tex="$G^q$">$G^q$</span>. The resulting first-quadrant descent spectral sequences compare term by term; only finitely many terms contribute to each total degree. Over a general <span class="math" data-tex="$k$">$k$</span>, (6.2) means algebraic de Rham cohomology.</p>
+<p>For <span class="math" data-tex="$G=\mathbb G_m$">$G=\mathbb G_m$</span> this algebra can be computed completely:
+<span class="math math-display" data-tex="\[
+H^*_{\rm dR}(B\mathbb G_m)=k[c],\qquad |c|=2.               \tag{6.3}
+\]">\[
+H^*_{\rm dR}(B\mathbb G_m)=k[c],\qquad |c|=2.               \tag{6.3}
+\]</span>
+The de Rham cohomology of <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> is <span class="math" data-tex="$\Lambda(u)$">$\Lambda(u)$</span>, <span class="math" data-tex="$u=d x/x$">$u=d x/x$</span> in degree one; multiplication pulls <span class="math" data-tex="$u$">$u$</span> back to <span class="math" data-tex="$u\otimes1+1\otimes u$">$u\otimes1+1\otimes u$</span>. On the nerve, normalized cosimplicial cohomology is the reduced cobar complex of this exterior coalgebra. Its term in nerve degree <span class="math" data-tex="$q$">$q$</span> is spanned by <span class="math" data-tex="$u^{\otimes q}$">$u^{\otimes q}$</span>, in de Rham degree <span class="math" data-tex="$q$">$q$</span>. The differential is zero because the reduced coproduct of <span class="math" data-tex="$u$">$u$</span> is zero. All terms lie on the diagonal of the spectral sequence. A differential <span class="math" data-tex="$d_r$">$d_r$</span> changes the two degrees by <span class="math" data-tex="$(r,1-r)$">$(r,1-r)$</span>, and cannot join two diagonal terms for an integer <span class="math" data-tex="$r\geq1$">$r\geq1$</span>. Thus it collapses. Shuffle multiplication gives
+<span class="math" data-tex="$[u^{\otimes p}][u^{\otimes q}]=\binom{p+q}{p}[u^{\otimes(p+q)}]$">$[u^{\otimes p}][u^{\otimes q}]=\binom{p+q}{p}[u^{\otimes(p+q)}]$</span>:
+the odd de Rham degree and the nerve suspension cancel in the shuffle signs. Rescaling by factorials, possible in characteristic zero, gives exactly the polynomial algebra (6.3).</p>
+<p>Arinkin–Gaitsgory, §11.2, identifies
+<span class="math math-display" data-tex="\[
+D\text{-}\mathrm{mod}(B\mathbb G_m)
+\simeq\operatorname{QCoh}
+(\mathrm{pt}\mathbin{\times^{\mathbf R}_{\mathbb A^1}}\mathrm{pt}).
+                                                               \tag{6.4}
+\]">\[
+D\text{-}\mathrm{mod}(B\mathbb G_m)
+\simeq\operatorname{QCoh}
+(\mathrm{pt}\mathbin{\times^{\mathbf R}_{\mathbb A^1}}\mathrm{pt}).
+                                                               \tag{6.4}
+\]</span>
+The functions on this derived intersection are
+<span class="math" data-tex="$R=k[\epsilon]/(\epsilon^2)$">$R=k[\epsilon]/(\epsilon^2)$</span>, <span class="math" data-tex="$|\epsilon|=-1$">$|\epsilon|=-1$</span>, with zero differential. Its augmentation module <span class="math" data-tex="$k$">$k$</span> corresponds to the constant object, up to normalization. A semifree resolution of <span class="math" data-tex="$k$">$k$</span> is
+<span class="math math-display" data-tex="\[
+P=\bigoplus_{n\geq0}R e_n,\quad |e_n|=-2n,\quad
+d e_0=0,\quad d e_n=\epsilon e_{n-1}\ (n\geq1).              \tag{6.5}
+\]">\[
+P=\bigoplus_{n\geq0}R e_n,\quad |e_n|=-2n,\quad
+d e_0=0,\quad d e_n=\epsilon e_{n-1}\ (n\geq1).              \tag{6.5}
+\]</span>
+Each negative-degree cycle <span class="math" data-tex="$\epsilon e_{n-1}$">$\epsilon e_{n-1}$</span> is the boundary of <span class="math" data-tex="$e_n$">$e_n$</span>; the only cohomology is <span class="math" data-tex="$k e_0$">$k e_0$</span> in degree zero. Applying <span class="math" data-tex="$\operatorname{Hom}_R(-,k)$">$\operatorname{Hom}_R(-,k)$</span> gives one copy of <span class="math" data-tex="$k$">$k$</span> in each even nonnegative degree and zero differential. The degree-two chain map <span class="math" data-tex="$e_n\mapsto e_{n-1}$">$e_n\mapsto e_{n-1}$</span>, <span class="math" data-tex="$e_0\mapsto0$">$e_0\mapsto0$</span>, lifts the first generator; all its iterates remain nonzero after augmentation. Its Yoneda algebra is therefore <span class="math" data-tex="$k[c]$">$k[c]$</span>, independently checking (6.3).</p>
+<p>The constant object is not compact here. A compact <span class="math" data-tex="$R$">$R$</span>-module is a retract of a finite semifree module; since <span class="math" data-tex="$R$">$R$</span> is bounded, such a module has bounded self-Ext. Equation (6.5) gives unbounded self-Ext for <span class="math" data-tex="$k$">$k$</span>. The free module <span class="math" data-tex="$R$">$R$</span> is instead a compact generator. This is precisely the distinction made in the remark following the torus comparison in Arinkin–Gaitsgory, §11.2. Deriving the vector-space heart in (6.1) would give zero positive self-Ext, so it cannot produce this quotient category.</p>
+<h2 id="7-the-half-twist-on-the-moduli-of-bundles">7. The half-twist on the moduli of bundles</h2>
+<p>Let <span class="math" data-tex="$C$">$C$</span> be a smooth complete curve and <span class="math" data-tex="$G$">$G$</span> a connected reductive group. On <span class="math" data-tex="$\mathrm{Bun}_G(C)$">$\mathrm{Bun}_G(C)$</span> the adjoint bundle of a principal bundle <span class="math" data-tex="$\mathcal P$">$\mathcal P$</span> defines the normalized determinant line
+<span class="math math-display" data-tex="\[
+\det_{\mathrm{Bun}_G}|_{\mathcal P}
+=\det R\Gamma(C,\mathfrak g_{\mathcal P})
+\otimes\det R\Gamma(C,\mathfrak g_{\mathcal P_{\rm triv}})^{-1}.
+                                                               \tag{7.1}
+\]">\[
+\det_{\mathrm{Bun}_G}|_{\mathcal P}
+=\det R\Gamma(C,\mathfrak g_{\mathcal P})
+\otimes\det R\Gamma(C,\mathfrak g_{\mathcal P_{\rm triv}})^{-1}.
+                                                               \tag{7.1}
+\]</span>
+The determinant uses the derived cohomology complex: for a vector bundle it is <span class="math" data-tex="$\det H^0\otimes(\det H^1)^{-1}$">$\det H^0\otimes(\det H^1)^{-1}$</span>. Gaitsgory–Raskin, <em>Proof of the geometric Langlands conjecture I</em>, §1.1, identifies this line with the canonical line up to a constant one-dimensional factor, and defines its automorphic category by the <span class="math" data-tex="$\mu_2$">$\mu_2$</span>-gerbe of square roots of (7.1):
+<span class="math math-display" data-tex="\[
+D\text{-}\mathrm{mod}_{1/2}(\mathrm{Bun}_G).                \tag{7.2}
+\]">\[
+D\text{-}\mathrm{mod}_{1/2}(\mathrm{Bun}_G).                \tag{7.2}
+\]</span>
+These determinant and moduli-stack assertions are used as cited inputs.</p>
+<p>Locally this agrees with the half-TDO description. On an étale cover choose a square root <span class="math" data-tex="$P$">$P$</span> with <span class="math" data-tex="$P^2=\det_{\mathrm{Bun}_G}$">$P^2=\det_{\mathrm{Bun}_G}$</span>. Differential operators on <span class="math" data-tex="$P$">$P$</span> change by <span class="math" data-tex="$d\log$">$d\log$</span> of its transitions, which is one half the logarithmic differential of the determinant transitions. The local equivalence sends a <span class="math" data-tex="$\operatorname{Diff}(P,P)$">$\operatorname{Diff}(P,P)$</span>-module <span class="math" data-tex="$M$">$M$</span> to the ordinary D-module <span class="math" data-tex="$P^{-1}\otimes M$">$P^{-1}\otimes M$</span>; its inverse is tensoring with <span class="math" data-tex="$P$">$P$</span>, by (3.2). On the root gerbe the automorphism <span class="math" data-tex="$-1$">$-1$</span> of <span class="math" data-tex="$P$">$P$</span> acts by <span class="math" data-tex="$-1$">$-1$</span> on <span class="math" data-tex="$P^{-1}\otimes M$">$P^{-1}\otimes M$</span>. Changing a chosen root changes these identifications by the flat two-torsion line of the two roots. The overlap maps and their triple-overlap signs therefore give exactly descent with this <span class="math" data-tex="$\mu_2$">$\mu_2$</span>-character. This proves agreement with the half-twisted category. The gerbe formulation makes the global twisting datum explicit, while (3.1) calculates its local infinitesimal operators.</p>
+<p>A choice of a square root of <span class="math" data-tex="$\omega_C$">$\omega_C$</span> supplies a square root of the determinant line, as cited there from Beilinson–Drinfeld, §4. That choice gives an equivalence between (7.2) and an untwisted category, but the equivalence depends on the choice. The closing remark of §1.1 retains the twisted formulation for compatibility with the Hecke action. In particular “half-twisted” is not an instruction to tensor globally with an unspecified line bundle.</p>
+<h2 id="8-exercises-and-solutions">8. Exercises and solutions</h2>
+<p><strong>Exercise 15.1 (easy).</strong> Prove that every strongly <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>-equivariant D-module on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, with translation action, is a direct sum of copies of <span class="math" data-tex="$\mathcal O_{\mathbb G_m}$">$\mathcal O_{\mathbb G_m}$</span>.</p>
+<p><strong>Solution.</strong> The action makes <span class="math" data-tex="$\mathbb G_m\to\mathrm{pt}$">$\mathbb G_m\to\mathrm{pt}$</span> a principal bundle. Theorem 2.1 descends the module to a vector space <span class="math" data-tex="$V$">$V$</span> and identifies its pullback with <span class="math" data-tex="$\mathcal O_{\mathbb G_m}\otimes_k V$">$\mathcal O_{\mathbb G_m}\otimes_k V$</span>, with differentiation on the first factor. Choosing a basis of <span class="math" data-tex="$V$">$V$</span> writes it as a direct sum. The tensor expression is canonical; the basis decomposition need not be. For coherent modules <span class="math" data-tex="$V$">$V$</span> is finite dimensional. This also proves that an integral Laurent Euler connection admits this form.</p>
+<p><strong>Exercise 15.2 (easy).</strong> Give a finite-group example in which equivariance is extra structure.</p>
+<p><strong>Solution.</strong> Let the group of order two act on a point. Its Lie algebra is zero, so both its trivial and sign representations on <span class="math" data-tex="$k$">$k$</span> are strong. Their underlying D-module is the same one-dimensional vector space. The identity map between those vector spaces is not equivariant, since it would have to intertwine <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$-1$">$-1$</span>. Thus the forgetful functor is not full, and an underlying module does not determine its linearization. More generally the point quotient has abelian category <span class="math" data-tex="$\operatorname{Rep}(G)$">$\operatorname{Rep}(G)$</span> for finite <span class="math" data-tex="$G$">$G$</span>.</p>
+<p><strong>Exercise 15.3 (medium).</strong> Compute <span class="math" data-tex="$\Gamma(\mathbb P^1,\mathcal D_{\mathcal O(n)})$">$\Gamma(\mathbb P^1,\mathcal D_{\mathcal O(n)})$</span> for every integer <span class="math" data-tex="$n$">$n$</span>.</p>
+<p><strong>Solution.</strong> The notation means differential operators on the line bundle <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span>, hence <span class="math" data-tex="$\mathcal D_{\mathcal O(1)}^n$">$\mathcal D_{\mathcal O(1)}^n$</span> by (3.2). Equations (3.5)–(3.7), including the associated-graded surjectivity and injectivity proof, give
+<span class="math math-display" data-tex="\[
+U(\mathfrak{sl}_2)/(h^2+2h+4fe-n(n+2)).
+\]">\[
+U(\mathfrak{sl}_2)/(h^2+2h+4fe-n(n+2)).
+\]</span>
+This answer holds for negative <span class="math" data-tex="$n$">$n$</span> as well. Its filtered piece of exact symbol degree <span class="math" data-tex="$m$">$m$</span> has dimension <span class="math" data-tex="$2m+1$">$2m+1$</span>; therefore the ring is infinite dimensional. If <span class="math" data-tex="$n\geq0$">$n\geq0$</span>, its action on the <span class="math" data-tex="$(n+1)$">$(n+1)$</span>-dimensional space of sections of <span class="math" data-tex="$\mathcal O(n)$">$\mathcal O(n)$</span> is the explicit highest-weight action calculated after (3.7). That representation does not replace the ring in the answer.</p>
+<p><strong>Exercise 15.4 (medium).</strong> Describe the strongly scaling-equivariant D-modules on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> by linear algebra, including morphisms and the coherence condition.</p>
+<p><strong>Solution.</strong> The answer is two spaces <span class="math" data-tex="$V_0,V_1$">$V_0,V_1$</span>, arrows <span class="math" data-tex="$a:V_1\to V_0$">$a:V_1\to V_0$</span>, <span class="math" data-tex="$b:V_0\to V_1$">$b:V_0\to V_1$</span>, and both relations <span class="math" data-tex="$ab=ba=0$">$ab=ba=0$</span>. The forward construction is (5.1)–(5.2), and the inverse is (5.3). All nonexceptional weights are identified by invertible <span class="math" data-tex="$x$">$x$</span> or <span class="math" data-tex="$\partial$">$\partial$</span> maps. A D-map preserves <span class="math" data-tex="$\theta$">$\theta$</span>-weights, so it is determined by maps <span class="math" data-tex="$V_i\to V_i&#x27;$">$V_i\to V_i&#x27;$</span> commuting with the two arrows; conversely such maps extend using (5.3). Finite-dimensional spaces give and are necessary for coherent modules, by the proof in Section 5. Dropping either relation gives an incorrect answer: take <span class="math" data-tex="$V_0=k$">$V_0=k$</span>, <span class="math" data-tex="$V_1=k^2$">$V_1=k^2$</span>, <span class="math" data-tex="$a=(1,0)$">$a=(1,0)$</span>, <span class="math" data-tex="$b=(0,1)^t$">$b=(0,1)^t$</span>. Then <span class="math" data-tex="$ab=0$">$ab=0$</span> but <span class="math" data-tex="$ba$">$ba$</span> is a nonzero square-zero operator, which violates semisimplicity at weight <span class="math" data-tex="$-1$">$-1$</span>.</p>
+<p><strong>Exercise 15.5 (hard).</strong> For connected affine <span class="math" data-tex="$G$">$G$</span>, identify the abelian D-module category on <span class="math" data-tex="$BG$">$BG$</span> and compute the self-Ext algebra of the constant object in the derived quotient category. Explain the case <span class="math" data-tex="$G=\mathbb G_m$">$G=\mathbb G_m$</span> using Arinkin–Gaitsgory.</p>
+<p><strong>Solution.</strong> Strong representations on a point have zero derivative and hence trivial connected-group action, proving (6.1) with all vector spaces allowed. The derived smooth-descent definition gives the de Rham totalization (6.2), so self-Ext is <span class="math" data-tex="$H^*_{\rm dR}(BG)$">$H^*_{\rm dR}(BG)$</span>, or <span class="math" data-tex="$H^*(BG^{\rm an},\mathbb C)$">$H^*(BG^{\rm an},\mathbb C)$</span> over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. The identification respects products because the Spencer self-Hom complex and the descent maps respect composition. For <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> the nerve calculation gives a polynomial generator of degree two, as in (6.3). The derived-intersection equivalence (6.4) places the constant object at the augmentation module of the exterior DG algebra; the explicit resolution (6.5) gives the same polynomial Yoneda algebra and shows why the constant object is not compact. The abelian category of vector spaces has no positive Ext, so its ordinary derived category is not the answer to this exercise.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use effective smooth descent and basic line-bundle cohomology as algebraic geometry prerequisites. The derived descent formalism is defined and used here; its general construction and functoriality belong to <a href="stacks-ind-schemes-and-the-de-rham-prestack.html">D-modules on stacks, ind-schemes and the de Rham prestack</a>. The algebraic de Rham comparison used in (6.2) is the theorem stated with its primary locator in The de Rham functor. The general classification of compact modules over a DG algebra as retracts of finite semifree modules is a derived-category prerequisite.</p>
+<p>We do not prove the derived-intersection equivalence (6.4), the loop-group uniformization or its central extension, the canonical determinant-line identification on <span class="math" data-tex="$\mathrm{Bun}_G$">$\mathrm{Bun}_G$</span>, or the existence of its root from a square root on the curve. Their locators are, respectively, Arinkin–Gaitsgory, §11.2; Frenkel, §§7.4–7.5; and Gaitsgory–Raskin, §1.1, with its reference to Beilinson–Drinfeld, §4. The explicit root-gerbe/local-TDO agreement uses the descent calculation given in Section 7. No localization equivalence, Hecke theorem or geometric Langlands theorem is inferred from the adjunction alone.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>A. Beilinson and V. Drinfeld, <a href="https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf"><em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em></a>, §§1.1.1–1.1.7, 1.2.1–1.2.7 and 7.6–7.7: smooth descent, twists, Harish-Chandra localization and the derived equivariance distinction.</li>
+<li>E. Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172"><em>Lectures on the Langlands program and conformal field theory</em></a>, §§7.4–7.5: localization and twisted operators on the moduli of bundles.</li>
+<li>D. Gaitsgory and S. Raskin, <a href="https://arxiv.org/abs/2405.03599"><em>Proof of the geometric Langlands conjecture I: construction of the functor</em></a>, §1.1: the determinant line, its square-root gerbe and the automorphic half-twist.</li>
+<li>D. Arinkin and D. Gaitsgory, <a href="https://arxiv.org/abs/1201.6343"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em></a>, §11.2, the torus calculation and following compactness remark.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="regular-singularities.html">← Regular singularities</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="beilinson-bernstein-localization.html">Beilinson-Bernstein localization →</a></span></nav>
+<p class="small source-link"><a href="src/equivariant-and-twisted-d-modules.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mean square distribution: the Barban–Davenport–Halberstam theorem · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-16.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 16 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="mean-square-distribution-the-barban-davenport-halberstam-theorem">Mean square distribution: the Barban–Davenport–Halberstam theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Bombieri–Vinogradov theorem takes the worst residue class for each modulus. A mean square averages over the classes as well. This extra averaging changes the scale: the expected total is <span class="math" data-tex="\(Qx\log Q\)">\(Qx\log Q\)</span>, and a sharp bound remains available when <span class="math" data-tex="\(Q\)">\(Q\)</span> is nearly as large as <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>We use the character orthogonality of <em>Dirichlet characters</em>, the sharp primitive large sieve of <em>The multiplicative large sieve and bilinear forms with characters</em>, and <em>The Siegel–Walfisz theorem</em>. Lemma 1.1 of <em>The Bombieri–Vinogradov theorem</em> supplies elementary totient estimates, not that lesson's distribution theorem. For the smoothed calculation in Section 4, the exact zeta functional equation and <span class="math" data-tex="\(\zeta(0)=-1/2\)">\(\zeta(0)=-1/2\)</span> are Corollary 3.2 of <em>Poisson summation, theta, and the functional equation</em> in <em>The Riemann zeta function</em>. The gamma estimate used there is Theorem 3.1 and Corollary 4.1 of <em>The Gamma function and Stirling's formula</em> in the same course.</p>
+<p>Throughout, <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>, <span class="math" data-tex="\(1\le Q\le x\)">\(1\le Q\le x\)</span>, <span class="math" data-tex="\(L=\log(2x)\)">\(L=\log(2x)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+V(x,Q)=\sum_{q\le Q}\sum_{\substack{b\bmod q\\(b,q)=1}}
+\left(\psi(x;q,b)-\frac{x}{\varphi(q)}\right)^2.
+\tag{0.1}
+\]">\[
+V(x,Q)=\sum_{q\le Q}\sum_{\substack{b\bmod q\\(b,q)=1}}
+\left(\psi(x;q,b)-\frac{x}{\varphi(q)}\right)^2.
+\tag{0.1}
+\]</span>
+<p>The errors inside this expression are real. Character sums below are complex and are squared by taking their absolute values. Bounds involving Siegel–Walfisz have ineffective constants; the finite identities and the totient calculations are effective.</p>
+<h2 id="1-from-residue-classes-to-primitive-characters">1. From residue classes to primitive characters</h2>
+<p>Center every character, including the principal one:</p>
+<span class="math math-display" data-tex="\[
+\psi&#x27;(x,\chi)=\psi(x,\chi)-\mathbf1_{\chi=\chi_0}x.
+\]">\[
+\psi&#x27;(x,\chi)=\psi(x,\chi)-\mathbf1_{\chi=\chi_0}x.
+\]</span>
+<p>Orthogonality gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+V(x,Q)=\sum_{q\le Q}\frac1{\varphi(q)}
+\sum_{\chi\bmod q}|\psi&#x27;(x,\chi)|^2.
+\tag{1.1}
+\]">\[
+V(x,Q)=\sum_{q\le Q}\frac1{\varphi(q)}
+\sum_{\chi\bmod q}|\psi&#x27;(x,\chi)|^2.
+\tag{1.1}
+\]</span>
+<p>Indeed, the error in class <span class="math" data-tex="\(b\)">\(b\)</span> is
+<span class="math" data-tex="\(\varphi(q)^{-1}\sum_\chi\overline{\chi(b)}\psi&#x27;(x,\chi)\)">\(\varphi(q)^{-1}\sum_\chi\overline{\chi(b)}\psi&#x27;(x,\chi)\)</span>.
+Expanding its absolute square and summing over unit classes kills every off-diagonal character pair. The principal term is essential: <span class="math" data-tex="\(\psi(x,\chi_0)\)">\(\psi(x,\chi_0)\)</span> is not exactly <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be induced by a primitive character <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> of conductor <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\psi(x,\chi^*)-\psi(x,\chi)
+=\sum_{\substack{p\mid q\\ p\nmid d}}
+\log p\sum_{1\le j\le\log x/\log p}\chi^*(p)^j.
+\tag{1.2}
+\]">\[
+\psi(x,\chi^*)-\psi(x,\chi)
+=\sum_{\substack{p\mid q\\ p\nmid d}}
+\log p\sum_{1\le j\le\log x/\log p}\chi^*(p)^j.
+\tag{1.2}
+\]</span>
+<p>Both characters are principal precisely when <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, so their subtracted terms agree. The absolute difference of their centered sums is at most
+<span class="math" data-tex="\(\omega(q)\log x\ll L^2\)">\(\omega(q)\log x\ll L^2\)</span>. Applying <span class="math" data-tex="\(|u+v|^2\le2|u|^2+2|v|^2\)">\(|u+v|^2\le2|u|^2+2|v|^2\)</span> in (1.1), and assigning each character to its unique primitive ancestor, gives</p>
+<span class="math math-display" data-tex="\[
+V(x,Q)\ll QL^4+
+\sum_{d\le Q}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_{\chi\bmod d}^{*}|\psi&#x27;(x,\chi)|^2.
+\tag{1.3}
+\]">\[
+V(x,Q)\ll QL^4+
+\sum_{d\le Q}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_{\chi\bmod d}^{*}|\psi&#x27;(x,\chi)|^2.
+\tag{1.3}
+\]</span>
+<p>Here we used the previously proved bound</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{q\le Q\\d\mid q}}\frac1{\varphi(q)}
+\ll\frac{\log(2Q/d)}{\varphi(d)}.
+\tag{1.4}
+\]">\[
+\sum_{\substack{q\le Q\\d\mid q}}\frac1{\varphi(q)}
+\ll\frac{\log(2Q/d)}{\varphi(d)}.
+\tag{1.4}
+\]</span>
+<p>For completeness, <span class="math" data-tex="\(\varphi(dm)\ge\varphi(d)\varphi(m)\)">\(\varphi(dm)\ge\varphi(d)\varphi(m)\)</span> follows at every prime, and
+<span class="math" data-tex="\(\sum_{m\le z}1/\varphi(m)\ll\log(2z)\)">\(\sum_{m\le z}1/\varphi(m)\ll\log(2z)\)</span>; these give (1.4).
+The error <span class="math" data-tex="\(QL^4\)">\(QL^4\)</span> arises because there are exactly <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> characters modulo <span class="math" data-tex="\(q\)">\(q\)</span>, cancelling the factor <span class="math" data-tex="\(1/\varphi(q)\)">\(1/\varphi(q)\)</span>. There is no additional factor <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<h2 id="2-the-mean-square-upper-bound">2. The mean-square upper bound</h2>
+<p><strong>Theorem 2.1 (Barban–Davenport–Halberstam).</strong> For every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+V(x,Q)\ll_A xQ\log x
+\qquad
+\left(x(\log x)^{-A}\le Q\le x\right).
+\tag{2.1}
+\]">\[
+V(x,Q)\ll_A xQ\log x
+\qquad
+\left(x(\log x)^{-A}\le Q\le x\right).
+\tag{2.1}
+\]</span>
+<p>The constant is ineffective. The same proof works with the slightly smaller lower endpoint <span class="math" data-tex="\(xL^{-A}\)">\(xL^{-A}\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R=L^{A+2}\)">\(R=L^{A+2}\)</span>. For sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(R&lt;Q\)">\(R&lt;Q\)</span>. For conductors <span class="math" data-tex="\(d\le R\)">\(d\le R\)</span>, Siegel–Walfisz gives
+<span class="math math-display" data-tex="\[
+|\psi&#x27;(x,\chi)|\ll_A x e^{-c_A\sqrt{\log x}}.
+\]">\[
+|\psi&#x27;(x,\chi)|\ll_A x e^{-c_A\sqrt{\log x}}.
+\]</span>
+For <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span> a primitive character is nonprincipal; for <span class="math" data-tex="\(d=1\)">\(d=1\)</span> this is the usual prime number theorem. Since the number of primitive characters is at most <span class="math" data-tex="\(\varphi(d)\)">\(\varphi(d)\)</span>, their contribution to (1.3) is
+<span class="math math-display" data-tex="\[
+\ll_A x^2RL e^{-2c_A\sqrt{\log x}}\ll_A xQ.
+\tag{2.2}
+\]">\[
+\ll_A x^2RL e^{-2c_A\sqrt{\log x}}\ll_A xQ.
+\tag{2.2}
+\]</span></p>
+<p>For <span class="math" data-tex="\(r&lt;d\le2r\)">\(r&lt;d\le2r\)</span>, with <span class="math" data-tex="\(r\ge R\)">\(r\ge R\)</span>, there is no centering term. Also
+<span class="math math-display" data-tex="\[
+\frac{\log(2Q/d)}{\varphi(d)}
+\ll\frac{\log(2Q/r)}r\frac d{\varphi(d)}.
+\]">\[
+\frac{\log(2Q/d)}{\varphi(d)}
+\ll\frac{\log(2Q/r)}r\frac d{\varphi(d)}.
+\]</span>
+The primitive large sieve, applied to <span class="math" data-tex="\(a_n=\Lambda(n)\mathbf1_{n\le x}\)">\(a_n=\Lambda(n)\mathbf1_{n\le x}\)</span>, therefore bounds this block by
+<span class="math math-display" data-tex="\[
+\ll\frac{\log(2Q/r)}r(x+r^2)\sum_{n\le x}\Lambda(n)^2
+\ll \left(\frac{x^2}r+xr\right)L\log(2Q/r).
+\tag{2.3}
+\]">\[
+\ll\frac{\log(2Q/r)}r(x+r^2)\sum_{n\le x}\Lambda(n)^2
+\ll \left(\frac{x^2}r+xr\right)L\log(2Q/r).
+\tag{2.3}
+\]</span>
+The last step uses <span class="math" data-tex="\(\Lambda(n)^2\le(\log x)\Lambda(n)\)">\(\Lambda(n)^2\le(\log x)\Lambda(n)\)</span> and the elementary Chebyshev bound <span class="math" data-tex="\(\psi(x)\ll x\)">\(\psi(x)\ll x\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(r=2^jR\)">\(r=2^jR\)</span> until <span class="math" data-tex="\(Q\)">\(Q\)</span> is reached, truncating the final block if necessary. Geometric summation gives
+<span class="math math-display" data-tex="\[
+\sum_r\frac{\log(2Q/r)}r\ll\frac L R,
+\qquad
+\sum_r r\log(2Q/r)\ll Q.
+\tag{2.4}
+\]">\[
+\sum_r\frac{\log(2Q/r)}r\ll\frac L R,
+\qquad
+\sum_r r\log(2Q/r)\ll Q.
+\tag{2.4}
+\]</span>
+For the second bound, read the blocks backwards from <span class="math" data-tex="\(Q\)">\(Q\)</span>: the terms are at most a constant times
+<span class="math" data-tex="\(Q\,2^{-k}(k+1)\)">\(Q\,2^{-k}(k+1)\)</span>.
+Thus the large conductors contribute
+<span class="math math-display" data-tex="\[
+\ll\frac{x^2L^2}R+xQL
+\le xQ+xQL.
+\]">\[
+\ll\frac{x^2L^2}R+xQL
+\le xQ+xQL.
+\]</span>
+Finally <span class="math" data-tex="\(QL^4\ll xQL\)">\(QL^4\ll xQL\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. This proves (2.1); increasing the ineffective constant covers the remaining bounded range. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The split is by conductor, not by the displayed modulus. A character of small conductor can recur at many large moduli. The logarithmic weight in (1.3) counts those recurrences.</p>
+<p><strong>Corollary 2.2 (almost all pairs).</strong> Fix <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+Q=x(\log x)^{-A-2}.
+\]">\[
+Q=x(\log x)^{-A-2}.
+\]</span>
+Among the pairs <span class="math" data-tex="\((q,b)\)">\((q,b)\)</span> with <span class="math" data-tex="\(q\le Q\)">\(q\le Q\)</span> and <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, all but
+<span class="math" data-tex="\(o(\sum_{q\le Q}\varphi(q))\)">\(o(\sum_{q\le Q}\varphi(q))\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\left|\psi(x;q,b)-\frac{x}{\varphi(q)}\right|
+\le\frac{\varepsilon x}{\varphi(q)}.
+\tag{2.5}
+\]">\[
+\left|\psi(x;q,b)-\frac{x}{\varphi(q)}\right|
+\le\frac{\varepsilon x}{\varphi(q)}.
+\tag{2.5}
+\]</span></p>
+<p><strong>Proof.</strong> A failing pair contributes at least
+<span class="math" data-tex="\(\varepsilon^2x^2/Q^2\)">\(\varepsilon^2x^2/Q^2\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>. By Theorem 2.1 with parameter <span class="math" data-tex="\(A+2\)">\(A+2\)</span>, the number of failures is at most
+<span class="math math-display" data-tex="\[
+\ll_A\frac{Q^3\log x}{\varepsilon^2x}.
+\tag{2.6}
+\]">\[
+\ll_A\frac{Q^3\log x}{\varepsilon^2x}.
+\tag{2.6}
+\]</span>
+We need a lower bound for the number of pairs. For an integer <span class="math" data-tex="\(N\)">\(N\)</span>, at most
+<span class="math math-display" data-tex="\[
+N^2\sum_p\frac1{p^2}
+\le N^2\sum_{n\ge2}\frac1{n^2}
+\le\frac34N^2
+\]">\[
+N^2\sum_p\frac1{p^2}
+\le N^2\sum_{n\ge2}\frac1{n^2}
+\le\frac34N^2
+\]</span>
+ordered pairs in <span class="math" data-tex="\([1,N]^2\)">\([1,N]^2\)</span> have a common prime divisor; the last inequality follows from
+<span class="math" data-tex="\(1/4+\int_2^\infty t^{-2}dt=3/4\)">\(1/4+\int_2^\infty t^{-2}dt=3/4\)</span>.
+The number of coprime ordered pairs is <span class="math" data-tex="\(2\sum_{q\le N}\varphi(q)-1\)">\(2\sum_{q\le N}\varphi(q)-1\)</span>, so
+<span class="math" data-tex="\(\sum_{q\le Q}\varphi(q)\gg Q^2\)">\(\sum_{q\le Q}\varphi(q)\gg Q^2\)</span>. Dividing (2.6) by this lower bound gives
+<span class="math math-display" data-tex="\[
+\ll_A\varepsilon^{-2}\frac{Q\log x}{x}
+=O_A\!\left(\varepsilon^{-2}(\log x)^{-A-1}\right)=o(1).
+\]">\[
+\ll_A\varepsilon^{-2}\frac{Q\log x}{x}
+=O_A\!\left(\varepsilon^{-2}(\log x)^{-A-1}\right)=o(1).
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can even take <span class="math" data-tex="\(\varepsilon=(\log x)^{-(A+1)/4}\)">\(\varepsilon=(\log x)^{-(A+1)/4}\)</span>: the exceptional proportion is then <span class="math" data-tex="\(O_A((\log x)^{-(A+1)/2})\)">\(O_A((\log x)^{-(A+1)/2})\)</span>.
+This is an assertion about most pairs. It does not assert that every reduced class is good for most moduli.</p>
+<h2 id="3-two-sums-involving-the-totient">3. Two sums involving the totient</h2>
+<p>The upper bound is already proved. To obtain an asymptotic, we need more precision in an elementary sum. Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal C=\frac{\zeta(2)\zeta(3)}{\zeta(6)},
+\qquad
+a_d=\frac{\mu^2(d)}{d\varphi(d)},
+\qquad
+c_1=\mathcal C\gamma-\sum_{d\ge1}a_d\log d.
+\tag{3.1}
+\]">\[
+\mathcal C=\frac{\zeta(2)\zeta(3)}{\zeta(6)},
+\qquad
+a_d=\frac{\mu^2(d)}{d\varphi(d)},
+\qquad
+c_1=\mathcal C\gamma-\sum_{d\ge1}a_d\log d.
+\tag{3.1}
+\]</span>
+<p>The last series converges absolutely. Indeed,
+<span class="math" data-tex="\(\sum_{d\le z}d^2a_d\le\sum_{d\le z}d/\varphi(d)\ll z\)">\(\sum_{d\le z}d^2a_d\le\sum_{d\le z}d/\varphi(d)\ll z\)</span>.
+Dyadic summation then gives
+<span class="math math-display" data-tex="\[
+\sum_{d&gt;Y}a_d\ll Y^{-1},
+\qquad
+\sum_{d&gt;Y}a_d\log(d/Y)\ll Y^{-1}.
+\tag{3.2}
+\]">\[
+\sum_{d&gt;Y}a_d\ll Y^{-1},
+\qquad
+\sum_{d&gt;Y}a_d\log(d/Y)\ll Y^{-1}.
+\tag{3.2}
+\]</span></p>
+<p><strong>Lemma 3.1.</strong> Uniformly for <span class="math" data-tex="\(Y\ge1\)">\(Y\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{n\le Y}\frac1{\varphi(n)}
+=\mathcal C\log Y+c_1+
+O\!\left(\frac{\log(2Y)}Y\right).
+\tag{3.3}
+\]">\[
+\sum_{n\le Y}\frac1{\varphi(n)}
+=\mathcal C\log Y+c_1+
+O\!\left(\frac{\log(2Y)}Y\right).
+\tag{3.3}
+\]</span></p>
+<p><strong>Proof.</strong> The identity
+<span class="math" data-tex="\(n/\varphi(n)=\sum_{d\mid n}\mu^2(d)/\varphi(d)\)">\(n/\varphi(n)=\sum_{d\mid n}\mu^2(d)/\varphi(d)\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{n\le Y}\frac1{\varphi(n)}
+=\sum_{d\le Y}a_d H_{\lfloor Y/d\rfloor}.
+\]">\[
+\sum_{n\le Y}\frac1{\varphi(n)}
+=\sum_{d\le Y}a_d H_{\lfloor Y/d\rfloor}.
+\]</span>
+Use <span class="math" data-tex="\(H_{\lfloor t\rfloor}=\log t+\gamma+O(1/t)\)">\(H_{\lfloor t\rfloor}=\log t+\gamma+O(1/t)\)</span>, valid for real <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>. The accumulated error is
+<span class="math math-display" data-tex="\[
+\ll \frac1Y\sum_{d\le Y}\frac{\mu^2(d)}{\varphi(d)}
+\ll\frac{\log(2Y)}Y.
+\]">\[
+\ll \frac1Y\sum_{d\le Y}\frac{\mu^2(d)}{\varphi(d)}
+\ll\frac{\log(2Y)}Y.
+\]</span>
+Extending the main terms to all <span class="math" data-tex="\(d\)">\(d\)</span>, (3.2) bounds the tails. Finally
+<span class="math" data-tex="\(\sum_da_d=\prod_p(1+1/[p(p-1)])=\mathcal C\)">\(\sum_da_d=\prod_p(1+1/[p(p-1)])=\mathcal C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the quadratic smoothing
+<span class="math math-display" data-tex="\[
+W(Y)=\sum_{n\le Y}\frac{(1-n/Y)^2}{\varphi(n)}.
+\tag{3.4}
+\]">\[
+W(Y)=\sum_{n\le Y}\frac{(1-n/Y)^2}{\varphi(n)}.
+\tag{3.4}
+\]</span>
+It has two secondary terms of size <span class="math" data-tex="\(1/Y\)">\(1/Y\)</span>, one containing <span class="math" data-tex="\(\log Y\)">\(\log Y\)</span>.
+That logarithm will change the main term of the variance from <span class="math" data-tex="\(Qx\log x\)">\(Qx\log x\)</span> to <span class="math" data-tex="\(Qx\log Q\)">\(Qx\log Q\)</span>.</p>
+<h2 id="4-the-smoothed-totient-sum-with-its-secondary-term">4. The smoothed totient sum, with its secondary term</h2>
+<p><strong>Lemma 4.1.</strong> There are absolute real constants <span class="math" data-tex="\(a,b\)">\(a,b\)</span> such that, for every fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+W(Y)=\mathcal C\log Y+a+\frac{\log Y+b}{Y}
++O_\eta(Y^{-3/2+\eta})
+\qquad(Y\ge1).
+\tag{4.1}
+\]">\[
+W(Y)=\mathcal C\log Y+a+\frac{\log Y+b}{Y}
++O_\eta(Y^{-3/2+\eta})
+\qquad(Y\ge1).
+\tag{4.1}
+\]</span>
+In particular, one may take
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(s)&amp;=\prod_p\left(1+\frac1{(p-1)p^{s+2}}
+-\frac1{(p-1)p^{2s+3}}\right),\\
+a&amp;=\mathcal C\left(\gamma+\frac{\zeta&#x27;(2)}{\zeta(2)}
++\frac{F&#x27;(0)}{F(0)}-\frac32\right),\\
+&amp;=c_1-\frac32\mathcal C,\\
+b&amp;=\gamma-2\zeta&#x27;(0)+F&#x27;(-1).
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+F(s)&amp;=\prod_p\left(1+\frac1{(p-1)p^{s+2}}
+-\frac1{(p-1)p^{2s+3}}\right),\\
+a&amp;=\mathcal C\left(\gamma+\frac{\zeta&#x27;(2)}{\zeta(2)}
++\frac{F&#x27;(0)}{F(0)}-\frac32\right),\\
+&amp;=c_1-\frac32\mathcal C,\\
+b&amp;=\gamma-2\zeta&#x27;(0)+F&#x27;(-1).
+\end{aligned}
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> It suffices to treat <span class="math" data-tex="\(0&lt;\eta&lt;1/4\)">\(0&lt;\eta&lt;1/4\)</span>, since a smaller positive exponent gives every weaker stated remainder. For <span class="math" data-tex="\(\Re s&gt;0\)">\(\Re s&gt;0\)</span>, direct multiplication of local factors gives
+<span class="math math-display" data-tex="\[
+D(s):=\sum_{n\ge1}\frac1{\varphi(n)n^s}
+=\zeta(s+1)\zeta(s+2)F(s).
+\tag{4.3}
+\]">\[
+D(s):=\sum_{n\ge1}\frac1{\varphi(n)n^s}
+=\zeta(s+1)\zeta(s+2)F(s).
+\tag{4.3}
+\]</span>
+The coefficients of <span class="math" data-tex="\(F\)">\(F\)</span> at <span class="math" data-tex="\(p,p^2\)">\(p,p^2\)</span> are
+<span class="math" data-tex="\(1/[p^2(p-1)]\)">\(1/[p^2(p-1)]\)</span> and <span class="math" data-tex="\(-1/[p^3(p-1)]\)">\(-1/[p^3(p-1)]\)</span>, respectively.
+Thus its Dirichlet series is absolutely convergent, uniformly bounded and holomorphic in
+<span class="math" data-tex="\(\Re s\ge-3/2+\eta\)">\(\Re s\ge-3/2+\eta\)</span>: the two local absolute sums are bounded by constant multiples of
+<span class="math" data-tex="\(p^{-3+u}\)">\(p^{-3+u}\)</span> and <span class="math" data-tex="\(p^{-4+2u}\)">\(p^{-4+2u}\)</span>, where <span class="math" data-tex="\(u=3/2-\eta\)">\(u=3/2-\eta\)</span>, and both exponents are less than <span class="math" data-tex="\(-1\)">\(-1\)</span>.
+Furthermore,
+<span class="math math-display" data-tex="\[
+F(0)=\prod_p(1+p^{-3})=\frac{\zeta(3)}{\zeta(6)},
+\qquad F(-1)=1,
+\qquad
+F&#x27;(-1)=\sum_p\frac{\log p}{p(p-1)}.
+\tag{4.4}
+\]">\[
+F(0)=\prod_p(1+p^{-3})=\frac{\zeta(3)}{\zeta(6)},
+\qquad F(-1)=1,
+\qquad
+F&#x27;(-1)=\sum_p\frac{\log p}{p(p-1)}.
+\tag{4.4}
+\]</span>
+These assertions follow at each prime; differentiating the uniformly convergent product near <span class="math" data-tex="\(-1\)">\(-1\)</span> is legitimate.</p>
+<p>The Mellin kernel for a quadratic weight is
+<span class="math math-display" data-tex="\[
+(1-r^{-1})_+^2
+=\frac1{2\pi i}\int_{(c)}
+\frac{2r^s}{s(s+1)(s+2)}\,ds
+\qquad(r&gt;0,\ c&gt;0).
+\tag{4.5}
+\]">\[
+(1-r^{-1})_+^2
+=\frac1{2\pi i}\int_{(c)}
+\frac{2r^s}{s(s+1)(s+2)}\,ds
+\qquad(r&gt;0,\ c&gt;0).
+\tag{4.5}
+\]</span>
+For <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, closing the contour to the left picks up residues
+<span class="math" data-tex="\(1,-2/r,1/r^2\)">\(1,-2/r,1/r^2\)</span>. For <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, closing to the right encloses no poles and gives zero. On horizontal segments the denominator is <span class="math" data-tex="\(O(|t|^3)\)">\(O(|t|^3)\)</span>; the outer vertical integral tends to zero because <span class="math" data-tex="\(r^{\Re s}\)">\(r^{\Re s}\)</span> decays in the chosen direction. The case <span class="math" data-tex="\(r=1\)">\(r=1\)</span> follows by continuity and absolute convergence. This proves (4.5).</p>
+<p>Insert <span class="math" data-tex="\(r=Y/n\)">\(r=Y/n\)</span>, sum on a line <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and interchange sum and integral absolutely:
+<span class="math math-display" data-tex="\[
+W(Y)=\frac1{2\pi i}\int_{(c)}
+\frac{2\zeta(s+1)\zeta(s+2)F(s)Y^s}
+{s(s+1)(s+2)}\,ds.
+\tag{4.6}
+\]">\[
+W(Y)=\frac1{2\pi i}\int_{(c)}
+\frac{2\zeta(s+1)\zeta(s+2)F(s)Y^s}
+{s(s+1)(s+2)}\,ds.
+\tag{4.6}
+\]</span>
+Move the line to <span class="math" data-tex="\(\sigma=-3/2+\eta\)">\(\sigma=-3/2+\eta\)</span>. We justify both the move and its remainder explicitly. On this line, the zeta functional equation and vertical Stirling estimate give
+<span class="math math-display" data-tex="\[
+|\zeta(s+1)|\ll_\eta(1+|t|)^{1-\eta}.
+\]">\[
+|\zeta(s+1)|\ll_\eta(1+|t|)^{1-\eta}.
+\]</span>
+The reflected zeta factor has real part <span class="math" data-tex="\(3/2-\eta&gt;1\)">\(3/2-\eta&gt;1\)</span> and is bounded by its absolutely convergent series.
+For <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>, partial summation of <span class="math" data-tex="\(\lfloor u\rfloor=u-\{u\}\)">\(\lfloor u\rfloor=u-\{u\}\)</span> gives the continuation
+<span class="math math-display" data-tex="\[
+\zeta(z)=\sum_{n\le N}n^{-z}
++\frac{N^{1-z}}{z-1}
+-z\int_N^\infty\{u\}u^{-z-1}\,du
+\tag{4.7}
+\]">\[
+\zeta(z)=\sum_{n\le N}n^{-z}
++\frac{N^{1-z}}{z-1}
+-z\int_N^\infty\{u\}u^{-z-1}\,du
+\tag{4.7}
+\]</span>
+when <span class="math" data-tex="\(N\)">\(N\)</span> is a positive integer. Initially this follows for <span class="math" data-tex="\(\Re z&gt;1\)">\(\Re z&gt;1\)</span>, and the integral continues it to <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>. With <span class="math" data-tex="\(N\asymp1+|t|\)">\(N\asymp1+|t|\)</span> and <span class="math" data-tex="\(z=s+2\)">\(z=s+2\)</span>, the finite sum and the integral are
+<span class="math" data-tex="\(O_\eta((1+|t|)^{1/2-\eta})\)">\(O_\eta((1+|t|)^{1/2-\eta})\)</span>, as is the remaining term. Consequently the integrand on the new line is
+<span class="math math-display" data-tex="\[
+\ll_\eta Y^{-3/2+\eta}(1+|t|)^{-3/2-2\eta},
+\]">\[
+\ll_\eta Y^{-3/2+\eta}(1+|t|)^{-3/2-2\eta},
+\]</span>
+which is integrable.</p>
+<p>For the horizontal edges, (4.7) uniformly gives
+<span class="math" data-tex="\(\zeta(z)\ll (1+|t|)^{\max(1-\Re z,0)}\log(2+|t|)\)">\(\zeta(z)\ll (1+|t|)^{\max(1-\Re z,0)}\log(2+|t|)\)</span> on any fixed positive strip. For <span class="math" data-tex="\(-1/2+\eta\le\Re z\le1/4\)">\(-1/2+\eta\le\Re z\le1/4\)</span>, apply the functional equation to <span class="math" data-tex="\(z\)">\(z\)</span> and use this same estimate on <span class="math" data-tex="\(1-z\)">\(1-z\)</span>. These two bounds together give, throughout the strip of the contour,
+<span class="math math-display" data-tex="\[
+\zeta(s+1)\zeta(s+2)
+\ll_{\eta,c}(1+|t|)^{3/2-2\eta}\log^2(2+|t|).
+\]">\[
+\zeta(s+1)\zeta(s+2)
+\ll_{\eta,c}(1+|t|)^{3/2-2\eta}\log^2(2+|t|).
+\]</span>
+The factor <span class="math" data-tex="\(|t|^{-3}\)">\(|t|^{-3}\)</span> makes both horizontal integrals tend to zero. The bounded segment with <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span> on the new line has no pole. Thus the remainder in (4.6) is <span class="math" data-tex="\(O_\eta(Y^{-3/2+\eta})\)">\(O_\eta(Y^{-3/2+\eta})\)</span>.</p>
+<p>The crossed poles are double poles at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> and <span class="math" data-tex="\(s=-1\)">\(s=-1\)</span>. At zero,
+<span class="math math-display" data-tex="\[
+\frac2{s(s+1)(s+2)}=\frac1s-\frac32+O(s),
+\]">\[
+\frac2{s(s+1)(s+2)}=\frac1s-\frac32+O(s),
+\]</span>
+so the residue is <span class="math" data-tex="\(\mathcal C\log Y+a\)">\(\mathcal C\log Y+a\)</span>. At <span class="math" data-tex="\(s=-1+w\)">\(s=-1+w\)</span>,
+<span class="math math-display" data-tex="\[
+\frac2{s(s+1)(s+2)}=-\frac2w+O(w).
+\]">\[
+\frac2{s(s+1)(s+2)}=-\frac2w+O(w).
+\]</span>
+Using <span class="math" data-tex="\(\zeta(w)=-1/2+\zeta&#x27;(0)w+O(w^2)\)">\(\zeta(w)=-1/2+\zeta&#x27;(0)w+O(w^2)\)</span>,
+<span class="math" data-tex="\(\zeta(1+w)=1/w+\gamma+O(w)\)">\(\zeta(1+w)=1/w+\gamma+O(w)\)</span>, and <span class="math" data-tex="\(F(-1)=1\)">\(F(-1)=1\)</span>, the residue is
+<span class="math math-display" data-tex="\[
+\frac{\log Y+\gamma-2\zeta&#x27;(0)+F&#x27;(-1)}Y.
+\]">\[
+\frac{\log Y+\gamma-2\zeta&#x27;(0)+F&#x27;(-1)}Y.
+\]</span>
+This proves (4.1)–(4.2). The identity <span class="math" data-tex="\(a=c_1-3\mathcal C/2\)">\(a=c_1-3\mathcal C/2\)</span> follows by comparing the constant term at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> in
+<span class="math" data-tex="\(D(s)=\zeta(s+1)\sum_d a_dd^{-s}\)">\(D(s)=\zeta(s+1)\sum_d a_dd^{-s}\)</span>; termwise differentiation is justified by (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factor <span class="math" data-tex="\(s+2\)">\(s+2\)</span> in (4.5)–(4.6) is required. Omitting it gives a different weight, a different convergence rate and incorrect residues.</p>
+<h2 id="5-switching-a-large-modulus-to-a-small-complementary-variable">5. Switching a large modulus to a small complementary variable</h2>
+<p>For <span class="math" data-tex="\(1\le y\le x\)">\(1\le y\le x\)</span>, let
+<span class="math math-display" data-tex="\[
+S(y)=\sum_{y&lt;q\le x}
+\sum_{\substack{m&lt;n\le x\\m\equiv n\pmod q}}
+\Lambda(m)\Lambda(n).
+\tag{5.1}
+\]">\[
+S(y)=\sum_{y&lt;q\le x}
+\sum_{\substack{m&lt;n\le x\\m\equiv n\pmod q}}
+\Lambda(m)\Lambda(n).
+\tag{5.1}
+\]</span>
+There is no coprimality restriction in this definition. Write <span class="math" data-tex="\(n-m=kq\)">\(n-m=kq\)</span>. This gives the exact finite rearrangement
+<span class="math math-display" data-tex="\[
+S(y)=\sum_{k\le x/y}\sum_{m\le x-ky}\Lambda(m)
+\left(\psi(x;k,m)-\psi(m+ky;k,m)\right).
+\tag{5.2}
+\]">\[
+S(y)=\sum_{k\le x/y}\sum_{m\le x-ky}\Lambda(m)
+\left(\psi(x;k,m)-\psi(m+ky;k,m)\right).
+\tag{5.2}
+\]</span>
+The strict condition <span class="math" data-tex="\(q&gt;y\)">\(q&gt;y\)</span> corresponds to <span class="math" data-tex="\(n&gt;m+ky\)">\(n&gt;m+ky\)</span>, including when <span class="math" data-tex="\(ky\)">\(ky\)</span> is not an integer. A term with <span class="math" data-tex="\(m=x-ky\)">\(m=x-ky\)</span> contributes zero.</p>
+<p><strong>Lemma 5.1.</strong> For every fixed <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, uniformly for
+<span class="math" data-tex="\(xL^{-D}\le y\le x\)">\(xL^{-D}\le y\le x\)</span>,
+<span class="math math-display" data-tex="\[
+S(y)=\frac{x^2}{2}W(x/y)+O_D(xy).
+\tag{5.3}
+\]">\[
+S(y)=\frac{x^2}{2}W(x/y)+O_D(xy).
+\tag{5.3}
+\]</span>
+The constant is ineffective.</p>
+<p><strong>Proof.</strong> The complementary modulus is small:
+<span class="math" data-tex="\(k\le x/y\le L^D\)">\(k\le x/y\le L^D\)</span>. If <span class="math" data-tex="\((m,k)&gt;1\)">\((m,k)&gt;1\)</span> and both weights in (5.2) are nonzero, then <span class="math" data-tex="\(m=p^a\)">\(m=p^a\)</span>, <span class="math" data-tex="\(n=p^b\)">\(n=p^b\)</span> for the same prime <span class="math" data-tex="\(p\mid k\)">\(p\mid k\)</span>. Thus these pairs contribute at most
+<span class="math math-display" data-tex="\[
+\sum_{k\le L^D}\sum_{p\mid k}
+\left\lfloor\frac{\log x}{\log p}\right\rfloor^2(\log p)^2
+\ll_D L^{D+3}\ll_D xy.
+\tag{5.4}
+\]">\[
+\sum_{k\le L^D}\sum_{p\mid k}
+\left\lfloor\frac{\log x}{\log p}\right\rfloor^2(\log p)^2
+\ll_D L^{D+3}\ll_D xy.
+\tag{5.4}
+\]</span></p>
+<p>For the remaining <span class="math" data-tex="\(m\)">\(m\)</span>, apply Siegel–Walfisz to the two endpoints in (5.2). Both are at least <span class="math" data-tex="\(y\ge xL^{-D}\ge\sqrt{x}\)">\(y\ge xL^{-D}\ge\sqrt{x}\)</span> for sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>. Hence
+<span class="math" data-tex="\(k\le L^D\le(\log t)^{2D+2}\)">\(k\le L^D\le(\log t)^{2D+2}\)</span> at either endpoint <span class="math" data-tex="\(t\)">\(t\)</span>, and
+<span class="math math-display" data-tex="\[
+\psi(x;k,m)-\psi(m+ky;k,m)
+=\frac{x-m-ky}{\varphi(k)}
++O_D\!\left(xe^{-c_D\sqrt{\log x}}\right).
+\tag{5.5}
+\]">\[
+\psi(x;k,m)-\psi(m+ky;k,m)
+=\frac{x-m-ky}{\varphi(k)}
++O_D\!\left(xe^{-c_D\sqrt{\log x}}\right).
+\tag{5.5}
+\]</span>
+Since <span class="math" data-tex="\(\sum_{m\le x}\Lambda(m)\ll x\)">\(\sum_{m\le x}\Lambda(m)\ll x\)</span>, the summed error is
+<span class="math" data-tex="\(O_D(x^2L^D e^{-c_D\sqrt{\log x}})=O_D(xy)\)">\(O_D(x^2L^D e^{-c_D\sqrt{\log x}})=O_D(xy)\)</span>.</p>
+<p>Set <span class="math" data-tex="\(z=x-ky\)">\(z=x-ky\)</span>. Removing <span class="math" data-tex="\((m,k)=1\)">\((m,k)=1\)</span> from the main term of (5.5) costs at most
+<span class="math math-display" data-tex="\[
+\sum_{k\le L^D}\frac{x}{\varphi(k)}
+\sum_{\substack{p^a\le x\\p\mid k}}\log p
+\ll_D xL^{D+2}\ll_D xy.
+\tag{5.6}
+\]">\[
+\sum_{k\le L^D}\frac{x}{\varphi(k)}
+\sum_{\substack{p^a\le x\\p\mid k}}\log p
+\ll_D xL^{D+2}\ll_D xy.
+\tag{5.6}
+\]</span>
+This deliberately generous bound follows from <span class="math" data-tex="\(\varphi(k)\ge1\)">\(\varphi(k)\ge1\)</span> and
+<span class="math" data-tex="\(\sum_{p^a\le x,p\mid k}\log p\le\omega(k)\log x\)">\(\sum_{p^a\le x,p\mid k}\log p\le\omega(k)\log x\)</span>.</p>
+<p>The ordinary prime number theorem also gives, uniformly for every <span class="math" data-tex="\(0\le z\le x\)">\(0\le z\le x\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{m\le z}\Lambda(m)(z-m)
+=\int_0^z\psi(u)\,du
+=\frac{z^2}{2}
++O\!\left(x^2e^{-c&#x27;\sqrt{\log x}}\right).
+\tag{5.7}
+\]">\[
+\sum_{m\le z}\Lambda(m)(z-m)
+=\int_0^z\psi(u)\,du
+=\frac{z^2}{2}
++O\!\left(x^2e^{-c&#x27;\sqrt{\log x}}\right).
+\tag{5.7}
+\]</span>
+To see the uniformity when <span class="math" data-tex="\(z\)">\(z\)</span> is small, split the integral at <span class="math" data-tex="\(\sqrt{x}\)">\(\sqrt{x}\)</span>. Below that point the error is <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span> by Chebyshev; above it the prime number theorem bounds
+<span class="math" data-tex="\(|\psi(u)-u|\)">\(|\psi(u)-u|\)</span> by <span class="math" data-tex="\(O(xe^{-c&#x27;\sqrt{\log x}})\)">\(O(xe^{-c&#x27;\sqrt{\log x}})\)</span>.
+Shrinking <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> absorbs <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span>. Thus no distribution assertion at a tiny endpoint is being used.</p>
+<p>Insert (5.7) in the main term of (5.5). Summing its error uses
+<span class="math" data-tex="\(\sum_{k\le L^D}1/\varphi(k)\ll\log(2L^D)\)">\(\sum_{k\le L^D}1/\varphi(k)\ll\log(2L^D)\)</span>, and again gives <span class="math" data-tex="\(O_D(xy)\)">\(O_D(xy)\)</span>. The main term is exactly
+<span class="math math-display" data-tex="\[
+\frac12\sum_{k\le x/y}\frac{(x-ky)^2}{\varphi(k)}
+=\frac{x^2}{2}W(x/y).
+\]">\[
+\frac12\sum_{k\le x/y}\frac{(x-ky)^2}{\varphi(k)}
+=\frac{x^2}{2}W(x/y).
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(\eta=1/4\)">\(\eta=1/4\)</span> in Lemma 4.1, (5.3) becomes
+<span class="math math-display" data-tex="\[
+S(y)=
+\frac{\mathcal Cx^2}{2}\log(x/y)
++\frac{ax^2}{2}
++\frac{xy}{2}\log(x/y)
++O_D(xy).
+\tag{5.8}
+\]">\[
+S(y)=
+\frac{\mathcal Cx^2}{2}\log(x/y)
++\frac{ax^2}{2}
++\frac{xy}{2}\log(x/y)
++O_D(xy).
+\tag{5.8}
+\]</span>
+Indeed, the <span class="math" data-tex="\(bxy/2\)">\(bxy/2\)</span> term is included in the error, and
+<span class="math" data-tex="\(x^2(y/x)^{5/4}\le xy\)">\(x^2(y/x)^{5/4}\le xy\)</span>.</p>
+<h2 id="6-the-full-asymptotic">6. The full asymptotic</h2>
+<p><strong>Theorem 6.1 (Montgomery–Hooley mean-square asymptotic).</strong> For every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+V(x,Q)=Qx\log Q+O_A(Qx)
+\qquad
+\left(x(\log x)^{-A}\le Q\le x\right).
+\tag{6.1}
+\]">\[
+V(x,Q)=Qx\log Q+O_A(Qx)
+\qquad
+\left(x(\log x)^{-A}\le Q\le x\right).
+\tag{6.1}
+\]</span>
+The error constant is ineffective. In particular,
+<span class="math" data-tex="\(V(x,Q)\sim Qx\log Q\)">\(V(x,Q)\sim Qx\log Q\)</span>, uniformly in this range.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(Q_1=xL^{-A-2}\)">\(Q_1=xL^{-A-2}\)</span>. Applying Theorem 2.1 with parameter <span class="math" data-tex="\(A+3\)">\(A+3\)</span> gives
+<span class="math math-display" data-tex="\[
+V(x,Q_1)\ll_A xQ_1L\ll_A Qx.
+\tag{6.2}
+\]">\[
+V(x,Q_1)\ll_A xQ_1L\ll_A Qx.
+\tag{6.2}
+\]</span>
+The slightly enlarged parameter is harmless and ensures that <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> lies above the theorem's stated lower endpoint for large <span class="math" data-tex="\(x\)">\(x\)</span>.
+We may therefore compute the variance over <span class="math" data-tex="\(Q_1&lt;q\le Q\)">\(Q_1&lt;q\le Q\)</span>.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+B_q=\sum_{(b,q)=1}\psi(x;q,b)^2,
+\qquad
+A_q=\sum_{(b,q)=1}\psi(x;q,b).
+\]">\[
+B_q=\sum_{(b,q)=1}\psi(x;q,b)^2,
+\qquad
+A_q=\sum_{(b,q)=1}\psi(x;q,b).
+\]</span>
+Expanding the square gives
+<span class="math math-display" data-tex="\[
+V(x,Q)-V(x,Q_1)
+=\sum_{Q_1&lt;q\le Q}
+\left(B_q-\frac{x^2}{\varphi(q)}
+-\frac{2x}{\varphi(q)}(A_q-x)\right).
+\tag{6.3}
+\]">\[
+V(x,Q)-V(x,Q_1)
+=\sum_{Q_1&lt;q\le Q}
+\left(B_q-\frac{x^2}{\varphi(q)}
+-\frac{2x}{\varphi(q)}(A_q-x)\right).
+\tag{6.3}
+\]</span>
+The principal sum is
+<span class="math math-display" data-tex="\[
+A_q=\psi(x)-
+\sum_{p\mid q}\left\lfloor\frac{\log x}{\log p}\right\rfloor\log p
+=x+O\!\left(xe^{-c\sqrt{\log x}}+L^2\right).
+\]">\[
+A_q=\psi(x)-
+\sum_{p\mid q}\left\lfloor\frac{\log x}{\log p}\right\rfloor\log p
+=x+O\!\left(xe^{-c\sqrt{\log x}}+L^2\right).
+\]</span>
+Using <span class="math" data-tex="\(\sum_{q\le Q}1/\varphi(q)\ll L\)">\(\sum_{q\le Q}1/\varphi(q)\ll L\)</span>, the last term of (6.3), summed over <span class="math" data-tex="\(q\)">\(q\)</span>, is
+<span class="math math-display" data-tex="\[
+O\!\left(x^2Le^{-c\sqrt{\log x}}+xL^3\right)=O_A(Qx).
+\tag{6.4}
+\]">\[
+O\!\left(x^2Le^{-c\sqrt{\log x}}+xL^3\right)=O_A(Qx).
+\tag{6.4}
+\]</span></p>
+<p>The sum <span class="math" data-tex="\(B_q\)">\(B_q\)</span> counts weighted pairs <span class="math" data-tex="\(m,n\le x\)">\(m,n\le x\)</span>, congruent modulo <span class="math" data-tex="\(q\)">\(q\)</span>, with <span class="math" data-tex="\((mn,q)=1\)">\((mn,q)=1\)</span>.
+Omitting this coprimality condition costs at most
+<span class="math math-display" data-tex="\[
+\sum_{p\mid q}\left\lfloor\frac{\log x}{\log p}\right\rfloor^2(\log p)^2
+\ll L^3
+\tag{6.5}
+\]">\[
+\sum_{p\mid q}\left\lfloor\frac{\log x}{\log p}\right\rfloor^2(\log p)^2
+\ll L^3
+\tag{6.5}
+\]</span>
+for each <span class="math" data-tex="\(q\)">\(q\)</span>. To justify this, a removed pair with nonzero weights must have both <span class="math" data-tex="\(m,n\)">\(m,n\)</span> powers of a common prime dividing <span class="math" data-tex="\(q\)">\(q\)</span>. The total cost <span class="math" data-tex="\(O(QL^3)\)">\(O(QL^3)\)</span> is <span class="math" data-tex="\(O(Qx)\)">\(O(Qx)\)</span>.</p>
+<p>The diagonal <span class="math" data-tex="\(m=n\)">\(m=n\)</span> contributes
+<span class="math math-display" data-tex="\[
+(Q-Q_1+O(1))\sum_{n\le x}\Lambda(n)^2
+=Qx\log x+O_A(Qx).
+\tag{6.6}
+\]">\[
+(Q-Q_1+O(1))\sum_{n\le x}\Lambda(n)^2
+=Qx\log x+O_A(Qx).
+\tag{6.6}
+\]</span>
+Here
+<span class="math math-display" data-tex="\[
+\sum_{n\le x}\Lambda(n)^2=x\log x+O(x).
+\tag{6.7}
+\]">\[
+\sum_{n\le x}\Lambda(n)^2=x\log x+O(x).
+\tag{6.7}
+\]</span>
+Indeed, partial summation gives
+<span class="math" data-tex="\(\sum_{p\le x}(\log p)^2=\theta(x)\log x-\int_2^x\theta(u)\,du/u
+=x\log x+O(x)\)">\(\sum_{p\le x}(\log p)^2=\theta(x)\log x-\int_2^x\theta(u)\,du/u
+=x\log x+O(x)\)</span>;
+the prime number theorem makes the errors <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span>, and the proper prime powers contribute
+<span class="math" data-tex="\(O(\sqrt{x}L^2)=O(x)\)">\(O(\sqrt{x}L^2)=O(x)\)</span>.
+The discarded <span class="math" data-tex="\(Q_1x\log x\)">\(Q_1x\log x\)</span> and rounding error in (6.6) are also <span class="math" data-tex="\(O_A(Qx)\)">\(O_A(Qx)\)</span>.</p>
+<p>The off-diagonal pairs contribute exactly
+<span class="math" data-tex="\(2(S(Q_1)-S(Q))\)">\(2(S(Q_1)-S(Q))\)</span>. Both endpoints satisfy the range of Lemma 5.1 with <span class="math" data-tex="\(D=A+2\)">\(D=A+2\)</span>. Equation (5.8) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2(S(Q_1)-S(Q))
+={}&amp;\mathcal Cx^2\log(Q/Q_1)
++xQ_1\log(x/Q_1)\\
+&amp;-xQ\log(x/Q)+O_A(Qx).
+\end{aligned}
+\tag{6.8}
+\]">\[
+\begin{aligned}
+2(S(Q_1)-S(Q))
+={}&amp;\mathcal Cx^2\log(Q/Q_1)
++xQ_1\log(x/Q_1)\\
+&amp;-xQ\log(x/Q)+O_A(Qx).
+\end{aligned}
+\tag{6.8}
+\]</span>
+The constant term <span class="math" data-tex="\(ax^2\)">\(ax^2\)</span> cancels exactly. The term
+<span class="math" data-tex="\(xQ_1\log(x/Q_1)\ll_A xQ_1\log L\)">\(xQ_1\log(x/Q_1)\ll_A xQ_1\log L\)</span> is <span class="math" data-tex="\(O_A(Qx)\)">\(O_A(Qx)\)</span>.</p>
+<p>By Lemma 3.1,
+<span class="math math-display" data-tex="\[
+x^2\sum_{Q_1&lt;q\le Q}\frac1{\varphi(q)}
+=\mathcal Cx^2\log(Q/Q_1)
++O_A\!\left(\frac{x^2L}{Q_1}\right)
+=\mathcal Cx^2\log(Q/Q_1)+O_A(Qx).
+\tag{6.9}
+\]">\[
+x^2\sum_{Q_1&lt;q\le Q}\frac1{\varphi(q)}
+=\mathcal Cx^2\log(Q/Q_1)
++O_A\!\left(\frac{x^2L}{Q_1}\right)
+=\mathcal Cx^2\log(Q/Q_1)+O_A(Qx).
+\tag{6.9}
+\]</span>
+The last comparison uses <span class="math" data-tex="\(Q\ge x(\log x)^{-A}\)">\(Q\ge x(\log x)^{-A}\)</span> and
+<span class="math" data-tex="\(x^2L/Q_1=xL^{A+3}=o_A(Qx)\)">\(x^2L/Q_1=xL^{A+3}=o_A(Qx)\)</span>.
+The <span class="math" data-tex="\(c_1\)">\(c_1\)</span> terms also cancel. Combining (6.2)–(6.9), the two terms containing <span class="math" data-tex="\(\mathcal Cx^2\log(Q/Q_1)\)">\(\mathcal Cx^2\log(Q/Q_1)\)</span> cancel, leaving
+<span class="math math-display" data-tex="\[
+Qx\log x-Qx\log(x/Q)+O_A(Qx)
+=Qx\log Q+O_A(Qx).
+\]">\[
+Qx\log x-Qx\log(x/Q)+O_A(Qx)
+=Qx\log Q+O_A(Qx).
+\]</span>
+Finally <span class="math" data-tex="\(\log Q\sim\log x\)">\(\log Q\sim\log x\)</span> uniformly in the stated range, so the error is <span class="math" data-tex="\(o(Qx\log Q)\)">\(o(Qx\log Q)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The auxiliary cutoff is of size <span class="math" data-tex="\(x\)">\(x\)</span> divided by a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>. A cutoff of size <span class="math" data-tex="\(x^2\)">\(x^2\)</span> divided by such a power would exceed <span class="math" data-tex="\(Q\)">\(Q\)</span> and could not be discarded by (6.2).</p>
+<h2 id="7-a-direct-count-and-the-meaning-of-the-main-term">7. A direct count and the meaning of the main term</h2>
+<p>At <span class="math" data-tex="\(Q=x\)">\(Q=x\)</span>, Theorem 6.1 reads
+<span class="math math-display" data-tex="\[
+V(x,x)=x^2\log x+O(x^2).
+\tag{7.1}
+\]">\[
+V(x,x)=x^2\log x+O(x^2).
+\tag{7.1}
+\]</span>
+This includes the requested direct-count bound <span class="math" data-tex="\(O(x^2\log x)\)">\(O(x^2\log x)\)</span>. The count in its proof has a useful concrete interpretation. Each diagonal prime-power weight <span class="math" data-tex="\(\Lambda(n)^2\)">\(\Lambda(n)^2\)</span> is counted once per modulus, giving <span class="math" data-tex="\(x^2\log x+O(x^2)\)">\(x^2\log x+O(x^2)\)</span>. For an off-diagonal pair, write <span class="math" data-tex="\(n-m=kq\)">\(n-m=kq\)</span>, sum first over <span class="math" data-tex="\(k\le L^{A+2}\)">\(k\le L^{A+2}\)</span> after removing <span class="math" data-tex="\(q\le Q_1\)">\(q\le Q_1\)</span>, and use (5.2). Its large <span class="math" data-tex="\(x^2\log L\)">\(x^2\log L\)</span> term cancels the same term from the subtracted class means. Bounding the off-diagonal and mean terms separately by their absolute sizes would lose this cancellation.</p>
+<p>For numerical examples, the following values use every reduced class and the definition (0.1). The class sum is independently checked by counting divisors of each prime-power difference; (1.1) is also checked at small moduli. The data illustrate convergence; they do not certify the asymptotic error constant.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(Q\)">\(Q\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(V(x,Q)\)">\(V(x,Q)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(V(x,Q)/(Qx\log Q)\)">\(V(x,Q)/(Qx\log Q)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(100\)">\(100\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(100\)">\(100\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(11948.9255\)">\(11948.9255\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.259468\)">\(0.259468\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(500\)">\(500\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(500\)">\(500\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(587693.0382\)">\(587693.0382\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.378266\)">\(0.378266\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1000\)">\(1000\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(500\)">\(500\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1147453.8125\)">\(1147453.8125\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.369276\)">\(0.369276\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="\(1000\)">\(1000\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1000\)">\(1000\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2967554.8484\)">\(2967554.8484\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0.429598\)">\(0.429598\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A diagonal-only heuristic gives <span class="math" data-tex="\(Qx\log x\)">\(Qx\log x\)</span>, because
+<span class="math" data-tex="\(\sum_{n\le x}\Lambda(n)^2\sim x\log x\)">\(\sum_{n\le x}\Lambda(n)^2\sim x\log x\)</span>.
+Congruent distinct prime powers are correlated with the subtracted mean. Their net contribution is
+<span class="math" data-tex="\(-Qx\log(x/Q)+O_A(Qx)\)">\(-Qx\log(x/Q)+O_A(Qx)\)</span>, as (6.8)–(6.9) show.
+This explains both the constant <span class="math" data-tex="\(1\)">\(1\)</span> and the occurrence of <span class="math" data-tex="\(\log Q\)">\(\log Q\)</span>.
+In the present range <span class="math" data-tex="\(\log Q=\log x+O_A(\log\log x)\)">\(\log Q=\log x+O_A(\log\log x)\)</span>, so the diagonal heuristic has the right first-order size, but it misses the more precise correction.</p>
+<p>For comparison, GRH gives individual errors <span class="math" data-tex="\(O(\sqrt{x}\log^2(qx))\)">\(O(\sqrt{x}\log^2(qx))\)</span>. Squaring and summing that estimate over all <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> classes yields a much larger bound of order <span class="math" data-tex="\(xQ^2L^4\)">\(xQ^2L^4\)</span>. The mean-square theorem comes from orthogonality and averaging before estimating the character sums.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Deduce the almost-all-pairs assertion for <span class="math" data-tex="\(Q=x(\log x)^{-A-2}\)">\(Q=x(\log x)^{-A-2}\)</span>, and give a possible tolerance tending to zero.</li>
+<li><strong>Medium.</strong> Compute the variance at <span class="math" data-tex="\(Q=x\)">\(Q=x\)</span> by weighted pair counting, up to an error bound sufficient to prove <span class="math" data-tex="\(V(x,x)=O(x^2\log x)\)">\(V(x,x)=O(x^2\log x)\)</span>. Identify the cancellation that prevents an extra <span class="math" data-tex="\(\log\log x\)">\(\log\log x\)</span> term.</li>
+<li><strong>Medium.</strong> Explain why a diagonal heuristic predicts <span class="math" data-tex="\(Qx\log x\)">\(Qx\log x\)</span>, and how the complementary-variable calculation changes this to <span class="math" data-tex="\(Qx\log Q\)">\(Qx\log Q\)</span>.</li>
+<li><strong>Hard.</strong> Give the full mean-square upper-bound argument, including the principal character, passage to conductors, and summation of the large-conductor blocks.</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<ol>
+<li>
+<p>A bad pair contributes at least <span class="math" data-tex="\(\varepsilon^2x^2/Q^2\)">\(\varepsilon^2x^2/Q^2\)</span>, since <span class="math" data-tex="\(\varphi(q)\le Q\)">\(\varphi(q)\le Q\)</span>. Theorem 2.1 with parameter <span class="math" data-tex="\(A+2\)">\(A+2\)</span> therefore gives at most
+<span class="math" data-tex="\(O_A(\varepsilon^{-2}Q^3\log x/x)\)">\(O_A(\varepsilon^{-2}Q^3\log x/x)\)</span> such pairs. The elementary coprime-pair count in Corollary 2.2 gives <span class="math" data-tex="\(\sum_{q\le Q}\varphi(q)\gg Q^2\)">\(\sum_{q\le Q}\varphi(q)\gg Q^2\)</span>. Thus the bad proportion is
+<span class="math" data-tex="\(O_A(\varepsilon^{-2}(\log x)^{-A-1})\)">\(O_A(\varepsilon^{-2}(\log x)^{-A-1})\)</span>, tending to zero for fixed <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Taking <span class="math" data-tex="\(\varepsilon=(\log x)^{-(A+1)/4}\)">\(\varepsilon=(\log x)^{-(A+1)/4}\)</span> also works and gives proportion <span class="math" data-tex="\(O_A((\log x)^{-(A+1)/2})\)">\(O_A((\log x)^{-(A+1)/2})\)</span>.</p>
+</li>
+<li>
+<p>Take <span class="math" data-tex="\(Q_1=xL^{-3}\)">\(Q_1=xL^{-3}\)</span>. Theorem 2.1, with parameter <span class="math" data-tex="\(4\)">\(4\)</span>, bounds the small-modulus variance by <span class="math" data-tex="\(O(x^2/L^2)\)">\(O(x^2/L^2)\)</span>. Expanding the remaining squares gives the unrestricted weighted pair count minus
+<span class="math" data-tex="\(x^2\sum_{Q_1&lt;q\le x}1/\varphi(q)\)">\(x^2\sum_{Q_1&lt;q\le x}1/\varphi(q)\)</span>, with error <span class="math" data-tex="\(O(x^2)\)">\(O(x^2)\)</span> by (6.4)–(6.5). The diagonal is
+<span class="math" data-tex="\(x^2\log x+O(x^2)\)">\(x^2\log x+O(x^2)\)</span> by (6.7). The off-diagonal is <span class="math" data-tex="\(2S(Q_1)\)">\(2S(Q_1)\)</span>, since <span class="math" data-tex="\(S(x)=0\)">\(S(x)=0\)</span>. From (5.8),
+<span class="math math-display" data-tex="\[
+2S(Q_1)=\mathcal Cx^2\log(x/Q_1)+ax^2
++xQ_1\log(x/Q_1)+O(xQ_1).
+\]">\[
+2S(Q_1)=\mathcal Cx^2\log(x/Q_1)+ax^2
++xQ_1\log(x/Q_1)+O(xQ_1).
+\]</span>
+Lemma 3.1 gives
+<span class="math math-display" data-tex="\[
+x^2\sum_{Q_1&lt;q\le x}\frac1{\varphi(q)}
+=\mathcal Cx^2\log(x/Q_1)+O(x^2L/Q_1).
+\]">\[
+x^2\sum_{Q_1&lt;q\le x}\frac1{\varphi(q)}
+=\mathcal Cx^2\log(x/Q_1)+O(x^2L/Q_1).
+\]</span>
+The latter error is <span class="math" data-tex="\(O(xL^4)=O(x^2)\)">\(O(xL^4)=O(x^2)\)</span>, and
+<span class="math" data-tex="\(xQ_1\log(x/Q_1)=O(x^2)\)">\(xQ_1\log(x/Q_1)=O(x^2)\)</span>. The common
+<span class="math" data-tex="\(\mathcal Cx^2\log(x/Q_1)\)">\(\mathcal Cx^2\log(x/Q_1)\)</span> terms cancel. The <span class="math" data-tex="\(ax^2\)">\(ax^2\)</span> term is part of <span class="math" data-tex="\(O(x^2)\)">\(O(x^2)\)</span>, giving the stronger result (7.1), hence the requested bound. Every pair rearrangement is finite; the distribution input is used only at the short complementary moduli.</p>
+</li>
+<li>
+<p>The diagonal contributes about <span class="math" data-tex="\(Q\sum_{n\le x}\Lambda(n)^2\sim Qx\log x\)">\(Q\sum_{n\le x}\Lambda(n)^2\sim Qx\log x\)</span>. Switching <span class="math" data-tex="\(n-m=kq\)">\(n-m=kq\)</span>, the quadratic weight in the short <span class="math" data-tex="\(k\)">\(k\)</span>-sum creates the secondary term <span class="math" data-tex="\(x y\log(x/y)\)">\(x y\log(x/y)\)</span> in <span class="math" data-tex="\(2S(y)\)">\(2S(y)\)</span>. Subtracting its values at <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>, then subtracting the mean square, leaves <span class="math" data-tex="\(-Qx\log(x/Q)+O_A(Qx)\)">\(-Qx\log(x/Q)+O_A(Qx)\)</span>. Adding it to the diagonal gives <span class="math" data-tex="\(Qx\log Q+O_A(Qx)\)">\(Qx\log Q+O_A(Qx)\)</span>. The identity of the two logarithms is exact; the initial description of the diagonal as a random variance is a heuristic.</p>
+</li>
+<li>
+<p>Define <span class="math" data-tex="\(\psi&#x27;=\psi-\mathbf1_{\chi=\chi_0}x\)">\(\psi&#x27;=\psi-\mathbf1_{\chi=\chi_0}x\)</span>. Orthogonality gives (1.1) for every <span class="math" data-tex="\(q\)">\(q\)</span>. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is induced from conductor <span class="math" data-tex="\(d\)">\(d\)</span>, its centered sum differs from the primitive centered sum by (1.2), bounded by <span class="math" data-tex="\(O(L^2)\)">\(O(L^2)\)</span>. Squaring with <span class="math" data-tex="\(|u+v|^2\le2|u|^2+2|v|^2\)">\(|u+v|^2\le2|u|^2+2|v|^2\)</span>, summing over characters, and then summing <span class="math" data-tex="\(q\)">\(q\)</span> yields <span class="math" data-tex="\(O(QL^4)\)">\(O(QL^4)\)</span> plus primitive sums with weight
+<span class="math" data-tex="\(\sum_{q\le Q,d\mid q}1/\varphi(q)\)">\(\sum_{q\le Q,d\mid q}1/\varphi(q)\)</span>.
+The inequality <span class="math" data-tex="\(\varphi(dm)\ge\varphi(d)\varphi(m)\)">\(\varphi(dm)\ge\varphi(d)\varphi(m)\)</span> and the totient sum bound give (1.4), hence (1.3). Split at <span class="math" data-tex="\(R=L^{A+2}\)">\(R=L^{A+2}\)</span>. For <span class="math" data-tex="\(d\le R\)">\(d\le R\)</span>, Siegel–Walfisz bounds each centered sum by <span class="math" data-tex="\(O_A(xe^{-c_A\sqrt{\log x}})\)">\(O_A(xe^{-c_A\sqrt{\log x}})\)</span>, including the conductor-one principal sum. There are at most <span class="math" data-tex="\(\varphi(d)\)">\(\varphi(d)\)</span> primitive characters, so this portion is
+<span class="math" data-tex="\(O_A(x^2RL e^{-2c_A\sqrt{\log x}})=O_A(xQ)\)">\(O_A(x^2RL e^{-2c_A\sqrt{\log x}})=O_A(xQ)\)</span>.
+For <span class="math" data-tex="\(r&lt;d\le2r\)">\(r&lt;d\le2r\)</span>, <span class="math" data-tex="\(r\ge R\)">\(r\ge R\)</span>, there is no principal term. The sharp primitive large sieve gives
+<span class="math math-display" data-tex="\[
+\sum_{r&lt;d\le2r}\frac d{\varphi(d)}
+\sum_\chi^*|\psi(x,\chi)|^2
+\ll (x+r^2)\sum_{n\le x}\Lambda(n)^2
+\ll (x+r^2)xL.
+\]">\[
+\sum_{r&lt;d\le2r}\frac d{\varphi(d)}
+\sum_\chi^*|\psi(x,\chi)|^2
+\ll (x+r^2)\sum_{n\le x}\Lambda(n)^2
+\ll (x+r^2)xL.
+\]</span>
+Multiplying by <span class="math" data-tex="\(\log(2Q/r)/r\)">\(\log(2Q/r)/r\)</span> gives (2.3). Sum over <span class="math" data-tex="\(r=2^jR\)">\(r=2^jR\)</span>. The decreasing part is <span class="math" data-tex="\(O(x^2L^2/R)\le O(xQ)\)">\(O(x^2L^2/R)\le O(xQ)\)</span>; the increasing part is <span class="math" data-tex="\(O(xQL)\)">\(O(xQL)\)</span> by the backwards geometric sum in (2.4). The induction error <span class="math" data-tex="\(QL^4\)">\(QL^4\)</span> is <span class="math" data-tex="\(O(xQL)\)">\(O(xQL)\)</span>. Thus <span class="math" data-tex="\(V(x,Q)\ll_A xQ\log x\)">\(V(x,Q)\ll_A xQ\log x\)</span> throughout the stated range, with ineffective constant only from Siegel–Walfisz.</p>
+</li>
+</ol>
+<h2 id="10-proof-scope-and-references">10. Proof scope and references</h2>
+<p>All mean-square results stated here, including the asymptotic (6.1), have been proved. The prerequisite results named in the introduction are internal inputs with exact locators. No external asymptotic is being used in their place. A range such as <span class="math" data-tex="\(Q=x^{1-\delta}\)">\(Q=x^{1-\delta}\)</span>, with fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, is outside Theorems 2.1 and 6.1; no assertion about that smaller range is made here.</p>
+<p>The historical names refer to the development of the upper bound by Barban, Davenport and Halberstam, and the asymptotic by Montgomery and Hooley.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-15.html">← The Bombieri–Vinogradov theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-17.html">The least prime in a progression: Linnik&#x27;s theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-16.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

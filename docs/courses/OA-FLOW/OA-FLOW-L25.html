@@ -1,0 +1,693 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Covariance and crossed products with nonunital coefficients · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L24.html">Previous lesson</a><a href="OA-FLOW-HARMONIC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L25.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original reconstruction by GPT-6.1 Sol (OpenAI), Ultra; independent full lesson review and integration by GPT-6 Astra (OpenAI), Ultra. Earlier programme inputs remain under review. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.CCOV.SETTING"><span id="oa-flow.ccov.setting"></span>Covariance and crossed products with nonunital coefficients</h1>
+<p><em>Original exposition, proofs and illustration source are dedicated under CC0.</em></p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be any C* algebra, let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff group, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(A)\)">\(\alpha:G\to\operatorname{Aut}(A)\)</span> be an action such that <span class="math" data-tex="\(s\mapsto\alpha_s(a)\)">\(s\mapsto\alpha_s(a)\)</span> is norm continuous for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. No identity, separability, countability or unimodularity is assumed. We use left Haar measure and the convention
+<span class="math" data-tex="\(\int f(ts)\,dt=\Delta(s)^{-1}\int f(t)\,dt\)">\(\int f(ts)\,dt=\Delta(s)^{-1}\int f(t)\,dt\)</span>.
+Inner products are linear in the first variable.</p>
+<h2 id="OA-FLOW.CCOV.IMPORT.FOUNDATIONS"><span id="oa-flow.ccov.import.foundations"></span>Earlier programme inputs</h2>
+<p>The scalar convergence and norm inputs are the earlier <a href="OA-FLOW-SC.html#sc-03">SC-03–07 proofs</a>. The previous lesson supplies the locally determined Haar convention, its identification with finite-exponent completed Radon spaces, Bochner integrals, the vector tensor unitary, qualified Radon-product Fubini, scalar translations and convolution, and the elementary automatic contractivity theorem. It also proves the C* quotient and closed-range facts from the earlier continuous calculus and order. We additionally use <a href="OA-FLOW-GNS.html#gns-theorem-5-1">Theorem 5.1</a>, <a href="OA-FLOW-GNS.html#gns-theorem-5-2">Theorem 5.2</a> and <a href="OA-FLOW-GNS.html#gns-theorem-7-3">Theorem 7.3</a> of the earlier lesson Positive functionals and nonunital representations: the cyclic nonunital GNS representation of a state and the faithful nondegenerate representation of any C* algebra. The Hilbert projection and bounded-form theorems, and continuous calculus, including the positive-cone theorem, are the same earlier inputs declared in the previous lesson. All other results used in this lesson are proved below. These earlier proof inputs are part of the dependency boundary, not discharged by the references at the end.</p>
+<h2 id="OA-FLOW.CCOV.ALGEBRA"><span id="oa-flow.ccov.algebra"></span>1. The integrable coefficient algebra</h2>
+<p>Let <span class="math" data-tex="\(\mathcal B=L^1(G,A)\)">\(\mathcal B=L^1(G,A)\)</span>, with strong measurability and sigma compact representatives as in the previous lesson. Define
+<span class="math math-display" data-tex="\[
+ (F*H)(t)=\int F(s)\alpha_s(H(s^{-1}t))\,ds,\qquad
+ F^*(t)=\Delta(t^{-1})\alpha_t(F(t^{-1})^*).
+ \tag{1.1}
+\]">\[
+ (F*H)(t)=\int F(s)\alpha_s(H(s^{-1}t))\,ds,\qquad
+ F^*(t)=\Delta(t^{-1})\alpha_t(F(t^{-1})^*).
+ \tag{1.1}
+\]</span>
+Automorphisms of <span class="math" data-tex="\(A\)">\(A\)</span> are isometric: apply the C* contractivity lemma to an automorphism and its inverse. The integrands in (1.1) are strongly measurable on their sigma compact carriers. For continuous compactly supported <span class="math" data-tex="\(F,H\)">\(F,H\)</span> this follows from joint continuity of the action on each compact coefficient range; approximating in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> proves the general case.</p>
+<p><strong>Proposition 1.1.</strong> <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is a Banach star algebra, <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span> is dense in it, and
+<span class="math math-display" data-tex="\[
+ \|F*H\|_1\leq\|F\|_1\|H\|_1,\qquad \|F^*\|_1=\|F\|_1.
+ \tag{1.2}
+\]">\[
+ \|F*H\|_1\leq\|F\|_1\|H\|_1,\qquad \|F^*\|_1=\|F\|_1.
+ \tag{1.2}
+\]</span></p>
+<p><strong>Proof.</strong> Bochner completeness and density were proved in the previous lesson. The product integrand is bounded in norm by <span class="math" data-tex="\(\|F(s)\|\|H(s^{-1}t)\|\)">\(\|F(s)\|\|H(s^{-1}t)\|\)</span>, whose double integral is <span class="math" data-tex="\(\|F\|_1\|H\|_1\)">\(\|F\|_1\|H\|_1\)</span> by the Haar shear and qualified Fubini. Its carrier is contained in the image of two sigma compact carriers under <span class="math" data-tex="\((s,r)\mapsto(s,sr)\)">\((s,r)\mapsto(s,sr)\)</span>. Thus the pointwise formula gives an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> class and the stated norm estimate. Alternatively construct the product first on <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>, then extend by the estimate; the integrand-error estimate identifies the two definitions.</p>
+<p>Associativity follows because both bracketings have the integrand
+<span class="math math-display" data-tex="\[
+ F(s)\alpha_s(H(r))\alpha_{sr}(K(r^{-1}s^{-1}t)),
+ \tag{1.3}
+\]">\[
+ F(s)\alpha_s(H(r))\alpha_{sr}(K(r^{-1}s^{-1}t)),
+ \tag{1.3}
+\]</span>
+after substituting the inner variable <span class="math" data-tex="\(u=sr\)">\(u=sr\)</span>. Its triple norm integral is bounded by the product of the three <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms. The inversion formula and isometry of <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> prove the involution norm identity and its square being the identity. For product reversal,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (H^**F^*)(t)
+ &amp;=\Delta(t^{-1})\int
+       \alpha_r(H(r^{-1})^*)\alpha_t(F(t^{-1}r)^*)\,dr\\
+ &amp;=\Delta(t^{-1})\alpha_t\!\left(
+       \int\alpha_s(H(s^{-1}t^{-1})^*)F(s)^*\,ds\right)
+ =(F*H)^*(t),
+ \end{aligned}
+ \tag{1.4}
+\]">\[
+ \begin{aligned}
+ (H^**F^*)(t)
+ &amp;=\Delta(t^{-1})\int
+       \alpha_r(H(r^{-1})^*)\alpha_t(F(t^{-1}r)^*)\,dr\\
+ &amp;=\Delta(t^{-1})\alpha_t\!\left(
+       \int\alpha_s(H(s^{-1}t^{-1})^*)F(s)^*\,ds\right)
+ =(F*H)^*(t),
+ \end{aligned}
+ \tag{1.4}
+\]</span>
+where <span class="math" data-tex="\(r=ts\)">\(r=ts\)</span> is left translation. First verify these formulas on compact supports, then extend by the norm estimates. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Put
+<span class="math math-display" data-tex="\[
+ M_aF(t)=aF(t),\quad N_aF(t)=F(t)\alpha_t(a),\quad
+ T_sF(t)=\alpha_s(F(s^{-1}t)).
+ \tag{1.5}
+\]">\[
+ M_aF(t)=aF(t),\quad N_aF(t)=F(t)\alpha_t(a),\quad
+ T_sF(t)=\alpha_s(F(s^{-1}t)).
+ \tag{1.5}
+\]</span>
+The coefficient maps have norm at most <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, while <span class="math" data-tex="\(T_s\)">\(T_s\)</span> is an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> isometry and <span class="math" data-tex="\(T_sT_r=T_{sr}\)">\(T_sT_r=T_{sr}\)</span>. The action <span class="math" data-tex="\(s\mapsto T_sF\)">\(s\mapsto T_sF\)</span> is norm continuous. For compact <span class="math" data-tex="\(F\)">\(F\)</span>, split its difference at the identity into the uniform translate difference and <span class="math" data-tex="\(\alpha_s(F(t))-F(t)\)">\(\alpha_s(F(t))-F(t)\)</span>; the latter tends uniformly to zero on the compact range of <span class="math" data-tex="\(F\)">\(F\)</span>, by finite epsilon nets and isometry of <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>. The supports locally lie in one compact set. Integrate, then use density and the isometry to extend to every <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proposition 1.2 (a product approximate identity).</strong> Let <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> be the positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> constructed in the previous lesson, and let <span class="math" data-tex="\((a_V)\)">\((a_V)\)</span> be its normalized scalar compact bumps. On the product directed set,
+<span class="math math-display" data-tex="\[
+ w_{i,V}(t)=a_V(t)e_i
+ \tag{1.6}
+\]">\[
+ w_{i,V}(t)=a_V(t)e_i
+ \tag{1.6}
+\]</span>
+has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm at most one and is a two-sided approximate identity of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>.</p>
+<p><strong>Proof.</strong> For compact <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(M_{e_i}F\to F\)">\(M_{e_i}F\to F\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>: a bounded approximate identity approximates uniformly on a compact subset of <span class="math" data-tex="\(A\)">\(A\)</span>, by a finite-net argument. The same argument on the compact range of <span class="math" data-tex="\(t\mapsto\alpha_{t^{-1}}(F(t))\)">\(t\mapsto\alpha_{t^{-1}}(F(t))\)</span> gives <span class="math" data-tex="\(N_{e_i}F\to F\)">\(N_{e_i}F\to F\)</span>. Density and the uniform contraction bounds extend both limits to all <span class="math" data-tex="\(F\)">\(F\)</span>. These are net limits; no dominated-convergence theorem for arbitrary nets is being used.</p>
+<p>Now
+<span class="math math-display" data-tex="\[
+ w_{i,V}*F=M_{e_i}\!\left(\int a_V(s)T_sF\,ds\right),\qquad
+ F*w_{i,V}=(N_{e_i}F)*_{\rm scalar}a_V.
+ \tag{1.7}
+\]">\[
+ w_{i,V}*F=M_{e_i}\!\left(\int a_V(s)T_sF\,ds\right),\qquad
+ F*w_{i,V}=(N_{e_i}F)*_{\rm scalar}a_V.
+ \tag{1.7}
+\]</span>
+The second product is ordinary scalar convolution of an <span class="math" data-tex="\(A\)">\(A\)</span>-valued function. Its approximate-identity property follows from the vector version of the scalar right translations proved in the previous lesson: the same compact-uniform proof and Bochner bound apply to <span class="math" data-tex="\(A\)">\(A\)</span>-valued functions. The first identity follows by the definition. The two errors are bounded respectively by
+<span class="math math-display" data-tex="\[
+ \sup_{s\in V}\|T_sF-F\|_1+\|M_{e_i}F-F\|_1,\qquad
+ \|N_{e_i}F-F\|_1+\|F*_{\rm scalar}a_V-F\|_1.
+ \tag{1.8}
+\]">\[
+ \sup_{s\in V}\|T_sF-F\|_1+\|M_{e_i}F-F\|_1,\qquad
+ \|N_{e_i}F-F\|_1+\|F*_{\rm scalar}a_V-F\|_1.
+ \tag{1.8}
+\]</span>
+Both tend to zero on the product net. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FLOW.CCOV.INTEGRATION"><span id="oa-flow.ccov.integration"></span>2. Integrating a nondegenerate covariant representation</h2>
+<p>A <strong>covariant representation</strong> on <span class="math" data-tex="\(K\)">\(K\)</span> is a nondegenerate star representation <span class="math" data-tex="\(\pi:A\to B(K)\)">\(\pi:A\to B(K)\)</span> and a strongly continuous unitary action <span class="math" data-tex="\(U:G\to\mathcal U(K)\)">\(U:G\to\mathcal U(K)\)</span> such that
+<span class="math math-display" data-tex="\[
+ U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+ \tag{2.1}
+\]">\[
+ U_s\pi(a)U_s^*=\pi(\alpha_s(a)).
+ \tag{2.1}
+\]</span>
+Nondegenerate means <span class="math" data-tex="\(\overline{\pi(A)K}=K\)">\(\overline{\pi(A)K}=K\)</span>; it does not mean that <span class="math" data-tex="\(A\)">\(A\)</span> has an identity.</p>
+<p><strong>Theorem 2.1.</strong> Its integrated form
+<span class="math math-display" data-tex="\[
+ \Phi_{\pi,U}(F)\xi=\int\pi(F(s))U_s\xi\,ds
+ \tag{2.2}
+\]">\[
+ \Phi_{\pi,U}(F)\xi=\int\pi(F(s))U_s\xi\,ds
+ \tag{2.2}
+\]</span>
+is a nondegenerate star representation of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, with
+<span class="math" data-tex="\(\|\Phi_{\pi,U}(F)\|\leq\|F\|_1\)">\(\|\Phi_{\pi,U}(F)\|\leq\|F\|_1\)</span>.</p>
+<p><strong>Proof.</strong> For compact <span class="math" data-tex="\(F\)">\(F\)</span>, the vector integrand is continuous. On arbitrary strongly measurable <span class="math" data-tex="\(F\)">\(F\)</span> with a sigma compact carrier it is strongly measurable by simple approximation and continuous vector orbits, with norm bounded by <span class="math" data-tex="\(\|F(s)\|\|\xi\|\)">\(\|F(s)\|\|\xi\|\)</span>. Thus (2.2) is a Bochner integral defining a bounded operator. Covariance gives
+<span class="math math-display" data-tex="\[
+ \pi(F(s))U_s\pi(H(r))U_r
+ =\pi(F(s)\alpha_s(H(r)))U_{sr}.
+ \tag{2.3}
+\]">\[
+ \pi(F(s))U_s\pi(H(r))U_r
+ =\pi(F(s)\alpha_s(H(r)))U_{sr}.
+ \tag{2.3}
+\]</span>
+Vector Fubini, with domination <span class="math" data-tex="\(\|F(s)\|\|H(r)\|\|\xi\|\)">\(\|F(s)\|\|H(r)\|\|\xi\|\)</span>, and substitution <span class="math" data-tex="\(t=sr\)">\(t=sr\)</span> prove multiplicativity. The adjoint integrand is <span class="math" data-tex="\(U_{s^{-1}}\pi(F(s)^*)=\pi(\alpha_{s^{-1}}(F(s)^*))U_{s^{-1}}\)">\(U_{s^{-1}}\pi(F(s)^*)=\pi(\alpha_{s^{-1}}(F(s)^*))U_{s^{-1}}\)</span>; inversion with its modular factor gives <span class="math" data-tex="\(\Phi(F)^*=\Phi(F^*)\)">\(\Phi(F)^*=\Phi(F^*)\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\pi(e_i)\to I\)">\(\pi(e_i)\to I\)</span> strongly: on <span class="math" data-tex="\(\pi(a)\eta\)">\(\pi(a)\eta\)</span> it follows from <span class="math" data-tex="\(e_i a\to a\)">\(e_i a\to a\)</span>, and the contractions extend this to the dense generated space. Therefore
+<span class="math math-display" data-tex="\[
+ \|\Phi(w_{i,V})\xi-\xi\|
+ \leq\sup_{s\in V}\|U_s\xi-\xi\|+\|\pi(e_i)\xi-\xi\|\to0.
+ \tag{2.4}
+\]">\[
+ \|\Phi(w_{i,V})\xi-\xi\|
+ \leq\sup_{s\in V}\|U_s\xi-\xi\|+\|\pi(e_i)\xi-\xi\|\to0.
+ \tag{2.4}
+\]</span>
+This proves nondegeneracy. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FLOW.CCOV.COEFFICIENTRECOVERY"><span id="oa-flow.ccov.coefficientrecovery"></span>3. Recovering the two actions on an actual vector domain</h2>
+<p>Let <span class="math" data-tex="\(\Phi:\mathcal B\to B(K)\)">\(\Phi:\mathcal B\to B(K)\)</span> be any algebraic star representation. The previous lesson's elementary Banach star algebra proof gives <span class="math" data-tex="\(\|\Phi(F)\|\leq\|F\|_1\)">\(\|\Phi(F)\|\leq\|F\|_1\)</span>. Restrict to its essential space <span class="math" data-tex="\(K_e=\overline{\Phi(\mathcal B)K}\)">\(K_e=\overline{\Phi(\mathcal B)K}\)</span>; the perpendicular space is a zero summand by the adjoint argument of that lesson.</p>
+<p><strong>Theorem 3.1.</strong> On <span class="math" data-tex="\(K_e\)">\(K_e\)</span> there is a unique nondegenerate covariant pair integrating to <span class="math" data-tex="\(\Phi|_{K_e}\)">\(\Phi|_{K_e}\)</span>. Its initial formulas on finite generating sums are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \pi(a)\sum_j\Phi(F_j)\xi_j&amp;=\sum_j\Phi(M_aF_j)\xi_j,\\
+ U_s\sum_j\Phi(F_j)\xi_j&amp;=\sum_j\Phi(T_sF_j)\xi_j .
+ \end{aligned}
+ \tag{3.1}
+\]">\[
+ \begin{aligned}
+ \pi(a)\sum_j\Phi(F_j)\xi_j&amp;=\sum_j\Phi(M_aF_j)\xi_j,\\
+ U_s\sum_j\Phi(F_j)\xi_j&amp;=\sum_j\Phi(T_sF_j)\xi_j .
+ \end{aligned}
+ \tag{3.1}
+\]</span>
+These formulas are well defined and bounded before being extended to <span class="math" data-tex="\(K_e\)">\(K_e\)</span>.</p>
+<p><strong>Proof of the coefficient bound.</strong> Multiplication on coefficient functions satisfies
+<span class="math math-display" data-tex="\[
+ (M_aH)^**F=H^**(M_{a^*}F).
+ \tag{3.2}
+\]">\[
+ (M_aH)^**F=H^**(M_{a^*}F).
+ \tag{3.2}
+\]</span>
+To see this, the star of <span class="math" data-tex="\(aH(r^{-1})\)">\(aH(r^{-1})\)</span> places <span class="math" data-tex="\(a^*\)">\(a^*\)</span> on its right, and applying <span class="math" data-tex="\(\alpha_r\)">\(\alpha_r\)</span> places <span class="math" data-tex="\(\alpha_r(a^*)\)">\(\alpha_r(a^*)\)</span> immediately before <span class="math" data-tex="\(\alpha_r(F(r^{-1}t))\)">\(\alpha_r(F(r^{-1}t))\)</span>. This is exactly the right side. The identity holds also for coefficients in the C* unitization, acting on <span class="math" data-tex="\(A\)">\(A\)</span> by scalar-plus-coefficient multiplication.</p>
+<p>For <span class="math" data-tex="\(c&gt;\|a\|\)">\(c&gt;\|a\|\)</span>, put <span class="math" data-tex="\(d=(c^21-a^*a)^{1/2}\)">\(d=(c^21-a^*a)^{1/2}\)</span> in that unitization. Given a specific finite sum <span class="math" data-tex="\(z=\sum_j\Phi(F_j)\xi_j\)">\(z=\sum_j\Phi(F_j)\xi_j\)</span>, let <span class="math" data-tex="\(z_a=\sum_j\Phi(M_aF_j)\xi_j\)">\(z_a=\sum_j\Phi(M_aF_j)\xi_j\)</span> and define <span class="math" data-tex="\(z_d\)">\(z_d\)</span> in the same way. Pairwise use of (3.2), and <span class="math" data-tex="\(d^*d=c^21-a^*a\)">\(d^*d=c^21-a^*a\)</span>, gives
+<span class="math math-display" data-tex="\[
+ c^2\|z\|^2-\|z_a\|^2=\|z_d\|^2\geq0.
+ \tag{3.3}
+\]">\[
+ c^2\|z\|^2-\|z_a\|^2=\|z_d\|^2\geq0.
+ \tag{3.3}
+\]</span>
+This computation is valid on the particular finite sum without presupposing that any of these operators has been defined on its equivalence class. If <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, it forces <span class="math" data-tex="\(z_a=0\)">\(z_a=0\)</span>. Thus <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> is well defined, and letting <span class="math" data-tex="\(c\downarrow\|a\|\)">\(c\downarrow\|a\|\)</span> gives <span class="math" data-tex="\(\|\pi(a)\|\leq\|a\|\)">\(\|\pi(a)\|\leq\|a\|\)</span>. The multiplier composition <span class="math" data-tex="\(M_aM_b=M_{ab}\)">\(M_aM_b=M_{ab}\)</span> and (3.2) prove multiplicativity and the adjoint rule on the generating domain and then on its closure. Moreover
+<span class="math" data-tex="\(\pi(e_i)\Phi(F)\xi=\Phi(M_{e_i}F)\xi\to\Phi(F)\xi\)">\(\pi(e_i)\Phi(F)\xi=\Phi(M_{e_i}F)\xi\to\Phi(F)\xi\)</span>
+by Proposition 1.2. Uniform contractivity extends this limit to <span class="math" data-tex="\(K_e\)">\(K_e\)</span>, so <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is nondegenerate.</p>
+<h3 id="OA-FLOW.CCOV.GROUPRECOVERY"><span id="oa-flow.ccov.grouprecovery"></span>Recovering the group action</h3>
+<p><strong>Proof of the group action.</strong> The identity
+<span class="math math-display" data-tex="\[
+ (T_sH)^**(T_sF)=H^**F
+ \tag{3.4}
+\]">\[
+ (T_sH)^**(T_sF)=H^**F
+ \tag{3.4}
+\]</span>
+follows by writing the convolution integral and putting <span class="math" data-tex="\(q=rs\)">\(q=rs\)</span>: the factor <span class="math" data-tex="\(\Delta(s)^{-1}\)">\(\Delta(s)^{-1}\)</span> from right translation cancels the factor <span class="math" data-tex="\(\Delta(s)\)">\(\Delta(s)\)</span> in <span class="math" data-tex="\(\Delta(r^{-1})\)">\(\Delta(r^{-1})\)</span>, and the coefficient automorphism becomes <span class="math" data-tex="\(\alpha_{rs}=\alpha_q\)">\(\alpha_{rs}=\alpha_q\)</span>. Thus (3.1) preserves the inner product of any two finite generating sums. It is well defined and isometric, with inverse <span class="math" data-tex="\(U_{s^{-1}}\)">\(U_{s^{-1}}\)</span>. Its extension is unitary and satisfies the group law. The estimate
+<span class="math" data-tex="\(\|(U_s-U_r)\Phi(F)\xi\|\leq\|T_sF-T_rF\|_1\|\xi\|\)">\(\|(U_s-U_r)\Phi(F)\xi\|\leq\|T_sF-T_rF\|_1\|\xi\|\)</span>
+and the norm continuity of <span class="math" data-tex="\(T_sF\)">\(T_sF\)</span> prove strong continuity on generators and hence everywhere. Since <span class="math" data-tex="\(T_sM_a=M_{\alpha_s(a)}T_s\)">\(T_sM_a=M_{\alpha_s(a)}T_s\)</span>, (2.1) holds on that domain and then on <span class="math" data-tex="\(K_e\)">\(K_e\)</span>.</p>
+<p><strong>Proof of integration and uniqueness.</strong> For <span class="math" data-tex="\(F,H\in\mathcal B\)">\(F,H\in\mathcal B\)</span>, the <span class="math" data-tex="\(L^1(G,A)\)">\(L^1(G,A)\)</span>-valued integral
+<span class="math math-display" data-tex="\[
+ \int M_{F(s)}T_sH\,ds=F*H
+ \tag{3.5}
+\]">\[
+ \int M_{F(s)}T_sH\,ds=F*H
+ \tag{3.5}
+\]</span>
+is Bochner integrable, with norm domination <span class="math" data-tex="\(\|F(s)\|\|H\|_1\)">\(\|F(s)\|\|H\|_1\)</span>. Its strong measurability follows from simple approximation of <span class="math" data-tex="\(F\)">\(F\)</span>, continuity of <span class="math" data-tex="\(T_sH\)">\(T_sH\)</span>, and bounded bilinearity of coefficient multiplication. Vector Fubini identifies it with (1.1), first on compact functions and then by the bilinear estimate. Thus
+<span class="math math-display" data-tex="\[
+ \Phi_{\pi,U}(F)\Phi(H)\xi
+ =\int\Phi(M_{F(s)}T_sH)\xi\,ds
+ =\Phi(F*H)\xi=\Phi(F)\Phi(H)\xi.
+ \tag{3.6}
+\]">\[
+ \Phi_{\pi,U}(F)\Phi(H)\xi
+ =\int\Phi(M_{F(s)}T_sH)\xi\,ds
+ =\Phi(F*H)\xi=\Phi(F)\Phi(H)\xi.
+ \tag{3.6}
+\]</span>
+Boundedness and density prove integration on <span class="math" data-tex="\(K_e\)">\(K_e\)</span>.</p>
+<p>Conversely, any pair integrating to <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> obeys
+<span class="math math-display" data-tex="\[
+ \Phi(M_aF)=\pi(a)\Phi(F),\qquad \Phi(T_sF)=U_s\Phi(F)
+ \tag{3.7}
+\]">\[
+ \Phi(M_aF)=\pi(a)\Phi(F),\qquad \Phi(T_sF)=U_s\Phi(F)
+ \tag{3.7}
+\]</span>
+by coefficient multiplication, covariance and left substitution in its integral. These identities force (3.1) on the dense domain, proving uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently a bounded operator intertwines two nondegenerate integrated representations if and only if it intertwines both their coefficient and group actions. For the reverse implication use the Bochner integral. For the forward implication, apply the intertwining identity to <span class="math" data-tex="\(M_aF\)">\(M_aF\)</span> and <span class="math" data-tex="\(T_sF\)">\(T_sF\)</span>, then use (3.1) on generating vectors and extend by density. Commutants and irreducibility therefore agree with those of the joint covariant pair.</p>
+<h2 id="OA-FLOW.CCOV.REGULAR"><span id="oa-flow.ccov.regular"></span>4. The regular pair and its two faithfulness assertions</h2>
+<p>Take a faithful nondegenerate representation <span class="math" data-tex="\(\rho:A\to B(K)\)">\(\rho:A\to B(K)\)</span>, supplied by the earlier C* representation construction. On <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span> put
+<span class="math math-display" data-tex="\[
+ (P_\rho(a)\xi)(t)=\rho(\alpha_{t^{-1}}(a))\xi(t),\qquad
+ (\Lambda_s\xi)(t)=\xi(s^{-1}t).
+ \tag{4.1}
+\]">\[
+ (P_\rho(a)\xi)(t)=\rho(\alpha_{t^{-1}}(a))\xi(t),\qquad
+ (\Lambda_s\xi)(t)=\xi(s^{-1}t).
+ \tag{4.1}
+\]</span>
+The previous lesson's unitary <span class="math" data-tex="\(L^2(G)\otimes K\cong L^2(G,K)\)">\(L^2(G)\otimes K\cong L^2(G,K)\)</span> justifies this vector space without any separability of <span class="math" data-tex="\(K\)">\(K\)</span>. The coefficient field acts on simple functions by continuous vector fields on their carriers; approximation shows strong measurability on every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector. It is bounded by <span class="math" data-tex="\(\|a\|\)">\(\|a\|\)</span>, and is a star homomorphism by pointwise multiplication and adjoints. The translations are strongly continuous unitaries. Direct evaluation gives
+<span class="math" data-tex="\(\Lambda_sP_\rho(a)\Lambda_s^*=P_\rho(\alpha_s(a))\)">\(\Lambda_sP_\rho(a)\Lambda_s^*=P_\rho(\alpha_s(a))\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span> is faithful and nondegenerate.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\rho(a)\eta\ne0\)">\(\rho(a)\eta\ne0\)</span>, continuity of <span class="math" data-tex="\(t\mapsto\rho(\alpha_{t^{-1}}(a))\eta\)">\(t\mapsto\rho(\alpha_{t^{-1}}(a))\eta\)</span> gives a neighbourhood of the identity where its norm is bounded below by a positive number. Multiplying by a nonzero compact bump in that neighbourhood gives an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector on which <span class="math" data-tex="\(P_\rho(a)\)">\(P_\rho(a)\)</span> is nonzero. Thus faithfulness of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> implies faithfulness of <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span>.</p>
+<p>For nondegeneracy, the vectors <span class="math" data-tex="\(h(t)\rho(b)\eta\)">\(h(t)\rho(b)\eta\)</span>, with <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, span a dense space, by nondegeneracy of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and the tensor identification. On the compact support of <span class="math" data-tex="\(h\)">\(h\)</span>,
+<span class="math math-display" data-tex="\[
+ \|\,\rho(\alpha_{t^{-1}}(e_i))\rho(b)\eta-\rho(b)\eta\,\|
+ \leq\|e_i\alpha_t(b)-\alpha_t(b)\|\,\|\eta\|\to0
+ \tag{4.2}
+\]">\[
+ \|\,\rho(\alpha_{t^{-1}}(e_i))\rho(b)\eta-\rho(b)\eta\,\|
+ \leq\|e_i\alpha_t(b)-\alpha_t(b)\|\,\|\eta\|\to0
+ \tag{4.2}
+\]</span>
+uniformly: <span class="math" data-tex="\(\{\alpha_t(b)\}\)">\(\{\alpha_t(b)\}\)</span> there is compact. Multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> proves <span class="math" data-tex="\(P_\rho(e_i)\to I\)">\(P_\rho(e_i)\to I\)</span> on that dense vector space, and the uniform contraction bound extends it to all <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors. This again proves a net limit without applying sequential dominated convergence to it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Denote its integrated representation by <span class="math" data-tex="\(\operatorname{Ind}\rho\)">\(\operatorname{Ind}\rho\)</span>. On a vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> its defining formula is the Bochner integral of operators applied to that vector. On a compact simple tensor it has the pointwise form
+<span class="math math-display" data-tex="\[
+ [\operatorname{Ind}\rho(F)(h\eta)](t)
+ =\int\rho(\alpha_{t^{-1}}(F(s)))h(s^{-1}t)\eta\,ds.
+ \tag{4.3}
+\]">\[
+ [\operatorname{Ind}\rho(F)(h\eta)](t)
+ =\int\rho(\alpha_{t^{-1}}(F(s)))h(s^{-1}t)\eta\,ds.
+ \tag{4.3}
+\]</span></p>
+<p><strong>Theorem 4.2.</strong> <span class="math" data-tex="\(\operatorname{Ind}\rho:\mathcal B\to B(L^2(G,K))\)">\(\operatorname{Ind}\rho:\mathcal B\to B(L^2(G,K))\)</span> is injective.</p>
+<p><strong>Proof.</strong> For scalar <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, define the untwisted <span class="math" data-tex="\(A\)">\(A\)</span>-valued convolution
+<span class="math math-display" data-tex="\[
+ H_h(t)=\int F(s)h(s^{-1}t)\,ds.
+ \tag{4.4}
+\]">\[
+ H_h(t)=\int F(s)h(s^{-1}t)\,ds.
+ \tag{4.4}
+\]</span>
+It is continuous: compact <span class="math" data-tex="\(F\)">\(F\)</span> gives continuity by the finite-cover argument, and <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation of <span class="math" data-tex="\(F\)">\(F\)</span> gives uniform convergence because the difference is bounded by <span class="math" data-tex="\(\|F-F_n\|_1\|h\|_\infty\)">\(\|F-F_n\|_1\|h\|_\infty\)</span>. It has a sigma compact carrier. Equation (4.3) is the continuous field <span class="math" data-tex="\(t\mapsto\rho(\alpha_{t^{-1}}(H_h(t)))\eta\)">\(t\mapsto\rho(\alpha_{t^{-1}}(H_h(t)))\eta\)</span>. It represents an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector by the integrated norm bound; its pointwise identification follows first on compact <span class="math" data-tex="\(F\)">\(F\)</span> by vector Fubini and then by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and uniform approximation just given.</p>
+<p>If <span class="math" data-tex="\(\operatorname{Ind}\rho(F)=0\)">\(\operatorname{Ind}\rho(F)=0\)</span>, this continuous field represents the zero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> class. A nonzero value would persist with positive norm on a nonempty open set, which has positive Haar measure. Thus it is zero <strong>everywhere</strong>, for each fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. For each <span class="math" data-tex="\(t\)">\(t\)</span> this is now an operator identity tested on every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, so faithfulness of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> gives <span class="math" data-tex="\(H_h(t)=0\)">\(H_h(t)=0\)</span>. There is no union of uncountably many exceptional null sets in this reasoning. Set <span class="math" data-tex="\(h=a_V\)">\(h=a_V\)</span> and use the scalar vector-valued right approximate identity <span class="math" data-tex="\(F*_{\rm scalar}a_V\to F\)">\(F*_{\rm scalar}a_V\to F\)</span>. Hence <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FLOW.CCOV.MATRIXNORMS"><span id="oa-flow.ccov.matrixnorms"></span>5. Why the reduced norm does not depend on the faithful coefficient representation</h2>
+<p>First consider any two faithful representations of a C* algebra <span class="math" data-tex="\(D\)">\(D\)</span>. Either representation gives <span class="math" data-tex="\(M_n(D)\)">\(M_n(D)\)</span> the operator norm in <span class="math" data-tex="\(B(K^n)\)">\(B(K^n)\)</span>. This is a complete C* norm: each entry has norm at most the matrix norm, and that norm is at most the sum of the entry norms. Thus a matrix Cauchy sequence has convergent entries, whose matrix converges by the latter bound. The operator adjoint and C* identity hold. The algebraic identity between two such matrix realizations is an injective star homomorphism of C* algebras, and is therefore isometric by the previous lesson. Its positive cone agrees as well, because positivity is <span class="math" data-tex="\(z^*z\)">\(z^*z\)</span> and either direction preserves this form.</p>
+<p>We also need to recognize this cone by operator quadratic forms. For a bounded self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span> with nonnegative quadratic forms, and <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>, Cauchy-Schwarz gives
+<span class="math" data-tex="\(\|(h-\lambda)\xi\|\geq|\lambda|\|\xi\|\)">\(\|(h-\lambda)\xi\|\geq|\lambda|\|\xi\|\)</span>.
+Its range is closed, and its perpendicular complement is the kernel of its adjoint <span class="math" data-tex="\(h-\lambda\)">\(h-\lambda\)</span>, hence is zero. Thus it is invertible, so its real spectrum is nonnegative and the positive-cone theorem makes it positive in <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>. An injective C* homomorphism reflects positivity: otherwise a self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> would have a negative spectral point, and a nonzero continuous function <span class="math" data-tex="\(g\)">\(g\)</span> supported in the negative half-line would give <span class="math" data-tex="\(g(h)\ne0\)">\(g(h)\ne0\)</span>, while calculus naturality gives <span class="math" data-tex="\(g(\rho(h))=\rho(g(h))=0\)">\(g(\rho(h))=\rho(g(h))=0\)</span>. In the nonunital case take <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, so <span class="math" data-tex="\(g(h)\)">\(g(h)\)</span> is in the original algebra. Naturality here follows by uniform polynomial approximation, using the isometric image and unitization if necessary. This contradicts injectivity. Consequently the operator matrix cone is exactly the algebraic positive cone just compared. This proves finite matrix norm and cone independence without importing a spatial tensor norm theorem.</p>
+<p>Let <span class="math" data-tex="\(A^\dagger=A\)">\(A^\dagger=A\)</span> if <span class="math" data-tex="\(A\)">\(A\)</span> is unital, and use its C* unitization otherwise. A faithful nondegenerate <span class="math" data-tex="\(\rho\)">\(\rho\)</span> extends faithfully to <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span>: if <span class="math" data-tex="\(\rho(a)+zI=0\)">\(\rho(a)+zI=0\)</span> with <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, faithfulness gives <span class="math" data-tex="\(ab=-zb\)">\(ab=-zb\)</span> and <span class="math" data-tex="\(ba=-zb\)">\(ba=-zb\)</span> for all <span class="math" data-tex="\(b\)">\(b\)</span>, making <span class="math" data-tex="\(-a/z\)">\(-a/z\)</span> an identity of <span class="math" data-tex="\(A\)">\(A\)</span>. That is impossible in the nonunital case. In the unital case nondegeneracy gives <span class="math" data-tex="\(\rho(1)=I\)">\(\rho(1)=I\)</span>. The zero algebra has only its zero nondegenerate Hilbert space and all norms below are zero; treat it separately.</p>
+<h3 id="OA-FLOW.CCOV.REGULARINDEPENDENCE"><span id="oa-flow.ccov.regularindependence"></span>Independence and the nonfaithful comparison bound</h3>
+<p><strong>Theorem 5.1.</strong> For nonzero <span class="math" data-tex="\(A\)">\(A\)</span>, all faithful nondegenerate <span class="math" data-tex="\(\rho\)">\(\rho\)</span> give the same norm <span class="math" data-tex="\(\|\operatorname{Ind}\rho(F)\|\)">\(\|\operatorname{Ind}\rho(F)\|\)</span>. For any nondegenerate coefficient representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, faithful or not,
+<span class="math math-display" data-tex="\[
+ \|\operatorname{Ind}\pi(F)\|\leq\|\operatorname{Ind}\rho(F)\|.
+ \tag{5.1}
+\]">\[
+ \|\operatorname{Ind}\pi(F)\|\leq\|\operatorname{Ind}\rho(F)\|.
+ \tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(F\in C_c(G,A)\)">\(F\in C_c(G,A)\)</span>. For arbitrary <span class="math" data-tex="\(h_1,\ldots,h_n\in C_c(G)\)">\(h_1,\ldots,h_n\in C_c(G)\)</span>, put
+<span class="math math-display" data-tex="\[
+ g_j(t)=\int\alpha_{t^{-1}}(F(s))h_j(s^{-1}t)\,ds,\quad
+ B_{ij}=\int g_i(t)^*g_j(t)\,dt,\quad
+ G_{ij}=\int\overline{h_i(t)}h_j(t)\,dt .
+ \tag{5.2}
+\]">\[
+ g_j(t)=\int\alpha_{t^{-1}}(F(s))h_j(s^{-1}t)\,ds,\quad
+ B_{ij}=\int g_i(t)^*g_j(t)\,dt,\quad
+ G_{ij}=\int\overline{h_i(t)}h_j(t)\,dt .
+ \tag{5.2}
+\]</span>
+Each <span class="math" data-tex="\(g_j\)">\(g_j\)</span> is continuous with compact support, by the same vector integral argument as (4.4) and continuity of the action. Thus the <span class="math" data-tex="\(B_{ij}\)">\(B_{ij}\)</span> are elements of <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(\xi=\sum_jh_j\eta_j\)">\(\xi=\sum_jh_j\eta_j\)</span>, equation (4.3) and inner products give
+<span class="math math-display" data-tex="\[
+ \|\operatorname{Ind}\rho(F)\xi\|^2
+ =\sum_{i,j}\langle\rho(B_{ij})\eta_j,\eta_i\rangle,\qquad
+ \|\xi\|^2=\sum_{i,j}G_{ij}\langle\eta_j,\eta_i\rangle.
+ \tag{5.3}
+\]">\[
+ \|\operatorname{Ind}\rho(F)\xi\|^2
+ =\sum_{i,j}\langle\rho(B_{ij})\eta_j,\eta_i\rangle,\qquad
+ \|\xi\|^2=\sum_{i,j}G_{ij}\langle\eta_j,\eta_i\rangle.
+ \tag{5.3}
+\]</span>
+Consequently <span class="math" data-tex="\(\|\operatorname{Ind}\rho(F)\|\leq C\)">\(\|\operatorname{Ind}\rho(F)\|\leq C\)</span> exactly when, for every such finite family, the self-adjoint matrix
+<span class="math math-display" data-tex="\[
+ D=C^2[G_{ij}1]-[B_{ij}]\quad\hbox{in }M_n(A^\dagger)
+ \tag{5.4}
+\]">\[
+ D=C^2[G_{ij}1]-[B_{ij}]\quad\hbox{in }M_n(A^\dagger)
+ \tag{5.4}
+\]</span>
+is positive. Indeed, all <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> may vary independently, and the finite tensor sums are dense. The matrix cones just proved independent show that this condition is the same for any other faithful coefficient representation. A possibly nonfaithful <span class="math" data-tex="\(\pi^\dagger\)">\(\pi^\dagger\)</span> preserves positivity, since it sends <span class="math" data-tex="\(z^*z\)">\(z^*z\)</span> to <span class="math" data-tex="\(\pi^\dagger(z)^*\pi^\dagger(z)\)">\(\pi^\dagger(z)^*\pi^\dagger(z)\)</span>. Thus the same matrix condition implies the operator bound for <span class="math" data-tex="\(\operatorname{Ind}\pi\)">\(\operatorname{Ind}\pi\)</span>. This proves both assertions on <span class="math" data-tex="\(C_c(G,A)\)">\(C_c(G,A)\)</span>. Approximate <span class="math" data-tex="\(F\in\mathcal B\)">\(F\in\mathcal B\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and use the common integrated <span class="math" data-tex="\(L^1\)">\(L^1\)</span> bound to extend them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="OA-FLOW.CCOV.COMPLETIONS"><span id="oa-flow.ccov.completions"></span>6. Full and reduced crossed products and their canonical actions</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+ \|F\|_u=\sup_{(\pi,U)}\|\Phi_{\pi,U}(F)\|,\qquad
+ \|F\|_r=\|\operatorname{Ind}\rho(F)\|.
+ \tag{6.1}
+\]">\[
+ \|F\|_u=\sup_{(\pi,U)}\|\Phi_{\pi,U}(F)\|,\qquad
+ \|F\|_r=\|\operatorname{Ind}\rho(F)\|.
+ \tag{6.1}
+\]</span>
+The pairs in the supremum are nondegenerate covariant Hilbert-space representations. Both norms are at most <span class="math" data-tex="\(\|F\|_1\)">\(\|F\|_1\)</span>. The regular pair belongs to this class, and Theorem 4.2 gives definiteness. The supremum can be taken over a set: every representation's essential cyclic restriction has density bounded by that of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, and Theorem 3.1 makes it a covariant restriction; choose Hilbert representatives up to this cardinal. The product approximate identity ensures that the cyclic generating vector lies in the essential cyclic closure, exactly as in the preceding lesson.</p>
+<p><strong>Theorem 6.1.</strong> The completions
+<span class="math math-display" data-tex="\[
+ A\rtimes_\alpha G=\overline{\mathcal B}^{\,\|\cdot\|_u},\qquad
+ A\rtimes_{\alpha,r}G=\overline{\operatorname{Ind}\rho(\mathcal B)}
+ \tag{6.2}
+\]">\[
+ A\rtimes_\alpha G=\overline{\mathcal B}^{\,\|\cdot\|_u},\qquad
+ A\rtimes_{\alpha,r}G=\overline{\operatorname{Ind}\rho(\mathcal B)}
+ \tag{6.2}
+\]</span>
+are C* algebras. The second is independent, up to its canonical isometry, of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The identity on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> gives a surjective star homomorphism
+<span class="math math-display" data-tex="\[
+ q:A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G.
+ \tag{6.3}
+\]">\[
+ q:A\rtimes_\alpha G\longrightarrow A\rtimes_{\alpha,r}G.
+ \tag{6.3}
+\]</span>
+Nondegenerate representations of the full algebra correspond exactly to nondegenerate covariant pairs, preserving intertwiners.</p>
+<p><strong>Proof.</strong> Each integrated representation is a star homomorphism, so the supremum and regular norms are submultiplicative and isometric on the involution. Their C* identities follow from
+<span class="math" data-tex="\(\|\Phi(F^**F)\|=\|\Phi(F)\|^2\)">\(\|\Phi(F^**F)\|=\|\Phi(F)\|^2\)</span>
+and taking suprema. Completion preserves these identities. Norm independence is Theorem 5.1. The inequality <span class="math" data-tex="\(\|\cdot\|_r\leq\|\cdot\|_u\)">\(\|\cdot\|_r\leq\|\cdot\|_u\)</span> extends the identity to <span class="math" data-tex="\(q\)">\(q\)</span> with dense image; the earlier proved C* closed-range theorem makes that image closed, hence onto. Thus the reduced algebra is isometrically the quotient by <span class="math" data-tex="\(\ker q\)">\(\ker q\)</span>.</p>
+<p>All nondegenerate integrated representations extend by the full norm definition. Conversely a nondegenerate full representation restricts to a nondegenerate representation of the dense <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, so Theorem 3.1 recovers its unique pair. Intertwiners were established immediately after that theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="OA-FLOW.CCOV.MULTIPLIERS"><span id="oa-flow.ccov.multipliers"></span>The coefficient and group multiplier pairs</h3>
+<p>The canonical coefficient and group actions are genuinely multiplier actions when <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital. On the dense algebra their left/right pairs are
+<span class="math math-display" data-tex="\[
+ \begin{array}{ll}
+ i_A(a)F=M_aF,&amp;Fi_A(a)=N_aF,\\
+ i_G(s)F=T_sF,&amp;Fi_G(s)=R_sF,\quad R_sF(t)=\Delta(s)^{-1}F(ts^{-1}).
+ \end{array}
+ \tag{6.4}
+\]">\[
+ \begin{array}{ll}
+ i_A(a)F=M_aF,&amp;Fi_A(a)=N_aF,\\
+ i_G(s)F=T_sF,&amp;Fi_G(s)=R_sF,\quad R_sF(t)=\Delta(s)^{-1}F(ts^{-1}).
+ \end{array}
+ \tag{6.4}
+\]</span>
+Their norm bounds follow in each covariant representation from
+<span class="math" data-tex="\(\Phi(M_aF)=\pi(a)\Phi(F)\)">\(\Phi(M_aF)=\pi(a)\Phi(F)\)</span>,
+<span class="math" data-tex="\(\Phi(N_aF)=\Phi(F)\pi(a)\)">\(\Phi(N_aF)=\Phi(F)\pi(a)\)</span>,
+<span class="math" data-tex="\(\Phi(T_sF)=U_s\Phi(F)\)">\(\Phi(T_sF)=U_s\Phi(F)\)</span>, and
+<span class="math" data-tex="\(\Phi(R_sF)=\Phi(F)U_s\)">\(\Phi(R_sF)=\Phi(F)U_s\)</span>.
+The latter identity is right substitution in (2.2). The same identities hold in the regular pair. Thus these maps extend boundedly to both completions; the group maps are isometric with the inverse for <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>.</p>
+<p>A <strong>multiplier pair</strong> on a C* algebra <span class="math" data-tex="\(D\)">\(D\)</span> consists of bounded linear maps <span class="math" data-tex="\(L,R:D\to D\)">\(L,R:D\to D\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ L(FH)=L(F)H,\qquad R(FH)=FR(H),\qquad R(F)H=FL(H).
+ \tag{6.5}
+\]">\[
+ L(FH)=L(F)H,\qquad R(FH)=FR(H),\qquad R(F)H=FL(H).
+ \tag{6.5}
+\]</span>
+Its product with <span class="math" data-tex="\((L',R')\)">\((L',R')\)</span> is <span class="math" data-tex="\((LL',R'R)\)">\((LL',R'R)\)</span>, its identity is <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, and its adjoint has maps <span class="math" data-tex="\(F\mapsto R(F^*)^*\)">\(F\mapsto R(F^*)^*\)</span>, <span class="math" data-tex="\(F\mapsto L(F^*)^*\)">\(F\mapsto L(F^*)^*\)</span>. For the actions (6.4), equations (6.5) can be checked in the faithful integrated regular representation: the displayed operator identities (6.4) reduce them respectively to associativity of operator multiplication. Injectivity from Theorem 4.2 then gives the identities on the coefficient algebra, and boundedness gives them on either completion. The same operator calculation gives <span class="math" data-tex="\(i_A(a)^*=i_A(a^*)\)">\(i_A(a)^*=i_A(a^*)\)</span>, <span class="math" data-tex="\(i_G(s)^*=i_G(s^{-1})\)">\(i_G(s)^*=i_G(s^{-1})\)</span>, their coefficient and group product rules, and covariance. Their inverse group pairs multiply to <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, so they are unitary multiplier actions in this precise sense.</p>
+<p>Norm continuity of <span class="math" data-tex="\(T_sF,R_sF\)">\(T_sF,R_sF\)</span> proves the continuity of these group multipliers when tested on either side of any algebra element. Every nondegenerate representation realizes the pairs on its dense generating vector space by the bounded actions already proved in Theorem 3.1. No multiplier-extension theorem was needed to define them.</p>
+<p>The coefficient action is nondegenerate on either completion: <span class="math" data-tex="\(M_{e_i}F\to F\)">\(M_{e_i}F\to F\)</span> was proved in Proposition 1.2, and the uniform contraction bound extends this approximation from the dense coefficient algebra to its completion.</p>
+<p>These coefficient actions are faithful: if <span class="math" data-tex="\(M_aF=0\)">\(M_aF=0\)</span> for all <span class="math" data-tex="\(F\)">\(F\)</span>, use <span class="math" data-tex="\(F(s)=h(s)b\)">\(F(s)=h(s)b\)</span>, where <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span> is a scalar compact bump, to obtain <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span> for every <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>, and then <span class="math" data-tex="\(ae_i\to a\)">\(ae_i\to a\)</span> gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Definiteness of the universal and regular norms permits this argument in either completion. For a discrete group, <span class="math" data-tex="\(a\mapsto\delta_e a\)">\(a\mapsto\delta_e a\)</span> is an actual algebra inclusion; if <span class="math" data-tex="\(A\)">\(A\)</span> is also unital, <span class="math" data-tex="\(\delta_s1\)">\(\delta_s1\)</span> are actual group unitaries. Without those hypotheses, (6.4) specifies the appropriate multiplier actions.</p>
+<h2 id="OA-FLOW.CCOV.COMPARISON"><span id="oa-flow.ccov.comparison"></span>7. A proved full/reduced comparison</h2>
+<p>Use the following precise condition on <span class="math" data-tex="\(G\)">\(G\)</span>: the trivial representation <span class="math" data-tex="\(f\mapsto\int f\)">\(f\mapsto\int f\)</span> of <span class="math" data-tex="\(C^*(G)\)">\(C^*(G)\)</span> factors through <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span>. Equivalently its kernel contains the kernel of the full-to-reduced group map. This is the C* formulation of amenability used in the free primary notes of Echterhoff, Definition 4.3. We prove the needed consequences here; no invariant-mean characterization is used or silently assumed.</p>
+<p><strong>Lemma 7.1 (almost invariant regular vectors).</strong> Under this condition there is a net of unit vectors <span class="math" data-tex="\(v_i\in L^2(G)\)">\(v_i\in L^2(G)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \sup_{s\in C}\|\lambda_s v_i-v_i\|_2\longrightarrow0
+ \quad\hbox{for every compact }C\subset G.
+ \tag{7.1}
+\]">\[
+ \sup_{s\in C}\|\lambda_s v_i-v_i\|_2\longrightarrow0
+ \quad\hbox{for every compact }C\subset G.
+ \tag{7.1}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\epsilon_r:C_r^*(G)\to\mathbb C\)">\(\epsilon_r:C_r^*(G)\to\mathbb C\)</span> be the factored character. On the minimal unitization <span class="math" data-tex="\(D=C_r^*(G)^\dagger\)">\(D=C_r^*(G)^\dagger\)</span>, extend it to a unital character <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. It is positive and contractive by the previous lesson's C* homomorphism lemma. The faithful nondegenerate regular inclusion of <span class="math" data-tex="\(D\)">\(D\)</span> in <span class="math" data-tex="\(B(L^2(G))\)">\(B(L^2(G))\)</span> is unital and faithful, by the minimal-unitization argument in Section 5.</p>
+<p>For any finite list <span class="math" data-tex="\(d_1,\ldots,d_n\)">\(d_1,\ldots,d_n\)</span> of self-adjoint elements, the vector of values <span class="math" data-tex="\((\epsilon(d_j))\)">\((\epsilon(d_j))\)</span> lies in the closed convex hull of
+<span class="math" data-tex="\(\{(\langle d_j\xi,\xi\rangle):\|\xi\|=1\}\)">\(\{(\langle d_j\xi,\xi\rangle):\|\xi\|=1\}\)</span>
+in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Otherwise the nearest-point projection onto this closed convex set gives a separating real linear functional. Its separating element is a self-adjoint <span class="math" data-tex="\(h=\sum_jc_jd_j\)">\(h=\sum_jc_jd_j\)</span> for which
+<span class="math" data-tex="\(\epsilon(h)&gt;\sup_{\|\xi\|=1}\langle h\xi,\xi\rangle=c\)">\(\epsilon(h)&gt;\sup_{\|\xi\|=1}\langle h\xi,\xi\rangle=c\)</span>.
+But <span class="math" data-tex="\(cI-h\geq0\)">\(cI-h\geq0\)</span> as an operator, since all its quadratic values are nonnegative. The faithful C* inclusion reflects positivity by its isometric calculus, so <span class="math" data-tex="\(c1-h\geq0\)">\(c1-h\geq0\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span>. Positivity of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> contradicts the displayed strict inequality. The nearest-point separator follows directly by expanding squared distances to points on the segment from the nearest point toward any other point of the convex set, as in the earlier Hilbert projection theorem.</p>
+<p>Apply this also to the real and imaginary parts of arbitrary finite lists. It gives a net of finite convex combinations of vector states
+<span class="math math-display" data-tex="\[
+ \psi_i(d)=\sum_{j=1}^{m_i}p_{ij}\langle d\xi_{ij},\xi_{ij}\rangle,
+ \quad p_{ij}\geq0,\quad \sum_jp_{ij}=1,\quad\|\xi_{ij}\|=1,
+ \tag{7.2}
+\]">\[
+ \psi_i(d)=\sum_{j=1}^{m_i}p_{ij}\langle d\xi_{ij},\xi_{ij}\rangle,
+ \quad p_{ij}\geq0,\quad \sum_jp_{ij}=1,\quad\|\xi_{ij}\|=1,
+ \tag{7.2}
+\]</span>
+converging pointwise to <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Index it by finite test lists and decreasing positive error bounds.</p>
+<p>Fix <span class="math" data-tex="\(g\in C_c(G)_+\)">\(g\in C_c(G)_+\)</span> with <span class="math" data-tex="\(\int g=1\)">\(\int g=1\)</span>, and form
+<span class="math" data-tex="\(\eta_i=(\sqrt{p_{ij}}\lambda(g)\xi_{ij})_{j=1}^{m_i}\)">\(\eta_i=(\sqrt{p_{ij}}\lambda(g)\xi_{ij})_{j=1}^{m_i}\)</span>
+in the finite direct sum of regular Hilbert spaces. Then
+<span class="math math-display" data-tex="\[
+ \|\eta_i\|^2=\psi_i(\lambda(g)^*\lambda(g))\to1,\qquad
+ \langle(\lambda_s\otimes1)\eta_i,\eta_i\rangle
+   =\psi_i(\lambda(g)^*\lambda_s\lambda(g))\to1.
+ \tag{7.3}
+\]">\[
+ \|\eta_i\|^2=\psi_i(\lambda(g)^*\lambda(g))\to1,\qquad
+ \langle(\lambda_s\otimes1)\eta_i,\eta_i\rangle
+   =\psi_i(\lambda(g)^*\lambda_s\lambda(g))\to1.
+ \tag{7.3}
+\]</span>
+Here <span class="math" data-tex="\(\lambda_s\lambda(g)=\lambda(L_sg)\)">\(\lambda_s\lambda(g)=\lambda(L_sg)\)</span>, so the tested element is inside <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span> and its character value is <span class="math" data-tex="\(1\)">\(1\)</span>. The map <span class="math" data-tex="\(s\mapsto\lambda(g)^*\lambda(L_sg)\)">\(s\mapsto\lambda(g)^*\lambda(L_sg)\)</span> is norm continuous. Its image on a compact set is norm compact; finite epsilon nets and <span class="math" data-tex="\(\|\psi_i\|=\|\epsilon\|=1\)">\(\|\psi_i\|=\|\epsilon\|=1\)</span> make convergence in (7.3) uniform on that compact set.</p>
+<p>Normalize <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span> once its norm is nonzero. The identity for unit vectors
+<span class="math" data-tex="\(\|(\lambda_s\otimes1)w_i-w_i\|^2=2-2\operatorname{Re}\langle(\lambda_s\otimes1)w_i,w_i\rangle\)">\(\|(\lambda_s\otimes1)w_i-w_i\|^2=2-2\operatorname{Re}\langle(\lambda_s\otimes1)w_i,w_i\rangle\)</span>
+now gives uniform almost invariance. Regard <span class="math" data-tex="\(w_i\)">\(w_i\)</span> as a finite-dimensional vector-valued <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function and put <span class="math" data-tex="\(v_i(t)=\|w_i(t)\|\)">\(v_i(t)=\|w_i(t)\|\)</span>. It has scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one, and the reverse triangle inequality gives
+<span class="math math-display" data-tex="\[
+ \|\lambda_s v_i-v_i\|_2
+ \leq\|(\lambda_s\otimes1)w_i-w_i\|_2.
+ \tag{7.4}
+\]">\[
+ \|\lambda_s v_i-v_i\|_2
+ \leq\|(\lambda_s\otimes1)w_i-w_i\|_2.
+ \tag{7.4}
+\]</span>
+This proves (7.1), with no fixed dimension or separability assumption. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 7.2.</strong> Under the condition above, the map <span class="math" data-tex="\(q\)">\(q\)</span> in (6.3) is an isomorphism for every <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span>. In particular, faithfulness of the full-to-reduced <strong>group</strong> representation implies equality of the full and reduced norms for every coefficient system.</p>
+<p><strong>Proof.</strong> For a covariant pair <span class="math" data-tex="\((\pi,U)\)">\((\pi,U)\)</span>, multiplication by <span class="math" data-tex="\(U_t\)">\(U_t\)</span> is a unitary <span class="math" data-tex="\(W\)">\(W\)</span> on <span class="math" data-tex="\(L^2(G,K)\)">\(L^2(G,K)\)</span>:
+<span class="math math-display" data-tex="\[
+ (W\xi)(t)=U_t\xi(t).
+ \tag{7.5}
+\]">\[
+ (W\xi)(t)=U_t\xi(t).
+ \tag{7.5}
+\]</span>
+Its strong measurability follows on simple functions from continuous vector orbits on sigma compact carriers, then on general functions by approximation; its inverse uses <span class="math" data-tex="\(U_t^*\)">\(U_t^*\)</span>, and its pointwise norm is unchanged. Direct evaluation gives
+<span class="math math-display" data-tex="\[
+ WP_\pi(a)W^*=\pi(a)\otimes1,\qquad
+ W\Lambda_sW^*=U_s\otimes\lambda_s,
+ \tag{7.6}
+\]">\[
+ WP_\pi(a)W^*=\pi(a)\otimes1,\qquad
+ W\Lambda_sW^*=U_s\otimes\lambda_s,
+ \tag{7.6}
+\]</span>
+Here the tensor order is <span class="math" data-tex="\(K\otimes L^2(G)\)">\(K\otimes L^2(G)\)</span>: the map <span class="math" data-tex="\(\xi\otimes h\mapsto[t\mapsto h(t)\xi]\)">\(\xi\otimes h\mapsto[t\mapsto h(t)\xi]\)</span> is unitary, because its inner products on finite sums equal the defining tensor inner products and its range contains the dense compact simple tensors. Thus the integrated tensor pair is unitarily equivalent to <span class="math" data-tex="\(\operatorname{Ind}\pi\)">\(\operatorname{Ind}\pi\)</span>, whose norm is at most the faithful reduced norm by Theorem 5.1.</p>
+<p>Use Lemma 7.1 and the isometries <span class="math" data-tex="\(V_i:K\to K\otimes L^2(G)\)">\(V_i:K\to K\otimes L^2(G)\)</span>, <span class="math" data-tex="\(V_i\xi=\xi\otimes v_i\)">\(V_i\xi=\xi\otimes v_i\)</span>. For <span class="math" data-tex="\(F\in C_c(G,A)\)">\(F\in C_c(G,A)\)</span>,
+<span class="math math-display" data-tex="\[
+ V_i^*\Phi_{\pi\otimes1,U\otimes\lambda}(F)V_i
+ =\int\langle\lambda_s v_i,v_i\rangle\,\pi(F(s))U_s\,ds .
+ \tag{7.7}
+\]">\[
+ V_i^*\Phi_{\pi\otimes1,U\otimes\lambda}(F)V_i
+ =\int\langle\lambda_s v_i,v_i\rangle\,\pi(F(s))U_s\,ds .
+ \tag{7.7}
+\]</span>
+The equality is proved by testing pairs of vectors in the Bochner integral. Its operator norm distance to <span class="math" data-tex="\(\Phi_{\pi,U}(F)\)">\(\Phi_{\pi,U}(F)\)</span> is at most
+<span class="math math-display" data-tex="\[
+ \|F\|_1\sup_{s\in\operatorname{supp}F}
+       |\langle\lambda_s v_i,v_i\rangle-1|\longrightarrow0.
+ \tag{7.8}
+\]">\[
+ \|F\|_1\sup_{s\in\operatorname{supp}F}
+       |\langle\lambda_s v_i,v_i\rangle-1|\longrightarrow0.
+ \tag{7.8}
+\]</span>
+Every compression has norm at most <span class="math" data-tex="\(\|F\|_r\)">\(\|F\|_r\)</span>. Therefore
+<span class="math" data-tex="\(\|\Phi_{\pi,U}(F)\|\leq\|F\|_r\)">\(\|\Phi_{\pi,U}(F)\|\leq\|F\|_r\)</span>.
+Taking the supremum gives <span class="math" data-tex="\(\|F\|_u\leq\|F\|_r\)">\(\|F\|_u\leq\|F\|_r\)</span>; the reverse inequality was already proved. Density extends equality to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> and the completions. If the group map is faithful, its inverse is an isometric C* isomorphism by the preceding lesson, and the trivial character factors through it, so the stated hypothesis holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span> the theorem also proves that this factored-character condition implies <span class="math" data-tex="\(C^*(G)=C_r^*(G)\)">\(C^*(G)=C_r^*(G)\)</span>. The converse follows by composing the trivial character with the inverse group isomorphism. This proves exactly the equivalence needed here. It does not assert the equivalence with every other definition of amenability.</p>
+<h2 id="OA-FLOW.CCOV.INVARIANTSTATE"><span id="oa-flow.ccov.invariantstate"></span>8. Invariant states: continuity and extremality</h2>
+<p>Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be a state on <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(\omega\circ\alpha_s=\omega\)">\(\omega\circ\alpha_s=\omega\)</span>. Take its cyclic nondegenerate GNS representation <span class="math" data-tex="\((\pi_\omega,K_\omega,\xi_\omega)\)">\((\pi_\omega,K_\omega,\xi_\omega)\)</span>, with <span class="math" data-tex="\(\|\xi_\omega\|=1\)">\(\|\xi_\omega\|=1\)</span> and <span class="math" data-tex="\(\omega(a)=\langle\pi_\omega(a)\xi_\omega,\xi_\omega\rangle\)">\(\omega(a)=\langle\pi_\omega(a)\xi_\omega,\xi_\omega\rangle\)</span>.</p>
+<p><strong>Proposition 8.1.</strong> On its dense generating vectors, the formula
+<span class="math math-display" data-tex="\[
+ U_s\pi_\omega(a)\xi_\omega=\pi_\omega(\alpha_s(a))\xi_\omega
+ \tag{8.1}
+\]">\[
+ U_s\pi_\omega(a)\xi_\omega=\pi_\omega(\alpha_s(a))\xi_\omega
+ \tag{8.1}
+\]</span>
+gives a strongly continuous unitary covariant representation, and <span class="math" data-tex="\(U_s\xi_\omega=\xi_\omega\)">\(U_s\xi_\omega=\xi_\omega\)</span>.</p>
+<p><strong>Proof.</strong> Invariance gives equality of inner products before and after this formula, so it is well defined and isometric; the formula for <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span> gives its inverse. The group and covariance identities follow on generators and then everywhere. Also
+<span class="math math-display" data-tex="\[
+ \|(U_s-U_r)\pi_\omega(a)\xi_\omega\|
+ \leq\|\alpha_s(a)-\alpha_r(a)\|\to0.
+ \tag{8.2}
+\]">\[
+ \|(U_s-U_r)\pi_\omega(a)\xi_\omega\|
+ \leq\|\alpha_s(a)-\alpha_r(a)\|\to0.
+ \tag{8.2}
+\]</span>
+Unitarity extends continuity to all vectors. For a positive contractive approximate identity <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span>, <span class="math" data-tex="\(\pi_\omega(e_i)\xi_\omega\to\xi_\omega\)">\(\pi_\omega(e_i)\xi_\omega\to\xi_\omega\)</span>; for fixed <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\((\alpha_s(e_i))\)">\((\alpha_s(e_i))\)</span> is also such an approximate identity, so its GNS vectors have the same limit. Applying (8.1) proves <span class="math" data-tex="\(U_s\xi_\omega=\xi_\omega\)">\(U_s\xi_\omega=\xi_\omega\)</span>. This proves continuity for arbitrary nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, rather than assuming it from invariance alone. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="OA-FLOW.CCOV.EXTREMALITY"><span id="oa-flow.ccov.extremality"></span>Dominated functionals and invariant-state extremality</h3>
+<p>We next prove the dominated-functional argument needed for the extreme-state criterion.</p>
+<p><strong>Lemma 8.2.</strong> If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a bounded positive functional with <span class="math" data-tex="\(0\leq\psi\leq C\omega\)">\(0\leq\psi\leq C\omega\)</span>, there is a unique bounded positive <span class="math" data-tex="\(T\in\pi_\omega(A)'\)">\(T\in\pi_\omega(A)'\)</span>, with <span class="math" data-tex="\(0\leq T\leq CI\)">\(0\leq T\leq CI\)</span>, such that
+<span class="math math-display" data-tex="\[
+ \psi(a)=\langle T\pi_\omega(a)\xi_\omega,\xi_\omega\rangle.
+ \tag{8.3}
+\]">\[
+ \psi(a)=\langle T\pi_\omega(a)\xi_\omega,\xi_\omega\rangle.
+ \tag{8.3}
+\]</span>
+It commutes with every <span class="math" data-tex="\(U_s\)">\(U_s\)</span> if and only if <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is invariant.</p>
+<p><strong>Proof.</strong> On GNS generating vectors define
+<span class="math math-display" data-tex="\[
+ B(\pi_\omega(a)\xi_\omega,\pi_\omega(b)\xi_\omega)=\psi(b^*a).
+ \tag{8.4}
+\]">\[
+ B(\pi_\omega(a)\xi_\omega,\pi_\omega(b)\xi_\omega)=\psi(b^*a).
+ \tag{8.4}
+\]</span>
+Positivity gives Cauchy-Schwarz for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>: expand <span class="math" data-tex="\(\psi((a+zb)^*(a+zb))\geq0\)">\(\psi((a+zb)^*(a+zb))\geq0\)</span> and minimize the scalar quadratic (including the case <span class="math" data-tex="\(\psi(b^*b)=0\)">\(\psi(b^*b)=0\)</span>). Thus the form is well defined when a GNS vector is zero, since
+<span class="math" data-tex="\(\psi(a^*a)\leq C\omega(a^*a)\)">\(\psi(a^*a)\leq C\omega(a^*a)\)</span>.
+Its bound is <span class="math" data-tex="\(|B(v,w)|\leq C\|v\|\|w\|\)">\(|B(v,w)|\leq C\|v\|\|w\|\)</span>, and <span class="math" data-tex="\(0\leq B(v,v)\leq C\|v\|^2\)">\(0\leq B(v,v)\leq C\|v\|^2\)</span>. The earlier Hilbert bounded-form theorem therefore gives a unique <span class="math" data-tex="\(T\)">\(T\)</span>, positive with <span class="math" data-tex="\(0\leq T\leq CI\)">\(0\leq T\leq CI\)</span>, such that <span class="math" data-tex="\(B(v,w)=\langle Tv,w\rangle\)">\(B(v,w)=\langle Tv,w\rangle\)</span>.</p>
+<p>For <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>, the two forms <span class="math" data-tex="\(B(\pi_\omega(c)v,w)\)">\(B(\pi_\omega(c)v,w)\)</span> and <span class="math" data-tex="\(B(v,\pi_\omega(c^*)w)\)">\(B(v,\pi_\omega(c^*)w)\)</span> agree on generators because both are <span class="math" data-tex="\(\psi(b^*ca)\)">\(\psi(b^*ca)\)</span>. Hence <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(\pi_\omega(c)\)">\(\pi_\omega(c)\)</span>. Take <span class="math" data-tex="\(a\)">\(a\)</span> in the first argument of (8.4) and <span class="math" data-tex="\(e_i\)">\(e_i\)</span> in the second. The right side is <span class="math" data-tex="\(\psi(e_i a)\to\psi(a)\)">\(\psi(e_i a)\to\psi(a)\)</span> by norm approximation and boundedness of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>; the second vector converges to <span class="math" data-tex="\(\xi_\omega\)">\(\xi_\omega\)</span>. This proves (8.3) even without an identity. Conversely, (8.3) and commutation determine (8.4) on every pair of generators, so uniqueness holds.</p>
+<p>If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is invariant, <span class="math" data-tex="\(B(U_sv,U_sw)=B(v,w)\)">\(B(U_sv,U_sw)=B(v,w)\)</span> on generators, giving <span class="math" data-tex="\(U_s^*TU_s=T\)">\(U_s^*TU_s=T\)</span>. Conversely if <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(U_s\)">\(U_s\)</span>, covariance, its fixed vector and (8.3) give <span class="math" data-tex="\(\psi(\alpha_s(a))=\psi(a)\)">\(\psi(\alpha_s(a))=\psi(a)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 8.3.</strong> The invariant state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is extreme in the convex set of invariant states exactly when
+<span class="math math-display" data-tex="\[
+ \pi_\omega(A)'\cap U(G)'=\mathbb CI.
+ \tag{8.5}
+\]">\[
+ \pi_\omega(A)'\cap U(G)'=\mathbb CI.
+ \tag{8.5}
+\]</span>
+Equivalently the joint covariant representation, or its integrated full crossed-product representation, is irreducible.</p>
+<p><strong>Proof.</strong> Suppose the joint commutant is scalar, and write <span class="math" data-tex="\(\omega=t\omega_1+(1-t)\omega_2\)">\(\omega=t\omega_1+(1-t)\omega_2\)</span> for invariant states and <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>. Lemma 8.2 applies to <span class="math" data-tex="\(\psi=t\omega_1\leq\omega\)">\(\psi=t\omega_1\leq\omega\)</span> and gives a joint-commutant positive contraction <span class="math" data-tex="\(T=cI\)">\(T=cI\)</span>. Its functional is <span class="math" data-tex="\(c\omega\)">\(c\omega\)</span>, so <span class="math" data-tex="\(\psi=c\omega\)">\(\psi=c\omega\)</span>. Taking norms of these positive functionals gives <span class="math" data-tex="\(c=t\)">\(c=t\)</span>; hence <span class="math" data-tex="\(\omega_1=\omega\)">\(\omega_1=\omega\)</span>, and likewise <span class="math" data-tex="\(\omega_2=\omega\)">\(\omega_2=\omega\)</span>.</p>
+<p>Conversely, if the joint commutant is not scalar, one of the self-adjoint real or imaginary parts of a nonscalar element is nonscalar. An affine rescaling gives a nonscalar self-adjoint <span class="math" data-tex="\(T\)">\(T\)</span> in that commutant with <span class="math" data-tex="\(\varepsilon I\leq T\leq(1-\varepsilon)I\)">\(\varepsilon I\leq T\leq(1-\varepsilon)I\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>. Set <span class="math" data-tex="\(t=\langle T\xi_\omega,\xi_\omega\rangle\)">\(t=\langle T\xi_\omega,\xi_\omega\rangle\)</span>, which lies in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and define
+<span class="math math-display" data-tex="\[
+ \omega_1(a)=t^{-1}\langle T\pi_\omega(a)\xi_\omega,\xi_\omega\rangle,\quad
+ \omega_2(a)=(1-t)^{-1}\langle(1-T)\pi_\omega(a)\xi_\omega,\xi_\omega\rangle .
+ \tag{8.6}
+\]">\[
+ \omega_1(a)=t^{-1}\langle T\pi_\omega(a)\xi_\omega,\xi_\omega\rangle,\quad
+ \omega_2(a)=(1-t)^{-1}\langle(1-T)\pi_\omega(a)\xi_\omega,\xi_\omega\rangle .
+ \tag{8.6}
+\]</span>
+These are positive bounded invariant functionals. Their norms are one: evaluating the coefficient approximate identity gives the limits <span class="math" data-tex="\(t/t=1\)">\(t/t=1\)</span> and <span class="math" data-tex="\((1-t)/(1-t)=1\)">\((1-t)/(1-t)=1\)</span>; the upper bounds follow from the vector-state expressions with <span class="math" data-tex="\(T^{1/2}\xi_\omega\)">\(T^{1/2}\xi_\omega\)</span> and <span class="math" data-tex="\((1-T)^{1/2}\xi_\omega\)">\((1-T)^{1/2}\xi_\omega\)</span>. Thus they are states and <span class="math" data-tex="\(\omega=t\omega_1+(1-t)\omega_2\)">\(\omega=t\omega_1+(1-t)\omega_2\)</span>. If <span class="math" data-tex="\(\omega_1=\omega\)">\(\omega_1=\omega\)</span>, uniqueness in Lemma 8.2 forces <span class="math" data-tex="\(T=tI\)">\(T=tI\)</span>, a contradiction. Hence the decomposition is nontrivial.</p>
+<p>A closed invariant subspace for the joint star/unitary family is reducing, and its orthogonal projection belongs to the joint commutant. Conversely the continuous-calculus construction in the next paragraph gives a nontrivial reducing subspace from a nonscalar self-adjoint element in that commutant. Thus (8.5) is equivalent to irreducibility, using only the already declared calculus and Hilbert projection theorem. Intertwiner equivalence after Theorem 3.1 proves the last claim for the integrated representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For that construction, a nonscalar self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span> has at least two spectral points, since the isometric calculus would otherwise make <span class="math" data-tex="\(h\)">\(h\)</span> scalar. Choose continuous nonnegative <span class="math" data-tex="\(f,g\)">\(f,g\)</span> on its spectrum, supported in disjoint neighbourhoods of these two points and nonzero there. The calculus makes <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> and <span class="math" data-tex="\(g(h)\)">\(g(h)\)</span> nonzero with product zero. The closed range <span class="math" data-tex="\(\overline{f(h)K_\omega}\)">\(\overline{f(h)K_\omega}\)</span> is invariant under the joint family and its adjoints, and is nonzero and proper because it is perpendicular to the nonzero range of <span class="math" data-tex="\(g(h)\)">\(g(h)\)</span>. Its orthogonal projection is the required nontrivial joint-commutant projection.</p>
+<h2 id="OA-FLOW.CCOV.FINITEORBITS"><span id="oa-flow.ccov.finiteorbits"></span>9. Two finite orbits</h2>
+<p>Let <span class="math" data-tex="\(G=C_6\)">\(G=C_6\)</span> act on the five-point set <span class="math" data-tex="\(X=O_3\sqcup O_2\)">\(X=O_3\sqcup O_2\)</span>, with its generator rotating a three-cycle and a two-cycle. On <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> permutes the coordinates. An invariant probability has one constant weight on each orbit, hence every invariant state is
+<span class="math math-display" data-tex="\[
+ \omega_t(f)=\frac{t}{3}\sum_{x\in O_3}f(x)
+       +\frac{1-t}{2}\sum_{x\in O_2}f(x),\qquad 0\leq t\leq1.
+ \tag{9.1}
+\]">\[
+ \omega_t(f)=\frac{t}{3}\sum_{x\in O_3}f(x)
+       +\frac{1-t}{2}\sum_{x\in O_2}f(x),\qquad 0\leq t\leq1.
+ \tag{9.1}
+\]</span>
+Its extreme states are exactly the two endpoints. For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the GNS space has all five coordinates, multiplication is diagonal and group unitaries are the coordinate permutations. A diagonal operator commutes with those permutations exactly when it is constant on each orbit. Thus the joint commutant is <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\)">\(\mathbb C\oplus\mathbb C\)</span>. At either endpoint the null GNS coordinates are discarded, leaving one transitive orbit and a scalar commutant. This is an explicit check of Theorem 8.3, including the change of GNS support at the endpoints.</p>
+<h2 id="OA-FLOW.CCOV.TRANSFORMATIONS"><span id="oa-flow.ccov.transformations"></span>10. Right translation and rank-one kernels</h2>
+<p>Take <span class="math" data-tex="\(A=C_0(G)\)">\(A=C_0(G)\)</span>, with right-translation action
+<span class="math math-display" data-tex="\[
+ \alpha_s(a)(x)=a(xs).
+ \tag{10.1}
+\]">\[
+ \alpha_s(a)(x)=a(xs).
+ \tag{10.1}
+\]</span>
+It is a left group homomorphism: <span class="math" data-tex="\(\alpha_s\alpha_r=\alpha_{sr}\)">\(\alpha_s\alpha_r=\alpha_{sr}\)</span>. It is norm continuous on <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> by uniform translation continuity and hence on <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>. Here <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> is dense in <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>: for <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the set <span class="math" data-tex="\(\{|a|\geq\varepsilon\}\)">\(\{|a|\geq\varepsilon\}\)</span> is compact, and multiplying by a compact cutoff equal to one there changes the sup norm by at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>Multiplication <span class="math" data-tex="\(M_a\)">\(M_a\)</span> on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> is faithful by full Haar support and nondegenerate by compact cutoffs on the dense <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> vectors. The right unitaries
+<span class="math math-display" data-tex="\[
+ (V_s\xi)(x)=\Delta(s)^{1/2}\xi(xs)
+ \tag{10.2}
+\]">\[
+ (V_s\xi)(x)=\Delta(s)^{1/2}\xi(xs)
+ \tag{10.2}
+\]</span>
+are isometric by the modular formula, satisfy <span class="math" data-tex="\(V_sV_r=V_{sr}\)">\(V_sV_r=V_{sr}\)</span>, and have inverse <span class="math" data-tex="\(V_{s^{-1}}\)">\(V_{s^{-1}}\)</span>. Uniform continuity on compact supports followed by density proves their strong continuity. Direct evaluation gives <span class="math" data-tex="\(V_sM_aV_s^*=M_{\alpha_s(a)}\)">\(V_sM_aV_s^*=M_{\alpha_s(a)}\)</span>.</p>
+<p>The integrated operator of <span class="math" data-tex="\(F\in C_c(G,C_0(G))\)">\(F\in C_c(G,C_0(G))\)</span>, on compactly supported vectors, has the kernel
+<span class="math math-display" data-tex="\[
+ [\Phi(F)\xi](x)=\int K_F(x,y)\xi(y)\,dy,\qquad
+ K_F(x,y)=F(x^{-1}y)(x)\Delta(x^{-1}y)^{1/2}.
+ \tag{10.3}
+\]">\[
+ [\Phi(F)\xi](x)=\int K_F(x,y)\xi(y)\,dy,\qquad
+ K_F(x,y)=F(x^{-1}y)(x)\Delta(x^{-1}y)^{1/2}.
+ \tag{10.3}
+\]</span>
+This is the substitution <span class="math" data-tex="\(y=xs\)">\(y=xs\)</span>, which is left translation in <span class="math" data-tex="\(s\)">\(s\)</span>. Conversely a rank-one kernel <span class="math" data-tex="\(p(x)\overline{q(y)}\)">\(p(x)\overline{q(y)}\)</span>, <span class="math" data-tex="\(p,q\in C_c(G)\)">\(p,q\in C_c(G)\)</span>, is obtained from
+<span class="math math-display" data-tex="\[
+ F_{p,q}(s)(x)=p(x)\overline{q(xs)}\Delta(s)^{-1/2}.
+ \tag{10.4}
+\]">\[
+ F_{p,q}(s)(x)=p(x)\overline{q(xs)}\Delta(s)^{-1/2}.
+ \tag{10.4}
+\]</span>
+It is a continuous compactly supported <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>-valued function: its joint support is compact, with <span class="math" data-tex="\(x\in\operatorname{supp}p\)">\(x\in\operatorname{supp}p\)</span>, <span class="math" data-tex="\(xs\in\operatorname{supp}q\)">\(xs\in\operatorname{supp}q\)</span>, hence <span class="math" data-tex="\(s\in(\operatorname{supp}p)^{-1}\operatorname{supp}q\)">\(s\in(\operatorname{supp}p)^{-1}\operatorname{supp}q\)</span>. The integrated operator is <span class="math" data-tex="\(\theta_{p,q}\xi=p\langle\xi,q\rangle\)">\(\theta_{p,q}\xi=p\langle\xi,q\rangle\)</span>.</p>
+<p><strong>Theorem 10.1.</strong> For every locally compact Hausdorff <span class="math" data-tex="\(G\)">\(G\)</span>, both crossed products for (10.1) are canonically isomorphic to <span class="math" data-tex="\(\mathcal K(L^2(G))\)">\(\mathcal K(L^2(G))\)</span>, the norm closure of finite-rank operators.</p>
+<p><strong>Proof.</strong> First the span of the <span class="math" data-tex="\(F_{p,q}\)">\(F_{p,q}\)</span> is <span class="math" data-tex="\(L^1(G,C_0(G))\)">\(L^1(G,C_0(G))\)</span>-dense. Here are the compact-support approximation details. A continuous compactly supported map <span class="math" data-tex="\(F:G\to C_0(G)\)">\(F:G\to C_0(G)\)</span> can be approximated uniformly, on one common compact support in <span class="math" data-tex="\(s\)">\(s\)</span>, by finite sums <span class="math" data-tex="\(h_j(s)a_j(x)\)">\(h_j(s)a_j(x)\)</span>, <span class="math" data-tex="\(h_j\in C_c(G)\)">\(h_j\in C_c(G)\)</span>, <span class="math" data-tex="\(a_j\in C_c(G)\)">\(a_j\in C_c(G)\)</span>. To construct them, cover its compact support by finitely many neighbourhoods where the coefficient norm oscillation is small; compact cutoffs in these neighbourhoods, normalized by the maximum of their sum and <span class="math" data-tex="\(1\)">\(1\)</span>, give continuous weights whose sum is <span class="math" data-tex="\(1\)">\(1\)</span> on the support and at most <span class="math" data-tex="\(1\)">\(1\)</span> everywhere. Use the corresponding sample coefficients and approximate each of the finitely many <span class="math" data-tex="\(C_0\)">\(C_0\)</span> coefficients by a compact cutoff. This gives the uniform approximation; its common compact <span class="math" data-tex="\(s\)">\(s\)</span>-support converts it to <span class="math" data-tex="\(L^1\)">\(L^1\)</span> approximation.</p>
+<p>For such a joint compactly supported <span class="math" data-tex="\(F\)">\(F\)</span>, (10.3) gives <span class="math" data-tex="\(K_F\in C_c(G\times G)\)">\(K_F\in C_c(G\times G)\)</span>. A compact kernel <span class="math" data-tex="\(K\)">\(K\)</span> can in turn be approximated uniformly on one common compact rectangle <span class="math" data-tex="\(C\times D\)">\(C\times D\)</span> by finite sums <span class="math" data-tex="\(p_j(x)\overline{q_j(y)}\)">\(p_j(x)\overline{q_j(y)}\)</span> with <span class="math" data-tex="\(p_j,q_j\in C_c(G)\)">\(p_j,q_j\in C_c(G)\)</span>. Use the same finite-cover and cutoff-weight argument in <span class="math" data-tex="\(x\)">\(x\)</span> for the continuous map <span class="math" data-tex="\(x\mapsto K(x,\cdot)\)">\(x\mapsto K(x,\cdot)\)</span>, with the latter functions supported on the common compact projection <span class="math" data-tex="\(D\)">\(D\)</span>. A finite-cover argument in <span class="math" data-tex="\(y\)">\(y\)</span> proves that this map is sup-norm continuous. On a common compact rectangle, the inverse relation
+<span class="math math-display" data-tex="\[
+ F(s)(x)=K(x,xs)\Delta(s)^{-1/2}
+ \tag{10.5}
+\]">\[
+ F(s)(x)=K(x,xs)\Delta(s)^{-1/2}
+ \tag{10.5}
+\]</span>
+turns a kernel error at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> into an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> coefficient error at most
+<span class="math" data-tex="\(\varepsilon\,\mu(C^{-1}D)\sup_{s\in C^{-1}D}\Delta(s)^{-1/2}\)">\(\varepsilon\,\mu(C^{-1}D)\sup_{s\in C^{-1}D}\Delta(s)^{-1/2}\)</span>.
+This proves density, because continuous coefficient functions are already dense in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>.</p>
+<p>On these rank-one functions, convolution and star are precisely
+<span class="math math-display" data-tex="\[
+ F_{p,q}*F_{r,z}=\langle r,q\rangle F_{p,z},\qquad
+ F_{p,q}^*=F_{q,p}.
+ \tag{10.6}
+\]">\[
+ F_{p,q}*F_{r,z}=\langle r,q\rangle F_{p,z},\qquad
+ F_{p,q}^*=F_{q,p}.
+ \tag{10.6}
+\]</span>
+For example the product integral is
+<span class="math math-display" data-tex="\[
+ p(x)\overline{z(xt)}\Delta(t)^{-1/2}
+       \int\overline{q(xs)}r(xs)\,ds
+ =\langle r,q\rangle F_{p,z}(t)(x),
+ \tag{10.7}
+\]">\[
+ p(x)\overline{z(xt)}\Delta(t)^{-1/2}
+       \int\overline{q(xs)}r(xs)\,ds
+ =\langle r,q\rangle F_{p,z}(t)(x),
+ \tag{10.7}
+\]</span>
+since <span class="math" data-tex="\(s\mapsto xs\)">\(s\mapsto xs\)</span> preserves left Haar measure. In the star formula,
+<span class="math" data-tex="\(\Delta(t^{-1})F_{p,q}(t^{-1})(xt)^*
+=q(x)\overline{p(xt)}\Delta(t)^{-1/2}\)">\(\Delta(t^{-1})F_{p,q}(t^{-1})(xt)^*
+=q(x)\overline{p(xt)}\Delta(t)^{-1/2}\)</span>.
+Thus the algebraic kernel map is a star isomorphism of this span with the finite-rank operators having all range and initial vectors in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. It is injective: a zero compact kernel operator has all scalar pairings with compact test functions zero; its continuous kernel must then be zero. More directly in a finite rank presentation, express all vectors in an orthonormal basis of their finite-dimensional span and use linear independence of the resulting matrix units.</p>
+<p>Each finite list of these vectors lies in a finite-dimensional subspace <span class="math" data-tex="\(E\subset C_c(G)\)">\(E\subset C_c(G)\)</span>; its full corner is the matrix C* algebra <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>. Every covariant integrated representation restricts to a star homomorphism of this matrix algebra and is contractive by the preceding lesson. The concrete pair (10.2) attains its ordinary operator norm, so the universal norm of every element of this corner is exactly that norm. The regular representation of Section 4 is injective on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, hence on the corner, and is therefore isometric there by the same C* injection lemma. Thus the reduced norm has the same value. The corners exhaust the rank-one span, which is dense in the coefficient <span class="math" data-tex="\(L^1\)">\(L^1\)</span> algebra and therefore in either C* norm. Finally, approximating arbitrary Hilbert vectors by <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> shows that the operator closure of this span is all <span class="math" data-tex="\(\mathcal K(L^2(G))\)">\(\mathcal K(L^2(G))\)</span>. This proves the theorem without importing an imprimitivity theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(G=C_5\)">\(G=C_5\)</span>, counting measure makes <span class="math" data-tex="\(\Delta=1\)">\(\Delta=1\)</span>, and every coefficient function is a five-by-five finite array. Writing <span class="math" data-tex="\(x,y,s\)">\(x,y,s\)</span> as integers modulo <span class="math" data-tex="\(5\)">\(5\)</span>,
+<span class="math math-display" data-tex="\[
+ K_F(x,y)=F(y-x)(x),\qquad F(s)(x)=K_F(x,x+s).
+ \tag{10.8}
+\]">\[
+ K_F(x,y)=F(y-x)(x),\qquad F(s)(x)=K_F(x,x+s).
+ \tag{10.8}
+\]</span>
+The full and reduced crossed products <span class="math" data-tex="\(C(C_5)\rtimes C_5\)">\(C(C_5)\rtimes C_5\)</span> are therefore <span class="math" data-tex="\(M_5(\mathbb C)\)">\(M_5(\mathbb C)\)</span>. This differs from the scalar-coefficient group algebra <span class="math" data-tex="\(C^*(C_5)\cong\mathbb C^5\)">\(C^*(C_5)\cong\mathbb C^5\)</span> of the previous lesson: the coefficient algebra and action have changed.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact finite coefficient array, rank-one kernel and two-orbit invariant probabilities" src="assets/l25-reconstruction/L25-original-finite-models.svg" style="display:block;width:1280px;max-width:none"/></p>
+<p><em>Original CC0 illustration.</em> The first two panels display exact numerator arrays with common denominator <span class="math" data-tex="\(2\sqrt7\)">\(2\sqrt7\)</span>, for the real unit vectors <span class="math" data-tex="\(p=(1,2,0,-1,1)/\sqrt7\)">\(p=(1,2,0,-1,1)/\sqrt7\)</span> and <span class="math" data-tex="\(q=(1,0,1,1,-1)/2\)">\(q=(1,0,1,1,-1)/2\)</span>. Equation (10.8) reindexes the coefficient array into the rank-one kernel <span class="math" data-tex="\(K(x,y)=p(x)q(y)\)">\(K(x,y)=p(x)q(y)\)</span>; Theorem 10.1 proves its crossed-product interpretation. The final panel displays the state of Section 9 at <span class="math" data-tex="\(t=7/20\)">\(t=7/20\)</span>, with probabilities <span class="math" data-tex="\(7/60\)">\(7/60\)</span> and <span class="math" data-tex="\(13/40\)">\(13/40\)</span>. Exercises 11.2–11.3 verify the matrix units and the joint-commutant projection. The covariance conventions agree with Echterhoff, freely accessible version 4, Section 3.2; the finite numerical models and their proofs here are original. The reproducible figure source is <a href="assets/l25-reconstruction/make_l25_figure.py">make_l25_figure.py</a>.</p>
+<h2 id="OA-FLOW.CCOV.PROBLEMS"><span id="oa-flow.ccov.problems"></span>11. Exercises and complete solutions</h2>
+<p><strong>Exercise 11.1 (a sign in covariance).</strong> In the regular pair (4.1), calculate <span class="math" data-tex="\(\Lambda_sP_\rho(a)\Lambda_s^*\)">\(\Lambda_sP_\rho(a)\Lambda_s^*\)</span> at <span class="math" data-tex="\(t\)">\(t\)</span>, and identify the recovered coefficient.</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="\(\Lambda_s^*\xi(u)=\xi(su)\)">\(\Lambda_s^*\xi(u)=\xi(su)\)</span>, so the result at <span class="math" data-tex="\(t\)">\(t\)</span> is
+<span class="math" data-tex="\(\rho(\alpha_{(s^{-1}t)^{-1}}(a))\xi(t)
+=\rho(\alpha_{t^{-1}s}(a))\xi(t)
+=P_\rho(\alpha_s(a))\xi(t)\)">\(\rho(\alpha_{(s^{-1}t)^{-1}}(a))\xi(t)
+=\rho(\alpha_{t^{-1}s}(a))\xi(t)
+=P_\rho(\alpha_s(a))\xi(t)\)</span>.
+Thus the <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> in the coefficient field and <span class="math" data-tex="\(s^{-1}t\)">\(s^{-1}t\)</span> in the translation are both required.</p>
+<p><strong>Exercise 11.2 (finite matrix units).</strong> In (10.8), find the coefficient function whose kernel is the matrix unit <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>, and compute its product and adjoint.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(p=\delta_i\)">\(p=\delta_i\)</span>, <span class="math" data-tex="\(q=\delta_j\)">\(q=\delta_j\)</span>. Then <span class="math" data-tex="\(F_{ij}(s)(x)\)">\(F_{ij}(s)(x)\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(x=i\)">\(x=i\)</span> and <span class="math" data-tex="\(s=j-i\)">\(s=j-i\)</span>, and is zero otherwise. Formula (10.6) gives <span class="math" data-tex="\(F_{ij}*F_{k\ell}=\delta_{jk}F_{i\ell}\)">\(F_{ij}*F_{k\ell}=\delta_{jk}F_{i\ell}\)</span> and <span class="math" data-tex="\(F_{ij}^*=F_{ji}\)">\(F_{ij}^*=F_{ji}\)</span>. The integrated operators are <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>, giving all <span class="math" data-tex="\(25\)">\(25\)</span> matrix units.</p>
+<p><strong>Exercise 11.3 (an invariant mixture).</strong> For the two-orbit action of Section 9 and <span class="math" data-tex="\(t=7/20\)">\(t=7/20\)</span>, give the five coordinate probabilities, a fixed cyclic GNS vector and the projection witnessing nonextremality.</p>
+<p><strong>Solution.</strong> The probabilities are <span class="math" data-tex="\(7/60\)">\(7/60\)</span> on each of the three-cycle coordinates and <span class="math" data-tex="\(13/40\)">\(13/40\)</span> on each of the two-cycle coordinates. On the ordinary five-dimensional coordinate Hilbert space one can take
+<span class="math" data-tex="\(\xi=(\sqrt{7/60},\sqrt{7/60},\sqrt{7/60},\sqrt{13/40},\sqrt{13/40})\)">\(\xi=(\sqrt{7/60},\sqrt{7/60},\sqrt{7/60},\sqrt{13/40},\sqrt{13/40})\)</span>.
+The permutations fix it. The projection <span class="math" data-tex="\(P\)">\(P\)</span> onto the three-cycle coordinates commutes with the diagonal coefficients and the group permutations, and <span class="math" data-tex="\(\langle P\xi,\xi\rangle=7/20\)">\(\langle P\xi,\xi\rangle=7/20\)</span>. Its two normalized functionals in (8.6) are the uniform states on the separate orbits.</p>
+<p><strong>Exercise 11.4 (nonunital recovery).</strong> Why is it insufficient to write <span class="math" data-tex="\(\pi(a)=\Phi(\delta_e a)\)">\(\pi(a)=\Phi(\delta_e a)\)</span> for an arbitrary locally compact group? Give the formula that works on a genuine dense vector domain.</p>
+<p><strong>Solution.</strong> When the identity has no positive Haar atom, a point mass <span class="math" data-tex="\(\delta_e\)">\(\delta_e\)</span> is not an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function. The dense-domain formula is
+<span class="math" data-tex="\(\pi(a)\sum_j\Phi(F_j)\xi_j=\sum_j\Phi(aF_j)\xi_j\)">\(\pi(a)\sum_j\Phi(F_j)\xi_j=\sum_j\Phi(aF_j)\xi_j\)</span>.
+Equation (3.3) proves its well-definedness and bound, and coefficient approximate identities prove nondegeneracy. This does not require either a Dirac function in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> or an identity in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Exercise 11.5 (the two modular powers).</strong> For the right action on <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>, explain why the vector action has <span class="math" data-tex="\(\Delta(s)^{1/2}\)">\(\Delta(s)^{1/2}\)</span> whereas <span class="math" data-tex="\(F_{p,q}\)">\(F_{p,q}\)</span> has <span class="math" data-tex="\(\Delta(s)^{-1/2}\)">\(\Delta(s)^{-1/2}\)</span>.</p>
+<p><strong>Solution.</strong> Right translation changes the squared vector integral by <span class="math" data-tex="\(\Delta(s)^{-1}\)">\(\Delta(s)^{-1}\)</span>, so its unitary normalization is <span class="math" data-tex="\(\Delta(s)^{1/2}\)">\(\Delta(s)^{1/2}\)</span>. The integrated kernel contains this factor. To obtain exactly <span class="math" data-tex="\(p(x)\overline{q(y)}\)">\(p(x)\overline{q(y)}\)</span>, (10.4) must cancel it with its reciprocal. No modular factor comes from <span class="math" data-tex="\(y=xs\)">\(y=xs\)</span>, because that is a left translation in the integration variable <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Exercise 11.6 (the comparison hypothesis is explicit).</strong> Suppose the group full-to-reduced map is injective. Deduce equality of the two crossed products for every <span class="math" data-tex="\(A,\alpha\)">\(A,\alpha\)</span>, and list the mechanism without invoking an invariant-mean equivalence.</p>
+<p><strong>Solution.</strong> The group map is surjective by the preceding lesson, so injectivity makes it a C* isomorphism. The trivial character therefore factors through its reduced algebra. Lemma 7.1 uses finite convex vector-state approximations and a compactly continuous smoothing operator to construct almost invariant regular vectors. The tensor unitary (7.5) and the compressions (7.7) then bound every covariant integrated norm by the faithful reduced norm. Theorem 7.2 gives equality and injectivity of (6.3).</p>
+<h2 id="OA-FLOW.CCOV.ANTECEDENTS"><span id="oa-flow.ccov.antecedents"></span>12. Free primary reading</h2>
+<p>Siegfried Echterhoff, <em>Crossed products and the Mackey-Rieffel-Green machine</em>, freely accessible version 4, Section 3.2, equations (3.1)-(3.3), Remark 3.2, Definition 3.3 and Remark 3.4, fixes the conventions used here. Section 4, Definition 4.3 and its tensor-pair calculation, supplies a comparison for the precise scalar condition in Section 7: <a href="https://arxiv.org/abs/1006.4975v4">arXiv:1006.4975v4</a>. The finite-matrix, vector-domain and compression arguments needed here are fully proved above.</p>
+<p>Dana P. Williams, <em>Crossed Products of C</em> Algebras*, freely accessible author manuscript, version 3.1, Sections 2.3-2.4 and Appendix B, is further reading on the convolution algebra and the correspondence of representations: <a href="https://math.dartmouth.edu/~dana/cpcsa/draft3.1.pdf">complete author draft</a>. Its references to other works are not additional proof inputs of this lesson.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L24.html">Previous lesson</a><a href="OA-FLOW-HARMONIC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L25.md">Lesson source</a></nav></main></body></html>

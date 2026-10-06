@@ -1,0 +1,414 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unitary groups: characters, dimensions and branching</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="the-weyl-integration-formula.html">Previous lesson</a><a href="weights-and-the-theorem-of-the-highest-weight.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="unitary-groups-characters-dimensions-and-branching">Unitary groups: characters, dimensions and branching</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>The irreducible characters of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> are quotients of alternating determinants. Their apparent singularities at repeated eigenvalues cancel. The integration formula turns these determinants into orthogonal Fourier sums, and integer coefficients then force each irreducible character to be a single quotient. This also yields existence, provided the cancellation and completeness steps are both supplied.</p>
+<p>We use <a href="the-weyl-integration-formula.html">Weyl integration</a>, complete reducibility and Schur orthogonality from the first lessons, and the complete <span class="math" data-tex="\(L^2\)">\(L^2\)</span> character basis from <a href="fourier-analysis-and-class-functions-on-compact-groups.html">Fourier analysis and class functions</a>. Our classification uses the analytic argument. The Schur–Weyl theorem is subsequently proved from that classification and the branching rule below; it is not a prerequisite for either. The determinant-to-tableau identity used for branching is proved below.</p>
+<p>Differentiating a continuous finite-dimensional representation uses the smoothness result in <a href="compact-lie-groups-their-lie-algebras-and-the-adjoint-representation.html">Compact matrix Lie groups</a>. The matrix-coefficient version of Stone–Weierstrass used below is the same precise density theorem used in the Peter–Weyl lesson.</p>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be the diagonal torus of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>, with coordinates <span class="math" data-tex="\(z_1,\ldots,z_n\in S^1\)">\(z_1,\ldots,z_n\in S^1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\delta=(n-1,n-2,\ldots,0),\qquad
+D_a(z)=\det[z_j^{a_i}]_{i,j=1}^n,\qquad
+D_\delta(z)=\prod_{i&lt;j}(z_i-z_j). \tag{1.1}
+\]">\[
+\delta=(n-1,n-2,\ldots,0),\qquad
+D_a(z)=\det[z_j^{a_i}]_{i,j=1}^n,\qquad
+D_\delta(z)=\prod_{i&lt;j}(z_i-z_j). \tag{1.1}
+\]</span>
+Rows contain the exponents, in decreasing order. This fixes the determinant sign.</p>
+<h2 id="alternants-and-their-removable-singularities">Alternants and their removable singularities</h2>
+<p id="result-lemma-1-2"><strong>Lemma 1.2.</strong> If <span class="math" data-tex="\(a_1&gt;\cdots&gt;a_n\)">\(a_1&gt;\cdots&gt;a_n\)</span> are integers, the quotient <span class="math" data-tex="\(D_a/D_\delta\)">\(D_a/D_\delta\)</span> is a symmetric Laurent polynomial with integer coefficients. Consequently it defines a continuous class function on <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>. The functions <span class="math" data-tex="\(D_a/\sqrt{n!}\)">\(D_a/\sqrt{n!}\)</span>, indexed by these decreasing integer tuples, are orthonormal in torus measure.</p>
+<p><em>Proof.</em> Multiply <span class="math" data-tex="\(D_a\)">\(D_a\)</span> by <span class="math" data-tex="\((z_1\cdots z_n)^M\)">\((z_1\cdots z_n)^M\)</span>, with <span class="math" data-tex="\(M\)">\(M\)</span> large enough to make all exponents nonnegative. The resulting integer polynomial changes sign under every transposition of variables, so vanishes when <span class="math" data-tex="\(z_i=z_j\)">\(z_i=z_j\)</span>. Polynomial division by the monic factor <span class="math" data-tex="\(z_i-z_j\)">\(z_i-z_j\)</span> therefore gives zero remainder and an integer polynomial quotient. The factors for distinct unordered pairs are nonassociate prime elements of the unique factorization domain <span class="math" data-tex="\(\mathbb Z[z_1,\ldots,z_n]\)">\(\mathbb Z[z_1,\ldots,z_n]\)</span>. Their product divides the polynomial. Dividing back by the monomial proves Laurent integrality. The numerator and denominator have the same transposition sign, so the quotient is symmetric. This is an identity of Laurent polynomials, including where the displayed denominator vanishes.</p>
+<p>Continuous symmetric functions on <span class="math" data-tex="\(T\)">\(T\)</span> extend uniquely to continuous class functions by the torus conjugacy theorem in the roots lesson. For orthogonality, expand <span class="math" data-tex="\(D_a\)">\(D_a\)</span>. Its <span class="math" data-tex="\(n!\)">\(n!\)</span> monomials have distinct exponent tuples and coefficients <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Different decreasing tuples give disjoint monomial supports. Torus characters <span class="math" data-tex="\(z^m\)">\(z^m\)</span>, <span class="math" data-tex="\(m\in\mathbb Z^n\)">\(m\in\mathbb Z^n\)</span>, are orthonormal, so the claimed determinant norms and orthogonality follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We shall also need their value when all variables equal one.</p>
+<p id="result-lemma-1-3"><strong>Lemma 1.3 (evaluation at the identity).</strong> For every strictly decreasing integer tuple <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math math-display" data-tex="\[
+\left.\frac{D_a}{D_\delta}\right|_{z_1=\cdots=z_n=1}
+=\prod_{i&lt;j}\frac{a_i-a_j}{j-i}&gt;0. \tag{1.4}
+\]">\[
+\left.\frac{D_a}{D_\delta}\right|_{z_1=\cdots=z_n=1}
+=\prod_{i&lt;j}\frac{a_i-a_j}{j-i}&gt;0. \tag{1.4}
+\]</span></p>
+<p><em>Proof.</em> Choose distinct real <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> and put <span class="math" data-tex="\(z_j=e^{\varepsilon x_j}\)">\(z_j=e^{\varepsilon x_j}\)</span>. Expand each entry as
+<span class="math math-display" data-tex="\[
+e^{\varepsilon a_i x_j}
+=\sum_{k\geq0}\frac{\varepsilon^k a_i^k x_j^k}{k!}.
+\]">\[
+e^{\varepsilon a_i x_j}
+=\sum_{k\geq0}\frac{\varepsilon^k a_i^k x_j^k}{k!}.
+\]</span>
+In the determinant expansion, repeated power indices give zero. The lowest possible sum of <span class="math" data-tex="\(n\)">\(n\)</span> distinct nonnegative indices is <span class="math" data-tex="\(N=n(n-1)/2\)">\(N=n(n-1)/2\)</span>, obtained uniquely from <span class="math" data-tex="\(0,\ldots,n-1\)">\(0,\ldots,n-1\)</span>. Multilinearity, or the finite Cauchy–Binet formula applied to a truncated series, consequently gives
+<span class="math math-display" data-tex="\[
+D_a(e^{\varepsilon x})
+=\frac{\varepsilon^N}{\prod_{k=0}^{n-1}k!}
+\det[a_i^k]_{\substack{1\leq i\leq n\\0\leq k&lt;n}}
+\det[x_j^k]_{\substack{0\leq k&lt;n\\1\leq j\leq n}}
++O(\varepsilon^{N+1}).
+\]">\[
+D_a(e^{\varepsilon x})
+=\frac{\varepsilon^N}{\prod_{k=0}^{n-1}k!}
+\det[a_i^k]_{\substack{1\leq i\leq n\\0\leq k&lt;n}}
+\det[x_j^k]_{\substack{0\leq k&lt;n\\1\leq j\leq n}}
++O(\varepsilon^{N+1}).
+\]</span>
+Both displayed determinants are nonzero Vandermonde determinants. The same calculation for <span class="math" data-tex="\(\delta\)">\(\delta\)</span> cancels the <span class="math" data-tex="\(x\)">\(x\)</span>-determinant, factorial and power of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The ratio is
+<span class="math" data-tex="\(\prod_{i&lt;j}(a_i-a_j)/(\delta_i-\delta_j)\)">\(\prod_{i&lt;j}(a_i-a_j)/(\delta_i-\delta_j)\)</span>, with <span class="math" data-tex="\(\delta_i-\delta_j=j-i\)">\(\delta_i-\delta_j=j-i\)</span>. Lemma 1.2 makes the quotient continuous at the identity, so this limit is its value there. Each factor is positive. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> both products are empty and equal one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-character-classification">The character classification</h2>
+<p>For every nonincreasing integer tuple <span class="math" data-tex="\(\lambda=(\lambda_1,\ldots,\lambda_n)\)">\(\lambda=(\lambda_1,\ldots,\lambda_n)\)</span>, define
+<span class="math math-display" data-tex="\[
+s_\lambda(z)=\frac{D_{\lambda+\delta}(z)}{D_\delta(z)}, \tag{2.1}
+\]">\[
+s_\lambda(z)=\frac{D_{\lambda+\delta}(z)}{D_\delta(z)}, \tag{2.1}
+\]</span>
+using its Laurent-polynomial extension.</p>
+<p id="result-theorem-2-2"><strong>Theorem 2.2 (Weyl's character formula for <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>).</strong> The irreducible continuous complex representations of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> are in bijection with
+<span class="math math-display" data-tex="\[
+\lambda\in\mathbb Z^n,\qquad \lambda_1\geq\cdots\geq\lambda_n.
+\]">\[
+\lambda\in\mathbb Z^n,\qquad \lambda_1\geq\cdots\geq\lambda_n.
+\]</span>
+The character of the representation <span class="math" data-tex="\(\pi_\lambda\)">\(\pi_\lambda\)</span> is <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> on the torus. This formula remains valid at repeated eigenvalues through the extension in Lemma 1.2.</p>
+<p><em>Proof.</em> Every irreducible is finite-dimensional and can be made unitary. Its restriction to <span class="math" data-tex="\(T\)">\(T\)</span> is a direct sum of torus characters. Therefore its character is a Laurent polynomial
+<span class="math math-display" data-tex="\[
+\chi(z)=\sum_{m\in\mathbb Z^n}b_m z^m,
+\qquad b_m\in\mathbb Z_{\geq0},
+\]">\[
+\chi(z)=\sum_{m\in\mathbb Z^n}b_m z^m,
+\qquad b_m\in\mathbb Z_{\geq0},
+\]</span>
+with finite support. It is symmetric, since permutation matrices conjugate diagonal matrices. Thus <span class="math" data-tex="\(\chi D_\delta\)">\(\chi D_\delta\)</span> is alternating with integer coefficients.</p>
+<p>Every alternating Laurent polynomial has a unique finite expression
+<span class="math math-display" data-tex="\[
+\chi D_\delta=\sum_{a_1&gt;\cdots&gt;a_n}c_aD_a,\qquad c_a\in\mathbb Z. \tag{2.3}
+\]">\[
+\chi D_\delta=\sum_{a_1&gt;\cdots&gt;a_n}c_aD_a,\qquad c_a\in\mathbb Z. \tag{2.3}
+\]</span>
+Indeed a monomial with repeated exponents has zero coefficient: its stabilizing transposition negates that coefficient. On every other permutation orbit, alternating signs determine all coefficients from the coefficient of the decreasing tuple, exactly as in <span class="math" data-tex="\(D_a\)">\(D_a\)</span>.</p>
+<p>Character orthogonality and Weyl integration give
+<span class="math math-display" data-tex="\[
+1=\int_{U(n)}|\chi|^2
+=\frac1{n!}\int_{T^n}|\chi D_\delta|^2
+=\sum_a|c_a|^2.
+\]">\[
+1=\int_{U(n)}|\chi|^2
+=\frac1{n!}\int_{T^n}|\chi D_\delta|^2
+=\sum_a|c_a|^2.
+\]</span>
+Since the coefficients are integers, precisely one is nonzero, and it equals <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus <span class="math" data-tex="\(\chi=\pm D_a/D_\delta\)">\(\chi=\pm D_a/D_\delta\)</span>. The character value <span class="math" data-tex="\(\chi(1)=\dim\pi\)">\(\chi(1)=\dim\pi\)</span> is positive, and Lemma 1.3 says the quotient's identity value is positive. The sign is therefore plus. Put <span class="math" data-tex="\(\lambda_i=a_i-(n-i)\)">\(\lambda_i=a_i-(n-i)\)</span>; strict decrease of integer <span class="math" data-tex="\(a_i\)">\(a_i\)</span> makes <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> nonincreasing. Every irreducible is now in the proposed list.</p>
+<p>Existence is a separate step. Lemma 1.2 and Weyl integration show that all <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> are continuous class functions of norm one and satisfy
+<span class="math math-display" data-tex="\[
+\langle s_\lambda,s_\mu\rangle_{L^2(U(n))}=\delta_{\lambda\mu}. \tag{2.4}
+\]">\[
+\langle s_\lambda,s_\mu\rangle_{L^2(U(n))}=\delta_{\lambda\mu}. \tag{2.4}
+\]</span>
+If a proposed <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> did not occur, the classification just proved would make <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> orthogonal to every irreducible character. The complete <span class="math" data-tex="\(L^2\)">\(L^2\)</span> character basis would then force <span class="math" data-tex="\(s_\lambda=0\)">\(s_\lambda=0\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, contradicting its norm one. Hence every <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> occurs. Orthogonality proves inequivalence of different labels; equality of characters determines the representation by complete reducibility and Schur orthogonality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The label is the highest weight for upper-triangular positive roots. For completeness, order exponent tuples lexicographically. The leading monomial in <span class="math" data-tex="\(D_a\)">\(D_a\)</span> is <span class="math" data-tex="\(z_1^{a_1}\cdots z_n^{a_n}\)">\(z_1^{a_1}\cdots z_n^{a_n}\)</span>, with coefficient one; the same holds for <span class="math" data-tex="\(D_\delta\)">\(D_\delta\)</span>. The leading term of their Laurent quotient is therefore <span class="math" data-tex="\(z^\lambda\)">\(z^\lambda\)</span>, with coefficient one. Thus <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is the lexicographically largest weight and its weight space is one-dimensional. The complexified differential of <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, raises a weight by <span class="math" data-tex="\(\varepsilon_i-\varepsilon_j\)">\(\varepsilon_i-\varepsilon_j\)</span>, which is lexicographically positive. It must annihilate that weight space. This identifies a highest-weight vector without using a prior highest-weight classification.</p>
+<p id="result-corollary-2-5"><strong>Corollary 2.5 (dimension).</strong>
+<span class="math math-display" data-tex="\[
+\dim\pi_\lambda
+=\prod_{1\leq i&lt;j\leq n}
+\frac{\lambda_i-\lambda_j+j-i}{j-i}. \tag{2.6}
+\]">\[
+\dim\pi_\lambda
+=\prod_{1\leq i&lt;j\leq n}
+\frac{\lambda_i-\lambda_j+j-i}{j-i}. \tag{2.6}
+\]</span></p>
+<p><em>Proof.</em> A character at the identity is its dimension. Apply Lemma 1.3 to <span class="math" data-tex="\(a=\lambda+\delta\)">\(a=\lambda+\delta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any integer <span class="math" data-tex="\(k\)">\(k\)</span>, determinant twisting gives
+<span class="math math-display" data-tex="\[
+s_{\lambda+k(1,\ldots,1)}(z)
+=(z_1\cdots z_n)^k s_\lambda(z),\qquad
+\pi_{\lambda+k(1,\ldots,1)}\simeq\det^k\otimes\pi_\lambda. \tag{2.7}
+\]">\[
+s_{\lambda+k(1,\ldots,1)}(z)
+=(z_1\cdots z_n)^k s_\lambda(z),\qquad
+\pi_{\lambda+k(1,\ldots,1)}\simeq\det^k\otimes\pi_\lambda. \tag{2.7}
+\]</span>
+Negative weights are therefore essential to the full unitary classification. The dual defining representation has label <span class="math" data-tex="\((0,\ldots,0,-1)\)">\((0,\ldots,0,-1)\)</span>, for instance.</p>
+<h2 id="branching-and-gelfand-tsetlin-lines">Branching and Gelfand–Tsetlin lines</h2>
+<p id="result-proposition-3-1"><strong>Proposition 3.1 (tableau identity).</strong> For a partition <span class="math" data-tex="\(\kappa_1\geq\cdots\geq\kappa_n\geq0\)">\(\kappa_1\geq\cdots\geq\kappa_n\geq0\)</span>, the bialternant <span class="math" data-tex="\(s_\kappa(z_1,\ldots,z_n)\)">\(s_\kappa(z_1,\ldots,z_n)\)</span> equals
+<span class="math math-display" data-tex="\[
+\sum_Q\prod_{i=1}^n z_i^{\,\#\{\text{entries }i\text{ in }Q\}}, \tag{3.1}
+\]">\[
+\sum_Q\prod_{i=1}^n z_i^{\,\#\{\text{entries }i\text{ in }Q\}}, \tag{3.1}
+\]</span>
+where <span class="math" data-tex="\(Q\)">\(Q\)</span> runs over the semistandard tableaux of shape <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, with entries <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span>, weakly increasing in rows and strictly increasing in columns. Stanley's Definition 7.10.1 and Theorem 7.15.1 give the same identity. Here is an internal determinant proof.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(a_i=\kappa_i+n-i\)">\(a_i=\kappa_i+n-i\)</span>, so <span class="math" data-tex="\(a_1&gt;\cdots&gt;a_n\geq0\)">\(a_1&gt;\cdots&gt;a_n\geq0\)</span>, and denote <span class="math" data-tex="\(\det[z_j^{a_i}]\)">\(\det[z_j^{a_i}]\)</span> by <span class="math" data-tex="\(D_a\)">\(D_a\)</span>. For each interlacing partition <span class="math" data-tex="\(\nu\)">\(\nu\)</span> of length <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, put <span class="math" data-tex="\(b_i=\nu_i+n-1-i\)">\(b_i=\nu_i+n-1-i\)</span>. The interlacing conditions are exactly the independent intervals
+<span class="math math-display" data-tex="\[
+a_{i+1}\leq b_i\leq a_i-1,\qquad 1\leq i&lt;n.
+\]">\[
+a_{i+1}\leq b_i\leq a_i-1,\qquad 1\leq i&lt;n.
+\]</span>
+These intervals automatically make <span class="math" data-tex="\(b_1&gt;\cdots&gt;b_{n-1}\geq0\)">\(b_1&gt;\cdots&gt;b_{n-1}\geq0\)</span>.
+Multilinearity in the determinant's rows gives
+<span class="math math-display" data-tex="\[
+\sum_b D_b(z)\,w^{\,|a|-|b|-(n-1)}
+=w^{a_n}\det\left[
+\sum_{b=a_{i+1}}^{a_i-1}z_j^b w^{a_i-1-b}
+\right]_{i,j=1}^{n-1}.
+\]">\[
+\sum_b D_b(z)\,w^{\,|a|-|b|-(n-1)}
+=w^{a_n}\det\left[
+\sum_{b=a_{i+1}}^{a_i-1}z_j^b w^{a_i-1-b}
+\right]_{i,j=1}^{n-1}.
+\]</span>
+All exponents of <span class="math" data-tex="\(w\)">\(w\)</span> in these finite sums are nonnegative. Multiplying by <span class="math" data-tex="\(\prod_{j&lt;n}(z_j-w)\)">\(\prod_{j&lt;n}(z_j-w)\)</span> and using the telescoping geometric identity in each column gives
+<span class="math math-display" data-tex="\[
+w^{a_n}\det\left[
+z_j^{a_i}-w^{a_i-a_{i+1}}z_j^{a_{i+1}}
+\right]_{i,j=1}^{n-1}.
+\]">\[
+w^{a_n}\det\left[
+z_j^{a_i}-w^{a_i-a_{i+1}}z_j^{a_{i+1}}
+\right]_{i,j=1}^{n-1}.
+\]</span>
+This is <span class="math" data-tex="\(D_a(z_1,\ldots,z_{n-1},w)\)">\(D_a(z_1,\ldots,z_{n-1},w)\)</span>: in its <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> determinant replace row <span class="math" data-tex="\(i\)">\(i\)</span> by row <span class="math" data-tex="\(i\)">\(i\)</span> minus <span class="math" data-tex="\(w^{a_i-a_{i+1}}\)">\(w^{a_i-a_{i+1}}\)</span> times row <span class="math" data-tex="\(i+1\)">\(i+1\)</span>, in increasing order <span class="math" data-tex="\(i=1,\ldots,n-1\)">\(i=1,\ldots,n-1\)</span>. The last column becomes zero except for its last entry <span class="math" data-tex="\(w^{a_n}\)">\(w^{a_n}\)</span>; expansion down that column gives the displayed determinant with positive sign.</p>
+<p>The Vandermonde denominator satisfies
+<span class="math math-display" data-tex="\[
+D_{\delta_n}(z,w)=D_{\delta_{n-1}}(z)\prod_{j&lt;n}(z_j-w).
+\]">\[
+D_{\delta_n}(z,w)=D_{\delta_{n-1}}(z)\prod_{j&lt;n}(z_j-w).
+\]</span>
+Dividing first at distinct variables, and then using the polynomial extension already proved, shows
+<span class="math math-display" data-tex="\[
+s_\kappa(z,w)=
+\sum_{\nu\prec\kappa}w^{|\kappa|-|\nu|}s_\nu(z).
+\tag{3.1a}
+\]">\[
+s_\kappa(z,w)=
+\sum_{\nu\prec\kappa}w^{|\kappa|-|\nu|}s_\nu(z).
+\tag{3.1a}
+\]</span>
+The exponent identity follows from
+<span class="math" data-tex="\(|a|-|b|-(n-1)=|\kappa|-|\nu|\)">\(|a|-|b|-(n-1)=|\kappa|-|\nu|\)</span>.</p>
+<p>The tableau sum satisfies exactly the same recursion. All entries <span class="math" data-tex="\(n\)">\(n\)</span> lie at row ends, and column strictness permits at most one in a column. Removing them leaves a partition <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with <span class="math" data-tex="\(\kappa_i\geq\nu_i\geq\kappa_{i+1}\)">\(\kappa_i\geq\nu_i\geq\kappa_{i+1}\)</span>, and a tableau with entries at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Conversely each such tableau extends uniquely by filling the removed horizontal strip with <span class="math" data-tex="\(n\)">\(n\)</span>. These new entries contribute <span class="math" data-tex="\(w^{|\kappa|-|\nu|}\)">\(w^{|\kappa|-|\nu|}\)</span>. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, both expressions are <span class="math" data-tex="\(z_1^{\kappa_1}\)">\(z_1^{\kappa_1}\)</span>. Induction on <span class="math" data-tex="\(n\)">\(n\)</span>, using (3.1a), proves their equality for every partition. This uses no Schur–Weyl theorem or algebraic representation classification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="result-theorem-3-2"><strong>Theorem 3.2 (unitary branching).</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, under the embedding <span class="math" data-tex="\(U(n-1)\to U(n)\)">\(U(n-1)\to U(n)\)</span>, <span class="math" data-tex="\(h\mapsto\operatorname{diag}(h,1)\)">\(h\mapsto\operatorname{diag}(h,1)\)</span>,
+<span class="math math-display" data-tex="\[
+\pi_\lambda|_{U(n-1)}
+\simeq\bigoplus_{\mu\prec\lambda}\pi_\mu,\qquad
+\lambda_i\geq\mu_i\geq\lambda_{i+1}\quad(1\leq i&lt;n), \tag{3.3}
+\]">\[
+\pi_\lambda|_{U(n-1)}
+\simeq\bigoplus_{\mu\prec\lambda}\pi_\mu,\qquad
+\lambda_i\geq\mu_i\geq\lambda_{i+1}\quad(1\leq i&lt;n), \tag{3.3}
+\]</span>
+with multiplicity one. The <span class="math" data-tex="\(\mu\)">\(\mu\)</span>'s are integer tuples of length <span class="math" data-tex="\(n-1\)">\(n-1\)</span>.</p>
+<p><em>Proof.</em> First let <span class="math" data-tex="\(\lambda=\kappa\)">\(\lambda=\kappa\)</span> be a partition. The entries <span class="math" data-tex="\(n\)">\(n\)</span> of a tableau are at row ends and cannot share a column, by column strictness. Removing them leaves a partition <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and a semistandard tableau with entries at most <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The removed shape <span class="math" data-tex="\(\kappa/\nu\)">\(\kappa/\nu\)</span> has at most one box in each column, equivalently
+<span class="math math-display" data-tex="\[
+\kappa_i\geq\nu_i\geq\kappa_{i+1}\quad(1\leq i&lt;n).
+\]">\[
+\kappa_i\geq\nu_i\geq\kappa_{i+1}\quad(1\leq i&lt;n).
+\]</span>
+In detail, <span class="math" data-tex="\(\nu\subset\kappa\)">\(\nu\subset\kappa\)</span> gives the first inequality. If <span class="math" data-tex="\(\nu_i&lt;\kappa_{i+1}\)">\(\nu_i&lt;\kappa_{i+1}\)</span>, a column between these two lengths has removed boxes in both rows <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span>, contradicting the condition. Conversely the inequalities place each removed box below all remaining boxes in its column and permit at most one removed box there. Also <span class="math" data-tex="\(\nu\)">\(\nu\)</span> has no <span class="math" data-tex="\(n\)">\(n\)</span>-th row: a column of height <span class="math" data-tex="\(n\)">\(n\)</span> in the original tableau must end in <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For any such <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, filling all removed boxes with <span class="math" data-tex="\(n\)">\(n\)</span> gives a unique inverse construction. Existing entries above them are smaller, and row weak increase is preserved. The tableau formula consequently gives the full identity
+<span class="math math-display" data-tex="\[
+s_\kappa(z_1,\ldots,z_{n-1},w)
+=\sum_{\nu\prec\kappa}
+w^{|\kappa|-|\nu|}s_\nu(z_1,\ldots,z_{n-1}). \tag{3.4}
+\]">\[
+s_\kappa(z_1,\ldots,z_{n-1},w)
+=\sum_{\nu\prec\kappa}
+w^{|\kappa|-|\nu|}s_\nu(z_1,\ldots,z_{n-1}). \tag{3.4}
+\]</span>
+For general integer <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, put <span class="math" data-tex="\(k=\lambda_n\)">\(k=\lambda_n\)</span>, <span class="math" data-tex="\(\kappa=\lambda-k(1,\ldots,1)\)">\(\kappa=\lambda-k(1,\ldots,1)\)</span>. This is a partition. Multiply (3.4) by <span class="math" data-tex="\((z_1\cdots z_{n-1}w)^k\)">\((z_1\cdots z_{n-1}w)^k\)</span> and put <span class="math" data-tex="\(\mu=\nu+k(1,\ldots,1)\)">\(\mu=\nu+k(1,\ldots,1)\)</span>. Interlacing is unchanged, and <span class="math" data-tex="\(|\lambda|-|\mu|=|\kappa|-|\nu|+k\)">\(|\lambda|-|\mu|=|\kappa|-|\nu|+k\)</span>, so
+<span class="math math-display" data-tex="\[
+s_\lambda(z,w)=\sum_{\mu\prec\lambda}
+w^{|\lambda|-|\mu|}s_\mu(z). \tag{3.5}
+\]">\[
+s_\lambda(z,w)=\sum_{\mu\prec\lambda}
+w^{|\lambda|-|\mu|}s_\mu(z). \tag{3.5}
+\]</span>
+Here <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span> means the sum of its entries, even when negative. Setting <span class="math" data-tex="\(w=1\)">\(w=1\)</span> gives the restricted character. Complete reducibility and character independence then give precisely (3.3). The interlacing inequalities themselves imply that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is nonincreasing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Repeated branching along <span class="math" data-tex="\(U(1)\subset\cdots\subset U(n)\)">\(U(1)\subset\cdots\subset U(n)\)</span> decomposes the representation into one-dimensional mutually orthogonal lines labeled by integer arrays
+<span class="math math-display" data-tex="\[
+\begin{matrix}
+\lambda_1^{(n)}&amp;\lambda_2^{(n)}&amp;\cdots&amp;\lambda_n^{(n)}\\
+\lambda_1^{(n-1)}&amp;\cdots&amp;\lambda_{n-1}^{(n-1)}\\
+\vdots\\
+\lambda_1^{(1)}
+\end{matrix},
+\qquad
+\lambda_i^{(r)}\geq\lambda_i^{(r-1)}\geq\lambda_{i+1}^{(r)}.
+\]">\[
+\begin{matrix}
+\lambda_1^{(n)}&amp;\lambda_2^{(n)}&amp;\cdots&amp;\lambda_n^{(n)}\\
+\lambda_1^{(n-1)}&amp;\cdots&amp;\lambda_{n-1}^{(n-1)}\\
+\vdots\\
+\lambda_1^{(1)}
+\end{matrix},
+\qquad
+\lambda_i^{(r)}\geq\lambda_i^{(r-1)}\geq\lambda_{i+1}^{(r)}.
+\]</span>
+The top row is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Multiplicity one makes the summands intrinsic at each step; <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span> irreducibles are one-dimensional. Choosing a unit vector on each final line gives a Gelfand–Tsetlin basis. Phases of those vectors require a choice. Counting the patterns gives the dimension; this does not assert unexplained explicit formulas for Lie-algebra generator matrices.</p>
+<h2 id="restricting-to-the-special-unitary-group">Restricting to the special unitary group</h2>
+<p id="result-corollary-4-1"><strong>Corollary 4.1.</strong> The irreducible representations of <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span> are the restrictions of <span class="math" data-tex="\(\pi_\lambda\)">\(\pi_\lambda\)</span> with <span class="math" data-tex="\(\lambda_n=0\)">\(\lambda_n=0\)</span>, pairwise inequivalent.</p>
+<p><em>Proof.</em> First every <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> irreducible remains irreducible on <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span>. Its scalar central circle acts by scalars, by Schur's lemma. Since <span class="math" data-tex="\(U(n)=S^1 SU(n)\)">\(U(n)=S^1 SU(n)\)</span>, any <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span>-invariant subspace is invariant under all of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>, so is zero or the whole space.</p>
+<p>We also prove exhaustion. On <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span>, the unital algebra generated by matrix entries and their complex conjugates separates points and is closed under conjugation. Stone–Weierstrass makes it uniformly dense in <span class="math" data-tex="\(C(SU(n))\)">\(C(SU(n))\)</span>. Each of its monomials is a coefficient of a tensor product of the defining <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> representation and its dual. Decomposing that tensor product into <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> irreducibles shows that restrictions of their coefficient spaces span a dense subspace. Any additional <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span> irreducible would have nonzero matrix coefficients orthogonal to all these spaces, by Schur coefficient orthogonality, contradicting density. Thus every irreducible is a restriction.</p>
+<p>Finally suppose two restrictions are equivalent. Their intertwiner space is one-dimensional. Conjugating an intertwiner by the two <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> actions gives a continuous character of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>, trivial on <span class="math" data-tex="\(SU(n)\)">\(SU(n)\)</span>. It factors through determinant <span class="math" data-tex="\(U(n)/SU(n)\simeq S^1\)">\(U(n)/SU(n)\simeq S^1\)</span>, and is therefore <span class="math" data-tex="\(\det^k\)">\(\det^k\)</span> for an integer <span class="math" data-tex="\(k\)">\(k\)</span>. The two <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span> representations differ by that determinant twist. Conversely determinant twists restrict identically. Formula (2.7) consequently identifies labels exactly modulo integer multiples of <span class="math" data-tex="\((1,\ldots,1)\)">\((1,\ldots,1)\)</span>. Subtracting <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> gives a unique nonincreasing label with last entry zero. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(SU(1)\)">\(SU(1)\)</span> is trivial and the normalized label is <span class="math" data-tex="\(0\)">\(0\)</span>, as asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>, write <span class="math" data-tex="\(\lambda=(a,b)\)">\(\lambda=(a,b)\)</span>, <span class="math" data-tex="\(m=a-b\geq0\)">\(m=a-b\geq0\)</span>. Direct division gives
+<span class="math math-display" data-tex="\[
+s_{(a,b)}(z_1,z_2)
+=(z_1z_2)^b\sum_{j=0}^m z_1^{m-j}z_2^j,
+\qquad \pi_{(a,b)}\simeq\det^b\otimes\operatorname{Sym}^m\mathbb C^2.
+\]">\[
+s_{(a,b)}(z_1,z_2)
+=(z_1z_2)^b\sum_{j=0}^m z_1^{m-j}z_2^j,
+\qquad \pi_{(a,b)}\simeq\det^b\otimes\operatorname{Sym}^m\mathbb C^2.
+\]</span>
+Its dimension is <span class="math" data-tex="\(m+1\)">\(m+1\)</span>, and the scalar <span class="math" data-tex="\(zI\)">\(zI\)</span> acts as <span class="math" data-tex="\(z^{a+b}\)">\(z^{a+b}\)</span>. In the earlier <span class="math" data-tex="\(SU(2)\times S^1\)">\(SU(2)\times S^1\)</span> description, the central exponent is <span class="math" data-tex="\(a+b=m+2b\)">\(a+b=m+2b\)</span>, exactly the required parity condition.</p>
+<p>For <span class="math" data-tex="\(U(3)\)">\(U(3)\)</span>, conjugation on <span class="math" data-tex="\(\operatorname{End}(\mathbb C^3)\)">\(\operatorname{End}(\mathbb C^3)\)</span> has character <span class="math" data-tex="\(|z_1+z_2+z_3|^2\)">\(|z_1+z_2+z_3|^2\)</span>. Its scalar line splits off; the trace-zero summand has character
+<span class="math math-display" data-tex="\[
+\chi_0=|z_1+z_2+z_3|^2-1.
+\]">\[
+\chi_0=|z_1+z_2+z_3|^2-1.
+\]</span>
+The trace moments from the preceding lesson give <span class="math" data-tex="\(\|\chi_0\|^2=2-2+1=1\)">\(\|\chi_0\|^2=2-2+1=1\)</span>, so this genuine representation is irreducible. Its highest monomial is <span class="math" data-tex="\(z_1z_3^{-1}\)">\(z_1z_3^{-1}\)</span>, hence its label is <span class="math" data-tex="\((1,0,-1)\)">\((1,0,-1)\)</span> and its dimension is eight. The full complexified adjoint representation has dimension nine and includes the trivial scalar summand.</p>
+<p>The tableau formula for a single row and a single column gives
+<span class="math math-display" data-tex="\[
+\operatorname{Sym}^k\mathbb C^n\simeq\pi_{(k,0,\ldots,0)},\qquad
+\bigwedge^k\mathbb C^n\simeq\pi_{(1^k,0^{n-k})}\quad(0\leq k\leq n).
+\]">\[
+\operatorname{Sym}^k\mathbb C^n\simeq\pi_{(k,0,\ldots,0)},\qquad
+\bigwedge^k\mathbb C^n\simeq\pi_{(1^k,0^{n-k})}\quad(0\leq k\leq n).
+\]</span>
+Indeed their standard tensor bases have respectively weakly increasing and strictly increasing index sequences, giving exactly those characters. Exterior powers with <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span> are zero.</p>
+<h2 id="permutations-explain-the-multiplicity-spaces-in-tensor-powers">Permutations explain the multiplicity spaces in tensor powers</h2>
+<p>On <span class="math" data-tex="\(E_{N,d}=(\mathbb C^N)^{\otimes d}\)">\(E_{N,d}=(\mathbb C^N)^{\otimes d}\)</span>, <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span> acts on every factor while <span class="math" data-tex="\(S_d\)">\(S_d\)</span> permutes the factors. Write
+<span class="math math-display" data-tex="\[
+P_\sigma(v_1\otimes\cdots\otimes v_d)
+=v_{\sigma^{-1}(1)}\otimes\cdots\otimes v_{\sigma^{-1}(d)}.
+\]">\[
+P_\sigma(v_1\otimes\cdots\otimes v_d)
+=v_{\sigma^{-1}(1)}\otimes\cdots\otimes v_{\sigma^{-1}(d)}.
+\]</span>
+The inverse makes <span class="math" data-tex="\(P_\sigma P_\tau=P_{\sigma\tau}\)">\(P_\sigma P_\tau=P_{\sigma\tau}\)</span>, and this action commutes with <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span>.</p>
+<p id="result-theorem-5-1"><strong>Theorem 5.1 (Schur–Weyl duality).</strong> For <span class="math" data-tex="\(N,d\geq1\)">\(N,d\geq1\)</span>, there are irreducible <span class="math" data-tex="\(S_d\)">\(S_d\)</span>-modules <span class="math" data-tex="\(S^\lambda\)">\(S^\lambda\)</span>, indexed by partitions <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(d\)">\(d\)</span>, such that
+<span class="math math-display" data-tex="\[
+E_{N,d}\simeq
+\bigoplus_{\substack{\lambda\vdash d\\\ell(\lambda)\leq N}}
+\pi_\lambda^{U(N)}\otimes S^\lambda
+\]">\[
+E_{N,d}\simeq
+\bigoplus_{\substack{\lambda\vdash d\\\ell(\lambda)\leq N}}
+\pi_\lambda^{U(N)}\otimes S^\lambda
+\]</span>
+as a representation of <span class="math" data-tex="\(U(N)\times S_d\)">\(U(N)\times S_d\)</span>. The <span class="math" data-tex="\(S^\lambda\)">\(S^\lambda\)</span>'s are pairwise inequivalent, independent of <span class="math" data-tex="\(N\)">\(N\)</span>, and exhaust the irreducibles of <span class="math" data-tex="\(S_d\)">\(S_d\)</span>. The two actions generate each other's commutants. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the tensor space and both actions are trivial one-dimensional ones.</p>
+<p><em>Proof.</em> We first prove the commutant statement when <span class="math" data-tex="\(N\geq d\)">\(N\geq d\)</span>, using only matrices. If <span class="math" data-tex="\(A\)">\(A\)</span> commutes with the <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span>-action, differentiation makes it commute with the tensor action of <span class="math" data-tex="\(\mathfrak u(N)\)">\(\mathfrak u(N)\)</span>, and complex linearity with that of <span class="math" data-tex="\(\mathfrak{gl}_N(\mathbb C)=\mathfrak u(N)+i\mathfrak u(N)\)">\(\mathfrak{gl}_N(\mathbb C)=\mathfrak u(N)+i\mathfrak u(N)\)</span>. It therefore commutes with tensor powers of every <span class="math" data-tex="\(g\in GL_N(\mathbb C)\)">\(g\in GL_N(\mathbb C)\)</span>. Here no density theorem for algebraic groups is needed: polar decomposition writes <span class="math" data-tex="\(g=u\exp H\)">\(g=u\exp H\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> unitary and <span class="math" data-tex="\(H\)">\(H\)</span> Hermitian, by diagonalizing the positive matrix <span class="math" data-tex="\(g^*g\)">\(g^*g\)</span>.</p>
+<p>Set <span class="math" data-tex="\(v=e_1\otimes\cdots\otimes e_d\)">\(v=e_1\otimes\cdots\otimes e_d\)</span>. The diagonal matrices' joint weight space with weight <span class="math" data-tex="\(z_1\cdots z_d\)">\(z_1\cdots z_d\)</span> is spanned by the <span class="math" data-tex="\(d!\)">\(d!\)</span> distinct vectors <span class="math" data-tex="\(P_\sigma v\)">\(P_\sigma v\)</span>. Consequently <span class="math" data-tex="\(Av=\sum_\sigma a_\sigma P_\sigma v\)">\(Av=\sum_\sigma a_\sigma P_\sigma v\)</span>. The commuting operator <span class="math" data-tex="\(A-\sum a_\sigma P_\sigma\)">\(A-\sum a_\sigma P_\sigma\)</span> annihilates every tensor <span class="math" data-tex="\(gv\)">\(gv\)</span>, hence every tensor of <span class="math" data-tex="\(d\)">\(d\)</span> linearly independent vectors. Such tuples are dense in <span class="math" data-tex="\((\mathbb C^N)^d\)">\((\mathbb C^N)^d\)</span>: perturb a tuple by <span class="math" data-tex="\(t(e_1,\ldots,e_d)\)">\(t(e_1,\ldots,e_d)\)</span>; a suitable <span class="math" data-tex="\(d\)">\(d\)</span>-row minor is a polynomial in <span class="math" data-tex="\(t\)">\(t\)</span> with leading coefficient one, so is nonzero for arbitrarily small <span class="math" data-tex="\(t\)">\(t\)</span>. Continuity gives annihilation of all pure tensors, which span the tensor space. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{End}_{U(N)}(E_{N,d})
+=\operatorname{span}_{\mathbb C}\{P_\sigma:\sigma\in S_d\}.
+\]">\[
+\operatorname{End}_{U(N)}(E_{N,d})
+=\operatorname{span}_{\mathbb C}\{P_\sigma:\sigma\in S_d\}.
+\]</span>
+The permutation operators are linearly independent when <span class="math" data-tex="\(N\geq d\)">\(N\geq d\)</span>, by applying them to <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Complete reducibility gives <span class="math" data-tex="\(E_{N,d}=\bigoplus_\lambda\pi_\lambda\otimes M_{\lambda,N}\)">\(E_{N,d}=\bigoplus_\lambda\pi_\lambda\otimes M_{\lambda,N}\)</span>, where <span class="math" data-tex="\(M_{\lambda,N}=\operatorname{Hom}_{U(N)}(\pi_\lambda,E_{N,d})\)">\(M_{\lambda,N}=\operatorname{Hom}_{U(N)}(\pi_\lambda,E_{N,d})\)</span>. Every weight in this tensor space has nonnegative integer coordinates summing to <span class="math" data-tex="\(d\)">\(d\)</span>. The classification in Theorem 2.2 therefore permits only partitions of <span class="math" data-tex="\(d\)">\(d\)</span>. Schur's lemma identifies its commutant with <span class="math" data-tex="\(\bigoplus_\lambda\operatorname{End}(M_{\lambda,N})\)">\(\bigoplus_\lambda\operatorname{End}(M_{\lambda,N})\)</span>. The just-proved equality says that the permutation algebra realizes every matrix in every one of these blocks independently. Each nonzero <span class="math" data-tex="\(M_{\lambda,N}\)">\(M_{\lambda,N}\)</span> is consequently irreducible for <span class="math" data-tex="\(S_d\)">\(S_d\)</span>, and different blocks are inequivalent. Moreover every <span class="math" data-tex="\(S_d\)">\(S_d\)</span>-irreducible occurs: otherwise its central isotypic projection
+<span class="math math-display" data-tex="\[
+e_\tau=\frac{\dim\tau}{d!}\sum_{\sigma\in S_d}
+\overline{\chi_\tau(\sigma)}\,\sigma
+\]">\[
+e_\tau=\frac{\dim\tau}{d!}\sum_{\sigma\in S_d}
+\overline{\chi_\tau(\sigma)}\,\sigma
+\]</span>
+would act by zero, contrary to the linear independence of the permutation operators. This is exactly the finite-group projector proved in lesson three. The number of irreducibles of <span class="math" data-tex="\(S_d\)">\(S_d\)</span> equals its number of conjugacy classes, also by that lesson. Cycle types identify those classes with the partitions of <span class="math" data-tex="\(d\)">\(d\)</span>. Since there are at most that many possible <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span>-labels, every partition occurs once as a label of a multiplicity block. Put <span class="math" data-tex="\(S^\lambda=M_{\lambda,N}\)">\(S^\lambda=M_{\lambda,N}\)</span>.</p>
+<p>We now check both independence of <span class="math" data-tex="\(N\)">\(N\)</span> and the case <span class="math" data-tex="\(N&lt;d\)">\(N&lt;d\)</span>. Inside <span class="math" data-tex="\(E_{K,d}\)">\(E_{K,d}\)</span>, the subspace on which the last coordinate circle acts trivially is exactly <span class="math" data-tex="\(E_{K-1,d}\)">\(E_{K-1,d}\)</span>: its exponent counts the occurrences of <span class="math" data-tex="\(e_K\)">\(e_K\)</span>, so is zero exactly when none occur. In the full branching identity (3.5), the corresponding exponent for <span class="math" data-tex="\(\pi_\lambda^{U(K)}\)">\(\pi_\lambda^{U(K)}\)</span> is <span class="math" data-tex="\(|\lambda|-|\mu|\)">\(|\lambda|-|\mu|\)</span>. For a partition, interlacing gives <span class="math" data-tex="\(\mu_i\leq\lambda_i\)">\(\mu_i\leq\lambda_i\)</span>, so this exponent is zero precisely when <span class="math" data-tex="\(\lambda_K=0\)">\(\lambda_K=0\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the truncated tuple <span class="math" data-tex="\((\lambda_1,\ldots,\lambda_{K-1})\)">\((\lambda_1,\ldots,\lambda_{K-1})\)</span>. That component is one copy of the appropriate <span class="math" data-tex="\(U(K-1)\)">\(U(K-1)\)</span>-irreducible. Taking the zero-weight subspace thus keeps exactly the labels with <span class="math" data-tex="\(\ell(\lambda)\leq K-1\)">\(\ell(\lambda)\leq K-1\)</span>, without changing their <span class="math" data-tex="\(S_d\)">\(S_d\)</span>-multiplicity modules. Repeated truncation from any <span class="math" data-tex="\(K\geq\max(N,d)\)">\(K\geq\max(N,d)\)</span> proves the displayed decomposition and compatibility for every <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Finally, for any finite-dimensional unitary representation with inequivalent irreducible blocks <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, its group operators span <span class="math" data-tex="\(\bigoplus_i\operatorname{End}(V_i)\)">\(\bigoplus_i\operatorname{End}(V_i)\)</span>. To see this directly, Schur coefficient orthogonality makes their individual matrix coefficients linearly independent; the map taking a linear functional on the block matrix space to the corresponding coefficient function is injective. Its finite-dimensional dual therefore says that the evaluation vectors, which are the block group matrices, span that whole space. Applied separately to <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span> and <span class="math" data-tex="\(S_d\)">\(S_d\)</span>, this proves the two commutant assertions for all <span class="math" data-tex="\(N\)">\(N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For tensor cubes, <span class="math" data-tex="\(S^{(3)}\)">\(S^{(3)}\)</span> is trivial, <span class="math" data-tex="\(S^{(1,1,1)}\)">\(S^{(1,1,1)}\)</span> is the sign representation, and the remaining <span class="math" data-tex="\(S^{(2,1)}\)">\(S^{(2,1)}\)</span> is the two-dimensional standard representation of <span class="math" data-tex="\(S_3\)">\(S_3\)</span>. The first two identifications follow by symmetric and alternating tensors. The standard module is the sum-zero plane in the three-point permutation representation; its character is <span class="math" data-tex="\(2,0,-1\)">\(2,0,-1\)</span> on the identity, transpositions and three-cycles, with squared norm <span class="math" data-tex="\((4+0+2)/6=1\)">\((4+0+2)/6=1\)</span>, proving irreducibility. These three modules exhaust the three conjugacy classes. Hence
+<span class="math math-display" data-tex="\[
+(\mathbb C^2)^{\otimes3}\simeq
+\pi_{(3,0)}\oplus2\pi_{(2,1)},
+\qquad8=4+2\cdot2.
+\]">\[
+(\mathbb C^2)^{\otimes3}\simeq
+\pi_{(3,0)}\oplus2\pi_{(2,1)},
+\qquad8=4+2\cdot2.
+\]</span>
+For dimension three,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\mathbb C^3)^{\otimes3}&amp;\simeq
+\pi_{(3,0,0)}\oplus2\pi_{(2,1,0)}\\
+&amp;\hspace{1em}\oplus\pi_{(1,1,1)},\\
+27&amp;=10+2\cdot8+1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+(\mathbb C^3)^{\otimes3}&amp;\simeq
+\pi_{(3,0,0)}\oplus2\pi_{(2,1,0)}\\
+&amp;\hspace{1em}\oplus\pi_{(1,1,1)},\\
+27&amp;=10+2\cdot8+1.
+\end{aligned}
+\]</span>
+On <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>, the first line becomes <span class="math" data-tex="\(\pi_3\oplus2\pi_1\)">\(\pi_3\oplus2\pi_1\)</span>. The factor of two is now an actual permutation-module dimension, rather than an unexplained repeated highest weight. This construction supplements the analytic classification already proved; it is not an assumption used to obtain that classification.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Compute dimensions for <span class="math" data-tex="\((2,1,0)\)">\((2,1,0)\)</span> in <span class="math" data-tex="\(U(3)\)">\(U(3)\)</span> and <span class="math" data-tex="\((1,1,0,0)\)">\((1,1,0,0)\)</span> in <span class="math" data-tex="\(U(4)\)">\(U(4)\)</span>.</p>
+<p><em>Solution.</em> The three factors for <span class="math" data-tex="\((2,1,0)\)">\((2,1,0)\)</span> are <span class="math" data-tex="\(2,2,2\)">\(2,2,2\)</span>, giving dimension eight. For <span class="math" data-tex="\((1,1,0,0)\)">\((1,1,0,0)\)</span>, the six factors in pair order <span class="math" data-tex="\((12),(13),(14),(23),(24),(34)\)">\((12),(13),(14),(23),(24),(34)\)</span> are
+<span class="math math-display" data-tex="\[
+1,\quad\tfrac32,\quad\tfrac43,\quad2,\quad\tfrac32,\quad1.
+\]">\[
+1,\quad\tfrac32,\quad\tfrac43,\quad2,\quad\tfrac32,\quad1.
+\]</span>
+Their product is six, also <span class="math" data-tex="\(\dim\bigwedge^2\mathbb C^4=\binom42\)">\(\dim\bigwedge^2\mathbb C^4=\binom42\)</span>. The first representation restricts to the <span class="math" data-tex="\(SU(3)\)">\(SU(3)\)</span> adjoint representation; its unitary label differs from <span class="math" data-tex="\((1,0,-1)\)">\((1,0,-1)\)</span> by a determinant twist.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove the one-box Pieri rule
+<span class="math math-display" data-tex="\[
+\pi_\lambda\otimes\mathbb C^n
+\simeq\bigoplus_{\substack{1\leq i\leq n\\\lambda+e_i\text{ nonincreasing}}}
+\pi_{\lambda+e_i}.
+\]">\[
+\pi_\lambda\otimes\mathbb C^n
+\simeq\bigoplus_{\substack{1\leq i\leq n\\\lambda+e_i\text{ nonincreasing}}}
+\pi_{\lambda+e_i}.
+\]</span></p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(p(z)=z_1+\cdots+z_n\)">\(p(z)=z_1+\cdots+z_n\)</span>. Expanding determinants, as in the previous lesson, gives
+<span class="math math-display" data-tex="\[
+pD_a=\sum_iD_{a+e_i}.
+\]">\[
+pD_a=\sum_iD_{a+e_i}.
+\]</span>
+For <span class="math" data-tex="\(a=\lambda+\delta\)">\(a=\lambda+\delta\)</span>, raising row <span class="math" data-tex="\(i&gt;1\)">\(i&gt;1\)</span> creates a collision precisely when <span class="math" data-tex="\(\lambda_{i-1}=\lambda_i\)">\(\lambda_{i-1}=\lambda_i\)</span>; that determinant is zero. Otherwise the exponents remain strictly decreasing, so no reordering sign occurs. Row one always contributes. Dividing by <span class="math" data-tex="\(D_\delta\)">\(D_\delta\)</span> yields
+<span class="math math-display" data-tex="\[
+ps_\lambda=\sum_{\lambda+e_i\text{ nonincreasing}}s_{\lambda+e_i}.
+\]">\[
+ps_\lambda=\sum_{\lambda+e_i\text{ nonincreasing}}s_{\lambda+e_i}.
+\]</span>
+The left side is the tensor-product character. The right side is a sum of distinct irreducible characters with coefficient one. Complete reducibility and character independence prove the rule for all integer labels, including determinant twists.</p>
+<p><strong>Exercise 3 (medium).</strong> Recover the complete <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> classification and its character formula.</p>
+<p><em>Solution.</em> Corollary 4.1 normalizes every label to <span class="math" data-tex="\((m,0)\)">\((m,0)\)</span>, <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>. Restricting the <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span> formula to <span class="math" data-tex="\(z_1=z\)">\(z_1=z\)</span>, <span class="math" data-tex="\(z_2=z^{-1}\)">\(z_2=z^{-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+\chi_m(z)=z^m+z^{m-2}+\cdots+z^{-m}.
+\]">\[
+\chi_m(z)=z^m+z^{m-2}+\cdots+z^{-m}.
+\]</span>
+For <span class="math" data-tex="\(z=e^{i\theta}\)">\(z=e^{i\theta}\)</span> and <span class="math" data-tex="\(\sin\theta\neq0\)">\(\sin\theta\neq0\)</span>, the geometric sum is
+<span class="math math-display" data-tex="\[
+\chi_m(t_\theta)=\frac{\sin((m+1)\theta)}{\sin\theta}.
+\]">\[
+\chi_m(t_\theta)=\frac{\sin((m+1)\theta)}{\sin\theta}.
+\]</span>
+At <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> the continuous value is <span class="math" data-tex="\(m+1\)">\(m+1\)</span>, its dimension; at <span class="math" data-tex="\(\theta=\pi\)">\(\theta=\pi\)</span> it is <span class="math" data-tex="\((-1)^m(m+1)\)">\((-1)^m(m+1)\)</span>. These are the polynomial representations previously constructed. The central element <span class="math" data-tex="\(-I\)">\(-I\)</span> acts as <span class="math" data-tex="\((-1)^m\)">\((-1)^m\)</span>, so precisely the even <span class="math" data-tex="\(m\)">\(m\)</span>'s descend to <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span>.</p>
+<p><strong>Exercise 4 (hard).</strong> Prove the interlacing identity with final torus coordinate one, and deduce the branching decomposition without a multiplicity assumption.</p>
+<p><em>Solution.</em> For a partition <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, remove all maximal entries <span class="math" data-tex="\(n\)">\(n\)</span> from its semistandard tableaux. They occupy a horizontal strip, and the remaining shape <span class="math" data-tex="\(\nu\)">\(\nu\)</span> satisfies <span class="math" data-tex="\(\kappa_i\geq\nu_i\geq\kappa_{i+1}\)">\(\kappa_i\geq\nu_i\geq\kappa_{i+1}\)</span>. Conversely every tableau on such a <span class="math" data-tex="\(\nu\)">\(\nu\)</span> extends uniquely by filling the strip with <span class="math" data-tex="\(n\)">\(n\)</span>. Weights of remaining boxes contribute <span class="math" data-tex="\(s_\nu\)">\(s_\nu\)</span>, while removed entries contribute the factor <span class="math" data-tex="\(w^{|\kappa|-|\nu|}\)">\(w^{|\kappa|-|\nu|}\)</span>. Summing the bijection gives (3.4); at <span class="math" data-tex="\(w=1\)">\(w=1\)</span> each strip contributes once.</p>
+<p>For an arbitrary integer label <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, subtract <span class="math" data-tex="\(k=\lambda_n\)">\(k=\lambda_n\)</span> from each entry to get a partition <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Multiply the identity by the determinant monomial <span class="math" data-tex="\((z_1\cdots z_{n-1}w)^k\)">\((z_1\cdots z_{n-1}w)^k\)</span>. The remaining labels become <span class="math" data-tex="\(\mu=\nu+k(1,\ldots,1)\)">\(\mu=\nu+k(1,\ldots,1)\)</span>, preserving interlacing, so at <span class="math" data-tex="\(w=1\)">\(w=1\)</span>
+<span class="math math-display" data-tex="\[
+s_\lambda(z_1,\ldots,z_{n-1},1)
+=\sum_{\mu\prec\lambda}s_\mu(z_1,\ldots,z_{n-1}).
+\]">\[
+s_\lambda(z_1,\ldots,z_{n-1},1)
+=\sum_{\mu\prec\lambda}s_\mu(z_1,\ldots,z_{n-1}).
+\]</span>
+Restriction is completely reducible. Pairing its character with each <span class="math" data-tex="\(U(n-1)\)">\(U(n-1)\)</span> irreducible character reads off its multiplicity: one for each interlacing <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, zero otherwise. This proves both the list and multiplicity one. It also covers negative labels, which a partition-only identity would leave untreated.</p>
+<h2 id="source-comparisons">Source comparisons</h2>
+<p>Stanley, <em>Enumerative Combinatorics</em>, Volume 2, Sections 7.10 and 7.15, gives the independently proved identity (3.1); Appendix 2 states the rational <span class="math" data-tex="\(GL(n,\mathbb C)\)">\(GL(n,\mathbb C)\)</span> counterpart. That algebraic theorem is not used as a substitute for existence in the compact analytic argument.</p>
+<p>The symmetric-power generating series is infinite:
+<span class="math math-display" data-tex="\[
+\sum_{k\geq0}\chi_{\operatorname{Sym}^k}(g)u^k
+=\det(1-ug)^{-1}.
+\]">\[
+\sum_{k\geq0}\chi_{\operatorname{Sym}^k}(g)u^k
+=\det(1-ug)^{-1}.
+\]</span>
+Only the exterior-power series terminates at <span class="math" data-tex="\(N\)">\(N\)</span>. Already for <span class="math" data-tex="\(g=1\)">\(g=1\)</span> in <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>, the symmetric series is <span class="math" data-tex="\(1/(1-u)\)">\(1/(1-u)\)</span>.</p>
+<p>Schur's 1927 paper [59] begins by treating polynomial matrix coefficients, in the terminology of its time, and its first footnote extends to determinant denominators. His 1928 paper [62] studies continuous representations of several noncompact general and special linear groups; its symbol <span class="math" data-tex="\(U_n\)">\(U_n\)</span> denotes the complex unimodular group, not our compact unitary group. These distinctions matter when comparing historical classifications. No original passage is reproduced here.</p>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §27. The general character and dimension formulas give a comparison after specializing the type-A roots. The full determinant and branching proofs above also retain negative analytic labels; no source classification replaces them.</p>
+<p>Constantin Teleman, <a href="https://math.berkeley.edu/~teleman/math/RepThry.pdf"><em>Representation Theory</em>, Lent 2005</a>, §§23.14–24.10, pages 57–60 (accessed 3 October 2026), supplies the Schur–Weyl and cycle-trace comparison. Theorem 5.1 here has a full elementary commutant proof followed by the already proved branching rule, so its proof does not assume the source’s outlined Cauchy determinant argument.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-09.provenance.json">Source and result records</a></footer></body></html>

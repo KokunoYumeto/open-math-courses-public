@@ -1,0 +1,694 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Poincaré duality for curves</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="poincaré-duality-for-curves">Poincaré duality for curves</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.</em></p>
+<p>The degree of a divisor supplies an orientation for a smooth algebraic curve. Poincaré duality says that this orientation pairs compactly supported cohomology with ordinary cohomology, including coefficients that have ramification at finitely many points. The local calculation at those points is essential. We give that calculation and then the full argument of M. Artin for constructible coefficients.</p>
+<h2 id="1-conventions-and-the-earlier-results-used">1. Conventions and the earlier results used</h2>
+<p>Throughout, <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> has zero coefficients and is immediate. A curve means a separated smooth scheme of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>, purely of dimension one. It has finitely many connected components. A constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf has finite module values on a finite constructible stratification. We write <span class="math" data-tex="\(D^b_c(X,\Lambda)\)">\(D^b_c(X,\Lambda)\)</span> for complexes with constructible cohomology and only finitely many nonzero cohomology sheaves. All sheaves and derived operations are on the small étale site.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\Lambda(1)=\mu_n,\qquad K_X=\mu_n[2],\qquad
+D_XF=R\mathcal Hom_\Lambda(F,K_X).
+\tag{1.1}
+\]">\[
+\Lambda(1)=\mu_n,\qquad K_X=\mu_n[2],\qquad
+D_XF=R\mathcal Hom_\Lambda(F,K_X).
+\tag{1.1}
+\]</span>
+<p>The symbol <span class="math" data-tex="\(\mathcal Hom\)">\(\mathcal Hom\)</span> denotes internal sheaf Hom. Without the calligraphic symbol, <span class="math" data-tex="\(R\operatorname{Hom}_\Lambda\)">\(R\operatorname{Hom}_\Lambda\)</span> will mean the derived Hom of complexes of modules. A shift satisfies <span class="math" data-tex="\(H^r(A[s])=H^{r+s}(A)\)">\(H^r(A[s])=H^{r+s}(A)\)</span>. For a local system <span class="math" data-tex="\(L\)">\(L\)</span>, write <span class="math" data-tex="\(L^\vee=\mathcal Hom_\Lambda(L,\Lambda)\)">\(L^\vee=\mathcal Hom_\Lambda(L,\Lambda)\)</span>, and <span class="math" data-tex="\(L^\vee(1)=L^\vee\otimes_\Lambda\mu_n\)">\(L^\vee(1)=L^\vee\otimes_\Lambda\mu_n\)</span>. The sheaf <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> is an invertible rank-one <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf. Choosing a primitive root identifies it with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, but the formulas will keep the twist.</p>
+<p>Our trace sends <span class="math" data-tex="\(c_1^{(n)}(\mathcal O_C(x))\)">\(c_1^{(n)}(\mathcal O_C(x))\)</span> to <span class="math" data-tex="\(+1\)">\(+1\)</span> for a point on a connected smooth projective curve <span class="math" data-tex="\(C\)">\(C\)</span>. The pairing is ordered with the compactly supported class first:</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(X,F)\otimes^L_\Lambda R\Gamma(X,D_XF)
+\longrightarrow R\Gamma_c(X,K_X)\longrightarrow\Lambda.
+\tag{1.2}
+\]">\[
+R\Gamma_c(X,F)\otimes^L_\Lambda R\Gamma(X,D_XF)
+\longrightarrow R\Gamma_c(X,K_X)\longrightarrow\Lambda.
+\tag{1.2}
+\]</span>
+<p>Switching two classes of degrees <span class="math" data-tex="\(r,s\)">\(r,s\)</span> contributes <span class="math" data-tex="\((-1)^{rs}\)">\((-1)^{rs}\)</span>, together with the coefficient symmetry. In particular switching two degree-one classes changes the sign. This convention also fixes the curve trace used for the Lefschetz trace formula.</p>
+<p>Here are the exact cohomological imports. Lesson 7 proves exact finite pushforward, finite base change and geometric-stalk comparison. Lesson 8, Theorem 6.1, proves procyclic cohomology, including its inflation maps. Lesson 10, Theorem 6.2 and Proposition 8.1, proves the Kummer/degree computation and the degree of finite pullback. Lesson 11 proves the constructible Serre property and exact extension by zero. Lesson 12, Sections 8 and 10, proves ordinary curve finiteness and the prime-to-characteristic bounds: degree at most two for a proper curve and at most one for an affine curve. Lesson 14, Sections 10–12, proves the projection formula, localization, and compact-support finiteness and the degree-two bound. Strictly henselian local schemes are acyclic for abelian étale sheaves, as proved in Lesson 16, Section 2.</p>
+<p>We also use the geometric curve foundations stated in Lesson 12, Section 2: smooth projective completion, finite normalization, the classification of finite local systems by finite étale covers on a normal curve, and the Picard/Jacobian facts explicitly stated in Lesson 10, Picard input 6.1. None of these imports is Poincaré duality. The codimension-one cohomological calculation needed below will be proved here, before the general purity lesson.</p>
+<h2 id="2-the-trace-and-its-normalization">2. The trace and its normalization</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be connected and smooth projective. Kummer and Lesson 10 give</p>
+<span class="math math-display" data-tex="\[
+H^2(C,\mu_n)=\operatorname{Pic}(C)/n\operatorname{Pic}(C)
+\xrightarrow[\deg]{\sim}\Lambda.
+\tag{2.1}
+\]">\[
+H^2(C,\mu_n)=\operatorname{Pic}(C)/n\operatorname{Pic}(C)
+\xrightarrow[\deg]{\sim}\Lambda.
+\tag{2.1}
+\]</span>
+<p>Recall why degree gives precisely this quotient. The degree-zero subgroup is divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, and there is a degree-one line bundle. If <span class="math" data-tex="\(\deg L=na\)">\(\deg L=na\)</span>, choose <span class="math" data-tex="\(M\)">\(M\)</span> of degree <span class="math" data-tex="\(a\)">\(a\)</span>; then <span class="math" data-tex="\(L\otimes M^{-n}\)">\(L\otimes M^{-n}\)</span> has degree zero and is an <span class="math" data-tex="\(n\)">\(n\)</span>-th power. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is an <span class="math" data-tex="\(n\)">\(n\)</span>-th power. The converse follows by taking degrees. The trace in (2.1) is therefore canonical, without choosing a root of unity or a splitting of the degree sequence.</p>
+<p>For a connected open <span class="math" data-tex="\(j:X\hookrightarrow C\)">\(j:X\hookrightarrow C\)</span>, let <span class="math" data-tex="\(i:Z=C-X\hookrightarrow C\)">\(i:Z=C-X\hookrightarrow C\)</span>. The finite reduced boundary has no positive cohomology. From</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow j_!\mu_n\longrightarrow\mu_n
+\longrightarrow i_*\mu_n\longrightarrow0
+\]">\[
+0\longrightarrow j_!\mu_n\longrightarrow\mu_n
+\longrightarrow i_*\mu_n\longrightarrow0
+\]</span>
+<p>we obtain</p>
+<span class="math math-display" data-tex="\[
+H^2_c(X,\mu_n)=H^2(C,j_!\mu_n)
+\xrightarrow{\sim}H^2(C,\mu_n)
+\xrightarrow[\operatorname{Tr}_X]{\sim}\Lambda.
+\tag{2.2}
+\]">\[
+H^2_c(X,\mu_n)=H^2(C,j_!\mu_n)
+\xrightarrow{\sim}H^2(C,\mu_n)
+\xrightarrow[\operatorname{Tr}_X]{\sim}\Lambda.
+\tag{2.2}
+\]</span>
+<p>The completion is unique up to the unique isomorphism extending the identity on the function field: a birational map between smooth projective curves extends at every valuation ring, and its inverse does too. Thus (2.2) is independent of the completion. If <span class="math" data-tex="\(V\subset X\)">\(V\subset X\)</span> is a nonempty connected open, the map <span class="math" data-tex="\(H^2_c(V,\mu_n)\to H^2_c(X,\mu_n)\)">\(H^2_c(V,\mu_n)\to H^2_c(X,\mu_n)\)</span> preserves trace, since both maps to the same <span class="math" data-tex="\(H^2(C,\mu_n)\)">\(H^2(C,\mu_n)\)</span>. For a disconnected curve, trace is the sum of (2.2) over its connected components.</p>
+<p>The compact degree bound gives <span class="math" data-tex="\(R\Gamma_c(X,K_X)\in D^{\leq0}(\Lambda)\)">\(R\Gamma_c(X,K_X)\in D^{\leq0}(\Lambda)\)</span>. Its canonical map to <span class="math" data-tex="\(H^0=H^2_c(X,\mu_n)\)">\(H^0=H^2_c(X,\mu_n)\)</span>, followed by this trace, is the derived trace in (1.2). Cup product and evaluation construct the first map in (1.2): use the projection formula for compact support and the sheaf evaluation <span class="math" data-tex="\(F\otimes^L D_XF\to K_X\)">\(F\otimes^L D_XF\to K_X\)</span>.</p>
+<p><strong>Proposition 2.1 (finite trace).</strong> If <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is finite and generically étale between smooth curves, there is a trace</p>
+<span class="math math-display" data-tex="\[
+\tau_f:f_*\mu_{n,X}\longrightarrow\mu_{n,Y},
+\qquad
+\operatorname{Tr}_Y\circ H^2_c(\tau_f)=\operatorname{Tr}_X.
+\tag{2.3}
+\]">\[
+\tau_f:f_*\mu_{n,X}\longrightarrow\mu_{n,Y},
+\qquad
+\operatorname{Tr}_Y\circ H^2_c(\tau_f)=\operatorname{Tr}_X.
+\tag{2.3}
+\]</span>
+<p>On the étale locus the trace is summation over the sheets. At a closed geometric point <span class="math" data-tex="\(y\)">\(y\)</span>, its formula is</p>
+<span class="math math-display" data-tex="\[
+(a_x)_{x\mid y}\longmapsto\sum_{x\mid y}e_xa_x
+\tag{2.4}
+\]">\[
+(a_x)_{x\mid y}\longmapsto\sum_{x\mid y}e_xa_x
+\tag{2.4}
+\]</span>
+<p>in additive root-of-unity notation, where <span class="math" data-tex="\(e_x\)">\(e_x\)</span> is the ramification index. In particular <span class="math" data-tex="\(\tau_f f^{-1}\)">\(\tau_f f^{-1}\)</span> is multiplication by the degree on each connected target component.</p>
+<p><strong>Proof.</strong> The finite morphism is flat: over a target discrete valuation ring its finite algebra is torsion free, hence free. Let <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span> be the étale locus. Normality gives <span class="math" data-tex="\(f_*\Lambda_X=j_*L\)">\(f_*\Lambda_X=j_*L\)</span>, where <span class="math" data-tex="\(L\)">\(L\)</span> is the permutation local system over <span class="math" data-tex="\(V\)">\(V\)</span>. Indeed, on an étale target chart its finite inverse image is normal; each connected component is integral and meets the inverse image of <span class="math" data-tex="\(V\)">\(V\)</span>. A locally constant function on such a component is determined by its value on that dense open. Generic summation therefore extends by <span class="math" data-tex="\(j_*\)">\(j_*\)</span> to a map <span class="math" data-tex="\(f_*\Lambda\to\Lambda\)">\(f_*\Lambda\to\Lambda\)</span>. Tensoring by the locally constant <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> gives <span class="math" data-tex="\(\tau_f\)">\(\tau_f\)</span>.</p>
+<p>Over a strictly henselian target trait, the sheets specializing to a given <span class="math" data-tex="\(x\)">\(x\)</span> form one inertia orbit of size <span class="math" data-tex="\(e_x\)">\(e_x\)</span>. The residue field is separably closed, so there is no residue-degree factor. An invariant locally constant value <span class="math" data-tex="\(a_x\)">\(a_x\)</span> is repeated <span class="math" data-tex="\(e_x\)">\(e_x\)</span> times in the generic sum, proving (2.4). The same formula follows from the norm on units: the determinant norm of a scalar root of unity on that branch is its <span class="math" data-tex="\(e_x\)">\(e_x\)</span>-th power. Norm is compatible with <span class="math" data-tex="\(n\)">\(n\)</span>-th powers, hence with Kummer.</p>
+<p>For projective curves norm on line bundles sends a divisor <span class="math" data-tex="\(\sum m_x[x]\)">\(\sum m_x[x]\)</span> to <span class="math" data-tex="\(\sum m_x[f(x)]\)">\(\sum m_x[f(x)]\)</span>, since all residue fields are <span class="math" data-tex="\(k\)">\(k\)</span>. To check it, trivialize a line bundle on the generic point and take determinant norms of its local rational transition functions; their valuations are the sums of the valuations on the branches. Consequently norm preserves the degree of divisors and induces (2.3) under Kummer and (2.1).</p>
+<p>A finite map of open curves extends to their projective completions. The inverse image of <span class="math" data-tex="\(Y\)">\(Y\)</span> in the source completion is exactly <span class="math" data-tex="\(X\)">\(X\)</span>: any valuation point above <span class="math" data-tex="\(Y\)">\(Y\)</span> must lie in <span class="math" data-tex="\(X\)">\(X\)</span>, by the valuative criterion for the proper map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>. Thus the open-completion square is cartesian. Finite base change and exact extension by zero carry the projective norm compatibility to (2.3) for compact support. This proves every assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite étale <span class="math" data-tex="\(f\)">\(f\)</span>, all <span class="math" data-tex="\(e_x=1\)">\(e_x=1\)</span>; trace is the usual sum and transfer. Pullback in degree two is multiplication by the degree, whereas the norm trace in (2.3) preserves the degree of a point divisor. These are different maps with different directions.</p>
+<h2 id="3-finite-coefficient-duality">3. Finite coefficient duality</h2>
+<p>The coefficient ring need not be a field. The following elementary fact is the reason the argument still works.</p>
+<p><strong>Lemma 3.1.</strong> The module <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is injective over itself. For a finite <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the functor</p>
+<span class="math math-display" data-tex="\[
+M^\vee=\operatorname{Hom}_\Lambda(M,\Lambda)
+\]">\[
+M^\vee=\operatorname{Hom}_\Lambda(M,\Lambda)
+\]</span>
+<p>is exact, separates points, preserves cardinality, and the evaluation map <span class="math" data-tex="\(M\to M^{\vee\vee}\)">\(M\to M^{\vee\vee}\)</span> is an isomorphism.</p>
+<p><strong>Proof.</strong> Every ideal is <span class="math" data-tex="\(d\Lambda\)">\(d\Lambda\)</span> for some divisor <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>. A map from this ideal to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is determined by <span class="math" data-tex="\(a=h(d)\)">\(a=h(d)\)</span>, which satisfies <span class="math" data-tex="\((n/d)a=0\)">\((n/d)a=0\)</span>. This says precisely that <span class="math" data-tex="\(a=db\)">\(a=db\)</span> for some <span class="math" data-tex="\(b\in\Lambda\)">\(b\in\Lambda\)</span>. Multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> extends <span class="math" data-tex="\(h\)">\(h\)</span> to all of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Baer's criterion proves injectivity, and hence exactness of Hom into <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p>A finite module is a finite direct sum of cyclic groups of orders dividing <span class="math" data-tex="\(n\)">\(n\)</span>. For the cyclic group of order <span class="math" data-tex="\(d\)">\(d\)</span>, its dual is the subgroup <span class="math" data-tex="\((n/d)\Lambda\)">\((n/d)\Lambda\)</span>, also of order <span class="math" data-tex="\(d\)">\(d\)</span>. A generator pairs with <span class="math" data-tex="\(n/d\)">\(n/d\)</span>, so the dual separates that generator and all its nonzero multiples. The same conclusion holds on each summand. Thus evaluation is injective, and equal cardinalities make it an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a bounded complex of finite modules <span class="math" data-tex="\(A\)">\(A\)</span>, derived duality is computed by ordinary Hom into <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+H^r(R\operatorname{Hom}_\Lambda(A,\Lambda))
+=H^{-r}(A)^\vee.
+\tag{3.1}
+\]">\[
+H^r(R\operatorname{Hom}_\Lambda(A,\Lambda))
+=H^{-r}(A)^\vee.
+\tag{3.1}
+\]</span>
+<p>This follows by applying the exact dual functor to cycles, boundaries and their quotient, with the usual Hom-complex differential. Evaluation uses the graded symmetry and gives the canonical complex bidual map; (3.1) and Lemma 3.1 show it is an isomorphism.</p>
+<p>These assertions do not say that <span class="math" data-tex="\(A\)">\(A\)</span> has a finite resolution by finitely generated projective modules. For example <span class="math" data-tex="\(\mathbf Z/\ell\)">\(\mathbf Z/\ell\)</span> over <span class="math" data-tex="\(\mathbf Z/\ell^2\)">\(\mathbf Z/\ell^2\)</span> has an infinite resolution with successive maps multiplication by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. A skyscraper with that value is allowed in our theorem. A perfect pairing below means that the two finite groups are each other's <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dual, and that the specified derived duality map is an isomorphism.</p>
+<h2 id="4-inertia-and-the-valuation-calculation">4. Inertia and the valuation calculation</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the strict henselization of a smooth curve at a closed geometric point, <span class="math" data-tex="\(i:s\hookrightarrow S\)">\(i:s\hookrightarrow S\)</span> its closed point, and <span class="math" data-tex="\(j:\eta\hookrightarrow S\)">\(j:\eta\hookrightarrow S\)</span> its generic point. The ring of <span class="math" data-tex="\(S\)">\(S\)</span> is a strictly henselian discrete valuation ring. Write <span class="math" data-tex="\(I=\operatorname{Gal}(\bar\eta/\eta)\)">\(I=\operatorname{Gal}(\bar\eta/\eta)\)</span>. A finite locally constant sheaf on <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a finite continuous <span class="math" data-tex="\(I\)">\(I\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>We use the ramification description</p>
+<span class="math math-display" data-tex="\[
+1\longrightarrow P\longrightarrow I\longrightarrow
+T=\widehat{\mathbf Z}^{(p&#x27;)}(1)\longrightarrow1,
+\tag{4.1}
+\]">\[
+1\longrightarrow P\longrightarrow I\longrightarrow
+T=\widehat{\mathbf Z}^{(p&#x27;)}(1)\longrightarrow1,
+\tag{4.1}
+\]</span>
+<p>where <span class="math" data-tex="\(p\)">\(p\)</span> is the residue characteristic exponent, <span class="math" data-tex="\(P\)">\(P\)</span> is pro-<span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(P=1\)">\(P=1\)</span> in characteristic zero. This is the geometric ramification fact for a strict smooth trait. Its tame description comes from adjoining all prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of a uniformizer. Units have such roots by Hensel's lemma and the separably closed residue field. For a finite Galois extension, inertia acts on a uniformizer modulo its square through a finite subgroup of the residue multiplicative group; that quotient is cyclic of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. The kernel is the wild group: its successive ramification quotients embed in the residue additive group and are <span class="math" data-tex="\(p\)">\(p\)</span>-groups. Passing to the inverse limit gives (4.1). The roots of the uniformizer identify its quotient canonically with the indicated Tate-twisted group. This input is a statement about valuation extensions, not a cohomological purity or duality theorem.</p>
+<p><strong>Lemma 4.1.</strong> For a finite <span class="math" data-tex="\(\Lambda[I]\)">\(\Lambda[I]\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^0(I,M)=M^I,\qquad
+H^1(I,M)=(M^P)_T(-1),\qquad H^q(I,M)=0\quad(q&gt;1).
+\tag{4.2}
+\]">\[
+H^0(I,M)=M^I,\qquad
+H^1(I,M)=(M^P)_T(-1),\qquad H^q(I,M)=0\quad(q&gt;1).
+\tag{4.2}
+\]</span>
+<p>There is a canonical evaluation isomorphism</p>
+<span class="math math-display" data-tex="\[
+H^1(I,M^\vee)\xrightarrow{\sim}(M^I)^\vee(-1).
+\tag{4.3}
+\]">\[
+H^1(I,M^\vee)\xrightarrow{\sim}(M^I)^\vee(-1).
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> Invariants for <span class="math" data-tex="\(P\)">\(P\)</span> are exact on these modules. A finite set of elements and their <span class="math" data-tex="\(P\)">\(P\)</span>-action factors through a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group, whose order is a unit in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>; averaging lifts any invariant section of a quotient. The same averaging contraction of the finite-group cochain complex kills positive cohomology. Continuous cohomology is the filtered limit over finite quotients, so <span class="math" data-tex="\(H^{&gt;0}(P,M)=0\)">\(H^{&gt;0}(P,M)=0\)</span>. Hochschild–Serre reduces to <span class="math" data-tex="\(T\)">\(T\)</span> acting on <span class="math" data-tex="\(M^P\)">\(M^P\)</span>.</p>
+<p>Choose a topological generator <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span> temporarily. The cyclic resolution and inflation computation of Lesson 8, Section 6, apply using only cyclic quotients of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. If the action factors through order <span class="math" data-tex="\(r\)">\(r\)</span>, replace <span class="math" data-tex="\(r\)">\(r\)</span> by <span class="math" data-tex="\(ar\)">\(ar\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> divisible by the exponent of <span class="math" data-tex="\(M\)">\(M\)</span> and still prime to <span class="math" data-tex="\(p\)">\(p\)</span>. The norm <span class="math" data-tex="\(N_{ar}=aN_r\)">\(N_{ar}=aN_r\)</span> then vanishes. Inflation is the identity on degree-one representatives and multiplication by <span class="math" data-tex="\(a^{\lfloor q/2\rfloor}\)">\(a^{\lfloor q/2\rfloor}\)</span> in degree <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, so every higher class dies after such a refinement. This proves degree one is the coinvariant group <span class="math" data-tex="\(M^P/(\gamma-1)M^P\)">\(M^P/(\gamma-1)M^P\)</span>, and all higher degrees are zero. Replacing <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> by a unit multiple changes the cocycle evaluation by that unit; recording the tame character makes the identification canonical with the factor <span class="math" data-tex="\((-1)\)">\((-1)\)</span>. This proves (4.2).</p>
+<p>Averaging also identifies <span class="math" data-tex="\((M^\vee)^P\)">\((M^\vee)^P\)</span> with <span class="math" data-tex="\((M^P)^\vee\)">\((M^P)^\vee\)</span>. On <span class="math" data-tex="\(N=M^P\)">\(N=M^P\)</span>, dualizing the two-term sequence defined by <span class="math" data-tex="\(\gamma-1\)">\(\gamma-1\)</span>, using exactness from Lemma 3.1, gives</p>
+<span class="math math-display" data-tex="\[
+(N^\vee)_T\xrightarrow{\sim}(N^T)^\vee,
+\qquad [\lambda]\longmapsto\lambda|_{N^T}.
+\tag{4.4}
+\]">\[
+(N^\vee)_T\xrightarrow{\sim}(N^T)^\vee,
+\qquad [\lambda]\longmapsto\lambda|_{N^T}.
+\tag{4.4}
+\]</span>
+<p>Indeed the transpose of <span class="math" data-tex="\(\gamma-1\)">\(\gamma-1\)</span> differs from <span class="math" data-tex="\(\gamma^{-1}-1\)">\(\gamma^{-1}-1\)</span> by an invertible factor, and its cokernel is the dual of the kernel. Combining this with (4.2) proves (4.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice the distinction: the dual of <span class="math" data-tex="\(M^I\)">\(M^I\)</span> is the <strong>coinvariant</strong> quotient of the dual module. Invariants of the dual cannot replace it. For a tame unipotent Jordan block of size two over <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>, the invariant line maps to zero in the coinvariant quotient. Such an example would invalidate a proof based on the map from invariants to coinvariants being an isomorphism.</p>
+<p><strong>Lemma 4.2 (the point orientation).</strong> There is a canonical identification</p>
+<span class="math math-display" data-tex="\[
+Ri^!\Lambda=\Lambda(-1)[-2],\qquad
+Ri^!\mu_n=\Lambda[-2].
+\tag{4.5}
+\]">\[
+Ri^!\Lambda=\Lambda(-1)[-2],\qquad
+Ri^!\mu_n=\Lambda[-2].
+\tag{4.5}
+\]</span>
+<p>The boundary of the Kummer class of a uniformizer is <span class="math" data-tex="\(+1\)">\(+1\)</span> in the second identification.</p>
+<p><strong>Proof.</strong> Strict henselian acyclicity makes global sections on <span class="math" data-tex="\(S\)">\(S\)</span> its exact closed-stalk functor. The localization triangle is</p>
+<span class="math math-display" data-tex="\[
+i_*Ri^!\Lambda\longrightarrow\Lambda
+\longrightarrow Rj_*\Lambda\longrightarrow i_*Ri^!\Lambda[1].
+\tag{4.6}
+\]">\[
+i_*Ri^!\Lambda\longrightarrow\Lambda
+\longrightarrow Rj_*\Lambda\longrightarrow i_*Ri^!\Lambda[1].
+\tag{4.6}
+\]</span>
+<p>It can be constructed by an injective resolution and the subcomplex of sections supported on <span class="math" data-tex="\(s\)">\(s\)</span>; the quotient restricts to the generic open. Formula (4.2) for trivial coefficients says that the last direct image has stalk <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree zero, <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degree one, and zero in higher degrees. The map on degree zero in (4.6) is the identity. Thus the first term has just <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degree two. A complex with one cohomology sheaf has its canonical identification with that sheaf in its degree, proving the first formula of (4.5).</p>
+<p>Kummer identifies <span class="math" data-tex="\(H^1(\eta,\mu_n)=K^\times/K^{\times n}\)">\(H^1(\eta,\mu_n)=K^\times/K^{\times n}\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is the fraction field. Every unit of the strict local ring is an <span class="math" data-tex="\(n\)">\(n\)</span>-th power by Hensel's lemma. Valuation therefore gives <span class="math" data-tex="\(K^\times/K^{\times n}=\mathbf Z/n\)">\(K^\times/K^{\times n}=\mathbf Z/n\)</span>, sending a uniformizer to <span class="math" data-tex="\(+1\)">\(+1\)</span>. Use this valuation to orient the boundary isomorphism <span class="math" data-tex="\(H^1(\eta,\mu_n)\to H^2_s(S,\mu_n)\)">\(H^1(\eta,\mu_n)\to H^2_s(S,\mu_n)\)</span>. Tensor the first formula by the locally constant invertible <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> to obtain the second. A different uniformizer differs by a unit, so has the same boundary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On the whole curve this local orientation glues, since each deleted point is treated independently. Its image in <span class="math" data-tex="\(H^2(C,\mu_n)\)">\(H^2(C,\mu_n)\)</span> is <span class="math" data-tex="\(c_1^{(n)}(\mathcal O_C(s))\)">\(c_1^{(n)}(\mathcal O_C(s))\)</span>. To check the sign, lift the divisor <span class="math" data-tex="\([s]\)">\([s]\)</span> locally by a uniformizer in the valuation sequence <span class="math" data-tex="\(\mathbf G_m\to j_*\mathbf G_m\to\mathbf Z_s\)">\(\mathbf G_m\to j_*\mathbf G_m\to\mathbf Z_s\)</span>; its connecting line bundle is <span class="math" data-tex="\(\mathcal O_C(s)\)">\(\mathcal O_C(s)\)</span>, as checked in Lesson 10, Section 5. Kummer takes the same lift to the supported boundary just used. Consequently this point orientation has global trace <span class="math" data-tex="\(+1\)">\(+1\)</span>.</p>
+<h2 id="5-the-local-calculation-for-a-ramified-extension">5. The local calculation for a ramified extension</h2>
+<p>For the moment write <span class="math" data-tex="\(D_0=R\mathcal Hom_\Lambda(-,\Lambda)\)">\(D_0=R\mathcal Hom_\Lambda(-,\Lambda)\)</span> on a smooth curve. Let <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> be dense and <span class="math" data-tex="\(L\)">\(L\)</span> finite locally constant on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> There is a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+D_0(j_*L)=j_*L^\vee.
+\tag{5.1}
+\]">\[
+D_0(j_*L)=j_*L^\vee.
+\tag{5.1}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\mathcal Ext^q_\Lambda(j_*L,\Lambda)=0\)">\(\mathcal Ext^q_\Lambda(j_*L,\Lambda)=0\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(U\)">\(U\)</span>, a trivializing étale cover reduces to finite-module duality: Lemma 3.1 gives <span class="math" data-tex="\(R\mathcal Hom(L,\Lambda)=L^\vee\)">\(R\mathcal Hom(L,\Lambda)=L^\vee\)</span>. We check the remaining finitely many stalks on the strict local traits of Section 4. Fix one, with generic module <span class="math" data-tex="\(M\)">\(M\)</span>, and put <span class="math" data-tex="\(A=M^I\)">\(A=M^I\)</span>.</p>
+<p>These stalk calculations use pointed étale neighbourhoods and their strict-local limit. Finite monodromy modules and the maps between them descend to such neighbourhoods; the geometric-stalk and cohomological-continuity formulas of Lesson 7 identify the open direct-image stalk with the generic-field cohomology on the strict trait. We can therefore compute the boundary triangle there. Adjunction for open extension by zero gives</p>
+<span class="math math-display" data-tex="\[
+D_0(j_!L)=Rj_*L^\vee.
+\tag{5.2}
+\]">\[
+D_0(j_!L)=Rj_*L^\vee.
+\tag{5.2}
+\]</span>
+<p>For a finite point module, (4.5) and Lemma 3.1 give</p>
+<span class="math math-display" data-tex="\[
+D_0(i_*A)=i_*A^\vee(-1)[-2].
+\tag{5.3}
+\]">\[
+D_0(i_*A)=i_*A^\vee(-1)[-2].
+\tag{5.3}
+\]</span>
+<p>These internal formulas follow by testing Hom from an arbitrary sheaf or complex and using the open or closed adjunction; Section 6 spells out that argument. Apply <span class="math" data-tex="\(D_0\)">\(D_0\)</span> to</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow j_!L\longrightarrow j_*L
+\longrightarrow i_*A\longrightarrow0.
+\tag{5.4}
+\]">\[
+0\longrightarrow j_!L\longrightarrow j_*L
+\longrightarrow i_*A\longrightarrow0.
+\tag{5.4}
+\]</span>
+<p>At the closed stalk, the resulting triangle has the exact segment</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^1(D_0j_*L)_s
+\longrightarrow H^1(I,M^\vee)
+\xrightarrow{b}A^\vee(-1)
+\longrightarrow H^2(D_0j_*L)_s\longrightarrow0.
+\tag{5.5}
+\]">\[
+0\longrightarrow H^1(D_0j_*L)_s
+\longrightarrow H^1(I,M^\vee)
+\xrightarrow{b}A^\vee(-1)
+\longrightarrow H^2(D_0j_*L)_s\longrightarrow0.
+\tag{5.5}
+\]</span>
+<p>There are no higher terms by (4.2) and (5.3). In degree zero the same triangle identifies <span class="math" data-tex="\(\mathcal Hom(j_*L,\Lambda)\)">\(\mathcal Hom(j_*L,\Lambda)\)</span> with <span class="math" data-tex="\(j_*L^\vee\)">\(j_*L^\vee\)</span>, since (5.3) starts in degree two.</p>
+<p>It remains to identify <span class="math" data-tex="\(b\)">\(b\)</span>, not merely its source and target. Compare (5.4) with the constant-module sequence</p>
+<span class="math math-display" data-tex="\[
+0\to j_!\underline A\to\underline A\to i_*A\to0
+\]">\[
+0\to j_!\underline A\to\underline A\to i_*A\to0
+\]</span>
+<p>using the inclusion <span class="math" data-tex="\(A=M^I\to M\)">\(A=M^I\to M\)</span>. Dualizing gives a map from (5.5) to the sequence for <span class="math" data-tex="\(\underline A\)">\(\underline A\)</span>. On the middle term it is restriction of functionals <span class="math" data-tex="\(M^\vee\to A^\vee\)">\(M^\vee\to A^\vee\)</span>; on the last term it is the identity. For <span class="math" data-tex="\(A=\Lambda\)">\(A=\Lambda\)</span>, its boundary is the valuation isomorphism of Lemma 4.2. For any finite <span class="math" data-tex="\(A\)">\(A\)</span>, evaluation against <span class="math" data-tex="\(A\)">\(A\)</span>, exact coefficient duality and this normalization identify the boundary with <span class="math" data-tex="\(H^1(I,A^\vee)=A^\vee(-1)\)">\(H^1(I,A^\vee)=A^\vee(-1)\)</span>. Thus, for general <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> is the map induced by restriction of functionals. Under (4.2) it is exactly (4.4), with its <span class="math" data-tex="\((-1)\)">\((-1)\)</span> twist. Lemma 4.1 proves it is an isomorphism.</p>
+<p>Both outside groups in (5.5) consequently vanish. The calculation on <span class="math" data-tex="\(U\)">\(U\)</span> and these closed stalks proves the asserted positive-Ext vanishing everywhere, and the degree-zero identification proves (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This calculation includes wild monodromy: one first averages the pro-<span class="math" data-tex="\(p\)">\(p\)</span> group and then takes tame coinvariants. It does not require the tame monodromy to be semisimple, or the stalk module to be free over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<h2 id="6-constructible-duals-and-biduality">6. Constructible duals and biduality</h2>
+<p>We first justify the adjunction operations just used. For a finite map <span class="math" data-tex="\(f\)">\(f\)</span>, the exact functor <span class="math" data-tex="\(f_*\)">\(f_*\)</span> has a right adjoint <span class="math" data-tex="\(f^!\)">\(f^!\)</span>. One explicit construction is the sheaf associated with</p>
+<span class="math math-display" data-tex="\[
+V\longmapsto\operatorname{Hom}_{Y,\Lambda}(f_*\Lambda_V,A),
+\tag{6.1}
+\]">\[
+V\longmapsto\operatorname{Hom}_{Y,\Lambda}(f_*\Lambda_V,A),
+\tag{6.1}
+\]</span>
+<p>where <span class="math" data-tex="\(V\)">\(V\)</span> is an étale object of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(\Lambda_V\)">\(\Lambda_V\)</span> is its free represented module sheaf. This presheaf is already a sheaf: a covering gives the exact coequalizer presentation of <span class="math" data-tex="\(\Lambda_V\)">\(\Lambda_V\)</span>; exact <span class="math" data-tex="\(f_*\)">\(f_*\)</span> preserves it, and Hom turns it into the sheaf equalizer. Finite pushforward also preserves arbitrary sums, since its geometric stalks are finite sums of source stalks. Every module sheaf has a presentation by sums of these free represented sheaves. Applying that presentation proves <span class="math" data-tex="\(\operatorname{Hom}(B,f^!A)=\operatorname{Hom}(f_*B,A)\)">\(\operatorname{Hom}(B,f^!A)=\operatorname{Hom}(f_*B,A)\)</span>. Since <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is exact, <span class="math" data-tex="\(f^!\)">\(f^!\)</span> preserves injectives. Applying <span class="math" data-tex="\(f^!\)">\(f^!\)</span> to an injective resolution constructs <span class="math" data-tex="\(Rf^!\)">\(Rf^!\)</span> and its derived adjunction. For an open immersion, the right adjoint of exact <span class="math" data-tex="\(j_!\)">\(j_!\)</span> is the exact inverse image <span class="math" data-tex="\(j^{-1}\)">\(j^{-1}\)</span>. For a closed immersion, <span class="math" data-tex="\(i^!\)">\(i^!\)</span> is sections with closed support, agreeing with (4.6).</p>
+<p><strong>Lemma 6.1 (internal adjunction).</strong> For finite <span class="math" data-tex="\(f\)">\(f\)</span>, and bounded constructible <span class="math" data-tex="\(B\)">\(B\)</span> and a bounded-below <span class="math" data-tex="\(A\)">\(A\)</span>, there is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+Rf_*R\mathcal Hom_X(B,Rf^!A)
+\xrightarrow{\sim}R\mathcal Hom_Y(Rf_*B,A).
+\tag{6.2}
+\]">\[
+Rf_*R\mathcal Hom_X(B,Rf^!A)
+\xrightarrow{\sim}R\mathcal Hom_Y(Rf_*B,A).
+\tag{6.2}
+\]</span>
+<p>For an open immersion the corresponding formula is</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_X(j_!B,A)
+=Rj_*R\mathcal Hom_U(B,j^{-1}A).
+\tag{6.3}
+\]">\[
+R\mathcal Hom_X(j_!B,A)
+=Rj_*R\mathcal Hom_U(B,j^{-1}A).
+\tag{6.3}
+\]</span>
+<p><strong>Proof.</strong> Test (6.2) by Hom from a complex <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The sequence of adjunctions is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}(M,Rf_*R\mathcal Hom(B,Rf^!A))
+&amp;=\operatorname{Hom}(f^{-1}M\otimes^LB,Rf^!A)\\
+&amp;=\operatorname{Hom}(Rf_*(f^{-1}M\otimes^LB),A)\\
+&amp;=\operatorname{Hom}(M\otimes^LRf_*B,A)\\
+&amp;=\operatorname{Hom}(M,R\mathcal Hom(Rf_*B,A)).
+\end{aligned}
+\tag{6.4}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}(M,Rf_*R\mathcal Hom(B,Rf^!A))
+&amp;=\operatorname{Hom}(f^{-1}M\otimes^LB,Rf^!A)\\
+&amp;=\operatorname{Hom}(Rf_*(f^{-1}M\otimes^LB),A)\\
+&amp;=\operatorname{Hom}(M\otimes^LRf_*B,A)\\
+&amp;=\operatorname{Hom}(M,R\mathcal Hom(Rf_*B,A)).
+\end{aligned}
+\tag{6.4}
+\]</span>
+<p>The third equality is the finite, hence proper, projection formula of Lesson 14. Its arbitrary-complex domain allows these tensors even if <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has infinite global dimension. Naturality and Yoneda prove (6.2). All identifications are induced by evaluation and the adjunction counit, so the displayed isomorphism is the counit comparison. Replacing finite pushforward by <span class="math" data-tex="\(j_!\)">\(j_!\)</span>, using <span class="math" data-tex="\(j_!B\otimes^LM=j_!(B\otimes^Lj^{-1}M)\)">\(j_!B\otimes^LM=j_!(B\otimes^Lj^{-1}M)\)</span> and the open adjunction, gives (6.3). The closed-immersion version of (6.2) is (5.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since tensoring by an invertible local system is exact and local, (5.1) and (4.5) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_XL&amp;=L^\vee(1)[2]&amp;&amp;\text{if }L\text{ is locally constant on }X,\\
+D_X(i_*A)&amp;=i_*A^\vee&amp;&amp;\text{for a closed point},\\
+D_X(j_!L)&amp;=Rj_*L^\vee(1)[2],\\
+D_X(j_*L)&amp;=j_*L^\vee(1)[2].
+\end{aligned}
+\tag{6.5}
+\]">\[
+\begin{aligned}
+D_XL&amp;=L^\vee(1)[2]&amp;&amp;\text{if }L\text{ is locally constant on }X,\\
+D_X(i_*A)&amp;=i_*A^\vee&amp;&amp;\text{for a closed point},\\
+D_X(j_!L)&amp;=Rj_*L^\vee(1)[2],\\
+D_X(j_*L)&amp;=j_*L^\vee(1)[2].
+\end{aligned}
+\tag{6.5}
+\]</span>
+<p><strong>Theorem 6.2 (local biduality).</strong> The functor <span class="math" data-tex="\(D_X\)">\(D_X\)</span> preserves <span class="math" data-tex="\(D^b_c(X,\Lambda)\)">\(D^b_c(X,\Lambda)\)</span>. The canonical evaluation morphism</p>
+<span class="math math-display" data-tex="\[
+F\longrightarrow D_XD_XF
+\tag{6.6}
+\]">\[
+F\longrightarrow D_XD_XF
+\tag{6.6}
+\]</span>
+<p>is an isomorphism there.</p>
+<p><strong>Proof.</strong> For a finite-support sheaf, (6.5) reduces both claims to Lemma 3.1. For <span class="math" data-tex="\(j_*L\)">\(j_*L\)</span>, applying the last formula twice cancels the twist and the shift, and gives <span class="math" data-tex="\(j_*L^{\vee\vee}=j_*L\)">\(j_*L^{\vee\vee}=j_*L\)</span>. The bidual map here is the canonical one: restriction to <span class="math" data-tex="\(U\)">\(U\)</span> is module evaluation, and the degree-zero internal-Hom comparison in Theorem 5.1 is natural. A morphism between these <span class="math" data-tex="\(j_*\)">\(j_*\)</span>-extensions is determined on <span class="math" data-tex="\(U\)">\(U\)</span>, so that restriction identifies (6.6).</p>
+<p>For any constructible sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, choose a dense open where it is locally constant and write</p>
+<span class="math math-display" data-tex="\[
+A=\ker(F\to j_*j^{-1}F),\quad G=F/A,\quad
+J=j_*j^{-1}F,\quad B=J/G.
+\tag{6.7}
+\]">\[
+A=\ker(F\to j_*j^{-1}F),\quad G=F/A,\quad
+J=j_*j^{-1}F,\quad B=J/G.
+\tag{6.7}
+\]</span>
+<p>The sheaves <span class="math" data-tex="\(A,B\)">\(A,B\)</span> have finite support and are constructible; <span class="math" data-tex="\(G\)">\(G\)</span> is a constructible subobject of <span class="math" data-tex="\(J\)">\(J\)</span>. The latter is constructible because its closed stalks are the finite inertia invariants and its restriction to the open is locally constant. The sequences <span class="math" data-tex="\(0\to G\to J\to B\to0\)">\(0\to G\to J\to B\to0\)</span> and <span class="math" data-tex="\(0\to A\to F\to G\to0\)">\(0\to A\to F\to G\to0\)</span> show that <span class="math" data-tex="\(D_XG,D_XF\)">\(D_XG,D_XF\)</span> are bounded constructible, since that class is closed under triangles. They also give morphisms of biduality triangles. Two known isomorphisms in a triangle imply the third is an isomorphism, by the cohomology long exact sequences. Starting with <span class="math" data-tex="\(J,B\)">\(J,B\)</span>, then with <span class="math" data-tex="\(A,G\)">\(A,G\)</span>, proves (6.6) for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>A bounded constructible complex has a finite sequence of good-truncation triangles whose factors are shifts of its cohomology sheaves. Apply the same triangle argument successively. The shifts use the graded evaluation convention of Section 3; hence these maps are the canonical bidual maps, not merely some isomorphisms between the objects. This proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The dual of <span class="math" data-tex="\(j_!L\)">\(j_!L\)</span> may have two local cohomology sheaves, from <span class="math" data-tex="\(R^0j_*\)">\(R^0j_*\)</span> and <span class="math" data-tex="\(R^1j_*\)">\(R^1j_*\)</span>. Replacing <span class="math" data-tex="\(Rj_*\)">\(Rj_*\)</span> by <span class="math" data-tex="\(j_*\)">\(j_*\)</span> in that line of (6.5) would lose the boundary contribution.</p>
+<h2 id="7-finite-maps-and-the-dualizing-complex">7. Finite maps and the dualizing complex</h2>
+<p><strong>Theorem 7.1.</strong> For a finite generically étale map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> of smooth curves there is a canonical trace-normalized isomorphism</p>
+<span class="math math-display" data-tex="\[
+K_X\xrightarrow{\sim}Rf^!K_Y.
+\tag{7.1}
+\]">\[
+K_X\xrightarrow{\sim}Rf^!K_Y.
+\tag{7.1}
+\]</span>
+<p>Under it, the counit <span class="math" data-tex="\(Rf_*Rf^!K_Y\to K_Y\)">\(Rf_*Rf^!K_Y\to K_Y\)</span> is <span class="math" data-tex="\(\tau_f[2]\)">\(\tau_f[2]\)</span>. For every <span class="math" data-tex="\(F\in D^b_c(X,\Lambda)\)">\(F\in D^b_c(X,\Lambda)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D_Y(f_*F)\xrightarrow{\sim}f_*D_XF.
+\tag{7.2}
+\]">\[
+D_Y(f_*F)\xrightarrow{\sim}f_*D_XF.
+\tag{7.2}
+\]</span>
+<p><strong>Proof.</strong> First work without twist or shift. Transpose the weighted trace <span class="math" data-tex="\(f_*\Lambda_X\to\Lambda_Y\)">\(f_*\Lambda_X\to\Lambda_Y\)</span> to a map <span class="math" data-tex="\(\Lambda_X\to Rf^!\Lambda_Y\)">\(\Lambda_X\to Rf^!\Lambda_Y\)</span>. Apply exact finite pushforward and (6.2). The resulting map is</p>
+<span class="math math-display" data-tex="\[
+f_*\Lambda_X\longrightarrow
+R\mathcal Hom_Y(f_*\Lambda_X,\Lambda_Y),
+\qquad a\longmapsto\bigl(b\longmapsto\tau_f(ab)\bigr).
+\tag{7.3}
+\]">\[
+f_*\Lambda_X\longrightarrow
+R\mathcal Hom_Y(f_*\Lambda_X,\Lambda_Y),
+\qquad a\longmapsto\bigl(b\longmapsto\tau_f(ab)\bigr).
+\tag{7.3}
+\]</span>
+<p>On the dense étale locus this is the perfect dot product on a permutation module. Both sides of (7.3) are its <span class="math" data-tex="\(j_*\)">\(j_*\)</span>-extension: the left side by the normality argument in Proposition 2.1, and the right side by Theorem 5.1. Therefore (7.3) is an isomorphism. Finite pushforward is conservative, since a stalk of a source sheaf occurs as a summand in a target geometric stalk; exactness extends conservativity to complexes. Thus the transposed map <span class="math" data-tex="\(\Lambda_X\to Rf^!\Lambda_Y\)">\(\Lambda_X\to Rf^!\Lambda_Y\)</span> is an isomorphism.</p>
+<p>The same argument after tensoring by the invertible <span class="math" data-tex="\(\mu_{n,Y}\)">\(\mu_{n,Y}\)</span> and shifting by two proves (7.1). Alternatively <span class="math" data-tex="\(f^{-1}\mu_{n,Y}=\mu_{n,X}\)">\(f^{-1}\mu_{n,Y}=\mu_{n,X}\)</span>, and (6.4) shows the right adjoint commutes with this invertible twist. The map was defined by transposing <span class="math" data-tex="\(\tau_f[2]\)">\(\tau_f[2]\)</span>, so its counit is precisely that trace. Substituting <span class="math" data-tex="\(A=K_Y\)">\(A=K_Y\)</span> into (6.2) proves (7.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At a ramified closed stalk the elementary form <span class="math" data-tex="\(\sum e_xa_xb_x\)">\(\sum e_xa_xb_x\)</span> need not be nondegenerate: some <span class="math" data-tex="\(e_x\)">\(e_x\)</span> may be zero modulo <span class="math" data-tex="\(n\)">\(n\)</span>. This does not contradict (7.3). A stalk of <strong>internal</strong> Hom includes compatibility on a neighbourhood and is not the Hom of the two individual stalk modules. The proof uses the generic pairing and its sheaf extension.</p>
+<p>If both curves are proper, (7.2), exact finite pushforward and (2.3) identify the global evaluation-and-trace pairing for <span class="math" data-tex="\(f_*F\)">\(f_*F\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> with the pairing for <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. Indeed (6.4) defines (7.2) from the counit; composing that counit with <span class="math" data-tex="\(\operatorname{Tr}_Y\)">\(\operatorname{Tr}_Y\)</span> is <span class="math" data-tex="\(\operatorname{Tr}_X\)">\(\operatorname{Tr}_X\)</span>. Thus the duality maps commute with finite pushforward, including their signs.</p>
+<h2 id="8-artin-s-comparison-functors-on-the-projective-line">8. Artin's comparison functors on the projective line</h2>
+<p>We prove the proper theorem first for <strong>every constructible sheaf</strong> on <span class="math" data-tex="\(X=\mathbf P^1_k\)">\(X=\mathbf P^1_k\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+T^r(F)=\operatorname{Hom}_\Lambda(H^{-r}(X,D_XF),\Lambda).
+\tag{8.1}
+\]">\[
+T^r(F)=\operatorname{Hom}_\Lambda(H^{-r}(X,D_XF),\Lambda).
+\tag{8.1}
+\]</span>
+<p>Evaluation and trace give natural maps</p>
+<span class="math math-display" data-tex="\[
+\eta_F^r:H^r(X,F)\longrightarrow T^r(F).
+\tag{8.2}
+\]">\[
+\eta_F^r:H^r(X,F)\longrightarrow T^r(F).
+\tag{8.2}
+\]</span>
+<p>Both sides are cohomological functors of <span class="math" data-tex="\(F\)">\(F\)</span>, and (8.2) respects their connecting maps. For <span class="math" data-tex="\(T\)">\(T\)</span>, dualizing a short exact sequence reverses its triangle, and the exact module dual reverses the cohomology sequence again. Its connecting maps are those obtained by the same Hom-complex and triangle conventions as evaluation. Thus the comparison is a morphism of long exact sequences. All groups are finite by Theorem 6.2 and the ordinary constructible finiteness theorem of Lesson 12.</p>
+<p><strong>Lemma 8.1.</strong> For any constructible sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(T^r(F)=0\)">\(T^r(F)=0\)</span> if <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span> or <span class="math" data-tex="\(r&gt;2\)">\(r&gt;2\)</span>. For a finite-support sheaf <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(\eta_A^r\)">\(\eta_A^r\)</span> is an isomorphism in every degree.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(J=j_*L\)">\(J=j_*L\)</span>, (6.5) gives</p>
+<span class="math math-display" data-tex="\[
+T^r(J)=H^{2-r}(X,j_*L^\vee(1))^\vee.
+\tag{8.3}
+\]">\[
+T^r(J)=H^{2-r}(X,j_*L^\vee(1))^\vee.
+\tag{8.3}
+\]</span>
+<p>The proper curve bound makes this zero for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. A finite-support <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(D_XA=i_*A^\vee\)">\(D_XA=i_*A^\vee\)</span>, so both its ordinary cohomology and <span class="math" data-tex="\(T\)">\(T\)</span> are concentrated in degree zero. That degree's pairing is evaluation followed by the point trace <span class="math" data-tex="\(+1\)">\(+1\)</span> from Section 4. Lemma 3.1 proves it is perfect.</p>
+<p>Use (6.7). The sequence <span class="math" data-tex="\(G\to J\to B\)">\(G\to J\to B\)</span> and its <span class="math" data-tex="\(T\)">\(T\)</span> sequence show <span class="math" data-tex="\(T^r(G)=0\)">\(T^r(G)=0\)</span> for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>; both neighbours <span class="math" data-tex="\(T^{r-1}(B)\)">\(T^{r-1}(B)\)</span> and <span class="math" data-tex="\(T^r(J)\)">\(T^r(J)\)</span> vanish. The sequence <span class="math" data-tex="\(A\to F\to G\)">\(A\to F\to G\)</span> then gives <span class="math" data-tex="\(T^r(F)=0\)">\(T^r(F)=0\)</span> there as well. Finally <span class="math" data-tex="\(D_0F\)">\(D_0F\)</span> has no negative sheaf cohomology because it is a derived Hom of sheaves. Hence <span class="math" data-tex="\(D_XF=D_0F(1)[2]\)">\(D_XF=D_0F(1)[2]\)</span> has no cohomology below degree <span class="math" data-tex="\(-2\)">\(-2\)</span>. Derived global sections preserve this lower bound, so (8.1) is zero for <span class="math" data-tex="\(r&gt;2\)">\(r&gt;2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular the finite-support sequence in (6.7) induces exact rows</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\to H^0(A)\to H^0(F)\to H^0(G)\to0,\\
+0&amp;\to T^0(A)\to T^0(F)\to T^0(G)\to0,
+\end{aligned}
+\tag{8.4}
+\]">\[
+\begin{aligned}
+0&amp;\to H^0(A)\to H^0(F)\to H^0(G)\to0,\\
+0&amp;\to T^0(A)\to T^0(F)\to T^0(G)\to0,
+\end{aligned}
+\tag{8.4}
+\]</span>
+<p>and compatible isomorphisms <span class="math" data-tex="\(H^r(F)=H^r(G)\)">\(H^r(F)=H^r(G)\)</span>, <span class="math" data-tex="\(T^r(F)=T^r(G)\)">\(T^r(F)=T^r(G)\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Thus positive degrees reduce to sheaves with no finite-support sections.</p>
+<p><strong>Lemma 8.2.</strong> If <span class="math" data-tex="\(f:C\to X\)">\(f:C\to X\)</span> is finite generically étale from a disjoint union of connected smooth projective curves and <span class="math" data-tex="\(I=f_*\Lambda_C\)">\(I=f_*\Lambda_C\)</span>, then <span class="math" data-tex="\(\eta_I^0\)">\(\eta_I^0\)</span> and <span class="math" data-tex="\(\eta_I^2\)">\(\eta_I^2\)</span> are isomorphisms. Moreover <span class="math" data-tex="\(H^1(X,I)\)">\(H^1(X,I)\)</span> and <span class="math" data-tex="\(T^1(I)\)">\(T^1(I)\)</span> have equal order.</p>
+<p><strong>Proof.</strong> By Section 7 the comparison is the constant-coefficient comparison on <span class="math" data-tex="\(C\)">\(C\)</span>. On each component, <span class="math" data-tex="\(H^0(C,\Lambda)=\Lambda\)">\(H^0(C,\Lambda)=\Lambda\)</span> and <span class="math" data-tex="\(H^2(C,\mu_n)=\Lambda\)">\(H^2(C,\mu_n)=\Lambda\)</span>; their pairing is multiplication followed by the trace identity. The exchanged pairing contracts <span class="math" data-tex="\(H^2(C,\Lambda)=\Lambda(-1)\)">\(H^2(C,\Lambda)=\Lambda(-1)\)</span> with <span class="math" data-tex="\(H^0(C,\mu_n)=\Lambda(1)\)">\(H^0(C,\mu_n)=\Lambda(1)\)</span>. Thus the comparisons in degrees zero and two are isomorphisms. In degree one, Lesson 10 gives both <span class="math" data-tex="\(H^1(C,\Lambda)\)">\(H^1(C,\Lambda)\)</span> and <span class="math" data-tex="\(H^1(C,\mu_n)\)">\(H^1(C,\mu_n)\)</span> order <span class="math" data-tex="\(n^{2g}\)">\(n^{2g}\)</span>, where a root identifies the coefficient sheaves if needed. The latter group's dual has the same order by Lemma 3.1. Sum over the components. No degree-one perfect pairing has yet been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For constants on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, genus is zero, so <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span> and Lemma 8.2 directly proves duality in every degree. The next two sections are necessary to extend that calculation from constants to all constructible sheaves.</p>
+<h2 id="9-finite-constant-embeddings-and-effacement">9. Finite-constant embeddings and effacement</h2>
+<p><strong>Lemma 9.1.</strong> Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is constructible on a smooth projective curve <span class="math" data-tex="\(X\)">\(X\)</span> and has no nonzero finite-support subsheaf. There exists a finite generically étale map <span class="math" data-tex="\(f:C\to X\)">\(f:C\to X\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> a disjoint union of smooth projective curves, and a monomorphism</p>
+<span class="math math-display" data-tex="\[
+G\longrightarrow I=f_*\Lambda_C.
+\tag{9.1}
+\]">\[
+G\longrightarrow I=f_*\Lambda_C.
+\tag{9.1}
+\]</span>
+<p>It can be chosen so that</p>
+<span class="math math-display" data-tex="\[
+H^r(X,G)\longrightarrow H^r(X,I)=H^r(C,\Lambda)
+\quad\text{is zero for every }r&gt;0.
+\tag{9.2}
+\]">\[
+H^r(X,G)\longrightarrow H^r(X,I)=H^r(C,\Lambda)
+\quad\text{is zero for every }r&gt;0.
+\tag{9.2}
+\]</span>
+<p><strong>Proof of the embedding.</strong> Choose a dense open <span class="math" data-tex="\(U\)">\(U\)</span> where <span class="math" data-tex="\(G\)">\(G\)</span> is locally constant, with finite fibre module <span class="math" data-tex="\(M\)">\(M\)</span>. The map <span class="math" data-tex="\(G\to j_*G|_U\)">\(G\to j_*G|_U\)</span> is injective: its kernel has finite support. The finite monodromy of <span class="math" data-tex="\(M\)">\(M\)</span> factors through a finite group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, realized by a finite étale cover of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>As a <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module, <span class="math" data-tex="\(M\)">\(M\)</span> embeds in <span class="math" data-tex="\(\Lambda^a\)">\(\Lambda^a\)</span>. On a cyclic summand of order <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>, use multiplication by <span class="math" data-tex="\(n/d\)">\(n/d\)</span> into <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and sum these embeddings. Let <span class="math" data-tex="\(h:M\hookrightarrow\Lambda^a\)">\(h:M\hookrightarrow\Lambda^a\)</span> be one such injection. The map</p>
+<span class="math math-display" data-tex="\[
+m\longmapsto(\gamma\longmapsto h(\gamma m))
+\tag{9.3}
+\]">\[
+m\longmapsto(\gamma\longmapsto h(\gamma m))
+\tag{9.3}
+\]</span>
+<p>embeds <span class="math" data-tex="\(M\)">\(M\)</span> equivariantly into the permutation module <span class="math" data-tex="\(\operatorname{Map}(\Gamma,\Lambda^a)\)">\(\operatorname{Map}(\Gamma,\Lambda^a)\)</span>, with the action <span class="math" data-tex="\((g\phi)(\gamma)=\phi(\gamma g)\)">\((g\phi)(\gamma)=\phi(\gamma g)\)</span>. It is injective by evaluation at the identity, and the displayed formula verifies equivariance. On sheaves this gives <span class="math" data-tex="\(G|_U\hookrightarrow r_*\Lambda\)">\(G|_U\hookrightarrow r_*\Lambda\)</span>, allowing <span class="math" data-tex="\(a\)">\(a\)</span> disjoint copies of the trivializing cover <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Normalize <span class="math" data-tex="\(X\)">\(X\)</span> in the function fields of these cover components. Normalization is finite, its curves are smooth because <span class="math" data-tex="\(k\)">\(k\)</span> is perfect, and they are projective. The resulting <span class="math" data-tex="\(f:C\to X\)">\(f:C\to X\)</span> is generically étale. Normality gives <span class="math" data-tex="\(f_*\Lambda=j_*r_*\Lambda\)">\(f_*\Lambda=j_*r_*\Lambda\)</span>, as in Section 2. Thus applying left exact <span class="math" data-tex="\(j_*\)">\(j_*\)</span> to (9.3), and composing with <span class="math" data-tex="\(G\to j_*G|_U\)">\(G\to j_*G|_U\)</span>, proves (9.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of effacement.</strong> Start with this embedding. All <span class="math" data-tex="\(H^1(C,\Lambda)\)">\(H^1(C,\Lambda)\)</span> are finite. Each of their elements is a <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-torsor, hence becomes zero after pullback to that finite étale torsor. Take the fibre product of the finitely many torsors and choose, on each connected component of <span class="math" data-tex="\(C\)">\(C\)</span>, one connected component of the product. It still surjects onto that component: a nonempty finite étale image is open and closed. This gives a finite étale cover killing every degree-one class. Its source remains smooth projective.</p>
+<p>Next kill degree two. On each of the resulting connected curves choose a rational function <span class="math" data-tex="\(a\)">\(a\)</span> with valuation one at some point; a uniformizer in that point's local ring is such a rational function. The polynomial <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span> is Eisenstein at that discrete valuation ring, so defines a function-field extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>. Its derivative is nonzero because <span class="math" data-tex="\(n\)">\(n\)</span> is invertible. Normalize the projective curve in this extension to obtain a finite generically étale cover of degree <span class="math" data-tex="\(n\)">\(n\)</span> by a smooth projective curve. Pullback on <span class="math" data-tex="\(H^2(-,\mu_n)\)">\(H^2(-,\mu_n)\)</span> is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, by Lesson 10, Proposition 8.1, and is therefore zero. Choose a root of unity to infer the same statement for <span class="math" data-tex="\(H^2(-,\Lambda)\)">\(H^2(-,\Lambda)\)</span>; the zero map is independent of that choice.</p>
+<p>The composite cover <span class="math" data-tex="\(h:C&#x27;\to C\)">\(h:C&#x27;\to C\)</span> kills all positive cohomology of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>: degree one stays zero after the second pullback, degree two has just been killed, and larger degrees already vanish. The sheaf unit <span class="math" data-tex="\(\Lambda_C\to h_*\Lambda_{C&#x27;}\)">\(\Lambda_C\to h_*\Lambda_{C&#x27;}\)</span> is a monomorphism, since on each geometric stalk it is the diagonal into a nonempty set of sheets, including at ramified points. Composing (9.1) with its exact finite pushforward therefore remains a monomorphism <span class="math" data-tex="\(G\to(fh)_*\Lambda\)">\(G\to(fh)_*\Lambda\)</span>. On cohomology the new map factors through pullback to <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>, proving (9.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma kills the relevant cohomology through one finite-constant embedding. It does not assert that <span class="math" data-tex="\(G\)">\(G\)</span> itself becomes constant on the whole projective curve.</p>
+<h2 id="10-the-full-artin-diagram-chase">10. The full Artin diagram chase</h2>
+<p><strong>Theorem 10.1.</strong> On <span class="math" data-tex="\(X=\mathbf P^1_k\)">\(X=\mathbf P^1_k\)</span>, every <span class="math" data-tex="\(\eta_F^r\)">\(\eta_F^r\)</span> in (8.2) is an isomorphism for every constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(F\)">\(F\)</span> and every integer <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Proof.</strong> Remove the finite-support part as in (6.7) and write an effacing embedding from Lemma 9.1 as</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow G\longrightarrow I\longrightarrow Q\longrightarrow0.
+\tag{10.1}
+\]">\[
+0\longrightarrow G\longrightarrow I\longrightarrow Q\longrightarrow0.
+\tag{10.1}
+\]</span>
+<p>Its two long exact sequences form a commutative diagram under <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. We will use exactness explicitly. Write <span class="math" data-tex="\(a\)">\(a\)</span> for an ordinary-cohomology element and <span class="math" data-tex="\(b\)">\(b\)</span> for a <span class="math" data-tex="\(T\)">\(T\)</span>-element, and let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> denote the corresponding connecting maps.</p>
+<p><strong>Degree-zero injectivity for all sheaves.</strong> Both rows start with a monomorphism from the degree-zero group of <span class="math" data-tex="\(G\)">\(G\)</span> into that of <span class="math" data-tex="\(I\)">\(I\)</span>, since negative groups vanish. If <span class="math" data-tex="\(\eta_G^0(a)=0\)">\(\eta_G^0(a)=0\)</span>, the image of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(H^0(I)\)">\(H^0(I)\)</span> has zero image under the isomorphism <span class="math" data-tex="\(\eta_I^0\)">\(\eta_I^0\)</span> of Lemma 8.2; hence that image is zero, and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. The exact rows (8.4), together with finite-support duality, extend this injectivity to <span class="math" data-tex="\(F\)">\(F\)</span>. This conclusion holds for every constructible sheaf, and in particular for <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Degree-zero surjectivity.</strong> Given <span class="math" data-tex="\(b\in T^0(G)\)">\(b\in T^0(G)\)</span>, send it into <span class="math" data-tex="\(T^0(I)\)">\(T^0(I)\)</span> and lift there to <span class="math" data-tex="\(a_I\in H^0(I)\)">\(a_I\in H^0(I)\)</span> using <span class="math" data-tex="\(\eta_I^0\)">\(\eta_I^0\)</span>. Its image <span class="math" data-tex="\(a_Q\in H^0(Q)\)">\(a_Q\in H^0(Q)\)</span> has zero <span class="math" data-tex="\(\eta_Q^0\)">\(\eta_Q^0\)</span>, because the image of <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(T^0(Q)\)">\(T^0(Q)\)</span> is zero. The injectivity just proved implies <span class="math" data-tex="\(a_Q=0\)">\(a_Q=0\)</span>. Thus <span class="math" data-tex="\(a_I\)">\(a_I\)</span> comes from <span class="math" data-tex="\(a_G\in H^0(G)\)">\(a_G\in H^0(G)\)</span>; the injectivity <span class="math" data-tex="\(T^0(G)\to T^0(I)\)">\(T^0(G)\to T^0(I)\)</span> now gives <span class="math" data-tex="\(\eta_G^0(a_G)=b\)">\(\eta_G^0(a_G)=b\)</span>. The rows (8.4) extend this isomorphism to every <span class="math" data-tex="\(F\)">\(F\)</span>. We have proved every <span class="math" data-tex="\(\eta^0\)">\(\eta^0\)</span> is an isomorphism.</p>
+<p><strong>Degree-one injectivity.</strong> Suppose <span class="math" data-tex="\(a_G\in H^1(G)\)">\(a_G\in H^1(G)\)</span> has <span class="math" data-tex="\(\eta_G^1(a_G)=0\)">\(\eta_G^1(a_G)=0\)</span>. Effacement makes its image in <span class="math" data-tex="\(H^1(I)\)">\(H^1(I)\)</span> zero, so <span class="math" data-tex="\(a_G=\delta(a_Q)\)">\(a_G=\delta(a_Q)\)</span> for some <span class="math" data-tex="\(a_Q\in H^0(Q)\)">\(a_Q\in H^0(Q)\)</span>. The image <span class="math" data-tex="\(\eta_Q^0(a_Q)\)">\(\eta_Q^0(a_Q)\)</span> has zero boundary in <span class="math" data-tex="\(T^1(G)\)">\(T^1(G)\)</span>, hence comes from <span class="math" data-tex="\(b_I\in T^0(I)\)">\(b_I\in T^0(I)\)</span>. Lift <span class="math" data-tex="\(b_I\)">\(b_I\)</span> by <span class="math" data-tex="\(\eta_I^0\)">\(\eta_I^0\)</span> to <span class="math" data-tex="\(a_I\in H^0(I)\)">\(a_I\in H^0(I)\)</span>. The difference between <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> and the image of <span class="math" data-tex="\(a_I\)">\(a_I\)</span> has zero <span class="math" data-tex="\(\eta_Q^0\)">\(\eta_Q^0\)</span>, so is zero. Therefore <span class="math" data-tex="\(\delta(a_Q)=0\)">\(\delta(a_Q)=0\)</span> and <span class="math" data-tex="\(a_G=0\)">\(a_G=0\)</span>. By (8.4) and its positive-degree isomorphisms this proves injectivity of <span class="math" data-tex="\(\eta_F^1\)">\(\eta_F^1\)</span> for every <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Apply this conclusion to <span class="math" data-tex="\(I\)">\(I\)</span> itself, viewed as a constructible sheaf on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. Lemma 8.2 gives equal finite orders on its two sides. Thus <span class="math" data-tex="\(\eta_I^1\)">\(\eta_I^1\)</span> is an isomorphism. This is how the degree-one constant pairing on its cover curves enters the proof; it has not been assumed.</p>
+<p><strong>Degree-one surjectivity.</strong> Let <span class="math" data-tex="\(b_G\in T^1(G)\)">\(b_G\in T^1(G)\)</span>. Its image in <span class="math" data-tex="\(T^1(I)\)">\(T^1(I)\)</span> lifts to <span class="math" data-tex="\(a_I\in H^1(I)\)">\(a_I\in H^1(I)\)</span>. The image <span class="math" data-tex="\(a_Q\in H^1(Q)\)">\(a_Q\in H^1(Q)\)</span> has zero image under the already injective <span class="math" data-tex="\(\eta_Q^1\)">\(\eta_Q^1\)</span>; hence <span class="math" data-tex="\(a_Q=0\)">\(a_Q=0\)</span>. Lift <span class="math" data-tex="\(a_I\)">\(a_I\)</span> to <span class="math" data-tex="\(a_G\in H^1(G)\)">\(a_G\in H^1(G)\)</span>. The difference <span class="math" data-tex="\(b_G-\eta_G^1(a_G)\)">\(b_G-\eta_G^1(a_G)\)</span> is in the kernel of <span class="math" data-tex="\(T^1(G)\to T^1(I)\)">\(T^1(G)\to T^1(I)\)</span>, and therefore equals <span class="math" data-tex="\(\delta(b_Q)\)">\(\delta(b_Q)\)</span> for some <span class="math" data-tex="\(b_Q\in T^0(Q)\)">\(b_Q\in T^0(Q)\)</span>. Surjectivity of <span class="math" data-tex="\(\eta_Q^0\)">\(\eta_Q^0\)</span> lifts <span class="math" data-tex="\(b_Q\)">\(b_Q\)</span> to an ordinary <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span>, whose boundary supplies this remaining difference. Thus <span class="math" data-tex="\(\eta_G^1\)">\(\eta_G^1\)</span> is surjective. Reduction through the finite-support part proves every <span class="math" data-tex="\(\eta_F^1\)">\(\eta_F^1\)</span> is an isomorphism.</p>
+<p><strong>Degree-two injectivity.</strong> If <span class="math" data-tex="\(a_G\in H^2(G)\)">\(a_G\in H^2(G)\)</span> maps to zero under <span class="math" data-tex="\(\eta_G^2\)">\(\eta_G^2\)</span>, effacement writes it as <span class="math" data-tex="\(\delta(a_Q)\)">\(\delta(a_Q)\)</span> with <span class="math" data-tex="\(a_Q\in H^1(Q)\)">\(a_Q\in H^1(Q)\)</span>. Its <span class="math" data-tex="\(\eta_Q^1\)">\(\eta_Q^1\)</span>-image comes from <span class="math" data-tex="\(T^1(I)\)">\(T^1(I)\)</span>, whose element lifts by the just proved isomorphism <span class="math" data-tex="\(\eta_I^1\)">\(\eta_I^1\)</span>. Injectivity of <span class="math" data-tex="\(\eta_Q^1\)">\(\eta_Q^1\)</span> says that <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> differs from that lift's image by zero. Therefore its boundary is zero. This proves injectivity in degree two, first for <span class="math" data-tex="\(G\)">\(G\)</span>, then for every <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Degree-two surjectivity.</strong> Given <span class="math" data-tex="\(b_G\in T^2(G)\)">\(b_G\in T^2(G)\)</span>, its image in <span class="math" data-tex="\(T^2(I)\)">\(T^2(I)\)</span> lifts to <span class="math" data-tex="\(a_I\in H^2(I)\)">\(a_I\in H^2(I)\)</span>, since <span class="math" data-tex="\(\eta_I^2\)">\(\eta_I^2\)</span> is an isomorphism by Lemma 8.2. Its image in <span class="math" data-tex="\(H^2(Q)\)">\(H^2(Q)\)</span> has zero <span class="math" data-tex="\(\eta_Q^2\)">\(\eta_Q^2\)</span>, and the preceding injectivity makes that image zero. Lift <span class="math" data-tex="\(a_I\)">\(a_I\)</span> to <span class="math" data-tex="\(a_G\in H^2(G)\)">\(a_G\in H^2(G)\)</span>. The remaining difference lies in the image of <span class="math" data-tex="\(T^1(Q)\)">\(T^1(Q)\)</span>, and is the boundary of an ordinary element of <span class="math" data-tex="\(H^1(Q)\)">\(H^1(Q)\)</span> because <span class="math" data-tex="\(\eta_Q^1\)">\(\eta_Q^1\)</span> is surjective. This completes degree two, and reduction gives the result for every <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Ordinary groups and <span class="math" data-tex="\(T\)">\(T\)</span>-groups vanish below zero and above two. All degrees have now been proved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 10.2 (all proper smooth curves).</strong> The same theorem holds on every smooth projective curve.</p>
+<p><strong>Proof.</strong> On each connected curve <span class="math" data-tex="\(C\)">\(C\)</span>, choose a nonconstant separating rational function <span class="math" data-tex="\(t\)">\(t\)</span>. Such a function exists since <span class="math" data-tex="\(k\)">\(k\)</span> is perfect and the smooth function field has transcendence degree one: its differential space has dimension one, and some <span class="math" data-tex="\(dt\neq0\)">\(dt\neq0\)</span>; then the finite extension <span class="math" data-tex="\(k(C)/k(t)\)">\(k(C)/k(t)\)</span> is separable, by the exact differential sequence. At a valuation point, either <span class="math" data-tex="\(t\)">\(t\)</span> or <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> is regular, so <span class="math" data-tex="\(t\)">\(t\)</span> extends to <span class="math" data-tex="\(f:C\to\mathbf P^1\)">\(f:C\to\mathbf P^1\)</span>. This map is proper with finite fibres and hence finite, and is generically étale by separability.</p>
+<p>The sheaf <span class="math" data-tex="\(f_*F\)">\(f_*F\)</span> is constructible. Formula (7.2) and exact finite pushforward identify its ordinary and <span class="math" data-tex="\(T\)">\(T\)</span> groups with those for <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. Section 7 proves that these identifications commute with the comparison <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, including trace. Theorem 10.1 therefore proves the result on <span class="math" data-tex="\(C\)">\(C\)</span>. For disjoint components take finite direct sums. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This reduction uses the full constructible theorem on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>. Checking only its constant sheaf, whose degree-one cohomology is zero, would not justify the corollary.</p>
+<h2 id="11-open-curves-and-the-derived-theorem">11. Open curves and the derived theorem</h2>
+<p><strong>Theorem 11.1 (Poincaré duality).</strong> For any smooth curve <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(F\in D^b_c(X,\Lambda)\)">\(F\in D^b_c(X,\Lambda)\)</span>, the map adjoint to (1.2) is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(X,D_XF)\xrightarrow{\sim}
+R\operatorname{Hom}_\Lambda(R\Gamma_c(X,F),\Lambda).
+\tag{11.1}
+\]">\[
+R\Gamma(X,D_XF)\xrightarrow{\sim}
+R\operatorname{Hom}_\Lambda(R\Gamma_c(X,F),\Lambda).
+\tag{11.1}
+\]</span>
+<p>For a constructible sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, it identifies each factor of</p>
+<span class="math math-display" data-tex="\[
+H^r_c(X,F)\times
+\mathbb H^{2-r}\bigl(X,R\mathcal Hom_\Lambda(F,\mu_n)\bigr)
+\xrightarrow{\ \operatorname{Tr}(a\cup b)\ }\Lambda
+\tag{11.2}
+\]">\[
+H^r_c(X,F)\times
+\mathbb H^{2-r}\bigl(X,R\mathcal Hom_\Lambda(F,\mu_n)\bigr)
+\xrightarrow{\ \operatorname{Tr}(a\cup b)\ }\Lambda
+\tag{11.2}
+\]</span>
+<p>with the finite <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-dual of the other. In particular, if <span class="math" data-tex="\(L\)">\(L\)</span> is locally constant, the second factor is <span class="math" data-tex="\(H^{2-r}(X,L^\vee(1))\)">\(H^{2-r}(X,L^\vee(1))\)</span>.</p>
+<p><strong>Proof.</strong> On a proper curve, Corollary 10.2 says that the map <span class="math" data-tex="\(R\Gamma(F)\to R\operatorname{Hom}(R\Gamma(D_XF),\Lambda)\)">\(R\Gamma(F)\to R\operatorname{Hom}(R\Gamma(D_XF),\Lambda)\)</span> induces an isomorphism on every cohomology group, by (3.1). It is therefore an isomorphism. Exact finite-group biduality identifies its transposed map with (11.1); both are the adjoints of the same ordered evaluation pairing. This proves (11.1) for sheaves on proper curves. Natural evaluation comparisons respect triangles. Induction on the finite number of nonzero cohomology sheaves, using good-truncation triangles, proves it for every <span class="math" data-tex="\(D^b_c\)">\(D^b_c\)</span> complex on a proper curve.</p>
+<p>Now choose a smooth projective completion <span class="math" data-tex="\(j:X\hookrightarrow\overline X\)">\(j:X\hookrightarrow\overline X\)</span>. Exact <span class="math" data-tex="\(j_!\)">\(j_!\)</span> preserves bounded constructibility, and (6.3) gives</p>
+<span class="math math-display" data-tex="\[
+D_{\overline X}(j_!F)=Rj_*D_XF.
+\tag{11.3}
+\]">\[
+D_{\overline X}(j_!F)=Rj_*D_XF.
+\tag{11.3}
+\]</span>
+<p>Apply the proper theorem to <span class="math" data-tex="\(j_!F\)">\(j_!F\)</span>. On its right side, <span class="math" data-tex="\(R\Gamma(\overline X,j_!F)=R\Gamma_c(X,F)\)">\(R\Gamma(\overline X,j_!F)=R\Gamma_c(X,F)\)</span>. On its left side, (11.3) gives <span class="math" data-tex="\(R\Gamma(\overline X,Rj_*D_XF)=R\Gamma(X,D_XF)\)">\(R\Gamma(\overline X,Rj_*D_XF)=R\Gamma(X,D_XF)\)</span>. The compact trace is defined through this completion, and (6.3) is defined by evaluation; hence this transported map is exactly (11.1), not an unrelated isomorphism of its objects.</p>
+<p>For a sheaf, take degree <span class="math" data-tex="\(-r\)">\(-r\)</span> in (11.1). Its left-hand group is the second factor of (11.2), and its right-hand group is <span class="math" data-tex="\(H^r_c(X,F)^\vee\)">\(H^r_c(X,F)^\vee\)</span> by (3.1). Finiteness follows from Lessons 12 and 14 and Theorem 6.2. Dualizing again gives the converse identification, so the pairing is mutually perfect. The first line of (6.5) gives the local-system specialization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For arbitrary constructible <span class="math" data-tex="\(F\)">\(F\)</span>, the second factor in (11.2) is hypercohomology of <strong>internal derived</strong> Hom. It cannot generally be replaced by ordinary cohomology of the degree-zero dual sheaf. Its local boundary terms carry the ramification information computed in Sections 4–6.</p>
+<h2 id="12-cup-product-and-the-jacobian">12. Cup product and the Jacobian</h2>
+<p>Let <span class="math" data-tex="\(C\)">\(C\)</span> be connected smooth projective of genus <span class="math" data-tex="\(g\)">\(g\)</span>. The theorem and Section 2 give the canonical perfect pairing</p>
+<span class="math math-display" data-tex="\[
+H^1(C,\Lambda)\times H^1(C,\mu_n)\longrightarrow\Lambda,
+\qquad (a,b)\longmapsto\operatorname{Tr}_C(a\cup b),
+\tag{12.1}
+\]">\[
+H^1(C,\Lambda)\times H^1(C,\mu_n)\longrightarrow\Lambda,
+\qquad (a,b)\longmapsto\operatorname{Tr}_C(a\cup b),
+\tag{12.1}
+\]</span>
+<p>and <span class="math" data-tex="\(H^2(C,\mu_n)=\Lambda\)">\(H^2(C,\mu_n)=\Lambda\)</span> by trace. Choosing a primitive root turns (12.1) into a perfect pairing on <span class="math" data-tex="\(H^1(C,\Lambda)\)">\(H^1(C,\Lambda)\)</span>. Without that choice, the pairing of two untwisted classes takes values in <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span>; no canonical root has been silently inserted.</p>
+<p>Kummer identifies</p>
+<span class="math math-display" data-tex="\[
+H^1(C,\mu_n)=\operatorname{Pic}^0(C)[n]=J[n](k),
+\tag{12.2}
+\]">\[
+H^1(C,\mu_n)=\operatorname{Pic}^0(C)[n]=J[n](k),
+\tag{12.2}
+\]</span>
+<p>where <span class="math" data-tex="\(J\)">\(J\)</span> is the Jacobian. Tensoring the trace by the invertible <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> gives the perfect pairing</p>
+<span class="math math-display" data-tex="\[
+H^1(C,\mu_n)\times H^1(C,\mu_n)
+\xrightarrow{\cup}H^2(C,\mu_n^{\otimes2})
+\xrightarrow{\operatorname{Tr}}\mu_n(k).
+\tag{12.3}
+\]">\[
+H^1(C,\mu_n)\times H^1(C,\mu_n)
+\xrightarrow{\cup}H^2(C,\mu_n^{\otimes2})
+\xrightarrow{\operatorname{Tr}}\mu_n(k).
+\tag{12.3}
+\]</span>
+<p><strong>Jacobian comparison, stated.</strong> Under (12.2) and the principal polarization of <span class="math" data-tex="\(J\)">\(J\)</span>, (12.3) is the Weil pairing, up to the sign, or equivalently the inversion, attached to the chosen polarization/Abel-map convention. We state this comparison without proof; it is not used in the proof of Theorem 11.1. In particular, perfection of (12.3) has already been proved for every invertible <span class="math" data-tex="\(n\)">\(n\)</span>, independently of that comparison.</p>
+<p>Here is a precise way to read the historical sign, rather than identifying an unspecified Weil convention with a guessed sign. Fix <span class="math" data-tex="\(o\in C(k)\)">\(o\in C(k)\)</span>, let <span class="math" data-tex="\(a_o:C\to J\)">\(a_o:C\to J\)</span> send <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(\mathcal O_C(x-o)\)">\(\mathcal O_C(x-o)\)</span>, and let <span class="math" data-tex="\(u\in H^1(C,J[n])\)">\(u\in H^1(C,J[n])\)</span> be the pullback along <span class="math" data-tex="\(a_o\)">\(a_o\)</span> of the <span class="math" data-tex="\([n]\)">\([n]\)</span>-torsor on <span class="math" data-tex="\(J\)">\(J\)</span>. For <span class="math" data-tex="\(v:J[n]\to\Lambda\)">\(v:J[n]\to\Lambda\)</span>, write <span class="math" data-tex="\(u_v=v_*u\)">\(u_v=v_*u\)</span>. The comparison in Deligne's convention says</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(u_v\cup b)=v(b),\qquad
+\operatorname{Tr}(b\cup u_v)=-v(b)
+\quad(b\in H^1(C,\mu_n)=J[n]).
+\tag{12.4}
+\]">\[
+\operatorname{Tr}(u_v\cup b)=v(b),\qquad
+\operatorname{Tr}(b\cup u_v)=-v(b)
+\quad(b\in H^1(C,\mu_n)=J[n]).
+\tag{12.4}
+\]</span>
+<p>These are two orders of the same degree-one pairing. The second is the minus sign in Arcata, VI.2. The full argument in “Dualité,” §3, compares the <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> Künneth component of the diagonal class with <span class="math" data-tex="\(-u\)">\(-u\)</span>. It obtains that minus sign when the Kummer connecting map is moved past a degree-one shift. Evaluation against the diagonal then gives the first equality of (12.4), and the graded exchange gives the second. This explains which convention the stated comparison uses; we do not turn that geometric comparison into an omitted step of the preceding duality proof.</p>
+<p>The comparison also shows that the self-pairing in (12.3) is alternating. Graded commutativity alone would give only <span class="math" data-tex="\(2(b\cup b)=0\)">\(2(b\cup b)=0\)</span>; when <span class="math" data-tex="\(n\)">\(n\)</span> is even, that weaker identity does not establish alternation. The alternating conclusion here uses the stated Weil-pairing comparison. The perfectness conclusion uses the proved duality theorem.</p>
+<h2 id="13-three-examples">13. Three examples</h2>
+<p><strong>Example 13.1: the projective line.</strong> The nonzero groups are</p>
+<span class="math math-display" data-tex="\[
+H^0(\mathbf P^1,\Lambda)=\Lambda,\qquad
+H^2(\mathbf P^1,\mu_n)=\Lambda.
+\]">\[
+H^0(\mathbf P^1,\Lambda)=\Lambda,\qquad
+H^2(\mathbf P^1,\mu_n)=\Lambda.
+\]</span>
+<p>The latter generator is <span class="math" data-tex="\(c_1^{(n)}(\mathcal O(1))\)">\(c_1^{(n)}(\mathcal O(1))\)</span>. Their pairing sends <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> to <span class="math" data-tex="\(ab\)">\(ab\)</span>, since its trace is one. Degree one is zero on both sides. The exchanged degree-zero/degree-two pairing is again evaluation with the appropriate twist. This verifies the constant-coefficient theorem directly.</p>
+<p><strong>Example 13.2: an elliptic curve.</strong> For <span class="math" data-tex="\(E\)">\(E\)</span> with origin, <span class="math" data-tex="\(\operatorname{Pic}^0(E)\)">\(\operatorname{Pic}^0(E)\)</span> is identified with <span class="math" data-tex="\(E\)">\(E\)</span> through the chosen standard polarization convention. Thus</p>
+<span class="math math-display" data-tex="\[
+H^1(E,\mu_n)=E[n](k),\qquad
+|E[n](k)|=n^2.
+\]">\[
+H^1(E,\mu_n)=E[n](k),\qquad
+|E[n](k)|=n^2.
+\]</span>
+<p>The theorem proves its cup-and-trace pairing is perfect. The stated comparison identifies it with the Weil pairing, with the convention-dependent inversion described in Section 12. In a symplectic basis its values have the form <span class="math" data-tex="\(e_n(P,Q)=\zeta\)">\(e_n(P,Q)=\zeta\)</span>, <span class="math" data-tex="\(e_n(P,P)=e_n(Q,Q)=1\)">\(e_n(P,P)=e_n(Q,Q)=1\)</span>. Reversing the ordered basis inverts <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. The origin and polarization enter the geometric identification, whereas the trace of a point remains <span class="math" data-tex="\(+1\)">\(+1\)</span>.</p>
+<p><strong>Example 13.3: the punctured line.</strong> Write <span class="math" data-tex="\(U=\mathbf G_m\subset\mathbf P^1\)">\(U=\mathbf G_m\subset\mathbf P^1\)</span>, with boundary ordered as <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. Compact localization and Kummer give</p>
+<span class="math math-display" data-tex="\[
+H^1_c(U,\Lambda)=\operatorname{coker}(\Lambda\xrightarrow{\mathrm{diag}}\Lambda^2),
+\qquad H^1(U,\mu_n)=\Lambda\cdot\kappa(t).
+\tag{13.1}
+\]">\[
+H^1_c(U,\Lambda)=\operatorname{coker}(\Lambda\xrightarrow{\mathrm{diag}}\Lambda^2),
+\qquad H^1(U,\mu_n)=\Lambda\cdot\kappa(t).
+\tag{13.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\kappa(t)\)">\(\kappa(t)\)</span> is the Kummer class of the coordinate, whose residues are <span class="math" data-tex="\(+1\)">\(+1\)</span> at zero and <span class="math" data-tex="\(-1\)">\(-1\)</span> at infinity. Both groups have order <span class="math" data-tex="\(n\)">\(n\)</span>, and Theorem 11.1 identifies them as duals. With the usual connecting map of compact localization, put <span class="math" data-tex="\(c=\delta(0,1)\)">\(c=\delta(0,1)\)</span>. The explicit computation in Solution 2 gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(c\cup\kappa(t))=1.
+\tag{13.2}
+\]">\[
+\operatorname{Tr}(c\cup\kappa(t))=1.
+\tag{13.2}
+\]</span>
+<p>Thus the pairing in the bases <span class="math" data-tex="\(c,\kappa(t)\)">\(c,\kappa(t)\)</span> is multiplication in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Ordinary and compact degree one happen to have the same order here, but their generators come from different constructions.</p>
+<h2 id="14-exercises">14. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Verify all constant-coefficient duality pairings on <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>, retaining the Tate twist until a root is chosen.</li>
+<li><strong>Medium.</strong> Compute both sides of duality for <span class="math" data-tex="\(U=\mathbf G_m\)">\(U=\mathbf G_m\)</span> and <span class="math" data-tex="\(F=\Lambda\)">\(F=\Lambda\)</span>. Identify the boundary generator of <span class="math" data-tex="\(H^1_c\)">\(H^1_c\)</span>, the Kummer generator of <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and their pairing. Check the other degrees as well.</li>
+<li><strong>Medium.</strong> For a closed point <span class="math" data-tex="\(i\)">\(i\)</span> and a dense open <span class="math" data-tex="\(j\)">\(j\)</span> with finite local system <span class="math" data-tex="\(L\)">\(L\)</span>, compute <span class="math" data-tex="\(D_X(i_*\Lambda)\)">\(D_X(i_*\Lambda)\)</span> and <span class="math" data-tex="\(D_X(j_!L)\)">\(D_X(j_!L)\)</span>. Describe the two possible boundary cohomology sheaves in the second answer.</li>
+<li><strong>Medium.</strong> Prove that <span class="math" data-tex="\(H^1(X,L)\)">\(H^1(X,L)\)</span> and <span class="math" data-tex="\(H^1_c(X,L^\vee(1))\)">\(H^1_c(X,L^\vee(1))\)</span> have the same order on a smooth affine curve. Allow finite nonfree <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module fibres.</li>
+<li><strong>Hard.</strong> Prove local biduality for <span class="math" data-tex="\(j_*L\)">\(j_*L\)</span> at a missing point using wild and tame inertia. Identify the boundary map in the Ext sequence, and explain why replacing coinvariants by invariants is invalid.</li>
+</ol>
+<h2 id="15-complete-solutions">15. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Proper support equals ordinary support. Since genus is zero, Lesson 10 gives <span class="math" data-tex="\(H^1(\mathbf P^1,\mu_n)=0\)">\(H^1(\mathbf P^1,\mu_n)=0\)</span>, and choosing any primitive root gives the same vanishing for <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The groups <span class="math" data-tex="\(H^0(\Lambda)=\Lambda\)">\(H^0(\Lambda)=\Lambda\)</span> and <span class="math" data-tex="\(H^2(\mu_n)=\Lambda\)">\(H^2(\mu_n)=\Lambda\)</span> pair by multiplication because <span class="math" data-tex="\(\operatorname{Tr}(c_1^{(n)}\mathcal O(1))=1\)">\(\operatorname{Tr}(c_1^{(n)}\mathcal O(1))=1\)</span>. In the other order, <span class="math" data-tex="\(H^2(\Lambda)=\Lambda(-1)\)">\(H^2(\Lambda)=\Lambda(-1)\)</span> pairs with <span class="math" data-tex="\(H^0(\mu_n)=\Lambda(1)\)">\(H^0(\mu_n)=\Lambda(1)\)</span> by their canonical contraction to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>; the trace supplies the identity. The factors in degree one are both zero. All groups outside degrees zero through two vanish, so the remaining pairings are between zero groups. A root trivializes both twists in the exchanged pairing and again yields multiplication. This verifies each degree without invoking general duality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Solution 2.</strong> Since <span class="math" data-tex="\(\operatorname{Pic}(\mathbf G_m)=0\)">\(\operatorname{Pic}(\mathbf G_m)=0\)</span> and <span class="math" data-tex="\(k[t,t^{-1}]^\times=k^\times t^{\mathbf Z}\)">\(k[t,t^{-1}]^\times=k^\times t^{\mathbf Z}\)</span>, Kummer gives</p>
+<span class="math math-display" data-tex="\[
+H^0(U,\mu_n)=\mu_n(k),\quad H^1(U,\mu_n)=\Lambda\kappa(t),
+\quad H^q(U,\mu_n)=0\ (q\geq2).
+\tag{15.1}
+\]">\[
+H^0(U,\mu_n)=\mu_n(k),\quad H^1(U,\mu_n)=\Lambda\kappa(t),
+\quad H^q(U,\mu_n)=0\ (q\geq2).
+\tag{15.1}
+\]</span>
+<p>The compact localization sequence for the ordered boundary <span class="math" data-tex="\(D=(0,\infty)\)">\(D=(0,\infty)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+H^0_c(U,\Lambda)=0,\quad
+H^1_c(U,\Lambda)=\Lambda^2/\mathrm{diag}(\Lambda),\quad
+H^2_c(U,\Lambda)=\Lambda(-1),
+\tag{15.2}
+\]">\[
+H^0_c(U,\Lambda)=0,\quad
+H^1_c(U,\Lambda)=\Lambda^2/\mathrm{diag}(\Lambda),\quad
+H^2_c(U,\Lambda)=\Lambda(-1),
+\tag{15.2}
+\]</span>
+<p>and no higher groups. The generator <span class="math" data-tex="\(c=\delta(0,1)\)">\(c=\delta(0,1)\)</span> identifies the quotient with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> by <span class="math" data-tex="\((a_0,a_\infty)\mapsto a_\infty-a_0\)">\((a_0,a_\infty)\mapsto a_\infty-a_0\)</span>.</p>
+<p>We detail its pairing sign. For an ordinary degree-one class <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, the supported localization boundary at <span class="math" data-tex="\(D\)">\(D\)</span> is its vector of residues <span class="math" data-tex="\(\partial b\in H^0(D,\Lambda)\)">\(\partial b\in H^0(D,\Lambda)\)</span>, using the point orientation (4.5). Evaluation pairs this with a boundary value <span class="math" data-tex="\(a\in H^0(D,\Lambda)\)">\(a\in H^0(D,\Lambda)\)</span>. Compatibility of the open and closed evaluation triangles gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(\delta a\cup b)
+=-\sum_{x\in D}a_x\operatorname{res}_x(b).
+\tag{15.3}
+\]">\[
+\operatorname{Tr}(\delta a\cup b)
+=-\sum_{x\in D}a_x\operatorname{res}_x(b).
+\tag{15.3}
+\]</span>
+<p>To see the minus explicitly, represent the two localization triangles by cones and use the differential rule <span class="math" data-tex="\(d(v\cup w)=dv\cup w+(-1)^{\deg v}v\cup dw\)">\(d(v\cup w)=dv\cup w+(-1)^{\deg v}v\cup dw\)</span>. Moving the connecting operator from the first degree-one boundary class to the second degree-one ordinary class changes the sign once. The remaining degree-two supported class is the point evaluation, whose trace is <span class="math" data-tex="\(+1\)">\(+1\)</span> by Section 4. Thus the adjoint residue is the negative of the compact connecting map, giving (15.3). This also shows the formula is independent of a chosen cochain representative: changing the lift adds a coboundary, and adding a diagonal value contributes zero because the sum of the residues of a global Kummer unit on this punctured projective line is zero.</p>
+<p>For <span class="math" data-tex="\(b=\kappa(t)\)">\(b=\kappa(t)\)</span>, valuations give <span class="math" data-tex="\(\operatorname{res}_0b=1\)">\(\operatorname{res}_0b=1\)</span> and <span class="math" data-tex="\(\operatorname{res}_\infty b=-1\)">\(\operatorname{res}_\infty b=-1\)</span>. Hence (15.3) is <span class="math" data-tex="\(a_\infty-a_0\)">\(a_\infty-a_0\)</span>. Taking <span class="math" data-tex="\(a=(0,1)\)">\(a=(0,1)\)</span> proves (13.2), and scaling the two classes gives a multiplication pairing of their two copies of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. In degree two, <span class="math" data-tex="\(H^2_c(U,\Lambda)=\Lambda(-1)\)">\(H^2_c(U,\Lambda)=\Lambda(-1)\)</span> pairs perfectly with <span class="math" data-tex="\(H^0(U,\mu_n)=\Lambda(1)\)">\(H^0(U,\mu_n)=\Lambda(1)\)</span> by contraction and trace. In degree zero both relevant groups are zero. This checks every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Solution 3.</strong> Internal closed adjunction gives</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_X(i_*\Lambda,K_X)
+=i_*R\operatorname{Hom}_\Lambda(\Lambda,Ri^!K_X).
+\]">\[
+R\mathcal Hom_X(i_*\Lambda,K_X)
+=i_*R\operatorname{Hom}_\Lambda(\Lambda,Ri^!K_X).
+\]</span>
+<p>By (4.5), <span class="math" data-tex="\(Ri^!K_X=\Lambda\)">\(Ri^!K_X=\Lambda\)</span>; hence <span class="math" data-tex="\(D_X(i_*\Lambda)=i_*\Lambda\)">\(D_X(i_*\Lambda)=i_*\Lambda\)</span>, in degree zero, with the point trace normalized to one. For the open, (6.3) and finite-module duality give</p>
+<span class="math math-display" data-tex="\[
+D_X(j_!L)=Rj_*L^\vee(1)[2].
+\]">\[
+D_X(j_!L)=Rj_*L^\vee(1)[2].
+\]</span>
+<p>At a missing point with module <span class="math" data-tex="\(M\)">\(M\)</span>, (4.2) identifies the stalk of its cohomology in degree <span class="math" data-tex="\(-2\)">\(-2\)</span> as <span class="math" data-tex="\((M^\vee)^I(1)\)">\((M^\vee)^I(1)\)</span>, and in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> as <span class="math" data-tex="\(H^1(I,M^\vee)(1)=(M^I)^\vee\)">\(H^1(I,M^\vee)(1)=(M^I)^\vee\)</span>. There is no higher local contribution. On the open only degree <span class="math" data-tex="\(-2\)">\(-2\)</span> remains. The degree <span class="math" data-tex="\(-1\)">\(-1\)</span> sheaf is supported on the finite boundary. Dropping <span class="math" data-tex="\(R^1j_*\)">\(R^1j_*\)</span> would erase it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Solution 4.</strong> Apply Theorem 11.1 to the local system <span class="math" data-tex="\(F=L^\vee(1)\)">\(F=L^\vee(1)\)</span>. Lemma 3.1 and the invertibility of the twist identify</p>
+<span class="math math-display" data-tex="\[
+F^\vee(1)=(L^\vee(1))^\vee(1)=L.
+\]">\[
+F^\vee(1)=(L^\vee(1))^\vee(1)=L.
+\]</span>
+<p>The degree-one pairing is therefore</p>
+<span class="math math-display" data-tex="\[
+H^1_c(X,L^\vee(1))\times H^1(X,L)\longrightarrow\Lambda.
+\]">\[
+H^1_c(X,L^\vee(1))\times H^1(X,L)\longrightarrow\Lambda.
+\]</span>
+<p>It identifies the ordinary group with the dual of the compact group. Both are finite, and Lemma 3.1 says a finite module and its dual have equal cardinality. Their orders are consequently equal. Neither that lemma nor local-system duality assumes free fibres. Affineness ensures the usual ordinary degree-one bound; the equality itself also holds on any smooth curve. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Solution 5.</strong> On the strict trait of the missing point let <span class="math" data-tex="\(M=L_{\bar\eta}\)">\(M=L_{\bar\eta}\)</span> and <span class="math" data-tex="\(A=M^I\)">\(A=M^I\)</span>. Wild invariants are exact by averaging, since <span class="math" data-tex="\(P\)">\(P\)</span> is pro-<span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Tame cohomology is computed by the cyclic resolution and inflation, giving</p>
+<span class="math math-display" data-tex="\[
+H^1(I,M^\vee)=((M^\vee)^P)_T(-1)
+=(M^I)^\vee(-1),\qquad H^{&gt;1}(I,M^\vee)=0.
+\]">\[
+H^1(I,M^\vee)=((M^\vee)^P)_T(-1)
+=(M^I)^\vee(-1),\qquad H^{&gt;1}(I,M^\vee)=0.
+\]</span>
+<p>The middle equality is restriction of functionals after taking coinvariants, justified by dualizing <span class="math" data-tex="\(\gamma-1\)">\(\gamma-1\)</span>. It is not the equality of <span class="math" data-tex="\((M^I)^\vee\)">\((M^I)^\vee\)</span> with <span class="math" data-tex="\((M^\vee)^I\)">\((M^\vee)^I\)</span>.</p>
+<p>Dualize <span class="math" data-tex="\(0\to j_!M\to j_*M\to i_*A\to0\)">\(0\to j_!M\to j_*M\to i_*A\to0\)</span> with <span class="math" data-tex="\(D_0\)">\(D_0\)</span>. The local point orientation gives <span class="math" data-tex="\(D_0i_*A=i_*A^\vee(-1)[-2]\)">\(D_0i_*A=i_*A^\vee(-1)[-2]\)</span>; open adjunction gives <span class="math" data-tex="\(D_0j_!M=Rj_*M^\vee\)">\(D_0j_!M=Rj_*M^\vee\)</span>. Thus positive Ext is the kernel or cokernel of</p>
+<span class="math math-display" data-tex="\[
+H^1(I,M^\vee)\longrightarrow A^\vee(-1).
+\]">\[
+H^1(I,M^\vee)\longrightarrow A^\vee(-1).
+\]</span>
+<p>Compare with the constant <span class="math" data-tex="\(A\)">\(A\)</span> sequence using <span class="math" data-tex="\(A\hookrightarrow M\)">\(A\hookrightarrow M\)</span>. This identifies the arrow with restriction of functionals and the valuation boundary, exactly the displayed coinvariant isomorphism. Its kernel and cokernel are zero; higher Ext is already zero. Degree zero is <span class="math" data-tex="\(j_*M^\vee\)">\(j_*M^\vee\)</span>. Hence <span class="math" data-tex="\(D_0j_*M=j_*M^\vee\)">\(D_0j_*M=j_*M^\vee\)</span>, and applying the same calculation to <span class="math" data-tex="\(M^\vee\)">\(M^\vee\)</span> gives <span class="math" data-tex="\(D_0D_0j_*M=j_*M^{\vee\vee}=j_*M\)">\(D_0D_0j_*M=j_*M^{\vee\vee}=j_*M\)</span>. Evaluation is this isomorphism by naturality, and adding <span class="math" data-tex="\((1)[2]\)">\((1)[2]\)</span> twice cancels the twists and shifts as in Theorem 6.2.</p>
+<p>For the requested obstruction, take <span class="math" data-tex="\(M=\mathbf F_\ell^2\)">\(M=\mathbf F_\ell^2\)</span> with tame generator <span class="math" data-tex="\(\gamma(e_1)=e_1\)">\(\gamma(e_1)=e_1\)</span>, <span class="math" data-tex="\(\gamma(e_2)=e_2+e_1\)">\(\gamma(e_2)=e_2+e_1\)</span>. Then <span class="math" data-tex="\(M^T=\mathbf F_\ell e_1\)">\(M^T=\mathbf F_\ell e_1\)</span>, whereas <span class="math" data-tex="\(M_T=M/\mathbf F_\ell e_1\)">\(M_T=M/\mathbf F_\ell e_1\)</span>; the natural invariant-to-coinvariant map is zero. The pairing of dual coinvariants with invariants, however, is perfect by (4.4). This verifies both the ramified biduality calculation and the necessity of its corrected map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="16-sources-and-the-boundary-of-the-comparison">16. Sources and the boundary of the comparison</h2>
+<ul>
+<li><strong>[Local and global curve proof]</strong> P. Deligne, <em><a href="https://publications.ias.edu/sites/default/files/Number32.pdf">SGA 4½</a></em>, “Dualité,” §§1–3, especially Théorèmes 1.3–1.4 and 2.2, Lemme 2.3, and the Artin argument in §2.5. Sections 3–10 above supply the coefficient algebra, inertia map, point orientation, finite trace, finite covers and every diagram chase. The argument there uses dual coinvariants; Lemma 4.1 writes out the evaluation map explicitly.</li>
+<li><strong>[Trace and historical signs]</strong> Deligne, <a href="https://publications.ias.edu/sites/default/files/Number32.pdf">“Cohomologie étale: les points de départ”</a> [Arcata], the curve-duality discussion in VI.1–VI.2, including the minus sign of VI.2. “Dualité,” §3, proves the diagonal/torsor comparison described in Section 12. The Jacobian/Weil identification is stated here without proof; the constructible duality proof is complete without it.</li>
+<li><strong>[Original adjunction formalism]</strong> <em><a href="https://www.normalesup.org/~forgogozo/SGA4/">SGA 4</a></em>, Exposé XVIII, §§2–3, especially 2.9, 3.1.8, 3.1.10 and 3.2.3–3.2.6. The trace counit and internal adjunction used here are proved directly in Sections 6–7. The general higher-dimensional smooth duality theorem in XVIII.3.2.5 is historical context, not an unproved premise for the curve argument.</li>
+<li><strong>[Modern exceptional inverse image]</strong> The Stacks Project Authors, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-duality-locally-quasi-finite">locally quasi-finite duality, Tags 0F58–0F59</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-derived-duality-locally-quasi-finite">its derived form, Tags 0F5M–0F5N</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-derived-upper-shriek">general derived upper shriek, Tags 0G2B–0G2C</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-lemma-describe-Rf-upper-shriek">the presheaf description, Tag 0GLK</a>. The finite/open portion needed here is constructed in Section 6, and its internal formula is proved by the full Yoneda calculation.</li>
+<li><strong>[Weighted trace]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-etale.html#more-etale-section-weightings">Weightings and trace maps, Tags 0GKE, 0GKG and 0GKI</a>. Proposition 2.1 proves the relevant finite smooth-curve trace, including ramification weights and norm compatibility. Theorem 7.1 explains why a possibly degenerate raw closed-stalk weighted form still defines a perfect internal sheaf pairing.</li>
+<li><strong>[Curve cohomology comparison]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/trace.html#trace-section-cohomology-curves-revisited">Curves revisited, Tags 03VJ, 03VK and 03VM</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-cohomology-smooth-projective-curve">smooth projective curve groups, Tag 03RQ</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-pullback-on-h2-curve">finite pullback on degree two, Tag 0AMB</a>. The trace chapter's duality remark and its sketch of the <span class="math" data-tex="\(K(\pi,1)\)">\(K(\pi,1)\)</span> assertion are not proofs of the theorem used here. The full constructible theorem and local biduality are proved above, beyond those modern remarks.</li>
+</ul>
+<p>Lessons 10 and 14 supply the curve degree and compact-support foundations; the next lesson develops purity and Gysin maps beyond the point calculation already proved here. The fixed trace and the order in (1.2) supply the normalization needed for the Lefschetz trace formula. This lesson distinguishes complete curve duality from the Jacobian comparison, which it states without proof. The linked AI Integrated Stacks Project reader contains AI-proposed corrections and additions and is not reviewed by the maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks Project</a>.</p>
+</article></main></body></html>

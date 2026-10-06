@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regular sequences, depth and Cohen–Macaulay modules · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/regular-sequences-depth-and-cohen-macaulay-modules.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="COPYING-GFDL-1.2.txt">GFDL-1.2-or-later</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="regular-sequences-depth-and-cohenmacaulay-modules">Regular
+sequences, depth and Cohen–Macaulay modules</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra
+setting, October 2026. This edition incorporates AI Integrated Stacks
+Project proofs under GNU FDL 1.2; see the attribution and licence notice
+below.</em></p>
+<p>Dimension counts how many equations should be needed to isolate a
+point. Regularity asks whether each equation acts without killing a
+nonzero class left by the previous equations. Depth is the number of
+equations that can be imposed in this stronger way. A Cohen–Macaulay
+module is one for which depth reaches the dimension of its support. On
+such a module, the dimension count itself detects regular sequences.</p>
+<p>We use <a href="AG-CA-11.html">Dimension theory of Noetherian local
+rings</a> for one-equation dimension bounds and Hilbert–Samuel degree,
+and <a href="AG-CA-04.html">Associated primes and primary
+decomposition</a> for associated primes, their localization, and finite
+prime avoidance. Nakayama, Artin–Rees and Krull intersection retain
+their earlier hypotheses. The required lesson <a
+href="AG-CA-06S.html">Resolutions, Tor and Ext</a>, Theorem 1.1 and
+Section 4, supplies free resolutions, their comparison up to homotopy,
+and both long exact sequences of Ext; the depth argument using that
+formalism is proved here.</p>
+<p>Rings are commutative with identity. A local ring has one maximal
+ideal and is nonzero; Noetherianity is always an additional hypothesis.
+A finite module is finitely generated. Unless a statement says
+otherwise, depth and Cohen–Macaulay modules below concern finite modules
+over a Noetherian local ring <span class="math inline">\((R,\mathfrak
+m,\kappa)\)</span>. Put <span
+class="math inline">\(\operatorname{depth}(0)=\infty\)</span> and <span
+class="math inline">\(\dim\operatorname{Supp}(0)=-\infty\)</span>. We
+reserve “Cohen–Macaulay module” for a <strong>nonzero</strong> finite
+module.</p>
+<h2 id="equations-that-act-injectively">1. Equations that act
+injectively</h2>
+<p>For any ring and module, a list <span
+class="math inline">\(f_1,\ldots,f_r\)</span> is <strong><span
+class="math inline">\(M\)</span>-regular</strong> if multiplication by
+<span class="math inline">\(f_i\)</span> is injective on <span
+class="math inline">\(M/(f_1,\ldots,f_{i-1})M\)</span> for every <span
+class="math inline">\(i\)</span>, and <span class="math display">\[
+M/(f_1,\ldots,f_r)M\ne0.
+\tag{1}
+\]</span> The empty list is regular precisely when <span
+class="math inline">\(M\ne0\)</span>. The condition on the last quotient
+prevents units from supplying artificial regular sequences.</p>
+<p><strong>Proposition 1.1 (flat extension).</strong> Under a flat map
+<span class="math inline">\(R\to S\)</span>, a regular sequence retains
+all its successive injectivity conditions on <span
+class="math inline">\(M\otimes_RS\)</span>. It is regular there if its
+last quotient remains nonzero. Under a faithfully flat map, regularity
+is equivalent before and after extension. Consequently, for a flat local
+map of Noetherian local rings and a nonzero finite <span
+class="math inline">\(M\)</span>, <span class="math display">\[
+\operatorname{depth}_S(M\otimes_RS)\geq\operatorname{depth}_R(M).
+\tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> Tensor each multiplication injection with
+<span class="math inline">\(S\)</span>. Right exactness identifies its
+quotient with the corresponding quotient of <span
+class="math inline">\(M\otimes_RS\)</span>. Faithful flatness detects
+zero kernels and nonzero quotients, proving both directions. A flat
+local map is faithfully flat by Lemma 6.2 of <em>Tor and flat
+modules</em>. It sends <span class="math inline">\(\mathfrak m\)</span>
+into the target maximal ideal, so every regular sequence used in
+computing the right side is available for the left side. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (local permutation).</strong> Every
+permutation of a regular sequence on a nonzero finite module over a
+Noetherian local ring is regular.</p>
+<p><strong>Proof.</strong> It suffices to interchange two adjacent
+entries, after quotienting by the preceding ones. Write these entries as
+<span class="math inline">\(x,y\)</span>, with <span
+class="math inline">\(x\)</span> injective on the resulting module <span
+class="math inline">\(N\)</span>, and <span
+class="math inline">\(y\)</span> injective on <span
+class="math inline">\(N/xN\)</span>. All entries belong to <span
+class="math inline">\(\mathfrak m\)</span>: a unit would make the final
+quotient zero.</p>
+<p>Let <span class="math inline">\(K=\ker(y:N\to N)\)</span>. If <span
+class="math inline">\(z\in K\)</span>, regularity modulo <span
+class="math inline">\(x\)</span> gives <span
+class="math inline">\(z=xu\)</span>. Then <span
+class="math inline">\(0=yz=xyu\)</span>, so injectivity of <span
+class="math inline">\(x\)</span> gives <span class="math inline">\(u\in
+K\)</span>. Thus <span class="math inline">\(K=xK\)</span>. The kernel
+is finite, and Nakayama gives <span class="math inline">\(K=0\)</span>.
+Next suppose <span class="math inline">\(xz=yu\)</span>. Modulo <span
+class="math inline">\(xN\)</span>, injectivity of <span
+class="math inline">\(y\)</span> gives <span
+class="math inline">\(u=xv\)</span>, and cancellation of <span
+class="math inline">\(x\)</span> gives <span
+class="math inline">\(z=yv\)</span>. Hence <span
+class="math inline">\(x\)</span> acts injectively on <span
+class="math inline">\(N/yN\)</span>. The quotient by both entries is
+unchanged, as are all later conditions. Adjacent interchanges give any
+permutation. <span class="math inline">\(\square\)</span></p>
+<p>The local and finite hypotheses matter. Exercise 8.2 gives a failure
+in a polynomial ring before localization.</p>
+<p><strong>Proposition 1.3 (powers).</strong> For arbitrary <span
+class="math inline">\(R,M\)</span> and positive integers <span
+class="math inline">\(e_i\)</span>, <span class="math display">\[
+f_1,\ldots,f_r\text{ is }M\text{-regular}
+\quad\Longleftrightarrow\quad
+f_1^{e_1},\ldots,f_r^{e_r}\text{ is }M\text{-regular}.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> First record an elementary fact about <span
+class="math inline">\(0\to L\to E\to Q\to0\)</span>. If <span
+class="math inline">\(a\)</span> is injective on both end modules, it is
+injective on <span class="math inline">\(E\)</span>. Moreover, <span
+class="math display">\[
+0\longrightarrow L/aL\longrightarrow E/aE\longrightarrow
+Q/aQ\longrightarrow0
+\tag{4}
+\]</span> is exact: if <span class="math inline">\(ae\in L\)</span>, its
+image satisfies <span class="math inline">\(a\bar e=0\)</span> in <span
+class="math inline">\(Q\)</span>, so <span class="math inline">\(e\in
+L\)</span>. Apply this argument successively to a list of elements. If
+all successive injections hold on each factor of a finite filtration,
+they hold on the whole module, and the quotients retain a filtration by
+the corresponding factor quotients. The last quotient is zero exactly
+when all its factors are zero.</p>
+<p>Suppose <span class="math inline">\(x\)</span> acts injectively on
+<span class="math inline">\(M\)</span>. The module <span
+class="math inline">\(N_e=M/x^eM\)</span> has a filtration with <span
+class="math inline">\(e\)</span> factors isomorphic to <span
+class="math inline">\(N_1=M/xM\)</span>, given by the powers of <span
+class="math inline">\(x\)</span>; cancellation verifies the
+isomorphisms. In particular, <span class="math inline">\(N_1\)</span>
+embeds as <span class="math inline">\(x^{e-1}M/x^eM\)</span>.</p>
+<p>For a fixed tail <span class="math inline">\(f_2,\ldots,f_r\)</span>,
+its successive injections on <span class="math inline">\(N_1\)</span>
+imply those on <span class="math inline">\(N_e\)</span> by (4).
+Conversely, the first injection on <span
+class="math inline">\(N_e\)</span> restricts to the embedded <span
+class="math inline">\(N_1\)</span>. Once the first <span
+class="math inline">\(j\)</span> tail entries have been shown to satisfy
+the injections on <span class="math inline">\(N_1\)</span>, (4) gives a
+filtration of <span
+class="math inline">\(N_e/(f_2,\ldots,f_{j+1})N_e\)</span> whose first
+factor is an embedded copy of the corresponding quotient of <span
+class="math inline">\(N_1\)</span>. The next injection restricts to this
+copy. Induction proves every injection on <span
+class="math inline">\(N_1\)</span>. After the whole tail, the same
+filtration proves that the final quotient is nonzero on <span
+class="math inline">\(N_e\)</span> exactly when it is nonzero on <span
+class="math inline">\(N_1\)</span>.</p>
+<p>Finally, <span class="math inline">\(x^e\)</span> is injective
+exactly when <span class="math inline">\(x\)</span> is: one direction
+follows by composition, the other from <span
+class="math inline">\(xz=0\Rightarrow x^ez=0\)</span>. Thus replacing
+the first entry by a positive power preserves and reflects regularity.
+Induct on the length of the tail, over <span
+class="math inline">\(M/xM\)</span>, to replace all the other entries.
+This proves (3), including the empty list. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="depth-and-its-homological-measurement">2. Depth and its
+homological measurement</h2>
+<p>We first bound lengths without assuming any homological
+characterization.</p>
+<p><strong>Lemma 2.1 (support after one equation).</strong> For nonzero
+finite <span class="math inline">\(M\)</span>, <span
+class="math inline">\(f\in\mathfrak m\)</span>, and <span
+class="math inline">\(D=\dim\operatorname{Supp}(M)\)</span>, <span
+class="math display">\[
+\operatorname{Supp}(M/fM)=\operatorname{Supp}(M)\cap V(f),
+\qquad
+D-1\leq\dim\operatorname{Supp}(M/fM)\leq D.
+\tag{5}
+\]</span> The quotient is nonzero. If <span
+class="math inline">\(f\)</span> acts injectively, its support dimension
+is exactly <span class="math inline">\(D-1\)</span>.</p>
+<p><strong>Proof.</strong> At a prime not containing <span
+class="math inline">\(f\)</span>, the quotient vanishes. At a prime
+containing <span class="math inline">\(f\)</span>, Nakayama for the
+finite localized module says that <span
+class="math inline">\((M/fM)_{\mathfrak p}\ne0\)</span> exactly when
+<span class="math inline">\(M_{\mathfrak p}\ne0\)</span>. This proves
+the support identity, and Nakayama at <span
+class="math inline">\(\mathfrak m\)</span> proves nonzero.</p>
+<p>Put <span class="math inline">\(A=R/\operatorname{Ann}(M)\)</span>.
+Its spectrum is the support of <span class="math inline">\(M\)</span>,
+so the quotient support is the spectrum of <span
+class="math inline">\(A/(\bar f)\)</span>. Theorem 3.2 of <em>Dimension
+theory of Noetherian local rings</em> gives (5), and equality when <span
+class="math inline">\(\bar f\)</span> avoids every minimal prime of
+<span class="math inline">\(A\)</span>. If <span
+class="math inline">\(f\)</span> is injective, it avoids every
+associated prime of <span class="math inline">\(M\)</span>, hence every
+minimal point of its support, by Theorems 1.2 and 3.2 of <em>Associated
+primes and primary decomposition</em>. <span
+class="math inline">\(\square\)</span></p>
+<p>Each entry of a regular sequence in <span
+class="math inline">\(\mathfrak m\)</span> therefore lowers support
+dimension by one. Its length is at most <span
+class="math inline">\(D\)</span>. Define <strong>depth</strong> as the
+maximum of these lengths. The maximum exists, and any regular sequence
+can be extended until it is maximal: each extension increases a bounded
+nonnegative length. “Maximal” here means that no further element of
+<span class="math inline">\(\mathfrak m\)</span> can be appended; we
+will prove that every such list has maximum length.</p>
+<p>Recall the precise homological formalism. For a free resolution <span
+class="math inline">\(F_\bullet\to\kappa\)</span>, <span
+class="math display">\[
+\operatorname{Ext}^i_R(\kappa,M)
+=H^i\bigl(\operatorname{Hom}_R(F_\bullet,M)\bigr).
+\tag{6}
+\]</span> Resolution comparison makes this independent of the
+resolution, naturally in both arguments. A short exact sequence in the
+second argument gives a long exact sequence, since each <span
+class="math inline">\(F_i\)</span> is free and the resulting Hom
+complexes form a short exact sequence. These are the resolution facts
+used below.</p>
+<p>Every <span class="math inline">\(x\in\mathfrak m\)</span> kills the
+groups in (6). To see this directly, multiplication by <span
+class="math inline">\(x\)</span> on <span
+class="math inline">\(F_\bullet\)</span> lifts the zero endomorphism of
+<span class="math inline">\(\kappa\)</span>, so resolution comparison
+makes it homotopic to zero. Precomposition with that chain map is
+multiplication by <span class="math inline">\(x\)</span> on the Hom
+complex, since the ring is commutative. It consequently acts as zero on
+cohomology.</p>
+<p><strong>Lemma 2.2.</strong> The following are equivalent: <span
+class="math display">\[
+\operatorname{depth}(M)=0,
+\qquad \mathfrak m\in\operatorname{Ass}(M),
+\qquad \operatorname{Hom}_R(\kappa,M)\ne0.
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> If every element of <span
+class="math inline">\(\mathfrak m\)</span> is a zero divisor, the
+associated-prime union and finite prime avoidance put <span
+class="math inline">\(\mathfrak m\)</span> inside an associated prime.
+That prime must be <span class="math inline">\(\mathfrak m\)</span>.
+Conversely, an associated element killed by <span
+class="math inline">\(\mathfrak m\)</span> makes every element of <span
+class="math inline">\(\mathfrak m\)</span> a zero divisor. Such a
+nonzero element is exactly a nonzero homomorphism <span
+class="math inline">\(\kappa\to M\)</span>. Nakayama ensures that every
+injective element in <span class="math inline">\(\mathfrak m\)</span>
+would be a regular sequence of length one, so these alternatives are
+exactly depth zero. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (Ext and maximal sequences).</strong> For nonzero
+finite <span class="math inline">\(M\)</span>, <span
+class="math display">\[
+\boxed{\operatorname{depth}_R(M)
+=\min\{i\geq0:\operatorname{Ext}^i_R(\kappa,M)\ne0\}.}
+\tag{8}
+\]</span> This minimum is finite. Every maximal <span
+class="math inline">\(M\)</span>-regular sequence in <span
+class="math inline">\(\mathfrak m\)</span> has this length. For every
+injective <span class="math inline">\(x\in\mathfrak m\)</span>, <span
+class="math display">\[
+\operatorname{depth}(M/xM)=\operatorname{depth}(M)-1.
+\tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math inline">\(e(M)\)</span>
+denote the minimum in (8), provisionally allowing infinity. If there is
+no injective element in <span class="math inline">\(\mathfrak
+m\)</span>, Lemma 2.2 gives <span
+class="math inline">\(e(M)=0\)</span>.</p>
+<p>Otherwise choose any injective <span
+class="math inline">\(x\in\mathfrak m\)</span>, and set <span
+class="math inline">\(N=M/xM\)</span>. The long exact sequence of <span
+class="math inline">\(0\to M\xrightarrow{x}M\to N\to0\)</span>, with its
+multiplication maps zero, gives for every <span
+class="math inline">\(i\geq0\)</span> <span class="math display">\[
+0\longrightarrow\operatorname{Ext}^i_R(\kappa,M)
+\longrightarrow\operatorname{Ext}^i_R(\kappa,N)
+\longrightarrow\operatorname{Ext}^{i+1}_R(\kappa,M)
+\longrightarrow0.
+\tag{10}
+\]</span> Also <span
+class="math inline">\(\operatorname{Hom}_R(\kappa,M)=0\)</span>, by
+injectivity of <span class="math inline">\(x\)</span>. Induct on support
+dimension, which drops by one in Lemma 2.1. The induction hypothesis
+gives a finite <span class="math inline">\(s=e(N)\)</span>. For <span
+class="math inline">\(i&lt;s\)</span>, (10) forces both adjacent Ext
+groups of <span class="math inline">\(M\)</span> to vanish. At <span
+class="math inline">\(i=s\)</span>, the left group vanishes and the
+middle group does not, so <span
+class="math inline">\(\operatorname{Ext}^{s+1}_R(\kappa,M)\ne0\)</span>.
+For <span class="math inline">\(s=0\)</span>, the same conclusion uses
+the already proved Hom vanishing. Thus <span class="math display">\[
+e(M)=e(N)+1&lt;\infty
+\tag{11}
+\]</span> for every injective choice of <span
+class="math inline">\(x\)</span>. Dimension zero starts the induction
+because an injective element would give a nonzero quotient of dimension
+<span class="math inline">\(-1\)</span>, impossible.</p>
+<p>Now take any maximal regular list of length <span
+class="math inline">\(r\)</span>. Repeated use of (11) gives <span
+class="math inline">\(e(M)=r+e(M/(f_1,\ldots,f_r)M)\)</span>. The
+terminal quotient admits no injective element of <span
+class="math inline">\(\mathfrak m\)</span>, so its <span
+class="math inline">\(e\)</span> is zero by Lemma 2.2. Hence every
+maximal list has length <span class="math inline">\(e(M)\)</span>. Every
+list extends to one, so its maximum length is <span
+class="math inline">\(e(M)\)</span>. This proves (8), the assertion
+about maximal lists, and (9). <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 2.4 (depth lemma).</strong> If <span
+class="math inline">\(0\to A\to B\to C\to0\)</span> is an exact sequence
+of finite modules over <span class="math inline">\(R\)</span>, then
+<span class="math display">\[
+\begin{aligned}
+\operatorname{depth}B&amp;\geq\min(\operatorname{depth}A,\operatorname{depth}C),\\
+\operatorname{depth}A&amp;\geq\min(\operatorname{depth}B,\operatorname{depth}C+1),\\
+\operatorname{depth}C&amp;\geq\min(\operatorname{depth}A-1,\operatorname{depth}B).
+\end{aligned}
+\tag{12}
+\]</span> Use the usual extended-integer conventions for infinity.</p>
+<p><strong>Proof.</strong> The long exact sequence contains <span
+class="math display">\[
+\operatorname{Ext}^i(\kappa,A)\to\operatorname{Ext}^i(\kappa,B)
+\to\operatorname{Ext}^i(\kappa,C)\to\operatorname{Ext}^{i+1}(\kappa,A).
+\]</span> For the first inequality, both outside groups vanish below the
+indicated minimum. For the second, use the segment from <span
+class="math inline">\(\operatorname{Ext}^{i-1}(\kappa,C)\)</span>
+through <span
+class="math inline">\(\operatorname{Ext}^i(\kappa,A)\)</span> to <span
+class="math inline">\(\operatorname{Ext}^i(\kappa,B)\)</span>; at <span
+class="math inline">\(i=0\)</span> the absent negative group is zero.
+For the third, use the displayed segment around <span
+class="math inline">\(\operatorname{Ext}^i(\kappa,C)\)</span>. Theorem
+2.3 converts these vanishings into (12). If a module is zero, all its
+Ext groups vanish and the same reasoning applies. <span
+class="math inline">\(\square\)</span></p>
+<p>If an ideal <span class="math inline">\(J\)</span> kills <span
+class="math inline">\(M\)</span>, its depth over <span
+class="math inline">\(R\)</span> equals its depth over the local
+quotient <span class="math inline">\(R/J\)</span>: lists in the quotient
+lift to <span class="math inline">\(\mathfrak m\)</span>, and every
+multiplication and quotient on <span class="math inline">\(M\)</span> is
+the same. This is a statement about regular sequences, and requires no
+identification of Ext groups over the two different rings.</p>
+<h2 id="depth-is-bounded-at-every-associated-point">3. Depth is bounded
+at every associated point</h2>
+<p>The elementary bound from Lemma 2.1 is <span
+class="math inline">\(\operatorname{depth}M\leq\dim\operatorname{Supp}M\)</span>.
+The stronger statement below bounds depth by the dimension of
+<strong>each</strong> associated component, including embedded ones.</p>
+<p><strong>Theorem 3.1.</strong> For every <span
+class="math inline">\(\mathfrak p\in\operatorname{Ass}(M)\)</span>,
+<span class="math display">\[
+\operatorname{depth}M\leq\dim(R/\mathfrak p)
+\leq\dim\operatorname{Supp}M.
+\tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> Induct on depth. At depth zero, the first
+inequality follows from nonnegative dimension. In positive depth choose
+an injective <span class="math inline">\(x\in\mathfrak m\)</span>. Then
+<span class="math inline">\(x\notin\mathfrak p\)</span>. In the local
+domain <span class="math inline">\(R/\mathfrak p\)</span>, the
+one-equation theorem gives <span class="math display">\[
+\dim R/(\mathfrak p+(x))=\dim(R/\mathfrak p)-1.
+\tag{14}
+\]</span> Its finitely many minimal primes cover its spectrum by their
+closed sets. The finite closed-cover dimension formula, proved in
+Section 1 of <em>Krull dimension and Noether normalization</em>,
+supplies a prime <span class="math inline">\(\mathfrak q\)</span>
+minimal over <span class="math inline">\(\mathfrak p+(x)\)</span> such
+that <span class="math inline">\(\dim R/\mathfrak q\)</span> equals the
+right side of (14).</p>
+<p>An associated element embeds <span class="math inline">\(N\cong
+R/\mathfrak p\)</span> in <span class="math inline">\(M\)</span>.
+Artin–Rees for <span class="math inline">\((x)\)</span>, Theorem 5.1 of
+<em>Noetherian and Artinian rings</em>, gives some <span
+class="math inline">\(n\geq1\)</span> with <span class="math display">\[
+N\cap x^nM\subset xN.
+\tag{15}
+\]</span> Indeed, for <span class="math inline">\(n\geq c+1\)</span>,
+its formula makes that intersection <span
+class="math inline">\(x^{n-c}(N\cap x^cM)\subset xN\)</span>. The image
+<span class="math display">\[
+L=N/(N\cap x^nM)\subset M/x^nM
+\]</span> surjects onto <span class="math inline">\(N/xN\)</span>. Thus
+<span class="math inline">\(\mathfrak q\in\operatorname{Supp}L\)</span>.
+Its annihilator contains <span class="math inline">\(\mathfrak
+p\)</span> and <span class="math inline">\(x^n\)</span>, so every prime
+in <span class="math inline">\(\operatorname{Supp}L\)</span> contains
+<span class="math inline">\(\mathfrak p+(x)\)</span>. Minimality of
+<span class="math inline">\(\mathfrak q\)</span> over that ideal makes
+it a minimal point of <span
+class="math inline">\(\operatorname{Supp}L\)</span>, hence an associated
+prime of <span class="math inline">\(L\)</span>. The submodule inclusion
+makes it associated to <span class="math inline">\(M/x^nM\)</span>, by
+Proposition 2.1 of <em>Associated primes and primary
+decomposition</em>.</p>
+<p>Multiplication by <span class="math inline">\(x^n\)</span> is
+injective, so Theorem 2.3 gives depth <span
+class="math inline">\(\operatorname{depth}M-1\)</span> to this quotient.
+Induction applied at <span class="math inline">\(\mathfrak q\)</span>
+yields <span class="math display">\[
+\operatorname{depth}M-1\leq\dim R/\mathfrak q
+=\dim R/\mathfrak p-1.
+\]</span> This is the first inequality in (13). The second follows from
+<span class="math inline">\(V(\mathfrak
+p)\subset\operatorname{Supp}M\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The use of <span class="math inline">\(x^n\)</span>, rather than an
+unjustified assertion about <span class="math inline">\(x\)</span>
+itself, lets the embedded copy of <span
+class="math inline">\(R/\mathfrak p\)</span> survive with the associated
+point needed for induction.</p>
+<h2 id="when-dimension-detects-regularity">4. When dimension detects
+regularity</h2>
+<p>A nonzero finite module is <strong>Cohen–Macaulay</strong>,
+abbreviated CM, when <span class="math display">\[
+\operatorname{depth}M=\dim\operatorname{Supp}M.
+\tag{16}
+\]</span> A <strong>maximal Cohen–Macaulay module</strong> instead has
+depth <span class="math inline">\(\dim R\)</span>. Theorem 3.1 shows
+that this implies (16), but a CM module can have smaller support than
+<span class="math inline">\(\operatorname{Spec}R\)</span>.</p>
+<p><strong>Theorem 4.1 (associated components).</strong> If <span
+class="math inline">\(M\)</span> is CM of support dimension <span
+class="math inline">\(D\)</span>, then <span class="math display">\[
+\operatorname{Ass}(M)=\min\operatorname{Supp}(M),
+\qquad \dim R/\mathfrak p=D
+\quad(\mathfrak p\in\operatorname{Ass}(M)).
+\tag{17}
+\]</span> In particular there are no embedded associated primes, and
+every irreducible component of its support has dimension <span
+class="math inline">\(D\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 3.1 places <span
+class="math inline">\(\dim R/\mathfrak p\)</span> between <span
+class="math inline">\(\operatorname{depth}M=D\)</span> and <span
+class="math inline">\(D\)</span>, giving equality. Suppose an associated
+<span class="math inline">\(\mathfrak p\)</span> were not minimal in the
+support. Choose a minimal support prime <span
+class="math inline">\(\mathfrak q\subsetneq\mathfrak p\)</span>, which
+is itself associated. A chain in <span class="math inline">\(R/\mathfrak
+p\)</span> of length <span class="math inline">\(D\)</span> exists
+because its dimension is the finite integer <span
+class="math inline">\(D\)</span>. Prepending <span
+class="math inline">\(\mathfrak q\)</span> gives a chain in <span
+class="math inline">\(R/\mathfrak q\)</span> of length <span
+class="math inline">\(D+1\)</span>, contradicting its dimension <span
+class="math inline">\(D\)</span>. Every minimal support prime is
+associated by the earlier associated-prime theorem, proving (17). <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (the expected dimension criterion).</strong> Let
+<span class="math inline">\(M\)</span> be CM of support dimension <span
+class="math inline">\(D\)</span>. If <span
+class="math inline">\(g_1,\ldots,g_c\in\mathfrak m\)</span> satisfy
+<span class="math display">\[
+\dim\operatorname{Supp}\bigl(M/(g_1,\ldots,g_c)M\bigr)=D-c,
+\tag{18}
+\]</span> then this list is <span
+class="math inline">\(M\)</span>-regular, and its quotient is CM of
+dimension and depth <span class="math inline">\(D-c\)</span>.</p>
+<p><strong>Proof.</strong> First take one element <span
+class="math inline">\(g\)</span> that lowers support dimension from
+<span class="math inline">\(D\)</span> to <span
+class="math inline">\(D-1\)</span>. If it were a zero divisor, it would
+belong to some <span class="math inline">\(\mathfrak
+p\in\operatorname{Ass}M\)</span>. The support identity (5) would then
+put all of <span class="math inline">\(V(\mathfrak p)\)</span>, of
+dimension <span class="math inline">\(D\)</span> by (17), inside the
+quotient support. This contradicts the asserted drop. Thus <span
+class="math inline">\(g\)</span> is injective. Theorem 2.3 and Lemma 2.1
+lower depth and dimension by one, so <span
+class="math inline">\(M/gM\)</span> is CM.</p>
+<p>For the given list, Nakayama keeps every intermediate quotient
+nonzero. At each step (5) says that dimension decreases by at most one
+and never increases. The total decrease <span
+class="math inline">\(c\)</span> in (18) forces a decrease of exactly
+one at each of the <span class="math inline">\(c\)</span> steps. Apply
+the one-element argument successively. <span
+class="math inline">\(\square\)</span></p>
+<p>A <strong>system of parameters for <span
+class="math inline">\(M\)</span></strong> is a list of <span
+class="math inline">\(D=\dim\operatorname{Supp}M\)</span> elements of
+<span class="math inline">\(\mathfrak m\)</span> whose quotient has
+finite length. Such lists exist: choose parameters in <span
+class="math inline">\(R/\operatorname{Ann}M\)</span> by Theorem 2.1 of
+<em>Dimension theory of Noetherian local rings</em> and lift them. Their
+quotient support is just the closed point. A finite module supported
+there has finite length, since a power of <span
+class="math inline">\(\mathfrak m\)</span> kills it and its successive
+maximal-ideal layers are finite-dimensional <span
+class="math inline">\(\kappa\)</span>-spaces. Conversely, finite length
+gives support only at that point.</p>
+<p><strong>Corollary 4.3 (parameters).</strong> Every system of
+parameters of a CM module is regular. Conversely, if a module has a
+regular system of parameters, it is CM. Every regular sequence on a CM
+module extends to a regular system of parameters.</p>
+<p><strong>Proof.</strong> A nonzero finite-length quotient has support
+dimension zero, so Theorem 4.2 applies to a system of <span
+class="math inline">\(D\)</span> parameters. Conversely, such a regular
+list gives depth at least <span class="math inline">\(D\)</span>, and
+(13) gives the reverse bound. For extension, each regular quotient is CM
+by (9) and the exact dimension drop in Lemma 2.1. Choose a system of
+parameters of the final quotient and lift it; the resulting
+concatenation is regular and has total length <span
+class="math inline">\(D\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The parameters here belong to the <strong>module’s support</strong>.
+For <span class="math inline">\(R=k[x,y]_{(x,y)}\)</span> and <span
+class="math inline">\(M=R/(x)\)</span>, the module is CM of dimension
+one: <span class="math inline">\(y\)</span> acts injectively and its
+quotient is <span class="math inline">\(k\)</span>. Although <span
+class="math inline">\(x,y\)</span> are ring parameters, <span
+class="math inline">\(x\)</span> acts as zero on <span
+class="math inline">\(M\)</span>. Ring parameters cannot replace module
+parameters in Corollary 4.3 without an additional maximal-CM
+hypothesis.</p>
+<h2 id="localization-and-cohenmacaulay-rings">5. Localization and
+Cohen–Macaulay rings</h2>
+<p><strong>Theorem 5.1 (module localization).</strong> If <span
+class="math inline">\(M\)</span> is CM and <span
+class="math inline">\(\mathfrak p\in\operatorname{Supp}M\)</span>, then
+the nonzero finite <span class="math inline">\(R_{\mathfrak
+p}\)</span>-module <span class="math inline">\(M_{\mathfrak p}\)</span>
+is CM.</p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(h=\dim\operatorname{Supp}_{R_{\mathfrak
+p}}M_{\mathfrak p}\)</span>. We construct an <span
+class="math inline">\(M\)</span>-regular list inside <span
+class="math inline">\(\mathfrak p\)</span> of length <span
+class="math inline">\(h\)</span>. Suppose <span
+class="math inline">\(r&lt;h\)</span> elements have been constructed,
+and let <span class="math inline">\(N\)</span> be their global quotient.
+The depth and dimension drops show that <span
+class="math inline">\(N\)</span> is CM. Its localization at <span
+class="math inline">\(\mathfrak p\)</span> is nonzero by repeated
+Nakayama, since each chosen element belongs to <span
+class="math inline">\(\mathfrak pR_{\mathfrak p}\)</span>. Flat
+localization preserves the successive injections, and Lemma 2.1 applied
+locally gives <span class="math display">\[
+\dim\operatorname{Supp}(N_{\mathfrak p})=h-r&gt;0.
+\tag{19}
+\]</span></p>
+<p>The ideal <span class="math inline">\(\mathfrak p\)</span> cannot be
+contained in an associated prime <span class="math inline">\(\mathfrak
+q\)</span> of <span class="math inline">\(N\)</span>. Indeed, <span
+class="math inline">\(\mathfrak p\)</span> is in its support, while
+<span class="math inline">\(\mathfrak q\)</span> is minimal in that
+support by (17). Such a containment would force <span
+class="math inline">\(\mathfrak p=\mathfrak q\)</span>, making the
+localized support have just its closed point and dimension zero,
+contrary to (19). Finite prime avoidance therefore selects an element of
+<span class="math inline">\(\mathfrak p\)</span> outside all associated
+primes of <span class="math inline">\(N\)</span>. It is injective on
+<span class="math inline">\(N\)</span> and supplies the next entry. The
+quotient is again CM and stays nonzero locally.</p>
+<p>After <span class="math inline">\(h\)</span> steps we have a regular
+sequence of length <span class="math inline">\(h\)</span> on <span
+class="math inline">\(M_{\mathfrak p}\)</span>. The local depth bound
+(13) makes its depth exactly <span class="math inline">\(h\)</span>, as
+required. For <span class="math inline">\(h=0\)</span>, that bound
+directly gives depth zero. <span
+class="math inline">\(\square\)</span></p>
+<p>A Noetherian local ring is <strong>Cohen–Macaulay</strong> when it is
+CM as a module over itself. A general Noetherian ring is CM when every
+prime localization is a CM local ring; the zero ring satisfies this
+condition vacuously.</p>
+<p><strong>Corollary 5.2.</strong> Every prime localization of a CM
+local ring is CM. A CM local ring is equidimensional: all its
+minimal-prime quotients have dimension <span class="math inline">\(\dim
+R\)</span>. Its associated primes are exactly its minimal primes.</p>
+<p><strong>Proof.</strong> Apply Theorem 5.1 and (17) to <span
+class="math inline">\(M=R\)</span>. Every prime belongs to the support
+of <span class="math inline">\(R\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>One sometimes describes (17) as <strong>unmixedness</strong> of the
+module, meaning equal dimensions of its associated-prime quotients. This
+statement does not assert equal heights of those primes in an arbitrary
+ambient ring, nor does it assert a property of a completion. The precise
+quotient dimensions in (17) are what the proof gives.</p>
+<p><strong>Theorem 5.3 (polynomial permanence).</strong> If <span
+class="math inline">\(R\)</span> is a Noetherian CM ring, then <span
+class="math inline">\(R[T_1,\ldots,T_n]\)</span> is Noetherian and CM
+for every finite <span class="math inline">\(n\)</span>.</p>
+<p><strong>Proof.</strong> Hilbert basis gives Noetherianity. It
+suffices to add one variable and check an arbitrary prime <span
+class="math inline">\(\mathfrak q\subset R[T]\)</span>. Put <span
+class="math inline">\(\mathfrak p=\mathfrak q\cap R\)</span>, <span
+class="math inline">\(A=R_{\mathfrak p}\)</span>, <span
+class="math inline">\(B=R[T]_{\mathfrak q}\)</span>, and <span
+class="math inline">\(d=\dim A\)</span>. Choose a regular system of
+parameters <span class="math inline">\(f_1,\ldots,f_d\)</span> of <span
+class="math inline">\(A\)</span>. The flat local map <span
+class="math inline">\(A\to B\)</span> preserves its regularity, by
+Proposition 1.1. The ring <span
+class="math inline">\(A_0=A/(f_1,\ldots,f_d)\)</span> is Artinian local,
+so its maximal ideal <span class="math inline">\(\mathfrak p_0\)</span>
+is nilpotent. The resulting local quotient of <span
+class="math inline">\(B\)</span> is a localization of <span
+class="math inline">\(A_0[T]\)</span>. Modulo <span
+class="math inline">\(\mathfrak p_0\)</span> it is either <span
+class="math inline">\(\kappa(\mathfrak p)(T)\)</span>, or <span
+class="math inline">\(\kappa(\mathfrak p)[T]_{(F)}\)</span> for a monic
+irreducible polynomial <span class="math inline">\(F\)</span>.</p>
+<p>In the first case that quotient has dimension zero: every prime
+contains the nilpotent ideal, and its reduction is a field. Thus the
+parameter ideal generated by the <span
+class="math inline">\(f_i\)</span>’s is primary to the maximal ideal of
+<span class="math inline">\(B\)</span>. The height theorem gives <span
+class="math inline">\(\dim B\le d\)</span>, while the regular sequence
+and the depth bound give <span
+class="math inline">\(d\le\operatorname{depth}B\le\dim B\)</span>.
+Equality proves that <span class="math inline">\(B\)</span> is CM.</p>
+<p>In the second case lift the coefficients of <span
+class="math inline">\(F\)</span> to <span
+class="math inline">\(A\)</span> to obtain a monic polynomial <span
+class="math inline">\(f\)</span> lying in the maximal ideal of <span
+class="math inline">\(B\)</span>. Multiplication by <span
+class="math inline">\(f\)</span> on <span
+class="math inline">\(A_0[T]\)</span> is injective: the leading
+coefficient of a nonzero polynomial vector remains its nonzero leading
+coefficient after multiplication by a monic polynomial. Localization
+preserves this injection. Its quotient is a localization of the finite
+<span class="math inline">\(A_0\)</span>-module <span
+class="math inline">\(A_0[T]/(f)\)</span>, hence has dimension zero; it
+is nonzero by local Nakayama. Therefore <span
+class="math inline">\(f_1,\ldots,f_d,f\)</span> is a regular system of
+parameters of <span class="math inline">\(B\)</span>. The same height
+and depth bounds give dimension and depth <span
+class="math inline">\(d+1\)</span>. These two cases cover every prime,
+including the generic point of a polynomial fibre. Induction proves the
+finite-variable assertion. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Lemma 5.4 (dimension formula in a CM local ring).</strong>
+For every prime <span class="math inline">\(\mathfrak p\)</span> of a CM
+local ring <span class="math inline">\(A\)</span>, <span
+class="math display">\[
+\dim A=\dim A_{\mathfrak p}+\dim A/\mathfrak p.
+\tag{19a}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math inline">\(h=\dim
+A_{\mathfrak p}\)</span>, <span class="math inline">\(d=\dim A\)</span>.
+The construction in the proof of Theorem 5.1, applied to the module
+<span class="math inline">\(A\)</span>, produces an <span
+class="math inline">\(A\)</span>-regular sequence of length <span
+class="math inline">\(h\)</span> inside <span
+class="math inline">\(\mathfrak p\)</span>. Its quotient <span
+class="math inline">\(C\)</span> is CM of dimension <span
+class="math inline">\(d-h\)</span>, by the exact regular dimension drop.
+Localizing <span class="math inline">\(C\)</span> at <span
+class="math inline">\(\mathfrak p\)</span> has dimension zero: the
+localized sequence is regular of length <span
+class="math inline">\(h\)</span> on the CM local ring <span
+class="math inline">\(A_{\mathfrak p}\)</span>. Thus <span
+class="math inline">\(\mathfrak p\)</span> is minimal over this
+sequence; a strictly smaller prime over it would give a positive-length
+chain in that localization. The associated-component theorem 4.1 now
+says that the quotient of <span class="math inline">\(C\)</span> by this
+minimal prime has dimension <span class="math inline">\(d-h\)</span>.
+That quotient is exactly <span class="math inline">\(A/\mathfrak
+p\)</span>, proving (19a). <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 5.5 (universal catenarity).</strong> A Noetherian CM
+ring is universally catenary: every finite-type algebra over it is
+catenary.</p>
+<p><strong>Proof.</strong> First let <span
+class="math inline">\(R\)</span> be CM and let <span
+class="math inline">\(\mathfrak p\subsetneq\mathfrak q\)</span> be a
+saturated pair of primes. In <span class="math inline">\(A=R_{\mathfrak
+q}\)</span>, the quotient <span class="math inline">\(A/\mathfrak
+pA\)</span> has dimension one: its only primes are its zero prime and
+maximal ideal, by saturation. Lemma 5.4 gives <span
+class="math display">\[
+\dim R_{\mathfrak q}-\dim R_{\mathfrak p}=1.
+\]</span> Every chain in a fixed prime interval is finite and can be
+extended to a saturated one, since it is bounded by the finite dimension
+of the upper prime’s Noetherian local ring. Adding these differences
+along any saturated chain gives the common length <span
+class="math inline">\(\dim R_{\mathfrak q}-\dim R_{\mathfrak
+p}\)</span>. Hence <span class="math inline">\(R\)</span> is
+catenary.</p>
+<p>Theorem 5.3 makes every finite-variable polynomial ring over <span
+class="math inline">\(R\)</span> CM, hence catenary by the preceding
+argument. Every finite-type algebra is a quotient of one of these
+polynomial rings. Prime intervals in a quotient are exactly the
+corresponding prime intervals in the original ring above the quotient
+ideal, with the same intermediate primes and saturated chains.
+Catenarity therefore passes to quotients. This proves universal
+catenarity. It does not assert that an arbitrary quotient is CM. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="regular-local-rings-and-complete-intersections">6. Regular local
+rings and complete intersections</h2>
+<p>Recall that a Noetherian local ring <span
+class="math inline">\((A,\mathfrak n,\kappa)\)</span> is
+<strong>regular</strong> if <span class="math display">\[
+D=\dim A=\dim_\kappa\mathfrak n/\mathfrak n^2.
+\tag{20}
+\]</span> We prove the foundation needed for the hypersurface examples
+now; the later lesson <em>Regular local rings</em> will develop its
+further consequences.</p>
+<p><strong>Theorem 6.1.</strong> A regular local ring is a domain and is
+Cohen–Macaulay. Any minimal list of generators of its maximal ideal is a
+regular sequence.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(D=0\)</span>,
+Nakayama gives <span class="math inline">\(\mathfrak n=0\)</span>, so
+<span class="math inline">\(A\)</span> is a field and all assertions
+hold. Suppose <span class="math inline">\(D\geq1\)</span>, and choose
+minimal generators <span class="math inline">\(x_1,\ldots,x_D\)</span>.
+They induce a graded surjection <span class="math display">\[
+P=\kappa[T_1,\ldots,T_D]\longrightarrow
+\operatorname{gr}_{\mathfrak n}(A).
+\tag{21}
+\]</span> Every degree is generated by products of the degree-one
+classes, because powers of <span class="math inline">\(\mathfrak
+n\)</span> are generated by the corresponding products of the <span
+class="math inline">\(x_i\)</span>.</p>
+<p>If the kernel contained a nonzero homogeneous <span
+class="math inline">\(F\)</span> of degree <span
+class="math inline">\(a\geq1\)</span>, each graded dimension on the
+right would be bounded by that of <span
+class="math inline">\(P/(F)\)</span>. Multiplication by <span
+class="math inline">\(F\)</span> is injective on the polynomial ring, so
+for large <span class="math inline">\(n\)</span> <span
+class="math display">\[
+\begin{aligned}
+\ell_A(A/\mathfrak n^n)
+&amp;\leq\sum_{j=0}^{n-1}\dim_\kappa(P/(F))_j\\
+&amp;=\binom{n+D-1}{D}-\binom{n-a+D-1}{D}.
+\end{aligned}
+\tag{22}
+\]</span> The polynomial on the last line has degree at most <span
+class="math inline">\(D-1\)</span>. But Corollary 2.2 of <em>Dimension
+theory of Noetherian local rings</em> identifies the Hilbert–Samuel
+degree of <span class="math inline">\(A\)</span> with <span
+class="math inline">\(D\)</span>, and its leading coefficient is
+positive. Inequality (22) is impossible for large <span
+class="math inline">\(n\)</span>. Thus (21) is an isomorphism.</p>
+<p>Krull intersection, Theorem 6.1 of <em>Noetherian and Artinian
+rings</em> with the ideal <span class="math inline">\(\mathfrak
+n\)</span>, says that every nonzero element of <span
+class="math inline">\(A\)</span> has a finite order: the unique <span
+class="math inline">\(v\geq0\)</span> for which it lies in <span
+class="math inline">\(\mathfrak n^v\setminus\mathfrak n^{v+1}\)</span>.
+The initial forms of two nonzero elements have nonzero product in the
+polynomial graded ring. Their product therefore has order the sum of
+their orders and is nonzero. Hence <span
+class="math inline">\(A\)</span> is a domain, and <span
+class="math inline">\(x_1\)</span> acts injectively.</p>
+<p>Order additivity gives, for <span
+class="math inline">\(n\geq1\)</span>, <span class="math display">\[
+(x_1)\cap\mathfrak n^n=x_1\mathfrak n^{n-1}.
+\tag{23}
+\]</span> It also identifies the kernel of the natural map from <span
+class="math inline">\(\operatorname{gr}_{\mathfrak n}A\)</span> to the
+associated graded ring of <span class="math inline">\(A/(x_1)\)</span>.
+In degree <span class="math inline">\(n\)</span>, a kernel
+representative in <span class="math inline">\(\mathfrak
+n^n\cap((x_1)+\mathfrak n^{n+1})\)</span> differs by an element of <span
+class="math inline">\(\mathfrak n^{n+1}\)</span> from something in <span
+class="math inline">\((x_1)\cap\mathfrak n^n\)</span>. Formula (23)
+makes its initial form a multiple of <span
+class="math inline">\(T_1\)</span>. The converse is immediate, and
+degree zero has no kernel. Therefore <span class="math display">\[
+\operatorname{gr}\bigl(A/(x_1)\bigr)
+\cong\kappa[T_2,\ldots,T_D].
+\tag{24}
+\]</span> This local quotient is Noetherian and Krull-separated. The
+same initial-form argument makes it a domain and its next generator
+injective; (23) then proves the next quotient graded ring is the
+polynomial ring on the remaining variables. Repeating shows that <span
+class="math inline">\(x_1,\ldots,x_D\)</span> is regular. Its final
+quotient is <span class="math inline">\(\kappa\ne0\)</span>. Thus depth
+is at least <span class="math inline">\(D\)</span>, and (13) makes it
+exactly <span class="math inline">\(D\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Corollary 6.2 (hypersurfaces and intersections).</strong> If
+<span class="math inline">\(A\)</span> is regular local and <span
+class="math inline">\(0\ne f\in\mathfrak n\)</span>, then <span
+class="math inline">\(A/(f)\)</span> is CM of dimension <span
+class="math inline">\(D-1\)</span>. More generally, a quotient by an
+<span class="math inline">\(A\)</span>-regular list of length <span
+class="math inline">\(c\)</span> is CM of dimension <span
+class="math inline">\(D-c\)</span>. A list in <span
+class="math inline">\(\mathfrak n\)</span> whose quotient has dimension
+<span class="math inline">\(D-c\)</span> is itself regular and gives a
+CM quotient.</p>
+<p><strong>Proof.</strong> Theorem 6.1 gives both the CM property of
+<span class="math inline">\(A\)</span> and injectivity of a nonzero
+<span class="math inline">\(f\)</span>. Equations (5) and (9) lower
+dimension and depth by one. Apply this repeatedly to a regular list, or
+apply Theorem 4.2 to the stated dimension condition. Depth of each
+quotient as a module agrees with depth over its own local ring. <span
+class="math inline">\(\square\)</span></p>
+<p>Here a complete intersection means a quotient by a regular sequence.
+The dimension criterion supplies the regularity when only a list with
+the expected dimension is initially given. The conditions on a
+hypersurface equation are substantive: <span
+class="math inline">\(f=0\)</span> gives the ambient ring, and a unit
+gives the zero quotient, which is excluded from our local CM-module
+convention.</p>
+<h2 id="three-ways-depth-can-fall-short">7. Three ways depth can fall
+short</h2>
+<p><strong>A line with an embedded point.</strong> In <span
+class="math display">\[
+B=\bigl(k[x,y]/(x^2,xy)\bigr)_{(x,y)},
+\]</span> the nilpotent <span class="math inline">\(x\)</span> lies in
+every prime, so the spectrum has the dimension-one support of the <span
+class="math inline">\(y\)</span>-line. The element <span
+class="math inline">\(x\)</span> remains nonzero after localization: a
+denominator with nonzero constant term multiplies it by that constant.
+Both generators of the maximal ideal kill it. Thus the maximal ideal is
+associated, and (7) gives depth zero. An embedded point obstructs the
+first regular equation.</p>
+<p><strong>Two planes meeting only at the origin.</strong> Put <span
+class="math display">\[
+P=k[x,y,z,w]_{(x,y,z,w)},\quad I=(x,y),\quad J=(z,w),
+\qquad B=P/(I\cap J).
+\tag{25}
+\]</span> Its spectrum is the union of the two closed planes, so <span
+class="math inline">\(\dim B=2\)</span>. The intersection sequence is
+<span class="math display">\[
+0\longrightarrow B\longrightarrow P/I\oplus P/J
+\xrightarrow{\ (u,v)\mapsto u-v\ }\kappa\longrightarrow0.
+\tag{26}
+\]</span> The last map uses the residues modulo <span
+class="math inline">\(I+J\)</span>. Its kernel is the diagonal image of
+<span class="math inline">\(P/(I\cap J)\)</span>: lifts with equal
+residue can be adjusted by elements of <span
+class="math inline">\(I\)</span> and <span
+class="math inline">\(J\)</span> to a common lift. It is surjective, so
+(26) is exact.</p>
+<p>On the middle module, <span class="math inline">\(x+z,y+w\)</span>
+acts as the two coordinate variables on each plane. This is a regular
+list of length two, with final quotient <span
+class="math inline">\(\kappa\oplus\kappa\)</span>. The support dimension
+bound makes its depth exactly two. Its Hom and first Ext from <span
+class="math inline">\(\kappa\)</span> therefore vanish. The long exact
+sequence of (26) gives <span class="math display">\[
+\operatorname{Hom}_P(\kappa,B)=0,
+\qquad\operatorname{Ext}^1_P(\kappa,B)\cong
+\operatorname{Hom}_P(\kappa,\kappa)\cong\kappa.
+\tag{27}
+\]</span> Thus <span
+class="math inline">\(\operatorname{depth}B=1&lt;2\)</span>, using
+quotient-ring invariance of depth. The ring is reduced because <span
+class="math inline">\(I\)</span> and <span
+class="math inline">\(J\)</span> are prime and their intersection is
+radical. It has no embedded primes by Solution 8.4 of <em>Associated
+primes and primary decomposition</em>, and its components have equal
+dimension. Those properties alone do not imply CM.</p>
+<p><strong>A domain with a defective parameter pair.</strong> Let <span
+class="math display">\[
+S=k[s^4,s^3t,st^3,t^4]\subset k[s,t],\qquad
+R=S_{\mathfrak m},\quad
+\mathfrak m=(s^4,s^3t,st^3,t^4).
+\tag{28}
+\]</span> It is a domain. Write <span
+class="math inline">\(a=s^4\)</span>, <span
+class="math inline">\(b=t^4\)</span>. The other two generators are
+integral over <span class="math inline">\(k[a,b]\)</span>, since their
+fourth powers are <span class="math inline">\(a^3b\)</span> and <span
+class="math inline">\(ab^3\)</span>. The fraction field has
+transcendence degree two, and <span class="math inline">\(S/\mathfrak
+m=k\)</span>. The height formula in Theorem 4.3 of <em>Krull dimension
+and Noether normalization</em> gives <span class="math inline">\(\dim
+R=2\)</span>. Modulo <span class="math inline">\((a,b)\)</span>, both
+remaining generators are nilpotent, so this pair is a system of
+parameters.</p>
+<p>Set <span class="math inline">\(u=(s^3t)^2=s^6t^2\)</span>. It is not
+in <span class="math inline">\(aR\)</span>, but <span
+class="math display">\[
+bu=a(st^3)^2\in aR.
+\tag{29}
+\]</span> The localization nonmembership is established in Solution 8.6
+below, by comparing homogeneous degrees. Therefore <span
+class="math inline">\(b\)</span> kills a nonzero class modulo <span
+class="math inline">\(a\)</span>. The parameter pair is not regular, so
+Corollary 4.3 shows that <span class="math inline">\(R\)</span> is not
+CM. Since the domain has the injective element <span
+class="math inline">\(a\in\mathfrak m\)</span>, its depth is at least
+one; being non-CM of dimension two, its depth is exactly one. A domain
+can therefore fail CM without any embedded associated prime.</p>
+<h2 id="exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (easy).</strong> For a nonzero finite module
+over a Noetherian local ring, prove that depth zero is equivalent to the
+maximal ideal being associated. Describe the nonzero element detected by
+<span class="math inline">\(\operatorname{Hom}_R(\kappa,M)\)</span>.</p>
+<p><strong>Exercise 8.2 (easy).</strong> In <span
+class="math inline">\(k[x,y,z]\)</span>, prove that <span
+class="math inline">\(x,y(1-x),z(1-x)\)</span> is a regular sequence,
+but <span class="math inline">\(y(1-x),z(1-x),x\)</span> is not. Exhibit
+the kernel element responsible for failure, and check that the final
+quotient is nevertheless nonzero.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Prove that every
+zero-dimensional Noetherian local ring is CM, including nonreduced
+rings. Prove that every reduced one-dimensional Noetherian local ring is
+CM.</p>
+<p><strong>Exercise 8.4 (medium).</strong> For the two-plane ring (25),
+establish the exact intersection sequence and calculate depth at the
+origin using Ext. Explain why reducedness and equal component dimensions
+do not settle this question.</p>
+<p><strong>Exercise 8.5 (hard).</strong> Let <span
+class="math inline">\(A=k[x_1,\ldots,x_n]_{(x_1,\ldots,x_n)}\)</span>,
+and take <span class="math inline">\(f_1,\ldots,f_c\)</span> in its
+maximal ideal. Suppose <span class="math inline">\(\dim
+A/(f_1,\ldots,f_c)=n-c\)</span>. Prove that the list is regular and its
+quotient is CM. Include the case of an empty list.</p>
+<p><strong>Exercise 8.6 (hard).</strong> For (28), prove that <span
+class="math inline">\(s^4,t^4\)</span> is a system of parameters. Prove
+both <span class="math inline">\(s^6t^2\notin s^4S\)</span> and <span
+class="math inline">\(s^6t^2\notin s^4R\)</span>, and compute the depth
+of <span class="math inline">\(R\)</span>. The second nonmembership
+requires an argument about denominators.</p>
+<h2 id="complete-solutions">9. Complete solutions</h2>
+<p><strong>Solution 8.1.</strong> If <span
+class="math inline">\(\mathfrak m\)</span> is associated, there is <span
+class="math inline">\(0\ne z\in M\)</span> with annihilator <span
+class="math inline">\(\mathfrak m\)</span>. Every element of <span
+class="math inline">\(\mathfrak m\)</span> kills <span
+class="math inline">\(z\)</span>, so none acts injectively, and no
+positive-length regular sequence is possible. Conversely, at depth zero
+every element of <span class="math inline">\(\mathfrak m\)</span> is a
+zero divisor: an injective one would leave a nonzero quotient by
+Nakayama and give a regular sequence. The finite associated-prime union
+and prime avoidance put <span class="math inline">\(\mathfrak m\)</span>
+in one associated prime, which must equal <span
+class="math inline">\(\mathfrak m\)</span>. A homomorphism from <span
+class="math inline">\(\kappa\)</span> is determined by the image <span
+class="math inline">\(z\)</span> of <span
+class="math inline">\(1\)</span>, and it is well-defined exactly when
+<span class="math inline">\(\mathfrak m z=0\)</span>. A nonzero such
+image has annihilator exactly <span class="math inline">\(\mathfrak
+m\)</span>.</p>
+<p><strong>Solution 8.2.</strong> The polynomial ring is a domain, so
+<span class="math inline">\(x\)</span> is injective. Modulo <span
+class="math inline">\(x\)</span>, the second element becomes <span
+class="math inline">\(y\)</span> in <span
+class="math inline">\(k[y,z]\)</span>, and modulo <span
+class="math inline">\(x,y\)</span>, the third becomes <span
+class="math inline">\(z\)</span> in <span
+class="math inline">\(k[z]\)</span>. Both are injective, and the final
+quotient is <span class="math inline">\(k\)</span>. Hence the original
+list is regular.</p>
+<p>For the proposed permutation, the first element <span
+class="math inline">\(y(1-x)\)</span> is still injective in the domain.
+But modulo its ideal, <span class="math inline">\(z(1-x)\)</span> kills
+the class of <span class="math inline">\(y\)</span>, since their product
+is <span class="math inline">\(z[y(1-x)]\)</span>. This class is
+nonzero: an equality <span class="math inline">\(y=y(1-x)h\)</span>
+would allow cancellation of <span class="math inline">\(y\)</span> in
+the polynomial domain, giving <span
+class="math inline">\(1=(1-x)h\)</span>, impossible on evaluating at
+<span class="math inline">\(x=1\)</span>. The second entry therefore
+fails injectivity. Adding <span class="math inline">\(x\)</span> to the
+two-element ideal makes it <span class="math inline">\((x,y,z)\)</span>,
+so the final quotient is again <span class="math inline">\(k\)</span>.
+Failure comes from an intermediate kernel, not from the final quotient
+condition. At the origin the factor <span
+class="math inline">\(1-x\)</span> becomes a unit, in agreement with the
+local permutation theorem.</p>
+<p><strong>Solution 8.3.</strong> A nonzero zero-dimensional local ring
+has support dimension zero as a module over itself. The bound <span
+class="math inline">\(0\leq\operatorname{depth}R\leq\dim R=0\)</span>
+makes it CM. Nothing in this argument requires reducedness. Concretely,
+its Noetherian zero-dimensional local structure is Artinian, with
+nilpotent maximal ideal. If that ideal is nonzero, the last nonzero
+power contains an element killed by the whole ideal; if it is zero, the
+ring is a field. In both cases depth is zero.</p>
+<p>For a reduced one-dimensional Noetherian local ring, Solution 8.4 of
+<em>Associated primes and primary decomposition</em> says that the
+associated primes are exactly the finitely many minimal primes. The
+maximal ideal is not minimal: dimension one supplies a strictly smaller
+prime. Hence it is contained in none of the minimal primes, and prime
+avoidance chooses <span class="math inline">\(x\in\mathfrak m\)</span>
+outside all of them. This <span class="math inline">\(x\)</span> is
+injective; Nakayama makes its quotient nonzero. Thus depth is at least
+one, and the dimension bound makes it exactly one.</p>
+<p><strong>Solution 8.4.</strong> For arbitrary ideals <span
+class="math inline">\(I,J\)</span> of <span
+class="math inline">\(P\)</span>, the diagonal map from <span
+class="math inline">\(P/(I\cap J)\)</span> into <span
+class="math inline">\(P/I\oplus P/J\)</span> is injective. The
+difference of residues maps the latter onto <span
+class="math inline">\(P/(I+J)\)</span>. To verify its kernel, let lifts
+<span class="math inline">\(u,v\)</span> satisfy <span
+class="math inline">\(u-v=i+j\)</span> with <span
+class="math inline">\(i\in I,j\in J\)</span>. The element <span
+class="math inline">\(u-i=v+j\)</span> has the prescribed residues
+modulo both ideals. This proves (26), whose last module is <span
+class="math inline">\(k\)</span>.</p>
+<p>The plane quotients have dimension two by the field polynomial height
+theorem, so the union of their closed supports has dimension two. On
+each summand, <span class="math inline">\(x+z,y+w\)</span> is the
+ordinary pair of its independent coordinates. They are successively
+injective and give nonzero final quotients; hence the middle module has
+depth two by (13). Its Hom and first Ext from <span
+class="math inline">\(k\)</span> vanish. Exactness then identifies <span
+class="math inline">\(\operatorname{Ext}^1_P(k,B)\)</span> with <span
+class="math inline">\(\operatorname{Hom}_P(k,k)=k\)</span> and makes
+<span class="math inline">\(\operatorname{Hom}_P(k,B)=0\)</span>.
+Theorem 2.3 gives depth one, which remains one over <span
+class="math inline">\(B\)</span> by quotient-ring invariance. The ring
+is therefore not CM at the origin. Although the defining ideal is
+radical and the two components have the same dimension, the first
+nonzero Ext group occurs before the support dimension; those geometric
+conditions do not remove the obstruction in (27).</p>
+<p><strong>Solution 8.5.</strong> The field polynomial height theorem
+gives <span class="math inline">\(\dim A=n\)</span>. The maximal ideal
+has the displayed <span class="math inline">\(n\)</span> generators, so
+its embedding dimension is at most <span
+class="math inline">\(n\)</span>, and Proposition 4.2 of <em>Dimension
+theory of Noetherian local rings</em> bounds it below by <span
+class="math inline">\(\dim A=n\)</span>. Thus <span
+class="math inline">\(A\)</span> is regular local, and Theorem 6.1 makes
+it CM. Its quotient by the given list is nonzero by Nakayama, and its
+support as an <span class="math inline">\(A\)</span>-module is the
+spectrum of that quotient. The assumed dimension is exactly the
+hypothesis (18). Theorem 4.2 proves regularity and the CM property, with
+depth <span class="math inline">\(n-c\)</span>. Quotient-ring invariance
+makes this also the depth as a module over its own local ring. When
+<span class="math inline">\(c=0\)</span>, the list is empty and the
+conclusion is simply that <span class="math inline">\(A\)</span> is CM;
+when <span class="math inline">\(n=0\)</span>, this is the field case.
+The nonzero quotient dimension condition entails <span
+class="math inline">\(c\leq n\)</span>.</p>
+<p><strong>Solution 8.6.</strong> The four generators make <span
+class="math inline">\(S\)</span> a finite-type Noetherian domain. The
+elements <span class="math inline">\(a=s^4,b=t^4\)</span> are
+algebraically independent: distinct monomials in them have distinct
+exponent pairs in <span class="math inline">\(k[s,t]\)</span>. Writing
+<span class="math inline">\(v=s^3t,w=st^3\)</span>, the relations <span
+class="math inline">\(v^4=a^3b\)</span> and <span
+class="math inline">\(w^4=ab^3\)</span> make <span
+class="math inline">\(S\)</span> finite integral over <span
+class="math inline">\(k[a,b]\)</span>, by the finite-generator integral
+criterion. Its fraction field is therefore algebraic over <span
+class="math inline">\(k(a,b)\)</span> and has transcendence degree two.
+The maximal ideal <span class="math inline">\(\mathfrak m\)</span> has
+residue field <span class="math inline">\(k\)</span>, so the height
+formula gives <span class="math inline">\(\operatorname{ht}\mathfrak
+m=2\)</span> and <span class="math inline">\(\dim R=2\)</span>.</p>
+<p>The ring <span class="math inline">\(S/(a,b)\)</span> is generated
+over <span class="math inline">\(k\)</span> by the images of <span
+class="math inline">\(v,w\)</span>, whose fourth powers vanish. It is
+spanned by <span class="math inline">\(v^iw^j\)</span>, <span
+class="math inline">\(0\leq i,j&lt;4\)</span>, so is finite-dimensional
+over <span class="math inline">\(k\)</span>. It has just one prime,
+generated by these nilpotent images. Localizing gives a nonzero
+finite-length quotient <span class="math inline">\(R/(a,b)\)</span>. The
+two elements consequently form a system of parameters.</p>
+<p>Monomials of <span class="math inline">\(S\)</span> have exponent
+pairs in the additive semigroup generated by <span
+class="math display">\[
+(4,0),\ (3,1),\ (1,3),\ (0,4).
+\]</span> They are linearly independent in <span
+class="math inline">\(k[s,t]\)</span>. If <span
+class="math inline">\(u=s^6t^2\)</span> belonged to <span
+class="math inline">\(aS\)</span>, cancellation in this polynomial
+domain would put <span class="math inline">\(s^2t^2\)</span> in <span
+class="math inline">\(S\)</span>. Its total degree is four, so its
+exponent pair would have to be one of the four generators: any sum of
+two or more has degree at least eight. The pair <span
+class="math inline">\((2,2)\)</span> is none of them. Thus <span
+class="math inline">\(u\notin aS\)</span>.</p>
+<p>Give <span class="math inline">\(S\)</span> its total-degree grading.
+Its positive-degree ideal is <span class="math inline">\(\mathfrak
+m\)</span>, so any <span class="math inline">\(q\notin\mathfrak
+m\)</span> has nonzero constant term <span class="math inline">\(q_0\in
+k\)</span>. If <span class="math inline">\(u/1\in aR\)</span>, equality
+of fractions, or injectivity of the localization of this domain, would
+give some <span class="math inline">\(q\notin\mathfrak m\)</span> with
+<span class="math inline">\(qu\in aS\)</span>. The ideal <span
+class="math inline">\(aS\)</span> is homogeneous. Its degree-eight
+component would then contain <span class="math inline">\(q_0u\)</span>,
+forcing <span class="math inline">\(u\in aS\)</span>, a contradiction.
+Hence <span class="math inline">\(u\notin aR\)</span>.</p>
+<p>Finally <span class="math inline">\(bu=s^6t^6=a w^2\)</span>. Thus
+<span class="math inline">\(b\)</span> is a zero divisor on <span
+class="math inline">\(R/aR\)</span>. Since <span
+class="math inline">\(a,b\)</span> is a parameter system, its failure of
+regularity proves non-CM by Corollary 4.3. The nonzero element <span
+class="math inline">\(a\)</span> is injective in the domain, giving
+depth at least one; the depth bound and failure of CM make it exactly
+one.</p>
+<h2 id="proof-dependencies-and-licence">Proof dependencies and
+licence</h2>
+<p>Theorems 5.3 and 5.5 prove polynomial permanence and universal
+catenarity, including the local dimension formula that the chain
+argument needs. Ext comparison and both long exact sequences have
+complete proofs in <em>Resolutions, Tor and Ext</em>, Theorem 1.1 and
+Section 4. The scalar-annihilation argument, the least-nonzero-Ext
+characterization, and all depth consequences used here are proved
+above.</p>
+<p>The polynomial and catenarity arguments incorporate the Stacks
+Project Authors’ proofs in <a
+href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/algebra.tex#L26280">AI
+Integrated Stacks Project at the pinned revision</a>,
+<code>lemma-maximal-CM-polynomial-algebra</code>,
+<code>lemma-CM-polynomial-algebra</code> and
+<code>lemma-CM-ring-catenary</code>. The source-linked supplementary
+proof 19, by GPT-6 Astra, supplies the support and leading-coefficient
+details. GPT-6.1 Sol checked the arguments, treated both kinds of prime
+in a polynomial fibre, and derived the dimension formula directly from
+the regular-sequence construction already proved here. This adapted
+lesson is licensed under GNU Free Documentation License 1.2, with no
+Invariant Sections, no Front-Cover Texts and no Back-Cover Texts; the <a
+href="COPYING-GFDL-1.2.txt">licence text</a> accompanies its transparent
+source. History: Stacks Project Authors, <em>Commutative Algebra</em>,
+pinned AI Integrated Stacks Project revision; GPT-6 Astra, supplementary
+proof 19, September 2026; GPT-6.1 Sol, original CC0 lesson and this
+adaptation, October 2026. The earlier original material remains
+available under CC0. The later lesson <em>Projective dimension and the
+Auslander–Buchsbaum formula</em> relates depth to resolution length; no
+such formula is assumed here.</p>
+<h2 id="references">References</h2>
+<p>The <a href="https://stacks.math.columbia.edu/">official Stacks
+project</a> is the maintained reference. Tag links here use <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI
+Integrated Stacks Project</a>, an edition with AI-proposed corrections
+and AI-written additions that have not been reviewed by the Stacks
+project maintainers. The original exposition and solutions are
+independently written; the incorporated polynomial and catenarity proofs
+retain the source credit and licence below.</p>
+<ul>
+<li>Regular sequences, local permutation, powers and flat behaviour: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-regular-sequence">Stacks,
+Tag 00LF</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-permute-xi">Stacks,
+Tag 00LJ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-regular-sequence-powers">Stacks,
+Tag 07DV</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-flat-increases-depth">Stacks,
+Tag 00LM</a>.</li>
+<li>Depth, Ext, the depth lemma and the associated-prime bound: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-depth">Stacks,
+Tag 00LI</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-depth-ext">Stacks,
+Tag 00LW</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-depth-in-ses">Stacks,
+Tag 00LX</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-depth-dim-associated-primes">Stacks,
+Tag 0BK4</a>.</li>
+<li>CM modules, expected dimension, minimal associated points and
+localization: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-CM">Stacks,
+Tag 00N3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-CM-module">Stacks,
+Tag 00N6</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-CM-ass-minimal-support">Stacks,
+Tag 0BUS</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-localize-CM">Stacks,
+Tag 00NB</a>. The distinction from maximal CM is <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-maximal-CM">Stacks,
+Tag 00NF</a>.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, §9.5 and §§26.1–26.2:
+regular sequences, depth and Cohen–Macaulay geometry.</li>
+</ul>
+<h2 id="copyright-and-licence">Copyright and licence</h2>
+<p>Copyright (C) 2005–2025 Johan de Jong. The incorporated source is
+<em>The Stacks Project</em>, as distributed in AI Integrated Stacks
+Project at revision
+<code>565b10e987aba5969b21145a0833f42d69f96790</code>.</p>
+<p>Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy
+is supplied as <a href="COPYING-GFDL-1.2.txt">GNU Free Documentation
+License 1.2</a>.</p>
+<p>The original course material remains available under its CC0
+dedication. This combined edition, including the incorporated and
+adapted proof, is distributed under GNU FDL 1.2 or later. The source
+authors, incorporated source titles and mathematical adaptations are
+identified above. History: Stacks Project Authors, original source; the
+credited AI Integrated Stacks Project editorial contributors, where
+used; OpenAI GPT-6.1 Sol, course adaptation, October 2026.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

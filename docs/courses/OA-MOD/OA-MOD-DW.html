@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparing weights through finite-energy vectors · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-DW.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="comparing-weights-through-their-finite-energy-vectors">Comparing weights through their finite-energy vectors</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>This unit constructs the bounded comparison operator for weights. Its setting is an arbitrary von Neumann algebra, including algebras with no faithful normal state. The construction also works for weights which are not faithful, normal, or semifinite. These extra freedoms concern this bounded comparison theorem; they do not change the hypotheses of later modular theorems.</p>
+<p>The organizing object is the entire cone of dominated linear forms on a weight's finite domain. We prove its correspondence with the GNS commutant before comparing two actual weights. A free comparison for the factorization and positive-cone additivity is Brent Nelson's lecture notes, with exact passages given at the end. The completely positive predual-valued map and the opposite-weight theorem remain separate obligations.</p>
+<h2 id="conventions-and-the-exact-comparison-problem"><span id="oa-mod-dw-01"></span><span id="OA-MOD-DW-01"></span>Conventions and the exact comparison problem</h2>
+<p>Inner products are linear in the first variable. Fix a weight <span class="math" data-tex="\(\varphi:M_+\to[0,\infty]\)">\(\varphi:M_+\to[0,\infty]\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\varphi=\{x:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\]">\[
+\mathfrak n_\varphi=\{x:\varphi(x^*x)&lt;\infty\},\qquad
+\mathfrak m_\varphi=\operatorname{span}\{y^*x:x,y\in\mathfrak n_\varphi\}.
+\]</span>
+<p>The construction in OA-MOD-WG supplies a positive linear extension of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>, a Hilbert space <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>, a dense-range map <span class="math" data-tex="\(\Lambda_\varphi\)">\(\Lambda_\varphi\)</span>, and a unital representation <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle=\varphi(y^*x),\qquad
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax).
+\]">\[
+\langle\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle=\varphi(y^*x),\qquad
+\pi_\varphi(a)\Lambda_\varphi(x)=\Lambda_\varphi(ax).
+\]</span>
+<p>In particular <span class="math" data-tex="\(\mathfrak m_\varphi^+=\mathfrak m_\varphi\cap M_+=\{a\in M_+:\varphi(a)&lt;\infty\}\)">\(\mathfrak m_\varphi^+=\mathfrak m_\varphi\cap M_+=\{a\in M_+:\varphi(a)&lt;\infty\}\)</span>, and every element of <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span> is a complex linear combination of this cone. These are algebraic domains, not norm closures.</p>
+<p>Let <span class="math" data-tex="\(\mathcal D_\varphi\)">\(\mathcal D_\varphi\)</span> be the cone of positive linear forms <span class="math" data-tex="\(\ell:\mathfrak m_\varphi\to\mathbb C\)">\(\ell:\mathfrak m_\varphi\to\mathbb C\)</span> such that, for some finite <span class="math" data-tex="\(c\geq0\)">\(c\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq\ell(a)\leq c\varphi(a)\quad(a\in\mathfrak m_\varphi^+).
+\]">\[
+0\leq\ell(a)\leq c\varphi(a)\quad(a\in\mathfrak m_\varphi^+).
+\]</span>
+<p>Positivity refers to the inherited cone above. It does not assert that <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is bounded for the operator norm, or that it has already been extended to a normal weight on all of <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. The order on these forms is positivity of their difference on this cone.</p>
+<p>The complete algebraic GNS inputs are <a href="OA-MOD-WG.html#oa-mod-wg-003">Domain algebra and its positive cone</a>, <a href="OA-MOD-WG.html#oa-mod-wg-004">Linear extension without infinite subtraction</a>, <a href="OA-MOD-WG.html#oa-mod-wg-005">Cauchy-Schwarz and the null ideal</a> and <a href="OA-MOD-WG.html#oa-mod-wg-006">The GNS construction for an arbitrary weight</a>: the exact finite positive cone, linear extension, null quotient, Hilbert completion and bounded left representation. No normality theorem for that representation is needed here.</p>
+<p><a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary</a> proves Hilbert completion, continuous extension, projections, Riesz representation for bounded forms, adjoints and bounded positive square roots. <a href="OA-MOD-BK.html#oa-mod-bk-02">Finite-vector approximation and the bicommutant</a> proves the bicommutant theorem; <a href="OA-MOD-BK.html#oa-mod-bk-04">Bounded increasing positive nets have strong suprema</a> proves bounded monotone-net convergence; <a href="OA-MOD-BK.html#oa-mod-bk-06">Supports from bounded resolvent cutoffs</a> identifies support projections; and <a href="OA-MOD-BK.html#oa-mod-bk-07">Polar decomposition and its regularized limit</a> proves polar decomposition inside the algebra. DW-04 constructs the polar map between its two Hilbert spaces directly. <a href="notes/analytic-programme/spectral-scalar-prerequisites.html#ss1-scalar-l2-on-every-measure-space">SS1</a> supplies the arbitrary-index weighted sequence spaces in the models. As in WG-001, finite-coordinate approximation follows directly from the supremum defining a summable nonnegative family.</p>
+<h2 id="a-factorization-inside-the-algebra"><span id="oa-mod-dw-02"></span><span id="OA-MOD-DW-02"></span>A factorization inside the algebra</h2>
+<p><strong>Lemma.</strong> If <span class="math" data-tex="\(x,y\in M\)">\(x,y\in M\)</span> and <span class="math" data-tex="\(y^*y\leq x^*x\)">\(y^*y\leq x^*x\)</span>, there is a unique contraction <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> which vanishes on <span class="math" data-tex="\(\overline{xH}^{\perp}\)">\(\overline{xH}^{\perp}\)</span> and satisfies <span class="math" data-tex="\(y=vx\)">\(y=vx\)</span>, in any faithful concrete realization <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(xH\)">\(xH\)</span> define <span class="math" data-tex="\(x\xi\mapsto y\xi\)">\(x\xi\mapsto y\xi\)</span>. The inequality says both that this is well defined and that its norm is at most one. Extend it continuously to <span class="math" data-tex="\(\overline{xH}\)">\(\overline{xH}\)</span>, and set it equal to zero on the orthogonal complement. This proves existence and uniqueness in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>. Every unitary <span class="math" data-tex="\(u\in M&#x27;\)">\(u\in M&#x27;\)</span> preserves <span class="math" data-tex="\(\overline{xH}\)">\(\overline{xH}\)</span>; because <span class="math" data-tex="\(x,y\)">\(x,y\)</span> commute with <span class="math" data-tex="\(u\)">\(u\)</span>, both <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(uvu^*\)">\(uvu^*\)</span> have the prescribed properties. Thus <span class="math" data-tex="\(v\)">\(v\)</span> commutes with every unitary of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Every element of a unital C*-algebra is a linear combination of unitaries: a self-adjoint contraction <span class="math" data-tex="\(b\)">\(b\)</span> is the real part of <span class="math" data-tex="\(b+i(1-b^2)^{1/2}\)">\(b+i(1-b^2)^{1/2}\)</span>. Consequently <span class="math" data-tex="\(v\in M&#x27;&#x27;=M\)">\(v\in M&#x27;&#x27;=M\)</span>. The square root is supplied by BK-01 and the bicommutant identity by BK-02, both with complete preceding proofs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> put <span class="math" data-tex="\(d=a+b\)">\(d=a+b\)</span> and <span class="math" data-tex="\(p=s(d)\)">\(p=s(d)\)</span>, the projection onto <span class="math" data-tex="\(\overline{dH}\)">\(\overline{dH}\)</span>. Applying the lemma to <span class="math" data-tex="\(a^{1/2},d^{1/2}\)">\(a^{1/2},d^{1/2}\)</span> and <span class="math" data-tex="\(b^{1/2},d^{1/2}\)">\(b^{1/2},d^{1/2}\)</span> gives contractions <span class="math" data-tex="\(v,w\in M\)">\(v,w\in M\)</span> with</p>
+<span class="math math-display" data-tex="\[
+a^{1/2}=vd^{1/2},\quad b^{1/2}=wd^{1/2},\quad v=vp,\quad w=wp,\quad v^*v+w^*w=p.
+\]">\[
+a^{1/2}=vd^{1/2},\quad b^{1/2}=wd^{1/2},\quad v=vp,\quad w=wp,\quad v^*v+w^*w=p.
+\]</span>
+<p>To verify the last identity, its quadratic form agrees with that of <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(d^{1/2}H\)">\(d^{1/2}H\)</span>, by <span class="math" data-tex="\(a+b=d\)">\(a+b=d\)</span>; continuity extends the equality to <span class="math" data-tex="\(pH\)">\(pH\)</span>. Both sides vanish on <span class="math" data-tex="\((1-p)H\)">\((1-p)H\)</span>. This argument needs neither an inverse of <span class="math" data-tex="\(d\)">\(d\)</span> nor a positive lower bound for it.</p>
+<h2 id="the-commutant-correspondence"><span id="oa-mod-dw-03"></span><span id="OA-MOD-DW-03"></span>The commutant correspondence</h2>
+<p><strong>Theorem.</strong> There is an additive, positively homogeneous order isomorphism</p>
+<span class="math math-display" data-tex="\[
+\pi_\varphi(M)&#x27;_+\longleftrightarrow\mathcal D_\varphi,\qquad T\longmapsto\ell_T,
+\]">\[
+\pi_\varphi(M)&#x27;_+\longleftrightarrow\mathcal D_\varphi,\qquad T\longmapsto\ell_T,
+\]</span>
+<p>uniquely characterized by</p>
+<span class="math math-display" data-tex="\[
+\ell_T(y^*x)=\langle T\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+\quad(x,y\in\mathfrak n_\varphi).
+\]">\[
+\ell_T(y^*x)=\langle T\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+\quad(x,y\in\mathfrak n_\varphi).
+\]</span>
+<p>Moreover <span class="math" data-tex="\(T\leq cI\)">\(T\leq cI\)</span> if and only if <span class="math" data-tex="\(\ell_T\leq c\varphi\)">\(\ell_T\leq c\varphi\)</span> on <span class="math" data-tex="\(\mathfrak m_\varphi^+\)">\(\mathfrak m_\varphi^+\)</span>. Thus the least admissible comparison constant is <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>. The assertion includes the zero Hilbert space, where both cones consist only of zero.</p>
+<p><strong>Proof, from forms to operators.</strong> For <span class="math" data-tex="\(\ell\in\mathcal D_\varphi\)">\(\ell\in\mathcal D_\varphi\)</span>, positivity applied to <span class="math" data-tex="\((x+zy)^*(x+zy)\)">\((x+zy)^*(x+zy)\)</span>, for every <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|\ell(y^*x)|^2\leq\ell(x^*x)\ell(y^*y)
+\leq c^2\|\Lambda_\varphi(x)\|^2\|\Lambda_\varphi(y)\|^2.
+\]">\[
+|\ell(y^*x)|^2\leq\ell(x^*x)\ell(y^*y)
+\leq c^2\|\Lambda_\varphi(x)\|^2\|\Lambda_\varphi(y)\|^2.
+\]</span>
+<p>For completeness, when <span class="math" data-tex="\(\ell(y^*y)&gt;0\)">\(\ell(y^*y)&gt;0\)</span>, minimize this quadratic polynomial in <span class="math" data-tex="\(z\)">\(z\)</span>; when that diagonal term is zero, varying the magnitude and phase of <span class="math" data-tex="\(z\)">\(z\)</span> forces the cross term to vanish. The inequality shows that the expression is independent of null representatives and defines a bounded sesquilinear form on <span class="math" data-tex="\(\Lambda_\varphi(\mathfrak n_\varphi)\)">\(\Lambda_\varphi(\mathfrak n_\varphi)\)</span>. It extends uniquely to <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. The Hilbert-space representation theorem for bounded sesquilinear forms gives a unique positive operator <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(0\leq T\leq cI\)">\(0\leq T\leq cI\)</span>.</p>
+<p>For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span> and <span class="math" data-tex="\(x,y\in\mathfrak n_\varphi\)">\(x,y\in\mathfrak n_\varphi\)</span>, associativity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle T\pi_\varphi(a)\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+&amp;=\ell(y^*ax)\\
+&amp;=\langle T\Lambda_\varphi(x),\pi_\varphi(a^*)\Lambda_\varphi(y)\rangle\\
+&amp;=\langle\pi_\varphi(a)T\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle T\pi_\varphi(a)\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle
+&amp;=\ell(y^*ax)\\
+&amp;=\langle T\Lambda_\varphi(x),\pi_\varphi(a^*)\Lambda_\varphi(y)\rangle\\
+&amp;=\langle\pi_\varphi(a)T\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle.
+\end{aligned}
+\]</span>
+<p>The test vectors form a dense subspace, so <span class="math" data-tex="\(T\pi_\varphi(a)=\pi_\varphi(a)T\)">\(T\pi_\varphi(a)=\pi_\varphi(a)T\)</span>. This proves membership in the commutant without any appeal to a modular group.</p>
+<p><strong>Proof, from operators to forms.</strong> Fix <span class="math" data-tex="\(T\in\pi_\varphi(M)&#x27;_+\)">\(T\in\pi_\varphi(M)&#x27;_+\)</span>. For finite-weight positive <span class="math" data-tex="\(a\)">\(a\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+f_T(a)=\langle T\Lambda_\varphi(a^{1/2}),\Lambda_\varphi(a^{1/2})\rangle.
+\]">\[
+f_T(a)=\langle T\Lambda_\varphi(a^{1/2}),\Lambda_\varphi(a^{1/2})\rangle.
+\]</span>
+<p>We must prove additivity; merely writing a formula on products would not prove independence of their decompositions. Let <span class="math" data-tex="\(a,b\in\mathfrak m_\varphi^+\)">\(a,b\in\mathfrak m_\varphi^+\)</span>, and use <span class="math" data-tex="\(d,p,v,w\)">\(d,p,v,w\)</span> from OA-MOD-DW-02. Here <span class="math" data-tex="\(d^{1/2}\in\mathfrak n_\varphi\)">\(d^{1/2}\in\mathfrak n_\varphi\)</span>. Put <span class="math" data-tex="\(\zeta=\Lambda_\varphi(d^{1/2})\)">\(\zeta=\Lambda_\varphi(d^{1/2})\)</span>. Then <span class="math" data-tex="\(\pi_\varphi(p)\zeta=\zeta\)">\(\pi_\varphi(p)\zeta=\zeta\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f_T(a)+f_T(b)
+&amp;=\langle T\pi_\varphi(v)\zeta,\pi_\varphi(v)\zeta\rangle
++\langle T\pi_\varphi(w)\zeta,\pi_\varphi(w)\zeta\rangle\\
+&amp;=\langle T\zeta,\pi_\varphi(v^*v+w^*w)\zeta\rangle
+=f_T(d).
+\end{aligned}
+\]">\[
+\begin{aligned}
+f_T(a)+f_T(b)
+&amp;=\langle T\pi_\varphi(v)\zeta,\pi_\varphi(v)\zeta\rangle
++\langle T\pi_\varphi(w)\zeta,\pi_\varphi(w)\zeta\rangle\\
+&amp;=\langle T\zeta,\pi_\varphi(v^*v+w^*w)\zeta\rangle
+=f_T(d).
+\end{aligned}
+\]</span>
+<p>Homogeneity follows from the square root of a scalar. Thus <span class="math" data-tex="\(f_T\)">\(f_T\)</span> extends to a real linear form on <span class="math" data-tex="\(\mathfrak m_{\varphi,\mathrm{sa}}\)">\(\mathfrak m_{\varphi,\mathrm{sa}}\)</span>: assign <span class="math" data-tex="\(f_T(a)-f_T(b)\)">\(f_T(a)-f_T(b)\)</span> to <span class="math" data-tex="\(a-b\)">\(a-b\)</span>. If <span class="math" data-tex="\(a-b=a&#x27;-b&#x27;\)">\(a-b=a&#x27;-b&#x27;\)</span>, the equality <span class="math" data-tex="\(a+b&#x27;=a&#x27;+b\)">\(a+b&#x27;=a&#x27;+b\)</span> and additivity prove independence. Complexification gives a positive linear form <span class="math" data-tex="\(\ell_T\)">\(\ell_T\)</span> on <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>. Also</p>
+<span class="math math-display" data-tex="\[
+0\leq f_T(a)\leq\|T\|\varphi(a).
+\]">\[
+0\leq f_T(a)\leq\|T\|\varphi(a).
+\]</span>
+<p>If <span class="math" data-tex="\(x\in\mathfrak n_\varphi\)">\(x\in\mathfrak n_\varphi\)</span>, take its polar decomposition <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Then <span class="math" data-tex="\(\Lambda_\varphi(x)=\pi_\varphi(u)\Lambda_\varphi(|x|)\)">\(\Lambda_\varphi(x)=\pi_\varphi(u)\Lambda_\varphi(|x|)\)</span>, and <span class="math" data-tex="\(u^*u\)">\(u^*u\)</span> fixes <span class="math" data-tex="\(|x|\)">\(|x|\)</span>. Commutation with <span class="math" data-tex="\(T\)">\(T\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\langle T\Lambda_\varphi(x),\Lambda_\varphi(x)\rangle=f_T(x^*x).
+\]">\[
+\langle T\Lambda_\varphi(x),\Lambda_\varphi(x)\rangle=f_T(x^*x).
+\]</span>
+<p>Polarization now proves the formula for <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>. Uniqueness holds because these products span <span class="math" data-tex="\(\mathfrak m_\varphi\)">\(\mathfrak m_\varphi\)</span>, and their GNS vectors are dense. The two constructions are inverse. Addition and scalar multiplication follow from the defining pairings. Finally positivity of <span class="math" data-tex="\(\ell_{T_2}-\ell_{T_1}\)">\(\ell_{T_2}-\ell_{T_1}\)</span> is equivalent to nonnegativity of the quadratic form of <span class="math" data-tex="\(T_2-T_1\)">\(T_2-T_1\)</span> on a dense subspace, hence on all of <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. Apply this to <span class="math" data-tex="\(cI-T\)">\(cI-T\)</span> to obtain the bound and the optimal constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="comparing-two-weights-and-the-precise-target-space"><span id="oa-mod-dw-04"></span><span id="OA-MOD-DW-04"></span>Comparing two weights and the precise target space</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be another weight on <span class="math" data-tex="\(M\)">\(M\)</span>, with <span class="math" data-tex="\(\psi\leq c\varphi\)">\(\psi\leq c\varphi\)</span> on <span class="math" data-tex="\(M_+\)">\(M_+\)</span> for a finite <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. There is a unique bounded map</p>
+<span class="math math-display" data-tex="\[
+C_{\psi\mid\varphi}:H_\varphi\longrightarrow H_\psi,
+\qquad C_{\psi\mid\varphi}\Lambda_\varphi(x)=\Lambda_\psi(x)
+\quad(x\in\mathfrak n_\varphi),
+\]">\[
+C_{\psi\mid\varphi}:H_\varphi\longrightarrow H_\psi,
+\qquad C_{\psi\mid\varphi}\Lambda_\varphi(x)=\Lambda_\psi(x)
+\quad(x\in\mathfrak n_\varphi),
+\]</span>
+<p>with norm at most <span class="math" data-tex="\(\sqrt c\)">\(\sqrt c\)</span>. It intertwines the representations, and</p>
+<span class="math math-display" data-tex="\[
+T_{\psi\mid\varphi}=C_{\psi\mid\varphi}^*C_{\psi\mid\varphi}\in\pi_\varphi(M)&#x27;_+,
+\quad
+\psi(y^*x)=\langle T_{\psi\mid\varphi}\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle.
+\]">\[
+T_{\psi\mid\varphi}=C_{\psi\mid\varphi}^*C_{\psi\mid\varphi}\in\pi_\varphi(M)&#x27;_+,
+\quad
+\psi(y^*x)=\langle T_{\psi\mid\varphi}\Lambda_\varphi(x),\Lambda_\varphi(y)\rangle.
+\]</span>
+<p>The range closure is exactly
+<span class="math" data-tex="\(K=\overline{\Lambda_\psi(\mathfrak n_\varphi)}\subseteq H_\psi\)">\(K=\overline{\Lambda_\psi(\mathfrak n_\varphi)}\subseteq H_\psi\)</span>.
+If <span class="math" data-tex="\(C=UT^{1/2}\)">\(C=UT^{1/2}\)</span> is its polar decomposition, then <span class="math" data-tex="\(U\)">\(U\)</span> is a unitary from <span class="math" data-tex="\(s(T)H_\varphi\)">\(s(T)H_\varphi\)</span> onto <span class="math" data-tex="\(K\)">\(K\)</span>, and is zero on <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span>. These two subspaces reduce the corresponding representations, and <span class="math" data-tex="\(U\)">\(U\)</span> intertwines their restrictions.</p>
+<p><strong>Proof.</strong> Domination gives <span class="math" data-tex="\(\mathfrak n_\varphi\subseteq\mathfrak n_\psi\)">\(\mathfrak n_\varphi\subseteq\mathfrak n_\psi\)</span> and
+<span class="math" data-tex="\(\|\Lambda_\psi(x)\|^2\leq c\|\Lambda_\varphi(x)\|^2\)">\(\|\Lambda_\psi(x)\|^2\leq c\|\Lambda_\varphi(x)\|^2\)</span>. Consequently the displayed assignment is well defined even for nonfaithful weights and extends from a dense domain. Its range closure is <span class="math" data-tex="\(K\)">\(K\)</span> by construction. On the dense GNS domain,</p>
+<span class="math math-display" data-tex="\[
+C\pi_\varphi(a)\Lambda_\varphi(x)
+=\Lambda_\psi(ax)=\pi_\psi(a)C\Lambda_\varphi(x).
+\]">\[
+C\pi_\varphi(a)\Lambda_\varphi(x)
+=\Lambda_\psi(ax)=\pi_\psi(a)C\Lambda_\varphi(x).
+\]</span>
+<p>Boundedness extends this identity to all vectors. Taking adjoints and using the identity for <span class="math" data-tex="\(a^*\)">\(a^*\)</span> shows that <span class="math" data-tex="\(C^*\)">\(C^*\)</span> intertwines in the reverse direction, so <span class="math" data-tex="\(C^*C\)">\(C^*C\)</span> commutes with <span class="math" data-tex="\(\pi_\varphi(M)\)">\(\pi_\varphi(M)\)</span>. The pairing formula is immediate. It agrees with OA-MOD-DW-03 applied to <span class="math" data-tex="\(\psi|_{\mathfrak m_\varphi}\)">\(\psi|_{\mathfrak m_\varphi}\)</span>.</p>
+<p>Here the polar map can be constructed without assuming a theorem for operators between different spaces. Put <span class="math" data-tex="\(A=(C^*C)^{1/2}\)">\(A=(C^*C)^{1/2}\)</span> on <span class="math" data-tex="\(H_\varphi\)">\(H_\varphi\)</span>. On its range define <span class="math" data-tex="\(U(A\xi)=C\xi\)">\(U(A\xi)=C\xi\)</span>. The equality <span class="math" data-tex="\(\|A\xi\|^2=\langle C^*C\xi,\xi\rangle=\|C\xi\|^2\)">\(\|A\xi\|^2=\langle C^*C\xi,\xi\rangle=\|C\xi\|^2\)</span> proves both well-definedness and isometry. Extend to <span class="math" data-tex="\(\overline{\operatorname{ran}A}=(\ker A)^\perp=s(T)H_\varphi\)">\(\overline{\operatorname{ran}A}=(\ker A)^\perp=s(T)H_\varphi\)</span>, and set <span class="math" data-tex="\(U=0\)">\(U=0\)</span> on <span class="math" data-tex="\(\ker A=\ker C\)">\(\ker A=\ker C\)</span>. The extension has closed range containing the dense subset <span class="math" data-tex="\(\operatorname{ran}C\)">\(\operatorname{ran}C\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, so its range is precisely <span class="math" data-tex="\(K\)">\(K\)</span>. It is therefore unitary between the two stated closed subspaces, and <span class="math" data-tex="\(C=UA\)">\(C=UA\)</span>. Agreement on <span class="math" data-tex="\(\operatorname{ran}A\)">\(\operatorname{ran}A\)</span>, together with zero on its orthogonal complement, proves uniqueness.</p>
+<p>The closed subspaces <span class="math" data-tex="\(\ker C\)">\(\ker C\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span> are invariant under the representations and their adjoints. Therefore their orthogonal projections commute with these representations. Since <span class="math" data-tex="\(T^{1/2}\)">\(T^{1/2}\)</span> also commutes with <span class="math" data-tex="\(\pi_\varphi(M)\)">\(\pi_\varphi(M)\)</span>, the equality
+<span class="math" data-tex="\(U\pi_\varphi(a)T^{1/2}\xi=\pi_\psi(a)UT^{1/2}\xi\)">\(U\pi_\varphi(a)T^{1/2}\xi=\pi_\psi(a)UT^{1/2}\xi\)</span>
+holds first on <span class="math" data-tex="\(\operatorname{ran}T^{1/2}\)">\(\operatorname{ran}T^{1/2}\)</span>, and then by continuity on its closure <span class="math" data-tex="\(s(T)H_\varphi\)">\(s(T)H_\varphi\)</span>. Both sides vanish on its orthogonal complement. The initial and final subspaces of a polar decomposition give the claimed unitary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Do not replace <span class="math" data-tex="\(K\)">\(K\)</span> by <span class="math" data-tex="\(H_\psi\)">\(H_\psi\)</span> in this level of generality. If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is zero at zero and infinite at every nonzero positive element, then <span class="math" data-tex="\(\mathfrak n_\varphi=\{0\}\)">\(\mathfrak n_\varphi=\{0\}\)</span>, while every weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> satisfies <span class="math" data-tex="\(\psi\leq\varphi\)">\(\psi\leq\varphi\)</span>. The comparison map is zero even when <span class="math" data-tex="\(H_\psi\neq0\)">\(H_\psi\neq0\)</span>. This also shows why restriction to a finite domain need not determine the whole weight.</p>
+<h2 id="increasing-comparisons-and-their-topology">Increasing comparisons and their topology</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="\((\ell_i)\)">\((\ell_i)\)</span> be an increasing net in <span class="math" data-tex="\(\mathcal D_\varphi\)">\(\mathcal D_\varphi\)</span>, all bounded above by <span class="math" data-tex="\(c\varphi\)">\(c\varphi\)</span> on <span class="math" data-tex="\(\mathfrak m_\varphi^+\)">\(\mathfrak m_\varphi^+\)</span>, and let <span class="math" data-tex="\(T_i\)">\(T_i\)</span> be their corresponding operators. There is <span class="math" data-tex="\(T\in\pi_\varphi(M)&#x27;_+\)">\(T\in\pi_\varphi(M)&#x27;_+\)</span> such that <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span> strongly. Its form satisfies</p>
+<span class="math math-display" data-tex="\[
+\ell_T(a)=\sup_i\ell_i(a)\quad(a\in\mathfrak m_\varphi^+),\qquad
+\ell_i(y^*x)\longrightarrow\ell_T(y^*x).
+\]">\[
+\ell_T(a)=\sup_i\ell_i(a)\quad(a\in\mathfrak m_\varphi^+),\qquad
+\ell_i(y^*x)\longrightarrow\ell_T(y^*x).
+\]</span>
+<p><strong>Proof.</strong> We have <span class="math" data-tex="\(0\leq T_i\leq T_j\leq cI\)">\(0\leq T_i\leq T_j\leq cI\)</span> when <span class="math" data-tex="\(i\leq j\)">\(i\leq j\)</span>. The increasing scalar nets <span class="math" data-tex="\(\langle T_i\xi,\xi\rangle\)">\(\langle T_i\xi,\xi\rangle\)</span> have finite limits. Polarization defines a bounded positive sesquilinear form with these diagonal values, hence an operator <span class="math" data-tex="\(T\)">\(T\)</span>, with <span class="math" data-tex="\(T-T_i\geq0\)">\(T-T_i\geq0\)</span> and <span class="math" data-tex="\(T\leq cI\)">\(T\leq cI\)</span>. Functional calculus gives</p>
+<span class="math math-display" data-tex="\[
+\|(T-T_i)\xi\|^2\leq c\langle(T-T_i)\xi,\xi\rangle\longrightarrow0.
+\]">\[
+\|(T-T_i)\xi\|^2\leq c\langle(T-T_i)\xi,\xi\rangle\longrightarrow0.
+\]</span>
+<p>Thus convergence is strong. Taking strong limits in <span class="math" data-tex="\(T_i\pi_\varphi(a)=\pi_\varphi(a)T_i\)">\(T_i\pi_\varphi(a)=\pi_\varphi(a)T_i\)</span> proves commutation. The defining pairings, with <span class="math" data-tex="\(x=a^{1/2}\)">\(x=a^{1/2}\)</span> for positive <span class="math" data-tex="\(a\)">\(a\)</span>, prove the assertions. In general this is not convergence in operator norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="an-example-beyond-countable-measure-models">An example beyond countable measure models</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any set, possibly uncountable, and <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\varphi(a)=\sum_{i\in I}a_i:=\sup_{F\subset I\text{ finite}}\sum_{i\in F}a_i
+\quad(a\geq0).
+\]">\[
+\varphi(a)=\sum_{i\in I}a_i:=\sup_{F\subset I\text{ finite}}\sum_{i\in F}a_i
+\quad(a\geq0).
+\]</span>
+<p>This is a concrete von Neumann algebra in its multiplication representation on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>: commuting with all coordinate projections forces a bounded operator to be diagonal, and bounded diagonal operators are exactly these multipliers. Thus <span class="math" data-tex="\(M&#x27;=M\)">\(M&#x27;=M\)</span>. The finite-support density needed in that argument was proved in WG-001.</p>
+<p>This weight is faithful. It is normal: for an increasing bounded net <span class="math" data-tex="\(a_\alpha\uparrow a\)">\(a_\alpha\uparrow a\)</span>, a finite sum commutes with the increasing supremum, and the two suprema over <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> commute. It is semifinite: <span class="math" data-tex="\(a1_F\uparrow a\)">\(a1_F\uparrow a\)</span>, and each <span class="math" data-tex="\(a1_F\)">\(a1_F\)</span> has finite weight. Its GNS space is <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>, with the multiplication representation and <span class="math" data-tex="\(\Lambda_\varphi(x)=x\)">\(\Lambda_\varphi(x)=x\)</span> for <span class="math" data-tex="\(x\in\ell^2(I)\cap\ell^\infty(I)\)">\(x\in\ell^2(I)\cap\ell^\infty(I)\)</span>. Finite-support vectors prove density. There is no countability condition on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>For any family <span class="math" data-tex="\(0\leq r_i\leq c\)">\(0\leq r_i\leq c\)</span>, the normal semifinite weight <span class="math" data-tex="\(\psi(a)=\sum_i r_i a_i\)">\(\psi(a)=\sum_i r_i a_i\)</span> satisfies <span class="math" data-tex="\(\psi\leq c\varphi\)">\(\psi\leq c\varphi\)</span>. Under the isometry from <span class="math" data-tex="\(H_\psi\)">\(H_\psi\)</span> to <span class="math" data-tex="\(\ell^2(\{i:r_i&gt;0\})\)">\(\ell^2(\{i:r_i&gt;0\})\)</span> induced by <span class="math" data-tex="\(x\mapsto(\sqrt{r_i}x_i)_i\)">\(x\mapsto(\sqrt{r_i}x_i)_i\)</span>, the comparison map is multiplication by <span class="math" data-tex="\(\sqrt r\)">\(\sqrt r\)</span>, and <span class="math" data-tex="\(T_{\psi\mid\varphi}\)">\(T_{\psi\mid\varphi}\)</span> is multiplication by <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>. Zero coordinates of <span class="math" data-tex="\(r\)">\(r\)</span> give its kernel. The semifiniteness and normality proofs are the same finite-subset argument, and faithfulness holds exactly when every <span class="math" data-tex="\(r_i&gt;0\)">\(r_i&gt;0\)</span>.</p>
+<p>Taking <span class="math" data-tex="\(r\equiv1\)">\(r\equiv1\)</span> on an uncountable <span class="math" data-tex="\(I\)">\(I\)</span> makes clear why this is weight theory rather than a hidden faithful-state construction. Indeed every positive normal functional on <span class="math" data-tex="\(\ell^\infty(I)\)">\(\ell^\infty(I)\)</span> has summable coordinate masses and hence at most countably many nonzero masses; it cannot be faithful when <span class="math" data-tex="\(I\)">\(I\)</span> is uncountable. To see the assertion directly, apply normality to the increasing finite coordinate projections and bound the number of masses at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>.</p>
+<p><strong>A nonzero comparison with a proper target.</strong> On <span class="math" data-tex="\(M=\mathbb C^2\)">\(M=\mathbb C^2\)</span>, write positive elements as <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> with <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\varphi(a,b)=
+\begin{cases}a,&amp;b=0,\\+\infty,&amp;b&gt;0,\end{cases}
+\qquad \psi(a,b)=a+b.
+\tag{DW.1}
+\]">\[
+\varphi(a,b)=
+\begin{cases}a,&amp;b=0,\\+\infty,&amp;b&gt;0,\end{cases}
+\qquad \psi(a,b)=a+b.
+\tag{DW.1}
+\]</span>
+<p>Each is a weight: a sum has second coordinate zero exactly when both summands do, and positive homogeneity follows with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. We have <span class="math" data-tex="\(\psi\le\varphi\)">\(\psi\le\varphi\)</span>. The finite left ideals are <span class="math" data-tex="\(\mathfrak n_\varphi=\mathbb C(1,0)\)">\(\mathfrak n_\varphi=\mathbb C(1,0)\)</span> and <span class="math" data-tex="\(\mathfrak n_\psi=\mathbb C^2\)">\(\mathfrak n_\psi=\mathbb C^2\)</span>, with zero null ideals. Their inner products give <span class="math" data-tex="\(H_\varphi=\mathbb C\)">\(H_\varphi=\mathbb C\)</span>, <span class="math" data-tex="\(H_\psi=\mathbb C^2\)">\(H_\psi=\mathbb C^2\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+Cz=(z,0),\qquad C^*(u,v)=u,\qquad
+T=C^*C=I_{\mathbb C},\qquad
+K=\mathbb C(1,0)\subsetneq\mathbb C^2.
+\tag{DW.2}
+\]">\[
+Cz=(z,0),\qquad C^*(u,v)=u,\qquad
+T=C^*C=I_{\mathbb C},\qquad
+K=\mathbb C(1,0)\subsetneq\mathbb C^2.
+\tag{DW.2}
+\]</span>
+<p>Thus even an injective comparison with <span class="math" data-tex="\(T=I\)">\(T=I\)</span> need not cover the target GNS space. Here <span class="math" data-tex="\(U=C\)">\(U=C\)</span>, and <span class="math" data-tex="\(CC^*\)">\(CC^*\)</span> is projection onto <span class="math" data-tex="\(K\)">\(K\)</span>. Both weights are faithful and normal: for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, if an increasing positive net has positive second-coordinate supremum, some term already has positive second coordinate; otherwise the weight is its first coordinate. Finite-domain density fails for <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, since its finite linear domain is the proper closed first-coordinate ideal. This isolates the missing semifiniteness without a zero source Hilbert space.</p>
+<figure><img src="assets/dominated-weight-range.png" alt="An isometric comparison can have a proper target range" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>The first panel shows the finite positive cone of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> in (DW.1). The second shows the real coordinate slice of <span class="math" data-tex="\(H_\psi=\mathbb C^2\)">\(H_\psi=\mathbb C^2\)</span>; its horizontal line is the real slice of <span class="math" data-tex="\(K\)">\(K\)</span>. The complex-linear maps are exactly (DW.2), not merely their drawing. Projection sends <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> to <span class="math" data-tex="\((u,0)\)">\((u,0)\)</span>, while the comparison reaches only <span class="math" data-tex="\(K\)">\(K\)</span>. The proof above, together with DW-04, establishes these identities. Reproduce the figure.</p>
+<h2 id="problems-and-worked-solutions">Problems and worked solutions</h2>
+<p><strong>Problem 1.</strong> If <span class="math" data-tex="\(\psi\leq c\varphi\)">\(\psi\leq c\varphi\)</span> and <span class="math" data-tex="\(\chi\leq d\psi\)">\(\chi\leq d\psi\)</span>, prove a chain rule for the comparison maps. Decide whether it gives the product of two positive derivatives.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(\Lambda_\varphi(\mathfrak n_\varphi)\)">\(\Lambda_\varphi(\mathfrak n_\varphi)\)</span>, the composite <span class="math" data-tex="\(C_{\chi\mid\psi}C_{\psi\mid\varphi}\)">\(C_{\chi\mid\psi}C_{\psi\mid\varphi}\)</span> sends <span class="math" data-tex="\(\Lambda_\varphi(x)\)">\(\Lambda_\varphi(x)\)</span> to <span class="math" data-tex="\(\Lambda_\chi(x)\)">\(\Lambda_\chi(x)\)</span>; all expressions are defined by the nested finite domains. Density and boundedness give</p>
+<span class="math math-display" data-tex="\[
+C_{\chi\mid\varphi}=C_{\chi\mid\psi}C_{\psi\mid\varphi},\qquad
+T_{\chi\mid\varphi}=C_{\psi\mid\varphi}^*T_{\chi\mid\psi}C_{\psi\mid\varphi}.
+\]">\[
+C_{\chi\mid\varphi}=C_{\chi\mid\psi}C_{\psi\mid\varphi},\qquad
+T_{\chi\mid\varphi}=C_{\psi\mid\varphi}^*T_{\chi\mid\psi}C_{\psi\mid\varphi}.
+\]</span>
+<p>The second identity is a compression between different Hilbert spaces. The bare product <span class="math" data-tex="\(T_{\chi\mid\psi}T_{\psi\mid\varphi}\)">\(T_{\chi\mid\psi}T_{\psi\mid\varphi}\)</span> is generally not even typed.</p>
+<p><strong>Problem 2.</strong> Give an increasing sequence of dominated forms whose operators converge strongly but not in norm.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-tex="\(M=\ell^\infty(\mathbb N)\)">\(M=\ell^\infty(\mathbb N)\)</span> and counting weight. Let <span class="math" data-tex="\(\psi_n(a)=\sum_{i\leq n}a_i\)">\(\psi_n(a)=\sum_{i\leq n}a_i\)</span>. The derivative is the coordinate projection <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. For <span class="math" data-tex="\(\xi\in\ell^2\)">\(\xi\in\ell^2\)</span>, <span class="math" data-tex="\(\|(I-P_n)\xi\|^2=\sum_{i&gt;n}|\xi_i|^2\to0\)">\(\|(I-P_n)\xi\|^2=\sum_{i&gt;n}|\xi_i|^2\to0\)</span>, but <span class="math" data-tex="\(\|I-P_n\|=1\)">\(\|I-P_n\|=1\)</span>. On the finite domain the forms increase to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p><strong>Problem 3.</strong> In the same model let <span class="math" data-tex="\(\psi(a)=\sum_{i\geq1}i\,a_i\)">\(\psi(a)=\sum_{i\geq1}i\,a_i\)</span>. Show precisely where the bounded construction fails and identify its closed unbounded comparison map.</p>
+<p><strong>Solution.</strong> A coordinate test gives <span class="math" data-tex="\(\psi(e_i)=i\)">\(\psi(e_i)=i\)</span> and <span class="math" data-tex="\(\varphi(e_i)=1\)">\(\varphi(e_i)=1\)</span>, so no finite comparison constant exists. In the common <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> realization the comparison map is multiplication by <span class="math" data-tex="\(\sqrt i\)">\(\sqrt i\)</span>, with maximal domain <span class="math" data-tex="\(D(C)=\{\xi:\sum_i i|\xi_i|^2&lt;\infty\}\)">\(D(C)=\{\xi:\sum_i i|\xi_i|^2&lt;\infty\}\)</span>. If <span class="math" data-tex="\(\xi_n\to\xi\)">\(\xi_n\to\xi\)</span> and <span class="math" data-tex="\(C\xi_n\to\eta\)">\(C\xi_n\to\eta\)</span> in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, coordinate convergence gives <span class="math" data-tex="\(\eta_i=\sqrt i\,\xi_i\)">\(\eta_i=\sqrt i\,\xi_i\)</span>; hence <span class="math" data-tex="\(\xi\in D(C)\)">\(\xi\in D(C)\)</span> and <span class="math" data-tex="\(C\xi=\eta\)">\(C\xi=\eta\)</span>. Thus it is closed. Finite truncations converge in the graph norm, so they form a core. The associated positive operator is multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>, with domain <span class="math" data-tex="\(\{\xi:\sum_i i^2|\xi_i|^2&lt;\infty\}\)">\(\{\xi:\sum_i i^2|\xi_i|^2&lt;\infty\}\)</span>. This verifies the unbounded model only; a general spatial-derivative existence theorem requires additional work.</p>
+<p>To check the operator-domain assertion in Problem 3 directly, testing the adjoint against each coordinate vector forces <span class="math" data-tex="\(C^*\eta\)">\(C^*\eta\)</span> to have coordinates <span class="math" data-tex="\(\sqrt{i}\eta_i\)">\(\sqrt{i}\eta_i\)</span>. Such a vector lies in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> exactly when <span class="math" data-tex="\(\sum_i i|\eta_i|^2&lt;\infty\)">\(\sum_i i|\eta_i|^2&lt;\infty\)</span>; conversely Cauchy–Schwarz verifies the adjoint pairing on that domain. Thus <span class="math" data-tex="\(C^*=C\)">\(C^*=C\)</span>. The composition requires both <span class="math" data-tex="\(\xi\in D(C)\)">\(\xi\in D(C)\)</span> and <span class="math" data-tex="\(C\xi\in D(C)\)">\(C\xi\in D(C)\)</span>, which gives precisely <span class="math" data-tex="\(\sum_i i^2|\xi_i|^2&lt;\infty\)">\(\sum_i i^2|\xi_i|^2&lt;\infty\)</span>. Repeating the same coordinate adjoint test for the multiplier <span class="math" data-tex="\(i\)">\(i\)</span> proves its self-adjointness; its quadratic pairing is nonnegative. No general unbounded-operator product theorem is being assumed.</p>
+<h2 id="what-has-been-established-and-what-is-next">What has been established, and what is next</h2>
+<p>The bounded form correspondence, the weight comparison map with its exact range, and monotone strong convergence have complete proofs above. No hypothesis of sigma-finiteness, separability, normality, semifiniteness, or faithfulness was inserted into those three statements. Normality and semifiniteness were proved for the worked model separately.</p>
+<p>The symbol <span class="math" data-tex="\(T_{\psi\mid\varphi}\)">\(T_{\psi\mid\varphi}\)</span> here denotes a positive operator in the commutant of a particular GNS representation. It is not the Connes cocycle <span class="math" data-tex="\([D\psi:D\varphi]_t\)">\([D\psi:D\varphi]_t\)</span>, and no centralizer membership or modular covariance is asserted. To reach general relative modular theory the course still owes: common-domain and closability theorems, natural-cone implementation, spatial quadratic forms and their represented operators, modular covariance with the exact analytic domain, and the unbounded weight cocycle identities. These are retained in the curriculum and coverage ledger, not counted as consequences of bounded domination.</p>
+<p><strong>Free source comparisons.</strong> Brent Nelson, <a href="https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf"><em>Tomita–Takesaki Theory</em></a>, Lemma 3.6(i–ii), printed pp. 20–21, proves the bounded factorization in the algebra and the support identity for a sum of squares. Lemma 3.8, p. 22, uses that identity to prove positive-cone additivity for a commutant pairing. DW-02–03 provides those arguments and the scalar order correspondence in full. The statement here is deliberately on the finite algebraic domain of an arbitrary weight. It does not identify every such form with a bounded normal functional on the whole algebra, and it does not import the source's larger completely positive map or normal-weight characterization. The target-space polar map, arbitrary-index models and exact maximal domains are proved directly above.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Weights and semicyclic representations: the exact opening package</span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-BK.html">A bounded-operator kernel for weight arguments →</a></span></nav>
+<p class="small source-link"><a href="src/dominated-weight-forms.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

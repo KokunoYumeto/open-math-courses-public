@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lubin–Tate division fields · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/lubin-tate-division-fields.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (3)</summary><ul><li><a href="formal-groups-and-lubin-tate-modules.html">Formal groups and Lubin–Tate modules</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04">Extensions of complete valued fields</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a></li></ul></details>
+<article class="lesson">
+<h1 id="lubin-tate-division-fields">Lubin–Tate division fields</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>A Lubin–Tate formal module gives a way to divide by a uniformizer. The points killed by <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span> form one cyclic module over <span class="math" data-tex="\(\mathcal O_K/\pi^n\)">\(\mathcal O_K/\pi^n\)</span>. Its generators generate a field, and the units of that quotient act as every automorphism of the field. We prove these assertions by counting polynomial roots and applying Eisenstein's criterion.</p>
+<p>Fix a nonarchimedean local field <span class="math" data-tex="\(K\)">\(K\)</span>, its valuation ring <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and residue field <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Normalize <span class="math" data-tex="\(v_K(\pi)=1\)">\(v_K(\pi)=1\)</span> and extend this valuation to a separable closure <span class="math" data-tex="\(K^s\)">\(K^s\)</span>. For a Lubin–Tate series <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, write <span class="math" data-tex="\(F_f\)">\(F_f\)</span> and <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span> for the formal group and scalar action constructed in <a href="formal-groups-and-lubin-tate-modules.html">Formal groups and Lubin–Tate modules</a>, Theorem 7.3.</p>
+<p>We also use <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-07">Unramified and totally ramified extensions</a>, Theorem 5.1: a root of a monic Eisenstein polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> over a complete discretely valued field generates a totally ramified extension of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and that root is a uniformizer. Finite extensions are complete with the uniquely extended valuation, by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-LOC-04">Extensions of complete valued fields</a>, Theorem 1.2.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-8">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-evaluating-the-formal-module">1. Evaluating the formal module</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\mathfrak m_s=\{x\in K^s:v_K(x)&gt;0\}.
+\]">\[
+\mathfrak m_s=\{x\in K^s:v_K(x)&gt;0\}.
+\]</span>
+Here <span class="math" data-tex="\(0\)">\(0\)</span> has valuation <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. For finitely many elements of <span class="math" data-tex="\(\mathfrak m_s\)">\(\mathfrak m_s\)</span>, choose a finite extension of <span class="math" data-tex="\(K\)">\(K\)</span> containing them. Integral power series converge there, since their terms of degree tending to infinity have valuation tending to infinity. Thus <span class="math" data-tex="\(F_f\)">\(F_f\)</span>, its inverse and every <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span> can be evaluated on <span class="math" data-tex="\(\mathfrak m_s\)">\(\mathfrak m_s\)</span>. This does not require the separable closure itself to be complete.</p>
+<p>The identities proved in lesson 7 give <span class="math" data-tex="\(\mathfrak m_s\)">\(\mathfrak m_s\)</span> an <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-module structure, with addition <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. Define
+<span class="math math-display" data-tex="\[
+T_n(f)=F_f[\pi^n]
+ =\{x\in\mathfrak m_s:f^{\circ n}(x)=0\},\qquad T_0(f)=\{0\}.
+\tag{1}
+\]">\[
+T_n(f)=F_f[\pi^n]
+ =\{x\in\mathfrak m_s:f^{\circ n}(x)=0\},\qquad T_0(f)=\{0\}.
+\tag{1}
+\]</span>
+The superscript <span class="math" data-tex="\(\circ n\)">\(\circ n\)</span> denotes composition, not the <span class="math" data-tex="\(n\)">\(n\)</span>th power of a series. A point is <strong>primitive at level <span class="math" data-tex="\(n\)">\(n\)</span></strong> if it belongs to <span class="math" data-tex="\(T_n(f)\setminus T_{n-1}(f)\)">\(T_n(f)\setminus T_{n-1}(f)\)</span>.</p>
+<p>The particularly useful series
+<span class="math math-display" data-tex="\[
+f_0(X)=\pi X+X^q
+\tag{2}
+\]">\[
+f_0(X)=\pi X+X^q
+\tag{2}
+\]</span>
+is a polynomial. It permits a finite root calculation. For an arbitrary <span class="math" data-tex="\(f\)">\(f\)</span>, Theorem 7.3 supplies an integral isomorphism
+<span class="math math-display" data-tex="\[
+h=[1]_{f,f_0}:F_{f_0}\longrightarrow F_f,\qquad
+h(X)=X+\text{higher terms},\qquad f\circ h=h\circ f_0.
+\tag{3}
+\]">\[
+h=[1]_{f,f_0}:F_{f_0}\longrightarrow F_f,\qquad
+h(X)=X+\text{higher terms},\qquad f\circ h=h\circ f_0.
+\tag{3}
+\]</span>
+Its inverse is integral, and both series can be evaluated in every finite extension on its maximal ideal. Consequently <span class="math" data-tex="\(h\)">\(h\)</span> identifies <span class="math" data-tex="\(T_n(f_0)\)">\(T_n(f_0)\)</span> with <span class="math" data-tex="\(T_n(f)\)">\(T_n(f)\)</span>, including their scalar actions and primitive points.</p>
+<h3 id="proposition-8-1-the-division-module">Proposition 8.1. The division module</h3>
+<p>For each <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, <span class="math" data-tex="\(T_n(f)\)">\(T_n(f)\)</span> has <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements and is a free module of rank one over <span class="math" data-tex="\(\mathcal O/\pi^n\mathcal O\)">\(\mathcal O/\pi^n\mathcal O\)</span>. If <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is any primitive point, the isomorphism is
+<span class="math math-display" data-tex="\[
+\mathcal O/\pi^n\mathcal O\longrightarrow T_n(f),\qquad
+a\longmapsto[a]_f(\lambda).
+\tag{4}
+\]">\[
+\mathcal O/\pi^n\mathcal O\longrightarrow T_n(f),\qquad
+a\longmapsto[a]_f(\lambda).
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> First use <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. The polynomial <span class="math" data-tex="\(f_0^{\circ n}\)">\(f_0^{\circ n}\)</span> is monic of degree <span class="math" data-tex="\(q^n\)">\(q^n\)</span>. All its roots have positive valuation. Indeed, for <span class="math" data-tex="\(v_K(x)&lt;0\)">\(v_K(x)&lt;0\)</span>,
+<span class="math math-display" data-tex="\[
+v_K(f_0(x))=qv_K(x)&lt;0,
+\]">\[
+v_K(f_0(x))=qv_K(x)&lt;0,
+\]</span>
+because the two summands have distinct valuations <span class="math" data-tex="\(1+v_K(x)\)">\(1+v_K(x)\)</span> and <span class="math" data-tex="\(qv_K(x)\)">\(qv_K(x)\)</span>. For <span class="math" data-tex="\(v_K(x)=0\)">\(v_K(x)=0\)</span>, its value likewise has valuation zero. Neither type of point can reach zero under iteration.</p>
+<p>At every point of positive valuation,
+<span class="math math-display" data-tex="\[
+f_0&#x27;(x)=\pi+q x^{q-1}\ne0.
+\tag{5}
+\]">\[
+f_0&#x27;(x)=\pi+q x^{q-1}\ne0.
+\tag{5}
+\]</span>
+In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the second summand is zero. In characteristic zero, <span class="math" data-tex="\(v_K(q)\geq1\)">\(v_K(q)\geq1\)</span>, so that summand has valuation strictly greater than 1, whereas <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has valuation 1. This also gives <span class="math" data-tex="\(f_0&#x27;(0)=\pi\ne0\)">\(f_0&#x27;(0)=\pi\ne0\)</span>. The derivative of the iterate is the product of these nonzero derivatives along the orbit of a root. Thus all <span class="math" data-tex="\(q^n\)">\(q^n\)</span> roots are simple and lie in <span class="math" data-tex="\(K^s\)">\(K^s\)</span>. We have <span class="math" data-tex="\(|T_n(f_0)|=q^n\)">\(|T_n(f_0)|=q^n\)</span>.</p>
+<p>The nesting <span class="math" data-tex="\(T_{n-1}\subset T_n\)">\(T_{n-1}\subset T_n\)</span> is strict, so primitive points exist. Fix one, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The kernel of <span class="math" data-tex="\(a\mapsto[a]_{f_0}(\lambda)\)">\(a\mapsto[a]_{f_0}(\lambda)\)</span> contains <span class="math" data-tex="\(\pi^n\mathcal O\)">\(\pi^n\mathcal O\)</span>. Every nonzero <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span> has the form <span class="math" data-tex="\(\pi^r u\)">\(\pi^r u\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> a unit. The series <span class="math" data-tex="\([u]_{f_0}\)">\([u]_{f_0}\)</span> is an invertible module map. If <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>, then <span class="math" data-tex="\([\pi^r]_{f_0}(\lambda)\ne0\)">\([\pi^r]_{f_0}(\lambda)\ne0\)</span>, since otherwise <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> would be killed by <span class="math" data-tex="\(\pi^{n-1}\)">\(\pi^{n-1}\)</span>. Hence <span class="math" data-tex="\([a]_{f_0}(\lambda)\ne0\)">\([a]_{f_0}(\lambda)\ne0\)</span>. The kernel is exactly <span class="math" data-tex="\(\pi^n\mathcal O\)">\(\pi^n\mathcal O\)</span>.</p>
+<p>The resulting injection from <span class="math" data-tex="\(\mathcal O/\pi^n\mathcal O\)">\(\mathcal O/\pi^n\mathcal O\)</span>, a set of <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements, onto a subset of <span class="math" data-tex="\(T_n(f_0)\)">\(T_n(f_0)\)</span> is a bijection. Finally (3) transports the count and this module isomorphism to every <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the primitive points correspond exactly to the unit classes. Their number is
+<span class="math math-display" data-tex="\[
+D_n=|(\mathcal O/\pi^n\mathcal O)^\times|
+      =(q-1)q^{n-1}.
+\tag{6}
+\]">\[
+D_n=|(\mathcal O/\pi^n\mathcal O)^\times|
+      =(q-1)q^{n-1}.
+\tag{6}
+\]</span></p>
+<h2 id="2-the-field-and-its-automorphisms">2. The field and its automorphisms</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+K_{\pi,n}=K(T_n(f)).
+\tag{7}
+\]">\[
+K_{\pi,n}=K(T_n(f)).
+\tag{7}
+\]</span>
+This notation will be justified by proving independence from <span class="math" data-tex="\(f\)">\(f\)</span>; the uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span> remains part of the notation.</p>
+<h3 id="proposition-8-2-independence-of-the-lubin-tate-series">Proposition 8.2. Independence of the Lubin–Tate series</h3>
+<p>The field in (7) is the same for every <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>. For any primitive <span class="math" data-tex="\(\lambda\in T_n(f)\)">\(\lambda\in T_n(f)\)</span>,
+<span class="math math-display" data-tex="\[
+K_{\pi,n}=K(\lambda).
+\tag{8}
+\]">\[
+K_{\pi,n}=K(\lambda).
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> An integral series with coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>, evaluated at a point of positive valuation in a finite extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, has its value in <span class="math" data-tex="\(L\)">\(L\)</span>, by completeness. Thus (3) maps every point <span class="math" data-tex="\(x\in T_n(f_0)\)">\(x\in T_n(f_0)\)</span> into <span class="math" data-tex="\(K(x)\)">\(K(x)\)</span>. Its integral inverse maps <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span> back into <span class="math" data-tex="\(K(h(x))\)">\(K(h(x))\)</span>. Therefore <span class="math" data-tex="\(K(x)=K(h(x))\)">\(K(x)=K(h(x))\)</span>, and the fields generated by all points are equal.</p>
+<p>By Proposition 8.1, every element of <span class="math" data-tex="\(T_n(f)\)">\(T_n(f)\)</span> is <span class="math" data-tex="\([a]_f(\lambda)\)">\([a]_f(\lambda)\)</span> for some <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span>. These values lie in the complete finite field <span class="math" data-tex="\(K(\lambda)\)">\(K(\lambda)\)</span>. It contains all the points, proving (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\sigma\in\operatorname{Gal}(K^s/K)\)">\(\sigma\in\operatorname{Gal}(K^s/K)\)</span>, then
+<span class="math math-display" data-tex="\[
+\sigma([a]_f(x))=[a]_f(\sigma x),\qquad
+\sigma(F_f(x,y))=F_f(\sigma x,\sigma y).
+\tag{9}
+\]">\[
+\sigma([a]_f(x))=[a]_f(\sigma x),\qquad
+\sigma(F_f(x,y))=F_f(\sigma x,\sigma y).
+\tag{9}
+\]</span>
+To justify passing through an infinite series, put the inputs and their conjugates in a finite Galois extension. Its automorphisms preserve the uniquely extended valuation and are continuous; each coefficient is fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so the identities hold for finite truncations and then for their limits.</p>
+<p>For <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, <span class="math" data-tex="\(K_{\pi,n}\)">\(K_{\pi,n}\)</span> is the splitting field of the separable polynomial <span class="math" data-tex="\(f_0^{\circ n}\)">\(f_0^{\circ n}\)</span>, hence is finite Galois. Proposition 8.2 gives the same conclusion for every <span class="math" data-tex="\(f\)">\(f\)</span>. Equation (9) defines an injection
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K_{\pi,n}/K)
+ \hookrightarrow\operatorname{Aut}_{\mathcal O}(T_n(f))
+ \simeq(\mathcal O/\pi^n\mathcal O)^\times.
+\tag{10}
+\]">\[
+\operatorname{Gal}(K_{\pi,n}/K)
+ \hookrightarrow\operatorname{Aut}_{\mathcal O}(T_n(f))
+ \simeq(\mathcal O/\pi^n\mathcal O)^\times.
+\tag{10}
+\]</span>
+It is injective because the division points generate the field. An automorphism of the cyclic module is multiplication by a unique unit class.</p>
+<h3 id="theorem-8-3-degree-ramification-and-galois-group">Theorem 8.3. Degree, ramification and Galois group</h3>
+<p>The extension <span class="math" data-tex="\(K_{\pi,n}/K\)">\(K_{\pi,n}/K\)</span> is totally ramified of degree <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, every primitive point is a uniformizer of this extension, and (10) is an isomorphism.</p>
+<p><strong>Proof.</strong> Continue first with <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. Put <span class="math" data-tex="\(A_n(X)=f_0^{\circ(n-1)}(X)\)">\(A_n(X)=f_0^{\circ(n-1)}(X)\)</span>, where <span class="math" data-tex="\(A_1(X)=X\)">\(A_1(X)=X\)</span>. Polynomial composition gives the exact factorization
+<span class="math math-display" data-tex="\[
+f_0^{\circ n}(X)=A_n(X)\bigl(\pi+A_n(X)^{q-1}\bigr).
+\]">\[
+f_0^{\circ n}(X)=A_n(X)\bigl(\pi+A_n(X)^{q-1}\bigr).
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+P_n(X)=\frac{f_0^{\circ n}(X)}{f_0^{\circ(n-1)}(X)}
+       =\pi+A_n(X)^{q-1}
+\tag{11}
+\]">\[
+P_n(X)=\frac{f_0^{\circ n}(X)}{f_0^{\circ(n-1)}(X)}
+       =\pi+A_n(X)^{q-1}
+\tag{11}
+\]</span>
+is a monic polynomial of degree <span class="math" data-tex="\(D_n\)">\(D_n\)</span>. Since <span class="math" data-tex="\(A_n(0)=0\)">\(A_n(0)=0\)</span>, its constant coefficient is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Reduction modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span> gives <span class="math" data-tex="\(A_n(X)\equiv X^{q^{n-1}}\)">\(A_n(X)\equiv X^{q^{n-1}}\)</span>, and therefore <span class="math" data-tex="\(P_n(X)\equiv X^{D_n}\)">\(P_n(X)\equiv X^{D_n}\)</span>. Every other nonleading coefficient is divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, while its constant coefficient is not divisible by <span class="math" data-tex="\(\pi^2\)">\(\pi^2\)</span>. This is precisely the Eisenstein condition.</p>
+<p>A primitive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a root of <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, because <span class="math" data-tex="\(A_n(\lambda)\ne0\)">\(A_n(\lambda)\ne0\)</span> while <span class="math" data-tex="\(f_0^{\circ n}(\lambda)=0\)">\(f_0^{\circ n}(\lambda)=0\)</span>. Here the degree and ramification consequences of the Eisenstein condition can also be verified directly. Write <span class="math" data-tex="\(d=D_n\)">\(d=D_n\)</span> and <span class="math" data-tex="\(t=v_K(\lambda)&gt;0\)">\(t=v_K(\lambda)&gt;0\)</span>. In <span class="math" data-tex="\(P_n(\lambda)\)">\(P_n(\lambda)\)</span>, the leading term has valuation <span class="math" data-tex="\(dt\)">\(dt\)</span>, the constant term has valuation 1, and every intervening term has valuation at least <span class="math" data-tex="\(1+it&gt;1\)">\(1+it&gt;1\)</span>. A sum equal to zero cannot have a unique term of least valuation: after dividing by that term, reduction in the residue field would give <span class="math" data-tex="\(1=0\)">\(1=0\)</span>. Therefore <span class="math" data-tex="\(dt=1\)">\(dt=1\)</span>. If <span class="math" data-tex="\(e\)">\(e\)</span> is the ramification index of <span class="math" data-tex="\(K(\lambda)/K\)">\(K(\lambda)/K\)</span>, its value group in this normalization is <span class="math" data-tex="\(e^{-1}\mathbf Z\)">\(e^{-1}\mathbf Z\)</span>; thus <span class="math" data-tex="\(d\)">\(d\)</span> divides <span class="math" data-tex="\(e\)">\(e\)</span>. The degree formula for complete discretely valued fields gives
+<span class="math" data-tex="\(d\leq e\leq[K(\lambda):K]\)">\(d\leq e\leq[K(\lambda):K]\)</span>, whereas the polynomial <span class="math" data-tex="\(P_n\)">\(P_n\)</span> gives the reverse bound <span class="math" data-tex="\([K(\lambda):K]\leq d\)">\([K(\lambda):K]\leq d\)</span>. All these quantities are consequently <span class="math" data-tex="\(d\)">\(d\)</span>, the residue degree is 1, and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has normalized valuation 1 in its field. In particular
+<span class="math math-display" data-tex="\[
+[K(\lambda):K]=D_n,
+\]">\[
+[K(\lambda):K]=D_n,
+\]</span>
+total ramification, and the uniformizer assertion. By (8), this is the entire division field. Its Galois group and the right side of (10) both have <span class="math" data-tex="\(D_n\)">\(D_n\)</span> elements; the injection is consequently onto.</p>
+<p>For general <span class="math" data-tex="\(f\)">\(f\)</span>, the strict isomorphism (3) preserves the generated field and the valuation of each nonzero point: if <span class="math" data-tex="\(v_K(x)&gt;0\)">\(v_K(x)&gt;0\)</span>, every higher term of <span class="math" data-tex="\(h(x)-x\)">\(h(x)-x\)</span> has valuation strictly greater than <span class="math" data-tex="\(v_K(x)\)">\(v_K(x)\)</span>. A primitive <span class="math" data-tex="\(h(\lambda)\)">\(h(\lambda)\)</span> therefore remains a uniformizer. This proves all the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The polynomial argument uses the specific choice (2). An arbitrary Lubin–Tate series can have infinitely many nonzero coefficients; it need not supply a polynomial quotient as in (11). The integral isomorphism transfers the field and module conclusions without making such an assumption.</p>
+<h3 id="proposition-8-4-a-uniformizer-is-a-norm">Proposition 8.4. A uniformizer is a norm</h3>
+<p>For every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+\pi\in N_{K_{\pi,n}/K}(K_{\pi,n}^{\times}).
+\tag{12}
+\]">\[
+\pi\in N_{K_{\pi,n}/K}(K_{\pi,n}^{\times}).
+\tag{12}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a primitive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. Its minimal polynomial is <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, with constant coefficient <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, so
+<span class="math math-display" data-tex="\[
+N_{K_{\pi,n}/K}(\lambda)=(-1)^{D_n}\pi.
+\]">\[
+N_{K_{\pi,n}/K}(\lambda)=(-1)^{D_n}\pi.
+\]</span>
+Since <span class="math" data-tex="\(N(-1)=(-1)^{D_n}\)">\(N(-1)=(-1)^{D_n}\)</span>, we obtain
+<span class="math math-display" data-tex="\[
+N_{K_{\pi,n}/K}(-\lambda)=\pi.
+\tag{13}
+\]">\[
+N_{K_{\pi,n}/K}(-\lambda)=\pi.
+\tag{13}
+\]</span>
+The field is independent of the chosen series, so (12) holds for it in every presentation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(q\)">\(q\)</span> is even and <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(D_1=q-1\)">\(D_1=q-1\)</span> is odd, and <span class="math" data-tex="\(N(\lambda)=-\pi\)">\(N(\lambda)=-\pi\)</span>. Formula (13) includes this case. A primitive point for a different series is still a uniformizer, but its norm need not have the particular value of the polynomial coordinate just used.</p>
+<h2 id="3-the-infinite-tower">3. The infinite tower</h2>
+<p>The nesting of the division modules gives fields
+<span class="math math-display" data-tex="\[
+K_{\pi,1}\subset K_{\pi,2}\subset\cdots,\qquad
+K_\pi=\bigcup_{n\geq1}K_{\pi,n}.
+\tag{14}
+\]">\[
+K_{\pi,1}\subset K_{\pi,2}\subset\cdots,\qquad
+K_\pi=\bigcup_{n\geq1}K_{\pi,n}.
+\tag{14}
+\]</span></p>
+<h3 id="corollary-8-5-the-galois-group-of-the-tower">Corollary 8.5. The Galois group of the tower</h3>
+<p>There is a canonical isomorphism of topological groups, characterized by its action on division points,
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K_\pi/K)\simeq\mathcal O^\times.
+\tag{15}
+\]">\[
+\operatorname{Gal}(K_\pi/K)\simeq\mathcal O^\times.
+\tag{15}
+\]</span></p>
+<p><strong>Proof.</strong> Multiplication by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> maps <span class="math" data-tex="\(T_{n+1}(f)\)">\(T_{n+1}(f)\)</span> onto <span class="math" data-tex="\(T_n(f)\)">\(T_n(f)\)</span>: in the cyclic module <span class="math" data-tex="\(\mathcal O/\pi^{n+1}\)">\(\mathcal O/\pi^{n+1}\)</span>, its image has <span class="math" data-tex="\(q^n\)">\(q^n\)</span> elements, lies in <span class="math" data-tex="\(T_n\)">\(T_n\)</span>, and hence equals it. Choose primitive points compatibly with <span class="math" data-tex="\([\pi]_f(\lambda_{n+1})=\lambda_n\)">\([\pi]_f(\lambda_{n+1})=\lambda_n\)</span>. A preimage of a primitive level-<span class="math" data-tex="\(n\)">\(n\)</span> point must be primitive at level <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<p>If <span class="math" data-tex="\(\sigma(\lambda_{n+1})=[u]_{f}(\lambda_{n+1})\)">\(\sigma(\lambda_{n+1})=[u]_{f}(\lambda_{n+1})\)</span>, applying <span class="math" data-tex="\([\pi]_f\)">\([\pi]_f\)</span> shows <span class="math" data-tex="\(\sigma(\lambda_n)=[u]_f(\lambda_n)\)">\(\sigma(\lambda_n)=[u]_f(\lambda_n)\)</span>. Thus the restriction maps in Theorem 8.3 correspond to reduction of unit classes. Infinite Galois theory from lesson 1 now yields
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K_\pi/K)
+ \simeq\varprojlim_n(\mathcal O/\pi^n\mathcal O)^\times.
+\]">\[
+\operatorname{Gal}(K_\pi/K)
+ \simeq\varprojlim_n(\mathcal O/\pi^n\mathcal O)^\times.
+\]</span></p>
+<p>For completeness, this last inverse limit is <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span>. Given compatible classes, choose representatives <span class="math" data-tex="\(u_n\in\mathcal O^\times\)">\(u_n\in\mathcal O^\times\)</span>. They satisfy <span class="math" data-tex="\(u_{n+1}-u_n\in\pi^n\mathcal O\)">\(u_{n+1}-u_n\in\pi^n\mathcal O\)</span>, so form a Cauchy sequence and have a limit <span class="math" data-tex="\(u\in\mathcal O\)">\(u\in\mathcal O\)</span>. Its nonzero residue makes it a unit, and it represents all the classes. Uniqueness follows from <span class="math" data-tex="\(\bigcap_n\pi^n\mathcal O=\{0\}\)">\(\bigcap_n\pi^n\mathcal O=\{0\}\)</span>. Reduction is continuous, and its kernels <span class="math" data-tex="\(1+\pi^n\mathcal O\)">\(1+\pi^n\mathcal O\)</span> form a neighborhood basis, so the bijection and its inverse are continuous. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The isomorphism uses scalar action and is independent of the chosen compatible generators. All finite levels are abelian, as is the tower.</p>
+<h2 id="4-two-concrete-descriptions">4. Two concrete descriptions</h2>
+<p>For <span class="math" data-tex="\(K=\mathbf Q_p\)">\(K=\mathbf Q_p\)</span>, <span class="math" data-tex="\(\pi=p\)">\(\pi=p\)</span>, choose
+<span class="math math-display" data-tex="\[
+f(X)=(1+X)^p-1,\qquad F_f(X,Y)=X+Y+XY.
+\]">\[
+f(X)=(1+X)^p-1,\qquad F_f(X,Y)=X+Y+XY.
+\]</span>
+Lesson 7 proves <span class="math" data-tex="\([a]_f(X)=(1+X)^a-1\)">\([a]_f(X)=(1+X)^a-1\)</span> for <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>. Iterating gives <span class="math" data-tex="\(f^{\circ n}(X)=(1+X)^{p^n}-1\)">\(f^{\circ n}(X)=(1+X)^{p^n}-1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+T_n(f)=\{\zeta-1:\zeta^{p^n}=1\},\qquad
+K_{p,n}=\mathbf Q_p(\zeta_{p^n}).
+\tag{16}
+\]">\[
+T_n(f)=\{\zeta-1:\zeta^{p^n}=1\},\qquad
+K_{p,n}=\mathbf Q_p(\zeta_{p^n}).
+\tag{16}
+\]</span>
+The root count and positive-valuation assertion can also be obtained by transferring from <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, as above. For a primitive <span class="math" data-tex="\(p^n\)">\(p^n\)</span>th root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, (10) says precisely
+<span class="math math-display" data-tex="\[
+\sigma(\zeta)=\zeta^u,\qquad u\in(\mathbf Z/p^n\mathbf Z)^\times.
+\tag{17}
+\]">\[
+\sigma(\zeta)=\zeta^u,\qquad u\in(\mathbf Z/p^n\mathbf Z)^\times.
+\tag{17}
+\]</span>
+For a <span class="math" data-tex="\(p\)">\(p\)</span>-adic scalar, choose an ordinary integer congruent to it modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>; Proposition 8.1 makes their actions identical on <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. Thus the exponent in (17) has an unambiguous meaning.</p>
+<p>For the polynomial <span class="math" data-tex="\(f_0\)">\(f_0\)</span> over general <span class="math" data-tex="\(K\)">\(K\)</span>, its nonzero first-level points satisfy
+<span class="math math-display" data-tex="\[
+\lambda^{q-1}=-\pi,\qquad
+K_{\pi,1}=K\bigl((-\pi)^{1/(q-1)}\bigr).
+\tag{18}
+\]">\[
+\lambda^{q-1}=-\pi,\qquad
+K_{\pi,1}=K\bigl((-\pi)^{1/(q-1)}\bigr).
+\tag{18}
+\]</span>
+This is a totally ramified extension of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. If <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, its degree is one and <span class="math" data-tex="\(\lambda=-\pi\)">\(\lambda=-\pi\)</span> already belongs to <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Changing the series for a fixed uniformizer preserves the tower. Changing the uniformizer can change even its first field. For example, over <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span>, the choices <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(-3\)">\(-3\)</span> yield <span class="math" data-tex="\(\mathbf Q_3(\sqrt{-3})\)">\(\mathbf Q_3(\sqrt{-3})\)</span> and <span class="math" data-tex="\(\mathbf Q_3(\sqrt3)\)">\(\mathbf Q_3(\sqrt3)\)</span>; Exercise 4 proves they are different. The next lesson will explain why adjoining the entire unramified tower removes this dependence.</p>
+<h2 id="5-exercises-and-complete-solutions">5. Exercises and complete solutions</h2>
+<h3 id="exercise-1-easy">Exercise 1 — easy</h3>
+<p>For <span class="math" data-tex="\(K=\mathbf Q_p\)">\(K=\mathbf Q_p\)</span>, verify the torsion and Galois descriptions (16)–(17) using the multiplicative formal group.</p>
+<p><strong>Solution.</strong> Composition of <span class="math" data-tex="\(f(X)=(1+X)^p-1\)">\(f(X)=(1+X)^p-1\)</span> multiplies the exponent by <span class="math" data-tex="\(p\)">\(p\)</span>, giving <span class="math" data-tex="\(f^{\circ n}(X)=(1+X)^{p^n}-1\)">\(f^{\circ n}(X)=(1+X)^{p^n}-1\)</span> by induction. Its zeros are exactly <span class="math" data-tex="\(\zeta-1\)">\(\zeta-1\)</span>. They lie in the positive-valuation domain because this torsion set is the image under (3) of the polynomial torsion set. A primitive point corresponds to a primitive root: otherwise its exponent order would divide <span class="math" data-tex="\(p^{n-1}\)">\(p^{n-1}\)</span>. All other roots are powers of it, so the generated field is <span class="math" data-tex="\(\mathbf Q_p(\zeta_{p^n})\)">\(\mathbf Q_p(\zeta_{p^n})\)</span>.</p>
+<p>For integer <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\([a]_f(\zeta-1)=\zeta^a-1\)">\([a]_f(\zeta-1)=\zeta^a-1\)</span> follows from the multiplicative law. For any <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span>, choose that integer modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>; their difference kills the division module. Theorem 8.3 makes every unit class a Galois automorphism, giving (17) and degree <span class="math" data-tex="\((p-1)p^{n-1}\)">\((p-1)p^{n-1}\)</span>, including <span class="math" data-tex="\(p=2\)">\(p=2\)</span>.</p>
+<h3 id="exercise-2-medium">Exercise 2 — medium</h3>
+<p>Prove that the Galois action on <span class="math" data-tex="\(T_n(f)\)">\(T_n(f)\)</span> commutes with every scalar <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span>.</p>
+<p><strong>Solution.</strong> Put a division point and its conjugate in a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. The coefficients of <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span> belong to <span class="math" data-tex="\(\mathcal O\subset K\)">\(\mathcal O\subset K\)</span>. For each finite truncation, applying <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to its value equals evaluating it at <span class="math" data-tex="\(\sigma x\)">\(\sigma x\)</span>. The unique extended valuation on <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-invariant, so <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is an isometry and preserves limits. Passing to the convergent series gives (9). Applying the same argument to <span class="math" data-tex="\(F_f\)">\(F_f\)</span> proves additivity. In particular <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> takes points killed by <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span> to points killed by <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span>, and is an <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-module automorphism there.</p>
+<h3 id="exercise-3-medium">Exercise 3 — medium</h3>
+<p>For the polynomial choice <span class="math" data-tex="\(f_0=\pi X+X^q\)">\(f_0=\pi X+X^q\)</span>, prove that <span class="math" data-tex="\(f_0^{\circ n}/f_0^{\circ(n-1)}\)">\(f_0^{\circ n}/f_0^{\circ(n-1)}\)</span> is Eisenstein. Explain the role of this choice for a general series.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(A=f_0^{\circ(n-1)}\)">\(A=f_0^{\circ(n-1)}\)</span>, composition is <span class="math" data-tex="\(f_0(A)=\pi A+A^q\)">\(f_0(A)=\pi A+A^q\)</span>. The quotient is the polynomial <span class="math" data-tex="\(\pi+A^{q-1}\)">\(\pi+A^{q-1}\)</span>. The polynomial <span class="math" data-tex="\(A\)">\(A\)</span> is monic of degree <span class="math" data-tex="\(q^{n-1}\)">\(q^{n-1}\)</span>, has constant coefficient zero, and reduces to <span class="math" data-tex="\(X^{q^{n-1}}\)">\(X^{q^{n-1}}\)</span> modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Hence the quotient is monic of degree <span class="math" data-tex="\((q-1)q^{n-1}\)">\((q-1)q^{n-1}\)</span>, has constant coefficient exactly <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and reduces to the pure power <span class="math" data-tex="\(X^{(q-1)q^{n-1}}\)">\(X^{(q-1)q^{n-1}}\)</span>. These are all the Eisenstein conditions.</p>
+<p>For a general power series in <span class="math" data-tex="\(\mathcal F_\pi\)">\(\mathcal F_\pi\)</span>, its iterate is not necessarily a polynomial. The assertions about torsion and fields follow instead from the integral strict isomorphism with <span class="math" data-tex="\(f_0\)">\(f_0\)</span>, which preserves primitive points, their fields and their valuations. This supplies the same degree and ramification conclusion without assuming finite polynomial degree for an infinite series.</p>
+<h3 id="exercise-4-hard">Exercise 4 — hard</h3>
+<p>Let <span class="math" data-tex="\(K=\mathbf Q_p\)">\(K=\mathbf Q_p\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span> odd. For uniformizers <span class="math" data-tex="\(\pi,\pi&#x27;\)">\(\pi,\pi&#x27;\)</span>, prove
+<span class="math math-display" data-tex="\[
+K_{\pi,1}=K_{\pi&#x27;,1}
+\quad\Longleftrightarrow\quad
+\pi&#x27;/\pi\equiv1\pmod p.
+\tag{19}
+\]">\[
+K_{\pi,1}=K_{\pi&#x27;,1}
+\quad\Longleftrightarrow\quad
+\pi&#x27;/\pi\equiv1\pmod p.
+\tag{19}
+\]</span></p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(m=p-1\)">\(m=p-1\)</span>, <span class="math" data-tex="\(u=\pi&#x27;/\pi\)">\(u=\pi&#x27;/\pi\)</span>, and choose <span class="math" data-tex="\(\alpha^m=-\pi\)">\(\alpha^m=-\pi\)</span>, <span class="math" data-tex="\(\beta^m=-\pi&#x27;\)">\(\beta^m=-\pi&#x27;\)</span>. Equation (18) gives the two fields. If they are equal to <span class="math" data-tex="\(L\)">\(L\)</span>, both <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are uniformizers of the same totally ramified extension. Their ratio is a unit of <span class="math" data-tex="\(L\)">\(L\)</span>, and
+<span class="math math-display" data-tex="\[
+(\beta/\alpha)^m=u.
+\]">\[
+(\beta/\alpha)^m=u.
+\]</span>
+The residue field of <span class="math" data-tex="\(L\)">\(L\)</span> is <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. Every nonzero residue has <span class="math" data-tex="\(m\)">\(m\)</span>th power 1, so reducing this equality gives <span class="math" data-tex="\(u\equiv1\pmod p\)">\(u\equiv1\pmod p\)</span>.</p>
+<p>Conversely suppose <span class="math" data-tex="\(u\in1+p\mathbf Z_p\)">\(u\in1+p\mathbf Z_p\)</span>. We construct <span class="math" data-tex="\(a\in1+p\mathbf Z_p\)">\(a\in1+p\mathbf Z_p\)</span> with <span class="math" data-tex="\(a^m=u\)">\(a^m=u\)</span>. Start <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span>, and put
+<span class="math math-display" data-tex="\[
+a_{j+1}=a_j+\frac{u-a_j^m}{m a_j^{m-1}}.
+\]">\[
+a_{j+1}=a_j+\frac{u-a_j^m}{m a_j^{m-1}}.
+\]</span>
+The denominator is a <span class="math" data-tex="\(p\)">\(p\)</span>-adic unit. If <span class="math" data-tex="\(a_j\in1+p\mathbf Z_p\)">\(a_j\in1+p\mathbf Z_p\)</span> and the error <span class="math" data-tex="\(u-a_j^m\)">\(u-a_j^m\)</span> has valuation at least <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, the increment has valuation at least <span class="math" data-tex="\(r\)">\(r\)</span>. Expanding the <span class="math" data-tex="\(m\)">\(m\)</span>th power cancels its linear error; all remaining terms contain at least the square of the increment, and have integral coefficients. The next error has valuation at least <span class="math" data-tex="\(2r\)">\(2r\)</span>. Thus the increments tend to zero with valuations at least <span class="math" data-tex="\(2^j\)">\(2^j\)</span>, the sequence converges in <span class="math" data-tex="\(1+p\mathbf Z_p\)">\(1+p\mathbf Z_p\)</span>, and its limit <span class="math" data-tex="\(a\)">\(a\)</span> satisfies <span class="math" data-tex="\(a^m=u\)">\(a^m=u\)</span>. Now <span class="math" data-tex="\(a\alpha\)">\(a\alpha\)</span> is a root of <span class="math" data-tex="\(X^m+\pi&#x27;\)">\(X^m+\pi&#x27;\)</span>. It generates <span class="math" data-tex="\(K(\alpha)\)">\(K(\alpha)\)</span>, since <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>; hence the two fields are equal. This proves (19).</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 1–2 prove root counts, the division module, independence of the defining series and the full Galois group. The valuation calculation in Theorem 8.3 proves the degree and total ramification directly. The norm sign and the whole tower are retained.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://arxiv.org/abs/math/0606108v2">Teruyoshi Yoshida, Local class field theory via Lubin–Tate theory, arXiv:math/0606108v2</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="formal-groups-and-lubin-tate-modules.html">← Formal groups and Lubin–Tate modules</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="explicit-local-reciprocity-and-existence.html">Explicit local reciprocity and the existence theorem →</a></span></nav>
+<p class="small source-link"><a href="files/lubin-tate-division-fields.md">Markdown source of this lesson</a> · <a download href="files/lubin-tate-division-fields.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

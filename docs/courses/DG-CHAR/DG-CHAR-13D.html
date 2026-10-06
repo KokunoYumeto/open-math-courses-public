@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rational oriented bordism and projective generators · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-13D.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="rational-oriented-bordism-and-projective-generators">Rational oriented bordism and projective generators</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0.</em></p>
+<p>The Pontryagin–Thom construction has identified bordism with homotopy classes. Its rational comparison with homology now determines the rank. Independent Pontryagin-number computations then identify a projective-space basis and the entire rational oriented bordism ring. We keep the finite-stage bounds explicit and distinguish rational equality from an integral relation with a possible torsion remainder.</p>
+<p>The exact prerequisites are <a href="DG-CHAR-04.html">Schubert cells</a>, Theorem1.1 and Section2, for characteristic disks and cellular homology; <a href="DG-CHAR-03.html">Classifying maps</a>, Theorem8.3, for lifted CW covers; <a href="DG-CHAR-13.html">The geometric Thom construction</a>, Theorems C.1–C.2, I.1 and K.1 and Sections D, I and J, for Thom cells, homology and the full correspondence; <a href="DG-CHAR-13B.html">Homotopy fibres</a>, Section B, for relative homotopy and cell bounds; and <a href="DG-CHAR-13C.html">Rational homotopy</a>, Lemma F.1, Theorem F.8 and Corollary H.5, for finite generation and the finite Thom comparison. The <a href="DG-CHAR-10.html">Pontryagin chapter</a>, Theorem5.1, supplies the universal rational ring. <a href="DG-CHAR-11.html">Characteristic numbers</a>, Theorem4.2 and Proposition5.1, supplies projective independence and boundary vanishing. <a href="DG-CHAR-12.html">The oriented cobordism ring</a> supplies the group, product and signed-point conventions.</p>
+<p>Sections J–L continue Sections F–I of the rational-homotopy companion. References to the geometric chapter name it explicitly, since it has its own section letters. This is the concluding rational portion of the Thom-space lesson. Six original exercises have complete solutions.</p>
+<h2 id="j-finite-stages-and-the-rational-bordism-rank">J. Finite stages and the rational bordism rank</h2>
+<p>The geometric construction turns a based map into a closed manifold. The rational homotopy estimate turns its homotopy class into a homology class with finite error. We now put both constructions in the same finite space, keeping track of the two independent dimension bounds.</p>
+<p>For integers <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span> and <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, write
+<span class="math math-display" data-tex="\[
+B_{k,p}=\widetilde G_k(\mathbb R^{k+p}),\qquad
+\xi_{k,p}=\widetilde\gamma_k|_{B_{k,p}},\qquad
+T_{k,p}=T(\xi_{k,p}).
+\tag{J.1}
+\]">\[
+B_{k,p}=\widetilde G_k(\mathbb R^{k+p}),\qquad
+\xi_{k,p}=\widetilde\gamma_k|_{B_{k,p}},\qquad
+T_{k,p}=T(\xi_{k,p}).
+\tag{J.1}
+\]</span>
+The tilde records a chosen orientation on each plane. These are the orientation double covers of the finite real Grassmannians, with their canonical oriented bundles. Their increasing unions are <span class="math" data-tex="\(BSO(k)\)">\(BSO(k)\)</span>, <span class="math" data-tex="\(\widetilde\gamma_k\)">\(\widetilde\gamma_k\)</span> and <span class="math" data-tex="\(MSO(k)\)">\(MSO(k)\)</span>. All Thom spaces have their collapsed point as basepoint. The finite bases are compact smooth manifolds and finite CW complexes, as proved in the geometric chapter, Lemma D.2. For <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span> the oriented base is connected, by the explicit rotation argument in the Pontryagin chapter, Section3. When <span class="math" data-tex="\(p=0\)">\(p=0\)</span> it consists of the two orientations of <span class="math" data-tex="\(\mathbb R^k\)">\(\mathbb R^k\)</span>; we will not mistake those two points for a connected stage.</p>
+<h3 id="j-1-the-cell-bound-for-a-finite-grassmannian">J.1. The cell bound for a finite Grassmannian</h3>
+<p><span id="DG-CHAR-13D.lemma-J.1"></span><strong>Lemma J.1 — The missing-cell bound.</strong> For each <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, the inclusion <span class="math" data-tex="\(B_{k,p}\subset BSO(k)\)">\(B_{k,p}\subset BSO(k)\)</span> is a CW-subcomplex inclusion with no relative cells below dimension <span class="math" data-tex="\(p+1\)">\(p+1\)</span>. Its canonical Thom inclusion <span class="math" data-tex="\(T_{k,p}\subset MSO(k)\)">\(T_{k,p}\subset MSO(k)\)</span> has no relative cells below dimension <span class="math" data-tex="\(k+p+1\)">\(k+p+1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+H_i(BSO(k),B_{k,p};\mathbb Z)=0\quad(0\leq i\leq p),
+\tag{J.2}
+\]">\[
+H_i(BSO(k),B_{k,p};\mathbb Z)=0\quad(0\leq i\leq p),
+\tag{J.2}
+\]</span>
+and, for <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, the Thom inclusion induces an isomorphism on <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> whenever <span class="math" data-tex="\(j&lt;k+p\)">\(j&lt;k+p\)</span>, and a surjection when <span class="math" data-tex="\(j=k+p\)">\(j=k+p\)</span>.</p>
+<p><strong>Proof.</strong> The Schubert chapter, Theorem1.1, gives actual compatible characteristic disks. Its real cells are indexed by partitions <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with at most <span class="math" data-tex="\(k\)">\(k\)</span> rows; the cell dimension is <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span>. The finite stage <span class="math" data-tex="\(G_k(\mathbb R^{k+p})\)">\(G_k(\mathbb R^{k+p})\)</span> consists exactly of the cells with <span class="math" data-tex="\(\lambda_1\leq p\)">\(\lambda_1\leq p\)</span>. A missing cell has <span class="math" data-tex="\(\lambda_1\geq p+1\)">\(\lambda_1\geq p+1\)</span>, and hence dimension at least <span class="math" data-tex="\(p+1\)">\(p+1\)</span>. Boundary symbols decrease coordinatewise, so those finite cells and their full attaching images form a subcomplex.</p>
+<p>The general-cover theorem in the classifying-map chapter, Theorem8.3, gives the lifted CW structure on the orientation cover. Every characteristic disk has two lifts, each of the same dimension. Restricting the cover to the finite subcomplex gives exactly <span class="math" data-tex="\(B_{k,p}\)">\(B_{k,p}\)</span>. Thus the same lower bound holds for the relative oriented cells. Its relative cellular chain groups through degree <span class="math" data-tex="\(p\)">\(p\)</span> are zero, proving (J.2) by the cellular/singular comparison already proved in the Schubert chapter. That comparison applies to these pairs: both chain complexes are quotients of the respective subcomplex inclusions, and the skeletal relative-disk argument is natural for them. There are finitely many cells in each dimension even in the infinite space, with two lifts per Schubert cell.</p>
+<p>The Thom-cell theorem in the geometric chapter, Theorem C.1, shifts the dimension of every base cell by <span class="math" data-tex="\(k\)">\(k\)</span> and introduces just the common basepoint. Its characteristic maps restrict to those over the finite base. Thus a missing Thom cell has dimension at least <span class="math" data-tex="\(k+p+1\)">\(k+p+1\)</span>.</p>
+<p>The homotopy foundation companion, Section B.2, proves that a CW pair with no relative cells through dimension <span class="math" data-tex="\(d\)">\(d\)</span> has zero relative homotopy groups through <span class="math" data-tex="\(d\)">\(d\)</span>, using full cellular approximation. Apply it here with <span class="math" data-tex="\(d=k+p\)">\(d=k+p\)</span>. Its exact relative sequence (B.4) gives an isomorphism on <span class="math" data-tex="\(\pi_j\)">\(\pi_j\)</span> when both adjacent relative groups, in dimensions <span class="math" data-tex="\(j+1\)">\(j+1\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span>, vanish. This is <span class="math" data-tex="\(j&lt;k+p\)">\(j&lt;k+p\)</span>. When <span class="math" data-tex="\(j=k+p\)">\(j=k+p\)</span>, vanishing of the latter relative group still gives surjectivity. These are statements about the actual inclusion maps, rather than only group ranks. ∎</p>
+<p>For homology, the pair sequence and (J.2) similarly give
+<span class="math math-display" data-tex="\[
+H_i(B_{k,p};\mathbb Z)\xrightarrow{\cong}H_i(BSO(k);\mathbb Z)
+\quad (i&lt;p),
+\tag{J.3}
+\]">\[
+H_i(B_{k,p};\mathbb Z)\xrightarrow{\cong}H_i(BSO(k);\mathbb Z)
+\quad (i&lt;p),
+\tag{J.3}
+\]</span>
+and surjectivity when <span class="math" data-tex="\(i=p\)">\(i=p\)</span>. In degree zero with <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>, the same pair sequence applies and the spaces are connected. Thus it also gives the asserted degree-zero isomorphism. The stronger choice <span class="math" data-tex="\(p\geq n+1\)">\(p\geq n+1\)</span> will make both (J.3) in degree <span class="math" data-tex="\(n\)">\(n\)</span> and the Thom homotopy comparison in degree <span class="math" data-tex="\(n+k\)">\(n+k\)</span> isomorphisms. The weaker <span class="math" data-tex="\(p=n\)">\(p=n\)</span> gives only the surjections established by these cell bounds.</p>
+<h3 id="j-2-the-finite-pontryagin-thom-isomorphism">J.2. The finite Pontryagin–Thom isomorphism</h3>
+<p>Denote transverse inverse image for the finite canonical bundle by
+<span class="math math-display" data-tex="\[
+\tau_{k,p}:\pi_{n+k}(T_{k,p})\longrightarrow\Omega_n.
+\tag{J.4}
+\]">\[
+\tau_{k,p}:\pi_{n+k}(T_{k,p})\longrightarrow\Omega_n.
+\tag{J.4}
+\]</span>
+Here <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is the group of smooth closed oriented <span class="math" data-tex="\(n\)">\(n\)</span>-manifolds under disjoint union modulo smooth oriented bordism. The geometric chapter, Theorem G.3, proves that this is a homomorphism with the tangent-first normal convention. Its Theorem K.1 proves the universal isomorphism
+<span class="math" data-tex="\(\tau_{k,\infty}:\pi_{n+k}(MSO(k))\to\Omega_n\)">\(\tau_{k,\infty}:\pi_{n+k}(MSO(k))\to\Omega_n\)</span> for <span class="math" data-tex="\(k&gt;n+1\)">\(k&gt;n+1\)</span>, including the collapse inverse and relative embeddings.</p>
+<p><span id="DG-CHAR-13D.theorem-J.2"></span><strong>Theorem J.2 — A finite target that computes bordism.</strong> If
+<span class="math math-display" data-tex="\[
+n\geq0,\qquad k&gt;n+1,\qquad p\geq n+1,
+\tag{J.5}
+\]">\[
+n\geq0,\qquad k&gt;n+1,\qquad p\geq n+1,
+\tag{J.5}
+\]</span>
+then (J.4) is an isomorphism.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(j=n+k\)">\(j=n+k\)</span>. The bound on <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(j&lt;k+p\)">\(j&lt;k+p\)</span>, so Lemma J.1 makes
+<span class="math math-display" data-tex="\[
+\pi_{n+k}(T_{k,p})\longrightarrow\pi_{n+k}(MSO(k))
+\tag{J.6}
+\]">\[
+\pi_{n+k}(T_{k,p})\longrightarrow\pi_{n+k}(MSO(k))
+\tag{J.6}
+\]</span>
+an isomorphism. The bound on <span class="math" data-tex="\(k\)">\(k\)</span> makes the universal map <span class="math" data-tex="\(\tau_{k,\infty}\)">\(\tau_{k,\infty}\)</span> an isomorphism by the full geometric theorem. Their composite is exactly <span class="math" data-tex="\(\tau_{k,p}\)">\(\tau_{k,p}\)</span>. Indeed a map in the finite stage has the same zero-section inverse image after inclusion in the universal space; the canonical bundle inclusion is the identity on its normal quotient and retains its orientation. The common-finite-carrier argument in geometric Section I proves that these constructions agree on homotopy classes. Thus (J.4) is the composite of two isomorphisms. ∎</p>
+<p>This proof does not replace the finite stage by an unspecified limit. It shows that the explicit stage in (J.5) already has all the homotopy information needed in the degree under discussion. In particular the finite Thom homotopy group is finitely generated: it is simply connected for <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, is a finite CW complex, and the rational companion's Theorem F.8 proves finite generation of its homotopy groups. Hence <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is finitely generated under (J.5), before computing its rank.</p>
+<h3 id="j-3-stabilization-is-the-identity-on-bordism">J.3. Stabilization is the identity on bordism</h3>
+<p>Adding a fixed last positive vector gives a base map
+<span class="math" data-tex="\(B_{k,p}\to B_{k+1,p}\)">\(B_{k,p}\to B_{k+1,p}\)</span> whose pulled-back bundle is <span class="math" data-tex="\(\xi_{k,p}\oplus\varepsilon^1\)">\(\xi_{k,p}\oplus\varepsilon^1\)</span>, oriented in that order. The geometric chapter, Section D, proves the homeomorphism <span class="math" data-tex="\(T(\xi\oplus\varepsilon^1)=\Sigma T(\xi)\)">\(T(\xi\oplus\varepsilon^1)=\Sigma T(\xi)\)</span> and the induced Thom map. Suspending based sphere maps therefore gives
+<span class="math math-display" data-tex="\[
+s_{k,p}:\pi_{n+k}(T_{k,p})\longrightarrow
+\pi_{n+k+1}(T_{k+1,p}).
+\tag{J.7}
+\]">\[
+s_{k,p}:\pi_{n+k}(T_{k,p})\longrightarrow
+\pi_{n+k+1}(T_{k+1,p}).
+\tag{J.7}
+\]</span></p>
+<p><span id="DG-CHAR-13D.proposition-J.3"></span><strong>Proposition J.3 — Stable finite-stage comparison.</strong> Under (J.5),
+<span class="math math-display" data-tex="\[
+\tau_{k+1,p}s_{k,p}=\tau_{k,p},
+\tag{J.8}
+\]">\[
+\tau_{k+1,p}s_{k,p}=\tau_{k,p},
+\tag{J.8}
+\]</span>
+and <span class="math" data-tex="\(s_{k,p}\)">\(s_{k,p}\)</span> is an isomorphism. Increasing <span class="math" data-tex="\(p\)">\(p\)</span>, while retaining <span class="math" data-tex="\(p\geq n+1\)">\(p\geq n+1\)</span>, also induces an isomorphism in degree <span class="math" data-tex="\(n+k\)">\(n+k\)</span> commuting with the bordism identifications.</p>
+<p><strong>Proof.</strong> Choose a transverse representative <span class="math" data-tex="\(f:S^{n+k}\to T_{k,p}\)">\(f:S^{n+k}\to T_{k,p}\)</span>. View <span class="math" data-tex="\(S^{n+k}\wedge S^1\)">\(S^{n+k}\wedge S^1\)</span> as the one-point compactification of <span class="math" data-tex="\(\mathbb R^{n+k}\times\mathbb R\)">\(\mathbb R^{n+k}\times\mathbb R\)</span>, with the last coordinate positive. Near the zero inverse image of the suspended map, use the product-disk model of the Thom homeomorphism. Its total-vector form is
+<span class="math math-display" data-tex="\[
+(x,t)\longmapsto (f_E(x),t),
+\tag{J.9}
+\]">\[
+(x,t)\longmapsto (f_E(x),t),
+\tag{J.9}
+\]</span>
+where <span class="math" data-tex="\(f_E\)">\(f_E\)</span> is the smooth noncollapsed total-vector representative of <span class="math" data-tex="\(f\)">\(f\)</span>. Choose the product-disk to round-disk homeomorphism to be the identity near zero, as detailed below. The inverse image is exactly <span class="math" data-tex="\(M\times\{0\}\)">\(M\times\{0\}\)</span>, with <span class="math" data-tex="\(M=f^{-1}(B_{k,p})\)">\(M=f^{-1}(B_{k,p})\)</span>, since its normal components vanish precisely when those of <span class="math" data-tex="\(f\)">\(f\)</span> and the last coordinate vanish. The derivative is transverse near this inverse image, with old normal quotient followed by the positive last line.</p>
+<p>The source orientation is old ambient orientation followed by that line. The target bundle orientation is old normal orientation followed by the same line. Cancelling the last positive line from the tangent-first rule leaves exactly the old orientation on <span class="math" data-tex="\(M\)">\(M\)</span>. For a representative smooth throughout its noncollapsed region, first use geometric Lemma J.2 to put <span class="math" data-tex="\(f\)">\(f\)</span> in its exact normal germ. The suspended map then agrees near <span class="math" data-tex="\(M\times\{0\}\)">\(M\times\{0\}\)</span> with the smooth collapse for its normal injection <span class="math" data-tex="\(\alpha\oplus\operatorname{id}_{\mathbb R}\)">\(\alpha\oplus\operatorname{id}_{\mathbb R}\)</span>. Geometric Section I constructs that collapse in this finite target. Both maps have precisely this zero set and agree on a neighbourhood, so geometric Lemma J.1 makes them based homotopic. This avoids requiring the disk homeomorphism to be smooth far from zero. The collapse has the oriented inverse image <span class="math" data-tex="\([M]\)">\([M]\)</span>, proving (J.8). Values at the smash basepoint lie at the collapsed point and cannot add zero inverse images. This comparison takes place entirely in the finite canonical stages.</p>
+<p>Both inverse-image maps in (J.8) are isomorphisms by Theorem J.2, so <span class="math" data-tex="\(s_{k,p}\)">\(s_{k,p}\)</span> is their composite inverse followed by the other map and is an isomorphism. For <span class="math" data-tex="\(p\)">\(p\)</span>-increase, the finite-stage inclusion also retains the zero inverse image and its normal orientation. Theorem J.2 gives the same argument. ∎</p>
+<p>Here is the promised disk comparison. In a unit direction <span class="math" data-tex="\(u=(v,t)\)">\(u=(v,t)\)</span>, the product disk has radial boundary <span class="math" data-tex="\(R(u)=1/\max\{\|v\|,|t|\}\)">\(R(u)=1/\max\{\|v\|,|t|\}\)</span>, with <span class="math" data-tex="\(1\leq R(u)\leq\sqrt2\)">\(1\leq R(u)\leq\sqrt2\)</span>. Send a radius <span class="math" data-tex="\(r\leq1/2\)">\(r\leq1/2\)</span> to itself, and a radius <span class="math" data-tex="\(1/2\leq r\leq R(u)\)">\(1/2\leq r\leq R(u)\)</span> to <span class="math" data-tex="\(1/2+(r-1/2)/(2R(u)-1)\)">\(1/2+(r-1/2)/(2R(u)-1)\)</span>. These strictly increasing functions are continuous in the direction, join at the inner radius and end at one. Their inverses are continuous as well. Thus the map is a fibrewise homeomorphism, identity on the smaller round disk and carrying product boundary to round boundary. It leaves (J.9) literally unchanged near zero. The same quotient-product proofs used for geometric (D.2) show that it induces the stated Thom/smash homeomorphism.</p>
+<h3 id="j-4-the-comparison-with-universal-homology">J.4. The comparison with universal homology</h3>
+<p><span id="DG-CHAR-13D.theorem-J.4"></span><strong>Theorem J.4 — Bordism and normal universal homology with finite error.</strong> Let
+<span class="math math-display" data-tex="\[
+n\geq0,\qquad k&gt;\max\{2,n+1\},\qquad p\geq n+1.
+\tag{J.10}
+\]">\[
+n\geq0,\qquad k&gt;\max\{2,n+1\},\qquad p\geq n+1.
+\tag{J.10}
+\]</span>
+There is a homomorphism
+<span class="math math-display" data-tex="\[
+\Theta_{k,p}:\Omega_n
+\xrightarrow{\ \tau_{k,p}^{-1}\ }\pi_{n+k}(T_{k,p})
+\xrightarrow{\ h\ }H_{n+k}(T_{k,p};\mathbb Z)
+\xrightarrow{\ \operatorname{Th}^{-1}\ }H_n(B_{k,p};\mathbb Z)
+\xrightarrow{\ j_*\ }H_n(BSO(k);\mathbb Z)
+\tag{J.11}
+\]">\[
+\Theta_{k,p}:\Omega_n
+\xrightarrow{\ \tau_{k,p}^{-1}\ }\pi_{n+k}(T_{k,p})
+\xrightarrow{\ h\ }H_{n+k}(T_{k,p};\mathbb Z)
+\xrightarrow{\ \operatorname{Th}^{-1}\ }H_n(B_{k,p};\mathbb Z)
+\xrightarrow{\ j_*\ }H_n(BSO(k);\mathbb Z)
+\tag{J.11}
+\]</span>
+with finite kernel and finite cokernel. Its rationalization is an isomorphism. Both its source and target are finitely generated abelian groups.</p>
+<p><strong>Proof.</strong> The first arrow is an isomorphism by Theorem J.2. The two middle arrows have finite kernel and cokernel by the rational companion's Corollary H.5: <span class="math" data-tex="\(B_{k,p}\)">\(B_{k,p}\)</span> is finite, <span class="math" data-tex="\(\xi_{k,p}\)">\(\xi_{k,p}\)</span> is oriented of rank <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, and <span class="math" data-tex="\(n&lt;k-1\)">\(n&lt;k-1\)</span>. Its Thom isomorphism uses the positive bundle orientation already fixed. The last arrow is an integral isomorphism by (J.3) and <span class="math" data-tex="\(p\geq n+1\)">\(p\geq n+1\)</span>. Thus composing the end isomorphisms with the middle finite-error map gives the asserted finite kernel and cokernel, and tensor exactness gives the rational isomorphism.</p>
+<p>The finite base has finitely generated homology. The finite Thom complex has finitely generated homotopy in this degree by Theorem F.8, so Theorem J.2 gives finite generation of <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>. Finally (J.3) identifies universal homology in degree <span class="math" data-tex="\(n\)">\(n\)</span> with finite-base homology. This proves the finite-generation assertions without inferring them from rational ranks alone. ∎</p>
+<p>The geometric definition classifies a <strong>normal</strong> bundle. Pontryagin numbers below use the <strong>tangent</strong> bundle. We do not identify these two bundles or equate their Pontryagin classes. The role of (J.11) is to compute the rational dimension; the separately proved tangent Pontryagin numbers will supply independent linear functionals on that dimension.</p>
+<p><strong>Normal and tangent number coordinates.</strong> For a smooth closed oriented manifold of dimension <span class="math" data-tex="\(4r\)">\(4r\)</span>, the vectors of stable normal and tangent Pontryagin numbers are related by an invertible integer matrix depending only on <span class="math" data-tex="\(r\)">\(r\)</span>. The same matrix gives the inverse conversion. Consequently one vector vanishes exactly when the other does. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, both vectors have the single empty-product coordinate, the signed count of points.</p>
+<p><strong>Proof.</strong> An embedding gives a normal bundle <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with <span class="math" data-tex="\(TM\oplus\nu\)">\(TM\oplus\nu\)</span> trivial. Stabilizing the embedding changes neither bundle's Pontryagin classes. The rational Whitney formula in the Pontryagin chapter gives
+<span class="math math-display" data-tex="\[
+p(TM)p(\nu)=1\quad\text{in }H^*(M;\mathbb Q).
+\tag{J.11a}
+\]">\[
+p(TM)p(\nu)=1\quad\text{in }H^*(M;\mathbb Q).
+\tag{J.11a}
+\]</span>
+We use rational classes here because the integral Whitney formula can have a two-torsion error.</p>
+<p>To compute the inverse universally, assign weight <span class="math" data-tex="\(i\)">\(i\)</span> to the variable <span class="math" data-tex="\(P_i\)">\(P_i\)</span> in <span class="math" data-tex="\(\mathbb Z[P_1,P_2,\ldots]\)">\(\mathbb Z[P_1,P_2,\ldots]\)</span>. Put <span class="math" data-tex="\(Q_0=1\)">\(Q_0=1\)</span> and recursively define
+<span class="math math-display" data-tex="\[
+Q_j=-\sum_{i=1}^{j}P_iQ_{j-i}\quad(j\geq1).
+\tag{J.11b}
+\]">\[
+Q_j=-\sum_{i=1}^{j}P_iQ_{j-i}\quad(j\geq1).
+\tag{J.11b}
+\]</span>
+The coefficient of <span class="math" data-tex="\(t^j\)">\(t^j\)</span> in
+<span class="math" data-tex="\((1+\sum_{i\geq1}P_it^i)(1+\sum_{i\geq1}Q_it^i)\)">\((1+\sum_{i\geq1}P_it^i)(1+\sum_{i\geq1}Q_it^i)\)</span>
+is zero for every <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>. Thus the second series is the formal inverse of the first. Every <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is an integer polynomial of weight <span class="math" data-tex="\(j\)">\(j\)</span>, and substitution <span class="math" data-tex="\(P_j\mapsto Q_j\)">\(P_j\mapsto Q_j\)</span> defines a weight-preserving ring homomorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Applying it twice inverts a series twice. Uniqueness of the recursively determined inverse implies <span class="math" data-tex="\(\sigma^2=\operatorname{id}\)">\(\sigma^2=\operatorname{id}\)</span>.</p>
+<p>The monomials <span class="math" data-tex="\(P_I\)">\(P_I\)</span>, indexed by partitions <span class="math" data-tex="\(I\vdash r\)">\(I\vdash r\)</span>, form a finite integer basis of the weight-<span class="math" data-tex="\(r\)">\(r\)</span> part. Write <span class="math" data-tex="\(\sigma(P_I)=\sum_{J\vdash r}a_{IJ}P_J\)">\(\sigma(P_I)=\sum_{J\vdash r}a_{IJ}P_J\)</span>. The matrix <span class="math" data-tex="\(A_r=(a_{IJ})\)">\(A_r=(a_{IJ})\)</span> is integral and <span class="math" data-tex="\(A_r^2=I\)">\(A_r^2=I\)</span>, so its determinant is <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Substituting <span class="math" data-tex="\(P_j=p_j(TM)\)">\(P_j=p_j(TM)\)</span> in (J.11b) and using (J.11a) gives <span class="math" data-tex="\(p_j(\nu)=Q_j(p(TM))\)">\(p_j(\nu)=Q_j(p(TM))\)</span> rationally. Evaluation on <span class="math" data-tex="\([M]\)">\([M]\)</span> therefore gives the normal number vector as <span class="math" data-tex="\(A_r\)">\(A_r\)</span> times the tangent vector. Both sides are integers; equality after their inclusion in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is equality in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This proves the integer conversion even though (J.11a) was used only rationally. Applying <span class="math" data-tex="\(A_r\)">\(A_r\)</span> again proves the inverse conversion and the vanishing equivalence. In weight zero <span class="math" data-tex="\(\sigma(1)=1\)">\(\sigma(1)=1\)</span>, giving the stated signed-count coordinate. ∎</p>
+<p>For example <span class="math" data-tex="\(Q_1=-P_1\)">\(Q_1=-P_1\)</span> and <span class="math" data-tex="\(Q_2=P_1^2-P_2\)">\(Q_2=P_1^2-P_2\)</span>. In dimension eight, if <span class="math" data-tex="\(u=\langle p_1(TM)^2,[M]\rangle\)">\(u=\langle p_1(TM)^2,[M]\rangle\)</span> and <span class="math" data-tex="\(v=\langle p_2(TM),[M]\rangle\)">\(v=\langle p_2(TM),[M]\rangle\)</span>, the corresponding normal vector is <span class="math" data-tex="\((u,u-v)\)">\((u,u-v)\)</span>. The projective computations in the characteristic-number chapter give tangent vectors <span class="math" data-tex="\((25,10)\)">\((25,10)\)</span> and <span class="math" data-tex="\((18,9)\)">\((18,9)\)</span> for <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> and <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>; their normal vectors are <span class="math" data-tex="\((25,15)\)">\((25,15)\)</span> and <span class="math" data-tex="\((18,9)\)">\((18,9)\)</span>. The normal matrix has determinant <span class="math" data-tex="\(-45\)">\(-45\)</span>, so either convention proves independence. These number coordinates are distinct from the coefficients in a chosen projective-product basis; the latter require the matrix inversion in Section K.4.</p>
+<h3 id="j-5-thom-s-finite-generation-and-rank-theorem">J.5. Thom's finite generation and rank theorem</h3>
+<p>Let <span class="math" data-tex="\(\mathfrak p(r)\)">\(\mathfrak p(r)\)</span> be the number of partitions of the nonnegative integer <span class="math" data-tex="\(r\)">\(r\)</span>, with <span class="math" data-tex="\(\mathfrak p(0)=1\)">\(\mathfrak p(0)=1\)</span>. For example <span class="math" data-tex="\(\mathfrak p(1)=1\)">\(\mathfrak p(1)=1\)</span>, <span class="math" data-tex="\(\mathfrak p(2)=2\)">\(\mathfrak p(2)=2\)</span>, and <span class="math" data-tex="\(\mathfrak p(3)=3\)">\(\mathfrak p(3)=3\)</span>.</p>
+<p><span id="DG-CHAR-13D.theorem-J.5"></span><strong>Theorem J.5 — Rational rank of oriented bordism (MS18.8).</strong> For every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is a finitely generated abelian group. Its rank is
+<span class="math math-display" data-tex="\[
+\operatorname{rank}\Omega_n=
+\begin{cases}
+\mathfrak p(r),&amp;n=4r,\\
+0,&amp;4\nmid n.
+\end{cases}
+\tag{J.12}
+\]">\[
+\operatorname{rank}\Omega_n=
+\begin{cases}
+\mathfrak p(r),&amp;n=4r,\\
+0,&amp;4\nmid n.
+\end{cases}
+\tag{J.12}
+\]</span>
+In particular <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is finite when <span class="math" data-tex="\(4\nmid n\)">\(4\nmid n\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(k,p\)">\(k,p\)</span> satisfying (J.10). Theorem J.4 has already proved finite generation and identifies the rank with <span class="math" data-tex="\(\dim_{\mathbb Q}H_n(BSO(k);\mathbb Q)\)">\(\dim_{\mathbb Q}H_n(BSO(k);\mathbb Q)\)</span>.</p>
+<p>The Pontryagin chapter's full universal-ring proof, Theorem5.1 with coefficients <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, gives
+<span class="math math-display" data-tex="\[
+H^*(BSO(2m+1);\mathbb Q)=\mathbb Q[p_1,\ldots,p_m],
+\tag{J.13}
+\]">\[
+H^*(BSO(2m+1);\mathbb Q)=\mathbb Q[p_1,\ldots,p_m],
+\tag{J.13}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+H^*(BSO(2m);\mathbb Q)=\mathbb Q[p_1,\ldots,p_{m-1},e],
+\qquad |p_i|=4i,\quad |e|=2m.
+\tag{J.14}
+\]">\[
+H^*(BSO(2m);\mathbb Q)=\mathbb Q[p_1,\ldots,p_{m-1},e],
+\qquad |p_i|=4i,\quad |e|=2m.
+\tag{J.14}
+\]</span>
+In (J.14), <span class="math" data-tex="\(p_m=e^2\)">\(p_m=e^2\)</span>. Since <span class="math" data-tex="\(k&gt;n+1\)">\(k&gt;n+1\)</span>, the Euler generator, when present, has degree <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span> and contributes no monomial to degree <span class="math" data-tex="\(n\)">\(n\)</span>. Every <span class="math" data-tex="\(p_i\)">\(p_i\)</span> that can occur in that degree has <span class="math" data-tex="\(4i\leq n&lt;k\)">\(4i\leq n&lt;k\)</span>, and is among the displayed polynomial generators. Thus degree <span class="math" data-tex="\(n\)">\(n\)</span> is zero unless <span class="math" data-tex="\(n=4r\)">\(n=4r\)</span>; in degree <span class="math" data-tex="\(4r\)">\(4r\)</span> its monomial basis is
+<span class="math math-display" data-tex="\[
+\{p_{i_1}\cdots p_{i_q}: (i_1,\ldots,i_q)\vdash r\}.
+\tag{J.15}
+\]">\[
+\{p_{i_1}\cdots p_{i_q}: (i_1,\ldots,i_q)\vdash r\}.
+\tag{J.15}
+\]</span>
+The empty monomial is included for <span class="math" data-tex="\(r=0\)">\(r=0\)</span>.</p>
+<p>The proved rational coefficient theorem gives <span class="math" data-tex="\(H^n(BSO(k);\mathbb Q)=\operatorname{Hom}_{\mathbb Q}(H_n(BSO(k);\mathbb Q),\mathbb Q)\)">\(H^n(BSO(k);\mathbb Q)=\operatorname{Hom}_{\mathbb Q}(H_n(BSO(k);\mathbb Q),\mathbb Q)\)</span>. The latter homology is finite dimensional by (J.3), so its dimension equals that of its dual. The basis count in (J.15) and Theorem J.4 give (J.12). A finitely generated abelian group of rational rank zero is finite by the explicit decomposition in rational Lemma F.1. This proves the final assertion. ∎</p>
+<p>The proof controls all finite errors without computing their orders. In particular it does not give the complete integral torsion of <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>, nor assert that every integral number vector is realizable. Its rank conclusion is exact because the finite-stage Pontryagin–Thom and rational Hurewicz comparisons are actual isomorphisms in the needed senses.</p>
+<h2 id="k-projective-generators-and-the-torsion-criterion">K. Projective generators and the torsion criterion</h2>
+<p>For a partition <span class="math" data-tex="\(I=(i_1,\ldots,i_q)\)">\(I=(i_1,\ldots,i_q)\)</span> of <span class="math" data-tex="\(r\)">\(r\)</span>, put
+<span class="math math-display" data-tex="\[
+P_I=\mathbb {CP}^{2i_1}\times\cdots\times\mathbb {CP}^{2i_q},
+\tag{K.1}
+\]">\[
+P_I=\mathbb {CP}^{2i_1}\times\cdots\times\mathbb {CP}^{2i_q},
+\tag{K.1}
+\]</span>
+with each factor's complex orientation and the ordered product orientation. Its real dimension is <span class="math" data-tex="\(4r\)">\(4r\)</span>. Permuting the factors preserves that orientation because their real dimensions are even. The empty product <span class="math" data-tex="\(P_{\varnothing}\)">\(P_{\varnothing}\)</span> is the positive point, the multiplicative unit in <span class="math" data-tex="\(\Omega_0\)">\(\Omega_0\)</span>.</p>
+<p>The characteristic-number chapter, Theorem4.2, proves that the square matrix
+<span class="math math-display" data-tex="\[
+\mathcal P_r=(p_J[P_I])_{J,I\vdash r}
+\tag{K.2}
+\]">\[
+\mathcal P_r=(p_J[P_I])_{J,I\vdash r}
+\tag{K.2}
+\]</span>
+is nonsingular over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Its complete proof changes integrally from elementary Pontryagin monomials to monomial symmetric classes <span class="math" data-tex="\(s_J(p)\)">\(s_J(p)\)</span>. The product formula has coefficient one for each distinct split of a partition; a nonzero entry requires refinement. In a partition ordering by length the resulting matrix is triangular, and its diagonal entries are products of the nonzero numbers
+<span class="math" data-tex="\(s_j(p)[\mathbb {CP}^{2j}]=2j+1\)">\(s_j(p)[\mathbb {CP}^{2j}]=2j+1\)</span>. The integral change of basis is invertible, so (K.2) is nonsingular too. This recalls the actual mechanism in the earlier proof; no independence of bordism generators is assumed here.</p>
+<h3 id="k-1-the-rational-polynomial-ring">K.1. The rational polynomial ring</h3>
+<p><span id="DG-CHAR-13D.theorem-K.1"></span><strong>Theorem K.1 — Rational oriented bordism (MS18.9).</strong> The graded map
+<span class="math math-display" data-tex="\[
+\Phi:\mathbb Q[z_1,z_2,z_3,\ldots]\longrightarrow
+\Omega_*\otimes\mathbb Q,
+\qquad |z_i|=4i,\quad z_i\longmapsto[\mathbb {CP}^{2i}]\otimes1,
+\tag{K.3}
+\]">\[
+\Phi:\mathbb Q[z_1,z_2,z_3,\ldots]\longrightarrow
+\Omega_*\otimes\mathbb Q,
+\qquad |z_i|=4i,\quad z_i\longmapsto[\mathbb {CP}^{2i}]\otimes1,
+\tag{K.3}
+\]</span>
+is an isomorphism of graded algebras. In degree <span class="math" data-tex="\(4r\)">\(4r\)</span>, the classes <span class="math" data-tex="\([P_I]\otimes1\)">\([P_I]\otimes1\)</span>, <span class="math" data-tex="\(I\vdash r\)">\(I\vdash r\)</span>, are a basis. The other positive degrees are zero.</p>
+<p><strong>Proof.</strong> The earlier cobordism-ring chapter proves that products and sums are well defined, that the signed point is the unit, and that the product has sign <span class="math" data-tex="\((-1)^{mn}\)">\((-1)^{mn}\)</span> under exchange of degree-<span class="math" data-tex="\(m\)">\(m\)</span> and degree-<span class="math" data-tex="\(n\)">\(n\)</span> factors. The degrees <span class="math" data-tex="\(4i\)">\(4i\)</span> are even, so these chosen classes commute and define (K.3) on every polynomial, whose monomials and sums are finite.</p>
+<p>Pontryagin numbers are additive and vanish on boundaries by the full proof in characteristic-number Proposition5.1. They therefore define integer homomorphisms <span class="math" data-tex="\(\Omega_{4r}\to\mathbb Z\)">\(\Omega_{4r}\to\mathbb Z\)</span>, and rational linear functionals after tensoring. If
+<span class="math math-display" data-tex="\[
+\sum_{I\vdash r}a_I([P_I]\otimes1)=0,
+\tag{K.4}
+\]">\[
+\sum_{I\vdash r}a_I([P_I]\otimes1)=0,
+\tag{K.4}
+\]</span>
+apply all of them. The coefficient vector then satisfies <span class="math" data-tex="\(\mathcal P_r a=0\)">\(\mathcal P_r a=0\)</span>. Nonsingularity of (K.2) forces every <span class="math" data-tex="\(a_I=0\)">\(a_I=0\)</span>. The <span class="math" data-tex="\(\mathfrak p(r)\)">\(\mathfrak p(r)\)</span> projective products are independent. Theorem J.5 says the whole degree has dimension <span class="math" data-tex="\(\mathfrak p(r)\)">\(\mathfrak p(r)\)</span>, so these products also span.</p>
+<p>For degree zero the empty product represents the positive point and <span class="math" data-tex="\(\Omega_0=\mathbb Z\)">\(\Omega_0=\mathbb Z\)</span>, as proved by the signed interval-boundary calculation in the cobordism chapter. Thus (K.3) is an isomorphism in degree zero too. In degrees not divisible by four the polynomial algebra is zero and Theorem J.5 makes the rational target zero. The map is therefore an isomorphism in every degree. An element of a graded polynomial algebra, and of the direct-sum graded bordism group, has only finitely many homogeneous components, so the degreewise conclusion proves both global injectivity and surjectivity. ∎</p>
+<p><span id="DG-CHAR-13D.corollary-K.2"></span><strong>Corollary K.2 — Complete rational detection by tangent numbers.</strong> For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, the map
+<span class="math math-display" data-tex="\[
+\mathcal N_r:\Omega_{4r}\otimes\mathbb Q\longrightarrow
+\mathbb Q^{\mathfrak p(r)},\qquad
+[M]\otimes1\longmapsto (p_I[M])_{I\vdash r},
+\tag{K.5}
+\]">\[
+\mathcal N_r:\Omega_{4r}\otimes\mathbb Q\longrightarrow
+\mathbb Q^{\mathfrak p(r)},\qquad
+[M]\otimes1\longmapsto (p_I[M])_{I\vdash r},
+\tag{K.5}
+\]</span>
+is an isomorphism. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, use the empty characteristic product <span class="math" data-tex="\(1\)">\(1\)</span>; its number is the signed number of points, and the analogous map is an isomorphism to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> Theorem K.1 gives the projective basis. On that basis the map has exactly the nonsingular matrix (K.2). Its inverse matrix over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> supplies an inverse linear map. In degree zero its matrix is the one-by-one matrix <span class="math" data-tex="\((1)\)">\((1)\)</span>. ∎</p>
+<p>The integer image of the number map can be a proper lattice. Corollary K.2 makes no claim that every integer vector in its target arises from a manifold, nor that an integral bordism class with zero numbers must be zero.</p>
+<h3 id="k-2-when-a-positive-multiple-bounds">K.2. When a positive multiple bounds</h3>
+<p>We first spell out the exact algebraic meaning of a rationally zero class. The fraction description in rational Section F.1 shows, for any abelian group <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+a\otimes1=0\text{ in }A\otimes\mathbb Q
+\quad\Longleftrightarrow\quad
+Na=0\text{ in }A\text{ for some integer }N&gt;0.
+\tag{K.6}
+\]">\[
+a\otimes1=0\text{ in }A\otimes\mathbb Q
+\quad\Longleftrightarrow\quad
+Na=0\text{ in }A\text{ for some integer }N&gt;0.
+\tag{K.6}
+\]</span>
+Indeed the left side says that the fraction <span class="math" data-tex="\(a/1\)">\(a/1\)</span> equals the zero fraction. The common-denominator equivalence means exactly that a nonzero positive integer kills the numerator. Conversely such an integer can be inverted over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, giving zero. This does not require finite generation.</p>
+<p><span id="DG-CHAR-13D.theorem-K.3"></span><strong>Theorem K.3 — Positive-multiple bounding criterion (MS18.10).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a smooth closed oriented <span class="math" data-tex="\(n\)">\(n\)</span>-manifold, possibly disconnected, with <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. A disjoint union of some positive number of copies of <span class="math" data-tex="\(M\)">\(M\)</span> is an oriented boundary if and only if all its top-degree Pontryagin numbers vanish. When <span class="math" data-tex="\(4\nmid n\)">\(4\nmid n\)</span> there are no such positive-degree numbers, and the condition is automatic. In dimension zero, “all” includes the empty-product number, the signed count of points.</p>
+<p><strong>Proof: necessity.</strong> For <span class="math" data-tex="\(n=4r&gt;0\)">\(n=4r&gt;0\)</span>, if <span class="math" data-tex="\(N[M]=0\)">\(N[M]=0\)</span> in <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>, the additivity and boundary theorem give
+<span class="math math-display" data-tex="\[
+N p_I[M]=p_I[\underbrace{M\sqcup\cdots\sqcup M}_{N\text{ copies}}]=0.
+\tag{K.7}
+\]">\[
+N p_I[M]=p_I[\underbrace{M\sqcup\cdots\sqcup M}_{N\text{ copies}}]=0.
+\tag{K.7}
+\]</span>
+These are integers, so every <span class="math" data-tex="\(p_I[M]\)">\(p_I[M]\)</span> is zero. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the identical argument applies to the signed count, which is the proved identification <span class="math" data-tex="\(\Omega_0=\mathbb Z\)">\(\Omega_0=\mathbb Z\)</span>. The degrees not divisible by four have no top-degree Pontryagin monomials, so necessity is vacuous there.</p>
+<p><strong>Proof: sufficiency.</strong> If <span class="math" data-tex="\(n=4r\)">\(n=4r\)</span>, Corollary K.2 makes zero numbers equivalent to <span class="math" data-tex="\([M]\otimes1=0\)">\([M]\otimes1=0\)</span>. Formula (K.6) then gives <span class="math" data-tex="\(N[M]=0\)">\(N[M]=0\)</span> for some <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>. By the definition of oriented bordism, this says exactly that the disjoint union of those <span class="math" data-tex="\(N\)">\(N\)</span> copies, with their given orientations, is the outward-oriented boundary of a compact oriented <span class="math" data-tex="\((n+1)\)">\((n+1)\)</span>-manifold. The dimension-zero argument is included through the empty-product coordinate. If <span class="math" data-tex="\(4\nmid n\)">\(4\nmid n\)</span>, Theorem J.5 says <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is finite; the order of <span class="math" data-tex="\([M]\)">\([M]\)</span>, or one if it is zero, gives the same conclusion. ∎</p>
+<p>This criterion detects torsion, rather than the precise integral zero class. Determining when <span class="math" data-tex="\(M\)">\(M\)</span> itself bounds needs further information about integral torsion. We have not asserted an order or structure for that torsion.</p>
+<h3 id="k-3-an-integral-relation-after-a-positive-multiplier">K.3. An integral relation after a positive multiplier</h3>
+<p><span id="DG-CHAR-13D.corollary-K.4"></span><strong>Corollary K.4 — Projective products after a multiplier.</strong> For every smooth closed oriented <span class="math" data-tex="\(n\)">\(n\)</span>-manifold <span class="math" data-tex="\(M\)">\(M\)</span>, there is an integer <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span> and an integral linear combination of the projective products (K.1) of dimension <span class="math" data-tex="\(n\)">\(n\)</span> such that
+<span class="math math-display" data-tex="\[
+N[M]=\sum_{I\vdash r}b_I[P_I]\quad\text{in }\Omega_{4r}
+\quad\text{if }n=4r.
+\tag{K.8}
+\]">\[
+N[M]=\sum_{I\vdash r}b_I[P_I]\quad\text{in }\Omega_{4r}
+\quad\text{if }n=4r.
+\tag{K.8}
+\]</span>
+When <span class="math" data-tex="\(4\nmid n\)">\(4\nmid n\)</span>, the corresponding assertion is <span class="math" data-tex="\(N[M]=0\)">\(N[M]=0\)</span>. Negative coefficients mean copies with reversed orientation; a zero coefficient contributes no copy. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the right side uses the signed point.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n=4r\)">\(n=4r\)</span>, expand <span class="math" data-tex="\([M]\otimes1\)">\([M]\otimes1\)</span> in Theorem K.1's basis, say with coefficients <span class="math" data-tex="\(a_I\in\mathbb Q\)">\(a_I\in\mathbb Q\)</span>. Choose a positive common denominator <span class="math" data-tex="\(D\)">\(D\)</span>, so <span class="math" data-tex="\(D a_I\)">\(D a_I\)</span> are integers. Then
+<span class="math math-display" data-tex="\[
+u=D[M]-\sum_{I\vdash r}(D a_I)[P_I]
+\tag{K.9}
+\]">\[
+u=D[M]-\sum_{I\vdash r}(D a_I)[P_I]
+\tag{K.9}
+\]</span>
+is an integral bordism class with <span class="math" data-tex="\(u\otimes1=0\)">\(u\otimes1=0\)</span>. By (K.6), a positive integer <span class="math" data-tex="\(t\)">\(t\)</span> kills <span class="math" data-tex="\(u\)">\(u\)</span>. Multiply (K.9) by <span class="math" data-tex="\(t\)">\(t\)</span>, putting <span class="math" data-tex="\(N=tD\)">\(N=tD\)</span> and <span class="math" data-tex="\(b_I=tD a_I\)">\(b_I=tD a_I\)</span>, to get (K.8). This extra torsion multiplier is necessary for the stated proof: clearing denominators alone establishes only a relation modulo torsion. For dimensions not divisible by four use Theorem J.5's finite group. Degree zero could also be handled directly by its signed-count isomorphism. ∎</p>
+<p>Because an integral combination is represented by an actual disjoint union with orientation reversals, (K.8) is an actual smooth oriented cobordism statement. It is not merely equality of characteristic-number vectors. This proves the assigned projective-combination consequence as well as the source's distinct positive-multiple bounding criterion.</p>
+<h3 id="k-4-explicit-coefficients-in-dimensions-four-and-eight">K.4. Explicit coefficients in dimensions four and eight</h3>
+<p>In real dimension four the sole projective generator is <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, whose number is <span class="math" data-tex="\(p_1=3\)">\(p_1=3\)</span>. Thus
+<span class="math math-display" data-tex="\[
+[M^4]\otimes1=\frac{p_1[M]}3[\mathbb {CP}^2]\otimes1.
+\tag{K.10}
+\]">\[
+[M^4]\otimes1=\frac{p_1[M]}3[\mathbb {CP}^2]\otimes1.
+\tag{K.10}
+\]</span>
+Reversing orientation negates both sides' coordinates. This is a rational bordism computation. Divisibility of <span class="math" data-tex="\(p_1[M]\)">\(p_1[M]\)</span> by three will follow from the signature theorem; it is not needed or inferred here.</p>
+<p>In real dimension eight use the ordered basis <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>. The earlier characteristic-number chapter computed the exact matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}25&amp;18\\10&amp;9\end{pmatrix},\qquad \det=45,
+\tag{K.11}
+\]">\[
+\begin{pmatrix}25&amp;18\\10&amp;9\end{pmatrix},\qquad \det=45,
+\tag{K.11}
+\]</span>
+with rows <span class="math" data-tex="\(p_1^2,p_2\)">\(p_1^2,p_2\)</span>. Writing <span class="math" data-tex="\(u=p_1^2[M]\)">\(u=p_1^2[M]\)</span>, <span class="math" data-tex="\(v=p_2[M]\)">\(v=p_2[M]\)</span>, solve this matrix equation to obtain
+<span class="math math-display" data-tex="\[
+[M]\otimes1=
+\frac{u-2v}{5}[\mathbb {CP}^4]\otimes1
++\frac{5v-2u}{9}[\mathbb {CP}^2\times\mathbb {CP}^2]\otimes1.
+\tag{K.12}
+\]">\[
+[M]\otimes1=
+\frac{u-2v}{5}[\mathbb {CP}^4]\otimes1
++\frac{5v-2u}{9}[\mathbb {CP}^2\times\mathbb {CP}^2]\otimes1.
+\tag{K.12}
+\]</span>
+For a single <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, its vector <span class="math" data-tex="\((25,10)\)">\((25,10)\)</span> gives coefficients <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>; for the product, <span class="math" data-tex="\((18,9)\)">\((18,9)\)</span> gives <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Multiplying by45 clears both denominators:
+<span class="math math-display" data-tex="\[
+45[M]-9(u-2v)[\mathbb {CP}^4]
+-5(5v-2u)[\mathbb {CP}^2\times\mathbb {CP}^2]
+\tag{K.13}
+\]">\[
+45[M]-9(u-2v)[\mathbb {CP}^4]
+-5(5v-2u)[\mathbb {CP}^2\times\mathbb {CP}^2]
+\tag{K.13}
+\]</span>
+is a torsion class. A further positive multiplier kills it, yielding an integral relation of the kind (K.8). Claiming that (K.13) itself is zero would discard the integral error that the argument has explicitly retained.</p>
+<p>In dimensions one, two and three the rational group is zero. This conclusion alone gives no integral group orders and does not determine whether any particular integral group is zero.</p>
+<h2 id="l-exercises-with-complete-solutions">L. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-13D.exercise-L.1"></span><strong>Exercise L.1 — Easy: choose a sufficient finite stage.</strong> Use the proved bounds to choose the smallest allowed <span class="math" data-tex="\(k,p\)">\(k,p\)</span> in Theorem J.4 for <span class="math" data-tex="\(n=8\)">\(n=8\)</span>. Identify its Thom homotopy degree and check the strict Hurewicz inequality. Explain precisely what the same cell bounds give if <span class="math" data-tex="\(p=8\)">\(p=8\)</span>. Also choose a sufficient stage for <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Solution.</strong> The conditions are <span class="math" data-tex="\(k&gt;\max\{2,9\}\)">\(k&gt;\max\{2,9\}\)</span> and <span class="math" data-tex="\(p\geq9\)">\(p\geq9\)</span>, so the smallest allowed integers are <span class="math" data-tex="\(k=10,p=9\)">\(k=10,p=9\)</span>. The finite group is
+<span class="math math-display" data-tex="\[
+\pi_{18}(T_{10,9})\cong\Omega_8.
+\]">\[
+\pi_{18}(T_{10,9})\cong\Omega_8.
+\]</span>
+The Hurewicz bound is <span class="math" data-tex="\(18&lt;2\cdot10-1=19\)">\(18&lt;2\cdot10-1=19\)</span>, exactly the required strict inequality. The first omitted Thom cell has dimension <span class="math" data-tex="\(k+p+1=20\)">\(k+p+1=20\)</span>, so the relative groups in dimensions18 and19 vanish. The first omitted base cell has dimension10, so relative homology in degrees8 and9 vanishes. These give both isomorphisms used in Theorem J.4.</p>
+<p>For <span class="math" data-tex="\(p=8\)">\(p=8\)</span>, the first omitted Thom cell has dimension19, so the argument vanishes only through relative dimension18. Its exact sequence proves surjectivity on <span class="math" data-tex="\(\pi_{18}\)">\(\pi_{18}\)</span>, without proving injectivity because relative <span class="math" data-tex="\(\pi_{19}\)">\(\pi_{19}\)</span> has not been controlled. The first omitted base cell has dimension9, likewise proving surjectivity on <span class="math" data-tex="\(H_8\)">\(H_8\)</span> without the degree-nine vanishing that would give injectivity. This does not assert either map actually fails to be injective; it states the limit of these particular bounds.</p>
+<p>For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, choose <span class="math" data-tex="\(k=3,p=1\)">\(k=3,p=1\)</span>. Its degree is3, and <span class="math" data-tex="\(3&lt;5\)">\(3&lt;5\)</span> is the Hurewicz inequality. The finite oriented base is connected, whereas <span class="math" data-tex="\(p=0\)">\(p=0\)</span> would give the two oriented full planes. Its <span class="math" data-tex="\(H_0=\mathbb Z\)">\(H_0=\mathbb Z\)</span> and the comparison agree with the signed-point identification <span class="math" data-tex="\(\Omega_0=\mathbb Z\)">\(\Omega_0=\mathbb Z\)</span>. ∎</p>
+<p><span id="DG-CHAR-13D.exercise-L.2"></span><strong>Exercise L.2 — Easy: partitions and ranks.</strong> Compute the rational ranks in real dimensions12,18 and20. Give bases in the nonzero degrees and state the integral conclusions actually obtained in dimension18.</p>
+<p><strong>Solution.</strong> The partitions of3 are <span class="math" data-tex="\((3),(2,1),(1,1,1)\)">\((3),(2,1),(1,1,1)\)</span>. Hence the degree-twelve rational group has basis
+<span class="math math-display" data-tex="\[
+[\mathbb {CP}^6],\quad[\mathbb {CP}^4\times\mathbb {CP}^2],
+\quad[(\mathbb {CP}^2)^3],
+\]">\[
+[\mathbb {CP}^6],\quad[\mathbb {CP}^4\times\mathbb {CP}^2],
+\quad[(\mathbb {CP}^2)^3],
+\]</span>
+where each class in this display is rationalized. Its rank is3. Dimension18 is not divisible by four; its rank is zero, and Theorem J.5 gives a finite integral group. It does not specify its order, exponent or whether it is zero.</p>
+<p>The partitions of5 are
+<span class="math math-display" data-tex="\[
+(5),(4,1),(3,2),(3,1,1),(2,2,1),(2,1,1,1),(1,1,1,1,1).
+\]">\[
+(5),(4,1),(3,2),(3,1,1),(2,2,1),(2,1,1,1),(1,1,1,1,1).
+\]</span>
+Thus the rank in dimension20 is7, and the corresponding basis consists of
+<span class="math" data-tex="\(\mathbb {CP}^{10}\)">\(\mathbb {CP}^{10}\)</span>, <span class="math" data-tex="\(\mathbb {CP}^{8}\times\mathbb {CP}^{2}\)">\(\mathbb {CP}^{8}\times\mathbb {CP}^{2}\)</span>, <span class="math" data-tex="\(\mathbb {CP}^{6}\times\mathbb {CP}^{4}\)">\(\mathbb {CP}^{6}\times\mathbb {CP}^{4}\)</span>, <span class="math" data-tex="\(\mathbb {CP}^{6}\times(\mathbb {CP}^{2})^2\)">\(\mathbb {CP}^{6}\times(\mathbb {CP}^{2})^2\)</span>, <span class="math" data-tex="\((\mathbb {CP}^{4})^2\times\mathbb {CP}^{2}\)">\((\mathbb {CP}^{4})^2\times\mathbb {CP}^{2}\)</span>, <span class="math" data-tex="\(\mathbb {CP}^{4}\times(\mathbb {CP}^{2})^3\)">\(\mathbb {CP}^{4}\times(\mathbb {CP}^{2})^3\)</span>, and <span class="math" data-tex="\((\mathbb {CP}^{2})^5\)">\((\mathbb {CP}^{2})^5\)</span>. The finite partition list includes every possibility: distinguish the largest part5,4,3,2 or1, and partition the remaining weight into parts no larger than it. ∎</p>
+<p><span id="DG-CHAR-13D.exercise-L.3"></span><strong>Exercise L.3 — Medium: invert the dimension-eight number matrix.</strong> Derive (K.12). Check it on the oriented disjoint union of two copies of <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> and one orientation-reversed copy of <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>. For an arbitrary eight-manifold, identify the precise residual class after multiplying its rational formula by45.</p>
+<p><strong>Solution.</strong> If the two rational coefficients are <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, the two numbers give
+<span class="math math-display" data-tex="\[
+25A+18B=u,\qquad10A+9B=v.
+\]">\[
+25A+18B=u,\qquad10A+9B=v.
+\]</span>
+Subtracting twice the second equation from the first gives <span class="math" data-tex="\(5A=u-2v\)">\(5A=u-2v\)</span>. Taking five times the second minus twice the first gives <span class="math" data-tex="\(9B=5v-2u\)">\(9B=5v-2u\)</span>. The determinant45 is nonzero, so these are the unique solution (K.12).</p>
+<p>The specified disjoint union has <span class="math" data-tex="\(u=50-18=32\)">\(u=50-18=32\)</span> and <span class="math" data-tex="\(v=20-9=11\)">\(v=20-9=11\)</span>, because orientation reversal negates both evaluations. The two formulas return <span class="math" data-tex="\(A=2\)">\(A=2\)</span> and <span class="math" data-tex="\(B=-1\)">\(B=-1\)</span>, as its actual integral construction requires.</p>
+<p>For a general <span class="math" data-tex="\(M\)">\(M\)</span>, the residual class is exactly (K.13). Its rationalization is zero, so (K.6) makes it torsion. Its numbers are zero as well, by the two displayed equations. Neither observation gives its integral order or establishes that it is already zero. Multiplying it by its positive order gives the integral bordism relation. ∎</p>
+<p><span id="DG-CHAR-13D.exercise-L.4"></span><strong>Exercise L.4 — Medium: the zero-dimensional exception to a careless criterion.</strong> Explain why omitting the empty-product number would make Theorem K.3 false in dimension zero. Determine when a signed finite set has a positive multiple that bounds, and construct its bordism in the bounding case.</p>
+<p><strong>Solution.</strong> A positive point has no positive-degree Pontryagin numbers, but its class is1 in <span class="math" data-tex="\(\Omega_0=\mathbb Z\)">\(\Omega_0=\mathbb Z\)</span>, so no positive multiple is zero. The missing coordinate is <span class="math" data-tex="\(\langle1,[M]\rangle\)">\(\langle1,[M]\rangle\)</span>, the signed count.</p>
+<p>If <span class="math" data-tex="\(M\)">\(M\)</span> has <span class="math" data-tex="\(a\)">\(a\)</span> positive and <span class="math" data-tex="\(b\)">\(b\)</span> negative points, a positive multiple bounds exactly when <span class="math" data-tex="\(N(a-b)=0\)">\(N(a-b)=0\)</span> for some <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span>, hence exactly when <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. In that case pair each positive point with one negative point. Give each interval the increasing-coordinate orientation, whose outward boundary is its positive terminal point and negative initial point, and identify these endpoints with the pair. The disjoint union of these intervals is already an oriented bordism with boundary <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(N=1\)">\(N=1\)</span> suffices in this dimension when the complete number coordinate vanishes. ∎</p>
+<p><span id="DG-CHAR-13D.exercise-L.5"></span><strong>Exercise L.5 — Medium: Euler data and Pontryagin torsion detection.</strong> Show that <span class="math" data-tex="\(S^4\times\mathbb {CP}^2\)">\(S^4\times\mathbb {CP}^2\)</span> has zero Pontryagin numbers, while its Euler number is6. Give a direct oriented bounding manifold. Explain why this example is compatible with Theorem K.3.</p>
+<p><strong>Solution.</strong> The stable triviality <span class="math" data-tex="\(TS^4\oplus\varepsilon^1=\varepsilon^5\)">\(TS^4\oplus\varepsilon^1=\varepsilon^5\)</span> gives <span class="math" data-tex="\(p(TS^4)=1\)">\(p(TS^4)=1\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is the positive degree-two generator on <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, its Pontryagin class is <span class="math" data-tex="\(1+3x^2\)">\(1+3x^2\)</span>, with <span class="math" data-tex="\(x^3=0\)">\(x^3=0\)</span>. The product formula on these torsion-free cohomology groups therefore gives <span class="math" data-tex="\(p_1=3x^2\)">\(p_1=3x^2\)</span> and <span class="math" data-tex="\(p_2=0\)">\(p_2=0\)</span>. Its <span class="math" data-tex="\(p_1^2\)">\(p_1^2\)</span> is zero since <span class="math" data-tex="\(x^4=0\)">\(x^4=0\)</span>. Thus both top-degree numbers vanish.</p>
+<p>The earlier Euler-evaluation and cohomological product proofs give Euler characteristic <span class="math" data-tex="\(\chi(S^4)\chi(\mathbb {CP}^2)=2\cdot3=6\)">\(\chi(S^4)\chi(\mathbb {CP}^2)=2\cdot3=6\)</span>, equal to its Euler number. It is the actual oriented boundary of <span class="math" data-tex="\(D^5\times\mathbb {CP}^2\)">\(D^5\times\mathbb {CP}^2\)</span>, with its disk-first product orientation. Along the boundary, the disk's outward normal followed by <span class="math" data-tex="\(TS^4\)">\(TS^4\)</span> and then the projective tangent orientation gives the ambient product orientation, so the induced boundary is the desired product orientation. There is just the disk boundary, and no additional corner.</p>
+<p>Theorem K.3 concerns stable Pontryagin numbers, which vanish on boundaries. The Euler class is not stable under adjoining the boundary normal line. Its nonzero evaluation therefore supplies no contradiction. This example has an explicit integral bounding manifold, a stronger conclusion than the rational criterion alone provides. ∎</p>
+<p><span id="DG-CHAR-13D.exercise-L.6"></span><strong>Exercise L.6 — Hard: recover the rank from the source's surjectivity route.</strong> Using only finite-target surjectivity in geometric Theorem I.1, the finite Thom comparison of rational Corollary H.5, finite-stage homology stabilization, and projective-product independence, prove Theorem J.5. Then justify the rational polynomial algebra conclusion. Explain where the full finite Pontryagin–Thom isomorphism improves this route.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(k&gt;\max\{2,n+1\}\)">\(k&gt;\max\{2,n+1\}\)</span> and <span class="math" data-tex="\(p\geq n+1\)">\(p\geq n+1\)</span>. Geometric I.1 gives a surjection
+<span class="math" data-tex="\(\pi_{n+k}(T_{k,p})\to\Omega_n\)">\(\pi_{n+k}(T_{k,p})\to\Omega_n\)</span>, since its weaker conditions <span class="math" data-tex="\(k&gt;n,p\geq n\)">\(k&gt;n,p\geq n\)</span> are satisfied. The domain is finitely generated by its finite simply connected CW structure and Theorem F.8, so its quotient <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span> is finitely generated. The finite Thom comparison makes the domain's rational rank equal to that of <span class="math" data-tex="\(H_n(B_{k,p};\mathbb Z)\)">\(H_n(B_{k,p};\mathbb Z)\)</span>. By (J.3) and the universal rational ring, this rank is <span class="math" data-tex="\(\mathfrak p(r)\)">\(\mathfrak p(r)\)</span> for <span class="math" data-tex="\(n=4r\)">\(n=4r\)</span>, and zero otherwise. Exactness of rational tensoring preserves the surjection, giving this as an upper bound for the rank of <span class="math" data-tex="\(\Omega_n\)">\(\Omega_n\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=4r\)">\(n=4r\)</span>, a rational relation among the <span class="math" data-tex="\(\mathfrak p(r)\)">\(\mathfrak p(r)\)</span> projective products would give a zero linear combination of their Pontryagin-number columns. The independently proved nonsingularity of (K.2) makes every coefficient zero. Thus those products give the matching lower bound. In degree zero use the positive point and its nonzero signed count. This proves the rank equality. In other degrees finite generation and rank zero imply finiteness, proving all of Theorem J.5.</p>
+<p>The matching dimension and independence make the projective products a basis in every degree divisible by four. Ordinary polynomial monomials in the classes of <span class="math" data-tex="\(\mathbb {CP}^{2i}\)">\(\mathbb {CP}^{2i}\)</span> are exactly those products. Their multiplication agrees with the bordism product, whose even-dimensional generators commute. The other rational degrees vanish, and the point gives the unit. This proves the graded polynomial isomorphism, rather than only an additive basis assertion.</p>
+<p>The full finite isomorphism of Theorem J.2 gives equality of rational dimensions already from its homotopy/homology comparison. The surjectivity route needed projective independence to obtain that equality. Both routes still need projective independence to identify these particular polynomial generators and to prove complete rational detection by tangent Pontryagin numbers. Neither route determines the remaining integral torsion. ∎</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>René Thom's <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/thomcob.pdf"><em>Quelques propriétés globales des variétés différentiables</em></a> (1954) gives the original bordism classification, rational polynomial ring and positive-multiple consequences. Its use of normal characteristic numbers is compatible with the tangent convention by the proved conversion above.</p>
+<p>Dan Freed's <a href="https://people.math.harvard.edu/~dafr/M392C-2012/Notes/lecture12.pdf"><em>Bordism: Old and New</em>, Lecture12</a> (2012) develops the rational bordism calculation and the projective-space generators. Haynes Miller's <a href="https://ocw.mit.edu/courses/18-906-algebraic-topology-ii-spring-2020/e8a061a73ca1a451df8809c7a7fbc846_MIT18_906S20_notes.pdf"><em>Algebraic Topology II</em>, Lecture40</a> (2020) describes the normal characteristic-number map and the positive-multiple bounding consequence. The finite-stage comparison here supplies explicit dimension bounds; the full symmetric-polynomial proof in the characteristic-number chapter supplies independence in every degree. The normal-to-tangent conversion above explains the two number conventions. Exercise L.6 gives a second rank proof using finite-target surjectivity and independence. The teaching, proofs, computations and exercises here are independently written.</p>
+<p>The exact own proofs used are the Schubert characteristic disks and cellular/singular comparison, general-cover theorem, geometric Thom cells and full Pontryagin–Thom construction, rational finite Thom comparison, universal oriented cohomology ring, and nonsingular projective number matrices. Their stated coefficient and connectivity hypotheses have been retained. This completes the rational bordism portion of the Thom-space lesson. Integral torsion structure, the signature theorem, combinatorial Pontryagin invariance, exotic spheres and Chern–Weil theory belong to later developments.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-13C.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-13E.html">Next chapter</a></nav><p><a href="rational-oriented-bordism-and-projective-generators.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roth&#x27;s theorem and its consequences · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="roth-s-theorem-and-its-consequences">Roth's theorem and its consequences</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Original material is public domain (CC0), except the adapted sections 6–8, which retain CC BY 4.0 with the source credit and change notice in section 7.</em></p>
+<p>The two previous lessons supply opposite index bounds. An integer polynomial can have large index at an algebraic point, with height exponential in its degree. At rational points with separated denominators and degrees, that height forces its index to be small. Good approximation would make all the low-weight derivatives too small to be nonzero rationals. This is the contradiction which proves Roth's theorem.</p>
+<p>The second half extends this method to products of local approximation boxes. We prove the necessary lattice and algebraic-point index estimates, construct a polynomial on a product of boxes, and use exterior powers to obtain the Subspace theorem. Its two-dimensional case gives Lang's and Ridout's theorems. Its higher-dimensional case proves finiteness for nondegenerate <span class="math" data-tex="\(S\)">\(S\)</span>-unit equations and hence Thue–Mahler equations. The number-field foundations are identified where used; the approximation arguments and all four exercise solutions are supplied here.</p>
+<p>We use Theorem 10.7 of <a href="TR-TRANS-10.html">The index method for rational approximation</a> and Theorem 11.3 of <a href="TR-TRANS-11.html">Wronskians and Roth's rational-point lemma</a>. Their complete parameter conditions are retained below. The finite Taylor formula and coefficient norm are proved in Lemmas 10.3–10.4. The normalization used below is still Solution 3 of Lesson 10; the construction is Theorem 10.7 and the rational-point bound is Theorem 11.3.</p>
+<h2 id="1-the-complete-approximation-proof">1. The complete approximation proof</h2>
+<h3 id="theorem-12-1-roth-s-theorem">Theorem 12.1. Roth's theorem</h3>
+<p>For every real irrational algebraic number <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, there are only finitely many reduced rationals <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+|\alpha-p/q|&lt;q^{-2-\delta}.
+\tag{12.1}
+\]">\[
+|\alpha-p/q|&lt;q^{-2-\delta}.
+\tag{12.1}
+\]</span>
+<p><strong>Proof.</strong> The fractional linear normalization proved in Lesson 10, Solution 3, reduces the assertion to an algebraic integer <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(|\alpha|&lt;1\)">\(|\alpha|&lt;1\)</span>. That reduction sends infinitely many exceptional approximations of exponent <span class="math" data-tex="\(2+\delta\)">\(2+\delta\)</span> to infinitely many of some exponent strictly above two, so proving every positive parameter in the normalized case suffices. Suppose, for contradiction, that such a normalized <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has infinitely many approximations (12.1). Reducing the parameter if necessary, assume <span class="math" data-tex="\(0&lt;\delta\leq1/2\)">\(0&lt;\delta\leq1/2\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\varepsilon=\delta/20,
+\qquad m\geq\max\{2,d/(2\varepsilon^2)\},
+\tag{12.2}
+\]">\[
+\varepsilon=\delta/20,
+\qquad m\geq\max\{2,d/(2\varepsilon^2)\},
+\tag{12.2}
+\]</span>
+<p>where <span class="math" data-tex="\(d=\deg\alpha\)">\(d=\deg\alpha\)</span>. Write <span class="math" data-tex="\(C_\alpha\)">\(C_\alpha\)</span> for the index-construction constant in Theorem 10.7 and <span class="math" data-tex="\(C=C(m,\varepsilon)\)">\(C=C(m,\varepsilon)\)</span> for the rational-point constant in Theorem 11.3. Neither depends on the variable degrees chosen next.</p>
+<p>The exceptional reduced denominators are unbounded: a bounded denominator admits only finitely many rationals in a bounded interval. Choose the first approximation so large that</p>
+<span class="math math-display" data-tex="\[
+q_1\geq2^{2mC},\qquad
+\log q_1\geq Cm\log C_\alpha,\qquad
+\varepsilon\log q_1&gt;\log(8C_\alpha).
+\tag{12.3}
+\]">\[
+q_1\geq2^{2mC},\qquad
+\log q_1\geq Cm\log C_\alpha,\qquad
+\varepsilon\log q_1&gt;\log(8C_\alpha).
+\tag{12.3}
+\]</span>
+<p>Choose subsequent exceptional approximations successively with</p>
+<span class="math math-display" data-tex="\[
+\log q_{j+1}&gt;(1+\varepsilon)C\log q_j.
+\tag{12.4}
+\]">\[
+\log q_{j+1}&gt;(1+\varepsilon)C\log q_j.
+\tag{12.4}
+\]</span>
+<p>There is no upper bound on these denominators; that is exactly why an assumed infinite set supplies each choice. Now choose a positive integer <span class="math" data-tex="\(d_1\)">\(d_1\)</span> with <span class="math" data-tex="\(\varepsilon d_1\log q_1\geq\log q_m\)">\(\varepsilon d_1\log q_1\geq\log q_m\)</span>, put <span class="math" data-tex="\(L=d_1\log q_1\)">\(L=d_1\log q_1\)</span>, and for <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span> set</p>
+<span class="math math-display" data-tex="\[
+d_j=\left\lceil L/\log q_j\right\rceil.
+\]">\[
+d_j=\left\lceil L/\log q_j\right\rceil.
+\]</span>
+<p>Then every <span class="math" data-tex="\(d_j\)">\(d_j\)</span> is positive and</p>
+<span class="math math-display" data-tex="\[
+L\leq d_j\log q_j\leq(1+\varepsilon)L,
+\qquad d_j&gt;C d_{j+1}.
+\tag{12.5}
+\]">\[
+L\leq d_j\log q_j\leq(1+\varepsilon)L,
+\qquad d_j&gt;C d_{j+1}.
+\tag{12.5}
+\]</span>
+<p>For the first inequality use <span class="math" data-tex="\(\log q_j\leq\log q_m\leq\varepsilon L\)">\(\log q_j\leq\log q_m\leq\varepsilon L\)</span> to control ceiling error; for <span class="math" data-tex="\(j=1\)">\(j=1\)</span> equality holds at the lower endpoint. For the ratio divide the two inequalities in (12.5) and multiply by (12.4):
+<span class="math" data-tex="\(d_j/d_{j+1}\geq(1+\varepsilon)^{-1}\log q_{j+1}/\log q_j&gt;C\)">\(d_j/d_{j+1}\geq(1+\varepsilon)^{-1}\log q_{j+1}/\log q_j&gt;C\)</span>.</p>
+<p>Theorem 10.7 now gives a nonzero integer polynomial <span class="math" data-tex="\(P\)">\(P\)</span> with these variable-degree bounds, height <span class="math" data-tex="\(H(P)\leq C_\alpha^D\)">\(H(P)\leq C_\alpha^D\)</span>, <span class="math" data-tex="\(D=\sum d_j\leq md_1\)">\(D=\sum d_j\leq md_1\)</span>, and index at <span class="math" data-tex="\(\boldsymbol\alpha=(\alpha,\ldots,\alpha)\)">\(\boldsymbol\alpha=(\alpha,\ldots,\alpha)\)</span> greater than <span class="math" data-tex="\(m(1-\varepsilon)/2\)">\(m(1-\varepsilon)/2\)</span>. The second condition in (12.3) gives</p>
+<span class="math math-display" data-tex="\[
+H(P)\leq q_1^{d_1/C}.
+\]">\[
+H(P)\leq q_1^{d_1/C}.
+\]</span>
+<p>All hypotheses of Theorem 11.3 hold: degree separation is (12.5), every denominator is at least <span class="math" data-tex="\(q_1\)">\(q_1\)</span>, and <span class="math" data-tex="\(q_j^{d_j}\geq q_1^{d_1}\)">\(q_j^{d_j}\geq q_1^{d_1}\)</span> is the first part of (12.5). That theorem therefore gives index at the rational point <span class="math" data-tex="\(\boldsymbol p/\boldsymbol q\)">\(\boldsymbol p/\boldsymbol q\)</span> at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>We prove the opposite inequality by showing that every derivative <span class="math" data-tex="\(Q=D_{\boldsymbol i}P\)">\(Q=D_{\boldsymbol i}P\)</span> with <span class="math" data-tex="\(\sum i_j/d_j\leq\varepsilon\)">\(\sum i_j/d_j\leq\varepsilon\)</span> is zero at that point. The Taylor coefficients of <span class="math" data-tex="\(P(\boldsymbol\alpha+\boldsymbol T)\)">\(P(\boldsymbol\alpha+\boldsymbol T)\)</span> have sum of absolute values at most</p>
+<span class="math math-display" data-tex="\[
+\sum_{\boldsymbol j}|p_{\boldsymbol j}|(1+|\alpha|)^{|\boldsymbol j|}
+\leq2^D\prod_j(d_j+1)H(P)\leq4^D H(P).
+\]">\[
+\sum_{\boldsymbol j}|p_{\boldsymbol j}|(1+|\alpha|)^{|\boldsymbol j|}
+\leq2^D\prod_j(d_j+1)H(P)\leq4^D H(P).
+\]</span>
+<p>Differentiating this expansion by a divided derivative multiplies each surviving coefficient by a product of binomial coefficients at most <span class="math" data-tex="\(2^D\)">\(2^D\)</span>. Thus the sum for the shifted expansion of <span class="math" data-tex="\(Q\)">\(Q\)</span> is at most</p>
+<span class="math math-display" data-tex="\[
+(8C_\alpha)^D&lt;\exp(\varepsilon mL).
+\tag{12.6}
+\]">\[
+(8C_\alpha)^D&lt;\exp(\varepsilon mL).
+\tag{12.6}
+\]</span>
+<p>The index derivative rule of Lemma 10.4 shows that every nonzero shifted coefficient of <span class="math" data-tex="\(Q\)">\(Q\)</span> has weight greater than</p>
+<span class="math math-display" data-tex="\[
+\frac m2(1-\varepsilon)-\varepsilon
+\geq\frac m2(1-3\varepsilon).
+\]">\[
+\frac m2(1-\varepsilon)-\varepsilon
+\geq\frac m2(1-3\varepsilon).
+\]</span>
+<p>For such an exponent vector <span class="math" data-tex="\(\boldsymbol j\)">\(\boldsymbol j\)</span>, the approximation bounds and the lower bounds in (12.5) give</p>
+<span class="math math-display" data-tex="\[
+\prod_r|p_r/q_r-\alpha|^{j_r}
+&lt;\exp\left(-(2+\delta)L\sum_r j_r/d_r\right)
+\leq\exp\left(-mL(1+\delta/2)(1-3\varepsilon)\right).
+\]">\[
+\prod_r|p_r/q_r-\alpha|^{j_r}
+&lt;\exp\left(-(2+\delta)L\sum_r j_r/d_r\right)
+\leq\exp\left(-mL(1+\delta/2)(1-3\varepsilon)\right).
+\]</span>
+<p>Together with (12.6), this yields</p>
+<span class="math math-display" data-tex="\[
+|Q(\boldsymbol p/\boldsymbol q)|
+&lt;\exp\left[-mL\bigl((1+\delta/2)(1-3\varepsilon)
+-\varepsilon\bigr)\right].
+\tag{12.7}
+\]">\[
+|Q(\boldsymbol p/\boldsymbol q)|
+&lt;\exp\left[-mL\bigl((1+\delta/2)(1-3\varepsilon)
+-\varepsilon\bigr)\right].
+\tag{12.7}
+\]</span>
+<p>Its exponent factor exceeds <span class="math" data-tex="\(1+\varepsilon\)">\(1+\varepsilon\)</span>, since</p>
+<span class="math math-display" data-tex="\[
+(1+\delta/2)(1-3\varepsilon)-\varepsilon-(1+\varepsilon)
+=\delta/2-5\varepsilon-3\delta\varepsilon/2&gt;0
+\]">\[
+(1+\delta/2)(1-3\varepsilon)-\varepsilon-(1+\varepsilon)
+=\delta/2-5\varepsilon-3\delta\varepsilon/2&gt;0
+\]</span>
+<p>for <span class="math" data-tex="\(\varepsilon=\delta/20\)">\(\varepsilon=\delta/20\)</span>, <span class="math" data-tex="\(0&lt;\delta\leq1/2\)">\(0&lt;\delta\leq1/2\)</span>. On the other hand, <span class="math" data-tex="\(Q\)">\(Q\)</span> has integer coefficients and its value is rational with denominator dividing <span class="math" data-tex="\(\prod q_j^{d_j}\)">\(\prod q_j^{d_j}\)</span>. Any nonzero value has absolute value at least its reciprocal. Equation (12.5) bounds that product above by <span class="math" data-tex="\(\exp((1+\varepsilon)mL)\)">\(\exp((1+\varepsilon)mL)\)</span>, while (12.7) is strictly below its reciprocal. The value must be zero. A zero derivative polynomial already has zero value, so this conclusion holds for every <span class="math" data-tex="\(\boldsymbol i\)">\(\boldsymbol i\)</span> of weight at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>The rational-point index is therefore greater than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, contradicting its upper bound from Theorem 11.3. This rules out an infinite exceptional set and proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof also completes Proposition 10.2: every irreducible integer binary form of degree at least three has finitely many solutions to a fixed integer value. The case of value zero and the common-divisor issue were included there. No effective upper bound for the solutions is asserted.</p>
+<h2 id="2-lacunary-series-become-transcendental">2. Lacunary series become transcendental</h2>
+<h3 id="corollary-12-2-a-series-with-cubic-gaps">Corollary 12.2. A series with cubic gaps</h3>
+<p>For every integer <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span>, the real number</p>
+<span class="math math-display" data-tex="\[
+\xi_b=\sum_{n=0}^\infty b^{-3^n}
+\tag{12.8}
+\]">\[
+\xi_b=\sum_{n=0}^\infty b^{-3^n}
+\tag{12.8}
+\]</span>
+<p>is transcendental.</p>
+<p><strong>Proof.</strong> Its <span class="math" data-tex="\(N\)">\(N\)</span>-th truncation is <span class="math" data-tex="\(p_N/q_N\)">\(p_N/q_N\)</span>, with <span class="math" data-tex="\(q_N=b^{3^N}\)">\(q_N=b^{3^N}\)</span>. The numerator is congruent to one modulo every prime dividing <span class="math" data-tex="\(b\)">\(b\)</span>, because its last term contributes one and all earlier terms contain a positive power of <span class="math" data-tex="\(b\)">\(b\)</span>. The fraction is reduced. Its positive tail satisfies</p>
+<span class="math math-display" data-tex="\[
+0&lt;\xi_b-p_N/q_N&lt;2b^{-3^{N+1}}=2q_N^{-3}.
+\tag{12.9}
+\]">\[
+0&lt;\xi_b-p_N/q_N&lt;2b^{-3^{N+1}}=2q_N^{-3}.
+\tag{12.9}
+\]</span>
+<p>For the bound, the first omitted term is <span class="math" data-tex="\(T=q_N^{-3}\leq1/8\)">\(T=q_N^{-3}\leq1/8\)</span>; subsequent terms are <span class="math" data-tex="\(T^3,T^9,\ldots\)">\(T^3,T^9,\ldots\)</span>, bounded by <span class="math" data-tex="\(T^2,T^3,\ldots\)">\(T^2,T^3,\ldots\)</span>, so their sum with <span class="math" data-tex="\(T\)">\(T\)</span> is at most <span class="math" data-tex="\(T/(1-T)&lt;2T\)">\(T/(1-T)&lt;2T\)</span>.</p>
+<p>The number is irrational. If it were <span class="math" data-tex="\(a/c\)">\(a/c\)</span> in reduced form, its nonzero difference from any truncation would be at least <span class="math" data-tex="\(1/(cq_N)\)">\(1/(cq_N)\)</span>, contradicting (12.9) for large <span class="math" data-tex="\(q_N\)">\(q_N\)</span>. If it were irrational algebraic, (12.9) would be smaller than <span class="math" data-tex="\(q_N^{-5/2}\)">\(q_N^{-5/2}\)</span> for all large <span class="math" data-tex="\(N\)">\(N\)</span>, giving infinitely many exceptions to Theorem 12.1 with <span class="math" data-tex="\(\delta=1/2\)">\(\delta=1/2\)</span>. Thus it is transcendental. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These fixed-exponent approximations do not constitute a Liouville number proof: their exponent is three, whereas Liouville's lower bound depends on a putative algebraic degree that could be three or larger. Roth removes that dependence.</p>
+<h2 id="3-small-values-of-a-binary-form">3. Small values of a binary form</h2>
+<h3 id="corollary-12-3-a-lower-bound-outside-finitely-many-pairs">Corollary 12.3. A lower bound outside finitely many pairs</h3>
+<p>For an irreducible binary form <span class="math" data-tex="\(F\in\mathbb Z[X,Y]\)">\(F\in\mathbb Z[X,Y]\)</span> of degree <span class="math" data-tex="\(d\geq3\)">\(d\geq3\)</span> and any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, all but finitely many nonzero integer pairs satisfy</p>
+<span class="math math-display" data-tex="\[
+|F(x,y)|\geq\max(|x|,|y|)^{d-2-\varepsilon}.
+\tag{12.10}
+\]">\[
+|F(x,y)|\geq\max(|x|,|y|)^{d-2-\varepsilon}.
+\tag{12.10}
+\]</span>
+<p><strong>Proof.</strong> There is no nonzero rational zero of <span class="math" data-tex="\(F\)">\(F\)</span>, as in Proposition 10.2. If <span class="math" data-tex="\(\varepsilon\geq d-2\)">\(\varepsilon\geq d-2\)</span>, its nonzero integer value already has absolute value at least one. Assume <span class="math" data-tex="\(0&lt;\varepsilon&lt;d-2\)">\(0&lt;\varepsilon&lt;d-2\)</span>. For primitive pairs, near each real root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(F(T,1)\)">\(F(T,1)\)</span>, the other distinct factors are bounded below, <span class="math" data-tex="\(|y|\)">\(|y|\)</span> is comparable with <span class="math" data-tex="\(H=\max(|x|,|y|)\)">\(H=\max(|x|,|y|)\)</span>, and Roth's theorem with parameter <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|F(x,y)|\geq cH^{d-2-\varepsilon/2}
+\]">\[
+|F(x,y)|\geq cH^{d-2-\varepsilon/2}
+\]</span>
+<p>for all sufficiently large such pairs. On a compact set away from the roots, or where <span class="math" data-tex="\(|x/y|\)">\(|x/y|\)</span> is large, homogeneity and the nonzero leading coefficient instead give <span class="math" data-tex="\(|F(x,y)|\geq c&#x27;H^d\)">\(|F(x,y)|\geq c&#x27;H^d\)</span>. The finitely many roots permit one positive constant to cover the first bound. Its ratio to the desired right-hand side tends to infinity like <span class="math" data-tex="\(H^{\varepsilon/2}\)">\(H^{\varepsilon/2}\)</span>.</p>
+<p>For an arbitrary pair write <span class="math" data-tex="\((x,y)=g(x_0,y_0)\)">\((x,y)=g(x_0,y_0)\)</span> with a primitive pair and <span class="math" data-tex="\(g&gt;0\)">\(g&gt;0\)</span>. If its primitive pair is sufficiently large, homogeneity improves the ratio to the requested bound by <span class="math" data-tex="\(g^{2+\varepsilon}\)">\(g^{2+\varepsilon}\)</span>, so the bound still holds. Only finitely many primitive pairs remain. Each has <span class="math" data-tex="\(F(x_0,y_0)\ne0\)">\(F(x_0,y_0)\ne0\)</span>, and the same ratio tends to infinity as <span class="math" data-tex="\(g\to\infty\)">\(g\to\infty\)</span>. There are only finitely many exceptional multiples of these finitely many pairs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-why-the-proof-gives-finiteness-without-a-denominator-bound">4. Why the proof gives finiteness without a denominator bound</h2>
+<p>The constants in Theorems 10.7 and 11.3 precede the choice of approximations. In (12.3)–(12.4), an assumed infinite set then supplies denominators beyond every chosen threshold. The contradiction proves that this supply cannot continue. It gives no way to find how far the finite actual set extends. The theorem is therefore ineffective in the assertion of a last exceptional denominator.</p>
+<p>This distinction does not weaken the finiteness conclusions, but it matters when solving an equation. To list its solutions, one needs an explicit search bound or another termination argument. The existing logarithms-course lesson Thue equations, effectively, Section 4, treats the later effective improvement through lower bounds for linear forms in logarithms. The statement is Fel'dman's theorem of 1971 (Evertse, <em>Diophantine Approximation</em>, Chapter 6, Theorem 6.5): for every algebraic <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of degree <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, a computable <span class="math" data-tex="\(\tau(\alpha)&gt;0\)">\(\tau(\alpha)&gt;0\)</span> and a computable positive constant give <span class="math" data-tex="\(|\alpha-p/q|\geq c q^{-n+\tau(\alpha)}\)">\(|\alpha-p/q|\geq c q^{-n+\tau(\alpha)}\)</span> for every rational approximation. It is a later application of the logarithm bounds, whereas the present Roth proof does not compute its exceptions.</p>
+<h3 id="bounding-how-many-exceptions-there-are">Bounding how many exceptions there are</h3>
+<p>The proof does give a computable bound on their number, even though it does not bound the largest denominator. Here is a direct, deliberately large bound. In the normalized case of Theorem 12.1, let <span class="math" data-tex="\(Q_0\ge2^{2/\delta}\)">\(Q_0\ge2^{2/\delta}\)</span> also meet every threshold in (12.3). Choose an integer <span class="math" data-tex="\(K_0\ge1\)">\(K_0\ge1\)</span> with</p>
+<span class="math math-display" data-tex="\[
+(1+\delta/2)^{K_0}&gt;(1+\varepsilon)C.
+\]">\[
+(1+\delta/2)^{K_0}&gt;(1+\varepsilon)C.
+\]</span>
+<p>There are at most <span class="math" data-tex="\((m-1)K_0\)">\((m-1)K_0\)</span> exceptional reduced fractions of denominator at least <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>.</p>
+<p><strong>Proof.</strong> Two different reduced fractions with denominators <span class="math" data-tex="\(q&#x27;\ge q\ge Q_0\)">\(q&#x27;\ge q\ge Q_0\)</span> differ by at least <span class="math" data-tex="\(1/(qq&#x27;)\)">\(1/(qq&#x27;)\)</span>. If both are exceptional, their difference is less than <span class="math" data-tex="\(2q^{-2-\delta}\)">\(2q^{-2-\delta}\)</span>, so <span class="math" data-tex="\(q&#x27;&gt;q^{1+\delta}/2\ge q^{1+\delta/2}\)">\(q&#x27;&gt;q^{1+\delta}/2\ge q^{1+\delta/2}\)</span>. In particular they cannot have equal denominators. After <span class="math" data-tex="\(K_0\)">\(K_0\)</span> steps in the ordered list, the log denominator grows by more than <span class="math" data-tex="\((1+\varepsilon)C\)">\((1+\varepsilon)C\)</span>. A list of <span class="math" data-tex="\(1+(m-1)K_0\)">\(1+(m-1)K_0\)</span> exceptions would therefore supply <span class="math" data-tex="\(m\)">\(m\)</span> fractions meeting (12.3)–(12.4). The rest of the proof of Theorem 12.1 applies to that finite list without any infinitude assumption and gives the same contradiction.</p>
+<p>The constants <span class="math" data-tex="\(C_\alpha\)">\(C_\alpha\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span> are computable from the formulas in Theorem 10.7 and (11.9); so are <span class="math" data-tex="\(m,Q_0,K_0\)">\(m,Q_0,K_0\)</span>. At denominators below <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>, the error inequality admits at most three numerators for each denominator, giving a further bound <span class="math" data-tex="\(3\lceil Q_0\rceil\)">\(3\lceil Q_0\rceil\)</span>. For an arbitrary real algebraic irrational choose a positive integer <span class="math" data-tex="\(A\)">\(A\)</span> making <span class="math" data-tex="\(A\alpha\)">\(A\alpha\)</span> integral and put <span class="math" data-tex="\(\beta=A\alpha-\lfloor A\alpha\rfloor\)">\(\beta=A\alpha-\lfloor A\alpha\rfloor\)</span>. This is an irrational algebraic integer in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. The rational map <span class="math" data-tex="\(r\mapsto Ar-\lfloor A\alpha\rfloor\)">\(r\mapsto Ar-\lfloor A\alpha\rfloor\)</span> is injective, its reduced denominators lie between <span class="math" data-tex="\(q/A\)">\(q/A\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>, and its error is multiplied by <span class="math" data-tex="\(A\)">\(A\)</span>. For sufficiently large, computably bounded <span class="math" data-tex="\(q\)">\(q\)</span>, an original exponent <span class="math" data-tex="\(2+\delta\)">\(2+\delta\)</span> gives an image exponent <span class="math" data-tex="\(2+\delta/2\)">\(2+\delta/2\)</span>. Apply the normalized count bound and add the finitely many smaller denominators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A bound on cardinality is compatible with an exceptional denominator being extremely large. It does not tell a search when the last exception has been found. The classical quantitative result of this kind is due to Davenport and Roth (1955). Evertse's <em>Diophantine Approximation</em>, Chapter 6, §6.2, explains the same mechanism for Thue's method: a gap principle between solutions, and a contradiction obtained from finitely many suitably spaced solutions (the remark before Theorem 6.14, and Exercise 6.8).</p>
+<h3 id="a-numerical-illustration">A numerical illustration</h3>
+<p>For <span class="math" data-tex="\(\alpha=\sqrt[3]2\)">\(\alpha=\sqrt[3]2\)</span>, the following table gives the first thirteen continued-fraction convergents and <span class="math" data-tex="\(|\alpha-p/q|q^{2.1}\)">\(|\alpha-p/q|q^{2.1}\)</span>. The digits were checked using rational lower and upper bounds for <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> whose cubes straddle two, at 110 decimal places.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">index</th>
+<th style="text-align:right">convergent <span class="math" data-tex="\(p/q\)">\(p/q\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\lvert\sqrt[3]2-p/q\rvert q^{2.1}\)">\(\lvert\sqrt[3]2-p/q\rvert q^{2.1}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/1\)">\(1/1\)</span></td>
+<td style="text-align:right">0.25992105</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(4/3\)">\(4/3\)</span></td>
+<td style="text-align:right">0.73743436</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(5/4\)">\(5/4\)</span></td>
+<td style="text-align:right">0.18234070</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right"><span class="math" data-tex="\(29/23\)">\(29/23\)</span></td>
+<td style="text-align:right">0.68655100</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right"><span class="math" data-tex="\(34/27\)">\(34/27\)</span></td>
+<td style="text-align:right">0.67078682</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right"><span class="math" data-tex="\(63/50\)">\(63/50\)</span></td>
+<td style="text-align:right">0.29187018</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right"><span class="math" data-tex="\(286/227\)">\(286/227\)</span></td>
+<td style="text-align:right">0.81160019</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right"><span class="math" data-tex="\(349/277\)">\(349/277\)</span></td>
+<td style="text-align:right">0.90861242</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right"><span class="math" data-tex="\(635/504\)">\(635/504\)</span></td>
+<td style="text-align:right">0.19639266</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right"><span class="math" data-tex="\(5429/4309\)">\(5429/4309\)</span></td>
+<td style="text-align:right">1.95018960</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right"><span class="math" data-tex="\(6064/4813\)">\(6064/4813\)</span></td>
+<td style="text-align:right">0.14770181</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right"><span class="math" data-tex="\(90325/71691\)">\(90325/71691\)</span></td>
+<td style="text-align:right">2.62850530</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right"><span class="math" data-tex="\(96389/76504\)">\(96389/76504\)</span></td>
+<td style="text-align:right">0.27260088</td>
+</tr>
+</tbody>
+</table>
+<p>The values fluctuate. Roth says that only finitely many convergents have this scaled error below one; it predicts no monotonic trend and this finite table proves no bound for the remaining denominators.</p>
+<h2 id="5-heights-and-boxes-at-several-places">5. Heights and boxes at several places</h2>
+<p>The extensions use simultaneous inequalities at real, complex and finite places. Fix a number field <span class="math" data-tex="\(K\)">\(K\)</span>, put <span class="math" data-tex="\(d=[K:\mathbb Q]\)">\(d=[K:\mathbb Q]\)</span>, and normalize its absolute values by</p>
+<span class="math math-display" data-tex="\[
+|a|_v=|\sigma_v(a)|^{d_v/d}\quad(v\mid\infty),\qquad
+|a|_v=(N\mathfrak p_v)^{-\operatorname{ord}_{\mathfrak p_v}(a)/d}
+\quad(v\nmid\infty),
+\tag{12.11}
+\]">\[
+|a|_v=|\sigma_v(a)|^{d_v/d}\quad(v\mid\infty),\qquad
+|a|_v=(N\mathfrak p_v)^{-\operatorname{ord}_{\mathfrak p_v}(a)/d}
+\quad(v\nmid\infty),
+\tag{12.11}
+\]</span>
+<p>where <span class="math" data-tex="\(d_v=1\)">\(d_v=1\)</span> at a real place and <span class="math" data-tex="\(d_v=2\)">\(d_v=2\)</span> at a complex place. Thus <span class="math" data-tex="\(\prod_v|a|_v=1\)">\(\prod_v|a|_v=1\)</span> for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. For <span class="math" data-tex="\(x\in K^N\setminus\{0\}\)">\(x\in K^N\setminus\{0\}\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\|x\|_v=\max_i|x_i|_v,\qquad H([x])=\prod_v\|x\|_v,\qquad h([x])=\log H([x]).
+\tag{12.12}
+\]">\[
+\|x\|_v=\max_i|x_i|_v,\qquad H([x])=\prod_v\|x\|_v,\qquad h([x])=\log H([x]).
+\tag{12.12}
+\]</span>
+<p>The brackets emphasize that this height is projective: multiplication of all coordinates by the same nonzero scalar does not change it. Lesson 2 proves the height estimates and Northcott finiteness used here. The exact number-field foundations are the lessons <a href="../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a>, Theorems 5.1 and 5.5, and <a href="../NT-LOC/NT-LOC-04.html">Extensions of complete valued fields</a>, Theorem 4.2. Their local-degree and product-formula normalization is the one used in (12.11).</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> contain all infinite places. The ring <span class="math" data-tex="\(\mathcal O_{K,S}\)">\(\mathcal O_{K,S}\)</span> consists of elements integral outside <span class="math" data-tex="\(S\)">\(S\)</span>, and an <span class="math" data-tex="\(S\)">\(S\)</span>-unit has absolute value one outside <span class="math" data-tex="\(S\)">\(S\)</span>. We will use the logarithmic <span class="math" data-tex="\(S\)">\(S\)</span>-unit lattice in the hyperplane <span class="math" data-tex="\(\sum_{v\in S}t_v=0\)">\(\sum_{v\in S}t_v=0\)</span>. Its prerequisite is <a href="../NT-ANT/dirichlets-unit-theorem.html">Dirichlet's unit theorem</a>, Theorem 9.4.  Rescale that lesson's logarithms by <span class="math" data-tex="\(1/d\)">\(1/d\)</span> to obtain (12.11).</p>
+<p>For each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, let <span class="math" data-tex="\(L_{v,1},\ldots,L_{v,N}\)">\(L_{v,1},\ldots,L_{v,N}\)</span> be independent <span class="math" data-tex="\(K\)">\(K\)</span>-linear forms. Boxes of the following shape encode the approximation inequalities:</p>
+<span class="math math-display" data-tex="\[
+\Pi(Q)_v=\{x:|L_{v,i}(x)|_v\le Q^{c_{v,i}}\ (1\le i\le N)\}
+\quad(v\in S),\qquad
+\Pi(Q)_v=\mathcal O_v^N\quad(v\notin S).
+\tag{12.13}
+\]">\[
+\Pi(Q)_v=\{x:|L_{v,i}(x)|_v\le Q^{c_{v,i}}\ (1\le i\le N)\}
+\quad(v\in S),\qquad
+\Pi(Q)_v=\mathcal O_v^N\quad(v\notin S).
+\tag{12.13}
+\]</span>
+<p>At a finite place, replace each prescribed radius by the largest member of its value group not exceeding it. The ratio of the two radii lies between two fixed positive constants. This replacement affects volume comparisons by a fixed factor; it never changes their exponent of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Use ordinary Lebesgue measure at real places and on the two real coordinates of a complex place, and normalize finite Haar measure by <span class="math" data-tex="\(\operatorname{vol}(\mathcal O_v)=1\)">\(\operatorname{vol}(\mathcal O_v)=1\)</span>. In this convention multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> on one local coordinate multiplies measure by <span class="math" data-tex="\(|a|_v^d\)">\(|a|_v^d\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}\Pi(Q)\asymp_{K,S,L}Q^{d\sum_{v,i}c_{v,i}}.
+\tag{12.14}
+\]">\[
+\operatorname{vol}\Pi(Q)\asymp_{K,S,L}Q^{d\sum_{v,i}c_{v,i}}.
+\tag{12.14}
+\]</span>
+<p>Here and below <span class="math" data-tex="\(\asymp\)">\(\asymp\)</span> denotes upper and lower bounds by positive constants independent of <span class="math" data-tex="\(Q\)">\(Q\)</span>. Complex coordinates count twice in Lebesgue measure, as the factor <span class="math" data-tex="\(d_v=2\)">\(d_v=2\)</span> requires.</p>
+<h3 id="lemma-12-4-a-successive-minima-comparison">Lemma 12.4. A successive-minima comparison</h3>
+<p>Let <span class="math" data-tex="\(C\subset\mathbb R^M\)">\(C\subset\mathbb R^M\)</span> be a compact convex symmetric body with nonempty interior, let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a full lattice, and let <span class="math" data-tex="\(\lambda_1\le\cdots\le\lambda_M\)">\(\lambda_1\le\cdots\le\lambda_M\)</span> be its successive minima. Then</p>
+<span class="math math-display" data-tex="\[
+\frac{2^M}{M!}\det\Lambda
+\le \operatorname{vol}(C)\prod_{i=1}^M\lambda_i
+\le 2^M M!\det\Lambda.
+\tag{12.15}
+\]">\[
+\frac{2^M}{M!}\det\Lambda
+\le \operatorname{vol}(C)\prod_{i=1}^M\lambda_i
+\le 2^M M!\det\Lambda.
+\tag{12.15}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\|x\|_C=\inf\{t:x\in tC\}\)">\(\|x\|_C=\inf\{t:x\in tC\}\)</span>. Choose independent lattice vectors <span class="math" data-tex="\(v_i\in\lambda_i C\)">\(v_i\in\lambda_i C\)</span>; the minima are attained because bounded sets contain only finitely many lattice points. The cross-polytope with vertices <span class="math" data-tex="\(\pm v_i/\lambda_i\)">\(\pm v_i/\lambda_i\)</span> lies in <span class="math" data-tex="\(C\)">\(C\)</span>. Its volume is <span class="math" data-tex="\(2^M|\det(v_1,\ldots,v_M)|/(M!\prod\lambda_i)\)">\(2^M|\det(v_1,\ldots,v_M)|/(M!\prod\lambda_i)\)</span>, and the determinant is a positive integer multiple of <span class="math" data-tex="\(\det\Lambda\)">\(\det\Lambda\)</span>. This proves the lower bound.</p>
+<p>For the upper bound choose a rational complete flag <span class="math" data-tex="\(F_0\subset\cdots\subset F_M\)">\(F_0\subset\cdots\subset F_M\)</span> such that every lattice vector of gauge less than <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> belongs to <span class="math" data-tex="\(F_{i-1}\)">\(F_{i-1}\)</span>. Such a flag exists: for each distinct minimum, include the span of the strictly shorter vectors, then extend within the span of vectors at that minimum. Repeated minima form one block in this construction. Each subgroup <span class="math" data-tex="\(\Lambda\cap F_i\)">\(\Lambda\cap F_i\)</span> is saturated in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Successive extension of a basis of a saturated subgroup gives a lattice basis <span class="math" data-tex="\(b_1,\ldots,b_M\)">\(b_1,\ldots,b_M\)</span> adapted to the flag. This elementary extension follows by the integer Euclidean algorithm: a primitive vector has coordinates with greatest common divisor one and can be made the first coordinate vector by integer row operations; apply the same argument in the free quotient.</p>
+<p>For <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, define positive integers, backwards, by</p>
+<span class="math math-display" data-tex="\[
+q_M=\lfloor2T/\lambda_M\rfloor+1,\qquad
+q_i=q_{i+1}\left(\left\lfloor\frac{2T}{\lambda_iq_{i+1}}\right\rfloor+1\right).
+\]">\[
+q_M=\lfloor2T/\lambda_M\rfloor+1,\qquad
+q_i=q_{i+1}\left(\left\lfloor\frac{2T}{\lambda_iq_{i+1}}\right\rfloor+1\right).
+\]</span>
+<p>Then <span class="math" data-tex="\(q_i&gt;2T/\lambda_i\)">\(q_i&gt;2T/\lambda_i\)</span>, <span class="math" data-tex="\(q_{i+1}\mid q_i\)">\(q_{i+1}\mid q_i\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+q_i\le 2T\sum_{j=i}^M\lambda_j^{-1}+1
+\le (M-i+1)(2T/\lambda_i+1).
+\]">\[
+q_i\le 2T\sum_{j=i}^M\lambda_j^{-1}+1
+\le (M-i+1)(2T/\lambda_i+1).
+\]</span>
+<p>Reduction modulo <span class="math" data-tex="\(\sum_iq_i\mathbb Zb_i\)">\(\sum_iq_i\mathbb Zb_i\)</span> is injective on <span class="math" data-tex="\(\Lambda\cap TC\)">\(\Lambda\cap TC\)</span>. Otherwise a nonzero difference <span class="math" data-tex="\(z\)">\(z\)</span> belongs to <span class="math" data-tex="\(2TC\)">\(2TC\)</span> and to this subgroup. If <span class="math" data-tex="\(k\)">\(k\)</span> is its largest nonzero basis index, divisibility of the <span class="math" data-tex="\(q_i\)">\(q_i\)</span> implies <span class="math" data-tex="\(z/q_k\in\Lambda\setminus F_{k-1}\)">\(z/q_k\in\Lambda\setminus F_{k-1}\)</span>. But <span class="math" data-tex="\(\|z/q_k\|_C\le2T/q_k&lt;\lambda_k\)">\(\|z/q_k\|_C\le2T/q_k&lt;\lambda_k\)</span>, contradicting the flag property. Therefore</p>
+<span class="math math-display" data-tex="\[
+\#(\Lambda\cap TC)\le\prod_iq_i
+\le M!\prod_i(2T/\lambda_i+1).
+\]">\[
+\#(\Lambda\cap TC)\le\prod_iq_i
+\le M!\prod_i(2T/\lambda_i+1).
+\]</span>
+<p>Finally <span class="math" data-tex="\(\#(\Lambda\cap TC)/T^M\to\operatorname{vol}(C)/\det\Lambda\)">\(\#(\Lambda\cap TC)/T^M\to\operatorname{vol}(C)/\det\Lambda\)</span>. To see this directly, tile space by a bounded fundamental parallelepiped of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. All cells meeting <span class="math" data-tex="\(TC\)">\(TC\)</span> lie in an outer enlargement of fixed thickness, and all cells lying in <span class="math" data-tex="\(TC\)">\(TC\)</span> cover its inner enlargement. Since <span class="math" data-tex="\(C\)">\(C\)</span> contains a ball, these enlargements are contained in <span class="math" data-tex="\((T+A)C\)">\((T+A)C\)</span> and contain <span class="math" data-tex="\((T-A)C\)">\((T-A)C\)</span>, respectively, for one fixed <span class="math" data-tex="\(A\)">\(A\)</span>. Their volumes divided by <span class="math" data-tex="\(T^M\)">\(T^M\)</span> have the same limit. Divide the preceding count by <span class="math" data-tex="\(T^M\)">\(T^M\)</span> and take the limit to obtain the upper bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-12-5-the-number-field-version-needed-for-the-boxes">Lemma 12.5. The number-field version needed for the boxes</h3>
+<p>Suppose an adelic body <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> has convex symmetric archimedean factors, complex-balanced at complex places, and full <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>-lattices at finite places, equal to <span class="math" data-tex="\(\mathcal O_v^N\)">\(\mathcal O_v^N\)</span> almost everywhere. Let <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> be the least archimedean dilation giving <span class="math" data-tex="\(i\)">\(i\)</span> linearly independent <span class="math" data-tex="\(K\)">\(K\)</span>-vectors. Finite factors are held fixed during this dilation. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\Pi)\prod_{i=1}^N\lambda_i^d
+\asymp_{K,N}1.
+\tag{12.16}
+\]">\[
+\operatorname{vol}(\Pi)\prod_{i=1}^N\lambda_i^d
+\asymp_{K,N}1.
+\tag{12.16}
+\]</span>
+<p><strong>Proof.</strong> The simultaneous finite conditions cut out a full <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>-lattice <span class="math" data-tex="\(\Lambda\subset K^N\)">\(\Lambda\subset K^N\)</span>. Its Minkowski embedding has covolume</p>
+<span class="math math-display" data-tex="\[
+\det j(\Lambda)
+=\left(2^{-r_2}\sqrt{|\operatorname{disc}K|}\right)^N
+\left(\prod_{v\nmid\infty}\operatorname{vol}\Pi_v\right)^{-1}.
+\tag{12.17}
+\]">\[
+\det j(\Lambda)
+=\left(2^{-r_2}\sqrt{|\operatorname{disc}K|}\right)^N
+\left(\prod_{v\nmid\infty}\operatorname{vol}\Pi_v\right)^{-1}.
+\tag{12.17}
+\]</span>
+<p>For an integral sublattice this follows from its finite index: the index is the product of the local indices, while covolume is multiplied by that index. Clearing a common denominator gives the same identity for a fractional lattice. The number-field foundations are <a href="../NT-ANT/norms-class-groups-and-modules-over-dedekind-domains.html">Norms of ideals, the ideal class group, and modules over Dedekind domains</a>, Proposition 4.1 and Theorem 4.3, and <a href="../NT-ANT/lattices-minkowskis-theorem-and-the-minkowski-embedding.html">Lattices, Minkowski's theorem and the Minkowski embedding</a>, Proposition 7.2. They provide the module structure, local ideal indices and covolume, for every number field; they do not provide the successive-minima estimate, which we prove here.</p>
+<p>Let <span class="math" data-tex="\(\nu_1,\ldots,\nu_{dN}\)">\(\nu_1,\ldots,\nu_{dN}\)</span> be the ordinary real successive minima of <span class="math" data-tex="\(j(\Lambda)\)">\(j(\Lambda)\)</span> in the archimedean body. Choose an integral basis <span class="math" data-tex="\(\beta_1,\ldots,\beta_d\)">\(\beta_1,\ldots,\beta_d\)</span> and put <span class="math" data-tex="\(B=\max(1,|\sigma(\beta_j)|)\)">\(B=\max(1,|\sigma(\beta_j)|)\)</span>, over all embeddings and indices. Multiplication by <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> preserves the finite lattices. At an infinite place it takes the local body into its <span class="math" data-tex="\(B\)">\(B\)</span>-dilate; this uses symmetry and convexity over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and complex balance over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\lambda_i\le\nu_{d(i-1)+1}\le\nu_{di}\le B\lambda_i.
+\]">\[
+\lambda_i\le\nu_{d(i-1)+1}\le\nu_{di}\le B\lambda_i.
+\]</span>
+<p>For the first inequality, <span class="math" data-tex="\(d(i-1)+1\)">\(d(i-1)+1\)</span> rationally independent vectors must have <span class="math" data-tex="\(K\)">\(K\)</span>-rank at least <span class="math" data-tex="\(i\)">\(i\)</span>. For the last, multiply <span class="math" data-tex="\(i\)">\(i\)</span> independent <span class="math" data-tex="\(K\)">\(K\)</span>-vectors by the integral basis: the resulting <span class="math" data-tex="\(di\)">\(di\)</span> vectors are rationally independent. It follows that</p>
+<span class="math math-display" data-tex="\[
+\prod_i\lambda_i^d\le\prod_j\nu_j\le B^{dN}\prod_i\lambda_i^d.
+\]">\[
+\prod_i\lambda_i^d\le\prod_j\nu_j\le B^{dN}\prod_i\lambda_i^d.
+\]</span>
+<p>Apply (12.15) in real dimension <span class="math" data-tex="\(dN\)">\(dN\)</span> and then use (12.17). This proves (12.16). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For (12.13), a negative sum <span class="math" data-tex="\(\sum c_{v,i}\le-\rho&lt;0\)">\(\sum c_{v,i}\le-\rho&lt;0\)</span> consequently implies <span class="math" data-tex="\(\lambda_N\gg Q^{\rho/N}\)">\(\lambda_N\gg Q^{\rho/N}\)</span>. In particular the <span class="math" data-tex="\(K\)">\(K\)</span>-span of the vectors in <span class="math" data-tex="\(\Pi(Q)\)">\(\Pi(Q)\)</span> has dimension at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span> for large <span class="math" data-tex="\(Q\)">\(Q\)</span>. This is the geometric input in the Subspace theorem proof; sharp constants in Minkowski's second theorem are unnecessary.</p>
+<h2 id="6-the-algebraic-point-index-bound">6. The algebraic-point index bound</h2>
+<p>The Subspace theorem needs index at algebraic points, whereas Lesson 11 used rational points. The following argument preserves the degree weights and supplies that extension.</p>
+<h3 id="lemma-12-6-roth-s-index-lemma-at-algebraic-points">Lemma 12.6. Roth's index lemma at algebraic points</h3>
+<p>Let <span class="math" data-tex="\(P\in\mathbb Z[T_1,\ldots,T_m]\setminus\{0\}\)">\(P\in\mathbb Z[T_1,\ldots,T_m]\setminus\{0\}\)</span>, with <span class="math" data-tex="\(\deg_{T_i}P\le r_i\)">\(\deg_{T_i}P\le r_i\)</span>, and put <span class="math" data-tex="\(h(P)=\log\max|\text{coefficient of }P|\)">\(h(P)=\log\max|\text{coefficient of }P|\)</span>. Let <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> be algebraic and <span class="math" data-tex="\(0&lt;\eta\le1/2\)">\(0&lt;\eta\le1/2\)</span>. If</p>
+<span class="math math-display" data-tex="\[
+t=\eta^{\,2^{m-1}},\qquad
+r_{i+1}/r_i\le t,\qquad
+t\min_i r_i h(\beta_i)\ge h(P)+6mr_1,
+\tag{12.18}
+\]">\[
+t=\eta^{\,2^{m-1}},\qquad
+r_{i+1}/r_i\le t,\qquad
+t\min_i r_i h(\beta_i)\ge h(P)+6mr_1,
+\tag{12.18}
+\]</span>
+<p>then <span class="math" data-tex="\(\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\le2m\eta\)">\(\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\le2m\eta\)</span>.</p>
+<p><strong>Proof.</strong> In one variable, a zero <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of multiplicity <span class="math" data-tex="\(l\)">\(l\)</span> forces the primitive minimal polynomial of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> to divide <span class="math" data-tex="\(P\)">\(P\)</span> to that multiplicity. By multiplicativity of Mahler measure and Lesson 2's identity <span class="math" data-tex="\(\log M(\beta)=\deg(\beta)h(\beta)\)">\(\log M(\beta)=\deg(\beta)h(\beta)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+l h(\beta)\le\log M(P)\le h(P)+r_1.
+\]">\[
+l h(\beta)\le\log M(P)\le h(P)+r_1.
+\]</span>
+<p>The last inequality follows from <span class="math" data-tex="\(M(P)\le\sqrt{r_1+1}\max|\text{coefficient}|\)">\(M(P)\le\sqrt{r_1+1}\max|\text{coefficient}|\)</span> and <span class="math" data-tex="\(\tfrac12\log(r_1+1)\le r_1\)">\(\tfrac12\log(r_1+1)\le r_1\)</span>. It implies the assertion for <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<p>For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, use the minimal separation and Wronskian construction of Lesson 11, Lemmas 11.1–11.2. There is a nonzero integer determinant <span class="math" data-tex="\(V\)">\(V\)</span>, with <span class="math" data-tex="\(k\le r_m+1\)">\(k\le r_m+1\)</span> rows, that factors as <span class="math" data-tex="\(cU_1(T_m)U_2(T_1,\ldots,T_{m-1})\)">\(cU_1(T_m)U_2(T_1,\ldots,T_{m-1})\)</span>. Choose the disjoint-variable factors primitive over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; Gauss's lemma gives <span class="math" data-tex="\(c\in\mathbb Z\setminus\{0\}\)">\(c\in\mathbb Z\setminus\{0\}\)</span>. The entries are divided derivatives of <span class="math" data-tex="\(P\)">\(P\)</span>, with derivative order at most <span class="math" data-tex="\(r_m\)">\(r_m\)</span> in the first <span class="math" data-tex="\(m-1\)">\(m-1\)</span> variables and orders <span class="math" data-tex="\(0,\ldots,k-1\)">\(0,\ldots,k-1\)</span> in the last. In particular</p>
+<span class="math math-display" data-tex="\[
+h(U_1)+h(U_2)\le h(V)
+\le k h(P)+2k\Bigl(\sum_i r_i\Bigr)\log2+\log(k!)
+\le k(h(P)+3r_1).
+\tag{12.19}
+\]">\[
+h(U_1)+h(U_2)\le h(V)
+\le k h(P)+2k\Bigl(\sum_i r_i\Bigr)\log2+\log(k!)
+\le k(h(P)+3r_1).
+\tag{12.19}
+\]</span>
+<p>For the middle bound, each divided derivative costs at most <span class="math" data-tex="\((\sum r_i)\log2\)">\((\sum r_i)\log2\)</span>; multiplying <span class="math" data-tex="\(k\)">\(k\)</span> coefficient arrays costs at most <span class="math" data-tex="\((k-1)(\sum r_i)\log2\)">\((k-1)(\sum r_i)\log2\)</span>. These follow respectively from the binomial coefficient bound and from the number of entries in each array. The determinant contributes <span class="math" data-tex="\(\log(k!)\)">\(\log(k!)\)</span>. Since <span class="math" data-tex="\(t\le1/4\)">\(t\le1/4\)</span>, <span class="math" data-tex="\(\sum r_i\le4r_1/3\)">\(\sum r_i\le4r_1/3\)</span> and <span class="math" data-tex="\(\log(k!)\le k r_m\le k r_1/4\)">\(\log(k!)\le k r_m\le k r_1/4\)</span>, giving the final bound.</p>
+<p>The one-variable multiplicity estimate applied to <span class="math" data-tex="\(U_1\)">\(U_1\)</span>, of degree at most <span class="math" data-tex="\(kr_m\)">\(kr_m\)</span>, now gives index with the original weight <span class="math" data-tex="\(r_m\)">\(r_m\)</span> at most <span class="math" data-tex="\(kt\)">\(kt\)</span>. The induction hypothesis applied to <span class="math" data-tex="\(U_2\)">\(U_2\)</span>, with weights <span class="math" data-tex="\(kr_i\)">\(kr_i\)</span> and parameter <span class="math" data-tex="\(\eta^2\)">\(\eta^2\)</span>, gives index with the original weights at most <span class="math" data-tex="\(2k(m-1)\eta^2\)">\(2k(m-1)\eta^2\)</span>. Indeed <span class="math" data-tex="\((\eta^2)^{2^{m-2}}=t\)">\((\eta^2)^{2^{m-2}}=t\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+h(U_2)+6(m-1)kr_1
+\le k(h(P)+6mr_1)
+\le t\min_{i&lt;m}kr_i h(\beta_i).
+\]">\[
+h(U_2)+6(m-1)kr_1
+\le k(h(P)+6mr_1)
+\le t\min_{i&lt;m}kr_i h(\beta_i).
+\]</span>
+<p>Put <span class="math" data-tex="\(u=\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\)">\(u=\operatorname{Ind}_{\boldsymbol\beta,\boldsymbol r}P\)</span>. Additivity of index and the derivative loss bound, proved in Lesson 10, give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}V
+\ge\sum_{j=0}^{k-1}\max(u-j/r_m,0)-k r_m/r_{m-1}.
+\tag{12.20}
+\]">\[
+\operatorname{Ind}V
+\ge\sum_{j=0}^{k-1}\max(u-j/r_m,0)-k r_m/r_{m-1}.
+\tag{12.20}
+\]</span>
+<p>The sum is at least <span class="math" data-tex="\(ku^2/(2m)\)">\(ku^2/(2m)\)</span>. If <span class="math" data-tex="\(u&gt;(k-1)/r_m\)">\(u&gt;(k-1)/r_m\)</span>, its exact arithmetic-progression sum is at least <span class="math" data-tex="\(ku/2\)">\(ku/2\)</span>, and <span class="math" data-tex="\(u\le m\)">\(u\le m\)</span>. Otherwise integrate the decreasing function <span class="math" data-tex="\(\max(u-s/r_m,0)\)">\(\max(u-s/r_m,0)\)</span> over <span class="math" data-tex="\(0\le s\le r_mu\)">\(0\le s\le r_mu\)</span>; its integral is <span class="math" data-tex="\(r_mu^2/2\)">\(r_mu^2/2\)</span>. Here <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> unless <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, and <span class="math" data-tex="\(r_m\ge k-1\ge k/2\)">\(r_m\ge k-1\ge k/2\)</span>, so this is at least <span class="math" data-tex="\(ku^2/4\)">\(ku^2/4\)</span>. Both cases give the stated bound.</p>
+<p>Combine (12.19)–(12.20) and the two factor indices:</p>
+<span class="math math-display" data-tex="\[
+\frac{k u^2}{2m}\le kt+2k(m-1)\eta^2+kt
+\le2km\eta^2.
+\]">\[
+\frac{k u^2}{2m}\le kt+2k(m-1)\eta^2+kt
+\le2km\eta^2.
+\]</span>
+<p>Hence <span class="math" data-tex="\(u\le2m\eta\)">\(u\le2m\eta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-12-7-index-along-hyperplanes">Corollary 12.7. Index along hyperplanes</h3>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be a nonzero integer multihomogeneous polynomial in <span class="math" data-tex="\(m\)">\(m\)</span> blocks of <span class="math" data-tex="\(N=n+1\ge2\)">\(N=n+1\ge2\)</span> variables, of block degrees at most <span class="math" data-tex="\(d_j\)">\(d_j\)</span>. For nonzero algebraic linear forms <span class="math" data-tex="\(M_j\)">\(M_j\)</span>, define its index by membership in the ideals generated by</p>
+<span class="math math-display" data-tex="\[
+\prod_j M_j^{a_j},\qquad \sum_j a_j/d_j\ge t.
+\]">\[
+\prod_j M_j^{a_j},\qquad \sum_j a_j/d_j\ge t.
+\]</span>
+<p>If <span class="math" data-tex="\(0&lt;\sigma\le1/2\)">\(0&lt;\sigma\le1/2\)</span>, <span class="math" data-tex="\(d_{j+1}/d_j\le\sigma\)">\(d_{j+1}/d_j\le\sigma\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\min_j d_jh([M_j])\ge
+n\sigma^{-1}\bigl(h(P)+6md_1\bigr),
+\tag{12.21}
+\]">\[
+\min_j d_jh([M_j])\ge
+n\sigma^{-1}\bigl(h(P)+6md_1\bigr),
+\tag{12.21}
+\]</span>
+<p>then the index is at most <span class="math" data-tex="\(2m\sigma^{1/2^{m-1}}\)">\(2m\sigma^{1/2^{m-1}}\)</span>.</p>
+<p><strong>Proof.</strong> In each block choose a nonzero coefficient <span class="math" data-tex="\(b_0\)">\(b_0\)</span> of <span class="math" data-tex="\(M_j\)">\(M_j\)</span>. Since</p>
+<span class="math math-display" data-tex="\[
+h([b_0:\cdots:b_n])
+\le\sum_{i=1}^n h([b_0:b_i]),
+\]">\[
+h([b_0:\cdots:b_n])
+\le\sum_{i=1}^n h([b_0:b_i]),
+\]</span>
+<p>one pair has height at least <span class="math" data-tex="\(h([M_j])/n\)">\(h([M_j])/n\)</span>. Relabel it as <span class="math" data-tex="\((b_0,b_1)\)">\((b_0,b_1)\)</span>. Its positive height in (12.21) ensures <span class="math" data-tex="\(b_1\ne0\)">\(b_1\ne0\)</span>.</p>
+<p>Remove the highest power of each discarded coordinate dividing <span class="math" data-tex="\(P\)">\(P\)</span>, then set that coordinate to zero. Repeat until only coordinates 0 and 1 remain in every block. The polynomial stays nonzero and its coefficient height does not increase. Division by a discarded coordinate does not change hyperplane index: that coordinate has index zero, and weighted initial forms multiply in a polynomial domain. Specialization sends the weighted hyperplane ideal into the corresponding specialized ideal. Consequently index can increase under specialization, which is the direction needed here.</p>
+<p>Dehomogenize by setting each retained coordinate 0 equal to one. The resulting nonzero integer polynomial has degrees at most <span class="math" data-tex="\(d_j\)">\(d_j\)</span>; its point coordinates are <span class="math" data-tex="\(-b_0/b_1\)">\(-b_0/b_1\)</span>, of heights <span class="math" data-tex="\(h([b_0:b_1])\)">\(h([b_0:b_1])\)</span>. Its point index equals the binary homogeneous hyperplane index, with the same weights <span class="math" data-tex="\(d_j\)">\(d_j\)</span>. Apply Lemma 12.6 with <span class="math" data-tex="\(\eta=\sigma^{1/2^{m-1}}\)">\(\eta=\sigma^{1/2^{m-1}}\)</span>. If <span class="math" data-tex="\(\eta&gt;1/2\)">\(\eta&gt;1/2\)</span>, the requested upper bound exceeds <span class="math" data-tex="\(m\)">\(m\)</span>, the trivial degree bound; otherwise (12.21) is exactly its height hypothesis. The original index is no larger than the specialized index, proving the result. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponential <span class="math" data-tex="\(2^{m-1}\)">\(2^{m-1}\)</span> in these lemmas is essential: the induction replaces <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by <span class="math" data-tex="\(\eta^2\)">\(\eta^2\)</span>. A linear exponent <span class="math" data-tex="\(2m-1\)">\(2m-1\)</span> would not satisfy that induction.</p>
+<h2 id="7-auxiliary-polynomials-on-products-of-boxes">7. Auxiliary polynomials on products of boxes</h2>
+<p>We now construct the polynomial whose small value will contradict the product formula. The construction and the exterior-power argument below follow the mathematical method of Shivani Goel, Rashi Lunia and Anwesh Ray, <a href="https://arxiv.org/pdf/2502.00731v2"><em>Diophantine approximation and the subspace theorem</em>, version 2</a>, §§4.4–5.3, PDF pp. 34–52. That exact version is available under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Sections 6–8 of this lesson adapt that treatment, with new proofs of the supporting estimates, different counting constants, and corrected specialization and finite-exception arguments; those adapted sections retain CC BY 4.0. The other original sections are CC0. The linked paper supplies an openly licensed full treatment for further study, rather than a paid-book proof dependency.</p>
+<h3 id="lemma-12-8-a-polynomial-with-balanced-exponents">Lemma 12.8. A polynomial with balanced exponents</h3>
+<p>Keep the fixed forms in (12.13), put <span class="math" data-tex="\(N=n+1\ge2\)">\(N=n+1\ge2\)</span>, and fix <span class="math" data-tex="\(0&lt;\eta&lt;1/(4N)\)">\(0&lt;\eta&lt;1/(4N)\)</span>. Choose an integer <span class="math" data-tex="\(m\)">\(m\)</span> so large that</p>
+<span class="math math-display" data-tex="\[
+e^{-2\eta^2m}&lt;(4dN|S|)^{-1}.
+\tag{12.22}
+\]">\[
+e^{-2\eta^2m}&lt;(4dN|S|)^{-1}.
+\tag{12.22}
+\]</span>
+<p>For all sufficiently large positive block degrees <span class="math" data-tex="\(d_1,\ldots,d_m\)">\(d_1,\ldots,d_m\)</span>, there is a nonzero integer multihomogeneous polynomial <span class="math" data-tex="\(P(X_1,\ldots,X_m)\)">\(P(X_1,\ldots,X_m)\)</span>, of these degrees, with <span class="math" data-tex="\(h(P)\le C\sum d_j\)">\(h(P)\le C\sum d_j\)</span>. If a divided derivative <span class="math" data-tex="\(T=\partial^I P\)">\(T=\partial^I P\)</span> has weight <span class="math" data-tex="\(\sum_j|I_j|/d_j\le m\eta\)">\(\sum_j|I_j|/d_j\le m\eta\)</span>, every nonzero coefficient of its expression in the coordinates <span class="math" data-tex="\(L_v(X_j)\)">\(L_v(X_j)\)</span> has exponents satisfying</p>
+<span class="math math-display" data-tex="\[
+\frac mN-2m\eta
+&lt;\sum_j\frac{J_{j,i}}{d_j}
+&lt;\frac mN+2m(N-1)\eta
+\quad(1\le i\le N).
+\tag{12.23}
+\]">\[
+\frac mN-2m\eta
+&lt;\sum_j\frac{J_{j,i}}{d_j}
+&lt;\frac mN+2m(N-1)\eta
+\quad(1\le i\le N).
+\tag{12.23}
+\]</span>
+<p>The affine height of the entire transformed coefficient vector of <span class="math" data-tex="\(T\)">\(T\)</span>, for each fixed <span class="math" data-tex="\(v\)">\(v\)</span>, is at most <span class="math" data-tex="\(C\sum d_j\)">\(C\sum d_j\)</span>. The constant depends on the fixed field, forms, <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, but not on the degrees.</p>
+<p><strong>Proof.</strong> A block of degree <span class="math" data-tex="\(d_j\)">\(d_j\)</span> has <span class="math" data-tex="\(\binom{d_j+N-1}{N-1}\)">\(\binom{d_j+N-1}{N-1}\)</span> coefficients. Impose the homogeneous <span class="math" data-tex="\(K\)">\(K\)</span>-linear conditions that a coefficient, in each <span class="math" data-tex="\(L_v\)">\(L_v\)</span>-coordinate system, vanish whenever</p>
+<span class="math math-display" data-tex="\[
+\sum_j J_{j,i}/d_j\le m/N-m\eta
+\]">\[
+\sum_j J_{j,i}/d_j\le m/N-m\eta
+\]</span>
+<p>for at least one coordinate <span class="math" data-tex="\(i\)">\(i\)</span>. Their proportion among all coefficients tends, as every degree grows, to the corresponding volume proportion on a product of <span class="math" data-tex="\(m\)">\(m\)</span> standard simplices. This is the ordinary Riemann-sum limit; the defining hyperplane has volume zero.</p>
+<p>For a uniformly distributed point of the simplex, a specified coordinate <span class="math" data-tex="\(Z\)">\(Z\)</span> lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> and has mean <span class="math" data-tex="\(1/N\)">\(1/N\)</span>, by symmetry. For independent copies <span class="math" data-tex="\(Z_j\)">\(Z_j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Pr\left\{\sum Z_j\le m/N-m\eta\right\}\le e^{-2m\eta^2}.
+\]">\[
+\Pr\left\{\sum Z_j\le m/N-m\eta\right\}\le e^{-2m\eta^2}.
+\]</span>
+<p>Here is an elementary proof of this bound. The second derivative of <span class="math" data-tex="\(\log\mathbb E e^{tZ}\)">\(\log\mathbb E e^{tZ}\)</span> is the variance of <span class="math" data-tex="\(Z\)">\(Z\)</span> under the tilted probability measure. Every probability measure on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> has variance at most <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, since <span class="math" data-tex="\(\mathbb E(Z-\tfrac12)^2\le1/4\)">\(\mathbb E(Z-\tfrac12)^2\le1/4\)</span>. Integrating twice gives <span class="math" data-tex="\(\mathbb E e^{t(Z-\mathbb EZ)}\le e^{t^2/8}\)">\(\mathbb E e^{t(Z-\mathbb EZ)}\le e^{t^2/8}\)</span>. Apply Markov's inequality to <span class="math" data-tex="\(e^{-4\eta\sum(Z_j-1/N)}\)">\(e^{-4\eta\sum(Z_j-1/N)}\)</span>. This proves the displayed estimate.</p>
+<p>There are <span class="math" data-tex="\(N|S|\)">\(N|S|\)</span> possible pairs <span class="math" data-tex="\((i,v)\)">\((i,v)\)</span>. By (12.22), the number <span class="math" data-tex="\(M\)">\(M\)</span> of imposed equations is, for large degrees, less than half the number of unknowns divided by <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>We justify the needed number-field form of Siegel's lemma directly. If a <span class="math" data-tex="\(K\)">\(K\)</span>-matrix <span class="math" data-tex="\(B\)">\(B\)</span> has affine height <span class="math" data-tex="\(h(B)\)">\(h(B)\)</span>, its denominator ideal has norm at most <span class="math" data-tex="\(e^{dh(B)}\)">\(e^{dh(B)}\)</span>. This norm, as a rational integer, clears every denominator: the order of the finite group <span class="math" data-tex="\(\mathcal O_K/\mathfrak a\)">\(\mathcal O_K/\mathfrak a\)</span> kills that group. At each embedding the entries have size at most <span class="math" data-tex="\(e^{dh(B)}\)">\(e^{dh(B)}\)</span>. After clearing denominators and expressing in a fixed integral basis, the integer entries are bounded by <span class="math" data-tex="\(C_K e^{2dh(B)}\)">\(C_K e^{2dh(B)}\)</span>; the inverse embedding matrix supplies <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Thus <span class="math" data-tex="\(M\)">\(M\)</span> equations become at most <span class="math" data-tex="\(dM\)">\(dM\)</span> integer equations.</p>
+<p>For <span class="math" data-tex="\(V&gt;2dM\)">\(V&gt;2dM\)</span> unknowns and integer coefficient bound <span class="math" data-tex="\(A\)">\(A\)</span>, the pigeonhole argument of Lesson 10 yields a nonzero integer kernel vector of maximum size at most <span class="math" data-tex="\(3VA+1\)">\(3VA+1\)</span>. Indeed put <span class="math" data-tex="\(R=dM\)">\(R=dM\)</span>, choose <span class="math" data-tex="\(U=\lceil(3VA)^{R/(V-R)}\rceil\)">\(U=\lceil(3VA)^{R/(V-R)}\rceil\)</span>, and compare the <span class="math" data-tex="\((U+1)^V\)">\((U+1)^V\)</span> integer inputs in a cube with at most <span class="math" data-tex="\((3VAU)^R\)">\((3VAU)^R\)</span> outputs; two have the same image. Their difference is a nonzero kernel vector, and <span class="math" data-tex="\(U\le3VA+1\)">\(U\le3VA+1\)</span>. The case <span class="math" data-tex="\(R=0\)">\(R=0\)</span> is immediate.</p>
+<p>The coefficient matrix for our changes of variables has affine height <span class="math" data-tex="\(O(\sum d_j)\)">\(O(\sum d_j)\)</span>. To verify this, at every place bound the entries of the fixed inverse matrices, use the multinomial formula, and at infinite places bound the number of resulting terms by <span class="math" data-tex="\(N^{\sum d_j}\)">\(N^{\sum d_j}\)</span>. The resulting local constants are one almost everywhere. Also <span class="math" data-tex="\(\log V=O(\sum d_j)\)">\(\log V=O(\sum d_j)\)</span>. The preceding kernel bound therefore gives the claimed height of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Differentiation in the original coordinates decreases the weighted exponent of any one <span class="math" data-tex="\(L_v\)">\(L_v\)</span>-coordinate by at most <span class="math" data-tex="\(\sum|I_j|/d_j\)">\(\sum|I_j|/d_j\)</span>. The imposed lower cutoff consequently gives the strict lower bound in (12.23). The total remaining weighted degree is at most <span class="math" data-tex="\(m\)">\(m\)</span>, so the lower bounds for the other <span class="math" data-tex="\(N-1\)">\(N-1\)</span> coordinates give the upper bound. Finally divided derivatives multiply coefficients by binomial coefficients at most <span class="math" data-tex="\(2^{\sum d_j}\)">\(2^{\sum d_j}\)</span>. The same fixed-matrix estimate bounds the height of each full transformed coefficient vector by <span class="math" data-tex="\(C\sum d_j\)">\(C\sum d_j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-12-9-height-of-a-varying-hyperplane">Lemma 12.9. Height of a varying hyperplane</h3>
+<p>Suppose <span class="math" data-tex="\(\sum c_{v,i}\le-\rho&lt;0\)">\(\sum c_{v,i}\le-\rho&lt;0\)</span>, and let <span class="math" data-tex="\(U(Q)\)">\(U(Q)\)</span> be the span of the <span class="math" data-tex="\(K\)">\(K\)</span>-vectors in <span class="math" data-tex="\(\Pi(Q)\)">\(\Pi(Q)\)</span>. When <span class="math" data-tex="\(\dim U(Q)=N-1\)">\(\dim U(Q)=N-1\)</span>, either <span class="math" data-tex="\(U(Q)\)">\(U(Q)\)</span> belongs to one fixed finite family of hyperplanes, or</p>
+<span class="math math-display" data-tex="\[
+h(U(Q))\ge\frac{\rho}{2|S|}\log Q-C.
+\tag{12.24}
+\]">\[
+h(U(Q))\ge\frac{\rho}{2|S|}\log Q-C.
+\tag{12.24}
+\]</span>
+<p>The family and <span class="math" data-tex="\(C\)">\(C\)</span> are independent of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p><strong>Proof.</strong> Choose a basis <span class="math" data-tex="\(y_1,\ldots,y_{N-1}\)">\(y_1,\ldots,y_{N-1}\)</span> of <span class="math" data-tex="\(U(Q)\)">\(U(Q)\)</span> in the box. Its wedge, identified with a covector by the standard determinant pairing, is <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>. It is integral outside <span class="math" data-tex="\(S\)">\(S\)</span>. Let <span class="math" data-tex="\(A_{v,i}(w)\)">\(A_{v,i}(w)\)</span> be the cofactor obtained by applying all the forms except <span class="math" data-tex="\(L_{v,i}\)">\(L_{v,i}\)</span> to this wedge. Determinant expansion gives</p>
+<span class="math math-display" data-tex="\[
+|A_{v,i}(w)|_v\le C_vQ^{\sum_jc_{v,j}-c_{v,i}}.
+\]">\[
+|A_{v,i}(w)|_v\le C_vQ^{\sum_jc_{v,j}-c_{v,i}}.
+\]</span>
+<p>If there are nonzero cofactors with indices <span class="math" data-tex="\(i_v\)">\(i_v\)</span> and <span class="math" data-tex="\(\sum_vc_{v,i_v}\ge-\rho/2\)">\(\sum_vc_{v,i_v}\ge-\rho/2\)</span>, their product is at most <span class="math" data-tex="\(CQ^{-\rho/2}\)">\(CQ^{-\rho/2}\)</span>. Choose a nonzero coordinate <span class="math" data-tex="\(w_k\)">\(w_k\)</span>. Because it is integral outside <span class="math" data-tex="\(S\)">\(S\)</span>, the product formula gives <span class="math" data-tex="\(\prod_{v\in S}|w_k|_v\ge1\)">\(\prod_{v\in S}|w_k|_v\ge1\)</span>. The same upper bound therefore holds for <span class="math" data-tex="\(\prod_{v\in S}|A_{v,i_v}(w)/w_k|_v\)">\(\prod_{v\in S}|A_{v,i_v}(w)/w_k|_v\)</span>. Each quotient has height at most <span class="math" data-tex="\(h([w])+C_v&#x27;\)">\(h([w])+C_v&#x27;\)</span>: divide all coordinates of <span class="math" data-tex="\(w\)">\(w\)</span> by <span class="math" data-tex="\(w_k\)">\(w_k\)</span>, whose coordinate is then one, and apply the fixed linear-functional height bound from Lesson 2. The lower product bound is <span class="math" data-tex="\(e^{-|S|h([w])-C&#x27;}\)">\(e^{-|S|h([w])-C&#x27;}\)</span>. Comparing them proves (12.24).</p>
+<p>Otherwise record the nonempty sets <span class="math" data-tex="\(I_v=\{i:A_{v,i}(w)\ne0\}\)">\(I_v=\{i:A_{v,i}(w)\ne0\}\)</span>. For each possible pattern choose, once and for all, a nonzero <span class="math" data-tex="\(K\)">\(K\)</span>-covector <span class="math" data-tex="\(w_I\)">\(w_I\)</span> satisfying <span class="math" data-tex="\(A_{v,i}(w_I)=0\)">\(A_{v,i}(w_I)=0\)</span> for <span class="math" data-tex="\(i\notin I_v\)">\(i\notin I_v\)</span>. Such a covector exists because the actual <span class="math" data-tex="\(w\)">\(w\)</span> is one solution. There are finitely many patterns, hence finitely many choices <span class="math" data-tex="\(w_I\)">\(w_I\)</span> of bounded height. Put <span class="math" data-tex="\(W_I=\ker w_I\)">\(W_I=\ker w_I\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in\Pi(Q)\cap K^N\)">\(x\in\Pi(Q)\cap K^N\)</span>, the determinant expansion of <span class="math" data-tex="\(w_I(x)\)">\(w_I(x)\)</span> in the <span class="math" data-tex="\(L_v\)">\(L_v\)</span>-coordinates gives</p>
+<span class="math math-display" data-tex="\[
+|w_I(x)|_v\le C_{v,I}Q^{\max_{i\in I_v}c_{v,i}}\quad(v\in S).
+\]">\[
+|w_I(x)|_v\le C_{v,I}Q^{\max_{i\in I_v}c_{v,i}}\quad(v\in S).
+\]</span>
+<p>Outside <span class="math" data-tex="\(S\)">\(S\)</span> it is bounded by the coefficient norm of <span class="math" data-tex="\(w_I\)">\(w_I\)</span>. If it were nonzero, the product formula would imply</p>
+<span class="math math-display" data-tex="\[
+1\le C_IQ^{\sum_v\max_{i\in I_v}c_{v,i}}&lt;C_IQ^{-\rho/2},
+\]">\[
+1\le C_IQ^{\sum_v\max_{i\in I_v}c_{v,i}}&lt;C_IQ^{-\rho/2},
+\]</span>
+<p>a contradiction for large <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus <span class="math" data-tex="\(U(Q)\subset W_I\)">\(U(Q)\subset W_I\)</span>, hence equality by dimension. Bounded <span class="math" data-tex="\(Q\)">\(Q\)</span> contributes only finitely many additional spans: all the relevant vectors lie in one bounded archimedean body with bounded finite denominators, hence in a finite subset of a fixed lattice. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choosing <span class="math" data-tex="\(w_I\)">\(w_I\)</span> once for each pattern is essential. Choosing the varying covector <span class="math" data-tex="\(w\)">\(w\)</span> itself would not provide a fixed exceptional family.</p>
+<h3 id="lemma-12-10-a-grid-detects-a-nonzero-polynomial">Lemma 12.10. A grid detects a nonzero polynomial</h3>
+<p>Let a nonzero polynomial in variables <span class="math" data-tex="\(Z_1,\ldots,Z_s\)">\(Z_1,\ldots,Z_s\)</span> have degree at most <span class="math" data-tex="\(e_i\)">\(e_i\)</span> in <span class="math" data-tex="\(Z_i\)">\(Z_i\)</span>. For <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, there are integers <span class="math" data-tex="\(|z_i|\le B\)">\(|z_i|\le B\)</span> and derivative orders <span class="math" data-tex="\(0\le a_i\le e_i/B\)">\(0\le a_i\le e_i/B\)</span> such that <span class="math" data-tex="\(\partial^{\boldsymbol a}P(\boldsymbol z)\ne0\)">\(\partial^{\boldsymbol a}P(\boldsymbol z)\ne0\)</span>.</p>
+<p><strong>Proof.</strong> In one variable, otherwise every one of the <span class="math" data-tex="\(2\lfloor B\rfloor+1\)">\(2\lfloor B\rfloor+1\)</span> grid points is a zero of multiplicity at least <span class="math" data-tex="\(\lfloor e/B\rfloor+1\)">\(\lfloor e/B\rfloor+1\)</span>. Their product exceeds <span class="math" data-tex="\(e\)">\(e\)</span>, because <span class="math" data-tex="\(2\lfloor B\rfloor+1&gt;B\)">\(2\lfloor B\rfloor+1&gt;B\)</span>. This contradicts the degree. For several variables choose any nonzero coefficient polynomial in the last variable, apply induction to it, and then apply the one-variable assertion to the resulting nonzero polynomial in that last variable. The chosen coefficient need not be the constant coefficient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-12-11-boxes-of-codimension-one-have-finitely-many-spans">Proposition 12.11. Boxes of codimension one have finitely many spans</h3>
+<p>For fixed <span class="math" data-tex="\(K,S,L,c\)">\(K,S,L,c\)</span> with <span class="math" data-tex="\(\sum c_{v,i}\le-\rho&lt;0\)">\(\sum c_{v,i}\le-\rho&lt;0\)</span>, the hyperplanes <span class="math" data-tex="\(U(Q)\)">\(U(Q)\)</span> of dimension <span class="math" data-tex="\(N-1\)">\(N-1\)</span> form a finite family.</p>
+<p><strong>Proof.</strong> Suppose they form an infinite family. Remove the finite exceptions in Lemma 12.9. Choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> satisfying Lemma 12.8 and so small that <span class="math" data-tex="\(2N\eta\sum_{v,i}|c_{v,i}|&lt;\rho/(4N)\)">\(2N\eta\sum_{v,i}|c_{v,i}|&lt;\rho/(4N)\)</span>. Choose <span class="math" data-tex="\(m\)">\(m\)</span> by (12.22), and put</p>
+<span class="math math-display" data-tex="\[
+\sigma=(\eta/4)^{\,2^{m-1}}.
+\]">\[
+\sigma=(\eta/4)^{\,2^{m-1}}.
+\]</span>
+<p>Choose distinct remaining hyperplanes at <span class="math" data-tex="\(Q_1,\ldots,Q_m\)">\(Q_1,\ldots,Q_m\)</span>, with <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> arbitrarily large and <span class="math" data-tex="\(\log Q_{j+1}\ge2\sigma^{-1}\log Q_j\)">\(\log Q_{j+1}\ge2\sigma^{-1}\log Q_j\)</span>. Then choose <span class="math" data-tex="\(D\)">\(D\)</span> arbitrarily large and <span class="math" data-tex="\(d_j=\lfloor D/\log Q_j\rfloor\)">\(d_j=\lfloor D/\log Q_j\rfloor\)</span>. All degrees tend to infinity, <span class="math" data-tex="\(d_{j+1}/d_j\le\sigma\)">\(d_{j+1}/d_j\le\sigma\)</span>, and <span class="math" data-tex="\(d_j\log Q_j=D+o(D)\)">\(d_j\log Q_j=D+o(D)\)</span>.</p>
+<p>Lemma 12.8 gives <span class="math" data-tex="\(P\)">\(P\)</span> of height <span class="math" data-tex="\(O(\sum d_j)=O(mD/\log Q_1)\)">\(O(\sum d_j)=O(mD/\log Q_1)\)</span>. Lemma 12.9 gives <span class="math" data-tex="\(d_jh(U(Q_j))\ge\rho D/(4|S|)\)">\(d_jh(U(Q_j))\ge\rho D/(4|S|)\)</span> once <span class="math" data-tex="\(Q_1,D\)">\(Q_1,D\)</span> are large. Therefore (12.21) holds, and the hyperplane index is at most <span class="math" data-tex="\(m\eta/2\)">\(m\eta/2\)</span>. In coordinates consisting of a defining form of each hyperplane and a complementary basis, this means that a derivative of total weighted order at most <span class="math" data-tex="\(m\eta/2\)">\(m\eta/2\)</span> restricts nontrivially to their product. These directional derivatives are linear combinations of original-coordinate derivatives of the same block orders, so one original-coordinate derivative has nonzero restriction.</p>
+<p>Parametrize each hyperplane by a basis <span class="math" data-tex="\(y_{j,1},\ldots,y_{j,N-1}\)">\(y_{j,1},\ldots,y_{j,N-1}\)</span> in <span class="math" data-tex="\(\Pi(Q_j)\)">\(\Pi(Q_j)\)</span>. Apply Lemma 12.10 to the restricted derivative with <span class="math" data-tex="\(B=2(N-1)/\eta\)">\(B=2(N-1)/\eta\)</span>. Each of its <span class="math" data-tex="\((N-1)m\)">\((N-1)m\)</span> parameter degrees is at most <span class="math" data-tex="\(d_j\)">\(d_j\)</span>. The additional weighted derivative order is at most <span class="math" data-tex="\(m\eta/2\)">\(m\eta/2\)</span>. The chain rule consequently supplies an original-coordinate derivative <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span>, of weight at most <span class="math" data-tex="\(m\eta\)">\(m\eta\)</span>, nonzero at</p>
+<span class="math math-display" data-tex="\[
+x_j&#x27;=\sum_{\ell=1}^{N-1}z_{j,\ell}y_{j,\ell},
+\qquad z_{j,\ell}\in\mathbb Z,\quad |z_{j,\ell}|\le B.
+\]">\[
+x_j&#x27;=\sum_{\ell=1}^{N-1}z_{j,\ell}y_{j,\ell},
+\qquad z_{j,\ell}\in\mathbb Z,\quad |z_{j,\ell}|\le B.
+\]</span>
+<p>At finite places these points satisfy the original box bounds. At infinite places their bounds gain at most the fixed factor <span class="math" data-tex="\(((N-1)B)^{d_v/d}\)">\(((N-1)B)^{d_v/d}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be the sum, over <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, of the logarithm of the largest nonzero monomial value in the <span class="math" data-tex="\(L_v\)">\(L_v\)</span>-expansion of <span class="math" data-tex="\(T(x_1&#x27;,\ldots,x_m&#x27;)\)">\(T(x_1&#x27;,\ldots,x_m&#x27;)\)</span>. Equation (12.23) and <span class="math" data-tex="\(d_j\log Q_j=D+o(D)\)">\(d_j\log Q_j=D+o(D)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+A\le\frac{mD}{N}\sum_{v,i}c_{v,i}
++2Nm\eta D\sum_{v,i}|c_{v,i}|
++o(D)+O\!\left(\sum d_j\right)
+\le-\frac{\rho mD}{2N}.
+\tag{12.25}
+\]">\[
+A\le\frac{mD}{N}\sum_{v,i}c_{v,i}
++2Nm\eta D\sum_{v,i}|c_{v,i}|
++o(D)+O\!\left(\sum d_j\right)
+\le-\frac{\rho mD}{2N}.
+\tag{12.25}
+\]</span>
+<p>First take <span class="math" data-tex="\(Q_1\)">\(Q_1\)</span> large to control the fixed-factor term, then <span class="math" data-tex="\(D\)">\(D\)</span> large to control the floor error; the strict choice of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> leaves room for both.</p>
+<p>But <span class="math" data-tex="\(T\)">\(T\)</span> has integer coefficients, and every <span class="math" data-tex="\(x_j&#x27;\)">\(x_j&#x27;\)</span> is integral outside <span class="math" data-tex="\(S\)">\(S\)</span>. Since its value is nonzero, the product formula gives <span class="math" data-tex="\(\sum_{v\in S}\log|T(x_1&#x27;,\ldots,x_m&#x27;)|_v\ge0\)">\(\sum_{v\in S}\log|T(x_1&#x27;,\ldots,x_m&#x27;)|_v\ge0\)</span>. The height of each full transformed coefficient vector is <span class="math" data-tex="\(O(\sum d_j)\)">\(O(\sum d_j)\)</span>, by Lemma 12.8. Summing the local triangle inequalities, including the archimedean number of monomials, therefore gives</p>
+<span class="math math-display" data-tex="\[
+A\ge-C\sum d_j
+\ge-\frac{CmD}{\log Q_1}.
+\tag{12.26}
+\]">\[
+A\ge-C\sum d_j
+\ge-\frac{CmD}{\log Q_1}.
+\tag{12.26}
+\]</span>
+<p>The constant is independent of the <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span>. Choose <span class="math" data-tex="\(\log Q_1&gt;4NC/\rho\)">\(\log Q_1&gt;4NC/\rho\)</span>. Equations (12.25)–(12.26) contradict each other. The assumed infinite family cannot exist. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-the-subspace-theorem">8. The Subspace theorem</h2>
+<h3 id="lemma-12-12-a-simultaneous-change-of-basis">Lemma 12.12. A simultaneous change of basis</h3>
+<p>At each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, let <span class="math" data-tex="\(A_{v,1},\ldots,A_{v,N}\)">\(A_{v,1},\ldots,A_{v,N}\)</span> be independent <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-linear forms. Suppose a <span class="math" data-tex="\(K\)">\(K\)</span>-basis <span class="math" data-tex="\(x_1,\ldots,x_N\)">\(x_1,\ldots,x_N\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+|A_{v,i}(x_j)|_v\le\mu_{v,j},\qquad
+0&lt;\mu_{v,1}\le\cdots\le\mu_{v,N}.
+\]">\[
+|A_{v,i}(x_j)|_v\le\mu_{v,j},\qquad
+0&lt;\mu_{v,1}\le\cdots\le\mu_{v,N}.
+\]</span>
+<p>There are an upper triangular <span class="math" data-tex="\(\mathcal O_{K,S}\)">\(\mathcal O_{K,S}\)</span>-change of basis with diagonal entries one, giving <span class="math" data-tex="\(u_j=x_j+\sum_{i&lt;j}\xi_{ji}x_i\)">\(u_j=x_j+\sum_{i&lt;j}\xi_{ji}x_i\)</span>, and a permutation <span class="math" data-tex="\(\pi_v\)">\(\pi_v\)</span> at each place, such that</p>
+<span class="math math-display" data-tex="\[
+|A_{v,\pi_v(i)}(u_j)|_v\le
+\begin{cases}
+C\min(\mu_{v,i},\mu_{v,j}),&amp;v\mid\infty,\\
+\min(\mu_{v,i},\mu_{v,j}),&amp;v\nmid\infty.
+\end{cases}
+\tag{12.27}
+\]">\[
+|A_{v,\pi_v(i)}(u_j)|_v\le
+\begin{cases}
+C\min(\mu_{v,i},\mu_{v,j}),&amp;v\mid\infty,\\
+\min(\mu_{v,i},\mu_{v,j}),&amp;v\nmid\infty.
+\end{cases}
+\tag{12.27}
+\]</span>
+<p>The constant depends only on <span class="math" data-tex="\(K,S,N\)">\(K,S,N\)</span>, so it remains uniform when the forms are rescaled.</p>
+<p><strong>Proof.</strong> We first justify the approximation used in the basis change. Given arbitrary <span class="math" data-tex="\(\gamma_v\in K_v\)">\(\gamma_v\in K_v\)</span> for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, there is <span class="math" data-tex="\(\xi\in\mathcal O_{K,S}\)">\(\xi\in\mathcal O_{K,S}\)</span> with <span class="math" data-tex="\(|\xi-\gamma_v|_v\le1\)">\(|\xi-\gamma_v|_v\le1\)</span> at finite places and with uniformly bounded error at infinite places. At the finite places clear denominators by an element supported on the primes in <span class="math" data-tex="\(S\)">\(S\)</span>, then use the Chinese remainder theorem in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Such a clearing element exists because a power of each relevant prime ideal is principal. After obtaining the finite-place approximation, subtract an element of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> to bring the archimedean error into a fixed fundamental parallelepiped of <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span>. This leaves the finite-place error integral. The number-field foundations are <a href="../NT-ANT/discrete-valuation-rings-and-dedekind-domains.html">Discrete valuation rings and Dedekind domains</a>, Theorem 3.2 and Proposition 3.3 on fractional-ideal factorization and the Chinese remainder theorem, and <a href="../NT-ANT/finiteness-of-the-class-number.html">Finiteness of the class number</a>, Corollary 8.2, together with the covolume provider already specified in Lemma 12.5.</p>
+<p>Now induct on <span class="math" data-tex="\(N\)">\(N\)</span>. On the span of the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> vectors the <span class="math" data-tex="\(N\)">\(N\)</span> forms have one linear dependence. Normalize its largest coefficient to one and remove that form. The remaining restrictions are independent; the other dependence coefficients have absolute value at most one at that place. Apply induction to those restrictions.</p>
+<p>At each place solve for a linear combination of the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> new vectors that cancels the remaining restricted forms on <span class="math" data-tex="\(x_N\)">\(x_N\)</span>. Approximate the <span class="math" data-tex="\(N-1\)">\(N-1\)</span> local coefficients simultaneously by <span class="math" data-tex="\(S\)">\(S\)</span>-integers as above. Each residual restricted form is a sum of bounded coefficient errors times values bounded by <span class="math" data-tex="\(\min(\mu_{v,i},\mu_{v,j})\)">\(\min(\mu_{v,i},\mu_{v,j})\)</span>, hence by a fixed multiple of <span class="math" data-tex="\(\mu_{v,i}\)">\(\mu_{v,i}\)</span> at infinite places and by <span class="math" data-tex="\(\mu_{v,i}\)">\(\mu_{v,i}\)</span> at finite places. For the removed form, its value on the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> vectors follows from the normalized dependence. On the new last vector subtract that same dependence: its residual equals its residual on <span class="math" data-tex="\(x_N\)">\(x_N\)</span>, plus the already controlled restricted values. These are bounded by a fixed multiple of <span class="math" data-tex="\(\mu_{v,N}\)">\(\mu_{v,N}\)</span>, or by <span class="math" data-tex="\(\mu_{v,N}\)">\(\mu_{v,N}\)</span> in the ultrametric case. This proves all entries of (12.27). Every constant used is a dimension factor or a fixed approximation constant, independent of the forms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-12-13-the-projective-subspace-theorem">Theorem 12.13. The projective Subspace theorem</h3>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> a finite set of its places, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. For each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span> let <span class="math" data-tex="\(L_{v,1},\ldots,L_{v,N}\)">\(L_{v,1},\ldots,L_{v,N}\)</span> be independent linear forms with algebraic coefficients, evaluated using a fixed extension of <span class="math" data-tex="\(|\cdot|_v\)">\(|\cdot|_v\)</span> to those coefficients. The points <span class="math" data-tex="\([x]\in\mathbb P^{N-1}(K)\)">\([x]\in\mathbb P^{N-1}(K)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\prod_{v\in S}\prod_{i=1}^N
+\frac{|L_{v,i}(x)|_v}{\|x\|_v}
+&lt;H([x])^{-N-\varepsilon}
+\tag{12.28}
+\]">\[
+\prod_{v\in S}\prod_{i=1}^N
+\frac{|L_{v,i}(x)|_v}{\|x\|_v}
+&lt;H([x])^{-N-\varepsilon}
+\tag{12.28}
+\]</span>
+<p>lie in finitely many proper <span class="math" data-tex="\(K\)">\(K\)</span>-linear subspaces.</p>
+<p><strong>Proof for coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>.</strong> Enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to include all infinite places and to make <span class="math" data-tex="\(\mathcal O_{K,S}\)">\(\mathcal O_{K,S}\)</span> principal. Finiteness of the class group permits this last enlargement by inverting representatives of its generators. At added places use the coordinate forms; their product divided by the coordinate maximum to the power <span class="math" data-tex="\(N\)">\(N\)</span> is at most one. Thus enlargement retains every solution of the original inequality.</p>
+<p>Choose primitive <span class="math" data-tex="\(S\)">\(S\)</span>-integral coordinates for each point by dividing by the generator of its coordinate ideal. Then <span class="math" data-tex="\(\|x\|_v=1\)">\(\|x\|_v=1\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>, and (12.28) becomes</p>
+<span class="math math-display" data-tex="\[
+\prod_{v\in S,i}|L_{v,i}(x)|_v
+&lt;H([x])^{-\varepsilon}.
+\tag{12.29}
+\]">\[
+\prod_{v\in S,i}|L_{v,i}(x)|_v
+&lt;H([x])^{-\varepsilon}.
+\tag{12.29}
+\]</span>
+<p>Use the <span class="math" data-tex="\(S\)">\(S\)</span>-unit logarithmic lattice to balance these coordinates. If <span class="math" data-tex="\(a_v=\log\|x\|_v\)">\(a_v=\log\|x\|_v\)</span> and <span class="math" data-tex="\(h=h([x])\)">\(h=h([x])\)</span>, approximate the vector <span class="math" data-tex="\((h/|S|-a_v)_{v\in S}\)">\((h/|S|-a_v)_{v\in S}\)</span>, whose coordinates sum to zero, by the logarithms of an <span class="math" data-tex="\(S\)">\(S\)</span>-unit. The resulting representative has affine height at most <span class="math" data-tex="\(h+C\)">\(h+C\)</span>, since each of its local log norms is at least <span class="math" data-tex="\(-C\)">\(-C\)</span>. This multiplication preserves (12.29).</p>
+<p>Solutions with some <span class="math" data-tex="\(L_{v,i}(x)=0\)">\(L_{v,i}(x)=0\)</span> already lie in the corresponding finite family of hyperplanes. For the rest, the scalar height estimate gives <span class="math" data-tex="\(|\log|L_{v,i}(x)|_v|\le h+C&#x27;\)">\(|\log|L_{v,i}(x)|_v|\le h+C&#x27;\)</span>. Bounded <span class="math" data-tex="\(h\)">\(h\)</span> gives only finitely many projective points, by Northcott. For large <span class="math" data-tex="\(h\)">\(h\)</span>, the vectors <span class="math" data-tex="\((\log|L_{v,i}(x)|_v/h)_{v,i}\)">\((\log|L_{v,i}(x)|_v/h)_{v,i}\)</span> belong to a fixed bounded cube. Subdivide it into finitely many boxes of side less than <span class="math" data-tex="\(\varepsilon/(2N|S|)\)">\(\varepsilon/(2N|S|)\)</span>, and take each upper corner as <span class="math" data-tex="\((c_{v,i})\)">\((c_{v,i})\)</span>. Equation (12.29) gives <span class="math" data-tex="\(\sum c_{v,i}\le-\varepsilon/2\)">\(\sum c_{v,i}\le-\varepsilon/2\)</span>. Every solution lies in <span class="math" data-tex="\(\Pi(H([x]))\)">\(\Pi(H([x]))\)</span> for one of these finitely many fixed families. We prove the assertion for one such family, writing <span class="math" data-tex="\(\rho=\varepsilon/2\)">\(\rho=\varepsilon/2\)</span>.</p>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be the rank of <span class="math" data-tex="\(\Pi(Q)\)">\(\Pi(Q)\)</span>. Lemma 12.5 gives <span class="math" data-tex="\(\lambda_N\gg Q^{\rho/N}\)">\(\lambda_N\gg Q^{\rho/N}\)</span>, so <span class="math" data-tex="\(R\le N-1\)">\(R\le N-1\)</span> for large <span class="math" data-tex="\(Q\)">\(Q\)</span>. If <span class="math" data-tex="\(R=0\)">\(R=0\)</span> there is no solution vector. For <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, choose <span class="math" data-tex="\(k\in[R,N-1]\)">\(k\in[R,N-1]\)</span> minimizing <span class="math" data-tex="\(\lambda_k/\lambda_{k+1}\)">\(\lambda_k/\lambda_{k+1}\)</span>. Since <span class="math" data-tex="\(\lambda_R\le1\)">\(\lambda_R\le1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lambda_k/\lambda_{k+1}\ll Q^{-\rho/(N(N-1))}.
+\tag{12.30}
+\]">\[
+\lambda_k/\lambda_{k+1}\ll Q^{-\rho/(N(N-1))}.
+\tag{12.30}
+\]</span>
+<p>Choose vectors realizing the minima and apply Lemma 12.12 after multiplying each <span class="math" data-tex="\(L_{v,i}\)">\(L_{v,i}\)</span> by a local scalar of absolute value <span class="math" data-tex="\(Q^{-c_{v,i}}\)">\(Q^{-c_{v,i}}\)</span>, with <span class="math" data-tex="\(\mu_{v,j}=\lambda_j^{d_v/d}\)">\(\mu_{v,j}=\lambda_j^{d_v/d}\)</span> at infinite places and <span class="math" data-tex="\(\mu_{v,j}=1\)">\(\mu_{v,j}=1\)</span> at finite places. At an infinite place the scalar's ordinary modulus is <span class="math" data-tex="\(Q^{-dc_{v,i}/d_v}\)">\(Q^{-dc_{v,i}/d_v}\)</span>. At a finite place use the reciprocal of the rounded radius. This changes only bounded factors in subsequent volume comparisons.</p>
+<p>Put <span class="math" data-tex="\(r=N-k\)">\(r=N-k\)</span> and <span class="math" data-tex="\(M=\binom Nr\)">\(M=\binom Nr\)</span>. In <span class="math" data-tex="\(\bigwedge^rK^N\)">\(\bigwedge^rK^N\)</span>, use the exterior forms
+<span class="math" data-tex="\(L_{v,\pi_v(i_1)}\wedge\cdots\wedge L_{v,\pi_v(i_r)}\)">\(L_{v,\pi_v(i_1)}\wedge\cdots\wedge L_{v,\pi_v(i_r)}\)</span>.
+The determinant expansion of (12.27) bounds each of their values on a basis wedge by its natural radius</p>
+<span class="math math-display" data-tex="\[
+C\,Q^{\sum_{i\in I}c_{v,\pi_v(i)}}
+\prod_{i\in I}\mu_{v,i}
+\]">\[
+C\,Q^{\sum_{i\in I}c_{v,\pi_v(i)}}
+\prod_{i\in I}\mu_{v,i}
+\]</span>
+<p>at an infinite place, and the same radius without <span class="math" data-tex="\(C\)">\(C\)</span> or the <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-factor at a finite place. For <span class="math" data-tex="\(I_0=\{k+1,\ldots,N\}\)">\(I_0=\{k+1,\ldots,N\}\)</span>, every basis wedge except <span class="math" data-tex="\(u_{k+1}\wedge\cdots\wedge u_N\)">\(u_{k+1}\wedge\cdots\wedge u_N\)</span> gains the additional factor <span class="math" data-tex="\(\mu_{v,k}/\mu_{v,k+1}\)">\(\mu_{v,k}/\mu_{v,k+1}\)</span>: its index set contains an index at most <span class="math" data-tex="\(k\)">\(k\)</span>, so in each determinant term the corresponding minimum replaces at least one factor <span class="math" data-tex="\(\mu_{v,k+1}\)">\(\mu_{v,k+1}\)</span>.</p>
+<p>Define a new box using these radii, with that extra factor on coordinate <span class="math" data-tex="\(I_0\)">\(I_0\)</span>. It contains the <span class="math" data-tex="\(M-1\)">\(M-1\)</span> independent basis wedges other than the excluded one. Each original index occurs in <span class="math" data-tex="\(b=\binom{N-1}{r-1}\)">\(b=\binom{N-1}{r-1}\)</span> exterior coordinates. Therefore its volume satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\Pi&#x27;(Q))^{1/d}
+\asymp \frac{\lambda_k}{\lambda_{k+1}}
+\left(\prod_j\lambda_j\,\operatorname{vol}(\Pi(Q))^{1/d}\right)^b
+\ll Q^{-\rho/(N(N-1))},
+\tag{12.31}
+\]">\[
+\operatorname{vol}(\Pi&#x27;(Q))^{1/d}
+\asymp \frac{\lambda_k}{\lambda_{k+1}}
+\left(\prod_j\lambda_j\,\operatorname{vol}(\Pi(Q))^{1/d}\right)^b
+\ll Q^{-\rho/(N(N-1))},
+\tag{12.31}
+\]</span>
+<p>by (12.16). Applying that comparison in dimension <span class="math" data-tex="\(M\)">\(M\)</span>, the last minimum is greater than one for large <span class="math" data-tex="\(Q\)">\(Q\)</span>, while the first <span class="math" data-tex="\(M-1\)">\(M-1\)</span> are at most one. Thus this box has rank exactly <span class="math" data-tex="\(M-1\)">\(M-1\)</span>.</p>
+<p>To use Proposition 12.11 its exponents must be fixed. The minima satisfy <span class="math" data-tex="\(Q^{-C}\ll\lambda_j\ll Q^C\)">\(Q^{-C}\ll\lambda_j\ll Q^C\)</span>. For the lower bound use one nonzero coordinate of a lattice vector, its finite-place bounds, and the product formula. For the upper bound multiply the standard coordinate vectors by a rational integer, with prime powers at the finite places in <span class="math" data-tex="\(S\)">\(S\)</span>, large enough to meet all finite radii; its size and the required archimedean dilation are powers of <span class="math" data-tex="\(Q\)">\(Q\)</span>. These arguments give uniform <span class="math" data-tex="\(C\)">\(C\)</span> for the fixed original box.</p>
+<p>Consequently the logarithms of the new radii divided by <span class="math" data-tex="\(\log Q\)">\(\log Q\)</span> belong to a fixed bounded cube. Freeze <span class="math" data-tex="\(k\)">\(k\)</span> and the finitely many permutations, and subdivide the remaining cube into a sufficiently fine finite grid. Round each exponent upwards. The enlarged box still contains the <span class="math" data-tex="\(M-1\)">\(M-1\)</span> wedges, and the increase in its total exponent can be chosen less than <span class="math" data-tex="\(\rho/(2N(N-1))\)">\(\rho/(2N(N-1))\)</span>. Equation (12.31) leaves its total exponent strictly negative. Its rank remains exactly <span class="math" data-tex="\(M-1\)">\(M-1\)</span>, by the same minimum argument. Proposition 12.11 now gives finitely many hyperplane spans for these enlarged boxes.</p>
+<p>Their spans are precisely the spans of the <span class="math" data-tex="\(M-1\)">\(M-1\)</span> included wedges. Under the perfect pairing
+<span class="math" data-tex="\(\bigwedge^kK^N\times\bigwedge^{N-k}K^N\to\bigwedge^NK^N\)">\(\bigwedge^kK^N\times\bigwedge^{N-k}K^N\to\bigwedge^NK^N\)</span>,
+such a hyperplane annihilates the line generated by <span class="math" data-tex="\(u_1\wedge\cdots\wedge u_k\)">\(u_1\wedge\cdots\wedge u_k\)</span>. It therefore determines the proper space <span class="math" data-tex="\(W_k=\operatorname{span}_K(u_1,\ldots,u_k)\)">\(W_k=\operatorname{span}_K(u_1,\ldots,u_k)\)</span>: this is the set of <span class="math" data-tex="\(z\)">\(z\)</span> with <span class="math" data-tex="\(z\wedge(u_1\wedge\cdots\wedge u_k)=0\)">\(z\wedge(u_1\wedge\cdots\wedge u_k)=0\)</span>. Finitely many exterior hyperplanes give finitely many <span class="math" data-tex="\(W_k\)">\(W_k\)</span>. Since <span class="math" data-tex="\(k\ge R\)">\(k\ge R\)</span>, every vector of the original box lies in <span class="math" data-tex="\(W_k\)">\(W_k\)</span>. Bounded <span class="math" data-tex="\(Q\)">\(Q\)</span> contributes finitely many vectors, which can also be covered by proper subspaces. This proves (12.28) for <span class="math" data-tex="\(K\)">\(K\)</span>-coefficients.</p>
+<p><strong>Algebraic coefficients.</strong> Choose a finite Galois extension <span class="math" data-tex="\(E/K\)">\(E/K\)</span> containing every coefficient. For each <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, fix the place of <span class="math" data-tex="\(E\)">\(E\)</span> inducing the chosen extension of <span class="math" data-tex="\(|\cdot|_v\)">\(|\cdot|_v\)</span>. At every other place <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span>, conjugate the coefficients so that their <span class="math" data-tex="\(w\)">\(w\)</span>-values agree with that chosen extension, with exponent
+<span class="math" data-tex="\(\tau_w=[E_w:K_v]/[E:K]\)">\(\tau_w=[E_w:K_v]/[E:K]\)</span>.
+For <span class="math" data-tex="\(x\in K^N\)">\(x\in K^N\)</span>, the product over <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> of the normalized local factors is exactly the original <span class="math" data-tex="\(v\)">\(v\)</span>-factor, since <span class="math" data-tex="\(\sum_{w\mid v}\tau_w=1\)">\(\sum_{w\mid v}\tau_w=1\)</span>. The absolute projective height is unchanged by field extension. Apply the proved theorem over <span class="math" data-tex="\(E\)">\(E\)</span>. The intersection of a proper <span class="math" data-tex="\(E\)">\(E\)</span>-hyperplane with <span class="math" data-tex="\(K^N\)">\(K^N\)</span> is a proper <span class="math" data-tex="\(K\)">\(K\)</span>-subspace: expand its nonzero coefficient vector in a <span class="math" data-tex="\(K\)">\(K\)</span>-basis of <span class="math" data-tex="\(E\)">\(E\)</span> to obtain at least one nonzero <span class="math" data-tex="\(K\)">\(K\)</span>-linear equation. Finitely many such intersections prove the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-12-14-the-s--integral-form">Corollary 12.14. The <span class="math" data-tex="\(S\)">\(S\)</span>-integral form</h3>
+<p>If <span class="math" data-tex="\(S\)">\(S\)</span> contains the infinite places, all <span class="math" data-tex="\(x\in\mathcal O_{K,S}^N\setminus\{0\}\)">\(x\in\mathcal O_{K,S}^N\setminus\{0\}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\prod_{v\in S,i}|L_{v,i}(x)|_v&lt;H([x])^{-\varepsilon}
+\tag{12.32}
+\]">\[
+\prod_{v\in S,i}|L_{v,i}(x)|_v&lt;H([x])^{-\varepsilon}
+\tag{12.32}
+\]</span>
+<p>lie in finitely many proper <span class="math" data-tex="\(K\)">\(K\)</span>-subspaces. Indeed <span class="math" data-tex="\(\prod_{v\in S}\|x\|_v\ge H([x])\)">\(\prod_{v\in S}\|x\|_v\ge H([x])\)</span>, because outside <span class="math" data-tex="\(S\)">\(S\)</span> the coordinate norm is at most one. Divide (12.32) by the <span class="math" data-tex="\(N\)">\(N\)</span>-th power of this product and apply (12.28). For primitive integer coordinates over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, <span class="math" data-tex="\(H([x])=\max|x_i|\)">\(H([x])=\max|x_i|\)</span>. Common integer multiples are treated by the same subspaces, as required by the homogeneous theorem.</p>
+<h2 id="9-approximation-at-several-places">9. Approximation at several places</h2>
+<h3 id="corollary-12-15-lang-s-number-field-form-of-roth-s-theorem">Corollary 12.15. Lang's number-field form of Roth's theorem</h3>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a finite set of places of a number field <span class="math" data-tex="\(K\)">\(K\)</span>, containing its infinite places. Choose a target <span class="math" data-tex="\(\alpha_v\in\mathbb P^1(\overline{\mathbb Q})\)">\(\alpha_v\in\mathbb P^1(\overline{\mathbb Q})\)</span> and an extension of (12.11) at each place. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, only finitely many <span class="math" data-tex="\(\beta\in K\)">\(\beta\in K\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\prod_{v\in S}\min(1,|\alpha_v-\beta|_v)
+\le H(\beta)^{-2-\varepsilon},
+\tag{12.33}
+\]">\[
+\prod_{v\in S}\min(1,|\alpha_v-\beta|_v)
+\le H(\beta)^{-2-\varepsilon},
+\tag{12.33}
+\]</span>
+<p>where <span class="math" data-tex="\(|\infty-\beta|_v=|1/\beta|_v\)">\(|\infty-\beta|_v=|1/\beta|_v\)</span>.</p>
+<p><strong>Proof.</strong> For a finite target take <span class="math" data-tex="\(L_{v,1}=X_0\)">\(L_{v,1}=X_0\)</span>, <span class="math" data-tex="\(L_{v,2}=X_1-\alpha_vX_0\)">\(L_{v,2}=X_1-\alpha_vX_0\)</span>, and <span class="math" data-tex="\(x=(1,\beta)\)">\(x=(1,\beta)\)</span>. The local product in (12.28) is</p>
+<span class="math math-display" data-tex="\[
+\frac{|\beta-\alpha_v|_v}{\max(1,|\beta|_v)^2}
+\le C_v\min(1,|\beta-\alpha_v|_v).
+\]">\[
+\frac{|\beta-\alpha_v|_v}{\max(1,|\beta|_v)^2}
+\le C_v\min(1,|\beta-\alpha_v|_v).
+\]</span>
+<p>When the error is at most one this is immediate. Otherwise the triangle inequality bounds the numerator by a fixed multiple of <span class="math" data-tex="\(\max(1,|\beta|_v)\)">\(\max(1,|\beta|_v)\)</span>. For target infinity take <span class="math" data-tex="\(X_0,X_1\)">\(X_0,X_1\)</span>; the local quotient is <span class="math" data-tex="\(|\beta|_v/\max(1,|\beta|_v)^2\le\min(1,|1/\beta|_v)\)">\(|\beta|_v/\max(1,|\beta|_v)^2\le\min(1,|1/\beta|_v)\)</span>. Thus (12.33) implies (12.28) with parameter <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> for large height. Theorem 12.13 gives finitely many <span class="math" data-tex="\(K\)">\(K\)</span>-lines in <span class="math" data-tex="\(K^2\)">\(K^2\)</span>, and each line contains at most one point <span class="math" data-tex="\((1,\beta)\)">\((1,\beta)\)</span>. Bounded heights are finite by Northcott. Values equal to a target, including <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span> when needed, contribute only finitely many additional elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-12-16-ridout-s-theorem-and-restricted-denominators">Corollary 12.16. Ridout's theorem and restricted denominators</h3>
+<p>Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be real algebraic, <span class="math" data-tex="\(S_0\)">\(S_0\)</span> a finite set of rational primes, and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. For reduced <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, put <span class="math" data-tex="\(H=\max(|p|,q)\)">\(H=\max(|p|,q)\)</span>. There are finitely many distinct rationals with</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_{\ell\in S_0}|pq|_\ell\right)
+|\alpha-p/q|&lt;H^{-2-\varepsilon}.
+\tag{12.34}
+\]">\[
+\left(\prod_{\ell\in S_0}|pq|_\ell\right)
+|\alpha-p/q|&lt;H^{-2-\varepsilon}.
+\tag{12.34}
+\]</span>
+<p>There are also finitely many with both <span class="math" data-tex="\(|\alpha-p/q|&lt;1\)">\(|\alpha-p/q|&lt;1\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_{\ell\in S_0}|pq|_\ell\right)
+|\alpha-p/q|&lt;q^{-2-\varepsilon}.
+\tag{12.35}
+\]">\[
+\left(\prod_{\ell\in S_0}|pq|_\ell\right)
+|\alpha-p/q|&lt;q^{-2-\varepsilon}.
+\tag{12.35}
+\]</span>
+<p>In particular, if all primes dividing <span class="math" data-tex="\(q\)">\(q\)</span> lie in <span class="math" data-tex="\(S_0\)">\(S_0\)</span>, the inequality
+<span class="math" data-tex="\(|\alpha-p/q|&lt;q^{-1-\varepsilon}\)">\(|\alpha-p/q|&lt;q^{-1-\varepsilon}\)</span> has finitely many rational solutions.</p>
+<p><strong>Proof.</strong> At infinity use the forms <span class="math" data-tex="\(Q,P-\alpha Q\)">\(Q,P-\alpha Q\)</span>, and at the finite places in <span class="math" data-tex="\(S_0\)">\(S_0\)</span> use <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>. Their product on the integer vector <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> is <span class="math" data-tex="\(q^2|\alpha-p/q|\prod_{\ell\in S_0}|pq|_\ell\)">\(q^2|\alpha-p/q|\prod_{\ell\in S_0}|pq|_\ell\)</span>. Equation (12.34) makes it less than <span class="math" data-tex="\(H^{-\varepsilon}\)">\(H^{-\varepsilon}\)</span>, so Corollary 12.14 applies. Its finitely many lines give finitely many ratios. The rationals with <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, or with exact error zero, form a finite set and can be handled separately.</p>
+<p>For (12.35), the extra condition gives <span class="math" data-tex="\(H\le(|\alpha|+1)q+q\)">\(H\le(|\alpha|+1)q+q\)</span>, hence <span class="math" data-tex="\(q^{-\varepsilon}&lt;H^{-\varepsilon/2}\)">\(q^{-\varepsilon}&lt;H^{-\varepsilon/2}\)</span> for large <span class="math" data-tex="\(q\)">\(q\)</span>; apply the same argument. Finally a denominator supported on <span class="math" data-tex="\(S_0\)">\(S_0\)</span> has <span class="math" data-tex="\(\prod_{\ell\in S_0}|q|_\ell=1/q\)">\(\prod_{\ell\in S_0}|q|_\ell=1/q\)</span>, while the numerator product is at most one. An error <span class="math" data-tex="\(&lt;q^{-1-\varepsilon}\)">\(&lt;q^{-1-\varepsilon}\)</span> satisfies (12.35), and is less than one except for a bounded denominator. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bounded-neighbourhood condition in the denominator version cannot be discarded. For <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, <span class="math" data-tex="\(p=2^k\)">\(p=2^k\)</span>, <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, <span class="math" data-tex="\(S_0=\{2\}\)">\(S_0=\{2\}\)</span>, and <span class="math" data-tex="\(2^k&gt;\alpha\)">\(2^k&gt;\alpha\)</span>, its left side is <span class="math" data-tex="\(1-\alpha/2^k&lt;1=q^{-2-\varepsilon}\)">\(1-\alpha/2^k&lt;1=q^{-2-\varepsilon}\)</span>, for infinitely many distinct integers. This explains the use of height in (12.34).</p>
+<p><strong>Example.</strong> Ridout proves that <span class="math" data-tex="\(\sum_{n\ge0}b^{-2^n}\)">\(\sum_{n\ge0}b^{-2^n}\)</span>, <span class="math" data-tex="\(b\ge2\)">\(b\ge2\)</span>, is transcendental. Its reduced truncation denominator is <span class="math" data-tex="\(q_N=b^{2^N}\)">\(q_N=b^{2^N}\)</span>, and its positive tail is <span class="math" data-tex="\(&lt;2q_N^{-2}\)">\(&lt;2q_N^{-2}\)</span>. The denominator bound first proves irrationality. If the sum were algebraic, these <span class="math" data-tex="\(S_0\)">\(S_0\)</span>-supported denominators, with <span class="math" data-tex="\(S_0\)">\(S_0\)</span> the primes dividing <span class="math" data-tex="\(b\)">\(b\)</span>, would contradict the last assertion of Corollary 12.16 with <span class="math" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span>. Ordinary Roth does not give this contradiction from these particular truncations, whose exponent is two.</p>
+<h2 id="10-s--unit-equations-and-thue-mahler-finiteness">10. <span class="math" data-tex="\(S\)">\(S\)</span>-unit equations and Thue–Mahler finiteness</h2>
+<h3 id="corollary-12-17-nondegenerate-s--unit-equations">Corollary 12.17. Nondegenerate <span class="math" data-tex="\(S\)">\(S\)</span>-unit equations</h3>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(S\)">\(S\)</span> finite and containing its infinite places, and <span class="math" data-tex="\(a_1,\ldots,a_m\in K^\times\)">\(a_1,\ldots,a_m\in K^\times\)</span>. There are finitely many projective tuples of <span class="math" data-tex="\(S\)">\(S\)</span>-units <span class="math" data-tex="\(u_i\)">\(u_i\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^m a_iu_i=0
+\tag{12.36}
+\]">\[
+\sum_{i=1}^m a_iu_i=0
+\tag{12.36}
+\]</span>
+<p>with no vanishing nonempty proper subsum. Equivalently, <span class="math" data-tex="\(\sum_{i=1}^n a_iu_i=1\)">\(\sum_{i=1}^n a_iu_i=1\)</span> has finitely many solutions with no vanishing nonempty subsum on the left.</p>
+<p><strong>Proof.</strong> Enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to make all fixed coefficients units, and induct on <span class="math" data-tex="\(m\)">\(m\)</span>. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span> there is one ratio. For larger <span class="math" data-tex="\(m\)">\(m\)</span>, divide by the last term and write
+<span class="math" data-tex="\(\sum_{i=1}^{n}x_i=1\)">\(\sum_{i=1}^{n}x_i=1\)</span>, <span class="math" data-tex="\(n=m-1\)">\(n=m-1\)</span>, with every <span class="math" data-tex="\(x_i\)">\(x_i\)</span> an <span class="math" data-tex="\(S\)">\(S\)</span>-unit.</p>
+<p>At each place choose <span class="math" data-tex="\(k_v\)">\(k_v\)</span> attaining <span class="math" data-tex="\(\max_i|x_i|_v\)">\(\max_i|x_i|_v\)</span>. Use the <span class="math" data-tex="\(n\)">\(n\)</span> independent forms consisting of the coordinate forms except <span class="math" data-tex="\(X_{k_v}\)">\(X_{k_v}\)</span>, together with <span class="math" data-tex="\(\sum_iX_i\)">\(\sum_iX_i\)</span>. The local product divided by <span class="math" data-tex="\(\|x\|_v^n\)">\(\|x\|_v^n\)</span>, multiplied over <span class="math" data-tex="\(S\)">\(S\)</span>, equals</p>
+<span class="math math-display" data-tex="\[
+\frac{\prod_{v\in S,i}|x_i|_v}{H([x])^{n+1}}
+=H([x])^{-n-1}.
+\]">\[
+\frac{\prod_{v\in S,i}|x_i|_v}{H([x])^{n+1}}
+=H([x])^{-n-1}.
+\]</span>
+<p>Theorem 12.13, with any parameter between zero and one, therefore places the large-height solutions in finitely many hyperplanes. There are finitely many choices of the <span class="math" data-tex="\(k_v\)">\(k_v\)</span>. Bounded projective height gives finitely many actual tuples: the equation <span class="math" data-tex="\(\sum x_i=1\)">\(\sum x_i=1\)</span> implies <span class="math" data-tex="\(H([1:x])\le nH([x])\)">\(H([1:x])\le nH([x])\)</span>, by the local triangle inequalities, so Northcott applies to each coordinate.</p>
+<p>On one of these hyperplanes write <span class="math" data-tex="\(\sum_i b_ix_i=0\)">\(\sum_i b_ix_i=0\)</span>, with some <span class="math" data-tex="\(b_i\ne0\)">\(b_i\ne0\)</span>. Choose a minimal nonempty vanishing subsum, on an index set <span class="math" data-tex="\(I\)">\(I\)</span> of nonzero coefficients. It has at least two terms and at most <span class="math" data-tex="\(n&lt;m\)">\(n&lt;m\)</span>. The induction hypothesis applied to this smaller homogeneous equation gives finitely many ratios <span class="math" data-tex="\(x_i/x_{i_0}\)">\(x_i/x_{i_0}\)</span>, <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>. Fix such ratios, writing <span class="math" data-tex="\(x_i=c_ix_{i_0}\)">\(x_i=c_ix_{i_0}\)</span>. Their sum <span class="math" data-tex="\(C=\sum_{i\in I}c_i\)">\(C=\sum_{i\in I}c_i\)</span> is nonzero: otherwise a proper subsum of the original normalized equation would vanish. Collapse those terms into <span class="math" data-tex="\(Cx_{i_0}\)">\(Cx_{i_0}\)</span>. The resulting equation, including the constant term <span class="math" data-tex="\(-1\)">\(-1\)</span>, has fewer than <span class="math" data-tex="\(m\)">\(m\)</span> terms and is still nondegenerate, since any vanishing proper subsum would lift to one in the original equation. Apply induction again, enlarging <span class="math" data-tex="\(S\)">\(S\)</span> for the finitely many new coefficients if needed. It gives finitely many normalized tuples, and reinstating the fixed ratios gives finitely many original tuples. The finitely many hyperplanes and index sets complete the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The nondegeneracy condition is necessary. For instance <span class="math" data-tex="\((t,-t,1)\)">\((t,-t,1)\)</span>, with arbitrary <span class="math" data-tex="\(S\)">\(S\)</span>-unit <span class="math" data-tex="\(t\)">\(t\)</span>, gives infinitely many solutions to <span class="math" data-tex="\(u_1+u_2+u_3=1\)">\(u_1+u_2+u_3=1\)</span>.</p>
+<h3 id="corollary-12-18-mahler-s-theorem-for-a-fixed-binary-form-value">Corollary 12.18. Mahler's theorem for a fixed binary-form value</h3>
+<p>Let <span class="math" data-tex="\(F\in K[X,Y]\)">\(F\in K[X,Y]\)</span> be homogeneous of degree <span class="math" data-tex="\(D\ge3\)">\(D\ge3\)</span> and squarefree, let <span class="math" data-tex="\(m\in K^\times\)">\(m\in K^\times\)</span>, and let <span class="math" data-tex="\(S\)">\(S\)</span> be finite. Then <span class="math" data-tex="\(F(a,b)=m\)">\(F(a,b)=m\)</span> has finitely many solutions in <span class="math" data-tex="\(\mathcal O_{K,S}^2\)">\(\mathcal O_{K,S}^2\)</span>, with infinite places added to <span class="math" data-tex="\(S\)">\(S\)</span> if necessary.</p>
+<p><strong>Proof.</strong> Pass to a finite splitting field and enlarge <span class="math" data-tex="\(S\)">\(S\)</span> so that all linear-factor coefficients and <span class="math" data-tex="\(m\)">\(m\)</span> are integral units where needed. Write <span class="math" data-tex="\(F=\prod_{i=1}^D L_i\)">\(F=\prod_{i=1}^D L_i\)</span>, absorbing its leading constant into one factor. The factors are pairwise nonproportional. Each <span class="math" data-tex="\(L_i(a,b)\)">\(L_i(a,b)\)</span> is integral outside <span class="math" data-tex="\(S\)">\(S\)</span>; their nonzero product is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit, so each is an <span class="math" data-tex="\(S\)">\(S\)</span>-unit. Three distinct factors have a relation <span class="math" data-tex="\(c_1L_1+c_2L_2+c_3L_3=0\)">\(c_1L_1+c_2L_2+c_3L_3=0\)</span> with all <span class="math" data-tex="\(c_i\ne0\)">\(c_i\ne0\)</span>. Its evaluated unit equation is nondegenerate: a one-term zero is impossible, and a two-term zero would force the remaining nonzero term to be zero. Corollary 12.17 gives finitely many ratios of their values.</p>
+<p>The independent pair <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span> then determines finitely many <span class="math" data-tex="\((a:b)\)">\((a:b)\)</span>. For a fixed representative <span class="math" data-tex="\((a_0,b_0)\)">\((a_0,b_0)\)</span>, the remaining scale satisfies <span class="math" data-tex="\(t^DF(a_0,b_0)=m\)">\(t^DF(a_0,b_0)=m\)</span>, which has at most <span class="math" data-tex="\(D\)">\(D\)</span> roots. This gives finitely many pairs over the splitting field, hence over <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The classical Thue–Mahler equation.</strong> If <span class="math" data-tex="\(F\in\mathbb Z[X,Y]\)">\(F\in\mathbb Z[X,Y]\)</span> is squarefree of degree at least three, <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span>, and <span class="math" data-tex="\(S_0\)">\(S_0\)</span> is a finite set of primes, then</p>
+<span class="math math-display" data-tex="\[
+F(x,y)=m\prod_{\ell\in S_0}\ell^{e_\ell},
+\qquad x,y\in\mathbb Z,\quad \gcd(x,y)=1,\quad e_\ell\ge0
+\tag{12.37}
+\]">\[
+F(x,y)=m\prod_{\ell\in S_0}\ell^{e_\ell},
+\qquad x,y\in\mathbb Z,\quad \gcd(x,y)=1,\quad e_\ell\ge0
+\tag{12.37}
+\]</span>
+<p>has finitely many solutions. Use the same three-factor unit argument: outside the enlarged set of places the right side is a unit, so all factor values are units. It gives finitely many rational slopes. Each slope has only two primitive integer representatives, and its nonzero value determines the exponents uniquely. The primitive condition matters: multiplying both coordinates by arbitrary powers of a prime in <span class="math" data-tex="\(S_0\)">\(S_0\)</span> would otherwise supply infinite families. Effective bounds for these equations are developed in S-unit equations and Thue–Mahler equations, §§2–3. The finiteness proofs here require no such effective bounds.</p>
+<h2 id="11-exercises">11. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy — decimal gaps.</strong> Show that <span class="math" data-tex="\(\sum_{n\geq0}10^{-3^n}\)">\(\sum_{n\geq0}10^{-3^n}\)</span> is transcendental by Roth's theorem. Explain why the displayed truncations alone do not give a Liouville proof.</p>
+</li>
+<li>
+<p><strong>Medium — homogeneous lower bounds.</strong> Prove (12.10) for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, including nonprimitive integer pairs.</p>
+</li>
+<li>
+<p><strong>Medium — two linear forms.</strong> Show that Roth's theorem is equivalent to the following statement: for two independent linear forms <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span> in two variables with algebraic coefficients, and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, only finitely many integer pairs satisfy</p>
+<span class="math math-display" data-tex="\[
+0&lt;|L_1(x,y)L_2(x,y)|&lt;\max(|x|,|y|)^{-\varepsilon}.
+\]">\[
+0&lt;|L_1(x,y)L_2(x,y)|&lt;\max(|x|,|y|)^{-\varepsilon}.
+\]</span>
+</li>
+<li>
+<p><strong>Hard — simultaneous approximation.</strong> From the Subspace theorem, deduce that if real algebraic <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> have <span class="math" data-tex="\(1,\alpha_1,\ldots,\alpha_n\)">\(1,\alpha_1,\ldots,\alpha_n\)</span> rationally independent, then
+<span class="math" data-tex="\(\max_j|\alpha_j-p_j/q|&lt;q^{-1-1/n-\varepsilon}\)">\(\max_j|\alpha_j-p_j/q|&lt;q^{-1-1/n-\varepsilon}\)</span>
+has only finitely many integer solutions with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>.</p>
+</li>
+</ol>
+<h2 id="12-solutions">12. Solutions</h2>
+<ol>
+<li>
+<p>Apply Corollary 12.2 with <span class="math" data-tex="\(b=10\)">\(b=10\)</span>. The reduced truncations have positive errors <span class="math" data-tex="\(&lt;2q_N^{-3}\)">\(&lt;2q_N^{-3}\)</span>, and irrationality follows first from the elementary rational denominator bound. Roth then excludes algebraicity, using any fixed parameter smaller than one. The exponent three does not exceed every possible algebraic degree, so these particular approximations do not give the arbitrary exponents needed for a Liouville construction.</p>
+</li>
+<li>
+<p>The proof of Corollary 12.3 gives the primitive bound with the smaller parameter <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, whose spare factor <span class="math" data-tex="\(H^{\varepsilon/2}\)">\(H^{\varepsilon/2}\)</span> absorbs the fixed coefficient constants. For <span class="math" data-tex="\((x,y)=g(x_0,y_0)\)">\((x,y)=g(x_0,y_0)\)</span>, the ratio of the two sides is the primitive ratio multiplied by <span class="math" data-tex="\(g^{2+\varepsilon}\)">\(g^{2+\varepsilon}\)</span>. Large primitive pairs therefore give no new exceptions, and each of the finitely many small primitive pairs has only finitely many exceptional multiples. For <span class="math" data-tex="\(\varepsilon\geq d-2\)">\(\varepsilon\geq d-2\)</span>, nonzero integrality makes the conclusion immediate.</p>
+</li>
+<li>
+<p>An invertible coefficient matrix gives <span class="math" data-tex="\(\max(|L_1|,|L_2|)\geq cH\)">\(\max(|L_1|,|L_2|)\geq cH\)</span>, <span class="math" data-tex="\(H=\max(|x|,|y|)\)">\(H=\max(|x|,|y|)\)</span>. The product condition forces the smaller nonzero form to have absolute value <span class="math" data-tex="\(&lt;C H^{-1-\varepsilon}\)">\(&lt;C H^{-1-\varepsilon}\)</span>. If its coefficient ratio is nonreal, its real and imaginary parts are independent real forms and bound it below by a positive multiple of <span class="math" data-tex="\(H\)">\(H\)</span>, impossible for large <span class="math" data-tex="\(H\)">\(H\)</span>. If it is a multiple of a rational form, its nonzero value is bounded below by a fixed positive constant on integer pairs, again impossible.</p>
+<p>Otherwise write it as <span class="math" data-tex="\(a(x-\alpha y)\)">\(a(x-\alpha y)\)</span>, with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> real irrational algebraic. Smallness forces <span class="math" data-tex="\(|y|\)">\(|y|\)</span> comparable with <span class="math" data-tex="\(H\)">\(H\)</span>, and gives <span class="math" data-tex="\(|\alpha-x/y|&lt;C&#x27;|y|^{-2-\varepsilon}\)">\(|\alpha-x/y|&lt;C&#x27;|y|^{-2-\varepsilon}\)</span>. After reduction, with denominator <span class="math" data-tex="\(q\leq|y|\)">\(q\leq|y|\)</span>, this is also <span class="math" data-tex="\(&lt;C&#x27;q^{-2-\varepsilon}\)">\(&lt;C&#x27;q^{-2-\varepsilon}\)</span>, hence <span class="math" data-tex="\(&lt;q^{-2-\varepsilon/2}\)">\(&lt;q^{-2-\varepsilon/2}\)</span> for large <span class="math" data-tex="\(q\)">\(q\)</span>. Roth leaves finitely many reduced ratios. Each fixed ratio leaves only finitely many multiples, since its nonzero product grows quadratically in the multiple while the right-hand side decreases. Bounded reduced denominators have only finitely many ratios in the bounded neighbourhood in question. The same reasoning applies whichever form is smaller, proving finiteness.</p>
+<p>Conversely take <span class="math" data-tex="\(L_1=X-\alpha Y\)">\(L_1=X-\alpha Y\)</span>, <span class="math" data-tex="\(L_2=Y\)">\(L_2=Y\)</span>. Infinitely many reduced approximations of exponent <span class="math" data-tex="\(2+\delta\)">\(2+\delta\)</span> would give product <span class="math" data-tex="\(&lt;q^{-\delta}\)">\(&lt;q^{-\delta}\)</span>, with <span class="math" data-tex="\(H\)">\(H\)</span> comparable with <span class="math" data-tex="\(q\)">\(q\)</span>. For large <span class="math" data-tex="\(q\)">\(q\)</span> this is <span class="math" data-tex="\(&lt;H^{-\delta/2}\)">\(&lt;H^{-\delta/2}\)</span> and nonzero, contradicting the two-form assertion. This proves equivalence.</p>
+</li>
+<li>
+<p>Take the independent forms <span class="math" data-tex="\(L_0=X_0\)">\(L_0=X_0\)</span> and <span class="math" data-tex="\(L_j=\alpha_jX_0-X_j\)">\(L_j=\alpha_jX_0-X_j\)</span>, <span class="math" data-tex="\(1\le j\le n\)">\(1\le j\le n\)</span>, on the integer vector <span class="math" data-tex="\(x=(q,p_1,\ldots,p_n)\)">\(x=(q,p_1,\ldots,p_n)\)</span>. The product is</p>
+<span class="math math-display" data-tex="\[
+q\prod_{j=1}^n|\alpha_jq-p_j|
+&lt;q\left(q^{-1/n-\varepsilon}\right)^n
+=q^{-n\varepsilon}.
+\]">\[
+q\prod_{j=1}^n|\alpha_jq-p_j|
+&lt;q\left(q^{-1/n-\varepsilon}\right)^n
+=q^{-n\varepsilon}.
+\]</span>
+<p>The ordinary coordinate maximum is at most <span class="math" data-tex="\(Cq\)">\(Cq\)</span>, because the approximations keep <span class="math" data-tex="\(p_j/q\)">\(p_j/q\)</span> in fixed bounded intervals. For large <span class="math" data-tex="\(q\)">\(q\)</span> the displayed product is therefore less than that maximum to power <span class="math" data-tex="\(-n\varepsilon/2\)">\(-n\varepsilon/2\)</span>, hence also less than the projective height to that power. Corollary 12.14 puts all such integer vectors in finitely many proper rational subspaces. On each choose a nonzero rational relation <span class="math" data-tex="\(a_0q+\sum_j a_jp_j=0\)">\(a_0q+\sum_j a_jp_j=0\)</span>. Dividing by <span class="math" data-tex="\(q\)">\(q\)</span> and using the approximation inequality gives</p>
+<span class="math math-display" data-tex="\[
+|a_0+\sum_j a_j\alpha_j|
+\le\sum_j|a_j|q^{-1-1/n-\varepsilon}.
+\]">\[
+|a_0+\sum_j a_j\alpha_j|
+\le\sum_j|a_j|q^{-1-1/n-\varepsilon}.
+\]</span>
+<p>The left side is positive by the specified independence; thus that subspace admits no solutions for sufficiently large <span class="math" data-tex="\(q\)">\(q\)</span>. If every <span class="math" data-tex="\(a_j=0\)">\(a_j=0\)</span> for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, its equation already excludes <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>. There are finitely many subspaces, so <span class="math" data-tex="\(q\)">\(q\)</span> is bounded for all solutions. At each bounded positive denominator the approximation intervals contain finitely many integer numerators. This proves finiteness, including nonprimitive vectors.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §§15–18: Roth's theorem from the auxiliary polynomial, the index estimates and Roth's lemma, with the <span class="math" data-tex="\(p\)">\(p\)</span>-adic version and Lang's number-field form (Theorem 26).</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-8.pdf"><em>Diophantine Approximation</em>, Chapter 8: The p-adic Subspace Theorem</a>, Leiden course notes, Theorems 8.6–8.7, 8.10 and 8.12–8.13: Roth's theorem with finitely many places, the <span class="math" data-tex="\(p\)">\(p\)</span>-adic Subspace theorem, Mahler's theorem on Thue–Mahler equations, and Lang's and the general finiteness theorems for nondegenerate unit equations. Theorem 3.2 of Goel, Lunia and Ray below is the number-field form.</li>
+<li>Shivani Goel, Rashi Lunia and Anwesh Ray, <a href="https://arxiv.org/pdf/2502.00731v2"><em>Diophantine approximation and the subspace theorem</em></a>, arXiv:2502.00731v2, 21 July 2026: Lemma 3.9, PDF pp. 21–24; Theorems 4.3–4.4 and Proposition 4.5, pp. 27–28; §§4.3–5.3, pp. 29–52. The <a href="https://arxiv.org/abs/2502.00731v2">version-specific arXiv record</a> supplies its CC BY 4.0 licence. Sections 6–8 adapt the index, auxiliary-polynomial and exterior-power method under that licence. The successive-minima proof is supplied in section 5; the specialization index inequality, finite exceptional-family selection, integer-grid argument and local-radius rounding are explicit in the text.</li>
+<li>M. Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/IMPA2010Cours4.pdf"><em>Diophantine approximation, irrationality and transcendence</em></a>, IMPA course notes, Course 4 (2010), §4.1.3, Theorems 46–49: Roth's theorem, Ridout's theorem for denominators composed of finitely many primes, and Schmidt's Subspace theorem with finitely many places.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-7.pdf"><em>Diophantine Approximation</em>, Chapter 7: The Subspace Theorem</a>, Leiden course notes, Theorem 7.1 and Corollary 7.2, for the classical Subspace theorem and its consequence for Roth's theorem.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-6.pdf"><em>Diophantine Approximation</em>, Chapter 6: Approximation of algebraic numbers by rationals</a>, Leiden course notes: Theorems 6.2–6.3 and Corollary 6.4 for Roth's theorem, squarefree binary forms and Thue equations; Theorem 6.5 for Fel'dman's effective improvement of Liouville's inequality; §6.2, Theorem 6.14 and Exercise 6.8, for the gap principle and the counting of exceptional approximations.</li>
+</ul>
+<p>Original material outside sections 6–8 is dedicated under CC0. The adapted sections 6–8 are CC BY 4.0, with Goel, Lunia and Ray credited above and the changes identified; that notice applies in the Markdown, LaTeX and reading editions.</p>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, July 19, 2020, Proposition 4.26, proves the lattice and discriminant covolume formula for ideals under the real-coordinate Minkowski embedding. This gives a parallel treatment of the normalization used in the number-field prerequisites of Section 7.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-11.html">← Wronskians and Roth&#x27;s rational-point lemma</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-13.html">Mahler&#x27;s classification of transcendental numbers →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

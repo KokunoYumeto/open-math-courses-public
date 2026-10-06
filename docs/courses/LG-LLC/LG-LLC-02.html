@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irreducible representations of general linear groups over a local field · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="irreducible-representations-of-general-linear-groups-over-a-local-field">Irreducible representations of general linear groups over a local field</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Parabolic induction supplies representations, but usually supplies too many at once: an induced representation can have several irreducible constituents. Segments organize this ambiguity. A segment groups consecutive twists of one supercuspidal representation into an essentially square-integrable representation; a multisegment specifies how such groups are assembled.</p>
+<p>We assume the classification and Kirillov models of irreducible representations of the two-dimensional general linear group from <em>The Kirillov model and the classification of irreducible representations</em>. The precise rank-one input is recalled below. The general Bernstein–Zelevinsky theorems are stated. We prove their rank-two dictionary, compute the Jacquet modules that make cuspidal support intrinsic in that case, and prove square-integrability of the rank-two Steinberg representation by an explicit coefficient calculation. Basic references are [Getz–Hahn 2022], [Jacquet–Langlands 1970] and [Wedhorn 2000].</p>
+<h2 id="1-induction-and-its-normalizations">1. Induction and its normalizations</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be a nonarchimedean local field, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> its ring of integers, <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> a uniformizer and <span class="math" data-tex="\(q\)">\(q\)</span> the residue cardinality. Put <span class="math" data-tex="\(G_n=\mathrm{GL}_n(F)\)">\(G_n=\mathrm{GL}_n(F)\)</span> and <span class="math" data-tex="\(\nu(g)=|\det g|_F\)">\(\nu(g)=|\det g|_F\)</span>. All representations are complex, smooth and admissible; “irreducible” always includes nonzero.</p>
+<p>For a standard parabolic <span class="math" data-tex="\(P=MU\)">\(P=MU\)</span>, with <span class="math" data-tex="\(M\simeq G_{n_1}\times\cdots\times G_{n_r}\)">\(M\simeq G_{n_1}\times\cdots\times G_{n_r}\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\pi_1\times\cdots\times\pi_r
+=\operatorname{Ind}_{P}^{G_n}
+(\delta_P^{1/2}\,\pi_1\boxtimes\cdots\boxtimes\pi_r).
+\tag{1.1}
+\]">\[
+\pi_1\times\cdots\times\pi_r
+=\operatorname{Ind}_{P}^{G_n}
+(\delta_P^{1/2}\,\pi_1\boxtimes\cdots\boxtimes\pi_r).
+\tag{1.1}
+\]</span>
+<p>Induction is realized by functions with left covariance and right translation. Thus for the upper triangular Borel <span class="math" data-tex="\(B=TN\)">\(B=TN\)</span> in <span class="math" data-tex="\(G_2\)">\(G_2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f\left(\begin{pmatrix}a&amp;x\\0&amp;d\end{pmatrix}g\right)
+=|a/d|^{1/2}\chi_1(a)\chi_2(d)f(g)
+\tag{1.2}
+\]">\[
+f\left(\begin{pmatrix}a&amp;x\\0&amp;d\end{pmatrix}g\right)
+=|a/d|^{1/2}\chi_1(a)\chi_2(d)f(g)
+\tag{1.2}
+\]</span>
+<p>in <span class="math" data-tex="\(I(\chi_1,\chi_2)=\chi_1\times\chi_2\)">\(I(\chi_1,\chi_2)=\chi_1\times\chi_2\)</span>. This convention fixes which constituent is a subrepresentation and which is a quotient at a reducibility point.</p>
+<p>The <strong>normalized Jacquet module</strong> is</p>
+<span class="math math-display" data-tex="\[
+r_N(V)=\delta_B^{-1/2}\otimes
+V/\langle n v-v:n\in N,\ v\in V\rangle.
+\tag{1.3}
+\]">\[
+r_N(V)=\delta_B^{-1/2}\otimes
+V/\langle n v-v:n\in N,\ v\in V\rangle.
+\tag{1.3}
+\]</span>
+<p>For general <span class="math" data-tex="\(G_n\)">\(G_n\)</span>, a representation is supercuspidal if it is not a subquotient of induction from a proper parabolic. The equivalent vanishing of all proper Jacquet modules is a theorem. Every irreducible representation has a unique unordered multiset of supercuspidal representations whose induction contains it as a subquotient. This multiset is its <strong>cuspidal support</strong>. These general facts are imported from [Zelevinsky 1980, §1.10] for nonarchimedean <span class="math" data-tex="\(F\)">\(F\)</span>, and from [Getz–Hahn 2022, Theorems 8.3.3–8.3.6] in their stated domains; Theorem 8.3.6 there assumes characteristic zero. Our rank-two uniqueness proof appears in Section 4.</p>
+<h2 id="2-segments-and-the-two-classifications">2. Segments and the two classifications</h2>
+<p>Fix an irreducible supercuspidal <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(G_d\)">\(G_d\)</span>. A segment on its integer twist line is</p>
+<span class="math math-display" data-tex="\[
+\Delta=[\rho\nu^a,\rho\nu^{a+1},\ldots,\rho\nu^b],
+\qquad a,b\in\mathbb Z,\quad a\le b.
+\tag{2.1}
+\]">\[
+\Delta=[\rho\nu^a,\rho\nu^{a+1},\ldots,\rho\nu^b],
+\qquad a,b\in\mathbb Z,\quad a\le b.
+\tag{2.1}
+\]</span>
+<p>An arbitrary starting representation absorbs a nonintegral twist. The degree of this segment is <span class="math" data-tex="\(d(b-a+1)\)">\(d(b-a+1)\)</span>. The interval notation records the actual representations, so translating the base <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and the endpoints together does not change the segment.</p>
+<p>Two segments are <strong>linked</strong> when their union is a segment and neither contains the other. For segments <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> and <span class="math" data-tex="\([c,d]\)">\([c,d]\)</span> on the same line with <span class="math" data-tex="\(a\le c\)">\(a\le c\)</span>, this means precisely</p>
+<span class="math math-display" data-tex="\[
+a&lt;c\le b+1\le d.
+\tag{2.2}
+\]">\[
+a&lt;c\le b+1\le d.
+\tag{2.2}
+\]</span>
+<p>Indeed, absence of a gap says <span class="math" data-tex="\(c\le b+1\)">\(c\le b+1\)</span>; absence of containment says <span class="math" data-tex="\(a&lt;c\)">\(a&lt;c\)</span> and <span class="math" data-tex="\(b&lt;d\)">\(b&lt;d\)</span>. Segments on different integer twist lines are never linked. Equal segments, and a segment contained in another, are never linked. Adjacent disjoint segments can be linked.</p>
+<p>Let <span class="math" data-tex="\(Q(\Delta)\)">\(Q(\Delta)\)</span> denote the unique irreducible quotient of the increasing induction in (2.1), and let <span class="math" data-tex="\(Z(\Delta)\)">\(Z(\Delta)\)</span> denote its unique irreducible subrepresentation. The following are theorem inputs, not conclusions of an elementary induction argument.</p>
+<p><strong>Theorem 2.1 (segment and Langlands classification, stated).</strong> The representations <span class="math" data-tex="\(Q(\Delta)\)">\(Q(\Delta)\)</span> are exactly the essentially square-integrable irreducible representations of general linear groups. Write
+<span class="math" data-tex="\(Q(\Delta)=\delta_\Delta\nu^{e_\Delta}\)">\(Q(\Delta)=\delta_\Delta\nu^{e_\Delta}\)</span>, where <span class="math" data-tex="\(\delta_\Delta\)">\(\delta_\Delta\)</span> is square-integrable with unitary central character and <span class="math" data-tex="\(e_\Delta\in\mathbb R\)">\(e_\Delta\in\mathbb R\)</span>. For a multisegment <span class="math" data-tex="\(\mathfrak m=\{\Delta_1,\ldots,\Delta_t\}\)">\(\mathfrak m=\{\Delta_1,\ldots,\Delta_t\}\)</span>, order the segments so that <span class="math" data-tex="\(e_{\Delta_1}\ge\cdots\ge e_{\Delta_t}\)">\(e_{\Delta_1}\ge\cdots\ge e_{\Delta_t}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+Q(\Delta_1)\times\cdots\times Q(\Delta_t)
+\longtwoheadrightarrow L(\mathfrak m)
+\tag{2.3}
+\]">\[
+Q(\Delta_1)\times\cdots\times Q(\Delta_t)
+\longtwoheadrightarrow L(\mathfrak m)
+\tag{2.3}
+\]</span>
+<p>has a unique irreducible quotient. The map <span class="math" data-tex="\(\mathfrak m\mapsto L(\mathfrak m)\)">\(\mathfrak m\mapsto L(\mathfrak m)\)</span> is a bijection onto all irreducible admissible representations, in each total degree. Choices among equal exponents do not change the quotient. The cuspidal support is the multiset of all entries of the segments, with their multiplicities.</p>
+<p>The sources are [Getz–Hahn 2022, Theorems 8.4.1–8.4.3] and the multisegment classification in [Wedhorn 2000, (2.2.9) and (2.3.9)]. Its increasing single-segment quotient convention agrees with ours.</p>
+<p><strong>Theorem 2.2 (Zelevinsky classification, stated).</strong> Say that <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> precedes <span class="math" data-tex="\([c,d]\)">\([c,d]\)</span> if <span class="math" data-tex="\(a&lt;c\le b+1\le d\)">\(a&lt;c\le b+1\le d\)</span>. Order a multisegment so that no earlier segment precedes a later one. The induction of the corresponding <span class="math" data-tex="\(Z(\Delta_i)\)">\(Z(\Delta_i)\)</span> has a unique irreducible subrepresentation, denoted <span class="math" data-tex="\(Z(\mathfrak m)\)">\(Z(\mathfrak m)\)</span>. This is independent of the allowed ordering, and <span class="math" data-tex="\(\mathfrak m\mapsto Z(\mathfrak m)\)">\(\mathfrak m\mapsto Z(\mathfrak m)\)</span> is another bijection onto irreducible representations. See [Zelevinsky 1980, §§4 and 6].</p>
+<p>The two labels differ. Already for a single length-two segment, <span class="math" data-tex="\(Q(\Delta)\)">\(Q(\Delta)\)</span> is a Steinberg twist whereas <span class="math" data-tex="\(Z(\Delta)\)">\(Z(\Delta)\)</span> is a determinant character. The involution relating the two multisegment classifications must therefore be applied before identifying their labels.</p>
+<p><strong>Theorem 2.3 (irreducibility, genericity and temperedness, stated).</strong> The induction
+<span class="math" data-tex="\(Q(\Delta_1)\times\cdots\times Q(\Delta_t)\)">\(Q(\Delta_1)\times\cdots\times Q(\Delta_t)\)</span> is irreducible if and only if no two segments are linked. An irreducible representation is generic if and only if its Langlands multisegment is unlinked. It is tempered if and only if all its segment representations are square-integrable with unitary central character. These are [Getz–Hahn 2022, Theorems 8.4.4–8.4.5], with the equivalent multisegment description in [Wedhorn 2000, (2.2.9)(4), (2.3.7) and (2.4.4)].</p>
+<p>Here generic means admitting a nonzero Whittaker functional for a nondegenerate character of the upper unipotent group. Square-integrable means that matrix coefficients are square-integrable modulo the center, whose character is unitary; “essentially” permits twisting by a real power of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<h2 id="3-the-complete-rank-two-dictionary">3. The complete rank-two dictionary</h2>
+<p>We use the following rank-one classification input: <span class="math" data-tex="\(I(\chi_1,\chi_2)\)">\(I(\chi_1,\chi_2)\)</span> is irreducible unless <span class="math" data-tex="\(\chi_1\chi_2^{-1}=\nu^{\pm1}\)">\(\chi_1\chi_2^{-1}=\nu^{\pm1}\)</span>; away from those ratios, interchanging the characters gives an isomorphic representation. At either exceptional ratio there are exactly two constituents, a determinant character and its Steinberg twist, in the subquotient positions stated below. Every irreducible representation of <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is a supercuspidal, one of these irreducible principal series, a Steinberg twist, or a determinant character. This is the prerequisite classification; its reducibility and subquotient assertions are [Jacquet–Langlands 1970, Theorem 3.3].</p>
+<p>The Steinberg representation has the boundary realization</p>
+<span class="math math-display" data-tex="\[
+\mathrm{St}_2=C^\infty(\mathbb P^1(F))/\mathbb C.
+\tag{3.1}
+\]">\[
+\mathrm{St}_2=C^\infty(\mathbb P^1(F))/\mathbb C.
+\tag{3.1}
+\]</span>
+<p>Indeed, (1.2) for <span class="math" data-tex="\((\chi_1,\chi_2)=(\nu^{-1/2},\nu^{1/2})\)">\((\chi_1,\chi_2)=(\nu^{-1/2},\nu^{1/2})\)</span> has trivial left <span class="math" data-tex="\(B\)">\(B\)</span>-covariance. Its functions are locally constant functions on <span class="math" data-tex="\(B\backslash G_2\simeq\mathbb P^1(F)\)">\(B\backslash G_2\simeq\mathbb P^1(F)\)</span>; its constant functions form the trivial subrepresentation. Twisting gives the exact sequences</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\chi\circ\det
+\longrightarrow I(\chi\nu^{-1/2},\chi\nu^{1/2})
+\longrightarrow\mathrm{St}_2\otimes(\chi\circ\det)
+\longrightarrow0,
+\tag{3.2}
+\]">\[
+0\longrightarrow\chi\circ\det
+\longrightarrow I(\chi\nu^{-1/2},\chi\nu^{1/2})
+\longrightarrow\mathrm{St}_2\otimes(\chi\circ\det)
+\longrightarrow0,
+\tag{3.2}
+\]</span>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathrm{St}_2\otimes(\chi\circ\det)
+\longrightarrow I(\chi\nu^{1/2},\chi\nu^{-1/2})
+\longrightarrow\chi\circ\det\longrightarrow0.
+\tag{3.3}
+\]">\[
+0\longrightarrow\mathrm{St}_2\otimes(\chi\circ\det)
+\longrightarrow I(\chi\nu^{1/2},\chi\nu^{-1/2})
+\longrightarrow\chi\circ\det\longrightarrow0.
+\tag{3.3}
+\]</span>
+<p>The second follows also by contragredience of the first, using normalized induction duality [Getz–Hahn 2022, Proposition 8.2.3] and the rank-one constituent identification.</p>
+<p><strong>Proposition 3.1.</strong> The segment classification in total degree two is exactly the rank-one classification just recalled. Singleton segments are linked exactly at its two reducibility ratios.</p>
+<p><strong>Proof.</strong> A degree-two multisegment has only three possible forms. It can be one singleton whose supercuspidal entry has degree two; its Langlands quotient is that entry itself. It can be one length-two segment of characters, necessarily
+<span class="math" data-tex="\([\chi\nu^{-1/2},\chi\nu^{1/2}]\)">\([\chi\nu^{-1/2},\chi\nu^{1/2}]\)</span>; (3.2) identifies its <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(\mathrm{St}_2\otimes\chi\)">\(\mathrm{St}_2\otimes\chi\)</span> and its <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>. Finally, it can have two character singletons. If they are unlinked, their induction is irreducible by the rank-one input and gives the principal series. If linked, they are the two characters in (3.2). Ordering their real exponents decreasingly gives (3.3), so their Langlands quotient is <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span>.</p>
+<p>To verify the linking assertion without invoking the general criterion, two distinct singleton characters have a segment as their union exactly when one is the other times <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Thus they are linked exactly when <span class="math" data-tex="\(\chi_1\chi_2^{-1}=\nu\)">\(\chi_1\chi_2^{-1}=\nu\)</span> or <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>. Equal characters fail the noncontainment condition and give an irreducible principal series. These possibilities exhaust both classifications, with the same isomorphisms and exceptional constituents. ∎</p>
+<p>For clarity, the two exceptional Langlands labels are</p>
+<table>
+<thead>
+<tr>
+<th>Representation</th>
+<th>Langlands multisegment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}_2\otimes\chi\)">\(\mathrm{St}_2\otimes\chi\)</span></td>
+<td><span class="math" data-tex="\(\{[\chi\nu^{-1/2},\chi\nu^{1/2}]\}\)">\(\{[\chi\nu^{-1/2},\chi\nu^{1/2}]\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span></td>
+<td><span class="math" data-tex="\(\{[\chi\nu^{-1/2}],[\chi\nu^{1/2}]\}\)">\(\{[\chi\nu^{-1/2}],[\chi\nu^{1/2}]\}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The central character in both rows is <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span>. Their cuspidal supports agree; their grouping into segments does not.</p>
+<h2 id="4-the-two-bruhat-cells-and-cuspidal-support">4. The two Bruhat cells and cuspidal support</h2>
+<p><strong>Lemma 4.1 (rank-one geometric lemma).</strong> The normalized Jacquet module of <span class="math" data-tex="\(I(\chi_1,\chi_2)\)">\(I(\chi_1,\chi_2)\)</span> has a two-step filtration whose quotients are</p>
+<span class="math math-display" data-tex="\[
+\chi_2\boxtimes\chi_1,\qquad
+\chi_1\boxtimes\chi_2.
+\tag{4.1}
+\]">\[
+\chi_2\boxtimes\chi_1,\qquad
+\chi_1\boxtimes\chi_2.
+\tag{4.1}
+\]</span>
+<p>This asserts a filtration, not necessarily a direct sum.</p>
+<p><strong>Proof.</strong> First, coinvariants under <span class="math" data-tex="\(N\simeq(F,+)\)">\(N\simeq(F,+)\)</span> are exact on smooth representations. Write <span class="math" data-tex="\(F=\bigcup_{r\ge0}\varpi^{-r}\mathcal O\)">\(F=\bigcup_{r\ge0}\varpi^{-r}\mathcal O\)</span>. Coinvariants are the directed limit of coinvariants for these compact groups. Each compact coinvariant functor is averaging onto invariants and is exact over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; directed limits of vector spaces are exact. The normalization twist preserves exactness.</p>
+<p>Evaluation at the closed Bruhat cell gives a surjection <span class="math" data-tex="\(f\mapsto f(1)\)">\(f\mapsto f(1)\)</span>. Its kernel consists of functions supported away from that point of <span class="math" data-tex="\(B\backslash G_2\)">\(B\backslash G_2\)</span>. On the open cell, use
+<span class="math" data-tex="\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span> and coordinate <span class="math" data-tex="\(w n(x)\)">\(w n(x)\)</span>. The kernel is then <span class="math" data-tex="\(C_c^\infty(F)\)">\(C_c^\infty(F)\)</span>, and right <span class="math" data-tex="\(n(u)\)">\(n(u)\)</span> acts by <span class="math" data-tex="\(\phi(x)\mapsto\phi(x+u)\)">\(\phi(x)\mapsto\phi(x+u)\)</span>.</p>
+<p>Integration <span class="math" data-tex="\(\phi\mapsto\int_F\phi(x)\,dx\)">\(\phi\mapsto\int_F\phi(x)\,dx\)</span> identifies its coinvariants with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. To check injectivity of this identification, refine a compactly supported locally constant function into finitely many cosets of a common compact open additive subgroup. Translation identifies the characteristic functions of all these cosets in coinvariants. A function with integral zero is consequently a sum of their differences, and is zero in coinvariants.</p>
+<p>For <span class="math" data-tex="\(t=\operatorname{diag}(a,d)\)">\(t=\operatorname{diag}(a,d)\)</span>, the open-cell action is</p>
+<span class="math math-display" data-tex="\[
+\phi(x)\longmapsto
+|d/a|^{1/2}\chi_1(d)\chi_2(a)\phi(xd/a).
+\]">\[
+\phi(x)\longmapsto
+|d/a|^{1/2}\chi_1(d)\chi_2(a)\phi(xd/a).
+\]</span>
+<p>The integral picks up <span class="math" data-tex="\(|a/d|\)">\(|a/d|\)</span>; after multiplication by <span class="math" data-tex="\(\delta_B(t)^{-1/2}=|a/d|^{-1/2}\)">\(\delta_B(t)^{-1/2}=|a/d|^{-1/2}\)</span>, its character is <span class="math" data-tex="\(\chi_2(a)\chi_1(d)\)">\(\chi_2(a)\chi_1(d)\)</span>. Evaluation at the closed cell has unnormalized character <span class="math" data-tex="\(|a/d|^{1/2}\chi_1(a)\chi_2(d)\)">\(|a/d|^{1/2}\chi_1(a)\chi_2(d)\)</span>, so its normalized character is <span class="math" data-tex="\(\chi_1(a)\chi_2(d)\)">\(\chi_1(a)\chi_2(d)\)</span>. Exactness now gives (4.1). ∎</p>
+<p>For a determinant character, <span class="math" data-tex="\(N\)">\(N\)</span> acts trivially, whence</p>
+<span class="math math-display" data-tex="\[
+r_N(\chi\circ\det)
+=\chi\nu^{-1/2}\boxtimes\chi\nu^{1/2}.
+\tag{4.2}
+\]">\[
+r_N(\chi\circ\det)
+=\chi\nu^{-1/2}\boxtimes\chi\nu^{1/2}.
+\tag{4.2}
+\]</span>
+<p>Apply Lemma 4.1 and exactness to (3.2). Subtracting the character in (4.2) from the two filtration characters leaves</p>
+<span class="math math-display" data-tex="\[
+r_N(\mathrm{St}_2\otimes\chi)
+=\chi\nu^{1/2}\boxtimes\chi\nu^{-1/2}.
+\tag{4.3}
+\]">\[
+r_N(\mathrm{St}_2\otimes\chi)
+=\chi\nu^{1/2}\boxtimes\chi\nu^{-1/2}.
+\tag{4.3}
+\]</span>
+<p><strong>Theorem 4.2.</strong> Cuspidal support for <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is well defined up to order. It is read from the computed Jacquet modules as follows:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\pi&amp;\operatorname{supp}_{\mathrm{cusp}}(\pi)\\\hline
+I(\chi_1,\chi_2)\text{ irreducible}&amp;\{\chi_1,\chi_2\}\\
+\mathrm{St}_2\otimes\chi&amp;\{\chi\nu^{-1/2},\chi\nu^{1/2}\}\\
+\chi\circ\det&amp;\{\chi\nu^{-1/2},\chi\nu^{1/2}\}\\
+\rho\text{ supercuspidal}&amp;\{\rho\}.
+\end{array}
+\tag{4.4}
+\]">\[
+\begin{array}{c|c}
+\pi&amp;\operatorname{supp}_{\mathrm{cusp}}(\pi)\\\hline
+I(\chi_1,\chi_2)\text{ irreducible}&amp;\{\chi_1,\chi_2\}\\
+\mathrm{St}_2\otimes\chi&amp;\{\chi\nu^{-1/2},\chi\nu^{1/2}\}\\
+\chi\circ\det&amp;\{\chi\nu^{-1/2},\chi\nu^{1/2}\}\\
+\rho\text{ supercuspidal}&amp;\{\rho\}.
+\end{array}
+\tag{4.4}
+\]</span>
+<p><strong>Proof.</strong> For every non-supercuspidal irreducible, (4.1)–(4.3) give a nonzero finite-length <span class="math" data-tex="\(T\)">\(T\)</span>-module. Forgetting the order in either character of its semisimplification gives the multiset in (4.4). Suppose the same representation occurs in another induction <span class="math" data-tex="\(I(\eta_1,\eta_2)\)">\(I(\eta_1,\eta_2)\)</span>. By the rank-one classification that induction is either irreducible, or has precisely the two constituents in (3.2)–(3.3). The computations for each constituent show that every one of its Jacquet characters has unordered pair <span class="math" data-tex="\(\{\eta_1,\eta_2\}\)">\(\{\eta_1,\eta_2\}\)</span>. Hence this pair equals the pair intrinsic to <span class="math" data-tex="\(r_N(\pi)\)">\(r_N(\pi)\)</span>.</p>
+<p>A supercuspidal cannot occur in a proper induction by definition, and induction from <span class="math" data-tex="\(G_2\)">\(G_2\)</span> itself has only that irreducible as its constituent. Conversely all three non-supercuspidal types occur in their displayed character inductions. This proves both existence and uniqueness in rank two without using the general cuspidal-support uniqueness theorem. ∎</p>
+<h2 id="5-why-the-rank-two-steinberg-coefficients-are-square-integrable">5. Why the rank-two Steinberg coefficients are square-integrable</h2>
+<p>Here the Steinberg representation has trivial central character, so work in <span class="math" data-tex="\(\overline G=\mathrm{PGL}_2(F)\)">\(\overline G=\mathrm{PGL}_2(F)\)</span>. Let <span class="math" data-tex="\(I\)">\(I\)</span> be the image of the Iwahori subgroup consisting of integral invertible matrices that are upper triangular modulo <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, and give it volume one.</p>
+<p>The lattice tree makes the relevant double cosets explicit. Vertices are homothety classes of rank-two <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-lattices; two vertices are adjacent when representatives <span class="math" data-tex="\(L,L&#x27;\)">\(L,L&#x27;\)</span> satisfy <span class="math" data-tex="\(\varpi L\subset L&#x27;\subset L\)">\(\varpi L\subset L&#x27;\subset L\)</span> with quotient dimension one. Each vertex has <span class="math" data-tex="\(q+1\)">\(q+1\)</span> neighbors. The group <span class="math" data-tex="\(I\)">\(I\)</span> fixes the two endpoints of the edge
+<span class="math" data-tex="\([\mathcal O^2],[\mathcal O e_1+\varpi\mathcal O e_2]\)">\([\mathcal O^2],[\mathcal O e_1+\varpi\mathcal O e_2]\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+s_0=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+s_1=\begin{pmatrix}0&amp;\varpi^{-1}\\\varpi&amp;0\end{pmatrix},\quad
+\omega=\begin{pmatrix}0&amp;1\\\varpi&amp;0\end{pmatrix}.
+\tag{5.1}
+\]">\[
+s_0=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+s_1=\begin{pmatrix}0&amp;\varpi^{-1}\\\varpi&amp;0\end{pmatrix},\quad
+\omega=\begin{pmatrix}0&amp;1\\\varpi&amp;0\end{pmatrix}.
+\tag{5.1}
+\]</span>
+<p>Modulo the center, <span class="math" data-tex="\(s_0,s_1\)">\(s_0,s_1\)</span> are involutions, their alternating products are distinct, and <span class="math" data-tex="\(\omega^2=1\)">\(\omega^2=1\)</span>. The latter exchanges the edge endpoints and conjugates <span class="math" data-tex="\(s_0\)">\(s_0\)</span> to <span class="math" data-tex="\(s_1\)">\(s_1\)</span>. Thus the extended affine Weyl group is
+<span class="math" data-tex="\(\widetilde W=\langle s_0,s_1\rangle\rtimes\langle\omega\rangle\)">\(\widetilde W=\langle s_0,s_1\rangle\rtimes\langle\omega\rangle\)</span>, with <span class="math" data-tex="\(\ell(\omega)=0\)">\(\ell(\omega)=0\)</span>.</p>
+<p>The double cosets of <span class="math" data-tex="\(I\)">\(I\)</span> are <span class="math" data-tex="\(IwI\)">\(IwI\)</span>, for <span class="math" data-tex="\(w\in\widetilde W\)">\(w\in\widetilde W\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(IwI)=q^{\ell(w)}.
+\tag{5.2}
+\]">\[
+\operatorname{vol}(IwI)=q^{\ell(w)}.
+\tag{5.2}
+\]</span>
+<p>One elementary verification uses the unique path between two tree edges. Its successive wall types alternate, giving a reduced word in <span class="math" data-tex="\(s_0,s_1\)">\(s_0,s_1\)</span>; possible endpoint exchange records <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. At each new step there are exactly <span class="math" data-tex="\(q\)">\(q\)</span> choices after excluding the edge just traversed. The edge stabilizer acts transitively on those choices: reducing the upper, respectively lower, unipotent matrix entries modulo <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> gives the translations on the <span class="math" data-tex="\(q\)">\(q\)</span> choices. Inductively its stabilizers give transitivity on paths of the fixed wall sequence. This proves both the double-coset description and the <span class="math" data-tex="\(q^{\ell(w)}\)">\(q^{\ell(w)}\)</span> count of right <span class="math" data-tex="\(I\)">\(I\)</span>-cosets. It also proves the convolution rule <span class="math" data-tex="\(T_uT_v=T_{uv}\)">\(T_uT_v=T_{uv}\)</span> when lengths add, for <span class="math" data-tex="\(T_w=1_{IwI}\)">\(T_w=1_{IwI}\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> Every matrix coefficient of <span class="math" data-tex="\(\mathrm{St}_2\)">\(\mathrm{St}_2\)</span> is in <span class="math" data-tex="\(L^2(\overline G)\)">\(L^2(\overline G)\)</span>.</p>
+<p><strong>Proof.</strong> In the boundary model (3.1), <span class="math" data-tex="\(I\)">\(I\)</span> has two orbits on <span class="math" data-tex="\(\mathbb P^1(F)\)">\(\mathbb P^1(F)\)</span>, so <span class="math" data-tex="\(\dim\mathrm{St}_2^I=1\)">\(\dim\mathrm{St}_2^I=1\)</span>. Each of the two maximal vertex stabilizers <span class="math" data-tex="\(K_0,K_1\)">\(K_0,K_1\)</span> is transitive on that boundary, so <span class="math" data-tex="\(\mathrm{St}_2^{K_i}=0\)">\(\mathrm{St}_2^{K_i}=0\)</span>. These assertions pass from boundary functions to their quotient because invariants for compact groups are exact by averaging.</p>
+<p>Choose an <span class="math" data-tex="\(I\)">\(I\)</span>-fixed vector <span class="math" data-tex="\(v\)">\(v\)</span> and an <span class="math" data-tex="\(I\)">\(I\)</span>-fixed smooth dual vector <span class="math" data-tex="\(v^\vee\)">\(v^\vee\)</span> with <span class="math" data-tex="\(\langle v,v^\vee\rangle=1\)">\(\langle v,v^\vee\rangle=1\)</span>. Such a dual vector exists by averaging any functional nonzero on <span class="math" data-tex="\(v\)">\(v\)</span>; admissibility identifies the dual of the invariant line with the invariant line of the smooth dual. The normalized averages over <span class="math" data-tex="\(K_i\)">\(K_i\)</span> act as zero. Since <span class="math" data-tex="\(K_i=I\sqcup Is_iI\)">\(K_i=I\sqcup Is_iI\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T_{s_i}v=-v\quad(i=0,1).
+\]">\[
+T_{s_i}v=-v\quad(i=0,1).
+\]</span>
+<p>The element <span class="math" data-tex="\(\omega\)">\(\omega\)</span> acts on the invariant line by a scalar <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> with <span class="math" data-tex="\(\zeta^2=1\)">\(\zeta^2=1\)</span>. For <span class="math" data-tex="\(w\)">\(w\)</span> of length <span class="math" data-tex="\(r\)">\(r\)</span>, convolution of a reduced word therefore acts on this line by a scalar of absolute value one. The coefficient
+<span class="math" data-tex="\(c(g)=\langle\mathrm{St}_2(g)v,v^\vee\rangle\)">\(c(g)=\langle\mathrm{St}_2(g)v,v^\vee\rangle\)</span> is constant on <span class="math" data-tex="\(IwI\)">\(IwI\)</span>, while integrating it over that coset gives the same scalar. Equation (5.2) yields</p>
+<span class="math math-display" data-tex="\[
+|c(g)|=q^{-\ell(w)}\quad(g\in IwI).
+\tag{5.3}
+\]">\[
+|c(g)|=q^{-\ell(w)}\quad(g\in IwI).
+\tag{5.3}
+\]</span>
+<p>There are two elements of length zero and four of each positive length in <span class="math" data-tex="\(\widetilde W\)">\(\widetilde W\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\int_{\overline G}|c(g)|^2\,dg
+=2+4\sum_{r\ge1}q^{-r}
+=2+\frac4{q-1}&lt;\infty.
+\tag{5.4}
+\]">\[
+\int_{\overline G}|c(g)|^2\,dg
+=2+4\sum_{r\ge1}q^{-r}
+=2+\frac4{q-1}&lt;\infty.
+\tag{5.4}
+\]</span>
+<p>Both the Steinberg representation and its smooth dual are irreducible. They are generated by their nonzero invariant vectors. Every matrix coefficient is therefore a finite linear combination of left and right translates of <span class="math" data-tex="\(c\)">\(c\)</span>. Haar measure on <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span> is invariant under both translations, so all those coefficients are square-integrable. ∎</p>
+<p>A unitary character twist does not change coefficient absolute values. Thus <span class="math" data-tex="\(\mathrm{St}_2\otimes\chi\)">\(\mathrm{St}_2\otimes\chi\)</span> is square-integrable when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unitary, and essentially square-integrable for any character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. The determinant-character constituent in (3.2) has coefficient of constant absolute value when unitary, and cannot be square-integrable on the noncompact group <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span>.</p>
+<h2 id="6-a-three-dimensional-example">6. A three-dimensional example</h2>
+<p>Consider <span class="math" data-tex="\(\nu^{-1}\times1\times\nu\)">\(\nu^{-1}\times1\times\nu\)</span>. Its support has each of the three consecutive characters once. There are exactly four multisegments with this support:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak m_0&amp;=\{[-1],[0],[1]\},&amp;
+\mathfrak m_1&amp;=\{[-1,0],[1]\},\\
+\mathfrak m_2&amp;=\{[-1],[0,1]\},&amp;
+\mathfrak m_3&amp;=\{[-1,1]\}.
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+\mathfrak m_0&amp;=\{[-1],[0],[1]\},&amp;
+\mathfrak m_1&amp;=\{[-1,0],[1]\},\\
+\mathfrak m_2&amp;=\{[-1],[0,1]\},&amp;
+\mathfrak m_3&amp;=\{[-1,1]\}.
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>Here <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> abbreviates <span class="math" data-tex="\([\nu^a,\ldots,\nu^b]\)">\([\nu^a,\ldots,\nu^b]\)</span>. No overlapping intervals are possible, because an overlap would repeat a support character. Each multisegment is therefore obtained by choosing where to cut the two edges of the interval <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>.</p>
+<p>The consecutive-induction theorem [Zelevinsky 1980, §2, Theorem 2.2] says that the constituents of a consecutive supercuspidal induction are indexed by the orientations of these edges. Corollary 2.3 there gives length two when joining two consecutive pieces. In the present case it gives the following four distinct constituents, each with multiplicity one:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\mathfrak m&amp;L(\mathfrak m)\\\hline
+\mathfrak m_0&amp;\mathbf1_{G_3}\\
+\mathfrak m_1&amp;\text{unique quotient of }\nu\times
+(\mathrm{St}_2\otimes\nu^{-1/2})\\
+\mathfrak m_2&amp;\text{unique quotient of }
+(\mathrm{St}_2\otimes\nu^{1/2})\times\nu^{-1}\\
+\mathfrak m_3&amp;\mathrm{St}_3.
+\end{array}
+\tag{6.2}
+\]">\[
+\begin{array}{c|c}
+\mathfrak m&amp;L(\mathfrak m)\\\hline
+\mathfrak m_0&amp;\mathbf1_{G_3}\\
+\mathfrak m_1&amp;\text{unique quotient of }\nu\times
+(\mathrm{St}_2\otimes\nu^{-1/2})\\
+\mathfrak m_2&amp;\text{unique quotient of }
+(\mathrm{St}_2\otimes\nu^{1/2})\times\nu^{-1}\\
+\mathfrak m_3&amp;\mathrm{St}_3.
+\end{array}
+\tag{6.2}
+\]</span>
+<p>For a direct multiplicity check, first split <span class="math" data-tex="\(\nu^{-1}\times1\)">\(\nu^{-1}\times1\)</span> using (3.2), then induce each constituent with <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Each resulting induction has length two by Lemma IV.2. There are four possible irreducible labels by (6.1), and the graph description asserts that all four occur. Total length four forces multiplicity one. The trivial representation is the Langlands quotient of <span class="math" data-tex="\(\nu\times1\times\nu^{-1}\)">\(\nu\times1\times\nu^{-1}\)</span>: this decreasing induction has covariance <span class="math" data-tex="\(\delta_B\)">\(\delta_B\)</span>, and is dual to the increasing induction with trivial covariance and its constant subrepresentation. The other rows follow from the segment centers <span class="math" data-tex="\(-1/2,1/2\)">\(-1/2,1/2\)</span>, and zero. Only the final row is generic, since every other multisegment has a linked pair. Only that row is tempered.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> List all linked pairs of singleton segments of total degree two. Decide what happens for <span class="math" data-tex="\(\{[\chi],[\chi]\}\)">\(\{[\chi],[\chi]\}\)</span> and for <span class="math" data-tex="\(\{[\chi],[\chi\nu^2]\}\)">\(\{[\chi],[\chi\nu^2]\}\)</span>.</p>
+<p><strong>Solution.</strong> Both entries must be characters. The complete list is <span class="math" data-tex="\(\{[\chi],[\chi\nu]\}\)">\(\{[\chi],[\chi\nu]\}\)</span>, with the unordered pair understood; writing <span class="math" data-tex="\(\chi\nu^{-1}\)">\(\chi\nu^{-1}\)</span> as the first entry gives the same list. Equal singleton segments contain each other, so are not linked. The twists separated by two have a gap, so their union is not a segment. Both of the latter pairs give irreducible principal series by the rank-one criterion.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Show directly that <span class="math" data-tex="\(Q([\nu^{-1/2},\nu^{1/2}])\)">\(Q([\nu^{-1/2},\nu^{1/2}])\)</span> is square-integrable. Identify a coefficient and its squared integral when <span class="math" data-tex="\(I\)">\(I\)</span> has volume one.</p>
+<p><strong>Solution.</strong> Sequence (3.2) identifies the quotient with <span class="math" data-tex="\(\mathrm{St}_2\)">\(\mathrm{St}_2\)</span>. The invariant-line coefficient normalized to value one at the identity satisfies <span class="math" data-tex="\(|c|=q^{-r}\)">\(|c|=q^{-r}\)</span> on a double coset of length <span class="math" data-tex="\(r\)">\(r\)</span>, by the two Hecke eigenvalues <span class="math" data-tex="\(-1\)">\(-1\)</span>. The coset volume is <span class="math" data-tex="\(q^r\)">\(q^r\)</span>, so its contribution to the squared integral is <span class="math" data-tex="\(q^{-r}\)">\(q^{-r}\)</span>. Counting lengths gives <span class="math" data-tex="\(2+4/(q-1)\)">\(2+4/(q-1)\)</span>. Irreducibility makes all coefficients finite sums of translates of this one, completing the required square-integrability proof. This uses the computation of Section 5, rather than the square-integrability assertion of the general classification.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Determine the multisegments and multiplicities of the constituents of <span class="math" data-tex="\(\nu^{-1}\times1\times\nu\)">\(\nu^{-1}\times1\times\nu\)</span>, and determine which constituents are generic or tempered.</p>
+<p><strong>Solution.</strong> There are two potential cuts, between <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> and between <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. The four cut patterns give exactly (6.1). The consecutive-induction theorem and its two-piece length calculation give the four rows of (6.2), once each. The first row has linked singleton pairs; the second links <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> with <span class="math" data-tex="\([1]\)">\([1]\)</span>; the third links <span class="math" data-tex="\([-1]\)">\([-1]\)</span> with <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. They are nongeneric. The full segment in the fourth row is unlinked and centered, hence <span class="math" data-tex="\(\mathrm{St}_3\)">\(\mathrm{St}_3\)</span> is generic and tempered. The mixed rows have nonzero segment centers, and the singleton row has centers <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, so none of those is tempered.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Prove uniqueness of cuspidal support for <span class="math" data-tex="\(G_2\)">\(G_2\)</span> from its geometric lemma. Explain why knowing only the central character would be insufficient.</p>
+<p><strong>Solution.</strong> The open-cell coinvariant is integration on <span class="math" data-tex="\(C_c^\infty(F)\)">\(C_c^\infty(F)\)</span>, with normalized diagonal character <span class="math" data-tex="\(\chi_2\boxtimes\chi_1\)">\(\chi_2\boxtimes\chi_1\)</span>; the closed-cell coinvariant is evaluation, with character <span class="math" data-tex="\(\chi_1\boxtimes\chi_2\)">\(\chi_1\boxtimes\chi_2\)</span>. Exactness of Jacquet modules, proved by compact averaging in Lemma 4.1, gives these two characters for a principal series. At the reducibility point the determinant character contributes (4.2), leaving (4.3) for Steinberg. Thus every non-supercuspidal irreducible has a nonzero Jacquet character whose unordered pair is precisely its support. Any other character induction containing it has, by the rank-one constituent calculation, the same unordered pair. A supercuspidal has itself as its only possible support because it cannot occur in a proper induction. This is Theorem 4.2 with every geometric-lemma step specified.</p>
+<p>The central character records only the product of the support characters. For example, <span class="math" data-tex="\(I(\nu^t,\nu^{-t})\)">\(I(\nu^t,\nu^{-t})\)</span> has trivial central character for every <span class="math" data-tex="\(t\)">\(t\)</span>; choosing <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(t=1\)">\(t=1\)</span> gives two irreducible principal series with different supports. Their Jacquet modules distinguish them. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The general subquotient and cuspidal-support theorems, and the supercuspidality criterion through Jacquet modules, are [Getz–Hahn 2022, Theorems 8.3.3–8.3.6]. The general segment, Langlands, Zelevinsky, irreducibility, genericity and temperedness theorems are stated in Section 2 with their exact locators. The consecutive-induction graph classification and its two-piece length calculation used in the rank-three example are [Zelevinsky 1980, §2, Theorem 2.2 and Corollary 2.3]. These general results are not proved here.</p>
+<p>The rank-one irreducibility and classification theorem is the assigned prerequisite, recalled at the beginning of Section 3; its principal-series assertions are [Jacquet–Langlands 1970, Theorem 3.3], and the exhaustion is the Kirillov-model classification in §§2–3. Normalized induction duality is [Getz–Hahn 2022, Proposition 8.2.3]. We used these inputs to prove agreement with the segment description. The rank-one geometric lemma, the resulting intrinsic support calculation and the rank-two Steinberg coefficient summation were proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em>, draft of 22 April 2022, §§8.2–8.4. The published book is Graduate Texts in Mathematics 300, Springer, 2024. An <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">author version</a> is available; the locators here use the draft numbering.</li>
+<li>[Wedhorn 2000] Torsten Wedhorn, <a href="https://arxiv.org/abs/math/0011210v2"><em>The local Langlands correspondence for GL(n) over p-adic fields</em></a>, lectures at the School on Automorphic Forms on GL(n), ICTP Trieste, 2000, §§2.2–2.4.</li>
+<li>[Jacquet–Langlands 1970] Hervé Jacquet and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §§2–3, especially Theorem 3.3. The IAS distributes a re-typeset edition retaining the theorem numbers.</li>
+<li>[Zelevinsky 1980] Andrei V. Zelevinsky, “Induced representations of reductive p-adic groups. II. On irreducible representations of GL(n),” <em>Annales scientifiques de l’École normale supérieure</em> 13 (1980), 165–210, §1.10, §2, Theorem 6.1 and §9. The <a href="https://www.numdam.org/item/ASENS_1980_4_13_2_165_0/">journal archive</a> provides the article. Its general classification proofs are not reproduced here.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-03.html">Local factors of pairs and the rank-two converse theorem →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

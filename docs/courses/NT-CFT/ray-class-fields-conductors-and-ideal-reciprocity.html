@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ray class fields, conductors and ideal reciprocity · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/ray-class-fields-conductors-and-ideal-reciprocity.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 18 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (4)</summary><ul><li><a href="abelian-ramification-conductors-and-hasse-arf.html">Abelian ramification, conductors and Hasse–Arf</a></li><li><a href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics</a></li><li><a href="the-global-reciprocity-law.html">The global reciprocity law</a></li><li><a href="global-existence-and-the-idelic-class-field-correspondence.html">Global existence and the idèlic class field correspondence</a></li></ul></details>
+<article class="lesson">
+<h1 id="ray-class-fields-conductors-and-ideal-reciprocity">Ray class fields, conductors and ideal reciprocity</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 18.</strong> A local uniformizer at an unramified prime acts by Frobenius. Multiplying these uniformizer idèles turns global reciprocity into a map on fractional ideals. The remaining idèle components record the congruences and signs that a principal generator must satisfy. Their quotient is the ray class group, and the global existence theorem constructs its class field.</p>
+<p>We use <a href="global-existence-and-the-idelic-class-field-correspondence.html">Global existence and the idèlic class field correspondence</a>, <a href="the-global-reciprocity-law.html">The global reciprocity law</a>, and the local conductor criteria in <a href="abelian-ramification-conductors-and-hasse-arf.html">Abelian ramification, conductors and Hasse–Arf</a>, Proposition 10.4. The explicit quadratic Hilbert symbols of lesson 11 will determine the examples. Throughout sections 1–7, <span class="math" data-tex="\(K\)">\(K\)</span> is a number field. Section 8 explains the function-field degree distinction.</p>
+<h2 id="1-moduli-and-ray-classes">1. Moduli and ray classes</h2>
+<p>A <strong>modulus</strong> is a pair <span class="math" data-tex="\(\mathfrak m=\mathfrak m_f\mathfrak m_\infty\)">\(\mathfrak m=\mathfrak m_f\mathfrak m_\infty\)</span>, where <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> is a nonzero integral ideal and <span class="math" data-tex="\(\mathfrak m_\infty\)">\(\mathfrak m_\infty\)</span> is a set of real places, each occurring once. Complex places impose no additional condition. Divisibility means ideal divisibility together with inclusion of the selected real places. Write <span class="math" data-tex="\(m_v=v(\mathfrak m_f)\)">\(m_v=v(\mathfrak m_f)\)</span> at finite places, and define
+<span class="math math-display" data-tex="\[
+U_v(\mathfrak m)=
+\begin{cases}
+1+\mathfrak p_v^{m_v}\mathcal O_v,&amp;v\text{ finite},\ m_v&gt;0,\\
+\mathcal O_v^\times,&amp;v\text{ finite},\ m_v=0,\\
+\mathbf R_{&gt;0},&amp;v\in\mathfrak m_\infty,\\
+K_v^\times,&amp;v\mid\infty,\ v\notin\mathfrak m_\infty.
+\end{cases}
+\tag{1}
+\]">\[
+U_v(\mathfrak m)=
+\begin{cases}
+1+\mathfrak p_v^{m_v}\mathcal O_v,&amp;v\text{ finite},\ m_v&gt;0,\\
+\mathcal O_v^\times,&amp;v\text{ finite},\ m_v=0,\\
+\mathbf R_{&gt;0},&amp;v\in\mathfrak m_\infty,\\
+K_v^\times,&amp;v\mid\infty,\ v\notin\mathfrak m_\infty.
+\end{cases}
+\tag{1}
+\]</span>
+Put <span class="math" data-tex="\(U(\mathfrak m)=\prod_v U_v(\mathfrak m)\subset J_K\)">\(U(\mathfrak m)=\prod_v U_v(\mathfrak m)\subset J_K\)</span>, and let <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> be its image in <span class="math" data-tex="\(C_K\)">\(C_K\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I^{\mathfrak m}\)">\(I^{\mathfrak m}\)</span> be the group of fractional ideals supported on finite primes not dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. Define <span class="math" data-tex="\(P_{\mathfrak m,1}\)">\(P_{\mathfrak m,1}\)</span> to consist of the principal ideals <span class="math" data-tex="\((a)\)">\((a)\)</span> for which
+<span class="math math-display" data-tex="\[
+a\in1+\mathfrak p_v^{m_v}\mathcal O_v\quad(v\mid\mathfrak m_f),
+\qquad a_v&gt;0\quad(v\in\mathfrak m_\infty).
+\tag{2}
+\]">\[
+a\in1+\mathfrak p_v^{m_v}\mathcal O_v\quad(v\mid\mathfrak m_f),
+\qquad a_v&gt;0\quad(v\in\mathfrak m_\infty).
+\tag{2}
+\]</span>
+The finite condition is a multiplicative local congruence, denoted <span class="math" data-tex="\(a\equiv1\pmod{\mathfrak m_f}\)">\(a\equiv1\pmod{\mathfrak m_f}\)</span>; it forces <span class="math" data-tex="\(a\)">\(a\)</span> to be a unit at the primes in question, but does not require it to be integral everywhere. The <strong>ray class group</strong> is
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{\mathfrak m}=I^{\mathfrak m}/P_{\mathfrak m,1}.
+\tag{3}
+\]">\[
+\operatorname{Cl}_{\mathfrak m}=I^{\mathfrak m}/P_{\mathfrak m,1}.
+\tag{3}
+\]</span></p>
+<h3 id="from-ideal-classes-to-idèle-classes">From ideal classes to idèle classes</h3>
+<p>Choose a uniformizer <span class="math" data-tex="\(\pi_{\mathfrak p}\)">\(\pi_{\mathfrak p}\)</span> at each prime outside <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. An ideal <span class="math" data-tex="\(\mathfrak a=\prod\mathfrak p^{e_{\mathfrak p}}\)">\(\mathfrak a=\prod\mathfrak p^{e_{\mathfrak p}}\)</span> gives the idèle with components <span class="math" data-tex="\(\pi_{\mathfrak p}^{e_{\mathfrak p}}\)">\(\pi_{\mathfrak p}^{e_{\mathfrak p}}\)</span> there and <span class="math" data-tex="\(1\)">\(1\)</span> elsewhere. Changing a uniformizer multiplies by units already in (1). This defines a canonical map
+<span class="math math-display" data-tex="\[
+I^{\mathfrak m}\longrightarrow C_K/C(\mathfrak m).
+\]">\[
+I^{\mathfrak m}\longrightarrow C_K/C(\mathfrak m).
+\]</span>
+It is onto. Given an idèle <span class="math" data-tex="\(x\)">\(x\)</span>, weak approximation chooses <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> such that <span class="math" data-tex="\(ax_v\)">\(ax_v\)</span> belongs to the deep unit group in (1) at each finite divisor of <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, and is positive at every selected real place. Outside these places, form the ideal with valuations <span class="math" data-tex="\(v(ax_v)\)">\(v(ax_v)\)</span>. Removing its uniformizer idèle leaves an element of <span class="math" data-tex="\(U(\mathfrak m)\)">\(U(\mathfrak m)\)</span>.</p>
+<p>Its kernel is <span class="math" data-tex="\(P_{\mathfrak m,1}\)">\(P_{\mathfrak m,1}\)</span>. Indeed if a uniformizer idèle <span class="math" data-tex="\(j\)">\(j\)</span> equals <span class="math" data-tex="\(a u\)">\(a u\)</span>, with <span class="math" data-tex="\(u\in U(\mathfrak m)\)">\(u\in U(\mathfrak m)\)</span>, its component <span class="math" data-tex="\(1\)">\(1\)</span> at each modulus prime forces <span class="math" data-tex="\(a\)">\(a\)</span> to satisfy (2), and its outside valuations give exactly the ideal <span class="math" data-tex="\((a)\)">\((a)\)</span>. The same argument at selected real places forces positivity. Conversely a generator satisfying (2) differs from its ideal's uniformizer idèle by an element of <span class="math" data-tex="\(U(\mathfrak m)\)">\(U(\mathfrak m)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{\mathfrak m}\xrightarrow{\sim}C_K/C(\mathfrak m).
+\tag{4}
+\]">\[
+\operatorname{Cl}_{\mathfrak m}\xrightarrow{\sim}C_K/C(\mathfrak m).
+\tag{4}
+\]</span></p>
+<p>The group is finite. More explicitly, with <span class="math" data-tex="\(E_K=\mathcal O_K^\times\)">\(E_K=\mathcal O_K^\times\)</span>, there is an exact sequence
+<span class="math math-display" data-tex="\[
+E_K\longrightarrow
+(\mathcal O_K/\mathfrak m_f)^\times\times\{\pm1\}^{|\mathfrak m_\infty|}
+\longrightarrow\operatorname{Cl}_{\mathfrak m}
+\longrightarrow\operatorname{Cl}_K\longrightarrow1.
+\tag{5}
+\]">\[
+E_K\longrightarrow
+(\mathcal O_K/\mathfrak m_f)^\times\times\{\pm1\}^{|\mathfrak m_\infty|}
+\longrightarrow\operatorname{Cl}_{\mathfrak m}
+\longrightarrow\operatorname{Cl}_K\longrightarrow1.
+\tag{5}
+\]</span>
+When <span class="math" data-tex="\(\mathfrak m_f=(1)\)">\(\mathfrak m_f=(1)\)</span>, the residue factor means the trivial group. The first map is reduction and the selected real signs. For the second, use weak approximation to choose an element with the specified residue units and signs and take its principal ideal class. Changing this element changes the ideal by a generator satisfying (2). Its ray class is trivial exactly when its residues and signs come from a global unit: divide by a ray-principal generator and use equality of the principal ideals. Finally every ordinary ideal class has a representative prime to <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, by weak approximation at those finitely many primes. The kernel of forgetting the ray condition is precisely the principal ideals just described. This proves (5), and finiteness follows from the finite residue and sign groups and the finite ordinary class group.</p>
+<p>Under our convention <span class="math" data-tex="\(\operatorname{Cl}_{(1)}=\operatorname{Cl}_K\)">\(\operatorname{Cl}_{(1)}=\operatorname{Cl}_K\)</span>. Selecting all real places, with finite modulus <span class="math" data-tex="\((1)\)">\((1)\)</span>, gives the narrow class group. Some accounts build total positivity into every modulus; converting their convention requires adding all the real places to ours. Keeping this choice explicit prevents exchanging the ordinary and narrow class fields.</p>
+<h2 id="2-frobenius-and-the-ideal-artin-map">2. Frobenius and the ideal Artin map</h2>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite abelian and unramified at every finite prime outside <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. Define
+<span class="math math-display" data-tex="\[
+\psi_{L/K}:I^{\mathfrak m}\longrightarrow\operatorname{Gal}(L/K),
+\qquad
+\mathfrak p\longmapsto\operatorname{Frob}_{\mathfrak p},
+\tag{6}
+\]">\[
+\psi_{L/K}:I^{\mathfrak m}\longrightarrow\operatorname{Gal}(L/K),
+\qquad
+\mathfrak p\longmapsto\operatorname{Frob}_{\mathfrak p},
+\tag{6}
+\]</span>
+extended multiplicatively, allowing negative ideal exponents. Arithmetic Frobenius acts on the residue field by <span class="math" data-tex="\(z\mapsto z^{N\mathfrak p}\)">\(z\mapsto z^{N\mathfrak p}\)</span>. Since the extension is abelian, the automorphism is independent of the prime chosen above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>.</p>
+<p><strong>Proposition 18.1.</strong> The ideal symbol of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> in (6) is the global reciprocity symbol of its uniformizer idèle.</p>
+<p><strong>Proof.</strong> At an unramified prime, local reciprocity takes any uniformizer to arithmetic Frobenius, and takes units to <span class="math" data-tex="\(1\)">\(1\)</span>. Theorem 16.4 identifies insertion of this local symbol with the global symbol. Multiplying over the support of <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> gives (6). Negative exponents give inverse Frobenius powers, as required for fractional ideals. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> is contained in the norm group of <span class="math" data-tex="\(L\)">\(L\)</span>, (4) and global reciprocity therefore make (6) onto and kill <span class="math" data-tex="\(P_{\mathfrak m,1}\)">\(P_{\mathfrak m,1}\)</span>. We next determine exactly when that containment holds.</p>
+<h2 id="3-the-conductor-including-real-places">3. The conductor, including real places</h2>
+<p>For a finite place <span class="math" data-tex="\(v\)">\(v\)</span>, choose <span class="math" data-tex="\(w\mid v\)">\(w\mid v\)</span> and let <span class="math" data-tex="\(a_v\)">\(a_v\)</span> be the least integer <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> such that
+<span class="math math-display" data-tex="\[
+U_v^{(a)}\subseteq N_{L_w/K_v}L_w^\times,
+\qquad U_v^{(0)}=\mathcal O_v^\times.
+\tag{7}
+\]">\[
+U_v^{(a)}\subseteq N_{L_w/K_v}L_w^\times,
+\qquad U_v^{(0)}=\mathcal O_v^\times.
+\tag{7}
+\]</span>
+This is the local conductor exponent of Proposition 10.4. It is finite by continuity, independent of <span class="math" data-tex="\(w\)">\(w\)</span>, and zero at unramified places. At a real place put <span class="math" data-tex="\(a_v=1\)">\(a_v=1\)</span> if it becomes complex, and <span class="math" data-tex="\(a_v=0\)">\(a_v=0\)</span> otherwise; complex places have exponent zero.</p>
+<p><strong>Proposition 18.3 (local description of the global conductor).</strong> The smallest modulus <span class="math" data-tex="\(\mathfrak f(L/K)\)">\(\mathfrak f(L/K)\)</span> satisfying <span class="math" data-tex="\(C(\mathfrak m)\subseteq N_{L/K}C_L\)">\(C(\mathfrak m)\subseteq N_{L/K}C_L\)</span> is
+<span class="math math-display" data-tex="\[
+\mathfrak f(L/K)=
+\prod_{v\text{ finite}}\mathfrak p_v^{a_v}
+\prod_{v\text{ real},\ L_w=\mathbf C}v.
+\tag{8}
+\]">\[
+\mathfrak f(L/K)=
+\prod_{v\text{ finite}}\mathfrak p_v^{a_v}
+\prod_{v\text{ real},\ L_w=\mathbf C}v.
+\tag{8}
+\]</span>
+More precisely,
+<span class="math math-display" data-tex="\[
+C(\mathfrak m)\subseteq N_{L/K}C_L
+\quad\Longleftrightarrow\quad\mathfrak f(L/K)\mid\mathfrak m.
+\tag{9}
+\]">\[
+C(\mathfrak m)\subseteq N_{L/K}C_L
+\quad\Longleftrightarrow\quad\mathfrak f(L/K)\mid\mathfrak m.
+\tag{9}
+\]</span>
+A place ramifies in <span class="math" data-tex="\(L\)">\(L\)</span> exactly when it occurs in (8), where real ramification means complexification.</p>
+<p><strong>Proof.</strong> A local element inserted at a single place has trivial global symbol exactly when its local symbol is trivial: the local decomposition group embeds in the global Galois group. Thus containment on the left of (9) forces every group <span class="math" data-tex="\(U_v(\mathfrak m)\)">\(U_v(\mathfrak m)\)</span> into its local norm group. Conversely, if this holds at every place, all the local symbols of an idèle in <span class="math" data-tex="\(U(\mathfrak m)\)">\(U(\mathfrak m)\)</span> are trivial, and its global product symbol is trivial. The norm-kernel theorem gives the containment. The least finite level is precisely (7). At a complexified real place the norm group is <span class="math" data-tex="\(\mathbf R_{&gt;0}\)">\(\mathbf R_{&gt;0}\)</span>, so that place must be selected; at every other infinite place all local elements are norms. This proves (8)–(9). Proposition 10.4 identifies positive finite conductor with nontrivial inertia, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument tests <em>each local group</em> inside the subgroup. One particular global norm class need not have each of its components a local norm, since its local symbols can cancel. For example the principal idèle <span class="math" data-tex="\(-1\)">\(-1\)</span> in <span class="math" data-tex="\(\mathbf Q(i)/\mathbf Q\)">\(\mathbf Q(i)/\mathbf Q\)</span> has nontrivial symbols at <span class="math" data-tex="\(2\)">\(2\)</span> and infinity, whose product is <span class="math" data-tex="\(1\)">\(1\)</span>. Testing single-place insertions is what makes (9) valid.</p>
+<p>Equivalently, the finite exponent <span class="math" data-tex="\(a_v\)">\(a_v\)</span> is the maximum of the conductor exponents of the restrictions of all characters of <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span> to its local decomposition group. Characters separate that finite abelian group, so killing all these restrictions is exactly killing the group-valued local symbol. Proposition 10.4 proves the character formula and its upper-ramification interpretation, including wild ramification.</p>
+<h2 id="4-artin-reciprocity-for-ideals">4. Artin reciprocity for ideals</h2>
+<p>Let <span class="math" data-tex="\(I_L^{\mathfrak m}\)">\(I_L^{\mathfrak m}\)</span> denote fractional ideals of <span class="math" data-tex="\(L\)">\(L\)</span> prime to every prime above <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. Its norm is the usual ideal norm; in particular
+<span class="math" data-tex="\(N_{L/K}\mathfrak q=\mathfrak p^{f(\mathfrak q/\mathfrak p)}\)">\(N_{L/K}\mathfrak q=\mathfrak p^{f(\mathfrak q/\mathfrak p)}\)</span>.</p>
+<p><strong>Theorem 18.2 (ideal reciprocity).</strong> If <span class="math" data-tex="\(\mathfrak f(L/K)\mid\mathfrak m\)">\(\mathfrak f(L/K)\mid\mathfrak m\)</span>, then
+<span class="math math-display" data-tex="\[
+\ker\psi_{L/K}=P_{\mathfrak m,1}\,N_{L/K}I_L^{\mathfrak m},
+\qquad
+I^{\mathfrak m}/\bigl(P_{\mathfrak m,1}N_{L/K}I_L^{\mathfrak m}\bigr)
+\xrightarrow{\sim}\operatorname{Gal}(L/K).
+\tag{10}
+\]">\[
+\ker\psi_{L/K}=P_{\mathfrak m,1}\,N_{L/K}I_L^{\mathfrak m},
+\qquad
+I^{\mathfrak m}/\bigl(P_{\mathfrak m,1}N_{L/K}I_L^{\mathfrak m}\bigr)
+\xrightarrow{\sim}\operatorname{Gal}(L/K).
+\tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> By (9), the global symbol factors through (4); Proposition 18.1 identifies that factor with the ideal symbol, which is therefore onto. It remains to identify the image of the norm subgroup in the ray quotient.</p>
+<p>Take <span class="math" data-tex="\(y\in J_L\)">\(y\in J_L\)</span>. Multiplying by a principal element of <span class="math" data-tex="\(L\)">\(L\)</span>, weak approximation makes its components above <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> sufficiently close to <span class="math" data-tex="\(1\)">\(1\)</span> that their local norms belong to (1). It also makes its real components above the selected real places positive; norms from complex components are positive automatically. This normalization is possible simultaneously at these finitely many places, and does not change its norm class. The ideal
+<span class="math" data-tex="\(\mathfrak b=\prod_{\mathfrak q\nmid\mathfrak m_f}\mathfrak q^{v_{\mathfrak q}(y_{\mathfrak q})}\)">\(\mathfrak b=\prod_{\mathfrak q\nmid\mathfrak m_f}\mathfrak q^{v_{\mathfrak q}(y_{\mathfrak q})}\)</span>
+is now prime to <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. The local valuation formula
+<span class="math math-display" data-tex="\[
+v_{\mathfrak p}\bigl((Ny)_{\mathfrak p}\bigr)
+=\sum_{\mathfrak q\mid\mathfrak p}f(\mathfrak q/\mathfrak p)
+v_{\mathfrak q}(y_{\mathfrak q})
+\tag{11}
+\]">\[
+v_{\mathfrak p}\bigl((Ny)_{\mathfrak p}\bigr)
+=\sum_{\mathfrak q\mid\mathfrak p}f(\mathfrak q/\mathfrak p)
+v_{\mathfrak q}(y_{\mathfrak q})
+\tag{11}
+\]</span>
+shows that the image of <span class="math" data-tex="\(Ny\)">\(Ny\)</span> under (4) is the ray class of <span class="math" data-tex="\(N\mathfrak b\)">\(N\mathfrak b\)</span>. Conversely a uniformizer idèle for any <span class="math" data-tex="\(\mathfrak b\in I_L^{\mathfrak m}\)">\(\mathfrak b\in I_L^{\mathfrak m}\)</span> has norm with exactly that ray class, by (11), and with component <span class="math" data-tex="\(1\)">\(1\)</span> at the modulus primes and at infinity. Thus the image of <span class="math" data-tex="\(NC_L\)">\(NC_L\)</span> is
+<span class="math" data-tex="\(P_{\mathfrak m,1}NI_L^{\mathfrak m}/P_{\mathfrak m,1}\)">\(P_{\mathfrak m,1}NI_L^{\mathfrak m}/P_{\mathfrak m,1}\)</span>.
+Applying the norm-kernel theorem proves (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, if <span class="math" data-tex="\(\mathfrak p\nmid\mathfrak m_f\)">\(\mathfrak p\nmid\mathfrak m_f\)</span>, its residue degree in <span class="math" data-tex="\(L\)">\(L\)</span> is the order of its class in the quotient in (10); it has <span class="math" data-tex="\([L:K]/f\)">\([L:K]/f\)</span> primes above it. Its Frobenius is trivial exactly when it splits completely. This converts a splitting problem into a test in an explicit ideal group.</p>
+<h2 id="5-ray-class-fields-and-takagi-s-formulation">5. Ray class fields and Takagi’s formulation</h2>
+<p><strong>Theorem 18.4.</strong> For every modulus <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> there is a unique finite abelian <strong>ray class field</strong> <span class="math" data-tex="\(K_{\mathfrak m}/K\)">\(K_{\mathfrak m}/K\)</span> with norm group <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K_{\mathfrak m}/K)\simeq\operatorname{Cl}_{\mathfrak m}.
+\tag{12}
+\]">\[
+\operatorname{Gal}(K_{\mathfrak m}/K)\simeq\operatorname{Cl}_{\mathfrak m}.
+\tag{12}
+\]</span>
+A finite abelian <span class="math" data-tex="\(L/K\)">\(L/K\)</span> lies in <span class="math" data-tex="\(K_{\mathfrak m}\)">\(K_{\mathfrak m}\)</span> exactly when its conductor divides <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. If <span class="math" data-tex="\(\mathfrak m\mid\mathfrak n\)">\(\mathfrak m\mid\mathfrak n\)</span>, then <span class="math" data-tex="\(K_{\mathfrak m}\subseteq K_{\mathfrak n}\)">\(K_{\mathfrak m}\subseteq K_{\mathfrak n}\)</span>.</p>
+<p><strong>Proof.</strong> The group <span class="math" data-tex="\(U(\mathfrak m)\)">\(U(\mathfrak m)\)</span> is open in the restricted product, so its image <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> is open. Equation (4) and finiteness from (5) give finite index. Theorem 17.1 constructs its unique class field, and Theorem 16.4 gives (12). The reversed-inclusion correspondence and (9) prove the conductor criterion. Finally (1) gives <span class="math" data-tex="\(C(\mathfrak n)\subseteq C(\mathfrak m)\)">\(C(\mathfrak n)\subseteq C(\mathfrak m)\)</span>, so field inclusion reverses that subgroup inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conductor of <span class="math" data-tex="\(K_{\mathfrak m}\)">\(K_{\mathfrak m}\)</span> divides <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>; equality need not hold. Different moduli can give the same ray class field. For instance <span class="math" data-tex="\(\operatorname{Cl}_{2\infty}(\mathbf Q)\)">\(\operatorname{Cl}_{2\infty}(\mathbf Q)\)</span> is trivial, as (5) or the unit decomposition of lesson 17 shows, so this modulus gives <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> itself.</p>
+<p><strong>Proposition 18.5 (Takagi’s congruence subgroups).</strong> For fixed <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, the subgroups
+<span class="math math-display" data-tex="\[
+P_{\mathfrak m,1}\subseteq H\subseteq I^{\mathfrak m}
+\tag{13}
+\]">\[
+P_{\mathfrak m,1}\subseteq H\subseteq I^{\mathfrak m}
+\tag{13}
+\]</span>
+correspond with reversed inclusions to the subextensions of <span class="math" data-tex="\(K_{\mathfrak m}/K\)">\(K_{\mathfrak m}/K\)</span>. Their class field <span class="math" data-tex="\(L\)">\(L\)</span> has ideal Artin kernel <span class="math" data-tex="\(H\)">\(H\)</span> and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L/K)\simeq I^{\mathfrak m}/H.
+\tag{14}
+\]">\[
+\operatorname{Gal}(L/K)\simeq I^{\mathfrak m}/H.
+\tag{14}
+\]</span>
+Every finite abelian extension appears for some modulus.</p>
+<p><strong>Proof.</strong> Use (4) to regard <span class="math" data-tex="\(H/P_{\mathfrak m,1}\)">\(H/P_{\mathfrak m,1}\)</span> as a subgroup of the finite quotient <span class="math" data-tex="\(C_K/C(\mathfrak m)\)">\(C_K/C(\mathfrak m)\)</span>. Its inverse image <span class="math" data-tex="\(\widetilde H\subset C_K\)">\(\widetilde H\subset C_K\)</span> is open of finite index and contains <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span>. Theorem 17.1 gives a unique class field <span class="math" data-tex="\(L\)">\(L\)</span>, and reversed inclusion places it in <span class="math" data-tex="\(K_{\mathfrak m}\)">\(K_{\mathfrak m}\)</span>. Proposition 18.1 and finite reciprocity show that its ideal kernel is exactly <span class="math" data-tex="\(H\)">\(H\)</span>, giving (14). Conversely each subextension yields such a subgroup. A finite abelian extension has the finite conductor (8), hence lies in its conductor ray field. This proves the final assertion and equivalence with the idèlic formulation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a larger modulus <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> divisible by <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, the same field is represented by <span class="math" data-tex="\(H\cap I^{\mathfrak n}\)">\(H\cap I^{\mathfrak n}\)</span>. Indeed the ideal Artin map for <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> is the restriction of (6), and its kernel is this intersection. The surjection <span class="math" data-tex="\(\operatorname{Cl}_{\mathfrak n}\to\operatorname{Cl}_{\mathfrak m}\)">\(\operatorname{Cl}_{\mathfrak n}\to\operatorname{Cl}_{\mathfrak m}\)</span> is equally the quotient map from <span class="math" data-tex="\(C(\mathfrak n)\subseteq C(\mathfrak m)\)">\(C(\mathfrak n)\subseteq C(\mathfrak m)\)</span>. Thus changing the modulus preserves the field when the congruence subgroup is changed compatibly.</p>
+<h2 id="6-quadratic-conductors-over-the-rationals">6. Quadratic conductors over the rationals</h2>
+<p>Let <span class="math" data-tex="\(d\ne1\)">\(d\ne1\)</span> be a nonzero squarefree integer and <span class="math" data-tex="\(L=\mathbf Q(\sqrt d)\)">\(L=\mathbf Q(\sqrt d)\)</span>. Its fundamental discriminant is
+<span class="math math-display" data-tex="\[
+D=\begin{cases}d,&amp;d\equiv1\pmod4,\\4d,&amp;d\not\equiv1\pmod4.\end{cases}
+\tag{15}
+\]">\[
+D=\begin{cases}d,&amp;d\equiv1\pmod4,\\4d,&amp;d\not\equiv1\pmod4.\end{cases}
+\tag{15}
+\]</span>
+We claim
+<span class="math math-display" data-tex="\[
+\mathfrak f(L/\mathbf Q)=
+\begin{cases}
+|D|,&amp;d&gt;0,\\
+|D|\infty,&amp;d&lt;0.
+\end{cases}
+\tag{16}
+\]">\[
+\mathfrak f(L/\mathbf Q)=
+\begin{cases}
+|D|,&amp;d&gt;0,\\
+|D|\infty,&amp;d&lt;0.
+\end{cases}
+\tag{16}
+\]</span>
+Here <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is the real place, a factor of the modulus, not a numeric multiplier.</p>
+<p>We verify every local factor, independently of a later global conductor–discriminant formula. The quadratic local norm character on <span class="math" data-tex="\(\mathbf Q_p^\times\)">\(\mathbf Q_p^\times\)</span> is <span class="math" data-tex="\(b\mapsto(b,d)_p\)">\(b\mapsto(b,d)_p\)</span>. At an odd prime dividing <span class="math" data-tex="\(d\)">\(d\)</span>, the odd-place formula of Theorem 11.4 restricts on units to <span class="math" data-tex="\(u\mapsto(u/p)\)">\(u\mapsto(u/p)\)</span>. It is nontrivial on all units and trivial on <span class="math" data-tex="\(1+p\mathbf Z_p\)">\(1+p\mathbf Z_p\)</span>, so its conductor exponent is <span class="math" data-tex="\(1\)">\(1\)</span>. At an odd prime not dividing <span class="math" data-tex="\(d\)">\(d\)</span>, the formula is trivial on units and the exponent is <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>For an odd <span class="math" data-tex="\(2\)">\(2\)</span>-adic unit write
+<span class="math math-display" data-tex="\[
+\epsilon(u)=\frac{u-1}{2}\pmod2,
+\qquad\omega(u)=\frac{u^2-1}{8}\pmod2.
+\]">\[
+\epsilon(u)=\frac{u-1}{2}\pmod2,
+\qquad\omega(u)=\frac{u^2-1}{8}\pmod2.
+\]</span>
+If <span class="math" data-tex="\(d\)">\(d\)</span> is odd, the unit character is
+<span class="math math-display" data-tex="\[
+(u,d)_2=(-1)^{\epsilon(u)\epsilon(d)}.
+\tag{17}
+\]">\[
+(u,d)_2=(-1)^{\epsilon(u)\epsilon(d)}.
+\tag{17}
+\]</span>
+For <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span> this is trivial, giving exponent <span class="math" data-tex="\(0\)">\(0\)</span>. For <span class="math" data-tex="\(d\equiv3\pmod4\)">\(d\equiv3\pmod4\)</span> it is nontrivial on units, including <span class="math" data-tex="\(u=3\)">\(u=3\)</span>, but trivial on <span class="math" data-tex="\(1+4\mathbf Z_2\)">\(1+4\mathbf Z_2\)</span>. Its exponent is <span class="math" data-tex="\(2\)">\(2\)</span>, since <span class="math" data-tex="\(U_2^{(1)}=\mathbf Z_2^\times\)">\(U_2^{(1)}=\mathbf Z_2^\times\)</span>.</p>
+<p>If <span class="math" data-tex="\(d=2e\)">\(d=2e\)</span> with <span class="math" data-tex="\(e\)">\(e\)</span> odd, the character is
+<span class="math math-display" data-tex="\[
+(u,2e)_2=(-1)^{\epsilon(u)\epsilon(e)+\omega(u)}.
+\tag{18}
+\]">\[
+(u,2e)_2=(-1)^{\epsilon(u)\epsilon(e)+\omega(u)}.
+\tag{18}
+\]</span>
+It is trivial on <span class="math" data-tex="\(1+8\mathbf Z_2\)">\(1+8\mathbf Z_2\)</span>, while <span class="math" data-tex="\(u=5\in1+4\mathbf Z_2\)">\(u=5\in1+4\mathbf Z_2\)</span> gives <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its exponent is <span class="math" data-tex="\(3\)">\(3\)</span>. These are exactly the <span class="math" data-tex="\(2\)">\(2\)</span>-adic exponents of <span class="math" data-tex="\(|D|\)">\(|D|\)</span> in (15). Finally the real extension is trivial for <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> and complex for <span class="math" data-tex="\(d&lt;0\)">\(d&lt;0\)</span>. Proposition 18.3 now proves (16), including its sign condition.</p>
+<p>For instance <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span> has conductor <span class="math" data-tex="\(5\)">\(5\)</span>, <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span> has conductor <span class="math" data-tex="\(4\infty\)">\(4\infty\)</span>, and <span class="math" data-tex="\(\mathbf Q(\sqrt{-3})\)">\(\mathbf Q(\sqrt{-3})\)</span> has conductor <span class="math" data-tex="\(3\infty\)">\(3\infty\)</span>. Keeping the real factor distinguishes the latter two fields from the corresponding real ray fields.</p>
+<h2 id="7-a-ray-field-over-the-gaussian-rationals">7. A ray field over the Gaussian rationals</h2>
+<p>Take <span class="math" data-tex="\(K=\mathbf Q(i)\)">\(K=\mathbf Q(i)\)</span> and modulus <span class="math" data-tex="\((3)\)">\((3)\)</span>. The ring <span class="math" data-tex="\(\mathbf Z[i]\)">\(\mathbf Z[i]\)</span> is Euclidean: approximate the real and imaginary parts of a complex quotient by integers, leaving remainder norm at most one half the divisor norm. Thus its class group is trivial. Since <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> is irreducible over <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbf Z[i]/(3)\simeq\mathbf F_9,
+\qquad (\mathbf Z[i]/(3))^\times\simeq\mathbf Z/8.
+\]">\[
+\mathbf Z[i]/(3)\simeq\mathbf F_9,
+\qquad (\mathbf Z[i]/(3))^\times\simeq\mathbf Z/8.
+\]</span>
+The four units <span class="math" data-tex="\(\{\pm1,\pm i\}\)">\(\{\pm1,\pm i\}\)</span> have distinct reductions. Sequence (5) gives
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{(3)}\simeq
+\mathbf F_9^\times/\{\pm1,\pm i\}\simeq\mathbf Z/2.
+\tag{19}
+\]">\[
+\operatorname{Cl}_{(3)}\simeq
+\mathbf F_9^\times/\{\pm1,\pm i\}\simeq\mathbf Z/2.
+\tag{19}
+\]</span>
+Its ray field is
+<span class="math math-display" data-tex="\[
+K_{(3)}=\mathbf Q(i,\sqrt3)=\mathbf Q(\zeta_{12}).
+\tag{20}
+\]">\[
+K_{(3)}=\mathbf Q(i,\sqrt3)=\mathbf Q(\zeta_{12}).
+\tag{20}
+\]</span></p>
+<p>To identify it, not merely predict its degree, let <span class="math" data-tex="\(L=K(\sqrt3)\)">\(L=K(\sqrt3)\)</span>. The element <span class="math" data-tex="\(3\)">\(3\)</span> is not a square in <span class="math" data-tex="\(K\)">\(K\)</span>: squaring <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span>, with <span class="math" data-tex="\(a,b\in\mathbf Q\)">\(a,b\in\mathbf Q\)</span>, forces <span class="math" data-tex="\(ab=0\)">\(ab=0\)</span>, and neither remaining rational square equation is possible. Thus <span class="math" data-tex="\([L:K]=2\)">\([L:K]=2\)</span>. At the prime <span class="math" data-tex="\((3)\)">\((3)\)</span>, <span class="math" data-tex="\(X^2-3\)">\(X^2-3\)</span> is Eisenstein over the unramified quadratic completion of <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span>, and the quadratic extension is tame. Its conductor exponent is <span class="math" data-tex="\(1\)">\(1\)</span>, by Proposition 10.4 and the tame unit symbol of Proposition 11.3.</p>
+<p>At the prime above <span class="math" data-tex="\(2\)">\(2\)</span>, adjoining <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span> is the same as adjoining <span class="math" data-tex="\(\sqrt{-3}\)">\(\sqrt{-3}\)</span>, since <span class="math" data-tex="\(i\in K\)">\(i\in K\)</span>. The field <span class="math" data-tex="\(\mathbf Q_2(\sqrt{-3})=\mathbf Q_2(\sqrt5)\)">\(\mathbf Q_2(\sqrt{-3})=\mathbf Q_2(\sqrt5)\)</span> is the unramified quadratic extension: their defining units differ by a square because <span class="math" data-tex="\(-3/5\equiv1\pmod8\)">\(-3/5\equiv1\pmod8\)</span>. The odd-unit square criterion and unramified quadratic field were proved in lessons 10–11. Base change of an unramified local extension remains unramified or split, by lifting its separable residue-field polynomial. Hence the prime over <span class="math" data-tex="\(2\)">\(2\)</span> contributes no conductor. At every other finite prime, the unit radical of order <span class="math" data-tex="\(2\)">\(2\)</span> gives an unramified or split extension; the archimedean places of <span class="math" data-tex="\(K\)">\(K\)</span> are complex. Thus <span class="math" data-tex="\(\mathfrak f(L/K)=(3)\)">\(\mathfrak f(L/K)=(3)\)</span>.</p>
+<p>Theorem 18.4 places <span class="math" data-tex="\(L\)">\(L\)</span> in <span class="math" data-tex="\(K_{(3)}\)">\(K_{(3)}\)</span>. Both have degree <span class="math" data-tex="\(2\)">\(2\)</span>, by (19), so they coincide. Finally
+<span class="math" data-tex="\(\zeta_{12}=(\sqrt3+i)/2\)">\(\zeta_{12}=(\sqrt3+i)/2\)</span>, while <span class="math" data-tex="\(i=\zeta_{12}^3\)">\(i=\zeta_{12}^3\)</span> and <span class="math" data-tex="\(\sqrt3=\zeta_{12}+\zeta_{12}^{-1}\)">\(\sqrt3=\zeta_{12}+\zeta_{12}^{-1}\)</span>; this proves the second equality in (20).</p>
+<h2 id="8-what-changes-over-a-function-field">8. What changes over a function field</h2>
+<p>For a function field over full constants <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, use divisors instead of fractional ideals, and finite place powers instead of an archimedean sign set. The uniformizer map and weak-approximation proof of (4) give the divisor ray group as <span class="math" data-tex="\(C_K/C(\mathfrak m)\)">\(C_K/C(\mathfrak m)\)</span>. Here <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> has degree zero. Consequently there is an exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow C_K^1/C(\mathfrak m)
+\longrightarrow C_K/C(\mathfrak m)
+\xrightarrow{\deg}\mathbf Z\longrightarrow0.
+\tag{21}
+\]">\[
+0\longrightarrow C_K^1/C(\mathfrak m)
+\longrightarrow C_K/C(\mathfrak m)
+\xrightarrow{\deg}\mathbf Z\longrightarrow0.
+\tag{21}
+\]</span>
+The left group is finite because <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span> is compact and <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> is open. The right group is infinite. Thus this entire divisor ray group does not correspond to a finite ray extension: constant extensions of every degree satisfy the same unit conditions. To specify a finite class field, impose an additional finite-index degree condition. For example, choose a degree-one class <span class="math" data-tex="\(c\)">\(c\)</span> and take the subgroup generated by <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> and <span class="math" data-tex="\(c^d\)">\(c^d\)</span>, with <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>; (21) shows that its index is <span class="math" data-tex="\(d\,|C_K^1/C(\mathfrak m)|\)">\(d\,|C_K^1/C(\mathfrak m)|\)</span>, so Theorem 17.1 applies. Other subgroups of finite index give the corresponding general extensions.</p>
+<p>The local conductor and ideal-symbol arguments remain valid in this setting, with no real factors and with divisors prime to the finite modulus. This degree condition is why the number-field finiteness proof of a ray class group should not simply be repeated for the full function-field divisor group.</p>
+<h2 id="9-exercises-and-complete-solutions">9. Exercises and complete solutions</h2>
+<h3 id="exercise-1-quadratic-conductors-easy">Exercise 1 — Quadratic conductors (easy)</h3>
+<p>Determine the conductor of <span class="math" data-tex="\(\mathbf Q(\sqrt d)/\mathbf Q\)">\(\mathbf Q(\sqrt d)/\mathbf Q\)</span> for a nontrivial squarefree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Solution.</strong> Each odd divisor of <span class="math" data-tex="\(d\)">\(d\)</span> has unit character <span class="math" data-tex="\((u/p)\)">\((u/p)\)</span>, giving exponent <span class="math" data-tex="\(1\)">\(1\)</span>; every other odd prime gives exponent <span class="math" data-tex="\(0\)">\(0\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span>, formula (17) gives exponent <span class="math" data-tex="\(0\)">\(0\)</span> when <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span> and exponent <span class="math" data-tex="\(2\)">\(2\)</span> when <span class="math" data-tex="\(d\equiv3\pmod4\)">\(d\equiv3\pmod4\)</span>. For even <span class="math" data-tex="\(d\)">\(d\)</span>, formula (18) kills <span class="math" data-tex="\(U_2^{(3)}\)">\(U_2^{(3)}\)</span> and is nontrivial on <span class="math" data-tex="\(5\in U_2^{(2)}\)">\(5\in U_2^{(2)}\)</span>, giving exponent <span class="math" data-tex="\(3\)">\(3\)</span>. Their product is <span class="math" data-tex="\(|D|\)">\(|D|\)</span>, with <span class="math" data-tex="\(D\)">\(D\)</span> as in (15). Add the real place exactly when <span class="math" data-tex="\(d&lt;0\)">\(d&lt;0\)</span>. This is (16); omitting that place for an imaginary quadratic extension would violate the local norm condition at infinity.</p>
+<h3 id="exercise-2-the-gaussian-ray-group-medium">Exercise 2 — The Gaussian ray group (medium)</h3>
+<p>Compute <span class="math" data-tex="\(\operatorname{Cl}_{(3)}(\mathbf Q(i))\)">\(\operatorname{Cl}_{(3)}(\mathbf Q(i))\)</span> and identify its class field.</p>
+<p><strong>Solution.</strong> Euclideanity gives ordinary class number <span class="math" data-tex="\(1\)">\(1\)</span>. The residue unit group at the inert prime <span class="math" data-tex="\((3)\)">\((3)\)</span> has order <span class="math" data-tex="\(8\)">\(8\)</span>, and the global units have four distinct residues. Sequence (5) gives a cyclic quotient of order <span class="math" data-tex="\(2\)">\(2\)</span>. The quadratic extension <span class="math" data-tex="\(K(\sqrt3)/K\)">\(K(\sqrt3)/K\)</span> has tame conductor exponent <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\((3)\)">\((3)\)</span>, is unramified at <span class="math" data-tex="\(2\)">\(2\)</span> because it is the base change of the unramified extension <span class="math" data-tex="\(\mathbf Q_2(\sqrt{-3})\)">\(\mathbf Q_2(\sqrt{-3})\)</span>, and is unramified at every other finite prime. There are no real places. Its conductor is <span class="math" data-tex="\((3)\)">\((3)\)</span>, so it lies in the degree-two ray field and equals it. The explicit identities following (20) identify it with <span class="math" data-tex="\(\mathbf Q(\zeta_{12})\)">\(\mathbf Q(\zeta_{12})\)</span>.</p>
+<h3 id="exercise-3-increasing-the-modulus-medium">Exercise 3 — Increasing the modulus (medium)</h3>
+<p>Prove <span class="math" data-tex="\(K_{\mathfrak m}\subseteq K_{\mathfrak n}\)">\(K_{\mathfrak m}\subseteq K_{\mathfrak n}\)</span> for <span class="math" data-tex="\(\mathfrak m\mid\mathfrak n\)">\(\mathfrak m\mid\mathfrak n\)</span>, and describe the resulting map on ray groups.</p>
+<p><strong>Solution.</strong> Increasing finite exponents shrinks the principal-unit groups, and adding a real place replaces <span class="math" data-tex="\(\mathbf R^\times\)">\(\mathbf R^\times\)</span> by <span class="math" data-tex="\(\mathbf R_{&gt;0}\)">\(\mathbf R_{&gt;0}\)</span>. Thus <span class="math" data-tex="\(U(\mathfrak n)\subseteq U(\mathfrak m)\)">\(U(\mathfrak n)\subseteq U(\mathfrak m)\)</span> and <span class="math" data-tex="\(C(\mathfrak n)\subseteq C(\mathfrak m)\)">\(C(\mathfrak n)\subseteq C(\mathfrak m)\)</span>. The class field correspondence reverses that inclusion. Restriction of Galois automorphisms is the surjective quotient map
+<span class="math" data-tex="\(C_K/C(\mathfrak n)\to C_K/C(\mathfrak m)\)">\(C_K/C(\mathfrak n)\to C_K/C(\mathfrak m)\)</span>.
+Under (4) this is the ideal map induced by <span class="math" data-tex="\(I^{\mathfrak n}\subseteq I^{\mathfrak m}\)">\(I^{\mathfrak n}\subseteq I^{\mathfrak m}\)</span>. Its surjectivity is already proved by the idèle quotient description; no unsupported assertion about moving ideals past new modulus primes is needed.</p>
+<h3 id="exercise-4-congruence-subgroups-hard">Exercise 4 — Congruence subgroups (hard)</h3>
+<p>Prove Proposition 18.5, including its converse and its compatibility with the idèlic correspondence.</p>
+<p><strong>Solution.</strong> Given <span class="math" data-tex="\(P_{\mathfrak m,1}\subseteq H\subseteq I^{\mathfrak m}\)">\(P_{\mathfrak m,1}\subseteq H\subseteq I^{\mathfrak m}\)</span>, use the isomorphism (4) to lift <span class="math" data-tex="\(H/P_{\mathfrak m,1}\)">\(H/P_{\mathfrak m,1}\)</span> to a subgroup <span class="math" data-tex="\(\widetilde H\)">\(\widetilde H\)</span> of <span class="math" data-tex="\(C_K\)">\(C_K\)</span> containing <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span>. It has finite index and is open, since the quotient ray group is finite and <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span> is open. Existence gives its unique abelian class field <span class="math" data-tex="\(L\)">\(L\)</span>. Containment of norm groups puts <span class="math" data-tex="\(L\)">\(L\)</span> inside <span class="math" data-tex="\(K_{\mathfrak m}\)">\(K_{\mathfrak m}\)</span>. On a prime away from the modulus the quotient map is the Frobenius map, by Proposition 18.1; therefore its ideal kernel is exactly <span class="math" data-tex="\(H\)">\(H\)</span>, and its quotient is (14). Conversely for a subextension <span class="math" data-tex="\(L\)">\(L\)</span>, take its norm group, pass to the quotient by <span class="math" data-tex="\(C(\mathfrak m)\)">\(C(\mathfrak m)\)</span>, and pull back through (4); these operations reverse the construction. They also reverse inclusions and agree with restriction and norm. Every finite abelian <span class="math" data-tex="\(L\)">\(L\)</span> has conductor (8), so the construction includes it after choosing that modulus.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The local conductor criterion, optional real modulus, idèle-to-ideal ray identification, norm kernel, Takagi correspondence and decomposition law are proved with the stated fractional-ideal conventions.</p>
+<ul>
+<li><a href="https://www.mathi.uni-heidelberg.de/~schmidt/Neukirch-en/Neukirch_cft_02_may15.pdf">Jürgen Neukirch, Class Field Theory — The Bonn Lectures, Online Edition 2.0 (May 2015), edited by Alexander Schmidt</a>.</li>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="global-existence-and-the-idelic-class-field-correspondence.html">← Global existence and the idèlic class field correspondence</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="hilbert-and-ring-class-fields-and-quadratic-prime-forms.html">Hilbert and ring class fields, and quadratic prime forms →</a></span></nav>
+<p class="small source-link"><a href="files/ray-class-fields-conductors-and-ideal-reciprocity.md">Markdown source of this lesson</a> · <a download href="files/ray-class-fields-conductors-and-ideal-reciprocity.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

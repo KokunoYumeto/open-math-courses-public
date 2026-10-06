@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The symmetric groups I: Young tableaux and Young symmetrizers · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/young-tableaux-and-young-symmetrizers.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="character-criteria-and-splitting-fields.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-13.md" download>Editable source</a><a href="branching-jucys-murphy-elements-and-youngs-seminormal-form.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-2-1">Lemma 2.1</a></li><li><a href="#lemma-2-2">Lemma 2.2</a></li><li><a href="#lemma-2-3">Lemma 2.3</a></li><li><a href="#theorem-3-1">Theorem 3.1</a></li><li><a href="#lemma-3-2">Lemma 3.2</a></li><li><a href="#proposition-4-1">Proposition 4.1</a></li><li><a href="#proposition-4-2">Proposition 4.2</a></li><li><a href="#theorem-4-3">Theorem 4.3</a></li><li><a href="#corollary-4-4">Corollary 4.4</a></li><li><a href="#corollary-4-5">Corollary 4.5</a></li><li><a href="#lemma-5-1">Lemma 5.1</a></li><li><a href="#proposition-5-2">Proposition 5.2</a></li><li><a href="#proposition-5-3">Proposition 5.3</a></li></ul></details><h1 id="the-symmetric-groups-i-young-tableaux-and-young-symmetrizers">The symmetric groups I: Young tableaux and Young symmetrizers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>A permutation can move coordinates without changing their sum. It can also act on alternating tensors by its sign. These two familiar actions are the simplest members of a much larger family. A diagram of boxes tells us which permutations to average with equal coefficients and which to average with alternating signs. Combining these operations produces every irreducible representation of a symmetric group.</p>
+<p>The construction takes place inside the group algebra. Its main difficulty is to prove that the resulting space is irreducible. We will do this by analyzing a cancellation: two labels in the same row and the same column allow a transposition to change the sign of a sum without changing the sum itself. A counting argument determines when this cancellation is possible. The regular trace then supplies the nonzero normalization needed to turn a Young symmetrizer into an idempotent.</p>
+<p>We use complete reducibility from <a href="representations-and-complete-reducibility.html">Representations and complete reducibility</a>, the equality between the numbers of irreducible characters and conjugacy classes from <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>, and the group-algebra viewpoint from <a href="the-group-algebra-and-fourier-analysis-on-a-finite-group.html">The group algebra and Fourier analysis on a finite group</a>. The integer-value conclusion uses character integrality from <a href="integrality-of-characters-and-burnsides-theorem.html">Integrality of characters and Burnside's theorem</a>. For dual characters we use <a href="tensor-products-duals-and-real-representations.html">Tensor products, duals and real representations</a>. This lesson supplies the rational models promised in <a href="character-criteria-and-splitting-fields.html">Character criteria and splitting fields</a>. Basic references are [Stevens], [Purbhoo], [Gruson–Serganova], and the original paper [Frobenius].</p>
+<p>Take <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Permutations compose from right to left. All group actions are left actions. Write <span class="math" data-tex="\(A=\mathbb C[S_n]\)">\(A=\mathbb C[S_n]\)</span>, and regard its elements as operators on any complex representation by linear extension. A rational model will be constructed explicitly after the complex classification.</p>
+<h2 id="1-averaging-according-to-a-pattern-of-boxes">1. Averaging according to a pattern of boxes</h2>
+<p>A partition of <span class="math" data-tex="\(n\)">\(n\)</span> is a finite decreasing sequence of positive integers
+<span class="math math-display" data-tex="\[
+\lambda=(\lambda_1,\ldots,\lambda_r),\qquad
+\lambda_1\geq\cdots\geq\lambda_r&gt;0,\qquad
+\sum_i\lambda_i=n.
+\tag{1}
+\]">\[
+\lambda=(\lambda_1,\ldots,\lambda_r),\qquad
+\lambda_1\geq\cdots\geq\lambda_r&gt;0,\qquad
+\sum_i\lambda_i=n.
+\tag{1}
+\]</span>
+Its Young diagram has <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> boxes in row <span class="math" data-tex="\(i\)">\(i\)</span>, with all rows starting in the same column. Row numbers increase downwards. Column numbers increase to the right. The conjugate partition records column lengths:
+<span class="math math-display" data-tex="\[
+\lambda&#x27;_j=\#\{i:\lambda_i\geq j\}.
+\tag{2}
+\]">\[
+\lambda&#x27;_j=\#\{i:\lambda_i\geq j\}.
+\tag{2}
+\]</span>
+Transposing a diagram twice gives the original diagram, so <span class="math" data-tex="\((\lambda&#x27;)&#x27;=\lambda\)">\((\lambda&#x27;)&#x27;=\lambda\)</span>.</p>
+<p>A tableau <span class="math" data-tex="\(t\)">\(t\)</span> of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> places the labels <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span> in its boxes, each once. A tableau is standard when labels increase along each row and down each column. For example,
+<span class="math math-display" data-tex="\[
+t=
+\begin{array}{cccc}
+\boxed{1}&amp;\boxed{3}&amp;\boxed{5}&amp;\boxed{7}\\
+\boxed{2}&amp;\boxed{6}&amp;&amp;\\
+\boxed{4}&amp;&amp;&amp;
+\end{array}
+\tag{3}
+\]">\[
+t=
+\begin{array}{cccc}
+\boxed{1}&amp;\boxed{3}&amp;\boxed{5}&amp;\boxed{7}\\
+\boxed{2}&amp;\boxed{6}&amp;&amp;\\
+\boxed{4}&amp;&amp;&amp;
+\end{array}
+\tag{3}
+\]</span>
+is standard and has shape <span class="math" data-tex="\((4,2,1)\)">\((4,2,1)\)</span>. The diagram and its row and column sets will matter immediately; standardness will matter for bases and dimension formulas in the next lesson. Any labeling can be used for the present construction.</p>
+<p>Let <span class="math" data-tex="\(R_t\)">\(R_t\)</span> be the subgroup preserving each row's set of labels, and let <span class="math" data-tex="\(C_t\)">\(C_t\)</span> preserve each column's set. Thus
+<span class="math math-display" data-tex="\[
+R_t\cong\prod_i S_{\lambda_i},\qquad
+C_t\cong\prod_j S_{\lambda&#x27;_j}.
+\]">\[
+R_t\cong\prod_i S_{\lambda_i},\qquad
+C_t\cong\prod_j S_{\lambda&#x27;_j}.
+\]</span>
+In (3), the nontrivial row sets are <span class="math" data-tex="\(\{1,3,5,7\}\)">\(\{1,3,5,7\}\)</span> and <span class="math" data-tex="\(\{2,6\}\)">\(\{2,6\}\)</span>; the nontrivial column sets are <span class="math" data-tex="\(\{1,2,4\}\)">\(\{1,2,4\}\)</span> and <span class="math" data-tex="\(\{3,6\}\)">\(\{3,6\}\)</span>. An element preserving both rows and columns must fix each label, since a box is the unique intersection of its row and column. Consequently
+<span class="math math-display" data-tex="\[
+R_t\cap C_t=\{1\}.
+\tag{4}
+\]">\[
+R_t\cap C_t=\{1\}.
+\tag{4}
+\]</span></p>
+<p>Define the row sum, column alternating sum, and Young symmetrizer by
+<span class="math math-display" data-tex="\[
+a_t=\sum_{p\in R_t}p,\qquad
+b_t=\sum_{q\in C_t}\operatorname{sgn}(q)q,\qquad
+c_t=a_tb_t.
+\tag{5}
+\]">\[
+a_t=\sum_{p\in R_t}p,\qquad
+b_t=\sum_{q\in C_t}\operatorname{sgn}(q)q,\qquad
+c_t=a_tb_t.
+\tag{5}
+\]</span>
+This product order remains fixed throughout the lesson. On a vector, the right factor <span class="math" data-tex="\(b_t\)">\(b_t\)</span> acts first. In particular, our product applies column alternation and then row averaging. The sums use the groups of the original tableau throughout.</p>
+<p>Reindexing the sums gives
+<span class="math math-display" data-tex="\[
+pa_t=a_tp=a_t,\qquad
+qb_t=b_tq=\operatorname{sgn}(q)b_t
+\quad(p\in R_t,\ q\in C_t).
+\tag{6}
+\]">\[
+pa_t=a_tp=a_t,\qquad
+qb_t=b_tq=\operatorname{sgn}(q)b_t
+\quad(p\in R_t,\ q\in C_t).
+\tag{6}
+\]</span>
+Therefore
+<span class="math math-display" data-tex="\[
+pc_tq=\operatorname{sgn}(q)c_t.
+\tag{7}
+\]">\[
+pc_tq=\operatorname{sgn}(q)c_t.
+\tag{7}
+\]</span>
+Also <span class="math" data-tex="\(a_t^2=|R_t|a_t\)">\(a_t^2=|R_t|a_t\)</span> and <span class="math" data-tex="\(b_t^2=|C_t|b_t\)">\(b_t^2=|C_t|b_t\)</span>. It does not follow just by multiplying these two identities that <span class="math" data-tex="\(c_t\)">\(c_t\)</span> is a scalar multiple of an idempotent: <span class="math" data-tex="\(a_t\)">\(a_t\)</span> and <span class="math" data-tex="\(b_t\)">\(b_t\)</span> need not commute.</p>
+<p>The products <span class="math" data-tex="\(pq\)">\(pq\)</span>, with <span class="math" data-tex="\(p\in R_t,q\in C_t\)">\(p\in R_t,q\in C_t\)</span>, are all distinct. Indeed, <span class="math" data-tex="\(pq=p&#x27;q&#x27;\)">\(pq=p&#x27;q&#x27;\)</span> implies
+<span class="math math-display" data-tex="\[
+(p&#x27;)^{-1}p=q&#x27;q^{-1}\in R_t\cap C_t,
+\]">\[
+(p&#x27;)^{-1}p=q&#x27;q^{-1}\in R_t\cap C_t,
+\]</span>
+and (4) forces equality of both factors. In particular, the coefficient of the identity in <span class="math" data-tex="\(c_t\)">\(c_t\)</span> is exactly <span class="math" data-tex="\(1\)">\(1\)</span>. Hence <span class="math" data-tex="\(c_t\ne0\)">\(c_t\ne0\)</span>.</p>
+<p>For a first example, take
+<span class="math math-display" data-tex="\[
+t=\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array}.
+\]">\[
+t=\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+c_t=(1+(12))(1-(13))
+=1+(12)-(13)-(132).
+\tag{8}
+\]">\[
+c_t=(1+(12))(1-(13))
+=1+(12)-(13)-(132).
+\tag{8}
+\]</span>
+On the natural permutation representation with basis <span class="math" data-tex="\(e_1,e_2,e_3\)">\(e_1,e_2,e_3\)</span>, it sends
+<span class="math math-display" data-tex="\[
+e_3\longmapsto 2e_3-e_1-e_2.
+\]">\[
+e_3\longmapsto 2e_3-e_1-e_2.
+\]</span>
+This is a nonzero vector in the plane of coordinate sum zero. We will prove that the left ideal <span class="math" data-tex="\(Ac_t\)">\(Ac_t\)</span> is precisely an irreducible representation of this type.</p>
+<h2 id="2-when-rows-and-columns-force-cancellation">2. When rows and columns force cancellation</h2>
+<p>We need a comparison between shapes. Extend a partition by zero parts. Say that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> dominates <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, written <span class="math" data-tex="\(\lambda\unrhd\mu\)">\(\lambda\unrhd\mu\)</span>, if
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^k\lambda_i\geq\sum_{i=1}^k\mu_i
+\quad\text{for every }k\geq1.
+\tag{9}
+\]">\[
+\sum_{i=1}^k\lambda_i\geq\sum_{i=1}^k\mu_i
+\quad\text{for every }k\geq1.
+\tag{9}
+\]</span>
+This is a partial order. Lexicographic order compares the first unequal parts instead and is a total order. These orders differ: <span class="math" data-tex="\((4,1,1)\)">\((4,1,1)\)</span> is lexicographically larger than <span class="math" data-tex="\((3,3)\)">\((3,3)\)</span>, but neither dominates the other. We will use the prefix inequalities (9), and state explicitly when lexicographic order can also be used.</p>
+<p id="lemma-2-1" class="result-link"><strong>Lemma 2.1 (tableau separation).</strong> Let <span class="math" data-tex="\(t,u\)">\(t,u\)</span> have shapes <span class="math" data-tex="\(\lambda,\mu\)">\(\lambda,\mu\)</span>. Suppose that no two labels in a single row of <span class="math" data-tex="\(t\)">\(t\)</span> lie in a single column of <span class="math" data-tex="\(u\)">\(u\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^k\lambda_i\leq\sum_{i=1}^k\mu_i
+\quad\text{for every }k.
+\tag{10}
+\]">\[
+\sum_{i=1}^k\lambda_i\leq\sum_{i=1}^k\mu_i
+\quad\text{for every }k.
+\tag{10}
+\]</span>
+If also <span class="math" data-tex="\(\lambda\unrhd\mu\)">\(\lambda\unrhd\mu\)</span>, then <span class="math" data-tex="\(\lambda=\mu\)">\(\lambda=\mu\)</span>. In this equal-shape case there are <span class="math" data-tex="\(p\in R_t,q\in C_t\)">\(p\in R_t,q\in C_t\)</span> such that
+<span class="math math-display" data-tex="\[
+u=pqt.
+\tag{11}
+\]">\[
+u=pqt.
+\tag{11}
+\]</span>
+Equality of shapes and (11) also follow if the additional hypothesis is that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is lexicographically at least <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> Consider the labels belonging to the first <span class="math" data-tex="\(k\)">\(k\)</span> rows of <span class="math" data-tex="\(t\)">\(t\)</span>. A column of <span class="math" data-tex="\(u\)">\(u\)</span> of height <span class="math" data-tex="\(\mu&#x27;_j\)">\(\mu&#x27;_j\)</span> contains at most one label from each of these rows, and at most <span class="math" data-tex="\(\mu&#x27;_j\)">\(\mu&#x27;_j\)</span> labels altogether. Summing over columns gives
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^k\lambda_i
+\leq\sum_j\min(k,\mu&#x27;_j)
+=\sum_{i=1}^k\mu_i.
+\tag{12}
+\]">\[
+\sum_{i=1}^k\lambda_i
+\leq\sum_j\min(k,\mu&#x27;_j)
+=\sum_{i=1}^k\mu_i.
+\tag{12}
+\]</span>
+The last equality counts the boxes in the first <span class="math" data-tex="\(k\)">\(k\)</span> rows of the diagram of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, column by column. This proves (10). Under dominance the opposite inequalities also hold, so the prefix sums, and hence the individual parts, are equal. Under the lexicographic hypothesis, a first unequal part would instead make the corresponding prefix sum of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> greater, contradicting (10). Thus that hypothesis also forces equality.</p>
+<p>Now assume the shapes are equal. Each inequality in (12) is an equality. Every column must attain its individual bound: a smaller count in one column cannot be compensated by a larger count elsewhere. Subtracting the counts for <span class="math" data-tex="\(k-1\)">\(k-1\)</span> from those for <span class="math" data-tex="\(k\)">\(k\)</span>, we see that column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span> contains exactly one label from row <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span> if <span class="math" data-tex="\(k\leq\lambda&#x27;_j\)">\(k\leq\lambda&#x27;_j\)</span>, and none otherwise.</p>
+<p>Choose <span class="math" data-tex="\(p\in R_t\)">\(p\in R_t\)</span> as follows. Send the label in box <span class="math" data-tex="\((k,j)\)">\((k,j)\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span> to that unique label from row <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span> occurring in column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>. This is a permutation within each row. Thus <span class="math" data-tex="\(pt\)">\(pt\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> have exactly the same set of labels in each column. There is a unique permutation <span class="math" data-tex="\(w\)">\(w\)</span> of labels with <span class="math" data-tex="\(u=wt\)">\(u=wt\)</span>. Since <span class="math" data-tex="\(p^{-1}u\)">\(p^{-1}u\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> have the same column sets, the permutation <span class="math" data-tex="\(q=p^{-1}w\)">\(q=p^{-1}w\)</span> belongs to <span class="math" data-tex="\(C_t\)">\(C_t\)</span>. Hence <span class="math" data-tex="\(w=pq\)">\(w=pq\)</span>, proving (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coefficient groups in (11) belong to <span class="math" data-tex="\(t\)">\(t\)</span>. Replacing them by groups of a partially rearranged tableau would change the assertion.</p>
+<p id="lemma-2-2" class="result-link"><strong>Lemma 2.2 (collision cancellation).</strong> If a row of <span class="math" data-tex="\(t\)">\(t\)</span> and a column of <span class="math" data-tex="\(u\)">\(u\)</span> contain two common labels, then
+<span class="math math-display" data-tex="\[
+a_tb_u=0.
+\tag{13}
+\]">\[
+a_tb_u=0.
+\tag{13}
+\]</span>
+Consequently, if <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is not dominated by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, then
+<span class="math math-display" data-tex="\[
+a_txb_u=0\qquad(x\in A).
+\tag{14}
+\]">\[
+a_txb_u=0\qquad(x\in A).
+\tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> transpose the two common labels. It lies in <span class="math" data-tex="\(R_t\cap C_u\)">\(R_t\cap C_u\)</span>, and its sign is <span class="math" data-tex="\(-1\)">\(-1\)</span>. By (6),
+<span class="math math-display" data-tex="\[
+a_tb_u=a_t\tau b_u=-a_tb_u.
+\]">\[
+a_tb_u=a_t\tau b_u=-a_tb_u.
+\]</span>
+Since the coefficient field has characteristic zero, this proves (13).</p>
+<p>For (14), first take <span class="math" data-tex="\(x=g\in S_n\)">\(x=g\in S_n\)</span>. The column alternating sum of <span class="math" data-tex="\(gu\)">\(gu\)</span> is <span class="math" data-tex="\(b_{gu}=gb_ug^{-1}\)">\(b_{gu}=gb_ug^{-1}\)</span>. Its shape is still <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. If there were no collision between rows of <span class="math" data-tex="\(t\)">\(t\)</span> and columns of <span class="math" data-tex="\(gu\)">\(gu\)</span>, Lemma 2.1 would say that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is dominated by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Thus there is a collision, and
+<span class="math math-display" data-tex="\[
+a_tgb_u=a_tb_{gu}g=0.
+\]">\[
+a_tgb_u=a_tb_{gu}g=0.
+\]</span>
+Linearity proves the assertion for every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For equal shapes, Lemma 2.1 says that every permutation <span class="math" data-tex="\(g\notin R_tC_t\)">\(g\notin R_tC_t\)</span> creates a collision between a row of <span class="math" data-tex="\(t\)">\(t\)</span> and a column of <span class="math" data-tex="\(gt\)">\(gt\)</span>. This fact determines an entire space of group-algebra elements.</p>
+<p id="lemma-2-3" class="result-link"><strong>Lemma 2.3 (the row-column symmetry space).</strong> The elements <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> satisfying
+<span class="math math-display" data-tex="\[
+pxq=\operatorname{sgn}(q)x
+\quad(p\in R_t,\ q\in C_t)
+\tag{15}
+\]">\[
+pxq=\operatorname{sgn}(q)x
+\quad(p\in R_t,\ q\in C_t)
+\tag{15}
+\]</span>
+form the one-dimensional space <span class="math" data-tex="\(\mathbb Cc_t\)">\(\mathbb Cc_t\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(x=\sum_g x_g g\)">\(x=\sum_g x_g g\)</span>. If <span class="math" data-tex="\(g\notin R_tC_t\)">\(g\notin R_tC_t\)</span>, choose a collision transposition
+<span class="math math-display" data-tex="\[
+\tau\in R_t\cap gC_tg^{-1},\qquad q=g^{-1}\tau g\in C_t.
+\]">\[
+\tau\in R_t\cap gC_tg^{-1},\qquad q=g^{-1}\tau g\in C_t.
+\]</span>
+Then <span class="math" data-tex="\(\tau gq=g\)">\(\tau gq=g\)</span>, while <span class="math" data-tex="\(\operatorname{sgn}(q)=-1\)">\(\operatorname{sgn}(q)=-1\)</span>. Comparing the coefficient of <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(\tau xq=-x\)">\(\tau xq=-x\)</span> gives <span class="math" data-tex="\(x_g=-x_g\)">\(x_g=-x_g\)</span>, so <span class="math" data-tex="\(x_g=0\)">\(x_g=0\)</span>.</p>
+<p>On the remaining support, comparing the coefficient of <span class="math" data-tex="\(pq\)">\(pq\)</span> in (15) gives
+<span class="math math-display" data-tex="\[
+x_{pq}=\operatorname{sgn}(q)x_1.
+\]">\[
+x_{pq}=\operatorname{sgn}(q)x_1.
+\]</span>
+The factorization <span class="math" data-tex="\(pq\)">\(pq\)</span> is unique by (4). These are exactly the coefficients of <span class="math" data-tex="\(x_1c_t\)">\(x_1c_t\)</span>. Conversely, (7) shows that every multiple of <span class="math" data-tex="\(c_t\)">\(c_t\)</span> satisfies (15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Comparison:</em> [Gruson–Serganova, Chapter 6, Lemma 1.13 and Exercise 1.12]. Lemma 2.1 proves the collision alternative and the factorization in the fixed groups of <span class="math" data-tex="\(t\)">\(t\)</span>; Lemma 2.3 then determines each coefficient. The product order is row sum followed by column sum, as in (5). The next proof establishes the nonzero normalization by trace before forming an idempotent; this is the step needed to justify division by <span class="math" data-tex="\(\nu_t\)">\(\nu_t\)</span>.</p>
+<h2 id="3-a-nonzero-trace-gives-an-irreducible-left-ideal">3. A nonzero trace gives an irreducible left ideal</h2>
+<p>Put <span class="math" data-tex="\(V_t=Ac_t\)">\(V_t=Ac_t\)</span>, with <span class="math" data-tex="\(S_n\)">\(S_n\)</span> acting by left multiplication. It is nonzero, since it contains <span class="math" data-tex="\(c_t\)">\(c_t\)</span>. Lemma 2.3 immediately gives
+<span class="math math-display" data-tex="\[
+c_txc_t\in\mathbb Cc_t\quad(x\in A),
+\qquad
+c_t^2=\nu_tc_t
+\tag{16}
+\]">\[
+c_txc_t\in\mathbb Cc_t\quad(x\in A),
+\qquad
+c_t^2=\nu_tc_t
+\tag{16}
+\]</span>
+for some scalar <span class="math" data-tex="\(\nu_t\)">\(\nu_t\)</span>. Indeed, these products have the left-row and right-column symmetries (15).</p>
+<p>We must prove that <span class="math" data-tex="\(\nu_t\ne0\)">\(\nu_t\ne0\)</span> before dividing by it.</p>
+<p id="theorem-3-1" class="result-link"><strong>Theorem 3.1 (normalization and irreducibility).</strong> The scalar in (16) is a positive integer. If <span class="math" data-tex="\(d_t=\dim_{\mathbb C}V_t\)">\(d_t=\dim_{\mathbb C}V_t\)</span>, then
+<span class="math math-display" data-tex="\[
+\nu_t=\frac{n!}{d_t}.
+\tag{17}
+\]">\[
+\nu_t=\frac{n!}{d_t}.
+\tag{17}
+\]</span>
+The element <span class="math" data-tex="\(e_t=c_t/\nu_t\)">\(e_t=c_t/\nu_t\)</span> is an idempotent, and <span class="math" data-tex="\(V_t=Ae_t\)">\(V_t=Ae_t\)</span> is irreducible.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(T:A\to A\)">\(T:A\to A\)</span> be right multiplication by <span class="math" data-tex="\(c_t\)">\(c_t\)</span>. In the group basis, the coefficient of <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(T(g)=gc_t\)">\(T(g)=gc_t\)</span> is the coefficient of <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(c_t\)">\(c_t\)</span>, namely <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(T)=n!.
+\tag{18}
+\]">\[
+\operatorname{Tr}(T)=n!.
+\tag{18}
+\]</span>
+If <span class="math" data-tex="\(\nu_t=0\)">\(\nu_t=0\)</span>, then <span class="math" data-tex="\(T^2=0\)">\(T^2=0\)</span>. Its image would lie in its kernel. A basis of the image, extended to a basis of the kernel and then to a basis of <span class="math" data-tex="\(A\)">\(A\)</span>, would give zero diagonal entries for <span class="math" data-tex="\(T\)">\(T\)</span>. This would make its trace zero, contradicting (18). Thus <span class="math" data-tex="\(\nu_t\ne0\)">\(\nu_t\ne0\)</span>.</p>
+<p>Now <span class="math" data-tex="\(e_t^2=e_t\)">\(e_t^2=e_t\)</span>. Right multiplication by <span class="math" data-tex="\(e_t\)">\(e_t\)</span> has image <span class="math" data-tex="\(Ae_t=Ac_t=V_t\)">\(Ae_t=Ac_t=V_t\)</span>, acts as the identity there, and vanishes on its kernel. These spaces form a direct sum: every <span class="math" data-tex="\(x\)">\(x\)</span> is the sum of <span class="math" data-tex="\(xe_t\)">\(xe_t\)</span> and <span class="math" data-tex="\(x-xe_t\)">\(x-xe_t\)</span>. Its trace is consequently <span class="math" data-tex="\(d_t\)">\(d_t\)</span>. Dividing (18) by <span class="math" data-tex="\(\nu_t\)">\(\nu_t\)</span> gives (17).</p>
+<p>The coefficients of <span class="math" data-tex="\(c_t\)">\(c_t\)</span> are integers, so the coefficient of <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(c_t^2\)">\(c_t^2\)</span> is an integer. In (16) that coefficient is <span class="math" data-tex="\(\nu_t\)">\(\nu_t\)</span>, because the identity coefficient in <span class="math" data-tex="\(c_t\)">\(c_t\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(\nu_t\)">\(\nu_t\)</span> is an integer; (17) makes it positive.</p>
+<p>For irreducibility, (16) gives
+<span class="math math-display" data-tex="\[
+e_tAe_t=\mathbb Ce_t.
+\tag{19}
+\]">\[
+e_tAe_t=\mathbb Ce_t.
+\tag{19}
+\]</span>
+Every <span class="math" data-tex="\(A\)">\(A\)</span>-linear endomorphism <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(Ae_t\)">\(Ae_t\)</span> is determined by <span class="math" data-tex="\(f(e_t)\)">\(f(e_t)\)</span>. This value lies in <span class="math" data-tex="\(Ae_t\)">\(Ae_t\)</span>, and
+<span class="math math-display" data-tex="\[
+f(e_t)=f(e_t^2)=e_tf(e_t),
+\]">\[
+f(e_t)=f(e_t^2)=e_tf(e_t),
+\]</span>
+so it lies in <span class="math" data-tex="\(e_tAe_t\)">\(e_tAe_t\)</span>. Conversely, for <span class="math" data-tex="\(y\in e_tAe_t\)">\(y\in e_tAe_t\)</span>, right multiplication by <span class="math" data-tex="\(y\)">\(y\)</span> defines an <span class="math" data-tex="\(A\)">\(A\)</span>-linear endomorphism of <span class="math" data-tex="\(Ae_t\)">\(Ae_t\)</span> taking <span class="math" data-tex="\(e_t\)">\(e_t\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. These operations give a vector-space isomorphism
+<span class="math math-display" data-tex="\[
+\operatorname{End}_A(Ae_t)\cong e_tAe_t.
+\]">\[
+\operatorname{End}_A(Ae_t)\cong e_tAe_t.
+\]</span>
+Its dimension is <span class="math" data-tex="\(1\)">\(1\)</span> by (19).</p>
+<p>If <span class="math" data-tex="\(Ae_t\)">\(Ae_t\)</span> had a nonzero proper invariant subspace, complete reducibility would give a nonzero invariant complement. Projection onto each of the two summands would be an <span class="math" data-tex="\(A\)">\(A\)</span>-linear endomorphism. These two projections are linearly independent, contradicting the dimension <span class="math" data-tex="\(1\)">\(1\)</span>. Hence <span class="math" data-tex="\(Ae_t\)">\(Ae_t\)</span>, and therefore <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, is irreducible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof distinguishes left multiplication, which defines the representation, from right multiplication, which computes its dimension and its endomorphisms. The element <span class="math" data-tex="\(e_t\)">\(e_t\)</span> itself need not commute with all of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p id="lemma-3-2" class="result-link"><strong>Lemma 3.2 (changing labels).</strong> Tableaux of the same shape yield isomorphic representations. Their dimensions and normalization constants agree.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(u=wt\)">\(u=wt\)</span>, relabeling gives
+<span class="math math-display" data-tex="\[
+R_u=wR_tw^{-1},\qquad C_u=wC_tw^{-1},
+\qquad c_u=wc_tw^{-1}.
+\tag{20}
+\]">\[
+R_u=wR_tw^{-1},\qquad C_u=wC_tw^{-1},
+\qquad c_u=wc_tw^{-1}.
+\tag{20}
+\]</span>
+Thus <span class="math" data-tex="\(Ac_u=Ac_tw^{-1}\)">\(Ac_u=Ac_tw^{-1}\)</span>. The map <span class="math" data-tex="\(v\mapsto vw^{-1}\)">\(v\mapsto vw^{-1}\)</span> is an invertible map <span class="math" data-tex="\(Ac_t\to Ac_u\)">\(Ac_t\to Ac_u\)</span> commuting with left multiplication by every group element. Its inverse is <span class="math" data-tex="\(v\mapsto vw\)">\(v\mapsto vw\)</span>. It preserves dimension, so (17) preserves the normalization constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We can consequently write <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, <span class="math" data-tex="\(d_\lambda\)">\(d_\lambda\)</span>, and <span class="math" data-tex="\(\nu_\lambda\)">\(\nu_\lambda\)</span>, without choosing a particular tableau in the notation.</p>
+<h2 id="4-counting-classes-completes-the-classification">4. Counting classes completes the classification</h2>
+<p>First we show that different diagrams give different representations.</p>
+<p id="proposition-4-1" class="result-link"><strong>Proposition 4.1 (different shapes).</strong> If <span class="math" data-tex="\(\lambda\ne\mu\)">\(\lambda\ne\mu\)</span>, then <span class="math" data-tex="\(V_\lambda\not\cong V_\mu\)">\(V_\lambda\not\cong V_\mu\)</span>.</p>
+<p><strong>Proof.</strong> At least one of the dominance relations <span class="math" data-tex="\(\lambda\unlhd\mu\)">\(\lambda\unlhd\mu\)</span> and <span class="math" data-tex="\(\mu\unlhd\lambda\)">\(\mu\unlhd\lambda\)</span> fails, since both together would give equal prefix sums and equal partitions. Exchange the shapes if needed so that <span class="math" data-tex="\(\lambda\unlhd\mu\)">\(\lambda\unlhd\mu\)</span> fails. For tableaux <span class="math" data-tex="\(t,u\)">\(t,u\)</span> of these shapes, Lemma 2.2 says
+<span class="math math-display" data-tex="\[
+c_txc_u=a_t(b_txa_u)b_u=0\quad(x\in A).
+\tag{21}
+\]">\[
+c_txc_u=a_t(b_txa_u)b_u=0\quad(x\in A).
+\tag{21}
+\]</span>
+Hence <span class="math" data-tex="\(c_t\)">\(c_t\)</span> acts by zero on <span class="math" data-tex="\(V_u\)">\(V_u\)</span>. It acts nontrivially on <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, since <span class="math" data-tex="\(c_t^2=\nu_\lambda c_t\ne0\)">\(c_t^2=\nu_\lambda c_t\ne0\)</span>. An isomorphism commuting with the group action also commutes with every group-algebra element, and cannot identify these two actions of <span class="math" data-tex="\(c_t\)">\(c_t\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="proposition-4-2" class="result-link"><strong>Proposition 4.2 (cycle types and class sizes).</strong> The conjugacy classes of <span class="math" data-tex="\(S_n\)">\(S_n\)</span> correspond to partitions of <span class="math" data-tex="\(n\)">\(n\)</span>. If a cycle type has <span class="math" data-tex="\(m_i\)">\(m_i\)</span> cycles of length <span class="math" data-tex="\(i\)">\(i\)</span>, then its centralizer has order
+<span class="math math-display" data-tex="\[
+z_\lambda=\prod_{i\geq1}i^{m_i}m_i!,
+\tag{22}
+\]">\[
+z_\lambda=\prod_{i\geq1}i^{m_i}m_i!,
+\tag{22}
+\]</span>
+and its conjugacy class has <span class="math" data-tex="\(n!/z_\lambda\)">\(n!/z_\lambda\)</span> elements.</p>
+<p><strong>Proof.</strong> Conjugating a cycle <span class="math" data-tex="\((a_1\,\cdots\,a_i)\)">\((a_1\,\cdots\,a_i)\)</span> by <span class="math" data-tex="\(g\)">\(g\)</span> replaces its labels by <span class="math" data-tex="\((g(a_1)\,\cdots\,g(a_i))\)">\((g(a_1)\,\cdots\,g(a_i))\)</span>. Thus conjugation preserves cycle lengths. Conversely, if two permutations have the same cycle lengths, pair their cycles of each length, choose a starting point in every paired cycle, and match the subsequent entries in cyclic order. The resulting bijection of all labels conjugates one permutation to the other. Cycle lengths, listed in decreasing order, are exactly partitions of <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> have the indicated cycle type. A commuting permutation <span class="math" data-tex="\(h\)">\(h\)</span> must send each orbit of <span class="math" data-tex="\(\langle\sigma\rangle\)">\(\langle\sigma\rangle\)</span> to an orbit of the same length: the equation <span class="math" data-tex="\(h\sigma^k=\sigma^kh\)">\(h\sigma^k=\sigma^kh\)</span> preserves its size. For the <span class="math" data-tex="\(m_i\)">\(m_i\)</span> orbits of length <span class="math" data-tex="\(i\)">\(i\)</span>, there are <span class="math" data-tex="\(m_i!\)">\(m_i!\)</span> ways to permute them. Once this permutation of orbits is chosen, there are <span class="math" data-tex="\(i\)">\(i\)</span> choices for the image of one starting point in each orbit; commutation fixes all the other images. There are therefore <span class="math" data-tex="\(i^{m_i}m_i!\)">\(i^{m_i}m_i!\)</span> choices for this length. Choices at different lengths are independent and exhaust all commuting bijections, proving (22). The orbit-stabilizer formula for conjugation gives the class size. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For instance, in <span class="math" data-tex="\(S_6\)">\(S_6\)</span> the type <span class="math" data-tex="\((3,2,1)\)">\((3,2,1)\)</span> has <span class="math" data-tex="\(z_\lambda=3\cdot2\cdot1=6\)">\(z_\lambda=3\cdot2\cdot1=6\)</span> and a class of size <span class="math" data-tex="\(120\)">\(120\)</span>. The type <span class="math" data-tex="\((2,2,1,1)\)">\((2,2,1,1)\)</span> has <span class="math" data-tex="\(z_\lambda=2^2\cdot2!\cdot2!=16\)">\(z_\lambda=2^2\cdot2!\cdot2!=16\)</span> and a class of size <span class="math" data-tex="\(45\)">\(45\)</span>.</p>
+<p><em>Comparison:</em> [Gruson–Serganova, Chapter 6, Remark 1.2]. The cycle relabeling and commuting-cycle counts above prove the criterion and the centralizer order (22) explicitly.</p>
+<p id="theorem-4-3" class="result-link"><strong>Theorem 4.3 (complete classification).</strong> The representations <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>, one for each partition <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span>, form a complete list of the irreducible complex representations of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, with no repetitions.</p>
+<p><strong>Proof.</strong> Theorem 3.1 constructs a nonzero irreducible for every partition. Proposition 4.1 makes them pairwise nonisomorphic. Proposition 4.2 identifies the number of partitions with the number of conjugacy classes. The earlier character-basis theorem identifies the number of conjugacy classes with the number of irreducible complex characters. Thus the constructed list already has the full required size; an additional irreducible would exceed that size. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="corollary-4-4" class="result-link"><strong>Corollary 4.4 (rational models).</strong> Every irreducible complex representation of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, and every finite-dimensional complex representation of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, has a model over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> The element <span class="math" data-tex="\(c_t\)">\(c_t\)</span> belongs to <span class="math" data-tex="\(\mathbb Q[S_n]\)">\(\mathbb Q[S_n]\)</span>. Put
+<span class="math math-display" data-tex="\[
+W_t=\mathbb Q[S_n]c_t.
+\tag{23}
+\]">\[
+W_t=\mathbb Q[S_n]c_t.
+\tag{23}
+\]</span>
+The vectors <span class="math" data-tex="\(gc_t\)">\(gc_t\)</span> have rational coordinates in the group basis. Row reduction over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> selects a basis of their span; the same pivots and free-variable relations hold over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Hence the natural map
+<span class="math math-display" data-tex="\[
+\mathbb C\otimes_{\mathbb Q}W_t\longrightarrow Ac_t,
+\qquad z\otimes w\longmapsto zw
+\tag{24}
+\]">\[
+\mathbb C\otimes_{\mathbb Q}W_t\longrightarrow Ac_t,
+\qquad z\otimes w\longmapsto zw
+\tag{24}
+\]</span>
+is an isomorphism, respecting the group action. The right side is <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>. This gives the promised rational model. It is irreducible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> as well: a nonzero proper rational invariant subspace would complexify to a nonzero proper invariant subspace, with the same dimension.</p>
+<p>By Theorem 4.3 these models cover every complex irreducible. For an arbitrary complex representation, use its irreducible direct-sum decomposition and take the same direct sum of the rational models, with the same multiplicities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is stronger than merely showing that the characters have rational values. As the quaternion example in the preceding lesson shows, rational character values alone do not supply rational matrices.</p>
+<p id="corollary-4-5" class="result-link"><strong>Corollary 4.5 (multiplicity from a symmetrizer).</strong> If <span class="math" data-tex="\(U\)">\(U\)</span> is a complex representation, then the multiplicity of <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span> is
+<span class="math math-display" data-tex="\[
+\operatorname{rank}\bigl(c_t:U\to U\bigr).
+\tag{25}
+\]">\[
+\operatorname{rank}\bigl(c_t:U\to U\bigr).
+\tag{25}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(V_t=Ac_t\)">\(V_t=Ac_t\)</span>, the image <span class="math" data-tex="\(c_tV_t=c_tAc_t\)">\(c_tV_t=c_tAc_t\)</span> is the line <span class="math" data-tex="\(\mathbb Cc_t\)">\(\mathbb Cc_t\)</span>, since it is contained in that line by (16) and contains the nonzero element <span class="math" data-tex="\(c_t^2\)">\(c_t^2\)</span>. Its rank is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>If <span class="math" data-tex="\(c_t\)">\(c_t\)</span> acted nontrivially on an irreducible <span class="math" data-tex="\(V_\mu\)">\(V_\mu\)</span>, then <span class="math" data-tex="\(e_t\)">\(e_t\)</span> would too. Choose a nonzero <span class="math" data-tex="\(v\in e_tV_\mu\)">\(v\in e_tV_\mu\)</span>. The map
+<span class="math math-display" data-tex="\[
+Ae_t\longrightarrow V_\mu,\qquad xe_t\longmapsto xv
+\]">\[
+Ae_t\longrightarrow V_\mu,\qquad xe_t\longmapsto xv
+\]</span>
+is well-defined, because <span class="math" data-tex="\(v=e_tv\)">\(v=e_tv\)</span>. It is a nonzero homomorphism between irreducibles, so it is an isomorphism. Thus <span class="math" data-tex="\(\mu=\lambda\)">\(\mu=\lambda\)</span> by Proposition 4.1. The rank is consequently <span class="math" data-tex="\(0\)">\(0\)</span> on every other irreducible. Taking a direct sum of the irreducibles in <span class="math" data-tex="\(U\)">\(U\)</span> adds these ranks and proves (25). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Gruson–Serganova, Chapter 6, Theorem 1.7, Corollary 1.16 and Lemma 1.21]. The trace and endomorphism arguments above give the normalization and irreducibility explicitly.</p>
+<h2 id="5-transposition-of-a-diagram-and-the-sign-representation">5. Transposition of a diagram and the sign representation</h2>
+<p>The row and column groups switch places when the tableau is transposed. The product order also switches under the sign operation, so we first account for that change.</p>
+<p id="lemma-5-1" class="result-link"><strong>Lemma 5.1 (the opposite product gives the same representation).</strong> For a tableau with <span class="math" data-tex="\(a=a_t,b=b_t,c=ab\)">\(a=a_t,b=b_t,c=ab\)</span>, the left ideals <span class="math" data-tex="\(Aab\)">\(Aab\)</span> and <span class="math" data-tex="\(Aba\)">\(Aba\)</span> are isomorphic.</p>
+<p><strong>Proof.</strong> Define the linear anti-automorphism
+<span class="math math-display" data-tex="\[
+\left(\sum_g x_gg\right)^*=\sum_g x_gg^{-1}.
+\]">\[
+\left(\sum_g x_gg\right)^*=\sum_g x_gg^{-1}.
+\]</span>
+It reverses products: <span class="math" data-tex="\((xy)^*=y^*x^*\)">\((xy)^*=y^*x^*\)</span>. Since both defining groups are closed under inverses and sign is unchanged by inversion, <span class="math" data-tex="\(a^*=a,b^*=b\)">\(a^*=a,b^*=b\)</span>. Applying this operation to <span class="math" data-tex="\((ab)^2=\nu_\lambda ab\)">\((ab)^2=\nu_\lambda ab\)</span> gives
+<span class="math math-display" data-tex="\[
+(ba)^2=\nu_\lambda ba.
+\tag{26}
+\]">\[
+(ba)^2=\nu_\lambda ba.
+\tag{26}
+\]</span>
+Right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> maps <span class="math" data-tex="\(Aab\)">\(Aab\)</span> into <span class="math" data-tex="\(Aba\)">\(Aba\)</span>, since <span class="math" data-tex="\(xaba=(xa)ba\)">\(xaba=(xa)ba\)</span>. Right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> maps <span class="math" data-tex="\(Aba\)">\(Aba\)</span> into <span class="math" data-tex="\(Aab\)">\(Aab\)</span>. Both maps commute with the left action. Their composites are
+<span class="math math-display" data-tex="\[
+v\longmapsto vab=\nu_\lambda v\quad(v\in Aab),
+\qquad
+w\longmapsto wba=\nu_\lambda w\quad(w\in Aba).
+\]">\[
+v\longmapsto vab=\nu_\lambda v\quad(v\in Aab),
+\qquad
+w\longmapsto wba=\nu_\lambda w\quad(w\in Aba).
+\]</span>
+Since <span class="math" data-tex="\(\nu_\lambda\ne0\)">\(\nu_\lambda\ne0\)</span>, right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> has inverse <span class="math" data-tex="\(1/\nu_\lambda\)">\(1/\nu_\lambda\)</span> times right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="proposition-5-2" class="result-link"><strong>Proposition 5.2 (conjugate diagrams).</strong> For every partition,
+<span class="math math-display" data-tex="\[
+V_{\lambda&#x27;}\cong V_\lambda\otimes\operatorname{sgn}.
+\tag{27}
+\]">\[
+V_{\lambda&#x27;}\cong V_\lambda\otimes\operatorname{sgn}.
+\tag{27}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(s=t^{\mathsf T}\)">\(s=t^{\mathsf T}\)</span> be the transposed tableau. Define an algebra automorphism
+<span class="math math-display" data-tex="\[
+\omega:A\to A,\qquad \omega(g)=\operatorname{sgn}(g)g.
+\]">\[
+\omega:A\to A,\qquad \omega(g)=\operatorname{sgn}(g)g.
+\]</span>
+It preserves products because sign is multiplicative, and <span class="math" data-tex="\(\omega^2=1\)">\(\omega^2=1\)</span>. Since <span class="math" data-tex="\(R_s=C_t\)">\(R_s=C_t\)</span> and <span class="math" data-tex="\(C_s=R_t\)">\(C_s=R_t\)</span>, formula (5) gives
+<span class="math math-display" data-tex="\[
+\omega(a_t)=b_s,\qquad
+\omega(b_t)=a_s,\qquad
+\omega(c_t)=b_sa_s.
+\tag{28}
+\]">\[
+\omega(a_t)=b_s,\qquad
+\omega(b_t)=a_s,\qquad
+\omega(c_t)=b_sa_s.
+\tag{28}
+\]</span>
+Identify <span class="math" data-tex="\(V_\lambda\otimes\operatorname{sgn}\)">\(V_\lambda\otimes\operatorname{sgn}\)</span> with the vector space <span class="math" data-tex="\(Ac_t\)">\(Ac_t\)</span> equipped with action <span class="math" data-tex="\(g\cdot v=\operatorname{sgn}(g)gv\)">\(g\cdot v=\operatorname{sgn}(g)gv\)</span>. On this twisted action,
+<span class="math math-display" data-tex="\[
+\omega(g\cdot v)
+=\operatorname{sgn}(g)\omega(g)\omega(v)
+=g\omega(v).
+\]">\[
+\omega(g\cdot v)
+=\operatorname{sgn}(g)\omega(g)\omega(v)
+=g\omega(v).
+\]</span>
+Thus <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is an isomorphism from this twisted module onto <span class="math" data-tex="\(Ab_sa_s\)">\(Ab_sa_s\)</span>. Lemma 5.1 identifies the latter with <span class="math" data-tex="\(Aa_sb_s=V_{\lambda&#x27;}\)">\(Aa_sb_s=V_{\lambda&#x27;}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, conjugate shapes have the same dimension. A self-conjugate shape gives a representation isomorphic to its sign twist.</p>
+<p>There is also a useful concrete model using row sets. A tabloid <span class="math" data-tex="\(\{t\}\)">\(\{t\}\)</span> remembers which labels occur in each row and forgets their order within that row. Let <span class="math" data-tex="\(M^\lambda\)">\(M^\lambda\)</span> be the permutation representation on tabloids of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and form the polytabloid
+<span class="math math-display" data-tex="\[
+\epsilon_t=b_t\{t\}.
+\tag{29}
+\]">\[
+\epsilon_t=b_t\{t\}.
+\tag{29}
+\]</span></p>
+<p id="proposition-5-3" class="result-link"><strong>Proposition 5.3 (the tabloid model).</strong> The subspace <span class="math" data-tex="\(S^\lambda\)">\(S^\lambda\)</span> spanned by all the polytabloids of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a representation isomorphic to <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>.</p>
+<p><strong>Proof.</strong> Relabeling gives <span class="math" data-tex="\(g\epsilon_t=\epsilon_{gt}\)">\(g\epsilon_t=\epsilon_{gt}\)</span>, so their span is invariant. The left ideal <span class="math" data-tex="\(Aa_t\)">\(Aa_t\)</span> has a basis <span class="math" data-tex="\(ga_t\)">\(ga_t\)</span> indexed by left cosets <span class="math" data-tex="\(S_n/R_t\)">\(S_n/R_t\)</span>: different cosets have disjoint supports in the group basis. These cosets also index the tabloids <span class="math" data-tex="\(g\{t\}\)">\(g\{t\}\)</span>, since the stabilizer of <span class="math" data-tex="\(\{t\}\)">\(\{t\}\)</span> is exactly <span class="math" data-tex="\(R_t\)">\(R_t\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+Aa_t\longrightarrow M^\lambda,\qquad
+ga_t\longmapsto g\{t\}
+\tag{30}
+\]">\[
+Aa_t\longrightarrow M^\lambda,\qquad
+ga_t\longmapsto g\{t\}
+\tag{30}
+\]</span>
+is a well-defined equivariant isomorphism. It sends <span class="math" data-tex="\(b_ta_t\)">\(b_ta_t\)</span> to <span class="math" data-tex="\(b_t\{t\}=\epsilon_t\)">\(b_t\{t\}=\epsilon_t\)</span>, and hence sends <span class="math" data-tex="\(Ab_ta_t\)">\(Ab_ta_t\)</span> onto the span of the vectors <span class="math" data-tex="\(g\epsilon_t\)">\(g\epsilon_t\)</span>. Every tableau is a relabeling of <span class="math" data-tex="\(t\)">\(t\)</span>, so that span is <span class="math" data-tex="\(S^\lambda\)">\(S^\lambda\)</span>. Finally Lemma 5.1 gives <span class="math" data-tex="\(Ab_ta_t\cong Aa_tb_t=V_\lambda\)">\(Ab_ta_t\cong Aa_tb_t=V_\lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The names Specht module and Young-symmetrizer representation therefore describe equivalent models here. Proposition 5.3 proves the equivalence; no basis theorem for standard polytabloids is being assumed.</p>
+<p><em>Reference:</em> [Purbhoo, §6.4] for the polytabloid construction; [Gruson–Serganova, Chapter 6, Exercises 1.22–1.23] for the opposite product and sign twist.</p>
+<h2 id="6-recognizing-the-small-representations">6. Recognizing the small representations</h2>
+<p>For <span class="math" data-tex="\((n)\)">\((n)\)</span>, the row group is <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, the column group is trivial, and <span class="math" data-tex="\(c_t=\sum_g g\)">\(c_t=\sum_g g\)</span>. Left multiplication fixes this sum, so <span class="math" data-tex="\(V_{(n)}\)">\(V_{(n)}\)</span> is trivial and <span class="math" data-tex="\(\nu_{(n)}=n!\)">\(\nu_{(n)}=n!\)</span>.</p>
+<p>For <span class="math" data-tex="\((1^n)\)">\((1^n)\)</span>, the roles reverse and <span class="math" data-tex="\(c_t=\sum_g\operatorname{sgn}(g)g\)">\(c_t=\sum_g\operatorname{sgn}(g)g\)</span>. Left multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> multiplies this sum by <span class="math" data-tex="\(\operatorname{sgn}(h)\)">\(\operatorname{sgn}(h)\)</span>. Thus <span class="math" data-tex="\(V_{(1^n)}\)">\(V_{(1^n)}\)</span> is the sign representation, again with normalization <span class="math" data-tex="\(n!\)">\(n!\)</span>.</p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, fill <span class="math" data-tex="\((n-1,1)\)">\((n-1,1)\)</span> with <span class="math" data-tex="\(1,\ldots,n-1\)">\(1,\ldots,n-1\)</span> in the first row and <span class="math" data-tex="\(n\)">\(n\)</span> below the first box. Then
+<span class="math math-display" data-tex="\[
+c_t=\left(\sum_{p\in S_{n-1}}p\right)(1-(1n)).
+\]">\[
+c_t=\left(\sum_{p\in S_{n-1}}p\right)(1-(1n)).
+\]</span>
+In the permutation representation <span class="math" data-tex="\(E=\mathbb C^n\)">\(E=\mathbb C^n\)</span>, the coordinate-sum-zero subspace
+<span class="math math-display" data-tex="\[
+E_0=\{(x_1,\ldots,x_n):\textstyle\sum_i x_i=0\}
+\]">\[
+E_0=\{(x_1,\ldots,x_n):\textstyle\sum_i x_i=0\}
+\]</span>
+is irreducible. To prove this, let <span class="math" data-tex="\(W\subseteq E_0\)">\(W\subseteq E_0\)</span> be a nonzero invariant subspace and choose nonzero <span class="math" data-tex="\(v\in W\)">\(v\in W\)</span>. Its coordinates cannot all agree, because their sum is zero. Choose <span class="math" data-tex="\(i,j\)">\(i,j\)</span> with <span class="math" data-tex="\(v_i\ne v_j\)">\(v_i\ne v_j\)</span>. Then
+<span class="math math-display" data-tex="\[
+v-(ij)v=(v_i-v_j)(e_i-e_j)\in W.
+\]">\[
+v-(ij)v=(v_i-v_j)(e_i-e_j)\in W.
+\]</span>
+Permuting labels gives every coordinate difference, and those differences span <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. Hence <span class="math" data-tex="\(W=E_0\)">\(W=E_0\)</span>.</p>
+<p>Moreover,
+<span class="math math-display" data-tex="\[
+c_te_n=(n-1)!\,e_n-(n-2)!\sum_{i=1}^{n-1}e_i\ne0.
+\tag{31}
+\]">\[
+c_te_n=(n-1)!\,e_n-(n-2)!\sum_{i=1}^{n-1}e_i\ne0.
+\tag{31}
+\]</span>
+The vector has sum zero. The equivariant map <span class="math" data-tex="\(Ac_t\to E_0\)">\(Ac_t\to E_0\)</span>, <span class="math" data-tex="\(v\mapsto ve_n\)">\(v\mapsto ve_n\)</span>, has a nonzero image, which is all of <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. Its kernel is zero by the irreducibility of <span class="math" data-tex="\(Ac_t\)">\(Ac_t\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+V_{(n-1,1)}\cong E_0,\qquad
+d_{(n-1,1)}=n-1,\qquad
+\nu_{(n-1,1)}=\frac{n!}{n-1}.
+\tag{32}
+\]">\[
+V_{(n-1,1)}\cong E_0,\qquad
+d_{(n-1,1)}=n-1,\qquad
+\nu_{(n-1,1)}=\frac{n!}{n-1}.
+\tag{32}
+\]</span></p>
+<p>For <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, (8) consequently gives its two-dimensional standard representation. Put <span class="math" data-tex="\(s=(23)\)">\(s=(23)\)</span> and take the group-algebra basis <span class="math" data-tex="\(c_t,sc_t\)">\(c_t,sc_t\)</span>. Under the isomorphism above its images are
+<span class="math math-display" data-tex="\[
+w_1=2e_3-e_1-e_2,\qquad
+w_2=2e_2-e_1-e_3.
+\]">\[
+w_1=2e_3-e_1-e_2,\qquad
+w_2=2e_2-e_1-e_3.
+\]</span>
+These are independent. Directly permuting their coordinates gives the rational matrices
+<span class="math math-display" data-tex="\[
+\rho((12))=
+\begin{pmatrix}1&amp;-1\\0&amp;-1\end{pmatrix},
+\qquad
+\rho((23))=
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{33}
+\]">\[
+\rho((12))=
+\begin{pmatrix}1&amp;-1\\0&amp;-1\end{pmatrix},
+\qquad
+\rho((23))=
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\tag{33}
+\]</span>
+Together with the trivial and sign representations these give all three shapes of size <span class="math" data-tex="\(3\)">\(3\)</span>. Their dimensions <span class="math" data-tex="\(1,2,1\)">\(1,2,1\)</span> have squares summing to <span class="math" data-tex="\(6\)">\(6\)</span>.</p>
+<h3 id="the-shape-2-2-in-s_4">The shape <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> in <span class="math" data-tex="\(S_4\)">\(S_4\)</span></h3>
+<p>Let <span class="math" data-tex="\(S_4\)">\(S_4\)</span> act on the three pairings
+<span class="math math-display" data-tex="\[
+M_1=12|34,\qquad M_2=13|24,\qquad M_3=14|23.
+\tag{34}
+\]">\[
+M_1=12|34,\qquad M_2=13|24,\qquad M_3=14|23.
+\tag{34}
+\]</span>
+Here <span class="math" data-tex="\(12|34\)">\(12|34\)</span>, for example, means the unordered set of pairs <span class="math" data-tex="\(\{\{1,2\},\{3,4\}\}\)">\(\{\{1,2\},\{3,4\}\}\)</span>. In the permutation representation with basis <span class="math" data-tex="\(f_1,f_2,f_3\)">\(f_1,f_2,f_3\)</span> for these pairings, let
+<span class="math math-display" data-tex="\[
+W=\{x_1f_1+x_2f_2+x_3f_3:x_1+x_2+x_3=0\}.
+\]">\[
+W=\{x_1f_1+x_2f_2+x_3f_3:x_1+x_2+x_3=0\}.
+\]</span>
+The action on the three pairings is onto <span class="math" data-tex="\(S_3\)">\(S_3\)</span>: <span class="math" data-tex="\((12)\)">\((12)\)</span> fixes <span class="math" data-tex="\(M_1\)">\(M_1\)</span> and swaps <span class="math" data-tex="\(M_2,M_3\)">\(M_2,M_3\)</span>, while <span class="math" data-tex="\((23)\)">\((23)\)</span> swaps <span class="math" data-tex="\(M_1,M_2\)">\(M_1,M_2\)</span> and fixes <span class="math" data-tex="\(M_3\)">\(M_3\)</span>. Those two transpositions generate the full permutation group of the pairings. The coordinate-difference proof just given therefore makes <span class="math" data-tex="\(W\)">\(W\)</span> irreducible and two-dimensional.</p>
+<p>For the tableau with first row <span class="math" data-tex="\(1,2\)">\(1,2\)</span> and second row <span class="math" data-tex="\(3,4\)">\(3,4\)</span>, we have
+<span class="math math-display" data-tex="\[
+a_t=(1+(12))(1+(34)),\qquad
+b_t=(1-(13))(1-(24)).
+\tag{35}
+\]">\[
+a_t=(1+(12))(1+(34)),\qquad
+b_t=(1-(13))(1-(24)).
+\tag{35}
+\]</span>
+On the pairings, <span class="math" data-tex="\((12)\)">\((12)\)</span> and <span class="math" data-tex="\((34)\)">\((34)\)</span> have the same action <span class="math" data-tex="\(S\)">\(S\)</span>, swapping <span class="math" data-tex="\(M_2,M_3\)">\(M_2,M_3\)</span>. The permutations <span class="math" data-tex="\((13),(24)\)">\((13),(24)\)</span> have the same action <span class="math" data-tex="\(T\)">\(T\)</span>, swapping <span class="math" data-tex="\(M_1,M_3\)">\(M_1,M_3\)</span>. Hence <span class="math" data-tex="\(a_t=2(I+S)\)">\(a_t=2(I+S)\)</span> and <span class="math" data-tex="\(b_t=2(I-T)\)">\(b_t=2(I-T)\)</span> on this space. In particular,
+<span class="math math-display" data-tex="\[
+c_tf_1=4(2f_1-f_2-f_3)\ne0.
+\tag{36}
+\]">\[
+c_tf_1=4(2f_1-f_2-f_3)\ne0.
+\tag{36}
+\]</span>
+The equivariant map <span class="math" data-tex="\(Ac_t\to W\)">\(Ac_t\to W\)</span>, <span class="math" data-tex="\(v\mapsto vf_1\)">\(v\mapsto vf_1\)</span>, is nonzero and thus an isomorphism between these irreducibles. Consequently
+<span class="math math-display" data-tex="\[
+d_{(2,2)}=2,\qquad \nu_{(2,2)}=24/2=12.
+\]">\[
+d_{(2,2)}=2,\qquad \nu_{(2,2)}=24/2=12.
+\]</span>
+Its character is the number of fixed pairings minus <span class="math" data-tex="\(1\)">\(1\)</span>. The five cycle types give respectively <span class="math" data-tex="\(3,1,3,0,1\)">\(3,1,3,0,1\)</span> fixed pairings. A double transposition fixes all three; a <span class="math" data-tex="\(3\)">\(3\)</span>-cycle permutes them cyclically; and <span class="math" data-tex="\((1234)\)">\((1234)\)</span> fixes <span class="math" data-tex="\(M_2\)">\(M_2\)</span> while exchanging <span class="math" data-tex="\(M_1,M_3\)">\(M_1,M_3\)</span>. This proves the <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> row in the table below.</p>
+<p>The standard representation has character equal to the number of fixed labels minus <span class="math" data-tex="\(1\)">\(1\)</span>. Proposition 5.2 supplies its sign twist, of shape <span class="math" data-tex="\((2,1,1)\)">\((2,1,1)\)</span>. The resulting full character table is</p>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th style="text-align:right"><span class="math" data-tex="\(1^4\)">\(1^4\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2\,1^2\)">\(2\,1^2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^2\)">\(2^2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\,1\)">\(3\,1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class size</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((4)\)">\((4)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,1)\)">\((3,1)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,2)\)">\((2,2)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,1,1)\)">\((2,1,1)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((1^4)\)">\((1^4)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Every entry follows from one of the concrete actions above. There are five partitions and five rows of characters. Their degree squares sum to <span class="math" data-tex="\(1+9+4+9+1=24\)">\(1+9+4+9+1=24\)</span>, in agreement with the regular representation.</p>
+<p>For <span class="math" data-tex="\(S_1\)">\(S_1\)</span>, the trivial and sign constructions coincide because there is only one partition. The case <span class="math" data-tex="\(S_0=\{1\}\)">\(S_0=\{1\}\)</span> can also be included: use the empty partition, empty tableau, <span class="math" data-tex="\(a=b=c=1\)">\(a=b=c=1\)</span>, and dimension and normalization <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-1-easy-an-unnormalized-projection-in-mathbb-q-s_3">Exercise 1 (easy). An unnormalized projection in <span class="math" data-tex="\(\mathbb Q[S_3]\)">\(\mathbb Q[S_3]\)</span></h3>
+<p>Use the tableau in (8). Expand <span class="math" data-tex="\(c_t^2\)">\(c_t^2\)</span> directly in the group basis and show that <span class="math" data-tex="\(c_t^2=3c_t\)">\(c_t^2=3c_t\)</span>. Determine the image and kernel of <span class="math" data-tex="\(c_t/3\)">\(c_t/3\)</span> on the natural three-dimensional permutation representation.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(a=(12),b=(13),d=ab=(132)\)">\(a=(12),b=(13),d=ab=(132)\)</span>, so <span class="math" data-tex="\(c_t=1+a-b-d\)">\(c_t=1+a-b-d\)</span>. We have <span class="math" data-tex="\(a^2=b^2=1\)">\(a^2=b^2=1\)</span>, <span class="math" data-tex="\(da=aba=bab\)">\(da=aba=bab\)</span>, <span class="math" data-tex="\(db=a\)">\(db=a\)</span>, and <span class="math" data-tex="\(d^2=ba\)">\(d^2=ba\)</span>. The four contributions to the square are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1c_t&amp;=1+a-b-d,\\
+ac_t&amp;=a+1-d-b,\\
+-bc_t&amp;=-b-ba+1+bab,\\
+-dc_t&amp;=-d-aba+a+ba.
+\end{aligned}
+\]">\[
+\begin{aligned}
+1c_t&amp;=1+a-b-d,\\
+ac_t&amp;=a+1-d-b,\\
+-bc_t&amp;=-b-ba+1+bab,\\
+-dc_t&amp;=-d-aba+a+ba.
+\end{aligned}
+\]</span>
+The <span class="math" data-tex="\(ba\)">\(ba\)</span> terms cancel, as do <span class="math" data-tex="\(bab\)">\(bab\)</span> and <span class="math" data-tex="\(aba\)">\(aba\)</span>. The remaining sum is <span class="math" data-tex="\(3+3a-3b-3d=3c_t\)">\(3+3a-3b-3d=3c_t\)</span>.</p>
+<p>For <span class="math" data-tex="\(v=x_1e_1+x_2e_2+x_3e_3\)">\(v=x_1e_1+x_2e_2+x_3e_3\)</span>, first <span class="math" data-tex="\(1-(13)\)">\(1-(13)\)</span> gives
+<span class="math math-display" data-tex="\[
+(x_1-x_3)(e_1-e_3).
+\]">\[
+(x_1-x_3)(e_1-e_3).
+\]</span>
+Then <span class="math" data-tex="\(1+(12)\)">\(1+(12)\)</span> gives
+<span class="math math-display" data-tex="\[
+c_tv=(x_1-x_3)(e_1+e_2-2e_3).
+\tag{37}
+\]">\[
+c_tv=(x_1-x_3)(e_1+e_2-2e_3).
+\tag{37}
+\]</span>
+Thus the image of <span class="math" data-tex="\(c_t/3\)">\(c_t/3\)</span> is the line spanned by <span class="math" data-tex="\(e_1+e_2-2e_3\)">\(e_1+e_2-2e_3\)</span>, and its kernel is the plane <span class="math" data-tex="\(x_1=x_3\)">\(x_1=x_3\)</span>. On that spanning vector, <span class="math" data-tex="\(x_1-x_3=3\)">\(x_1-x_3=3\)</span>, so <span class="math" data-tex="\(c_t/3\)">\(c_t/3\)</span> fixes it. This is an idempotent projection inside the permutation representation. Its image alone is not an <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-invariant line: applying <span class="math" data-tex="\((23)\)">\((23)\)</span> changes that line. The irreducible left ideal <span class="math" data-tex="\(Ac_t\)">\(Ac_t\)</span> includes all left translates of <span class="math" data-tex="\(c_t\)">\(c_t\)</span>, rather than only the image of this one projection.</p>
+<h3 id="exercise-2-medium-transpose-the-pattern-including-the-product-order">Exercise 2 (medium). Transpose the pattern, including the product order</h3>
+<p>Prove (27) directly from the two averaging sums. Account for the opposite product with explicit invertible maps, and deduce that conjugate partitions have equal normalization constants.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(s=t^{\mathsf T}\)">\(s=t^{\mathsf T}\)</span>, its row group is <span class="math" data-tex="\(C_t\)">\(C_t\)</span> and its column group is <span class="math" data-tex="\(R_t\)">\(R_t\)</span>. The sign automorphism <span class="math" data-tex="\(\omega(g)=\operatorname{sgn}(g)g\)">\(\omega(g)=\operatorname{sgn}(g)g\)</span> therefore sends <span class="math" data-tex="\(a_t\)">\(a_t\)</span> to <span class="math" data-tex="\(b_s\)">\(b_s\)</span> and <span class="math" data-tex="\(b_t\)">\(b_t\)</span> to <span class="math" data-tex="\(a_s\)">\(a_s\)</span>. It sends <span class="math" data-tex="\(Ac_t\)">\(Ac_t\)</span> onto <span class="math" data-tex="\(Ab_sa_s\)">\(Ab_sa_s\)</span>. If the domain has the sign-twisted action, then
+<span class="math math-display" data-tex="\[
+\omega(\operatorname{sgn}(g)gv)=g\omega(v),
+\]">\[
+\omega(\operatorname{sgn}(g)gv)=g\omega(v),
+\]</span>
+so this is an equivariant isomorphism from <span class="math" data-tex="\(V_\lambda\otimes\operatorname{sgn}\)">\(V_\lambda\otimes\operatorname{sgn}\)</span>.</p>
+<p>Put <span class="math" data-tex="\(a=a_s,b=b_s,\nu=\nu_{\lambda&#x27;}\)">\(a=a_s,b=b_s,\nu=\nu_{\lambda&#x27;}\)</span>. The inversion anti-automorphism fixes <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, so from <span class="math" data-tex="\((ab)^2=\nu ab\)">\((ab)^2=\nu ab\)</span> it gives <span class="math" data-tex="\((ba)^2=\nu ba\)">\((ba)^2=\nu ba\)</span>. Define
+<span class="math math-display" data-tex="\[
+F:Aab\to Aba,\quad F(v)=va,\qquad
+H:Aba\to Aab,\quad H(w)=wb.
+\]">\[
+F:Aab\to Aba,\quad F(v)=va,\qquad
+H:Aba\to Aab,\quad H(w)=wb.
+\]</span>
+The formulas land in the stated ideals because <span class="math" data-tex="\(xaba=(xa)ba\)">\(xaba=(xa)ba\)</span> and <span class="math" data-tex="\(xbab=(xb)ab\)">\(xbab=(xb)ab\)</span>. For <span class="math" data-tex="\(v=xab\)">\(v=xab\)</span> and <span class="math" data-tex="\(w=xba\)">\(w=xba\)</span>, we have <span class="math" data-tex="\(HF(v)=\nu v\)">\(HF(v)=\nu v\)</span> and <span class="math" data-tex="\(FH(w)=\nu w\)">\(FH(w)=\nu w\)</span>. Thus <span class="math" data-tex="\(F^{-1}=H/\nu\)">\(F^{-1}=H/\nu\)</span>, and <span class="math" data-tex="\(Ab_sa_s\cong Aa_sb_s=V_{\lambda&#x27;}\)">\(Ab_sa_s\cong Aa_sb_s=V_{\lambda&#x27;}\)</span>. This proves the sign-twist formula with the fixed order <span class="math" data-tex="\(c_t=a_tb_t\)">\(c_t=a_tb_t\)</span>. Tensoring with a line preserves dimension. Formula (17) then gives <span class="math" data-tex="\(\nu_{\lambda&#x27;}=\nu_\lambda\)">\(\nu_{\lambda&#x27;}=\nu_\lambda\)</span>.</p>
+<h3 id="exercise-3-medium-rational-matrices-integer-traces-and-duality">Exercise 3 (medium). Rational matrices, integer traces, and duality</h3>
+<p>Construct a rational model for each <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span>. Prove that its character takes integer values, and deduce that <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> is isomorphic to its dual. Explain why a rational-valued character by itself would be insufficient for the first conclusion.</p>
+<p><strong>Solution.</strong> The span <span class="math" data-tex="\(W_t=\mathbb Q[S_n]c_t\)">\(W_t=\mathbb Q[S_n]c_t\)</span> is stable under left multiplication. Its spanning vectors <span class="math" data-tex="\(gc_t\)">\(gc_t\)</span> have rational coordinates. Select a basis by rational row reduction. Its independence persists over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and every complex linear combination of the vectors <span class="math" data-tex="\(gc_t\)">\(gc_t\)</span> lies in its complex span. This proves the equivariant isomorphism (24). It constructs matrices over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> for the representation, rather than only constructing values of its trace.</p>
+<p>For any <span class="math" data-tex="\(g\)">\(g\)</span>, the trace is consequently rational. It is also an algebraic integer: if <span class="math" data-tex="\(g\)">\(g\)</span> has order <span class="math" data-tex="\(r\)">\(r\)</span>, its eigenvalues satisfy <span class="math" data-tex="\(x^r=1\)">\(x^r=1\)</span>, and so are roots of unity. The sum of these eigenvalues is an algebraic integer, using the closure of algebraic integers under addition proved in the integrality lesson.</p>
+<p>A rational algebraic integer is an integer. Indeed, write it as <span class="math" data-tex="\(a/b\)">\(a/b\)</span> in lowest terms with <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. If it satisfies a monic polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span> with integer coefficients, multiplying that equation by <span class="math" data-tex="\(b^m\)">\(b^m\)</span> shows that <span class="math" data-tex="\(b\)">\(b\)</span> divides <span class="math" data-tex="\(a^m\)">\(a^m\)</span>. Coprimality forces <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. Thus <span class="math" data-tex="\(\chi_\lambda(g)\in\mathbb Z\)">\(\chi_\lambda(g)\in\mathbb Z\)</span>.</p>
+<p>The character of the dual is <span class="math" data-tex="\(\chi_\lambda(g^{-1})=\overline{\chi_\lambda(g)}\)">\(\chi_\lambda(g^{-1})=\overline{\chi_\lambda(g)}\)</span>. Integer values are real, so this is <span class="math" data-tex="\(\chi_\lambda(g)\)">\(\chi_\lambda(g)\)</span>. The earlier character-isomorphism criterion now gives <span class="math" data-tex="\(V_\lambda^*\cong V_\lambda\)">\(V_\lambda^*\cong V_\lambda\)</span>. This duality statement is distinct from the sign twist (27). Finally, the irreducible two-dimensional quaternion representation in the preceding lesson has integer character values and no rational model. That example shows why the matrix construction above cannot be replaced by a claim about rational-valued traces.</p>
+<h3 id="exercise-4-hard-recover-the-separating-permutations">Exercise 4 (hard). Recover the separating permutations</h3>
+<p>Suppose no two labels in a row of <span class="math" data-tex="\(t\)">\(t\)</span> occur in a column of <span class="math" data-tex="\(u\)">\(u\)</span>. Prove the prefix inequalities (10). Under <span class="math" data-tex="\(\lambda\unrhd\mu\)">\(\lambda\unrhd\mu\)</span>, construct <span class="math" data-tex="\(p\in R_t,q\in C_t\)">\(p\in R_t,q\in C_t\)</span> with <span class="math" data-tex="\(u=pqt\)">\(u=pqt\)</span>, including when the two shapes have equal row lengths. Deduce that <span class="math" data-tex="\(\lambda&gt;_{\mathrm{lex}}\mu\)">\(\lambda&gt;_{\mathrm{lex}}\mu\)</span> forces a collision for every pair of tableaux of those shapes.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(B_k\)">\(B_k\)</span> be the labels in the first <span class="math" data-tex="\(k\)">\(k\)</span> rows of <span class="math" data-tex="\(t\)">\(t\)</span>. Its size is <span class="math" data-tex="\(\sum_{i\leq k}\lambda_i\)">\(\sum_{i\leq k}\lambda_i\)</span>. Each column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span> meets <span class="math" data-tex="\(B_k\)">\(B_k\)</span> in at most <span class="math" data-tex="\(\min(k,\mu&#x27;_j)\)">\(\min(k,\mu&#x27;_j)\)</span> labels. Summing gives (12), hence (10). If dominance gives the reverse inequalities, all prefixes agree and subtraction gives <span class="math" data-tex="\(\lambda_i=\mu_i\)">\(\lambda_i=\mu_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>In the equal-shape case, write <span class="math" data-tex="\(N_{k,j}\)">\(N_{k,j}\)</span> for the number of labels of <span class="math" data-tex="\(B_k\)">\(B_k\)</span> in column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>. Its upper bound is <span class="math" data-tex="\(\min(k,\lambda&#x27;_j)\)">\(\min(k,\lambda&#x27;_j)\)</span>, and the sum of these bounds equals <span class="math" data-tex="\(|B_k|\)">\(|B_k|\)</span>. Since the actual sum is also <span class="math" data-tex="\(|B_k|\)">\(|B_k|\)</span>, each bound is attained. Thus
+<span class="math math-display" data-tex="\[
+N_{k,j}-N_{k-1,j}=
+\begin{cases}
+1,&amp;k\leq\lambda&#x27;_j,\\
+0,&amp;k&gt;\lambda&#x27;_j.
+\end{cases}
+\tag{38}
+\]">\[
+N_{k,j}-N_{k-1,j}=
+\begin{cases}
+1,&amp;k\leq\lambda&#x27;_j,\\
+0,&amp;k&gt;\lambda&#x27;_j.
+\end{cases}
+\tag{38}
+\]</span>
+For each existing box <span class="math" data-tex="\((k,j)\)">\((k,j)\)</span>, let <span class="math" data-tex="\(x_{k,j}\)">\(x_{k,j}\)</span> be the unique label in column <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span> that belongs to row <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span>. Define <span class="math" data-tex="\(p\)">\(p\)</span> by sending the label in box <span class="math" data-tex="\((k,j)\)">\((k,j)\)</span> of <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(x_{k,j}\)">\(x_{k,j}\)</span>. The images exhaust row <span class="math" data-tex="\(k\)">\(k\)</span>'s labels, so this defines a permutation in <span class="math" data-tex="\(R_t\)">\(R_t\)</span>, even if several row lengths are equal. The argument uses the individually numbered rows, not a strict decrease of their lengths.</p>
+<p>Let <span class="math" data-tex="\(w\)">\(w\)</span> be the unique label permutation taking <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span>. The tableaux <span class="math" data-tex="\(pt\)">\(pt\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> have the same column sets by construction. Therefore <span class="math" data-tex="\(p^{-1}wt\)">\(p^{-1}wt\)</span> has the same column sets as <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(q=p^{-1}w\)">\(q=p^{-1}w\)</span> preserves every such set and lies in <span class="math" data-tex="\(C_t\)">\(C_t\)</span>. This gives <span class="math" data-tex="\(w=pq\)">\(w=pq\)</span> and <span class="math" data-tex="\(u=pqt\)">\(u=pqt\)</span>.</p>
+<p>Finally, if <span class="math" data-tex="\(\lambda&gt;_{\mathrm{lex}}\mu\)">\(\lambda&gt;_{\mathrm{lex}}\mu\)</span>, let <span class="math" data-tex="\(k\)">\(k\)</span> be their first unequal part. The earlier parts agree, and <span class="math" data-tex="\(\lambda_k&gt;\mu_k\)">\(\lambda_k&gt;\mu_k\)</span>; hence their <span class="math" data-tex="\(k\)">\(k\)</span>-th prefix sums violate (10). Absence of a collision is impossible, independently of the labels in either tableau. This proves the asserted collision for every pair. It also explains why the chosen order must be named.</p>
+<p>The next lesson develops bases indexed by standard tableaux and dimension formulas. The present classification and its rational models did not require assuming those formulas.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Stevens] James Stevens, <em>Schur–Weyl duality</em>, University of Chicago REU paper, 2016, §2.1, Theorem 2.1 and Lemmas 2.3–2.7. <a href="https://math.uchicago.edu/~may/REU2016/REUPapers/Stevens.pdf">Open text</a>.</li>
+<li>[Purbhoo] Kevin Purbhoo, <em>Lecture Notes for C&amp;O 430/630</em>, Fall 2010, §6.4, Lemmas 6.4.3–6.4.4 and Theorems 6.4.5–6.4.6. <a href="https://www.math.uwaterloo.ca/~kpurbhoo/fall2011-co630/co630notes.pdf">Open text</a>.</li>
+<li>[Gruson–Serganova] Caroline Gruson and Vera Serganova, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, Universitext, Springer, 2018, Chapter 6, §1, especially Theorem 1.7, Lemmas 1.13–1.19, Lemma 1.21 and Exercises 1.22–1.23.</li>
+<li>[Frobenius] Ferdinand Georg Frobenius, “Über die charakteristischen Einheiten der symmetrischen Gruppe,” <em>Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin</em> (1903), 328–358; reprinted as paper 68 in <em>Gesammelte Abhandlungen</em>, Volume III. The introduction and §§1–2 discuss rational realizations and the trace and rank of characteristic idempotents.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

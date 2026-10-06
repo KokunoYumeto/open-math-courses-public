@@ -1,0 +1,347 @@
+# Deformations and the analytic index in E-theory
+
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
+
+A deformation replaces an operator algebra by its limiting symbol algebra. Evaluation at a small positive parameter almost preserves multiplication on lifts of symbols. Those evaluations define an asymptotic morphism. For the tangent groupoid, the resulting map on K-theory is the analytic index.
+
+Algebras are complex and separable. Write \(SA=C_0((0,1),A)\), \(\mathcal K=\mathcal K(\ell^2)\), and \(E(A,B)=[[SA,SB\otimes\mathcal K]]\), with products in the order of composition. The definition of asymptotic morphism, composition, homotopy and stabilization are proved in [*Asymptotic morphisms and E-theory*, Sections 1–4](KT-KK-21.html#1-families-quotients-and-continuous-representatives). Its [Lemma 6.1 and equation (6.6)](KT-KK-21.html#6-transporting-the-bott-equivalence) prove the product-preserving functor \(\mathfrak c:KK\to E\). The deformation and K-theory arguments below do not require contravariant E-theory exactness.
+
+## 1. A deformation and its continuous lifts
+
+A **deformation extension** is an exact sequence
+\[
+0\longrightarrow I=C_0((0,1],B)\longrightarrow D
+ \xrightarrow{q}A\longrightarrow0,
+\tag{22.1}
+\]
+together with positive evaluations \(e_\tau:D\to B\), \(0<\tau\leq1\), whose restriction to \(I\) is ordinary evaluation. We require \(\tau\mapsto e_\tau(d)\) to be norm continuous at positive parameters, and the evaluations together with \(q\) to be faithful. A continuous \(C([0,1])\)-algebra with zero fibre \(A\) and trivial positive field \(B\) has these properties. The proof also works for an upper semicontinuous field satisfying (22.1).
+
+For \(i\in I\),
+\[
+\|e_\tau(i)\|\longrightarrow0\quad(\tau\downarrow0).
+\tag{22.2}
+\]
+The convergence is uniform on compact subsets of \(I\): cover such a set by finitely many norm balls of radius \(\epsilon\), apply (22.2) to their centres and use contractivity of evaluation. This elementary observation will control homotopies as well as individual errors.
+
+**Lemma 22.1 (a continuous lift).** There is a continuous, generally nonlinear map \(\sigma:A\to D\), with \(q\sigma(a)=a\), \(\sigma(0)=0\) and \(\|\sigma(a)\|\leq4\|a\|\).
+
+**Proof.** The quotient norm gives a lift of every nonzero \(a\) of norm at most \(2\|a\|\). Choose a countable dense family \(a_j\) in the unit sphere and such lifts \(d_j\) with \(\|d_j\|\leq2\). For a unit vector \(a\), put
+\[
+w_j(a)=2^{-j}\max\{0,\tfrac12-\|a-a_j\|\},\qquad
+H(a)=\frac{\sum_jw_j(a)d_j}{\sum_jw_j(a)}.
+\tag{22.3}
+\]
+The denominator is positive. It is bounded below on a neighbourhood of each unit vector; the two series converge uniformly there. Thus \(H\) is continuous, has norm at most two, and \(\|qH(a)-a\|\leq1/2\). Extend \(H\) by positive radial homogeneity and set \(H(0)=0\). Starting with \(r_0(a)=a\), set \(r_{k+1}(a)=r_k(a)-qH(r_k(a))\). The residual norm is at most \(2^{-k}\|a\|\). Hence
+\[
+\sigma(a)=\sum_{k=0}^{\infty}H(r_k(a))
+\tag{22.4}
+\]
+converges uniformly on bounded sets, is continuous, has norm at most \(4\|a\|\), and telescoping gives \(q\sigma(a)=a\). If \(A=0\), use the zero map. \(\square\)
+
+**Theorem 22.2 (the deformation class).** The family
+\[
+\alpha_t(a)=e_{1/t}(\sigma(a)),\qquad t\geq1,
+\tag{22.5}
+\]
+is an asymptotic morphism \(A \rightsquigarrow B\). Its asymptotic equivalence class is independent of \(\sigma\), and its suspension followed by a rank-one corner defines a canonical \(d_D\in E(A,B)\).
+
+**Proof.** The maps are bounded at each \(a\), and continuous in \(t\). Every linearity, adjoint or product error of \(\sigma\) is in \(\ker q=I\). For instance
+\[
+\alpha_t(ab)-\alpha_t(a)\alpha_t(b)
+=e_{1/t}\bigl(\sigma(ab)-\sigma(a)\sigma(b)\bigr)\longrightarrow0.
+\tag{22.6}
+\]
+The other two identities have the same proof. Two lifts differ at each \(a\) by an element of \(I\), so their evaluated families are asymptotically equivalent. Their linear interpolation is an asymptotic homotopy: its errors are finite polynomials in the interpolation parameter with coefficients in \(I\), giving uniform convergence by (22.2).
+
+Here is a representative on the whole suspension, rather than just on elementary tensors. For \(f\in SA\) set \((S\sigma)(f)(u)=\sigma(f(u))\). Continuity of \(\sigma\) and its norm bound make this an element of \(SD\). Each of its algebraic defects is in \(C_0((0,1),I)\). Uniform approximation by finitely many compactly supported \(I\)-valued functions, and (22.2), show that applying \(Se_{1/t}\) makes these defects vanish in the \(SB\) norm. Positive-time continuity holds uniformly in \(u\), because the compact image of \(f\) under \(\sigma\) can be covered by finite norm nets. Compose with \(b\mapsto b\otimes e_{11}\). This gives an asymptotic morphism \(SA \rightsquigarrow SB\otimes\mathcal K\). The same interpolation proves independence on the suspension. The different rank-one corners are related by a unitary path on their finite-dimensional span; conjugating by that path gives the same stable class. \(\square\)
+
+Only errors lying in the cone ideal were used. In particular, this proof does not assert a completely positive lift of an arbitrary quotient.
+
+## 2. The map on K-theory
+
+We prove explicitly why the zero evaluation in (22.1) is a K-isomorphism. A positive-time field may fail to converge in the fixed algebra \(B\) as \(\tau\downarrow0\); the argument will never require that convergence.
+
+**Lemma 22.3 (freezing the positive field).** For \(0<\delta\leq1\) there is a homomorphism \(R_\delta:D\to D\) satisfying
+\[
+qR_\delta=q,\qquad
+e_\tau R_\delta(d)=e_{\min(\tau,\delta)}(d).
+\tag{22.7}
+\]
+It is homotopic to the identity.
+
+**Proof.** The difference \(e_{\min(\tau,\delta)}(d)-e_\tau(d)\) is a continuous \(B\)-valued function which is identically zero for \(\tau\leq\delta\); it is therefore an element of \(I\). Add it to \(d\) to define \(R_\delta(d)\). The displayed evaluations show that it preserves addition, products and adjoints. Their joint faithfulness proves those identities in \(D\). The same faithfulness gives its norm bound by the supremum of the original fibre norms. Allowing \(\delta\) to move from its prescribed value to one is point-norm continuous: below its smallest value the difference is zero, and on the remaining compact positive interval uniform continuity of the original field controls the supremum norm. At one the map is the identity. \(\square\)
+
+**Proposition 22.4.** The map \(q_*:K_j(D)\to K_j(A)\) is an isomorphism, \(j=0,1\), and the K-map of (22.5) is
+\[
+(d_D)_*=(e_1)_*q_*^{-1}.
+\tag{22.8}
+\]
+
+**Proof in degree zero.** Apply the lift entrywise to matrices and extend it to unitizations by leaving scalar matrices fixed. If \(p\in M_N(A^+)\) is a projection, a self-adjoint lift \(r\in M_N(D^+)\) has \(r^2-r\in M_N(I)\). Thus at all sufficiently small positive parameters its spectrum has two disjoint clusters near zero and one. Choose a continuous real function \(h\) which is zero near the first cluster and one near the second. Then \(qh(r)=p\), and \(e_\tau h(r)\) is a projection for \(0<\tau\leq\delta\), after making \(\delta\) smaller if necessary. Its scalar part is a projection as well. Lemma 22.3 now makes \(R_\delta(h(r))\) an actual projection lifting \(p\). This proves surjectivity on the stabilized projection group.
+
+For injectivity suppose two stabilized projections in \(D^+\) have the same K-class after applying \(q\). By the defining stabilized projection relations, add a common projection and, if needed, scalar projections to obtain a continuous projection path between their images. Lift the added projection as above. Lift the path continuously using Lemma 22.1, self-adjointize it and use the same function \(h\). Its error path is a compact subset of \(M_N(I)\), so a single \(\delta\) works for the whole path. Applying \(R_\delta\) gives a projection path in \(D^+\). At its endpoints this lifted path differs from the frozen original projections by a norm tending uniformly to zero as \(\delta\downarrow0\): their differences have quotient zero, and near zero the fixed functional calculus preserves the projection clusters. Choose the norm difference less than \(1/2\). The spectral projection of the straight interpolation gives a projection homotopy between each endpoint pair. Finally \(R_\delta\) is homotopic to the identity. Thus the original K-classes are equal. This also respects the scalar-part map, so restriction from unitizations gives injectivity for \(K_0(D)\).
+
+For clarity, the K-map of the asymptotic family has the usual direct representative. For a projection \(p\), self-adjointize its matrix image under \(\alpha_t\) and take the spectral projection above \(1/2\) for sufficiently large \(t\). The adjoint and product errors tend to zero, so the gap is present. A stabilized projection path gives a uniform gap by the compact-set argument, proving that this construction depends only on its K-class. If \(P\) is an actual lift of \(p\), the matrix image of \(p\) differs from \(e_{1/t}(P)\) by a matrix in \(I\), evaluated near zero. Their corrected projections are consequently homotopic. The continuous positive path \(e_\tau(P)\), \(1/t\leq\tau\leq1\), identifies their K-class with \((e_1)_*[P]\). This proves (22.8).
+
+This is also the action of the E-class under \(E(\mathbb C,A)=K_0(A)\). In the positive suspension convention a projection gives the unitary loop \(1+(e^{2\pi iu}-1)p\). Composing its suspended representative with our family gives, up to errors uniform in \(u\), the loop \(1+(e^{2\pi iu}-1)\alpha_t(p)\): asymptotic scalar linearity is uniform on this compact scalar interval. Replacing the almost projection by its spectral correction changes the loop by a norm tending to zero. Polar correction and the logarithmic path between nearby unitaries leave its K-class unchanged. It is therefore the positive loop of precisely the projection class calculated above.
+
+**Degree one.** Lift a unitary in a matrix unitization. At small positive parameters both \(v^*v-1\) and \(vv^*-1\) are small. Multiply the lift \(v\) by \(g(v^*v)\), where \(g\) is a bounded continuous function agreeing with \(x^{-1/2}\) near one. This expression is unitary at the small fibres and at zero. Freezing makes it unitary on the whole field. A compact unitary path has one common small interval, exactly as above. Nearby unitaries are homotopic by polar normalization of their straight interpolation; freezing is homotopic to the identity. These facts prove bijectivity in degree one and identify the asymptotic K-map with (22.8). \(\square\)
+
+The proofs also show naturality under homomorphisms of deformation extensions: quotient, positive evaluations and freezing commute with such homomorphisms, and two choices of lifts have vanishing differences.
+
+**Lemma 22.5 (a KK comparison when available).** If (22.1) is semisplit, its zero evaluation is a KK-equivalence by the separable semisplit exactness proved in [*Exact sequences in KK and the universal coefficient theorem*, Theorems 4.1–4.2](KT-KK-14.html#4-excision-and-the-six-term-sequences). In this case
+\[
+d_D=\mathfrak c\bigl([q]^{-1}\otimes_D[e_1]\bigr).
+\tag{22.9}
+\]
+
+**Proof.** The cone \(I\) contracts by \(i(\tau)\mapsto i(s\tau)\), with value zero at \(s=0\); uniform continuity of the zero extension makes this a point-norm homotopy. Semisplit KK exactness therefore makes postcomposition by \([q]\) an isomorphism. Surjectivity supplies a right inverse in \(KK(A,D)\), and injectivity with source \(D\) makes it a left inverse as well.
+
+The direct deformation family composed with \(q\) differs from \(e_{1/t}\) at each \(d\) by \(e_{1/t}(\sigma(qd)-d)\), which tends to zero. The exact homomorphisms
+\[
+H_t(d)(s)=e_{s+(1-s)/t}(d),\qquad 0\leq s\leq1,
+\tag{22.10}
+\]
+give an asymptotic homotopy from \(e_{1/t}\) to \(e_1\). Every algebraic defect is zero, and positive-interval uniform continuity gives the required continuity in \(t\) and \(s\). Suspend and stabilize this homotopy. Hence \(\mathfrak c([q])\otimes_A d_D=\mathfrak c([e_1])\). The product-preserving functor takes the actual two KK inverse identities to two E inverse identities, proving (22.9). No E-theory half-exactness or cancellation theorem is used. \(\square\)
+
+## 3. The tangent groupoid and the analytic index
+
+Let \(M\) be a Hausdorff second-countable smooth manifold without boundary, with a positive density. Its tangent groupoid is
+\[
+\mathbb T M=(TM\times\{0\})\ \sqcup\
+(M\times M\times(0,1]).
+\tag{22.11}
+\]
+At zero its arrows compose by addition in each tangent space; at positive parameter they compose as pairs. In a coordinate chart its boundary coordinate is \((x,v,\tau)\mapsto(x,x-\tau v,\tau)\). The divided-difference proof of chart compatibility, Hausdorffness and smooth groupoid operations is [*The tangent groupoid and deformation to the normal cone*, Lemma 17.1 and Proposition 17.2](../KT-CP/KT-CP-17.html). The Haar system is the linear density at zero and \(\tau^{-n}d\mu\) at positive parameters, as proved in its Lemma 17.3.
+
+Put \(D_M=C^*(\mathbb T M)\). The full invariant-restriction theorem and finite-rank pair-kernel proof are [*Groupoid C*-algebras: full and reduced*, Theorem 14.5 and Proposition 14.6](../KT-CP/KT-CP-14.html). Fibrewise Fourier transformation at zero and that pair calculation give
+\[
+0\longrightarrow C_0((0,1],\mathcal K(L^2M))
+\longrightarrow D_M\xrightarrow{e_0}C_0(T^*M)
+\longrightarrow0.
+\tag{22.12}
+\]
+For a nonempty manifold the pair Hilbert space is nonzero; an empty manifold gives the zero class throughout. Positive trivialization includes the factor \(\tau^{-n}\) prescribed by the Haar density. These are precisely the algebra and fibre identifications in Proposition 17.4 of the tangent-groupoid lesson. Its Theorem 17.6 proves norm continuity at zero: an upper bound comes from the quotient field, and the lower bound uses localized Gaussian packets of spatial width \(\sqrt{\tau}\) and phase \(e^{i\eta x/\tau}\). That proof also applies on noncompact \(M\), since each packet lies in one relatively compact chart.
+
+Theorem 22.2 therefore gives
+\[
+\operatorname{Ind}^{E}_M\in
+E(C_0(T^*M),\mathcal K(L^2M)).
+\tag{22.13}
+\]
+Use a rank-one Hilbert-space Morita corner when a scalar target is desired. Proposition 22.4 identifies its K-map with
+\[
+\operatorname{ind}_M=(e_1)_*(e_0)_*^{-1}:
+K_0(C_0(T^*M))\longrightarrow K_0(\mathcal K(L^2M))
+\cong\mathbb Z.
+\tag{22.14}
+\]
+This is the deformation analytic index of Theorem 17.7 in the tangent-groupoid lesson.
+
+We verify its operator meaning for closed manifolds using the complete free-source quantization proof in *Dirac classes and the cotangent Dolbeault element*, Lemma CI.10 and Theorems CI.11–CI.14. This comparison uses the classical order-zero index statement proved there.
+
+**Proposition 22.6 (the closed-manifold comparison).** For closed \(M\), the semiclassical algebra \(\mathcal A_M\) of Lemma CI.10 is \(D_M\), with the same two evaluations. Thus the E-class is the image of its KK quantization morphism. For every classical elliptic order-zero \(P\),
+\[
+(\operatorname{Ind}^E_M)_*[\sigma_P]
+=\operatorname{index}P.
+\tag{22.15}
+\]
+
+**Proof.** Work first in a protected chart with half-densities. For \(a\in C_c^\infty(T^*M)\), its semiclassical kernel is the inverse Fourier transform of \(a(x,\xi)\) in the variable \(v=(x-y)/\tau\), with the chart cutoffs of CI.10. It is smooth and rapidly decreasing in \(v\), uniformly on compact base sets and \(0\leq\tau\leq1\). Cutting it off at large \(|v|\) converges in the groupoid \(I\)-norm: both the row and column integrals of the rapidly decreasing tail tend uniformly to zero. The zero Fourier value is \(a\). Thus every quantization generator, together with the positive cone ideal, belongs to \(D_M\).
+
+Conversely a smooth compact groupoid kernel in a boundary chart has a smooth zero kernel of compact \(v\)-support. Its Fourier transform \(a_0(x,\xi)\) is rapidly decreasing in \(\xi\). Approximate it by compact-frequency smooth symbols; Fourier integration by parts bounds the inverse-transform error in the two \(I\)-integrals by finitely many weighted derivative errors, which tend to zero under those cutoffs. The original positive kernel differs near zero from the chart quantization of \(a_0\) by norm \(O(\tau)\): its smooth parameter dependence, the half-density factor and the source-coordinate cutoff each have a first Taylor error bounded by \(\tau\) times an integrable compact or rapidly decreasing \(v\)-majorant. The finite partition from CI.10 handles all boundary charts. Kernels supported away from zero belong to the already included compact cone ideal. Smooth compact kernels are dense in the groupoid completion by chart convolution and compact cutoffs. Therefore the two closed algebras coincide, with identical evaluations.
+
+CI.10's coherent-vector section proves semisplitting. Lemma 22.5 now identifies the E-class with the image of \([e_0]^{-1}[e_1]\). CI.11 identifies the latter, followed by Hilbert-space Morita, with the \(J_-\) cotangent Dolbeault element and proves the full-source symbol identity. Its scalar pairing is exactly \(\operatorname{index}P\), by CI.9 and CI.14. Proposition 22.4 gives the same pairing directly in K-theory, proving (22.15). \(\square\)
+
+For a noncompact manifold (22.14) remains the deformation index on compactly supported symbol K-classes. A bare elliptic operator on a noncompact manifold need not be Fredholm; the formula does not assign a Fredholm integer to such an operator without additional control at infinity.
+
+## 4. A Euclidean calculation with its bivariant conclusion
+
+For \(M=\mathbb R^n\), the algebra in (22.12) has zero fibre \(C_0(\mathbb R^{2n})\). The inverse Bott assertion requires a bivariant proof. Its K-index alone will not be used as an E inverse criterion.
+
+**Lemma 22.7 (the positive Euclidean section).** The Euclidean zero evaluation is semisplit.
+
+**Proof.** Let
+\[
+g_{z,\eta,\tau}(x)=(\pi\tau)^{-n/4}
+\exp[-|x-z|^2/(2\tau)]\exp[i\eta\cdot(x-z)/\tau].
+\tag{22.16}
+\]
+Fourier unitarity in \(\eta\), followed by the normalized Gaussian integral in \(z\), gives
+\[
+\int |g_{z,\eta,\tau}\rangle\langle g_{z,\eta,\tau}|
+\frac{dz\,d\eta}{(2\pi\tau)^n}=1.
+\tag{22.17}
+\]
+Consequently \(S_\tau(a)=\int a(z,\eta)|g_{z,\eta,\tau}\rangle
+\langle g_{z,\eta,\tau}|\,dz\,d\eta/(2\pi\tau)^n\) is completely positive and contractive. For a compactly supported smooth \(a\), Gaussian convolution and Taylor's integral formula compare this anti-Wick kernel to its semiclassical Fourier kernel with norm error \(O(\sqrt{\tau})\). Indeed the first spatial and frequency increments have Gaussian first moments \(O(\sqrt{\tau})\); the finite derivative Schur bound from Lemma CI.10 controls the remaining kernel. Both quantizations are compact at positive parameter: the Fourier kernel is square-integrable, while the positive kernel is a finite integral of rank-one operators on each compact phase support. The Fourier-kernel and \(I\)-norm approximation proof in Proposition 22.6 applies here to compact base supports, and every compact positive cone field is again in \(D_{\mathbb R^n}\). Therefore \((a,S_\tau(a))\) is a section of that algebra with zero value \(a\). Contractivity extends it to every \(a\in C_0(\mathbb R^{2n})\), and positivity at every matrix level survives norm closure. This is the required completely positive section. \(\square\)
+
+On \(L^2(\mathbb R^n,\Lambda\mathbb C^n)\), with exterior degree grading, write \(\varepsilon_j\) and \(\iota_j\) for creation and contraction. The operator
+\[
+\mathcal Q_\tau=\sum_j
+\bigl((x_j+\tau\partial_j)\varepsilon_j
+ +(x_j-\tau\partial_j)\iota_j\bigr),\qquad \tau>0,
+\tag{22.18}
+\]
+has
+\[
+\mathcal Q_\tau^2=-\tau^2\Delta+|x|^2
+ +\tau(2N-n),\qquad N=\sum_j\varepsilon_j\iota_j.
+\tag{22.19}
+\]
+Its maximal weighted domain, essential self-adjointness, Hermite completeness and spectral gap are the explicit oscillator proof of [*Bott periodicity in KK: the Bott and Dirac elements*, Lemma 4.0 and the first Gaussian product](KT-KK-12.html#4-the-first-product-and-its-gaussian). The same proof after dilation applies for each \(\tau>0\). At \(\tau=1\), its only kernel is the even normalized scalar Gaussian; the next eigenvalue of its square is at least two.
+
+We verify that its graph projection is a section, including the unbounded spatial potential. This avoids an implicit compactification theorem for \(\mathbb R^n\).
+
+**Lemma 22.8 (heat kernels in the deformation algebra).** For each \(s>0\), the family \(e^{-s\mathcal Q_\tau^2}\) is a section of \(D_{\mathbb R^n}\) with zero value \(e^{-s(|x|^2+|\eta|^2)}\). The family \(\mathcal Q_\tau e^{-s\mathcal Q_\tau^2}\) is also a section, with zero value \((c(x)+f(\eta))e^{-s(|x|^2+|\eta|^2)}\), where \(c=\varepsilon+\iota\) and \(f=i(\varepsilon-\iota)\).
+
+**Proof.** The scalar kernel for \(-\tau^2\Delta+|x|^2\) is
+\[
+K_{s,\tau}(x,y)=
+(2\pi\tau\sinh(2\tau s))^{-n/2}
+\exp\!\left[-\frac{(|x|^2+|y|^2)\cosh(2\tau s)-2x\cdot y}
+ {2\tau\sinh(2\tau s)}\right].
+\tag{22.20}
+\]
+Here is a direct verification. Write its exponent as \(-a(s)(|x|^2+|y|^2)+b(s)x\cdot y\), where \(a=(2\tau)^{-1}\coth(2\tau s)\) and \(b=(\tau\sinh(2\tau s))^{-1}\). Differentiation gives \(a'=1-4\tau^2a^2=-\tau^2b^2\), \(b'=-4\tau^2ab\), and the logarithmic derivative of its prefactor is \(-2n\tau^2a\). Substitution into \(\partial_sK=(\tau^2\Delta_x-|x|^2)K\) proves that equation. Gaussian integration gives its row mass
+\((\cosh(2\tau s))^{-n/2}\exp[-\tanh(2\tau s)|x|^2/(2\tau)]\leq1\); symmetry gives the column bound. The elementary Schur estimate, obtained by Cauchy–Schwarz against each row measure and then integration in the other variable, makes the kernel operators contractions. As \(s\downarrow0\), the Gaussian mass approaches one near \(x=y\) and its tails vanish, so they converge to the identity on compactly supported smooth vectors. The family with this kernel equals the spectral heat semigroup: for the difference of the two solutions, the derivative of its squared Hilbert norm is \(-2\langle Hu,u\rangle\leq0\); start at a positive small time and let that time tend to zero. Smooth Gaussian truncations justify the maximal-domain calculation. Density and the contraction bound extend the identity to \(L^2\). Formula (22.19) multiplies the scalar kernel by the finite matrix \(e^{-s\tau(2N-n)}\).
+
+In tangent coordinates \(y=x-\tau v\), the Haar-normalized kernel is \(\tau^nK_{s,\tau}(x,x-\tau v)e^{-s\tau(2N-n)}\). Its scalar part is
+\[
+\left(\frac{\tau}{2\pi\sinh(2\tau s)}\right)^{n/2}
+\exp\!\left[-\frac{\tanh(\tau s)}{\tau}
+ |x-\tfrac{\tau v}{2}|^2-\frac{\tau\coth(\tau s)}4|v|^2\right].
+\tag{22.21}
+\]
+The ratios in this formula extend smoothly to \(\tau=0\). At zero it becomes
+\[
+(4\pi s)^{-n/2}\exp[-s|x|^2-|v|^2/(4s)],
+\tag{22.22}
+\]
+whose fibrewise Fourier transform is the asserted scalar symbol.
+
+For fixed \(s>0\), the two positive quadratic coefficients in (22.21) have positive lower bounds on \(0\leq\tau\leq1\). The change \((x,v)\mapsto(x-\tau v/2,v)\) and its inverse have uniformly bounded matrices there. Consequently the kernel, and each of the finitely many derivatives used below, are bounded by a polynomial times \(C_s e^{-c_s(|x|^2+|v|^2)}\), with \(c_s>0\). Cutting off both \(x\) and \(v\) therefore converges uniformly in the row and column \(I\)-norm integrals; inversion changes \(x\) to \(x-\tau v\) and leaves the same type of bound. The cut-off functions are compact groupoid kernels. Thus (22.21) defines a section of its C*-algebra.
+
+On every compact \(s\)-interval inside \((0,\infty)\), these majorants and their first \(s\)-derivatives are uniform. Dominated convergence in the two \(I\)-integrals therefore proves norm continuity in \(s\), as required for the integrals below.
+
+Apply \(\mathcal Q_\tau\) to the left kernel variable, holding \(y\) fixed. In \((x,v)\) coordinates the derivative \(\tau\partial_x\) is \(\tau\partial_x+\partial_v\). Its application to (22.21) is another polynomial Gaussian with the same uniform cutoff bounds. At zero Fourier transformation takes \(\partial_v\) to \(i\eta\); hence the zero symbol is \(c(x)+f(\eta)\) times the scalar heat symbol. This proves the second assertion, with its sign. \(\square\)
+
+**Theorem 22.9 (the Euclidean Bott inverse).** With the outward Bott position symbol \(c(x)+f(\eta)\), the E-theory index of \(\mathbb R^n\), followed by Morita equivalence, is the inverse of that Bott element.
+
+**Proof.** Spectral calculus gives uniformly in \(0\leq\tau\leq1\)
+\[
+\|e^{-s\mathcal Q_\tau^2}\|\leq1,\qquad
+\|\mathcal Q_\tau e^{-s\mathcal Q_\tau^2}\|
+\leq(2es)^{-1/2}.
+\]
+Thus the norm-convergent integrals
+\[
+R=\int_0^\infty e^{-s}e^{-s\mathcal Q^2}\,ds,\qquad
+V=\int_0^\infty e^{-s}\mathcal Q e^{-s\mathcal Q^2}\,ds
+\tag{22.23}
+\]
+are sections in the matrix algebra over \(D_{\mathbb R^n}\). At positive parameters they are \((1+\mathcal Q_\tau^2)^{-1}\) and \(\mathcal Q_\tau(1+\mathcal Q_\tau^2)^{-1}\); the zero values are the same rational functions of \(c(x)+f(\eta)\).
+
+Let \(A_\tau\) denote the part of \(\mathcal Q_\tau\) from even to odd forms, and let \(R_+\), \(R_-\) be the two diagonal blocks of \(R\). The projection
+\[
+P_\tau=
+\begin{pmatrix}
+R_{+,\tau}&(A_\tau R_{+,\tau})^*\\
+A_\tau R_{+,\tau}&1-R_{-,\tau}
+\end{pmatrix},
+\qquad P_\infty=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+\tag{22.24}
+\]
+is the graph projection. Its difference from \(P_\infty\) belongs to a matrix algebra over \(D_{\mathbb R^n}\), by (22.23). The inverse-resolvent identities prove \(P_\tau^2=P_\tau=P_\tau^*\) at every fibre, and joint faithfulness proves the identities in the algebra. At zero this is exactly the graph class of the outward Bott symbol with coordinate \(x+i\eta\), by the relative multiplication-cycle construction in Theorems RK.3–RK.4 of the earlier difference-bundle lesson. Call that class \(\beta_n\).
+
+At one, replace \(A_1\) by \(\lambda A_1\), \(1\leq\lambda<\infty\). On its kernel the projection is fixed; on the kernel complement the spectral gap from (22.19) makes the two inverse-resolvent blocks tend to zero and the off-diagonal block tend to zero in norm. The even kernel has rank one and the odd kernel is zero. Thus the relative graph projection has K-class \(+1\) in the compact operators. Therefore the KK morphism
+\[
+\delta_n=[e_0]^{-1}[e_1]\,m_{L^2\mathbb R^n}
+\in KK(C_0(\mathbb R^{2n}),\mathbb C)
+\tag{22.25}
+\]
+satisfies \(\beta_n\delta_n=1_{\mathbb C}\).
+
+Lemma 22.7 and actual semisplit KK exactness justify the inverse in (22.25). The outward Bott element already has a proved two-sided KK inverse \(\eta_n\), from the Bott/Clifford Morita proofs, with precisely the convention fixed in the preceding index lesson's Euclidean calculation. Consequently
+\(\delta_n=(\eta_n\beta_n)\delta_n=\eta_n(\beta_n\delta_n)=\eta_n\).
+This is a bivariant equality; it is not a classification of E-classes by one integer. Lemma 22.5 gives \(\operatorname{Ind}^E_{\mathbb R^n}=\mathfrak c(\delta_n)\). Applying the product-preserving functor to the actual two KK inverse identities proves both E inverse identities. For \(n=0\) this is the identity class of a point. \(\square\)
+
+The usual Weyl quantization deformation of \(C_0(\mathbb R^{2n})\) is another presentation of this Euclidean index class. Its presentation by Weyl kernels is stated here; (22.16)–(22.25) prove the index and Bott normalization using the displayed positive and heat kernels.
+
+## 5. Embeddings and normal deformation
+
+For a smooth embedding \(i:M\hookrightarrow N\), the deformation description uses two groupoids. The first is the vector translation groupoid
+\[
+J_i=i^*TN\rtimes_{di}TM,\qquad
+r(x,\zeta,v)=(x,\zeta),\quad
+s(x,\zeta,v)=(x,\zeta+di_xv).
+\tag{22.26}
+\]
+Scaling the action by \(\tau\) gives zero algebra
+\(C_0(T^*M\oplus i^*TN)\) and positive algebra \(C^*(J_i)\).
+The second has positive arrows \(N\times M\times M\), and zero arrows \(J_i\). In local coordinates, its arrows approaching zero are
+\[
+(X,\zeta,V,\tau)\longmapsto
+(i(X)+\tau\zeta,X,X-\tau V,\tau).
+\tag{22.27}
+\]
+The source's normal coordinate tends to \(\zeta+di_XV\), since
+\[
+\frac{i(X)+\tau\zeta-i(X-\tau V)}{\tau}
+=\zeta+\int_0^1di_{X-s\tau V}V\,ds.
+\tag{22.28}
+\]
+Thus the sign and source in (22.26) are fixed by the actual boundary chart, not by a choice of abstract normal-bundle notation. At positive parameter the pair factor gives \(C_0(N)\otimes\mathcal K(L^2M)\). The corresponding Haar factor is \(\tau^{-\dim M}\).
+
+The chart, Haar, fibre and continuity proofs for these two deformations are the explicit linear and differential-groupoid proofs in [*The tangent groupoid and deformation to the normal cone*, “Deformation classes and wrong-way maps”](../KT-CP/KT-CP-17.html). Apply Theorem 22.2 to their cone extensions, rather than inferring a KK equivalence for an arbitrary extension. This gives
+\[
+\theta_i\in E(C_0(T^*M\oplus i^*TN),C^*(J_i)),\qquad
+\gamma_i\in E(C^*(J_i),C_0(N)\otimes\mathcal K).
+\tag{22.29}
+\]
+A full K-orientation, including its determinant line and grading, supplies the Thom factor on \(T^*M\oplus i^*TN\) in the convention of *Wrong-way maps for K-oriented maps*. Combining that factor, (22.29) and the stable pair-algebra corner gives the deformation formulation of the oriented embedding class.
+
+We state the comparison with the wrong-way class of that lesson: the resulting E-class is \(\mathfrak c(i!)\), with the same full orientation. The proof of this deformation comparison is not given here and it is not an input to (22.5), (22.14), (22.15) or (22.25). Its free primary locator is Connes's author edition, Chapter II, Section 6, Propositions 1 and 3 and Theorem 7. The manifold construction, composition and projection formulas themselves are the complete proofs of the preceding wrong-way lesson.
+
+The E-theoretic assembly map is a further use of deformation classes. Its general construction and theorems for groups or groupoids are named here only; none is used to establish the analytic index above.
+
+## 6. Exercises and complete solutions
+
+**Exercise 1.** For a point-norm continuous path \(h_s:A\to B\) of homomorphisms, construct its deformation extension and compute the E-class. Determine when the most direct construction is a continuous field.
+
+**Solution.** Put
+\[
+D_h=\{(a,b)\in A\oplus C([0,1],B):b(0)=h_0(a)\}.
+\tag{22.30}
+\]
+Projection onto \(a\) is onto, with kernel \(C_0((0,1],B)\). The continuous lift \((a,s\mapsto h_s(a))\) makes (22.5) equal to \(h_{1/t}\). This is asymptotically equivalent to \(h_0\), because \(h_s(a)\to h_0(a)\) at every \(a\). The given ordinary homomorphism path, suspended and stabilized, identifies \(h_0\) with \(h_1\). Hence \(d_{D_h}\) is the endpoint homomorphism class.
+
+For this direct field, the positive fibre norm of \((a,b)\) tends to \(\|h_0(a)\|\), whereas the zero fibre norm is \(\|a\|\). It is a continuous field precisely when \(h_0\) is isometric. An injective C*-homomorphism is isometric by the faithful C*-representation norm theorem. If \(h_0\) has a nonzero kernel, \((a,0)\) for such an \(a\) exhibits a norm jump. In particular a constant zero path on \(A=\mathbb C\) is a counterexample to an unrestricted continuous-field assertion. The deformation-extension construction and its E-class above still apply. This distinction supplies the hypothesis required by the continuous-field version of the exercise.
+
+**Exercise 2.** Construct the tangent-groupoid asymptotic morphism using a continuous section of zero evaluation.
+
+**Solution.** Apply the countable weighted lift and residual series (22.3)–(22.4) to \(e_0:D_M\to C_0(T^*M)\). For \(a\), evaluate its lifted section at \(\tau=1/t\) in the pair-kernel representation on \(L^2M\). Its multiplication error is exactly
+\[
+e_{1/t}\bigl(\sigma(ab)-\sigma(a)\sigma(b)\bigr),
+\]
+whose interior section is in \(C_0((0,1],\mathcal K(L^2M))\). Its norm tends to zero; linearity and adjoint errors have the identical proof. The suspension is the pointwise section \(u\mapsto\sigma(f(u))\), whose errors converge uniformly by compact range and finite norm nets. Compose with a rank-one corner. Another continuous section differs in the same cone ideal and gives the same class. This is a family on every symbol, not just on a smooth dense subalgebra.
+
+**Exercise 3.** Compute the tangent deformation of a point.
+
+**Solution.** There is one arrow at every parameter, all structure maps are identity, and its Haar measure is one. The algebra is \(C([0,1])\), with zero evaluation and positive scalar evaluation; its ideal is \(C_0((0,1])\). Choose the constant lift of a scalar. The family (22.5) is the identity of \(\mathbb C\). Its suspension and stable corner are the identity E-class. Its K-map is \(1\mapsto1\) on \(\mathbb Z\), with the even rank-one convention.
+
+**Exercise 4.** Identify the Euclidean E-index as the inverse of the outward Bott element.
+
+**Solution.** Lemma 22.7 makes the zero evaluation a KK-equivalence. Lemma 22.8 and (22.23)–(22.24) lift the outward Bott graph projection. Its positive evaluation has exactly one even Gaussian, no odd kernel and a gap on the complement, so the rescaling graph homotopy gives \(\beta_n\delta_n=1\). The actual two-sided KK Bott inverse \(\eta_n\) forces \(\delta_n=\eta_n\) by inverse uniqueness. Formula (22.10) and Lemma 22.5 identify the direct E-deformation class with \(\mathfrak c(\delta_n)\). Thus both its products with \(\mathfrak c(\beta_n)\) are the corresponding identity E-classes. Exterior grading and the complex coordinate \(x+i\eta\) fix the positive sign; using the ordered right-odd coordinate convention would require the simultaneous sign conversion of the element and its inverse.
+
+## What this lesson does not prove
+
+The general deformation comparison for manifold wrong-way maps is stated in Section 5. The Weyl presentation and E-theoretic assembly are further viewpoints, not proof premises. The analytic index of an uncontrolled elliptic operator on a noncompact manifold is not asserted. Theorems 22.2, 22.4, 22.6 and 22.9 establish the actual deformation class, its K-action, the closed operator index and the Euclidean bivariant inverse.
+
+## Free mathematical reading
+
+A. Connes, [*Noncommutative Geometry*, freely posted author edition](https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf), Chapter II, Section 5 and Appendix B, for the tangent-groupoid and asymptotic deformation construction; Section 6 for the normal-deformation viewpoint.
+
+Y. Li, [*Groupoid C*-algebras*, open Leiden seminar notes, 7 February 2024](https://liyuezhao.github.io/notes/groupoid_notes.pdf), Section 11, for tangent groupoids and the two index maps.
+
+B. Blackadar, [*K-Theory for Operator Algebras*, author-posted corrected second edition](https://www.bruceblackadar.com/Mathematics/book6.pdf), Section 25.5, for extension classes in E-theory. The direct proofs above distinguish arbitrary deformation extensions from semisplit KK comparisons.

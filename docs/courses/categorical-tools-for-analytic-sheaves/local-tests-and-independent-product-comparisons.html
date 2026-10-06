@@ -1,0 +1,483 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local tests and independent product comparisons</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort. A separate scoped model check covers the local-test and independent-product arguments, their specified prerequisite interfaces and the four exercise solutions. It does not add a whole-lesson or whole-course review. Original exposition uses CC0 1.0; linked complete proofs retain their stated terms.</p><h1 id="local-tests-and-independent-product-comparisons">Local tests and independent product comparisons</h1>
+<p><em>Written and self-checked with GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition: CC0. Linked complete proofs retain their stated terms.</em></p>
+<p>A cofinal family of test objects can detect whether an index change preserves colimits. A different local test detects whether an index category is filtered. Products introduce a second kind of indexing: each coordinate may need its own stage. We will construct the relevant comparison maps and keep those independent stages throughout.</p>
+<h2 id="1-conventions-and-complete-prerequisites">1. Conventions and complete prerequisites</h2>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, with choice, inside a larger ambient universe. For products and filtered colimits, <em>small</em> means <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Categories and their full object and arrow data are ambient sets; a category can be locally small without being small. Write <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span> for <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small sets. All rings are associative and unital, and modules are unital left modules. For each module application, choose the working universe to contain the ring and module data. No field or commutativity hypothesis is imposed on the ring.</p>
+<p>A category <span class="math" data-tex="\(I\)">\(I\)</span> is <strong>filtered</strong> if it is nonempty, any two objects have a common target, and any two parallel arrows are equalized by postcomposition. A category is <strong>connected</strong> if it is nonempty and any two objects are joined by a finite zigzag of arrows in either direction. For <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span>, <strong>cofinality</strong> means that every incoming comma category <span class="math" data-tex="\((i\downarrow\phi)\)">\((i\downarrow\phi)\)</span>, whose objects carry an arrow <span class="math" data-tex="\(i\to\phi(j)\)">\(i\to\phi(j)\)</span>, is connected.</p>
+<p>We use these complete proofs:</p>
+<ul>
+<li><a href="filtered-stages-and-finite-limits.html#4-finite-limits-detect-filteredness">Filtered stages and finite limits, Sections 1, 2 and 4</a> proves the finite-cocone and element-equality criteria, and proves that a small <span class="math" data-tex="\(I\)">\(I\)</span> is filtered exactly when <span class="math" data-tex="\(\operatorname{colim}_I:\operatorname{Fun}(I,\mathsf{Set})\to\mathsf{Set}\)">\(\operatorname{colim}_I:\operatorname{Fun}(I,\mathsf{Set})\to\mathsf{Set}\)</span> preserves finite limits.</li>
+<li><a href="change-an-index-without-changing-universal-maps.html#2-extend-every-cocone">Change an index without changing universal maps, Sections 2 and 3</a> proves the canonical cofinal colimit comparison, its naturality, and its converse for set-valued diagrams.</li>
+<li><a href="extending-diagrams-by-universal-maps.html#3-build-the-left-extension">Extending diagrams by universal maps, Sections 3 and 7</a> proves the outgoing-comma construction of a left Kan extension and its natural total-colimit comparison.</li>
+<li><a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families and universal cones, Sections 2, 4 and 6</a> supplies the specified structural-map comparisons, pointwise limits and colimits of functors, and the preservation comparisons. <a href="natural-transformations-and-composition-of-functors.html#2-change-the-values-of-a-diagram">Natural transformations, Lemma 2.1</a> supplies the natural inverse of a componentwise isomorphism.</li>
+<li><a href="products-disjoint-unions-and-mixed-functors.html#1-independent-coordinates">Products, disjoint unions and mixed functors, Section 1</a> proves product-category and product-functor laws, including empty products and the size bounds. <a href="limits-and-colimits-of-formal-objects.html#2-independent-product-indices">Limits and colimits of formal objects, Section 2</a> proves small-family product filteredness and the complete independent-index comparison for sets, using choice.</li>
+</ul>
+<p>Here and below, preservation concerns the map characterized by the given projections or coprojections.</p>
+<p><strong>Proposition 1.1 (the module finite-limit interface).</strong> For every small filtered <span class="math" data-tex="\(I\)">\(I\)</span> and unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, the module-colimit functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_I:\operatorname{Fun}(I,\operatorname{Mod}(R))
+\longrightarrow\operatorname{Mod}(R)
+\]">\[
+\operatorname{colim}_I:\operatorname{Fun}(I,\operatorname{Mod}(R))
+\longrightarrow\operatorname{Mod}(R)
+\]</span>
+<p>preserves every finite limit, including the terminal zero object.</p>
+<p><strong>Proof from complete prerequisites.</strong> The source is abelian with pointwise exactness by <a href="pointwise-abelian-structure-and-natural-splittings.html#2-why-all-diagrams-form-an-abelian-category">Pointwise abelian structure, Section 2</a>. The stronger complete proof in <a href="hom-tensor-and-the-exactness-of-module-limits.html#4-filtered-colimits-preserve-homology-and-exactness">Hom, tensor and module limits, Sections 3 and 4</a> makes this colimit functor additive and exact for arbitrary filtered categories and left modules. Its ground-ring convention permits every unital <span class="math" data-tex="\(R\)">\(R\)</span>: take the central <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-algebra structure checked in <a href="products-disjoint-unions-and-mixed-functors.html#5-two-module-examples-and-a-topological-contrast">Products and mixed functors, Section 5</a>. The complete kernel-to-finite-limit argument in <a href="testing-exactness-with-doubled-objects.html#3-testing-one-side-of-exactness">Testing exactness, Theorem 3.1</a> then applies.</p>
+<p>For a finite diagram <span class="math" data-tex="\(\ell\mapsto M_\ell\)">\(\ell\mapsto M_\ell\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span>-diagrams, the assertion is invertibility of the actual map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (1.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_i\bigl(\lim_\ell M_\ell(i)\bigr)
+\longrightarrow
+\lim_\ell\bigl(\operatorname{colim}_i M_\ell(i)\bigr).
+\tag{1.1}
+\]">\[
+\operatorname{colim}_i\bigl(\lim_\ell M_\ell(i)\bigr)
+\longrightarrow
+\lim_\ell\bigl(\operatorname{colim}_i M_\ell(i)\bigr).
+\tag{1.1}
+\]</span>
+<p>It is induced by the images of the limiting projections. The cited preservation test identifies precisely this map and gives naturality in the finite diagram. For an empty finite shape both objects are zero. No second module-colimit construction is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-outgoing-commas-for-the-local-tests">2. Outgoing commas for the local tests</h2>
+<p>Let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\phi:J\longrightarrow I,\qquad \psi:K\longrightarrow I,
+\]">\[
+\phi:J\longrightarrow I,\qquad \psi:K\longrightarrow I,
+\]</span>
+<p>and assume that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is cofinal. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, put</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+J_i=(\phi\downarrow i),\qquad I_i=I/i.
+\]">\[
+J_i=(\phi\downarrow i),\qquad I_i=I/i.
+\]</span>
+<p>Thus an object of <span class="math" data-tex="\(J_i\)">\(J_i\)</span> is <span class="math" data-tex="\((j,t:\phi(j)\to i)\)">\((j,t:\phi(j)\to i)\)</span>, and an arrow <span class="math" data-tex="\(s:(j,t)\to(j&#x27;,t&#x27;)\)">\(s:(j,t)\to(j&#x27;,t&#x27;)\)</span> satisfies <span class="math" data-tex="\(t&#x27;\phi(s)=t\)">\(t&#x27;\phi(s)=t\)</span>. Write <span class="math" data-tex="\(p_i:J_i\to J\)">\(p_i:J_i\to J\)</span> for its forgetful functor. An object of <span class="math" data-tex="\(I_i\)">\(I_i\)</span> is <span class="math" data-tex="\((a,v:a\to i)\)">\((a,v:a\to i)\)</span>, with forgetful functor <span class="math" data-tex="\(q_i:I_i\to I\)">\(q_i:I_i\to I\)</span>.</p>
+<p>There is an induced functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.1); horizontal scroll when needed" data-tex="\[
+F_i:J_i\longrightarrow I_i,\qquad
+F_i(j,t)=(\phi(j),t),\qquad F_i(s)=\phi(s).
+\tag{2.1}
+\]">\[
+F_i:J_i\longrightarrow I_i,\qquad
+F_i(j,t)=(\phi(j),t),\qquad F_i(s)=\phi(s).
+\tag{2.1}
+\]</span>
+<p>The triangle equation for <span class="math" data-tex="\(s\)">\(s\)</span> is exactly the slice-arrow equation for <span class="math" data-tex="\(\phi(s)\)">\(\phi(s)\)</span>, so the functor is well-defined and has <span class="math" data-tex="\(q_iF_i=\phi p_i\)">\(q_iF_i=\phi p_i\)</span>. For <span class="math" data-tex="\(h:i\to i&#x27;\)">\(h:i\to i&#x27;\)</span>, postcomposition defines <span class="math" data-tex="\(h_*:J_i\to J_{i&#x27;}\)">\(h_*:J_i\to J_{i&#x27;}\)</span> and <span class="math" data-tex="\(h_*:I_i\to I_{i&#x27;}\)">\(h_*:I_i\to I_{i&#x27;}\)</span>. These preserve the underlying <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(a\)">\(a\)</span>, and arrows, and satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (2.2); horizontal scroll when needed" data-tex="\[
+F_{i&#x27;}h_*=h_*F_i.
+\tag{2.2}
+\]">\[
+F_{i&#x27;}h_*=h_*F_i.
+\tag{2.2}
+\]</span>
+<p>Cofinality of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> uses incoming commas <span class="math" data-tex="\(((a,v)\downarrow F_i)\)">\(((a,v)\downarrow F_i)\)</span>. The categories <span class="math" data-tex="\(J_i\)">\(J_i\)</span> themselves are outgoing commas. Keeping these two directions separate is essential.</p>
+<p><strong>Theorem 2.1 (two local descent tests).</strong></p>
+<ol>
+<li>If <span class="math" data-tex="\(F_{\psi(k)}\)">\(F_{\psi(k)}\)</span> is cofinal for every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, then <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal.</li>
+<li>If <span class="math" data-tex="\(K\)">\(K\)</span> and every <span class="math" data-tex="\(J_{\psi(k)}\)">\(J_{\psi(k)}\)</span> are filtered, then <span class="math" data-tex="\(J\)">\(J\)</span> is filtered.</li>
+</ol>
+<p>The second assertion has no local cofinality assumption on <span class="math" data-tex="\(F_{\psi(k)}\)">\(F_{\psi(k)}\)</span>. The first has no filteredness assumption.</p>
+<p>For the proof, choose one larger universe <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> containing the complete data of <span class="math" data-tex="\(I,J,K\)">\(I,J,K\)</span>. These categories and their comma categories are small there. Set-valued diagrams in Sections 3 and 4 have values in <span class="math" data-tex="\(\mathsf{Set}_{\mathcal V}\)">\(\mathsf{Set}_{\mathcal V}\)</span>, so the cited set-colimit theorems apply. The conclusions are intrinsic: they concern comma objects, arrows, finite zigzags and finite cocones. They therefore hold for the original categories. This enlargement makes no claim that these potentially larger colimits are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; see <a href="change-an-index-without-changing-universal-maps.html#4-compose-and-cancel-index-changes">the complete ambient-size argument</a>.</p>
+<h2 id="3-descending-cofinality-through-a-test-family">3. Descending cofinality through a test family</h2>
+<p>Let <span class="math" data-tex="\(\alpha:I\to\mathsf{Set}_{\mathcal V}\)">\(\alpha:I\to\mathsf{Set}_{\mathcal V}\)</span>. Define functors on <span class="math" data-tex="\(I\)">\(I\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.1); horizontal scroll when needed" data-tex="\[
+B(i)=\operatorname{colim}_{J_i}\alpha\phi p_i,\qquad
+C(i)=\operatorname{colim}_{I_i}\alpha q_i.
+\tag{3.1}
+\]">\[
+B(i)=\operatorname{colim}_{J_i}\alpha\phi p_i,\qquad
+C(i)=\operatorname{colim}_{I_i}\alpha q_i.
+\tag{3.1}
+\]</span>
+<p>Write their coprojections as</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+b^i_{j,t}:\alpha(\phi(j))\to B(i),\qquad
+c^i_{a,v}:\alpha(a)\to C(i).
+\]">\[
+b^i_{j,t}:\alpha(\phi(j))\to B(i),\qquad
+c^i_{a,v}:\alpha(a)\to C(i).
+\]</span>
+<p>The outgoing-comma Kan construction cited above gives their action by postcomposition:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.2); horizontal scroll when needed" data-tex="\[
+B(h)b^i_{j,t}=b^{i&#x27;}_{j,ht},\qquad
+C(h)c^i_{a,v}=c^{i&#x27;}_{a,hv}.
+\tag{3.2}
+\]">\[
+B(h)b^i_{j,t}=b^{i&#x27;}_{j,ht},\qquad
+C(h)c^i_{a,v}=c^{i&#x27;}_{a,hv}.
+\tag{3.2}
+\]</span>
+<p>It also identifies <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(\operatorname{Lan}_\phi(\alpha\phi)\)">\(\operatorname{Lan}_\phi(\alpha\phi)\)</span>.</p>
+<p>The functor <span class="math" data-tex="\(F_i\)">\(F_i\)</span> induces a canonical map <span class="math" data-tex="\(d_i:B(i)\to C(i)\)">\(d_i:B(i)\to C(i)\)</span> with</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.3); horizontal scroll when needed" data-tex="\[
+d_i b^i_{j,t}=c^i_{\phi(j),t}.
+\tag{3.3}
+\]">\[
+d_i b^i_{j,t}=c^i_{\phi(j),t}.
+\tag{3.3}
+\]</span>
+<p>Equations (2.2) and (3.2), tested on all coprojections, give <span class="math" data-tex="\(C(h)d_i=d_{i&#x27;}B(h)\)">\(C(h)d_i=d_{i&#x27;}B(h)\)</span>. Thus <span class="math" data-tex="\(d:B\to C\)">\(d:B\to C\)</span> is natural. If <span class="math" data-tex="\(F_{\psi(k)}\)">\(F_{\psi(k)}\)</span> is cofinal, its canonical colimit comparison <span class="math" data-tex="\(d_{\psi(k)}\)">\(d_{\psi(k)}\)</span> is an isomorphism.</p>
+<p>The object <span class="math" data-tex="\((i,1_i)\)">\((i,1_i)\)</span> is terminal in <span class="math" data-tex="\(I/i\)">\(I/i\)</span>. Consequently the canonical slice-colimit map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.4); horizontal scroll when needed" data-tex="\[
+r_i:C(i)\longrightarrow\alpha(i),\qquad
+r_i c^i_{a,v}=\alpha(v)
+\tag{3.4}
+\]">\[
+r_i:C(i)\longrightarrow\alpha(i),\qquad
+r_i c^i_{a,v}=\alpha(v)
+\tag{3.4}
+\]</span>
+<p>is an isomorphism. This is the identity-functor instance of the same Kan construction; its inverse is <span class="math" data-tex="\(c^i_{i,1_i}\)">\(c^i_{i,1_i}\)</span>. The coprojection equations give naturality of <span class="math" data-tex="\(r:C\to\alpha\)">\(r:C\to\alpha\)</span>.</p>
+<p>For any <span class="math" data-tex="\(E:I\to\mathsf{Set}_{\mathcal V}\)">\(E:I\to\mathsf{Set}_{\mathcal V}\)</span>, denote the cofinal comparison for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e_E:\operatorname{colim}_K E\psi\longrightarrow\operatorname{colim}_I E.
+\]">\[
+e_E:\operatorname{colim}_K E\psi\longrightarrow\operatorname{colim}_I E.
+\]</span>
+<p>The complete total-Kan comparison gives an isomorphism <span class="math" data-tex="\(a_\phi\)">\(a_\phi\)</span> characterized by its unit coprojections. We now have five natural isomorphisms:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (3.5); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+\operatorname{colim}_J\alpha\phi
+&amp;\xrightarrow{a_\phi}\operatorname{colim}_I B\\
+&amp;\xrightarrow{e_B^{-1}}\operatorname{colim}_K B\psi\\
+&amp;\xrightarrow{\operatorname{colim}_K(d\psi)}
+  \operatorname{colim}_K C\psi\\
+&amp;\xrightarrow{\operatorname{colim}_K(r\psi)}
+  \operatorname{colim}_K\alpha\psi\\
+&amp;\xrightarrow{e_\alpha}\operatorname{colim}_I\alpha.
+\end{aligned}
+\tag{3.5}
+\]">\[
+\begin{aligned}
+\operatorname{colim}_J\alpha\phi
+&amp;\xrightarrow{a_\phi}\operatorname{colim}_I B\\
+&amp;\xrightarrow{e_B^{-1}}\operatorname{colim}_K B\psi\\
+&amp;\xrightarrow{\operatorname{colim}_K(d\psi)}
+\operatorname{colim}_K C\psi\\
+&amp;\xrightarrow{\operatorname{colim}_K(r\psi)}
+\operatorname{colim}_K\alpha\psi\\
+&amp;\xrightarrow{e_\alpha}\operatorname{colim}_I\alpha.
+\end{aligned}
+\tag{3.5}
+\]</span>
+<p>The first uses <a href="extending-diagrams-by-universal-maps.html#7-total-assembly-and-total-compatibility">total Kan assembly, Proposition 7.1</a>. The second and fifth use cofinality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>; the third uses the local hypothesis; the fourth uses the terminal slice. Naturality in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> follows from the cited Kan and cofinal comparisons and from (3.3)-(3.4).</p>
+<p>We must identify the composite with the canonical comparison for <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Let <span class="math" data-tex="\(\iota_j:\alpha(\phi(j))\to\operatorname{colim}_J\alpha\phi\)">\(\iota_j:\alpha(\phi(j))\to\operatorname{colim}_J\alpha\phi\)</span>, and let <span class="math" data-tex="\(\tau_i:B(i)\to\operatorname{colim}_I B\)">\(\tau_i:B(i)\to\operatorname{colim}_I B\)</span>. The first map satisfies</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+a_\phi\iota_j=\tau_{\phi(j)}b^{\phi(j)}_{j,1}.
+\]">\[
+a_\phi\iota_j=\tau_{\phi(j)}b^{\phi(j)}_{j,1}.
+\]</span>
+<p>Cofinality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> supplies an incoming-comma object <span class="math" data-tex="\((k,h:\phi(j)\to\psi(k))\)">\((k,h:\phi(j)\to\psi(k))\)</span>. If <span class="math" data-tex="\(\kappa_k:B(\psi(k))\to\operatorname{colim}_K B\psi\)">\(\kappa_k:B(\psi(k))\to\operatorname{colim}_K B\psi\)</span>, then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+e_B\kappa_k b^{\psi(k)}_{j,h}
+=\tau_{\psi(k)}B(h)b^{\phi(j)}_{j,1}
+=\tau_{\phi(j)}b^{\phi(j)}_{j,1}.
+\]">\[
+e_B\kappa_k b^{\psi(k)}_{j,h}
+=\tau_{\psi(k)}B(h)b^{\phi(j)}_{j,1}
+=\tau_{\phi(j)}b^{\phi(j)}_{j,1}.
+\]</span>
+<p>Thus the inverse second map carries <span class="math" data-tex="\(a_\phi\iota_j\)">\(a_\phi\iota_j\)</span> to <span class="math" data-tex="\(\kappa_k b^{\psi(k)}_{j,h}\)">\(\kappa_k b^{\psi(k)}_{j,h}\)</span>. The third and fourth maps carry its inner coprojection to <span class="math" data-tex="\(\alpha(h)\)">\(\alpha(h)\)</span>, by (3.3)-(3.4). The final map therefore yields</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\alpha(\phi(j))
+\xrightarrow{\alpha(h)}\alpha(\psi(k))
+\longrightarrow\operatorname{colim}_I\alpha,
+\]">\[
+\alpha(\phi(j))
+\xrightarrow{\alpha(h)}\alpha(\psi(k))
+\longrightarrow\operatorname{colim}_I\alpha,
+\]</span>
+<p>which is the original coprojection at <span class="math" data-tex="\(\phi(j)\)">\(\phi(j)\)</span>, by its cocone equation. This proves the required equality on every <span class="math" data-tex="\(\iota_j\)">\(\iota_j\)</span>. The composite (3.5) is exactly the comparison for <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, so it is bijective for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The complete <a href="change-an-index-without-changing-universal-maps.html#3-six-tests-for-the-same-property">set-colimit converse, Theorem 3.1</a> proves that <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal. This proves Theorem 2.1(1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-descending-filteredness-through-outgoing-commas">4. Descending filteredness through outgoing commas</h2>
+<p>Now let <span class="math" data-tex="\(\beta:J\to\mathsf{Set}_{\mathcal V}\)">\(\beta:J\to\mathsf{Set}_{\mathcal V}\)</span>, and define</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.1); horizontal scroll when needed" data-tex="\[
+T(\beta)(k)=\operatorname{colim}_{J_{\psi(k)}}\beta p_{\psi(k)}.
+\tag{4.1}
+\]">\[
+T(\beta)(k)=\operatorname{colim}_{J_{\psi(k)}}\beta p_{\psi(k)}.
+\tag{4.1}
+\]</span>
+<p>Its action on an arrow of <span class="math" data-tex="\(K\)">\(K\)</span> is the postcomposition action from Section 2, followed by the induced colimit map. Its action on a transformation of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is the induced map on each local colimit. The complete Kan functor laws identify</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+T=\psi^*\operatorname{Lan}_\phi:
+\operatorname{Fun}(J,\mathsf{Set}_{\mathcal V})
+\longrightarrow\operatorname{Fun}(K,\mathsf{Set}_{\mathcal V}).
+\]">\[
+T=\psi^*\operatorname{Lan}_\phi:
+\operatorname{Fun}(J,\mathsf{Set}_{\mathcal V})
+\longrightarrow\operatorname{Fun}(K,\mathsf{Set}_{\mathcal V}).
+\]</span>
+<p>Total Kan assembly and cofinality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> give a natural isomorphism of functors</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.2); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_J
+\simeq
+\operatorname{colim}_K\,T.
+\tag{4.2}
+\]">\[
+\operatorname{colim}_J
+\simeq
+\operatorname{colim}_K\,T.
+\tag{4.2}
+\]</span>
+<p>Its maps are the total-Kan comparison followed by the inverse cofinal comparison for <span class="math" data-tex="\(\operatorname{Lan}_\phi\beta\)">\(\operatorname{Lan}_\phi\beta\)</span>. These two maps exist for every <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and their naturality is part of the complete providers. No cofinality of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> is used here.</p>
+<p>Assume every <span class="math" data-tex="\(J_{\psi(k)}\)">\(J_{\psi(k)}\)</span> is filtered. For a finite diagram <span class="math" data-tex="\(\ell\mapsto\beta_\ell\)">\(\ell\mapsto\beta_\ell\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>-diagrams, the component at <span class="math" data-tex="\(k\)">\(k\)</span> of the finite-limit comparison for <span class="math" data-tex="\(T\)">\(T\)</span> is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.3); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{J_{\psi(k)}}
+ \bigl(\lim_\ell\beta_\ell\bigr)p_{\psi(k)}
+\longrightarrow
+\lim_\ell
+ \operatorname{colim}_{J_{\psi(k)}}\beta_\ell p_{\psi(k)}.
+\tag{4.3}
+\]">\[
+\operatorname{colim}_{J_{\psi(k)}}
+\bigl(\lim_\ell\beta_\ell\bigr)p_{\psi(k)}
+\longrightarrow
+\lim_\ell
+\operatorname{colim}_{J_{\psi(k)}}\beta_\ell p_{\psi(k)}.
+\tag{4.3}
+\]</span>
+<p>Restriction computes the limit pointwise, and the local index is small and filtered in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. The complete filtered-set finite-limit theorem therefore makes (4.3) an isomorphism. It is the canonical comparison, so it is natural in <span class="math" data-tex="\(k\)">\(k\)</span> and in the finite diagram: this follows from its projection and coprojection equations. The componentwise natural-inverse criterion makes it an isomorphism of <span class="math" data-tex="\(K\)">\(K\)</span>-diagrams. Thus <span class="math" data-tex="\(T\)">\(T\)</span> preserves finite limits.</p>
+<p>If <span class="math" data-tex="\(K\)">\(K\)</span> is filtered, <span class="math" data-tex="\(\operatorname{colim}_K\)">\(\operatorname{colim}_K\)</span> preserves finite limits as well. Their composite does so. To identify the comparison under (4.2), name that natural isomorphism <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span>, put <span class="math" data-tex="\(L=\lim_\ell\beta_\ell\)">\(L=\lim_\ell\beta_\ell\)</span>, and denote the finite-limit comparisons for <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(\operatorname{colim}_J\)">\(\operatorname{colim}_J\)</span>, and <span class="math" data-tex="\(\operatorname{colim}_K\)">\(\operatorname{colim}_K\)</span> by <span class="math" data-tex="\(\gamma_T,\Gamma_J,\Gamma_K\)">\(\gamma_T,\Gamma_J,\Gamma_K\)</span>. Then</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (4.4); horizontal scroll when needed" data-tex="\[
+\bigl(\lim_\ell\Theta_{\beta_\ell}\bigr)\Gamma_J
+=
+\Gamma_K\,
+\operatorname{colim}_K(\gamma_T)\,
+\Theta_L.
+\tag{4.4}
+\]">\[
+\bigl(\lim_\ell\Theta_{\beta_\ell}\bigr)\Gamma_J
+=
+\Gamma_K\,
+\operatorname{colim}_K(\gamma_T)\,
+\Theta_L.
+\tag{4.4}
+\]</span>
+<p>Both sides map <span class="math" data-tex="\(\operatorname{colim}_J L\)">\(\operatorname{colim}_J L\)</span> to
+<span class="math" data-tex="\(\lim_\ell\operatorname{colim}_K T(\beta_\ell)\)">\(\lim_\ell\operatorname{colim}_K T(\beta_\ell)\)</span>. Testing each limit projection gives the naturality square of <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> for <span class="math" data-tex="\(L\to\beta_\ell\)">\(L\to\beta_\ell\)</span>, followed by the defining comparison equations. Limit uniqueness proves (4.4). Every factor on its right and the first factor on its left is an isomorphism; hence <span class="math" data-tex="\(\Gamma_J\)">\(\Gamma_J\)</span> is an isomorphism. This includes the empty finite shape and its terminal-object test. The converse direction of <a href="filtered-stages-and-finite-limits.html#4-finite-limits-detect-filteredness">Filtered stages, Theorem 4.1</a> now proves that <span class="math" data-tex="\(J\)">\(J\)</span> is filtered. This proves Theorem 2.1(2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, let <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span> with its usual order, and let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> include the even numbers. It is cofinal because the even numbers above any <span class="math" data-tex="\(n\)">\(n\)</span> form a nonempty connected poset. The second test says that filteredness of all outgoing categories <span class="math" data-tex="\((\phi\downarrow 2n)\)">\((\phi\downarrow 2n)\)</span> detects filteredness of <span class="math" data-tex="\(J\)">\(J\)</span>. The first test instead asks for cofinality of their induced functors to <span class="math" data-tex="\(\mathbb N/(2n)\)">\(\mathbb N/(2n)\)</span>.</p>
+<h2 id="5-the-comparison-with-independent-product-stages">5. The comparison with independent product stages</h2>
+<p>Assume that a category <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> admits every small product and every small filtered colimit. Let <span class="math" data-tex="\(S\)">\(S\)</span> be small, let each <span class="math" data-tex="\(I_s\)">\(I_s\)</span> be small and filtered, and let</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+A_s:I_s\longrightarrow\mathcal A.
+\]">\[
+A_s:I_s\longrightarrow\mathcal A.
+\]</span>
+<p>Put <span class="math" data-tex="\(P=\prod_{s\in S}I_s\)">\(P=\prod_{s\in S}I_s\)</span>, with projections <span class="math" data-tex="\(\pi_s\)">\(\pi_s\)</span>. The complete product-category and independent-index proofs in Section 1 make <span class="math" data-tex="\(P\)">\(P\)</span> small and filtered, using choice for the small family. If <span class="math" data-tex="\(S\)">\(S\)</span> is empty, <span class="math" data-tex="\(P\)">\(P\)</span> is the terminal category.</p>
+<p>At <span class="math" data-tex="\(k=(k_s)\in P\)">\(k=(k_s)\in P\)</span>, choose the stage product</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+X_A(k)=\prod_{s\in S} A_s(k_s),
+\]">\[
+X_A(k)=\prod_{s\in S} A_s(k_s),
+\]</span>
+<p>with projections <span class="math" data-tex="\(p^k_s\)">\(p^k_s\)</span>. For <span class="math" data-tex="\(a=(a_s):k\to k&#x27;\)">\(a=(a_s):k\to k&#x27;\)</span>, define <span class="math" data-tex="\(X_A(a)\)">\(X_A(a)\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.1); horizontal scroll when needed" data-tex="\[
+p^{k&#x27;}_s X_A(a)=A_s(a_s)p^k_s.
+\tag{5.1}
+\]">\[
+p^{k&#x27;}_s X_A(a)=A_s(a_s)p^k_s.
+\tag{5.1}
+\]</span>
+<p>The product universal property supplies this unique map. Its projection equations prove identity and composition, so <span class="math" data-tex="\(X_A:P\to\mathcal A\)">\(X_A:P\to\mathcal A\)</span> is a functor.</p>
+<p>Write <span class="math" data-tex="\(L_s=\operatorname{colim}_{I_s}A_s\)">\(L_s=\operatorname{colim}_{I_s}A_s\)</span>, with coprojections <span class="math" data-tex="\(c_{s,i}:A_s(i)\to L_s\)">\(c_{s,i}:A_s(i)\to L_s\)</span>, and <span class="math" data-tex="\(L=\prod_sL_s\)">\(L=\prod_sL_s\)</span>, with projections <span class="math" data-tex="\(p_s\)">\(p_s\)</span>. Define <span class="math" data-tex="\(v_k:X_A(k)\to L\)">\(v_k:X_A(k)\to L\)</span> by</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+p_s v_k=c_{s,k_s}p^k_s.
+\]">\[
+p_s v_k=c_{s,k_s}p^k_s.
+\]</span>
+<p>The cocone equation for each <span class="math" data-tex="\(c_s\)">\(c_s\)</span> and (5.1) give <span class="math" data-tex="\(v_{k&#x27;}X_A(a)=v_k\)">\(v_{k&#x27;}X_A(a)=v_k\)</span>. Thus there is a unique comparison</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.2); horizontal scroll when needed" data-tex="\[
+u_A:\operatorname{colim}_{k\in P}X_A(k)
+\longrightarrow\prod_{s\in S}\operatorname{colim}_{i\in I_s}A_s(i),
+\qquad
+u_A j_k=v_k,
+\tag{5.2}
+\]">\[
+u_A:\operatorname{colim}_{k\in P}X_A(k)
+\longrightarrow\prod_{s\in S}\operatorname{colim}_{i\in I_s}A_s(i),
+\qquad
+u_A j_k=v_k,
+\tag{5.2}
+\]</span>
+<p>where <span class="math" data-tex="\(j_k\)">\(j_k\)</span> are the source colimit's coprojections. Equivalently,</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.3); horizontal scroll when needed" data-tex="\[
+p_su_Aj_k=c_{s,k_s}p^k_s.
+\tag{5.3}
+\]">\[
+p_su_Aj_k=c_{s,k_s}p^k_s.
+\tag{5.3}
+\]</span>
+<p>These equations define the map.</p>
+<p>A family of transformations <span class="math" data-tex="\(f_s:A_s\to A&#x27;_s\)">\(f_s:A_s\to A&#x27;_s\)</span> induces a transformation <span class="math" data-tex="\(X_f:X_A\to X_{A&#x27;}\)">\(X_f:X_A\to X_{A&#x27;}\)</span>, whose stage maps satisfy</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+p&#x27;{}^k_s(X_f)_k=f_{s,k_s}p^k_s.
+\]">\[
+p&#x27;{}^k_s(X_f)_k=f_{s,k_s}p^k_s.
+\]</span>
+<p>Its naturality follows by substituting (5.1) and the naturality of <span class="math" data-tex="\(f_s\)">\(f_s\)</span>; product uniqueness proves the equality. Identities and composition follow from the same projection equations. The family also induces the product of the maps <span class="math" data-tex="\(\operatorname{colim}_{I_s}f_s\)">\(\operatorname{colim}_{I_s}f_s\)</span>. The comparison square commutes:</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.4); horizontal scroll when needed" data-tex="\[
+u_{A&#x27;}\,\operatorname{colim}_P X_f
+=
+\Bigl(\prod_s\operatorname{colim}_{I_s}f_s\Bigr)u_A.
+\tag{5.4}
+\]">\[
+u_{A&#x27;}\,\operatorname{colim}_P X_f
+=
+\Bigl(\prod_s\operatorname{colim}_{I_s}f_s\Bigr)u_A.
+\tag{5.4}
+\]</span>
+<p>Indeed, after <span class="math" data-tex="\(j_k\)">\(j_k\)</span> and projection <span class="math" data-tex="\(p&#x27;_s\)">\(p&#x27;_s\)</span>, both maps give
+<span class="math" data-tex="\(c&#x27;_{s,k_s}f_{s,k_s}p^k_s\)">\(c&#x27;_{s,k_s}f_{s,k_s}p^k_s\)</span>. Product uniqueness and colimit uniqueness give (5.4). Thus <span class="math" data-tex="\(u\)">\(u\)</span> is a natural transformation between two functors on <span class="math" data-tex="\(\prod_s\operatorname{Fun}(I_s,\mathcal A)\)">\(\prod_s\operatorname{Fun}(I_s,\mathcal A)\)</span>: one forms the stage-product diagram and then its <span class="math" data-tex="\(P\)">\(P\)</span>-colimit; the other takes coordinate colimits and then their product.</p>
+<p>When <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, every stage product is terminal, <span class="math" data-tex="\(P\)">\(P\)</span> is terminal, and the source colimit is that same terminal object. The comparison is its identity under the specified identifications.</p>
+<p>If every <span class="math" data-tex="\(I_s=I\)">\(I_s=I\)</span>, a family <span class="math" data-tex="\(A_s\)">\(A_s\)</span> is equivalently a functor <span class="math" data-tex="\(A:I\times S_{\mathrm{disc}}\to\mathcal A\)">\(A:I\times S_{\mathrm{disc}}\to\mathcal A\)</span>. Send <span class="math" data-tex="\((i,s)\)">\((i,s)\)</span> to <span class="math" data-tex="\(A_s(i)\)">\(A_s(i)\)</span>, and an arrow in the <span class="math" data-tex="\(s\)">\(s\)</span>-slice to its image under <span class="math" data-tex="\(A_s\)">\(A_s\)</span>; these are all arrows of the product with the discrete category. This identification also carries families of transformations to transformations of the bifunctors. Formula (5.2) becomes</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (5.5); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{k\in I^S}\prod_{s\in S}A(k(s),s)
+\longrightarrow
+\prod_{s\in S}\operatorname{colim}_{i\in I}A(i,s).
+\tag{5.5}
+\]">\[
+\operatorname{colim}_{k\in I^S}\prod_{s\in S}A(k(s),s)
+\longrightarrow
+\prod_{s\in S}\operatorname{colim}_{i\in I}A(i,s).
+\tag{5.5}
+\]</span>
+<p>The stage <span class="math" data-tex="\(k(s)\)">\(k(s)\)</span> is chosen independently in every coordinate. This notation alone does not assert that the comparison is invertible.</p>
+<p><strong>Definition 5.1.</strong> A category admitting all small products and small filtered colimits has the <strong>inductive-limit/product commutation property</strong>, abbreviated <strong>IPC</strong>, if (5.2) is an isomorphism for every small <span class="math" data-tex="\(S\)">\(S\)</span>, every family of small filtered <span class="math" data-tex="\(I_s\)">\(I_s\)</span>, and every family <span class="math" data-tex="\(A_s:I_s\to\mathcal A\)">\(A_s:I_s\to\mathcal A\)</span>. The quantifier includes empty <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p>For sets, this property is already proved in full by <a href="limits-and-colimits-of-formal-objects.html#2-independent-product-indices">Independent product indices, equation (2.1) and its proof</a>, together with the <a href="filtered-stages-and-finite-limits.html#2-equality-of-elements-has-a-common-witness">filtered equality criterion</a>. The proved bijection sends a product-stage class to its tuple of coordinate classes; (5.3) identifies it with <span class="math" data-tex="\(u_A\)">\(u_A\)</span>. That proof supplies both existence of coordinate representatives and the coordinate equality witnesses, with small-family choice. Empty coordinate values cause no extra assumption; the empty family gives the singleton comparison described above. Naturality is (5.4).</p>
+<h2 id="6-ipc-in-a-product-of-categories">6. IPC in a product of categories</h2>
+<p><strong>Proposition 6.1.</strong> If <span class="math" data-tex="\((\mathcal A_t)_{t\in T}\)">\((\mathcal A_t)_{t\in T}\)</span> is an ambient-set-indexed family of categories with IPC, then <span class="math" data-tex="\(\mathcal B=\prod_{t\in T}\mathcal A_t\)">\(\mathcal B=\prod_{t\in T}\mathcal A_t\)</span> has IPC, for the same small indexing universe.</p>
+<p><strong>Proof.</strong> Use the complete product-category construction from Section 1. For a small family of objects <span class="math" data-tex="\(Y_s=(Y_{s,t})_t\)">\(Y_s=(Y_{s,t})_t\)</span>, choose the coordinate products <span class="math" data-tex="\(Z_t=\prod_sY_{s,t}\)">\(Z_t=\prod_sY_{s,t}\)</span>. The tuple <span class="math" data-tex="\(Z=(Z_t)_t\)">\(Z=(Z_t)_t\)</span>, with its tuple projections, is their product in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>: a family of tuple arrows from <span class="math" data-tex="\(W=(W_t)\)">\(W=(W_t)\)</span> gives, at each <span class="math" data-tex="\(t\)">\(t\)</span>, a unique factor <span class="math" data-tex="\(W_t\to Z_t\)">\(W_t\to Z_t\)</span>. These factors form the unique tuple arrow, because the Hom set in a product category is the product of the coordinate Hom sets. The same argument includes the terminal object when the family is empty.</p>
+<p>For a small filtered diagram <span class="math" data-tex="\(D:I\to\mathcal B\)">\(D:I\to\mathcal B\)</span>, choose <span class="math" data-tex="\(Q_t=\operatorname{colim}_I D_t\)">\(Q_t=\operatorname{colim}_I D_t\)</span>. Its coordinate coprojections form tuple coprojections <span class="math" data-tex="\(D(i)\to Q=(Q_t)_t\)">\(D(i)\to Q=(Q_t)_t\)</span>. Any compatible tuple cocone has a unique coordinate factor through each <span class="math" data-tex="\(Q_t\)">\(Q_t\)</span>, and these factors form the unique tuple factor through <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus filtered colimits are coordinatewise. Induced arrows respect identities and composition by their structural-map equations. These constructions use ambient choice for the ambient family of already existing coordinate universal objects.</p>
+<p>For the independent family of Section 5, evaluate its comparison at a coordinate <span class="math" data-tex="\(t\)">\(t\)</span>. The stage products, colimits and target products are the just-constructed coordinate ones. Equation (5.3) becomes precisely the equation for <span class="math" data-tex="\(u_{A_{\bullet,t}}\)">\(u_{A_{\bullet,t}}\)</span> in <span class="math" data-tex="\(\mathcal A_t\)">\(\mathcal A_t\)</span>. Hence <span class="math" data-tex="\(u_A\)">\(u_A\)</span> is the tuple of these comparisons. Each has an inverse by IPC, and the tuple of inverses is an inverse in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. For <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>, <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> is the one-object, one-arrow category; every required universal factor and every comparison is its sole arrow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(\mathsf{Set}^T\)">\(\mathsf{Set}^T\)</span> has IPC for every ambient set <span class="math" data-tex="\(T\)">\(T\)</span>, including the empty one. Forming a product category here uses the small object products already present in each factor.</p>
+<h2 id="7-transfer-through-a-conservative-functor">7. Transfer through a conservative functor</h2>
+<p>A functor is <strong>conservative</strong> if it reflects isomorphisms: whenever <span class="math" data-tex="\(\lambda(f)\)">\(\lambda(f)\)</span> is invertible, <span class="math" data-tex="\(f\)">\(f\)</span> is invertible.</p>
+<p><strong>Theorem 7.1.</strong> Suppose <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> admits all small products and small filtered colimits. If</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\lambda:\mathcal A\longrightarrow\mathsf{Set}^T
+\]">\[
+\lambda:\mathcal A\longrightarrow\mathsf{Set}^T
+\]</span>
+<p>preserves these products and colimits and is conservative, then <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> has IPC. Here <span class="math" data-tex="\(T\)">\(T\)</span> is an ambient set, possibly empty. No faithfulness or full faithfulness premise is needed.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(\mathcal B=\mathsf{Set}^T\)">\(\mathcal B=\mathsf{Set}^T\)</span>; Proposition 6.1 gives its IPC property. Fix a family <span class="math" data-tex="\(A_s\)">\(A_s\)</span> as in Section 5. Keep its notation <span class="math" data-tex="\(X_A(k)\)">\(X_A(k)\)</span>, <span class="math" data-tex="\(L_s\)">\(L_s\)</span>, <span class="math" data-tex="\(j_k\)">\(j_k\)</span>, and <span class="math" data-tex="\(u_A\)">\(u_A\)</span>. The specified preservation comparisons are isomorphisms</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.1); horizontal scroll when needed" data-tex="\[
+\begin{aligned}
+a_k:\lambda X_A(k)&amp;\longrightarrow\prod_s\lambda A_s(k_s),\\
+a_L:\lambda\Bigl(\prod_sL_s\Bigr)&amp;\longrightarrow\prod_s\lambda L_s,\\
+b_X:\operatorname{colim}_P\lambda X_A&amp;\longrightarrow
+ \lambda(\operatorname{colim}_P X_A),\\
+b_s:\operatorname{colim}_{I_s}\lambda A_s&amp;\longrightarrow\lambda L_s.
+\end{aligned}
+\tag{7.1}
+\]">\[
+\begin{aligned}
+a_k:\lambda X_A(k)&amp;\longrightarrow\prod_s\lambda A_s(k_s),\\
+a_L:\lambda\Bigl(\prod_sL_s\Bigr)&amp;\longrightarrow\prod_s\lambda L_s,\\
+b_X:\operatorname{colim}_P\lambda X_A&amp;\longrightarrow
+\lambda(\operatorname{colim}_P X_A),\\
+b_s:\operatorname{colim}_{I_s}\lambda A_s&amp;\longrightarrow\lambda L_s.
+\end{aligned}
+\tag{7.1}
+\]</span>
+<p>The <span class="math" data-tex="\(a\)">\(a\)</span>-maps have product coordinates <span class="math" data-tex="\(\lambda(p^k_s)\)">\(\lambda(p^k_s)\)</span> and <span class="math" data-tex="\(\lambda(p_s)\)">\(\lambda(p_s)\)</span>. The <span class="math" data-tex="\(b\)">\(b\)</span>-maps have coprojection equations <span class="math" data-tex="\(b_X\mu_k=\lambda(j_k)\)">\(b_X\mu_k=\lambda(j_k)\)</span> and <span class="math" data-tex="\(b_s\mu_{s,i}=\lambda(c_{s,i})\)">\(b_s\mu_{s,i}=\lambda(c_{s,i})\)</span>. These are exactly the canonical comparisons of <a href="compatible-families-and-universal-cones.html#6-when-a-functor-keeps-the-universal-property">Universal cones, Section 6</a>. The <span class="math" data-tex="\(a_k\)">\(a_k\)</span> form a natural isomorphism of <span class="math" data-tex="\(P\)">\(P\)</span>-diagrams by (5.1) and product uniqueness.</p>
+<p>With <span class="math" data-tex="\(u_{\lambda A}\)">\(u_{\lambda A}\)</span> denoting the IPC comparison in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, we claim</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (7.2); horizontal scroll when needed" data-tex="\[
+a_L\,\lambda(u_A)\,b_X
+=
+\Bigl(\prod_s b_s\Bigr)
+u_{\lambda A}\,
+\operatorname{colim}_P(a_k).
+\tag{7.2}
+\]">\[
+a_L\,\lambda(u_A)\,b_X
+=
+\Bigl(\prod_s b_s\Bigr)
+u_{\lambda A}\,
+\operatorname{colim}_P(a_k).
+\tag{7.2}
+\]</span>
+<p>Both sides have domain <span class="math" data-tex="\(\operatorname{colim}_P\lambda X_A\)">\(\operatorname{colim}_P\lambda X_A\)</span> and codomain <span class="math" data-tex="\(\prod_s\lambda L_s\)">\(\prod_s\lambda L_s\)</span>. After the coprojection <span class="math" data-tex="\(\mu_k\)">\(\mu_k\)</span> and the <span class="math" data-tex="\(s\)">\(s\)</span>-projection, the left side is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\lambda(p_s)\lambda(u_A)\lambda(j_k)
+=\lambda(c_{s,k_s}p^k_s),
+\]">\[
+\lambda(p_s)\lambda(u_A)\lambda(j_k)
+=\lambda(c_{s,k_s}p^k_s),
+\]</span>
+<p>by (5.3). On the right, the structural equation for <span class="math" data-tex="\(u_{\lambda A}\)">\(u_{\lambda A}\)</span>, followed by that for <span class="math" data-tex="\(b_s\)">\(b_s\)</span>, gives the same map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+b_s\mu_{s,k_s}\lambda(p^k_s)
+=\lambda(c_{s,k_s})\lambda(p^k_s).
+\]">\[
+b_s\mu_{s,k_s}\lambda(p^k_s)
+=\lambda(c_{s,k_s})\lambda(p^k_s).
+\]</span>
+<p>The two universal properties prove (7.2).</p>
+<p>The right side is invertible: every <span class="math" data-tex="\(b_s\)">\(b_s\)</span> is invertible, <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> has IPC, and the colimit functor takes the natural isomorphism <span class="math" data-tex="\((a_k)\)">\((a_k)\)</span> to an isomorphism. The maps <span class="math" data-tex="\(a_L\)">\(a_L\)</span> and <span class="math" data-tex="\(b_X\)">\(b_X\)</span> are also invertible. Therefore (7.2) makes <span class="math" data-tex="\(\lambda(u_A)\)">\(\lambda(u_A)\)</span> invertible, and conservativity makes <span class="math" data-tex="\(u_A\)">\(u_A\)</span> invertible. This argument remains valid for empty <span class="math" data-tex="\(S\)">\(S\)</span> or <span class="math" data-tex="\(T\)">\(T\)</span>, using the relevant empty-product universal properties. All comparisons are natural in the family by their structural equations and (5.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-presheaves-and-arbitrary-ring-modules">8. Presheaves and arbitrary-ring modules</h2>
+<p><strong>Corollary 8.1.</strong> For every small category <span class="math" data-tex="\(C\)">\(C\)</span>, the presheaf category
+<span class="math" data-tex="\(\widehat C=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set})\)">\(\widehat C=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set})\)</span> has IPC.</p>
+<p><strong>Proof.</strong> The complete pointwise construction in <a href="compatible-families-and-universal-cones.html#4-build-a-limit-at-every-input">Universal cones, Theorem 4.1</a> supplies its small products and filtered colimits. The value functor</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\lambda:\widehat C\longrightarrow\mathsf{Set}^{\operatorname{Ob}C},
+\qquad F\longmapsto(F(c))_{c\in C},
+\]">\[
+\lambda:\widehat C\longrightarrow\mathsf{Set}^{\operatorname{Ob}C},
+\qquad F\longmapsto(F(c))_{c\in C},
+\]</span>
+<p>preserves them by that theorem. It is conservative by the complete componentwise natural-inverse proof in <a href="natural-transformations-and-composition-of-functors.html#2-change-the-values-of-a-diagram">Natural transformations, Lemma 2.1</a>. Theorem 7.1 applies.</p>
+<p>More explicitly, for every <span class="math" data-tex="\(c\)">\(c\)</span>, the component of the presheaf comparison is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Equation (8.1); horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{k\in\prod_sI_s}\prod_s A_s(k_s)(c)
+\longrightarrow
+\prod_s\operatorname{colim}_{i\in I_s}A_s(i)(c).
+\tag{8.1}
+\]">\[
+\operatorname{colim}_{k\in\prod_sI_s}\prod_s A_s(k_s)(c)
+\longrightarrow
+\prod_s\operatorname{colim}_{i\in I_s}A_s(i)(c).
+\tag{8.1}
+\]</span>
+<p>Pointwise construction and (5.3) identify it with the already proved set comparison. The pointwise functor laws supply its compatibility with every arrow of <span class="math" data-tex="\(C^{\mathrm{op}}\)">\(C^{\mathrm{op}}\)</span>, and the component inverses form its natural inverse. For empty <span class="math" data-tex="\(C\)">\(C\)</span>, the presheaf category is terminal and the assertion still holds. No filteredness assumption on <span class="math" data-tex="\(C\)">\(C\)</span> is involved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 8.2.</strong> For every associative unital ring <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(\operatorname{Mod}(R)\)">\(\operatorname{Mod}(R)\)</span> has IPC.</p>
+<p><strong>Proof.</strong> The required small products and colimits, including the empty product, are proved in <a href="hom-tensor-and-the-exactness-of-module-limits.html#2-small-products-give-every-small-limit">Module limits, Section 2</a> and <a href="kernels-cokernels-and-the-abelian-comparison.html#5-module-kernels-and-a-missing-finite-kernel">Module kernels and colimits, Section 5</a>. Their underlying-set product comparison is the coordinate Cartesian product identification. The empty product is the zero module, whose underlying set is a singleton.</p>
+<p>The complete <a href="filtered-stages-and-finite-limits.html#3-the-underlying-set-of-a-module-colimit">underlying-set theorem for filtered module colimits</a> proves preservation of each small filtered colimit by the forgetful functor <span class="math" data-tex="\(U:\operatorname{Mod}(R)\to\mathsf{Set}\)">\(U:\operatorname{Mod}(R)\to\mathsf{Set}\)</span>, with its actual canonical comparison and naturality. A bijective linear map has a linear inverse, by the addition and scalar checks in <a href="coimages-images-and-composition-of-quotients.html#5-sets-modules-presheaves-and-spaces">Coimages, Section 5</a>; thus <span class="math" data-tex="\(U\)">\(U\)</span> is conservative. Regard <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span> as <span class="math" data-tex="\(\mathsf{Set}^{\{*\}}\)">\(\mathsf{Set}^{\{*\}}\)</span> and apply Theorem 7.1.</p>
+<p>On a tuple <span class="math" data-tex="\((x_s)\)">\((x_s)\)</span> at a stage <span class="math" data-tex="\(k\)">\(k\)</span>, the underlying comparison sends its colimit class to the tuple of classes <span class="math" data-tex="\(([k_s,x_s])_s\)">\(([k_s,x_s])_s\)</span>. The retained module/Set comparisons and (5.3) give this exact formula; equation (7.2) identifies it with the set IPC map. All scalar actions remain on the left, and no injectivity of transitions or finite-generation condition is used. The result is natural in all module diagrams. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the conclusion applies to modules over the noncommutative ring <span class="math" data-tex="\(\mathbb Z\langle x,y\rangle\)">\(\mathbb Z\langle x,y\rangle\)</span>. It also applies to presheaves on a category with infinitely many arrows. In each case the independent product category, rather than a shared-stage diagonal, is the index of the source comparison.</p>
+<h2 id="9-four-graded-exercises-with-full-solutions">9. Four graded exercises with full solutions</h2>
+<p><strong>Exercise 1 (introductory: distinguish the two commas).</strong> Let <span class="math" data-tex="\(E=\{0,2,4,\ldots\}\)">\(E=\{0,2,4,\ldots\}\)</span> and let <span class="math" data-tex="\(\phi:E\hookrightarrow\mathbb N\)">\(\phi:E\hookrightarrow\mathbb N\)</span> be the inclusion of poset categories. Compute <span class="math" data-tex="\((n\downarrow\phi)\)">\((n\downarrow\phi)\)</span> and <span class="math" data-tex="\(J_n=(\phi\downarrow n)\)">\(J_n=(\phi\downarrow n)\)</span>. Prove that <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal. Determine exactly when <span class="math" data-tex="\(F_n:J_n\to\mathbb N/n\)">\(F_n:J_n\to\mathbb N/n\)</span> is cofinal. Does cofinality of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> force all the local <span class="math" data-tex="\(F_n\)">\(F_n\)</span> to be cofinal?</p>
+<p><strong>Solution.</strong> The incoming comma is the poset of even integers at least <span class="math" data-tex="\(n\)">\(n\)</span>. It is nonempty; any two have their larger member as a common target, so it is connected. Hence <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal. The outgoing comma is the finite nonempty poset of even integers at most <span class="math" data-tex="\(n\)">\(n\)</span>, with its largest even integer as terminal object.</p>
+<p>The slice <span class="math" data-tex="\(\mathbb N/n\)">\(\mathbb N/n\)</span> is the interval <span class="math" data-tex="\(\{0,\ldots,n\}\)">\(\{0,\ldots,n\}\)</span>. For an object <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>, the incoming comma <span class="math" data-tex="\((m\downarrow F_n)\)">\((m\downarrow F_n)\)</span> consists of even integers between <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(n\)">\(n\)</span> is even this is nonempty and connected for every <span class="math" data-tex="\(m\)">\(m\)</span>, so <span class="math" data-tex="\(F_n\)">\(F_n\)</span> is cofinal. If <span class="math" data-tex="\(n\)">\(n\)</span> is odd, take <span class="math" data-tex="\(m=n\)">\(m=n\)</span>; that comma is empty, so <span class="math" data-tex="\(F_n\)">\(F_n\)</span> is not cofinal. Thus the local test is sufficient, and this example shows that its hypothesis is not necessary. All <span class="math" data-tex="\(J_n\)">\(J_n\)</span> are filtered, despite the local cofinality failure at odd <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: why the diagonal loses tuples).</strong> For each <span class="math" data-tex="\(s\in\mathbb N\)">\(s\in\mathbb N\)</span>, let <span class="math" data-tex="\(A_s(n)=\{0,\ldots,n\}\)">\(A_s(n)=\{0,\ldots,n\}\)</span>, with inclusions over <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span>. Describe the image of the diagonal-stage map</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{n\in\mathbb N}\prod_{s\in\mathbb N}A_s(n)
+\longrightarrow\mathbb N^{\mathbb N}.
+\]">\[
+\operatorname{colim}_{n\in\mathbb N}\prod_{s\in\mathbb N}A_s(n)
+\longrightarrow\mathbb N^{\mathbb N}.
+\]</span>
+<p>Show that the tuple <span class="math" data-tex="\(s\mapsto s\)">\(s\mapsto s\)</span> is represented when the source instead uses the independent index <span class="math" data-tex="\(I^{\mathbb N}\)">\(I^{\mathbb N}\)</span>. Explain what changes for finitely many coordinates.</p>
+<p><strong>Solution.</strong> The diagonal products are nested subsets of <span class="math" data-tex="\(\mathbb N^{\mathbb N}\)">\(\mathbb N^{\mathbb N}\)</span>, so their colimit is their union. A sequence lies in this union exactly when all its values are bounded by one integer <span class="math" data-tex="\(n\)">\(n\)</span>. The sequence <span class="math" data-tex="\(s\mapsto s\)">\(s\mapsto s\)</span> is unbounded and is absent.</p>
+<p>For the independent index, take <span class="math" data-tex="\(k(s)=s\)">\(k(s)=s\)</span>. The tuple with coordinate <span class="math" data-tex="\(s\)">\(s\)</span> equal to <span class="math" data-tex="\(s\)">\(s\)</span> belongs to <span class="math" data-tex="\(\prod_sA_s(k(s))\)">\(\prod_sA_s(k(s))\)</span>, so its class maps to the desired sequence. More generally, a sequence <span class="math" data-tex="\(x\)">\(x\)</span> is represented at <span class="math" data-tex="\(k(s)=x(s)\)">\(k(s)=x(s)\)</span>; thus no uniform bound is needed. The existing independent-index set theorem supplies the bijectivity of the canonical comparison. For a nonempty finite coordinate set, the maximum of the required stages is a common diagonal stage, so every tuple is represented by the diagonal. For an empty coordinate set, both comparisons are the identity of a singleton.</p>
+<p><strong>Exercise 3 (advanced: recover the finite witnesses locally).</strong> Let <span class="math" data-tex="\(\phi:J\to\mathbb N\)">\(\phi:J\to\mathbb N\)</span> be a functor, where <span class="math" data-tex="\(J\)">\(J\)</span> is small. Suppose <span class="math" data-tex="\((\phi\downarrow 2n)\)">\((\phi\downarrow 2n)\)</span> is filtered for every <span class="math" data-tex="\(n\in\mathbb N\)">\(n\in\mathbb N\)</span>. Prove directly, using the three filteredness axioms, that <span class="math" data-tex="\(J\)">\(J\)</span> is filtered. Relate the proof to Theorem 2.1(2).</p>
+<p><strong>Solution.</strong> Nonemptiness of <span class="math" data-tex="\((\phi\downarrow 0)\)">\((\phi\downarrow 0)\)</span> supplies an object of <span class="math" data-tex="\(J\)">\(J\)</span>. For <span class="math" data-tex="\(j,j&#x27;\in J\)">\(j,j&#x27;\in J\)</span>, choose an even number <span class="math" data-tex="\(2n\)">\(2n\)</span> at least both <span class="math" data-tex="\(\phi(j)\)">\(\phi(j)\)</span> and <span class="math" data-tex="\(\phi(j&#x27;)\)">\(\phi(j&#x27;)\)</span>. The unique poset arrows into <span class="math" data-tex="\(2n\)">\(2n\)</span> make <span class="math" data-tex="\(j,j&#x27;\)">\(j,j&#x27;\)</span> objects of <span class="math" data-tex="\((\phi\downarrow 2n)\)">\((\phi\downarrow 2n)\)</span>. A common target there gives a common target in <span class="math" data-tex="\(J\)">\(J\)</span> by forgetting its triangle arrows.</p>
+<p>For parallel arrows <span class="math" data-tex="\(s,t:j\to j&#x27;\)">\(s,t:j\to j&#x27;\)</span>, choose <span class="math" data-tex="\(2n\ge\phi(j&#x27;)\)">\(2n\ge\phi(j&#x27;)\)</span>. There are unique arrows <span class="math" data-tex="\(\phi(j),\phi(j&#x27;)\to2n\)">\(\phi(j),\phi(j&#x27;)\to2n\)</span>; their triangles commute because <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> has at most one arrow with specified endpoints. Hence <span class="math" data-tex="\(s,t\)">\(s,t\)</span> are parallel arrows in the same outgoing comma. Its filteredness supplies an arrow <span class="math" data-tex="\(j&#x27;\to j&#x27;&#x27;\)">\(j&#x27;\to j&#x27;&#x27;\)</span> equalizing them, which is also an equalizing arrow in <span class="math" data-tex="\(J\)">\(J\)</span>. All three axioms hold.</p>
+<p>The inclusion <span class="math" data-tex="\(\psi:E\hookrightarrow\mathbb N\)">\(\psi:E\hookrightarrow\mathbb N\)</span> of even integers is cofinal by Exercise 1, and <span class="math" data-tex="\(E\)">\(E\)</span> is filtered. Its outgoing tests are exactly the assumed categories. Thus this direct witness proof is a specialization of Theorem 2.1(2). It never assumes cofinality of their functors to <span class="math" data-tex="\(\mathbb N/(2n)\)">\(\mathbb N/(2n)\)</span>.</p>
+<p><strong>Exercise 4 (challenge: two operators need no commutation relation).</strong> Fix a unital ring <span class="math" data-tex="\(R\)">\(R\)</span>. Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> have objects <span class="math" data-tex="\((M,a,b)\)">\((M,a,b)\)</span>, where <span class="math" data-tex="\(M\)">\(M\)</span> is a left <span class="math" data-tex="\(R\)">\(R\)</span>-module and <span class="math" data-tex="\(a,b:M\to M\)">\(a,b:M\to M\)</span> are <span class="math" data-tex="\(R\)">\(R\)</span>-linear endomorphisms. A morphism <span class="math" data-tex="\(f\)">\(f\)</span> commutes with each specified endomorphism. Prove that <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> has IPC, without imposing <span class="math" data-tex="\(ab=ba\)">\(ab=ba\)</span>. Identify the underlying independent-stage comparison.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the one-object category whose endomorphisms are all finite words in two letters, with concatenation as composition and the empty word as identity. Its set of words is small. A functor <span class="math" data-tex="\(Q\to\operatorname{Mod}(R)\)">\(Q\to\operatorname{Mod}(R)\)</span> is exactly an object <span class="math" data-tex="\((M,a,b)\)">\((M,a,b)\)</span>: the two letters specify the endomorphisms and functoriality specifies every word. Natural transformations are exactly the morphisms in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. No relation identifies the two words <span class="math" data-tex="\(ab\)">\(ab\)</span> and <span class="math" data-tex="\(ba\)">\(ba\)</span>.</p>
+<p>By the complete pointwise functor-category construction, <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> has small products and filtered colimits computed on its module value. The product operators act coordinatewise; the colimit operators are induced by the compatible stage operators. The underlying-set functor <span class="math" data-tex="\(\mathcal D\to\mathsf{Set}\)">\(\mathcal D\to\mathsf{Set}\)</span> preserves these constructions by the module product and filtered-colimit providers of Corollary 8.2.</p>
+<p>It is conservative. A morphism whose underlying function is bijective has a linear inverse by that same provider. Its component inverse is a natural transformation by the complete componentwise inverse criterion for functor categories, so it commutes with both endomorphisms. Theorem 7.1 proves IPC.</p>
+<p>For diagrams <span class="math" data-tex="\(D_s:I_s\to\mathcal D\)">\(D_s:I_s\to\mathcal D\)</span>, with underlying modules <span class="math" data-tex="\(M_s(i)\)">\(M_s(i)\)</span>, the underlying map is</p>
+<span class="math math-display" tabindex="0" role="region" aria-label="Mathematical display; horizontal scroll when needed" data-tex="\[
+\operatorname{colim}_{k\in\prod_sI_s}\prod_s U M_s(k_s)
+\longrightarrow
+\prod_s\operatorname{colim}_{i\in I_s}U M_s(i),
+\qquad
+[k,(x_s)_s]\longmapsto([k_s,x_s])_s.
+\]">\[
+\operatorname{colim}_{k\in\prod_sI_s}\prod_s U M_s(k_s)
+\longrightarrow
+\prod_s\operatorname{colim}_{i\in I_s}U M_s(i),
+\qquad
+[k,(x_s)_s]\longmapsto([k_s,x_s])_s.
+\]</span>
+<p>Theorem 7.1 identifies this map with the image of the actual <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>-comparison. Its construction already commutes with both operators. Conservativity supplies an inverse that commutes with them as well. Empty coordinate families are included.</p>
+</main></body></html>

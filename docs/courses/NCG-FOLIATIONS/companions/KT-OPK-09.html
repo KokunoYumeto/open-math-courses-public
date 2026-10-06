@@ -1,0 +1,355 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Toeplitz operators and the index theorem on the circle</title><link rel="stylesheet" href="../assets/reader/reader.css"><script src="../assets/reader/mathjax-config.js"></script><script defer src="../assets/mathjax/tex-svg.js"></script></head><body><main><nav><a href="../index.html">Course contents</a><a href="index.html">Companion readings</a><a href="src/KT-OPK-09.md" download>Markdown source</a></nav><h1 id="toeplitz-operators-and-the-index-theorem-on-the-circle">Toeplitz operators and the index theorem on the circle</h1>
+<p><em>Public domain (CC0).</em>
+Multiplication by a nonvanishing function on a circle is invertible. Compressing it to nonnegative Fourier modes can lose finitely many directions. The resulting defect counts how often the function winds around zero. For a general circle extension, the integer relating winding to index must also be determined; the two-shift example below shows why. We will construct the quotient that makes this statement precise, compute its connecting map, and then determine the K-theory of the Toeplitz algebra.</p>
+<p>We use <a href="KT-OPK-07.html">the index-map lesson</a>, Theorems 2.2, 4.1 and 6.1 and Corollary 4.2, and <a href="KT-OPK-08.html">the suspension lesson</a>. The compact ideal has <span class="math" data-tex="\(K_0=\mathbb Z\)">\(K_0=\mathbb Z\)</span>, normalized by rank, by <a href="KT-OPK-04.html">the nonunital lesson</a>, Example 5.2; its <span class="math" data-tex="\(K_1=0\)">\(K_1=0\)</span> follows from <a href="KT-OPK-06.html">the invertibles lesson</a>, Corollary 4.2 and the scalar computation. That lesson's Theorem 5.2 identifies circle <span class="math" data-tex="\(K_1\)">\(K_1\)</span> by determinant winding. <a href="KT-OPK-03.html">The Grothendieck-group lesson</a>, Example 5.5, gives <span class="math" data-tex="\(K_0(C(S^1))=\mathbb Z[1]\)">\(K_0(C(S^1))=\mathbb Z[1]\)</span>.</p>
+<p>For Fredholm theory we import Theorem 1.1, Theorem 3.2 and Corollary 3.3 of <em>Fredholm operators and the stable index</em> in OA-FOUND-REMAINDER: the parametrix criterion, finite defects, local constancy and compact-perturbation invariance. That lesson uses <span class="math" data-tex="\(\kappa=\dim\ker T^*-\dim\ker T\)">\(\kappa=\dim\ker T^*-\dim\ker T\)</span>. Here, as in Lesson 07, we use the opposite convention</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(T)=\dim\ker T-\dim\ker T^*=-\kappa(T).
+\tag{0.1}
+\]">\[
+\operatorname{Ind}(T)=\dim\ker T-\dim\ker T^*=-\kappa(T).
+\tag{0.1}
+\]</span>
+<p>All winding numbers are counterclockwise. No periodicity theorem is used in this lesson.</p>
+<h2 id="section-1"><span id="1-compression-to-the-hardy-space"></span>1. Compression to the Hardy space</h2>
+<p>Give <span class="math" data-tex="\(\mathbb T=S^1\)">\(\mathbb T=S^1\)</span> normalized arc-length measure. The functions <span class="math" data-tex="\(e_j(z)=z^j\)">\(e_j(z)=z^j\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>, form an orthonormal basis of <span class="math" data-tex="\(L^2(\mathbb T)\)">\(L^2(\mathbb T)\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+H^2=\overline{\operatorname{span}}\{e_j:j\geq0\},
+\qquad P:L^2(\mathbb T)\longrightarrow H^2.
+\tag{1.1}
+\]">\[
+H^2=\overline{\operatorname{span}}\{e_j:j\geq0\},
+\qquad P:L^2(\mathbb T)\longrightarrow H^2.
+\tag{1.1}
+\]</span>
+<p>For <span class="math" data-tex="\(f\in L^\infty(\mathbb T)\)">\(f\in L^\infty(\mathbb T)\)</span>, multiplication <span class="math" data-tex="\(M_f\)">\(M_f\)</span> is bounded. Its <strong>Toeplitz compression</strong> is</p>
+<span class="math math-display" data-tex="\[
+T_f=PM_f|_{H^2},\qquad
+\|T_f\|\leq\|f\|_\infty,\qquad T_f^*=T_{\overline f}.
+\tag{1.2}
+\]">\[
+T_f=PM_f|_{H^2},\qquad
+\|T_f\|\leq\|f\|_\infty,\qquad T_f^*=T_{\overline f}.
+\tag{1.2}
+\]</span>
+<p>The adjoint identity follows by taking inner products with vectors of <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. The matrix coefficient in row <span class="math" data-tex="\(j\)">\(j\)</span>, column <span class="math" data-tex="\(k\)">\(k\)</span>, is <span class="math" data-tex="\(\widehat f(j-k)\)">\(\widehat f(j-k)\)</span>. In particular <span class="math" data-tex="\(S=T_z\)">\(S=T_z\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+Se_j=e_{j+1},\qquad S^*S=1,
+\qquad SS^*=1-p_0,
+\tag{1.3}
+\]">\[
+Se_j=e_{j+1},\qquad S^*S=1,
+\qquad SS^*=1-p_0,
+\tag{1.3}
+\]</span>
+<p>where <span class="math" data-tex="\(p_0\)">\(p_0\)</span> projects onto <span class="math" data-tex="\(\mathbb C e_0\)">\(\mathbb C e_0\)</span>. Write <span class="math" data-tex="\(\mathcal T=C^*(S)\)">\(\mathcal T=C^*(S)\)</span> and <span class="math" data-tex="\(\mathcal K=\mathcal K(H^2)\)">\(\mathcal K=\mathcal K(H^2)\)</span>. We include the identity in this generated algebra; it is already <span class="math" data-tex="\(S^*S\)">\(S^*S\)</span>.</p>
+<p>For a continuous matrix function <span class="math" data-tex="\(F:\mathbb T\to M_n(\mathbb C)\)">\(F:\mathbb T\to M_n(\mathbb C)\)</span>, define <span class="math" data-tex="\(T_F\)">\(T_F\)</span> on <span class="math" data-tex="\(H^2\otimes\mathbb C^n\)">\(H^2\otimes\mathbb C^n\)</span> by the same compression. Its entries are the operators <span class="math" data-tex="\(T_{F_{jk}}\)">\(T_{F_{jk}}\)</span>.</p>
+<h2 id="section-2"><span id="2-the-symbol-survives-modulo-compact-operators"></span>2. The symbol survives modulo compact operators</h2>
+<p><strong>Lemma 2.1 (compact semicommutators).</strong> For <span class="math" data-tex="\(f,g\in C(\mathbb T)\)">\(f,g\in C(\mathbb T)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T_fT_g-T_{fg}=-PM_f(1-P)M_g|_{H^2}\in\mathcal K.
+\tag{2.1}
+\]">\[
+T_fT_g-T_{fg}=-PM_f(1-P)M_g|_{H^2}\in\mathcal K.
+\tag{2.1}
+\]</span>
+<p><em>Proof.</em> Insert <span class="math" data-tex="\(P+(1-P)=1\)">\(P+(1-P)=1\)</span> between the two multiplication operators. If <span class="math" data-tex="\(g=z^q\)">\(g=z^q\)</span> with <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, the right side is zero. If <span class="math" data-tex="\(q=-r&lt;0\)">\(q=-r&lt;0\)</span>, the range of <span class="math" data-tex="\((1-P)M_g|_{H^2}\)">\((1-P)M_g|_{H^2}\)</span> is contained in the span of <span class="math" data-tex="\(e_{-r},\ldots,e_{-1}\)">\(e_{-r},\ldots,e_{-1}\)</span>. Thus the right side has finite rank for trigonometric-polynomial <span class="math" data-tex="\(g\)">\(g\)</span>, for every bounded <span class="math" data-tex="\(f\)">\(f\)</span>. Approximate continuous <span class="math" data-tex="\(g\)">\(g\)</span> uniformly by such polynomials. The error on the right has norm at most <span class="math" data-tex="\(\|f\|_\infty\|g-g_m\|_\infty\)">\(\|f\|_\infty\|g-g_m\|_\infty\)</span>, so its limit is compact. This also proves the asserted result when both functions are continuous. Entrywise summation proves the matrix version. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The operators</p>
+<span class="math math-display" data-tex="\[
+E_{jk}=S^jp_0(S^*)^k,\qquad j,k\geq0,
+\tag{2.2}
+\]">\[
+E_{jk}=S^jp_0(S^*)^k,\qquad j,k\geq0,
+\tag{2.2}
+\]</span>
+<p>send <span class="math" data-tex="\(e_k\)">\(e_k\)</span> to <span class="math" data-tex="\(e_j\)">\(e_j\)</span> and kill the other basis vectors. Their finite spans are dense in <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>; hence <span class="math" data-tex="\(\mathcal K\subset\mathcal T\)">\(\mathcal K\subset\mathcal T\)</span>. Also <span class="math" data-tex="\(T_{z^q}=S^q\)">\(T_{z^q}=S^q\)</span> for <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, and <span class="math" data-tex="\(T_{z^{-r}}=(S^*)^r\)">\(T_{z^{-r}}=(S^*)^r\)</span>. Uniform trigonometric approximation therefore places every continuous <span class="math" data-tex="\(T_f\)">\(T_f\)</span> in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</p>
+<p>We must still prove that no nonzero continuous symbol becomes compact.</p>
+<p><strong>Lemma 2.2 (the essential norm).</strong> For <span class="math" data-tex="\(f\in C(\mathbb T)\)">\(f\in C(\mathbb T)\)</span> and <span class="math" data-tex="\(k\in\mathcal K\)">\(k\in\mathcal K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|T_f\|=\|f\|_\infty,
+\qquad \|T_f+k\|\geq\|f\|_\infty.
+\tag{2.3}
+\]">\[
+\|T_f\|=\|f\|_\infty,
+\qquad \|T_f+k\|\geq\|f\|_\infty.
+\tag{2.3}
+\]</span>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(v\)">\(v\)</span> be a finite Laurent polynomial of norm one in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. For sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(z^Nv\in H^2\)">\(z^Nv\in H^2\)</span>. Its compressed image has norm</p>
+<span class="math math-display" data-tex="\[
+\|T_f(z^Nv)\|=\|P(z^Nfv)\|
+\longrightarrow\|fv\|_2.
+\tag{2.4}
+\]">\[
+\|T_f(z^Nv)\|=\|P(z^Nfv)\|
+\longrightarrow\|fv\|_2.
+\tag{2.4}
+\]</span>
+<p>Indeed the discarded negative Fourier tail of the fixed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function <span class="math" data-tex="\(fv\)">\(fv\)</span> tends to zero. Finite Laurent polynomials are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Taking their supremum in (2.4) gives <span class="math" data-tex="\(\|T_f\|\geq\|M_f\|=\|f\|_\infty\)">\(\|T_f\|\geq\|M_f\|=\|f\|_\infty\)</span>; the reverse inequality is (1.2).</p>
+<p>The matrix coefficients show that <span class="math" data-tex="\((S^*)^NT_fS^N=T_f\)">\((S^*)^NT_fS^N=T_f\)</span>. For a rank-one operator <span class="math" data-tex="\(k=\xi\otimes\eta^*\)">\(k=\xi\otimes\eta^*\)</span>,
+<span class="math" data-tex="\(\|kS^N\|=\|\xi\|\|(S^*)^N\eta\|\to0\)">\(\|kS^N\|=\|\xi\|\|(S^*)^N\eta\|\to0\)</span>. Finite-rank approximation gives the same limit for every compact <span class="math" data-tex="\(k\)">\(k\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\|T_f+k\|\geq
+\|(S^*)^N(T_f+k)S^N\|
+\longrightarrow\|T_f\|.
+\]">\[
+\|T_f+k\|\geq
+\|(S^*)^N(T_f+k)S^N\|
+\longrightarrow\|T_f\|.
+\]</span>
+<p>This proves the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (the Toeplitz extension).</strong> Every element of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> has a unique expression <span class="math" data-tex="\(T_f+k\)">\(T_f+k\)</span>, with <span class="math" data-tex="\(f\in C(\mathbb T)\)">\(f\in C(\mathbb T)\)</span> and <span class="math" data-tex="\(k\in\mathcal K\)">\(k\in\mathcal K\)</span>. The map <span class="math" data-tex="\(\sigma(T_f+k)=f\)">\(\sigma(T_f+k)=f\)</span> gives an exact sequence of C*-algebras</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T
+\xrightarrow{\ \sigma\ }C(\mathbb T)\longrightarrow0.
+\tag{2.5}
+\]">\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T
+\xrightarrow{\ \sigma\ }C(\mathbb T)\longrightarrow0.
+\tag{2.5}
+\]</span>
+<p><em>Proof.</em> The set <span class="math" data-tex="\(\{T_f+k\}\)">\(\{T_f+k\}\)</span> is a *-algebra by Lemma 2.1 and the fact that compacts form an ideal of <span class="math" data-tex="\(B(H^2)\)">\(B(H^2)\)</span>. It is closed: if <span class="math" data-tex="\(T_{f_m}+k_m\)">\(T_{f_m}+k_m\)</span> is Cauchy, (2.3) makes <span class="math" data-tex="\(f_m\)">\(f_m\)</span> uniformly Cauchy, with continuous limit <span class="math" data-tex="\(f\)">\(f\)</span>. Then <span class="math" data-tex="\(T_{f_m}\to T_f\)">\(T_{f_m}\to T_f\)</span>, so <span class="math" data-tex="\(k_m\)">\(k_m\)</span> also converges, to a compact <span class="math" data-tex="\(k\)">\(k\)</span>. This closed algebra contains <span class="math" data-tex="\(S\)">\(S\)</span> and is contained in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, so equals <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Lemma 2.2 proves uniqueness and continuity of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Equation (2.1) proves multiplicativity, (1.2) proves preservation of adjoints, and <span class="math" data-tex="\(f\mapsto T_f\)">\(f\mapsto T_f\)</span> proves surjectivity. Its kernel is precisely <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The compression map <span class="math" data-tex="\(f\mapsto T_f\)">\(f\mapsto T_f\)</span> is a bounded linear section. It is not multiplicative: <span class="math" data-tex="\(T_zT_{\overline z}=1-p_0\)">\(T_zT_{\overline z}=1-p_0\)</span>, whereas <span class="math" data-tex="\(T_{z\overline z}=1\)">\(T_{z\overline z}=1\)</span>. Later we will prove that (2.5) has no homomorphic section at all.</p>
+<h2 id="section-3"><span id="3-the-connecting-map-is-minus-winding"></span>3. The connecting map is minus winding</h2>
+<p><strong>Theorem 3.1 (continuous scalar and matrix symbols).</strong> For every <span class="math" data-tex="\(F\in M_n(C(\mathbb T))\)">\(F\in M_n(C(\mathbb T))\)</span>, <span class="math" data-tex="\(T_F\)">\(T_F\)</span> is Fredholm if and only if <span class="math" data-tex="\(\det F(z)\neq0\)">\(\det F(z)\neq0\)</span> for every <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>. In that case</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(T_F)
+=-\operatorname{wind}(\det F).
+\tag{3.1}
+\]">\[
+\operatorname{Ind}(T_F)
+=-\operatorname{wind}(\det F).
+\tag{3.1}
+\]</span>
+<p><em>Proof.</em> If <span class="math" data-tex="\(F\)">\(F\)</span> is pointwise invertible, compactness of the circle makes its inverse continuous. The matrix version of (2.1) gives a parametrix <span class="math" data-tex="\(T_{F^{-1}}\)">\(T_{F^{-1}}\)</span>. Thus <span class="math" data-tex="\(T_F\)">\(T_F\)</span> is Fredholm by the imported criterion.</p>
+<p>For the converse, (2.5) embeds <span class="math" data-tex="\(M_n(C(\mathbb T))\)">\(M_n(C(\mathbb T))\)</span> faithfully as a unital C*-subalgebra of the Calkin algebra on <span class="math" data-tex="\(H^2\otimes\mathbb C^n\)">\(H^2\otimes\mathbb C^n\)</span>, through <span class="math" data-tex="\(F\mapsto\pi(T_F)\)">\(F\mapsto\pi(T_F)\)</span>. Faithfulness follows entrywise from Lemma 2.2. A unital C*-subalgebra is inverse closed: if <span class="math" data-tex="\(b\)">\(b\)</span> is invertible in the ambient algebra, <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> has a positive spectral gap; continuous functional calculus, or uniform polynomial approximation to its reciprocal on that spectral interval, puts <span class="math" data-tex="\((b^*b)^{-1}b^*\)">\((b^*b)^{-1}b^*\)</span> in the subalgebra. Therefore an invertible <span class="math" data-tex="\(\pi(T_F)\)">\(\pi(T_F)\)</span> forces <span class="math" data-tex="\(F\)">\(F\)</span> invertible. This is equivalent to the stated determinant condition.</p>
+<p>Let <span class="math" data-tex="\(\partial\)">\(\partial\)</span> denote the connecting map of (2.5). The inclusion <span class="math" data-tex="\(\mathcal T\subset B(H^2)\)">\(\mathcal T\subset B(H^2)\)</span> and the symbol embedding into the Calkin algebra give a morphism from (2.5) to the Calkin extension, with the identity on the compact ideal. Naturality and Lesson 07, Theorem 6.1, yield</p>
+<span class="math math-display" data-tex="\[
+\partial[F]=\operatorname{Ind}(T_F)
+\quad\text{in }K_0(\mathcal K)=\mathbb Z.
+\tag{3.2}
+\]">\[
+\partial[F]=\operatorname{Ind}(T_F)
+\quad\text{in }K_0(\mathcal K)=\mathbb Z.
+\tag{3.2}
+\]</span>
+<p>In particular the isometry <span class="math" data-tex="\(S\)">\(S\)</span> lifts <span class="math" data-tex="\(z\)">\(z\)</span>, so the partial-isometry formula gives</p>
+<span class="math math-display" data-tex="\[
+\partial[z]=[1-S^*S]-[1-SS^*]
+=-[p_0]=-1.
+\tag{3.3}
+\]">\[
+\partial[z]=[1-S^*S]-[1-SS^*]
+=-[p_0]=-1.
+\tag{3.3}
+\]</span>
+<p>Lesson 06, Theorem 5.2, identifies <span class="math" data-tex="\(K_1(C(\mathbb T))\)">\(K_1(C(\mathbb T))\)</span> with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> by <span class="math" data-tex="\([F]\mapsto\operatorname{wind}(\det F)\)">\([F]\mapsto\operatorname{wind}(\det F)\)</span>, taking <span class="math" data-tex="\([z]\)">\([z]\)</span> to 1. Since <span class="math" data-tex="\(\partial\)">\(\partial\)</span> is a homomorphism, (3.3) determines it as minus that identification. Equations (3.2)–(3.3) prove (3.1) for every continuous invertible matrix symbol, without a differentiability hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Continuity alone does not imply Fredholmness. For example <span class="math" data-tex="\(T_0=0\)">\(T_0=0\)</span> on the infinite-dimensional space <span class="math" data-tex="\(H^2\)">\(H^2\)</span> is not Fredholm. The nonvanishing hypothesis omitted in [E, Corollary 2.5.2] is necessary; the preceding theorem supplies the corrected exact criterion.</p>
+<p><strong>Examples 3.2.</strong> For all integers <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(T_{z^k}\)">\(T_{z^k}\)</span> has index <span class="math" data-tex="\(-k\)">\(-k\)</span>. When <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, it is <span class="math" data-tex="\(S^k\)">\(S^k\)</span>: its kernel is zero and its cokernel has basis <span class="math" data-tex="\(e_0,\ldots,e_{k-1}\)">\(e_0,\ldots,e_{k-1}\)</span>. When <span class="math" data-tex="\(k=-r&lt;0\)">\(k=-r&lt;0\)</span>, it is <span class="math" data-tex="\((S^*)^r\)">\((S^*)^r\)</span>: those first <span class="math" data-tex="\(r\)">\(r\)</span> vectors span its kernel and its range is all of <span class="math" data-tex="\(H^2\)">\(H^2\)</span>.</p>
+<p>For <span class="math" data-tex="\(F=\operatorname{diag}(z^2,z^{-5},1)\)">\(F=\operatorname{diag}(z^2,z^{-5},1)\)</span>, the determinant winds <span class="math" data-tex="\(-3\)">\(-3\)</span> times, and the index is 3. Directly, the three block indices are <span class="math" data-tex="\(-2,5,0\)">\(-2,5,0\)</span>, whose sum is 3.</p>
+<p>The function <span class="math" data-tex="\(f(z)=2+z\)">\(f(z)=2+z\)</span> has winding zero: <span class="math" data-tex="\(2+tz\)">\(2+tz\)</span>, <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, is a nonvanishing homotopy to a constant. Here invertibility of the compression can be seen directly:</p>
+<span class="math math-display" data-tex="\[
+(2I+S)^{-1}=\frac12\sum_{j=0}^{\infty}(-S/2)^j,
+\tag{3.4}
+\]">\[
+(2I+S)^{-1}=\frac12\sum_{j=0}^{\infty}(-S/2)^j,
+\tag{3.4}
+\]</span>
+<p>with convergence in operator norm. Section 5 proves the corresponding invertibility assertion for every scalar nonvanishing symbol of winding zero.</p>
+<p><strong>Corollary 3.3 (nonsplitting).</strong> The Toeplitz extension has no *-homomorphic section, and more generally no bounded algebra-homomorphic section.</p>
+<p><em>Proof.</em> A section <span class="math" data-tex="\(s\)">\(s\)</span> would make <span class="math" data-tex="\(\sigma_*s_*=1\)">\(\sigma_*s_*=1\)</span> on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Exactness gives <span class="math" data-tex="\(\partial\sigma_*=0\)">\(\partial\sigma_*=0\)</span>, hence <span class="math" data-tex="\(\partial=\partial\sigma_*s_*=0\)">\(\partial=\partial\sigma_*s_*=0\)</span>. Equation (3.3) contradicts this. This uses the nonunital functorial convention too, so does not require the proposed section to preserve the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-4"><span id="4-two-k-theory-computations-before-bott-periodicity"></span>4. Two K-theory computations before Bott periodicity</h2>
+<p><strong>Theorem 4.1.</strong> The scalar inclusion <span class="math" data-tex="\(j:\mathbb C\to\mathcal T\)">\(j:\mathbb C\to\mathcal T\)</span>, <span class="math" data-tex="\(\lambda\mapsto\lambda1\)">\(\lambda\mapsto\lambda1\)</span>, induces isomorphisms on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Explicitly,</p>
+<span class="math math-display" data-tex="\[
+K_0(\mathcal T)=\mathbb Z[1],\qquad K_1(\mathcal T)=0.
+\tag{4.1}
+\]">\[
+K_0(\mathcal T)=\mathbb Z[1],\qquad K_1(\mathcal T)=0.
+\tag{4.1}
+\]</span>
+<p><em>Proof.</em> The already proved extension sequence has the segment</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\longrightarrow K_1(\mathcal T)
+\longrightarrow\mathbb Z
+\xrightarrow{\ -1\ }\mathbb Z\\
+&amp;\longrightarrow K_0(\mathcal T)
+\xrightarrow{\ \sigma_*\ }\mathbb Z[1].
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+0&amp;\longrightarrow K_1(\mathcal T)
+\longrightarrow\mathbb Z
+\xrightarrow{\ -1\ }\mathbb Z\\
+&amp;\longrightarrow K_0(\mathcal T)
+\xrightarrow{\ \sigma_*\ }\mathbb Z[1].
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>The first zero is <span class="math" data-tex="\(K_1(\mathcal K)\)">\(K_1(\mathcal K)\)</span>; the next two integers are circle <span class="math" data-tex="\(K_1\)">\(K_1\)</span> and compact-ideal <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Exactness and the bijective middle arrow give <span class="math" data-tex="\(K_1(\mathcal T)=0\)">\(K_1(\mathcal T)=0\)</span> and make the compact-ideal map on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> zero. Thus <span class="math" data-tex="\(\sigma_*\)">\(\sigma_*\)</span> on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is injective. It is onto because <span class="math" data-tex="\([1_{\mathcal T}]\)">\([1_{\mathcal T}]\)</span> maps to the generator <span class="math" data-tex="\([1_{C(\mathbb T)}]\)">\([1_{C(\mathbb T)}]\)</span>. This proves (4.1) and identifies <span class="math" data-tex="\(j_*\)">\(j_*\)</span> on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> as an isomorphism. On <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, both scalar and Toeplitz groups are zero. We have not assumed surjectivity at the final term of an arbitrary extension sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the character <span class="math" data-tex="\(\chi=\operatorname{ev}_1\circ\sigma\)">\(\chi=\operatorname{ev}_1\circ\sigma\)</span> and its kernel</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_0=\ker\chi
+=\{T_f+k:f(1)=0,\ k\in\mathcal K\}.
+\tag{4.3}
+\]">\[
+\mathcal T_0=\ker\chi
+=\{T_f+k:f(1)=0,\ k\in\mathcal K\}.
+\tag{4.3}
+\]</span>
+<p><strong>Corollary 4.2.</strong> For <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>, <span class="math" data-tex="\(K_j(\mathcal T_0)=0\)">\(K_j(\mathcal T_0)=0\)</span>. The character <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span> is the inverse of the scalar inclusion on these two groups.</p>
+<p><em>Proof.</em> The extension <span class="math" data-tex="\(0\to\mathcal T_0\to\mathcal T\xrightarrow{\chi}\mathbb C\to0\)">\(0\to\mathcal T_0\to\mathcal T\xrightarrow{\chi}\mathbb C\to0\)</span> does split, by the scalar inclusion. Lesson 07, Corollary 4.2, gives</p>
+<span class="math math-display" data-tex="\[
+K_j(\mathcal T)\cong K_j(\mathcal T_0)\oplus K_j(\mathbb C),
+\qquad j=0,1,
+\tag{4.4}
+\]">\[
+K_j(\mathcal T)\cong K_j(\mathcal T_0)\oplus K_j(\mathbb C),
+\qquad j=0,1,
+\tag{4.4}
+\]</span>
+<p>with the second summand carried by the scalar inclusion and projection to it given by <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span>. Theorem 4.1 says that this summand already accounts for the whole group. Hence the first summand is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here <span class="math" data-tex="\(K_*\)">\(K_*\)</span> denotes the two groups <span class="math" data-tex="\(K_0,K_1\)">\(K_0,K_1\)</span>. Vanishing of all higher groups will follow after the periodicity theorem. Also, tensoring these calculations with an arbitrary coefficient algebra is a separate theorem; the scalar calculation does not prove it.</p>
+<p>Restricting the symbol map gives a useful second nonsplit extension:</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T_0
+\longrightarrow C_0(\mathbb T\setminus\{1\})
+\longrightarrow0.
+\tag{4.5}
+\]">\[
+0\longrightarrow\mathcal K\longrightarrow\mathcal T_0
+\longrightarrow C_0(\mathbb T\setminus\{1\})
+\longrightarrow0.
+\tag{4.5}
+\]</span>
+<p>To verify surjectivity, a continuous symbol vanishing at 1 has its lift <span class="math" data-tex="\(T_f\in\mathcal T_0\)">\(T_f\in\mathcal T_0\)</span>. The kernel is still <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. Identify the quotient with <span class="math" data-tex="\(S\mathbb C=C_0((0,1))\)">\(S\mathbb C=C_0((0,1))\)</span> by <span class="math" data-tex="\(z=e^{2\pi it}\)">\(z=e^{2\pi it}\)</span>. Its normalized winding-one unitary is <span class="math" data-tex="\(\omega(t)=e^{2\pi it}\)">\(\omega(t)=e^{2\pi it}\)</span> in the unitization. The quotient inclusion into <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> sends it to <span class="math" data-tex="\(z\)">\(z\)</span>. Naturality of the connecting map therefore gives</p>
+<span class="math math-display" data-tex="\[
+\partial_{\mathcal T_0}[\omega]=-[p_0].
+\tag{4.6}
+\]">\[
+\partial_{\mathcal T_0}[\omega]=-[p_0].
+\tag{4.6}
+\]</span>
+<p>This sign will matter when the next lesson introduces coefficient algebras.</p>
+<h2 id="section-5"><span id="5-coburn-s-lemma-and-actual-invertibility"></span>5. Coburn's lemma and actual invertibility</h2>
+<p>Index zero counts equal defects; it does not generally say that both defects vanish. The scalar Toeplitz structure supplies an additional argument.</p>
+<p>We first give the analytic fact needed below, with its proof. A vector <span class="math" data-tex="\(a\in H^2\)">\(a\in H^2\)</span> with Fourier coefficients <span class="math" data-tex="\(a_n\)">\(a_n\)</span> defines the holomorphic function <span class="math" data-tex="\(A(w)=\sum_{n\geq0}a_nw^n\)">\(A(w)=\sum_{n\geq0}a_nw^n\)</span> on the disk. Cauchy–Schwarz gives convergence there, and Parseval gives <span class="math" data-tex="\(A(r\,\cdot)\to a\)">\(A(r\,\cdot)\to a\)</span> in <span class="math" data-tex="\(L^2(\mathbb T)\)">\(L^2(\mathbb T)\)</span> as <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>.</p>
+<p><strong>Lemma 5.1 (boundary uniqueness).</strong> A nonzero vector of <span class="math" data-tex="\(H^2\)">\(H^2\)</span> is nonzero almost everywhere on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>.</p>
+<p><em>Proof.</em> Factor <span class="math" data-tex="\(A(w)=w^kG(w)\)">\(A(w)=w^kG(w)\)</span>, where <span class="math" data-tex="\(G(0)\neq0\)">\(G(0)\neq0\)</span>; shifting coefficients shows that <span class="math" data-tex="\(G\)">\(G\)</span> also has square-summable coefficients. For a radius <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> with no zero on its circle, factor the finitely many zeros <span class="math" data-tex="\(a_1,\ldots,a_m\)">\(a_1,\ldots,a_m\)</span> in <span class="math" data-tex="\(|w|&lt;r\)">\(|w|&lt;r\)</span>, with multiplicities. The remaining factor has a harmonic logarithm of its modulus on the closed disk. Its mean-value identity and
+<span class="math" data-tex="\(\frac1{2\pi}\int\log|re^{i\theta}-a_j|\,d\theta=\log r\)">\(\frac1{2\pi}\int\log|re^{i\theta}-a_j|\,d\theta=\log r\)</span>
+give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{2\pi}\int_0^{2\pi}
+\log|G(re^{i\theta})|\,d\theta\\
+&amp;\quad=\log|G(0)|+\sum_{j=1}^m\log\frac r{|a_j|}\\
+&amp;\quad\geq\log|G(0)|.
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+&amp;\frac1{2\pi}\int_0^{2\pi}
+\log|G(re^{i\theta})|\,d\theta\\
+&amp;\quad=\log|G(0)|+\sum_{j=1}^m\log\frac r{|a_j|}\\
+&amp;\quad\geq\log|G(0)|.
+\end{aligned}
+\tag{5.1}
+\]</span>
+<p>The identity for a linear factor follows by expanding <span class="math" data-tex="\(\log(1-(a_j/r)e^{-i\theta})\)">\(\log(1-(a_j/r)e^{-i\theta})\)</span>: all nonconstant Fourier terms have mean zero. There is no zero at 0. The zero-free remaining factor admits a holomorphic logarithm on the disk, which justifies the harmonic mean identity.</p>
+<p>Write <span class="math" data-tex="\(\log^+x=\max(\log x,0)\)">\(\log^+x=\max(\log x,0)\)</span> and <span class="math" data-tex="\(\log^-x=\max(-\log x,0)\)">\(\log^-x=\max(-\log x,0)\)</span>. Since <span class="math" data-tex="\(\log^+x\leq x^2\)">\(\log^+x\leq x^2\)</span>, the means of <span class="math" data-tex="\(\log^+|G(r\,\cdot)|\)">\(\log^+|G(r\,\cdot)|\)</span> are bounded by its squared Hardy norm. Equation (5.1) gives a uniform bound for the means of <span class="math" data-tex="\(\log^-|G(r\,\cdot)|\)">\(\log^-|G(r\,\cdot)|\)</span> as well. Choose radii tending to 1, avoiding the countably many radii of zeros, along which the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> radial convergence has an almost-everywhere convergent subsequence. If the boundary vector vanished on a set of positive measure, the nonnegative functions <span class="math" data-tex="\(\log^-|G(r\,\cdot)|\)">\(\log^-|G(r\,\cdot)|\)</span> would tend to infinity there. Fatou's lemma contradicts their uniform integral bound. Multiplication by <span class="math" data-tex="\(z^k\)">\(z^k\)</span> does not change the boundary zero set. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (Coburn's lemma).</strong> If <span class="math" data-tex="\(f\in L^\infty(\mathbb T)\)">\(f\in L^\infty(\mathbb T)\)</span> is not zero almost everywhere, at least one of <span class="math" data-tex="\(T_f,T_f^*\)">\(T_f,T_f^*\)</span> is injective. In particular this holds for every nonzero continuous scalar symbol. For the classical attribution and a broader Banach-space version, see <a href="https://arxiv.org/pdf/1708.01475">Karlovich, Theorem 1.1 and its historical discussion</a>.</p>
+<p><em>Proof.</em> Suppose instead that <span class="math" data-tex="\(0\neq a\in\ker T_f\)">\(0\neq a\in\ker T_f\)</span> and <span class="math" data-tex="\(0\neq b\in\ker T_f^*\)">\(0\neq b\in\ker T_f^*\)</span>. The negative-frequency space is <span class="math" data-tex="\(\overline z\,\overline{H^2}\)">\(\overline z\,\overline{H^2}\)</span>, so there exist <span class="math" data-tex="\(c,d\in H^2\)">\(c,d\in H^2\)</span> with</p>
+<span class="math math-display" data-tex="\[
+fa=\overline z\,\overline c,
+\qquad \overline f\,b=\overline z\,\overline d.
+\tag{5.2}
+\]">\[
+fa=\overline z\,\overline c,
+\qquad \overline f\,b=\overline z\,\overline d.
+\tag{5.2}
+\]</span>
+<p>Conjugate the second equality, multiply it by <span class="math" data-tex="\(a\)">\(a\)</span>, and multiply the first by <span class="math" data-tex="\(\overline b\)">\(\overline b\)</span>. The two expressions for <span class="math" data-tex="\(fa\overline b\)">\(fa\overline b\)</span> give</p>
+<span class="math math-display" data-tex="\[
+z\,ad=\overline z\,\overline{cb}.
+\tag{5.3}
+\]">\[
+z\,ad=\overline z\,\overline{cb}.
+\tag{5.3}
+\]</span>
+<p>Products of two <span class="math" data-tex="\(H^2\)">\(H^2\)</span> boundary vectors belong to <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by Cauchy–Schwarz, and have only nonnegative Fourier coefficients. Indeed their analytic polynomial approximations converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, hence their products converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. The left side of (5.3) has only strictly positive frequencies; the right side has only strictly negative frequencies. Therefore all Fourier coefficients of their common <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function vanish, so it is zero. The Fourier uniqueness used here follows, for example, by convolution with the Fejér kernels, which approximates every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be the holomorphic function associated to <span class="math" data-tex="\(d\)">\(d\)</span>, as <span class="math" data-tex="\(A\)">\(A\)</span> is associated to <span class="math" data-tex="\(a\)">\(a\)</span>. The analytic product <span class="math" data-tex="\(AD\)">\(AD\)</span> has the coefficients of the zero boundary product <span class="math" data-tex="\(ad\)">\(ad\)</span>, so is identically zero. Since <span class="math" data-tex="\(A\)">\(A\)</span> is not identically zero, the identity theorem makes <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, so <span class="math" data-tex="\(d=0\)">\(d=0\)</span>. The second equality in (5.2) is then <span class="math" data-tex="\(\overline f\,b=0\)">\(\overline f\,b=0\)</span>. Lemma 5.1 says <span class="math" data-tex="\(b\neq0\)">\(b\neq0\)</span> almost everywhere, forcing <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.3.</strong> If <span class="math" data-tex="\(f\in C(\mathbb T)\)">\(f\in C(\mathbb T)\)</span> is nowhere zero and has winding zero, <span class="math" data-tex="\(T_f\)">\(T_f\)</span> is invertible.</p>
+<p><em>Proof.</em> Theorem 3.1 gives closed range and equal finite dimensions of <span class="math" data-tex="\(\ker T_f\)">\(\ker T_f\)</span> and <span class="math" data-tex="\(\ker T_f^*\)">\(\ker T_f^*\)</span>. Theorem 5.2 makes one of these spaces zero, hence both zero. The range is closed and has orthogonal complement <span class="math" data-tex="\(\ker T_f^*=0\)">\(\ker T_f^*=0\)</span>, so it is all of <span class="math" data-tex="\(H^2\)">\(H^2\)</span>. The bounded inverse theorem completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The scalar hypothesis matters. The matrix symbol <span class="math" data-tex="\(F=\operatorname{diag}(z,z^{-1})\)">\(F=\operatorname{diag}(z,z^{-1})\)</span> is invertible with determinant 1, but <span class="math" data-tex="\(T_F=\operatorname{diag}(S,S^*)\)">\(T_F=\operatorname{diag}(S,S^*)\)</span> has a one-dimensional kernel and cokernel. Its index is zero and it is not invertible. Thus Theorem 3.1 extends to matrices, while Corollary 5.3 does not extend merely by replacing winding with determinant winding.</p>
+<h2 id="section-6"><span id="6-matching-the-positive-spectral-convention"></span>6. Matching the positive spectral convention</h2>
+<p>On <span class="math" data-tex="\(L^2(\mathbb R/2\pi\mathbb Z)\)">\(L^2(\mathbb R/2\pi\mathbb Z)\)</span>, let <span class="math" data-tex="\(D_0=-i\,d/dx\)">\(D_0=-i\,d/dx\)</span>. Its Fourier eigenvalue on <span class="math" data-tex="\(e^{ijx}\)">\(e^{ijx}\)</span> is <span class="math" data-tex="\(j\)">\(j\)</span>. Our Hardy projection is <span class="math" data-tex="\(\mathbf1_{[0,\infty)}(D_0)\)">\(\mathbf1_{[0,\infty)}(D_0)\)</span>. For <span class="math" data-tex="\(D_\eta=D_0+\eta\)">\(D_\eta=D_0+\eta\)</span>, <span class="math" data-tex="\(0&lt;\eta&lt;1\)">\(0&lt;\eta&lt;1\)</span>, it is the strictly positive spectral projection. Consequently the positive compression of multiplication by <span class="math" data-tex="\(e^{ix}\)">\(e^{ix}\)</span> is exactly <span class="math" data-tex="\(S\)">\(S\)</span>, with index <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>This agrees with <em>The local index formula</em>, NCG-LOCAL-INDEX, §§1–2, which uses <span class="math" data-tex="\(D_\eta\)">\(D_\eta\)</span>, and with its Exercise 24: <span class="math" data-tex="\(\operatorname{diag}(e^{2ix},e^{-5ix},1)\)">\(\operatorname{diag}(e^{2ix},e^{-5ix},1)\)</span> has index 3. Its residue formula is not needed here.</p>
+<p>If one instead uses <span class="math" data-tex="\(\mathbf1_{(0,\infty)}(D_0)\)">\(\mathbf1_{(0,\infty)}(D_0)\)</span>, the constant Fourier mode is removed. On <span class="math" data-tex="\(H^2=\mathbb C e_0\oplus\overline{\operatorname{span}}\{e_j:j\geq1\}\)">\(H^2=\mathbb C e_0\oplus\overline{\operatorname{span}}\{e_j:j\geq1\}\)</span>, the two off-diagonal blocks of a bounded compression have finite rank. The remaining scalar block acts on a one-dimensional space and has index zero. Compact-perturbation invariance therefore gives the same index for the strictly positive compression. In particular <span class="math" data-tex="\(e^{ix}\)">\(e^{ix}\)</span> misses its first positive mode and still has index <span class="math" data-tex="\(-1\)">\(-1\)</span>. Compressing to nonpositive rather than nonnegative frequencies changes the shift to a backward shift and reverses the winding sign.</p>
+<h3 id="the-integer-attached-to-a-circle-extension">The integer attached to a circle extension</h3>
+<p>The Toeplitz extension has boundary coefficient <span class="math" data-tex="\(-1\)">\(-1\)</span>. A different algebra with the same circle quotient need not have that coefficient. This is the point at which an abstract index formula must retain information about its extension.</p>
+<p><strong>Proposition 6.1 (the extension coefficient).</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be an infinite-dimensional Hilbert space and let <span class="math" data-tex="\(\mathcal E\subset B(H)\)">\(\mathcal E\subset B(H)\)</span> be a unital C*-algebra containing <span class="math" data-tex="\(\mathcal K(H)\)">\(\mathcal K(H)\)</span>, with a specified quotient isomorphism
+<span class="math" data-tex="\(q:\mathcal E/\mathcal K(H)\cong C(S^1)\)">\(q:\mathcal E/\mathcal K(H)\cong C(S^1)\)</span>. There is a unique integer <span class="math" data-tex="\(k\)">\(k\)</span> such that every Fredholm <span class="math" data-tex="\(T\in M_n(\mathcal E)\)">\(T\in M_n(\mathcal E)\)</span>, with invertible symbol <span class="math" data-tex="\(F=q_n(T)\)">\(F=q_n(T)\)</span>, satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(T)=k\,\operatorname{Wind}(\det F).
+\tag{6.1}
+\]">\[
+\operatorname{Ind}(T)=k\,\operatorname{Wind}(\det F).
+\tag{6.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(k\)">\(k\)</span> is the index of any lift of the positive scalar coordinate <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><em>Proof.</em> The coordinate class generates <span class="math" data-tex="\(K_1(C(S^1))=\mathbb Z\)">\(K_1(C(S^1))=\mathbb Z\)</span>, with a matrix class sent to its determinant winding by Lesson 6, Theorem 5.2. The boundary homomorphism has target <span class="math" data-tex="\(K_0(\mathcal K(H))=\mathbb Z\)">\(K_0(\mathcal K(H))=\mathbb Z\)</span>, normalized by rank, so it is multiplication by one unique integer <span class="math" data-tex="\(k\)">\(k\)</span>. Lesson 7, Theorem 6.1, identifies that boundary with the Fredholm index of a lift, including our kernel-minus-cokernel sign. A lift of <span class="math" data-tex="\(z\)">\(z\)</span> exists by surjectivity and is Fredholm because its Calkin image is invertible. This proves its index is <span class="math" data-tex="\(k\)">\(k\)</span>, independently of the lift. Applying the boundary to <span class="math" data-tex="\([F]\)">\([F]\)</span> proves (6.1) for every matrix size. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a partial-isometry lift <span class="math" data-tex="\(W\)">\(W\)</span>, put <span class="math" data-tex="\(D_+=1-W^*W\)">\(D_+=1-W^*W\)</span> and <span class="math" data-tex="\(D_-=1-WW^*\)">\(D_-=1-WW^*\)</span>. The same formula is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Tr}(D_+)-\operatorname{Tr}(D_-)\\
+=k\,\operatorname{Wind}(q(W)).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\operatorname{Tr}(D_+)-\operatorname{Tr}(D_-)\\
+=k\,\operatorname{Wind}(q(W)).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Its defect projections are compact and therefore finite rank. The multiplier belongs on the index side of the map from winding to index. A circle quotient alone does not permit reversal of (6.1) using an integer multiplier.</p>
+<p><strong>Example 6.2 (two shifts).</strong> On <span class="math" data-tex="\(H^2\oplus H^2\)">\(H^2\oplus H^2\)</span>, put <span class="math" data-tex="\(W=S\oplus S\)">\(W=S\oplus S\)</span> and
+<span class="math" data-tex="\(\mathcal E=C^*(1,W,\mathcal K(H^2\oplus H^2))\)">\(\mathcal E=C^*(1,W,\mathcal K(H^2\oplus H^2))\)</span>. The Calkin image of <span class="math" data-tex="\(W\)">\(W\)</span> is unitary and has full circle spectrum. Indeed, for <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span>, the long Fourier blocks used in §2, placed in one summand and escaping every fixed finite-dimensional subspace, are approximate eigenvectors for <span class="math" data-tex="\(W\)">\(W\)</span>. Every compact operator sends these unit vectors to zero in norm. If <span class="math" data-tex="\(W-\lambda\)">\(W-\lambda\)</span> had a Calkin inverse, a bounded lift of that inverse would force these approximate eigenvectors to have norm tending to zero, a contradiction. Functional calculus for that unitary therefore identifies the quotient with <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>, sending <span class="math" data-tex="\(q(W)\)">\(q(W)\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>But <span class="math" data-tex="\(W\)">\(W\)</span> is an isometry with a two-dimensional cokernel. Thus <span class="math" data-tex="\(k=-2\)">\(k=-2\)</span>, while <span class="math" data-tex="\(\operatorname{Wind}(q(W))=1\)">\(\operatorname{Wind}(q(W))=1\)</span>. An equality <span class="math" data-tex="\(\operatorname{Wind}(q(W))=n\operatorname{Ind}(W)\)">\(\operatorname{Wind}(q(W))=n\operatorname{Ind}(W)\)</span> would require <span class="math" data-tex="\(1=-2n\)">\(1=-2n\)</span>, impossible for integer <span class="math" data-tex="\(n\)">\(n\)</span>. The analogous algebra generated by <span class="math" data-tex="\(S\oplus S^*\)">\(S\oplus S^*\)</span> and the compact operators has <span class="math" data-tex="\(k=0\)">\(k=0\)</span> and still has full circle quotient; its coordinate symbol has winding one and index zero. Both quotient-spectrum arguments are the same approximate-eigenvector argument.</p>
+<p>This also specifies the calibration needed in a topological form of Levinson's theorem. If an isometric wave operator lies in such an algebra and its cokernel is an <span class="math" data-tex="\(N\)">\(N\)</span>-dimensional bound-state space, then (6.1) gives <span class="math" data-tex="\(-N=k\operatorname{Wind}(q(W))\)">\(-N=k\operatorname{Wind}(q(W))\)</span>. Identifying that wave operator, proving its membership and identifying its cokernel are separate analytic hypotheses. For a calibrated extension with <span class="math" data-tex="\(k=-1\)">\(k=-1\)</span>, the conclusion is <span class="math" data-tex="\(\operatorname{Wind}(q(W))=N\)">\(\operatorname{Wind}(q(W))=N\)</span>.</p>
+<p>[Richard, Theorem 10.3.3] motivates this abstract comparison but places an integer multiplier in the reverse direction without an extension-index hypothesis. Example 6.2 shows why that reversal cannot hold for every circle extension. The correctly directed formula (6.1) retains full generality.</p>
+<h2 id="section-7"><span id="7-exercises-with-complete-solutions"></span>7. Exercises with complete solutions</h2>
+<p><strong>Exercise 9.1 (basic).</strong> Compute <span class="math" data-tex="\(\ker T_{z^k}\)">\(\ker T_{z^k}\)</span> and <span class="math" data-tex="\(\ker T_{z^k}^*\)">\(\ker T_{z^k}^*\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, <span class="math" data-tex="\(T_{z^k}=S^k\)">\(T_{z^k}=S^k\)</span> sends <span class="math" data-tex="\(e_j\)">\(e_j\)</span> to <span class="math" data-tex="\(e_{j+k}\)">\(e_{j+k}\)</span>. Its kernel is zero, and its adjoint kills exactly <span class="math" data-tex="\(e_0,\ldots,e_{k-1}\)">\(e_0,\ldots,e_{k-1}\)</span>. For <span class="math" data-tex="\(k=-r&lt;0\)">\(k=-r&lt;0\)</span>, <span class="math" data-tex="\(T_{z^k}=(S^*)^r\)">\(T_{z^k}=(S^*)^r\)</span> kills exactly those first <span class="math" data-tex="\(r\)">\(r\)</span> vectors and maps every later vector to <span class="math" data-tex="\(e_{j-r}\)">\(e_{j-r}\)</span>; its adjoint <span class="math" data-tex="\(S^r\)">\(S^r\)</span> is injective. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, both operators are the identity, so both kernels are zero. Thus</p>
+<span class="math math-display" data-tex="\[
+\dim\ker T_{z^k}=\max(-k,0),\qquad
+\dim\ker T_{z^k}^*=\max(k,0).
+\]">\[
+\dim\ker T_{z^k}=\max(-k,0),\qquad
+\dim\ker T_{z^k}^*=\max(k,0).
+\]</span>
+<p>Their difference is <span class="math" data-tex="\(-k\)">\(-k\)</span>, including at zero.</p>
+<p><strong>Exercise 9.2 (basic).</strong> Show that <span class="math" data-tex="\(S^*S=1\)">\(S^*S=1\)</span> and <span class="math" data-tex="\(1-SS^*\)">\(1-SS^*\)</span> has rank one. Determine the ideal generated by the latter projection inside <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</p>
+<p><em>Solution.</em> We have <span class="math" data-tex="\(S^*e_0=0\)">\(S^*e_0=0\)</span> and <span class="math" data-tex="\(S^*e_j=e_{j-1}\)">\(S^*e_j=e_{j-1}\)</span> for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>. Hence <span class="math" data-tex="\(S^*Se_j=e_j\)">\(S^*Se_j=e_j\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, whereas <span class="math" data-tex="\(SS^*\)">\(SS^*\)</span> is zero on <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and the identity on its orthogonal complement. The defect is <span class="math" data-tex="\(p_0\)">\(p_0\)</span>, rank one. Its generated ideal contains every <span class="math" data-tex="\(S^jp_0(S^*)^k=E_{jk}\)">\(S^jp_0(S^*)^k=E_{jk}\)</span>, so contains <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>. Conversely products of bounded operators with <span class="math" data-tex="\(p_0\)">\(p_0\)</span> are finite rank, and their norm limits are compact. Therefore the generated closed ideal is exactly <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>.</p>
+<p><strong>Exercise 9.3 (intermediate).</strong> Prove compactness of <span class="math" data-tex="\(T_fT_g-T_{fg}\)">\(T_fT_g-T_{fg}\)</span> for arbitrary continuous scalar symbols, explaining both the finite-rank case and the norm limit.</p>
+<p><em>Solution.</em> The difference is <span class="math" data-tex="\(-PM_f(1-P)M_g|_{H^2}\)">\(-PM_f(1-P)M_g|_{H^2}\)</span>. For <span class="math" data-tex="\(g=z^q\)">\(g=z^q\)</span>, <span class="math" data-tex="\((1-P)M_g\)">\((1-P)M_g\)</span> is zero if <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, and maps into the <span class="math" data-tex="\(-q\)">\(-q\)</span>-dimensional span of <span class="math" data-tex="\(e_q,\ldots,e_{-1}\)">\(e_q,\ldots,e_{-1}\)</span> if <span class="math" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>. Finite sums give finite rank for every trigonometric polynomial <span class="math" data-tex="\(g_m\)">\(g_m\)</span>. Choose <span class="math" data-tex="\(g_m\to g\)">\(g_m\to g\)</span> uniformly. The differences between these finite-rank operators and the required operator have norm at most <span class="math" data-tex="\(\|f\|_\infty\|g_m-g\|_\infty\to0\)">\(\|f\|_\infty\|g_m-g\|_\infty\to0\)</span>. The compact operators are norm closed, proving the claim without any smoothness requirement.</p>
+<p><strong>Exercise 9.4 (intermediate).</strong> Prove Coburn's lemma for nonzero continuous <span class="math" data-tex="\(f\)">\(f\)</span>, and explain precisely where scalar multiplication is used.</p>
+<p><em>Solution.</em> If both kernels were nonzero, choose <span class="math" data-tex="\(a,b\neq0\)">\(a,b\neq0\)</span> and express their negative-frequency products as in (5.2). Commutativity of the scalar boundary functions produces (5.3). The products are <span class="math" data-tex="\(L^1\)">\(L^1\)</span> by Cauchy–Schwarz. Their polynomial approximations show that the left and right sides have disjoint strictly positive and strictly negative Fourier supports. Fourier uniqueness makes their common value zero. The analytic product <span class="math" data-tex="\(AD\)">\(AD\)</span> is zero; the identity theorem and <span class="math" data-tex="\(A\neq0\)">\(A\neq0\)</span> force <span class="math" data-tex="\(D=0\)">\(D=0\)</span>. Equation (5.2) then says <span class="math" data-tex="\(\overline f b=0\)">\(\overline f b=0\)</span>. The fully proved boundary-uniqueness Lemma 5.1 makes <span class="math" data-tex="\(b\)">\(b\)</span> nonzero almost everywhere, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere. A continuous function that vanishes almost everywhere vanishes everywhere, since a nonzero value would persist on an open arc of positive measure. This contradicts the hypothesis. The commutation used to form (5.3) has no corresponding implication for arbitrary matrix symbols; <span class="math" data-tex="\(\operatorname{diag}(z,z^{-1})\)">\(\operatorname{diag}(z,z^{-1})\)</span> gives the explicit failure discussed above.</p>
+<p><strong>Exercise 9.5 (advanced).</strong> Compute <span class="math" data-tex="\(K_*(\mathcal T_0)\)">\(K_*(\mathcal T_0)\)</span> from the extension sequences and determine the map induced by <span class="math" data-tex="\(\mathbb C\hookrightarrow\mathcal T\)">\(\mathbb C\hookrightarrow\mathcal T\)</span>.</p>
+<p><em>Solution.</em> The connecting map in (2.5) takes the circle generator to minus the compact rank-one generator, so is an isomorphism <span class="math" data-tex="\(\mathbb Z\to\mathbb Z\)">\(\mathbb Z\to\mathbb Z\)</span>. Exactness first gives <span class="math" data-tex="\(K_1(\mathcal T)=0\)">\(K_1(\mathcal T)=0\)</span>, and then gives injectivity of <span class="math" data-tex="\(\sigma_*:K_0(\mathcal T)\to K_0(C(\mathbb T))\)">\(\sigma_*:K_0(\mathcal T)\to K_0(C(\mathbb T))\)</span>. The image contains <span class="math" data-tex="\([1]\)">\([1]\)</span>, so it is all of <span class="math" data-tex="\(\mathbb Z[1]\)">\(\mathbb Z[1]\)</span>. Thus scalar inclusion induces the isomorphism <span class="math" data-tex="\(\mathbb Z\to K_0(\mathcal T)\)">\(\mathbb Z\to K_0(\mathcal T)\)</span> taking 1 to <span class="math" data-tex="\([1]\)">\([1]\)</span>, and the isomorphism between zero <span class="math" data-tex="\(K_1\)">\(K_1\)</span> groups. The separate character extension splits by this inclusion. Its exact split decomposition (4.4) identifies <span class="math" data-tex="\(K_j(\mathcal T_0)\)">\(K_j(\mathcal T_0)\)</span> with <span class="math" data-tex="\(\ker\chi_*\)">\(\ker\chi_*\)</span>. Since <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span> is inverse to the already bijective inclusion, that kernel is zero for <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>. No splitting of the Toeplitz symbol extension was used or exists.</p>
+<h2 id="references-and-exact-scope">References and exact scope</h2>
+<ul>
+<li>
+<p>[E] Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, §§2.2 and 2.4–2.6. The continuous-symbol Fredholm statement in Corollary 2.5.2, p. 95, requires nonvanishing. Our proof includes continuous matrix symbols; §2.6's smooth trace formula is comparison material, not a prerequisite for (3.1).</p>
+</li>
+<li>
+<p>[B] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, §9.4.2(a)–(e), for the Toeplitz algebra and evaluation kernel. The coefficient-algebra homotopy and Bott argument in §9.4.2(f)–(g) belong to the next lesson. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+</li>
+<li>
+<p>[SS] Hermann Schulz-Baldes and Tom Stoiber, <em>Harmonic Analysis in Operator Algebras and its Applications to Index Theory and Topological Solid State Systems</em>, Springer, 2022, chapter <em>Duality for Toeplitz extensions</em>, §§<em>The smooth Toeplitz extension</em> and <em>Connecting maps of the smooth Toeplitz extension</em>. <a href="https://arxiv.org/abs/2206.07781">Preprint</a>. These treat general dynamical extensions and distinguish smooth, discrete and Wiener–Hopf maps. Their partial-isometry index is kernel minus cokernel, agreeing with (3.3). Their Connes–Thom, Takai and periodicity results are not used to prove the classical circle theorem here.</p>
+</li>
+<li>
+<p><strong>[Richard]</strong> S. Richard, <em>K-theory for C*-algebras, and beyond</em>, Spring Semester 2015, §10.3, especially Proposition 10.3.1 and Theorem 10.3.3, printed pp. 106–108. <a href="https://www.math.nagoya-u.ac.jp/~richard/teaching/s2015/Kth.pdf#page=106">Freely available lecture notes</a>. The extension multiplier is corrected and calibrated explicitly in Proposition 6.1 and Example 6.2 above.</p>
+</li>
+</ul>
+<footer>CC0-1.0. Source credits and component terms are retained. <a href="index.html">Companion readings and terms</a>.</footer></main></body></html>

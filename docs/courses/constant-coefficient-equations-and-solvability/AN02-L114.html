@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Root growth and Cauchy evolution in Schwartz spaces</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script><style>.math mjx-assistive-mml{width:1px!important;height:1px!important}</style></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="root-growth-and-cauchy-evolution-in-schwartz-spaces">Root growth and Cauchy evolution in Schwartz spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. The full bounded lesson, all six solutions and both original figures have an independent GPT-6.1 Sol (OpenAI), Ultra review. The general compact-kernel support and reciprocal theorem remains a separate unproved task. Public domain (CC0).</em></p>
+<p>The spatial growth class is part of a Cauchy problem. We will prove existence and uniqueness for the heat equation in Schwartz and tempered spatial classes, including its characteristic initial plane. The decisive question is what the spatial Fourier transform does to high frequencies. We prove that a logarithmic bound on the real parts of the evolution roots is exactly what permits arbitrary Schwartz or tempered initial data on every finite forward time interval. We also prove the forced formula, the higher time-order version, and the distinction between forward and reversible evolution.</p>
+<p>Basic references are Laurent Schwartz's <a href="https://www.numdam.org/item/SB_1948-1951__1__65_0.pdf">Bourbaki talk on Petrowsky</a>, his <a href="https://www.numdam.org/item/10.5802/aif.18.pdf">paper on evolution and convolution</a>, and Jan Kisyński's <a href="https://arxiv.org/abs/0910.1120">paper on Petrovskii correctness</a>. The historical root-growth criterion is due to I. G. Petrovskii. All central evolution arguments are proved below.</p>
+<p>Read <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, Section 1, for the Schwartz Fourier automorphism and its transpose on tempered distributions. <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Sections 14.1–14.5 and 18, proves completeness of the defining Schwartz seminorms, uniform boundedness and the full Fréchet closed graph theorem. <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a>, Sections 9.1–9.4 and 10, supplies complex polynomial factorization and finite linear algebra. Only the final polynomial improvement and the nonconstant leading coefficient use <a href="AN02-L018.html">Symbols at infinity</a>, Lemmas 2.1 and 3.1, Corollary 3.2 and its positive-polynomial consequence. The main logarithmic equivalence does not require a semialgebraic theorem. We use ordinary scalar calculus, finite matrices, smooth compact cutoffs and distribution multiplication.</p>
+<h2 id="the-spatial-classes-and-the-time-interval">The spatial classes and the time interval</h2>
+<p>Fix a spatial dimension <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> and a number of components <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>. Vectors have their Euclidean norm and matrices its induced operator norm. On <span class="math" data-tex="\(\mathcal S=\mathcal S(\mathbb R^d;\mathbb C^r)\)">\(\mathcal S=\mathcal S(\mathbb R^d;\mathbb C^r)\)</span>, use the increasing seminorms
+<span class="math math-display" data-tex="\[
+ p_N(v)=\max_{|\alpha|\leq N}\sup_\xi
+       (1+|\xi|)^N|\partial_\xi^\alpha v(\xi)|,
+ \qquad N=0,1,\ldots .                                      \tag{1}
+\]">\[
+ p_N(v)=\max_{|\alpha|\leq N}\sup_\xi
+       (1+|\xi|)^N|\partial_\xi^\alpha v(\xi)|,
+ \qquad N=0,1,\ldots .                                      \tag{1}
+\]</span>
+They give the usual monomial Schwartz topology: a monomial of degree at most <span class="math" data-tex="\(N\)">\(N\)</span> is bounded by <span class="math" data-tex="\((1+|\xi|)^N\)">\((1+|\xi|)^N\)</span>, while expanding <span class="math" data-tex="\((1+\sum_j|\xi_j|)^N\)">\((1+\sum_j|\xi_j|)^N\)</span> bounds the latter weight by finitely many absolute monomials. Passing to finite maxima retains both families. Thus the cited completeness proof applies to (1).</p>
+<p>Pairings with <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> are complex linear, with no complex conjugation. Its <strong>strong topology</strong> has seminorms
+<span class="math math-display" data-tex="\[
+ q_B(w)=\sup_{\phi\in B}|\langle w,\phi\rangle|,
+ \qquad B\subset\mathcal S\text{ bounded}.                    \tag{2}
+\]">\[
+ q_B(w)=\sup_{\phi\in B}|\langle w,\phi\rangle|,
+ \qquad B\subset\mathcal S\text{ bounded}.                    \tag{2}
+\]</span>
+Bounded means <span class="math" data-tex="\(\sup_{\phi\in B}p_N(\phi)&lt;\infty\)">\(\sup_{\phi\in B}p_N(\phi)&lt;\infty\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>. Finite components use the sum of coordinate pairings. A continuous functional satisfies <span class="math" data-tex="\(|\langle w,\phi\rangle|\leq C p_N(\phi)\)">\(|\langle w,\phi\rangle|\leq C p_N(\phi)\)</span> for some <span class="math" data-tex="\(C,N\)">\(C,N\)</span>; this follows by rescaling a basic neighborhood of zero.</p>
+<p>We use
+<span class="math math-display" data-tex="\[
+ Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+ F^{-1}v(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi,
+ \qquad D_x=-i\partial_x.                                   \tag{3}
+\]">\[
+ Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+ F^{-1}v(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi,
+ \qquad D_x=-i\partial_x.                                   \tag{3}
+\]</span>
+The transform is a continuous isomorphism on both classes. On the strong dual this follows directly by transposition: a continuous Schwartz map sends bounded sets to bounded sets, so its transpose satisfies a bound of the form (2). In particular <span class="math" data-tex="\(F(D_x f)=\xi Ff\)">\(F(D_x f)=\xi Ff\)</span> and <span class="math" data-tex="\(F\delta_0=1\)">\(F\delta_0=1\)</span>.</p>
+<p>If there are no spatial variables, take <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(\mathcal S=\mathbb C^r\)">\(\mathcal S=\mathbb C^r\)</span> and its finite-dimensional dual, with the Fourier transform the identity. All matrix and time arguments below still apply. The frequency set is a single point, so its root bound is automatically a constant. The frequency-sequence obstruction is needed only when <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;T&lt;\infty\)">\(0&lt;T&lt;\infty\)</span>, a solution trajectory is in <span class="math" data-tex="\(C^1([0,T];E)\)">\(C^1([0,T];E)\)</span>, where <span class="math" data-tex="\(E=\mathcal S\)">\(E=\mathcal S\)</span> or <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> with the topology just specified. Derivatives at the two endpoints are one-sided. Continuity and differentiability are in every defining seminorm. On the half-line, these conditions are required on each finite interval. No estimate uniform in all positive times is part of this definition. In particular a trajectory may grow exponentially in time without being a tempered distribution on all of space-time.</p>
+<p>Let <span class="math" data-tex="\(A:\mathbb R^d\to\mathbb C^{r\times r}\)">\(A:\mathbb R^d\to\mathbb C^{r\times r}\)</span> be smooth and assume
+<span class="math math-display" data-tex="\[
+ \forall\alpha\quad \exists C_\alpha,N_\alpha:
+ \quad \|\partial_\xi^\alpha A(\xi)\|
+      \leq C_\alpha(1+|\xi|)^{N_\alpha}.                       \tag{4}
+\]">\[
+ \forall\alpha\quad \exists C_\alpha,N_\alpha:
+ \quad \|\partial_\xi^\alpha A(\xi)\|
+      \leq C_\alpha(1+|\xi|)^{N_\alpha}.                       \tag{4}
+\]</span>
+This is the slowly increasing multiplier class <span class="math" data-tex="\(\mathcal O_M\)">\(\mathcal O_M\)</span>. All polynomial matrices belong to it. The Leibniz rule shows that multiplication by <span class="math" data-tex="\(A\)">\(A\)</span> is continuous on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>: every term in <span class="math" data-tex="\(p_N(A\phi)\)">\(p_N(A\phi)\)</span> is bounded by a constant times some <span class="math" data-tex="\(p_L(\phi)\)">\(p_L(\phi)\)</span>. On the strong dual define
+<span class="math math-display" data-tex="\[
+ \langle Aw,\phi\rangle=\langle w,A^{\mathsf T}\phi\rangle.
+                                                                  \tag{5}
+\]">\[
+ \langle Aw,\phi\rangle=\langle w,A^{\mathsf T}\phi\rangle.
+                                                                  \tag{5}
+\]</span>
+If <span class="math" data-tex="\(B\)">\(B\)</span> is bounded, <span class="math" data-tex="\(A^{\mathsf T}B\)">\(A^{\mathsf T}B\)</span> is bounded, so (5) is continuous for (2). This is a transpose, not a Hermitian adjoint.</p>
+<p>In Fourier variables our initial-value problem is
+<span class="math math-display" data-tex="\[
+ w&#x27;(t)=A(\xi)w(t)+g(t),\qquad w(0)=w_0.                    \tag{6}
+\]">\[
+ w&#x27;(t)=A(\xi)w(t)+g(t),\qquad w(0)=w_0.                    \tag{6}
+\]</span>
+In spatial variables its generator is <span class="math" data-tex="\(F^{-1}AF\)">\(F^{-1}AF\)</span>. It is a constant coefficient differential operator when <span class="math" data-tex="\(A\)">\(A\)</span> is polynomial, and a spatial convolution operator in the multiplier sense for general (4).</p>
+<h2 id="a-finite-matrix-estimate-that-keeps-multiple-roots">A finite matrix estimate that keeps multiple roots</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+ s(\xi)=\max\{\operatorname{Re}\lambda:
+                   \det(\lambda I-A(\xi))=0\},\qquad
+ M(t,\xi)=e^{tA(\xi)}.                                    \tag{7}
+\]">\[
+ s(\xi)=\max\{\operatorname{Re}\lambda:
+                   \det(\lambda I-A(\xi))=0\},\qquad
+ M(t,\xi)=e^{tA(\xi)}.                                    \tag{7}
+\]</span>
+All multiplicities and nontrivial Jordan blocks are allowed. No smooth choice of individual eigenvalues or eigenvectors is required.</p>
+<p><strong>Lemma 2.1.</strong> For any <span class="math" data-tex="\(r\times r\)">\(r\times r\)</span> matrix <span class="math" data-tex="\(B\)">\(B\)</span>, with spectral bound <span class="math" data-tex="\(s_B\)">\(s_B\)</span>, and any <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+ \|e^{tB}\|\leq e^{t s_B}
+       \sum_{k=0}^{r-1}\frac{(2t\|B\|)^k}{k!}.               \tag{8}
+\]">\[
+ \|e^{tB}\|\leq e^{t s_B}
+       \sum_{k=0}^{r-1}\frac{(2t\|B\|)^k}{k!}.               \tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> Choose a unit eigenvector using complex root existence and the determinant-kernel criterion. Complete it to an orthonormal basis. In that basis the first column has zeros below the diagonal, and the lower square block has dimension <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Induct on that block, using unitary changes on its orthogonal coordinate space. This gives a unitary upper triangularization <span class="math" data-tex="\(U^*BU=D+R\)">\(U^*BU=D+R\)</span>, where <span class="math" data-tex="\(D\)">\(D\)</span> is diagonal and <span class="math" data-tex="\(R\)">\(R\)</span> strictly upper triangular. Each diagonal eigenvalue has modulus at most <span class="math" data-tex="\(\|B\|\)">\(\|B\|\)</span>, because <span class="math" data-tex="\(Bv=\lambda v\)">\(Bv=\lambda v\)</span> for a unit vector. Hence <span class="math" data-tex="\(\|D\|\leq\|B\|\)">\(\|D\|\leq\|B\|\)</span> and <span class="math" data-tex="\(\|R\|\leq2\|B\|\)">\(\|R\|\leq2\|B\|\)</span>.</p>
+<p>The exponential series and its derivatives converge uniformly on bounded time and matrix sets, by the factorial majorant. Thus the series solves its matrix ODE. Variation of constants, obtained by differentiating <span class="math" data-tex="\(e^{-tD}e^{t(D+R)}\)">\(e^{-tD}e^{t(D+R)}\)</span>, gives
+<span class="math math-display" data-tex="\[
+ E(t)=e^{tD}+\int_0^t e^{(t-u)D}R E(u)\,du.               \tag{9}
+\]">\[
+ E(t)=e^{tD}+\int_0^t e^{(t-u)D}R E(u)\,du.               \tag{9}
+\]</span>
+Iterating (9) leaves terms with successively more factors <span class="math" data-tex="\(R\)">\(R\)</span>. A product of <span class="math" data-tex="\(r\)">\(r\)</span> strictly upper triangular factors separated by diagonal matrices is zero: each nonzero entry would need a strictly increasing chain of <span class="math" data-tex="\(r+1\)">\(r+1\)</span> indices in <span class="math" data-tex="\(\{1,\ldots,r\}\)">\(\{1,\ldots,r\}\)</span>. Thus the iteration ends exactly after <span class="math" data-tex="\(r-1\)">\(r-1\)</span> factors, with zero remainder. The diagonal exponentials in a <span class="math" data-tex="\(k\)">\(k\)</span>-fold term have nonnegative times summing to <span class="math" data-tex="\(t\)">\(t\)</span>, so their product norm is bounded by <span class="math" data-tex="\(e^{t s_B}\)">\(e^{t s_B}\)</span>. Its simplex has volume <span class="math" data-tex="\(t^k/k!\)">\(t^k/k!\)</span>, found by iterated integration of one. Summing the resulting bounds and using unitary invariance gives (8). This proof works for repeated eigenvalues, <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, <span class="math" data-tex="\(B=0\)">\(B=0\)</span> and <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2.</strong> Under (4), the following two conditions are equivalent:
+<span class="math math-display" data-tex="\[
+ s(\xi)\leq a+b\log(2+|\xi|)
+       \quad(\xi\in\mathbb R^d),\qquad a,b\geq0;             \tag{10}
+\]">\[
+ s(\xi)\leq a+b\log(2+|\xi|)
+       \quad(\xi\in\mathbb R^d),\qquad a,b\geq0;             \tag{10}
+\]</span>
+<span class="math math-display" data-tex="\[
+ \forall T&gt;0\ \forall\alpha,j\quad\exists C,N:\quad
+ \sup_{0\leq t\leq T}
+ \|\partial_t^j\partial_\xi^\alpha M(t,\xi)\|
+       \leq C(1+|\xi|)^N.                                \tag{11}
+\]">\[
+ \forall T&gt;0\ \forall\alpha,j\quad\exists C,N:\quad
+ \sup_{0\leq t\leq T}
+ \|\partial_t^j\partial_\xi^\alpha M(t,\xi)\|
+       \leq C(1+|\xi|)^N.                                \tag{11}
+\]</span>
+Already the case <span class="math" data-tex="\(\alpha=j=0\)">\(\alpha=j=0\)</span> at any single positive time implies (10).</p>
+<p><strong>Proof.</strong> By (4), <span class="math" data-tex="\(\|A(\xi)\|\leq C(1+|\xi|)^L\)">\(\|A(\xi)\|\leq C(1+|\xi|)^L\)</span> for some integer <span class="math" data-tex="\(L\)">\(L\)</span>. Equations (8) and (10) give, for <span class="math" data-tex="\(0\leq t\leq T\)">\(0\leq t\leq T\)</span>,
+<span class="math math-display" data-tex="\[
+ \|M(t,\xi)\|\leq C_T(1+|\xi|)^{L(r-1)+\lceil bT\rceil}.
+                                                                  \tag{12}
+\]">\[
+ \|M(t,\xi)\|\leq C_T(1+|\xi|)^{L(r-1)+\lceil bT\rceil}.
+                                                                  \tag{12}
+\]</span>
+The factor <span class="math" data-tex="\(e^{at}\)">\(e^{at}\)</span> is bounded by <span class="math" data-tex="\(e^{aT}\)">\(e^{aT}\)</span>; <span class="math" data-tex="\((2+|\xi|)^{bt}\)">\((2+|\xi|)^{bt}\)</span> is bounded by <span class="math" data-tex="\(2^{bT}(1+|\xi|)^{\lceil bT\rceil}\)">\(2^{bT}(1+|\xi|)^{\lceil bT\rceil}\)</span>. Constants may depend on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>The exponential series is smooth in <span class="math" data-tex="\((t,\xi)\)">\((t,\xi)\)</span>. On every compact parameter set, each differentiated term is bounded by a fixed power of its index times a factorial majorant, so termwise differentiation is justified by uniform convergence and the scalar fundamental theorem of calculus. Set <span class="math" data-tex="\(V_\alpha=\partial_\xi^\alpha M\)">\(V_\alpha=\partial_\xi^\alpha M\)</span>. For <span class="math" data-tex="\(|\alpha|&gt;0\)">\(|\alpha|&gt;0\)</span>, differentiating the ODE gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ V_\alpha&#x27;&amp;=A V_\alpha+
+    \sum_{0&lt;\beta\leq\alpha}{\alpha\choose\beta}
+        (\partial_\xi^\beta A)V_{\alpha-\beta},\qquad
+ V_\alpha(0)=0,\\
+ V_\alpha(t)&amp;=\int_0^t M(t-u)
+    \sum_{0&lt;\beta\leq\alpha}{\alpha\choose\beta}
+        (\partial_\xi^\beta A)V_{\alpha-\beta}(u)\,du .
+ \end{aligned}                                                   \tag{13}
+\]">\[
+ \begin{aligned}
+ V_\alpha&#x27;&amp;=A V_\alpha+
+    \sum_{0&lt;\beta\leq\alpha}{\alpha\choose\beta}
+        (\partial_\xi^\beta A)V_{\alpha-\beta},\qquad
+ V_\alpha(0)=0,\\
+ V_\alpha(t)&amp;=\int_0^t M(t-u)
+    \sum_{0&lt;\beta\leq\alpha}{\alpha\choose\beta}
+        (\partial_\xi^\beta A)V_{\alpha-\beta}(u)\,du .
+ \end{aligned}                                                   \tag{13}
+\]</span>
+The second formula follows by differentiating <span class="math" data-tex="\(e^{-tA}V_\alpha(t)\)">\(e^{-tA}V_\alpha(t)\)</span> for each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; invertibility here is the finite identity <span class="math" data-tex="\(e^{-tA}e^{tA}=I\)">\(e^{-tA}e^{tA}=I\)</span>, obtained by multiplying the absolutely convergent series. Induction on <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>, using (4), (12), finite products and an integral of length at most <span class="math" data-tex="\(T\)">\(T\)</span>, gives a polynomial bound for every <span class="math" data-tex="\(V_\alpha\)">\(V_\alpha\)</span>. Finally <span class="math" data-tex="\(\partial_t^j M=A^jM\)">\(\partial_t^j M=A^jM\)</span>, and its <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-derivatives have the finite Leibniz expansion. This proves (11) without differentiating roots or a diagonalizing basis.</p>
+<p>Conversely let <span class="math" data-tex="\(\|M(t_*,\xi)\|\leq C(1+|\xi|)^N\)">\(\|M(t_*,\xi)\|\leq C(1+|\xi|)^N\)</span>, <span class="math" data-tex="\(t_*&gt;0\)">\(t_*&gt;0\)</span>. If <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span>, the series gives <span class="math" data-tex="\(M(t_*)v=e^{t_*\lambda}v\)">\(M(t_*)v=e^{t_*\lambda}v\)</span>. A unit eigenvector therefore gives
+<span class="math math-display" data-tex="\[
+ e^{t_*s(\xi)}\leq\|M(t_*,\xi)\|,
+ \qquad s(\xi)\leq t_*^{-1}
+           \bigl(\log C+N\log(1+|\xi|)\bigr).                \tag{14}
+\]">\[
+ e^{t_*s(\xi)}\leq\|M(t_*,\xi)\|,
+ \qquad s(\xi)\leq t_*^{-1}
+           \bigl(\log C+N\log(1+|\xi|)\bigr).                \tag{14}
+\]</span>
+Increasing the constants to nonnegative values gives (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The triangular estimate explains why a root bound alone suffices even when the matrix is far from normal. Its additional factor is polynomial in <span class="math" data-tex="\(\|A\|\)">\(\|A\|\)</span>, rather than exponential in <span class="math" data-tex="\(\|A\|\)">\(\|A\|\)</span>.</p>
+<h2 id="uniqueness-before-growth-estimates">Uniqueness before growth estimates</h2>
+<p><strong>Lemma 3.1.</strong> For any smooth <span class="math" data-tex="\(A\)">\(A\)</span>, regardless of its behavior at infinity, a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> trajectory in spatial distributions that satisfies <span class="math" data-tex="\(w&#x27;=Aw\)">\(w&#x27;=Aw\)</span> is locally in frequency equal to <span class="math" data-tex="\(M(t)w(0)\)">\(M(t)w(0)\)</span>. In particular a solution in either class of (6) is unique.</p>
+<p><strong>Proof.</strong> On a compact frequency set all derivatives of <span class="math" data-tex="\(M(-t,\xi)\)">\(M(-t,\xi)\)</span> are bounded uniformly for <span class="math" data-tex="\(t\in[0,T]\)">\(t\in[0,T]\)</span>. It acts on distributions locally even when it is not a Schwartz multiplier. For a compactly supported smooth vector test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, differentiate
+<span class="math math-display" data-tex="\[
+ \langle M(-t)w(t),\phi\rangle
+     =\langle w(t),M(-t)^{\mathsf T}\phi\rangle.              \tag{15}
+\]">\[
+ \langle M(-t)w(t),\phi\rangle
+     =\langle w(t),M(-t)^{\mathsf T}\phi\rangle.              \tag{15}
+\]</span>
+The product rule is valid with this moving test. To check it, split its difference quotient into the change of <span class="math" data-tex="\(w\)">\(w\)</span> tested at the fixed test and the change of the test paired with <span class="math" data-tex="\(w(t+h)\)">\(w(t+h)\)</span>. Taylor's formula gives convergence of the test quotient in every compact smooth seminorm. The family <span class="math" data-tex="\(w(t+h)\)">\(w(t+h)\)</span>, for <span class="math" data-tex="\(h\)">\(h\)</span> in a compact small interval, is uniformly bounded on such tests. Indeed each fixed test pairing is bounded by continuity; the uniform boundedness theorem on the Fréchet space of tests supported in that compact gives one finite derivative order. The same estimate permits the product-rule limit. A strong <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> trajectory satisfies these local hypotheses, and a Schwartz trajectory does too.</p>
+<p>Since <span class="math" data-tex="\(A\)">\(A\)</span> commutes with its exponential, the two derivatives in (15) cancel. The scalar fundamental theorem gives <span class="math" data-tex="\(M(-t)w(t)=w(0)\)">\(M(-t)w(t)=w(0)\)</span> as distributions on every compact frequency neighborhood. Multiplying locally by <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> gives the assertion. This equality is local, so it has not assumed a global multiplier estimate. Subtracting two forced solutions proves uniqueness as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="arbitrary-data-are-equivalent-to-the-logarithmic-bound">Arbitrary data are equivalent to the logarithmic bound</h2>
+<p><strong>Theorem 4.1.</strong> Let (4) hold. The following conditions are equivalent.</p>
+<ol>
+<li>The logarithmic spectral bound (10) holds.</li>
+<li>For every <span class="math" data-tex="\(w_0\in\mathcal S\)">\(w_0\in\mathcal S\)</span>, the homogeneous problem <span class="math" data-tex="\(w&#x27;=Aw\)">\(w&#x27;=Aw\)</span>, <span class="math" data-tex="\(w(0)=w_0\)">\(w(0)=w_0\)</span>, has a <span class="math" data-tex="\(C^1([0,T_*];\mathcal S)\)">\(C^1([0,T_*];\mathcal S)\)</span> solution on one fixed interval <span class="math" data-tex="\(T_*&gt;0\)">\(T_*&gt;0\)</span>.</li>
+<li>For every <span class="math" data-tex="\(w_0\in\mathcal S&#x27;\)">\(w_0\in\mathcal S&#x27;\)</span>, the same problem has a <span class="math" data-tex="\(C^1([0,T_*];\mathcal S&#x27;)\)">\(C^1([0,T_*];\mathcal S&#x27;)\)</span> solution in the strong topology on one fixed interval <span class="math" data-tex="\(T_*&gt;0\)">\(T_*&gt;0\)</span>.</li>
+</ol>
+<p>Each implies unique smooth homogeneous trajectories on every finite forward interval and continuous dependence on initial data, locally uniformly in time. The interval in conditions 2 and 3 is common to all data. A datum-dependent existence time is not asserted to be equivalent.</p>
+<p><strong>Proof of sufficiency.</strong> Lemma 2.2 and the finite Leibniz rule give, for every <span class="math" data-tex="\(N,j,T\)">\(N,j,T\)</span>, some <span class="math" data-tex="\(C,L\)">\(C,L\)</span> such that
+<span class="math math-display" data-tex="\[
+ \sup_{0\leq t\leq T}p_N((\partial_t^jM(t))\phi)
+                 \leq C p_L(\phi).                         \tag{16}
+\]">\[
+ \sup_{0\leq t\leq T}p_N((\partial_t^jM(t))\phi)
+                 \leq C p_L(\phi).                         \tag{16}
+\]</span>
+Thus <span class="math" data-tex="\(w(t)=M(t)w_0\)">\(w(t)=M(t)w_0\)</span> belongs to <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Taylor's integral remainder in <span class="math" data-tex="\(t\)">\(t\)</span>, using (16) for one additional derivative, proves its continuity and all difference-quotient limits in every <span class="math" data-tex="\(p_N\)">\(p_N\)</span>. It solves the ODE and has initial value <span class="math" data-tex="\(w_0\)">\(w_0\)</span>.</p>
+<p>For tempered data define <span class="math" data-tex="\(M(t)w_0\)">\(M(t)w_0\)</span> by transposition, as in (5). For any bounded <span class="math" data-tex="\(B\subset\mathcal S\)">\(B\subset\mathcal S\)</span> the set
+<span class="math math-display" data-tex="\[
+ C_{B,j,T}=\{(\partial_t^j M(t))^{\mathsf T}\phi:
+                   0\leq t\leq T,\ \phi\in B\}             \tag{17}
+\]">\[
+ C_{B,j,T}=\{(\partial_t^j M(t))^{\mathsf T}\phi:
+                   0\leq t\leq T,\ \phi\in B\}             \tag{17}
+\]</span>
+is bounded by (16). Hence
+<span class="math math-display" data-tex="\[
+ \sup_{0\leq t\leq T}q_B((\partial_t^jM(t))w_0)
+                   \leq q_{C_{B,j,T}}(w_0).                \tag{18}
+\]">\[
+ \sup_{0\leq t\leq T}q_B((\partial_t^jM(t))w_0)
+                   \leq q_{C_{B,j,T}}(w_0).                \tag{18}
+\]</span>
+For a fixed <span class="math" data-tex="\(w_0\)">\(w_0\)</span>, choose <span class="math" data-tex="\(|\langle w_0,\psi\rangle|\leq C_0p_m(\psi)\)">\(|\langle w_0,\psi\rangle|\leq C_0p_m(\psi)\)</span>. The first-order Taylor remainder, uniformly for <span class="math" data-tex="\(\phi\in B\)">\(\phi\in B\)</span>, is <span class="math" data-tex="\(O(|h|)\)">\(O(|h|)\)</span> in <span class="math" data-tex="\(p_m\)">\(p_m\)</span>, by (16) for the second time derivative. Pairing with <span class="math" data-tex="\(w_0\)">\(w_0\)</span> makes the difference quotient converge uniformly on <span class="math" data-tex="\(B\)">\(B\)</span>. Applying the same argument to every time derivative proves a smooth strong trajectory and (6). Equations (16) and (18) give the stated locally uniform continuous dependence. Lemma 3.1 gives uniqueness.</p>
+<p><strong>Necessity from Schwartz existence.</strong> Work in frequency variables. Let <span class="math" data-tex="\(X\)">\(X\)</span> be the closed subspace of <span class="math" data-tex="\(C^1([0,T_*];\mathcal S)\)">\(C^1([0,T_*];\mathcal S)\)</span> consisting of solutions of <span class="math" data-tex="\(w&#x27;=Aw\)">\(w&#x27;=Aw\)</span>, with its trajectory seminorms
+<span class="math math-display" data-tex="\[
+ \max_{j=0,1}\sup_{0\leq t\leq T_*}p_N(w^{(j)}(t)).          \tag{19}
+\]">\[
+ \max_{j=0,1}\sup_{0\leq t\leq T_*}p_N(w^{(j)}(t)).          \tag{19}
+\]</span>
+This trajectory space is Fréchet. A Cauchy sequence has uniformly convergent function and first-derivative sequences in every Schwartz seminorm; their pointwise limits <span class="math" data-tex="\(w,v\)">\(w,v\)</span> exist by completeness of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> and are continuous. Applying spatial derivative evaluations to the scalar fundamental theorem gives <span class="math" data-tex="\(w(t)-w(s)=\int_s^t v(u)\,du\)">\(w(t)-w(s)=\int_s^t v(u)\,du\)</span> pointwise with every spatial derivative. Consequently, for each <span class="math" data-tex="\(N\)">\(N\)</span>, the seminorm of <span class="math" data-tex="\((w(t+h)-w(t))/h-v(t)\)">\((w(t+h)-w(t))/h-v(t)\)</span> is at most <span class="math" data-tex="\(\sup_{u\text{ between }t\text{ and }t+h}p_N(v(u)-v(t))\)">\(\sup_{u\text{ between }t\text{ and }t+h}p_N(v(u)-v(t))\)</span>, which tends to zero. This proves that <span class="math" data-tex="\(v=w&#x27;\)">\(v=w&#x27;\)</span> without assuming an abstract vector integration theorem. The same seminorm estimates give convergence in (19). The equation defining <span class="math" data-tex="\(X\)">\(X\)</span> is closed because multiplication by <span class="math" data-tex="\(A\)">\(A\)</span> is continuous.</p>
+<p>The evaluation <span class="math" data-tex="\(J:X\to\mathcal S\)">\(J:X\to\mathcal S\)</span>, <span class="math" data-tex="\(Jw=w(0)\)">\(Jw=w(0)\)</span>, is continuous, bijective by the all-data hypothesis and Lemma 3.1. Its inverse has closed graph: convergence in <span class="math" data-tex="\(X\)">\(X\)</span> preserves the initial value. The Fréchet closed graph theorem therefore makes the data-to-trajectory map continuous. In particular for any <span class="math" data-tex="\(t_*\in(0,T_*]\)">\(t_*\in(0,T_*]\)</span>,
+<span class="math math-display" data-tex="\[
+ p_0(w(t_*))\leq C p_N(w_0)                               \tag{20}
+\]">\[
+ p_0(w(t_*))\leq C p_N(w_0)                               \tag{20}
+\]</span>
+for some <span class="math" data-tex="\(C,N\)">\(C,N\)</span>. Choose a scalar bump <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, equal to one at zero, and a unit vector <span class="math" data-tex="\(v\)">\(v\)</span>. Set <span class="math" data-tex="\(w_0(\eta)=\chi(\eta-\xi)v\)">\(w_0(\eta)=\chi(\eta-\xi)v\)</span>. Its seminorm is at most <span class="math" data-tex="\(C_\chi(1+|\xi|)^N\)">\(C_\chi(1+|\xi|)^N\)</span>. Lemma 3.1 identifies its solution locally with <span class="math" data-tex="\(M(t,\eta)w_0(\eta)\)">\(M(t,\eta)w_0(\eta)\)</span>. Evaluating (20) at <span class="math" data-tex="\(\eta=\xi\)">\(\eta=\xi\)</span> and taking the supremum over unit <span class="math" data-tex="\(v\)">\(v\)</span> gives the polynomial bound for <span class="math" data-tex="\(\|M(t_*,\xi)\|\)">\(\|M(t_*,\xi)\|\)</span>. Equation (14) proves (10). This derives continuity rather than presupposing it in condition 2.</p>
+<p><strong>Necessity from tempered existence.</strong> Suppose (10) fails, and fix <span class="math" data-tex="\(t_*\in(0,T_*]\)">\(t_*\in(0,T_*]\)</span>. The smooth matrix is bounded on compact frequency sets, so its spectral real parts are bounded there. Failure of every logarithmic upper bound permits a sequence <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span>, after successive choices, with
+<span class="math math-display" data-tex="\[
+ |\xi_k|\geq2^k,\qquad
+ |\xi_{k+1}|&gt;|\xi_k|+3,\qquad
+ e^{t_*\operatorname{Re}\lambda_k}&gt;(2+|\xi_k|)^k,            \tag{21}
+\]">\[
+ |\xi_k|\geq2^k,\qquad
+ |\xi_{k+1}|&gt;|\xi_k|+3,\qquad
+ e^{t_*\operatorname{Re}\lambda_k}&gt;(2+|\xi_k|)^k,            \tag{21}
+\]</span>
+where <span class="math" data-tex="\(A(\xi_k)v_k=\lambda_kv_k\)">\(A(\xi_k)v_k=\lambda_kv_k\)</span> and <span class="math" data-tex="\(|v_k|=1\)">\(|v_k|=1\)</span>. To see that choices can always avoid a given compact set, the quotient <span class="math" data-tex="\(s(\xi)/\log(2+|\xi|)\)">\(s(\xi)/\log(2+|\xi|)\)</span> is bounded there, whereas failure of (10) makes it unbounded globally. Each chosen eigenvector has a component of absolute value at least <span class="math" data-tex="\(r^{-1/2}\)">\(r^{-1/2}\)</span>. An infinite subsequence has the same such component index <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; relabeling preserves (21), with the exponent at least its new index.</p>
+<p>The vector distribution
+<span class="math math-display" data-tex="\[
+ w_0=\sum_{k=1}^{\infty}v_k\delta_{\xi_k}                   \tag{22}
+\]">\[
+ w_0=\sum_{k=1}^{\infty}v_k\delta_{\xi_k}                   \tag{22}
+\]</span>
+is tempered: <span class="math" data-tex="\(\sum_k|\phi(\xi_k)|\leq p_1(\phi)\sum_k(1+2^k)^{-1}\)">\(\sum_k|\phi(\xi_k)|\leq p_1(\phi)\sum_k(1+2^k)^{-1}\)</span>. Its sum is locally finite. By condition 3 it has a strong solution. Lemma 3.1 gives, near each selected frequency,
+<span class="math math-display" data-tex="\[
+ w(t_*)=e^{t_*\lambda_k}v_k\delta_{\xi_k}.                 \tag{23}
+\]">\[
+ w(t_*)=e^{t_*\lambda_k}v_k\delta_{\xi_k}.                 \tag{23}
+\]</span>
+Choose one scalar bump supported in the unit ball and equal to one at zero. Testing (23) on its translate centered at <span class="math" data-tex="\(\xi_k\)">\(\xi_k\)</span>, in component <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, gives absolute value at least <span class="math" data-tex="\(r^{-1/2}e^{t_*\operatorname{Re}\lambda_k}\)">\(r^{-1/2}e^{t_*\operatorname{Re}\lambda_k}\)</span>. Temperedness of <span class="math" data-tex="\(w(t_*)\)">\(w(t_*)\)</span> would bound that value by <span class="math" data-tex="\(C p_N(\chi(\cdot-\xi_k)e_\ell)\leq C_\chi&#x27;(1+|\xi_k|)^N\)">\(C p_N(\chi(\cdot-\xi_k)e_\ell)\leq C_\chi&#x27;(1+|\xi_k|)^N\)</span> for one fixed <span class="math" data-tex="\(C,N\)">\(C,N\)</span>. This contradicts (21) for large <span class="math" data-tex="\(k\)">\(k\)</span>. Thus (10) holds. No closed graph theorem on <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, reflexivity claim or assumed continuous data map is used in this direction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (time reversal).</strong> Arbitrary data in either class can be evolved both forward and backward on finite intervals if and only if
+<span class="math math-display" data-tex="\[
+ |\operatorname{Re}\lambda|\leq a+b\log(2+|\xi|)
+       \quad\bigl(\lambda\in\operatorname{spec}A(\xi)\bigr). \tag{24}
+\]">\[
+ |\operatorname{Re}\lambda|\leq a+b\log(2+|\xi|)
+       \quad\bigl(\lambda\in\operatorname{spec}A(\xi)\bigr). \tag{24}
+\]</span>
+Apply Theorem 4.1 to <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(-A\)">\(-A\)</span>. Translation of the initial time gives any finite interval starting at any <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. A final-value problem on <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> tests <span class="math" data-tex="\(-A\)">\(-A\)</span>. These two directions are different for the heat equation.</p>
+<h2 id="forcing-and-the-strong-tempered-integral">Forcing and the strong tempered integral</h2>
+<p><strong>Theorem 5.1.</strong> Under (10), for <span class="math" data-tex="\(E=\mathcal S\)">\(E=\mathcal S\)</span> or strong <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>, any <span class="math" data-tex="\(w_0\in E\)">\(w_0\in E\)</span> and <span class="math" data-tex="\(g\in C([0,T];E)\)">\(g\in C([0,T];E)\)</span> have exactly one solution of (6) in <span class="math" data-tex="\(C^1([0,T];E)\)">\(C^1([0,T];E)\)</span>, given by
+<span class="math math-display" data-tex="\[
+ w(t)=M(t)w_0+\int_0^t M(t-u)g(u)\,du.                    \tag{25}
+\]">\[
+ w(t)=M(t)w_0+\int_0^t M(t-u)g(u)\,du.                    \tag{25}
+\]</span>
+For <span class="math" data-tex="\(g\in C^k\)">\(g\in C^k\)</span>, the solution is <span class="math" data-tex="\(C^{k+1}\)">\(C^{k+1}\)</span>, and for smooth <span class="math" data-tex="\(g\)">\(g\)</span> it is smooth. The solution depends continuously on <span class="math" data-tex="\(w_0,g\)">\(w_0,g\)</span> for the trajectory topologies.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, the integrand is continuous in every seminorm: use (16) to separate the change of <span class="math" data-tex="\(g\)">\(g\)</span> from the change of <span class="math" data-tex="\(M\)">\(M\)</span>. Riemann sums converge in every seminorm by uniform continuity on the compact time triangle and completeness. The scalar pairing integral agrees with this limit. Its defining estimate is
+<span class="math math-display" data-tex="\[
+ p_N\left(\int_0^tM(t-u)g(u)\,du\right)
+       \leq C T\sup_{0\leq u\leq T}p_L(g(u)).               \tag{26}
+\]">\[
+ p_N\left(\int_0^tM(t-u)g(u)\,du\right)
+       \leq C T\sup_{0\leq u\leq T}p_L(g(u)).               \tag{26}
+\]</span>
+Taylor remainders or the difference of integrals at <span class="math" data-tex="\(t+h\)">\(t+h\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> give the derivative as <span class="math" data-tex="\(g(t)+A\int_0^tM(t-u)g(u)\,du\)">\(g(t)+A\int_0^tM(t-u)g(u)\,du\)</span>, including the one-sided endpoints.</p>
+<p>For strong tempered forcing, first note a uniform functional bound
+<span class="math math-display" data-tex="\[
+ |\langle g(u),\psi\rangle|\leq C p_m(\psi),
+               \qquad 0\leq u\leq T.                      \tag{27}
+\]">\[
+ |\langle g(u),\psi\rangle|\leq C p_m(\psi),
+               \qquad 0\leq u\leq T.                      \tag{27}
+\]</span>
+Each fixed pairing is bounded by continuity in time, and the uniform boundedness theorem on the Fréchet space <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> gives (27). Define the integral by
+<span class="math math-display" data-tex="\[
+ \langle I(t),\phi\rangle
+   =\int_0^t\langle g(u),M(t-u)^{\mathsf T}\phi\rangle\,du. \tag{28}
+\]">\[
+ \langle I(t),\phi\rangle
+   =\int_0^t\langle g(u),M(t-u)^{\mathsf T}\phi\rangle\,du. \tag{28}
+\]</span>
+The integrand is scalar continuous. Equations (27) and (16) bound the resulting functional by <span class="math" data-tex="\(CTp_L(\phi)\)">\(CTp_L(\phi)\)</span>, so <span class="math" data-tex="\(I(t)\in\mathcal S&#x27;\)">\(I(t)\in\mathcal S&#x27;\)</span>. There is no unsupported assertion of an integral in a complete abstract dual space.</p>
+<p>For a bounded set <span class="math" data-tex="\(B\)">\(B\)</span>, all transformed tests <span class="math" data-tex="\(M(v)^{\mathsf T}\phi\)">\(M(v)^{\mathsf T}\phi\)</span>, <span class="math" data-tex="\(0\leq v\leq T\)">\(0\leq v\leq T\)</span>, <span class="math" data-tex="\(\phi\in B\)">\(\phi\in B\)</span>, form a bounded set <span class="math" data-tex="\(C_B\)">\(C_B\)</span>. The continuity of <span class="math" data-tex="\(g\)">\(g\)</span> in the seminorm <span class="math" data-tex="\(q_{C_B}\)">\(q_{C_B}\)</span>, and Taylor's estimate (16) paired through (27), show uniformly on <span class="math" data-tex="\(B\)">\(B\)</span> that Riemann sums in (28) converge and that <span class="math" data-tex="\(I(t)\)">\(I(t)\)</span> is strongly continuous. They also give
+<span class="math math-display" data-tex="\[
+ \sup_{0\leq t\leq T}q_B(I(t))
+       \leq T\sup_{0\leq u\leq T}q_{C_B}(g(u)).             \tag{29}
+\]">\[
+ \sup_{0\leq t\leq T}q_B(I(t))
+       \leq T\sup_{0\leq u\leq T}q_{C_B}(g(u)).             \tag{29}
+\]</span>
+More explicitly, when two parameter points on the time triangle are close, the pairing change due to <span class="math" data-tex="\(g\)">\(g\)</span> is bounded by <span class="math" data-tex="\(q_{C_B}(g(u)-g(u&#x27;))\)">\(q_{C_B}(g(u)-g(u&#x27;))\)</span>; the change due to <span class="math" data-tex="\(M\)">\(M\)</span> is bounded through (27) by its <span class="math" data-tex="\(p_m\)">\(p_m\)</span> Taylor estimate, uniformly on <span class="math" data-tex="\(B\)">\(B\)</span>. Both tend to zero uniformly. This is exactly the estimate needed for Riemann sums and their limits.</p>
+<p>In the difference quotient for (28), the common interval contributes the strong limit <span class="math" data-tex="\(AI(t)\)">\(AI(t)\)</span> by the first time derivative of <span class="math" data-tex="\(M\)">\(M\)</span> and its uniform Taylor remainder. The extra interval, with its orientation when <span class="math" data-tex="\(h&lt;0\)">\(h&lt;0\)</span>, contributes <span class="math" data-tex="\(g(t)\)">\(g(t)\)</span>: its transformed tests approach <span class="math" data-tex="\(\phi\)">\(\phi\)</span> uniformly in every <span class="math" data-tex="\(p_m\)">\(p_m\)</span>, and strong continuity of <span class="math" data-tex="\(g\)">\(g\)</span> controls the other change. Thus <span class="math" data-tex="\(I&#x27;=AI+g\)">\(I&#x27;=AI+g\)</span> strongly. Together with (18) and (29), this proves the claimed existence, differentiability and continuous dependence. The equation successively gives higher derivatives when <span class="math" data-tex="\(g\)">\(g\)</span> has them. Lemma 3.1 gives uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness, the spatial convolution notation in this theorem has an exact meaning. Put <span class="math" data-tex="\(K_t=F^{-1}M(t)\)">\(K_t=F^{-1}M(t)\)</span>, entry by entry as tempered distributions. For <span class="math" data-tex="\(f\in\mathcal S\)">\(f\in\mathcal S\)</span>, define the ordinary smooth convolution by <span class="math" data-tex="\((K_t*f)(x)=\langle K_t(y),f(x-y)\rangle\)">\((K_t*f)(x)=\langle K_t(y),f(x-y)\rangle\)</span>, with matrix multiplication. This equals <span class="math" data-tex="\(F^{-1}(M(t)Ff)\)">\(F^{-1}(M(t)Ff)\)</span>: insert (3) for the test <span class="math" data-tex="\(f(x-\cdot)\)">\(f(x-\cdot)\)</span> into the distributional inverse-transform pairing. Its Fourier transform is <span class="math" data-tex="\(e^{-ix\cdot\eta}Ff(-\eta)\)">\(e^{-ix\cdot\eta}Ff(-\eta)\)</span>; reflection in the inverse transform changes this to <span class="math" data-tex="\(e^{ix\cdot\xi}Ff(\xi)\)">\(e^{ix\cdot\xi}Ff(\xi)\)</span>, with the factor <span class="math" data-tex="\((2\pi)^{-d}\)">\((2\pi)^{-d}\)</span>. The product is integrable by the polynomial bound and rapid decay. For arbitrary tempered <span class="math" data-tex="\(f\)">\(f\)</span>, the same notation denotes its continuous extension defined by the Fourier multiplier and (5). It is not an assertion that an arbitrary pair of tempered distributions has an ordinary convolution. In these conventions <span class="math" data-tex="\(K_0=\delta_0 I\)">\(K_0=\delta_0 I\)</span>, and (25) becomes
+<span class="math math-display" data-tex="\[
+ u(t)=K_t*u_0+\int_0^tK_{t-v}*f(v)\,dv.                    \tag{30}
+\]">\[
+ u(t)=K_t*u_0+\int_0^tK_{t-v}*f(v)\,dv.                    \tag{30}
+\]</span></p>
+<h2 id="higher-time-order-and-the-imaginary-root-sign">Higher time order and the imaginary-root sign</h2>
+<p>The same formulation applies to any nonzero real time normal <span class="math" data-tex="\(N\)">\(N\)</span> in <span class="math" data-tex="\(\mathbb R^{1+d}\)">\(\mathbb R^{1+d}\)</span>. Use <span class="math" data-tex="\(n=N/|N|\)">\(n=N/|N|\)</span>, <span class="math" data-tex="\(t=n\cdot X\)">\(t=n\cdot X\)</span> and orthonormal coordinates on <span class="math" data-tex="\(n^\perp\)">\(n^\perp\)</span>. An orthogonal coordinate change preserves the Schwartz topology by the finite chain rule and the Euclidean weight. A complex covector on the time ray is <span class="math" data-tex="\(\zeta=\xi+zn\)">\(\zeta=\xi+zn\)</span>, <span class="math" data-tex="\(\xi\in n^\perp\)">\(\xi\in n^\perp\)</span> real. In the unnormalized convention <span class="math" data-tex="\(\operatorname{Im}\zeta=\tau N\)">\(\operatorname{Im}\zeta=\tau N\)</span>, its time coordinate satisfies <span class="math" data-tex="\(\operatorname{Im}z=|N|\tau\)">\(\operatorname{Im}z=|N|\tau\)</span>. Consequently an exponential factor <span class="math" data-tex="\(e^{c\tau}\)">\(e^{c\tau}\)</span> becomes <span class="math" data-tex="\(e^{(c/|N|)\operatorname{Im}z}\)">\(e^{(c/|N|)\operatorname{Im}z}\)</span>; the forward halfspace is unchanged. This keeps the imaginary-root sign under normalization.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ P(z,\xi)=\sum_{j=0}^q a_j(\xi)z^j,
+ \qquad q\geq1,\qquad a_q(\xi)\ne0\ (\xi\in\mathbb R^d),  \tag{31}
+\]">\[
+ P(z,\xi)=\sum_{j=0}^q a_j(\xi)z^j,
+ \qquad q\geq1,\qquad a_q(\xi)\ne0\ (\xi\in\mathbb R^d),  \tag{31}
+\]</span>
+where the coefficients are complex polynomials. A nonzero constant <span class="math" data-tex="\(a_q\)">\(a_q\)</span> is the ordinary equation solved for the highest time derivative. The more general nonvanishing assumption still permits inversion in the same spatial classes.</p>
+<p>Indeed <span class="math" data-tex="\(|a_q|^2\)">\(|a_q|^2\)</span> is a positive real polynomial. The positive-polynomial bound in <em>Symbols at infinity</em> gives <span class="math" data-tex="\(|a_q(\xi)|\geq c(1+|\xi|)^{-L}\)">\(|a_q(\xi)|\geq c(1+|\xi|)^{-L}\)</span>. Repeated differentiation of <span class="math" data-tex="\(a_q^{-1}\)">\(a_q^{-1}\)</span> is a finite sum of products of polynomial derivatives divided by powers of <span class="math" data-tex="\(a_q\)">\(a_q\)</span>. Every derivative therefore has a polynomial bound. Thus <span class="math" data-tex="\(a_q^{-1}\in\mathcal O_M\)">\(a_q^{-1}\in\mathcal O_M\)</span>, and multiplication by it is an inverse on both spatial classes. No division of a distribution at a zero is being assumed.</p>
+<p>Consider
+<span class="math math-display" data-tex="\[
+ P(D_t,D_x)u=f,\qquad D_t=-i\partial_t,
+ \qquad \partial_t^j u(0)=h_j\quad(0\leq j&lt;q).              \tag{32}
+\]">\[
+ P(D_t,D_x)u=f,\qquad D_t=-i\partial_t,
+ \qquad \partial_t^j u(0)=h_j\quad(0\leq j&lt;q).              \tag{32}
+\]</span>
+After Fourier transformation in <span class="math" data-tex="\(x\)">\(x\)</span>, set <span class="math" data-tex="\(W=(v,\partial_tv,\ldots,\partial_t^{q-1}v)^{\mathsf T}\)">\(W=(v,\partial_tv,\ldots,\partial_t^{q-1}v)^{\mathsf T}\)</span>. Its equation is
+<span class="math math-display" data-tex="\[
+ W&#x27;=A_P(\xi)W+i^q a_q(\xi)^{-1}e_q Ff,
+ \quad W(0)=(Fh_0,\ldots,Fh_{q-1})^{\mathsf T},             \tag{33}
+\]">\[
+ W&#x27;=A_P(\xi)W+i^q a_q(\xi)^{-1}e_q Ff,
+ \quad W(0)=(Fh_0,\ldots,Fh_{q-1})^{\mathsf T},             \tag{33}
+\]</span>
+where the first <span class="math" data-tex="\(q-1\)">\(q-1\)</span> rows of <span class="math" data-tex="\(A_P\)">\(A_P\)</span> have a one immediately above the diagonal and zero elsewhere, and its last row, indexed by <span class="math" data-tex="\(j=0,\ldots,q-1\)">\(j=0,\ldots,q-1\)</span>, is
+<span class="math math-display" data-tex="\[
+ (A_P)_{q,j+1}=-i^{q-j}\frac{a_j(\xi)}{a_q(\xi)}.          \tag{34}
+\]">\[
+ (A_P)_{q,j+1}=-i^{q-j}\frac{a_j(\xi)}{a_q(\xi)}.          \tag{34}
+\]</span>
+These signs follow by dividing <span class="math" data-tex="\(\sum_j a_j(-i)^j\partial_t^jv=Ff\)">\(\sum_j a_j(-i)^j\partial_t^jv=Ff\)</span> by <span class="math" data-tex="\((-i)^qa_q\)">\((-i)^qa_q\)</span>. In particular the forcing factor is <span class="math" data-tex="\(i^q/a_q\)">\(i^q/a_q\)</span>. The matrix satisfies (4).</p>
+<p>Its characteristic roots are precisely
+<span class="math math-display" data-tex="\[
+ \lambda=iz,\qquad P(z,\xi)=0,
+ \qquad \operatorname{Re}\lambda=-\operatorname{Im}z.        \tag{35}
+\]">\[
+ \lambda=iz,\qquad P(z,\xi)=0,
+ \qquad \operatorname{Re}\lambda=-\operatorname{Im}z.        \tag{35}
+\]</span>
+For example a root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> gives the nonzero companion vector <span class="math" data-tex="\((1,\lambda,\ldots,\lambda^{q-1})^{\mathsf T}\)">\((1,\lambda,\ldots,\lambda^{q-1})^{\mathsf T}\)</span>; the last row equation is the divided polynomial equation. Conversely the first rows of an eigenvector determine all components from the first, which cannot vanish, and the last row gives the same polynomial. The full characteristic determinant is the monic polynomial <span class="math" data-tex="\(P(-i\lambda,\xi)/[(-i)^qa_q(\xi)]\)">\(P(-i\lambda,\xi)/[(-i)^qa_q(\xi)]\)</span>: expansion along the companion rows, or induction on their size, gives coefficients <span class="math" data-tex="\(i^{q-j}a_j/a_q\)">\(i^{q-j}a_j/a_q\)</span>. Thus multiplicities also agree.</p>
+<p>The elementary monic root bound gives a uniform polynomial modulus bound
+<span class="math math-display" data-tex="\[
+ |z|\leq C(1+|\xi|)^L\qquad(P(z,\xi)=0).                  \tag{36}
+\]">\[
+ |z|\leq C(1+|\xi|)^L\qquad(P(z,\xi)=0).                  \tag{36}
+\]</span>
+To verify it, put <span class="math" data-tex="\(b_j=a_j/a_q\)">\(b_j=a_j/a_q\)</span>. If <span class="math" data-tex="\(|z|&gt;1+\max_{j&lt;q}|b_j|\)">\(|z|&gt;1+\max_{j&lt;q}|b_j|\)</span>, then <span class="math" data-tex="\(\sum_{j&lt;q}|b_j||z|^j&lt;|z|^q\)">\(\sum_{j&lt;q}|b_j||z|^j&lt;|z|^q\)</span>, by the geometric sum, so the monic polynomial cannot vanish. The ratios are polynomially bounded as just proved.</p>
+<p><strong>Theorem 6.1.</strong> Under (31), the following are equivalent: arbitrary initial traces <span class="math" data-tex="\(h_0,\ldots,h_{q-1}\)">\(h_0,\ldots,h_{q-1}\)</span> in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> admit a solution of (32) with <span class="math" data-tex="\(f=0\)">\(f=0\)</span> in <span class="math" data-tex="\(C^q([0,T_*];\mathcal S)\)">\(C^q([0,T_*];\mathcal S)\)</span>; arbitrary initial traces in strong <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> admit such a solution; and there are constants <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> such that
+<span class="math math-display" data-tex="\[
+ -\operatorname{Im}z\leq a+b\log(2+|\xi|)
+                  \qquad(P(z,\xi)=0).                     \tag{37}
+\]">\[
+ -\operatorname{Im}z\leq a+b\log(2+|\xi|)
+                  \qquad(P(z,\xi)=0).                     \tag{37}
+\]</span>
+Here <span class="math" data-tex="\(T_*&gt;0\)">\(T_*&gt;0\)</span> is fixed for all traces. Each implies unique smooth homogeneous solutions on every finite forward interval. For continuous forcing in either class, the solution is <span class="math" data-tex="\(C^q\)">\(C^q\)</span>; the first component of (25) applied to (33) is its complete forced formula. Conversely any <span class="math" data-tex="\(C^q\)">\(C^q\)</span> solution gives the <span class="math" data-tex="\(C^1\)">\(C^1\)</span> companion trajectory. The first companion rows ensure that the constructed components really are the successive derivatives of the first. This proves the equivalence by Theorem 4.1, including all <span class="math" data-tex="\(q\)">\(q\)</span> independent traces.</p>
+<p>An equivalent form of (37), concerning only roots with <span class="math" data-tex="\(\operatorname{Im}z&lt;0\)">\(\operatorname{Im}z&lt;0\)</span>, is the existence of <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, an integer <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+ 1\leq C(1+|(z,\xi)|)^N e^{c\operatorname{Im}z},
+ \qquad c&gt;0.                                               \tag{38}
+\]">\[
+ 1\leq C(1+|(z,\xi)|)^N e^{c\operatorname{Im}z},
+ \qquad c&gt;0.                                               \tag{38}
+\]</span>
+From (38), taking logarithms and using (36) gives (37). From (37), use <span class="math" data-tex="\(|(z,\xi)|\geq|\xi|\)">\(|(z,\xi)|\geq|\xi|\)</span>, increase <span class="math" data-tex="\(C\)">\(C\)</span>, and choose integer <span class="math" data-tex="\(N\geq cb\)">\(N\geq cb\)</span> to obtain (38). Roots with nonnegative imaginary part already satisfy the upper bound in (37) after increasing <span class="math" data-tex="\(a\)">\(a\)</span>. The negative sign in (35) explains the direction of this estimate: negative imaginary time roots grow in positive time.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> has total degree <span class="math" data-tex="\(m\)">\(m\)</span>, the initial plane <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is noncharacteristic precisely when <span class="math" data-tex="\(P_m(e_t)\ne0\)">\(P_m(e_t)\ne0\)</span>. In (31) this occurs exactly when <span class="math" data-tex="\(q=m\)">\(q=m\)</span> and <span class="math" data-tex="\(a_q\)">\(a_q\)</span> is a nonzero constant. When <span class="math" data-tex="\(q&lt;m\)">\(q&lt;m\)</span>, the plane is characteristic in the total-degree sense, but Theorem 6.1 still applies. No unrestricted smooth uniqueness across a characteristic plane is inferred. The required spatial growth class is retained throughout.</p>
+<p>The nonvanishing leading coefficient is essential for arbitrary trace data. For instance
+<span class="math math-display" data-tex="\[
+ P(z,\xi)=\xi z-1\quad(d=1)                               \tag{39}
+\]">\[
+ P(z,\xi)=\xi z-1\quad(d=1)                               \tag{39}
+\]</span>
+has only real time roots at nonzero real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, hence a perfect one-sided root bound. At <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> it has no root, but its leading time coefficient vanishes. A <span class="math" data-tex="\(C^1\)">\(C^1\)</span> Schwartz solution of its homogeneous equation would satisfy <span class="math" data-tex="\(-i\xi\partial_t v(t,\xi)-v(t,\xi)=0\)">\(-i\xi\partial_t v(t,\xi)-v(t,\xi)=0\)</span>, so <span class="math" data-tex="\(v(0,0)=0\)">\(v(0,0)=0\)</span>. Choosing a Schwartz initial transform equal to one at zero disproves arbitrary-data solvability. Root absence at that frequency does not remove the compatibility condition. Singular differential-algebraic time symbols require their own data spaces; they are not part of Theorem 6.1.</p>
+<h2 id="polynomial-roots-and-a-fixed-barrier">Polynomial roots and a fixed barrier</h2>
+<p>For polynomial <span class="math" data-tex="\(A\)">\(A\)</span>, (10) improves to <span class="math" data-tex="\(s(\xi)\leq\omega\)">\(s(\xi)\leq\omega\)</span> for a constant <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The same improvement holds for the rational companion matrix in (33). Here is the precise additional algebraic argument.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ h(R)=\max\left(\{0\}\cup
+   \{\operatorname{Re}\lambda:
+       |\xi|\leq R,\ \det(\lambda I-A(\xi))=0\}\right).      \tag{40}
+\]">\[
+ h(R)=\max\left(\{0\}\cup
+   \{\operatorname{Re}\lambda:
+       |\xi|\leq R,\ \det(\lambda I-A(\xi))=0\}\right).      \tag{40}
+\]</span>
+The maximum is attained: frequencies lie in a compact ball, eigenvalues have modulus at most the supremum of <span class="math" data-tex="\(\|A\|\)">\(\|A\|\)</span> on it, and the characteristic zero condition is closed. For a rational companion matrix, real denominators never vanish on the ball. Writing <span class="math" data-tex="\(\lambda=u+iv\)">\(\lambda=u+iv\)</span>, the real and imaginary determinant equations, after clearing nonzero denominators, are real polynomial conditions. The graph of the maximum is semialgebraic by the projection lemma: express attainment and the absence of a larger feasible value with real quantifiers. Adjoining zero covers an entirely negative spectrum.</p>
+<p>The function <span class="math" data-tex="\(h\)">\(h\)</span> is nonnegative, nondecreasing and bounded by <span class="math" data-tex="\(a+b\log(2+R)\)">\(a+b\log(2+R)\)</span>. The one-parameter power-expansion lemma says it is eventually zero or asymptotic to <span class="math" data-tex="\(cR^\gamma\)">\(cR^\gamma\)</span>, <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> rational. If it were unbounded, nonnegativity and monotonicity would force <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>, contradicting the logarithmic upper bound. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is bounded. Every frequency lies in one such ball, proving the constant spectral barrier. By (35) it is
+<span class="math math-display" data-tex="\[
+ \operatorname{Im}z\geq-\omega\qquad(P(z,\xi)=0).           \tag{41}
+\]">\[
+ \operatorname{Im}z\geq-\omega\qquad(P(z,\xi)=0).           \tag{41}
+\]</span>
+In a noncharacteristic direction this is the usual full-polynomial hyperbolic root barrier. It includes complex lower order coefficients. For a characteristic evolution such as heat, the same one-sided root barrier holds in its spatial growth class while the principal noncharacteristic condition fails.</p>
+<p>This improvement uses polynomial algebra. For the scalar multiplier
+<span class="math math-display" data-tex="\[
+ A(\xi)=\log(1+|\xi|^2),\qquad
+ M(t,\xi)=(1+|\xi|^2)^t,                                 \tag{42}
+\]">\[
+ A(\xi)=\log(1+|\xi|^2),\qquad
+ M(t,\xi)=(1+|\xi|^2)^t,                                 \tag{42}
+\]</span>
+all derivatives of <span class="math" data-tex="\(A\)">\(A\)</span> have polynomial bounds, and (10) holds, but <span class="math" data-tex="\(s(\xi)\)">\(s(\xi)\)</span> is unbounded. Lemma 2.2 and Theorems 4.1–5.1 still apply. Thus an unbounded logarithmic barrier really does occur for spatial convolution evolution. It allows finite-time polynomial derivative losses whose degrees increase with the time interval.</p>
+<p><a href="reproduce/L114/figures/time-root-growth-032.png" title="Open full-size figure"><img src="reproduce/L114/figures/time-root-growth-032.png" alt="Forward heat roots and logarithmic multiplier roots plotted with their exact signs." class="course-figure" width="1768" height="1071" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="time-root-growth" data-asset-sha256="8FB382CA5FBB5C1D52867BEE18E83D1DB9AAE7B25672B427EB8D9050921D0F64"></a><br><a href="reproduce/L114/figures/time-root-growth-032.png">Open full-size figure</a></p>
+<p><em>Figure 1.</em> In one spatial dimension the forward heat symbol <span class="math" data-tex="\(iz+\xi^2\)">\(iz+\xi^2\)</span> has roots <span class="math" data-tex="\(z=i\xi^2\)">\(z=i\xi^2\)</span>, while (42) has <span class="math" data-tex="\(z=-i\log(1+\xi^2)\)">\(z=-i\log(1+\xi^2)\)</span>. The curves are exact imaginary-time root coordinates; their continuous traces are drawn from numerical samples. The lower curve escapes only logarithmically and still satisfies (38). The backward heat curve <span class="math" data-tex="\(z=-i\xi^2\)">\(z=-i\xi^2\)</span> violates it. Equations (35), (37) and (42) give the signs and the growth criterion.</p>
+<h2 id="a-compact-delay-convolution-with-logarithmic-zeros">A compact delay convolution with logarithmic zeros</h2>
+<p>There is also a concrete space-time convolution example. In dimension <span class="math" data-tex="\(1+1\)">\(1+1\)</span>, put
+<span class="math math-display" data-tex="\[
+ \mu=\delta_{(0,0)}-\delta_1(t)\otimes D_x^2\delta_0(x),
+ \qquad
+ E=\sum_{k=0}^{\infty}\delta_k(t)\otimes D_x^{2k}\delta_0(x).
+                                                                  \tag{43}
+\]">\[
+ \mu=\delta_{(0,0)}-\delta_1(t)\otimes D_x^2\delta_0(x),
+ \qquad
+ E=\sum_{k=0}^{\infty}\delta_k(t)\otimes D_x^{2k}\delta_0(x).
+                                                                  \tag{43}
+\]</span>
+The sum defines a distribution: every compact time set meets only finitely many terms, each a finite derivative of a point mass. Both supports lie on the positive time axis, a proper closed convex cone. Their convolution exists locally by finite sums. Shifting the series once and multiplying by <span class="math" data-tex="\(D_x^2\)">\(D_x^2\)</span> cancels every term except <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, so
+<span class="math math-display" data-tex="\[
+ \mu*E=\delta_{(0,0)}.                                    \tag{44}
+\]">\[
+ \mu*E=\delta_{(0,0)}.                                    \tag{44}
+\]</span>
+No exchange of an infinite nonconvergent distribution series is needed; the equality on each compact set is a finite telescoping identity.</p>
+<p>The Fourier–Laplace transform of the compact distribution <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is
+<span class="math math-display" data-tex="\[
+ \widehat\mu(z,\xi)=1-\xi^2e^{-iz},\qquad
+ z=2\pi\ell-2i\log|\xi|\quad
+      (\widehat\mu(z,\xi)=0,\ \xi\ne0,\ \ell\in\mathbb Z).
+                                                                  \tag{45}
+\]">\[
+ \widehat\mu(z,\xi)=1-\xi^2e^{-iz},\qquad
+ z=2\pi\ell-2i\log|\xi|\quad
+      (\widehat\mu(z,\xi)=0,\ \xi\ne0,\ \ell\in\mathbb Z).
+                                                                  \tag{45}
+\]</span>
+Indeed the modulus equation is <span class="math" data-tex="\(e^{\operatorname{Im}z}=|\xi|^{-2}\)">\(e^{\operatorname{Im}z}=|\xi|^{-2}\)</span>, and the phase is <span class="math" data-tex="\(\operatorname{Re}z\in2\pi\mathbb Z\)">\(\operatorname{Re}z\in2\pi\mathbb Z\)</span>. At <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> the transform is one. The negative imaginary roots are unbounded as <span class="math" data-tex="\(|\xi|\to\infty\)">\(|\xi|\to\infty\)</span>, but only logarithmically. A fixed zero-free half-plane cannot replace this logarithmic region. The example supplies an actual compact convolution operator and a causal inverse, rather than inferring a support theorem from a root sketch.</p>
+<p>For forcing <span class="math" data-tex="\(f\)">\(f\)</span> smooth in time, identically zero for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, and a Schwartz or strong tempered spatial trajectory, its solution is the locally finite expression
+<span class="math math-display" data-tex="\[
+ u(t)=\sum_{0\leq k\leq t}D_x^{2k}f(t-k).                 \tag{46}
+\]">\[
+ u(t)=\sum_{0\leq k\leq t}D_x^{2k}f(t-k).                 \tag{46}
+\]</span>
+It is smooth across integer times if <span class="math" data-tex="\(f\)">\(f\)</span> is smooth across zero, because all its time derivatives there are zero. On each finite interval the sum involves finitely many continuous spatial derivative operators. Direct subtraction gives <span class="math" data-tex="\(u(t)-D_x^2u(t-1)=f(t)\)">\(u(t)-D_x^2u(t-1)=f(t)\)</span>. A causal homogeneous solution vanishes on <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, then on <span class="math" data-tex="\(t&lt;2\)">\(t&lt;2\)</span>, and successively on every finite interval, proving uniqueness in these trajectory classes. The analogous distributional uniqueness follows locally from the same delayed identity and support, with endpoints obtained by taking the open intervals <span class="math" data-tex="\(t&lt;k\)">\(t&lt;k\)</span>.</p>
+<p>The locally finite inverse (43) need not be a tempered distribution on all of space-time: its derivative orders <span class="math" data-tex="\(2k\)">\(2k\)</span> increase without bound. A tempered distribution has one fixed finite derivative-order bound on tests, so a translate of a compact test whose first <span class="math" data-tex="\(N\)">\(N\)</span> derivatives are bounded but whose <span class="math" data-tex="\(2k\)">\(2k\)</span>-th derivative at zero is arbitrarily large contradicts that bound once <span class="math" data-tex="\(2k&gt;N\)">\(2k&gt;N\)</span>. This failure does not affect finite-strip class solvability.</p>
+<p><a href="reproduce/L114/figures/delay-convolution-support-032.png" title="Open full-size figure"><img src="reproduce/L114/figures/delay-convolution-support-032.png" alt="Causal delay inverse support points and their exact spatial derivative orders." class="course-figure" width="1598" height="1088" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="delay-convolution-support" data-asset-sha256="4F86DF306AF189B65F0A187618E9094B49090DE62B056C2A95F29ED639E5B6A6"></a><br><a href="reproduce/L114/figures/delay-convolution-support-032.png">Open full-size figure</a></p>
+<p><em>Figure 2.</em> The dots are the support points <span class="math" data-tex="\((t,x)=(k,0)\)">\((t,x)=(k,0)\)</span> of the first five terms of (43); labels give their spatial operators <span class="math" data-tex="\(D_x^{2k}\)">\(D_x^{2k}\)</span>. The drawing shows support and derivative order, not values of the distributions. The shaded cone is <span class="math" data-tex="\(t\geq|x|\)">\(t\geq|x|\)</span>; all remaining support points continue on its central ray. Equation (44) cancels the delayed terms one by one, and (45) gives the logarithmic zero barrier. This example illustrates the logarithmic geometry of hyperbolic convolution equations. General open-cone reciprocal estimates and support characterizations for arbitrary compact convolution kernels are separate theorems; the example does not assert them.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (signs and time direction).</strong> For <span class="math" data-tex="\(P(z,\xi)=iz+|\xi|^2\)">\(P(z,\xi)=iz+|\xi|^2\)</span>, find the roots, determine whether the total-degree time plane is characteristic, and solve the Schwartz and tempered forward Cauchy problem. Does arbitrary-data backward evolution follow?</p>
+<p><strong>Solution.</strong> Its root is <span class="math" data-tex="\(z=i|\xi|^2\)">\(z=i|\xi|^2\)</span>, so the evolution root is <span class="math" data-tex="\(\lambda=iz=-|\xi|^2\)">\(\lambda=iz=-|\xi|^2\)</span>. Thus <span class="math" data-tex="\(M(t,\xi)=e^{-t|\xi|^2}\)">\(M(t,\xi)=e^{-t|\xi|^2}\)</span>, the forward root bound has <span class="math" data-tex="\(a=b=0\)">\(a=b=0\)</span>, and <span class="math" data-tex="\(u(t)=F^{-1}(e^{-t|\xi|^2}Fu_0)\)">\(u(t)=F^{-1}(e^{-t|\xi|^2}Fu_0)\)</span>. With forcing use (30). Since <span class="math" data-tex="\(P\)">\(P\)</span> has total degree two but time degree one, <span class="math" data-tex="\(P_2(e_t)=0\)">\(P_2(e_t)=0\)</span>: the plane is characteristic. Theorem 6.1 proves uniqueness in the specified classes, including tempered data, without unrestricted smooth uniqueness. Reversing time gives <span class="math" data-tex="\(e^{t|\xi|^2}\)">\(e^{t|\xi|^2}\)</span> and roots with real part <span class="math" data-tex="\(|\xi|^2\)">\(|\xi|^2\)</span>, which violate (10), so arbitrary-data backward evolution fails on every fixed positive interval.</p>
+<p><strong>Exercise 2 (a multiple root with polynomial loss).</strong> In one spatial dimension let <span class="math" data-tex="\(A(\xi)=\begin{pmatrix}0&amp;\xi^3\\0&amp;0\end{pmatrix}\)">\(A(\xi)=\begin{pmatrix}0&amp;\xi^3\\0&amp;0\end{pmatrix}\)</span>. Compute the evolution and its forced formula. Explain why diagonalizing individual roots is unnecessary.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(A^2=0\)">\(A^2=0\)</span>, <span class="math" data-tex="\(M=I+tA\)">\(M=I+tA\)</span>. Both roots are zero, although the matrix has a nontrivial nilpotent part when <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>. For <span class="math" data-tex="\(w_0=(a,b)\)">\(w_0=(a,b)\)</span> and <span class="math" data-tex="\(g=(g_1,g_2)\)">\(g=(g_1,g_2)\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ w_2(t)&amp;=b+\int_0^t g_2(s)\,ds,\\
+ w_1(t)&amp;=a+t\xi^3 b+
+    \int_0^t\bigl(g_1(s)+(t-s)\xi^3g_2(s)\bigr)\,ds.
+ \end{aligned}                                                   \tag{47}
+\]">\[
+ \begin{aligned}
+ w_2(t)&amp;=b+\int_0^t g_2(s)\,ds,\\
+ w_1(t)&amp;=a+t\xi^3 b+
+    \int_0^t\bigl(g_1(s)+(t-s)\xi^3g_2(s)\bigr)\,ds.
+ \end{aligned}                                                   \tag{47}
+\]</span>
+Differentiating gives <span class="math" data-tex="\(w_1&#x27;=\xi^3w_2+g_1\)">\(w_1&#x27;=\xi^3w_2+g_1\)</span>, <span class="math" data-tex="\(w_2&#x27;=g_2\)">\(w_2&#x27;=g_2\)</span>, and the initial values. Multiplication by <span class="math" data-tex="\(\xi^3\)">\(\xi^3\)</span> is continuous on both classes. The root bound alone did not make <span class="math" data-tex="\(M\)">\(M\)</span> uniformly bounded in frequency, but its extra growth is only polynomial. Lemma 2.1 retains this effect without a root basis or a simple-spectrum assumption.</p>
+<p><strong>Exercise 3 (higher-order normalization).</strong> For <span class="math" data-tex="\(P(z,\xi)=z^2-\xi^2\)">\(P(z,\xi)=z^2-\xi^2\)</span>, write the companion equation, the homogeneous solution and the forcing integral for initial values <span class="math" data-tex="\(u(0)=h_0\)">\(u(0)=h_0\)</span>, <span class="math" data-tex="\(u_t(0)=h_1\)">\(u_t(0)=h_1\)</span>. Include <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>.</p>
+<p><strong>Solution.</strong> Equations (33)–(34) give <span class="math" data-tex="\(A_P=\begin{pmatrix}0&amp;1\\-\xi^2&amp;0\end{pmatrix}\)">\(A_P=\begin{pmatrix}0&amp;1\\-\xi^2&amp;0\end{pmatrix}\)</span> and forcing <span class="math" data-tex="\((0,-Ff)\)">\((0,-Ff)\)</span>. This agrees with <span class="math" data-tex="\(P(D)=-\partial_t^2+\partial_x^2\)">\(P(D)=-\partial_t^2+\partial_x^2\)</span>. With <span class="math" data-tex="\(v=Fu\)">\(v=Fu\)</span>,
+<span class="math math-display" data-tex="\[
+ v(t,\xi)=\cos(t\xi)Fh_0(\xi)
+       +\frac{\sin(t\xi)}{\xi}Fh_1(\xi)
+       -\int_0^t\frac{\sin((t-s)\xi)}{\xi}Ff(s,\xi)\,ds.
+                                                                  \tag{48}
+\]">\[
+ v(t,\xi)=\cos(t\xi)Fh_0(\xi)
+       +\frac{\sin(t\xi)}{\xi}Fh_1(\xi)
+       -\int_0^t\frac{\sin((t-s)\xi)}{\xi}Ff(s,\xi)\,ds.
+                                                                  \tag{48}
+\]</span>
+The quotient extends smoothly at zero with value <span class="math" data-tex="\(t\)">\(t\)</span>, by its power series or <span class="math" data-tex="\(\sin(t\xi)/\xi=\int_0^t\cos(s\xi)\,ds\)">\(\sin(t\xi)/\xi=\int_0^t\cos(s\xi)\,ds\)</span>. At zero (48) reads <span class="math" data-tex="\(Fh_0(0)+tFh_1(0)-\int_0^t(t-s)Ff(s,0)\,ds\)">\(Fh_0(0)+tFh_1(0)-\int_0^t(t-s)Ff(s,0)\,ds\)</span> for Schwartz data; the smooth multiplier extension is used for distributions. Twice differentiating checks <span class="math" data-tex="\(v_{tt}=-\xi^2v-Ff\)">\(v_{tt}=-\xi^2v-Ff\)</span>. Both time directions are permitted because <span class="math" data-tex="\(\lambda=\pm i\xi\)">\(\lambda=\pm i\xi\)</span>, with zero real part. The initial plane is noncharacteristic because the total and time degrees are both two and its leading time coefficient is one.</p>
+<p><strong>Exercise 4 (a logarithm that does not become constant).</strong> Prove directly that <span class="math" data-tex="\(A(\xi)=\log(1+\xi^2)\)">\(A(\xi)=\log(1+\xi^2)\)</span> is in <span class="math" data-tex="\(\mathcal O_M\)">\(\mathcal O_M\)</span>, and describe its forward and backward solutions. Is the half-line trajectory necessarily tempered on all of space-time?</p>
+<p><strong>Solution.</strong> The zeroth derivative is bounded by a constant times <span class="math" data-tex="\(1+|\xi|\)">\(1+|\xi|\)</span>; successive derivatives are rational functions with denominator a power of <span class="math" data-tex="\(1+\xi^2\)">\(1+\xi^2\)</span>, hence polynomially bounded. Its real root <span class="math" data-tex="\(\lambda=\log(1+\xi^2)\)">\(\lambda=\log(1+\xi^2)\)</span> obeys the two-sided logarithmic bound. Thus <span class="math" data-tex="\(w(t)=(1+\xi^2)^tw_0\)">\(w(t)=(1+\xi^2)^tw_0\)</span> for every finite interval in either direction. The real spectral bound is unbounded, so no constant barrier is possible. For a tempered datum <span class="math" data-tex="\(w_0=\delta_{\xi=1}\)">\(w_0=\delta_{\xi=1}\)</span>, the trajectory is <span class="math" data-tex="\(2^t\delta_1\)">\(2^t\delta_1\)</span>; its inverse spatial transform is <span class="math" data-tex="\((2\pi)^{-1}2^t e^{ix}\)">\((2\pi)^{-1}2^t e^{ix}\)</span>. Extended to the positive half-line, this is not a tempered space-time distribution, as compact tests translated far in positive time have exponential pairings against only polynomially growing Schwartz seminorms. The finite-interval theorem does not impose that stronger condition.</p>
+<p><strong>Exercise 5 (failure of a root criterion with singular time coefficient).</strong> Verify the root bound for (39), then give initial Schwartz data for which no <span class="math" data-tex="\(C^1\)">\(C^1\)</span> Schwartz solution exists. Explain why the scalar theorem excludes this case.</p>
+<p><strong>Solution.</strong> For real <span class="math" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> the only root is <span class="math" data-tex="\(z=1/\xi\in\mathbb R\)">\(z=1/\xi\in\mathbb R\)</span>; at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> there is no root. Thus there are no negative imaginary time roots at all. Choose <span class="math" data-tex="\(Fh_0(\xi)=e^{-\xi^2}\)">\(Fh_0(\xi)=e^{-\xi^2}\)</span>. A Schwartz trajectory is pointwise differentiable in time because evaluation is continuous. The transformed equation at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> demands <span class="math" data-tex="\(v(t,0)=0\)">\(v(t,0)=0\)</span>, contrary to <span class="math" data-tex="\(v(0,0)=1\)">\(v(0,0)=1\)</span>. Here <span class="math" data-tex="\(a_1(\xi)=\xi\)">\(a_1(\xi)=\xi\)</span> vanishes on the real frequency set and is not an invertible multiplier. The proof cannot form (33); a compatibility condition remains. A good root bound alone cannot justify division by a vanishing time-leading symbol.</p>
+<p><strong>Exercise 6 (delay cancellation and exact support).</strong> Verify (43)–(46), determine the zero set of the delay symbol, and prove that the whole inverse is not tempered although every finite-time portion is. Use the convention <span class="math" data-tex="\(D_x=-i\partial_x\)">\(D_x=-i\partial_x\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(E_K=\sum_{k=0}^K\delta_k\otimes D_x^{2k}\delta_0\)">\(E_K=\sum_{k=0}^K\delta_k\otimes D_x^{2k}\delta_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \mu*E_K=\delta_{(0,0)}-
+            \delta_{K+1}(t)\otimes D_x^{2K+2}\delta_0(x).
+                                                                  \tag{49}
+\]">\[
+ \mu*E_K=\delta_{(0,0)}-
+            \delta_{K+1}(t)\otimes D_x^{2K+2}\delta_0(x).
+                                                                  \tag{49}
+\]</span>
+On any fixed compact time set the final term is absent for large <span class="math" data-tex="\(K\)">\(K\)</span>, proving (44). Each coefficient is nonzero, so the exact support of <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\{(k,0):k\geq0\}\)">\(\{(k,0):k\geq0\}\)</span>, not the entire shaded cone. The transform of <span class="math" data-tex="\(D_x^2\delta_0\)">\(D_x^2\delta_0\)</span> is <span class="math" data-tex="\(\xi^2\)">\(\xi^2\)</span>, so the delay symbol and its zeros are exactly (45), including the absence of zeros at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Convolving the locally finite series with causal smooth forcing gives (46). On <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> at most <span class="math" data-tex="\(\lfloor T\rfloor+1\)">\(\lfloor T\rfloor+1\)</span> derivative terms occur, so the solution has the claimed spatial class, and direct delayed subtraction verifies the equation.</p>
+<p>To make non-temperedness quantitative, suppose <span class="math math-display" data-tex="\(|E(\phi)|\leq C\max_{|\alpha|\leq N}\sup_{t,x}(1+|(t,x)|)^N|\partial^\alpha\phi(t,x)|\)" data-render-tex="\[|E(\phi)|\leq C\max_{|\alpha|\leq N}\sup_{t,x}(1+|(t,x)|)^N|\partial^\alpha\phi(t,x)|\]" data-render-adaptation="inline-bound-as-scrollable-display-v1">\[|E(\phi)|\leq C\max_{|\alpha|\leq N}\sup_{t,x}(1+|(t,x)|)^N|\partial^\alpha\phi(t,x)|\]</span>. Fix an integer <span class="math" data-tex="\(k\)">\(k\)</span> with <span class="math" data-tex="\(2k&gt;N\)">\(2k&gt;N\)</span>. Choose <span class="math" data-tex="\(\rho\in C_c^\infty((-1/4,1/4))\)">\(\rho\in C_c^\infty((-1/4,1/4))\)</span>, <span class="math" data-tex="\(\rho(0)=1\)">\(\rho(0)=1\)</span>, and <span class="math" data-tex="\(\theta\in C_c^\infty((-1/4,1/4))\)">\(\theta\in C_c^\infty((-1/4,1/4))\)</span>, equal to <span class="math" data-tex="\(x^{2k}/(2k)!\)">\(x^{2k}/(2k)!\)</span> near zero. Set <span class="math" data-tex="\(\theta_\varepsilon(x)=\varepsilon^N\theta(x/\varepsilon)\)">\(\theta_\varepsilon(x)=\varepsilon^N\theta(x/\varepsilon)\)</span> and <span class="math" data-tex="\(\phi_\varepsilon(t,x)=\rho(t-k)\theta_\varepsilon(x)\)">\(\phi_\varepsilon(t,x)=\rho(t-k)\theta_\varepsilon(x)\)</span>, <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. For derivative orders at most <span class="math" data-tex="\(N\)">\(N\)</span>, its weighted suprema are bounded uniformly in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, with a constant allowed to depend on the fixed <span class="math" data-tex="\(k\)">\(k\)</span>. Only the <span class="math" data-tex="\(k\)">\(k\)</span>-th term of <span class="math" data-tex="\(E\)">\(E\)</span> meets its time support, and
+<span class="math math-display" data-tex="\[
+ |E(\phi_\varepsilon)|
+   =|(-i)^{2k}\partial_x^{2k}\theta_\varepsilon(0)|
+   =\varepsilon^{N-2k}\longrightarrow\infty.                \tag{50}
+\]">\[
+ |E(\phi_\varepsilon)|
+   =|(-i)^{2k}\partial_x^{2k}\theta_\varepsilon(0)|
+   =\varepsilon^{N-2k}\longrightarrow\infty.                \tag{50}
+\]</span>
+This contradicts the tempered bound. Every compact time cutoff meets finitely many finite derivatives of point masses and is tempered. This distinction is precisely why the interval and the spatial class must be stated.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Laurent Schwartz, <em>Sur un mémoire de Petrowsky</em>, Séminaire Bourbaki, March 1949, exposé 11; published in the 1952 collection, 65–69. <a href="https://www.numdam.org/item/SB_1948-1951__1__65_0.pdf">Freely readable original</a>.</li>
+<li>Laurent Schwartz, <em>Les équations d'évolution liées au produit de composition</em>, Annales de l'Institut Fourier 2 (1950), 19–49. <a href="https://www.numdam.org/articles/10.5802/aif.18/">Original paper</a>.</li>
+<li>Jan Kisyński, <em>The Petrovskii correctness and semigroups of operators</em>, arXiv:0910.1120v1 (2009), Sections 2, 3, 8 and 9. <a href="https://arxiv.org/abs/0910.1120">Primary manuscript</a>.</li>
+<li>I. G. Petrovskii, <em>Über das Cauchysche Problem für ein System linearer partieller Differentialgleichungen im Gebiete der nichtanalytischen Funktionen</em>, Bulletin de l'Université d'État de Moscou 1, no. 7 (1938), 1–74. Historical attribution; the proofs needed here are supplied above.</li>
+</ul>
+<p><a href="reproduce-AN02-L114.html">Reproduction guide and six named source downloads</a> · <a href="src/root-growth-and-cauchy-evolution-in-schwartz-spaces.md">Download the complete lesson source</a>.</p>
+</main></body></html>

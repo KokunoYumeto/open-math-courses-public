@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complex exponential and the circle</title><link rel="stylesheet" href="../../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../index.html">Derived categories of sheaves</a> · <a href="../licence.html">Sources and authorship</a></nav><h1 id="the-complex-exponential-and-the-circle">The complex exponential and the circle</h1>
+<p>This prerequisite develops the exponential, trigonometric functions, their exact periods and polar coordinates from convergent series.</p>
+<p><em>The first-zero and unit-circle treatment is adapted from Jiří Lebl's Basic Analysis, volume II, version 6.3, “Complex exponential and trigonometric functions.” The programme edition's product-of-series argument, estimates and endpoint details were supplied by GPT-6 Astra (OpenAI), in Codex at Ultra. The present selection and local reading links were edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. These AI contributions are self-checked; independent or human review is not asserted. This component remains CC BY-SA 4.0. The <a href="assets/notices/complex-exponential-source-notice.html">source and edition notice</a> preserves the human source, native excerpt and adaptation credit.</em></p>
+<h2 id="starting-knowledge">Starting knowledge</h2>
+<p>We use the complete ordered field <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, finite complex arithmetic, natural-number induction and elementary sets and functions. The earlier proofs are in <a href="real-analysis-on-closed-intervals.html">Real analysis on closed intervals</a>: Proposition 1 gives the Archimedean property; Lemma 2 and Theorem 3 give limits and completeness; Theorems 5–6 give extreme and intermediate values; Theorem 8 and Corollary 9 give derivative rules; and Theorems 12–13 give integration. Its geometric-tail argument supplies the series bound used below. Neither Cauchy's integral theorem nor the complex identity theorem is an input.</p>
+<p>These results supply the exact exponential kernel and circle parametrization used in <a href="scalar-cauchy.html">The scalar Cauchy formula and power series</a>.</p>
+<h2 id="convergent-series-and-the-exponential">Convergent series and the exponential</h2>
+<p><strong>Lemma 1 (Absolute convergence and multiplication).</strong> For every real <span class="math" data-tex="\(R\geq0\)">\(R\geq0\)</span>, the series <span class="math" data-tex="\(\sum_{n\geq0}R^n/n!\)">\(\sum_{n\geq0}R^n/n!\)</span> converges. For complex <span class="math" data-tex="\(z,w\)">\(z,w\)</span>, the two series with terms <span class="math" data-tex="\(z^n/n!\)">\(z^n/n!\)</span> and <span class="math" data-tex="\(w^n/n!\)">\(w^n/n!\)</span> may be multiplied and grouped by total degree.</p>
+<p><strong>Proof.</strong> Choose an integer <span class="math" data-tex="\(N\geq 2R\)">\(N\geq 2R\)</span>. For <span class="math" data-tex="\(n\geq N\)">\(n\geq N\)</span>, successive terms have ratio <span class="math" data-tex="\(R/(n+1)\leq1/2\)">\(R/(n+1)\leq1/2\)</span>; thus every tail is bounded by a convergent geometric series. This proves convergence, uniformly for <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>.</p>
+<p>More generally, if <span class="math" data-tex="\(\sum_j |a_j|=A&lt;\infty\)">\(\sum_j |a_j|=A&lt;\infty\)</span> and <span class="math" data-tex="\(\sum_k |b_k|=B&lt;\infty\)">\(\sum_k |b_k|=B&lt;\infty\)</span>, the sum of <span class="math" data-tex="\(|a_jb_k|\)">\(|a_jb_k|\)</span> over any finite rectangle is at most <span class="math" data-tex="\(AB\)">\(AB\)</span>. The sum over pairs with <span class="math" data-tex="\(j&gt;M\)">\(j&gt;M\)</span> or <span class="math" data-tex="\(k&gt;M\)">\(k&gt;M\)</span> is at most
+<span class="math math-display" data-tex="\[
+B\sum_{j&gt;M}|a_j|+A\sum_{k&gt;M}|b_k|,
+\]">\[
+B\sum_{j&gt;M}|a_j|+A\sum_{k&gt;M}|b_k|,
+\]</span>
+which tends to zero. All finite sets of pairs containing a sufficiently large square therefore give the same limit. Both rectangular summation and grouping by total degree exhaust such squares, so both have that limit. Finite rectangular sums are products of finite sums; taking their limits proves the multiplication assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define
+<span class="math math-display" data-tex="\[
+E(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!},\qquad z\in\mathbb C.
+\]">\[
+E(z)=\sum_{n=0}^{\infty}\frac{z^n}{n!},\qquad z\in\mathbb C.
+\]</span></p>
+<p><strong>Theorem 2 (Addition, inversion and differentiation).</strong> For all complex <span class="math" data-tex="\(z,w\)">\(z,w\)</span>,
+<span class="math math-display" data-tex="\[
+E(0)=1,\quad E(z+w)=E(z)E(w),\quad E(z)\ne0,
+\quad E(-z)=E(z)^{-1},\quad E&#x27;(z)=E(z),
+\quad \overline{E(z)}=E(\bar z).
+\]">\[
+E(0)=1,\quad E(z+w)=E(z)E(w),\quad E(z)\ne0,
+\quad E(-z)=E(z)^{-1},\quad E&#x27;(z)=E(z),
+\quad \overline{E(z)}=E(\bar z).
+\]</span>
+For real <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(E(x)&gt;0\)">\(E(x)&gt;0\)</span>. Its restriction to the real line is strictly increasing and maps that line onto <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<p><strong>Proof.</strong> The binomial theorem and Lemma 1 give
+<span class="math math-display" data-tex="\[
+E(z)E(w)=\sum_{n=0}^{\infty}\sum_{j=0}^{n}
+\frac{z^jw^{n-j}}{j!(n-j)!}
+=\sum_{n=0}^{\infty}\frac{(z+w)^n}{n!}=E(z+w).
+\]">\[
+E(z)E(w)=\sum_{n=0}^{\infty}\sum_{j=0}^{n}
+\frac{z^jw^{n-j}}{j!(n-j)!}
+=\sum_{n=0}^{\infty}\frac{(z+w)^n}{n!}=E(z+w).
+\]</span>
+Taking <span class="math" data-tex="\(w=-z\)">\(w=-z\)</span> proves inversion and nonvanishing. Conjugation commutes with limits of finite sums and gives the last identity.</p>
+<p>Let <span class="math" data-tex="\(C=\sum_{n=2}^{\infty}1/n!&lt;\infty\)">\(C=\sum_{n=2}^{\infty}1/n!&lt;\infty\)</span>. If <span class="math" data-tex="\(|h|\leq1\)">\(|h|\leq1\)</span>,
+<span class="math math-display" data-tex="\[
+|E(h)-1-h|\leq C|h|^2.
+\]">\[
+|E(h)-1-h|\leq C|h|^2.
+\]</span>
+Consequently <span class="math" data-tex="\(E(h)\to1\)">\(E(h)\to1\)</span> and <span class="math" data-tex="\((E(h)-1)/h\to1\)">\((E(h)-1)/h\to1\)</span>. The addition law shows that <span class="math" data-tex="\(E\)">\(E\)</span> is continuous everywhere and that
+<span class="math math-display" data-tex="\[
+\frac{E(z+h)-E(z)}h
+=E(z)\frac{E(h)-1}h\longrightarrow E(z).
+\]">\[
+\frac{E(z+h)-E(z)}h
+=E(z)\frac{E(h)-1}h\longrightarrow E(z).
+\]</span>
+For real <span class="math" data-tex="\(x\)">\(x\)</span>, the series is real and <span class="math" data-tex="\(E(x)=E(x/2)^2&gt;0\)">\(E(x)=E(x/2)^2&gt;0\)</span>. Its derivative is therefore positive, so the mean value theorem gives strict increase. For <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, the series gives <span class="math" data-tex="\(E(x)\geq1+x\)">\(E(x)\geq1+x\)</span>; hence <span class="math" data-tex="\(E(x)\to\infty\)">\(E(x)\to\infty\)</span> as <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span>. Inversion then gives <span class="math" data-tex="\(E(x)\to0\)">\(E(x)\to0\)</span> as <span class="math" data-tex="\(x\to-\infty\)">\(x\to-\infty\)</span>. Continuity and the intermediate value theorem prove surjectivity onto <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We write <span class="math" data-tex="\(e^z=E(z)\)">\(e^z=E(z)\)</span>. This agrees with the real exponential characterized by <span class="math" data-tex="\(f&#x27;=f\)">\(f&#x27;=f\)</span>, <span class="math" data-tex="\(f(0)=1\)">\(f(0)=1\)</span>: if a real differentiable <span class="math" data-tex="\(f\)">\(f\)</span> has those properties, differentiation gives <span class="math" data-tex="\((f(x)E(-x))&#x27;=0\)">\((f(x)E(-x))&#x27;=0\)</span>, so the product is identically one. Define <span class="math" data-tex="\(\log r\)">\(\log r\)</span>, for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, as the unique real <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(E(x)=r\)">\(E(x)=r\)</span>.</p>
+<h2 id="sine-cosine-and-elementary-identities">Sine, cosine and elementary identities</h2>
+<p>For complex <span class="math" data-tex="\(z\)">\(z\)</span>, define
+<span class="math math-display" data-tex="\[
+\cos z=\frac{E(iz)+E(-iz)}2,\qquad
+\sin z=\frac{E(iz)-E(-iz)}{2i}.
+\]">\[
+\cos z=\frac{E(iz)+E(-iz)}2,\qquad
+\sin z=\frac{E(iz)-E(-iz)}{2i}.
+\]</span></p>
+<p><strong>Theorem 3 (Trigonometric identities).</strong> For every complex <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+E(iz)=\cos z+i\sin z,\qquad
+\cos^2z+\sin^2z=1,
+\]">\[
+E(iz)=\cos z+i\sin z,\qquad
+\cos^2z+\sin^2z=1,
+\]</span>
+<span class="math math-display" data-tex="\[
+\cos(-z)=\cos z,\quad\sin(-z)=-\sin z,
+\quad\cos&#x27;(z)=-\sin z,\quad\sin&#x27;(z)=\cos z.
+\]">\[
+\cos(-z)=\cos z,\quad\sin(-z)=-\sin z,
+\quad\cos&#x27;(z)=-\sin z,\quad\sin&#x27;(z)=\cos z.
+\]</span>
+Their values at zero are <span class="math" data-tex="\(1,0\)">\(1,0\)</span>, respectively, and
+<span class="math math-display" data-tex="\[
+\cos z=\sum_{n=0}^{\infty}\frac{(-1)^nz^{2n}}{(2n)!},\qquad
+\sin z=\sum_{n=0}^{\infty}\frac{(-1)^nz^{2n+1}}{(2n+1)!}.
+\]">\[
+\cos z=\sum_{n=0}^{\infty}\frac{(-1)^nz^{2n}}{(2n)!},\qquad
+\sin z=\sum_{n=0}^{\infty}\frac{(-1)^nz^{2n+1}}{(2n+1)!}.
+\]</span>
+For real <span class="math" data-tex="\(x\)">\(x\)</span>, sine and cosine are real, <span class="math" data-tex="\(E(ix)\)">\(E(ix)\)</span> has modulus one, <span class="math" data-tex="\(|\sin x|,|\cos x|\leq1\)">\(|\sin x|,|\cos x|\leq1\)</span>, and <span class="math" data-tex="\(\sin x\leq x\)">\(\sin x\leq x\)</span> when <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>.</p>
+<p><strong>Proof.</strong> Euler's identity, the values at zero and parity follow by adding, subtracting or reversing the defining expressions. Set <span class="math" data-tex="\(a=E(iz)\)">\(a=E(iz)\)</span>, <span class="math" data-tex="\(b=E(-iz)\)">\(b=E(-iz)\)</span>. Then <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span>, and
+<span class="math math-display" data-tex="\[
+\left(\frac{a+b}{2}\right)^2+
+\left(\frac{a-b}{2i}\right)^2=ab=1.
+\]">\[
+\left(\frac{a+b}{2}\right)^2+
+\left(\frac{a-b}{2i}\right)^2=ab=1.
+\]</span>
+This proves the square identity for complex as well as real arguments. Theorem 2 and the chain rule give
+<span class="math math-display" data-tex="\[
+\cos&#x27;(z)=\frac{iE(iz)-iE(-iz)}2=-\sin z,
+\quad
+\sin&#x27;(z)=\frac{iE(iz)+iE(-iz)}{2i}=\cos z.
+\]">\[
+\cos&#x27;(z)=\frac{iE(iz)-iE(-iz)}2=-\sin z,
+\quad
+\sin&#x27;(z)=\frac{iE(iz)+iE(-iz)}{2i}=\cos z.
+\]</span>
+In the two defining series, even powers agree and odd powers cancel when adding; odd powers agree and even powers cancel when subtracting and dividing by <span class="math" data-tex="\(i\)">\(i\)</span>. Absolute convergence justifies these operations and gives the displayed series.</p>
+<p>For real <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(E(-ix)=\overline{E(ix)}\)">\(E(-ix)=\overline{E(ix)}\)</span>. Thus cosine and sine are its real and imaginary parts, while <span class="math" data-tex="\(E(ix)\overline{E(ix)}=1\)">\(E(ix)\overline{E(ix)}=1\)</span>. Their absolute values are at most one. Finally <span class="math" data-tex="\((x-\sin x)&#x27;=1-\cos x\geq0\)">\((x-\sin x)&#x27;=1-\cos x\geq0\)</span> and the difference vanishes at zero. The real mean value theorem proves the last inequality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Multiplication of <span class="math" data-tex="\(E(iz)\)">\(E(iz)\)</span> and <span class="math" data-tex="\(E(iw)\)">\(E(iw)\)</span> gives, by the definitions, the addition identities
+<span class="math math-display" data-tex="\[
+\cos(z+w)=\cos z\cos w-\sin z\sin w,
+\quad
+\sin(z+w)=\sin z\cos w+\cos z\sin w.
+\]">\[
+\cos(z+w)=\cos z\cos w-\sin z\sin w,
+\quad
+\sin(z+w)=\sin z\cos w+\cos z\sin w.
+\]</span>
+These are identities for complex arguments; they do not require a geometric definition of angle.</p>
+<h2 id="the-exact-period-and-polar-coordinates">The exact period and polar coordinates</h2>
+<p><strong>Theorem 4 (The first zero and the circle).</strong> Cosine has a smallest positive zero <span class="math" data-tex="\(r\)">\(r\)</span>. Define <span class="math" data-tex="\(\pi=2r\)">\(\pi=2r\)</span>. Then
+<span class="math math-display" data-tex="\[
+E(i\pi/2)=i,\quad E(i\pi)=-1,\quad E(2\pi i)=1.
+\]">\[
+E(i\pi/2)=i,\quad E(i\pi)=-1,\quad E(2\pi i)=1.
+\]</span>
+The map <span class="math" data-tex="\(t\mapsto E(it)\)">\(t\mapsto E(it)\)</span> is a bijection from <span class="math" data-tex="\([0,2\pi)\)">\([0,2\pi)\)</span> onto the unit circle. Moreover
+<span class="math math-display" data-tex="\[
+E(it)=1\quad\Longleftrightarrow\quad t\in2\pi\mathbb Z
+\qquad(t\in\mathbb R).
+\]">\[
+E(it)=1\quad\Longleftrightarrow\quad t\in2\pi\mathbb Z
+\qquad(t\in\mathbb R).
+\]</span>
+Both sine and cosine have least positive real period <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, even when regarded as functions on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> Cosine is positive near zero. If it had no positive zero, continuity would force it to be positive everywhere on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Sine would then be strictly increasing there. Fix <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>; then <span class="math" data-tex="\(\sin a&gt;0\)">\(\sin a&gt;0\)</span>, and for <span class="math" data-tex="\(t&gt;a\)">\(t&gt;a\)</span> the fundamental theorem gives
+<span class="math math-display" data-tex="\[
+\cos t=\cos a-\int_a^t\sin s\,ds
+\leq\cos a-(t-a)\sin a,
+\]">\[
+\cos t=\cos a-\int_a^t\sin s\,ds
+\leq\cos a-(t-a)\sin a,
+\]</span>
+which is eventually negative. This contradiction proves existence of a positive zero. If <span class="math" data-tex="\(T\)">\(T\)</span> is such a zero, the zeros in <span class="math" data-tex="\([0,T]\)">\([0,T]\)</span> form a nonempty closed set separated from zero. Its infimum is positive and is attained by continuity; call it <span class="math" data-tex="\(r\)">\(r\)</span>. Cosine is positive on <span class="math" data-tex="\([0,r)\)">\([0,r)\)</span>. Sine is strictly increasing there, so <span class="math" data-tex="\(\sin r&gt;0\)">\(\sin r&gt;0\)</span>. The square identity and <span class="math" data-tex="\(\cos r=0\)">\(\cos r=0\)</span> imply <span class="math" data-tex="\(\sin r=1\)">\(\sin r=1\)</span>. Hence <span class="math" data-tex="\(E(ir)=i\)">\(E(ir)=i\)</span>, and the addition law gives <span class="math" data-tex="\(E(2ir)=-1\)">\(E(2ir)=-1\)</span> and <span class="math" data-tex="\(E(4ir)=1\)">\(E(4ir)=1\)</span>.</p>
+<p>No <span class="math" data-tex="\(t\in(0,4r)\)">\(t\in(0,4r)\)</span> satisfies <span class="math" data-tex="\(E(it)=1\)">\(E(it)=1\)</span>. Indeed, <span class="math" data-tex="\(u=E(it/4)\)">\(u=E(it/4)\)</span> has strictly positive real and imaginary parts, since <span class="math" data-tex="\(0&lt;t/4&lt;r\)">\(0&lt;t/4&lt;r\)</span>. But <span class="math" data-tex="\(u^4=1\)">\(u^4=1\)</span> would imply
+<span class="math math-display" data-tex="\[
+(u-1)(u+1)(u-i)(u+i)=0,
+\]">\[
+(u-1)(u+1)(u-i)(u+i)=0,
+\]</span>
+making <span class="math" data-tex="\(u\)">\(u\)</span> one of <span class="math" data-tex="\(1,-1,i,-i\)">\(1,-1,i,-i\)</span>, none of which has both parts strictly positive. Since <span class="math" data-tex="\(4r=2\pi\)">\(4r=2\pi\)</span>, division of any real <span class="math" data-tex="\(t\)">\(t\)</span> into <span class="math" data-tex="\(2\pi n+s\)">\(2\pi n+s\)</span>, with <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span> and <span class="math" data-tex="\(0\leq s&lt;2\pi\)">\(0\leq s&lt;2\pi\)</span>, proves the asserted kernel. It also proves injectivity on the half-open interval.</p>
+<p>For surjectivity, let <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> and <span class="math" data-tex="\(a^2+b^2=1\)">\(a^2+b^2=1\)</span>. Cosine decreases continuously from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> on <span class="math" data-tex="\([0,r]\)">\([0,r]\)</span>, so there is <span class="math" data-tex="\(t\in[0,r]\)">\(t\in[0,r]\)</span> with <span class="math" data-tex="\(\cos t=a\)">\(\cos t=a\)</span>. Since <span class="math" data-tex="\(\sin t\geq0\)">\(\sin t\geq0\)</span>, the square identity gives <span class="math" data-tex="\(\sin t=b\)">\(\sin t=b\)</span>. Every point of the circle is <span class="math" data-tex="\(i^k(a+ib)\)">\(i^k(a+ib)\)</span> for a point in this closed quadrant and <span class="math" data-tex="\(k\in\{0,1,2,3\}\)">\(k\in\{0,1,2,3\}\)</span>. The addition law represents it as <span class="math" data-tex="\(E(i(t+kr))\)">\(E(i(t+kr))\)</span>; subtract <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> if the parameter equals <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. This also covers the quadrant endpoints without excluding the point <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>The equality <span class="math" data-tex="\(E(z+2\pi i)=E(z)\)">\(E(z+2\pi i)=E(z)\)</span> for all complex <span class="math" data-tex="\(z\)">\(z\)</span> proves that both trigonometric functions have real period <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. If <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> is a period of cosine, then <span class="math" data-tex="\(\cos T=1\)">\(\cos T=1\)</span>, so the real square identity gives <span class="math" data-tex="\(\sin T=0\)">\(\sin T=0\)</span>, and <span class="math" data-tex="\(E(iT)=1\)">\(E(iT)=1\)</span>. If <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span> is a period of sine, then <span class="math" data-tex="\(\sin T=0\)">\(\sin T=0\)</span> and
+<span class="math math-display" data-tex="\[
+1=\sin(r+T)=\sin r\cos T+\cos r\sin T=\cos T.
+\]">\[
+1=\sin(r+T)=\sin r\cos T+\cos r\sin T=\cos T.
+\]</span>
+Again <span class="math" data-tex="\(E(iT)=1\)">\(E(iT)=1\)</span>. The kernel assertion proves that no smaller positive period exists. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5 (The exponential fibre and polar form).</strong> Every nonzero complex <span class="math" data-tex="\(w\)">\(w\)</span> can be written
+<span class="math math-display" data-tex="\[
+w=|w|E(i\theta),\qquad 0\leq\theta&lt;2\pi.
+\]">\[
+w=|w|E(i\theta),\qquad 0\leq\theta&lt;2\pi.
+\]</span>
+This <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is unique. All solutions of <span class="math" data-tex="\(E(z)=w\)">\(E(z)=w\)</span> are
+<span class="math math-display" data-tex="\[
+z=\log|w|+i(\theta+2\pi n),\qquad n\in\mathbb Z.
+\]">\[
+z=\log|w|+i(\theta+2\pi n),\qquad n\in\mathbb Z.
+\]</span>
+In particular <span class="math" data-tex="\(E(z)=E(w)\)">\(E(z)=E(w)\)</span> if and only if <span class="math" data-tex="\(z-w\in2\pi i\mathbb Z\)">\(z-w\in2\pi i\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> Apply Theorem 4 to <span class="math" data-tex="\(w/|w|\)">\(w/|w|\)</span>. For real <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, the addition law and unit modulus give
+<span class="math math-display" data-tex="\[
+|E(x+iy)|=E(x),\qquad E(x+iy)=E(x)E(iy).
+\]">\[
+|E(x+iy)|=E(x),\qquad E(x+iy)=E(x)E(iy).
+\]</span>
+Therefore any solution has <span class="math" data-tex="\(x=\log|w|\)">\(x=\log|w|\)</span>, and its imaginary part is precisely one of the angles supplied by the kernel assertion. The final equivalence follows by applying this to <span class="math" data-tex="\(E(z-w)=1\)">\(E(z-w)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="source-and-next-reading">Source and next reading</h2>
+<p>Jiří Lebl, <a href="https://www.jirka.org/ra/">Basic Analysis</a>, volume II, version 6.3, “Complex exponential and trigonometric functions.” See the <a href="assets/notices/complex-exponential-source-notice.html">source and edition notice</a>.</p>
+<p>Continue with <a href="scalar-cauchy.html">The scalar Cauchy formula and power series</a>.</p>
+</main></body></html>

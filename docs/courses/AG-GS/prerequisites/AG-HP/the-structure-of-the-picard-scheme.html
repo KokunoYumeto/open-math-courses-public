@@ -1,0 +1,383 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The structure of the Picard scheme</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main style="max-width:72rem;margin:auto;padding:1rem"><nav><a href="../../index.html">Group schemes</a> · <a href="https://kokunoyumeto.github.io/open-math-courses-public/">Open Mathematics Courses</a></nav><h1 id="the-structure-of-the-picard-scheme">The structure of the Picard scheme</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Picard scheme records two kinds of information. Its tangent space measures how a line bundle changes over a first-order thickening. Its components record discrete classes of line bundles. These interact: in positive characteristic a component can have more tangent directions than its dimension, and torsion classes can occur in components other than the identity component.</p>
+<p>We will compute the tangent space and the obstruction to lifting a line bundle, prove two smoothness criteria, and distinguish the identity component, torsion components, and numerical equivalence. The finiteness theorem for the Néron–Severi group is a precisely stated input. The tangent and obstruction calculations are proved here.</p>
+<h2 id="1-setting-and-the-distinction-between-bundles-and-classes">1. Setting and the distinction between bundles and classes</h2>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be a proper scheme over a field <span class="math" data-tex="$k$">$k$</span>, with</p>
+<span class="math math-display" data-tex="$$
+H^0(X,\mathcal O_X)=k. \tag{1.1}
+$$">$$
+H^0(X,\mathcal O_X)=k. \tag{1.1}
+$$</span>
+<p>Write <span class="math" data-tex="$P=\operatorname{Pic}_{X/k}$">$P=\operatorname{Pic}_{X/k}$</span> for the scheme representing the fppf Picard sheaf. For projective geometrically integral <span class="math" data-tex="$X$">$X$</span>, its construction was proved in <a href="relative-divisors-and-the-existence-of-the-picard-scheme.html">Relative divisors and the existence of the Picard scheme</a>. For arbitrary proper <span class="math" data-tex="$X/k$">$X/k$</span>, we use Murre's representability theorem: the fppf Picard sheaf is represented by a group scheme locally of finite type over <span class="math" data-tex="$k$">$k$</span>, and its formation commutes with field extension. The precise source is Murre, <a href="https://www.numdam.org/item/PMIHES_1964__23__5_0/"><em>On contravariant functors from the category of preschemes over a field into the category of abelian groups</em></a>, Publications Mathématiques de l'IHÉS 23 (1964), result (II.15); see also Kleiman, <em>The Picard scheme</em>, Corollary 4.18.3 and the discussion immediately following it. This existence input does not require <span class="math" data-tex="$X$">$X$</span> to be smooth, reduced, or projective.</p>
+<p>Condition (1.1) holds universally. Indeed, choose a finite affine covering of <span class="math" data-tex="$X$">$X$</span>. Since <span class="math" data-tex="$X$">$X$</span> is separated, its finite intersections are affine, and the Čech complex computes coherent cohomology. For any <span class="math" data-tex="$k$">$k$</span>-algebra <span class="math" data-tex="$A$">$A$</span>, tensoring that complex with <span class="math" data-tex="$A$">$A$</span> is exact on cohomology because <span class="math" data-tex="$A$">$A$</span> is flat over <span class="math" data-tex="$k$">$k$</span>. Thus</p>
+<span class="math math-display" data-tex="$$
+H^i(X_A,\mathcal O_{X_A})=H^i(X,\mathcal O_X)\otimes_k A,
+\qquad H^0(X_A,\mathcal O_{X_A})=A. \tag{1.2}
+$$">$$
+H^i(X_A,\mathcal O_{X_A})=H^i(X,\mathcal O_X)\otimes_k A,
+\qquad H^0(X_A,\mathcal O_{X_A})=A. \tag{1.2}
+$$</span>
+<p>The same argument works with coefficients in any <span class="math" data-tex="$k$">$k$</span>-vector space. Consequently the presheaf</p>
+<span class="math math-display" data-tex="$$
+T\longmapsto \operatorname{Pic}(X_T)/p_T^*\operatorname{Pic}(T)
+\tag{1.3}
+$$">$$
+T\longmapsto \operatorname{Pic}(X_T)/p_T^*\operatorname{Pic}(T)
+\tag{1.3}
+$$</span>
+<p>injects into its étale and fppf sheafifications, by the descent argument in <a href="the-picard-functor-and-the-picard-scheme-of-a-curve.html">The Picard functor and the Picard scheme of a curve</a>, Section 1. A sheaf class need not have a global bundle representative: the real conic in that lesson already illustrates the obstruction.</p>
+<p>There is a useful place where representatives do exist. Suppose <span class="math" data-tex="$k$">$k$</span> is algebraically closed and <span class="math" data-tex="$A$">$A$</span> is a local Artin <span class="math" data-tex="$k$">$k$</span>-algebra with residue field <span class="math" data-tex="$k$">$k$</span>. The ring <span class="math" data-tex="$A$">$A$</span> is strictly henselian. Any étale covering of <span class="math" data-tex="$\operatorname{Spec}A$">$\operatorname{Spec}A$</span> has a section after selecting a member above its closed point. The equality of the étale and fppf Picard sheaves from the preceding lesson therefore implies that every element of <span class="math" data-tex="$P(A)$">$P(A)$</span> is represented by a line bundle on <span class="math" data-tex="$X_A$">$X_A$</span>. Moreover <span class="math" data-tex="$\operatorname{Pic}(A)=0$">$\operatorname{Pic}(A)=0$</span>. Thus</p>
+<span class="math math-display" data-tex="$$
+P(A)=\operatorname{Pic}(X_A). \tag{1.4}
+$$">$$
+P(A)=\operatorname{Pic}(X_A). \tag{1.4}
+$$</span>
+<p>We will use (1.4) for the infinitesimal smoothness argument, after extending the field to an algebraic closure. We will not assume it for all parameter schemes.</p>
+<h2 id="2-the-square-zero-sequence-and-the-tangent-space">2. The square-zero sequence and the tangent space</h2>
+<p>Put <span class="math" data-tex="$D=k[\epsilon]/(\epsilon^2)$">$D=k[\epsilon]/(\epsilon^2)$</span>. The tangent space at the identity is the kernel</p>
+<span class="math math-display" data-tex="$$
+T_0P=\ker\bigl(P(D)\longrightarrow P(k)\bigr). \tag{2.1}
+$$">$$
+T_0P=\ker\bigl(P(D)\longrightarrow P(k)\bigr). \tag{2.1}
+$$</span>
+<p>The underlying topological spaces of <span class="math" data-tex="$X_D$">$X_D$</span> and <span class="math" data-tex="$X$">$X$</span> are identical. Their sheaves of units fit into a split exact sequence of abelian sheaves on the Zariski site of <span class="math" data-tex="$X$">$X$</span>:</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow \mathcal O_X
+\xrightarrow{a\mapsto 1+\epsilon a}
+\mathcal O_{X_D}^{\times}
+\longrightarrow \mathcal O_X^{\times}
+\longrightarrow 1. \tag{2.2}
+$$">$$
+0\longrightarrow \mathcal O_X
+\xrightarrow{a\mapsto 1+\epsilon a}
+\mathcal O_{X_D}^{\times}
+\longrightarrow \mathcal O_X^{\times}
+\longrightarrow 1. \tag{2.2}
+$$</span>
+<p>The multiplication rule <span class="math" data-tex="$(1+\epsilon a)(1+\epsilon b)=1+\epsilon(a+b)$">$(1+\epsilon a)(1+\epsilon b)=1+\epsilon(a+b)$</span> identifies the kernel with the additive sheaf <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. Constants provide the splitting. Since first cohomology of units classifies line bundles, taking cohomology gives</p>
+<span class="math math-display" data-tex="$$
+\ker\bigl(\operatorname{Pic}(X_D)\to\operatorname{Pic}(X)\bigr)
+\simeq H^1(X,\mathcal O_X). \tag{2.3}
+$$">$$
+\ker\bigl(\operatorname{Pic}(X_D)\to\operatorname{Pic}(X)\bigr)
+\simeq H^1(X,\mathcal O_X). \tag{2.3}
+$$</span>
+<p>The resulting map to (2.1) is injective by (1.3), since <span class="math" data-tex="$\operatorname{Pic}(D)=0$">$\operatorname{Pic}(D)=0$</span>. It is surjective if <span class="math" data-tex="$k$">$k$</span> is algebraically closed, by (1.4).</p>
+<p>To remove that restriction, extend to an algebraic closure <span class="math" data-tex="$\bar k$">$\bar k$</span>. The tangent space of a scheme at a rational point commutes with field extension: it is the dual of the cotangent space, or equivalently the kernel on dual-number points after tensoring. Equation (1.2) shows that coherent cohomology does too. The map (2.3) is natural under field extension. After tensoring with <span class="math" data-tex="$\bar k$">$\bar k$</span> it is an isomorphism, and faithful flatness of <span class="math" data-tex="$\bar k/k$">$\bar k/k$</span> makes it an isomorphism before tensoring.</p>
+<p><strong>Proposition 2.1.</strong> For <span class="math" data-tex="$X$">$X$</span> satisfying (1.1), there is a canonical <span class="math" data-tex="$k$">$k$</span>-linear isomorphism</p>
+<span class="math math-display" data-tex="$$
+T_0\operatorname{Pic}_{X/k}\simeq H^1(X,\mathcal O_X). \tag{2.4}
+$$">$$
+T_0\operatorname{Pic}_{X/k}\simeq H^1(X,\mathcal O_X). \tag{2.4}
+$$</span>
+<p>The preceding argument proves bijectivity. We check the linear structure explicitly. If <span class="math" data-tex="$a_{ij}$">$a_{ij}$</span> is a Čech cocycle on an affine cover, glue trivial bundles using transition functions <span class="math" data-tex="$1+\epsilon a_{ij}$">$1+\epsilon a_{ij}$</span>. Tensoring two such bundles adds their cocycles. Substitution <span class="math" data-tex="$\epsilon\mapsto c\epsilon$">$\epsilon\mapsto c\epsilon$</span> multiplies the cocycle by <span class="math" data-tex="$c\in k$">$c\in k$</span>. These are exactly addition and scalar multiplication in the tangent space. A change of local frames by <span class="math" data-tex="$1+\epsilon b_i$">$1+\epsilon b_i$</span> changes <span class="math" data-tex="$a_{ij}$">$a_{ij}$</span> by a coboundary. Hence (2.4) is a canonical linear isomorphism. ∎</p>
+<p>At any rational point <span class="math" data-tex="$[L]\in P(k)$">$[L]\in P(k)$</span>, translation by that point identifies <span class="math" data-tex="$T_{[L]}P$">$T_{[L]}P$</span> with <span class="math" data-tex="$T_0P$">$T_0P$</span>. Over a field extension <span class="math" data-tex="$K/k$">$K/k$</span>, the corresponding statement is</p>
+<span class="math math-display" data-tex="$$
+T_{[L]}P_K\simeq H^1(X_K,\mathcal O_{X_K}). \tag{2.5}
+$$">$$
+T_{[L]}P_K\simeq H^1(X_K,\mathcal O_{X_K}). \tag{2.5}
+$$</span>
+<p>The tangent dimension depends on <span class="math" data-tex="$X$">$X$</span>, not on the chosen bundle.</p>
+<h2 id="3-lifting-a-line-bundle-and-its-obstruction">3. Lifting a line bundle and its obstruction</h2>
+<p>A small extension of local Artin <span class="math" data-tex="$k$">$k$</span>-algebras with residue field <span class="math" data-tex="$k$">$k$</span> is a surjection</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow J\longrightarrow A&#x27;\longrightarrow A\longrightarrow 0,
+\qquad \mathfrak m_{A&#x27;}J=0. \tag{3.1}
+$$">$$
+0\longrightarrow J\longrightarrow A&#x27;\longrightarrow A\longrightarrow 0,
+\qquad \mathfrak m_{A&#x27;}J=0. \tag{3.1}
+$$</span>
+<p>The ideal <span class="math" data-tex="$J$">$J$</span> is a finite-dimensional <span class="math" data-tex="$k$">$k$</span>-vector space and <span class="math" data-tex="$J^2=0$">$J^2=0$</span>. We deform a bundle on the fixed schemes <span class="math" data-tex="$X_{A&#x27;}\to X_A$">$X_{A&#x27;}\to X_A$</span>; we are not simultaneously deforming <span class="math" data-tex="$X$">$X$</span>. There is an exact sequence</p>
+<span class="math math-display" data-tex="$$
+0\longrightarrow \mathcal O_X\otimes_k J
+\xrightarrow{u\mapsto 1+u}
+\mathcal O_{X_{A&#x27;}}^{\times}
+\longrightarrow \mathcal O_{X_A}^{\times}
+\longrightarrow 1. \tag{3.2}
+$$">$$
+0\longrightarrow \mathcal O_X\otimes_k J
+\xrightarrow{u\mapsto 1+u}
+\mathcal O_{X_{A&#x27;}}^{\times}
+\longrightarrow \mathcal O_{X_A}^{\times}
+\longrightarrow 1. \tag{3.2}
+$$</span>
+<p>Exactness on the right is local: a lift of an invertible element remains invertible across a nilpotent ideal. Cohomology gives a connecting map</p>
+<span class="math math-display" data-tex="$$
+\delta_{A&#x27;/A}:\operatorname{Pic}(X_A)
+\longrightarrow H^2(X,\mathcal O_X)\otimes_k J. \tag{3.3}
+$$">$$
+\delta_{A&#x27;/A}:\operatorname{Pic}(X_A)
+\longrightarrow H^2(X,\mathcal O_X)\otimes_k J. \tag{3.3}
+$$</span>
+<p><strong>Theorem 3.1.</strong> A line bundle <span class="math" data-tex="$L_A$">$L_A$</span> on <span class="math" data-tex="$X_A$">$X_A$</span> lifts to a line bundle on <span class="math" data-tex="$X_{A&#x27;}$">$X_{A&#x27;}$</span> if and only if <span class="math" data-tex="$\delta_{A&#x27;/A}(L_A)=0$">$\delta_{A&#x27;/A}(L_A)=0$</span>. If it lifts, its isomorphism classes of lifts form a torsor under <span class="math" data-tex="$H^1(X,\mathcal O_X)\otimes_k J$">$H^1(X,\mathcal O_X)\otimes_k J$</span>. For lifts equipped with an identification of their reduction with <span class="math" data-tex="$L_A$">$L_A$</span>, the automorphisms inducing the identity on <span class="math" data-tex="$L_A$">$L_A$</span> are the additive group <span class="math" data-tex="$J$">$J$</span>.</p>
+<p><strong>Proof.</strong> The relevant part of the cohomology sequence is</p>
+<span class="math math-display" data-tex="$$
+H^0(\mathcal O_{X_{A&#x27;}}^{\times})\longrightarrow
+H^0(\mathcal O_{X_A}^{\times})\longrightarrow
+H^1(\mathcal O_X\otimes J)\longrightarrow
+\operatorname{Pic}(X_{A&#x27;})\longrightarrow
+\operatorname{Pic}(X_A)\xrightarrow{\delta_{A&#x27;/A}}
+H^2(\mathcal O_X\otimes J). \tag{3.4}
+$$">$$
+H^0(\mathcal O_{X_{A&#x27;}}^{\times})\longrightarrow
+H^0(\mathcal O_{X_A}^{\times})\longrightarrow
+H^1(\mathcal O_X\otimes J)\longrightarrow
+\operatorname{Pic}(X_{A&#x27;})\longrightarrow
+\operatorname{Pic}(X_A)\xrightarrow{\delta_{A&#x27;/A}}
+H^2(\mathcal O_X\otimes J). \tag{3.4}
+$$</span>
+<p>By (1.2), the first arrow is <span class="math" data-tex="$A&#x27;^{\times}\to A^{\times}$">$A&#x27;^{\times}\to A^{\times}$</span>, which is surjective. Thus <span class="math" data-tex="$H^1(\mathcal O_X\otimes J)$">$H^1(\mathcal O_X\otimes J)$</span> injects into <span class="math" data-tex="$\operatorname{Pic}(X_{A&#x27;})$">$\operatorname{Pic}(X_{A&#x27;})$</span> and is exactly the kernel of the reduction map. Exactness proves the lifting criterion. If one lift exists, tensoring by the elements of this kernel acts freely and transitively on all lifts. Cohomology with vector-space coefficients gives <span class="math" data-tex="$H^i(\mathcal O_X\otimes J)=H^i(\mathcal O_X)\otimes J$">$H^i(\mathcal O_X\otimes J)=H^i(\mathcal O_X)\otimes J$</span>.</p>
+<p>For identified lifts, changing the reduction identification does not introduce another orbit: the automorphisms of <span class="math" data-tex="$L_A$">$L_A$</span> are <span class="math" data-tex="$A^\times$">$A^\times$</span>, and each lifts to an element of <span class="math" data-tex="$A&#x27;^\times$">$A&#x27;^\times$</span>. An automorphism of a lift inducing the identity below is multiplication by a global unit <span class="math" data-tex="$1+u$">$1+u$</span> with <span class="math" data-tex="$u\in H^0(\mathcal O_X)\otimes J=J$">$u\in H^0(\mathcal O_X)\otimes J=J$</span>. Its group law is addition because <span class="math" data-tex="$J^2=0$">$J^2=0$</span>. ∎</p>
+<p>Here is the obstruction as a cocycle, including the choices. Choose a finite affine cover <span class="math" data-tex="$\{U_i\}$">$\{U_i\}$</span> of <span class="math" data-tex="$X$">$X$</span> on whose induced cover of <span class="math" data-tex="$X_A$">$X_A$</span> the bundle is trivial. Such a cover exists: a trivialization on the special fibre extends across the nilpotent thickening on an affine open, since higher cohomology of its successive quasi-coherent nilpotent ideals vanishes. Refining the cover if necessary preserves affine intersections.</p>
+<p>Choose transitions <span class="math" data-tex="$g_{ij}\in\mathcal O_{X_A}^{\times}(U_i\cap U_j)$">$g_{ij}\in\mathcal O_{X_A}^{\times}(U_i\cap U_j)$</span>, with <span class="math" data-tex="$g_{ji}=g_{ij}^{-1}$">$g_{ji}=g_{ij}^{-1}$</span>, and arbitrary lifts <span class="math" data-tex="$\widetilde g_{ij}$">$\widetilde g_{ij}$</span> to <span class="math" data-tex="$X_{A&#x27;}$">$X_{A&#x27;}$</span>, again with inverse transitions. On a triple intersection write</p>
+<span class="math math-display" data-tex="$$
+\widetilde g_{ij}\widetilde g_{jk}\widetilde g_{ki}
+=1+c_{ijk},\qquad c_{ijk}\in(\mathcal O_X\otimes J)(U_i\cap U_j\cap U_k).
+\tag{3.5}
+$$">$$
+\widetilde g_{ij}\widetilde g_{jk}\widetilde g_{ki}
+=1+c_{ijk},\qquad c_{ijk}\in(\mathcal O_X\otimes J)(U_i\cap U_j\cap U_k).
+\tag{3.5}
+$$</span>
+<p>On quadruple intersections associativity and commutativity give</p>
+<span class="math math-display" data-tex="$$
+c_{jkl}-c_{ikl}+c_{ijl}-c_{ijk}=0. \tag{3.6}
+$$">$$
+c_{jkl}-c_{ikl}+c_{ijl}-c_{ijk}=0. \tag{3.6}
+$$</span>
+<p>Replacing <span class="math" data-tex="$\widetilde g_{ij}$">$\widetilde g_{ij}$</span> by <span class="math" data-tex="$(1+b_{ij})\widetilde g_{ij}$">$(1+b_{ij})\widetilde g_{ij}$</span> changes <span class="math" data-tex="$c$">$c$</span> to <span class="math" data-tex="$c+db$">$c+db$</span>. Thus <span class="math" data-tex="$[c]$">$[c]$</span> is independent of the lifts. Changes of local frames and refinements do not change the resulting cohomology class. This is precisely (3.3). Its vanishing permits a choice of <span class="math" data-tex="$b$">$b$</span> for which the corrected transitions satisfy the cocycle equation, and hence glue a lift. Conversely a lifted bundle supplies transitions with <span class="math" data-tex="$c=0$">$c=0$</span>.</p>
+<p>The construction is functorial under maps of small extensions and linear maps on <span class="math" data-tex="$J$">$J$</span>. In particular the obstruction is a specified class, not merely a dimension estimate. A nonzero space <span class="math" data-tex="$H^2(X,\mathcal O_X)$">$H^2(X,\mathcal O_X)$</span> allows obstructions; it does not assert that every deformation has one.</p>
+<p>For a bundle on <span class="math" data-tex="$X$">$X$</span> itself, the constant pullback to <span class="math" data-tex="$X_A$">$X_A$</span> always extends to <span class="math" data-tex="$X_{A&#x27;}$">$X_{A&#x27;}$</span>. The potentially obstructed object is a previously chosen deformation of that bundle over <span class="math" data-tex="$A$">$A$</span>.</p>
+<h2 id="4-two-smoothness-criteria">4. Two smoothness criteria</h2>
+<p><strong>Theorem 4.1.</strong> The Picard scheme <span class="math" data-tex="$P$">$P$</span> is smooth over <span class="math" data-tex="$k$">$k$</span> if <span class="math" data-tex="$H^2(X,\mathcal O_X)=0$">$H^2(X,\mathcal O_X)=0$</span>.</p>
+<p><strong>Proof.</strong> Smoothness can be checked after the faithfully flat field extension <span class="math" data-tex="$\bar k/k$">$\bar k/k$</span>, and (1.2) preserves the cohomology vanishing. Work therefore over <span class="math" data-tex="$\bar k$">$\bar k$</span>. For each small extension (3.1), every element of <span class="math" data-tex="$P(A)$">$P(A)$</span> has a line-bundle representative by (1.4). Its obstruction lies in the zero group, so it lifts to <span class="math" data-tex="$P(A&#x27;)$">$P(A&#x27;)$</span> by Theorem 3.1.</p>
+<p>This proves formal smoothness on local Artin tests at the identity. The finite-type infinitesimal criterion then proves smoothness at the identity; we use the criterion of [Stacks, Tag 02HX], as in the formal-moduli lesson. Every surjection between local Artin rings with the fixed residue field factors into small extensions, so the small-extension test is sufficient.</p>
+<p>Translation carries the identity to each <span class="math" data-tex="$\bar k$">$\bar k$</span>-point of <span class="math" data-tex="$P$">$P$</span>. Consequently <span class="math" data-tex="$P$">$P$</span> is smooth at all closed points. The smooth locus is open, and any nonempty closed subset of a scheme locally of finite type over an algebraically closed field has a closed point. The nonsmooth locus is therefore empty. Descent gives smoothness over <span class="math" data-tex="$k$">$k$</span>. ∎</p>
+<p>The characteristic-zero criterion has a different mechanism. Its essential input is the characteristic-zero differential criterion: a scheme locally of finite type over a characteristic-zero field with locally free sheaf of Kähler differentials is smooth [Stacks, Tag 04QN]. We now prove that a group scheme satisfies that hypothesis.</p>
+<p><strong>Lemma 4.2.</strong> If <span class="math" data-tex="$G$">$G$</span> is a group scheme over a field <span class="math" data-tex="$k$">$k$</span>, with identity <span class="math" data-tex="$e$">$e$</span>, then</p>
+<span class="math math-display" data-tex="$$
+\Omega_{G/k}\simeq \mathcal O_G\otimes_k e^*\Omega_{G/k}. \tag{4.1}
+$$">$$
+\Omega_{G/k}\simeq \mathcal O_G\otimes_k e^*\Omega_{G/k}. \tag{4.1}
+$$</span>
+<p><strong>Proof.</strong> The map</p>
+<span class="math math-display" data-tex="$$
+G\times G\longrightarrow G\times G,
+\qquad (g,h)\longmapsto(gh,h)
+\tag{4.2}
+$$">$$
+G\times G\longrightarrow G\times G,
+\qquad (g,h)\longmapsto(gh,h)
+\tag{4.2}
+$$</span>
+<p>is an isomorphism over the second factor, with inverse <span class="math" data-tex="$(a,h)\mapsto(ah^{-1},h)$">$(a,h)\mapsto(ah^{-1},h)$</span>. Relative differentials over that factor are the pullback of <span class="math" data-tex="$\Omega_{G/k}$">$\Omega_{G/k}$</span> from the first factor. Pull the resulting differential isomorphism back along <span class="math" data-tex="$h\mapsto(e,h)$">$h\mapsto(e,h)$</span>. On one side its first-coordinate map is <span class="math" data-tex="$h\mapsto h$">$h\mapsto h$</span>, and on the other it is the constant map <span class="math" data-tex="$h\mapsto e$">$h\mapsto e$</span>. This gives exactly (4.1). This argument does not assume that <span class="math" data-tex="$G$">$G$</span> is reduced or smooth. ∎</p>
+<p><strong>Theorem 4.3 (Cartier).</strong> A group scheme locally of finite type over a field of characteristic zero is smooth. In particular <span class="math" data-tex="$P$">$P$</span> is smooth when <span class="math" data-tex="$\operatorname{char}k=0$">$\operatorname{char}k=0$</span>.</p>
+<p><strong>Proof.</strong> The vector space <span class="math" data-tex="$e^*\Omega_{G/k}$">$e^*\Omega_{G/k}$</span> is finite-dimensional by local finite type. Lemma 4.2 makes <span class="math" data-tex="$\Omega_{G/k}$">$\Omega_{G/k}$</span> a finite locally free module. Apply the characteristic-zero differential criterion above. ∎</p>
+<p>The proof deliberately specifies the algebraic input. In positive characteristic locally free differentials do not imply smoothness. For example <span class="math" data-tex="$\mu_p$">$\mu_p$</span> in characteristic <span class="math" data-tex="$p$">$p$</span> has coordinate ring</p>
+<span class="math math-display" data-tex="$$
+k[z,z^{-1}]/(z^p-1)=k[u]/(u^p),\qquad u=z-1.
+\tag{4.3}
+$$">$$
+k[z,z^{-1}]/(z^p-1)=k[u]/(u^p),\qquad u=z-1.
+\tag{4.3}
+$$</span>
+<p>Its sheaf of differentials is freely generated by <span class="math" data-tex="$du$">$du$</span> because <span class="math" data-tex="$d(u^p)=0$">$d(u^p)=0$</span>, yet its underlying scheme is nonreduced and zero-dimensional. Its tangent space at the identity has dimension one. This is exactly the phenomenon that the characteristic-zero criterion excludes.</p>
+<h2 id="5-the-identity-component-and-the-dimension-bound">5. The identity component and the dimension bound</h2>
+<p>Let <span class="math" data-tex="$P^0$">$P^0$</span> be the connected component containing the identity, with its canonical group-scheme structure. We use the general group-scheme theorem [Stacks, Tag 0B7R]: for a group scheme locally of finite type over a field, the identity component is a closed, quasi-compact, geometrically irreducible subgroup scheme. In particular it is of finite type. It is also open here. Indeed a locally Noetherian scheme is locally connected: each Noetherian open has finitely many connected components, which are open. A connected neighbourhood of the identity lies in its connected component, and the same reasoning at every point makes that component open.</p>
+<p>Hence <span class="math" data-tex="$P^0$">$P^0$</span> is open and closed in <span class="math" data-tex="$P$">$P$</span>. Its formation commutes with field extension: its base change is geometrically connected and open and closed, contains the identity, and therefore is precisely the identity component after base change. This is also the assertion of Kleiman, Proposition 5.3.</p>
+<p>The superscript <span class="math" data-tex="$0$">$0$</span> retains the whole scheme structure. It does not mean the reduction <span class="math" data-tex="$(P^0)_{\mathrm{red}}$">$(P^0)_{\mathrm{red}}$</span>. Over a perfect field the reduction of a finite-type group scheme is a smooth subgroup scheme: products of reduced schemes remain reduced, so multiplication restricts to the reduction, and generic smoothness followed by translations makes that reduced group smooth. Over an imperfect field, neither this product argument nor this smoothness assertion is automatic. Our dimension and tangent arguments use <span class="math" data-tex="$P^0$">$P^0$</span>, with its possible nilpotents, over every field.</p>
+<p><strong>Theorem 5.1.</strong> Under (1.1),</p>
+<span class="math math-display" data-tex="$$
+\dim P^0\leq h^1(X,\mathcal O_X), \tag{5.1}
+$$">$$
+\dim P^0\leq h^1(X,\mathcal O_X), \tag{5.1}
+$$</span>
+<p>and equality holds if and only if <span class="math" data-tex="$P^0$">$P^0$</span> is smooth over <span class="math" data-tex="$k$">$k$</span>. Equivalently, equality holds if and only if <span class="math" data-tex="$P$">$P$</span> is smooth.</p>
+<p><strong>Proof.</strong> Both sides of (5.1) are unchanged by extension to <span class="math" data-tex="$\bar k$">$\bar k$</span>. Work over that field and let <span class="math" data-tex="$R$">$R$</span> be the local ring at the identity. Its embedding dimension is <span class="math" data-tex="$t=h^1(X,\mathcal O_X)$">$t=h^1(X,\mathcal O_X)$</span> by Proposition 2.1. The dimension of <span class="math" data-tex="$R$">$R$</span> is the dimension <span class="math" data-tex="$d$">$d$</span> of <span class="math" data-tex="$P^0$">$P^0$</span>: that component is irreducible of finite type, and a closed point on an irreducible finite-type scheme over a field has local dimension equal to its global dimension.</p>
+<p>For completeness, the local algebra inequality can be seen directly. Lift a basis of <span class="math" data-tex="$\mathfrak m_R/\mathfrak m_R^2$">$\mathfrak m_R/\mathfrak m_R^2$</span> to <span class="math" data-tex="$t$">$t$</span> elements of <span class="math" data-tex="$R$">$R$</span>. They give a surjective map</p>
+<span class="math math-display" data-tex="$$
+\bar k[[x_1,\ldots,x_t]]\longrightarrow \widehat R,
+\qquad \widehat R=\bar k[[x_1,\ldots,x_t]]/I,
+\quad I\subset(x_1,\ldots,x_t)^2. \tag{5.2}
+$$">$$
+\bar k[[x_1,\ldots,x_t]]\longrightarrow \widehat R,
+\qquad \widehat R=\bar k[[x_1,\ldots,x_t]]/I,
+\quad I\subset(x_1,\ldots,x_t)^2. \tag{5.2}
+$$</span>
+<p>Surjectivity follows by successively approximating any element modulo powers of the maximal ideal; completeness then takes the limit. The condition on <span class="math" data-tex="$I$">$I$</span> follows from the chosen tangent basis. Thus <span class="math" data-tex="$d=\dim\widehat R\leq t$">$d=\dim\widehat R\leq t$</span>. If <span class="math" data-tex="$d=t$">$d=t$</span>, then <span class="math" data-tex="$I=0$">$I=0$</span>: the power-series ring is a regular local domain of dimension <span class="math" data-tex="$t$">$t$</span>, and its quotient by any nonzero ideal has dimension at most <span class="math" data-tex="$t-1$">$t-1$</span>. Therefore <span class="math" data-tex="$R$">$R$</span> is regular. Over an algebraically closed field, regularity of a finite-type scheme at a closed point is equivalent to smoothness there. Translation gives smoothness on all of <span class="math" data-tex="$P$">$P$</span> as in Theorem 4.1, and faithful-flat descent gives smoothness over the original <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>Conversely, if <span class="math" data-tex="$P^0$">$P^0$</span> is smooth, the tangent dimension at the identity equals its dimension, proving equality. Finally <span class="math" data-tex="$P^0$">$P^0$</span> is an open neighbourhood of the identity. Smoothness of <span class="math" data-tex="$P^0$">$P^0$</span> makes <span class="math" data-tex="$P$">$P$</span> smooth by translations after extending to <span class="math" data-tex="$\bar k$">$\bar k$</span>, and smoothness of <span class="math" data-tex="$P$">$P$</span> plainly implies smoothness of that open subscheme. ∎</p>
+<p>Over an algebraic closure, every component is a translate of <span class="math" data-tex="$P^0$">$P^0$</span>. To see this, take a closed point on the component and translate it to the identity. Translation is a homeomorphism and an isomorphism of schemes, so it identifies the whole component with <span class="math" data-tex="$P^0$">$P^0$</span>. The dimensions and infinitesimal structures of components are therefore the same. The total Picard scheme can still have infinitely many components.</p>
+<h2 id="6-algebraic-equivalence-and-néron-severi-groups">6. Algebraic equivalence and Néron–Severi groups</h2>
+<p>First work over an algebraically closed field. Two line bundles are algebraically equivalent if they can be connected by a finite chain of families of line bundles parameterized by connected schemes of finite type. More precisely, in each link an invertible sheaf on <span class="math" data-tex="$X\times T$">$X\times T$</span> has the two required bundles as fibres at two <span class="math" data-tex="$k$">$k$</span>-points of a connected finite-type <span class="math" data-tex="$T$">$T$</span>. Tensor product makes the bundles algebraically equivalent to <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> a subgroup, denoted <span class="math" data-tex="$\operatorname{Pic}^0(X)$">$\operatorname{Pic}^0(X)$</span>.</p>
+<p><strong>Proposition 6.1.</strong> Over an algebraically closed field,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Pic}^0(X)=P^0(k). \tag{6.1}
+$$">$$
+\operatorname{Pic}^0(X)=P^0(k). \tag{6.1}
+$$</span>
+<p><strong>Proof.</strong> A family on a connected <span class="math" data-tex="$T$">$T$</span> gives a morphism <span class="math" data-tex="$T\to P$">$T\to P$</span> whose image lies in one connected component. The difference of the classes at its two specified points belongs to <span class="math" data-tex="$P^0(k)$">$P^0(k)$</span>, because components are cosets of <span class="math" data-tex="$P^0$">$P^0$</span>. This proves one inclusion, including chains of families.</p>
+<p>For the converse, <span class="math" data-tex="$X$">$X$</span> has a <span class="math" data-tex="$k$">$k$</span>-point because it is a nonempty finite-type scheme over an algebraically closed field. Rigidification at that point identifies the Picard sheaf with the functor of normalized invertible sheaves, as proved in the Picard-functor lesson. The universal point of <span class="math" data-tex="$P^0$">$P^0$</span> therefore supplies an invertible sheaf on <span class="math" data-tex="$X\times P^0$">$X\times P^0$</span>, normalized at the chosen point of <span class="math" data-tex="$X$">$X$</span>. Since <span class="math" data-tex="$P^0$">$P^0$</span> is connected and of finite type, its fibres at the identity and at any <span class="math" data-tex="$[L]\in P^0(k)$">$[L]\in P^0(k)$</span> give the required algebraic equivalence. ∎</p>
+<p>Define the geometric Néron–Severi group for general <span class="math" data-tex="$k$">$k$</span> by</p>
+<span class="math math-display" data-tex="$$
+\operatorname{NS}_{\mathrm{geom}}(X)
+=\operatorname{Pic}(X_{\bar k})/P^0_{\bar k}(\bar k).
+\tag{6.2}
+$$">$$
+\operatorname{NS}_{\mathrm{geom}}(X)
+=\operatorname{Pic}(X_{\bar k})/P^0_{\bar k}(\bar k).
+\tag{6.2}
+$$</span>
+<p>For algebraically closed <span class="math" data-tex="$k$">$k$</span>, this is usually written simply <span class="math" data-tex="$\operatorname{NS}(X)$">$\operatorname{NS}(X)$</span>. Its elements are connected-component classes. The component group can be expressed as an étale group scheme, possibly with infinitely many components; over <span class="math" data-tex="$\bar k$">$\bar k$</span> it is the constant group scheme associated with (6.2). This follows either from the general quotient by the open and closed subgroup <span class="math" data-tex="$P^0$">$P^0$</span>, or by gluing one point for each coset over <span class="math" data-tex="$\bar k$">$\bar k$</span> and descending the resulting étale scheme.</p>
+<p>Here is the exact finiteness theorem used in this lesson.</p>
+<p><strong>Finiteness input (the theorem of the base).</strong> For every proper scheme <span class="math" data-tex="$X$">$X$</span> over an algebraically closed field, <span class="math" data-tex="$\operatorname{Pic}(X)/P^0(k)$">$\operatorname{Pic}(X)/P^0(k)$</span> is a finitely generated abelian group. More generally, for a proper morphism <span class="math" data-tex="$X\to S$">$X\to S$</span> with <span class="math" data-tex="$S$">$S$</span> Noetherian, the ranks and the orders of the torsion subgroups of the geometric-fibre Néron–Severi groups are bounded by a single integer. We use [AI Integrated Stacks Project, moduli.tex, theorem-picard-neron-severi-uniform-bounds], whose displayed quotient is by <span class="math" data-tex="$P^0$">$P^0$</span>, together with its first statement, item (vi) of Grothendieck's <a href="https://www.numdam.org/item/SB_1961-1962__7__303_1/">complement to FGA, Exposé 236</a>. The proof of the bounds in this generality is due to Kleiman (1971); see Kleiman, <em>The Picard scheme</em>, Corollary 6.17 and Remark 6.19. This theorem is stated here, not reproved.</p>
+<p>There is an arithmetic distinction when <span class="math" data-tex="$k$">$k$</span> is not algebraically closed. Define</p>
+<span class="math math-display" data-tex="$$
+\operatorname{Pic}^0(X)=
+\{L\in\operatorname{Pic}(X):[L]\in P^0(k)\},
+\qquad
+\operatorname{NS}_{\mathrm{arith}}(X)=
+\operatorname{Pic}(X)/\operatorname{Pic}^0(X). \tag{6.3}
+$$">$$
+\operatorname{Pic}^0(X)=
+\{L\in\operatorname{Pic}(X):[L]\in P^0(k)\},
+\qquad
+\operatorname{NS}_{\mathrm{arith}}(X)=
+\operatorname{Pic}(X)/\operatorname{Pic}^0(X). \tag{6.3}
+$$</span>
+<p>The actual-bundle group <span class="math" data-tex="$\operatorname{Pic}(X)$">$\operatorname{Pic}(X)$</span> injects into <span class="math" data-tex="$P(k)$">$P(k)$</span> by (1.3). Its pullback to <span class="math" data-tex="$P(\bar k)$">$P(\bar k)$</span> is injective too, because equality of two <span class="math" data-tex="$k$">$k$</span>-points of a scheme can be checked faithfully flatly. Formation of <span class="math" data-tex="$P^0$">$P^0$</span> commutes with field extension. It follows that (6.3) injects into (6.2). Thus the arithmetic group is finitely generated as a subgroup of a finitely generated abelian group, but it need not equal the geometric group. A real conic has only even degrees of actual real line bundles, while its geometric Néron–Severi group is <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>.</p>
+<h2 id="7-torsion-components-and-numerical-equivalence">7. Torsion components and numerical equivalence</h2>
+<p>Define <span class="math" data-tex="$P^\tau$">$P^\tau$</span> as the union of components whose image in the component group is torsion. Equivalently,</p>
+<span class="math math-display" data-tex="$$
+P^\tau=\bigcup_{n\geq1}[n]^{-1}(P^0), \tag{7.1}
+$$">$$
+P^\tau=\bigcup_{n\geq1}[n]^{-1}(P^0), \tag{7.1}
+$$</span>
+<p>where <span class="math" data-tex="$[n]$">$[n]$</span> is tensor power. Each inverse image is open; after extending to <span class="math" data-tex="$\bar k$">$\bar k$</span>, (7.1) is a union of whole components. Its complement is also a union of components, hence open. These properties descend, so <span class="math" data-tex="$P^\tau$">$P^\tau$</span> is an open and closed subgroup scheme.</p>
+<p><strong>Proposition 7.1.</strong> The scheme <span class="math" data-tex="$P^\tau$">$P^\tau$</span> is of finite type over <span class="math" data-tex="$k$">$k$</span>, and</p>
+<span class="math math-display" data-tex="$$
+P^\tau/P^0
+\tag{7.2}
+$$">$$
+P^\tau/P^0
+\tag{7.2}
+$$</span>
+<p>is a finite étale group scheme. Over <span class="math" data-tex="$\bar k$">$\bar k$</span> its group of points is exactly <span class="math" data-tex="$\operatorname{NS}_{\mathrm{geom}}(X)_{\mathrm{tors}}$">$\operatorname{NS}_{\mathrm{geom}}(X)_{\mathrm{tors}}$</span>.</p>
+<p><strong>Proof.</strong> The torsion subgroup of a finitely generated abelian group is finite. By the finiteness input, only finitely many components of <span class="math" data-tex="$P_{\bar k}$">$P_{\bar k}$</span> occur in <span class="math" data-tex="$P^\tau_{\bar k}$">$P^\tau_{\bar k}$</span>. Each is a translate of the finite-type scheme <span class="math" data-tex="$P^0_{\bar k}$">$P^0_{\bar k}$</span>. Their finite disjoint union is of finite type, and this property descends to <span class="math" data-tex="$k$">$k$</span>. The quotient (7.2) is the finite part of the étale component group described in Section 6. After extending to <span class="math" data-tex="$\bar k$">$\bar k$</span> it is the finite constant torsion group, so it is finite étale before extension as well. ∎</p>
+<p>The quotient in (7.2) can be étale even when <span class="math" data-tex="$P^\tau$">$P^\tau$</span> itself is nonreduced. Nilpotents within the identity component disappear in the component quotient. Nor should <span class="math" data-tex="$P^\tau$">$P^\tau$</span> be described as the set of torsion line bundles: a nontorsion bundle in <span class="math" data-tex="$P^0$">$P^0$</span> belongs to <span class="math" data-tex="$P^\tau$">$P^\tau$</span> because its component class is zero.</p>
+<p>For numerical equivalence, work geometrically. An invertible sheaf <span class="math" data-tex="$L$">$L$</span> on a proper <span class="math" data-tex="$X/\bar k$">$X/\bar k$</span> is numerically trivial if</p>
+<span class="math math-display" data-tex="$$
+\deg(\nu^*L)=0 \quad\text{for every integral curve }C\subset X,
+\tag{7.3}
+$$">$$
+\deg(\nu^*L)=0 \quad\text{for every integral curve }C\subset X,
+\tag{7.3}
+$$</span>
+<p>where <span class="math" data-tex="$\nu:\widetilde C\to C\hookrightarrow X$">$\nu:\widetilde C\to C\hookrightarrow X$</span> is its normalization. Degrees can also be defined by Euler characteristics on <span class="math" data-tex="$C$">$C$</span>; the zero-degree condition is unchanged by normalization.</p>
+<p>Algebraic triviality implies numerical triviality. Restrict a connected family of invertible sheaves to <span class="math" data-tex="$C\times T$">$C\times T$</span>. This is a flat coherent family on a proper curve over <span class="math" data-tex="$T$">$T$</span>. Its Euler characteristic is locally constant in <span class="math" data-tex="$T$">$T$</span>, by cohomology and base change. The degree, which is its Euler characteristic minus <span class="math" data-tex="$\chi(\mathcal O_C)$">$\chi(\mathcal O_C)$</span>, is therefore constant on connected <span class="math" data-tex="$T$">$T$</span>. A family joining <span class="math" data-tex="$L$">$L$</span> to <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span> forces degree zero on every <span class="math" data-tex="$C$">$C$</span>. Chains give the same conclusion.</p>
+<p>If <span class="math" data-tex="$L^{\otimes n}$">$L^{\otimes n}$</span> is algebraically trivial, then <span class="math" data-tex="$n\deg(\nu^*L)=0$">$n\deg(\nu^*L)=0$</span>; the integer degree is consequently zero. Thus belonging to <span class="math" data-tex="$P^\tau(\bar k)$">$P^\tau(\bar k)$</span> implies numerical triviality.</p>
+<p>We use the converse as a second precise finiteness input: for every proper <span class="math" data-tex="$X$">$X$</span> over an algebraically closed field,</p>
+<span class="math math-display" data-tex="$$
+L\text{ is numerically trivial}
+\quad\Longleftrightarrow\quad
+L^{\otimes n}\text{ is algebraically trivial for some }n\geq1.
+\tag{7.4}
+$$">$$
+L\text{ is numerically trivial}
+\quad\Longleftrightarrow\quad
+L^{\otimes n}\text{ is algebraically trivial for some }n\geq1.
+\tag{7.4}
+$$</span>
+<p>It is stated in [AI Integrated Stacks Project, moduli.tex, theorem-picard-tau-numerical-criteria] and, for every proper scheme over a field, in item (viii) of Grothendieck's complement to FGA, Exposé 236. For projective <span class="math" data-tex="$X$">$X$</span>, Kleiman, <em>The Picard scheme</em>, Theorem 6.3 gives the equivalent numerical, boundedness, and Euler-characteristic formulations; Remark 6.14 explains the extension to proper <span class="math" data-tex="$X$">$X$</span>. We have proved the forward implication from torsion of the component class to numerical triviality, and import the converse in the direction from numerical triviality to torsion of the component class.</p>
+<p>Equation (7.4) concerns the whole numerical subgroup. It does not make every numerically trivial bundle algebraically trivial. Enriques surfaces provide the simplest counterexample below.</p>
+<h2 id="8-curves-and-other-examples">8. Curves and other examples</h2>
+<h3 id="smooth-projective-curves">Smooth projective curves</h3>
+<p><strong>Theorem 8.1.</strong> Let <span class="math" data-tex="$C$">$C$</span> be a smooth projective geometrically connected curve of genus <span class="math" data-tex="$g$">$g$</span>. Its identity component <span class="math" data-tex="$\operatorname{Pic}^0_{C/k}$">$\operatorname{Pic}^0_{C/k}$</span> is an abelian variety of dimension <span class="math" data-tex="$g$">$g$</span>. Moreover <span class="math" data-tex="$\operatorname{Pic}^\tau_{C/k}=\operatorname{Pic}^0_{C/k}$">$\operatorname{Pic}^\tau_{C/k}=\operatorname{Pic}^0_{C/k}$</span> and <span class="math" data-tex="$\operatorname{NS}_{\mathrm{geom}}(C)=\mathbb Z$">$\operatorname{NS}_{\mathrm{geom}}(C)=\mathbb Z$</span>, via degree.</p>
+<p><strong>Proof.</strong> Smoothness and geometric connectedness make <span class="math" data-tex="$C$">$C$</span> geometrically integral, and <span class="math" data-tex="$H^0(C,\mathcal O_C)=k$">$H^0(C,\mathcal O_C)=k$</span>. A curve has <span class="math" data-tex="$H^2(C,\mathcal O_C)=0$">$H^2(C,\mathcal O_C)=0$</span>, so Theorem 4.1 makes the Picard scheme smooth. Proposition 2.1 gives tangent dimension <span class="math" data-tex="$g$">$g$</span>, hence dimension <span class="math" data-tex="$g$">$g$</span> by Theorem 5.1.</p>
+<p>The curve construction in the preceding two lessons proves that the degree-<span class="math" data-tex="$d$">$d$</span> subschemes are open and closed, geometrically integral, and proper. Here is the properness mechanism again. For <span class="math" data-tex="$d\geq0$">$d\geq0$</span> with <span class="math" data-tex="$d&gt;2g-2$">$d&gt;2g-2$</span>, the Abel map <span class="math" data-tex="$\operatorname{Sym}^d C\to\operatorname{Pic}^d_{C/k}$">$\operatorname{Sym}^d C\to\operatorname{Pic}^d_{C/k}$</span> is surjective on every geometric fibre and has projective-space fibres by Riemann–Roch and Serre duality. The symmetric power is proper. For any base change, the image of the inverse image of a closed subset is its image under the Picard structure map, by surjectivity; that image is closed because the symmetric power is proper. Finite type and separatedness of the degree piece therefore make it proper. Geometric translation carries this assertion to every degree, in particular degree zero.</p>
+<p>The degree-zero piece is geometrically integral, contains the identity, and is therefore exactly <span class="math" data-tex="$P^0$">$P^0$</span>. A smooth proper geometrically connected group scheme over a field is an abelian variety and is projective; we use this projectivity theorem [Stacks, Tag 0BFA]. Thus <span class="math" data-tex="$P^0$">$P^0$</span> is a smooth projective group scheme of dimension <span class="math" data-tex="$g$">$g$</span>.</p>
+<p>Over <span class="math" data-tex="$\bar k$">$\bar k$</span>, degree is surjective because there are points of degree one. Each degree piece is one component. The component group is consequently <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span>, whose torsion subgroup is zero. This proves the remaining assertions, including equality of the subgroup schemes by (7.1) and base-change descent. ∎</p>
+<p>A curve without a rational point can have fewer degrees of actual <span class="math" data-tex="$k$">$k$</span>-line bundles, as in the real-conic example. This does not change its geometric component group or the dimension of its Jacobian.</p>
+<h3 id="a-product-of-two-curves">A product of two curves</h3>
+<p>Let <span class="math" data-tex="$C,D$">$C,D$</span> be smooth projective geometrically connected curves. After extending to <span class="math" data-tex="$\bar k$">$\bar k$</span>, choose points <span class="math" data-tex="$c\in C$">$c\in C$</span> and <span class="math" data-tex="$d\in D$">$d\in D$</span>. On <span class="math" data-tex="$X=C\times D$">$X=C\times D$</span> consider</p>
+<span class="math math-display" data-tex="$$
+A=\operatorname{pr}_C^*\mathcal O_C(c),
+\qquad B=\operatorname{pr}_D^*\mathcal O_D(d). \tag{8.1}
+$$">$$
+A=\operatorname{pr}_C^*\mathcal O_C(c),
+\qquad B=\operatorname{pr}_D^*\mathcal O_D(d). \tag{8.1}
+$$</span>
+<p>On <span class="math" data-tex="$C\times\{d\}$">$C\times\{d\}$</span>, their degrees are <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$0$">$0$</span>, while on <span class="math" data-tex="$\{c\}\times D$">$\{c\}\times D$</span> they are <span class="math" data-tex="$0$">$0$</span> and <span class="math" data-tex="$1$">$1$</span>. If <span class="math" data-tex="$A^{\otimes a}\otimes B^{\otimes b}$">$A^{\otimes a}\otimes B^{\otimes b}$</span> is algebraically trivial, its degree on both curves is zero by Section 7. Therefore <span class="math" data-tex="$a=b=0$">$a=b=0$</span>. The classes of <span class="math" data-tex="$A$">$A$</span> and <span class="math" data-tex="$B$">$B$</span> generate a copy of <span class="math" data-tex="$\mathbb Z^2$">$\mathbb Z^2$</span> in <span class="math" data-tex="$\operatorname{NS}_{\mathrm{geom}}(X)$">$\operatorname{NS}_{\mathrm{geom}}(X)$</span>, so its rank is at least two. Additional classes can arise; the argument does not claim that these two generate the whole group.</p>
+<h3 id="abelian-varieties">Abelian varieties</h3>
+<p>For an abelian variety <span class="math" data-tex="$A/k$">$A/k$</span>, the duality theorem states that</p>
+<span class="math math-display" data-tex="$$
+A^\vee=\operatorname{Pic}^0_{A/k}
+\tag{8.2}
+$$">$$
+A^\vee=\operatorname{Pic}^0_{A/k}
+\tag{8.2}
+$$</span>
+<p>is an abelian variety of dimension <span class="math" data-tex="$\dim A$">$\dim A$</span>. Rigidification at the identity gives a normalized Poincaré bundle on <span class="math" data-tex="$A\times A^\vee$">$A\times A^\vee$</span>, trivial on both identity slices. We use this duality theorem as a stated input, with locator [AI Integrated Stacks Project, moduli.tex, theorem-dual-abelian-scheme], specialized to a field; the historical dual-abelian-scheme discussion occurs in FGA, Exposé 236, Theorem 3.3(iii). This is stronger than the vanishing criterion of Theorem 4.1: for abelian varieties of dimension at least two, <span class="math" data-tex="$H^2(A,\mathcal O_A)$">$H^2(A,\mathcal O_A)$</span> need not vanish, yet their Picard schemes are smooth.</p>
+<h3 id="enriques-surfaces">Enriques surfaces</h3>
+<p>For an Enriques surface over an algebraically closed field of characteristic different from two, the classification input is</p>
+<span class="math math-display" data-tex="$$
+h^1(\mathcal O_X)=h^2(\mathcal O_X)=0,
+\qquad \operatorname{Pic}^\tau_{X/k}\simeq(\mathbb Z/2\mathbb Z)_k,
+\tag{8.3}
+$$">$$
+h^1(\mathcal O_X)=h^2(\mathcal O_X)=0,
+\qquad \operatorname{Pic}^\tau_{X/k}\simeq(\mathbb Z/2\mathbb Z)_k,
+\tag{8.3}
+$$</span>
+<p>with nonzero class the canonical bundle. See Liedtke, <em>Arithmetic Moduli and Lifting of Enriques Surfaces</em>, Section 1, especially Definition 1.2 and the following Picard-scheme description. We state this classification without proof. Our own results then imply <span class="math" data-tex="$P^0=\operatorname{Spec}k$">$P^0=\operatorname{Spec}k$</span>, and hence <span class="math" data-tex="$P^\tau/P^0=(\mathbb Z/2\mathbb Z)_k$">$P^\tau/P^0=(\mathbb Z/2\mathbb Z)_k$</span>. The canonical bundle is numerically trivial but not algebraically trivial.</p>
+<p>In characteristic two, the same source identifies <span class="math" data-tex="$P^\tau$">$P^\tau$</span> for singular and supersingular Enriques surfaces with <span class="math" data-tex="$\mu_2$">$\mu_2$</span> and <span class="math" data-tex="$\alpha_2$">$\alpha_2$</span>, respectively. Both are connected and nonreduced, so in these cases <span class="math" data-tex="$P^\tau=P^0$">$P^\tau=P^0$</span> although their tangent space is nonzero. The torsion of the component group is therefore zero; it does not measure these nilpotents.</p>
+<h3 id="igusa-s-nonreduced-example">Igusa's nonreduced example</h3>
+<p>There is also a smooth projective surface in characteristic two for which</p>
+<span class="math math-display" data-tex="$$
+\dim\operatorname{Pic}^0_{X/k}=1,
+\qquad h^1(X,\mathcal O_X)=2. \tag{8.4}
+$$">$$
+\dim\operatorname{Pic}^0_{X/k}=1,
+\qquad h^1(X,\mathcal O_X)=2. \tag{8.4}
+$$</span>
+<p>This is Igusa's example in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC534315/"><em>On some problems in abstract algebraic geometry</em></a>, Proceedings of the National Academy of Sciences 41 (1955), pp. 964–967; the precise numerical statement we use is verified in Kleiman, <em>The Picard scheme</em>, Remark 5.15. The construction is an input, not a construction supplied here. Theorem 5.1 proves immediately from (8.4) that the identity component is not smooth. Over the perfect ground field of the example, a reduced finite-type group scheme would be smooth, so this component is nonreduced. A point-set description of line bundles cannot recover its additional tangent direction.</p>
+<h2 id="9-exercises">9. Exercises</h2>
+<p><strong>Exercise 1.</strong> Compute the tangent space at the identity of the Picard scheme of <span class="math" data-tex="$\mathbb P^n_k$">$\mathbb P^n_k$</span> and of a smooth projective geometrically connected curve of genus <span class="math" data-tex="$g$">$g$</span>. Include <span class="math" data-tex="$n=0$">$n=0$</span>.</p>
+<p><strong>Exercise 2.</strong> For a small extension (3.1), construct the obstruction to lifting a line bundle using transition functions. Prove its independence of choices and prove that, when it vanishes, the isomorphism classes of identified lifts form the claimed torsor.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-tex="$X$">$X$</span> be a smooth projective geometrically connected surface with geometric genus <span class="math" data-tex="$p_g=h^0(X,\omega_X)=0$">$p_g=h^0(X,\omega_X)=0$</span>. Prove that its Picard scheme is smooth in every characteristic. Explain why this need not make it connected.</p>
+<p><strong>Exercise 4.</strong> Starting from <span class="math" data-tex="$T_0P=H^1(X,\mathcal O_X)$">$T_0P=H^1(X,\mathcal O_X)$</span>, prove <span class="math" data-tex="$\dim P^0\leq h^1(X,\mathcal O_X)$">$\dim P^0\leq h^1(X,\mathcal O_X)$</span>. Prove the equality criterion and identify exactly where passage to an algebraic closure is useful.</p>
+<p><strong>Exercise 5.</strong> For a smooth projective geometrically connected curve <span class="math" data-tex="$C/k$">$C/k$</span>, prove that a line bundle is geometrically numerically trivial exactly when it has degree zero. Deduce <span class="math" data-tex="$\operatorname{Pic}^\tau_{C/k}=\operatorname{Pic}^0_{C/k}$">$\operatorname{Pic}^\tau_{C/k}=\operatorname{Pic}^0_{C/k}$</span> as subgroup schemes. Explain what changes if <span class="math" data-tex="$C$">$C$</span> has no rational point.</p>
+<h2 id="10-complete-solutions">10. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Projective-space cohomology gives <span class="math" data-tex="$H^1(\mathbb P^n_k,\mathcal O)=0$">$H^1(\mathbb P^n_k,\mathcal O)=0$</span> for <span class="math" data-tex="$n\geq1$">$n\geq1$</span>. For <span class="math" data-tex="$n=0$">$n=0$</span>, the scheme is <span class="math" data-tex="$\operatorname{Spec}k$">$\operatorname{Spec}k$</span>, whose higher cohomology vanishes. Proposition 2.1 therefore gives zero tangent space in every case. In fact the Picard scheme is constant <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> for <span class="math" data-tex="$n\geq1$">$n\geq1$</span> and trivial for <span class="math" data-tex="$n=0$">$n=0$</span>, as proved in the preceding lessons. For a curve, <span class="math" data-tex="$H^1(C,\mathcal O_C)$">$H^1(C,\mathcal O_C)$</span> has dimension <span class="math" data-tex="$g$">$g$</span> by definition of genus, so its tangent space is canonically that <span class="math" data-tex="$g$">$g$</span>-dimensional vector space. Theorem 8.1 shows that this tangent dimension equals the dimension of the Jacobian.</p>
+<p><strong>Solution 2.</strong> Choose an affine cover and transitions <span class="math" data-tex="$g_{ij}$">$g_{ij}$</span> as in Section 3. Lift them to units <span class="math" data-tex="$\widetilde g_{ij}$">$\widetilde g_{ij}$</span> and use (3.5) to define <span class="math" data-tex="$c_{ijk}$">$c_{ijk}$</span>. The four ways of multiplying transitions on a quadruple intersection give (3.6), since all products of two elements in <span class="math" data-tex="$J$">$J$</span> vanish. Thus <span class="math" data-tex="$c$">$c$</span> is a 2-cocycle in <span class="math" data-tex="$\mathcal O_X\otimes J$">$\mathcal O_X\otimes J$</span>.</p>
+<p>For new lifts <span class="math" data-tex="$(1+b_{ij})\widetilde g_{ij}$">$(1+b_{ij})\widetilde g_{ij}$</span>, the triple product changes by <span class="math" data-tex="$1+b_{ij}+b_{jk}-b_{ik}$">$1+b_{ij}+b_{jk}-b_{ik}$</span>. The new obstruction cocycle is <span class="math" data-tex="$c+db$">$c+db$</span>. Changes of frames change the transition cocycles by conjugating with local units; units commute, and the contributions cancel around each triple. A refinement pulls back the same cohomology class. Therefore <span class="math" data-tex="$[c]\in H^2(\mathcal O_X)\otimes J$">$[c]\in H^2(\mathcal O_X)\otimes J$</span> is canonical. Its vanishing supplies <span class="math" data-tex="$b$">$b$</span> with <span class="math" data-tex="$db=-c$">$db=-c$</span>, producing transitions satisfying the gluing equation and hence a lift. A lift implies vanishing by choosing its transitions.</p>
+<p>Fix one lift with transitions <span class="math" data-tex="$\widetilde g_{ij}$">$\widetilde g_{ij}$</span>. Any other identified lift has transitions <span class="math" data-tex="$(1+a_{ij})\widetilde g_{ij}$">$(1+a_{ij})\widetilde g_{ij}$</span> after lifting the reduction frames. Both sets satisfy the cocycle equation exactly when <span class="math" data-tex="$da=0$">$da=0$</span>. An isomorphism inducing the identity below changes <span class="math" data-tex="$a$">$a$</span> by the coboundary of local elements <span class="math" data-tex="$u_i\in\mathcal O_X\otimes J$">$u_i\in\mathcal O_X\otimes J$</span>. Hence the identified lifts are classified, relative to the chosen lift, by <span class="math" data-tex="$H^1(\mathcal O_X)\otimes J$">$H^1(\mathcal O_X)\otimes J$</span>. Choosing another initial lift translates this identification, so the intrinsic object is a torsor. Finally global automorphisms of the reduced bundle lift because <span class="math" data-tex="$A&#x27;^\times\to A^\times$">$A&#x27;^\times\to A^\times$</span> is surjective, so forgetting the reduction identification does not alter the torsor of isomorphism classes.</p>
+<p><strong>Solution 3.</strong> Serre duality for the smooth projective surface gives</p>
+<span class="math math-display" data-tex="$$
+H^2(X,\mathcal O_X)\simeq H^0(X,\omega_X)^*.
+\tag{10.1}
+$$">$$
+H^2(X,\mathcal O_X)\simeq H^0(X,\omega_X)^*.
+\tag{10.1}
+$$</span>
+<p>Thus <span class="math" data-tex="$p_g=0$">$p_g=0$</span> implies <span class="math" data-tex="$H^2(X,\mathcal O_X)=0$">$H^2(X,\mathcal O_X)=0$</span>, and Theorem 4.1 applies. Geometric connectedness gives <span class="math" data-tex="$H^0(X,\mathcal O_X)=k$">$H^0(X,\mathcal O_X)=k$</span>. No characteristic restriction occurs in this argument. Smoothness governs each component's infinitesimal structure, not the number of components. For example <span class="math" data-tex="$X=\mathbb P^2_k$">$X=\mathbb P^2_k$</span> has <span class="math" data-tex="$p_g=0$">$p_g=0$</span> and smooth Picard scheme <span class="math" data-tex="$\mathbb Z_k$">$\mathbb Z_k$</span>, with infinitely many components. An Enriques surface in characteristic different from two gives a smooth Picard scheme whose finite torsion-component subgroup is nontrivial.</p>
+<p><strong>Solution 4.</strong> Extend to <span class="math" data-tex="$\bar k$">$\bar k$</span>. Both the dimension of <span class="math" data-tex="$P^0$">$P^0$</span> and <span class="math" data-tex="$h^1$">$h^1$</span> remain unchanged. The local ring <span class="math" data-tex="$R$">$R$</span> at the identity has embedding dimension <span class="math" data-tex="$h^1$">$h^1$</span> by Proposition 2.1, and local dimension <span class="math" data-tex="$\dim P^0$">$\dim P^0$</span> because <span class="math" data-tex="$P^0_{\bar k}$">$P^0_{\bar k}$</span> is irreducible of finite type. The surjection (5.2) gives the desired inequality. Equality forces its kernel to be zero, since a nonzero ideal in the power-series domain lowers dimension. Thus <span class="math" data-tex="$R$">$R$</span> is regular and the Picard scheme is smooth at the identity over <span class="math" data-tex="$\bar k$">$\bar k$</span>. Translation makes it smooth everywhere, and descent gives smoothness over <span class="math" data-tex="$k$">$k$</span>. Conversely smoothness equates local dimension with tangent dimension. Passage to <span class="math" data-tex="$\bar k$">$\bar k$</span> justifies the implication from regularity to smoothness without an imperfect-field separability issue; one must not use regularity at a point alone as an unrestricted smoothness test over an imperfect field.</p>
+<p><strong>Solution 5.</strong> Over <span class="math" data-tex="$\bar k$">$\bar k$</span>, the only closed integral curve in the integral one-dimensional scheme <span class="math" data-tex="$C_{\bar k}$">$C_{\bar k}$</span> is <span class="math" data-tex="$C_{\bar k}$">$C_{\bar k}$</span> itself. Thus condition (7.3) is precisely <span class="math" data-tex="$\deg L=0$">$\deg L=0$</span>. The degree is unchanged by field extension for a line bundle defined over <span class="math" data-tex="$k$">$k$</span>. The degree-zero Picard subscheme is the identity component by Theorem 8.1. If a component has degree <span class="math" data-tex="$d$">$d$</span>, its <span class="math" data-tex="$n$">$n$</span>th tensor power has degree <span class="math" data-tex="$nd$">$nd$</span>. It can meet degree zero for some positive <span class="math" data-tex="$n$">$n$</span> only if <span class="math" data-tex="$d=0$">$d=0$</span>. Hence <span class="math" data-tex="$P^\tau_{\bar k}=P^0_{\bar k}$">$P^\tau_{\bar k}=P^0_{\bar k}$</span>, including their scheme structures: each is the same union of open and closed components. Faithfully flat descent proves equality over <span class="math" data-tex="$k$">$k$</span>.</p>
+<p>Without a rational point, every geometric degree piece still exists, but some <span class="math" data-tex="$k$">$k$</span>-points of the Picard sheaf need not be represented by actual line bundles, and some integer degrees may have no actual <span class="math" data-tex="$k$">$k$</span>-line bundle. Degree zero remains exactly the identity component geometrically, and the equality of subgroup schemes remains valid. On a real nonsplit conic, actual real bundles have even degree, but the geometric degree group is <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> and the Jacobian is trivial.</p>
+<h2 id="11-what-this-lesson-does-not-prove">11. What this lesson does not prove</h2>
+<p>The following are exact inputs, rather than omitted steps in the central deformation proofs.</p>
+<ul>
+<li><strong>General proper-scheme representability.</strong> Murre's result (II.15), as stated in Kleiman, Corollary 4.18.3 and the following discussion, supplies the locally finite-type Picard group scheme for arbitrary proper <span class="math" data-tex="$X/k$">$X/k$</span>. The preceding lesson proves the projective geometrically integral case and arbitrary base change in that setting.</li>
+<li><strong>Cohomology and descent foundations.</strong> Affine acyclicity and separated affine Čech computation are [Stacks, Tags 01XD and 01KP]; proper-support finiteness is [Stacks, Tag 02O6]. The preceding Picard-functor lesson supplies the injections, equality of étale and fppf sheaves, and rigidification theorem. Étale-local Artin rings with separably closed residue field are strictly henselian, so étale covers have sections; descent of smoothness and the local Artin smoothness criterion are standard infinitesimal foundations, with the latter [Stacks, Tag 02HX].</li>
+<li><strong>Characteristic-zero algebra.</strong> The criterion that a locally finite-type scheme over a characteristic-zero field with locally free differentials is smooth is [Stacks, Tag 04QN]. Lemma 4.2 proves the group-scheme differential trivialization, and Theorem 4.3 deduces Cartier's theorem from that criterion.</li>
+<li><strong>Identity components and local algebra.</strong> The canonical closed, quasi-compact, geometrically irreducible identity subgroup is [Stacks, Tag 0B7R]; its finite-type and base-change properties also occur in Kleiman, Proposition 5.3. Completion preserves dimension; a power-series ring is a regular local domain; a nonzero ideal in it lowers dimension. The corresponding local-algebra ingredients were used in the Hilbert–Quot dimension bound. Generic smoothness for reduced finite-type schemes over a perfect field is the input used only for the reduction comment and the nonreduced-example deduction.</li>
+<li><strong>Finiteness and numerical characterization.</strong> The theorem of the base is the exact statement in Section 6, with [AI Integrated Stacks Project, moduli.tex, theorem-picard-neron-severi-uniform-bounds], item (vi) of Grothendieck's complement to FGA, Exposé 236, and Kleiman, Corollary 6.17 and Remark 6.19, as references. The converse numerical implication (7.4) is [AI Integrated Stacks Project, moduli.tex, theorem-picard-tau-numerical-criteria], item (viii) of the same complement, and Kleiman, Theorem 6.3 with Remark 6.14. No reduction sketch is claimed as a proof of these inputs.</li>
+<li><strong>Curve and abelian-variety foundations.</strong> Riemann–Roch and Serre duality, including (10.1), are imported cohomological prerequisites. The full Abel construction, connected degree pieces, and properness argument belong to the preceding two lessons. Projectivity of an abelian variety is [Stacks, Tag 0BFA]. Dual abelian varieties and the normalized Poincaré bundle are the stated theorem [AI Integrated Stacks Project, moduli.tex, theorem-dual-abelian-scheme], specialized to a field.</li>
+<li><strong>Special surfaces.</strong> The Enriques classification statements are Liedtke, <em>Arithmetic Moduli and Lifting of Enriques Surfaces</em>, Section 1. Igusa's existence and the values in (8.4) are the example recorded in Kleiman, Remark 5.15, with the original 1955 article identified there. Their surface constructions are not supplied here.</li>
+</ul>
+<h2 id="12-sources-and-historical-placement">12. Sources and historical placement</h2>
+<p>Grothendieck's <a href="https://www.numdam.org/item/SB_1961-1962__7__221_0/">FGA, Exposé 236</a> separates local group-scheme structure, Picard smoothness, canonical abelian subschemes, and finiteness. Proposition 2.10(iii) contains the dimension and characteristic-zero smoothness statements; Theorem 3.3 treats the canonical abelian subscheme and Albanese construction; Section 4 concerns boundedness and finite-type Picard loci. The stronger proper-family finiteness statements appear in the later <a href="https://www.numdam.org/item/SB_1961-1962__7__303_1/">complement to Exposé 236</a> and in the finiteness theorems of Raynaud and Kleiman (1971), which Kleiman, <em>The Picard scheme</em>, Section 6, surveys. We keep the field-level deformation proof distinct from those relative finiteness results.</p>
+<p><a href="https://arxiv.org/abs/math/0504020">Kleiman, <em>The Picard scheme</em></a>, Sections 5–6, gives precise component, tangent, smoothness, numerical-equivalence and boundedness formulations. In particular Theorem 5.11, Corollaries 5.13–5.14 and Remark 5.15 provide useful comparisons for Sections 2–5 and the nonreduced example. The numerical discussion distinguishes <span class="math" data-tex="$\operatorname{Pic}^0$">$\operatorname{Pic}^0$</span>, <span class="math" data-tex="$\operatorname{Pic}^\tau$">$\operatorname{Pic}^\tau$</span>, and their quotient.</p>
+<p><a href="https://arxiv.org/abs/1007.0787">Liedtke, <em>Arithmetic Moduli and Lifting of Enriques Surfaces</em></a>, Section 1, gives the surface classifications used above. The characteristic-two examples show why the component group and the infinitesimal identity component must be retained as different pieces of information.</p>
+<p>The next lesson replaces ad hoc presentations by the cotangent complex. Its deformation groups extend the same pattern seen here: degree zero records infinitesimal automorphisms, degree one records first-order changes, and degree two records obstructions.</p>
+<footer><a href="src/the-structure-of-the-picard-scheme.md">Editable source</a></footer></main></body></html>

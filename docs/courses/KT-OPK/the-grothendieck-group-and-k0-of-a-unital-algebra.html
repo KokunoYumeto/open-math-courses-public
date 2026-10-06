@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Grothendieck group and K_0 of a unital algebra · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+<p class="small">Some separate prerequisite proof readings are not yet available in this public collection. See the <a href="preparation.html">preparation and proof-dependency notes</a> for this lesson’s exact assumptions.</p></aside>
+<details class="assumed" open><summary>What this lesson assumes (1)</summary><ul><li><a href="vector-bundles-and-finitely-generated-projective-modules.html">Vector bundles and finitely generated projective modules</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-grothendieck-group-and-k_0-of-a-unital-algebra">The Grothendieck group and <span class="math" data-tex="\(K_0\)">\(K_0\)</span> of a unital algebra</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A projection records a subspace; an idempotent over an algebra records a finitely generated projective module. Direct sum adds these objects, but subtraction has no meaning among actual modules. The Grothendieck group supplies formal differences and tells us exactly when two such differences agree. Applied to matrix idempotents, it produces <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<p>This lesson develops that construction, its behavior under homomorphisms, and its first calculations. It assumes <a href="#what-this-lesson-does-not-prove">Idempotents, projections and their equivalences</a> and <a href="#what-this-lesson-does-not-prove">Vector bundles and finitely generated projective modules</a>. The precise facts needed from those lessons are recalled at the end, with references that also establish them directly. Freely accessible comparisons are [Blackadar 1998] and [Weibel, group completion], together with the exact [AF] and [Traces] results recalled below.</p>
+<p>Throughout, algebras are complex and unital. Homomorphisms between Banach algebras are bounded algebra homomorphisms; between C*-algebras we use *-homomorphisms. A homomorphism need not preserve the identity. Allowing such maps is essential for corner embeddings. Spaces called compact are compact Hausdorff, and vector bundles are complex, locally trivial and of finite rank. The nonunital definition belongs to <em>Nonunital algebras: unitization, relative classes and half-exactness</em>.</p>
+<h2 id="1-additive-measurements-and-formal-subtraction">1. Additive measurements and formal subtraction</h2>
+<p>An <strong>abelian monoid</strong> <span class="math" data-tex="\(M\)">\(M\)</span> is a set with an associative, commutative addition and a zero. Examples are <span class="math" data-tex="\(\mathbb N_0\)">\(\mathbb N_0\)</span>, dimensions of vector spaces, and isomorphism classes of projective modules under direct sum. An additive measurement with values in an abelian group should send a formal difference <span class="math" data-tex="\(a-b\)">\(a-b\)</span> to the difference of the measurements of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>The subtlety is cancellation. If <span class="math" data-tex="\(a+c=b+c\)">\(a+c=b+c\)</span>, any group-valued additive measurement gives the same value to <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>, even when they are distinct in <span class="math" data-tex="\(M\)">\(M\)</span>. Thus group completion must identify them.</p>
+<p><strong>Theorem 1.1 (Group completion).</strong> On <span class="math" data-tex="\(M\times M\)">\(M\times M\)</span>, define
+<span class="math math-display" data-tex="\[
+(a,b)\equiv(a&#x27;,b&#x27;)
+\quad\Longleftrightarrow\quad
+a+b&#x27;+c=a&#x27;+b+c\text{ for some }c\in M.
+\]">\[
+(a,b)\equiv(a&#x27;,b&#x27;)
+\quad\Longleftrightarrow\quad
+a+b&#x27;+c=a&#x27;+b+c\text{ for some }c\in M.
+\]</span>
+This is an equivalence relation. Its quotient <span class="math" data-tex="\(G(M)\)">\(G(M)\)</span> is an abelian group under
+<span class="math math-display" data-tex="\[
+\langle a,b\rangle+\langle a&#x27;,b&#x27;\rangle
+=\langle a+a&#x27;,b+b&#x27;\rangle,
+\qquad
+-\langle a,b\rangle=\langle b,a\rangle.
+\]">\[
+\langle a,b\rangle+\langle a&#x27;,b&#x27;\rangle
+=\langle a+a&#x27;,b+b&#x27;\rangle,
+\qquad
+-\langle a,b\rangle=\langle b,a\rangle.
+\]</span>
+The map <span class="math" data-tex="\(j_M(a)=\langle a,0\rangle\)">\(j_M(a)=\langle a,0\rangle\)</span> is a monoid homomorphism, and every monoid homomorphism <span class="math" data-tex="\(h:M\to H\)">\(h:M\to H\)</span> into an abelian group has a unique extension <span class="math" data-tex="\(\bar h:G(M)\to H\)">\(\bar h:G(M)\to H\)</span> satisfying <span class="math" data-tex="\(\bar h j_M=h\)">\(\bar h j_M=h\)</span>.</p>
+<p><em>Proof.</em> Reflexivity uses <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, and symmetry uses the same witness. For transitivity, suppose
+<span class="math math-display" data-tex="\[
+a+b&#x27;+c=a&#x27;+b+c,
+\qquad a&#x27;+b&#x27;&#x27;+d=a&#x27;&#x27;+b&#x27;+d.
+\]">\[
+a+b&#x27;+c=a&#x27;+b+c,
+\qquad a&#x27;+b&#x27;&#x27;+d=a&#x27;&#x27;+b&#x27;+d.
+\]</span>
+Adding <span class="math" data-tex="\(b&#x27;&#x27;+d\)">\(b&#x27;&#x27;+d\)</span> to the first equation and substituting the second gives
+<span class="math math-display" data-tex="\[
+a+b&#x27;&#x27;+(b&#x27;+c+d)=a&#x27;&#x27;+b+(b&#x27;+c+d).
+\]">\[
+a+b&#x27;&#x27;+(b&#x27;+c+d)=a&#x27;&#x27;+b+(b&#x27;+c+d).
+\]</span>
+This is the required witness.</p>
+<p>If two pairs are replaced by equivalent pairs with witnesses <span class="math" data-tex="\(c,d\)">\(c,d\)</span>, adding their defining equations shows that their sums are equivalent with witness <span class="math" data-tex="\(c+d\)">\(c+d\)</span>. Thus addition is well defined. Associativity and commutativity descend from <span class="math" data-tex="\(M\)">\(M\)</span>. The zero is <span class="math" data-tex="\(\langle0,0\rangle\)">\(\langle0,0\rangle\)</span>, and
+<span class="math" data-tex="\(\langle a,b\rangle+\langle b,a\rangle=\langle a+b,a+b\rangle=0\)">\(\langle a,b\rangle+\langle b,a\rangle=\langle a+b,a+b\rangle=0\)</span>.
+The formula for <span class="math" data-tex="\(j_M\)">\(j_M\)</span> respects addition and zero.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\bar h(\langle a,b\rangle)=h(a)-h(b).
+\]">\[
+\bar h(\langle a,b\rangle)=h(a)-h(b).
+\]</span>
+Applying <span class="math" data-tex="\(h\)">\(h\)</span> to a witnessing equality and cancelling in <span class="math" data-tex="\(H\)">\(H\)</span> proves independence of the representative. The formula is additive and extends <span class="math" data-tex="\(h\)">\(h\)</span>. Since every element is <span class="math" data-tex="\(j_M(a)-j_M(b)\)">\(j_M(a)-j_M(b)\)</span>, any extension must have this formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We write <span class="math" data-tex="\([a]-[b]\)">\([a]-[b]\)</span> for <span class="math" data-tex="\(\langle a,b\rangle\)">\(\langle a,b\rangle\)</span>. In particular,
+<span class="math math-display" data-tex="\[
+j_M(a)=j_M(b)
+\quad\Longleftrightarrow\quad
+a+c=b+c\text{ for some }c\in M.
+\]">\[
+j_M(a)=j_M(b)
+\quad\Longleftrightarrow\quad
+a+c=b+c\text{ for some }c\in M.
+\]</span>
+The extra summand is part of the equality criterion; it cannot be omitted without a cancellation hypothesis.</p>
+<p><strong>Example 1.2.</strong> For <span class="math" data-tex="\(M=\mathbb N_0\)">\(M=\mathbb N_0\)</span>, the map <span class="math" data-tex="\(\langle a,b\rangle\mapsto a-b\)">\(\langle a,b\rangle\mapsto a-b\)</span> identifies <span class="math" data-tex="\(G(M)\)">\(G(M)\)</span> with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Every integer is a difference of nonnegative integers, and two pairs give the same integer exactly when their cross sums agree.</p>
+<p>For a contrasting example, let <span class="math" data-tex="\(M=\{0,s\}\)">\(M=\{0,s\}\)</span>, with <span class="math" data-tex="\(s+s=s\)">\(s+s=s\)</span>. In <span class="math" data-tex="\(G(M)\)">\(G(M)\)</span>, the equation <span class="math" data-tex="\([s]+[s]=[s]\)">\([s]+[s]=[s]\)</span> forces <span class="math" data-tex="\([s]=0\)">\([s]=0\)</span>. Hence <span class="math" data-tex="\(G(M)=0\)">\(G(M)=0\)</span>, although <span class="math" data-tex="\(M\)">\(M\)</span> has two elements. Completion can lose information.</p>
+<p>The construction is functorial: a monoid map <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> induces
+<span class="math" data-tex="\(G(f)(\langle a,b\rangle)=\langle f(a),f(b)\rangle\)">\(G(f)(\langle a,b\rangle)=\langle f(a),f(b)\rangle\)</span>.
+Witnesses map to witnesses, and the formulas give the identity and composition laws.</p>
+<h2 id="2-the-objects-measured-by-k_0">2. The objects measured by <span class="math" data-tex="\(K_0\)">\(K_0\)</span></h2>
+<p>Write <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> for the <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> matrices over <span class="math" data-tex="\(A\)">\(A\)</span>, and include it in <span class="math" data-tex="\(M_{n+1}(A)\)">\(M_{n+1}(A)\)</span> by <span class="math" data-tex="\(a\mapsto\operatorname{diag}(a,0)\)">\(a\mapsto\operatorname{diag}(a,0)\)</span>. The union is
+<span class="math math-display" data-tex="\[
+M_\infty(A)=\bigcup_{n\geq1}M_n(A).
+\]">\[
+M_\infty(A)=\bigcup_{n\geq1}M_n(A).
+\]</span>
+Every element belongs to a finite matrix algebra. Even though <span class="math" data-tex="\(A\)">\(A\)</span> is unital, this union has no identity. Symbols such as <span class="math" data-tex="\(1_n\)">\(1_n\)</span> always refer to a specified finite matrix algebra.</p>
+<p>For idempotents <span class="math" data-tex="\(e\in M_r(A)\)">\(e\in M_r(A)\)</span>, <span class="math" data-tex="\(f\in M_s(A)\)">\(f\in M_s(A)\)</span>, write <span class="math" data-tex="\(e\sim_a f\)">\(e\sim_a f\)</span> when there are rectangular matrices
+<span class="math math-display" data-tex="\[
+x\in M_{r,s}(A),\quad y\in M_{s,r}(A),
+\qquad xy=e,\quad yx=f,
+\]">\[
+x\in M_{r,s}(A),\quad y\in M_{s,r}(A),
+\qquad xy=e,\quad yx=f,
+\]</span>
+with <span class="math" data-tex="\(x=exf\)">\(x=exf\)</span>, <span class="math" data-tex="\(y=fye\)">\(y=fye\)</span>. This is the algebraic equivalence of the prerequisites, expressed without unnecessary zero rows. It agrees with algebraic equivalence after padding into a common square matrix algebra.</p>
+<p><strong>Definition 2.1.</strong> Let <span class="math" data-tex="\(V_{\mathrm{id}}(A)\)">\(V_{\mathrm{id}}(A)\)</span> be the algebraic equivalence classes of matrix idempotents. Denote the class of <span class="math" data-tex="\(e\)">\(e\)</span> by <span class="math" data-tex="\(v(e)\)">\(v(e)\)</span>, and put
+<span class="math math-display" data-tex="\[
+v(e)+v(f)=v(e\oplus f),\qquad
+e\oplus f=\begin{pmatrix}e&amp;0\\0&amp;f\end{pmatrix}.
+\]">\[
+v(e)+v(f)=v(e\oplus f),\qquad
+e\oplus f=\begin{pmatrix}e&amp;0\\0&amp;f\end{pmatrix}.
+\]</span></p>
+<p><strong>Proposition 2.2.</strong> This addition makes <span class="math" data-tex="\(V_{\mathrm{id}}(A)\)">\(V_{\mathrm{id}}(A)\)</span> an abelian monoid. For orthogonal idempotents <span class="math" data-tex="\(e,f\in M_n(A)\)">\(e,f\in M_n(A)\)</span>, meaning <span class="math" data-tex="\(ef=fe=0\)">\(ef=fe=0\)</span>, one has <span class="math" data-tex="\(v(e+f)=v(e)+v(f)\)">\(v(e+f)=v(e)+v(f)\)</span>.</p>
+<p><em>Proof.</em> Block sums of equivalence witnesses show that addition respects classes. Adding zero leaves the same class after padding, and iterated block sums give associativity. To see commutativity, first pad <span class="math" data-tex="\(e,f\)">\(e,f\)</span> to the same size <span class="math" data-tex="\(N\)">\(N\)</span>. The scalar rotation
+<span class="math math-display" data-tex="\[
+R_t=\begin{pmatrix}
+\cos t\,1_N&amp;-\sin t\,1_N\\
+\sin t\,1_N&amp;\cos t\,1_N
+\end{pmatrix}
+\]">\[
+R_t=\begin{pmatrix}
+\cos t\,1_N&amp;-\sin t\,1_N\\
+\sin t\,1_N&amp;\cos t\,1_N
+\end{pmatrix}
+\]</span>
+conjugates <span class="math" data-tex="\(e\oplus f\)">\(e\oplus f\)</span>, at <span class="math" data-tex="\(t=\pi/2\)">\(t=\pi/2\)</span>, to <span class="math" data-tex="\(f\oplus e\)">\(f\oplus e\)</span>. Similar idempotents are algebraically equivalent, so the sums agree. Padding and changing the positions of zero blocks only introduce permutation similarities.</p>
+<p>For the last assertion take <span class="math" data-tex="\(x=\begin{pmatrix}e&amp;f\end{pmatrix}\)">\(x=\begin{pmatrix}e&amp;f\end{pmatrix}\)</span> and <span class="math" data-tex="\(y=\begin{pmatrix}e\\f\end{pmatrix}\)">\(y=\begin{pmatrix}e\\f\end{pmatrix}\)</span>. Then <span class="math" data-tex="\(xy=e+f\)">\(xy=e+f\)</span>, while <span class="math" data-tex="\(yx=\operatorname{diag}(e,f)\)">\(yx=\operatorname{diag}(e,f)\)</span>. The witnesses have the required supports. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By the projective-module correspondence from the prerequisites,
+<span class="math math-display" data-tex="\[
+V_{\mathrm{id}}(A)\cong
+\{\text{isomorphism classes of finitely generated projective right }A\text{-modules}\},
+\qquad v(e)\longmapsto[eA^r].
+\]">\[
+V_{\mathrm{id}}(A)\cong
+\{\text{isomorphism classes of finitely generated projective right }A\text{-modules}\},
+\qquad v(e)\longmapsto[eA^r].
+\]</span>
+It respects addition because the range of a block sum is the direct sum of the ranges. Thus including all matrix sizes includes all finitely generated projective modules, rather than only those represented by an idempotent in <span class="math" data-tex="\(A\)">\(A\)</span> itself.</p>
+<p>For a C*-algebra define <span class="math" data-tex="\(V_{\mathrm{pr}}(A)\)">\(V_{\mathrm{pr}}(A)\)</span> using projections <span class="math" data-tex="\(p=p^*=p^2\)">\(p=p^*=p^2\)</span> and Murray–von Neumann equivalence. For different sizes this means that a rectangular <span class="math" data-tex="\(w\)">\(w\)</span> satisfies <span class="math" data-tex="\(w^*w=p\)">\(w^*w=p\)</span>, <span class="math" data-tex="\(ww^*=q\)">\(ww^*=q\)</span>. Addition is again block sum. This is exactly the monoid <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> of [AF, Definition 7.4].</p>
+<p><strong>Theorem 2.3 (Projection and idempotent descriptions).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is a unital C*-algebra, inclusion of projections among idempotents induces a monoid isomorphism
+<span class="math math-display" data-tex="\[
+V_{\mathrm{pr}}(A)\longrightarrow V_{\mathrm{id}}(A).
+\]">\[
+V_{\mathrm{pr}}(A)\longrightarrow V_{\mathrm{id}}(A).
+\]</span>
+Consequently it induces an isomorphism of their Grothendieck groups.</p>
+<p><em>Proof.</em> A partial isometry gives algebraic witnesses <span class="math" data-tex="\(w^*,w\)">\(w^*,w\)</span>, so the map is well defined, and it preserves block sums. Every matrix idempotent is similar to a projection by the prerequisite result [Blackadar 1998, Proposition 4.6.2], giving surjectivity. If two projections have the same idempotent class, pad them into one finite matrix algebra. Algebraic equivalence of projections is Murray–von Neumann equivalence by [Blackadar 1998, Proposition 4.6.4], giving injectivity. Apply <span class="math" data-tex="\(G\)">\(G\)</span> to this monoid isomorphism and its inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We henceforth write <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> for the idempotent monoid of a Banach algebra, using the projection description when <span class="math" data-tex="\(A\)">\(A\)</span> is a C*-algebra.</p>
+<h2 id="3-differences-complements-and-equality">3. Differences, complements and equality</h2>
+<p><strong>Definition 3.1.</strong> For a unital Banach algebra,
+<span class="math math-display" data-tex="\[
+K_0(A)=G(V(A)).
+\]">\[
+K_0(A)=G(V(A)).
+\]</span>
+Write <span class="math" data-tex="\([e]\)">\([e]\)</span> for the image of <span class="math" data-tex="\(v(e)\)">\(v(e)\)</span> in this group. Every element is <span class="math" data-tex="\([e]-[f]\)">\([e]-[f]\)</span>, and <span class="math" data-tex="\([e\oplus f]=[e]+[f]\)">\([e\oplus f]=[e]+[f]\)</span>. For a unital C*-algebra, Theorem 2.3 shows that this definition agrees with completion of the projection monoid. No choice of an orthogonal representative changes the resulting group.</p>
+<p>This unital definition agrees with [Blackadar 1998, Proposition 5.5.5] and [Blackadar 2006, Definition V.1.1.15]. Agreement here does not assert that completion of <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> is the general nonunital definition.</p>
+<p>An idempotent <span class="math" data-tex="\(f\in M_m(A)\)">\(f\in M_m(A)\)</span> has a complement <span class="math" data-tex="\(1_m-f\)">\(1_m-f\)</span>. Proposition 2.2 gives
+<span class="math math-display" data-tex="\[
+v(f)+v(1_m-f)=v(1_m).
+\]">\[
+v(f)+v(1_m-f)=v(1_m).
+\]</span>
+For a projection the complement is also a projection. This simple identity explains why free modules suffice to test equality after group completion.</p>
+<p><strong>Theorem 3.2 (Representatives and equality).</strong> Every element of <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> has a representative <span class="math" data-tex="\([e]-[1_m]\)">\([e]-[1_m]\)</span>. Moreover,
+<span class="math math-display" data-tex="\[
+[e]=[f]\text{ in }K_0(A)
+\quad\Longleftrightarrow\quad
+e\oplus1_k\sim_a f\oplus1_k\text{ in }M_\infty(A)
+\text{ for some }k\geq0.
+\]">\[
+[e]=[f]\text{ in }K_0(A)
+\quad\Longleftrightarrow\quad
+e\oplus1_k\sim_a f\oplus1_k\text{ in }M_\infty(A)
+\text{ for some }k\geq0.
+\]</span>
+In a C*-algebra one may take projections throughout and use Murray–von Neumann equivalence. Matrices of different sizes are padded with zeros before comparison; <span class="math" data-tex="\(1_0\)">\(1_0\)</span> means no added block.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(f\in M_m(A)\)">\(f\in M_m(A)\)</span>, then
+<span class="math math-display" data-tex="\[
+[e]-[f]=[e\oplus(1_m-f)]-[1_m].
+\]">\[
+[e]-[f]=[e\oplus(1_m-f)]-[1_m].
+\]</span>
+This proves the representative assertion.</p>
+<p>If <span class="math" data-tex="\([e]=[f]\)">\([e]=[f]\)</span>, Theorem 1.1 supplies a matrix idempotent <span class="math" data-tex="\(g\in M_k(A)\)">\(g\in M_k(A)\)</span> with
+<span class="math" data-tex="\(v(e)+v(g)=v(f)+v(g)\)">\(v(e)+v(g)=v(f)+v(g)\)</span>.
+Add <span class="math" data-tex="\(v(1_k-g)\)">\(v(1_k-g)\)</span> to both sides. The complement identity yields
+<span class="math" data-tex="\(v(e)+v(1_k)=v(f)+v(1_k)\)">\(v(e)+v(1_k)=v(f)+v(1_k)\)</span>, which is exactly the asserted equivalence. Conversely, that equivalence gives <span class="math" data-tex="\([e]+[1_k]=[f]+[1_k]\)">\([e]+[1_k]=[f]+[1_k]\)</span>; cancelling in the group gives <span class="math" data-tex="\([e]=[f]\)">\([e]=[f]\)</span>. For C*-algebras use the projection monoid and its projection complements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>More generally, the same argument gives
+<span class="math math-display" data-tex="\[
+[e]-[f]=[e&#x27;]-[f&#x27;]
+\quad\Longleftrightarrow\quad
+e\oplus f&#x27;\oplus1_k\sim_a e&#x27;\oplus f\oplus1_k
+\text{ for some }k.
+\]">\[
+[e]-[f]=[e&#x27;]-[f&#x27;]
+\quad\Longleftrightarrow\quad
+e\oplus f&#x27;\oplus1_k\sim_a e&#x27;\oplus f\oplus1_k
+\text{ for some }k.
+\]</span>
+Notice that equality in <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> and equality in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> are different questions. The latter permits an extra common summand. Neither criterion permits cancellation inside <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span> without further hypotheses.</p>
+<p>The distinguished class <span class="math" data-tex="\([1_A]\)">\([1_A]\)</span> need not generate <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. It records the free module of rank one, and <span class="math" data-tex="\([1_m]=m[1_A]\)">\([1_m]=m[1_A]\)</span>. For matrix algebras, this class can be a nonprimitive multiple of a generator.</p>
+<h2 id="4-changing-the-algebra">4. Changing the algebra</h2>
+<p><strong>Proposition 4.1 (Functoriality).</strong> A homomorphism <span class="math" data-tex="\(\phi:A\to B\)">\(\phi:A\to B\)</span> induces
+<span class="math math-display" data-tex="\[
+\phi_*:K_0(A)\longrightarrow K_0(B),
+\qquad
+\phi_*([e]-[f])=[\phi^{(r)}(e)]-[\phi^{(s)}(f)],
+\]">\[
+\phi_*:K_0(A)\longrightarrow K_0(B),
+\qquad
+\phi_*([e]-[f])=[\phi^{(r)}(e)]-[\phi^{(s)}(f)],
+\]</span>
+where <span class="math" data-tex="\(\phi^{(n)}\)">\(\phi^{(n)}\)</span> acts on matrix entries. Identity maps induce identity maps and <span class="math" data-tex="\((\psi\circ\phi)_*=\psi_*\circ\phi_*\)">\((\psi\circ\phi)_*=\psi_*\circ\phi_*\)</span>. If <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is unital, <span class="math" data-tex="\(\phi_*[1_A]=[1_B]\)">\(\phi_*[1_A]=[1_B]\)</span>.</p>
+<p><em>Proof.</em> Multiplicativity preserves idempotents and the equations for algebraic equivalence. Entrywise application also preserves block sums and zero. Thus <span class="math" data-tex="\(\phi\)">\(\phi\)</span> induces a monoid map on <span class="math" data-tex="\(V\)">\(V\)</span>, and Theorem 1.1 extends it uniquely to the stated group map. Entrywise identities and composition prove the functor laws. A *-homomorphism preserves projections and partial isometries, so the projection description gives the same map. The last assertion follows by applying <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to the identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a nonunital homomorphism between unital algebras, <span class="math" data-tex="\(\phi(1_A)\)">\(\phi(1_A)\)</span> is an idempotent, and the correct formula is <span class="math" data-tex="\(\phi_*[1_A]=[\phi(1_A)]\)">\(\phi_*[1_A]=[\phi(1_A)]\)</span>. This distinction will matter below.</p>
+<p><strong>Theorem 4.2 (Homotopy invariance).</strong> Suppose <span class="math" data-tex="\((\phi_t)_{0\leq t\leq1}\)">\((\phi_t)_{0\leq t\leq1}\)</span> is a family of bounded homomorphisms <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, continuous in the <strong>point-norm topology</strong>: for each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the map <span class="math" data-tex="\(t\mapsto\phi_t(a)\)">\(t\mapsto\phi_t(a)\)</span> is norm continuous. Then <span class="math" data-tex="\((\phi_0)_*=(\phi_1)_*\)">\((\phi_0)_*=(\phi_1)_*\)</span>. The same holds for a point-norm continuous family of *-homomorphisms.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(e=(e_{ij})\in M_r(A)\)">\(e=(e_{ij})\in M_r(A)\)</span>. Each of the finitely many entries <span class="math" data-tex="\(\phi_t(e_{ij})\)">\(\phi_t(e_{ij})\)</span> varies continuously, so <span class="math" data-tex="\(t\mapsto\phi_t^{(r)}(e)\)">\(t\mapsto\phi_t^{(r)}(e)\)</span> is a norm-continuous path in <span class="math" data-tex="\(M_r(B)\)">\(M_r(B)\)</span>. Multiplicativity makes every point of this path an idempotent. The endpoint equivalence theorem from the prerequisites [Blackadar 1998, Proposition 4.3.3] makes its endpoints similar, hence algebraically equivalent. Therefore
+<span class="math" data-tex="\([\phi_0^{(r)}(e)]=[\phi_1^{(r)}(e)]\)">\([\phi_0^{(r)}(e)]=[\phi_1^{(r)}(e)]\)</span>.
+Applying this to both terms of every difference <span class="math" data-tex="\([e]-[f]\)">\([e]-[f]\)</span> proves equality of the group maps. For *-homomorphisms the same path consists of projections; Theorem 2.3 identifies the two descriptions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only point-norm continuity was used. Continuity in a weaker operator topology does not provide the norm-continuous idempotent path required by the theorem.</p>
+<p><strong>Proposition 4.3 (Inner invariance).</strong> If <span class="math" data-tex="\(u\in A\)">\(u\in A\)</span> is invertible, <span class="math" data-tex="\(\operatorname{Ad}u:a\mapsto uau^{-1}\)">\(\operatorname{Ad}u:a\mapsto uau^{-1}\)</span> induces the identity on <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. In the C*-category take <span class="math" data-tex="\(u\)">\(u\)</span> unitary.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(e\in M_r(A)\)">\(e\in M_r(A)\)</span> set <span class="math" data-tex="\(U=\operatorname{diag}(u,\ldots,u)\)">\(U=\operatorname{diag}(u,\ldots,u)\)</span> and <span class="math" data-tex="\(f=UeU^{-1}\)">\(f=UeU^{-1}\)</span>. The rectangular witnesses, here square, are
+<span class="math math-display" data-tex="\[
+x=eU^{-1},\qquad y=Ue,
+\qquad xy=e,\quad yx=f.
+\]">\[
+x=eU^{-1},\qquad y=Ue,
+\qquad xy=e,\quad yx=f.
+\]</span>
+They show <span class="math" data-tex="\([f]=[e]\)">\([f]=[e]\)</span>. If <span class="math" data-tex="\(e=p\)">\(e=p\)</span> is a projection and <span class="math" data-tex="\(u\)">\(u\)</span> is unitary, <span class="math" data-tex="\(Up\)">\(Up\)</span> has initial projection <span class="math" data-tex="\(p\)">\(p\)</span> and final projection <span class="math" data-tex="\(UpU^*\)">\(UpU^*\)</span>. Every difference is therefore fixed. No path from <span class="math" data-tex="\(u\)">\(u\)</span> to the identity is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.4 (Matrix corners).</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the corner homomorphism
+<span class="math math-display" data-tex="\[
+\iota:A\longrightarrow M_n(A),\qquad
+a\longmapsto\operatorname{diag}(a,0,\ldots,0)
+\]">\[
+\iota:A\longrightarrow M_n(A),\qquad
+a\longmapsto\operatorname{diag}(a,0,\ldots,0)
+\]</span>
+induces an isomorphism <span class="math" data-tex="\(\iota_*:K_0(A)\to K_0(M_n(A))\)">\(\iota_*:K_0(A)\to K_0(M_n(A))\)</span>. Its inverse flattens matrices of blocks:
+<span class="math math-display" data-tex="\[
+F_n([P]-[Q])=[\operatorname{flat}(P)]-[\operatorname{flat}(Q)],
+\quad M_r(M_n(A))\cong M_{rn}(A).
+\]">\[
+F_n([P]-[Q])=[\operatorname{flat}(P)]-[\operatorname{flat}(Q)],
+\quad M_r(M_n(A))\cong M_{rn}(A).
+\]</span></p>
+<p><em>Proof.</em> Flattening preserves products, block sums, adjoints and equivalence witnesses. It therefore induces a monoid map <span class="math" data-tex="\(\lambda:V(M_n(A))\to V(A)\)">\(\lambda:V(M_n(A))\to V(A)\)</span>. This map is onto: pad any <span class="math" data-tex="\(k\)">\(k\)</span>-by-<span class="math" data-tex="\(k\)">\(k\)</span> idempotent with zeros to a size divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, and group its entries into <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> blocks. It is one-to-one: if two flattened matrices are equivalent, pad them and their witnesses to a common size divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, then group the witnesses into blocks. This gives equivalence over <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>.</p>
+<p>For <span class="math" data-tex="\(e\in M_r(A)\)">\(e\in M_r(A)\)</span>, applying <span class="math" data-tex="\(\iota\)">\(\iota\)</span> to its entries and flattening places its nonzero entries at coordinate positions
+<span class="math" data-tex="\(1,n+1,\ldots,(r-1)n+1\)">\(1,n+1,\ldots,(r-1)n+1\)</span>.
+A permutation of coordinates moves these positions to <span class="math" data-tex="\(1,\ldots,r\)">\(1,\ldots,r\)</span>, giving <span class="math" data-tex="\(e\)">\(e\)</span> padded with zero. Hence <span class="math" data-tex="\(\lambda\circ V(\iota)\)">\(\lambda\circ V(\iota)\)</span> is the identity. Since <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is bijective, <span class="math" data-tex="\(V(\iota)\)">\(V(\iota)\)</span> is its inverse. Group completion proves the assertion and the formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Under <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, the class of <span class="math" data-tex="\(1_{M_n(A)}\)">\(1_{M_n(A)}\)</span> is <span class="math" data-tex="\(n[1_A]\)">\(n[1_A]\)</span>. The corner sends <span class="math" data-tex="\([1_A]\)">\([1_A]\)</span> to <span class="math" data-tex="\([E_{11}\otimes1_A]\)">\([E_{11}\otimes1_A]\)</span>. Also, the unital map <span class="math" data-tex="\(a\mapsto\operatorname{diag}(a,\ldots,a)\)">\(a\mapsto\operatorname{diag}(a,\ldots,a)\)</span>, followed by <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, induces multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>. These observations separate matrix invariance from the behavior of a particular unital embedding.</p>
+<h2 id="5-calculations-dimensions-absorption-and-bundles">5. Calculations: dimensions, absorption and bundles</h2>
+<p><strong>Example 5.1 (Matrices).</strong> A projection in <span class="math" data-tex="\(M_k(\mathbb C)\)">\(M_k(\mathbb C)\)</span> is determined up to Murray–von Neumann equivalence by its rank. An implementing partial isometry restricts to a unitary between the ranges, so equivalent projections have equal rank. Conversely, any unitary between equal-dimensional ranges, extended by zero on the orthogonal complement, is such a partial isometry.</p>
+<p>All nonnegative ranks occur in sufficiently large matrices. Block sum adds ranks. Consequently
+<span class="math math-display" data-tex="\[
+V(\mathbb C)\cong\mathbb N_0,
+\qquad K_0(\mathbb C)\cong\mathbb Z,
+\qquad [p]-[q]\longmapsto\operatorname{rank}p-\operatorname{rank}q.
+\]">\[
+V(\mathbb C)\cong\mathbb N_0,
+\qquad K_0(\mathbb C)\cong\mathbb Z,
+\qquad [p]-[q]\longmapsto\operatorname{rank}p-\operatorname{rank}q.
+\]</span>
+Flattening gives the same calculation for <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span>. Its group generator is the class of a rank-one projection, while its identity has class <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Example 5.2 (Finite direct sums).</strong> For unital algebras <span class="math" data-tex="\(A_1,\ldots,A_r\)">\(A_1,\ldots,A_r\)</span>, idempotents and equivalence witnesses in a matrix algebra over <span class="math" data-tex="\(\bigoplus_i A_i\)">\(\bigoplus_i A_i\)</span> are coordinatewise. Given finitely many representatives or witnesses, pad them to a common size. Thus
+<span class="math math-display" data-tex="\[
+V\left(\bigoplus_{i=1}^rA_i\right)\cong\prod_{i=1}^rV(A_i).
+\]">\[
+V\left(\bigoplus_{i=1}^rA_i\right)\cong\prod_{i=1}^rV(A_i).
+\]</span>
+Taking a difference in each coordinate gives
+<span class="math" data-tex="\(G(\prod_iV(A_i))\cong\bigoplus_iG(V(A_i))\)">\(G(\prod_iV(A_i))\cong\bigoplus_iG(V(A_i))\)</span>: the equality witnesses can also be chosen coordinatewise. Hence
+<span class="math math-display" data-tex="\[
+K_0\left(\bigoplus_{i=1}^rM_{d_i}(\mathbb C)\right)\cong\mathbb Z^r.
+\]">\[
+K_0\left(\bigoplus_{i=1}^rM_{d_i}(\mathbb C)\right)\cong\mathbb Z^r.
+\]</span>
+The coordinates are ordinary ranks, and the identity has vector <span class="math" data-tex="\((d_1,\ldots,d_r)\)">\((d_1,\ldots,d_r)\)</span>. By the finite-dimensional structure theorem [AF, Theorem 2.4], this computes every finite-dimensional C*-algebra with <span class="math" data-tex="\(r\)">\(r\)</span> simple summands.</p>
+<p>In particular <span class="math" data-tex="\(K_0(\mathbb C\oplus\mathbb C)=\mathbb Z^2\)">\(K_0(\mathbb C\oplus\mathbb C)=\mathbb Z^2\)</span>. The diagonal homomorphism <span class="math" data-tex="\(z\mapsto(z,z)\)">\(z\mapsto(z,z)\)</span> sends a rank-one projection to rank vector <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, so its induced map is <span class="math" data-tex="\(k\mapsto(k,k)\)">\(k\mapsto(k,k)\)</span>.</p>
+<p><strong>Theorem 5.3 (All bounded operators).</strong> For every infinite-dimensional complex Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>,
+<span class="math math-display" data-tex="\[
+K_0(B(H))=0.
+\]">\[
+K_0(B(H))=0.
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(\kappa=\dim H\)">\(\kappa=\dim H\)</span>, an infinite cardinal. The identification <span class="math" data-tex="\(M_m(B(H))=B(H^{\oplus m})\)">\(M_m(B(H))=B(H^{\oplus m})\)</span> follows by writing operators as finite blocks. Projections in this algebra are equivalent exactly when their ranges have equal Hilbert dimension: a partial isometry restricts to a unitary of the ranges, and a unitary of ranges extended by zero gives the converse.</p>
+<p>Let <span class="math" data-tex="\(p\in M_m(B(H))\)">\(p\in M_m(B(H))\)</span>. Its range has dimension <span class="math" data-tex="\(\lambda\leq m\kappa=\kappa\)">\(\lambda\leq m\kappa=\kappa\)</span>, so
+<span class="math" data-tex="\(\dim(pH^{\oplus m}\oplus H)=\lambda+\kappa=\kappa\)">\(\dim(pH^{\oplus m}\oplus H)=\lambda+\kappa=\kappa\)</span>.
+Thus, after padding into <span class="math" data-tex="\(M_{m+1}(B(H))\)">\(M_{m+1}(B(H))\)</span>, the projections <span class="math" data-tex="\(p\oplus1_H\)">\(p\oplus1_H\)</span> and <span class="math" data-tex="\(1_H\)">\(1_H\)</span> are equivalent. Therefore
+<span class="math math-display" data-tex="\[
+v(p)+v(1_H)=v(1_H),
+\qquad [p]+[1_H]=[1_H].
+\]">\[
+v(p)+v(1_H)=v(1_H),
+\qquad [p]+[1_H]=[1_H].
+\]</span>
+Cancellation in the group gives <span class="math" data-tex="\([p]=0\)">\([p]=0\)</span>, and all its generators vanish. This works for finite-rank and infinite-rank <span class="math" data-tex="\(p\)">\(p\)</span>, and requires no separability of <span class="math" data-tex="\(H\)">\(H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can already see <span class="math" data-tex="\([1_H]=0\)">\([1_H]=0\)</span> from <span class="math" data-tex="\(H\oplus H\cong H\)">\(H\oplus H\cong H\)</span>. However, the vanishing of this one class alone is not the reason all of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> vanishes; the absorption argument applies to every matrix projection.</p>
+<p><strong>Theorem 5.4 (Bundles).</strong> For compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, let <span class="math" data-tex="\(\operatorname{Vect}(X)\)">\(\operatorname{Vect}(X)\)</span> be the monoid of isomorphism classes of finite-rank complex vector bundles under direct sum. There is a canonical isomorphism
+<span class="math math-display" data-tex="\[
+K_0(C(X))\cong G(\operatorname{Vect}(X)),
+\qquad [p]-[q]\longmapsto[E_p]-[E_q],
+\]">\[
+K_0(C(X))\cong G(\operatorname{Vect}(X)),
+\qquad [p]-[q]\longmapsto[E_p]-[E_q],
+\]</span>
+where <span class="math" data-tex="\((E_p)_x=p(x)\mathbb C^n\)">\((E_p)_x=p(x)\mathbb C^n\)</span> for <span class="math" data-tex="\(p\in M_n(C(X))\)">\(p\in M_n(C(X))\)</span>.</p>
+<p><em>Proof.</em> Serre–Swan identifies <span class="math" data-tex="\(\operatorname{Vect}(X)\)">\(\operatorname{Vect}(X)\)</span> with the monoid of finitely generated projective <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-modules through continuous sections. The idempotent-module correspondence identifies the latter with <span class="math" data-tex="\(V(C(X))\)">\(V(C(X))\)</span>. These are the precise prerequisite statements recalled below. Both respect direct sum, and the section module of <span class="math" data-tex="\(E_p\)">\(E_p\)</span> is <span class="math" data-tex="\(pC(X)^n\)">\(pC(X)^n\)</span>. Their composite is a monoid isomorphism, so completion gives the asserted group isomorphism and formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus <span class="math" data-tex="\(K_0\)">\(K_0\)</span> generalizes virtual vector bundles. Point evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> induces the homomorphism <span class="math" data-tex="\([E]-[F]\mapsto\operatorname{rank}E_x-\operatorname{rank}F_x\)">\([E]-[F]\mapsto\operatorname{rank}E_x-\operatorname{rank}F_x\)</span>: evaluating a representing projection computes that rank. If <span class="math" data-tex="\(X\)">\(X\)</span> is connected, each rank is constant because it is locally constant. The bundle need not be trivial merely because its rank is constant.</p>
+<p><strong>Example 5.5 (The circle).</strong> Every finite-rank complex vector bundle on <span class="math" data-tex="\(S^1\)">\(S^1\)</span> is trivial by <a href="vector-bundles-and-finitely-generated-projective-modules.html#5-gluing-around-a-circle-and-across-a-sphere">Lesson 2, Proposition 5.1</a>. We use that exact result to compute the rank monoid and its group completion.</p>
+<p>Since <span class="math" data-tex="\(S^1\)">\(S^1\)</span> is connected, rank classifies its bundles and identifies their direct-sum monoid with <span class="math" data-tex="\(\mathbb N_0\)">\(\mathbb N_0\)</span>. Theorem 5.4 now gives
+<span class="math math-display" data-tex="\[
+K_0(C(S^1))\cong\mathbb Z,
+\]">\[
+K_0(C(S^1))\cong\mathbb Z,
+\]</span>
+generated by the trivial line bundle, or equivalently by <span class="math" data-tex="\([1]\)">\([1]\)</span>.</p>
+<h2 id="6-traces-as-additive-measurements">6. Traces as additive measurements</h2>
+<p>A <strong>tracial linear functional</strong> is a complex-linear map <span class="math" data-tex="\(\tau:A\to\mathbb C\)">\(\tau:A\to\mathbb C\)</span> with <span class="math" data-tex="\(\tau(ab)=\tau(ba)\)">\(\tau(ab)=\tau(ba)\)</span>. Its matrix extension is the unnormalized sum
+<span class="math math-display" data-tex="\[
+\tau_n(a)=\sum_{i=1}^n\tau(a_{ii}).
+\]">\[
+\tau_n(a)=\sum_{i=1}^n\tau(a_{ii}).
+\]</span>
+Using an average would change the value when a matrix is padded by zero.</p>
+<p><strong>Proposition 6.1 (Trace pairing).</strong> A tracial linear functional induces a homomorphism
+<span class="math math-display" data-tex="\[
+\tau_*:K_0(A)\longrightarrow\mathbb C,
+\qquad \tau_*([e]-[f])=\tau_r(e)-\tau_s(f).
+\]">\[
+\tau_*:K_0(A)\longrightarrow\mathbb C,
+\qquad \tau_*([e]-[f])=\tau_r(e)-\tau_s(f).
+\]</span>
+No continuity assumption on <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is needed for this algebraic statement. If <span class="math" data-tex="\(A\)">\(A\)</span> is a C*-algebra and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is positive, the values are real and the values on projection classes are nonnegative.</p>
+<p><em>Proof.</em> For rectangular <span class="math" data-tex="\(x\in M_{r,s}(A)\)">\(x\in M_{r,s}(A)\)</span> and <span class="math" data-tex="\(y\in M_{s,r}(A)\)">\(y\in M_{s,r}(A)\)</span>,
+<span class="math math-display" data-tex="\[
+\tau_r(xy)=\sum_{i,j}\tau(x_{ij}y_{ji})
+=\sum_{j,i}\tau(y_{ji}x_{ij})=\tau_s(yx).
+\]">\[
+\tau_r(xy)=\sum_{i,j}\tau(x_{ij}y_{ji})
+=\sum_{j,i}\tau(y_{ji}x_{ij})=\tau_s(yx).
+\]</span>
+Thus algebraically equivalent idempotents have the same value. Zero padding does not change the sum, and a block sum adds the values. The resulting monoid map <span class="math" data-tex="\(V(A)\to\mathbb C\)">\(V(A)\to\mathbb C\)</span> therefore extends uniquely by Theorem 1.1. Positivity makes projection values nonnegative real numbers, so their differences are real. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(\tau_*[1_n]=n\tau(1_A)\)">\(\tau_*[1_n]=n\tau(1_A)\)</span>. The ordinary trace on <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span> gives the rank coordinate of Example 5.1; the normalized trace gives <span class="math" data-tex="\(1/d\)">\(1/d\)</span> on its generator. For a type II<span class="math" data-tex="\(_1\)">\(_1\)</span> factor, the normalized trace instead measures all real dimensions. The advanced exercise proves this precisely. Further questions about positive pairings and states belong to <em>Traces, states and the pairing with <span class="math" data-tex="\(K_0\)">\(K_0\)</span></em>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (Basic: multiplicities).</strong> Use rank-one generators to compute <span class="math" data-tex="\(K_0(M_2(\mathbb C)\oplus M_3(\mathbb C))\)">\(K_0(M_2(\mathbb C)\oplus M_3(\mathbb C))\)</span>. For the unital embedding
+<span class="math math-display" data-tex="\[
+\phi(a,b)=\operatorname{diag}(a,a,a,b,b)\in M_{12}(\mathbb C),
+\]">\[
+\phi(a,b)=\operatorname{diag}(a,a,a,b,b)\in M_{12}(\mathbb C),
+\]</span>
+compute <span class="math" data-tex="\(\phi_*\)">\(\phi_*\)</span>, its kernel and its image, and check its action on the identity.</p>
+<p><strong>Exercise 7.2 (Basic: absorption).</strong> For infinite-dimensional <span class="math" data-tex="\(H\)">\(H\)</span>, prove <span class="math" data-tex="\([1_H]=0\)">\([1_H]=0\)</span> in <span class="math" data-tex="\(K_0(B(H))\)">\(K_0(B(H))\)</span>, and then justify why every matrix projection has zero class. Explain the extra argument needed for the second assertion.</p>
+<p><strong>Exercise 7.3 (Intermediate: cancellation).</strong> Prove that <span class="math" data-tex="\(j_M:M\to G(M)\)">\(j_M:M\to G(M)\)</span> is injective if and only if <span class="math" data-tex="\(M\)">\(M\)</span> has cancellation. Apply this to <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span>, and exhibit a unital C*-algebra for which the map to <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is not injective.</p>
+<p><strong>Exercise 7.4 (Intermediate: a corner and its inverse).</strong> Describe explicitly the inverse of <span class="math" data-tex="\(\iota_*:K_0(A)\to K_0(M_n(A))\)">\(\iota_*:K_0(A)\to K_0(M_n(A))\)</span>, and verify the two compositions. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, track the coordinate positions of an idempotent <span class="math" data-tex="\(e\in M_2(A)\)">\(e\in M_2(A)\)</span>. Compute the image, under the inverse, of <span class="math" data-tex="\([1_{M_n(A)}]\)">\([1_{M_n(A)}]\)</span>.</p>
+<p><strong>Exercise 7.5 (Advanced: real dimensions).</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a type II<span class="math" data-tex="\(_1\)">\(_1\)</span> factor with its faithful normal tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, normalized by <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span>. Using comparison of projections, prove that
+<span class="math math-display" data-tex="\[
+\tau_*:K_0(M)\longrightarrow(\mathbb R,+)
+\]">\[
+\tau_*:K_0(M)\longrightarrow(\mathbb R,+)
+\]</span>
+is an isomorphism. Prove, rather than assume, that every number in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is the trace of a projection in <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> Example 5.2 gives <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, with generators represented by a rank-one projection in each summand. Their images have ranks <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, respectively. Thus
+<span class="math math-display" data-tex="\[
+\phi_*(x,y)=3x+2y.
+\]">\[
+\phi_*(x,y)=3x+2y.
+\]</span>
+Its kernel is <span class="math" data-tex="\(\mathbb Z(2,-3)\)">\(\mathbb Z(2,-3)\)</span>: <span class="math" data-tex="\(3x=-2y\)">\(3x=-2y\)</span> forces <span class="math" data-tex="\(x=2k\)">\(x=2k\)</span>, <span class="math" data-tex="\(y=-3k\)">\(y=-3k\)</span>. Its image is all of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, since <span class="math" data-tex="\(3-2=1\)">\(3-2=1\)</span>. The identity has vector <span class="math" data-tex="\((2,3)\)">\((2,3)\)</span>, whose image is <span class="math" data-tex="\(6+6=12\)">\(6+6=12\)</span>, the class of <span class="math" data-tex="\(1_{12}\)">\(1_{12}\)</span>. Using the identity classes as if they were rank-one generators would give the wrong coordinates.</p>
+<p><strong>Solution 7.2.</strong> Choose a unitary <span class="math" data-tex="\(W:H\oplus H\to H\)">\(W:H\oplus H\to H\)</span>, possible because twice an infinite Hilbert dimension is the same dimension. The rectangular partial isometry <span class="math" data-tex="\(W\)">\(W\)</span> witnesses equivalence of <span class="math" data-tex="\(1_H\oplus1_H\)">\(1_H\oplus1_H\)</span> and <span class="math" data-tex="\(1_H\)">\(1_H\)</span>. Hence <span class="math" data-tex="\(2[1_H]=[1_H]\)">\(2[1_H]=[1_H]\)</span>, so <span class="math" data-tex="\([1_H]=0\)">\([1_H]=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(p\in M_m(B(H))\)">\(p\in M_m(B(H))\)</span>, its range has dimension at most <span class="math" data-tex="\(\dim H\)">\(\dim H\)</span>. Adding a copy of <span class="math" data-tex="\(H\)">\(H\)</span> gives a space of dimension exactly <span class="math" data-tex="\(\dim H\)">\(\dim H\)</span>. The corresponding unitary of ranges witnesses <span class="math" data-tex="\(p\oplus1_H\sim1_H\)">\(p\oplus1_H\sim1_H\)</span>, so <span class="math" data-tex="\([p]+[1_H]=[1_H]\)">\([p]+[1_H]=[1_H]\)</span> and <span class="math" data-tex="\([p]=0\)">\([p]=0\)</span>. The group is generated by these classes. Vanishing of the identity alone would not establish this without the equivalence for each <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution 7.3.</strong> If <span class="math" data-tex="\(M\)">\(M\)</span> has cancellation and <span class="math" data-tex="\(j_M(a)=j_M(b)\)">\(j_M(a)=j_M(b)\)</span>, Theorem 1.1 gives <span class="math" data-tex="\(a+c=b+c\)">\(a+c=b+c\)</span>, hence <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Conversely, if <span class="math" data-tex="\(a+c=b+c\)">\(a+c=b+c\)</span>, applying <span class="math" data-tex="\(j_M\)">\(j_M\)</span> and cancelling in the group gives <span class="math" data-tex="\(j_M(a)=j_M(b)\)">\(j_M(a)=j_M(b)\)</span>; injectivity gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>.</p>
+<p>For <span class="math" data-tex="\(A=B(\ell^2(\mathbb N))\)">\(A=B(\ell^2(\mathbb N))\)</span>, the projections <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1_A\)">\(1_A\)</span> have different classes in <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span>, since their ranges cannot be unitarily isomorphic. Both map to zero in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. More explicitly, a rank-one projection <span class="math" data-tex="\(r\)">\(r\)</span> satisfies <span class="math" data-tex="\(v(r)+v(1_A)=v(1_A)\)">\(v(r)+v(1_A)=v(1_A)\)</span>, while <span class="math" data-tex="\(v(r)\neq0\)">\(v(r)\neq0\)</span>. Thus this monoid fails cancellation.</p>
+<p><strong>Solution 7.4.</strong> The inverse is <span class="math" data-tex="\(F_n\)">\(F_n\)</span> from Theorem 4.4: view every matrix of <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> blocks as an ordinary matrix over <span class="math" data-tex="\(A\)">\(A\)</span>, then take the same formal difference. Changing representatives is harmless because flattening sends each equivalence witness to an equivalence witness.</p>
+<p>For <span class="math" data-tex="\(e=(e_{ij})\in M_2(A)\)">\(e=(e_{ij})\in M_2(A)\)</span>, entrywise application of the corner with <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, followed by flattening, gives
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+e_{11}&amp;0&amp;e_{12}&amp;0\\
+0&amp;0&amp;0&amp;0\\
+e_{21}&amp;0&amp;e_{22}&amp;0\\
+0&amp;0&amp;0&amp;0
+\end{pmatrix}.
+\]">\[
+\begin{pmatrix}
+e_{11}&amp;0&amp;e_{12}&amp;0\\
+0&amp;0&amp;0&amp;0\\
+e_{21}&amp;0&amp;e_{22}&amp;0\\
+0&amp;0&amp;0&amp;0
+\end{pmatrix}.
+\]</span>
+Ordering the coordinates as <span class="math" data-tex="\(1,3,2,4\)">\(1,3,2,4\)</span> gives <span class="math" data-tex="\(e\oplus0_2\)">\(e\oplus0_2\)</span>, proving <span class="math" data-tex="\(F_2\iota_*([e])=[e]\)">\(F_2\iota_*([e])=[e]\)</span>. For general <span class="math" data-tex="\(n\)">\(n\)</span>, use the positions <span class="math" data-tex="\(1,n+1,\ldots\)">\(1,n+1,\ldots\)</span> and the same permutation argument.</p>
+<p>In the other direction, if <span class="math" data-tex="\(P\in M_r(M_n(A))\)">\(P\in M_r(M_n(A))\)</span>, flattening gives a matrix of size <span class="math" data-tex="\(rn\)">\(rn\)</span>. Applying the corner to its entries and flattening again produces the flattened <span class="math" data-tex="\(P\)">\(P\)</span> with zero coordinates inserted. A permutation removes these inserted coordinates up to zero padding. Because flattening on <span class="math" data-tex="\(V\)">\(V\)</span> is injective, as proved in Theorem 4.4 by grouping witnesses into blocks, this gives <span class="math" data-tex="\(\iota_*F_n([P])=[P]\)">\(\iota_*F_n([P])=[P]\)</span>. Both statements extend to differences. Finally, <span class="math" data-tex="\(F_n[1_{M_n(A)}]=[1_n]=n[1_A]\)">\(F_n[1_{M_n(A)}]=[1_n]=n[1_A]\)</span>.</p>
+<p><strong>Solution 7.5.</strong> We use two established projection facts: projections in a von Neumann algebra have suprema, and projections in a finite factor with a faithful normal trace are equivalent exactly when their traces agree. The exact references and trace amplification statement are given below. Type II means that <span class="math" data-tex="\(M\)">\(M\)</span> has no nonzero minimal projections.</p>
+<p>First, every nonzero projection <span class="math" data-tex="\(r\)">\(r\)</span> contains projections of arbitrarily small positive trace. Choose a proper nonzero subprojection <span class="math" data-tex="\(s&lt;r\)">\(s&lt;r\)</span>. Both <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(r-s\)">\(r-s\)</span> have positive trace by faithfulness; choose the one whose trace is at most <span class="math" data-tex="\(\tau(r)/2\)">\(\tau(r)/2\)</span>. Repeat inside that nonzero projection. The resulting traces are positive and at most <span class="math" data-tex="\(2^{-k}\tau(r)\)">\(2^{-k}\tau(r)\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, and partially order
+<span class="math math-display" data-tex="\[
+\mathcal P_t=\{p\in M:p=p^*=p^2,\ \tau(p)\leq t\}
+\]">\[
+\mathcal P_t=\{p\in M:p=p^*=p^2,\ \tau(p)\leq t\}
+\]</span>
+by inclusion. A nonempty chain has a supremum <span class="math" data-tex="\(p\)">\(p\)</span>, and normality gives <span class="math" data-tex="\(\tau(p)=\sup\tau(p_i)\leq t\)">\(\tau(p)=\sup\tau(p_i)\leq t\)</span>. The empty chain has upper bound zero. Zorn's lemma gives a maximal <span class="math" data-tex="\(p\in\mathcal P_t\)">\(p\in\mathcal P_t\)</span>. If <span class="math" data-tex="\(\tau(p)&lt;t\)">\(\tau(p)&lt;t\)</span>, then <span class="math" data-tex="\(1-p\neq0\)">\(1-p\neq0\)</span>, and the preceding splitting argument gives a nonzero <span class="math" data-tex="\(s\leq1-p\)">\(s\leq1-p\)</span> with <span class="math" data-tex="\(\tau(s)&lt;t-\tau(p)\)">\(\tau(s)&lt;t-\tau(p)\)</span>. The projection <span class="math" data-tex="\(p+s\)">\(p+s\)</span> is strictly larger and still belongs to <span class="math" data-tex="\(\mathcal P_t\)">\(\mathcal P_t\)</span>, a contradiction. Hence <span class="math" data-tex="\(\tau(p)=t\)">\(\tau(p)=t\)</span>.</p>
+<p>Extend <span class="math" data-tex="\(\tau\)">\(\tau\)</span> to matrices by <span class="math" data-tex="\(\tau_n=\operatorname{Tr}_n\otimes\tau\)">\(\tau_n=\operatorname{Tr}_n\otimes\tau\)</span>, with no division by <span class="math" data-tex="\(n\)">\(n\)</span>. For every <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>, write <span class="math" data-tex="\(x=k+t\)">\(x=k+t\)</span> with <span class="math" data-tex="\(k\in\mathbb N_0\)">\(k\in\mathbb N_0\)</span>, <span class="math" data-tex="\(0\leq t&lt;1\)">\(0\leq t&lt;1\)</span>. If <span class="math" data-tex="\(p_t\in M\)">\(p_t\in M\)</span> has trace <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(1_k\oplus p_t\)">\(1_k\oplus p_t\)</span> has matrix trace <span class="math" data-tex="\(x\)">\(x\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> take <span class="math" data-tex="\(p_t\)">\(p_t\)</span> alone. All nonnegative real numbers therefore occur in the image of projection classes; taking differences proves surjectivity onto <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p>For injectivity suppose <span class="math" data-tex="\(\tau_*([p]-[q])=0\)">\(\tau_*([p]-[q])=0\)</span>. Pad both projections into <span class="math" data-tex="\(M_N(M)\)">\(M_N(M)\)</span>. This is a factor: a central matrix must commute with the scalar matrix units, hence is <span class="math" data-tex="\(a1_N\)">\(a1_N\)</span>, and commuting with diagonal elements from <span class="math" data-tex="\(M\)">\(M\)</span> forces <span class="math" data-tex="\(a\in\mathbb C1_M\)">\(a\in\mathbb C1_M\)</span>. The trace <span class="math" data-tex="\(\tau_N\)">\(\tau_N\)</span> is faithful and normal by [Traces, Proposition 6.5]. It is finite, with value <span class="math" data-tex="\(N\)">\(N\)</span> on the identity; consequently this factor is finite. Indeed, an isometry has final projection of trace <span class="math" data-tex="\(N\)">\(N\)</span>, so faithfulness makes that final projection the identity.</p>
+<p>Now <span class="math" data-tex="\(\tau_N(p)=\tau_N(q)\)">\(\tau_N(p)=\tau_N(q)\)</span>, and the finite-factor trace comparison result [Traces, Corollary 5.4] gives <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span>. Thus <span class="math" data-tex="\([p]-[q]=0\)">\([p]-[q]=0\)</span>. Proposition 6.1 gives the homomorphism property, so <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span> is an isomorphism, with <span class="math" data-tex="\([1_M]\)">\([1_M]\)</span> corresponding to <span class="math" data-tex="\(1\)">\(1\)</span>. The splitting argument also shows why this calculation is specific to diffuse finite factors rather than finite-dimensional matrix algebras.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The following prerequisite results are used with their stated hypotheses. The constructions and calculations of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> above are proved from these results.</p>
+<ul>
+<li><strong>Equivalence of idempotents.</strong> Algebraic equivalence is an equivalence relation; its witnesses can be supported on the idempotents. Similarity implies algebraic equivalence. A norm-continuous idempotent path in a unital Banach algebra has similar endpoints. After finite zero stabilization, algebraic equivalence, similarity and norm homotopy give the same classes. These are the results of <em>Idempotents, projections and their equivalences</em> used here; direct references are [Blackadar 1998, Propositions 4.2.2–4.2.3, 4.3.1, 4.3.3 and 4.4.1].</li>
+<li><strong>Projection reduction.</strong> In a unital C*-algebra, every idempotent is similar to a projection, and two projections are algebraically equivalent exactly when they are Murray–von Neumann equivalent [Blackadar 1998, Propositions 4.6.2 and 4.6.4]. These statements apply to every finite matrix algebra. Theorem 2.3 proves the consequent equality of the two <span class="math" data-tex="\(K_0\)">\(K_0\)</span> definitions.</li>
+<li><strong>Projective modules and Serre–Swan.</strong> Over a unital algebra, <span class="math" data-tex="\(e\mapsto eA^n\)">\(e\mapsto eA^n\)</span> identifies algebraic equivalence classes of matrix idempotents with isomorphism classes of finitely generated projective right modules. For compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, continuous sections identify finite-rank complex vector bundles with finitely generated projective <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-modules, preserving direct sums. These are the results of <em>Vector bundles and finitely generated projective modules</em> used here [Blackadar 1998, §1.7.1; Blackadar 2006, V.1.1.5]. Theorem 5.4 proves their group-completion consequence. No second-countability hypothesis is needed.</li>
+<li><strong>Finite-dimensional structure.</strong> Every finite-dimensional C*-algebra is a finite direct sum of full complex matrix algebras [AF, Theorem 2.4]. We prove its <span class="math" data-tex="\(K_0\)">\(K_0\)</span> calculation, without repeating the structure theorem or AF classification.</li>
+<li><strong>Von Neumann projection and trace theory.</strong> Projections have suprema, increasing projection nets converge strongly to their supremum, and a normal positive functional preserves their suprema [Types, Proposition 3.1; Traces, Conventions]. Every finite factor has a faithful normal tracial state normalized at the identity [Traces, Theorem 5.2]. In such a factor, projections are equivalent exactly when their traces agree [Traces, Corollary 5.4], using the comparison theorem [Types, Theorem 5.5]. Finite matrix amplification extends a faithful normal trace to the faithful normal trace <span class="math" data-tex="\(\tau_n(a)=\sum_i\tau(a_{ii})\)">\(\tau_n(a)=\sum_i\tau(a_{ii})\)</span> [Traces, Proposition 6.5]. These results are used only in Exercise 7.5; the real trace range and the resulting <span class="math" data-tex="\(K_0\)">\(K_0\)</span> isomorphism are proved in its solution.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[AF]</strong> <em>AF-algebras</em>, in <em>Foundations of von Neumann algebras</em>, §§2 and 7, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html">Open Mathematics Courses</a>.</li>
+<li><strong>[Types]</strong> <em>Projections and types of von Neumann algebras</em>, §§3 and 5, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html">Open Mathematics Courses</a>.</li>
+<li><strong>[Traces]</strong> <em>Traces on von Neumann algebras</em>, §§5 and 6, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-a598030ddbea">Open Mathematics Courses</a>.</li>
+<li><strong>[Blackadar 1998]</strong> B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>. Sections 5.1–5.3 and Proposition 5.5.5, printed pp. 27–31 (PDF pp. 41–45), compare the matrix monoid and unital definition. Propositions 4.3.3, 4.6.2 and 4.6.4 are the exact projection and homotopy prerequisites.</li>
+<li><strong>[Blackadar 2006]</strong> B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006.</li>
+<li><strong>[Emerson 2024]</strong> H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, 2024.</li>
+<li><strong>[Weibel, group completion]</strong> Charles A. Weibel, <em>The K-book: An Introduction to Algebraic K-theory</em>, author-hosted Chapter II, §1, Proposition 1.1 and Corollaries 1.2–1.3, chapter pp. 1–2; §2, chapter p. 5. <a href="https://sites.math.rutgers.edu/~weibel/Kbook/Kbook.II.pdf#page=1">Freely readable Chapter II</a>. The free-abelian-group presentation supplies a second construction of group completion and the same extra-summand equality criterion. Theorem 1.1 and Theorem 3.2 here retain their complete pair-quotient and complement proofs. Chapter pagination differs from the AMS printed book.</li>
+</ul>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="vector-bundles-and-finitely-generated-projective-modules.html">← Vector bundles and finitely generated projective modules</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-03.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

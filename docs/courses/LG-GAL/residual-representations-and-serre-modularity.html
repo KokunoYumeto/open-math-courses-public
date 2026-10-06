@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Residual representations and Serre&#x27;s modularity theorem · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/residual-representations-and-serre-modularity.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="residual-representations-and-serre-s-modularity-theorem">Residual representations and Serre's modularity theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A characteristic-zero representation can be irreducible while its reduction is reducible. An isogeny can identify rational Tate modules while leaving different integral reductions. These phenomena are central to congruences between modular forms. The modularity theorem of Serre, proved by Khare and Wintenberger with Kisin's lifting results, goes in the reverse direction: an odd irreducible residual representation comes from a modular form.</p>
+<p>We use <span class="math" data-tex="\(p\)">\(p\)</span> for the residual characteristic and <span class="math" data-tex="\(q\)">\(q\)</span> for a different local prime. Frobenius at <span class="math" data-tex="\(q\)">\(q\)</span> is <strong>arithmetic</strong>, so <span class="math" data-tex="\(\bar\chi_p(\operatorname{Fr}_q)=q\bmod p\)">\(\bar\chi_p(\operatorname{Fr}_q)=q\bmod p\)</span>. Local reciprocity sends a uniformizer to geometric Frobenius, and our Weil–Deligne convention remains <span class="math" data-tex="\(r(w)Nr(w)^{-1}=|w|N\)">\(r(w)Nr(w)^{-1}=|w|N\)</span>. The residual inertia calculation below uses the actual torsion representation, before semisimplifying it.</p>
+<p>The actual earlier proof bindings are Theorems 2.1–2.4 and Lemma 3.3/Example 3.4 of <a href="profinite-groups-and-adic-representations.html">lesson 1</a>, Theorem 3.0c of <a href="frobenius-elements-and-determination-by-traces.html">lesson 2</a>, Lemmas 1.2, 1.6–1.7 of <a href="conductors-of-weil-group-representations.html">lesson 5</a>, and Lemma 3.0/Theorem 3.1/Lemma 4.0 of <a href="elliptic-curves-over-local-fields.html">lesson 8</a>. For level-one forms, the written earlier <em>Valence formula and the ring of modular forms of level one</em>, Theorems 2.1–2.3, 4.1 and 5.1, proves the dimensions, product and Eisenstein identities; <em>Modular forms, lattice functions and Eisenstein series</em>, Theorem 4.2 and Solution 4, proves the expansions and Bernoulli computation. Sections 5–8 distinguish actual proofs from the remaining required parts of the full modularity argument. The full theorems and classical weight recipe remain requirements of this lesson; the presence of their free primary papers does not certify their proof closure.</p>
+<h2 id="1-reduction-frobenius-and-oddness">1. Reduction, Frobenius, and oddness</h2>
+<p>The general attached representation and its good-prime formula remain part of the full construction required in lessons 11–12; their explicitly unclosed arithmetic-model, geometric comparison and irreducibility interfaces are not supplied by this lesson. Whenever <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span> is used below, that construction is a required prerequisite. The reductions and comparisons proved here apply to any representation satisfying its displayed good-prime formula.</p>
+<p>Let <span class="math" data-tex="\(f=\sum_{n\ge1}a_nq^n\)">\(f=\sum_{n\ge1}a_nq^n\)</span> be a normalized cuspidal eigenform of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, level <span class="math" data-tex="\(N\)">\(N\)</span>, and character <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For a prime <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of its coefficient field above <span class="math" data-tex="\(p\)">\(p\)</span>, choose a stable lattice <span class="math" data-tex="\(T\)">\(T\)</span> in the two-dimensional <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span>-representation <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span>. Define
+<span class="math math-display" data-tex="\[
+\bar\rho_{f,\lambda}=(T/\lambda T)^{\mathrm{ss}},
+\tag{1}
+\]">\[
+\bar\rho_{f,\lambda}=(T/\lambda T)^{\mathrm{ss}},
+\tag{1}
+\]</span>
+with scalars extended to <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span> when needed. The semisimplification is independent of the lattice, by the finite-length exact-sequence argument in the first lesson, Theorem 2.2. The reduction before semisimplification need not be independent of it.</p>
+<p>At <span class="math" data-tex="\(q\nmid Np\)">\(q\nmid Np\)</span>, reduction of the good-prime polynomial gives
+<span class="math math-display" data-tex="\[
+\det(X-\bar\rho_{f,\lambda}(\operatorname{Fr}_q))
+=X^2-\bar a_qX+\bar\varepsilon(q)q^{k-1}.
+\tag{2}
+\]">\[
+\det(X-\bar\rho_{f,\lambda}(\operatorname{Fr}_q))
+=X^2-\bar a_qX+\bar\varepsilon(q)q^{k-1}.
+\tag{2}
+\]</span>
+The global determinant is
+<span class="math math-display" data-tex="\[
+\det\bar\rho_{f,\lambda}=\bar\varepsilon_G\bar\chi_p^{\,k-1}.
+\tag{3}
+\]">\[
+\det\bar\rho_{f,\lambda}=\bar\varepsilon_G\bar\chi_p^{\,k-1}.
+\tag{3}
+\]</span>
+To prove (3) directly from (2), the quotient of the two determinant characters has finite image and factors through a finite Galois group. It equals one at every good prime by (2). Theorem 3.0c of lesson 2 supplies a prime outside the finite excluded set in every conjugacy class of this quotient. The character is consequently one on every class, hence identically one. The Dirichlet Galois character is the actual cyclotomic construction of lesson 1, Proposition 3.1, and the finite-character construction in the weight-one lesson, Lemma 0.1.</p>
+<p>Every continuous map <span class="math" data-tex="\(G_{\mathbf Q}\to\operatorname{GL}_d(\overline{\mathbf F}_p)\)">\(G_{\mathbf Q}\to\operatorname{GL}_d(\overline{\mathbf F}_p)\)</span>, with discrete target, has finite image: compact subsets of a discrete space are finite. Its finitely many matrix entries lie in some finite field, and its kernel is open. Thus it factors through a finite Galois group.</p>
+<p>This makes a residual version of Frobenius determination especially concrete. Given two such representations, pass to the finite quotient cutting out both kernels. Theorem 3.0c of lesson 2 proves finite Chebotarev, including its positive Dirichlet density for every conjugacy class. Removing a finite set does not change that density, so every class still occurs. Equality of the polynomials (2) at those primes therefore gives equality of characteristic polynomials everywhere on that quotient. Brauer–Nesbitt gives equality of the semisimplifications. We use the <strong>whole polynomial</strong>, including the determinant, rather than an unrestricted trace-only assertion in small characteristic.</p>
+<p><strong>Proposition 1.1 (residual oddness).</strong> For complex conjugation <span class="math" data-tex="\(c\)">\(c\)</span>,
+<span class="math math-display" data-tex="\[
+\det\bar\rho_{f,\lambda}(c)=-1.
+\tag{4}
+\]">\[
+\det\bar\rho_{f,\lambda}(c)=-1.
+\tag{4}
+\]</span>
+If <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, its eigenvalues are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>.</p>
+<p><strong>Proof.</strong> The transformation law under <span class="math" data-tex="\(-I\)">\(-I\)</span> gives <span class="math" data-tex="\(\varepsilon(-1)=(-1)^k\)">\(\varepsilon(-1)=(-1)^k\)</span>. Since <span class="math" data-tex="\(\bar\chi_p(c)=-1\)">\(\bar\chi_p(c)=-1\)</span>, the finite-quotient determinant identity (3) yields
+<span class="math math-display" data-tex="\[
+\bar\varepsilon_G(c)\bar\chi_p(c)^{k-1}
+=(-1)^k(-1)^{k-1}=-1.
+\tag{5}
+\]">\[
+\bar\varepsilon_G(c)\bar\chi_p(c)^{k-1}
+=(-1)^k(-1)^{k-1}=-1.
+\tag{5}
+\]</span>
+For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, <span class="math" data-tex="\(c^2=1\)">\(c^2=1\)</span> and <span class="math" data-tex="\(X^2-1\)">\(X^2-1\)</span> has distinct roots, so its action is diagonalizable; the determinant forces one of each eigenvalue. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, equation (4) reads <span class="math" data-tex="\(1=1\)">\(1=1\)</span> and makes no eigenvalue distinction. The determinant definition of oddness is vacuous in that characteristic; one must not infer two distinct eigenvalues there. ∎</p>
+<p>We supply the characteristic-polynomial comparison used above. The characteristic-zero proof in lesson 2 ends by cancelling integers in the coefficient field; that last step cannot be copied into characteristic <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Lemma 1.2 (characteristic-polynomial Brauer–Nesbitt).</strong> Let <span class="math" data-tex="\(F=\overline{\mathbf F}_p\)">\(F=\overline{\mathbf F}_p\)</span>, and let <span class="math" data-tex="\(V,W\)">\(V,W\)</span> be finite-dimensional representations of a finite group <span class="math" data-tex="\(H\)">\(H\)</span>. If
+<span class="math math-display" data-tex="\[
+\det(X-h\mid V)=\det(X-h\mid W)\quad\text{for every }h\in H,
+\]">\[
+\det(X-h\mid V)=\det(X-h\mid W)\quad\text{for every }h\in H,
+\]</span>
+then <span class="math" data-tex="\(V^{\mathrm{ss}}\simeq W^{\mathrm{ss}}\)">\(V^{\mathrm{ss}}\simeq W^{\mathrm{ss}}\)</span>.</p>
+<p><strong>Proof.</strong> A stable filtration gives block triangular matrices, so characteristic polynomials multiply over its composition factors. Replace both modules by their semisimplifications. Put <span class="math" data-tex="\(M=V\oplus W\)">\(M=V\oplus W\)</span>, and let <span class="math" data-tex="\(A\)">\(A\)</span> be the <span class="math" data-tex="\(F\)">\(F\)</span>-linear span of the image of <span class="math" data-tex="\(H\)">\(H\)</span> in <span class="math" data-tex="\(\operatorname{End}_F(M)\)">\(\operatorname{End}_F(M)\)</span>. It is an algebra, and <span class="math" data-tex="\(M\)">\(M\)</span> is a faithful semisimple <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p>The regular-module embedding from lesson 2, Lemma 4.1, works in every characteristic: for a basis <span class="math" data-tex="\(m_1,\ldots,m_d\)">\(m_1,\ldots,m_d\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, the map <span class="math" data-tex="\(a\mapsto(am_1,\ldots,am_d)\)">\(a\mapsto(am_1,\ldots,am_d)\)</span> embeds <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(M^d\)">\(M^d\)</span>. Thus the regular module is semisimple. Its isotypic decomposition gives two-sided ideals <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and central orthogonal idempotents, exactly as in that proof. Write
+<span class="math math-display" data-tex="\[
+A_i\simeq S_i^{\,n_i}
+\]">\[
+A_i\simeq S_i^{\,n_i}
+\]</span>
+as left modules, where the <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are pairwise nonisomorphic simple modules. Every simple type in <span class="math" data-tex="\(M\)">\(M\)</span> occurs here, since <span class="math" data-tex="\(a\mapsto as\)">\(a\mapsto as\)</span> maps <span class="math" data-tex="\(A\)">\(A\)</span> onto any simple module containing a nonzero vector <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>We need an operator of trace one on each <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, rather than an idempotent whose trace could be zero. Schur's lemma over <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(\operatorname{End}_A(S_i)=F\)">\(\operatorname{End}_A(S_i)=F\)</span>: an endomorphism has an eigenvalue, and its eigenspace is a nonzero invariant subspace, hence all of <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. Let <span class="math" data-tex="\(d_i=\dim_F S_i\)">\(d_i=\dim_F S_i\)</span>. Endomorphisms of the left regular module <span class="math" data-tex="\(A_i\)">\(A_i\)</span> are its right multiplications. Counting their dimensions in the displayed decomposition gives
+<span class="math math-display" data-tex="\[
+\dim_F A_i=n_i d_i
+=\dim_F\operatorname{End}_A(A_i)=n_i^2,
+\qquad n_i=d_i.
+\]">\[
+\dim_F A_i=n_i d_i
+=\dim_F\operatorname{End}_A(A_i)=n_i^2,
+\qquad n_i=d_i.
+\]</span>
+The action <span class="math" data-tex="\(A_i\to\operatorname{End}_F(S_i)\)">\(A_i\to\operatorname{End}_F(S_i)\)</span> is injective: its kernel annihilates every copy of <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, hence the regular module <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, and therefore its identity. Both sides have dimension <span class="math" data-tex="\(d_i^2\)">\(d_i^2\)</span>, so the map is surjective. Choose <span class="math" data-tex="\(b_i\in A_i\)">\(b_i\in A_i\)</span> acting as a diagonal matrix unit on <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. It has trace one there and acts as zero on all other simple types.</p>
+<p>Equality of characteristic polynomials gives equality of traces on <span class="math" data-tex="\(H\)">\(H\)</span>, hence on its span <span class="math" data-tex="\(A\)">\(A\)</span>. Evaluating at <span class="math" data-tex="\(b_i\)">\(b_i\)</span> shows that the two multiplicities of <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are equal <strong>modulo <span class="math" data-tex="\(p\)">\(p\)</span></strong>. Cancel their common copies in <span class="math" data-tex="\(V,W\)">\(V,W\)</span>. The remaining multiplicities are nonnegative multiples of <span class="math" data-tex="\(p\)">\(p\)</span>; write the remaining modules as <span class="math" data-tex="\(V_1^{\oplus p},W_1^{\oplus p}\)">\(V_1^{\oplus p},W_1^{\oplus p}\)</span>. Cancellation preserves characteristic-polynomial equality. For every <span class="math" data-tex="\(h\)">\(h\)</span>,
+<span class="math math-display" data-tex="\[
+\det(X-h\mid V_1)^p=\det(X-h\mid W_1)^p.
+\]">\[
+\det(X-h\mid V_1)^p=\det(X-h\mid W_1)^p.
+\]</span>
+The <span class="math" data-tex="\(p\)">\(p\)</span>-th power map on <span class="math" data-tex="\(F[X]\)">\(F[X]\)</span> is injective, so the polynomials for <span class="math" data-tex="\(V_1,W_1\)">\(V_1,W_1\)</span> agree too. Repeat the argument, or induct on <span class="math" data-tex="\(\dim V+\dim W\)">\(\dim V+\dim W\)</span>: after cancellation this sum has decreased by a factor <span class="math" data-tex="\(p\)">\(p\)</span>, unless both remaining modules are zero. The induction forces all multiplicities to agree. Restoring the cancelled constituents proves the lemma. ∎</p>
+<p>A trace-only failure can occur even in the same dimension. Over <span class="math" data-tex="\(\mathbf F_4\)">\(\mathbf F_4\)</span>, let a generator of <span class="math" data-tex="\(C_3\)">\(C_3\)</span> act through a character <span class="math" data-tex="\(\xi\)">\(\xi\)</span> with value <span class="math" data-tex="\(\alpha\ne1\)">\(\alpha\ne1\)</span>, <span class="math" data-tex="\(\alpha^3=1\)">\(\alpha^3=1\)</span>. The two semisimple modules <span class="math" data-tex="\(1\oplus1\)">\(1\oplus1\)</span> and <span class="math" data-tex="\(\xi\oplus\xi\)">\(\xi\oplus\xi\)</span> have trace zero at every element. At the generator their characteristic polynomials are <span class="math" data-tex="\((X-1)^2\)">\((X-1)^2\)</span> and <span class="math" data-tex="\((X-\alpha)^2\)">\((X-\alpha)^2\)</span>, with distinct constant terms <span class="math" data-tex="\(1,\alpha^2\)">\(1,\alpha^2\)</span>. Lemma 1.2 retains this information.</p>
+<h2 id="2-the-congruence-modulo-691">2. The congruence modulo 691</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\Delta=q\prod_{n\ge1}(1-q^n)^{24}
+=\sum_{n\ge1}\tau(n)q^n.
+\tag{6}
+\]">\[
+\Delta=q\prod_{n\ge1}(1-q^n)^{24}
+=\sum_{n\ge1}\tau(n)q^n.
+\tag{6}
+\]</span>
+We can prove Ramanujan's full congruence using the two-dimensional space of level-one forms of weight twelve.</p>
+<p><strong>Proposition 2.1 (Ramanujan's congruence).</strong> For every positive <span class="math" data-tex="\(n\)">\(n\)</span>,
+<span class="math math-display" data-tex="\[
+\tau(n)\equiv\sigma_{11}(n)\pmod{691},
+\qquad \sigma_{11}(n)=\sum_{d\mid n}d^{11}.
+\tag{7}
+\]">\[
+\tau(n)\equiv\sigma_{11}(n)\pmod{691},
+\qquad \sigma_{11}(n)=\sum_{d\mid n}d^{11}.
+\tag{7}
+\]</span></p>
+<p><strong>Proof.</strong> The level-one prerequisite gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_4&amp;=1+240\sum_{n\ge1}\sigma_3(n)q^n,\\
+E_6&amp;=1-504\sum_{n\ge1}\sigma_5(n)q^n,\\
+E_{12}&amp;=1+\frac{65520}{691}\sum_{n\ge1}\sigma_{11}(n)q^n,
+\qquad E_4^3-E_6^2=1728\Delta.
+\end{aligned}
+\tag{8}
+\]">\[
+\begin{aligned}
+E_4&amp;=1+240\sum_{n\ge1}\sigma_3(n)q^n,\\
+E_6&amp;=1-504\sum_{n\ge1}\sigma_5(n)q^n,\\
+E_{12}&amp;=1+\frac{65520}{691}\sum_{n\ge1}\sigma_{11}(n)q^n,
+\qquad E_4^3-E_6^2=1728\Delta.
+\end{aligned}
+\tag{8}
+\]</span>
+The third expression uses <span class="math" data-tex="\(B_{12}=-691/2730\)">\(B_{12}=-691/2730\)</span> in the Eisenstein-series formula. Since <span class="math" data-tex="\(M_{12}\)">\(M_{12}\)</span> has basis <span class="math" data-tex="\(E_4^3,\Delta\)">\(E_4^3,\Delta\)</span>, its forms are determined by the constant and first coefficients. Comparing those coefficients gives the identity
+<span class="math math-display" data-tex="\[
+691E_{12}=441E_4^3+250E_6^2
+=691E_4^3-432000\Delta.
+\tag{9}
+\]">\[
+691E_{12}=441E_4^3+250E_6^2
+=691E_4^3-432000\Delta.
+\tag{9}
+\]</span>
+Indeed the constant coefficients are <span class="math" data-tex="\(691\)">\(691\)</span>, and the first coefficients on the middle expression are <span class="math" data-tex="\(441\cdot720+250\cdot(-1008)=65520\)">\(441\cdot720+250\cdot(-1008)=65520\)</span>.</p>
+<p>The coefficients of <span class="math" data-tex="\(E_4^3\)">\(E_4^3\)</span> are integers. Taking the <span class="math" data-tex="\(n\)">\(n\)</span>-th coefficient in (9) gives
+<span class="math math-display" data-tex="\[
+65520\sigma_{11}(n)=691[q^n]E_4^3-432000\tau(n).
+\tag{10}
+\]">\[
+65520\sigma_{11}(n)=691[q^n]E_4^3-432000\tau(n).
+\tag{10}
+\]</span>
+Modulo the prime <span class="math" data-tex="\(691\)">\(691\)</span>, both <span class="math" data-tex="\(65520\)">\(65520\)</span> and <span class="math" data-tex="\(-432000\)">\(-432000\)</span> equal <span class="math" data-tex="\(566\)">\(566\)</span>, which is nonzero. Cancelling it proves (7) for every <span class="math" data-tex="\(n\)">\(n\)</span>. This is a modular-form identity argument, not an inference from a finite coefficient check. ∎</p>
+<p><strong>Theorem 2.2 (the residual representation of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> at 691).</strong>
+<span class="math math-display" data-tex="\[
+\bar\rho_{\Delta,691}\simeq 1\oplus\bar\chi_{691}^{\,11}.
+\tag{11}
+\]">\[
+\bar\rho_{\Delta,691}\simeq 1\oplus\bar\chi_{691}^{\,11}.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> For each prime <span class="math" data-tex="\(q\ne691\)">\(q\ne691\)</span>, Proposition 2.1 gives <span class="math" data-tex="\(\tau(q)\equiv1+q^{11}\)">\(\tau(q)\equiv1+q^{11}\)</span>. Both representations in (11) are unramified there, and their characteristic polynomials are
+<span class="math math-display" data-tex="\[
+X^2-(1+q^{11})X+q^{11}
+=(X-1)(X-q^{11}).
+\tag{12}
+\]">\[
+X^2-(1+q^{11})X+q^{11}
+=(X-1)(X-q^{11}).
+\tag{12}
+\]</span>
+The determinant comes from (3), with trivial character and <span class="math" data-tex="\(k=12\)">\(k=12\)</span>. The finite-quotient Chebotarev and characteristic-polynomial argument in §1 proves (11). The right side is semisimple; (11) says nothing about whether a particular unreduced lattice has a split reduction. ∎</p>
+<p>For later numerical checks, the first coefficients from (6) include
+<span class="math math-display" data-tex="\[
+\tau(2)=-24,\quad\tau(3)=252,\quad
+\tau(5)=4830,\quad\tau(7)=-16744.
+\tag{13}
+\]">\[
+\tau(2)=-24,\quad\tau(3)=252,\quad
+\tau(5)=4830,\quad\tau(7)=-16744.
+\tag{13}
+\]</span>
+They can be obtained by multiplying only the factors with <span class="math" data-tex="\(n\le7\)">\(n\le7\)</span>, since larger factors cannot affect these coefficients.</p>
+<h2 id="3-rational-5-torsion-and-the-two-level-11-lattices">3. Rational 5-torsion and the two level-11 lattices</h2>
+<p>Use the notation of the weight-two lesson:
+<span class="math math-display" data-tex="\[
+E_0:y^2+y=x^3-x^2,\qquad
+E_1:y^2+y=x^3-x^2-10x-20.
+\tag{14}
+\]">\[
+E_0:y^2+y=x^3-x^2,\qquad
+E_1:y^2+y=x^3-x^2-10x-20.
+\tag{14}
+\]</span>
+The explicit degree-five isogeny <span class="math" data-tex="\(E_0\to E_1\)">\(E_0\to E_1\)</span> was verified there. The first lesson, Lemma 3.3 and Example 3.4, already proves the actual torsion pairing, this isogeny and the integral inertia distinction. We retain the explicit points and give the uniform Tate-curve criterion for arbitrary semistable curves here.</p>
+<p><strong>Proposition 3.1 (torsion and residual semisimplification).</strong> Both curves have a rational point of exact order five, and
+<span class="math math-display" data-tex="\[
+E_0[5]^{\mathrm{ss}}\simeq E_1[5]^{\mathrm{ss}}
+\simeq1\oplus\bar\chi_5.
+\tag{15}
+\]">\[
+E_0[5]^{\mathrm{ss}}\simeq E_1[5]^{\mathrm{ss}}
+\simeq1\oplus\bar\chi_5.
+\tag{15}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, put <span class="math" data-tex="\(P_0=(0,0)\)">\(P_0=(0,0)\)</span>. Its tangent has slope zero and meets the cubic again at <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Negation on these equations is <span class="math" data-tex="\((x,y)\mapsto(x,-y-1)\)">\((x,y)\mapsto(x,-y-1)\)</span>, so
+<span class="math math-display" data-tex="\[
+2P_0=(1,-1).
+\tag{16}
+\]">\[
+2P_0=(1,-1).
+\tag{16}
+\]</span>
+The tangent there has slope <span class="math" data-tex="\((3-2)/(2(-1)+1)=-1\)">\((3-2)/(2(-1)+1)=-1\)</span> and meets the cubic again at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. Therefore <span class="math" data-tex="\(4P_0=(0,-1)=-P_0\)">\(4P_0=(0,-1)=-P_0\)</span>, and <span class="math" data-tex="\(5P_0=0\)">\(5P_0=0\)</span>. Since <span class="math" data-tex="\(P_0\ne0\)">\(P_0\ne0\)</span> and five is prime, its order is exactly five. Its nonzero multiples are precisely the four points with <span class="math" data-tex="\(x=0,1\)">\(x=0,1\)</span> and <span class="math" data-tex="\(y=0,-1\)">\(y=0,-1\)</span>.</p>
+<p>On <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, put <span class="math" data-tex="\(P_1=(5,5)\)">\(P_1=(5,5)\)</span>. The tangent slope is
+<span class="math math-display" data-tex="\[
+\frac{3\cdot25-2\cdot5-10}{2\cdot5+1}=5.
+\tag{17}
+\]">\[
+\frac{3\cdot25-2\cdot5-10}{2\cdot5+1}=5.
+\tag{17}
+\]</span>
+Substitution of <span class="math" data-tex="\(y=5x-20\)">\(y=5x-20\)</span> into the equation leaves a cubic with roots <span class="math" data-tex="\(5,5,16\)">\(5,5,16\)</span>. Its third point is <span class="math" data-tex="\((16,60)\)">\((16,60)\)</span>, so <span class="math" data-tex="\(2P_1=(16,-61)\)">\(2P_1=(16,-61)\)</span>. The tangent at this point has slope
+<span class="math math-display" data-tex="\[
+\frac{3\cdot256-2\cdot16-10}{2(-61)+1}=-6.
+\tag{18}
+\]">\[
+\frac{3\cdot256-2\cdot16-10}{2(-61)+1}=-6.
+\tag{18}
+\]</span>
+The line is <span class="math" data-tex="\(y=-6x+35\)">\(y=-6x+35\)</span>, and its third intersection is <span class="math" data-tex="\((5,5)\)">\((5,5)\)</span>. Thus <span class="math" data-tex="\(4P_1=(5,-6)=-P_1\)">\(4P_1=(5,-6)=-P_1\)</span>, proving exact order five again.</p>
+<p>Each fixed nonzero point generates a trivial <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>-submodule of the two-dimensional <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>-space <span class="math" data-tex="\(E_i[5]\)">\(E_i[5]\)</span>. The determinant is <span class="math" data-tex="\(\bar\chi_5\)">\(\bar\chi_5\)</span>, by the alternating perfect pairing actually constructed in lesson 1, Lemma 3.3. The one-dimensional quotient therefore has character <span class="math" data-tex="\(\bar\chi_5\)">\(\bar\chi_5\)</span>. Semisimplifying that short exact sequence proves (15). ∎</p>
+<p>It follows at every common good <span class="math" data-tex="\(q\ne5\)">\(q\ne5\)</span> that
+<span class="math math-display" data-tex="\[
+a_q(E_i)\equiv1+q\pmod5.
+\tag{19}
+\]">\[
+a_q(E_i)\equiv1+q\pmod5.
+\tag{19}
+\]</span>
+At <span class="math" data-tex="\(q=5\)">\(q=5\)</span> this residual Frobenius argument is unavailable; at <span class="math" data-tex="\(q=11\)">\(q=11\)</span> the curves have bad reduction. Here are direct counts for all other primes at most 23. The vector lists the number of <span class="math" data-tex="\(y\)">\(y\)</span>-solutions at <span class="math" data-tex="\(x=0,\ldots,q-1\)">\(x=0,\ldots,q-1\)</span> on <span class="math" data-tex="\(E_1\)">\(E_1\)</span>; add one for the point at infinity.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(q\)">\(q\)</span></th>
+<th>Numbers of solutions, in order</th>
+<th style="text-align:right"><span class="math" data-tex="\(\#E_1(\mathbf F_q)\)">\(\#E_1(\mathbf F_q)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(a_q=q+1-\#E_1(\mathbf F_q)\)">\(a_q=q+1-\#E_1(\mathbf F_q)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2</td>
+<td><span class="math" data-tex="\(2,2\)">\(2,2\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td><span class="math" data-tex="\(0,2,2\)">\(0,2,2\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td><span class="math" data-tex="\(0,1,2,0,2,2,2\)">\(0,1,2,0,2,2,2\)</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td><span class="math" data-tex="\(2,0,1,2,0,2,0,0,0,0,2,0,0\)">\(2,0,1,2,0,2,0,0,0,0,2,0,0\)</span></td>
+<td style="text-align:right">10</td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td><span class="math" data-tex="\(0,1,0,2,2,2,0,2,2,0,0,0,0,2,2,2,2\)">\(0,1,0,2,2,2,0,2,2,0,0,0,0,2,2,2,2\)</span></td>
+<td style="text-align:right">20</td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td><span class="math" data-tex="\(2,0,2,2,0,2,0,1,2,2,2,0,2,0,0,0,2,0,0\)">\(2,0,2,2,0,2,0,1,2,2,2,0,2,0,0,0,2,0,0\)</span></td>
+<td style="text-align:right">20</td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td><span class="math" data-tex="\(2,0,2,0,0,2,0,2,2,0,2,0,2,0,2,0,2,2,2,0,2,0,0\)">\(2,0,2,0,0,2,0,2,2,0,2,0,2,0,2,0,2,2,2,0,2,0,0\)</span></td>
+<td style="text-align:right">25</td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For odd <span class="math" data-tex="\(q\)">\(q\)</span>, each count is <span class="math" data-tex="\(1+\left(\frac{1+4(x^3-x^2-10x-20)}q\right)\)">\(1+\left(\frac{1+4(x^3-x^2-10x-20)}q\right)\)</span>, with Legendre symbol zero allowed. For <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, both <span class="math" data-tex="\(y\)">\(y\)</span>-values solve each equation. The displayed totals are divisible by five, as rational 5-torsion predicts. The isogeny gives the same <span class="math" data-tex="\(a_q\)">\(a_q\)</span> on <span class="math" data-tex="\(E_0\)">\(E_0\)</span>.</p>
+<p>To distinguish the actual torsion representations, we need local inertia rather than their semisimplifications.</p>
+<h2 id="4-the-tate-curve-residual-criterion">4. The Tate-curve residual criterion</h2>
+<p><strong>Theorem 4.1 (semistable residual inertia).</strong> Let <span class="math" data-tex="\(E/\mathbf Q_q\)">\(E/\mathbf Q_q\)</span> be semistable and <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>. Then
+<span class="math math-display" data-tex="\[
+E[p]\text{ is unramified at }q
+\quad\Longleftrightarrow\quad
+p\mid v_q(\Delta_{\min}).
+\tag{20}
+\]">\[
+E[p]\text{ is unramified at }q
+\quad\Longleftrightarrow\quad
+p\mid v_q(\Delta_{\min}).
+\tag{20}
+\]</span>
+At good reduction the valuation is zero. At multiplicative reduction this is a criterion for the full two-dimensional representation, not just its semisimplification.</p>
+<p><strong>Proof.</strong> At good reduction the prime-to-<span class="math" data-tex="\(q\)">\(q\)</span> Tate module is unramified, by the local elliptic-curve lesson, so (20) holds. Suppose first the reduction is split multiplicative, and write <span class="math" data-tex="\(E=E_z\)">\(E=E_z\)</span> for its Tate parameter <span class="math" data-tex="\(z\)">\(z\)</span>, with
+<span class="math math-display" data-tex="\[
+z=\pi^m u,\qquad m=v_q(z)&gt;0,\quad u\in\mathbf Z_q^\times.
+\tag{21}
+\]">\[
+z=\pi^m u,\qquad m=v_q(z)&gt;0,\quad u\in\mathbf Z_q^\times.
+\tag{21}
+\]</span>
+Tate uniformization identifies
+<span class="math math-display" data-tex="\[
+E_z[p]=\{\zeta_p^a z^{b/p}:a,b\in\mathbf Z/p\mathbf Z\}
+\quad\text{inside }\overline{\mathbf Q}_q^\times/z^{\mathbf Z}.
+\tag{22}
+\]">\[
+E_z[p]=\{\zeta_p^a z^{b/p}:a,b\in\mathbf Z/p\mathbf Z\}
+\quad\text{inside }\overline{\mathbf Q}_q^\times/z^{\mathbf Z}.
+\tag{22}
+\]</span>
+The two generators are independent: if their product lies in <span class="math" data-tex="\(z^{\mathbf Z}\)">\(z^{\mathbf Z}\)</span>, valuations force <span class="math" data-tex="\(b=0\bmod p\)">\(b=0\bmod p\)</span>, and then <span class="math" data-tex="\(a=0\bmod p\)">\(a=0\bmod p\)</span>.</p>
+<p>Let <span class="math" data-tex="\(K^{\mathrm{nr}}\)">\(K^{\mathrm{nr}}\)</span> be the maximal unramified extension of <span class="math" data-tex="\(\mathbf Q_q\)">\(\mathbf Q_q\)</span>. It contains <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span>: extend the residue field to contain the <span class="math" data-tex="\(p\)">\(p\)</span>-th roots of unity and lift the simple roots of <span class="math" data-tex="\(X^p-1\)">\(X^p-1\)</span>. It also contains a <span class="math" data-tex="\(p\)">\(p\)</span>-th root of <span class="math" data-tex="\(u\)">\(u\)</span>: choose one in the algebraic residue field and apply Hensel's lemma to <span class="math" data-tex="\(X^p-u\)">\(X^p-u\)</span>; its derivative is nonzero because <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>. Consequently inertia fixes <span class="math" data-tex="\(\zeta_p\)">\(\zeta_p\)</span> and the unit root, and its action in the basis (22) is
+<span class="math math-display" data-tex="\[
+\bar\rho_{E_z,p}(\sigma)=
+\begin{pmatrix}1&amp;m\,\bar t_p(\sigma)\\0&amp;1\end{pmatrix},
+\qquad \sigma\in I_q.
+\tag{23}
+\]">\[
+\bar\rho_{E_z,p}(\sigma)=
+\begin{pmatrix}1&amp;m\,\bar t_p(\sigma)\\0&amp;1\end{pmatrix},
+\qquad \sigma\in I_q.
+\tag{23}
+\]</span>
+Here <span class="math" data-tex="\(\sigma(\pi^{1/p})/\pi^{1/p}=\zeta_p^{\bar t_p(\sigma)}\)">\(\sigma(\pi^{1/p})/\pi^{1/p}=\zeta_p^{\bar t_p(\sigma)}\)</span>.</p>
+<p>The character <span class="math" data-tex="\(\bar t_p:I_q\to\mathbf F_p\)">\(\bar t_p:I_q\to\mathbf F_p\)</span> is surjective. Indeed <span class="math" data-tex="\(\pi^{1/p}\)">\(\pi^{1/p}\)</span> has valuation <span class="math" data-tex="\(1/p\)">\(1/p\)</span>, while every element of <span class="math" data-tex="\(K^{\mathrm{nr}}\)">\(K^{\mathrm{nr}}\)</span> has integer valuation. The polynomial <span class="math" data-tex="\(X^p-\pi\)">\(X^p-\pi\)</span> is Eisenstein and has degree <span class="math" data-tex="\(p\)">\(p\)</span>; the resulting extension, with <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> already present, is tame cyclic of degree <span class="math" data-tex="\(p\)">\(p\)</span>. Thus (23) is trivial for every <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> exactly when <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>.</p>
+<p>The local Tate-model calculation gives <span class="math" data-tex="\(v_q(\Delta_{\min})=v_q(z)\)">\(v_q(\Delta_{\min})=v_q(z)\)</span>. In detail, its discriminant is <span class="math" data-tex="\(z\prod_{n\ge1}(1-z^n)^{24}\)">\(z\prod_{n\ge1}(1-z^n)^{24}\)</span>, whose product factors are units, and its <span class="math" data-tex="\(c_4\)">\(c_4\)</span> is a unit, so the model is minimal and multiplicative. This identifies <span class="math" data-tex="\(m\)">\(m\)</span> with the valuation in (20). For nonsplit multiplicative reduction, the representation is the split Tate representation tensored with the <strong>unramified</strong> quadratic splitting character. This twist is trivial on inertia, so the same criterion applies. These are actually proved in lesson 8, Lemma 3.0 (uniformization and the parameter), Theorem 3.1 (torsion and its Kummer cocycle), and Lemma 4.0 (quadratic descent and its unramified multiplicative cases). At good reduction use the explicit prime-to-residue-characteristic reduction proof in lesson 3, Lemma 3.0 and Theorem 3.1. ∎</p>
+<p>When <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, the inertia image in (23) has order <span class="math" data-tex="\(p\)">\(p\)</span>, its invariant space has dimension one, and its Swan conductor is zero since the image is tame. The residual conductor exponent at <span class="math" data-tex="\(q\)">\(q\)</span> is therefore one. When <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>, it is zero. Both local semisimplifications in (23) are <span class="math" data-tex="\(1\oplus1\)">\(1\oplus1\)</span>, independently of <span class="math" data-tex="\(m\)">\(m\)</span>; semisimplifying locally would erase the distinction.</p>
+<p><strong>Corollary 4.2 (different level-11 reductions).</strong> The <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>-modules <span class="math" data-tex="\(E_0[5]\)">\(E_0[5]\)</span> and <span class="math" data-tex="\(E_1[5]\)">\(E_1[5]\)</span> are not isomorphic, although the rational 5-adic Tate modules are isomorphic and their residual semisimplifications agree.</p>
+<p><strong>Proof.</strong> For the displayed integral equations (14), direct Weierstrass calculations give
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rrr}
+ &amp;c_4&amp;c_6&amp;\Delta\\ \hline
+E_0&amp;16&amp;-152&amp;-11\\
+E_1&amp;496&amp;20008&amp;-11^5.
+\end{array}
+\tag{24}
+\]">\[
+\begin{array}{c|rrr}
+ &amp;c_4&amp;c_6&amp;\Delta\\ \hline
+E_0&amp;16&amp;-152&amp;-11\\
+E_1&amp;496&amp;20008&amp;-11^5.
+\end{array}
+\tag{24}
+\]</span>
+At 11, both <span class="math" data-tex="\(c_4\)">\(c_4\)</span> are units. An integral model with unit <span class="math" data-tex="\(c_4\)">\(c_4\)</span> is minimal: a change reducing the discriminant valuation by twelve would divide <span class="math" data-tex="\(c_4\)">\(c_4\)</span> by <span class="math" data-tex="\(11^4\)">\(11^4\)</span>, contradicting integrality of the new model. Their positive discriminant valuations give multiplicative reduction. It is split in each case, since <span class="math" data-tex="\(-c_6\)">\(-c_6\)</span> modulo 11 is <span class="math" data-tex="\(9\)">\(9\)</span> for <span class="math" data-tex="\(E_0\)">\(E_0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(E_1\)">\(E_1\)</span>, both squares; this is the split-node criterion from the local elliptic-curve lesson.</p>
+<p>Theorem 4.1 now gives nontrivial inertia of order five on <span class="math" data-tex="\(E_0[5]\)">\(E_0[5]\)</span>, because <span class="math" data-tex="\(5\nmid1\)">\(5\nmid1\)</span>, and trivial inertia on <span class="math" data-tex="\(E_1[5]\)">\(E_1[5]\)</span>, because <span class="math" data-tex="\(5\mid5\)">\(5\mid5\)</span>. Isomorphic global representations have isomorphic inertia restrictions, so these cannot be isomorphic. On rational Tate modules the degree-five isogeny is invertible, with inverse given by its dual divided by five. That division is permitted over <span class="math" data-tex="\(\mathbf Q_5\)">\(\mathbf Q_5\)</span> and not over <span class="math" data-tex="\(\mathbf Z_5\)">\(\mathbf Z_5\)</span>. Equation (15) proves the common semisimplification. This completes the earlier lattice example. ∎</p>
+<h2 id="5-serre-s-level-weight-and-character">5. Serre's level, weight, and character</h2>
+<p>Let <span class="math" data-tex="\(\bar\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\overline{\mathbf F}_p)\)">\(\bar\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\overline{\mathbf F}_p)\)</span> be continuous, odd, and irreducible. Irreducibility here is over the algebraic closure. Define its <strong>Serre level</strong> by
+<span class="math math-display" data-tex="\[
+N(\bar\rho)=\prod_{q\ne p}q^{a_q(\bar\rho)},\qquad
+a_q(\bar\rho)=\sum_{i\ge0}
+\frac{\dim(V/V^{G_i})}{[G_0:G_i]}.
+\tag{25}
+\]">\[
+N(\bar\rho)=\prod_{q\ne p}q^{a_q(\bar\rho)},\qquad
+a_q(\bar\rho)=\sum_{i\ge0}
+\frac{\dim(V/V^{G_i})}{[G_0:G_i]}.
+\tag{25}
+\]</span>
+Take <span class="math" data-tex="\(G_i\)">\(G_i\)</span> from a finite local Galois quotient through which the representation factors. <strong>Lemma 5.0 (the residual conductor formula).</strong> Formula (25) is independent of the finite local quotient, vanishes precisely for an unramified representation, and is the sum of <span class="math" data-tex="\(\dim V-\dim V^{I_q}\)">\(\dim V-\dim V^{I_q}\)</span> and a nonnegative Swan term. The Swan term is additive on exact sequences. For a one-dimensional determinant,
+<span class="math math-display" data-tex="\[
+ a_q(\det V)\le a_q(V).
+ \tag{25A}
+\]">\[
+ a_q(\det V)\le a_q(V).
+ \tag{25A}
+\]</span></p>
+<p><strong>Proof.</strong> Extend lower groups to real indices by <span class="math" data-tex="\(G_t=G_{\lceil t\rceil}\)">\(G_t=G_{\lceil t\rceil}\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and use the Herbrand function. On an interval with group <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, its derivative is <span class="math" data-tex="\(1/[G_0:G_i]\)">\(1/[G_0:G_i]\)</span>. Therefore a change of variable in the finite sum gives
+<span class="math math-display" data-tex="\[
+ a_q(V)=\dim V-\dim V^{I_q}
+       +\int_0^\infty\bigl(\dim V-\dim V^{G_{\mathbf Q_q}^{u}}\bigr)\,du.
+ \tag{25B}
+\]">\[
+ a_q(V)=\dim V-\dim V^{I_q}
+       +\int_0^\infty\bigl(\dim V-\dim V^{G_{\mathbf Q_q}^{u}}\bigr)\,du.
+ \tag{25B}
+\]</span>
+Endpoints do not affect the integral. Lesson 5, Lemma 1.6, actually proves that absolute upper groups surject onto every finite upper group. Their action on <span class="math" data-tex="\(V\)">\(V\)</span>, and hence every fixed space in (25B), is independent of the quotient. This proves independence in (25).</p>
+<p>The inertia term is nonnegative and vanishes only if all of inertia fixes <span class="math" data-tex="\(V\)">\(V\)</span>. In that case the positive upper groups fix it too. Conversely, vanishing of the sum forces the inertia term to be zero. There are only finitely many ramified primes. Choose a primitive element of the finite kernel field, multiply by an integer to make it integral, and write its monic minimal polynomial <span class="math" data-tex="\(F\in\mathbf Z[X]\)">\(F\in\mathbf Z[X]\)</span>. Its discriminant is a nonzero integer, because the extension has characteristic zero. At a prime not dividing that integer, the residue polynomial is separable and splits in some finite residue extension. Proposition 0F.2 and simple-root Hensel in lesson 1 lift all its roots to the corresponding unramified local extension. The splitting field, and hence the kernel field, is unramified there. This proves finite support of the product defining the level without importing a trace-pairing étaleness criterion.</p>
+<p>For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, the finite image of <span class="math" data-tex="\(G_{\mathbf Q_q}^{u}\)">\(G_{\mathbf Q_q}^{u}\)</span> is a <span class="math" data-tex="\(q\)">\(q\)</span>-group by lesson 5, Lemma 1.2. Its order is invertible in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. The operator <span class="math" data-tex="\(|B|^{-1}\sum_{b\in B}b\)">\(|B|^{-1}\sum_{b\in B}b\)</span> projects onto invariants. Averaging a lift of an invariant vector proves that taking invariants preserves surjections, hence is exact. Fixed-space codimensions, and their integral, are additive. This argument does not apply to all tame inertia. In (23), a nontrivial extension has inertia codimension one, while the sum of its two trivial constituents has codimension zero.</p>
+<p>For any subgroup <span class="math" data-tex="\(B\)">\(B\)</span>, if <span class="math" data-tex="\(\dim V^B=2\)">\(\dim V^B=2\)</span>, its determinant is trivial; if <span class="math" data-tex="\(\dim V^B\le1\)">\(\dim V^B\le1\)</span>, the determinant codimension is at most one, hence at most <span class="math" data-tex="\(2-\dim V^B\)">\(2-\dim V^B\)</span>. Apply this to every term of (25), whose weights are nonnegative, to prove (25A). ∎</p>
+<p><strong>Lemma 5.0C (integrality in modular coefficients).</strong> For every finite-dimensional continuous residual local representation at <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, its Swan conductor and (25) are nonnegative integers. Consequently <span class="math" data-tex="\(N(\bar\rho)\)">\(N(\bar\rho)\)</span> is a positive integer prime to <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> be its finite inertia and wild-inertia groups. Lemmas 1.2 and 1.7 of lesson 5 prove that <span class="math" data-tex="\(P\)">\(P\)</span> is a <span class="math" data-tex="\(q\)">\(q\)</span>-group and <span class="math" data-tex="\(I/P\)">\(I/P\)</span> is cyclic. We first prove the coefficient-lifting fact needed for <span class="math" data-tex="\(P\)">\(P\)</span>; we do not assume a lift of the whole residual representation.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is any finite group of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, a simple <span class="math" data-tex="\(\overline{\mathbf F}_p[B]\)">\(\overline{\mathbf F}_p[B]\)</span>-module <span class="math" data-tex="\(S\)">\(S\)</span> has a characteristic-zero <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(\widetilde S\)">\(\widetilde S\)</span> of the same dimension reducing to <span class="math" data-tex="\(S\)">\(S\)</span>, and the lift is unique up to isomorphism once the correspondence of prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> roots of unity has been fixed. Indeed the averaging proof makes the regular modular algebra semisimple, and the matrix-factor proof of Lemma 1.2 supplies a primitive idempotent <span class="math" data-tex="\(e\)">\(e\)</span> whose left ideal is <span class="math" data-tex="\(S\)">\(S\)</span>. All its coefficients and all matrix entries lie in some finite field <span class="math" data-tex="\(k\)">\(k\)</span>. Choose the complete unramified characteristic-zero DVR <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, using lesson 1, Proposition 0F.2, and start with a coefficient lift <span class="math" data-tex="\(e_0\in\mathcal O[B]\)">\(e_0\in\mathcal O[B]\)</span>. In this complete finite free algebra perform
+<span class="math math-display" data-tex="\[
+ e_{r+1}=e_r-(e_r^2-e_r)(2e_r-1)^{-1}.
+ \tag{25C}
+\]">\[
+ e_{r+1}=e_r-(e_r^2-e_r)(2e_r-1)^{-1}.
+ \tag{25C}
+\]</span>
+The inverse exists: <span class="math" data-tex="\((2e_r-1)^2=1+4(e_r^2-e_r)\)">\((2e_r-1)^2=1+4(e_r^2-e_r)\)</span>, and the inverse of an element congruent to one is its convergent geometric series. These quantities commute, since they are polynomials or convergent power series in <span class="math" data-tex="\(e_r\)">\(e_r\)</span>. Substitution shows the idempotence error is squared times a unit at each step. Thus <span class="math" data-tex="\(e_r\)">\(e_r\)</span> converges to an idempotent <span class="math" data-tex="\(\widetilde e\)">\(\widetilde e\)</span> reducing to <span class="math" data-tex="\(e\)">\(e\)</span>, including when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. The direct summand <span class="math" data-tex="\(\mathcal O[B]\widetilde e\)">\(\mathcal O[B]\widetilde e\)</span> is finite free of rank <span class="math" data-tex="\(\dim S\)">\(\dim S\)</span> and supplies the lift. Its characteristic-zero representation is absolutely irreducible: a proper invariant subspace after a finite coefficient extension intersects a full stable lattice in a saturated sublattice, whose nonzero proper reduction would contradict absolute simplicity of <span class="math" data-tex="\(S\)">\(S\)</span>. The lattice and saturation arguments are proved in lesson 1, §§0A and 2.</p>
+<p>Every element of <span class="math" data-tex="\(B\)">\(B\)</span> has prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> order. Its eigenvalues are roots of unity of that order, with simple, distinct residue roots. Simple-root Hensel gives a bijection between these roots and their reductions. The characteristic polynomial in the residue field records their <strong>integer multiplicities</strong> as root multiplicities; hence it uniquely records the eigenvalue multiset of any lift. All lifts consequently have the same characteristic-zero characters and are isomorphic by the matrix-factor comparison of lesson 2, Lemma 4.1. A finite set of matrix entries generates a finitely generated characteristic-zero field. Embed it into <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, first on its algebraic part and then on a transcendence basis and its algebraic extension. This realizes the lifts as complex finite-group representations; the chosen root correspondence is carried along this embedding.</p>
+<p>Now let <span class="math" data-tex="\(V\)">\(V\)</span> be a simple modular <span class="math" data-tex="\(I\)">\(I\)</span>-module. Its restriction to <span class="math" data-tex="\(P\)">\(P\)</span> is semisimple, since <span class="math" data-tex="\(|P|\)">\(|P|\)</span> is invertible. The <span class="math" data-tex="\(P\)">\(P\)</span>-isotypic summands are permuted by <span class="math" data-tex="\(I\)">\(I\)</span>; there is one orbit, since a union of smaller orbits would be an invariant proper summand. Choose a type <span class="math" data-tex="\(S\)">\(S\)</span> and let <span class="math" data-tex="\(J\)">\(J\)</span> be its stabilizer. Its isotypic summand <span class="math" data-tex="\(U\)">\(U\)</span> is a simple <span class="math" data-tex="\(J\)">\(J\)</span>-module: a proper <span class="math" data-tex="\(J\)">\(J\)</span>-submodule would give, by its translates in the other distinct summands, a proper <span class="math" data-tex="\(I\)">\(I\)</span>-submodule. We have <span class="math" data-tex="\(U\simeq S\otimes k^r\)">\(U\simeq S\otimes k^r\)</span> as <span class="math" data-tex="\(P\)">\(P\)</span>-modules. Let <span class="math" data-tex="\(gP\)">\(gP\)</span> generate the cyclic group <span class="math" data-tex="\(J/P\)">\(J/P\)</span>. Conjugation by <span class="math" data-tex="\(g\)">\(g\)</span> preserves the type of <span class="math" data-tex="\(S\)">\(S\)</span>, so choose an intertwining operator <span class="math" data-tex="\(A_0\)">\(A_0\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. The operator of <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(A_0\otimes D\)">\(A_0\otimes D\)</span>: dividing by <span class="math" data-tex="\(A_0\)">\(A_0\)</span> leaves an operator commuting with the full matrix algebra on <span class="math" data-tex="\(S\)">\(S\)</span>, hence acting only on its multiplicity space. Since the coefficient field is algebraically closed, <span class="math" data-tex="\(D\)">\(D\)</span> has an eigenvector. Its line gives a nonzero <span class="math" data-tex="\(J\)">\(J\)</span>-stable copy of <span class="math" data-tex="\(S\)">\(S\)</span>. Simplicity forces <span class="math" data-tex="\(r=1\)">\(r=1\)</span>.</p>
+<p>Lift <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(\widetilde S\)">\(\widetilde S\)</span> over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> as above. Its conjugate by <span class="math" data-tex="\(g\)">\(g\)</span> is isomorphic to it, because the modular characteristic polynomials agree on <span class="math" data-tex="\(P\)">\(P\)</span>, and their root multisets determine the lifted character. Choose an intertwiner <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(m=|J/P|\)">\(m=|J/P|\)</span>, then <span class="math" data-tex="\(g^m\in P\)">\(g^m\in P\)</span>, and
+<span class="math" data-tex="\(A^m\widetilde S(g^m)^{-1}\)">\(A^m\widetilde S(g^m)^{-1}\)</span> commutes with <span class="math" data-tex="\(P\)">\(P\)</span>; Schur's lemma makes it a nonzero scalar. Also <span class="math" data-tex="\(A\)">\(A\)</span> commutes with <span class="math" data-tex="\(\widetilde S(g^m)\)">\(\widetilde S(g^m)\)</span>, since conjugation by <span class="math" data-tex="\(g\)">\(g\)</span> fixes <span class="math" data-tex="\(g^m\)">\(g^m\)</span>. Rescale <span class="math" data-tex="\(A\)">\(A\)</span> by an <span class="math" data-tex="\(m\)">\(m\)</span>-th root of that scalar's inverse, so <span class="math" data-tex="\(A^m=\widetilde S(g^m)\)">\(A^m=\widetilde S(g^m)\)</span>. The conjugation relation and this power relation now define a representation of <span class="math" data-tex="\(J\)">\(J\)</span>: reduce every word to a <span class="math" data-tex="\(P\)">\(P\)</span>-element times <span class="math" data-tex="\(g^a\)">\(g^a\)</span>, <span class="math" data-tex="\(0\le a&lt;m\)">\(0\le a&lt;m\)</span>, and these relations give exactly its multiplication law. Induce it to <span class="math" data-tex="\(I\)">\(I\)</span>. Its restriction to <span class="math" data-tex="\(P\)">\(P\)</span> is the direct sum of the lifted types in the orbit, each once, precisely matching <span class="math" data-tex="\(V|_P\)">\(V|_P\)</span>.</p>
+<p>For every subgroup <span class="math" data-tex="\(B\subset P\)">\(B\subset P\)</span>, use the direct sum of the original DVR lattices lifting the <span class="math" data-tex="\(P\)">\(P\)</span>-types, before the embedding into <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Its averaging projector is an idempotent direct summand. The restriction to <span class="math" data-tex="\(P\)">\(P\)</span> of the complex representation just constructed is the complexification of these lifted types, with the same multiplicities. Its rank equals the dimension of its reduction, because a finite projective module over a local DVR is free. Thus its invariant dimension agrees in characteristic zero and in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Every positive lower ramification group lies in <span class="math" data-tex="\(P\)">\(P\)</span>. The complex representation just constructed and <span class="math" data-tex="\(V\)">\(V\)</span> consequently have the same Swan sum. Regard <span class="math" data-tex="\(I\)">\(I\)</span> as the Galois group of the ramified local extension <span class="math" data-tex="\(L/L^I\)">\(L/L^I\)</span>. Its lower groups are the original <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, since their definition uses only the action and valuation on <span class="math" data-tex="\(L\)">\(L\)</span>. The actual characteristic-zero integrality proof in lesson 5, Theorem 2.6, therefore makes this Swan sum a nonnegative integer.</p>
+<p>Finally apply the Swan exact-sequence additivity proved in Lemma 5.0 to a composition series of an arbitrary modular <span class="math" data-tex="\(I\)">\(I\)</span>-module. It is a sum of the integer Swan conductors of its simple factors. Adding the integer tame codimension <span class="math" data-tex="\(\dim V-\dim V^I\)">\(\dim V-\dim V^I\)</span> gives (25). Lemma 5.0 supplies finite support and nonnegativity, proving the assertion about <span class="math" data-tex="\(N\)">\(N\)</span>. No exactness of tame invariants, and no characteristic-zero lift of the entire residual extension, has been assumed. ∎</p>
+<p>We retain the <strong>classical Serre weight</strong>, including both exceptional choices and characteristic two. It differs from the Katz weight-one convention. The following local classification supplies the forms to which the recipe applies; its optimal modular weight and the finite-flat exceptional test have further proof obligations specified after the recipe. The freely accessible comparison is Bosman's thesis, §1.4.3, printed pp.39–40; it is not an optimization proof.</p>
+<p><strong>Lemma 5.1 (the full local shapes).</strong> Put <span class="math" data-tex="\(\omega=\bar\chi_p|_{I_p}\)">\(\omega=\bar\chi_p|_{I_p}\)</span>. A continuous two-dimensional representation of <span class="math" data-tex="\(G_{\mathbf Q_p}\)">\(G_{\mathbf Q_p}\)</span> over <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span> has either tame inertia with two level-one characters, tame inertia with a conjugate pair of level-two characters, or nontrivial wild inertia with a unique wild-fixed line and an upper triangular inertia action whose diagonal characters are powers of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p><strong>Proof.</strong> The representation factors through a finite group. Its wild inertia image <span class="math" data-tex="\(P\)">\(P\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group, normal in the local image. Any nonzero module of a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> has a nonzero fixed vector. Here is a proof: the conjugation class equation shows that a nontrivial <span class="math" data-tex="\(p\)">\(p\)</span>-group has nontrivial center. Choose a central element <span class="math" data-tex="\(z\)">\(z\)</span> of order <span class="math" data-tex="\(p\)">\(p\)</span>, by taking a power of a nonidentity central element. The operator <span class="math" data-tex="\(z-1\)">\(z-1\)</span> has <span class="math" data-tex="\((z-1)^p=z^p-1=0\)">\((z-1)^p=z^p-1=0\)</span>, so its kernel is nonzero and stable under the group. On that kernel apply induction to the smaller group <span class="math" data-tex="\(P/\langle z\rangle\)">\(P/\langle z\rangle\)</span>. This gives the fixed vector; the trivial group starts the induction.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> acts nontrivially, <span class="math" data-tex="\(V^P\)">\(V^P\)</span> is therefore one-dimensional. Normality makes it a local Galois-stable line. On that line and on the quotient a <span class="math" data-tex="\(p\)">\(p\)</span>-group acts trivially, since the multiplicative group of the coefficient field has no nonidentity element of <span class="math" data-tex="\(p\)">\(p\)</span>-power order. The resulting diagonal characters are tame. Lesson 5, Lemma 1.7, or lesson 7, Proposition 1.0, proves that tame inertia is procyclic of order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and arithmetic Frobenius conjugates by the <span class="math" data-tex="\(p\)">\(p\)</span>-th power. A one-dimensional local character consequently satisfies <span class="math" data-tex="\(\varphi^p=\varphi\)">\(\varphi^p=\varphi\)</span> on inertia; it has order dividing <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, and is a power of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. The off-diagonal entry cannot vanish on all wild inertia, since that would make <span class="math" data-tex="\(P\)">\(P\)</span> trivial on <span class="math" data-tex="\(V\)">\(V\)</span>. This proves the wild case, including a local invariant line even if the global representation is irreducible.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is trivial, the finite cyclic inertia image has order prime to <span class="math" data-tex="\(p\)">\(p\)</span>, so a generator is diagonalizable: its minimal polynomial divides the separable polynomial <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>. Frobenius permutes its two character spaces, or acts inside a repeated character space. Each orbit has length one or two. In a length-one orbit the same relation gives a power of <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. In a length-two orbit the characters are <span class="math" data-tex="\(\varphi,\varphi^p\)">\(\varphi,\varphi^p\)</span>, with <span class="math" data-tex="\(\varphi^{p^2-1}=1\)">\(\varphi^{p^2-1}=1\)</span> and <span class="math" data-tex="\(\varphi^{p-1}\ne1\)">\(\varphi^{p-1}\ne1\)</span>.</p>
+<p>For precision, the fundamental level-two characters come from the action on a <span class="math" data-tex="\((p^2-1)\)">\((p^2-1)\)</span>-st root of a uniformizer over the maximal unramified extension, followed by one of the two embeddings of the residue roots of unity into <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span>. Their <span class="math" data-tex="\((p+1)\)">\((p+1)\)</span>-st powers are the fundamental level-one character. This is <span class="math" data-tex="\(\omega\)">\(\omega\)</span>: on the uniformizer <span class="math" data-tex="\(\zeta_p-1\)">\(\zeta_p-1\)</span> of the totally ramified cyclotomic field, the ratio
+<span class="math" data-tex="\(g(\zeta_p-1)/(\zeta_p-1)\)">\(g(\zeta_p-1)/(\zeta_p-1)\)</span> reduces to the exponent <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(g(\zeta_p)=\zeta_p^a\)">\(g(\zeta_p)=\zeta_p^a\)</span>, by the finite geometric sum. The Eisenstein equation <span class="math" data-tex="\(((1+X)^p-1)/X\)">\(((1+X)^p-1)/X\)</span> has constant term <span class="math" data-tex="\(p\)">\(p\)</span> and the other nonleading coefficients divisible by <span class="math" data-tex="\(p\)">\(p\)</span>; the earlier local degree proof makes this a tame extension of index <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. The canonical tame action ratios of Lemma 1.7 therefore give exactly <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. Thus choose <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with <span class="math" data-tex="\(\psi^{p+1}=\omega\)">\(\psi^{p+1}=\omega\)</span>.</p>
+<p>Write the exponent of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> uniquely as <span class="math" data-tex="\(a+pb\)">\(a+pb\)</span>, with <span class="math" data-tex="\(0\le a,b\le p-1\)">\(0\le a,b\le p-1\)</span> and not both <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> modulo <span class="math" data-tex="\(p^2-1\)">\(p^2-1\)</span> interchanges the digits. Equal digits would give a level-one character, so they are distinct; interchange the two characters to arrange <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. This proves all asserted shapes. ∎</p>
+<p>For odd <span class="math" data-tex="\(p\)">\(p\)</span>, the classical recipe is as follows.</p>
+<ul>
+<li>If the two tame characters have level two, choose a fundamental character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with <span class="math" data-tex="\(\psi^{p+1}=\omega\)">\(\psi^{p+1}=\omega\)</span>. After interchanging them they are <span class="math" data-tex="\(\psi^{a+pb},\psi^{pa+b}\)">\(\psi^{a+pb},\psi^{pa+b}\)</span>, with <span class="math" data-tex="\(0\le a&lt;b\le p-1\)">\(0\le a&lt;b\le p-1\)</span>. Set
+<span class="math math-display" data-tex="\[
+k_{\mathrm S}(\bar\rho)=1+pa+b.
+\tag{26}
+\]">\[
+k_{\mathrm S}(\bar\rho)=1+pa+b.
+\tag{26}
+\]</span></li>
+<li>If inertia is tame and the characters have level one, write them as <span class="math" data-tex="\(\omega^a,\omega^b\)">\(\omega^a,\omega^b\)</span>, with <span class="math" data-tex="\(0\le a\le b\le p-2\)">\(0\le a\le b\le p-2\)</span>. Set <span class="math" data-tex="\(k_{\mathrm S}=1+pa+b\)">\(k_{\mathrm S}=1+pa+b\)</span>, except when <span class="math" data-tex="\(a=b=0\)">\(a=b=0\)</span>, where set <span class="math" data-tex="\(k_{\mathrm S}=p\)">\(k_{\mathrm S}=p\)</span>. The Katz convention assigns weight one in that exceptional case.</li>
+<li>If wild inertia acts nontrivially, the restriction has a nonsplit upper triangular form
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}\omega^\beta&amp;*\\0&amp;\omega^\alpha\end{pmatrix},
+\qquad0\le\alpha\le p-2,\quad1\le\beta\le p-1.
+\tag{27}
+\]">\[
+\begin{pmatrix}\omega^\beta&amp;*\\0&amp;\omega^\alpha\end{pmatrix},
+\qquad0\le\alpha\le p-2,\quad1\le\beta\le p-1.
+\tag{27}
+\]</span>
+Put <span class="math" data-tex="\(a=\min(\alpha,\beta)\)">\(a=\min(\alpha,\beta)\)</span>, <span class="math" data-tex="\(b=\max(\alpha,\beta)\)">\(b=\max(\alpha,\beta)\)</span>. Normally <span class="math" data-tex="\(k_{\mathrm S}=1+pa+b\)">\(k_{\mathrm S}=1+pa+b\)</span>. If <span class="math" data-tex="\(\beta-\alpha\equiv1\pmod{p-1}\)">\(\beta-\alpha\equiv1\pmod{p-1}\)</span> and the local representation <span class="math" data-tex="\(\bar\rho|_{G_{\mathbf Q_p}}\otimes\bar\chi_p^{-\alpha}\)">\(\bar\rho|_{G_{\mathbf Q_p}}\otimes\bar\chi_p^{-\alpha}\)</span> is <strong>not finite flat</strong>, add <span class="math" data-tex="\(p-1\)">\(p-1\)</span>.</li>
+</ul>
+<p>“Finite flat” means that the finite étale group scheme over <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span> corresponding to the local residual representation extends to a finite flat group scheme over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>, with its finite coefficient-field action. The exceptional extension in (27) is often described as très ramifiée. Keeping the extension and the order of its characters matters; its semisimplification alone does not determine that exceptional choice.</p>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the classical recipe is <span class="math" data-tex="\(k_{\mathrm S}=2\)">\(k_{\mathrm S}=2\)</span> if the local representation is finite flat, and <span class="math" data-tex="\(k_{\mathrm S}=4\)">\(k_{\mathrm S}=4\)</span> otherwise. The free Khare–Wintenberger author paper, introduction p.2, uses exactly these classical weights. In particular the theorem below does not make an additional weight-one Katz assertion in characteristic two.</p>
+<p>The recipe has two mathematically distinct remaining requirements: prove that the finite-flat test in the cyclotomic extension case agrees with the unit Kummer, or peu ramifiée, condition; and prove that exactly the displayed classical weight can be realized at the minimal prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> level. Lemma 5.1 proves the shapes and digit choices, not these optimization statements. Characteristic two also requires the finite-flat weight-two versus weight-four argument. The full recipe is retained, and these are explicit unclosed parts of its proof.</p>
+<p>In every case the recipe gives the determinant restriction
+<span class="math math-display" data-tex="\[
+\det\bar\rho|_{I_p}=\omega^{k_{\mathrm S}-1}.
+\tag{28}
+\]">\[
+\det\bar\rho|_{I_p}=\omega^{k_{\mathrm S}-1}.
+\tag{28}
+\]</span>
+For (26), multiply the two characters to get <span class="math" data-tex="\(\psi^{(p+1)(a+b)}=\omega^{a+b}\)">\(\psi^{(p+1)(a+b)}=\omega^{a+b}\)</span>; <span class="math" data-tex="\(pa+b\equiv a+b\pmod{p-1}\)">\(pa+b\equiv a+b\pmod{p-1}\)</span>. The level-one cases are the same calculation; adding <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, or replacing <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(p\)">\(p\)</span>, does not change it. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span> both sides are trivial.</p>
+<p>Define the residual character
+<span class="math math-display" data-tex="\[
+\bar\varepsilon_G=\det\bar\rho\,\bar\chi_p^{\,1-k_{\mathrm S}}.
+\tag{29}
+\]">\[
+\bar\varepsilon_G=\det\bar\rho\,\bar\chi_p^{\,1-k_{\mathrm S}}.
+\tag{29}
+\]</span>
+It is unramified at <span class="math" data-tex="\(p\)">\(p\)</span>. Its conductor away from <span class="math" data-tex="\(p\)">\(p\)</span> divides <span class="math" data-tex="\(N(\bar\rho)\)">\(N(\bar\rho)\)</span>: at each ramification subgroup, the codimension of invariants for the determinant is at most that for <span class="math" data-tex="\(V\)">\(V\)</span>, and sum (25) preserves the inequality. Kronecker–Weber then identifies (29) with a character of <span class="math" data-tex="\((\mathbf Z/N(\bar\rho)\mathbf Z)^\times\)">\((\mathbf Z/N(\bar\rho)\mathbf Z)^\times\)</span>. The earlier Kronecker–Weber proof is NT-CFT 20, Theorem 20.2, with Proposition 20.5 for the conductor and primitive Dirichlet character; its actual written argument was inspected, while its transitive programme provenance remains a separate audit. These statements apply to (29) by lifting its finite, prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> image. To check that lift directly, put its values in <span class="math" data-tex="\(\mathbf F_{p^r}\)">\(\mathbf F_{p^r}\)</span>. Each nonzero value is a simple residue root of <span class="math" data-tex="\(X^{p^r-1}-1\)">\(X^{p^r-1}-1\)</span>. Lesson 1, Lemma 0D.1 and Proposition 0F.2, give exactly one root with that residue in the complete unramified coefficient extension. The product of two lifts has the product residue and is again such a root; uniqueness makes the lift multiplicative. This proves the unique Teichmüller character <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, rather than merely selecting complex representatives of its values. For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, oddness gives <span class="math" data-tex="\(\varepsilon(-1)=(-1)^{k_{\mathrm S}}\)">\(\varepsilon(-1)=(-1)^{k_{\mathrm S}}\)</span>; for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the recipe gives even weight and the Teichmüller character is trivial on <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>Serre's modularity theorem.</strong> Let <span class="math" data-tex="\(\bar\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\overline{\mathbf F}_p)\)">\(\bar\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\overline{\mathbf F}_p)\)</span> be continuous, odd and absolutely irreducible. There is a normalized cuspidal eigenform of weight <span class="math" data-tex="\(k_{\mathrm S}(\bar\rho)\)">\(k_{\mathrm S}(\bar\rho)\)</span>, level <span class="math" data-tex="\(N(\bar\rho)\)">\(N(\bar\rho)\)</span>, and some characteristic-zero Dirichlet character <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span> modulo that level, with <span class="math" data-tex="\(\bar\varepsilon&#x27;=\bar\varepsilon_G\)">\(\bar\varepsilon&#x27;=\bar\varepsilon_G\)</span>, whose semisimplified residual representation is <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span>. For <span class="math" data-tex="\(p\ge5\)">\(p\ge5\)</span>, <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span> can be chosen to be the Teichmüller character <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> constructed above. For <span class="math" data-tex="\(p=2,3\)">\(p=2,3\)</span>, its <span class="math" data-tex="\(p\)">\(p\)</span>-power part must be allowed. The minimal level and the displayed classical weight are retained in all characteristics.</p>
+<p>The former version of this theorem prescribed <span class="math" data-tex="\(\varepsilon&#x27;=\varepsilon\)">\(\varepsilon&#x27;=\varepsilon\)</span> for <strong>every</strong> <span class="math" data-tex="\(p\)">\(p\)</span>. That assertion is false. Serre's freely accessible 1988 notes, printed pp.54–55, give the characteristic-three counterexample at level 13 and weight two: the nonzero eigenspaces have nebentypus of order six, whereas the space with its order-two reduction lifted by Teichmüller is zero. Allen–Wake, §1.2, identifies the same newform orbit <span class="math" data-tex="\(13.2.e.a\)">\(13.2.e.a\)</span>; its complete §5 explains the torsion-cohomology obstruction rather than removing it. The scanned original explicitly notes the corresponding characteristic-two obstruction. These are source-verified counterexamples to the discarded character clause; the geometric realization and the computation of all minimal residual invariants in that counterexample are not additional completed proofs in this programme.</p>
+<p>Here is the determinant check, which does not need that geometric computation. For the level-13 form write <span class="math" data-tex="\(\varepsilon&#x27;(2)=\zeta_6\)">\(\varepsilon&#x27;(2)=\zeta_6\)</span>. In characteristic three, <span class="math" data-tex="\(X^2-X+1=(X+1)^2\)">\(X^2-X+1=(X+1)^2\)</span>, so <span class="math" data-tex="\(\bar\zeta_6=-1\)">\(\bar\zeta_6=-1\)</span>. Thus <span class="math" data-tex="\(\bar\varepsilon&#x27;\)">\(\bar\varepsilon&#x27;\)</span> is the quadratic character modulo 13 and, in weight two, <span class="math" data-tex="\(\det\bar\rho=\bar\varepsilon&#x27;_G\bar\chi_3\)">\(\det\bar\rho=\bar\varepsilon&#x27;_G\bar\chi_3\)</span>, exactly (29). The order-three part of <span class="math" data-tex="\(\varepsilon&#x27;\)">\(\varepsilon&#x27;\)</span> disappears on reduction. More generally a finite-order character lifting <span class="math" data-tex="\(\bar\varepsilon_G\)">\(\bar\varepsilon_G\)</span> is <span class="math" data-tex="\(\varepsilon\eta\)">\(\varepsilon\eta\)</span>, where <span class="math" data-tex="\(\eta\)">\(\eta\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span>-power order: decompose its cyclic image into its prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span>-primary subgroups; simple-root uniqueness identifies the first factor with <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(X^{p^r}-1=(X-1)^{p^r}\)">\(X^{p^r}-1=(X-1)^{p^r}\)</span> kills the second. Conversely every such product has the required reduction. Its parity still satisfies <span class="math" data-tex="\(\varepsilon&#x27;(-1)=(-1)^{k_{\mathrm S}}\)">\(\varepsilon&#x27;(-1)=(-1)^{k_{\mathrm S}}\)</span>. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, reduction alone cannot impose this parity; the even classical weight imposes it on the chosen lift.</p>
+<p><strong>Lemma 5.2 (propagation inside a compatible system).</strong> Suppose a semisimple compatible system has coefficients in a number field <span class="math" data-tex="\(E\)">\(E\)</span> and common good-prime polynomials <span class="math" data-tex="\(P_q(T)\in E[T]\)">\(P_q(T)\in E[T]\)</span>. If one characteristic-zero member is the representation of an eigenform <span class="math" data-tex="\(g\)">\(g\)</span>, with the same polynomials, then every member is the corresponding representation of <span class="math" data-tex="\(g\)">\(g\)</span>, and every stable-lattice reduction has its residual eigenpacket.</p>
+<p><strong>Proof.</strong> Embed the compositum of the coefficient fields into the coefficient field of the known member. Equality there of each coefficient of <span class="math" data-tex="\(P_q\)">\(P_q\)</span> with the coefficient for <span class="math" data-tex="\(g\)">\(g\)</span> is equality in that compositum, since an embedding is injective. Apply any other coefficient embedding. The good-prime traces are now equal in characteristic zero. Theorem 4.2 of lesson 2 gives equality of the semisimple representations, and Theorem 2.2 of lesson 1 gives lattice-independent semisimplified reduction. This proves the assertion. It does not produce a modular member from a residual member. ∎</p>
+<p>The remaining full proof of Serre's theorem must produce that modular member and the optimal weight and level. The actually read free Khare–Wintenberger proof has the following precise structure. In Part I, §8, let <span class="math" data-tex="\(L_r\)">\(L_r\)</span> be the good-dihedral, odd-level assertion with at most <span class="math" data-tex="\(r\)">\(r\)</span> ramified primes, and <span class="math" data-tex="\(W_r\)">\(W_r\)</span> its reduced weight-two version. Their arguments require <span class="math" data-tex="\(W_1\)">\(W_1\)</span>, the implication <span class="math" data-tex="\(W_r\Rightarrow L_r\)">\(W_r\Rightarrow L_r\)</span> by weight reduction, and <span class="math" data-tex="\(L_r\Rightarrow W_{r+1}\)">\(L_r\Rightarrow W_{r+1}\)</span> by killing ramification. Once these implications are proved, induction gives <span class="math" data-tex="\(W_1,L_1,W_2,L_2,\ldots\)">\(W_1,L_1,W_2,L_2,\ldots\)</span>, and every finite ramification set is covered. Raising and then removing the auxiliary good-dihedral prime reduces the general case to these assertions. Lemma 5.2 proves the propagation step used after a successful change of residual characteristic. It does not prove the existence of the prescribed lifts or modularity lifting.</p>
+<p>Part I, §9, also handles even level and the classical characteristic-two weight-four case. Its minimal weight-two versus non-finite-flat weight-four passage uses a change to characteristic three and potentially Barsotti–Tate modularity. Kisin's free author DVI, Theorem 0.1 and Corollary 0.2, supplies the theorem called Hypothesis (H) there. In Part II, §§9–10, the prescribed-lift and modularity-lifting proofs require deformation-ring local conditions, the global deformation/Hecke comparison and potential modularity descent. Those arguments have not been reconstructed here or bound to completed earlier programme proofs. The optimal-weight argument, including finite-flat classification, and the minimal-level argument remain required with their full stated scope. The formal induction just given is not a proof of its missing implications, and the free primary papers are not substituted for them. In particular this lesson is not certified as a complete proof of Serre's theorem.</p>
+<h2 id="6-level-lowering-and-exceptional-examples">6. Level lowering and exceptional examples</h2>
+<p><strong>Ribet level lowering, a weight-two case.</strong> Let <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, let <span class="math" data-tex="\(f\)">\(f\)</span> be a weight-two eigenform of level <span class="math" data-tex="\(N\)">\(N\)</span> and trivial character with <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, and suppose <span class="math" data-tex="\(\bar\rho_{f,\lambda}\)">\(\bar\rho_{f,\lambda}\)</span> is absolutely irreducible. If <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, <span class="math" data-tex="\(q\parallel N\)">\(q\parallel N\)</span>, and the residual representation is unramified at <span class="math" data-tex="\(q\)">\(q\)</span>, then the same residual representation comes from a weight-two eigenform of level <span class="math" data-tex="\(N/q\)">\(N/q\)</span> and trivial character. In particular no condition <span class="math" data-tex="\(q\not\equiv1\pmod p\)">\(q\not\equiv1\pmod p\)</span> is imposed. The full unrestricted conclusion remains a required proof here. The actual free author notes of Ribet–Stein, §§3.9–3.11, distinguish the restricted Mazur principle from the quaternionic pivot needed to remove that restriction.</p>
+<p><strong>Lemma 6.0 (the two numerical steps in level lowering).</strong> The restricted Mazur argument and the quaternionic pivot have the following conclusions under their explicitly listed geometric hypotheses.</p>
+<p>First, suppose <span class="math" data-tex="\(V\)">\(V\)</span> is an unramified two-dimensional residual constituent at <span class="math" data-tex="\(q\)">\(q\)</span> in the identity-component specialization sequence for the modular Jacobian at <span class="math" data-tex="\(q\)">\(q\)</span>. Suppose Frobenius on its torus is <span class="math" data-tex="\(qU_q\)">\(qU_q\)</span>, and that failure of descent to the old quotient puts <span class="math" data-tex="\(V\)">\(V\)</span> entirely in that torus. For a new exact-level weight-two trivial-character packet, this failure implies <span class="math" data-tex="\(q\equiv1\pmod p\)">\(q\equiv1\pmod p\)</span>.</p>
+<p>Second, suppose the two specialized Jacobians <span class="math" data-tex="\(J,J&#x27;\)">\(J,J&#x27;\)</span> in a quaternionic pivot have residual multiplicities <span class="math" data-tex="\(\lambda&gt;0,\mu\ge0\)">\(\lambda&gt;0,\mu\ge0\)</span>. Let <span class="math" data-tex="\(X_t\)">\(X_t\)</span> be the specialized character groups modulo the eigenpacket. Suppose the unramified prime <span class="math" data-tex="\(q\)">\(q\)</span> gives
+<span class="math math-display" data-tex="\[
+\dim X_q(J)\ge2\lambda,\qquad \dim X_q(J&#x27;)\ge2\mu,
+\]">\[
+\dim X_q(J)\ge2\lambda,\qquad \dim X_q(J&#x27;)\ge2\mu,
+\]</span>
+the ramified pivot prime <span class="math" data-tex="\(s\)">\(s\)</span> gives
+<span class="math math-display" data-tex="\[
+\dim X_s(J)\le\lambda,\qquad \dim X_s(J&#x27;)\le\mu,
+\]">\[
+\dim X_s(J)\le\lambda,\qquad \dim X_s(J&#x27;)\le\mu,
+\]</span>
+and the character-group comparisons identify
+<span class="math" data-tex="\(X_q(J)\simeq X_s(J&#x27;)\)">\(X_q(J)\simeq X_s(J&#x27;)\)</span>, <span class="math" data-tex="\(X_s(J)\simeq X_q(J&#x27;)\)">\(X_s(J)\simeq X_q(J&#x27;)\)</span>.
+These hypotheses are incompatible.</p>
+<p><strong>Proof.</strong> In the first case, <span class="math" data-tex="\(U_q\)">\(U_q\)</span> is the scalar <span class="math" data-tex="\(a_q\)">\(a_q\)</span> on the eigenpacket. Corollary 1.0d of the earlier weight-two lesson proves <span class="math" data-tex="\(a_q^2=1\)">\(a_q^2=1\)</span> at a prime dividing the primitive level exactly once. Frobenius is therefore the scalar <span class="math" data-tex="\(qa_q\)">\(qa_q\)</span>, with determinant <span class="math" data-tex="\(q^2\)">\(q^2\)</span>. Its unramified residual determinant is also <span class="math" data-tex="\(q\)">\(q\)</span>, by (3). As <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, cancellation gives <span class="math" data-tex="\(q=1\)">\(q=1\)</span> in the residue field. This proves precisely why that argument alone cannot handle the unrestricted theorem.</p>
+<p>For the second case the comparisons give <span class="math" data-tex="\(2\lambda\le\mu\)">\(2\lambda\le\mu\)</span> and <span class="math" data-tex="\(2\mu\le\lambda\)">\(2\mu\le\lambda\)</span>. Combining them gives <span class="math" data-tex="\(4\lambda\le\lambda\)">\(4\lambda\le\lambda\)</span>, contrary to <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. This is the entire numerical contradiction. It does not establish any of the specialization, character-group or multiplicity hypotheses. ∎</p>
+<p>The full Ribet theorem above requires those geometric hypotheses, including their component-group and integral multiplicity assertions. The actually read free Ribet–Stein notes, §§3.9–3.11, construct the argument with a ramified pivot and, when necessary, an auxiliary raised prime. Here is the elementary prime-selection step. Form the joint finite quotient of the residual representation and <span class="math" data-tex="\(\bar\chi_p\)">\(\bar\chi_p\)</span>. The image of complex conjugation has cyclotomic component <span class="math" data-tex="\(-1\)">\(-1\)</span> and residual eigenvalues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, by oddness and <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>. Finite Chebotarev, lesson 2, Theorem 3.0c, supplies infinitely many auxiliary primes outside the finite excluded set with this class. At each, <span class="math" data-tex="\(q&#x27;\equiv-1\pmod p\)">\(q&#x27;\equiv-1\pmod p\)</span> and the Frobenius matrix is nonscalar, with eigenvalue ratio <span class="math" data-tex="\(q&#x27;\)">\(q&#x27;\)</span>. This proves the required selection, not the level-raising theorem. The level-raising existence, integral character-group comparisons, and specialized multiplicity bounds in Lemma 6.0 remain unclosed core inputs. They are retained without imposing <span class="math" data-tex="\(q\not\equiv1\pmod p\)">\(q\not\equiv1\pmod p\)</span> on the theorem.</p>
+<p>Theorem 4.1 explains how the local hypothesis can arise for a semistable elliptic curve: its <span class="math" data-tex="\(p\)">\(p\)</span>-torsion forgets a multiplicative prime when <span class="math" data-tex="\(p\)">\(p\)</span> divides the minimal discriminant valuation. Level lowering is the deep assertion that the same <strong>irreducible</strong> representation can then be obtained from a form with that prime removed. For the level-11 example at <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, irreducibility fails, so one cannot apply this theorem to deduce a weight-two form of level one. The residual conductor of the full <span class="math" data-tex="\(E_1[5]\)">\(E_1[5]\)</span> is already trivial at 11; the reducibility is essential to interpreting that fact.</p>
+<p>For <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, the six familiar exceptional residual primes have particularly explicit descriptions:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th>Semisimplified residual representation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2</td>
+<td><span class="math" data-tex="\(1\oplus1\)">\(1\oplus1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td><span class="math" data-tex="\(1\oplus\bar\chi_3\)">\(1\oplus\bar\chi_3\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td><span class="math" data-tex="\(\bar\chi_5\oplus\bar\chi_5^2\)">\(\bar\chi_5\oplus\bar\chi_5^2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td><span class="math" data-tex="\(\bar\chi_7\oplus\bar\chi_7^4\)">\(\bar\chi_7\oplus\bar\chi_7^4\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td>the standard <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-representation over <span class="math" data-tex="\(\mathbf F_{23}\)">\(\mathbf F_{23}\)</span> described below</td>
+</tr>
+<tr>
+<td style="text-align:right">691</td>
+<td><span class="math" data-tex="\(1\oplus\bar\chi_{691}^{11}\)">\(1\oplus\bar\chi_{691}^{11}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Proposition 6.1 (the four small-prime congruences, with proof).</strong> For every prime <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, the traces of <span class="math" data-tex="\(\bar\rho_{\Delta,p}(\operatorname{Fr}_q)\)">\(\bar\rho_{\Delta,p}(\operatorname{Fr}_q)\)</span> for <span class="math" data-tex="\(p=2,3,5,7\)">\(p=2,3,5,7\)</span> are respectively
+<span class="math" data-tex="\(0,1+q,q+q^2,q+q^4\)">\(0,1+q,q+q^2,q+q^4\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\theta=(2\pi i)^{-1}d/dz=q\,d/dq\)">\(\theta=(2\pi i)^{-1}d/dz=q\,d/dq\)</span>, <span class="math" data-tex="\(F=E_4\)">\(F=E_4\)</span>, <span class="math" data-tex="\(G=E_6\)">\(G=E_6\)</span>. The earlier level-one dimension proof gives <span class="math" data-tex="\(S_{12}=\mathbf C\Delta\)">\(S_{12}=\mathbf C\Delta\)</span>. We prove two exact differential identities rather than assuming congruences:
+<span class="math math-display" data-tex="\[
+ 4F\theta^2F-5(\theta F)^2=960\Delta,
+ \qquad
+ 2F\theta G-3G\theta F=-1728\Delta.
+ \tag{30A}
+\]">\[
+ 4F\theta^2F-5(\theta F)^2=960\Delta,
+ \qquad
+ 2F\theta G-3G\theta F=-1728\Delta.
+ \tag{30A}
+\]</span>
+Let <span class="math" data-tex="\(j=cz+d\)">\(j=cz+d\)</span>, <span class="math" data-tex="\(C=c/(2\pi i)\)">\(C=c/(2\pi i)\)</span>, and <span class="math" data-tex="\(H\)">\(H\)</span> have weight <span class="math" data-tex="\(k\)">\(k\)</span>. Differentiating its transformation law and using <span class="math" data-tex="\((\gamma z)&#x27;=j^{-2}\)">\((\gamma z)&#x27;=j^{-2}\)</span> gives
+<span class="math math-display" data-tex="\[
+ \theta H(\gamma z)=j^{k+2}\theta H(z)+kCj^{k+1}H(z),
+\]">\[
+ \theta H(\gamma z)=j^{k+2}\theta H(z)+kCj^{k+1}H(z),
+\]</span>
+<span class="math math-display" data-tex="\[
+ \theta^2H(\gamma z)=j^{k+4}\theta^2H(z)
+ +(2k+2)Cj^{k+3}\theta H(z)
+ +k(k+1)C^2j^{k+2}H(z).
+\]">\[
+ \theta^2H(\gamma z)=j^{k+4}\theta^2H(z)
+ +(2k+2)Cj^{k+3}\theta H(z)
+ +k(k+1)C^2j^{k+2}H(z).
+\]</span>
+For the first expression of (30A), the extra linear terms have coefficients <span class="math" data-tex="\(4\cdot10-5\cdot8=0\)">\(4\cdot10-5\cdot8=0\)</span>, and the quadratic terms <span class="math" data-tex="\(4\cdot20-5\cdot16=0\)">\(4\cdot20-5\cdot16=0\)</span>. For the second, the extra coefficient is <span class="math" data-tex="\(2\cdot6-3\cdot4=0\)">\(2\cdot6-3\cdot4=0\)</span>. Thus both expressions have weight twelve. They are holomorphic and have zero constant term; the level-one group has only the one cusp orbit. Their coefficients of <span class="math" data-tex="\(q\)">\(q\)</span> are <span class="math" data-tex="\(4\cdot240=960\)">\(4\cdot240=960\)</span> and <span class="math" data-tex="\(2(-504)-3(240)=-1728\)">\(2(-504)-3(240)=-1728\)</span>. This proves (30A), including its sign.</p>
+<p>Expanding the first identity and symmetrizing its finite convolution yields the integer identity
+<span class="math math-display" data-tex="\[
+ \tau(n)=n^2\sigma_3(n)
+ +60\sum_{m=1}^{n-1}(9m^2-5mn)\sigma_3(m)\sigma_3(n-m).
+ \tag{30B}
+\]">\[
+ \tau(n)=n^2\sigma_3(n)
+ +60\sum_{m=1}^{n-1}(9m^2-5mn)\sigma_3(m)\sigma_3(n-m).
+ \tag{30B}
+\]</span>
+Indeed before symmetrization the convolution is
+<span class="math" data-tex="\(240\sum(n-m)^2\sigma_3(m)\sigma_3(n-m)-300\sum m(n-m)\sigma_3(m)\sigma_3(n-m)\)">\(240\sum(n-m)^2\sigma_3(m)\sigma_3(n-m)-300\sum m(n-m)\sigma_3(m)\sigma_3(n-m)\)</span>;
+replace <span class="math" data-tex="\((n-m)^2\)">\((n-m)^2\)</span> by <span class="math" data-tex="\(m^2\)">\(m^2\)</span> in its sum to get (30B). Consequently
+<span class="math" data-tex="\(\tau(n)\equiv n^2\sigma_3(n)\pmod{2,3,5}\)">\(\tau(n)\equiv n^2\sigma_3(n)\pmod{2,3,5}\)</span>.
+At an odd prime <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(q^2(1+q^3)\)">\(q^2(1+q^3)\)</span> is even. Modulo three, <span class="math" data-tex="\(q^2=1\)">\(q^2=1\)</span> and <span class="math" data-tex="\(q^3=q\)">\(q^3=q\)</span>, giving <span class="math" data-tex="\(1+q\)">\(1+q\)</span>. Modulo five, <span class="math" data-tex="\(q^5=q\)">\(q^5=q\)</span>, giving <span class="math" data-tex="\(q^2+q\)">\(q^2+q\)</span>. For comparison, the alternative exponent expression retained from the original example is
+<span class="math math-display" data-tex="\[
+ q^{-30}(1+q^{71})=q^2(1+q^3)=q^2+q
+ \quad\text{in }\mathbf F_5.
+ \tag{30}
+\]">\[
+ q^{-30}(1+q^{71})=q^2(1+q^3)=q^2+q
+ \quad\text{in }\mathbf F_5.
+ \tag{30}
+\]</span>
+No congruence at a residual prime itself is needed.</p>
+<p>The second identity of (30A), after expanding coefficients, gives
+<span class="math math-display" data-tex="\[
+ 12\tau(n)=5n\sigma_3(n)+7n\sigma_5(n)
+ +840\sum_{m=1}^{n-1}(2n-5m)\sigma_3(m)\sigma_5(n-m).
+ \tag{30C}
+\]">\[
+ 12\tau(n)=5n\sigma_3(n)+7n\sigma_5(n)
+ +840\sum_{m=1}^{n-1}(2n-5m)\sigma_3(m)\sigma_5(n-m).
+ \tag{30C}
+\]</span>
+Modulo seven this is <span class="math" data-tex="\(5\tau(n)=5n\sigma_3(n)\)">\(5\tau(n)=5n\sigma_3(n)\)</span>, so
+<span class="math" data-tex="\(\tau(n)\equiv n\sigma_3(n)\)">\(\tau(n)\equiv n\sigma_3(n)\)</span>; at a prime it is <span class="math" data-tex="\(q+q^4\)">\(q+q^4\)</span>.</p>
+<p>The determinants of all four character pairs in the table are <span class="math" data-tex="\(\bar\chi_p^{11}\)">\(\bar\chi_p^{11}\)</span>, using the exponents modulo <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. Their full good-prime polynomials therefore agree with (2). Finite Chebotarev and Lemma 1.2 prove all four residual identifications. The 691 row was proved in §2. ∎</p>
+<p>The free primary Ramakrishnan–Sahu paper, Theorem 2.1(ix),(x) and §4.1, contains the differential approach; the transformation, constants, signs, convolution and each residual comparison have been proved here. In particular the sign of the second expression in (30A) is fixed by its coefficient of <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Proposition 6.2 (the exceptional representation at 23).</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be the splitting field of <span class="math" data-tex="\(X^3-X-1\)">\(X^3-X-1\)</span>. On
+<span class="math math-display" data-tex="\[
+W=\{(x_1,x_2,x_3)\in\mathbf F_{23}^3:x_1+x_2+x_3=0\},
+\tag{31}
+\]">\[
+W=\{(x_1,x_2,x_3)\in\mathbf F_{23}^3:x_1+x_2+x_3=0\},
+\tag{31}
+\]</span>
+let <span class="math" data-tex="\(S_3=\operatorname{Gal}(L/\mathbf Q)\)">\(S_3=\operatorname{Gal}(L/\mathbf Q)\)</span> permute the coordinates. Then
+<span class="math math-display" data-tex="\[
+\bar\rho_{\Delta,23}\simeq W.
+\tag{32}
+\]">\[
+\bar\rho_{\Delta,23}\simeq W.
+\tag{32}
+\]</span></p>
+<p><strong>Proof.</strong> The actual earlier weight-one lesson, Lemmas 5.0A–5.0B and §5, proves that the class group of <span class="math" data-tex="\(\mathbf Q(\sqrt{-23})\)">\(\mathbf Q(\sqrt{-23})\)</span> is cyclic of order three, that <span class="math" data-tex="\(L\)">\(L\)</span> is its unramified cyclic cubic class field, and that the form
+<span class="math math-display" data-tex="\[
+h(z)=\eta(z)\eta(23z)
+=q\prod_{n\ge1}(1-q^n)(1-q^{23n})
+\tag{32A}
+\]">\[
+h(z)=\eta(z)\eta(23z)
+=q\prod_{n\ge1}(1-q^n)(1-q^{23n})
+\tag{32A}
+\]</span>
+has, at every prime <span class="math" data-tex="\(q\ne23\)">\(q\ne23\)</span>, coefficient equal to the trace of this standard representation. Its proof includes the binary-theta Poisson transformation, both cusp conditions, the ideal coefficient identity, the cubic inertia computation and the class-field identification using the actually written NT-CFT 19, Theorem 19.1. We use those specific proofs, not the general Deligne–Serre theorem or a numerical congruence import.</p>
+<p>The product proof of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> in the earlier level-one lesson, Theorem 4.1, gives a coefficientwise identity over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. In <span class="math" data-tex="\(\mathbf F_{23}[[q]]\)">\(\mathbf F_{23}[[q]]\)</span>,
+<span class="math math-display" data-tex="\[
+(1-q^n)^{24}=(1-q^n)(1-q^{23n}).
+\tag{32B}
+\]">\[
+(1-q^n)^{24}=(1-q^n)(1-q^{23n}).
+\tag{32B}
+\]</span>
+Indeed <span class="math" data-tex="\((A+B)^{23}=A^{23}+B^{23}\)">\((A+B)^{23}=A^{23}+B^{23}\)</span> since all intermediate binomial coefficients are divisible by 23. Multiply (32B) over <span class="math" data-tex="\(n\)">\(n\)</span>. The coefficient of <span class="math" data-tex="\(q^m\)">\(q^m\)</span> only involves factors with <span class="math" data-tex="\(n\le m\)">\(n\le m\)</span>, so the identity passes to the infinite formal products without an interchange of analytic limits. It proves <span class="math" data-tex="\(\tau(m)\equiv a_m(h)\pmod{23}\)">\(\tau(m)\equiv a_m(h)\pmod{23}\)</span> for <strong>every</strong> <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>For completeness, on <span class="math" data-tex="\(W\)">\(W\)</span> the identity, a transposition and a three-cycle have traces <span class="math" data-tex="\(2,0,-1\)">\(2,0,-1\)</span>. The permutation representation splits as its fixed line plus <span class="math" data-tex="\(W\)">\(W\)</span>, since 3 is invertible in <span class="math" data-tex="\(\mathbf F_{23}\)">\(\mathbf F_{23}\)</span>. Subtracting that fixed line from its three traces <span class="math" data-tex="\(3,1,0\)">\(3,1,0\)</span> proves the displayed traces. The determinant on <span class="math" data-tex="\(W\)">\(W\)</span> is the permutation sign. By the quadratic-subfield computation in the earlier §5 this is <span class="math" data-tex="\((q/23)\)">\((q/23)\)</span> at a good prime. Euler's criterion gives
+<span class="math math-display" data-tex="\[
+\det W(\operatorname{Frob}_q)
+=\left(\frac q{23}\right)=q^{11}\pmod{23}.
+\tag{33}
+\]">\[
+\det W(\operatorname{Frob}_q)
+=\left(\frac q{23}\right)=q^{11}\pmod{23}.
+\tag{33}
+\]</span>
+To check Euler's criterion directly, the finite-field multiplicative group is cyclic by lesson 1, §0F: writing <span class="math" data-tex="\(q=g^r\)">\(q=g^r\)</span> gives <span class="math" data-tex="\(q^{11}=(-1)^r\)">\(q^{11}=(-1)^r\)</span>, which is one exactly for a square. Thus both the trace and determinant agree with the residual <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> polynomial at every <span class="math" data-tex="\(q\ne23\)">\(q\ne23\)</span>. Since 23 does not divide <span class="math" data-tex="\(|S_3|\)">\(|S_3|\)</span>, the averaging projection proves semisimplicity of <span class="math" data-tex="\(W\)">\(W\)</span>. Finite Chebotarev and Lemma 1.2 prove (32). ∎</p>
+<h2 id="7-the-odd-two-dimensional-artin-consequence">7. The odd two-dimensional Artin consequence</h2>
+<p><strong>Odd Artin modularity.</strong> Every continuous odd irreducible complex representation <span class="math" data-tex="\(\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\mathbf C)\)">\(\rho:G_{\mathbf Q}\to\operatorname{GL}_2(\mathbf C)\)</span> with finite image comes from a weight-one cuspidal newform. The full assertion includes projective <span class="math" data-tex="\(A_5\)">\(A_5\)</span> image. The remaining weight-one descent in its proof is specified below; it is not replaced by a reduction in a single characteristic.</p>
+<p><strong>Lemma 7.1 (integral models and infinitely many usable reductions).</strong> Such a <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has a model over a number field <span class="math" data-tex="\(E\)">\(E\)</span> and a stable full <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-lattice. Its reductions are absolutely irreducible at all but finitely many prime ideals. There are infinitely many rational primes <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span> outside that exceptional set at which <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unramified and its Frobenius eigenvalues are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(H\)">\(H\)</span> for its finite image. Average over <span class="math" data-tex="\(H\)">\(H\)</span> to prove Maschke's splitting over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>, as in lesson 2, Lemma 4.1. The regular module is a sum of simple modules, and its algebra is a product of full matrix algebras over the algebraically closed field. That proof applies over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>, and extension to <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> gives the same matrix factors. Every complex simple representation is therefore obtained by extending one of these algebraic simple modules. Finitely many entries of its finitely many group matrices generate a number field <span class="math" data-tex="\(E\)">\(E\)</span>, giving the desired model. The module
+<span class="math" data-tex="\(L=\sum_{h\in H}\rho(h)\mathcal O_E^2\)">\(L=\sum_{h\in H}\rho(h)\mathcal O_E^2\)</span>
+is finitely generated, contains <span class="math" data-tex="\(\mathcal O_E^2\)">\(\mathcal O_E^2\)</span>, spans <span class="math" data-tex="\(E^2\)">\(E^2\)</span> and is stable. It need not be globally free; after localization at a prime it is free over the DVR by lesson 1, Lemma 0A.1.</p>
+<p>Absolute irreducibility makes the span of <span class="math" data-tex="\(\rho(H)\)">\(\rho(H)\)</span> the full algebra <span class="math" data-tex="\(M_2(E)\)">\(M_2(E)\)</span>, by the algebra argument in lesson 2, Lemma 4.1. Choose four image matrices forming an <span class="math" data-tex="\(E\)">\(E\)</span>-basis. Their determinant in the four matrix-coordinate entries is nonzero. Choose an <span class="math" data-tex="\(E\)">\(E\)</span>-basis of <span class="math" data-tex="\(L\)">\(L\)</span> after inverting a fixed nonzero integer and exclude its denominator primes, those of the matrices, and the primes dividing that nonzero determinant. At every remaining prime the four reductions still span <span class="math" data-tex="\(M_2(k)\)">\(M_2(k)\)</span>, and remain a basis after algebraic scalar extension. An invariant proper line would then be invariant under every two-by-two matrix, which is impossible. Thus the reduction is absolutely irreducible.</p>
+<p>The image of complex conjugation has eigenvalues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>: its square is one, the characteristic is zero and its determinant is <span class="math" data-tex="\(-1\)">\(-1\)</span>. Apply finite Chebotarev to the field fixed by the kernel of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, choosing that conjugacy class. There are infinitely many primes in it, and deleting the finite denominator, exceptional and ramification sets still leaves infinitely many. At such a prime the characteristic polynomial is exactly <span class="math" data-tex="\((X-1)(X+1)\)">\((X-1)(X+1)\)</span>, so the two roots remain distinct on reduction when <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>. ∎</p>
+<p><strong>Lemma 7.2 (recovery from a fixed classical weight-one space).</strong> Fix a level <span class="math" data-tex="\(M\)">\(M\)</span>, a number field containing the determinant character of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and a full finite integral Hecke-stable lattice in the classical space <span class="math" data-tex="\(S_1(\Gamma_1(M))\)">\(S_1(\Gamma_1(M))\)</span>. Suppose infinitely many of the reductions in Lemma 7.1 occur as eigenpackets in the reduction of this lattice, with their good-prime traces and determinant character. Then one characteristic-zero weight-one cusp eigenpacket has the good-prime traces and determinant of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p><strong>Proof.</strong> The finite-lattice eigenpacket lifting proof in the earlier weight-one lesson, Lemma 3.0C, lifts each packet to characteristic zero after extending its coefficient field. For this fixed lattice, the generated commutative Hecke algebra is a finite free subgroup of its finite endomorphism module. It has only finitely many characteristic-zero characters, since its scalar extension is a finite-dimensional commutative algebra. Thus one character occurs for infinitely many of the residual primes. Its eigenvalues <span class="math" data-tex="\(a_q\)">\(a_q\)</span>, the determinant-character values, and <span class="math" data-tex="\(\operatorname{tr}\rho(\operatorname{Frob}_q)\)">\(\operatorname{tr}\rho(\operatorname{Frob}_q)\)</span> are algebraic integers in one fixed compositum. For each fixed <span class="math" data-tex="\(q\nmid M\)">\(q\nmid M\)</span> outside the ramification set, their differences vanish modulo infinitely many distinct rational primes. A nonzero algebraic integer has nonzero integer norm, whose prime divisors are finite. Every difference is consequently zero. The same argument on the finite diamond group proves equality of the determinant characters. Faithfulness and the local-factor decomposition in Lemma 3.0C supply a nonzero cusp eigenvector for that character; the usual full Hecke normalization gives its normalized eigenpacket. This proves the assertion. ∎</p>
+<p>The actual weight-one lattice construction is written in the earlier lesson, Lemma 3.0, by the rational kernel of <span class="math" data-tex="\((g_5,g_7)\mapsto E_6g_5-E_4g_7\)">\((g_5,g_7)\mapsto E_6g_5-E_4g_7\)</span>, integral coefficient division and the finite intersection of diamond translates. Its rational Fourier-basis and analytic dimension prerequisites still have their separately recorded programme closure requirements. Lemma 7.2 proves recovery once classical weight-one reductions in a fixed lattice are available; it does not assert their availability.</p>
+<p>This is the essential remaining point. At the primes selected in Lemma 7.1, the local representation is unramified. The classical Serre recipe in §5 assigns it weight <span class="math" data-tex="\(p\)">\(p\)</span>, not weight one. Even full Serre modularity therefore does not put those reductions directly into <span class="math" data-tex="\(S_1\)">\(S_1\)</span>. Khare–Wintenberger Part I, Theorem 10.1(ii) and its proof, uses the distinct Frobenius roots together with companion-form/weight-one descent and a fixed-level integral comparison. The required descent, the Katz-to-classical comparison for infinitely many primes, and the fixed-level conclusion have not been proved here or supplied by an inspected earlier programme proof. They remain required for the full odd Artin theorem, including its <span class="math" data-tex="\(A_5\)">\(A_5\)</span> case. Lemmas 7.1–7.2 prove the integral reduction and recovery parts without asserting this missing bridge.</p>
+<p>Once the full odd Artin theorem and the exact-conductor and all-local-factor theorem of Deligne–Serre in the weight-one lesson are closed, their complete conclusion gives
+<span class="math math-display" data-tex="\[
+L(s,\rho)=L(s,f)
+\tag{34}
+\]">\[
+L(s,\rho)=L(s,f)
+\tag{34}
+\]</span>
+for the primitive weight-one form of the Artin conductor. The cusp-form analytic continuation gives entireness of the uncompleted Artin <span class="math" data-tex="\(L\)">\(L\)</span>-function here. Thus the strong Artin conjecture holds for <strong>odd irreducible two-dimensional representations over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span></strong>, including projective <span class="math" data-tex="\(A_5\)">\(A_5\)</span> image. This does not assert the even case or the corresponding theorem over every number field.</p>
+<h2 id="8-proof-closure">8. Proof closure</h2>
+<p>The actual earlier proof bindings and local arguments now prove stable-lattice independence, characteristic-polynomial comparison, semistable residual inertia, the two mod-five lattice examples, the universal congruence modulo 691 and all five other exceptional rows. Lemmas 5.0 and 5.0C prove quotient independence, modular-coefficient integrality of the residual conductor and its zero criterion; Lemma 5.1 proves the complete tame/wild local shapes and the niveau-two digit choices. Equation (28), the character lift and its determinant reduction are proved in §5. The false universal Teichmüller clause has been corrected with its explicit source-verified small-characteristic counterexample. No paid text supplies the mathematics of these arguments.</p>
+<p>Full proof compliance remains unclosed. The general attached higher-weight representations and their good-prime arithmetic comparison require the full construction retained in lessons 11–12. The finite-flat/peu ramifiée equivalence and optimal classical weights, including <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, need full local and modular proofs. The full Serre theorem needs the prescribed lifts, all modularity-lifting and deformation/Hecke comparisons, potential modularity descent, good-dihedral auxiliary steps and optimal level/weight arguments described in §5. The unrestricted Ribet theorem needs the geometric and integral hypotheses explicitly exposed in Lemma 6.0, together with auxiliary level raising. The full odd Artin theorem needs the weight-one descent between Lemmas 7.1 and 7.2. The exact conductor and all-local-factor use in (34) retains the unclosed general primitive weight-one interfaces in the earlier lesson. Its cusp-form analytic continuation also needs its actual earlier analytic proof chain. The full statements, all equation tags and complete exercise solutions are preserved; these unresolved true mathematical obligations are not discharged by their free citations.</p>
+<p>The written earlier proofs used here have exact local locators. Their transitive free-source provenance and the accessibility of the final public programme edition remain separate verification obligations. This bounded rewrite makes no edition-wide certificate and no claim that the missing deep proofs have been completed.</p>
+<h2 id="9-exercises-with-complete-solutions">9. Exercises, with complete solutions</h2>
+<p><strong>Exercise 9.1 (easy).</strong> Verify <span class="math" data-tex="\(\tau(q)\equiv1+q^{11}\pmod{691}\)">\(\tau(q)\equiv1+q^{11}\pmod{691}\)</span> for primes <span class="math" data-tex="\(q\le7\)">\(q\le7\)</span>.</p>
+<p><strong>Solution.</strong> Use the coefficients (13). Their reductions, and direct modular powers, give:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(q\)">\(q\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\tau(q)\)">\(\tau(q)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\tau(q)\bmod691\)">\(\tau(q)\bmod691\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(1+q^{11}\bmod691\)">\(1+q^{11}\bmod691\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(-24\)">\(-24\)</span></td>
+<td style="text-align:right">667</td>
+<td style="text-align:right">667</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">252</td>
+<td style="text-align:right">252</td>
+<td style="text-align:right">252</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">4830</td>
+<td style="text-align:right">684</td>
+<td style="text-align:right">684</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right"><span class="math" data-tex="\(-16744\)">\(-16744\)</span></td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">531</td>
+</tr>
+</tbody>
+</table>
+<p>For example <span class="math" data-tex="\(4830=7\cdot691-7\)">\(4830=7\cdot691-7\)</span>, giving <span class="math" data-tex="\(684\)">\(684\)</span>; <span class="math" data-tex="\(16744=24\cdot691+160\)">\(16744=24\cdot691+160\)</span>, so its negative gives <span class="math" data-tex="\(531\)">\(531\)</span>. Repeated squaring gives the right column. These checks illustrate the universal identity (7); they do not replace its proof. ∎</p>
+<p><strong>Exercise 9.2 (medium).</strong> Verify (19) for all primes <span class="math" data-tex="\(q\le23\)">\(q\le23\)</span>, <span class="math" data-tex="\(q\ne5,11\)">\(q\ne5,11\)</span>.</p>
+<p><strong>Solution.</strong> The count vectors in §3 give <span class="math" data-tex="\(a_q=-2,-1,-2,4,-2,0,-1\)">\(a_q=-2,-1,-2,4,-2,0,-1\)</span>, for <span class="math" data-tex="\(q=2,3,7,13,17,19,23\)">\(q=2,3,7,13,17,19,23\)</span>. Their reductions modulo five are <span class="math" data-tex="\(3,4,3,4,3,0,4\)">\(3,4,3,4,3,0,4\)</span>. The numbers <span class="math" data-tex="\(q+1\)">\(q+1\)</span> reduce to the identical list. All counts include the point at infinity, so the congruence is equivalently <span class="math" data-tex="\(5\mid\#E_1(\mathbf F_q)\)">\(5\mid\#E_1(\mathbf F_q)\)</span>. On <span class="math" data-tex="\(E_0\)">\(E_0\)</span>, the explicit isogeny and the earlier proof of isogeny invariance give the same traces; the separate rational point <span class="math" data-tex="\(P_0\)">\(P_0\)</span> also proves the congruence for every good prime away from five. ∎</p>
+<p><strong>Exercise 9.3 (medium).</strong> Prove oddness of <span class="math" data-tex="\(\bar\rho_{f,\lambda}\)">\(\bar\rho_{f,\lambda}\)</span>. Explain the characteristic-two qualification.</p>
+<p><strong>Solution.</strong> The central matrix <span class="math" data-tex="\(-I\)">\(-I\)</span> acts through both <span class="math" data-tex="\((-1)^k\)">\((-1)^k\)</span> and the character <span class="math" data-tex="\(\varepsilon(-1)\)">\(\varepsilon(-1)\)</span>, hence these are equal. Evaluate the determinant <span class="math" data-tex="\(\bar\varepsilon_G\bar\chi_p^{k-1}\)">\(\bar\varepsilon_G\bar\chi_p^{k-1}\)</span> at <span class="math" data-tex="\(c\)">\(c\)</span>: the result is <span class="math" data-tex="\((-1)^k(-1)^{k-1}=-1\)">\((-1)^k(-1)^{k-1}=-1\)</span>. Semisimplification preserves the determinant because determinants multiply along a stable filtration. For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, the involution is diagonalizable with eigenvalues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, these coincide; an involution can even have a nontrivial unipotent Jordan block. The determinant equality still holds but does not distinguish odd from even reductions. ∎</p>
+<p><strong>Exercise 9.4 (hard).</strong> Prove the Tate-curve criterion (20), and use it to distinguish the two lattices in (14). Explain why local semisimplification is insufficient.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, pass to the maximal unramified extension, where <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> and a <span class="math" data-tex="\(p\)">\(p\)</span>-th root of the unit part of <span class="math" data-tex="\(z=\pi^mu\)">\(z=\pi^mu\)</span> exist by simple-root Hensel lifting. The only inertia action on (22) comes from <span class="math" data-tex="\(\pi^{m/p}\)">\(\pi^{m/p}\)</span>, giving the upper entry <span class="math" data-tex="\(m\bar t_p\)">\(m\bar t_p\)</span> in (23). The character <span class="math" data-tex="\(\bar t_p\)">\(\bar t_p\)</span> is onto because adjoining <span class="math" data-tex="\(\pi^{1/p}\)">\(\pi^{1/p}\)</span> gives a tame totally ramified cyclic degree-<span class="math" data-tex="\(p\)">\(p\)</span> extension. Thus every upper entry is zero exactly when <span class="math" data-tex="\(p\mid m\)">\(p\mid m\)</span>. The Tate discriminant has valuation <span class="math" data-tex="\(m\)">\(m\)</span>; the nonsplit case has the same inertia after an unramified quadratic twist. Good reduction gives the zero-valuation case.</p>
+<p>At <span class="math" data-tex="\(q=11,p=5\)">\(q=11,p=5\)</span>, (24) gives <span class="math" data-tex="\(m=1\)">\(m=1\)</span> on <span class="math" data-tex="\(E_0\)">\(E_0\)</span> and <span class="math" data-tex="\(m=5\)">\(m=5\)</span> on <span class="math" data-tex="\(E_1\)">\(E_1\)</span>. The first inertia image is nontrivial of order five; the second is trivial. This proves nonisomorphism of the actual reductions. Locally, both matrices have two trivial composition factors, so both local semisimplifications are <span class="math" data-tex="\(1\oplus1\)">\(1\oplus1\)</span>. Globally, Proposition 3.1 gives <span class="math" data-tex="\(1\oplus\bar\chi_5\)">\(1\oplus\bar\chi_5\)</span> for both. The rational isogeny identifies <span class="math" data-tex="\(V_5E_0,V_5E_1\)">\(V_5E_0,V_5E_1\)</span> but cannot make these distinct inertia actions on integral reductions agree. ∎</p>
+<h2 id="references">References</h2>
+<p>These are freely accessible author or institutional copies actually read; their scope is specified in §§5–8 and the accompanying proof record. No bibliographic entry discharges an omitted proof.</p>
+<ul>
+<li>J.-P. Serre, <a href="https://www.college-de-france.fr/media/jean-pierre-serre/UPL5835292064138487263_Serre_Repr.modulaires_Galois.pdf"><em>Sur les représentations modulaires de degré 2 de Gal(Q̄/Q)</em>, free author-institution copy</a>, §§1–3, for the original local recipe and the original character formulation.</li>
+<li>J.-P. Serre, <a href="https://www.numdam.org/item/CJPS_1988__8_/"><em>Formes modulaires (mod p)</em>, free Collège de France notes</a>, printed pp.53–56, especially the counterexample on pp.54–55.</li>
+<li>P. B. Allen and P. Wake, <a href="https://arxiv.org/pdf/2509.21426"><em>Modular analogs of character formulas and minimal lifts of modular forms</em></a>, version 2, §1.2 and the full §5 argument, for the precise small-characteristic character obstruction. Its modular block-theory dependencies are not used as programme proof substitutes.</li>
+<li>C. Khare and J.-P. Wintenberger, <a href="https://www.math.ucla.edu/~shekhar/papers/results.pdf"><em>Serre's modularity conjecture (I)</em></a>, §§3.1–3.2, 4–5, 8–10; the author PDF has 23 pages.</li>
+<li>C. Khare and J.-P. Wintenberger, <a href="https://www.math.ucla.edu/~shekhar/papers/proofs.pdf"><em>Serre's modularity conjecture (II)</em></a>, §§9–10; the author PDF has 98 pages. The proof dependencies in §10 are distinguished from results proved in this lesson.</li>
+<li>M. Kisin, <a href="https://people.math.harvard.edu/~kisin/dvifiles/serre2.dvi"><em>Modularity of 2-adic Barsotti–Tate representations</em>, free author DVI</a>, Theorem 0.1, Corollary 0.2 and §3.3. The DVI is the actual author-page download, not a publisher access link.</li>
+<li>K. A. Ribet and W. A. Stein, <a href="https://wstein.org/papers/serre/ribet-stein.pdf"><em>Lectures on Serre's conjectures</em>, free author notes</a>, §§3.9–3.11, printed pp.43–50, for the Mazur principle, pivot argument and its geometric prerequisites.</li>
+<li>J. G. Bosman, <a href="https://math.leidenuniv.nl/scripties/BosmanPhD.pdf"><em>Explicit computations with modular Galois representations</em>, freely accessible Leiden thesis</a>, §§1.3.5 and 1.4.1–1.4.4, printed pp.34–41, for the exact classical local recipe and its explicitly identified integrality input.</li>
+<li>B. Ramakrishnan and B. Sahu, <a href="https://www.niser.ac.in/~brundaban.sahu/imnt-final.pdf"><em>Identities for the Ramanujan tau function and certain convolution sum identities for the divisor functions</em>, free author PDF</a>, Theorem 2.1(ix),(x) and §4.1. Proposition 6.1 proves the needed identities and congruences locally.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="p-adic-hodge-theory-and-the-fontaine-mazur-conjecture.html">← p-adic Hodge theory and the Fontaine–Mazur conjecture</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/residual-representations-and-serre-modularity.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

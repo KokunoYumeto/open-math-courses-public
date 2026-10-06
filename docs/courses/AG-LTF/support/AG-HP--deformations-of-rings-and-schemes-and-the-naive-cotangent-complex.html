@@ -1,0 +1,485 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Deformations of rings and schemes and the naive cotangent complex</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="deformations-of-rings-and-schemes-and-the-naive-cotangent-complex">Deformations of rings and schemes and the naive cotangent complex</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An infinitesimal change of an equation can disappear after an infinitesimal change of coordinates. The naive cotangent complex keeps both operations in one object: its degree <span class="math" data-tex="\(-1\)">\(-1\)</span> term records relations, and its degree zero term records coordinates. Applying <span class="math" data-tex="\(\operatorname{Hom}(-,M)\)">\(\operatorname{Hom}(-,M)\)</span> turns the differential into the operation that changes a relation by a derivation.</p>
+<p>We prove independence of the chosen presentation, classify square-zero extensions, and compute the tangent spaces of hypersurface and complete-intersection deformations. For smooth schemes, the local algebra has no deformation parameters. The parameters and obstructions instead arise from gluing, in <span class="math" data-tex="\(H^1(T_X)\)">\(H^1(T_X)\)</span> and <span class="math" data-tex="\(H^2(T_X)\)">\(H^2(T_X)\)</span>. We give that gluing argument without a properness assumption.</p>
+<p>All rings are commutative with identity. Complexes use <strong>cohomological degrees</strong>: the relation term has degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, and the differential raises degree. Thus <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> here is the module denoted <span class="math" data-tex="\(H_1\)">\(H_1\)</span> in the homological notation of the Stacks project. Derived <span class="math" data-tex="\(\operatorname{Ext}^i(K,M)\)">\(\operatorname{Ext}^i(K,M)\)</span> means <span class="math" data-tex="\(\operatorname{Hom}_{D(B)}(K,M[i])\)">\(\operatorname{Hom}_{D(B)}(K,M[i])\)</span>. An isolated-singularity hypothesis is needed for finiteness of certain tangent spaces, rather than for the Jacobian formula itself.</p>
+<h2 id="1-a-presentation-and-its-two-term-complex">1 A presentation and its two-term complex</h2>
+<p>Choose a polynomial presentation</p>
+<span class="math math-display" data-tex="\[
+P=A[x_1,\ldots,x_n]\twoheadrightarrow B,
+\qquad I=\ker(P\to B).
+\]">\[
+P=A[x_1,\ldots,x_n]\twoheadrightarrow B,
+\qquad I=\ker(P\to B).
+\]</span>
+<p>The <strong>naive cotangent complex</strong> associated to it is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{NL}_{B/A}=
+\left[ I/I^2\xrightarrow{d}
+\Omega_{P/A}\otimes_P B\right],
+\qquad d(\overline f)=df\otimes1.
+\tag{1.1}
+\]">\[
+\operatorname{NL}_{B/A}=
+\left[ I/I^2\xrightarrow{d}
+\Omega_{P/A}\otimes_P B\right],
+\qquad d(\overline f)=df\otimes1.
+\tag{1.1}
+\]</span>
+<p>The differential is well-defined because <span class="math" data-tex="\(d(fg)=f\,dg+g\,df\)">\(d(fg)=f\,dg+g\,df\)</span> vanishes after tensoring with <span class="math" data-tex="\(B\)">\(B\)</span> when <span class="math" data-tex="\(f,g\in I\)">\(f,g\in I\)</span>. The right-hand term is the free module with basis <span class="math" data-tex="\(dx_i\)">\(dx_i\)</span>. The usual universal property of differentials gives</p>
+<span class="math math-display" data-tex="\[
+H^0(\operatorname{NL}_{B/A})=\Omega_{B/A}.
+\tag{1.2}
+\]">\[
+H^0(\operatorname{NL}_{B/A})=\Omega_{B/A}.
+\tag{1.2}
+\]</span>
+<p>Indeed a linear map from the cokernel in (1.1) to a <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> is a derivation <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span> vanishing on <span class="math" data-tex="\(I\)">\(I\)</span>, which is exactly an <span class="math" data-tex="\(A\)">\(A\)</span>-derivation <span class="math" data-tex="\(B\to M\)">\(B\to M\)</span>. This also proves</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Der}_A(B,M)
+=\operatorname{Hom}_B(H^0(\operatorname{NL}_{B/A}),M).
+\tag{1.3}
+\]">\[
+\operatorname{Der}_A(B,M)
+=\operatorname{Hom}_B(H^0(\operatorname{NL}_{B/A}),M).
+\tag{1.3}
+\]</span>
+<p>The same definition works with any set of polynomial variables; each polynomial still uses finitely many. Finite presentation allows a finite set of variables and a finitely generated relation ideal, but is unnecessary for the comparison argument that follows.</p>
+<p><strong>Theorem 1.1 (presentation independence).</strong> Two polynomial presentations of the same <span class="math" data-tex="\(A\)">\(A\)</span>-algebra give canonically identified objects in the homotopy category of complexes of <span class="math" data-tex="\(B\)">\(B\)</span>-modules. Comparison maps obtained by lifting generators are independent of those lifts up to chain homotopy. In particular the cohomology modules and derived Ext groups in this lesson do not depend on the presentation.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P\twoheadrightarrow B\)">\(P\twoheadrightarrow B\)</span> and <span class="math" data-tex="\(Q\twoheadrightarrow B\)">\(Q\twoheadrightarrow B\)</span> have kernels <span class="math" data-tex="\(I,J\)">\(I,J\)</span>. Lift each polynomial generator of <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(Q\)">\(Q\)</span>; this gives an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra map <span class="math" data-tex="\(u:P\to Q\)">\(u:P\to Q\)</span> inducing the identity on <span class="math" data-tex="\(B\)">\(B\)</span>. It induces maps <span class="math" data-tex="\(I/I^2\to J/J^2\)">\(I/I^2\to J/J^2\)</span> and <span class="math" data-tex="\(\Omega_{P/A}\otimes B\to\Omega_{Q/A}\otimes B\)">\(\Omega_{P/A}\otimes B\to\Omega_{Q/A}\otimes B\)</span>, which commute with the differentials.</p>
+<p>Suppose <span class="math" data-tex="\(v\)">\(v\)</span> is another lift. The map</p>
+<span class="math math-display" data-tex="\[
+D:P\longrightarrow J/J^2,\qquad D(p)=u(p)-v(p)\pmod{J^2}
+\]">\[
+D:P\longrightarrow J/J^2,\qquad D(p)=u(p)-v(p)\pmod{J^2}
+\]</span>
+<p>is a derivation for the common <span class="math" data-tex="\(P\)">\(P\)</span>-action through <span class="math" data-tex="\(B\)">\(B\)</span>. To check multiplication, expand</p>
+<span class="math math-display" data-tex="\[
+u(pq)-v(pq)=u(p)(u(q)-v(q))+(u(p)-v(p))v(q).
+\]">\[
+u(pq)-v(pq)=u(p)(u(q)-v(q))+(u(p)-v(p))v(q).
+\]</span>
+<p>Modulo <span class="math" data-tex="\(J^2\)">\(J^2\)</span>, both coefficients act by their images in <span class="math" data-tex="\(B\)">\(B\)</span>. Also <span class="math" data-tex="\(D(I^2)=0\)">\(D(I^2)=0\)</span>. The universal property of differentials supplies a linear map</p>
+<span class="math math-display" data-tex="\[
+h:\Omega_{P/A}\otimes B\longrightarrow J/J^2.
+\]">\[
+h:\Omega_{P/A}\otimes B\longrightarrow J/J^2.
+\]</span>
+<p>On the relation term, <span class="math" data-tex="\(u-v=h\,d\)">\(u-v=h\,d\)</span>: evaluate on <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span>. On the differential term, <span class="math" data-tex="\(u-v=d\,h\)">\(u-v=d\,h\)</span>: evaluate on <span class="math" data-tex="\(dp\)">\(dp\)</span>, obtaining <span class="math" data-tex="\(d(u(p)-v(p))\)">\(d(u(p)-v(p))\)</span>. These are precisely the chain-homotopy identities. They also check the comparison maps explicitly, including their signs.</p>
+<p>Choose a lift in the reverse direction. Both compositions lift the identity of the same presentation, so the preceding calculation makes them homotopic to the identity maps. The comparison maps are therefore homotopy equivalences. Compositions of algebra lifts induce compositions of chain maps, and their homotopy classes are independent of all choices. This proves the canonical identification and its functoriality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A canonical representative can be obtained by taking a variable for every element of <span class="math" data-tex="\(B\)">\(B\)</span>, mapping that variable to its named element. Finite presentations are usually easier for calculations. Theorem 1.1 explains why changing between them is legitimate.</p>
+<h2 id="2-what-transitivity-says-for-a-two-term-complex">2 What transitivity says for a two-term complex</h2>
+<p>For <span class="math" data-tex="\(A\to B\to C\)">\(A\to B\to C\)</span>, choose presentations <span class="math" data-tex="\(P=A[x]\twoheadrightarrow B\)">\(P=A[x]\twoheadrightarrow B\)</span> and <span class="math" data-tex="\(R=B[y]\twoheadrightarrow C\)">\(R=B[y]\twoheadrightarrow C\)</span>. Put <span class="math" data-tex="\(Q=A[x,y]\)">\(Q=A[x,y]\)</span>, and denote the three relation ideals by</p>
+<span class="math math-display" data-tex="\[
+I=\ker(P\to B),\quad K=\ker(Q\to C),\quad J=\ker(R\to C).
+\]">\[
+I=\ker(P\to B),\quad K=\ker(Q\to C),\quad J=\ker(R\to C).
+\]</span>
+<p>There is a commutative diagram of modules with exact rows</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccccccccc}
+0&amp;\longrightarrow&amp;\Omega_{P/A}\otimes C&amp;\longrightarrow&amp;
+\Omega_{Q/A}\otimes C&amp;\longrightarrow&amp;\Omega_{R/B}\otimes C&amp;\longrightarrow&amp;0\\
+&amp;&amp;\uparrow&amp;&amp;\uparrow&amp;&amp;\uparrow\\
+&amp;&amp;I/I^2\otimes_B C&amp;\longrightarrow&amp;K/K^2&amp;\longrightarrow&amp;J/J^2&amp;\longrightarrow&amp;0.
+\end{array}
+\tag{2.1}
+\]">\[
+\begin{array}{ccccccccc}
+0&amp;\longrightarrow&amp;\Omega_{P/A}\otimes C&amp;\longrightarrow&amp;
+\Omega_{Q/A}\otimes C&amp;\longrightarrow&amp;\Omega_{R/B}\otimes C&amp;\longrightarrow&amp;0\\
+&amp;&amp;\uparrow&amp;&amp;\uparrow&amp;&amp;\uparrow\\
+&amp;&amp;I/I^2\otimes_B C&amp;\longrightarrow&amp;K/K^2&amp;\longrightarrow&amp;J/J^2&amp;\longrightarrow&amp;0.
+\end{array}
+\tag{2.1}
+\]</span>
+<p>The first arrow in the bottom row need not be injective.</p>
+<p><strong>Proposition 2.1 (Jacobi–Zariski sequence).</strong> The diagram gives the natural exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+H^{-1}(\operatorname{NL}_{B/A}\otimes_B C)&amp;\longrightarrow
+H^{-1}(\operatorname{NL}_{C/A})\longrightarrow
+H^{-1}(\operatorname{NL}_{C/B})\\
+&amp;\longrightarrow \Omega_{B/A}\otimes_B C
+\longrightarrow\Omega_{C/A}\longrightarrow\Omega_{C/B}
+\longrightarrow0.
+\end{split}
+\tag{2.2}
+\]">\[
+\begin{split}
+H^{-1}(\operatorname{NL}_{B/A}\otimes_B C)&amp;\longrightarrow
+H^{-1}(\operatorname{NL}_{C/A})\longrightarrow
+H^{-1}(\operatorname{NL}_{C/B})\\
+&amp;\longrightarrow \Omega_{B/A}\otimes_B C
+\longrightarrow\Omega_{C/A}\longrightarrow\Omega_{C/B}
+\longrightarrow0.
+\end{split}
+\tag{2.2}
+\]</span>
+<p>The tensor product in its first term is the termwise tensor product of the displayed two-term model. If <span class="math" data-tex="\(\operatorname{Tor}_1^B(\Omega_{B/A},C)\)">\(\operatorname{Tor}_1^B(\Omega_{B/A},C)\)</span> and <span class="math" data-tex="\(\operatorname{Tor}_2^B(\Omega_{B/A},C)\)">\(\operatorname{Tor}_2^B(\Omega_{B/A},C)\)</span> vanish, that term is <span class="math" data-tex="\(H^{-1}(\operatorname{NL}_{B/A})\otimes_B C\)">\(H^{-1}(\operatorname{NL}_{B/A})\otimes_B C\)</span>.</p>
+<p><strong>Proof.</strong> The top row in (2.1) splits by the bases <span class="math" data-tex="\(dx_i,dy_j\)">\(dx_i,dy_j\)</span>. The map <span class="math" data-tex="\(K\to J\)">\(K\to J\)</span> is onto, with kernel <span class="math" data-tex="\(IQ\)">\(IQ\)</span>. Its induced map on conormal modules therefore has kernel <span class="math" data-tex="\((IQ+K^2)/K^2\)">\((IQ+K^2)/K^2\)</span>, which is the image of <span class="math" data-tex="\(I/I^2\otimes_B C\)">\(I/I^2\otimes_B C\)</span>. This proves the bottom-row exactness.</p>
+<p>Let <span class="math" data-tex="\(L=\operatorname{NL}_{C/A}\)">\(L=\operatorname{NL}_{C/A}\)</span>, <span class="math" data-tex="\(N=\operatorname{NL}_{C/B}\)">\(N=\operatorname{NL}_{C/B}\)</span>, and let <span class="math" data-tex="\(D=\ker(L\to N)\)">\(D=\ker(L\to N)\)</span>, taken termwise. Then</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow D\longrightarrow L\longrightarrow N\longrightarrow0
+\]">\[
+0\longrightarrow D\longrightarrow L\longrightarrow N\longrightarrow0
+\]</span>
+<p>is a short exact sequence of complexes. The map <span class="math" data-tex="\(U=\operatorname{NL}_{B/A}\otimes_B C\to D\)">\(U=\operatorname{NL}_{B/A}\otimes_B C\to D\)</span> is onto in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and an isomorphism in degree zero. Hence <span class="math" data-tex="\(H^0(U)\to H^0(D)\)">\(H^0(U)\to H^0(D)\)</span> is an isomorphism and <span class="math" data-tex="\(H^{-1}(U)\to H^{-1}(D)\)">\(H^{-1}(U)\to H^{-1}(D)\)</span> is onto: a lift of a degree <span class="math" data-tex="\(-1\)">\(-1\)</span> cycle remains a cycle because the degree-zero map is an isomorphism. The long cohomology sequence for <span class="math" data-tex="\(D,L,N\)">\(D,L,N\)</span> now gives (2.2), with <span class="math" data-tex="\(H^0(U)=\Omega_{B/A}\otimes C\)">\(H^0(U)=\Omega_{B/A}\otimes C\)</span>.</p>
+<p>The connecting map can be seen without the abstract sequence. Lift a relation cycle in <span class="math" data-tex="\(J/J^2\)">\(J/J^2\)</span> to <span class="math" data-tex="\(K/K^2\)">\(K/K^2\)</span>. Its differential has zero <span class="math" data-tex="\(dy\)">\(dy\)</span>-component, so lies in <span class="math" data-tex="\(\Omega_{P/A}\otimes C\)">\(\Omega_{P/A}\otimes C\)</span>. Take its class modulo the differentials from <span class="math" data-tex="\(I/I^2\otimes C\)">\(I/I^2\otimes C\)</span>. Changing the lift changes it by such a differential. This gives the map to <span class="math" data-tex="\(\Omega_{B/A}\otimes C\)">\(\Omega_{B/A}\otimes C\)</span> in (2.2).</p>
+<p>For the final assertion, write the original complex as <span class="math" data-tex="\([N_1\to F]\)">\([N_1\to F]\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> free, image <span class="math" data-tex="\(Z\)">\(Z\)</span>, cokernel <span class="math" data-tex="\(\Omega=\Omega_{B/A}\)">\(\Omega=\Omega_{B/A}\)</span>, and kernel <span class="math" data-tex="\(H\)">\(H\)</span>. From <span class="math" data-tex="\(0\to Z\to F\to\Omega\to0\)">\(0\to Z\to F\to\Omega\to0\)</span>, the two Tor vanishings make <span class="math" data-tex="\(Z\otimes C\to F\otimes C\)">\(Z\otimes C\to F\otimes C\)</span> injective and <span class="math" data-tex="\(\operatorname{Tor}_1^B(Z,C)=0\)">\(\operatorname{Tor}_1^B(Z,C)=0\)</span>. Tensoring <span class="math" data-tex="\(0\to H\to N_1\to Z\to0\)">\(0\to H\to N_1\to Z\to0\)</span> then shows that <span class="math" data-tex="\(H\otimes C\)">\(H\otimes C\)</span> is the kernel of <span class="math" data-tex="\(N_1\otimes C\to F\otimes C\)">\(N_1\otimes C\to F\otimes C\)</span>. This is the asserted first-term identification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The hypotheses on that identification matter. Termwise tensoring a complex does not generally commute with taking its kernel. More fundamentally, (2.1) is not in general a short exact sequence of the three naive complexes, nor a distinguished transitivity triangle involving only those two-term complexes.</p>
+<p>For example take <span class="math" data-tex="\(A=k\)">\(A=k\)</span>, <span class="math" data-tex="\(B=k[x]/(x^2)\)">\(B=k[x]/(x^2)\)</span>, <span class="math" data-tex="\(C=k\)">\(C=k\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{NL}_{B/k}\otimes_B k=[k\xrightarrow{0}k],\qquad
+\operatorname{NL}_{k/k}\simeq0,\qquad
+\operatorname{NL}_{k/B}\simeq k[1].
+\tag{2.3}
+\]">\[
+\operatorname{NL}_{B/k}\otimes_B k=[k\xrightarrow{0}k],\qquad
+\operatorname{NL}_{k/k}\simeq0,\qquad
+\operatorname{NL}_{k/B}\simeq k[1].
+\tag{2.3}
+\]</span>
+<p>The first formula follows from <span class="math" data-tex="\(d(x^2)=2x\,dx\)">\(d(x^2)=2x\,dx\)</span>; the last uses the presentation <span class="math" data-tex="\(B\twoheadrightarrow k\)">\(B\twoheadrightarrow k\)</span>. A triangle with these three entries would force <span class="math" data-tex="\([k\to k][1]\simeq k[1]\)">\([k\to k][1]\simeq k[1]\)</span>, although its left side also has nonzero degree <span class="math" data-tex="\(-2\)">\(-2\)</span> cohomology. This is impossible. The full cotangent complex restores transitivity by retaining the missing lower degrees; its construction is the subject of the final lesson.</p>
+<h2 id="3-square-zero-extensions-are-relation-maps-modulo-derivations">3 Square-zero extensions are relation maps modulo derivations</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a <span class="math" data-tex="\(B\)">\(B\)</span>-module. An element of <span class="math" data-tex="\(\operatorname{Exal}_A(B,M)\)">\(\operatorname{Exal}_A(B,M)\)</span> is an isomorphism class of sequences of <span class="math" data-tex="\(A\)">\(A\)</span>-algebras</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M\xrightarrow{\iota}E\longrightarrow B\longrightarrow0,
+\tag{3.1}
+\]">\[
+0\longrightarrow M\xrightarrow{\iota}E\longrightarrow B\longrightarrow0,
+\tag{3.1}
+\]</span>
+<p>where <span class="math" data-tex="\(M\)">\(M\)</span> is a square-zero ideal with its specified <span class="math" data-tex="\(B\)">\(B\)</span>-action. Isomorphisms induce the identity on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. The split extension <span class="math" data-tex="\(B\oplus M\)">\(B\oplus M\)</span>, with multiplication <span class="math" data-tex="\((b,m)(c,n)=(bc,bn+cm)\)">\((b,m)(c,n)=(bc,bn+cm)\)</span>, gives its zero element.</p>
+<p><strong>Theorem 3.1.</strong> For every finitely presented <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, and every <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, there is a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Exal}_A(B,M)
+\simeq\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M).
+\tag{3.2}
+\]">\[
+\operatorname{Exal}_A(B,M)
+\simeq\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M).
+\tag{3.2}
+\]</span>
+<p>In fact the construction works with unrestricted polynomial presentations. An extension's automorphisms inducing the identity on its two ends form <span class="math" data-tex="\(\operatorname{Der}_A(B,M)\)">\(\operatorname{Der}_A(B,M)\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(P\twoheadrightarrow B\)">\(P\twoheadrightarrow B\)</span>, with kernel <span class="math" data-tex="\(I\)">\(I\)</span>, and lift its variables to <span class="math" data-tex="\(E\)">\(E\)</span>. The resulting map <span class="math" data-tex="\(P\to E\)">\(P\to E\)</span> sends <span class="math" data-tex="\(I\)">\(I\)</span> into <span class="math" data-tex="\(M\)">\(M\)</span>, kills <span class="math" data-tex="\(I^2\)">\(I^2\)</span>, and induces a <span class="math" data-tex="\(B\)">\(B\)</span>-linear map</p>
+<span class="math math-display" data-tex="\[
+\phi:I/I^2\longrightarrow M.
+\]">\[
+\phi:I/I^2\longrightarrow M.
+\]</span>
+<p>Changing the variable lifts changes the polynomial map by an <span class="math" data-tex="\(A\)">\(A\)</span>-derivation <span class="math" data-tex="\(P\to M\)">\(P\to M\)</span>. Thus it changes <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by <span class="math" data-tex="\(\delta d\)">\(\delta d\)</span>, with <span class="math" data-tex="\(\delta\in\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)\)">\(\delta\in\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)\)</span>.</p>
+<p>Conversely, given <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, form the ring <span class="math" data-tex="\(P\oplus M\)">\(P\oplus M\)</span>, where <span class="math" data-tex="\(P\)">\(P\)</span> acts on <span class="math" data-tex="\(M\)">\(M\)</span> through <span class="math" data-tex="\(B\)">\(B\)</span>, and quotient by the graph ideal</p>
+<span class="math math-display" data-tex="\[
+G_\phi=\{(i,-\phi(\overline i)):i\in I\}.
+\tag{3.3}
+\]">\[
+G_\phi=\{(i,-\phi(\overline i)):i\in I\}.
+\tag{3.3}
+\]</span>
+<p>It is an ideal: multiplication by <span class="math" data-tex="\((p,m)\)">\((p,m)\)</span> sends its element to <span class="math" data-tex="\((pi,-p\phi(\overline i))\)">\((pi,-p\phi(\overline i))\)</span>, since <span class="math" data-tex="\(I\)">\(I\)</span> annihilates <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(\phi(\overline{pi})=\overline p\phi(\overline i)\)">\(\phi(\overline{pi})=\overline p\phi(\overline i)\)</span>. The ring <span class="math" data-tex="\(E_\phi=(P\oplus M)/G_\phi\)">\(E_\phi=(P\oplus M)/G_\phi\)</span> maps onto <span class="math" data-tex="\(B\)">\(B\)</span>, has kernel exactly <span class="math" data-tex="\(M\)">\(M\)</span>, and has the multiplication required in (3.1). The chosen lifts of the variables recover <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>If <span class="math" data-tex="\(\psi=\phi+\delta d\)">\(\psi=\phi+\delta d\)</span>, the map <span class="math" data-tex="\((p,m)\mapsto(p,m-D(p))\)">\((p,m)\mapsto(p,m-D(p))\)</span>, where <span class="math" data-tex="\(D:P\to M\)">\(D:P\to M\)</span> is the derivation defined by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, carries <span class="math" data-tex="\(G_\phi\)">\(G_\phi\)</span> to <span class="math" data-tex="\(G_\psi\)">\(G_\psi\)</span>, and induces an isomorphism of extensions. Conversely an isomorphism of extensions compares their polynomial lifts; their difference is a derivation and gives exactly this relation between <span class="math" data-tex="\(\phi,\psi\)">\(\phi,\psi\)</span>. We have therefore obtained</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Exal}_A(B,M)=
+\operatorname{coker}\left(
+\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)
+\longrightarrow\operatorname{Hom}_B(I/I^2,M)\right).
+\tag{3.4}
+\]">\[
+\operatorname{Exal}_A(B,M)=
+\operatorname{coker}\left(
+\operatorname{Hom}_B(\Omega_{P/A}\otimes B,M)
+\longrightarrow\operatorname{Hom}_B(I/I^2,M)\right).
+\tag{3.4}
+\]</span>
+<p>Addition of relation maps corresponds to the Baer sum of extensions: take their fibre product over <span class="math" data-tex="\(B\)">\(B\)</span>, whose kernel is <span class="math" data-tex="\(M\oplus M\)">\(M\oplus M\)</span>, and push it out by addition. Scalar multiplication is pushout by the corresponding endomorphism of <span class="math" data-tex="\(M\)">\(M\)</span>. Thus (3.4) is an isomorphism of modules, with the claimed naturality.</p>
+<p>It remains to identify this cokernel with derived Ext, rather than assume the relation module is projective. For any complex <span class="math" data-tex="\(K=[N\to F]\)">\(K=[N\to F]\)</span> with <span class="math" data-tex="\(F\)">\(F\)</span> projective in degree zero, the triangle</p>
+<span class="math math-display" data-tex="\[
+F[0]\longrightarrow K\longrightarrow N[1]\longrightarrow F[1]
+\]">\[
+F[0]\longrightarrow K\longrightarrow N[1]\longrightarrow F[1]
+\]</span>
+<p>gives, on applying <span class="math" data-tex="\(\operatorname{Hom}_{D(B)}(-,M[1])\)">\(\operatorname{Hom}_{D(B)}(-,M[1])\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_B(F,M)\longrightarrow\operatorname{Hom}_B(N,M)
+\longrightarrow\operatorname{Ext}^1_B(K,M)\longrightarrow0.
+\]">\[
+\operatorname{Hom}_B(F,M)\longrightarrow\operatorname{Hom}_B(N,M)
+\longrightarrow\operatorname{Ext}^1_B(K,M)\longrightarrow0.
+\]</span>
+<p>The first map is precomposition with the differential. Apply this to (1.1). This proves (3.2) even when <span class="math" data-tex="\(I/I^2\)">\(I/I^2\)</span> is not projective. Theorem 1.1 gives presentation independence.</p>
+<p>Finally an automorphism of (3.1) differs from the identity by a map <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> vanishing on <span class="math" data-tex="\(M\)">\(M\)</span>, hence by a map <span class="math" data-tex="\(B\to M\)">\(B\to M\)</span>. Multiplication says precisely that it is an <span class="math" data-tex="\(A\)">\(A\)</span>-derivation. Conversely <span class="math" data-tex="\(1+\iota D\)">\(1+\iota D\)</span> defines such an automorphism, with inverse <span class="math" data-tex="\(1-\iota D\)">\(1-\iota D\)</span>. This proves the automorphism assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same calculation compares extensions along a map <span class="math" data-tex="\(B\to C\)">\(B\to C\)</span> and a compatible module map <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span>. Polynomial lifts give two relation maps into <span class="math" data-tex="\(N\)">\(N\)</span>; their difference represents a class in <span class="math" data-tex="\(\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},N)\)">\(\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},N)\)</span>. A compatible extension map exists exactly when this difference class is zero, and its choices form a torsor under <span class="math" data-tex="\(\operatorname{Der}_A(B,N)\)">\(\operatorname{Der}_A(B,N)\)</span>. This follows by changing the polynomial lifts by a derivation, exactly as in (3.4).</p>
+<h2 id="4-smoothness-is-the-disappearance-of-local-extension-classes">4 Smoothness is the disappearance of local extension classes</h2>
+<p><strong>Proposition 4.1.</strong> For a finitely presented <span class="math" data-tex="\(A\)">\(A\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> is smooth.</li>
+<li>Every square-zero extension of <span class="math" data-tex="\(B\)">\(B\)</span> as an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra splits.</li>
+<li><span class="math" data-tex="\(\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M)=0\)">\(\operatorname{Ext}^1_B(\operatorname{NL}_{B/A},M)=0\)</span> for every <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>.</li>
+<li>The relation differential <span class="math" data-tex="\(I/I^2\to\Omega_{P/A}\otimes B\)">\(I/I^2\to\Omega_{P/A}\otimes B\)</span> is a split injection; equivalently the naive complex is homotopy equivalent to the finite projective module <span class="math" data-tex="\(\Omega_{B/A}\)">\(\Omega_{B/A}\)</span> in degree zero.</li>
+</ol>
+<p><strong>Proof.</strong> Theorem 3.1 proves equivalence of 2 and 3. If 3 holds, (3.4), with <span class="math" data-tex="\(M=I/I^2\)">\(M=I/I^2\)</span>, lifts the identity map of that module to a map from <span class="math" data-tex="\(\Omega_{P/A}\otimes B\)">\(\Omega_{P/A}\otimes B\)</span>. This is a left inverse to the differential, giving 4. A split injection makes (3.4) zero for every <span class="math" data-tex="\(M\)">\(M\)</span>, proving the converse. It also decomposes the complex into a contractible summand <span class="math" data-tex="\([I/I^2\xrightarrow{1}I/I^2]\)">\([I/I^2\xrightarrow{1}I/I^2]\)</span> and its finite projective cokernel in degree zero.</p>
+<p>A smooth algebra is formally smooth [Stacks, Tag 00TN], so its identity map lifts across (3.1), giving a splitting. Conversely assume 2. For an <span class="math" data-tex="\(A\)">\(A\)</span>-algebra map <span class="math" data-tex="\(B\to D/J\)">\(B\to D/J\)</span>, with <span class="math" data-tex="\(J^2=0\)">\(J^2=0\)</span>, pull back <span class="math" data-tex="\(D\to D/J\)">\(D\to D/J\)</span> along it. The pullback is a square-zero extension of <span class="math" data-tex="\(B\)">\(B\)</span> by the <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(J\)">\(J\)</span>. A splitting gives the desired map <span class="math" data-tex="\(B\to D\)">\(B\to D\)</span>. Factoring a nilpotent quotient into square-zero quotients proves formal smoothness. Since <span class="math" data-tex="\(B\)">\(B\)</span> is finitely presented, [Stacks, Tag 00TN] makes it smooth. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular a smooth algebra has <span class="math" data-tex="\(H^{-1}(\operatorname{NL})=0\)">\(H^{-1}(\operatorname{NL})=0\)</span>, and locally its degree-zero cohomology is free. The converse needs more than the vanishing of <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span>: projectivity of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> also matters. For instance, over a characteristic-zero field the cusp's relation differential is injective, but its differential module is not locally free at the cusp.</p>
+<h2 id="5-first-order-algebra-and-module-deformations">5 First-order algebra and module deformations</h2>
+<p>Write <span class="math" data-tex="\(D=k[\epsilon]/(\epsilon^2)\)">\(D=k[\epsilon]/(\epsilon^2)\)</span>. A marked first-order deformation of a <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span> is a flat <span class="math" data-tex="\(D\)">\(D\)</span>-algebra <span class="math" data-tex="\(E\)">\(E\)</span>, with an identification <span class="math" data-tex="\(E/\epsilon E=B\)">\(E/\epsilon E=B\)</span>. Isomorphisms respect this identification.</p>
+<p>A <span class="math" data-tex="\(D\)">\(D\)</span>-module <span class="math" data-tex="\(V\)">\(V\)</span> is flat exactly when</p>
+<span class="math math-display" data-tex="\[
+\ker(\epsilon:V\to V)=\epsilon V.
+\tag{5.1}
+\]">\[
+\ker(\epsilon:V\to V)=\epsilon V.
+\tag{5.1}
+\]</span>
+<p>Here is a direct verification. The necessity follows by tensoring the ideal sequence for <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>. For sufficiency, choose a <span class="math" data-tex="\(k\)">\(k\)</span>-basis of <span class="math" data-tex="\(\epsilon V\)">\(\epsilon V\)</span> and lift its elements to vectors <span class="math" data-tex="\(v_i\)">\(v_i\)</span> with the prescribed <span class="math" data-tex="\(\epsilon v_i\)">\(\epsilon v_i\)</span>. Every vector of <span class="math" data-tex="\(V\)">\(V\)</span> is uniquely a finite sum of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> and <span class="math" data-tex="\(\epsilon v_i\)">\(\epsilon v_i\)</span>: first express its <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>-image, then use (5.1) on the remainder. These pairs give a free <span class="math" data-tex="\(D\)">\(D\)</span>-basis <span class="math" data-tex="\(v_i\)">\(v_i\)</span>. This argument permits infinite bases.</p>
+<p>Flatness identifies <span class="math" data-tex="\(\epsilon E\)">\(\epsilon E\)</span> with <span class="math" data-tex="\(B\)">\(B\)</span>, by <span class="math" data-tex="\(b\mapsto\epsilon\widetilde b\)">\(b\mapsto\epsilon\widetilde b\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> gives a square-zero extension of <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span>. Conversely any such extension becomes a <span class="math" data-tex="\(D\)">\(D\)</span>-algebra by sending <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to the element of its kernel corresponding to <span class="math" data-tex="\(1\in B\)">\(1\in B\)</span>; multiplication gives (5.1). The two constructions are inverse. Theorem 3.1 therefore identifies the tangent space of marked algebra deformations as</p>
+<span class="math math-display" data-tex="\[
+T^1_{B/k}=\operatorname{Ext}^1_B(\operatorname{NL}_{B/k},B).
+\tag{5.2}
+\]">\[
+T^1_{B/k}=\operatorname{Ext}^1_B(\operatorname{NL}_{B/k},B).
+\tag{5.2}
+\]</span>
+<p>The infinitesimal automorphisms are <span class="math" data-tex="\(\operatorname{Der}_k(B,B)\)">\(\operatorname{Der}_k(B,B)\)</span>. They affect uniqueness of higher-order parameters through the automorphism-lifting criterion of the preceding lesson.</p>
+<p>There is a related module calculation, with the underlying algebra held fixed. For a <span class="math" data-tex="\(B\)">\(B\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, marked <span class="math" data-tex="\(D\)">\(D\)</span>-flat deformations as modules over <span class="math" data-tex="\(B\otimes_kD\)">\(B\otimes_kD\)</span> correspond to exact sequences of <span class="math" data-tex="\(B\)">\(B\)</span>-modules</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M\xrightarrow{i}M&#x27;\xrightarrow{p}M\longrightarrow0.
+\]">\[
+0\longrightarrow M\xrightarrow{i}M&#x27;\xrightarrow{p}M\longrightarrow0.
+\]</span>
+<p>Give an extension the <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>-action <span class="math" data-tex="\(ip\)">\(ip\)</span>. Its square is zero and its kernel and image are both <span class="math" data-tex="\(iM\)">\(iM\)</span>, so (5.1) proves flatness. Conversely a flat deformation supplies exactly this extension. Thus their classes are <span class="math" data-tex="\(\operatorname{Ext}^1_B(M,M)\)">\(\operatorname{Ext}^1_B(M,M)\)</span>, by the Yoneda description of Ext, and their infinitesimal automorphisms are <span class="math" data-tex="\(\operatorname{Hom}_B(M,M)\)">\(\operatorname{Hom}_B(M,M)\)</span>. The same argument works for quasi-coherent sheaves on a fixed <span class="math" data-tex="\(k\)">\(k\)</span>-scheme, interpreting Ext in the category of modules and imposing the indicated quasi-coherence. It is a different deformation problem from changing the structure sheaf itself.</p>
+<h2 id="6-complete-intersections-and-the-jacobian-map">6 Complete intersections and the Jacobian map</h2>
+<p><strong>Proposition 6.1.</strong> Let <span class="math" data-tex="\(P=k[x_1,\ldots,x_n]\)">\(P=k[x_1,\ldots,x_n]\)</span> and let <span class="math" data-tex="\(f_1,\ldots,f_c\)">\(f_1,\ldots,f_c\)</span> be a regular sequence. Put <span class="math" data-tex="\(B=P/(f_1,\ldots,f_c)\)">\(B=P/(f_1,\ldots,f_c)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{NL}_{B/k}=
+\left[B^c\xrightarrow{J}B^n\right],
+\qquad J(e_j)=\sum_i\frac{\partial f_j}{\partial x_i}\,dx_i,
+\tag{6.1}
+\]">\[
+\operatorname{NL}_{B/k}=
+\left[B^c\xrightarrow{J}B^n\right],
+\qquad J(e_j)=\sum_i\frac{\partial f_j}{\partial x_i}\,dx_i,
+\tag{6.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+T^1_{B/k}=\operatorname{coker}\left(
+B^n\longrightarrow B^c,\quad
+(v_i)_i\longmapsto
+\left(\sum_i v_i\frac{\partial f_j}{\partial x_i}\right)_j
+\right).
+\tag{6.2}
+\]">\[
+T^1_{B/k}=\operatorname{coker}\left(
+B^n\longrightarrow B^c,\quad
+(v_i)_i\longmapsto
+\left(\sum_i v_i\frac{\partial f_j}{\partial x_i}\right)_j
+\right).
+\tag{6.2}
+\]</span>
+<p>Every marked first-order deformation is obtained by replacing the equations with <span class="math" data-tex="\(f_j+\epsilon g_j\)">\(f_j+\epsilon g_j\)</span>. With the relation-map convention of (3.3), its class is the image of <span class="math" data-tex="\((-g_j)_j\)">\((-g_j)_j\)</span> in (6.2).</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(I/I^2\)">\(I/I^2\)</span> is free on the classes of the <span class="math" data-tex="\(f_j\)">\(f_j\)</span>. To see independence, suppose <span class="math" data-tex="\(\sum a_jf_j\in I^2\)">\(\sum a_jf_j\in I^2\)</span>. Subtract coefficients in <span class="math" data-tex="\(I\)">\(I\)</span> to make this sum zero. The syzygies of a regular sequence are generated by <span class="math" data-tex="\(f_i e_j-f_j e_i\)">\(f_i e_j-f_j e_i\)</span>. An elementary induction proves this assertion: reduce the last coefficient of a syzygy modulo the preceding equations; nonzerodivisibility of the last equation makes that coefficient lie in their ideal. Subtract the indicated pair syzygies to kill it, and apply the induction hypothesis. Thus all the original <span class="math" data-tex="\(a_j\)">\(a_j\)</span> lie in <span class="math" data-tex="\(I\)">\(I\)</span>, proving conormal independence. Differentiating the equations gives (6.1), and Theorem 3.1 gives its dual cokernel (6.2).</p>
+<p>We verify that arbitrary first-order perturbations are flat. Let <span class="math" data-tex="\(F_j=f_j+\epsilon g_j\)">\(F_j=f_j+\epsilon g_j\)</span> in <span class="math" data-tex="\(D[x]\)">\(D[x]\)</span>, and take their Koszul complex <span class="math" data-tex="\(K(F)\)">\(K(F)\)</span>. Its terms are free <span class="math" data-tex="\(D\)">\(D\)</span>-modules. Its subcomplex <span class="math" data-tex="\(\epsilon K(F)\)">\(\epsilon K(F)\)</span> and its quotient by that subcomplex are both the Koszul complex of the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. That complex has no positive homology: this is the regular-sequence Koszul calculation, proved inductively by the mapping cone for adjoining a nonzerodivisor. The long homology sequence consequently gives</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow B\longrightarrow D[x]/(F_1,\ldots,F_c)
+\longrightarrow B\longrightarrow0,
+\]">\[
+0\longrightarrow B\longrightarrow D[x]/(F_1,\ldots,F_c)
+\longrightarrow B\longrightarrow0,
+\]</span>
+<p>where the first map sends <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(\epsilon\widetilde b\)">\(\epsilon\widetilde b\)</span>. Thus the quotient satisfies (5.1) and is flat.</p>
+<p>Conversely lift the variables to a flat deformation <span class="math" data-tex="\(E\)">\(E\)</span>, giving <span class="math" data-tex="\(D[x]\twoheadrightarrow E\)">\(D[x]\twoheadrightarrow E\)</span>. Surjectivity follows from nilpotent Nakayama on its cokernel. Flatness makes reduction of its relation ideal equal to <span class="math" data-tex="\(I\)">\(I\)</span>: tensor the exact kernel sequence with <span class="math" data-tex="\(k\)">\(k\)</span>, using <span class="math" data-tex="\(\operatorname{Tor}_1^D(E,k)=0\)">\(\operatorname{Tor}_1^D(E,k)=0\)</span>. Lift the <span class="math" data-tex="\(f_j\)">\(f_j\)</span> to generators <span class="math" data-tex="\(F_j\)">\(F_j\)</span> of that ideal. Their reductions generate, so nilpotent Nakayama on the ideal's quotient makes them generate the entire ideal. They have the indicated form.</p>
+<p>In this quotient the chosen lift of <span class="math" data-tex="\(f_j\)">\(f_j\)</span> evaluates to <span class="math" data-tex="\(-\epsilon g_j\)">\(-\epsilon g_j\)</span>, giving the stated minus sign. Changing the lifted coordinates by <span class="math" data-tex="\(\epsilon v_i\)">\(\epsilon v_i\)</span> changes the relation map by the Jacobian image in (6.2). With fixed coordinate lifts, two choices of lifted equations differ by <span class="math" data-tex="\(\epsilon h_j\)">\(\epsilon h_j\)</span> with <span class="math" data-tex="\(h_j\in I\)">\(h_j\in I\)</span>: flatness identifies the coefficient of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in their common quotient with <span class="math" data-tex="\(B\)">\(B\)</span>. Thus that difference is zero in <span class="math" data-tex="\(B^c\)">\(B^c\)</span>. The extension classification proves that these are exactly the changes preserving a marked deformation class. This proves the last assertion as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a single nonzero polynomial <span class="math" data-tex="\(f\)">\(f\)</span>, no isolated-singularity assumption is needed to obtain</p>
+<span class="math math-display" data-tex="\[
+T^1_{P/(f)/k}=P/(f,f_{x_1},\ldots,f_{x_n}).
+\tag{6.3}
+\]">\[
+T^1_{P/(f)/k}=P/(f,f_{x_1},\ldots,f_{x_n}).
+\tag{6.3}
+\]</span>
+<p>Localizing the presentation gives the corresponding local formula. Over a perfect field its support is the nonsmooth locus by the Jacobian criterion. When that locus consists of finitely many points, the module has finite length; it need not have finite length otherwise. Formula (6.3) is often called the <strong>Tjurina algebra</strong>. The equation <span class="math" data-tex="\(f\)">\(f\)</span> remains in its ideal: quotienting only by the derivatives computes a different algebra.</p>
+<p>For the node <span class="math" data-tex="\(f=xy\)">\(f=xy\)</span>, the derivatives are <span class="math" data-tex="\(y,x\)">\(y,x\)</span>, so <span class="math" data-tex="\(T^1=k\)">\(T^1=k\)</span>. The parameter in <span class="math" data-tex="\(xy=t\)">\(xy=t\)</span> represents its generator, in every characteristic. The preceding lesson proved the full hull assertion and identified an automorphism that prevents its prorepresentability.</p>
+<p>For the cusp <span class="math" data-tex="\(f=y^2-x^3\)">\(f=y^2-x^3\)</span>, the two derivatives are <span class="math" data-tex="\(-3x^2,2y\)">\(-3x^2,2y\)</span>. The answer depends on the characteristic:</p>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th><span class="math" data-tex="\(T^1\)">\(T^1\)</span></th>
+<th>Basis over <span class="math" data-tex="\(k\)">\(k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Different from <span class="math" data-tex="\(2,3\)">\(2,3\)</span></td>
+<td><span class="math" data-tex="\(k[x]/(x^2)\)">\(k[x]/(x^2)\)</span></td>
+<td><span class="math" data-tex="\(1,x\)">\(1,x\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(k[x,y]/(x^2,y^2)\)">\(k[x,y]/(x^2,y^2)\)</span></td>
+<td><span class="math" data-tex="\(1,x,y,xy\)">\(1,x,y,xy\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(k[x]/(x^3)\)">\(k[x]/(x^3)\)</span></td>
+<td><span class="math" data-tex="\(1,x,x^2\)">\(1,x,x^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the second row, imposing <span class="math" data-tex="\(x^2=0\)">\(x^2=0\)</span> makes the original equation <span class="math" data-tex="\(y^2=0\)">\(y^2=0\)</span>. In the third, imposing <span class="math" data-tex="\(y=0\)">\(y=0\)</span> leaves <span class="math" data-tex="\(x^3=0\)">\(x^3=0\)</span>. Thus the familiar two-dimensional answer has a characteristic restriction. A first-order family with independent parameters is obtained by adding the monomials in the applicable row to the equation. In good characteristic it is <span class="math" data-tex="\(y^2-x^3+\epsilon(a+bx)\)">\(y^2-x^3+\epsilon(a+bx)\)</span>; the other rows require respectively four or three tangent coefficients.</p>
+<p>This cusp also explains the final caution of Section 4. In characteristic zero its ring is a domain, so multiplication by the nonzero derivative <span class="math" data-tex="\(2y\)">\(2y\)</span> makes <span class="math" data-tex="\(B\to B^2\)">\(B\to B^2\)</span> injective. Hence <span class="math" data-tex="\(H^{-1}(\operatorname{NL})=0\)">\(H^{-1}(\operatorname{NL})=0\)</span>. At the cusp both derivatives lie in the maximal ideal, so no linear combination of them is one. The injection cannot split there, and Proposition 4.1 proves that the algebra is not smooth. Equivalently <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is not projective there.</p>
+<h2 id="7-smooth-schemes-locally-trivial-thickenings">7 Smooth schemes: locally trivial thickenings</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a smooth separated <span class="math" data-tex="\(k\)">\(k\)</span>-scheme. Properness and quasi-compactness are not assumed. Smoothness includes local finite presentation. Write</p>
+<span class="math math-display" data-tex="\[
+T_X=\mathcal Hom_{\mathcal O_X}(\Omega_{X/k},\mathcal O_X).
+\]">\[
+T_X=\mathcal Hom_{\mathcal O_X}(\Omega_{X/k},\mathcal O_X).
+\]</span>
+<p>A first-order thickening with identified ideal <span class="math" data-tex="\(M\)">\(M\)</span> has the same underlying topological space as <span class="math" data-tex="\(X\)">\(X\)</span>, and a sequence of sheaves of <span class="math" data-tex="\(k\)">\(k\)</span>-algebras</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M\longrightarrow\mathcal O_{X&#x27;}
+\longrightarrow\mathcal O_X\longrightarrow0,
+\qquad M^2=0.
+\tag{7.1}
+\]">\[
+0\longrightarrow M\longrightarrow\mathcal O_{X&#x27;}
+\longrightarrow\mathcal O_X\longrightarrow0,
+\qquad M^2=0.
+\tag{7.1}
+\]</span>
+<p>Assume <span class="math" data-tex="\(M\)">\(M\)</span> quasi-coherent. Nilpotent thickenings of affine schemes are affine [Stacks, Tag 06AD]. On an affine open <span class="math" data-tex="\(U=\operatorname{Spec}B\)">\(U=\operatorname{Spec}B\)</span>, Proposition 4.1 therefore splits this algebra extension. Its automorphisms preserving the ideal and quotient are the sections of</p>
+<span class="math math-display" data-tex="\[
+\mathcal Hom(\Omega_{X/k},M)=T_X\otimes M;
+\]">\[
+\mathcal Hom(\Omega_{X/k},M)=T_X\otimes M;
+\]</span>
+<p>the tensor expression uses the local freeness of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Every thickening is consequently locally isomorphic to <span class="math" data-tex="\(\mathcal O_X\oplus M\)">\(\mathcal O_X\oplus M\)</span>, although those isomorphisms may fail to agree globally.</p>
+<p><strong>Theorem 7.1.</strong> Isomorphism classes of first-order <span class="math" data-tex="\(k\)">\(k\)</span>-thickenings of a smooth separated <span class="math" data-tex="\(X\)">\(X\)</span>, with ideal identified as <span class="math" data-tex="\(M\)">\(M\)</span>, form</p>
+<span class="math math-display" data-tex="\[
+H^1(X,T_X\otimes M).
+\tag{7.2}
+\]">\[
+H^1(X,T_X\otimes M).
+\tag{7.2}
+\]</span>
+<p>Their automorphisms preserving the two ends of (7.1) form <span class="math" data-tex="\(H^0(X,T_X\otimes M)\)">\(H^0(X,T_X\otimes M)\)</span>. In particular marked flat deformations over <span class="math" data-tex="\(k[\epsilon]\)">\(k[\epsilon]\)</span> are classified by <span class="math" data-tex="\(H^1(X,T_X)\)">\(H^1(X,T_X)\)</span>, and their infinitesimal automorphisms form <span class="math" data-tex="\(H^0(X,T_X)\)">\(H^0(X,T_X)\)</span>.</p>
+<p><strong>Proof.</strong> Choose an affine cover <span class="math" data-tex="\(\{U_i\}\)">\(\{U_i\}\)</span>. Its finite intersections are affine because <span class="math" data-tex="\(X\)">\(X\)</span> is separated. Split (7.1) on each <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. On an overlap the two splittings differ by an automorphism of the split algebra preserving <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span>. By the final calculation in Theorem 3.1 it is <span class="math" data-tex="\(1+D_{ij}\)">\(1+D_{ij}\)</span>, for a derivation <span class="math" data-tex="\(D_{ij}:\mathcal O_X\to M\)">\(D_{ij}:\mathcal O_X\to M\)</span>.</p>
+<p>Composition adds these derivations: their cross term is zero because a derivation correction vanishes on <span class="math" data-tex="\(M\)">\(M\)</span>. Thus compatibility on triples is</p>
+<span class="math math-display" data-tex="\[
+D_{ij}+D_{jk}=D_{ik}.
+\]">\[
+D_{ij}+D_{jk}=D_{ik}.
+\]</span>
+<p>Changing the splitting on <span class="math" data-tex="\(U_i\)">\(U_i\)</span> by <span class="math" data-tex="\(1+D_i\)">\(1+D_i\)</span> changes the overlap collection by the Čech coboundary of <span class="math" data-tex="\((D_i)\)">\((D_i)\)</span>. Conversely any one-cocycle defines transition maps <span class="math" data-tex="\(1+D_{ij}\)">\(1+D_{ij}\)</span> for the split affine thickenings, and the cocycle identity glues them to a scheme with the sequence (7.1). Its ideal is the specified quasi-coherent <span class="math" data-tex="\(M\)">\(M\)</span>. Affine Čech cohomology computes the cohomology of the quasi-coherent sheaf <span class="math" data-tex="\(T_X\otimes M\)">\(T_X\otimes M\)</span> [Stacks, Tag 01XD], so these equivalence classes give exactly (7.2). This also applies to an infinite affine cover: each intersection is acyclic, which is the affine-cover hypothesis of that cohomology statement.</p>
+<p>An automorphism is a compatible family of local derivations; these are the global sections of <span class="math" data-tex="\(T_X\otimes M\)">\(T_X\otimes M\)</span>. For <span class="math" data-tex="\(M=\mathcal O_X\)">\(M=\mathcal O_X\)</span>, send <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> to the kernel section corresponding to one. The stalkwise version of (5.1) gives flatness, and every marked flat deformation supplies this same sequence. This proves the final assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>One can also express (7.2) as <span class="math" data-tex="\(\operatorname{Ext}^1_X(\Omega_{X/k},M)\)">\(\operatorname{Ext}^1_X(\Omega_{X/k},M)\)</span>: since <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is locally free, sheaf Hom from it is exact, and derived global Hom is the cohomology of <span class="math" data-tex="\(T_X\otimes M\)">\(T_X\otimes M\)</span>. The argument above exhibits the extension and its gluing maps directly.</p>
+<h2 id="8-the-obstruction-is-a-triple-overlap-error">8 The obstruction is a triple-overlap error</h2>
+<p>Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be a complete Noetherian local ring with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, and let <span class="math" data-tex="\(B\twoheadrightarrow A\)">\(B\twoheadrightarrow A\)</span> be a small extension of local Artinian <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-algebras, with kernel <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(\mathfrak m_B I=0\)">\(\mathfrak m_B I=0\)</span> and <span class="math" data-tex="\(I^2=0\)">\(I^2=0\)</span>. Let <span class="math" data-tex="\(X_A\)">\(X_A\)</span> be a marked flat deformation of the smooth separated <span class="math" data-tex="\(X\)">\(X\)</span>, locally of finite presentation.</p>
+<p><strong>Theorem 8.1.</strong> There is a canonical obstruction</p>
+<span class="math math-display" data-tex="\[
+o(X_A,B)\in H^2(X,T_X)\otimes_k I.
+\tag{8.1}
+\]">\[
+o(X_A,B)\in H^2(X,T_X)\otimes_k I.
+\tag{8.1}
+\]</span>
+<p>It vanishes if and only if <span class="math" data-tex="\(X_A\)">\(X_A\)</span> has a flat deformation over <span class="math" data-tex="\(B\)">\(B\)</span> with a specified identification of its reduction with <span class="math" data-tex="\(X_A\)">\(X_A\)</span>. If lifts exist, their identified isomorphism classes form a torsor under <span class="math" data-tex="\(H^1(X,T_X)\otimes I\)">\(H^1(X,T_X)\otimes I\)</span>, and the kernel of their automorphism reduction map is <span class="math" data-tex="\(H^0(X,T_X)\otimes I\)">\(H^0(X,T_X)\otimes I\)</span>.</p>
+<p><strong>Proof.</strong> We give the local existence argument before forming an obstruction. Each affine open of <span class="math" data-tex="\(X\)">\(X\)</span> can be refined to an invertible-Jacobian presentation [Stacks, Tag 01V7]. Lift the polynomial coefficients to <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and invert the lifted minor. This gives a smooth <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-algebra by [Stacks, Tag 00T7]. Formal smoothness [Stacks, Tag 00TN] maps its base change to <span class="math" data-tex="\(A\)">\(A\)</span> into the affine deformation algebra, lifting the special-fibre identification. That map is an isomorphism: its cokernel has zero reduction modulo the nilpotent maximal ideal, so is zero; flatness of the target then makes the kernel's reduction zero, so nilpotent Nakayama kills the kernel too. The same model over <span class="math" data-tex="\(B\)">\(B\)</span> is a local lift.</p>
+<p>Any two local lifts over an affine overlap are isomorphic with any prescribed smaller-base comparison. The lifted algebra is smooth over <span class="math" data-tex="\(B\)">\(B\)</span>, so formal smoothness lifts the comparison into the other algebra, and the same flat nilpotent argument makes the lifted map an isomorphism. Affineness of the overlaps follows from separation on the closed fibre and [Stacks, Tag 06AD].</p>
+<p>Choose such local lifts <span class="math" data-tex="\(U_{i,B}\)">\(U_{i,B}\)</span> on an affine cover and overlap isomorphisms <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span>, with <span class="math" data-tex="\(g_{ji}=g_{ij}^{-1}\)">\(g_{ji}=g_{ij}^{-1}\)</span>, lifting the transition maps of <span class="math" data-tex="\(X_A\)">\(X_A\)</span>. Work with their structure sheaves on the common underlying space, with <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span> directed from the <span class="math" data-tex="\(j\)">\(j\)</span>-model to the <span class="math" data-tex="\(i\)">\(i\)</span>-model. An automorphism reducing to the identity over <span class="math" data-tex="\(A\)">\(A\)</span> has the form <span class="math" data-tex="\(1+D\)">\(1+D\)</span>. Its difference from the identity lies in</p>
+<span class="math math-display" data-tex="\[
+I\mathcal O_{U_B}=I\otimes_k\mathcal O_U,
+\]">\[
+I\mathcal O_{U_B}=I\otimes_k\mathcal O_U,
+\]</span>
+<p>by flatness. The difference vanishes on the maximal-base-ideal multiple of an argument because <span class="math" data-tex="\(\mathfrak m_B I=0\)">\(\mathfrak m_B I=0\)</span>, so it factors through the closed fibre. The multiplication identity makes it a <span class="math" data-tex="\(k\)">\(k\)</span>-derivation. Conversely any such derivation gives an automorphism <span class="math" data-tex="\(1+D\)">\(1+D\)</span>, with inverse <span class="math" data-tex="\(1-D\)">\(1-D\)</span>. Their composition adds derivations. This identifies these automorphisms with <span class="math" data-tex="\(T_X\otimes I\)">\(T_X\otimes I\)</span>.</p>
+<p>Define <span class="math" data-tex="\(c_{ijk}\)">\(c_{ijk}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+g_{ij}g_{jk}g_{ki}=1+c_{ijk}.
+\tag{8.2}
+\]">\[
+g_{ij}g_{jk}g_{ki}=1+c_{ijk}.
+\tag{8.2}
+\]</span>
+<p>The left side reduces to the identity over <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(c_{ijk}\)">\(c_{ijk}\)</span> is an infinitesimal derivation. Associate <span class="math" data-tex="\(g_{ij}g_{jk}g_{kl}\)">\(g_{ij}g_{jk}g_{kl}\)</span> in the two possible ways. Conjugation of a derivation correction by an overlap map uses only its closed-fibre restriction, which is the prescribed identification with <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. The calculation gives</p>
+<span class="math math-display" data-tex="\[
+c_{ijk}+c_{ikl}=c_{jkl}+c_{ijl}.
+\tag{8.3}
+\]">\[
+c_{ijk}+c_{ikl}=c_{jkl}+c_{ijl}.
+\tag{8.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(c\)">\(c\)</span> is a Čech two-cocycle. Replacing <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span> by <span class="math" data-tex="\((1+b_{ij})g_{ij}\)">\((1+b_{ij})g_{ij}\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> an alternating one-cochain, changes it by</p>
+<span class="math math-display" data-tex="\[
+c_{ijk}\longmapsto c_{ijk}+b_{ij}+b_{jk}-b_{ik}.
+\tag{8.4}
+\]">\[
+c_{ijk}\longmapsto c_{ijk}+b_{ij}+b_{jk}-b_{ik}.
+\tag{8.4}
+\]</span>
+<p>Changing the local lifts first compares them by local isomorphisms, then has the same effect on the chosen overlap maps. Refinements preserve the resulting cohomology class. Affine Čech cohomology [Stacks, Tag 01XD] therefore gives the canonical class (8.1). Tensoring by the one-dimensional <span class="math" data-tex="\(I\)">\(I\)</span> commutes with this complex; the same argument permits any finite-dimensional socle kernel.</p>
+<p>If the class is zero, (8.4) corrects the transition maps to a cocycle, and they glue the local lifts to <span class="math" data-tex="\(X_B\)">\(X_B\)</span>. The result is flat and locally finitely presented because these properties hold on the local models. It is separated as well. On an affine pair of opens, the map from the tensor product of their coordinate rings to the coordinate ring of the overlap is onto modulo <span class="math" data-tex="\(I\)">\(I\)</span>, since <span class="math" data-tex="\(X_A\)">\(X_A\)</span> is separated. Nilpotent Nakayama makes it onto over <span class="math" data-tex="\(B\)">\(B\)</span>; the affine separation criterion then proves separation of the glued scheme. Conversely a global lift supplies compatible local models and overlap maps with zero error, proving necessity.</p>
+<p>To compare two global lifts, choose local isomorphisms preserving their given reduction identification. Their overlap discrepancies are a one-cocycle in <span class="math" data-tex="\(T_X\otimes I\)">\(T_X\otimes I\)</span>. Changing the local comparisons changes it by a zero-cochain coboundary. The discrepancy class is zero exactly when the comparisons glue to an identified global isomorphism. Every one-cocycle occurs by changing the transition maps of one lift. This proves the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-torsor assertion. Compatible local automorphisms are global derivations, giving the <span class="math" data-tex="\(H^0\)">\(H^0\)</span> assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a proper <span class="math" data-tex="\(X\)">\(X\)</span>, properness of a lift follows from properness across a nilpotent base thickening [Stacks, Tag 0BPG]. The preceding lesson used finite-dimensional proper cohomology to construct a hull. Theorem 8.1 itself needs neither properness nor finite-dimensional tangent cohomology. For a general smooth separated scheme, the vanishing of <span class="math" data-tex="\(H^2(T_X)\)">\(H^2(T_X)\)</span> still proves the small-extension lifting property; the existence of a Noetherian hull additionally requires the finite-dimensionality condition.</p>
+<h2 id="9-the-projective-line-is-rigid-with-automorphisms">9 The projective line is rigid, with automorphisms</h2>
+<p>On the two affine charts of <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>, take coordinates <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(w=z^{-1}\)">\(w=z^{-1}\)</span>. Their tangent frames satisfy</p>
+<span class="math math-display" data-tex="\[
+\frac{\partial}{\partial w}=-z^2\frac{\partial}{\partial z}.
+\]">\[
+\frac{\partial}{\partial w}=-z^2\frac{\partial}{\partial z}.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(T_{\mathbb P^1}=\mathcal O(2)\)">\(T_{\mathbb P^1}=\mathcal O(2)\)</span>, in every characteristic. The Čech calculation for <span class="math" data-tex="\(\mathcal O(d)\)">\(\mathcal O(d)\)</span> on these charts is</p>
+<span class="math math-display" data-tex="\[
+H^1(\mathbb P^1,\mathcal O(d))=
+\frac{k[z,z^{-1}]}{k[z]+z^d k[z^{-1}]}.
+\tag{9.1}
+\]">\[
+H^1(\mathbb P^1,\mathcal O(d))=
+\frac{k[z,z^{-1}]}{k[z]+z^d k[z^{-1}]}.
+\tag{9.1}
+\]</span>
+<p>For <span class="math" data-tex="\(d=2\)">\(d=2\)</span> the first summand contains all exponents at least zero, and the second contains all exponents at most two. They cover every Laurent monomial. Hence <span class="math" data-tex="\(H^1(T)=0\)">\(H^1(T)=0\)</span>; there are no nontrivial marked first-order deformations by Theorem 7.1. Also the same cover has no nonzero Čech degrees above one, so <span class="math" data-tex="\(H^2(T)=0\)">\(H^2(T)=0\)</span>.</p>
+<p>This proves rigidity over every Artinian base in <span class="math" data-tex="\(\mathcal C_\Lambda\)">\(\mathcal C_\Lambda\)</span>. Compare any deformation successively with <span class="math" data-tex="\(\mathbb P^1_A\)">\(\mathbb P^1_A\)</span>. At each small extension, the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-torsor of identified lifts has one element, and the standard projective line supplies that element. Thus every deformation is isomorphic to the standard one, respecting the prescribed smaller-base identification. This assertion concerns Artinian deformations; no algebraization over a general complete base is being inferred.</p>
+<p>Rigidity does not say that the isomorphism is unique. Formula (9.1) also gives <span class="math" data-tex="\(h^0(T)=3\)">\(h^0(T)=3\)</span>: in the <span class="math" data-tex="\(z\)">\(z\)</span>-frame the global coefficients are the polynomials of degree at most two. These vector fields yield infinitesimal automorphisms. The difference between deformation parameters and automorphisms remains visible even in this simplest rigid example.</p>
+<h2 id="10-exercises-with-complete-solutions">10 Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Compute the naive cotangent complex of a smooth finitely presented <span class="math" data-tex="\(A\)">\(A\)</span>-algebra and prove <span class="math" data-tex="\(H^{-1}(\operatorname{NL})=0\)">\(H^{-1}(\operatorname{NL})=0\)</span>.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(P\twoheadrightarrow B\)">\(P\twoheadrightarrow B\)</span>. Formal smoothness splits the extension <span class="math" data-tex="\(P/I^2\twoheadrightarrow B\)">\(P/I^2\twoheadrightarrow B\)</span>. Alternatively apply Proposition 4.1 and Theorem 3.1 to all coefficient modules: the map <span class="math" data-tex="\(\operatorname{Hom}(\Omega_{P/A}\otimes B,M)\to\operatorname{Hom}(I/I^2,M)\)">\(\operatorname{Hom}(\Omega_{P/A}\otimes B,M)\to\operatorname{Hom}(I/I^2,M)\)</span> is onto. Taking <span class="math" data-tex="\(M=I/I^2\)">\(M=I/I^2\)</span> produces a retraction of the relation differential. Thus <span class="math" data-tex="\(\Omega_{P/A}\otimes B=(I/I^2)\oplus\Omega_{B/A}\)">\(\Omega_{P/A}\otimes B=(I/I^2)\oplus\Omega_{B/A}\)</span>, and the complex is the direct sum of <span class="math" data-tex="\([I/I^2\xrightarrow{1}I/I^2]\)">\([I/I^2\xrightarrow{1}I/I^2]\)</span> and <span class="math" data-tex="\(\Omega_{B/A}[0]\)">\(\Omega_{B/A}[0]\)</span>. The first summand is contractible. Therefore the naive complex is homotopy equivalent to the finite projective <span class="math" data-tex="\(\Omega_{B/A}\)">\(\Omega_{B/A}\)</span> in degree zero and has no degree <span class="math" data-tex="\(-1\)">\(-1\)</span> cohomology. On a standard smooth presentation this is also the invertible-Jacobian-minor computation. Theorem 1.1 makes the answer independent of the chosen presentation.</p>
+<p><strong>Exercise 2.</strong> Prove the transitivity exact sequence of naive cotangent complexes for <span class="math" data-tex="\(A\to B\to C\)">\(A\to B\to C\)</span>. State precisely what is exact.</p>
+<p><strong>Solution.</strong> Present <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(A[x]/I\)">\(A[x]/I\)</span>, then <span class="math" data-tex="\(C\)">\(C\)</span> by <span class="math" data-tex="\(B[y]/J\)">\(B[y]/J\)</span>, and let <span class="math" data-tex="\(K\)">\(K\)</span> be the kernel of <span class="math" data-tex="\(A[x,y]\to C\)">\(A[x,y]\to C\)</span>. The differential modules have the split exact row given by the <span class="math" data-tex="\(dx\)">\(dx\)</span>- and <span class="math" data-tex="\(dy\)">\(dy\)</span>-bases. The relation row is <span class="math" data-tex="\(I/I^2\otimes C\to K/K^2\to J/J^2\to0\)">\(I/I^2\otimes C\to K/K^2\to J/J^2\to0\)</span>: the last map is onto and its kernel is <span class="math" data-tex="\((IA[x,y]+K^2)/K^2\)">\((IA[x,y]+K^2)/K^2\)</span>, exactly the first map's image. These give (2.1).</p>
+<p>Take the termwise kernel complex <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(\operatorname{NL}_{C/A}\to\operatorname{NL}_{C/B}\)">\(\operatorname{NL}_{C/A}\to\operatorname{NL}_{C/B}\)</span>. It fits into a short exact sequence with those complexes. The complex <span class="math" data-tex="\(\operatorname{NL}_{B/A}\otimes C\)">\(\operatorname{NL}_{B/A}\otimes C\)</span> maps onto <span class="math" data-tex="\(D\)">\(D\)</span> in degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and isomorphically in degree zero. It therefore surjects on <span class="math" data-tex="\(H^{-1}(D)\)">\(H^{-1}(D)\)</span> and identifies <span class="math" data-tex="\(H^0(D)=\Omega_{B/A}\otimes C\)">\(H^0(D)=\Omega_{B/A}\otimes C\)</span>. The long cohomology sequence gives exactly (2.2). Its connecting map sends a relation cycle to the differential of any lift in <span class="math" data-tex="\(K/K^2\)">\(K/K^2\)</span>, modulo the earlier relation differentials.</p>
+<p>There is no initial zero in the conormal row or at the beginning of (2.2). The dual-number example (2.3) prevents interpreting the statement as a distinguished triangle of three two-term naive complexes. If one wants to replace <span class="math" data-tex="\(H^{-1}(\operatorname{NL}_{B/A}\otimes C)\)">\(H^{-1}(\operatorname{NL}_{B/A}\otimes C)\)</span> by <span class="math" data-tex="\(H^{-1}(\operatorname{NL}_{B/A})\otimes C\)">\(H^{-1}(\operatorname{NL}_{B/A})\otimes C\)</span>, the Tor conditions proved in Proposition 2.1 suffice; flatness of <span class="math" data-tex="\(C\)">\(C\)</span> over <span class="math" data-tex="\(B\)">\(B\)</span> is one sufficient special case.</p>
+<p><strong>Exercise 3.</strong> Compute <span class="math" data-tex="\(T^1\)">\(T^1\)</span> for <span class="math" data-tex="\(B=k[x,y]/(y^2-x^{n+1})\)">\(B=k[x,y]/(y^2-x^{n+1})\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, including the characteristic restrictions in the familiar <span class="math" data-tex="\(A_n\)">\(A_n\)</span> answer.</p>
+<p><strong>Solution.</strong> Formula (6.3) gives</p>
+<span class="math math-display" data-tex="\[
+T^1=k[x,y]/\bigl(y^2-x^{n+1},\,2y,\,(n+1)x^n\bigr).
+\tag{10.1}
+\]">\[
+T^1=k[x,y]/\bigl(y^2-x^{n+1},\,2y,\,(n+1)x^n\bigr).
+\tag{10.1}
+\]</span>
+<p>If <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span> are invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, this is <span class="math" data-tex="\(k[x]/(x^n)\)">\(k[x]/(x^n)\)</span>, with basis <span class="math" data-tex="\(1,x,\ldots,x^{n-1}\)">\(1,x,\ldots,x^{n-1}\)</span> and dimension <span class="math" data-tex="\(n\)">\(n\)</span>. If the characteristic is different from two but divides <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, it is <span class="math" data-tex="\(k[x]/(x^{n+1})\)">\(k[x]/(x^{n+1})\)</span>, with dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<p>In characteristic two, if <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is odd, its value in <span class="math" data-tex="\(k\)">\(k\)</span> is one. Then (10.1) is <span class="math" data-tex="\(k[x,y]/(x^n,y^2)\)">\(k[x,y]/(x^n,y^2)\)</span>, with basis <span class="math" data-tex="\(x^i,x^iy\)">\(x^i,x^iy\)</span>, <span class="math" data-tex="\(0\leq i&lt;n\)">\(0\leq i&lt;n\)</span>, and dimension <span class="math" data-tex="\(2n\)">\(2n\)</span>. If <span class="math" data-tex="\(n+1\)">\(n+1\)</span> is even, both derivatives vanish, so <span class="math" data-tex="\(T^1=B\)">\(T^1=B\)</span>, which is infinite-dimensional over <span class="math" data-tex="\(k\)">\(k\)</span>. In that case the equation is the square <span class="math" data-tex="\((y-x^{(n+1)/2})^2\)">\((y-x^{(n+1)/2})^2\)</span>; its nonsmooth locus is the whole curve, and it is not an isolated <span class="math" data-tex="\(A_n\)">\(A_n\)</span> singularity in the usual good-characteristic sense. Thus the customary dimension <span class="math" data-tex="\(n\)">\(n\)</span> belongs to its stated good-characteristic range. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> the three finite cases recover exactly the cusp table in Section 6.</p>
+<p><strong>Exercise 4.</strong> Show that a smooth affine <span class="math" data-tex="\(k\)">\(k\)</span>-scheme has no nontrivial marked first-order deformations.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(X=\operatorname{Spec}B\)">\(X=\operatorname{Spec}B\)</span>. A flat first-order deformation is affine by invariance of affineness under nilpotent thickening. Its algebra is a square-zero extension of <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(B\)">\(B\)</span>, as in Section 5. Smoothness makes its Exal class zero by Proposition 4.1, so it is isomorphic to <span class="math" data-tex="\(B\otimes_k k[\epsilon]\)">\(B\otimes_k k[\epsilon]\)</span>, respecting the special-fibre identification and the <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>-action. Equivalently Theorem 7.1 gives the group <span class="math" data-tex="\(H^1(X,T_X)\)">\(H^1(X,T_X)\)</span>, which is zero by affine vanishing for quasi-coherent sheaves. The isomorphism may have choices: its infinitesimal automorphisms are <span class="math" data-tex="\(\operatorname{Der}_k(B,B)\)">\(\operatorname{Der}_k(B,B)\)</span>.</p>
+<p><strong>Exercise 5.</strong> Prove the obstruction statement for smooth separated schemes by Čech cocycles, including independence of choices and the criterion for vanishing.</p>
+<p><strong>Solution.</strong> For a small extension <span class="math" data-tex="\(B\to A\)">\(B\to A\)</span>, first lift affine standard-smooth charts by lifting their equations and inverting their Jacobian minor. Formal smoothness identifies their <span class="math" data-tex="\(A\)">\(A\)</span>-reductions with the given charts of <span class="math" data-tex="\(X_A\)">\(X_A\)</span>, and lifts the comparisons on overlaps. Any error in a comparison that is invisible over <span class="math" data-tex="\(A\)">\(A\)</span> is a derivation into <span class="math" data-tex="\(I\mathcal O_{X_B}=I\otimes_k\mathcal O_X\)">\(I\mathcal O_{X_B}=I\otimes_k\mathcal O_X\)</span>, hence a section of <span class="math" data-tex="\(T_X\otimes I\)">\(T_X\otimes I\)</span>; products of such errors add because <span class="math" data-tex="\(I^2=0\)">\(I^2=0\)</span>.</p>
+<p>For chosen comparisons <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span>, write <span class="math" data-tex="\(g_{ij}g_{jk}g_{ki}=1+c_{ijk}\)">\(g_{ij}g_{jk}g_{ki}=1+c_{ijk}\)</span>. Associating the product on four indices in both ways gives <span class="math" data-tex="\(c_{ijk}+c_{ikl}=c_{jkl}+c_{ijl}\)">\(c_{ijk}+c_{ikl}=c_{jkl}+c_{ijl}\)</span>, the two-cocycle identity. Changing comparisons by <span class="math" data-tex="\(1+b_{ij}\)">\(1+b_{ij}\)</span> changes the error by <span class="math" data-tex="\(b_{ij}+b_{jk}-b_{ik}\)">\(b_{ij}+b_{jk}-b_{ik}\)</span>, a coboundary. Local isomorphisms comparing any different choices of lifted charts reduce the general change of choices to this calculation. Refining the affine cover carries the same class to the refined Čech complex. Thus there is a canonical class in <span class="math" data-tex="\(H^2(X,T_X)\otimes I\)">\(H^2(X,T_X)\otimes I\)</span>.</p>
+<p>Its vanishing gives a one-cochain correcting the comparisons to a cocycle, which glues the flat smooth charts to a deformation. The affine separation criterion and nilpotent Nakayama preserve separation. Conversely a global deformation has comparisons with zero triple error, so its obstruction class vanishes. Comparing two resulting gluings gives a one-cocycle, with changes by zero-cochain coboundaries; all such cocycles occur. This gives the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-torsor of identified lifts. Compatible local automorphisms give exactly the global sections <span class="math" data-tex="\(H^0(T_X)\otimes I\)">\(H^0(T_X)\otimes I\)</span>. These constructions establish existence, independence, vanishing, choices and automorphisms, rather than only naming a possible obstruction group.</p>
+<h2 id="11-what-this-lesson-does-not-prove">11 What this lesson does not prove</h2>
+<p>The presentation comparison, Jacobi–Zariski sequence, Exal classification, Jacobian tangent calculation and smooth-scheme gluing obstruction were proved here. The prerequisites used in their proofs are:</p>
+<ul>
+<li>The universal property and conormal exact sequence of Kähler differentials, together with the basic derived-category long exact Hom sequence and the Yoneda description of <span class="math" data-tex="\(\operatorname{Ext}^1\)">\(\operatorname{Ext}^1\)</span>. The particular low-degree derived Ext calculation is supplied in Theorem 3.1.</li>
+<li>Finite presentation plus formal smoothness is equivalent to smoothness [Stacks, Tag 00TN]. Smooth schemes locally have standard-smooth presentations [Stacks, Tag 01V7], and an invertible Jacobian minor gives a smooth algebra [Stacks, Tag 00T7]. The derivation and extension computations establishing Proposition 4.1 were given here.</li>
+<li>Affineness survives a nilpotent thickening [Stacks, Tag 06AD]. A separated scheme has affine intersections of affine opens, and separation is tested by the surjectivity of the tensor-product maps to their coordinate rings [Stacks, Tag 01KP]. These allow the local algebra lifts to be glued as separated schemes.</li>
+<li>Quasi-coherent sheaves have no higher cohomology on affine schemes, and an affine cover with affine finite intersections computes their cohomology [Stacks, Tag 01XD]. No cohomology finiteness theorem was needed for Theorems 7.1 and 8.1.</li>
+<li>Properness extends across the nilpotent base thickenings under consideration [Stacks, Tag 0BPG], when one restricts the deformation problem to proper schemes.</li>
+</ul>
+<p>We have not constructed the full cotangent complex or claimed that its lower cohomology vanishes for an arbitrary algebra. Nor have we identified all singular-scheme obstruction groups with a tangent-sheaf cohomology group: local equation deformations contribute there. The final lesson constructs the full complex, proves its transitivity triangle, and develops its degree-two obstruction theory.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project, <a href="https://stacks.math.columbia.edu/tag/00S0">the naive cotangent complex</a>, <a href="https://stacks.math.columbia.edu/tag/00S2">Jacobi–Zariski sequence</a>, <a href="https://stacks.math.columbia.edu/tag/0GPT">extensions of algebras</a>, and <a href="https://stacks.math.columbia.edu/tag/0D14">deformations of schemes</a>. The tagged texts are read in the AI Integrated Stacks Project edition.</li>
+<li>Schlessinger, <em>Functors of Artin rings</em>, Transactions of the American Mathematical Society <strong>130</strong> (1968), 208–222, §3. <a href="https://doi.org/10.1090/S0002-9947-1968-0217093-3">Original paper</a>.</li>
+<li>For the relation with the full complex: Lichtenbaum and Schlessinger, <em>The cotangent complex of a morphism</em>, Transactions of the American Mathematical Society <strong>128</strong> (1967), 41–70; the comparison is formulated in <a href="https://stacks.math.columbia.edu/tag/09AM">Stacks, Tag 09AM</a>. Its lower-degree construction is not used as an input to the proofs above.</li>
+</ul>
+</article></main></body></html>

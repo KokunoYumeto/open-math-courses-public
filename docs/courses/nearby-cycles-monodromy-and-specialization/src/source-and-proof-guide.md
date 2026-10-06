@@ -1,0 +1,36 @@
+# Sources, calculations and prerequisite proofs
+
+The six readings study one question from three directions: what survives near a zero fibre, how it changes under a map, and how it detects a cotangent direction. Their proofs use a fixed coefficient complex and explicit comparison maps. The distinction between a calculation performed here and a prerequisite theorem matters, especially for infinite coefficient modules.
+
+## Start with calculations that fix the conventions
+
+Begin with the finite-support sequence calculation in the two monodromy triangles. Compute ramification before using a geometric comparison: it checks the diagonal unit and the two composites (1-M). The product–stalk example explains why a countable-cover argument needs a common system of shrinking neighborhoods.
+
+Next, proper pushforward follows one closed support carrier through internal Hom and base change. Its graph application is the passage from a critical function to a regular ambient coordinate. Normal deformation instead compares the actual covers through the logarithmic lift. Its closed-ray example records what weak real constructibility permits before complex constructibility is imposed.
+
+The normal and conormal section argument adds complex scaling, an endpoint-sensitive polar calculation and a specified slit. Quadratic tests then compute a sphere, its reduced cochains and its antipodal action before using a microlocal coefficient model. Finally, positive real support compares the same cycle convention with a closed halfspace using a normalized branch. Its ramification and closed-ray examples distinguish the roles of a branch, the cycle shift and complex constructibility.
+
+## What the checked human sources supply
+
+- David B. Massey, [*Notes on Perverse Sheaves and Vanishing Cycles*, arXiv:math/9908107v13, 17 August 2025](https://arxiv.org/abs/math/9908107v13): §3 supplies traditional and coefficient-complex definitions, the corrected punctured trace, cycle triangles, the proper-map statement and the positive-real-support comparison. The historical credit to Kashiwara and Schapira is retained through Massey's account. His constructible setting does not by itself establish the weak-coefficient or proper-on-closed-support extensions in these lessons. The exact author TeX was checked against the official v13 source archive. The paper's stated terms are CC BY 4.0; no passage of its expression is reproduced here.
+- Ren Fernandes, Kazuki Kudomi and Kiyoshi Takeuchi, [*Characteristic cycles of real and complex constructible sheaves, revisited*, arXiv:2603.14821v2, 10 July 2026](https://arxiv.org/abs/2603.14821v2): §2.4 defines specialization and microlocalization; (4.54) relates positive deformation to real nearby cycles. The proof of Theorem 5.5 provides a useful stratum-dimension calibration. Equations (5.42)–(5.43) state the regular-fibre conormal comparison by reference to an earlier work. These passages do not prove our full weak-coefficient comparisons, generic coefficient-model theorem or uniform holomorphic criterion. The exact v2 author TeX was checked; no source text or figure is reproduced.
+- Masaki Kashiwara, [*Index theorem for constructible sheaves*, Astérisque 130 (1985), pp. 193–209](https://www.numdam.org/item/AST_1985__130__193_0/): Lemma 5.2 on printed p. 201 states the real quadratic local-support degree for vector-space coefficients. The displayed page was checked. Our arbitrary-module calculation uses its own finite free sphere-cochain model; the lemma is not cited as a proof of that extension. No page or source expression is included in the download.
+
+## The proof obligations behind the comparisons
+
+These readings contain the local comparison arguments and forty-one solved exercises. They are not a self-contained construction of the sheaf and microlocal foundations. In particular, the following inputs retain their full original scope:
+
+| Application | Required programme input | What remains separate |
+|---|---|---|
+| Coefficient construction and pushforward | Ordinary and proper-support adjunction, tensor–Hom, proper-support base change and finite-dimensional cohomological bounds | The underlying resolution, derived-category and topology foundations; a bounded ordinary adjunction argument is included in the pushforward lesson |
+| Countable-cover deformation | Whole-complex small-ball stabilization, weak inverse-image and internal-Hom properties, smooth base change and ordinary/punctured conic recovery | Uniform control of the shrinking neighborhoods; a formal interchange of a product and stalk colimit does not prove it |
+| Normal and conormal sections | `SH02-CHE-001`, `SH02-CON-CYLINDER`, and `SH02-FS-SECTIONS` (FS13) | The analytic normal-cone estimate, full-complex cylinder descent and Fourier section theorem at the exact weak-coefficient scope |
+| Uniform holomorphic detection | `SH02-LFI-SUPPORTED` (LFI9–LFI10), `SH02-MC-LOCAL` (MC.2), and `SH02-MO-MICROLOCAL-SUPPORT` (MO15), with the earlier complex-microsupport theorem | Generic coefficient objects, arbitrary denominator cones, the quotient/null criterion and singular analytic geometry |
+| Positive-real-support comparison | The local complex-curve theorem, cylinder descent and support localization | Their exact bounded weak-coefficient versions; source statements with finite or field coefficients do not fill the gap |
+| Covered quadratic computation | Sheaf/singular cochain comparison, constant-coefficient homotopy invariance and finite sphere cochains | The full topological providers, distinct from the explicit retraction and degree calculation |
+
+Some of these prerequisite chains are still being reconstructed. The argument at each use retains its hypotheses and identifies the required theorem; inclusion in this selection does not certify that every transitive input is complete. No claim of full course completion follows from the checked source passages.
+
+## Reuse
+
+The independently written programme prose, calculations and solutions are dedicated to the public domain under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). Cited human works keep their own terms. Source access, mathematical proof and permission to reproduce source expression are separate questions.

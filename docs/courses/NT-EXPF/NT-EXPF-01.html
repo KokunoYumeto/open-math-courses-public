@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The explicit formula with general test functions · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-explicit-formula-with-general-test-functions">The explicit formula with general test functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).</em></p>
+<p>Prime powers and zeros are two ways of testing the same distribution. A smooth weight makes their relation easy to use. A weight with a jump does something more concrete: it counts all prime powers below a chosen point, with half of the last one when the point itself is a prime power. This lesson explains where that half comes from and derives the explicit formula, including its term at the infinite place.</p>
+<p>We assume the analytic continuation and functional equation of the Riemann zeta function, its Hadamard product, and the Riemann–von Mangoldt estimate. Section 1 records the precise forms needed and their internal prerequisite lessons. The smooth counting distributions are treated in <a href="../the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html#section-5">Weil's proof for curves and what is missing over the integers</a>. We use that lesson's conventions when comparing constants, but derive the formula for weights with jumps here. Basic references are [Weil 1972], [Bombieri 2000], and [Connes–Consani 2021].</p>
+<h2 id="1-the-analytic-facts-and-the-weights">1. The analytic facts and the weights</h2>
+<p>We write</p>
+<span class="math math-display" data-tex="\[
+\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \psi_\Gamma(z)=\Gamma&#x27;(z)/\Gamma(z).
+\]">\[
+\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \psi_\Gamma(z)=\Gamma&#x27;(z)/\Gamma(z).
+\]</span>
+<p>The subscript distinguishes the digamma function from the prime-counting function. The entire function <span class="math" data-tex="\(\xi\)">\(\xi\)</span> has order one, satisfies <span class="math" data-tex="\(\xi(s)=\xi(1-s)\)">\(\xi(s)=\xi(1-s)\)</span>, and has zeros <span class="math" data-tex="\(\rho=\beta+i\gamma_\rho\)">\(\rho=\beta+i\gamma_\rho\)</span>, counted with multiplicity, in <span class="math" data-tex="\(0&lt;\beta&lt;1\)">\(0&lt;\beta&lt;1\)</span>. Its zeros are stable under conjugation and under <span class="math" data-tex="\(\rho\mapsto1-\rho\)">\(\rho\mapsto1-\rho\)</span>. The following consequences of the Hadamard product and zero-counting estimate will be used:</p>
+<span class="math math-display" data-tex="\[
+N(T+1)-N(T)=O(\log(T+2)),\quad
+\sum_\rho(1+\lvert\rho\rvert)^{-2}&lt;\infty,
+\quad
+\lim_{T\to\infty}\sum_{\lvert\gamma_\rho\rvert&lt;T}\frac1\rho
+=1+\frac\gamma2-\frac12\log(4\pi).
+\tag{1.1}
+\]">\[
+N(T+1)-N(T)=O(\log(T+2)),\quad
+\sum_\rho(1+\lvert\rho\rvert)^{-2}&lt;\infty,
+\quad
+\lim_{T\to\infty}\sum_{\lvert\gamma_\rho\rvert&lt;T}\frac1\rho
+=1+\frac\gamma2-\frac12\log(4\pi).
+\tag{1.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> without a subscript is Euler's constant. There are heights <span class="math" data-tex="\(T_j\in[j,j+1]\)">\(T_j\in[j,j+1]\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\frac{\xi&#x27;}{\xi}(\sigma\pm iT_j)=O_\varepsilon(\log^2(T_j+2))
+\quad(-\varepsilon\le\sigma\le1+\varepsilon).
+\tag{1.2}
+\]">\[
+\frac{\xi&#x27;}{\xi}(\sigma\pm iT_j)=O_\varepsilon(\log^2(T_j+2))
+\quad(-\varepsilon\le\sigma\le1+\varepsilon).
+\tag{1.2}
+\]</span>
+<p>Here are the exact internal proof dependencies. The programme's course <em>The Riemann zeta function</em> plans <em>The Gamma function and Stirling's formula</em> for the digamma product and asymptotic expansion; <em>Poisson summation, theta, and the functional equation</em> for continuation, the completed functional equation and <span class="math" data-tex="\(\xi(0)=\xi(1)=1/2\)">\(\xi(0)=\xi(1)=1/2\)</span>; <em>Entire functions of order one and the Hadamard product of ξ</em> for the logarithmic derivative, zero summability and the last constant in (1.1); and <em>The Riemann–von Mangoldt formula</em> for the zero count and its bound in unit intervals. These are genuine planned prerequisite lessons, rather than proofs supplied in this lesson; their public versions are not yet linked here. Bibliographic credit for these facts is retained in [Bombieri 2000, Sections I–II].</p>
+<p>The bound (1.2) itself follows from those statements. From the symmetric Hadamard derivative subtract its value at <span class="math" data-tex="\(2+it\)">\(2+it\)</span>. The result is the absolutely convergent sum</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho\left(\frac1{\sigma+it-\rho}-\frac1{2+it-\rho}\right).
+\]">\[
+\sum_\rho\left(\frac1{\sigma+it-\rho}-\frac1{2+it-\rho}\right).
+\]</span>
+<p>Terms with <span class="math" data-tex="\(\lvert t-\gamma_\rho\rvert&gt;1\)">\(\lvert t-\gamma_\rho\rvert&gt;1\)</span> are bounded by a constant times <span class="math" data-tex="\((t-\gamma_\rho)^{-2}\)">\((t-\gamma_\rho)^{-2}\)</span>; summing in unit intervals and using (1.1) gives <span class="math" data-tex="\(O(\log(t+2))\)">\(O(\log(t+2))\)</span>. Also <span class="math" data-tex="\(\xi&#x27;(2+it)/\xi(2+it)=O(\log(t+2))\)">\(\xi&#x27;(2+it)/\xi(2+it)=O(\log(t+2))\)</span>, by its gamma factor and absolutely convergent Euler product. Remove intervals of radius <span class="math" data-tex="\(c_0/\log(j+2)\)">\(c_0/\log(j+2)\)</span> about the <span class="math" data-tex="\(O(\log(j+2))\)">\(O(\log(j+2))\)</span> ordinates in <span class="math" data-tex="\([j-1,j+2]\)">\([j-1,j+2]\)</span>, choosing <span class="math" data-tex="\(c_0\)">\(c_0\)</span> small enough that their total length is less than one. A remaining <span class="math" data-tex="\(T_j\in[j,j+1]\)">\(T_j\in[j,j+1]\)</span> has distance at least that radius from every nearby ordinate. Each of the <span class="math" data-tex="\(O(\log T_j)\)">\(O(\log T_j)\)</span> local fractions is then <span class="math" data-tex="\(O(\log T_j)\)">\(O(\log T_j)\)</span>, proving (1.2). The lower height follows by conjugation. None of these facts assumes RH.</p>
+<p>The Mellin transform and reflection in this lesson are</p>
+<span class="math math-display" data-tex="\[
+\widetilde f(s)=\int_0^\infty f(x)x^s\frac{dx}{x},
+\qquad f^\sharp(x)=x^{-1}f(x^{-1}).
+\tag{1.3}
+\]">\[
+\widetilde f(s)=\int_0^\infty f(x)x^s\frac{dx}{x},
+\qquad f^\sharp(x)=x^{-1}f(x^{-1}).
+\tag{1.3}
+\]</span>
+<p>Put <span class="math" data-tex="\(F(u)=e^{u/2}f(e^u)\)">\(F(u)=e^{u/2}f(e^u)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\widetilde f(\tfrac12+it)=\int_{\mathbb R}F(u)e^{itu}\,du,
+\qquad e^{u/2}f^\sharp(e^u)=F(-u).
+\tag{1.4}
+\]">\[
+\widetilde f(\tfrac12+it)=\int_{\mathbb R}F(u)e^{itu}\,du,
+\qquad e^{u/2}f^\sharp(e^u)=F(-u).
+\tag{1.4}
+\]</span>
+<p>Thus Mellin analysis on the positive half-line is Fourier analysis in logarithmic coordinates. With the Fourier convention <span class="math" data-tex="\(\widehat F(t)=\int F(u)e^{-itu}du\)">\(\widehat F(t)=\int F(u)e^{-itu}du\)</span>, the transform in (1.4) is <span class="math" data-tex="\(\widehat F(-t)\)">\(\widehat F(-t)\)</span>.</p>
+<p><strong>Definition 1.1 (admissible jump weights).</strong> We require <span class="math" data-tex="\(F\)">\(F\)</span> to be continuously differentiable away from finitely many points. At those points both <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> have finite one-sided limits, and <span class="math" data-tex="\(F\)">\(F\)</span> takes the arithmetic mean of its limits. For some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, on the intervals of differentiability,</p>
+<span class="math math-display" data-tex="\[
+\lvert F(u)\rvert+\lvert F&#x27;(u)\rvert
+\le C e^{-(1/2+\delta)\lvert u\rvert}.
+\tag{1.5}
+\]">\[
+\lvert F(u)\rvert+\lvert F&#x27;(u)\rvert
+\le C e^{-(1/2+\delta)\lvert u\rvert}.
+\tag{1.5}
+\]</span>
+<p>In terms of <span class="math" data-tex="\(f\)">\(f\)</span>, the tail condition is imposed on both <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> and <span class="math" data-tex="\(xf&#x27;(x)\)">\(xf&#x27;(x)\)</span>: they are <span class="math" data-tex="\(O(x^\delta)\)">\(O(x^\delta)\)</span> at zero and <span class="math" data-tex="\(O(x^{-1-\delta})\)">\(O(x^{-1-\delta})\)</span> at infinity. It includes compactly supported, piecewise continuously differentiable weights and Gaussians in <span class="math" data-tex="\(\log x\)">\(\log x\)</span>.</p>
+<p>These are Weil's 1952 conditions on test functions, specialized to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and written in (1.4). [Bombieri 2000, Section V] describes a class <span class="math" data-tex="\(W\)">\(W\)</span> using the value bounds on <span class="math" data-tex="\(f\)">\(f\)</span>, without a corresponding derivative bound. Value bounds alone do not imply the <span class="math" data-tex="\(O(1/\lvert t\rvert)\)">\(O(1/\lvert t\rvert)\)</span> Mellin estimate used in a contour proof. We retain the explicit tail regularity (1.5). At the end we also give a cutoff interpretation for the broader value-bounded class; it must not be confused with an unqualified interchange of the two limiting operations.</p>
+<p><strong>Lemma 1.2 (Mellin decay and inversion).</strong> For a weight in Definition 1.1, <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span> is holomorphic on <span class="math" data-tex="\(-\delta&lt;\Re s&lt;1+\delta\)">\(-\delta&lt;\Re s&lt;1+\delta\)</span>. On every closed substrip it is <span class="math" data-tex="\(O((1+\lvert t\rvert)^{-1})\)">\(O((1+\lvert t\rvert)^{-1})\)</span>. For any real <span class="math" data-tex="\(c\)">\(c\)</span> in that strip,</p>
+<span class="math math-display" data-tex="\[
+\lim_{T\to\infty}\frac1{2\pi i}\int_{c-iT}^{c+iT}
+\widetilde f(s)x^{-s}\,ds=f(x).
+\tag{1.6}
+\]">\[
+\lim_{T\to\infty}\frac1{2\pi i}\int_{c-iT}^{c+iT}
+\widetilde f(s)x^{-s}\,ds=f(x).
+\tag{1.6}
+\]</span>
+<p><strong>Proof.</strong> The tail bounds dominate the defining integral and all its derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> on a closed substrip. Set <span class="math" data-tex="\(A_c(u)=e^{cu}f(e^u)\)">\(A_c(u)=e^{cu}f(e^u)\)</span>. Both its ordinary derivative on the smooth intervals and the finite jump masses are integrable. Its distributional derivative is a finite measure. Integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+it\widetilde f(c+it)=-\int e^{itu}\,dA_c(u).
+\]">\[
+it\widetilde f(c+it)=-\int e^{itu}\,dA_c(u).
+\]</span>
+<p>This proves the decay estimate. After interchanging the two integrals at finite <span class="math" data-tex="\(T\)">\(T\)</span>, the left side of (1.6) is</p>
+<span class="math math-display" data-tex="\[
+x^{-c}\int_{\mathbb R} A_c(u)
+\frac{\sin(T(u-\log x))}{\pi(u-\log x)}\,du.
+\]">\[
+x^{-c}\int_{\mathbb R} A_c(u)
+\frac{\sin(T(u-\log x))}{\pi(u-\log x)}\,du.
+\]</span>
+<p>Split the integral near <span class="math" data-tex="\(u=\log x\)">\(u=\log x\)</span> and its complement. On each side of that point subtract the corresponding one-sided value. The resulting quotient is bounded locally, while away from the point it is integrable; the Riemann–Lebesgue lemma makes these parts tend to zero. The two constant pieces each contribute half their value, since <span class="math" data-tex="\(\int_0^\infty\sin v/v\,dv=\pi/2\)">\(\int_0^\infty\sin v/v\,dv=\pi/2\)</span>. This yields the mean value. ∎</p>
+<h2 id="2-the-formula-and-its-local-terms">2. The formula and its local terms</h2>
+<p>Let <span class="math" data-tex="\(\Lambda(n)=\log p\)">\(\Lambda(n)=\log p\)</span> when <span class="math" data-tex="\(n=p^m\)">\(n=p^m\)</span>, with <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and let it be zero otherwise. Define</p>
+<span class="math math-display" data-tex="\[
+P(f)=\sum_{n\ge2}\Lambda(n)\bigl(f(n)+f^\sharp(n)\bigr),
+\tag{2.1}
+\]">\[
+P(f)=\sum_{n\ge2}\Lambda(n)\bigl(f(n)+f^\sharp(n)\bigr),
+\tag{2.1}
+\]</span>
+<span class="math math-display" data-tex="\[
+W_{\mathbb R}(f)=(\log(4\pi)+\gamma)f(1)
++\int_1^\infty
+\frac{f(x)+f^\sharp(x)-2x^{-1}f(1)}{x-x^{-1}}\,dx.
+\tag{2.2}
+\]">\[
+W_{\mathbb R}(f)=(\log(4\pi)+\gamma)f(1)
++\int_1^\infty
+\frac{f(x)+f^\sharp(x)-2x^{-1}f(1)}{x-x^{-1}}\,dx.
+\tag{2.2}
+\]</span>
+<p>The prime sum converges absolutely. Near <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, the numerator in (2.2) is <span class="math" data-tex="\(O(x-1)\)">\(O(x-1)\)</span>: the two one-sided limits add to <span class="math" data-tex="\(2f(1)\)">\(2f(1)\)</span>, even if there is a jump. The integral therefore exists as an ordinary improper integral. This cancellation explains why the prescribed value at a jump matters at the infinite place as well as at the primes.</p>
+<p><strong>Theorem 2.1 (the explicit formula).</strong> For a weight in Definition 1.1,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\quad
+\widetilde f(0)-\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\widetilde f(\rho)
++\widetilde f(1)=P(f)+W_{\mathbb R}(f).
+\quad}
+\tag{2.3}
+\]">\[
+\boxed{\quad
+\widetilde f(0)-\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\widetilde f(\rho)
++\widetilde f(1)=P(f)+W_{\mathbb R}(f).
+\quad}
+\tag{2.3}
+\]</span>
+<p>The zero sum is a symmetric limit and is not asserted to converge absolutely.</p>
+<p><em>Reference:</em> the formula is due to Weil (1952); [Bombieri 2000, Section V] states it with the arithmetic normalization of (2.3).</p>
+<p>Writing <span class="math" data-tex="\(W_p(f)=\log p\sum_{m\ge1}(f(p^m)+f^\sharp(p^m))\)">\(W_p(f)=\log p\sum_{m\ge1}(f(p^m)+f^\sharp(p^m))\)</span> gives <span class="math" data-tex="\(P(f)=\sum_pW_p(f)\)">\(P(f)=\sum_pW_p(f)\)</span>. We use <span class="math" data-tex="\(W_\infty=-W_{\mathbb R}\)">\(W_\infty=-W_{\mathbb R}\)</span> when discussing positivity. Thus the right side of (2.3) is <span class="math" data-tex="\(\sum_pW_p-W_\infty\)">\(\sum_pW_p-W_\infty\)</span>; it is also the sum over places with the archimedean term denoted <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span>. This sign dictionary will matter later.</p>
+<p><strong>Corollary 2.2 (finite prime support).</strong> If <span class="math" data-tex="\(\operatorname{supp}f\subset[X^{-1},X]\)">\(\operatorname{supp}f\subset[X^{-1},X]\)</span>, with <span class="math" data-tex="\(X\ge1\)">\(X\ge1\)</span>, only prime powers <span class="math" data-tex="\(n\le X\)">\(n\le X\)</span> occur in (2.1).</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n&gt;X\)">\(n&gt;X\)</span>, both <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(1/n\)">\(1/n\)</span> lie outside the support. ∎</p>
+<p>This is a finite sum for each compactly supported weight. It does not replace the zeros by a finite set: a compactly supported weight has an entire Mellin transform, which is usually nonzero at infinitely many zeros.</p>
+<h2 id="3-evaluating-the-infinite-place">3. Evaluating the infinite place</h2>
+<p>We first calculate (2.2) for a smooth compactly supported weight. This establishes the constants before introducing conditionally convergent contour integrals.</p>
+<p><strong>Proposition 3.1 (spectral expression).</strong> For <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R_+^*)\)">\(f\in C_c^\infty(\mathbb R_+^*)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+W_{\mathbb R}(f)=\log\pi\,f(1)
+-\frac1{2\pi}\int_{\mathbb R}
+\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})
+\widetilde f(\tfrac12+it)\,dt.
+\tag{3.1}
+\]">\[
+W_{\mathbb R}(f)=\log\pi\,f(1)
+-\frac1{2\pi}\int_{\mathbb R}
+\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})
+\widetilde f(\tfrac12+it)\,dt.
+\tag{3.1}
+\]</span>
+<p>Equivalently the second term is the vertical-line integral with <span class="math" data-tex="\(ds/(2\pi i)\)">\(ds/(2\pi i)\)</span>. The symbol <span class="math" data-tex="\(\Re\psi_\Gamma(s/2)\)">\(\Re\psi_\Gamma(s/2)\)</span> in that notation is evaluated along <span class="math" data-tex="\(\Re s=1/2\)">\(\Re s=1/2\)</span>; it is not a holomorphic function of <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><strong>Proof.</strong> The digamma series gives, for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Re\psi_\Gamma(a+iy)
+=-\gamma+\int_0^\infty
+\frac{e^{-v}-e^{-av}\cos(yv)}{1-e^{-v}}\,dv.
+\tag{3.2}
+\]">\[
+\Re\psi_\Gamma(a+iy)
+=-\gamma+\int_0^\infty
+\frac{e^{-v}-e^{-av}\cos(yv)}{1-e^{-v}}\,dv.
+\tag{3.2}
+\]</span>
+<p>The integrand has a finite limit at zero, and decays at infinity. One can first cut the <span class="math" data-tex="\(v\)">\(v\)</span>-integral off at <span class="math" data-tex="\(v=\eta\)">\(v=\eta\)</span> and then use Fourier inversion. With <span class="math" data-tex="\(F\)">\(F\)</span> from (1.4) and <span class="math" data-tex="\(a=1/4\)">\(a=1/4\)</span>, this yields</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\int\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})
+\widetilde f(\tfrac12+it)\,dt
+=-\gamma f(1)+\int_0^\infty
+\frac{e^{-v}f(1)-\tfrac12e^{-v/4}(F(v/2)+F(-v/2))}{1-e^{-v}}\,dv.
+\]">\[
+\frac1{2\pi}\int\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})
+\widetilde f(\tfrac12+it)\,dt
+=-\gamma f(1)+\int_0^\infty
+\frac{e^{-v}f(1)-\tfrac12e^{-v/4}(F(v/2)+F(-v/2))}{1-e^{-v}}\,dv.
+\]</span>
+<p>The interchange after the cutoff is absolute, and the difference in the numerator is <span class="math" data-tex="\(O(v)\)">\(O(v)\)</span> at zero. Dominated convergence removes the cutoff. Put <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span>, and use <span class="math" data-tex="\(F(u)+F(-u)=e^{u/2}(f(e^u)+f^\sharp(e^u))\)">\(F(u)+F(-u)=e^{u/2}(f(e^u)+f^\sharp(e^u))\)</span>. Subtracting this integral from <span class="math" data-tex="\(\log\pi f(1)\)">\(\log\pi f(1)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+(\log\pi+\gamma)f(1)
++\int_0^\infty
+\frac{f(e^u)+f^\sharp(e^u)-2e^{-2u}f(1)}{1-e^{-2u}}\,du.
+\tag{3.3}
+\]">\[
+(\log\pi+\gamma)f(1)
++\int_0^\infty
+\frac{f(e^u)+f^\sharp(e^u)-2e^{-2u}f(1)}{1-e^{-2u}}\,du.
+\tag{3.3}
+\]</span>
+<p>Replacing <span class="math" data-tex="\(2e^{-2u}\)">\(2e^{-2u}\)</span> by <span class="math" data-tex="\(2e^{-u}\)">\(2e^{-u}\)</span> in the subtraction adds</p>
+<span class="math math-display" data-tex="\[
+2f(1)\int_0^\infty\frac{e^{-u}-e^{-2u}}{1-e^{-2u}}du
+=2f(1)\int_0^\infty\frac{e^{-u}}{1+e^{-u}}du
+=2\log2\,f(1).
+\]">\[
+2f(1)\int_0^\infty\frac{e^{-u}-e^{-2u}}{1-e^{-2u}}du
+=2f(1)\int_0^\infty\frac{e^{-u}}{1+e^{-u}}du
+=2\log2\,f(1).
+\]</span>
+<p>Finally <span class="math" data-tex="\(x=e^u\)">\(x=e^u\)</span> turns (3.3) into (2.2). ∎</p>
+<p><strong>Lemma 3.2 (symmetric spectral integrals with jumps).</strong> Formula (3.1) extends to Definition 1.1 when the <span class="math" data-tex="\(t\)">\(t\)</span>-integral is truncated symmetrically and its limit is taken.</p>
+<p><strong>Proof.</strong> Only the even part of <span class="math" data-tex="\(F\)">\(F\)</span> contributes. Replace it by <span class="math" data-tex="\(E(u)=(F(u)+F(-u))/2\)">\(E(u)=(F(u)+F(-u))/2\)</span>; it is continuous at zero with value <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span> and has bounded derivative near zero on each side. Subtract <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span> times a smooth even function equal to one near zero. The remainder <span class="math" data-tex="\(K\)">\(K\)</span> is even, satisfies <span class="math" data-tex="\(K(0)=0\)">\(K(0)=0\)</span>, and has integrable derivative, including finitely many jump masses away from zero. Also <span class="math" data-tex="\(K(u)=O(\lvert u\rvert)\)">\(K(u)=O(\lvert u\rvert)\)</span> near zero.</p>
+<p>The difference between <span class="math" data-tex="\(\Re\psi_\Gamma(1/4+it/2)\)">\(\Re\psi_\Gamma(1/4+it/2)\)</span> and <span class="math" data-tex="\(\log(\lvert t\rvert/2)\)">\(\log(\lvert t\rvert/2)\)</span> is in <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>: its logarithmic singularity at zero is square integrable, and Stirling's estimate makes it <span class="math" data-tex="\(O(t^{-2})\)">\(O(t^{-2})\)</span> at infinity. Plancherel handles that remainder, and ordinary inversion handles the constant <span class="math" data-tex="\(-\log2\)">\(-\log2\)</span>.</p>
+<p>For the logarithmic part, integrate the Fourier transform of <span class="math" data-tex="\(K\)">\(K\)</span> by parts. Its evenness expresses the truncated integral through the kernel</p>
+<span class="math math-display" data-tex="\[
+J_T(u)=\int_0^T\frac{\log t}{t}\sin(tu)\,dt.
+\]">\[
+J_T(u)=\int_0^T\frac{\log t}{t}\sin(tu)\,dt.
+\]</span>
+<p>For <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, <span class="math" data-tex="\(J_T(u)\)">\(J_T(u)\)</span> converges by Dirichlet's test at infinity and by integrability at zero. The change of variable <span class="math" data-tex="\(v=t\lvert u\rvert\)">\(v=t\lvert u\rvert\)</span>, followed by integration by parts on <span class="math" data-tex="\([1,T\lvert u\rvert]\)">\([1,T\lvert u\rvert]\)</span>, gives uniformly in <span class="math" data-tex="\(T\)">\(T\)</span></p>
+<span class="math math-display" data-tex="\[
+\lvert J_T(u)\rvert\le C(1+\lvert\log\lvert u\rvert\rvert).
+\]">\[
+\lvert J_T(u)\rvert\le C(1+\lvert\log\lvert u\rvert\rvert).
+\]</span>
+<p>The measure <span class="math" data-tex="\(dK\)">\(dK\)</span> has no mass at zero. Its density is bounded there, its tails decay exponentially, and its other atoms are finitely many. The bound is integrable against <span class="math" data-tex="\(\lvert dK\rvert\)">\(\lvert dK\rvert\)</span>, so dominated convergence proves existence of the sharp spectral limit. It agrees with its exponentially regularized limit. Apply (3.2) with an exponential regularization, use the cancellation at <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, and then remove the regularization; the same calculation as in Proposition 3.1 gives (2.2). ∎</p>
+<p>The distribution <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span> is therefore supported on the whole multiplicative group and is singular at <span class="math" data-tex="\(1\)">\(1\)</span>. It is not integration against a locally integrable density at that point. Its subtraction term fixes a particular finite part, and changing that subtraction changes the displayed multiple of <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span>.</p>
+<h2 id="4-the-contour-argument-including-the-jumps">4. The contour argument, including the jumps</h2>
+<p><strong>Proof of Theorem 2.1.</strong> Choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;\min(\delta,1/2)\)">\(0&lt;\varepsilon&lt;\min(\delta,1/2)\)</span> and put <span class="math" data-tex="\(c=1+\varepsilon\)">\(c=1+\varepsilon\)</span>. Integrate <span class="math" data-tex="\(\widetilde f(s)\xi&#x27;(s)/\xi(s)\)">\(\widetilde f(s)\xi&#x27;(s)/\xi(s)\)</span> round the rectangle with sides <span class="math" data-tex="\(\Re s=c,1-c\)">\(\Re s=c,1-c\)</span> and heights <span class="math" data-tex="\(\pm T_j\)">\(\pm T_j\)</span> from (1.2). The residue theorem and the functional equation give</p>
+<span class="math math-display" data-tex="\[
+\sum_{\lvert\gamma_\rho\rvert&lt;T_j}\widetilde f(\rho)
+=\frac1{2\pi i}\int_{c-iT_j}^{c+iT_j}
+H(s)\frac{\xi&#x27;}{\xi}(s)\,ds+o(1),
+\qquad H(s)=\widetilde f(s)+\widetilde f(1-s).
+\tag{4.1}
+\]">\[
+\sum_{\lvert\gamma_\rho\rvert&lt;T_j}\widetilde f(\rho)
+=\frac1{2\pi i}\int_{c-iT_j}^{c+iT_j}
+H(s)\frac{\xi&#x27;}{\xi}(s)\,ds+o(1),
+\qquad H(s)=\widetilde f(s)+\widetilde f(1-s).
+\tag{4.1}
+\]</span>
+<p>Indeed each horizontal side is <span class="math" data-tex="\(O(\log^2T_j/T_j)\)">\(O(\log^2T_j/T_j)\)</span> by Lemma 1.2. On the right side,</p>
+<span class="math math-display" data-tex="\[
+\frac{\xi&#x27;}{\xi}(s)=\frac1s+\frac1{s-1}
+-\frac12\log\pi+\frac12\psi_\Gamma(s/2)
+-\sum_{n\ge2}\frac{\Lambda(n)}{n^s}.
+\tag{4.2}
+\]">\[
+\frac{\xi&#x27;}{\xi}(s)=\frac1s+\frac1{s-1}
+-\frac12\log\pi+\frac12\psi_\Gamma(s/2)
+-\sum_{n\ge2}\frac{\Lambda(n)}{n^s}.
+\tag{4.2}
+\]</span>
+<p>The rational terms may be moved to <span class="math" data-tex="\(\Re s=1/2\)">\(\Re s=1/2\)</span>; their horizontal integrals tend to zero, and the pole at <span class="math" data-tex="\(1\)">\(1\)</span> contributes <span class="math" data-tex="\(H(1)=\widetilde f(1)+\widetilde f(0)\)">\(H(1)=\widetilde f(1)+\widetilde f(0)\)</span>. The integral on the critical line is zero. To see this, pair <span class="math" data-tex="\(s=1/2+it\)">\(s=1/2+it\)</span> with <span class="math" data-tex="\(1-s\)">\(1-s\)</span>: <span class="math" data-tex="\(H\)">\(H\)</span> is unchanged whereas <span class="math" data-tex="\(1/s+1/(s-1)\)">\(1/s+1/(s-1)\)</span> changes sign. Their product is absolutely integrable, since it is <span class="math" data-tex="\(O(t^{-2})\)">\(O(t^{-2})\)</span>.</p>
+<p>The gamma and constant terms have no poles between these two lines. Their horizontal integrals again vanish. On the critical line the two pieces of <span class="math" data-tex="\(H\)">\(H\)</span> combine to give</p>
+<span class="math math-display" data-tex="\[
+\lim_{T\to\infty}\frac1{2\pi}\int_{-T}^T
+\bigl(\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})-\log\pi\bigr)
+\widetilde f(\tfrac12+it)\,dt=-W_{\mathbb R}(f)
+\]">\[
+\lim_{T\to\infty}\frac1{2\pi}\int_{-T}^T
+\bigl(\Re\psi_\Gamma(\tfrac14+\tfrac{it}{2})-\log\pi\bigr)
+\widetilde f(\tfrac12+it)\,dt=-W_{\mathbb R}(f)
+\]</span>
+<p>by Lemma 3.2.</p>
+<p>For the Dirichlet-series term, expanding at finite <span class="math" data-tex="\(T\)">\(T\)</span> is justified by absolute convergence on <span class="math" data-tex="\(\Re s=c\)">\(\Re s=c\)</span>. To pass to infinite height, consider</p>
+<span class="math math-display" data-tex="\[
+B(u)=\sum_{n\ge2}\Lambda(n)n^{-c}
+\bigl(A_c(u+\log n)+A_c^\sharp(u+\log n)\bigr),
+\quad
+A_c^\sharp(v)=e^{cv}f^\sharp(e^v).
+\]">\[
+B(u)=\sum_{n\ge2}\Lambda(n)n^{-c}
+\bigl(A_c(u+\log n)+A_c^\sharp(u+\log n)\bigr),
+\quad
+A_c^\sharp(v)=e^{cv}f^\sharp(e^v).
+\]</span>
+<p>Near <span class="math" data-tex="\(u=0\)">\(u=0\)</span> the series and its derivatives on each smooth interval converge uniformly by (1.5). Only finitely many jump points of the summands can meet a fixed neighborhood of zero: a jump requires <span class="math" data-tex="\(u+\log n\)">\(u+\log n\)</span> to belong to the finite list of jump positions of <span class="math" data-tex="\(f\)">\(f\)</span> or <span class="math" data-tex="\(f^\sharp\)">\(f^\sharp\)</span>. Globally the sum is integrable by the same exponential tail bounds and <span class="math" data-tex="\(\sum\Lambda(n)n^{-c}&lt;\infty\)">\(\sum\Lambda(n)n^{-c}&lt;\infty\)</span>. It follows that Fourier inversion at zero applies to <span class="math" data-tex="\(B\)">\(B\)</span>. Its mean value there is</p>
+<span class="math math-display" data-tex="\[
+B(0)=\sum_{n\ge2}\Lambda(n)(f(n)+f^\sharp(n))=P(f).
+\]">\[
+B(0)=\sum_{n\ge2}\Lambda(n)(f(n)+f^\sharp(n))=P(f).
+\]</span>
+<p>Thus the final term of (4.2), with its minus sign, contributes <span class="math" data-tex="\(-P(f)\)">\(-P(f)\)</span>. Combining all three contributions in (4.1) proves (2.3) along the heights <span class="math" data-tex="\(T_j\)">\(T_j\)</span>.</p>
+<p>For an arbitrary height <span class="math" data-tex="\(T\)">\(T\)</span>, compare with a good height within distance at most two. The number of intervening zeros is <span class="math" data-tex="\(O(\log(T+2))\)">\(O(\log(T+2))\)</span>, and each transform has size <span class="math" data-tex="\(O(1/T)\)">\(O(1/T)\)</span>. Their total is <span class="math" data-tex="\(O(\log T/T)\)">\(O(\log T/T)\)</span>, which tends to zero. This proves the asserted symmetric limit for all heights. ∎</p>
+<p>The proof identifies exactly where jumps enter: Fourier inversion evaluates the mean value of a weight at each prime power. A different value assigned at a jump would change the arithmetic side but would not change its Mellin transform.</p>
+<figure><img src="../figures/jump-mean.png" alt="A weight equal to one between x equals one and two has value one-half at each jump. Three symmetric Gaussian smoothings approach the same half values." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> An illustrative interval weight and its symmetric smoothings. The smoothing shown is additive, to make the endpoint mechanism visible; Mellin inversion uses the identical mean-value mechanism after passing to logarithmic coordinates. Open circles denote the one-sided limits, and filled circles denote the assigned values. Lemma 1.2 explains the half contribution in (5.2).</p>
+<h2 id="5-counting-and-gaussian-weights">5. Counting and Gaussian weights</h2>
+<h3 id="5-1-a-sharp-endpoint">5.1 A sharp endpoint</h3>
+<p>For <span class="math" data-tex="\(X&gt;1\)">\(X&gt;1\)</span> let <span class="math" data-tex="\(f_X\)">\(f_X\)</span> be one on <span class="math" data-tex="\((1,X)\)">\((1,X)\)</span>, zero outside <span class="math" data-tex="\([1,X]\)">\([1,X]\)</span>, and one-half at each endpoint. Then</p>
+<span class="math math-display" data-tex="\[
+\widetilde f_X(s)=\frac{X^s-1}{s},\quad
+\widetilde f_X(0)=\log X,\quad
+\widetilde f_X(1)=X-1,
+\]">\[
+\widetilde f_X(s)=\frac{X^s-1}{s},\quad
+\widetilde f_X(0)=\log X,\quad
+\widetilde f_X(1)=X-1,
+\]</span>
+<p>and <span class="math" data-tex="\(P(f_X)=\psi_0(X)\)">\(P(f_X)=\psi_0(X)\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\psi_0(X)=\sum_{n&lt;X}\Lambda(n)+\tfrac12\Lambda(X)
+\]">\[
+\psi_0(X)=\sum_{n&lt;X}\Lambda(n)+\tfrac12\Lambda(X)
+\]</span>
+<p>and <span class="math" data-tex="\(\Lambda(X)=0\)">\(\Lambda(X)=0\)</span> if <span class="math" data-tex="\(X\)">\(X\)</span> is not an integer prime power. The reflected part of the prime sum is zero. The archimedean integral splits at <span class="math" data-tex="\(X\)">\(X\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\int_1^X\frac{1-x^{-1}}{x-x^{-1}}dx
+-\int_X^\infty\frac{x^{-1}}{x-x^{-1}}dx
+=-\log2+\frac12\log(X^2-1).
+\]">\[
+\int_1^X\frac{1-x^{-1}}{x-x^{-1}}dx
+-\int_X^\infty\frac{x^{-1}}{x-x^{-1}}dx
+=-\log2+\frac12\log(X^2-1).
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+W_{\mathbb R}(f_X)=\tfrac12(\log(4\pi)+\gamma)
+-\log2+\tfrac12\log(X^2-1).
+\tag{5.1}
+\]">\[
+W_{\mathbb R}(f_X)=\tfrac12(\log(4\pi)+\gamma)
+-\log2+\tfrac12\log(X^2-1).
+\tag{5.1}
+\]</span>
+<p>Substitute (5.1) into (2.3), and use (1.1). The terms <span class="math" data-tex="\(\log X\)">\(\log X\)</span> cancel because <span class="math" data-tex="\(\tfrac12\log(X^2-1)=\log X+\tfrac12\log(1-X^{-2})\)">\(\tfrac12\log(X^2-1)=\log X+\tfrac12\log(1-X^{-2})\)</span>. The remaining constant is</p>
+<span class="math math-display" data-tex="\[
+-1+\left(1+\tfrac\gamma2-\tfrac12\log(4\pi)\right)
+-\tfrac12(\log(4\pi)+\gamma)+\log2=-\log(2\pi).
+\]">\[
+-1+\left(1+\tfrac\gamma2-\tfrac12\log(4\pi)\right)
+-\tfrac12(\log(4\pi)+\gamma)+\log2=-\log(2\pi).
+\]</span>
+<p>We have proved</p>
+<span class="math math-display" data-tex="\[
+\boxed{\psi_0(X)=X-\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\frac{X^\rho}{\rho}
+-\log(2\pi)-\tfrac12\log(1-X^{-2}).}
+\tag{5.2}
+\]">\[
+\boxed{\psi_0(X)=X-\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\frac{X^\rho}{\rho}
+-\log(2\pi)-\tfrac12\log(1-X^{-2}).}
+\tag{5.2}
+\]</span>
+<p>This is von Mangoldt's formula, with its endpoint convention explicitly built in.</p>
+<h3 id="5-2-a-gaussian-in-logarithmic-coordinates">5.2 A Gaussian in logarithmic coordinates</h3>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, let <span class="math" data-tex="\(f_a(x)=\exp(-(\log x)^2/(2a^2))\)">\(f_a(x)=\exp(-(\log x)^2/(2a^2))\)</span>. Completing the square gives</p>
+<span class="math math-display" data-tex="\[
+\widetilde f_a(s)=\sqrt{2\pi}\,a\,e^{a^2s^2/2}.
+\tag{5.3}
+\]">\[
+\widetilde f_a(s)=\sqrt{2\pi}\,a\,e^{a^2s^2/2}.
+\tag{5.3}
+\]</span>
+<p>The pole contribution is <span class="math" data-tex="\(\sqrt{2\pi}a(1+e^{a^2/2})\)">\(\sqrt{2\pi}a(1+e^{a^2/2})\)</span>. The prime and archimedean contributions are</p>
+<span class="math math-display" data-tex="\[
+P(f_a)=\sum_{n\ge2}\Lambda(n)(1+n^{-1})
+e^{-(\log n)^2/(2a^2)},
+\]">\[
+P(f_a)=\sum_{n\ge2}\Lambda(n)(1+n^{-1})
+e^{-(\log n)^2/(2a^2)},
+\]</span>
+<span class="math math-display" data-tex="\[
+W_{\mathbb R}(f_a)=\log(4\pi)+\gamma
++\int_0^\infty
+\frac{(1+e^{-u})e^{-u^2/(2a^2)}-2e^{-u}}
+{1-e^{-2u}}du.
+\tag{5.4}
+\]">\[
+W_{\mathbb R}(f_a)=\log(4\pi)+\gamma
++\int_0^\infty
+\frac{(1+e^{-u})e^{-u^2/(2a^2)}-2e^{-u}}
+{1-e^{-2u}}du.
+\tag{5.4}
+\]</span>
+<p>The integrand in (5.4) tends to <span class="math" data-tex="\(1/2\)">\(1/2\)</span> at zero. At a zero <span class="math" data-tex="\(\beta+it\)">\(\beta+it\)</span>, the magnitude in (5.3) is <span class="math" data-tex="\(\sqrt{2\pi}a\exp(a^2(\beta^2-t^2)/2)\)">\(\sqrt{2\pi}a\exp(a^2(\beta^2-t^2)/2)\)</span>. Thus the zero sum is absolutely convergent in this example, without RH. Increasing <span class="math" data-tex="\(a\)">\(a\)</span> suppresses high zeros while involving more prime powers. Narrow logarithmic weights have the reverse effect.</p>
+<p>Here is a numerical illustration. The second column uses the first ten numerically computed conjugate pairs of zeros; the third uses prime powers at most 100 and the complete integral (5.4). The entries are rounded, and no remainder certification is claimed.</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(a\)">\(a\)</span></th>
+<th>Pole terms minus ten zero pairs</th>
+<th>Prime powers at most 100 plus <span class="math" data-tex="\(W_{\mathbb R}\)">\(W_{\mathbb R}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1</td>
+<td>0.233972624</td>
+<td>0.233972159</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>0.994843964</td>
+<td>0.994843964</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>2.673505113</td>
+<td>2.673505113</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>6.639359629</td>
+<td>6.638597053</td>
+</tr>
+</tbody>
+</table>
+<p>At <span class="math" data-tex="\(a=0.1\)">\(a=0.1\)</span>, the visible discrepancy mostly comes from omitted zeros. At <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the omitted prime powers are visible. Agreement at the intermediate widths illustrates the identity; it is not a proof of RH or a verification of all zeros.</p>
+<h3 id="5-3-comparing-two-constants">5.3 Comparing two constants</h3>
+<p>Corollary 5.13 of <a href="../the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html#section-5.4">Weil's proof for curves and what is missing over the integers</a> writes the infinite-place term, for smooth weights, as</p>
+<span class="math math-display" data-tex="\[
+(\log\pi+\gamma)f(1)
++\int_1^\infty
+\frac{xf(x)+f(1/x)-2f(1)/x}{x^2-1}dx.
+\tag{5.5}
+\]">\[
+(\log\pi+\gamma)f(1)
++\int_1^\infty
+\frac{xf(x)+f(1/x)-2f(1)/x}{x^2-1}dx.
+\tag{5.5}
+\]</span>
+<p>Our integral in (2.2) has <span class="math" data-tex="\(-2f(1)\)">\(-2f(1)\)</span>, rather than <span class="math" data-tex="\(-2f(1)/x\)">\(-2f(1)/x\)</span>, in that numerator. The difference of the integrals is</p>
+<span class="math math-display" data-tex="\[
+-2f(1)\int_1^\infty\frac{1-1/x}{x^2-1}dx
+=-2\log2\,f(1).
+\]">\[
+-2f(1)\int_1^\infty\frac{1-1/x}{x^2-1}dx
+=-2\log2\,f(1).
+\]</span>
+<p>The constant in (2.2) is larger by <span class="math" data-tex="\(2\log2\,f(1)\)">\(2\log2\,f(1)\)</span>. The two complete expressions therefore agree. Changing a finite-part convention without changing its constant would give a wrong formula.</p>
+<h2 id="6-exercises-and-solutions">6. Exercises and solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Compute the Mellin transforms of <span class="math" data-tex="\(f_X\)">\(f_X\)</span> and <span class="math" data-tex="\(f_a\)">\(f_a\)</span>. Explain why the values assigned at their finitely many endpoints do not affect a transform.</p>
+<p><strong>Solution.</strong> Integrating <span class="math" data-tex="\(x^{s-1}\)">\(x^{s-1}\)</span> on <span class="math" data-tex="\((1,X)\)">\((1,X)\)</span> gives <span class="math" data-tex="\((X^s-1)/s\)">\((X^s-1)/s\)</span>, with removable value <span class="math" data-tex="\(\log X\)">\(\log X\)</span> at zero. For <span class="math" data-tex="\(f_a\)">\(f_a\)</span>, use <span class="math" data-tex="\(u=\log x\)">\(u=\log x\)</span> and complete the square in <span class="math" data-tex="\(-u^2/(2a^2)+su\)">\(-u^2/(2a^2)+su\)</span>. For real <span class="math" data-tex="\(s\)">\(s\)</span> the Gaussian integral gives (5.3); both sides are entire, so the identity theorem gives it for complex <span class="math" data-tex="\(s\)">\(s\)</span>. Changing finitely many point values changes neither integral. It does change the prime evaluations, which is why Lemma 1.2 prescribes the mean.</p>
+<p><strong>Exercise 2 (medium).</strong> Recover (5.2) directly from (2.3), retaining every constant. What changes if <span class="math" data-tex="\(X=p^m\)">\(X=p^m\)</span> and one asks for <span class="math" data-tex="\(\sum_{n\le X}\Lambda(n)\)">\(\sum_{n\le X}\Lambda(n)\)</span>?</p>
+<p><strong>Solution.</strong> The pole terms are <span class="math" data-tex="\(\log X+X-1\)">\(\log X+X-1\)</span>, and the zero terms are <span class="math" data-tex="\(\sum X^\rho/\rho-\sum1/\rho\)">\(\sum X^\rho/\rho-\sum1/\rho\)</span>. Insert (5.1) and (1.1); the displayed calculation in Section 5.1 reduces the constant to <span class="math" data-tex="\(-\log(2\pi)\)">\(-\log(2\pi)\)</span>. To count the endpoint fully, add <span class="math" data-tex="\(\tfrac12\log p\)">\(\tfrac12\log p\)</span> to (5.2). The symmetric formula itself always gives the half count.</p>
+<p><strong>Exercise 3 (medium).</strong> Starting from the digamma series, prove that (2.2) and (3.1) agree for smooth compactly supported weights.</p>
+<p><strong>Solution.</strong> Integrate each term <span class="math" data-tex="\(1/(n+a+iy)\)">\(1/(n+a+iy)\)</span> as <span class="math" data-tex="\(\int_0^\infty e^{-(n+a+iy)v}dv\)">\(\int_0^\infty e^{-(n+a+iy)v}dv\)</span>, and sum the geometric series; subtracting <span class="math" data-tex="\(1/(n+1)\)">\(1/(n+1)\)</span> gives (3.2). Apply Fourier inversion to the cosine factor, which produces <span class="math" data-tex="\((F(v/2)+F(-v/2))/2\)">\((F(v/2)+F(-v/2))/2\)</span>. The substitution <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span> gives (3.3). Its subtraction changes from <span class="math" data-tex="\(2e^{-2u}\)">\(2e^{-2u}\)</span> to <span class="math" data-tex="\(2e^{-u}\)">\(2e^{-u}\)</span> at the expense of <span class="math" data-tex="\(2\log2\,f(1)\)">\(2\log2\,f(1)\)</span>, giving (2.2). Cutting at <span class="math" data-tex="\(v=\eta\)">\(v=\eta\)</span> before inversion and using the <span class="math" data-tex="\(O(v)\)">\(O(v)\)</span> cancellation proves the interchanges, not just the algebra.</p>
+<p><strong>Exercise 4 (medium).</strong> Reconcile the constant in (5.5) with that in (2.2).</p>
+<p><strong>Solution.</strong> Write both integrals against <span class="math" data-tex="\(dx/(x^2-1)\)">\(dx/(x^2-1)\)</span>. Their numerators differ by <span class="math" data-tex="\(-2(1-1/x)f(1)\)">\(-2(1-1/x)f(1)\)</span>. Since <span class="math" data-tex="\((1-1/x)/(x^2-1)=1/(x(x+1))\)">\((1-1/x)/(x^2-1)=1/(x(x+1))\)</span>, its integral from one to infinity is <span class="math" data-tex="\(\log2\)">\(\log2\)</span>. The integral difference is <span class="math" data-tex="\(-2\log2\,f(1)\)">\(-2\log2\,f(1)\)</span>, and the constant difference is <span class="math" data-tex="\(+\log4\,f(1)\)">\(+\log4\,f(1)\)</span>. They cancel.</p>
+<p><strong>Exercise 5 (hard).</strong> Extend the theorem to weights with locally infinitely many jumps, by imposing weighted bounded variation. Give sufficient conditions and justify both the zero sum and the infinite-place term.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="\(c_-&lt;0&lt;1&lt;c_+\)">\(c_-&lt;0&lt;1&lt;c_+\)</span>. Assume that <span class="math" data-tex="\(A_c(u)=e^{cu}f(e^u)\)">\(A_c(u)=e^{cu}f(e^u)\)</span> is integrable and of bounded variation for <span class="math" data-tex="\(c=c_-,c_+\)">\(c=c_-,c_+\)</span>, and that the variations and integrals are finite also with a slightly larger exponential weight at each end. Impose mean values at jumps. Near every <span class="math" data-tex="\(\log n\)">\(\log n\)</span>, assume the one-sided Dini condition for <span class="math" data-tex="\(f(e^u)\)">\(f(e^u)\)</span>; near zero impose one-sided Lipschitz bounds. Finally, for the even part <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, require</p>
+<span class="math math-display" data-tex="\[
+\int_{0&lt;\lvert u\rvert&lt;1}\lvert\log\lvert u\rvert\rvert\,d\lvert E\rvert(u)&lt;\infty.
+\tag{6.1}
+\]">\[
+\int_{0&lt;\lvert u\rvert&lt;1}\lvert\log\lvert u\rvert\rvert\,d\lvert E\rvert(u)&lt;\infty.
+\tag{6.1}
+\]</span>
+<p>These conditions hold in particular if <span class="math" data-tex="\(F\)">\(F\)</span> and its piecewise derivative have exponentially weighted bounded variation, with only finitely many jumps on each compact interval, and <span class="math" data-tex="\(F\)">\(F\)</span> has bounded one-sided derivatives near zero. Integrating against the derivative measures gives the <span class="math" data-tex="\(O(1/t)\)">\(O(1/t)\)</span> estimate on every intermediate vertical line; Hölder's inequality for the weighted variation bounds supplies uniformity in <span class="math" data-tex="\(c\)">\(c\)</span>. Mellin inversion now follows from the Dini condition, and Lemma 3.2 follows from (6.1) and its kernel bound. For the prime term use the sum of translated derivative measures defining <span class="math" data-tex="\(B\)">\(B\)</span>: its total variation is at most the sum of their weighted variations, which is finite. A bounded-variation function has Fourier inversion to its mean values. The residue argument and the comparison of neighboring heights are then unchanged. This proves (2.3) under the stated conditions. Merely saying that <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(f&#x27;\)">\(f&#x27;\)</span> have bounded variation locally, without controlling their tails, would not justify these interchanges.</p>
+<h2 id="7-the-broader-value-bounded-class">7. The broader value-bounded class</h2>
+<p>Suppose only that <span class="math" data-tex="\(f\)">\(f\)</span> is piecewise continuously differentiable with finitely many jumps and has the value bounds <span class="math" data-tex="\(O(x^\delta)\)">\(O(x^\delta)\)</span>, <span class="math" data-tex="\(O(x^{-1-\delta})\)">\(O(x^{-1-\delta})\)</span>. Let <span class="math" data-tex="\(\chi_R(u)\)">\(\chi_R(u)\)</span> be smooth, even, equal to one on <span class="math" data-tex="\([-R,R]\)">\([-R,R]\)</span>, zero outside <span class="math" data-tex="\([-R-1,R+1]\)">\([-R-1,R+1]\)</span>, and between zero and one. Set <span class="math" data-tex="\(f_R(x)=\chi_R(\log x)f(x)\)">\(f_R(x)=\chi_R(\log x)f(x)\)</span>. Each <span class="math" data-tex="\(f_R\)">\(f_R\)</span> satisfies Definition 1.1. Absolute convergence on the arithmetic side and dominated convergence in (2.2) prove the following exact extension:</p>
+<span class="math math-display" data-tex="\[
+\widetilde f(0)+\widetilde f(1)
+-\lim_{R\to\infty}\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\widetilde f_R(\rho)
+=P(f)+W_{\mathbb R}(f).
+\tag{7.1}
+\]">\[
+\widetilde f(0)+\widetilde f(1)
+-\lim_{R\to\infty}\lim_{T\to\infty}
+\sum_{\lvert\gamma_\rho\rvert&lt;T}\widetilde f_R(\rho)
+=P(f)+W_{\mathbb R}(f).
+\tag{7.1}
+\]</span>
+<p>The value of this iterated limit is independent of the cutoffs. Under (1.5), Theorem 2.1 supplies the single symmetric zero sum of <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span>. Without a tail regularity condition, (7.1) is the justified statement here.</p>
+<p>To see why the Mellin estimate needs more than value bounds, choose disjoint smooth bumps in <span class="math" data-tex="\(u\)">\(u\)</span> near integers <span class="math" data-tex="\(m\)">\(m\)</span>, of amplitudes <span class="math" data-tex="\(e^{-2m}\)">\(e^{-2m}\)</span>, and modulate the <span class="math" data-tex="\(m\)">\(m\)</span>-th bump by <span class="math" data-tex="\(e^{-iT_m u}\)">\(e^{-iT_m u}\)</span>. Taking <span class="math" data-tex="\(T_m\)">\(T_m\)</span> successively so large that the Fourier transforms of the earlier bumps are negligible at <span class="math" data-tex="\(T_m\)">\(T_m\)</span>, and the later amplitudes summably smaller, makes <span class="math" data-tex="\(\lvert\widetilde f(1/2+iT_m)\rvert\)">\(\lvert\widetilde f(1/2+iT_m)\rvert\)</span> comparable to its <span class="math" data-tex="\(m\)">\(m\)</span>-th amplitude. The <span class="math" data-tex="\(T_m\)">\(T_m\)</span> can grow faster than its reciprocal. Such a smooth value-bounded function has no <span class="math" data-tex="\(O(1/T_m)\)">\(O(1/T_m)\)</span> estimate. A derivative bound prevents precisely this behavior.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the exact internal prerequisite statements and planned proof-provider lessons recorded in Section 1. This course therefore does not claim that the whole programme's prerequisite proofs have already been published. The Hecke-character formula belongs to the next lesson. We do not assert that the two limits in (7.1) may be interchanged for every function in Bombieri's abbreviated value-bounded class.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Bombieri 2000]</strong> E. Bombieri, <em>Problems of the Millennium: the Riemann Hypothesis</em>, Clay Mathematics Institute, Section V. <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf">Official problem description</a>.</li>
+<li><strong>[Connes–Consani 2021]</strong> A. Connes and C. Consani, <em>Weil positivity and trace formula, the archimedean place</em>, Selecta Mathematica 27 (2021), article 77; Appendices “Explicit formula” and “Fourier versus Mellin transforms”. <a href="https://arxiv.org/abs/2006.13771">Preprint</a>.</li>
+<li><strong>[Weil 1972]</strong> A. Weil, <em>Sur les formules explicites de la théorie des nombres</em>, Izv. Akad. Nauk SSSR Ser. Mat. 36 (1972), 3–18; no. 16 writes the explicit formula for Hecke and Artin–Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions as a distribution on the Weil group, extending Weil's formula of 1952. <a href="https://www.mathnet.ru/php/getFT.phtml?jrnid=im&amp;paperid=2289&amp;what=fullt&amp;option_lang=eng">Full text</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-02.html">Explicit formulas for Dirichlet L-functions and primes in progressions →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Twisted modules from coherent gluing</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: GPT-6 Astra, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="twisted-modules-from-coherent-gluing">Twisted modules from coherent gluing</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>An ordinary module sheaf glues by maps whose composite on a triple overlap is the direct transition map. A twisted module allows a controlled modification of that law. The modification itself must be coherent on quadruple overlaps. The result is a category of modules that is ordinary locally, even when no global trivialization exists.</p>
+<p>The prerequisites are <a href="representing-objects-from-local-data.html">Representing objects from local data</a> and <a href="local-module-categories-and-morita-equivalence.html">Local module categories and Morita equivalence</a>. We also assume the definitions of a site, a sheaf and a covering. We recall the part of stack descent used in the construction. Basic references are [D'Agnolo–Polesello], [Stacks], and [Schapira, Sheaves].</p>
+<h2 id="1-from-a-cover-to-a-multiplication-law">1. From a cover to a multiplication law</h2>
+<p>Work in the topos <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> of sheaves on a small site. Let <span class="math" data-tex="\(R\)">\(R\)</span> be a sheaf of commutative unital rings. All products below are products in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>; thus the construction also works when the site has no object representing a particular product. For a sheaf <span class="math" data-tex="\(V\)">\(V\)</span>, module sheaves over <span class="math" data-tex="\(V\)">\(V\)</span> mean modules in the slice topos <span class="math" data-tex="\(\mathcal E/V\)">\(\mathcal E/V\)</span>, over the restriction of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\pi:U\to1\)">\(\pi:U\to1\)</span> be an epimorphism. It is a cover of the terminal sheaf. A covering family of site objects gives one by taking the coproduct of their associated sheaves. Epimorphisms of sheaves have sections locally: a section of their target lifts after a covering. Consequently the pulled-back cover <span class="math" data-tex="\(U\times V\to V\)">\(U\times V\to V\)</span> has a section locally on <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>A <em>line</em> in this lesson is an invertible <span class="math" data-tex="\(R\)">\(R\)</span>-module: a module <span class="math" data-tex="\(L\)">\(L\)</span> with a tensor inverse <span class="math" data-tex="\(L^*\)">\(L^*\)</span>. We do not assume every such module is locally free on the given site. For a locally ringed space, it is a line bundle in the familiar sense.</p>
+<p>Choose an invertible module <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(U\times U\)">\(U\times U\)</span>, together with an isomorphism over <span class="math" data-tex="\(U^3\)">\(U^3\)</span></p>
+<span class="math math-display" data-tex="\[
+\mu:L_{12}\otimes_R L_{23}\longrightarrow L_{13}.
+\tag{1.1}
+\]">\[
+\mu:L_{12}\otimes_R L_{23}\longrightarrow L_{13}.
+\tag{1.1}
+\]</span>
+<p>Subscripts indicate pullback along the relevant projection. On <span class="math" data-tex="\(U^4\)">\(U^4\)</span>, require</p>
+<span class="math math-display" data-tex="\[
+\mu_{134}(\mu_{123}\otimes\mathrm{id})
+=\mu_{124}(\mathrm{id}\otimes\mu_{234}).
+\tag{1.2}
+\]">\[
+\mu_{134}(\mu_{123}\otimes\mathrm{id})
+=\mu_{124}(\mathrm{id}\otimes\mu_{234}).
+\tag{1.2}
+\]</span>
+<p>Both sides take <span class="math" data-tex="\(L_{12}\otimes L_{23}\otimes L_{34}\)">\(L_{12}\otimes L_{23}\otimes L_{34}\)</span> to <span class="math" data-tex="\(L_{14}\)">\(L_{14}\)</span>. Parentheses are identified by the canonical tensor associator.</p>
+<p>There is a canonical unit <span class="math" data-tex="\(R_U\simeq\Delta^*L\)">\(R_U\simeq\Delta^*L\)</span>, where <span class="math" data-tex="\(\Delta:U\to U^2\)">\(\Delta:U\to U^2\)</span> is the diagonal. Here is why. Restrict (1.1) to the triple diagonal to obtain an associative isomorphism <span class="math" data-tex="\(m:D\otimes D\to D\)">\(m:D\otimes D\to D\)</span> on the invertible module <span class="math" data-tex="\(D=\Delta^*L\)">\(D=\Delta^*L\)</span>. Tensoring with <span class="math" data-tex="\(D\)">\(D\)</span> is an equivalence. There is therefore a unique map <span class="math" data-tex="\(e:R\to D\)">\(e:R\to D\)</span> with <span class="math" data-tex="\(m(e\otimes\mathrm{id})=\mathrm{id}_D\)">\(m(e\otimes\mathrm{id})=\mathrm{id}_D\)</span>. Associativity implies <span class="math" data-tex="\(m(\mathrm{id}\otimes e)=\mathrm{id}_D\)">\(m(\mathrm{id}\otimes e)=\mathrm{id}_D\)</span>: compare the two maps after tensoring on the left with <span class="math" data-tex="\(D\)">\(D\)</span>, use the first unit identity, then cancel that equivalence. Since <span class="math" data-tex="\(m\)">\(m\)</span> and tensoring with <span class="math" data-tex="\(D\)">\(D\)</span> are isomorphisms, <span class="math" data-tex="\(e\)">\(e\)</span> is an isomorphism. Restricting (1.2) to repeated coordinates gives the same unit identities for <span class="math" data-tex="\(L(x,y)\)">\(L(x,y)\)</span>. We will use this canonical unit without additional choices.</p>
+<p>For a topological open cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span>, these data become lines <span class="math" data-tex="\(L_{ij}\)">\(L_{ij}\)</span> on <span class="math" data-tex="\(U_i\cap U_j\)">\(U_i\cap U_j\)</span> and associative isomorphisms <span class="math" data-tex="\(L_{ij}\otimes L_{jk}\simeq L_{ik}\)">\(L_{ij}\otimes L_{jk}\simeq L_{ik}\)</span>. Invertibility and (1.1) identify <span class="math" data-tex="\(L_{ji}\)">\(L_{ji}\)</span> as a tensor inverse of <span class="math" data-tex="\(L_{ij}\)">\(L_{ij}\)</span>.</p>
+<h2 id="2-the-twisted-category">2. The twisted category</h2>
+<p>For any <span class="math" data-tex="\(V\in\mathcal E\)">\(V\in\mathcal E\)</span>, define <span class="math" data-tex="\(\mathsf T(V)\)">\(\mathsf T(V)\)</span> as follows. An object is an <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> over <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span> and an isomorphism over <span class="math" data-tex="\(U^2\times V\)">\(U^2\times V\)</span></p>
+<span class="math math-display" data-tex="\[
+\theta:L_{12}\otimes M_2\longrightarrow M_1
+\tag{2.1}
+\]">\[
+\theta:L_{12}\otimes M_2\longrightarrow M_1
+\tag{2.1}
+\]</span>
+<p>such that over <span class="math" data-tex="\(U^3\times V\)">\(U^3\times V\)</span></p>
+<span class="math math-display" data-tex="\[
+\theta_{12}(\mathrm{id}\otimes\theta_{23})
+=\theta_{13}(\mu_{123}\otimes\mathrm{id}).
+\tag{2.2}
+\]">\[
+\theta_{12}(\mathrm{id}\otimes\theta_{23})
+=\theta_{13}(\mu_{123}\otimes\mathrm{id}).
+\tag{2.2}
+\]</span>
+<p>A morphism <span class="math" data-tex="\((M,\theta)\to(N,\psi)\)">\((M,\theta)\to(N,\psi)\)</span> is a module map <span class="math" data-tex="\(a:M\to N\)">\(a:M\to N\)</span> with</p>
+<span class="math math-display" data-tex="\[
+a_1\theta=\psi(\mathrm{id}_L\otimes a_2).
+\tag{2.3}
+\]">\[
+a_1\theta=\psi(\mathrm{id}_L\otimes a_2).
+\tag{2.3}
+\]</span>
+<p>Pullback in <span class="math" data-tex="\(V\)">\(V\)</span> defines the restriction functors. They carry the canonical coherence isomorphisms of pullback, so this is a prestack. We use <em>stack</em> for a prestack in categories whose morphisms are sheaves and whose descent data for objects are effective. Morphisms inside a category need not be invertible. The comparison maps used to glue objects are invertible.</p>
+<p>The diagonal restriction of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the identity after identifying <span class="math" data-tex="\(\Delta^*L\)">\(\Delta^*L\)</span> with <span class="math" data-tex="\(R\)">\(R\)</span>. In fact (2.2) on the diagonal says that its invertible endomorphism <span class="math" data-tex="\(h\)">\(h\)</span> satisfies <span class="math" data-tex="\(h^2=h\)">\(h^2=h\)</span>. Multiplying by <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> gives <span class="math" data-tex="\(h=\mathrm{id}\)">\(h=\mathrm{id}\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> The prestack <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> is an <span class="math" data-tex="\(R\)">\(R\)</span>-linear stack and is locally equivalent to the stack of <span class="math" data-tex="\(R\)">\(R\)</span>-modules.</p>
+<p><strong>Proof of descent.</strong> Let <span class="math" data-tex="\((V_a\to V)\)">\((V_a\to V)\)</span> be a cover, and suppose objects of <span class="math" data-tex="\(\mathsf T(V_a)\)">\(\mathsf T(V_a)\)</span> have isomorphisms on pairwise overlaps satisfying the usual cocycle law. Their underlying module sheaves glue over <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span>. One explicit description of the glued sheaf is compatible local sections after pulling back the cover to each test object; restrictions and addition act coordinatewise. The sheaf axiom gives uniqueness, and the local module actions glue because their compatibility is one of the local equalities. The maps <span class="math" data-tex="\(\theta_a\)">\(\theta_a\)</span> glue to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, since (2.3) says they agree under the gluing maps. Its inverse glues too. Equation (2.2) is an equality of sheaf maps and can be checked after the cover, where it holds. This proves effectiveness for objects. The same compatible-section description glues morphisms uniquely and preserves (2.3). Hence the morphism presheaves are sheaves. Linearity is inherited from module morphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-trivialize-using-a-section-of-the-cover">3. Trivialize using a section of the cover</h2>
+<p>We finish the proof of Theorem 2.1 by constructing the local equivalence explicitly. Suppose the cover over <span class="math" data-tex="\(V\)">\(V\)</span> has a section <span class="math" data-tex="\(s:V\to U\)">\(s:V\to U\)</span>. For an ordinary module <span class="math" data-tex="\(N\)">\(N\)</span> over <span class="math" data-tex="\(V\)">\(V\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\Phi_s(N)_{(x,v)}=L(x,s(v))\otimes_R N_v.
+\tag{3.1}
+\]">\[
+\Phi_s(N)_{(x,v)}=L(x,s(v))\otimes_R N_v.
+\tag{3.1}
+\]</span>
+<p>This notation abbreviates pullback of <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\((x,v)\mapsto(x,s(v))\)">\((x,v)\mapsto(x,s(v))\)</span>, tensor pullback of <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(U\times V\to V\)">\(U\times V\to V\)</span>. It does not require points of the topos. The transition isomorphism is</p>
+<span class="math math-display" data-tex="\[
+L(x,y)\otimes L(y,s(v))\otimes N_v
+\xrightarrow{\mu\otimes\mathrm{id}}
+L(x,s(v))\otimes N_v.
+\]">\[
+L(x,y)\otimes L(y,s(v))\otimes N_v
+\xrightarrow{\mu\otimes\mathrm{id}}
+L(x,s(v))\otimes N_v.
+\]</span>
+<p>Equation (1.2) is exactly (2.2) for this object. Define <span class="math" data-tex="\(E_s(M,\theta)=s^*M\)">\(E_s(M,\theta)=s^*M\)</span>, pulling back along <span class="math" data-tex="\(v\mapsto(s(v),v)\)">\(v\mapsto(s(v),v)\)</span>. The unit of <span class="math" data-tex="\(L\)">\(L\)</span> gives <span class="math" data-tex="\(E_s\Phi_s(N)\simeq N\)">\(E_s\Phi_s(N)\simeq N\)</span>. Conversely, restricting <span class="math" data-tex="\(\theta\)">\(\theta\)</span> to <span class="math" data-tex="\((x,s(v),v)\)">\((x,s(v),v)\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\Phi_s E_s(M,\theta)\simeq(M,\theta).
+\tag{3.2}
+\]">\[
+\Phi_s E_s(M,\theta)\simeq(M,\theta).
+\tag{3.2}
+\]</span>
+<p>It is a morphism in <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> by (2.2). All these maps are natural and commute with further restriction. Thus <span class="math" data-tex="\(E_s,\Phi_s\)">\(E_s,\Phi_s\)</span> are inverse equivalences of stacks over <span class="math" data-tex="\(V\)">\(V\)</span>. Sections <span class="math" data-tex="\(s\)">\(s\)</span> exist locally, proving local equivalence everywhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two choices <span class="math" data-tex="\(s,t\)">\(s,t\)</span> differ by an ordinary invertible module:</p>
+<span class="math math-display" data-tex="\[
+E_t\Phi_s(N)=L(t,s)\otimes_R N.
+\tag{3.3}
+\]">\[
+E_t\Phi_s(N)=L(t,s)\otimes_R N.
+\tag{3.3}
+\]</span>
+<p>Thus a change of local description is a Morita equivalence. It need not be the identity functor.</p>
+<h2 id="4-every-locally-ordinary-module-stack-has-this-form">4. Every locally ordinary module stack has this form</h2>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> be an <span class="math" data-tex="\(R\)">\(R\)</span>-linear stack locally equivalent to <span class="math" data-tex="\(\mathsf{Mod}(R)\)">\(\mathsf{Mod}(R)\)</span>. After choosing a cover and local equivalences, it is equivalent to a stack <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span> constructed above.</p>
+<p><strong>Proof.</strong> Choose a cover <span class="math" data-tex="\(U\to1\)">\(U\to1\)</span> and an equivalence <span class="math" data-tex="\(F:\mathsf S|_U\to\mathsf{Mod}(R)|_U\)">\(F:\mathsf S|_U\to\mathsf{Mod}(R)|_U\)</span> with an adjoint inverse. On <span class="math" data-tex="\(U^2\)">\(U^2\)</span>, the change from the second trivialization to the first is <span class="math" data-tex="\(F_1F_2^{-1}\)">\(F_1F_2^{-1}\)</span>. By Theorem 4.1 of <a href="local-module-categories-and-morita-equivalence.html">Local module categories and Morita equivalence</a>, it is tensoring with</p>
+<span class="math math-display" data-tex="\[
+L_{12}=(F_1F_2^{-1})(R).
+\]">\[
+L_{12}=(F_1F_2^{-1})(R).
+\]</span>
+<p>The two scalar actions agree because the functor is <span class="math" data-tex="\(R\)">\(R\)</span>-linear. Its Morita inverse is consequently an ordinary tensor inverse of this <span class="math" data-tex="\(R\)">\(R\)</span>-module.</p>
+<p>On <span class="math" data-tex="\(U^3\)">\(U^3\)</span>, cancel the middle inverse equivalence in <span class="math" data-tex="\(F_1F_2^{-1}F_2F_3^{-1}\)">\(F_1F_2^{-1}F_2F_3^{-1}\)</span>. Evaluating the resulting natural isomorphism to <span class="math" data-tex="\(F_1F_3^{-1}\)">\(F_1F_3^{-1}\)</span> at <span class="math" data-tex="\(R\)">\(R\)</span> gives <span class="math" data-tex="\(\mu:L_{12}\otimes L_{23}\simeq L_{13}\)">\(\mu:L_{12}\otimes L_{23}\simeq L_{13}\)</span>. On <span class="math" data-tex="\(U^4\)">\(U^4\)</span>, cancel the two middle pairs in either order. The two counits act in distinct positions, so naturality makes the two cancellations equal. The associativity constraints for composition give (1.2); the adjunction triangle identities give the diagonal unit.</p>
+<p>An object of <span class="math" data-tex="\(\mathsf S(V)\)">\(\mathsf S(V)\)</span>, restricted to <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span> and sent through <span class="math" data-tex="\(F\)">\(F\)</span>, gives <span class="math" data-tex="\(M\)">\(M\)</span>. Its canonical descent isomorphism, expressed in the two trivializations, gives <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The cocycle law for that descent isomorphism gives (2.2) by the construction of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. A morphism becomes (2.3).</p>
+<p>Conversely, apply <span class="math" data-tex="\(F^{-1}\)">\(F^{-1}\)</span> locally to <span class="math" data-tex="\(M\)">\(M\)</span>. Equation (2.2), with the same cancellation isomorphisms, is precisely the ordinary cocycle law for these local objects of <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span>. They glue because <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> is a stack. The sheaf condition for morphisms gives full faithfulness. These procedures are inverse up to the chosen equivalences and their units and counits, and are compatible with restriction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a canonical identification</p>
+<span class="math math-display" data-tex="\[
+\mathcal Aut(\mathrm{id}_{\mathsf S})\simeq R^\times.
+\tag{4.1}
+\]">\[
+\mathcal Aut(\mathrm{id}_{\mathsf S})\simeq R^\times.
+\tag{4.1}
+\]</span>
+<p>Locally on an ordinary module category, a natural endomorphism of the identity is multiplication by a section of <span class="math" data-tex="\(R\)">\(R\)</span>. To see this, evaluate it at <span class="math" data-tex="\(R\)">\(R\)</span>; naturality for <span class="math" data-tex="\(R\to M\)">\(R\to M\)</span>, <span class="math" data-tex="\(1\mapsto m\)">\(1\mapsto m\)</span>, determines it on every local section of every module. It is invertible exactly for a unit. Tensoring with an invertible module preserves that scalar action, so the local identifications agree and glue. No chosen trivialization remains in (4.1).</p>
+<p><strong>Theorem 4.2.</strong> Every <span class="math" data-tex="\(R\)">\(R\)</span>-linear autoequivalence <span class="math" data-tex="\(H\)">\(H\)</span> of <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> is tensoring with an invertible <span class="math" data-tex="\(R\)">\(R\)</span>-module. That module is uniquely determined up to isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P=\mathcal Nat(\mathrm{id}_{\mathsf S},H)\)">\(P=\mathcal Nat(\mathrm{id}_{\mathsf S},H)\)</span>, the sheaf of natural transformations of these stack functors. It is an <span class="math" data-tex="\(R\)">\(R\)</span>-module sheaf. Its components glue because morphisms in <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> are sheaves, and naturality is a local equality of maps.</p>
+<p>In an ordinary module description, the sheaf Morita theorem writes <span class="math" data-tex="\(H\)">\(H\)</span> as <span class="math" data-tex="\(P_0\otimes_R-\)">\(P_0\otimes_R-\)</span> for an invertible module <span class="math" data-tex="\(P_0\)">\(P_0\)</span>. Evaluation at <span class="math" data-tex="\(R\)">\(R\)</span> identifies <span class="math" data-tex="\(\mathcal Nat(\mathrm{id},P_0\otimes_R-)\)">\(\mathcal Nat(\mathrm{id},P_0\otimes_R-)\)</span> with <span class="math" data-tex="\(P_0\)">\(P_0\)</span>: a section <span class="math" data-tex="\(p\)">\(p\)</span> acts by <span class="math" data-tex="\(m\mapsto p\otimes m\)">\(m\mapsto p\otimes m\)</span>, and naturality for every local map <span class="math" data-tex="\(R\to M\)">\(R\to M\)</span> determines all its components. Thus <span class="math" data-tex="\(P\)">\(P\)</span> is locally invertible. The local evaluation maps <span class="math" data-tex="\(P\otimes_R P^*\to R\)">\(P\otimes_R P^*\to R\)</span>, where <span class="math" data-tex="\(P^*=\mathcal Hom_R(P,R)\)">\(P^*=\mathcal Hom_R(P,R)\)</span>, are isomorphisms; hence <span class="math" data-tex="\(P\)">\(P\)</span> is globally invertible.</p>
+<p>Evaluation of transformations, followed by the tensor universal property of Corollary 3.1 in <a href="representing-objects-from-local-data.html">Representing objects from local data</a>, gives <span class="math" data-tex="\(P\otimes_R K\to H(K)\)">\(P\otimes_R K\to H(K)\)</span>. In each ordinary module description it is the tensor isomorphism just obtained, so it is an isomorphism everywhere. Conversely, if <span class="math" data-tex="\(H\simeq Q\otimes_R-\)">\(H\simeq Q\otimes_R-\)</span>, the same local calculation identifies its sheaf of natural transformations from the identity with <span class="math" data-tex="\(Q\)">\(Q\)</span>. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-scalar-cocycles-and-their-changes">5. Scalar cocycles and their changes</h2>
+<p>On a topological open cover, suppose each <span class="math" data-tex="\(L_{ij}\)">\(L_{ij}\)</span> is given a basis. Then <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is multiplication by a unit <span class="math" data-tex="\(c_{ijk}\in R^\times(U_i\cap U_j\cap U_k)\)">\(c_{ijk}\in R^\times(U_i\cap U_j\cap U_k)\)</span>. Equation (1.2) becomes</p>
+<span class="math math-display" data-tex="\[
+c_{ijk}c_{ikl}=c_{jkl}c_{ijl}.
+\tag{5.1}
+\]">\[
+c_{ijk}c_{ikl}=c_{jkl}c_{ijl}.
+\tag{5.1}
+\]</span>
+<p>The twisted module maps <span class="math" data-tex="\(t_{ij}:M_j\to M_i\)">\(t_{ij}:M_j\to M_i\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+t_{ij}t_{jk}=c_{ijk}t_{ik}.
+\tag{5.2}
+\]">\[
+t_{ij}t_{jk}=c_{ijk}t_{ik}.
+\tag{5.2}
+\]</span>
+<p>All identities involving a repeated index are normalized by the unit. This is a concrete example of the preceding construction, rather than an assumption that all lines on all sites have bases.</p>
+<p>If units <span class="math" data-tex="\(b_{ij}\)">\(b_{ij}\)</span> change the transition maps to <span class="math" data-tex="\(t&#x27;_{ij}=b_{ij}t_{ij}\)">\(t&#x27;_{ij}=b_{ij}t_{ij}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+c&#x27;_{ijk}=b_{ij}b_{jk}b_{ik}^{-1}c_{ijk}.
+\tag{5.3}
+\]">\[
+c&#x27;_{ijk}=b_{ij}b_{jk}b_{ik}^{-1}c_{ijk}.
+\tag{5.3}
+\]</span>
+<p>Thus a coboundary change gives an equivalent twisted category. For an example, choose arbitrary units <span class="math" data-tex="\(a_i\)">\(a_i\)</span> on <span class="math" data-tex="\(U_i\)">\(U_i\)</span> and put <span class="math" data-tex="\(b_{ij}=a_i a_j^{-1}\)">\(b_{ij}=a_i a_j^{-1}\)</span>. The resulting coboundary is one, so these changes preserve <span class="math" data-tex="\(c\)">\(c\)</span>. They act by changing local frames, without changing the coherence law.</p>
+<p>Here is a numerical coherence check. Cover a point by four labeled copies of itself and take <span class="math" data-tex="\(R=\mathbb Q\)">\(R=\mathbb Q\)</span>. Set
+<span class="math math-display" data-tex="\[
+b_{01}=2,\quad b_{12}=3,\quad b_{02}=5,\quad
+b_{23}=7,\quad b_{03}=11,\quad b_{13}=13,
+\]">\[
+b_{01}=2,\quad b_{12}=3,\quad b_{02}=5,\quad
+b_{23}=7,\quad b_{03}=11,\quad b_{13}=13,
+\]</span>
+with <span class="math" data-tex="\(b_{ii}=1\)">\(b_{ii}=1\)</span> and <span class="math" data-tex="\(b_{ji}=b_{ij}^{-1}\)">\(b_{ji}=b_{ij}^{-1}\)</span>. Define <span class="math" data-tex="\(c_{ijk}=b_{ij}b_{jk}b_{ik}^{-1}\)">\(c_{ijk}=b_{ij}b_{jk}b_{ik}^{-1}\)</span>. The four factors on the overlap labeled <span class="math" data-tex="\((0,1,2,3)\)">\((0,1,2,3)\)</span> are
+<span class="math math-display" data-tex="\[
+c_{012}=\frac65,\quad c_{023}=\frac{35}{11},\quad
+c_{123}=\frac{21}{13},\quad c_{013}=\frac{26}{11}.
+\]">\[
+c_{012}=\frac65,\quad c_{023}=\frac{35}{11},\quad
+c_{123}=\frac{21}{13},\quad c_{013}=\frac{26}{11}.
+\]</span>
+Both products in (5.1) are <span class="math" data-tex="\(42/11\)">\(42/11\)</span>. Taking <span class="math" data-tex="\(M_i=\mathbb Q\)">\(M_i=\mathbb Q\)</span> and <span class="math" data-tex="\(t_{ij}=b_{ij}\)">\(t_{ij}=b_{ij}\)</span> gives a twisted module with these nonidentity factors. The twist is nevertheless a coboundary, as its definition shows; this example demonstrates coherence, without claiming a nontrivial cohomology class.</p>
+<p>The Čech description depends on the cover and the existence of the chosen bases. A classification by sheaf cohomology requires a further comparison with gerbes and refinements. Equations (5.1)–(5.3) alone do not establish that comparison.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (foundation).</strong> If <span class="math" data-tex="\(L\)">\(L\)</span> is the trivial line and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> its ordinary multiplication, identify <span class="math" data-tex="\(\mathsf T\)">\(\mathsf T\)</span>.</p>
+<p><strong>Solution.</strong> Equation (2.1) becomes an ordinary descent isomorphism <span class="math" data-tex="\(M_2\to M_1\)">\(M_2\to M_1\)</span> over the cover <span class="math" data-tex="\(U\times V\to V\)">\(U\times V\to V\)</span>. Equation (2.2) is its cocycle law. Effective descent for module sheaves glues <span class="math" data-tex="\(M\)">\(M\)</span> to a unique module over <span class="math" data-tex="\(V\)">\(V\)</span>, up to its canonical isomorphism; morphisms glue uniquely as well. Hence <span class="math" data-tex="\(\mathsf T\simeq\mathsf{Mod}(R)\)">\(\mathsf T\simeq\mathsf{Mod}(R)\)</span>.</p>
+<p><strong>Exercise 6.2 (calculation).</strong> In the scalar setting, compose two changes <span class="math" data-tex="\(b_{ij}\)">\(b_{ij}\)</span> and <span class="math" data-tex="\(d_{ij}\)">\(d_{ij}\)</span>. Check the resulting coherence factor and the inverse change.</p>
+<p><strong>Solution.</strong> The new maps are <span class="math" data-tex="\(d_{ij}b_{ij}t_{ij}\)">\(d_{ij}b_{ij}t_{ij}\)</span>. Their factor is
+<span class="math math-display" data-tex="\[
+(d_{ij}d_{jk}d_{ik}^{-1})(b_{ij}b_{jk}b_{ik}^{-1})c_{ijk}.
+\]">\[
+(d_{ij}d_{jk}d_{ik}^{-1})(b_{ij}b_{jk}b_{ik}^{-1})c_{ijk}.
+\]</span>
+Commutativity allows the factors to regroup as the coboundary of <span class="math" data-tex="\((d_{ij}b_{ij})\)">\((d_{ij}b_{ij})\)</span> times <span class="math" data-tex="\(c\)">\(c\)</span>. Replacing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> gives the inverse. This also verifies that the equivalence on morphisms leaves (2.3) intact.</p>
+<p><strong>Exercise 6.3 (obstruction).</strong> Suppose a scalar-twisted module is locally free of constant positive rank <span class="math" data-tex="\(r\)">\(r\)</span>. What does taking determinants in (5.2) imply? What is special about rank one?</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(d_{ij}=\det t_{ij}\)">\(d_{ij}=\det t_{ij}\)</span> after choosing local bases. Then <span class="math" data-tex="\(d_{ij}d_{jk}=c_{ijk}^{r}d_{ik}\)">\(d_{ij}d_{jk}=c_{ijk}^{r}d_{ik}\)</span>. Thus <span class="math" data-tex="\(c^r\)">\(c^r\)</span> is the coboundary of the unit cochain <span class="math" data-tex="\(d\)">\(d\)</span>. In particular the Čech class of <span class="math" data-tex="\(c\)">\(c\)</span> has order dividing <span class="math" data-tex="\(r\)">\(r\)</span>. For rank one, <span class="math" data-tex="\(c\)">\(c\)</span> itself is a coboundary, so rescaling transitions turns this particular twist into ordinary descent. This is a necessary condition for an object of the stated rank; no existence of such an object follows from a torsion condition alone.</p>
+<p><strong>Exercise 6.4 (synthesis).</strong> For sections <span class="math" data-tex="\(s,t,u\)">\(s,t,u\)</span> of the covering over <span class="math" data-tex="\(V\)">\(V\)</span>, compare <span class="math" data-tex="\(E_u\Phi_t E_t\Phi_s\)">\(E_u\Phi_t E_t\Phi_s\)</span> with <span class="math" data-tex="\(E_u\Phi_s\)">\(E_u\Phi_s\)</span>. Identify the map that makes this comparison coherent for four sections.</p>
+<p><strong>Solution.</strong> Formula (3.3) gives the first functor as tensoring with <span class="math" data-tex="\(L(u,t)\otimes L(t,s)\)">\(L(u,t)\otimes L(t,s)\)</span>, and the second as tensoring with <span class="math" data-tex="\(L(u,s)\)">\(L(u,s)\)</span>. Their comparison is <span class="math" data-tex="\(\mu(u,t,s)\)">\(\mu(u,t,s)\)</span>. With four sections, the two comparisons multiply three line factors in opposite parenthesizations. Equation (1.2) makes these maps equal. Hence the local equivalences carry the full composition coherence, in addition to being pairwise equivalences.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[D'Agnolo–Polesello]</strong> Andrea D'Agnolo and Pietro Polesello, <em>Stacks of twisted modules and integral transforms</em>, in <em>Geometric Aspects of Dwork Theory</em>, Walter de Gruyter, 2004. <a href="https://arxiv.org/abs/math/0307387">Open preprint</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks Project Authors, <em>The Stacks Project</em>: <a href="https://stacks.math.columbia.edu/tag/0268">Stacks</a> and <a href="https://stacks.math.columbia.edu/download/sites-modules.pdf">Modules on Sites</a>.</li>
+<li><strong>[Schapira, Sheaves]</strong> Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf"><em>An Introduction to Sheaves on Grothendieck Topologies</em></a>, lecture notes, version of 1 August 2026, Sections 1.9 and 2.5–2.6, for glueing, modules over sheaves of rings and ringed sites.</li>
+</ul>
+</main></body></html>

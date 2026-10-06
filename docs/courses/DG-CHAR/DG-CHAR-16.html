@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Milnor&#x27;s exotic seven-spheres · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-16.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="milnor-s-exotic-seven-spheres">Milnor's exotic seven-spheres</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0. No independent AI review is recorded.</em></p>
+<p>We construct smooth oriented four-plane bundles over <span class="math" data-tex="\(S^4\)">\(S^4\)</span>, compute their integral Euler and Pontryagin classes, and prove that Euler number <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> makes their sphere total spaces homeomorphic to <span class="math" data-tex="\(S^7\)">\(S^7\)</span>. The homeomorphism comes from a checked smooth function with two nondegenerate critical points. A filling-independent invariant modulo seven then distinguishes one of these smooth manifolds from the standard sphere. Every sign is fixed by a single quaternionic-line normalization, and six graded exercises have complete solutions.</p>
+<p>These proofs cover assigned lesson16. They use the full <a href="DG-CHAR-01.html">bundle</a>, <a href="DG-CHAR-03.html">classification and covering</a>, <a href="DG-CHAR-06.html">Thom/Euler</a>, <a href="DG-CHAR-08.html">Gysin</a>, <a href="DG-CHAR-08B.html">sphere-degree</a>, <a href="DG-CHAR-09.html">Chern</a>, <a href="DG-CHAR-10.html">Pontryagin</a>, <a href="DG-CHAR-07.html">manifold</a>, <a href="DG-CHAR-12.html">collar/gluing</a>, and <a href="DG-CHAR-14.html">signature</a> proofs already supplied in this course. The compact-band flow argument is also given in <a href="DG-CHAR-15B.html">smooth fibres</a>, SectionI.1. The exact uses are identified below. No general smooth-triangulation existence theorem or general theorem that all seven-manifolds bound is assumed: the examples have their explicit disk-bundle fillings.</p>
+<p>The distinction matters. The smooth total space is a sphere topologically, while its smooth structure is detected by a characteristic-number calculation on an eight-dimensional filling. The separate integral PL-refinement obstruction and its compatible relative triangulation prerequisites are proved in <a href="DG-CHAR-15C.html">the triangulation companion</a>.</p>
+<h2 id="a-four-plane-bundles-with-prescribed-euler-and-pontryagin-classes">A. Four-plane bundles with prescribed Euler and Pontryagin classes</h2>
+<p>We use the bundle <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span> with transition (C.6). The base and fibre orientations must be fixed before an Euler number is assigned. Give <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> the complex structure <span class="math" data-tex="\(v\mapsto vi\)">\(v\mapsto vi\)</span>, and give its underlying real four-space the resulting complex orientation. Left multiplication by a quaternion commutes with this complex structure. This fixes the fibre orientation for every <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span>.</p>
+<h3 id="a-1-the-quaternionic-line-and-its-integral-normalization">A.1. The quaternionic line and its integral normalization</h3>
+<p><span id="DG-CHAR-16.lemma-A.1"></span><strong>Lemma A.1 — The basic bundle.</strong> The bundle <span class="math" data-tex="\(\xi_{1,0}\)">\(\xi_{1,0}\)</span> is the underlying real bundle of a complex two-plane bundle <span class="math" data-tex="\(V\)">\(V\)</span>, and its unit sphere bundle is diffeomorphic to <span class="math" data-tex="\(S^7\)">\(S^7\)</span>. Orient the base <span class="math" data-tex="\(S^4\)">\(S^4\)</span> so that <span class="math" data-tex="\(u=e(\xi_{1,0})\)">\(u=e(\xi_{1,0})\)</span> evaluates to one. Then
+<span class="math math-display" data-tex="\[
+ e(\xi_{1,0})=u,\qquad p_1(\xi_{1,0})=-2u.
+\tag{A.1}
+\]">\[
+ e(\xi_{1,0})=u,\qquad p_1(\xi_{1,0})=-2u.
+\tag{A.1}
+\]</span></p>
+<p><strong>Proof.</strong> The transition is left multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>, which is complex linear for right multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>. Thus it defines <span class="math" data-tex="\(V\)">\(V\)</span>, with the stated real complex orientation. There is an explicit identification of its sphere total space with the unit sphere in <span class="math" data-tex="\(\mathbb H^2\)">\(\mathbb H^2\)</span>. In the first and second charts it is respectively
+<span class="math math-display" data-tex="\[
+ (u,v)\longmapsto\frac{(v,uv)}{\sqrt{1+|u|^2}},
+ \qquad
+ (u&#x27;,v&#x27;)\longmapsto\frac{(\bar u&#x27;v&#x27;,v&#x27;)}{\sqrt{1+|u&#x27;|^2}}.
+\tag{A.2}
+\]">\[
+ (u,v)\longmapsto\frac{(v,uv)}{\sqrt{1+|u|^2}},
+ \qquad
+ (u&#x27;,v&#x27;)\longmapsto\frac{(\bar u&#x27;v&#x27;,v&#x27;)}{\sqrt{1+|u&#x27;|^2}}.
+\tag{A.2}
+\]</span>
+On the overlap <span class="math" data-tex="\(u&#x27;=q/|u|\)">\(u&#x27;=q/|u|\)</span>, <span class="math" data-tex="\(v&#x27;=qv\)">\(v&#x27;=qv\)</span>; substitution shows the expressions agree. Both are smooth. For a sphere point <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, when <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> their inverse is
+<span class="math" data-tex="\(v=a/|a|\)">\(v=a/|a|\)</span>, <span class="math" data-tex="\(u=ba^{-1}\)">\(u=ba^{-1}\)</span>. When <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> it is
+<span class="math" data-tex="\(v&#x27;=b/|b|\)">\(v&#x27;=b/|b|\)</span>, <span class="math" data-tex="\(u&#x27;=\overline{ab^{-1}}\)">\(u&#x27;=\overline{ab^{-1}}\)</span>. These inverses are smooth and agree on the overlap. Since at least one of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is nonzero, they prove the diffeomorphism. The quaternionic line itself is the right line through <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>; the two displayed coordinate frames are <span class="math" data-tex="\((1,u)\)">\((1,u)\)</span> and <span class="math" data-tex="\((\bar u&#x27;,1)\)">\((\bar u&#x27;,1)\)</span>, normalized to unit length. Thus this is also the usual tautological quaternionic line over its projective line, with the second base chart conjugated to give (C.5).</p>
+<p>The integral rank-four Gysin sequence has the segment
+<span class="math math-display" data-tex="\[
+ H^3(S^7;\mathbb Z)=0\longrightarrow H^0(S^4;\mathbb Z)
+ \xrightarrow{\smile e(\xi_{1,0})}H^4(S^4;\mathbb Z)
+ \longrightarrow H^4(S^7;\mathbb Z)=0.
+\tag{A.3}
+\]">\[
+ H^3(S^7;\mathbb Z)=0\longrightarrow H^0(S^4;\mathbb Z)
+ \xrightarrow{\smile e(\xi_{1,0})}H^4(S^4;\mathbb Z)
+ \longrightarrow H^4(S^7;\mathbb Z)=0.
+\tag{A.3}
+\]</span>
+Both middle groups are <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so exactness makes the Euler class a primitive generator. There is therefore a unique base orientation for which it evaluates to one; call this generator <span class="math" data-tex="\(u\)">\(u\)</span>. This specifies the sign rather than assuming it from a clutching convention.</p>
+<p>The Chern chapter defines the top class of a complex bundle as the Euler class of its real complex orientation. Hence <span class="math" data-tex="\(c_2(V)=u\)">\(c_2(V)=u\)</span>. Also <span class="math" data-tex="\(c_1(V)=0\)">\(c_1(V)=0\)</span> because <span class="math" data-tex="\(H^2(S^4;\mathbb Z)=0\)">\(H^2(S^4;\mathbb Z)=0\)</span>. The integral underlying-complex formula from Pontryagin Section 2 gives
+<span class="math" data-tex="\(p_1(V_{\mathbb R})=c_1(V)^2-2c_2(V)=-2u\)">\(p_1(V_{\mathbb R})=c_1(V)^2-2c_2(V)=-2u\)</span>. This proves (A.1) and the assigned quaternionic-line example without invoking a quaternionic projective-space characteristic-class formula. ∎</p>
+<h3 id="a-2-additivity-for-clutching-with-an-explicit-classifying-map">A.2. Additivity for clutching, with an explicit classifying map</h3>
+<p><span id="DG-CHAR-16.lemma-A.2"></span><strong>Lemma A.2 — Characteristic numbers of a clutching map.</strong> Let <span class="math" data-tex="\(g:S^3\to SO(4)\)">\(g:S^3\to SO(4)\)</span> be based at the identity. For every <span class="math" data-tex="\(c\in H^4(BSO(4);\mathbb Z)\)">\(c\in H^4(BSO(4);\mathbb Z)\)</span>, the number
+<span class="math" data-tex="\(\langle c(\xi_g),[S^4]\rangle\)">\(\langle c(\xi_g),[S^4]\rangle\)</span> is additive under pointwise multiplication of based clutching maps and changes sign under pointwise inversion. Here <span class="math" data-tex="\(\xi_g\)">\(\xi_g\)</span> is formed using the same ordered base charts as (C.5).</p>
+<p><strong>Proof.</strong> Represent <span class="math" data-tex="\(S^4\)">\(S^4\)</span> as the unreduced suspension of <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. If its latitude parameter is <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, put <span class="math" data-tex="\(\alpha=\pi t/2\)">\(\alpha=\pi t/2\)</span>. A finite-dimensional classifying map is the oriented plane
+<span class="math math-display" data-tex="\[
+ E_g(q,t)=\{(\cos\alpha\,v,\sin\alpha\,g(q)v):v\in\mathbb R^4\}
+                  \subset\mathbb R^4\oplus\mathbb R^4.
+\tag{A.4}
+\]">\[
+ E_g(q,t)=\{(\cos\alpha\,v,\sin\alpha\,g(q)v):v\in\mathbb R^4\}
+                  \subset\mathbb R^4\oplus\mathbb R^4.
+\tag{A.4}
+\]</span>
+The plane at either endpoint is independent of <span class="math" data-tex="\(q\)">\(q\)</span>, so the map is continuous on the suspension. Projection to the first coordinate block, divided by the positive factor <span class="math" data-tex="\(\cos\alpha\)">\(\cos\alpha\)</span>, trivializes the bundle away from the second endpoint. Projection to the second, divided by <span class="math" data-tex="\(\sin\alpha\)">\(\sin\alpha\)</span>, trivializes it away from the first. These normalized fibre coordinates satisfy <span class="math" data-tex="\(w=g(q)v\)">\(w=g(q)v\)</span> on the overlap. Thus its pulled-back tautological oriented bundle is exactly <span class="math" data-tex="\(\xi_g\)">\(\xi_g\)</span>; the positive normalization factors preserve its orientation.</p>
+<p>To obtain a based cube representative, rotate the ambient coordinate blocks by
+<span class="math math-display" data-tex="\[
+ T_t(x,y)=(\cos\alpha\,x+\sin\alpha\,y,
+                  -\sin\alpha\,x+\cos\alpha\,y).
+\tag{A.5}
+\]">\[
+ T_t(x,y)=(\cos\alpha\,x+\sin\alpha\,y,
+                  -\sin\alpha\,x+\cos\alpha\,y).
+\tag{A.5}
+\]</span>
+This is an orthogonal bundle isomorphism carrying (A.4) to another oriented plane map <span class="math" data-tex="\(\widehat E_g\)">\(\widehat E_g\)</span>. Both its endpoint planes are the first coordinate plane. At the basepoint <span class="math" data-tex="\(q\)">\(q\)</span>, where <span class="math" data-tex="\(g(q)=I\)">\(g(q)=I\)</span>, that plane is also constant for every <span class="math" data-tex="\(t\)">\(t\)</span>. The isomorphism transports the plane orientation, and at the second endpoint the first-block parametrization is <span class="math" data-tex="\(g(q)v\)">\(g(q)v\)</span>, with positive determinant. Therefore <span class="math" data-tex="\(\widehat E_g\)">\(\widehat E_g\)</span> is constant, with the same oriented value, on the entire basepoint arc.</p>
+<p>Represent <span class="math" data-tex="\(S^3\)">\(S^3\)</span> by <span class="math" data-tex="\(I^3/\partial I^3\)">\(I^3/\partial I^3\)</span>, with this arc as its basepoint times <span class="math" data-tex="\(I\)">\(I\)</span>. Collapsing the arc and the two suspension tips makes the reduced suspension <span class="math" data-tex="\(I^4/\partial I^4\)">\(I^4/\partial I^4\)</span>. The quotient from the unreduced to the reduced suspension has degree <span class="math" data-tex="\(+1\)">\(+1\)</span> with the corresponding cube orientation: at an interior point away from the arc it is an orientation-preserving identification, so the point-local fundamental-class test gives degree one. Reversing both sphere orientations, if required to match <span class="math" data-tex="\(u\)">\(u\)</span> of (A.1), keeps that assertion. Consequently <span class="math" data-tex="\(\widehat E_g\)">\(\widehat E_g\)</span>, viewed as a map on the based four-cube, has the same characteristic number as (A.4).</p>
+<p>First use concatenation of two based maps <span class="math" data-tex="\(g_0,g_1\)">\(g_0,g_1\)</span> in the first coordinate of <span class="math" data-tex="\(I^3\)">\(I^3\)</span>. Formula (A.4), followed by (A.5), then concatenates their four-cube representatives in that same coordinate. Cutting the oriented four-cube into its two halves gives the sum of their pushed-forward fundamental classes. The shared face cancels and all remaining boundary faces map to the common basepoint. Equivalently this is the singular-chain representative for the sphere pinch map; triangulating the two halves gives the same chain identity. Evaluating <span class="math" data-tex="\(c\)">\(c\)</span> proves additivity for concatenation.</p>
+<p>Pointwise multiplication is homotopic to that concatenation. To see it directly, write the first coordinate as <span class="math" data-tex="\(s\)">\(s\)</span>. For <span class="math" data-tex="\(0\leq r\leq1\)">\(0\leq r\leq1\)</span> define
+<span class="math math-display" data-tex="\[
+ A_r(s)=\min\{s/(1-r/2),1\},\qquad
+ B_r(s)=\max\{(s-r/2)/(1-r/2),0\}.
+\tag{A.6}
+\]">\[
+ A_r(s)=\min\{s/(1-r/2),1\},\qquad
+ B_r(s)=\max\{(s-r/2)/(1-r/2),0\}.
+\tag{A.6}
+\]</span>
+Replace the first input coordinate of <span class="math" data-tex="\(g_0\)">\(g_0\)</span> by <span class="math" data-tex="\(A_r\)">\(A_r\)</span> and of <span class="math" data-tex="\(g_1\)">\(g_1\)</span> by <span class="math" data-tex="\(B_r\)">\(B_r\)</span>, and multiply their values in <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>. Every boundary value stays the identity. At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> this is their pointwise product. At <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, the first map is the identity on the second half and the second is the identity on the first half, so it is precisely their concatenation. This is a continuous based homotopy. The associated plane maps (A.4) give a homotopy of characteristic numbers by cohomological homotopy invariance. A pointwise map times its inverse is constant, whose positive-degree class is zero. Hence inversion changes the number's sign as well. ∎</p>
+<h3 id="a-3-the-right-factor-and-all-prescribed-pairs">A.3. The right factor and all prescribed pairs</h3>
+<p>Let <span class="math" data-tex="\(L_q(v)=qv\)">\(L_q(v)=qv\)</span>, <span class="math" data-tex="\(R_q(v)=vq\)">\(R_q(v)=vq\)</span>, and let <span class="math" data-tex="\(r:S^4\to S^4\)">\(r:S^4\to S^4\)</span> be the reflection <span class="math" data-tex="\(u\mapsto\bar u\)">\(u\mapsto\bar u\)</span>, <span class="math" data-tex="\(u&#x27;\mapsto\bar u&#x27;\)">\(u&#x27;\mapsto\bar u&#x27;\)</span>. It has degree <span class="math" data-tex="\(-1\)">\(-1\)</span>: in its first real coordinate chart conjugation has determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>, which gives its action on the local and hence global oriented fundamental class. The fibre map <span class="math" data-tex="\(C(v)=\bar v\)">\(C(v)=\bar v\)</span> also reverses orientation. Its identity
+<span class="math math-display" data-tex="\[
+ R_q=C L_{\bar q}C
+\tag{A.7}
+\]">\[
+ R_q=C L_{\bar q}C
+\tag{A.7}
+\]</span>
+gives a fibre-orientation-reversing isomorphism
+<span class="math" data-tex="\(\xi_{0,1}\cong r^*\xi_{1,0}\)">\(\xi_{0,1}\cong r^*\xi_{1,0}\)</span>. The Euler class changes sign under this isomorphism, whereas the Pontryagin class does not. Naturality and (A.1) therefore give
+<span class="math math-display" data-tex="\[
+ e(\xi_{0,1})=-r^*u=u,\qquad
+ p_1(\xi_{0,1})=r^*(-2u)=2u.
+\tag{A.8}
+\]">\[
+ e(\xi_{0,1})=-r^*u=u,\qquad
+ p_1(\xi_{0,1})=r^*(-2u)=2u.
+\tag{A.8}
+\]</span></p>
+<p>Since left and right multiplication commute, the transition of <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span> is the pointwise product <span class="math" data-tex="\(L_q^hR_q^j\)">\(L_q^hR_q^j\)</span>. Apply Lemma A.2 to the universal Euler and first Pontryagin classes. Cohomology in degree four is cyclic and evaluation is an isomorphism, so equality of their numbers proves equality of their classes:
+<span class="math math-display" data-tex="\[
+ e(\xi_{h,j})=(h+j)u,\qquad
+ p_1(\xi_{h,j})=2(j-h)u.
+\tag{A.9}
+\]">\[
+ e(\xi_{h,j})=(h+j)u,\qquad
+ p_1(\xi_{h,j})=2(j-h)u.
+\tag{A.9}
+\]</span>
+All signs refer to the single normalization (A.1).</p>
+<p><span id="DG-CHAR-16.theorem-A.3"></span><strong>Theorem A.3 — Prescribed four-plane classes.</strong> Given integers <span class="math" data-tex="\(e,k\)">\(e,k\)</span> with <span class="math" data-tex="\(k\equiv2e\pmod4\)">\(k\equiv2e\pmod4\)</span>, there is a smooth oriented four-plane bundle on <span class="math" data-tex="\(S^4\)">\(S^4\)</span> with Euler class <span class="math" data-tex="\(eu\)">\(eu\)</span> and first Pontryagin class <span class="math" data-tex="\(ku\)">\(ku\)</span>.</p>
+<p><strong>Proof.</strong> Choose
+<span class="math math-display" data-tex="\[
+ h=(2e-k)/4,\qquad j=(2e+k)/4.
+\tag{A.10}
+\]">\[
+ h=(2e-k)/4,\qquad j=(2e+k)/4.
+\tag{A.10}
+\]</span>
+These are integers: the first numerator is divisible by four by the hypothesis, and the second differs from it by <span class="math" data-tex="\(2k\)">\(2k\)</span>, divisible by four since <span class="math" data-tex="\(k\)">\(k\)</span> is even. They have <span class="math" data-tex="\(h+j=e\)">\(h+j=e\)</span> and <span class="math" data-tex="\(2(j-h)=k\)">\(2(j-h)=k\)</span>. Use (A.9). The bundle is smooth by its explicit transition functions. ∎</p>
+<h3 id="a-4-why-this-family-includes-every-oriented-four-plane-bundle">A.4. Why this family includes every oriented four-plane bundle</h3>
+<p><span id="DG-CHAR-16.proposition-A.4"></span><strong>Proposition A.4 — Classification in this dimension.</strong> Every smooth oriented four-plane bundle over the oriented <span class="math" data-tex="\(S^4\)">\(S^4\)</span> is smoothly isomorphic, preserving fibre orientation, to exactly one <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span>. Thus its Euler and first Pontryagin classes determine its isomorphism class, and their integer coefficients satisfy <span class="math" data-tex="\(k\equiv2e\pmod4\)">\(k\equiv2e\pmod4\)</span>.</p>
+<p><strong>Proof.</strong> A bundle on either closed hemisphere is continuously trivial by the proved homotopy-invariance theorem for bundles on a contractible compact base. Choose oriented orthonormal trivializations using its metric and Gram–Schmidt. They give an <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>-valued transition on the equator. Conversely such a transition glues two trivial bundles, as already used here. A homotopy of transitions gives a bundle on <span class="math" data-tex="\(S^4\times I\)">\(S^4\times I\)</span>; the explicit bundle homotopy-invariance proof in classification Lemma4.2 identifies its endpoint bundles.</p>
+<p>An isomorphism between two glued bundles gives matrices on the two hemispheres with
+<span class="math" data-tex="\(g&#x27;=b_S g b_N^{-1}\)">\(g&#x27;=b_S g b_N^{-1}\)</span> on the equator. Each <span class="math" data-tex="\(b\)">\(b\)</span> extends over its disk, so its boundary map is homotopic to a constant matrix in <span class="math" data-tex="\(GL^+(4,\mathbb R)\)">\(GL^+(4,\mathbb R)\)</span>. Gram–Schmidt writes a positive invertible matrix as <span class="math" data-tex="\(QR\)">\(QR\)</span>, with <span class="math" data-tex="\(Q\in SO(4)\)">\(Q\in SO(4)\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> upper triangular with positive diagonal. Replacing <span class="math" data-tex="\(R\)">\(R\)</span> by <span class="math" data-tex="\((1-t)R+tI\)">\((1-t)R+tI\)</span> is a deformation retraction onto <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>, fixed on that subgroup. Applying it to these homotopies shows that the two clutch maps are homotopic in <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span> up to constant factors. Normalize a clutch map to be the identity at one chosen equator point by changing a hemisphere frame. Constant conjugation is homotopic to the identity conjugation along a path in the connected group <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>. Finally an unbased homotopy between normalized maps can be based by multiplying its values on the right by the inverse of its value at the chosen point. Hence bundle classes are precisely based classes in <span class="math" data-tex="\(\pi_3(SO(4))\)">\(\pi_3(SO(4))\)</span>.</p>
+<p>Here is the required group computation. Define
+<span class="math math-display" data-tex="\[
+ \varphi:S^3\times S^3\longrightarrow SO(4),\qquad
+ \varphi(a,b)(v)=avb^{-1}.
+\tag{A.11}
+\]">\[
+ \varphi:S^3\times S^3\longrightarrow SO(4),\qquad
+ \varphi(a,b)(v)=avb^{-1}.
+\tag{A.11}
+\]</span>
+It is onto. For <span class="math" data-tex="\(T\in SO(4)\)">\(T\in SO(4)\)</span>, put <span class="math" data-tex="\(w=T(1)\)">\(w=T(1)\)</span>; the map <span class="math" data-tex="\(L_{w^{-1}}T\)">\(L_{w^{-1}}T\)</span> fixes <span class="math" data-tex="\(1\)">\(1\)</span> and restricts to a positive orthogonal map of the imaginary three-space. Such a map has an axis: its real eigenvalues are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and odd dimension and determinant one guarantee an eigenvalue <span class="math" data-tex="\(+1\)">\(+1\)</span>. On the perpendicular two-plane it is a rotation of some angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. If <span class="math" data-tex="\(n\)">\(n\)</span> is the unit imaginary quaternion on the oriented axis, direct multiplication shows that conjugation by <span class="math" data-tex="\(a=\cos(\theta/2)+n\sin(\theta/2)\)">\(a=\cos(\theta/2)+n\sin(\theta/2)\)</span> gives this rotation, fixing the axis. Thus <span class="math" data-tex="\(T=L_w L_aR_{a^{-1}}=\varphi(wa,a)\)">\(T=L_w L_aR_{a^{-1}}=\varphi(wa,a)\)</span>. This also shows that <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span> is connected, as it is the image of the connected <span class="math" data-tex="\(S^3\times S^3\)">\(S^3\times S^3\)</span>.</p>
+<p>The kernel is <span class="math" data-tex="\(\{(1,1),(-1,-1)\}\)">\(\{(1,1),(-1,-1)\}\)</span>. Indeed evaluating an identity action at <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, and commuting with every quaternion then makes <span class="math" data-tex="\(a\)">\(a\)</span> real, hence <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The map is a smooth local diffeomorphism. Both manifolds have dimension six: for <span class="math" data-tex="\(SO(4)\)">\(SO(4)\)</span>, local coordinates are obtained by choosing the first unit column, then a unit column in its three-dimensional complement, then one in the remaining two-dimensional complement; the last positive column is determined. Projection and Gram–Schmidt give smooth complement frames, so this description provides actual local coordinates of dimensions three, two and one. At the identity, differentiating (A.11) gives <span class="math" data-tex="\((A,B)\mapsto(v\mapsto Av-vB)\)">\((A,B)\mapsto(v\mapsto Av-vB)\)</span> for imaginary <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. Its kernel is zero by the same evaluation and commutation calculation. The inverse function theorem applies in these six-dimensional charts; translating in the two groups proves the assertion everywhere. A sufficiently small identity neighbourhood and its translate by <span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span> are disjoint, and their common image is evenly covered, since every preimage differs by an element of the kernel. Translating proves that (A.11) is a two-sheeted covering.</p>
+<p>The full cube and homotopy lifting proof for coverings in classification Section8b gives
+<span class="math" data-tex="\(\pi_3(SO(4))\cong\pi_3(S^3\times S^3)\)">\(\pi_3(SO(4))\cong\pi_3(S^3\times S^3)\)</span>: a based cube lifts from <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, its connected boundary stays at that lift, and its based homotopies lift with the same boundary. Coordinate projections identify the latter group with <span class="math" data-tex="\(\pi_3(S^3)\oplus\pi_3(S^3)\)">\(\pi_3(S^3)\oplus\pi_3(S^3)\)</span>. The complete sphere-degree proof in frame-obstruction LemmaB.1 gives <span class="math" data-tex="\(\pi_3(S^3)=\mathbb Z\)">\(\pi_3(S^3)=\mathbb Z\)</span>, generated by the identity. Pointwise multiplication and concatenation agree by (A.6), now in the unit quaternion group. Therefore the two components of <span class="math" data-tex="\(q\mapsto(q^h,q^{-j})\)">\(q\mapsto(q^h,q^{-j})\)</span> have degrees <span class="math" data-tex="\(h,-j\)">\(h,-j\)</span>, and (A.11) takes them to the transition of <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span>. Every clutch class has a unique such pair. Formula (A.9) and its inverse (A.10) prove the assertions about characteristic classes.</p>
+<p>Finally the continuous bundle isomorphisms just obtained can be made smooth. In smooth local frames for their Hom bundle, approximate each continuous matrix by a constant sampled matrix on a sufficiently small chart, and combine these smooth local sections with a finite smooth partition. Local uniform continuity and bounded frame changes on compact pieces give any prescribed uniform approximation in bundle metrics. The original isomorphism has a positive minimum singular value on the compact base. Choose the approximation error smaller than half that value; the approximating smooth bundle map and the straight path from the original are invertible in every fibre. The path retains the positive determinant sign. Thus the approximation is a smooth oriented bundle isomorphism. On unit sphere bundles its normalization <span class="math" data-tex="\(v\mapsto Av/|Av|\)">\(v\mapsto Av/|Av|\)</span> is a diffeomorphism, with inverse given by the similarly normalized inverse linear map. This completes the smooth classification, without a triangulation theorem. ∎</p>
+<h3 id="a-5-two-elementary-exercises-with-solutions">A.5. Two elementary exercises with solutions</h3>
+<p><span id="DG-CHAR-16.exercise-A.5"></span><strong>Exercise A.5 — Easy: compute the two classes.</strong> With the normalization (A.1), compute the Euler and first Pontryagin classes for <span class="math" data-tex="\((h,j)=(1,0),(0,1),(-1,2)\)">\((h,j)=(1,0),(0,1),(-1,2)\)</span>. Construct the bundle with any allowed pair <span class="math" data-tex="\((e,k)\)">\((e,k)\)</span>.</p>
+<p><strong>Solution.</strong> Formula (A.9) gives respectively <span class="math" data-tex="\((u,-2u)\)">\((u,-2u)\)</span>, <span class="math" data-tex="\((u,2u)\)">\((u,2u)\)</span> and <span class="math" data-tex="\((u,6u)\)">\((u,6u)\)</span>. For arbitrary <span class="math" data-tex="\(k\equiv2e\pmod4\)">\(k\equiv2e\pmod4\)</span>, the integers (A.10) give exactly <span class="math" data-tex="\(e=h+j\)">\(e=h+j\)</span> and <span class="math" data-tex="\(k=2(j-h)\)">\(k=2(j-h)\)</span>; the explicit smooth transition constructs that bundle. Conversely Proposition A.4 and (A.9) force that congruence for every oriented four-plane bundle over the chosen sphere.</p>
+<p><span id="DG-CHAR-16.exercise-A.6"></span><strong>Exercise A.6 — Medium: Euler number minus one.</strong> Explain why the unit sphere total space of every oriented four-plane bundle over <span class="math" data-tex="\(S^4\)">\(S^4\)</span> with Euler number <span class="math" data-tex="\(-1\)">\(-1\)</span> is homeomorphic to <span class="math" data-tex="\(S^7\)">\(S^7\)</span>.</p>
+<p><strong>Solution.</strong> Proposition A.4 identifies the bundle smoothly with a unique <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span>; (A.9) makes <span class="math" data-tex="\(h+j=-1\)">\(h+j=-1\)</span>. Pullback by the base reflection <span class="math" data-tex="\(u\mapsto\bar u\)">\(u\mapsto\bar u\)</span> changes the transition to that of <span class="math" data-tex="\(\xi_{-h,-j}\)">\(\xi_{-h,-j}\)</span>, whose exponent sum is one. The induced total-space map is a diffeomorphism over the base reflection; the normalized sphere maps of the smooth bundle isomorphism are also diffeomorphisms. Section C's explicitly checked two-critical-point function and full sphere criterion therefore give the required homeomorphism. No assertion that a homology sphere is automatically a sphere is used.</p>
+<h2 id="b-the-disk-bundle-and-its-relative-square">B. The disk bundle and its relative square</h2>
+<p>Let <span class="math" data-tex="\(W=D(\xi_{h,j})\)">\(W=D(\xi_{h,j})\)</span>, <span class="math" data-tex="\(M=S(\xi_{h,j})=\partial W\)">\(M=S(\xi_{h,j})=\partial W\)</span>, and <span class="math" data-tex="\(\pi:W\to S^4\)">\(\pi:W\to S^4\)</span>. Orient <span class="math" data-tex="\(W\)">\(W\)</span> by base first and fibre last, and <span class="math" data-tex="\(M\)">\(M\)</span> by its outward-normal-first boundary orientation. Transition maps preserve both choices. In bundle charts the norm-one boundary is the usual smooth disk boundary; thus <span class="math" data-tex="\(W\)">\(W\)</span> is a compact smooth eight-manifold with boundary.</p>
+<p>The vertical tangent of the full vector-bundle total space is canonically <span class="math" data-tex="\(\pi^*\xi_{h,j}\)">\(\pi^*\xi_{h,j}\)</span>: differentiation of translation in a fibre gives the identification. Its projection derivative has kernel this vertical tangent and quotient <span class="math" data-tex="\(\pi^*TS^4\)">\(\pi^*TS^4\)</span>. A smooth metric splits the quotient, giving
+<span class="math math-display" data-tex="\[
+ TW\cong\pi^*(TS^4\oplus\xi_{h,j}).
+\tag{B.1}
+\]">\[
+ TW\cong\pi^*(TS^4\oplus\xi_{h,j}).
+\tag{B.1}
+\]</span>
+This also holds at the disk boundary, since its tangent bundle is the restriction of the tangent bundle of the full total space. The sphere tangent plus its normal line is trivial, so <span class="math" data-tex="\(p_1(TS^4)=0\)">\(p_1(TS^4)=0\)</span>. The Pontryagin Whitney identity is exact here: its possible two-torsion discrepancy lies in <span class="math" data-tex="\(H^4(W;\mathbb Z)\cong\mathbb Z\)">\(H^4(W;\mathbb Z)\cong\mathbb Z\)</span>, which has no two-torsion. If <span class="math" data-tex="\(x=\pi^*u\)">\(x=\pi^*u\)</span>, then
+<span class="math math-display" data-tex="\[
+ H^*(W;\mathbb Z)\cong H^*(S^4;\mathbb Z),\qquad
+ p_1(TW)=2(j-h)x=kx.
+\tag{B.2}
+\]">\[
+ H^*(W;\mathbb Z)\cong H^*(S^4;\mathbb Z),\qquad
+ p_1(TW)=2(j-h)x=kx.
+\tag{B.2}
+\]</span>
+The cohomology assertion follows from the fibrewise radial contraction to the zero section.</p>
+<p>Write <span class="math" data-tex="\(U\in H^4(W,M;\mathbb Z)\)">\(U\in H^4(W,M;\mathbb Z)\)</span> for the positive Thom class. The disk/sphere pair has the usual Thom cohomology, as follows directly on pairs. Put <span class="math" data-tex="\(W_0=W\setminus S^4\)">\(W_0=W\setminus S^4\)</span>, removing the zero section. The radial deformation <span class="math" data-tex="\(v\mapsto((1-t)+t/|v|)v\)">\(v\mapsto((1-t)+t/|v|)v\)</span> retracts <span class="math" data-tex="\(W_0\)">\(W_0\)</span> onto <span class="math" data-tex="\(M\)">\(M\)</span>. The exact pair sequences consequently identify <span class="math" data-tex="\(H^*(W,M)\)">\(H^*(W,M)\)</span> with <span class="math" data-tex="\(H^*(W,W_0)\)">\(H^*(W,W_0)\)</span>, compatibly with products and forgetful maps. If <span class="math" data-tex="\(E\)">\(E\)</span> is the full bundle total space, <span class="math" data-tex="\(v\mapsto v/\max\{1,|v|\}\)">\(v\mapsto v/\max\{1,|v|\}\)</span> retracts <span class="math" data-tex="\((E,E_0)\)">\((E,E_0)\)</span> onto <span class="math" data-tex="\((W,W_0)\)">\((W,W_0)\)</span>; its straight radial homotopy stays nonzero on <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. Thus the ordinary Thom theorem applies to this pair. Its Thom isomorphism and forgetful map are
+<span class="math math-display" data-tex="\[
+ H^4(W,M)=\mathbb Z U,\qquad
+ J(U)=\pi^*e(\xi_{h,j})=e x,
+ \quad e=h+j.
+\tag{B.3}
+\]">\[
+ H^4(W,M)=\mathbb Z U,\qquad
+ J(U)=\pi^*e(\xi_{h,j})=e x,
+ \quad e=h+j.
+\tag{B.3}
+\]</span>
+The absolute image of the first relative cup factor can be used when multiplying two relative classes. Therefore
+<span class="math math-display" data-tex="\[
+ U\smile U=J(U)\smile U=e\,x\smile U,
+ \qquad
+ \langle x\smile U,[W,M]\rangle=1.
+\tag{B.4}
+\]">\[
+ U\smile U=J(U)\smile U=e\,x\smile U,
+ \qquad
+ \langle x\smile U,[W,M]\rangle=1.
+\tag{B.4}
+\]</span>
+Here the second identity includes its sign. Represent the positive base generator by the point-local class in an oriented base disk and restrict the Thom class to its trivial bundle chart. Excision reduces the evaluation to a positive base four-disk crossed with a positive fibre four-disk, relative to the base-disk boundary and fibre-sphere boundary. The proved cross-product/cup evaluation makes this value the product of their values, namely one. Its product orientation is exactly base first, fibre last; switching four-dimensional factors introduces no sign. The relative fundamental class has this local product value by the integer local-orientation construction. This proves the evaluation without choosing an unspecified sign for the intersection form.</p>
+<p>When <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, (B.3) is an isomorphism in degree four. The relative intersection pairing has matrix <span class="math" data-tex="\((1)\)">\((1)\)</span> in the Thom basis by (B.4). Consequently
+<span class="math math-display" data-tex="\[
+ \sigma(W)=1,\qquad
+ \widetilde p_1=J^{-1}p_1(TW)=kU,
+ \qquad
+ \langle\widetilde p_1^2,[W,M]\rangle=k^2.
+\tag{B.5}
+\]">\[
+ \sigma(W)=1,\qquad
+ \widetilde p_1=J^{-1}p_1(TW)=kU,
+ \qquad
+ \langle\widetilde p_1^2,[W,M]\rangle=k^2.
+\tag{B.5}
+\]</span>
+The integral Gysin sequence also gives <span class="math" data-tex="\(H^*(M;\mathbb Z)=\mathbb Z\)">\(H^*(M;\mathbb Z)=\mathbb Z\)</span> in degrees zero and seven and zero elsewhere: multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> identifies base degrees zero and four, and the top connecting map identifies degree seven with <span class="math" data-tex="\(H^4(S^4)\)">\(H^4(S^4)\)</span>. The complete sequence supplies vanishing in every other degree. Section C gives the stronger sphere homeomorphism from the explicit smooth function; it does not infer that homeomorphism from these groups.</p>
+<h2 id="c-two-critical-points-and-an-explicit-sphere-homeomorphism">C. Two critical points and an explicit sphere homeomorphism</h2>
+<p>This section proves the differential-topological mechanism used for the sphere-bundle examples. A homology computation alone does not produce their homeomorphism to a sphere.</p>
+<h3 id="c-1-the-local-normal-form-at-an-extremum">C.1. The local normal form at an extremum</h3>
+<p><span id="DG-CHAR-16.lemma-C.1"></span><strong>Lemma C.1.</strong> Suppose a smooth real function has a nondegenerate minimum at a point of an <span class="math" data-tex="\(n\)">\(n\)</span>-manifold. There are smooth coordinates <span class="math" data-tex="\(y\)">\(y\)</span> centred there in which the function is its minimum value plus <span class="math" data-tex="\(|y|^2\)">\(|y|^2\)</span>. At a nondegenerate maximum the analogous expression is its maximum value minus <span class="math" data-tex="\(|y|^2\)">\(|y|^2\)</span>.</p>
+<p><strong>Proof.</strong> Choose initial coordinates <span class="math" data-tex="\(x\)">\(x\)</span>, with the point at zero, and subtract the critical value. Taylor's formula with integral remainder gives
+<span class="math math-display" data-tex="\[
+ f(x)=x^TA(x)x,\qquad
+ A(x)=\int_0^1(1-t)D^2f(tx)\,dt.
+\tag{C.1}
+\]">\[
+ f(x)=x^TA(x)x,\qquad
+ A(x)=\int_0^1(1-t)D^2f(tx)\,dt.
+\tag{C.1}
+\]</span>
+The matrix <span class="math" data-tex="\(A\)">\(A\)</span> is smooth and symmetric. At a minimum its value at zero is positive definite: the Hessian is nonnegative by the one-variable second derivative test in every direction, and nondegeneracy excludes a zero eigenvalue. It remains positive definite after shrinking the chart.</p>
+<p>For completeness the required smooth matrix factorization is elementary. A positive definite symmetric matrix has a unique upper triangular factor <span class="math" data-tex="\(B\)">\(B\)</span> with positive diagonal and <span class="math" data-tex="\(A=B^TB\)">\(A=B^TB\)</span>. Construct its entries successively: take the positive square root of the first diagonal entry, divide the first row entries by it, and repeat on the remaining Schur complement. The complement is positive definite because its quadratic form is the minimum over the eliminated coordinate of the old positive quadratic form. All square roots have positive arguments and all denominators are nonzero; consequently the recursion gives a smooth <span class="math" data-tex="\(B(x)\)">\(B(x)\)</span>.</p>
+<p>Set <span class="math" data-tex="\(y=B(x)x\)">\(y=B(x)x\)</span>. Its derivative at zero is the invertible matrix <span class="math" data-tex="\(B(0)\)">\(B(0)\)</span>. The proved smooth inverse function theorem therefore makes <span class="math" data-tex="\(y\)">\(y\)</span> a coordinate system on a smaller neighbourhood, and (C.1) becomes <span class="math" data-tex="\(f=|y|^2\)">\(f=|y|^2\)</span>. Apply this argument to the negative of the function at a maximum. ∎</p>
+<h3 id="c-2-the-sphere-criterion-including-the-missing-endpoint">C.2. The sphere criterion, including the missing endpoint</h3>
+<p><span id="DG-CHAR-16.theorem-C.2"></span><strong>Theorem C.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed connected smooth <span class="math" data-tex="\(n\)">\(n\)</span>-manifold, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, admitting a smooth function with exactly two critical points, both nondegenerate. Then <span class="math" data-tex="\(M\)">\(M\)</span> is homeomorphic to <span class="math" data-tex="\(S^n\)">\(S^n\)</span>. Moreover <span class="math" data-tex="\(M\)">\(M\)</span> is obtained by gluing two smooth closed <span class="math" data-tex="\(n\)">\(n\)</span>-disks along a boundary diffeomorphism, and it admits a sphere homeomorphism that is a diffeomorphism away from one point.</p>
+<p><strong>Proof.</strong> Compactness gives a minimum and maximum, and these are the two critical points. They are distinct: otherwise the function is constant and every point is critical. Rescale the function to <span class="math" data-tex="\(f:M\to[0,1]\)">\(f:M\to[0,1]\)</span>, with minimum <span class="math" data-tex="\(p_-\)">\(p_-\)</span> and maximum <span class="math" data-tex="\(p_+\)">\(p_+\)</span>. Its extreme level sets consist of their respective points, since any other extreme point would also be critical.</p>
+<p>Lemma C.1 supplies a minimum chart in which <span class="math" data-tex="\(f=|y|^2\)">\(f=|y|^2\)</span>, and a maximum chart in which <span class="math" data-tex="\(f=1-|z|^2\)">\(f=1-|z|^2\)</span>. Choose a smooth Riemannian metric equal to the Euclidean metric in a smaller minimum chart, using the finite smooth partition construction from the bundle chapter. On <span class="math" data-tex="\(M\setminus\{p_-,p_+\}\)">\(M\setminus\{p_-,p_+\}\)</span> put
+<span class="math math-display" data-tex="\[
+ V=\frac{\operatorname{grad}f}{|\operatorname{grad}f|^2},
+ \qquad df(V)=1.
+\tag{C.2}
+\]">\[
+ V=\frac{\operatorname{grad}f}{|\operatorname{grad}f|^2},
+ \qquad df(V)=1.
+\tag{C.2}
+\]</span>
+This is a smooth vector field on that open set. For any <span class="math" data-tex="\(0&lt;a&lt;b&lt;1\)">\(0&lt;a&lt;b&lt;1\)</span>, the band <span class="math" data-tex="\(f^{-1}([a,b])\)">\(f^{-1}([a,b])\)</span> is compact and misses the critical points. A trajectory of <span class="math" data-tex="\(V\)">\(V\)</span> has <span class="math" data-tex="\(f\)">\(f\)</span>-value increasing at unit speed. The local flow existence theorem and a finite coordinate cover of the compact band give a common positive continuation time; repeating it proves that a trajectory can be continued for every finite interval for which its <span class="math" data-tex="\(f\)">\(f\)</span>-value stays in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. The same reasoning applies backwards. This is the compact-band continuation argument proved in the smooth regular-fibre section; it does not presume completeness on the punctured manifold.</p>
+<p>Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> small enough that the entire sublevel <span class="math" data-tex="\(f^{-1}([0,2\delta])\)">\(f^{-1}([0,2\delta])\)</span> lies in the Euclidean minimum chart and that this chart contains the coordinate ball of radius <span class="math" data-tex="\(\sqrt{2\delta}\)">\(\sqrt{2\delta}\)</span>. Such a choice exists: on the compact complement of any smaller minimum neighbourhood the function has a positive minimum. In the chart,
+<span class="math" data-tex="\(V(y)=y/(2|y|^2)\)">\(V(y)=y/(2|y|^2)\)</span>. Its flow sends <span class="math" data-tex="\(\sqrt\delta\,a\)">\(\sqrt\delta\,a\)</span> to <span class="math" data-tex="\(\sqrt t\,a\)">\(\sqrt t\,a\)</span> when the new <span class="math" data-tex="\(f\)">\(f\)</span>-value is <span class="math" data-tex="\(t\)">\(t\)</span>, for every unit vector <span class="math" data-tex="\(a\)">\(a\)</span> and sufficiently small positive <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\Phi_s\)">\(\Phi_s\)</span> denote this flow, continued on compact bands, and define
+<span class="math math-display" data-tex="\[
+ P(ra)=\Phi_{r^2-\delta}(\sqrt\delta\,a)
+ \quad(0&lt;r&lt;1,\ a\in S^{n-1}),
+ \qquad P(0)=p_-.
+\tag{C.3}
+\]">\[
+ P(ra)=\Phi_{r^2-\delta}(\sqrt\delta\,a)
+ \quad(0&lt;r&lt;1,\ a\in S^{n-1}),
+ \qquad P(0)=p_-.
+\tag{C.3}
+\]</span>
+Near zero this is exactly the minimum coordinate map <span class="math" data-tex="\(ra\mapsto y=ra\)">\(ra\mapsto y=ra\)</span>, so it is smooth there. Elsewhere smooth dependence of the flow on initial conditions and time makes it smooth. It has <span class="math" data-tex="\(f(P(ra))=r^2\)">\(f(P(ra))=r^2\)</span>.</p>
+<p>Every <span class="math" data-tex="\(x\ne p_-,p_+\)">\(x\ne p_-,p_+\)</span> flows uniquely back to the level <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, even if <span class="math" data-tex="\(f(x)&lt;\delta\)">\(f(x)&lt;\delta\)</span>: use the compact band between these two positive levels. The resulting point has unique coordinates <span class="math" data-tex="\(\sqrt\delta\,a\)">\(\sqrt\delta\,a\)</span>. Thus (C.3) is a bijection from the open unit ball onto <span class="math" data-tex="\(M\setminus\{p_+\}\)">\(M\setminus\{p_+\}\)</span>, with inverse given by radius <span class="math" data-tex="\(\sqrt{f(x)}\)">\(\sqrt{f(x)}\)</span> and that flow direction. This inverse is smooth off <span class="math" data-tex="\(p_-\)">\(p_-\)</span>, and is the chart inverse near <span class="math" data-tex="\(p_-\)">\(p_-\)</span>. Therefore <span class="math" data-tex="\(P\)">\(P\)</span> is a diffeomorphism.</p>
+<p>The behaviour as <span class="math" data-tex="\(r\to1\)">\(r\to1\)</span> must also be checked. For every neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(p_+\)">\(p_+\)</span>, compactness of <span class="math" data-tex="\(M\setminus U\)">\(M\setminus U\)</span> and uniqueness of the maximum give
+<span class="math" data-tex="\(\max_{M\setminus U}f&lt;1\)">\(\max_{M\setminus U}f&lt;1\)</span>. Hence <span class="math" data-tex="\(P(ra)\to p_+\)">\(P(ra)\to p_+\)</span> uniformly in <span class="math" data-tex="\(a\)">\(a\)</span> as <span class="math" data-tex="\(r\to1\)">\(r\to1\)</span>. Define <span class="math" data-tex="\(P\)">\(P\)</span> on the boundary of the closed unit ball to be <span class="math" data-tex="\(p_+\)">\(p_+\)</span>. This extension is continuous and induces a continuous bijection
+<span class="math math-display" data-tex="\[
+ \overline D^n/\partial D^n\longrightarrow M.
+\tag{C.4}
+\]">\[
+ \overline D^n/\partial D^n\longrightarrow M.
+\tag{C.4}
+\]</span>
+Its domain is compact and its target is Hausdorff, so it is a homeomorphism. The quotient is <span class="math" data-tex="\(S^n\)">\(S^n\)</span>: for example the radial diffeomorphism <span class="math" data-tex="\(x\mapsto x/(1-|x|^2)\)">\(x\mapsto x/(1-|x|^2)\)</span> identifies the open ball with <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and its norm tends uniformly to infinity on approaching the boundary. It therefore identifies the quotient with the one-point compactification of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, which inverse stereographic projection identifies with the sphere. This also proves the asserted smoothness off the single collapsed point.</p>
+<p>Finally restrict (C.3) to the closed ball of radius <span class="math" data-tex="\(\sqrt c\)">\(\sqrt c\)</span>, for any <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>. The inverse remains smooth at its boundary, since the flow gives coordinates transverse to the regular level <span class="math" data-tex="\(c\)">\(c\)</span>. Thus <span class="math" data-tex="\(f^{-1}([0,c])\)">\(f^{-1}([0,c])\)</span> is a smooth closed disk. Apply the same argument to <span class="math" data-tex="\(1-f\)">\(1-f\)</span>, choosing a metric Euclidean near its minimum <span class="math" data-tex="\(p_+\)">\(p_+\)</span>; then <span class="math" data-tex="\(f^{-1}([c,1])\)">\(f^{-1}([c,1])\)</span> is another smooth closed disk. Their boundary identifications with the common level <span class="math" data-tex="\(c\)">\(c\)</span> are diffeomorphisms. They give the stated two-disk decomposition of <span class="math" data-tex="\(M\)">\(M\)</span>. No smooth extension of its gluing diffeomorphism over the disks has been asserted. ∎</p>
+<h3 id="c-3-quaternionic-clutching-and-the-global-function">C.3. Quaternionic clutching and the global function</h3>
+<p>Write <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span> for the quaternions, with norm <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span>, conjugation <span class="math" data-tex="\(\bar v\)">\(\bar v\)</span>, and real part <span class="math" data-tex="\(\operatorname{Re}v\)">\(\operatorname{Re}v\)</span>. Identify the base sphere with two quaternionic coordinate charts <span class="math" data-tex="\(u,u&#x27;\in\mathbb H\)">\(u,u&#x27;\in\mathbb H\)</span>, related on their overlap by
+<span class="math math-display" data-tex="\[
+ u&#x27;=u/|u|^2.
+\tag{C.5}
+\]">\[
+ u&#x27;=u/|u|^2.
+\tag{C.5}
+\]</span>
+This atlas is smooth: it is the usual two stereographic charts with a fixed orthogonal choice of axes, and their transition and its inverse are smooth away from zero.</p>
+<p>For integers <span class="math" data-tex="\(h,j\)">\(h,j\)</span>, glue two trivial real four-plane bundles by the orthogonal map
+<span class="math math-display" data-tex="\[
+ v&#x27;=q^h vq^j,
+ \qquad q=u/|u|.
+\tag{C.6}
+\]">\[
+ v&#x27;=q^h vq^j,
+ \qquad q=u/|u|.
+\tag{C.6}
+\]</span>
+Integer powers of a unit quaternion are smooth, including negative powers, so these transition functions define a smooth bundle <span class="math" data-tex="\(\xi_{h,j}\)">\(\xi_{h,j}\)</span>. Left and right unit multiplication preserve the real inner product and have determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>: their determinants are continuously valued in <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, the unit quaternion sphere is connected, and the identity has determinant one. Thus the norm and an orientation give a global unit sphere bundle <span class="math" data-tex="\(M_{h,j}=S(\xi_{h,j})\)">\(M_{h,j}=S(\xi_{h,j})\)</span>. It is a closed connected smooth seven-manifold. Compactness follows from finitely many compact base pieces with bundle trivializations and compact fibre <span class="math" data-tex="\(S^3\)">\(S^3\)</span>; connectedness follows by lifting successive subintervals of a base path in bundle charts and then joining within a fibre.</p>
+<p>Assume <span class="math" data-tex="\(h+j=1\)">\(h+j=1\)</span>. On the first chart define
+<span class="math math-display" data-tex="\[
+ F(u,v)=\frac{\operatorname{Re}v}{\sqrt{1+|u|^2}},
+ \qquad |v|=1.
+\tag{C.7}
+\]">\[
+ F(u,v)=\frac{\operatorname{Re}v}{\sqrt{1+|u|^2}},
+ \qquad |v|=1.
+\tag{C.7}
+\]</span>
+The extension across the missing base point is not obtained by a limit argument alone. On the second chart replace its coordinates <span class="math" data-tex="\((u&#x27;,v&#x27;)\)">\((u&#x27;,v&#x27;)\)</span> by
+<span class="math math-display" data-tex="\[
+ a=u&#x27;(v&#x27;)^{-1},\quad v&#x27;;\qquad u&#x27;=av&#x27;.
+\tag{C.8}
+\]">\[
+ a=u&#x27;(v&#x27;)^{-1},\quad v&#x27;;\qquad u&#x27;=av&#x27;.
+\tag{C.8}
+\]</span>
+These are smooth coordinates on the whole <span class="math" data-tex="\(\mathbb H\times S^3\)">\(\mathbb H\times S^3\)</span>. Put <span class="math" data-tex="\(\rho=|u|\)">\(\rho=|u|\)</span>. On the overlap (C.5)–(C.6) give
+<span class="math math-display" data-tex="\[
+ a=\rho^{-1}q^{1-j}v^{-1}q^{-h}
+   =\rho^{-1}q^h v^{-1}q^{-h}.
+\tag{C.9}
+\]">\[
+ a=\rho^{-1}q^{1-j}v^{-1}q^{-h}
+   =\rho^{-1}q^h v^{-1}q^{-h}.
+\tag{C.9}
+\]</span>
+Conjugation by a unit quaternion preserves the real part, and
+<span class="math" data-tex="\(\operatorname{Re}(v^{-1})=\operatorname{Re}v\)">\(\operatorname{Re}(v^{-1})=\operatorname{Re}v\)</span> for unit <span class="math" data-tex="\(v\)">\(v\)</span>. Also <span class="math" data-tex="\(|a|=\rho^{-1}\)">\(|a|=\rho^{-1}\)</span>. Consequently (C.7) is exactly the expression
+<span class="math math-display" data-tex="\[
+ F(a,v&#x27;)=\frac{\operatorname{Re}a}{\sqrt{1+|a|^2}}
+\tag{C.10}
+\]">\[
+ F(a,v&#x27;)=\frac{\operatorname{Re}a}{\sqrt{1+|a|^2}}
+\tag{C.10}
+\]</span>
+on the overlap. Formula (C.10) is smooth even at <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, proving that the two expressions define a global smooth function.</p>
+<p>In the second chart write <span class="math" data-tex="\(a=a_0+a_1i+a_2j+a_3k\)">\(a=a_0+a_1i+a_2j+a_3k\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \frac{\partial F}{\partial a_0}
+ =\frac{1+a_1^2+a_2^2+a_3^2}{(1+|a|^2)^{3/2}}&gt;0.
+\tag{C.11}
+\]">\[
+ \frac{\partial F}{\partial a_0}
+ =\frac{1+a_1^2+a_2^2+a_3^2}{(1+|a|^2)^{3/2}}&gt;0.
+\tag{C.11}
+\]</span>
+There are no critical points anywhere in this chart. In the first chart the fibre derivative vanishes only when <span class="math" data-tex="\(v=\pm1\)">\(v=\pm1\)</span>, since the height function on <span class="math" data-tex="\(S^3\)">\(S^3\)</span> has exactly those two critical points. At either such point the base derivative of (C.7) vanishes exactly when <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. Hence the global critical points are precisely <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and <span class="math" data-tex="\((0,-1)\)">\((0,-1)\)</span>.</p>
+<p>Their Hessians can be calculated in genuine seven-dimensional coordinates. Near each pole of the fibre write
+<span class="math" data-tex="\(v=(\pm\sqrt{1-|w|^2},w)\)">\(v=(\pm\sqrt{1-|w|^2},w)\)</span>, with <span class="math" data-tex="\(w\in\mathbb R^3\)">\(w\in\mathbb R^3\)</span>. Formula (C.7) becomes
+<span class="math math-display" data-tex="\[
+ F(u,w)=\pm\left(1-\tfrac12(|u|^2+|w|^2)
+                      +O((|u|+|w|)^4)\right).
+\tag{C.12}
+\]">\[
+ F(u,w)=\pm\left(1-\tfrac12(|u|^2+|w|^2)
+                      +O((|u|+|w|)^4)\right).
+\tag{C.12}
+\]</span>
+The Hessian is <span class="math" data-tex="\(-I_7\)">\(-I_7\)</span> at the plus pole and <span class="math" data-tex="\(+I_7\)">\(+I_7\)</span> at the minus pole. Both points are nondegenerate. Theorem C.2 proves
+<span class="math math-display" data-tex="\[
+ M_{h,j}\cong S^7\quad\text{as topological manifolds whenever }h+j=1.
+\tag{C.13}
+\]">\[
+ M_{h,j}\cong S^7\quad\text{as topological manifolds whenever }h+j=1.
+\tag{C.13}
+\]</span></p>
+<p>The same conclusion holds when <span class="math" data-tex="\(h+j=-1\)">\(h+j=-1\)</span>. The base map defined by <span class="math" data-tex="\(u\mapsto\bar u\)">\(u\mapsto\bar u\)</span>, <span class="math" data-tex="\(u&#x27;\mapsto\bar u&#x27;\)">\(u&#x27;\mapsto\bar u&#x27;\)</span> is a smooth reflection of the base sphere, since it commutes with (C.5). Pulling the transition (C.6) back by it replaces <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>, giving <span class="math" data-tex="\(\xi_{-h,-j}\)">\(\xi_{-h,-j}\)</span>. The resulting total-space bundle map is a diffeomorphism, and <span class="math" data-tex="\((-h)+(-j)=1\)">\((-h)+(-j)=1\)</span>, so (C.13) applies to that bundle. ∎</p>
+<h3 id="c-4-two-exercises-with-solutions">C.4. Two exercises with solutions</h3>
+<p><span id="DG-CHAR-16.exercise-C.4"></span><strong>Exercise C.4 — Medium: the endpoint of the flow.</strong> In Theorem C.2, explain why following individual trajectories towards the maximum is insufficient by itself to prove continuity of (C.4). Give the needed estimate and prove that each regular level is a sphere.</p>
+<p><strong>Solution.</strong> Continuity at the collapsed boundary requires a bound uniform in the direction <span class="math" data-tex="\(a\)">\(a\)</span>. Given a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of the unique maximum, the compact complement has maximum <span class="math" data-tex="\(b&lt;1\)">\(b&lt;1\)</span>. Every point of every level with value greater than <span class="math" data-tex="\(b\)">\(b\)</span> lies in <span class="math" data-tex="\(U\)">\(U\)</span>. This gives the uniform bound for (C.3). For each <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, continuation along the compact band between <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is a diffeomorphism from level <span class="math" data-tex="\(\delta\)">\(\delta\)</span> to level <span class="math" data-tex="\(t\)">\(t\)</span>, with inverse the backward flow. Level <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the coordinate sphere of radius <span class="math" data-tex="\(\sqrt\delta\)">\(\sqrt\delta\)</span>, so every regular level is diffeomorphic to <span class="math" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>.</p>
+<p><span id="DG-CHAR-16.exercise-C.5"></span><strong>Exercise C.5 — Medium: finding all seven-dimensional critical points.</strong> For <span class="math" data-tex="\(h+j=1\)">\(h+j=1\)</span>, verify the coordinate identity for the global function and determine the critical points, their values and their indices.</p>
+<p><strong>Solution.</strong> From <span class="math" data-tex="\(u&#x27;=q/\rho\)">\(u&#x27;=q/\rho\)</span> and <span class="math" data-tex="\((v&#x27;)^{-1}=q^{-j}v^{-1}q^{-h}\)">\((v&#x27;)^{-1}=q^{-j}v^{-1}q^{-h}\)</span>, multiplication gives (C.9). The relation <span class="math" data-tex="\(1-j=h\)">\(1-j=h\)</span> makes its quaternionic part a conjugate of <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span>; its real part is <span class="math" data-tex="\(\rho^{-1}\operatorname{Re}v\)">\(\rho^{-1}\operatorname{Re}v\)</span>, and its norm is <span class="math" data-tex="\(\rho^{-1}\)">\(\rho^{-1}\)</span>. Dividing by <span class="math" data-tex="\(\sqrt{1+\rho^{-2}}\)">\(\sqrt{1+\rho^{-2}}\)</span> yields (C.7), proving the overlap identity. The strictly positive derivative (C.11) excludes every critical point on the second chart. On the first, vanishing of the fibre derivative forces <span class="math" data-tex="\(v=\pm1\)">\(v=\pm1\)</span>, and vanishing of the base derivative then forces <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. The critical values are <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(+1\)">\(+1\)</span>. By (C.12) their Hessians are respectively positive and negative definite, so their Morse indices are <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(7\)">\(7\)</span>. There are exactly two, and Theorem C.2 yields the sphere homeomorphism.</p>
+<h3 id="c-5-the-converse-two-disk-construction">C.5. The converse two-disk construction</h3>
+<p>Every smooth boundary gluing of two closed <span class="math" data-tex="\(n\)">\(n\)</span>-disks, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, admits a smooth function with exactly two nondegenerate critical points. Thus the two-disk statement in TheoremC.2 is an equivalence.</p>
+<p><strong>Proof.</strong> Let the gluing map be <span class="math" data-tex="\(g:S^{n-1}\to S^{n-1}\)">\(g:S^{n-1}\to S^{n-1}\)</span>. There is a convenient equivalent smooth atlas with two copies of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, whose nonzero points are identified by
+<span class="math math-display" data-tex="\[
+v=\frac{1}{|u|}\,g\!\left(\frac{u}{|u|}\right).
+\tag{C.14}
+\]">\[
+v=\frac{1}{|u|}\,g\!\left(\frac{u}{|u|}\right).
+\tag{C.14}
+\]</span>
+The inverse is the same expression with <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>; both are smooth away from zero. The two radius-one closed disks form the compact gluing, with the specified boundary map <span class="math" data-tex="\(g\)">\(g\)</span>. On the punctured charts the smooth collar coordinate can be taken as <span class="math" data-tex="\(\log|u|\)">\(\log|u|\)</span> and <span class="math" data-tex="\(-\log|v|\)">\(-\log|v|\)</span>, respectively. Their equality in (C.14), together with the angular map <span class="math" data-tex="\(g\)">\(g\)</span>, shows that this atlas has precisely the smooth structure of the collar gluing. At each origin the respective Euclidean chart applies. These charts also verify the Hausdorff property: the two origins have disjoint small balls because their overlap radii are reciprocal; all other separation questions are in these open coordinate charts, shrinking across the smooth transition when needed.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\phi(u)=\frac{|u|^2}{1+|u|^2},\qquad
+\phi(v)=\frac{1}{1+|v|^2}.
+\tag{C.15}
+\]">\[
+\phi(u)=\frac{|u|^2}{1+|u|^2},\qquad
+\phi(v)=\frac{1}{1+|v|^2}.
+\tag{C.15}
+\]</span>
+The reciprocal radii make the formulas agree on the overlap. They are smooth at both origins. Away from either origin the radial derivative is nonzero. At the first origin the Hessian is <span class="math" data-tex="\(2I_n\)">\(2I_n\)</span>; at the second it is <span class="math" data-tex="\(-2I_n\)">\(-2I_n\)</span>. Thus the critical points are exactly those origins, with indices zero and <span class="math" data-tex="\(n\)">\(n\)</span>. TheoremC.2 supplies the sphere homeomorphism and its smoothness off one point. Conversely that theorem constructs the two disks from any such function, proving the equivalence. This construction allows an arbitrary boundary diffeomorphism; it does not require its extension over a disk. ∎</p>
+<h2 id="d-a-filling-independent-invariant-modulo-seven">D. A filling-independent invariant modulo seven</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed oriented seven-manifold satisfying
+<span class="math math-display" data-tex="\[
+ H^3(M;\mathbb Z)=H^4(M;\mathbb Z)=0.
+\tag{D.1}
+\]">\[
+ H^3(M;\mathbb Z)=H^4(M;\mathbb Z)=0.
+\tag{D.1}
+\]</span>
+Suppose a compact oriented smooth eight-manifold <span class="math" data-tex="\(W\)">\(W\)</span> is given with outward boundary identified orientation-preservingly with <span class="math" data-tex="\(M\)">\(M\)</span>. We prove independence of the chosen filling when such a filling exists. The sphere-bundle examples have the explicit disk-bundle filling of Section B; no general theorem that every seven-manifold bounds is needed or assumed.</p>
+<h3 id="d-1-the-relative-square-and-its-nondegenerate-pairing">D.1. The relative square and its nondegenerate pairing</h3>
+<p>The pair sequence and (D.1) make the forgetful map an integral isomorphism
+<span class="math math-display" data-tex="\[
+ J:H^4(W,M;\mathbb Z)\xrightarrow{\cong}H^4(W;\mathbb Z).
+\tag{D.2}
+\]">\[
+ J:H^4(W,M;\mathbb Z)\xrightarrow{\cong}H^4(W;\mathbb Z).
+\tag{D.2}
+\]</span>
+Let <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span> be the integer relative fundamental class with the fixed ambient orientation. The signed local-boundary construction in Chern Lemma5.1 proves its existence and <span class="math" data-tex="\(\partial[W,M]=[M]\)">\(\partial[W,M]=[M]\)</span>. Define
+<span class="math math-display" data-tex="\[
+ Q_W(a,b)=\langle a\smile b,[W,M]\rangle,
+ \qquad
+ q(W)=\left\langle\bigl(J^{-1}p_1(TW)\bigr)^2,[W,M]\right\rangle.
+\tag{D.3}
+\]">\[
+ Q_W(a,b)=\langle a\smile b,[W,M]\rangle,
+ \qquad
+ q(W)=\left\langle\bigl(J^{-1}p_1(TW)\bigr)^2,[W,M]\right\rangle.
+\tag{D.3}
+\]</span>
+The latter number is an integer. Torsion classes pair trivially with everything because their products have finite order, while evaluation takes values in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Cup commutativity in degree four makes the pairing symmetric.</p>
+<p>We supply the nondegeneracy needed to define its signature, rather than invoke an unproved boundary-duality theorem. Form the smooth oriented double <span class="math" data-tex="\(D(W)=W\cup_M(-W)\)">\(D(W)=W\cup_M(-W)\)</span> using the full collar and gluing proofs in cobordism Theorem1.1 and Lemma2.1. Choose open neighbourhoods <span class="math" data-tex="\(A,B\)">\(A,B\)</span> of its two halves which include small collars on the other side. They retract to the respective halves; their intersection retracts to <span class="math" data-tex="\(M\)">\(M\)</span>. Mayer–Vietoris and (D.1) give
+<span class="math math-display" data-tex="\[
+ H^4(D(W);\mathbb Z)\xrightarrow{\cong}
+ H^4(W;\mathbb Z)\oplus H^4(W;\mathbb Z).
+\tag{D.4}
+\]">\[
+ H^4(D(W);\mathbb Z)\xrightarrow{\cong}
+ H^4(W;\mathbb Z)\oplus H^4(W;\mathbb Z).
+\tag{D.4}
+\]</span></p>
+<p>Here are the product and evaluation details of this splitting. Excision identifies a class in <span class="math" data-tex="\(H^4(W,M)\)">\(H^4(W,M)\)</span> with a class in <span class="math" data-tex="\(H^4(D(W),B)\)">\(H^4(D(W),B)\)</span> supported in the first half, and with one in <span class="math" data-tex="\(H^4(D(W),A)\)">\(H^4(D(W),A)\)</span> when supported in the second half. One can obtain these identifications by removing the interiors of the opposite half beyond its collar and then contracting the remaining collar to the boundary. The relative cup of the two extended classes belongs to
+<span class="math" data-tex="\(H^8(D(W),A\cup B)=H^8(D(W),D(W))=0\)">\(H^8(D(W),A\cup B)=H^8(D(W),D(W))=0\)</span>. This relative-product assertion uses the small-chain model of the open cover <span class="math" data-tex="\(A,B\)">\(A,B\)</span>: on each small simplex one relative factor vanishes on its corresponding member, and the cup formula descends to the union-relative complex. The small-chain equivalence identifies it with ordinary cohomology. Thus the two summands are orthogonal.</p>
+<p>For two classes supported in the same half, naturality of the relative cup and evaluation gives exactly their pairing on <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span>. In the second half the sign is negative, since the double gives that copy the reversed ambient orientation. More explicitly the image of the double's fundamental class in its first-half relative group is <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span>, and in its second-half group is <span class="math" data-tex="\(-[W,M]\)">\(-[W,M]\)</span>. The integer local-orientation construction proves this by restriction at every interior point; the boundary pieces are forgotten. Consequently the middle-dimensional form of the double is
+<span class="math math-display" data-tex="\[
+ Q_{D(W)}=Q_W\oplus(-Q_W).
+\tag{D.5}
+\]">\[
+ Q_{D(W)}=Q_W\oplus(-Q_W).
+\tag{D.5}
+\]</span></p>
+<p>The closed double and its closed boundary have finite integer homology by manifold Theorem2.2 and Corollary2.3, whose full proofs were supplied earlier. In homological Mayer–Vietoris the two adjacent maps are
+<span class="math math-display" data-tex="\[
+H_i(M)\xrightarrow{\alpha}H_i(W)\oplus H_i(W)
+ \xrightarrow{\beta}H_i(D(W)).
+\]">\[
+H_i(M)\xrightarrow{\alpha}H_i(W)\oplus H_i(W)
+ \xrightarrow{\beta}H_i(D(W)).
+\]</span>
+Exactness gives a short exact sequence with kernel <span class="math" data-tex="\(\operatorname{im}\alpha\)">\(\operatorname{im}\alpha\)</span>, a quotient of <span class="math" data-tex="\(H_i(M)\)">\(H_i(M)\)</span>, and quotient <span class="math" data-tex="\(\operatorname{im}\beta\)">\(\operatorname{im}\beta\)</span>, a subgroup of <span class="math" data-tex="\(H_i(D(W))\)">\(H_i(D(W))\)</span>. Both are finitely generated, so <span class="math" data-tex="\(H_i(W)\oplus H_i(W)\)">\(H_i(W)\oplus H_i(W)\)</span>, and hence every <span class="math" data-tex="\(H_i(W)\)">\(H_i(W)\)</span>, is finitely generated. The next term <span class="math" data-tex="\(H_{i-1}(M)\)">\(H_{i-1}(M)\)</span> contains the image measuring the cokernel of the map to <span class="math" data-tex="\(H_i(D(W))\)">\(H_i(D(W))\)</span>. The integer coefficient theorem now gives finite generation of cohomology, also for the pair by its exact sequence. In its natural comparison with rational coefficients, the Ext terms become zero and <span class="math" data-tex="\(\operatorname{Hom}(H_i,\mathbb Z)\otimes\mathbb Q\to\operatorname{Hom}(H_i,\mathbb Q)\)">\(\operatorname{Hom}(H_i,\mathbb Z)\otimes\mathbb Q\to\operatorname{Hom}(H_i,\mathbb Q)\)</span> is an isomorphism for these finitely generated homology groups. Thus coefficient change has its claimed effect; no tensor operation on infinite cochain products is presumed. In particular (D.1) holds rationally and (D.2)–(D.5) hold over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The perfect rational cup form of the closed double and (D.5) force <span class="math" data-tex="\(Q_W\)">\(Q_W\)</span> to be nondegenerate. Define <span class="math" data-tex="\(\sigma(W)\)">\(\sigma(W)\)</span> as its number of positive eigenvalues minus its number of negative eigenvalues. The torsion-free integral group supplies its rational lattice; no determinant normalization is needed for the signature.</p>
+<h3 id="d-2-gluing-two-different-fillings">D.2. Gluing two different fillings</h3>
+<p><span id="DG-CHAR-16.lemma-D.1"></span><strong>Lemma D.1 — Additivity across this boundary.</strong> Let <span class="math" data-tex="\(W_0,W_1\)">\(W_0,W_1\)</span> be two such fillings of the same <span class="math" data-tex="\(M\)">\(M\)</span>, and give
+<span class="math" data-tex="\(C=W_0\cup_M(-W_1)\)">\(C=W_0\cup_M(-W_1)\)</span> the smooth closed orientation agreeing with <span class="math" data-tex="\(W_0\)">\(W_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \sigma(C)=\sigma(W_0)-\sigma(W_1),\qquad
+ \langle p_1(TC)^2,[C]\rangle=q(W_0)-q(W_1).
+\tag{D.6}
+\]">\[
+ \sigma(C)=\sigma(W_0)-\sigma(W_1),\qquad
+ \langle p_1(TC)^2,[C]\rangle=q(W_0)-q(W_1).
+\tag{D.6}
+\]</span></p>
+<p><strong>Proof.</strong> The signed collar coordinate gives a smooth manifold across the identified boundary; its tangent bundle restricts to the original tangent bundles of each half, including their boundary points. In particular its first Pontryagin restrictions are those of <span class="math" data-tex="\(TW_0\)">\(TW_0\)</span> and <span class="math" data-tex="\(TW_1\)">\(TW_1\)</span>, because Pontryagin classes disregard orientation. Choose the same open collar neighbourhoods <span class="math" data-tex="\(A,B\)">\(A,B\)</span> as in D.1. The absolute Mayer–Vietoris sequence again gives an isomorphism
+<span class="math math-display" data-tex="\[
+ H^4(C;\mathbb Z)\cong H^4(W_0;\mathbb Z)\oplus H^4(W_1;\mathbb Z).
+\tag{D.7}
+\]">\[
+ H^4(C;\mathbb Z)\cong H^4(W_0;\mathbb Z)\oplus H^4(W_1;\mathbb Z).
+\tag{D.7}
+\]</span>
+The relative extension argument of D.1 shows that the two summands are orthogonal, with forms <span class="math" data-tex="\(Q_{W_0}\)">\(Q_{W_0}\)</span> and <span class="math" data-tex="\(-Q_{W_1}\)">\(-Q_{W_1}\)</span>. Signatures of finite nondegenerate real forms add under orthogonal direct sum, proving the first identity of (D.6).</p>
+<p>Under (D.7), the class <span class="math" data-tex="\(p_1(TC)\)">\(p_1(TC)\)</span> has components <span class="math" data-tex="\(p_1(TW_0),p_1(TW_1)\)">\(p_1(TW_0),p_1(TW_1)\)</span>. By (D.2), these have the unique relative representatives used in (D.3). Extend those representatives to <span class="math" data-tex="\(C\)">\(C\)</span> from their respective halves. Their sum has the specified restrictions, so equals <span class="math" data-tex="\(p_1(TC)\)">\(p_1(TC)\)</span> by injectivity of (D.7). Its squared evaluation is the sum of their squared evaluations, since the cross product is zero. The first is <span class="math" data-tex="\(q(W_0)\)">\(q(W_0)\)</span>; the second is <span class="math" data-tex="\(-q(W_1)\)">\(-q(W_1)\)</span> by its ambient orientation. This proves the second identity, over the integers. ∎</p>
+<p>The hypotheses (D.1) have a precise role: they make every absolute degree-four class have a unique relative representative, and make (D.7) an isomorphism. No arbitrary-boundary signature-additivity theorem has been substituted for this argument.</p>
+<h3 id="d-3-the-congruence-and-the-exotic-sphere">D.3. The congruence and the exotic sphere</h3>
+<p><span id="DG-CHAR-16.theorem-D.2"></span><strong>Theorem D.2 — The invariant.</strong> Under (D.1), when a smooth oriented filling exists, the residue
+<span class="math math-display" data-tex="\[
+ \lambda(M)=2q(W)-\sigma(W)\pmod7
+\tag{D.8}
+\]">\[
+ \lambda(M)=2q(W)-\sigma(W)\pmod7
+\tag{D.8}
+\]</span>
+is independent of the filling. It is preserved by orientation-preserving diffeomorphisms and changes sign when the orientation is reversed. The standard sphere has <span class="math" data-tex="\(\lambda(S^7)=0\)">\(\lambda(S^7)=0\)</span>, with either orientation.</p>
+<p><strong>Proof.</strong> For every closed oriented smooth eight-manifold the already proved signature theorem, with its explicit second L-polynomial, gives
+<span class="math math-display" data-tex="\[
+ 45\sigma(C)=\langle7p_2(TC)-p_1(TC)^2,[C]\rangle.
+\tag{D.9}
+\]">\[
+ 45\sigma(C)=\langle7p_2(TC)-p_1(TC)^2,[C]\rangle.
+\tag{D.9}
+\]</span>
+Both Pontryagin numbers are integers. Multiply the rearranged equality by two and reduce modulo seven. Since <span class="math" data-tex="\(90\equiv-1\pmod7\)">\(90\equiv-1\pmod7\)</span>, it becomes
+<span class="math math-display" data-tex="\[
+ 2\langle p_1(TC)^2,[C]\rangle-\sigma(C)\equiv0\pmod7.
+\tag{D.10}
+\]">\[
+ 2\langle p_1(TC)^2,[C]\rangle-\sigma(C)\equiv0\pmod7.
+\tag{D.10}
+\]</span>
+Apply Lemma D.1 to the two fillings. Equation (D.10) states exactly that their expressions in (D.8) agree.</p>
+<p>Changing the orientation of <span class="math" data-tex="\(W\)">\(W\)</span> changes its boundary to <span class="math" data-tex="\(-M\)">\(-M\)</span>, negates its relative fundamental class, and negates its intersection-form signature. Its Pontryagin class is unchanged. Thus both terms in (D.8) change sign. An orientation-preserving diffeomorphism of boundaries simply gives another boundary identification of a filling; independence proves diffeomorphism invariance. Finally the standard sphere bounds its standard disk, whose degree-four groups vanish. Its relative square and signature are zero, so its invariant is zero. The opposite disk orientation proves the same for the opposite sphere orientation. ∎</p>
+<p><span id="DG-CHAR-16.theorem-D.3"></span><strong>Theorem D.3 — An explicit exotic seven-sphere.</strong> Take <span class="math" data-tex="\(h=-1,j=2\)">\(h=-1,j=2\)</span>, and give <span class="math" data-tex="\(M=S(\xi_{-1,2})\)">\(M=S(\xi_{-1,2})\)</span> the boundary orientation of its disk bundle. Then <span class="math" data-tex="\(M\)">\(M\)</span> is homeomorphic to <span class="math" data-tex="\(S^7\)">\(S^7\)</span> and has <span class="math" data-tex="\(\lambda(M)=1\)">\(\lambda(M)=1\)</span>. In particular it is not diffeomorphic to the standard sphere, even if a diffeomorphism is allowed to reverse orientation.</p>
+<p><strong>Proof.</strong> By (A.9), its Euler class is <span class="math" data-tex="\(u\)">\(u\)</span> and its first Pontryagin class is <span class="math" data-tex="\(6u\)">\(6u\)</span>. Section C proves the homeomorphism from the actual global function with two nondegenerate critical points. Its degree-three and degree-four cohomology vanish, either from that homeomorphism or from the exact Gysin computation in Section B. Thus (D.8) applies. For its disk bundle (B.5) gives
+<span class="math math-display" data-tex="\[
+ \lambda(M)=2\cdot6^2-1=71\equiv1\pmod7.
+\tag{D.11}
+\]">\[
+ \lambda(M)=2\cdot6^2-1=71\equiv1\pmod7.
+\tag{D.11}
+\]</span>
+The standard sphere has invariant zero with both orientations by Theorem D.2. Every orientation-preserving or reversing diffeomorphism to it would therefore force this value to be zero or the negative of zero, a contradiction. ∎</p>
+<p>More generally the bundles with <span class="math" data-tex="\(h+j=1\)">\(h+j=1\)</span> have <span class="math" data-tex="\(k=2(j-h)\equiv2\pmod4\)">\(k=2(j-h)\equiv2\pmod4\)</span> and
+<span class="math math-display" data-tex="\[
+ \lambda(S(\xi_{h,j}))=2k^2-1\pmod7.
+\tag{D.12}
+\]">\[
+ \lambda(S(\xi_{h,j}))=2k^2-1\pmod7.
+\tag{D.12}
+\]</span>
+This construction supplies infinitely many parameter choices, but (D.12) alone is a finite-valued invariant; it does not assert infinitely many distinct diffeomorphism types. Its PL-sphere and coned-filling applications use the complete relative triangulation and disk-comparison proofs supplied in <a href="DG-CHAR-15C.html">the triangulation companion</a>.</p>
+<h3 id="d-4-two-exercises-with-complete-solutions">D.4. Two exercises with complete solutions</h3>
+<p><span id="DG-CHAR-16.exercise-D.4"></span><strong>Exercise D.4 — Medium: why the residue is well defined.</strong> Reconstruct the filling-independence proof, explaining why an ordinary square on <span class="math" data-tex="\(W\)">\(W\)</span> cannot replace the relative square. Determine the effect of reversing the orientation.</p>
+<p><strong>Solution.</strong> The number must be evaluated on <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span>, a relative fundamental class. Its compatible degree-eight cohomology class is the square of the unique degree-four relative lift of <span class="math" data-tex="\(p_1(TW)\)">\(p_1(TW)\)</span>, obtained from (D.2). An absolute degree-eight class alone does not supply this relative lift; in the disk-bundle example the absolute cohomology in degree eight is zero while its relative squared evaluation is <span class="math" data-tex="\(k^2\)">\(k^2\)</span>. Glue <span class="math" data-tex="\(W_0\)">\(W_0\)</span> to <span class="math" data-tex="\(-W_1\)">\(-W_1\)</span> by the collar construction. The two relative degree-four extensions are orthogonal because their mixed cup lies in the union-relative group of the full closed manifold, which is zero. Their self-evaluations have opposite signs, so the closed signature and Pontryagin square are their differences. The closed signature identity gives (D.10), making those differences zero modulo seven. Reversal negates the relative fundamental class and the signature, so <span class="math" data-tex="\(\lambda(-M)=-\lambda(M)\)">\(\lambda(-M)=-\lambda(M)\)</span>.</p>
+<p><span id="DG-CHAR-16.exercise-D.5"></span><strong>Exercise D.5 — Hard: distinguish a smooth structure without changing the topology.</strong> For the sphere bundles with <span class="math" data-tex="\(h+j=1\)">\(h+j=1\)</span>, give a parameter pair for which the mod-seven obstruction is nonzero. Prove both the sphere homeomorphism and the failure of every diffeomorphism to the standard sphere.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\((h,j)=(-1,2)\)">\((h,j)=(-1,2)\)</span>. The transition gives a smooth sphere bundle. Its global function is (C.7) in the first chart and (C.10) in the second; (C.9) verifies equality. The second-chart real derivative is strictly positive, while the first chart has precisely two critical points with Hessians <span class="math" data-tex="\(\pm I_7\)">\(\pm I_7\)</span>. The full compact-band flow and uniform endpoint proof in Theorem C.2 therefore identify its total space homeomorphically with <span class="math" data-tex="\(S^7\)">\(S^7\)</span>. Formula (A.9) gives <span class="math" data-tex="\(e=u,p_1=6u\)">\(e=u,p_1=6u\)</span>. The disk bundle has relative Thom generator mapping to the base generator, relative squared evaluation <span class="math" data-tex="\(36\)">\(36\)</span> and signature one. Thus its invariant is <span class="math" data-tex="\(71\equiv1\)">\(71\equiv1\)</span>. The sphere bounds a disk with invariant zero. Filling independence and the sign rule exclude a diffeomorphism with either orientation behaviour. The nonzero residue distinguishes smooth structures on the same topological manifold.</p>
+<h3 id="d-5-filling-restrictions-and-orientation-reversal">D.5. Filling restrictions and orientation reversal</h3>
+<p>Under the hypotheses of TheoremD.2, if <span class="math" data-tex="\(\lambda(M)\ne0\)">\(\lambda(M)\ne0\)</span>, every smooth oriented filling of <span class="math" data-tex="\(M\)">\(M\)</span> has positive fourth Betti number. Moreover <span class="math" data-tex="\(M\)">\(M\)</span> has no orientation-reversing self-diffeomorphism.</p>
+<p><strong>Proof.</strong> If a filling <span class="math" data-tex="\(W\)">\(W\)</span> had <span class="math" data-tex="\(H^4(W;\mathbb Q)=0\)">\(H^4(W;\mathbb Q)=0\)</span>, the finite-generation and coefficient comparison in D.1 would make its integral degree-four group torsion. Its unique relative Pontryagin lift would then be torsion as well. Its squared evaluation is zero in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its rational middle form has dimension zero, so <span class="math" data-tex="\(q(W)=\sigma(W)=0\)">\(q(W)=\sigma(W)=0\)</span>. Equation (D.8) would give <span class="math" data-tex="\(\lambda(M)=0\)">\(\lambda(M)=0\)</span>, a contradiction. The field coefficient theorem identifies the fourth Betti number with this rational cohomology dimension. If a self-diffeomorphism reversed orientation, the invariant would equal its own negative by TheoremD.2. This would give <span class="math" data-tex="\(2\lambda(M)=0\)">\(2\lambda(M)=0\)</span> in <span class="math" data-tex="\(\mathbb Z/7\)">\(\mathbb Z/7\)</span>. Multiplication by two is invertible in that group, again a contradiction. In particular both assertions apply to <span class="math" data-tex="\(S(\xi_{-1,2})\)">\(S(\xi_{-1,2})\)</span>, whose residue is one. ∎</p>
+<h3 id="d-6-the-same-residue-mechanism-in-dimension-4k-1">D.6. The same residue mechanism in dimension <span class="math" data-tex="\(4k-1\)">\(4k-1\)</span></h3>
+<p>Here is a precise version of the higher-dimensional extension mentioned in the original paper. Fix <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, and choose a positive integer <span class="math" data-tex="\(d_k\)">\(d_k\)</span> clearing the denominators of the proved Hirzebruch polynomial <span class="math" data-tex="\(L_k\)">\(L_k\)</span>. Write
+<span class="math math-display" data-tex="\[
+d_k L_k=a_kp_k+R_k(p_1,\ldots,p_{k-1}),
+\qquad a_k&gt;0,
+\tag{D.13}
+\]">\[
+d_k L_k=a_kp_k+R_k(p_1,\ldots,p_{k-1}),
+\qquad a_k&gt;0,
+\tag{D.13}
+\]</span>
+where <span class="math" data-tex="\(a_k\)">\(a_k\)</span> and the coefficients of <span class="math" data-tex="\(R_k\)">\(R_k\)</span> are integers. The strict positivity of the indecomposable coefficient was proved in combinatorial LemmaB.1, so this choice has <span class="math" data-tex="\(a_k\ne0\)">\(a_k\ne0\)</span>. Every monomial in <span class="math" data-tex="\(R_k\)">\(R_k\)</span> has total weight <span class="math" data-tex="\(k\)">\(k\)</span> and at least two factors.</p>
+<p>Let <span class="math" data-tex="\(N\)">\(N\)</span> be a smooth closed oriented <span class="math" data-tex="\((4k-1)\)">\((4k-1)\)</span>-manifold satisfying
+<span class="math math-display" data-tex="\[
+H^{2k-1}(N;\mathbb Z)=H^{2k}(N;\mathbb Z)=0,\qquad
+H^{4j-1}(N;\mathbb Z)=H^{4j}(N;\mathbb Z)=0
+\quad(1\leq j&lt;k).
+\tag{D.14}
+\]">\[
+H^{2k-1}(N;\mathbb Z)=H^{2k}(N;\mathbb Z)=0,\qquad
+H^{4j-1}(N;\mathbb Z)=H^{4j}(N;\mathbb Z)=0
+\quad(1\leq j&lt;k).
+\tag{D.14}
+\]</span>
+Assume a compact smooth oriented filling <span class="math" data-tex="\(V\)">\(V\)</span> is given. The relative maps in degrees <span class="math" data-tex="\(4j\)">\(4j\)</span> are isomorphisms by the pair sequence. Write <span class="math" data-tex="\(\widetilde p_j\)">\(\widetilde p_j\)</span> for the unique relative lift of <span class="math" data-tex="\(p_j(TV)\)">\(p_j(TV)\)</span>, and put
+<span class="math math-display" data-tex="\[
+q_R(V)=\left\langle R_k(\widetilde p_1,\ldots,\widetilde p_{k-1}),
+ [V,N]\right\rangle,\qquad
+\Lambda_k(N)=d_k\sigma(V)-q_R(V)\pmod {a_k}.
+\tag{D.15}
+\]">\[
+q_R(V)=\left\langle R_k(\widetilde p_1,\ldots,\widetilde p_{k-1}),
+ [V,N]\right\rangle,\qquad
+\Lambda_k(N)=d_k\sigma(V)-q_R(V)\pmod {a_k}.
+\tag{D.15}
+\]</span>
+Then <span class="math" data-tex="\(\Lambda_k(N)\)">\(\Lambda_k(N)\)</span> is independent of the filling, is invariant under orientation-preserving diffeomorphisms, changes sign under orientation reversal, and is zero on the standard sphere.</p>
+<p><strong>Proof.</strong> All relative lifts and evaluations in (D.15) are integral. The middle-dimensional relative map is an isomorphism by the first part of (D.14). The double argument in D.1 works in degree <span class="math" data-tex="\(2k\)">\(2k\)</span>: the Mayer–Vietoris map from the double to the two halves is an isomorphism; opposite supported relative classes have zero mixed cup; and their same-half evaluations have opposite ambient signs. The perfect closed middle form consequently makes the filling's rational form nondegenerate. The corrected finite-generation argument in D.1 applies in every degree, so rational coefficient comparison and the signature are defined exactly as there.</p>
+<p>For two fillings form <span class="math" data-tex="\(C=V_0\cup_N(-V_1)\)">\(C=V_0\cup_N(-V_1)\)</span>. Applying the same Mayer–Vietoris and supported relative-extension argument in each degree <span class="math" data-tex="\(4j\)">\(4j\)</span> identifies <span class="math" data-tex="\(p_j(TC)\)">\(p_j(TC)\)</span> with the sum of the two extended relative lifts. On expanding a monomial of <span class="math" data-tex="\(R_k\)">\(R_k\)</span>, every mixed-half term vanishes: at least two factors belong to opposite relative supports, whose cup lies in the zero cohomology of the union-relative pair. A same-half term evaluates on that half's relative fundamental class, positively for <span class="math" data-tex="\(V_0\)">\(V_0\)</span> and negatively for <span class="math" data-tex="\(V_1\)">\(V_1\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\langle R_k(p_1(TC),\ldots,p_{k-1}(TC)),[C]\rangle
+ =q_R(V_0)-q_R(V_1),\qquad
+\sigma(C)=\sigma(V_0)-\sigma(V_1).
+\tag{D.16}
+\]">\[
+\langle R_k(p_1(TC),\ldots,p_{k-1}(TC)),[C]\rangle
+ =q_R(V_0)-q_R(V_1),\qquad
+\sigma(C)=\sigma(V_0)-\sigma(V_1).
+\tag{D.16}
+\]</span>
+The second identity follows from the orthogonal middle-form splitting, not from an unrestricted signature-additivity assertion.</p>
+<p>The closed signature theorem and (D.13) give
+<span class="math math-display" data-tex="\[
+d_k\sigma(C)-\langle R_k(p_1(TC),\ldots,p_{k-1}(TC)),[C]\rangle
+ =a_k\langle p_k(TC),[C]\rangle.
+\tag{D.17}
+\]">\[
+d_k\sigma(C)-\langle R_k(p_1(TC),\ldots,p_{k-1}(TC)),[C]\rangle
+ =a_k\langle p_k(TC),[C]\rangle.
+\tag{D.17}
+\]</span>
+The last evaluation is an integer. Reducing modulo <span class="math" data-tex="\(a_k\)">\(a_k\)</span> and using (D.16) proves filling independence. Reversal negates all evaluations and the signature while leaving Pontryagin classes unchanged, and boundary reidentification by a positive diffeomorphism does not change the filling numbers. Finally the standard disk has zero positive-degree classes and a zero-dimensional middle form; it gives residue zero for the standard sphere. This proves every assertion without a general bounding theorem. ∎</p>
+<p>For example <span class="math" data-tex="\(d_2=45\)">\(d_2=45\)</span>, <span class="math" data-tex="\(a_2=7\)">\(a_2=7\)</span>, <span class="math" data-tex="\(R_2=-p_1^2\)">\(R_2=-p_1^2\)</span>. Hence <span class="math" data-tex="\(\Lambda_2=45\sigma+q\)">\(\Lambda_2=45\sigma+q\)</span> modulo seven, and <span class="math" data-tex="\(2\Lambda_2=2q-\sigma=\lambda\)">\(2\Lambda_2=2q-\sigma=\lambda\)</span>. The next signature polynomial gives <span class="math" data-tex="\(d_3=945\)">\(d_3=945\)</span>, <span class="math" data-tex="\(a_3=62\)">\(a_3=62\)</span>, <span class="math" data-tex="\(R_3=2p_1^3-13p_1p_2\)">\(R_3=2p_1^3-13p_1p_2\)</span>; (D.14) and a given filling therefore supply the analogous integral residue modulo62 for eleven-manifolds. An integral homology sphere satisfies all the stated cohomology vanishings, but existence of a smooth filling remains an explicit hypothesis.</p>
+<h3 id="d-7-a-positive-sphere-diffeomorphism-outside-the-identity-isotopy-class">D.7. A positive sphere diffeomorphism outside the identity isotopy class</h3>
+<p>There is a degree-one diffeomorphism of <span class="math" data-tex="\(S^6\)">\(S^6\)</span> which is not smoothly isotopic to the identity.</p>
+<p><strong>Proof.</strong> TheoremC.2 writes the explicit exotic manifold of TheoremD.3 as two smooth seven-disks. Choose disk parametrizations. Their boundary diffeomorphism is <span class="math" data-tex="\(g:S^6\to S^6\)">\(g:S^6\to S^6\)</span>; composing one parametrization with a linear disk reflection if necessary makes <span class="math" data-tex="\(g\)">\(g\)</span> have degree <span class="math" data-tex="\(+1\)">\(+1\)</span>. This changes only the parametrization of the same smooth gluing.</p>
+<p>Suppose there were a smooth isotopy <span class="math" data-tex="\(g_t\)">\(g_t\)</span>, <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, from the identity to <span class="math" data-tex="\(g\)">\(g\)</span>. Choose a smooth function <span class="math" data-tex="\(\chi:[0,1]\to[0,1]\)">\(\chi:[0,1]\to[0,1]\)</span> equal to zero near zero and one near one. The map
+<span class="math math-display" data-tex="\[
+G(ra)=r g_{\chi(r)}(a)\quad(0&lt;r\leq1),\qquad G(0)=0
+\tag{D.18}
+\]">\[
+G(ra)=r g_{\chi(r)}(a)\quad(0&lt;r\leq1),\qquad G(0)=0
+\tag{D.18}
+\]</span>
+is the identity near the disk centre and is a smooth collar product near its boundary. It is a diffeomorphism: it preserves the radius, and its inverse uses the smooth family <span class="math" data-tex="\(g_{\chi(r)}^{-1}\)">\(g_{\chi(r)}^{-1}\)</span>. Smoothness of that inverse family follows from the local inverse theorem applied to <span class="math" data-tex="\((a,t)\mapsto(g_t(a),t)\)">\((a,t)\mapsto(g_t(a),t)\)</span>. Thus <span class="math" data-tex="\(G\)">\(G\)</span> extends <span class="math" data-tex="\(g\)">\(g\)</span> over the disk.</p>
+<p>Applying <span class="math" data-tex="\(G^{-1}\)">\(G^{-1}\)</span> on the second disk and the identity on the first changes the gluing by <span class="math" data-tex="\(g\)">\(g\)</span> to the identity gluing. The maps fit smoothly across the collars since (D.18) is a collar product there. The identity double is the standard smooth sphere: parametrizations of its two hemispheres are
+<span class="math math-display" data-tex="\[
+ra\longmapsto
+\bigl(\sin(\pi r/2)a,\ \pm\cos(\pi r/2)\bigr).
+\tag{D.19}
+\]">\[
+ra\longmapsto
+\bigl(\sin(\pi r/2)a,\ \pm\cos(\pi r/2)\bigr).
+\tag{D.19}
+\]</span>
+They are smooth and full rank at the centres and boundary, and their signed collar parameters agree on the double. This would give a diffeomorphism from the exotic manifold to the standard sphere, contrary to TheoremD.3. Hence <span class="math" data-tex="\(g\)">\(g\)</span> has no such isotopy. Its degree is one by construction. This proves a distinction between degree and smooth isotopy without claiming an isotopy classification. ∎</p>
+<h2 id="e-what-the-example-changes">E. What the example changes</h2>
+<p>Theorem C.2 gives two smooth disks and a boundary diffeomorphism for every sphere bundle in this construction with Euler number one. Theorem D.3 proves that at least one such gluing produces a smooth manifold that is homeomorphic to a sphere and admits no diffeomorphism to the standard sphere. Thus the topology of the total space and the smooth structure of its disk gluing contain different information. The proof detects that difference through the relative square on a filling, rather than through the cohomology groups of the seven-manifold itself.</p>
+<p>Two further questions are how smooth sphere structures vary, and which tangent characteristic classes survive passage between smooth, PL and topological categories. The finite-valued residue proved here does not classify all smooth sphere structures. The previous chapter proves its stated rational comparison for each given compatible triangulation. A stronger topological-invariance theorem requires additional arguments. Neither broader question is a premise of this lesson.</p>
+<p>The curvature chapter expresses the already defined characteristic classes by differential forms and connects Euler-class evaluation with the Pfaffian form and Gauss–Bonnet. The present construction already fixes the integral normalization that such representatives must respect.</p>
+<h2 id="sources-and-proof-scope">Sources and proof scope</h2>
+<p>The original source is John Milnor, <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/exotic.pdf"><em>On manifolds homeomorphic to the 7-sphere</em> (1956)</a>, <em>Annals of Mathematics</em>64(2),399–405. The course independently supplies the exact quaternionic normalization and classification, relative Thom-square and tangent calculations, complete extremum normal form and compact-band endpoint argument, and full relative gluing proof for the residue. It also supplies the source's two-disk converse, filling and orientation consequences, higher-dimensional residue mechanism with explicit cohomology hypotheses, and the nonisotopic positive sphere diffeomorphism. Milnor credits Georges Reeb for the two-critical-point sphere result; the local normal form is attributed to Marston Morse. The signature and quaternionic characteristic calculations cite Friedrich Hirzebruch, René Thom and Wu Wen-Tsun, while Norman Steenrod supplies the cited bundle framework.</p>
+<p>John Milnor, with notes by James Stasheff, <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf"><em>Lectures on Characteristic Classes</em> (1957)</a>, ChapterXVI, Section5, provides the later prescribed-bundle and coned-filling perspective. The integral PL obstruction is proved in <a href="DG-CHAR-15C.html">the triangulation companion</a>. The source's historical smooth-versus-topological alternatives and unproved wider classification statements are not used as premises here. Every residue above assumes a given filling; no assertion that all manifolds bound replaces this hypothesis.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-15B.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-15C.html">Next chapter</a></nav><p><a href="milnors-exotic-seven-spheres.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

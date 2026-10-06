@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conductors of Weil-group representations · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/conductors-of-weil-group-representations.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="conductors-of-weil-group-representations">Conductors of Weil-group representations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The conductor measures the part of a local representation moved by inertia, with an extra cost for wild ramification. Frobenius eigenvalues do not affect it. We make this assertion precise for smooth Weil representations and prove the induction formula, where the discriminant of the extension contributes even when the inducing representation is unramified.</p>
+<p>We assume <a href="representations-of-weil-groups.html">Representations of Weil groups</a> and the ramification theory recalled below. As in that lesson, <span class="math" data-tex="\(F\)">\(F\)</span> is a nonarchimedean local field with residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>, representations are finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and <span class="math" data-tex="\(\operatorname{Art}_F(\varpi)\)">\(\operatorname{Art}_F(\varpi)\)</span> is geometric Frobenius. Conductors are unchanged when reciprocity is inverted, since a character and its inverse have the same kernel on every ramification group.</p>
+<h2 id="1-finite-ramification-and-the-different-with-proofs">1. Finite ramification and the different, with proofs</h2>
+<p>We first establish the finite-field calculations used by the conductor. The complete valuation, finite free integral closure, separable trace pairing, degree formula <span class="math" data-tex="\([L:F]=ef\)">\([L:F]=ef\)</span>, extension of embeddings, Hensel lifting and unramified residue-field correspondence are proved in <a href="profinite-groups-and-adic-representations.html">Profinite groups and adic representations</a>, Lemmas 0A.1, 0B.1–0B.2, 0D.1–0D.2 and Propositions 0E.1–0F.2. These statements hold for a complete discretely valued field with finite residue field, in either characteristic; the coefficient-field application in that lesson does not restrict their hypotheses. The Weil topology, finite quotients and finite-extension subgroups are Propositions 1.1–1.2 of <a href="representations-of-weil-groups.html">Representations of Weil groups</a>. We will prove the additional ramification algebra here.</p>
+<h3 id="1a-integral-generators-and-lower-groups">1A. Integral generators and lower groups</h3>
+<p><strong>Lemma 1.1 (integral generators).</strong> For a finite separable extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, there is an unramified intermediate field <span class="math" data-tex="\(F_0\)">\(F_0\)</span> with residue field <span class="math" data-tex="\(k_L\)">\(k_L\)</span>, and
+<span class="math math-display" data-tex="\[
+[L:F_0]=e(L/F),\qquad
+\mathcal O_L=\mathcal O_{F_0}[\pi_L]
+\]">\[
+[L:F_0]=e(L/F),\qquad
+\mathcal O_L=\mathcal O_{F_0}[\pi_L]
+\]</span>
+for every uniformizer <span class="math" data-tex="\(\pi_L\)">\(\pi_L\)</span>. There is also <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\mathcal O_L=\mathcal O_F[\alpha]\)">\(\mathcal O_L=\mathcal O_F[\alpha]\)</span>.</p>
+<p><strong>Proof.</strong> Lift a residue-field generator <span class="math" data-tex="\(\bar\beta\)">\(\bar\beta\)</span> to the unique root <span class="math" data-tex="\(\beta\in\mathcal O_L\)">\(\beta\in\mathcal O_L\)</span> of a monic lift of its separable minimal polynomial. The proof of Proposition 0F.2 identifies <span class="math" data-tex="\(F_0=F(\beta)\)">\(F_0=F(\beta)\)</span> as the degree-<span class="math" data-tex="\(f\)">\(f\)</span> unramified field, with that residue field. The degree formula gives <span class="math" data-tex="\([L:F_0]=e\)">\([L:F_0]=e\)</span>. The values of <span class="math" data-tex="\(1,\pi_L,\ldots,\pi_L^{e-1}\)">\(1,\pi_L,\ldots,\pi_L^{e-1}\)</span> are distinct modulo <span class="math" data-tex="\(e\mathbf Z=v_L(F_0^\times)\)">\(e\mathbf Z=v_L(F_0^\times)\)</span>. A nonzero linear combination over <span class="math" data-tex="\(F_0\)">\(F_0\)</span> has a unique term of least value and cannot vanish. These <span class="math" data-tex="\(e\)">\(e\)</span> elements are therefore an <span class="math" data-tex="\(F_0\)">\(F_0\)</span>-basis. If <span class="math" data-tex="\(x=\sum_{j&lt;e}a_j\pi_L^j\)">\(x=\sum_{j&lt;e}a_j\pi_L^j\)</span> is integral, its least term has nonnegative value; the distinct valuation classes then give <span class="math" data-tex="\(e v_{F_0}(a_j)+j\geq0\)">\(e v_{F_0}(a_j)+j\geq0\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, so every <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is integral. This proves the asserted integral basis and generation. In particular the minimal polynomial of <span class="math" data-tex="\(\pi_L\)">\(\pi_L\)</span> is Eisenstein: its constant coefficient has base value one, by the norm valuation formula in Proposition 0E.1, and each other nonleading coefficient is integral and has positive value, since it is a sum of positive-valued products of conjugate uniformizers.</p>
+<p>For completeness, one can combine the two generators. Put <span class="math" data-tex="\(\alpha=\beta+\pi_L\)">\(\alpha=\beta+\pi_L\)</span> and <span class="math" data-tex="\(A=\mathcal O_F[\alpha]\)">\(A=\mathcal O_F[\alpha]\)</span>. This is a finite <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>-module, hence complete and closed in <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>: finite lattices are complete, and their induced valuation topology is the coordinate topology by commensurability in Lemma 0A.1. Let <span class="math" data-tex="\(g\)">\(g\)</span> be the polynomial used to lift <span class="math" data-tex="\(\bar\beta\)">\(\bar\beta\)</span>. Its derivative at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unit of <span class="math" data-tex="\(A\)">\(A\)</span>. Indeed a polynomial Bezout relation between <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span> and <span class="math" data-tex="\(\bar g&#x27;\)">\(\bar g&#x27;\)</span>, evaluated at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, produces an element of <span class="math" data-tex="\(A\)">\(A\)</span> inverse to <span class="math" data-tex="\(g&#x27;(\alpha)\)">\(g&#x27;(\alpha)\)</span> up to an error of positive <span class="math" data-tex="\(L\)">\(L\)</span>-valuation. The geometric series for that error converges in <span class="math" data-tex="\(A\)">\(A\)</span> and gives an inverse. Newton iteration starting from <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> consequently stays in <span class="math" data-tex="\(A\)">\(A\)</span>; its errors have valuations tending to infinity by the proof of Lemma 0D.1. The resulting root of <span class="math" data-tex="\(g\)">\(g\)</span>, congruent to <span class="math" data-tex="\(\bar\beta\)">\(\bar\beta\)</span>, is <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by uniqueness. Thus <span class="math" data-tex="\(\beta\in A\)">\(\beta\in A\)</span> and <span class="math" data-tex="\(\pi_L=\alpha-\beta\in A\)">\(\pi_L=\alpha-\beta\in A\)</span>. The preceding integral basis gives <span class="math" data-tex="\(A=\mathcal O_L\)">\(A=\mathcal O_L\)</span>.</p>
+<p>We will also use the converse Eisenstein calculation in the examples. For a separable monic Eisenstein polynomial of degree <span class="math" data-tex="\(m\)">\(m\)</span>, let <span class="math" data-tex="\(x\)">\(x\)</span> be a root, and extend the base-normalized valuation. Its value is positive: otherwise the leading term alone has least value. Once <span class="math" data-tex="\(v(x)&gt;0\)">\(v(x)&gt;0\)</span>, every nonconstant nonleading term has value strictly greater than one, whereas the constant term has value exactly one. The least value in a zero sum must occur twice, forcing <span class="math" data-tex="\(m v(x)=1\)">\(m v(x)=1\)</span>. Thus the ramification index of <span class="math" data-tex="\(F(x)/F\)">\(F(x)/F\)</span> is at least <span class="math" data-tex="\(m\)">\(m\)</span>; its degree is at most <span class="math" data-tex="\(m\)">\(m\)</span>, and the degree formula forces both to equal <span class="math" data-tex="\(m\)">\(m\)</span>, with residue degree one. In normalized upper valuation <span class="math" data-tex="\(x\)">\(x\)</span> is a uniformizer. The integral basis just proved applies to it. This proves the Eisenstein assertions used below without importing an integral-basis theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, write <span class="math" data-tex="\(G=\operatorname{Gal}(L/F)\)">\(G=\operatorname{Gal}(L/F)\)</span>, normalize <span class="math" data-tex="\(v_L(L^\times)=\mathbf Z\)">\(v_L(L^\times)=\mathbf Z\)</span>, and define
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),\qquad
+G_j=\{\sigma:i_G(\sigma)\geq j+1\}\quad(j\geq-1).
+\tag{1A}
+\]">\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),\qquad
+G_j=\{\sigma:i_G(\sigma)\geq j+1\}\quad(j\geq-1).
+\tag{1A}
+\]</span>
+Identity has motion number <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. If <span class="math" data-tex="\(\mathcal O_L=\mathcal O_F[\alpha]\)">\(\mathcal O_L=\mathcal O_F[\alpha]\)</span>, polynomial division of <span class="math" data-tex="\(P(Y)-P(X)\)">\(P(Y)-P(X)\)</span> by <span class="math" data-tex="\(Y-X\)">\(Y-X\)</span> shows that
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=v_L(\sigma\alpha-\alpha).
+\tag{1B}
+\]">\[
+i_G(\sigma)=v_L(\sigma\alpha-\alpha).
+\tag{1B}
+\]</span>
+The minimum is attained at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The definition shows directly that <span class="math" data-tex="\(G_j\)">\(G_j\)</span> is a subgroup: <span class="math" data-tex="\(\sigma\tau x-x=\sigma(\tau x-x)+(\sigma x-x)\)">\(\sigma\tau x-x=\sigma(\tau x-x)+(\sigma x-x)\)</span>, and the valuation is preserved by automorphisms. Inverses follow on replacing <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(\sigma^{-1}x\)">\(\sigma^{-1}x\)</span>, and conjugation replaces the test element by another integral element. Thus the groups are normal, decrease, and become trivial, because the finitely many nonidentity motions in (1B) are finite. We have <span class="math" data-tex="\(G_{-1}=G\)">\(G_{-1}=G\)</span> and <span class="math" data-tex="\(G_0\)">\(G_0\)</span> equal to the kernel of the residue action, namely inertia.</p>
+<p>The unramified field <span class="math" data-tex="\(F_0\)">\(F_0\)</span> of Lemma 1.1 is unique by the residue correspondence. It is stable under <span class="math" data-tex="\(G\)">\(G\)</span>; extension of embeddings gives surjectivity onto <span class="math" data-tex="\(\operatorname{Gal}(F_0/F)\)">\(\operatorname{Gal}(F_0/F)\)</span>, with kernel <span class="math" data-tex="\(G_0\)">\(G_0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|G_0|=e(L/F),\qquad |G|/|G_0|=f(L/F),\qquad
+ i_G(\sigma)=v_L(\sigma\pi_L-\pi_L)\ (\sigma\in G_0).
+\tag{1C}
+\]">\[
+|G_0|=e(L/F),\qquad |G|/|G_0|=f(L/F),\qquad
+ i_G(\sigma)=v_L(\sigma\pi_L-\pi_L)\ (\sigma\in G_0).
+\tag{1C}
+\]</span>
+If <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, the intrinsic minimum uses the same <span class="math" data-tex="\(\mathcal O_L,v_L\)">\(\mathcal O_L,v_L\)</span> for <span class="math" data-tex="\(L/L^H\)">\(L/L^H\)</span>, so <span class="math" data-tex="\(i_H(h)=i_G(h)\)">\(i_H(h)=i_G(h)\)</span> and <span class="math" data-tex="\(H_j=H\cap G_j\)">\(H_j=H\cap G_j\)</span>, whether or not <span class="math" data-tex="\(H\)">\(H\)</span> is normal.</p>
+<p><strong>Lemma 1.2 (tame and wild inertia).</strong> The quotient <span class="math" data-tex="\(G_0/G_1\)">\(G_0/G_1\)</span> is cyclic of order prime to the residue characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group. In particular <span class="math" data-tex="\(G_1=1\)">\(G_1=1\)</span> exactly when <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is tame.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\sigma\in G_0\)">\(\sigma\in G_0\)</span>, reduce <span class="math" data-tex="\(c_\sigma=\sigma\pi_L/\pi_L\)">\(c_\sigma=\sigma\pi_L/\pi_L\)</span>. The identity <span class="math" data-tex="\(c_{\sigma\tau}=\sigma(c_\tau)c_\sigma\)">\(c_{\sigma\tau}=\sigma(c_\tau)c_\sigma\)</span> makes this a homomorphism into <span class="math" data-tex="\(k_L^\times\)">\(k_L^\times\)</span>, since inertia fixes residues. Formula (1C) gives kernel <span class="math" data-tex="\(G_1\)">\(G_1\)</span>. Cyclicity of finite residue units was proved in Lemma 0F.1 of the first lesson. For <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, reduction of <span class="math" data-tex="\(c_\sigma\)">\(c_\sigma\)</span> in
+<span class="math math-display" data-tex="\[
+(1+\mathfrak p_L^j)/(1+\mathfrak p_L^{j+1})\simeq(k_L,+),\qquad
+1+a\pi_L^j\longmapsto\bar a,
+\]">\[
+(1+\mathfrak p_L^j)/(1+\mathfrak p_L^{j+1})\simeq(k_L,+),\qquad
+1+a\pi_L^j\longmapsto\bar a,
+\]</span>
+gives an injection <span class="math" data-tex="\(G_j/G_{j+1}\hookrightarrow(k_L,+)\)">\(G_j/G_{j+1}\hookrightarrow(k_L,+)\)</span>. Multiplication is addition because <span class="math" data-tex="\(2j\geq j+1\)">\(2j\geq j+1\)</span>. Elements of <span class="math" data-tex="\(G_1\)">\(G_1\)</span> act trivially on this unit quotient: they fix residues and <span class="math" data-tex="\(\sigma\pi_L/\pi_L\equiv1\pmod{\mathfrak p_L}\)">\(\sigma\pi_L/\pi_L\equiv1\pmod{\mathfrak p_L}\)</span>. This verifies the homomorphism identity, and (1C) gives its kernel. The filtration terminates, so <span class="math" data-tex="\(|G_1|\)">\(|G_1|\)</span> is a power of <span class="math" data-tex="\(p\)">\(p\)</span>; its index in inertia is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(|G_0|=e\)">\(|G_0|=e\)</span> and the residue extension is separable, <span class="math" data-tex="\(p\nmid e\)">\(p\nmid e\)</span> is exactly the tame case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1b-trace-duals-the-different-and-discriminants">1B. Trace duals, the different and discriminants</h3>
+<p>For any finite separable <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, let
+<span class="math math-display" data-tex="\[
+\mathcal O_L^*=\{z\in L:\operatorname{Tr}_{L/F}(z\mathcal O_L)\subseteq\mathcal O_F\},\qquad
+\mathfrak D_{L/F}=(\mathcal O_L^*)^{-1}.
+\tag{1D}
+\]">\[
+\mathcal O_L^*=\{z\in L:\operatorname{Tr}_{L/F}(z\mathcal O_L)\subseteq\mathcal O_F\},\qquad
+\mathfrak D_{L/F}=(\mathcal O_L^*)^{-1}.
+\tag{1D}
+\]</span>
+The trace pairing is nondegenerate by the Vandermonde proof in Proposition 0E.1. A trace matrix in an integral basis therefore identifies its dual with a full finite lattice. The dual is stable under <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, so it is a fractional ideal of the DVR <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, hence principal. Traces of integral elements are integral by that same proof; thus <span class="math" data-tex="\(\mathcal O_L\subseteq\mathcal O_L^*\)">\(\mathcal O_L\subseteq\mathcal O_L^*\)</span> and the different is an integral ideal. Write <span class="math" data-tex="\(d_{L/F}=v_L(\mathfrak D_{L/F})\geq0\)">\(d_{L/F}=v_L(\mathfrak D_{L/F})\geq0\)</span>.</p>
+<p><strong>Lemma 1.3 (the monogenic trace dual).</strong> If <span class="math" data-tex="\(\mathcal O_L=\mathcal O_F[\alpha]\)">\(\mathcal O_L=\mathcal O_F[\alpha]\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> is the monic minimal polynomial, then
+<span class="math math-display" data-tex="\[
+\mathcal O_L^*=h&#x27;(\alpha)^{-1}\mathcal O_L,\qquad
+\mathfrak D_{L/F}=h&#x27;(\alpha)\mathcal O_L.
+\tag{1E}
+\]">\[
+\mathcal O_L^*=h&#x27;(\alpha)^{-1}\mathcal O_L,\qquad
+\mathfrak D_{L/F}=h&#x27;(\alpha)\mathcal O_L.
+\tag{1E}
+\]</span></p>
+<p><strong>Proof.</strong> For a polynomial <span class="math" data-tex="\(r\)">\(r\)</span> of degree at most <span class="math" data-tex="\(n-1=\deg h-1\)">\(n-1=\deg h-1\)</span>, Lagrange interpolation at the distinct roots <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_s\frac{r(\alpha_s)}{h&#x27;(\alpha_s)}
+=\text{coefficient of }X^{n-1}\text{ in }r(X).
+\tag{1F}
+\]">\[
+\sum_s\frac{r(\alpha_s)}{h&#x27;(\alpha_s)}
+=\text{coefficient of }X^{n-1}\text{ in }r(X).
+\tag{1F}
+\]</span>
+This follows by taking that coefficient in
+<span class="math" data-tex="\(r(X)=\sum_s r(\alpha_s)h(X)/((X-\alpha_s)h&#x27;(\alpha_s))\)">\(r(X)=\sum_s r(\alpha_s)h(X)/((X-\alpha_s)h&#x27;(\alpha_s))\)</span>.
+Hence the trace of <span class="math" data-tex="\(r(\alpha)/h&#x27;(\alpha)\)">\(r(\alpha)/h&#x27;(\alpha)\)</span> is that coefficient. Reduction modulo the monic integral polynomial <span class="math" data-tex="\(h\)">\(h\)</span> preserves integral coefficients, so this formula already puts <span class="math" data-tex="\(h&#x27;(\alpha)^{-1}\mathcal O_L\)">\(h&#x27;(\alpha)^{-1}\mathcal O_L\)</span> in the trace dual.</p>
+<p>To see equality, expand <span class="math" data-tex="\(h(X)/(X-\alpha)=\sum_{j=0}^{n-1}b_j(\alpha)X^j\)">\(h(X)/(X-\alpha)=\sum_{j=0}^{n-1}b_j(\alpha)X^j\)</span>. For <span class="math" data-tex="\(0\leq k&lt;n\)">\(0\leq k&lt;n\)</span>, the Lagrange identity for <span class="math" data-tex="\(X^k\)">\(X^k\)</span> says to sum
+<span class="math math-display" data-tex="\[
+\frac{\alpha_s^k}{h&#x27;(\alpha_s)}\frac{h(X)}{X-\alpha_s}
+\]">\[
+\frac{\alpha_s^k}{h&#x27;(\alpha_s)}\frac{h(X)}{X-\alpha_s}
+\]</span>
+over <span class="math" data-tex="\(s\)">\(s\)</span>; interpolation says the result is <span class="math" data-tex="\(X^k\)">\(X^k\)</span>. Comparing coefficients gives
+<span class="math" data-tex="\(\operatorname{Tr}(\alpha^k b_j(\alpha)/h&#x27;(\alpha))=\delta_{kj}\)">\(\operatorname{Tr}(\alpha^k b_j(\alpha)/h&#x27;(\alpha))=\delta_{kj}\)</span>.
+Thus <span class="math" data-tex="\(b_j(\alpha)/h&#x27;(\alpha)\)">\(b_j(\alpha)/h&#x27;(\alpha)\)</span> is the basis trace-dual to <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{n-1}\)">\(1,\alpha,\ldots,\alpha^{n-1}\)</span>. The polynomials <span class="math" data-tex="\(b_{n-1},b_{n-2},\ldots,b_0\)">\(b_{n-1},b_{n-2},\ldots,b_0\)</span> have successive degrees <span class="math" data-tex="\(0,1,\ldots,n-1\)">\(0,1,\ldots,n-1\)</span>, with leading coefficients one. Their triangular coefficient matrix is invertible over <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>, so they form another integral basis. This proves equality and its inverse-ideal formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.4 (different in a tower and its norm).</strong> For finite separable <span class="math" data-tex="\(L/E/F\)">\(L/E/F\)</span>,
+<span class="math math-display" data-tex="\[
+\mathfrak D_{L/F}=\mathfrak D_{L/E}\mathfrak D_{E/F}\mathcal O_L,\qquad
+ d_{L/F}=d_{L/E}+e(L/E)d_{E/F}.
+\tag{1G}
+\]">\[
+\mathfrak D_{L/F}=\mathfrak D_{L/E}\mathfrak D_{E/F}\mathcal O_L,\qquad
+ d_{L/F}=d_{L/E}+e(L/E)d_{E/F}.
+\tag{1G}
+\]</span>
+If <span class="math" data-tex="\(\mathfrak d_{E/F}\)">\(\mathfrak d_{E/F}\)</span> is the determinant ideal of the integral trace pairing, then
+<span class="math math-display" data-tex="\[
+\mathfrak d_{E/F}=N_{E/F}(\mathfrak D_{E/F}),\qquad
+\delta_{E/F}:=v_F(\mathfrak d_{E/F})=f(E/F)d_{E/F}.
+\tag{1H}
+\]">\[
+\mathfrak d_{E/F}=N_{E/F}(\mathfrak D_{E/F}),\qquad
+\delta_{E/F}:=v_F(\mathfrak d_{E/F})=f(E/F)d_{E/F}.
+\tag{1H}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(b_i\)">\(b_i\)</span> be an <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>-basis of <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>, with trace-dual basis <span class="math" data-tex="\(b_i^*\)">\(b_i^*\)</span>, and <span class="math" data-tex="\(c_j\)">\(c_j\)</span> an <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-basis of <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, with relative trace-dual basis <span class="math" data-tex="\(c_j^*\)">\(c_j^*\)</span>. Field trace is transitive: after passing to a splitting field it is a sum over embeddings; grouping embeddings of <span class="math" data-tex="\(L\)">\(L\)</span> by their restriction to <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(\operatorname{Tr}_{L/F}=\operatorname{Tr}_{E/F}\operatorname{Tr}_{L/E}\)">\(\operatorname{Tr}_{L/F}=\operatorname{Tr}_{E/F}\operatorname{Tr}_{L/E}\)</span>, using the embedding count of Lemma 0B.1. It follows that <span class="math" data-tex="\(b_i^*c_j^*\)">\(b_i^*c_j^*\)</span> is dual to <span class="math" data-tex="\(b_ic_j\)">\(b_ic_j\)</span>. Consequently the absolute trace dual is the product of the two relative trace-dual fractional ideals. Indeed <span class="math" data-tex="\(\sum_i\mathcal O_F b_i^*=\mathcal O_E^*=a\mathcal O_E\)">\(\sum_i\mathcal O_F b_i^*=\mathcal O_E^*=a\mathcal O_E\)</span> for a scalar <span class="math" data-tex="\(a\in E^\times\)">\(a\in E^\times\)</span>, so the span of the products is <span class="math" data-tex="\(a\sum_j\mathcal O_E c_j^*=a\mathcal O_L^{*,E}\)">\(a\sum_j\mathcal O_E c_j^*=a\mathcal O_L^{*,E}\)</span>. Inverting proves (1G), including the valuation scale.</p>
+<p>For (1H), an integral trace matrix <span class="math" data-tex="\(T\)">\(T\)</span> represents the inclusion of the integral lattice into its dual as <span class="math" data-tex="\(\mathcal O_F^n\subseteq T^{-1}\mathcal O_F^n\)">\(\mathcal O_F^n\subseteq T^{-1}\mathcal O_F^n\)</span>. Its quotient length is <span class="math" data-tex="\(v_F(\det T)\)">\(v_F(\det T)\)</span>. Here is the elementary DVR argument: select a nonzero entry of smallest valuation, move it to the first position, and eliminate its row and column by integral operations, since it divides every entry. Repeat on the remaining matrix. In the resulting diagonal matrix the determinant valuation and quotient length are both the sum of the diagonal valuations. But the dual is <span class="math" data-tex="\(\mathfrak p_E^{-d_{E/F}}\)">\(\mathfrak p_E^{-d_{E/F}}\)</span>; its quotient by <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span> has <span class="math" data-tex="\(d_{E/F}\)">\(d_{E/F}\)</span> successive residue-field quotients, each of length <span class="math" data-tex="\(f(E/F)\)">\(f(E/F)\)</span> over <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>. This proves the last formula. Finally the ideal norm sends <span class="math" data-tex="\(\mathfrak p_E\)">\(\mathfrak p_E\)</span> to <span class="math" data-tex="\(\mathfrak p_F^f\)">\(\mathfrak p_F^f\)</span>: for a uniformizer its principal norm has valuation <span class="math" data-tex="\(f\)">\(f\)</span>, by Proposition 0E.1. Powers and the principal-ideal description of a DVR prove the first formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.5 (Hilbert's formula).</strong> For finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span>,
+<span class="math math-display" data-tex="\[
+d_{L/F}=\sum_{\sigma\ne1}i_G(\sigma)
+=\sum_{j\geq0}(|G_j|-1).
+\tag{1I}
+\]">\[
+d_{L/F}=\sum_{\sigma\ne1}i_G(\sigma)
+=\sum_{j\geq0}(|G_j|-1).
+\tag{1I}
+\]</span>
+In particular an unramified extension has different exponent zero, and a tame extension has different exponent <span class="math" data-tex="\(e-1\)">\(e-1\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 1.1 gives an integral generator <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Its minimal polynomial is <span class="math" data-tex="\(h(X)=\prod_{\sigma\in G}(X-\sigma\alpha)\)">\(h(X)=\prod_{\sigma\in G}(X-\sigma\alpha)\)</span>, so (1E) and (1B) give the first equality. A nonidentity element of motion <span class="math" data-tex="\(i\)">\(i\)</span> belongs to exactly the <span class="math" data-tex="\(i\)">\(i\)</span> groups with indices <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> satisfying <span class="math" data-tex="\(j+1\leq i\)">\(j+1\leq i\)</span>. Counting its contributions gives the second equality. In the tame case Lemma 1.2 makes every group beyond <span class="math" data-tex="\(G_0\)">\(G_0\)</span> trivial, leaving <span class="math" data-tex="\(|G_0|-1=e-1\)">\(|G_0|-1=e-1\)</span>; the unramified case has <span class="math" data-tex="\(G_0=1\)">\(G_0=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="1c-the-quotient-theorem-proved-before-quotient-independence">1C. The quotient theorem, proved before quotient independence</h3>
+<p>Set <span class="math" data-tex="\(G_t=G_{\lceil t\rceil}\)">\(G_t=G_{\lceil t\rceil}\)</span> for real <span class="math" data-tex="\(t\geq-1\)">\(t\geq-1\)</span>, and
+<span class="math math-display" data-tex="\[
+\varphi_{L/F}(t)=t\ (-1\leq t\leq0),\qquad
+\varphi_{L/F}(t)=\int_0^t\frac{|G_x|}{|G_0|}\,dx\ (t\geq0).
+\tag{1}
+\]">\[
+\varphi_{L/F}(t)=t\ (-1\leq t\leq0),\qquad
+\varphi_{L/F}(t)=\int_0^t\frac{|G_x|}{|G_0|}\,dx\ (t\geq0).
+\tag{1}
+\]</span>
+It is continuous, strictly increasing and unbounded, with positive piecewise constant derivative, so it has inverse <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Define <span class="math" data-tex="\(G^u=G_{\psi(u)}\)">\(G^u=G_{\psi(u)}\)</span>. Groups retain their value at a jump and decrease immediately afterward. A useful equivalent identity is
+<span class="math math-display" data-tex="\[
+\varphi_{L/F}(t)=\frac1{|G_0|}\sum_{g\in G}\min\{i_G(g),t+1\}-1.
+\tag{1J}
+\]">\[
+\varphi_{L/F}(t)=\frac1{|G_0|}\sum_{g\in G}\min\{i_G(g),t+1\}-1.
+\tag{1J}
+\]</span>
+On <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> precisely the <span class="math" data-tex="\(|G_0|\)">\(|G_0|\)</span> inertial terms contribute <span class="math" data-tex="\(t+1\)">\(t+1\)</span>, so this holds. On <span class="math" data-tex="\(m&lt;t&lt;m+1\)">\(m&lt;t&lt;m+1\)</span>, the derivative of the right side counts motions at least <span class="math" data-tex="\(m+2\)">\(m+2\)</span>, namely <span class="math" data-tex="\(|G_{m+1}|/|G_0|\)">\(|G_{m+1}|/|G_0|\)</span>, the derivative of (1). Continuity and the value at zero prove (1J) everywhere.</p>
+<p><strong>Lemma 1.6 (coset motion and upper quotient theorem).</strong> If <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>, <span class="math" data-tex="\(E=L^H\)">\(E=L^H\)</span> and <span class="math" data-tex="\(Q=G/H\)">\(Q=G/H\)</span>, then
+<span class="math math-display" data-tex="\[
+i_Q(s)=\frac1{e(L/E)}\sum_{g\mapsto s}i_G(g),\qquad
+G^uH/H=Q^u.
+\tag{1K}
+\]">\[
+i_Q(s)=\frac1{e(L/E)}\sum_{g\mapsto s}i_G(g),\qquad
+G^uH/H=Q^u.
+\tag{1K}
+\]</span>
+The identity coset is interpreted with infinite motion on both sides. The Herbrand functions satisfy
+<span class="math" data-tex="\(\varphi_{L/F}=\varphi_{E/F}\circ\varphi_{L/E}\)">\(\varphi_{L/F}=\varphi_{E/F}\circ\varphi_{L/E}\)</span>.</p>
+<p><strong>Proof.</strong> Choose integral generators <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> for <span class="math" data-tex="\(L/F\)">\(L/F\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> for <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, by Lemma 1.1. Let <span class="math" data-tex="\(h\)">\(h\)</span> be the monic minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span>. For <span class="math" data-tex="\(s\ne1\)">\(s\ne1\)</span> and a lift <span class="math" data-tex="\(g\)">\(g\)</span>, the elements
+<span class="math math-display" data-tex="\[
+a=s\beta-\beta,\qquad
+b=(gh)(\alpha)=\prod_{h_0\in H}(\alpha-gh_0\alpha)
+\]">\[
+a=s\beta-\beta,\qquad
+b=(gh)(\alpha)=\prod_{h_0\in H}(\alpha-gh_0\alpha)
+\]</span>
+generate the same ideal of <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>. Each coefficient of <span class="math" data-tex="\(h\)">\(h\)</span> is an integral polynomial in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so <span class="math" data-tex="\(gh-h\)">\(gh-h\)</span>, evaluated at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, is divisible by <span class="math" data-tex="\(a\)">\(a\)</span>. Conversely write <span class="math" data-tex="\(\beta=P(\alpha)\)">\(\beta=P(\alpha)\)</span> with <span class="math" data-tex="\(P\in\mathcal O_F[X]\)">\(P\in\mathcal O_F[X]\)</span>. Monic division gives <span class="math" data-tex="\(P(X)-\beta=h(X)R(X)\)">\(P(X)-\beta=h(X)R(X)\)</span> in <span class="math" data-tex="\(\mathcal O_E[X]\)">\(\mathcal O_E[X]\)</span>, since the remainder vanishes at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Applying <span class="math" data-tex="\(g\)">\(g\)</span> and evaluating at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> gives <span class="math" data-tex="\(-a=b(gR)(\alpha)\)">\(-a=b(gR)(\alpha)\)</span>. Taking valuations of the equal ideals proves the first identity of (1K), with scale <span class="math" data-tex="\(v_L|_E=e(L/E)v_E\)">\(v_L|_E=e(L/E)v_E\)</span>.</p>
+<p>Choose a lift of <span class="math" data-tex="\(s\ne1\)">\(s\ne1\)</span> with maximal motion <span class="math" data-tex="\(m\)">\(m\)</span> in its fiber. The valuation identity
+<span class="math" data-tex="\(i_G(xy)\geq\min(i_G(x),i_G(y))\)">\(i_G(xy)\geq\min(i_G(x),i_G(y))\)</span>, with equality when the values differ, follows by evaluating <span class="math" data-tex="\(xy\alpha-\alpha\)">\(xy\alpha-\alpha\)</span> as the sum of two terms. Maximality then gives <span class="math" data-tex="\(i_G(gh_0)=\min(m,i_H(h_0))\)">\(i_G(gh_0)=\min(m,i_H(h_0))\)</span> for every <span class="math" data-tex="\(h_0\in H\)">\(h_0\in H\)</span>. The first identity and (1J) therefore yield
+<span class="math math-display" data-tex="\[
+i_Q(s)-1=\varphi_{L/E}(m-1).
+\]">\[
+i_Q(s)-1=\varphi_{L/E}(m-1).
+\]</span>
+A coset has a representative in <span class="math" data-tex="\(G_t\)">\(G_t\)</span> precisely when <span class="math" data-tex="\(m-1\geq t\)">\(m-1\geq t\)</span>; strict increase makes this equivalent to its membership in <span class="math" data-tex="\(Q_{\varphi_{L/E}(t)}\)">\(Q_{\varphi_{L/E}(t)}\)</span>. Thus
+<span class="math" data-tex="\(G_tH/H=Q_{\varphi_{L/E}(t)}\)">\(G_tH/H=Q_{\varphi_{L/E}(t)}\)</span>.
+Their orders satisfy <span class="math" data-tex="\(|G_t|=|H_t||Q_{\varphi_{L/E}(t)}|\)">\(|G_t|=|H_t||Q_{\varphi_{L/E}(t)}|\)</span>, and ramification indices multiply by restriction of normalized valuations. Taking derivatives in (1) proves the tower identity, with equality at zero and then by continuity at all breaks. Substitute <span class="math" data-tex="\(t=\psi_{L/F}(u)\)">\(t=\psi_{L/F}(u)\)</span> to obtain the upper quotient identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The absolute groups <span class="math" data-tex="\(G_F^u\)">\(G_F^u\)</span> are now defined by the inverse limit of these finite upper groups. Proposition 0C.1 of the first lesson supplies the compact Galois inverse limit. The transition maps on the upper groups are surjective by (1K); compatibility and a prescribed finite coordinate have the finite intersection property in that compact limit. Consequently every absolute upper group maps onto the corresponding finite upper group. They are closed, normal and decreasing. Inertia is <span class="math" data-tex="\(G_F^0=I_F\)">\(G_F^0=I_F\)</span>, and <span class="math" data-tex="\(P_F=G_F^{0+}\)">\(P_F=G_F^{0+}\)</span> means the closed subgroup generated by the positive upper groups. Its image in any finite quotient is <span class="math" data-tex="\(G_1\)">\(G_1\)</span>: on the first positive lower interval the group is <span class="math" data-tex="\(G_1\)">\(G_1\)</span>, and all later positive groups are contained in it. Thus Lemma 1.2 proves exactly the finite wild-inertia fact used below.</p>
+<p><strong>Lemma 1.7 (the full tame inertia quotient).</strong> The quotient <span class="math" data-tex="\(I_F/P_F\)">\(I_F/P_F\)</span> is prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> procyclic; more canonically, it is <span class="math" data-tex="\(\varprojlim_{p\nmid m}\mu_m\)">\(\varprojlim_{p\nmid m}\mu_m\)</span>, with power maps on roots of unity.</p>
+<p><strong>Proof.</strong> In the unramified union <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span>, every unit has an <span class="math" data-tex="\(m\)">\(m\)</span>-th root for <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>: put the unit in a complete finite unramified field, enlarge its residue field to contain a root of its residue, and apply simple-root Hensel lifting at that finite level. This includes all <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>. If <span class="math" data-tex="\(L/F\)">\(L/F\)</span> is totally tame of index <span class="math" data-tex="\(m\)">\(m\)</span>, write <span class="math" data-tex="\(\pi_L^m=\pi_F u\)">\(\pi_L^m=\pi_F u\)</span>. Lift the residue of <span class="math" data-tex="\(u\)">\(u\)</span> to a base unit <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, and use Hensel on <span class="math" data-tex="\(X^m-u/u_0\)">\(X^m-u/u_0\)</span> at 1 to remove that principal-unit factor. A new upper uniformizer <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> satisfies <span class="math" data-tex="\(\gamma^m=\pi_F u_0\)">\(\gamma^m=\pi_F u_0\)</span>; it generates <span class="math" data-tex="\(L\)">\(L\)</span> by Lemma 1.1. For an arbitrary tame extension, apply this to its totally ramified part over its maximal unramified field. Removing the remaining unit by an <span class="math" data-tex="\(m\)">\(m\)</span>-th root in <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span> puts it in <span class="math" data-tex="\(F^{\mathrm{nr}}(\pi_F^{1/m})\)">\(F^{\mathrm{nr}}(\pi_F^{1/m})\)</span>.</p>
+<p>Thus the union <span class="math" data-tex="\(F^t=\bigcup_{p\nmid m}F^{\mathrm{nr}}(\pi_F^{1/m})\)">\(F^t=\bigcup_{p\nmid m}F^{\mathrm{nr}}(\pi_F^{1/m})\)</span> contains every finite tame extension. Conversely every finite set of its elements lies in <span class="math" data-tex="\(F_r(\pi_F^{1/m})\)">\(F_r(\pi_F^{1/m})\)</span> for one unramified <span class="math" data-tex="\(F_r\)">\(F_r\)</span> and one <span class="math" data-tex="\(m\)">\(m\)</span>, after taking common multiples. This has index <span class="math" data-tex="\(m\)">\(m\)</span> by the Eisenstein calculation in Lemma 1.1. Subextension indices divide it, by valuation multiplication, so every finite subextension is tame. Enlarge <span class="math" data-tex="\(r\)">\(r\)</span> to include <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>; the corresponding field is Galois over <span class="math" data-tex="\(F\)">\(F\)</span>, because all conjugates of the radical and the unramified coefficient field lie inside it. These are cofinal finite Galois fields. Lemmas 1.2 and 1.6 show that in any finite Galois quotient the fixed field of <span class="math" data-tex="\(G_1\)">\(G_1\)</span> is tame, and every tame quotient kills the image of <span class="math" data-tex="\(P_F\)">\(P_F\)</span>. Hence <span class="math" data-tex="\(F^t\)">\(F^t\)</span> is exactly the fixed field of <span class="math" data-tex="\(P_F\)">\(P_F\)</span>, and <span class="math" data-tex="\(I_F/P_F=\operatorname{Gal}(F^t/F^{\mathrm{nr}})\)">\(I_F/P_F=\operatorname{Gal}(F^t/F^{\mathrm{nr}})\)</span>.</p>
+<p>Choose compatible radicals along a divisibility-cofinal chain of integers prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Over <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span>, the powers <span class="math" data-tex="\(1,\pi_m,\ldots,\pi_m^{m-1}\)">\(1,\pi_m,\ldots,\pi_m^{m-1}\)</span> have distinct values modulo <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, so are independent; the degree is <span class="math" data-tex="\(m\)">\(m\)</span>. All roots <span class="math" data-tex="\(\zeta\pi_m\)">\(\zeta\pi_m\)</span>, <span class="math" data-tex="\(\zeta\in\mu_m\)">\(\zeta\in\mu_m\)</span>, lie there. Their action ratios identify the finite Galois group with <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>, and restriction is the power map. Taking inverse limits proves the claimed canonical group. Compatible primitive roots identify it with <span class="math" data-tex="\(\prod_{\ell\ne p}\mathbf Z_\ell\)">\(\prod_{\ell\ne p}\mathbf Z_\ell\)</span>: finite cyclic primary decomposition and the Chinese remainder theorem identify each finite level, with compatible transitions. The tuple 1 generates every finite cyclic quotient, so its powers are dense, proving procyclicity. Changing a radical, or changing <span class="math" data-tex="\(\pi_F\)">\(\pi_F\)</span> by a unit, multiplies it by an element of <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span> fixed by inertia, so does not change any action ratio. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For comparison, these lower and quotient calculations are also actually written in the free <a href="../NT-LOC/NT-LOC-09.html">local-fields programme, lesson 9, §§1–3</a> and <a href="../NT-LOC/NT-LOC-10.html">lesson 10, §§1–4</a>. The proofs above include their algebraic dependencies, rather than importing a different formula or an integer theorem.</p>
+<h2 id="2-defining-the-conductor-without-a-quotient-choice">2. Defining the conductor without a quotient choice</h2>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be a smooth representation of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Its inertia image is finite by Lemma 2.1 of the preceding lesson. Define
+<span class="math math-display" data-tex="\[
+\operatorname{sw}_F(V)=\int_0^\infty
+\operatorname{codim} V^{G_F^u}\,du,
+\qquad
+a_F(V)=\operatorname{codim}V^{I_F}+\operatorname{sw}_F(V).
+\tag{3}
+\]">\[
+\operatorname{sw}_F(V)=\int_0^\infty
+\operatorname{codim} V^{G_F^u}\,du,
+\qquad
+a_F(V)=\operatorname{codim}V^{I_F}+\operatorname{sw}_F(V).
+\tag{3}
+\]</span>
+The fixed spaces make sense because every <span class="math" data-tex="\(G_F^u\)">\(G_F^u\)</span>, for <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, lies in inertia, hence in <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. The integral is a finite sum of lengths of intervals times integer codimensions. At this point <span class="math" data-tex="\(a_F(V)\)">\(a_F(V)\)</span> is a nonnegative rational number. We introduce the ideal conductor after proving integrality in Theorem 2.6; “conductor” without “ideal” means the exponent.</p>
+<p>There is a finite Galois extension on whose inertia quotient these fixed spaces can be computed. Indeed the kernel of <span class="math" data-tex="\(V|_{I_F}\)">\(V|_{I_F}\)</span> is open in <span class="math" data-tex="\(I_F\)">\(I_F\)</span>. An identity neighborhood in <span class="math" data-tex="\(G_F\)">\(G_F\)</span> can be chosen to intersect <span class="math" data-tex="\(I_F\)">\(I_F\)</span> inside that kernel; an open normal subgroup contained in this neighborhood then gives the required finite quotient. This does not require Frobenius itself to have finite image.</p>
+<p>On such a quotient, changing variables by (1) gives
+<span class="math math-display" data-tex="\[
+\operatorname{sw}_F(V)=\sum_{i\ge1}\frac{|G_i|}{|G_0|}
+\operatorname{codim}V^{G_i},
+\qquad
+a_F(V)=\sum_{i\ge0}\frac{|G_i|}{|G_0|}
+\operatorname{codim}V^{G_i}.
+\tag{4}
+\]">\[
+\operatorname{sw}_F(V)=\sum_{i\ge1}\frac{|G_i|}{|G_0|}
+\operatorname{codim}V^{G_i},
+\qquad
+a_F(V)=\sum_{i\ge0}\frac{|G_i|}{|G_0|}
+\operatorname{codim}V^{G_i}.
+\tag{4}
+\]</span>
+For the term <span class="math" data-tex="\(i=0\)">\(i=0\)</span> the coefficient is one. Although <span class="math" data-tex="\(V\)">\(V\)</span> may not be a representation of the whole finite group <span class="math" data-tex="\(G\)">\(G\)</span>, its restriction to every <span class="math" data-tex="\(G_i\subseteq G_0\)">\(G_i\subseteq G_0\)</span> factors through that quotient, which is all (4) requires.</p>
+<p><strong>Theorem 2.1 (well-definedness and twists).</strong> Formula (4) is independent of the chosen finite quotient. The conductor is additive in short exact sequences and is invariant under unramified twists. In particular
+<span class="math math-display" data-tex="\[
+a_F(V\otimes\|\cdot\|^s)=a_F(V).
+\]">\[
+a_F(V\otimes\|\cdot\|^s)=a_F(V).
+\]</span></p>
+<p><strong>Proof.</strong> If two quotients are used, take a common dominating finite Galois quotient. Herbrand's quotient theorem identifies the image of each absolute upper group with the upper group in each quotient. Thus at every upper index the same subgroup acts on <span class="math" data-tex="\(V\)">\(V\)</span>, giving exactly the same fixed space and the same integrand in (3). Its upper integral and the inertia term agree. The lower sums equal that integral by the change of variable already given, proving the required independence. Directly transferring lower indices between quotients would not be valid.</p>
+<p>For an exact sequence <span class="math" data-tex="\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)">\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)</span>, choose a common finite quotient of inertia. Taking invariants under any of its subgroups is exact in characteristic zero: average a lift of a fixed vector to obtain a fixed lift. Consequently
+<span class="math math-display" data-tex="\[
+\dim V^J=\dim (V&#x27;)^J+\dim(V&#x27;&#x27;)^J
+\]">\[
+\dim V^J=\dim (V&#x27;)^J+\dim(V&#x27;&#x27;)^J
+\]</span>
+for <span class="math" data-tex="\(J=I_F\)">\(J=I_F\)</span> and for every <span class="math" data-tex="\(G_F^u\)">\(G_F^u\)</span>. Codimensions, and then (3), add. Finally an unramified character is trivial on all these groups, so twisting changes none of their fixed spaces. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This also proves <span class="math" data-tex="\(a_F(V)=a_F(V^{\mathrm{ss}})\)">\(a_F(V)=a_F(V^{\mathrm{ss}})\)</span>, including representations with Frobenius Jordan blocks. We now prove integrality before using it in the ideal conductor or the single-break formula.</p>
+<h3 id="2a-character-pairing-and-finite-induction">2A. Character pairing and finite induction</h3>
+<p>For a finite group, write <span class="math" data-tex="\(\chi_V(g)=\operatorname{tr}(g\mid V)\)">\(\chi_V(g)=\operatorname{tr}(g\mid V)\)</span>. We use the pairing
+<span class="math math-display" data-tex="\[
+\langle b,\chi\rangle_G=\frac1{|G|}\sum_{g\in G}b(g)\chi(g^{-1}).
+\tag{2A}
+\]">\[
+\langle b,\chi\rangle_G=\frac1{|G|}\sum_{g\in G}b(g)\chi(g^{-1}).
+\tag{2A}
+\]</span>
+When the first argument is a real character this is the usual character inner product. The inverse notation avoids any issue of which argument is conjugate linear.</p>
+<p>For <span class="math" data-tex="\(G=\operatorname{Gal}(L/F)\)">\(G=\operatorname{Gal}(L/F)\)</span>, define the <strong>Artin class function</strong> by
+<span class="math math-display" data-tex="\[
+A_G(g)=-f(L/F)i_G(g)\quad(g\ne1),\qquad
+A_G(1)=f(L/F)d_{L/F}.
+\tag{2B}
+\]">\[
+A_G(g)=-f(L/F)i_G(g)\quad(g\ne1),\qquad
+A_G(1)=f(L/F)d_{L/F}.
+\tag{2B}
+\]</span>
+It is a class function because motion is conjugation invariant. We do not presume it is a character or invoke its integrality in this definition.</p>
+<p><strong>Lemma 2.2 (the character pairing).</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> factors through <span class="math" data-tex="\(G\)">\(G\)</span>, then
+<span class="math math-display" data-tex="\[
+a_F(V)=\langle A_G,\chi_V\rangle_G.
+\tag{2C}
+\]">\[
+a_F(V)=\langle A_G,\chi_V\rangle_G.
+\tag{2C}
+\]</span>
+The regular class function <span class="math" data-tex="\(\operatorname{reg}_G\)">\(\operatorname{reg}_G\)</span>, of value <span class="math" data-tex="\(|G|\)">\(|G|\)</span> at identity and zero elsewhere, pairs with <span class="math" data-tex="\(\chi_V\)">\(\chi_V\)</span> to give <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>.</p>
+<p><strong>Proof.</strong> Averaging <span class="math" data-tex="\(|J|^{-1}\sum_{j\in J}\rho(j)\)">\(|J|^{-1}\sum_{j\in J}\rho(j)\)</span> is an idempotent with image <span class="math" data-tex="\(V^J\)">\(V^J\)</span>: it fixes invariant vectors and its value on any vector is invariant. Its trace is its rank, by a basis of its image and kernel. Hence
+<span class="math" data-tex="\(\dim V^J=|J|^{-1}\sum_{j\in J}\chi_V(j^{-1})\)">\(\dim V^J=|J|^{-1}\sum_{j\in J}\chi_V(j^{-1})\)</span>.
+Hilbert's formula (1I) and the motion count give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle A_G,\chi_V\rangle_G
+&amp;=\frac{f(L/F)}{|G|}\sum_{g\ne1}i_G(g)
+       \bigl(\dim V-\chi_V(g^{-1})\bigr)\\
+&amp;=\frac1{|G_0|}\sum_{j\geq0}\sum_{g\in G_j}
+       \bigl(\dim V-\chi_V(g^{-1})\bigr)\\
+&amp;=\sum_{j\geq0}\frac{|G_j|}{|G_0|}\operatorname{codim}V^{G_j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle A_G,\chi_V\rangle_G
+&amp;=\frac{f(L/F)}{|G|}\sum_{g\ne1}i_G(g)
+       \bigl(\dim V-\chi_V(g^{-1})\bigr)\\
+&amp;=\frac1{|G_0|}\sum_{j\geq0}\sum_{g\in G_j}
+       \bigl(\dim V-\chi_V(g^{-1})\bigr)\\
+&amp;=\sum_{j\geq0}\frac{|G_j|}{|G_0|}\operatorname{codim}V^{G_j}.
+\end{aligned}
+\]</span>
+The identity contributes zero in the middle expression. The last line is (4), and the regular pairing follows directly from its sole nonzero value. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also give the finite induction identity needed in the pairing. In the tensor model <span class="math" data-tex="\(\mathbb C[G]\otimes_{\mathbb C[H]}V\)">\(\mathbb C[G]\otimes_{\mathbb C[H]}V\)</span>, select coset representatives. An element <span class="math" data-tex="\(g\)">\(g\)</span> permutes those vector-space summands; only fixed summands contribute to its trace. On a fixed summand represented by <span class="math" data-tex="\(x\)">\(x\)</span>, its matrix is that of <span class="math" data-tex="\(x^{-1}gx\in H\)">\(x^{-1}gx\in H\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+(\operatorname{Ind}_H^G\chi)(g)=\frac1{|H|}
+\sum_{x\in G:\,x^{-1}gx\in H}\chi(x^{-1}gx).
+\tag{2D}
+\]">\[
+(\operatorname{Ind}_H^G\chi)(g)=\frac1{|H|}
+\sum_{x\in G:\,x^{-1}gx\in H}\chi(x^{-1}gx).
+\tag{2D}
+\]</span>
+Substitute (2D) into (2A) and put <span class="math" data-tex="\(g=xhx^{-1}\)">\(g=xhx^{-1}\)</span>. Conjugation invariance of <span class="math" data-tex="\(b\)">\(b\)</span> gives
+<span class="math math-display" data-tex="\[
+\langle b,\operatorname{Ind}_H^G\chi\rangle_G
+=\langle b|_H,\chi\rangle_H.
+\tag{2E}
+\]">\[
+\langle b,\operatorname{Ind}_H^G\chi\rangle_G
+=\langle b|_H,\chi\rangle_H.
+\tag{2E}
+\]</span>
+This proves the character form of Frobenius reciprocity used here without leaving it as an unproved import.</p>
+<p><strong>Proposition 2.3 (finite conductor induction).</strong> Let <span class="math" data-tex="\(L/F\)">\(L/F\)</span> be finite Galois, <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, <span class="math" data-tex="\(E=L^H\)">\(E=L^H\)</span>, and <span class="math" data-tex="\(V\)">\(V\)</span> a representation of <span class="math" data-tex="\(H\)">\(H\)</span>. Put <span class="math" data-tex="\(f=f(E/F)\)">\(f=f(E/F)\)</span>. Then
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}_H^G V)
+=\dim(V)\,\delta_{E/F}+f a_E(V).
+\tag{2F}
+\]">\[
+a_F(\operatorname{Ind}_H^G V)
+=\dim(V)\,\delta_{E/F}+f a_E(V).
+\tag{2F}
+\]</span>
+Here <span class="math" data-tex="\(\delta_{E/F}=f d_{E/F}\)">\(\delta_{E/F}=f d_{E/F}\)</span> was proved in (1H), and <span class="math" data-tex="\(H\)">\(H\)</span> need not be normal.</p>
+<p><strong>Proof.</strong> At nonidentity <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, intrinsic motion gives <span class="math" data-tex="\(i_H(h)=i_G(h)\)">\(i_H(h)=i_G(h)\)</span>, and residue degrees multiply, since they are degrees of finite residue-field towers. Thus <span class="math" data-tex="\(A_G(h)=f A_H(h)\)">\(A_G(h)=f A_H(h)\)</span>. At identity, Lemma 1.4 gives
+<span class="math math-display" data-tex="\[
+A_G(1)-f A_H(1)
+=f(L/F)e(L/E)d_{E/F}
+=\delta_{E/F}[L:E].
+\]">\[
+A_G(1)-f A_H(1)
+=f(L/F)e(L/E)d_{E/F}
+=\delta_{E/F}[L:E].
+\]</span>
+Since <span class="math" data-tex="\([L:E]=|H|\)">\([L:E]=|H|\)</span>, these equalities combine to the exact class-function identity
+<span class="math math-display" data-tex="\[
+A_G|_H=f A_H+\delta_{E/F}\operatorname{reg}_H.
+\tag{2G}
+\]">\[
+A_G|_H=f A_H+\delta_{E/F}\operatorname{reg}_H.
+\tag{2G}
+\]</span>
+Use (2C), (2E) and the regular pairing of Lemma 2.2. The resulting equality is (2F). Every step is a class-function calculation and none assumes conductor integrality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="2b-rank-one-integrality-then-general-integrality">2B. Rank-one integrality, then general integrality</h3>
+<p><strong>Lemma 2.3A (integral formal modules, in both characteristics).</strong> Put <span class="math" data-tex="\(R=\mathcal O_F\)">\(R=\mathcal O_F\)</span>, choose a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and write <span class="math" data-tex="\(q=|R/\pi R|\)">\(q=|R/\pi R|\)</span>. Let <span class="math" data-tex="\(\mathcal F_\pi\)">\(\mathcal F_\pi\)</span> consist of the series
+<span class="math math-display" data-tex="\[
+f(X)\in R[[X]],\qquad f(X)=\pi X+O(X^2),\qquad f(X)\equiv X^q\pmod\pi.
+\tag{2LT1}
+\]">\[
+f(X)\in R[[X]],\qquad f(X)=\pi X+O(X^2),\qquad f(X)\equiv X^q\pmod\pi.
+\tag{2LT1}
+\]</span>
+Every <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span> admits a unique commutative formal group law <span class="math" data-tex="\(F_f\)">\(F_f\)</span> for which <span class="math" data-tex="\(f\)">\(f\)</span> is an endomorphism. There are integral scalar endomorphisms <span class="math" data-tex="\([a]_f=aX+O(X^2)\)">\([a]_f=aX+O(X^2)\)</span> for all <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>, satisfying <span class="math" data-tex="\([a+b]_f=F_f([a]_f,[b]_f)\)">\([a+b]_f=F_f([a]_f,[b]_f)\)</span>, <span class="math" data-tex="\([ab]_f=[a]_f\circ[b]_f\)">\([ab]_f=[a]_f\circ[b]_f\)</span>, and <span class="math" data-tex="\([\pi]_f=f\)">\([\pi]_f=f\)</span>. For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span>, their formal modules are canonically isomorphic by an integral series with linear coefficient one.</p>
+<p><strong>Proof.</strong> We give the coefficient construction. For <span class="math" data-tex="\(f,g\in\mathcal F_\pi\)">\(f,g\in\mathcal F_\pi\)</span> and a linear form <span class="math" data-tex="\(L\)">\(L\)</span> in any finite number of variables, seek <span class="math" data-tex="\(H=L+O(\text{degree }2)\)">\(H=L+O(\text{degree }2)\)</span> with
+<span class="math math-display" data-tex="\[
+f(H(X_1,\ldots,X_r))=H(g(X_1),\ldots,g(X_r)).
+\tag{2LT2}
+\]">\[
+f(H(X_1,\ldots,X_r))=H(g(X_1),\ldots,g(X_r)).
+\tag{2LT2}
+\]</span>
+Suppose this holds through degree <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, and let <span class="math" data-tex="\(E_d\)">\(E_d\)</span> be the degree-<span class="math" data-tex="\(d\)">\(d\)</span> part of the left side minus the right side. Modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, that difference is <span class="math" data-tex="\(\overline H^{q}-\overline H(X_1^q,\ldots,X_r^q)=0\)">\(\overline H^{q}-\overline H(X_1^q,\ldots,X_r^q)=0\)</span>: coefficients lie in <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Adding a homogeneous <span class="math" data-tex="\(C_d\)">\(C_d\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> changes the error to <span class="math" data-tex="\(E_d+(\pi-\pi^d)C_d\)">\(E_d+(\pi-\pi^d)C_d\)</span>. Since <span class="math" data-tex="\(\pi^{d-1}-1\)">\(\pi^{d-1}-1\)</span> is a unit, the unique correction
+<span class="math math-display" data-tex="\[
+C_d=-\frac{E_d}{\pi(1-\pi^{d-1})}
+\tag{2LT3}
+\]">\[
+C_d=-\frac{E_d}{\pi(1-\pi^{d-1})}
+\tag{2LT3}
+\]</span>
+is integral. Induction gives a unique series. All compositions are defined coefficient by coefficient because their constant terms vanish.</p>
+<p>Take <span class="math" data-tex="\(f=g\)">\(f=g\)</span> and <span class="math" data-tex="\(L=X+Y\)">\(L=X+Y\)</span> to obtain <span class="math" data-tex="\(F_f\)">\(F_f\)</span>. Swapping variables gives another solution with the same linear form, hence commutativity. The two associative composites have linear form <span class="math" data-tex="\(X+Y+Z\)">\(X+Y+Z\)</span> and satisfy (2LT2), hence coincide. Substitution <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span> gives the unique solution with linear term <span class="math" data-tex="\(X\)">\(X\)</span>, namely <span class="math" data-tex="\(X\)">\(X\)</span>; thus the identity is zero. The equation <span class="math" data-tex="\(F_f(X,i(X))=0\)">\(F_f(X,i(X))=0\)</span> determines each coefficient of <span class="math" data-tex="\(i=-X+O(X^2)\)">\(i=-X+O(X^2)\)</span> successively with coefficient one, proving the inverse axiom. In particular
+<span class="math" data-tex="\(F_f(X,Y)=X+Y+XYC(X,Y)\)">\(F_f(X,Y)=X+Y+XYC(X,Y)\)</span> with <span class="math" data-tex="\(C\)">\(C\)</span> integral.</p>
+<p>Apply (2LT2) with linear term <span class="math" data-tex="\(aX\)">\(aX\)</span> to obtain <span class="math" data-tex="\([a]_f\)">\([a]_f\)</span>. The series <span class="math" data-tex="\([a]_f(F_f(X,Y))\)">\([a]_f(F_f(X,Y))\)</span> and <span class="math" data-tex="\(F_f([a]_f(X),[a]_f(Y))\)">\(F_f([a]_f(X),[a]_f(Y))\)</span> have the same linear form and intertwining equation, so are equal. The same uniqueness proves the stated addition and composition identities, <span class="math" data-tex="\([1]_f=X\)">\([1]_f=X\)</span>, and <span class="math" data-tex="\([\pi]_f=f\)">\([\pi]_f=f\)</span>. For two choices of <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, the solution of <span class="math" data-tex="\(gH=Hf\)">\(gH=Hf\)</span> with linear coefficient one is a homomorphism by the same two-variable comparison. Reversing <span class="math" data-tex="\(f,g\)">\(f,g\)</span> constructs its inverse. A series with unit linear coefficient also has an integral compositional inverse directly: the degree-<span class="math" data-tex="\(d\)">\(d\)</span> inverse coefficient is determined by a linear equation with that unit coefficient. Finally, these series converge on the maximal ideal of every finite extension, since an integral degree-<span class="math" data-tex="\(d\)">\(d\)</span> term has valuation tending to infinity there. The identities therefore give actual <span class="math" data-tex="\(R\)">\(R\)</span>-module laws on those ideals, compatible with Galois action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3B (division fields and their exact degrees).</strong> For <span class="math" data-tex="\(f(X)=\pi X+X^q\)">\(f(X)=\pi X+X^q\)</span>, let <span class="math" data-tex="\(\Lambda_n\)">\(\Lambda_n\)</span> be the roots of <span class="math" data-tex="\(f^{\circ n}\)">\(f^{\circ n}\)</span> and let <span class="math" data-tex="\(F_{\pi,n}=F(\Lambda_n)\)">\(F_{\pi,n}=F(\Lambda_n)\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Lambda_n\simeq R/\pi^nR,\qquad
+\operatorname{Gal}(F_{\pi,n}/F)\simeq(R/\pi^nR)^\times,
+\qquad [F_{\pi,n}:F]=(q-1)q^{n-1}=:D_n.
+\tag{2LT4}
+\]">\[
+\Lambda_n\simeq R/\pi^nR,\qquad
+\operatorname{Gal}(F_{\pi,n}/F)\simeq(R/\pi^nR)^\times,
+\qquad [F_{\pi,n}:F]=(q-1)q^{n-1}=:D_n.
+\tag{2LT4}
+\]</span>
+The extension is totally ramified. Every primitive point is a uniformizer and generates it, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a norm from it. These assertions also hold for any <span class="math" data-tex="\(f\in\mathcal F_\pi\)">\(f\in\mathcal F_\pi\)</span>, using the canonical comparison of Lemma 2.3A.</p>
+<p><strong>Proof.</strong> The iterate is monic of degree <span class="math" data-tex="\(q^n\)">\(q^n\)</span>, reduces to <span class="math" data-tex="\(X^{q^n}\)">\(X^{q^n}\)</span>, and has zero constant term. Every nonzero root has positive valuation: if its valuation were negative the leading term would be uniquely smallest, and if zero the leading term would be a unit while every other coefficient is in <span class="math" data-tex="\(\pi R\)">\(\pi R\)</span>. At any such argument <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math" data-tex="\(f&#x27;(x)=\pi+q x^{q-1}\)">\(f&#x27;(x)=\pi+q x^{q-1}\)</span> is <span class="math" data-tex="\(\pi\)">\(\pi\)</span> times a unit, because <span class="math" data-tex="\(q\in\pi R\)">\(q\in\pi R\)</span>; in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> its second term is zero. The chain rule therefore shows that all roots of every iterate are distinct, including zero.</p>
+<p>Choose <span class="math" data-tex="\(\lambda_1\ne0\)">\(\lambda_1\ne0\)</span> with <span class="math" data-tex="\(f(\lambda_1)=0\)">\(f(\lambda_1)=0\)</span>, and <span class="math" data-tex="\(f(\lambda_n)=\lambda_{n-1}\)">\(f(\lambda_n)=\lambda_{n-1}\)</span>. The primitive roots, those not killed by <span class="math" data-tex="\(f^{\circ(n-1)}\)">\(f^{\circ(n-1)}\)</span>, are precisely the roots of the monic polynomial
+<span class="math math-display" data-tex="\[
+P_n(X)=\frac{f^{\circ n}(X)}{f^{\circ(n-1)}(X)}
+=\pi+\bigl(f^{\circ(n-1)}(X)\bigr)^{q-1}.
+\tag{2LT5}
+\]">\[
+P_n(X)=\frac{f^{\circ n}(X)}{f^{\circ(n-1)}(X)}
+=\pi+\bigl(f^{\circ(n-1)}(X)\bigr)^{q-1}.
+\tag{2LT5}
+\]</span>
+Its degree is <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, reduction is <span class="math" data-tex="\(X^{D_n}\)">\(X^{D_n}\)</span>, and constant term is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Thus it is Eisenstein. Here is the needed irreducibility argument: any monic factors over <span class="math" data-tex="\(F\)">\(F\)</span> have integral coefficients, since their roots are integral and <span class="math" data-tex="\(R\)">\(R\)</span> is integrally closed by the valuation criterion; reduction makes their constant terms divisible by <span class="math" data-tex="\(\pi\)">\(\pi\)</span> if both factors have positive degree. Their product would then have constant term divisible by <span class="math" data-tex="\(\pi^2\)">\(\pi^2\)</span>, a contradiction. Consequently <span class="math" data-tex="\([F(\lambda_n):F]=D_n\)">\([F(\lambda_n):F]=D_n\)</span>. In (2LT5), a positive root valuation <span class="math" data-tex="\(r\)">\(r\)</span> can cancel the constant term only when <span class="math" data-tex="\(D_nr=1\)">\(D_nr=1\)</span>: every intermediate term has valuation at least <span class="math" data-tex="\(1+jr&gt;1\)">\(1+jr&gt;1\)</span>. Hence the ramification index is at least <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, and the degree formula of Lemma 1.1 makes it exactly <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, with residue degree one; <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> is a uniformizer.</p>
+<p>The <span class="math" data-tex="\(q^n\)">\(q^n\)</span> distinct roots form an <span class="math" data-tex="\(R\)">\(R\)</span>-module by Lemma 2.3A. A primitive <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> generates it: its annihilator is <span class="math" data-tex="\(\pi^nR\)">\(\pi^nR\)</span>, for if <span class="math" data-tex="\(a=\pi^k b\)">\(a=\pi^k b\)</span>, <span class="math" data-tex="\(k&lt;n\)">\(k&lt;n\)</span>, <span class="math" data-tex="\([b]_f\)">\([b]_f\)</span> is invertible and <span class="math" data-tex="\([\pi^k]_f(\lambda_n)\ne0\)">\([\pi^k]_f(\lambda_n)\ne0\)</span>. This gives <span class="math" data-tex="\(q^n\)">\(q^n\)</span> distinct scalar multiples, exhausting the roots. Integral power series evaluated at <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> lie in the complete field <span class="math" data-tex="\(F(\lambda_n)\)">\(F(\lambda_n)\)</span>, so all roots lie there. Galois automorphisms commute with the series, by continuity and fixed coefficients; their action injects into <span class="math" data-tex="\((R/\pi^nR)^\times\)">\((R/\pi^nR)^\times\)</span>. Both its size and the field degree are <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, proving equality and (2LT4). The constant term of the minimal polynomial yields <span class="math" data-tex="\(N(-\lambda_n)=\pi\)">\(N(-\lambda_n)=\pi\)</span>, proving the norm assertion even when <span class="math" data-tex="\(q=2,n=1\)">\(q=2,n=1\)</span> and the field is <span class="math" data-tex="\(F\)">\(F\)</span>. Canonical integral comparison maps evaluate in the same finite complete fields and preserve primitive points, which proves the assertion for arbitrary <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3C (uniformizer comparison and the explicit symbol).</strong> Put <span class="math" data-tex="\(F_\pi=\bigcup_n F_{\pi,n}\)">\(F_\pi=\bigcup_n F_{\pi,n}\)</span>, and let <span class="math" data-tex="\(F^{\mathrm{nr}}\)">\(F^{\mathrm{nr}}\)</span> be the maximal unramified extension proved in the first lesson. For <span class="math" data-tex="\(a=u\pi^m\)">\(a=u\pi^m\)</span>, <span class="math" data-tex="\(u\in R^\times\)">\(u\in R^\times\)</span>, the prescription
+<span class="math math-display" data-tex="\[
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)|_{F^{\mathrm{nr}}}
+=\operatorname{Frob}_{\mathrm{ar}}^{m},\qquad
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)(\lambda)=[u^{-1}]_f(\lambda)
+\quad(\lambda\in\Lambda_n)
+\tag{2LT6}
+\]">\[
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)|_{F^{\mathrm{nr}}}
+=\operatorname{Frob}_{\mathrm{ar}}^{m},\qquad
+\operatorname{Art}^{\mathrm{ar}}_{\pi}(a)(\lambda)=[u^{-1}]_f(\lambda)
+\quad(\lambda\in\Lambda_n)
+\tag{2LT6}
+\]</span>
+defines a continuous homomorphism on <span class="math" data-tex="\(F^{\mathrm{nr}}F_\pi/F\)">\(F^{\mathrm{nr}}F_\pi/F\)</span>. This compositum and homomorphism are independent of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The geometric convention is its inverse. This statement constructs the symbol on these explicit fields; identifying the compositum with every abelian extension still uses the finite-reciprocity and norm argument specified below.</p>
+<p><strong>Proof.</strong> Each finite division field is totally ramified, and each finite unramified field has residue degree equal to its degree. Their intersection is <span class="math" data-tex="\(F\)">\(F\)</span>; their compositum has the direct-product Galois action. Lemma 2.3B and the unramified inverse limit therefore define (2LT6), including continuity.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the valuation ring of <span class="math" data-tex="\(\widehat{F^{\mathrm{nr}}}\)">\(\widehat{F^{\mathrm{nr}}}\)</span>, and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> its arithmetic Frobenius. The value group remains <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, its uniformizer is <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, its residue field is <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>, and Frobenius extends as an isometry. These assertions follow by approximating a nonzero completion element closer than its absolute value by an element of the unramified union; it then has the same valuation and residue. On <span class="math" data-tex="\(S\)">\(S\)</span>, the maps <span class="math" data-tex="\(x\mapsto\phi x-x\)">\(x\mapsto\phi x-x\)</span> and <span class="math" data-tex="\(x\mapsto\phi x/x\)">\(x\mapsto\phi x/x\)</span> on units are onto. For the first, solve <span class="math" data-tex="\(\bar x^q-\bar x=\bar c\)">\(\bar x^q-\bar x=\bar c\)</span> in the algebraically closed residue field and correct one <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-adic digit at a time: adding <span class="math" data-tex="\(\pi^j t\)">\(\pi^j t\)</span> changes the error digit by <span class="math" data-tex="\(\bar t^q-\bar t\)">\(\bar t^q-\bar t\)</span>. For the second, first solve <span class="math" data-tex="\(\bar x^{q-1}=\bar c\ne0\)">\(\bar x^{q-1}=\bar c\ne0\)</span>, then multiply by <span class="math" data-tex="\(1+\pi^j t\)">\(1+\pi^j t\)</span>, whose Frobenius ratio changes that digit by the same additive expression. Completeness gives solutions. The fixed ring is <span class="math" data-tex="\(R\)">\(R\)</span>: subtract a residue representative in <span class="math" data-tex="\(R\)">\(R\)</span> from a fixed element, divide by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and repeat to approximate it by elements of the complete ring <span class="math" data-tex="\(R\)">\(R\)</span>. Thus the respective kernels are <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\pi&#x27;=u\pi\)">\(\pi&#x27;=u\pi\)</span>, choose <span class="math" data-tex="\(\varepsilon\in S^\times\)">\(\varepsilon\in S^\times\)</span> with <span class="math" data-tex="\(\phi\varepsilon=u\varepsilon\)">\(\phi\varepsilon=u\varepsilon\)</span>, and put <span class="math" data-tex="\(g(X)=\pi&#x27;X+X^q\)">\(g(X)=\pi&#x27;X+X^q\)</span>. We construct an integral <span class="math" data-tex="\(\theta=\varepsilon X+O(X^2)\)">\(\theta=\varepsilon X+O(X^2)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+g\circ\theta=(\phi\theta)\circ f.
+\tag{2LT7}
+\]">\[
+g\circ\theta=(\phi\theta)\circ f.
+\tag{2LT7}
+\]</span>
+If <span class="math" data-tex="\(E_d\)">\(E_d\)</span> is its degree-<span class="math" data-tex="\(d\)">\(d\)</span> error, then <span class="math" data-tex="\(E_d\in\pi S\)">\(E_d\in\pi S\)</span>: modulo <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the two composites are <span class="math" data-tex="\(\theta(X)^q\)">\(\theta(X)^q\)</span> and <span class="math" data-tex="\((\phi\theta)(X^q)\)">\((\phi\theta)(X^q)\)</span>. Adding <span class="math" data-tex="\(cX^d\)">\(cX^d\)</span> changes the error by <span class="math" data-tex="\(\pi&#x27;c-\pi^d\phi c\)">\(\pi&#x27;c-\pi^d\phi c\)</span>. For <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>, put <span class="math" data-tex="\(\alpha=\pi^d/\pi&#x27;\)">\(\alpha=\pi^d/\pi&#x27;\)</span>, of positive valuation. The unique correction is
+<span class="math math-display" data-tex="\[
+c=\sum_{j\geq0}\alpha^j\phi^j(-E_d/\pi&#x27;),
+\tag{2LT8}
+\]">\[
+c=\sum_{j\geq0}\alpha^j\phi^j(-E_d/\pi&#x27;),
+\tag{2LT8}
+\]</span>
+which converges in <span class="math" data-tex="\(S\)">\(S\)</span>. Uniqueness follows because <span class="math" data-tex="\(c=\alpha\phi c\)">\(c=\alpha\phi c\)</span> forces an indefinitely increasing valuation. This same coefficient argument works for several variables with a prescribed linear form satisfying <span class="math" data-tex="\(\pi&#x27;L=\pi\phi L\)">\(\pi&#x27;L=\pi\phi L\)</span>.</p>
+<p>The two series <span class="math" data-tex="\(\theta(F_f(X,Y))\)">\(\theta(F_f(X,Y))\)</span> and <span class="math" data-tex="\(F_g(\theta X,\theta Y)\)">\(F_g(\theta X,\theta Y)\)</span> have linear form <span class="math" data-tex="\(\varepsilon(X+Y)\)">\(\varepsilon(X+Y)\)</span> and satisfy the multivariable equation (2LT7); uniqueness identifies them. For the same reason, <span class="math" data-tex="\(\theta\circ[a]_f=[a]_g\circ\theta\)">\(\theta\circ[a]_f=[a]_g\circ\theta\)</span> for every <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>. Finally, <span class="math" data-tex="\(\phi\theta\)">\(\phi\theta\)</span> and <span class="math" data-tex="\(\theta\circ[u]_f\)">\(\theta\circ[u]_f\)</span> both satisfy (2LT7), with linear coefficient <span class="math" data-tex="\(u\varepsilon\)">\(u\varepsilon\)</span>; hence
+<span class="math math-display" data-tex="\[
+\phi\theta=\theta\circ[u]_f.
+\tag{2LT9}
+\]">\[
+\phi\theta=\theta\circ[u]_f.
+\tag{2LT9}
+\]</span>
+The unit linear coefficient gives an integral inverse, so <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is a formal-module isomorphism. Iterating (2LT7) gives <span class="math" data-tex="\(g^{\circ n}\theta=(\phi^n\theta)f^{\circ n}\)">\(g^{\circ n}\theta=(\phi^n\theta)f^{\circ n}\)</span>, so it bijects their level-<span class="math" data-tex="\(n\)">\(n\)</span> torsion.</p>
+<p>This equality over the completion descends to the algebraic fields. Indeed, a subfield <span class="math" data-tex="\(E\subset F^{\mathrm{sep}}\)">\(E\subset F^{\mathrm{sep}}\)</span> is closed in <span class="math" data-tex="\(F^{\mathrm{sep}}\)">\(F^{\mathrm{sep}}\)</span>: its fixing subgroup preserves valuation and is continuous, so it fixes every limit lying in <span class="math" data-tex="\(F^{\mathrm{sep}}\)">\(F^{\mathrm{sep}}\)</span>; the fixed-field theorem of the first lesson puts that limit in <span class="math" data-tex="\(E\)">\(E\)</span>. A value <span class="math" data-tex="\(\theta(\lambda)\)">\(\theta(\lambda)\)</span> is a limit in <span class="math" data-tex="\(F^{\mathrm{nr}}F_{\pi,n}\)">\(F^{\mathrm{nr}}F_{\pi,n}\)</span> and is algebraic, since it is a root of <span class="math" data-tex="\(g^{\circ n}\)">\(g^{\circ n}\)</span>. Thus it belongs to that field. The inverse argument gives
+<span class="math" data-tex="\(F^{\mathrm{nr}}F_{\pi,n}=F^{\mathrm{nr}}F_{\pi&#x27;,n}\)">\(F^{\mathrm{nr}}F_{\pi,n}=F^{\mathrm{nr}}F_{\pi&#x27;,n}\)</span>.</p>
+<p>For the symbols, (2LT6) makes <span class="math" data-tex="\(\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\)">\(\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\)</span> act as Frobenius on coefficients and as <span class="math" data-tex="\([u^{-1}]_f\)">\([u^{-1}]_f\)</span> on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Equations (2LT7)–(2LT9) give
+<span class="math math-display" data-tex="\[
+\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([u^{-1}]_f\lambda)=\theta(\lambda).
+\tag{2LT10}
+\]">\[
+\operatorname{Art}^{\mathrm{ar}}_\pi(\pi&#x27;)\theta(\lambda)
+=(\phi\theta)([u^{-1}]_f\lambda)=\theta(\lambda).
+\tag{2LT10}
+\]</span>
+This agrees with <span class="math" data-tex="\(\operatorname{Art}^{\mathrm{ar}}_{\pi&#x27;}(\pi&#x27;)\)">\(\operatorname{Art}^{\mathrm{ar}}_{\pi&#x27;}(\pi&#x27;)\)</span>, which fixes its division field and acts as Frobenius on the unramified field. The same comparison works for any other prime element in place of <span class="math" data-tex="\(\pi&#x27;\)">\(\pi&#x27;\)</span>; prime elements generate <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, since every unit is a ratio of two prime elements. Hence the two homomorphisms agree everywhere. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Lemmas 2.3A–2.3C reconstruct the formal modules, division fields and uniformizer comparison from <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">Milne's free <em>Class Field Theory</em>, I §2, Lemma 2.11 through Summary 2.20, and I §3, Propositions 3.4 and 3.10, Theorems 3.6 and 3.9</a>. The formal identities left to the reader in the comparison proof are supplied above. No formal-group theorem from a paid source is being imported through the earlier programme lesson.</p>
+<p>The rank-one input now has its full local prerequisite before use. The preceding Weil-group lesson, Lemmas 0.5–0.6 and Theorems 0.7 and 0.9, constructs finite reciprocity, exact abelian norm kernels, norm/transfer/conjugation functoriality, comparison with the explicit division fields, abelian cofinality and the completion theorem. Its Lemmas 0.8A–0.8C prove the same formal-module construction written here. That proof uses the cyclic norm calculation and the local invariant in both characteristics; it does not assume Hasse–Arf. We use its proved reciprocity and cofinality in the complete filtration and conductor deduction below. The earlier integer Brauer provider and its transitive free-source/public-edition verification remain a separate obligation.</p>
+<p><strong>Lemma 2.4 (units, upper groups and character conductors).</strong> Under local reciprocity, for every finite abelian <span class="math" data-tex="\(B/F\)">\(B/F\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Art}_F(U_F^0)=\operatorname{Gal}(B/F)^0,\qquad
+\operatorname{Art}_F(U_F^{\lceil u\rceil})=\operatorname{Gal}(B/F)^u\quad(u&gt;0),
+\tag{2H}
+\]">\[
+\operatorname{Art}_F(U_F^0)=\operatorname{Gal}(B/F)^0,\qquad
+\operatorname{Art}_F(U_F^{\lceil u\rceil})=\operatorname{Gal}(B/F)^u\quad(u&gt;0),
+\tag{2H}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+U_F^0=\mathcal O_F^\times,\qquad U_F^c=1+\mathfrak p_F^c\quad(c\geq1).
+\tag{2}
+\]">\[
+U_F^0=\mathcal O_F^\times,\qquad U_F^c=1+\mathfrak p_F^c\quad(c\geq1).
+\tag{2}
+\]</span>
+A smooth character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(W_F\)">\(W_F\)</span>, viewed as a character of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, has
+<span class="math math-display" data-tex="\[
+a_F(\chi)=c(\chi):=\min\{c\in\mathbf Z_{\geq0}:\chi(U_F^c)=1\}.
+\tag{2I}
+\]">\[
+a_F(\chi)=c(\chi):=\min\{c\in\mathbf Z_{\geq0}:\chi(U_F^c)=1\}.
+\tag{2I}
+\]</span>
+In particular this conductor is an integer, and a ramified character has last upper break <span class="math" data-tex="\(c(\chi)-1\)">\(c(\chi)-1\)</span>.</p>
+<p><strong>Proof.</strong> Here is the finite calculation from the explicit fields. Choose a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>, and the integral Lubin–Tate module for <span class="math" data-tex="\(f(X)=\pi X+X^q\)">\(f(X)=\pi X+X^q\)</span>. A primitive level-<span class="math" data-tex="\(n\)">\(n\)</span> division point <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a uniformizer of <span class="math" data-tex="\(F_{\pi,n}\)">\(F_{\pi,n}\)</span>, whose degree is <span class="math" data-tex="\(D_n=(q-1)q^{n-1}\)">\(D_n=(q-1)q^{n-1}\)</span>. Lemma 2.3B establishes this by applying Eisenstein to
+<span class="math" data-tex="\(\pi+(f^{\circ(n-1)}(X))^{q-1}\)">\(\pi+(f^{\circ(n-1)}(X))^{q-1}\)</span>; it counts all primitive roots and identifies the Galois action with unit scalars modulo <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span>. Write <span class="math" data-tex="\(\sigma_a(\lambda)=[a]_f(\lambda)\)">\(\sigma_a(\lambda)=[a]_f(\lambda)\)</span>. If <span class="math" data-tex="\(a-1=\pi^k b\)">\(a-1=\pi^k b\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> a unit and <span class="math" data-tex="\(0\leq k&lt;n\)">\(0\leq k&lt;n\)</span>, then the formal law <span class="math" data-tex="\(F_f(X,Y)=X+Y+XYC(X,Y)\)">\(F_f(X,Y)=X+Y+XYC(X,Y)\)</span> gives
+<span class="math math-display" data-tex="\[
+\sigma_a\lambda-\lambda
+=[a-1]_f(\lambda)\bigl(1+\lambda C(\lambda,[a-1]_f(\lambda))\bigr).
+\]">\[
+\sigma_a\lambda-\lambda
+=[a-1]_f(\lambda)\bigl(1+\lambda C(\lambda,[a-1]_f(\lambda))\bigr).
+\]</span>
+The parenthesis is a unit. The point <span class="math" data-tex="\([\pi^k]_f(\lambda)\)">\([\pi^k]_f(\lambda)\)</span> is primitive at level <span class="math" data-tex="\(n-k\)">\(n-k\)</span>, with relative ramification index <span class="math" data-tex="\(q^k\)">\(q^k\)</span>; the unit scalar <span class="math" data-tex="\([b]_f\)">\([b]_f\)</span> has unit linear coefficient and integral higher coefficients, so preserves its positive valuation. Lemma 1.1 and (1C) thus give
+<span class="math" data-tex="\(i(\sigma_a)=q^k\)">\(i(\sigma_a)=q^k\)</span>.
+Put <span class="math" data-tex="\(b_k=q^k-1\)">\(b_k=q^k-1\)</span>. On <span class="math" data-tex="\(b_{k-1}&lt;t\leq b_k\)">\(b_{k-1}&lt;t\leq b_k\)</span>, the lower group is the image of <span class="math" data-tex="\(U_F^k\)">\(U_F^k\)</span>, of order <span class="math" data-tex="\(q^{n-k}\)">\(q^{n-k}\)</span>, for <span class="math" data-tex="\(1\leq k&lt;n\)">\(1\leq k&lt;n\)</span>. The interval length and its index in inertia both equal <span class="math" data-tex="\((q-1)q^{k-1}\)">\((q-1)q^{k-1}\)</span>. Hence each such interval has upper length one, and <span class="math" data-tex="\(\varphi(b_k)=k\)">\(\varphi(b_k)=k\)</span>. Beyond <span class="math" data-tex="\(b_{n-1}\)">\(b_{n-1}\)</span> the group is trivial. This proves (2H) on <span class="math" data-tex="\(F_{\pi,n}\)">\(F_{\pi,n}\)</span>, including the convention at a jump. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> all positive groups are already trivial; for <span class="math" data-tex="\(q=2,n=1\)">\(q=2,n=1\)</span> the field itself is trivial.</p>
+<p>Lemma 2.3C sends units to inverse scalar actions for its arithmetic convention. Our geometric convention inverts the symbol, preserving the image of every unit subgroup. An unramified degree-<span class="math" data-tex="\(d\)">\(d\)</span> compositum <span class="math" data-tex="\(F_dF_{\pi,n}\)">\(F_dF_{\pi,n}\)</span> has the same normalized valuation on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and the same inertia motions, so has the same nonnegative upper groups. Its unramified factor has no inertial action. The actual earlier existence proof puts every finite abelian <span class="math" data-tex="\(B\)">\(B\)</span> in one such compositum: its open norm group contains <span class="math" data-tex="\(\langle\pi^d\rangle U_F^n\)">\(\langle\pi^d\rangle U_F^n\)</span>, the explicitly computed norm group of the compositum, and the proved norm/field inclusion correspondence gives the containment. Lemma 1.6 then passes (2H) to <span class="math" data-tex="\(B\)">\(B\)</span>. This construction proves abelian upper jumps integral in both characteristics, without presuming that conclusion in the containment proof.</p>
+<p>For a finite-image line, pass to its abelian quotient using Lemma 1.6. If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, its inertia action is trivial and (3) gives zero. If <span class="math" data-tex="\(c\geq1\)">\(c\geq1\)</span>, it is nontrivial on <span class="math" data-tex="\(U_F^{c-1}\)">\(U_F^{c-1}\)</span> and trivial on <span class="math" data-tex="\(U_F^c\)">\(U_F^c\)</span>. Formula (2H) says that its fixed space is zero for <span class="math" data-tex="\(0&lt;u\leq c-1\)">\(0&lt;u\leq c-1\)</span> and its whole line for <span class="math" data-tex="\(u&gt;c-1\)">\(u&gt;c-1\)</span>, with a separate zero inertia-fixed space. The integral in (3) is <span class="math" data-tex="\(c-1\)">\(c-1\)</span>, and <span class="math" data-tex="\(a=1+(c-1)=c\)">\(a=1+(c-1)=c\)</span>. For an arbitrary smooth line, its inertia image is finite and a suitable unramified twist makes its Frobenius value finite order by Theorem 2.2 of the preceding lesson. Theorem 2.1 preserves its conductor, and the twist is trivial on units. The same computation proves (2I). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The free author text <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">Milne, <em>Class Field Theory</em>, I Proposition 4.1 and Example 4.2, printed pp.45–46</a> supplies the explicit-field calculation as reading material. The formal-module and explicit-symbol proofs are written in Lemmas 2.3A–2.3C; finite reciprocity and abelian cofinality retain the earlier proof obligations specified above. In particular its separate I §4 proof of local maximality uses Hasse–Arf; using that proof to derive (2I) here would be circular. The earlier programme existence proof specified above takes the independent finite-reciprocity route.</p>
+<p><strong>Lemma 2.5 (the precise earlier Brauer input).</strong> For a finite group <span class="math" data-tex="\(G\)">\(G\)</span>, every complex character has an expression
+<span class="math math-display" data-tex="\[
+\chi=\sum_r n_r\operatorname{Ind}_{H_r}^G\theta_r,
+\qquad n_r\in\mathbf Z,\qquad \dim\theta_r=1.
+\tag{2J}
+\]">\[
+\chi=\sum_r n_r\operatorname{Ind}_{H_r}^G\theta_r,
+\qquad n_r\in\mathbf Z,\qquad \dim\theta_r=1.
+\tag{2J}
+\]</span>
+The integers can have either sign, and the subgroups need not be normal.</p>
+<p>This is the actually proved Theorem 5.1 of the earlier programme lesson <em>Brauer's induction theorem</em>. Its §§1–5 establish the needed stronger, integral conclusion: §1 proves monomiality of nilpotent groups through abelian normal weights; §§3–4 prove local induction at each prime and an integer determinant descent producing <span class="math" data-tex="\(n_p\equiv1\pmod p\)">\(n_p\equiv1\pmod p\)</span>; §5 combines those integers by Bezout and converts inductions from elementary groups into inductions from lines. Thus it supplies (2J), rather than only rational Artin induction or a statement about arbitrary characters on subgroups. The proof was read with its hypotheses and its earlier character/induction dependencies. The source-origin and public-edition check for that transitive programme chain remains part of the same prerequisite verification stated above. The verified free <a href="https://www.math.toronto.edu/murnaghan/courses/mat445/artinbrauer.pdf">Kramár, §3, Lemma 5 and Theorem 2</a> is a comparison material for integer induction, not a substitute for the actual programme proof.</p>
+<p><strong>Theorem 2.6 (integrality for every smooth Weil representation).</strong> For every finite-dimensional smooth complex <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+a_F(V)\in\mathbf Z_{\geq0},\qquad
+\operatorname{sw}_F(V)\in\mathbf Z_{\geq0}.
+\tag{2K}
+\]">\[
+a_F(V)\in\mathbf Z_{\geq0},\qquad
+\operatorname{sw}_F(V)\in\mathbf Z_{\geq0}.
+\tag{2K}
+\]</span>
+Its ideal conductor is therefore <span class="math" data-tex="\(\mathfrak p_F^{a_F(V)}\)">\(\mathfrak p_F^{a_F(V)}\)</span>.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(V\)">\(V\)</span> factor through a finite <span class="math" data-tex="\(G=\operatorname{Gal}(L/F)\)">\(G=\operatorname{Gal}(L/F)\)</span>. Apply (2J) to its character. For <span class="math" data-tex="\(E_r=L^{H_r}\)">\(E_r=L^{H_r}\)</span>, Proposition 2.3 and Lemma 2.4 give
+<span class="math math-display" data-tex="\[
+a_F(V)=\sum_r n_r\bigl(\delta_{E_r/F}+f(E_r/F)a_{E_r}(\theta_r)\bigr)\in\mathbf Z.
+\]">\[
+a_F(V)=\sum_r n_r\bigl(\delta_{E_r/F}+f(E_r/F)a_{E_r}(\theta_r)\bigr)\in\mathbf Z.
+\]</span>
+The pairing of Lemma 2.2 is linear on characters, so negative coefficients cause no difficulty. The integers on the right come from trace-dual discriminants and the proved rank-one conductor calculation. Formula (4) proves nonnegativity for an actual representation. Subtracting the integer <span class="math" data-tex="\(\operatorname{codim}V^{I_F}\)">\(\operatorname{codim}V^{I_F}\)</span> shows that its Swan conductor is an integer too; its defining integral proves nonnegativity.</p>
+<p>A finite-dimensional representation has a finite composition series, by the dimension argument and Jordan–Hölder proof in Lemma 0A.2 of the first lesson. Each irreducible smooth Weil constituent becomes finite-image after an unramified twist, by Theorem 2.2 of the preceding lesson; its finite quotient extends to <span class="math" data-tex="\(G_F\)">\(G_F\)</span> by that lesson's Proposition 1.1. Theorem 2.1 identifies its conductor with the finite-image conductor just proved. Additivity then proves both assertions for <span class="math" data-tex="\(V\)">\(V\)</span>, including nonsemisimple Frobenius actions. The ideal notation is now legitimate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-tame-ramification-and-a-single-break">3. Tame ramification and a single break</h2>
+<p><strong>Theorem 3.1.</strong> The Swan conductor is zero if and only if wild inertia acts trivially. In that case
+<span class="math math-display" data-tex="\[
+a_F(V)=\dim V-\dim V^{I_F}.
+\tag{5}
+\]">\[
+a_F(V)=\dim V-\dim V^{I_F}.
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> If wild inertia is trivial, every positive upper group acts trivially, so the integral in (3) is zero. Conversely suppose wild inertia has a nontrivial image. In a finite quotient computing the action, <span class="math" data-tex="\(G_1\)">\(G_1\)</span> then acts nontrivially. Hence <span class="math" data-tex="\(\operatorname{codim}V^{G_1}&gt;0\)">\(\operatorname{codim}V^{G_1}&gt;0\)</span>. The first positive lower interval has positive upper length <span class="math" data-tex="\(|G_1|/|G_0|\)">\(|G_1|/|G_0|\)</span>, and contributes that length times a positive codimension to (4). All other terms are nonnegative, so the Swan conductor is positive. Substitution in (3) proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an unramified representation, <span class="math" data-tex="\(V^{I_F}=V\)">\(V^{I_F}=V\)</span>, so <span class="math" data-tex="\(a_F(V)=0\)">\(a_F(V)=0\)</span>. A tame representation of dimension two has conductor <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, or <span class="math" data-tex="\(2\)">\(2\)</span>, according as its inertia-fixed space has dimension <span class="math" data-tex="\(2,1\)">\(2,1\)</span>, or <span class="math" data-tex="\(0\)">\(0\)</span>. Dimension alone is insufficient to choose among these values. For example <span class="math" data-tex="\(1\oplus\theta\)">\(1\oplus\theta\)</span>, with <span class="math" data-tex="\(\theta\)">\(\theta\)</span> a nontrivial tame character, has conductor one, while <span class="math" data-tex="\(\theta\oplus\theta^{-1}\)">\(\theta\oplus\theta^{-1}\)</span> has conductor two.</p>
+<p><strong>Proposition 3.2 (the break of an irreducible).</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is irreducible, ramified, and of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(V^{I_F}=0\)">\(V^{I_F}=0\)</span>. There is a unique nonnegative upper break <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> such that, apart from the convention at the endpoint, the upper fixed spaces are zero below <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and all of <span class="math" data-tex="\(V\)">\(V\)</span> above it. Moreover
+<span class="math math-display" data-tex="\[
+\operatorname{sw}_F(V)=n\lambda,
+\qquad a_F(V)=n(1+\lambda).
+\tag{6}
+\]">\[
+\operatorname{sw}_F(V)=n\lambda,
+\qquad a_F(V)=n(1+\lambda).
+\tag{6}
+\]</span>
+For a tame ramified irreducible, <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>.</p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(G_F^u\)">\(G_F^u\)</span> and <span class="math" data-tex="\(I_F\)">\(I_F\)</span> is normal in <span class="math" data-tex="\(G_F\)">\(G_F\)</span>, so its fixed space is preserved by <span class="math" data-tex="\(W_F\)">\(W_F\)</span>. Irreducibility makes it either zero or <span class="math" data-tex="\(V\)">\(V\)</span>. Inertia fixes all of <span class="math" data-tex="\(V\)">\(V\)</span> only for an unramified representation, so here its fixed space is zero. As <span class="math" data-tex="\(u\)">\(u\)</span> increases the upper groups decrease, and the fixed spaces increase. A finite quotient gives only finitely many changes and trivial action for sufficiently large <span class="math" data-tex="\(u\)">\(u\)</span>. There can therefore be only one transition from zero to <span class="math" data-tex="\(V\)">\(V\)</span> at a nonnegative number <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. In the tame case every positive upper group is already trivial, so the transition is at zero. The integrand in (3) is <span class="math" data-tex="\(n\)">\(n\)</span> on an interval of length <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and zero afterwards; the endpoint has measure zero. This proves (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An irreducible representation can have a fractional break, but (6) and Theorem 2.6 imply <span class="math" data-tex="\(n\lambda=a_F(V)-n\in\mathbb Z\)">\(n\lambda=a_F(V)-n\in\mathbb Z\)</span>. For a character Lemma 2.4 already proved the integral-break conclusion and <span class="math" data-tex="\(\lambda=c-1\)">\(\lambda=c-1\)</span> for conductor <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<h2 id="4-the-conductor-of-induction">4. The conductor of induction</h2>
+<p>We distinguish the <strong>different ideal</strong> <span class="math" data-tex="\(\mathfrak D_{E/F}\subset\mathcal O_E\)">\(\mathfrak D_{E/F}\subset\mathcal O_E\)</span> and the <strong>discriminant ideal</strong>
+<span class="math math-display" data-tex="\[
+\mathfrak d_{E/F}=N_{E/F}(\mathfrak D_{E/F})\subset\mathcal O_F.
+\]">\[
+\mathfrak d_{E/F}=N_{E/F}(\mathfrak D_{E/F})\subset\mathcal O_F.
+\]</span>
+Write <span class="math" data-tex="\(d_{E/F}=v_E(\mathfrak D_{E/F})\)">\(d_{E/F}=v_E(\mathfrak D_{E/F})\)</span>, <span class="math" data-tex="\(\delta_{E/F}=v_F(\mathfrak d_{E/F})\)">\(\delta_{E/F}=v_F(\mathfrak d_{E/F})\)</span>, and <span class="math" data-tex="\(f=f(E/F)\)">\(f=f(E/F)\)</span>. Valuations of ideals mean their exponents, with <span class="math" data-tex="\(v_F(\varpi_F)=v_E(\varpi_E)=1\)">\(v_F(\varpi_F)=v_E(\varpi_E)=1\)</span>. Thus <span class="math" data-tex="\(\delta_{E/F}=f d_{E/F}\)">\(\delta_{E/F}=f d_{E/F}\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(E/F\)">\(E/F\)</span> finite separable and <span class="math" data-tex="\(V\)">\(V\)</span> a smooth representation of <span class="math" data-tex="\(W_E\)">\(W_E\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>,
+<span class="math math-display" data-tex="\[
+a_F\!\left(\operatorname{Ind}_{W_E}^{W_F}V\right)
+=d\,\delta_{E/F}+f(E/F)a_E(V).
+\tag{7}
+\]">\[
+a_F\!\left(\operatorname{Ind}_{W_E}^{W_F}V\right)
+=d\,\delta_{E/F}+f(E/F)a_E(V).
+\tag{7}
+\]</span>
+No irreducibility hypothesis is required.</p>
+<p><strong>Proof for finite-image representations.</strong> A finite-image smooth representation of <span class="math" data-tex="\(W_E\)">\(W_E\)</span> extends to <span class="math" data-tex="\(G_E\)">\(G_E\)</span> by Proposition 1.1 of the preceding lesson. Take the normal closure over <span class="math" data-tex="\(F\)">\(F\)</span> of a finite Galois field killing that representation; it is a finite Galois <span class="math" data-tex="\(L/F\)">\(L/F\)</span> containing <span class="math" data-tex="\(E\)">\(E\)</span>, by Lemma 0B.1 of the first lesson. With <span class="math" data-tex="\(G=\operatorname{Gal}(L/F)\)">\(G=\operatorname{Gal}(L/F)\)</span> and <span class="math" data-tex="\(H=\operatorname{Gal}(L/E)\)">\(H=\operatorname{Gal}(L/E)\)</span>, the finite-index tensor induction has exactly the finite quotient model <span class="math" data-tex="\(\operatorname{Ind}_H^G V\)">\(\operatorname{Ind}_H^G V\)</span>. Proposition 2.3, proved before integrality, gives (7). Its class-function identity is
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_H^G A_G=f(E/F)A_H+\delta_{E/F}\operatorname{reg}_H.
+\tag{8}
+\]">\[
+\operatorname{Res}_H^G A_G=f(E/F)A_H+\delta_{E/F}\operatorname{reg}_H.
+\tag{8}
+\]</span>
+Thus both the nonidentity motion calculation and the correction at identity have already been proved using trace-dual transitivity; neither is an additional input here.</p>
+<p><strong>Reduction of the general case.</strong> Induction is exact in the finite-index tensor model: it is a direct sum of copies of the underlying vector space. Theorem 2.1 thus reduces (7) to irreducible constituents of <span class="math" data-tex="\(V\)">\(V\)</span>. Each constituent is a finite-image representation twisted by an unramified character <span class="math" data-tex="\(\eta_E\)">\(\eta_E\)</span>. Choose an unramified character <span class="math" data-tex="\(\eta_F\)">\(\eta_F\)</span> whose Frobenius value has <span class="math" data-tex="\(f(E/F)\)">\(f(E/F)\)</span>-th power equal to <span class="math" data-tex="\(\eta_E(\Phi_E)\)">\(\eta_E(\Phi_E)\)</span>. Then <span class="math" data-tex="\(\eta_F|_{W_E}=\eta_E\)">\(\eta_F|_{W_E}=\eta_E\)</span>, since both are trivial on inertia and <span class="math" data-tex="\(v_F|_{W_E}=f v_E\)">\(v_F|_{W_E}=f v_E\)</span>. The tensor model gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(V_0\otimes\eta_F|_{W_E})
+\simeq(\operatorname{Ind}V_0)\otimes\eta_F.
+\]">\[
+\operatorname{Ind}(V_0\otimes\eta_F|_{W_E})
+\simeq(\operatorname{Ind}V_0)\otimes\eta_F.
+\]</span>
+Explicitly, the map sends <span class="math" data-tex="\(g\otimes v\)">\(g\otimes v\)</span> on the left to <span class="math" data-tex="\(\eta_F(g)(g\otimes v)\)">\(\eta_F(g)(g\otimes v)\)</span> on the right. Replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(gh\)">\(gh\)</span>, <span class="math" data-tex="\(h\in W_E\)">\(h\in W_E\)</span>, inserts exactly the scalar <span class="math" data-tex="\(\eta_F(h)\)">\(\eta_F(h)\)</span> in the tensor relation, and left multiplication by <span class="math" data-tex="\(w\)">\(w\)</span> inserts <span class="math" data-tex="\(\eta_F(w)\)">\(\eta_F(w)\)</span>, the twist on the right. Thus the map is well defined and equivariant; replacing the scalar by its inverse gives its inverse.
+Unramified twists leave both conductors unchanged. The finite-image case applies to <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, and additivity completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both sides of (7) are additive on the Grothendieck group, so the formula also holds for virtual representations. In particular, for virtual dimension zero the discriminant term vanishes and the conductor of induction is the residue degree times the original conductor. This statement follows from the full formula; it does not require choosing a presentation by actual representations of dimension zero.</p>
+<h2 id="5-quadratic-examples">5. Quadratic examples</h2>
+<p>If <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is unramified quadratic, then <span class="math" data-tex="\(f=2\)">\(f=2\)</span> and <span class="math" data-tex="\(\delta_{E/F}=0\)">\(\delta_{E/F}=0\)</span>. For a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of conductor <span class="math" data-tex="\(c\)">\(c\)</span>, (7) gives
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}\chi)=2c.
+\tag{9}
+\]">\[
+a_F(\operatorname{Ind}\chi)=2c.
+\tag{9}
+\]</span>
+For <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, extend <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to an unramified character <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> by choosing a square root of its Frobenius value. Then <span class="math" data-tex="\(\operatorname{Ind}\chi=\mu\otimes\operatorname{Ind}1\)">\(\operatorname{Ind}\chi=\mu\otimes\operatorname{Ind}1\)</span>, and the permutation representation of the order-two quotient splits into its constant and sign lines. Both lines are unramified, so its conductor is zero. For a nontrivial tame character with <span class="math" data-tex="\(\chi\ne\chi^\sigma\)">\(\chi\ne\chi^\sigma\)</span>, restriction of the induction to the normal index-two subgroup <span class="math" data-tex="\(W_E\)">\(W_E\)</span> is <span class="math" data-tex="\(\chi\oplus\chi^\sigma\)">\(\chi\oplus\chi^\sigma\)</span>. A group element separating these two character values has two distinct eigenvalues; every invariant subspace is consequently a sum of the two character lines. The outside coset interchanges them, so the induction is irreducible. Since unramified base change identifies the two inertia groups, each inertia line is nontrivial; there is no inertia-fixed vector. Formula (5) gives two, agreeing with <span class="math" data-tex="\(c=1\)">\(c=1\)</span> in (9).</p>
+<p>If <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is tamely ramified quadratic, the residue characteristic is odd, <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, and the different exponent is <span class="math" data-tex="\(e-1=1\)">\(e-1=1\)</span>, so <span class="math" data-tex="\(\delta_{E/F}=1\)">\(\delta_{E/F}=1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}\chi)=1+a_E(\chi).
+\tag{10}
+\]">\[
+a_F(\operatorname{Ind}\chi)=1+a_E(\chi).
+\tag{10}
+\]</span>
+For an unramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, the induction is reducible. In fact choose an unramified character <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> restricting to <span class="math" data-tex="\(\chi\)">\(\chi\)</span> (here the residue degree is one), and use
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}\chi=\mu\otimes\operatorname{Ind}1
+=\mu\oplus\mu\omega_{E/F}.
+\]">\[
+\operatorname{Ind}\chi=\mu\otimes\operatorname{Ind}1
+=\mu\oplus\mu\omega_{E/F}.
+\]</span>
+The quadratic character is nontrivial on tame inertia and has conductor one; <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has conductor zero. Additivity gives one, exactly as in (10). The discriminant contribution therefore cannot be discarded on the grounds that the inducing character is unramified.</p>
+<p>The unit characters in the exercises can be constructed without an extension-of-characters assumption. For every local field <span class="math" data-tex="\(K\)">\(K\)</span> of residue cardinality <span class="math" data-tex="\(q\)">\(q\)</span>, Hensel's lemma lifts each nonzero residue uniquely to a root of <span class="math" data-tex="\(X^{q-1}-1\)">\(X^{q-1}-1\)</span>: the derivative is a unit. Uniqueness makes these lifts a multiplicative subgroup <span class="math" data-tex="\(\mu_{q-1}(K)\)">\(\mu_{q-1}(K)\)</span> mapped isomorphically onto <span class="math" data-tex="\(k_K^\times\)">\(k_K^\times\)</span>. Dividing a unit by its lift gives a principal unit, uniquely. Consequently
+<span class="math math-display" data-tex="\[
+K^\times=\pi_K^{\mathbf Z}\times\mu_{q-1}(K)\times U_K^1.
+\tag{11}
+\]">\[
+K^\times=\pi_K^{\mathbf Z}\times\mu_{q-1}(K)\times U_K^1.
+\tag{11}
+\]</span>
+Here the valuation gives the first factor, and the two unit factors intersect only in identity. For every <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span>, multiplication modulo <span class="math" data-tex="\(\mathfrak p_K^{j+1}\)">\(\mathfrak p_K^{j+1}\)</span> proves
+<span class="math math-display" data-tex="\[
+U_K^j/U_K^{j+1}\simeq(k_K,+),\qquad
+1+a\pi_K^j\longmapsto\bar a,
+\tag{12}
+\]">\[
+U_K^j/U_K^{j+1}\simeq(k_K,+),\qquad
+1+a\pi_K^j\longmapsto\bar a,
+\tag{12}
+\]</span>
+because products of two correction terms lie in <span class="math" data-tex="\(\mathfrak p_K^{2j}\subseteq\mathfrak p_K^{j+1}\)">\(\mathfrak p_K^{2j}\subseteq\mathfrak p_K^{j+1}\)</span>. These explicit decompositions justify each character extended by prescribing its value on a uniformizer and residue roots.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Compute the conductor of an unramified representation and of a tame representation of dimension two. Give tame examples with every possible value.</p>
+<p><strong>Solution.</strong> An unramified representation has full inertia-fixed space and zero Swan integral, so its conductor is zero. In dimension two, (5) gives <span class="math" data-tex="\(a=2-\dim V^{I_F}\in\{0,1,2\}\)">\(a=2-\dim V^{I_F}\in\{0,1,2\}\)</span>. The examples <span class="math" data-tex="\(1\oplus1\)">\(1\oplus1\)</span>, <span class="math" data-tex="\(1\oplus\theta\)">\(1\oplus\theta\)</span>, and <span class="math" data-tex="\(\theta\oplus\theta^{-1}\)">\(\theta\oplus\theta^{-1}\)</span>, for a nontrivial tame character <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, give zero, one, and two. Such a character exists, for example over <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>, by taking the nontrivial character of <span class="math" data-tex="\(\mathbb F_3^\times\)">\(\mathbb F_3^\times\)</span> and making it trivial on the uniformizer and on principal units. The last example still has no fixed vector if <span class="math" data-tex="\(\theta=\theta^{-1}\)">\(\theta=\theta^{-1}\)</span>.</p>
+<p><strong>Exercise 6.2 (medium).</strong> Derive the induction formula from Artin characters. Explain why the coefficient of <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> is <span class="math" data-tex="\(\delta_{E/F}\)">\(\delta_{E/F}\)</span>, rather than the different exponent without its residue-degree factor.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(G=\operatorname{Gal}(L/F)\)">\(G=\operatorname{Gal}(L/F)\)</span> and <span class="math" data-tex="\(H=\operatorname{Gal}(L/E)\)">\(H=\operatorname{Gal}(L/E)\)</span>, the equality of the ramification functions on <span class="math" data-tex="\(H\)">\(H\)</span> gives <span class="math" data-tex="\(A_G|_H=f(E/F)A_H\)">\(A_G|_H=f(E/F)A_H\)</span> away from one. At one, transitivity of the different gives the correction <span class="math" data-tex="\(f(E/F)d_{E/F}|H|\)">\(f(E/F)d_{E/F}|H|\)</span>. Hence the missing term is <span class="math" data-tex="\(f(E/F)d_{E/F}\operatorname{reg}_H=\delta_{E/F}\operatorname{reg}_H\)">\(f(E/F)d_{E/F}\operatorname{reg}_H=\delta_{E/F}\operatorname{reg}_H\)</span>. Pair with the character of <span class="math" data-tex="\(V\)">\(V\)</span> and use Frobenius reciprocity and the dimension pairing with the regular character. This gives (7) for finite image. Unramified twists and a composition series reduce every smooth representation to that case, exactly as in the last paragraph of Theorem 4.1. The norm of <span class="math" data-tex="\(\mathfrak p_E\)">\(\mathfrak p_E\)</span> is <span class="math" data-tex="\(\mathfrak p_F^f\)">\(\mathfrak p_F^f\)</span>; consequently the discriminant exponent is <span class="math" data-tex="\(f d_{E/F}\)">\(f d_{E/F}\)</span>, which explains the coefficient.</p>
+<p><strong>Exercise 6.3 (medium).</strong> Let <span class="math" data-tex="\(F=\mathbb Q_3\)">\(F=\mathbb Q_3\)</span> and <span class="math" data-tex="\(E=F(\sqrt{-3})\)">\(E=F(\sqrt{-3})\)</span>. Show that <span class="math" data-tex="\(a_F(\operatorname{Ind}\chi)=1+a_E(\chi)\)">\(a_F(\operatorname{Ind}\chi)=1+a_E(\chi)\)</span>, and determine all possible values when <span class="math" data-tex="\(a_E(\chi)\le2\)">\(a_E(\chi)\le2\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(\pi=\sqrt{-3}\)">\(\pi=\sqrt{-3}\)</span>. The polynomial <span class="math" data-tex="\(X^2+3\)">\(X^2+3\)</span> is Eisenstein, so <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is totally ramified quadratic with residue degree one and uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Its ramification index two is prime to three, hence the extension is tame. Alternatively its different is generated by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, with valuation one in <span class="math" data-tex="\(E\)">\(E\)</span>. Thus <span class="math" data-tex="\(\delta_{E/F}=1\)">\(\delta_{E/F}=1\)</span>, proving the formula.</p>
+<p>The possible character conductors are <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, and all occur. For zero take the trivial character. For one take the nontrivial character of <span class="math" data-tex="\(\mathcal O_E^\times/U_E^1\simeq\mathbb F_3^\times\)">\(\mathcal O_E^\times/U_E^1\simeq\mathbb F_3^\times\)</span>, trivial on <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. For two take a character nontrivial on
+<span class="math math-display" data-tex="\[
+U_E^1/U_E^2\simeq(\mathbb F_3,+),\qquad
+1+a\pi\longmapsto\bar a.
+\]">\[
+U_E^1/U_E^2\simeq(\mathbb F_3,+),\qquad
+1+a\pi\longmapsto\bar a.
+\]</span>
+The map is additive because the product of two such units has coefficient <span class="math" data-tex="\(a+b\)">\(a+b\)</span> modulo <span class="math" data-tex="\(\pi^2\)">\(\pi^2\)</span>. Choose <span class="math" data-tex="\(\bar a\mapsto\exp(2\pi i\bar a/3)\)">\(\bar a\mapsto\exp(2\pi i\bar a/3)\)</span>, extend trivially on <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, and set its value on <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to one. The unit quotient is the product of that sign group and the indicated principal-unit quotient, so this is a character trivial on <span class="math" data-tex="\(U_E^2\)">\(U_E^2\)</span> and nontrivial on <span class="math" data-tex="\(U_E^1\)">\(U_E^1\)</span>. The induced conductors are therefore exactly <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span>. The extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> itself is tame; a conductor-two character of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span> nevertheless has wild ramification.</p>
+<p><strong>Exercise 6.4 (medium).</strong> Prove that zero Swan conductor is equivalent to tameness. Give a character of <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span> with Swan conductor one.</p>
+<p><strong>Solution.</strong> The nonnegative lower sum in (4) vanishes when every positive ramification group acts trivially. Conversely a nontrivial wild image makes the <span class="math" data-tex="\(G_1\)">\(G_1\)</span> term strictly positive, proving the equivalence. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, use
+<span class="math math-display" data-tex="\[
+\mathbb Q_p^\times=p^{\mathbb Z}\times\mu_{p-1}\times(1+p\mathbb Z_p).
+\]">\[
+\mathbb Q_p^\times=p^{\mathbb Z}\times\mu_{p-1}\times(1+p\mathbb Z_p).
+\]</span>
+Take a character trivial on the first two factors and on <span class="math" data-tex="\(1+p^2\mathbb Z_p\)">\(1+p^2\mathbb Z_p\)</span>, with
+<span class="math" data-tex="\(\chi(1+pa)=\exp(2\pi i\bar a/p)\)">\(\chi(1+pa)=\exp(2\pi i\bar a/p)\)</span>. Multiplication modulo <span class="math" data-tex="\(p^2\)">\(p^2\)</span> makes this a character of <span class="math" data-tex="\(U^1/U^2\)">\(U^1/U^2\)</span>; its conductor is two, its inertia-fixed space is zero, and (3) gives Swan conductor <span class="math" data-tex="\(2-1=1\)">\(2-1=1\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the character of <span class="math" data-tex="\(\mathbb Z_2^\times\)">\(\mathbb Z_2^\times\)</span> given by <span class="math" data-tex="\(\chi(u)=1\)">\(\chi(u)=1\)</span> for <span class="math" data-tex="\(u\equiv1\pmod4\)">\(u\equiv1\pmod4\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(u\equiv3\pmod4\)">\(u\equiv3\pmod4\)</span>, extended by <span class="math" data-tex="\(\chi(2)=1\)">\(\chi(2)=1\)</span>, also has conductor two and Swan conductor one. Inversion of reciprocity does not change these conductor computations.</p>
+<p><strong>Exercise 6.5 (hard).</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a ramified irreducible smooth representation of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Prove it has a single upper break and deduce its conductor. What constraint does integrality impose on the break?</p>
+<p><strong>Solution.</strong> Normality of the absolute upper groups makes every fixed space a <span class="math" data-tex="\(W_F\)">\(W_F\)</span>-subrepresentation. Irreducibility allows only zero and <span class="math" data-tex="\(V\)">\(V\)</span>. Inertia cannot fix all of <span class="math" data-tex="\(V\)">\(V\)</span> because the representation is ramified. The increasing family of fixed spaces eventually equals <span class="math" data-tex="\(V\)">\(V\)</span> and has finitely many transitions after passage to a finite inertia quotient, so it makes exactly one transition. Call its upper index <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, taking <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> for a tame representation. The Swan integrand equals <span class="math" data-tex="\(n\)">\(n\)</span> for an interval of length <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and zero afterwards. Hence <span class="math" data-tex="\(\operatorname{sw}=n\lambda\)">\(\operatorname{sw}=n\lambda\)</span> and <span class="math" data-tex="\(a=n+n\lambda\)">\(a=n+n\lambda\)</span>. Theorem 2.6 was proved before the single-break assertion, and gives <span class="math" data-tex="\(a\in\mathbf Z\)">\(a\in\mathbf Z\)</span>. Hence <span class="math" data-tex="\(n\lambda=a-n\)">\(n\lambda=a-n\)</span> is an integer too. This does not imply that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> itself is an integer for <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>.</p>
+<h2 id="proof-dependencies-and-free-reading-materials">Proof dependencies and free reading materials</h2>
+<p>The local proof chain is explicit: Lemmas 1.1–1.6 establish integral generators, lower groups, finite wild inertia, the derivative different, trace-dual transitivity, the residue factor in discriminants, Hilbert's formula and Herbrand's quotient theorem. Lemma 2.2 proves the character pairing and (2D)–(2E) prove its induction adjunction. Proposition 2.3 proves finite induction before Lemma 2.4 supplies the rank-one integer and unit-filtration calculation. The actually written earlier integer Brauer proof specified in Lemma 2.5 then proves Theorem 2.6. Only afterward are ideal conductors and single-break integrality used. Theorem 4.1 handles arbitrary smooth representations and virtual representations, and all five exercise solutions use this ordered chain.</p>
+<p>The formal-module, division-field and uniformizer-comparison constructions used inside Lemma 2.4 are proved here in Lemmas 2.3A–2.3C. Explicit finite reciprocity and abelian cofinality retain the actual earlier programme providers specified in §2B, whose transitive free-primary chain is unresolved. The integer Brauer proof is also actually written. Their transitive free-source provenance and current public class-field/finite-group editions remain to be verified by the programme revision. Current accessibility of the separate local-fields edition is verified; the privately fetched earlier combined repository does not establish public accessibility of its other courses. These outstanding provenance/access checks prevent a claim that the full lesson already meets every free-source prerequisite requirement. No conductor for a pair with a monodromy operator has yet been defined; that extra term is handled in the Weil–Deligne lesson.</p>
+<p>The following freely accessible human-authored sources were read as materials. Their citations fix definitions and conventions; the proofs and exact earlier proof providers above carry the mathematical obligations.</p>
+<ul>
+<li><strong>J. S. Milne</strong>, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, Chapter 7, especially Theorem 7.58 and Corollary 7.59</a>, for inertia, uniformizer motion and tame graded groups. The trace-dual and tower algebra needed here is proved in Lemmas 1.3–1.4.</li>
+<li><strong>J. S. Milne</strong>, <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf"><em>Class Field Theory</em>, I Proposition 4.1 and Example 4.2, printed pp.45–46</a>, for the explicit Lubin–Tate ramification calculation. Lemma 2.4 gives the independent conductor deduction with its noncircular programme existence prerequisite specified.</li>
+<li><strong>The Stacks project</strong>, <a href="https://stacks.math.columbia.edu/tag/0BW0">§49.8, Tag 0BW0, especially Lemma 49.8.2</a>, for the identification of the complementary module with the trace dual. Lemmas 1.3–1.4 prove the specific derivative and tower results used here.</li>
+<li><strong>J. Kramár</strong>, <a href="https://www.math.toronto.edu/murnaghan/courses/mat445/artinbrauer.pdf"><em>Artin's and Brauer's Theorems on Induced Characters</em>, §3, Lemma 5 and Theorem 2, pp.6–7</a>, for integral elementary-subgroup induction. The stronger line-induction form actually used is supplied by the earlier programme proof identified in Lemma 2.5, including its nilpotent monomiality argument.</li>
+<li><strong>Pierre Deligne</strong>, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, freely accessible IAS author text, §1.5, printed p.510, and §4.5, printed pp.537–538</a>, for virtual induction and conductor conventions. Its cited external Artin/Swan integer theorem is not used as a proof substitute: Theorem 2.6 proves the integrality needed in this lesson from the stated programme inputs.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="representations-of-weil-groups.html">← Representations of Weil groups</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="local-l-factors-and-epsilon-factors.html">Local L-factors and epsilon factors →</a></span></nav>
+<p class="small source-link"><a href="src/conductors-of-weil-group-representations.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tensor and Hom types at independent covectors · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/tensor-and-Hom-types-at-independent-covectors.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Tensor and Hom types at independent covectors</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="tensor-and-hom-types-at-independent-covectors">Tensor and Hom types at independent covectors</h1>
+<p>External products put two independent directional problems on one product manifold. Their types tensor and their normalized shifts add. External internal Hom reverses the first covector, takes derived module Hom of the coefficient types, and subtracts the first shift from the second. We prove both assertions, including the first-factor orientation degree and the case of coefficient modules of infinite rank.</p>
+<p>Use <a href="how-simple-sheaf-shifts-change-along-a-lagrangian.html">How simple-sheaf shifts change along a Lagrangian</a> for the coefficient-object normalization and type transport. Let <span class="math" data-tex="\(k\)">\(k\)</span> be a commutative ring of finite global dimension and <span class="math" data-tex="\(X_i\)">\(X_i\)</span> finite-dimensional real smooth manifolds. The input sheaves and their coefficient complexes are arbitrary bounded objects. The proofs below use the <a href="../sheaf-proof-readings/SH02-open-prerequisite-proofs.html#SH02-PRP-DF-C">derived tensor–Hom adjunction</a>, the <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-DIAGONAL">exceptional-operation identities</a>, and <a href="../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-HOMOLOGICAL-DIMENSION">duality and cohomological dimension on manifolds</a>. The constant-coefficient and closed-support comparisons needed here are given explicitly below.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text is public domain (CC0).</em></p>
+<h2 id="the-two-product-statements">The two product statements</h2>
+<p>Suppose <span class="math" data-tex="\(F_i\in D^b(k_{X_i})\)">\(F_i\in D^b(k_{X_i})\)</span> has microsupport contained near <span class="math" data-tex="\(p_i\)">\(p_i\)</span> in a smooth conic Lagrangian <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span>, and has type <span class="math" data-tex="\(L_i\in D^b(k)\)">\(L_i\in D^b(k)\)</span> with allowed shift <span class="math" data-tex="\(d_i\)">\(d_i\)</span> there. Let <span class="math" data-tex="\(q_i:X_1\times X_2\to X_i\)">\(q_i:X_1\times X_2\to X_i\)</span> be projection and write <span class="math" data-tex="\(a\)">\(a\)</span> for the cotangent-fibre antipode. Then</p>
+<span class="math math-display" data-tex="\[
+F_1\boxtimes^L F_2
+\text{ has type }L_1\otimes_k^L L_2
+\text{ with shift }d_1+d_2
+\text{ at }(p_1,p_2)\text{ along }\Lambda_1\times\Lambda_2,
+\qquad\text{(1)}
+\]">\[
+F_1\boxtimes^L F_2
+\text{ has type }L_1\otimes_k^L L_2
+\text{ with shift }d_1+d_2
+\text{ at }(p_1,p_2)\text{ along }\Lambda_1\times\Lambda_2,
+\qquad\text{(1)}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\text{ has type }R\operatorname{Hom}_k(L_1,L_2)
+\text{ with shift }d_2-d_1
+\text{ at }(p_1^a,p_2)\text{ along }\Lambda_1^a\times\Lambda_2.
+\qquad\text{(2)}
+\]">\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\text{ has type }R\operatorname{Hom}_k(L_1,L_2)
+\text{ with shift }d_2-d_1
+\text{ at }(p_1^a,p_2)\text{ along }\Lambda_1^a\times\Lambda_2.
+\qquad\text{(2)}
+\]</span>
+<p>These are local statements near the specified covectors, including zero covectors. The bounds proved below place both outputs and both coefficient types in the bounded derived category. No finite-rank coefficient hypothesis is added.</p>
+<p>The <a href="../sheaf-proof-readings/SH03-limiting-covectors-at-open-boundaries.html#external-product-microsupport">external tensor estimate</a>, (Q5)–(Q9), and <a href="../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-EXTERNAL-HOM">external Hom estimate</a>, (MO6)–(MO7), give, in the displayed argument order,</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+\operatorname{SS}(F_1\boxtimes^LF_2)
+&amp;\subset\operatorname{SS}(F_1)\times\operatorname{SS}(F_2),\\
+\operatorname{SS}\bigl(R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)\bigr)
+&amp;\subset\operatorname{SS}(F_1)^a\times\operatorname{SS}(F_2).
+\end{split}
+\qquad\text{(3)}
+\]">\[
+\begin{split}
+\operatorname{SS}(F_1\boxtimes^LF_2)
+&amp;\subset\operatorname{SS}(F_1)\times\operatorname{SS}(F_2),\\
+\operatorname{SS}\bigl(R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)\bigr)
+&amp;\subset\operatorname{SS}(F_1)^a\times\operatorname{SS}(F_2).
+\end{split}
+\qquad\text{(3)}
+\]</span>
+<p>For the Hom estimate the first input is the contravariant one: use the external Hom theorem with the factors interchanged and then permute the product factors. This places the antipode on the first covector.</p>
+<p>They also let us replace each factor by an isomorphic point-localized representative. For example a replacement cone in the first factor avoids <span class="math" data-tex="\(p_1\)">\(p_1\)</span>; the tensor cone avoids <span class="math" data-tex="\((p_1,p_2)\)">\((p_1,p_2)\)</span> by the first bound, and the contravariant Hom cone avoids <span class="math" data-tex="\((p_1^a,p_2)\)">\((p_1^a,p_2)\)</span> by the second. The exact triangles give the corresponding denominator arrows. This justifies the conormal computations that follow.</p>
+<h2 id="why-both-outputs-remain-bounded">Why both outputs remain bounded</h2>
+<p>Put <span class="math" data-tex="\(g=\operatorname{gldim}k\)">\(g=\operatorname{gldim}k\)</span>. For coefficient complexes <span class="math" data-tex="\(A\in D^{[a,b]}(k)\)">\(A\in D^{[a,b]}(k)\)</span> and <span class="math" data-tex="\(B\in D^{[c,d]}(k)\)">\(B\in D^{[c,d]}(k)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_k(A,B)\in D^{[c-b,\,d-a+g]}(k).
+\tag{H1}
+\]">\[
+R\operatorname{Hom}_k(A,B)\in D^{[c-b,\,d-a+g]}(k).
+\tag{H1}
+\]</span>
+<p>Indeed, every module has a projective resolution of length at most <span class="math" data-tex="\(g\)">\(g\)</span>, with no restriction on the cardinalities of its terms. Hence <span class="math" data-tex="\(\operatorname{Ext}^e_k(M,N)=0\)">\(\operatorname{Ext}^e_k(M,N)=0\)</span> unless <span class="math" data-tex="\(0\le e\le g\)">\(0\le e\le g\)</span>. The finite cohomology truncation triangles of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> reduce the assertion to the pairs <span class="math" data-tex="\(H^i(A)[-i]\)">\(H^i(A)[-i]\)</span>, <span class="math" data-tex="\(H^j(B)[-j]\)">\(H^j(B)[-j]\)</span>. Their derived Hom is <span class="math" data-tex="\(R\operatorname{Hom}_k(H^i(A),H^j(B))[i-j]\)">\(R\operatorname{Hom}_k(H^i(A),H^j(B))[i-j]\)</span>, whose possible degrees are <span class="math" data-tex="\(j-i+e\)">\(j-i+e\)</span>. They lie in the interval in (H1). The long exact cohomology sequences preserve that interval when the finitely many pieces are assembled. In particular, (H1) concerns the full derived module Hom, including infinite modules.</p>
+<p>For sheaves on an <span class="math" data-tex="\(n\)">\(n\)</span>-manifold the corresponding sufficient bound is</p>
+<span class="math math-display" data-tex="\[
+E\in D^{[a,b]}(k_X),\quad F\in D^{[c,d]}(k_X)
+\quad\Longrightarrow\quad
+R\mathcal Hom(E,F)\in D^{[c-b,\,d-a+3n+g+1]}(k_X).
+\tag{H2}
+\]">\[
+E\in D^{[a,b]}(k_X),\quad F\in D^{[c,d]}(k_X)
+\quad\Longrightarrow\quad
+R\mathcal Hom(E,F)\in D^{[c-b,\,d-a+3n+g+1]}(k_X).
+\tag{H2}
+\]</span>
+<p>The <a href="../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-HOMOLOGICAL-DIMENSION">manifold Hom theorem</a>, (M38)–(M44), proves this for arbitrary sheaves. Here is its argument with the two kinds of Hom distinguished. It uses the dimension theorem in the same lesson and the <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-DIAGONAL">exceptional-operation rectangle and diagonal identities</a>, (EX.27)–(EX.28). Those identities are proved for a bounded first Hom input and a bounded-below second input, so they can be used before an upper bound for sheaf Hom has been established.</p>
+<p>First let <span class="math" data-tex="\(E,F\)">\(E,F\)</span> be sheaves in degree zero and work in an <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional coordinate neighborhood <span class="math" data-tex="\(W\)">\(W\)</span>. This neighborhood and all its open subsets are countable at infinity. Write <span class="math" data-tex="\(q_1,q_2:W\times W\to W\)">\(q_1,q_2:W\times W\to W\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+K=R\mathcal Hom(q_2^{-1}E,q_1^!F).
+\]">\[
+K=R\mathcal Hom(q_2^{-1}E,q_1^!F).
+\]</span>
+<p>The submersion formula <span class="math" data-tex="\(q_1^!F\simeq q_1^{-1}F\otimes\operatorname{or}_{q_1}[n]\)">\(q_1^!F\simeq q_1^{-1}F\otimes\operatorname{or}_{q_1}[n]\)</span> puts its target in degree <span class="math" data-tex="\(-n\)">\(-n\)</span>. The usual bounded-below injective construction therefore gives <span class="math" data-tex="\(K\in D^{\ge -n}\)">\(K\in D^{\ge -n}\)</span>; it does not yet give an upper bound. For each open rectangle <span class="math" data-tex="\(U\times V\subset W\times W\)">\(U\times V\subset W\times W\)</span>, the rectangle identity gives</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(U\times V;K)
+\simeq R\operatorname{Hom}_k
+\bigl(R\Gamma_c(V;E),R\Gamma(U;F)\bigr).
+\tag{H3}
+\]">\[
+R\Gamma(U\times V;K)
+\simeq R\operatorname{Hom}_k
+\bigl(R\Gamma_c(V;E),R\Gamma(U;F)\bigr).
+\tag{H3}
+\]</span>
+<p>Both coefficient complexes on the right have cohomology in <span class="math" data-tex="\([0,n]\)">\([0,n]\)</span>, by the ordinary and compact-support dimension bounds. Formula (H1) consequently makes (H3) vanish above <span class="math" data-tex="\(n+g\)">\(n+g\)</span>. Rectangles form a neighborhood basis. For a bounded-below complex, the filtered colimit of its degree-<span class="math" data-tex="\(r\)">\(r\)</span> derived sections over neighborhoods is its degree-<span class="math" data-tex="\(r\)">\(r\)</span> cohomology stalk: use a bounded-below injective representative and exactness of filtered colimits of modules. Thus <span class="math" data-tex="\(\mathcal H^r(K)=0\)">\(\mathcal H^r(K)=0\)</span> for <span class="math" data-tex="\(r&gt;n+g\)">\(r&gt;n+g\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\delta:W\hookrightarrow W\times W\)">\(\delta:W\hookrightarrow W\times W\)</span> be the closed diagonal. The diagonal identity gives <span class="math" data-tex="\(\delta^!K\simeq R\mathcal Hom(E,F)\)">\(\delta^!K\simeq R\mathcal Hom(E,F)\)</span>, and therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}_{k_W}^r(E,F)
+\simeq H_\Delta^r(W\times W;K).
+\tag{H4}
+\]">\[
+\operatorname{Ext}_{k_W}^r(E,F)
+\simeq H_\Delta^r(W\times W;K).
+\tag{H4}
+\]</span>
+<p>These are sections <strong>supported on the diagonal</strong>. Ordinary cohomology of any sheaf on the <span class="math" data-tex="\(2n\)">\(2n\)</span>-manifold <span class="math" data-tex="\(W\times W\)">\(W\times W\)</span>, and on its open complement of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, vanishes above <span class="math" data-tex="\(2n\)">\(2n\)</span>. The closed-support localization sequence therefore bounds the supported degree by <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span>. Applying this bound to the finitely many cohomology sheaves of <span class="math" data-tex="\(K\)">\(K\)</span>, which vanish above <span class="math" data-tex="\(n+g\)">\(n+g\)</span>, makes (H4) zero above <span class="math" data-tex="\(3n+g+1\)">\(3n+g+1\)</span>. Repeating on smaller coordinate neighborhoods and sheafifying the local Ext groups gives the same upper bound for internal Ext. The lower bound is zero for sheaf inputs. Finally the finite cohomology truncation triangles of <span class="math" data-tex="\(E,F\)">\(E,F\)</span> give (H2), just as for (H1). This also explains why the finite dimension bound is uniform. No constructibility, finite generation or orientation choice enters the proof.</p>
+<p>For the external Hom in (2), take <span class="math" data-tex="\(n=\dim X_1+\dim X_2\)">\(n=\dim X_1+\dim X_2\)</span>. Exact inverse image preserves the two input cohomology intervals, and (H2) supplies the required bounded sheaf object on the product. Formula (H1) separately bounds its claimed coefficient type. Existence of a bounded-below injective Hom model alone would prove neither of these upper bounds.</p>
+<p>The same truncation argument also gives</p>
+<span class="math math-display" data-tex="\[
+A\otimes_k^L B\in D^{[a+c-g,\,b+d]}(k).
+\tag{T1}
+\]">\[
+A\otimes_k^L B\in D^{[a+c-g,\,b+d]}(k).
+\tag{T1}
+\]</span>
+<p>For modules, a projective resolution of length at most <span class="math" data-tex="\(g\)">\(g\)</span> makes the possible tensor degrees <span class="math" data-tex="\(-g,\ldots,0\)">\(-g,\ldots,0\)</span>. The pieces <span class="math" data-tex="\(H^i(A)[-i]\)">\(H^i(A)[-i]\)</span> and <span class="math" data-tex="\(H^j(B)[-j]\)">\(H^j(B)[-j]\)</span> therefore contribute only in degrees <span class="math" data-tex="\(i+j-e\)">\(i+j-e\)</span>, where <span class="math" data-tex="\(0\le e\le g\)">\(0\le e\le g\)</span>; finite truncation triangles give the displayed interval. Derived tensor commutes with stalks, since stalks are exact and take flat sheaves to flat modules. The same uniform interval consequently bounds the external sheaf tensor after applying the exact inverse images <span class="math" data-tex="\(q_i^{-1}\)">\(q_i^{-1}\)</span>.</p>
+<h2 id="tensor-at-a-conormal-chart">Tensor at a conormal chart</h2>
+<p>First suppose <span class="math" data-tex="\(\Lambda_i=T_{M_i}^*X_i\)">\(\Lambda_i=T_{M_i}^*X_i\)</span> near the points, with <span class="math" data-tex="\(c_i=\operatorname{codim}M_i\)">\(c_i=\operatorname{codim}M_i\)</span>. The coefficient-object model and its normalized type formula give</p>
+<span class="math math-display" data-tex="\[
+F_i\simeq (L_i)_{M_i}[s_i],
+\qquad s_i=d_i-c_i/2\in\mathbb Z.
+\qquad\text{(4)}
+\]">\[
+F_i\simeq (L_i)_{M_i}[s_i],
+\qquad s_i=d_i-c_i/2\in\mathbb Z.
+\qquad\text{(4)}
+\]</span>
+<p>Tensoring the two supported constant complexes on the product gives</p>
+<span class="math math-display" data-tex="\[
+F_1\boxtimes^LF_2
+\simeq (L_1\otimes_k^L L_2)_{M_1\times M_2}[s_1+s_2].
+\qquad\text{(5)}
+\]">\[
+F_1\boxtimes^LF_2
+\simeq (L_1\otimes_k^L L_2)_{M_1\times M_2}[s_1+s_2].
+\qquad\text{(5)}
+\]</span>
+<p>For a closed embedding <span class="math" data-tex="\(i:S\hookrightarrow Y\)">\(i:S\hookrightarrow Y\)</span>, write <span class="math" data-tex="\(C_S=i_*i^{-1}C_Y\)">\(C_S=i_*i^{-1}C_Y\)</span> for the constant coefficient complex <span class="math" data-tex="\(C\)">\(C\)</span> supported on <span class="math" data-tex="\(S\)">\(S\)</span>. More generally, for <span class="math" data-tex="\(E\in D^b(k_Y)\)">\(E\in D^b(k_Y)\)</span>, the canonical projection map gives</p>
+<span class="math math-display" data-tex="\[
+E\otimes_k^L k_S\xrightarrow{\sim}i_*i^{-1}E.
+\]">\[
+E\otimes_k^L k_S\xrightarrow{\sim}i_*i^{-1}E.
+\]</span>
+<p>Indeed <span class="math" data-tex="\(k_S\)">\(k_S\)</span> has stalk <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span> and zero off <span class="math" data-tex="\(S\)">\(S\)</span>, so it is flat. On <span class="math" data-tex="\(S\)">\(S\)</span> the displayed map is the identity of <span class="math" data-tex="\(E_y\)">\(E_y\)</span>; off <span class="math" data-tex="\(S\)">\(S\)</span> both stalks are zero. Closed extension is exact, so this stalk calculation proves the derived assertion. It does not identify ordinary restriction with exceptional restriction.</p>
+<p>Inverse image preserves this tensor calculation. It is exact, its stalk at <span class="math" data-tex="\(x\)">\(x\)</span> is the original stalk at <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>, and it preserves flat sheaves. Applying it to flat models therefore gives the natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+f^{-1}(E\otimes_k^L G)
+\simeq f^{-1}E\otimes_k^L f^{-1}G.
+\]">\[
+f^{-1}(E\otimes_k^L G)
+\simeq f^{-1}E\otimes_k^L f^{-1}G.
+\]</span>
+<p>The same stalk comparison identifies the pullback of a closed-support constant with the constant on its inverse-image support. Put <span class="math" data-tex="\(Y=X_1\times X_2\)">\(Y=X_1\times X_2\)</span>, <span class="math" data-tex="\(S=M_1\times X_2\)">\(S=M_1\times X_2\)</span>, <span class="math" data-tex="\(T=X_1\times M_2\)">\(T=X_1\times M_2\)</span>, and <span class="math" data-tex="\(M=S\cap T\)">\(M=S\cap T\)</span>. Restriction followed by multiplication gives <span class="math" data-tex="\(k_S\otimes k_T\to k_M\)">\(k_S\otimes k_T\to k_M\)</span>. It is the identity of <span class="math" data-tex="\(k\)">\(k\)</span> on the intersection and zero elsewhere, hence an isomorphism. Thus, for arbitrary bounded coefficient complexes,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+q_1^{-1}(L_1)_{M_1}\otimes_k^L q_2^{-1}(L_2)_{M_2}
+&amp;\simeq (L_1)_Y\otimes_k^L(L_2)_Y\otimes k_S\otimes k_T\\
+&amp;\simeq (L_1\otimes_k^L L_2)_M.
+\end{aligned}
+\]">\[
+\begin{aligned}
+q_1^{-1}(L_1)_{M_1}\otimes_k^L q_2^{-1}(L_2)_{M_2}
+&amp;\simeq (L_1)_Y\otimes_k^L(L_2)_Y\otimes k_S\otimes k_T\\
+&amp;\simeq (L_1\otimes_k^L L_2)_M.
+\end{aligned}
+\]</span>
+<p>The supported geometric factors are flat; the coefficient tensor retains every Tor degree. Restoring the two shifts proves (5).</p>
+<p>The output submanifold has codimension <span class="math" data-tex="\(c_1+c_2\)">\(c_1+c_2\)</span>, so its normalized shift is
+<span class="math" data-tex="\(s_1+s_2+(c_1+c_2)/2=d_1+d_2\)">\(s_1+s_2+(c_1+c_2)/2=d_1+d_2\)</span>.
+This proves (1) on a conormal chart.</p>
+<h2 id="hom-at-the-same-chart-retains-a-relative-orientation">Hom at the same chart retains a relative orientation</h2>
+<p>Let <span class="math" data-tex="\(M=M_1\times M_2\)">\(M=M_1\times M_2\)</span> and write
+<span class="math" data-tex="\(\mathcal O_1=q_1^{-1}\operatorname{or}_{M_1/X_1}|_M\)">\(\mathcal O_1=q_1^{-1}\operatorname{or}_{M_1/X_1}|_M\)</span>
+for the pulled-back, unshifted relative orientation line. On the same chart the actual Hom calculation is</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\simeq i_{M*}\Bigl(
+R\operatorname{Hom}_k(L_1,L_2)_M\otimes\mathcal O_1
+\Bigr)[s_2-s_1-c_1].
+\qquad\text{(6)}
+\]">\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\simeq i_{M*}\Bigl(
+R\operatorname{Hom}_k(L_1,L_2)_M\otimes\mathcal O_1
+\Bigr)[s_2-s_1-c_1].
+\qquad\text{(6)}
+\]</span>
+<p>The orientation is a local rank-one line; in a coordinate chart it can be trivialized when naming the point's coefficient type. Formula (6) preserves it before that local choice.</p>
+<p><strong>Proof.</strong> Temporarily omit the shifts in (4). The tensor–Hom adjunction gives</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom\bigl((L_1)_{X_1\times X_2}\otimes
+q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2}\bigr)
+\simeq
+R\mathcal Hom\bigl((L_1)_{X_1\times X_2},
+R\mathcal Hom(q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2})\bigr).
+\qquad\text{(7)}
+\]">\[
+R\mathcal Hom\bigl((L_1)_{X_1\times X_2}\otimes
+q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2}\bigr)
+\simeq
+R\mathcal Hom\bigl((L_1)_{X_1\times X_2},
+R\mathcal Hom(q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2})\bigr).
+\qquad\text{(7)}
+\]</span>
+<p>We compute the inner supported Hom and the outer coefficient Hom separately.</p>
+<h3 id="constant-coefficients-and-the-evaluation-map">Constant coefficients and the evaluation map</h3>
+<p>For a manifold <span class="math" data-tex="\(M\)">\(M\)</span> and arbitrary <span class="math" data-tex="\(A,B\in D^b(k)\)">\(A,B\in D^b(k)\)</span>, there is a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_k(A,B)_M
+\xrightarrow{\sim} R\mathcal Hom(A_M,B_M).
+\tag{H5}
+\]">\[
+R\operatorname{Hom}_k(A,B)_M
+\xrightarrow{\sim} R\mathcal Hom(A_M,B_M).
+\tag{H5}
+\]</span>
+<p>To define the map, put <span class="math" data-tex="\(C=R\operatorname{Hom}_k(A,B)\)">\(C=R\operatorname{Hom}_k(A,B)\)</span>, which is bounded by (H1). Apply the exact constant-sheaf functor to the coefficient evaluation <span class="math" data-tex="\(C\otimes_k^L A\to B\)">\(C\otimes_k^L A\to B\)</span>, using its monoidal comparison, and curry the resulting map <span class="math" data-tex="\(C_M\otimes^L A_M\to B_M\)">\(C_M\otimes^L A_M\to B_M\)</span>. This produces the displayed comparison without identifying a sheaf-Hom stalk with the Hom of two stalks.</p>
+<p>For a contractible coordinate ball <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span>, constant-sheaf/global-section adjunction gives</p>
+<span class="math math-display" data-tex="\[
+R\Gamma\bigl(U;R\mathcal Hom(A_U,B_U)\bigr)
+\simeq R\operatorname{Hom}_k(A,R\Gamma(U;B_U)).
+\qquad\text{(8)}
+\]">\[
+R\Gamma\bigl(U;R\mathcal Hom(A_U,B_U)\bigr)
+\simeq R\operatorname{Hom}_k(A,R\Gamma(U;B_U)).
+\qquad\text{(8)}
+\]</span>
+<p>This adjunction can be checked on resolutions. Choose a bounded representative of <span class="math" data-tex="\(A\)">\(A\)</span> and a bounded-below injective sheaf resolution <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(B_U\)">\(B_U\)</span>. Constant inverse image is exact, so its right adjoint <span class="math" data-tex="\(\Gamma(U;-)\)">\(\Gamma(U;-)\)</span> sends injective sheaves to injective modules. For an injective sheaf <span class="math" data-tex="\(J\)">\(J\)</span>, the sheaf <span class="math" data-tex="\(\mathcal Hom(A_U^i,J)\)">\(\mathcal Hom(A_U^i,J)\)</span> is flabby: a map on a smaller open extends by injectivity from the open extension of its source into the source on the larger open. Each degree of <span class="math" data-tex="\(\mathcal Hom^\bullet(A_U,I)\)">\(\mathcal Hom^\bullet(A_U,I)\)</span> is a finite product of such sheaves. This bounded-below complex therefore computes its derived sections termwise. The ordinary constant-sheaf adjunction identifies its section complex with <span class="math" data-tex="\(\operatorname{Hom}_k^\bullet(A,\Gamma(U;I))\)">\(\operatorname{Hom}_k^\bullet(A,\Gamma(U;I))\)</span>, which computes the right side of (8). This uses no finite-rank hypothesis.</p>
+<p>The <a href="../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-EUCLIDEAN">constant-section computation on a coordinate ball</a>, (M5), identifies the actual units <span class="math" data-tex="\(B\to R\Gamma(U;B_U)\)">\(B\to R\Gamma(U;B_U)\)</span> and <span class="math" data-tex="\(C\to R\Gamma(U;C_U)\)">\(C\to R\Gamma(U;C_U)\)</span> as isomorphisms. Under (8), the map induced by (H5), precomposed with the latter unit, is exactly <span class="math" data-tex="\(R\operatorname{Hom}_k(A,-)\)">\(R\operatorname{Hom}_k(A,-)\)</span> applied to the former unit: this follows by evaluating the defining curried map. It is therefore an isomorphism. These identifications commute with restriction to smaller balls because the units and evaluation do. Passing to cohomology stalks over this basis proves (H5).</p>
+<p>This argument never moves Hom from an infinite module through a filtered colimit: the comparison is already an isomorphism on derived sections over each ball. For the orientation line <span class="math" data-tex="\(\mathcal O_1\)">\(\mathcal O_1\)</span> in (6), apply (H5) on its local trivializations. Changing a trivialization multiplies both sides by the same orientation transition function, by naturality in <span class="math" data-tex="\(B\)">\(B\)</span>. The local comparisons thus glue to</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(A_M,B_M\otimes\mathcal O_1)
+\simeq R\operatorname{Hom}_k(A,B)_M\otimes\mathcal O_1.
+\tag{H7}
+\]">\[
+R\mathcal Hom(A_M,B_M\otimes\mathcal O_1)
+\simeq R\operatorname{Hom}_k(A,B)_M\otimes\mathcal O_1.
+\tag{H7}
+\]</span>
+<h3 id="the-normal-orientation-in-the-support-calculation">The normal orientation in the support calculation</h3>
+<p>Continue with <span class="math" data-tex="\(Y,S,T,M\)">\(Y,S,T,M\)</span> as above and write <span class="math" data-tex="\(j:T\hookrightarrow Y\)">\(j:T\hookrightarrow Y\)</span> and <span class="math" data-tex="\(h:M\hookrightarrow T\)">\(h:M\hookrightarrow T\)</span>. For every bounded constant coefficient complex <span class="math" data-tex="\(C\)">\(C\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_M^T(C_T)
+\simeq h_*(C_M\otimes\operatorname{or}_{M/T})[-c_1].
+\tag{G1}
+\]">\[
+R\Gamma_M^T(C_T)
+\simeq h_*(C_M\otimes\operatorname{or}_{M/T})[-c_1].
+\tag{G1}
+\]</span>
+<p>To see the coefficient content of this formula, choose a product chart <span class="math" data-tex="\(U\times V\subset T\)">\(U\times V\subset T\)</span> in which <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(U\times\{0\}\)">\(U\times\{0\}\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is a ball in <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(V\)">\(V\)</span> is a normal ball of dimension <span class="math" data-tex="\(c_1\)">\(c_1\)</span>. Sections with support in <span class="math" data-tex="\(U\times\{0\}\)">\(U\times\{0\}\)</span> are the fibre of restriction from <span class="math" data-tex="\(U\times V\)">\(U\times V\)</span> to <span class="math" data-tex="\(U\times(V\setminus\{0\})\)">\(U\times(V\setminus\{0\})\)</span>. Contracting the <span class="math" data-tex="\(U\)">\(U\)</span>-coordinate supplies a homotopy of this pair over <span class="math" data-tex="\(V\)">\(V\)</span>, so its relative constant-coefficient cohomology is the local cohomology of <span class="math" data-tex="\(C_V\)">\(C_V\)</span> at zero. The <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#constant-relative-balls">proper-interval homotopy and point-support computation</a>, (O1)–(O4) and (O11), compute the actual coefficient map as</p>
+<span class="math math-display" data-tex="\[
+C\otimes_k H^{c_1}_{\{0\}}(V;k)[-c_1]
+\xrightarrow{\sim}R\Gamma_{\{0\}}(V;C_V).
+\tag{G2}
+\]">\[
+C\otimes_k H^{c_1}_{\{0\}}(V;k)[-c_1]
+\xrightarrow{\sim}R\Gamma_{\{0\}}(V;C_V).
+\tag{G2}
+\]</span>
+<p>Those formulas are proved for arbitrary bounded <span class="math" data-tex="\(C\)">\(C\)</span>. They use the endpoint difference on an interval, compact-support integration in ordered normal coordinates, and excision; they do not require a finite-rank Künneth formula. The normal local-cohomology group is a free rank-one module, and a normal coordinate change acts on it by its local degree. The <a href="../constructible-duality-and-infinite-twists/duality-maps-for-constructible-inverse-and-direct-images.html#orientation-coordinate-signs">orientation transition calculation</a> identifies that degree with the sign of the normal determinant. Hence these normal lines glue as <span class="math" data-tex="\(\operatorname{or}_{M/T}\)">\(\operatorname{or}_{M/T}\)</span>.</p>
+<p>For clarity, the global morphism checked by this calculation is the coefficient multiplication comparison
+<span class="math" data-tex="\(C_M\otimes h^!k_T\to h^!C_T\)">\(C_M\otimes h^!k_T\to h^!C_T\)</span>.
+The <a href="../sheaf-proof-readings/SH02-manifold-duality.html#SH02-MD-CLOSED">closed-embedding orientation formula</a> identifies <span class="math" data-tex="\(h^!k_T\)">\(h^!k_T\)</span> with <span class="math" data-tex="\(\operatorname{or}_{M/T}[-c_1]\)">\(\operatorname{or}_{M/T}[-c_1]\)</span>. On the product chart its stalk comparison is precisely (G2), including its coefficient-first tensor order. It is an isomorphism at every point. Closed extension then proves (G1), with no assertion about this tensor comparison for a nonconstant sheaf on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Closed support is compatible with closed extension in this square:</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_Y(k_S,j_*C_T)
+=R\Gamma_S^Y(j_*C_T)
+\simeq j_*R\Gamma_M^T(C_T).
+\tag{G3}
+\]">\[
+R\mathcal Hom_Y(k_S,j_*C_T)
+=R\Gamma_S^Y(j_*C_T)
+\simeq j_*R\Gamma_M^T(C_T).
+\tag{G3}
+\]</span>
+<p>One can derive the last isomorphism directly from the localization triangle. On an open <span class="math" data-tex="\(W\subset Y\)">\(W\subset Y\)</span>, the restriction map defining its left side is the restriction from <span class="math" data-tex="\(W\cap T\)">\(W\cap T\)</span> to <span class="math" data-tex="\((W\setminus S)\cap T\)">\((W\setminus S)\cap T\)</span>; these are exactly the two opens defining support in <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>. The equality of these maps persists on injective resolutions: <span class="math" data-tex="\(j_*\)">\(j_*\)</span> preserves injectives because it is right adjoint to exact <span class="math" data-tex="\(j^{-1}\)">\(j^{-1}\)</span>, and it is exact for a closed embedding. Thus (G3) identifies the actual support morphisms, rather than using an inverse-image comparison for arbitrary internal Hom.</p>
+<p>The normal bundle of <span class="math" data-tex="\(M=M_1\times M_2\)">\(M=M_1\times M_2\)</span> in <span class="math" data-tex="\(T=X_1\times M_2\)">\(T=X_1\times M_2\)</span> is the pullback of the normal bundle of <span class="math" data-tex="\(M_1\)">\(M_1\)</span> in <span class="math" data-tex="\(X_1\)">\(X_1\)</span>. Consequently <span class="math" data-tex="\(\operatorname{or}_{M/T}=\mathcal O_1\)">\(\operatorname{or}_{M/T}=\mathcal O_1\)</span>. Taking <span class="math" data-tex="\(C=L_2\)">\(C=L_2\)</span> in (G1)–(G3) gives exactly</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_Y(q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2})
+\simeq i_{M*}\bigl((L_2)_M\otimes\mathcal O_1\bigr)[-c_1].
+\tag{G4}
+\]">\[
+R\mathcal Hom_Y(q_1^{-1}k_{M_1},q_2^{-1}(L_2)_{M_2})
+\simeq i_{M*}\bigl((L_2)_M\otimes\mathcal O_1\bigr)[-c_1].
+\tag{G4}
+\]</span>
+<p>Finally, ordinary closed-embedding adjunction and the tensor projection map give</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_Y(A_Y,i_{M*}E)
+\simeq i_{M*}R\mathcal Hom_M(A_M,E).
+\tag{G5}
+\]">\[
+R\mathcal Hom_Y(A_Y,i_{M*}E)
+\simeq i_{M*}R\mathcal Hom_M(A_M,E).
+\tag{G5}
+\]</span>
+<p>For example, test against any complex <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>. The successive adjunctions identify both sides' morphisms from <span class="math" data-tex="\(P\)">\(P\)</span> with
+<span class="math" data-tex="\(\operatorname{Hom}_{D(k_M)}(i_M^{-1}P\otimes^L A_M,E)\)">\(\operatorname{Hom}_{D(k_M)}(i_M^{-1}P\otimes^L A_M,E)\)</span>.
+This proves the isomorphism and its naturality without a finite-rank assumption. Apply (G5) to (G4) inside (7), then use the constant-coefficient Hom comparison with the rank-one line <span class="math" data-tex="\(\mathcal O_1\)">\(\mathcal O_1\)</span>. Restoring the shift <span class="math" data-tex="\(s_2-s_1\)">\(s_2-s_1\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\simeq i_{M*}\bigl(R\operatorname{Hom}_k(L_1,L_2)_M\otimes\mathcal O_1\bigr)
+[s_2-s_1-c_1],
+\]">\[
+R\mathcal Hom(q_1^{-1}F_1,q_2^{-1}F_2)
+\simeq i_{M*}\bigl(R\operatorname{Hom}_k(L_1,L_2)_M\otimes\mathcal O_1\bigr)
+[s_2-s_1-c_1],
+\]</span>
+<p>which is (6). The local orientation line stays in the sheaf formula, while a choice of normal orientation identifies the point's coefficient object with <span class="math" data-tex="\(R\operatorname{Hom}_k(L_1,L_2)\)">\(R\operatorname{Hom}_k(L_1,L_2)\)</span>. Codimension zero gives the identity support operation and shift zero throughout. All arguments preserve arbitrary bounded coefficients, including modules of infinite rank.</p>
+<p>At the product conormal, formula (6) has normalized shift</p>
+<span class="math math-display" data-tex="\[
+s_2-s_1-c_1+\frac12(c_1+c_2)
+=d_2-d_1.
+\qquad\text{(9)}
+\]">\[
+s_2-s_1-c_1+\frac12(c_1+c_2)
+=d_2-d_1.
+\qquad\text{(9)}
+\]</span>
+<p>The first covector is antipodal by (3). In a full conormal fibre the antipode preserves the set, which can hide this sign if one checks only supporting submanifolds. It is visible for a general Lagrangian branch.</p>
+<h2 id="move-from-regular-projection-points-to-every-point">Move from regular projection points to every point</h2>
+<p>We now prove (1)–(2) on general smooth conic <span class="math" data-tex="\(\Lambda_i\)">\(\Lambda_i\)</span>. Points at which the base projection has locally constant rank form a dense open subset. Indeed every open chart contains a point of maximal rank attained in that chart; a nonzero maximal minor makes that rank persist on a smaller open neighborhood. At such a regular point, the conic Lagrangian projection normal form identifies the germ with a conormal. That geometric normal form is a prerequisite. Near a zero covector use the closed-conic conormal model directly.</p>
+<p>Take a small connected coordinate neighborhood <span class="math" data-tex="\(P_i\subset\Lambda_i\)">\(P_i\subset\Lambda_i\)</span> of each chosen <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. Choose a continuous auxiliary Lagrangian <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span> transverse both to the vertical plane <span class="math" data-tex="\(V_i\)">\(V_i\)</span> and to <span class="math" data-tex="\(A_i=T\Lambda_i\)">\(A_i=T\Lambda_i\)</span>. Such a local choice follows by choosing a common complement at the initial point and using openness in a tangent trivialization. Define</p>
+<span class="math math-display" data-tex="\[
+d_i(q)=d_i+\frac12\bigl[
+\tau(V_i(q),A_i(q),\mu_i(q))
+-\tau(V_i(p_i),A_i(p_i),\mu_i(p_i))
+\bigr].
+\qquad\text{(10)}
+\]">\[
+d_i(q)=d_i+\frac12\bigl[
+\tau(V_i(q),A_i(q),\mu_i(q))
+-\tau(V_i(p_i),A_i(p_i),\mu_i(p_i))
+\bigr].
+\qquad\text{(10)}
+\]</span>
+<p>The parity rule makes these allowed shifts. The continuous-family type theorem makes <span class="math" data-tex="\(F_i\)">\(F_i\)</span> have type <span class="math" data-tex="\(L_i\)">\(L_i\)</span> with shift <span class="math" data-tex="\(d_i(q)\)">\(d_i(q)\)</span> throughout <span class="math" data-tex="\(P_i\)">\(P_i\)</span>.</p>
+<p>For the tensor output, use <span class="math" data-tex="\(\mu_1\oplus\mu_2\)">\(\mu_1\oplus\mu_2\)</span>. Its inertia is the sum of the two input inertias, because the product symplectic space is the direct sum. Hence
+<span class="math" data-tex="\(d_1(q_1)+d_2(q_2)-\tau_{\mathrm{product}}/2\)">\(d_1(q_1)+d_2(q_2)-\tau_{\mathrm{product}}/2\)</span>
+is constant on <span class="math" data-tex="\(P_1\times P_2\)">\(P_1\times P_2\)</span>. The output is bounded and has smooth-Lagrangian microsupport by (3), so its type at those allowed shifts is constant. At a pair of regular points formula (5) computes it as <span class="math" data-tex="\(L_1\otimes^LL_2\)">\(L_1\otimes^LL_2\)</span>. It has the same type at the selected pair, where the shifts in (10) are the original <span class="math" data-tex="\(d_i\)">\(d_i\)</span>. This proves (1).</p>
+<p>For Hom, let <span class="math" data-tex="\(\bar a(q_1,q_2)=(q_1^a,q_2)\)">\(\bar a(q_1,q_2)=(q_1^a,q_2)\)</span> act on the two cotangent factors. Its first tangent map reverses the first symplectic form. Thus the auxiliary plane <span class="math" data-tex="\(a_*\mu_1\oplus\mu_2\)">\(a_*\mu_1\oplus\mu_2\)</span> is transverse to the product vertical and <span class="math" data-tex="\(T(\Lambda_1^a\times\Lambda_2)\)">\(T(\Lambda_1^a\times\Lambda_2)\)</span>, with index</p>
+<span class="math math-display" data-tex="\[
+\tau_{\mathrm{Hom}}=-\tau(V_1,A_1,\mu_1)
++\tau(V_2,A_2,\mu_2).
+\qquad\text{(11)}
+\]">\[
+\tau_{\mathrm{Hom}}=-\tau(V_1,A_1,\mu_1)
++\tau(V_2,A_2,\mu_2).
+\qquad\text{(11)}
+\]</span>
+<p>The corrected candidate shift <span class="math" data-tex="\(d_2(q_2)-d_1(q_1)-\tau_{\mathrm{Hom}}/2\)">\(d_2(q_2)-d_1(q_1)-\tau_{\mathrm{Hom}}/2\)</span> is constant. The output is bounded by the arbitrary-input internal-Hom theorem and has the required microsupport by (3). Its type is therefore constant on the antipodal product chart. At a regular pair (6)–(9) compute it as <span class="math" data-tex="\(R\operatorname{Hom}_k(L_1,L_2)\)">\(R\operatorname{Hom}_k(L_1,L_2)\)</span>, with the local orientation choice specified there. This gives (2) at the original antipodal pair. The proof covers zero covectors and does not require globally orientable manifolds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="pure-inputs-can-have-several-product-degrees">Pure inputs can have several product degrees</h2>
+<p>If both inputs are simple, their types are locally <span class="math" data-tex="\(k\)">\(k\)</span>. The two derived coefficient operations give <span class="math" data-tex="\(k\)">\(k\)</span> again, so the external tensor and external Hom are simple with the shifts in (1)–(2). Local relative orientation lines in (6) remain part of the sheaf object.</p>
+<p>Purity alone has a different outcome over general rings. For <span class="math" data-tex="\(k=\mathbb Z\)">\(k=\mathbb Z\)</span>, resolving <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> by multiplication by two gives
+<span class="math" data-tex="\(\mathbb Z/2\otimes^L_\mathbb Z\mathbb Z/2\)">\(\mathbb Z/2\otimes^L_\mathbb Z\mathbb Z/2\)</span>
+with nonzero cohomology in degrees <span class="math" data-tex="\(-1\)">\(-1\)</span> and zero. Both inputs can be pure while their product fails to be pure at every shift. Likewise
+<span class="math" data-tex="\(R\operatorname{Hom}_\mathbb Z(\mathbb Z\oplus\mathbb Z/2,\mathbb Z)\)">\(R\operatorname{Hom}_\mathbb Z(\mathbb Z\oplus\mathbb Z/2,\mathbb Z)\)</span>
+has a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree zero and a <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in degree one. An integer change of normalized shift translates those degrees together and does not combine them into a single degree.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="codimensions-and-ordinary-degrees">Codimensions and ordinary degrees</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(c_1=2,c_2=3\)">\(c_1=2,c_2=3\)</span>, and use models <span class="math" data-tex="\((L_1)_{M_1}[1]\)">\((L_1)_{M_1}[1]\)</span>, <span class="math" data-tex="\((L_2)_{M_2}[-2]\)">\((L_2)_{M_2}[-2]\)</span>. Compute the input normalized shifts, the tensor shift and the Hom shift from both the model degrees and (1)–(2).</p>
+<p><strong>Solution.</strong> The input shifts are <span class="math" data-tex="\(d_1=1+2/2=2\)">\(d_1=1+2/2=2\)</span> and <span class="math" data-tex="\(d_2=-2+3/2=-1/2\)">\(d_2=-2+3/2=-1/2\)</span>. Tensor has model degree <span class="math" data-tex="\(-1\)">\(-1\)</span> and product codimension five, giving <span class="math" data-tex="\(-1+5/2=3/2=d_1+d_2\)">\(-1+5/2=3/2=d_1+d_2\)</span>. Hom has model degree <span class="math" data-tex="\(-2-1-2=-5\)">\(-2-1-2=-5\)</span>, including the first-codimension orientation shift. Adding <span class="math" data-tex="\(5/2\)">\(5/2\)</span> gives <span class="math" data-tex="\(-5/2=d_2-d_1\)">\(-5/2=d_2-d_1\)</span>.</p>
+<h3 id="tor-prevents-purity">Tor prevents purity</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On a point, regard two copies of <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> as pure complexes with normalized shift zero. Compute their derived tensor and determine whether a normalized shift can make it pure.</p>
+<p><strong>Solution.</strong> The free resolution <span class="math" data-tex="\([\mathbb Z\xrightarrow{2}\mathbb Z]\)">\([\mathbb Z\xrightarrow{2}\mathbb Z]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> becomes <span class="math" data-tex="\([\mathbb Z/2\xrightarrow{0}\mathbb Z/2]\)">\([\mathbb Z/2\xrightarrow{0}\mathbb Z/2]\)</span> after tensor. Its two nonzero cohomology degrees remain two under every shift. Thus the derived tensor is not pure at any normalized shift. The theorem asserts its coefficient type and degree rule, rather than concentration of the derived tensor of two modules.</p>
+<h3 id="ext-prevents-purity-too">Ext prevents purity too</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Compute the coefficient Hom type for <span class="math" data-tex="\(L_1=\mathbb Z\oplus\mathbb Z/2\)">\(L_1=\mathbb Z\oplus\mathbb Z/2\)</span> and <span class="math" data-tex="\(L_2=\mathbb Z\)">\(L_2=\mathbb Z\)</span>, and explain whether it can be pure.</p>
+<p><strong>Solution.</strong> The free summand contributes <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree zero. The multiplication-by-two resolution of <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, after Hom into <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, has cokernel <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span> in degree one and zero in degree zero. The total coefficient Hom therefore has the two specified nonzero degrees and is not pure under any integer shift.</p>
+<h3 id="infinite-coefficients-need-actual-hom">Infinite coefficients need actual Hom</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Over a field take <span class="math" data-tex="\(A=\bigoplus_{j\geq1}k\)">\(A=\bigoplus_{j\geq1}k\)</span> and <span class="math" data-tex="\(B=\bigoplus_{j\geq1}k\)">\(B=\bigoplus_{j\geq1}k\)</span>. Show that the natural map <span class="math" data-tex="\(A^*\otimes B\to\operatorname{Hom}_k(A,B)\)">\(A^*\otimes B\to\operatorname{Hom}_k(A,B)\)</span> need not be surjective, and explain why (8) still applies.</p>
+<p><strong>Solution.</strong> An element of <span class="math" data-tex="\(A^*\otimes B\)">\(A^*\otimes B\)</span> is a finite sum of elementary tensors, so its associated map has image in the finite-dimensional span of the finitely many chosen vectors of <span class="math" data-tex="\(B\)">\(B\)</span>. The map sending the <span class="math" data-tex="\(j\)">\(j\)</span>-th basis vector of <span class="math" data-tex="\(A\)">\(A\)</span> to the <span class="math" data-tex="\(j\)">\(j\)</span>-th basis vector of <span class="math" data-tex="\(B\)">\(B\)</span> has infinite-dimensional image and is not in that range. Formula (8) uses constant-sheaf adjunction and an invertible coefficient unit on each contractible neighborhood. It computes the full module Hom without replacing it by <span class="math" data-tex="\(A^*\otimes B\)">\(A^*\otimes B\)</span> or requiring finite-dimensional <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h3 id="the-sign-in-auxiliary-plane-transport">The sign in auxiliary-plane transport</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>The first auxiliary inertia changes from one to three and the second from minus two to zero. Keeping each corrected input degree fixed, calculate the tensor and Hom shift changes. Compare with their auxiliary index changes.</p>
+<p><strong>Solution.</strong> Each input shift increases by <span class="math" data-tex="\(2/2=1\)">\(2/2=1\)</span>. The tensor shift increases by two, and its index increases by <span class="math" data-tex="\(2+2=4\)">\(2+2=4\)</span>, giving the same half-index correction. The Hom shift changes by <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>, and its index change is <span class="math" data-tex="\(-2+2=0\)">\(-2+2=0\)</span>, because the first symplectic form is reversed. Using a sum for Hom would give the wrong correction.</p>
+<h2 id="references">References</h2>
+<p>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §7.2, Proposition 7.2.9, p. 129, gives the tensor and external Hom rules for pure module types under the stated Tor- or Ext-vanishing hypotheses. Lemmas 7.2.3–7.2.4 and Examples 7.2.6(i)–(ii), pp. 125–128, develop the conormal normalization and the reduction through regular projection points. The formulas above retain the full derived coefficient complexes: the Tor and Ext examples explain why purity need not survive. The linked programme lessons supply the external microsupport estimates and the normalized type transport; the coefficient bounds, evaluation comparison and relative normal-orientation calculation above give the general coefficient formulas (1)–(2).</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/tensor-and-Hom-types-at-independent-covectors.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

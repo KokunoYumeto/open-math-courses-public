@@ -1,0 +1,517 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hypercoverings</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Sites, topoi and étale cohomology</a></nav><h1 id="hypercoverings">Hypercoverings</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Public domain (CC0).</em></p>
+<p>A covering chooses local pieces. Its Čech nerve uses every intersection of those pieces. A hypercovering allows a further choice: cover the intersections, then cover the compatible boundaries made from those covers, and continue. These extra choices let us lift a cochain locally without changing all earlier choices by hand. They are the reason that a colimit over hypercoverings computes every cohomology group.</p>
+<p>We assume <a href="cohomology-on-sites.html">Cohomology on sites</a>, especially enough injectives, local vanishing of positive cohomology classes, and first quadrant double complexes. We prove the simplicial facts needed for the site constructions below. Background on simplicial objects is in the chapter on simplicial methods of the Stacks project (<a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/simplicial.html#simplicial-section-introduction">Tag 0163</a>). The rest of this course mainly uses ordinary Čech methods, so this lesson can be read separately before returning to étale topology. Hypercoverings are also the starting point of cohomological descent, which this course does not treat.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a small site <strong>with all fibre products</strong>, and <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span>. The small étale site will satisfy this hypothesis: fibre products of étale schemes over the base are again étale. This holds because a morphism between schemes étale over the base is itself étale, and base changes and composites of étale morphisms are étale: <a href="../AG-FSE/AG-FSE-04.html">Étale morphisms and their local structure</a>, Proposition 2.1 and Section 2 (also <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-etale-permanence">Stacks, Tag 02GW</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-base-change-etale">Tag 02GO</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/morphisms.html#morphisms-lemma-composition-etale">Tag 02GN</a>). We work with two universes <span class="math" data-tex="\(\mathbb U\in\mathbb V\)">\(\mathbb U\in\mathbb V\)</span>: the site, covers, coefficient values and indexing families are small in <span class="math" data-tex="\(\mathbb U\)">\(\mathbb U\)</span>; the collections indexing our colimits are sets in <span class="math" data-tex="\(\mathbb V\)">\(\mathbb V\)</span>. No colimit over a proper class is intended.</p>
+<h2 id="1-families-and-finite-limits">1. Families and finite limits</h2>
+<p>A <strong>semi-representable object over <span class="math" data-tex="\(X\)">\(X\)</span></strong> is a formal family</p>
+<span class="math math-display" data-tex="\[
+A=\{U_i\longrightarrow X\}_{i\in I}.
+\]">\[
+A=\{U_i\longrightarrow X\}_{i\in I}.
+\]</span>
+<p>A map <span class="math" data-tex="\(A\to B=\{V_j\to X\}_{j\in J}\)">\(A\to B=\{V_j\to X\}_{j\in J}\)</span> consists of a function <span class="math" data-tex="\(\alpha:I\to J\)">\(\alpha:I\to J\)</span> and maps <span class="math" data-tex="\(U_i\to V_{\alpha(i)}\)">\(U_i\to V_{\alpha(i)}\)</span> over <span class="math" data-tex="\(X\)">\(X\)</span>. These objects form <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span>. Write <span class="math" data-tex="\(1_X=\{X\xrightarrow{1}X\}\)">\(1_X=\{X\xrightarrow{1}X\}\)</span>, and associate to a family the presheaf</p>
+<span class="math math-display" data-tex="\[
+\Phi(A)=\coprod_{i\in I}h_{U_i}\longrightarrow h_X.
+\tag{1.1}
+\]">\[
+\Phi(A)=\coprod_{i\in I}h_{U_i}\longrightarrow h_X.
+\tag{1.1}
+\]</span>
+<p>The coproduct here is in presheaves. It is not an assertion that the objects <span class="math" data-tex="\(U_i\)">\(U_i\)</span> have a coproduct in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>The functor <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is fully faithful. Indeed, a map <span class="math" data-tex="\(h_U\to\coprod_jh_{V_j}\)">\(h_U\to\coprod_jh_{V_j}\)</span> is an element of that coproduct evaluated at <span class="math" data-tex="\(U\)">\(U\)</span>, hence a unique choice of <span class="math" data-tex="\(j\)">\(j\)</span> and a map <span class="math" data-tex="\(U\to V_j\)">\(U\to V_j\)</span>. Applying this separately to the summands proves the assertion, including the condition of being over <span class="math" data-tex="\(h_X\)">\(h_X\)</span>.</p>
+<p>The category <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span> has coproducts and finite limits. Coproducts concatenate the families; <span class="math" data-tex="\(1_X\)">\(1_X\)</span> is final. If maps <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> and <span class="math" data-tex="\(D=\{W_k\}\to B\)">\(D=\{W_k\}\to B\)</span> use index functions <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>, their fibre product is</p>
+<span class="math math-display" data-tex="\[
+\{U_i\times_{V_j}W_k\to X\}_{\alpha(i)=j=\beta(k)}.
+\tag{1.2}
+\]">\[
+\{U_i\times_{V_j}W_k\to X\}_{\alpha(i)=j=\beta(k)}.
+\tag{1.2}
+\]</span>
+<p>Its universal property follows by choosing the common target index and the two compatible component maps. A final object and fibre products give all finite limits: products are fibre products over the final object, and an equalizer is the fibre product of a pair map with the diagonal. Evaluation of <span class="math" data-tex="\(\Phi(A)\)">\(\Phi(A)\)</span> at <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\operatorname{Hom}_{\mathrm{SR}}(\{T\},A)\)">\(\operatorname{Hom}_{\mathrm{SR}}(\{T\},A)\)</span>, with the given map <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span> when working in the slice. Consequently <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> preserves finite limits, since both representable Hom and presheaf evaluation do. It also preserves coproducts by (1.1).</p>
+<p>A morphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> is a <strong>covering</strong> if, for each <span class="math" data-tex="\(j\)">\(j\)</span>, the maps <span class="math" data-tex="\(U_i\to V_j\)">\(U_i\to V_j\)</span> with <span class="math" data-tex="\(\alpha(i)=j\)">\(\alpha(i)=j\)</span> form a covering family of the site. Composition and base change of such maps are coverings: on each target component these are exactly composition and base change of site covers. A finite product of coverings in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span> is a covering, by replacing its factors one at a time and using those two rules. Its associated presheaf map becomes an epimorphism after sheafification, by the local description of sheaf images.</p>
+<h2 id="2-boundaries-truncation-and-coskeleton">2. Boundaries, truncation and coskeleton</h2>
+<p>Let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> have objects <span class="math" data-tex="\([n]=\{0,\ldots,n\}\)">\([n]=\{0,\ldots,n\}\)</span> and increasing maps, allowing equal values. A <strong>simplicial object</strong> <span class="math" data-tex="\(K\)">\(K\)</span> is a functor <span class="math" data-tex="\(\Delta^{\mathrm{op}}\to\mathrm{SR}(\mathcal C,X)\)">\(\Delta^{\mathrm{op}}\to\mathrm{SR}(\mathcal C,X)\)</span>. Its face maps <span class="math" data-tex="\(d_i:K_n\to K_{n-1}\)">\(d_i:K_n\to K_{n-1}\)</span> omit vertex <span class="math" data-tex="\(i\)">\(i\)</span>; its degeneracies <span class="math" data-tex="\(s_i:K_n\to K_{n+1}\)">\(s_i:K_n\to K_{n+1}\)</span> repeat it. For example, <span class="math" data-tex="\(d_i d_j=d_{j-1}d_i\)">\(d_i d_j=d_{j-1}d_i\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>. All identities follow from equality of the corresponding increasing maps. The augmentation <span class="math" data-tex="\(K\to1_X\)">\(K\to1_X\)</span> is automatic in this slice.</p>
+<p>Write <span class="math" data-tex="\(\operatorname{sk}_n K\)">\(\operatorname{sk}_n K\)</span> for the restriction to degrees at most <span class="math" data-tex="\(n\)">\(n\)</span>, as in the Stacks convention. This is an <span class="math" data-tex="\(n\)">\(n\)</span>-truncated object. For simplicial sets the actual simplicial subset generated by degrees at most <span class="math" data-tex="\(n\)">\(n\)</span> will be denoted <span class="math" data-tex="\(\operatorname{Sk}_n K\)">\(\operatorname{Sk}_n K\)</span>. Distinguishing these two meanings avoids a common ambiguity about “skeleton.”</p>
+<p>The right adjoint of truncation is <strong>coskeleton</strong>. If <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>-truncated, then</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{cosk}_nT)_m
+=\lim_{\substack{[j]\to[m]\\0\le j\le n}}T_j.
+\tag{2.1}
+\]">\[
+(\operatorname{cosk}_nT)_m
+=\lim_{\substack{[j]\to[m]\\0\le j\le n}}T_j.
+\tag{2.1}
+\]</span>
+<p>The diagram includes restrictions along maps between the indicated simplices. It is finite in each degree, so the limit exists. To check the adjunction, a map <span class="math" data-tex="\(K\to\operatorname{cosk}_nT\)">\(K\to\operatorname{cosk}_nT\)</span> is a compatible family of maps <span class="math" data-tex="\(K_m\to T_j\)">\(K_m\to T_j\)</span> for all <span class="math" data-tex="\([j]\to[m]\)">\([j]\to[m]\)</span>. Such a family is determined by its maps in degrees <span class="math" data-tex="\(j\le n\)">\(j\le n\)</span>, and these are exactly a map <span class="math" data-tex="\(\operatorname{sk}_nK\to T\)">\(\operatorname{sk}_nK\to T\)</span>. Conversely, compose these maps with the simplicial restrictions of <span class="math" data-tex="\(K\)">\(K\)</span> to obtain the family. The two constructions are inverse. For <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>, the identity simplex gives <span class="math" data-tex="\((\operatorname{cosk}_nT)_m=T_m\)">\((\operatorname{cosk}_nT)_m=T_m\)</span>. Coskeleton preserves finite limits, either by (2.1), or by this right-adjoint property.</p>
+<p>The <strong>matching object</strong> in degree <span class="math" data-tex="\(m\)">\(m\)</span> is</p>
+<span class="math math-display" data-tex="\[
+M_0K=1_X,\qquad
+M_mK=(\operatorname{cosk}_{m-1}\operatorname{sk}_{m-1}K)_m
+\quad(m&gt;0).
+\tag{2.2}
+\]">\[
+M_0K=1_X,\qquad
+M_mK=(\operatorname{cosk}_{m-1}\operatorname{sk}_{m-1}K)_m
+\quad(m&gt;0).
+\tag{2.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(M_1K=K_0\times K_0\)">\(M_1K=K_0\times K_0\)</span>. For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, its generalized elements are tuples of faces <span class="math" data-tex="\((x_0,\ldots,x_m)\)">\((x_0,\ldots,x_m)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+d_{j-1}x_i=d_ix_j\qquad(0\le i&lt;j\le m).
+\tag{2.3}
+\]">\[
+d_{j-1}x_i=d_ix_j\qquad(0\le i&lt;j\le m).
+\tag{2.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is the proposed face opposite vertex <span class="math" data-tex="\(i\)">\(i\)</span>. Every proper simplex of <span class="math" data-tex="\(\Delta[m]\)">\(\Delta[m]\)</span> factors through an omitted vertex. If it factors through two, its image misses both vertices, so (2.3) identifies the two restrictions. This proves that the tuples give precisely the compatible families in (2.1); restricting such a family to its codimension-one faces is the inverse. Naturality follows by composing all component maps. The matching morphism <span class="math" data-tex="\(K_m\to M_mK\)">\(K_m\to M_mK\)</span> records the boundary of an <span class="math" data-tex="\(m\)">\(m\)</span>-simplex.</p>
+<p>We will also use a finite simplicial set <span class="math" data-tex="\(A\)">\(A\)</span>. “Finite” means that it has finitely many nondegenerate simplices, rather than finitely many simplices in all degrees. For such an <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(\langle A,K\rangle\)">\(\langle A,K\rangle\)</span> be the object representing</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto
+\operatorname{Hom}_{\mathrm{SimpSets}}
+\bigl(A,\operatorname{Hom}_{\mathrm{SR}}(T,K_\bullet)\bigr).
+\tag{2.4}
+\]">\[
+T\longmapsto
+\operatorname{Hom}_{\mathrm{SimpSets}}
+\bigl(A,\operatorname{Hom}_{\mathrm{SR}}(T,K_\bullet)\bigr).
+\tag{2.4}
+\]</span>
+<p>It is a finite limit: choose the images of the finitely many nondegenerate simplices and impose their face relations. Degeneracies then determine the other images.</p>
+<p>For completeness, every simplex has a unique expression as a degeneracy of a nondegenerate simplex. Existence follows by reducing dimension until no degeneracy remains. If <span class="math" data-tex="\(x=\varphi^*y=\psi^*z\)">\(x=\varphi^*y=\psi^*z\)</span> for surjections <span class="math" data-tex="\(\varphi:[n]\twoheadrightarrow[k]\)">\(\varphi:[n]\twoheadrightarrow[k]\)</span>, <span class="math" data-tex="\(\psi:[n]\twoheadrightarrow[l]\)">\(\psi:[n]\twoheadrightarrow[l]\)</span> and nondegenerate <span class="math" data-tex="\(y,z\)">\(y,z\)</span>, choose a right inverse <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Nondegeneracy of <span class="math" data-tex="\(z=(\varphi\xi)^*y\)">\(z=(\varphi\xi)^*y\)</span> forces <span class="math" data-tex="\(\varphi\xi\)">\(\varphi\xi\)</span> to be surjective, so <span class="math" data-tex="\(l\ge k\)">\(l\ge k\)</span>. Interchanging the roles gives equality. Thus <span class="math" data-tex="\(\varphi\xi\)">\(\varphi\xi\)</span> is the identity for every right inverse <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Any element of a fibre of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> can be chosen as the value of such a right inverse, since its fibres are ordered consecutive blocks. It follows that <span class="math" data-tex="\(\varphi=\psi\)">\(\varphi=\psi\)</span>; applying a right inverse gives <span class="math" data-tex="\(y=z\)">\(y=z\)</span>. This proves the claim and the finite-limit description in (2.4).</p>
+<p>In particular</p>
+<span class="math math-display" data-tex="\[
+\langle\Delta[m],K\rangle=K_m,
+\qquad \langle\partial\Delta[m],K\rangle=M_mK.
+\tag{2.5}
+\]">\[
+\langle\Delta[m],K\rangle=K_m,
+\qquad \langle\partial\Delta[m],K\rangle=M_mK.
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the boundary is empty and its representing object is final. If finite simplicial subsets are glued along their intersection, their representing objects form a fibre product, because compatible maps on the two subsets are exactly a map on their union. A simplicial homotopy from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span> is a map <span class="math" data-tex="\(\Delta[1]\times K\to L\)">\(\Delta[1]\times K\to L\)</span> restricting to these maps at the two endpoints; the product means degreewise coproducts of <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, indexed by <span class="math" data-tex="\(\Delta[1]_m\)">\(\Delta[1]_m\)</span>.</p>
+<p>The augmentation has remained fixed in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span> throughout these limits. Forgetting it would change the matching objects. Compare [Conrad, Definition 4.1 and Examples 4.4–4.5], which give a complementary formulation in a category with a class of covering morphisms.</p>
+<h2 id="3-hypercoverings-fill-locally">3. Hypercoverings fill locally</h2>
+<p>A <strong>hypercovering of <span class="math" data-tex="\(X\)">\(X\)</span></strong> is a simplicial object <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span> for which every matching morphism</p>
+<span class="math math-display" data-tex="\[
+K_m\longrightarrow M_mK
+\tag{3.1}
+\]">\[
+K_m\longrightarrow M_mK
+\tag{3.1}
+\]</span>
+<p>is a covering, including <span class="math" data-tex="\(K_0\to1_X\)">\(K_0\to1_X\)</span>. In degree one it covers every ordered pair of local vertices. In degree two it covers every triple of edges with compatible vertices. The higher conditions cover every compatible boundary, not just horns.</p>
+<p><strong>Example 3.1 (the ordinary nerve).</strong> Let <span class="math" data-tex="\(\mathcal U=\{U_i\to X\}\)">\(\mathcal U=\{U_i\to X\}\)</span> be a cover and put <span class="math" data-tex="\(K=\operatorname{cosk}_0\mathcal U\)">\(K=\operatorname{cosk}_0\mathcal U\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+K_m=\{U_{i_0}\times_X\cdots\times_XU_{i_m}\to X\}_{(i_0,\ldots,i_m)}.
+\tag{3.2}
+\]">\[
+K_m=\{U_{i_0}\times_X\cdots\times_XU_{i_m}\to X\}_{(i_0,\ldots,i_m)}.
+\tag{3.2}
+\]</span>
+<p>Faces forget a factor and degeneracies repeat one by its diagonal. A boundary in positive degree is determined by its vertices, so its matching map is an isomorphism. Together with the covering in degree zero this proves that <span class="math" data-tex="\(K\)">\(K\)</span> is a hypercovering. Indices may repeat and need not be ordered. Formula (3.2) is the Čech hypercovering.</p>
+<p><strong>Lemma 3.2 (finite filling).</strong> If <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> are finite simplicial sets and <span class="math" data-tex="\(K\)">\(K\)</span> is a hypercovering, then</p>
+<span class="math math-display" data-tex="\[
+\langle B,K\rangle\longrightarrow\langle A,K\rangle
+\tag{3.3}
+\]">\[
+\langle B,K\rangle\longrightarrow\langle A,K\rangle
+\tag{3.3}
+\]</span>
+<p>is a covering in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span>.</p>
+<p><strong>Proof.</strong> Adjoin the nondegenerate simplices of <span class="math" data-tex="\(B\setminus A\)">\(B\setminus A\)</span> in increasing dimension. Before adjoining a simplex, all its proper faces have already been adjoined. The new simplicial subset is the pushout of <span class="math" data-tex="\(\partial\Delta[m]\to\Delta[m]\)">\(\partial\Delta[m]\to\Delta[m]\)</span> along the map describing those faces: its remaining simplices are the distinct degeneracies of this new nondegenerate simplex, by the uniqueness just proved. By (2.5), the resulting restriction map of representing objects is a base change of <span class="math" data-tex="\(K_m\to M_mK\)">\(K_m\to M_mK\)</span>. It is a covering. There are only finitely many attachments, so their composite is a covering. This includes attaching a vertex to an empty subset, using <span class="math" data-tex="\(K_0\to1_X\)">\(K_0\to1_X\)</span>. ∎</p>
+<p>Let <span class="math" data-tex="\(P_\bullet=\Phi(K_\bullet)\)">\(P_\bullet=\Phi(K_\bullet)\)</span>, with its augmentation to <span class="math" data-tex="\(h_X\)">\(h_X\)</span>. Write <span class="math" data-tex="\(\mathbf Z[P_m]\)">\(\mathbf Z[P_m]\)</span> for the free abelian presheaf on <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, and a superscript <span class="math" data-tex="\(\#\)">\(\#\)</span> for associated sheaf. With the alternating face differential <span class="math" data-tex="\(\partial=\sum_i(-1)^id_i\)">\(\partial=\sum_i(-1)^id_i\)</span>, we obtain an augmented complex</p>
+<span class="math math-display" data-tex="\[
+\cdots\longrightarrow\mathbf Z[P_2]^\#
+\longrightarrow\mathbf Z[P_1]^\#
+\longrightarrow\mathbf Z[P_0]^\#
+\longrightarrow\mathbf Z[h_X]^\#\longrightarrow0.
+\tag{3.4}
+\]">\[
+\cdots\longrightarrow\mathbf Z[P_2]^\#
+\longrightarrow\mathbf Z[P_1]^\#
+\longrightarrow\mathbf Z[P_0]^\#
+\longrightarrow\mathbf Z[h_X]^\#\longrightarrow0.
+\tag{3.4}
+\]</span>
+<p>The last sheaf is denoted <span class="math" data-tex="\(\mathbf Z_X^\#\)">\(\mathbf Z_X^\#\)</span>. It is the free abelian sheaf on <span class="math" data-tex="\(h_X^\#\)">\(h_X^\#\)</span>; on the slice site <span class="math" data-tex="\(\mathcal C/X\)">\(\mathcal C/X\)</span>, it becomes the associated constant sheaf <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>.</p>
+<p><strong>Theorem 3.3 (acyclicity).</strong> Complex (3.4) is exact.</p>
+<p><strong>Proof.</strong> Associated sheaf is exact for abelian presheaves. A section of a free abelian sheaf can locally be represented by a finite sum of presheaf generators. If its differential is zero in the associated sheaf, restrict further so that this finite sum has zero differential in the presheaf. Thus it suffices to make every finite presheaf cycle a boundary locally.</p>
+<p>Over an object <span class="math" data-tex="\(T\)">\(T\)</span>, the augmented simplicial set <span class="math" data-tex="\(P_\bullet(T)\to h_X(T)\)">\(P_\bullet(T)\to h_X(T)\)</span> splits into fibres indexed by maps <span class="math" data-tex="\(u:T\to X\)">\(u:T\to X\)</span>. A finite chain uses only finitely many such maps; its differential preserves them. In degree zero, the augmentation-zero condition says that the coefficient sum in each fibre is zero. In higher degrees, the cycle condition holds separately in each fibre. We may treat these finitely many fibres in turn and take a common covering refinement at the end.</p>
+<p>Fix one fibre and its finite cycle <span class="math" data-tex="\(z\)">\(z\)</span>. Let <span class="math" data-tex="\(A\)">\(A\)</span> be the finite simplicial subset generated by its supporting simplices and their faces. Adjoin a cone vertex and its cone simplices, giving the finite simplicial set <span class="math" data-tex="\(CA\)">\(CA\)</span>. The given map <span class="math" data-tex="\(A\to P_\bullet(T)\)">\(A\to P_\bullet(T)\)</span> is a <span class="math" data-tex="\(T\)">\(T\)</span>-valued point of <span class="math" data-tex="\(\langle A,K\rangle\)">\(\langle A,K\rangle\)</span>, over the chosen <span class="math" data-tex="\(u\)">\(u\)</span>. Here (2.4) and <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>'s preservation of finite limits identify that point with its actual family of presheaf simplices. Pulling back the covering (3.3) gives a cover of <span class="math" data-tex="\(T\)">\(T\)</span> on which it extends to <span class="math" data-tex="\(CA\)">\(CA\)</span>. If the support is empty there is no chain to fill; to obtain a vertex alone use the same assertion for <span class="math" data-tex="\(\varnothing\subset\Delta[0]\)">\(\varnothing\subset\Delta[0]\)</span>.</p>
+<p>On the augmented free chain complex of a cone, putting the cone vertex first defines an operator <span class="math" data-tex="\(c\)">\(c\)</span> of degree one. The faces of the cone on a simplex <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> satisfy <span class="math" data-tex="\(d_0(c\sigma)=\sigma\)">\(d_0(c\sigma)=\sigma\)</span> and <span class="math" data-tex="\(d_i(c\sigma)=c(d_{i-1}\sigma)\)">\(d_i(c\sigma)=c(d_{i-1}\sigma)\)</span> for <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>. Send the augmented generator to the cone vertex. Hence</p>
+<span class="math math-display" data-tex="\[
+\partial c+c\partial=1
+\tag{3.5}
+\]">\[
+\partial c+c\partial=1
+\tag{3.5}
+\]</span>
+<p>in all augmented degrees, including degree zero. Degenerate simplices satisfy the same identities, so this uses the full, unnormalized complex. The chosen extension sends (3.5) into <span class="math" data-tex="\(P_\bullet\)">\(P_\bullet\)</span> and gives <span class="math" data-tex="\(z=\partial(cz)\)">\(z=\partial(cz)\)</span> locally. This proves exactness at each nonnegative degree. Finally, every generator <span class="math" data-tex="\(u\in h_X(T)\)">\(u\in h_X(T)\)</span> lifts locally to <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, by the degree-zero cover; its finite integer combinations lift after a common refinement. The augmentation is therefore an epimorphism of sheaves. ∎</p>
+<p>This proof uses local boundary fillers and finite supports, and requires no points of the topos. Its conclusion concerns the associated sheaves: the presheaf complex need not already be exact on sections over a fixed object.</p>
+<h2 id="4-the-cochain-complex-and-its-comparison">4. The cochain complex and its comparison</h2>
+<p>For an abelian presheaf <span class="math" data-tex="\(F\)">\(F\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+C^p(K,F)=F(K_p)=\prod_{i\in I_p}F(U_{p,i}),\qquad
+d=\sum_{j=0}^{p+1}(-1)^jd_j^*.
+\tag{4.1}
+\]">\[
+C^p(K,F)=F(K_p)=\prod_{i\in I_p}F(U_{p,i}),\qquad
+d=\sum_{j=0}^{p+1}(-1)^jd_j^*.
+\tag{4.1}
+\]</span>
+<p>The simplicial identities cancel each pair of successive faces with opposite signs, so <span class="math" data-tex="\(d^2=0\)">\(d^2=0\)</span>. Define <span class="math" data-tex="\(\check H^p(K,F)=H^p(C^\bullet(K,F))\)">\(\check H^p(K,F)=H^p(C^\bullet(K,F))\)</span>. For (3.2), this is exactly the full Čech complex of the cover from lesson 3.</p>
+<p>For a sheaf <span class="math" data-tex="\(F\)">\(F\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\check H^0(K,F)=F(X).
+\tag{4.2}
+\]">\[
+\check H^0(K,F)=F(X).
+\tag{4.2}
+\]</span>
+<p>Indeed, a zero cocycle is a family of sections on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> whose two restrictions agree on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Since <span class="math" data-tex="\(K_1\)">\(K_1\)</span> covers <span class="math" data-tex="\(K_0\times K_0\)">\(K_0\times K_0\)</span>, separatedness makes them agree on the actual pairwise intersections. They glue uniquely on the covering <span class="math" data-tex="\(K_0\to X\)">\(K_0\to X\)</span>. The converse follows by restriction, so this is an inverse bijection.</p>
+<p>The free abelian adjunction and (1.1) identify the complex in (4.1) with</p>
+<span class="math math-display" data-tex="\[
+C^\bullet(K,F)=
+\operatorname{Hom}\bigl(\mathbf Z[P_\bullet]^\#,F\bigr).
+\tag{4.3}
+\]">\[
+C^\bullet(K,F)=
+\operatorname{Hom}\bigl(\mathbf Z[P_\bullet]^\#,F\bigr).
+\tag{4.3}
+\]</span>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is an injective abelian sheaf, applying <span class="math" data-tex="\(\operatorname{Hom}(-,I)\)">\(\operatorname{Hom}(-,I)\)</span> to the exact augmented complex (3.4) is exact. For example, a functional vanishing on the incoming boundary descends to its cokernel, identified with the next boundary subobject, and extends to the next chain term by injectivity. Thus</p>
+<span class="math math-display" data-tex="\[
+\check H^p(K,I)=0\ (p&gt;0),\qquad
+\check H^0(K,I)=I(X).
+\tag{4.4}
+\]">\[
+\check H^p(K,I)=0\ (p&gt;0),\qquad
+\check H^0(K,I)=I(X).
+\tag{4.4}
+\]</span>
+<p><strong>Theorem 4.1 (comparison spectral sequence).</strong> For an abelian sheaf <span class="math" data-tex="\(F\)">\(F\)</span> and a hypercovering <span class="math" data-tex="\(K\)">\(K\)</span>, there is a canonical map</p>
+<span class="math math-display" data-tex="\[
+C^\bullet(K,F)\longrightarrow R\Gamma(X,F)
+\quad\text{in }D^+(\mathrm{Ab}),
+\tag{4.5}
+\]">\[
+C^\bullet(K,F)\longrightarrow R\Gamma(X,F)
+\quad\text{in }D^+(\mathrm{Ab}),
+\tag{4.5}
+\]</span>
+<p>and a first quadrant spectral sequence</p>
+<span class="math math-display" data-tex="\[
+E_2^{p,q}=\check H^p(K,\mathcal H^q(F))
+\ \Longrightarrow\ H^{p+q}(X,F),
+\qquad \mathcal H^q(F)(U)=H^q(U,F).
+\tag{4.6}
+\]">\[
+E_2^{p,q}=\check H^p(K,\mathcal H^q(F))
+\ \Longrightarrow\ H^{p+q}(X,F),
+\qquad \mathcal H^q(F)(U)=H^q(U,F).
+\tag{4.6}
+\]</span>
+<p>Both constructions are natural in the coefficient sheaf and in maps of hypercoverings. Coefficient cohomology in this formula is a presheaf; its positive-degree associated sheaf is zero, but its groups of sections need not be zero.</p>
+<p><strong>Proof.</strong> Choose an injective resolution <span class="math" data-tex="\(F\to I^\bullet\)">\(F\to I^\bullet\)</span> and form</p>
+<span class="math math-display" data-tex="\[
+D^{p,q}=I^q(K_p),\qquad
+d_{\mathrm{Tot}}=d_h+(-1)^p d_v.
+\tag{4.7}
+\]">\[
+D^{p,q}=I^q(K_p),\qquad
+d_{\mathrm{Tot}}=d_h+(-1)^p d_v.
+\tag{4.7}
+\]</span>
+<p>The two differentials commute before this sign is inserted. In each total degree there are finitely many summands. Taking horizontal cohomology first, (4.4) leaves the single column <span class="math" data-tex="\(I^\bullet(X)\)">\(I^\bullet(X)\)</span>. The augmentation gives a quasi-isomorphism</p>
+<span class="math math-display" data-tex="\[
+I^\bullet(X)\longrightarrow\operatorname{Tot}D.
+\tag{4.8}
+\]">\[
+I^\bullet(X)\longrightarrow\operatorname{Tot}D.
+\tag{4.8}
+\]</span>
+<p>Compose <span class="math" data-tex="\(C^\bullet(K,F)\to\operatorname{Tot}D\)">\(C^\bullet(K,F)\to\operatorname{Tot}D\)</span>, induced by <span class="math" data-tex="\(F\to I^0\)">\(F\to I^0\)</span>, with the inverse of (4.8) in the derived category. This gives (4.5).</p>
+<p>Taking vertical cohomology first gives <span class="math" data-tex="\(E_1^{p,q}=\prod_iH^q(U_{p,i},F)\)">\(E_1^{p,q}=\prod_iH^q(U_{p,i},F)\)</span>: products of abelian groups are exact, and evaluation of the resolution computes each indicated group. Its first horizontal differential is (4.1) for the presheaf <span class="math" data-tex="\(\mathcal H^q(F)\)">\(\mathcal H^q(F)\)</span>. This proves the page formula (4.6). The first quadrant bounds give convergence with a finite filtration in each total degree, by the double-complex theorem used in lesson 3.</p>
+<p>A coefficient map extends to a comparison map of injective resolutions. Two such extensions are homotopic; applying the section functors gives the corresponding total homotopy, so (4.5) is independent of the extension and resolution. A hypercovering map acts by restriction on every <span class="math" data-tex="\(D^{p,q}\)">\(D^{p,q}\)</span>, commutes with its differentials and augmentations, and preserves the filtration. This proves naturality of the comparison and spectral sequence. Resolution comparison gives the same identification for its pages from the cohomology pages onward. ∎</p>
+<h2 id="5-changing-a-chosen-degree">5. Changing a chosen degree</h2>
+<p>We next prove that a local choice in any one degree can be incorporated in a new hypercovering.</p>
+<p>Call a simplicial morphism <span class="math" data-tex="\(B\to A\)">\(B\to A\)</span> a <strong>relative covering</strong> if</p>
+<span class="math math-display" data-tex="\[
+B_m\longrightarrow A_m\times_{M_mA}M_mB
+\tag{5.1}
+\]">\[
+B_m\longrightarrow A_m\times_{M_mA}M_mB
+\tag{5.1}
+\]</span>
+<p>is a covering for every <span class="math" data-tex="\(m\)">\(m\)</span>, with <span class="math" data-tex="\(M_0A=M_0B=1_X\)">\(M_0A=M_0B=1_X\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is a hypercovering and <span class="math" data-tex="\(K\to A\)">\(K\to A\)</span> is any map, then <span class="math" data-tex="\(K\times_A B\)">\(K\times_A B\)</span> is a hypercovering whenever (5.1) holds. To prove this, matching preserves fibre products, so its degree-<span class="math" data-tex="\(m\)">\(m\)</span> matching target is <span class="math" data-tex="\(M_mK\times_{M_mA}M_mB\)">\(M_mK\times_{M_mA}M_mB\)</span>. The matching map factors as two coverings:</p>
+<span class="math math-display" data-tex="\[
+K_m\times_{A_m}B_m
+\longrightarrow K_m\times_{M_mA}M_mB
+\longrightarrow M_mK\times_{M_mA}M_mB.
+\tag{5.2}
+\]">\[
+K_m\times_{A_m}B_m
+\longrightarrow K_m\times_{M_mA}M_mB
+\longrightarrow M_mK\times_{M_mA}M_mB.
+\tag{5.2}
+\]</span>
+<p>The first is a base change of (5.1), the second of the matching cover of <span class="math" data-tex="\(K\)">\(K\)</span>. This also proves the assertion in degree zero.</p>
+<p><strong>Lemma 5.1 (degree refinement).</strong> Let <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span> and let <span class="math" data-tex="\(Z\to K_r\)">\(Z\to K_r\)</span> be a covering in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span>, with <span class="math" data-tex="\(K\)">\(K\)</span> a hypercovering. There is a hypercovering map <span class="math" data-tex="\(L\to K\)">\(L\to K\)</span> whose degree-<span class="math" data-tex="\(r\)">\(r\)</span> map factors through <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Proof.</strong> For an object <span class="math" data-tex="\(W\)">\(W\)</span> define the simplicial object</p>
+<span class="math math-display" data-tex="\[
+(Q_rW)_m=\prod_{\alpha:[r]\to[m]}W.
+\tag{5.3}
+\]">\[
+(Q_rW)_m=\prod_{\alpha:[r]\to[m]}W.
+\tag{5.3}
+\]</span>
+<p>For <span class="math" data-tex="\(\beta:[l]\to[m]\)">\(\beta:[l]\to[m]\)</span>, restriction sends the coordinate indexed by <span class="math" data-tex="\(\gamma:[r]\to[l]\)">\(\gamma:[r]\to[l]\)</span> to the coordinate indexed by <span class="math" data-tex="\(\beta\gamma\)">\(\beta\gamma\)</span>. These rules compose, so define a simplicial object. A map <span class="math" data-tex="\(K\to Q_rW\)">\(K\to Q_rW\)</span> is equivalent to a map <span class="math" data-tex="\(K_r\to W\)">\(K_r\to W\)</span>: its coordinate <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> must be the latter map composed with <span class="math" data-tex="\(\alpha^*:K_m\to K_r\)">\(\alpha^*:K_m\to K_r\)</span>. Projection to the identity coordinate recovers the original map, verifying both inverses.</p>
+<p>The matching object of <span class="math" data-tex="\(Q_rW\)">\(Q_rW\)</span> in degree <span class="math" data-tex="\(m\)">\(m\)</span> is</p>
+<span class="math math-display" data-tex="\[
+M_m(Q_rW)=\prod_{\substack{\alpha:[r]\to[m]\\\alpha\text{ not onto}}}W.
+\tag{5.4}
+\]">\[
+M_m(Q_rW)=\prod_{\substack{\alpha:[r]\to[m]\\\alpha\text{ not onto}}}W.
+\tag{5.4}
+\]</span>
+<p>To check this for <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, a coordinate in a boundary face is an increasing map whose image misses that face's omitted vertex. If it occurs in two faces, its image misses both, and the common-face relation identifies the two copies. Conversely, every map missing a vertex occurs in that face; two presentations meet in the face missing both vertices, which proves there are no other coordinates or relations. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> the indexing set in (5.4) is empty, giving the final object, as required.</p>
+<p>Put <span class="math" data-tex="\(Y=K_r\)">\(Y=K_r\)</span> and use the map <span class="math" data-tex="\(K\to Q_rY\)">\(K\to Q_rY\)</span> corresponding to the identity. The map <span class="math" data-tex="\(Q_rZ\to Q_rY\)">\(Q_rZ\to Q_rY\)</span> is a relative covering: its degree-<span class="math" data-tex="\(m\)">\(m\)</span> relative matching morphism is the identity on the factors with non-surjective <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and <span class="math" data-tex="\(Z\to Y\)">\(Z\to Y\)</span> on the factors with surjective <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. There are finitely many factors, so it is a covering. Define</p>
+<span class="math math-display" data-tex="\[
+L=K\times_{Q_rY}Q_rZ.
+\tag{5.5}
+\]">\[
+L=K\times_{Q_rY}Q_rZ.
+\tag{5.5}
+\]</span>
+<p>It is a hypercovering by (5.2). Projection from <span class="math" data-tex="\(L_r\)">\(L_r\)</span> to the coordinate of <span class="math" data-tex="\(Q_rZ\)">\(Q_rZ\)</span> indexed by <span class="math" data-tex="\(\operatorname{id}_{[r]}\)">\(\operatorname{id}_{[r]}\)</span> factors its map to <span class="math" data-tex="\(K_r=Y\)">\(K_r=Y\)</span> through <span class="math" data-tex="\(Z\)">\(Z\)</span>, by the defining fibre product square. ∎</p>
+<p>Consequently a cochain <span class="math" data-tex="\(\sigma\in H(K_r)\)">\(\sigma\in H(K_r)\)</span>, for an epimorphism of sheaves <span class="math" data-tex="\(G\to H\)">\(G\to H\)</span>, lifts to <span class="math" data-tex="\(G(L_r)\)">\(G(L_r)\)</span> after a refinement. On each component <span class="math" data-tex="\(U_{r,i}\)">\(U_{r,i}\)</span>, choose a cover on which <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span> lifts. Concatenate these covers to a covering <span class="math" data-tex="\(Z\to K_r\)">\(Z\to K_r\)</span>, with its chosen lifting cochain. Lemma 5.1 pulls it back to the required lift on <span class="math" data-tex="\(L_r\)">\(L_r\)</span>. The same argument kills a specified cochain in <span class="math" data-tex="\(\mathcal H^q(F)(K_r)\)">\(\mathcal H^q(F)(K_r)\)</span> when <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, using local vanishing from lesson 3. Finite sequences of such choices can be made by repeated refinement.</p>
+<p>Every map between hypercoverings will be called a <strong>refinement map</strong> here. It need not be a covering in every degree, nor a relative covering as in (5.1). The latter are special maps used to build convenient refinements.</p>
+<h2 id="6-maps-become-homotopic-after-refinement">6. Maps become homotopic after refinement</h2>
+<p>Homotopic simplicial maps induce equal maps on cohomology. An explicit chain homotopy makes this statement useful. Suppose <span class="math" data-tex="\(h:\Delta[1]\times K\to L\)">\(h:\Delta[1]\times K\to L\)</span> has endpoints <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. For an <span class="math" data-tex="\(n\)">\(n\)</span>-simplex, triangulate its product with the interval into the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> simplices whose vertex lists switch once from endpoint zero to endpoint one. Algebraically their maps are</p>
+<span class="math math-display" data-tex="\[
+h_j=h\bigl(s_j(-),t_j\bigr):K_n\longrightarrow L_{n+1},
+\quad 0\le j\le n,
+\]">\[
+h_j=h\bigl(s_j(-),t_j\bigr):K_n\longrightarrow L_{n+1},
+\quad 0\le j\le n,
+\]</span>
+<p>where <span class="math" data-tex="\(t_j:[n+1]\to[1]\)">\(t_j:[n+1]\to[1]\)</span> has values zero through position <span class="math" data-tex="\(j\)">\(j\)</span> and one thereafter. Set <span class="math" data-tex="\(P_n=\sum_{j=0}^n(-1)^j\mathbf Z[h_j]\)">\(P_n=\sum_{j=0}^n(-1)^j\mathbf Z[h_j]\)</span>. In the boundary of this sum, faces before or after the switching position cancel with the corresponding terms of <span class="math" data-tex="\(P_{n-1}\partial\)">\(P_{n-1}\partial\)</span>. The two faces on either side of each interior switch cancel with the adjacent prism simplex; the remaining endpoints are the top simplex <span class="math" data-tex="\(b\)">\(b\)</span> and the bottom simplex <span class="math" data-tex="\(-a\)">\(-a\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\partial P+P\partial=b_*-a_*.
+\tag{6.1}
+\]">\[
+\partial P+P\partial=b_*-a_*.
+\tag{6.1}
+\]</span>
+<p>This is also true in degree zero, where it is the boundary of the single path. Applying Hom into <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(dS+Sd=b^*-a^*\)">\(dS+Sd=b^*-a^*\)</span> on (4.1). Hence the maps <span class="math" data-tex="\(\check H^i(L,F)\to\check H^i(K,F)\)">\(\check H^i(L,F)\to\check H^i(K,F)\)</span> are equal. On (4.7), the same operator lowers the horizontal degree; its two vertical contributions have opposite signs, so the total homotopy also proves compatibility with (4.5).</p>
+<p><strong>Theorem 6.1.</strong> If <span class="math" data-tex="\(a,b:K\to L\)">\(a,b:K\to L\)</span> are any two maps of hypercoverings, there exists a refinement <span class="math" data-tex="\(c:K&#x27;\to K\)">\(c:K&#x27;\to K\)</span> such that <span class="math" data-tex="\(ac\)">\(ac\)</span> and <span class="math" data-tex="\(bc\)">\(bc\)</span> are simplicially homotopic. In particular they induce equal maps after that refinement, and in the colimit of Čech cohomology.</p>
+<p><strong>Proof.</strong> Define the simplicial path object by</p>
+<span class="math math-display" data-tex="\[
+(L^{\Delta[1]})_m=\langle\Delta[m]\times\Delta[1],L\rangle.
+\]">\[
+(L^{\Delta[1]})_m=\langle\Delta[m]\times\Delta[1],L\rangle.
+\]</span>
+<p>Restrictions come from the first factor. The products of simplices here are finite: in a nondegenerate simplex of <span class="math" data-tex="\(\Delta[m]\times\Delta[1]\)">\(\Delta[m]\times\Delta[1]\)</span>, some coordinate strictly increases at each step, so its dimension is at most <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. Evaluation at the two endpoints gives <span class="math" data-tex="\(L^{\Delta[1]}\to L\times L\)">\(L^{\Delta[1]}\to L\times L\)</span>. Its degree-<span class="math" data-tex="\(m\)">\(m\)</span> relative matching target represents maps on</p>
+<span class="math math-display" data-tex="\[
+A_m=(\partial\Delta[m]\times\Delta[1])
+\cup(\Delta[m]\times\partial\Delta[1]).
+\tag{6.2}
+\]">\[
+A_m=(\partial\Delta[m]\times\Delta[1])
+\cup(\Delta[m]\times\partial\Delta[1]).
+\tag{6.2}
+\]</span>
+<p>Indeed, the first part prescribes the boundary paths and the second their endpoints. Their intersection is exactly <span class="math" data-tex="\(\partial\Delta[m]\times\partial\Delta[1]\)">\(\partial\Delta[m]\times\partial\Delta[1]\)</span>, so agreeing on it is precisely the relative matching fibre product. Restricting from the full prism to (6.2) is a covering by Lemma 3.2. This proves that the endpoint map is a relative covering, including <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, when it is <span class="math" data-tex="\(L_1\to L_0\times L_0\)">\(L_1\to L_0\times L_0\)</span>.</p>
+<p>Set <span class="math" data-tex="\(K&#x27;=K\times_{L\times L}L^{\Delta[1]}\)">\(K&#x27;=K\times_{L\times L}L^{\Delta[1]}\)</span>, using <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Formula (5.2) makes it a hypercovering. Its projection to the path object supplies a homotopy with endpoints <span class="math" data-tex="\(ac,bc\)">\(ac,bc\)</span>. To see this directly, evaluate a map on <span class="math" data-tex="\(\Delta[m]\times\Delta[1]\)">\(\Delta[m]\times\Delta[1]\)</span> at each <span class="math" data-tex="\(m\)">\(m\)</span>-simplex <span class="math" data-tex="\(t\)">\(t\)</span> of the interval along <span class="math" data-tex="\((\operatorname{id},t)\)">\((\operatorname{id},t)\)</span>. These evaluations give the degree-<span class="math" data-tex="\(m\)">\(m\)</span> components of <span class="math" data-tex="\(K&#x27;\times\Delta[1]\to L\)">\(K&#x27;\times\Delta[1]\to L\)</span>, and commute with restrictions. They give the specified endpoint maps. ∎</p>
+<p>Let <span class="math" data-tex="\(\mathrm{HC}(\mathcal C,X)\)">\(\mathrm{HC}(\mathcal C,X)\)</span> have hypercoverings as objects and maps modulo the equivalence relation <strong>generated</strong> by simplicial homotopies. Taking the generated relation avoids assuming that one-step simplicial homotopy is transitive. Composing a homotopy on either side gives another homotopy, so this quotient is a category. The cohomology functors factor through it by (6.1).</p>
+<p>This category is cofiltered. It is nonempty, since the constant simplicial object <span class="math" data-tex="\(1_X\)">\(1_X\)</span> is a hypercovering. Two hypercoverings have the levelwise product over <span class="math" data-tex="\(X\)">\(X\)</span>: its matching map is the product of the two matching covers, so it is a hypercovering with projections to both. Finally Theorem 6.1 equalizes any pair of parallel maps in the homotopy category after precomposition. These are exactly the cofiltered conditions. All objects, arrows and countable simplicial diagrams built from <span class="math" data-tex="\(\mathbb U\)">\(\mathbb U\)</span>-small families form sets in <span class="math" data-tex="\(\mathbb V\)">\(\mathbb V\)</span>; taking a quotient still gives a <span class="math" data-tex="\(\mathbb V\)">\(\mathbb V\)</span>-small category. We can therefore take an ordinary filtered colimit over its opposite.</p>
+<p>The conclusion of Theorem 6.1 includes an essential refinement. Arbitrary maps of a fixed hypercovering need not act equally on its Čech cohomology. Section 8 gives an explicit example. Homotopic maps already act equally on the fixed complex's cohomology; arbitrary maps act equally after passing to a suitable refinement.</p>
+<h2 id="7-cohomology-is-the-colimit">7. Cohomology is the colimit</h2>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+T^i(F)=\underset{K\in\mathrm{HC}(\mathcal C,X)^{\mathrm{op}}}
+{\operatorname{colim}}\check H^i(K,F).
+\tag{7.1}
+\]">\[
+T^i(F)=\underset{K\in\mathrm{HC}(\mathcal C,X)^{\mathrm{op}}}
+{\operatorname{colim}}\check H^i(K,F).
+\tag{7.1}
+\]</span>
+<p>A class is represented on a hypercovering, and two representatives agree if they agree after a common refinement. A class is zero if it becomes a boundary after a refinement. These assertions follow from filteredness: for any finite list of objects and arrows, the filtered conditions place them in a common target with the required equalities. Thus the usual quotient description of a colimit identifies exactly these representatives. By (4.2), <span class="math" data-tex="\(T^0(F)=F(X)\)">\(T^0(F)=F(X)\)</span>, with all transition maps identified with the identity.</p>
+<p><strong>Theorem 7.1 (hypercovering comparison).</strong> The maps (4.5) induce natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+T^i(F)\xrightarrow{\ \sim\ }H^i(X,F)
+\qquad(i\ge0).
+\tag{7.2}
+\]">\[
+T^i(F)\xrightarrow{\ \sim\ }H^i(X,F)
+\qquad(i\ge0).
+\tag{7.2}
+\]</span>
+<p><strong>Proof.</strong> We construct the connecting maps and prove every part of their exactness. Given</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow F\xrightarrow{u}G\xrightarrow{v}H\longrightarrow0,
+\tag{7.3}
+\]">\[
+0\longrightarrow F\xrightarrow{u}G\xrightarrow{v}H\longrightarrow0,
+\tag{7.3}
+\]</span>
+<p>represent <span class="math" data-tex="\(\xi\in T^p(H)\)">\(\xi\in T^p(H)\)</span> by a cocycle <span class="math" data-tex="\(\sigma\in H(K_p)\)">\(\sigma\in H(K_p)\)</span>. Lemma 5.1 permits a refinement on which it lifts to <span class="math" data-tex="\(\tau\in G(K_p)\)">\(\tau\in G(K_p)\)</span>. Since <span class="math" data-tex="\(v(d\tau)=d\sigma=0\)">\(v(d\tau)=d\sigma=0\)</span>, left exactness of sections identifies <span class="math" data-tex="\(d\tau\)">\(d\tau\)</span> with a unique cochain <span class="math" data-tex="\(z\in F(K_{p+1})\)">\(z\in F(K_{p+1})\)</span>. It is a cocycle, because <span class="math" data-tex="\(u(dz)=d^2\tau=0\)">\(u(dz)=d^2\tau=0\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> is injective on sections. Define</p>
+<span class="math math-display" data-tex="\[
+\delta\xi=[z]\in T^{p+1}(F).
+\tag{7.4}
+\]">\[
+\delta\xi=[z]\in T^{p+1}(F).
+\tag{7.4}
+\]</span>
+<p>If the lift changes, the two lifts differ by a cochain in <span class="math" data-tex="\(F\)">\(F\)</span>, so their differentials differ by a coboundary. If the representing cocycle changes by <span class="math" data-tex="\(d\lambda\)">\(d\lambda\)</span>, first refine to lift <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to a cochain <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>; changing the lift by <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span> leaves its differential unchanged. Two choices of refinement can be placed over a common hypercovering; their composites to the original one become homotopic after a further refinement by Theorem 6.1. Equation (6.1) changes the pulled back cocycles only by a coboundary, already covered by the previous argument. Finally equality of representatives in (7.1) means equality up to a coboundary after refinement, so the same reasoning establishes independence of the original representative. In degree zero there is no degree-minus-one cochain: the two zero-cocycle representatives simply agree after refinement.</p>
+<p>For additivity, place two cocycles and chosen lifts on a common refinement and add them; the lift of their sum has differential the sum of the two differentials. Independence makes this the asserted addition law. A morphism of short exact sequences sends a chosen lift to a chosen lift of the image, so the maps <span class="math" data-tex="\(\delta\)">\(\delta\)</span> are natural.</p>
+<p>The three exactness checks are as follows. First, if a <span class="math" data-tex="\(G\)">\(G\)</span>-cocycle maps to a boundary in <span class="math" data-tex="\(H\)">\(H\)</span>, refine until that boundary has the form <span class="math" data-tex="\(d\lambda\)">\(d\lambda\)</span>, and refine again to lift <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to <span class="math" data-tex="\(\mu\)">\(\mu\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. Subtracting <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span> leaves a <span class="math" data-tex="\(G\)">\(G\)</span>-cocycle whose image is zero, hence a cocycle in <span class="math" data-tex="\(F\)">\(F\)</span>. This proves <span class="math" data-tex="\(\ker(T^p(G)\to T^p(H))=\operatorname{im}T^p(F)\)">\(\ker(T^p(G)\to T^p(H))=\operatorname{im}T^p(F)\)</span>; in degree zero use zero image directly. Second, if (7.4) is zero, refine until <span class="math" data-tex="\(z=da\)">\(z=da\)</span> for a cochain <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>. Then <span class="math" data-tex="\(\tau-u(a)\)">\(\tau-u(a)\)</span> is a <span class="math" data-tex="\(G\)">\(G\)</span>-cocycle lifting <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Conversely a cocycle lift has zero connecting class. Third, if an <span class="math" data-tex="\(F\)">\(F\)</span>-cocycle <span class="math" data-tex="\(z\)">\(z\)</span> becomes a boundary in <span class="math" data-tex="\(G\)">\(G\)</span>, refine until <span class="math" data-tex="\(u(z)=d\tau\)">\(u(z)=d\tau\)</span>. Then <span class="math" data-tex="\(v(\tau)\)">\(v(\tau)\)</span> is an <span class="math" data-tex="\(H\)">\(H\)</span>-cocycle and its connecting class is <span class="math" data-tex="\([z]\)">\([z]\)</span>. Conversely a connecting cocycle is the boundary of its lift in <span class="math" data-tex="\(G\)">\(G\)</span>. In degree zero, injectivity of <span class="math" data-tex="\(F(X)\to G(X)\)">\(F(X)\to G(X)\)</span> supplies the initial zero. These checks prove the full long exact sequence for <span class="math" data-tex="\(T^\bullet\)">\(T^\bullet\)</span>.</p>
+<p>For every <span class="math" data-tex="\(F\)">\(F\)</span>, embed it into an injective sheaf <span class="math" data-tex="\(I\)">\(I\)</span>. By (4.4), <span class="math" data-tex="\(T^i(I)=0\)">\(T^i(I)=0\)</span> for <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>. Thus this delta-functor is effaceable, hence universal, by the ordinary homological algebra theorem used in lesson 3. The derived functors <span class="math" data-tex="\(H^i(X,-)\)">\(H^i(X,-)\)</span> are also universal, and have the same degree-zero functor. The unique morphisms of delta-functors extending that identity in both directions have composites equal to the identity, by uniqueness. This gives (7.2).</p>
+<p>It remains to check that this isomorphism is the comparison already constructed in (4.5), rather than an unrelated one. Choose compatible injective resolutions for (7.3) by the injective horseshoe lemma, with their sequence split in each resolution degree. Applying sections on each <span class="math" data-tex="\(K_p\)">\(K_p\)</span>, or on <span class="math" data-tex="\(X\)">\(X\)</span>, preserves this splitting. The resulting short exact sequences of total complexes and augmentation quasi-isomorphisms therefore commute with connecting maps. A chosen lift <span class="math" data-tex="\(\tau\)">\(\tau\)</span> in (7.4) maps into bidegree <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span> of the middle resolution double complex. Its vertical differential is zero, since it comes from <span class="math" data-tex="\(G\)">\(G\)</span>; its total differential is exactly <span class="math" data-tex="\(d_h\tau=u(z)\)">\(d_h\tau=u(z)\)</span>. Its connecting class in the first total complex is therefore the image of <span class="math" data-tex="\(z\)">\(z\)</span>, with the same sign as (7.4). This proves compatibility with <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The comparison is the identity in degree zero, so universality identifies it with the isomorphism above. ∎</p>
+<p>The theorem does not say that a fixed hypercovering computes all cohomology by its zero-row Čech complex. It says that refinements eventually supply all classes and all relations. An acyclic hypercovering, whose every component is <span class="math" data-tex="\(F\)">\(F\)</span>-acyclic, is a useful special case: (4.6) then has only the zero row, so that fixed hypercovering already computes <span class="math" data-tex="\(H^*(X,F)\)">\(H^*(X,F)\)</span>.</p>
+<h2 id="8-two-explicit-calculations">8. Two explicit calculations</h2>
+<p><strong>An ordinary cover of the circle.</strong> Take the two arcs <span class="math" data-tex="\(U,V\)">\(U,V\)</span> from lesson 3, whose intersection has two interval components. Its Čech hypercovering is (3.2). All its components are intervals or finite disjoint unions of intervals, so they are acyclic for <span class="math" data-tex="\(F=\underline{\mathbf Z}\)">\(F=\underline{\mathbf Z}\)</span>. Its full cochain complex has the same cohomology as the reduced two-open complex, by the repeated-index contraction proved there:</p>
+<span class="math math-display" data-tex="\[
+\mathbf Z^2\longrightarrow\mathbf Z^2,
+\qquad(a,b)\longmapsto(b-a,b-a).
+\tag{8.1}
+\]">\[
+\mathbf Z^2\longrightarrow\mathbf Z^2,
+\qquad(a,b)\longmapsto(b-a,b-a).
+\tag{8.1}
+\]</span>
+<p>It gives <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> in degrees zero and one, and zero in higher degrees. The fixed hypercovering computes the circle's sheaf cohomology because its components are acyclic, as verified in lesson 3.</p>
+<p><strong>A hypercovering with an extra class.</strong> On the same open-set site of <span class="math" data-tex="\(X=S^1\)">\(X=S^1\)</span>, keep <span class="math" data-tex="\(F=\underline{\mathbf Z}\)">\(F=\underline{\mathbf Z}\)</span>. We construct a hypercovering <span class="math" data-tex="\(K\)">\(K\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\check H^3(K,F)=\mathbf Z,
+\qquad H^3(X,F)=0.
+\tag{8.2}
+\]">\[
+\check H^3(K,F)=\mathbf Z,
+\qquad H^3(X,F)=0.
+\tag{8.2}
+\]</span>
+<p>This will also exhibit two maps that act differently before refinement.</p>
+<p>Set <span class="math" data-tex="\(K_0=\{X\}\)">\(K_0=\{X\}\)</span> and <span class="math" data-tex="\(K_1=\{X_0,X_e\}\)">\(K_1=\{X_0,X_e\}\)</span>, two formal copies of <span class="math" data-tex="\(X\)">\(X\)</span>. Both faces are the identity on the underlying open set, and <span class="math" data-tex="\(s_0\)">\(s_0\)</span> selects <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. Think of <span class="math" data-tex="\(0\)">\(0\)</span> as the degenerate edge and <span class="math" data-tex="\(e\)">\(e\)</span> as an extra loop. Since all vertices coincide, the degree-two matching object has eight components <span class="math" data-tex="\(X\)">\(X\)</span>, indexed by triples <span class="math" data-tex="\((a_0,a_1,a_2)\in\{0,e\}^3\)">\((a_0,a_1,a_2)\in\{0,e\}^3\)</span>.</p>
+<p>The degenerate two-simplices supply copies of <span class="math" data-tex="\(X\)">\(X\)</span> over the three triples</p>
+<span class="math math-display" data-tex="\[
+(0,0,0),\quad(e,e,0),\quad(0,e,e).
+\tag{8.3}
+\]">\[
+(0,0,0),\quad(e,e,0),\quad(0,e,e).
+\tag{8.3}
+\]</span>
+<p>These are, respectively, the twice-degenerate vertex, <span class="math" data-tex="\(s_0e\)">\(s_0e\)</span>, and <span class="math" data-tex="\(s_1e\)">\(s_1e\)</span>, as the face-degeneracy identities verify. Over <strong>each</strong> of the other five matching components, take the two component opens <span class="math" data-tex="\(U,V\)">\(U,V\)</span> and their inclusions into that copy of <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(K_2\)">\(K_2\)</span> be the resulting thirteen-member family: three copies of <span class="math" data-tex="\(X\)">\(X\)</span> and ten arc components. Its face maps are the inclusions into the components labelled by <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. The degeneracies are exactly the three copies specified in (8.3). Their faces satisfy all face-degeneracy identities; the two degeneracies of the zero edge both give the first copy. Thus we have a 2-truncated simplicial object. Put</p>
+<span class="math math-display" data-tex="\[
+K=\operatorname{cosk}_2(K_{\le2}).
+\tag{8.4}
+\]">\[
+K=\operatorname{cosk}_2(K_{\le2}).
+\tag{8.4}
+\]</span>
+<p>The covers in degrees zero and one contain identity components; in degree two, (8.3) gives identity covers on three matching components and the arc cover on each remaining one. In degrees at least three, the matching map is an isomorphism. To verify the last statement, compatible proper faces prescribe exactly the simplices of dimensions at most two in the full simplex. These already determine its unique simplex by (2.1), and agree on their intersections. Hence <span class="math" data-tex="\(K\)">\(K\)</span> is a hypercovering.</p>
+<p>Each component in every degree of (8.4) is a finite intersection of <span class="math" data-tex="\(X,U,V\)">\(X,U,V\)</span>, because coskeleton is formed by finite limits and maps of opens are inclusions. Such an intersection is <span class="math" data-tex="\(X\)">\(X\)</span>, an arc, their two-component intersection, or the empty open. Lesson 3 proves</p>
+<span class="math math-display" data-tex="\[
+H^q(W,F)=0\quad(q\ge2)
+\]">\[
+H^q(W,F)=0\quad(q\ge2)
+\]</span>
+<p>for all these opens <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(H^1(X,F)=\mathbf Z\)">\(H^1(X,F)=\mathbf Z\)</span>, while the proper opens on this list have zero <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Thus (4.6) has only its rows <span class="math" data-tex="\(q=0,1\)">\(q=0,1\)</span>.</p>
+<p>We can compute its <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> entry without examining higher matching objects. In the row <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the first two terms are <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> and <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span>, and their differential is zero since the two faces of each edge agree. Write an element of <span class="math" data-tex="\(\mathbf Z^2\)">\(\mathbf Z^2\)</span> as <span class="math" data-tex="\((a_0,a_e)\)">\((a_0,a_e)\)</span>. Its next differential has value <span class="math" data-tex="\(a_0\)">\(a_0\)</span> on each of the three <span class="math" data-tex="\(X\)">\(X\)</span>-components in (8.3): the three alternating sums are <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, <span class="math" data-tex="\(a_e-a_e+a_0\)">\(a_e-a_e+a_0\)</span>, and <span class="math" data-tex="\(a_0-a_e+a_e\)">\(a_0-a_e+a_e\)</span>. All its arc-component values lie in zero groups. Its kernel is therefore <span class="math" data-tex="\(\{(0,a_e)\}\)">\(\{(0,a_e)\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+E_2^{1,1}=\mathbf Z.
+\tag{8.5}
+\]">\[
+E_2^{1,1}=\mathbf Z.
+\tag{8.5}
+\]</span>
+<p>No differential can enter this entry from page two onward. Its only possible outgoing differential is <span class="math" data-tex="\(d_2:E_2^{1,1}\to E_2^{3,0}\)">\(d_2:E_2^{1,1}\to E_2^{3,0}\)</span>. Since <span class="math" data-tex="\(H^2(X,F)=0\)">\(H^2(X,F)=0\)</span>, its kernel is zero. At <span class="math" data-tex="\((3,0)\)">\((3,0)\)</span>, there is no outgoing differential, the possible <span class="math" data-tex="\(d_3\)">\(d_3\)</span> source <span class="math" data-tex="\((0,2)\)">\((0,2)\)</span> is zero, and the only incoming differential is that same <span class="math" data-tex="\(d_2\)">\(d_2\)</span>. Since <span class="math" data-tex="\(H^3(X,F)=0\)">\(H^3(X,F)=0\)</span>, its cokernel is zero. It follows that</p>
+<span class="math math-display" data-tex="\[
+d_2:\mathbf Z\xrightarrow{\sim}\check H^3(K,F),
+\]">\[
+d_2:\mathbf Z\xrightarrow{\sim}\check H^3(K,F),
+\]</span>
+<p>which proves (8.2). This is a calculation of the unnormalized cochain complex's cohomology, through its explicitly constructed spectral sequence; it makes no appeal to singular cohomology.</p>
+<p>The vertex <span class="math" data-tex="\(X=K_0\)">\(X=K_0\)</span> gives a simplicial section <span class="math" data-tex="\(s:1_X\to K\)">\(s:1_X\to K\)</span> by its degeneracies. Let <span class="math" data-tex="\(\epsilon:K\to1_X\)">\(\epsilon:K\to1_X\)</span> be the augmentation. The maps <span class="math" data-tex="\(a=1_K\)">\(a=1_K\)</span> and <span class="math" data-tex="\(b=s\epsilon\)">\(b=s\epsilon\)</span> are two maps of hypercoverings over <span class="math" data-tex="\(X\)">\(X\)</span>. The first acts as the identity on the nonzero group (8.2). The second acts as zero, since its pullback factors through <span class="math" data-tex="\(\check H^3(1_X,F)=0\)">\(\check H^3(1_X,F)=0\)</span>. Indeed the constant hypercovering's complex has terms <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> and differentials alternating between zero and the identity, and has no positive cohomology. These two maps do not act equally on the fixed group. After refining by <span class="math" data-tex="\(s:1_X\to K\)">\(s:1_X\to K\)</span>, the class vanishes and the maps coincide. This confirms the refinement in Theorem 6.1 and gives a concrete reason for the colimit in (7.2).</p>
+<h2 id="9-hypercoverings-from-a-basis-of-opens">9. Hypercoverings from a basis of opens</h2>
+<p>Let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be a basis of a space <span class="math" data-tex="\(X\)">\(X\)</span>, and use its full open-set site. The basis need not be closed under intersection. Matching objects are formed in the full site, and we cover their component opens by basis opens. We prove that hypercoverings whose components are all in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> suffice in (7.2).</p>
+<p>We first construct such a refinement of any given hypercovering <span class="math" data-tex="\(K\)">\(K\)</span>. Use <strong>split</strong> simplicial objects: choose families <span class="math" data-tex="\(N_r\)">\(N_r\)</span> of new simplices, so that</p>
+<span class="math math-display" data-tex="\[
+L_n=\coprod_{\substack{[n]\twoheadrightarrow[r]\\r\le n}}N_r.
+\tag{9.1}
+\]">\[
+L_n=\coprod_{\substack{[n]\twoheadrightarrow[r]\\r\le n}}N_r.
+\tag{9.1}
+\]</span>
+<p>Degenerate simplices are formal copies of earlier <span class="math" data-tex="\(N_r\)">\(N_r\)</span>. Suppose a split truncation of <span class="math" data-tex="\(L\to K\)">\(L\to K\)</span> has been constructed in degrees less than <span class="math" data-tex="\(n\)">\(n\)</span>. Its forced degenerate part in degree <span class="math" data-tex="\(n\)">\(n\)</span> is the sum in (9.1) with <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>; all its maps into <span class="math" data-tex="\(K_n\)">\(K_n\)</span> and <span class="math" data-tex="\(M_nL\)">\(M_nL\)</span> are determined by the lower simplicial maps. Set</p>
+<span class="math math-display" data-tex="\[
+T_n=K_n\times_{M_nK}M_nL.
+\tag{9.2}
+\]">\[
+T_n=K_n\times_{M_nK}M_nL.
+\tag{9.2}
+\]</span>
+<p>Every component of this object is an open set, being a finite limit of families of opens. Choose a family <span class="math" data-tex="\(N_n\)">\(N_n\)</span> of basis opens covering every component of <span class="math" data-tex="\(T_n\)">\(T_n\)</span>, and map them into (9.2). In degree zero this just chooses a basis refinement of <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<p>Define <span class="math" data-tex="\(L_n\)">\(L_n\)</span> to be its forced degenerate part together with <span class="math" data-tex="\(N_n\)">\(N_n\)</span>. The faces of a new simplex are supplied by its matching-boundary map in (9.2), hence satisfy (2.3). On the degenerate copies, use the face-degeneracy rules of the earlier degrees. These definitions obey all identities: an increasing map factors uniquely as a surjection followed by an injection; the surjection chooses the formal degeneracy copy, and the injection takes its specified face. Two ways of taking successive proper faces agree by the matching relations, while the earlier degrees already satisfy the relations involving those faces. For a new simplex, these are all possible relations except its identity map. The maps to <span class="math" data-tex="\(K\)">\(K\)</span> respect them because (9.2) requires the same boundary there. This completes the split truncation by one degree.</p>
+<p>The map <span class="math" data-tex="\(N_n\to T_n\)">\(N_n\to T_n\)</span> is a cover, and <span class="math" data-tex="\(T_n\to M_nL\)">\(T_n\to M_nL\)</span> is a base change of the matching cover of <span class="math" data-tex="\(K\)">\(K\)</span>. Adding the degenerate components preserves an open covering. Consequently <span class="math" data-tex="\(L_n\to M_nL\)">\(L_n\to M_nL\)</span> is a covering. Continuing for all <span class="math" data-tex="\(n\)">\(n\)</span> gives a hypercovering <span class="math" data-tex="\(L\to K\)">\(L\to K\)</span>, with every component of every <span class="math" data-tex="\(L_n\)">\(L_n\)</span> a copy of a basis open. This construction proves the claimed existence, including the degeneracy compatibility that a mere degreewise replacement would miss.</p>
+<p>These refinements suffice for classes and relations. A class represented on any <span class="math" data-tex="\(K\)">\(K\)</span> pulls back to a basis hypercovering. If two such representatives agree after a general refinement, apply the same construction to that refinement and they agree on a basis refinement. To justify common refinements within this restricted collection, first form the general product of two basis hypercoverings and then choose its basis refinement. To equalize parallel maps, first use the path refinement of Theorem 6.1 and then its basis refinement. For two maps into a common general <span class="math" data-tex="\(K\)">\(K\)</span>, their composites from that product are parallel; the same path refinement makes them equal in the homotopy category. Thus the restricted diagram is filtered in the same sense and its colimit has exactly the same representatives and relations as (7.1). We have proved</p>
+<span class="math math-display" data-tex="\[
+H^i(X,F)=\operatorname{colim}_{K\text{ with basis components}}\check H^i(K,F).
+\tag{9.3}
+\]">\[
+H^i(X,F)=\operatorname{colim}_{K\text{ with basis components}}\check H^i(K,F).
+\tag{9.3}
+\]</span>
+<p>Verdier's variant permits an augmentation of a semi-representable simplicial presheaf to an arbitrary presheaf of sets <span class="math" data-tex="\(G\)">\(G\)</span>, and requires its matching maps only to become epimorphisms after sheafification. The degree-zero and degree-one conditions are, respectively, local surjectivity onto <span class="math" data-tex="\(G\)">\(G\)</span> and onto the fibre product over <span class="math" data-tex="\(G\)">\(G\)</span>. This is more flexible than specifying covers in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span>. Our finite-cycle proof uses exactly those local surjections, so it also proves the associated free abelian complex resolves <span class="math" data-tex="\(\mathbf Z[G]^\#\)">\(\mathbf Z[G]^\#\)</span>. The corresponding coefficient group is <span class="math" data-tex="\(\operatorname{Ext}^i(\mathbf Z[G]^\#,F)\)">\(\operatorname{Ext}^i(\mathbf Z[G]^\#,F)\)</span>. We do not need a colimit theorem for this wider variant here; the object-based form (7.2) suffices for the course. See [Stacks, Tags 09VT–09VY].</p>
+<h2 id="10-exercises">10. Exercises</h2>
+<ol>
+<li>
+<p><strong>A coskeleton — easy.</strong> Show that <span class="math" data-tex="\(\operatorname{cosk}_0\{U_i\to X\}\)">\(\operatorname{cosk}_0\{U_i\to X\}\)</span> has the terms (3.2), and identify every face, degeneracy and matching map. Check that its cochain complex is the ordinary full Čech complex.</p>
+</li>
+<li>
+<p><strong>A common refinement — medium.</strong> Show that the levelwise product over <span class="math" data-tex="\(X\)">\(X\)</span> of two hypercoverings is a hypercovering. Explain why an arbitrary levelwise fibre product over a third hypercovering needs an extra hypothesis such as (5.1).</p>
+</li>
+<li>
+<p><strong>Split covers — medium.</strong> Suppose every covering family of every object admits a section, meaning a section of its semi-representable covering map. Use the main theorem to prove <span class="math" data-tex="\(H^i(X,F)=0\)">\(H^i(X,F)=0\)</span> for <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>. Is it enough to assume this only for covers of <span class="math" data-tex="\(X\)">\(X\)</span>?</p>
+</li>
+<li>
+<p><strong>Ordinary covers in degree two — hard.</strong> Let <span class="math" data-tex="\(\mathrm{Cov}(X)\)">\(\mathrm{Cov}(X)\)</span> be a cofinal family of covers of <span class="math" data-tex="\(X\)">\(X\)</span>. Suppose that, for every finite nonempty intersection <span class="math" data-tex="\(W\)">\(W\)</span> of members of every cover in this family, <span class="math" data-tex="\(\check H^1(\mathcal V,F)=0\)">\(\check H^1(\mathcal V,F)=0\)</span> for all covers <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> in a cofinal family of covers of <span class="math" data-tex="\(W\)">\(W\)</span>. Prove</p>
+</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_{\mathcal U\in\mathrm{Cov}(X)}
+\check H^2(\mathcal U,F)\xrightarrow{\sim}H^2(X,F).
+\tag{10.1}
+\]">\[
+\operatorname{colim}_{\mathcal U\in\mathrm{Cov}(X)}
+\check H^2(\mathcal U,F)\xrightarrow{\sim}H^2(X,F).
+\tag{10.1}
+\]</span>
+<p>Use the ordinary Čech spectral sequence from lesson 3, and explain the two cofinality quantifiers. This gives the precise meaning of “Čech degree one vanishes on the finite intersections”; vanishing for one chosen cover of each intersection would be insufficient.</p>
+<h2 id="11-solutions">11. Solutions</h2>
+<p><strong>1.</strong> For a zero-truncated family <span class="math" data-tex="\(A\)">\(A\)</span>, a map from <span class="math" data-tex="\(\operatorname{sk}_0\Delta[m]\)">\(\operatorname{sk}_0\Delta[m]\)</span> specifies a vertex in <span class="math" data-tex="\(A\)">\(A\)</span> for each of its <span class="math" data-tex="\(m+1\)">\(m+1\)</span> vertices, all over <span class="math" data-tex="\(X\)">\(X\)</span>. Thus (2.1) is the product <span class="math" data-tex="\(A^{m+1}\)">\(A^{m+1}\)</span> in <span class="math" data-tex="\(\mathrm{SR}(\mathcal C,X)\)">\(\mathrm{SR}(\mathcal C,X)\)</span>. Formula (1.2) identifies it with (3.2). Omitting a vertex gives the appropriate projection; repeating it gives the diagonal on that factor. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the matching object is already the same pair product. For <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span>, every matching collection determines a consistent list of vertices; conversely that list gives all its faces. These inverse operations identify the matching map with an isomorphism. The only remaining matching condition is the original degree-zero cover. Evaluating <span class="math" data-tex="\(F\)">\(F\)</span> on this family gives the product over all tuples <span class="math" data-tex="\((i_0,\ldots,i_m)\)">\((i_0,\ldots,i_m)\)</span>, and the alternating projection restrictions in (4.1) are exactly the ordinary Čech differential. This includes repeated indices and checks the claimed complex, not only its cohomology.</p>
+<p><strong>2.</strong> Write <span class="math" data-tex="\(N=K\times L\)">\(N=K\times L\)</span> in the category over <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(N_m=K_m\times L_m\)">\(N_m=K_m\times L_m\)</span>. Formula (2.1) gives <span class="math" data-tex="\(M_mN=M_mK\times M_mL\)">\(M_mN=M_mK\times M_mL\)</span>. The matching map is the product of the two covering maps; it is a cover because it factors into their two base changes. The degree-zero case is the same assertion over <span class="math" data-tex="\(1_X\)">\(1_X\)</span>. Thus <span class="math" data-tex="\(N\)">\(N\)</span> is a hypercovering. For a fibre product <span class="math" data-tex="\(K\times_A B\)">\(K\times_A B\)</span>, matching still commutes with the product, but the source uses the actual <span class="math" data-tex="\(A_m\)">\(A_m\)</span> and the matching target uses <span class="math" data-tex="\(M_mA\)">\(M_mA\)</span>. The two absolute covering hypotheses alone do not identify those requirements. A relative covering <span class="math" data-tex="\(B\to A\)">\(B\to A\)</span> supplies exactly the first arrow in (5.2); then its second arrow comes from <span class="math" data-tex="\(K\)">\(K\)</span>. This proves the valid sufficient hypothesis without assuming every map of hypercoverings has it.</p>
+<p><strong>3.</strong> For a hypercovering <span class="math" data-tex="\(K\)">\(K\)</span>, split its degree-zero cover by a map <span class="math" data-tex="\(s_0:1_X\to K_0\)">\(s_0:1_X\to K_0\)</span>. The unique map <span class="math" data-tex="\([n]\to[0]\)">\([n]\to[0]\)</span> defines, by degeneracies, maps <span class="math" data-tex="\(s_n:1_X\to K_n\)">\(s_n:1_X\to K_n\)</span>. They commute with every simplicial restriction, since all composites to <span class="math" data-tex="\([0]\)">\([0]\)</span> are the same map. Thus they form a refinement <span class="math" data-tex="\(s:1_X\to K\)">\(s:1_X\to K\)</span>. The constant hypercovering's cochain differential in degree <span class="math" data-tex="\(p\)">\(p\)</span> is multiplication by <span class="math" data-tex="\(\sum_{j=0}^{p+1}(-1)^j\)">\(\sum_{j=0}^{p+1}(-1)^j\)</span>: it is zero for even <span class="math" data-tex="\(p\)">\(p\)</span> and the identity for odd <span class="math" data-tex="\(p\)">\(p\)</span>. Its positive cohomology is zero. Every positive-degree class represented on <span class="math" data-tex="\(K\)">\(K\)</span> therefore vanishes after the refinement <span class="math" data-tex="\(s\)">\(s\)</span>. Formula (7.2) makes <span class="math" data-tex="\(H^i(X,F)\)">\(H^i(X,F)\)</span> zero. Only the splitting of covering families of <span class="math" data-tex="\(X\)">\(X\)</span> was used, so that weaker assumption suffices. A section of a formal family is indeed a choice of one component with a retraction: apply Yoneda to <span class="math" data-tex="\(h_X\to\coprod_i h_{U_i}\)">\(h_X\to\coprod_i h_{U_i}\)</span>.</p>
+<p><strong>4.</strong> The degree-one comparison proved by torsors in lesson 3 identifies <span class="math" data-tex="\(H^1(W,F)\)">\(H^1(W,F)\)</span> with the colimit of ordinary <span class="math" data-tex="\(\check H^1\)">\(\check H^1\)</span> over covers of <span class="math" data-tex="\(W\)">\(W\)</span>. Cofinality at <span class="math" data-tex="\(W\)">\(W\)</span> and the stated vanishing therefore give <span class="math" data-tex="\(H^1(W,F)=0\)">\(H^1(W,F)=0\)</span> for every indicated finite intersection. For any <span class="math" data-tex="\(\mathcal U\in\mathrm{Cov}(X)\)">\(\mathcal U\in\mathrm{Cov}(X)\)</span>, row <span class="math" data-tex="\(q=1\)">\(q=1\)</span> of its <span class="math" data-tex="\(E_1\)">\(E_1\)</span>-page is consequently zero. In particular <span class="math" data-tex="\(E_2^{0,1}=E_2^{1,1}=0\)">\(E_2^{0,1}=E_2^{1,1}=0\)</span>. The only possible incoming differential to <span class="math" data-tex="\(E_2^{2,0}=\check H^2(\mathcal U,F)\)">\(E_2^{2,0}=\check H^2(\mathcal U,F)\)</span> is <span class="math" data-tex="\(d_2^{0,1}\)">\(d_2^{0,1}\)</span>, and it is zero; no differential leaves that entry. Thus the edge map to <span class="math" data-tex="\(H^2(X,F)\)">\(H^2(X,F)\)</span> is injective, with image the filtration step <span class="math" data-tex="\(F^2H^2\)">\(F^2H^2\)</span>. The other positive-horizontal step has graded piece <span class="math" data-tex="\(E_\infty^{1,1}=0\)">\(E_\infty^{1,1}=0\)</span>, so <span class="math" data-tex="\(F^1H^2=F^2H^2\)">\(F^1H^2=F^2H^2\)</span>.</p>
+<p>For surjectivity of (10.1), take <span class="math" data-tex="\(\xi\in H^2(X,F)\)">\(\xi\in H^2(X,F)\)</span>. Local vanishing supplies a cover on which all its restrictions are zero. Cofinality at <span class="math" data-tex="\(X\)">\(X\)</span> supplies a cover <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> in the specified family refining it. The edge of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in <span class="math" data-tex="\(E_2^{0,2}=\check H^0(\mathcal U,\mathcal H^2(F))\)">\(E_2^{0,2}=\check H^0(\mathcal U,\mathcal H^2(F))\)</span> is zero, since it is the family of its local restrictions. This edge has kernel <span class="math" data-tex="\(F^1H^2\)">\(F^1H^2\)</span>: in a first quadrant sequence there are no incoming differentials at <span class="math" data-tex="\((0,2)\)">\((0,2)\)</span>, so <span class="math" data-tex="\(E_\infty^{0,2}\)">\(E_\infty^{0,2}\)</span> is a subgroup of <span class="math" data-tex="\(E_2^{0,2}\)">\(E_2^{0,2}\)</span>, and it is the quotient <span class="math" data-tex="\(H^2/F^1H^2\)">\(H^2/F^1H^2\)</span>. Thus <span class="math" data-tex="\(\xi\in F^1H^2=F^2H^2\)">\(\xi\in F^1H^2=F^2H^2\)</span>, and comes from <span class="math" data-tex="\(\check H^2(\mathcal U,F)\)">\(\check H^2(\mathcal U,F)\)</span>. This proves surjectivity. For injectivity in the colimit, a representative mapping to zero lies on a cover in the cofinal family, where the edge map just proved is injective, so the representative itself is zero. The two uses of cofinality are distinct: at each <span class="math" data-tex="\(W\)">\(W\)</span>, it computes all degree-one classes; at <span class="math" data-tex="\(X\)">\(X\)</span>, it lets a cover witnessing local vanishing be replaced by one whose intersections have the hypothesis.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the sheafification, local image and fibre-product rules of lessons 1–2, and the cohomology, local vanishing, injective horseshoe, resolution comparison and universal delta-functor prerequisites stated in <a href="cohomology-on-sites.html">Cohomology on sites</a>. We also use its first quadrant spectral-sequence theorem, with differential bidegree <span class="math" data-tex="\((r,1-r)\)">\((r,1-r)\)</span>, finite convergence in each total degree, and exactness of products of abelian groups. All simplicial matching, finite filling, free-complex acyclicity, degree refinement, homotopy equalization, connecting-map and basis-refinement arguments specific to this lesson are proved above.</p>
+<p>The circle and interval groups used in section 8 were proved in lesson 3. We do not prove a general comparison with singular cohomology, a general theorem on cohomological descent, or a theory of derived simplicial spaces here. For historical orientation, the Stacks introduction locates hypercoverings in SGA 4, Exposé V, §7, and the wider descent formalism in Exposé Vbis. This distinguishes the two topics; no passage from SGA 4 is used as an unproved step in our arguments.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>[Stacks, Hypercoverings]</strong> The Stacks Project Authors, <em>The Stacks Project</em>: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-semi-representable">Tags 0DBB, 01G0 and 01G3</a> for families and their associated presheaves; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-definition-hypercovering">Tags 01G5–01G6</a> for the object-based definition and ordinary nerve; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-acyclicity">Tags 01GA–01GF</a> for free-complex acyclicity; and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-hyper-cech">Tags 01GU–01GY</a> for the cohomology comparison sequence. These are references for the statements; the finite-cone proof in section 3 supplies the complete local exactness argument used here.</p>
+</li>
+<li>
+<p><strong>[Stacks, refinement and comparison]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-covering">Tags 01GH–01GK</a> for relative covers and changing a degree; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-adding-simplices">Tags 01GL–01GN</a> for finite attachments; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-homotopies">Tags 01GO–01GS</a> for homotopy after refinement; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-cohomology">Tags 01GZ–01H0</a> for the colimit theorem; and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/hypercovering.html#hypercovering-section-hypercoverings-verdier">Tags 09VT–09VY</a> for Verdier's variant. The AI Integrated Stacks Project reader linked here contains AI-proposed corrections and AI-written additions and is not reviewed by the maintainers of the <a href="https://stacks.math.columbia.edu/">official Stacks Project</a>.</p>
+</li>
+<li>
+<p><strong>[Stacks, Simplicial Methods]</strong> <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/simplicial.html#simplicial-lemma-exists-hom-from-simplicial-set-finite">Tags 017L and 017R</a> for finite simplicial mapping objects and the nondegenerate-simplex decomposition; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/simplicial.html#simplicial-lemma-formula-limit">Tag 0186</a> for matching tuples; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/simplicial.html#simplicial-lemma-add-simplices">Tag 018S</a> for finite simplex attachments; and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/simplicial.html#simplicial-lemma-homotopy-s-Q">Tag 01A0</a> for homotopies on cochain complexes. The definitions, necessary identities and inverse verifications appear in sections 2 and 6 above.</p>
+</li>
+<li>
+<p><strong>[Conrad]</strong> Brian Conrad, <a href="https://math.stanford.edu/~conrad/papers/hypercover.pdf"><em>Cohomological descent</em></a>, January 24, 2003: Definition 4.1 and Examples 4.4–4.5 (pp. 23–25) for matching covers and coskeleta with a fixed augmentation; Definition 4.9 (p. 27) for split objects; and the opening of §5 (p. 31) for why the homotopy category is needed in the colimit formulation. They give an alternative exposition; the proofs above are complete without them.</p>
+</li>
+</ul>
+<footer><a href="src/hypercoverings.md">Editable Markdown source</a> · <a href="licence.html">Sources and authorship</a></footer></main></body></html>

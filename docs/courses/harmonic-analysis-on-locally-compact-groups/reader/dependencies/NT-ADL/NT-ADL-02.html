@@ -1,0 +1,504 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The adèle ring of a number field</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main id="main" style="max-width:58rem;margin:auto;padding:1.5rem"><nav><a href="../../index.html">Harmonic analysis on locally compact groups</a> · <a href="../../../src/dependencies/NT-ADL/src/NT-ADL-02.md">Editable source</a></nav><article class="lesson"><h1 id="the-adèle-ring-of-a-number-field">The adèle ring of a number field</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A number field can be studied in every completion at once. The adèle ring makes this possible while retaining local compactness. Its topology expresses an arithmetic distinction: a number field is discrete when all places are present, but dense after any one place is removed. We will prove both assertions, construct fundamental domains, calculate their volume, and obtain simultaneous bounds on a nonzero field element.</p>
+<p>We assume the results of <a href="NT-ADL-01.html">Restricted products and profinite completions</a>, <a href="../../../../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a>, <a href="../../../../NT-LOC/NT-LOC-06.html">Local fields: classification and Haar measure</a>, and <a href="../../../../NT-ADL/prerequisites/NT-ANT-07.md">Lattices, Minkowski’s theorem and the Minkowski embedding</a>. We also use the integral bases, ideal factorization, Chinese remainders and finite torsion-free modules proved in <a href="../../../../NT-ADL/prerequisites/NT-ANT-02.md">Discriminants and integral bases</a>, <a href="../../../../NT-ADL/prerequisites/NT-ANT-03.md">Discrete valuation rings and Dedekind domains</a>, and <a href="../../../../NT-ADL/prerequisites/NT-ANT-04.md">Norms of ideals, the ideal class group, and modules over Dedekind domains</a>. The exact statements and conventions are collected near the end. The constructions can be compared with [Sutherland 25], [Getz–Hahn draft] and [Milne ANT]. [Sutherland 14] supplies the canonical Minkowski measure convention. We give complete additive quotient, box and approximation proofs here.</p>
+<h2 id="local-information-with-an-integral-tail">Local information with an integral tail</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field of degree <span class="math" data-tex="\(n\)">\(n\)</span>, with <span class="math" data-tex="\(r_1\)">\(r_1\)</span> real places and <span class="math" data-tex="\(r_2\)">\(r_2\)</span> complex places, so <span class="math" data-tex="\(n=r_1+2r_2\)">\(n=r_1+2r_2\)</span>. At each place <span class="math" data-tex="\(v\)">\(v\)</span>, let <span class="math" data-tex="\(K_v\)">\(K_v\)</span> be its completion. If <span class="math" data-tex="\(v\)">\(v\)</span> is finite, write <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> for its valuation ring, <span class="math" data-tex="\(\mathfrak p_v\)">\(\mathfrak p_v\)</span> for the corresponding prime ideal of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, and <span class="math" data-tex="\(q_v=\#(\mathcal O_K/\mathfrak p_v)\)">\(q_v=\#(\mathcal O_K/\mathfrak p_v)\)</span>. Normalize <span class="math" data-tex="\(\operatorname{ord}_v\)">\(\operatorname{ord}_v\)</span> to have value group <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>.</p>
+<p>Our multiplicative local sizes are</p>
+<span class="math math-display" data-tex="\[
+|x|_v=
+\begin{cases}
+q_v^{-\operatorname{ord}_v(x)},&amp;v\text{ finite},\\
+|x|,&amp;K_v=\mathbf R,\\
+|x|^2,&amp;K_v=\mathbf C.
+\end{cases}
+\]">\[
+|x|_v=
+\begin{cases}
+q_v^{-\operatorname{ord}_v(x)},&amp;v\text{ finite},\\
+|x|,&amp;K_v=\mathbf R,\\
+|x|^2,&amp;K_v=\mathbf C.
+\end{cases}
+\]</span>
+<p>The last expression is the square of the ordinary complex modulus. It is useful for the product formula and measure scaling, but does not satisfy the ordinary triangle inequality. Whenever we use a geometric radius in <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, we mean the ordinary modulus. With these conventions, <span class="math" data-tex="\(\prod_v|x|_v=1\)">\(\prod_v|x|_v=1\)</span> for <span class="math" data-tex="\(x\in K^\times\)">\(x\in K^\times\)</span>.</p>
+<p>An <strong>adèle</strong> is a tuple <span class="math" data-tex="\(a=(a_v)_v\)">\(a=(a_v)_v\)</span>, with <span class="math" data-tex="\(a_v\in K_v\)">\(a_v\in K_v\)</span>, such that <span class="math" data-tex="\(a_v\in\mathcal O_v\)">\(a_v\in\mathcal O_v\)</span> at all but finitely many finite places. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_K=\prod_v&#x27;(K_v,\mathcal O_v)
+=K_\infty\times\mathbb A_{K,f},
+\qquad K_\infty=\prod_{v\mid\infty}K_v
+\simeq\mathbf R^{r_1}\times\mathbf C^{r_2}.
+\]">\[
+\mathbb A_K=\prod_v&#x27;(K_v,\mathcal O_v)
+=K_\infty\times\mathbb A_{K,f},
+\qquad K_\infty=\prod_{v\mid\infty}K_v
+\simeq\mathbf R^{r_1}\times\mathbf C^{r_2}.
+\]</span>
+<p>There is no integral restriction at an infinite place. Addition and multiplication are coordinatewise. For a finite set <span class="math" data-tex="\(S\)">\(S\)</span> containing the infinite places, put</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_{K,S}=\prod_{v\in S}K_v\times
+\prod_{v\notin S}\mathcal O_v.
+\]">\[
+\mathbb A_{K,S}=\prod_{v\in S}K_v\times
+\prod_{v\notin S}\mathcal O_v.
+\]</span>
+<p>These are open subrings, each with its product topology, and their union is <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span>. A basic open set is</p>
+<span class="math math-display" data-tex="\[
+\prod_{v\in S}U_v\times\prod_{v\notin S}\mathcal O_v,
+\tag{1}
+\]">\[
+\prod_{v\in S}U_v\times\prod_{v\notin S}\mathcal O_v,
+\tag{1}
+\]</span>
+<p>where every <span class="math" data-tex="\(U_v\subset K_v\)">\(U_v\subset K_v\)</span> is open. The requirement on the entire tail matters: this topology is finer than the topology inherited from the unrestricted product. An adèle may fail to be integral at finitely many places, but a neighborhood controls where new failures can occur.</p>
+<p>Every element of <span class="math" data-tex="\(K\)">\(K\)</span> defines a diagonal adèle. Indeed, a nonzero field element has nonzero valuations at only finitely many finite places. We identify <span class="math" data-tex="\(K\)">\(K\)</span> with this diagonal subfield. For later use set</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathcal O}_K=\prod_{v&lt;\infty}\mathcal O_v.
+\]">\[
+\widehat{\mathcal O}_K=\prod_{v&lt;\infty}\mathcal O_v.
+\]</span>
+<p>This is a compact open subring of <span class="math" data-tex="\(\mathbb A_{K,f}\)">\(\mathbb A_{K,f}\)</span>. It is not open in the full adèle ring when embedded with zero infinite component.</p>
+<h2 id="changing-the-number-field">Changing the number field</h2>
+<p><strong>Proposition 2.1.</strong> The ring <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span> is a Hausdorff locally compact topological ring. If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is finite, the canonical map</p>
+<span class="math math-display" data-tex="\[
+\Phi:L\otimes_K\mathbb A_K\longrightarrow\mathbb A_L,
+\qquad
+\ell\otimes(a_v)_v\longmapsto(\ell a_v)_{w\mid v}
+\tag{2}
+\]">\[
+\Phi:L\otimes_K\mathbb A_K\longrightarrow\mathbb A_L,
+\qquad
+\ell\otimes(a_v)_v\longmapsto(\ell a_v)_{w\mid v}
+\tag{2}
+\]</span>
+<p>is an isomorphism of topological rings. On the tensor product, use the finite product topology from any <span class="math" data-tex="\(K\)">\(K\)</span>-basis of <span class="math" data-tex="\(L\)">\(L\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_K\simeq K\otimes_{\mathbf Q}\mathbb A_{\mathbf Q},
+\qquad
+\mathbb A_K\simeq\mathbb A_{\mathbf Q}^{\,n}
+\tag{3}
+\]">\[
+\mathbb A_K\simeq K\otimes_{\mathbf Q}\mathbb A_{\mathbf Q},
+\qquad
+\mathbb A_K\simeq\mathbb A_{\mathbf Q}^{\,n}
+\tag{3}
+\]</span>
+<p>as topological rings in the first assertion and as topological <span class="math" data-tex="\(\mathbb A_{\mathbf Q}\)">\(\mathbb A_{\mathbf Q}\)</span>-modules in the second.</p>
+<p><strong>Proof.</strong> Each stage <span class="math" data-tex="\(\mathbb A_{K,S}\)">\(\mathbb A_{K,S}\)</span> is a product of finitely many locally compact fields and a compact product of valuation rings. It is locally compact and Hausdorff. The stages are open and cover the ring, proving these assertions for the underlying space.</p>
+<p>For continuity of addition or multiplication at <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, enlarge <span class="math" data-tex="\(S\)">\(S\)</span> until both adèles belong to <span class="math" data-tex="\(\mathbb A_{K,S}\)">\(\mathbb A_{K,S}\)</span>. Operations on that stage are continuous coordinatewise. Their values stay in the integral tail because each <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> is a subring. Continuity on these open neighborhoods proves continuity on the whole ring.</p>
+<p>We use the local field-extension identity</p>
+<span class="math math-display" data-tex="\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w.
+\tag{4}
+\]">\[
+L\otimes_K K_v\simeq\prod_{w\mid v}L_w.
+\tag{4}
+\]</span>
+<p>Its map is the local version of (2), and is a homeomorphism of finite-dimensional <span class="math" data-tex="\(K_v\)">\(K_v\)</span>-vector spaces. To pass to restricted products we must check the integral lattices.</p>
+<p>Here is the completion calculation. For a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, finite freeness over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, followed by the Chinese remainder theorem, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal O_K\otimes_{\mathbf Z}\mathbf Z_p
+&amp;\simeq\varprojlim_m\mathcal O_K/p^m\mathcal O_K\\
+&amp;\simeq\prod_{v\mid p}\varprojlim_m
+\mathcal O_K/\mathfrak p_v^{\,m e(v/p)}
+\simeq\prod_{v\mid p}\mathcal O_v.
+\end{aligned}
+\tag{5}
+\]">\[
+\begin{aligned}
+\mathcal O_K\otimes_{\mathbf Z}\mathbf Z_p
+&amp;\simeq\varprojlim_m\mathcal O_K/p^m\mathcal O_K\\
+&amp;\simeq\prod_{v\mid p}\varprojlim_m
+\mathcal O_K/\mathfrak p_v^{\,m e(v/p)}
+\simeq\prod_{v\mid p}\mathcal O_v.
+\end{aligned}
+\tag{5}
+\]</span>
+<p>The powers <span class="math" data-tex="\(m e(v/p)\)">\(m e(v/p)\)</span> form a cofinal sequence of powers of <span class="math" data-tex="\(\mathfrak p_v\)">\(\mathfrak p_v\)</span>. Localizing before completing does not change these quotients: every denominator outside <span class="math" data-tex="\(\mathfrak p_v\)">\(\mathfrak p_v\)</span> is invertible modulo <span class="math" data-tex="\(\mathfrak p_v^k\)">\(\mathfrak p_v^k\)</span>.</p>
+<p>For the relative version, localize <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> at <span class="math" data-tex="\(\mathfrak p_v\)">\(\mathfrak p_v\)</span> as a module over <span class="math" data-tex="\((\mathcal O_K)_{\mathfrak p_v}\)">\((\mathcal O_K)_{\mathfrak p_v}\)</span>. It is finite and torsion-free over this discrete valuation ring, hence free. Tensoring this finite free module with the completed ring equals the inverse limit of its quotients by <span class="math" data-tex="\(\mathfrak p_v^m\)">\(\mathfrak p_v^m\)</span>. Decomposing <span class="math" data-tex="\(\mathfrak p_v\mathcal O_L\)">\(\mathfrak p_v\mathcal O_L\)</span> into prime powers and applying the Chinese remainder theorem in this inverse limit gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_L\otimes_{\mathcal O_K}\mathcal O_v
+\simeq\prod_{w\mid v}\mathcal O_w
+\tag{6}
+\]">\[
+\mathcal O_L\otimes_{\mathcal O_K}\mathcal O_v
+\simeq\prod_{w\mid v}\mathcal O_w
+\tag{6}
+\]</span>
+<p>at every finite place. Ramification causes no exception to this identity of completed integer rings.</p>
+<p>Choose a <span class="math" data-tex="\(K\)">\(K\)</span>-basis <span class="math" data-tex="\(e_1,\ldots,e_m\)">\(e_1,\ldots,e_m\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span> consisting of algebraic integers. The lattice <span class="math" data-tex="\(M=\sum_j\mathcal O_K e_j\)">\(M=\sum_j\mathcal O_K e_j\)</span> lies in <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>, and some nonzero <span class="math" data-tex="\(d\in\mathcal O_K\)">\(d\in\mathcal O_K\)</span> satisfies <span class="math" data-tex="\(d\mathcal O_L\subset M\)">\(d\mathcal O_L\subset M\)</span>. Indeed, express a finite set of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>-module generators of <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> in this basis and clear denominators. Thus <span class="math" data-tex="\(M\otimes\mathcal O_v=\mathcal O_L\otimes\mathcal O_v\)">\(M\otimes\mathcal O_v=\mathcal O_L\otimes\mathcal O_v\)</span> outside the finitely many primes dividing <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>In these coordinates the local map <span class="math" data-tex="\(K_v^m\to\prod_{w\mid v}L_w\)">\(K_v^m\to\prod_{w\mid v}L_w\)</span> takes <span class="math" data-tex="\(\mathcal O_v^m\)">\(\mathcal O_v^m\)</span> onto <span class="math" data-tex="\(\prod_{w\mid v}\mathcal O_w\)">\(\prod_{w\mid v}\mathcal O_w\)</span> at almost every finite place. The local maps and their inverses therefore take restricted tuples to restricted tuples. They are homeomorphisms on the open product stages after adjoining the exceptional places, and assemble to a global homeomorphism. Formula (2) respects multiplication, so it is a ring isomorphism.</p>
+<p>Changes of <span class="math" data-tex="\(K\)">\(K\)</span>-basis act by invertible matrices over <span class="math" data-tex="\(K\)">\(K\)</span> on <span class="math" data-tex="\(\mathbb A_K^m\)">\(\mathbb A_K^m\)</span>; the matrix and its inverse define continuous maps. The tensor-product topology is independent of the basis. Taking the base field to be <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> proves (3). The module identification depends on a basis; the ring map does not. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The distinction between (6) and the basis lattice is useful when comparing sources. [Sutherland 25, Proposition 25.10, pp.6–7] uses the canonical completed integer rings to pass from local tensor products to adèles; [Milne ANT, Proposition 8.2, p.136] gives the same local map <span class="math" data-tex="\(\ell\otimes a\mapsto(\ell a)_w\)">\(\ell\otimes a\mapsto(\ell a)_w\)</span>. Our completion argument proves (6) at every finite place, including ramified ones. It is the auxiliary lattice <span class="math" data-tex="\(M=\sum_j\mathcal O_K e_j\)">\(M=\sum_j\mathcal O_K e_j\)</span>, chosen from a field basis, that agrees with <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> only outside finitely many primes. The proof does not assume a global integral basis for <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span> over <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>: freeness is used after localization at a discrete valuation ring.</p>
+<h2 id="representatives-for-the-additive-quotient">Representatives for the additive quotient</h2>
+<p>Begin with <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>, and write <span class="math" data-tex="\(\widehat{\mathbf Z}=\prod_p\mathbf Z_p\)">\(\widehat{\mathbf Z}=\prod_p\mathbf Z_p\)</span>. A rational number belongs to every <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> exactly when its reduced denominator has no prime divisor. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathbf Q\cap(\mathbf R\times\widehat{\mathbf Z})=\mathbf Z.
+\tag{7}
+\]">\[
+\mathbf Q\cap(\mathbf R\times\widehat{\mathbf Z})=\mathbf Z.
+\tag{7}
+\]</span>
+<p>Every finite rational adèle can be made integral by subtracting a rational number. Take its negative <span class="math" data-tex="\(p\)">\(p\)</span>-adic digits at each of its finitely many nonintegral places and add the resulting rational principal parts. A principal part at <span class="math" data-tex="\(p\)">\(p\)</span> has denominator a power of <span class="math" data-tex="\(p\)">\(p\)</span>, so is integral at every other prime. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_{\mathbf Q}
+=\mathbf Q+(\mathbf R\times\widehat{\mathbf Z}).
+\tag{8}
+\]">\[
+\mathbb A_{\mathbf Q}
+=\mathbf Q+(\mathbf R\times\widehat{\mathbf Z}).
+\tag{8}
+\]</span>
+<p>After this subtraction, subtract an integer to move the real coordinate into <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. The integer subtraction also changes every finite coordinate; it preserves their integrality.</p>
+<p><strong>Theorem 2.2.</strong> The diagonal subgroup <span class="math" data-tex="\(K\)">\(K\)</span> is discrete and closed in <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span>, and <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span> is compact. Every coset in <span class="math" data-tex="\(\mathbb A_{\mathbf Q}/\mathbf Q\)">\(\mathbb A_{\mathbf Q}/\mathbf Q\)</span> has exactly one representative in</p>
+<span class="math math-display" data-tex="\[
+F_{\mathbf Q}=[0,1)\times\widehat{\mathbf Z}.
+\tag{9}
+\]">\[
+F_{\mathbf Q}=[0,1)\times\widehat{\mathbf Z}.
+\tag{9}
+\]</span>
+<p><strong>Proof.</strong> In the rational case, the open neighborhood</p>
+<span class="math math-display" data-tex="\[
+(-1/2,1/2)\times\widehat{\mathbf Z}
+\]">\[
+(-1/2,1/2)\times\widehat{\mathbf Z}
+\]</span>
+<p>meets <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> only at zero, by (7). This proves discreteness. A discrete subgroup of a Hausdorff topological group is closed: choose an open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of zero whose difference set meets the subgroup only at zero. Any translate of <span class="math" data-tex="\(V\)">\(V\)</span> contains at most one subgroup element. A point in the closure must equal that element, since otherwise a smaller neighborhood excluding it contradicts the definition of closure.</p>
+<p>Existence of representatives in (9) follows from (8). If two representatives differ by <span class="math" data-tex="\(q\in\mathbf Q\)">\(q\in\mathbf Q\)</span>, their finite components imply <span class="math" data-tex="\(q\in\mathbf Z\)">\(q\in\mathbf Z\)</span>. Their real components differ by a number strictly between <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. This proves uniqueness.</p>
+<p>The domain (9) is half-open and is not compact. Its compact closure <span class="math" data-tex="\([0,1]\times\widehat{\mathbf Z}\)">\([0,1]\times\widehat{\mathbf Z}\)</span> still maps onto the quotient. Thus the quotient is compact.</p>
+<p>Choose a <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-basis of <span class="math" data-tex="\(K\)">\(K\)</span>. Under (3), the diagonal <span class="math" data-tex="\(K\)">\(K\)</span> becomes the subgroup <span class="math" data-tex="\(\mathbf Q^n\subset\mathbb A_{\mathbf Q}^n\)">\(\mathbf Q^n\subset\mathbb A_{\mathbf Q}^n\)</span>. It is discrete and closed, and its quotient is the finite product of <span class="math" data-tex="\(n\)">\(n\)</span> compact rational quotients. This proves the assertions for <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For volume calculations we want a domain adapted to the integer rings. Choose an integral basis <span class="math" data-tex="\(\omega_1,\ldots,\omega_n\)">\(\omega_1,\ldots,\omega_n\)</span> of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, let <span class="math" data-tex="\(j:K\to K_\infty\)">\(j:K\to K_\infty\)</span> be the Minkowski embedding, and put</p>
+<span class="math math-display" data-tex="\[
+P_K=\left\{\sum_{i=1}^n t_i j(\omega_i):0\leq t_i&lt;1\right\}.
+\]">\[
+P_K=\left\{\sum_{i=1}^n t_i j(\omega_i):0\leq t_i&lt;1\right\}.
+\]</span>
+<p>Equations (3) and (5), applied to this basis and the rational principal-part construction, give</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_K=K+(K_\infty\times\widehat{\mathcal O}_K),
+\qquad
+K\cap(K_\infty\times\widehat{\mathcal O}_K)=\mathcal O_K.
+\tag{10}
+\]">\[
+\mathbb A_K=K+(K_\infty\times\widehat{\mathcal O}_K),
+\qquad
+K\cap(K_\infty\times\widehat{\mathcal O}_K)=\mathcal O_K.
+\tag{10}
+\]</span>
+<p>For the intersection, write an element of <span class="math" data-tex="\(K\)">\(K\)</span> in the integral basis. By (5), integrality at all finite places says its rational coordinates belong to every <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>, so they are integers. Reducing the infinite component modulo <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span> now shows that</p>
+<span class="math math-display" data-tex="\[
+F_K=P_K\times\widehat{\mathcal O}_K
+\tag{11}
+\]">\[
+F_K=P_K\times\widehat{\mathcal O}_K
+\tag{11}
+\]</span>
+<p>is a Borel fundamental domain with unique representatives. Its closure is compact. If <span class="math" data-tex="\(U\subset K_\infty\)">\(U\subset K_\infty\)</span> is bounded, then</p>
+<span class="math math-display" data-tex="\[
+K\cap(U\times\widehat{\mathcal O}_K)
+\]">\[
+K\cap(U\times\widehat{\mathcal O}_K)
+\]</span>
+<p>is finite: it corresponds to the points of the full lattice <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span> in a bounded set.</p>
+<p><strong>Worked example: rational principal parts.</strong> Take an adèle with real component <span class="math" data-tex="\(13/10\)">\(13/10\)</span>, components <span class="math" data-tex="\(3/8\)">\(3/8\)</span> at <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(7/25\)">\(7/25\)</span> at <span class="math" data-tex="\(5\)">\(5\)</span>, and zero at all other primes. Subtract</p>
+<span class="math math-display" data-tex="\[
+q=3/8+7/25=131/200.
+\]">\[
+q=3/8+7/25=131/200.
+\]</span>
+<p>At <span class="math" data-tex="\(2\)">\(2\)</span> the remaining value is <span class="math" data-tex="\(-7/25\)">\(-7/25\)</span>, which is integral; at <span class="math" data-tex="\(5\)">\(5\)</span> it is <span class="math" data-tex="\(-3/8\)">\(-3/8\)</span>, also integral. At every other prime the denominator of <span class="math" data-tex="\(q\)">\(q\)</span> is a unit. The remaining real component is <span class="math" data-tex="\(129/200\in[0,1)\)">\(129/200\in[0,1)\)</span>, so this already gives the representative in (9).</p>
+<p><strong>Worked example: the solenoid quotient.</strong> Inclusion induces an isomorphism of topological groups</p>
+<span class="math math-display" data-tex="\[
+(\mathbf R\times\widehat{\mathbf Z})/\mathbf Z
+\longrightarrow\mathbb A_{\mathbf Q}/\mathbf Q.
+\tag{12}
+\]">\[
+(\mathbf R\times\widehat{\mathbf Z})/\mathbf Z
+\longrightarrow\mathbb A_{\mathbf Q}/\mathbf Q.
+\tag{12}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> is embedded diagonally: <span class="math" data-tex="\(m\mapsto(m,(m)_p)\)">\(m\mapsto(m,(m)_p)\)</span>. Surjectivity and the kernel follow from (7)–(8). The source is compact, since <span class="math" data-tex="\([0,1]\times\widehat{\mathbf Z}\)">\([0,1]\times\widehat{\mathbf Z}\)</span> maps onto it. The target is Hausdorff by Theorem 2.2. Thus the continuous bijection is a homeomorphism. This quotient is called the rational solenoid; its further topological structure is studied in the lesson on solenoids. Formula (9) supplies measurable representatives, not a continuous product decomposition: crossing a real endpoint also changes the finite coordinate by a diagonal integer.</p>
+<h2 id="how-the-discriminant-measures-the-quotient">How the discriminant measures the quotient</h2>
+<p>Fix additive Haar measures <span class="math" data-tex="\(dx_v\)">\(dx_v\)</span> by</p>
+<span class="math math-display" data-tex="\[
+dx_v=dx\quad(K_v=\mathbf R),\qquad
+dx_v=2\,dx\,dy=|dz\wedge d\bar z|
+\quad(K_v=\mathbf C),\qquad
+\mu_v(\mathcal O_v)=1\quad(v&lt;\infty).
+\tag{13}
+\]">\[
+dx_v=dx\quad(K_v=\mathbf R),\qquad
+dx_v=2\,dx\,dy=|dz\wedge d\bar z|
+\quad(K_v=\mathbf C),\qquad
+\mu_v(\mathcal O_v)=1\quad(v&lt;\infty).
+\tag{13}
+\]</span>
+<p>The restricted product measure <span class="math" data-tex="\(dx=\prod_v dx_v\)">\(dx=\prod_v dx_v\)</span> is characterized on product sets with integral tails by the product of local measures. Multiplication by <span class="math" data-tex="\(a\in K_v^\times\)">\(a\in K_v^\times\)</span> scales <span class="math" data-tex="\(dx_v\)">\(dx_v\)</span> by <span class="math" data-tex="\(|a|_v\)">\(|a|_v\)</span>. At a finite place this follows by decomposing <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> into <span class="math" data-tex="\(q_v\)">\(q_v\)</span> translates of its maximal ideal; at a complex place it follows from the real determinant <span class="math" data-tex="\(|a|^2\)">\(|a|^2\)</span>.</p>
+<p>Let <span class="math" data-tex="\(d_K\)">\(d_K\)</span> be the field discriminant. We give the discrete additive subgroup <span class="math" data-tex="\(K\)">\(K\)</span> counting measure. The quotient measure is induced from <span class="math" data-tex="\(dx\)">\(dx\)</span> with this choice; its total mass is the measure of a Borel fundamental domain such as (11).</p>
+<p><strong>Proposition 2.4.</strong> With (13),</p>
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(\mathbb A_K/K)=\sqrt{|d_K|}.
+\tag{14}
+\]">\[
+\operatorname{vol}(\mathbb A_K/K)=\sqrt{|d_K|}.
+\tag{14}
+\]</span>
+<p><strong>Proof.</strong> In ordinary real coordinates on <span class="math" data-tex="\(K_\infty\)">\(K_\infty\)</span>, form the matrix <span class="math" data-tex="\(M\)">\(M\)</span> whose columns are <span class="math" data-tex="\(j(\omega_i)\)">\(j(\omega_i)\)</span>, recording real and imaginary parts at each complex place. The Euclidean volume of <span class="math" data-tex="\(P_K\)">\(P_K\)</span> is <span class="math" data-tex="\(|\det M|\)">\(|\det M|\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B=(\tau(\omega_i))_{\tau,i}\)">\(B=(\tau(\omega_i))_{\tau,i}\)</span> be the matrix of all <span class="math" data-tex="\(n\)">\(n\)</span> complex embeddings, including both members of each conjugate pair. The trace matrix is <span class="math" data-tex="\(B^{\mathsf T}B\)">\(B^{\mathsf T}B\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+d_K=\det(B^{\mathsf T}B)=(\det B)^2.
+\]">\[
+d_K=\det(B^{\mathsf T}B)=(\det B)^2.
+\]</span>
+<p>Replacing a real-coordinate pair <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> by <span class="math" data-tex="\((u+iv,u-iv)\)">\((u+iv,u-iv)\)</span> has determinant <span class="math" data-tex="\(-2i\)">\(-2i\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+|\det B|=2^{r_2}|\det M|,
+\qquad
+|\det M|=2^{-r_2}\sqrt{|d_K|}.
+\tag{15}
+\]">\[
+|\det B|=2^{r_2}|\det M|,
+\qquad
+|\det M|=2^{-r_2}\sqrt{|d_K|}.
+\tag{15}
+\]</span>
+<p>Our infinite measure multiplies Euclidean measure by <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span>. Thus <span class="math" data-tex="\(\mu_\infty(P_K)=\sqrt{|d_K|}\)">\(\mu_\infty(P_K)=\sqrt{|d_K|}\)</span>. The finite factor in (11) has measure <span class="math" data-tex="\(1\)">\(1\)</span>, proving (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Using <span class="math" data-tex="\(dx\,dy\)">\(dx\,dy\)</span> at complex places would instead give <span class="math" data-tex="\(2^{-r_2}\sqrt{|d_K|}\)">\(2^{-r_2}\sqrt{|d_K|}\)</span>. A change of integral basis changes <span class="math" data-tex="\(M\)">\(M\)</span> by a matrix in <span class="math" data-tex="\(\mathrm{GL}_n(\mathbf Z)\)">\(\mathrm{GL}_n(\mathbf Z)\)</span>, whose determinant has absolute value <span class="math" data-tex="\(1\)">\(1\)</span>, so does not change the answer.</p>
+<p>This accounts for the apparent difference between two source conventions. [Milne ANT, Proposition 4.26, pp.79–80] gives Euclidean covolume <span class="math" data-tex="\(2^{-r_2}N(\mathfrak a)\sqrt{|d_K|}\)">\(2^{-r_2}N(\mathfrak a)\sqrt{|d_K|}\)</span> for an ideal lattice. [Sutherland 14, §14.2 and Proposition 14.16] uses the canonical inner product, whose measure contributes the factor <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span>. The local normalization in [Sutherland 25, p.6] is also <span class="math" data-tex="\(2\,dx\,dy\)">\(2\,dx\,dy\)</span> at each complex place. Equation (14) follows with exactly those factors; a topological tensor-product isomorphism by itself cannot determine this numerical covolume.</p>
+<p>A different finite normalization is used with Fourier transforms. For the standard trace character <span class="math" data-tex="\(\psi_v=\psi_{\mathbf Q_p}\circ\operatorname{Tr}_{K_v/\mathbf Q_p}\)">\(\psi_v=\psi_{\mathbf Q_p}\circ\operatorname{Tr}_{K_v/\mathbf Q_p}\)</span>, let <span class="math" data-tex="\(\mathfrak D_v^{-1}\)">\(\mathfrak D_v^{-1}\)</span> be the trace-dual lattice of <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>. Its definition identifies it with the annihilator of <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>. If a self-dual measure gives <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> mass <span class="math" data-tex="\(c\)">\(c\)</span>, Fourier inversion on its indicator gives</p>
+<span class="math math-display" data-tex="\[
+1=c^2N(\mathfrak D_v),\qquad
+c=N(\mathfrak D_v)^{-1/2}.
+\]">\[
+1=c^2N(\mathfrak D_v),\qquad
+c=N(\mathfrak D_v)^{-1/2}.
+\]</span>
+<p>Thus the self-dual finite measure is <span class="math" data-tex="\(N(\mathfrak D_v)^{-1/2}dx_v\)">\(N(\mathfrak D_v)^{-1/2}dx_v\)</span>. At an unramified finite place it agrees with the measure giving <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> mass one. Here is the local algebra behind that assertion. Put <span class="math" data-tex="\(E=K_v\)">\(E=K_v\)</span> and <span class="math" data-tex="\(F=\mathbb Q_p\)">\(F=\mathbb Q_p\)</span>. Theorem 2.1 of <a href="../../../../NT-LOC/NT-LOC-07.html">Unramified and totally ramified extensions</a> gives <span class="math" data-tex="\(\mathcal O_E=\mathcal O_F[a]\)">\(\mathcal O_E=\mathcal O_F[a]\)</span>, where the monic minimal polynomial <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(a\)">\(a\)</span> reduces to a separable residue polynomial. Hence <span class="math" data-tex="\(f&#x27;(a)\)">\(f&#x27;(a)\)</span> has nonzero residue and is a unit. Proposition 14.2 of <a href="../../../../NT-ANT/the-different-and-the-discriminant.html">The different and the discriminant</a> then gives <span class="math" data-tex="\(\mathfrak D_{E/F}=(f&#x27;(a))=\mathcal O_E\)">\(\mathfrak D_{E/F}=(f&#x27;(a))=\mathcal O_E\)</span>, as required. Proposition 3.1 of <a href="../../../../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a> identifies the unramified global place with this local extension.</p>
+<p>The infinite factors in (13) are self-dual for the standard trace characters. The local character pairing and Fourier normalization used in this comparison are proved in Propositions 5.1–5.2 of <a href="../../../../NT-ADL/NT-ADL-05.html">Additive characters, self-dual measures and Poisson summation on the adèles</a>, including its Lemma 5.4A for the entire archimedean space. This is only a normalization comparison; the proofs of this lesson’s additive quotient, box and approximation results use (13). [Getz–Hahn draft, Appendix B, §§B.1–B.2] and [Sutherland 12] provide the classical references.</p>
+<h2 id="a-box-large-enough-to-contain-a-field-element">A box large enough to contain a field element</h2>
+<p>An <strong>idèle</strong> is a tuple <span class="math" data-tex="\(\alpha=(\alpha_v)\)">\(\alpha=(\alpha_v)\)</span> with <span class="math" data-tex="\(\alpha_v\in K_v^\times\)">\(\alpha_v\in K_v^\times\)</span> and <span class="math" data-tex="\(\alpha_v\in\mathcal O_v^\times\)">\(\alpha_v\in\mathcal O_v^\times\)</span> at almost every finite place. These are precisely the units of <span class="math" data-tex="\(\mathbb A_K\)">\(\mathbb A_K\)</span>: both a tuple and its coordinatewise inverse must have integral tails. Define</p>
+<span class="math math-display" data-tex="\[
+\|\alpha\|_{\mathbb A}=\prod_v|\alpha_v|_v.
+\]">\[
+\|\alpha\|_{\mathbb A}=\prod_v|\alpha_v|_v.
+\]</span>
+<p>Only finitely many factors differ from <span class="math" data-tex="\(1\)">\(1\)</span>. We need the following bound before proving strong approximation.</p>
+<p><strong>Lemma 2.5 (adelic Minkowski lemma).</strong> One may take</p>
+<span class="math math-display" data-tex="\[
+C_K=\left(\frac2\pi\right)^{r_2}\sqrt{|d_K|}.
+\tag{16}
+\]">\[
+C_K=\left(\frac2\pi\right)^{r_2}\sqrt{|d_K|}.
+\tag{16}
+\]</span>
+<p>For every idèle <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\|\alpha\|_{\mathbb A}\geq C_K\)">\(\|\alpha\|_{\mathbb A}\geq C_K\)</span>, there exists <span class="math" data-tex="\(x\in K^\times\)">\(x\in K^\times\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|x|_v\leq|\alpha_v|_v\qquad\text{at every place }v.
+\tag{17}
+\]">\[
+|x|_v\leq|\alpha_v|_v\qquad\text{at every place }v.
+\tag{17}
+\]</span>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(\|\alpha\|_{\mathbb A}&gt;C_K\)">\(\|\alpha\|_{\mathbb A}&gt;C_K\)</span>. Establish the counting principle behind Blichfeldt's argument. If a measurable set <span class="math" data-tex="\(E\subset\mathbb A_K\)">\(E\subset\mathbb A_K\)</span> satisfies <span class="math" data-tex="\(\mu(E)&gt;\mu(F_K)\)">\(\mu(E)&gt;\mu(F_K)\)</span>, two distinct points of <span class="math" data-tex="\(E\)">\(E\)</span> differ by a nonzero element of <span class="math" data-tex="\(K\)">\(K\)</span>. Indeed, the translates <span class="math" data-tex="\(F_K+k\)">\(F_K+k\)</span>, for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, partition the ring. Translation invariance and Tonelli's theorem give</p>
+<span class="math math-display" data-tex="\[
+\int_{F_K}\sum_{k\in K}\mathbf1_E(f+k)\,df=\mu(E).
+\tag{18}
+\]">\[
+\int_{F_K}\sum_{k\in K}\mathbf1_E(f+k)\,df=\mu(E).
+\tag{18}
+\]</span>
+<p>The group <span class="math" data-tex="\(K\)">\(K\)</span> is countable. If every coset met <span class="math" data-tex="\(E\)">\(E\)</span> at most once, the sum would be at most <span class="math" data-tex="\(1\)">\(1\)</span>, contradicting the strict volume inequality. A coset meeting <span class="math" data-tex="\(E\)">\(E\)</span> twice gives the asserted difference.</p>
+<p>Let <span class="math" data-tex="\(R_v\)">\(R_v\)</span> be the ordinary real or complex modulus of <span class="math" data-tex="\(\alpha_v\)">\(\alpha_v\)</span> at an infinite place. Choose</p>
+<span class="math math-display" data-tex="\[
+E=\prod_{v\text{ real}}[-R_v/2,R_v/2]
+\times\prod_{v\text{ complex}}\{z:|z|\leq R_v/2\}
+\times\prod_{v&lt;\infty}\alpha_v\mathcal O_v.
+\tag{19}
+\]">\[
+E=\prod_{v\text{ real}}[-R_v/2,R_v/2]
+\times\prod_{v\text{ complex}}\{z:|z|\leq R_v/2\}
+\times\prod_{v&lt;\infty}\alpha_v\mathcal O_v.
+\tag{19}
+\]</span>
+<p>This is a compact measurable subset of an open product stage. At real places its factor has measure <span class="math" data-tex="\(R_v=|\alpha_v|_v\)">\(R_v=|\alpha_v|_v\)</span>. At complex places its measure is</p>
+<span class="math math-display" data-tex="\[
+2\pi(R_v/2)^2=(\pi/2)|\alpha_v|_v.
+\]">\[
+2\pi(R_v/2)^2=(\pi/2)|\alpha_v|_v.
+\]</span>
+<p>At finite places its measure is <span class="math" data-tex="\(|\alpha_v|_v\)">\(|\alpha_v|_v\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\mu(E)=(\pi/2)^{r_2}\|\alpha\|_{\mathbb A}
+&gt;\sqrt{|d_K|}=\mu(F_K).
+\]">\[
+\mu(E)=(\pi/2)^{r_2}\|\alpha\|_{\mathbb A}
+&gt;\sqrt{|d_K|}=\mu(F_K).
+\]</span>
+<p>Choose distinct <span class="math" data-tex="\(y,z\in E\)">\(y,z\in E\)</span> with <span class="math" data-tex="\(x=y-z\in K^\times\)">\(x=y-z\in K^\times\)</span>. At a real place their difference has modulus at most <span class="math" data-tex="\(R_v\)">\(R_v\)</span>. At a complex place use the ordinary triangle inequality to obtain <span class="math" data-tex="\(|y_v-z_v|\leq R_v\)">\(|y_v-z_v|\leq R_v\)</span>, then square to obtain (17). At a finite place <span class="math" data-tex="\(\alpha_v\mathcal O_v\)">\(\alpha_v\mathcal O_v\)</span> is an additive subgroup, so the difference stays in it.</p>
+<p>Now suppose <span class="math" data-tex="\(\|\alpha\|_{\mathbb A}=C_K\)">\(\|\alpha\|_{\mathbb A}=C_K\)</span>. Choose an infinite place <span class="math" data-tex="\(w\)">\(w\)</span>, and for <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> replace <span class="math" data-tex="\(\alpha_w\)">\(\alpha_w\)</span> by <span class="math" data-tex="\((1+1/j)\alpha_w\)">\((1+1/j)\alpha_w\)</span>, leaving every other component fixed. The resulting idèle has norm <span class="math" data-tex="\((1+1/j)^{d_w}C_K&gt;C_K\)">\((1+1/j)^{d_w}C_K&gt;C_K\)</span>, where <span class="math" data-tex="\(d_w=1\)">\(d_w=1\)</span> at a real place and <span class="math" data-tex="\(d_w=2\)">\(d_w=2\)</span> at a complex place. The strict case gives a nonzero <span class="math" data-tex="\(x_j\in K\)">\(x_j\in K\)</span> with the corresponding bounds. All these elements lie in one fixed compact box: double only the ordinary radius at <span class="math" data-tex="\(w\)">\(w\)</span>, retain the other infinite radii, and retain every finite subgroup <span class="math" data-tex="\(\alpha_v\mathcal O_v\)">\(\alpha_v\mathcal O_v\)</span>. By Theorem 2.2, this box meets <span class="math" data-tex="\(K\)">\(K\)</span> in a finite set. Some nonzero <span class="math" data-tex="\(x\)">\(x\)</span> therefore occurs for infinitely many <span class="math" data-tex="\(j\)">\(j\)</span>. Its bounds at <span class="math" data-tex="\(v\ne w\)">\(v\ne w\)</span> already have the required size. Along that unbounded subsequence, its bound at <span class="math" data-tex="\(w\)">\(w\)</span> tends to <span class="math" data-tex="\(|\alpha_w|_w\)">\(|\alpha_w|_w\)</span>. Thus (17) also holds at equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The half-radius choice is essential. Applying the counting principle directly to the full box would only bound the difference by twice its archimedean radii. Halving affects a complex factor by <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, because it has two real dimensions. We need not halve the finite factors, which are additive subgroups.</p>
+<p>Compactness and discreteness extend the strict volume argument to the closed boundary. The product formula explains why a size hypothesis is needed: (17) for nonzero <span class="math" data-tex="\(x\)">\(x\)</span> implies <span class="math" data-tex="\(1\leq\|\alpha\|_{\mathbb A}\)">\(1\leq\|\alpha\|_{\mathbb A}\)</span>.</p>
+<p>[Sutherland 25, Lemma 25.14, p.9] proves the same local-bound mechanism with an unspecified positive constant and a strict inequality. Here the real intervals of length <span class="math" data-tex="\(R_v\)">\(R_v\)</span>, the complex disks of radius <span class="math" data-tex="\(R_v/2\)">\(R_v/2\)</span>, and (13) determine the explicit constant (16), and the final compactness argument retains equality. [Milne ANT, Theorems 4.17 and 4.19, pp.75–76] gives the corresponding finite-dimensional counting and closed-boundary arguments. The ideal-norm bound in its Proposition 4.27 uses a different convex body; its constant is not the simultaneous place-by-place bound (16).</p>
+<h2 id="removing-a-place-frees-approximation">Removing a place frees approximation</h2>
+<p>For a fixed place <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\mathbb A_K^{(v_0)}
+=\prod_{v\ne v_0}&#x27;(K_v,\mathcal O_v),
+\]">\[
+\mathbb A_K^{(v_0)}
+=\prod_{v\ne v_0}&#x27;(K_v,\mathcal O_v),
+\]</span>
+<p>imposing integral restrictions only at finite places. Projection from the full ring forgets the <span class="math" data-tex="\(v_0\)">\(v_0\)</span>-coordinate.</p>
+<p><strong>Theorem 2.3 (strong approximation).</strong> For every finite or infinite place <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, the diagonal image of <span class="math" data-tex="\(K\)">\(K\)</span> is dense in <span class="math" data-tex="\(\mathbb A_K^{(v_0)}\)">\(\mathbb A_K^{(v_0)}\)</span>.</p>
+<p>Equivalently, let <span class="math" data-tex="\(S\)">\(S\)</span> be a finite set disjoint from <span class="math" data-tex="\(\{v_0\}\)">\(\{v_0\}\)</span>, containing all infinite places other than <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. Given <span class="math" data-tex="\(a_v\in K_v\)">\(a_v\in K_v\)</span> and <span class="math" data-tex="\(\varepsilon_v&gt;0\)">\(\varepsilon_v&gt;0\)</span> for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, there exists <span class="math" data-tex="\(q\in K\)">\(q\in K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|q-a_v|_v&lt;\varepsilon_v\quad(v\in S),
+\qquad
+q\in\mathcal O_v\quad(v&lt;\infty,\ v\notin S\cup\{v_0\}).
+\tag{20}
+\]">\[
+|q-a_v|_v&lt;\varepsilon_v\quad(v\in S),
+\qquad
+q\in\mathcal O_v\quad(v&lt;\infty,\ v\notin S\cup\{v_0\}).
+\tag{20}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(D=\overline{P_K}\times\widehat{\mathcal O}_K\)">\(D=\overline{P_K}\times\widehat{\mathcal O}_K\)</span>. By (11), every adèle is <span class="math" data-tex="\(k+d\)">\(k+d\)</span> for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> and <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>. For each infinite place set</p>
+<span class="math math-display" data-tex="\[
+B_v=\max\left(1,\sup_{d\in D}|d_v|_v\right),
+\]">\[
+B_v=\max\left(1,\sup_{d\in D}|d_v|_v\right),
+\]</span>
+<p>and for finite places set <span class="math" data-tex="\(B_v=1\)">\(B_v=1\)</span>. These are bounds on a fixed compact set, not norms on <span class="math" data-tex="\(K_\infty\)">\(K_\infty\)</span>.</p>
+<p>Choose an idèle <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|\beta_v|_v B_v&lt;\varepsilon_v\quad(v\in S),
+\qquad
+|\beta_v|_v=1\quad(v&lt;\infty,\ v\notin S\cup\{v_0\}).
+\]">\[
+|\beta_v|_v B_v&lt;\varepsilon_v\quad(v\in S),
+\qquad
+|\beta_v|_v=1\quad(v&lt;\infty,\ v\notin S\cup\{v_0\}).
+\]</span>
+<p>At <span class="math" data-tex="\(v_0\)">\(v_0\)</span> choose its component sufficiently large that <span class="math" data-tex="\(\|\beta\|_{\mathbb A}&gt;C_K\)">\(\|\beta\|_{\mathbb A}&gt;C_K\)</span>. Every completion has elements of arbitrarily large size, so this is possible whether <span class="math" data-tex="\(v_0\)">\(v_0\)</span> is finite or infinite. Lemma 2.5 supplies nonzero <span class="math" data-tex="\(c\in K\)">\(c\in K\)</span> with <span class="math" data-tex="\(|c|_v\leq|\beta_v|_v\)">\(|c|_v\leq|\beta_v|_v\)</span> everywhere.</p>
+<p>Let <span class="math" data-tex="\(t\in\mathbb A_K\)">\(t\in\mathbb A_K\)</span> have components <span class="math" data-tex="\(a_v\)">\(a_v\)</span> for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span> and zero elsewhere, including at <span class="math" data-tex="\(v_0\)">\(v_0\)</span>. Apply the representative property to <span class="math" data-tex="\(c^{-1}t\)">\(c^{-1}t\)</span>. There are <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> and <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> with</p>
+<span class="math math-display" data-tex="\[
+c^{-1}t=k+d.
+\]">\[
+c^{-1}t=k+d.
+\]</span>
+<p>Set <span class="math" data-tex="\(q=ck\)">\(q=ck\)</span>. Then <span class="math" data-tex="\(t-q=cd\)">\(t-q=cd\)</span>, so for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|a_v-q|_v\leq|\beta_v|_v B_v&lt;\varepsilon_v.
+\]">\[
+|a_v-q|_v\leq|\beta_v|_v B_v&lt;\varepsilon_v.
+\]</span>
+<p>At a finite place outside <span class="math" data-tex="\(S\cup\{v_0\}\)">\(S\cup\{v_0\}\)</span>, both <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(d_v\)">\(d_v\)</span> are integral and <span class="math" data-tex="\(t_v=0\)">\(t_v=0\)</span>, so <span class="math" data-tex="\(q=-cd_v\)">\(q=-cd_v\)</span> is integral. This proves (20).</p>
+<p>A neighborhood of a truncated adèle contains a set as in (20): include in <span class="math" data-tex="\(S\)">\(S\)</span> its finitely many nonintegral places, all retained infinite places, and the places with specified local neighborhoods. Choose smaller local balls inside those neighborhoods. Thus (20) proves density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The omitted coordinate pays for the simultaneous small bounds on the other coordinates: it allows an arbitrarily large component before invoking Lemma 2.5. The proof uses neither a unit theorem nor multiplicative strong approximation.</p>
+<p><strong>Worked example: rational finite approximation.</strong> Suppose we want</p>
+<span class="math math-display" data-tex="\[
+q-1/4\in\mathbf Z_2,\qquad q-2/9\in\mathbf Z_3,
+\]">\[
+q-1/4\in\mathbf Z_2,\qquad q-2/9\in\mathbf Z_3,
+\]</span>
+<p>and integrality at every other finite prime. Set <span class="math" data-tex="\(q=m/36\)">\(q=m/36\)</span>. The congruences become</p>
+<span class="math math-display" data-tex="\[
+m\equiv1\pmod4,\qquad m\equiv8\pmod9.
+\]">\[
+m\equiv1\pmod4,\qquad m\equiv8\pmod9.
+\]</span>
+<p>Choose <span class="math" data-tex="\(m=17\)">\(m=17\)</span>. Indeed, <span class="math" data-tex="\(17/36-1/4=2/9\in\mathbf Z_2\)">\(17/36-1/4=2/9\in\mathbf Z_2\)</span>, while <span class="math" data-tex="\(17/36-2/9=1/4\in\mathbf Z_3\)">\(17/36-2/9=1/4\in\mathbf Z_3\)</span>. Its denominator has no other prime factors. Higher precision gives higher prime-power congruences, solved by the same Chinese remainder theorem. In particular, <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is dense in <span class="math" data-tex="\(\mathbb A_{\mathbf Q,f}\)">\(\mathbb A_{\mathbf Q,f}\)</span>, the additive assertion used in [Bost–Connes 1995, §3, proof of Proposition 12].</p>
+<p>This does not give density in the full ring. If a rational <span class="math" data-tex="\(q\)">\(q\)</span> is integral at every finite prime, it is an integer. No such <span class="math" data-tex="\(q\)">\(q\)</span> lies in <span class="math" data-tex="\((1/3,2/3)\)">\((1/3,2/3)\)</span>. Thus <span class="math" data-tex="\((1/3,2/3)\times\widehat{\mathbf Z}\)">\((1/3,2/3)\times\widehat{\mathbf Z}\)</span> contains no rational number.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove (7) and (8) directly, without using Theorem 2.2. Explain why subtracting an arbitrary real number cannot replace rational subtraction in (8).</p>
+<p><strong>Exercise 2 (medium).</strong> Exhibit a Borel fundamental domain for <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span> in <span class="math" data-tex="\(\mathbb A_{\mathbf Q(i)}\)">\(\mathbb A_{\mathbf Q(i)}\)</span>. Compute its volume with (13), including the discriminant.</p>
+<p><strong>Exercise 3 (medium).</strong> Prove strong approximation for <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> directly. Treat both omission of infinity and omission of a finite prime. In the latter case include approximation at the real place.</p>
+<p><strong>Exercise 4 (hard).</strong> Prove Proposition 2.4 from an integral basis. Explain exactly where the factor <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span> enters, and why an arbitrary vector-space identification does not preserve the measure without a normalization check.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Write <span class="math" data-tex="\(q=a/b\)">\(q=a/b\)</span> with coprime integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>. If <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span>, some prime <span class="math" data-tex="\(p\mid b\)">\(p\mid b\)</span> has <span class="math" data-tex="\(\operatorname{ord}_p(q)&lt;0\)">\(\operatorname{ord}_p(q)&lt;0\)</span>, so <span class="math" data-tex="\(q\notin\mathbf Z_p\)">\(q\notin\mathbf Z_p\)</span>. Conversely, every integer belongs to every <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>. This proves (7).</p>
+<p>For <span class="math" data-tex="\(a=(a_\infty,(a_p))\)">\(a=(a_\infty,(a_p))\)</span>, let <span class="math" data-tex="\(T\)">\(T\)</span> be its nonintegral finite places. Choose <span class="math" data-tex="\(D=\prod_{p\in T}p^{d_p}\)">\(D=\prod_{p\in T}p^{d_p}\)</span> with <span class="math" data-tex="\(D a_p\in\mathbf Z_p\)">\(D a_p\in\mathbf Z_p\)</span> for <span class="math" data-tex="\(p\in T\)">\(p\in T\)</span>. The Chinese remainder theorem gives an integer <span class="math" data-tex="\(m\)">\(m\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+m\equiv D a_p\pmod{p^{d_p}}\qquad(p\in T).
+\]">\[
+m\equiv D a_p\pmod{p^{d_p}}\qquad(p\in T).
+\]</span>
+<p>Each right side denotes an integral residue class. Then <span class="math" data-tex="\(q=m/D\)">\(q=m/D\)</span> satisfies <span class="math" data-tex="\(a_p-q\in\mathbf Z_p\)">\(a_p-q\in\mathbf Z_p\)</span> at primes in <span class="math" data-tex="\(T\)">\(T\)</span>. At other primes <span class="math" data-tex="\(D\)">\(D\)</span> is a unit and both <span class="math" data-tex="\(a_p,q\)">\(a_p,q\)</span> are integral. Thus <span class="math" data-tex="\(a-q\in\mathbf R\times\widehat{\mathbf Z}\)">\(a-q\in\mathbf R\times\widehat{\mathbf Z}\)</span>, proving (8). For empty <span class="math" data-tex="\(T\)">\(T\)</span>, take <span class="math" data-tex="\(D=1,m=0\)">\(D=1,m=0\)</span>. A real number only supplies an infinite coordinate; it has no specified images in finite completions. Rational numbers supply the diagonal translation needed here.</p>
+<p><strong>Solution 2.</strong> First <span class="math" data-tex="\(\mathcal O_{\mathbf Q(i)}=\mathbf Z[i]\)">\(\mathcal O_{\mathbf Q(i)}=\mathbf Z[i]\)</span>. If <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span>, with <span class="math" data-tex="\(a,b\in\mathbf Q\)">\(a,b\in\mathbf Q\)</span>, is integral, traces of it and its product with <span class="math" data-tex="\(i\)">\(i\)</span> show <span class="math" data-tex="\(2a,2b\in\mathbf Z\)">\(2a,2b\in\mathbf Z\)</span>. Its norm <span class="math" data-tex="\(a^2+b^2\)">\(a^2+b^2\)</span> is integral. Writing <span class="math" data-tex="\(2a=m,2b=n\)">\(2a=m,2b=n\)</span>, the condition <span class="math" data-tex="\(m^2+n^2\equiv0\pmod4\)">\(m^2+n^2\equiv0\pmod4\)</span> forces both <span class="math" data-tex="\(m,n\)">\(m,n\)</span> even. Hence <span class="math" data-tex="\(a,b\in\mathbf Z\)">\(a,b\in\mathbf Z\)</span>.</p>
+<p>With basis <span class="math" data-tex="\(1,i\)">\(1,i\)</span>, formula (11) gives</p>
+<span class="math math-display" data-tex="\[
+\{x+iy:0\leq x&lt;1,\ 0\leq y&lt;1\}
+\times\prod_{v&lt;\infty}\mathcal O_v.
+\]">\[
+\{x+iy:0\leq x&lt;1,\ 0\leq y&lt;1\}
+\times\prod_{v&lt;\infty}\mathcal O_v.
+\]</span>
+<p>By (10), subtracting a field element makes the finite components integral. Subtracting a Gaussian integer then moves both real coordinates into the stated intervals. Two such representatives differ by a Gaussian integer whose real and imaginary parts lie strictly between <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, so they agree. The complex square has ordinary area <span class="math" data-tex="\(1\)">\(1\)</span>, hence measure <span class="math" data-tex="\(2\)">\(2\)</span>; the finite product has measure <span class="math" data-tex="\(1\)">\(1\)</span>. Its volume is <span class="math" data-tex="\(2\)">\(2\)</span>. Finally,</p>
+<span class="math math-display" data-tex="\[
+d_{\mathbf Q(i)}=
+\det\begin{pmatrix}
+\operatorname{Tr}(1)&amp;\operatorname{Tr}(i)\\
+\operatorname{Tr}(i)&amp;\operatorname{Tr}(i^2)
+\end{pmatrix}
+=\det\begin{pmatrix}2&amp;0\\0&amp;-2\end{pmatrix}=-4.
+\]">\[
+d_{\mathbf Q(i)}=
+\det\begin{pmatrix}
+\operatorname{Tr}(1)&amp;\operatorname{Tr}(i)\\
+\operatorname{Tr}(i)&amp;\operatorname{Tr}(i^2)
+\end{pmatrix}
+=\det\begin{pmatrix}2&amp;0\\0&amp;-2\end{pmatrix}=-4.
+\]</span>
+<p>The volume is <span class="math" data-tex="\(\sqrt{|-4|}\)">\(\sqrt{|-4|}\)</span>, as required.</p>
+<p><strong>Solution 3.</strong> Finite local conditions may be written <span class="math" data-tex="\(q-a_p\in p^{r_p}\mathbf Z_p\)">\(q-a_p\in p^{r_p}\mathbf Z_p\)</span>, with <span class="math" data-tex="\(r_p\in\mathbf Z\)">\(r_p\in\mathbf Z\)</span>. Let <span class="math" data-tex="\(T\)">\(T\)</span> be the finite set of constrained primes, including all nonintegral target components. Choose <span class="math" data-tex="\(d_p\geq0\)">\(d_p\geq0\)</span> so <span class="math" data-tex="\(D a_p\in\mathbf Z_p\)">\(D a_p\in\mathbf Z_p\)</span> and <span class="math" data-tex="\(d_p+r_p\geq0\)">\(d_p+r_p\geq0\)</span>, where <span class="math" data-tex="\(D=\prod_{p\in T}p^{d_p}\)">\(D=\prod_{p\in T}p^{d_p}\)</span>.</p>
+<p>If the omitted place is infinity, choose</p>
+<span class="math math-display" data-tex="\[
+m\equiv D a_p\pmod{p^{d_p+r_p}}\qquad(p\in T)
+\]">\[
+m\equiv D a_p\pmod{p^{d_p+r_p}}\qquad(p\in T)
+\]</span>
+<p>and put <span class="math" data-tex="\(q=m/D\)">\(q=m/D\)</span>. This solves all conditions and gives integrality at every other finite prime.</p>
+<p>Now omit a finite prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, so <span class="math" data-tex="\(\ell\notin T\)">\(\ell\notin T\)</span>. For every <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>, solve</p>
+<span class="math math-display" data-tex="\[
+m\equiv D\ell^N a_p\pmod{p^{d_p+r_p}}\qquad(p\in T).
+\]">\[
+m\equiv D\ell^N a_p\pmod{p^{d_p+r_p}}\qquad(p\in T).
+\]</span>
+<p>All solutions form <span class="math" data-tex="\(m_N+M\mathbf Z\)">\(m_N+M\mathbf Z\)</span>, where <span class="math" data-tex="\(M=\prod_{p\in T}p^{d_p+r_p}\)">\(M=\prod_{p\in T}p^{d_p+r_p}\)</span>. The rationals</p>
+<span class="math math-display" data-tex="\[
+q=\frac{m_N+Mk}{D\ell^N}\qquad(k\in\mathbf Z)
+\]">\[
+q=\frac{m_N+Mk}{D\ell^N}\qquad(k\in\mathbf Z)
+\]</span>
+<p>satisfy the finite conditions. In <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span> they form an arithmetic progression with mesh <span class="math" data-tex="\(M/(D\ell^N)\)">\(M/(D\ell^N)\)</span>, tending to zero. Given <span class="math" data-tex="\(a_\infty\)">\(a_\infty\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(N\)">\(N\)</span> with mesh less than <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span>, then choose the nearest progression point. Its distance is at most half the mesh, hence less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Its denominator is supported on <span class="math" data-tex="\(T\cup\{\ell\}\)">\(T\cup\{\ell\}\)</span>, so it is integral outside that set. This proves density for every omitted place. For empty <span class="math" data-tex="\(T\)">\(T\)</span>, use <span class="math" data-tex="\(D=M=1\)">\(D=M=1\)</span>.</p>
+<p><strong>Solution 4.</strong> The Minkowski lattice theorem gives a parallelepiped for <span class="math" data-tex="\(j(\mathcal O_K)\)">\(j(\mathcal O_K)\)</span> of Euclidean volume <span class="math" data-tex="\(2^{-r_2}\sqrt{|d_K|}\)">\(2^{-r_2}\sqrt{|d_K|}\)</span>. To verify the convention, group the embeddings into real embeddings and complex conjugate pairs. Replacing real and imaginary coordinates by a conjugate pair multiplies the determinant's absolute value by <span class="math" data-tex="\(2\)">\(2\)</span> per pair. Thus the embedding determinant has absolute value <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span> times the real-coordinate determinant. Its square is the discriminant, giving the stated Euclidean volume.</p>
+<p>By (10), the parallelepiped times <span class="math" data-tex="\(\widehat{\mathcal O}_K\)">\(\widehat{\mathcal O}_K\)</span> meets every additive coset exactly once. Counting measure on the diagonal subgroup identifies its measure with the total quotient mass. Each complex measure in (13) is twice ordinary area, so the infinite product measure multiplies Euclidean volume by <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span>. The finite factor has mass <span class="math" data-tex="\(1\)">\(1\)</span>. The result is</p>
+<span class="math math-display" data-tex="\[
+2^{r_2}\cdot2^{-r_2}\sqrt{|d_K|}\cdot1=\sqrt{|d_K|}.
+\]">\[
+2^{r_2}\cdot2^{-r_2}\sqrt{|d_K|}\cdot1=\sqrt{|d_K|}.
+\]</span>
+<p>An arbitrary <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>-basis gives a topological module isomorphism, but its infinite determinant need not have absolute value <span class="math" data-tex="\(1\)">\(1\)</span>, and its finite maps need not preserve the integer lattices. Haar measures transform by these local determinants. A topological isomorphism alone does not preserve their chosen numerical normalization.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<p>We use the following prerequisite results with their stated conventions.</p>
+<ul>
+<li>A number field has an integral basis by Theorem 2.3 of <a href="../../../../NT-ADL/prerequisites/NT-ANT-02.md">Discriminants and integral bases</a>. Proposition 7.2 of <a href="../../../../NT-ADL/prerequisites/NT-ANT-07.md">Lattices, Minkowski’s theorem and the Minkowski embedding</a> proves that the Minkowski image of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> is a full lattice, with Euclidean covolume <span class="math" data-tex="\(2^{-r_2}\sqrt{|d_K|}\)">\(2^{-r_2}\sqrt{|d_K|}\)</span>; the canonical complex measure in (13) multiplies this by <span class="math" data-tex="\(2^{r_2}\)">\(2^{r_2}\)</span>. A nonzero integral ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> therefore has canonical covolume <span class="math" data-tex="\(\sqrt{|d_K|}[\mathcal O_K:\mathfrak a]\)">\(\sqrt{|d_K|}[\mathcal O_K:\mathfrak a]\)</span>. The determinant calculation for (14) is given above. [Sutherland 14, Proposition 14.16 and Corollary 14.17] is a scholarly reference.</li>
+<li>Each finite completion is locally compact, its valuation ring is compact open, and that ring is the inverse limit of its quotients by powers of the maximal ideal. These are Theorem 2.1, Propositions 2.2–2.3 and the number-field completion paragraph of <a href="../../../../NT-LOC/NT-LOC-02.html">Completions, the p-adic numbers and complete discretely valued fields</a>, using the Dedekind and finite-residue facts from <a href="../../../../NT-ADL/prerequisites/NT-ANT-03.md">Discrete valuation rings and Dedekind domains</a>. Propositions 3.1 and 6.1 of <a href="../../../../NT-LOC/NT-LOC-06.html">Local fields: classification and Haar measure</a> fix the valuation and measure conventions.</li>
+<li>For finite separable <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the canonical map <span class="math" data-tex="\(L\otimes_K K_v\to\prod_{w\mid v}L_w\)">\(L\otimes_K K_v\to\prod_{w\mid v}L_w\)</span> is an isomorphism by Theorem 2.1 of <a href="../../../../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a>; its Corollary 2.2 proves compatibility with traces and norms. Finite extensions of number fields are separable. [Milne ANT, Proposition 8.2] records the same decomposition.</li>
+<li>With real modulus, squared complex modulus and finite values <span class="math" data-tex="\(q_v^{-\operatorname{ord}_v}\)">\(q_v^{-\operatorname{ord}_v}\)</span>, the product formula for <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span> is Theorem 5.2 of <a href="../../../../NT-LOC/NT-LOC-05.html">Places of number fields in extensions and the product formula</a>, using its Lemma 5.1 for the normalized local norm. Scholarly references are [Milne ANT, Theorem 8.8] and [Getz–Hahn draft, Proposition 2.1.1].</li>
+<li>Unique fractional ideal factorization and local valuation exponents are Theorem 3.2 of <a href="../../../../NT-ADL/prerequisites/NT-ANT-03.md">Discrete valuation rings and Dedekind domains</a>; its Proposition 3.3 proves Chinese remainders for distinct prime powers and their localization quotients. Theorem 4.3 and Corollary 4.4 of <a href="../../../../NT-ADL/prerequisites/NT-ANT-04.md">Norms of ideals, the ideal class group, and modules over Dedekind domains</a> give the finite torsion-free module structure used in the relative version of Proposition 2.1. Over a discrete valuation ring its fractional ideal summands are principal, so the localized module is free. The rational approximation application of Chinese remainders is also written in this lesson. [Milne ANT, Proposition 2.29, p.35, and the module discussion in §3, pp.57–58] gives the corresponding finite-module context; the complete programme proof is the one just named.</li>
+<li>Haar existence is Theorem 8.3 of <a href="../../../../NT-ADL/prerequisites/haar-measure-on-locally-compact-groups.html">Haar measure on locally compact groups</a>. The restricted-product measure and its integral-tail product formula are Proposition 1.2 of <a href="NT-ADL-01.html">Restricted products and profinite completions</a>. The local normalizations are also stated in [Sutherland 25, p.6] and [Getz–Hahn draft, §3.5, pp.75–76].</li>
+<li>The standard trace characters, their perfect local pairings and self-dual measure are Propositions 5.1–5.2 of <a href="../../../../NT-ADL/NT-ADL-05.html">Additive characters, self-dual measures and Poisson summation on the adèles</a>, with full archimedean inversion in Lemma 5.4A. Only the normalization comparison after Proposition 2.4 uses this result; no main proof here depends on later Fourier theory.</li>
+<li>The unit different of an unramified finite local extension follows from the explicit bridge after Proposition 2.4: Theorem 2.1 of <a href="../../../../NT-LOC/NT-LOC-07.html">Unramified and totally ramified extensions</a> supplies the full integral power basis, and Proposition 14.2 of <a href="../../../../NT-ANT/the-different-and-the-discriminant.html">The different and the discriminant</a> supplies its derivative different. Theorem 14.4 of the latter gives the global unramified-prime criterion.</li>
+</ul>
+<p>The solenoid's classification and duality, multiplicative idèle class groups, and Poisson summation belong to subsequent lessons. The quotient proved compact here is the additive quotient <span class="math" data-tex="\(\mathbb A_K/K\)">\(\mathbb A_K/K\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Sutherland 25]</strong> A. V. Sutherland, <em>The ring of adeles, strong approximation</em>, MIT 18.785, Lecture 25 (29 November 2021), <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/">MIT OpenCourseWare notes</a>, Proposition 25.10 and Corollary 25.11, pp.6–7; Theorem 25.12, pp.7–8; Lemma 25.14, p.9; Theorem 25.16 and Corollary 25.17, pp.9–10. These are comparison references for the independently written proofs here.</li>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (19 July 2020), <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">author-hosted notes</a>, Proposition 8.2 and Corollary 8.4, p.136; Theorem 8.8, p.138; Theorem 4.17 and Theorem 4.19, pp.75–76; Proposition 4.26, pp.79–80.</li>
+<li><strong>[Bost–Connes 1995]</strong> J.-B. Bost and A. Connes, <em>Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory</em>, Selecta Mathematica (N.S.) 1 (1995), 411–457, §3, proof of Proposition 12(2), p.427, for additive density after removal of infinity. <a href="https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf">Author-hosted scan</a>.</li>
+<li><strong>[Getz–Hahn draft]</strong> J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations: With a View toward Trace Formulae</em>, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">author-hosted draft dated 22 April 2022</a>, §2.1, pp.37–42; §3.5, pp.75–76; Appendix B, §§B.1–B.2, pp.485–487. The local character and inversion statements are comparison references, with the proof providers identified above.</li>
+<li><strong>[Sutherland 14]</strong> A. V. Sutherland, <em>The geometry of numbers</em>, MIT 18.785, Lecture 14 (27 October 2021), <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes14.pdf">lecture notes</a>, §14.2, Proposition 14.16 and Corollary 14.17: the canonical inner product, its normalized Haar measure, and the covolumes of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> and its fractional ideals.</li>
+<li><strong>[Sutherland 12]</strong> A. V. Sutherland, <em>The different and the discriminant</em>, MIT 18.785, Lecture 12 (20 October 2021), <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes12.pdf">lecture notes</a>, Definition 12.2, Proposition 12.4 and Theorem 12.17.</li>
+</ul>
+</article></main></body></html>

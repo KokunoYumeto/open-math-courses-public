@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brauer groups of local and global fields · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/brauer-groups-of-local-and-global-fields.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 24 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed"><summary>What this lesson assumes (16)</summary><ul><li><a href="hilberts-theorem-90-and-kummer-theory.html">Hilbert's Theorem 90 and Kummer theory</a></li><li><a href="frobenius-lifts-and-abstract-reciprocity.html">Frobenius lifts and abstract reciprocity</a></li><li><a href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence</a></li><li><a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a></li><li><a href="hilbert-symbols-and-local-conics.html">Hilbert symbols and local conics</a></li><li><a href="weil-groups-and-one-dimensional-representations.html">Weil groups and one-dimensional representations</a></li><li><a href="ideles-in-extensions-and-their-cohomology.html">Idèles in extensions and their cohomology</a></li><li><a href="the-herbrand-quotient-of-the-idele-class-group.html">The Herbrand quotient of the idèle class group</a></li><li><a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a></li><li><a href="the-global-reciprocity-law.html">The global reciprocity law</a></li><li><a href="hilbert-and-ring-class-fields-and-quadratic-prime-forms.html">Hilbert and ring class fields, and quadratic prime forms</a></li><li><a href="kronecker-weber-and-the-maximal-abelian-extension-of-the-rationals.html">Kronecker–Weber and the maximal abelian extension of the rationals</a></li><li><a href="the-chebotarev-density-theorem.html">The Chebotarev density theorem</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/NOE-HYP--NOE-HYP-04.html#4-maximal-subfields-and-splitting-fields">Central simple algebras and the Brauer group</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/NOE-HYP--NOE-HYP-05.html#3-multiplication-in-the-relative-brauer-group">Crossed products and factor systems</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/ag-etale-cohomology/galois-cohomology-and-the-etale-cohomology-of-a-field.html">Galois cohomology and the étale cohomology of a field</a></li></ul></details>
+<article class="lesson">
+<h1 id="brauer-groups-of-local-and-global-fields">Brauer groups of local and global fields</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 24.</strong> A Brauer class measures the obstruction to making a central simple algebra into a matrix algebra. Over a nonarchimedean local field, one rational number modulo integers measures the entire obstruction. Over a global field, the local numbers determine the algebra, and their sum must vanish. We prove both assertions, then use their cohomology to construct fundamental classes, Weil extensions and the class-field-tower bound.</p>
+<p>The algebraic prerequisites are the written Noether-course lessons <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/NOE-HYP--NOE-HYP-04.html#4-maximal-subfields-and-splitting-fields">Central simple algebras and the Brauer group</a>, Theorems 4.2–4.3 and 5.1, and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/support/NOE-HYP--NOE-HYP-05.html#3-multiplication-in-the-relative-brauer-group">Crossed products and factor systems</a>, Theorems 3.2 and 4.1 and Proposition 6.2. In particular, every class has a finite Galois splitting field, and, for finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span> with group <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(L/K)=H^2(G,L^\times),\qquad
+\operatorname{Br}(K)=H^2_{\mathrm{cont}}(G_K,(K^s)^\times).
+\tag{1}
+\]">\[
+\operatorname{Br}(L/K)=H^2(G,L^\times),\qquad
+\operatorname{Br}(K)=H^2_{\mathrm{cont}}(G_K,(K^s)^\times).
+\tag{1}
+\]</span>
+These are actual preceding algebra proofs, including the convention on crossed products. We use ordinary cochains and Shapiro from <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/ag-etale-cohomology/galois-cohomology-and-the-etale-cohomology-of-a-field.html">Galois cohomology and the étale cohomology of a field</a>, §§2–3 and 5.1–5.2. The finite-group Tate constructions needed beyond those sections are developed below.</p>
+<p>Our arithmetic prerequisites are <a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a>, <a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm-index bound and Hasse's norm theorem</a>, and <a href="the-global-reciprocity-law.html">The global reciprocity law</a>. Their proofs precede the present Brauer reformulation. The invariant is normalized by <strong>arithmetic</strong> Frobenius: an unramified cyclic algebra with Frobenius generator and uniformizer parameter has invariant <span class="math" data-tex="\(1/n\)">\(1/n\)</span>.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-24">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-cohomological-tools-for-a-finite-extension">1. Cohomological tools for a finite extension</h2>
+<p>We first isolate the arguments that turn cyclic computations into statements about arbitrary finite Galois groups. Coefficients in this section are written additively.</p>
+<h3 id="restriction-norms-and-inflation">Restriction, norms and inflation</h3>
+<p>For <span class="math" data-tex="\(H\subseteq G\)">\(H\subseteq G\)</span>, restriction and corestriction satisfy
+<span class="math math-display" data-tex="\[
+\operatorname{Cor}_H^G\operatorname{Res}_H^G=[G:H].
+\tag{2}
+\]">\[
+\operatorname{Cor}_H^G\operatorname{Res}_H^G=[G:H].
+\tag{2}
+\]</span>
+Here is a construction, rather than an appeal to the identity. With
+<span class="math" data-tex="\(\operatorname{Coind}_H^G A=\{f:G\to A:f(hg)=hf(g)\}\)">\(\operatorname{Coind}_H^G A=\{f:G\to A:f(hg)=hf(g)\}\)</span>, the maps
+<span class="math math-display" data-tex="\[
+A\longrightarrow\operatorname{Coind}_H^G A,\quad a\longmapsto(g\mapsto ga),
+\qquad
+f\longmapsto\sum_{g\in H\backslash G}g^{-1}f(g)
+\tag{3}
+\]">\[
+A\longrightarrow\operatorname{Coind}_H^G A,\quad a\longmapsto(g\mapsto ga),
+\qquad
+f\longmapsto\sum_{g\in H\backslash G}g^{-1}f(g)
+\tag{3}
+\]</span>
+are <span class="math" data-tex="\(G\)">\(G\)</span>-linear, and their composite is <span class="math" data-tex="\([G:H]\)">\([G:H]\)</span>. The summand is independent of the coset representative. Replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(gx\)">\(gx\)</span> proves equivariance of the sum. Under Shapiro the first map induces restriction, so the second defines corestriction and proves (2). Consequently restriction to a Sylow <span class="math" data-tex="\(p\)">\(p\)</span>-subgroup injects the <span class="math" data-tex="\(p\)">\(p\)</span>-primary part of positive cohomology. Every positive cohomology class is killed by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>: in homogeneous cochains the sum of the contractions inserting each element of <span class="math" data-tex="\(G\)">\(G\)</span> is an equivariant homotopy for multiplication by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<p>For <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>, <span class="math" data-tex="\(Q=G/H\)">\(Q=G/H\)</span>, we shall also use
+<span class="math math-display" data-tex="\[
+0\to H^1(Q,A^H)\to H^1(G,A)\to H^1(H,A),
+\tag{4}
+\]">\[
+0\to H^1(Q,A^H)\to H^1(G,A)\to H^1(H,A),
+\tag{4}
+\]</span>
+and, when <span class="math" data-tex="\(H^1(H,A)=0\)">\(H^1(H,A)=0\)</span>,
+<span class="math math-display" data-tex="\[
+0\to H^2(Q,A^H)\xrightarrow{\mathrm{Inf}}H^2(G,A)
+\xrightarrow{\mathrm{Res}}H^2(H,A).
+\tag{5}
+\]">\[
+0\to H^2(Q,A^H)\xrightarrow{\mathrm{Inf}}H^2(G,A)
+\xrightarrow{\mathrm{Res}}H^2(H,A).
+\tag{5}
+\]</span>
+To verify these low-degree assertions, take an injective <span class="math" data-tex="\(G\)">\(G\)</span>-resolution <span class="math" data-tex="\(I^\bullet\)">\(I^\bullet\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>. Restriction makes its terms <span class="math" data-tex="\(H\)">\(H\)</span>-injective, because induction is an exact left adjoint. The terms <span class="math" data-tex="\((I^j)^H\)">\((I^j)^H\)</span> are <span class="math" data-tex="\(Q\)">\(Q\)</span>-injective, because inflation is an exact left adjoint to taking <span class="math" data-tex="\(H\)">\(H\)</span>-invariants. Apply the free bar resolution of <span class="math" data-tex="\(Q\)">\(Q\)</span> to the complex <span class="math" data-tex="\((I^\bullet)^H\)">\((I^\bullet)^H\)</span>. The two filtrations of the resulting first-quadrant double complex have respectively cohomology <span class="math" data-tex="\(H^*(G,A)\)">\(H^*(G,A)\)</span> and second page
+<span class="math math-display" data-tex="\[
+H^i(Q,H^j(H,A)).
+\tag{6}
+\]">\[
+H^i(Q,H^j(H,A)).
+\tag{6}
+\]</span>
+Indeed the first filtration kills positive horizontal degrees termwise by injectivity; the second first takes the vertical cohomology <span class="math" data-tex="\(H^j(H,A)\)">\(H^j(H,A)\)</span>. Each total degree has finitely many terms, so the filtrations converge without a limit issue. The entries of total degree one give (4). If the row <span class="math" data-tex="\(j=1\)">\(j=1\)</span> vanishes, the edge in total degree two gives exactly (5). If <span class="math" data-tex="\(H^j(H,A)=0\)">\(H^j(H,A)=0\)</span> for <span class="math" data-tex="\(1\leq j\leq m\)">\(1\leq j\leq m\)</span>, inflation is an isomorphism in degrees <span class="math" data-tex="\(1,\ldots,m\)">\(1,\ldots,m\)</span>. The edge maps are the displayed cochain inflation and restriction: they agree in degree zero and on connecting maps. This supplies the particular spectral-sequence calculation used here.</p>
+<h3 id="a-cyclic-to-general-lemma">A cyclic-to-general lemma</h3>
+<p>Suppose a system of modules <span class="math" data-tex="\(A_L\)">\(A_L\)</span> indexed by finite Galois field extensions has <span class="math" data-tex="\(A_L^H=A_{L^H}\)">\(A_L^H=A_{L^H}\)</span>, and that for every cyclic extension of prime degree <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+H^1(C_p,A_L)=0,\qquad |H^2(C_p,A_L)|=p.
+\tag{7}
+\]">\[
+H^1(C_p,A_L)=0,\qquad |H^2(C_p,A_L)|=p.
+\tag{7}
+\]</span>
+Then for arbitrary finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,
+<span class="math math-display" data-tex="\[
+H^1(G,A_L)=0,\qquad |H^2(G,A_L)|\text{ divides }|G|.
+\tag{8}
+\]">\[
+H^1(G,A_L)=0,\qquad |H^2(G,A_L)|\text{ divides }|G|.
+\tag{8}
+\]</span>
+<strong>Proof.</strong> First take a <span class="math" data-tex="\(p\)">\(p\)</span>-group and induct on its order. It has a normal subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of index <span class="math" data-tex="\(p\)">\(p\)</span>: a nontrivial finite <span class="math" data-tex="\(p\)">\(p\)</span>-group has a nontrivial center, and induction on the quotient by a central order-<span class="math" data-tex="\(p\)">\(p\)</span> subgroup gives an order-<span class="math" data-tex="\(p\)">\(p\)</span> quotient. Equations (4) and (7) kill <span class="math" data-tex="\(H^1(G,A_L)\)">\(H^1(G,A_L)\)</span>. Equation (5) embeds a group of order <span class="math" data-tex="\(p\)">\(p\)</span> as the kernel of restriction in degree two, whose image has order dividing <span class="math" data-tex="\(|H|\)">\(|H|\)</span> by induction. Thus the order divides <span class="math" data-tex="\(p|H|\)">\(p|H|\)</span>. For a general group, restrict to its Sylow groups and use (2): <span class="math" data-tex="\(H^1\)">\(H^1\)</span> vanishes primary part by primary part, and the <span class="math" data-tex="\(p\)">\(p\)</span>-primary part of <span class="math" data-tex="\(H^2\)">\(H^2\)</span> embeds in a group of order dividing the order of the Sylow group. These injections also prove finiteness. Multiplying the bounds proves (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A_L=L^\times\)">\(A_L=L^\times\)</span>, Hilbert 90 and cyclic local reciprocity prove (7). For <span class="math" data-tex="\(A_L=C_L\)">\(A_L=C_L\)</span>, fixed classes descend by lesson 13. The cyclic Herbrand quotient of lesson 14 and the exact norm index of lesson 16 give <span class="math" data-tex="\(H^1(C_p,C_L)=0\)">\(H^1(C_p,C_L)=0\)</span>; cyclic periodicity gives <span class="math" data-tex="\(H^2(C_p,C_L)=C_K/NC_L\)">\(H^2(C_p,C_L)=C_K/NC_L\)</span> of order <span class="math" data-tex="\(p\)">\(p\)</span>. Thus (8) applies to both arithmetic systems, in both characteristics.</p>
+<h2 id="2-unramified-algebras-and-the-invariant">2. Unramified algebras and the invariant</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a nonarchimedean local field with finite residue field, <span class="math" data-tex="\(K_n/K\)">\(K_n/K\)</span> its unramified extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(F\)">\(F\)</span> arithmetic Frobenius. Valuations are normalized to have image <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>.</p>
+<h3 id="proposition-24-1-the-unramified-invariant">Proposition 24.1. The unramified invariant</h3>
+<p>Valuation induces an isomorphism
+<span class="math math-display" data-tex="\[
+H^2(\operatorname{Gal}(K_n/K),K_n^\times)
+\xrightarrow{\sim}H^2(C_n,\mathbf Z)
+\xrightarrow{\sim}\tfrac1n\mathbf Z/\mathbf Z.
+\tag{9}
+\]">\[
+H^2(\operatorname{Gal}(K_n/K),K_n^\times)
+\xrightarrow{\sim}H^2(C_n,\mathbf Z)
+\xrightarrow{\sim}\tfrac1n\mathbf Z/\mathbf Z.
+\tag{9}
+\]</span>
+The cyclic algebra <span class="math" data-tex="\((K_n/K,F,a)\)">\((K_n/K,F,a)\)</span>, defined by <span class="math" data-tex="\(ux=F(x)u\)">\(ux=F(x)u\)</span>, <span class="math" data-tex="\(u^n=a\)">\(u^n=a\)</span>, maps to <span class="math" data-tex="\(v_K(a)/n\)">\(v_K(a)/n\)</span>. Inflation between unramified extensions preserves this rational invariant. Their union therefore gives
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(K^{\mathrm{ur}}/K)\simeq\mathbf Q/\mathbf Z.
+\tag{10}
+\]">\[
+\operatorname{Br}(K^{\mathrm{ur}}/K)\simeq\mathbf Q/\mathbf Z.
+\tag{10}
+\]</span></p>
+<p><strong>Proof.</strong> The unit module <span class="math" data-tex="\(U_{K_n}\)">\(U_{K_n}\)</span> has zero Tate cohomology in every degree. In degree zero this is surjectivity of unramified unit norms. In degree minus one, Hilbert 90 writes a norm-one unit as <span class="math" data-tex="\(F(b)/b\)">\(F(b)/b\)</span>; multiplication of <span class="math" data-tex="\(b\)">\(b\)</span> by a power of a uniformizer in <span class="math" data-tex="\(K\)">\(K\)</span> makes <span class="math" data-tex="\(b\)">\(b\)</span> a unit. The same statements hold for every subgroup. Cyclic periodicity proves the assertion in all degrees. The exact sequence
+<span class="math math-display" data-tex="\[
+1\to U_{K_n}\to K_n^\times\xrightarrow{v_{K_n}}\mathbf Z\to0
+\]">\[
+1\to U_{K_n}\to K_n^\times\xrightarrow{v_{K_n}}\mathbf Z\to0
+\]</span>
+therefore makes valuation an isomorphism in degree two. The cyclic resolution identifies <span class="math" data-tex="\(H^2(C_n,\mathbf Z)\)">\(H^2(C_n,\mathbf Z)\)</span> with <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>. Equivalently the boundary from <span class="math" data-tex="\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)">\(0\to\mathbf Z\to\mathbf Q\to\mathbf Q/\mathbf Z\to0\)</span> identifies it with characters of <span class="math" data-tex="\(C_n\)">\(C_n\)</span>; evaluation at <span class="math" data-tex="\(F\)">\(F\)</span> gives (9). The parameter cocycle is 1 except at a carry in adding Frobenius exponents, where it is <span class="math" data-tex="\(a\)">\(a\)</span>. Its valuation is the carry cocycle with parameter <span class="math" data-tex="\(v_K(a)\)">\(v_K(a)\)</span>. This proves the stated formula. Inflation pulls back the character on Frobenius, keeping its value unchanged. All rational numbers modulo integers occur at some finite level. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is an important base-change calculation before passing to the whole Brauer group. If <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is any finite extension, with ramification index <span class="math" data-tex="\(e\)">\(e\)</span> and residue degree <span class="math" data-tex="\(f\)">\(f\)</span>, an unramified class of invariant <span class="math" data-tex="\(r\)">\(r\)</span> restricts to an unramified class over <span class="math" data-tex="\(E\)">\(E\)</span> of invariant
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_E(\operatorname{Res}_{E/K}b)=efr=[E:K]r.
+\tag{11}
+\]">\[
+\operatorname{inv}_E(\operatorname{Res}_{E/K}b)=efr=[E:K]r.
+\tag{11}
+\]</span>
+To see this on the preceding construction, restrict the character to the unramified base change. Its Frobenius restricts to <span class="math" data-tex="\(F^f\)">\(F^f\)</span>, multiplying the character value by <span class="math" data-tex="\(f\)">\(f\)</span>. Changing normalized valuations multiplies the valuation cocycle by <span class="math" data-tex="\(e\)">\(e\)</span>. Boundary maps commute with both operations, yielding (11). This argument also permits <span class="math" data-tex="\(E/K\)">\(E/K\)</span> to be non-Galois.</p>
+<h3 id="theorem-24-2-local-brauer-groups">Theorem 24.2. Local Brauer groups</h3>
+<p>For every nonarchimedean local field with finite residue field,
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_K:\operatorname{Br}(K)\xrightarrow{\sim}\mathbf Q/\mathbf Z.
+\tag{12}
+\]">\[
+\operatorname{inv}_K:\operatorname{Br}(K)\xrightarrow{\sim}\mathbf Q/\mathbf Z.
+\tag{12}
+\]</span>
+For <span class="math" data-tex="\(L/K\)">\(L/K\)</span> finite Galois of degree <span class="math" data-tex="\(n\)">\(n\)</span>, its relative group is exactly the subgroup <span class="math" data-tex="\(\tfrac1n\mathbf Z/\mathbf Z\)">\(\tfrac1n\mathbf Z/\mathbf Z\)</span>. Restriction multiplies invariants by the extension degree; corestriction preserves them. Also
+<span class="math math-display" data-tex="\[
+\operatorname{Br}(\mathbf R)=\tfrac12\mathbf Z/\mathbf Z,
+\qquad \operatorname{Br}(\mathbf C)=0.
+\tag{13}
+\]">\[
+\operatorname{Br}(\mathbf R)=\tfrac12\mathbf Z/\mathbf Z,
+\qquad \operatorname{Br}(\mathbf C)=0.
+\tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(M=LK_n\)">\(M=LK_n\)</span>. Every class split by <span class="math" data-tex="\(K_n\)">\(K_n\)</span> restricts to zero over <span class="math" data-tex="\(L\)">\(L\)</span>: its invariant over <span class="math" data-tex="\(L\)">\(L\)</span>, calculated in the unramified extension <span class="math" data-tex="\(M/L\)">\(M/L\)</span>, is <span class="math" data-tex="\(n\)">\(n\)</span> times its original invariant by (11). Equation (5), applied to <span class="math" data-tex="\(M/L/K\)">\(M/L/K\)</span> and Hilbert 90, then places it in <span class="math" data-tex="\(H^2(G,L^\times)\)">\(H^2(G,L^\times)\)</span>. This gives a subgroup of order <span class="math" data-tex="\(n\)">\(n\)</span> there. The bound (8) says that the whole group has order dividing <span class="math" data-tex="\(n\)">\(n\)</span>, so it is precisely that subgroup. Every Brauer class has a finite Galois splitting field by (1), proving (12) and the relative assertion. Formula (11) now applies to every class.</p>
+<p>For corestriction, restriction <span class="math" data-tex="\(\operatorname{Br}(K)\to\operatorname{Br}(E)\)">\(\operatorname{Br}(K)\to\operatorname{Br}(E)\)</span> is surjective because multiplication by <span class="math" data-tex="\([E:K]\)">\([E:K]\)</span> on <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span> is surjective. Write a class <span class="math" data-tex="\(c\)">\(c\)</span> over <span class="math" data-tex="\(E\)">\(E\)</span> as <span class="math" data-tex="\(\operatorname{Res}b\)">\(\operatorname{Res}b\)</span>. Then (2) gives
+<span class="math" data-tex="\(\operatorname{inv}_K(\operatorname{Cor}c)=[E:K]\operatorname{inv}_K(b)=\operatorname{inv}_E(c)\)">\(\operatorname{inv}_K(\operatorname{Cor}c)=[E:K]\operatorname{inv}_K(b)=\operatorname{inv}_E(c)\)</span>.</p>
+<p>Over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, all central simple algebras split. Over <span class="math" data-tex="\(\mathbf R\)">\(\mathbf R\)</span>, every class is split by <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, so (1) and the cyclic resolution give
+<span class="math" data-tex="\(H^2(C_2,\mathbf C^\times)=\mathbf R^\times/N\mathbf C^\times\)">\(H^2(C_2,\mathbf C^\times)=\mathbf R^\times/N\mathbf C^\times\)</span>.
+Complex norms are exactly the positive reals; this group has two elements, with negative parameter giving Hamilton's algebra. Assign that class invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. This proves (13) without importing a classification of real division algebras. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="cyclic-algebras-and-the-artin-character">Cyclic algebras and the Artin character</h3>
+<p>If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> a generator, and <span class="math" data-tex="\(\chi(\sigma)=1/n\)">\(\chi(\sigma)=1/n\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_K(L/K,\sigma,a)
+=\chi(\operatorname{rec}_{K,\mathrm{arith}}(a)).
+\tag{14}
+\]">\[
+\operatorname{inv}_K(L/K,\sigma,a)
+=\chi(\operatorname{rec}_{K,\mathrm{arith}}(a)).
+\tag{14}
+\]</span>
+One must check this normalization for ramified extensions as well. Regard the class as <span class="math" data-tex="\(\delta\chi\cup a\)">\(\delta\chi\cup a\)</span>; rational lifts of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> give exactly the carry cocycle used in the cyclic algebra. The cochain cup product and transfer satisfy the projection formula: distribute the coset sum (3) over a cup product whose other factor is restricted from <span class="math" data-tex="\(G\)">\(G\)</span>; the restricted factor is pulled outside each summand. In degree zero the coefficient transfer is the field norm.</p>
+<p>Now choose the positive Frobenius lift of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and its fixed field <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> in the enlarged unramified extension, as in <a href="frobenius-lifts-and-abstract-reciprocity.html">Frobenius lifts and abstract reciprocity</a>, sections 2 and 5–6. Over <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, the character becomes unramified and its arithmetic Frobenius has value <span class="math" data-tex="\(\chi(\sigma)\)">\(\chi(\sigma)\)</span>. For a uniformizer <span class="math" data-tex="\(\pi_\Sigma\)">\(\pi_\Sigma\)</span>, Proposition 24.1 gives
+<span class="math" data-tex="\(\operatorname{inv}_\Sigma(\delta\chi|_\Sigma\cup\pi_\Sigma)=\chi(\sigma)\)">\(\operatorname{inv}_\Sigma(\delta\chi|_\Sigma\cup\pi_\Sigma)=\chi(\sigma)\)</span>.
+Corestriction preserves the invariant by Theorem 24.2, so the projection formula gives that same invariant for parameter <span class="math" data-tex="\(N_{\Sigma/K}\pi_\Sigma\)">\(N_{\Sigma/K}\pi_\Sigma\)</span>. The Frobenius-lift definition in lesson 4 says that this parameter represents the inverse reciprocity image of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Its class generates <span class="math" data-tex="\(K^\times/NL^\times\)">\(K^\times/NL^\times\)</span>. Both sides of (14) are homomorphisms on that cyclic quotient, so agreement on this generator proves (14). The real version is the same sign calculation, and the complex version is zero.</p>
+<h2 id="3-tate-cohomology-and-the-fundamental-class">3. Tate cohomology and the fundamental class</h2>
+<p>For a finite group, extend ordinary cohomology to all integer degrees by a complete resolution. Concretely, splice the free bar resolution of <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> to its integral dual, using the norm between the two degree-zero terms. The bar resolution is exact by insertion of the identity on underlying abelian groups; its dual is exact because those underlying sequences split over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. The splice is exact at the middle since the kernel of augmentation is the augmentation ideal and the invariant elements of <span class="math" data-tex="\(\mathbf Z[G]\)">\(\mathbf Z[G]\)</span> are multiples of the norm. Applying <span class="math" data-tex="\(\operatorname{Hom}_G(-,A)\)">\(\operatorname{Hom}_G(-,A)\)</span> defines <span class="math" data-tex="\(\widehat H^q(G,A)\)">\(\widehat H^q(G,A)\)</span>. It agrees with ordinary <span class="math" data-tex="\(H^q\)">\(H^q\)</span> for <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, and
+<span class="math math-display" data-tex="\[
+\widehat H^0=A^G/N_GA,\quad
+\widehat H^{-1}=\ker N_G/I_GA,\quad
+\widehat H^{-q-1}(G,\mathbf Z)=H_q(G,\mathbf Z)\quad(q\geq1).
+\tag{15}
+\]">\[
+\widehat H^0=A^G/N_GA,\quad
+\widehat H^{-1}=\ker N_G/I_GA,\quad
+\widehat H^{-q-1}(G,\mathbf Z)=H_q(G,\mathbf Z)\quad(q\geq1).
+\tag{15}
+\]</span>
+In particular <span class="math" data-tex="\(\widehat H^{-2}(G,\mathbf Z)=G^{\mathrm{ab}}\)">\(\widehat H^{-2}(G,\mathbf Z)=G^{\mathrm{ab}}\)</span>. The degree-one bar boundary imposes precisely <span class="math" data-tex="\([gh]=[g]+[h]\)">\([gh]=[g]+[h]\)</span>, giving this identification.</p>
+<p>Short exact sequences give long exact Tate sequences: all the resolution terms are free, so taking cochains is termwise exact. Induced modules <span class="math" data-tex="\(\mathbf Z[G]\otimes B\)">\(\mathbf Z[G]\otimes B\)</span> have zero Tate cohomology, including after restriction to any subgroup. Identify their cochains with the underlying split bar complex by evaluation on a coset coordinate; the insertion contraction and its dual prove this assertion also in the two middle degrees. The maps (3) and their bar comparisons extend restriction, corestriction and (2) to Tate degrees. Cup products extend by the bar diagonal and dimension shifting; on nonnegative cochains they are
+<span class="math math-display" data-tex="\[
+(c\cup d)(g_1,\ldots,g_{r+s})
+=c(g_1,\ldots,g_r)\otimes(g_1\cdots g_r)d(g_{r+1},\ldots,g_{r+s}).
+\tag{16}
+\]">\[
+(c\cup d)(g_1,\ldots,g_{r+s})
+=c(g_1,\ldots,g_r)\otimes(g_1\cdots g_r)d(g_{r+1},\ldots,g_{r+s}).
+\tag{16}
+\]</span>
+Splitting the alternating boundary at the join proves its Leibniz rule. The long exact sequences extend this product to negative degrees and make connecting maps commute with it, with the usual degree sign. We place the degree-two class on the right; its even degree introduces no sign in the isomorphisms below.</p>
+<h3 id="tate-s-two-degree-criterion">Tate's two-degree criterion</h3>
+<p>If <span class="math" data-tex="\(\widehat H^j(H,B)=\widehat H^{j+1}(H,B)=0\)">\(\widehat H^j(H,B)=\widehat H^{j+1}(H,B)=0\)</span> for every subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, then all its Tate groups vanish.</p>
+<p><strong>Proof.</strong> There are shifts in both directions. The surjection
+<span class="math" data-tex="\(\mathbf Z[G]\otimes B\to B\)">\(\mathbf Z[G]\otimes B\to B\)</span>, <span class="math" data-tex="\(g\otimes b\mapsto gb\)">\(g\otimes b\mapsto gb\)</span>, and the injection
+<span class="math" data-tex="\(B\to\operatorname{Maps}(G,B)\)">\(B\to\operatorname{Maps}(G,B)\)</span>, <span class="math" data-tex="\(b\mapsto(g\mapsto gb)\)">\(b\mapsto(g\mapsto gb)\)</span>, have Tate-acyclic middle modules; their kernels and cokernels shift cohomology by one, simultaneously for all subgroups. Shift to <span class="math" data-tex="\(j=1\)">\(j=1\)</span>. It suffices to prove vanishing in degrees 0 and 3; iteration then proves all degrees.</p>
+<p>Induct on <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. For a group that is not a <span class="math" data-tex="\(p\)">\(p\)</span>-group, all Sylow subgroups are proper, and (2) kills the two groups primary part by primary part. For a <span class="math" data-tex="\(p\)">\(p\)</span>-group take <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span> of index <span class="math" data-tex="\(p\)">\(p\)</span>. Induction gives vanishing for <span class="math" data-tex="\(H\)">\(H\)</span> in degrees 0 through 3. The inflation consequence of (6) gives isomorphisms in degrees 1, 2 and 3 with the corresponding groups of <span class="math" data-tex="\(C_p\)">\(C_p\)</span> on <span class="math" data-tex="\(B^H\)">\(B^H\)</span>. Cyclic periodicity gives degree-three vanishing from degree one and
+<span class="math" data-tex="\((B^H)^{C_p}=N_{C_p}B^H\)">\((B^H)^{C_p}=N_{C_p}B^H\)</span> from degree-two vanishing. Degree-zero vanishing for <span class="math" data-tex="\(H\)">\(H\)</span> says <span class="math" data-tex="\(B^H=N_HB\)">\(B^H=N_HB\)</span>, so <span class="math" data-tex="\(B^G=N_GB\)">\(B^G=N_GB\)</span>. This proves degree-zero vanishing for <span class="math" data-tex="\(G\)">\(G\)</span> and completes the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="tate-s-cup-product-theorem">Tate's cup-product theorem</h3>
+<p>Suppose for every <span class="math" data-tex="\(H\subseteq G\)">\(H\subseteq G\)</span>, <span class="math" data-tex="\(H^1(H,A)=0\)">\(H^1(H,A)=0\)</span> and <span class="math" data-tex="\(H^2(H,A)\)">\(H^2(H,A)\)</span> is cyclic of order <span class="math" data-tex="\(|H|\)">\(|H|\)</span>. If <span class="math" data-tex="\(u\)">\(u\)</span> generates <span class="math" data-tex="\(H^2(G,A)\)">\(H^2(G,A)\)</span>, then
+<span class="math math-display" data-tex="\[
+\widehat H^q(G,\mathbf Z)\xrightarrow{x\mapsto x\cup u}
+\widehat H^{q+2}(G,A)
+\tag{17}
+\]">\[
+\widehat H^q(G,\mathbf Z)\xrightarrow{x\mapsto x\cup u}
+\widehat H^{q+2}(G,A)
+\tag{17}
+\]</span>
+is an isomorphism for every integer <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Proof.</strong> First restriction of <span class="math" data-tex="\(u\)">\(u\)</span> generates each <span class="math" data-tex="\(H^2(H,A)\)">\(H^2(H,A)\)</span>. Its order is at least <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, because corestriction of it is <span class="math" data-tex="\([G:H]u\)">\([G:H]u\)</span>, which has exactly that order by (2); the target itself has order <span class="math" data-tex="\(|H|\)">\(|H|\)</span>.</p>
+<p>Twice take the cokernel of the injection into the induced module just used. The resulting module <span class="math" data-tex="\(B\)">\(B\)</span> has natural shifts
+<span class="math" data-tex="\(\widehat H^q(H,B)=\widehat H^{q+2}(H,A)\)">\(\widehat H^q(H,B)=\widehat H^{q+2}(H,A)\)</span>.
+Thus <span class="math" data-tex="\(\widehat H^{-1}(H,B)=0\)">\(\widehat H^{-1}(H,B)=0\)</span> and <span class="math" data-tex="\(\widehat H^0(H,B)\)">\(\widehat H^0(H,B)\)</span> is cyclic of order <span class="math" data-tex="\(|H|\)">\(|H|\)</span>. Lift the shifted class of <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(b\in B^G\)">\(b\in B^G\)</span>. Adjoin <span class="math" data-tex="\(\mathbf Z[G]\)">\(\mathbf Z[G]\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span>, which does not change any Tate group, and inject
+<span class="math math-display" data-tex="\[
+\mathbf Z\longrightarrow B\oplus\mathbf Z[G],
+\qquad 1\longmapsto(b,N_G).
+\]">\[
+\mathbf Z\longrightarrow B\oplus\mathbf Z[G],
+\qquad 1\longmapsto(b,N_G).
+\]</span>
+The second coordinate proves injectivity. On degree-zero cohomology of every subgroup this is an isomorphism: the image of 1 is the restricted generator just proved. In the long exact sequence for its cokernel <span class="math" data-tex="\(D\)">\(D\)</span>, the facts <span class="math" data-tex="\(\widehat H^{-1}(H,B)=0\)">\(\widehat H^{-1}(H,B)=0\)</span> and <span class="math" data-tex="\(H^1(H,\mathbf Z)=0\)">\(H^1(H,\mathbf Z)=0\)</span> consequently give
+<span class="math" data-tex="\(\widehat H^{-1}(H,D)=\widehat H^0(H,D)=0\)">\(\widehat H^{-1}(H,D)=\widehat H^0(H,D)=0\)</span>.
+The two-degree criterion makes <span class="math" data-tex="\(D\)">\(D\)</span> Tate-acyclic. The injection of <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> therefore induces isomorphisms in every degree. Its first coordinate is multiplication by the shifted class of <span class="math" data-tex="\(u\)">\(u\)</span>; commuting the two connecting maps with (16) gives precisely (17). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-24-3-local-fundamental-classes-and-reciprocity">Proposition 24.3. Local fundamental classes and reciprocity</h3>
+<p>For <span class="math" data-tex="\(L/K\)">\(L/K\)</span> finite Galois of degree <span class="math" data-tex="\(n\)">\(n\)</span>, let <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span> be the unique class with local invariant <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. Cup product gives
+<span class="math math-display" data-tex="\[
+\widehat H^q(G,\mathbf Z)\simeq\widehat H^{q+2}(G,L^\times),
+\qquad
+G^{\mathrm{ab}}\simeq K^\times/N_{L/K}L^\times.
+\tag{18}
+\]">\[
+\widehat H^q(G,\mathbf Z)\simeq\widehat H^{q+2}(G,L^\times),
+\qquad
+G^{\mathrm{ab}}\simeq K^\times/N_{L/K}L^\times.
+\tag{18}
+\]</span>
+The last map is the inverse of <strong>arithmetic</strong> reciprocity.</p>
+<p><strong>Proof.</strong> Hilbert 90 and Theorem 24.2 verify every hypothesis of (17), including for subgroups. For <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span> with fixed field <span class="math" data-tex="\(E\)">\(E\)</span>, restriction multiplies the invariant by <span class="math" data-tex="\([E:K]\)">\([E:K]\)</span>, giving <span class="math" data-tex="\(1/[L:E]\)">\(1/[L:E]\)</span>; it is exactly <span class="math" data-tex="\(u_{L/E}\)">\(u_{L/E}\)</span>. In a cyclic group with generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, the bar and periodic resolutions give <span class="math" data-tex="\([\sigma]\cup[a]=a\)">\([\sigma]\cup[a]=a\)</span> in the norm quotient: summing the carry cocycle once round the cycle yields its parameter. Formula (14) therefore identifies this map with inverse arithmetic reciprocity. For arbitrary <span class="math" data-tex="\(G\)">\(G\)</span>, take <span class="math" data-tex="\(H=\langle g\rangle\)">\(H=\langle g\rangle\)</span>. Corestriction on <span class="math" data-tex="\(H_1\)">\(H_1\)</span> in the negative Tate notation is induced by inclusion, and on <span class="math" data-tex="\(\widehat H^0\)">\(\widehat H^0\)</span> it is <span class="math" data-tex="\(N_{E/K}\)">\(N_{E/K}\)</span>. The projection formula and the restriction identity for <span class="math" data-tex="\(u\)">\(u\)</span> reduce the image of <span class="math" data-tex="\([g]\)">\([g]\)</span> to the cyclic result over <span class="math" data-tex="\(E\)">\(E\)</span>. Norm functoriality of lesson 5 gives precisely <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(G^{\mathrm{ab}}\)">\(G^{\mathrm{ab}}\)</span>. Every abelianized element is represented by such a <span class="math" data-tex="\(g\)">\(g\)</span>, proving the identification without an undetermined inverse. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-local-global-theorem">4. The local–global theorem</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a global field. At a real place use the invariant in (13); at a complex place use zero. Only finitely many localizations of a Brauer class are nonzero. Here is a direct justification of this support assertion using (1). Represent the class by a cocycle on a finite Galois splitting field. Outside finitely many places that extension is unramified and all its finitely many cocycle values are units. Localization lies in the cohomology of the unramified unit module, which vanishes by Proposition 24.1. No global sum law is being assumed in this argument.</p>
+<h3 id="general-injectivity-from-the-cyclic-norm-theorem">General injectivity from the cyclic norm theorem</h3>
+<p>If a global Brauer class is zero at every place, it is zero globally.</p>
+<p><strong>Proof.</strong> Induct on the order of a finite Galois splitting group <span class="math" data-tex="\(G\)">\(G\)</span>. For a cyclic extension, the parameter is a local norm everywhere; Hasse's norm theorem in lesson 15 makes it a global norm, and the cyclic algebra splits. If <span class="math" data-tex="\(G\)">\(G\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group of larger order, choose <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span> of index <span class="math" data-tex="\(p\)">\(p\)</span>. Over <span class="math" data-tex="\(E=L^H\)">\(E=L^H\)</span> the class is locally zero, so induction kills its restriction. Equation (5) and Hilbert 90 make it a cyclic relative class for <span class="math" data-tex="\(E/K\)">\(E/K\)</span>, to which the first argument applies. If <span class="math" data-tex="\(G\)">\(G\)</span> is not a <span class="math" data-tex="\(p\)">\(p\)</span>-group, every Sylow subgroup is proper; restriction to its fixed field vanishes by induction. Equation (2) kills every primary part. Thus the original class vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="a-supply-of-cyclic-splitting-extensions">A supply of cyclic splitting extensions</h3>
+<p>Given finitely many finite places <span class="math" data-tex="\(S\)">\(S\)</span> and a prescribed power <span class="math" data-tex="\(p^{a_v}\)">\(p^{a_v}\)</span> at each, there is a cyclic extension whose local degree at every <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span> is divisible by <span class="math" data-tex="\(p^{a_v}\)">\(p^{a_v}\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span> it can additionally make any specified real places complex.</p>
+<p><strong>Proof for number fields.</strong> Start with the cyclotomic <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-extension of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> supplied by lesson 20 and restrict its characters to <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. Its image is an open subgroup of <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>, because a number field intersects that tower in a finite field. At a place over <span class="math" data-tex="\(p\)">\(p\)</span>, the local image is open by total cyclotomic ramification and the finite degree of <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. At <span class="math" data-tex="\(v\nmid p\)">\(v\nmid p\)</span>, Frobenius has image the principal-unit component of the integer <span class="math" data-tex="\(Nv&gt;1\)">\(Nv&gt;1\)</span>. This component is nonzero: if it were zero, <span class="math" data-tex="\(Nv\)">\(Nv\)</span> would be a <span class="math" data-tex="\(p\)">\(p\)</span>-adic root of unity, hence <span class="math" data-tex="\((Nv)^{p-1}=1\)">\((Nv)^{p-1}=1\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span>, or <span class="math" data-tex="\((Nv)^2=1\)">\((Nv)^2=1\)</span> for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, impossible for that positive integer. A nonzero subgroup generated in <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> is open. Thus finite cyclic quotients at sufficiently high levels have arbitrarily large local <span class="math" data-tex="\(p\)">\(p\)</span>-power degrees at every place of the finite set.</p>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, this tower is real. Take a finite quotient character of order <span class="math" data-tex="\(2^N\)">\(2^N\)</span> and multiply it by the quadratic character of <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, also restricted to <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. At a real place complex conjugation now maps to <span class="math" data-tex="\(-1\)">\(-1\)</span>. Choose the initial level to give finite local image order at least <span class="math" data-tex="\(\max(4,2^{a_v})\)">\(\max(4,2^{a_v})\)</span>. An element of order <span class="math" data-tex="\(2^b\)">\(2^b\)</span>, <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span>, in the cyclic group of order <span class="math" data-tex="\(2^N\)">\(2^N\)</span> has exponent of valuation <span class="math" data-tex="\(N-b\)">\(N-b\)</span>; adding 0 or <span class="math" data-tex="\(2^{N-1}\)">\(2^{N-1}\)</span> does not change that valuation. Hence twisting does not reduce the required local orders. The image of the twisted character is still cyclic, and its fixed field has all the asserted properties. Odd-primary local classes have no real obstruction.</p>
+<p>For a function field with full constant field <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, use a constant extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>. At a place of residue degree <span class="math" data-tex="\(d_v\)">\(d_v\)</span>, the local degree is <span class="math" data-tex="\(n/\gcd(n,d_v)\)">\(n/\gcd(n,d_v)\)</span>: the tensor product of the two finite residue fields has that degree in each factor. Choose <span class="math" data-tex="\(n\)">\(n\)</span> divisible by <span class="math" data-tex="\(p^{a_v}d_v\)">\(p^{a_v}d_v\)</span> for every <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>. Then its local degree is divisible by <span class="math" data-tex="\(p^{a_v}\)">\(p^{a_v}\)</span>. There are no archimedean places. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-24-4-albert-brauer-hasse-noether">Theorem 24.4. Albert–Brauer–Hasse–Noether</h3>
+<p>For every global field the following sequence is exact:
+<span class="math math-display" data-tex="\[
+0\longrightarrow\operatorname{Br}(K)
+\longrightarrow\bigoplus_v\operatorname{Br}(K_v)
+\xrightarrow{\ \sum_v\operatorname{inv}_v\ }\mathbf Q/\mathbf Z
+\longrightarrow0.
+\tag{19}
+\]">\[
+0\longrightarrow\operatorname{Br}(K)
+\longrightarrow\bigoplus_v\operatorname{Br}(K_v)
+\xrightarrow{\ \sum_v\operatorname{inv}_v\ }\mathbf Q/\mathbf Z
+\longrightarrow0.
+\tag{19}
+\]</span></p>
+<p><strong>Proof.</strong> Injectivity has just been proved for arbitrary splitting groups. To prove the sum law, first take a <span class="math" data-tex="\(p\)">\(p\)</span>-primary global class <span class="math" data-tex="\(b\)">\(b\)</span>. Choose a cyclic extension whose local degrees at its finite support are divisible by all local orders, and which complexifies any real support when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Restriction multiplies local invariants by these degrees, so <span class="math" data-tex="\(b\)">\(b\)</span> becomes locally zero over the extension. General injectivity over that global field makes it globally zero. Thus <span class="math" data-tex="\(b\)">\(b\)</span> is represented by a cyclic algebra <span class="math" data-tex="\((L/K,\sigma,a)\)">\((L/K,\sigma,a)\)</span>, by (1). Formula (14), including its archimedean cases and restricted characters at each completion, gives
+<span class="math math-display" data-tex="\[
+\sum_v\operatorname{inv}_v(b)
+=\sum_v\chi(\operatorname{rec}_{K_v}(a))
+=\chi(\operatorname{rec}_K(a))=0.
+\tag{20}
+\]">\[
+\sum_v\operatorname{inv}_v(b)
+=\sum_v\chi(\operatorname{rec}_{K_v}(a))
+=\chi(\operatorname{rec}_K(a))=0.
+\tag{20}
+\]</span>
+The last equality is the principal product law already proved in lesson 16. Every Brauer class is torsion by the finite splitting field and (2), so summing its finitely many primary components proves (20) generally. In particular, cyclic splitting was proved here, not presumed as an external classification theorem.</p>
+<p>Conversely take a finite tuple <span class="math" data-tex="\((r_v)\)">\((r_v)\)</span> with sum zero, and split it into its primary tuples. For a single primary tuple choose a cyclic <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, of degree <span class="math" data-tex="\(n\)">\(n\)</span>, with local decomposition orders divisible by the denominators at its support. Fix a faithful character <span class="math" data-tex="\(\chi:G\to\tfrac1n\mathbf Z/\mathbf Z\)">\(\chi:G\to\tfrac1n\mathbf Z/\mathbf Z\)</span>. At each support place local reciprocity is onto the decomposition group, whose character image contains <span class="math" data-tex="\(r_v\)">\(r_v\)</span>; choose <span class="math" data-tex="\(a_v\in K_v^\times\)">\(a_v\in K_v^\times\)</span> giving that value. Put <span class="math" data-tex="\(a_v=1\)">\(a_v=1\)</span> elsewhere. This is an idèle. Its global Artin image is trivial, since its faithful character value is <span class="math" data-tex="\(\sum r_v=0\)">\(\sum r_v=0\)</span>. Lesson 16's exact norm kernel gives
+<span class="math math-display" data-tex="\[
+a=xN_{L/K}y,\qquad x\in K^\times,\quad y\in J_L.
+\]">\[
+a=xN_{L/K}y,\qquad x\in K^\times,\quad y\in J_L.
+\]</span>
+The cyclic algebra with parameter <span class="math" data-tex="\(x\)">\(x\)</span> has local invariant <span class="math" data-tex="\(r_v\)">\(r_v\)</span> at every place by (14); local norms contribute zero, also outside the original support. Add the primary classes to realize the tuple. Finally the sum map is onto: choose any nonarchimedean place and the local invariant desired in <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>. This proves every part of (19). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-quaternion-algebras-and-ramification">5. Quaternion algebras and ramification</h2>
+<p>Assume characteristic different from 2 for the symbol presentation <span class="math" data-tex="\((a,b)_K\)">\((a,b)_K\)</span>. At a nonarchimedean or real place, the Hilbert symbol of lesson 11 gives
+<span class="math math-display" data-tex="\[
+\operatorname{inv}_v(a,b)=
+\begin{cases}0,&amp;(a,b)_v=1,\\[2pt]1/2,&amp;(a,b)_v=-1.\end{cases}
+\tag{21}
+\]">\[
+\operatorname{inv}_v(a,b)=
+\begin{cases}0,&amp;(a,b)_v=1,\\[2pt]1/2,&amp;(a,b)_v=-1.\end{cases}
+\tag{21}
+\]</span>
+Indeed a quaternion algebra is the quadratic cyclic algebra with parameter <span class="math" data-tex="\(b\)">\(b\)</span>; it splits exactly when <span class="math" data-tex="\(b\)">\(b\)</span> is a norm from <span class="math" data-tex="\(K_v(\sqrt a)\)">\(K_v(\sqrt a)\)</span>. The first-entry reciprocity convention of lesson 11 gives the same split criterion, irrespective of the interchangeable entries of a quadratic symbol.</p>
+<h3 id="corollary-24-5-quaternion-algebras-over-mathbf-q">Corollary 24.5. Quaternion algebras over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span></h3>
+<p>The ramification set of a quaternion algebra over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> is a finite set of places of even cardinality. Every such set occurs, and it determines the algebra up to isomorphism.</p>
+<p><strong>Proof.</strong> Equation (21) and the sum law imply finiteness and even cardinality. For an even finite set, (19) realizes the tuple having invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span> there and zero elsewhere. Choose a rational <span class="math" data-tex="\(d\)">\(d\)</span> that is a nonsquare in every specified finite completion and negative if the real place is specified. This is possible by weak approximation: each finite nonsquare class contains an open neighborhood, and negativity is open at infinity. If the set is nonempty this makes <span class="math" data-tex="\(\mathbf Q(\sqrt d)\)">\(\mathbf Q(\sqrt d)\)</span> quadratic and locally of degree two throughout the set. The realized class restricts to zero everywhere over that field, hence globally by injectivity. The algebraic splitting criterion in the Noether lesson makes its index divide two. A nonzero class is therefore a division algebra of degree two containing that quadratic field, hence its cyclic crossed product is a quaternion algebra. The empty set is represented by <span class="math" data-tex="\(M_2(\mathbf Q)\)">\(M_2(\mathbf Q)\)</span>. If two quaternion algebras have the same set, (19) makes their classes equal, and Wedderburn uniqueness together with their equal degree two makes the algebras isomorphic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For Hamilton's algebra <span class="math" data-tex="\((-1,-1)_{\mathbf Q}\)">\((-1,-1)_{\mathbf Q}\)</span>, every odd finite place has invariant zero by the odd-prime unit formula of lesson 11. At 2 the odd-unit formula gives <span class="math" data-tex="\((-1,-1)_2=-1\)">\((-1,-1)_2=-1\)</span>, and at the real place both entries are negative, giving <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its ramification set is exactly <span class="math" data-tex="\(\{2,\infty\}\)">\(\{2,\infty\}\)</span>, in agreement with the even-set theorem.</p>
+<h2 id="6-global-fundamental-classes">6. Global fundamental classes</h2>
+<p>The global formation uses <span class="math" data-tex="\(C_L\)">\(C_L\)</span>, not <span class="math" data-tex="\(L^\times\)">\(L^\times\)</span>. The two coefficient modules have quite different degree-two cohomology. We now construct the invariant for the former.</p>
+<h3 id="the-cyclic-class-group-invariant">The cyclic class-group invariant</h3>
+<p>For a cyclic extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, of degree <span class="math" data-tex="\(n\)">\(n\)</span>, the idèle sequence and Hilbert 90 give
+<span class="math math-display" data-tex="\[
+0\to H^2(G,L^\times)\to H^2(G,J_L)
+\to H^2(G,C_L)\to0.
+\tag{22}
+\]">\[
+0\to H^2(G,L^\times)\to H^2(G,J_L)
+\to H^2(G,C_L)\to0.
+\tag{22}
+\]</span>
+The term on the right after this sequence is <span class="math" data-tex="\(H^3(G,L^\times)=H^1(G,L^\times)=0\)">\(H^3(G,L^\times)=H^1(G,L^\times)=0\)</span>, by cyclic periodicity. The fixed-class and <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-vanishing arguments in §§1 and lesson 13 justify the injection on the left. Shapiro and the unit-tail argument of lesson 13, now applied to degree two, identify the middle term as
+<span class="math math-display" data-tex="\[
+\bigoplus_v H^2(D_w,L_w^\times).
+\tag{23}
+\]">\[
+\bigoplus_v H^2(D_w,L_w^\times).
+\tag{23}
+\]</span>
+The proof for the tail works in this degree because every unramified local unit Tate group vanishes; a finite cocycle and a cochain relation belong to one finite chart, and all remaining primitives can be chosen as units.</p>
+<p>By Theorem 24.4, the image on the left of (22) consists exactly of the tuples in (23) whose invariant sum is zero. For the converse part of this claim, realize such a tuple as a global Brauer class. Its restriction to <span class="math" data-tex="\(L\)">\(L\)</span> has every local invariant zero because each denominator divides its local extension degree. Global injectivity over <span class="math" data-tex="\(L\)">\(L\)</span> makes it a relative class. Thus the invariant sum identifies <span class="math" data-tex="\(H^2(G,C_L)\)">\(H^2(G,C_L)\)</span> with <span class="math" data-tex="\(\tfrac1n\mathbf Z/\mathbf Z\)">\(\tfrac1n\mathbf Z/\mathbf Z\)</span>. Its image is that entire group: Chebotarev in lesson 22 gives an unramified place whose Frobenius generates the cyclic group, hence local degree <span class="math" data-tex="\(n\)">\(n\)</span>. With generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(\chi(\sigma)=1/n\)">\(\chi(\sigma)=1/n\)</span>, the periodic-resolution identification gives
+<span class="math math-display" data-tex="\[
+H^2(G,C_L)=C_K/NC_L,
+\qquad \operatorname{inv}(c)=\chi(\operatorname{rec}_K(c)).
+\tag{24}
+\]">\[
+H^2(G,C_L)=C_K/NC_L,
+\qquad \operatorname{inv}(c)=\chi(\operatorname{rec}_K(c)).
+\tag{24}
+\]</span>
+Indeed lift a representative class to an idèle; (14) computes the sum in (22), and the principal product law makes it independent of the lift.</p>
+<h3 id="theorem-24-6-the-global-class-formation">Theorem 24.6. The global class formation</h3>
+<p>For finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>, there is a canonical invariant
+<span class="math math-display" data-tex="\[
+H^2(G,C_L)\simeq\tfrac1n\mathbf Z/\mathbf Z,
+\qquad H^1(G,C_L)=0.
+\tag{25}
+\]">\[
+H^2(G,C_L)\simeq\tfrac1n\mathbf Z/\mathbf Z,
+\qquad H^1(G,C_L)=0.
+\tag{25}
+\]</span>
+Inflation preserves the invariant and restriction to a finite base extension multiplies it by the extension degree. The fundamental class <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span>, of invariant <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, gives
+<span class="math math-display" data-tex="\[
+\widehat H^q(G,\mathbf Z)\simeq\widehat H^{q+2}(G,C_L).
+\tag{26}
+\]">\[
+\widehat H^q(G,\mathbf Z)\simeq\widehat H^{q+2}(G,C_L).
+\tag{26}
+\]</span>
+In degree <span class="math" data-tex="\(-2\)">\(-2\)</span>, this is inverse arithmetic global reciprocity.</p>
+<p><strong>Proof.</strong> The <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-vanishing and order bound <span class="math" data-tex="\(|H^2(G,C_L)|\mid n\)">\(|H^2(G,C_L)|\mid n\)</span> are already proved in §1. Choose a cyclic extension <span class="math" data-tex="\(T/K\)">\(T/K\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>. For function fields take constants. For number fields choose a rational prime <span class="math" data-tex="\(\ell\equiv1\pmod n\)">\(\ell\equiv1\pmod n\)</span> unramified in <span class="math" data-tex="\(K\)">\(K\)</span>, using the rational ray-class prime result in lesson 22. The degree-<span class="math" data-tex="\(n\)">\(n\)</span> subfield of <span class="math" data-tex="\(\mathbf Q(\zeta_\ell)\)">\(\mathbf Q(\zeta_\ell)\)</span> intersects <span class="math" data-tex="\(K\)">\(K\)</span> trivially: it is totally ramified at <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, whereas every subfield of <span class="math" data-tex="\(K\)">\(K\)</span> is unramified there. Its compositum with <span class="math" data-tex="\(K\)">\(K\)</span> supplies <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>Put <span class="math" data-tex="\(N=LT\)">\(N=LT\)</span>. Inflation of both groups <span class="math" data-tex="\(H^2(T/K,C_T)\)">\(H^2(T/K,C_T)\)</span> and <span class="math" data-tex="\(H^2(L/K,C_L)\)">\(H^2(L/K,C_L)\)</span> into <span class="math" data-tex="\(H^2(N/K,C_N)\)">\(H^2(N/K,C_N)\)</span> is injective by (5) and the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-vanishing. Every class from the cyclic field <span class="math" data-tex="\(T\)">\(T\)</span> lifts to <span class="math" data-tex="\(H^2(T/K,J_T)\)">\(H^2(T/K,J_T)\)</span>, by (22). After restricting to <span class="math" data-tex="\(L\)">\(L\)</span>, its idelic invariant sum is multiplied by <span class="math" data-tex="\([L:K]=n\)">\([L:K]=n\)</span>: at each base place, sum the local degrees <span class="math" data-tex="\([L_{v&#x27;}:K_v]\)">\([L_{v&#x27;}:K_v]\)</span>, which sum to <span class="math" data-tex="\(n\)">\(n\)</span>. Its original invariant lies in <span class="math" data-tex="\(\tfrac1n\mathbf Z/\mathbf Z\)">\(\tfrac1n\mathbf Z/\mathbf Z\)</span>, so the new sum is zero. The extension <span class="math" data-tex="\(N/L\)">\(N/L\)</span> is cyclic. The cyclic case (22) therefore kills the restricted class in <span class="math" data-tex="\(H^2(N/L,C_N)\)">\(H^2(N/L,C_N)\)</span>. By (5) the class descends to <span class="math" data-tex="\(H^2(L/K,C_L)\)">\(H^2(L/K,C_L)\)</span>. The cyclic subgroup from <span class="math" data-tex="\(T\)">\(T\)</span> has order <span class="math" data-tex="\(n\)">\(n\)</span>; the order bound makes the two inflated subgroups equal.</p>
+<p>To make the invariant independent of this auxiliary field, put
+<span class="math" data-tex="\(\mathcal J=\bigcup_L J_L\)">\(\mathcal J=\bigcup_L J_L\)</span> and <span class="math" data-tex="\(\mathcal C=\bigcup_L C_L\)">\(\mathcal C=\bigcup_L C_L\)</span>, with the extension embeddings of lesson 13, regarded as discrete <span class="math" data-tex="\(G_K\)">\(G_K\)</span>-modules. Their fixed modules are <span class="math" data-tex="\(J_L\)">\(J_L\)</span> and <span class="math" data-tex="\(C_L\)">\(C_L\)</span>. Continuous cochains have finite image, so their cohomology is the direct limit of finite-extension cohomology. The same finite-chart argument as (23) gives
+<span class="math math-display" data-tex="\[
+H^2(G_K,\mathcal J)=\bigoplus_v\operatorname{Br}(K_v).
+\tag{27}
+\]">\[
+H^2(G_K,\mathcal J)=\bigoplus_v\operatorname{Br}(K_v).
+\tag{27}
+\]</span>
+There is no missing local class in this limit: for a finite local tuple, the cyclic-extension construction of §4 supplies one global extension whose local degrees split every entry. Thus the finite relative groups in (23) exhaust the displayed direct sum.</p>
+<p>The auxiliary-field comparison just proved shows that every class in <span class="math" data-tex="\(H^2(G_K,\mathcal C)\)">\(H^2(G_K,\mathcal C)\)</span> comes from an idelic class: at a common finite level it equals a class from a cyclic extension, and those lift by (22). The exact sequence
+<span class="math" data-tex="\(1\to(K^s)^\times\to\mathcal J\to\mathcal C\to1\)">\(1\to(K^s)^\times\to\mathcal J\to\mathcal C\to1\)</span>
+therefore identifies
+<span class="math math-display" data-tex="\[
+H^2(G_K,\mathcal C)
+=\left(\bigoplus_v\operatorname{Br}(K_v)\right)/\operatorname{Br}(K)
+\xrightarrow{\sum\operatorname{inv}_v}\mathbf Q/\mathbf Z.
+\tag{28}
+\]">\[
+H^2(G_K,\mathcal C)
+=\left(\bigoplus_v\operatorname{Br}(K_v)\right)/\operatorname{Br}(K)
+\xrightarrow{\sum\operatorname{inv}_v}\mathbf Q/\mathbf Z.
+\tag{28}
+\]</span>
+Exactness uses <span class="math" data-tex="\(H^1(G_K,\mathcal C)=0\)">\(H^1(G_K,\mathcal C)=0\)</span>, which follows from the finite vanishing. Formula (19) proves the last isomorphism. Finite <span class="math" data-tex="\(H^2(G,C_L)\)">\(H^2(G,C_L)\)</span> injects into (28) by (5), has order <span class="math" data-tex="\(n\)">\(n\)</span>, and hence is the unique subgroup <span class="math" data-tex="\(\tfrac1n\mathbf Z/\mathbf Z\)">\(\tfrac1n\mathbf Z/\mathbf Z\)</span>. This defines the canonical invariant. Inflation compatibility is built into this injection. Restriction compatibility follows from (27) and local degree multiplication, summed over places. The same reasoning gives preservation of the invariant by corestriction, using local corestriction and its sum.</p>
+<p>For <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span>, restriction of <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span> has invariant
+<span class="math" data-tex="\([L^H:K]/n=1/|H|\)">\([L^H:K]/n=1/|H|\)</span>, so it is <span class="math" data-tex="\(u_{L/L^H}\)">\(u_{L/L^H}\)</span>. Tate's cup-product theorem now proves (26). In a cyclic group the parameter computation of §3 and (24) give inverse reciprocity with the asserted sign. For an arbitrary <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, restrict to <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span>, apply the cyclic result and corestrict back. The projection formula and the norm functoriality of lesson 16 give <span class="math" data-tex="\(g\)">\(g\)</span> in <span class="math" data-tex="\(G^{\mathrm{ab}}\)">\(G^{\mathrm{ab}}\)</span>, exactly as in the local argument for (18). This proves the full assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-relative-weil-groups-and-their-transition-maps">7. Relative Weil groups and their transition maps</h2>
+<p>For this section <span class="math" data-tex="\(K\)">\(K\)</span> is a number field. Write a multiplicative normalized cocycle <span class="math" data-tex="\(f\)">\(f\)</span> for <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span>. Define
+<span class="math math-display" data-tex="\[
+W_{L/K}=C_L\times G,
+\qquad (a,g)(b,h)=(a\,g(b)\,f(g,h),gh).
+\tag{29}
+\]">\[
+W_{L/K}=C_L\times G,
+\qquad (a,g)(b,h)=(a\,g(b)\,f(g,h),gh).
+\tag{29}
+\]</span>
+The cocycle identity proves associativity. Give this group the topology consisting of finitely many copies of the locally compact group <span class="math" data-tex="\(C_L\)">\(C_L\)</span>; the action and multiplication are continuous. Changing the cocycle by a coboundary gives the continuous isomorphism that changes the chosen lifts by that cochain. Thus
+<span class="math math-display" data-tex="\[
+1\to C_L\to W_{L/K}\to G\to1
+\tag{30}
+\]">\[
+1\to C_L\to W_{L/K}\to G\to1
+\tag{30}
+\]</span>
+is the extension represented by the fundamental class.</p>
+<h3 id="transfer-and-abelianization-of-a-fundamental-extension">Transfer and abelianization of a fundamental extension</h3>
+<p>For an extension <span class="math" data-tex="\(1\to A\to E\to G\to1\)">\(1\to A\to E\to G\to1\)</span>, with <span class="math" data-tex="\(G\)">\(G\)</span> finite and <span class="math" data-tex="\(A\)">\(A\)</span> abelian, transfer to <span class="math" data-tex="\(A\)">\(A\)</span> lands in <span class="math" data-tex="\(A^G\)">\(A^G\)</span>. Choose lifts <span class="math" data-tex="\(s(t)\)">\(s(t)\)</span>, and for <span class="math" data-tex="\(x\)">\(x\)</span> mapping to <span class="math" data-tex="\(g\)">\(g\)</span>, write
+<span class="math" data-tex="\(xs(t)=s(gt)a_t\)">\(xs(t)=s(gt)a_t\)</span>. The transfer is <span class="math" data-tex="\(\prod_t a_t\)">\(\prod_t a_t\)</span>. A change of lifts cancels by the permutation of <span class="math" data-tex="\(G\)">\(G\)</span>; multiplying two elements gives the product of their transfers. Conjugation consequently leaves the transfer unchanged, while its effect on the target is the given <span class="math" data-tex="\(G\)">\(G\)</span>-action. This proves that the value is invariant. On <span class="math" data-tex="\(A\)">\(A\)</span> it is <span class="math" data-tex="\(N_G\)">\(N_G\)</span>.</p>
+<p>For a fundamental class the resulting map
+<span class="math math-display" data-tex="\[
+E^{\mathrm{ab}}\longrightarrow A^G
+\tag{31}
+\]">\[
+E^{\mathrm{ab}}\longrightarrow A^G
+\tag{31}
+\]</span>
+is an isomorphism. To verify its kernel, the degree-one bar calculation for this extension gives the exact sequence
+<span class="math math-display" data-tex="\[
+H_2(G,\mathbf Z)\longrightarrow A_G
+\longrightarrow E_{\mathrm{ab}}\longrightarrow G_{\mathrm{ab}}\to0.
+\tag{32}
+\]">\[
+H_2(G,\mathbf Z)\longrightarrow A_G
+\longrightarrow E_{\mathrm{ab}}\longrightarrow G_{\mathrm{ab}}\to0.
+\tag{32}
+\]</span>
+The first arrow evaluates the extension cocycle on a bar two-cycle. Indeed lift the successive edges of that cycle to <span class="math" data-tex="\(E\)">\(E\)</span>; their boundary products cancel in the quotient, and the remaining factors are precisely its cocycle values, modulo conjugate differences. Thus its image in <span class="math" data-tex="\(A_G\)">\(A_G\)</span> is the image of
+<span class="math" data-tex="\(\widehat H^{-3}(G,\mathbf Z)\xrightarrow{\cup u}\widehat H^{-1}(G,A)\)">\(\widehat H^{-3}(G,\mathbf Z)\xrightarrow{\cup u}\widehat H^{-1}(G,A)\)</span>.
+Tate's theorem makes that image all of <span class="math" data-tex="\(\ker(N_G:A_G\to A^G)\)">\(\ker(N_G:A_G\to A^G)\)</span>. On the final quotient of (32), the transfer is
+<span class="math" data-tex="\(G_{\mathrm{ab}}\xrightarrow{\cup u}A^G/N_GA\)">\(G_{\mathrm{ab}}\xrightarrow{\cup u}A^G/N_GA\)</span>: substitute the lift products in the transfer formula, the same bar evaluation as (18). This is again an isomorphism. Hence transfer is injective and surjective in (31).</p>
+<p>For <span class="math" data-tex="\(A=C_L\)">\(A=C_L\)</span>, the field norm <span class="math" data-tex="\(C_L\to NC_L\)">\(C_L\to NC_L\)</span> is open and has compact kernel. Its modulus map identifies the noncompact positive-real direction, while its norm-one kernel lies in the compact norm-one idèle class group of lesson 14. Openness follows either from the local norm charts of lesson 13 and quotient topology, or from their induced open map on class groups. Transfer, restricted to each component of <span class="math" data-tex="\(E\)">\(E\)</span>, is a translate of this norm map. It is therefore open onto <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, whose norm subgroup has finite index, and has closed kernel. The algebraic commutator kernel found in (32) is consequently already closed. Thus (31) is a topological isomorphism
+<span class="math math-display" data-tex="\[
+W_{L/K}^{\mathrm{ab}}\simeq C_K.
+\tag{33}
+\]">\[
+W_{L/K}^{\mathrm{ab}}\simeq C_K.
+\tag{33}
+\]</span>
+It is inverse arithmetic reciprocity after projection to <span class="math" data-tex="\(G^{\mathrm{ab}}\)">\(G^{\mathrm{ab}}\)</span>.</p>
+<h3 id="the-quotient-in-a-tower">The quotient in a tower</h3>
+<p>Let <span class="math" data-tex="\(M/L/K\)">\(M/L/K\)</span> be finite Galois over <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(M/L)\)">\(H=\operatorname{Gal}(M/L)\)</span>, and <span class="math" data-tex="\(E=W_{M/K}\)">\(E=W_{M/K}\)</span>. The inverse image <span class="math" data-tex="\(E_H\)">\(E_H\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span> has fundamental class <span class="math" data-tex="\(u_{M/L}\)">\(u_{M/L}\)</span>. Its transfer identifies <span class="math" data-tex="\(E_H^{\mathrm{ab}}\)">\(E_H^{\mathrm{ab}}\)</span> with <span class="math" data-tex="\(C_L\)">\(C_L\)</span>. Consequently
+<span class="math" data-tex="\(F=E/[E_H,E_H]\)">\(F=E/[E_H,E_H]\)</span> is an extension of <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span> by <span class="math" data-tex="\(C_L\)">\(C_L\)</span>.
+Its class is exactly <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span>, as follows.</p>
+<p>If <span class="math" data-tex="\(v\)">\(v\)</span> denotes the class of <span class="math" data-tex="\(F\)">\(F\)</span>, inflate it to <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span> and include its coefficients <span class="math" data-tex="\(C_L\subset C_M\)">\(C_L\subset C_M\)</span>. Pushing (29) through the transfer on its kernel says that this class is <span class="math" data-tex="\(N_Hu_{M/K}\)">\(N_Hu_{M/K}\)</span>. Since <span class="math" data-tex="\(H\)">\(H\)</span> is normal, <span class="math" data-tex="\(N_H\)">\(N_H\)</span> is central in <span class="math" data-tex="\(\mathbf Z[G]\)">\(\mathbf Z[G]\)</span>. A central group-ring element acts on <span class="math" data-tex="\(\operatorname{Ext}_{\mathbf Z[G]}^*(\mathbf Z,A)\)">\(\operatorname{Ext}_{\mathbf Z[G]}^*(\mathbf Z,A)\)</span> by its augmentation: multiplication on a free resolution lifts its augmentation on <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and the comparison homotopy between those two lifts gives the equality on cohomology. Here this gives
+<span class="math" data-tex="\(N_Hu_{M/K}=|H|u_{M/K}\)">\(N_Hu_{M/K}=|H|u_{M/K}\)</span>, of invariant <span class="math" data-tex="\(1/[L:K]\)">\(1/[L:K]\)</span>. Inflation of <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span> has that same invariant by (25). Inflation with the coefficient inclusion is injective by <span class="math" data-tex="\(H^1(H,C_M)=0\)">\(H^1(H,C_M)=0\)</span> and (5); hence <span class="math" data-tex="\(v=u_{L/K}\)">\(v=u_{L/K}\)</span>.</p>
+<p>Choose an isomorphism of this quotient with <span class="math" data-tex="\(W_{L/K}\)">\(W_{L/K}\)</span>. This provides a surjective transition homomorphism
+<span class="math math-display" data-tex="\[
+W_{M/K}\longrightarrow W_{L/K},
+\tag{34}
+\]">\[
+W_{M/K}\longrightarrow W_{L/K},
+\tag{34}
+\]</span>
+whose restriction to <span class="math" data-tex="\(C_M\)">\(C_M\)</span> is <span class="math" data-tex="\(N_{M/L}\)">\(N_{M/L}\)</span>. Its kernel is the closed commutator subgroup of <span class="math" data-tex="\(E_H\)">\(E_H\)</span>, and is compact: the transfer kernel meets each of its finitely many components in a translate of the compact norm kernel. This also proves that (34) is proper. Nested quotients give transitive transitions. Isomorphism choices differ by a cocycle with coefficients <span class="math" data-tex="\(C_L\)">\(C_L\)</span>; <span class="math" data-tex="\(H^1(G,C_L)=0\)">\(H^1(G,C_L)=0\)</span> makes those differences inner coefficient conjugations.</p>
+<h3 id="the-absolute-group-and-its-topology">The absolute group and its topology</h3>
+<p>A number field and its separable closure are countable. Enumerate the finite Galois extensions and take successive composita to obtain a cofinal tower <span class="math" data-tex="\(K=L_0\subset L_1\subset\cdots\)">\(K=L_0\subset L_1\subset\cdots\)</span>. Choose the adjacent quotient isomorphisms (34), and use their composites for all tower transitions. This is a coherent system, rather than a claim that cocycles have canonical rigid representatives. Define
+<span class="math math-display" data-tex="\[
+W_K=\varprojlim_i W_{L_i/K}.
+\tag{35}
+\]">\[
+W_K=\varprojlim_i W_{L_i/K}.
+\tag{35}
+\]</span>
+Every projection is surjective: over a fixed finite-level point the higher fibres form a system of nonempty compact sets, and their finite compatibility conditions have a common solution. The same compactness argument says that the inverse image of a compact set at any level is compact. The inverse image of a compact identity neighborhood is therefore a compact neighborhood in the limit, proving local compactness. Projection to the finite Galois quotients gives a continuous map <span class="math" data-tex="\(W_K\to G_K\)">\(W_K\to G_K\)</span> with dense image, since it is onto every finite quotient.</p>
+<p>The projection to <span class="math" data-tex="\(W_{K/K}=C_K\)">\(W_{K/K}=C_K\)</span> is the compatible transfer. Its kernel is exactly the closure of the commutator subgroup of <span class="math" data-tex="\(W_K\)">\(W_K\)</span>. One inclusion follows because <span class="math" data-tex="\(C_K\)">\(C_K\)</span> is abelian. For the other, take an element in that kernel and a basic neighborhood determined at level <span class="math" data-tex="\(i\)">\(i\)</span>. Its component lies in the commutator kernel of (33). Approximate that component by a finite product of commutators, and lift each factor to <span class="math" data-tex="\(W_K\)">\(W_K\)</span>, using projection surjectivity. Their commutator product belongs to the neighborhood. This proves the required density in the kernel. The projection is open: a basic open set from level <span class="math" data-tex="\(i\)">\(i\)</span> has image under the open transfer at that level. Thus
+<span class="math math-display" data-tex="\[
+W_K^{\mathrm{ab}}\xrightarrow{\sim}C_K
+\tag{36}
+\]">\[
+W_K^{\mathrm{ab}}\xrightarrow{\sim}C_K
+\tag{36}
+\]</span>
+is a homeomorphism. Choice independence can be proved without assuming surjectivity of coefficient norms. For two systems at a common field <span class="math" data-tex="\(L\)">\(L\)</span>, isomorphisms fixing <span class="math" data-tex="\(C_L\)">\(C_L\)</span> and the Galois quotient form a nonempty torsor for <span class="math" data-tex="\(C_L/C_K\)">\(C_L/C_K\)</span>: their differences are cocycles, killed by <span class="math" data-tex="\(H^1(G,C_L)=0\)">\(H^1(G,C_L)=0\)</span>, and an inner coefficient conjugation is trivial exactly on <span class="math" data-tex="\(C_L^G=C_K\)">\(C_L^G=C_K\)</span>. This quotient is compact, since the embedded positive modulus direction of <span class="math" data-tex="\(C_K\)">\(C_K\)</span> covers that of <span class="math" data-tex="\(C_L\)">\(C_L\)</span>. Quotienting commutator subgroups gives continuous transition maps on these compact isomorphism spaces. Every finite list of compatibility conditions is met at one higher common field. Compactness supplies an inverse-limit isomorphism, continuous with continuous inverse. Aligning two cofinal towers by composita applies this argument to (35). This proves the asserted topological choice independence with the coefficient and Galois maps preserved.</p>
+<h3 id="local-to-global-compatibility">Local-to-global compatibility</h3>
+<p>Fix a place <span class="math" data-tex="\(v\)">\(v\)</span> and an embedding of separable closures realizing its decomposition group. There is a continuous homomorphism
+<span class="math math-display" data-tex="\[
+\theta_v:W_{K_v}\longrightarrow W_K
+\tag{37}
+\]">\[
+\theta_v:W_{K_v}\longrightarrow W_K
+\tag{37}
+\]</span>
+compatible with that embedding on Galois groups and with the idèle inclusion <span class="math" data-tex="\(K_v^\times\to C_K\)">\(K_v^\times\to C_K\)</span> on Hausdorff abelianizations. We give the compatibility argument, including the inverse-limit choice.</p>
+<p>First the local group of lesson 12 has relative quotient
+<span class="math" data-tex="\(W_{K_v}/\overline{[W_{L_w},W_{L_w}]}\)">\(W_{K_v}/\overline{[W_{L_w},W_{L_w}]}\)</span>
+represented by the local fundamental class. Its kernel is <span class="math" data-tex="\(L_w^\times\)">\(L_w^\times\)</span> by Theorem 12.2. Transfer is the inclusion on multiplicative abelianizations, since the finite transfer identities of lesson 5 commute with the continuous local reciprocity homeomorphisms of lesson 12. For an unramified cyclic extension, a Frobenius lift raised to its degree is the Frobenius of <span class="math" data-tex="\(L_w\)">\(L_w\)</span>, whose abelianized image is a uniformizer; the carry cocycle has invariant <span class="math" data-tex="\(1/[L_w:K_v]\)">\(1/[L_w:K_v]\)</span>. For a general local extension compare with the unramified extension of the same degree in a common finite Galois extension. The quotient-by-commutators identity and transfer give the inflation identity
+<span class="math" data-tex="\(\mathrm{Inf}\,\alpha_{L_w/K_v}=[M_w:L_w]\alpha_{M_w/K_v}\)">\(\mathrm{Inf}\,\alpha_{L_w/K_v}=[M_w:L_w]\alpha_{M_w/K_v}\)</span>
+for its extension classes: the coefficient map followed by inclusion is the central norm operator, exactly as in the proof of (34). The equal-degree comparison therefore identifies the two inflated classes. Hilbert 90 makes inflation injective, proving that the general class is the normalized <span class="math" data-tex="\(u_{L_w/K_v}\)">\(u_{L_w/K_v}\)</span>. For real and complex places, (20)–(21) of lesson 12 give respectively the parameter <span class="math" data-tex="\(-1\)">\(-1\)</span> class and the trivial class, with the same invariants.</p>
+<p>For global <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, let <span class="math" data-tex="\(D=D_w\)">\(D=D_w\)</span> and <span class="math" data-tex="\(E=L^D\)">\(E=L^D\)</span>. The map <span class="math" data-tex="\(L_w^\times\to C_L\)">\(L_w^\times\to C_L\)</span>, inserting a component at <span class="math" data-tex="\(w\)">\(w\)</span>, takes the local fundamental class to the restriction of <span class="math" data-tex="\(u_{L/K}\)">\(u_{L/K}\)</span>. Indeed the resulting class is an idelic class over <span class="math" data-tex="\(E\)">\(E\)</span> supported at its distinguished place, with sum of invariants <span class="math" data-tex="\(1/|D|\)">\(1/|D|\)</span>; (25) identifies it with <span class="math" data-tex="\(u_{L/E}\)">\(u_{L/E}\)</span>. Equality of these cocycle classes gives a continuous homomorphism from the local relative extension to the inverse image of <span class="math" data-tex="\(D\)">\(D\)</span> in <span class="math" data-tex="\(W_{L/K}\)">\(W_{L/K}\)</span>, with the specified coefficient and quotient maps. An explicit construction changes one lifted cocycle by the cochain whose boundary is their quotient, then uses (29).</p>
+<p>Let <span class="math" data-tex="\(I_L\)">\(I_L\)</span> be the set of those homomorphisms. It is nonempty. Two members differ by a <span class="math" data-tex="\(D\)">\(D\)</span>-cocycle in <span class="math" data-tex="\(C_L\)">\(C_L\)</span>; <span class="math" data-tex="\(H^1(D,C_L)=0\)">\(H^1(D,C_L)=0\)</span> makes it an inner conjugation. Thus <span class="math" data-tex="\(I_L\)">\(I_L\)</span> is a torsor for
+<span class="math math-display" data-tex="\[
+C_L/C_L^D=C_L/C_E.
+\tag{38}
+\]">\[
+C_L/C_L^D=C_L/C_E.
+\tag{38}
+\]</span>
+This quotient is compact: the positive modulus direction of <span class="math" data-tex="\(C_E\)">\(C_E\)</span> covers that of <span class="math" data-tex="\(C_L\)">\(C_L\)</span>, leaving a quotient of the compact norm-one group. It supplies <span class="math" data-tex="\(I_L\)">\(I_L\)</span> with a compact topology. If <span class="math" data-tex="\(M\supset L\)">\(M\supset L\)</span>, a member of <span class="math" data-tex="\(I_M\)">\(I_M\)</span> descends to a member of <span class="math" data-tex="\(I_L\)">\(I_L\)</span>: local commutators over <span class="math" data-tex="\(L_w\)">\(L_w\)</span> map into the global commutator kernel in (34). The induced map is continuous, its change under inner conjugation being the norm <span class="math" data-tex="\(C_M\to C_L\)">\(C_M\to C_L\)</span>. Finite compatibility conditions can all be met by choosing a member at one higher common level and descending it. Compactness therefore supplies an element of <span class="math" data-tex="\(\varprojlim I_L\)">\(\varprojlim I_L\)</span>, without requiring any individual norm map to be onto. The resulting compatible homomorphisms define (37); continuity follows componentwise.</p>
+<p>Finally transfer commutes with these local maps. Within the subgroup over <span class="math" data-tex="\(D\)">\(D\)</span>, choose its coset lifts as the images of local lifts. Formula (31) then shows that transfer of the local map is exactly the coefficient inclusion on the local transfer: on abelianizations it is <span class="math" data-tex="\(K_v^\times\to C_E\)">\(K_v^\times\to C_E\)</span>, inserted at the distinguished place of <span class="math" data-tex="\(E=L^D\)">\(E=L^D\)</span>, whose completion is <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. Inclusion of that subgroup into the full relative Weil group induces the field norm <span class="math" data-tex="\(C_E\to C_K\)">\(C_E\to C_K\)</span>. To check this last identity, the transfer formula, decomposed into cosets of <span class="math" data-tex="\(D\)">\(D\)</span>, gives
+<span class="math math-display" data-tex="\[
+V_G(x)=\prod_{gD\in G/D}g\bigl(V_D(x)\bigr)
+\qquad(x\text{ in the subgroup over }D).
+\]">\[
+V_G(x)=\prod_{gD\in G/D}g\bigl(V_D(x)\bigr)
+\qquad(x\text{ in the subgroup over }D).
+\]</span>
+This is the transfer double-coset identity when the target normal subgroup is the common coefficient group: multiply the coefficients within each block, and the changes of lifts telescope between permuted blocks. The displayed product is the field norm on the <span class="math" data-tex="\(D\)">\(D\)</span>-fixed coefficient group. The norm of the distinguished single-place idèle is the same single component in <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Passing to the limit therefore proves the commuting diagram
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+W_{K_v}^{\mathrm{ab}}&amp;\xrightarrow{\theta_v^{\mathrm{ab}}}&amp;W_K^{\mathrm{ab}}\\
+\downarrow\wr&amp;&amp;\downarrow\wr\\
+K_v^\times&amp;\longrightarrow&amp;C_K.
+\end{array}
+\tag{39}
+\]">\[
+\begin{array}{ccc}
+W_{K_v}^{\mathrm{ab}}&amp;\xrightarrow{\theta_v^{\mathrm{ab}}}&amp;W_K^{\mathrm{ab}}\\
+\downarrow\wr&amp;&amp;\downarrow\wr\\
+K_v^\times&amp;\longrightarrow&amp;C_K.
+\end{array}
+\tag{39}
+\]</span>
+Together with (35)–(36), this is the number-field construction and compatibility asserted in lesson 12. Choosing geometric reciprocity inverts both vertical identifications. Weil's construction and Tate's formulation of its local relationship are credited in the references; the cocycle, compactness and normalization arguments here supply the proof.</p>
+<h2 id="8-unit-cohomology-and-infinite-class-field-towers">8. Unit cohomology and infinite class field towers</h2>
+<p>We finish the tower argument stated in lesson 19. Here <span class="math" data-tex="\(K\)">\(K\)</span> is a number field, <span class="math" data-tex="\(p\)">\(p\)</span> a prime, and an everywhere-unramified extension includes splitting at real places. For a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group <span class="math" data-tex="\(G\)">\(G\)</span>, put
+<span class="math math-display" data-tex="\[
+d=\dim_{\mathbf F_p}H^1(G,\mathbf F_p),\qquad
+r=\dim_{\mathbf F_p}H^2(G,\mathbf F_p).
+\tag{40}
+\]">\[
+d=\dim_{\mathbf F_p}H^1(G,\mathbf F_p),\qquad
+r=\dim_{\mathbf F_p}H^2(G,\mathbf F_p).
+\tag{40}
+\]</span>
+Both coefficients have trivial action.</p>
+<h3 id="theorem-24-7-the-finite-group-golod-shafarevich-bound">Theorem 24.7. The finite-group Golod–Shafarevich bound</h3>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> is a nontrivial finite <span class="math" data-tex="\(p\)">\(p\)</span>-group, then
+<span class="math math-display" data-tex="\[
+r&gt;\frac{d^2}{4}.
+\tag{41}
+\]">\[
+r&gt;\frac{d^2}{4}.
+\tag{41}
+\]</span></p>
+<p><strong>Proof.</strong> We supply the presentation and filtered-algebra argument. The Frattini quotient
+<span class="math" data-tex="\(G/(G^p[G,G])\)">\(G/(G^p[G,G])\)</span> is an elementary abelian group of rank <span class="math" data-tex="\(d\)">\(d\)</span>. Lifts of a basis generate <span class="math" data-tex="\(G\)">\(G\)</span>: a proper generated subgroup is contained in a maximal subgroup, which in a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group is normal of index <span class="math" data-tex="\(p\)">\(p\)</span>, and that subgroup cannot contain a basis of the quotient. To check the index assertion, induct using the nontrivial center; if the center is not contained in the maximal subgroup its product with that subgroup is the whole group, forcing index <span class="math" data-tex="\(p\)">\(p\)</span>; otherwise pass to the central quotient.</p>
+<p>Take the free pro-<span class="math" data-tex="\(p\)">\(p\)</span> group <span class="math" data-tex="\(F\)">\(F\)</span> on these <span class="math" data-tex="\(d\)">\(d\)</span> generators, with kernel <span class="math" data-tex="\(R\)">\(R\)</span> onto <span class="math" data-tex="\(G\)">\(G\)</span>. Its completed group algebra is the noncommutative power-series algebra
+<span class="math math-display" data-tex="\[
+T=\mathbf F_p\langle\!\langle X_1,\ldots,X_d\rangle\!\rangle,
+\qquad x_i\longmapsto1+X_i.
+\tag{42}
+\]">\[
+T=\mathbf F_p\langle\!\langle X_1,\ldots,X_d\rangle\!\rangle,
+\qquad x_i\longmapsto1+X_i.
+\tag{42}
+\]</span>
+Here is the universal construction behind this identification. In every finite nilpotent augmentation quotient of <span class="math" data-tex="\(T\)">\(T\)</span>, the group <span class="math" data-tex="\(1+(X_1,\ldots,X_d)\)">\(1+(X_1,\ldots,X_d)\)</span> is a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group, so freeness gives the map from <span class="math" data-tex="\(F\)">\(F\)</span>. Conversely substitute <span class="math" data-tex="\(x_i-1\)">\(x_i-1\)</span> in power series in the completed group algebra. Both continuous algebra maps are inverse on their generators and on the dense polynomial algebra. The augmentation topology agrees with the finite-group-quotient topology: in a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group algebra the augmentation ideal is nilpotent. Indeed choose a central <span class="math" data-tex="\(z\)">\(z\)</span> of order <span class="math" data-tex="\(p\)">\(p\)</span>; <span class="math" data-tex="\((z-1)^p=0\)">\((z-1)^p=0\)</span>, and induction on <span class="math" data-tex="\(G/\langle z\rangle\)">\(G/\langle z\rangle\)</span> puts a sufficiently high augmentation power in <span class="math" data-tex="\((z-1)\)">\((z-1)\)</span>, whose <span class="math" data-tex="\(p\)">\(p\)</span>th power is zero. Conversely the augmentation quotients on <span class="math" data-tex="\(d\)">\(d\)</span> generators have finite dimension, bounded by the number of words of bounded length. This proves the topology assertion used in (42).</p>
+<p>The augmentation ideal in <span class="math" data-tex="\(T\)">\(T\)</span>, as a right module, is freely <span class="math" data-tex="\(\bigoplus_i X_iT\)">\(\bigoplus_i X_iT\)</span>, by the unique first letter of each word. Thus
+<span class="math" data-tex="\(0\to T^d\to T\to\mathbf F_p\to0\)">\(0\to T^d\to T\to\mathbf F_p\to0\)</span>
+is a free resolution, proving <span class="math" data-tex="\(H^2(F,\mathbf F_p)=0\)">\(H^2(F,\mathbf F_p)=0\)</span>. The low-degree sequence (6) for <span class="math" data-tex="\(1\to R\to F\to G\to1\)">\(1\to R\to F\to G\to1\)</span>, valid also for continuous cochains by finite-quotient passage, identifies
+<span class="math math-display" data-tex="\[
+H^2(G,\mathbf F_p)
+=\operatorname{Hom}_{\mathrm{cont}}
+   (R/\overline{R^p[R,F]},\mathbf F_p).
+\tag{43}
+\]">\[
+H^2(G,\mathbf F_p)
+=\operatorname{Hom}_{\mathrm{cont}}
+   (R/\overline{R^p[R,F]},\mathbf F_p).
+\tag{43}
+\]</span>
+The preceding <span class="math" data-tex="\(H^1(G)\to H^1(F)\)">\(H^1(G)\to H^1(F)\)</span> is an isomorphism because the chosen generators are minimal. Hence <span class="math" data-tex="\(R/\overline{R^p[R,F]}\)">\(R/\overline{R^p[R,F]}\)</span> has rank <span class="math" data-tex="\(r\)">\(r\)</span>. Choose <span class="math" data-tex="\(r\)">\(r\)</span> relators <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> lifting a basis. They normally generate <span class="math" data-tex="\(R\)">\(R\)</span>. To prove this last claim, quotient by their closed normal closure. If the remaining image of <span class="math" data-tex="\(R\)">\(R\)</span> were nontrivial, it would be detected in a finite <span class="math" data-tex="\(p\)">\(p\)</span>-group quotient. Its nonzero Frattini quotient has nonzero coinvariants under the ambient <span class="math" data-tex="\(p\)">\(p\)</span>-group: the augmentation ideal of that finite group algebra is nilpotent, so a nonzero finite module cannot equal its augmentation multiple. Those coinvariants would be a nonzero quotient of (43)'s relation module with all the chosen basis classes zero, a contradiction.</p>
+<p>Put <span class="math" data-tex="\(f_j=\rho_j-1\in T\)">\(f_j=\rho_j-1\in T\)</span>. Minimality puts each <span class="math" data-tex="\(f_j\)">\(f_j\)</span> in augmentation degree at least two, since <span class="math" data-tex="\(R\subseteq\overline{F^p[F,F]}\)">\(R\subseteq\overline{F^p[F,F]}\)</span>. The algebra
+<span class="math" data-tex="\(A=\mathbf F_p[G]\)">\(A=\mathbf F_p[G]\)</span> is <span class="math" data-tex="\(T\)">\(T\)</span> modulo the closed two-sided ideal of these <span class="math" data-tex="\(r\)">\(r\)</span> series. Let <span class="math" data-tex="\(I\)">\(I\)</span> be its augmentation ideal, and
+<span class="math math-display" data-tex="\[
+b_n=\dim_{\mathbf F_p}(A/I^{n+1}),\qquad b_{-1}=b_{-2}=0.
+\]">\[
+b_n=\dim_{\mathbf F_p}(A/I^{n+1}),\qquad b_{-1}=b_{-2}=0.
+\]</span>
+Write <span class="math" data-tex="\(f_j=\sum_i X_i f_{ij}\)">\(f_j=\sum_i X_i f_{ij}\)</span>; every <span class="math" data-tex="\(f_{ij}\)">\(f_{ij}\)</span> has degree at least one. There is an exact sequence of right <span class="math" data-tex="\(A\)">\(A\)</span>-modules
+<span class="math math-display" data-tex="\[
+A^r\xrightarrow{(f_{ij})}A^d
+\xrightarrow{(v_i)\mapsto\sum X_iv_i}I\to0.
+\tag{44}
+\]">\[
+A^r\xrightarrow{(f_{ij})}A^d
+\xrightarrow{(v_i)\mapsto\sum X_iv_i}I\to0.
+\tag{44}
+\]</span>
+For exactness in the middle, lift a kernel vector to <span class="math" data-tex="\(T^d\)">\(T^d\)</span>; the series <span class="math" data-tex="\(\sum X_iv_i\)">\(\sum X_iv_i\)</span> lies in the relator ideal. The first-letter derivative obeys
+<span class="math" data-tex="\(\partial_i(uv)=(\partial_i u)v+\epsilon(u)\partial_i v\)">\(\partial_i(uv)=(\partial_i u)v+\epsilon(u)\partial_i v\)</span>.
+Differentiating a sum of <span class="math" data-tex="\(u f_j v\)">\(u f_j v\)</span> and reducing modulo the relator ideal leaves exactly combinations of the columns <span class="math" data-tex="\((f_{ij})\)">\((f_{ij})\)</span>. Passage to limits is valid because the target <span class="math" data-tex="\(A^d\)">\(A^d\)</span> is finite-dimensional. This proves (44), including the absence of an additional hidden relation module.</p>
+<p>The induced surjection
+<span class="math" data-tex="\(A^d/I^nA^d\to I/I^{n+1}\)">\(A^d/I^nA^d\to I/I^{n+1}\)</span>
+has kernel of dimension <span class="math" data-tex="\(d b_{n-1}-(b_n-1)\)">\(d b_{n-1}-(b_n-1)\)</span>. Any vector in that kernel lifts to an actual kernel vector: subtract a vector in <span class="math" data-tex="\(I^nA^d\)">\(I^nA^d\)</span> expressing its error, using <span class="math" data-tex="\(I^{n+1}=\sum_i X_iI^n\)">\(I^{n+1}=\sum_i X_iI^n\)</span>. Equation (44) generates these lifts, and its column entries lie in <span class="math" data-tex="\(I\)">\(I\)</span>, so its image modulo <span class="math" data-tex="\(I^nA^d\)">\(I^nA^d\)</span> has dimension at most <span class="math" data-tex="\(r b_{n-2}\)">\(r b_{n-2}\)</span>. Therefore, for every <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+b_n-d b_{n-1}+r b_{n-2}\geq1.
+\tag{45}
+\]">\[
+b_n-d b_{n-1}+r b_{n-2}\geq1.
+\tag{45}
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this is <span class="math" data-tex="\(b_0=1\)">\(b_0=1\)</span>. Let
+<span class="math" data-tex="\(H_A(t)=\sum_{n\geq0}\dim(I^n/I^{n+1})t^n\)">\(H_A(t)=\sum_{n\geq0}\dim(I^n/I^{n+1})t^n\)</span>.
+Since <span class="math" data-tex="\(I\)">\(I\)</span> is nilpotent it is a polynomial with positive constant term, and
+<span class="math" data-tex="\(\sum b_nt^n=H_A(t)/(1-t)\)">\(\sum b_nt^n=H_A(t)/(1-t)\)</span>. Sum (45) for <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span> to obtain
+<span class="math math-display" data-tex="\[
+(1-dt+rt^2)H_A(t)\geq1.
+\tag{46}
+\]">\[
+(1-dt+rt^2)H_A(t)\geq1.
+\tag{46}
+\]</span>
+If <span class="math" data-tex="\(d\geq3\)">\(d\geq3\)</span> and <span class="math" data-tex="\(r\leq d^2/4\)">\(r\leq d^2/4\)</span>, put <span class="math" data-tex="\(t=2/d\)">\(t=2/d\)</span>; the left factor is nonpositive, a contradiction. If <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, <span class="math" data-tex="\(r\leq1\)">\(r\leq1\)</span> gives the same contradiction as <span class="math" data-tex="\(t\to1\)">\(t\to1\)</span>. If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> is nontrivial cyclic and its periodic resolution gives <span class="math" data-tex="\(r=1&gt;1/4\)">\(r=1&gt;1/4\)</span>. This proves (41) in every case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-24-8-the-terminal-unramified-relation-bound">Theorem 24.8. The terminal unramified relation bound</h3>
+<p>If the maximal everywhere-unramified pro-<span class="math" data-tex="\(p\)">\(p\)</span> extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is finite, with group <span class="math" data-tex="\(G\)">\(G\)</span>, then
+<span class="math math-display" data-tex="\[
+r-d\leq r_1(K)+r_2(K)\leq[K:\mathbf Q].
+\tag{47}
+\]">\[
+r-d\leq r_1(K)+r_2(K)\leq[K:\mathbf Q].
+\tag{47}
+\]</span></p>
+<p><strong>Proof.</strong> The class group of <span class="math" data-tex="\(M\)">\(M\)</span> has order prime to <span class="math" data-tex="\(p\)">\(p\)</span>. Otherwise its Hilbert class field supplies an everywhere-unramified cyclic degree-<span class="math" data-tex="\(p\)">\(p\)</span> extension of <span class="math" data-tex="\(M\)">\(M\)</span>. The compositum of its finitely many conjugates over <span class="math" data-tex="\(K\)">\(K\)</span> is still everywhere unramified, and its group over <span class="math" data-tex="\(K\)">\(K\)</span> is a <span class="math" data-tex="\(p\)">\(p\)</span>-group, contradicting maximality.</p>
+<p>Let <span class="math" data-tex="\(U_M\)">\(U_M\)</span> be the product of all finite local unit groups and all archimedean multiplicative groups, and <span class="math" data-tex="\(E_M=\mathcal O_M^\times\)">\(E_M=\mathcal O_M^\times\)</span>. Every finite decomposition group is unramified cyclic, and its local unit Tate groups vanish as in Proposition 24.1. Every archimedean decomposition group is trivial because real places split. Shapiro makes <span class="math" data-tex="\(U_M\)">\(U_M\)</span> Tate-acyclic. Infinite products introduce no obstruction: the finite-group complete resolution has finitely generated free terms in each degree, so its cochains commute with these products; choose the local primitives componentwise. The finite class group <span class="math" data-tex="\(\operatorname{Cl}(M)\)">\(\operatorname{Cl}(M)\)</span> is also Tate-acyclic for the <span class="math" data-tex="\(p\)">\(p\)</span>-group, since its order is prime to <span class="math" data-tex="\(p\)">\(p\)</span> and every Tate group is killed by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>.</p>
+<p>Break the idelic ideal sequence into
+<span class="math math-display" data-tex="\[
+1\to E_M\to U_M\to C_M^{\mathrm{unit}}\to1,
+\qquad
+1\to C_M^{\mathrm{unit}}\to C_M\to\operatorname{Cl}(M)\to1.
+\]">\[
+1\to E_M\to U_M\to C_M^{\mathrm{unit}}\to1,
+\qquad
+1\to C_M^{\mathrm{unit}}\to C_M\to\operatorname{Cl}(M)\to1.
+\]</span>
+Its Tate sequences give <span class="math" data-tex="\(\widehat H^q(G,C_M)=\widehat H^{q+1}(G,E_M)\)">\(\widehat H^q(G,C_M)=\widehat H^{q+1}(G,E_M)\)</span>. In degree minus one, (26) consequently gives
+<span class="math math-display" data-tex="\[
+H_2(G,\mathbf Z)
+=\widehat H^{-3}(G,\mathbf Z)
+\simeq\widehat H^{-1}(G,C_M)
+\simeq E_K/N_{M/K}E_M.
+\tag{48}
+\]">\[
+H_2(G,\mathbf Z)
+=\widehat H^{-3}(G,\mathbf Z)
+\simeq\widehat H^{-1}(G,C_M)
+\simeq E_K/N_{M/K}E_M.
+\tag{48}
+\]</span>
+The unit group <span class="math" data-tex="\(E_K\)">\(E_K\)</span> has free rank <span class="math" data-tex="\(r_1+r_2-1\)">\(r_1+r_2-1\)</span> and cyclic finite torsion, by the unit theorem already used in lesson 14. Thus the finite <span class="math" data-tex="\(p\)">\(p\)</span>-group on the right of (48) needs at most <span class="math" data-tex="\(r_1+r_2\)">\(r_1+r_2\)</span> generators.</p>
+<p>For completeness, the coefficient sequence
+<span class="math" data-tex="\(0\to\mathbf Z\xrightarrow{p}\mathbf Z\to\mathbf F_p\to0\)">\(0\to\mathbf Z\xrightarrow{p}\mathbf Z\to\mathbf F_p\to0\)</span>
+gives
+<span class="math math-display" data-tex="\[
+0\to H^2(G,\mathbf Z)/p\to H^2(G,\mathbf F_p)
+\to H^3(G,\mathbf Z)[p]\to0.
+\tag{49}
+\]">\[
+0\to H^2(G,\mathbf Z)/p\to H^2(G,\mathbf F_p)
+\to H^3(G,\mathbf Z)[p]\to0.
+\tag{49}
+\]</span>
+The rational coefficient sequence identifies
+<span class="math" data-tex="\(H^2(G,\mathbf Z)=\operatorname{Hom}(G^{\mathrm{ab}},\mathbf Q/\mathbf Z)\)">\(H^2(G,\mathbf Z)=\operatorname{Hom}(G^{\mathrm{ab}},\mathbf Q/\mathbf Z)\)</span>
+and
+<span class="math" data-tex="\(H^3(G,\mathbf Z)=\operatorname{Hom}(H_2(G,\mathbf Z),\mathbf Q/\mathbf Z)\)">\(H^3(G,\mathbf Z)=\operatorname{Hom}(H_2(G,\mathbf Z),\mathbf Q/\mathbf Z)\)</span>.
+Indeed positive rational cohomology vanishes by averaging, and applying <span class="math" data-tex="\(\operatorname{Hom}(-,\mathbf Q/\mathbf Z)\)">\(\operatorname{Hom}(-,\mathbf Q/\mathbf Z)\)</span> to the free bar chain complex takes its homology to its cohomology, since a character extends from a subgroup by divisibility. Finite <span class="math" data-tex="\(p\)">\(p\)</span>-groups and their character duals have the same number of cyclic factors. The first term of (49) therefore has dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and the last has dimension at most <span class="math" data-tex="\(r_1+r_2\)">\(r_1+r_2\)</span> by (48). This proves (47). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-24-9-an-infinite-hilbert-class-field-tower">Theorem 24.9. An infinite Hilbert class field tower</h3>
+<p>The ordinary Hilbert class field tower is infinite for
+<span class="math math-display" data-tex="\[
+K=\mathbf Q\!\left(\sqrt{-5\cdot13\cdot17\cdot29\cdot37\cdot41}\right),
+\]">\[
+K=\mathbf Q\!\left(\sqrt{-5\cdot13\cdot17\cdot29\cdot37\cdot41}\right),
+\]</span>
+<strong>Proof.</strong> Proposition 19.3 gives genus rank six from the seven prime discriminants, <span class="math" data-tex="\(-4\)">\(-4\)</span> and the six positive primes displayed above. Hence the maximal unramified pro-2 group has <span class="math" data-tex="\(d\geq6\)">\(d\geq6\)</span>. If it were finite, (47) would give <span class="math" data-tex="\(r\leq d+2\)">\(r\leq d+2\)</span>, whereas (41) gives <span class="math" data-tex="\(r&gt;d^2/4\)">\(r&gt;d^2/4\)</span>; for every <span class="math" data-tex="\(d\geq6\)">\(d\geq6\)</span>, <span class="math" data-tex="\(d^2/4&gt;d+2\)">\(d^2/4&gt;d+2\)</span>. This is impossible. Its pro-2 extension is infinite. The ordinary Hilbert class field tower is therefore infinite as well: a stabilized finite top field has class number one, but base change of the infinite unramified pro-2 extension gives an infinite pro-2 extension of that top field. Such a group has a nontrivial finite <span class="math" data-tex="\(p\)">\(p\)</span>-group quotient and therefore a cyclic order-<span class="math" data-tex="\(p\)">\(p\)</span> quotient, contradicting class number one. This closes the tower argument using the genus calculation of lesson 19 and the proofs (41), (47) here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-exercises-with-solutions">9. Exercises with solutions</h2>
+<h3 id="exercise-1-local-quaternion-invariants-easy">Exercise 1. Local quaternion invariants — easy</h3>
+<p>Compute the invariant of <span class="math" data-tex="\((a,b)_{\mathbf Q_p}\)">\((a,b)_{\mathbf Q_p}\)</span> from the Hilbert symbol, including a formula that can be used at every prime.</p>
+<p><strong>Solution.</strong> It is zero for symbol 1 and <span class="math" data-tex="\(1/2\)">\(1/2\)</span> for symbol <span class="math" data-tex="\(-1\)">\(-1\)</span>, by (21). For odd <span class="math" data-tex="\(p\)">\(p\)</span>, write <span class="math" data-tex="\(a=p^\alpha u\)">\(a=p^\alpha u\)</span>, <span class="math" data-tex="\(b=p^\beta v\)">\(b=p^\beta v\)</span>, with units <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. Lesson 11 proves
+<span class="math math-display" data-tex="\[
+(a,b)_p=(-1)^{\alpha\beta(p-1)/2}
+\left(\frac{\bar u}{p}\right)^\beta
+\left(\frac{\bar v}{p}\right)^\alpha.
+\]">\[
+(a,b)_p=(-1)^{\alpha\beta(p-1)/2}
+\left(\frac{\bar u}{p}\right)^\beta
+\left(\frac{\bar v}{p}\right)^\alpha.
+\]</span>
+At 2, with odd units <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, its exponent of <span class="math" data-tex="\(-1\)">\(-1\)</span>, modulo two, is
+<span class="math math-display" data-tex="\[
+\frac{u-1}{2}\frac{v-1}{2}
++\alpha\frac{v^2-1}{8}+\beta\frac{u^2-1}{8}.
+\]">\[
+\frac{u-1}{2}\frac{v-1}{2}
++\alpha\frac{v^2-1}{8}+\beta\frac{u^2-1}{8}.
+\]</span>
+Each quotient is integral and depends only on the appropriate odd residue class. Choose invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span> exactly when the indicated parity is odd. Negative valuations cause no change in these parity computations. This includes every <span class="math" data-tex="\(a,b\ne0\)">\(a,b\ne0\)</span>.</p>
+<h3 id="exercise-2-the-infinite-places-medium">Exercise 2. The infinite places — medium</h3>
+<p>Prove <span class="math" data-tex="\(\operatorname{Br}(\mathbf R)=\mathbf Z/2\)">\(\operatorname{Br}(\mathbf R)=\mathbf Z/2\)</span> and <span class="math" data-tex="\(\operatorname{Br}(\mathbf C)=0\)">\(\operatorname{Br}(\mathbf C)=0\)</span>, and identify the invariant of Hamilton's algebra.</p>
+<p><strong>Solution.</strong> Over an algebraically closed field a division representative is the field: factor the minimal polynomial of an element into linear factors and use absence of zero divisors. Thus every complex central simple algebra is a matrix algebra. Every real class is consequently split by <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>; the relative crossed-product theorem and cyclic resolution give
+<span class="math" data-tex="\(\operatorname{Br}(\mathbf R)=\mathbf R^\times/N\mathbf C^\times\)">\(\operatorname{Br}(\mathbf R)=\mathbf R^\times/N\mathbf C^\times\)</span>.
+The norm <span class="math" data-tex="\(z\mapsto |z|^2\)">\(z\mapsto |z|^2\)</span> has image precisely <span class="math" data-tex="\(\mathbf R_{&gt;0}\)">\(\mathbf R_{&gt;0}\)</span>, so the quotient has order two. Its negative parameter gives relations <span class="math" data-tex="\(i^2=j^2=-1\)">\(i^2=j^2=-1\)</span>, <span class="math" data-tex="\(ji=-ij\)">\(ji=-ij\)</span>, hence Hamilton's algebra. It is the nonzero class, assigned invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. No classification of arbitrary real division algebras was needed.</p>
+<h3 id="exercise-3-hamilton-s-ramification-medium">Exercise 3. Hamilton's ramification — medium</h3>
+<p>Determine every ramified place of <span class="math" data-tex="\((-1,-1)_{\mathbf Q}\)">\((-1,-1)_{\mathbf Q}\)</span> directly from local formulas.</p>
+<p><strong>Solution.</strong> For odd <span class="math" data-tex="\(p\)">\(p\)</span>, both valuations are zero, and the odd-prime formula of Exercise 1 is 1. At 2, the unit cross term is <span class="math" data-tex="\((-2/2)(-2/2)=1\)">\((-2/2)(-2/2)=1\)</span> modulo two; the valuation terms are zero, so the symbol is <span class="math" data-tex="\(-1\)">\(-1\)</span>. At infinity two negative entries give symbol <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus exactly 2 and infinity have invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; their sum is 1, zero in <span class="math" data-tex="\(\mathbf Q/\mathbf Z\)">\(\mathbf Q/\mathbf Z\)</span>. All other places have invariant zero. This both determines the set and checks the global sum law in this example.</p>
+<h3 id="exercise-4-the-local-degree-two-bound-hard">Exercise 4. The local degree-two bound — hard</h3>
+<p>For every finite Galois extension of nonarchimedean local fields, prove that <span class="math" data-tex="\(|H^2(G,L^\times)|\)">\(|H^2(G,L^\times)|\)</span> divides <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>, including positive characteristic and noncyclic groups. Explain why that bound alone is not the local invariant theorem.</p>
+<p><strong>Solution.</strong> In a prime cyclic extension, Hilbert 90 kills <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and cyclic periodicity identifies <span class="math" data-tex="\(H^2\)">\(H^2\)</span> with the norm quotient. Local reciprocity gives its order <span class="math" data-tex="\(p\)">\(p\)</span>. Induct in a <span class="math" data-tex="\(p\)">\(p\)</span>-group using a normal index-<span class="math" data-tex="\(p\)">\(p\)</span> subgroup. Equation (5) makes the restriction kernel a group of order <span class="math" data-tex="\(p\)">\(p\)</span>, while its image has order dividing the smaller group order. Hence the total order divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. For a general group, restriction injects each primary part into its Sylow-group cohomology by (2), giving the corresponding Sylow bound. Multiplying gives the stated divisibility and finiteness. This argument uses neither characteristic-zero logarithms nor solvability. To obtain an invariant isomorphism, one still has to exhibit a subgroup of the full degree: Theorem 24.2 does this by comparing with the unramified extension of equal degree and using (11). The bound then forces equality.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The local invariant, global Brauer exact sequence and Tate fundamental-class theorem are proved using the exact internal algebra and cochain prerequisites. The number-field Weil construction, complete filtered group-algebra inequality and arithmetic unit-cohomology relation bound are supplied here; a survey statement is not counted as their proof.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://ncatlab.org/nlab/files/TateNumberTheory.pdf">John Tate, Number theoretic background (1979), freely available paper</a>.</li>
+<li><a href="https://m-ershov.github.io/Research/gssurvey_revised.pdf">Mikhail Ershov, Golod–Shafarevich groups: a survey, author preprint (2012)</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="power-residue-symbols-and-reciprocity-laws.html">← Power residue symbols and reciprocity laws</a></span><a href="./">Course contents</a><span class="pager-next"><span></span></span></nav>
+<p class="small source-link"><a href="files/brauer-groups-of-local-and-global-fields.md">Markdown source of this lesson</a> · <a download href="files/brauer-groups-of-local-and-global-fields.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

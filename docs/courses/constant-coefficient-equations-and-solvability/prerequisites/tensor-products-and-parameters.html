@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tensor products and parameter-dependent distributions</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="tensor-products-and-parameter-dependent-distributions">Tensor products and parameter-dependent distributions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Two independent singular measurements should combine into a measurement on a product space. Knowing its value on separated tests is only the beginning: a general test function need not be a product. This lesson constructs the combined distribution, proves that the order of the two pairings does not matter, and identifies its support exactly. Parameter-dependent pairings also explain a support condition that cannot be omitted.</p>
+<p>The prerequisites are <a href="referenced-prerequisite-statements.html#reference-a04cf1ec0064">Distributions as kernels of continuous operators</a>, especially density of product tests, and <a href="referenced-prerequisite-statements.html#reference-25313bc122d3">When a kernel is smooth</a>, for compact distributions and bounded test families. We assume Taylor's formula and differentiation on compact subsets. Basic references are [Dyatlov 2026], [Melrose 2016] and [Schwartz 1952].</p>
+<h2 id="pairing-with-a-moving-smooth-test">Pairing with a moving smooth test</h2>
+<p>Let <span class="math" data-tex="\(A\subset\mathbb R^p\)">\(A\subset\mathbb R^p\)</span>, <span class="math" data-tex="\(V\subset\mathbb R^n\)">\(V\subset\mathbb R^n\)</span> be open, and let <span class="math" data-tex="\(v\in\mathcal D&#x27;(V)\)">\(v\in\mathcal D&#x27;(V)\)</span>. Suppose <span class="math" data-tex="\(h\in C^\infty(A\times V)\)">\(h\in C^\infty(A\times V)\)</span> has the following local uniform-support property: for every compact parameter set <span class="math" data-tex="\(L\Subset A\)">\(L\Subset A\)</span>, there is <span class="math" data-tex="\(M\Subset V\)">\(M\Subset V\)</span> such that <span class="math" data-tex="\(h(a,y)=0\)">\(h(a,y)=0\)</span> for <span class="math" data-tex="\(a\)">\(a\)</span> in a neighborhood of <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(y\notin M\)">\(y\notin M\)</span>.</p>
+<p><strong>Lemma 1.1 (parameter differentiation).</strong> Under these hypotheses,
+<span class="math math-display" data-tex="\[
+F(a)=\langle v(y),h(a,y)\rangle
+\]">\[
+F(a)=\langle v(y),h(a,y)\rangle
+\]</span>
+is smooth, and
+<span class="math math-display" data-tex="\[
+\partial_a^\alpha F(a)
+=\langle v(y),\partial_a^\alpha h(a,y)\rangle.
+\tag{1.1}
+\]">\[
+\partial_a^\alpha F(a)
+=\langle v(y),\partial_a^\alpha h(a,y)\rangle.
+\tag{1.1}
+\]</span>
+If <span class="math" data-tex="\(v\)">\(v\)</span> is compactly supported, the uniform-support hypothesis on <span class="math" data-tex="\(h\)">\(h\)</span> is unnecessary.</p>
+<p><strong>Proof.</strong> On a compact parameter neighborhood, use a common support <span class="math" data-tex="\(M\)">\(M\)</span> and a distribution estimate <span class="math" data-tex="\(|v(f)|\le Cp_{M,r}(f)\)">\(|v(f)|\le Cp_{M,r}(f)\)</span>. A difference quotient of <span class="math" data-tex="\(h\)">\(h\)</span> in a parameter coordinate converges to the corresponding derivative in the <span class="math" data-tex="\(C^r\)">\(C^r\)</span> seminorm in <span class="math" data-tex="\(y\)">\(y\)</span>, uniformly on smaller compact parameter sets. Taylor's formula gives this explicitly: the remainder, including every <span class="math" data-tex="\(y\)">\(y\)</span>-derivative through order <span class="math" data-tex="\(r\)">\(r\)</span>, is bounded by a constant times the parameter increment, using mixed derivatives on the compact product. Pairing transfers that convergence to the scalar difference quotient of <span class="math" data-tex="\(F\)">\(F\)</span>. Repeating the argument proves all derivatives and their continuity. For compact <span class="math" data-tex="\(v\)">\(v\)</span>, choose a fixed cutoff equal to one near its support and replace <span class="math" data-tex="\(h\)">\(h\)</span> by that cutoff times <span class="math" data-tex="\(h\)">\(h\)</span>. This supplies the uniform support and leaves every pairing unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The support requirement is local in the parameter, rather than a single support condition for all of <span class="math" data-tex="\(A\)">\(A\)</span>. It prevents a test family from transporting unbounded information into the pairing from infinity.</p>
+<h2 id="independent-measurements-have-a-unique-product">Independent measurements have a unique product</h2>
+<p><strong>Theorem 2.1 (tensor products of distributions).</strong> Let <span class="math" data-tex="\(u\in\mathcal D&#x27;(U)\)">\(u\in\mathcal D&#x27;(U)\)</span>, <span class="math" data-tex="\(v\in\mathcal D&#x27;(V)\)">\(v\in\mathcal D&#x27;(V)\)</span>, for arbitrary Euclidean open sets. There is a unique <span class="math" data-tex="\(u\otimes v\in\mathcal D&#x27;(U\times V)\)">\(u\otimes v\in\mathcal D&#x27;(U\times V)\)</span> with
+<span class="math math-display" data-tex="\[
+(u\otimes v)(\psi(x)\phi(y))=u(\psi)v(\phi).
+\tag{2.1}
+\]">\[
+(u\otimes v)(\psi(x)\phi(y))=u(\psi)v(\phi).
+\tag{2.1}
+\]</span>
+For every <span class="math" data-tex="\(H\in\mathcal D(U\times V)\)">\(H\in\mathcal D(U\times V)\)</span>, it satisfies both iterated formulas
+<span class="math math-display" data-tex="\[
+(u\otimes v)(H)
+=u\big(x\longmapsto v(H(x,\cdot))\big)
+=v\big(y\longmapsto u(H(\cdot,y))\big).
+\tag{2.2}
+\]">\[
+(u\otimes v)(H)
+=u\big(x\longmapsto v(H(x,\cdot))\big)
+=v\big(y\longmapsto u(H(\cdot,y))\big).
+\tag{2.2}
+\]</span>
+Moreover,
+<span class="math math-display" data-tex="\[
+\operatorname{supp}(u\otimes v)
+=\operatorname{supp}u\times\operatorname{supp}v.
+\tag{2.3}
+\]">\[
+\operatorname{supp}(u\otimes v)
+=\operatorname{supp}u\times\operatorname{supp}v.
+\tag{2.3}
+\]</span>
+If both factors are compactly supported, the product is compactly supported, and (2.2) is valid for every smooth <span class="math" data-tex="\(H\)">\(H\)</span> on the product, whether or not <span class="math" data-tex="\(H\)">\(H\)</span> has compact support.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\operatorname{supp}H\subset L\times M\)">\(\operatorname{supp}H\subset L\times M\)</span>, with compact neighborhoods <span class="math" data-tex="\(L\Subset U\)">\(L\Subset U\)</span>, <span class="math" data-tex="\(M\Subset V\)">\(M\Subset V\)</span>. Lemma 1.1 shows that
+<span class="math math-display" data-tex="\[
+F_H(x)=v(H(x,\cdot))
+\]">\[
+F_H(x)=v(H(x,\cdot))
+\]</span>
+is smooth, and its support lies in <span class="math" data-tex="\(L\)">\(L\)</span>. If the two distribution estimates have derivative orders <span class="math" data-tex="\(r,s\)">\(r,s\)</span>, then
+<span class="math math-display" data-tex="\[
+|u(F_H)|\le C
+\max_{|\alpha|\le r,\ |\beta|\le s}
+\sup_{L\times M}|\partial_x^\alpha\partial_y^\beta H|.
+\tag{2.4}
+\]">\[
+|u(F_H)|\le C
+\max_{|\alpha|\le r,\ |\beta|\le s}
+\sup_{L\times M}|\partial_x^\alpha\partial_y^\beta H|.
+\tag{2.4}
+\]</span>
+Thus the first iterated formula defines a distribution. It has property (2.1). Reversing the variables gives another distribution with the same property. Product tests are dense by Lemma 3.1 of the kernel lesson, so the two distributions agree and the product is unique.</p>
+<p>If an output point is outside <span class="math" data-tex="\(\operatorname{supp}u\times\operatorname{supp}v\)">\(\operatorname{supp}u\times\operatorname{supp}v\)</span>, one of its coordinates has a neighborhood where the corresponding factor vanishes. Formula (2.2), with that factor paired last, shows that the product distribution vanishes on a product neighborhood. This proves the inclusion <span class="math" data-tex="\(\subset\)">\(\subset\)</span> in (2.3).</p>
+<p>Conversely, let <span class="math" data-tex="\(x\in\operatorname{supp}u\)">\(x\in\operatorname{supp}u\)</span>, <span class="math" data-tex="\(y\in\operatorname{supp}v\)">\(y\in\operatorname{supp}v\)</span>. Every product neighborhood <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span> of <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> contains tests <span class="math" data-tex="\(\psi\in\mathcal D(A)\)">\(\psi\in\mathcal D(A)\)</span>, <span class="math" data-tex="\(\phi\in\mathcal D(B)\)">\(\phi\in\mathcal D(B)\)</span> with <span class="math" data-tex="\(u(\psi)\ne0\)">\(u(\psi)\ne0\)</span>, <span class="math" data-tex="\(v(\phi)\ne0\)">\(v(\phi)\ne0\)</span>; otherwise one factor would vanish on that neighborhood. Their product pairing is nonzero. Thus <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> belongs to the product support. If either factor is zero, both sides of (2.3) are empty, so that case is included.</p>
+<p>For compact factors, use separate cutoffs equal to one near their supports. Applying the preceding construction to the cut-off <span class="math" data-tex="\(H\)">\(H\)</span> defines the product on all smooth functions. Lemma 1.1 for compact distributions makes both inner pairings smooth without support restrictions. The outer factors see only the region where the cutoffs equal one, so both formulas remain valid and independent of the cutoffs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Estimate (2.4) gives order at most <span class="math" data-tex="\(r+s\)">\(r+s\)</span> on the compact product. It does not assert equality of orders for arbitrary distributions.</p>
+<p><strong>Corollary 2.2 (derivatives, separated multipliers and three factors).</strong> For smooth <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>,
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha\partial_y^\beta(u\otimes v)
+=(\partial^\alpha u)\otimes(\partial^\beta v),
+\qquad
+(a(x)b(y))(u\otimes v)=(au)\otimes(bv).
+\tag{2.5}
+\]">\[
+\partial_x^\alpha\partial_y^\beta(u\otimes v)
+=(\partial^\alpha u)\otimes(\partial^\beta v),
+\qquad
+(a(x)b(y))(u\otimes v)=(au)\otimes(bv).
+\tag{2.5}
+\]</span>
+Tensor products of three factors are associative after the natural identification of the product spaces. Interchanging two factors interchanges the corresponding variables.</p>
+<p><strong>Proof.</strong> Apply the definitions of distributional derivative and smooth multiplication to a product test. The signs in differentiating its two factors multiply to <span class="math" data-tex="\((-1)^{|\alpha|+|\beta|}\)">\((-1)^{|\alpha|+|\beta|}\)</span>, exactly the sign of the derivative on the whole product. Each side of every identity is a distribution and agrees on all product tests, so uniqueness proves the identities. For three factors, both associations give <span class="math" data-tex="\(u(\psi)v(\phi)w(\zeta)\)">\(u(\psi)v(\phi)w(\zeta)\)</span> on threefold products. Such products are dense by the same cut-off periodic expansion used for two factors, now in three groups of variables. Uniqueness again proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="limits-of-both-factors">Limits of both factors</h2>
+<p>For distributions, weak convergence means convergence on each fixed compactly supported smooth test. This differs from the all-smooth-function convergence for <span class="math" data-tex="\(\mathcal E&#x27;\)">\(\mathcal E&#x27;\)</span> in the preceding lesson.</p>
+<p><strong>Theorem 3.1 (sequential continuity in both factors).</strong> If <span class="math" data-tex="\(u_j\to u\)">\(u_j\to u\)</span> weakly in <span class="math" data-tex="\(\mathcal D&#x27;(U)\)">\(\mathcal D&#x27;(U)\)</span> and <span class="math" data-tex="\(v_j\to v\)">\(v_j\to v\)</span> weakly in <span class="math" data-tex="\(\mathcal D&#x27;(V)\)">\(\mathcal D&#x27;(V)\)</span>, then
+<span class="math math-display" data-tex="\[
+u_j\otimes v_j\longrightarrow u\otimes v
+\quad\text{weakly in }\mathcal D&#x27;(U\times V).
+\tag{3.1}
+\]">\[
+u_j\otimes v_j\longrightarrow u\otimes v
+\quad\text{weakly in }\mathcal D&#x27;(U\times V).
+\tag{3.1}
+\]</span>
+For fixed <span class="math" data-tex="\(u\)">\(u\)</span> or fixed <span class="math" data-tex="\(v\)">\(v\)</span>, tensoring is also continuous for the strong dual topologies.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(H\)">\(H\)</span> with support in a compact product <span class="math" data-tex="\(L\times M\)">\(L\times M\)</span>. The Baire uniform-boundedness argument on the Fréchet support spaces gives uniform finite-order bounds for the sequences <span class="math" data-tex="\(u_j\)">\(u_j\)</span> on <span class="math" data-tex="\(\mathcal D_L(U)\)">\(\mathcal D_L(U)\)</span> and <span class="math" data-tex="\(v_j\)">\(v_j\)</span> on <span class="math" data-tex="\(\mathcal D_M(V)\)">\(\mathcal D_M(V)\)</span>. Its proof is the proof of Lemma 2.1 in the smoothing lesson with these Fréchet spaces in place of <span class="math" data-tex="\(\mathcal E(V)\)">\(\mathcal E(V)\)</span>: scalar convergence gives pointwise boundedness, and an interior-point argument followed by scaling gives a common seminorm bound. Enlarge the compact sets slightly if needed.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+F_j(x)=(v_j-v)(H(x,\cdot)),\qquad
+F(x)=v(H(x,\cdot)).
+\]">\[
+F_j(x)=(v_j-v)(H(x,\cdot)),\qquad
+F(x)=v(H(x,\cdot)).
+\]</span>
+For every fixed derivative order <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(F_j\to0\)">\(F_j\to0\)</span> in <span class="math" data-tex="\(C^a\)">\(C^a\)</span> on <span class="math" data-tex="\(L\)">\(L\)</span>. Indeed the test family
+<span class="math math-display" data-tex="\[
+\{\partial_x^\alpha H(x,\cdot):x\in L,\ |\alpha|\le a\}
+\]">\[
+\{\partial_x^\alpha H(x,\cdot):x\in L,\ |\alpha|\le a\}
+\]</span>
+is compact in <span class="math" data-tex="\(\mathcal D_M(V)\)">\(\mathcal D_M(V)\)</span>, because it is the continuous image of a compact parameter set, with finitely many derivative choices. Pointwise convergence of <span class="math" data-tex="\(v_j-v\)">\(v_j-v\)</span>, combined with its common seminorm bound, is uniform on a compact test family: take a finite net in that controlling seminorm and bound the error from the net uniformly. Lemma 1.1 identifies the derivatives of <span class="math" data-tex="\(F_j\)">\(F_j\)</span>, proving the assertion.</p>
+<p>If <span class="math" data-tex="\(r\)">\(r\)</span> is the uniform order controlling the <span class="math" data-tex="\(u_j\)">\(u_j\)</span>'s, (2.2) gives
+<span class="math math-display" data-tex="\[
+(u_j\otimes v_j-u\otimes v)(H)
+=u_j(F_j)+(u_j-u)(F).
+\]">\[
+(u_j\otimes v_j-u\otimes v)(H)
+=u_j(F_j)+(u_j-u)(F).
+\]</span>
+The first term tends to zero because <span class="math" data-tex="\(F_j\to0\)">\(F_j\to0\)</span> in <span class="math" data-tex="\(C^r\)">\(C^r\)</span>, and the second by weak convergence on the fixed test <span class="math" data-tex="\(F\)">\(F\)</span>. This proves (3.1).</p>
+<p>For strong continuity with <span class="math" data-tex="\(u\)">\(u\)</span> fixed, let <span class="math" data-tex="\(B\subset\mathcal D(U\times V)\)">\(B\subset\mathcal D(U\times V)\)</span> be bounded. Its tests have a common compact support and uniform bounds for every derivative. The family
+<span class="math math-display" data-tex="\[
+B_u=\{y\longmapsto u(H(\cdot,y)):H\in B\}
+\]">\[
+B_u=\{y\longmapsto u(H(\cdot,y)):H\in B\}
+\]</span>
+is bounded in <span class="math" data-tex="\(\mathcal D(V)\)">\(\mathcal D(V)\)</span>, by the finite-order estimate for <span class="math" data-tex="\(u\)">\(u\)</span> on the common output support and Lemma 1.1. Hence
+<span class="math math-display" data-tex="\[
+q_B(u\otimes v)\le q_{B_u}(v).
+\]">\[
+q_B(u\otimes v)\le q_{B_u}(v).
+\]</span>
+This proves continuity in <span class="math" data-tex="\(v\)">\(v\)</span>; the other factor is identical. We have proved joint continuity for convergent sequences and separate continuity for the strong topologies. No claim about joint continuity on all strong-dual nets is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="tempered-products">Tempered products</h2>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(u\in\mathcal S&#x27;(\mathbb R^m)\)">\(u\in\mathcal S&#x27;(\mathbb R^m)\)</span>, <span class="math" data-tex="\(v\in\mathcal S&#x27;(\mathbb R^n)\)">\(v\in\mathcal S&#x27;(\mathbb R^n)\)</span>, their tensor product is tempered on <span class="math" data-tex="\(\mathbb R^{m+n}\)">\(\mathbb R^{m+n}\)</span>. Both formulas (2.2) are valid for every Schwartz function <span class="math" data-tex="\(H\)">\(H\)</span>, and define the same product as the local distribution construction.</p>
+<p><strong>Proof.</strong> Use the Schwartz seminorms <span class="math" data-tex="\(P_a\)">\(P_a\)</span> from the kernel lesson. If <span class="math" data-tex="\(|v(g)|\le CP_b(g)\)">\(|v(g)|\le CP_b(g)\)</span>, then for <span class="math" data-tex="\(F_H(x)=v(H(x,\cdot))\)">\(F_H(x)=v(H(x,\cdot))\)</span>, parameter differentiation and the inequalities for the product weights give
+<span class="math math-display" data-tex="\[
+P_a(F_H)\le C_a P_{a+b}(H).
+\]">\[
+P_a(F_H)\le C_a P_{a+b}(H).
+\]</span>
+In detail, a derivative through order <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(x\)">\(x\)</span>, a derivative through order <span class="math" data-tex="\(b\)">\(b\)</span> in <span class="math" data-tex="\(y\)">\(y\)</span>, and the weight <span class="math" data-tex="\(\langle x\rangle^a\langle y\rangle^b\)">\(\langle x\rangle^a\langle y\rangle^b\)</span> are controlled by the order <span class="math" data-tex="\(a+b\)">\(a+b\)</span> seminorm on the whole product. Thus <span class="math" data-tex="\(F_H\)">\(F_H\)</span> is Schwartz and depends continuously on <span class="math" data-tex="\(H\)">\(H\)</span>. Pairing it with <span class="math" data-tex="\(u\)">\(u\)</span>, controlled by some <span class="math" data-tex="\(P_c\)">\(P_c\)</span>, gives a fixed bound by <span class="math" data-tex="\(P_{b+c}(H)\)">\(P_{b+c}(H)\)</span>. Differentiating the parameter pairing is justified by Taylor remainders in the relevant weighted seminorms, using one further derivative of the Schwartz function.</p>
+<p>Reversing the two pairings gives another tempered distribution agreeing on Schwartz product tests. Their density was proved by the spatial and frequency expansion in Lemma 5.1 of the kernel lesson. The two distributions agree. On compactly supported tests the formula is the local construction, so their restrictions agree as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-parameter-can-hide-an-escaping-support">A parameter can hide an escaping support</h2>
+<p>Let <span class="math" data-tex="\(\chi\in\mathcal D(\mathbb R)\)">\(\chi\in\mathcal D(\mathbb R)\)</span> have integral one, and define
+<span class="math math-display" data-tex="\[
+h(a,y)=
+\begin{cases}
+\chi(y-1/a),&amp;a&gt;0,\\
+0,&amp;a\le0.
+\end{cases}
+\]">\[
+h(a,y)=
+\begin{cases}
+\chi(y-1/a),&amp;a&gt;0,\\
+0,&amp;a\le0.
+\end{cases}
+\]</span>
+This is smooth on <span class="math" data-tex="\((-1,1)\times\mathbb R\)">\((-1,1)\times\mathbb R\)</span>. Near any point <span class="math" data-tex="\((0,y_0)\)">\((0,y_0)\)</span>, it is identically zero for sufficiently small positive <span class="math" data-tex="\(a\)">\(a\)</span>, because its support escapes to infinity. Away from <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, ordinary composition is smooth. Every individual <span class="math" data-tex="\(y\)">\(y\)</span>-test has compact support.</p>
+<p>Nevertheless, for the distribution <span class="math" data-tex="\(v(f)=\int f(y)\,dy\)">\(v(f)=\int f(y)\,dy\)</span>,
+<span class="math math-display" data-tex="\[
+v(h(a,\cdot))=
+\begin{cases}1,&amp;a&gt;0,\\0,&amp;a\le0,\end{cases}
+\]">\[
+v(h(a,\cdot))=
+\begin{cases}1,&amp;a&gt;0,\\0,&amp;a\le0,\end{cases}
+\]</span>
+which is discontinuous. Thus joint smoothness of <span class="math" data-tex="\(h\)">\(h\)</span> and compact support of each individual test do not replace the local uniform-support hypothesis of Lemma 1.1. A compact distribution would only see a fixed bounded region in <span class="math" data-tex="\(y\)">\(y\)</span>, so its paired value would eventually be zero near <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (basic: two measurements and a derivative).</strong> Let <span class="math" data-tex="\(u=\delta_{-2}-2\delta_1\)">\(u=\delta_{-2}-2\delta_1\)</span>, <span class="math" data-tex="\(v=\delta&#x27;_3\)">\(v=\delta&#x27;_3\)</span>. Compute <span class="math" data-tex="\((u\otimes v)(H)\)">\((u\otimes v)(H)\)</span> for an arbitrary test <span class="math" data-tex="\(H\)">\(H\)</span>, and determine its support and order.</p>
+<p><strong>Exercise 2 (intermediate: singular support of a product).</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> be the Heaviside distribution and <span class="math" data-tex="\(v=\operatorname{pv}(1/y)\)">\(v=\operatorname{pv}(1/y)\)</span>. Determine the support and singular support of <span class="math" data-tex="\(u\otimes v\)">\(u\otimes v\)</span> on the plane. The singular support is the complement of the largest open set where a distribution is a smooth function.</p>
+<p><strong>Exercise 3 (intermediate: two difference quotients).</strong> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put
+<span class="math math-display" data-tex="\[
+u_\varepsilon=(\delta_\varepsilon-\delta_0)/\varepsilon,
+\qquad
+v_\varepsilon=(\delta_{-\varepsilon}-\delta_0)/\varepsilon.
+\]">\[
+u_\varepsilon=(\delta_\varepsilon-\delta_0)/\varepsilon,
+\qquad
+v_\varepsilon=(\delta_{-\varepsilon}-\delta_0)/\varepsilon.
+\]</span>
+Find the weak limit of their tensor product, with its sign. Check it directly on a general test using Taylor's formula in two variables.</p>
+<p><strong>Exercise 4 (advanced: the order bound can be sharp).</strong> Show that <span class="math" data-tex="\(\delta&#x27;_0\otimes\delta&#x27;&#x27;_0\)">\(\delta&#x27;_0\otimes\delta&#x27;&#x27;_0\)</span> has order exactly three on any compact neighborhood of the origin. Give tests with uniformly bounded derivatives through order two on that compact neighborhood whose pairings are unbounded.</p>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Since <span class="math" data-tex="\(\delta&#x27;_3(f)=-f&#x27;(3)\)">\(\delta&#x27;_3(f)=-f&#x27;(3)\)</span>,
+<span class="math math-display" data-tex="\[
+(u\otimes v)(H)=-\partial_yH(-2,3)+2\partial_yH(1,3).
+\]">\[
+(u\otimes v)(H)=-\partial_yH(-2,3)+2\partial_yH(1,3).
+\]</span>
+The support is <span class="math" data-tex="\(\{(-2,3),(1,3)\}\)">\(\{(-2,3),(1,3)\}\)</span> by Theorem 2.1. The derivative formula gives order at most one. It is not order zero: localize to a small neighborhood of either support point and choose a test of the form <span class="math" data-tex="\(a(x)\varepsilon b((y-3)/\varepsilon)\)">\(a(x)\varepsilon b((y-3)/\varepsilon)\)</span>, with <span class="math" data-tex="\(a\)">\(a\)</span> nonzero at that point and <span class="math" data-tex="\(b&#x27;(0)\ne0\)">\(b&#x27;(0)\ne0\)</span>. The supremum of the test tends to zero while its pairing stays nonzero. Hence no order-zero estimate can hold.</p>
+<p><strong>Solution 2.</strong> The support is <span class="math" data-tex="\([0,\infty)\times\mathbb R\)">\([0,\infty)\times\mathbb R\)</span>. On <span class="math" data-tex="\(x&lt;0\)">\(x&lt;0\)</span>, the distribution is zero; on <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, it is the smooth function <span class="math" data-tex="\(1/y\)">\(1/y\)</span>. Thus its singular support is contained in
+<span class="math math-display" data-tex="\[
+\big(\{0\}\times\mathbb R\big)
+\cup\big([0,\infty)\times\{0\}\big).
+\]">\[
+\big(\{0\}\times\mathbb R\big)
+\cup\big([0,\infty)\times\{0\}\big).
+\]</span>
+At <span class="math" data-tex="\((0,y_0)\)">\((0,y_0)\)</span> with <span class="math" data-tex="\(y_0\ne0\)">\(y_0\ne0\)</span>, the function <span class="math" data-tex="\(1/y\)">\(1/y\)</span> is smooth and nonzero nearby. Pairing in <span class="math" data-tex="\(y\)">\(y\)</span> with a small test of nonzero integral against <span class="math" data-tex="\(1/y\)">\(1/y\)</span> leaves a nonzero multiple of the Heaviside distribution, which is not smooth at zero. If the two-variable distribution were smooth nearby, that localized pairing would be smooth, a contradiction.</p>
+<p>At <span class="math" data-tex="\((x_0,0)\)">\((x_0,0)\)</span> with <span class="math" data-tex="\(x_0&gt;0\)">\(x_0&gt;0\)</span>, pairing in <span class="math" data-tex="\(x\)">\(x\)</span> with a nonzero-integral test leaves a nonzero multiple of <span class="math" data-tex="\(\operatorname{pv}(1/y)\)">\(\operatorname{pv}(1/y)\)</span>, which is not smooth at zero. Its failure to be smooth follows also from its ordinary value <span class="math" data-tex="\(1/y\)">\(1/y\)</span> on the punctured line, which has no continuous extension. Finally <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> is in the closure of these singular points, and singular support is closed. The stated containment is therefore equality.</p>
+<p><strong>Solution 3.</strong> On a one-variable test, <span class="math" data-tex="\(u_\varepsilon(f)\to f&#x27;(0)=-\delta&#x27;_0(f)\)">\(u_\varepsilon(f)\to f&#x27;(0)=-\delta&#x27;_0(f)\)</span>, while <span class="math" data-tex="\(v_\varepsilon(g)\to-g&#x27;(0)=\delta&#x27;_0(g)\)">\(v_\varepsilon(g)\to-g&#x27;(0)=\delta&#x27;_0(g)\)</span>. Theorem 3.1 gives the limit <span class="math" data-tex="\(-\delta&#x27;_0\otimes\delta&#x27;_0\)">\(-\delta&#x27;_0\otimes\delta&#x27;_0\)</span>. Directly,
+<span class="math math-display" data-tex="\[
+(u_\varepsilon\otimes v_\varepsilon)(H)
+=\frac{H(\varepsilon,-\varepsilon)-H(\varepsilon,0)-H(0,-\varepsilon)+H(0,0)}{\varepsilon^2}
+\longrightarrow-\partial_x\partial_yH(0,0).
+\]">\[
+(u_\varepsilon\otimes v_\varepsilon)(H)
+=\frac{H(\varepsilon,-\varepsilon)-H(\varepsilon,0)-H(0,-\varepsilon)+H(0,0)}{\varepsilon^2}
+\longrightarrow-\partial_x\partial_yH(0,0).
+\]</span>
+The two-variable fundamental theorem of calculus expresses the numerator as the integral of <span class="math" data-tex="\(\partial_x\partial_yH\)">\(\partial_x\partial_yH\)</span> over an oriented rectangle whose second side is negative. Its sign is therefore negative. Two spatial delta derivatives would pair to the positive mixed derivative, explaining the minus sign in the limit.</p>
+<p><strong>Solution 4.</strong> The distribution pairs as <span class="math" data-tex="\(-\partial_x\partial_y^2H(0,0)\)">\(-\partial_x\partial_y^2H(0,0)\)</span>, so it has order at most three. Choose compactly supported smooth <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, with <span class="math" data-tex="\(f&#x27;(0)g&#x27;&#x27;(0)\ne0\)">\(f&#x27;(0)g&#x27;&#x27;(0)\ne0\)</span>, and let
+<span class="math math-display" data-tex="\[
+H_\varepsilon(x,y)=\varepsilon^2f(x/\varepsilon)g(y/\varepsilon).
+\]">\[
+H_\varepsilon(x,y)=\varepsilon^2f(x/\varepsilon)g(y/\varepsilon).
+\]</span>
+For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, all supports lie in the prescribed compact neighborhood. Every derivative of total order at most two is uniformly bounded, since its scaling factor is <span class="math" data-tex="\(\varepsilon^{2-a-b}\)">\(\varepsilon^{2-a-b}\)</span> with <span class="math" data-tex="\(a+b\le2\)">\(a+b\le2\)</span>. But the pairing is
+<span class="math math-display" data-tex="\[
+-\varepsilon^{-1}f&#x27;(0)g&#x27;&#x27;(0),
+\]">\[
+-\varepsilon^{-1}f&#x27;(0)g&#x27;&#x27;(0),
+\]</span>
+which is unbounded. There can be no order-two estimate. An estimate of any lower order would imply an order-two estimate, so the exact order is three.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Melrose 2016] Richard Melrose, <em>18.155 Lecture 15: Schwartz's kernel theorem</em>, MIT, 2016. <a href="https://math.mit.edu/~rbm/18.155-F16/L15.pdf">Open lecture</a>.</li>
+<li>[Schwartz 1952] Laurent Schwartz, <em>Théorie des noyaux</em>, Proceedings of the International Congress of Mathematicians, Cambridge, Massachusetts, 1950, volume I, American Mathematical Society, 1952. <a href="https://www.mathunion.org/icm/proceedings">Proceedings archive</a>.</li>
+</ul>
+<footer><p>Original text: CC0.</p><p><a href="src/tensor-products-and-parameters.md">Editable original Markdown</a>. Source commit 45254444b969214e28f87b68f421a2b11a02a63e.</p></footer></main></body></html>

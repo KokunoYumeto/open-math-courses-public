@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fredholm modules and analytic K-homology · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p><strong>Draft.</strong> Self-checked by the writing AI. English · CC0 1.0.</p></aside>
+
+<article class="lesson">
+<h1 id="fredholm-modules-and-analytic-k-homology">Fredholm modules and analytic K-homology</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The shift obstruction in extension theory can be recorded before taking a quotient. A representation supplies the algebra action; an operator that commutes with this action modulo compacts supplies the obstruction. A Fredholm module is this pair of data, together with a parity. The parity determines whether we will test it against projections or unitaries.</p>
+<p>Throughout, <span class="math" data-tex="\(A\)">\(A\)</span> is a separable complex C*-algebra and Hilbert spaces are separable. Representations may be degenerate. Compact operators between two Hilbert spaces mean norm limits of finite-rank operators. We use the Fredholm criterion, index invariance under compact perturbations and norm-continuous Fredholm paths, and index additivity proved in Lemmas 1.1–1.2 of <a href="KT-KK-01.html#lemma-1-1-the-fredholm-obstruction-survives-compact-errors">the extension lesson</a>. The preceding two lessons supply the Busby correspondence and the complementary-corner construction for a completely positive lift.</p>
+<h2 id="1-the-cycle-and-its-three-compact-defects">1. The cycle and its three compact defects</h2>
+<p>An <strong>odd Fredholm module</strong> over <span class="math" data-tex="\(A\)">\(A\)</span> is a triple <span class="math" data-tex="\((H,\pi,F)\)">\((H,\pi,F)\)</span>, where <span class="math" data-tex="\(\pi:A\to\mathcal B(H)\)">\(\pi:A\to\mathcal B(H)\)</span> is a *-representation and <span class="math" data-tex="\(F\)">\(F\)</span> is bounded, such that, for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left[F,\pi(a)\right]&amp;\in\mathcal K(H),\\
+\pi(a)(F^2-1)&amp;\in\mathcal K(H),\\
+\pi(a)(F-F^*)&amp;\in\mathcal K(H).
+\end{aligned}
+\tag{1.1}
+\]">\[
+\begin{aligned}
+\left[F,\pi(a)\right]&amp;\in\mathcal K(H),\\
+\pi(a)(F^2-1)&amp;\in\mathcal K(H),\\
+\pi(a)(F-F^*)&amp;\in\mathcal K(H).
+\end{aligned}
+\tag{1.1}
+\]</span>
+<p>An <strong>even Fredholm module</strong> has in addition an orthogonal grading
+<span class="math" data-tex="\(H=H_+\oplus H_-\)">\(H=H_+\oplus H_-\)</span>. Its grading operator <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(H_+\)">\(H_+\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-tex="\(H_-\)">\(H_-\)</span>. We require <span class="math" data-tex="\(\Gamma\pi(a)=\pi(a)\Gamma\)">\(\Gamma\pi(a)=\pi(a)\Gamma\)</span> and <span class="math" data-tex="\(\Gamma F=-F\Gamma\)">\(\Gamma F=-F\Gamma\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi(a)&amp;=\begin{pmatrix}\pi_+(a)&amp;0\\0&amp;\pi_-(a)\end{pmatrix},\\
+F&amp;=\begin{pmatrix}0&amp;F_-\\F_+&amp;0\end{pmatrix}.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+\pi(a)&amp;=\begin{pmatrix}\pi_+(a)&amp;0\\0&amp;\pi_-(a)\end{pmatrix},\\
+F&amp;=\begin{pmatrix}0&amp;F_-\\F_+&amp;0\end{pmatrix}.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>The module is <strong>degenerate</strong> if all three expressions in (1.1) are zero, for every <span class="math" data-tex="\(a\)">\(a\)</span>. Such a module contributes no obstruction. In particular, a self-adjoint unitary commuting with the representation is degenerate. The zero representation makes every bounded <span class="math" data-tex="\(F\)">\(F\)</span> degenerate.</p>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, the last two defects need not themselves be compact. Their compactness is required only where the algebra acts. This distinction is necessary, for example, when a cycle has an infinite-dimensional zero-representation summand.</p>
+<p><strong>Unitary equivalence</strong> means a unitary intertwining both <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span>; in the even case it must also preserve the grading. An <strong>operator homotopy</strong> has fixed <span class="math" data-tex="\(H,\pi\)">\(H,\pi\)</span>, and grading, and a norm-continuous path <span class="math" data-tex="\(F_t\)">\(F_t\)</span> of operators satisfying (1.1). Direct sums use block representations and operators, and the sum grading in the even case.</p>
+<p>We quotient cycles by the equivalence relation generated by unitary equivalence, operator homotopy, and the relation identifying a cycle with its direct sum with a degenerate cycle. We also identify every degenerate cycle with the zero cycle. Write the resulting sets as <span class="math" data-tex="\(K^0(A)\)">\(K^0(A)\)</span> and <span class="math" data-tex="\(K^1(A)\)">\(K^1(A)\)</span>. Superscripts refer to analytic K-homology; subscripts <span class="math" data-tex="\(K_0(A),K_1(A)\)">\(K_0(A),K_1(A)\)</span> refer to the K-theory that will test it.</p>
+<p>The comparison with the general Hilbert-module homotopy definition of <span class="math" data-tex="\(KK^i(A,\mathbb C)\)">\(KK^i(A,\mathbb C)\)</span> is a theorem, rather than part of the meaning of operator homotopy. Its full proof must compare Hilbert-module homotopy with the operator-homotopy and degenerate-summand relations used here. That comparison remains unproved here.</p>
+<h2 id="2-normalization-without-a-unitality-assumption">2. Normalization without a unitality assumption</h2>
+<p>Before writing <span class="math" data-tex="\(P=(1+F)/2\)">\(P=(1+F)/2\)</span>, we must make <span class="math" data-tex="\(F\)">\(F\)</span> a self-adjoint involution. We develop the quotient-ideal and doubled-operator construction using Blackadar, Sections 17.4–17.5. Its operators must be checked against the locally compact defects in (1.1), since neither a unit nor a nondegenerate representation is assumed here.</p>
+<p>For a fixed representation put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal D_\pi&amp;=\{T\in\mathcal B(H):[T,\pi(a)]\in\mathcal K(H)
+\text{ for all }a\},\\
+\mathcal J_\pi&amp;=\{T\in\mathcal D_\pi:T\pi(a)\in\mathcal K(H)
+\text{ for all }a\}.
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+\mathcal D_\pi&amp;=\{T\in\mathcal B(H):[T,\pi(a)]\in\mathcal K(H)
+\text{ for all }a\},\\
+\mathcal J_\pi&amp;=\{T\in\mathcal D_\pi:T\pi(a)\in\mathcal K(H)
+\text{ for all }a\}.
+\end{aligned}
+\tag{2.1}
+\]</span>
+<h3 id="lemma-2-1-the-algebra-of-compact-defects">Lemma 2.1. The algebra of compact defects</h3>
+<p><span class="math" data-tex="\(\mathcal D_\pi\)">\(\mathcal D_\pi\)</span> is a unital C*-algebra and <span class="math" data-tex="\(\mathcal J_\pi\)">\(\mathcal J_\pi\)</span> is a closed two-sided *-ideal in it. For <span class="math" data-tex="\(T\in\mathcal D_\pi\)">\(T\in\mathcal D_\pi\)</span>, membership in <span class="math" data-tex="\(\mathcal J_\pi\)">\(\mathcal J_\pi\)</span> is equivalent to compactness of <span class="math" data-tex="\(\pi(a)T\)">\(\pi(a)T\)</span> for all <span class="math" data-tex="\(a\)">\(a\)</span>. The cycle conditions say exactly that the image of <span class="math" data-tex="\(F\)">\(F\)</span> in <span class="math" data-tex="\(\mathcal D_\pi/\mathcal J_\pi\)">\(\mathcal D_\pi/\mathcal J_\pi\)</span> is a self-adjoint involution.</p>
+<p><strong>Proof.</strong> For each <span class="math" data-tex="\(a\)">\(a\)</span>, the commutator map <span class="math" data-tex="\(T\mapsto[T,\pi(a)]\)">\(T\mapsto[T,\pi(a)]\)</span> is norm-continuous and the compact ideal is norm closed. The intersection of its inverse images is therefore closed. The identity belongs to it, and the identities
+<span class="math" data-tex="\([ST,\pi(a)]=S[T,\pi(a)]+[S,\pi(a)]T\)">\([ST,\pi(a)]=S[T,\pi(a)]+[S,\pi(a)]T\)</span> and
+<span class="math" data-tex="\([T^*,\pi(a)]=-[T,\pi(a^*)]^*\)">\([T^*,\pi(a)]=-[T,\pi(a^*)]^*\)</span>
+prove multiplication and adjoint closure. It is consequently a unital C*-subalgebra of <span class="math" data-tex="\(\mathcal B(H)\)">\(\mathcal B(H)\)</span>.</p>
+<p>If <span class="math" data-tex="\(T\in\mathcal D_\pi\)">\(T\in\mathcal D_\pi\)</span>, the equality
+<span class="math" data-tex="\(\pi(a)T=T\pi(a)-[T,\pi(a)]\)">\(\pi(a)T=T\pi(a)-[T,\pi(a)]\)</span>
+proves the left-right equivalence. The maps <span class="math" data-tex="\(T\mapsto T\pi(a)\)">\(T\mapsto T\pi(a)\)</span> are also continuous, so their compact inverse images form a closed subspace. If <span class="math" data-tex="\(T\)">\(T\)</span> lies in that subspace, <span class="math" data-tex="\(T^*\pi(a)=(\pi(a^*)T)^*\)">\(T^*\pi(a)=(\pi(a^*)T)^*\)</span> is compact. For <span class="math" data-tex="\(S\in\mathcal D_\pi\)">\(S\in\mathcal D_\pi\)</span>, <span class="math" data-tex="\(ST\pi(a)\)">\(ST\pi(a)\)</span> is compact by the compact ideal property, and
+<span class="math" data-tex="\(TS\pi(a)=T\pi(a)S+T[S,\pi(a)]\)">\(TS\pi(a)=T\pi(a)S+T[S,\pi(a)]\)</span>
+is compact as well. These calculations prove exactly the closed two-sided *-ideal assertion. The adjoint and square defects of a cycle belong to this ideal by the left-right equivalence, so its quotient image is a self-adjoint element whose square is the identity. Conversely those quotient equalities are precisely the required locally compact defects. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-2-2-locally-compact-perturbations">Proposition 2.2. Locally compact perturbations</h3>
+<p>If <span class="math" data-tex="\(F,F&#x27;\)">\(F,F&#x27;\)</span> are cycle operators for the same representation and parity, and <span class="math" data-tex="\((F&#x27;-F)\pi(a)\)">\((F&#x27;-F)\pi(a)\)</span> is compact for every <span class="math" data-tex="\(a\)">\(a\)</span>, then the segment
+<span class="math" data-tex="\(F_t=(1-t)F+tF&#x27;\)">\(F_t=(1-t)F+tF&#x27;\)</span> is an operator homotopy. In particular an ordinary compact perturbation gives an operator homotopy.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(K=F&#x27;-F\)">\(K=F&#x27;-F\)</span>. Both endpoints lie in <span class="math" data-tex="\(\mathcal D_\pi\)">\(\mathcal D_\pi\)</span>, and the assumed compact products put <span class="math" data-tex="\(K\)">\(K\)</span> in <span class="math" data-tex="\(\mathcal J_\pi\)">\(\mathcal J_\pi\)</span>. For <span class="math" data-tex="\(F_t=F+tK\)">\(F_t=F+tK\)</span>,
+<span class="math math-display" data-tex="\[
+F_t^2-1=(F^2-1)+t(FK+KF)+t^2K^2,
+\qquad
+F_t-F_t^*=(F-F^*)+t(K-K^*).
+\]">\[
+F_t^2-1=(F^2-1)+t(FK+KF)+t^2K^2,
+\qquad
+F_t-F_t^*=(F-F^*)+t(K-K^*).
+\]</span>
+Every term on the right belongs to <span class="math" data-tex="\(\mathcal J_\pi\)">\(\mathcal J_\pi\)</span>, using the ideal property for the products; their multiplication on the represented algebra is therefore compact. The commutator is <span class="math" data-tex="\([F,\pi(a)]+t[K,\pi(a)]\)">\([F,\pi(a)]+t[K,\pi(a)]\)</span>, a sum of compacts. This proves every cycle condition without imposing global compactness on <span class="math" data-tex="\(K\)">\(K\)</span>. The path is norm-continuous and is odd for the grading whenever its endpoints are. An ordinary compact <span class="math" data-tex="\(K\)">\(K\)</span> satisfies the assumed products. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-2-3-an-exact-involution-representative">Proposition 2.3. An exact involution representative</h3>
+<p>Every even or odd module is equivalent to one with <span class="math" data-tex="\(F=F^*\)">\(F=F^*\)</span> and <span class="math" data-tex="\(F^2=1\)">\(F^2=1\)</span>. The construction can be performed continuously on a norm-continuous family of cycle operators.</p>
+<p><strong>Proof.</strong> Lemma 2.1 permits functional calculus in the quotient <span class="math" data-tex="\(\mathcal D_\pi/\mathcal J_\pi\)">\(\mathcal D_\pi/\mathcal J_\pi\)</span>. Set <span class="math" data-tex="\(F_s=(F+F^*)/2\)">\(F_s=(F+F^*)/2\)</span>. It has the same quotient image as <span class="math" data-tex="\(F\)">\(F\)</span>, so the segment joining them is allowed by Proposition 2.2. That quotient image is an involution. For the odd continuous clipping function
+<span class="math" data-tex="\(g(t)=\max(-1,\min(t,1))\)">\(g(t)=\max(-1,\min(t,1))\)</span>, put <span class="math" data-tex="\(f=g(F_s)\)">\(f=g(F_s)\)</span>. Its quotient image is still the same involution, since <span class="math" data-tex="\(g(1)=1\)">\(g(1)=1\)</span> and <span class="math" data-tex="\(g(-1)=-1\)">\(g(-1)=-1\)</span>; hence <span class="math" data-tex="\(f-F_s\in\mathcal J_\pi\)">\(f-F_s\in\mathcal J_\pi\)</span> and a second allowed segment joins them. The operator <span class="math" data-tex="\(f\)">\(f\)</span> is a self-adjoint contraction. If the starting operator is odd, conjugating by the grading replaces <span class="math" data-tex="\(F_s\)">\(F_s\)</span> by <span class="math" data-tex="\(-F_s\)">\(-F_s\)</span>, and the oddness of <span class="math" data-tex="\(g\)">\(g\)</span> makes <span class="math" data-tex="\(f\)">\(f\)</span> odd too.</p>
+<p>The positive operator <span class="math" data-tex="\(s=(1-f^2)^{1/2}\)">\(s=(1-f^2)^{1/2}\)</span> commutes with <span class="math" data-tex="\(f\)">\(f\)</span>. Its quotient image is zero, so <span class="math" data-tex="\(s\in\mathcal J_\pi\)">\(s\in\mathcal J_\pi\)</span>. On <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, with representation <span class="math" data-tex="\(\pi\oplus0\)">\(\pi\oplus0\)</span>, form</p>
+<span class="math math-display" data-tex="\[
+G_t=\begin{pmatrix}f&amp;ts\\ts&amp;-f\end{pmatrix},
+\qquad 0\leq t\leq1.
+\tag{2.2}
+\]">\[
+G_t=\begin{pmatrix}f&amp;ts\\ts&amp;-f\end{pmatrix},
+\qquad 0\leq t\leq1.
+\tag{2.2}
+\]</span>
+<p>For an even cycle use the grading <span class="math" data-tex="\(\operatorname{diag}(\Gamma,-\Gamma)\)">\(\operatorname{diag}(\Gamma,-\Gamma)\)</span>. The square root <span class="math" data-tex="\(s\)">\(s\)</span> is even, because <span class="math" data-tex="\(f^2\)">\(f^2\)</span> is even, and the opposite second grading therefore makes its off-diagonal positions odd. All <span class="math" data-tex="\(G_t\)">\(G_t\)</span> are self-adjoint. Direct multiplication, using <span class="math" data-tex="\(fs=sf\)">\(fs=sf\)</span>, gives
+<span class="math math-display" data-tex="\[
+G_t^2-1=(t^2-1)
+\begin{pmatrix}s^2&amp;0\\0&amp;s^2\end{pmatrix}.
+\]">\[
+G_t^2-1=(t^2-1)
+\begin{pmatrix}s^2&amp;0\\0&amp;s^2\end{pmatrix}.
+\]</span>
+Its product with the represented algebra is compact because <span class="math" data-tex="\(s^2\in\mathcal J_\pi\)">\(s^2\in\mathcal J_\pi\)</span>. The only other commutator blocks are <span class="math" data-tex="\([f,\pi(a)]\)">\([f,\pi(a)]\)</span>, <span class="math" data-tex="\(-t\pi(a)s\)">\(-t\pi(a)s\)</span> and <span class="math" data-tex="\(ts\pi(a)\)">\(ts\pi(a)\)</span>; these are compact by <span class="math" data-tex="\(f\in\mathcal D_\pi\)">\(f\in\mathcal D_\pi\)</span> and <span class="math" data-tex="\(s\in\mathcal J_\pi\)">\(s\in\mathcal J_\pi\)</span>. Thus (2.2) is an operator homotopy. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the first block is the clipped cycle and the second is a zero-representation degenerate cycle. At <span class="math" data-tex="\(t=1\)">\(t=1\)</span> the displayed square defect is exactly zero. These successive segments and the degenerate-summand relation produce the required representative.</p>
+<p>For a norm-continuous original family the self-adjoint parts are uniformly bounded on compact parameter intervals. Polynomial approximation to <span class="math" data-tex="\(g\)">\(g\)</span> on one common spectral interval proves norm continuity of the clipping; polynomial approximation to the square root on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> proves norm continuity of <span class="math" data-tex="\(s\)">\(s\)</span>. Matrix assembly then proves continuity of <span class="math" data-tex="\(G_1\)">\(G_1\)</span>. This argument includes operators whose spectra cross zero; no gap is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction deliberately allows a zero-representation summand. For an even cycle of nonzero index, one cannot in general obtain an exact odd involution by a compact perturbation on the original graded space: an exact odd involution is an isomorphism between its two graded summands.</p>
+<h2 id="3-addition-inverses-and-pullback">3. Addition, inverses and pullback</h2>
+<h3 id="theorem-3-1-analytic-k-homology-is-an-abelian-group">Theorem 3.1. Analytic K-homology is an abelian group</h3>
+<p>Direct sum makes <span class="math" data-tex="\(K^0(A)\)">\(K^0(A)\)</span> and <span class="math" data-tex="\(K^1(A)\)">\(K^1(A)\)</span> abelian groups. An inverse of an odd cycle is <span class="math" data-tex="\((H,\pi,-F)\)">\((H,\pi,-F)\)</span>. An inverse of an even cycle is <span class="math" data-tex="\((H^{\mathrm{op}},\pi,-F)\)">\((H^{\mathrm{op}},\pi,-F)\)</span>, where <span class="math" data-tex="\(H^{\mathrm{op}}\)">\(H^{\mathrm{op}}\)</span> has the opposite grading.</p>
+<p><strong>Proof.</strong> Direct sum preserves the defects and all generating relations. Rebracketing and flipping summands are grading-preserving unitaries where appropriate, giving associativity and commutativity. The zero cycle is an identity by the degenerate-summand relation.</p>
+<p>We may first replace <span class="math" data-tex="\(F\)">\(F\)</span> by its self-adjoint part, by Proposition 2.2. Add the proposed inverse and use, on the two copies,</p>
+<span class="math math-display" data-tex="\[
+F_\theta=
+\begin{pmatrix}
+\cos\theta\,F&amp;\sin\theta\,1\\
+\sin\theta\,1&amp;-\cos\theta\,F
+\end{pmatrix},
+\tag{3.1}
+\]">\[
+F_\theta=
+\begin{pmatrix}
+\cos\theta\,F&amp;\sin\theta\,1\\
+\sin\theta\,1&amp;-\cos\theta\,F
+\end{pmatrix},
+\tag{3.1}
+\]</span>
+<p>for <span class="math" data-tex="\(0\leq\theta\leq\pi/2\)">\(0\leq\theta\leq\pi/2\)</span>, with representation <span class="math" data-tex="\(\pi\oplus\pi\)">\(\pi\oplus\pi\)</span>. In the even case the opposite second grading makes the off-diagonal identity odd. Squaring gives
+<span class="math math-display" data-tex="\[
+F_\theta^2-1
+=\cos^2\theta
+\begin{pmatrix}F^2-1&amp;0\\0&amp;F^2-1\end{pmatrix}.
+\]">\[
+F_\theta^2-1
+=\cos^2\theta
+\begin{pmatrix}F^2-1&amp;0\\0&amp;F^2-1\end{pmatrix}.
+\]</span>
+Its product with the representation is compact. The commutator has diagonal blocks <span class="math" data-tex="\(\cos\theta[F,\pi(a)]\)">\(\cos\theta[F,\pi(a)]\)</span> and their negatives and zero off-diagonal blocks; self-adjointness is exact. At <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span> we have the cycle plus its proposed inverse. At <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> we have the self-adjoint exchange unitary, commuting exactly with the representation. It is degenerate, so the sum represents zero. Finally <span class="math" data-tex="\(-F\)">\(-F\)</span> and the grading reversal respect each generating equivalence relation, so the inverse is well defined on classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-3-2-contravariance">Proposition 3.2. Contravariance</h3>
+<p>A *-homomorphism <span class="math" data-tex="\(\alpha:A\to B\)">\(\alpha:A\to B\)</span> induces
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha^*&amp;:K^i(B)\longrightarrow K^i(A),\\
+[(H,\pi,F)]&amp;\longmapsto[(H,\pi\alpha,F)].
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha^*&amp;:K^i(B)\longrightarrow K^i(A),\\
+[(H,\pi,F)]&amp;\longmapsto[(H,\pi\alpha,F)].
+\end{aligned}
+\]</span>
+It is a group homomorphism, and
+<span class="math" data-tex="\((\beta\alpha)^*=\alpha^*\beta^*\)">\((\beta\alpha)^*=\alpha^*\beta^*\)</span>, <span class="math" data-tex="\(1_A^*=1\)">\(1_A^*=1\)</span>.</p>
+<p><strong>Proof.</strong> Each compact condition over <span class="math" data-tex="\(A\)">\(A\)</span> is the corresponding condition over <span class="math" data-tex="\(B\)">\(B\)</span>, evaluated at <span class="math" data-tex="\(\alpha(a)\)">\(\alpha(a)\)</span>. Degeneracy, unitary equivalence and operator homotopy are preserved, as is direct sum. Composition and the identity follow by composing the representations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(A\)">\(A\)</span> is unital, one may also remove a degenerate part of its representation. Put <span class="math" data-tex="\(p=\pi(1)\)">\(p=\pi(1)\)</span>. The off-diagonal blocks of <span class="math" data-tex="\(F\)">\(F\)</span> relative to <span class="math" data-tex="\(pH\oplus(1-p)H\)">\(pH\oplus(1-p)H\)</span> are compact, because <span class="math" data-tex="\([F,p]\)">\([F,p]\)</span> is compact. Delete them by Proposition 2.2. The remaining zero-representation part is degenerate, and the part on <span class="math" data-tex="\(pH\)">\(pH\)</span> has a unital representation. The grading respects this decomposition for even cycles. This reduction does not require a nondegeneracy convention at the start.</p>
+<h2 id="4-from-a-differential-operator-to-a-bounded-cycle">4. From a differential operator to a bounded cycle</h2>
+<p>We state a spectral argument with all its operator hypotheses. It will apply to Dirac operators and to compact-resolvent spectral triples.</p>
+<h3 id="lemma-4-0-spectral-calculus-at-compact-resolvent">Lemma 4.0. Spectral calculus at compact resolvent</h3>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be a densely defined self-adjoint operator with compact <span class="math" data-tex="\((1+D^2)^{-1}\)">\((1+D^2)^{-1}\)</span>. There is an orthonormal basis <span class="math" data-tex="\(e_j\)">\(e_j\)</span> of eigenvectors, with real eigenvalues <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}D=\left\{\sum_j u_je_j:\sum_j(1+\lambda_j^2)|u_j|^2&lt;\infty\right\},
+\qquad D\left(\sum_j u_je_j\right)=\sum_j\lambda_ju_je_j .
+\]">\[
+\operatorname{Dom}D=\left\{\sum_j u_je_j:\sum_j(1+\lambda_j^2)|u_j|^2&lt;\infty\right\},
+\qquad D\left(\sum_j u_je_j\right)=\sum_j\lambda_ju_je_j .
+\]</span>
+Only finitely many eigenvalues, counted with multiplicity, lie in any bounded interval. Bounded scalar functions define bounded diagonal operators <span class="math" data-tex="\(f(D)\)">\(f(D)\)</span>, preserving products and adjoints. Uniformly bounded pointwise convergence of such functions on the eigenvalues gives strong operator convergence. If <span class="math" data-tex="\(f(t)\to0\)">\(f(t)\to0\)</span> as <span class="math" data-tex="\(|t|\to\infty\)">\(|t|\to\infty\)</span>, then <span class="math" data-tex="\(f(D)\)">\(f(D)\)</span> is compact.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>,
+<span class="math" data-tex="\(\|(D\pm i\alpha)u\|^2=\|Du\|^2+\alpha^2\|u\|^2\)">\(\|(D\pm i\alpha)u\|^2=\|Du\|^2+\alpha^2\|u\|^2\)</span>.
+Closedness of <span class="math" data-tex="\(D\)">\(D\)</span> makes these ranges closed. Their orthogonal complements are the kernels of <span class="math" data-tex="\(D\mp i\alpha\)">\(D\mp i\alpha\)</span>, which are zero by the same equality and self-adjointness. Thus both ranges are all <span class="math" data-tex="\(H\)">\(H\)</span>, and their inverse norms are at most <span class="math" data-tex="\(1/\alpha\)">\(1/\alpha\)</span>. Set <span class="math" data-tex="\(R=(D-i)^{-1}\)">\(R=(D-i)^{-1}\)</span>. Testing the adjoint identity on the two domains gives <span class="math" data-tex="\(R^*=(D+i)^{-1}\)">\(R^*=(D+i)^{-1}\)</span>, and the resolvent identity gives
+<span class="math math-display" data-tex="\[
+R-R^*=2iRR^*=2iR^*R.
+\]">\[
+R-R^*=2iRR^*=2iR^*R.
+\]</span>
+Hence <span class="math" data-tex="\(T=RR^*\)">\(T=RR^*\)</span> is positive, injective, and has dense range. The product maps into <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>: <span class="math" data-tex="\(R^*v\in\operatorname{Dom}D\)">\(R^*v\in\operatorname{Dom}D\)</span>, <span class="math" data-tex="\(DRw=w+iRw\)">\(DRw=w+iRw\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> maps <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> into <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>. Multiplying out on this domain proves <span class="math" data-tex="\(T=(1+D^2)^{-1}\)">\(T=(1+D^2)^{-1}\)</span>, so <span class="math" data-tex="\(T\)">\(T\)</span> is compact.</p>
+<p>Here is the compact positive spectral argument used, including completeness. If <span class="math" data-tex="\(T\ne0\)">\(T\ne0\)</span>, put <span class="math" data-tex="\(r=\|T\|\)">\(r=\|T\|\)</span>. The self-adjoint norm identity in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html">Hilbert spaces and compact operators</a>, Corollary 3.2, and positive functional calculus give
+<span class="math" data-tex="\(\sup_{\|u\|=1}\langle u,Tu\rangle=r\)">\(\sup_{\|u\|=1}\langle u,Tu\rangle=r\)</span> and <span class="math" data-tex="\(0\leq T^2\leq rT\)">\(0\leq T^2\leq rT\)</span>.
+Choose unit <span class="math" data-tex="\(u_n\)">\(u_n\)</span> with <span class="math" data-tex="\(\langle u_n,Tu_n\rangle\to r\)">\(\langle u_n,Tu_n\rangle\to r\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|(T-r)u_n\|^2
+\leq r^2-r\langle u_n,Tu_n\rangle\longrightarrow0.
+\]">\[
+\|(T-r)u_n\|^2
+\leq r^2-r\langle u_n,Tu_n\rangle\longrightarrow0.
+\]</span>
+Compactness of <span class="math" data-tex="\(T\)">\(T\)</span> gives a convergent subsequence of <span class="math" data-tex="\(Tu_n\)">\(Tu_n\)</span>, hence of <span class="math" data-tex="\(u_n\)">\(u_n\)</span>, whose unit limit is an eigenvector of eigenvalue <span class="math" data-tex="\(r\)">\(r\)</span>. Each nonzero eigenspace is finite dimensional: infinitely many orthonormal vectors in one such space would have images under <span class="math" data-tex="\(T\)">\(T\)</span> with no convergent subsequence. The orthogonal complement of any collected eigenspaces reduces <span class="math" data-tex="\(T\)">\(T\)</span>, and, if its restriction is nonzero, the same argument supplies another positive eigenvalue. There can be only finitely many eigenvectors with eigenvalues at least any fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, by compactness. Taking the closed span of all positive eigenspaces leaves a reducing complement on which <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, because a nonzero restriction would again supply a positive eigenvector. Injectivity makes that complement zero.</p>
+<p>Every positive eigenspace of <span class="math" data-tex="\(T\)">\(T\)</span> is contained in <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>, since <span class="math" data-tex="\(v=\theta^{-1}Tv\)">\(v=\theta^{-1}Tv\)</span>. It is invariant under <span class="math" data-tex="\(D\)">\(D\)</span>, because the resolvents, hence <span class="math" data-tex="\(T\)">\(T\)</span>, commute with <span class="math" data-tex="\(D\)">\(D\)</span> on its domain. The restriction of <span class="math" data-tex="\(D\)">\(D\)</span> to this finite-dimensional space is self-adjoint and diagonalizable. Its eigenvectors satisfy <span class="math" data-tex="\(Te_j=(1+\lambda_j^2)^{-1}e_j\)">\(Te_j=(1+\lambda_j^2)^{-1}e_j\)</span>. The preceding compactness property proves the finiteness assertion for bounded <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\in\operatorname{Dom}D\)">\(u\in\operatorname{Dom}D\)</span>, self-adjointness gives <span class="math" data-tex="\(\langle e_j,Du\rangle=\lambda_j\langle e_j,u\rangle\)">\(\langle e_j,Du\rangle=\lambda_j\langle e_j,u\rangle\)</span>, so the indicated weighted sum is finite. Conversely its finiteness makes finite eigenvector truncations converge together with their <span class="math" data-tex="\(D\)">\(D\)</span>-images; closedness puts the limit in the domain and proves the formula. Bounded diagonal multipliers have the stated products and adjoints by their coordinates. Strong convergence follows by choosing a finite coordinate truncation of a vector first, using the uniform bound for its tail, and then passing to the pointwise limit on the finite part. Vanishing at infinity makes the norm of the remaining diagonal tail tend to zero; the finite truncations are finite rank. This proves compactness. Finite-dimensional <span class="math" data-tex="\(H\)">\(H\)</span> satisfies the same conclusions with a finite basis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="theorem-4-1-the-bounded-transform">Theorem 4.1. The bounded transform</h3>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be self-adjoint on <span class="math" data-tex="\(H\)">\(H\)</span>, with <span class="math" data-tex="\((1+D^2)^{-1}\)">\((1+D^2)^{-1}\)</span> compact. Suppose a dense *-subalgebra <span class="math" data-tex="\(\mathcal A\subset A\)">\(\mathcal A\subset A\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\pi(a)\operatorname{Dom}D\subset\operatorname{Dom}D
+\tag{4.1}
+\]">\[
+\pi(a)\operatorname{Dom}D\subset\operatorname{Dom}D
+\tag{4.1}
+\]</span>
+for every <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, and every commutator <span class="math" data-tex="\([D,\pi(a)]\)">\([D,\pi(a)]\)</span> extends to a bounded operator. Then
+<span class="math math-display" data-tex="\[
+F=D(1+D^2)^{-1/2}
+\tag{4.2}
+\]">\[
+F=D(1+D^2)^{-1/2}
+\tag{4.2}
+\]</span>
+defines an odd Fredholm module. If <span class="math" data-tex="\(H\)">\(H\)</span> is graded, <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is even, the domain of <span class="math" data-tex="\(D\)">\(D\)</span> is grading invariant, and <span class="math" data-tex="\(D\)">\(D\)</span> is odd on that domain, it defines an even module.</p>
+<p><strong>Proof.</strong> Lemma 4.0 defines (4.2) as the bounded diagonal scalar function <span class="math" data-tex="\(t/\sqrt{1+t^2}\)">\(t/\sqrt{1+t^2}\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>. It gives
+<span class="math math-display" data-tex="\[
+F=F^*,\quad \|F\|\leq1,\quad
+F^2-1=-(1+D^2)^{-1}\in\mathcal K(H).
+\tag{4.3}
+\]">\[
+F=F^*,\quad \|F\|\leq1,\quad
+F^2-1=-(1+D^2)^{-1}\in\mathcal K(H).
+\tag{4.3}
+\]</span>
+We prove the commutator assertion rather than assuming that bounded commutators with <span class="math" data-tex="\(D\)">\(D\)</span> automatically pass through functional calculus.</p>
+<p>Set <span class="math" data-tex="\(\alpha(s)=\sqrt{1+s^2}\)">\(\alpha(s)=\sqrt{1+s^2}\)</span> and <span class="math" data-tex="\(R_\pm(s)=(D\pm i\alpha(s))^{-1}\)">\(R_\pm(s)=(D\pm i\alpha(s))^{-1}\)</span>. These operators are compact. Indeed they are <span class="math" data-tex="\((1+D^2)^{-1/2}\)">\((1+D^2)^{-1/2}\)</span> times a bounded continuous function of <span class="math" data-tex="\(D\)">\(D\)</span>; the square root of a positive compact operator is compact. The domain invariance in (4.1), applied also to <span class="math" data-tex="\(a^*\)">\(a^*\)</span>, justifies the resolvent identity
+<span class="math math-display" data-tex="\[
+[R_\pm(s),\pi(a)]=-R_\pm(s)[D,\pi(a)]R_\pm(s).
+\tag{4.4}
+\]">\[
+[R_\pm(s),\pi(a)]=-R_\pm(s)[D,\pi(a)]R_\pm(s).
+\tag{4.4}
+\]</span>
+For example apply both sides to a vector, use that each resolvent takes it into <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>, and multiply by <span class="math" data-tex="\(D\pm i\alpha\)">\(D\pm i\alpha\)</span>; the identity follows there and extends boundedly.</p>
+<p>The scalar identity
+<span class="math math-display" data-tex="\[
+\frac{t}{\sqrt{1+t^2}}
+=\frac1\pi\int_0^\infty
+\left(\frac1{t-i\alpha(s)}+\frac1{t+i\alpha(s)}\right)\,ds
+\tag{4.5}
+\]">\[
+\frac{t}{\sqrt{1+t^2}}
+=\frac1\pi\int_0^\infty
+\left(\frac1{t-i\alpha(s)}+\frac1{t+i\alpha(s)}\right)\,ds
+\tag{4.5}
+\]</span>
+holds because its truncation at <span class="math" data-tex="\(R\)">\(R\)</span> is <span class="math" data-tex="\(\frac{2t}{\pi\sqrt{1+t^2}}\arctan(R/\sqrt{1+t^2})\)">\(\frac{2t}{\pi\sqrt{1+t^2}}\arctan(R/\sqrt{1+t^2})\)</span>. These scalar truncations have absolute value at most one and converge pointwise. On every finite interval the resolvents are norm-continuous, so their operator integrals exist; applying the integral to each eigenvector gives exactly the displayed scalar truncation. Lemma 4.0 now makes these integrals converge strongly to <span class="math" data-tex="\(F\)">\(F\)</span>. No unbounded spectral theorem is assumed in this passage.</p>
+<p>Taking their commutators is better behaved: (4.4) gives a compact integrand of norm at most
+<span class="math math-display" data-tex="\[
+\frac{2\|[D,\pi(a)]\|}{\pi(1+s^2)}.
+\]">\[
+\frac{2\|[D,\pi(a)]\|}{\pi(1+s^2)}.
+\]</span>
+It is norm-continuous in <span class="math" data-tex="\(s\)">\(s\)</span>, and this bound is integrable. Thus its integral converges in norm to a compact operator. The strong limit of the same commutators is <span class="math" data-tex="\([F,\pi(a)]\)">\([F,\pi(a)]\)</span>, so that operator is compact for <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>. Since <span class="math" data-tex="\(\|[F,\pi(a)]\|\leq2\|F\|\|a\|\)">\(\|[F,\pi(a)]\|\leq2\|F\|\|a\|\)</span>, density proves compactness for all <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>.</p>
+<p>In the graded case <span class="math" data-tex="\(\Gamma D\Gamma=-D\)">\(\Gamma D\Gamma=-D\)</span> with its domain retained. Functional calculus therefore gives <span class="math" data-tex="\(\Gamma F\Gamma=-F\)">\(\Gamma F\Gamma=-F\)</span>, since the scalar function in (4.2) is odd. This proves the required parity and completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Any continuous real normalizing function <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, with <span class="math" data-tex="\(\chi(t)\to\pm1\)">\(\chi(t)\to\pm1\)</span> as <span class="math" data-tex="\(t\to\pm\infty\)">\(t\to\pm\infty\)</span>, gives the same class, provided it is odd when a grading is present. The difference from <span class="math" data-tex="\(t/\sqrt{1+t^2}\)">\(t/\sqrt{1+t^2}\)</span> vanishes at infinity. A continuous function of <span class="math" data-tex="\(D\)">\(D\)</span> vanishing at infinity is compact: truncate it to a bounded spectral interval, whose spectral projection is finite rank because <span class="math" data-tex="\((1+D^2)^{-1}\)">\((1+D^2)^{-1}\)</span> is compact, and estimate the remaining norm by its supremum. Thus the two transforms differ by a compact operator, and Proposition 2.2 applies.</p>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed smooth manifold and <span class="math" data-tex="\(E\)">\(E\)</span> a smooth Hermitian vector bundle of finite rank. Fix any smooth positive density on <span class="math" data-tex="\(M\)">\(M\)</span>, which defines <span class="math" data-tex="\(L^2(M,E)\)">\(L^2(M,E)\)</span>. The following proofs apply to this density and require no orientation.</p>
+<p>The elementary measure inputs are the actual earlier <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#oa-fnd-lt-17">sigma-finite product and real-line measure lemma</a>, Lemma 0.1(a)–(c): Fubini, interval measure and one-dimensional <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span>-density in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Orthogonal projections, Hilbert-space forms, orthonormal expansions and Parseval are proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html">Hilbert spaces and compact operators</a>, Theorems 2.2, 3.1 and 4.1. The finite-dimensional chain rule and change-of-variables formula are used in smooth coordinates. No elliptic regularity, parametrix or pseudodifferential boundedness result is an input.</p>
+<h3 id="lemma-4-1a-finite-chart-sobolev-density-and-compactness">Lemma 4.1a. Finite-chart Sobolev density and compactness</h3>
+<p>The space <span class="math" data-tex="\(H^1(M,E)\)">\(H^1(M,E)\)</span> is equivalently the completion of smooth sections in a finite-chart first-derivative norm or the space of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> sections having locally square-integrable weak first derivatives in every smooth frame. These definitions and their equivalent norms are independent of the finite charts and cutoffs. Smooth sections are dense in both <span class="math" data-tex="\(H^1(M,E)\)">\(H^1(M,E)\)</span> and <span class="math" data-tex="\(L^2(M,E)\)">\(L^2(M,E)\)</span>. The inclusion <span class="math" data-tex="\(H^1(M,E)\hookrightarrow L^2(M,E)\)">\(H^1(M,E)\hookrightarrow L^2(M,E)\)</span> is a norm limit of finite-rank operators. Multiplication by any smooth scalar function or smooth bundle endomorphism is bounded on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and smooth functions are uniformly dense in <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>.</p>
+<p><strong>Proof.</strong> We first give the finite Fourier argument, including completeness. On an interval of length <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, rescale the circle exponentials to the normalized functions <span class="math" data-tex="\(\ell^{-1/2}e^{2\pi ikx/\ell}\)">\(\ell^{-1/2}e^{2\pi ikx/\ell}\)</span>. Integration proves orthonormality. The nonnegative circle polynomial
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2
+\]">\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2
+\]</span>
+has normalized integral one and satisfies <span class="math" data-tex="\(K_N(t)\leq [N\sin^2(\delta/2)]^{-1}\)">\(K_N(t)\leq [N\sin^2(\delta/2)]^{-1}\)</span> for <span class="math" data-tex="\(\delta\leq |t|\leq\pi\)">\(\delta\leq |t|\leq\pi\)</span>. The integral is one because only the equal-index terms survive; the inequality follows by summing the geometric progression. For a continuous periodic function, convolution with <span class="math" data-tex="\(K_N\)">\(K_N\)</span> is a trigonometric polynomial. Splitting its difference from that function into <span class="math" data-tex="\(|t|&lt;\delta\)">\(|t|&lt;\delta\)</span> and its complement, uniform continuity controls the first part and the displayed bound controls the second. Thus trigonometric polynomials are uniformly dense in the continuous periodic functions. The earlier interval-density lemma gives <span class="math" data-tex="\(C_c^\infty(0,\ell)\)">\(C_c^\infty(0,\ell)\)</span>-density in <span class="math" data-tex="\(L^2(0,\ell)\)">\(L^2(0,\ell)\)</span>; these functions extend periodically and continuously by zero. Uniform approximation therefore proves completeness of the one-dimensional Fourier family.</p>
+<p>Products give a complete orthonormal family on any periodic cube <span class="math" data-tex="\(Q=(-\ell/2,\ell/2)^n\)">\(Q=(-\ell/2,\ell/2)^n\)</span>. Here is the induction proving completeness. If <span class="math" data-tex="\(g\in L^2(Q)\)">\(g\in L^2(Q)\)</span> is orthogonal to every product exponential, for each <span class="math" data-tex="\(k&#x27;\in\mathbb Z^{n-1}\)">\(k&#x27;\in\mathbb Z^{n-1}\)</span> form its partial Fourier coefficient in the first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> coordinates. Fubini and Cauchy–Schwarz put that coefficient in the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space of the last coordinate. All its one-dimensional coefficients vanish, so it is zero almost everywhere. Intersect the countably many full-measure sets for <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>, and also the full-measure set on which the sections of <span class="math" data-tex="\(g\)">\(g\)</span> are in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Each remaining section has all its <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-dimensional coefficients zero, hence vanishes by induction. Fubini gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. This proves completeness for every finite <span class="math" data-tex="\(n\)">\(n\)</span>, also for vector-valued functions component by component.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+e_k(x)=\ell^{-n/2}e^{i\kappa_k\cdot x},
+\qquad \kappa_k=\frac{2\pi}{\ell}k,
+\qquad \widehat v(k)=\int_Q \overline{e_k(x)}\,v(x)\,dx .
+\]">\[
+e_k(x)=\ell^{-n/2}e^{i\kappa_k\cdot x},
+\qquad \kappa_k=\frac{2\pi}{\ell}k,
+\qquad \widehat v(k)=\int_Q \overline{e_k(x)}\,v(x)\,dx .
+\]</span>
+Parseval identifies the periodic first-derivative space with
+<span class="math math-display" data-tex="\[
+\|v\|_{H^1(Q)}^2
+=\sum_{k\in\mathbb Z^n}(1+|\kappa_k|^2)\|\widehat v(k)\|^2
+=\|v\|_2^2+\sum_{j=1}^n\|\partial_jv\|_2^2 .
+\]">\[
+\|v\|_{H^1(Q)}^2
+=\sum_{k\in\mathbb Z^n}(1+|\kappa_k|^2)\|\widehat v(k)\|^2
+=\|v\|_2^2+\sum_{j=1}^n\|\partial_jv\|_2^2 .
+\]</span>
+To verify the weak-derivative assertion rather than assume it, testing a weak derivative against <span class="math" data-tex="\(e_k\)">\(e_k\)</span> gives coefficients <span class="math" data-tex="\(i\kappa_{k,j}\widehat v(k)\)">\(i\kappa_{k,j}\widehat v(k)\)</span>. Conversely, if the weighted sum is finite, the finite Fourier sums converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> together with their derivatives. Integration by parts against a smooth periodic test function passes to these limits and proves that the derivative limits are the weak derivatives. This also proves completeness of this space, since the weighted sequence space is complete. A function supported in the interior of <span class="math" data-tex="\(Q\)">\(Q\)</span>, extended by zero and periodically, has the same weak-derivative interpretation: in the testing identity insert a smooth cutoff equal to one near its support, so no boundary term is present.</p>
+<p>For the global construction choose finitely many bundle charts with coordinate cubes <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> having compact closures inside their charts, and smooth real functions <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> supported in their interiors, with <span class="math" data-tex="\(\sum_j\chi_j^2=1\)">\(\sum_j\chi_j^2=1\)</span>. These cutoffs can be constructed without an analytic existence theorem: in each chart a translated and rescaled version of
+<span class="math" data-tex="\(\exp(-1/(1-|x|^2))\)">\(\exp(-1/(1-|x|^2))\)</span> on <span class="math" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>, extended by zero, is positive on a smaller ball. Finitely many such smaller balls cover <span class="math" data-tex="\(M\)">\(M\)</span>; divide the cutoffs by the positive smooth square root of the sum of their squares. Smoothness at the ball boundary follows because every derivative is an exponential times a rational expression, and <span class="math" data-tex="\(t^{-a}e^{-1/t}\to0\)">\(t^{-a}e^{-1/t}\to0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span> as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, as follows from the exponential series. Smooth local frames may be made orthonormal by the finite-dimensional Gram–Schmidt formulas. On the compact coordinate cubes the density is <span class="math" data-tex="\(\rho_j(x)\,dx\)">\(\rho_j(x)\,dx\)</span>, with <span class="math" data-tex="\(0&lt;c_j\leq\rho_j\leq C_j\)">\(0&lt;c_j\leq\rho_j\leq C_j\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S_ju\)">\(S_ju\)</span> be the coordinate vector of <span class="math" data-tex="\(\chi_ju\)">\(\chi_ju\)</span>, extended periodically on <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span>, and for smooth <span class="math" data-tex="\(u\)">\(u\)</span> define
+<span class="math math-display" data-tex="\[
+\|u\|_{H^1}^2=\sum_j\|S_ju\|_{H^1(Q_j)}^2 .
+\]">\[
+\|u\|_{H^1}^2=\sum_j\|S_ju\|_{H^1(Q_j)}^2 .
+\]</span>
+This norm controls the global <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm, since the local <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms are equivalent to their density-weighted norms and <span class="math" data-tex="\(\sum_j\chi_j^2=1\)">\(\sum_j\chi_j^2=1\)</span>. Its completion embeds injectively in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Indeed, if a Cauchy sequence converges to zero in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, each coordinate vector converges to zero there; its derivative limit is zero by integration by parts against compactly supported tests. Thus its <span class="math" data-tex="\(H^1\)">\(H^1\)</span> limit is zero.</p>
+<p>We check all changes of coordinates and reconstructions used next. On a compact overlap, a localized frame change and coordinate pullback has the form <span class="math" data-tex="\(v\mapsto C(x)v(y(x))\)">\(v\mapsto C(x)v(y(x))\)</span>, with a smooth compactly supported matrix factor <span class="math" data-tex="\(C\)">\(C\)</span>. The ordinary chain rule gives
+[
+\partial_\ell(C,v\circ y)
+=(\partial_\ell C)v\circ y</p>
+<ul>
+<li>C\sum_m(\partial_\ell y_m)(\partial_m v)\circ y .
+]
+The matrix coefficients and first derivatives are bounded there, as are the Jacobian of the coordinate change and its reciprocal. The change-of-variables formula consequently bounds the output <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norm by a constant times the input norm. For a periodic <span class="math" data-tex="\(H^1\)">\(H^1\)</span> vector the same formula follows by approximating it by its finite Fourier sums. Products with the cutoffs have support away from the chart boundary, so the zero extensions are legitimate weak-derivative extensions. Define <span class="math" data-tex="\(R_jv\)">\(R_jv\)</span> to be the section with local vector <span class="math" data-tex="\(\chi_jv\)">\(\chi_jv\)</span>, extended by zero. The preceding estimate proves that <span class="math" data-tex="\(R=\sum_jR_j\)">\(R=\sum_jR_j\)</span> is bounded from the finite product of the coordinate <span class="math" data-tex="\(H^1\)">\(H^1\)</span> spaces into the global completion. It is also bounded on the corresponding <span class="math" data-tex="\(L^2\)">\(L^2\)</span> spaces. On smooth sections <span class="math" data-tex="\(RSu=u\)">\(RSu=u\)</span>, because <span class="math" data-tex="\(\sum_j\chi_j^2=1\)">\(\sum_j\chi_j^2=1\)</span>, and this identity extends by <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limits.</li>
+</ul>
+<p>These facts prove the claimed weak-derivative description. A completion element has its local weak derivatives by the preceding limit argument. Conversely, a section whose localized coordinate vectors have weak derivatives in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> has <span class="math" data-tex="\(Su\)">\(Su\)</span> in the product <span class="math" data-tex="\(H^1\)">\(H^1\)</span> space, so <span class="math" data-tex="\(u=RSu\)">\(u=RSu\)</span> belongs to the completion. The same chain-rule estimate, using <span class="math" data-tex="\(RSu=u\)">\(RSu=u\)</span>, compares any two finite-chart norms on smooth sections and hence on the completions. A covariant-derivative definition gives the same space: in a frame <span class="math" data-tex="\(\nabla_j=\partial_j+C_j(x)\)">\(\nabla_j=\partial_j+C_j(x)\)</span>, with smooth bounded matrices on the compact supports, and the two first-derivative norms therefore bound one another.</p>
+<p>Let <span class="math" data-tex="\(\Pi_{j,R}\)">\(\Pi_{j,R}\)</span> retain the finitely many modes with <span class="math" data-tex="\(|\kappa_k|\leq R\)">\(|\kappa_k|\leq R\)</span> in <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span>. Then <span class="math" data-tex="\(T_R=\sum_jR_j\Pi_{j,R}S_j\)">\(T_R=\sum_jR_j\Pi_{j,R}S_j\)</span> is a finite-rank map with smooth output. The Fourier formula gives
+<span class="math math-display" data-tex="\[
+\|(1-\Pi_{j,R})v\|_2
+\leq(1+R^2)^{-1/2}\|v\|_{H^1(Q_j)} .
+\]">\[
+\|(1-\Pi_{j,R})v\|_2
+\leq(1+R^2)^{-1/2}\|v\|_{H^1(Q_j)} .
+\]</span>
+Boundedness of the reconstruction proves
+<span class="math" data-tex="\(\|u-T_Ru\|_{L^2}\leq C(1+R^2)^{-1/2}\|u\|_{H^1}\)">\(\|u-T_Ru\|_{L^2}\leq C(1+R^2)^{-1/2}\|u\|_{H^1}\)</span>.
+This is the asserted norm approximation of the inclusion by finite-rank operators. For a fixed <span class="math" data-tex="\(v\in H^1(Q_j)\)">\(v\in H^1(Q_j)\)</span>, the weighted Fourier tail tends to zero as well; the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-bounded reconstruction therefore proves <span class="math" data-tex="\(T_Ru\to u\)">\(T_Ru\to u\)</span> in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. For <span class="math" data-tex="\(u\in L^2(M,E)\)">\(u\in L^2(M,E)\)</span>, ordinary Fourier-tail convergence and <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-bounded reconstruction prove <span class="math" data-tex="\(T_Ru\to u\)">\(T_Ru\to u\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. This proves both smooth-density assertions.</p>
+<p>Multiplication by a smooth matrix is <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-bounded by the displayed product rule and the compact-support coefficient bounds. To check the final uniform-density assertion explicitly, take a nonnegative smooth integral-one function <span class="math" data-tex="\(\eta\)">\(\eta\)</span> supported in the unit ball, obtained by normalizing the exponential cutoff above, and put <span class="math" data-tex="\(\eta_\varepsilon(x)=\varepsilon^{-n}\eta(x/\varepsilon)\)">\(\eta_\varepsilon(x)=\varepsilon^{-n}\eta(x/\varepsilon)\)</span>. For <span class="math" data-tex="\(f\in C(M)\)">\(f\in C(M)\)</span>, the local function <span class="math" data-tex="\(\chi_jf\)">\(\chi_jf\)</span>, extended by zero, is continuous with compact support. Its convolutions with <span class="math" data-tex="\(\eta_\varepsilon\)">\(\eta_\varepsilon\)</span> are smooth and converge uniformly to it: the error is at most the supremum of <span class="math" data-tex="\(|(\chi_jf)(x-z)-(\chi_jf)(x)|\)">\(|(\chi_jf)(x-z)-(\chi_jf)(x)|\)</span> for <span class="math" data-tex="\(|z|\leq\varepsilon\)">\(|z|\leq\varepsilon\)</span>. Reconstructing with <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> gives smooth global functions tending uniformly to <span class="math" data-tex="\(\sum_j\chi_j^2f=f\)">\(\sum_j\chi_j^2f=f\)</span>. On a zero-dimensional component all these spaces are finite dimensional and the assertions are immediate; compactness permits only finitely many such chart components. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-4-1b-the-first-order-elliptic-estimate">Lemma 4.1b. The first-order elliptic estimate</h3>
+<p>Let <span class="math" data-tex="\(D:C^\infty(M,E)\to C^\infty(M,E)\)">\(D:C^\infty(M,E)\to C^\infty(M,E)\)</span> be any smooth first-order elliptic differential operator. There are constants <span class="math" data-tex="\(C,C&#x27;&gt;0\)">\(C,C&#x27;&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\|u\|_{H^1}\leq C(\|Du\|_2+\|u\|_2),
+\qquad \|Du\|_2\leq C&#x27;\|u\|_{H^1},
+\qquad u\in C^\infty(M,E).
+\]">\[
+\|u\|_{H^1}\leq C(\|Du\|_2+\|u\|_2),
+\qquad \|Du\|_2\leq C&#x27;\|u\|_{H^1},
+\qquad u\in C^\infty(M,E).
+\]</span>
+Neither estimate assumes a Dirac-type symbol or invertibility of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proof.</strong> In a local frame write <span class="math" data-tex="\(P=\sum_{j=1}^n A_j(x)\partial_j+B(x)\)">\(P=\sum_{j=1}^n A_j(x)\partial_j+B(x)\)</span>, with smooth matrices. Our principal-symbol convention is
+<span class="math" data-tex="\(\sigma_P(x,\xi)=i\sum_jA_j(x)\xi_j\)">\(\sigma_P(x,\xi)=i\sum_jA_j(x)\xi_j\)</span>.
+At a fixed point <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, ellipticity and compactness of the unit spheres in the finite-dimensional covector and vector spaces give a constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\left\|i\sum_jA_j(x_0)\xi_j v\right\|
+\geq c|\xi|\|v\| .
+\]">\[
+\left\|i\sum_jA_j(x_0)\xi_j v\right\|
+\geq c|\xi|\|v\| .
+\]</span>
+Indeed the continuous left side on the product of the two unit spheres is positive and attains a positive minimum. Let <span class="math" data-tex="\(P_0=\sum_jA_j(x_0)\partial_j\)">\(P_0=\sum_jA_j(x_0)\partial_j\)</span>. For a smooth vector <span class="math" data-tex="\(v\)">\(v\)</span> compactly supported in a coordinate cube, extend it periodically and use Lemma 4.1a. The Fourier coefficient of <span class="math" data-tex="\(P_0v\)">\(P_0v\)</span> is <span class="math" data-tex="\(i\sum_jA_j(x_0)\kappa_{k,j}\widehat v(k)\)">\(i\sum_jA_j(x_0)\kappa_{k,j}\widehat v(k)\)</span>. Squaring the preceding inequality and summing by Parseval gives
+<span class="math" data-tex="\(\|\nabla v\|_2\leq c^{-1}\|P_0v\|_2\)">\(\|\nabla v\|_2\leq c^{-1}\|P_0v\|_2\)</span>.</p>
+<p>Shrink the coordinate neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> until
+<span class="math" data-tex="\((\sum_j\|A_j(x)-A_j(x_0)\|^2)^{1/2}\leq c/2\)">\((\sum_j\|A_j(x)-A_j(x_0)\|^2)^{1/2}\leq c/2\)</span> on it. For <span class="math" data-tex="\(v\in C_c^\infty(W)\)">\(v\in C_c^\infty(W)\)</span>, Cauchy–Schwarz in the finite sum gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\nabla v\|_2
+&amp;\leq c^{-1}\big(\|Pv\|_2
++(c/2)\|\nabla v\|_2+\|B\|_{\infty,W}\|v\|_2\big),\\
+\|\nabla v\|_2
+&amp;\leq 2c^{-1}\big(\|Pv\|_2+\|B\|_{\infty,W}\|v\|_2\big).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\nabla v\|_2
+&amp;\leq c^{-1}\big(\|Pv\|_2
++(c/2)\|\nabla v\|_2+\|B\|_{\infty,W}\|v\|_2\big),\\
+\|\nabla v\|_2
+&amp;\leq 2c^{-1}\big(\|Pv\|_2+\|B\|_{\infty,W}\|v\|_2\big).
+\end{aligned}
+\]</span>
+This absorbs the coefficient variation and proves the local estimate. Density weights and smooth-frame norms change its constant only by their bounded upper and lower factors.</p>
+<p>Choose finitely many such neighborhoods covering <span class="math" data-tex="\(M\)">\(M\)</span>, with cutoffs supported compactly inside them as in Lemma 4.1a. The norm defined from this refined cover is equivalent to the earlier <span class="math" data-tex="\(H^1\)">\(H^1\)</span> norm. Apply the local estimate to each <span class="math" data-tex="\(\chi_ju\)">\(\chi_ju\)</span>, using
+<span class="math math-display" data-tex="\[
+D(\chi_ju)=\chi_jDu+[D,\chi_j]u,
+\qquad [D,\chi_j]=\sum_\ell A_\ell\,\partial_\ell\chi_j .
+\]">\[
+D(\chi_ju)=\chi_jDu+[D,\chi_j]u,
+\qquad [D,\chi_j]=\sum_\ell A_\ell\,\partial_\ell\chi_j .
+\]</span>
+The commutator is a smooth bounded multiplication operator. Summing the finitely many estimates gives the first global inequality. In the same charts the bounded coefficients and the product rule give the second inequality, by reconstructing <span class="math" data-tex="\(u=\sum_j\chi_j(\chi_ju)\)">\(u=\sum_j\chi_j(\chi_ju)\)</span>. A zero-dimensional component contributes only a finite-dimensional norm bound and the harmless <span class="math" data-tex="\(\|u\|_2\)">\(\|u\|_2\)</span> term. This proves both estimates in the full stated generality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-4-1c-friedrichs-regularization-and-the-weak-domain">Lemma 4.1c. Friedrichs regularization and the weak domain</h3>
+<p>For the operator <span class="math" data-tex="\(D\)">\(D\)</span> in Lemma 4.1b,
+<span class="math math-display" data-tex="\[
+u\in L^2(M,E),\quad Du\in L^2(M,E)
+\text{ in the sense of distributions}
+\quad\Longleftrightarrow\quad u\in H^1(M,E).
+\]">\[
+u\in L^2(M,E),\quad Du\in L^2(M,E)
+\text{ in the sense of distributions}
+\quad\Longleftrightarrow\quad u\in H^1(M,E).
+\]</span>
+The forward implication has the same bound as Lemma 4.1b. Locally the mollifier commutator extends to uniformly bounded operators on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and tends strongly to zero. In particular smooth approximations can be chosen to converge in the graph norm.</p>
+<p><strong>Proof.</strong> We supply the commutator bound and convergence before using them. On a fixed coordinate neighborhood extend the local coefficients smoothly to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, agreeing on a larger neighborhood of the compact support under consideration and having bounded coefficients and first derivatives; multiply by a smooth cutoff inside the original chart to do this. These extensions need not be elliptic outside that neighborhood. Let
+<span class="math math-display" data-tex="\[
+P=\sum_jA_j(x)\partial_j+B(x),\qquad
+J_\varepsilon u=\eta_\varepsilon*u ,
+\]">\[
+P=\sum_jA_j(x)\partial_j+B(x),\qquad
+J_\varepsilon u=\eta_\varepsilon*u ,
+\]</span>
+where <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is the nonnegative smooth integral-one ball kernel constructed in Lemma 4.1a. For a nonnegative integrable kernel <span class="math" data-tex="\(k\)">\(k\)</span> of mass <span class="math" data-tex="\(m\)">\(m\)</span>, Cauchy–Schwarz in its measure gives
+<span class="math math-display" data-tex="\[
+\left|\int k(z)v(x-z)\,dz\right|^2
+\leq m\int k(z)|v(x-z)|^2\,dz .
+\]">\[
+\left|\int k(z)v(x-z)\,dz\right|^2
+\leq m\int k(z)|v(x-z)|^2\,dz .
+\]</span>
+Integration and Fubini give <span class="math" data-tex="\(\|k*v\|_2\leq m\|v\|_2\)">\(\|k*v\|_2\leq m\|v\|_2\)</span>. The same estimate applied to norms controls a matrix kernel bounded in norm by <span class="math" data-tex="\(k\)">\(k\)</span>. Thus <span class="math" data-tex="\(\|J_\varepsilon\|\leq1\)">\(\|J_\varepsilon\|\leq1\)</span>. For a compactly supported vector in the interior of a fixed cube and small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, convolution equals periodic convolution there; its Fourier multiplier is
+<span class="math" data-tex="\(\int\eta(z)e^{-i\varepsilon\kappa_k\cdot z}\,dz\)">\(\int\eta(z)e^{-i\varepsilon\kappa_k\cdot z}\,dz\)</span>, bounded by one and tending to one for each <span class="math" data-tex="\(k\)">\(k\)</span>. Finite Fourier truncation followed by a tail estimate proves <span class="math" data-tex="\(J_\varepsilon u\to u\)">\(J_\varepsilon u\to u\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and also in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> when <span class="math" data-tex="\(u\in H^1\)">\(u\in H^1\)</span>. It gives a smooth function: each derivative falls on the smooth kernel, and Cauchy–Schwarz on its compact support and dominated differentiation justify the integral derivatives. Compactly supported smooth vectors are dense in <span class="math" data-tex="\(L^2(\mathbb R^n)\)">\(L^2(\mathbb R^n)\)</span>: first truncate a vector to an inner cube, use its Fourier approximation in a larger cube, and multiply the finite Fourier sums by a smooth cutoff equal to one on the inner cube. The cutoff does not increase the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> error. Consequently the contraction bound extends the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence to every vector.</p>
+<p>For a compactly supported smooth <span class="math" data-tex="\(u\)">\(u\)</span>, integration by parts in the convolution gives the exact formula
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_\varepsilon u(x)
+&amp;:=(PJ_\varepsilon-J_\varepsilon P)u(x)\\
+&amp;=\sum_j\int
+\big(A_j(x)-A_j(y)\big)
+(\partial_j\eta_\varepsilon)(x-y)u(y)\,dy\\
+&amp;\quad+\sum_j\int
+\eta_\varepsilon(x-y)(\partial_jA_j)(y)u(y)\,dy\\
+&amp;\quad+\int
+\big(B(x)-B(y)\big)\eta_\varepsilon(x-y)u(y)\,dy .
+\end{aligned}
+\]">\[
+\begin{aligned}
+R_\varepsilon u(x)
+&amp;:=(PJ_\varepsilon-J_\varepsilon P)u(x)\\
+&amp;=\sum_j\int
+\big(A_j(x)-A_j(y)\big)
+(\partial_j\eta_\varepsilon)(x-y)u(y)\,dy\\
+&amp;\quad+\sum_j\int
+\eta_\varepsilon(x-y)(\partial_jA_j)(y)u(y)\,dy\\
+&amp;\quad+\int
+\big(B(x)-B(y)\big)\eta_\varepsilon(x-y)u(y)\,dy .
+\end{aligned}
+\]</span>
+The sign of the second line follows from
+<span class="math" data-tex="\(\partial_{y_j}\eta_\varepsilon(x-y)=-\partial_{x_j}\eta_\varepsilon(x-y)\)">\(\partial_{y_j}\eta_\varepsilon(x-y)=-\partial_{x_j}\eta_\varepsilon(x-y)\)</span>;
+integration by parts differentiates <span class="math" data-tex="\(A_j(y)\)">\(A_j(y)\)</span> as well. Put
+<span class="math" data-tex="\(L_j=\sup_x\|dA_j(x)\|\)">\(L_j=\sup_x\|dA_j(x)\|\)</span> and <span class="math" data-tex="\(M_j=\|\partial_jA_j\|_\infty\)">\(M_j=\|\partial_jA_j\|_\infty\)</span>, where the first norm is for the Euclidean differential into the matrix norm. The mean-value formula bounds the first integrand's matrix kernel by
+<span class="math" data-tex="\(L_j|x-y||\partial_j\eta_\varepsilon(x-y)|\)">\(L_j|x-y||\partial_j\eta_\varepsilon(x-y)|\)</span>.
+Its scalar kernel has mass
+<span class="math" data-tex="\(L_j\int |z||\partial_j\eta(z)|\,dz\)">\(L_j\int |z||\partial_j\eta(z)|\,dz\)</span>, independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The second kernel has mass at most <span class="math" data-tex="\(M_j\)">\(M_j\)</span>, and the last at most <span class="math" data-tex="\(2\|B\|_\infty\)">\(2\|B\|_\infty\)</span>. The preceding convolution estimate therefore proves
+<span class="math math-display" data-tex="\[
+\|R_\varepsilon u\|_2\leq C_P\|u\|_2,\qquad
+C_P=\sum_j\left(
+L_j\int |z||\partial_j\eta(z)|\,dz+M_j\right)
++2\|B\|_\infty .
+\]">\[
+\|R_\varepsilon u\|_2\leq C_P\|u\|_2,\qquad
+C_P=\sum_j\left(
+L_j\int |z||\partial_j\eta(z)|\,dz+M_j\right)
++2\|B\|_\infty .
+\]</span>
+Every integral in this constant is finite. The kernel formula defines a bounded operator on all <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, with this same constant. The identity with the distributional commutator holds there as well: approximate by compactly supported smooth vectors in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>; multiplication and differentiation converge on every compactly supported distributional test, and the convolution kernel has compact support. Thus the smooth identity passes to the distributional limit.</p>
+<p>If <span class="math" data-tex="\(v\)">\(v\)</span> is compactly supported and smooth, <span class="math" data-tex="\(J_\varepsilon v\to v\)">\(J_\varepsilon v\to v\)</span> in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, the bounded-coefficient operator <span class="math" data-tex="\(P:H^1(\mathbb R^n)\to L^2(\mathbb R^n)\)">\(P:H^1(\mathbb R^n)\to L^2(\mathbb R^n)\)</span> is bounded by its explicit first-derivative formula, and <span class="math" data-tex="\(J_\varepsilon Pv\to Pv\)">\(J_\varepsilon Pv\to Pv\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Hence <span class="math" data-tex="\(R_\varepsilon v\to0\)">\(R_\varepsilon v\to0\)</span>. For arbitrary <span class="math" data-tex="\(u\in L^2\)">\(u\in L^2\)</span>, approximate it by such a <span class="math" data-tex="\(v\)">\(v\)</span> and use
+<span class="math math-display" data-tex="\[
+\|R_\varepsilon u\|_2
+\leq C_P\|u-v\|_2+\|R_\varepsilon v\|_2 .
+\]">\[
+\|R_\varepsilon u\|_2
+\leq C_P\|u-v\|_2+\|R_\varepsilon v\|_2 .
+\]</span>
+Letting first <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span> and then <span class="math" data-tex="\(v\to u\)">\(v\to u\)</span> proves strong convergence to zero. This proves the full uniformly bounded Friedrichs commutator assertion, including its distributional interpretation.</p>
+<p>Now let <span class="math" data-tex="\(u\in L^2(M,E)\)">\(u\in L^2(M,E)\)</span> and <span class="math" data-tex="\(Du=f\in L^2\)">\(Du=f\in L^2\)</span> distributionally. Use the refined cutoffs from Lemma 4.1b. In one chart the compactly supported vector <span class="math" data-tex="\(v=\chi_ju\)">\(v=\chi_ju\)</span> satisfies
+<span class="math math-display" data-tex="\[
+Pv=\chi_jf+[D,\chi_j]u\in L^2 .
+\]">\[
+Pv=\chi_jf+[D,\chi_j]u\in L^2 .
+\]</span>
+The product rule here follows directly by testing <span class="math" data-tex="\(\partial(\chi_ju)=\chi_j\partial u+(\partial\chi_j)u\)">\(\partial(\chi_ju)=\chi_j\partial u+(\partial\chi_j)u\)</span> against a compactly supported smooth test function. The equation is a local coordinate distributional equation. Indeed in an orthonormal frame with density <span class="math" data-tex="\(\rho\,dx\)">\(\rho\,dx\)</span> the formal adjoint is
+<span class="math" data-tex="\(P^\dagger\phi=-\rho^{-1}\sum_j\partial_j(\rho A_j^*\phi)+B^*\phi\)">\(P^\dagger\phi=-\rho^{-1}\sum_j\partial_j(\rho A_j^*\phi)+B^*\phi\)</span>;
+ordinary integration by parts proves that testing against this adjoint is exactly the coordinate distributional equation, using the invertible smooth density factor. Extension by zero creates no boundary distribution, because <span class="math" data-tex="\(\operatorname{supp}\chi_j\)">\(\operatorname{supp}\chi_j\)</span> is compactly inside the chart.</p>
+<p>Choose the coefficient extensions above equal to the original ones on the local estimate neighborhood <span class="math" data-tex="\(W\)">\(W\)</span>. For sufficiently small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, <span class="math" data-tex="\(v_\varepsilon=J_\varepsilon v\)">\(v_\varepsilon=J_\varepsilon v\)</span> is smooth and compactly supported in <span class="math" data-tex="\(W\)">\(W\)</span>, and the proved commutator identity gives
+<span class="math math-display" data-tex="\[
+Pv_\varepsilon=J_\varepsilon(Pv)+R_\varepsilon v
+\longrightarrow Pv\quad\text{in }L^2,
+\qquad v_\varepsilon\longrightarrow v\quad\text{in }L^2 .
+\]">\[
+Pv_\varepsilon=J_\varepsilon(Pv)+R_\varepsilon v
+\longrightarrow Pv\quad\text{in }L^2,
+\qquad v_\varepsilon\longrightarrow v\quad\text{in }L^2 .
+\]</span>
+The local elliptic estimate of Lemma 4.1b, applied to
+<span class="math" data-tex="\(v_\varepsilon-v_\delta\)">\(v_\varepsilon-v_\delta\)</span>, makes this family Cauchy in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> as <span class="math" data-tex="\(\varepsilon,\delta\downarrow0\)">\(\varepsilon,\delta\downarrow0\)</span>. Completeness and the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> identification in Lemma 4.1a show that its <span class="math" data-tex="\(H^1\)">\(H^1\)</span> limit is <span class="math" data-tex="\(v\)">\(v\)</span>. Thus each <span class="math" data-tex="\(\chi_ju\)">\(\chi_ju\)</span> has square-integrable weak derivatives, and reconstruction puts <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(H^1(M,E)\)">\(H^1(M,E)\)</span>. Passing to the limit in the local estimates and summing gives the global bound of Lemma 4.1b for this <span class="math" data-tex="\(u\)">\(u\)</span>. Conversely, smooth density in <span class="math" data-tex="\(H^1\)">\(H^1\)</span> and the bounded map <span class="math" data-tex="\(D:H^1\to L^2\)">\(D:H^1\to L^2\)</span> show that every <span class="math" data-tex="\(H^1\)">\(H^1\)</span> section has its distributional <span class="math" data-tex="\(D\)">\(D\)</span>-image in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The same density gives convergence in the graph norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="corollary-4-2-closed-manifold-differential-operators">Corollary 4.2. Closed-manifold differential operators</h3>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed smooth manifold and <span class="math" data-tex="\(E\)">\(E\)</span> a Hermitian vector bundle. If a first-order elliptic differential operator <span class="math" data-tex="\(D\)">\(D\)</span> is formally self-adjoint on smooth sections, its closure on <span class="math" data-tex="\(L^2(M,E)\)">\(L^2(M,E)\)</span> has domain <span class="math" data-tex="\(H^1(M,E)\)">\(H^1(M,E)\)</span>, is self-adjoint, and its bounded transform defines a module over <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>. A bundle grading for which <span class="math" data-tex="\(D\)">\(D\)</span> is odd makes the module even.</p>
+<p><strong>Proof.</strong> Smooth sections are <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-dense by Lemma 4.1a. Formal self-adjointness makes the smooth-domain operator closable: if <span class="math" data-tex="\(u_j\to0\)">\(u_j\to0\)</span> and <span class="math" data-tex="\(Du_j\to g\)">\(Du_j\to g\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, testing against every smooth <span class="math" data-tex="\(\phi\)">\(\phi\)</span> gives
+<span class="math" data-tex="\(\langle g,\phi\rangle=\lim_j\langle u_j,D\phi\rangle=0\)">\(\langle g,\phi\rangle=\lim_j\langle u_j,D\phi\rangle=0\)</span>;
+density gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Its graph closure has domain exactly <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. In one direction, smooth <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-approximation and boundedness of <span class="math" data-tex="\(D:H^1\to L^2\)">\(D:H^1\to L^2\)</span> put <span class="math" data-tex="\(H^1\)">\(H^1\)</span> in that closure. In the other direction, a graph-Cauchy smooth sequence is <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-Cauchy by Lemma 4.1b, and its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit is the <span class="math" data-tex="\(H^1\)">\(H^1\)</span> limit from Lemma 4.1a.</p>
+<p>The adjoint domain is exactly the set of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> sections <span class="math" data-tex="\(v\)">\(v\)</span> for which <span class="math" data-tex="\(Dv\in L^2\)">\(Dv\in L^2\)</span> distributionally: testing the adjoint identity on smooth sections and formal self-adjointness give this equivalence. Lemma 4.1c puts each such <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(H^1\)">\(H^1\)</span>; conversely smooth <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-approximation passes the formal adjoint identity to every <span class="math" data-tex="\(v\in H^1\)">\(v\in H^1\)</span>. Thus the adjoint and closure have the same domain and action. This proves self-adjointness with no separate regularity assumption.</p>
+<p>For <span class="math" data-tex="\(u\in\operatorname{Dom}D\)">\(u\in\operatorname{Dom}D\)</span>, self-adjointness gives
+<span class="math" data-tex="\(\|(D-i)u\|^2=\|Du\|^2+\|u\|^2\)">\(\|(D-i)u\|^2=\|Du\|^2+\|u\|^2\)</span>.
+The range is closed by closedness of <span class="math" data-tex="\(D\)">\(D\)</span>, and its orthogonal complement is <span class="math" data-tex="\(\ker(D+i)=0\)">\(\ker(D+i)=0\)</span>. Hence <span class="math" data-tex="\(Q=(D-i)^{-1}\)">\(Q=(D-i)^{-1}\)</span> exists, has norm at most one on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and maps <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedly into <span class="math" data-tex="\(H^1\)">\(H^1\)</span> by Lemma 4.1b. Put <span class="math" data-tex="\(K=-iQ\)">\(K=-iQ\)</span>. Since <span class="math" data-tex="\(QDu=u+iQu\)">\(QDu=u+iQu\)</span> for <span class="math" data-tex="\(u\in H^1\)">\(u\in H^1\)</span>, we retain the precise identity and estimate
+<span class="math math-display" data-tex="\[
+u=QDu+Ku,\qquad
+\|u\|_{H^1}\leq C(\|Du\|_{L^2}+\|u\|_{L^2}).
+\tag{4.6}
+\]">\[
+u=QDu+Ku,\qquad
+\|u\|_{H^1}\leq C(\|Du\|_{L^2}+\|u\|_{L^2}).
+\tag{4.6}
+\]</span>
+Here <span class="math" data-tex="\(Q,K:L^2\to H^1\)">\(Q,K:L^2\to H^1\)</span> are the explicitly constructed resolvent maps; this identity is used on <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, after the weak-domain proof, and makes no claim about a pseudodifferential order. Compactness of <span class="math" data-tex="\(H^1\hookrightarrow L^2\)">\(H^1\hookrightarrow L^2\)</span>, proved in Lemma 4.1a by finite Fourier truncations, makes <span class="math" data-tex="\(Q\)">\(Q\)</span> compact as an operator on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The resolvent identity and adjoint give <span class="math" data-tex="\(QQ^*=(1+D^2)^{-1}\)">\(QQ^*=(1+D^2)^{-1}\)</span>, as in Lemma 4.0, so that operator is compact too.</p>
+<p>Multiplication by a smooth function preserves <span class="math" data-tex="\(H^1\)">\(H^1\)</span> by Lemma 4.1a. In local coordinates <span class="math" data-tex="\(D=\sum_jA_j(x)\partial_j+B(x)\)">\(D=\sum_jA_j(x)\partial_j+B(x)\)</span>, so
+<span class="math" data-tex="\([D,f]=\sum_jA_j(x)(\partial_jf)\)">\([D,f]=\sum_jA_j(x)(\partial_jf)\)</span> is a smooth bundle multiplication operator, bounded on the compact manifold. Lemma 4.1a also proves uniform smooth density in <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>. Theorem 4.1 therefore applies with every original hypothesis checked. A smooth bundle grading is <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-bounded by Lemma 4.1a, and its odd-domain identity extends from smooth sections by density, so the graded conclusion follows as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Formal self-adjointness is a real hypothesis here. Ellipticity by itself gives a Fredholm realization between suitable Sobolev spaces, but does not make a differential operator into the self-adjoint <span class="math" data-tex="\(D\)">\(D\)</span> required in Theorem 4.1.</p>
+<p>A compact-resolvent <strong>spectral triple</strong> consists of a dense *-algebra <span class="math" data-tex="\(\mathcal A\subset A\)">\(\mathcal A\subset A\)</span>, a representation on <span class="math" data-tex="\(H\)">\(H\)</span>, and a self-adjoint <span class="math" data-tex="\(D\)">\(D\)</span> satisfying (4.1), such that every <span class="math" data-tex="\([D,\pi(a)]\)">\([D,\pi(a)]\)</span>, <span class="math" data-tex="\(a\in\mathcal A\)">\(a\in\mathcal A\)</span>, extends to a bounded operator and <span class="math" data-tex="\((1+D^2)^{-1}\)">\((1+D^2)^{-1}\)</span> is compact. These hypotheses give its bounded Fredholm module by Theorem 4.1. Summability, regularity and meromorphic dimension spectrum are additional structures, studied in <em>Spectral triples and dimension spectrum</em>; none is needed for this construction. Locally compact triples on noncompact spaces need the localized version of the bounded-transform theorem, whose full proof remains required in <em>Unbounded Kasparov modules and spectral triples</em>; the compact-resolvent proof here does not establish it.</p>
+<h2 id="5-three-explicit-examples">5. Three explicit examples</h2>
+<h3 id="lemma-5-0-the-fourier-basis-used-in-the-examples">Lemma 5.0. The Fourier basis used in the examples</h3>
+<p>The functions <span class="math" data-tex="\(e^{int}\)">\(e^{int}\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, are an orthonormal basis of the normalized <span class="math" data-tex="\(L^2(S^1)\)">\(L^2(S^1)\)</span>, and trigonometric polynomials are uniformly dense in <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span>. Products of these functions form an orthonormal basis on the two-dimensional torus.</p>
+<p><strong>Proof.</strong> Integration of exponentials gives orthonormality. For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> use the nonnegative trigonometric polynomial
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2 .
+\]">\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{ijt}\right|^2 .
+\]</span>
+Its integral with normalized angular measure is <span class="math" data-tex="\(1\)">\(1\)</span>, since only the equal-index terms survive. For <span class="math" data-tex="\(\delta\leq|t|\leq\pi\)">\(\delta\leq|t|\leq\pi\)</span>, the geometric-sum formula gives
+<span class="math" data-tex="\(K_N(t)\leq1/(N\sin^2(\delta/2))\)">\(K_N(t)\leq1/(N\sin^2(\delta/2))\)</span>.
+For continuous periodic <span class="math" data-tex="\(f\)">\(f\)</span>, its convolution with <span class="math" data-tex="\(K_N\)">\(K_N\)</span> is a trigonometric polynomial. Split
+<span class="math math-display" data-tex="\[
+(K_N*f)(x)-f(x)=\int K_N(t)(f(x-t)-f(x))\,\frac{dt}{2\pi}
+\]">\[
+(K_N*f)(x)-f(x)=\int K_N(t)(f(x-t)-f(x))\,\frac{dt}{2\pi}
+\]</span>
+at <span class="math" data-tex="\(|t|=\delta\)">\(|t|=\delta\)</span>. Uniform continuity makes the first part uniformly small for small <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; the displayed tail bound makes the second part uniformly small as <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>. This proves uniform density. Using the product of the two kernels and splitting where either coordinate is outside its small interval proves the same uniform approximation for continuous functions on the two-dimensional torus.</p>
+<p>The existing <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#oa-fnd-lt-17">real-line measure and density lemma</a>, Lemma 0.1(b)–(c), proves that endpoints have measure zero and <span class="math" data-tex="\(C_c^\infty(0,2\pi)\)">\(C_c^\infty(0,2\pi)\)</span> is dense in <span class="math" data-tex="\(L^2(0,2\pi)\)">\(L^2(0,2\pi)\)</span>. Such functions extend continuously and periodically by zero. Uniform trigonometric approximation therefore gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-density as well, proving completeness of the one-dimensional orthonormal family.</p>
+<p>For the two-dimensional claim, let <span class="math" data-tex="\(g\in L^2((S^1)^2)\)">\(g\in L^2((S^1)^2)\)</span> be orthogonal to all products. Fubini, proved in that same earlier Lemma 0.1(a), and Cauchy–Schwarz show that
+<span class="math" data-tex="\(g_n(y)=\int g(x,y)e^{-inx}\,dx/(2\pi)\)">\(g_n(y)=\int g(x,y)e^{-inx}\,dx/(2\pi)\)</span> belongs to <span class="math" data-tex="\(L^2(S^1)\)">\(L^2(S^1)\)</span>. All its Fourier coefficients vanish, so <span class="math" data-tex="\(g_n=0\)">\(g_n=0\)</span> almost everywhere by the one-dimensional result. Intersect the countably many full-measure sets for <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>. On their intersection the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> section <span class="math" data-tex="\(g(\cdot,y)\)">\(g(\cdot,y)\)</span> has every coefficient zero, hence vanishes. Fubini gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere. This proves the product family's completeness; orthonormality follows by product integration. Parseval and graph-coordinate convergence are proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hilbert-spaces-and-compact-operators.html">Hilbert spaces and compact operators</a>, Theorem 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="the-hardy-module-of-the-circle">The Hardy module of the circle</h3>
+<p>Put <span class="math" data-tex="\(H=L^2(S^1)\)">\(H=L^2(S^1)\)</span>, with normalized angular measure, and let <span class="math" data-tex="\(e_n(z)=z^n\)">\(e_n(z)=z^n\)</span>, <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>. Let <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span> be multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>, and let <span class="math" data-tex="\(P\)">\(P\)</span> project onto the closed span of <span class="math" data-tex="\(e_n\)">\(e_n\)</span> for <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. Then
+<span class="math math-display" data-tex="\[
+F=2P-1
+\tag{5.1}
+\]">\[
+F=2P-1
+\tag{5.1}
+\]</span>
+is a self-adjoint involution. For <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, the commutator <span class="math" data-tex="\([P,\pi(z^k)]\)">\([P,\pi(z^k)]\)</span> vanishes on every basis vector except <span class="math" data-tex="\(e_{-k},\ldots,e_{-1}\)">\(e_{-k},\ldots,e_{-1}\)</span>; its image lies in <span class="math" data-tex="\(\operatorname{span}(e_0,\ldots,e_{k-1})\)">\(\operatorname{span}(e_0,\ldots,e_{k-1})\)</span>. For <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span> the same conclusion follows by adjoints. Thus these commutators have finite rank. Trigonometric polynomials approximate every continuous function uniformly, and
+<span class="math" data-tex="\(\|[P,\pi(f)]\|\leq2\|f\|_\infty\)">\(\|[P,\pi(f)]\|\leq2\|f\|_\infty\)</span>, so <span class="math" data-tex="\([P,\pi(f)]\)">\([P,\pi(f)]\)</span> is compact for every <span class="math" data-tex="\(f\in C(S^1)\)">\(f\in C(S^1)\)</span>. This verifies all module conditions.</p>
+<p>The operator <span class="math" data-tex="\(D=-i\,d/d\theta\)">\(D=-i\,d/d\theta\)</span> on the circle has <span class="math" data-tex="\(De_n=ne_n\)">\(De_n=ne_n\)</span>, with domain <span class="math" data-tex="\(\{\sum c_ne_n:\sum n^2|c_n|^2&lt;\infty\}\)">\(\{\sum c_ne_n:\sum n^2|c_n|^2&lt;\infty\}\)</span>. Testing an adjoint vector against every Fourier basis vector gives the same square-summable weighted domain, so this diagonal realization is self-adjoint; finite Fourier sums converge in its graph norm and prove that it is the closure of the smooth differential operator. Its bounded transform has eigenvalues <span class="math" data-tex="\(n/\sqrt{1+n^2}\)">\(n/\sqrt{1+n^2}\)</span>. The differences from (5.1) tend to zero as <span class="math" data-tex="\(|n|\to\infty\)">\(|n|\to\infty\)</span>; the discrepancy at <span class="math" data-tex="\(n=0\)">\(n=0\)</span> affects only one vector. Their difference is compact. Hence the Hardy cycle represents the same K-homology class as this bounded transform.</p>
+<p>Compressing <span class="math" data-tex="\(\pi(z)\)">\(\pi(z)\)</span> to <span class="math" data-tex="\(PH\)">\(PH\)</span> gives the unilateral shift <span class="math" data-tex="\(Se_n=e_{n+1}\)">\(Se_n=e_{n+1}\)</span>, <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. Its kernel is zero and its cokernel is spanned by <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, so
+<span class="math math-display" data-tex="\[
+\operatorname{index}(P\pi(z)P)=-1.
+\tag{5.2}
+\]">\[
+\operatorname{index}(P\pi(z)P)=-1.
+\tag{5.2}
+\]</span>
+We will prove below that this index detects a nonzero class and all its multiples.</p>
+<h3 id="a-dirac-operator-on-the-two-dimensional-torus">A Dirac operator on the two-dimensional torus</h3>
+<p>Let <span class="math" data-tex="\(T^2=(\mathbb R/2\pi\mathbb Z)^2\)">\(T^2=(\mathbb R/2\pi\mathbb Z)^2\)</span>, take
+<span class="math" data-tex="\(H=L^2(T^2,\mathbb C^2)\)">\(H=L^2(T^2,\mathbb C^2)\)</span>, and grade by
+<span class="math math-display" data-tex="\[
+\Gamma=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]">\[
+\Gamma=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]</span>
+Use the Pauli matrices
+<span class="math math-display" data-tex="\[
+\sigma_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},
+\qquad D=-i(\sigma_1\partial_x+\sigma_2\partial_y).
+\tag{5.3}
+\]">\[
+\sigma_1=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+\sigma_2=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},
+\qquad D=-i(\sigma_1\partial_x+\sigma_2\partial_y).
+\tag{5.3}
+\]</span>
+They are self-adjoint, square to one, and anticommute. On the Fourier mode <span class="math" data-tex="\(e^{i(nx+my)}v\)">\(e^{i(nx+my)}v\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span> acts by the self-adjoint matrix <span class="math" data-tex="\(n\sigma_1+m\sigma_2\)">\(n\sigma_1+m\sigma_2\)</span>, whose square is <span class="math" data-tex="\((n^2+m^2)1\)">\((n^2+m^2)1\)</span>. Consequently the closure is self-adjoint with domain
+<span class="math math-display" data-tex="\[
+\left\{(v_{n,m}):\sum_{n,m}(1+n^2+m^2)\|v_{n,m}\|^2&lt;\infty\right\}.
+\]">\[
+\left\{(v_{n,m}):\sum_{n,m}(1+n^2+m^2)\|v_{n,m}\|^2&lt;\infty\right\}.
+\]</span>
+This can be verified directly: the direct sum of the finite-dimensional self-adjoint matrices has adjoint with that same domain, and finite Fourier sums are dense in the graph norm.</p>
+<p>The eigenvalues of <span class="math" data-tex="\((1+D^2)^{-1}\)">\((1+D^2)^{-1}\)</span> are <span class="math" data-tex="\((1+n^2+m^2)^{-1}\)">\((1+n^2+m^2)^{-1}\)</span>, of multiplicity two, and tend to zero outside finite sets. Thus this operator is compact. Multiplication by <span class="math" data-tex="\(C(T^2)\)">\(C(T^2)\)</span> is even, <span class="math" data-tex="\(D\)">\(D\)</span> anticommutes with <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and smooth commutators are
+<span class="math" data-tex="\(-i(\sigma_1\partial_x f+\sigma_2\partial_y f)\)">\(-i(\sigma_1\partial_x f+\sigma_2\partial_y f)\)</span>. For domain preservation, finite Fourier sums have graph convergence, and Parseval identifies this domain with the functions whose two weak first derivatives are in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. For smooth <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\partial_j(fu)=f\partial_ju+(\partial_jf)u\)">\(\partial_j(fu)=f\partial_ju+(\partial_jf)u\)</span>; the bounded coefficients give a graph-norm bound, first on those finite sums and then by completion. Thus multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> preserves the domain. Smooth functions are uniformly dense by Lemma 5.0. All hypotheses of Theorem 4.1 have now been checked, and it gives an even module.</p>
+<p>Its positive-to-negative bounded block on the <span class="math" data-tex="\((n,m)\)">\((n,m)\)</span>-mode is
+<span class="math math-display" data-tex="\[
+F_+(n,m)=\frac{n+im}{\sqrt{1+n^2+m^2}}.
+\tag{5.4}
+\]">\[
+F_+(n,m)=\frac{n+im}{\sqrt{1+n^2+m^2}}.
+\tag{5.4}
+\]</span>
+Both <span class="math" data-tex="\(F_+\)">\(F_+\)</span> and its adjoint have the one-dimensional constant-mode kernel. On the other modes the modulus is at least <span class="math" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span>, so the range is closed. Its untwisted index is therefore <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span>. This computation concerns the test by the trivial line bundle; it does not assert that the torus Dirac class vanishes.</p>
+<h3 id="finite-dimensional-cycles">Finite-dimensional cycles</h3>
+<p>If <span class="math" data-tex="\(H\)">\(H\)</span> is finite dimensional, every defect is compact, so every representation and bounded operator of the appropriate parity is a cycle. Such a cycle need not be degenerate: <span class="math" data-tex="\(F=0\)">\(F=0\)</span> and a nonzero representation give <span class="math" data-tex="\(\pi(a)(F^2-1)=-\pi(a)\)">\(\pi(a)(F^2-1)=-\pi(a)\)</span>.</p>
+<p>Over <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, an even finite-dimensional example is <span class="math" data-tex="\(H_+=\mathbb C^r\)">\(H_+=\mathbb C^r\)</span>, <span class="math" data-tex="\(H_-=\mathbb C^s\)">\(H_-=\mathbb C^s\)</span>, scalar representation and <span class="math" data-tex="\(F=0\)">\(F=0\)</span>. Its eventual even index test is <span class="math" data-tex="\(r-s\)">\(r-s\)</span>. A pair with <span class="math" data-tex="\(r=s=1\)">\(r=s=1\)</span> is zero already here: the path
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;t\\t&amp;0\end{pmatrix},
+\qquad0\leq t\leq1,
+\]">\[
+\begin{pmatrix}0&amp;t\\t&amp;0\end{pmatrix},
+\qquad0\leq t\leq1,
+\]</span>
+has only finite-dimensional defects and ends at a commuting self-adjoint exchange unitary. In contrast an odd finite-dimensional cycle is always zero. Replace <span class="math" data-tex="\(F\)">\(F\)</span> along a segment by <span class="math" data-tex="\(1\)">\(1\)</span>; all defects remain compact, and the endpoint commutes with the representation and is a self-adjoint unitary. This parity difference explains why a single finite-dimensional graded representation can encode an even index, whereas odd index information needs an infinite-dimensional space.</p>
+<h2 id="6-odd-cycles-and-semisplit-extensions">6. Odd cycles and semisplit extensions</h2>
+<h3 id="proposition-6-1-the-compression-extension">Proposition 6.1. The compression extension</h3>
+<p>Let <span class="math" data-tex="\((H,\pi,F)\)">\((H,\pi,F)\)</span> be an odd module with <span class="math" data-tex="\(F=F^*\)">\(F=F^*\)</span>, <span class="math" data-tex="\(F^2=1\)">\(F^2=1\)</span>, and put <span class="math" data-tex="\(P=(1+F)/2\)">\(P=(1+F)/2\)</span>. The formula
+<span class="math math-display" data-tex="\[
+\tau(a)=q_{PH}\big(P\pi(a)|_{PH}\big)
+\tag{6.1}
+\]">\[
+\tau(a)=q_{PH}\big(P\pi(a)|_{PH}\big)
+\tag{6.1}
+\]</span>
+defines a Busby map into <span class="math" data-tex="\(\mathcal Q(PH)\)">\(\mathcal Q(PH)\)</span> with a completely positive contractive lift. Its pullback is a semisplit extension of <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\mathcal K(PH)\)">\(\mathcal K(PH)\)</span>.</p>
+<p><strong>Proof.</strong> The inclusion <span class="math" data-tex="\(V:PH\hookrightarrow H\)">\(V:PH\hookrightarrow H\)</span> is an isometry and the proposed lift is <span class="math" data-tex="\(L(a)=V^*\pi(a)V\)">\(L(a)=V^*\pi(a)V\)</span>. For a positive matrix <span class="math" data-tex="\([a_{ij}]\)">\([a_{ij}]\)</span>, its representation on <span class="math" data-tex="\(H^n\)">\(H^n\)</span> is positive, and compression by <span class="math" data-tex="\(V^{(n)}\)">\(V^{(n)}\)</span> gives <span class="math" data-tex="\([L(a_{ij})]\geq0\)">\([L(a_{ij})]\geq0\)</span>; hence <span class="math" data-tex="\(L\)">\(L\)</span> is completely positive. Contractivity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> proves contractivity of <span class="math" data-tex="\(L\)">\(L\)</span>, and taking adjoints gives <span class="math" data-tex="\(L(a^*)=L(a)^*\)">\(L(a^*)=L(a)^*\)</span>. Its multiplication error is exactly
+<span class="math math-display" data-tex="\[
+L(ab)-L(a)L(b)
+=P\pi(a)(1-P)\pi(b)|_{PH}.
+\tag{6.2}
+\]">\[
+L(ab)-L(a)L(b)
+=P\pi(a)(1-P)\pi(b)|_{PH}.
+\tag{6.2}
+\]</span>
+On <span class="math" data-tex="\(PH\)">\(PH\)</span>, <span class="math" data-tex="\((1-P)\pi(b)P=(1-P)[\pi(b),P]\)">\((1-P)\pi(b)P=(1-P)[\pi(b),P]\)</span>, a compact operator between the two spectral ranges. Thus this error vanishes in the Calkin quotient and <span class="math" data-tex="\(q_{PH}L\)">\(q_{PH}L\)</span> preserves multiplication as well as adjoints. For its pullback algebra, <span class="math" data-tex="\(a\mapsto(L(a),a)\)">\(a\mapsto(L(a),a)\)</span> lies in the pullback, is a completely positive contraction at every matrix level, and is a section of the quotient. The Busby pullback theorem proved in the first extension lesson therefore gives precisely a semisplit extension by <span class="math" data-tex="\(\mathcal K(PH)\)">\(\mathcal K(PH)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This extension is essential precisely when the Busby map is injective; the construction makes no automatic essentiality claim. If <span class="math" data-tex="\(PH\)">\(PH\)</span> is finite dimensional, the quotient is zero. To use a fixed infinite-dimensional compact ideal in all cases, append an infinite-dimensional zero-representation summand on which <span class="math" data-tex="\(F=1\)">\(F=1\)</span>. It is degenerate, and enlarges <span class="math" data-tex="\(PH\)">\(PH\)</span> to <span class="math" data-tex="\(PH\oplus\ell^2\)">\(PH\oplus\ell^2\)</span>; the new Busby map is the old one plus the split zero map.</p>
+<h3 id="proposition-6-2-a-semisplit-extension-gives-an-odd-cycle">Proposition 6.2. A semisplit extension gives an odd cycle</h3>
+<p>Every semisplit extension of separable <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\mathcal K(H)\)">\(\mathcal K(H)\)</span> is obtained by the compression construction from an odd module with an exact self-adjoint involution.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\tau\)">\(\tau\)</span> for the given Busby map. If <span class="math" data-tex="\(H\)">\(H\)</span> is finite dimensional, <span class="math" data-tex="\(\mathcal Q(H)=0\)">\(\mathcal Q(H)=0\)</span> and <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span>. Its zero lift is the compression of the zero representation on <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, with <span class="math" data-tex="\(P=\operatorname{diag}(1,0)\)">\(P=\operatorname{diag}(1,0)\)</span> and <span class="math" data-tex="\(F=2P-1\)">\(F=2P-1\)</span>. This is a degenerate cycle. The first lesson's Busby correspondence identifies its pullback with the given extension, so this case is included rather than excluded by a fixed infinite-dimensional convention.</p>
+<p>For infinite-dimensional separable <span class="math" data-tex="\(H\)">\(H\)</span>, semisplitting provides a completely positive contractive lift <span class="math" data-tex="\(L:A\to\mathcal B(H)\)">\(L:A\to\mathcal B(H)\)</span>. The previous lesson, Lemma 2.2, proves the corner dilation from the strict KSGNS construction and operator-range stabilization. For <span class="math" data-tex="\(B=\mathbb C\)">\(B=\mathbb C\)</span> it produces a homomorphism
+<span class="math math-display" data-tex="\[
+\rho:A\longrightarrow\mathcal B(H\oplus H),\qquad
+\rho(a)=\begin{pmatrix}L(a)&amp;\rho_{12}(a)\\
+                                  \rho_{21}(a)&amp;\rho_{22}(a)\end{pmatrix}.
+\]">\[
+\rho:A\longrightarrow\mathcal B(H\oplus H),\qquad
+\rho(a)=\begin{pmatrix}L(a)&amp;\rho_{12}(a)\\
+                                  \rho_{21}(a)&amp;\rho_{22}(a)\end{pmatrix}.
+\]</span>
+Multiplication of its first diagonal corner at <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span> gives
+<span class="math math-display" data-tex="\[
+\rho_{21}(a)^*\rho_{21}(a)=L(a^*a)-L(a)^*L(a).
+\]">\[
+\rho_{21}(a)^*\rho_{21}(a)=L(a^*a)-L(a)^*L(a).
+\]</span>
+The quotient of the right side is zero since <span class="math" data-tex="\(qL=\tau\)">\(qL=\tau\)</span> is multiplicative. The C*-identity in the quotient forces <span class="math" data-tex="\(q\rho_{21}(a)=0\)">\(q\rho_{21}(a)=0\)</span>, hence compactness. Applying this to <span class="math" data-tex="\(a^*\)">\(a^*\)</span> and using <span class="math" data-tex="\(\rho_{12}(a)=\rho_{21}(a^*)^*\)">\(\rho_{12}(a)=\rho_{21}(a^*)^*\)</span> proves compactness of the other off-diagonal corner.</p>
+<p>Now <span class="math" data-tex="\(P=\operatorname{diag}(1,0)\)">\(P=\operatorname{diag}(1,0)\)</span> and <span class="math" data-tex="\(F=2P-1\)">\(F=2P-1\)</span> have zero adjoint and square defects, and
+<span class="math math-display" data-tex="\[
+[F,\rho(a)]=\begin{pmatrix}0&amp;2\rho_{12}(a)\\ -2\rho_{21}(a)&amp;0\end{pmatrix}
+\]">\[
+[F,\rho(a)]=\begin{pmatrix}0&amp;2\rho_{12}(a)\\ -2\rho_{21}(a)&amp;0\end{pmatrix}
+\]</span>
+is compact. This is the required exact odd cycle. Compressing its representation to <span class="math" data-tex="\(PH=H\)">\(PH=H\)</span> gives <span class="math" data-tex="\(L\)">\(L\)</span>, hence its compression Busby map is exactly <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. The Busby correspondence once more identifies the extensions. No essentiality, nuclearity or unit was used; separability is the hypothesis needed by that corner-stabilization step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the Hardy module, (6.1) is precisely the Toeplitz Busby map. The same construction also explains the inverse extension: switch to the negative spectral subspace, replacing <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(-F\)">\(-F\)</span>. The two compressed corners together are the quotient of the full representation, a split extension.</p>
+<p>The full class-level statement is
+<span class="math math-display" data-tex="\[
+K^1(A)\ \cong\ KK^1(A,\mathbb C)\
+\cong\ \operatorname{Ext}(A)^{-1},
+\tag{6.3}
+\]">\[
+K^1(A)\ \cong\ KK^1(A,\mathbb C)\
+\cong\ \operatorname{Ext}(A)^{-1},
+\tag{6.3}
+\]</span>
+where the last group is the subgroup of invertible elements in the ordinary stabilized extension monoid. The correspondence sends an exact odd involution to (6.1), and a semisplit extension to Proposition 6.2. It is natural under pullback in <span class="math" data-tex="\(A\)">\(A\)</span>, and the compression index is its pairing with <span class="math" data-tex="\(K_1(A)\)">\(K_1(A)\)</span>.</p>
+<p>Formula (6.3) retains its full separable-algebra statement, but is not established by the two constructions above. A complete proof still has to show that compression respects all class relations, that changes of dilation and normalization give the same class, that the constructions are inverse on classes, and that Hilbert-module homotopy gives exactly the analytic equivalence relation. The pending lesson <em>Pictures of KK: Fredholm picture, quasihomomorphisms, <span class="math" data-tex="\(KK^1\)">\(KK^1\)</span> and extensions</em> is not a delivered proof provider. The constructions here use no planar classification theorem. For nuclear <span class="math" data-tex="\(A\)">\(A\)</span>, the preceding lesson independently proves that every extension is semisplit, so every extension has the cycle representative constructed in Proposition 6.2; this alone does not prove (6.3).</p>
+<h2 id="7-an-index-test-that-already-detects-the-circle">7. An index test that already detects the circle</h2>
+<p>Here we need only a fixed unitary in a unital algebra. The next lesson proves the full matrix-stable, bilinear pairing.</p>
+<h3 id="lemma-7-1-a-unitary-tests-an-odd-k-homology-class">Lemma 7.1. A unitary tests an odd K-homology class</h3>
+<p>For unital <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(u\in A\)">\(u\in A\)</span> unitary, the positive-compression index defines a group homomorphism
+<span class="math math-display" data-tex="\[
+I_u:K^1(A)\longrightarrow\mathbb Z.
+\]">\[
+I_u:K^1(A)\longrightarrow\mathbb Z.
+\]</span>
+For an exact involution and a unital representation it is
+<span class="math" data-tex="\(\operatorname{index}(P\pi(u)P|_{PH})\)">\(\operatorname{index}(P\pi(u)P|_{PH})\)</span>.</p>
+<p><strong>Proof.</strong> For a general cycle use the particular continuous normalization <span class="math" data-tex="\(N(F)=G_1\)">\(N(F)=G_1\)</span> in Proposition 2.3, with representation <span class="math" data-tex="\(\rho=\pi\oplus0\)">\(\rho=\pi\oplus0\)</span>, and put <span class="math" data-tex="\(P_F=(1+N(F))/2\)">\(P_F=(1+N(F))/2\)</span>. The operator
+<span class="math math-display" data-tex="\[
+U=\rho(u)+(1-\rho(1))
+\]">\[
+U=\rho(u)+(1-\rho(1))
+\]</span>
+is unitary, even if <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is degenerate, and <span class="math" data-tex="\([P_F,U]\)">\([P_F,U]\)</span> is compact. Thus <span class="math" data-tex="\(P_FUP_F\)">\(P_FUP_F\)</span> on <span class="math" data-tex="\(P_F(H\oplus H)\)">\(P_F(H\oplus H)\)</span> is Fredholm: <span class="math" data-tex="\(P_FU^*P_F\)">\(P_FU^*P_F\)</span> is an inverse modulo compacts, since the errors factor through <span class="math" data-tex="\([P_F,U]\)">\([P_F,U]\)</span>. Define <span class="math" data-tex="\(I_u\)">\(I_u\)</span> to be its index.</p>
+<p>Unitary equivalence preserves it. The normalization respects direct sums up to a permutation of the doubled summands, so its index is additive. For a degenerate cycle it gives zero. To see this last point without an extra convention, let <span class="math" data-tex="\(H_e=\overline{\pi(A)H}\)">\(H_e=\overline{\pi(A)H}\)</span>. Exact commutation makes <span class="math" data-tex="\(H_e\)">\(H_e\)</span> reducing for <span class="math" data-tex="\(F\)">\(F\)</span>; the zero self-adjointness and square defects make <span class="math" data-tex="\(F|_{H_e}\)">\(F|_{H_e}\)</span> a self-adjoint involution. The normalization leaves that restriction unchanged and has zero off-diagonal <span class="math" data-tex="\(s\)">\(s\)</span> there, while <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is zero on <span class="math" data-tex="\(H_e^\perp\)">\(H_e^\perp\)</span>. Consequently <span class="math" data-tex="\(N(F)\)">\(N(F)\)</span> commutes exactly with <span class="math" data-tex="\(\rho(A)\)">\(\rho(A)\)</span>, so <span class="math" data-tex="\(P_FUP_F\)">\(P_FUP_F\)</span> is unitary on its range and has index zero.</p>
+<p>Under an operator homotopy <span class="math" data-tex="\(F_t\)">\(F_t\)</span>, the normalized projections <span class="math" data-tex="\(P_t\)">\(P_t\)</span> vary in norm. Their ranges can be locally identified by norm-continuous unitaries. Here is the formula. If <span class="math" data-tex="\(\|P-Q\|&lt;1\)">\(\|P-Q\|&lt;1\)</span>, set
+<span class="math math-display" data-tex="\[
+X=QP+(1-Q)(1-P),\qquad V=X(X^*X)^{-1/2}.
+\]">\[
+X=QP+(1-Q)(1-P),\qquad V=X(X^*X)^{-1/2}.
+\]</span>
+The identities <span class="math" data-tex="\(XP=QX\)">\(XP=QX\)</span> and <span class="math" data-tex="\(X^*X=1-(P-Q)^2\)">\(X^*X=1-(P-Q)^2\)</span> show that <span class="math" data-tex="\(V\)">\(V\)</span> is a unitary with <span class="math" data-tex="\(VPV^*=Q\)">\(VPV^*=Q\)</span>; it depends continuously on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Cover a compact parameter interval by finitely many such neighborhoods and concatenate the identifications. After transporting the ranges by these unitaries, the compressed operators are a norm-continuous Fredholm path on a fixed space. Its index is constant. This proves invariance under every generating relation, hence well-definedness and additivity on <span class="math" data-tex="\(K^1(A)\)">\(K^1(A)\)</span>.</p>
+<p>If the starting <span class="math" data-tex="\(F\)">\(F\)</span> is already an exact involution, its normalization is <span class="math" data-tex="\(\operatorname{diag}(F,-F)\)">\(\operatorname{diag}(F,-F)\)</span>. The second copy has zero representation and contributes the identity compression, of index zero. Removing a zero-representation part of a unital algebra action likewise contributes zero. Thus the displayed formula agrees with the construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applying the lemma to the Hardy module and <span class="math" data-tex="\(u=z\)">\(u=z\)</span>, (5.2) gives <span class="math" data-tex="\(I_z=-1\)">\(I_z=-1\)</span>. In particular its class has infinite order. This detects the class directly in the equivalence relation of this lesson, without assuming the later class-level extension isomorphism.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (basic).</strong> Verify that a self-adjoint unitary commuting with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> is degenerate. In the even case include the grading condition. Explain why <span class="math" data-tex="\(F=0\)">\(F=0\)</span> on a finite-dimensional nonzero representation is usually not degenerate.</p>
+<p><strong>Exercise 8.2 (intermediate).</strong> Give the operator homotopy between two cycle operators differing by a compact operator. Check its square and adjoint defects explicitly.</p>
+<p><strong>Exercise 8.3 (intermediate).</strong> Verify all the Hardy-module conditions by computing <span class="math" data-tex="\([P,\pi(z^k)]\)">\([P,\pi(z^k)]\)</span> on Fourier basis vectors. Identify the compression for <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>.</p>
+<p><strong>Exercise 8.4 (advanced).</strong> Prove that the Hardy class has infinite order, using the positive-compression index. Determine the class detected after replacing <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(-F\)">\(-F\)</span>.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> Self-adjointness makes <span class="math" data-tex="\(F-F^*=0\)">\(F-F^*=0\)</span>, involutivity makes <span class="math" data-tex="\(F^2-1=0\)">\(F^2-1=0\)</span>, and commutation makes <span class="math" data-tex="\([F,\pi(a)]=0\)">\([F,\pi(a)]=0\)</span>. Thus all three defects vanish. An even cycle must also have <span class="math" data-tex="\(\Gamma F=-F\Gamma\)">\(\Gamma F=-F\Gamma\)</span> and an even representation; the conclusion applies once those cycle requirements hold. For a finite-dimensional example with <span class="math" data-tex="\(F=0\)">\(F=0\)</span>, the square defect is <span class="math" data-tex="\(-\pi(a)\)">\(-\pi(a)\)</span>. It is compact because the space is finite dimensional, but it is not zero when <span class="math" data-tex="\(\pi(a)\ne0\)">\(\pi(a)\ne0\)</span>. Being a cycle and being degenerate are distinct conditions.</p>
+<p><strong>Solution 8.2.</strong> Put <span class="math" data-tex="\(K=F&#x27;-F\in\mathcal K(H)\)">\(K=F&#x27;-F\in\mathcal K(H)\)</span> and <span class="math" data-tex="\(F_t=F+tK\)">\(F_t=F+tK\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\left[F_t,\pi(a)\right]&amp;=[F,\pi(a)]+t[K,\pi(a)],\\
+F_t-F_t^*&amp;=F-F^*+t(K-K^*),\\
+F_t^2-1&amp;=F^2-1+t(FK+KF)+t^2K^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\left[F_t,\pi(a)\right]&amp;=[F,\pi(a)]+t[K,\pi(a)],\\
+F_t-F_t^*&amp;=F-F^*+t(K-K^*),\\
+F_t^2-1&amp;=F^2-1+t(FK+KF)+t^2K^2.
+\end{aligned}
+\]</span>
+Every added term is compact, so multiplying the last two expressions by <span class="math" data-tex="\(\pi(a)\)">\(\pi(a)\)</span> preserves compactness. The path is norm-continuous. If both endpoints are odd for the grading, then <span class="math" data-tex="\(K\)">\(K\)</span> and every <span class="math" data-tex="\(F_t\)">\(F_t\)</span> are odd. This verifies an operator homotopy directly. The same conclusion for a locally compact difference follows from the ideal calculation of Proposition 2.2.</p>
+<p><strong>Solution 8.3.</strong> For <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+[P,\pi(z^k)]e_n
+=\big(1_{\{n+k\geq0\}}-1_{\{n\geq0\}}\big)e_{n+k}.
+\]">\[
+[P,\pi(z^k)]e_n
+=\big(1_{\{n+k\geq0\}}-1_{\{n\geq0\}}\big)e_{n+k}.
+\]</span>
+It is nonzero exactly for <span class="math" data-tex="\(-k\leq n\leq-1\)">\(-k\leq n\leq-1\)</span>, and then equals <span class="math" data-tex="\(e_{n+k}\)">\(e_{n+k}\)</span>. For <span class="math" data-tex="\(k=-\ell&lt;0\)">\(k=-\ell&lt;0\)</span>, it is nonzero exactly for <span class="math" data-tex="\(0\leq n\leq\ell-1\)">\(0\leq n\leq\ell-1\)</span>, and equals <span class="math" data-tex="\(-e_{n-\ell}\)">\(-e_{n-\ell}\)</span>. Thus its rank is <span class="math" data-tex="\(|k|\)">\(|k|\)</span>, with rank zero when <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Linear combinations give finite-rank commutators for trigonometric polynomials, and uniform approximation gives compact commutators for all continuous functions. The other defects vanish because <span class="math" data-tex="\(F=2P-1\)">\(F=2P-1\)</span> is self-adjoint and squares to one. On the nonnegative basis, compression of <span class="math" data-tex="\(\pi(z^{-1})\)">\(\pi(z^{-1})\)</span> is <span class="math" data-tex="\(S^*\)">\(S^*\)</span>: it kills <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and sends <span class="math" data-tex="\(e_n\)">\(e_n\)</span> to <span class="math" data-tex="\(e_{n-1}\)">\(e_{n-1}\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</p>
+<p><strong>Solution 8.4.</strong> Lemma 7.1 gives a homomorphism <span class="math" data-tex="\(I_z\)">\(I_z\)</span> on <span class="math" data-tex="\(K^1(C(S^1))\)">\(K^1(C(S^1))\)</span>. For the Hardy class <span class="math" data-tex="\(h\)">\(h\)</span>, its value is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(I_z(nh)=-n\)">\(I_z(nh)=-n\)</span>. If <span class="math" data-tex="\(nh=0\)">\(nh=0\)</span>, this forces <span class="math" data-tex="\(n=0\)">\(n=0\)</span>; hence <span class="math" data-tex="\(h\)">\(h\)</span> has infinite order. The replacement <span class="math" data-tex="\(-F\)">\(-F\)</span> represents its inverse by Theorem 3.1. Directly, its positive projection is <span class="math" data-tex="\(1-P\)">\(1-P\)</span>. Compression of multiplication by <span class="math" data-tex="\(z\)">\(z\)</span> to the negative Fourier modes kills <span class="math" data-tex="\(e_{-1}\)">\(e_{-1}\)</span>, sends <span class="math" data-tex="\(e_{-j}\)">\(e_{-j}\)</span> to <span class="math" data-tex="\(e_{-(j-1)}\)">\(e_{-(j-1)}\)</span> for <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, and is surjective on that negative subspace. Its index is <span class="math" data-tex="\(+1\)">\(+1\)</span>, agreeing with the inverse class and fixing the sign.</p>
+<h2 id="internal-proof-dependencies-and-source-credit">Internal proof dependencies and source credit</h2>
+<p>The Hilbert-space Fredholm facts, including composition additivity, are proved in Lemmas 1.1–1.2 of the extension lesson. Continuous functional calculus is proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</a>, Theorems 5.1 and 6.1. Lemma 4.0 proves the compact-resolvent spectral domain and calculus used in Theorem 4.1 here, without taking an unbounded spectral theorem as an external input. The finite-chart Sobolev construction and compactness, frozen-coefficient elliptic estimate, and uniformly bounded, strongly vanishing Friedrichs commutator are proved here in Lemmas 4.1a–4.1c. Corollary 4.2 uses these proofs to identify the distributional adjoint domain with <span class="math" data-tex="\(H^1\)">\(H^1\)</span> and prove self-adjointness and compact resolvent for every formally self-adjoint first-order elliptic operator on a closed manifold. The exact earlier measure and Hilbert-space inputs are linked before Lemma 4.1a; no pseudodifferential parametrix or external elliptic-regularity theorem supplies this bridge.</p>
+<p>The class-level isomorphisms (6.3) and their precise normalization, dilation and homotopy assertions remain proof obligations in <em>Pictures of KK: Fredholm picture, quasihomomorphisms, <span class="math" data-tex="\(KK^1\)">\(KK^1\)</span> and extensions</em>. The localized noncompact bounded-transform theorem remains a proof obligation in <em>Unbounded Kasparov modules and spectral triples</em>. The cycle constructions, group laws, compact-resolvent bounded transform and circle detection are proved above from those existing internal prerequisites. The full class-level identifications in (6.3) and the localized noncompact extension remain unproved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, freely accessible author-corrected second-edition PDF. Sections 17.1–17.5 supply the cycle, normalization, group and Fredholm pictures; Section 17.11 treats the bounded transform. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Free author version</a>. The resolvent and compact spectral proofs required here are written in Lemma 4.0 and Theorem 4.1.</p>
+</li>
+<li>
+<p>B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, freely accessible author-revised version dated 8 February 2017, I.6.1 and I.8.4. <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">Free revised author version</a>. Lemma 4.0 supplies the compact positive spectral argument rather than citing it in place of proof.</p>
+</li>
+<li>
+<p>J. Ruppenthal, <em>Friedrichs' Extension Lemma with Boundary Values and Applications in Complex Analysis</em>, free author preprint dated 14 October 2009, Theorem 3.1 and Lemma 3.2, pp. 5–6. <a href="https://www2.math.uni-wuppertal.de/~ruppenth/papers/friedrichs14102009.pdf">Actual free author PDF</a>. The matrix-kernel bound, strong convergence and weak-domain argument required here are fully proved in Lemma 4.1c.</p>
+</li>
+<li>
+<p>C. Bär and W. Ballmann, <em>Boundary Value Problems for Elliptic Differential Operators of First Order</em>, arXiv:1101.1196v2, Sections 2.1–2.2 and Lemma 3.1/Remark 3.2. <a href="https://arxiv.org/abs/1101.1196">Actual free preprint</a>. These sections provide the source comparison for measured manifolds, formal adjoints and maximal domains. The Sobolev, regularity and compactness proofs used here are local Lemmas 4.1a–4.1c.</p>
+</li>
+</ul>
+<p>These free source PDFs retain their authors' copyrights. The CC0 notice applies to this lesson's original text.</p>
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="KT-KK-02.html">← Ext groups, absorption and Brown-Douglas-Fillmore theory</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="KT-KK-04.html">The index pairing between K-theory and K-homology →</a></span></nav>
+<p class="small source-link"><a href="KT-KK-03.tex">Complete LaTeX source of this lesson</a> · <span class="unlinked">Editable source package</span></p>
+<p class="small source-link"><span class="unlinked">Complete available text as a PDF</span> · <a href="sources.html">Sources and component terms</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

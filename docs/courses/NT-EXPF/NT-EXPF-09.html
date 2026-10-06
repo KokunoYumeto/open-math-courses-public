@@ -1,0 +1,1088 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The random matrix predictions and their evidence · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-09.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-random-matrix-predictions-and-their-evidence">The random matrix predictions and their evidence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Original exposition: public domain (CC0).</em></p>
+<p>Two different comparisons with unitary matrices concern the zeta function. One predicts the arrangement of its zeros after rescaling to mean spacing one. The other predicts the growth of its moments on the critical line. The first comparison is local in the zeros; the second includes an arithmetic factor built from primes. Their agreement in several proved cases is evidence for the predictions, rather than a proof of all of them.</p>
+<p>We use the Fourier convention <span class="math" data-tex="\(\widehat r(\alpha)=\int_{\mathbb R}r(u)e^{-2\pi i\alpha u}\,du\)">\(\widehat r(\alpha)=\int_{\mathbb R}r(u)e^{-2\pi i\alpha u}\,du\)</span>, Haar probability measure on <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span>, and
+<span class="math math-display" data-tex="\[
+K(u)=\frac{\sin\pi u}{\pi u},\qquad K(0)=1.
+\]">\[
+K(u)=\frac{\sin\pi u}{\pi u},\qquad K(0)=1.
+\]</span>
+The preceding lesson supplies Montgomery's theorem and its precise conjectural extensions. The exact second and fourth moments of zeta are inputs from <em>Mean values of Dirichlet polynomials and of zeta on the critical line</em>. For the matrix calculation we use the <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span> specialization of <em>The Weyl integration formula</em>, an existing planned lesson of <em>Representations of compact groups</em>: the joint density of labelled eigenangles is
+<span class="math math-display" data-tex="\[
+\frac1{N!(2\pi)^N}\prod_{i&lt;j}|e^{i\theta_i}-e^{i\theta_j}|^2.
+\tag{0.1}
+\]">\[
+\frac1{N!(2\pi)^N}\prod_{i&lt;j}|e^{i\theta_i}-e^{i\theta_j}|^2.
+\tag{0.1}
+\]</span>
+Everything we derive from this density, including the limiting kernel, gap distribution and characteristic-polynomial moments, is proved below.</p>
+<h2 id="1-the-diagonal-and-the-sine-kernel">1. The diagonal and the sine kernel</h2>
+<p>The function <span class="math" data-tex="\(K\)">\(K\)</span> is the inverse Fourier transform of the indicator of <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>, by direct integration. Multiplication of these two inverse transforms gives
+<span class="math math-display" data-tex="\[
+\widehat{K^2}(\alpha)=(1-|\alpha|)_+.
+\tag{1.1}
+\]">\[
+\widehat{K^2}(\alpha)=(1-|\alpha|)_+.
+\tag{1.1}
+\]</span>
+For example, justify the exchange against a Schwartz test function: the two frequency intervals are bounded and the inverse transform of the test is integrable. The convolution of their indicators measures the length of intersection of two unit intervals, which is the triangle in (1.1).</p>
+<p>The constant function has Fourier transform <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> as a tempered distribution, while <span class="math" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\mathcal F\{\delta_0+1-K^2\}
+=\delta_0+1-(1-|\alpha|)_+
+=\delta_0+\min(|\alpha|,1).
+\tag{1.2}
+\]">\[
+\mathcal F\{\delta_0+1-K^2\}
+=\delta_0+1-(1-|\alpha|)_+
+=\delta_0+\min(|\alpha|,1).
+\tag{1.2}
+\]</span>
+All three expressions are distributions; the delta cannot be treated as an ordinary function at zero.</p>
+<p>The diagonal of an ordered pair sum gives the delta on the left. Distinct points in the sine-kernel process have pair density <span class="math" data-tex="\(1-K(u)^2\)">\(1-K(u)^2\)</span>. Montgomery's theorem proves the <span class="math" data-tex="\(|\alpha|&lt;1\)">\(|\alpha|&lt;1\)</span> part of the Fourier-side profile, including the narrow spike whose mass becomes the delta. The preceding lesson distinguishes weak convergence of the pair measure from the stronger uniform pointwise Fourier conjecture.</p>
+<p>Since <span class="math" data-tex="\(K(u)=1-\pi^2u^2/6+O(u^4)\)">\(K(u)=1-\pi^2u^2/6+O(u^4)\)</span>, the distinct-pair density vanishes as <span class="math" data-tex="\(\pi^2u^2/3\)">\(\pi^2u^2/3\)</span> at a collision. This is quadratic repulsion. A nearest-neighbour gap law requires more information: it must exclude all intervening points, not merely count a pair.</p>
+<h2 id="2-unitary-matrices-give-a-determinant">2. Unitary matrices give a determinant</h2>
+<p>The <strong>circular unitary ensemble</strong>, or CUE, is Haar-random <span class="math" data-tex="\(U\in U(N)\)">\(U\in U(N)\)</span>. Write its eigenvalues as <span class="math" data-tex="\(e^{i\theta_j}\)">\(e^{i\theta_j}\)</span>. With
+<span class="math math-display" data-tex="\[
+\phi_j(\theta)=\frac{e^{ij\theta}}{\sqrt{2\pi}},\qquad
+\mathcal K_N(\theta,\varphi)=\sum_{j=0}^{N-1}
+\phi_j(\theta)\overline{\phi_j(\varphi)},
+\]">\[
+\phi_j(\theta)=\frac{e^{ij\theta}}{\sqrt{2\pi}},\qquad
+\mathcal K_N(\theta,\varphi)=\sum_{j=0}^{N-1}
+\phi_j(\theta)\overline{\phi_j(\varphi)},
+\]</span>
+the density (0.1) is <span class="math" data-tex="\(N!^{-1}\det[\mathcal K_N(\theta_i,\theta_j)]_{i,j=1}^N\)">\(N!^{-1}\det[\mathcal K_N(\theta_i,\theta_j)]_{i,j=1}^N\)</span>. This follows by multiplying the Vandermonde determinant by its conjugate.</p>
+<p>Here is the integration identity behind all the correlation functions. For any orthonormal functions <span class="math" data-tex="\(\phi_0,\ldots,\phi_{N-1}\)">\(\phi_0,\ldots,\phi_{N-1}\)</span>, Cauchy–Binet gives
+<span class="math math-display" data-tex="\[
+\det[\mathcal K_N(x_a,x_b)]_{a,b=1}^m
+=\sum_{\substack{I\subset\{0,\ldots,N-1\}\\ |I|=m}}
+|\det[\phi_j(x_a)]_{a=1,\ldots,m;\,j\in I}|^2.
+\tag{2.1}
+\]">\[
+\det[\mathcal K_N(x_a,x_b)]_{a,b=1}^m
+=\sum_{\substack{I\subset\{0,\ldots,N-1\}\\ |I|=m}}
+|\det[\phi_j(x_a)]_{a=1,\ldots,m;\,j\in I}|^2.
+\tag{2.1}
+\]</span>
+Integrate <span class="math" data-tex="\(x_m\)">\(x_m\)</span> in each determinant after expanding its last row. Orthogonality removes terms with different last-row indices. Each remaining minor indexed by a set of size <span class="math" data-tex="\(m-1\)">\(m-1\)</span> occurs <span class="math" data-tex="\(N-m+1\)">\(N-m+1\)</span> times. Thus the integral of (2.1) is <span class="math" data-tex="\(N-m+1\)">\(N-m+1\)</span> times the determinant for <span class="math" data-tex="\(m-1\)">\(m-1\)</span> variables. Iteration, starting at <span class="math" data-tex="\(m=N\)">\(m=N\)</span>, proves that the density counting <strong>ordered distinct</strong> <span class="math" data-tex="\(m\)">\(m\)</span>-tuples is
+<span class="math math-display" data-tex="\[
+\rho_{N,m}(\theta_1,\ldots,\theta_m)
+=\det[\mathcal K_N(\theta_i,\theta_j)]_{i,j=1}^m.
+\tag{2.2}
+\]">\[
+\rho_{N,m}(\theta_1,\ldots,\theta_m)
+=\det[\mathcal K_N(\theta_i,\theta_j)]_{i,j=1}^m.
+\tag{2.2}
+\]</span>
+In particular its integral is <span class="math" data-tex="\(N(N-1)\cdots(N-m+1)\)">\(N(N-1)\cdots(N-m+1)\)</span>, not one.</p>
+<p>Unfold the circle by <span class="math" data-tex="\(\theta=2\pi x/N\)">\(\theta=2\pi x/N\)</span>; its length is now <span class="math" data-tex="\(N\)">\(N\)</span>, and its one-point density is one. Summing the geometric series in <span class="math" data-tex="\(\mathcal K_N\)">\(\mathcal K_N\)</span>, and removing a factor <span class="math" data-tex="\(e^{i\pi(N-1)(x-y)/N}\)">\(e^{i\pi(N-1)(x-y)/N}\)</span> from each kernel entry, gives
+<span class="math math-display" data-tex="\[
+S_N(x-y)=\frac{\sin\pi(x-y)}
+{N\sin(\pi(x-y)/N)}.
+\tag{2.3}
+\]">\[
+S_N(x-y)=\frac{\sin\pi(x-y)}
+{N\sin(\pi(x-y)/N)}.
+\tag{2.3}
+\]</span>
+The phase removal multiplies a determinant's rows and columns by reciprocal factors, so changes no correlation. Removable zeros in this formula are interpreted by the original finite exponential sum.</p>
+<p>On each bounded set <span class="math" data-tex="\(S_N(u)\to K(u)\)">\(S_N(u)\to K(u)\)</span> uniformly, together with every fixed derivative. Equation (2.2) therefore proves
+<span class="math math-display" data-tex="\[
+\rho_{N,m}(x_1,\ldots,x_m)\longrightarrow
+\det[K(x_i-x_j)]_{i,j=1}^m.
+\tag{2.4}
+\]">\[
+\rho_{N,m}(x_1,\ldots,x_m)\longrightarrow
+\det[K(x_i-x_j)]_{i,j=1}^m.
+\tag{2.4}
+\]</span>
+For <span class="math" data-tex="\(m=2\)">\(m=2\)</span> this is exactly <span class="math" data-tex="\(1-K(x_1-x_2)^2\)">\(1-K(x_1-x_2)^2\)</span>. These are matrix theorems, before any conjecture about zeta is made.</p>
+<h2 id="3-the-same-limit-in-a-gaussian-ensemble">3. The same limit in a Gaussian ensemble</h2>
+<p>The <strong>Gaussian unitary ensemble</strong>, or GUE, is the probability measure on complex Hermitian matrices <span class="math" data-tex="\(H\)">\(H\)</span> with density proportional to <span class="math" data-tex="\(e^{-\operatorname{Tr}H^2}\)">\(e^{-\operatorname{Tr}H^2}\)</span> with respect to their independent real coordinates. This normalization fixes a scale; unfolding removes it.</p>
+<p>Diagonalize <span class="math" data-tex="\(H=V\operatorname{diag}(\lambda_j)V^*\)">\(H=V\operatorname{diag}(\lambda_j)V^*\)</span> away from repeated eigenvalues. In these coordinates
+<span class="math math-display" data-tex="\[
+dH=V\{d\operatorname{diag}(\lambda)+[A,\operatorname{diag}(\lambda)]\}V^*,
+\qquad A=V^*dV.
+\]">\[
+dH=V\{d\operatorname{diag}(\lambda)+[A,\operatorname{diag}(\lambda)]\}V^*,
+\qquad A=V^*dV.
+\]</span>
+The invariant Euclidean metric is
+<span class="math" data-tex="\(\sum_j d\lambda_j^2+2\sum_{i&lt;j}(\lambda_i-\lambda_j)^2|A_{ij}|^2\)">\(\sum_j d\lambda_j^2+2\sum_{i&lt;j}(\lambda_i-\lambda_j)^2|A_{ij}|^2\)</span>.
+Each off-diagonal entry has two real coordinates. Its volume factor is therefore <span class="math" data-tex="\((\lambda_i-\lambda_j)^2\)">\((\lambda_i-\lambda_j)^2\)</span>, up to a constant. The set of repetitions is the zero set of a nonzero discriminant polynomial and has measure zero. Change of variables gives the eigenvalue density proportional to
+<span class="math math-display" data-tex="\[
+e^{-\sum_j\lambda_j^2}\prod_{i&lt;j}(\lambda_i-\lambda_j)^2.
+\tag{3.1}
+\]">\[
+e^{-\sum_j\lambda_j^2}\prod_{i&lt;j}(\lambda_i-\lambda_j)^2.
+\tag{3.1}
+\]</span></p>
+<p>Define the Hermite polynomials by
+<span class="math math-display" data-tex="\[
+H_n(x)=(-1)^ne^{x^2}\frac{d^n}{dx^n}e^{-x^2},\qquad
+\varphi_n(x)=\frac{H_n(x)e^{-x^2/2}}
+{\pi^{1/4}\sqrt{2^n n!}}.
+\]">\[
+H_n(x)=(-1)^ne^{x^2}\frac{d^n}{dx^n}e^{-x^2},\qquad
+\varphi_n(x)=\frac{H_n(x)e^{-x^2/2}}
+{\pi^{1/4}\sqrt{2^n n!}}.
+\]</span>
+Integration by parts <span class="math" data-tex="\(n\)">\(n\)</span> times shows that <span class="math" data-tex="\(H_n\)">\(H_n\)</span> is orthogonal to each polynomial of smaller degree for the weight <span class="math" data-tex="\(e^{-x^2}\)">\(e^{-x^2}\)</span>. Its leading coefficient is <span class="math" data-tex="\(2^n\)">\(2^n\)</span>; applying the same calculation to <span class="math" data-tex="\(H_n\)">\(H_n\)</span> gives norm <span class="math" data-tex="\(2^n n!\sqrt\pi\)">\(2^n n!\sqrt\pi\)</span>. Hence the <span class="math" data-tex="\(\varphi_n\)">\(\varphi_n\)</span> are orthonormal. Factoring their leading coefficients out of a determinant rewrites the normalized version of (3.1) as <span class="math" data-tex="\(N!^{-1}\det[K_N^{\rm H}(\lambda_i,\lambda_j)]\)">\(N!^{-1}\det[K_N^{\rm H}(\lambda_i,\lambda_j)]\)</span>, where <span class="math" data-tex="\(K_N^{\rm H}=\sum_{n&lt;N}\varphi_n(x)\varphi_n(y)\)">\(K_N^{\rm H}=\sum_{n&lt;N}\varphi_n(x)\varphi_n(y)\)</span>. The integration proof in Section 2 applies unchanged.</p>
+<p>For clarity, we prove the sine limit at the centre of the Gaussian spectrum. This already explains the common local law in (2.4). Differentiating the defining Hermite formula gives
+<span class="math math-display" data-tex="\[
+\varphi_n&#x27;&#x27;+(2n+1-x^2)\varphi_n=0,\qquad
+x\varphi_n=\sqrt{(n+1)/2}\,\varphi_{n+1}
++\sqrt{n/2}\,\varphi_{n-1}.
+\tag{3.2}
+\]">\[
+\varphi_n&#x27;&#x27;+(2n+1-x^2)\varphi_n=0,\qquad
+x\varphi_n=\sqrt{(n+1)/2}\,\varphi_{n+1}
++\sqrt{n/2}\,\varphi_{n-1}.
+\tag{3.2}
+\]</span>
+These identities can also be checked by differentiating
+<span class="math" data-tex="\(\sum H_n(x)t^n/n!=e^{2xt-t^2}\)">\(\sum H_n(x)t^n/n!=e^{2xt-t^2}\)</span>, obtained by Taylor expansion of <span class="math" data-tex="\(e^{-(x-t)^2}\)">\(e^{-(x-t)^2}\)</span>.
+Multiply the recurrence at <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>, subtract, and telescope to obtain
+<span class="math math-display" data-tex="\[
+K_N^{\rm H}(x,y)=\sqrt{N/2}\,
+\frac{\varphi_N(x)\varphi_{N-1}(y)
+-\varphi_{N-1}(x)\varphi_N(y)}{x-y}.
+\tag{3.3}
+\]">\[
+K_N^{\rm H}(x,y)=\sqrt{N/2}\,
+\frac{\varphi_N(x)\varphi_{N-1}(y)
+-\varphi_{N-1}(x)\varphi_N(y)}{x-y}.
+\tag{3.3}
+\]</span></p>
+<p>Put <span class="math" data-tex="\(b_N=\pi/\sqrt{2N}\)">\(b_N=\pi/\sqrt{2N}\)</span> and <span class="math" data-tex="\(A_N=(2/(\pi^2N))^{1/4}\)">\(A_N=(2/(\pi^2N))^{1/4}\)</span>. Stirling's formula and the values of <span class="math" data-tex="\(H_n(0)\)">\(H_n(0)\)</span> give, for even <span class="math" data-tex="\(n=2m\)">\(n=2m\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi_{2m}(0)=(-1)^m\pi^{-1/4}
+\frac{\sqrt{(2m)!}}{2^m m!}
+=(-1)^m A_{2m}(1+O(m^{-1})).
+\]">\[
+\varphi_{2m}(0)=(-1)^m\pi^{-1/4}
+\frac{\sqrt{(2m)!}}{2^m m!}
+=(-1)^m A_{2m}(1+O(m^{-1})).
+\]</span>
+Odd values vanish; their derivatives satisfy
+<span class="math" data-tex="\(\varphi_{2m+1}&#x27;(0)=\sqrt{2(2m+1)}\,\varphi_{2m}(0)\)">\(\varphi_{2m+1}&#x27;(0)=\sqrt{2(2m+1)}\,\varphi_{2m}(0)\)</span>.
+These initial data and (3.2), after <span class="math" data-tex="\(x=b_Nu\)">\(x=b_Nu\)</span>, imply, uniformly for bounded <span class="math" data-tex="\(u\)">\(u\)</span> and in the first derivative,
+<span class="math math-display" data-tex="\[
+\frac{\varphi_n(b_Nu)}{A_N}
+=\cos(\pi u-n\pi/2)+O_R(N^{-1}),
+\qquad n=N,N-1,\quad |u|\leq R.
+\tag{3.4}
+\]">\[
+\frac{\varphi_n(b_Nu)}{A_N}
+=\cos(\pi u-n\pi/2)+O_R(N^{-1}),
+\qquad n=N,N-1,\quad |u|\leq R.
+\tag{3.4}
+\]</span>
+To see the error estimate without invoking an asymptotic formula for orthogonal polynomials, the rescaled differential equation has coefficient
+<span class="math" data-tex="\(\pi^2(2n+1)/(2N)-b_N^4u^2=\pi^2+O_R(N^{-1})\)">\(\pi^2(2n+1)/(2N)-b_N^4u^2=\pi^2+O_R(N^{-1})\)</span>.
+The initial values and first derivatives have the stated relative error. Variation of constants against <span class="math" data-tex="\(\cos\pi u,\sin\pi u\)">\(\cos\pi u,\sin\pi u\)</span> gives an error bounded by <span class="math" data-tex="\(C_R/N+C_R\int_0^{|u|}|{\rm error}(v)|\,dv\)">\(C_R/N+C_R\int_0^{|u|}|{\rm error}(v)|\,dv\)</span>; iterating this integral inequality proves (3.4). Differentiating the variation-of-constants expression proves its derivative version.</p>
+<p>The numerator of (3.3), divided by <span class="math" data-tex="\(A_N^2\)">\(A_N^2\)</span>, now tends to <span class="math" data-tex="\(\sin\pi(u-v)\)">\(\sin\pi(u-v)\)</span> with a uniform first derivative error. Its value on <span class="math" data-tex="\(u=v\)">\(u=v\)</span> is identically zero, so division by <span class="math" data-tex="\(u-v\)">\(u-v\)</span> is harmless, also on the diagonal. Since <span class="math" data-tex="\(\sqrt{N/2}A_N^2=1/\pi\)">\(\sqrt{N/2}A_N^2=1/\pi\)</span>,
+<span class="math math-display" data-tex="\[
+b_N K_N^{\rm H}(b_Nu,b_Nv)\longrightarrow K(u-v)
+\tag{3.5}
+\]">\[
+b_N K_N^{\rm H}(b_Nu,b_Nv)\longrightarrow K(u-v)
+\tag{3.5}
+\]</span>
+uniformly on bounded squares. Determinants prove every fixed <span class="math" data-tex="\(m\)">\(m\)</span>-level limit at the centre. Thus CUE and this Gaussian bulk limit have the same sine-kernel correlations, despite their different global spectra.</p>
+<p>The conclusion holds at any fixed point inside the bulk, with its local density used for unfolding. Here are the additional estimates. For <span class="math" data-tex="\(n=N,N-1\)">\(n=N,N-1\)</span>, set <span class="math" data-tex="\(q_n(x)=2n+1-x^2\)">\(q_n(x)=2n+1-x^2\)</span> and <span class="math" data-tex="\(z_n(x)=\int_0^x\sqrt{q_n(t)}\,dt\)">\(z_n(x)=\int_0^x\sqrt{q_n(t)}\,dt\)</span>. On <span class="math" data-tex="\(|x|\leq c_*\sqrt{2N}\)">\(|x|\leq c_*\sqrt{2N}\)</span>, with fixed <span class="math" data-tex="\(c_*&lt;1\)">\(c_*&lt;1\)</span>, the substitution <span class="math" data-tex="\(\varphi_n=q_n^{-1/4}v_n(z_n)\)">\(\varphi_n=q_n^{-1/4}v_n(z_n)\)</span> in (3.2) gives
+<span class="math math-display" data-tex="\[
+v_n&#x27;&#x27;+v_n=R_n v_n,\qquad
+R_n=\frac{q_n&#x27;&#x27;}{4q_n^2}-\frac{5(q_n&#x27;)^2}{16q_n^3}.
+\]">\[
+v_n&#x27;&#x27;+v_n=R_n v_n,\qquad
+R_n=\frac{q_n&#x27;&#x27;}{4q_n^2}-\frac{5(q_n&#x27;)^2}{16q_n^3}.
+\]</span>
+The bound <span class="math" data-tex="\(|R_n|\leq C_{c_*}N^{-2}\)">\(|R_n|\leq C_{c_*}N^{-2}\)</span> holds, and the corresponding <span class="math" data-tex="\(z_n\)">\(z_n\)</span>-interval has length <span class="math" data-tex="\(O(N)\)">\(O(N)\)</span>. The exact initial values above, followed by variation of constants, now show
+<span class="math math-display" data-tex="\[
+v_n(z)=\sqrt{2/\pi}\{\cos(z-n\pi/2)+O_{c_*}(N^{-1})\}
+\tag{3.6}
+\]">\[
+v_n(z)=\sqrt{2/\pi}\{\cos(z-n\pi/2)+O_{c_*}(N^{-1})\}
+\tag{3.6}
+\]</span>
+with the same error for <span class="math" data-tex="\(v_n&#x27;\)">\(v_n&#x27;\)</span>. Indeed the integral equation has kernel <span class="math" data-tex="\(\sin(z-t)R_n(t)\)">\(\sin(z-t)R_n(t)\)</span>, whose absolute integral is <span class="math" data-tex="\(O(N^{-1})\)">\(O(N^{-1})\)</span>; its iteration bounds <span class="math" data-tex="\(v_n\)">\(v_n\)</span> and the error uniformly. This also proves (3.6) for negative <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(x_0=c\sqrt{2N}\)">\(x_0=c\sqrt{2N}\)</span>, <span class="math" data-tex="\(|c|&lt;1\)">\(|c|&lt;1\)</span>, and <span class="math" data-tex="\(b=\pi/\sqrt{2N(1-c^2)}\)">\(b=\pi/\sqrt{2N(1-c^2)}\)</span>. Uniformly for bounded <span class="math" data-tex="\(u\)">\(u\)</span>,
+<span class="math math-display" data-tex="\[
+z_n(x_0+bu)=z_n(x_0)+\pi u+O(N^{-1}),\qquad
+q_n(x_0+bu)^{-1/4}=(2N(1-c^2))^{-1/4}(1+O(N^{-1})).
+\]">\[
+z_n(x_0+bu)=z_n(x_0)+\pi u+O(N^{-1}),\qquad
+q_n(x_0+bu)^{-1/4}=(2N(1-c^2))^{-1/4}(1+O(N^{-1})).
+\]</span>
+Moreover
+<span class="math math-display" data-tex="\[
+(z_N(x_0)-N\pi/2)-(z_{N-1}(x_0)-(N-1)\pi/2)
+=-\arccos c+O(N^{-1}),
+\]">\[
+(z_N(x_0)-N\pi/2)-(z_{N-1}(x_0)-(N-1)\pi/2)
+=-\arccos c+O(N^{-1}),
+\]</span>
+because the difference of the two square roots is <span class="math" data-tex="\(1/\sqrt{2N-t^2}+O(N^{-3/2})\)">\(1/\sqrt{2N-t^2}+O(N^{-3/2})\)</span>, uniformly along the integral from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. The trigonometric determinant in (3.3) therefore has leading factor
+<span class="math" data-tex="\(\sqrt{1-c^2}\sin\pi(u-v)\)">\(\sqrt{1-c^2}\sin\pi(u-v)\)</span>. Its amplitude, after multiplication by <span class="math" data-tex="\(\sqrt{N/2}\)">\(\sqrt{N/2}\)</span>, is again <span class="math" data-tex="\(1/\pi\)">\(1/\pi\)</span>. The errors have uniform first derivatives in <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, and vanish on the diagonal before division. This proves
+<span class="math math-display" data-tex="\[
+bK_N^{\rm H}(x_0+bu,x_0+bv)\longrightarrow K(u-v)
+\tag{3.7}
+\]">\[
+bK_N^{\rm H}(x_0+bu,x_0+bv)\longrightarrow K(u-v)
+\tag{3.7}
+\]</span>
+uniformly on compact sets, also when <span class="math" data-tex="\(c\)">\(c\)</span> ranges over a compact subset of <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. Thus the stated <span class="math" data-tex="\(m\)">\(m\)</span>-level law holds throughout the interior bulk. No claim about the edge, whose scaling and kernel differ, is involved.</p>
+<h2 id="4-a-gap-distribution-is-a-determinant-of-an-operator">4. A gap distribution is a determinant of an operator</h2>
+<p>For the sine kernel on <span class="math" data-tex="\((0,s)\)">\((0,s)\)</span>, define its Fredholm determinant by the convergent series
+<span class="math math-display" data-tex="\[
+E(s)=\sum_{m=0}^\infty\frac{(-1)^m}{m!}
+\int_{(0,s)^m}\det[K(x_i-x_j)]\,dx_1\cdots dx_m.
+\tag{4.1}
+\]">\[
+E(s)=\sum_{m=0}^\infty\frac{(-1)^m}{m!}
+\int_{(0,s)^m}\det[K(x_i-x_j)]\,dx_1\cdots dx_m.
+\tag{4.1}
+\]</span>
+The matrix in the integrand is a Gram matrix:
+<span class="math" data-tex="\(K(x-y)=\int_{-1/2}^{1/2}e^{2\pi i\xi(x-y)}\,d\xi\)">\(K(x-y)=\int_{-1/2}^{1/2}e^{2\pi i\xi(x-y)}\,d\xi\)</span>.
+Its determinant is nonnegative and at most one by the Gram determinant inequality, as all diagonal entries are one. Absolute convergence follows from <span class="math" data-tex="\(\sum s^m/m!\)">\(\sum s^m/m!\)</span>.</p>
+<p>In finite CUE, inclusion–exclusion for the number of points in <span class="math" data-tex="\((0,s)\)">\((0,s)\)</span> gives (4.1) with <span class="math" data-tex="\(S_N\)">\(S_N\)</span> and <span class="math" data-tex="\(m\leq N\)">\(m\leq N\)</span>, provided <span class="math" data-tex="\(s&lt;N\)">\(s&lt;N\)</span>. Each determinant is again a Gram determinant with diagonal one. Dominated convergence and (2.4) show that the finite probability of an empty interval tends to <span class="math" data-tex="\(E(s)\)">\(E(s)\)</span>. The finite GUE has the same limit by (3.5): on a bounded interval its rescaled diagonal kernel is uniformly bounded, which gives the dominating bound <span class="math" data-tex="\(C_s^m\)">\(C_s^m\)</span> instead of one.</p>
+<p>There is also a useful bound at large <span class="math" data-tex="\(s\)">\(s\)</span>. For finite CUE the gap probability is <span class="math" data-tex="\(\det(I-B)\)">\(\det(I-B)\)</span>, where
+<span class="math math-display" data-tex="\[
+B_{ij}=\int_0^s\phi_i^{\rm unfolded}(x)
+\overline{\phi_j^{\rm unfolded}(x)}\,dx,\quad 0\leq i,j&lt;N.
+\]">\[
+B_{ij}=\int_0^s\phi_i^{\rm unfolded}(x)
+\overline{\phi_j^{\rm unfolded}(x)}\,dx,\quad 0\leq i,j&lt;N.
+\]</span>
+Expand the determinant in principal minors and apply Cauchy–Binet inside their integrals to get the inclusion–exclusion series. The matrix <span class="math" data-tex="\(B\)">\(B\)</span> is positive, has eigenvalues in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and has trace <span class="math" data-tex="\(s\)">\(s\)</span>, because it is the restriction of orthonormal functions on the whole circle. Hence
+<span class="math math-display" data-tex="\[
+0\leq\det(I-B)\leq e^{-\operatorname{Tr}B}=e^{-s}.
+\]">\[
+0\leq\det(I-B)\leq e^{-\operatorname{Tr}B}=e^{-s}.
+\]</span>
+Passing to the limit gives <span class="math" data-tex="\(0\leq E(s)\leq e^{-s}\)">\(0\leq E(s)\leq e^{-s}\)</span>.</p>
+<p>The <strong>nearest-neighbour spacing density</strong> of the limiting unitary law is
+<span class="math math-display" data-tex="\[
+p(s)=E&#x27;&#x27;(s),\qquad s\geq0.
+\tag{4.2}
+\]">\[
+p(s)=E&#x27;&#x27;(s),\qquad s\geq0.
+\tag{4.2}
+\]</span>
+We justify both the derivative and its probabilistic meaning. For any configuration of <span class="math" data-tex="\(N\)">\(N\)</span> points on a circle of length <span class="math" data-tex="\(N\)">\(N\)</span>, with cyclic gaps <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>, the fraction of starting positions whose following interval of length <span class="math" data-tex="\(s\)">\(s\)</span> is empty equals
+<span class="math math-display" data-tex="\[
+\frac1N\sum_{j=1}^N(\ell_j-s)_+.
+\tag{4.3}
+\]">\[
+\frac1N\sum_{j=1}^N(\ell_j-s)_+.
+\tag{4.3}
+\]</span>
+The CUE law is invariant under rotation, so expectation of (4.3) is its empty-interval probability. Its negative derivative is the expected fraction of gaps exceeding <span class="math" data-tex="\(s\)">\(s\)</span>; its distributional second derivative is the empirical gap probability measure.</p>
+<p>To pass derivatives to the limit, rescale each integral in (4.1) to <span class="math" data-tex="\((0,1)^m\)">\((0,1)^m\)</span>. On any complex disk <span class="math" data-tex="\(|s|\leq R\)">\(|s|\leq R\)</span>, the entries <span class="math" data-tex="\(K(s(u-v))\)">\(K(s(u-v))\)</span>, and the finite-sum entries <span class="math" data-tex="\(S_N(s(u-v))\)">\(S_N(s(u-v))\)</span>, are bounded uniformly in <span class="math" data-tex="\(N,u,v\)">\(N,u,v\)</span>. Hadamard's inequality bounds the absolute value of a determinant by <span class="math" data-tex="\(m^{m/2}C_R^m\)">\(m^{m/2}C_R^m\)</span>. The resulting series <span class="math" data-tex="\(\sum R^m m^{m/2}C_R^m/m!\)">\(\sum R^m m^{m/2}C_R^m/m!\)</span> converges. Thus the Fredholm series and the finite series converge locally uniformly as entire functions of <span class="math" data-tex="\(s\)">\(s\)</span>; Cauchy's formula gives convergence of derivatives. Formula (4.3) proves that <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span> on the real half-line and that it is the limiting gap density.</p>
+<p>Equation (4.1) gives <span class="math" data-tex="\(E(0)=1\)">\(E(0)=1\)</span> and <span class="math" data-tex="\(E&#x27;(0)=-1\)">\(E&#x27;(0)=-1\)</span>. Convexity, monotonicity and <span class="math" data-tex="\(E(s)\to0\)">\(E(s)\to0\)</span> imply <span class="math" data-tex="\(E&#x27;(s)\to0\)">\(E&#x27;(s)\to0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\int_0^\infty p(s)\,ds=1,\qquad
+\int_0^\infty s\,p(s)\,ds=1.
+\tag{4.4}
+\]">\[
+\int_0^\infty p(s)\,ds=1,\qquad
+\int_0^\infty s\,p(s)\,ds=1.
+\tag{4.4}
+\]</span>
+For the second identity integrate by parts; the boundary <span class="math" data-tex="\(sE&#x27;(s)\)">\(sE&#x27;(s)\)</span> vanishes because convexity gives <span class="math" data-tex="\(|E&#x27;(s)|\leq2E(s/2)/s\)">\(|E&#x27;(s)|\leq2E(s/2)/s\)</span>.</p>
+<p>The widely used <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> Wigner approximation
+<span class="math math-display" data-tex="\[
+\frac{32}{\pi^2}s^2e^{-4s^2/\pi}
+\]">\[
+\frac{32}{\pi^2}s^2e^{-4s^2/\pi}
+\]</span>
+is a useful approximation to (4.2), not its definition. The determinant (4.1) includes all the higher correlation functions and is the spacing law used in our numerical comparison.</p>
+<h2 id="5-an-exterior-power-calculation">5. An exterior-power calculation</h2>
+<p>Let <span class="math" data-tex="\(Z_U=\det(I-U)\)">\(Z_U=\det(I-U)\)</span>. Its expansion is
+<span class="math math-display" data-tex="\[
+Z_U=\sum_{j=0}^N(-1)^j\operatorname{tr}(\Lambda^jU).
+\tag{5.1}
+\]">\[
+Z_U=\sum_{j=0}^N(-1)^j\operatorname{tr}(\Lambda^jU).
+\tag{5.1}
+\]</span>
+For a diagonal matrix this is the elementary symmetric-polynomial expansion of the determinant; diagonalization proves it for all unitary matrices.</p>
+<p>We verify the representation facts needed to integrate the square. In the wedge basis <span class="math" data-tex="\(e_{i_1}\wedge\cdots\wedge e_{i_j}\)">\(e_{i_1}\wedge\cdots\wedge e_{i_j}\)</span>, the diagonal torus acts with distinct weights <span class="math" data-tex="\(\prod_{i\in I}t_i\)">\(\prod_{i\in I}t_i\)</span>. An operator commuting with every diagonal matrix is diagonal in this basis. If it also commutes with the permutation matrices, its diagonal values are equal, because permutations act transitively on the <span class="math" data-tex="\(j\)">\(j\)</span>-element subsets. Thus its commutant is scalar. A proper invariant subspace of a unitary representation would have a nonscalar orthogonal projection in its commutant. Consequently <span class="math" data-tex="\(\Lambda^j\mathbb C^N\)">\(\Lambda^j\mathbb C^N\)</span> is irreducible, including the one-dimensional cases <span class="math" data-tex="\(j=0,N\)">\(j=0,N\)</span>. The central matrix <span class="math" data-tex="\(tI\)">\(tI\)</span> acts by <span class="math" data-tex="\(t^j\)">\(t^j\)</span>, so representations with different <span class="math" data-tex="\(j\)">\(j\)</span> are inequivalent.</p>
+<p>For completeness the character orthogonality follows by Haar averaging. If <span class="math" data-tex="\(\pi,\sigma\)">\(\pi,\sigma\)</span> are irreducible unitary representations, average a linear map <span class="math" data-tex="\(A\)">\(A\)</span> as <span class="math" data-tex="\(\int\pi(U)A\sigma(U)^*\,dU\)">\(\int\pi(U)A\sigma(U)^*\,dU\)</span>. It is an intertwiner. Its kernel and image are invariant, so it vanishes if the representations are inequivalent. For <span class="math" data-tex="\(\pi=\sigma\)">\(\pi=\sigma\)</span>, an intertwiner is scalar: an eigenspace over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> of any such map is invariant, which forces the map to be scalar. Taking its trace gives the scalar <span class="math" data-tex="\(\operatorname{tr}A/\dim\pi\)">\(\operatorname{tr}A/\dim\pi\)</span>. Apply this to the matrix units; then sum the resulting coefficient identities on the two character diagonals to obtain
+<span class="math math-display" data-tex="\[
+\int\chi_\pi(U)\overline{\chi_\sigma(U)}\,dU
+=\begin{cases}1,&amp;\pi\simeq\sigma,\\0,&amp;\pi\not\simeq\sigma.\end{cases}
+\]">\[
+\int\chi_\pi(U)\overline{\chi_\sigma(U)}\,dU
+=\begin{cases}1,&amp;\pi\simeq\sigma,\\0,&amp;\pi\not\simeq\sigma.\end{cases}
+\]</span>
+Expanding (5.1), therefore,
+<span class="math math-display" data-tex="\[
+\boxed{\ \mathbb E_{U(N)}|Z_U|^2=N+1.\ }
+\tag{5.2}
+\]">\[
+\boxed{\ \mathbb E_{U(N)}|Z_U|^2=N+1.\ }
+\tag{5.2}
+\]</span>
+The <span class="math" data-tex="\(N+1\)">\(N+1\)</span> summands are contributions of representations, rather than independent random coefficients.</p>
+<h2 id="6-every-unitary-moment">6. Every unitary moment</h2>
+<p>For real <span class="math" data-tex="\(k&gt;-1/2\)">\(k&gt;-1/2\)</span>, Keating and Snaith's exact formula is
+<span class="math math-display" data-tex="\[
+\mathbb E_{U(N)}|Z_U|^{2k}
+=\prod_{j=0}^{N-1}
+\frac{\Gamma(j+1)\Gamma(j+1+2k)}{\Gamma(j+1+k)^2}.
+\tag{6.1}
+\]">\[
+\mathbb E_{U(N)}|Z_U|^{2k}
+=\prod_{j=0}^{N-1}
+\frac{\Gamma(j+1)\Gamma(j+1+2k)}{\Gamma(j+1+k)^2}.
+\tag{6.1}
+\]</span>
+We prove it using a determinant and analytic uniqueness.</p>
+<p>First suppose <span class="math" data-tex="\(k\)">\(k\)</span> is a nonnegative integer. Expanding the two Vandermonde determinants in (0.1) and integrating each variable shows
+<span class="math math-display" data-tex="\[
+\mathbb E|Z_U|^{2k}
+=\det[c_{i-j}]_{i,j=0}^{N-1},\qquad
+c_\ell=\frac1{2\pi}\int_0^{2\pi}|1-e^{i\theta}|^{2k}
+e^{-i\ell\theta}\,d\theta.
+\tag{6.2}
+\]">\[
+\mathbb E|Z_U|^{2k}
+=\det[c_{i-j}]_{i,j=0}^{N-1},\qquad
+c_\ell=\frac1{2\pi}\int_0^{2\pi}|1-e^{i\theta}|^{2k}
+e^{-i\ell\theta}\,d\theta.
+\tag{6.2}
+\]</span>
+The determinant integration identity used here is direct: for functions <span class="math" data-tex="\(f_i,g_j\)">\(f_i,g_j\)</span>, expand both determinants in permutations to get
+<span class="math" data-tex="\(\int\det[f_i(x_j)]\det[g_i(x_j)]\prod_jd\mu(x_j)
+=N!\det[\int f_i g_j\,d\mu]\)">\(\int\det[f_i(x_j)]\det[g_i(x_j)]\prod_jd\mu(x_j)
+=N!\det[\int f_i g_j\,d\mu]\)</span>.
+Since
+<span class="math" data-tex="\((1-z)^k(1-z^{-1})^k=(-1)^kz^{-k}(1-z)^{2k}\)">\((1-z)^k(1-z^{-1})^k=(-1)^kz^{-k}(1-z)^{2k}\)</span>,
+the Laurent coefficients are <span class="math" data-tex="\(c_\ell=(-1)^\ell\binom{2k}{k+\ell}\)">\(c_\ell=(-1)^\ell\binom{2k}{k+\ell}\)</span>. Removing the row and column signs in (6.2) leaves a binomial determinant.</p>
+<p>For integers <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span>, put
+<span class="math math-display" data-tex="\[
+D_N(a,b)=\det\left[\binom{a+b}{a+i-j}\right]_{i,j=0}^{N-1},
+\]">\[
+D_N(a,b)=\det\left[\binom{a+b}{a+i-j}\right]_{i,j=0}^{N-1},
+\]</span>
+where a binomial coefficient outside its range is zero. The evaluation is
+<span class="math math-display" data-tex="\[
+D_N(a,b)=\prod_{j=0}^{N-1}
+\frac{j!(a+b+j)!}{(a+j)!(b+j)!}.
+\tag{6.3}
+\]">\[
+D_N(a,b)=\prod_{j=0}^{N-1}
+\frac{j!(a+b+j)!}{(a+j)!(b+j)!}.
+\tag{6.3}
+\]</span>
+Here is an induction that checks every constant. For <span class="math" data-tex="\(N=0,1\)">\(N=0,1\)</span> the formula is immediate. If <span class="math" data-tex="\(a=0\)">\(a=0\)</span> or <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, the matrix is triangular with diagonal one, and the product also equals one. For <span class="math" data-tex="\(a,b\geq1\)">\(a,b\geq1\)</span>, the adjacent-minor identity gives
+<span class="math math-display" data-tex="\[
+D_N(a,b)D_{N-2}(a,b)
+=D_{N-1}(a,b)^2
+-D_{N-1}(a+1,b-1)D_{N-1}(a-1,b+1).
+\tag{6.4}
+\]">\[
+D_N(a,b)D_{N-2}(a,b)
+=D_{N-1}(a,b)^2
+-D_{N-1}(a+1,b-1)D_{N-1}(a-1,b+1).
+\tag{6.4}
+\]</span>
+To verify the identity for an arbitrary matrix, assume its middle <span class="math" data-tex="\((N-2)\)">\((N-2)\)</span>-square is invertible, take its Schur complement to reduce to a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> determinant, and cancel its determinant. The resulting polynomial identity holds for all matrices by continuity.</p>
+<p>Write <span class="math" data-tex="\(P_n(a,b)\)">\(P_n(a,b)\)</span> for the proposed product. Cancelling its factors gives
+<span class="math math-display" data-tex="\[
+\frac{P_n(a+1,b-1)P_n(a-1,b+1)}{P_n(a,b)^2}
+=\frac{ab}{(a+n)(b+n)}.
+\]">\[
+\frac{P_n(a+1,b-1)P_n(a-1,b+1)}{P_n(a,b)^2}
+=\frac{ab}{(a+n)(b+n)}.
+\]</span>
+Also <span class="math" data-tex="\(P_NP_{N-2}/P_{N-1}^2
+=(N-1)(a+b+N-1)/((a+N-1)(b+N-1))\)">\(P_NP_{N-2}/P_{N-1}^2
+=(N-1)(a+b+N-1)/((a+N-1)(b+N-1))\)</span>. This is precisely one minus the last displayed ratio for <span class="math" data-tex="\(n=N-1\)">\(n=N-1\)</span>. The positive induction value <span class="math" data-tex="\(D_{N-2}=P_{N-2}\)">\(D_{N-2}=P_{N-2}\)</span> permits division in (6.4), proving (6.3). Taking <span class="math" data-tex="\(a=b=k\)">\(a=b=k\)</span> proves (6.1) at all nonnegative integers.</p>
+<p>To extend the identity, use <span class="math" data-tex="\(k\)">\(k\)</span> as a complex variable. The integral
+<span class="math math-display" data-tex="\[
+D(k)=\mathbb E\exp(2k\log|Z_U|)
+\]">\[
+D(k)=\mathbb E\exp(2k\log|Z_U|)
+\]</span>
+is holomorphic for <span class="math" data-tex="\(\Re k&gt;-1/2\)">\(\Re k&gt;-1/2\)</span>. Indeed (0.1) has a bounded Vandermonde factor, and each possible singularity at <span class="math" data-tex="\(\theta_j=0\)">\(\theta_j=0\)</span> is dominated on a compact <span class="math" data-tex="\(k\)">\(k\)</span>-set by an integrable power <span class="math" data-tex="\(|\theta_j|^{2\sigma}\)">\(|\theta_j|^{2\sigma}\)</span>, with <span class="math" data-tex="\(\sigma&gt;-1/2\)">\(\sigma&gt;-1/2\)</span>. Logarithmic derivatives are dominated too. The right side <span class="math" data-tex="\(Q(k)\)">\(Q(k)\)</span> of (6.1) is holomorphic and nonzero in the same half-plane.</p>
+<p>For <span class="math" data-tex="\(\sigma=\Re k\geq0\)">\(\sigma=\Re k\geq0\)</span>, <span class="math" data-tex="\(|D(k)|\leq4^{N\sigma}\)">\(|D(k)|\leq4^{N\sigma}\)</span>. Uniform Stirling estimates in the closed right half-plane give
+<span class="math math-display" data-tex="\[
+Q(k)=C_N4^{Nk}k^{-N^2/2}(1+O_N(|k|^{-1})),
+\qquad C_N&gt;0,\quad |k|\to\infty,\ \Re k\geq0.
+\]">\[
+Q(k)=C_N4^{Nk}k^{-N^2/2}(1+O_N(|k|^{-1})),
+\qquad C_N&gt;0,\quad |k|\to\infty,\ \Re k\geq0.
+\]</span>
+Thus <span class="math" data-tex="\(f=D/Q-1\)">\(f=D/Q-1\)</span> has at most polynomial growth in that half-plane. Dividing it by a sufficiently high integer power of <span class="math" data-tex="\(1+k\)">\(1+k\)</span> makes a bounded holomorphic function on <span class="math" data-tex="\(\Re k&gt;0\)">\(\Re k&gt;0\)</span>, vanishing at every positive integer.</p>
+<p>Such a function must vanish identically. Here is the needed uniqueness fact. Map the half-plane to the disk by <span class="math" data-tex="\(z=(k-1)/(k+1)\)">\(z=(k-1)/(k+1)\)</span>. The zeros at <span class="math" data-tex="\(k=n\geq2\)">\(k=n\geq2\)</span> become <span class="math" data-tex="\(z_n=(n-1)/(n+1)\)">\(z_n=(n-1)/(n+1)\)</span>. A bounded nonzero holomorphic function on the disk has <span class="math" data-tex="\(\sum_n-\log|z_n|&lt;\infty\)">\(\sum_n-\log|z_n|&lt;\infty\)</span>: factor a possible zero at the centre, apply Jensen's formula on a radius <span class="math" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, bound the boundary mean by the logarithm of its supremum, and let <span class="math" data-tex="\(r\uparrow1\)">\(r\uparrow1\)</span>. But <span class="math" data-tex="\(-\log z_n\geq1-z_n=2/(n+1)\)">\(-\log z_n\geq1-z_n=2/(n+1)\)</span>, whose sum diverges. This contradiction proves uniqueness. Hence <span class="math" data-tex="\(D=Q\)">\(D=Q\)</span> for <span class="math" data-tex="\(\Re k&gt;0\)">\(\Re k&gt;0\)</span>, and the identity theorem continues the equality to <span class="math" data-tex="\(\Re k&gt;-1/2\)">\(\Re k&gt;-1/2\)</span>. This proves (6.1), including the integrability range.</p>
+<h2 id="7-the-barnes-factor-and-the-size-of-a-matrix">7. The Barnes factor and the size of a matrix</h2>
+<p>The Barnes <span class="math" data-tex="\(G\)">\(G\)</span>-function can be normalized by the convergent product
+<span class="math math-display" data-tex="\[
+G(1+z)=(2\pi)^{z/2}
+\exp\left(-\frac{z+(1+\gamma)z^2}{2}\right)
+\prod_{n=1}^\infty
+\left\{(1+z/n)^n\exp\left(\frac{z^2}{2n}-z\right)\right\}.
+\tag{7.1}
+\]">\[
+G(1+z)=(2\pi)^{z/2}
+\exp\left(-\frac{z+(1+\gamma)z^2}{2}\right)
+\prod_{n=1}^\infty
+\left\{(1+z/n)^n\exp\left(\frac{z^2}{2n}-z\right)\right\}.
+\tag{7.1}
+\]</span>
+The logarithm of each product factor is <span class="math" data-tex="\(O_R(n^{-2})\)">\(O_R(n^{-2})\)</span> on a fixed disk away from its finitely many zeros. The product therefore defines an entire function, with <span class="math" data-tex="\(G(1)=1\)">\(G(1)=1\)</span>.</p>
+<p>We record its recurrence rather than assume its normalization. Let <span class="math" data-tex="\(L(z)=\log G(1+z)\)">\(L(z)=\log G(1+z)\)</span> on a zero-free region. Differentiation of the convergent product gives
+<span class="math math-display" data-tex="\[
+L&#x27;(z)=\tfrac12\log(2\pi)-\tfrac12-(1+\gamma)z
++\sum_{n\geq1}\left(\frac{n}{n+z}-1+\frac zn\right).
+\tag{7.2}
+\]">\[
+L&#x27;(z)=\tfrac12\log(2\pi)-\tfrac12-(1+\gamma)z
++\sum_{n\geq1}\left(\frac{n}{n+z}-1+\frac zn\right).
+\tag{7.2}
+\]</span>
+Subtract this formula at <span class="math" data-tex="\(z\)">\(z\)</span> from the formula at <span class="math" data-tex="\(z+1\)">\(z+1\)</span>. Rearranging the convergent difference, using
+<span class="math math-display" data-tex="\[
+\frac{-n}{(n+z)(n+z+1)}
+=-\frac1{n+z+1}
++\frac{z}{(n+z)(n+z+1)},
+\]">\[
+\frac{-n}{(n+z)(n+z+1)}
+=-\frac1{n+z+1}
++\frac{z}{(n+z)(n+z+1)},
+\]</span>
+and telescoping the second term, gives
+<span class="math" data-tex="\(L&#x27;(z+1)-L&#x27;(z)=\psi(z+1)\)">\(L&#x27;(z+1)-L&#x27;(z)=\psi(z+1)\)</span>, the logarithmic derivative of gamma. The constant is fixed by <span class="math" data-tex="\(G(2)=1\)">\(G(2)=1\)</span>. To check that value in (7.1), the logarithm of its first <span class="math" data-tex="\(M\)">\(M\)</span> factors at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> is
+<span class="math math-display" data-tex="\[
+M\log(M+1)-\log M!-M+\tfrac12 H_M
+\longrightarrow 1-\tfrac12\log(2\pi)+\tfrac12\gamma
+\]">\[
+M\log(M+1)-\log M!-M+\tfrac12 H_M
+\longrightarrow 1-\tfrac12\log(2\pi)+\tfrac12\gamma
+\]</span>
+by Stirling's formula and <span class="math" data-tex="\(H_M=\log M+\gamma+o(1)\)">\(H_M=\log M+\gamma+o(1)\)</span>. The prefactor in (7.1) has the opposite logarithm. Hence analytic continuation gives
+<span class="math math-display" data-tex="\[
+G(z+1)=\Gamma(z)G(z).
+\tag{7.3}
+\]">\[
+G(z+1)=\Gamma(z)G(z).
+\tag{7.3}
+\]</span>
+In particular <span class="math" data-tex="\(G(1+k)=\prod_{j=0}^{k-1}j!\)">\(G(1+k)=\prod_{j=0}^{k-1}j!\)</span> for integers <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, and
+<span class="math math-display" data-tex="\[
+f_k:=\frac{G(1+k)^2}{G(1+2k)}
+=\prod_{j=0}^{k-1}\frac{j!}{(j+k)!}.
+\tag{7.4}
+\]">\[
+f_k:=\frac{G(1+k)^2}{G(1+2k)}
+=\prod_{j=0}^{k-1}\frac{j!}{(j+k)!}.
+\tag{7.4}
+\]</span></p>
+<p>Applying (7.3) to (6.1) writes the exact moment as
+<span class="math math-display" data-tex="\[
+\mathbb E|Z_U|^{2k}
+=f_k\frac{G(N+1)G(N+1+2k)}{G(N+1+k)^2}.
+\tag{7.5}
+\]">\[
+\mathbb E|Z_U|^{2k}
+=f_k\frac{G(N+1)G(N+1+2k)}{G(N+1+k)^2}.
+\tag{7.5}
+\]</span>
+For fixed real <span class="math" data-tex="\(k&gt;-1/2\)">\(k&gt;-1/2\)</span>, this has the asymptotic
+<span class="math math-display" data-tex="\[
+\mathbb E|Z_U|^{2k}\sim f_kN^{k^2}.
+\tag{7.6}
+\]">\[
+\mathbb E|Z_U|^{2k}\sim f_kN^{k^2}.
+\tag{7.6}
+\]</span>
+A second derivative proves it without needing a full asymptotic expansion of <span class="math" data-tex="\(G\)">\(G\)</span>. Differentiating (7.2) once more and using the convergent digamma series gives
+<span class="math math-display" data-tex="\[
+L&#x27;&#x27;(z)=\psi(z+1)+z\psi&#x27;(z+1)-1=\log z+O(z^{-2})
+\quad(z\to+\infty).
+\]">\[
+L&#x27;&#x27;(z)=\psi(z+1)+z\psi&#x27;(z+1)-1=\log z+O(z^{-2})
+\quad(z\to+\infty).
+\]</span>
+The last equality follows from the differentiated Stirling estimates. Therefore
+<span class="math math-display" data-tex="\[
+L(N+2k)-2L(N+k)+L(N)
+=\int_0^k\int_0^k L&#x27;&#x27;(N+u+v)\,du\,dv
+=k^2\log N+O_k(N^{-1}).
+\]">\[
+L(N+2k)-2L(N+k)+L(N)
+=\int_0^k\int_0^k L&#x27;&#x27;(N+u+v)\,du\,dv
+=k^2\log N+O_k(N^{-1}).
+\]</span>
+The oriented integrals also apply when <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>. Exponentiation proves (7.6). The matrix predicts a power <span class="math" data-tex="\(k^2\)">\(k^2\)</span>, with the universal factor <span class="math" data-tex="\(f_k\)">\(f_k\)</span>.</p>
+<h2 id="8-the-arithmetic-factor-and-zeta-moments">8. The arithmetic factor and zeta moments</h2>
+<p>For real <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+d_k(p^m)=\frac{k(k+1)\cdots(k+m-1)}{m!},\quad
+d_k(1)=1,
+\]">\[
+d_k(p^m)=\frac{k(k+1)\cdots(k+m-1)}{m!},\quad
+d_k(1)=1,
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+a_k=\prod_p(1-p^{-1})^{k^2}
+\sum_{m=0}^\infty d_k(p^m)^2p^{-m}.
+\tag{8.1}
+\]">\[
+a_k=\prod_p(1-p^{-1})^{k^2}
+\sum_{m=0}^\infty d_k(p^m)^2p^{-m}.
+\tag{8.1}
+\]</span>
+At <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the definition gives <span class="math" data-tex="\(d_0(p^m)=0\)">\(d_0(p^m)=0\)</span> for <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, so <span class="math" data-tex="\(a_0=1\)">\(a_0=1\)</span>. At positive <span class="math" data-tex="\(k\)">\(k\)</span> it agrees with the gamma quotient in the question. For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the coefficients grow at most as a fixed power of <span class="math" data-tex="\(m+1\)">\(m+1\)</span>, by the ratio of successive terms or gamma estimates. The local sum is <span class="math" data-tex="\(1+k^2/p+O_k(p^{-2})\)">\(1+k^2/p+O_k(p^{-2})\)</span>; multiplication by <span class="math" data-tex="\((1-1/p)^{k^2}\)">\((1-1/p)^{k^2}\)</span> cancels the linear term. Its positive factors are <span class="math" data-tex="\(1+O_k(p^{-2})\)">\(1+O_k(p^{-2})\)</span>, so the product converges to a positive number.</p>
+<p>The <strong>Keating–Snaith moment conjecture</strong> for zeta is
+<span class="math math-display" data-tex="\[
+\frac1T\int_0^T|\zeta(1/2+it)|^{2k}\,dt
+\sim a_kf_k(\log T)^{k^2},\qquad k\geq0\text{ fixed}.
+\tag{8.2}
+\]">\[
+\frac1T\int_0^T|\zeta(1/2+it)|^{2k}\,dt
+\sim a_kf_k(\log T)^{k^2},\qquad k\geq0\text{ fixed}.
+\tag{8.2}
+\]</span>
+The matching size is <span class="math" data-tex="\(N\sim\log T\)">\(N\sim\log T\)</span>: both a unitary spectrum and the zeta zeros near height <span class="math" data-tex="\(T\)">\(T\)</span> then have the corresponding local density after their natural angular or ordinate scaling. The arithmetic factor is essential. A Haar unitary matrix has no Euler product.</p>
+<p>We check the first constants exactly. For <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, <span class="math" data-tex="\(d_1(p^m)=1\)">\(d_1(p^m)=1\)</span>, the sum in (8.1) is <span class="math" data-tex="\((1-p^{-1})^{-1}\)">\((1-p^{-1})^{-1}\)</span>, and every local factor is one. Thus <span class="math" data-tex="\(a_1=f_1=1\)">\(a_1=f_1=1\)</span>. For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(d_2(p^m)=m+1\)">\(d_2(p^m)=m+1\)</span>; differentiation of the geometric series gives
+<span class="math math-display" data-tex="\[
+\sum_{m\geq0}(m+1)^2x^m=\frac{1+x}{(1-x)^3}.
+\]">\[
+\sum_{m\geq0}(m+1)^2x^m=\frac{1+x}{(1-x)^3}.
+\]</span>
+Its local factor is <span class="math" data-tex="\((1-x)^4(1+x)/(1-x)^3=1-x^2\)">\((1-x)^4(1+x)/(1-x)^3=1-x^2\)</span>, where <span class="math" data-tex="\(x=p^{-1}\)">\(x=p^{-1}\)</span>. The Euler product and the value <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span> give
+<span class="math math-display" data-tex="\[
+a_2=\frac1{\zeta(2)}=\frac6{\pi^2},\qquad
+a_2f_2=\frac1{2\pi^2}.
+\tag{8.3}
+\]">\[
+a_2=\frac1{\zeta(2)}=\frac6{\pi^2},\qquad
+a_2f_2=\frac1{2\pi^2}.
+\tag{8.3}
+\]</span>
+The absolutely convergent Euler product is an input from <em>Dirichlet series and Euler products</em>. One short proof of the special value uses the Fourier series of <span class="math" data-tex="\(x^2\)">\(x^2\)</span> on <span class="math" data-tex="\([-\pi,\pi]\)">\([-\pi,\pi]\)</span>. Two integrations by parts give its constant coefficient <span class="math" data-tex="\(\pi^2/3\)">\(\pi^2/3\)</span> and cosine coefficients <span class="math" data-tex="\(4(-1)^n/n^2\)">\(4(-1)^n/n^2\)</span>. The resulting series converges uniformly and has these Fourier coefficients. It equals <span class="math" data-tex="\(x^2\)">\(x^2\)</span>: the continuous periodic difference has every Fourier coefficient zero, so its Fejér means vanish and also converge uniformly to the difference. The latter convergence follows directly by writing the Fejér kernel as the square of a finite geometric sum; it has integral one, is nonnegative and tends uniformly to zero outside any fixed neighbourhood of zero. Evaluate at <span class="math" data-tex="\(x=\pi\)">\(x=\pi\)</span> to get <span class="math" data-tex="\(\pi^2=\pi^2/3+4\sum_{n\geq1}n^{-2}\)">\(\pi^2=\pi^2/3+4\sum_{n\geq1}n^{-2}\)</span>, as required.</p>
+<p>The exact rational values from (7.4) are</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(k\)">\(k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(f_k\)">\(f_k\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(g_k=(k^2)!\,f_k\)">\(g_k=(k^2)!\,f_k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/12\)">\(1/12\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/8640\)">\(1/8640\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(42\)">\(42\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right"><span class="math" data-tex="\(1/870912000\)">\(1/870912000\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(24024\)">\(24024\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example the third denominator is <span class="math" data-tex="\(3!\,4!\,5!/(0!\,1!\,2!)=8640\)">\(3!\,4!\,5!/(0!\,1!\,2!)=8640\)</span>, and the fourth is <span class="math" data-tex="\(4!\,5!\,6!\,7!/(0!\,1!\,2!\,3!)=870912000\)">\(4!\,5!\,6!\,7!/(0!\,1!\,2!\,3!)=870912000\)</span>. Division of <span class="math" data-tex="\(9!\)">\(9!\)</span> and <span class="math" data-tex="\(16!\)">\(16!\)</span> by these denominators gives <span class="math" data-tex="\(42\)">\(42\)</span> and <span class="math" data-tex="\(24024\)">\(24024\)</span>. These agree with the sixth- and eighth-moment constants proposed by Conrey–Ghosh and Conrey–Gonek before the general matrix prediction.</p>
+<p>The cases <span class="math" data-tex="\(k=1,2\)">\(k=1,2\)</span> of (8.2) are theorems. The existing planned lesson <em>Mean values of Dirichlet polynomials and of zeta on the critical line</em> proves the unnormalized statements
+<span class="math math-display" data-tex="\[
+\int_0^T|\zeta(1/2+it)|^2\,dt
+=T\log(T/2\pi)+(2\gamma-1)T+o(T),
+\tag{8.4}
+\]">\[
+\int_0^T|\zeta(1/2+it)|^2\,dt
+=T\log(T/2\pi)+(2\gamma-1)T+o(T),
+\tag{8.4}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\int_0^T|\zeta(1/2+it)|^4\,dt
+=\frac{T}{2\pi^2}\log^4T+O(T\log^3T).
+\tag{8.5}
+\]">\[
+\int_0^T|\zeta(1/2+it)|^4\,dt
+=\frac{T}{2\pi^2}\log^4T+O(T\log^3T).
+\tag{8.5}
+\]</span>
+Their leading terms match (8.2). The general conjecture does not follow by interpolation from these two values or from the exact matrix formula.</p>
+<h2 id="9-restricted-higher-correlations-of-zeta-zeros">9. Restricted higher correlations of zeta zeros</h2>
+<p>Assume RH. Let <span class="math" data-tex="\(f(x_1,\ldots,x_n)\)">\(f(x_1,\ldots,x_n)\)</span> be symmetric and invariant under adding the same number to all its arguments. Suppose
+<span class="math math-display" data-tex="\[
+f(x)=\int_{\mathbb R^n}\Phi(\xi)
+\delta(\xi_1+\cdots+\xi_n)e^{2\pi i x\cdot\xi}\,d\xi,
+\tag{9.1}
+\]">\[
+f(x)=\int_{\mathbb R^n}\Phi(\xi)
+\delta(\xi_1+\cdots+\xi_n)e^{2\pi i x\cdot\xi}\,d\xi,
+\tag{9.1}
+\]</span>
+where <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is smooth and compactly supported in <span class="math" data-tex="\(\sum_j|\xi_j|&lt;2\)">\(\sum_j|\xi_j|&lt;2\)</span>. The delta specifies the measure: integrate out <span class="math" data-tex="\(\xi_n=-\sum_{j&lt;n}\xi_j\)">\(\xi_n=-\sum_{j&lt;n}\xi_j\)</span>, without an additional Euclidean surface-measure factor. Put <span class="math" data-tex="\(L=\log T\)">\(L=\log T\)</span>, and let <span class="math" data-tex="\(N_T\)">\(N_T\)</span> count the zero indices in <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span>, with multiplicity.</p>
+<p>The <strong>restricted Rudnick–Sarnak theorem</strong>, in its zeta specialization, is
+<span class="math math-display" data-tex="\[
+\frac1{N_T}
+\sum_{\substack{\gamma_{j_1},\ldots,\gamma_{j_n}\in[T,2T]\\
+j_1,\ldots,j_n\ {\rm distinct}}}
+f\left(\frac{L\gamma_{j_1}}{2\pi},\ldots,
+\frac{L\gamma_{j_n}}{2\pi}\right)
+\longrightarrow
+\int_{\mathbb R^{n-1}}f(0,u_2,\ldots,u_n)
+\det[K(u_i-u_j)]_{i,j=1}^n\,du_2\cdots du_n,
+\quad u_1=0.
+\tag{9.2}
+\]">\[
+\frac1{N_T}
+\sum_{\substack{\gamma_{j_1},\ldots,\gamma_{j_n}\in[T,2T]\\
+j_1,\ldots,j_n\ {\rm distinct}}}
+f\left(\frac{L\gamma_{j_1}}{2\pi},\ldots,
+\frac{L\gamma_{j_n}}{2\pi}\right)
+\longrightarrow
+\int_{\mathbb R^{n-1}}f(0,u_2,\ldots,u_n)
+\det[K(u_i-u_j)]_{i,j=1}^n\,du_2\cdots du_n,
+\quad u_1=0.
+\tag{9.2}
+\]</span>
+Distinct indices are required, rather than an assumption that every zero is simple. The zero count gives <span class="math" data-tex="\(N_T\sim TL/(2\pi)\)">\(N_T\sim TL/(2\pi)\)</span>.</p>
+<p>We prove (9.2) by comparing moments of local counting functions. The finite unitary calculation needed in the comparison is an exact identity. If <span class="math" data-tex="\(\mu,\nu\)">\(\mu,\nu\)</span> are partitions of integers <span class="math" data-tex="\(d,e\)">\(d,e\)</span>, respectively, and <span class="math" data-tex="\(d,e\leq N\)">\(d,e\leq N\)</span>, then
+<span class="math math-display" data-tex="\[
+\mathbb E_{U(N)}p_\mu(U)\overline{p_\nu(U)}
+=\mathbf1_{\mu=\nu}z_\mu,\qquad
+p_\mu(U)=\prod_{a\in\mu}\operatorname{Tr}U^a,\quad
+z_\mu=\prod_{r\geq1}r^{m_r}m_r!.
+\tag{9.3}
+\]">\[
+\mathbb E_{U(N)}p_\mu(U)\overline{p_\nu(U)}
+=\mathbf1_{\mu=\nu}z_\mu,\qquad
+p_\mu(U)=\prod_{a\in\mu}\operatorname{Tr}U^a,\quad
+z_\mu=\prod_{r\geq1}r^{m_r}m_r!.
+\tag{9.3}
+\]</span>
+For <span class="math" data-tex="\(d\ne e\)">\(d\ne e\)</span>, central multiplication <span class="math" data-tex="\(U\mapsto tU\)">\(U\mapsto tU\)</span> proves zero. For <span class="math" data-tex="\(d=e\)">\(d=e\)</span>, use the Frobenius identity
+<span class="math" data-tex="\(p_\mu=\sum_{\lambda\vdash d}\chi^\lambda(\mu)s_\lambda\)">\(p_\mu=\sum_{\lambda\vdash d}\chi^\lambda(\mu)s_\lambda\)</span>,
+proved in <em>The symmetric groups III: characters and symmetric functions</em>, and the unitary Schur characters and their orthogonality from <em>The unitary groups: Weyl's character formula for <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span></em>. All partitions of <span class="math" data-tex="\(d\leq N\)">\(d\leq N\)</span> have length at most <span class="math" data-tex="\(N\)">\(N\)</span>, so none are lost on specialization. Character column orthogonality for <span class="math" data-tex="\(S_d\)">\(S_d\)</span> gives the right side of (9.3). These are exact existing planned representation-theory inputs. In terms of labelled factors, (9.3) pairs each positive power with an equal negative power, with a factor equal to that power for each pair. The factorial <span class="math" data-tex="\(m_r!\)">\(m_r!\)</span> counts its possible pairings.</p>
+<p>For a Schwartz function <span class="math" data-tex="\(a\)">\(a\)</span> with smooth compactly supported Fourier transform, define
+<span class="math math-display" data-tex="\[
+A_a(t)=\sum_\gamma a\left(\frac{L}{2\pi}(\gamma-t)\right).
+\]">\[
+A_a(t)=\sum_\gamma a\left(\frac{L}{2\pi}(\gamma-t)\right).
+\]</span>
+The explicit formula of the first lesson, with the gamma estimate near <span class="math" data-tex="\(t\asymp T\)">\(t\asymp T\)</span>, gives uniformly for <span class="math" data-tex="\(T\leq t\leq2T\)">\(T\leq t\leq2T\)</span>
+<span class="math math-display" data-tex="\[
+A_a(t)=\widehat a(0)
+-\frac1L\sum_{m\geq2}\frac{\Lambda(m)}{\sqrt m}
+\{\widehat a(\log m/L)m^{-it}
++\widehat a(-\log m/L)m^{it}\}
+O_a(L^{-1}).
+\tag{9.4}
+\]">\[
+A_a(t)=\widehat a(0)
+-\frac1L\sum_{m\geq2}\frac{\Lambda(m)}{\sqrt m}
+\{\widehat a(\log m/L)m^{-it}
++\widehat a(-\log m/L)m^{it}\}
+O_a(L^{-1}).
+\tag{9.4}
+\]</span>
+The sum is finite. To verify the uniform error, the archimedean density is
+<span class="math" data-tex="\((2\pi)^{-1}\log(t/2\pi)+O(1/t)\)">\((2\pi)^{-1}\log(t/2\pi)+O(1/t)\)</span>; integration against the rescaled <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(\widehat a(0)\log(t/2\pi)/L+O_a(1/(TL))\)">\(\widehat a(0)\log(t/2\pi)/L+O_a(1/(TL))\)</span>. Away from <span class="math" data-tex="\(t\)">\(t\)</span>, rapid decay of <span class="math" data-tex="\(a\)">\(a\)</span> bounds the archimedean tails. The two pole terms evaluate <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\((L/(2\pi))(\pm i/2-t)\)">\((L/(2\pi))(\pm i/2-t)\)</span>; compact Fourier support and integration by parts make them <span class="math" data-tex="\(O_a(T^{-B})\)">\(O_a(T^{-B})\)</span> for any prescribed <span class="math" data-tex="\(B\)">\(B\)</span>, after increasing the number of integrations. This proves (9.4).</p>
+<p>Choose tests <span class="math" data-tex="\(a_1,\ldots,a_r\)">\(a_1,\ldots,a_r\)</span> whose Fourier supports lie in intervals <span class="math" data-tex="\(I_j\)">\(I_j\)</span>. Write
+<span class="math math-display" data-tex="\[
+P=\sum_j\max(0,\sup I_j),\qquad
+M=\sum_j\max(0,-\inf I_j),
+\]">\[
+P=\sum_j\max(0,\sup I_j),\qquad
+M=\sum_j\max(0,-\inf I_j),
+\]</span>
+and suppose <span class="math" data-tex="\(P,M&lt;1-\eta\)">\(P,M&lt;1-\eta\)</span> for some <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Expand the product of (9.4), and average over <span class="math" data-tex="\(t\in[T,2T]\)">\(t\in[T,2T]\)</span>. A chosen positive-frequency product is a Dirichlet polynomial of length at most <span class="math" data-tex="\(T^P\)">\(T^P\)</span>; a negative-frequency product has length at most <span class="math" data-tex="\(T^M\)">\(T^M\)</span>. The mean-value inequality from <em>Mean values of Dirichlet polynomials and of zeta on the critical line</em>, polarized between two polynomials, makes the average equal to its equal-integer diagonal plus an error tending to zero.</p>
+<p>More explicitly, a product with <span class="math" data-tex="\(r\)">\(r\)</span> prime-power factors has coefficient bounded by
+<span class="math" data-tex="\(C_r d_r(m)(\log m)^r/(\sqrt m L^r)\)">\(C_r d_r(m)(\log m)^r/(\sqrt m L^r)\)</span>.
+For each fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, <span class="math" data-tex="\(d_r(m)\ll_{r,\varepsilon}m^\varepsilon\)">\(d_r(m)\ll_{r,\varepsilon}m^\varepsilon\)</span>: in its Euler product the polynomial in a prime exponent is bounded by <span class="math" data-tex="\(p^{\varepsilon v}\)">\(p^{\varepsilon v}\)</span> uniformly for large primes, and the finitely many smaller primes are absorbed into a constant. Thus
+<span class="math" data-tex="\(\sum m|c_m|^2\ll Y^{1+\varepsilon}(\log T)^{C_r}\)">\(\sum m|c_m|^2\ll Y^{1+\varepsilon}(\log T)^{C_r}\)</span>
+for length <span class="math" data-tex="\(Y\)">\(Y\)</span>. The polarized error divided by <span class="math" data-tex="\(T\)">\(T\)</span> is
+<span class="math" data-tex="\(O(T^{-1}\sqrt{Y_+^{1+\varepsilon}Y_-^{1+\varepsilon}}(\log T)^{C_r})=o(1)\)">\(O(T^{-1}\sqrt{Y_+^{1+\varepsilon}Y_-^{1+\varepsilon}}(\log T)^{C_r})=o(1)\)</span>,
+on choosing <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> smaller than the support margin. This also handles unequal numbers of factors and a constant polynomial.</p>
+<p>Unique factorization analyzes the diagonal. Its leading contributions match a prime appearing once on each side. For two selected tests, their weight is
+<span class="math math-display" data-tex="\[
+\frac1{L^2}\sum_p\frac{\log^2p}{p}
+\widehat a_i(\log p/L)\widehat a_j(-\log p/L)
+\longrightarrow\int_0^\infty u\widehat a_i(u)\widehat a_j(-u)\,du.
+\tag{9.5}
+\]">\[
+\frac1{L^2}\sum_p\frac{\log^2p}{p}
+\widehat a_i(\log p/L)\widehat a_j(-\log p/L)
+\longrightarrow\int_0^\infty u\widehat a_i(u)\widehat a_j(-u)\,du.
+\tag{9.5}
+\]</span>
+This is partial summation from the prime number theorem: on each bounded support interval the measure <span class="math" data-tex="\(L^{-2}\sum_p(\log^2p/p)\delta_{\log p/L}\)">\(L^{-2}\sum_p(\log^2p/p)\delta_{\log p/L}\)</span> tends to <span class="math" data-tex="\(u\,du\)">\(u\,du\)</span>. The interval next to zero has mass <span class="math" data-tex="\(O(\epsilon^2)+o(1)\)">\(O(\epsilon^2)+o(1)\)</span> up to <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, again by partial summation.</p>
+<p>All other diagonal blocks are negligible. If the common total exponent of a prime on each side is <span class="math" data-tex="\(v\geq2\)">\(v\geq2\)</span>, its denominator is <span class="math" data-tex="\(p^v\)">\(p^v\)</span>. Summing the possible prime-power exponents in that block gives a finite bound
+<span class="math math-display" data-tex="\[
+\sum_p\sum_{v\geq2}\frac{C_r v^{C_r}(\log p)^r}{p^v}&lt;\infty.
+\]">\[
+\sum_p\sum_{v\geq2}\frac{C_r v^{C_r}(\log p)^r}{p^v}&lt;\infty.
+\]</span>
+The block has at least two factors and also carries <span class="math" data-tex="\(L^{-r_{\rm block}}\)">\(L^{-r_{\rm block}}\)</span>, so tends to zero. This covers both a higher prime power on each side and repetitions of the same prime. The other, ordinary pair blocks are bounded by (9.5). Removing a distinct-prime restriction from these ordinary blocks changes the answer by the same negligible repeated-prime terms.</p>
+<p>It follows that the limiting joint moments of the <span class="math" data-tex="\(A_{a_j}\)">\(A_{a_j}\)</span> are obtained by choosing singleton factors <span class="math" data-tex="\(\widehat a_j(0)\)">\(\widehat a_j(0)\)</span> and pairing the remaining factors, each pair contributing
+<span class="math math-display" data-tex="\[
+C(a_i,a_j)=\int_{\mathbb R}|u|
+\widehat a_i(u)\widehat a_j(-u)\,du.
+\tag{9.6}
+\]">\[
+C(a_i,a_j)=\int_{\mathbb R}|u|
+\widehat a_i(u)\widehat a_j(-u)\,du.
+\tag{9.6}
+\]</span>
+The two possible orientations of a prime supply the two half-lines. Signs in (9.4) cancel in each pair. Its <span class="math" data-tex="\(O(L^{-1})\)">\(O(L^{-1})\)</span> errors cause no difficulty. For any selected positive-frequency product, the diagonal calculation just made bounds its squared coefficient sum by a constant: pair blocks are bounded and repeated-prime blocks vanish. Its length is still below <span class="math" data-tex="\(T^{1-\eta}\)">\(T^{1-\eta}\)</span>, so the mean-value inequality bounds its mean square on the height interval. The same holds for a negative-frequency product. Cauchy–Schwarz bounds the mean absolute value of their product uniformly; multiplying by <span class="math" data-tex="\(O(L^{-1})\)">\(O(L^{-1})\)</span> gives <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. There is no need to assume a bound for arbitrarily high moments outside the support range.</p>
+<p>The corresponding calculation is exact on the unitary side before taking a limit. Periodize <span class="math" data-tex="\(a_j\)">\(a_j\)</span> on a circle of length <span class="math" data-tex="\(N\)">\(N\)</span>. Its sum over unfolded eigenangles is
+<span class="math math-display" data-tex="\[
+\widehat a_j(0)+\frac1N\sum_{\ell\ne0}
+\widehat a_j(\ell/N)\operatorname{Tr}U^\ell.
+\tag{9.7}
+\]">\[
+\widehat a_j(0)+\frac1N\sum_{\ell\ne0}
+\widehat a_j(\ell/N)\operatorname{Tr}U^\ell.
+\tag{9.7}
+\]</span>
+In any product under our support conditions, the sums of positive and negative integer powers are less than <span class="math" data-tex="\(N\)">\(N\)</span>. Identity (9.3) applies. The covariance is
+<span class="math" data-tex="\(N^{-2}\sum_{\ell\ne0}|\ell|\widehat a_i(\ell/N)\widehat a_j(-\ell/N)\)">\(N^{-2}\sum_{\ell\ne0}|\ell|\widehat a_i(\ell/N)\widehat a_j(-\ell/N)\)</span>,
+which tends to (9.6) by Riemann sums. The full local counting moments of zeta and CUE have the same limits.</p>
+<p>We explain how this covers (9.1) and excludes coincidences. A product test corresponds to
+<span class="math math-display" data-tex="\[
+f_a(x_1,\ldots,x_n)=\int_{\mathbb R}\prod_{j=1}^n a_j(x_j-v)\,dv;
+\]">\[
+f_a(x_1,\ldots,x_n)=\int_{\mathbb R}\prod_{j=1}^n a_j(x_j-v)\,dv;
+\]</span>
+its transform on <span class="math" data-tex="\(\sum\xi_j=0\)">\(\sum\xi_j=0\)</span> is <span class="math" data-tex="\(\prod_j\widehat a_j(\xi_j)\)">\(\prod_j\widehat a_j(\xi_j)\)</span>. Every point of the compact support in (9.1) has a rectangular neighbourhood with <span class="math" data-tex="\(P,M&lt;1-\eta\)">\(P,M&lt;1-\eta\)</span>: on that hyperplane its positive and negative sums are equal and less than one. Use finitely many such neighbourhoods and a smooth partition of unity. Extend <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> smoothly off the hyperplane there. On each rectangle a Fourier-series expansion with interior cutoffs expresses it as a convergent sum of separated products. Smoothness makes the expansion coefficients decrease faster than any fixed power of the Fourier-series indices. The preceding bounds use only finitely many supremum and derivative norms of the separated factors, which grow polynomially in those indices. Their products with the expansion coefficients are absolutely summable. Consequently both the error estimates and the diagonal limits pass through the expansion. This proves the comparison for arbitrary <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>For an all-index sum, average <span class="math" data-tex="\(\prod A_{a_j}(t)\)">\(\prod A_{a_j}(t)\)</span> over <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span>. The substitution <span class="math" data-tex="\(v=Lt/(2\pi)\)">\(v=Lt/(2\pi)\)</span> gives <span class="math" data-tex="\(2\pi/(TL)\)">\(2\pi/(TL)\)</span> times its sum of <span class="math" data-tex="\(f_a\)">\(f_a\)</span>, after localization at the ends. Here are bounds for that step. Let
+<span class="math math-display" data-tex="\[
+q(u)=K(u)^2+K(u-1/2)^2.
+\]">\[
+q(u)=K(u)^2+K(u-1/2)^2.
+\]</span>
+It satisfies <span class="math" data-tex="\(c/(1+u^2)\leq q(u)\leq C/(1+u^2)\)">\(c/(1+u^2)\leq q(u)\leq C/(1+u^2)\)</span>: off a fixed compact set its two numerators are <span class="math" data-tex="\(\sin^2\pi u\)">\(\sin^2\pi u\)</span> and <span class="math" data-tex="\(\cos^2\pi u\)">\(\cos^2\pi u\)</span>, and on the compact set they have no common zero. For large fixed <span class="math" data-tex="\(h\)">\(h\)</span>, a sufficiently small <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> makes the nonnegative function <span class="math" data-tex="\(q(\epsilon u)^h\)">\(q(\epsilon u)^h\)</span> a majorant, up to a constant, of every Schwartz test and each polynomially weighted tail needed here. Its transform is compactly supported in <span class="math" data-tex="\([-h\epsilon,h\epsilon]\)">\([-h\epsilon,h\epsilon]\)</span> and has as many continuous derivatives as needed when <span class="math" data-tex="\(h\)">\(h\)</span> is increased. Choose <span class="math" data-tex="\(nh\epsilon&lt;1/2\)">\(nh\epsilon&lt;1/2\)</span>. The same explicit-formula and mean-value proof bounds the average of any product of its local counting sums uniformly.</p>
+<p>The bounds also apply to short subintervals of <span class="math" data-tex="\([T/2,3T]\)">\([T/2,3T]\)</span>: the mean-value inequality bounds the integral over a subinterval of length <span class="math" data-tex="\(H\)">\(H\)</span> by <span class="math" data-tex="\(C H+O(T^{1-\eta/2})\)">\(C H+O(T^{1-\eta/2})\)</span>, with some fixed margin <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> for these majorants. Thus centres within <span class="math" data-tex="\(R/L\)">\(R/L\)</span> of either endpoint have contribution <span class="math" data-tex="\(o(T)\)">\(o(T)\)</span>, for fixed <span class="math" data-tex="\(R\)">\(R\)</span>. Elsewhere an external zero or an external centre introduces a test argument of absolute value at least <span class="math" data-tex="\(R/(2\pi)\)">\(R/(2\pi)\)</span>. Its Schwartz tail is bounded by <span class="math" data-tex="\(C_B R^{-B}q(\epsilon u)^h\)">\(C_B R^{-B}q(\epsilon u)^h\)</span>, so its normalized contribution is <span class="math" data-tex="\(O_B(R^{-B})\)">\(O_B(R^{-B})\)</span>. Centres outside <span class="math" data-tex="\([T/2,3T]\)">\([T/2,3T]\)</span> are negligible directly by rapid decay and the polynomial zero count; choose the decay power larger than the fixed number of factors. First let <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>, then <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>. This justifies localization, including replacement of all zeros by zero indices in <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span>. The summable separated expansion transfers the bounds to general <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p>Apply now the finite inclusion–exclusion identity over partitions of <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span>. Identifying the indices in a block merges its frequencies to <span class="math" data-tex="\(\eta_B=\sum_{j\in B}\xi_j\)">\(\eta_B=\sum_{j\in B}\xi_j\)</span>. The induced transform is smooth, compactly supported, and satisfies <span class="math" data-tex="\(\sum_B|\eta_B|&lt;2\)">\(\sum_B|\eta_B|&lt;2\)</span>. The Möbius coefficient of a partition is <span class="math" data-tex="\(\prod_B(-1)^{|B|-1}(|B|-1)!\)">\(\prod_B(-1)^{|B|-1}(|B|-1)!\)</span>; within any nontrivial coincidence these coefficients sum to zero, by counting permutations according to their cycles and their signs. Thus comparison of all-index sums implies comparison of ordered distinct-index sums. For CUE these converge to the determinant in (2.4). Finally <span class="math" data-tex="\(N_T\sim TL/(2\pi)\)">\(N_T\sim TL/(2\pi)\)</span> gives (9.2).</p>
+<p>For <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, write <span class="math" data-tex="\(f(x)=b(x_1-x_2,x_1-x_3)\)">\(f(x)=b(x_1-x_2,x_1-x_3)\)</span>. Its frequencies are <span class="math" data-tex="\((a+b,-a,-b)\)">\((a+b,-a,-b)\)</span>; the support condition becomes
+<span class="math math-display" data-tex="\[
+|a+b|+|a|+|b|&lt;2
+\quad\Longleftrightarrow\quad
+\max(|a|,|b|,|a+b|)&lt;1.
+\tag{9.8}
+\]">\[
+|a+b|+|a|+|b|&lt;2
+\quad\Longleftrightarrow\quad
+\max(|a|,|b|,|a+b|)&lt;1.
+\tag{9.8}
+\]</span>
+This is the interior of the hexagon with vertices <span class="math" data-tex="\((1,0),(0,1),(-1,1),(-1,0),(0,-1),(1,-1)\)">\((1,0),(0,1),(-1,1),(-1,0),(0,-1),(1,-1)\)</span>. Expanding the <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> determinant gives the density
+<span class="math math-display" data-tex="\[
+1-K(u)^2-K(v)^2-K(u-v)^2
++2K(u)K(v)K(u-v).
+\tag{9.9}
+\]">\[
+1-K(u)^2-K(v)^2-K(u-v)^2
++2K(u)K(v)K(u-v).
+\tag{9.9}
+\]</span>
+This proves the leading triple-correlation result in Hejhal's range. His weight <span class="math" data-tex="\(\prod_{i&lt;j}\exp(-(\gamma_i-\gamma_j)^2/6)\)">\(\prod_{i&lt;j}\exp(-(\gamma_i-\gamma_j)^2/6)\)</span> changes no limit: on bounded unfolded differences it tends uniformly to one, while the same majorants bound the complementary Schwartz tails. For general <span class="math" data-tex="\(n\)">\(n\)</span>, (9.2) is the restricted theorem of Rudnick–Sarnak. Products of primes cease to be shorter than the height interval at the proof's support boundary.</p>
+<h2 id="10-families-and-the-symmetry-point">10. Families and the symmetry point</h2>
+<p>High zeros of one <span class="math" data-tex="\(L\)">\(L\)</span>-function and low zeros averaged across a family are different statistics. The Katz–Sarnak prediction assigns a family a compact symmetry group, usually unitary, symplectic, or orthogonal. It compares zeros near the central point with eigenangles near <span class="math" data-tex="\(1\)">\(1\)</span> in that group. Their unitary bulk laws agree away from the symmetry point; their densities at that point differ.</p>
+<p>We compute those differences on the matrix side. For Haar <span class="math" data-tex="\(USp(2g)\)">\(USp(2g)\)</span>, choose the positive eigenangles <span class="math" data-tex="\(0\leq\theta_j\leq\pi\)">\(0\leq\theta_j\leq\pi\)</span>; the others are their negatives. The Weyl formula gives density proportional to
+<span class="math math-display" data-tex="\[
+\prod_{i&lt;j}(\cos\theta_i-\cos\theta_j)^2\prod_j\sin^2\theta_j.
+\tag{10.1}
+\]">\[
+\prod_{i&lt;j}(\cos\theta_i-\cos\theta_j)^2\prod_j\sin^2\theta_j.
+\tag{10.1}
+\]</span>
+This is the Gram determinant of <span class="math" data-tex="\(\sqrt{2/\pi}\sin(j\theta)\)">\(\sqrt{2/\pi}\sin(j\theta)\)</span>, <span class="math" data-tex="\(1\leq j\leq g\)">\(1\leq j\leq g\)</span>, divided by <span class="math" data-tex="\(g!\)">\(g!\)</span>. Indeed <span class="math" data-tex="\(\sin(j\theta)/\sin\theta\)">\(\sin(j\theta)/\sin\theta\)</span> is a polynomial of degree <span class="math" data-tex="\(j-1\)">\(j-1\)</span> in <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span> with leading coefficient <span class="math" data-tex="\(2^{j-1}\)">\(2^{j-1}\)</span>, by the sine addition recurrence. Its determinant is a Vandermonde times the sine factors in (10.1). Section 2's integration proof gives the positive-angle correlations.</p>
+<p>Unfold near zero by <span class="math" data-tex="\(\theta=\pi x/g\)">\(\theta=\pi x/g\)</span>, <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>. Riemann sums give
+<span class="math math-display" data-tex="\[
+\frac2g\sum_{j=1}^g\sin(\pi jx/g)\sin(\pi jy/g)
+\longrightarrow K(x-y)-K(x+y).
+\tag{10.2}
+\]">\[
+\frac2g\sum_{j=1}^g\sin(\pi jx/g)\sin(\pi jy/g)
+\longrightarrow K(x-y)-K(x+y).
+\tag{10.2}
+\]</span>
+The one-point density is <span class="math" data-tex="\(1-K(2x)\)">\(1-K(2x)\)</span>.</p>
+<p>For <span class="math" data-tex="\(SO(2g)\)">\(SO(2g)\)</span>, the root factors in the Weyl formula leave weight one and the same Vandermonde in <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span>. The orthonormal basis is <span class="math" data-tex="\(1/\sqrt\pi\)">\(1/\sqrt\pi\)</span>, then <span class="math" data-tex="\(\sqrt{2/\pi}\cos(j\theta)\)">\(\sqrt{2/\pi}\cos(j\theta)\)</span>, <span class="math" data-tex="\(1\leq j&lt;g\)">\(1\leq j&lt;g\)</span>. The same determinant and Riemann-sum argument gives kernel <span class="math" data-tex="\(K(x-y)+K(x+y)\)">\(K(x-y)+K(x+y)\)</span> and density <span class="math" data-tex="\(1+K(2x)\)">\(1+K(2x)\)</span>. For <span class="math" data-tex="\(SO(2g+1)\)">\(SO(2g+1)\)</span>, the extra roots give weight <span class="math" data-tex="\(1-\cos\theta\)">\(1-\cos\theta\)</span>; an orthogonal basis is <span class="math" data-tex="\(\sqrt{2/\pi}\sin((j-1/2)\theta)\)">\(\sqrt{2/\pi}\sin((j-1/2)\theta)\)</span>, <span class="math" data-tex="\(1\leq j\leq g\)">\(1\leq j\leq g\)</span>. Division by <span class="math" data-tex="\(\sin(\theta/2)\)">\(\sin(\theta/2)\)</span> gives successive polynomials in <span class="math" data-tex="\(\cos\theta\)">\(\cos\theta\)</span>, proving the determinant assertion. Its moving positive angles have kernel <span class="math" data-tex="\(K(x-y)-K(x+y)\)">\(K(x-y)-K(x+y)\)</span>, and there is an eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span> forced by odd dimension. These calculations use the general Weyl formula and the orthogonal root systems.</p>
+<p>The resulting full-line one-level profiles are
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\text{unitary}&amp;1\\
+\text{symplectic}&amp;1-K(2x)\\
+\text{even orthogonal}&amp;1+K(2x)\\
+\text{odd orthogonal}&amp;1-K(2x)+\delta_0\\
+\text{equal mixture of orthogonal types}&amp;1+\tfrac12\delta_0 .
+\end{array}
+\tag{10.3}
+\]">\[
+\begin{array}{c|c}
+\text{unitary}&amp;1\\
+\text{symplectic}&amp;1-K(2x)\\
+\text{even orthogonal}&amp;1+K(2x)\\
+\text{odd orthogonal}&amp;1-K(2x)+\delta_0\\
+\text{equal mixture of orthogonal types}&amp;1+\tfrac12\delta_0 .
+\end{array}
+\tag{10.3}
+\]</span>
+The noncentral profiles are reflected evenly from <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, and the scale counts both halves of the spectrum. A forced eigenvalue is counted once. The central point detects symmetry information absent from the bulk pair law.</p>
+<p>These compact symmetry groups should be distinguished from the Gaussian orthogonal and symplectic ensembles in the quantum-chaos conjecture. In the compact groups just calculated, all positive-angle kernels have the unitary bulk limit: at any fixed <span class="math" data-tex="\(0&lt;\theta_0&lt;\pi\)">\(0&lt;\theta_0&lt;\pi\)</span>, put <span class="math" data-tex="\(\theta=\theta_0+\pi x/g\)">\(\theta=\theta_0+\pi x/g\)</span> in the finite sine or cosine sums. The angle-difference term is a Riemann sum tending to <span class="math" data-tex="\(K(x-y)\)">\(K(x-y)\)</span>; the angle-sum term is a geometric sum bounded by <span class="math" data-tex="\(C_{\theta_0}\)">\(C_{\theta_0}\)</span>, hence tends to zero after division by <span class="math" data-tex="\(g\)">\(g\)</span>. The constant and half-integer corrections vanish too. Determinants give every fixed bulk correlation. The additional <span class="math" data-tex="\(K(x+y)\)">\(K(x+y)\)</span> at the symmetry point is exactly what that bulk calculation loses.</p>
+<p>There are arithmetic theorems behind this picture over finite fields. We give the equidistribution argument and a geometric family. Its cohomological inputs are the trace formula in <em>The Grothendieck–Lefschetz trace formula</em>, Poincaré duality, the weight bound of Weil II in <em>Weights, purity and semisimplicity over finite fields</em>, and the smooth-projective Riemann hypothesis in <em>The Riemann hypothesis over finite fields</em>. These are existing planned lessons. The exact weight bound used is: for a lisse sheaf pointwise pure of weight zero on a smooth <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional variety over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, eigenvalues on <span class="math" data-tex="\(H_c^i\)">\(H_c^i\)</span> have absolute value at most <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>. This is Weil II for the structure morphism; the weaker bound of Weil I for an open family would not suffice.</p>
+<p><strong>Equidistribution theorem.</strong> Let <span class="math" data-tex="\(U_0/\mathbb F_q\)">\(U_0/\mathbb F_q\)</span> be smooth and geometrically connected of dimension <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Suppose a lisse <span class="math" data-tex="\(\overline{\mathbb Q}_\ell\)">\(\overline{\mathbb Q}_\ell\)</span>-sheaf, <span class="math" data-tex="\(\ell\nmid q\)">\(\ell\nmid q\)</span>, is pointwise pure of weight zero and has equal arithmetic and geometric monodromy group <span class="math" data-tex="\(Sp(2g)\)">\(Sp(2g)\)</span>. Identify its semisimple Frobenius classes with classes <span class="math" data-tex="\(\Theta_x\)">\(\Theta_x\)</span> in <span class="math" data-tex="\(USp(2g)\)">\(USp(2g)\)</span>, using a fixed embedding of its algebraic eigenvalues into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Then for every continuous class function <span class="math" data-tex="\(b\)">\(b\)</span>,
+<span class="math math-display" data-tex="\[
+\frac1{\#U_0(\mathbb F_{q^r})}
+\sum_{x\in U_0(\mathbb F_{q^r})}b(\Theta_x)
+\longrightarrow\int_{USp(2g)}b(U)\,dU,\qquad r\to\infty.
+\tag{10.4}
+\]">\[
+\frac1{\#U_0(\mathbb F_{q^r})}
+\sum_{x\in U_0(\mathbb F_{q^r})}b(\Theta_x)
+\longrightarrow\int_{USp(2g)}b(U)\,dU,\qquad r\to\infty.
+\tag{10.4}
+\]</span></p>
+<p>First take <span class="math" data-tex="\(b\)">\(b\)</span> to be an irreducible character. Its algebraic representation applied to the sheaf remains pure of weight zero: the representation is a subquotient of tensor powers of the standard representation and its dual, so its Frobenius eigenvalues are products of weight-zero eigenvalues. For a nontrivial irreducible representation its geometric invariants and coinvariants vanish. Poincaré duality gives <span class="math" data-tex="\(H_c^{2d}=0\)">\(H_c^{2d}=0\)</span>. The trace formula and the specified weight bound give
+<span class="math math-display" data-tex="\[
+\left|\sum_x b(\Theta_x)\right|\leq C_bq^{r(d-1/2)}.
+\tag{10.5}
+\]">\[
+\left|\sum_x b(\Theta_x)\right|\leq C_bq^{r(d-1/2)}.
+\tag{10.5}
+\]</span>
+The finite constant <span class="math" data-tex="\(C_b=\sum_{i&lt;2d}\dim H_c^i\)">\(C_b=\sum_{i&lt;2d}\dim H_c^i\)</span> concerns this fixed sheaf and variety. For the trivial representation the top cohomology is <span class="math" data-tex="\(\overline{\mathbb Q}_\ell(-d)\)">\(\overline{\mathbb Q}_\ell(-d)\)</span>; the same proof gives
+<span class="math" data-tex="\(\#U_0(\mathbb F_{q^r})=q^{rd}+O(q^{r(d-1/2)})\)">\(\#U_0(\mathbb F_{q^r})=q^{rd}+O(q^{r(d-1/2)})\)</span>.
+Division gives the Haar averages of all characters. Finite character combinations are uniformly dense in continuous class functions by Peter–Weyl, in <em>Fourier analysis and class functions on compact groups</em>: average uniform matrix-coefficient approximations over conjugacy classes. Since the measures have mass one, this proves (10.4).</p>
+<p>The proof also works for any connected reductive geometric group <span class="math" data-tex="\(G\)">\(G\)</span> when the arithmetic group is <span class="math" data-tex="\(G\)">\(G\)</span>, its semisimple Frobenius classes lie in a compact form <span class="math" data-tex="\(K_G\)">\(K_G\)</span>, and every irreducible algebraic representation gives a pointwise pure weight-zero sheaf. Its only group inputs are vanishing of invariants in nontrivial irreducibles and density of characters. It therefore proves the connected-monodromy equidistribution theorem, not just its symplectic instance. In a disconnected group, retain the arithmetic coset and calculate its character limits; replacing that coset by Haar measure on a chosen component is generally incorrect.</p>
+<p>For a worked family, take a generic Lefschetz pencil of plane curves of degree <span class="math" data-tex="\(D\geq3\)">\(D\geq3\)</span>, with only ordinary nodes among its singular members, in a finite field of good characteristic for the pencil. Existence, the nodal local description and its monodromy theorem are inputs from <em>Lefschetz pencils and vanishing cycles</em>. Remove the singular parameters from <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span> to get <span class="math" data-tex="\(U_0\)">\(U_0\)</span>. The fibres have genus <span class="math" data-tex="\(g=(D-1)(D-2)/2\)">\(g=(D-1)(D-2)/2\)</span>. Their <span class="math" data-tex="\(R^1f_*\overline{\mathbb Q}_\ell\)">\(R^1f_*\overline{\mathbb Q}_\ell\)</span> is lisse of rank <span class="math" data-tex="\(2g\)">\(2g\)</span>, pure of weight one by the curve Riemann hypothesis, with its nondegenerate alternating cup-product pairing.</p>
+<p>Its vanishing cycles span the whole fibre cohomology. Check the possible invariant part using the blown-up plane carrying the pencil. Its <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is zero: blowing up its finitely many base points adds cohomology only in degree two. An exceptional divisor gives a section over <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>. In the low-degree Leray sequence the section makes
+<span class="math" data-tex="\(H^2(\mathbb P^1)\to H^2(\widetilde{\mathbb P^2})\)">\(H^2(\mathbb P^1)\to H^2(\widetilde{\mathbb P^2})\)</span> injective, so the preceding transgression vanishes. Hence
+<span class="math" data-tex="\(H^0(\mathbb P^1,R^1f_*)=H^1(\widetilde{\mathbb P^2})=0\)">\(H^0(\mathbb P^1,R^1f_*)=H^1(\widetilde{\mathbb P^2})=0\)</span>.
+At a node the special-fibre <span class="math" data-tex="\(H^1\)">\(H^1\)</span> maps to the perpendicular space of its vanishing cycle, exactly the invariant space of the Picard–Lefschetz transvection. Thus the global section space is the geometric monodromy invariants. The global vanishing-cycle theorem identifies the perpendicular of their span with those invariants. The span is all of <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and the monodromy theorem gives geometric group <span class="math" data-tex="\(Sp(2g)\)">\(Sp(2g)\)</span>.</p>
+<p>Twist by the constant rank-one sheaf with Frobenius <span class="math" data-tex="\(q^{-1/2}\)">\(q^{-1/2}\)</span>, choosing an algebraic square root. This unramified twist preserves geometric monodromy, gives weight zero and changes the cup-product multiplier to one. The arithmetic group lies in <span class="math" data-tex="\(Sp(2g)\)">\(Sp(2g)\)</span> and contains its geometric group, so they agree. Formula (10.4) applies. The curve zeta function is
+<span class="math math-display" data-tex="\[
+Z(C_x,u)=\frac{\det(I-uF_x\mid H^1)}{(1-u)(1-qu)}
+=\frac{\det(I-\sqrt q\,u\Theta_x)}{(1-u)(1-qu)}.
+\tag{10.6}
+\]">\[
+Z(C_x,u)=\frac{\det(I-uF_x\mid H^1)}{(1-u)(1-qu)}
+=\frac{\det(I-\sqrt q\,u\Theta_x)}{(1-u)(1-qu)}.
+\tag{10.6}
+\]</span>
+For fibres over <span class="math" data-tex="\(\mathbb F_{q^r}\)">\(\mathbb F_{q^r}\)</span>, replace <span class="math" data-tex="\(q\)">\(q\)</span> by <span class="math" data-tex="\(q^r\)">\(q^r\)</span>. These normalized zeta roots really are eigenangles. At fixed genus, first take the field-extension limit; growing genera then give the symplectic central kernel (10.2). Interchanging those limits, or claiming the theorem for a number-field family, needs additional arguments.</p>
+<p>The general Katz–Sarnak method uses the same character/trace proof with the family's actual geometric group and its arithmetic coset retained. Over number fields the broad symmetry predictions remain conjectural, and restricted density theorems require their own arithmetic hypotheses. An individual <span class="math" data-tex="\(L\)">\(L\)</span>-function's self-duality does not by itself identify every family containing it.</p>
+<h2 id="11-quantum-chaos-and-the-symmetry-choice">11. Quantum chaos and the symmetry choice</h2>
+<p>The Bohigas–Giannoni–Schmit conjecture concerns quantum systems whose classical dynamics is chaotic, after the exact symmetries have been separated and the spectrum unfolded. It predicts the unitary class when there is no antiunitary time-reversal symmetry. An antiunitary symmetry <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> with <span class="math" data-tex="\(\mathcal T^2=+1\)">\(\mathcal T^2=+1\)</span> leads to the orthogonal class; with <span class="math" data-tex="\(\mathcal T^2=-1\)">\(\mathcal T^2=-1\)</span> it leads to the symplectic class, with Kramers pairs retained or removed consistently in defining spacings. These statements are conjectural principles, not consequences of classical chaos alone.</p>
+<p>The algebra behind the distinction is elementary. For <span class="math" data-tex="\(\mathcal T^2=1\)">\(\mathcal T^2=1\)</span>, every vector is the complexification of two fixed real vectors:
+<span class="math math-display" data-tex="\[
+v=\frac{v+\mathcal Tv}{2}
++i\frac{v-\mathcal Tv}{2i}.
+\]">\[
+v=\frac{v+\mathcal Tv}{2}
++i\frac{v-\mathcal Tv}{2i}.
+\]</span>
+The fixed real subspace has an orthonormal real basis; in that basis <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is coordinate conjugation. A Hermitian operator commuting with it is real symmetric. For <span class="math" data-tex="\(\mathcal T^2=-1\)">\(\mathcal T^2=-1\)</span>, antiunitarity gives <span class="math" data-tex="\(\langle v,\mathcal Tv\rangle=0\)">\(\langle v,\mathcal Tv\rangle=0\)</span>: using
+<span class="math" data-tex="\(\langle\mathcal Tx,\mathcal Ty\rangle=\overline{\langle x,y\rangle}\)">\(\langle\mathcal Tx,\mathcal Ty\rangle=\overline{\langle x,y\rangle}\)</span>
+with <span class="math" data-tex="\(x=v,y=\mathcal Tv\)">\(x=v,y=\mathcal Tv\)</span> makes the same inner product equal to its negative. If <span class="math" data-tex="\(Hv=\lambda v\)">\(Hv=\lambda v\)</span> and <span class="math" data-tex="\(H\mathcal T=\mathcal TH\)">\(H\mathcal T=\mathcal TH\)</span>, then <span class="math" data-tex="\(\mathcal Tv\)">\(\mathcal Tv\)</span> is an independent orthogonal eigenvector at the same real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Without such a symmetry, the invariant Gaussian model is the complex Hermitian one. This explains the ensemble labels; it does not establish the dynamical conjecture.</p>
+<p>In the prime/periodic-orbit analogy of the explicit formula, a primitive prime contributes length <span class="math" data-tex="\(\log p\)">\(\log p\)</span>, and its powers contribute repeated lengths <span class="math" data-tex="\(m\log p\)">\(m\log p\)</span>. There is no separate partner for each prime with the same primitive length, as a reversed classical orbit would supply in a time-reversal-invariant model. Bogomolny uses this observation to motivate the unitary choice for zeta. It is a heuristic about a proposed dynamics, not a construction of a self-adjoint operator with the required spectrum.</p>
+<p>Connes's <a href="https://arxiv.org/pdf/2602.04022"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em></a> reverses this symmetry choice in its quantum-chaos paragraph. The consistent choice is unitary in the absence of time reversal, and orthogonal when its square is <span class="math" data-tex="\(+1\)">\(+1\)</span>. The higher matrix calculations and the arithmetic arguments above do not require a quantum Hamiltonian.</p>
+<h2 id="12-a-recipe-for-lower-moment-terms">12. A recipe for lower moment terms</h2>
+<p>CFKRS denotes Conrey, Farmer, Keating, Rubinstein and Snaith. Their recipe predicts the entire polynomial main term, beyond the leading constant in (8.2). It inserts both parts of the approximate functional equation into shifted products, retains the balanced choices of functional-equation factors, keeps their equal-product diagonals, and extends the coefficient sums. The resulting expression is a conjecture: the discarded off-diagonal terms can be as large as a main term.</p>
+<p>For zeta and integer <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, write <span class="math" data-tex="\(\Delta(z)=\prod_{i&lt;j}(z_j-z_i)\)">\(\Delta(z)=\prod_{i&lt;j}(z_j-z_i)\)</span>, and set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_k(z)={}&amp;\prod_p\prod_{i,j=1}^k
+(1-p^{-1-z_i+z_{k+j}})\\
+&amp;\quad\times\int_0^1\prod_{j=1}^k
+(1-p^{-1/2-z_j}e^{2\pi i\theta})^{-1}
+(1-p^{-1/2+z_{k+j}}e^{-2\pi i\theta})^{-1}\,d\theta,\\
+\mathcal G_k(z)={}&amp;A_k(z)\prod_{i,j=1}^k\zeta(1+z_i-z_{k+j}),\\
+P_k(x)={}&amp;\frac{(-1)^k}{(k!)^2(2\pi i)^{2k}}
+\oint\cdots\oint
+\frac{\mathcal G_k(z)\Delta(z)^2}
+{\prod_{j=1}^{2k}z_j^{2k}}
+\exp\left(\frac x2\sum_{j=1}^k(z_j-z_{k+j})\right)
+\,dz_1\cdots dz_{2k}.
+\end{aligned}
+\tag{12.1}
+\]">\[
+\begin{aligned}
+A_k(z)={}&amp;\prod_p\prod_{i,j=1}^k
+(1-p^{-1-z_i+z_{k+j}})\\
+&amp;\quad\times\int_0^1\prod_{j=1}^k
+(1-p^{-1/2-z_j}e^{2\pi i\theta})^{-1}
+(1-p^{-1/2+z_{k+j}}e^{-2\pi i\theta})^{-1}\,d\theta,\\
+\mathcal G_k(z)={}&amp;A_k(z)\prod_{i,j=1}^k\zeta(1+z_i-z_{k+j}),\\
+P_k(x)={}&amp;\frac{(-1)^k}{(k!)^2(2\pi i)^{2k}}
+\oint\cdots\oint
+\frac{\mathcal G_k(z)\Delta(z)^2}
+{\prod_{j=1}^{2k}z_j^{2k}}
+\exp\left(\frac x2\sum_{j=1}^k(z_j-z_{k+j})\right)
+\,dz_1\cdots dz_{2k}.
+\end{aligned}
+\tag{12.1}
+\]</span>
+The contours are small positively oriented circles about zero; the Vandermonde cancels the apparent poles on <span class="math" data-tex="\(z_i=z_{k+j}\)">\(z_i=z_{k+j}\)</span>. The conjecture is
+<span class="math math-display" data-tex="\[
+\int_0^T|\zeta(1/2+it)|^{2k}\,dt
+=\int_0^T P_k(\log(t/2\pi))\,dt
++O_{k,\varepsilon}(T^{1/2+\varepsilon}).
+\tag{12.2}
+\]">\[
+\int_0^T|\zeta(1/2+it)|^{2k}\,dt
+=\int_0^T P_k(\log(t/2\pi))\,dt
++O_{k,\varepsilon}(T^{1/2+\varepsilon}).
+\tag{12.2}
+\]</span>
+This is the unshifted specialization of their <em>Integral moments of <span class="math" data-tex="\(L\)">\(L\)</span>-functions</em>, Conjecture 1.5.1 and Section 2.1. The conjectured remainder is stronger than merely identifying the leading coefficient.</p>
+<p>We check that (12.1) is well-defined and recover its second-moment case. In a sufficiently small polydisk, say <span class="math" data-tex="\(|\Re z_j|&lt;\eta&lt;1/4\)">\(|\Re z_j|&lt;\eta&lt;1/4\)</span>, expand each local integral by geometric series. Integration picks equal powers of <span class="math" data-tex="\(e^{2\pi i\theta}\)">\(e^{2\pi i\theta}\)</span>. The constant term is one, its first prime term is <span class="math" data-tex="\(\sum_{i,j}p^{-1-z_i+z_{k+j}}\)">\(\sum_{i,j}p^{-1-z_i+z_{k+j}}\)</span>, and the rest is <span class="math" data-tex="\(O_{k,\eta}(p^{-2+4\eta})\)">\(O_{k,\eta}(p^{-2+4\eta})\)</span> on compact subsets. The prefactor cancels that first term. Thus <span class="math" data-tex="\(A_k\)">\(A_k\)</span> is analytic there by normal convergence of its product, and <span class="math" data-tex="\(A_k(0)=a_k\)">\(A_k(0)=a_k\)</span>. Each zeta pole is simple and is cancelled by one of the two Vandermonde factors for the corresponding cross pair. The full numerator is analytic at the origin. Its lowest possible total degree is
+<span class="math" data-tex="\((2k)(2k-1)-k^2=3k^2-2k\)">\((2k)(2k-1)-k^2=3k^2-2k\)</span>.
+The residue extracts degree <span class="math" data-tex="\(2k(2k-1)=4k^2-2k\)">\(2k(2k-1)=4k^2-2k\)</span>, so only exponential powers through <span class="math" data-tex="\(k^2\)">\(k^2\)</span> contribute. Hence <span class="math" data-tex="\(P_k\)">\(P_k\)</span> is a polynomial of degree at most <span class="math" data-tex="\(k^2\)">\(k^2\)</span>. This algebraic fact is proved independently of (12.2).</p>
+<p>For <span class="math" data-tex="\(k=1\)">\(k=1\)</span> the local integral is <span class="math" data-tex="\((1-p^{-1-z_1+z_2})^{-1}\)">\((1-p^{-1-z_1+z_2})^{-1}\)</span>, so <span class="math" data-tex="\(A_1=1\)">\(A_1=1\)</span>. Put <span class="math" data-tex="\(d=z_1-z_2\)">\(d=z_1-z_2\)</span>. Since <span class="math" data-tex="\(\Delta^2=d^2\)">\(\Delta^2=d^2\)</span> and <span class="math" data-tex="\(\zeta(1+d)=d^{-1}+\gamma+O(d)\)">\(\zeta(1+d)=d^{-1}+\gamma+O(d)\)</span>, the numerator is
+<span class="math math-display" data-tex="\[
+d+(\gamma+x/2)d^2+\text{terms of total degree at least three}.
+\]">\[
+d+(\gamma+x/2)d^2+\text{terms of total degree at least three}.
+\]</span>
+Its coefficient of <span class="math" data-tex="\(z_1z_2\)">\(z_1z_2\)</span> is <span class="math" data-tex="\(-2\gamma-x\)">\(-2\gamma-x\)</span>. The prefactor <span class="math" data-tex="\(-1\)">\(-1\)</span> in (12.1) gives <span class="math" data-tex="\(P_1(x)=x+2\gamma\)">\(P_1(x)=x+2\gamma\)</span>. Integration yields
+<span class="math math-display" data-tex="\[
+\int_0^T P_1(\log(t/2\pi))\,dt
+=T\log(T/2\pi)+(2\gamma-1)T,
+\]">\[
+\int_0^T P_1(\log(t/2\pi))\,dt
+=T\log(T/2\pi)+(2\gamma-1)T,
+\]</span>
+matching (8.4), including the constant term. Agreement in this check does not justify the recipe at higher <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="13-what-the-numerical-spacings-show">13. What the numerical spacings show</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+\overline N(t)=\frac{t}{2\pi}
+\left(\log\frac{t}{2\pi}-1\right)+\frac78.
+\]">\[
+\overline N(t)=\frac{t}{2\pi}
+\left(\log\frac{t}{2\pi}-1\right)+\frac78.
+\]</span>
+For consecutive ordinates define <span class="math" data-tex="\(s_j=\overline N(\gamma_{j+1})-\overline N(\gamma_j)\)">\(s_j=\overline N(\gamma_{j+1})-\overline N(\gamma_j)\)</span>. This uses the varying local density throughout the table, rather than multiplying every gap by the density at its largest height.</p>
+<figure><img src="figures/zero-spacings.png" alt="Histogram and cumulative distribution of the first 9,999 unfolded zeta gaps, compared with the sine-kernel nearest-neighbour law." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The first <span class="math" data-tex="\(10,000\)">\(10,000\)</span> ordinates in <a href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/">Odlyzko's numerical table</a> produce <span class="math" data-tex="\(9,999\)">\(9,999\)</span> gaps. The left panel uses bins of width <span class="math" data-tex="\(0.1\)">\(0.1\)</span>; the right panel compares cumulative distributions. The curve is <span class="math" data-tex="\(E&#x27;&#x27;(s)\)">\(E&#x27;&#x27;(s)\)</span> from (4.1), computed by Gauss–Legendre quadrature, rather than the two-dimensional Wigner approximation. An original reproducing script and vector image accompany the figure.</p>
+<p>The mean gap is <span class="math" data-tex="\(1.000023\)">\(1.000023\)</span>, its population variance <span class="math" data-tex="\(0.154139\)">\(0.154139\)</span>, the smallest <span class="math" data-tex="\(0.0420984\)">\(0.0420984\)</span>, and the largest <span class="math" data-tex="\(2.483512\)">\(2.483512\)</span>. About <span class="math" data-tex="\(21.5722\%\)">\(21.5722\%\)</span> are below <span class="math" data-tex="\(0.68\)">\(0.68\)</span>. These are descriptions of this finite sample. They neither prove the limiting gap distribution nor upgrade the preceding lesson's infinitely-often small-gap theorem to a numerical proportion theorem.</p>
+<p>To evaluate the determinant, map <span class="math" data-tex="\((0,s)\)">\((0,s)\)</span> to <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. If <span class="math" data-tex="\(u_i,w_i\)">\(u_i,w_i\)</span> are Gauss–Legendre nodes and weights on that interval, the symmetric quadrature matrix is
+<span class="math math-display" data-tex="\[
+D_{ij}(s)=\sqrt{w_iw_j}\,sK(s(u_i-u_j)).
+\]">\[
+D_{ij}(s)=\sqrt{w_iw_j}\,sK(s(u_i-u_j)).
+\]</span>
+Let <span class="math" data-tex="\(B=I-D\)">\(B=I-D\)</span>. Direct differentiation gives
+<span class="math math-display" data-tex="\[
+D_{ij}&#x27;=\sqrt{w_iw_j}\cos(\pi s(u_i-u_j)),\qquad
+D_{ij}&#x27;&#x27;=-\sqrt{w_iw_j}\,\pi(u_i-u_j)\sin(\pi s(u_i-u_j)).
+\]">\[
+D_{ij}&#x27;=\sqrt{w_iw_j}\cos(\pi s(u_i-u_j)),\qquad
+D_{ij}&#x27;&#x27;=-\sqrt{w_iw_j}\,\pi(u_i-u_j)\sin(\pi s(u_i-u_j)).
+\]</span>
+Differentiating <span class="math" data-tex="\(\log\det B\)">\(\log\det B\)</span> then gives the density estimate
+<span class="math math-display" data-tex="\[
+(\det B)\left\{
+[\operatorname{tr}(B^{-1}B&#x27;)]^2
+-\operatorname{tr}[(B^{-1}B&#x27;)^2]
++\operatorname{tr}(B^{-1}B&#x27;&#x27;)
+\right\}.
+\tag{13.1}
+\]">\[
+(\det B)\left\{
+[\operatorname{tr}(B^{-1}B&#x27;)]^2
+-\operatorname{tr}[(B^{-1}B&#x27;)^2]
++\operatorname{tr}(B^{-1}B&#x27;&#x27;)
+\right\}.
+\tag{13.1}
+\]</span>
+On <span class="math" data-tex="\(0\leq s\leq3.4\)">\(0\leq s\leq3.4\)</span> with grid step <span class="math" data-tex="\(0.02\)">\(0.02\)</span>, changing from 64 to 96 nodes changed the computed density by at most <span class="math" data-tex="\(5.9\times10^{-15}\)">\(5.9\times10^{-15}\)</span>. Its trapezoidal integral on that grid was <span class="math" data-tex="\(0.9999977\)">\(0.9999977\)</span>. This is a floating-point convergence comparison, not a certified error interval. The primary table states absolute errors at most <span class="math" data-tex="\(3\times10^{-9}\)">\(3\times10^{-9}\)</span> for each ordinate; even that stated precision far exceeds what these plot bins need.</p>
+<p>This low-zero plot is distinct from Odlyzko's experiments near the <span class="math" data-tex="\(10^{20}\)">\(10^{20}\)</span>-th zero. His <a href="https://www-users.cse.umn.edu/~odlyzko/unpublished/zeta.10to20.1992.pdf">1992 revision of the large-height computation</a> concerns that zero and 175 million neighbours; Katz–Sarnak's 1999 survey also displays the earlier 70-million-zero comparison. Those experiments are evidence at much higher heights. Finite computations and restricted-support theorems support the unitary prediction in complementary ways.</p>
+<h2 id="14-exercises-and-solutions">14. Exercises and solutions</h2>
+<p><strong>1. The fourth-moment arithmetic factor.</strong> Prove <span class="math" data-tex="\(a_2=\prod_p(1-p^{-2})=6/\pi^2\)">\(a_2=\prod_p(1-p^{-2})=6/\pi^2\)</span>, and find <span class="math" data-tex="\(a_2f_2\)">\(a_2f_2\)</span>.</p>
+<p><strong>Solution.</strong> The generalized divisor coefficient is <span class="math" data-tex="\(d_2(p^m)=m+1\)">\(d_2(p^m)=m+1\)</span>. Starting with <span class="math" data-tex="\(\sum x^m=(1-x)^{-1}\)">\(\sum x^m=(1-x)^{-1}\)</span>, apply <span class="math" data-tex="\(x\,d/dx+1\)">\(x\,d/dx+1\)</span> twice to obtain <span class="math" data-tex="\(\sum(m+1)^2x^m=(1+x)/(1-x)^3\)">\(\sum(m+1)^2x^m=(1+x)/(1-x)^3\)</span>. Multiplication by <span class="math" data-tex="\((1-x)^4\)">\((1-x)^4\)</span> leaves <span class="math" data-tex="\(1-x^2\)">\(1-x^2\)</span>. Its product converges absolutely because <span class="math" data-tex="\(\sum_pp^{-2}&lt;\infty\)">\(\sum_pp^{-2}&lt;\infty\)</span>, and the Euler product gives <span class="math" data-tex="\(1/\zeta(2)=6/\pi^2\)">\(1/\zeta(2)=6/\pi^2\)</span>. Formula (7.4) gives <span class="math" data-tex="\(f_2=0!1!/(2!3!)=1/12\)">\(f_2=0!1!/(2!3!)=1/12\)</span>, so the product is <span class="math" data-tex="\(1/(2\pi^2)\)">\(1/(2\pi^2)\)</span>.</p>
+<p><strong>2. Two integer constants.</strong> Compute <span class="math" data-tex="\(g_3\)">\(g_3\)</span> and <span class="math" data-tex="\(g_4\)">\(g_4\)</span> from the Barnes factor.</p>
+<p><strong>Solution.</strong> The recurrence <span class="math" data-tex="\(G(n+1)=\Gamma(n)G(n)\)">\(G(n+1)=\Gamma(n)G(n)\)</span>, <span class="math" data-tex="\(G(1)=1\)">\(G(1)=1\)</span>, gives
+<span class="math" data-tex="\(f_3=(0!1!2!)/(3!4!5!)=1/8640\)">\(f_3=(0!1!2!)/(3!4!5!)=1/8640\)</span> and
+<span class="math" data-tex="\(f_4=(0!1!2!3!)/(4!5!6!7!)=1/870912000\)">\(f_4=(0!1!2!3!)/(4!5!6!7!)=1/870912000\)</span>.
+Thus <span class="math" data-tex="\(g_3=9!/8640=42\)">\(g_3=9!/8640=42\)</span> and <span class="math" data-tex="\(g_4=16!/870912000=24024\)">\(g_4=16!/870912000=24024\)</span>. The factorial in <span class="math" data-tex="\(g_k\)">\(g_k\)</span> is <span class="math" data-tex="\((k^2)!\)">\((k^2)!\)</span>, rather than <span class="math" data-tex="\(k!\)">\(k!\)</span>.</p>
+<p><strong>3. Fourier transform of the pair measure.</strong> Include the diagonal in transforming the pair density.</p>
+<p><strong>Solution.</strong> Direct integration shows <span class="math" data-tex="\(K=\mathcal F^{-1}\mathbf1_{[-1/2,1/2]}\)">\(K=\mathcal F^{-1}\mathbf1_{[-1/2,1/2]}\)</span>. The convolution of this indicator with itself is <span class="math" data-tex="\((1-|\alpha|)_+\)">\((1-|\alpha|)_+\)</span>, so <span class="math" data-tex="\(\widehat{K^2}\)">\(\widehat{K^2}\)</span> is that triangle. These identities hold against every Schwartz test, by the bounded frequency intervals and Fubini's theorem. Fourier inversion gives <span class="math" data-tex="\(\widehat1=\delta_0\)">\(\widehat1=\delta_0\)</span> and <span class="math" data-tex="\(\widehat{\delta_0}=1\)">\(\widehat{\delta_0}=1\)</span>. Therefore <span class="math" data-tex="\(\mathcal F(\delta_0+1-K^2)=1+\delta_0-(1-|\alpha|)_+=\delta_0+\min(|\alpha|,1)\)">\(\mathcal F(\delta_0+1-K^2)=1+\delta_0-(1-|\alpha|)_+=\delta_0+\min(|\alpha|,1)\)</span>. Omitting the first delta changes the constant Fourier contribution.</p>
+<p><strong>4. The Barnes product.</strong> Prove the finite product for <span class="math" data-tex="\(f_k\)">\(f_k\)</span> directly from the recurrence.</p>
+<p><strong>Solution.</strong> Iteration gives <span class="math" data-tex="\(G(k+1)=\prod_{j=0}^{k-1}j!\)">\(G(k+1)=\prod_{j=0}^{k-1}j!\)</span> and
+<span class="math" data-tex="\(G(2k+1)=\prod_{j=0}^{2k-1}j!\)">\(G(2k+1)=\prod_{j=0}^{2k-1}j!\)</span>. Cancel one copy of <span class="math" data-tex="\(\prod_{j&lt;k}j!\)">\(\prod_{j&lt;k}j!\)</span> in the quotient <span class="math" data-tex="\(G(k+1)^2/G(2k+1)\)">\(G(k+1)^2/G(2k+1)\)</span>. The denominator that remains is <span class="math" data-tex="\(\prod_{j=k}^{2k-1}j!=\prod_{j=0}^{k-1}(j+k)!\)">\(\prod_{j=k}^{2k-1}j!=\prod_{j=0}^{k-1}(j+k)!\)</span>. This proves <span class="math" data-tex="\(f_k=\prod_{j=0}^{k-1}j!/(j+k)!\)">\(f_k=\prod_{j=0}^{k-1}j!/(j+k)!\)</span> for every integer <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>.</p>
+<p><strong>5. The second matrix moment.</strong> Prove <span class="math" data-tex="\(\mathbb E|\det(I-U)|^2=N+1\)">\(\mathbb E|\det(I-U)|^2=N+1\)</span> using exterior powers.</p>
+<p><strong>Solution.</strong> Expand the determinant as <span class="math" data-tex="\(\sum_{j=0}^N(-1)^j\chi_j(U)\)">\(\sum_{j=0}^N(-1)^j\chi_j(U)\)</span>, where <span class="math" data-tex="\(\chi_j=\operatorname{tr}\Lambda^jU\)">\(\chi_j=\operatorname{tr}\Lambda^jU\)</span>. Each wedge representation is irreducible: its torus weights indexed by <span class="math" data-tex="\(j\)">\(j\)</span>-element subsets are distinct, and permutation matrices act transitively on their one-dimensional weight spaces, so its commuting operators are scalar. The representations are inequivalent because <span class="math" data-tex="\(tI\)">\(tI\)</span> acts by the different powers <span class="math" data-tex="\(t^j\)">\(t^j\)</span>. Haar averaging of matrix units, as in Section 5, makes the character inner products <span class="math" data-tex="\(\int\chi_j\overline{\chi_\ell}=\delta_{j\ell}\)">\(\int\chi_j\overline{\chi_\ell}=\delta_{j\ell}\)</span>. On integrating the expanded absolute square, exactly its <span class="math" data-tex="\(N+1\)">\(N+1\)</span> diagonal terms remain. This also covers <span class="math" data-tex="\(N=1\)">\(N=1\)</span>: <span class="math" data-tex="\(\mathbb E|1-e^{i\theta}|^2=2\)">\(\mathbb E|1-e^{i\theta}|^2=2\)</span>.</p>
+<h2 id="15-proof-inputs-and-further-reading">15. Proof inputs and further reading</h2>
+<p>The results proved here are the distributional Fourier identity; the finite CUE correlations and their sine limit; the GUE bulk limit; the Fredholm gap law; all CUE characteristic-polynomial moments in their integrability range; the Barnes asymptotic and arithmetic factors; restricted zeta <span class="math" data-tex="\(n\)">\(n\)</span>-level and triple correlations; and the finite-field equidistribution argument and worked pencil family. Assertions labelled conjectures are left conjectural.</p>
+<p>Some foundation results are supplied by exact existing planned lessons. Their planned state is not a claim that their public proofs have already appeared:</p>
+<ul>
+<li><em>Dirichlet series and Euler products</em>, <em>The Gamma function</em>, <em>The Riemann–von Mangoldt formula</em>, <em>The prime number theorem with its classical error term</em>, and <em>Mean values of Dirichlet polynomials and of zeta on the critical line</em> in <strong>The Riemann zeta function</strong>, lessons 1, 3, 10, 12 and 16: absolute Euler products; Stirling and differentiated gamma estimates; the zero count and unit-interval bound; the prime number theorem for partial summation; the polarized mean-value inequality and the exact second/fourth leading moment terms (8.4)–(8.5).</li>
+<li><em>The symmetric groups III: characters and symmetric functions</em> in <strong>Representations of finite groups</strong>, lesson 15: the Frobenius characteristic map, power-sum expansion and character column orthogonality used in (9.3).</li>
+<li><em>Fourier analysis and class functions on compact groups</em>, <em>The Weyl integration formula</em>, <em>The unitary groups: Weyl's character formula for <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span></em>, and <em>The Weyl character formula for compact connected Lie groups</em> in <strong>Representations of compact groups</strong>, lessons 3, 8, 9 and 11: approximation by characters; normalized Weyl densities for <span class="math" data-tex="\(U(N)\)">\(U(N)\)</span>, <span class="math" data-tex="\(USp(2g)\)">\(USp(2g)\)</span> and the orthogonal groups; Schur characters and their orthogonality; and algebraic characters of the symplectic group used in the tensor construction.</li>
+<li><em>Poincaré duality for smooth varieties</em> in <strong>Étale cohomology</strong>, lesson 18: top compactly supported cohomology of a smooth connected variety with a lisse sheaf equals its geometric coinvariants with twist <span class="math" data-tex="\((-d)\)">\((-d)\)</span>; proper and smooth base change from lessons 13 and 15 provide the sheaves in the family.</li>
+<li><em>The Grothendieck–Lefschetz trace formula</em>, <em>Lefschetz pencils and vanishing cycles</em>, and <em>The Riemann hypothesis over finite fields</em> in <strong>The Lefschetz trace formula and the Weil conjectures</strong>, lessons 7, 9 and 11: the trace formula with compact support; existence and local/global monodromy of nodal pencils, the blow-up and Leray descriptions used for our plane pencil; purity of smooth projective curve cohomology.</li>
+<li><em>Weights, purity and semisimplicity over finite fields</em> in <strong>Perverse sheaves</strong>, lesson 7: Weil II's bound for <span class="math" data-tex="\(R^if_!\)">\(R^if_!\)</span> applied to a pointwise pure sheaf and the structure morphism. This is the precise weight input in (10.5); its full proof belongs to that lesson's existing assignment.</li>
+</ul>
+<p>The primary works providing the comparisons are Montgomery, <a href="https://websites.umich.edu/~hlm/paircor1.pdf"><em>The pair correlation of zeros of the zeta function</em></a> (1973), especially Dyson's observation; Keating–Snaith, <a href="https://people.maths.bris.ac.uk/~mancs/papers/RMTzeta.pdf"><em>Random matrix theory and <span class="math" data-tex="\(\zeta(1/2+it)\)">\(\zeta(1/2+it)\)</span></em></a> (2000), equations (15)–(16) for the matrix moment; and Conrey, <a href="https://aimath.org/~kaur/publications/58.pdf"><em>Notes on <span class="math" data-tex="\(L\)">\(L\)</span>-functions and random matrix theory</em></a> (2006), Sections 2–5. The determinant proof in Section 6 establishes the matrix formula.</p>
+<p>For higher zeros, Rudnick–Sarnak, <a href="https://www.math.tau.ac.il/~rudnick/papers/nlevelDuke.pdf"><em>Zeros of principal <span class="math" data-tex="\(L\)">\(L\)</span>-functions and random matrix theory</em></a> (1996), Theorems 1.1–1.2 and Sections 3–4, treat more general primitive automorphic <span class="math" data-tex="\(L\)">\(L\)</span>-functions as well as zeta. Hejhal's 1994 theorem on the triple correlation of zeta zeros precedes that general theorem; its hexagonal support and leading determinant are displayed in Conrey–Snaith, <a href="https://jtnb.centre-mersenne.org/item/10.5802/jtnb.616.pdf"><em>Triple correlation of the Riemann zeros</em></a> (2008), introduction. Section 9 proves the zeta case used in this course; no assertion about general automorphic coefficients is used.</p>
+<p>Katz–Sarnak, <a href="https://web.math.princeton.edu/~nmk/old/katzsarnakarticle.pdf"><em>Zeroes of zeta functions and symmetry</em></a> (1999), Sections 2–4, explains the distinction between bulk spacings and central family statistics. Bogomolny, <a href="https://arxiv.org/pdf/0708.4223"><em>Riemann zeta function and quantum chaos</em></a> (2007), the spectral-statistics section, gives the time-reversal comparison. CFKRS, <a href="https://arxiv.org/abs/math/0206018"><em>Integral moments of <span class="math" data-tex="\(L\)">\(L\)</span>-functions</em></a> (2005), Conjecture 1.5.1 and Sections 2.1–2.2, supplies the conjectural recipe (12.1)–(12.2).</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-08.html">← Pair correlation of zeros: Montgomery&#x27;s theorem</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-09.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

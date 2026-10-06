@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gelfond–Schneider and Hilbert&#x27;s seventh problem · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-06.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="gelfond-schneider-and-hilbert-s-seventh-problem">Gelfond–Schneider and Hilbert's seventh problem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>An algebraic base raised to a rational exponent remains algebraic. What happens for an algebraic irrational exponent? Hilbert made this his seventh problem in 1900. Gelfond proved the imaginary-quadratic case in 1929, including the transcendence of <span class="math" data-tex="\(e^\pi\)">\(e^\pi\)</span>; Kuzmin obtained the real-quadratic case in 1930. Gelfond and Schneider independently resolved the general problem in 1934. Waldschmidt's <em>Auxiliary functions in transcendence proofs</em>, §§2.3 and 3.1.2, recounts this history.</p>
+<p>We use <a href="TR-TRANS-02.html">Heights of algebraic numbers</a>, particularly its polynomial-value inequality, and <a href="TR-TRANS-05.html">Siegel's lemma and the six exponentials theorem</a>, particularly Schwarz's estimate. The latter lesson made a function small by prescribing many zeros. Here we make a determinant small because its rows become dependent to high order when all evaluation points move towards the origin. A separate polynomial argument guarantees that one of these determinants is nonzero. Laurent's interpolation determinants provide the method; Waldschmidt's <em>Linear Independence of Logarithms of Algebraic Numbers</em>, Chapters 2 and 4, develops it, including a zero estimate for the real case of the Gelfond–Schneider theorem. We begin by calculating what a small determinant means, then prove that the grid supplies a nonzero one.</p>
+<p>For <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, fix a complex logarithm <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(e^A=\alpha\)">\(e^A=\alpha\)</span>, and define the corresponding value of <span class="math" data-tex="\(\alpha^\beta\)">\(\alpha^\beta\)</span> to be <span class="math" data-tex="\(e^{\beta A}\)">\(e^{\beta A}\)</span>. We will keep this same <span class="math" data-tex="\(A\)">\(A\)</span> throughout the proof. This convention treats each possible value of the power, rather than quietly restricting to a principal branch.</p>
+<h3 id="theorem-6-1-gelfond-schneider">Theorem 6.1. Gelfond–Schneider</h3>
+<p>If <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are algebraic numbers, <span class="math" data-tex="\(\alpha\notin\{0,1\}\)">\(\alpha\notin\{0,1\}\)</span> and <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>, then every value of <span class="math" data-tex="\(\alpha^\beta\)">\(\alpha^\beta\)</span> is transcendental.</p>
+<p>The proof is completed in Section 5. Its only arithmetic inequality is already proved in the height lesson; the required rank and analytic determinant estimates are proved here.</p>
+<h2 id="1-read-the-matrix-before-estimating-it">1. Read the matrix before estimating it</h2>
+<p>For two functions <span class="math" data-tex="\(1,e^{Az}\)">\(1,e^{Az}\)</span> at the points <span class="math" data-tex="\(0,h\)">\(0,h\)</span>, the interpolation determinant is</p>
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}1&amp;1\\1&amp;e^{Ah}\end{pmatrix}=e^{Ah}-1.
+\]">\[
+\det\begin{pmatrix}1&amp;1\\1&amp;e^{Ah}\end{pmatrix}=e^{Ah}-1.
+\]</span>
+<p>As <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>, its two columns approach one another and the determinant has leading term <span class="math" data-tex="\(Ah\)">\(Ah\)</span>. Smallness comes from this coincidence, not from either function being small. Nonvanishing is a different question: if <span class="math" data-tex="\(Ah\)">\(Ah\)</span> is a nonzero multiple of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, the determinant is exactly zero. For the large matrix we will likewise prove a size bound for every choice of points and a separate existence statement for a nonzero choice.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\alpha_1=e^A=\alpha,\qquad \alpha_2=e^{\beta A},
+\qquad z_{r,s}=r+s\beta,\qquad
+b_{r,s}=\alpha_1^r\alpha_2^s.
+\]">\[
+\alpha_1=e^A=\alpha,\qquad \alpha_2=e^{\beta A},
+\qquad z_{r,s}=r+s\beta,\qquad
+b_{r,s}=\alpha_1^r\alpha_2^s.
+\]</span>
+<p>Because <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>, different integer pairs <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> give different <span class="math" data-tex="\(z_{r,s}\)">\(z_{r,s}\)</span>. Indeed, equality gives <span class="math" data-tex="\(r-r&#x27;=-(s-s&#x27;)\beta\)">\(r-r&#x27;=-(s-s&#x27;)\beta\)</span>; if <span class="math" data-tex="\(s\ne s&#x27;\)">\(s\ne s&#x27;\)</span>, this would express <span class="math" data-tex="\(\beta\)">\(\beta\)</span> as a rational number, and otherwise <span class="math" data-tex="\(r=r&#x27;\)">\(r=r&#x27;\)</span>.</p>
+<p>For an integer <span class="math" data-tex="\(N\)">\(N\)</span> sufficiently large, set</p>
+<span class="math math-display" data-tex="\[
+K=\lfloor N\log N\rfloor,\qquad
+L=\left\lfloor\frac N{\log N}\right\rfloor,\qquad
+M=KL.
+\tag{6.4}
+\]">\[
+K=\lfloor N\log N\rfloor,\qquad
+L=\left\lfloor\frac N{\log N}\right\rfloor,\qquad
+M=KL.
+\tag{6.4}
+\]</span>
+<p>All three are positive integers. The two floor choices imply</p>
+<span class="math math-display" data-tex="\[
+M\leq N^2,\qquad \frac M{N^2}\longrightarrow1,
+\qquad L&lt;N.
+\tag{6.5}
+\]">\[
+M\leq N^2,\qquad \frac M{N^2}\longrightarrow1,
+\qquad L&lt;N.
+\tag{6.5}
+\]</span>
+<p>The interpolation matrix has rows indexed by <span class="math" data-tex="\(0\leq r,s&lt;2N\)">\(0\leq r,s&lt;2N\)</span>, columns indexed by <span class="math" data-tex="\(0\leq u&lt;K,0\leq v&lt;L\)">\(0\leq u&lt;K,0\leq v&lt;L\)</span>, and entries</p>
+<span class="math math-display" data-tex="\[
+\mathcal A_{(r,s),(u,v)}
+=(r+s\beta)^u(\alpha_1^r\alpha_2^s)^v.
+\tag{6.6}
+\]">\[
+\mathcal A_{(r,s),(u,v)}
+=(r+s\beta)^u(\alpha_1^r\alpha_2^s)^v.
+\tag{6.6}
+\]</span>
+<p>As usual the zeroth power is <span class="math" data-tex="\(1\)">\(1\)</span>, including at <span class="math" data-tex="\(r=s=0\)">\(r=s=0\)</span>. The matrix has <span class="math" data-tex="\(4N^2\)">\(4N^2\)</span> rows and <span class="math" data-tex="\(M\)">\(M\)</span> columns.</p>
+<p>The entry in (6.6) can also be read as <span class="math" data-tex="\(f_{u,v}(z_{r,s})\)">\(f_{u,v}(z_{r,s})\)</span>, where <span class="math" data-tex="\(f_{u,v}(z)=z^ue^{vAz}\)">\(f_{u,v}(z)=z^ue^{vAz}\)</span>. Choose any <span class="math" data-tex="\(M\)">\(M\)</span> rows and call the square determinant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. The analytic estimate below applies to every such choice; its logarithmic formulation concerns the choices with <span class="math" data-tex="\(\Delta\ne0\)">\(\Delta\ne0\)</span>. Section 4 will prove that these choices exist.</p>
+<p>Why use different sizes for <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>? On a circle of radius proportional to <span class="math" data-tex="\(N\)">\(N\)</span>, the polynomial part costs <span class="math" data-tex="\(K\log N\)">\(K\log N\)</span> and the exponential part costs <span class="math" data-tex="\(LN\)">\(LN\)</span>. With (6.4), both costs are <span class="math" data-tex="\(o(N^2)\)">\(o(N^2)\)</span>, while there are <span class="math" data-tex="\(M\sim N^2\)">\(M\sim N^2\)</span> columns. Thus the coincidence of columns can supply order <span class="math" data-tex="\(M^2\sim N^4\)">\(M^2\sim N^4\)</span> without growth of the functions consuming it. This is the first estimate to check before attempting the proof.</p>
+<h2 id="2-coalescing-points-and-the-analytic-gain">2. Coalescing points and the analytic gain</h2>
+<h3 id="lemma-6-6-analytic-interpolation-determinant-estimate">Lemma 6.6. Analytic interpolation determinant estimate</h3>
+<p>Suppose <span class="math" data-tex="\(R&gt;\rho&gt;0\)">\(R&gt;\rho&gt;0\)</span>, <span class="math" data-tex="\(|\xi_j|\leq\rho\)">\(|\xi_j|\leq\rho\)</span> for <span class="math" data-tex="\(1\leq j\leq M\)">\(1\leq j\leq M\)</span>, and <span class="math" data-tex="\(f_1,\ldots,f_M\)">\(f_1,\ldots,f_M\)</span> are analytic on a neighbourhood of <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>, with <span class="math" data-tex="\(|f_i|_R\leq S\)">\(|f_i|_R\leq S\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\left|\det(f_i(\xi_j))_{i,j}\right|
+\leq M!\left(\frac\rho R\right)^{M(M-1)/2}S^M.
+\tag{6.7}
+\]">\[
+\left|\det(f_i(\xi_j))_{i,j}\right|
+\leq M!\left(\frac\rho R\right)^{M(M-1)/2}S^M.
+\tag{6.7}
+\]</span>
+<p><strong>Proof.</strong> Consider the analytic function of a single scaling variable</p>
+<span class="math math-display" data-tex="\[
+H(t)=\det(f_i(t\xi_j))_{i,j},
+\qquad |t|\leq R/\rho.
+\]">\[
+H(t)=\det(f_i(t\xi_j))_{i,j},
+\qquad |t|\leq R/\rho.
+\]</span>
+<p>We claim that it has a zero of order at least</p>
+<span class="math math-display" data-tex="\[
+T=0+1+\cdots+(M-1)=M(M-1)/2
+\]">\[
+T=0+1+\cdots+(M-1)=M(M-1)/2
+\]</span>
+<p>at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Expand each row using the Taylor series of its function at <span class="math" data-tex="\(0\)">\(0\)</span>. In a term obtained by selecting row degrees <span class="math" data-tex="\(k_1,\ldots,k_M\)">\(k_1,\ldots,k_M\)</span>, the determinant contains the rows <span class="math" data-tex="\((\xi_j^{k_i})_j\)">\((\xi_j^{k_i})_j\)</span> and a factor <span class="math" data-tex="\(t^{k_1+\cdots+k_M}\)">\(t^{k_1+\cdots+k_M}\)</span>. If two degrees coincide, those two rows are identical and that term vanishes. If all degrees are distinct nonnegative integers, their sum is at least <span class="math" data-tex="\(T\)">\(T\)</span>. For a coefficient of degree less than <span class="math" data-tex="\(T\)">\(T\)</span>, only finitely many Taylor terms participate; the determinant expansion therefore justifies this cancellation coefficient by coefficient. The assertion also covers <span class="math" data-tex="\(M=1\)">\(M=1\)</span>, when <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p>On <span class="math" data-tex="\(|t|=R/\rho\)">\(|t|=R/\rho\)</span>, all <span class="math" data-tex="\(t\xi_j\)">\(t\xi_j\)</span> lie in the disc <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>. Maximum modulus and the determinant expansion bound <span class="math" data-tex="\(|H(t)|\)">\(|H(t)|\)</span> by <span class="math" data-tex="\(M!S^M\)">\(M!S^M\)</span>. Schwarz's estimate from Lemma 5.4, with outer radius <span class="math" data-tex="\(R/\rho\)">\(R/\rho\)</span> and inner radius <span class="math" data-tex="\(1\)">\(1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|H(1)|\leq(\rho/R)^T M!S^M.
+\]">\[
+|H(1)|\leq(\rho/R)^T M!S^M.
+\]</span>
+<p>This is (6.7). The scaling variable has outer radius <span class="math" data-tex="\(R/\rho\)">\(R/\rho\)</span>, not <span class="math" data-tex="\(R\)">\(R\)</span>; keeping the two radii distinct accounts for the factor in the estimate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-6-7-the-analytic-upper-bound">Proposition 6.7. The analytic upper bound</h3>
+<p>For the nonzero minor of (6.6), with the fixed logarithm <span class="math" data-tex="\(A\)">\(A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta|\leq-N^4
+\tag{6.8}
+\]">\[
+\log|\Delta|\leq-N^4
+\tag{6.8}
+\]</span>
+<p>for all sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proof.</strong> Use the <span class="math" data-tex="\(M\)">\(M\)</span> functions</p>
+<span class="math math-display" data-tex="\[
+f_{u,v}(z)=z^ue^{vAz}
+\qquad(0\leq u&lt;K,\ 0\leq v&lt;L)
+\]">\[
+f_{u,v}(z)=z^ue^{vAz}
+\qquad(0\leq u&lt;K,\ 0\leq v&lt;L)
+\]</span>
+<p>at the selected points <span class="math" data-tex="\(\xi_{r,s}=r+s\beta\)">\(\xi_{r,s}=r+s\beta\)</span>. Their values are exactly the entries (6.6), because</p>
+<span class="math math-display" data-tex="\[
+e^{vA(r+s\beta)}=(\alpha_1^r\alpha_2^s)^v.
+\]">\[
+e^{vA(r+s\beta)}=(\alpha_1^r\alpha_2^s)^v.
+\]</span>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\rho=2N(1+|\beta|),\qquad R=e^5\rho.
+\]">\[
+\rho=2N(1+|\beta|),\qquad R=e^5\rho.
+\]</span>
+<p>Every selected point is in <span class="math" data-tex="\(|z|\leq\rho\)">\(|z|\leq\rho\)</span>. For large <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(R&gt;1\)">\(R&gt;1\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\log|f_{u,v}|_R\leq K\log R+LR|A|=o(N^2).
+\tag{6.9}
+\]">\[
+\log|f_{u,v}|_R\leq K\log R+LR|A|=o(N^2).
+\tag{6.9}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(R\)">\(R\)</span> is a fixed multiple of <span class="math" data-tex="\(N\)">\(N\)</span>, so the first term is <span class="math" data-tex="\(O(N(\log N)^2)\)">\(O(N(\log N)^2)\)</span>, and the second is <span class="math" data-tex="\(O(N^2/\log N)\)">\(O(N^2/\log N)\)</span>. Their ratios to <span class="math" data-tex="\(N^2\)">\(N^2\)</span> tend to zero. These elementary limits follow, for example, by putting <span class="math" data-tex="\(t=\log N\)">\(t=\log N\)</span> and using the exponential series to show <span class="math" data-tex="\(t^k/e^t\to0\)">\(t^k/e^t\to0\)</span> for every fixed integer <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Thus <span class="math" data-tex="\(S=e^{N^2}\)">\(S=e^{N^2}\)</span> is an admissible bound for all the functions, for sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>. Lemma 6.6 gives</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta|
+\leq\log(M!)-\tfrac52M(M-1)+MN^2.
+\]">\[
+\log|\Delta|
+\leq\log(M!)-\tfrac52M(M-1)+MN^2.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(N^4\)">\(N^4\)</span>. By (6.5), the negative term tends to <span class="math" data-tex="\(-5/2\)">\(-5/2\)</span>, the last term tends to <span class="math" data-tex="\(1\)">\(1\)</span>, and the factorial term tends to zero, since</p>
+<span class="math math-display" data-tex="\[
+\log(M!)\leq M\log M\leq2N^2\log N.
+\]">\[
+\log(M!)\leq M\log M\leq2N^2\log N.
+\]</span>
+<p>The right side divided by <span class="math" data-tex="\(N^4\)">\(N^4\)</span> therefore tends to <span class="math" data-tex="\(-3/2\)">\(-3/2\)</span>, and is at most <span class="math" data-tex="\(-1\)">\(-1\)</span> for all sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>. This proves (6.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The analytic gain is uniform over the minors. We now establish nonvanishing before using algebraicity to bound a chosen nonzero minor from below.</p>
+<h2 id="3-a-translated-grid-supplies-a-nonzero-value">3. A translated grid supplies a nonzero value</h2>
+<p><strong>Worked failure of an arbitrary evaluation choice.</strong> The independent polynomials <span class="math" data-tex="\(1,Y^2\)">\(1,Y^2\)</span> give determinant zero at <span class="math" data-tex="\(Y=1,-1\)">\(Y=1,-1\)</span>, but determinant <span class="math" data-tex="\(3\)">\(3\)</span> at <span class="math" data-tex="\(Y=1,2\)">\(Y=1,2\)</span>. Independence of functions does not certify every square evaluation matrix. A set containing three distinct points does certify that some two columns work: a nonzero polynomial of degree at most two cannot vanish on all three. Lemma 6.3 formalizes exactly this freedom of choice. The translation argument in Lemma 6.4 then turns that evaluation certificate into a degree contradiction in the additive coordinate.</p>
+<h3 id="lemma-6-2-at-least-one-multiplicative-generator-has-infinite-order">Lemma 6.2. At least one multiplicative generator has infinite order</h3>
+<p>Under the hypotheses above, at least one of <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> is not a root of unity.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\alpha_1^m=1\)">\(\alpha_1^m=1\)</span> and <span class="math" data-tex="\(\alpha_2^n=1\)">\(\alpha_2^n=1\)</span>, with <span class="math" data-tex="\(m,n&gt;0\)">\(m,n&gt;0\)</span>, then the kernel of the complex exponential gives</p>
+<span class="math math-display" data-tex="\[
+mA=2\pi i k,\qquad n\beta A=2\pi i\ell,
+\qquad k,\ell\in\mathbb Z.
+\]">\[
+mA=2\pi i k,\qquad n\beta A=2\pi i\ell,
+\qquad k,\ell\in\mathbb Z.
+\]</span>
+<p>Here <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, since <span class="math" data-tex="\(\alpha\ne1\)">\(\alpha\ne1\)</span>, and hence <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>. Division yields <span class="math" data-tex="\(\beta=m\ell/(nk)\in\mathbb Q\)">\(\beta=m\ell/(nk)\in\mathbb Q\)</span>, a contradiction. The logarithm is the originally fixed one, so its possible addition of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> causes no branch exception. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-6-3-independent-sparse-powers-on-a-finite-set">Lemma 6.3. Independent sparse powers on a finite set</h3>
+<p>Let <span class="math" data-tex="\(0\leq k_1&lt;\cdots&lt;k_m&lt;L\)">\(0\leq k_1&lt;\cdots&lt;k_m&lt;L\)</span>, and let <span class="math" data-tex="\(E\subset\mathbb C^\times\)">\(E\subset\mathbb C^\times\)</span> contain at least <span class="math" data-tex="\(L\)">\(L\)</span> distinct elements. One can choose <span class="math" data-tex="\(m\)">\(m\)</span> elements <span class="math" data-tex="\(b_1,\ldots,b_m\in E\)">\(b_1,\ldots,b_m\in E\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\det(b_j^{k_i})_{1\leq i,j\leq m}\ne0.
+\tag{6.1}
+\]">\[
+\det(b_j^{k_i})_{1\leq i,j\leq m}\ne0.
+\tag{6.1}
+\]</span>
+<p><strong>Proof.</strong> Evaluate the <span class="math" data-tex="\(m\)">\(m\)</span> monomials <span class="math" data-tex="\(Y^{k_i}\)">\(Y^{k_i}\)</span> at any <span class="math" data-tex="\(L\)">\(L\)</span> distinct elements of <span class="math" data-tex="\(E\)">\(E\)</span>. If the resulting <span class="math" data-tex="\(m\)">\(m\)</span>-by-<span class="math" data-tex="\(L\)">\(L\)</span> matrix had dependent rows, some nonzero polynomial <span class="math" data-tex="\(\sum_i c_iY^{k_i}\)">\(\sum_i c_iY^{k_i}\)</span> of degree less than <span class="math" data-tex="\(L\)">\(L\)</span> would have <span class="math" data-tex="\(L\)">\(L\)</span> distinct roots. Repeated division by its linear root factors rules this out. The matrix has row rank <span class="math" data-tex="\(m\)">\(m\)</span>, so it has a nonzero <span class="math" data-tex="\(m\)">\(m\)</span>-by-<span class="math" data-tex="\(m\)">\(m\)</span> minor. Its columns give the required elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-6-4-a-zero-estimate-for-two-translated-grids">Lemma 6.4. A zero estimate for two translated grids</h3>
+<p>Let <span class="math" data-tex="\(P\in\mathbb C[X,Y]\)">\(P\in\mathbb C[X,Y]\)</span> be nonzero, with</p>
+<span class="math math-display" data-tex="\[
+\deg_XP&lt;K,\qquad\deg_YP&lt;L,
+\qquad K,L\geq1.
+\]">\[
+\deg_XP&lt;K,\qquad\deg_YP&lt;L,
+\qquad K,L\geq1.
+\]</span>
+<p>Let <span class="math" data-tex="\(R_1,S_1,R_2,S_2\)">\(R_1,S_1,R_2,S_2\)</span> be positive integers. Assume that</p>
+<span class="math math-display" data-tex="\[
+E=\{\alpha_1^r\alpha_2^s:0\leq r&lt;R_1,\ 0\leq s&lt;S_1\}
+\]">\[
+E=\{\alpha_1^r\alpha_2^s:0\leq r&lt;R_1,\ 0\leq s&lt;S_1\}
+\]</span>
+<p>has at least <span class="math" data-tex="\(L\)">\(L\)</span> distinct elements, and that</p>
+<span class="math math-display" data-tex="\[
+Z=\{r+s\beta:0\leq r&lt;R_2,\ 0\leq s&lt;S_2\}
+\]">\[
+Z=\{r+s\beta:0\leq r&lt;R_2,\ 0\leq s&lt;S_2\}
+\]</span>
+<p>has more than <span class="math" data-tex="\((K-1)L\)">\((K-1)L\)</span> distinct elements. Then at least one value</p>
+<span class="math math-display" data-tex="\[
+P(r+s\beta,\alpha_1^r\alpha_2^s),
+\qquad0\leq r&lt;R_1+R_2-1,\quad
+0\leq s&lt;S_1+S_2-1,
+\tag{6.2}
+\]">\[
+P(r+s\beta,\alpha_1^r\alpha_2^s),
+\qquad0\leq r&lt;R_1+R_2-1,\quad
+0\leq s&lt;S_1+S_2-1,
+\tag{6.2}
+\]</span>
+<p>is nonzero.</p>
+<p><strong>Proof.</strong> Suppose all values in (6.2) were zero. Expand in the powers of <span class="math" data-tex="\(Y\)">\(Y\)</span> whose coefficients are nonzero:</p>
+<span class="math math-display" data-tex="\[
+P(X,Y)=\sum_{i=1}^m Q_i(X)Y^{k_i},
+\quad0\leq k_1&lt;\cdots&lt;k_m&lt;L,
+\quad Q_i\ne0.
+\]">\[
+P(X,Y)=\sum_{i=1}^m Q_i(X)Y^{k_i},
+\quad0\leq k_1&lt;\cdots&lt;k_m&lt;L,
+\quad Q_i\ne0.
+\]</span>
+<p>In particular <span class="math" data-tex="\(1\leq m\leq L\)">\(1\leq m\leq L\)</span> and <span class="math" data-tex="\(\deg Q_i\leq K-1\)">\(\deg Q_i\leq K-1\)</span>. Choose pairs <span class="math" data-tex="\((r_j,s_j)\)">\((r_j,s_j)\)</span> in the first rectangle representing elements</p>
+<span class="math math-display" data-tex="\[
+b_j=\alpha_1^{r_j}\alpha_2^{s_j}
+\]">\[
+b_j=\alpha_1^{r_j}\alpha_2^{s_j}
+\]</span>
+<p>with nonzero determinant (6.1), and put <span class="math" data-tex="\(a_j=r_j+s_j\beta\)">\(a_j=r_j+s_j\beta\)</span>. Consider the polynomial matrix</p>
+<span class="math math-display" data-tex="\[
+T(X)=(Q_i(X+a_j)b_j^{k_i})_{1\leq j,i\leq m},
+\qquad D(X)=\det T(X).
+\]">\[
+T(X)=(Q_i(X+a_j)b_j^{k_i})_{1\leq j,i\leq m},
+\qquad D(X)=\det T(X).
+\]</span>
+<p>If <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> has degree <span class="math" data-tex="\(d_i\)">\(d_i\)</span> and leading coefficient <span class="math" data-tex="\(c_i\ne0\)">\(c_i\ne0\)</span>, the coefficient of <span class="math" data-tex="\(X^{d_1+\cdots+d_m}\)">\(X^{d_1+\cdots+d_m}\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\left(\prod_i c_i\right)\det(b_j^{k_i})_{j,i}\ne0.
+\]">\[
+\left(\prod_i c_i\right)\det(b_j^{k_i})_{j,i}\ne0.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+D\ne0,\qquad \deg D=\sum_i d_i\leq(K-1)m\leq(K-1)L.
+\tag{6.3}
+\]">\[
+D\ne0,\qquad \deg D=\sum_i d_i\leq(K-1)m\leq(K-1)L.
+\tag{6.3}
+\]</span>
+<p>For any pair <span class="math" data-tex="\((r&#x27;,s&#x27;)\)">\((r&#x27;,s&#x27;)\)</span> in the second rectangle, set</p>
+<span class="math math-display" data-tex="\[
+a&#x27;=r&#x27;+s&#x27;\beta,\qquad b&#x27;=\alpha_1^{r&#x27;}\alpha_2^{s&#x27;}\ne0.
+\]">\[
+a&#x27;=r&#x27;+s&#x27;\beta,\qquad b&#x27;=\alpha_1^{r&#x27;}\alpha_2^{s&#x27;}\ne0.
+\]</span>
+<p>Each translated polynomial satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(a&#x27;+a_j,b_jb&#x27;)
+&amp;=P((r&#x27;+r_j)+(s&#x27;+s_j)\beta,
+\alpha_1^{r&#x27;+r_j}\alpha_2^{s&#x27;+s_j})=0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+P(a&#x27;+a_j,b_jb&#x27;)
+&amp;=P((r&#x27;+r_j)+(s&#x27;+s_j)\beta,
+\alpha_1^{r&#x27;+r_j}\alpha_2^{s&#x27;+s_j})=0,
+\end{aligned}
+\]</span>
+<p>because the summed pairs lie in the larger rectangle of (6.2). Thus</p>
+<span class="math math-display" data-tex="\[
+T(a&#x27;)\begin{pmatrix}(b&#x27;)^{k_1}\\ \vdots\\(b&#x27;)^{k_m}\end{pmatrix}=0.
+\]">\[
+T(a&#x27;)\begin{pmatrix}(b&#x27;)^{k_1}\\ \vdots\\(b&#x27;)^{k_m}\end{pmatrix}=0.
+\]</span>
+<p>The displayed vector is nonzero, since all its entries are powers of a nonzero number. Therefore <span class="math" data-tex="\(D(a&#x27;)=0\)">\(D(a&#x27;)=0\)</span>. The polynomial <span class="math" data-tex="\(D\)">\(D\)</span> has a root at every element of <span class="math" data-tex="\(Z\)">\(Z\)</span>, more than <span class="math" data-tex="\((K-1)L\)">\((K-1)L\)</span> distinct roots. This contradicts (6.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument keeps the possibility <span class="math" data-tex="\(m=L\)">\(m=L\)</span>. No strict inequality between the number of monomials and <span class="math" data-tex="\(L\)">\(L\)</span> is needed: it is the number of distinct roots that strictly exceeds the degree bound.</p>
+<h2 id="4-from-a-nonzero-value-to-a-nonzero-minor">4. From a nonzero value to a nonzero minor</h2>
+<h3 id="proposition-6-5-full-column-rank">Proposition 6.5. Full column rank</h3>
+<p>The matrix (6.6) has rank <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> A nontrivial linear dependence of its columns would give a nonzero polynomial</p>
+<span class="math math-display" data-tex="\[
+P(X,Y)=\sum_{u&lt;K,v&lt;L}c_{uv}X^uY^v
+\]">\[
+P(X,Y)=\sum_{u&lt;K,v&lt;L}c_{uv}X^uY^v
+\]</span>
+<p>vanishing at every grid pair in (6.6). Apply Lemma 6.4 with all four rectangle parameters equal to <span class="math" data-tex="\(N\)">\(N\)</span>. By Lemma 6.2, powers of at least one of <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> supply <span class="math" data-tex="\(N\)">\(N\)</span> distinct multiplicative values in the first rectangle; this is more than the required <span class="math" data-tex="\(L\)">\(L\)</span>. Since <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>, there are <span class="math" data-tex="\(N^2\)">\(N^2\)</span> distinct additive values in the second rectangle, and</p>
+<span class="math math-display" data-tex="\[
+N^2\geq KL&gt;(K-1)L.
+\]">\[
+N^2\geq KL&gt;(K-1)L.
+\]</span>
+<p>Lemma 6.4 makes at least one value with <span class="math" data-tex="\(0\leq r,s&lt;2N-1\)">\(0\leq r,s&lt;2N-1\)</span> nonzero. Such a pair is included in the larger range <span class="math" data-tex="\(0\leq r,s&lt;2N\)">\(0\leq r,s&lt;2N\)</span> where all values were assumed zero. This contradiction proves full rank. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose <span class="math" data-tex="\(M\)">\(M\)</span> rows whose square minor is nonzero, and denote its determinant by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. The choice may depend on <span class="math" data-tex="\(N\)">\(N\)</span>. The estimates below will be uniform over every possible choice of these rows.</p>
+<h2 id="5-compare-the-two-bounds-on-the-same-minor">5. Compare the two bounds on the same minor</h2>
+<h3 id="proposition-6-8-the-arithmetic-lower-bound">Proposition 6.8. The arithmetic lower bound</h3>
+<p>Suppose <span class="math" data-tex="\(\alpha_1,\alpha_2,\beta\)">\(\alpha_1,\alpha_2,\beta\)</span> are algebraic. There is a constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, depending only on these three numbers, such that every nonzero minor selected above satisfies</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta|\geq-\frac{cN^4}{\log N}
+\geq-\frac12N^4
+\tag{6.10}
+\]">\[
+\log|\Delta|\geq-\frac{cN^4}{\log N}
+\geq-\frac12N^4
+\tag{6.10}
+\]</span>
+<p>for all sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Proof.</strong> Using the selected row pairs, form the integer polynomial</p>
+<span class="math math-display" data-tex="\[
+P(X_1,X_2,X_3)
+=\det\bigl((r+sX_3)^u(X_1^rX_2^s)^v\bigr).
+\]">\[
+P(X_1,X_2,X_3)
+=\det\bigl((r+sX_3)^u(X_1^rX_2^s)^v\bigr).
+\]</span>
+<p>It is nonzero, since <span class="math" data-tex="\(P(\alpha_1,\alpha_2,\beta)=\Delta\ne0\)">\(P(\alpha_1,\alpha_2,\beta)=\Delta\ne0\)</span>. Let <span class="math" data-tex="\(\ell(P)\)">\(\ell(P)\)</span> be its coefficient length, the sum of absolute values of its integer coefficients, and let <span class="math" data-tex="\(e_j=\deg_{X_j}P\)">\(e_j=\deg_{X_j}P\)</span>. Each term in the determinant contains exactly one entry from each of its <span class="math" data-tex="\(M\)">\(M\)</span> columns. Since <span class="math" data-tex="\(r,s&lt;2N\)">\(r,s&lt;2N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+e_1,e_2\leq2NLM,\qquad e_3\leq KM,
+\qquad \ell(P)\leq M!(4N)^{KM}.
+\tag{6.11}
+\]">\[
+e_1,e_2\leq2NLM,\qquad e_3\leq KM,
+\qquad \ell(P)\leq M!(4N)^{KM}.
+\tag{6.11}
+\]</span>
+<p>For the last bound, the length of <span class="math" data-tex="\((r+sX_3)^u\)">\((r+sX_3)^u\)</span> is <span class="math" data-tex="\((r+s)^u\leq(4N)^K\)">\((r+s)^u\leq(4N)^K\)</span>, with the convention that a zeroth power has length <span class="math" data-tex="\(1\)">\(1\)</span>. Multiplication by the other monomial does not change length. Coefficient length is submultiplicative by the triangle inequality, and the determinant has <span class="math" data-tex="\(M!\)">\(M!\)</span> signed product terms. Cancellation only lowers its length.</p>
+<p>Let <span class="math" data-tex="\(F=\mathbb Q(\alpha_1,\alpha_2,\beta)\)">\(F=\mathbb Q(\alpha_1,\alpha_2,\beta)\)</span> and <span class="math" data-tex="\(d_F=[F:\mathbb Q]\)">\(d_F=[F:\mathbb Q]\)</span>. Theorem 2.8 of the height lesson, with the three fixed logarithmic Weil heights, gives</p>
+<span class="math math-display" data-tex="\[
+\log|\Delta|
+\geq-d_F\left(
+\log\ell(P)+e_1h(\alpha_1)+e_2h(\alpha_2)+e_3h(\beta)
+\right).
+\tag{6.12}
+\]">\[
+\log|\Delta|
+\geq-d_F\left(
+\log\ell(P)+e_1h(\alpha_1)+e_2h(\alpha_2)+e_3h(\beta)
+\right).
+\tag{6.12}
+\]</span>
+<p>This is the general polynomial-value bound with coefficient exponent <span class="math" data-tex="\(d_F\)">\(d_F\)</span>; no stronger coefficient exponent is being substituted. From (6.4)–(6.5) and (6.11),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_1,e_2&amp;\leq\frac{2N^4}{\log N},\\
+e_3&amp;\leq N^3\log N,\\
+\log\ell(P)&amp;\leq2N^2\log N+N^3\log N\log(4N).
+\end{aligned}
+\]">\[
+\begin{aligned}
+e_1,e_2&amp;\leq\frac{2N^4}{\log N},\\
+e_3&amp;\leq N^3\log N,\\
+\log\ell(P)&amp;\leq2N^2\log N+N^3\log N\log(4N).
+\end{aligned}
+\]</span>
+<p>The last two expressions are <span class="math" data-tex="\(O(N^4/\log N)\)">\(O(N^4/\log N)\)</span>, since every fixed power of <span class="math" data-tex="\(\log N\)">\(\log N\)</span> is <span class="math" data-tex="\(o(N)\)">\(o(N)\)</span>. All field degrees and heights in (6.12) are fixed. This proves the first inequality in (6.10) with a fixed <span class="math" data-tex="\(c\)">\(c\)</span>. Taking also <span class="math" data-tex="\(\log N\geq2c\)">\(\log N\geq2c\)</span> gives the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 6.1.</strong> Fix any logarithm <span class="math" data-tex="\(A\)">\(A\)</span> of the stated <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Suppose the resulting <span class="math" data-tex="\(\alpha_2=e^{\beta A}\)">\(\alpha_2=e^{\beta A}\)</span> were algebraic. Proposition 6.5 supplies a nonzero minor for every sufficiently large integer <span class="math" data-tex="\(N\)">\(N\)</span>. Proposition 6.7 makes its logarithmic modulus at most <span class="math" data-tex="\(-N^4\)">\(-N^4\)</span>, whereas Proposition 6.8 makes it at least <span class="math" data-tex="\(-N^4/2\)">\(-N^4/2\)</span>. For positive <span class="math" data-tex="\(N\)">\(N\)</span>, these inequalities are incompatible. This disproves algebraicity of the chosen value. Since the proof did not restrict the chosen logarithm, every value is transcendental. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sizes can be summarized without hiding either estimate.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter or quantity</th>
+<th>Size and purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Polynomial degrees</td>
+<td><span class="math" data-tex="\(K=\lfloor N\log N\rfloor\)">\(K=\lfloor N\log N\rfloor\)</span>, <span class="math" data-tex="\(L=\lfloor N/\log N\rfloor\)">\(L=\lfloor N/\log N\rfloor\)</span></td>
+</tr>
+<tr>
+<td>Number of columns</td>
+<td><span class="math" data-tex="\(M=KL\sim N^2\)">\(M=KL\sim N^2\)</span>, at most <span class="math" data-tex="\(N^2\)">\(N^2\)</span></td>
+</tr>
+<tr>
+<td>Number of grid rows</td>
+<td><span class="math" data-tex="\(4N^2\)">\(4N^2\)</span></td>
+</tr>
+<tr>
+<td>Scaling zero order</td>
+<td><span class="math" data-tex="\(M(M-1)/2\sim N^4/2\)">\(M(M-1)/2\sim N^4/2\)</span></td>
+</tr>
+<tr>
+<td>Ratio of radii</td>
+<td><span class="math" data-tex="\(R/\rho=e^5\)">\(R/\rho=e^5\)</span>, independent of <span class="math" data-tex="\(N\)">\(N\)</span></td>
+</tr>
+<tr>
+<td>Analytic upper estimate</td>
+<td><span class="math" data-tex="\(\log\lvert\Delta\rvert\leq-N^4\)">\(\log\lvert\Delta\rvert\leq-N^4\)</span></td>
+</tr>
+<tr>
+<td>Arithmetic lower estimate</td>
+<td><span class="math" data-tex="\(\log\lvert\Delta\rvert\geq-cN^4/\log N\)">\(\log\lvert\Delta\rvert\geq-cN^4/\log N\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The <span class="math" data-tex="\(N^4\)">\(N^4\)</span> analytic gain comes from distinct Taylor degrees in a determinant, rather than from finding <span class="math" data-tex="\(N^4\)">\(N^4\)</span> evaluation points. The slower <span class="math" data-tex="\(N^4/\log N\)">\(N^4/\log N\)</span> arithmetic cost is the reason for the asymmetric degree choices.</p>
+<h2 id="6-powers-and-fixed-logarithms">6. Powers and fixed logarithms</h2>
+<h3 id="corollary-6-9-independence-of-two-logarithms">Corollary 6.9. Independence of two logarithms</h3>
+<p>Let <span class="math" data-tex="\(\alpha_1,\alpha_2\)">\(\alpha_1,\alpha_2\)</span> be nonzero algebraic numbers and fix logarithms <span class="math" data-tex="\(\lambda_1,\lambda_2\)">\(\lambda_1,\lambda_2\)</span>. If the logarithms are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, they are linearly independent over the algebraic numbers. Equivalently, if <span class="math" data-tex="\(\lambda_2\ne0\)">\(\lambda_2\ne0\)</span>, then an irrational ratio <span class="math" data-tex="\(\lambda_1/\lambda_2\)">\(\lambda_1/\lambda_2\)</span> is transcendental. Both formulations are equivalent to Theorem 6.1.</p>
+<p><strong>Proof.</strong> Rational independence makes both logarithms nonzero. The two bases cannot both be <span class="math" data-tex="\(1\)">\(1\)</span>: in that case their logarithms would be integer multiples of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, hence rationally dependent. Relabel if necessary so that <span class="math" data-tex="\(\alpha_2\ne1\)">\(\alpha_2\ne1\)</span>.</p>
+<p>Suppose an algebraic-coefficient relation</p>
+<span class="math math-display" data-tex="\[
+c_1\lambda_1+c_2\lambda_2=0
+\]">\[
+c_1\lambda_1+c_2\lambda_2=0
+\]</span>
+<p>were nontrivial. Both coefficients must be nonzero, and</p>
+<span class="math math-display" data-tex="\[
+\gamma=\lambda_1/\lambda_2=-c_2/c_1
+\]">\[
+\gamma=\lambda_1/\lambda_2=-c_2/c_1
+\]</span>
+<p>would be algebraic and irrational. Theorem 6.1, with base <span class="math" data-tex="\(\alpha_2\)">\(\alpha_2\)</span>, fixed logarithm <span class="math" data-tex="\(\lambda_2\)">\(\lambda_2\)</span> and exponent <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, would make</p>
+<span class="math math-display" data-tex="\[
+e^{\gamma\lambda_2}=e^{\lambda_1}=\alpha_1
+\]">\[
+e^{\gamma\lambda_2}=e^{\lambda_1}=\alpha_1
+\]</span>
+<p>transcendental, a contradiction. This proves independence over the algebraic numbers.</p>
+<p>If <span class="math" data-tex="\(\lambda_2\ne0\)">\(\lambda_2\ne0\)</span>, rational dependence of the two logarithms is equivalent to rationality of their ratio. Indeed, a nontrivial rational relation must have a nonzero coefficient of <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span>, since a relation involving only <span class="math" data-tex="\(\lambda_2\)">\(\lambda_2\)</span> cannot vanish. Thus the irrational ratio case has rationally independent logarithms, and their linear independence over the algebraic numbers forces the ratio to be transcendental.</p>
+<p>Conversely, suppose the irrational-ratio assertion is given. If a value <span class="math" data-tex="\(e^{\beta A}\)">\(e^{\beta A}\)</span> in Theorem 6.1 were algebraic, <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> and <span class="math" data-tex="\(\beta A\)">\(\beta A\)</span> would be fixed logarithms of two nonzero algebraic numbers, with ratio <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. That ratio is irrational and algebraic, contradicting the assertion. The logarithms formulation follows by the same algebraic relation calculation, so the three forms are equivalent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is linear independence, not the unproved general assertion that logarithms of multiplicatively independent algebraic numbers are algebraically independent. The theorem forbids a nontrivial algebraic <strong>linear</strong> relation between two rationally independent logarithms.</p>
+<p><strong>Examples.</strong> With positive real logarithms, <span class="math" data-tex="\(2^{\sqrt2}\)">\(2^{\sqrt2}\)</span> is transcendental. Taking the fixed logarithm <span class="math" data-tex="\(\log(-1)=i\pi\)">\(\log(-1)=i\pi\)</span> and exponent <span class="math" data-tex="\(-i\)">\(-i\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+(-1)^{-i}=e^\pi,
+\]">\[
+(-1)^{-i}=e^\pi,
+\]</span>
+<p>so <span class="math" data-tex="\(e^\pi\)">\(e^\pi\)</span> is transcendental. The same branch and the algebraic irrational exponent <span class="math" data-tex="\(-i\sqrt{163}\)">\(-i\sqrt{163}\)</span> give the transcendence of <span class="math" data-tex="\(e^{\pi\sqrt{163}}\)">\(e^{\pi\sqrt{163}}\)</span>. Its numerical proximity to an integer, explained by complex multiplication in a later lesson, is compatible with this exact conclusion.</p>
+<p>The ratio <span class="math" data-tex="\(\log3/\log2\)">\(\log3/\log2\)</span> is irrational: a rational equality <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, would give <span class="math" data-tex="\(3^q=2^p\)">\(3^q=2^p\)</span>, contrary to prime factorization. Corollary 6.9 therefore makes <span class="math" data-tex="\(\log_2 3\)">\(\log_2 3\)</span> transcendental. The reciprocal ratio <span class="math" data-tex="\(\log2/\log3\)">\(\log2/\log3\)</span> is likewise transcendental, since a nonzero algebraic reciprocal would make the original ratio algebraic.</p>
+<p>Finally, let</p>
+<span class="math math-display" data-tex="\[
+t=(\sqrt2)^{\sqrt2}
+\]">\[
+t=(\sqrt2)^{\sqrt2}
+\]</span>
+<p>using its positive real value. It is transcendental, but with the positive real logarithm of <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+t^{\sqrt2}
+=\exp\bigl(\sqrt2\,(\sqrt2\log\sqrt2)\bigr)=2.
+\]">\[
+t^{\sqrt2}
+=\exp\bigl(\sqrt2\,(\sqrt2\log\sqrt2)\bigr)=2.
+\]</span>
+<p>This calculation specifies both logarithms. Iterated power identities with arbitrary unrelated complex branches cannot be used in its place.</p>
+<h2 id="7-compare-with-an-auxiliary-function">7. Compare with an auxiliary function</h2>
+<p>The same grid certificate answers a second construction problem. Instead of choosing a nonzero minor and making it small, choose a nonzero coefficient vector that forces many values of one function to vanish. The number-field Siegel lemma controls that vector; the larger grid then locates a nonzero value. The following proof gives all the estimates for Schneider's construction; Waldschmidt's <em>Transcendence Methods</em>, §3.1, presents Schneider's auxiliary function <span class="math" data-tex="\(P(z,\alpha^z)\)">\(P(z,\alpha^z)\)</span> with zeros at the points <span class="math" data-tex="\(h_1+h_2\beta\)">\(h_1+h_2\beta\)</span>.</p>
+<p>Track the two quantities separately: the determinant argument gains order <span class="math" data-tex="\(N^4\)">\(N^4\)</span> and pays arithmetic cost <span class="math" data-tex="\(N^4/\log N\)">\(N^4/\log N\)</span>; this function argument gains order <span class="math" data-tex="\(N^2\)">\(N^2\)</span> and pays <span class="math" data-tex="\(N^2/\log N\)">\(N^2/\log N\)</span>. Both contradictions use a diverging ratio, rather than the absolute size of the exponents. The larger determinant gain therefore does not make the auxiliary function argument incomplete.</p>
+<p>Again suppose the three numbers <span class="math" data-tex="\(\alpha_1,\alpha_2,\beta\)">\(\alpha_1,\alpha_2,\beta\)</span> were algebraic, and keep the parameters <span class="math" data-tex="\(K,L,M\)">\(K,L,M\)</span> in (6.4). Put <span class="math" data-tex="\(T=\lfloor N/2\rfloor\)">\(T=\lfloor N/2\rfloor\)</span>. Seek integral coefficients in their number field <span class="math" data-tex="\(F\)">\(F\)</span>, not all zero, for</p>
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{u&lt;K,v&lt;L}a_{uv}z^ue^{vAz},
+\qquad f(r+s\beta)=0\quad(0\leq r,s&lt;T).
+\tag{6.13}
+\]">\[
+f(z)=\sum_{u&lt;K,v&lt;L}a_{uv}z^ue^{vAz},
+\qquad f(r+s\beta)=0\quad(0\leq r,s&lt;T).
+\tag{6.13}
+\]</span>
+<p>There are <span class="math" data-tex="\(T^2\sim N^2/4\)">\(T^2\sim N^2/4\)</span> equations in <span class="math" data-tex="\(M\sim N^2\)">\(M\sim N^2\)</span> unknowns, so</p>
+<span class="math math-display" data-tex="\[
+\frac{T^2}{M-T^2}\longrightarrow\frac13.
+\]">\[
+\frac{T^2}{M-T^2}\longrightarrow\frac13.
+\]</span>
+<p>Let an integer <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> clear the denominators of <span class="math" data-tex="\(\alpha_1,\alpha_2,\beta\)">\(\alpha_1,\alpha_2,\beta\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+B=\max(1,\overline{\alpha_1},\overline{\alpha_2}),
+\qquad B_\beta=\max(1,\overline\beta).
+\]">\[
+B=\max(1,\overline{\alpha_1},\overline{\alpha_2}),
+\qquad B_\beta=\max(1,\overline\beta).
+\]</span>
+<p>Multiplying the equations by <span class="math" data-tex="\(d^{K+2LT}\)">\(d^{K+2LT}\)</span> makes their coefficients integral. Their houses are at most</p>
+<span class="math math-display" data-tex="\[
+d^{K+2LT}(2TB_\beta)^K B^{2LT},
+\]">\[
+d^{K+2LT}(2TB_\beta)^K B^{2LT},
+\]</span>
+<p>whose logarithm is <span class="math" data-tex="\(O(N^2/\log N)\)">\(O(N^2/\log N)\)</span>: the other term <span class="math" data-tex="\(K\log(2TB_\beta)=O(N(\log N)^2)\)">\(K\log(2TB_\beta)=O(N(\log N)^2)\)</span> is of that order as well. Lemma 5.2 gives coefficients with</p>
+<span class="math math-display" data-tex="\[
+\log\max(1,\overline{a_{uv}})
+\leq c_1\frac{N^2}{\log N}
+\tag{6.14}
+\]">\[
+\log\max(1,\overline{a_{uv}})
+\leq c_1\frac{N^2}{\log N}
+\tag{6.14}
+\]</span>
+<p>for a fixed <span class="math" data-tex="\(c_1\)">\(c_1\)</span> and all sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>. This follows by taking logarithms in its bound: the Siegel exponent stays bounded, and <span class="math" data-tex="\(\log(CM)=O(\log N)\)">\(\log(CM)=O(\log N)\)</span>.</p>
+<p>The associated polynomial <span class="math" data-tex="\(P(X,Y)=\sum a_{uv}X^uY^v\)">\(P(X,Y)=\sum a_{uv}X^uY^v\)</span> is nonzero. Lemma 6.4 with all rectangle parameters <span class="math" data-tex="\(N\)">\(N\)</span>, as in the rank proof, supplies <span class="math" data-tex="\(0\leq r_0,s_0&lt;2N\)">\(0\leq r_0,s_0&lt;2N\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\delta=f(w)\ne0,\qquad w=r_0+s_0\beta.
+\]">\[
+\delta=f(w)\ne0,\qquad w=r_0+s_0\beta.
+\]</span>
+<p>In particular <span class="math" data-tex="\(f\)">\(f\)</span> is not identically zero. Set <span class="math" data-tex="\(\rho=2N(1+|\beta|)\)">\(\rho=2N(1+|\beta|)\)</span> and <span class="math" data-tex="\(R=5\rho\)">\(R=5\rho\)</span>. All the <span class="math" data-tex="\(T^2\)">\(T^2\)</span> initial zero points and the point <span class="math" data-tex="\(w\)">\(w\)</span> have modulus at most <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; the initial points are distinct. Lemma 5.7 gives</p>
+<span class="math math-display" data-tex="\[
+|\delta|\leq|f|_R\left(\frac{2\rho}{R-\rho}\right)^{T^2}
+=|f|_R\,2^{-T^2}.
+\]">\[
+|\delta|\leq|f|_R\left(\frac{2\rho}{R-\rho}\right)^{T^2}
+=|f|_R\,2^{-T^2}.
+\]</span>
+<p>On the outer circle, (6.14) and the elementary growth estimate give</p>
+<span class="math math-display" data-tex="\[
+\log|f|_R
+\leq\log M+c_1N^2/\log N+K\log R+LR|A|
+=O(N^2/\log N)=o(N^2).
+\]">\[
+\log|f|_R
+\leq\log M+c_1N^2/\log N+K\log R+LR|A|
+=O(N^2/\log N)=o(N^2).
+\]</span>
+<p>Since <span class="math" data-tex="\(T^2/N^2\to1/4\)">\(T^2/N^2\to1/4\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\log|\delta|\leq-\frac1{10}N^2
+\tag{6.15}
+\]">\[
+\log|\delta|\leq-\frac1{10}N^2
+\tag{6.15}
+\]</span>
+<p>for sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>; the limiting negative coefficient is <span class="math" data-tex="\(-\log2/4&lt;-1/10\)">\(-\log2/4&lt;-1/10\)</span>.</p>
+<p>On the arithmetic side,</p>
+<span class="math math-display" data-tex="\[
+\Theta=d^{K+4NL}\delta
+\]">\[
+\Theta=d^{K+4NL}\delta
+\]</span>
+<p>is a nonzero algebraic integer, because <span class="math" data-tex="\(r_0+s_0&lt;4N\)">\(r_0+s_0&lt;4N\)</span>, <span class="math" data-tex="\(u&lt;K\)">\(u&lt;K\)</span> and <span class="math" data-tex="\(v&lt;L\)">\(v&lt;L\)</span>. For every embedding of <span class="math" data-tex="\(F\)">\(F\)</span>, its modulus is at most</p>
+<span class="math math-display" data-tex="\[
+d^{K+4NL}M\exp(c_1N^2/\log N)
+(4NB_\beta)^K B^{4NL}.
+\]">\[
+d^{K+4NL}M\exp(c_1N^2/\log N)
+(4NB_\beta)^K B^{4NL}.
+\]</span>
+<p>The logarithm of this expression is <span class="math" data-tex="\(O(N^2/\log N)\)">\(O(N^2/\log N)\)</span>. Taking the nonzero integral norm, isolating the chosen embedding, and undoing the denominator as in the six exponentials proof, yields</p>
+<span class="math math-display" data-tex="\[
+\log|\delta|\geq-c_2\frac{N^2}{\log N}
+\tag{6.16}
+\]">\[
+\log|\delta|\geq-c_2\frac{N^2}{\log N}
+\tag{6.16}
+\]</span>
+<p>for a fixed <span class="math" data-tex="\(c_2\)">\(c_2\)</span>. For <span class="math" data-tex="\(\log N&gt;10c_2\)">\(\log N&gt;10c_2\)</span>, (6.15) and (6.16) contradict one another. This completes the auxiliary-function proof too.</p>
+<p>Here the polynomial zero estimate chooses a nonzero value in a larger but fixed grid. Laurent's proof instead applies it before constructing the determinant, obtaining a nonzero maximal minor directly. Gelfond's method develops vanishing of auxiliary functions and their derivatives; Baker's later work extends that direction to several logarithms. Schneider's value-grid construction also leads to differential-field transcendence criteria, developed in the next lesson. The historical comparison does not require importing either original 1934 paper as an unproved mathematical input.</p>
+<h2 id="8-exercises-test-the-certificates">8. Exercises: test the certificates</h2>
+<ol>
+<li>
+<p><strong>Easy — choose evaluation points.</strong> Compute the evaluation determinants for <span class="math" data-tex="\(1,Y^2\)">\(1,Y^2\)</span> at <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> and <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span>. Explain why three distinct nonzero evaluation points guarantee a nonzero two-column minor, and why two arbitrary points do not. Which part of Lemma 6.4 uses this choice?</p>
+</li>
+<li>
+<p><strong>Medium — watch columns coalesce.</strong> For <span class="math" data-tex="\(1,z,z^2\)">\(1,z,z^2\)</span> at <span class="math" data-tex="\(t\xi_1,t\xi_2,t\xi_3\)">\(t\xi_1,t\xi_2,t\xi_3\)</span>, calculate the determinant and its order at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> when the <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> are distinct. Then prove the full Lemma 6.6 by the scaling variable, including its outer radius and <span class="math" data-tex="\(M=1\)">\(M=1\)</span>.</p>
+</li>
+<li>
+<p><strong>Hard — certify the large minor.</strong> Give the full proof of Proposition 6.5: infinite-order generator, sparse-power evaluation, translated determinant, exact degree, and too many distinct roots. Identify why making the additive grid merely as large as that degree would fail.</p>
+</li>
+<li>
+<p><strong>Medium — keep track of logarithms.</strong> (a) Prove the equivalence between Theorem 6.1 and transcendence of an irrational ratio of fixed logarithms, including a base equal to <span class="math" data-tex="\(1\)">\(1\)</span>. (b) Specify the branch proving transcendence of <span class="math" data-tex="\(e^{\pi\sqrt{163}}\)">\(e^{\pi\sqrt{163}}\)</span>, and explain why an almost-integer value changes nothing. (c) Describe every complex solution of <span class="math" data-tex="\(e^{x\log2}=3\)">\(e^{x\log2}=3\)</span> and prove that none is algebraic.</p>
+</li>
+<li>
+<p><strong>Hard — compare the construction sizes.</strong> Set instead <span class="math" data-tex="\(K=L=N\)">\(K=L=N\)</span> and keep the determinant radius <span class="math" data-tex="\(R=e^5\rho\)">\(R=e^5\rho\)</span>. Does the elementary growth estimate become <span class="math" data-tex="\(o(N^2)\)">\(o(N^2)\)</span>? Explain why this loses the uniform argument for arbitrary fixed <span class="math" data-tex="\(A,\beta\)">\(A,\beta\)</span>. Recover the two vanishing gains and arithmetic costs for the actual choices in both proofs.</p>
+</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<ol>
+<li>
+<p>The determinants are <span class="math" data-tex="\((-1)^2-1^2=0\)">\((-1)^2-1^2=0\)</span> and <span class="math" data-tex="\(2^2-1^2=3\)">\(2^2-1^2=3\)</span>. If every two-column minor on a three-point set vanished, the two evaluation rows would be dependent, making a nonzero polynomial <span class="math" data-tex="\(a+bY^2\)">\(a+bY^2\)</span> vanish at all three points. Its degree is at most two, a contradiction. Lemma 6.4 uses such a nonsingular evaluation matrix to ensure that the leading coefficient of its translated determinant polynomial is nonzero; it does not assume that an arbitrarily selected matrix works.</p>
+</li>
+<li>
+<p>The Vandermonde determinant is <span class="math" data-tex="\(t^3\prod_{i&lt;j}(\xi_j-\xi_i)\)">\(t^3\prod_{i&lt;j}(\xi_j-\xi_i)\)</span>, of order three, the sum <span class="math" data-tex="\(0+1+2\)">\(0+1+2\)</span>. Let <span class="math" data-tex="\(H(t)=\det(f_i(t\xi_j))\)">\(H(t)=\det(f_i(t\xi_j))\)</span>. In its Taylor expansion, a nonzero determinant term must choose different nonnegative degrees from its <span class="math" data-tex="\(M\)">\(M\)</span> rows; coinciding degrees give identical power rows. The smallest possible sum is <span class="math" data-tex="\(T=M(M-1)/2\)">\(T=M(M-1)/2\)</span>. Every coefficient below this degree is zero; the computation uses only finitely many Taylor coefficients for each total degree. The function is analytic through <span class="math" data-tex="\(|t|\leq R/\rho\)">\(|t|\leq R/\rho\)</span>, because <span class="math" data-tex="\(|t\xi_j|\leq R\)">\(|t\xi_j|\leq R\)</span> there. On its outer circle the determinant expansion bounds it by <span class="math" data-tex="\(M!S^M\)">\(M!S^M\)</span>. Applying Lemma 5.4 from radius <span class="math" data-tex="\(R/\rho\)">\(R/\rho\)</span> to radius <span class="math" data-tex="\(1\)">\(1\)</span> gives <span class="math" data-tex="\(|H(1)|\leq(\rho/R)^T M!S^M\)">\(|H(1)|\leq(\rho/R)^T M!S^M\)</span>. If <span class="math" data-tex="\(M=1\)">\(M=1\)</span>, then <span class="math" data-tex="\(T=0\)">\(T=0\)</span> and the statement is simply the original bound on the one function; no positive-order zero is asserted.</p>
+</li>
+<li>
+<p>If both multiplicative generators were roots of unity, integers <span class="math" data-tex="\(m,n&gt;0\)">\(m,n&gt;0\)</span> would satisfy <span class="math" data-tex="\(mA=2\pi i k\)">\(mA=2\pi i k\)</span>, <span class="math" data-tex="\(n\beta A=2\pi i\ell\)">\(n\beta A=2\pi i\ell\)</span>, with <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>; this would force <span class="math" data-tex="\(\beta=m\ell/(nk)\in\mathbb Q\)">\(\beta=m\ell/(nk)\in\mathbb Q\)</span>. Hence at least one generator has infinite order, and its first <span class="math" data-tex="\(N\)">\(N\)</span> powers give distinct elements of the first multiplicative rectangle. The additive rectangle has <span class="math" data-tex="\(N^2\)">\(N^2\)</span> distinct elements because <span class="math" data-tex="\(\beta\notin\mathbb Q\)">\(\beta\notin\mathbb Q\)</span>.</p>
+<p>Suppose the matrix columns were dependent. Their coefficients define a nonzero polynomial <span class="math" data-tex="\(P(X,Y)\)">\(P(X,Y)\)</span> with degrees less than <span class="math" data-tex="\(K,L\)">\(K,L\)</span>, vanishing on the full grid. Write <span class="math" data-tex="\(P=\sum_{i=1}^mQ_i(X)Y^{k_i}\)">\(P=\sum_{i=1}^mQ_i(X)Y^{k_i}\)</span>, with <span class="math" data-tex="\(Q_i\ne0\)">\(Q_i\ne0\)</span>, distinct <span class="math" data-tex="\(0\leq k_i&lt;L\)">\(0\leq k_i&lt;L\)</span>, and <span class="math" data-tex="\(m\leq L\)">\(m\leq L\)</span>. Evaluation of these monomials at <span class="math" data-tex="\(L\)">\(L\)</span> distinct nonzero multiplicative values has row rank <span class="math" data-tex="\(m\)">\(m\)</span>: a row relation would give a nonzero polynomial of degree below <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(L\)">\(L\)</span> roots. Select <span class="math" data-tex="\(m\)">\(m\)</span> values <span class="math" data-tex="\(b_j=\alpha_1^{r_j}\alpha_2^{s_j}\)">\(b_j=\alpha_1^{r_j}\alpha_2^{s_j}\)</span> for which the square evaluation determinant is nonzero, and put <span class="math" data-tex="\(a_j=r_j+s_j\beta\)">\(a_j=r_j+s_j\beta\)</span>, with <span class="math" data-tex="\(0\leq r_j,s_j&lt;N\)">\(0\leq r_j,s_j&lt;N\)</span>.</p>
+<p>The polynomial</p>
+<span class="math math-display" data-tex="\[
+D(X)=\det(Q_i(X+a_j)b_j^{k_i})_{j,i}
+\]">\[
+D(X)=\det(Q_i(X+a_j)b_j^{k_i})_{j,i}
+\]</span>
+<p>has leading coefficient equal to the product of the nonzero leading coefficients of the <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> times the nonzero selected evaluation determinant. Thus <span class="math" data-tex="\(D\ne0\)">\(D\ne0\)</span> and <span class="math" data-tex="\(\deg D=\sum_i\deg Q_i\leq(K-1)m\leq(K-1)L\)">\(\deg D=\sum_i\deg Q_i\leq(K-1)m\leq(K-1)L\)</span>. For every second pair <span class="math" data-tex="\(0\leq r&#x27;,s&#x27;&lt;N\)">\(0\leq r&#x27;,s&#x27;&lt;N\)</span>, let <span class="math" data-tex="\(a&#x27;=r&#x27;+s&#x27;\beta\)">\(a&#x27;=r&#x27;+s&#x27;\beta\)</span> and <span class="math" data-tex="\(b&#x27;=\alpha_1^{r&#x27;}\alpha_2^{s&#x27;}\)">\(b&#x27;=\alpha_1^{r&#x27;}\alpha_2^{s&#x27;}\)</span>. The summed pairs satisfy <span class="math" data-tex="\(r&#x27;+r_j,s&#x27;+s_j\leq2N-2\)">\(r&#x27;+r_j,s&#x27;+s_j\leq2N-2\)</span>, so the assumed vanishing makes <span class="math" data-tex="\(((b&#x27;)^{k_i})_i\)">\(((b&#x27;)^{k_i})_i\)</span> a nonzero vector in the kernel of the matrix defining <span class="math" data-tex="\(D(a&#x27;)\)">\(D(a&#x27;)\)</span>. Therefore <span class="math" data-tex="\(D(a&#x27;)=0\)">\(D(a&#x27;)=0\)</span>. This gives <span class="math" data-tex="\(N^2\geq KL&gt;(K-1)L\)">\(N^2\geq KL&gt;(K-1)L\)</span> distinct roots of <span class="math" data-tex="\(D\)">\(D\)</span>, contradicting its degree. There was no column relation, and rank is <span class="math" data-tex="\(KL\)">\(KL\)</span>. A nonzero polynomial of degree <span class="math" data-tex="\(D\)">\(D\)</span> can have exactly <span class="math" data-tex="\(D\)">\(D\)</span> distinct roots; the final contradiction needs strictly more.</p>
+</li>
+<li>
+<p>(a) Rational independence of two logarithms <span class="math" data-tex="\(\lambda_1,\lambda_2\)">\(\lambda_1,\lambda_2\)</span>, with <span class="math" data-tex="\(\lambda_2\ne0\)">\(\lambda_2\ne0\)</span>, is equivalent to irrationality of their ratio. If both bases were <span class="math" data-tex="\(1\)">\(1\)</span>, their logarithms would be <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> times integers, so their ratio, when defined, would be rational. In the irrational case at least one base differs from <span class="math" data-tex="\(1\)">\(1\)</span>; choose its nonzero logarithm as denominator. If the corresponding ratio <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> were algebraic irrational, Theorem 6.1 would make the other base <span class="math" data-tex="\(e^{\gamma\lambda}\)">\(e^{\gamma\lambda}\)</span> transcendental. If the denominator was changed by exchanging the logarithms, take the reciprocal: a nonzero irrational algebraic ratio has a nonzero irrational algebraic reciprocal. Thus the original ratio is transcendental. Conversely, an assumed algebraic value of <span class="math" data-tex="\(e^{\beta A}\)">\(e^{\beta A}\)</span> under the hypotheses of Theorem 6.1 gives logarithms <span class="math" data-tex="\(\beta A\)">\(\beta A\)</span> and <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> of algebraic numbers, with irrational algebraic ratio <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The ratio assertion rules this out for each fixed logarithm <span class="math" data-tex="\(A\)">\(A\)</span>. A zero numerator simply gives ratio <span class="math" data-tex="\(0\)">\(0\)</span>, so is outside the irrational case.</p>
+<p>(b) Choose <span class="math" data-tex="\(A=i\pi\)">\(A=i\pi\)</span>, a logarithm of <span class="math" data-tex="\(-1\)">\(-1\)</span>, and <span class="math" data-tex="\(\beta=-i\sqrt{163}\)">\(\beta=-i\sqrt{163}\)</span>. The base <span class="math" data-tex="\(-1\)">\(-1\)</span> is algebraic and differs from <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, while <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is algebraic, satisfies <span class="math" data-tex="\(X^2+163=0\)">\(X^2+163=0\)</span>, and is not rational. Therefore</p>
+<span class="math math-display" data-tex="\[
+e^{\beta A}=e^{\pi\sqrt{163}}
+\]">\[
+e^{\beta A}=e^{\pi\sqrt{163}}
+\]</span>
+<p>is transcendental. A numerical approximation by an integer, however close, does not give equality or an algebraic equation. The theorem is an exact statement independent of that approximation.</p>
+<p>(c) The complex exponential equation gives</p>
+<span class="math math-display" data-tex="\[
+x=\frac{\log3+2\pi i k}{\log2},\qquad k\in\mathbb Z.
+\]">\[
+x=\frac{\log3+2\pi i k}{\log2},\qquad k\in\mathbb Z.
+\]</span>
+<p>A rational solution would be real; writing it <span class="math" data-tex="\(p/q\)">\(p/q\)</span>, <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, would yield <span class="math" data-tex="\(2^p=3^q\)">\(2^p=3^q\)</span>, which is impossible by prime factorization. If any displayed solution were algebraic, it would therefore be algebraic irrational. Theorem 6.1 with base <span class="math" data-tex="\(2\)">\(2\)</span> and its fixed real logarithm would then make <span class="math" data-tex="\(2^x\)">\(2^x\)</span> transcendental, contradicting <span class="math" data-tex="\(2^x=3\)">\(2^x=3\)</span>. This argument includes every integer <span class="math" data-tex="\(k\)">\(k\)</span>, and does not depend on identities for powers with different logarithms.</p>
+</li>
+<li>
+<p>With equal degrees, <span class="math" data-tex="\(LR|A|/N^2=2e^5(1+|\beta|)|A|\)">\(LR|A|/N^2=2e^5(1+|\beta|)|A|\)</span>, which does not tend to zero since <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. The bound remains of order <span class="math" data-tex="\(N^2\)">\(N^2\)</span> per function and cannot uniformly be absorbed into the fixed negative determinant coefficient for all <span class="math" data-tex="\(A,\beta\)">\(A,\beta\)</span>. This shows failure of that estimate, not impossibility of all equal-degree approaches. For the actual degrees, <span class="math" data-tex="\(K\log R=O(N(\log N)^2)\)">\(K\log R=O(N(\log N)^2)\)</span> and <span class="math" data-tex="\(LR|A|=O(N^2/\log N)\)">\(LR|A|=O(N^2/\log N)\)</span>, both <span class="math" data-tex="\(o(N^2)\)">\(o(N^2)\)</span>. The determinant has coalescence order <span class="math" data-tex="\(M(M-1)/2\sim N^4/2\)">\(M(M-1)/2\sim N^4/2\)</span>, while its arithmetic logarithmic cost is <span class="math" data-tex="\(O(N^4/\log N)\)">\(O(N^4/\log N)\)</span>. The auxiliary function has <span class="math" data-tex="\(T^2\sim N^2/4\)">\(T^2\sim N^2/4\)</span> prescribed distinct zeros, gives the gain <span class="math" data-tex="\(T^2\log2\)">\(T^2\log2\)</span>, and has coefficient, growth and norm costs <span class="math" data-tex="\(O(N^2/\log N)\)">\(O(N^2/\log N)\)</span>. In either case their ratio tends to infinity.</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/LIL.pdf"><em>Linear Independence of Logarithms of Algebraic Numbers</em></a>, IMSc Report 116, The Institute of Mathematical Sciences, Madras, 1992: Theorem 1.2 for the two-logarithm form of the Gelfond–Schneider theorem; Chapter 2 for Schneider's method with interpolation determinants and a zero estimate in the real case; Chapters 4–5 for interpolation determinants and zero estimates in general.</li>
+<li>Michel Waldschmidt, <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/QueensPaper52.pdf"><em>Transcendence Methods</em></a>, Queen's Papers in Pure and Applied Mathematics 52, Queen's University, Kingston, 1979: §2.1 for Gelfond's solution of Hilbert's seventh problem and §3.1 for Schneider's. Michel Waldschmidt, <a href="https://arxiv.org/abs/0908.4024"><em>Auxiliary functions in transcendence proofs</em></a>, arXiv:0908.4024, 2009, §§2.3 and 3.1.2, for the history from Hilbert's problem to the work of Gelfond, Kuzmin and Schneider.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-4.pdf"><em>Diophantine Approximation</em>, Chapter 4: Transcendence results</a>, Leiden course notes, §4.3, Theorem 4.16 and Corollary 4.18, for the theorem and its two-logarithm formulation with arbitrary determinations of the logarithms; §4.4, Theorem 4.21, for Schneider's proof when <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> are real.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-05.html">← Siegel&#x27;s lemma, analytic estimates and the six exponentials theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-07.html">The Schneider–Lang criterion →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-06.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

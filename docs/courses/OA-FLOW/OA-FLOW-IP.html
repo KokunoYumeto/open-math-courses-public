@@ -1,0 +1,439 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>From a discrete modular spectral invariant to an actual inner period · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-MT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IP.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Original complete proof by GPT-6.1 Sol (OpenAI), Ultra; independently reviewed and integrated by GPT-6 Astra (OpenAI), Ultra, at exact earlier written proofs. Human review and formal verification are not asserted.</p><h1 id="OA-FLOW.IP.0">From a discrete modular spectral invariant to an actual inner period</h1>
+<p><em>Independent proof reconstruction, GPT-6.1 Sol (OpenAI), Ultra, 2026-10-04. CC0-1.0 to the extent of rights held.</em></p>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a type III factor with separable predual. Suppose</p>
+<p><a id="equation-ip1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ S(M)=\{0\}\cup\lambda^{\mathbb Z},\qquad
+ 0&lt;\lambda&lt;1,\qquad a=-\log\lambda&gt;0,\qquad P=2\pi/a.
+ \tag{IP1}
+\]">\[
+ S(M)=\{0\}\cup\lambda^{\mathbb Z},\qquad
+ 0&lt;\lambda&lt;1,\qquad a=-\log\lambda&gt;0,\qquad P=2\pi/a.
+ \tag{IP1}
+\]</span>
+For every given faithful normal semifinite weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, the modular automorphism <span class="math" data-tex="\(\sigma_P^\psi\)">\(\sigma_P^\psi\)</span> is inner: there is a unitary <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span> such that <span class="math" data-tex="\(\sigma_P^\psi(x)=bxb^*\)">\(\sigma_P^\psi(x)=bxb^*\)</span> for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>. This is an actual whole-algebra identity. No periodic-weight existence or classification theorem is a premise or conclusion of this chapter.</p>
+<p>The actual earlier inputs are the complete <a href="OA-FLOW-CS.html">CS-3/4 corner and spectral-translation proofs</a>, the precisely scoped <a href="OA-FLOW-MG.html">MG-4 positive <span class="math" data-tex="\(S/\Gamma\)">\(S/\Gamma\)</span> comparison</a>, <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a> and <a href="OA-FLOW-AL.html#oa-flow.al.1">AL-1–3</a> for real filters, Fourier uniqueness and element-hull detection, <span class="unlinked">CF-1</span> for compact integrals and Banach differentiation, the already bounded star-derivation construction in <span class="unlinked">L35 Sections2–6</span>, and <a href="OA-FLOW-CT.html#oa-flow.ct.2">CT-2</a>/<span class="unlinked">PC-7</span>/<span class="unlinked">PC-8</span> for the actual type III corner equivalence. The modular action's normality and pointwise continuity are proved on full n.s.f. domains in <span class="unlinked">MW-4</span>. Exact individual proof ranges, scalar prerequisites and earlier order are recorded separately. Automatic boundedness is not needed: the derivation below is explicitly a norm-convergent bounded operator series.</p>
+<p>The human primary source actually read is <a href="https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=48">Connes (1973), Lemmas2.3.5–2.3.10 and the proof of Theorem2.3.1, printed179–182</a>. Its small-corner route motivates the construction. The complete circle-filter bound and norm-logarithm proof below supply the needed innerness step locally, rather than importing its cited near-spectrum theorem.</p>
+<p><a id="oa-flow.ip.0"></a></p>
+<h2 id="ip-0-exact-real-action-hypotheses-and-the-modular-reduction">IP-0. Exact real-action hypotheses and the modular reduction</h2>
+<p>More generally, the analytic construction below starts with a normal real action <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on a factor, pointwise continuous on normal scalar coefficients, whose Connes spectrum is <span class="math" data-tex="\(a\mathbb Z\)">\(a\mathbb Z\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. It first constructs a nonzero <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-fixed projection <span class="math" data-tex="\(e\)">\(e\)</span> for which <span class="math" data-tex="\(\alpha_P|_{eMe}\)">\(\alpha_P|_{eMe}\)</span> is inner. If this <span class="math" data-tex="\(e\)">\(e\)</span> is equivalent to <span class="math" data-tex="\(1\)">\(1\)</span>, <a href="OA-FLOW-IP.html#oa-flow.ip.6">IP-6</a> extends that innerness to all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For the stated modular theorem put <span class="math" data-tex="\(\alpha=\sigma^\psi\)">\(\alpha=\sigma^\psi\)</span>. <a href="OA-FLOW-MG.html#oa-flow.mg.4">MG-4</a> gives</p>
+<p><a id="equation-ip2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Gamma(\alpha)=\log\bigl(S(M)\cap(0,\infty)\bigr)=a\mathbb Z.
+ \tag{IP2}
+\]">\[
+ \Gamma(\alpha)=\log\bigl(S(M)\cap(0,\infty)\bigr)=a\mathbb Z.
+ \tag{IP2}
+\]</span>
+The last equality uses <span class="math" data-tex="\((\log\lambda)\mathbb Z=(-\log\lambda)\mathbb Z\)">\((\log\lambda)\mathbb Z=(-\log\lambda)\mathbb Z\)</span>; no sign of <span class="math" data-tex="\(P\)">\(P\)</span> is reversed. <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS-3</a>/4 prove, for every nonzero fixed projection <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<p><a id="equation-ip3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\alpha^q)+a\mathbb Z=\operatorname{Sp}(\alpha^q),\qquad
+ \mathcal F=\{\operatorname{Sp}(\alpha^q)+[-\varepsilon,\varepsilon]:
+        q\ne0,\ q\in\operatorname{Proj}(M^\alpha),\ \varepsilon&gt;0\}
+ \tag{IP3}
+\]">\[
+ \operatorname{Sp}(\alpha^q)+a\mathbb Z=\operatorname{Sp}(\alpha^q),\qquad
+ \mathcal F=\{\operatorname{Sp}(\alpha^q)+[-\varepsilon,\varepsilon]:
+        q\ne0,\ q\in\operatorname{Proj}(M^\alpha),\ \varepsilon&gt;0\}
+ \tag{IP3}
+\]</span>
+is a downward-directed family of closed sets with intersection <span class="math" data-tex="\(a\mathbb Z\)">\(a\mathbb Z\)</span>. These are the actual real annihilator-hull spectra; closedness and the directed family are part of the earlier <a href="OA-FLOW-CS.html#oa-flow.cs.3">CS-3</a> proof. Each member's periodicity follows from the first equality.</p>
+<p><a id="oa-flow.ip.1"></a></p>
+<h2 id="OA-FLOW.IP.1">IP-1. Compactness produces a narrow periodic corner spectrum</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\eta&lt;a/2\)">\(0&lt;\eta&lt;a/2\)</span>, and put <span class="math" data-tex="\(K=[-a/2,-\eta]\cup[\eta,a/2]\)">\(K=[-a/2,-\eta]\cup[\eta,a/2]\)</span>. It is compact and disjoint from <span class="math" data-tex="\(a\mathbb Z=\bigcap\mathcal F\)">\(a\mathbb Z=\bigcap\mathcal F\)</span>. Hence for each <span class="math" data-tex="\(r\in K\)">\(r\in K\)</span> some <span class="math" data-tex="\(F_r\in\mathcal F\)">\(F_r\in\mathcal F\)</span> excludes <span class="math" data-tex="\(r\)">\(r\)</span>. The open complements <span class="math" data-tex="\(\mathbb R\setminus F_r\)">\(\mathbb R\setminus F_r\)</span> cover <span class="math" data-tex="\(K\)">\(K\)</span>; <span class="unlinked">CF-1</span>'s compactness proof gives a finite subcover. Downward directedness, applied finitely many times, produces one <span class="math" data-tex="\(F\in\mathcal F\)">\(F\in\mathcal F\)</span> contained in all the corresponding finitely many sets. Therefore <span class="math" data-tex="\(F\cap K=\varnothing\)">\(F\cap K=\varnothing\)</span>.</p>
+<p>Write this actual <span class="math" data-tex="\(F\)">\(F\)</span> as <span class="math" data-tex="\(\operatorname{Sp}(\alpha^e)+[-\varepsilon,\varepsilon]\)">\(\operatorname{Sp}(\alpha^e)+[-\varepsilon,\varepsilon]\)</span>, with <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span> fixed. Translate any <span class="math" data-tex="\(r\in F\)">\(r\in F\)</span> by an integer multiple of <span class="math" data-tex="\(a\)">\(a\)</span> into <span class="math" data-tex="\([-a/2,a/2]\)">\([-a/2,a/2]\)</span>. Periodicity keeps the representative in <span class="math" data-tex="\(F\)">\(F\)</span>; avoidance of <span class="math" data-tex="\(K\)">\(K\)</span> forces it into <span class="math" data-tex="\((-\eta,\eta)\)">\((-\eta,\eta)\)</span>. Consequently</p>
+<p><a id="equation-ip4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \operatorname{Sp}(\alpha^e)\subseteq
+       \bigcup_{k\in\mathbb Z}(ka-\eta,ka+\eta).
+ \tag{IP4}
+\]">\[
+ \operatorname{Sp}(\alpha^e)\subseteq
+       \bigcup_{k\in\mathbb Z}(ka-\eta,ka+\eta).
+ \tag{IP4}
+\]</span>
+No compactness of the full real spectrum, quotient-space spectral theorem, eigenvector, finite-weight projection or countable approximation was used.</p>
+<p><a id="oa-flow.ip.2"></a></p>
+<h2 id="OA-FLOW.IP.2">IP-2. Absolutely summable discrete filters have the required support rule</h2>
+<p>Temporarily let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be any such normal real action on a von Neumann algebra. For <span class="math" data-tex="\(c=(c_n)_{n\in\mathbb Z}\in\ell^1(\mathbb Z)\)">\(c=(c_n)_{n\in\mathbb Z}\in\ell^1(\mathbb Z)\)</span>, define</p>
+<p><a id="equation-ip5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A_c=\sum_{n\in\mathbb Z}c_n\alpha_{nP}\quad\hbox{in operator norm},\qquad
+ g_c(r)=\sum_{n\in\mathbb Z}c_ne^{inPr},\qquad
+ \|A_c\|\le\sum_n|c_n|.
+ \tag{IP5}
+\]">\[
+ A_c=\sum_{n\in\mathbb Z}c_n\alpha_{nP}\quad\hbox{in operator norm},\qquad
+ g_c(r)=\sum_{n\in\mathbb Z}c_ne^{inPr},\qquad
+ \|A_c\|\le\sum_n|c_n|.
+ \tag{IP5}
+\]</span>
+Each action map has norm one. Thus the two-sided finite-subset sums are norm Cauchy. Their preadjoints also converge in the complete Banach predual, with the same bound, so their adjoint limit is a normal map and is exactly <span class="math" data-tex="\(A_c\)">\(A_c\)</span>. The scalar series converges uniformly and is <span class="math" data-tex="\(a\)">\(a\)</span>-periodic when <span class="math" data-tex="\(P=2\pi/a\)">\(P=2\pi/a\)</span>. All real action filters commute with <span class="math" data-tex="\(A_c\)">\(A_c\)</span>.</p>
+<p>If <span class="math" data-tex="\(g_c\)">\(g_c\)</span> vanishes on an open neighborhood of <span class="math" data-tex="\(\operatorname{Sp}_\alpha(x)\)">\(\operatorname{Sp}_\alpha(x)\)</span>, then</p>
+<p><a id="equation-ip6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ A_cx=0.
+ \tag{IP6}
+\]">\[
+ A_cx=0.
+ \tag{IP6}
+\]</span>
+To prove this, every real filter annihilating <span class="math" data-tex="\(x\)">\(x\)</span> also annihilates <span class="math" data-tex="\(A_cx\)">\(A_cx\)</span>, by commutation and norm convergence. Hence <span class="math" data-tex="\(\operatorname{Sp}_\alpha(A_cx)\subseteq\operatorname{Sp}_\alpha(x)\)">\(\operatorname{Sp}_\alpha(A_cx)\subseteq\operatorname{Sp}_\alpha(x)\)</span>. For a point <span class="math" data-tex="\(r\)">\(r\)</span> in the latter spectrum, choose <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a>'s compact smooth bump <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with <span class="math" data-tex="\(\chi(r)=1\)">\(\chi(r)=1\)</span> and support contained in the open zero set of <span class="math" data-tex="\(g_c\)">\(g_c\)</span>. Let <span class="math" data-tex="\(k_\chi\)">\(k_\chi\)</span> be its inverse real transform. The series</p>
+<p><a id="equation-ip7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ k(t)=\sum_n c_n k_\chi(t-nP)
+ \tag{IP7}
+\]">\[
+ k(t)=\sum_n c_n k_\chi(t-nP)
+ \tag{IP7}
+\]</span>
+converges absolutely in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, with norm at most <span class="math" data-tex="\(\|c\|_1\|k_\chi\|_1\)">\(\|c\|_1\|k_\chi\|_1\)</span>. Termwise scalar integration gives <span class="math" data-tex="\(\widehat k(r')=g_c(r')\chi(r')=0\)">\(\widehat k(r')=g_c(r')\chi(r')=0\)</span> for every <span class="math" data-tex="\(r'\)">\(r'\)</span>. <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a>'s actual Fourier uniqueness gives <span class="math" data-tex="\(k=0\)">\(k=0\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Its filter is <span class="math" data-tex="\(T_{k_\chi}A_c\)">\(T_{k_\chi}A_c\)</span>: in each term the substitution <span class="math" data-tex="\(t=s+nP\)">\(t=s+nP\)</span> gives <span class="math" data-tex="\(T_{k_\chi(\,\cdot-nP)}=\alpha_{nP}T_{k_\chi}\)">\(T_{k_\chi(\,\cdot-nP)}=\alpha_{nP}T_{k_\chi}\)</span>, with precisely the positive-transform sign.</p>
+<p>Therefore <span class="math" data-tex="\(T_{k_\chi}(A_cx)=0\)">\(T_{k_\chi}(A_cx)=0\)</span>. Since <span class="math" data-tex="\(\widehat{k_\chi}(r)=1\)">\(\widehat{k_\chi}(r)=1\)</span>, the element hull excludes this <span class="math" data-tex="\(r\)">\(r\)</span>. All other real points were already excluded by the first inclusion. Thus <span class="math" data-tex="\(A_cx\)">\(A_cx\)</span> has empty spectrum and <a href="OA-FLOW-AL.html#oa-flow.al.2">AL-2</a>/3's nonzero-element detection makes it zero. This also handles <span class="math" data-tex="\(x=0\)">\(x=0\)</span>.</p>
+<p>In particular two absolutely summable periodic multipliers agreeing on an open neighborhood of the action spectrum give the same maps on the whole algebra. The support of each element is contained in the action spectrum, directly from the two annihilator definitions. No theorem about arbitrary finite measures or their spectra is used in (<a href="OA-FLOW-IP.html#equation-ip6">IP6</a>).</p>
+<p><a id="oa-flow.ip.3"></a></p>
+<h2 id="OA-FLOW.IP.3">IP-3. A complete elementary circle Fourier argument and its small bound</h2>
+<p>Choose once for all a real smooth function <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span> and zero for <span class="math" data-tex="\(|s|\ge2\)">\(|s|\ge2\)</span>. <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a> constructs such cutoffs by integrating its explicit bump and taking translates and dilates. Its derivatives are compactly supported, and</p>
+<p><a id="equation-ip8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ C_j=\int_{\mathbb R}|\chi^{(j)}(s)|\,ds\quad(j=0,1,2),\qquad
+ A=C_0/\pi,\qquad C=(C_0+2C_1+2C_2)/(2\pi),\qquad Q=5A+2C
+ \tag{IP8}
+\]">\[
+ C_j=\int_{\mathbb R}|\chi^{(j)}(s)|\,ds\quad(j=0,1,2),\qquad
+ A=C_0/\pi,\qquad C=(C_0+2C_1+2C_2)/(2\pi),\qquad Q=5A+2C
+ \tag{IP8}
+\]</span>
+are finite. Here <span class="math" data-tex="\(C_0\ge2\)">\(C_0\ge2\)</span>, so <span class="math" data-tex="\(Q&gt;0\)">\(Q&gt;0\)</span>.</p>
+<p>For <span class="math" data-tex="\(0&lt;\delta&lt;\pi/4\)">\(0&lt;\delta&lt;\pi/4\)</span>, set on <span class="math" data-tex="\([-\pi,\pi]\)">\([-\pi,\pi]\)</span></p>
+<p><a id="equation-ip9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ h_\delta(\theta)=(e^{i\theta}-1)\chi(\theta/\delta),\qquad
+ c_n=\frac1{2\pi}\int_{-\pi}^{\pi}h_\delta(\theta)e^{-in\theta}\,d\theta.
+ \tag{IP9}
+\]">\[
+ h_\delta(\theta)=(e^{i\theta}-1)\chi(\theta/\delta),\qquad
+ c_n=\frac1{2\pi}\int_{-\pi}^{\pi}h_\delta(\theta)e^{-in\theta}\,d\theta.
+ \tag{IP9}
+\]</span>
+Extend the function periodically. It is smooth because it vanishes on a neighborhood of both endpoints. Twice integration by parts, with zero periodic boundary terms, gives <span class="math" data-tex="\(|c_n|\le\|h_\delta''\|_1/(2\pi n^2)\)">\(|c_n|\le\|h_\delta''\|_1/(2\pi n^2)\)</span> for <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>. Thus its Fourier series is absolutely and uniformly convergent. We justify identification with the original function, without assuming a circle inversion theorem.</p>
+<p>For <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> define</p>
+<p><a id="equation-ip10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ F_N(\theta)=\frac1N\left|\sum_{j=0}^{N-1}e^{ij\theta}\right|^2
+    =\sum_{|n|&lt;N}\left(1-\frac{|n|}{N}\right)e^{in\theta}.
+ \tag{IP10}
+\]">\[
+ F_N(\theta)=\frac1N\left|\sum_{j=0}^{N-1}e^{ij\theta}\right|^2
+    =\sum_{|n|&lt;N}\left(1-\frac{|n|}{N}\right)e^{in\theta}.
+ \tag{IP10}
+\]</span>
+The finite expansion proves nonnegativity and <span class="math" data-tex="\((2\pi)^{-1}\int_{-\pi}^{\pi}F_N=1\)">\((2\pi)^{-1}\int_{-\pi}^{\pi}F_N=1\)</span>, by elementary integration of the exponentials. The finite geometric sum gives <span class="math" data-tex="\(F_N(\theta)\le1/[N\sin^2(\theta/2)]\)">\(F_N(\theta)\le1/[N\sin^2(\theta/2)]\)</span> away from zero modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Hence its normalized mass outside any fixed neighborhood of zero tends to zero. Uniform continuity of a continuous periodic <span class="math" data-tex="\(v\)">\(v\)</span>, splitting its convolution into that neighborhood and its complement, proves <span class="math" data-tex="\(F_N*v\to v\)">\(F_N*v\to v\)</span> uniformly; the normalization of convolution is <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span>. The finite expansion expresses this convolution as its Cesàro Fourier polynomial.</p>
+<p>A continuous periodic function with all Fourier coefficients zero therefore vanishes. The uniformly convergent series <span class="math" data-tex="\(\sum_n c_ne^{in\theta}\)">\(\sum_n c_ne^{in\theta}\)</span> has the same coefficients as <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span>, by termwise integration. Their continuous difference has zero coefficients, so</p>
+<p><a id="equation-ip11"></a></p>
+<p><span class="math math-display" data-tex="\[
+ h_\delta(\theta)=\sum_n c_ne^{in\theta}\quad\hbox{uniformly}.
+ \tag{IP11}
+\]">\[
+ h_\delta(\theta)=\sum_n c_ne^{in\theta}\quad\hbox{uniformly}.
+ \tag{IP11}
+\]</span>
+This proves precisely the circle statement needed here.</p>
+<p>On the support of <span class="math" data-tex="\(h_\delta\)">\(h_\delta\)</span>, <span class="math" data-tex="\(|\theta|\le2\delta\)">\(|\theta|\le2\delta\)</span> and <span class="math" data-tex="\(|e^{i\theta}-1|\le|\theta|\)">\(|e^{i\theta}-1|\le|\theta|\)</span>, the latter following by integrating <span class="math" data-tex="\(ie^{it}\)">\(ie^{it}\)</span>. Substitution in (<a href="OA-FLOW-IP.html#equation-ip9">IP9</a>) gives</p>
+<p><a id="equation-ip12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|h_\delta\|_1\le2C_0\delta^2,\qquad
+ h_\delta''=-e^{i\theta}\chi(\theta/\delta)
+ +2ie^{i\theta}\delta^{-1}\chi'(\theta/\delta)
+ +(e^{i\theta}-1)\delta^{-2}\chi''(\theta/\delta),
+ \quad
+ \|h_\delta''\|_1\le \delta C_0+2C_1+2C_2.
+ \tag{IP12}
+\]">\[
+ \|h_\delta\|_1\le2C_0\delta^2,\qquad
+ h_\delta''=-e^{i\theta}\chi(\theta/\delta)
+ +2ie^{i\theta}\delta^{-1}\chi'(\theta/\delta)
+ +(e^{i\theta}-1)\delta^{-2}\chi''(\theta/\delta),
+ \quad
+ \|h_\delta''\|_1\le \delta C_0+2C_1+2C_2.
+ \tag{IP12}
+\]</span>
+For <span class="math" data-tex="\(\delta\le1\)">\(\delta\le1\)</span>, therefore <span class="math" data-tex="\(|c_n|\le A\delta^2\)">\(|c_n|\le A\delta^2\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, and <span class="math" data-tex="\(|c_n|\le C/n^2\)">\(|c_n|\le C/n^2\)</span> for <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>. Take <span class="math" data-tex="\(N=\lceil1/\delta\rceil\)">\(N=\lceil1/\delta\rceil\)</span>. The scalar integral bound <span class="math" data-tex="\(\sum_{n&gt;N}n^{-2}\le\int_N^\infty t^{-2}dt=1/N\)">\(\sum_{n&gt;N}n^{-2}\le\int_N^\infty t^{-2}dt=1/N\)</span> and <span class="math" data-tex="\(N\le1/\delta+1\)">\(N\le1/\delta+1\)</span> imply</p>
+<p><a id="equation-ip13"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \sum_n|c_n|
+ \le(2N+1)A\delta^2+2C/N
+ \le(5A+2C)\delta=Q\delta.
+ \tag{IP13}
+\]">\[
+ \sum_n|c_n|
+ \le(2N+1)A\delta^2+2C/N
+ \le(5A+2C)\delta=Q\delta.
+ \tag{IP13}
+\]</span>
+Every constant is attached to the one fixed cutoff. This estimate, rather than a mere containment of a Banach spectrum near one, will control the norm of an automorphism.</p>
+<p><a id="oa-flow.ip.4"></a></p>
+<h2 id="OA-FLOW.IP.4">IP-4. The period automorphism is within one tenth of identity in a fixed corner</h2>
+<p>Choose</p>
+<p><a id="equation-ip14"></a></p>
+<p><span class="math math-display" data-tex="\[
+ 0&lt;\delta&lt;\min\{\pi/4,1,(10Q)^{-1}\},\qquad
+ \eta=\delta/(2P)&lt;a/2.
+ \tag{IP14}
+\]">\[
+ 0&lt;\delta&lt;\min\{\pi/4,1,(10Q)^{-1}\},\qquad
+ \eta=\delta/(2P)&lt;a/2.
+ \tag{IP14}
+\]</span>
+Use <a href="OA-FLOW-IP.html#oa-flow.ip.1">IP-1</a> with this <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and let <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span> be its actual fixed projection. In (<a href="OA-FLOW-IP.html#equation-ip4">IP4</a>), <span class="math" data-tex="\(Pr\)">\(Pr\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> has absolute value less than <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span>. On the open periodic set where that absolute value is less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, <span class="math" data-tex="\(\chi(\theta/\delta)=1\)">\(\chi(\theta/\delta)=1\)</span>. Thus <span class="math" data-tex="\(h_\delta(Pr)=e^{iPr}-1\)">\(h_\delta(Pr)=e^{iPr}-1\)</span> on an open neighborhood of <span class="math" data-tex="\(\operatorname{Sp}(\alpha^e)\)">\(\operatorname{Sp}(\alpha^e)\)</span>.</p>
+<p>The right multiplier is the finite discrete-filter multiplier of <span class="math" data-tex="\(\beta-I\)">\(\beta-I\)</span>, where <span class="math" data-tex="\(\beta=\alpha_P|_{eMe}\)">\(\beta=\alpha_P|_{eMe}\)</span>; its coefficients are <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-tex="\(n=0\)">\(n=0\)</span>. By <a href="OA-FLOW-IP.html#oa-flow.ip.2">IP-2</a> and (<a href="OA-FLOW-IP.html#equation-ip11">IP11</a>),</p>
+<p><a id="equation-ip15"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \beta-I=\sum_n c_n(\alpha^e)_{nP},\qquad
+ \epsilon:=\|\beta-I\|\le Q\delta&lt;1/10.
+ \tag{IP15}
+\]">\[
+ \beta-I=\sum_n c_n(\alpha^e)_{nP},\qquad
+ \epsilon:=\|\beta-I\|\le Q\delta&lt;1/10.
+ \tag{IP15}
+\]</span>
+The complete corner is the domain of every map and series. Neither norm continuity of <span class="math" data-tex="\(t\mapsto\alpha_t\)">\(t\mapsto\alpha_t\)</span> nor a bounded generator of the original real action is assumed.</p>
+<p><a id="oa-flow.ip.5"></a></p>
+<h2 id="OA-FLOW.IP.5">IP-5. The norm logarithm is a bounded star derivation, with proof</h2>
+<p>We prove a local general lemma for any unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span> and star automorphism <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(\|\beta-I\|=\epsilon&lt;1/10\)">\(\|\beta-I\|=\epsilon&lt;1/10\)</span>. If <span class="math" data-tex="\(\epsilon=0\)">\(\epsilon=0\)</span>, use <span class="math" data-tex="\(D=0\)">\(D=0\)</span>. Otherwise the series</p>
+<p><a id="equation-ip16"></a></p>
+<p><span class="math math-display" data-tex="\[
+ D=\log\beta=\sum_{n\ge1}\frac{(-1)^{n+1}}n(\beta-I)^n,\qquad
+ \|D\|\le\sum_{n\ge1}\epsilon^n/n=-\log(1-\epsilon)
+ \tag{IP16}
+\]">\[
+ D=\log\beta=\sum_{n\ge1}\frac{(-1)^{n+1}}n(\beta-I)^n,\qquad
+ \|D\|\le\sum_{n\ge1}\epsilon^n/n=-\log(1-\epsilon)
+ \tag{IP16}
+\]</span>
+converges in the complete bounded-operator space. It is complex linear, annihilates <span class="math" data-tex="\(1\)">\(1\)</span>, and commutes with star, since all its coefficients are real.</p>
+<p>For completeness, <span class="math" data-tex="\(\exp D=\beta\)">\(\exp D=\beta\)</span> follows without an imported analytic functional calculus. Put <span class="math" data-tex="\(X=\beta-I\)">\(X=\beta-I\)</span> and <span class="math" data-tex="\(Z(s)=\log(I+sX)\)">\(Z(s)=\log(I+sX)\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>. The logarithm and derivative series converge uniformly because <span class="math" data-tex="\(\|sX\|\le\epsilon&lt;1\)">\(\|sX\|\le\epsilon&lt;1\)</span>. Their termwise derivative is <span class="math" data-tex="\(Z'(s)=X(I+sX)^{-1}\)">\(Z'(s)=X(I+sX)^{-1}\)</span>, by the geometric series; it commutes with <span class="math" data-tex="\(Z(s)\)">\(Z(s)\)</span>. Differentiating the norm-convergent exponential on this compact path gives <span class="math" data-tex="\((e^{Z(s)})'=e^{Z(s)}Z'(s)\)">\((e^{Z(s)})'=e^{Z(s)}Z'(s)\)</span>. Differentiating the inverse by its inverse identity gives <span class="math" data-tex="\(((I+sX)^{-1})'=-(I+sX)^{-1}X(I+sX)^{-1}\)">\(((I+sX)^{-1})'=-(I+sX)^{-1}X(I+sX)^{-1}\)</span>. The product <span class="math" data-tex="\(e^{Z(s)}(I+sX)^{-1}\)">\(e^{Z(s)}(I+sX)^{-1}\)</span> consequently has derivative zero, and equals <span class="math" data-tex="\(I\)">\(I\)</span> at zero. <span class="unlinked">CF-1</span>'s Banach fundamental theorem makes it constant. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span> this proves <span class="math" data-tex="\(\exp D=\beta\)">\(\exp D=\beta\)</span>.</p>
+<p>The Leibniz identity is a separate issue. Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the Banach space of bounded complex bilinear maps <span class="math" data-tex="\(B\times B\to B\)">\(B\times B\to B\)</span>, with norm <span class="math" data-tex="\(\sup_{\|x\|,\|y\|\le1}\|F(x,y)\|\)">\(\sup_{\|x\|,\|y\|\le1}\|F(x,y)\|\)</span>. It is complete: a norm-Cauchy sequence converges uniformly on the two unit balls, its pointwise limits are bilinear, and the norm bounds extend by scaling. Write <span class="math" data-tex="\(m(x,y)=xy\)">\(m(x,y)=xy\)</span>, and define bounded operators on <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> by</p>
+<p><a id="equation-ip17"></a></p>
+<p><span class="math math-display" data-tex="\[
+ OF=\beta\circ F,\qquad
+ LF(x,y)=F(\beta x,y),\qquad RF(x,y)=F(x,\beta y).
+ \tag{IP17}
+\]">\[
+ OF=\beta\circ F,\qquad
+ LF(x,y)=F(\beta x,y),\qquad RF(x,y)=F(x,\beta y).
+ \tag{IP17}
+\]</span>
+They commute pairwise, as direct substitution shows; each is within <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span>. Multiplicativity of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> gives <span class="math" data-tex="\(Om=LRm\)">\(Om=LRm\)</span>. Commutation then gives <span class="math" data-tex="\((O-I)^nm=(LR-I)^nm\)">\((O-I)^nm=(LR-I)^nm\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>: factor the difference of these two powers and apply <span class="math" data-tex="\(O-LR\)">\(O-LR\)</span> to <span class="math" data-tex="\(m\)">\(m\)</span>. Since <span class="math" data-tex="\(\|LR-I\|\le2\epsilon+\epsilon^2&lt;1\)">\(\|LR-I\|\le2\epsilon+\epsilon^2&lt;1\)</span>, the convergent logarithm series imply</p>
+<p><a id="equation-ip18"></a></p>
+<p><span class="math math-display" data-tex="\[
+ (\log O)m=(\log(LR))m.
+ \tag{IP18}
+\]">\[
+ (\log O)m=(\log(LR))m.
+ \tag{IP18}
+\]</span></p>
+<p>Here is a full proof of the needed sum identity. Put <span class="math" data-tex="\(X_1=L-I\)">\(X_1=L-I\)</span>, <span class="math" data-tex="\(Y_1=R-I\)">\(Y_1=R-I\)</span>, so <span class="math" data-tex="\(X_1Y_1=Y_1X_1\)">\(X_1Y_1=Y_1X_1\)</span>, and <span class="math" data-tex="\(H(s)=(I+sX_1)(I+sY_1)\)">\(H(s)=(I+sX_1)(I+sY_1)\)</span>. The series for <span class="math" data-tex="\(\log H(s)\)">\(\log H(s)\)</span> and its derivative converge uniformly because <span class="math" data-tex="\(\|H(s)-I\|\le2\epsilon+\epsilon^2&lt;1\)">\(\|H(s)-I\|\le2\epsilon+\epsilon^2&lt;1\)</span>. Its commuting derivative is</p>
+<p><a id="equation-ip19"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \frac d{ds}\log H(s)
+ =H'(s)H(s)^{-1}
+ =X_1(I+sX_1)^{-1}+Y_1(I+sY_1)^{-1}.
+ \tag{IP19}
+\]">\[
+ \frac d{ds}\log H(s)
+ =H'(s)H(s)^{-1}
+ =X_1(I+sX_1)^{-1}+Y_1(I+sY_1)^{-1}.
+ \tag{IP19}
+\]</span>
+The last equality follows by expanding <span class="math" data-tex="\(H'=X_1(I+sY_1)+(I+sX_1)Y_1\)">\(H'=X_1(I+sY_1)+(I+sX_1)Y_1\)</span> and multiplying the two commuting inverses. Integrate from zero to one using <span class="unlinked">CF-1</span>; the individual logarithm derivatives are the two terms. All three logarithms vanish at zero. Therefore <span class="math" data-tex="\(\log(LR)=\log L+\log R\)">\(\log(LR)=\log L+\log R\)</span>.</p>
+<p>The series applied to <span class="math" data-tex="\(m\)">\(m\)</span> have explicit values:</p>
+<p><a id="equation-ip20"></a></p>
+<p><span class="math math-display" data-tex="\[
+ ((\log O)m)(x,y)=D(xy),\quad
+ ((\log L)m)(x,y)=D(x)y,\quad
+ ((\log R)m)(x,y)=xD(y).
+ \tag{IP20}
+\]">\[
+ ((\log O)m)(x,y)=D(xy),\quad
+ ((\log L)m)(x,y)=D(x)y,\quad
+ ((\log R)m)(x,y)=xD(y).
+ \tag{IP20}
+\]</span>
+For example <span class="math" data-tex="\((L-I)^nm(x,y)=((\beta-I)^nx)y\)">\((L-I)^nm(x,y)=((\beta-I)^nx)y\)</span>, by induction; the other identities are identical norm-series verifications. Equations (<a href="OA-FLOW-IP.html#equation-ip18">IP18</a>)–(<a href="OA-FLOW-IP.html#equation-ip20">IP20</a>) prove <span class="math" data-tex="\(D(xy)=D(x)y+xD(y)\)">\(D(xy)=D(x)y+xD(y)\)</span>. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is a bounded star derivation on all of <span class="math" data-tex="\(B\)">\(B\)</span>, not an unbounded generator on a preliminary smooth domain.</p>
+<p>Apply this lemma to <span class="math" data-tex="\(B=eMe\)">\(B=eMe\)</span>. L35 Sections2–6's complete bounded-star-derivation construction gives a selfadjoint <span class="math" data-tex="\(h\in eMe\)">\(h\in eMe\)</span> with</p>
+<p><a id="equation-ip21"></a></p>
+<p><span class="math math-display" data-tex="\[
+ D(x)=i[h,x],\qquad
+ \|h\|\le\|D\|/2,\qquad
+ u=\exp_{eMe}(ih),\quad u^*u=uu^*=e.
+ \tag{IP21}
+\]">\[
+ D(x)=i[h,x],\qquad
+ \|h\|\le\|D\|/2,\qquad
+ u=\exp_{eMe}(ih),\quad u^*u=uu^*=e.
+ \tag{IP21}
+\]</span>
+No automatic-boundedness theorem is used at this application. The exponential is the corner exponential, whose constant term is <span class="math" data-tex="\(e\)">\(e\)</span>, not the ambient unit <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>To identify <span class="math" data-tex="\(\exp D\)">\(\exp D\)</span> with this implementer on the complete corner, <span class="math" data-tex="\(F(t)=\exp_{eMe}(ith)x\exp_{eMe}(-ith)\)">\(F(t)=\exp_{eMe}(ith)x\exp_{eMe}(-ith)\)</span> is norm differentiable by its absolutely convergent series and satisfies <span class="math" data-tex="\(F'(t)=D(F(t))\)">\(F'(t)=D(F(t))\)</span>, <span class="math" data-tex="\(F(0)=x\)">\(F(0)=x\)</span>. Differentiating <span class="math" data-tex="\(e^{-tD}F(t)\)">\(e^{-tD}F(t)\)</span> gives zero; <span class="unlinked">CF-1</span> again makes it constant. Hence <span class="math" data-tex="\(e^{tD}(x)=F(t)\)">\(e^{tD}(x)=F(t)\)</span>, and at <span class="math" data-tex="\(t=1\)">\(t=1\)</span>,</p>
+<p><a id="equation-ip22"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_P(x)=uxu^*\quad(x\in eMe).
+ \tag{IP22}
+\]">\[
+ \alpha_P(x)=uxu^*\quad(x\in eMe).
+ \tag{IP22}
+\]</span></p>
+<p><a id="oa-flow.ip.6"></a></p>
+<h2 id="OA-FLOW.IP.6">IP-6. An equivalent fixed corner gives an explicit whole-algebra implementer</h2>
+<p>Assume <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> satisfies <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span>, <span class="math" data-tex="\(vv^*=e\)">\(vv^*=e\)</span>. Since <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-fixed, <span class="math" data-tex="\(\alpha_P(v)\)">\(\alpha_P(v)\)</span> has the same initial and final projections. Define</p>
+<p><a id="equation-ip23"></a></p>
+<p><span class="math math-display" data-tex="\[
+ b=\alpha_P(v^*)uv.
+ \tag{IP23}
+\]">\[
+ b=\alpha_P(v^*)uv.
+ \tag{IP23}
+\]</span>
+This is a unitary of <span class="math" data-tex="\(M\)">\(M\)</span>, as the complete support computations give</p>
+<p><a id="equation-ip24"></a></p>
+<p><span class="math math-display" data-tex="\[
+ b^*b=v^*u^*\alpha_P(v)\alpha_P(v^*)uv=v^*u^*euv=1,\qquad
+ bb^*=\alpha_P(v^*)uvv^*u^*\alpha_P(v)=\alpha_P(v^*)e\alpha_P(v)=1.
+ \tag{IP24}
+\]">\[
+ b^*b=v^*u^*\alpha_P(v)\alpha_P(v^*)uv=v^*u^*euv=1,\qquad
+ bb^*=\alpha_P(v^*)uvv^*u^*\alpha_P(v)=\alpha_P(v^*)e\alpha_P(v)=1.
+ \tag{IP24}
+\]</span>
+For every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, <span class="math" data-tex="\(vxv^*\in eMe\)">\(vxv^*\in eMe\)</span>. Equation (<a href="OA-FLOW-IP.html#equation-ip22">IP22</a>) gives</p>
+<p><a id="equation-ip25"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_P(v)\alpha_P(x)\alpha_P(v^*)=uvxv^*u^*.
+ \tag{IP25}
+\]">\[
+ \alpha_P(v)\alpha_P(x)\alpha_P(v^*)=uvxv^*u^*.
+ \tag{IP25}
+\]</span>
+Multiply on the left by <span class="math" data-tex="\(\alpha_P(v^*)\)">\(\alpha_P(v^*)\)</span> and on the right by <span class="math" data-tex="\(\alpha_P(v)\)">\(\alpha_P(v)\)</span>; their initial-projection identities reduce this to <span class="math" data-tex="\(\alpha_P(x)=bxb^*\)">\(\alpha_P(x)=bxb^*\)</span>, on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>For the stated type III factor with separable predual, <a href="OA-FLOW-CT.html#oa-flow.ct.2">CT-2</a> supplies exactly such a <span class="math" data-tex="\(v\)">\(v\)</span>, by the actual <span class="unlinked">PC-7</span>/8 countability/comparison proof. Its countability input is proved there: vector states of an orthogonal family of nonzero projections have mutual predual norm distance at least one; balls of radius one third centered in a countable dense subset can each contain at most one, so the family is countable. <span class="unlinked">PC-8</span> then makes every nonzero projection equivalent to <span class="math" data-tex="\(1\)">\(1\)</span>. No finite-projection, trace-existence or factor-classification theorem is used. Applying (<a href="OA-FLOW-IP.html#equation-ip23">IP23</a>) completes the theorem in (<a href="OA-FLOW-IP.html#equation-ip1">IP1</a>).</p>
+<p>The conclusion is innerness at the specified <span class="math" data-tex="\(P\)">\(P\)</span>. It does not assert a least positive inner period, a fixed-centralizer implementer, or that the given weight already has period <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><a id="oa-flow.ip.7"></a></p>
+<h2 id="OA-FLOW.IP.7">IP-7. An exact matrix check of the logarithm and the norm statement</h2>
+<p>The finite example checks the analytic step, not the type III hypothesis. In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, take <span class="math" data-tex="\(\theta=1/64\)">\(\theta=1/64\)</span>, <span class="math" data-tex="\(h=\operatorname{diag}(0,\theta)\)">\(h=\operatorname{diag}(0,\theta)\)</span>, and <span class="math" data-tex="\(\beta=\operatorname{Ad}(e^{ih})\)">\(\beta=\operatorname{Ad}(e^{ih})\)</span>. On <span class="math" data-tex="\(e_{12},e_{21}\)">\(e_{12},e_{21}\)</span>, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> has multipliers <span class="math" data-tex="\(e^{-i\theta},e^{i\theta}\)">\(e^{-i\theta},e^{i\theta}\)</span>, while it fixes the diagonal. The exact norm is</p>
+<p><a id="equation-ip26"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|\beta-I\|=2\sin(\theta/2)=2\sin(1/128)&lt;1/64&lt;1/10.
+ \tag{IP26}
+\]">\[
+ \|\beta-I\|=2\sin(\theta/2)=2\sin(1/128)&lt;1/64&lt;1/10.
+ \tag{IP26}
+\]</span>
+For the upper bound let <span class="math" data-tex="\(s=\operatorname{diag}(1,-1)\)">\(s=\operatorname{diag}(1,-1)\)</span>, <span class="math" data-tex="\(P_{\rm off}=(I-\operatorname{Ad}s)/2\)">\(P_{\rm off}=(I-\operatorname{Ad}s)/2\)</span>, a contraction onto the off-diagonal matrices. On its range, <span class="math" data-tex="\(\beta-I\)">\(\beta-I\)</span> is <span class="math" data-tex="\(2\sin(\theta/2)\)">\(2\sin(\theta/2)\)</span> times the composition of conjugation by <span class="math" data-tex="\(\operatorname{diag}(e^{-i\theta/4},e^{i\theta/4})\)">\(\operatorname{diag}(e^{-i\theta/4},e^{i\theta/4})\)</span> and left multiplication by the unitary <span class="math" data-tex="\(\operatorname{diag}(-i,i)\)">\(\operatorname{diag}(-i,i)\)</span>. Both have norm one. The unit matrix <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> attains the bound. Positivity and <span class="math" data-tex="\(\sin t&lt;t\)">\(\sin t&lt;t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> follow by integrating <span class="math" data-tex="\(1-\cos t&gt;0\)">\(1-\cos t&gt;0\)</span> on this interval.</p>
+<p>The scalar logarithm series of <span class="math" data-tex="\(e^{\pm i\theta}\)">\(e^{\pm i\theta}\)</span> equals <span class="math" data-tex="\(\pm i\theta\)">\(\pm i\theta\)</span>: along <span class="math" data-tex="\(0\le t\le\theta\)">\(0\le t\le\theta\)</span> its derivative is <span class="math" data-tex="\(\pm i\)">\(\pm i\)</span> and its value at zero is zero, since <span class="math" data-tex="\(|e^{\pm it}-1|&lt;1\)">\(|e^{\pm it}-1|&lt;1\)</span> throughout. Therefore</p>
+<p><a id="equation-ip27"></a></p>
+<p><span class="math math-display" data-tex="\[
+ (\log\beta)(e_{12})=-i\theta e_{12},\quad
+ (\log\beta)(e_{21})=i\theta e_{21},\quad
+ D=i[h,\,\cdot\,],\quad \|D\|=\theta.
+ \tag{IP27}
+\]">\[
+ (\log\beta)(e_{12})=-i\theta e_{12},\quad
+ (\log\beta)(e_{21})=i\theta e_{21},\quad
+ D=i[h,\,\cdot\,],\quad \|D\|=\theta.
+ \tag{IP27}
+\]</span>
+The norm equality follows by the same off-diagonal contraction and evaluation on <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span>. The centered implementer <span class="math" data-tex="\(h-(\theta/2)1\)">\(h-(\theta/2)1\)</span> has norm <span class="math" data-tex="\(1/128\)">\(1/128\)</span>, exactly <span class="math" data-tex="\(\|D\|/2\)">\(\|D\|/2\)</span>. Its exponential implements the same automorphism. All spaces and domains in this example are the full four-dimensional matrix algebra.</p>
+<p><strong>Exercise1.</strong> Why does merely knowing the Banach spectrum of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> lies near one not give (<a href="OA-FLOW-IP.html#equation-ip15">IP15</a>)? <strong>Solution.</strong> A spectral set alone bounds no operator norm of <span class="math" data-tex="\(\beta-I\)">\(\beta-I\)</span>. Here (<a href="OA-FLOW-IP.html#equation-ip15">IP15</a>) follows from equality with an explicit absolutely summable discrete-filter series and its norm bound, (<a href="OA-FLOW-IP.html#equation-ip5">IP5</a>) and (<a href="OA-FLOW-IP.html#equation-ip13">IP13</a>). The proof never makes the unsupported inference from spectral radius to norm.</p>
+<p><strong>Exercise2.</strong> Where is the type III separable-predual hypothesis used after (<a href="OA-FLOW-IP.html#equation-ip2">IP2</a>)? <strong>Solution.</strong> All steps through (<a href="OA-FLOW-IP.html#equation-ip22">IP22</a>) use the factor's already proved directed fixed-corner spectra and normal real action, with <span class="math" data-tex="\(\Gamma=a\mathbb Z\)">\(\Gamma=a\mathbb Z\)</span>. The final extension uses the actual equivalence <span class="math" data-tex="\(e\sim1\)">\(e\sim1\)</span>. <a href="OA-FLOW-CT.html#oa-flow.ct.2">CT-2</a> and <span class="unlinked">PC-7</span>/8 supply that equivalence at the stated hypothesis. Without a proved such equivalence, this chapter asserts only corner innerness.</p>
+<p><strong>Exercise3.</strong> Why is <span class="math" data-tex="\(u\)">\(u\)</span> not claimed to be a unitary of the ambient algebra? <strong>Solution.</strong> Its exact products are <span class="math" data-tex="\(u^*u=uu^*=e\)">\(u^*u=uu^*=e\)</span>. It is a unitary in <span class="math" data-tex="\(eMe\)">\(eMe\)</span>. Formula (<a href="OA-FLOW-IP.html#equation-ip23">IP23</a>), together with <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span>, converts it to the actual ambient unitary <span class="math" data-tex="\(b\)">\(b\)</span>. Replacing the corner exponential's constant term by <span class="math" data-tex="\(1\)">\(1\)</span> would obscure this support calculation.</p>
+<h3 id="the-inner-period-construction-from-frequency-bands-to-a-unitary">The inner-period construction, from frequency bands to a unitary</h3>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="A fixed corner, an explicit Fourier cutoff, the logarithm proof, and the full-factor implementer" src="assets/inner-period/assets/inner-period.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>This is a proof illustration with three different scopes. Panel A schematizes the assumed discrete spectral invariant and its proved enclosing bands. Panel B evaluates an explicit analytic cutoff formula. Panels C and D give the actual general maps in the proof. Panel E is an exact finite-matrix check of the logarithm argument; it is not a type III example. The complete argument is <a href="OA-FLOW-IP.html">IP-0–7</a>.</p>
+<h4 id="a-one-compact-period-controls-the-entire-real-spectrum">A. One compact period controls the entire real spectrum</h4>
+<p>The displayed coordinate choice is <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(P=2\pi\)">\(P=2\pi\)</span>, <span class="math" data-tex="\(\delta=1/16\)">\(\delta=1/16\)</span>, and <span class="math" data-tex="\(\eta=\delta/(2P)=1/(64\pi)\)">\(\eta=\delta/(2P)=1/(64\pi)\)</span>. The green diamonds at <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span> indicate three members of the hypothesized group <span class="math" data-tex="\(\Gamma(\alpha)=\mathbb Z\)">\(\Gamma(\alpha)=\mathbb Z\)</span>. The blue bands are the exact open enclosing intervals <span class="math" data-tex="\((k-\eta,k+\eta)\)">\((k-\eta,k+\eta)\)</span>; their displayed height carries no mathematical coordinate. They do not assert that every point in a band is an actual spectral point. The diagram shows only one finite part of the infinite periodic family.</p>
+<p><a href="OA-FLOW-IP.html#oa-flow.ip.1">IP-1</a> applies compactness to
+<span class="math math-display" data-tex="\[
+ K=[-1/2,-1/(64\pi)]\cup[1/(64\pi),1/2].
+\]">\[
+ K=[-1/2,-1/(64\pi)]\cup[1/(64\pi),1/2].
+\]</span>
+The closed, downward-directed spectral thickenings have intersection <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. A finite cover of this <span class="math" data-tex="\(K\)">\(K\)</span> by their open complements gives one actual thickening disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>. Its period-one invariance forces the whole spectrum of its nonzero fixed corner into the indicated bands. No compactness of the full spectrum or choice of eigenvectors is assumed.</p>
+<h4 id="b-the-plotted-function-is-local-but-its-discrete-filter-is-norm-summable">B. The plotted function is local, but its discrete filter is norm summable</h4>
+<p>For this illustration put
+<span class="math math-display" data-tex="\[
+ q(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}\qquad
+ \chi(s)=\frac{q(4-s^2)}{q(4-s^2)+q(s^2-1)}.
+\]">\[
+ q(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}\qquad
+ \chi(s)=\frac{q(4-s^2)}{q(4-s^2)+q(s^2-1)}.
+\]</span>
+The denominator is positive for every real <span class="math" data-tex="\(s\)">\(s\)</span>: inside <span class="math" data-tex="\(|s|\le1\)">\(|s|\le1\)</span> its first summand is positive; outside <span class="math" data-tex="\(|s|\ge2\)">\(|s|\ge2\)</span> its second is positive; in between both are positive. The exponential and all its derivatives tend to zero at the joining point, by the same elementary exponential-dominates-powers argument used in <a href="OA-FLOW-RF.html#oa-flow.rf.1">RF-1</a>. Thus this is a smooth cutoff, equal to one for <span class="math" data-tex="\(|s|\le1\)">\(|s|\le1\)</span> and zero for <span class="math" data-tex="\(|s|\ge2\)">\(|s|\ge2\)</span>, meeting the exact hypothesis of <a href="OA-FLOW-IP.html#oa-flow.ip.3">IP-3</a>.</p>
+<p>The horizontal coordinate is <span class="math" data-tex="\(s=\vartheta/\delta\)">\(s=\vartheta/\delta\)</span>, and the two curves are
+<span class="math math-display" data-tex="\[
+ \delta^{-1}\operatorname{Im}h_\delta(\delta s),\qquad
+ \delta^{-1}\operatorname{Re}h_\delta(\delta s),\qquad
+ h_\delta(\vartheta)=(e^{i\vartheta}-1)\chi(\vartheta/\delta).
+\]">\[
+ \delta^{-1}\operatorname{Im}h_\delta(\delta s),\qquad
+ \delta^{-1}\operatorname{Re}h_\delta(\delta s),\qquad
+ h_\delta(\vartheta)=(e^{i\vartheta}-1)\chi(\vartheta/\delta).
+\]</span>
+They are values of this formula at 1201 evenly spaced coordinates in <span class="math" data-tex="\([-12/5,12/5]\)">\([-12/5,12/5]\)</span>, joined for display. The dark blue strip <span class="math" data-tex="\(|s|&lt;1/2\)">\(|s|&lt;1/2\)</span> encloses the real-action spectrum modulo a period; the lighter green strip <span class="math" data-tex="\(|s|\le1\)">\(|s|\le1\)</span> is the region where <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Hence the two periodic multipliers agree on an open neighborhood of the spectrum, with a strict margin.</p>
+<p>The complete Fejér-kernel proof and twice-integration-by-parts estimate in <a href="OA-FLOW-IP.html#oa-flow.ip.3">IP-3</a> give
+<span class="math math-display" data-tex="\[
+ \sum_n|c_n|\le Q\delta,\qquad
+ C_j=\int|\chi^{(j)}|,\quad
+ Q=5C_0/\pi+(C_0+2C_1+2C_2)/\pi.
+\]">\[
+ \sum_n|c_n|\le Q\delta,\qquad
+ C_j=\int|\chi^{(j)}|,\quad
+ Q=5C_0/\pi+(C_0+2C_1+2C_2)/\pi.
+\]</span>
+The displayed <span class="math" data-tex="\(\delta=1/16\)">\(\delta=1/16\)</span> illustrates the formula and the band margin. The theorem separately chooses <span class="math" data-tex="\(\delta&lt;\min\{\pi/4,1,(10Q)^{-1}\}\)">\(\delta&lt;\min\{\pi/4,1,(10Q)^{-1}\}\)</span>. Neither the plotted samples nor any approximate coefficient computation certifies the inequality <span class="math" data-tex="\(Q\delta&lt;1/10\)">\(Q\delta&lt;1/10\)</span> for the displayed value; the proof's exact constant and its smaller choice supply that bound.</p>
+<h4 id="c-the-derivation-identity-is-established-before-invoking-innerness">C. The derivation identity is established before invoking innerness</h4>
+<p>All boxes concern the complete corner algebra <span class="math" data-tex="\(eMe\)">\(eMe\)</span>, with <span class="math" data-tex="\(\beta=\alpha_P|_{eMe}\)">\(\beta=\alpha_P|_{eMe}\)</span>. <a href="OA-FLOW-IP.html#oa-flow.ip.2">IP-2/4</a> give the actual map identity and norm estimate
+<span class="math math-display" data-tex="\[
+ \beta-I=\sum_{n\in\mathbb Z}c_n(\alpha^e)_{nP},\qquad
+ \epsilon=\|\beta-I\|\le Q\delta&lt;1/10.
+\]">\[
+ \beta-I=\sum_{n\in\mathbb Z}c_n(\alpha^e)_{nP},\qquad
+ \epsilon=\|\beta-I\|\le Q\delta&lt;1/10.
+\]</span>
+The series converges in operator norm and has a norm-convergent preadjoint, so its map is normal. <a href="OA-FLOW-IP.html#oa-flow.ip.5">IP-5</a> constructs the bounded logarithm <span class="math" data-tex="\(D\)">\(D\)</span>, proves <span class="math" data-tex="\(\exp D=\beta\)">\(\exp D=\beta\)</span>, and establishes Leibniz on the full Banach space of bounded bilinear maps. The commuting operators <span class="math" data-tex="\(O,L,R\)">\(O,L,R\)</span> are precisely those printed under the boxes. Their logarithm identity applied to the multiplication map <span class="math" data-tex="\(m\)">\(m\)</span> gives <span class="math" data-tex="\(D(xy)=D(x)y+xD(y)\)">\(D(xy)=D(x)y+xD(y)\)</span>; the real logarithm coefficients give preservation of star.</p>
+<p>Only then does the earlier full bounded-star-derivation proof in L35 supply <span class="math" data-tex="\(h=h^*\in eMe\)">\(h=h^*\in eMe\)</span>, <span class="math" data-tex="\(D=i[h,\,\cdot\,]\)">\(D=i[h,\,\cdot\,]\)</span>, and the centered bound <span class="math" data-tex="\(\|h\|\le\|D\|/2\)">\(\|h\|\le\|D\|/2\)</span>. The unitary <span class="math" data-tex="\(u=\exp_{eMe}(ih)\)">\(u=\exp_{eMe}(ih)\)</span> has <span class="math" data-tex="\(u^*u=uu^*=e\)">\(u^*u=uu^*=e\)</span>; its corner unit is <span class="math" data-tex="\(e\)">\(e\)</span>. Norm differentiation proves <span class="math" data-tex="\(\beta(x)=uxu^*\)">\(\beta(x)=uxu^*\)</span>. No automatic-boundedness theorem, norm continuity of the original real action, or inference from a spectral radius to an operator norm is used.</p>
+<h4 id="d-the-maps-carry-the-corner-unit-to-the-ambient-unit">D. The maps carry the corner unit to the ambient unit</h4>
+<p>The arrows are the actual Hilbert-space maps
+<span class="math math-display" data-tex="\[
+ H\xrightarrow{\ v\ }eH\xrightarrow{\ u\ }eH
+ \xrightarrow{\ \alpha_P(v^*)\ }H.
+\]">\[
+ H\xrightarrow{\ v\ }eH\xrightarrow{\ u\ }eH
+ \xrightarrow{\ \alpha_P(v^*)\ }H.
+\]</span>
+Here <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span>, <span class="math" data-tex="\(vv^*=e\)">\(vv^*=e\)</span>, and the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-fixedness of <span class="math" data-tex="\(e\)">\(e\)</span> gives the same initial and final supports for <span class="math" data-tex="\(\alpha_P(v)\)">\(\alpha_P(v)\)</span>. Each arrow is a unitary between its displayed Hilbert spaces, although <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> are not asserted to be ambient unitaries. Their composite <span class="math" data-tex="\(b=\alpha_P(v^*)uv\)">\(b=\alpha_P(v^*)uv\)</span> is the actual unitary of <span class="math" data-tex="\(M\)">\(M\)</span>. The complete products in <a href="OA-FLOW-IP.html#oa-flow.ip.6">IP-6</a> prove <span class="math" data-tex="\(b^*b=bb^*=1\)">\(b^*b=bb^*=1\)</span>, and compression of every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> gives <span class="math" data-tex="\(\alpha_P(x)=bxb^*\)">\(\alpha_P(x)=bxb^*\)</span>. These spaces may have arbitrary Hilbert dimension; no finite-dimensional labels are attached to them. CT/PC supply <span class="math" data-tex="\(e\sim1\)">\(e\sim1\)</span> at the stated separable-predual type III factor hypothesis.</p>
+<h4 id="e-every-sign-and-norm-in-the-finite-check-is-exact">E. Every sign and norm in the finite check is exact</h4>
+<p>For <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\theta=1/64\)">\(\theta=1/64\)</span>, <span class="math" data-tex="\(h=\operatorname{diag}(0,\theta)\)">\(h=\operatorname{diag}(0,\theta)\)</span>, and <span class="math" data-tex="\(\beta=\operatorname{Ad}(e^{ih})\)">\(\beta=\operatorname{Ad}(e^{ih})\)</span>, <a href="OA-FLOW-IP.html#oa-flow.ip.7">IP-7</a> proves the complete displayed matrix-unit table. The off-diagonal frequencies are row energy minus column energy, <span class="math" data-tex="\(-1/64\)">\(-1/64\)</span> and <span class="math" data-tex="\(1/64\)">\(1/64\)</span>. The diagonal units are fixed.
+<span class="math math-display" data-tex="\[
+ \|\beta-I\|=2\sin(1/128)&lt;1/64&lt;1/10,\qquad
+ \log\beta=i[h,\,\cdot\,],\quad
+ \|\log\beta\|=1/64,\qquad
+ \left\|h-\frac1{128}I\right\|=1/128.
+\]">\[
+ \|\beta-I\|=2\sin(1/128)&lt;1/64&lt;1/10,\qquad
+ \log\beta=i[h,\,\cdot\,],\quad
+ \|\log\beta\|=1/64,\qquad
+ \left\|h-\frac1{128}I\right\|=1/128.
+\]</span>
+The off-diagonal contraction and evaluation on <span class="math" data-tex="\(e_{12}\)">\(e_{12}\)</span> prove the exact operator norms. All domains are the full matrix algebra, of complex dimension four. This finite sample tests <a href="OA-FLOW-IP.html#oa-flow.ip.5">IP-5</a> and the sign convention, not the type III spectral premise or a periodic-weight-existence theorem.</p>
+<p>The human primary ancestry is <a href="https://numdam.org/article/ASENS_1973_4_6_2_133_0.pdf#page=48">Alain Connes (1973), printed179–182</a>. The complete linked local proofs supply every asserted mechanism. This original figure and caption are CC0-1.0 to the extent of rights held, with DejaVu font terms retained. The native PNG is 3200×2500 pixels; <a href="assets/inner-period/assets/inner-period.svg">editable SVG</a>, <a href="assets/inner-period/assets/inner-period-data.json">coordinates, formulas and numerical display data</a>, and <a href="assets/inner-period/render_inner_period.py">reproduction source</a> are retained.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><span class="unlinked">Previous lesson</span><a href="OA-FLOW-MT.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-IP.md">Lesson source</a></nav></main></body></html>

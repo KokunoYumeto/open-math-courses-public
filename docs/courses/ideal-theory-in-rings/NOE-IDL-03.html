@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modules, staircases and elementary divisors · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="index.html">Ideal theory in rings</a><a href="NOE-IDL-02.html">Previous lesson</a><a href="NOE-IDL-04.html">Next lesson</a><a href="source-course/src/modules-staircases-and-elementary-divisors.md">Markdown source</a><a href="downloads/NOE-IDL-03.tex">LaTeX source</a></nav></header>
+
+<article class="math"><h1 id="modules-staircases-and-elementary-divisors">Modules, staircases
+and elementary divisors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra reasoning
+effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at
+Ultra. Public domain (CC0).</em></p>
+<p>The same intersection theory controls a module, a polynomial ideal,
+an arithmetic order and a differential equation. We will make those
+connections through concrete calculations. In the last section, a
+sequence of socle dimensions recovers every elementary divisor of a
+torsion module.</p>
+<p>We assume commutative rings with identity. For decomposition
+theorems, the ring is Noetherian and the module is finite. We use the
+actual proofs in <a href="NOE-IDL-01.html">Chain conditions and
+irreducible decompositions</a> and <a href="NOE-IDL-02.html">Primary
+ideals and isolated components</a>. Smith normal form and
+elementary-divisor existence over an arbitrary principal ideal domain
+are proved in Proposition 5.0 below. Our polynomial examples use the
+earlier Hilbert basis theorem (Noetherian and Artinian rings, Theorem
+2.1). The Dedekind comparison is proved in Proposition 3.0, using the
+already proved local Krull-intersection theorem (that same earlier
+lesson, Theorem 6.1). Freely accessible references are Noether’s English
+working edition and Milne’s author-hosted <em>Algebraic Number
+Theory</em> notes. The analysis outlook is separate from the algebraic
+proofs.</p>
+<h2 id="what-transfers-to-modules">1. What transfers to modules</h2>
+<p><strong>Theorem 1.1.</strong> Every proper submodule <span
+class="math inline">\(N\)</span> of a finite module <span
+class="math inline">\(M\)</span> over a Noetherian ring is a finite
+intersection of irreducible submodules. Each such submodule is primary,
+and the number of components at <span class="math inline">\(\mathfrak
+p\)</span> is</p>
+<p><span class="math display">\[
+\mu_0(\mathfrak p,M/N)
+=\dim_{\kappa(\mathfrak p)}
+\operatorname{Hom}_{R_{\mathfrak p}}(\kappa(\mathfrak
+p),(M/N)_{\mathfrak p}).
+\]</span></p>
+<p><strong>Proof.</strong> Theorem 2.2 of the first lesson applies to
+the Noetherian submodule lattice. Theorem 1.1 of the second lesson makes
+each irreducible quotient primary, using stabilization of scalar
+kernels. Theorem 4.3 of the first lesson computes the number at each
+prime. Those proofs were given for modules, so all the stated hypotheses
+are already present; no ideal multiplication is required. <span
+class="math inline">\(\square\)</span></p>
+<p>Finite irreducible decomposition and the total count continue to hold
+for Noetherian modules over noncommutative rings, because their
+submodule lattices are modular. The primary and residue-field assertions
+here use commutativity. Noether’s Section 9 makes this distinction,
+although her historical module definition does not use our modern scalar
+definition of primaryness.</p>
+<h2 id="boxes-beneath-a-monomial-staircase">2. Boxes beneath a monomial
+staircase</h2>
+<p>In <span class="math inline">\(R=k[x_1,\ldots,x_n]\)</span>, a
+<strong>monomial ideal</strong> is generated by monomials <span
+class="math inline">\(x^\alpha\)</span>, <span
+class="math inline">\(\alpha\in\mathbb N^n\)</span>. Membership is
+termwise: a polynomial belongs exactly when each of its monomials
+belongs. This follows because multiples of the generators span exactly
+the divisible monomials, and monomials are a basis over <span
+class="math inline">\(k\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Every proper monomial ideal has a
+unique irredundant decomposition into monomial ideals of the form</p>
+<p><span class="math display">\[
+Q=(x_{i_1}^{a_1},\ldots,x_{i_s}^{a_s}),\qquad a_j\ge1.
+\]</span></p>
+<p>These factors are irreducible even among arbitrary ideals, not merely
+among monomial ideals. The empty generating set gives the prime ideal
+zero.</p>
+<p><strong>Proof of existence.</strong> A minimal monomial generating
+set is finite, by the Hilbert basis theorem. If every minimal generator
+is a power of one variable, the ideal has the asserted form. Otherwise
+choose a minimal generator <span class="math inline">\(bc\)</span> with
+<span class="math inline">\(b,c\)</span> nonconstant coprime monomials.
+Neither <span class="math inline">\(b\)</span> nor <span
+class="math inline">\(c\)</span> lies in the ideal <span
+class="math inline">\(I\)</span>, by minimality, and</p>
+<p><span class="math display">\[
+I=(I+(b))\cap(I+(c)).
+\]</span></p>
+<p>To verify this, a monomial outside <span
+class="math inline">\(I\)</span> in the right side must be divisible by
+both <span class="math inline">\(b\)</span> and <span
+class="math inline">\(c\)</span>, hence by <span
+class="math inline">\(bc\in I\)</span>, a contradiction. Both ideals are
+strictly larger. Noetherian induction now gives a finite intersection of
+the desired factors; delete redundancies.</p>
+<p><strong>Proof of irreducibility.</strong> Relabel the killed
+variables <span class="math inline">\(z_1,\ldots,z_s\)</span>, and put
+<span class="math inline">\(S=k[\text{remaining variables}]\)</span>.
+The quotient is</p>
+<p><span class="math display">\[
+B=S[z_1,\ldots,z_s]/(z_1^{a_1},\ldots,z_s^{a_s}),
+\]</span></p>
+<p>free over <span class="math inline">\(S\)</span> with the evident
+bounded monomial basis. Its ideal <span class="math inline">\(\mathfrak
+n=(z_1,\ldots,z_s)\)</span> is nilpotent. An element outside <span
+class="math inline">\(\mathfrak n\)</span> has nonzero constant term
+<span class="math inline">\(g\in S\)</span>; over <span
+class="math inline">\(\operatorname{Frac}(S)\)</span> it is a unit, by a
+finite geometric-series inverse. Since <span
+class="math inline">\(B\)</span> is torsion-free over <span
+class="math inline">\(S\)</span>, it acts injectively already on <span
+class="math inline">\(B\)</span>. Thus the defining ideal is primary
+with radical generated by the killed variables. After localization at
+that radical, the quotient is a finite local algebra over <span
+class="math inline">\(\operatorname{Frac}(S)\)</span>. Multiplication by
+<span class="math inline">\(z_i\)</span> kills a linear combination of
+its bounded monomials exactly when every coefficient with <span
+class="math inline">\(z_i\)</span>-exponent less than <span
+class="math inline">\(a_i-1\)</span> vanishes. Imposing this for all
+<span class="math inline">\(i\)</span> leaves the one-dimensional socle
+spanned by <span class="math inline">\(z_1^{a_1-1}\cdots
+z_s^{a_s-1}\)</span>; when <span class="math inline">\(s=0\)</span>, the
+quotient is the fraction field and the spanning monomial is <span
+class="math inline">\(1\)</span>. The socle criterion in the first
+lesson proves irreducibility.</p>
+<p><strong>Proof of uniqueness.</strong> Associate to such a factor the
+box</p>
+<p><span class="math display">\[
+B_Q=\{\alpha\in\mathbb N^n:\alpha_{i_j}&lt;a_j\text{ for each }j\}.
+\]</span></p>
+<p>It is the set of monomials outside <span
+class="math inline">\(Q\)</span>; omitted coordinates have no upper
+bound. The standard exponents outside an intersection are the union of
+its boxes. If one box lies in a finite union of boxes, it lies in one of
+them. Otherwise for each of the finitely many boxes choose a point of
+the first box outside it, and take the coordinatewise maximum of those
+points. This maximum still lies in the first box, and it lies outside
+every other box, since their complements are upward closed. This
+contradicts containment in the union. Consequently two finite
+irredundant box covers of the same standard set must consist of its same
+maximal boxes: each box in one is contained in a box in the other, and
+back again; irredundancy forbids proper containment between boxes in a
+single cover. The factors are therefore identical. <span
+class="math inline">\(\square\)</span></p>
+<p>This uniqueness applies to monomial decompositions. Arbitrary
+irreducible components may still move, as the example in the first
+lesson shows.</p>
+<p>For <span class="math inline">\(I=(x^2,xy^3,y^4)\)</span>, the
+standard exponents form two maximal boxes: <span
+class="math inline">\(0\le\alpha_x&lt;2,0\le\alpha_y&lt;3\)</span> and
+<span class="math inline">\(\alpha_x=0,0\le\alpha_y&lt;4\)</span>. They
+give</p>
+<p><span class="math display">\[
+I=(x^2,y^3)\cap(x,y^4).
+\]</span></p>
+<p>For <span class="math inline">\((x^3,xy,y^2)\)</span>, the boxes
+instead give <span class="math inline">\((x^3,y)\cap(x,y^2)\)</span>.
+The distinction comes from how far the row containing an <span
+class="math inline">\(x\)</span> extends.</p>
+<figure>
+<img src="assets/monomial-boxes.png"
+alt="Standard monomials as the union of two maximal rectangular boxes" />
+<figcaption aria-hidden="true">Standard monomials as the union of two
+maximal rectangular boxes</figcaption>
+</figure>
+<p><em>Figure 1.</em> The blue cells are the seven standard monomials of
+<span class="math inline">\((x^2,xy^3,y^4)\)</span>. Their exponent set
+is the union of the two boxes shown at right, corresponding to <span
+class="math inline">\((x^2,y^3)\)</span> and <span
+class="math inline">\((x,y^4)\)</span>. Pale cells belong to the
+corresponding ideal. This is an exact finite exponent diagram, not a
+picture of the variety. Theorem 2.1 proves both the decomposition and
+its monomial uniqueness. Original diagram, CC0; rendered DejaVu glyphs
+retain their font licence.</p>
+<h2 id="a-primary-ideal-which-is-not-a-prime-power">3. A primary ideal
+which is not a prime power</h2>
+<p>In a Dedekind domain, nonzero primary ideals are powers of maximal
+ideals. We prove the comparison directly so it does not depend on an
+external local-characterization theorem. A Dedekind domain here means a
+Noetherian integrally closed domain of dimension one; fields are
+excluded.</p>
+<p><strong>Proposition 3.0 (the Dedekind comparison).</strong> In a
+Dedekind domain <span class="math inline">\(R\)</span>, the nonzero
+proper primary ideals are exactly <span class="math inline">\(\mathfrak
+p^a\)</span>, where <span class="math inline">\(\mathfrak p\)</span> is
+a nonzero prime and <span class="math inline">\(a\ge1\)</span>.</p>
+<p><strong>Proof.</strong> First let <span
+class="math inline">\((B,\mathfrak m)\)</span> be a Noetherian
+integrally closed local domain of dimension one. Choose <span
+class="math inline">\(0\ne x\in\mathfrak m\)</span>. Its only containing
+prime is <span class="math inline">\(\mathfrak m\)</span>, so <span
+class="math inline">\(\sqrt{(x)}=\mathfrak m\)</span> by the proved
+radical correspondence. Finite generation of <span
+class="math inline">\(\mathfrak m\)</span> gives <span
+class="math inline">\(\mathfrak m^n\subset(x)\)</span> for some <span
+class="math inline">\(n\ge1\)</span>: choose a power of each generator
+in <span class="math inline">\((x)\)</span>, then use the same
+product-counting argument as in the first lesson. Choose the least such
+<span class="math inline">\(n\)</span>, and <span
+class="math inline">\(y\in\mathfrak m^{n-1}\setminus(x)\)</span>, with
+<span class="math inline">\(\mathfrak m^0=B\)</span>. Then <span
+class="math inline">\(t=y/x\notin B\)</span> and <span
+class="math inline">\(t\mathfrak m\subset B\)</span>.</p>
+<p>If <span class="math inline">\(t\mathfrak m\subset\mathfrak
+m\)</span>, choose generators <span
+class="math inline">\(v_1,\ldots,v_h\)</span> of the nonzero ideal <span
+class="math inline">\(\mathfrak m\)</span>, and write <span
+class="math inline">\(tv_i=\sum_j c_{ij}v_j\)</span>, with <span
+class="math inline">\(c_{ij}\in B\)</span>. In the fraction field, the
+adjugate identity gives <span
+class="math inline">\(\det(tI-C)v_i=0\)</span> for every <span
+class="math inline">\(i\)</span>. Some <span
+class="math inline">\(v_i\ne0\)</span>, so the domain property gives
+<span class="math inline">\(\det(tI-C)=0\)</span>. This is a monic
+equation for <span class="math inline">\(t\)</span>; integral closedness
+would give <span class="math inline">\(t\in B\)</span>, a contradiction.
+Thus some <span class="math inline">\(z\in\mathfrak m\)</span> has <span
+class="math inline">\(tz\)</span> a unit. Replacing <span
+class="math inline">\(t\)</span> by <span
+class="math inline">\(t/(tz)\)</span>, we have <span
+class="math inline">\(tz=1\)</span> and <span
+class="math inline">\(t\mathfrak m\subset B\)</span>. Hence <span
+class="math inline">\(\mathfrak m=zB\)</span>.</p>
+<p>The already proved local Krull-intersection theorem gives <span
+class="math inline">\(\bigcap_{j\ge0}\mathfrak m^j=0\)</span>. Every
+nonzero <span class="math inline">\(b\in B\)</span> therefore has a
+largest <span class="math inline">\(j\)</span> with <span
+class="math inline">\(b\in\mathfrak m^j\)</span>. As <span
+class="math inline">\(\mathfrak m=(z)\)</span>, this means <span
+class="math inline">\(b=z^j u\)</span> with <span
+class="math inline">\(u\)</span> a unit. For any nonzero ideal, the
+least such exponent among its nonzero elements is attained; an element
+attaining it generates the ideal. Thus every nonzero ideal of <span
+class="math inline">\(B\)</span> is a power of <span
+class="math inline">\(\mathfrak m\)</span>.</p>
+<p>For a nonzero prime <span class="math inline">\(\mathfrak p\subset
+R\)</span>, the prime correspondence and Noetherian-localization theorem
+show that <span class="math inline">\(R_{\mathfrak p}\)</span> is a
+Noetherian local domain with only one nonzero prime. It is integrally
+closed: if <span class="math inline">\(v\)</span> satisfies a monic
+equation with coefficients <span class="math inline">\(c_i\in
+R_{\mathfrak p}\)</span>, choose <span
+class="math inline">\(s\notin\mathfrak p\)</span> clearing all
+denominators. The equation for <span class="math inline">\(sv\)</span>
+has coefficients <span class="math inline">\(s^ic_i\in R\)</span>, so
+<span class="math inline">\(sv\in R\)</span> and <span
+class="math inline">\(v\in R_{\mathfrak p}\)</span>. The preceding
+argument therefore applies there.</p>
+<p>Let <span class="math inline">\(Q\ne0\)</span> be proper primary with
+radical <span class="math inline">\(\mathfrak p\)</span>. This is a
+nonzero maximal prime. Elements outside <span
+class="math inline">\(\mathfrak p\)</span> act injectively on <span
+class="math inline">\(R/Q\)</span>, so <span
+class="math inline">\(Q\)</span> is the contraction of <span
+class="math inline">\(QR_{\mathfrak p}\)</span>. That nonzero proper
+localized ideal is <span class="math inline">\((\mathfrak pR_{\mathfrak
+p})^a\)</span>, with <span class="math inline">\(a\ge1\)</span>. For any
+maximal ideal <span class="math inline">\(\mathfrak p\)</span>, its
+power <span class="math inline">\(\mathfrak p^a\)</span> is primary: if
+<span class="math inline">\(s\notin\mathfrak p\)</span>, write <span
+class="math inline">\(rs+u=1\)</span> with <span
+class="math inline">\(u\in\mathfrak p\)</span>; then <span
+class="math inline">\(r\sum_{j=0}^{a-1}u^j\)</span> is an inverse for
+<span class="math inline">\(s\)</span> modulo <span
+class="math inline">\(\mathfrak p^a\)</span>. Thus a zero divisor modulo
+that power belongs to <span class="math inline">\(\mathfrak p\)</span>,
+and its <span class="math inline">\(a\)</span>-th power vanishes. This
+argument also shows that <span class="math inline">\(\mathfrak
+p^a\)</span> contracts unchanged from <span
+class="math inline">\(R_{\mathfrak p}\)</span>. Consequently <span
+class="math inline">\(Q=\mathfrak p^a\)</span>, and the same argument
+proves the converse. <span class="math inline">\(\square\)</span></p>
+<p>Nonmaximal orders need not have this property.</p>
+<p><strong>Proposition 3.1.</strong> Let <span
+class="math inline">\(A=\mathbb Z[s]\)</span>, <span
+class="math inline">\(s^2=-3\)</span>, and <span
+class="math inline">\(\mathfrak p=(2,1+s)\)</span>. Then <span
+class="math inline">\(\mathfrak p\)</span> is maximal,</p>
+<p><span class="math display">\[
+\mathfrak p^2=2\mathfrak p,
+\]</span></p>
+<p>and <span class="math inline">\((2)\)</span> is <span
+class="math inline">\(\mathfrak p\)</span>-primary but is not a power of
+<span class="math inline">\(\mathfrak p\)</span>.</p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(w=1+s\)</span>. Then <span
+class="math inline">\(w^2=2w-4\)</span>, so <span
+class="math inline">\(A=\mathbb Z[w]\)</span> with relation <span
+class="math inline">\(w^2-2w+4=0\)</span>. The quotient by <span
+class="math inline">\((2,w)\)</span> is <span
+class="math inline">\(\mathbb F_2\)</span>, proving maximality. Squaring
+its generators gives <span
+class="math inline">\((4,2w,w^2)=(4,2w)=2\mathfrak p\)</span>.</p>
+<p>Modulo <span class="math inline">\(2\)</span>, the relation is <span
+class="math inline">\(w^2=0\)</span>, so <span
+class="math inline">\(A/(2)\cong\mathbb F_2[w]/(w^2)\)</span>. Every
+nonunit is nilpotent; this proves primaryness and radical <span
+class="math inline">\(\mathfrak p\)</span>. As additive lattices, <span
+class="math inline">\(\mathfrak p\)</span> has basis <span
+class="math inline">\(2,w\)</span>, so index two in <span
+class="math inline">\(A\)</span>. The ideal <span
+class="math inline">\((2)\)</span> has index four. Inductively <span
+class="math inline">\(\mathfrak p^n=2^{n-1}\mathfrak p\)</span> has
+index <span class="math inline">\(2\cdot4^{n-1}\)</span>, which is never
+four. Thus <span class="math inline">\((2)\ne\mathfrak p^n\)</span> for
+every positive <span class="math inline">\(n\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The order is not integrally closed: <span
+class="math inline">\((1+s)/2\)</span> is integral, satisfying <span
+class="math inline">\(t^2-t+1=0\)</span>, but is absent from <span
+class="math inline">\(A\)</span>. The hypothesis distinguishing an order
+from a Dedekind domain is visible in this very example.</p>
+<h2 id="primary-factors-of-a-differential-operator">4. Primary factors
+of a differential operator</h2>
+<p>Let <span class="math inline">\(D=d/dt\)</span> act on <span
+class="math inline">\(C^\infty(\mathbb R,\mathbb C)\)</span>.
+Polynomials in <span class="math inline">\(D\)</span> commute. An ideal
+of <span class="math inline">\(\mathbb C[D]\)</span> describes an
+ordinary differential system; in several variables <span
+class="math inline">\(\mathbb C[D_1,\ldots,D_n]\)</span> describes a
+constant-coefficient partial differential system.</p>
+<p><strong>Theorem 4.1.</strong> If</p>
+<p><span class="math display">\[
+p(z)=c\prod_{i=1}^r(z-\lambda_i)^{m_i},\qquad c\ne0,
+\]</span></p>
+<p>with distinct <span class="math inline">\(\lambda_i\)</span>,
+then</p>
+<p><span class="math display">\[
+\ker p(D)=\bigoplus_i\ker(D-\lambda_i)^{m_i},
+\qquad
+\ker(D-\lambda)^m
+=\operatorname{span}_{\mathbb C}\{e^{\lambda t},te^{\lambda
+t},\ldots,t^{m-1}e^{\lambda t}\}.
+\]</span></p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(q_i=(z-\lambda_i)^{m_i}\)</span>. The Chinese
+remainder theorem in <span class="math inline">\(\mathbb C[z]\)</span>
+gives polynomials <span class="math inline">\(e_i\)</span> with <span
+class="math inline">\(e_i\equiv1\pmod{q_i}\)</span>, <span
+class="math inline">\(e_i\equiv0\pmod{q_j}\)</span> for <span
+class="math inline">\(j\ne i\)</span>, and <span
+class="math inline">\(\sum e_i\equiv1\pmod{p}\)</span>. For a solution
+<span class="math inline">\(u\)</span>, set <span
+class="math inline">\(u_i=e_i(D)u\)</span>. Since <span
+class="math inline">\(q_i e_i\)</span> is divisible by <span
+class="math inline">\(p\)</span>, <span
+class="math inline">\(q_i(D)u_i=0\)</span>, and <span
+class="math inline">\(\sum u_i=u\)</span>. The congruences also make
+<span class="math inline">\(e_i(D)\)</span> identity on the <span
+class="math inline">\(i\)</span>-th kernel and zero on the others,
+proving directness.</p>
+<p>Write <span class="math inline">\(u=e^{\lambda t}v\)</span>. The
+identity <span class="math inline">\((D-\lambda)(e^{\lambda
+t}v)=e^{\lambda t}v&#39;\)</span> implies <span
+class="math inline">\((D-\lambda)^mu=e^{\lambda t}v^{(m)}\)</span>. On
+the connected interval <span class="math inline">\(\mathbb R\)</span>,
+<span class="math inline">\(v^{(m)}=0\)</span> exactly when <span
+class="math inline">\(v\)</span> is a polynomial of degree less than
+<span class="math inline">\(m\)</span>, by repeated integration. Its
+monomials are independent, giving the stated basis. <span
+class="math inline">\(\square\)</span></p>
+<p>Thus <span class="math inline">\(u&#39;&#39;-2u&#39;+u=0\)</span> has
+solutions <span class="math inline">\((a+bt)e^t\)</span>. The repeated
+root records a two-dimensional primary solution space, rather than two
+distinct exponential modes.</p>
+<h3 id="several-variables-when-the-symbol-quotient-is-finite">Several
+variables when the symbol quotient is finite</h3>
+<p>The same primary-component mechanism has a complete several-variable
+version when the symbol algebra is finite-dimensional. Put <span
+class="math inline">\(R=\mathbb C[z_1,\ldots,z_n]\)</span>, let <span
+class="math inline">\(I\subset R\)</span> be a proper ideal, and suppose
+<span class="math inline">\(A=R/I\)</span> has finite dimension <span
+class="math inline">\(N\)</span> over <span
+class="math inline">\(\mathbb C\)</span>. Let <span
+class="math inline">\(U\subset\mathbb R^n\)</span> be a connected open
+set. The equations are <span
+class="math inline">\(f(\partial)u=0\)</span> for all <span
+class="math inline">\(f\in I\)</span>, acting on <span
+class="math inline">\(C^\infty(U,\mathbb C)\)</span>. A finite
+generating list of <span class="math inline">\(I\)</span> gives the same
+system, since differential operators commute and every element of the
+ideal is a polynomial combination of its generators.</p>
+<p><strong>Theorem 4.2 (finite symbol algebra).</strong> Fix <span
+class="math inline">\(x_0\in U\)</span>. The map</p>
+<p><span class="math display">\[
+u\longmapsto v_u,\qquad v_u([f])=(f(\partial)u)(x_0),
+\]</span></p>
+<p>is an isomorphism from the solution space to <span
+class="math inline">\(A^*=\operatorname{Hom}_{\mathbb C}(A,\mathbb
+C)\)</span>. If <span class="math inline">\(M_j\)</span> denotes
+multiplication by <span class="math inline">\([z_j]\)</span> on <span
+class="math inline">\(A\)</span>, its inverse is</p>
+<p><span class="math display">\[
+u_v(x)=v\left(\exp\left(\sum_{j=1}^n(x_j-x_{0j})M_j\right)[1]\right).       \tag{2}
+\]</span></p>
+<p>Every solution is a finite sum of exponential-polynomial solutions,
+one for each primary factor of <span class="math inline">\(A\)</span>,
+and the solution-space dimension is <span
+class="math inline">\(N\)</span>.</p>
+<p><strong>Proof.</strong> The jet functional <span
+class="math inline">\(v_u\)</span> is well-defined because every
+polynomial in <span class="math inline">\(I\)</span> annihilates <span
+class="math inline">\(u\)</span>. The matrices <span
+class="math inline">\(M_j\)</span> commute. Their exponential is defined
+by its absolutely convergent matrix power series: if <span
+class="math inline">\(\|B\|\)</span> is any submultiplicative matrix
+norm, the series is bounded by <span
+class="math inline">\(\sum\|B\|^r/r!\)</span>. Uniform convergence on
+compact sets of this series and each of its termwise derivatives follows
+from the same bound with a fixed polynomial factor in <span
+class="math inline">\(r\)</span>. For commuting matrices <span
+class="math inline">\(B,C\)</span>, multiplying the absolutely
+convergent series and grouping terms of equal total degree gives</p>
+<p><span class="math display">\[
+e^B e^C
+=\sum_{m\ge0}\sum_{r=0}^{m}\frac{B^rC^{m-r}}{r!(m-r)!}
+=\sum_{m\ge0}\frac{(B+C)^m}{m!}=e^{B+C}.
+\]</span></p>
+<p>In particular <span class="math inline">\(e^B\)</span> is invertible
+with inverse <span class="math inline">\(e^{-B}\)</span>. If <span
+class="math inline">\(B(x)=\sum_j(x_j-x_{0j})M_j\)</span>, commutativity
+gives <span class="math inline">\(\partial_j
+B(x)^r=rB(x)^{r-1}M_j\)</span>. Termwise differentiation therefore gives
+<span class="math inline">\(\partial_j e^{B(x)}=e^{B(x)}M_j\)</span>.
+Thus (2) is smooth, and differentiating it applies <span
+class="math inline">\(M_j\)</span>. Consequently</p>
+<p><span class="math display">\[
+(f(\partial)u_v)(x)=v\left(\exp\left(\sum_j(x_j-x_{0j})M_j\right)[f]\right).
+\]</span></p>
+<p>This vanishes when <span class="math inline">\(f\in I\)</span>, and
+evaluation at <span class="math inline">\(x_0\)</span> gives <span
+class="math inline">\(v_{u_v}=v\)</span>.</p>
+<p>It remains to show that no smooth solution has all these initial data
+zero. Choose a basis <span
+class="math inline">\([a_1],\ldots,[a_N]\)</span> of <span
+class="math inline">\(A\)</span> with <span
+class="math inline">\(a_1=1\)</span>, and let <span
+class="math inline">\(F_u(x)\)</span> be the column whose entries are
+<span class="math inline">\(a_i(\partial)u(x)\)</span>. If the columns
+of <span class="math inline">\(M_j\)</span> give the coordinates of
+<span class="math inline">\([z_ja_i]\)</span>, the defining relations
+modulo <span class="math inline">\(I\)</span> give</p>
+<p><span class="math display">\[
+\partial_jF_u=M_j^{\mathsf T}F_u.
+\]</span></p>
+<p>Along a line segment inside <span class="math inline">\(U\)</span>
+with velocity <span class="math inline">\(b\)</span>, this becomes the
+constant matrix equation <span class="math inline">\(F&#39;=\sum_j
+b_jM_j^{\mathsf T}F\)</span>. Its solution is the matrix exponential
+times its initial value: differentiating <span
+class="math inline">\(\exp(-tB)F(t)\)</span> gives zero, which proves
+both existence and uniqueness directly. Any two points of a connected
+open subset of <span class="math inline">\(\mathbb R^n\)</span> can be
+joined by a polygonal path inside it. Indeed the points reachable from
+<span class="math inline">\(x_0\)</span> by such paths form an open
+subset, and their complement is open by the same small-ball argument;
+connectedness makes the complement empty. Apply the segment uniqueness
+successively along a path. If <span
+class="math inline">\(F_u(x_0)=0\)</span>, then <span
+class="math inline">\(F_u=0\)</span> throughout <span
+class="math inline">\(U\)</span>, in particular <span
+class="math inline">\(u=0\)</span>. Hence the two maps are inverse.</p>
+<p>The finite Artinian decomposition, Theorem 4.2 of <a
+href="prerequisites/AG-CA/AG-CA-03.html">Noetherian and Artinian
+rings</a>, and the coprime decomposition of the preceding lesson
+give</p>
+<p><span class="math display">\[
+A=\prod_{\lambda}A_\lambda,
+\]</span></p>
+<p>where <span class="math inline">\(A_\lambda\)</span> is local with
+residue field <span class="math inline">\(\mathbb C\)</span>, and <span
+class="math inline">\(\lambda=(\lambda_1,\ldots,\lambda_n)\)</span> is
+its support point. The residue field is <span
+class="math inline">\(\mathbb C\)</span> by Theorem 2.1, the weak
+Nullstellensatz, in <a href="prerequisites/AG-CA/AG-CA-06.html">The
+Nullstellensatz and Jacobson rings</a>. Its maximal ideal <span
+class="math inline">\(\mathfrak m_\lambda\)</span> is nilpotent. One can
+see the nilpotence without an additional theorem: the descending chain
+of its powers stabilizes in the finite-dimensional ring; if <span
+class="math inline">\(\mathfrak m_\lambda^r=\mathfrak m_\lambda\mathfrak
+m_\lambda^r\)</span>, the finite-module Nakayama lemma, Theorem 4.2 of
+<a href="prerequisites/AG-CA/AG-CA-02.html">Localization, local
+properties and support</a>, gives <span class="math inline">\(\mathfrak
+m_\lambda^r=0\)</span>. On this factor write <span
+class="math inline">\(M_j=\lambda_j\operatorname{id}+N_j\)</span>. The
+<span class="math inline">\(N_j\)</span> are multiplication by elements
+of <span class="math inline">\(\mathfrak m_\lambda\)</span>, so if <span
+class="math inline">\(\mathfrak m_\lambda^r=0\)</span>, every product of
+<span class="math inline">\(r\)</span> such operators is zero. The
+commuting-exponential identity just proved now gives</p>
+<p><span class="math display">\[
+\exp\left(\sum_j h_jM_j\right)
+=e^{\langle\lambda,h\rangle}
+\sum_{a=0}^{r-1}\frac{(\sum_jh_jN_j)^a}{a!}
+\quad\text{on }A_\lambda.
+\]</span></p>
+<p>This is an exponential times a polynomial in <span
+class="math inline">\(h=x-x_0\)</span>. Decomposing <span
+class="math inline">\(v\)</span> into the duals of the factors gives the
+asserted finite sum; each summand separately solves the system by the
+same formula. The isomorphism with <span
+class="math inline">\(A^*\)</span> gives dimension <span
+class="math inline">\(N\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>For example, <span class="math inline">\(I=(z_1^2,z_2)\subset\mathbb
+C[z_1,z_2]\)</span> gives <span
+class="math inline">\(u(x_1,x_2)=a+bx_1\)</span> on every connected open
+set. The system says <span
+class="math inline">\(\partial_1^2u=0\)</span> and <span
+class="math inline">\(\partial_2u=0\)</span>, and the two initial data
+correspond to the basis <span class="math inline">\(1,z_1\)</span> of
+<span class="math inline">\(A\)</span>. The nonreduced primary factor is
+exactly the reason the polynomial factor has degree one rather than
+zero.</p>
+<p>For positive-dimensional symbol quotients, questions about
+approximation of smooth solutions and integral superpositions require
+further analysis. They are not premises of the algebraic results or of
+Theorems 4.1–4.2. The freely accessible author preprint <a
+href="https://arxiv.org/abs/2104.10146"><em>Linear PDE with Constant
+Coefficients</em>, by Ait El Manssour, Härkönen and Sturmfels</a>,
+provides further reading about those questions and their relation to
+primary modules. The finite-symbol theorem above has its complete proof
+here.</p>
+<h2 id="reading-elementary-divisors-from-the-socle-filtration">5.
+Reading elementary divisors from the socle filtration</h2>
+<p><strong>Proposition 5.0 (existence over every PID).</strong> Let
+<span class="math inline">\(R\)</span> be any principal ideal domain.
+Every finite matrix over <span class="math inline">\(R\)</span> can be
+transformed by invertible row and column operations into a diagonal
+matrix with nonzero diagonal entries <span
+class="math inline">\(d_1,\ldots,d_r\)</span> satisfying <span
+class="math inline">\(d_1\mid d_2\mid\cdots\mid d_r\)</span>, followed
+by zeros. Every finite torsion <span
+class="math inline">\(R\)</span>-module is consequently a finite direct
+sum of modules <span class="math inline">\(R/(p^a)\)</span>, where <span
+class="math inline">\(p\)</span> is prime and <span
+class="math inline">\(a\ge1\)</span>.</p>
+<p><strong>Proof.</strong> A PID is Noetherian: the union of an
+ascending chain of ideals is an ideal <span
+class="math inline">\((d)\)</span>; its generator belongs to one member
+of the chain, which then equals the union. Also <span
+class="math inline">\((a,b)=(g)\)</span> gives <span
+class="math inline">\(a=g\alpha,b=g\beta\)</span> and <span
+class="math inline">\(u\alpha+v\beta=1\)</span> for some <span
+class="math inline">\(u,v\in R\)</span>. The matrix</p>
+<p><span class="math display">\[
+\begin{pmatrix}u&amp;v\\-\beta&amp;\alpha\end{pmatrix}
+\]</span></p>
+<p>has determinant one and sends <span
+class="math inline">\((a,b)^{\mathsf T}\)</span> to <span
+class="math inline">\((g,0)^{\mathsf T}\)</span>. Its transpose gives
+the corresponding column operation. Thus the required operations use
+Bézout identities; a Euclidean division algorithm is unnecessary.</p>
+<p>For a nonzero matrix move a nonzero entry <span
+class="math inline">\(d\)</span> to its upper left corner. Whenever an
+entry in its first column or first row is divisible by <span
+class="math inline">\(d\)</span>, subtract the appropriate multiple to
+clear it. If such an entry <span class="math inline">\(b\)</span> is not
+divisible by <span class="math inline">\(d\)</span>, apply the displayed
+two-row or two-column operation: the new corner <span
+class="math inline">\(g\)</span> satisfies <span
+class="math inline">\((d)\subsetneq(g)=(d,b)\)</span>. Restart the
+clearing step. There can be only finitely many such strict increases by
+the ascending chain condition, and between them there are only finitely
+many row and column entries to clear. Eventually the matrix has the
+block form <span
+class="math inline">\(\operatorname{diag}(d,B)\)</span>.</p>
+<p>If an entry <span class="math inline">\(b\)</span> of <span
+class="math inline">\(B\)</span> is not divisible by <span
+class="math inline">\(d\)</span>, add its row to the first row. The
+corner remains <span class="math inline">\(d\)</span>, because that row
+has zero first entry, while <span class="math inline">\(b\)</span> now
+appears in the first row. A two-column Bézout operation strictly
+increases the corner ideal to <span
+class="math inline">\((d,b)\)</span>. Repeat the procedure. The
+ascending chain condition again forbids infinitely many such increases.
+Hence eventually the corner divides every entry, and its row and column
+are zero elsewhere. Apply induction to the smaller block <span
+class="math inline">\(B\)</span>. All its entries initially are
+multiples of <span class="math inline">\(d\)</span>, and its row and
+column operations keep them so. Its nonzero diagonal entries therefore
+are multiples of <span class="math inline">\(d\)</span>; induction gives
+the rest of the divisibility chain. The zero matrix, or a matrix with no
+rows or columns, is already in the asserted form.</p>
+<p>Choose a surjection <span class="math inline">\(R^n\to T\)</span>.
+Its kernel is finitely generated, by the proved finite-module
+consequence of Noetherianity, so generators give a presentation <span
+class="math inline">\(R^m\xrightarrow A R^n\to T\to0\)</span>. The
+matrix reduction changes bases in source and target and gives</p>
+<p><span class="math display">\[
+T\cong\bigoplus_{i=1}^r R/(d_i)\ \oplus R^{n-r}.
+\]</span></p>
+<p>Torsion forces <span class="math inline">\(n-r=0\)</span>, since a
+nonzero vector in a free module over a domain is killed by no nonzero
+scalar. Unit entries give zero summands and may be deleted.</p>
+<p>For completeness, a nonzero nonunit in a PID factors into
+irreducibles: if some fail to factor, the ascending chain condition
+supplies a maximal principal ideal <span
+class="math inline">\((a)\)</span> among failures. A proper
+factorization <span class="math inline">\(a=bc\)</span> into nonunits
+gives strictly larger <span class="math inline">\((b),(c)\)</span>,
+whose elements factor, a contradiction. An irreducible <span
+class="math inline">\(p\)</span> generates a maximal ideal, because
+every containing ideal is principal <span
+class="math inline">\((b)\)</span> and <span
+class="math inline">\(p=bc\)</span> forces <span
+class="math inline">\(b\)</span> to be a unit or an associate of <span
+class="math inline">\(p\)</span>. Thus <span
+class="math inline">\((p)\)</span> is prime. Cancelling prime factors
+proves uniqueness up to associates and order. Factor each <span
+class="math inline">\(d_i\)</span> into prime powers. Distinct prime
+powers generate comaximal ideals: an ideal containing both would, by
+primality of a maximal containing ideal, contain both distinct prime
+generators, which is impossible in a PID. Lemma 5.0 of the second lesson
+now splits <span class="math inline">\(R/(d_i)\)</span> into its
+prime-power summands. This proves existence over arbitrary PIDs,
+including fields, where the only finite torsion module is zero. <span
+class="math inline">\(\square\)</span></p>
+<p>Let <span class="math inline">\(R\)</span> be a principal ideal
+domain, <span class="math inline">\(T\)</span> a finite torsion module,
+and <span class="math inline">\(p\)</span> a prime element. Put</p>
+<p><span class="math display">\[
+S=0:_T p,\qquad d_j=\dim_{R/(p)}(p^jT\cap S),\quad j\ge0.
+\]</span></p>
+<p>Only the <span class="math inline">\(p\)</span>-primary part
+contributes to <span class="math inline">\(S\)</span>. On a summand
+killed by a power of a prime <span class="math inline">\(q\)</span> not
+associated to <span class="math inline">\(p\)</span>, multiplication by
+<span class="math inline">\(p\)</span> is invertible, by Bézout; that
+summand has zero <span class="math inline">\(p\)</span>-socle.</p>
+<p><strong>Theorem 5.1.</strong> In any elementary-divisor decomposition
+of <span class="math inline">\(T\)</span>, the number of summands
+isomorphic to <span class="math inline">\(R/(p^k)\)</span> is <span
+class="math inline">\(d_{k-1}-d_k\)</span>. Consequently all elementary
+divisors are unique up to associates and order.</p>
+<p><strong>Proof.</strong> Proposition 5.0 proves existence. In <span
+class="math inline">\(R/(p^\ell)\)</span>, the socle is the
+one-dimensional space generated by <span
+class="math inline">\(p^{\ell-1}\)</span>. Its intersection with <span
+class="math inline">\(p^jR/(p^\ell)\)</span> is this whole line if <span
+class="math inline">\(j&lt;\ell\)</span>, and zero if <span
+class="math inline">\(j\ge\ell\)</span>. Direct sums commute with the
+intersection being calculated, so <span
+class="math inline">\(d_j\)</span> counts summands with exponent
+strictly greater than <span class="math inline">\(j\)</span>. Taking
+consecutive differences counts those with exponent exactly <span
+class="math inline">\(k\)</span>. The spaces defining <span
+class="math inline">\(d_j\)</span> depend only on <span
+class="math inline">\(T\)</span>, making those counts intrinsic for each
+prime. <span class="math inline">\(\square\)</span></p>
+<p>These are also the socle counts of the submodules <span
+class="math inline">\(p^jT_p\)</span> over <span
+class="math inline">\(R_{(p)}\)</span>, because <span
+class="math inline">\(S\cap p^jT\)</span> is their socle. The first
+lesson therefore interprets <span class="math inline">\(d_j\)</span> as
+their indices of reducibility.</p>
+<p>For <span class="math inline">\(T=\mathbb Z/4\oplus\mathbb
+Z/2\oplus\mathbb Z/2\)</span> and <span
+class="math inline">\(p=2\)</span>, the socle has dimension three. Its
+intersection with <span class="math inline">\(2T\)</span> has dimension
+one and with <span class="math inline">\(4T\)</span> dimension zero.
+Thus <span class="math inline">\((d_0,d_1,d_2)=(3,1,0)\)</span>, giving
+two summands of order two and one of order four. The successive
+dimensions contain more information than the total count alone.</p>
+<h2 id="exercises">6. Exercises</h2>
+<ol type="1">
+<li><strong>Basic.</strong> Decompose <span
+class="math inline">\((x^3,xy,y^2)\)</span> into irreducible monomial
+ideals and verify its socle dimension.</li>
+<li><strong>Intermediate.</strong> Verify <span
+class="math inline">\(\mathfrak p^2=2\mathfrak p\)</span> and
+primaryness of <span class="math inline">\((2)\)</span> in <span
+class="math inline">\(\mathbb Z[\sqrt{-3}]\)</span>.</li>
+<li><strong>Intermediate.</strong> Solve <span
+class="math inline">\(u&#39;&#39;&#39;-u&#39;&#39;-u&#39;+u=0\)</span>
+by primary factors and give explicit projection operators.</li>
+<li><strong>Intermediate.</strong> Find <span
+class="math inline">\(\mu_0(\mathfrak p,M)\)</span> for every prime when
+<span class="math inline">\(M=k[x,y]/(x^2,xy)\)</span>.</li>
+<li><strong>Advanced.</strong> Reconstruct the elementary divisors of
+the <span class="math inline">\(p\)</span>-primary part of a finite
+torsion module from <span
+class="math inline">\((d_0,d_1,d_2,d_3,d_4)=(4,3,1,1,0)\)</span>, and
+prove uniqueness directly from the definition of the <span
+class="math inline">\(d_j\)</span>.</li>
+</ol>
+<h2 id="solutions">7. Solutions</h2>
+<p><strong>1.</strong> The decomposition is <span
+class="math inline">\((x^3,y)\cap(x,y^2)\)</span>. Its standard basis is
+<span class="math inline">\(1,x,x^2,y\)</span>; the socle is spanned by
+<span class="math inline">\(x^2,y\)</span>. Termwise membership checks
+the intersection, and the two pure-power quotients have one-dimensional
+socle. The witnesses <span class="math inline">\(y\)</span> and <span
+class="math inline">\(x\)</span> establish irredundancy.</p>
+<p><strong>2.</strong> With <span
+class="math inline">\(w=1+\sqrt{-3}\)</span>, the relation <span
+class="math inline">\(w^2=2w-4\)</span> gives <span
+class="math inline">\((2,w)^2=(4,2w)\)</span>. Modulo two the quotient
+is <span class="math inline">\(\mathbb F_2[w]/(w^2)\)</span>; its
+elements with constant term one are units and the others square to zero.
+This proves the primary condition and identifies the radical as <span
+class="math inline">\((2,w)\)</span>.</p>
+<p><strong>3.</strong> The polynomial factors as <span
+class="math inline">\((z-1)^2(z+1)\)</span>. The solution is <span
+class="math inline">\((a+bt)e^t+ce^{-t}\)</span>. For the second primary
+factor choose <span class="math inline">\(e_-(z)=(z-1)^2/4\)</span>; it
+is zero modulo <span class="math inline">\((z-1)^2\)</span> and one
+modulo <span class="math inline">\((z+1)\)</span>. Put <span
+class="math inline">\(e_+(z)=1-e_-(z)\)</span>. On the solution space
+the operators <span class="math inline">\(e_-(D),e_+(D)\)</span> give
+the two projections. Their products are zero modulo the original
+polynomial, their squares agree with themselves there, and their sum is
+identity.</p>
+<p><strong>4.</strong> The only associated primes are <span
+class="math inline">\((x),(x,y)\)</span>, by the irredundant primary
+decomposition from the first lesson. At <span
+class="math inline">\((x)\)</span>, invert <span
+class="math inline">\(y\)</span>: the quotient is the residue field and
+has one-dimensional socle. At <span
+class="math inline">\((x,y)\)</span>, every element is represented after
+localization by <span class="math inline">\(f(y)+cx\)</span>, with <span
+class="math inline">\(f\)</span> a fraction regular at zero.
+Multiplication by <span class="math inline">\(y\)</span> is injective on
+the <span class="math inline">\(k[y]_{(y)}\)</span> part, so the socle
+is exactly <span class="math inline">\(kx\)</span>. Thus the two Bass
+numbers equal one. At every other prime the localized module has no
+associated maximal ideal, so its socle and Bass number vanish.</p>
+<p><strong>5.</strong> Consecutive differences are <span
+class="math inline">\(1,2,0,1\)</span>. The <span
+class="math inline">\(p\)</span>-primary part is therefore <span
+class="math inline">\(R/(p)\oplus(R/(p^2))^2\oplus R/(p^4)\)</span>. In
+every elementary-divisor decomposition the socle line of a summand of
+exponent <span class="math inline">\(\ell\)</span> survives precisely
+through <span class="math inline">\(p^{\ell-1}T\)</span>, and disappears
+at <span class="math inline">\(p^\ell T\)</span>. Counting lines at each
+step gives exactly these differences. Since the filtration and
+dimensions are defined without a decomposition, every decomposition
+gives the same multiset.</p>
+<h2 id="in-noethers-words">In Noether’s words</h2>
+<p>Read Sections 9–12 of <a
+href="https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex">Ideal
+Theory in Ring Domains, work 19</a> for modules, polynomial rings,
+arithmetic and differential expressions, and elementary-divisor theory.
+The <a href="https://doi.org/10.5281/zenodo.21908301">German authority
+edition</a> preserves the original notation. Noether’s hypotheses and
+definitions differ from the unital commutative module convention used
+for our primary and socle theorems.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Emmy Noether, <em>Idealtheorie in Ringbereichen</em>, 1921, Sections
+9–12. <a
+href="https://github.com/KokunoYumeto/emmy-noether-en/blob/main/source/Noether_English_ED0014.tex">Free
+English working edition, work 19</a>, with the original bibliographic
+information and machine-assisted translation provenance.</li>
+<li>J. S. Milne, <em>Algebraic Number Theory</em>, Chapter 3, Dedekind
+domains and ideal factorization. <a
+href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Author’s
+notes</a>.</li>
+</ul>
+<h2 id="editable-sources">Editable sources</h2>
+<p><span class="unlinked">Complete source
+archive</span> · <a href="downloads/ideal-theory-in-rings.tex">Complete
+course in LaTeX</a> · <a href="downloads/NOE-IDL-03.tex">This lesson in
+LaTeX</a>. The archive includes all five lesson texts, the figures and
+their reproducible source.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

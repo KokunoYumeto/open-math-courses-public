@@ -1,0 +1,572 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finite diagrams and comma objects</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">This revised source version has owner checking of its declared changes. Its earlier independent review applies only to the historical source hash recorded in the metadata.</p><h1 id="finite-diagrams-and-comma-objects">Finite diagrams and comma objects</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, September 2026. Self-checked; no independent review. Public domain (CC0).</em></p>
+<p>A map between two formal filtered objects can be represented after moving to later stages. A diagram asks for more: several maps must have representatives at the same stages, and the prescribed equations must hold there. Finiteness lets us arrange finitely many witnesses together. It also lets us compute natural transformations before or after a filtered completion.</p>
+<p>Read <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a> for formal filtered colimits and functor extension, and <a href="formal-colimits-and-compact-presentations.html">Formal colimits and compact presentations</a> for the full-faithfulness criterion using finitely presented pieces. The complete finite-set interchange proof is <a href="filtered-stages-and-finite-limits.html#4-finite-limits-detect-filteredness">Filtered stages and finite limits, Section 4</a>. Section 2 below proves finite acyclic strictification with all vertex-index arrows, stage relations and cofinal comparisons.</p>
+<p>Fix an indexing universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and a larger ambient universe. Categories are locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, and all filtered diagrams are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. A <em>finite category</em> has finitely many objects and finitely many morphisms. Having only finitely many objects would not suffice for the finite naturality argument below.</p>
+<h2 id="1-naturality-is-a-finite-set-of-equations">1. Naturality is a finite set of equations</h2>
+<p>For any <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small category <span class="math" data-tex="\(K\)">\(K\)</span>, the constant embedding <span class="math" data-tex="\(\iota:\mathsf C\to\operatorname{Ind}(\mathsf C)\)">\(\iota:\mathsf C\to\operatorname{Ind}(\mathsf C)\)</span> gives a fully faithful functor</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Fun}(K,\mathsf C)
+\longrightarrow\operatorname{Fun}(K,\operatorname{Ind}(\mathsf C)).
+\]">\[
+\operatorname{Fun}(K,\mathsf C)
+\longrightarrow\operatorname{Fun}(K,\operatorname{Ind}(\mathsf C)).
+\]</span>
+<p>The target admits filtered colimits computed at each object of <span class="math" data-tex="\(K\)">\(K\)</span>. An arrow of <span class="math" data-tex="\(K\)">\(K\)</span> acts on the colimit through the compatible maps at the stages; identities and composition follow by checking the maps from each stage. The universal filtered extension therefore gives a comparison</p>
+<span class="math math-display" data-tex="\[
+\Phi:\operatorname{Ind}(\operatorname{Fun}(K,\mathsf C))
+\longrightarrow\operatorname{Fun}(K,\operatorname{Ind}(\mathsf C)).
+\tag{1.1}
+\]">\[
+\Phi:\operatorname{Ind}(\operatorname{Fun}(K,\mathsf C))
+\longrightarrow\operatorname{Fun}(K,\operatorname{Ind}(\mathsf C)).
+\tag{1.1}
+\]</span>
+<p>It sends a filtered family of diagrams to its pointwise formal colimit. This construction works for every small <span class="math" data-tex="\(K\)">\(K\)</span>. Finiteness enters the next theorem's claim about maps between formal diagrams.</p>
+<p><strong>Theorem 1.1.</strong> For every finite category <span class="math" data-tex="\(K\)">\(K\)</span>, the comparison <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is fully faithful. No restriction on the endomorphisms of <span class="math" data-tex="\(K\)">\(K\)</span> is required.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(U:K\to\mathsf C\)">\(U:K\to\mathsf C\)</span>, viewed as a diagram of constant ind-objects, and a filtered diagram <span class="math" data-tex="\((V_i)\)">\((V_i)\)</span> in the target. A natural transformation <span class="math" data-tex="\(U\to V_i\)">\(U\to V_i\)</span> is a family <span class="math" data-tex="\((\eta_a)_{a\in\operatorname{Ob}K}\)">\((\eta_a)_{a\in\operatorname{Ob}K}\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+V_i(t)\eta_a=\eta_bU(t)
+\quad\text{for every }t:a\to b.
+\tag{1.2}
+\]">\[
+V_i(t)\eta_a=\eta_bU(t)
+\quad\text{for every }t:a\to b.
+\tag{1.2}
+\]</span>
+<p>Consequently its set is the equalizer of the two maps</p>
+<span class="math math-display" data-tex="\[
+\prod_{a\in\operatorname{Ob}K}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota U(a),V_i(a))
+\ \rightrightarrows\
+\prod_{t:a\to b}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota U(a),V_i(b)).
+\tag{1.3}
+\]">\[
+\prod_{a\in\operatorname{Ob}K}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota U(a),V_i(a))
+\ \rightrightarrows\
+\prod_{t:a\to b}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C)}(\iota U(a),V_i(b)).
+\tag{1.3}
+\]</span>
+<p>The two maps give the two sides of (1.2). Both products are finite. Each constant object <span class="math" data-tex="\(\iota U(a)\)">\(\iota U(a)\)</span> is finitely presented in the ind-category, by the element lesson's filtered-colimit theorem. Thus its Hom functor commutes with a filtered colimit. Commuting the filtered colimit through the finite products and equalizer in (1.3) gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_i\operatorname{Nat}(U,V_i)
+\simeq\operatorname{Nat}(U,\operatorname{colim}_iV_i).
+\tag{1.4}
+\]">\[
+\operatorname{colim}_i\operatorname{Nat}(U,V_i)
+\simeq\operatorname{Nat}(U,\operatorname{colim}_iV_i).
+\tag{1.4}
+\]</span>
+<p>The bijection is the canonical map: component maps are sent to their colimit maps, with the same naturality equations. It says that every <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>-valued diagram is finitely presented in the target category. The original embedding of diagram categories is fully faithful. Apply the compact-presentation full-faithfulness theorem from the preceding lesson to this embedding and its realization extension. That extension is <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is fully faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equation (1.4) expresses both existence and equality. A transformation into the colimit has representatives for finitely many components, and its finitely many naturality equations hold at one later stage. Equality of two transformations likewise requires only finitely many component equalities. These are precisely the two parts of finite presentation.</p>
+<h2 id="2-when-every-finite-diagram-comes-from-stages">2. When every finite diagram comes from stages</h2>
+<p>For the construction, let <span class="math" data-tex="\(J\)">\(J\)</span> denote the finite diagram shape and reserve <span class="math" data-tex="\(K\)">\(K\)</span> for the common stage category. Write <span class="math" data-tex="\(\Phi_J\)">\(\Phi_J\)</span> for the comparison (1.1) with shape <span class="math" data-tex="\(J\)">\(J\)</span>. The original presentations are arbitrary small filtered categories.</p>
+<h3 id="2-1-finite-witnesses-and-compact-constants">2.1. Finite witnesses and compact constants</h3>
+<p>Fix an indexing universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and an ambient universe containing the coefficient categories. Let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. It need not have a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small skeleton, limits, or colimits. Every presenting category used below is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small and filtered. Write</p>
+<span class="math math-display" data-tex="\[
+h_X=\operatorname{Hom}_{\mathsf C}(-,X),\qquad
+\iota X=h_X.
+\]">\[
+h_X=\operatorname{Hom}_{\mathsf C}(-,X),\qquad
+\iota X=h_X.
+\]</span>
+<p>Use <a href="ind-objects-through-their-elements.html#1-an-element-carries-its-test-object">Ind-objects through their elements, Sections 1–3</a> for the presheaf model: ind-objects are small filtered colimits of representables, their inclusion into presheaves is full, small filtered colimits exist there and are computed pointwise, and every <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span> is finitely presented. In particular, for a specified presentation</p>
+<span class="math math-display" data-tex="\[
+A=\operatorname{colim}_{i\in I}\iota X(i),
+\qquad \lambda_i:\iota X(i)\longrightarrow A,
+\]">\[
+A=\operatorname{colim}_{i\in I}\iota X(i),
+\qquad \lambda_i:\iota X(i)\longrightarrow A,
+\]</span>
+<p>Yoneda gives the canonical identification</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(\iota T,A)
+=A(T)
+=\operatorname{colim}_{i\in I}\operatorname{Hom}_{\mathsf C}(T,X(i)).
+\tag{2a.1.1}
+\]">\[
+\operatorname{Hom}(\iota T,A)
+=A(T)
+=\operatorname{colim}_{i\in I}\operatorname{Hom}_{\mathsf C}(T,X(i)).
+\tag{2a.1.1}
+\]</span>
+<p>We need two finite-witness facts in their arbitrary-category form.</p>
+<p><strong>Finite graph cocones.</strong> A finite graph of specified objects and arrows in a filtered category has a commuting cocone. First bring its finitely many objects to one target, using the common-target condition successively. For each specified edge <span class="math" data-tex="\(a:x\to y\)">\(a:x\to y\)</span>, the proposed arrows <span class="math" data-tex="\(r_x\)">\(r_x\)</span> and <span class="math" data-tex="\(r_y a\)">\(r_y a\)</span> are parallel. Postcompose the whole family by an arrow equalizing that pair. There are finitely many edges, and each already imposed equation survives postcomposition. The empty graph uses any object, supplied by nonemptiness. Distinct graph vertices may label the same index object; they still have separately specified cocone components. No closure of the graph under composition is needed.</p>
+<p><strong>Eventual equality by one arrow.</strong> If two elements of one stage <span class="math" data-tex="\(S(i)\)">\(S(i)\)</span> in a filtered set diagram have the same colimit class, there is a single arrow <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span> making their images equal. Indeed the common-stage equality criterion initially gives <span class="math" data-tex="\(a,b:i\to k\)">\(a,b:i\to k\)</span> with <span class="math" data-tex="\(S(a)x=S(b)y\)">\(S(a)x=S(b)y\)</span>. Equalize the parallel index arrows <span class="math" data-tex="\(a,b\)">\(a,b\)</span> by <span class="math" data-tex="\(t:k\to j\)">\(t:k\to j\)</span>; then <span class="math" data-tex="\(s=ta=tb\)">\(s=ta=tb\)</span> works. A finite list of such equalities, even for finitely many different set diagrams on the same index, can be made true by one arrow. Choose one witness arrow for each equation, and take a cocone on the finite star of these arrows. Its common composite from the original stage witnesses every equation.</p>
+<p>These are exactly the constructions proved in <a href="filtered-stages-and-finite-limits.html#1-bring-a-finite-diagram-to-one-object">Filtered stages and finite limits, Sections 1–2</a>. Its complete Theorem 4.1 also supplies the finite-limit interchange used in Theorem 1.1 above.</p>
+<h3 id="2-2-a-category-containing-every-stage-map">2.2. A category containing every stage map</h3>
+<p>A finite category means one with finitely many objects and morphisms. Suppose <span class="math" data-tex="\(J\)">\(J\)</span> has a degree function</p>
+<span class="math math-display" data-tex="\[
+d:\operatorname{Ob}J\longrightarrow\mathbb N
+\quad\text{with}\quad d(v)&lt;d(w)
+\text{ for each nonidentity }\alpha:v\to w.
+\tag{2a.2.1}
+\]">\[
+d:\operatorname{Ob}J\longrightarrow\mathbb N
+\quad\text{with}\quad d(v)&lt;d(w)
+\text{ for each nonidentity }\alpha:v\to w.
+\tag{2a.2.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(D:J\to\operatorname{Ind}_{\mathcal U}(\mathsf C)\)">\(D:J\to\operatorname{Ind}_{\mathcal U}(\mathsf C)\)</span> be a diagram. Choose, and henceforth keep, presentations at its vertices:</p>
+<span class="math math-display" data-tex="\[
+D_v=\operatorname{colim}_{i\in I_v}\iota X_v(i),
+\qquad X_v:I_v\longrightarrow\mathsf C,
+\qquad \lambda_{v,i}:\iota X_v(i)\longrightarrow D_v.
+\tag{2a.2.2}
+\]">\[
+D_v=\operatorname{colim}_{i\in I_v}\iota X_v(i),
+\qquad X_v:I_v\longrightarrow\mathsf C,
+\qquad \lambda_{v,i}:\iota X_v(i)\longrightarrow D_v.
+\tag{2a.2.2}
+\]</span>
+<p>The categories <span class="math" data-tex="\(I_v\)">\(I_v\)</span> may have parallel arrows, endomorphisms, and arbitrary small object sets. No replacement by posets is made.</p>
+<p>Define <span class="math" data-tex="\(K=K(D;(X_v,I_v))\)">\(K=K(D;(X_v,I_v))\)</span> as follows. An object <span class="math" data-tex="\(k\)">\(k\)</span> consists of an index <span class="math" data-tex="\(i_v(k)\in I_v\)">\(i_v(k)\in I_v\)</span> at every vertex and an actual coefficient-category map</p>
+<span class="math math-display" data-tex="\[
+f^k_\alpha:X_v(i_v(k))\longrightarrow X_w(i_w(k))
+\qquad(\alpha:v\to w\text{ in }J).
+\]">\[
+f^k_\alpha:X_v(i_v(k))\longrightarrow X_w(i_w(k))
+\qquad(\alpha:v\to w\text{ in }J).
+\]</span>
+<p>Require all three kinds of equations:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+f^k_{1_v}&amp;=1_{X_v(i_v(k))},\\
+f^k_{\beta\alpha}&amp;=f^k_\beta f^k_\alpha
+&amp;&amp;\text{for every composable }\alpha,\beta,\\
+\lambda_{w,i_w(k)}\,\iota f^k_\alpha
+&amp;=D(\alpha)\,\lambda_{v,i_v(k)}.
+\end{aligned}
+\tag{2a.2.3}
+\]">\[
+\begin{aligned}
+f^k_{1_v}&amp;=1_{X_v(i_v(k))},\\
+f^k_{\beta\alpha}&amp;=f^k_\beta f^k_\alpha
+&amp;&amp;\text{for every composable }\alpha,\beta,\\
+\lambda_{w,i_w(k)}\,\iota f^k_\alpha
+&amp;=D(\alpha)\,\lambda_{v,i_v(k)}.
+\end{aligned}
+\tag{2a.2.3}
+\]</span>
+<p>Thus every object is an actual <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>-valued <span class="math" data-tex="\(J\)">\(J\)</span>-diagram, with a specified natural transformation from its constant image into <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>A morphism <span class="math" data-tex="\(u:k\to\ell\)">\(u:k\to\ell\)</span> is a tuple of <strong>index-category arrows</strong></p>
+<span class="math math-display" data-tex="\[
+u_v:i_v(k)\longrightarrow i_v(\ell)\quad\text{in }I_v
+\]">\[
+u_v:i_v(k)\longrightarrow i_v(\ell)\quad\text{in }I_v
+\]</span>
+<p>satisfying</p>
+<span class="math math-display" data-tex="\[
+X_w(u_w)f^k_\alpha=f^\ell_\alpha X_v(u_v)
+\quad\text{for every }\alpha:v\to w.
+\tag{2a.2.4}
+\]">\[
+X_w(u_w)f^k_\alpha=f^\ell_\alpha X_v(u_v)
+\quad\text{for every }\alpha:v\to w.
+\tag{2a.2.4}
+\]</span>
+<p>Two such morphisms are equal precisely when their index-arrow tuples are equal, even if the functors <span class="math" data-tex="\(X_v\)">\(X_v\)</span> identify some arrows. Identities are the index identities. If <span class="math" data-tex="\(u:k\to\ell\)">\(u:k\to\ell\)</span> and <span class="math" data-tex="\(t:\ell\to m\)">\(t:\ell\to m\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+X_w(t_wu_w)f^k_\alpha
+=X_w(t_w)f^\ell_\alpha X_v(u_v)
+=f^m_\alpha X_v(t_vu_v),
+\]">\[
+X_w(t_wu_w)f^k_\alpha
+=X_w(t_w)f^\ell_\alpha X_v(u_v)
+=f^m_\alpha X_v(t_vu_v),
+\]</span>
+<p>so coordinatewise composition is a morphism. The category laws follow from those of the <span class="math" data-tex="\(I_v\)">\(I_v\)</span>. Projection on a vertex is the functor</p>
+<span class="math math-display" data-tex="\[
+p_v:K\longrightarrow I_v,
+\quad p_v(k)=i_v(k),\quad p_v(u)=u_v.
+\tag{2a.2.5}
+\]">\[
+p_v:K\longrightarrow I_v,
+\quad p_v(k)=i_v(k),\quad p_v(u)=u_v.
+\tag{2a.2.5}
+\]</span>
+<p>There is also a functor</p>
+<span class="math math-display" data-tex="\[
+Z:K\longrightarrow\operatorname{Fun}(J,\mathsf C),
+\qquad Z_k(v)=X_v(i_v(k)),\quad Z_k(\alpha)=f^k_\alpha.
+\tag{2a.2.6}
+\]">\[
+Z:K\longrightarrow\operatorname{Fun}(J,\mathsf C),
+\qquad Z_k(v)=X_v(i_v(k)),\quad Z_k(\alpha)=f^k_\alpha.
+\tag{2a.2.6}
+\]</span>
+<p>Its map on <span class="math" data-tex="\(u\)">\(u\)</span> has components <span class="math" data-tex="\(X_v(u_v)\)">\(X_v(u_v)\)</span>; equation (2a.2.4) is its naturality. All identities and compositions in both variables are included in (2a.2.3)–(2a.2.4).</p>
+<p>The category <span class="math" data-tex="\(K\)">\(K\)</span> is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. The vertex tuples form a finite product of small object sets. Over each tuple, arrow data belong to a finite product of locally small Hom sets; the equations select a subset. Between two levels, morphisms form a subset of a finite product of small Hom sets in the <span class="math" data-tex="\(I_v\)">\(I_v\)</span>. Small tagged unions over the small family of levels then bound the entire arrow set. If labels for actual coefficient objects do not themselves lie in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, encode the data by the small vertex indices and the associated Hom-set elements, as in <a href="universes-and-small-categories.html#3-transporting-the-size-bound">Universes and small categories</a>. This does not require a small skeleton of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>.</p>
+<h3 id="2-3-refinement-with-prescribed-index-arrows">2.3. Refinement with prescribed index arrows</h3>
+<p>The next lemma supplies more than a common target of stages. It keeps the actual composites of index arrows, which is essential for filteredness and cofinality.</p>
+<p><strong>Refinement lemma.</strong> Take finitely many levels <span class="math" data-tex="\(k_s\in K\)">\(k_s\in K\)</span>. For every vertex <span class="math" data-tex="\(v\)">\(v\)</span>, take any finite graph <span class="math" data-tex="\(H_v\)">\(H_v\)</span> of objects and arrows in <span class="math" data-tex="\(I_v\)">\(I_v\)</span>, containing a marked vertex labeled <span class="math" data-tex="\(i_v(k_s)\)">\(i_v(k_s)\)</span> for each <span class="math" data-tex="\(s\)">\(s\)</span>. Extra vertices, extra arrows, parallel arrows, and repeated labels are allowed. Then there is a level <span class="math" data-tex="\(\ell\in K\)">\(\ell\in K\)</span>, morphisms <span class="math" data-tex="\(q_s:k_s\to\ell\)">\(q_s:k_s\to\ell\)</span>, and a cocone from <span class="math" data-tex="\(H_v\)">\(H_v\)</span> to <span class="math" data-tex="\(i_v(\ell)\)">\(i_v(\ell)\)</span> whose marked components are exactly <span class="math" data-tex="\((q_s)_v\)">\((q_s)_v\)</span>.</p>
+<p><strong>Proof.</strong> Process the finitely many vertices of <span class="math" data-tex="\(J\)">\(J\)</span> in increasing degree; break ties in any order. All nonidentity sources of arrows into the vertex <span class="math" data-tex="\(w\)">\(w\)</span> being processed have already been processed. Their indices <span class="math" data-tex="\(i_v(\ell)\)">\(i_v(\ell)\)</span>, marked arrows <span class="math" data-tex="\((q_s)_v\)">\((q_s)_v\)</span>, and the maps between those earlier vertices are fixed.</p>
+<p>First choose a cocone on <span class="math" data-tex="\(H_w\)">\(H_w\)</span>, with target <span class="math" data-tex="\(b\in I_w\)">\(b\in I_w\)</span>. Denote its marked arrows by <span class="math" data-tex="\(a_s:i_w(k_s)\to b\)">\(a_s:i_w(k_s)\to b\)</span>. If there are no marked vertices or other vertices, filtered nonemptiness still supplies such a <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>For every nonidentity arrow <span class="math" data-tex="\(\gamma:v\to w\)">\(\gamma:v\to w\)</span>, the formal map</p>
+<span class="math math-display" data-tex="\[
+D(\gamma)\lambda_{v,i_v(\ell)}:
+\iota X_v(i_v(\ell))\longrightarrow D_w
+\]">\[
+D(\gamma)\lambda_{v,i_v(\ell)}:
+\iota X_v(i_v(\ell))\longrightarrow D_w
+\]</span>
+<p>has a representative <span class="math" data-tex="\(r_\gamma:X_v(i_v(\ell))\to X_w(b_\gamma)\)">\(r_\gamma:X_v(i_v(\ell))\to X_w(b_\gamma)\)</span>, by (2a.1.1). There are finitely many such arrows. Bring <span class="math" data-tex="\(b\)">\(b\)</span> and all <span class="math" data-tex="\(b_\gamma\)">\(b_\gamma\)</span> to a common index <span class="math" data-tex="\(c\in I_w\)">\(c\in I_w\)</span>. Postcompose the cocone components and all representatives to <span class="math" data-tex="\(c\)">\(c\)</span>. Call the resulting marked arrows <span class="math" data-tex="\(a_s^0:i_w(k_s)\to c\)">\(a_s^0:i_w(k_s)\to c\)</span> and incoming maps <span class="math" data-tex="\(g_\gamma^0:X_v(i_v(\ell))\to X_w(c)\)">\(g_\gamma^0:X_v(i_v(\ell))\to X_w(c)\)</span>.</p>
+<p>At this stage impose the following finite list of coefficient-map equations.</p>
+<p>First, for every pair of nonidentity arrows <span class="math" data-tex="\(\alpha:u\to v\)">\(\alpha:u\to v\)</span>, <span class="math" data-tex="\(\beta:v\to w\)">\(\beta:v\to w\)</span>, impose</p>
+<span class="math math-display" data-tex="\[
+g^0_\beta f^\ell_\alpha=g^0_{\beta\alpha}.
+\tag{2a.3.1}
+\]">\[
+g^0_\beta f^\ell_\alpha=g^0_{\beta\alpha}.
+\tag{2a.3.1}
+\]</span>
+<p>Both maps have source <span class="math" data-tex="\(X_u(i_u(\ell))\)">\(X_u(i_u(\ell))\)</span> and target <span class="math" data-tex="\(X_w(c)\)">\(X_w(c)\)</span>. They have the same image in <span class="math" data-tex="\(D_w\)">\(D_w\)</span>, because the earlier arrow <span class="math" data-tex="\(f^\ell_\alpha\)">\(f^\ell_\alpha\)</span> represents <span class="math" data-tex="\(D(\alpha)\)">\(D(\alpha)\)</span> and <span class="math" data-tex="\(D(\beta)D(\alpha)=D(\beta\alpha)\)">\(D(\beta)D(\alpha)=D(\beta\alpha)\)</span>.</p>
+<p>Second, for every <span class="math" data-tex="\(s\)">\(s\)</span> and every nonidentity <span class="math" data-tex="\(\gamma:v\to w\)">\(\gamma:v\to w\)</span>, impose</p>
+<span class="math math-display" data-tex="\[
+X_w(a_s^0)f^{k_s}_\gamma
+=g^0_\gamma X_v((q_s)_v).
+\tag{2a.3.2}
+\]">\[
+X_w(a_s^0)f^{k_s}_\gamma
+=g^0_\gamma X_v((q_s)_v).
+\tag{2a.3.2}
+\]</span>
+<p>Here both maps have source <span class="math" data-tex="\(X_v(i_v(k_s))\)">\(X_v(i_v(k_s))\)</span> and target <span class="math" data-tex="\(X_w(c)\)">\(X_w(c)\)</span>. Their images in <span class="math" data-tex="\(D_w\)">\(D_w\)</span> both equal <span class="math" data-tex="\(D(\gamma)\lambda_{v,i_v(k_s)}\)">\(D(\gamma)\lambda_{v,i_v(k_s)}\)</span>: the left uses validity of <span class="math" data-tex="\(k_s\)">\(k_s\)</span>, and the right uses validity of <span class="math" data-tex="\(g^0_\gamma\)">\(g^0_\gamma\)</span> and the presentation cocone equation for <span class="math" data-tex="\((q_s)_v\)">\((q_s)_v\)</span>.</p>
+<p>For each equation, (2a.1.1) and the eventual-equality fact give an arrow out of <span class="math" data-tex="\(c\)">\(c\)</span> making it true. Synchronize these finitely many arrows by a finite graph cocone. This gives one arrow <span class="math" data-tex="\(t:c\to i_w(\ell)\)">\(t:c\to i_w(\ell)\)</span> making every equation true. Replace every cocone component by its composite with <span class="math" data-tex="\(t\)">\(t\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+(q_s)_w=t a_s^0,
+\qquad f^\ell_\gamma=X_w(t)g^0_\gamma,
+\qquad f^\ell_{1_w}=1,
+\tag{2a.3.3}
+\]">\[
+(q_s)_w=t a_s^0,
+\qquad f^\ell_\gamma=X_w(t)g^0_\gamma,
+\qquad f^\ell_{1_w}=1,
+\tag{2a.3.3}
+\]</span>
+<p>and retain the already fixed data at earlier vertices.</p>
+<p>Postcomposition preserves every equation of <span class="math" data-tex="\(H_w\)">\(H_w\)</span>. Equations (2a.3.1) install all nontrivial composition equations ending at <span class="math" data-tex="\(w\)">\(w\)</span>. Equations (2a.3.2) install every transition square into <span class="math" data-tex="\(w\)">\(w\)</span> for every <span class="math" data-tex="\(q_s\)">\(q_s\)</span>. The identity transition square holds automatically. The incoming maps still represent their specified formal maps, since postcomposition by a presenting transition leaves the formal class unchanged. No earlier stage or earlier map is altered.</p>
+<p>After all vertices have been processed, every composition equation between two nonidentity arrows has been installed at its target. Compositions involving identities follow from the assigned identities. Every <span class="math" data-tex="\(q_s\)">\(q_s\)</span> satisfies all of (2a.2.4), and every <span class="math" data-tex="\(H_v\)">\(H_v\)</span> has its claimed cocone. This proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof is valid without injective transitions, faithful presentation functors, or poset indices. In particular, it does not infer equality of index arrows from equality of their coefficient images. Index-arrow equations are installed in the cocones on <span class="math" data-tex="\(H_v\)">\(H_v\)</span> before the coefficient-map equations are installed.</p>
+<h3 id="2-4-filteredness-and-the-cofinal-comma-condition">2.4. Filteredness and the cofinal comma condition</h3>
+<p><strong>Filteredness and cofinality.</strong> The category <span class="math" data-tex="\(K\)">\(K\)</span> is filtered, and every <span class="math" data-tex="\(p_v:K\to I_v\)">\(p_v:K\to I_v\)</span> is cofinal. More precisely, each comma category <span class="math" data-tex="\((i\downarrow p_v)\)">\((i\downarrow p_v)\)</span> is nonempty and filtered.</p>
+<p><strong>Proof of filteredness.</strong> With no old levels and empty graphs <span class="math" data-tex="\(H_v\)">\(H_v\)</span>, the refinement lemma produces a level. This proves nonemptiness. With two old levels and a discrete graph of their marked indices at each vertex, it gives a common target and two morphisms in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Let <span class="math" data-tex="\(u,u&#x27;:k\rightrightarrows\ell\)">\(u,u&#x27;:k\rightrightarrows\ell\)</span> be parallel morphisms in <span class="math" data-tex="\(K\)">\(K\)</span>. For each <span class="math" data-tex="\(v\)">\(v\)</span>, filteredness of <span class="math" data-tex="\(I_v\)">\(I_v\)</span> supplies</p>
+<span class="math math-display" data-tex="\[
+e_v:i_v(\ell)\longrightarrow b_v,
+\qquad e_vu_v=e_vu&#x27;_v.
+\]">\[
+e_v:i_v(\ell)\longrightarrow b_v,
+\qquad e_vu_v=e_vu&#x27;_v.
+\]</span>
+<p>Apply the refinement lemma to the one old level <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with <span class="math" data-tex="\(H_v\)">\(H_v\)</span> containing the marked <span class="math" data-tex="\(i_v(\ell)\)">\(i_v(\ell)\)</span>, the extra <span class="math" data-tex="\(b_v\)">\(b_v\)</span>, and the arrow <span class="math" data-tex="\(e_v\)">\(e_v\)</span>. Its resulting morphism <span class="math" data-tex="\(q:\ell\to m\)">\(q:\ell\to m\)</span> has component <span class="math" data-tex="\(q_v=a_ve_v\)">\(q_v=a_ve_v\)</span>, where <span class="math" data-tex="\(a_v:b_v\to i_v(m)\)">\(a_v:b_v\to i_v(m)\)</span> is the extra cocone component. Therefore <span class="math" data-tex="\(q_vu_v=q_vu&#x27;_v\)">\(q_vu_v=q_vu&#x27;_v\)</span> as arrows in <span class="math" data-tex="\(I_v\)">\(I_v\)</span>, at every vertex. Since equality of <span class="math" data-tex="\(K\)">\(K\)</span>-morphisms is coordinatewise equality of these arrows, <span class="math" data-tex="\(qu=qu&#x27;\)">\(qu=qu&#x27;\)</span>. This proves the parallel-arrow axiom.</p>
+<p><strong>Proof of cofinality.</strong> Fix <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(i\in I_v\)">\(i\in I_v\)</span>. Use no old levels, but put the prescribed stage <span class="math" data-tex="\(i\)">\(i\)</span> into <span class="math" data-tex="\(H_v\)">\(H_v\)</span>. The refinement lemma gives <span class="math" data-tex="\(k\)">\(k\)</span> and an arrow <span class="math" data-tex="\(a:i\to p_v(k)\)">\(a:i\to p_v(k)\)</span>, hence an object <span class="math" data-tex="\((k,a)\)">\((k,a)\)</span> of <span class="math" data-tex="\((i\downarrow p_v)\)">\((i\downarrow p_v)\)</span>.</p>
+<p>For two comma objects <span class="math" data-tex="\((k,a)\)">\((k,a)\)</span>, <span class="math" data-tex="\((\ell,b)\)">\((\ell,b)\)</span>, put both levels into the refinement lemma. At vertex <span class="math" data-tex="\(v\)">\(v\)</span>, use the finite graph with the two marked stages, an extra vertex labeled <span class="math" data-tex="\(i\)">\(i\)</span>, and the <strong>given</strong> arrows</p>
+<span class="math math-display" data-tex="\[
+a:i\longrightarrow p_v(k),\qquad
+b:i\longrightarrow p_v(\ell).
+\]">\[
+a:i\longrightarrow p_v(k),\qquad
+b:i\longrightarrow p_v(\ell).
+\]</span>
+<p>At the other vertices use discrete graphs of the marked stages. The result is <span class="math" data-tex="\(m\)">\(m\)</span>, arrows <span class="math" data-tex="\(q:k\to m\)">\(q:k\to m\)</span>, <span class="math" data-tex="\(r:\ell\to m\)">\(r:\ell\to m\)</span>, and an arrow <span class="math" data-tex="\(c:i\to p_v(m)\)">\(c:i\to p_v(m)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+p_v(q)a=c=p_v(r)b.
+\tag{2a.4.1}
+\]">\[
+p_v(q)a=c=p_v(r)b.
+\tag{2a.4.1}
+\]</span>
+<p>Thus <span class="math" data-tex="\((m,c)\)">\((m,c)\)</span> is an actual common target in the comma category, with both comma equations. This proves connectedness as well as the common-target axiom. Mere filteredness of <span class="math" data-tex="\(K\)">\(K\)</span>, without these equations on the given <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, would not prove cofinality.</p>
+<p>For parallel comma arrows, use an equalizing arrow in <span class="math" data-tex="\(K\)">\(K\)</span>, whose existence was just proved. Postcomposing the target's arrow from <span class="math" data-tex="\(i\)">\(i\)</span> gives the new comma object; the original comma equations survive. Thus the comma category is filtered. In particular it is nonempty and connected, which is the cofinality criterion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="2-5-the-specified-pointwise-comparison">2.5. The specified pointwise comparison</h3>
+<p>The maps <span class="math" data-tex="\(\lambda_{v,p_v(k)}\)">\(\lambda_{v,p_v(k)}\)</span> and equations (2a.2.3) define a cocone</p>
+<span class="math math-display" data-tex="\[
+\iota Z_k\longrightarrow D
+\quad\text{in }\operatorname{Fun}(J,\operatorname{Ind}(\mathsf C)).
+\]">\[
+\iota Z_k\longrightarrow D
+\quad\text{in }\operatorname{Fun}(J,\operatorname{Ind}(\mathsf C)).
+\]</span>
+<p>Let its pointwise colimit comparison be</p>
+<span class="math math-display" data-tex="\[
+\rho:\operatorname{colim}_{k\in K}\iota Z_k\longrightarrow D.
+\tag{2a.5.1}
+\]">\[
+\rho:\operatorname{colim}_{k\in K}\iota Z_k\longrightarrow D.
+\tag{2a.5.1}
+\]</span>
+<p>We verify this actual map, including its elements and arrows, rather than merely assert that the objects have some isomorphic presentation. At a vertex <span class="math" data-tex="\(v\)">\(v\)</span> and a test object <span class="math" data-tex="\(T\)">\(T\)</span>, it is</p>
+<span class="math math-display" data-tex="\[
+\rho_{v,T}:
+\operatorname{colim}_{k\in K}\operatorname{Hom}_{\mathsf C}(T,X_v(p_v(k)))
+\longrightarrow D_v(T),
+\qquad [k,a]\longmapsto \lambda_{v,p_v(k)}(a).
+\tag{2a.5.2}
+\]">\[
+\rho_{v,T}:
+\operatorname{colim}_{k\in K}\operatorname{Hom}_{\mathsf C}(T,X_v(p_v(k)))
+\longrightarrow D_v(T),
+\qquad [k,a]\longmapsto \lambda_{v,p_v(k)}(a).
+\tag{2a.5.2}
+\]</span>
+<p>For surjectivity, represent an element of <span class="math" data-tex="\(D_v(T)\)">\(D_v(T)\)</span> by <span class="math" data-tex="\(a:T\to X_v(i)\)">\(a:T\to X_v(i)\)</span>. A comma object <span class="math" data-tex="\((k,s:i\to p_v(k))\)">\((k,s:i\to p_v(k))\)</span> gives the representative <span class="math" data-tex="\(X_v(s)a\)">\(X_v(s)a\)</span> on the left with that image.</p>
+<p>For injectivity, suppose <span class="math" data-tex="\(a:T\to X_v(p_v(k))\)">\(a:T\to X_v(p_v(k))\)</span> and <span class="math" data-tex="\(b:T\to X_v(p_v(\ell))\)">\(b:T\to X_v(p_v(\ell))\)</span> have the same image. The filtered equality criterion in <span class="math" data-tex="\(I_v\)">\(I_v\)</span> gives an index <span class="math" data-tex="\(i\)">\(i\)</span> and arrows</p>
+<span class="math math-display" data-tex="\[
+s:p_v(k)\to i,\qquad t:p_v(\ell)\to i,
+\qquad X_v(s)a=X_v(t)b.
+\]">\[
+s:p_v(k)\to i,\qquad t:p_v(\ell)\to i,
+\qquad X_v(s)a=X_v(t)b.
+\]</span>
+<p>Use the refinement lemma on <span class="math" data-tex="\(k,\ell\)">\(k,\ell\)</span>, with <span class="math" data-tex="\(H_v\)">\(H_v\)</span> containing these two arrows and their common target <span class="math" data-tex="\(i\)">\(i\)</span>. It supplies a level <span class="math" data-tex="\(m\)">\(m\)</span>, morphisms <span class="math" data-tex="\(q:k\to m\)">\(q:k\to m\)</span>, <span class="math" data-tex="\(r:\ell\to m\)">\(r:\ell\to m\)</span>, and a cocone component <span class="math" data-tex="\(h:i\to p_v(m)\)">\(h:i\to p_v(m)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+p_v(q)=hs,\qquad p_v(r)=ht.
+\]">\[
+p_v(q)=hs,\qquad p_v(r)=ht.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(X_v(p_v(q))a=X_v(p_v(r))b\)">\(X_v(p_v(q))a=X_v(p_v(r))b\)</span>. These are equal representatives at the one <span class="math" data-tex="\(K\)">\(K\)</span>-stage <span class="math" data-tex="\(m\)">\(m\)</span>, so the left colimit classes coincide. This proves bijectivity directly and also verifies the cofinal comparison's effect on classes.</p>
+<p>The maps (2a.5.2) commute with precomposition by every test-object arrow. For <span class="math" data-tex="\(\alpha:v\to w\)">\(\alpha:v\to w\)</span>, the map of left-hand colimits takes <span class="math" data-tex="\([k,a]\)">\([k,a]\)</span> to <span class="math" data-tex="\([k,f^k_\alpha a]\)">\([k,f^k_\alpha a]\)</span>; equation (2a.2.3) says exactly that (2a.5.2) intertwines this with <span class="math" data-tex="\(D(\alpha)\)">\(D(\alpha)\)</span>. Thus <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a natural isomorphism of <span class="math" data-tex="\(J\)">\(J\)</span>-diagrams. Its inverse is natural because it is the inverse of these specified bijections.</p>
+<p><strong>Finite acyclic strictification theorem.</strong> The chosen diagram <span class="math" data-tex="\(D\)">\(D\)</span>, with its specified arbitrary small filtered vertex presentations, is the pointwise formal colimit of the actual diagrams <span class="math" data-tex="\(Z_k:J\to\mathsf C\)">\(Z_k:J\to\mathsf C\)</span> on the one small filtered category <span class="math" data-tex="\(K\)">\(K\)</span>. Its vertex projections are cofinal, and all identity, composition, and transition equations hold as actual coefficient maps.</p>
+<p>A finite directed acyclic graph has only finitely many paths: a path cannot repeat a vertex, so its length is bounded by the number of vertices minus one. Its free category is therefore finite and has an increasing degree. If finitely many equations between parallel paths are prescribed and are true of the formal diagram, quotient this finite category by those relations. The degree remains increasing, the formal diagram descends, and the theorem applied to this quotient makes every prescribed equation true at every stage. This covers a commuting square, a composable pair with its chosen composite, simultaneous parallel maps, and parallel maps required to be equal. For the last case the two arrow labels map to one arrow in the quotient. The theorem imposes no inverse equations arising from a cycle; its hypothesis excludes such cycles.</p>
+<h3 id="2-6-equivalence-for-identity-endomorphisms">2.6. Equivalence for identity endomorphisms</h3>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is finite and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{End}_K(a)=\{1_a\}\quad\text{for every }a,
+\tag{2.1}
+\]">\[
+\operatorname{End}_K(a)=\{1_a\}\quad\text{for every }a,
+\tag{2.1}
+\]</span>
+<p>then <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is an equivalence. Distinct objects of <span class="math" data-tex="\(K\)">\(K\)</span> may be isomorphic.</p>
+<p><strong>Proof.</strong> Full faithfulness is Theorem 1.1. For essential surjectivity, first pass to a skeleton of <span class="math" data-tex="\(K\)">\(K\)</span>. Restriction to a skeleton is an equivalence of diagram categories, for either <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> or its ind-category. Indization preserves equivalences, since the induced functors of a pair of quasi-inverses still have those composite identifications. The comparison is compatible with these restriction functors. It is therefore enough to prove essential surjectivity for skeletal <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>In that case, put <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span> when there is an arrow <span class="math" data-tex="\(a\to b\)">\(a\to b\)</span>. If arrows exist in both directions, their two composites are endomorphisms and hence identities by (2.1). They are inverse isomorphisms, so the skeletal objects coincide. Thus this is a partial order. The length of a longest chain ending at an object gives a degree that strictly increases on every nonidentity arrow. Finiteness guarantees these lengths are finite.</p>
+<p>Now take a diagram <span class="math" data-tex="\(D:K\to\operatorname{Ind}(\mathsf C)\)">\(D:K\to\operatorname{Ind}(\mathsf C)\)</span>. Choose small filtered presentations at its finitely many vertices. The construction in Sections 2.1–2.5 produces a common small filtered category <span class="math" data-tex="\(R\)">\(R\)</span>, cofinal functors to those vertex indices, and a functor</p>
+<span class="math math-display" data-tex="\[
+K\longrightarrow\operatorname{Fun}(R,\mathsf C).
+\]">\[
+K\longrightarrow\operatorname{Fun}(R,\mathsf C).
+\]</span>
+<p>Equivalently, this is a filtered diagram <span class="math" data-tex="\(R\to\operatorname{Fun}(K,\mathsf C)\)">\(R\to\operatorname{Fun}(K,\mathsf C)\)</span>. Its formal colimit maps under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(D\)">\(D\)</span> through the canonical pointwise comparison proved in Section 2.5. This proves essential surjectivity. If <span class="math" data-tex="\(K\)">\(K\)</span> is empty, both sides of (1.1) are terminal categories, so the assertion holds there as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Condition (2.1) is used to obtain a degree function after passing to a skeleton. It is absent from the full-faithfulness theorem. These two assertions should be kept distinct. The condition is sufficient for essential surjectivity in an arbitrary coefficient category; Exercise 2 gives a setting where essential surjectivity also holds for a finite group category.</p>
+<p>In particular, for the category with one arrow, write <span class="math" data-tex="\(\mathsf{Arr}(\mathsf C)=\operatorname{Fun}(\{0\to1\},\mathsf C)\)">\(\mathsf{Arr}(\mathsf C)=\operatorname{Fun}(\{0\to1\},\mathsf C)\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\mathsf{Arr}(\mathsf C))
+\simeq\mathsf{Arr}(\operatorname{Ind}(\mathsf C)).
+\tag{2.2}
+\]">\[
+\operatorname{Ind}(\mathsf{Arr}(\mathsf C))
+\simeq\mathsf{Arr}(\operatorname{Ind}(\mathsf C)).
+\tag{2.2}
+\]</span>
+<p>Objects, commuting squares, and their composition are all covered by this equivalence.</p>
+<h3 id="2-7-transformations-and-composition">2.7. Transformations and composition</h3>
+<p>No functorial choice of individual representatives is required to define <span class="math" data-tex="\(\Phi_J\)">\(\Phi_J\)</span> or its equivalence. Given selected strictifications of <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>, full faithfulness gives a unique formal morphism between the selected objects mapping to a specified transformation <span class="math" data-tex="\(D\to E\)">\(D\to E\)</span>. These unique lifts respect identities and composition because <span class="math" data-tex="\(\Phi_J\)">\(\Phi_J\)</span> is a functor and faithful. Likewise two selected strictifications of the same <span class="math" data-tex="\(D\)">\(D\)</span>, with their specified comparison isomorphisms, have a unique isomorphism respecting those comparisons.</p>
+<p>For an explicit simultaneous stage representation of a transformation, suppose <span class="math" data-tex="\(J\)">\(J\)</span> has a degree and apply the construction to <span class="math" data-tex="\(J\times[1]\)">\(J\times[1]\)</span>, where <span class="math" data-tex="\([1]=\{0\to1\}\)">\([1]=\{0\to1\}\)</span>. The diagram whose two slices are <span class="math" data-tex="\(D,E\)">\(D,E\)</span> and whose vertical arrows are the transformation is a functor exactly by its naturality equations. The degree <span class="math" data-tex="\(2d(v)+\epsilon\)">\(2d(v)+\epsilon\)</span>, <span class="math" data-tex="\(\epsilon\in\{0,1\}\)">\(\epsilon\in\{0,1\}\)</span>, increases on every nonidentity arrow. Strictification gives natural stage maps between the two stage diagrams, with their squares commuting. For two composable transformations use <span class="math" data-tex="\(J\times[2]\)">\(J\times[2]\)</span>, including the arrow <span class="math" data-tex="\(0\to2\)">\(0\to2\)</span> assigned their composite, and degree <span class="math" data-tex="\(3d(v)+\epsilon\)">\(3d(v)+\epsilon\)</span>. Its stage composition equation identifies the composite of the two stage maps with the stage map for that composite. For a shape satisfying (2.1), first perform this on its skeleton and then transport across restriction equivalences. This supplies actual finite-stage representatives as well as the intrinsic functorial map statement.</p>
+<p>Applying any functor <span class="math" data-tex="\(H:\mathsf C\to\mathsf E\)">\(H:\mathsf C\to\mathsf E\)</span> termwise also preserves the construction's equations. Every level and refinement on <span class="math" data-tex="\(K\)">\(K\)</span> maps to the level and refinement with arrow maps <span class="math" data-tex="\(H(f^k_\alpha)\)">\(H(f^k_\alpha)\)</span> and the same original index arrows. The result presents <span class="math" data-tex="\(\operatorname{Ind}(H)D\)">\(\operatorname{Ind}(H)D\)</span>, because that extension preserves filtered colimits. The comparison (2a.5.1) commutes with <span class="math" data-tex="\(\operatorname{Ind}(H)\)">\(\operatorname{Ind}(H)\)</span> under the specified constant and colimit identifications. No faithfulness or finite-limit preservation by <span class="math" data-tex="\(H\)">\(H\)</span> is required.</p>
+<h3 id="2-8-reverse-the-construction-for-pro-objects">2.8. Reverse the construction for pro-objects</h3>
+<p>Define <span class="math" data-tex="\(\operatorname{Pro}_{\mathcal U}(\mathsf C)=\operatorname{Ind}_{\mathcal U}(\mathsf C^{\mathrm{op}})^{\mathrm{op}}\)">\(\operatorname{Pro}_{\mathcal U}(\mathsf C)=\operatorname{Ind}_{\mathcal U}(\mathsf C^{\mathrm{op}})^{\mathrm{op}}\)</span>. A pro-presentation will here be a functor <span class="math" data-tex="\(X_v:I_v\to\mathsf C\)">\(X_v:I_v\to\mathsf C\)</span> on a small <strong>cofiltered</strong> category, with projections</p>
+<span class="math math-display" data-tex="\[
+\pi_{v,i}:D_v\longrightarrow\iota X_v(i).
+\]">\[
+\pi_{v,i}:D_v\longrightarrow\iota X_v(i).
+\]</span>
+<p>Suppose <span class="math" data-tex="\(J\)">\(J\)</span> is finite with an increasing degree and <span class="math" data-tex="\(D:J\to\operatorname{Pro}(\mathsf C)\)">\(D:J\to\operatorname{Pro}(\mathsf C)\)</span>. Pass to the opposite diagram</p>
+<span class="math math-display" data-tex="\[
+D^{\mathrm{op}}:J^{\mathrm{op}}
+\longrightarrow\operatorname{Ind}(\mathsf C^{\mathrm{op}}),
+\]">\[
+D^{\mathrm{op}}:J^{\mathrm{op}}
+\longrightarrow\operatorname{Ind}(\mathsf C^{\mathrm{op}}),
+\]</span>
+<p>with filtered vertex indices <span class="math" data-tex="\(I_v^{\mathrm{op}}\)">\(I_v^{\mathrm{op}}\)</span>. Put <span class="math" data-tex="\(M=\max(\{0\}\cup d(\operatorname{Ob}J))\)">\(M=\max(\{0\}\cup d(\operatorname{Ob}J))\)</span>. Then <span class="math" data-tex="\(d_{\mathrm{op}}(v)=M-d(v)\)">\(d_{\mathrm{op}}(v)=M-d(v)\)</span> increases on every nonidentity arrow of <span class="math" data-tex="\(J^{\mathrm{op}}\)">\(J^{\mathrm{op}}\)</span>; for empty <span class="math" data-tex="\(J\)">\(J\)</span> it is the empty degree function. Apply Sections 2.2–2.5, obtaining a filtered category <span class="math" data-tex="\(K^+\)">\(K^+\)</span>; put <span class="math" data-tex="\(K=(K^+)^{\mathrm{op}}\)">\(K=(K^+)^{\mathrm{op}}\)</span>. It is small and cofiltered. The opposite projection functors</p>
+<span class="math math-display" data-tex="\[
+q_v:K\longrightarrow I_v
+\]">\[
+q_v:K\longrightarrow I_v
+\]</span>
+<p>are coinitial: each comma category <span class="math" data-tex="\((q_v\downarrow i)\)">\((q_v\downarrow i)\)</span> is nonempty and cofiltered, being the opposite of the corresponding cofinality comma category in Section 2.4.</p>
+<p>After reversing the coefficient arrows, every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> gives actual maps</p>
+<span class="math math-display" data-tex="\[
+f^k_\alpha:X_v(q_v(k))\longrightarrow X_w(q_w(k))
+\quad(\alpha:v\to w\text{ in }J)
+\]">\[
+f^k_\alpha:X_v(q_v(k))\longrightarrow X_w(q_w(k))
+\quad(\alpha:v\to w\text{ in }J)
+\]</span>
+<p>satisfying the same identity and composition equations and the pro representation equation</p>
+<span class="math math-display" data-tex="\[
+\pi_{w,q_w(k)}D(\alpha)
+=\iota f^k_\alpha\,\pi_{v,q_v(k)}.
+\tag{2a.9.1}
+\]">\[
+\pi_{w,q_w(k)}D(\alpha)
+=\iota f^k_\alpha\,\pi_{v,q_v(k)}.
+\tag{2a.9.1}
+\]</span>
+<p>For <span class="math" data-tex="\(a:k\to\ell\)">\(a:k\to\ell\)</span> in the cofiltered <span class="math" data-tex="\(K\)">\(K\)</span>, the coefficient transitions <span class="math" data-tex="\(X_v(q_v(a))\)">\(X_v(q_v(a))\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+X_w(q_w(a))f^k_\alpha
+=f^\ell_\alpha X_v(q_v(a)).
+\tag{2a.9.2}
+\]">\[
+X_w(q_w(a))f^k_\alpha
+=f^\ell_\alpha X_v(q_v(a)).
+\tag{2a.9.2}
+\]</span>
+<p>Thus they give a cofiltered diagram <span class="math" data-tex="\(K\to\operatorname{Fun}(J,\mathsf C)\)">\(K\to\operatorname{Fun}(J,\mathsf C)\)</span>. The pointwise comparison</p>
+<span class="math math-display" data-tex="\[
+D\longrightarrow\lim_{k\in K}\iota Z_k
+\tag{2a.9.3}
+\]">\[
+D\longrightarrow\lim_{k\in K}\iota Z_k
+\tag{2a.9.3}
+\]</span>
+<p>is an isomorphism by the exact dual of (2a.5.1). In the covariant-functor model, a vertex of the right side is represented by</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto
+\operatorname{colim}_{k\in K^{\mathrm{op}}}
+\operatorname{Hom}_{\mathsf C}(X_v(q_v(k)),T).
+\tag{2a.9.4}
+\]">\[
+T\longmapsto
+\operatorname{colim}_{k\in K^{\mathrm{op}}}
+\operatorname{Hom}_{\mathsf C}(X_v(q_v(k)),T).
+\tag{2a.9.4}
+\]</span>
+<p>Its comparison with the original covariant functor is precisely the filtered pointwise isomorphism of Section 2.5 for <span class="math" data-tex="\(\mathsf C^{\mathrm{op}}\)">\(\mathsf C^{\mathrm{op}}\)</span>. The fully faithful target for pro-objects is the <strong>opposite</strong> of the covariant-functor category; (2a.9.3) is not a pointwise limit of the sets in (2a.9.4).</p>
+<p>For every finite <span class="math" data-tex="\(J\)">\(J\)</span>, the canonical comparison</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pro}_{\mathcal U}(\operatorname{Fun}(J,\mathsf C))
+\longrightarrow\operatorname{Fun}(J,\operatorname{Pro}_{\mathcal U}(\mathsf C))
+\tag{2a.9.5}
+\]">\[
+\operatorname{Pro}_{\mathcal U}(\operatorname{Fun}(J,\mathsf C))
+\longrightarrow\operatorname{Fun}(J,\operatorname{Pro}_{\mathcal U}(\mathsf C))
+\tag{2a.9.5}
+\]</span>
+<p>is fully faithful. Indeed <span class="math" data-tex="\((\operatorname{Fun}(J,\mathsf C))^{\mathrm{op}}\)">\((\operatorname{Fun}(J,\mathsf C))^{\mathrm{op}}\)</span> identifies with <span class="math" data-tex="\(\operatorname{Fun}(J^{\mathrm{op}},\mathsf C^{\mathrm{op}})\)">\(\operatorname{Fun}(J^{\mathrm{op}},\mathsf C^{\mathrm{op}})\)</span>. Apply Theorem 1.1 to that finite shape and coefficient category and take opposites; this identifies the comparison, its maps, identities, and composition. Under the identity-endomorphism hypothesis of Theorem 2.1, then (2a.9.5) is an equivalence by the same operation on Theorem 2.1 and Section 2.7. The comma-category result in Section 3 likewise dualizes by reversing the comma arrow and exchanging its two sides. All size conditions are unchanged under opposites.</p>
+<h2 id="3-a-map-between-two-different-functor-images">3. A map between two different functor images</h2>
+<p>Let <span class="math" data-tex="\(F:\mathsf C_1\to\mathsf C_0\)">\(F:\mathsf C_1\to\mathsf C_0\)</span> and <span class="math" data-tex="\(G:\mathsf C_2\to\mathsf C_0\)">\(G:\mathsf C_2\to\mathsf C_0\)</span> be arbitrary functors. Their comma category <span class="math" data-tex="\((F\downarrow G)\)">\((F\downarrow G)\)</span> has objects</p>
+<span class="math math-display" data-tex="\[
+(X,Y,u),\qquad u:F(X)\to G(Y).
+\]">\[
+(X,Y,u),\qquad u:F(X)\to G(Y).
+\]</span>
+<p>A morphism to <span class="math" data-tex="\((X&#x27;,Y&#x27;,u&#x27;)\)">\((X&#x27;,Y&#x27;,u&#x27;)\)</span> is a pair <span class="math" data-tex="\((a:X\to X&#x27;,b:Y\to Y&#x27;)\)">\((a:X\to X&#x27;,b:Y\to Y&#x27;)\)</span> satisfying <span class="math" data-tex="\(G(b)u=u&#x27;F(a)\)">\(G(b)u=u&#x27;F(a)\)</span>. The comma category records a chosen map, not merely the existence of one.</p>
+<p>Applying the constant embeddings gives a fully faithful functor from this category to</p>
+<span class="math math-display" data-tex="\[
+\bigl(\operatorname{Ind}(F)\downarrow\operatorname{Ind}(G)\bigr).
+\]">\[
+\bigl(\operatorname{Ind}(F)\downarrow\operatorname{Ind}(G)\bigr).
+\]</span>
+<p>It is fully faithful because the component Hom sets and the equation between them are identified by the three constant embeddings.</p>
+<p><strong>Theorem 3.1.</strong> The canonical comparison is an equivalence:</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(F\downarrow G)
+\simeq
+\bigl(\operatorname{Ind}(F)\downarrow\operatorname{Ind}(G)\bigr).
+\tag{3.1}
+\]">\[
+\operatorname{Ind}(F\downarrow G)
+\simeq
+\bigl(\operatorname{Ind}(F)\downarrow\operatorname{Ind}(G)\bigr).
+\tag{3.1}
+\]</span>
+<p>No full-faithfulness or colimit assumption on <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> is needed.</p>
+<p><strong>Proof.</strong> Call the target <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>. It has filtered colimits computed on the two components. Indeed, <span class="math" data-tex="\(\operatorname{Ind}(F)\)">\(\operatorname{Ind}(F)\)</span> and <span class="math" data-tex="\(\operatorname{Ind}(G)\)">\(\operatorname{Ind}(G)\)</span> preserve filtered colimits, so the maps <span class="math" data-tex="\(u_i\)">\(u_i\)</span> induce a map between the corresponding colimit components. A pair of maps out of those components is a comma morphism exactly when its equation holds after precomposition with each stage. This proves the colimit universal property in <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>.</p>
+<p>Fix an original comma object <span class="math" data-tex="\(Z=(X,Y,u)\)">\(Z=(X,Y,u)\)</span>, regarded as a constant object of <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>. For a filtered diagram <span class="math" data-tex="\(Z_i=(A_i,B_i,u_i)\)">\(Z_i=(A_i,B_i,u_i)\)</span>, its Hom set into each stage is the fiber product</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_1)}(\iota X,A_i)
+\times_{H_i}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_2)}(\iota Y,B_i),
+\tag{3.2}
+\]">\[
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_1)}(\iota X,A_i)
+\times_{H_i}
+\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_2)}(\iota Y,B_i),
+\tag{3.2}
+\]</span>
+<p>where</p>
+<span class="math math-display" data-tex="\[
+H_i=\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_0)}
+(\iota F(X),\operatorname{Ind}(G)(B_i)).
+\]">\[
+H_i=\operatorname{Hom}_{\operatorname{Ind}(\mathsf C_0)}
+(\iota F(X),\operatorname{Ind}(G)(B_i)).
+\]</span>
+<p>The first map to <span class="math" data-tex="\(H_i\)">\(H_i\)</span> sends <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(u_i\operatorname{Ind}(F)(a)\)">\(u_i\operatorname{Ind}(F)(a)\)</span>; the second sends <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(\operatorname{Ind}(G)(b)\iota u\)">\(\operatorname{Ind}(G)(b)\iota u\)</span>. Their equality is the comma equation. Each of the three constant source objects is finitely presented in its ind-category. In the last Hom set we also use filtered-colimit preservation by <span class="math" data-tex="\(\operatorname{Ind}(G)\)">\(\operatorname{Ind}(G)\)</span>. Taking a filtered colimit in (3.2) therefore gives the corresponding fiber product for <span class="math" data-tex="\(\operatorname{colim}_i Z_i\)">\(\operatorname{colim}_i Z_i\)</span>, because a filtered colimit commutes with a fiber product of sets. Thus <span class="math" data-tex="\(Z\)">\(Z\)</span> is finitely presented in <span class="math" data-tex="\(\mathsf M\)">\(\mathsf M\)</span>. The compact-presentation theorem makes the comparison in (3.1) fully faithful.</p>
+<p>For essential surjectivity, write the two components of an arbitrary <span class="math" data-tex="\(Z=(A,B,u)\)">\(Z=(A,B,u)\)</span> as <span class="math" data-tex="\(A=\langle X_i\rangle\)">\(A=\langle X_i\rangle\)</span> and <span class="math" data-tex="\(B=\langle Y_j\rangle\)">\(B=\langle Y_j\rangle\)</span>. Then <span class="math" data-tex="\(u\)">\(u\)</span> is a formal map</p>
+<span class="math math-display" data-tex="\[
+\langle F(X_i)\rangle\longrightarrow\langle G(Y_j)\rangle.
+\]">\[
+\langle F(X_i)\rangle\longrightarrow\langle G(Y_j)\rangle.
+\]</span>
+<p>The one-arrow construction in Sections 2.1–2.5, applied to these specified <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span>-valued presentations, provides a common small filtered category <span class="math" data-tex="\(R\)">\(R\)</span>, cofinal functors <span class="math" data-tex="\(p:R\to I\)">\(p:R\to I\)</span>, <span class="math" data-tex="\(q:R\to J\)">\(q:R\to J\)</span>, and maps</p>
+<span class="math math-display" data-tex="\[
+v_r:F(X_{p(r)})\longrightarrow G(Y_{q(r)})
+\]">\[
+v_r:F(X_{p(r)})\longrightarrow G(Y_{q(r)})
+\]</span>
+<p>that represent <span class="math" data-tex="\(u\)">\(u\)</span> and commute with transitions. Hence <span class="math" data-tex="\(r\mapsto(X_{p(r)},Y_{q(r)},v_r)\)">\(r\mapsto(X_{p(r)},Y_{q(r)},v_r)\)</span> is a filtered diagram in <span class="math" data-tex="\((F\downarrow G)\)">\((F\downarrow G)\)</span>. Its image under the comparison is <span class="math" data-tex="\(Z\)">\(Z\)</span>, up to the canonical cofinal identifications. This proves essential surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>As a useful special case, take <span class="math" data-tex="\(\mathsf C_0\)">\(\mathsf C_0\)</span> to be the terminal category and take its unique functors from two categories. Its ind-category is also terminal, by the category-of-elements criterion. The comma categories are then products. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(\mathsf C_1\times\mathsf C_2)
+\simeq\operatorname{Ind}(\mathsf C_1)\times\operatorname{Ind}(\mathsf C_2).
+\tag{3.3}
+\]">\[
+\operatorname{Ind}(\mathsf C_1\times\mathsf C_2)
+\simeq\operatorname{Ind}(\mathsf C_1)\times\operatorname{Ind}(\mathsf C_2).
+\tag{3.3}
+\]</span>
+<h2 id="4-which-pieces-are-allowed-in-a-presentation">4. Which pieces are allowed in a presentation?</h2>
+<p>Let <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> be a full subcategory of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Its ind-category embeds fully faithfully in <span class="math" data-tex="\(\operatorname{Ind}(\mathsf C)\)">\(\operatorname{Ind}(\mathsf C)\)</span>. The following test detects the objects in its image without choosing a presentation first.</p>
+<p><strong>Theorem 4.1.</strong> An ind-object <span class="math" data-tex="\(A\)">\(A\)</span> belongs to that essential image if and only if every map <span class="math" data-tex="\(\iota X\to A\)">\(\iota X\to A\)</span>, for every <span class="math" data-tex="\(X\in\mathsf C\)">\(X\in\mathsf C\)</span>, factors as</p>
+<span class="math math-display" data-tex="\[
+\iota X\longrightarrow\iota Y\longrightarrow A
+\quad\text{with }Y\in\mathsf J.
+\tag{4.1}
+\]">\[
+\iota X\longrightarrow\iota Y\longrightarrow A
+\quad\text{with }Y\in\mathsf J.
+\tag{4.1}
+\]</span>
+<p>No essential-smallness hypothesis on <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> is required.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(A=\langle Y_i\rangle\)">\(A=\langle Y_i\rangle\)</span> with every <span class="math" data-tex="\(Y_i\in\mathsf J\)">\(Y_i\in\mathsf J\)</span>, the ind-object Hom formula says that a map from a constant <span class="math" data-tex="\(X\)">\(X\)</span> is represented by <span class="math" data-tex="\(X\to Y_i\)">\(X\to Y_i\)</span> at some stage. This is (4.1).</p>
+<p>Conversely, let <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span> be the category of elements of <span class="math" data-tex="\(A\)">\(A\)</span>. It is filtered and has a small full cofinal subcategory <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span>, by the recognition theorem. Let <span class="math" data-tex="\(\mathsf E_{\mathsf J}\)">\(\mathsf E_{\mathsf J}\)</span> be the full subcategory of <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span> on the objects whose first component belongs to <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>. A map <span class="math" data-tex="\(\iota X\to A\)">\(\iota X\to A\)</span> is an element <span class="math" data-tex="\(x\in A(X)\)">\(x\in A(X)\)</span>. Its factorization (4.1) is exactly an arrow from <span class="math" data-tex="\((X,x)\)">\((X,x)\)</span> to an object of <span class="math" data-tex="\(\mathsf E_{\mathsf J}\)">\(\mathsf E_{\mathsf J}\)</span>. Thus every object of <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span> maps to this full subcategory. It is filtered: move any common-target or equalizer witness in <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span> further into it, as in the recognition theorem.</p>
+<p>For each <span class="math" data-tex="\(d\in\mathsf D\)">\(d\in\mathsf D\)</span>, choose one arrow <span class="math" data-tex="\(d\to e_d\)">\(d\to e_d\)</span> with <span class="math" data-tex="\(e_d\in\mathsf E_{\mathsf J}\)">\(e_d\in\mathsf E_{\mathsf J}\)</span>. The full subcategory on the small family <span class="math" data-tex="\((e_d)\)">\((e_d)\)</span> is small by local smallness. Every object of <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span> maps to some <span class="math" data-tex="\(d\)">\(d\)</span>, then to <span class="math" data-tex="\(e_d\)">\(e_d\)</span>. This family is therefore cofinal in <span class="math" data-tex="\(\mathsf E_A\)">\(\mathsf E_A\)</span>, and also in <span class="math" data-tex="\(\mathsf E_{\mathsf J}\)">\(\mathsf E_{\mathsf J}\)</span>. The recognition theorem now presents <span class="math" data-tex="\(A\)">\(A\)</span> as the formal colimit of the representables corresponding to these <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>-objects. The same small diagram gives an object of <span class="math" data-tex="\(\operatorname{Ind}(\mathsf J)\)">\(\operatorname{Ind}(\mathsf J)\)</span>, whose image is <span class="math" data-tex="\(A\)">\(A\)</span>. Only small many choices were made. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All test objects in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> occur in the criterion. Restricting the tests to <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> can miss the obstruction, as the final exercise shows.</p>
+<h2 id="5-exercises-with-solutions">5. Exercises with solutions</h2>
+<p><strong>Exercise 1 (introductory: a commuting square).</strong> Over a field <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(f:k\to k^2\)">\(f:k\to k^2\)</span> send <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\((x,0)\)">\((x,0)\)</span>. Describe every endomorphism of <span class="math" data-tex="\(f\)">\(f\)</span> in the arrow category. Compute the rule for composing two such endomorphisms.</p>
+<p><strong>Solution.</strong> An endomorphism is a scalar map <span class="math" data-tex="\(a:k\to k\)">\(a:k\to k\)</span> and a matrix <span class="math" data-tex="\(B:k^2\to k^2\)">\(B:k^2\to k^2\)</span> with <span class="math" data-tex="\(Bf=fa\)">\(Bf=fa\)</span>. This forces the first column of <span class="math" data-tex="\(B\)">\(B\)</span> to be <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+B=\begin{pmatrix}a&amp;c\\0&amp;d\end{pmatrix},
+\qquad a,c,d\in k.
+\]">\[
+B=\begin{pmatrix}a&amp;c\\0&amp;d\end{pmatrix},
+\qquad a,c,d\in k.
+\]</span>
+<p>Conversely, every such matrix satisfies the equation. If the second endomorphism has parameters <span class="math" data-tex="\((a&#x27;,c&#x27;,d&#x27;)\)">\((a&#x27;,c&#x27;,d&#x27;)\)</span>, its composite after the first has scalar <span class="math" data-tex="\(a&#x27;a\)">\(a&#x27;a\)</span> and matrix <span class="math" data-tex="\(B&#x27;B\)">\(B&#x27;B\)</span>, with parameters</p>
+<span class="math math-display" data-tex="\[
+(a&#x27;a,\ a&#x27;c+c&#x27;d,\ d&#x27;d).
+\]">\[
+(a&#x27;a,\ a&#x27;c+c&#x27;d,\ d&#x27;d).
+\]</span>
+<p>Thus the endomorphism algebra is the algebra of upper triangular two-by-two matrices, with the scalar component already determined by the upper-left entry.</p>
+<p><strong>Exercise 2 (intermediate: a shape with automorphisms).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be the cyclic group of order three, viewed as a one-object category. Prove that the comparison from the ind-category of finite <span class="math" data-tex="\(G\)">\(G\)</span>-sets to all <span class="math" data-tex="\(G\)">\(G\)</span>-sets is an equivalence. Explain why this does not follow merely from Theorem 2.1.</p>
+<p><strong>Solution.</strong> The category <span class="math" data-tex="\(G\)">\(G\)</span> is finite, so Theorem 1.1 gives full faithfulness after identifying <span class="math" data-tex="\(\operatorname{Ind}(\mathsf{FinSet})\)">\(\operatorname{Ind}(\mathsf{FinSet})\)</span> with sets, as in the preceding lesson. For a <span class="math" data-tex="\(G\)">\(G\)</span>-set <span class="math" data-tex="\(S\)">\(S\)</span>, take its finite invariant subsets. They form a filtered set under inclusion: the union of two is another such subset. Every point is in its orbit, which has at most three elements. Thus their union is <span class="math" data-tex="\(S\)">\(S\)</span>. The action maps preserve each stage, so this union is a filtered diagram of finite <span class="math" data-tex="\(G\)">\(G\)</span>-sets whose image is the given action. This proves essential surjectivity. Theorem 2.1 requires only identity endomorphisms, whereas <span class="math" data-tex="\(G\)">\(G\)</span> has three endomorphisms at its object. Essential surjectivity here follows from finite orbits, an additional property of this coefficient category and action.</p>
+<p><strong>Exercise 3 (advanced: two maps as one comma object).</strong> Let <span class="math" data-tex="\(\mathsf V_f\)">\(\mathsf V_f\)</span> be the category of finite-dimensional vector spaces over <span class="math" data-tex="\(k\)">\(k\)</span>. Use <span class="math" data-tex="\(F(V)=V\oplus V\)">\(F(V)=V\oplus V\)</span> and <span class="math" data-tex="\(G(W)=W\)">\(G(W)=W\)</span> to identify <span class="math" data-tex="\((F\downarrow G)\)">\((F\downarrow G)\)</span> with pairs of linear maps <span class="math" data-tex="\(f,g\colon V\rightrightarrows W\)">\(f,g\colon V\rightrightarrows W\)</span>. Show directly that any such pair on arbitrary vector spaces is a filtered colimit of finite-dimensional pairs.</p>
+<p><strong>Solution.</strong> A map <span class="math" data-tex="\(V\oplus V\to W\)">\(V\oplus V\to W\)</span> is determined by its two restrictions, giving <span class="math" data-tex="\(f,g\)">\(f,g\)</span>. A comma morphism <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> satisfies the two equations <span class="math" data-tex="\(bf=f&#x27;a\)">\(bf=f&#x27;a\)</span>, <span class="math" data-tex="\(bg=g&#x27;a\)">\(bg=g&#x27;a\)</span>, exactly the morphism equations for a pair of maps. For arbitrary <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, index by pairs of finite-dimensional subspaces <span class="math" data-tex="\((V_0,W_0)\)">\((V_0,W_0)\)</span> with <span class="math" data-tex="\(f(V_0)+g(V_0)\subset W_0\)">\(f(V_0)+g(V_0)\subset W_0\)</span>. They form a nonempty small poset, including <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, ordered by inclusion. Sums of two pairs give an upper bound. Every vector in <span class="math" data-tex="\(V\)">\(V\)</span> belongs to a one-dimensional choice of <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, whose two images span a finite-dimensional space that can be included in <span class="math" data-tex="\(W_0\)">\(W_0\)</span>. Every vector of <span class="math" data-tex="\(W\)">\(W\)</span> is included by enlarging <span class="math" data-tex="\(W_0\)">\(W_0\)</span>. Thus the component colimits are <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, and their maps are the original <span class="math" data-tex="\(f,g\)">\(f,g\)</span>. This is also the essential-surjectivity construction predicted by Theorem 3.1 and the equivalence <span class="math" data-tex="\(\operatorname{Ind}(\mathsf V_f)\simeq\mathsf{Vect}(k)\)">\(\operatorname{Ind}(\mathsf V_f)\simeq\mathsf{Vect}(k)\)</span>.</p>
+<p><strong>Exercise 4 (advanced: test objects cannot be restricted arbitrarily).</strong> In sets, let <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span> be the full subcategory of sets of cardinality at most one, and let <span class="math" data-tex="\(A=\iota\{0,1\}\)">\(A=\iota\{0,1\}\)</span>. Show that every map <span class="math" data-tex="\(\iota X\to A\)">\(\iota X\to A\)</span> with <span class="math" data-tex="\(X\in\mathsf J\)">\(X\in\mathsf J\)</span> factors through a <span class="math" data-tex="\(\mathsf J\)">\(\mathsf J\)</span>-object. Nevertheless, prove that <span class="math" data-tex="\(A\)">\(A\)</span> is not in the image of <span class="math" data-tex="\(\operatorname{Ind}(\mathsf J)\)">\(\operatorname{Ind}(\mathsf J)\)</span>.</p>
+<p><strong>Solution.</strong> For a test <span class="math" data-tex="\(X\in\mathsf J\)">\(X\in\mathsf J\)</span>, the map already factors through <span class="math" data-tex="\(\iota X\)">\(\iota X\)</span>, using its identity, so the restricted test always passes. With the test <span class="math" data-tex="\(X=\{0,1\}\)">\(X=\{0,1\}\)</span>, however, the identity of the two-element set cannot factor through a set with at most one element. Theorem 4.1 therefore excludes <span class="math" data-tex="\(A\)">\(A\)</span>. One can also verify the exclusion by realization: in a filtered colimit of sets of cardinality at most one, any two elements have representatives in stages that map to a common stage. That stage has at most one element, so the two colimit elements coincide. The realized colimit has cardinality at most one, whereas <span class="math" data-tex="\(A\)">\(A\)</span> realizes to a two-element set. The unrestricted criterion detects exactly this missing test.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project, <em>Categories</em>, <a href="https://stacks.math.columbia.edu/tag/04AX">Section 4.19</a>, for comparison with the complete owned filtered-set proof in <a href="filtered-stages-and-finite-limits.html">Filtered stages and finite limits</a>. No source text is copied.</li>
+<li>The complete independently written strictification construction is in Section 2 of this lesson. It proves the ind and pro statements for arbitrary small filtered and cofiltered presentations, including all finite acyclic relations and canonical comparisons.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>Homological Algebra</em></a>, Section 2.7, for ind-object foundations.</li>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.7, for ind-objects.</li>
+</ul>
+</main></body></html>

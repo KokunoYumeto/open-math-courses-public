@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="430CCBAC9AFC70ED3C85F013C8607EB6C4B3FAE1F4B1F10E0BEFCA9AD543889E">
+<title>Groupoid C*-algebras: full and reduced — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Course contents</a><span aria-hidden="true"> / </span><span>KT-CP-14</span></nav>
+<article id="lesson" class="lesson"><h1 id="groupoid-c--algebras-full-and-reduced">Groupoid C*-algebras: full and reduced</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Haar system integrates composable arrows. The reduced norm then measures the resulting operators on individual source fibres; the full norm allows all continuous representations. Their comparison is the groupoid counterpart of the crossed-product comparison in Lessons 1–4. We construct the measurable disintegration of dense-domain representations, then prove the amenable norm equality by Haar smoothing and compression into amplified regular representations, and construct the cutoff that applies it to proper Hausdorff groupoids. A finite-quotient group bundle supplies explicit counterexamples to the converse and to reduced restriction exactness.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathcal G\rightrightarrows X\)">\(\mathcal G\rightrightarrows X\)</span> is second countable and locally compact, its arrow space is locally Hausdorff, its unit space is Hausdorff, and it has a full-support left Haar system <span class="math" data-tex="\(\lambda^x\)">\(\lambda^x\)</span> on <span class="math" data-tex="\(\mathcal G^x\)">\(\mathcal G^x\)</span>. Fibres are Hausdorff. In the Hausdorff case <span class="math" data-tex="\(C_c(\mathcal G)\)">\(C_c(\mathcal G)\)</span> has its usual meaning; otherwise it is the patch span of Lesson 13. Functions in that span vanish outside a compact set, although their support closure in the whole arrow space need not be compact. We explicitly require Hausdorff arrows for the conditional expectation onto <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>.</p>
+<h2 id="integrating-compositions">Integrating compositions</h2>
+<p>Scalar and Hilbert-module inner products are conjugate-linear in the first entry and linear in the second.</p>
+<p>Put <span class="math" data-tex="\(\lambda_x=\mathrm{inv}_*\lambda^x\)">\(\lambda_x=\mathrm{inv}_*\lambda^x\)</span>, a measure on <span class="math" data-tex="\(\mathcal G_x\)">\(\mathcal G_x\)</span>. Left invariance becomes right invariance for this family. Our operations and norm are</p>
+<span id="equation-14-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(f*g)(\gamma)=\int_{\mathcal G^{r(\gamma)}}
+f(\eta)g(\eta^{-1}\gamma)\,d\lambda^{r(\gamma)}(\eta),\\
+f^*(\gamma)=\overline{f(\gamma^{-1})},\\
+R(f)=\sup_x\int |f|\,d\lambda^x,\qquad
+S(f)=\sup_x\int |f|\,d\lambda_x,\\
+\|f\|_I=\max\{R(f),S(f)\}.
+\end{gathered}
+\tag{14.1}
+\]">\[
+\begin{gathered}
+(f*g)(\gamma)=\int_{\mathcal G^{r(\gamma)}}
+f(\eta)g(\eta^{-1}\gamma)\,d\lambda^{r(\gamma)}(\eta),\\
+f^*(\gamma)=\overline{f(\gamma^{-1})},\\
+R(f)=\sup_x\int |f|\,d\lambda^x,\qquad
+S(f)=\sup_x\int |f|\,d\lambda_x,\\
+\|f\|_I=\max\{R(f),S(f)\}.
+\end{gathered}
+\tag{14.1}
+\]</span>
+<p>There is no modular factor in this involution. A modular factor reappears when we identify these kernels with group crossed-product kernels.</p>
+<p>All these integrals are finite and uniformly bounded. For a Hausdorff compact support choose a nonnegative compact bump dominating <span class="math" data-tex="\(|f|\)">\(|f|\)</span>. For a patch sum use the sum of the absolute values of its individual patch terms; this is a positive patch function dominating <span class="math" data-tex="\(|f|\)">\(|f|\)</span>. Haar continuity bounds its fibre integrals. Applying inversion gives the source bound. The modulus of the entire patch sum need not itself belong to the patch space.</p>
+<p>We use a compact integration observation. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is locally compact Hausdorff, <span class="math" data-tex="\(p:Y\to X\)">\(p:Y\to X\)</span> is continuous, <span class="math" data-tex="\(U\)">\(U\)</span> is a Hausdorff arrow patch, and
+<span class="math" data-tex="\(F\in C_c(Y\times_{p,r}U)\)">\(F\in C_c(Y\times_{p,r}U)\)</span>, then</p>
+<span id="equation-14-2"></span><span class="math math-display" data-tex="\[
+y\longmapsto\int_{\mathcal G^{p(y)}} F(y,\eta)\,d\lambda^{p(y)}(\eta)
+\tag{14.2}
+\]">\[
+y\longmapsto\int_{\mathcal G^{p(y)}} F(y,\eta)\,d\lambda^{p(y)}(\eta)
+\tag{14.2}
+\]</span>
+<p>is continuous, interpreting <span class="math" data-tex="\(F\)">\(F\)</span> as zero off the patch. To prove it, extend the compactly supported function from the closed fibre product to a compactly supported function on <span class="math" data-tex="\(Y\times U\)">\(Y\times U\)</span>. Compact-support extension is the ordinary Hausdorff extension theorem, with cutoffs. Finite sums <span class="math" data-tex="\(a(y)b(\eta)\)">\(a(y)b(\eta)\)</span> approximate that extension uniformly, with their supports in one compact rectangle, by the Stone–Weierstrass theorem. The integral of a product is <span class="math" data-tex="\(a(y)\lambda(b)(p(y))\)">\(a(y)\lambda(b)(p(y))\)</span>, which is continuous. A nonnegative patch bump equal to one on the fixed arrow-coordinate compact set bounds the integration error by its uniform fibre integral times the uniform approximation error. This proves (14.2).</p>
+<p><span id="theorem-14-1"></span><strong>Theorem 14.1.</strong> The operations (14.1) make <span class="math" data-tex="\(C_c(\mathcal G)\)">\(C_c(\mathcal G)\)</span> a normed *-algebra, with</p>
+<span id="equation-14-3"></span><span class="math math-display" data-tex="\[
+\|f*g\|_I\leq\|f\|_I\|g\|_I,\qquad \|f^*\|_I=\|f\|_I.
+\tag{14.3}
+\]">\[
+\|f*g\|_I\leq\|f\|_I\|g\|_I,\qquad \|f^*\|_I=\|f\|_I.
+\tag{14.3}
+\]</span>
+<p><strong>Proof.</strong> First assume the arrow space is Hausdorff. The convolution integrand is continuous on <span class="math" data-tex="\(\{(\gamma,\eta):r(\gamma)=r(\eta)\}\)">\(\{(\gamma,\eta):r(\gamma)=r(\eta)\}\)</span>. It vanishes outside a compact subset: the pairs which matter come from the compact composable part of <span class="math" data-tex="\(\operatorname{supp}f\times\operatorname{supp}g\)">\(\operatorname{supp}f\times\operatorname{supp}g\)</span>, through <span class="math" data-tex="\((\eta,\zeta)\mapsto(\eta\zeta,\eta)\)">\((\eta,\zeta)\mapsto(\eta\zeta,\eta)\)</span>. Observation (14.2), with finitely many patches if needed, proves continuity. Its support is contained in the compact product of the two supports.</p>
+<p>Here is the additional argument for patch kernels. Multiplication is an open map. Indeed <span class="math" data-tex="\((\eta,\zeta)\mapsto(\eta\zeta,\zeta)\)">\((\eta,\zeta)\mapsto(\eta\zeta,\zeta)\)</span> identifies its domain with <span class="math" data-tex="\(\{(\alpha,\zeta):s(\alpha)=s(\zeta)\}\)">\(\{(\alpha,\zeta):s(\alpha)=s(\zeta)\}\)</span>; projection onto <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is open because it is the base change of the open map <span class="math" data-tex="\(s\)">\(s\)</span>. Explicitly the image of a product of two open sets is the first open set intersected with the inverse image of the second set's open source image.</p>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be one patch term on a Hausdorff open <span class="math" data-tex="\(U\)">\(U\)</span>. Choose an open <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and a compact <span class="math" data-tex="\(K\subset U\)">\(K\subset U\)</span> with <span class="math" data-tex="\(\operatorname{supp}_U f\subset U_0\subset K\)">\(\operatorname{supp}_U f\subset U_0\subset K\)</span>. Near any point <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> of the support of a patch term <span class="math" data-tex="\(g\)">\(g\)</span>, choose a compact Hausdorff neighborhood <span class="math" data-tex="\(L\)">\(L\)</span> inside its patch, sufficiently small that</p>
+<span id="equation-14-4"></span><span class="math math-display" data-tex="\[
+KLL^{-1}\subset U,
+\tag{14.4}
+\]">\[
+KLL^{-1}\subset U,
+\tag{14.4}
+\]</span>
+<p>where only composable products are included. Such a choice exists: otherwise shrinking neighborhoods of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> give composable triples <span class="math" data-tex="\(k_j,l_j,l&#x27;_j\)">\(k_j,l_j,l&#x27;_j\)</span>, with <span class="math" data-tex="\(k_j\)">\(k_j\)</span> in the compact Hausdorff <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(l_j,l&#x27;_j\to\zeta\)">\(l_j,l&#x27;_j\to\zeta\)</span>, whose products stay outside <span class="math" data-tex="\(U\)">\(U\)</span>. A convergent subnet of the <span class="math" data-tex="\(k_j\)">\(k_j\)</span> makes these products converge to a point of <span class="math" data-tex="\(K\subset U\)">\(K\subset U\)</span>, a contradiction.</p>
+<p>Choose an open <span class="math" data-tex="\(W\)">\(W\)</span> about <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> inside <span class="math" data-tex="\(L\)">\(L\)</span>. The open product <span class="math" data-tex="\(U_0W\)">\(U_0W\)</span> is Hausdorff. If a net of its arrows, written <span class="math" data-tex="\(\eta_j\zeta_j\)">\(\eta_j\zeta_j\)</span>, converges to two points <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> in this product, compactness of <span class="math" data-tex="\(L\)">\(L\)</span> permits a subnet with <span class="math" data-tex="\(\zeta_j\to\zeta&#x27;\in L\)">\(\zeta_j\to\zeta&#x27;\in L\)</span>. Then <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> converges to both <span class="math" data-tex="\(\alpha(\zeta&#x27;)^{-1}\)">\(\alpha(\zeta&#x27;)^{-1}\)</span> and <span class="math" data-tex="\(\beta(\zeta&#x27;)^{-1}\)">\(\beta(\zeta&#x27;)^{-1}\)</span>. Both belong to <span class="math" data-tex="\(KLL^{-1}\subset U\)">\(KLL^{-1}\subset U\)</span>, by writing <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> as products in <span class="math" data-tex="\(U_0W\)">\(U_0W\)</span>. Hausdorffness of <span class="math" data-tex="\(U\)">\(U\)</span> makes them equal, hence <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. Endpoints match in these limit products because <span class="math" data-tex="\(X\)">\(X\)</span> is Hausdorff.</p>
+<p>A finite partition of <span class="math" data-tex="\(g\)">\(g\)</span> within its Hausdorff patch now puts each term in one such <span class="math" data-tex="\(W\)">\(W\)</span>. Its convolution with <span class="math" data-tex="\(f\)">\(f\)</span> is a continuous compactly supported function on the Hausdorff patch <span class="math" data-tex="\(U_0W\)">\(U_0W\)</span>, by (14.2), and is zero elsewhere. Thus convolution preserves the patch span. Inversion sends a Hausdorff open patch homeomorphically to another, so the involution also preserves it.</p>
+<p>For associativity, both bracketings reduce, using Fubini and left invariance, to</p>
+<span id="equation-14-5"></span><span class="math math-display" data-tex="\[
+\int_{\mathcal G^{r(\gamma)}}\!
+\int_{\mathcal G^{s(\xi)}}\!
+f(\xi)g(\zeta)h(\zeta^{-1}\xi^{-1}\gamma)
+\,d\lambda^{s(\xi)}(\zeta)\,d\lambda^{r(\gamma)}(\xi).
+\tag{14.5}
+\]">\[
+\int_{\mathcal G^{r(\gamma)}}\!
+\int_{\mathcal G^{s(\xi)}}\!
+f(\xi)g(\zeta)h(\zeta^{-1}\xi^{-1}\gamma)
+\,d\lambda^{s(\xi)}(\zeta)\,d\lambda^{r(\gamma)}(\xi).
+\tag{14.5}
+\]</span>
+<p>The substitution in the other bracketing is <span class="math" data-tex="\(\eta=\xi\zeta\)">\(\eta=\xi\zeta\)</span>. Compact positive patch envelopes justify absolute integrability and Fubini. For the involution identity, substitute <span class="math" data-tex="\(\eta=\gamma\theta\)">\(\eta=\gamma\theta\)</span> in <span class="math" data-tex="\((g^**f^*)(\gamma)\)">\((g^**f^*)(\gamma)\)</span>; its integrand becomes
+<span class="math" data-tex="\(\overline{g(\theta^{-1}\gamma^{-1})}\,\overline{f(\theta)}\)">\(\overline{g(\theta^{-1}\gamma^{-1})}\,\overline{f(\theta)}\)</span> integrated against <span class="math" data-tex="\(\lambda^{s(\gamma)}\)">\(\lambda^{s(\gamma)}\)</span>, exactly <span class="math" data-tex="\((f*g)^*(\gamma)\)">\((f*g)^*(\gamma)\)</span>.</p>
+<p>Finally integrate the absolute convolution on a range fibre and substitute <span class="math" data-tex="\(\gamma=\eta\zeta\)">\(\gamma=\eta\zeta\)</span>. The inner <span class="math" data-tex="\(g\)">\(g\)</span>-integral is at most <span class="math" data-tex="\(R(g)\)">\(R(g)\)</span>, giving <span class="math" data-tex="\(R(f*g)\leq R(f)R(g)\)">\(R(f*g)\leq R(f)R(g)\)</span>. Apply this to <span class="math" data-tex="\(g^**f^*\)">\(g^**f^*\)</span> to get <span class="math" data-tex="\(S(f*g)\leq S(g)S(f)\)">\(S(f*g)\leq S(g)S(f)\)</span>. Inversion exchanges <span class="math" data-tex="\(R,S\)">\(R,S\)</span>, proving (14.3). Full support, and continuity of the restriction of a patch function to each Hausdorff fibre, imply that <span class="math" data-tex="\(\|f\|_I=0\)">\(\|f\|_I=0\)</span> only for <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. ∎</p>
+<h2 id="source-fibre-representations">Source-fibre representations</h2>
+<p>On <span class="math" data-tex="\(H_x=L^2(\mathcal G_x,\lambda_x)\)">\(H_x=L^2(\mathcal G_x,\lambda_x)\)</span> define</p>
+<span id="equation-14-6"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(L_x(f)\xi)(\gamma)
+&amp;=\int_{\mathcal G_x} f(\gamma\zeta^{-1})\xi(\zeta)\,d\lambda_x(\zeta)\\
+&amp;=\int_{\mathcal G^{r(\gamma)}}f(\eta)\xi(\eta^{-1}\gamma)
+\,d\lambda^{r(\gamma)}(\eta).
+\end{aligned}
+\tag{14.6}
+\]">\[
+\begin{aligned}
+(L_x(f)\xi)(\gamma)
+&amp;=\int_{\mathcal G_x} f(\gamma\zeta^{-1})\xi(\zeta)\,d\lambda_x(\zeta)\\
+&amp;=\int_{\mathcal G^{r(\gamma)}}f(\eta)\xi(\eta^{-1}\gamma)
+\,d\lambda^{r(\gamma)}(\eta).
+\end{aligned}
+\tag{14.6}
+\]</span>
+<p>The equality follows by inversion and left multiplication; it does not insert a modular function.</p>
+<p><span id="proposition-14-2"></span><strong>Proposition 14.2.</strong> These are *-representations, and</p>
+<span id="equation-14-7"></span><span class="math math-display" data-tex="\[
+\|L_x(f)\|\leq \sqrt{R(f)S(f)}\leq\|f\|_I.
+\tag{14.7}
+\]">\[
+\|L_x(f)\|\leq \sqrt{R(f)S(f)}\leq\|f\|_I.
+\tag{14.7}
+\]</span>
+<p><strong>Proof.</strong> The integral kernel is <span class="math" data-tex="\(K(\gamma,\zeta)=f(\gamma\zeta^{-1})\)">\(K(\gamma,\zeta)=f(\gamma\zeta^{-1})\)</span>. Its absolute row integrals are at most <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span>. For a column, right translation <span class="math" data-tex="\(\gamma\mapsto\gamma\zeta^{-1}\)">\(\gamma\mapsto\gamma\zeta^{-1}\)</span> carries <span class="math" data-tex="\(\lambda_x\)">\(\lambda_x\)</span> to <span class="math" data-tex="\(\lambda_{r(\zeta)}\)">\(\lambda_{r(\zeta)}\)</span>, so its absolute integral is at most <span class="math" data-tex="\(S(f)\)">\(S(f)\)</span>. Cauchy–Schwarz with the weight <span class="math" data-tex="\(|K|\)">\(|K|\)</span>, followed by integration in <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, gives</p>
+<span id="equation-14-8"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+|L_x(f)\xi(\gamma)|^2
+&amp;\leq R(f)\int |K(\gamma,\zeta)|\,|\xi(\zeta)|^2\,d\lambda_x(\zeta),\\
+\|L_x(f)\xi\|_2^2&amp;\leq R(f)S(f)\|\xi\|_2^2.
+\end{aligned}
+\tag{14.8}
+\]">\[
+\begin{aligned}
+|L_x(f)\xi(\gamma)|^2
+&amp;\leq R(f)\int |K(\gamma,\zeta)|\,|\xi(\zeta)|^2\,d\lambda_x(\zeta),\\
+\|L_x(f)\xi\|_2^2&amp;\leq R(f)S(f)\|\xi\|_2^2.
+\end{aligned}
+\tag{14.8}
+\]</span>
+<p>The transposed conjugate kernel is <span class="math" data-tex="\(f^*(\gamma\zeta^{-1})\)">\(f^*(\gamma\zeta^{-1})\)</span>, proving the adjoint identity. Kernel composition, with the substitution used in (14.6), is convolution. Positive envelopes justify these calculations first on compactly supported vectors and then on all <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. ∎</p>
+<p>The family detects every nonzero test function. If <span class="math" data-tex="\(f(\gamma)\ne0\)">\(f(\gamma)\ne0\)</span>, put <span class="math" data-tex="\(x=s(\gamma)\)">\(x=s(\gamma)\)</span>, and choose a nonnegative source-fibre bump near <span class="math" data-tex="\(e(x)\)">\(e(x)\)</span>, small enough that <span class="math" data-tex="\(f(\gamma\zeta^{-1})\)">\(f(\gamma\zeta^{-1})\)</span> stays in an open complex half-plane after multiplication by one fixed phase. Full support makes its integral against that bump nonzero. The bump can be obtained by restricting a compact Hausdorff-patch function on <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>. Its convolution with <span class="math" data-tex="\(f\)">\(f\)</span>, restricted to <span class="math" data-tex="\(\mathcal G_x\)">\(\mathcal G_x\)</span>, is continuous, so the nonzero value persists on a relatively open set of positive measure. Thus <span class="math" data-tex="\(L_x(f)\ne0\)">\(L_x(f)\ne0\)</span>.</p>
+<p>Consequently</p>
+<span id="equation-14-9"></span><span class="math math-display" data-tex="\[
+\|f\|_r=\sup_{x\in X}\|L_x(f)\|
+\tag{14.9}
+\]">\[
+\|f\|_r=\sup_{x\in X}\|L_x(f)\|
+\tag{14.9}
+\]</span>
+<p>is a C*-norm. Its completion is <span class="math" data-tex="\(C_r^*(\mathcal G)\)">\(C_r^*(\mathcal G)\)</span>. The definition uses all units, rather than a chosen invariant measure.</p>
+<p>When <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is Hausdorff there is also a Hilbert <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module description:</p>
+<span id="equation-14-10"></span><span class="math math-display" data-tex="\[
+\langle\xi,\eta\rangle(x)=\int_{\mathcal G_x}\overline{\xi(\gamma)}
+\eta(\gamma)\,d\lambda_x(\gamma),\qquad
+(\xi b)(\gamma)=\xi(\gamma)b(s(\gamma)).
+\tag{14.10}
+\]">\[
+\langle\xi,\eta\rangle(x)=\int_{\mathcal G_x}\overline{\xi(\gamma)}
+\eta(\gamma)\,d\lambda_x(\gamma),\qquad
+(\xi b)(\gamma)=\xi(\gamma)b(s(\gamma)).
+\tag{14.10}
+\]</span>
+<p>Haar continuity after inversion makes the inner product belong to <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. Completion gives <span class="math" data-tex="\(E\)">\(E\)</span>; convolution is adjointable by (14.7) and the adjoint calculation. Its norm is (14.9). For the reverse of the immediate upper bound, extend a compact source-fibre vector to a compactly supported function on <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>, then multiply by a unit-space cutoff equal to one at that fibre. Continuity of its inner-product norm lets the cutoff make the module norm arbitrarily close to the fibre norm. Such vectors are dense in <span class="math" data-tex="\(H_x\)">\(H_x\)</span>, proving the reverse bound. This description will help with equivalence in Lesson 15. For non-Hausdorff arrows, pointwise products of patch functions can fail to be patch functions, and (14.10) cannot be assumed to give a <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-valued inner product.</p>
+<h2 id="the-full-norm-and-disintegration">The full norm and disintegration</h2>
+<p>Let <span class="math" data-tex="\(\mathcal R_I\)">\(\mathcal R_I\)</span> be the *-representations satisfying
+<span class="math" data-tex="\(\|\pi(h)\|\leq\|h\|_I\)">\(\|\pi(h)\|\leq\|h\|_I\)</span> for every test function <span class="math" data-tex="\(h\)">\(h\)</span>. Define</p>
+<span id="equation-14-11"></span><span class="math math-display" data-tex="\[
+\|f\|_{\max}=\sup_{\pi\in\mathcal R_I}\|\pi(f)\|.
+\tag{14.11}
+\]">\[
+\|f\|_{\max}=\sup_{\pi\in\mathcal R_I}\|\pi(f)\|.
+\tag{14.11}
+\]</span>
+<p>It satisfies the C*-identity, is finite, and is a norm because it dominates (14.9). Its completion is <span class="math" data-tex="\(C^*(\mathcal G)\)">\(C^*(\mathcal G)\)</span>. There is a canonical surjection</p>
+<span id="equation-14-12"></span><span class="math math-display" data-tex="\[
+C^*(\mathcal G)\longrightarrow C_r^*(\mathcal G).
+\tag{14.12}
+\]">\[
+C^*(\mathcal G)\longrightarrow C_r^*(\mathcal G).
+\tag{14.12}
+\]</span>
+<p>Surjectivity follows because its image is closed and contains the dense test-function algebra.</p>
+<p>We now prove Renault's disintegration theorem, with the precise dense-domain hypotheses of [Muhly–Williams 2008, Theorem 7.8, pp. 45–46]. A multiplicative representation on a dense domain in a Hilbert space, with dense essential range, continuous matrix coefficients for uniform convergence on a fixed compact set, and the adjoint identity there, extends to an <span class="math" data-tex="\(I\)">\(I\)</span>-contractive representation. It is the integrated form of a measurable unitary representation of the groupoid on a Hilbert bundle over <span class="math" data-tex="\(X\)">\(X\)</span>, with a quasi-invariant measure. We use separable Hilbert spaces in this statement. General C*-representations reduce to separable cyclic representations because the present second countable test-function completion is separable; they need not decompose into irreducibles.</p>
+<p>More explicitly let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the unit-space measure, <span class="math" data-tex="\(\nu=\int\lambda^x\,d\mu(x)\)">\(\nu=\int\lambda^x\,d\mu(x)\)</span>, and <span class="math" data-tex="\(D=d\nu/d\nu^{-1}\)">\(D=d\nu/d\nu^{-1}\)</span>. Quasi-invariance means these two arrow measures are equivalent. The integrated form has weak integral kernel</p>
+<span id="equation-14-13"></span><span class="math math-display" data-tex="\[
+(\pi(f)\xi)(x)=\int_{\mathcal G^x}
+f(\gamma)V_\gamma\xi(s(\gamma))D(\gamma)^{-1/2}\,d\lambda^x(\gamma).
+\tag{14.13}
+\]">\[
+(\pi(f)\xi)(x)=\int_{\mathcal G^x}
+f(\gamma)V_\gamma\xi(s(\gamma))D(\gamma)^{-1/2}\,d\lambda^x(\gamma).
+\tag{14.13}
+\]</span>
+<p>Here <span class="math" data-tex="\(V_\gamma:H_{s(\gamma)}\to H_{r(\gamma)}\)">\(V_\gamma:H_{s(\gamma)}\to H_{r(\gamma)}\)</span> is unitary and respects products. This measured <span class="math" data-tex="\(D\)">\(D\)</span> is separate from the group modular function in the next section. The theorem and its integrated-form bound identify (14.11) with the usual universal continuous groupoid norm. The construction below proves both conclusions, including the measurable foundations; [ibid., Proposition 7.6, p. 45] is also the historical locator for the integrated bound.</p>
+<p>We will also need the unit-space multipliers. For every nondegenerate full representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> there is a nondegenerate representation <span class="math" data-tex="\(M:C_0(X)\to B(H)\)">\(M:C_0(X)\to B(H)\)</span> satisfying</p>
+<span id="equation-14-14"></span><span class="math math-display" data-tex="\[
+M(b)\pi(f)=\pi((b\circ r)f),\qquad
+\pi(f)M(b)=\pi(f(b\circ s)).
+\tag{14.14}
+\]">\[
+M(b)\pi(f)=\pi((b\circ r)f),\qquad
+\pi(f)M(b)=\pi(f(b\circ s)).
+\tag{14.14}
+\]</span>
+<p>Here is a direct proof of the required bound. For a bounded continuous <span class="math" data-tex="\(b\)">\(b\)</span>, set <span class="math" data-tex="\(c=\|b\|_\infty\)">\(c=\|b\|_\infty\)</span> and <span class="math" data-tex="\(h=(c^2-|b|^2)^{1/2}\)">\(h=(c^2-|b|^2)^{1/2}\)</span>. Endpoint multiplication preserves every patch term. The convolution identities give</p>
+<span id="equation-14-15"></span><span class="math math-display" data-tex="\[
+((b\circ r)f_i)^**((b\circ r)f_j)
++((h\circ r)f_i)^**((h\circ r)f_j)=c^2 f_i^**f_j.
+\tag{14.15}
+\]">\[
+((b\circ r)f_i)^**((b\circ r)f_j)
++((h\circ r)f_i)^**((h\circ r)f_j)=c^2 f_i^**f_j.
+\tag{14.15}
+\]</span>
+<p>Applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and summing matrix coefficients for any finite family of vectors proves that the rule in (14.14), on their dense span <span class="math" data-tex="\(\sum\pi(f_i)\xi_i\)">\(\sum\pi(f_i)\xi_i\)</span>, is well-defined and bounded by <span class="math" data-tex="\(c\)">\(c\)</span>. The product and adjoint rules follow there. Cutoffs in <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> equal to one on the finitely many compact range images show nondegeneracy; taking adjoints gives the second formula. In (14.13), <span class="math" data-tex="\(M(b)\)">\(M(b)\)</span> is multiplication by <span class="math" data-tex="\(b(x)\)">\(b(x)\)</span>.</p>
+<h3 id="local-units-for-the-convolution-algebra">Local units for the convolution algebra</h3>
+<p>We prove the disintegration statement before using it. Write <span class="math" data-tex="\(\mathscr C\)">\(\mathscr C\)</span> for the patch test-function algebra and <span class="math" data-tex="\(H_{00}=\operatorname{span}L(\mathscr C)H_0\)">\(H_{00}=\operatorname{span}L(\mathscr C)H_0\)</span>. Its dense-domain hypotheses are essential range density, multiplicativity, the adjoint identity, and continuity of each matrix coefficient on every fixed compact patch. No bound on <span class="math" data-tex="\(L(f)\)">\(L(f)\)</span> is assumed. The square identity (14.15) still applies to these operators on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>; its right-hand side is a squared Hilbert norm. It therefore constructs the same bounded, nondegenerate unit representation <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, before any arrow operator has been shown bounded.</p>
+<p>We first need a left approximate identity in the patch inductive-limit topology. For a compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> and an open neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of the units, choose finitely many nonnegative patch bumps supported in <span class="math" data-tex="\(W\)">\(W\)</span>, positive at units covering <span class="math" data-tex="\(K\)">\(K\)</span>. Their sum <span class="math" data-tex="\(b\)">\(b\)</span> has <span class="math" data-tex="\(\lambda(b)&gt;0\)">\(\lambda(b)&gt;0\)</span> on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>: Haar full support gives positivity, and Haar continuity gives the neighborhood. Choose <span class="math" data-tex="\(0\leq\chi\in C_c(X)\)">\(0\leq\chi\in C_c(X)\)</span>, equal to one on <span class="math" data-tex="\(K\)">\(K\)</span>, with support in that neighborhood. Define, with zero where the denominator vanishes,</p>
+<span id="equation-14e-1"></span><span class="math math-display" data-tex="\[
+e(\gamma)=\frac{b(\gamma)\chi(r(\gamma))}{\lambda(b)(r(\gamma))}.
+\qquad \lambda(e)=\chi,\quad
+\sup_x\lambda^x(e)\leq1.
+\tag{14E.1}
+\]">\[
+e(\gamma)=\frac{b(\gamma)\chi(r(\gamma))}{\lambda(b)(r(\gamma))}.
+\qquad \lambda(e)=\chi,\quad
+\sup_x\lambda^x(e)\leq1.
+\tag{14E.1}
+\]</span>
+<p>This is a nonnegative patch function supported in <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>Here are the compactness details that make shrinking <span class="math" data-tex="\(W\)">\(W\)</span> useful even with non-Hausdorff arrows. There are arbitrarily small neighborhoods <span class="math" data-tex="\(N\)">\(N\)</span> of the units such that <span class="math" data-tex="\(N\cap r^{-1}(K)\)">\(N\cap r^{-1}(K)\)</span> and <span class="math" data-tex="\(N\cap s^{-1}(K)\)">\(N\cap s^{-1}(K)\)</span> are compact for every compact unit set <span class="math" data-tex="\(K\)">\(K\)</span>. To construct one inside a prescribed neighborhood, take a locally finite cover of <span class="math" data-tex="\(X\)">\(X\)</span> by compact sets <span class="math" data-tex="\(K_i\)">\(K_i\)</span> whose interiors cover <span class="math" data-tex="\(X\)">\(X\)</span>. Choose compact neighborhoods <span class="math" data-tex="\(N_i&#x27;\)">\(N_i&#x27;\)</span> of <span class="math" data-tex="\(K_i\)">\(K_i\)</span> inside the prescribed arrow neighborhood, using finitely many compact Hausdorff neighborhoods. Put
+<span class="math" data-tex="\(N_i=N_i&#x27;\cap r^{-1}(K_i)\cap s^{-1}(K_i)\)">\(N_i=N_i&#x27;\cap r^{-1}(K_i)\cap s^{-1}(K_i)\)</span>, and take their union. Over a compact unit set only finitely many pieces occur; their relevant intersections are closed in compact sets. This proves the assertion. Consequently <span class="math" data-tex="\(N\cdot C\)">\(N\cdot C\)</span> is compact for compact arrow sets <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>For a compact <span class="math" data-tex="\(C\)">\(C\)</span> inside an open set <span class="math" data-tex="\(V\)">\(V\)</span>, a sufficiently small unit neighborhood satisfies <span class="math" data-tex="\(N\cdot C\subset V\)">\(N\cdot C\subset V\)</span>. To see this, for each unit <span class="math" data-tex="\(u\in r(C)\)">\(u\in r(C)\)</span> there is an arrow neighborhood <span class="math" data-tex="\(U_u\)">\(U_u\)</span> with <span class="math" data-tex="\(U_u\cdot C\subset V\)">\(U_u\cdot C\subset V\)</span>. Otherwise arrows approaching <span class="math" data-tex="\(u\)">\(u\)</span> would act on points of <span class="math" data-tex="\(C\)">\(C\)</span> to give points outside <span class="math" data-tex="\(V\)">\(V\)</span>; a convergent subnet of those points of <span class="math" data-tex="\(C\)">\(C\)</span> and continuity of the action would force their products to approach a point of <span class="math" data-tex="\(C\subset V\)">\(C\subset V\)</span>, a contradiction. Take the union of finitely many such neighborhoods covering the compact unit image, and include <span class="math" data-tex="\(s^{-1}(X\setminus r(C))\)">\(s^{-1}(X\setminus r(C))\)</span>. The latter arrows cannot act on <span class="math" data-tex="\(C\)">\(C\)</span>. This gives a neighborhood of all units, which may then be shrunk to one of the compact neighborhoods just constructed.</p>
+<p>Over a compact unit set <span class="math" data-tex="\(K\)">\(K\)</span> we can also arrange that this neighborhood is Hausdorff. For each <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, take a Hausdorff arrow neighborhood <span class="math" data-tex="\(V_x\)">\(V_x\)</span> and a closed unit neighborhood <span class="math" data-tex="\(C_x\subset V_x\)">\(C_x\subset V_x\)</span>. Intersect finitely many sets
+<span class="math" data-tex="\(V_x\cup r^{-1}(X\setminus C_x)\)">\(V_x\cup r^{-1}(X\setminus C_x)\)</span> with the <span class="math" data-tex="\(C_x\)">\(C_x\)</span>'s covering <span class="math" data-tex="\(K\)">\(K\)</span>. Two arrows in the result with different ranges separate in <span class="math" data-tex="\(X\)">\(X\)</span>; with the same range they lie in one of the Hausdorff <span class="math" data-tex="\(V_x\)">\(V_x\)</span>'s.</p>
+<p>Now let <span class="math" data-tex="\(f\in C_c(V)\)">\(f\in C_c(V)\)</span>, with compact patch support <span class="math" data-tex="\(C\)">\(C\)</span>. Fix a compact neighborhood <span class="math" data-tex="\(N\)">\(N\)</span> as above with <span class="math" data-tex="\(N\cdot C\subset V\)">\(N\cdot C\subset V\)</span>; shrink further so that <span class="math" data-tex="\(N\)">\(N\)</span> over the compact range image of <span class="math" data-tex="\(N\cdot C\)">\(N\cdot C\)</span> is Hausdorff. Uniformly for composable <span class="math" data-tex="\((\eta,\gamma)\)">\((\eta,\gamma)\)</span>, as <span class="math" data-tex="\(\eta\)">\(\eta\)</span> approaches the units within these neighborhoods,</p>
+<span id="equation-14e-2"></span><span class="math math-display" data-tex="\[
+|f(\eta^{-1}\gamma)-f(\gamma)|\longrightarrow0.
+\tag{14E.2}
+\]">\[
+|f(\eta^{-1}\gamma)-f(\gamma)|\longrightarrow0.
+\tag{14E.2}
+\]</span>
+<p>Only <span class="math" data-tex="\(\gamma\in N\cdot C\)">\(\gamma\in N\cdot C\)</span> can contribute. If uniform convergence failed, compactness would give convergent subnets of these <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>'s and of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s. In the Hausdorff restricted neighborhood the latter limit is a unit: any proposed nonunit can be excluded by a smaller compact unit neighborhood, since singletons are closed. Its restriction to the fixed compact range set is compact and therefore closed in the Hausdorff restricted neighborhood; eventual membership forces the limit into it, a contradiction. Multiplication then gives <span class="math" data-tex="\(\eta^{-1}\gamma\to\gamma\)">\(\eta^{-1}\gamma\to\gamma\)</span> inside <span class="math" data-tex="\(V\)">\(V\)</span>, contradicting continuity of <span class="math" data-tex="\(f\)">\(f\)</span>. Choosing the compact unit set in (14E.1) to contain <span class="math" data-tex="\(r(N\cdot C)\)">\(r(N\cdot C)\)</span>, the row-mass bound and (14E.2) give <span class="math" data-tex="\(e*f\to f\)">\(e*f\to f\)</span> uniformly, with support in the fixed compact set <span class="math" data-tex="\(N\cdot C\subset V\)">\(N\cdot C\subset V\)</span>. The same argument term by term proves left approximation for every patch sum.</p>
+<p>If <span class="math" data-tex="\(a=\sum L(f_i)\xi_i\in H_{00}\)">\(a=\sum L(f_i)\xi_i\in H_{00}\)</span>, this approximation gives <span class="math" data-tex="\(L(e)a\to a\)">\(L(e)a\to a\)</span> in Hilbert norm. Expand the square of the difference; every term is a matrix coefficient of either <span class="math" data-tex="\((e*f_i-f_i)^**(e*f_j-f_j)\)">\((e*f_i-f_i)^**(e*f_j-f_j)\)</span> or an equivalent expanded convolution. Convolution is continuous for the fixed patch supports proved above, so coefficient continuity sends every term to zero. In particular, if <span class="math" data-tex="\(\{\zeta_j\}\subset H_{00}\)">\(\{\zeta_j\}\subset H_{00}\)</span> is an orthonormal basis of <span class="math" data-tex="\(H\)">\(H\)</span>, then</p>
+<span id="equation-14e-3"></span><span class="math math-display" data-tex="\[
+\operatorname{span}\{L(f)\zeta_j:f\in\mathscr C,\ j\geq1\}
+\text{ is dense in }H.
+\tag{14E.3}
+\]">\[
+\operatorname{span}\{L(f)\zeta_j:f\in\mathscr C,\ j\geq1\}
+\text{ is dense in }H.
+\tag{14E.3}
+\]</span>
+<p>Such a basis exists by Gram–Schmidt on a countable dense subset of <span class="math" data-tex="\(H_{00}\)">\(H_{00}\)</span>. Notice that this argument does not assume continuity of the possibly unbounded <span class="math" data-tex="\(L(f)\)">\(L(f)\)</span> in its vector variable.</p>
+<h3 id="obtaining-the-measure-on-the-units">Obtaining the measure on the units</h3>
+<p>For clarity we construct the multiplication representation of <span class="math" data-tex="\(M\)">\(M\)</span>, rather than assuming a direct-integral decomposition. Let <span class="math" data-tex="\(\{v_n\}\)">\(\{v_n\}\)</span> be an orthonormal basis of <span class="math" data-tex="\(H\)">\(H\)</span>. The positive functionals <span class="math" data-tex="\(a\mapsto\langle v_n,M(a)v_n\rangle\)">\(a\mapsto\langle v_n,M(a)v_n\rangle\)</span> have finite Radon measures <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. Put <span class="math" data-tex="\(\mu=\sum 2^{-n}\mu_n\)">\(\mu=\sum 2^{-n}\mu_n\)</span>. The complex matrix measures <span class="math" data-tex="\(\mu_{ij}(a)=\langle v_i,M(a)v_j\rangle\)">\(\mu_{ij}(a)=\langle v_i,M(a)v_j\rangle\)</span> are absolutely continuous with respect to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, by Cauchy–Schwarz for the spectral measures. One may obtain these spectral measures directly by extending the positive vector functionals from continuous functions to Borel functions using their Radon measures; polarization and multiplicativity on continuous functions give the projection rule, first on open sets by increasing continuous cutoffs and then on Borel sets by the monotone-class theorem.</p>
+<p>Let <span class="math" data-tex="\(h_{ij}=d\mu_{ij}/d\mu\)">\(h_{ij}=d\mu_{ij}/d\mu\)</span>. Off one null set, the matrices <span class="math" data-tex="\((h_{ij}(x))\)">\((h_{ij}(x))\)</span> are positive semidefinite: test finite vectors with rational complex coefficients and nonnegative continuous unit cutoffs, then use density of those coefficients. At each such <span class="math" data-tex="\(x\)">\(x\)</span>, complete the formal span of symbols <span class="math" data-tex="\(v_i(x)\)">\(v_i(x)\)</span> with Gram matrix <span class="math" data-tex="\(h_{ij}(x)\)">\(h_{ij}(x)\)</span>, after quotienting the null vectors. Take zero fibres on the exceptional set. Measurable Gram–Schmidt makes this a Borel field: discard zero-length residuals, divide the remaining residuals by their Borel norms, and use their coordinates to identify each fibre with a coordinate subspace of <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. This also proves completeness of its <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-space by ordinary coordinatewise <span class="math" data-tex="\(L^2\)">\(L^2\)</span> completeness.</p>
+<p>The map</p>
+<span id="equation-14e-4"></span><span class="math math-display" data-tex="\[
+\sum_i M(a_i)v_i\longmapsto \left(x\mapsto\sum_i a_i(x)v_i(x)\right)
+\tag{14E.4}
+\]">\[
+\sum_i M(a_i)v_i\longmapsto \left(x\mapsto\sum_i a_i(x)v_i(x)\right)
+\tag{14E.4}
+\]</span>
+<p>is isometric, because both inner products are <span class="math" data-tex="\(\sum_{ij}\int\overline{a_i}a_jh_{ij}\,d\mu\)">\(\sum_{ij}\int\overline{a_i}a_jh_{ij}\,d\mu\)</span>. Its domain is dense by nondegeneracy of <span class="math" data-tex="\(M\)">\(M\)</span>. Its image is dense as well: the <span class="math" data-tex="\(v_i(x)\)">\(v_i(x)\)</span>'s are total in every fibre, and continuous scalar functions are dense in <span class="math" data-tex="\(L^2(\|v_i(x)\|^2\mu)\)">\(L^2(\|v_i(x)\|^2\mu)\)</span>, a finite Radon measure. Thus (14E.4) extends to a unitary onto this <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-space. In this realization <span class="math" data-tex="\(M(k)\)">\(M(k)\)</span> is multiplication by any bounded Borel <span class="math" data-tex="\(k\)">\(k\)</span>. In particular it is zero when <span class="math" data-tex="\(k=0\)">\(k=0\)</span> almost everywhere for <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. If <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, take <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span> and zero fibres; the rest of the theorem is immediate. Henceforth assume <span class="math" data-tex="\(H\ne0\)">\(H\ne0\)</span>.</p>
+<h3 id="enlarging-the-test-functions-without-assuming-bounded-operators">Enlarging the test functions without assuming bounded operators</h3>
+<p>We need Borel indicators, but we cannot insert them into <span class="math" data-tex="\(L\)">\(L\)</span> without a construction. Let <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span> be the finite span of bounded Borel functions supported in compact subsets of Hausdorff patches. Each coefficient
+<span class="math" data-tex="\(\ell_{\xi,\eta}(f)=\langle\xi,L(f)\eta\rangle\)">\(\ell_{\xi,\eta}(f)=\langle\xi,L(f)\eta\rangle\)</span>, for <span class="math" data-tex="\(\xi,\eta\in H_0\)">\(\xi,\eta\in H_0\)</span>, is a complex Radon functional on each patch. Its measures agree on overlaps, since they agree on continuous functions there. A disjoint Borel partition of a countable patch cover glues them. Their total variations are finite on compact patch sets, so their integrals extend <span class="math" data-tex="\(\ell_{\xi,\eta}\)">\(\ell_{\xi,\eta}\)</span> to <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>.</p>
+<p>Convolution and involution preserve <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>. Measurability follows from the Borel Haar kernel described below; the row-mass bounds of positive compact patch envelopes bound convolution uniformly. The product of the compact envelopes is compact and has a finite cover by precompact Hausdorff patches; partitioning it into Borel pieces puts the result back in <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>. If bounded sequences converge pointwise with fixed compact patch envelopes, their convolutions converge pointwise by dominated convergence, with uniform bounds and fixed compact envelopes. The same is true after integrating against any of the coefficient total variations.</p>
+<p>On <span class="math" data-tex="\(\mathscr B\odot H_0\)">\(\mathscr B\odot H_0\)</span> define</p>
+<span id="equation-14e-5"></span><span class="math math-display" data-tex="\[
+\langle f\otimes\xi,g\otimes\eta\rangle
+=\ell_{\xi,\eta}(f^**g).
+\tag{14E.5}
+\]">\[
+\langle f\otimes\xi,g\otimes\eta\rangle
+=\ell_{\xi,\eta}(f^**g).
+\tag{14E.5}
+\]</span>
+<p>This form is positive and its quotient embeds in the original <span class="math" data-tex="\(H\)">\(H\)</span>; we give the limiting argument because positivity for Borel functions is not automatic. On <span class="math" data-tex="\(\mathscr C\odot H_0\)">\(\mathscr C\odot H_0\)</span> it is precisely
+<span class="math" data-tex="\(\langle L(f)\xi,L(g)\eta\rangle\)">\(\langle L(f)\xi,L(g)\eta\rangle\)</span>, hence its completion is <span class="math" data-tex="\(H\)">\(H\)</span>. Every bounded Borel function with compact patch envelope belongs to the closure of the continuous patch functions under bounded pointwise sequential limits. Indeed on a Hausdorff patch, continuous cutoff exhaustion generates indicators of relatively compact open sets; the bounded monotone-class theorem generates all Borel indicators and then bounded Borel functions. Keep a larger compact cutoff envelope throughout. If desired, this closure can be organized by countable ordinal stages: take bounded sequential limits of earlier stages, and take their union over the countable ordinals. Each Borel function enters some stage, since the Borel sigma-algebra is generated by the countable open basis using countable operations.</p>
+<p>At a new stage <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span>, the vectors <span class="math" data-tex="\([f_n\otimes\xi]\)">\([f_n\otimes\xi]\)</span> are Cauchy: their squared difference is
+<span class="math" data-tex="\(\ell_{\xi,\xi}((f_n-f_m)^**(f_n-f_m))\)">\(\ell_{\xi,\xi}((f_n-f_m)^**(f_n-f_m))\)</span>, which tends to zero as <span class="math" data-tex="\(n,m\to\infty\)">\(n,m\to\infty\)</span> by the two dominated-convergence statements above. Their limit in <span class="math" data-tex="\(H\)">\(H\)</span> has the inner products prescribed by (14E.5). Apply this simultaneously to any finite family to preserve positivity, and to two possible approximations to prove independence. Induction through the stages proves the claim for all of <span class="math" data-tex="\(\mathscr B\)">\(\mathscr B\)</span>. This argument allows arbitrary Borel null sets; it does not assume that a general <span class="math" data-tex="\(G_\delta\)">\(G_\delta\)</span> indicator is a pointwise limit of continuous functions.</p>
+<p>Write <span class="math" data-tex="\(E=\operatorname{span}\{[g\otimes\xi]:g\in\mathscr B,\xi\in H_0\}\subset H\)">\(E=\operatorname{span}\{[g\otimes\xi]:g\in\mathscr B,\xi\in H_0\}\subset H\)</span>. For <span class="math" data-tex="\(f\in\mathscr C\)">\(f\in\mathscr C\)</span>, the densely defined operator <span class="math" data-tex="\(L(f)|_{H_{00}}\)">\(L(f)|_{H_{00}}\)</span> is closable. To check this directly, if <span class="math" data-tex="\(a_n\to0\)">\(a_n\to0\)</span> and <span class="math" data-tex="\(L(f)a_n\to b\)">\(L(f)a_n\to b\)</span>, the adjoint identity against every <span class="math" data-tex="\(c\in H_{00}\)">\(c\in H_{00}\)</span> gives <span class="math" data-tex="\(\langle c,b\rangle=0\)">\(\langle c,b\rangle=0\)</span>, hence <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. The same limiting induction therefore puts <span class="math" data-tex="\([g\otimes\xi]\)">\([g\otimes\xi]\)</span> in its closed domain with image <span class="math" data-tex="\([f*g\otimes\xi]\)">\([f*g\otimes\xi]\)</span>. At subsequent stages in the first variable it also proves the implication</p>
+<span id="equation-14e-6"></span><span class="math math-display" data-tex="\[
+\sum_i[g_i\otimes\xi_i]=0\quad\Longrightarrow\quad
+\sum_i[f*g_i\otimes\xi_i]=0.
+\tag{14E.6}
+\]">\[
+\sum_i[g_i\otimes\xi_i]=0\quad\Longrightarrow\quad
+\sum_i[f*g_i\otimes\xi_i]=0.
+\tag{14E.6}
+\]</span>
+<p>For continuous <span class="math" data-tex="\(f\)">\(f\)</span> use the closed operator just constructed; for a bounded pointwise limit in <span class="math" data-tex="\(f\)">\(f\)</span>, pass to the Hilbert-norm limit of the convolution vectors. Thus
+<span class="math" data-tex="\(L_b(f)[g\otimes\xi]=[f*g\otimes\xi]\)">\(L_b(f)[g\otimes\xi]=[f*g\otimes\xi]\)</span> defines an operator on <span class="math" data-tex="\(E\)">\(E\)</span> for every <span class="math" data-tex="\(f\in\mathscr B\)">\(f\in\mathscr B\)</span>.</p>
+<p>The unit multipliers extend with the expected formula:</p>
+<span id="equation-14e-7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+M(k)[g\otimes\xi]=[(k\circ r)g\otimes\xi],\\
+M(k)L_b(f)=L_b((k\circ r)f)\quad\text{on }E.
+\end{gathered}
+\tag{14E.7}
+\]">\[
+\begin{gathered}
+M(k)[g\otimes\xi]=[(k\circ r)g\otimes\xi],\\
+M(k)L_b(f)=L_b((k\circ r)f)\quad\text{on }E.
+\end{gathered}
+\tag{14E.7}
+\]</span>
+<p>Prove the first identity for continuous <span class="math" data-tex="\(k\)">\(k\)</span> using (14.14), and pass through bounded Borel limits. The left side converges strongly in the multiplication realization, while the right side converges by (14E.5). Repeat for Borel <span class="math" data-tex="\(g\)">\(g\)</span>; a cutoff on its compact range image handles a <span class="math" data-tex="\(k\)">\(k\)</span> without compact support. The second identity follows from the first and <span class="math" data-tex="\((k\circ r)(f*g)=((k\circ r)f)*g\)">\((k\circ r)(f*g)=((k\circ r)f)*g\)</span>. The same limiting argument gives, for <span class="math" data-tex="\(a=[g\otimes\xi]\)">\(a=[g\otimes\xi]\)</span>, <span class="math" data-tex="\(b=[h\otimes\eta]\)">\(b=[h\otimes\eta]\)</span> with continuous <span class="math" data-tex="\(g,h\)">\(g,h\)</span>,
+<span class="math" data-tex="\(\langle a,L_b(f)b\rangle=\ell_{\xi,\eta}(g^**f*h)\)">\(\langle a,L_b(f)b\rangle=\ell_{\xi,\eta}(g^**f*h)\)</span>. These identities will supply precisely the null-set tests we need.</p>
+<h3 id="why-the-unit-measure-is-quasi-invariant">Why the unit measure is quasi-invariant</h3>
+<p>Put <span class="math" data-tex="\(\nu=\mu\lambda\)">\(\nu=\mu\lambda\)</span>. On each Hausdorff patch this is a Radon measure: continuity of the Haar kernel gives finiteness on compact envelopes and the usual positive Radon functional. We show <span class="math" data-tex="\(\nu(A^{-1})=0\)">\(\nu(A^{-1})=0\)</span> whenever <span class="math" data-tex="\(\nu(A)=0\)">\(\nu(A)=0\)</span>. It suffices to treat compact <span class="math" data-tex="\(A\)">\(A\)</span> in a Hausdorff patch. Indeed the inverse measure is also Radon on every patch; its inner regularity, and a countable patch cover, then give the assertion for every Borel null set.</p>
+<p>Let <span class="math" data-tex="\(b=1_A\)">\(b=1_A\)</span>. For <span class="math" data-tex="\(k_1,k_2\in\mathscr C\)">\(k_1,k_2\in\mathscr C\)</span>, the Borel function
+<span class="math" data-tex="\(a(x)=\lambda^x(\overline{k_1}k_2b)\)">\(a(x)=\lambda^x(\overline{k_1}k_2b)\)</span> is zero <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-almost everywhere, so <span class="math" data-tex="\(M(a)=0\)">\(M(a)=0\)</span>. Formula (14E.7) yields, for every <span class="math" data-tex="\(g_1,g_2\in\mathscr C\)">\(g_1,g_2\in\mathscr C\)</span> and <span class="math" data-tex="\(\xi\in H_0\)">\(\xi\in H_0\)</span>,</p>
+<span id="equation-14e-8"></span><span class="math math-display" data-tex="\[
+\ell_{\xi,\xi}\big(g_1^**((a\circ r)g_2)\big)=0.
+\tag{14E.8}
+\]">\[
+\ell_{\xi,\xi}\big(g_1^**((a\circ r)g_2)\big)=0.
+\tag{14E.8}
+\]</span>
+<p>To reverse <span class="math" data-tex="\(A\)">\(A\)</span>, introduce the same-range space
+<span class="math" data-tex="\(Y=\{(\alpha,\beta):r(\alpha)=r(\beta)\}\)">\(Y=\{(\alpha,\beta):r(\alpha)=r(\beta)\}\)</span>. For compact patch functions <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, set</p>
+<span id="equation-14e-9"></span><span class="math math-display" data-tex="\[
+K_b(F_1,F_2)(\sigma)=
+\int\!\int \overline{F_1(\alpha,\beta)}
+F_2(\sigma^{-1}\alpha,\sigma^{-1}\beta)
+b(\alpha^{-1}\beta)\,d\lambda^{r(\sigma)}(\alpha)
+d\lambda^{r(\sigma)}(\beta).
+\tag{14E.9}
+\]">\[
+K_b(F_1,F_2)(\sigma)=
+\int\!\int \overline{F_1(\alpha,\beta)}
+F_2(\sigma^{-1}\alpha,\sigma^{-1}\beta)
+b(\alpha^{-1}\beta)\,d\lambda^{r(\sigma)}(\alpha)
+d\lambda^{r(\sigma)}(\beta).
+\tag{14E.9}
+\]</span>
+<p>This is a bounded Borel function with compact patch envelopes. The bounds follow from the product of the two fibre masses of compact positive envelopes; its possible <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>'s lie in a compact difference set of the projections of the supports. For continuous <span class="math" data-tex="\(b\)">\(b\)</span>, product approximation on compact Hausdorff patches gives the usual continuous patch integration lemma. Bounded pointwise limits in <span class="math" data-tex="\(b\)">\(b\)</span> give the stated Borel version and justify all subsequent integrals.</p>
+<p>For <span class="math" data-tex="\(F_i(\alpha,\beta)=k_i(\alpha^{-1}\beta)g_i(\alpha^{-1})\)">\(F_i(\alpha,\beta)=k_i(\alpha^{-1}\beta)g_i(\alpha^{-1})\)</span>, left invariance changes the second integral in (14E.9) into
+<span class="math" data-tex="\(K_b(F_1,F_2)=g_1^**((\lambda(\overline{k_1}k_2b)\circ r)g_2)\)">\(K_b(F_1,F_2)=g_1^**((\lambda(\overline{k_1}k_2b)\circ r)g_2)\)</span>.
+Thus its coefficient is zero by (14E.8), including mixed pairs, not just equal pairs. Such <span class="math" data-tex="\(F_i\)">\(F_i\)</span>'s span a dense subspace in the patch inductive-limit topology. To prove this, use the homeomorphism
+<span class="math" data-tex="\((\alpha,\beta)\mapsto(\alpha^{-1},\alpha^{-1}\beta)\)">\((\alpha,\beta)\mapsto(\alpha^{-1},\alpha^{-1}\beta)\)</span> onto the composable-pair space; products of the two coordinates separate points on a compact Hausdorff patch. Extend its compactly supported function to a compact rectangle and approximate by finite products, using ordinary Stone–Weierstrass and cutoffs. Refine to the finitely many Hausdorff patches when required. The fixed-support bounds in (14E.9), followed by coefficient total-variation integration, extend the zero identity to every <span class="math" data-tex="\(F_1,F_2\)">\(F_1,F_2\)</span>.</p>
+<p>Interchanging <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> in (14E.9) replaces <span class="math" data-tex="\(b(\alpha^{-1}\beta)\)">\(b(\alpha^{-1}\beta)\)</span> by <span class="math" data-tex="\(b((\alpha^{-1}\beta)^{-1})\)">\(b((\alpha^{-1}\beta)^{-1})\)</span>. Hence the zero identity holds with <span class="math" data-tex="\(b^\vee(\gamma)=b(\gamma^{-1})\)">\(b^\vee(\gamma)=b(\gamma^{-1})\)</span>. Reversing the earlier calculation, for every <span class="math" data-tex="\(k,g,\xi\)">\(k,g,\xi\)</span>,
+<span class="math" data-tex="\(\langle L(g)\xi,M(\lambda(|k|^2b^\vee))L(g)\xi\rangle=0\)">\(\langle L(g)\xi,M(\lambda(|k|^2b^\vee))L(g)\xi\rangle=0\)</span>.
+The multiplier is positive. Its square root annihilates the dense essential span, so it is zero. In the multiplication realization this says <span class="math" data-tex="\(\lambda(|k|^2b^\vee)=0\)">\(\lambda(|k|^2b^\vee)=0\)</span> <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-almost everywhere. Countably many nonnegative patch bumps with positive sets covering <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> now give <span class="math" data-tex="\(b^\vee=0\)">\(b^\vee=0\)</span> <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost everywhere. This proves <span class="math" data-tex="\(\nu(A^{-1})=0\)">\(\nu(A^{-1})=0\)</span>. Applying inversion twice gives equivalence of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>, as required.</p>
+<h3 id="a-modular-derivative-that-respects-every-product">A modular derivative that respects every product</h3>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a finite positive measure on the units and suppose
+<span class="math" data-tex="\(\nu=\mu\lambda\)">\(\nu=\mu\lambda\)</span> is equivalent to its inverse measure <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>. The Radon–Nikodym theorem initially gives only a positive finite Borel function <span class="math" data-tex="\(D=d\nu/d\nu^{-1}\)">\(D=d\nu/d\nu^{-1}\)</span>, defined almost everywhere. We prove that its representative can be chosen multiplicative on every composable pair. This matters when constructing an actual groupoid representation, rather than identities with separate exceptional sets.</p>
+<p>All spaces here have standard Borel structures, including locally Hausdorff arrows. Indeed partition a countable Hausdorff open cover into disjoint Borel pieces; each piece is a Borel subset of a second countable locally compact Hausdorff space. Its countable disjoint union is standard Borel, and its Borel sets are exactly the original Borel sets. The Haar measures form a Borel kernel: this follows first for compact bumps in each chart by Haar continuity, then for indicators of open sets by countable bump exhaustion, and then for Borel sets by the monotone-class theorem.</p>
+<p>Choose a strictly positive Borel function <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(q\lambda^x\)">\(q\lambda^x\)</span> a probability for every unit. One explicit choice starts with countably many nonnegative patch bumps <span class="math" data-tex="\(b_j\leq1\)">\(b_j\leq1\)</span> whose positive sets cover the arrows, and puts</p>
+<span id="equation-14d-1"></span><span class="math math-display" data-tex="\[
+q_0(\gamma)=\sum_j2^{-j}
+\frac{b_j(\gamma)}{1+\lambda(b_j)(r(\gamma))},
+\qquad q(\gamma)=q_0(\gamma)/\lambda(q_0)(r(\gamma)).
+\tag{14D.1}
+\]">\[
+q_0(\gamma)=\sum_j2^{-j}
+\frac{b_j(\gamma)}{1+\lambda(b_j)(r(\gamma))},
+\qquad q(\gamma)=q_0(\gamma)/\lambda(q_0)(r(\gamma)).
+\tag{14D.1}
+\]</span>
+<p>The integral of the series lies in <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>, by full support and the covering property, so the normalization is legitimate. This probability is equivalent to Haar measure on each fibre.</p>
+<p>First <span class="math" data-tex="\(D\)">\(D\)</span> is multiplicative almost everywhere for the composable-pair measure</p>
+<span id="equation-14d-2"></span><span class="math math-display" data-tex="\[
+d\tau(\alpha,\beta)=d\mu(r(\alpha))\,
+d\lambda^{r(\alpha)}(\alpha)\,
+d\lambda^{s(\alpha)}(\beta).
+\tag{14D.2}
+\]">\[
+d\tau(\alpha,\beta)=d\mu(r(\alpha))\,
+d\lambda^{r(\alpha)}(\alpha)\,
+d\lambda^{s(\alpha)}(\beta).
+\tag{14D.2}
+\]</span>
+<p>The displayed notation means iterated kernel integration, not a product of pointwise differentials. Consider the involutions</p>
+<span id="equation-14d-3"></span><span class="math math-display" data-tex="\[
+T(\alpha,\beta)=(\alpha^{-1},\alpha\beta),\qquad
+S(\alpha,\beta)=(\alpha\beta,\beta^{-1}).
+\tag{14D.3}
+\]">\[
+T(\alpha,\beta)=(\alpha^{-1},\alpha\beta),\qquad
+S(\alpha,\beta)=(\alpha\beta,\beta^{-1}).
+\tag{14D.3}
+\]</span>
+<p>Left invariance, followed by inversion of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, gives
+<span class="math" data-tex="\(T_*\tau=D(\alpha)^{-1}\tau\)">\(T_*\tau=D(\alpha)^{-1}\tau\)</span>. Replacing <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by <span class="math" data-tex="\(\gamma=\alpha\beta\)">\(\gamma=\alpha\beta\)</span> identifies <span class="math" data-tex="\(\tau\)">\(\tau\)</span> with
+<span class="math" data-tex="\(\int\lambda^x\times\lambda^x\,d\mu(x)\)">\(\int\lambda^x\times\lambda^x\,d\mu(x)\)</span>; in these coordinates <span class="math" data-tex="\(S\)">\(S\)</span> interchanges <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so <span class="math" data-tex="\(S_*\tau=\tau\)">\(S_*\tau=\tau\)</span>. Both maps are nonsingular. The equality <span class="math" data-tex="\(TST=STS\)">\(TST=STS\)</span>, whose common value is <span class="math" data-tex="\((\beta^{-1},\alpha^{-1})\)">\((\beta^{-1},\alpha^{-1})\)</span>, and the chain rule for Radon–Nikodym derivatives give respectively the densities
+<span class="math" data-tex="\((D(\alpha)D(\beta))^{-1}\)">\((D(\alpha)D(\beta))^{-1}\)</span> and <span class="math" data-tex="\(D(\alpha\beta)^{-1}\)">\(D(\alpha\beta)^{-1}\)</span>. Thus</p>
+<span id="equation-14d-4"></span><span class="math math-display" data-tex="\[
+D(\alpha\beta)=D(\alpha)D(\beta)\quad\text{for }\tau\text{-almost every pair}.
+\tag{14D.4}
+\]">\[
+D(\alpha\beta)=D(\alpha)D(\beta)\quad\text{for }\tau\text{-almost every pair}.
+\tag{14D.4}
+\]</span>
+<p>We next remove these exceptional pairs. The following explicit measurable construction avoids assuming a strictification theorem.</p>
+<p>For each unit <span class="math" data-tex="\(x\)">\(x\)</span>, take the space <span class="math" data-tex="\(E_x\)">\(E_x\)</span> of finite real measurable functions on <span class="math" data-tex="\(\mathcal G^x\)">\(\mathcal G^x\)</span>, modulo equality almost everywhere, with complete metric</p>
+<span id="equation-14d-5"></span><span class="math math-display" data-tex="\[
+d_x(f,g)=\int\min\{1,|f-g|\}\,q\,d\lambda^x.
+\tag{14D.5}
+\]">\[
+d_x(f,g)=\int\min\{1,|f-g|\}\,q\,d\lambda^x.
+\tag{14D.5}
+\]</span>
+<p>It is separable: rational simple functions from a fixed countable generating algebra of Borel sets are dense on every fibre. Completeness follows by taking a Cauchy subsequence with successive distances less than <span class="math" data-tex="\(2^{-3n}\)">\(2^{-3n}\)</span>; the probability of a difference exceeding <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> is then at most <span class="math" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span>. Borel–Cantelli gives an almost everywhere convergent subsequence, and bounded convergence gives convergence in this metric.</p>
+<p>These spaces form a standard Borel field without a measurable-choice assumption. If <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is the countable simple family, encode a point by its distances <span class="math" data-tex="\(a_n\)">\(a_n\)</span> to <span class="math" data-tex="\(e_n\)">\(e_n\)</span>. Exactly the codes satisfying</p>
+<span id="equation-14d-6"></span><span class="math math-display" data-tex="\[
+|a_n-a_m|\leq d_x(e_n,e_m)\leq a_n+a_m,
+\qquad\inf_n a_n=0
+\tag{14D.6}
+\]">\[
+|a_n-a_m|\leq d_x(e_n,e_m)\leq a_n+a_m,
+\qquad\inf_n a_n=0
+\tag{14D.6}
+\]</span>
+<p>occur in the completion. Choose indices with <span class="math" data-tex="\(a_n\to0\)">\(a_n\to0\)</span> to verify sufficiency and uniqueness. These are countably many Borel conditions on <span class="math" data-tex="\((x,(a_n))\)">\((x,(a_n))\)</span>. Addition, scalar multiplication, and integrals of bounded continuous functions of a field element are Borel: choose the first simple approximant at each prescribed distance, carry out the operation on the simple functions, and pass to the limit. The integral convergence follows from convergence in probability and boundedness. A field element also has a jointly Borel function representative: take approximants at distances <span class="math" data-tex="\(2^{-3n}\)">\(2^{-3n}\)</span>, use the almost everywhere convergence just proved on every fibre, and set the value zero where the limit fails.</p>
+<p>Define the centre of <span class="math" data-tex="\(f\in E_x\)">\(f\in E_x\)</span> as the unique real number <span class="math" data-tex="\(c_x(f)\)">\(c_x(f)\)</span> satisfying</p>
+<span id="equation-14d-7"></span><span class="math math-display" data-tex="\[
+\int\arctan(f-c_x(f))\,q\,d\lambda^x=0.
+\tag{14D.7}
+\]">\[
+\int\arctan(f-c_x(f))\,q\,d\lambda^x=0.
+\tag{14D.7}
+\]</span>
+<p>The integral is continuous and strictly decreasing in the candidate centre, with limits <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span> and <span class="math" data-tex="\(-\pi/2\)">\(-\pi/2\)</span>. Its root is Borel, by testing rational candidate centres, and continuous in <span class="math" data-tex="\(f\)">\(f\)</span> for the probability metric. Translation by a constant translates the root by that constant. Consequently the centred functions <span class="math" data-tex="\(c_x(f)=0\)">\(c_x(f)=0\)</span> identify <span class="math" data-tex="\(E_x\)">\(E_x\)</span> modulo addition of constants. They are a closed Polish subspace of <span class="math" data-tex="\(E_x\)">\(E_x\)</span>; the centred simple family is dense.</p>
+<p>Left translation <span class="math" data-tex="\(A_\gamma f(\eta)=f(\gamma^{-1}\eta)\)">\(A_\gamma f(\eta)=f(\gamma^{-1}\eta)\)</span> gives a continuous isomorphism <span class="math" data-tex="\(E_{s(\gamma)}\to E_{r(\gamma)}\)">\(E_{s(\gamma)}\to E_{r(\gamma)}\)</span>. Equivalent finite measures define the same convergence-in-probability topology, and the translated Haar probabilities are equivalent by left invariance. Its map on the Borel fields is Borel: check a simple function by integration against (14D.5), then use simple approximants. On centred functions let
+<span class="math" data-tex="\(B_\gamma f=A_\gamma f-c_{r(\gamma)}(A_\gamma f)\)">\(B_\gamma f=A_\gamma f-c_{r(\gamma)}(A_\gamma f)\)</span>. These maps obey
+<span class="math" data-tex="\(B_\gamma B_\eta=B_{\gamma\eta}\)">\(B_\gamma B_\eta=B_{\gamma\eta}\)</span> exactly, because the original translations compose and preserve constants.</p>
+<p>Replace any exceptional zero or infinite values of the initial <span class="math" data-tex="\(D\)">\(D\)</span> by 1 and let
+<span class="math" data-tex="\(f_x(\eta)=\log D(\eta)\)">\(f_x(\eta)=\log D(\eta)\)</span> on <span class="math" data-tex="\(\mathcal G^x\)">\(\mathcal G^x\)</span>. This is a Borel section of <span class="math" data-tex="\(E\)">\(E\)</span>. Write <span class="math" data-tex="\(z_x=f_x-c_x(f_x)\)">\(z_x=f_x-c_x(f_x)\)</span>. Formula (14D.4) says</p>
+<span id="equation-14d-8"></span><span class="math math-display" data-tex="\[
+z_{r(\gamma)}=B_\gamma z_{s(\gamma)}
+\quad\text{for }\nu\text{-almost every }\gamma.
+\tag{14D.8}
+\]">\[
+z_{r(\gamma)}=B_\gamma z_{s(\gamma)}
+\quad\text{for }\nu\text{-almost every }\gamma.
+\tag{14D.8}
+\]</span>
+<p>For every unit <span class="math" data-tex="\(x\)">\(x\)</span>, form the law of the centred random element
+<span class="math" data-tex="\(B_\gamma z_{s(\gamma)}\)">\(B_\gamma z_{s(\gamma)}\)</span>, where <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is distributed according to <span class="math" data-tex="\(q\lambda^x\)">\(q\lambda^x\)</span>. Let <span class="math" data-tex="\(F\)">\(F\)</span> be the set of units where this law is a point mass. It is Borel: the expectation of the distance between two independent such elements is zero exactly when their common law is a point mass. The double integral is Borel by the kernel construction above. By (14D.8), <span class="math" data-tex="\(F\)">\(F\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-conull.</p>
+<p>Moreover <span class="math" data-tex="\(F\)">\(F\)</span> is invariant under every arrow, not just almost every arrow. Left translation changes the probability on the arrow fibre to an equivalent probability and carries each random element by the homeomorphism <span class="math" data-tex="\(B_\sigma\)">\(B_\sigma\)</span>. Thus its law is a point mass at one endpoint if and only if it is one at the other. Denote its unique value by <span class="math" data-tex="\(z&#x27;_x\)">\(z&#x27;_x\)</span>. Its distances to the centred simple family are the corresponding expected distances; (14D.6) therefore proves that <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span> is Borel. The same translation argument gives</p>
+<span id="equation-14d-9"></span><span class="math math-display" data-tex="\[
+z&#x27;_{r(\sigma)}=B_\sigma z&#x27;_{s(\sigma)}
+\qquad(\sigma\in\mathcal G|_F).
+\tag{14D.9}
+\]">\[
+z&#x27;_{r(\sigma)}=B_\sigma z&#x27;_{s(\sigma)}
+\qquad(\sigma\in\mathcal G|_F).
+\tag{14D.9}
+\]</span>
+<p>The Borel set <span class="math" data-tex="\(C=\{x\in F:z&#x27;_x=z_x\}\)">\(C=\{x\in F:z&#x27;_x=z_x\}\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-conull. On <span class="math" data-tex="\(C\)">\(C\)</span> retain the uncentred representative <span class="math" data-tex="\(f_x\)">\(f_x\)</span>; on <span class="math" data-tex="\(F\setminus C\)">\(F\setminus C\)</span> choose the centred representative <span class="math" data-tex="\(z&#x27;_x\)">\(z&#x27;_x\)</span>. Call this field <span class="math" data-tex="\(\ell_x\)">\(\ell_x\)</span>. For every <span class="math" data-tex="\(\sigma\in\mathcal G|_F\)">\(\sigma\in\mathcal G|_F\)</span>, (14D.9) means that
+<span class="math" data-tex="\(\ell_{r(\sigma)}-A_\sigma\ell_{s(\sigma)}\)">\(\ell_{r(\sigma)}-A_\sigma\ell_{s(\sigma)}\)</span> is a constant almost everywhere in its fibre. Call it <span class="math" data-tex="\(b(\sigma)\)">\(b(\sigma)\)</span>. This constant is a Borel function of the arrow: integrate its arctangent against the Haar probability and apply the tangent function. Translation preserves constants, so
+<span class="math" data-tex="\(b(\sigma\eta)=b(\sigma)+b(\eta)\)">\(b(\sigma\eta)=b(\sigma)+b(\eta)\)</span> for every composable pair in the reduction.</p>
+<p>Set <span class="math" data-tex="\(\widetilde D(\sigma)=\exp b(\sigma)\)">\(\widetilde D(\sigma)=\exp b(\sigma)\)</span> on <span class="math" data-tex="\(\mathcal G|_F\)">\(\mathcal G|_F\)</span>, and 1 on its complement. Since <span class="math" data-tex="\(F\)">\(F\)</span> is invariant, there are no arrows crossing these two parts; <span class="math" data-tex="\(\widetilde D\)">\(\widetilde D\)</span> is a Borel homomorphism on the entire groupoid. Quasi-invariance implies that <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost every arrow has both endpoints in <span class="math" data-tex="\(C\)">\(C\)</span>: range-null sets are <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null, source-null sets are <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span>-null and hence <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null. On those arrows (14D.4) gives <span class="math" data-tex="\(b(\sigma)=\log D(\sigma)\)">\(b(\sigma)=\log D(\sigma)\)</span> almost everywhere. We have therefore preserved the original Radon–Nikodym derivative while obtaining the exact product rule. ∎</p>
+<p>The measurable correction of almost everywhere homomorphisms is classically due to Ramsay; compare [Muhly–Williams 2008, Remark 7.1, p. 43] and the references there. The argument above proves the scalar modular case needed here, including the measurable field and invariant conull set. It does not assume a locally continuous modular function.</p>
+<h3 id="coefficient-densities-and-the-hilbert-fibres">Coefficient densities and the Hilbert fibres</h3>
+<p>The coefficient measures of vectors in <span class="math" data-tex="\(H_{00}\)">\(H_{00}\)</span> are absolutely continuous with respect to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Here is the needed argument. For a compact <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set <span class="math" data-tex="\(A\)">\(A\)</span> in a patch, put <span class="math" data-tex="\(b=1_A\)">\(b=1_A\)</span>, and let <span class="math" data-tex="\(N=\{x:\lambda^x(A)&gt;0\}\)">\(N=\{x:\lambda^x(A)&gt;0\}\)</span>, a Borel <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-null set. For any continuous patch <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(b*g\)">\(b*g\)</span> vanishes outside <span class="math" data-tex="\(r^{-1}(N)\)">\(r^{-1}(N)\)</span>, directly from its integral. Thus (14E.7) gives
+<span class="math" data-tex="\([b*g\otimes\xi]=M(1_N)[b*g\otimes\xi]=0\)">\([b*g\otimes\xi]=M(1_N)[b*g\otimes\xi]=0\)</span>.
+The coefficient identity following (14E.7) shows that
+<span class="math" data-tex="\(\ell_{a,c}(1_A)=0\)">\(\ell_{a,c}(1_A)=0\)</span> for <span class="math" data-tex="\(a,c\in H_{00}\)">\(a,c\in H_{00}\)</span>, by writing both as finite convolution vectors. In fact the same holds for every compact subset of <span class="math" data-tex="\(A\)">\(A\)</span>. The total variation of a complex Radon measure on a <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set is then zero: its restriction has zero integrals on all continuous functions by regular approximation with compact sets, hence is the zero measure. Inner regularity on the patches proves absolute continuity for every Borel null set.</p>
+<p>Choose the exact positive modular homomorphism just constructed and keep the notation <span class="math" data-tex="\(D\)">\(D\)</span>. The measure <span class="math" data-tex="\(\nu_0=D^{-1/2}\nu\)">\(\nu_0=D^{-1/2}\nu\)</span> is symmetric under inversion: substitution gives <span class="math" data-tex="\(D(\gamma^{-1})^{-1/2}D(\gamma)^{-1}=D(\gamma)^{-1/2}\)">\(D(\gamma^{-1})^{-1/2}D(\gamma)^{-1}=D(\gamma)^{-1/2}\)</span>. It is sigma-finite and equivalent to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. For the basis <span class="math" data-tex="\(\zeta_i\in H_{00}\)">\(\zeta_i\in H_{00}\)</span> chosen in (14E.3), take Borel densities
+<span class="math" data-tex="\(\rho_{ij}=d\ell_{\zeta_i,\zeta_j}/d\nu_0\)">\(\rho_{ij}=d\ell_{\zeta_i,\zeta_j}/d\nu_0\)</span>. They are chosen for this countable family only. We do not suppose that arbitrary independently chosen Radon–Nikodym representatives are pointwise sesquilinear in all vectors.</p>
+<p>For compactly supported fibre functions define</p>
+<span id="equation-14e-10"></span><span class="math math-display" data-tex="\[
+\begin{split}
+Q_x(f\otimes\zeta_i,g\otimes\zeta_j)
+=\int\!\int &amp;\overline{f(\eta)}g(\gamma)
+\rho_{ij}(\eta^{-1}\gamma)\\
+&amp;{}· D(\eta)^{-1/2}D(\gamma)^{-1/2}
+\,d\lambda^x(\eta)d\lambda^x(\gamma).
+\end{split}
+\tag{14E.10}
+\]">\[
+\begin{split}
+Q_x(f\otimes\zeta_i,g\otimes\zeta_j)
+=\int\!\int &amp;\overline{f(\eta)}g(\gamma)
+\rho_{ij}(\eta^{-1}\gamma)\\
+&amp;{}· D(\eta)^{-1/2}D(\gamma)^{-1/2}
+\,d\lambda^x(\eta)d\lambda^x(\gamma).
+\end{split}
+\tag{14E.10}
+\]</span>
+<p>First interpret this for restrictions of global test functions and for almost every <span class="math" data-tex="\(x\)">\(x\)</span>. Expanding <span class="math" data-tex="\(f^**g\)">\(f^**g\)</span>, using Haar left invariance, and then inverting the first variable with the symmetric measure <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span>, gives</p>
+<span id="equation-14e-11"></span><span class="math math-display" data-tex="\[
+\langle L(f)\zeta_i,L(g)\zeta_j\rangle
+=\int_X Q_x(f\otimes\zeta_i,g\otimes\zeta_j)\,d\mu(x).
+\tag{14E.11}
+\]">\[
+\langle L(f)\zeta_i,L(g)\zeta_j\rangle
+=\int_X Q_x(f\otimes\zeta_i,g\otimes\zeta_j)\,d\mu(x).
+\tag{14E.11}
+\]</span>
+<p>The separate half-density factors in (14E.10) are necessary. They arise from
+<span class="math" data-tex="\(D(\eta^{-1}\gamma)=D(\eta)^{-1}D(\gamma)\)">\(D(\eta^{-1}\gamma)=D(\eta)^{-1}D(\gamma)\)</span> during that inversion.</p>
+<p>We verify finiteness and positivity on a single conull set. Choose countably many nonnegative finite patch envelopes <span class="math" data-tex="\(b_l\)">\(b_l\)</span>, cofinal for compact patch supports and their finite unions. They can be made equal to at least one on a compact exhaustion of each member of a countable precompact Hausdorff cover; include all finite sums. The absolute double integral with envelope <span class="math" data-tex="\(b_l(\eta)b_l(\gamma)|\rho_{ij}(\eta^{-1}\gamma)|\)">\(b_l(\eta)b_l(\gamma)|\rho_{ij}(\eta^{-1}\gamma)|\)</span> and the half densities has global integral</p>
+<span id="equation-14e-12"></span><span class="math math-display" data-tex="\[
+\int (b_l^**b_l)(\sigma)|\rho_{ij}(\sigma)|\,d\nu_0(\sigma)&lt;\infty.
+\tag{14E.12}
+\]">\[
+\int (b_l^**b_l)(\sigma)|\rho_{ij}(\sigma)|\,d\nu_0(\sigma)&lt;\infty.
+\tag{14E.12}
+\]</span>
+<p>This is the same nonnegative change of variables as (14E.11). Finiteness holds because the coefficient total variation is Radon on the finite compact patch envelopes of <span class="math" data-tex="\(b_l^**b_l\)">\(b_l^**b_l\)</span>. Excluding one null set for all <span class="math" data-tex="\(l,i,j\)">\(l,i,j\)</span> makes every such fibre integral finite, and the forms continuous for uniform convergence on fixed fibre compact sets.</p>
+<p>Choose a countable test family dense on each compact patch envelope. For each finite rational complex tensor combination <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> from it, localization by <span class="math" data-tex="\(a\in C_c(X)\)">\(a\in C_c(X)\)</span> in (14E.11) gives</p>
+<span id="equation-14e-13"></span><span class="math math-display" data-tex="\[
+\int |a(x)|^2 Q_x(\alpha,\alpha)\,d\mu(x)
+=\Big\|\sum_i L((a\circ r)f_i)\zeta_i\Big\|^2\geq0.
+\tag{14E.13}
+\]">\[
+\int |a(x)|^2 Q_x(\alpha,\alpha)\,d\mu(x)
+=\Big\|\sum_i L((a\circ r)f_i)\zeta_i\Big\|^2\geq0.
+\tag{14E.13}
+\]</span>
+<p>Thus <span class="math" data-tex="\(Q_x(\alpha,\alpha)\)">\(Q_x(\alpha,\alpha)\)</span> is real and nonnegative almost everywhere. This follows from uniqueness of Radon densities tested by continuous nonnegative cutoffs; the real and imaginary parts are locally integrable by (14E.12). Countably many <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>'s give one Borel conull set. Continuity on fixed compact envelopes and polarization extend positivity and Hermitian symmetry to every finite tensor combination there.</p>
+<p>Every <span class="math" data-tex="\(f\in C_c(\mathcal G^x)\)">\(f\in C_c(\mathcal G^x)\)</span> is the restriction of a global patch test function. The range fibre is closed in each Hausdorff patch; split <span class="math" data-tex="\(f\)">\(f\)</span> by a partition of unity subordinate to finitely many such patches, extend each piece by Tietze, and multiply by a compact cutoff. Thus the fibre forms just constructed apply to all compactly supported fibre functions, not a smaller family.</p>
+<p>We need an invariant conull set, since unitaries must act on every arrow in the relevant reduction. Left translation on the fibre tensors is</p>
+<span id="equation-14e-14"></span><span class="math math-display" data-tex="\[
+T_\sigma(f\otimes\zeta_i)(\gamma)
+=D(\sigma)^{1/2}f(\sigma^{-1}\gamma)\otimes\zeta_i.
+\tag{14E.14}
+\]">\[
+T_\sigma(f\otimes\zeta_i)(\gamma)
+=D(\sigma)^{1/2}f(\sigma^{-1}\gamma)\otimes\zeta_i.
+\tag{14E.14}
+\]</span>
+<p>The exact product rule for <span class="math" data-tex="\(D\)">\(D\)</span> and Haar invariance give, by substitution in both variables,
+<span class="math" data-tex="\(Q_{r(\sigma)}(T_\sigma\alpha,T_\sigma\beta)=Q_{s(\sigma)}(\alpha,\beta)\)">\(Q_{r(\sigma)}(T_\sigma\alpha,T_\sigma\beta)=Q_{s(\sigma)}(\alpha,\beta)\)</span>.
+Indeed <span class="math" data-tex="\((\sigma\eta)^{-1}(\sigma\gamma)=\eta^{-1}\gamma\)">\((\sigma\eta)^{-1}(\sigma\gamma)=\eta^{-1}\gamma\)</span>, while the two factors <span class="math" data-tex="\(D(\sigma)^{-1/2}\)">\(D(\sigma)^{-1/2}\)</span> cancel the scalar <span class="math" data-tex="\(D(\sigma)\)">\(D(\sigma)\)</span> from the two translated functions. This identity holds for absolute integrals as well, and translation is a bijection of the compact fibre test functions. Finiteness of all those integrals and positivity therefore propagate along every arrow.</p>
+<p>Shrink the preceding good set to a sigma-compact conull set <span class="math" data-tex="\(C=\bigcup K_n\)">\(C=\bigcup K_n\)</span>, using regularity of the finite <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Cover the arrow space by countably many compact Hausdorff chart neighborhoods <span class="math" data-tex="\(P_m\)">\(P_m\)</span>. Its saturation
+<span class="math" data-tex="\(F=\bigcup_{m,n}r(P_m\cap s^{-1}(K_n))\)">\(F=\bigcup_{m,n}r(P_m\cap s^{-1}(K_n))\)</span> is Borel, since each displayed range image is compact in the Hausdorff unit space. It is invariant, conull, and consists entirely of good units by the translation identity. Complete the fibre tensor spaces modulo the <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>-null vectors for <span class="math" data-tex="\(x\in F\)">\(x\in F\)</span>, and take zero fibres outside <span class="math" data-tex="\(F\)">\(F\)</span>. Call these Hilbert spaces <span class="math" data-tex="\(H_x\)">\(H_x\)</span>.</p>
+<p>The countable fundamental tensors <span class="math" data-tex="\(f_l\otimes_x\zeta_i\)">\(f_l\otimes_x\zeta_i\)</span> have Borel Gram coefficients by kernel integration and (14E.10). The same explicit Gram–Schmidt construction used for (14E.4) equips their completions with a standard Borel Hilbert field. They are total at every good unit by compact-envelope continuity and the fibre extension argument. Formula (14E.14) induces a unitary <span class="math" data-tex="\(V_\sigma:H_{s(\sigma)}\to H_{r(\sigma)}\)">\(V_\sigma:H_{s(\sigma)}\to H_{r(\sigma)}\)</span>, with inverse <span class="math" data-tex="\(V_{\sigma^{-1}}\)">\(V_{\sigma^{-1}}\)</span>, and the unique map of zero fibres outside <span class="math" data-tex="\(F\)">\(F\)</span>. Its fundamental matrix coefficients are Borel: substitute (14E.14) into (14E.10) and integrate the jointly Borel integrand. Hence <span class="math" data-tex="\(\sigma\mapsto V_\sigma\)">\(\sigma\mapsto V_\sigma\)</span> is Borel. The formula and exact modular rule also give <span class="math" data-tex="\(V_\sigma V_\tau=V_{\sigma\tau}\)">\(V_\sigma V_\tau=V_{\sigma\tau}\)</span> for every composable pair. Invariance of <span class="math" data-tex="\(F\)">\(F\)</span> ensures no arrow crosses to the zero-fibre part.</p>
+<h3 id="recovering-the-representation-and-its-bound">Recovering the representation and its bound</h3>
+<p>Define</p>
+<span id="equation-14e-15"></span><span class="math math-display" data-tex="\[
+W(L(f)\zeta_i)(x)=f|_{\mathcal G^x}\otimes_x\zeta_i.
+\tag{14E.15}
+\]">\[
+W(L(f)\zeta_i)(x)=f|_{\mathcal G^x}\otimes_x\zeta_i.
+\tag{14E.15}
+\]</span>
+<p>Equation (14E.11) makes this well-defined and isometric on the span in (14E.3), so it extends isometrically from all of <span class="math" data-tex="\(H\)">\(H\)</span>. Its range is all of <span class="math" data-tex="\(L^2(X,H_x,\mu)\)">\(L^2(X,H_x,\mu)\)</span>: it contains the fundamental tensor sections and their continuous unit multiples, by (14.14). Those multiples are dense. For completeness, approximate a square-integrable Borel section by finite combinations of the measurable Gram–Schmidt sections, truncate to sets where their coefficients and norms are bounded, and approximate the scalar coefficients in the associated finite Radon weighted measures by continuous compact functions. Gram–Schmidt sections themselves are Borel scalar combinations of fundamental tensors, and the same truncation and scalar approximation puts them in the closure of those continuous multiples. The isometric range is closed, proving surjectivity.</p>
+<p>Any quasi-invariant measure, Borel Hilbert field and exact unitary action as above has a bounded integrated form. Its weak matrix coefficient is</p>
+<span id="equation-14e-16"></span><span class="math math-display" data-tex="\[
+B_f(\xi,\eta)=\int f(\sigma)
+\langle\xi(r(\sigma)),V_\sigma\eta(s(\sigma))\rangle
+D(\sigma)^{-1/2}\,d\nu(\sigma).
+\tag{14E.16}
+\]">\[
+B_f(\xi,\eta)=\int f(\sigma)
+\langle\xi(r(\sigma)),V_\sigma\eta(s(\sigma))\rangle
+D(\sigma)^{-1/2}\,d\nu(\sigma).
+\tag{14E.16}
+\]</span>
+<p>Weighted Cauchy–Schwarz bounds its absolute value by</p>
+<span id="equation-14e-17"></span><span class="math math-display" data-tex="\[
+\begin{split}
+&amp;\left(\int |f(\sigma)|\|\xi(r(\sigma))\|^2\,d\nu(\sigma)\right)^{1/2}\\
+&amp;\qquad{}·\left(\int |f(\sigma)|\|\eta(s(\sigma))\|^2
+D(\sigma)^{-1}\,d\nu(\sigma)\right)^{1/2}
+\leq \|f\|_I\|\xi\|\|\eta\|.
+\end{split}
+\tag{14E.17}
+\]">\[
+\begin{split}
+&amp;\left(\int |f(\sigma)|\|\xi(r(\sigma))\|^2\,d\nu(\sigma)\right)^{1/2}\\
+&amp;\qquad{}·\left(\int |f(\sigma)|\|\eta(s(\sigma))\|^2
+D(\sigma)^{-1}\,d\nu(\sigma)\right)^{1/2}
+\leq \|f\|_I\|\xi\|\|\eta\|.
+\end{split}
+\tag{14E.17}
+\]</span>
+<p>The first factor uses the range row bound; change <span class="math" data-tex="\(D^{-1}\nu\)">\(D^{-1}\nu\)</span> to <span class="math" data-tex="\(\nu^{-1}\)">\(\nu^{-1}\)</span> in the second to use the source bound. The bounded sesquilinear form defines <span class="math" data-tex="\(\pi(f)\)">\(\pi(f)\)</span>. Its vector integral exists for almost every range unit: fibrewise Cauchy–Schwarz bounds the squared integral of <span class="math" data-tex="\(|f|\|\eta\circ s\|D^{-1/2}\)">\(|f|\|\eta\circ s\|D^{-1/2}\)</span> by the row bound times <span class="math" data-tex="\(\lambda^x(|f|\|\eta\circ s\|^2D^{-1})\)">\(\lambda^x(|f|\|\eta\circ s\|^2D^{-1})\)</span>, whose <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-integral is at most the source bound times <span class="math" data-tex="\(\|\eta\|^2\)">\(\|\eta\|^2\)</span>. Measurable fibre coordinates give the vector integral and identify it with (14E.16).</p>
+<p>Inversion of the symmetric <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span>, together with <span class="math" data-tex="\(V_{\sigma^{-1}}=V_\sigma^*\)">\(V_{\sigma^{-1}}=V_\sigma^*\)</span>, gives <span class="math" data-tex="\(\pi(f)^*=\pi(f^*)\)">\(\pi(f)^*=\pi(f^*)\)</span>. For the product, the absolute iterated scalar integral is bounded by <span class="math" data-tex="\(\|f\|_I\|g\|_I\|\xi\|\|\eta\|\)">\(\|f\|_I\|g\|_I\|\xi\|\|\eta\|\)</span>: apply (14E.17) twice to the positive scalar kernels with weights <span class="math" data-tex="\(|f|\)">\(|f|\)</span> and <span class="math" data-tex="\(|g|\)">\(|g|\)</span>, acting on the scalar functions <span class="math" data-tex="\(\|\xi(x)\|\)">\(\|\xi(x)\|\)</span> and <span class="math" data-tex="\(\|\eta(x)\|\)">\(\|\eta(x)\|\)</span>. These kernels are already bounded by the preceding argument, independently of any product identity. Fubini is therefore legitimate. In the inner integral set <span class="math" data-tex="\(\tau=\sigma\beta\)">\(\tau=\sigma\beta\)</span>; Haar invariance changes <span class="math" data-tex="\(\lambda^{s(\sigma)}(\beta)\)">\(\lambda^{s(\sigma)}(\beta)\)</span> to <span class="math" data-tex="\(\lambda^{r(\sigma)}(\tau)\)">\(\lambda^{r(\sigma)}(\tau)\)</span>, while <span class="math" data-tex="\(D(\sigma)^{-1/2}D(\beta)^{-1/2}=D(\tau)^{-1/2}\)">\(D(\sigma)^{-1/2}D(\beta)^{-1/2}=D(\tau)^{-1/2}\)</span> and <span class="math" data-tex="\(V_\sigma V_\beta=V_\tau\)">\(V_\sigma V_\beta=V_\tau\)</span>. Interchanging <span class="math" data-tex="\(\sigma,\tau\)">\(\sigma,\tau\)</span> leaves precisely <span class="math" data-tex="\((f*g)(\tau)\)">\((f*g)(\tau)\)</span> and proves <span class="math" data-tex="\(\pi(f)\pi(g)=\pi(f*g)\)">\(\pi(f)\pi(g)=\pi(f*g)\)</span>.</p>
+<p>We verify that this is the original representation. On the dense test span, insert (14E.14) in (14E.16). The two functions in (14E.10) are respectively <span class="math" data-tex="\(f|_{\mathcal G^x}\)">\(f|_{\mathcal G^x}\)</span> and <span class="math" data-tex="\(D(\sigma)^{1/2}g(\sigma^{-1}\,cdot)\)">\(D(\sigma)^{1/2}g(\sigma^{-1}\,cdot)\)</span>. The factor <span class="math" data-tex="\(D(\sigma)^{-1/2}\)">\(D(\sigma)^{-1/2}\)</span> in the integrated form cancels that scalar, and the remaining inner integral in <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is exactly <span class="math" data-tex="\(h*g\)">\(h*g\)</span>. Thus</p>
+<span id="equation-14e-18"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle W(L(f)\zeta_i),\pi(h)W(L(g)\zeta_j)\rangle\\
+&amp;\quad=\int_X Q_x(f\otimes\zeta_i,(h*g)\otimes\zeta_j)\,d\mu(x)\\
+&amp;\quad=\langle L(f)\zeta_i,L(h)L(g)\zeta_j\rangle.
+\end{aligned}
+\tag{14E.18}
+\]">\[
+\begin{aligned}
+&amp;\langle W(L(f)\zeta_i),\pi(h)W(L(g)\zeta_j)\rangle\\
+&amp;\quad=\int_X Q_x(f\otimes\zeta_i,(h*g)\otimes\zeta_j)\,d\mu(x)\\
+&amp;\quad=\langle L(f)\zeta_i,L(h)L(g)\zeta_j\rangle.
+\end{aligned}
+\tag{14E.18}
+\]</span>
+<p>The expansion is absolutely integrable: replace the compact test functions by positive envelopes and bound the extra <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> integral by the envelope convolution; (14E.12) then applies. Hence <span class="math" data-tex="\(W\)">\(W\)</span> intertwines on that dense span. The bounded operator <span class="math" data-tex="\(W^*\pi(h)W\)">\(W^*\pi(h)W\)</span> also agrees with <span class="math" data-tex="\(L(h)\)">\(L(h)\)</span> on every <span class="math" data-tex="\(\eta\in H_0\)">\(\eta\in H_0\)</span>: test their difference against the dense span, move <span class="math" data-tex="\(L(h)\)">\(L(h)\)</span> by its adjoint identity, and use the already established equality for <span class="math" data-tex="\(h^*\)">\(h^*\)</span> on that span. Every such matrix coefficient of the difference is zero.</p>
+<p>We have proved both automatic <span class="math" data-tex="\(I\)">\(I\)</span>-contractivity and the measurable disintegration, including an exact Borel unitary action, for the full stated locally Hausdorff dense-domain case. The resulting operators have the weak integral formula (14.13). Their essential range is dense by the original hypothesis, so their extension is nondegenerate. ∎</p>
+<p>This is Renault's disintegration theorem. [Muhly–Williams 2008, Appendix B, pp. 66–85] supplies the historical proof construction and [ibid., Theorem 7.8, pp. 45–46] the precise dense-domain statement. The argument here includes the local-unit, Borel-extension, quasi-invariance, scalar modular correction and measurable-field steps. It uses ordinary Radon measure theory and Hilbert-space completion throughout; no groupoid disintegration or measurable strictification theorem is an assumed proof provider.</p>
+<h2 id="transformation-groupoids-are-crossed-products">Transformation groupoids are crossed products</h2>
+<p>Let a second countable locally compact group <span class="math" data-tex="\(H\)">\(H\)</span> act continuously on a second countable locally compact Hausdorff <span class="math" data-tex="\(X\)">\(X\)</span>, and let
+<span class="math" data-tex="\(\alpha_g b(x)=b(g^{-1}x)\)">\(\alpha_g b(x)=b(g^{-1}x)\)</span>. Use the target-first groupoid coordinates of Lesson 13 and its range Haar system <span class="math" data-tex="\(dg\)">\(dg\)</span>. The conversion is</p>
+<span id="equation-14-16"></span><span class="math math-display" data-tex="\[
+(\mathcal T f)(g)(x)=\Delta_H(g)^{-1/2}f(x,g).
+\tag{14.16}
+\]">\[
+(\mathcal T f)(g)(x)=\Delta_H(g)^{-1/2}f(x,g).
+\tag{14.16}
+\]</span>
+<p><span id="theorem-14-3"></span><strong>Theorem 14.3.</strong> The map (14.16) extends to isomorphisms</p>
+<span id="equation-14-17"></span><span class="math math-display" data-tex="\[
+C^*(X\rtimes H)\cong C_0(X)\rtimes_\alpha H,\qquad
+C_r^*(X\rtimes H)\cong C_0(X)\rtimes_{\alpha,r}H.
+\tag{14.17}
+\]">\[
+C^*(X\rtimes H)\cong C_0(X)\rtimes_\alpha H,\qquad
+C_r^*(X\rtimes H)\cong C_0(X)\rtimes_{\alpha,r}H.
+\tag{14.17}
+\]</span>
+<p><strong>Proof.</strong> On the compact core,</p>
+<span id="equation-14-18"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(f*g)(x,t)=\int_H f(x,a)g(a^{-1}x,a^{-1}t)\,da,\\
+f^*(x,t)=\overline{f(t^{-1}x,t^{-1})}.
+\end{gathered}
+\tag{14.18}
+\]">\[
+\begin{gathered}
+(f*g)(x,t)=\int_H f(x,a)g(a^{-1}x,a^{-1}t)\,da,\\
+f^*(x,t)=\overline{f(t^{-1}x,t^{-1})}.
+\end{gathered}
+\tag{14.18}
+\]</span>
+<p>The identity
+<span class="math" data-tex="\(\Delta(a)^{-1/2}\Delta(a^{-1}t)^{-1/2}=\Delta(t)^{-1/2}\)">\(\Delta(a)^{-1/2}\Delta(a^{-1}t)^{-1/2}=\Delta(t)^{-1/2}\)</span>
+proves preservation of convolution. The crossed-product involution of <span class="math" data-tex="\(\mathcal T f\)">\(\mathcal T f\)</span> is
+<span class="math" data-tex="\(\Delta(t)^{-1}\alpha_t((\mathcal T f)(t^{-1})^*)\)">\(\Delta(t)^{-1}\alpha_t((\mathcal T f)(t^{-1})^*)\)</span>; its modular coefficient is
+<span class="math" data-tex="\(\Delta(t)^{-1}\Delta(t^{-1})^{-1/2}=\Delta(t)^{-1/2}\)">\(\Delta(t)^{-1}\Delta(t^{-1})^{-1/2}=\Delta(t)^{-1/2}\)</span>, proving preservation of the involution. The inverse multiplies by <span class="math" data-tex="\(\Delta^{1/2}\)">\(\Delta^{1/2}\)</span>.</p>
+<p>The image core consists of jointly compactly supported coefficient kernels. It is dense in <span class="math" data-tex="\(C_c(H,C_0(X))\)">\(C_c(H,C_0(X))\)</span> in the <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-norm: on a fixed compact set of group coordinates, a <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> cutoff approximates the compact set of coefficient values uniformly. Finite product approximation, or a partition of unity in the group coordinate, gives the joint kernels.</p>
+<p>We verify the full norm, including both directions of the representation correspondence. Given a nondegenerate covariant pair <span class="math" data-tex="\((P,U)\)">\((P,U)\)</span>, its integrated form on <span class="math" data-tex="\(\mathcal T C_c(X\rtimes H)\)">\(\mathcal T C_c(X\rtimes H)\)</span> is a *-representation by (14.18). Uniform convergence on a fixed compact set makes all its matrix coefficients continuous, since <span class="math" data-tex="\(\Delta^{-1/2}\)">\(\Delta^{-1/2}\)</span> is bounded on the group-coordinate compact set. Its essential range is dense by the crossed-product integrated-form correspondence and the core density just proved. Disintegration therefore makes this a groupoid <span class="math" data-tex="\(I\)">\(I\)</span>-contractive representation.</p>
+<p>Conversely, take a nondegenerate groupoid <span class="math" data-tex="\(I\)">\(I\)</span>-contractive representation <span class="math" data-tex="\(L\)">\(L\)</span> and transfer it to the image core by <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Formula (14.14) supplies the coefficient representation <span class="math" data-tex="\(P\)">\(P\)</span>. For <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>, left multiplication by the desired group unitary must act on the core as</p>
+<span id="equation-14-19"></span><span class="math math-display" data-tex="\[
+(Q_a F)(t)=\alpha_a(F(a^{-1}t)).
+\tag{14.19}
+\]">\[
+(Q_a F)(t)=\alpha_a(F(a^{-1}t)).
+\tag{14.19}
+\]</span>
+<p>For the inner-product identity, the convolution integrand in
+<span class="math" data-tex="\((Q_a F)^**(Q_a G)(t)\)">\((Q_a F)^**(Q_a G)(t)\)</span> is
+<span class="math" data-tex="\(\Delta(s)^{-1}\alpha_{sa}(F((sa)^{-1})^*G((sa)^{-1}t))\)">\(\Delta(s)^{-1}\alpha_{sa}(F((sa)^{-1})^*G((sa)^{-1}t))\)</span>.
+Changing variable <span class="math" data-tex="\(u=sa\)">\(u=sa\)</span> gives
+<span class="math" data-tex="\(\Delta(s)^{-1}\,ds=\Delta(u)^{-1}\,du\)">\(\Delta(s)^{-1}\,ds=\Delta(u)^{-1}\,du\)</span>, including the right-translation Haar factor. Thus
+<span class="math" data-tex="\((Q_a F)^**(Q_a G)=F^**G\)">\((Q_a F)^**(Q_a G)=F^**G\)</span>. Hence on the dense span of core vectors the rule
+<span class="math" data-tex="\(U_a L(F)\xi=L(Q_aF)\xi\)">\(U_a L(F)\xi=L(Q_aF)\xi\)</span> preserves every finite-sum inner product. It is well-defined, extends to an isometry, and <span class="math" data-tex="\(Q_{a^{-1}}\)">\(Q_{a^{-1}}\)</span> gives its inverse. The identities <span class="math" data-tex="\(Q_aQ_b=Q_{ab}\)">\(Q_aQ_b=Q_{ab}\)</span> and <span class="math" data-tex="\(Q_a(cF)=\alpha_a(c)Q_aF\)">\(Q_a(cF)=\alpha_a(c)Q_aF\)</span> give the group law and covariance.</p>
+<p>As <span class="math" data-tex="\(a\)">\(a\)</span> varies near a fixed point, <span class="math" data-tex="\(Q_aF\)">\(Q_aF\)</span> varies uniformly with its support in one compact subset of <span class="math" data-tex="\(X\times H\)">\(X\times H\)</span>. Such convergence implies <span class="math" data-tex="\(I\)">\(I\)</span>-norm convergence: dominate that compact set by one positive compact bump and use its bounded fibre integrals. Thus <span class="math" data-tex="\(U_a\)">\(U_a\)</span> is strongly continuous on the dense span, hence everywhere. Finally, on a core vector <span class="math" data-tex="\(L(G)\xi\)">\(L(G)\xi\)</span>, integration of <span class="math" data-tex="\(P(F(t))U_t\)">\(P(F(t))U_t\)</span> gives <span class="math" data-tex="\(L(F*G)\xi\)">\(L(F*G)\xi\)</span>, by compact integration and convolution. Therefore its integrated form is the original <span class="math" data-tex="\(L(F)\)">\(L(F)\)</span>. This recovers the covariant pair uniquely. Taking suprema proves equality of the full norms in (14.17).</p>
+<p>For the reduced norm, parametrize the source fibre at <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(t\mapsto(tx,t)\)">\(t\mapsto(tx,t)\)</span>. Its measure is right Haar measure
+<span class="math" data-tex="\(d\nu_H(t)=\Delta_H(t)^{-1}\,dt\)">\(d\nu_H(t)=\Delta_H(t)^{-1}\,dt\)</span>. The unitary</p>
+<span id="equation-14-20"></span><span class="math math-display" data-tex="\[
+V:L^2(H,\nu_H)\longrightarrow L^2(H,dt),\qquad
+(V\xi)(t)=\Delta_H(t)^{-1/2}\xi(t)
+\tag{14.20}
+\]">\[
+V:L^2(H,\nu_H)\longrightarrow L^2(H,dt),\qquad
+(V\xi)(t)=\Delta_H(t)^{-1/2}\xi(t)
+\tag{14.20}
+\]</span>
+<p>converts (14.6) into</p>
+<span id="equation-14-21"></span><span class="math math-display" data-tex="\[
+(VL_x(f)V^{-1}\xi)(t)=
+\int_H\Delta_H(a)^{-1/2}f(tx,a)\xi(a^{-1}t)\,da.
+\tag{14.21}
+\]">\[
+(VL_x(f)V^{-1}\xi)(t)=
+\int_H\Delta_H(a)^{-1/2}f(tx,a)\xi(a^{-1}t)\,da.
+\tag{14.21}
+\]</span>
+<p>This is the regular crossed-product pair with coefficient
+<span class="math" data-tex="\((P_x(b)\xi)(t)=b(tx)\xi(t)\)">\((P_x(b)\xi)(t)=b(tx)\xi(t)\)</span> and left translation. The direct sum of all evaluation representations of <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> is faithful. Its regular induction is the direct sum of these pairs, so Lesson 2 identifies its norm with the reduced crossed-product norm. The supremum in (14.9) is exactly that norm. ∎</p>
+<p>Even when <span class="math" data-tex="\(X\)">\(X\)</span> is a point, forgetting <span class="math" data-tex="\(\Delta^{-1/2}\)">\(\Delta^{-1/2}\)</span> can give the wrong involution. For a unimodular group, including a discrete group, this correction is one.</p>
+<h2 id="the-étale-expectation">The étale expectation</h2>
+<p>Now assume <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is Hausdorff and étale, with counting measures. Its unit space is both open and closed. Zero extension embeds <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> as a convolution subalgebra, acting in each source fibre by multiplication by <span class="math" data-tex="\(b(r(\gamma))\)">\(b(r(\gamma))\)</span>. Its norm is <span class="math" data-tex="\(\|b\|_\infty\)">\(\|b\|_\infty\)</span>, since the unit vector at any <span class="math" data-tex="\(x\)">\(x\)</span> detects <span class="math" data-tex="\(b(x)\)">\(b(x)\)</span>. Completion embeds <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> in the reduced algebra.</p>
+<p><span id="theorem-14-4"></span><strong>Theorem 14.4.</strong> Restriction to the units extends to a faithful conditional expectation</p>
+<span id="equation-14-22"></span><span class="math math-display" data-tex="\[
+E:C_r^*(\mathcal G)\longrightarrow C_0(X).
+\tag{14.22}
+\]">\[
+E:C_r^*(\mathcal G)\longrightarrow C_0(X).
+\tag{14.22}
+\]</span>
+<p><strong>Proof.</strong> On test functions,</p>
+<span id="equation-14-23"></span><span class="math math-display" data-tex="\[
+E(f)(x)=\langle\delta_x,L_x(f)\delta_x\rangle=f(x).
+\tag{14.23}
+\]">\[
+E(f)(x)=\langle\delta_x,L_x(f)\delta_x\rangle=f(x).
+\tag{14.23}
+\]</span>
+<p>It belongs to <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> and its supremum norm is at most <span class="math" data-tex="\(\|f\|_r\)">\(\|f\|_r\)</span>; hence it extends to <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. At every matrix level evaluation of this extension is compression of the corresponding regular representation to its unit vector. Thus it is completely positive and contractive. It fixes <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>, and endpoint multiplication gives <span class="math" data-tex="\(E(bac)=bE(a)c\)">\(E(bac)=bE(a)c\)</span> for <span class="math" data-tex="\(b,c\in C_0(X)\)">\(b,c\in C_0(X)\)</span>, first on the core and then by continuity.</p>
+<p>For faithfulness, let <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> and <span class="math" data-tex="\(E(a)=0\)">\(E(a)=0\)</span>. For every <span class="math" data-tex="\(\gamma\in\mathcal G_x\)">\(\gamma\in\mathcal G_x\)</span>, the kernel formula, extended by continuity, gives</p>
+<span id="equation-14-24"></span><span class="math math-display" data-tex="\[
+\langle\delta_\gamma,L_x(a)\delta_\gamma\rangle
+=E(a)(r(\gamma))=0.
+\tag{14.24}
+\]">\[
+\langle\delta_\gamma,L_x(a)\delta_\gamma\rangle
+=E(a)(r(\gamma))=0.
+\tag{14.24}
+\]</span>
+<p>Therefore <span class="math" data-tex="\(L_x(a)^{1/2}\delta_\gamma=0\)">\(L_x(a)^{1/2}\delta_\gamma=0\)</span>. These vectors form an orthonormal basis, so <span class="math" data-tex="\(L_x(a)=0\)">\(L_x(a)=0\)</span> for all <span class="math" data-tex="\(x\)">\(x\)</span>; definition (14.9) gives <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. ∎</p>
+<p>The Hausdorff hypothesis here has content. In Lesson 13's doubled-origin étale group bundle, the patch function with triple <span class="math" data-tex="\((F,a,b)=(0,1,-1)\)">\((F,a,b)=(0,1,-1)\)</span> restricts to a function on the units which is zero away from zero and one at zero. It is not in <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>. Consequently restriction of all patch kernels cannot define an expectation with the codomain in (14.22). Counting measures alone do not repair this.</p>
+<h2 id="effective-groupoids-and-the-diagonal-uniqueness-theorem">Effective groupoids and the diagonal uniqueness theorem</h2>
+<p>For this section and the next three, let <span class="math" data-tex="\(G\)">\(G\)</span> be any locally compact Hausdorff étale groupoid, with counting Haar system, and write <span class="math" data-tex="\(D=C_0(G^{(0)})\)">\(D=C_0(G^{(0)})\)</span>, <span class="math" data-tex="\(A=C_r^*(G)\)">\(A=C_r^*(G)\)</span>. The reduced arguments do not require second countability. The full amenable corollary below uses the standing countability hypotheses of this lesson.</p>
+<p>The groupoid is <strong>effective</strong> when the interior of its isotropy is just its unit space:</p>
+<span id="equation-14i-1"></span><span class="math math-display" data-tex="\[
+\operatorname{Iso}(G)^\circ=G^{(0)},\qquad
+\operatorname{Iso}(G)=\{\gamma:r(\gamma)=s(\gamma)\}.
+\tag{14I.1}
+\]">\[
+\operatorname{Iso}(G)^\circ=G^{(0)},\qquad
+\operatorname{Iso}(G)=\{\gamma:r(\gamma)=s(\gamma)\}.
+\tag{14I.1}
+\]</span>
+<p>For a second countable Hausdorff étale groupoid this is equivalent to density of units with trivial isotropy. Here is the precise Baire argument. Cover the nonunit arrows by countably many relatively compact bisection patches whose closures remain in nonunit bisections. For each compact closure <span class="math" data-tex="\(K\)">\(K\)</span>, its fixed-unit set
+<span class="math" data-tex="\(\{s(\gamma):\gamma\in K,\ r(\gamma)=s(\gamma)\}\)">\(\{s(\gamma):\gamma\in K,\ r(\gamma)=s(\gamma)\}\)</span>
+is closed. If it contained an open unit set, the corresponding bisection over that set would give an open nonunit subset of isotropy, contradicting effectiveness. These sets are nowhere dense. Their countable union contains every unit with nontrivial isotropy; local compactness and the Baire theorem give the asserted density. Conversely, an open nonunit isotropy bisection has an open source set containing no free unit. Outside the countable setting we use (14I.1), rather than assuming the two conditions coincide.</p>
+<p><span id="theorem-14i-1"></span><strong>Theorem 14I.1 (diagonal uniqueness).</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is effective, every C*-homomorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> that is injective on <span class="math" data-tex="\(D\)">\(D\)</span> is injective on <span class="math" data-tex="\(A\)">\(A\)</span>. Equivalently, every nonzero ideal of <span class="math" data-tex="\(A\)">\(A\)</span> meets <span class="math" data-tex="\(D\)">\(D\)</span> nontrivially.</p>
+<p><strong>Proof.</strong> We first prove a compression estimate without a countable cover. Fix <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, a nonempty open unit set <span class="math" data-tex="\(O\)">\(O\)</span>, and write
+<span class="math" data-tex="\(f-E(f)=\sum_{i=1}^n f_i\)">\(f-E(f)=\sum_{i=1}^n f_i\)</span>, where each <span class="math" data-tex="\(f_i\)">\(f_i\)</span> has compact support <span class="math" data-tex="\(K_i\)">\(K_i\)</span> in a nonunit bisection. A finite partition of unity on the compact support gives this decomposition. The fixed-unit set of each <span class="math" data-tex="\(K_i\)">\(K_i\)</span> is closed and has empty interior, by the argument preceding the theorem. Thus some <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span> avoids all these finitely many sets. The compact image <span class="math" data-tex="\((r,s)(K_i)\)">\((r,s)(K_i)\)</span> does not contain <span class="math" data-tex="\((x,x)\)">\((x,x)\)</span>. Shrinking a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> makes <span class="math" data-tex="\(VK_iV\)">\(VK_iV\)</span> empty for every <span class="math" data-tex="\(i\)">\(i\)</span>. A unit bump <span class="math" data-tex="\(h\)">\(h\)</span>, with <span class="math" data-tex="\(0\leq h\leq1\)">\(0\leq h\leq1\)</span>, <span class="math" data-tex="\(h(x)=1\)">\(h(x)=1\)</span>, and support in <span class="math" data-tex="\(V\)">\(V\)</span>, then satisfies</p>
+<span id="equation-14i-2"></span><span class="math math-display" data-tex="\[
+hfh=hE(f)h.
+\tag{14I.2}
+\]">\[
+hfh=hE(f)h.
+\tag{14I.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(\phi:A\to B\)">\(\phi:A\to B\)</span> be faithful on <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>. Choose <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span> with <span class="math" data-tex="\(\|a-f\|&lt;\varepsilon\)">\(\|a-f\|&lt;\varepsilon\)</span>, and choose <span class="math" data-tex="\(O\)">\(O\)</span> where <span class="math" data-tex="\(E(a)&gt;\|E(a)\|-\varepsilon\)">\(E(a)&gt;\|E(a)\|-\varepsilon\)</span>; if <span class="math" data-tex="\(E(a)=0\)">\(E(a)=0\)</span> the desired inequality is automatic. In (14I.2) choose <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span>. Contractivity of <span class="math" data-tex="\(E\)">\(E\)</span> and isometry of <span class="math" data-tex="\(\phi|_D\)">\(\phi|_D\)</span> give</p>
+<span id="equation-14i-3"></span><span class="math math-display" data-tex="\[
+\|\phi(a)\|\geq\|\phi(hfh)\|-\varepsilon
+=\|hE(f)h\|-\varepsilon
+\geq\|E(a)\|-3\varepsilon.
+\tag{14I.3}
+\]">\[
+\|\phi(a)\|\geq\|\phi(hfh)\|-\varepsilon
+=\|hE(f)h\|-\varepsilon
+\geq\|E(a)\|-3\varepsilon.
+\tag{14I.3}
+\]</span>
+<p>Let <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span>. If <span class="math" data-tex="\(\phi(b)=0\)">\(\phi(b)=0\)</span>, apply this inequality to <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span>. It gives <span class="math" data-tex="\(E(b^*b)=0\)">\(E(b^*b)=0\)</span>, hence <span class="math" data-tex="\(b=0\)">\(b=0\)</span> by the faithful expectation already proved in (14.22). For an ideal <span class="math" data-tex="\(J\)">\(J\)</span> disjoint from <span class="math" data-tex="\(D\)">\(D\)</span>, the quotient map is faithful on <span class="math" data-tex="\(D\)">\(D\)</span>, so the same conclusion makes <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. The equivalence follows. ∎</p>
+<h2 id="the-diagonal-is-a-cartan-subalgebra">The diagonal is a Cartan subalgebra</h2>
+<p>We call <span class="math" data-tex="\(D\subseteq A\)">\(D\subseteq A\)</span> <strong>Cartan</strong> when it is maximal abelian, contains an approximate identity for <span class="math" data-tex="\(A\)">\(A\)</span>, has a faithful conditional expectation, and its normalizers</p>
+<span class="math math-display" data-tex="\[
+N_A(D)=\{n\in A:nDn^*\subseteq D,\ n^*Dn\subseteq D\}
+\]">\[
+N_A(D)=\{n\in A:nDn^*\subseteq D,\ n^*Dn\subseteq D\}
+\]</span>
+<p>span a dense subspace of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><span id="theorem-14i-2"></span><strong>Theorem 14I.2.</strong> The canonical <span class="math" data-tex="\(C_0(G^{(0)})\)">\(C_0(G^{(0)})\)</span> is Cartan in <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span> if and only if <span class="math" data-tex="\(G\)">\(G\)</span> is effective.</p>
+<p><strong>Proof.</strong> For later use define the coefficient function</p>
+<span id="equation-14i-4"></span><span class="math math-display" data-tex="\[
+j(a)(\gamma)=
+\langle\delta_\gamma,\lambda_{s(\gamma)}(a)\delta_{s(\gamma)}\rangle.
+\tag{14I.4}
+\]">\[
+j(a)(\gamma)=
+\langle\delta_\gamma,\lambda_{s(\gamma)}(a)\delta_{s(\gamma)}\rangle.
+\tag{14I.4}
+\]</span>
+<p>It equals <span class="math" data-tex="\(f(\gamma)\)">\(f(\gamma)\)</span> for <span class="math" data-tex="\(a=f\in C_c(G)\)">\(a=f\in C_c(G)\)</span>, and <span class="math" data-tex="\(\|j(a)\|_\infty\leq\|a\|\)">\(\|j(a)\|_\infty\leq\|a\|\)</span>. Norm approximation by core functions therefore makes <span class="math" data-tex="\(j(a)\in C_0(G)\)">\(j(a)\in C_0(G)\)</span>. It is injective: on a source fibre every matrix entry is</p>
+<span id="equation-14i-5"></span><span class="math math-display" data-tex="\[
+\langle\delta_\gamma,\lambda_x(a)\delta_\eta\rangle
+=j(a)(\gamma\eta^{-1}),\qquad\gamma,\eta\in G_x.
+\tag{14I.5}
+\]">\[
+\langle\delta_\gamma,\lambda_x(a)\delta_\eta\rangle
+=j(a)(\gamma\eta^{-1}),\qquad\gamma,\eta\in G_x.
+\tag{14I.5}
+\]</span>
+<p>This follows by convolution on the core and by norm continuity on its completion. If <span class="math" data-tex="\(j(a)=0\)">\(j(a)=0\)</span>, every regular operator is zero.</p>
+<p>Suppose <span class="math" data-tex="\(a\)">\(a\)</span> commutes with <span class="math" data-tex="\(D\)">\(D\)</span>. The left and right coefficient formulas give</p>
+<span id="equation-14i-6"></span><span class="math math-display" data-tex="\[
+(d(r(\gamma))-d(s(\gamma)))j(a)(\gamma)=0
+\quad(d\in D).
+\tag{14I.6}
+\]">\[
+(d(r(\gamma))-d(s(\gamma)))j(a)(\gamma)=0
+\quad(d\in D).
+\tag{14I.6}
+\]</span>
+<p>Continuous unit functions separate distinct units, so <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span> vanishes off isotropy. If it were nonzero at a nonunit isotropy arrow, continuity and the closedness of the unit space would give a nonempty open nonunit subset of isotropy. Effectiveness excludes this. Hence <span class="math" data-tex="\(j(a-E(a))=0\)">\(j(a-E(a))=0\)</span>; injectivity gives <span class="math" data-tex="\(a=E(a)\in D\)">\(a=E(a)\in D\)</span>, proving maximal abelianness.</p>
+<p>Every core function supported on a bisection normalizes <span class="math" data-tex="\(D\)">\(D\)</span>, by the source and range multiplication formulas. Finite partitions on compact supports show that such functions span <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, so regularity follows. Unit bumps equal to one on the compact ranges and sources of a core function give a two-sided approximate identity, and density gives one for <span class="math" data-tex="\(A\)">\(A\)</span>. The expectation and its faithfulness were proved earlier. These are all the Cartan axioms.</p>
+<p>Conversely, if <span class="math" data-tex="\(G\)">\(G\)</span> is not effective, choose a nonzero function supported on a nonunit isotropy bisection. It commutes with every unit function, by <span class="math" data-tex="\(r=s\)">\(r=s\)</span> on its support, but is not in <span class="math" data-tex="\(D\)">\(D\)</span>, since (14I.4) is nonzero off the units. Thus <span class="math" data-tex="\(D\)">\(D\)</span> is not maximal abelian. ∎</p>
+<p>This gives a concrete way to recognize the diagonal inside the reduced algebra. The additional reconstruction of a general abstract Cartan pair requires a twist and a Weyl groupoid; maximal abelianness alone is not that reconstruction theorem.</p>
+<h2 id="inner-exactness-and-all-dynamical-ideals">Inner exactness and all dynamical ideals</h2>
+<p>For an open invariant <span class="math" data-tex="\(U\subseteq G^{(0)}\)">\(U\subseteq G^{(0)}\)</span>, extension by zero identifies <span class="math" data-tex="\(C_r^*(G|_U)\)">\(C_r^*(G|_U)\)</span> isometrically with an ideal <span class="math" data-tex="\(I_U\subseteq A\)">\(I_U\subseteq A\)</span>. Source-fibre regular operators inside <span class="math" data-tex="\(U\)">\(U\)</span> give its original norm; those outside <span class="math" data-tex="\(U\)">\(U\)</span> act as zero. The ideal is generated by <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span>, using unit bumps on compact sources and ranges. Restriction to <span class="math" data-tex="\(F=G^{(0)}\setminus U\)">\(F=G^{(0)}\setminus U\)</span> gives a surjection</p>
+<span class="math math-display" data-tex="\[
+q_U:A\to C_r^*(G|_F).
+\]">\[
+q_U:A\to C_r^*(G|_F).
+\]</span>
+<p>Regular fibres over <span class="math" data-tex="\(F\)">\(F\)</span> prove contractivity; finite bisection patches extend compactly supported functions on the closed reduction and prove dense range. A C*-homomorphism has closed range, so it is onto. The kernel need not equal <span class="math" data-tex="\(I_U\)">\(I_U\)</span>, as the group-bundle example above demonstrates.</p>
+<p>We call <span class="math" data-tex="\(G\)">\(G\)</span> <strong>inner exact</strong> when <span class="math" data-tex="\(\ker q_U=I_U\)">\(\ker q_U=I_U\)</span> for every open invariant <span class="math" data-tex="\(U\)">\(U\)</span>. It is <strong>strongly effective</strong> when every closed invariant reduction is effective.</p>
+<p><span id="theorem-14i-3"></span><strong>Theorem 14I.3.</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> is inner exact and strongly effective, then</p>
+<span id="equation-14i-7"></span><span class="math math-display" data-tex="\[
+U\longmapsto I_U
+\tag{14I.7}
+\]">\[
+U\longmapsto I_U
+\tag{14I.7}
+\]</span>
+<p>is a lattice isomorphism from open invariant unit sets to all closed two-sided ideals of <span class="math" data-tex="\(C_r^*(G)\)">\(C_r^*(G)\)</span>. An effective minimal groupoid has simple reduced C*-algebra, even without inner exactness. For an amenable groupoid satisfying this lesson's standing countability assumptions, all ideals are of the form (14I.7) if and only if it is strongly effective; its full algebra is simple if and only if it is effective and minimal.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(J\triangleleft A\)">\(J\triangleleft A\)</span>. Its coefficient intersection is <span class="math" data-tex="\(J\cap D=C_0(U)\)">\(J\cap D=C_0(U)\)</span> for some open <span class="math" data-tex="\(U\)">\(U\)</span>. The set <span class="math" data-tex="\(U\)">\(U\)</span> is invariant: conjugating a unit function by a bump on a bisection carries a nonzero value at its source to a nonzero value at its range, while staying in <span class="math" data-tex="\(J\cap D\)">\(J\cap D\)</span>. Thus <span class="math" data-tex="\(I_U\subseteq J\)">\(I_U\subseteq J\)</span>. Also</p>
+<span id="equation-14i-8"></span><span class="math math-display" data-tex="\[
+I_U\cap D=C_0(U);
+\tag{14I.8}
+\]">\[
+I_U\cap D=C_0(U);
+\tag{14I.8}
+\]</span>
+<p>one containment is immediate, and the other follows since the coefficient functions of <span class="math" data-tex="\(I_U\)">\(I_U\)</span> vanish outside <span class="math" data-tex="\(G|_U\)">\(G|_U\)</span>.</p>
+<p>Inner exactness identifies <span class="math" data-tex="\(A/I_U=C_r^*(G|_F)\)">\(A/I_U=C_r^*(G|_F)\)</span>. The ideal <span class="math" data-tex="\(J/I_U\)">\(J/I_U\)</span> has zero intersection with <span class="math" data-tex="\(C_0(F)\)">\(C_0(F)\)</span>. Indeed, if its image contains a unit function <span class="math" data-tex="\(b_F\)">\(b_F\)</span>, lift <span class="math" data-tex="\(b_F\)">\(b_F\)</span> to <span class="math" data-tex="\(b\in C_0(G^{(0)})\)">\(b\in C_0(G^{(0)})\)</span>. A representative <span class="math" data-tex="\(a\in J\)">\(a\in J\)</span> differs from <span class="math" data-tex="\(b\)">\(b\)</span> by an element of <span class="math" data-tex="\(I_U\subseteq J\)">\(I_U\subseteq J\)</span>; hence <span class="math" data-tex="\(b\in J\cap D=C_0(U)\)">\(b\in J\cap D=C_0(U)\)</span> and <span class="math" data-tex="\(b_F=0\)">\(b_F=0\)</span>. Strong effectiveness and Theorem 14I.1 on <span class="math" data-tex="\(G|_F\)">\(G|_F\)</span> force <span class="math" data-tex="\(J/I_U=0\)">\(J/I_U=0\)</span>. This proves surjectivity; (14I.8) proves injectivity and preservation of order. An order isomorphism of these complete lattices preserves meets and joins.</p>
+<p>For an effective minimal <span class="math" data-tex="\(G\)">\(G\)</span>, Theorem 14I.1 makes a nonzero <span class="math" data-tex="\(J\)">\(J\)</span> meet <span class="math" data-tex="\(D\)">\(D\)</span>. The resulting invariant <span class="math" data-tex="\(U\)">\(U\)</span> is nonempty. Minimality says it is the whole unit space, so <span class="math" data-tex="\(J\)">\(J\)</span> contains a unit approximate identity and equals <span class="math" data-tex="\(A\)">\(A\)</span>. Conversely, a proper nonempty invariant open set gives a proper nonzero <span class="math" data-tex="\(I_U\)">\(I_U\)</span>, so reduced simplicity always implies minimality.</p>
+<p>In the amenable case, amenability passes to invariant closed and open reductions by restricting its probability fields. Theorem 14.7 and full exactness then imply inner exactness. It remains to show necessity of strong effectiveness. Suppose a closed invariant reduction <span class="math" data-tex="\(H=G|_F\)">\(H=G|_F\)</span> is not effective. On each orbit <span class="math" data-tex="\([x]\subseteq H^{(0)}\)">\([x]\subseteq H^{(0)}\)</span>, define</p>
+<span id="equation-14i-9"></span><span class="math math-display" data-tex="\[
+\epsilon_x(f)\delta_y=\sum_{\gamma\in H_y}f(\gamma)\delta_{r(\gamma)}.
+\tag{14I.9}
+\]">\[
+\epsilon_x(f)\delta_y=\sum_{\gamma\in H_y}f(\gamma)\delta_{r(\gamma)}.
+\tag{14I.9}
+\]</span>
+<p>Convolution and inversion prove multiplicativity and the adjoint identity, by regrouping composable pairs; the row and column sum bounds are at most <span class="math" data-tex="\(\|f\|_I\)">\(\|f\|_I\)</span>, so Schur's estimate proves boundedness. These are full representations. Amenable norm equality makes them representations of the reduced algebra too. Their direct sum is faithful on <span class="math" data-tex="\(C_0(F)\)">\(C_0(F)\)</span>. But a nonunit isotropy bisection, and its source unit function with the same values along that bisection, act identically in every <span class="math" data-tex="\(\epsilon_x\)">\(\epsilon_x\)</span>. Their difference is a nonzero core function, detected by the regular coefficient map. Thus this direct sum has a nonzero kernel <span class="math" data-tex="\(K\)">\(K\)</span> disjoint from <span class="math" data-tex="\(C_0(F)\)">\(C_0(F)\)</span>. Its preimage in <span class="math" data-tex="\(A\)">\(A\)</span> strictly contains <span class="math" data-tex="\(I_{G^{(0)}\setminus F}\)">\(I_{G^{(0)}\setminus F}\)</span> and has the same diagonal intersection. It cannot be dynamical, by (14I.8). This proves necessity. For simplicity take <span class="math" data-tex="\(F=G^{(0)}\)">\(F=G^{(0)}\)</span>, combine this argument with minimality, and use full–reduced equality. ∎</p>
+<p>The distinction between effectiveness and strong effectiveness is real. Translation of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> on its one-point compactification is effective, since every finite point is free. The fixed point at infinity is a closed invariant reduction with isotropy <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Its quotient algebra is <span class="math" data-tex="\(C^*(\mathbb Z)=C(\mathbb T)\)">\(C^*(\mathbb Z)=C(\mathbb T)\)</span>, whose many ideals are invisible to its scalar diagonal. Thus diagonal uniqueness for the whole groupoid does not imply that every ideal is determined by a unit set.</p>
+<h2 id="the-sandwich-description-without-residual-effectiveness">The sandwich description without residual effectiveness</h2>
+<p>Inner exactness still controls ideals when some closed reductions are ineffective. The following refinement is due to Brix, Carlsen and Sims.</p>
+<p>In this theorem <span class="math" data-tex="\(\operatorname{supp}j(J)\)">\(\operatorname{supp}j(J)\)</span> means the union of the sets where the coefficient functions of elements of <span class="math" data-tex="\(J\)">\(J\)</span> are nonzero, without taking a closure.</p>
+<p><span id="theorem-14i-4"></span><strong>Theorem 14I.4 (ideal sandwiches and residual triples).</strong> Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is inner exact. For every ideal <span class="math" data-tex="\(J\triangleleft A\)">\(J\triangleleft A\)</span>, define</p>
+<span id="equation-14i-10"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+U_J&amp;=\{x:d(x)\ne0\text{ for some }d\in J\cap D\},\\
+V_J&amp;=\{x:E(a)(x)\ne0\text{ for some }a\in J\}.
+\end{aligned}
+\tag{14I.10}
+\]">\[
+\begin{aligned}
+U_J&amp;=\{x:d(x)\ne0\text{ for some }d\in J\cap D\},\\
+V_J&amp;=\{x:E(a)(x)\ne0\text{ for some }a\in J\}.
+\end{aligned}
+\tag{14I.10}
+\]</span>
+<p>These are open invariant sets, and <span class="math" data-tex="\(I_{U_J}\)">\(I_{U_J}\)</span> is the largest dynamical ideal contained in <span class="math" data-tex="\(J\)">\(J\)</span>, while <span class="math" data-tex="\(I_{V_J}\)">\(I_{V_J}\)</span> is the smallest dynamical ideal containing <span class="math" data-tex="\(J\)">\(J\)</span>. Every ideal is specified uniquely by a triple</p>
+<span id="equation-14i-11"></span><span class="math math-display" data-tex="\[
+(U,V,K),\quad U\subseteq V,\quad
+K\triangleleft C_r^*(G|_{V\setminus U}),\quad
+K\cap C_0(V\setminus U)=0,\quad
+\operatorname{supp}j(K)=G|_{V\setminus U}.
+\tag{14I.11}
+\]">\[
+(U,V,K),\quad U\subseteq V,\quad
+K\triangleleft C_r^*(G|_{V\setminus U}),\quad
+K\cap C_0(V\setminus U)=0,\quad
+\operatorname{supp}j(K)=G|_{V\setminus U}.
+\tag{14I.11}
+\]</span>
+<p>The empty reduction is allowed, with <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, so dynamical ideals are included.</p>
+<p><strong>Proof.</strong> The proof of Theorem 14I.3 already gives openness, invariance and the largest-ideal assertion for <span class="math" data-tex="\(U_J\)">\(U_J\)</span>. Write
+<span class="math" data-tex="\(S=\{\gamma:j(a)(\gamma)\ne0\text{ for some }a\in J\}\)">\(S=\{\gamma:j(a)(\gamma)\ne0\text{ for some }a\in J\}\)</span>.
+Multiplying by bisection bumps on either side carries any nonzero coefficient at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> to one at every composable translate of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. For instance a bump of value one at <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> turns it into a nonzero unit coefficient at <span class="math" data-tex="\(s(\gamma)\)">\(s(\gamma)\)</span>. Taking adjoints also gives the range unit. Conversely a nonzero unit coefficient can be carried to any arrow starting at that unit. Thus</p>
+<span id="equation-14i-12"></span><span class="math math-display" data-tex="\[
+S=G|_{V_J},\qquad V_J=s(S)=r(S).
+\tag{14I.12}
+\]">\[
+S=G|_{V_J},\qquad V_J=s(S)=r(S).
+\tag{14I.12}
+\]</span>
+<p>It follows that <span class="math" data-tex="\(V_J\)">\(V_J\)</span> is open and invariant and contains <span class="math" data-tex="\(U_J\)">\(U_J\)</span>.</p>
+<p>For <span class="math" data-tex="\(a\in J\)">\(a\in J\)</span>, <span class="math" data-tex="\(E(a^*a)\)">\(E(a^*a)\)</span> vanishes outside <span class="math" data-tex="\(V_J\)">\(V_J\)</span>. Restriction commutes with expectations; therefore</p>
+<span class="math math-display" data-tex="\[
+E_{G|_{G^{(0)}\setminus V_J}}
+(q_{V_J}(a)^*q_{V_J}(a))=0.
+\]">\[
+E_{G|_{G^{(0)}\setminus V_J}}
+(q_{V_J}(a)^*q_{V_J}(a))=0.
+\]</span>
+<p>Faithfulness of that reduced expectation makes <span class="math" data-tex="\(q_{V_J}(a)=0\)">\(q_{V_J}(a)=0\)</span>. Inner exactness gives <span class="math" data-tex="\(a\in I_{V_J}\)">\(a\in I_{V_J}\)</span>. If <span class="math" data-tex="\(J\subseteq I_W\)">\(J\subseteq I_W\)</span>, its coefficients vanish outside <span class="math" data-tex="\(G|_W\)">\(G|_W\)</span>, so (14I.12) gives <span class="math" data-tex="\(V_J\subseteq W\)">\(V_J\subseteq W\)</span>. This proves the smallest-ideal assertion, with the expectation-to-ideal step explicit.</p>
+<p>Restrict inner exactness to <span class="math" data-tex="\(I_V=C_r^*(G|_V)\)">\(I_V=C_r^*(G|_V)\)</span>: the sequence</p>
+<span id="equation-14i-13"></span><span class="math math-display" data-tex="\[
+0\to I_U\to I_V\to C_r^*(G|_{V\setminus U})\to0
+\tag{14I.13}
+\]">\[
+0\to I_U\to I_V\to C_r^*(G|_{V\setminus U})\to0
+\tag{14I.13}
+\]</span>
+<p>is exact. Indeed the last algebra embeds as the open-reduction ideal in <span class="math" data-tex="\(C_r^*(G|_{G^{(0)}\setminus U})\)">\(C_r^*(G|_{G^{(0)}\setminus U})\)</span>; the restriction of <span class="math" data-tex="\(q_U\)">\(q_U\)</span> to <span class="math" data-tex="\(I_V\)">\(I_V\)</span> has kernel <span class="math" data-tex="\(I_U\)">\(I_U\)</span> and dense, hence closed, range there.</p>
+<p>For <span class="math" data-tex="\(U=U_J,V=V_J\)">\(U=U_J,V=V_J\)</span>, the image <span class="math" data-tex="\(K=J/I_U\)">\(K=J/I_U\)</span> in (14I.13) has zero diagonal intersection by the lift argument in Theorem 14I.3. Its support is the whole residual groupoid by (14I.12) and restriction of coefficient functions. Conversely, given a triple (14I.11), take the preimage of <span class="math" data-tex="\(K\)">\(K\)</span> under <span class="math" data-tex="\(I_V\to C_r^*(G|_{V\setminus U})\)">\(I_V\to C_r^*(G|_{V\setminus U})\)</span>. This is an ideal of <span class="math" data-tex="\(I_V\)">\(I_V\)</span>, hence of <span class="math" data-tex="\(A\)">\(A\)</span>: if <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, multiply a vector of the ideal using an approximate identity of <span class="math" data-tex="\(I_V\)">\(I_V\)</span> to see invariance under <span class="math" data-tex="\(a\)">\(a\)</span>. Its diagonal intersection is exactly <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span>, by the zero-intersection hypothesis. Its coefficient support is <span class="math" data-tex="\(G|_V\)">\(G|_V\)</span>, using full residual support together with the included <span class="math" data-tex="\(I_U\)">\(I_U\)</span>. Thus its two sandwich sets are <span class="math" data-tex="\(U,V\)">\(U,V\)</span>. Equation (14I.13) recovers <span class="math" data-tex="\(K\)">\(K\)</span>, proving that the constructions are inverse. ∎</p>
+<p>Strong effectiveness removes every nonzero diagonal-disjoint residual ideal by Theorem 14I.1, so (14I.11) then collapses to <span class="math" data-tex="\(U=V\)">\(U=V\)</span>. The sandwich theorem identifies precisely what remains to be classified when an invariant unit set alone is insufficient.</p>
+<h2 id="invariant-open-subsets-and-full-exactness">Invariant open subsets and full exactness</h2>
+<p>A subset <span class="math" data-tex="\(U\subseteq X\)">\(U\subseteq X\)</span> is invariant when no arrow has just one endpoint in <span class="math" data-tex="\(U\)">\(U\)</span>. Take <span class="math" data-tex="\(U\)">\(U\)</span> open, and set <span class="math" data-tex="\(F=X\setminus U\)">\(F=X\setminus U\)</span>. Every range fibre over a point of <span class="math" data-tex="\(U\)">\(U\)</span>, or of <span class="math" data-tex="\(F\)">\(F\)</span>, lies entirely in the corresponding reduction. Therefore its original Haar measure is retained in full. The reduced Haar families are continuous, by zero extension for <span class="math" data-tex="\(U\)">\(U\)</span>, and compact patch extension and restriction for <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><span id="theorem-14-5"></span><strong>Theorem 14.5.</strong> Zero extension and restriction give the exact sequence</p>
+<span id="equation-14-25"></span><span class="math math-display" data-tex="\[
+0\longrightarrow C^*(\mathcal G|_U)
+\overset{\iota}{\longrightarrow}C^*(\mathcal G)
+\overset{R_F}{\longrightarrow}C^*(\mathcal G|_F)
+\longrightarrow0.
+\tag{14.25}
+\]">\[
+0\longrightarrow C^*(\mathcal G|_U)
+\overset{\iota}{\longrightarrow}C^*(\mathcal G)
+\overset{R_F}{\longrightarrow}C^*(\mathcal G|_F)
+\longrightarrow0.
+\tag{14.25}
+\]</span>
+<p><strong>Proof.</strong> Zero extension identifies <span class="math" data-tex="\(C_c(\mathcal G|_U)\)">\(C_c(\mathcal G|_U)\)</span> with an algebraic two-sided ideal of <span class="math" data-tex="\(C_c(\mathcal G)\)">\(C_c(\mathcal G)\)</span>. Its <span class="math" data-tex="\(I\)">\(I\)</span>-norm is unchanged. Restricting a full representation of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> therefore gives the upper bound for the norm of this inclusion. For the opposite bound, disintegrate any separable nondegenerate representation of <span class="math" data-tex="\(\mathcal G|_U\)">\(\mathcal G|_U\)</span>. Extend its measure by zero from <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>, and its Hilbert bundle by zero fibres outside <span class="math" data-tex="\(U\)">\(U\)</span>. Invariance ensures that all relevant arrows still act between the same fibres. The resulting integrated representation of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> is <span class="math" data-tex="\(I\)">\(I\)</span>-contractive by the integrated bound proved above and agrees on the ideal core. Taking norms proves that <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is isometric. Its image <span class="math" data-tex="\(I_U\)">\(I_U\)</span> is a closed ideal.</p>
+<p>Restriction <span class="math" data-tex="\(R_F\)">\(R_F\)</span> is a *-homomorphism on the core, because its integration fibres over <span class="math" data-tex="\(F\)">\(F\)</span> are unchanged, and is <span class="math" data-tex="\(I\)">\(I\)</span>-contractive. Any <span class="math" data-tex="\(I\)">\(I\)</span>-contractive representation of the closed reduction can be composed with it, so it is contractive for the full norms too. It is onto the test-function algebra. For Hausdorff arrows this is compact-support extension from the closed arrow subspace. In the locally Hausdorff case split each compact patch term of the reduction into pieces contained in original Hausdorff arrow patches, extend each from the closed part of that patch, and sum. Thus the completed map is surjective. It kills <span class="math" data-tex="\(I_U\)">\(I_U\)</span>.</p>
+<p>It remains to prove that nothing more is killed. Let <span class="math" data-tex="\(L\)">\(L\)</span> be any nondegenerate representation of <span class="math" data-tex="\(C^*(\mathcal G)/I_U\)">\(C^*(\mathcal G)/I_U\)</span>, viewed as a representation of the full algebra. For <span class="math" data-tex="\(b\in C_c(U)\)">\(b\in C_c(U)\)</span> and <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, the function <span class="math" data-tex="\((b\circ r)f\)">\((b\circ r)f\)</span> belongs to <span class="math" data-tex="\(C_c(\mathcal G|_U)\)">\(C_c(\mathcal G|_U)\)</span>, by invariance. Hence (14.14) gives</p>
+<span id="equation-14-26"></span><span class="math math-display" data-tex="\[
+M(b)L(f)=0,\qquad\text{and therefore }M(b)=0.
+\tag{14.26}
+\]">\[
+M(b)L(f)=0,\qquad\text{and therefore }M(b)=0.
+\tag{14.26}
+\]</span>
+<p>The last step uses the dense essential range of <span class="math" data-tex="\(L\)">\(L\)</span>, rather than any assumed exact sequence.</p>
+<p>Reduce to separable cyclic subrepresentations and disintegrate <span class="math" data-tex="\(L\)">\(L\)</span>. In that description <span class="math" data-tex="\(M(b)\)">\(M(b)\)</span> is multiplication by <span class="math" data-tex="\(b(x)\)">\(b(x)\)</span>. A countable collection of compact bumps positive on a cover of <span class="math" data-tex="\(U\)">\(U\)</span> shows that the Hilbert fibres are zero almost everywhere on <span class="math" data-tex="\(U\)">\(U\)</span>. Discarding those zero fibres leaves precisely a quasi-invariant measure and unitary representation on <span class="math" data-tex="\(\mathcal G|_F\)">\(\mathcal G|_F\)</span>. Formula (14.13) then says that <span class="math" data-tex="\(L\)">\(L\)</span> factors through <span class="math" data-tex="\(R_F\)">\(R_F\)</span>, with the full norm of the closed reduction.</p>
+<p>All quotient representations factor in this way. Their supremum norm is therefore at most the norm in <span class="math" data-tex="\(C^*(\mathcal G|_F)\)">\(C^*(\mathcal G|_F)\)</span>; the already constructed surjection gives the reverse inequality. Thus <span class="math" data-tex="\(C^*(\mathcal G)/I_U\cong C^*(\mathcal G|_F)\)">\(C^*(\mathcal G)/I_U\cong C^*(\mathcal G|_F)\)</span>, proving exactness. ∎</p>
+<p>On reduced algebras, zero extension is still isometric: the regular fibres over <span class="math" data-tex="\(U\)">\(U\)</span> are unchanged, and the kernel acts as zero at units outside <span class="math" data-tex="\(U\)">\(U\)</span>. Restriction is still a surjection, since the regular fibres over <span class="math" data-tex="\(F\)">\(F\)</span> occur in the original supremum and the core restriction is onto. But</p>
+<span id="equation-14-27"></span><span class="math math-display" data-tex="\[
+\overline{C_c(\mathcal G|_U)}^{\,\|\cdot\|_r}
+\ \subseteq\ \ker\big(C_r^*(\mathcal G)\to C_r^*(\mathcal G|_F)\big)
+\tag{14.27}
+\]">\[
+\overline{C_c(\mathcal G|_U)}^{\,\|\cdot\|_r}
+\ \subseteq\ \ker\big(C_r^*(\mathcal G)\to C_r^*(\mathcal G|_F)\big)
+\tag{14.27}
+\]</span>
+<p>can be a strict inclusion. The group-bundle section below constructs a positive contraction in this kernel whose finite-fibre norms all equal one; those norms prevent it from belonging to the open-restriction ideal. This supplies a concrete failure of equality, of the kind discussed in [Anantharaman-Delaroche 2023, §5.4, pp. 19–20] and [Sims 2017, discussion after Proposition 4.3.2, pp. 35–36]. The quotient-representation proof above uses the full universal norm, and cannot be transferred to the reduced norm without an additional exactness hypothesis.</p>
+<h2 id="pair-kernels-and-group-bundles">Pair kernels and group bundles</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be nonempty locally compact Hausdorff and second countable, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a full-support positive Radon measure. The pair Haar system gives the operators</p>
+<span id="equation-14-28"></span><span class="math math-display" data-tex="\[
+(K_f\xi)(x)=\int_X f(x,y)\xi(y)\,d\mu(y),\qquad
+f_{\xi,\eta}(x,y)=\xi(x)\overline{\eta(y)}.
+\tag{14.28}
+\]">\[
+(K_f\xi)(x)=\int_X f(x,y)\xi(y)\,d\mu(y),\qquad
+f_{\xi,\eta}(x,y)=\xi(x)\overline{\eta(y)}.
+\tag{14.28}
+\]</span>
+<p><span id="proposition-14-6"></span><strong>Proposition 14.6.</strong> For this system, both pair-groupoid completions are
+<span class="math" data-tex="\(\mathcal K(L^2(X,\mu))\)">\(\mathcal K(L^2(X,\mu))\)</span>.</p>
+<p><strong>Proof.</strong> Every source-fibre representation is <span class="math" data-tex="\(K_f\)">\(K_f\)</span> under the evident identification with <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span>. Convolution and adjoint are operator composition and adjoint, and <span class="math" data-tex="\(f_{\xi,\eta}\)">\(f_{\xi,\eta}\)</span> is <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span>. Finite sums of these kernels with <span class="math" data-tex="\(\xi,\eta\in C_c(X)\)">\(\xi,\eta\in C_c(X)\)</span> are dense in the <span class="math" data-tex="\(I\)">\(I\)</span>-norm. Indeed approximate a compactly supported kernel uniformly by finite product sums supported in a fixed compact rectangle. The row and column errors are bounded by the uniform error times the measures of its two compact projections.</p>
+<p>The finite-rank kernel algebra has exactly its usual compact-operator C*-norm. To see the full upper bound, put all the vectors in a given finite sum in their finite-dimensional span. Gram–Schmidt gives an orthonormal basis still in <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>, whose rank kernels are matrix units. Any *-representation is contractive on that finite matrix algebra, while <span class="math" data-tex="\(K_f\)">\(K_f\)</span> realizes its matrix norm. Full support ensures that equality of continuous kernels as operators does not identify distinct kernels. Thus the full and reduced norms agree on the finite-rank algebra; <span class="math" data-tex="\(I\)">\(I\)</span>-density extends this to all pair kernels. Since <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> is dense in <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span>, completion gives all compact operators. ∎</p>
+<p>For a finite set with positive weights <span class="math" data-tex="\(w_i=\mu(\{i\})\)">\(w_i=\mu(\{i\})\)</span>, the matrix is</p>
+<span id="equation-14-29"></span><span class="math math-display" data-tex="\[
+f\longmapsto[\sqrt{w_iw_j}\,f(i,j)]_{i,j}.
+\tag{14.29}
+\]">\[
+f\longmapsto[\sqrt{w_iw_j}\,f(i,j)]_{i,j}.
+\tag{14.29}
+\]</span>
+<p>The kernels <span class="math" data-tex="\(\delta_i(x)\delta_j(y)/\sqrt{w_iw_j}\)">\(\delta_i(x)\delta_j(y)/\sqrt{w_iw_j}\)</span> are matrix units. Counting measure yields the familiar <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>. For <span class="math" data-tex="\(X=\mathbb R\)">\(X=\mathbb R\)</span>, Lebesgue measure yields <span class="math" data-tex="\(\mathcal K(L^2(\mathbb R))\)">\(\mathcal K(L^2(\mathbb R))\)</span>, even though that measure is not finite.</p>
+<p>Now let <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> be a group bundle, so <span class="math" data-tex="\(r=s\)">\(r=s\)</span>. Formula (14.14) gives a central, nondegenerate map
+<span class="math" data-tex="\(C_0(X)\to ZM(C^*(\mathcal G))\)">\(C_0(X)\to ZM(C^*(\mathcal G))\)</span>. Its fibre at <span class="math" data-tex="\(x\)">\(x\)</span> is</p>
+<span id="equation-14-30"></span><span class="math math-display" data-tex="\[
+C^*(\mathcal G)_x=
+C^*(\mathcal G)\big/C_0(X\setminus\{x\})C^*(\mathcal G)
+\cong C^*(\mathcal G_x^x).
+\tag{14.30}
+\]">\[
+C^*(\mathcal G)_x=
+C^*(\mathcal G)\big/C_0(X\setminus\{x\})C^*(\mathcal G)
+\cong C^*(\mathcal G_x^x).
+\tag{14.30}
+\]</span>
+<p>To prove this, apply (14.25) to <span class="math" data-tex="\(U=X\setminus\{x\}\)">\(U=X\setminus\{x\}\)</span>. Its ideal is exactly the displayed central ideal: a core function on <span class="math" data-tex="\(\mathcal G|_U\)">\(\mathcal G|_U\)</span> has compact range image inside <span class="math" data-tex="\(U\)">\(U\)</span>, so a <span class="math" data-tex="\(C_c(U)\)">\(C_c(U)\)</span> cutoff equal to one there multiplies it to itself. Conversely multiplying any core kernel by a <span class="math" data-tex="\(C_c(U)\)">\(C_c(U)\)</span> function gives a kernel of that reduction. Density proves the ideal equality.</p>
+<p>This is an upper semicontinuous field. Here is the relevant norm argument. If <span class="math" data-tex="\(\|a_{x_0}\|&lt;\varepsilon\)">\(\|a_{x_0}\|&lt;\varepsilon\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> in the fibre ideal with <span class="math" data-tex="\(\|a+j\|&lt;\varepsilon\)">\(\|a+j\|&lt;\varepsilon\)</span>. Approximate <span class="math" data-tex="\(j\)">\(j\)</span> by finite sums <span class="math" data-tex="\(\sum b_i a_i\)">\(\sum b_i a_i\)</span> with <span class="math" data-tex="\(b_i(x_0)=0\)">\(b_i(x_0)=0\)</span>. Their fibre norms are bounded by <span class="math" data-tex="\(\sum|b_i(x)|\|a_i\|\)">\(\sum|b_i(x)|\|a_i\|\)</span>, small near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Keeping a margin in the approximation gives <span class="math" data-tex="\(\|a_x\|&lt;\varepsilon\)">\(\|a_x\|&lt;\varepsilon\)</span> on a neighborhood. Nondegeneracy of the <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-action similarly makes the fibre norms vanish at infinity. Continuity of all these norm functions is an extra assertion, not part of the Haar-system definition.</p>
+<p>The reduced algebra also has a central <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-action, but its intrinsic quotient fibre need not equal <span class="math" data-tex="\(C_r^*(\mathcal G_x^x)\)">\(C_r^*(\mathcal G_x^x)\)</span>: that equality requires exactness of the corresponding reduced restriction sequence. For a product bundle <span class="math" data-tex="\(X\times H\)">\(X\times H\)</span>, the trivial-action case of Theorem 14.3 instead gives the explicit continuous fields</p>
+<span id="equation-14-31"></span><span class="math math-display" data-tex="\[
+C^*(X\times H)\cong C_0(X)\otimes C^*(H),\qquad
+C_r^*(X\times H)\cong C_0(X)\otimes C_r^*(H).
+\tag{14.31}
+\]">\[
+C^*(X\times H)\cong C_0(X)\otimes C^*(H),\qquad
+C_r^*(X\times H)\cong C_0(X)\otimes C_r^*(H).
+\tag{14.31}
+\]</span>
+<p>The tensor norm is unambiguous because the <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> factor is commutative, as proved in Lesson 8.</p>
+<h2 id="amenability-and-the-foliation-preview">Amenability and the foliation preview</h2>
+<p>For Hausdorff arrows, topological amenability can be defined by a net of probability measures <span class="math" data-tex="\(m_i^x\)">\(m_i^x\)</span> on <span class="math" data-tex="\(\mathcal G^x\)">\(\mathcal G^x\)</span>, continuous on compact test functions, such that</p>
+<span id="equation-14-32"></span><span class="math math-display" data-tex="\[
+\|\gamma_*m_i^{s(\gamma)}-m_i^{r(\gamma)}\|_{\mathrm{TV}}
+\longrightarrow0
+\tag{14.32}
+\]">\[
+\|\gamma_*m_i^{s(\gamma)}-m_i^{r(\gamma)}\|_{\mathrm{TV}}
+\longrightarrow0
+\tag{14.32}
+\]</span>
+<p>uniformly for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in compact sets. This is [Anantharaman-Delaroche 2023, Definition 3.3, p. 8]. We will use it to compare every integrated representation with regular source-fibre representations. The converse to the resulting full–reduced equality is false for groupoids; the counterexamples are discussed after the norm comparison.</p>
+<h3 id="smoothing-the-probability-measures">Smoothing the probability measures</h3>
+<p>We first prepare a Haar density. There is a continuous nonnegative function <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> such that</p>
+<span id="equation-14b-1"></span><span class="math math-display" data-tex="\[
+\int q(\eta)\,d\lambda^x(\eta)=1\qquad(x\in X).
+\tag{14B.1}
+\]">\[
+\int q(\eta)\,d\lambda^x(\eta)=1\qquad(x\in X).
+\tag{14B.1}
+\]</span>
+<p>Its support over each compact range-coordinate set can be chosen compact. To construct it, for every unit choose <span class="math" data-tex="\(h\in C_c(\mathcal G)^+\)">\(h\in C_c(\mathcal G)^+\)</span> whose Haar integral is positive there. Full support supplies such a bump, and Haar continuity keeps its integral positive on a neighborhood. Take a countable locally finite refinement of these neighborhoods and a subordinate partition of unity <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span>, with each support compact and contained in the relevant positivity set. If <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is the corresponding bump, put</p>
+<span id="equation-14b-2"></span><span class="math math-display" data-tex="\[
+q(\eta)=\sum_j
+\frac{\theta_j(r(\eta))h_j(\eta)}{\lambda(h_j)(r(\eta))}.
+\tag{14B.2}
+\]">\[
+q(\eta)=\sum_j
+\frac{\theta_j(r(\eta))h_j(\eta)}{\lambda(h_j)(r(\eta))}.
+\tag{14B.2}
+\]</span>
+<p>Each summand extends continuously by zero across the complement of its positivity set. The sum is locally finite, has the stated support property, and integrates to <span class="math" data-tex="\(\sum_j\theta_j(x)=1\)">\(\sum_j\theta_j(x)=1\)</span>. We are using Hausdorff arrows here, so these are ordinary continuous functions.</p>
+<p>Let <span class="math" data-tex="\(m_i^x\)">\(m_i^x\)</span> be the probabilities in (14.32); they need not initially have Haar densities. Replace them by their convolution with <span class="math" data-tex="\(q\)">\(q\)</span>. The new density on the range fibre is</p>
+<span id="equation-14b-3"></span><span class="math math-display" data-tex="\[
+p_i(\zeta)=\int_{\mathcal G^{r(\zeta)}}
+q(\gamma^{-1}\zeta)\,dm_i^{r(\zeta)}(\gamma).
+\tag{14B.3}
+\]">\[
+p_i(\zeta)=\int_{\mathcal G^{r(\zeta)}}
+q(\gamma^{-1}\zeta)\,dm_i^{r(\zeta)}(\gamma).
+\tag{14B.3}
+\]</span>
+<p>This is a nonnegative Borel function. Here are the measurability details needed below. Continuity of the compact test integrals for <span class="math" data-tex="\(m_i\)">\(m_i\)</span> implies that <span class="math" data-tex="\(x\mapsto m_i^x(B)\)">\(x\mapsto m_i^x(B)\)</span> is Borel for every Borel <span class="math" data-tex="\(B\subseteq\mathcal G\)">\(B\subseteq\mathcal G\)</span>: exhaust an open set by a countable family of nonnegative compact bumps, and then use the monotone-class theorem. On the closed relation <span class="math" data-tex="\(r(\gamma)=r(\zeta)\)">\(r(\gamma)=r(\zeta)\)</span>, integration of a nonnegative Borel function of <span class="math" data-tex="\((\zeta,\gamma)\)">\((\zeta,\gamma)\)</span> against this kernel is Borel as well. First check indicator rectangles, then bounded simple functions, and finally increasing limits. This applies to the integrand in (14B.3).</p>
+<p>Left Haar invariance and Tonelli give <span class="math" data-tex="\(\int p_i\,d\lambda^x=1\)">\(\int p_i\,d\lambda^x=1\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. Any infinite values occupy a Haar-null set in each fibre; replace them by zero. In measure notation the smoothing sends <span class="math" data-tex="\(\delta_\gamma\)">\(\delta_\gamma\)</span> to the probability <span class="math" data-tex="\(\gamma_*(q\lambda^{s(\gamma)})\)">\(\gamma_*(q\lambda^{s(\gamma)})\)</span>. It therefore contracts the total variation of signed measures. It also commutes with left multiplication. Consequently</p>
+<span id="equation-14b-4"></span><span class="math math-display" data-tex="\[
+\int_{\mathcal G^{r(\sigma)}}
+|p_i(\sigma^{-1}\zeta)-p_i(\zeta)|\,d\lambda^{r(\sigma)}(\zeta)
+\leq
+\|\sigma_*m_i^{s(\sigma)}-m_i^{r(\sigma)}\|_{\mathrm{TV}}.
+\tag{14B.4}
+\]">\[
+\int_{\mathcal G^{r(\sigma)}}
+|p_i(\sigma^{-1}\zeta)-p_i(\zeta)|\,d\lambda^{r(\sigma)}(\zeta)
+\leq
+\|\sigma_*m_i^{s(\sigma)}-m_i^{r(\sigma)}\|_{\mathrm{TV}}.
+\tag{14B.4}
+\]</span>
+<p>Changing null-set representatives does not alter this inequality. It follows directly either by the contraction just described or by applying the definition of total variation to every bounded Borel test function of absolute value at most one. We do not need <span class="math" data-tex="\(p_i\)">\(p_i\)</span> to be continuous: Borel densities suffice for a measured representation.</p>
+<h3 id="compressing-a-regular-representation">Compressing a regular representation</h3>
+<p><span id="theorem-14-7"></span><strong>Theorem 14.7.</strong> If <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> has Hausdorff arrows and satisfies (14.32), its full and reduced norms agree.</p>
+<p><strong>Proof.</strong> By disintegration, it suffices to bound the integrated form <span class="math" data-tex="\(L\)">\(L\)</span> of any measurable unitary representation <span class="math" data-tex="\((\mu,H_x,V_\gamma)\)">\((\mu,H_x,V_\gamma)\)</span>. Let <span class="math" data-tex="\(\nu=\mu\lambda\)">\(\nu=\mu\lambda\)</span>, and write <span class="math" data-tex="\(D=d\nu/d\nu^{-1}\)">\(D=d\nu/d\nu^{-1}\)</span> for its positive modular cocycle, as in (14.13). Inner products keep the second-linear convention fixed above.</p>
+<p>Consider</p>
+<span id="equation-14b-5"></span><span class="math math-display" data-tex="\[
+\mathscr K=L^2(\mathcal G,\nu;s^*H),\qquad
+(W_i\xi)(\gamma)=p_i(\gamma)^{1/2}V_\gamma^{-1}\xi(r(\gamma)).
+\tag{14B.5}
+\]">\[
+\mathscr K=L^2(\mathcal G,\nu;s^*H),\qquad
+(W_i\xi)(\gamma)=p_i(\gamma)^{1/2}V_\gamma^{-1}\xi(r(\gamma)).
+\tag{14B.5}
+\]</span>
+<p>Measurability follows from the Borel bundle and (14B.3). The fibre mass identity makes <span class="math" data-tex="\(W_i\)">\(W_i\)</span> an isometry from <span class="math" data-tex="\(L^2(X,\mu;H)\)">\(L^2(X,\mu;H)\)</span> into <span class="math" data-tex="\(\mathscr K\)">\(\mathscr K\)</span>. Define on the latter space</p>
+<span id="equation-14b-6"></span><span class="math math-display" data-tex="\[
+(\mathscr R(f)\eta)(\gamma)=
+\int_{\mathcal G^{r(\gamma)}}
+f(\sigma)D(\sigma)^{-1/2}\eta(\sigma^{-1}\gamma)
+\,d\lambda^{r(\gamma)}(\sigma).
+\tag{14B.6}
+\]">\[
+(\mathscr R(f)\eta)(\gamma)=
+\int_{\mathcal G^{r(\gamma)}}
+f(\sigma)D(\sigma)^{-1/2}\eta(\sigma^{-1}\gamma)
+\,d\lambda^{r(\gamma)}(\sigma).
+\tag{14B.6}
+\]</span>
+<p>The vectors in the integrand lie in <span class="math" data-tex="\(H_{s(\gamma)}\)">\(H_{s(\gamma)}\)</span>. This operator has norm at most <span class="math" data-tex="\(\|f\|_r\)">\(\|f\|_r\)</span>, not merely an <span class="math" data-tex="\(I\)">\(I\)</span>-norm bound. Indeed multiplication by <span class="math" data-tex="\(D(\gamma)^{1/2}\)">\(D(\gamma)^{1/2}\)</span> is a unitary from <span class="math" data-tex="\(\mathscr K\)">\(\mathscr K\)</span> to <span class="math" data-tex="\(L^2(\mathcal G,\nu^{-1};s^*H)\)">\(L^2(\mathcal G,\nu^{-1};s^*H)\)</span>, since <span class="math" data-tex="\(d\nu^{-1}=D^{-1}d\nu\)">\(d\nu^{-1}=D^{-1}d\nu\)</span>. Conjugating (14B.6) by it cancels all modular factors:</p>
+<span id="equation-14b-7"></span><span class="math math-display" data-tex="\[
+D(\gamma)^{1/2}D(\sigma)^{-1/2}
+D(\sigma^{-1}\gamma)^{-1/2}=1.
+\tag{14B.7}
+\]">\[
+D(\gamma)^{1/2}D(\sigma)^{-1/2}
+D(\sigma^{-1}\gamma)^{-1/2}=1.
+\tag{14B.7}
+\]</span>
+<p>The resulting operator is ordinary left convolution. As <span class="math" data-tex="\(\nu^{-1}=\int\lambda_x\,d\mu(x)\)">\(\nu^{-1}=\int\lambda_x\,d\mu(x)\)</span>, this is the direct integral of the regular source-fibre operators <span class="math" data-tex="\(L_x(f)\otimes 1_{H_x}\)">\(L_x(f)\otimes 1_{H_x}\)</span>. Proposition 14.2 bounds every one by <span class="math" data-tex="\(\|f\|_r\)">\(\|f\|_r\)</span>. This also constructs the bounded operator (14B.6) rigorously from its formula on integrable test sections.</p>
+<p>For <span class="math" data-tex="\(f\in C_c(\mathcal G)\)">\(f\in C_c(\mathcal G)\)</span>, put</p>
+<span id="equation-14b-8"></span><span class="math math-display" data-tex="\[
+\varepsilon_i(f)=\sup_{\sigma\in\operatorname{supp}f}
+\|\sigma_*m_i^{s(\sigma)}-m_i^{r(\sigma)}\|_{\mathrm{TV}}.
+\tag{14B.8}
+\]">\[
+\varepsilon_i(f)=\sup_{\sigma\in\operatorname{supp}f}
+\|\sigma_*m_i^{s(\sigma)}-m_i^{r(\sigma)}\|_{\mathrm{TV}}.
+\tag{14B.8}
+\]</span>
+<p>This tends to zero. The unitary multiplication rule gives
+<span class="math" data-tex="\(V_{\sigma^{-1}\gamma}^{-1}=V_\gamma^{-1}V_\sigma\)">\(V_{\sigma^{-1}\gamma}^{-1}=V_\gamma^{-1}V_\sigma\)</span>. Thus the difference <span class="math" data-tex="\(\mathscr R(f)W_i\xi-W_iL(f)\xi\)">\(\mathscr R(f)W_i\xi-W_iL(f)\xi\)</span>, evaluated at <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, is</p>
+<span id="equation-14b-9"></span><span class="math math-display" data-tex="\[
+V_\gamma^{-1}\int f(\sigma)D(\sigma)^{-1/2}
+\big(p_i(\sigma^{-1}\gamma)^{1/2}-p_i(\gamma)^{1/2}\big)
+V_\sigma\xi(s(\sigma))\,d\lambda^{r(\gamma)}(\sigma).
+\tag{14B.9}
+\]">\[
+V_\gamma^{-1}\int f(\sigma)D(\sigma)^{-1/2}
+\big(p_i(\sigma^{-1}\gamma)^{1/2}-p_i(\gamma)^{1/2}\big)
+V_\sigma\xi(s(\sigma))\,d\lambda^{r(\gamma)}(\sigma).
+\tag{14B.9}
+\]</span>
+<p>Apply weighted Cauchy–Schwarz with weight <span class="math" data-tex="\(|f(\sigma)|\)">\(|f(\sigma)|\)</span>. The first factor is bounded by <span class="math" data-tex="\(R(f)\)">\(R(f)\)</span>. After integrating the second factor over <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and using Tonelli, the elementary inequality <span class="math" data-tex="\(|\sqrt a-\sqrt b|^2\leq|a-b|\)">\(|\sqrt a-\sqrt b|^2\leq|a-b|\)</span>, together with (14B.4), gives</p>
+<span id="equation-14b-10"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathscr R(f)W_i\xi-W_iL(f)\xi\|^2
+&amp;\leq R(f)\varepsilon_i(f)
+\int_{\mathcal G}|f(\sigma)|D(\sigma)^{-1}
+\|\xi(s(\sigma))\|^2\,d\nu(\sigma)\\
+&amp;=R(f)\varepsilon_i(f)
+\int_X\|\xi(x)\|^2
+\int_{\mathcal G_x}|f(\sigma)|\,d\lambda_x(\sigma)
+\,d\mu(x)\\
+&amp;\leq R(f)S(f)\varepsilon_i(f)\|\xi\|^2.
+\end{aligned}
+\tag{14B.10}
+\]">\[
+\begin{aligned}
+\|\mathscr R(f)W_i\xi-W_iL(f)\xi\|^2
+&amp;\leq R(f)\varepsilon_i(f)
+\int_{\mathcal G}|f(\sigma)|D(\sigma)^{-1}
+\|\xi(s(\sigma))\|^2\,d\nu(\sigma)\\
+&amp;=R(f)\varepsilon_i(f)
+\int_X\|\xi(x)\|^2
+\int_{\mathcal G_x}|f(\sigma)|\,d\lambda_x(\sigma)
+\,d\mu(x)\\
+&amp;\leq R(f)S(f)\varepsilon_i(f)\|\xi\|^2.
+\end{aligned}
+\tag{14B.10}
+\]</span>
+<p>The equality uses <span class="math" data-tex="\(D^{-1}\nu=\nu^{-1}\)">\(D^{-1}\nu=\nu^{-1}\)</span>, and so includes the modular measure change explicitly. The argument initially applies to bounded measurable sections with suitable finite-measure support; those are dense, and the resulting bound extends to every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>Since <span class="math" data-tex="\(W_i\)">\(W_i\)</span> is isometric, (14B.10) implies</p>
+<span id="equation-14b-11"></span><span class="math math-display" data-tex="\[
+\|L(f)\|\leq\|\mathscr R(f)\|
++\|f\|_I\sqrt{\varepsilon_i(f)}.
+\tag{14B.11}
+\]">\[
+\|L(f)\|\leq\|\mathscr R(f)\|
++\|f\|_I\sqrt{\varepsilon_i(f)}.
+\tag{14B.11}
+\]</span>
+<p>Pass to the limit to obtain <span class="math" data-tex="\(\|L(f)\|\leq\|f\|_r\)">\(\|L(f)\|\leq\|f\|_r\)</span>. Taking the supremum over the disintegrated representations gives <span class="math" data-tex="\(\|f\|\leq\|f\|_r\)">\(\|f\|\leq\|f\|_r\)</span>; the reverse inequality was already part of the construction of the full norm. Completion proves the theorem. ∎</p>
+<p>The theorem is the scalar full–reduced comparison of Renault's amenability theory. [Sims–Williams, §2 and Theorem 1, pp. 4–5] proves the more general Fell-bundle statement through measurewise amenability. The argument here proves the required scalar case directly from (14.32). The common ingredients with the group proof in Lesson 4 are a probability square root, absorption into a regular representation, and a quantitative compression bound; the Haar smoothing above accommodates initially singular probabilities.</p>
+<h3 id="proper-groupoids">Proper groupoids</h3>
+<p>A second countable proper Hausdorff groupoid with a Haar system is amenable. We construct a continuous cutoff <span class="math" data-tex="\(c:X\to[0,\infty)\)">\(c:X\to[0,\infty)\)</span> with</p>
+<span id="equation-14-33"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\int_{\mathcal G^x}c(s(\eta))\,d\lambda^x(\eta)=1,\\
+\operatorname{supp}c\cap s(r^{-1}(K))\text{ is compact}\\
+\text{for every compact }K\subset X.
+\end{gathered}
+\tag{14.33}
+\]">\[
+\begin{gathered}
+\int_{\mathcal G^x}c(s(\eta))\,d\lambda^x(\eta)=1,\\
+\operatorname{supp}c\cap s(r^{-1}(K))\text{ is compact}\\
+\text{for every compact }K\subset X.
+\end{gathered}
+\tag{14.33}
+\]</span>
+<p><strong>Lemma (cutoffs for proper groupoids).</strong> A second countable locally compact Hausdorff proper groupoid with a Haar system has a continuous function <span class="math" data-tex="\(c:X\to[0,\infty)\)">\(c:X\to[0,\infty)\)</span> satisfying (14.33).</p>
+<p><strong>Proof.</strong> The orbit map <span class="math" data-tex="\(q:X\to Y=X/\mathcal G\)">\(q:X\to Y=X/\mathcal G\)</span> is open, and <span class="math" data-tex="\(Y\)">\(Y\)</span> is locally compact Hausdorff, by the proper-orbit argument of Lesson 13. It is second countable: images under an open surjection of a countable basis form a countable basis. We first construct <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>, continuous on <span class="math" data-tex="\(X\)">\(X\)</span>, positive somewhere on each orbit, such that</p>
+<span id="equation-14a-1"></span><span class="math math-display" data-tex="\[
+\operatorname{supp}b\cap q^{-1}(L)\text{ is compact for every compact }L\subset Y.
+\tag{14A.1}
+\]">\[
+\operatorname{supp}b\cap q^{-1}(L)\text{ is compact for every compact }L\subset Y.
+\tag{14A.1}
+\]</span>
+<p>Take a locally finite cover of <span class="math" data-tex="\(Y\)">\(Y\)</span> by relatively compact open sets <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, and a partition of unity <span class="math" data-tex="\((\rho_j)\)">\((\rho_j)\)</span> with <span class="math" data-tex="\(\operatorname{supp}\rho_j\subset V_j\)">\(\operatorname{supp}\rho_j\subset V_j\)</span>. For each <span class="math" data-tex="\(y\in\overline V_j\)">\(y\in\overline V_j\)</span>, choose a lift <span class="math" data-tex="\(x\)">\(x\)</span> and a nonnegative compactly supported bump positive at <span class="math" data-tex="\(x\)">\(x\)</span>. The open image of its positive set is a neighborhood of <span class="math" data-tex="\(y\)">\(y\)</span>. Compactness of <span class="math" data-tex="\(\overline V_j\)">\(\overline V_j\)</span> permits finitely many such bumps; their sum <span class="math" data-tex="\(b_j\in C_c(X)\)">\(b_j\in C_c(X)\)</span> is positive somewhere on every orbit over <span class="math" data-tex="\(\overline V_j\)">\(\overline V_j\)</span>. Put</p>
+<span id="equation-14a-2"></span><span class="math math-display" data-tex="\[
+b(x)=\sum_j\rho_j(q(x))b_j(x).
+\tag{14A.2}
+\]">\[
+b(x)=\sum_j\rho_j(q(x))b_j(x).
+\tag{14A.2}
+\]</span>
+<p>The sum is locally finite, hence continuous. For each <span class="math" data-tex="\(y\)">\(y\)</span>, some <span class="math" data-tex="\(\rho_j(y)&gt;0\)">\(\rho_j(y)&gt;0\)</span>, and the corresponding <span class="math" data-tex="\(b_j\)">\(b_j\)</span> is positive on that orbit, so <span class="math" data-tex="\(b\)">\(b\)</span> is positive there. A compact <span class="math" data-tex="\(L\)">\(L\)</span> meets only finitely many of the supports of the partition. Its inverse image meets <span class="math" data-tex="\(\operatorname{supp}b\)">\(\operatorname{supp}b\)</span> inside the finite union of the corresponding compact supports of <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. This intersection is closed in that compact union, proving (14A.1).</p>
+<p>Define</p>
+<span id="equation-14a-3"></span><span class="math math-display" data-tex="\[
+a(x)=\int_{\mathcal G^x}b(s(\eta))\,d\lambda^x(\eta).
+\tag{14A.3}
+\]">\[
+a(x)=\int_{\mathcal G^x}b(s(\eta))\,d\lambda^x(\eta).
+\tag{14A.3}
+\]</span>
+<p>The function is finite and continuous. To check this without treating <span class="math" data-tex="\(b\circ s\)">\(b\circ s\)</span> as globally compactly supported, choose <span class="math" data-tex="\(\chi\in C_c(X)\)">\(\chi\in C_c(X)\)</span> equal to one near a fixed <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, and write <span class="math" data-tex="\(K=\operatorname{supp}\chi\)">\(K=\operatorname{supp}\chi\)</span>. In <span class="math" data-tex="\(r^{-1}(K)\)">\(r^{-1}(K)\)</span>, an arrow at which <span class="math" data-tex="\(b\circ s\)">\(b\circ s\)</span> is nonzero has source in the compact set
+<span class="math" data-tex="\(C=\operatorname{supp}b\cap q^{-1}(q(K))\)">\(C=\operatorname{supp}b\cap q^{-1}(q(K))\)</span>, by (14A.1). Properness of <span class="math" data-tex="\((r,s)\)">\((r,s)\)</span> makes <span class="math" data-tex="\((r,s)^{-1}(K\times C)\)">\((r,s)^{-1}(K\times C)\)</span> compact. Thus <span class="math" data-tex="\(\eta\mapsto\chi(r(\eta))b(s(\eta))\)">\(\eta\mapsto\chi(r(\eta))b(s(\eta))\)</span> is a compactly supported continuous function on the Hausdorff arrow space. Haar continuity makes its integral continuous, and that integral is <span class="math" data-tex="\(a\)">\(a\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. This proves both finiteness and continuity locally everywhere.</p>
+<p>Each orbit contains a point where <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>; an arrow from that point to <span class="math" data-tex="\(x\)">\(x\)</span>, and full support of the range Haar measure, give <span class="math" data-tex="\(a(x)&gt;0\)">\(a(x)&gt;0\)</span>. Left invariance gives <span class="math" data-tex="\(a(r(\gamma))=a(s(\gamma))\)">\(a(r(\gamma))=a(s(\gamma))\)</span>, since left multiplication leaves the source of the integration arrow unchanged. Consequently</p>
+<span id="equation-14a-4"></span><span class="math math-display" data-tex="\[
+c(x)=b(x)/a(x)
+\tag{14A.4}
+\]">\[
+c(x)=b(x)/a(x)
+\tag{14A.4}
+\]</span>
+<p>is continuous, has the same support as <span class="math" data-tex="\(b\)">\(b\)</span>, and has range-fibre integral one as in (14.33). Finally
+<span class="math" data-tex="\(s(r^{-1}(K))=q^{-1}(q(K))\)">\(s(r^{-1}(K))=q^{-1}(q(K))\)</span>: these are exactly the units in orbits meeting <span class="math" data-tex="\(K\)">\(K\)</span>. Equation (14A.1) proves the required support condition for <span class="math" data-tex="\(c\)">\(c\)</span>. ∎</p>
+<p>The cutoff theorem is also recorded by Tu, <em>The Baum–Connes Conjecture for Groupoids</em>, §1.7. Its construction here makes the compactness of the normalized fibre integrals explicit.</p>
+<p>Using this cutoff, set <span class="math" data-tex="\(m^x=c(s(\eta))\,d\lambda^x(\eta)\)">\(m^x=c(s(\eta))\,d\lambda^x(\eta)\)</span>. This is a probability measure; its compact test integrals are continuous by the Haar axiom. Left multiplication preserves it exactly because source does not change and the Haar measures are left invariant. The constant family <span class="math" data-tex="\(m_i=m\)">\(m_i=m\)</span> satisfies (14.32). Theorem 14.7 therefore gives full–reduced equality for proper Hausdorff groupoids. Both the cutoff and the norm comparison have been constructed above.</p>
+<h3 id="a-group-bundle-that-separates-the-three-properties">A group bundle that separates the three properties</h3>
+<p>We now construct the counterexample promised after (14.27). It has equal full and reduced algebras, is not amenable, and has a nonexact reduced restriction sequence. The construction is the free-group instance of the Higson–Lafforgue–Skandalis group bundles, with the norm comparison used by [Willett 2015]. We include the finite-quotient norm argument rather than assume a finite-dimensional approximation theorem.</p>
+<h4 id="finite-quotients-detect-the-full-free-group-norm">Finite quotients detect the full free-group norm</h4>
+<p>Let <span class="math" data-tex="\(\Gamma=F(a,b)\)">\(\Gamma=F(a,b)\)</span>. For every <span class="math" data-tex="\(z\in\mathbb C[\Gamma]\)">\(z\in\mathbb C[\Gamma]\)</span>,</p>
+<span id="equation-14c-1"></span><span class="math math-display" data-tex="\[
+\|z\|_{C^*(\Gamma)}
+=\sup_{\Gamma\twoheadrightarrow Q\text{ finite}}
+\|z_Q\|_{C_r^*(Q)}.
+\tag{14C.1}
+\]">\[
+\|z\|_{C^*(\Gamma)}
+=\sup_{\Gamma\twoheadrightarrow Q\text{ finite}}
+\|z_Q\|_{C_r^*(Q)}.
+\tag{14C.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(z_Q\)">\(z_Q\)</span> is the image of the group-ring element. The easy inequality follows because every finite-quotient regular representation is a representation of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. We prove the other inequality in two steps.</p>
+<p>First finite-dimensional representations detect the full norm. Let <span class="math" data-tex="\(U_a,U_b\)">\(U_a,U_b\)</span> be unitaries in any representation, let <span class="math" data-tex="\(\xi\)">\(\xi\)</span> be a unit vector, and suppose every word in <span class="math" data-tex="\(z\)">\(z\)</span> has length at most <span class="math" data-tex="\(L\geq1\)">\(L\geq1\)</span>. Put</p>
+<span id="equation-14c-2"></span><span class="math math-display" data-tex="\[
+E=\operatorname{span}\{U_w\xi:|w|\leq L-1\},\qquad
+H_L=\operatorname{span}\{U_w\xi:|w|\leq L\}.
+\tag{14C.2}
+\]">\[
+E=\operatorname{span}\{U_w\xi:|w|\leq L-1\},\qquad
+H_L=\operatorname{span}\{U_w\xi:|w|\leq L\}.
+\tag{14C.2}
+\]</span>
+<p>For either generator <span class="math" data-tex="\(g\)">\(g\)</span>, its original unitary maps
+<span class="math" data-tex="\(E+U_g^{-1}E\)">\(E+U_g^{-1}E\)</span> isometrically onto <span class="math" data-tex="\(U_gE+E\)">\(U_gE+E\)</span>, both subspaces of <span class="math" data-tex="\(H_L\)">\(H_L\)</span>. Their orthogonal complements in <span class="math" data-tex="\(H_L\)">\(H_L\)</span> have equal finite dimension. Extend this partial unitary to a unitary <span class="math" data-tex="\(\widetilde U_g\)">\(\widetilde U_g\)</span> on <span class="math" data-tex="\(H_L\)">\(H_L\)</span>. Both <span class="math" data-tex="\(\widetilde U_g\)">\(\widetilde U_g\)</span> and its inverse agree with the original operators on <span class="math" data-tex="\(E\)">\(E\)</span>. Freeness gives a representation with these two generators; successively applying the letters of a word of length at most <span class="math" data-tex="\(L\)">\(L\)</span> to <span class="math" data-tex="\(\xi\)">\(\xi\)</span> agrees with the original representation at every step. Hence
+<span class="math" data-tex="\(\widetilde U(z)\xi=U(z)\xi\)">\(\widetilde U(z)\xi=U(z)\xi\)</span>. Choosing <span class="math" data-tex="\(\xi\)">\(\xi\)</span> close to the operator norm proves the assertion. This is the finite-word extension argument underlying residual finite-dimensionality of the full free-group algebra, historically associated with Choi.</p>
+<p>Next approximate a finite-dimensional representation <span class="math" data-tex="\(U\)">\(U\)</span> by finite-image representations, allowing the approximating Hilbert space to grow. Suppose its dimension is <span class="math" data-tex="\(d\)">\(d\)</span>. On the unit sphere <span class="math" data-tex="\(S\subseteq\mathbb C^d\)">\(S\subseteq\mathbb C^d\)</span>, let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be the unitary-invariant probability measure. One construction is to normalize a nonzero standard complex Gaussian vector; invariance follows from its radial density. Phase rotations and coordinate permutations then give</p>
+<span id="equation-14c-3"></span><span class="math math-display" data-tex="\[
+\int_S xx^*\,d\rho(x)=d^{-1}1.
+\tag{14C.3}
+\]">\[
+\int_S xx^*\,d\rho(x)=d^{-1}1.
+\tag{14C.3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(v\mapsto\sqrt d\,\langle x,v\rangle\)">\(v\mapsto\sqrt d\,\langle x,v\rangle\)</span> is an isometric linear embedding into <span class="math" data-tex="\(L^2(S,\rho)\)">\(L^2(S,\rho)\)</span>, and composition with <span class="math" data-tex="\(U_g^{-1}\)">\(U_g^{-1}\)</span> intertwines it with <span class="math" data-tex="\(U_g\)">\(U_g\)</span>.</p>
+<p>Partition the sphere into finitely many Borel sets <span class="math" data-tex="\(A_j\)">\(A_j\)</span> of diameter at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; discard zero-measure cells and choose <span class="math" data-tex="\(x_j\in A_j\)">\(x_j\in A_j\)</span>. For each generator set</p>
+<span id="equation-14c-4"></span><span class="math math-display" data-tex="\[
+m^g_{ij}=\rho(A_i\cap U_g^{-1}A_j),\qquad r_i=\rho(A_i).
+\tag{14C.4}
+\]">\[
+m^g_{ij}=\rho(A_i\cap U_g^{-1}A_j),\qquad r_i=\rho(A_i).
+\tag{14C.4}
+\]</span>
+<p>Every matrix <span class="math" data-tex="\(m^g\)">\(m^g\)</span> has row sums and column sums <span class="math" data-tex="\(r\)">\(r\)</span>. Replace these numbers by nonnegative rational numbers <span class="math" data-tex="\(\widehat m^g_{ij},\widehat r_i\)">\(\widehat m^g_{ij},\widehat r_i\)</span>, arbitrarily close to them, satisfying the same common row and column equations and <span class="math" data-tex="\(\sum_i\widehat r_i=1\)">\(\sum_i\widehat r_i=1\)</span>. Keep every originally zero entry zero. Here no approximation theorem is hidden: the equations have rational coefficients and rational right-hand sides. On the coordinates that were positive the original solution lies in the relative interior of the positive orthant. Gaussian elimination supplies a rational particular solution and a rational basis for the homogeneous solution space; approximate its real coordinates by rationals closely enough to preserve positivity. This proves the asserted rational approximation.</p>
+<p>Choose a common denominator <span class="math" data-tex="\(N\)">\(N\)</span>. Take a finite set <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, partitioned into sets <span class="math" data-tex="\(\Omega_i\)">\(\Omega_i\)</span> of sizes <span class="math" data-tex="\(N\widehat r_i\)">\(N\widehat r_i\)</span>. For each generator choose a permutation <span class="math" data-tex="\(P_g\)">\(P_g\)</span> sending exactly <span class="math" data-tex="\(N\widehat m^g_{ij}\)">\(N\widehat m^g_{ij}\)</span> elements from <span class="math" data-tex="\(\Omega_i\)">\(\Omega_i\)</span> to <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span>. The row sums partition each source set, the column sums partition each target set, and arbitrary bijections between the equally sized pieces give the permutation. These two permutations define a representation <span class="math" data-tex="\(T\)">\(T\)</span> of the free group with finite image on <span class="math" data-tex="\(L^2(\Omega,\text{uniform probability})\)">\(L^2(\Omega,\text{uniform probability})\)</span>.</p>
+<p>Define <span class="math" data-tex="\(A_Nv(\omega)=\sqrt d\langle x_i,v\rangle\)">\(A_Nv(\omega)=\sqrt d\langle x_i,v\rangle\)</span> for <span class="math" data-tex="\(\omega\in\Omega_i\)">\(\omega\in\Omega_i\)</span>. Its Gram matrix is
+<span class="math" data-tex="\(A_N^*A_N=d\sum_i\widehat r_i x_ix_i^*\)">\(A_N^*A_N=d\sum_i\widehat r_i x_ix_i^*\)</span>, which approaches the identity as <span class="math" data-tex="\(\delta\to0\)">\(\delta\to0\)</span> and the rational approximation error tends to zero. Indeed <span class="math" data-tex="\(\|xx^*-x_ix_i^*\|\leq2\delta\)">\(\|xx^*-x_ix_i^*\|\leq2\delta\)</span> on <span class="math" data-tex="\(A_i\)">\(A_i\)</span>, and (14C.3) gives the integral to compare with.</p>
+<p>If <span class="math" data-tex="\(P_g\omega\in\Omega_j\)">\(P_g\omega\in\Omega_j\)</span> for <span class="math" data-tex="\(\omega\in\Omega_i\)">\(\omega\in\Omega_i\)</span>, the corresponding matrix entry was positive originally. Some <span class="math" data-tex="\(x\in A_i\)">\(x\in A_i\)</span> therefore has <span class="math" data-tex="\(U_gx\in A_j\)">\(U_gx\in A_j\)</span>; hence <span class="math" data-tex="\(\|U_gx_i-x_j\|\leq2\delta\)">\(\|U_gx_i-x_j\|\leq2\delta\)</span>. With <span class="math" data-tex="\(T_gf=f\circ P_g^{-1}\)">\(T_gf=f\circ P_g^{-1}\)</span>, this gives</p>
+<span id="equation-14c-5"></span><span class="math math-display" data-tex="\[
+\|T_gA_N-A_NU_g\|\leq2\sqrt d\,\delta.
+\tag{14C.5}
+\]">\[
+\|T_gA_N-A_NU_g\|\leq2\sqrt d\,\delta.
+\tag{14C.5}
+\]</span>
+<p>For sufficiently small errors, normalize to the isometry
+<span class="math" data-tex="\(W_N=A_N(A_N^*A_N)^{-1/2}\)">\(W_N=A_N(A_N^*A_N)^{-1/2}\)</span>. Then
+<span class="math" data-tex="\(\|T_gW_N-W_NU_g\|\to0\)">\(\|T_gW_N-W_NU_g\|\to0\)</span>, for both generators and their inverses. Telescoping along each of the finitely many words in <span class="math" data-tex="\(z\)">\(z\)</span> gives
+<span class="math" data-tex="\(\|T(z)W_N-W_NU(z)\|\to0\)">\(\|T(z)W_N-W_NU(z)\|\to0\)</span>. Thus <span class="math" data-tex="\(\|U(z)\|\leq\liminf\|T(z)\|\)">\(\|U(z)\|\leq\liminf\|T(z)\|\)</span>. Each <span class="math" data-tex="\(T\)">\(T\)</span> factors through a finite quotient, whose full and regular norms agree by the finite-group case of Lesson 4. Combining this with the first step proves (14C.1). This is the norm consequence of the finite-image density property for free groups studied by Lubotzky and Shalom; its required proof has been given here.</p>
+<p>Enumerate the kernels of all homomorphisms of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> into finite permutation groups and let <span class="math" data-tex="\(N_k\)">\(N_k\)</span> be the intersection of the first <span class="math" data-tex="\(k\)">\(k\)</span>. These are finite-index normal subgroups, form a decreasing chain, and are cofinal among finite-index normal subgroups. Their intersection is trivial. For completeness, a nontrivial reduced word can be separated by a finite permutation action: trace its letters, in their order of application, along a path with distinct vertices <span class="math" data-tex="\(0,\ldots,L\)">\(0,\ldots,L\)</span>. Each generator specifies a partial permutation along its labelled edges. Reducedness prevents conflicting assignments at an internal vertex. Complete each partial bijection to a permutation of the vertices. The word carries vertex 0 to vertex <span class="math" data-tex="\(L\)">\(L\)</span>, so is not the identity in this finite image. This proves residual finiteness and the intersection assertion directly.</p>
+<p>Writing <span class="math" data-tex="\(Q_k=\Gamma/N_k\)">\(Q_k=\Gamma/N_k\)</span>, cofinality and (14C.1) imply</p>
+<span id="equation-14c-6"></span><span class="math math-display" data-tex="\[
+\|z\|_{C^*(\Gamma)}=\lim_k\|z_{Q_k}\|_{C_r^*(Q_k)}.
+\tag{14C.6}
+\]">\[
+\|z\|_{C^*(\Gamma)}=\lim_k\|z_{Q_k}\|_{C_r^*(Q_k)}.
+\tag{14C.6}
+\]</span>
+<p>The norms are increasing: a later finite quotient surjects onto an earlier one, and the finite-group full norm equals its reduced norm.</p>
+<h4 id="the-topology-and-the-two-norms">The topology and the two norms</h4>
+<p>Let the unit space be <span class="math" data-tex="\(X=\mathbb N\cup\{\infty\}\)">\(X=\mathbb N\cup\{\infty\}\)</span>, its one-point compactification. Define a group bundle with fibres <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> at <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. Every arrow in a finite fibre is isolated. A basic neighborhood of <span class="math" data-tex="\((\infty,\gamma)\)">\((\infty,\gamma)\)</span> is</p>
+<span id="equation-14c-7"></span><span class="math math-display" data-tex="\[
+T(\gamma,K)=\{(\infty,\gamma)\}\cup
+\{(k,\gamma N_k):k\geq K\}.
+\tag{14C.7}
+\]">\[
+T(\gamma,K)=\{(\infty,\gamma)\}\cup
+\{(k,\gamma N_k):k\geq K\}.
+\tag{14C.7}
+\]</span>
+<p>Each such set is a compact open bisection, homeomorphic to the corresponding unit-space tail. Distinct infinite-fibre arrows have disjoint sufficiently short tails because <span class="math" data-tex="\(\bigcap N_k=\{e\}\)">\(\bigcap N_k=\{e\}\)</span>; finite arrows are separated by isolated neighborhoods. This proves Hausdorffness, local compactness, and second countability. Multiplication and inverse are continuous because the tail for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> times the tail for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, on matching units, is the tail for <span class="math" data-tex="\(\gamma\eta\)">\(\gamma\eta\)</span>; inverse replaces <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> by <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span>. The groupoid is étale and has the counting Haar system of Proposition 13.2.</p>
+<p>Let <span class="math" data-tex="\(u_\gamma\)">\(u_\gamma\)</span> be the characteristic function of <span class="math" data-tex="\(T(\gamma,1)\)">\(T(\gamma,1)\)</span>, with the indexing started at 1. These are unitaries in the convolution algebra and obey <span class="math" data-tex="\(u_\gamma u_\eta=u_{\gamma\eta}\)">\(u_\gamma u_\eta=u_{\gamma\eta}\)</span>. The characteristic function of the compact open unit space is the identity. For a core function <span class="math" data-tex="\(f\)">\(f\)</span>, write <span class="math" data-tex="\(f_k\in\mathbb C[Q_k]\)">\(f_k\in\mathbb C[Q_k]\)</span> and <span class="math" data-tex="\(f_\infty\in\mathbb C[\Gamma]\)">\(f_\infty\in\mathbb C[\Gamma]\)</span> for its restrictions. The latter has finite support, since the infinite fibre is closed and discrete. The regular norm is exactly</p>
+<span id="equation-14c-8"></span><span class="math math-display" data-tex="\[
+\|f\|_r=\max\left\{\sup_k\|f_k\|_{C_r^*(Q_k)},
+\|f_\infty\|_{C_r^*(\Gamma)}\right\}.
+\tag{14C.8}
+\]">\[
+\|f\|_r=\max\left\{\sup_k\|f_k\|_{C_r^*(Q_k)},
+\|f_\infty\|_{C_r^*(\Gamma)}\right\}.
+\tag{14C.8}
+\]</span>
+<p>To calculate the full norm without presupposing reduced exactness, put
+<span class="math" data-tex="\(F=\sum_\gamma f_\infty(\gamma)u_\gamma\)">\(F=\sum_\gamma f_\infty(\gamma)u_\gamma\)</span>. Then <span class="math" data-tex="\(g=f-F\)">\(g=f-F\)</span> lies in the closure of the finite-fibre core, even in the <span class="math" data-tex="\(I\)">\(I\)</span>-norm. Indeed a compact support is covered by finitely many tail bisections and finitely many isolated arrows. On each tail the values of <span class="math" data-tex="\(g\)">\(g\)</span> tend to zero. For large <span class="math" data-tex="\(k\)">\(k\)</span> its support in that fibre has uniformly bounded cardinality, so <span class="math" data-tex="\(\|g_k\|_{\ell^1(Q_k)}\to0\)">\(\|g_k\|_{\ell^1(Q_k)}\to0\)</span>. Multiplication by finite unit cutoffs now approximates <span class="math" data-tex="\(g\)">\(g\)</span> in the <span class="math" data-tex="\(I\)">\(I\)</span>-norm.</p>
+<p>The central unital copy of <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> acts in every irreducible full representation as evaluation at a unit. If the unit is <span class="math" data-tex="\(k\)">\(k\)</span>, that representation factors through the group algebra of <span class="math" data-tex="\(Q_k\)">\(Q_k\)</span>: the central projection of that unit is the identity in the representation. If the unit is <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, it kills every finite unit cutoff, and therefore kills <span class="math" data-tex="\(g\)">\(g\)</span>. Its values on the unitaries <span class="math" data-tex="\(u_\gamma\)">\(u_\gamma\)</span> form a representation of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, so its norm on <span class="math" data-tex="\(f\)">\(f\)</span> is at most <span class="math" data-tex="\(\|f_\infty\|_{C^*(\Gamma)}\)">\(\|f_\infty\|_{C^*(\Gamma)}\)</span>. Taking the supremum over irreducible representations gives the upper bound in</p>
+<span id="equation-14c-9"></span><span class="math math-display" data-tex="\[
+\|f\|=\max\left\{\sup_k\|f_k\|_{C^*(Q_k)},
+\|f_\infty\|_{C^*(\Gamma)}\right\}.
+\tag{14C.9}
+\]">\[
+\|f\|=\max\left\{\sup_k\|f_k\|_{C^*(Q_k)},
+\|f_\infty\|_{C^*(\Gamma)}\right\}.
+\tag{14C.9}
+\]</span>
+<p>The reverse bound follows by composing restriction at a unit with any group representation; this is <span class="math" data-tex="\(I\)">\(I\)</span>-contractive because the fibre <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span>-norm is bounded by <span class="math" data-tex="\(\|f\|_I\)">\(\|f\|_I\)</span>. The central multiplier and irreducible norm facts used here are the ordinary C*-algebra facts already used in Lessons 1–3; this argument does not import a new groupoid disintegration theorem.</p>
+<p>Now <span class="math" data-tex="\(\|g_k\|\to0\)">\(\|g_k\|\to0\)</span>, while (14C.6) says that
+<span class="math" data-tex="\(\|F_k\|\to\|f_\infty\|_{C^*(\Gamma)}\)">\(\|F_k\|\to\|f_\infty\|_{C^*(\Gamma)}\)</span>. Hence the finite-fibre supremum in (14C.8) already dominates the last term of (14C.9). Finite groups have equal full and reduced norms, and the infinite-fibre reduced norm is at most its full norm. The two displayed norms are equal on the core and therefore on its completion. This proves the <strong>weak containment property</strong> for this groupoid.</p>
+<p>It is not topologically amenable. An amenability family restricted to the infinite unit would be a family of probability measures on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, asymptotically invariant under every fixed <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. That is the Reiter condition for amenability of the free group. Lessons 2 and 4 rule it out: the full norm of <span class="math" data-tex="\(a+a^{-1}+b+b^{-1}\)">\(a+a^{-1}+b+b^{-1}\)</span> is 4, while its regular norm is <span class="math" data-tex="\(2\sqrt3\)">\(2\sqrt3\)</span>. This establishes the failure of the converse to Theorem 14.7.</p>
+<h4 id="a-kernel-element-that-survives-at-every-finite-fibre">A kernel element that survives at every finite fibre</h4>
+<p>Let <span class="math" data-tex="\(U=\mathbb N\subset X\)">\(U=\mathbb N\subset X\)</span>, and define</p>
+<span id="equation-14c-10"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+h=\tfrac14(u_a+u_a^*+u_b+u_b^*),\qquad
+c=\tfrac12(1+\sqrt3/2),\\
+\varphi(t)=\max\{0,(t-c)/(1-c)\}\quad(-1\leq t\leq1).
+\end{gathered}
+\tag{14C.10}
+\]">\[
+\begin{gathered}
+h=\tfrac14(u_a+u_a^*+u_b+u_b^*),\qquad
+c=\tfrac12(1+\sqrt3/2),\\
+\varphi(t)=\max\{0,(t-c)/(1-c)\}\quad(-1\leq t\leq1).
+\end{gathered}
+\tag{14C.10}
+\]</span>
+<p>The self-adjoint element <span class="math" data-tex="\(h\)">\(h\)</span> is a contraction. Put <span class="math" data-tex="\(p=\varphi(h)\)">\(p=\varphi(h)\)</span>, a positive contraction obtained by continuous functional calculus; no spectral-gap assertion about the finite quotients is needed. At infinity the regular norm of <span class="math" data-tex="\(h_\infty\)">\(h_\infty\)</span> is <span class="math" data-tex="\(\sqrt3/2&lt;c\)">\(\sqrt3/2&lt;c\)</span>. Thus <span class="math" data-tex="\(p_\infty=0\)">\(p_\infty=0\)</span> in <span class="math" data-tex="\(C_r^*(\Gamma)\)">\(C_r^*(\Gamma)\)</span>.</p>
+<p>In every finite fibre, the constant vector is an eigenvector of <span class="math" data-tex="\(h_k\)">\(h_k\)</span> with eigenvalue 1. Consequently <span class="math" data-tex="\(p_k\)">\(p_k\)</span> has eigenvalue <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span> and <span class="math" data-tex="\(\|p_k\|=1\)">\(\|p_k\|=1\)</span>. But the reduced open-restriction ideal is</p>
+<span id="equation-14c-11"></span><span class="math math-display" data-tex="\[
+C_r^*(\mathcal G|_U)=\bigoplus_k C^*(Q_k),
+\tag{14C.11}
+\]">\[
+C_r^*(\mathcal G|_U)=\bigoplus_k C^*(Q_k),
+\tag{14C.11}
+\]</span>
+<p>the norm-vanishing direct sum: the finite-fibre core has supremum block norm, and its completion is exactly that direct sum. Its elements have block norms tending to zero. We have proved</p>
+<span id="equation-14c-12"></span><span class="math math-display" data-tex="\[
+p\in\ker\big(C_r^*(\mathcal G)\to C_r^*(\Gamma)\big),
+\qquad p\notin C_r^*(\mathcal G|_U).
+\tag{14C.12}
+\]">\[
+p\in\ker\big(C_r^*(\mathcal G)\to C_r^*(\Gamma)\big),
+\qquad p\notin C_r^*(\mathcal G|_U).
+\tag{14C.12}
+\]</span>
+<p>This is the strict inclusion in (14.27), with an explicit kernel element. It also explains the warning following (14.30): the intrinsic quotient fibre at infinity is the full free-group algebra, although the physical regular fibre is its reduced algebra. Equality of the global full and reduced completions does not identify those two different fibre constructions.</p>
+<p>The group-bundle construction and these failures are discussed in [Anantharaman-Delaroche 2023, §§5.4 and 6] and [Sims 2017, pp. 35–36]. Willett's example uses finite-quotient detection of the full norm to obtain weak containment without amenability. The argument above supplies that detection, the topology, both norm calculations, and the reduced kernel witness in one model.</p>
+<h3 id="the-foliation-preview">The foliation preview</h3>
+<p>For the Kronecker flow of irrational slope <span class="math" data-tex="\(\theta\)">\(\theta\)</span>,</p>
+<span id="equation-14-34"></span><span class="math math-display" data-tex="\[
+t\cdot(x,y)=(x+t,y+\theta t)\pmod{\mathbb Z^2},
+\tag{14.34}
+\]">\[
+t\cdot(x,y)=(x+t,y+\theta t)\pmod{\mathbb Z^2},
+\tag{14.34}
+\]</span>
+<p>the flow groupoid has algebra <span class="math" data-tex="\(C(\mathbb T^2)\rtimes\mathbb R\)">\(C(\mathbb T^2)\rtimes\mathbb R\)</span>, with equal full and reduced norms by Lesson 4. The Thom calculation of Lesson 11 gives <span class="math" data-tex="\(K_0\cong K_1\cong\mathbb Z^2\)">\(K_0\cong K_1\cong\mathbb Z^2\)</span>. Lesson 16 identifies the holonomy groupoid with this flow groupoid and proves the equivalence with a transversal rotation groupoid. The algebra construction here does not by itself prove that geometric identification.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> Prove the pair-groupoid compact-operator identification when <span class="math" data-tex="\(\mu(X)&lt;\infty\)">\(\mu(X)&lt;\infty\)</span>, including a finite set with unequal positive weights. State the necessary topological and support assumptions.</p>
+<p><strong>Solution.</strong> Assume <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty second countable locally compact Hausdorff and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a full-support positive Radon measure. A finite abstract measure space alone does not specify the topological groupoid or its compact continuous kernels. For product kernels, convolution gives</p>
+<span id="equation-14-35"></span><span class="math math-display" data-tex="\[
+f_{\xi,\eta}*f_{\zeta,\omega}
+=\langle\eta,\zeta\rangle f_{\xi,\omega},\qquad
+f_{\xi,\eta}^*=f_{\eta,\xi}.
+\tag{14.35}
+\]">\[
+f_{\xi,\eta}*f_{\zeta,\omega}
+=\langle\eta,\zeta\rangle f_{\xi,\omega},\qquad
+f_{\xi,\eta}^*=f_{\eta,\xi}.
+\tag{14.35}
+\]</span>
+<p>Compact product approximations are dense in <span class="math" data-tex="\(I\)">\(I\)</span>-norm, with error at most <span class="math" data-tex="\(\mu(X)\)">\(\mu(X)\)</span> times the uniform error. Each finite collection lies in a finite matrix corner after orthonormalizing its <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> vectors. The matrix norm is the full norm, realized by the source-fibre representation. Completion is therefore <span class="math" data-tex="\(\mathcal K(L^2(X,\mu))\)">\(\mathcal K(L^2(X,\mu))\)</span>. On a finite set the orthonormal vectors are <span class="math" data-tex="\(\delta_i/\sqrt{w_i}\)">\(\delta_i/\sqrt{w_i}\)</span>, giving precisely (14.29). Proposition 14.6 also shows that finite total mass is unnecessary: use the two compact projection measures for each approximation.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Establish the transformation-groupoid identifications and determine the density factor when <span class="math" data-tex="\(H\)">\(H\)</span> is not unimodular.</p>
+<p><strong>Solution.</strong> Groupoid convolution is the first formula in (14.18); groupoid adjoint is its second formula. Multiplication by <span class="math" data-tex="\(\Delta(t)^{-1/2}\)">\(\Delta(t)^{-1/2}\)</span> preserves the product because the two factors at <span class="math" data-tex="\(a,a^{-1}t\)">\(a,a^{-1}t\)</span> multiply to that at <span class="math" data-tex="\(t\)">\(t\)</span>. Its crossed-product adjoint has coefficient <span class="math" data-tex="\(\Delta(t)^{-1}\Delta(t^{-1})^{-1/2}=\Delta(t)^{-1/2}\)">\(\Delta(t)^{-1}\Delta(t^{-1})^{-1/2}=\Delta(t)^{-1/2}\)</span>. Thus (14.16), not the unweighted core map, is the required *-isomorphism.</p>
+<p>For the full norm, a covariant pair integrates this core to an inductive-limit continuous representation, which is <span class="math" data-tex="\(I\)">\(I\)</span>-contractive by disintegration. Conversely construct <span class="math" data-tex="\(P\)">\(P\)</span> by (14.14) and the strongly continuous <span class="math" data-tex="\(U_a\)">\(U_a\)</span> by (14.19); the core inner-product identity gives unitarity and covariance, and convolution on core vectors verifies the integrated form. Supremum norms agree. For the reduced norm, the source-fibre measure is <span class="math" data-tex="\(\Delta(t)^{-1}dt\)">\(\Delta(t)^{-1}dt\)</span>; multiplying vectors by <span class="math" data-tex="\(\Delta(t)^{-1/2}\)">\(\Delta(t)^{-1/2}\)</span> gives (14.21). Direct sum over all evaluations of <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> is faithful, and Lesson 2 then gives exactly the reduced crossed-product norm. Both isomorphisms follow on completion.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Prove faithfulness of the étale reduced expectation. Explain why full-algebra faithfulness, or non-Hausdorff arrows, needs a separate argument.</p>
+<p><strong>Solution.</strong> In the Hausdorff étale case restriction is <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-valued and is a contractive completely positive map by unit-vector compressions. If <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> has zero expectation, (14.24) makes every diagonal entry of every positive <span class="math" data-tex="\(L_x(a)\)">\(L_x(a)\)</span> zero. Taking square roots shows that every basis vector is annihilated; hence every <span class="math" data-tex="\(L_x(a)\)">\(L_x(a)\)</span> is zero and the reduced norm of <span class="math" data-tex="\(a\)">\(a\)</span> is zero.</p>
+<p>On the full algebra those same regular representations only detect its reduced quotient. If (14.12) has a nonzero kernel, any nonzero positive element in that kernel has zero composed expectation, so it is not faithful. For non-Hausdorff arrows the doubled-origin function <span class="math" data-tex="\((0,1,-1)\)">\((0,1,-1)\)</span> already has discontinuous restriction to units. The codomain in (14.22) fails even on the core.</p>
+<p><strong>Exercise 4 (advanced).</strong> Using disintegration, prove full exactness for an open invariant <span class="math" data-tex="\(U\)">\(U\)</span>. Locate the step which is unavailable for the reduced sequence.</p>
+<p><strong>Solution.</strong> Extend a disintegrated representation of <span class="math" data-tex="\(\mathcal G|_U\)">\(\mathcal G|_U\)</span> by zero measure and zero Hilbert fibres outside <span class="math" data-tex="\(U\)">\(U\)</span>. Invariance prevents arrows between the two parts, and the integrated-form bound gives an <span class="math" data-tex="\(I\)">\(I\)</span>-contractive representation of the whole groupoid. This proves that the ideal-core inclusion is isometric for full norms. Restriction to the closed complement is <span class="math" data-tex="\(I\)">\(I\)</span>-contractive and onto the core by compact patch extension, hence gives a full surjection.</p>
+<p>If a representation of the full algebra kills that ideal, every <span class="math" data-tex="\(b\in C_c(U)\)">\(b\in C_c(U)\)</span> has <span class="math" data-tex="\(M(b)L(f)=L((b\circ r)f)=0\)">\(M(b)L(f)=L((b\circ r)f)=0\)</span> for every core <span class="math" data-tex="\(f\)">\(f\)</span>. Nondegeneracy gives <span class="math" data-tex="\(M(b)=0\)">\(M(b)=0\)</span>. A countable cover by such bumps, in the disintegrated Hilbert bundle, forces its fibres over <span class="math" data-tex="\(U\)">\(U\)</span> to be zero almost everywhere. Restricting the remaining representation to <span class="math" data-tex="\(F\)">\(F\)</span> factors it through the full closed-reduction algebra. Supremum over quotient representations now identifies the quotient with <span class="math" data-tex="\(C^*(\mathcal G|_F)\)">\(C^*(\mathcal G|_F)\)</span>, proving (14.25). The last supremum uses every full representation supported on <span class="math" data-tex="\(F\)">\(F\)</span>; those representations are not automatically bounded by the closed reduction's reduced norm. This is exactly where a reduced exactness argument would need another hypothesis.</p>
+<p><strong>Exercise 5 (advanced).</strong> Regard <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> as a one-unit étale groupoid. Identify the sandwich sets of <span class="math" data-tex="\(J=\{f\in C(\mathbb T):f(1)=0\}\)">\(J=\{f\in C(\mathbb T):f(1)=0\}\)</span>, and explain why inner exactness does not by itself make all ideals dynamical.</p>
+<p><strong>Solution.</strong> The algebra is <span class="math" data-tex="\(C_r^*(\mathbb Z)=C(\mathbb T)\)">\(C_r^*(\mathbb Z)=C(\mathbb T)\)</span>, by the Fourier and amenability results of Lessons 4–6. Its diagonal is the constant functions. The proper ideal <span class="math" data-tex="\(J\)">\(J\)</span> has zero intersection with them, so <span class="math" data-tex="\(U_J=\varnothing\)">\(U_J=\varnothing\)</span>. Its element <span class="math" data-tex="\(2-u-u^*\)">\(2-u-u^*\)</span>, where <span class="math" data-tex="\(u(z)=z\)">\(u(z)=z\)</span>, has expectation two, so <span class="math" data-tex="\(V_J\)">\(V_J\)</span> is the whole singleton unit space. Multiplying this element by every group unitary gives a nonzero coefficient at every integer; the residual support is all of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The triple is <span class="math" data-tex="\((\varnothing,\{\ast\},J)\)">\((\varnothing,\{\ast\},J)\)</span>. Inner exactness is automatic because the only invariant unit sets are empty and full. Effectiveness fails, and <span class="math" data-tex="\(J\)">\(J\)</span> is neither of their two dynamical ideals. ∎</p>
+<h2 id="proofs-and-prerequisites">Proofs and prerequisites</h2>
+<ul>
+<li>Theorems 14I.1–14I.4 prove effective diagonal uniqueness, the Cartan criterion, dynamical ideal correspondence and simplicity, and the full residual ideal sandwich. Their reduced Hausdorff étale proofs require no second countability; the full amenable converse uses the standing countability hypotheses.</li>
+<li>Renault's disintegration theorem is proved in its separable dense-domain and locally Hausdorff form. The proof constructs local convolution units, extends the tensor vectors to Borel test functions, proves quasi-invariance, corrects the scalar modular cocycle on every product, and constructs the Borel Hilbert field and exact unitary action. It also proves the integrated bound used in the full transformation-groupoid identification, full exactness, and amenable norm comparison. Muhly–Williams 2008, Theorem 7.8 and Appendix B, remains the credited statement and proof source.</li>
+<li>Haar smoothing and the square-root compression prove the amenable Hausdorff full–reduced comparison in Theorem 14.7, using the measured representations supplied by disintegration. Proper-groupoid cutoff existence and its amenability consequence are also proved here. Sims–Williams and Tu remain credited sources for these results and their broader context.</li>
+<li>The finite-quotient group bundle proves that weak containment does not imply amenability, and its explicit functional-calculus element proves reduced restriction can fail to be exact. The required finite-image approximation of free-group representations is proved in the same section. HLS, Willett, Choi, and Lubotzky–Shalom remain credited for the construction and its representation-theoretic ingredients.</li>
+<li>The Kronecker holonomy identification and transversal equivalence are proved in Lesson 16. The K-groups used in its preview are the calculation already given in Lesson 11.</li>
+<li>Compact-support extension, Stone–Weierstrass approximation, Radon-measure <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-density, and the Hilbert-module and C*-algebra foundations used above are general prerequisites. The patch convolution proof itself is included, rather than assumed from the Hausdorff case.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>Yuezhao Li, <a href="https://ncg-leiden.github.io/groupoid2022/groupoid_notes.pdf"><em>Groupoid C*-algebras</em></a>, revised 2024, §2 and §8.5.2.</p>
+</li>
+<li>
+<p>Paul S. Muhly and Dana P. Williams, <a href="https://nyjm.albany.edu/m/2008/3p.pdf"><em>Renault's Equivalence Theorem for Groupoid Crossed Products</em></a>, <em>New York Journal of Mathematics Monographs</em> <strong>3</strong> (2008), Proposition 4.4 and Theorem 7.8.</p>
+</li>
+<li>
+<p>Aidan Sims, <a href="https://arxiv.org/abs/1710.10897v2"><em>Hausdorff étale groupoids and their C*-algebras</em></a>, revised 2018.</p>
+</li>
+<li>
+<p>Aidan Sims and Dana P. Williams, <a href="https://aidansims.com/papers/SWi2012.pdf"><em>Amenability for Fell Bundles over Groupoids</em></a>, 2012 preprint, §2 and Theorem 1; the page locators refer to this preprint.</p>
+</li>
+<li>
+<p>Jean-Louis Tu, <a href="https://ncatlab.org/nlab/files/JLTBaumConnesForGroupoids.pdf"><em>The Baum–Connes Conjecture for Groupoids</em></a>, 1999 preprint, §1.7.</p>
+</li>
+<li>
+<p>Claire Anantharaman-Delaroche, <a href="https://arxiv.org/pdf/2306.17613"><em>Amenability, exactness and weak containment property for groupoids</em></a>, 2023, §§3, 5.4 and 6.</p>
+</li>
+<li>
+<p>Alain Connes, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf"><em>Noncommutative Geometry</em></a>, 1994, Chapter II, §§5 and 8; the smooth half-density convention is explained in Lesson 13.</p>
+</li>
+<li>
+<p>Rufus Willett, <a href="https://www.uni-muenster.de/FB10/mjm/vol_8/mjm_vol_8_11.pdf"><em>A non-amenable groupoid whose maximal and reduced C*-algebras are the same</em></a>, <em>Münster Journal of Mathematics</em> <strong>8</strong> (2015), 241–252, especially Lemmas 2.6–2.8 and Remark 3.1.</p>
+</li>
+<li>
+<p>Man-Duen Choi, <a href="https://doi.org/10.2140/pjm.1980.87.41"><em>The full C*-algebra of the free group on two generators</em></a>, <em>Pacific Journal of Mathematics</em> <strong>87</strong> (1980), 41–48. Attribution for finite-dimensional detection; the finite-word extension proof above supplies the required fact.</p>
+</li>
+<li>
+<p>Alexander Lubotzky and Yehuda Shalom, <a href="https://doi.org/10.1090/conm/347/06272"><em>Finite representations in the unitary dual and Ramanujan groups</em></a>, <em>Contemporary Mathematics</em> <strong>347</strong> (2004), 173–189. Attribution for finite-image density; the needed free-group norm consequence is proved above.</p>
+</li>
+<li>
+<p>K. A. Brix, T. M. Carlsen and A. Sims, <a href="https://arxiv.org/abs/2211.06126v2"><em>Some results regarding the ideal structure of C*-algebras of étale groupoids</em></a>, revised 2024.</p>
+</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="pager-prev" rel="prev" href="KT-CP-13.html">← Previous lesson</a> <a href="index.html">Course contents</a> <a class="pager-next" rel="next" href="KT-CP-15.html">Next lesson →</a></nav>
+<p class="source-link"><a href="src/KT-CP-14.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

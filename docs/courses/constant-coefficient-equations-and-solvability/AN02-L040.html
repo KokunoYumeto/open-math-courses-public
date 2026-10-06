@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Causal fundamental solutions and lower order expansions</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="causal-fundamental-solutions-and-lower-order-expansions">Causal fundamental solutions and lower order expansions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A hyperbolic root barrier yields an actual causal inverse. We construct it by moving Fourier integration lines, prove its support and weighted regularity, and determine its smallest closed convex supporting cone. Lower order terms then give a convergent expansion in principal-power kernels, with a quantitative tail in the local Fourier norm.</p>
+<p>Read <a href="AN02-L038.html">Hyperbolicity and lower order terms</a>, <a href="AN02-L037.html">Causal solvability forces hyperbolicity</a>, <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, and <a href="AN02-L021.html">Hypoellipticity and complex zeros</a>. We use their full cone transport, homogeneous-component ratios, causal-necessity theorem, shifted derivative estimate, cutoff theorem and compact weighted-convolution bound.</p>
+<p>We also use Fourier inversion on Schwartz functions and tempered distributions, polynomial factorization, Cauchy's theorem, integration by parts and finite-dimensional convex separation. For distributions on independent variables, their tensor product is the iterated test pairing, has the product of their supports, and commutes with differentiation in either variable. This is Theorem 2.1 and Corollary 2.2 of <em>Tensor products and parameter-dependent distributions</em>. Theorem 1.1 of <em>Convolution as addition of supports</em> gives convolution when addition is proper on the supports; Theorem 2.1 gives smoothing by a compact smooth factor. We prove the required cone geometry below. The characteristic-halfspace entry is stated in <em>Causal solvability forces hyperbolicity</em>. The finite Taylor-jet proof for point-supported distributions is in <a href="AN02-L033.html">The wave Cauchy problem and Kirchhoff's formula</a>, Lemma 2.</p>
+<p>We use <span class="math" data-tex="\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)">\(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\)</span>, inverse factor <span class="math" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span>, and <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. The positive moderate weight <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is the derivative-vector norm of the polynomial. All lower order coefficients may be complex.</p>
+<p>Assume first that <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> has degree <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, is hyperbolic in the real direction <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, and write <span class="math" data-tex="\(F=P_m\)">\(F=P_m\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma=\Gamma(F,N),\\
+C=\Gamma^*=
+\{a:a\cdot\theta\ge0\text{ for every }\theta\in\Gamma\},\\
+H_N=\{x:N\cdot x\ge0\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Gamma=\Gamma(F,N),\\
+C=\Gamma^*=
+\{a:a\cdot\theta\ge0\text{ for every }\theta\in\Gamma\},\\
+H_N=\{x:N\cdot x\ge0\}.
+\end{gathered}
+\]</span>
+The scalar case is dealt with explicitly at the end of the full lower order expansion and the flat Cauchy problem. Complex lower order coefficients are allowed throughout.</p>
+<h2 id="cone-geometry-and-proper-convolution">Cone geometry and proper convolution</h2>
+<p>Since <span class="math" data-tex="\(N\)">\(N\)</span> is interior to the open convex cone <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, there is <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> with <span class="math" data-tex="\(B(N,2b)\subset\Gamma\)">\(B(N,2b)\subset\Gamma\)</span>. For <span class="math" data-tex="\(a\in C\)">\(a\in C\)</span>, choose <span class="math" data-tex="\(\theta=N-b a/|a|\)">\(\theta=N-b a/|a|\)</span> when <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>. Then
+<span class="math math-display" data-tex="\[
+N\cdot a\ge b|a|\qquad(a\in C).
+\tag{1}
+\]">\[
+N\cdot a\ge b|a|\qquad(a\in C).
+\tag{1}
+\]</span>
+Thus <span class="math" data-tex="\(C\)">\(C\)</span> is closed, convex, pointed and contained in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, with no nonzero point on its boundary plane.</p>
+<p>Addition is proper on <span class="math" data-tex="\(C\times H_N\)">\(C\times H_N\)</span>. Indeed, if <span class="math" data-tex="\(a\in C\)">\(a\in C\)</span>, <span class="math" data-tex="\(z\in H_N\)">\(z\in H_N\)</span>, and <span class="math" data-tex="\(a+z\)">\(a+z\)</span> lies in a fixed compact set <span class="math" data-tex="\(K\)">\(K\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\le b|a|\le N\cdot a\le N\cdot(a+z)\le T,\\
+T=\max_{w\in K}N\cdot w.
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\le b|a|\le N\cdot a\le N\cdot(a+z)\le T,\\
+T=\max_{w\in K}N\cdot w.
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(T&lt;0\)">\(T&lt;0\)</span>, there is no such pair. Otherwise both <span class="math" data-tex="\(|a|\le T/b\)">\(|a|\le T/b\)</span> and <span class="math" data-tex="\(|z|\le\max_K|w|+T/b\)">\(|z|\le\max_K|w|+T/b\)</span> are bounded. The set of pairs is closed, hence compact. The same argument applies to any closed cone <span class="math" data-tex="\(K_0\)">\(K_0\)</span> satisfying <span class="math" data-tex="\(N\cdot a&gt;0\)">\(N\cdot a&gt;0\)</span> for all <span class="math" data-tex="\(a\in K_0\setminus\{0\}\)">\(a\in K_0\setminus\{0\}\)</span>: compactness of <span class="math" data-tex="\(K_0\cap S^{n-1}\)">\(K_0\cap S^{n-1}\)</span> gives (1) for that cone. If <span class="math" data-tex="\(K_0=\{0\}\)">\(K_0=\{0\}\)</span>, properness is immediate.</p>
+<p>For distributions <span class="math" data-tex="\(A,B\)">\(A,B\)</span> supported respectively in such a cone and <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, apply the convolution theorem in <em>Convolution as addition of supports</em>, Theorem1.1, to the proper pair just proved. Its canonical formula is
+<span class="math math-display" data-tex="\[
+\langle A*B,\phi\rangle
+=\langle A\otimes B,\chi(a,z)\phi(a+z)\rangle.
+\tag{2}
+\]">\[
+\langle A*B,\phi\rangle
+=\langle A\otimes B,\chi(a,z)\phi(a+z)\rangle.
+\tag{2}
+\]</span>
+Here <span class="math" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span> equals one near the compact part of <span class="math" data-tex="\(\operatorname{supp}A\times\operatorname{supp}B\)">\(\operatorname{supp}A\times\operatorname{supp}B\)</span> over <span class="math" data-tex="\(\operatorname{supp}\phi\)">\(\operatorname{supp}\phi\)</span>. The imported theorem gives cutoff independence, distributional continuity and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q(D)(A*B)&amp;=(Q(D)A)*B\\
+&amp;=A*(Q(D)B).
+\end{aligned}
+\tag{3}
+\]">\[
+\begin{aligned}
+Q(D)(A*B)&amp;=(Q(D)A)*B\\
+&amp;=A*(Q(D)B).
+\end{aligned}
+\tag{3}
+\]</span>
+It also gives support contained in the closed sum <span class="math" data-tex="\(\operatorname{supp}A+\operatorname{supp}B\)">\(\operatorname{supp}A+\operatorname{supp}B\)</span>. No temperedness or bound at infinity on <span class="math" data-tex="\(B\)">\(B\)</span> is required. The cone bound (1) identifies the compact input regions needed for every output compact; it is the geometry we will use throughout the causal construction.</p>
+<h2 id="construct-the-regular-causal-kernel">Construct the regular causal kernel</h2>
+<p>Choose a barrier <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> with <span class="math" data-tex="\(P(\xi+i\tau N)\ne0\)">\(P(\xi+i\tau N)\ne0\)</span> for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, <span class="math" data-tex="\(\tau&lt;\tau_0\)">\(\tau&lt;\tau_0\)</span>. For fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the degree-<span class="math" data-tex="\(m\)">\(m\)</span> polynomial in <span class="math" data-tex="\(z\)">\(z\)</span>
+<span class="math math-display" data-tex="\[
+P(\xi+izN)=i^mF(N)\prod_{\nu=1}^m(z-z_\nu)
+\]">\[
+P(\xi+izN)=i^mF(N)\prod_{\nu=1}^m(z-z_\nu)
+\]</span>
+has <span class="math" data-tex="\(\operatorname{Re}z_\nu\ge\tau_0\)">\(\operatorname{Re}z_\nu\ge\tau_0\)</span>. This follows by absorbing the real vector <span class="math" data-tex="\(-\operatorname{Im}z_\nu N\)">\(-\operatorname{Im}z_\nu N\)</span> into <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|P(\xi+i\tau N)|\ge |F(N)|(\tau_0-\tau)^m,\\
+\tau&lt;\tau_0.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+|P(\xi+i\tau N)|\ge |F(N)|(\tau_0-\tau)^m,\\
+\tau&lt;\tau_0.
+\end{gathered}
+\tag{4}
+\]</span>
+For such a fixed <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle E_\tau,\phi\rangle\\
+=(2\pi)^{-n}\int_{\mathbb R^n}
+\frac{\widehat\phi(-\xi-i\tau N)}{P(\xi+i\tau N)}\,d\xi,\\
+\phi\in C_c^\infty.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\langle E_\tau,\phi\rangle\\
+=(2\pi)^{-n}\int_{\mathbb R^n}
+\frac{\widehat\phi(-\xi-i\tau N)}{P(\xi+i\tau N)}\,d\xi,\\
+\phi\in C_c^\infty.
+\end{gathered}
+\tag{5}
+\]</span>
+The signs in both numerator and denominator are part of the formula.</p>
+<p>For a test supported in a fixed compact <span class="math" data-tex="\(K\)">\(K\)</span>, integrations by parts against the real Fourier variable give, for every integer <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\widehat\phi(-\xi-i\eta)|\\
+&amp;\quad\le C_{K,L}(1+|\eta|)^{2L}(1+|\xi|^2)^{-L}\\
+&amp;\qquad{}\cdot e^{\sup_{x\in K}(-x\cdot\eta)}
+\sum_{|\alpha|\le2L}\sup_K|\partial^\alpha\phi|.
+\end{aligned}
+\tag{6}
+\]">\[
+\begin{aligned}
+&amp;|\widehat\phi(-\xi-i\eta)|\\
+&amp;\quad\le C_{K,L}(1+|\eta|)^{2L}(1+|\xi|^2)^{-L}\\
+&amp;\qquad{}\cdot e^{\sup_{x\in K}(-x\cdot\eta)}
+\sum_{|\alpha|\le2L}\sup_K|\partial^\alpha\phi|.
+\end{aligned}
+\tag{6}
+\]</span>
+To see this, apply <span class="math" data-tex="\(1-\Delta_x\)">\(1-\Delta_x\)</span> repeatedly to <span class="math" data-tex="\(e^{-x\cdot\eta}\phi(x)\)">\(e^{-x\cdot\eta}\phi(x)\)</span>, whose derivatives have the displayed polynomial factors, and use its fixed compact support. Taking <span class="math" data-tex="\(2L&gt;n\)">\(2L&gt;n\)</span>, (4) proves absolute convergence and a continuous test-function bound for (5). Thus <span class="math" data-tex="\(E_\tau\in\mathcal D&#x27;\)">\(E_\tau\in\mathcal D&#x27;\)</span>.</p>
+<p>Let <span class="math" data-tex="\(G_\tau=\mathcal F^{-1}(1/P(\xi+i\tau N))\)">\(G_\tau=\mathcal F^{-1}(1/P(\xi+i\tau N))\)</span>, a tempered distribution because the multiplier is bounded. Formula (5) says exactly
+<span class="math math-display" data-tex="\[
+E_\tau=e^{-\tau N\cdot x}G_\tau.
+\tag{7}
+\]">\[
+E_\tau=e^{-\tau N\cdot x}G_\tau.
+\tag{7}
+\]</span>
+Indeed the Fourier transform of <span class="math" data-tex="\(e^{-\tau N\cdot x}\phi(x)\)">\(e^{-\tau N\cdot x}\phi(x)\)</span>, evaluated at <span class="math" data-tex="\(-\xi\)">\(-\xi\)</span>, is <span class="math" data-tex="\(\widehat\phi(-\xi-i\tau N)\)">\(\widehat\phi(-\xi-i\tau N)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(D)E_\tau
+&amp;=e^{-\tau N\cdot x}P(D+i\tau N)G_\tau\\
+&amp;=e^{-\tau N\cdot x}\delta=\delta.
+\end{aligned}
+\tag{8}
+\]">\[
+\begin{aligned}
+P(D)E_\tau
+&amp;=e^{-\tau N\cdot x}P(D+i\tau N)G_\tau\\
+&amp;=e^{-\tau N\cdot x}\delta=\delta.
+\end{aligned}
+\tag{8}
+\]</span>
+This also follows by applying (5) to <span class="math" data-tex="\(P(-D)\phi\)">\(P(-D)\phi\)</span>: the numerator acquires <span class="math" data-tex="\(P(\xi+i\tau N)\)">\(P(\xi+i\tau N)\)</span> and Fourier inversion gives <span class="math" data-tex="\(\phi(0)\)">\(\phi(0)\)</span>.</p>
+<p>The distributions <span class="math" data-tex="\(E_\tau\)">\(E_\tau\)</span> do not depend on the choice of <span class="math" data-tex="\(\tau&lt;\tau_0\)">\(\tau&lt;\tau_0\)</span>. Align one real Fourier coordinate with <span class="math" data-tex="\(N\)">\(N\)</span>. For two fixed permitted <span class="math" data-tex="\(\tau\)">\(\tau\)</span>'s, Cauchy's theorem moves that coordinate between the two parallel lines. On the whole finite strip, (4) has a uniform positive lower bound. The numerator has arbitrarily rapid real-frequency decay by (6), uniformly on that finite strip. After integrating the other <span class="math" data-tex="\(n-1\)">\(n-1\)</span> real coordinates, a vertical side at real coordinate <span class="math" data-tex="\(\pm R\)">\(\pm R\)</span> is bounded by a constant times <span class="math" data-tex="\(R^{n-1-2L}\)">\(R^{n-1-2L}\)</span>, hence tends to zero for sufficiently large <span class="math" data-tex="\(L\)">\(L\)</span>. Fubini is justified by the same integrable bound. The horizontal limits give equality of (5). Denote the common distribution by <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>If <span class="math" data-tex="\(\operatorname{supp}\phi\subset\{N\cdot x&lt;0\}\)">\(\operatorname{supp}\phi\subset\{N\cdot x&lt;0\}\)</span>, compactness gives <span class="math" data-tex="\(N\cdot x\le-a&lt;0\)">\(N\cdot x\le-a&lt;0\)</span> there. Formula (6), with <span class="math" data-tex="\(\eta=\tau N\)">\(\eta=\tau N\)</span> and <span class="math" data-tex="\(\tau\to-\infty\)">\(\tau\to-\infty\)</span>, bounds (5) by
+<span class="math math-display" data-tex="\[
+C(1+|\tau|)^{2L}(\tau_0-\tau)^{-m}e^{-a|\tau|},
+\]">\[
+C(1+|\tau|)^{2L}(\tau_0-\tau)^{-m}e^{-a|\tau|},
+\]</span>
+which tends to zero. Thus <span class="math" data-tex="\(\operatorname{supp}E\subset H_N\)">\(\operatorname{supp}E\subset H_N\)</span>.</p>
+<p>To obtain the full cone, fix <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>. The two-parameter exclusion in <em>Hyperbolicity and lower order terms</em> gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(\xi+i\tau N+i\sigma\theta)\ne0,\\
+\operatorname{Re}\tau&lt;\tau_0,\quad
+\operatorname{Re}\sigma\le0.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+P(\xi+i\tau N+i\sigma\theta)\ne0,\\
+\operatorname{Re}\tau&lt;\tau_0,\quad
+\operatorname{Re}\sigma\le0.
+\end{gathered}
+\tag{9}
+\]</span>
+For fixed real <span class="math" data-tex="\(\sigma\le0\)">\(\sigma\le0\)</span>, factor this polynomial in <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Its leading coefficient is still <span class="math" data-tex="\(i^mF(N)\)">\(i^mF(N)\)</span>, and every root has real part at least <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>, by (9). Consequently (4) holds with the same lower bound after inserting <span class="math" data-tex="\(i\sigma\theta\)">\(i\sigma\theta\)</span>. Moving the line along <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, with <span class="math" data-tex="\(\tau\)">\(\tau\)</span> fixed and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> in a finite negative interval, is legitimate by the rectangle argument just proved. We obtain
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle E,\phi\rangle\\
+=(2\pi)^{-n}\int
+\frac{\widehat\phi(-\xi-i\tau N-i\sigma\theta)}
+{P(\xi+i\tau N+i\sigma\theta)}\,d\xi,\\
+\sigma\le0.
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\langle E,\phi\rangle\\
+=(2\pi)^{-n}\int
+\frac{\widehat\phi(-\xi-i\tau N-i\sigma\theta)}
+{P(\xi+i\tau N+i\sigma\theta)}\,d\xi,\\
+\sigma\le0.
+\end{gathered}
+\tag{10}
+\]</span>
+For a test supported in <span class="math" data-tex="\(\{\theta\cdot x&lt;0\}\)">\(\{\theta\cdot x&lt;0\}\)</span>, let <span class="math" data-tex="\(\sigma\to-\infty\)">\(\sigma\to-\infty\)</span>. Its compact support makes the numerator exponentially small, up to a polynomial in <span class="math" data-tex="\(|\sigma|\)">\(|\sigma|\)</span>, while the denominator retains the fixed positive lower bound. Hence <span class="math" data-tex="\(E\)">\(E\)</span> annihilates this test. This proves
+<span class="math math-display" data-tex="\[
+\operatorname{supp}E\subset C.
+\tag{11}
+\]">\[
+\operatorname{supp}E\subset C.
+\tag{11}
+\]</span></p>
+<p>We also prove the claimed regularity. Fix <span class="math" data-tex="\(\tau&lt;\tau_0\)">\(\tau&lt;\tau_0\)</span> and choose <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> with <span class="math" data-tex="\(\tau+a&lt;\tau_0\)">\(\tau+a&lt;\tau_0\)</span>. For sufficiently small real <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(aN-\eta\in\Gamma\)">\(aN-\eta\in\Gamma\)</span>. In (9) use the parameters <span class="math" data-tex="\(\tau+a\)">\(\tau+a\)</span>, <span class="math" data-tex="\(\sigma=-1\)">\(\sigma=-1\)</span>, and direction <span class="math" data-tex="\(aN-\eta\)">\(aN-\eta\)</span>. It follows that
+<span class="math math-display" data-tex="\[
+P(\xi+i\tau N+i\eta)\ne0
+\]">\[
+P(\xi+i\tau N+i\eta)\ne0
+\]</span>
+uniformly in real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, for <span class="math" data-tex="\(|\eta|\)">\(|\eta|\)</span> in a fixed ball. The real part of an additional complex shift is absorbed into <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, so <span class="math" data-tex="\(B(w)=P(w+i\tau N)\)">\(B(w)=P(w+i\tau N)\)</span> has a uniformly positive complex-zero distance at every real <span class="math" data-tex="\(w=\xi\)">\(w=\xi\)</span>. <em>Hypoellipticity and complex zeros</em> Lemma1.1 therefore bounds all its derivative ratios. Fixed complex translation is an invertible finite Taylor matrix on the derivative vector, giving
+<span class="math math-display" data-tex="\[
+S_P(\xi)\le C_\tau |P(\xi+i\tau N)|.
+\tag{12}
+\]">\[
+S_P(\xi)\le C_\tau |P(\xi+i\tau N)|.
+\tag{12}
+\]</span>
+Thus <span class="math" data-tex="\(G_\tau\in B_{\infty,S_P}\)">\(G_\tau\in B_{\infty,S_P}\)</span>. For any compact smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, the function <span class="math" data-tex="\(\chi e^{-\tau N\cdot x}\)">\(\chi e^{-\tau N\cdot x}\)</span> is a compact smooth multiplier; <em>Measuring regularity with weighted Fourier spaces</em> Theorem4.1 and (7) imply
+<span class="math math-display" data-tex="\[
+E\in B_{\infty,S_P}^{\mathrm{loc}}.
+\tag{13}
+\]">\[
+E\in B_{\infty,S_P}^{\mathrm{loc}}.
+\tag{13}
+\]</span>
+This is the regular fundamental solution assertion. Formula (5) is an actual distributional construction, not a purely formal inverse.</p>
+<h2 id="uniqueness-the-cone-converse-and-minimality">Uniqueness, the cone converse and minimality</h2>
+<p>If <span class="math" data-tex="\(V\in\mathcal D&#x27;\)">\(V\in\mathcal D&#x27;\)</span> is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, (1)–(3) make <span class="math" data-tex="\(E*V\)">\(E*V\)</span> legitimate. In particular,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E*(P(D)V)&amp;=(P(D)E)*V\\
+&amp;=\delta*V=V.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+E*(P(D)V)&amp;=(P(D)E)*V\\
+&amp;=\delta*V=V.
+\end{aligned}
+\tag{14}
+\]</span>
+Hence there is at most one fundamental solution supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, since the difference of two such solutions has zero image and (14) makes it zero. This proof imposes no growth condition.</p>
+<p>Conversely, suppose an arbitrary fundamental solution <span class="math" data-tex="\(A\)">\(A\)</span> is supported in a closed cone <span class="math" data-tex="\(K_0\)">\(K_0\)</span> with <span class="math" data-tex="\(M\cdot a&gt;0\)">\(M\cdot a&gt;0\)</span> for every <span class="math" data-tex="\(a\in K_0\setminus\{0\}\)">\(a\in K_0\setminus\{0\}\)</span>, where <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span>. Properness was proved in the cone geometry. If <span class="math" data-tex="\(P_m(M)=0\)">\(P_m(M)=0\)</span>, the characteristic-halfspace entry in <em>Causal solvability forces hyperbolicity</em> supplies a nonzero smooth homogeneous solution <span class="math" data-tex="\(V\)">\(V\)</span> supported in <span class="math" data-tex="\(H_M\)">\(H_M\)</span>; but
+<span class="math math-display" data-tex="\[
+V=A*(P(D)V)=0,
+\]">\[
+V=A*(P(D)V)=0,
+\]</span>
+a contradiction. Thus <span class="math" data-tex="\(P_m(M)\ne0\)">\(P_m(M)\ne0\)</span>. For every compact smooth <span class="math" data-tex="\(f\)">\(f\)</span> supported in <span class="math" data-tex="\(H_M\)">\(H_M\)</span>, <span class="math" data-tex="\(A*f\)">\(A*f\)</span> is a smooth causal solution. Compact convolution with a distribution is smooth by differentiation of translated tests; its support lies in <span class="math" data-tex="\(K_0+\operatorname{supp}f\subset H_M\)">\(K_0+\operatorname{supp}f\subset H_M\)</span>. The causal-necessity theorem proved in <em>Causal solvability forces hyperbolicity</em> now gives hyperbolicity in direction <span class="math" data-tex="\(M\)">\(M\)</span>. This proves the full closed-cone converse, including cones that are not convex.</p>
+<p>For minimality, first note that <span class="math" data-tex="\(E\)">\(E\)</span> cannot be point supported when <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. The finite Taylor-jet proof in <em>The wave Cauchy problem and Kirchhoff's formula</em> makes such an <span class="math" data-tex="\(E\)">\(E\)</span> a finite sum of delta derivatives, with a polynomial Fourier transform <span class="math" data-tex="\(R\)">\(R\)</span>. The identity <span class="math" data-tex="\(P(D)E=\delta\)">\(P(D)E=\delta\)</span> would imply <span class="math" data-tex="\(P R=1\)">\(P R=1\)</span>; degrees make this impossible for positive-degree <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be any closed convex cone containing <span class="math" data-tex="\(\operatorname{supp}E\)">\(\operatorname{supp}E\)</span>. Put <span class="math" data-tex="\(K=L\cap C\)">\(K=L\cap C\)</span>, which still contains that support, is nonzero, and satisfies (1). Its strict polar is
+<span class="math math-display" data-tex="\[
+\Omega=\{\theta:\theta\cdot a&gt;0\text{ for all }a\in K\setminus\{0\}\}.
+\]">\[
+\Omega=\{\theta:\theta\cdot a&gt;0\text{ for all }a\in K\setminus\{0\}\}.
+\]</span>
+It is nonempty, open and convex, contains <span class="math" data-tex="\(N\)">\(N\)</span>, and does not contain zero. Openness follows from the positive minimum on <span class="math" data-tex="\(K\cap S^{n-1}\)">\(K\cap S^{n-1}\)</span>. For every <span class="math" data-tex="\(\theta\in\Omega\)">\(\theta\in\Omega\)</span>, the cone converse makes <span class="math" data-tex="\(P\)">\(P\)</span> hyperbolic in direction <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, in particular <span class="math" data-tex="\(F(\theta)\ne0\)">\(F(\theta)\ne0\)</span>. Connectedness therefore implies <span class="math" data-tex="\(\Omega\subset\Gamma\)">\(\Omega\subset\Gamma\)</span>.</p>
+<p>The closed positive polar <span class="math" data-tex="\(K^*\)">\(K^*\)</span> is the closure of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>: if <span class="math" data-tex="\(\theta\in K^*\)">\(\theta\in K^*\)</span>, then <span class="math" data-tex="\(\theta+\varepsilon N\in\Omega\)">\(\theta+\varepsilon N\in\Omega\)</span> for <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, by (1). Finite-dimensional separation gives <span class="math" data-tex="\(K=(K^*)^*=\Omega^*\)">\(K=(K^*)^*=\Omega^*\)</span>. Since <span class="math" data-tex="\(\Omega\subset\Gamma\)">\(\Omega\subset\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+C=\Gamma^*\subset\Omega^*=K\subset L.
+\tag{15}
+\]">\[
+C=\Gamma^*\subset\Omega^*=K\subset L.
+\tag{15}
+\]</span>
+Together with (11), this proves that the smallest closed convex cone containing the support of <span class="math" data-tex="\(E\)">\(E\)</span> is exactly <span class="math" data-tex="\(C\)">\(C\)</span>. It does not assert that the support fills every point of that cone.</p>
+<h2 id="the-full-lower-order-expansion">The full lower order expansion</h2>
+<p>Put <span class="math" data-tex="\(Q=F-P\)">\(Q=F-P\)</span>. For <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, let <span class="math" data-tex="\(E_k\)">\(E_k\)</span> be the unique causal fundamental solution for <span class="math" data-tex="\(F(D)^{k+1}\)">\(F(D)^{k+1}\)</span>. Its hyperbolicity cone is the same <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, because <span class="math" data-tex="\(\{F^{k+1}\ne0\}=\{F\ne0\}\)">\(\{F^{k+1}\ne0\}=\{F\ne0\}\)</span>; the kernel construction therefore constructs it with support in <span class="math" data-tex="\(C\)">\(C\)</span>. Properness gives the optional identity
+<span class="math math-display" data-tex="\[
+E_k=E_0^{*(k+1)}.
+\]">\[
+E_k=E_0^{*(k+1)}.
+\]</span>
+Indeed the convolution power is supported in <span class="math" data-tex="\(C\)">\(C\)</span> and its image under <span class="math" data-tex="\(F(D)^{k+1}\)">\(F(D)^{k+1}\)</span> is <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, so uniqueness applies.</p>
+<p>Apply the homogeneous-component ratio bounds of <em>Hyperbolicity and lower order terms</em> in direction <span class="math" data-tex="\(-N\)">\(-N\)</span>. For <span class="math" data-tex="\(s=|\tau|\ge1\)">\(s=|\tau|\ge1\)</span>, <span class="math" data-tex="\(\tau=-s\)">\(\tau=-s\)</span>, homogeneity gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{|P_j(\xi+i\tau N)|}{|F(\xi+i\tau N)|}
+&amp;=s^{j-m}\frac{|P_j(\xi/s-iN)|}{|F(\xi/s-iN)|}\\
+&amp;\le C_j s^{j-m}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{|P_j(\xi+i\tau N)|}{|F(\xi+i\tau N)|}
+&amp;=s^{j-m}\frac{|P_j(\xi/s-iN)|}{|F(\xi/s-iN)|}\\
+&amp;\le C_j s^{j-m}.
+\end{aligned}
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+\rho_\tau:=\sup_{\xi\in\mathbb R^n}
+\left|\frac{Q(\xi+i\tau N)}{F(\xi+i\tau N)}\right|
+\le\frac{C}{|\tau|}.
+\tag{16}
+\]">\[
+\rho_\tau:=\sup_{\xi\in\mathbb R^n}
+\left|\frac{Q(\xi+i\tau N)}{F(\xi+i\tau N)}\right|
+\le\frac{C}{|\tau|}.
+\tag{16}
+\]</span>
+Choose one negative <span class="math" data-tex="\(\tau\)">\(\tau\)</span> below the barrier for <span class="math" data-tex="\(P\)">\(P\)</span> and so large in absolute value that <span class="math" data-tex="\(\rho_\tau&lt;1\)">\(\rho_\tau&lt;1\)</span>. For this single fixed <span class="math" data-tex="\(\tau\)">\(\tau\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{P(\xi+i\tau N)}\\
+&amp;\qquad=\sum_{k=0}^\infty
+\frac{Q(\xi+i\tau N)^k}{F(\xi+i\tau N)^{k+1}}.
+\end{aligned}
+\tag{17}
+\]">\[
+\begin{aligned}
+&amp;\frac1{P(\xi+i\tau N)}\\
+&amp;\qquad=\sum_{k=0}^\infty
+\frac{Q(\xi+i\tau N)^k}{F(\xi+i\tau N)^{k+1}}.
+\end{aligned}
+\tag{17}
+\]</span>
+The shifted derivative estimate for <span class="math" data-tex="\(F\)">\(F\)</span>, proved in the kernel construction, is
+<span class="math" data-tex="\(S_F(\xi)\le A_\tau |F(\xi+i\tau N)|\)">\(S_F(\xi)\le A_\tau |F(\xi+i\tau N)|\)</span>. Therefore the tail after term <span class="math" data-tex="\(K\)">\(K\)</span>, multiplied by <span class="math" data-tex="\(S_F(\xi)\)">\(S_F(\xi)\)</span>, has absolute value at most
+<span class="math math-display" data-tex="\[
+A_\tau\frac{\rho_\tau^{K+1}}{1-\rho_\tau}
+\tag{18}
+\]">\[
+A_\tau\frac{\rho_\tau^{K+1}}{1-\rho_\tau}
+\tag{18}
+\]</span>
+uniformly in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>For every <span class="math" data-tex="\(k\)">\(k\)</span>, the tempered transform of <span class="math" data-tex="\(e^{\tau N\cdot x}E_k\)">\(e^{\tau N\cdot x}E_k\)</span> is <span class="math" data-tex="\(F(\xi+i\tau N)^{-k-1}\)">\(F(\xi+i\tau N)^{-k-1}\)</span>, by the kernel construction. Conjugating the differential operator gives
+<span class="math math-display" data-tex="\[
+\mathcal F\!\left(e^{\tau N\cdot x}Q(D)^kE_k\right)
+=\frac{Q(\xi+i\tau N)^k}{F(\xi+i\tau N)^{k+1}}.
+\]">\[
+\mathcal F\!\left(e^{\tau N\cdot x}Q(D)^kE_k\right)
+=\frac{Q(\xi+i\tau N)^k}{F(\xi+i\tau N)^{k+1}}.
+\]</span>
+Equations (17)–(18) prove convergence in the global <span class="math" data-tex="\(B_{\infty,S_F}\)">\(B_{\infty,S_F}\)</span> norm after this exponential conjugation. Multiplication by <span class="math" data-tex="\(\chi e^{-\tau N\cdot x}\)">\(\chi e^{-\tau N\cdot x}\)</span>, for any compact smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, is bounded in that norm. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E=\sum_{k=0}^\infty(F(D)-P(D))^kE_k,\\
+\text{convergence in }B_{\infty,S_F}^{\mathrm{loc}}.
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+E=\sum_{k=0}^\infty(F(D)-P(D))^kE_k,\\
+\text{convergence in }B_{\infty,S_F}^{\mathrm{loc}}.
+\end{gathered}
+\tag{19}
+\]</span>
+Its limit is exactly the kernel of the kernel construction by its conjugated Fourier transform. Each term is supported in <span class="math" data-tex="\(C\)">\(C\)</span>, as is the limit. The quantitative norm tail proves the full expansion in the stated topology.</p>
+<p>There is also a useful homogeneous interpretation. Write <span class="math" data-tex="\(r=(k+1)m\)">\(r=(k+1)m\)</span>. For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, the distribution <span class="math" data-tex="\(\lambda^{n-r}E_k(\lambda\cdot)\)">\(\lambda^{n-r}E_k(\lambda\cdot)\)</span> is another fundamental solution of <span class="math" data-tex="\(F(D)^{k+1}\)">\(F(D)^{k+1}\)</span> supported in <span class="math" data-tex="\(C\)">\(C\)</span>: scaling produces <span class="math" data-tex="\(\lambda^r\delta(\lambda\cdot)=\lambda^{r-n}\delta\)">\(\lambda^r\delta(\lambda\cdot)=\lambda^{r-n}\delta\)</span>. Uniqueness gives
+<span class="math math-display" data-tex="\[
+E_k(\lambda\cdot)=\lambda^{-n+(k+1)m}E_k.
+\tag{20}
+\]">\[
+E_k(\lambda\cdot)=\lambda^{-n+(k+1)m}E_k.
+\tag{20}
+\]</span>
+These homogeneous distributions are tempered. On an annulus, finite distribution order bounds their pairing by finitely many test derivatives. A dyadic partition outside the unit ball and (20) bound the annulus at radius <span class="math" data-tex="\(2^\ell\)">\(2^\ell\)</span> by <span class="math" data-tex="\(C2^{\ell(r+q)}\)">\(C2^{\ell(r+q)}\)</span> times finitely many Schwartz derivatives there, for some finite <span class="math" data-tex="\(q\)">\(q\)</span>. Arbitrarily rapid Schwartz decay makes the sum converge. The part near zero is bounded by finite distribution order on a compact set.</p>
+<p>In this convention
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat E_k=\lim_{s\downarrow0}F(\xi-isN)^{-k-1}\\
+=F(\xi-i0N)^{-k-1},\\
+\text{convergence in }\mathcal S&#x27;.
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+\widehat E_k=\lim_{s\downarrow0}F(\xi-isN)^{-k-1}\\
+=F(\xi-i0N)^{-k-1},\\
+\text{convergence in }\mathcal S&#x27;.
+\end{gathered}
+\tag{21}
+\]</span>
+To justify the limit, use (1) to choose a smooth cutoff equal to one near <span class="math" data-tex="\(C\)">\(C\)</span>, supported, outside a bounded ball, in <span class="math" data-tex="\(N\cdot x\ge (b/2)|x|\)">\(N\cdot x\ge (b/2)|x|\)</span>. On this larger cone, derivatives of <span class="math" data-tex="\(e^{-sN\cdot x}\)">\(e^{-sN\cdot x}\)</span>, <span class="math" data-tex="\(0&lt;s\le1\)">\(0&lt;s\le1\)</span>, satisfy uniform polynomial multiplier bounds, since <span class="math" data-tex="\(s^j e^{-s b|x|/2}\le C_j(1+|x|)^{-j}\)">\(s^j e^{-s b|x|/2}\le C_j(1+|x|)^{-j}\)</span> outside the ball. Multiplying a Schwartz test by that cutoff and the exponential converges in the Schwartz topology to the cutoff times the test. Temperedness and support of <span class="math" data-tex="\(E_k\)">\(E_k\)</span> give <span class="math" data-tex="\(e^{-sN\cdot x}E_k\to E_k\)">\(e^{-sN\cdot x}E_k\to E_k\)</span> in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>. The kernel construction identifies the transforms, proving (21).</p>
+<p>A homogeneous component of degree <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(Q^k\)">\(Q^k\)</span> gives a term in (19) of degree
+<span class="math math-display" data-tex="\[
+-n+(k+1)m-d,\qquad 0\le d\le k(m-1).
+\]">\[
+-n+(k+1)m-d,\qquad 0\le d\le k(m-1).
+\]</span>
+Every nonzero such term has degree between <span class="math" data-tex="\(-n+m+k\)">\(-n+m+k\)</span> and <span class="math" data-tex="\(-n+(k+1)m\)">\(-n+(k+1)m\)</span>. Hence only finitely many terms can have any one fixed homogeneity degree. These are the homogeneity degrees and the distributional boundary value.</p>
+<p>If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(P=F\ne0\)">\(P=F\ne0\)</span>, <span class="math" data-tex="\(Q=0\)">\(Q=0\)</span>, <span class="math" data-tex="\(\Gamma=\mathbb R^n\)">\(\Gamma=\mathbb R^n\)</span>, <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>, and <span class="math" data-tex="\(E=P^{-1}\delta\)">\(E=P^{-1}\delta\)</span>. The cone converse and minimality are immediate. All positive-<span class="math" data-tex="\(k\)">\(k\)</span> terms in (19) vanish; <span class="math" data-tex="\(E_k=P^{-k-1}\delta\)">\(E_k=P^{-k-1}\delta\)</span> if those constant-power kernels are desired. No strict-root or positive-degree cone assertion is assigned to this case.</p>
+<h2 id="arbitrary-causal-distributions-and-the-local-weight-gain">Arbitrary causal distributions and the local weight gain</h2>
+<p>For every <span class="math" data-tex="\(f\in\mathcal D&#x27;(\mathbb R^n)\)">\(f\in\mathcal D&#x27;(\mathbb R^n)\)</span> with <span class="math" data-tex="\(\operatorname{supp}f\subset H_N\)">\(\operatorname{supp}f\subset H_N\)</span>, the cone geometry makes
+<span class="math math-display" data-tex="\[
+u=E*f
+\tag{22}
+\]">\[
+u=E*f
+\tag{22}
+\]</span>
+a distribution, supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, with <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>. Conversely, every distributional solution supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span> satisfies (14), hence equals (22). This proves existence and uniqueness in the full distribution class.</p>
+<p>Let <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span>, let <span class="math" data-tex="\(k\)">\(k\)</span> be a moderate weight as in <em>Measuring regularity with weighted Fourier spaces</em>, and suppose <span class="math" data-tex="\(f\in B_{p,k}^{\mathrm{loc}}\)">\(f\in B_{p,k}^{\mathrm{loc}}\)</span>. Fix a compact output neighborhood. Properness gives a compact set of relevant pairs <span class="math" data-tex="\((a,z)\in\operatorname{supp}E\times\operatorname{supp}f\)">\((a,z)\in\operatorname{supp}E\times\operatorname{supp}f\)</span>. Choose independent smooth compact cutoffs <span class="math" data-tex="\(\chi(a)\)">\(\chi(a)\)</span>, <span class="math" data-tex="\(\psi(z)\)">\(\psi(z)\)</span>, each equal to one near the respective projections of those pairs. On that neighborhood,
+<span class="math math-display" data-tex="\[
+u=(\chi E)*(\psi f).
+\]">\[
+u=(\chi E)*(\psi f).
+\]</span>
+The first factor is in <span class="math" data-tex="\(B_{\infty,S_P}\)">\(B_{\infty,S_P}\)</span> by (13); the second is in <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>. Their compact convolution satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|(\chi E)*(\psi f)\|_{p,S_Pk}\\
+&amp;\qquad\le\|\chi E\|_{\infty,S_P}\|\psi f\|_{p,k}.
+\end{aligned}
+\tag{23}
+\]">\[
+\begin{aligned}
+&amp;\|(\chi E)*(\psi f)\|_{p,S_Pk}\\
+&amp;\qquad\le\|\chi E\|_{\infty,S_P}\|\psi f\|_{p,k}.
+\end{aligned}
+\tag{23}
+\]</span>
+by <em>Measuring regularity with weighted Fourier spaces</em> Theorem4.2, with its normalization <span class="math" data-tex="\((2\pi)^{-n/p}\)">\((2\pi)^{-n/p}\)</span>. Multiplying by a further output cutoff is bounded by <em>Measuring regularity with weighted Fourier spaces</em> Theorem4.1. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f\in B_{p,k}^{\mathrm{loc}},\quad
+\operatorname{supp}f\subset H_N\\
+\Longrightarrow\quad
+u\in B_{p,S_Pk}^{\mathrm{loc}}.
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+f\in B_{p,k}^{\mathrm{loc}},\quad
+\operatorname{supp}f\subset H_N\\
+\Longrightarrow\quad
+u\in B_{p,S_Pk}^{\mathrm{loc}}.
+\end{gathered}
+\tag{24}
+\]</span>
+The proof includes <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span>, nonradial weights, noncompact forcing and arbitrary distributional growth. The same argument applies to forcing supported in any translate of <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, or in another closed set with proper addition by <span class="math" data-tex="\(C\)">\(C\)</span>. The compact pairing regions give the stated local gain.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: the signs of a first-order kernel).</strong> For <span class="math" data-tex="\(P(D)=D_t-ia\)">\(P(D)=D_t-ia\)</span>, <span class="math" data-tex="\(a\in\mathbb C\)">\(a\in\mathbb C\)</span>, construct the positive-time kernel, identify a permitted root barrier, and compute its series in principal-power kernels. Explain why a global temperedness assumption would discard legitimate kernels.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(D_t=-i\partial_t\)">\(D_t=-i\partial_t\)</span>,
+<span class="math math-display" data-tex="\[
+E(t)=i1_{\{t\ge0\}}e^{-at}
+\]">\[
+E(t)=i1_{\{t\ge0\}}e^{-at}
+\]</span>
+satisfies <span class="math" data-tex="\((D_t-ia)E=-i(\partial_t+a)(i1_{\{t\ge0\}}e^{-at})=\delta\)">\((D_t-ia)E=-i(\partial_t+a)(i1_{\{t\ge0\}}e^{-at})=\delta\)</span>. The polynomial root is <span class="math" data-tex="\(ia\)">\(ia\)</span>, with imaginary part <span class="math" data-tex="\(\operatorname{Re}a\)">\(\operatorname{Re}a\)</span>, so any <span class="math" data-tex="\(\tau_0\le\operatorname{Re}a\)">\(\tau_0\le\operatorname{Re}a\)</span> is a barrier. For <span class="math" data-tex="\(\tau&lt;\operatorname{Re}a\)">\(\tau&lt;\operatorname{Re}a\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal F(e^{\tau t}E)(\xi)
+=\frac{i}{a-\tau+i\xi}
+=\frac1{\xi+i\tau-ia}.
+\]">\[
+\mathcal F(e^{\tau t}E)(\xi)
+=\frac{i}{a-\tau+i\xi}
+=\frac1{\xi+i\tau-ia}.
+\]</span>
+The principal polynomial is <span class="math" data-tex="\(F(\xi)=\xi\)">\(F(\xi)=\xi\)</span>, and <span class="math" data-tex="\(Q=ia\)">\(Q=ia\)</span>. The kernel of <span class="math" data-tex="\(D_t^{k+1}\)">\(D_t^{k+1}\)</span> is <span class="math" data-tex="\(E_k=i^{k+1}1_{\{t\ge0\}}t^k/k!\)">\(E_k=i^{k+1}1_{\{t\ge0\}}t^k/k!\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+Q^kE_k=i\,1_{\{t\ge0\}}\frac{(-at)^k}{k!},
+\]">\[
+Q^kE_k=i\,1_{\{t\ge0\}}\frac{(-at)^k}{k!},
+\]</span>
+and the sum is the displayed <span class="math" data-tex="\(E\)">\(E\)</span>. The full lower order expansion proves convergence in the local weighted norm as well as distributionally. For <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>, the kernel grows like <span class="math" data-tex="\(e^t\)">\(e^t\)</span>; pairing it with a fixed nonnegative bump translated to <span class="math" data-tex="\(R\)">\(R\)</span> grows like <span class="math" data-tex="\(e^R\)">\(e^R\)</span>, whereas the finite Schwartz seminorms of that translated bump grow at most polynomially in <span class="math" data-tex="\(R\)">\(R\)</span>. Thus <span class="math" data-tex="\(E\notin\mathcal S&#x27;\)">\(E\notin\mathcal S&#x27;\)</span>, although its sufficiently negative exponential conjugate is tempered and it is a valid regular causal kernel.</p>
+<p><strong>Exercise 2 (introductory: powers and homogeneity).</strong> Find the positive-time kernel for <span class="math" data-tex="\(D_t^m\)">\(D_t^m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and the kernel for its <span class="math" data-tex="\((k+1)\)">\((k+1)\)</span>-st power. Check the exact homogeneous degree and the sign in its Fourier boundary value.</p>
+<p><strong>Solution.</strong> The identity <span class="math" data-tex="\(\partial_t^r(1_{\{t\ge0\}}t^{r-1}/(r-1)!)=\delta\)">\(\partial_t^r(1_{\{t\ge0\}}t^{r-1}/(r-1)!)=\delta\)</span>, <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, follows by <span class="math" data-tex="\(r\)">\(r\)</span> integrations by parts. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_0=i^m1_{\{t\ge0\}}\frac{t^{m-1}}{(m-1)!},\\
+E_k=i^{m(k+1)}1_{\{t\ge0\}}
+\frac{t^{m(k+1)-1}}{(m(k+1)-1)!}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_0=i^m1_{\{t\ge0\}}\frac{t^{m-1}}{(m-1)!},\\
+E_k=i^{m(k+1)}1_{\{t\ge0\}}
+\frac{t^{m(k+1)-1}}{(m(k+1)-1)!}.
+\end{gathered}
+\]</span>
+For positive dilation these have degree <span class="math" data-tex="\(m(k+1)-1\)">\(m(k+1)-1\)</span>, the value <span class="math" data-tex="\(-n+(k+1)m\)">\(-n+(k+1)m\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Their tempered exponentially damped transforms are <span class="math" data-tex="\((\xi-is)^{-m(k+1)}\)">\((\xi-is)^{-m(k+1)}\)</span>, <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, so their boundary values are <span class="math" data-tex="\((\xi-i0)^{-m(k+1)}\)">\((\xi-i0)^{-m(k+1)}\)</span>. The opposite sign would give the negative-time support and would not satisfy the positive-time support condition.</p>
+<p><strong>Exercise 3 (intermediate: a minimal cone can contain holes in the support).</strong> Determine the dual cone for <span class="math" data-tex="\(F(\tau,\eta)=\tau^2-|\eta|^2\)">\(F(\tau,\eta)=\tau^2-|\eta|^2\)</span> and its future time direction. In spacetime dimension four, compare the minimal convex support cone with the actual support of the principal kernel.</p>
+<p><strong>Solution.</strong> The principal cone is <span class="math" data-tex="\(\Gamma=\{(\theta_t,\theta_y):\theta_t&gt;|\theta_y|\}\)">\(\Gamma=\{(\theta_t,\theta_y):\theta_t&gt;|\theta_y|\}\)</span>. If <span class="math" data-tex="\(x=(t,y)\)">\(x=(t,y)\)</span> has <span class="math" data-tex="\(t\ge|y|\)">\(t\ge|y|\)</span>, then <span class="math" data-tex="\(x\cdot\theta\ge t\theta_t-|y||\theta_y|\ge0\)">\(x\cdot\theta\ge t\theta_t-|y||\theta_y|\ge0\)</span> for every <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>. If <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, take <span class="math" data-tex="\(\theta_y=0\)">\(\theta_y=0\)</span>. If <span class="math" data-tex="\(0\le t&lt;|y|\)">\(0\le t&lt;|y|\)</span>, choose <span class="math" data-tex="\(\theta_y\)">\(\theta_y\)</span> opposite to <span class="math" data-tex="\(y\)">\(y\)</span>, with <span class="math" data-tex="\(|\theta_y|/\theta_t\)">\(|\theta_y|/\theta_t\)</span> sufficiently close to one, to make the pairing negative. Hence
+<span class="math math-display" data-tex="\[
+C=\{(t,y):t\ge|y|\}.
+\]">\[
+C=\{(t,y):t\ge|y|\}.
+\]</span>
+In dimension four, <span class="math" data-tex="\(P(D)=-\partial_t^2+\Delta_y\)">\(P(D)=-\partial_t^2+\Delta_y\)</span> is the negative of the unit-speed wave operator. <em>The wave Cauchy problem and Kirchhoff's formula</em>'s Kirchhoff kernel therefore gives its kernel as
+<span class="math math-display" data-tex="\[
+E(t,y)=-\frac{\delta(t-|y|)}{4\pi|y|}.
+\]">\[
+E(t,y)=-\frac{\delta(t-|y|)}{4\pi|y|}.
+\]</span>
+Its support is the future null cone, including its vertex, and contains no point in <span class="math" data-tex="\(t&gt;|y|\)">\(t&gt;|y|\)</span>. Every point of the solid future cone is a nonnegative combination of future null vectors: for <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, combine <span class="math" data-tex="\((|y|,y)\)">\((|y|,y)\)</span> with equal opposite null vectors to supply the excess time; for <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, use two opposite null vectors. Thus the closed convex cone generated by the actual support is exactly <span class="math" data-tex="\(C\)">\(C\)</span>. Minimal convex support does not mean that the kernel is nonzero throughout the interior.</p>
+<p><strong>Exercise 4 (intermediate: local cutoffs for noncompact forcing).</strong> Assume <span class="math" data-tex="\(|N|=1\)">\(|N|=1\)</span> and <span class="math" data-tex="\(N\cdot a\ge b|a|\)">\(N\cdot a\ge b|a|\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. For outputs in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>, give explicit bounds on the convolution variables for <span class="math" data-tex="\(E*f\)">\(E*f\)</span>, when <span class="math" data-tex="\(f\)">\(f\)</span> is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>. Derive the local <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>-gain for both endpoints.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(x=a+z\)">\(x=a+z\)</span>, <span class="math" data-tex="\(|x|\le R\)">\(|x|\le R\)</span>, <span class="math" data-tex="\(a\in C\)">\(a\in C\)</span>, <span class="math" data-tex="\(z\in H_N\)">\(z\in H_N\)</span>, then <span class="math" data-tex="\(b|a|\le N\cdot a\le N\cdot x\le R\)">\(b|a|\le N\cdot a\le N\cdot x\le R\)</span>, so
+<span class="math math-display" data-tex="\[
+|a|\le R/b,\qquad |z|\le R+R/b.
+\]">\[
+|a|\le R/b,\qquad |z|\le R+R/b.
+\]</span>
+Take <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near the first closed ball and <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near the second, with slightly larger compact supports. Then <span class="math" data-tex="\(E*f=(\chi E)*(\psi f)\)">\(E*f=(\chi E)*(\psi f)\)</span> on <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. If <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is an output cutoff supported in that ball, <em>Measuring regularity with weighted Fourier spaces</em> gives
+<span class="math math-display" data-tex="\[
+\|\eta(E*f)\|_{p,S_Pk}
+\le A_{S_Pk}(\eta)\|\chi E\|_{\infty,S_P}\|\psi f\|_{p,k}.
+\]">\[
+\|\eta(E*f)\|_{p,S_Pk}
+\le A_{S_Pk}(\eta)\|\chi E\|_{\infty,S_P}\|\psi f\|_{p,k}.
+\]</span>
+The compact Fourier transforms multiply, so the bound is the ordinary multiplication bound <span class="math" data-tex="\(L^\infty\cdot L^p\to L^p\)">\(L^\infty\cdot L^p\to L^p\)</span>. It is valid for <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span>; no density of compact tests in a global <span class="math" data-tex="\(B_{\infty,k}\)">\(B_{\infty,k}\)</span> norm is needed.</p>
+<h2 id="references">References</h2>
+<p>The full complex cone exclusion and homogeneous strength ratios are proved in <a href="AN02-L038.html">Hyperbolicity and lower order terms</a>. The converse uses <a href="AN02-L037.html">Causal solvability forces hyperbolicity</a>, including its stated characteristic-halfspace entry. The derivative-ratio estimate is Lemma 1.1 of <a href="AN02-L021.html">Hypoellipticity and complex zeros</a>. The cutoff and weighted-convolution estimates are Theorems 4.1–4.2 of <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>. Point-support jets and the Kirchhoff example are proved in <a href="AN02-L033.html">The wave Cauchy problem and Kirchhoff's formula</a>.</p>
+<p>Tensor and parameter pairing are Lemma 1.1, Theorem 2.1 and Corollary 2.2 of <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>. Proper-support convolution and smoothing are Theorems 1.1 and 2.1 of <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>. Both lessons use CC0-1.0.</p>
+</main></body></html>

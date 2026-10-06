@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous fields over locally compact spaces · Hilbert C*-modules and Morita equivalence</title>
+<meta name="description" content="A lesson of the course Hilbert C*-modules and Morita equivalence. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/hilbert-c-star-modules-and-morita-equivalence/continuous-fields-over-locally-compact-spaces.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert C*-modules and Morita equivalence</a> <span aria-hidden="true">›</span> <span>Lesson 9 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="continuous-fields-over-locally-compact-spaces">Continuous fields over locally compact spaces</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original text: CC0. The subsection “Trivializing an infinite-dimensional field” is an attributed adaptation under CC BY 4.0, as specified below.</em></p>
+<p>A Hilbert module over <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> packages Hilbert spaces varying over <span class="math" data-tex="\(X\)">\(X\)</span>. Its inner product records all fibre inner products at once, and the module norm is the supremum of the fibre norms. The fibres alone do not determine the module: one must specify which sections are continuous. This distinction becomes visible when the fibre dimension changes.</p>
+<p>Throughout, <span class="math" data-tex="\(X\)">\(X\)</span> is locally compact Hausdorff, <span class="math" data-tex="\(A=C_0(X)\)">\(A=C_0(X)\)</span>, and inner products are linear in the second variable. We use <a href="hilbert-c-star-modules.html">Hilbert C*-modules</a>, <a href="compact-operators-multipliers-and-the-strict-topology.html">Compact operators, multipliers and the strict topology</a>, the frame theorem in <a href="finite-projective-modules-frames-and-k0.html">Finite projective modules, frames and K₀</a>, and <a href="kasparovs-stabilization-theorem.html">Kasparov's stabilization theorem</a>. No countability assumption is needed for the basic correspondence.</p>
+<h2 id="1-continuous-sections-and-finite-patching">1. Continuous sections and finite patching</h2>
+<p><strong>Definition 1.1.</strong> A continuous field of Hilbert spaces consists of Hilbert spaces <span class="math" data-tex="\(H_x\)">\(H_x\)</span> and a vector space <span class="math" data-tex="\(\Gamma\subseteq\prod_x H_x\)">\(\Gamma\subseteq\prod_x H_x\)</span> of sections with these properties:</p>
+<ol>
+<li><span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is closed under multiplication by continuous scalar functions on <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li><span class="math" data-tex="\(x\mapsto\|\xi(x)\|\)">\(x\mapsto\|\xi(x)\|\)</span> is continuous for every <span class="math" data-tex="\(\xi\in\Gamma\)">\(\xi\in\Gamma\)</span>.</li>
+<li><span class="math" data-tex="\(\{\xi(x):\xi\in\Gamma\}\)">\(\{\xi(x):\xi\in\Gamma\}\)</span> is dense in <span class="math" data-tex="\(H_x\)">\(H_x\)</span>.</li>
+<li>If a section is uniformly approximable near each point, to every positive accuracy, by members of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, it belongs to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</li>
+</ol>
+<p>Polarization shows that <span class="math" data-tex="\(\langle\xi(x),\eta(x)\rangle\)">\(\langle\xi(x),\eta(x)\rangle\)</span> is continuous. The space
+<span class="math math-display" data-tex="\[
+\Gamma_0(H)=\{\xi\in\Gamma:\|\xi(\,\cdot\,)\|\in C_0(X)\}
+\tag{1.1}
+\]">\[
+\Gamma_0(H)=\{\xi\in\Gamma:\|\xi(\,\cdot\,)\|\in C_0(X)\}
+\tag{1.1}
+\]</span>
+has norm <span class="math" data-tex="\(\|\xi\|=\sup_x\|\xi(x)\|\)">\(\|\xi\|=\sup_x\|\xi(x)\|\)</span>. Local sections on an open set are defined by the same local approximation rule there. Thus neither boundedness nor vanishing at infinity is required of a member of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>We will repeatedly use finite partitions on a compact set. If <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span> is compact and <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span> cover it, one can choose
+<span class="math math-display" data-tex="\[
+\phi_i\in C_c(X),\quad \phi_i\geq0,\quad
+\operatorname{supp}\phi_i\subseteq U_i,\quad
+\sum_i\phi_i\leq1,\quad \sum_i\phi_i=1\text{ on }K.
+\tag{1.2}
+\]">\[
+\phi_i\in C_c(X),\quad \phi_i\geq0,\quad
+\operatorname{supp}\phi_i\subseteq U_i,\quad
+\sum_i\phi_i\leq1,\quad \sum_i\phi_i=1\text{ on }K.
+\tag{1.2}
+\]</span>
+Here is the construction from the usual locally compact cutoff property. Choose nonnegative compactly supported <span class="math" data-tex="\(u_i\)">\(u_i\)</span> in <span class="math" data-tex="\(U_i\)">\(U_i\)</span> whose sum <span class="math" data-tex="\(s\)">\(s\)</span> is positive on <span class="math" data-tex="\(K\)">\(K\)</span>, by first taking a finite collection of cutoffs around its points and grouping them by <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Choose <span class="math" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span>, compactly supported in <span class="math" data-tex="\(\{s&gt;0\}\)">\(\{s&gt;0\}\)</span>, with <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. Set <span class="math" data-tex="\(\phi_i=\chi u_i/s\)">\(\phi_i=\chi u_i/s\)</span> there and zero elsewhere. The cutoff property itself follows by applying Urysohn's lemma in the one-point compactification, after taking a relatively compact neighborhood of the given compact set.</p>
+<p><strong>Lemma 1.2 (Patching).</strong> Let <span class="math" data-tex="\(\mathcal S\subseteq\Gamma_0(H)\)">\(\mathcal S\subseteq\Gamma_0(H)\)</span> be a closed <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-submodule. If <span class="math" data-tex="\(\mathcal S(x)\)">\(\mathcal S(x)\)</span> is dense in every fibre, then <span class="math" data-tex="\(\mathcal S=\Gamma_0(H)\)">\(\mathcal S=\Gamma_0(H)\)</span>.</p>
+<p><em>Proof.</em> Given <span class="math" data-tex="\(\xi\in\Gamma_0(H)\)">\(\xi\in\Gamma_0(H)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put
+<span class="math" data-tex="\(K=\{x:\|\xi(x)\|\geq\varepsilon\}\)">\(K=\{x:\|\xi(x)\|\geq\varepsilon\}\)</span>, which is compact. At each point of <span class="math" data-tex="\(K\)">\(K\)</span>, choose <span class="math" data-tex="\(\eta_i\in\mathcal S\)">\(\eta_i\in\mathcal S\)</span> approximating its value within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Continuity of <span class="math" data-tex="\(\|\xi-\eta_i\|\)">\(\|\xi-\eta_i\|\)</span> gives finitely many neighborhoods <span class="math" data-tex="\(U_i\)">\(U_i\)</span> covering <span class="math" data-tex="\(K\)">\(K\)</span> on which that estimate holds. Choose (1.2), and put <span class="math" data-tex="\(\eta=\sum_i\eta_i\phi_i\in\mathcal S\)">\(\eta=\sum_i\eta_i\phi_i\in\mathcal S\)</span>. Pointwise,
+<span class="math math-display" data-tex="\[
+\xi-\eta=\sum_i\phi_i(\xi-\eta_i)
+ +(1-\sum_i\phi_i)\xi .
+\tag{1.3}
+\]">\[
+\xi-\eta=\sum_i\phi_i(\xi-\eta_i)
+ +(1-\sum_i\phi_i)\xi .
+\tag{1.3}
+\]</span>
+Where the last coefficient is nonzero outside <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\|\xi(x)\|&lt;\varepsilon\)">\(\|\xi(x)\|&lt;\varepsilon\)</span>; on <span class="math" data-tex="\(K\)">\(K\)</span> it is zero. All coefficients are nonnegative and sum to one, so <span class="math" data-tex="\(\|\xi-\eta\|\leq\varepsilon\)">\(\|\xi-\eta\|\leq\varepsilon\)</span>. The case <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span> uses <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. Closedness proves the result. ∎</p>
+<p>The same proof applies to a section vanishing at infinity that is locally approximable by a prescribed module of sections: local approximation supplies the <span class="math" data-tex="\(\eta_i\)">\(\eta_i\)</span>. Only a finite cover of <span class="math" data-tex="\(K\)">\(K\)</span> is used, so <span class="math" data-tex="\(X\)">\(X\)</span> need not be paracompact.</p>
+<h2 id="2-extracting-fibres-from-a-module">2. Extracting fibres from a module</h2>
+<p>For a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(E\)">\(E\)</span>, set
+<span class="math math-display" data-tex="\[
+I_x=\{a\in A:a(x)=0\},\qquad
+N_x=\{\xi\in E\mid \langle\xi,\xi\rangle(x)=0\}.
+\]">\[
+I_x=\{a\in A:a(x)=0\},\qquad
+N_x=\{\xi\in E\mid \langle\xi,\xi\rangle(x)=0\}.
+\]</span>
+Write <span class="math" data-tex="\(EI_x\)">\(EI_x\)</span> for the closed linear span of products <span class="math" data-tex="\(\xi a\)">\(\xi a\)</span>, <span class="math" data-tex="\(a\in I_x\)">\(a\in I_x\)</span>.</p>
+<p><strong>Proposition 2.1.</strong> One has <span class="math" data-tex="\(N_x=EI_x\)">\(N_x=EI_x\)</span>, and
+<span class="math math-display" data-tex="\[
+E_x=E/N_x,\qquad
+\langle[\xi]_x,[\eta]_x\rangle
+ =\langle\xi,\eta\rangle(x)
+\tag{2.1}
+\]">\[
+E_x=E/N_x,\qquad
+\langle[\xi]_x,[\eta]_x\rangle
+ =\langle\xi,\eta\rangle(x)
+\tag{2.1}
+\]</span>
+is a complete Hilbert space. Its norm is the quotient norm:
+<span class="math math-display" data-tex="\[
+\|[\xi]_x\|=\langle\xi,\xi\rangle(x)^{1/2}.
+\tag{2.2}
+\]">\[
+\|[\xi]_x\|=\langle\xi,\xi\rangle(x)^{1/2}.
+\tag{2.2}
+\]</span>
+It is canonically <span class="math" data-tex="\(E\otimes_{\mathrm{ev}_x}\mathbb C\)">\(E\otimes_{\mathrm{ev}_x}\mathbb C\)</span>.</p>
+<p><em>Proof.</em> Evaluating the module Cauchy–Schwarz inequality shows that vectors in <span class="math" data-tex="\(N_x\)">\(N_x\)</span> pair to zero with every vector at <span class="math" data-tex="\(x\)">\(x\)</span>. This makes (2.1) well defined and makes <span class="math" data-tex="\(N_x\)">\(N_x\)</span> a closed submodule. Products with <span class="math" data-tex="\(I_x\)">\(I_x\)</span> lie in <span class="math" data-tex="\(N_x\)">\(N_x\)</span>.</p>
+<p>If <span class="math" data-tex="\(\xi\in N_x\)">\(\xi\in N_x\)</span>, the function <span class="math" data-tex="\(y\mapsto\langle\xi,\xi\rangle(y)^{1/2}\)">\(y\mapsto\langle\xi,\xi\rangle(y)^{1/2}\)</span> is in <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> and is zero at <span class="math" data-tex="\(x\)">\(x\)</span>. The compact set on which it is at least <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> misses a neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span>. Choose <span class="math" data-tex="\(0\leq a\leq1\)">\(0\leq a\leq1\)</span> in <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>, equal to one on that compact set and zero at <span class="math" data-tex="\(x\)">\(x\)</span>. Then <span class="math" data-tex="\(\|\xi-\xi a\|\leq\varepsilon\)">\(\|\xi-\xi a\|\leq\varepsilon\)</span>. Thus <span class="math" data-tex="\(N_x=EI_x\)">\(N_x=EI_x\)</span>.</p>
+<p>The scalar norm in (2.2) is at most the quotient norm. For the reverse inequality, choose a neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span> on which the scalar norm of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is below <span class="math" data-tex="\(\|[\xi]_x\|+\varepsilon\)">\(\|[\xi]_x\|+\varepsilon\)</span>, and a cutoff <span class="math" data-tex="\(f\)">\(f\)</span> supported there with <span class="math" data-tex="\(f(x)=1\)">\(f(x)=1\)</span>. The vector <span class="math" data-tex="\(\xi f\)">\(\xi f\)</span> represents the same class and has module norm at most that bound. This proves equality. The Banach quotient is complete, proving the Hilbert-space assertion. Finally <span class="math" data-tex="\(\xi\otimes z\mapsto[\xi]_x z\)">\(\xi\otimes z\mapsto[\xi]_x z\)</span> respects balancing and the tensor inner product; its range is all of the complete quotient, so it gives the claimed unitary. ∎</p>
+<p>Let <span class="math" data-tex="\(\widehat\xi(x)=[\xi]_x\)">\(\widehat\xi(x)=[\xi]_x\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|\xi\|=\sup_x\|\widehat\xi(x)\|,
+\qquad
+\langle\widehat\xi(x),\widehat\eta(x)\rangle
+=\langle\xi,\eta\rangle(x).
+\tag{2.3}
+\]">\[
+\|\xi\|=\sup_x\|\widehat\xi(x)\|,
+\qquad
+\langle\widehat\xi(x),\widehat\eta(x)\rangle
+=\langle\xi,\eta\rangle(x).
+\tag{2.3}
+\]</span>
+Define <span class="math" data-tex="\(\Gamma_E\)">\(\Gamma_E\)</span> to consist of sections locally uniformly approximable by the <span class="math" data-tex="\(\widehat\xi\)">\(\widehat\xi\)</span>, <span class="math" data-tex="\(\xi\in E\)">\(\xi\in E\)</span>.</p>
+<p><strong>Theorem 2.2 (Module to field).</strong> The spaces <span class="math" data-tex="\(E_x\)">\(E_x\)</span>, with <span class="math" data-tex="\(\Gamma_E\)">\(\Gamma_E\)</span>, form a continuous field, and
+<span class="math math-display" data-tex="\[
+E\xrightarrow{\ \xi\mapsto\widehat\xi\ }
+\Gamma_0(E_x)
+\tag{2.4}
+\]">\[
+E\xrightarrow{\ \xi\mapsto\widehat\xi\ }
+\Gamma_0(E_x)
+\tag{2.4}
+\]</span>
+is a unitary <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module isomorphism.</p>
+<p><em>Proof.</em> Local uniform limits of continuous norm functions have continuous norms. Values of the original sections are already all of each fibre by Proposition 2.1. Sums and scalar multiples preserve local approximation. Multiplication by <span class="math" data-tex="\(f\in C(X)\)">\(f\in C(X)\)</span> does too: near a point <span class="math" data-tex="\(x\)">\(x\)</span>, approximate a section by <span class="math" data-tex="\(\widehat\xi\)">\(\widehat\xi\)</span>, and then approximate <span class="math" data-tex="\(f\widehat\xi\)">\(f\widehat\xi\)</span> by <span class="math" data-tex="\(f(x)\widehat\xi\)">\(f(x)\widehat\xi\)</span>, shrinking the neighborhood and using local boundedness of the norms. The approximation rule is idempotent, by applying it twice with half the required accuracy. Thus all four field axioms hold.</p>
+<p>Equation (2.3) makes (2.4) isometric and inner-product preserving. Its range is a closed <span class="math" data-tex="\(A\)">\(A\)</span>-submodule, total in each fibre; Lemma 1.2 makes it all of <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>. ∎</p>
+<h2 id="3-recovering-a-module-from-a-field">3. Recovering a module from a field</h2>
+<p><strong>Theorem 3.1 (Field to module).</strong> For every continuous field, <span class="math" data-tex="\(\Gamma_0(H)\)">\(\Gamma_0(H)\)</span> is a Hilbert <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module under pointwise operations and inner product. Its associated field is canonically the original field. Thus these constructions are inverse, up to canonical unitary isomorphism.</p>
+<p><em>Proof.</em> The pointwise inner product is continuous by polarization and vanishes at infinity since
+<span class="math math-display" data-tex="\[
+|\langle\xi(x),\eta(x)\rangle|
+\leq\|\xi(x)\|\|\eta(x)\|.
+\]">\[
+|\langle\xi(x),\eta(x)\rangle|
+\leq\|\xi(x)\|\|\eta(x)\|.
+\]</span>
+It is positive definite on sections and has exactly the supremum norm. A uniformly Cauchy sequence has a pointwise Hilbert-space limit, approached uniformly; local uniform closure makes the limit continuous, and uniform approximation preserves vanishing at infinity. Hence the module is complete.</p>
+<p>At <span class="math" data-tex="\(x\)">\(x\)</span>, evaluation has dense range: a member of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> can be multiplied by a compactly supported cutoff equal to one at <span class="math" data-tex="\(x\)">\(x\)</span>, giving a member of <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> with that value. The quotient-norm cutoff argument of Proposition 2.1 applies equally to this evaluation map. It identifies the complete quotient fibre isometrically with a dense, hence closed and surjective, subspace of <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. These fibre unitaries send original sections to their values.</p>
+<p>Finally any <span class="math" data-tex="\(\xi\in\Gamma\)">\(\xi\in\Gamma\)</span> agrees near each point with a member of <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>: multiply it by a cutoff equal to one on a neighborhood. Its norm is bounded on the compact support, so that product vanishes at infinity. Consequently the local approximation closure of <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> is exactly <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. ∎</p>
+<p>The correspondence also preserves adjointable operators. If <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span>, it induces <span class="math" data-tex="\(T_x:E_x\to F_x\)">\(T_x:E_x\to F_x\)</span>, with
+<span class="math math-display" data-tex="\[
+(T^*)_x=(T_x)^*,\qquad
+\|T\|=\sup_x\|T_x\|.
+\tag{3.1}
+\]">\[
+(T^*)_x=(T_x)^*,\qquad
+\|T\|=\sup_x\|T_x\|.
+\tag{3.1}
+\]</span>
+Indeed a bounded module map preserves <span class="math" data-tex="\(EI_x\)">\(EI_x\)</span>, so descends to the quotient with norm at most <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>; inner products give the adjoint equality. Conversely (2.3) bounds <span class="math" data-tex="\(\|T\xi\|\)">\(\|T\xi\|\)</span> by <span class="math" data-tex="\((\sup_x\|T_x\|)\|\xi\|\)">\((\sup_x\|T_x\|)\|\xi\|\)</span>. A uniformly bounded family <span class="math" data-tex="\(T_x\)">\(T_x\)</span> gives an adjointable map precisely when both <span class="math" data-tex="\(T_x\)">\(T_x\)</span> and its pointwise adjoint send continuous sections vanishing at infinity to such sections. The inner-product identity then supplies the module adjoint. Local cutoffs give the equivalent formulation using all local continuous sections.</p>
+<h2 id="4-the-continuous-field-of-compact-operators">4. The continuous field of compact operators</h2>
+<p>The fibre of a rank-one operator is
+<span class="math math-display" data-tex="\[
+(\theta_{\xi,\eta})_x
+=\theta_{\xi(x),\eta(x)},\qquad
+\theta_{\xi,\eta}\zeta=\xi\langle\eta,\zeta\rangle.
+\tag{4.1}
+\]">\[
+(\theta_{\xi,\eta})_x
+=\theta_{\xi(x),\eta(x)},\qquad
+\theta_{\xi,\eta}\zeta=\xi\langle\eta,\zeta\rangle.
+\tag{4.1}
+\]</span>
+This follows either directly on quotient vectors or by tensoring.</p>
+<p><strong>Lemma 4.1.</strong> For every <span class="math" data-tex="\(k\in\mathcal K(E)\)">\(k\in\mathcal K(E)\)</span>, <span class="math" data-tex="\(x\mapsto\|k_x\|\)">\(x\mapsto\|k_x\|\)</span> is continuous and vanishes at infinity, and <span class="math" data-tex="\(\|k\|=\sup_x\|k_x\|\)">\(\|k\|=\sup_x\|k_x\|\)</span>. Evaluation maps <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> onto <span class="math" data-tex="\(\mathcal K(E_x)\)">\(\mathcal K(E_x)\)</span>.</p>
+<p><em>Proof.</em> First let <span class="math" data-tex="\(k=\sum_{j=1}^m\theta_{\xi_j,\eta_j}\)">\(k=\sum_{j=1}^m\theta_{\xi_j,\eta_j}\)</span>. At a fixed <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(V,W:\mathbb C^m\to E_x\)">\(V,W:\mathbb C^m\to E_x\)</span> have columns <span class="math" data-tex="\(\xi_j(x),\eta_j(x)\)">\(\xi_j(x),\eta_j(x)\)</span>, and let <span class="math" data-tex="\(G_\xi=V^*V\)">\(G_\xi=V^*V\)</span>, <span class="math" data-tex="\(G_\eta=W^*W\)">\(G_\eta=W^*W\)</span>. Then <span class="math" data-tex="\(k_x=VW^*\)">\(k_x=VW^*\)</span> and
+<span class="math math-display" data-tex="\[
+\|k_x\|^2
+=\|G_\xi^{1/2}G_\eta G_\xi^{1/2}\|.
+\tag{4.2}
+\]">\[
+\|k_x\|^2
+=\|G_\xi^{1/2}G_\eta G_\xi^{1/2}\|.
+\tag{4.2}
+\]</span>
+To check it, write <span class="math" data-tex="\(\|VW^*\|^2=\|WG_\xi W^*\|\)">\(\|VW^*\|^2=\|WG_\xi W^*\|\)</span> and use <span class="math" data-tex="\(\|SS^*\|=\|S^*S\|\)">\(\|SS^*\|=\|S^*S\|\)</span> for <span class="math" data-tex="\(S=WG_\xi^{1/2}\)">\(S=WG_\xi^{1/2}\)</span>. The entries of the Gram matrices are continuous. Continuous square roots and matrix norms make (4.2) continuous, even where ranks change. Also
+<span class="math math-display" data-tex="\[
+\|k_x\|\leq\sum_j\|\xi_j(x)\|\|\eta_j(x)\|,
+\]">\[
+\|k_x\|\leq\sum_j\|\xi_j(x)\|\|\eta_j(x)\|,
+\]</span>
+which vanishes at infinity. Norm approximation by finite ranks gives uniform approximation of these norm functions, proving the assertions for all <span class="math" data-tex="\(k\)">\(k\)</span>; the norm equality is (3.1).</p>
+<p>Evaluation is a *-homomorphism. Every vector of <span class="math" data-tex="\(E_x\)">\(E_x\)</span> is a section value, so its image contains all fibre rank ones. The image of a C*-homomorphism is closed, and hence is the whole compact algebra. ∎</p>
+<p><strong>Theorem 4.2.</strong> The algebras <span class="math" data-tex="\(\mathcal K(E_x)\)">\(\mathcal K(E_x)\)</span> form a continuous field of C*-algebras, whose algebra of sections vanishing at infinity is canonically <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>.</p>
+<p><em>Proof.</em> Declare a compact-operator section continuous when it is locally uniformly approximable in operator norm by finite sums (4.1). Sums and adjoints preserve this class. Products do because
+<span class="math math-display" data-tex="\[
+\theta_{\xi,\eta}\theta_{\zeta,\omega}
+=\theta_{\xi\langle\eta,\zeta\rangle,\omega};
+\]">\[
+\theta_{\xi,\eta}\theta_{\zeta,\omega}
+=\theta_{\xi\langle\eta,\zeta\rangle,\omega};
+\]</span>
+local approximation also preserves products, using local norm boundedness. Norm functions are continuous by Lemma 4.1 and local approximation. All fibre compacts are section values by its surjectivity conclusion.</p>
+<p>An operator section in this class vanishing at infinity can be patched, exactly as in (1.3), into a uniform limit of finite-rank sections. Multiplication of a rank one by <span class="math" data-tex="\(\phi\in C_c(X)\)">\(\phi\in C_c(X)\)</span> is again a module rank one, since the scalar can be absorbed in its first vector. Thus the patched sections belong to <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>; this algebra is norm closed. Conversely a module compact is locally approximable by finite ranks and has norm vanishing at infinity. The norm equality makes the identification isometric. This proves all the continuous-field axioms in [Blackadar 2006, IV.1.6.1], including exact fibre evaluation and local uniform closure for vanishing sections. Zero fibres are allowed. ∎</p>
+<p>The kernel of evaluation at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\overline{I_x\mathcal K(E)}\)">\(\overline{I_x\mathcal K(E)}\)</span>. Inclusion in the kernel is immediate. For the reverse inclusion, if <span class="math" data-tex="\(k_x=0\)">\(k_x=0\)</span>, the continuous norm function from Lemma 4.1 allows the same cutoff argument as in Proposition 2.1 to approximate <span class="math" data-tex="\(k\)">\(k\)</span> by <span class="math" data-tex="\(ak\)">\(ak\)</span>, <span class="math" data-tex="\(a(x)=0\)">\(a(x)=0\)</span>.</p>
+<p>The open support
+<span class="math math-display" data-tex="\[
+U=\{x:E_x\ne0\}
+\tag{4.3}
+\]">\[
+U=\{x:E_x\ne0\}
+\tag{4.3}
+\]</span>
+also records module fullness. The closed ideal generated by the inner products is exactly <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span>. To verify the nontrivial inclusion, a compact subset of <span class="math" data-tex="\(U\)">\(U\)</span> has a finite cover on which a sum <span class="math" data-tex="\(g=\sum_j\langle\xi_j,\xi_j\rangle\)">\(g=\sum_j\langle\xi_j,\xi_j\rangle\)</span> is positive. A cutoff supported in <span class="math" data-tex="\(\{g&gt;0\}\)">\(\{g&gt;0\}\)</span> is a continuous scalar multiple of <span class="math" data-tex="\(g\)">\(g\)</span>, so belongs to the inner-product ideal. Taking that cutoff equal to one on the support of a given <span class="math" data-tex="\(f\in C_c(U)\)">\(f\in C_c(U)\)</span> puts <span class="math" data-tex="\(f\)">\(f\)</span> in the ideal too, and <span class="math" data-tex="\(C_c(U)\)">\(C_c(U)\)</span> is dense in <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span>. Therefore <span class="math" data-tex="\(E\)">\(E\)</span> is full over <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> exactly when every fibre is nonzero.</p>
+<h2 id="5-finite-constant-rank-gives-a-vector-bundle">5. Finite constant rank gives a vector bundle</h2>
+<p><strong>Theorem 5.1.</strong> If a continuous field has constant finite dimension <span class="math" data-tex="\(n\)">\(n\)</span>, it is a Hermitian vector bundle of rank <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is compact, its section module is finitely generated projective over <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>.</p>
+<p><em>Proof.</em> At <span class="math" data-tex="\(x\)">\(x\)</span>, choose <span class="math" data-tex="\(\xi_1,\ldots,\xi_n\in\Gamma_0(H)\)">\(\xi_1,\ldots,\xi_n\in\Gamma_0(H)\)</span> whose values form a basis; exact evaluation was proved in Theorem 3.1. Their Gram matrix <span class="math" data-tex="\(G(y)\)">\(G(y)\)</span> is continuous and invertible on a neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. Its continuous inverse square root gives local sections
+<span class="math math-display" data-tex="\[
+u_j(y)=\sum_i\xi_i(y)(G(y)^{-1/2})_{ij}.
+\tag{5.1}
+\]">\[
+u_j(y)=\sum_i\xi_i(y)(G(y)^{-1/2})_{ij}.
+\tag{5.1}
+\]</span>
+They are orthonormal in each fibre on <span class="math" data-tex="\(V\)">\(V\)</span>, and they span because the dimension is <span class="math" data-tex="\(n\)">\(n\)</span>. A section on <span class="math" data-tex="\(V\)">\(V\)</span> is continuous exactly when its coordinates <span class="math" data-tex="\(\langle u_j(y),\xi(y)\rangle\)">\(\langle u_j(y),\xi(y)\rangle\)</span> are continuous. One implication uses continuous inner products; the other uses the local-section axioms on <span class="math" data-tex="\(\sum_j u_j c_j\)">\(\sum_j u_j c_j\)</span>. Thus these coordinates give a local trivialization. On overlaps the coordinate changes are continuous unitary matrices, furnishing the vector-bundle structure.</p>
+<p>For compact <span class="math" data-tex="\(X\)">\(X\)</span>, choose a finite collection of these neighborhoods and nonnegative functions <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> supported inside them with <span class="math" data-tex="\(\sum_i\rho_i=1\)">\(\sum_i\rho_i=1\)</span>. Extend
+<span class="math" data-tex="\(\zeta_{ij}=\sqrt{\rho_i}\,u_j\)">\(\zeta_{ij}=\sqrt{\rho_i}\,u_j\)</span> by zero. They are continuous across the boundaries since their norms are <span class="math" data-tex="\(\sqrt{\rho_i}\)">\(\sqrt{\rho_i}\)</span>. Pointwise,
+<span class="math math-display" data-tex="\[
+\sum_{i,j}\theta_{\zeta_{ij},\zeta_{ij}}=1.
+\tag{5.2}
+\]">\[
+\sum_{i,j}\theta_{\zeta_{ij},\zeta_{ij}}=1.
+\tag{5.2}
+\]</span>
+Let <span class="math" data-tex="\(N\)">\(N\)</span> be their number and <span class="math" data-tex="\(W:\Gamma(H)\to C(X)^N\)">\(W:\Gamma(H)\to C(X)^N\)</span> be the analysis map with coordinates <span class="math" data-tex="\(\langle\zeta_{ij},\xi\rangle\)">\(\langle\zeta_{ij},\xi\rangle\)</span>. Equation (5.2) gives <span class="math" data-tex="\(W^*W=1\)">\(W^*W=1\)</span>. Hence <span class="math" data-tex="\(p=WW^*\)">\(p=WW^*\)</span> is a continuous matrix projection and <span class="math" data-tex="\(W\)">\(W\)</span> identifies the module with <span class="math" data-tex="\(pC(X)^N\)">\(pC(X)^N\)</span>, proving finite projectivity. This is precisely the frame projection of the preceding finite-projective-module lesson. The zero-rank case gives the zero module. ∎</p>
+<p>Conversely a continuous matrix projection over compact <span class="math" data-tex="\(X\)">\(X\)</span> has locally constant rank. If <span class="math" data-tex="\(\|p-q\|&lt;1\)">\(\|p-q\|&lt;1\)</span>, the restrictions of <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(\operatorname{ran}p\)">\(\operatorname{ran}p\)</span> and of <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(\operatorname{ran}q\)">\(\operatorname{ran}q\)</span> are injective: a vector in either kernel would satisfy <span class="math" data-tex="\(\|v\|\leq\|p-q\|\|v\|\)">\(\|v\|\leq\|p-q\|\|v\|\)</span>. The two finite-dimensional ranges therefore have equal dimension. Local basis sections obtained by applying the varying projection to a basis at a fixed point remain independent and hence span nearby. Its ranges and sections form a vector bundle with the field topology just described.</p>
+<p>There is a useful constraint on changing rank.</p>
+<p><strong>Proposition 5.2.</strong> In any continuous field, for every positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, the set
+<span class="math math-display" data-tex="\[
+\{x:\dim H_x\geq m\}
+\tag{5.3}
+\]">\[
+\{x:\dim H_x\geq m\}
+\tag{5.3}
+\]</span>
+is open.</p>
+<p><em>Proof.</em> At such a point choose <span class="math" data-tex="\(m\)">\(m\)</span> independent section values. Their Gram determinant is positive there, and stays positive on a neighborhood by continuity. Those values stay independent throughout the neighborhood. ∎</p>
+<p>Thus finite fibre dimension is lower semicontinuous. A limit point cannot have two independent directions while every other nearby fibre has only one, by (5.3).</p>
+<h2 id="6-bundles-jumping-ranks-and-the-standard-module">6. Bundles, jumping ranks and the standard module</h2>
+<p><strong>Example 6.1.</strong> If <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> is a Hermitian vector bundle, its continuous sections give a continuous field and <span class="math" data-tex="\(\Gamma_0(V)\)">\(\Gamma_0(V)\)</span> is its Hilbert module. Local orthonormal frames verify the norm and local closure axioms; a cutoff extends any chosen local vector to a global section. Theorem 3.1 recovers the original fibres and continuous sections. For compact <span class="math" data-tex="\(X\)">\(X\)</span>, Theorem 5.1 gives the usual projection presentation of its section module.</p>
+<p><strong>Example 6.2 (A genuine dimension jump).</strong> Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A&amp;=C([0,1]),\\
+I&amp;=\{b\in A:b(0)=0\},\\
+E&amp;=A\oplus I .
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+A&amp;=C([0,1]),\\
+I&amp;=\{b\in A:b(0)=0\},\\
+E&amp;=A\oplus I .
+\end{aligned}
+\tag{6.1}
+\]</span>
+Its inner product is <span class="math" data-tex="\(\overline a c+\overline b d\)">\(\overline a c+\overline b d\)</span>. Evaluation identifies
+<span class="math math-display" data-tex="\[
+E_0=\mathbb C,\qquad E_t=\mathbb C^2\quad(t&gt;0).
+\tag{6.2}
+\]">\[
+E_0=\mathbb C,\qquad E_t=\mathbb C^2\quad(t&gt;0).
+\tag{6.2}
+\]</span>
+At zero, the entire second summand lies in the null space; at <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> its evaluation is onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> by cutoffs in <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. Sections are pairs of continuous scalar functions whose second coordinate tends to zero at zero. Their norms are continuous. By Theorem 2.2 this is a continuous field with those fibres. It is not locally a vector bundle at zero, since local triviality would make rank constant there.</p>
+<p>Its compact algebra has a particularly concrete description:
+<span class="math math-display" data-tex="\[
+\mathcal K(E)\cong
+\left\{f\in C([0,1],M_2(\mathbb C)):
+ f(0)=\begin{pmatrix}\lambda&amp;0\\0&amp;0\end{pmatrix}\right\}.
+\tag{6.3}
+\]">\[
+\mathcal K(E)\cong
+\left\{f\in C([0,1],M_2(\mathbb C)):
+ f(0)=\begin{pmatrix}\lambda&amp;0\\0&amp;0\end{pmatrix}\right\}.
+\tag{6.3}
+\]</span>
+Indeed its four matrix corners are <span class="math" data-tex="\(A,I,I,I\)">\(A,I,I,I\)</span>. Rank-one formulas give the first corner and dense spans in the other three: products of two elements of <span class="math" data-tex="\(I\)">\(I\)</span> span <span class="math" data-tex="\(I\)">\(I\)</span>, using its approximate identity, and multiplication by elements of <span class="math" data-tex="\(A\)">\(A\)</span> preserves it. The resulting matrix action is isometric by (3.1), and each such matrix preserves <span class="math" data-tex="\(A\oplus I\)">\(A\oplus I\)</span>; hence the closed corners give exactly (6.3). Its fibre algebra is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> at zero and <span class="math" data-tex="\(M_2\)">\(M_2\)</span> elsewhere.</p>
+<p>An adjointable field need not have a continuous operator-norm function. On this same module, let
+<span class="math math-display" data-tex="\[
+T(a,b)(t)=(0,\sin(1/t)b(t))\quad(t&gt;0),\qquad
+T(a,b)(0)=0.
+\]">\[
+T(a,b)(t)=(0,\sin(1/t)b(t))\quad(t&gt;0),\qquad
+T(a,b)(0)=0.
+\]</span>
+The second coordinate is continuous at zero because <span class="math" data-tex="\(b(0)=0\)">\(b(0)=0\)</span>; its adjoint is itself and <span class="math" data-tex="\(\|T\|\leq1\)">\(\|T\|\leq1\)</span>. Nevertheless <span class="math" data-tex="\(\|T_t\|=|\sin(1/t)|\)">\(\|T_t\|=|\sin(1/t)|\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, whereas <span class="math" data-tex="\(\|T_0\|=0\)">\(\|T_0\|=0\)</span>. This contrasts with the norm continuity for module compacts in Lemma 4.1.</p>
+<p><strong>Example 6.3 (The constant infinite-dimensional field).</strong> One has
+<span class="math math-display" data-tex="\[
+H_{C_0(X)}\cong C_0(X,\ell^2),\qquad
+(a_j)_j\longmapsto\bigl(x\mapsto(a_j(x))_j\bigr).
+\tag{6.4}
+\]">\[
+H_{C_0(X)}\cong C_0(X,\ell^2),\qquad
+(a_j)_j\longmapsto\bigl(x\mapsto(a_j(x))_j\bigr).
+\tag{6.4}
+\]</span>
+Finite columns preserve inner products and norms. A norm-convergent sum <span class="math" data-tex="\(\sum_j|a_j|^2\)">\(\sum_j|a_j|^2\)</span> makes their vector-valued partial sums converge uniformly, giving a continuous section vanishing at infinity. Conversely the image of a <span class="math" data-tex="\(C_0\)">\(C_0\)</span> section, together with zero, has compact closure in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. Finite-coordinate projections converge uniformly on this compact set: a finite <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-net reduces it to finitely many vectors. Thus its coordinate tails are uniformly small, which is exactly norm convergence of <span class="math" data-tex="\(\sum_j|a_j|^2\)">\(\sum_j|a_j|^2\)</span>. This proves (6.4) for arbitrary <span class="math" data-tex="\(X\)">\(X\)</span>. For compact <span class="math" data-tex="\(X\)">\(X\)</span> it reads <span class="math" data-tex="\(H_{C(X)}=C(X,\ell^2)\)">\(H_{C(X)}=C(X,\ell^2)\)</span>.</p>
+<h2 id="7-countability-stabilization-and-two-dixmier-douady-results">7. Countability, stabilization and two Dixmier–Douady results</h2>
+<p>Call a field separable when there is a countable family of continuous sections whose values have dense linear span in every fibre. This is a condition on sections. It implies that every fibre is separable.</p>
+<p><strong>Proposition 7.1.</strong> A module <span class="math" data-tex="\(E=\Gamma_0(H)\)">\(E=\Gamma_0(H)\)</span> is countably generated exactly when it has a countable family in <span class="math" data-tex="\(\Gamma_0(H)\)">\(\Gamma_0(H)\)</span> total in every fibre. If <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact, a separable field has a countably generated section module.</p>
+<p><em>Proof.</em> Generators are total after taking fibre quotients. Conversely the closed module generated by a countable total family has dense values in every fibre, so Lemma 1.2 makes it all of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>For the second assertion take total <span class="math" data-tex="\(\xi_n\in\Gamma\)">\(\xi_n\in\Gamma\)</span> and compactly supported cutoffs <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> such that at least one <span class="math" data-tex="\(\chi_j(x)\)">\(\chi_j(x)\)</span> equals one at each <span class="math" data-tex="\(x\)">\(x\)</span>. Such a countable family exists by covering a compact exhaustion with relatively compact neighborhoods. The sections <span class="math" data-tex="\(\xi_n\chi_j\)">\(\xi_n\chi_j\)</span> are in <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> and are fibrewise total, so the first assertion applies. ∎</p>
+<p><strong>Example 7.2 (Separable fibres do not suffice).</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be an uncountable discrete set and <span class="math" data-tex="\(X=D\cup\{\infty\}\)">\(X=D\cup\{\infty\}\)</span> its one-point compactification. Put
+<span class="math math-display" data-tex="\[
+E=C(X)\oplus C_0(D),
+\tag{7.1}
+\]">\[
+E=C(X)\oplus C_0(D),
+\tag{7.1}
+\]</span>
+regarding the second summand as the functions on <span class="math" data-tex="\(X\)">\(X\)</span> zero at <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. Every fibre is nonzero and finite dimensional: dimension one at <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, two at <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>. But <span class="math" data-tex="\(E\)">\(E\)</span> is not countably generated. Each <span class="math" data-tex="\(b\in C_0(D)\)">\(b\in C_0(D)\)</span> has countable support, since <span class="math" data-tex="\(\{d:|b(d)|\geq1/n\}\)">\(\{d:|b(d)|\geq1/n\}\)</span> is finite for each <span class="math" data-tex="\(n\)">\(n\)</span>. The second coordinates of any countable proposed generating family are therefore supported in a single countable subset of <span class="math" data-tex="\(D\)">\(D\)</span>. Module multiplication and norm closure cannot generate the function supported at a point outside that subset. Thus even compactness of the base and separability of every fibre do not imply the section-countability hypothesis.</p>
+<p><strong>Theorem 7.3 (Stabilization in field form).</strong> For a countably generated <span class="math" data-tex="\(E\)">\(E\)</span>,
+<span class="math math-display" data-tex="\[
+E\oplus C_0(X,\ell^2)\cong C_0(X,\ell^2)
+\tag{7.2}
+\]">\[
+E\oplus C_0(X,\ell^2)\cong C_0(X,\ell^2)
+\tag{7.2}
+\]</span>
+by a unitary of section modules and hence by continuous fibre unitaries. If <span class="math" data-tex="\(E\)">\(E\)</span> is full as well, then <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact and
+<span class="math math-display" data-tex="\[
+E^\infty\cong C_0(X,\ell^2).
+\tag{7.3}
+\]">\[
+E^\infty\cong C_0(X,\ell^2).
+\tag{7.3}
+\]</span></p>
+<p><em>Proof.</em> Apply <em>Kasparov's stabilization theorem</em>, Theorem 3.1, and use (6.4). For the full case, countable generators <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> are total at every point, with at least one nonzero value there. Consequently
+<span class="math math-display" data-tex="\[
+X=\bigcup_{n,m\geq1}
+\{x:\|\xi_n(x)\|\geq1/m\},
+\]">\[
+X=\bigcup_{n,m\geq1}
+\{x:\|\xi_n(x)\|\geq1/m\},
+\]</span>
+a countable union of compact sets. Thus <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital: cutoffs from a compact exhaustion give a countable approximate identity. The full-amplification theorem of the stabilization lesson, Theorem 4.2, proves (7.3). ∎</p>
+<p>Equation (7.2) requires neither fullness nor a dimension bound. Triviality of the original field is a stronger statement:</p>
+<h3 id="trivializing-an-infinite-dimensional-field">Trivializing an infinite-dimensional field</h3>
+<p>The argument below first represents a countable-total field by projections, then builds continuous orthonormal bases of their ranges. Finite covering dimension supplies the second step.</p>
+<p><strong>Sources and licence.</strong> The projection-lifting proof is adapted from Marina Prokhorova, <a href="https://ems.press/content/serial-article-files/52400?nt=1"><em>From graph to Riesz continuity</em>, Theorem 6.1 and Lemma 6.2, pp.21–22</a>, <em>Zeitschrift für Analysis und ihre Anwendungen</em> <strong>45</strong> (2026), 1–28, DOI <a href="https://doi.org/10.4171/ZAA/1806">10.4171/ZAA/1806</a>, ©2025 European Mathematical Society, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The field-triviality result is due to Jacques Dixmier and Adrien Douady, Section 15, Theorem 5, p.260 of their 1963 article. Proof checked and edited by GPT-6.1 Sol (OpenAI), Codex Ultra. Changes: the required section approximation is proved here by a dimension argument; the field-to-projection reduction, the density estimate and inverse continuity are supplied explicitly. Prokhorova's proof of the approximation lemma uses Michael's selection theorem and Kakutani's sphere theorem; their roles are replaced here by the proved perturbation lemma. This entire subsection, through the conclusion following Theorem 7.4, is an adaptation licensed <strong>CC BY 4.0</strong>, rather than part of the surrounding CC0 dedication.</p>
+<p><strong>Lemma (Paracompact patching).</strong> A paracompact Hausdorff space is normal. Every open cover has a locally finite subordinate partition of unity. A locally finite open cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> has a locally finite closed shrinking <span class="math" data-tex="\((F_i)\)">\((F_i)\)</span> that still covers the space and satisfies <span class="math" data-tex="\(F_i\subset U_i\)">\(F_i\subset U_i\)</span>.</p>
+<p><em>Proof.</em> First fix a point <span class="math" data-tex="\(x\)">\(x\)</span> outside a closed set <span class="math" data-tex="\(F\)">\(F\)</span>. Separate <span class="math" data-tex="\(x\)">\(x\)</span> from each <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span> by disjoint open neighborhoods. Refine the cover consisting of these <span class="math" data-tex="\(y\)">\(y\)</span>-neighborhoods and <span class="math" data-tex="\(X\setminus F\)">\(X\setminus F\)</span> locally finitely. Assign each refined member to one containing old member. The members that meet <span class="math" data-tex="\(F\)">\(F\)</span> must be assigned to <span class="math" data-tex="\(y\)">\(y\)</span>-neighborhoods; their closures avoid <span class="math" data-tex="\(x\)">\(x\)</span>. The union of these closures is closed, since the family is locally finite, and its complement is a neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span>. The closure of that complement misses <span class="math" data-tex="\(F\)">\(F\)</span>, since <span class="math" data-tex="\(F\)">\(F\)</span> is contained in the union of the corresponding open members. This proves regularity.</p>
+<p>For disjoint closed <span class="math" data-tex="\(F,G\)">\(F,G\)</span>, regularity gives neighborhoods of the points of <span class="math" data-tex="\(F\)">\(F\)</span> with closures missing <span class="math" data-tex="\(G\)">\(G\)</span>. Refine their union with <span class="math" data-tex="\(X\setminus F\)">\(X\setminus F\)</span> locally finitely. The union of the refined members meeting <span class="math" data-tex="\(F\)">\(F\)</span> contains <span class="math" data-tex="\(F\)">\(F\)</span> and has closure disjoint from <span class="math" data-tex="\(G\)">\(G\)</span>. This proves normality. The dyadic construction in Section 5 of <em>Finite projective modules, frames and K₀</em> therefore gives separating functions on this space too.</p>
+<p>Given any open cover, first choose neighborhoods whose closures lie in its members and then take a locally finite refinement. Group refined members by their assigned old labels. Their grouped open sets <span class="math" data-tex="\(V_i\)">\(V_i\)</span> still cover <span class="math" data-tex="\(X\)">\(X\)</span>, are locally finite, and satisfy <span class="math" data-tex="\(\overline V_i\subset U_i\)">\(\overline V_i\subset U_i\)</span>: locally finite unions of closures are closed. Thus <span class="math" data-tex="\(F_i=\overline V_i\)">\(F_i=\overline V_i\)</span> is a closed shrinking of the resulting locally finite cover, with repeated labels grouped when necessary. For a cover already locally finite the same construction gives a closed shrinking indexed by that cover.</p>
+<p>Normality lets us insert an open neighborhood <span class="math" data-tex="\(W_i\)">\(W_i\)</span> of <span class="math" data-tex="\(F_i\)">\(F_i\)</span> with <span class="math" data-tex="\(\overline W_i\subset U_i\)">\(\overline W_i\subset U_i\)</span>, and a further neighborhood between them. A separating function can consequently be chosen to equal one on <span class="math" data-tex="\(F_i\)">\(F_i\)</span> and have support inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. These functions form a locally finite family and have positive sum. Dividing by that sum gives a subordinate partition of unity. For a cover not initially locally finite, apply this construction to its locally finite refinement and sum the functions assigned to each original label. ∎</p>
+<p>For a paracompact Hausdorff space, we use the cover-refinement formulation of <span class="math" data-tex="\(\dim X\leq d\)">\(\dim X\leq d\)</span>: every open cover admits a locally finite open refinement with no point in more than <span class="math" data-tex="\(d+1\)">\(d+1\)</span> members. Closed subspaces inherit paracompactness and this bound. Indeed, extend a cover of a closed subspace <span class="math" data-tex="\(F\)">\(F\)</span> to ambient open sets, add <span class="math" data-tex="\(X\setminus F\)">\(X\setminus F\)</span>, refine, and restrict to <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Lemma (Avoiding zero in a finite-dimensional target).</strong> Let <span class="math" data-tex="\(\dim X\leq d&lt;N\)">\(\dim X\leq d&lt;N\)</span>, let <span class="math" data-tex="\(g:X\to\mathbb R^N\)">\(g:X\to\mathbb R^N\)</span> be continuous, and let <span class="math" data-tex="\(\delta:X\to(0,\infty)\)">\(\delta:X\to(0,\infty)\)</span> be continuous. There is continuous <span class="math" data-tex="\(f:X\to\mathbb R^N\setminus\{0\}\)">\(f:X\to\mathbb R^N\setminus\{0\}\)</span> with <span class="math" data-tex="\(\|f(x)-g(x)\|&lt;\delta(x)\)">\(\|f(x)-g(x)\|&lt;\delta(x)\)</span>.</p>
+<p><em>Proof.</em> Choose a countable dense set <span class="math" data-tex="\(D\subset\mathbb R^N\)">\(D\subset\mathbb R^N\)</span> such that every collection of at most <span class="math" data-tex="\(N\)">\(N\)</span> distinct members is linearly independent. Construct it by visiting every member of a countable base of balls and choosing the next point outside the spans of all collections of at most <span class="math" data-tex="\(N-1\)">\(N-1\)</span> preceding points. At each finite stage there are only finitely many proper subspaces to avoid, and their union cannot contain an open ball.</p>
+<p>For each <span class="math" data-tex="\(y\)">\(y\)</span>, choose a neighborhood <span class="math" data-tex="\(V_y\)">\(V_y\)</span> on which
+<span class="math math-display" data-tex="\[
+\|g(x)-g(y)\|&lt;\delta(y)/8,\qquad \delta(x)&gt;\delta(y)/2.
+\]">\[
+\|g(x)-g(y)\|&lt;\delta(y)/8,\qquad \delta(x)&gt;\delta(y)/2.
+\]</span>
+Take a locally finite refinement <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> of multiplicity at most <span class="math" data-tex="\(d+1\)">\(d+1\)</span>, with <span class="math" data-tex="\(U_i\subset V_{y_i}\)">\(U_i\subset V_{y_i}\)</span>, and a subordinate partition <span class="math" data-tex="\((\rho_i)\)">\((\rho_i)\)</span>. Choose <span class="math" data-tex="\(v_i\in D\)">\(v_i\in D\)</span> with <span class="math" data-tex="\(\|v_i-g(y_i)\|&lt;\delta(y_i)/8\)">\(\|v_i-g(y_i)\|&lt;\delta(y_i)/8\)</span>, and set
+<span class="math math-display" data-tex="\[
+f(x)=\sum_i\rho_i(x)v_i.
+\]">\[
+f(x)=\sum_i\rho_i(x)v_i.
+\]</span>
+The sum is locally finite and hence continuous. For each active term, <span class="math" data-tex="\(\|v_i-g(x)\|&lt;\delta(x)/2\)">\(\|v_i-g(x)\|&lt;\delta(x)/2\)</span>, proving the approximation. At most <span class="math" data-tex="\(d+1\leq N\)">\(d+1\leq N\)</span> terms are active. After grouping equal <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, a vanishing value would be a nontrivial linear relation among at most <span class="math" data-tex="\(N\)">\(N\)</span> distinct members of <span class="math" data-tex="\(D\)">\(D\)</span>, with positive coefficients summing to one. That contradicts their independence. ∎</p>
+<p><strong>Lemma (A nowhere-zero perturbation of a section).</strong> Let <span class="math" data-tex="\(p:X\to B(H)\)">\(p:X\to B(H)\)</span> be a strongly continuous orthogonal projection with infinite-dimensional range at every point, where <span class="math" data-tex="\(X\)">\(X\)</span> is paracompact Hausdorff and <span class="math" data-tex="\(\dim X\leq d&lt;\infty\)">\(\dim X\leq d&lt;\infty\)</span>. Every continuous section <span class="math" data-tex="\(\eta(x)\in p_xH\)">\(\eta(x)\in p_xH\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> admit a continuous nowhere-zero section <span class="math" data-tex="\(s(x)\in p_xH\)">\(s(x)\in p_xH\)</span> with <span class="math" data-tex="\(\|s(x)-\eta(x)\|&lt;\varepsilon\)">\(\|s(x)-\eta(x)\|&lt;\varepsilon\)</span>.</p>
+<p><em>Proof.</em> Choose an integer <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(2r&gt;d\)">\(2r&gt;d\)</span>. At each point choose <span class="math" data-tex="\(r\)">\(r\)</span> orthonormal range vectors. Project those fixed vectors by <span class="math" data-tex="\(p_x\)">\(p_x\)</span>; their Gram matrix stays invertible nearby. Multiplication by its continuous inverse square root gives a continuous orthonormal <span class="math" data-tex="\(r\)">\(r\)</span>-frame on a neighborhood. Thus there is a locally finite cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> by such frame domains.</p>
+<p>Choose closed sets <span class="math" data-tex="\(F_i\subset U_i\)">\(F_i\subset U_i\)</span> covering <span class="math" data-tex="\(X\)">\(X\)</span>. Insert neighborhoods so that there are closed <span class="math" data-tex="\(G_i\subset U_i\)">\(G_i\subset U_i\)</span> and functions <span class="math" data-tex="\(0\leq\chi_i\leq1\)">\(0\leq\chi_i\leq1\)</span>, with <span class="math" data-tex="\(\chi_i=1\)">\(\chi_i=1\)</span> on <span class="math" data-tex="\(F_i\)">\(F_i\)</span> and <span class="math" data-tex="\(\operatorname{supp}\chi_i\subset\operatorname{int}G_i\)">\(\operatorname{supp}\chi_i\subset\operatorname{int}G_i\)</span>. All these families are locally finite. There is continuous <span class="math" data-tex="\(M:X\to[1,\infty)\)">\(M:X\to[1,\infty)\)</span> that bounds the number of <span class="math" data-tex="\(U_i\)">\(U_i\)</span> containing any point. To construct it, cover <span class="math" data-tex="\(X\)">\(X\)</span> by neighborhoods each meeting only finitely many <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, assign to each neighborhood a positive integer bounding that number, and average those integers with a subordinate partition of unity.</p>
+<p>Well-order the index set. We modify the section on one domain at a time. Before step <span class="math" data-tex="\(i\)">\(i\)</span>, let <span class="math" data-tex="\(t\)">\(t\)</span> be the current section, nonzero on the closed set <span class="math" data-tex="\(A_i=\bigcup_{j&lt;i}F_j\)">\(A_i=\bigcup_{j&lt;i}F_j\)</span>. This union is closed by local finiteness. Put <span class="math" data-tex="\(b(x)=\varepsilon/(2M(x))\)">\(b(x)=\varepsilon/(2M(x))\)</span>. Take a partition <span class="math" data-tex="\(\alpha+\beta=1\)">\(\alpha+\beta=1\)</span> subordinate to the two open sets <span class="math" data-tex="\(\{\|t\|&gt;0\}\)">\(\{\|t\|&gt;0\}\)</span> and <span class="math" data-tex="\(X\setminus A_i\)">\(X\setminus A_i\)</span>, respectively, and put
+<span class="math math-display" data-tex="\[
+\delta_i(x)=b(x)\left[
+\alpha(x)\min\left(1,\frac{\|t(x)\|}{2b(x)}\right)+\beta(x)\right].
+\]">\[
+\delta_i(x)=b(x)\left[
+\alpha(x)\min\left(1,\frac{\|t(x)\|}{2b(x)}\right)+\beta(x)\right].
+\]</span>
+This function is positive and continuous, at most <span class="math" data-tex="\(b\)">\(b\)</span>, and at most <span class="math" data-tex="\(\|t\|/2\)">\(\|t\|/2\)</span> on <span class="math" data-tex="\(A_i\)">\(A_i\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, the subordinate function <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is zero and <span class="math" data-tex="\(\beta=1\)">\(\beta=1\)</span>; if <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>, then <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span> and <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. These observations prove strict positivity.</p>
+<p>On <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, write <span class="math" data-tex="\(g_i\)">\(g_i\)</span> for the <span class="math" data-tex="\(r\)">\(r\)</span> complex frame coordinates of <span class="math" data-tex="\(t\)">\(t\)</span>, identified with a map to <span class="math" data-tex="\(\mathbb R^{2r}\)">\(\mathbb R^{2r}\)</span>. The preceding lemma, applied to the closed subspace <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, gives nonzero <span class="math" data-tex="\(f_i\)">\(f_i\)</span> with <span class="math" data-tex="\(\|f_i-g_i\|&lt;\delta_i\)">\(\|f_i-g_i\|&lt;\delta_i\)</span>. Add to <span class="math" data-tex="\(t\)">\(t\)</span> the section with frame coordinates <span class="math" data-tex="\(\chi_i(f_i-g_i)\)">\(\chi_i(f_i-g_i)\)</span>, extending it by zero outside <span class="math" data-tex="\(G_i\)">\(G_i\)</span>. Its support lies in <span class="math" data-tex="\(\operatorname{int}G_i\)">\(\operatorname{int}G_i\)</span>, so the extension is continuous. On <span class="math" data-tex="\(F_i\)">\(F_i\)</span> the new frame coordinates are <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, so the new section is nonzero. On <span class="math" data-tex="\(A_i\)">\(A_i\)</span> its change has norm less than <span class="math" data-tex="\(\|t\|/2\)">\(\|t\|/2\)</span>, preserving nonvanishing there.</p>
+<p>At a limit stage use the accumulated modifications. Near each point only finitely many domains occur, so this definition involves finitely many modifications locally and is continuous. The same observation justifies transfinite induction and gives a continuous final section <span class="math" data-tex="\(s\)">\(s\)</span>. Each point belongs to some <span class="math" data-tex="\(F_i\)">\(F_i\)</span>; after that step it stays nonzero through the finitely many subsequent modifications affecting it. Finally, if <span class="math" data-tex="\(k\)">\(k\)</span> modifications affect <span class="math" data-tex="\(x\)">\(x\)</span>, then <span class="math" data-tex="\(k\leq M(x)\)">\(k\leq M(x)\)</span>, and
+<span class="math math-display" data-tex="\[
+\|s(x)-\eta(x)\|&lt;k\,\frac{\varepsilon}{2M(x)}
+\leq\varepsilon/2&lt;\varepsilon.
+\]">\[
+\|s(x)-\eta(x)\|&lt;k\,\frac{\varepsilon}{2M(x)}
+\leq\varepsilon/2&lt;\varepsilon.
+\]</span>
+The case of no modifications has error zero. ∎</p>
+<p>Normalizing <span class="math" data-tex="\(s\)">\(s\)</span> gives a continuous unit section <span class="math" data-tex="\(\xi=s/\|s\|\)">\(\xi=s/\|s\|\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{dist}\bigl(\eta(x),\mathbb C\xi(x)\bigr)&lt;\varepsilon.
+\]">\[
+\operatorname{dist}\bigl(\eta(x),\mathbb C\xi(x)\bigr)&lt;\varepsilon.
+\]</span>
+This is exactly the approximation conclusion needed from Prokhorova's Lemma 6.2. Its proof is now contained in this lesson.</p>
+<p><strong>Lemma (A countable-total field inside a constant field).</strong> A continuous Hilbert field over a normal Hausdorff space, with a countable family of continuous sections total in each fibre, is isomorphic to the range field of a strongly continuous projection on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. The projection can be chosen with infinite-dimensional kernel at every point.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(D=C_b(X)\)">\(D=C_b(X)\)</span>. Replace each total section <span class="math" data-tex="\(s_n\)">\(s_n\)</span> by <span class="math" data-tex="\(s_n/(1+\|s_n(\cdot)\|)\)">\(s_n/(1+\|s_n(\cdot)\|)\)</span>. These are bounded continuous sections and remain total. Bounded continuous sections form a Hilbert <span class="math" data-tex="\(D\)">\(D\)</span>-module in their supremum norm: polarization makes their inner products continuous, and uniform limits are continuous by the field's local approximation axiom. Let <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> be the closed <span class="math" data-tex="\(D\)">\(D\)</span>-span of this countable family. It is countably generated even when <span class="math" data-tex="\(X\)">\(X\)</span> is not σ-compact. This auxiliary module need not contain every bounded section.</p>
+<p>Evaluation identifies its quotient fibre with <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. To prove the exact norm statement, let <span class="math" data-tex="\(v\in E&#x27;\)">\(v\in E&#x27;\)</span>. For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, continuity gives a neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> on which <span class="math" data-tex="\(\|v(y)\|&lt;\|v(x)\|+\varepsilon\)">\(\|v(y)\|&lt;\|v(x)\|+\varepsilon\)</span>. Normality supplies <span class="math" data-tex="\(0\leq b\leq1\)">\(0\leq b\leq1\)</span> in <span class="math" data-tex="\(C_b(X)\)">\(C_b(X)\)</span>, with <span class="math" data-tex="\(b(x)=1\)">\(b(x)=1\)</span> and support inside <span class="math" data-tex="\(U\)">\(U\)</span>. The vectors <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(bv\)">\(bv\)</span> have the same quotient class modulo <span class="math" data-tex="\(\overline{E&#x27;I_x}\)">\(\overline{E&#x27;I_x}\)</span>, where <span class="math" data-tex="\(I_x=\{f\in D:f(x)=0\}\)">\(I_x=\{f\in D:f(x)=0\}\)</span>, and <span class="math" data-tex="\(\|bv\|\leq\|v(x)\|+\varepsilon\)">\(\|bv\|\leq\|v(x)\|+\varepsilon\)</span>. Evaluation is contractive in the other direction. If <span class="math" data-tex="\(v(x)=0\)">\(v(x)=0\)</span>, the same construction makes <span class="math" data-tex="\(bv\)">\(bv\)</span> arbitrarily small and proves <span class="math" data-tex="\(v\in\overline{E&#x27;I_x}\)">\(v\in\overline{E&#x27;I_x}\)</span>. Thus the quotient has exactly the fibre norm. Its isometric image is closed and contains the total section values, so it is all of <span class="math" data-tex="\(H_x\)">\(H_x\)</span>.</p>
+<p>Apply <em>Kasparov's stabilization theorem</em>, Theorem 3.1, over the unital algebra <span class="math" data-tex="\(D\)">\(D\)</span>. A unitary <span class="math" data-tex="\(E&#x27;\oplus H_D\cong H_D\)">\(E&#x27;\oplus H_D\cong H_D\)</span> carries <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> onto <span class="math" data-tex="\(pH_D\)">\(pH_D\)</span> for an adjointable projection <span class="math" data-tex="\(p\)">\(p\)</span>. Evaluation gives <span class="math" data-tex="\(H_x\cong p_x\ell^2\)">\(H_x\cong p_x\ell^2\)</span>; the other summand gives <span class="math" data-tex="\((1-p_x)\ell^2\cong\ell^2\)">\((1-p_x)\ell^2\cong\ell^2\)</span>. For every coordinate vector <span class="math" data-tex="\(e_j\)">\(e_j\)</span>, <span class="math" data-tex="\(pe_j\in H_D\)">\(pe_j\in H_D\)</span> has continuous coefficient functions and uniformly convergent squared tails. Hence <span class="math" data-tex="\(x\mapsto p_xe_j\)">\(x\mapsto p_xe_j\)</span> is norm continuous. The bound <span class="math" data-tex="\(\|p_x\|\leq1\)">\(\|p_x\|\leq1\)</span> extends this to every vector, proving strong continuity.</p>
+<p>These fibre isometries preserve the full continuous-section structure. They carry the total <span class="math" data-tex="\(s_n\)">\(s_n\)</span> to continuous vector fields. At a point, approximate any given section value by a finite combination of the <span class="math" data-tex="\(s_n\)">\(s_n\)</span>; continuity of the error norm makes that approximation valid on a neighborhood. Conversely, a continuous vector field in <span class="math" data-tex="\(p_x\ell^2\)">\(p_x\ell^2\)</span> is locally approximable by finite combinations of those image sections by the same argument. The local approximation axiom in both fields proves continuity in both directions. ∎</p>
+<p><strong>Lemma (Lifting an infinite-rank projection).</strong> If <span class="math" data-tex="\(p:X\to B(\ell^2)\)">\(p:X\to B(\ell^2)\)</span> is a strongly continuous projection of infinite rank and corank over a paracompact Hausdorff space of finite covering dimension, there is a strongly continuous unitary <span class="math" data-tex="\(u_x\)">\(u_x\)</span> with <span class="math" data-tex="\(p_x=u_xp_0u_x^*\)">\(p_x=u_xp_0u_x^*\)</span>, for any fixed projection <span class="math" data-tex="\(p_0\)">\(p_0\)</span> of infinite rank and corank.</p>
+<p><em>Proof adapted from Prokhorova, Theorem 6.1.</em> Choose a dense sequence <span class="math" data-tex="\((h_n)\)">\((h_n)\)</span> in <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> whose every tail is dense; one explicit choice repeats the first <span class="math" data-tex="\(m\)">\(m\)</span> members of a fixed countable dense set for <span class="math" data-tex="\(m=1,2,\ldots\)">\(m=1,2,\ldots\)</span>. Starting with <span class="math" data-tex="\(p_1=p\)">\(p_1=p\)</span>, apply the unit-section approximation just proved to <span class="math" data-tex="\(p_nh_n\)">\(p_nh_n\)</span>, with error <span class="math" data-tex="\(1/n\)">\(1/n\)</span>. This gives a continuous unit vector <span class="math" data-tex="\(\xi_n(x)\in p_n(x)\ell^2\)">\(\xi_n(x)\in p_n(x)\ell^2\)</span>. Let <span class="math" data-tex="\(q_n(x)\)">\(q_n(x)\)</span> be the projection onto its span and set <span class="math" data-tex="\(p_{n+1}=p_n-q_n\)">\(p_{n+1}=p_n-q_n\)</span>. The bound
+<span class="math math-display" data-tex="\[
+\|q_n(x)-q_n(y)\|\leq2\|\xi_n(x)-\xi_n(y)\|
+\]">\[
+\|q_n(x)-q_n(y)\|\leq2\|\xi_n(x)-\xi_n(y)\|
+\]</span>
+shows norm continuity of <span class="math" data-tex="\(q_n\)">\(q_n\)</span>, and hence strong continuity of <span class="math" data-tex="\(p_{n+1}\)">\(p_{n+1}\)</span>. Removing finitely many lines preserves infinite rank. The vectors <span class="math" data-tex="\(\xi_n(x)\)">\(\xi_n(x)\)</span> are orthonormal, and
+<span class="math math-display" data-tex="\[
+\|p_{n+1}(x)h_n\|&lt;1/n.
+\]">\[
+\|p_{n+1}(x)h_n\|&lt;1/n.
+\]</span>
+For <span class="math" data-tex="\(v\in p_x\ell^2\)">\(v\in p_x\ell^2\)</span> and <span class="math" data-tex="\(L_x=\overline{\operatorname{span}}\{\xi_n(x)\}\)">\(L_x=\overline{\operatorname{span}}\{\xi_n(x)\}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{dist}(v,L_x)
+&amp;\leq\|v-p_xh_n\|+\|p_{n+1}(x)h_n\|\\
+&amp;\leq\|v-h_n\|+1/n.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\operatorname{dist}(v,L_x)
+&amp;\leq\|v-p_xh_n\|+\|p_{n+1}(x)h_n\|\\
+&amp;\leq\|v-h_n\|+1/n.
+\end{aligned}
+\]</span>
+Tail density makes the right side arbitrarily small, proving that these vectors form a basis of the range. Apply the same construction to <span class="math" data-tex="\(1-p\)">\(1-p\)</span>, obtaining a continuous orthonormal basis of its range.</p>
+<p>Map fixed orthonormal bases of <span class="math" data-tex="\(p_0\ell^2\)">\(p_0\ell^2\)</span> and <span class="math" data-tex="\((1-p_0)\ell^2\)">\((1-p_0)\ell^2\)</span> to the two constructed bases. This defines a unitary <span class="math" data-tex="\(u_x\)">\(u_x\)</span> with the stated projection identity. It is strongly continuous on finite combinations of the fixed basis vectors; the uniform bound <span class="math" data-tex="\(\|u_x\|=1\)">\(\|u_x\|=1\)</span> extends continuity to every vector. Its inverse is strongly continuous too, since for fixed <span class="math" data-tex="\(v\)">\(v\)</span>
+<span class="math math-display" data-tex="\[
+\|u_x^*v-u_{x_0}^*v\|=\|v-u_xu_{x_0}^*v\|\longrightarrow0.
+\]">\[
+\|u_x^*v-u_{x_0}^*v\|=\|v-u_xu_{x_0}^*v\|\longrightarrow0.
+\]</span>
+Thus <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u^*\)">\(u^*\)</span> preserve continuous vector sections. ∎</p>
+<p><strong>Theorem 7.4 (Dixmier–Douady triviality).</strong> A separable continuous field with every fibre of Hilbert dimension <span class="math" data-tex="\(\aleph_0\)">\(\aleph_0\)</span>, over a paracompact Hausdorff space of finite covering dimension, is unitarily isomorphic as a continuous field to the constant <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> field.</p>
+<p><em>Proof.</em> Paracompact patching gives normality. The countable-total-field lemma represents the field as <span class="math" data-tex="\(p_x\ell^2\)">\(p_x\ell^2\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> strongly continuous and of infinite rank and corank. The projection-lifting lemma identifies this range field with the constant range of <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. The unitary and its inverse preserve norm-continuous vector sections, and the representation lemma identifies exactly the prescribed section structures. Since <span class="math" data-tex="\(p_0\ell^2\cong\ell^2\)">\(p_0\ell^2\cong\ell^2\)</span>, this is the required continuous-field unitary. ∎</p>
+<p>For our locally compact <span class="math" data-tex="\(X\)">\(X\)</span>, the unitary preserves fibre norms and hence vanishing at infinity, giving <span class="math" data-tex="\(\Gamma_0(H)\cong C_0(X,\ell^2)\)">\(\Gamma_0(H)\cong C_0(X,\ell^2)\)</span>. In particular this applies to a countably generated field of infinite-dimensional fibres over a finite-dimensional compact Hausdorff space. Separability here is the countable-total-section condition; Example 7.2 explains why separable fibres alone do not suffice. Finite covering dimension is used in the finite-dimensional avoidance lemma, whereas stabilization itself needs no dimension bound. This concludes the CC BY 4.0 subsection.</p>
+<h3 id="the-continuous-trace-gluing-class">The continuous-trace gluing class</h3>
+<p>The Dixmier–Douady class is a different construction: it measures the scalar discrepancy in gluing local compact algebras. Its proof requires the imprimitivity and representation correspondence developed in the next lessons. After those prerequisites, <span class="unlinked"><em>The Rieffel correspondence and induced representations</em>, Section 8</span> constructs the class, proves its independence and integer cohomological degree, and proves the fixed-spectrum Morita classification and zero-class compact-module criterion. Thus the ordinary module–field dictionary and the triviality theorem are established here before the Morita application.</p>
+<h2 id="8-preview-fields-on-a-leaf-space">8. Preview: fields on a leaf space</h2>
+<p>For a foliation, the quotient of a manifold by its leaves can fail to be Hausdorff, so the preceding theorem cannot simply be applied to that quotient as <span class="math" data-tex="\(X\)">\(X\)</span>. Connes instead uses its holonomy groupoid: Hilbert spaces at points are linked by unitary maps along groupoid arrows, with compatible composition. Continuity is encoded by a chosen space of sections, using coefficients in the foliation C*-algebra and the half-density convention needed for convolution.</p>
+<p>For a compact foliated manifold, the precise written provider is <a href="../NCG-FOLIATIONS/hilbert-modules-and-fields-on-the-leaf-space.html"><em>Hilbert modules and fields on the leaf space</em>, Theorems 4.2, 4.7 and 4.8</a>, in <em>Foliations and their operator algebras</em>. It uses the reduced holonomy algebra, a countably generated module, half-density sections, a countable coefficient-norm-dense and fibre-total family, and relative closure among concrete measurable sections. Its full admissible column ideal and kernel-recovery convention are Lemmas 3.2–3.3 and 4.5–4.5a. Completion is after quotienting zero coefficient seminorm; it does not give pointwise values to every completed module element. The cited theorems prove both inverse constructions, including the section structure. This is a written draft; its header leaves independent checking unclaimed. Connes, Section 7, Theorem 3, is the original source. Unitary groupoid identifications alone do not specify the continuous sections. Here the analogy is the concrete one already proved: a coefficient algebra and its inner product jointly encode which vectors vary continuously. The groupoid construction and its analytic index will be studied separately.</p>
+<h2 id="9-exercises-with-solutions">9. Exercises with solutions</h2>
+<p><strong>Exercise 9.1 (Basic: a zero boundary fibre).</strong> Compute the fibres of <span class="math" data-tex="\(I=C_0((0,1])\)">\(I=C_0((0,1])\)</span> as a Hilbert <span class="math" data-tex="\(C([0,1])\)">\(C([0,1])\)</span>-module.</p>
+<p><em>Solution.</em> Identify <span class="math" data-tex="\(I\)">\(I\)</span> with continuous functions on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> zero at zero. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, evaluation is onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, by a cutoff with value one at <span class="math" data-tex="\(t\)">\(t\)</span>, and its null space is <span class="math" data-tex="\(\{b:b(t)=0\}\)">\(\{b:b(t)=0\}\)</span>. Proposition 2.1 gives <span class="math" data-tex="\(I_t=\mathbb C\)">\(I_t=\mathbb C\)</span>. At zero all functions have scalar norm zero, so <span class="math" data-tex="\(I_0=0\)">\(I_0=0\)</span>. The continuous sections are precisely the functions continuous on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span> whose values tend to zero at zero; their <span class="math" data-tex="\(C_0\)">\(C_0\)</span>-section module over the compact base is <span class="math" data-tex="\(I\)">\(I\)</span> itself. The jump obeys (5.3). ∎</p>
+<p><strong>Exercise 9.2 (Intermediate: finite rank).</strong> Prove that a field of constant finite rank is a vector bundle, and over a compact base has finite projective sections.</p>
+<p><em>Solution.</em> Lift a basis at a point to sections. The continuous Gram determinant remains positive on a neighborhood, and multiplying its column of sections by <span class="math" data-tex="\(G^{-1/2}\)">\(G^{-1/2}\)</span> gives an orthonormal local frame. Inner products with the frame are continuous coordinates, and continuous coordinates reconstruct continuous sections; thus these are local trivializations with continuous unitary transitions. Over a compact base choose finitely many frames and a partition <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> subordinate to their domains. The global vectors <span class="math" data-tex="\(\sqrt{\rho_i}u_j\)">\(\sqrt{\rho_i}u_j\)</span>, extended by zero, satisfy <span class="math" data-tex="\(\sum_{i,j}\theta_{\zeta_{ij},\zeta_{ij}}=1\)">\(\sum_{i,j}\theta_{\zeta_{ij},\zeta_{ij}}=1\)</span>. Their analysis map identifies the section module with the range of its Gram projection in a finite free module. This gives the claimed finite projective module, with no infinite-dimensional triviality theorem involved. ∎</p>
+<p><strong>Exercise 9.3 (Intermediate: the compact-field axioms).</strong> Show that <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is the algebra of the continuous field <span class="math" data-tex="\(\mathcal K(E_x)\)">\(\mathcal K(E_x)\)</span> in the sense of Blackadar IV.1.6.1.</p>
+<p><em>Solution.</em> Formula (4.1) gives pointwise values. Sums, products and adjoints of finite ranks remain finite ranks; their norms are continuous by the Gram formula (4.2) and vanish at infinity by the rank-one estimate. Norm limits preserve these properties. Evaluation is onto because every fibre vector is a section value, and the closed homomorphic image contains all fibre rank ones. Finally a section locally approximable by compact sections and vanishing at infinity can be patched on its compact norm-level sets using (1.2). Absorbing the scalar weights into the first rank-one vectors produces global module compacts approaching it uniformly. This proves local uniform closure and all the required axioms. Zero fibres give a nonfull continuous field in Blackadar's terminology. ∎</p>
+<p><strong>Exercise 9.4 (Advanced: construct a jump).</strong> Construct a continuous Hilbert field on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> with nonconstant fibre dimension, and describe its module.</p>
+<p><em>Solution.</em> Use <span class="math" data-tex="\(E=C([0,1])\oplus I\)">\(E=C([0,1])\oplus I\)</span> from (6.1). Its fibres have dimension one at zero and two elsewhere. A section is a pair <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> with <span class="math" data-tex="\(a\)">\(a\)</span> continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> continuous on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>, and <span class="math" data-tex="\(b(t)\to0\)">\(b(t)\to0\)</span> at zero. The module operations are pointwise, and
+<span class="math" data-tex="\(\langle(a,b),(c,d)\rangle=\overline a c+\overline b d\)">\(\langle(a,b),(c,d)\rangle=\overline a c+\overline b d\)</span>.
+These functions are continuous at zero, and the supremum norm is complete, so this is precisely <span class="math" data-tex="\(C([0,1])\oplus C_0((0,1])\)">\(C([0,1])\oplus C_0((0,1])\)</span>. The local approximation description in Theorem 2.2 supplies the continuous-field axioms. Proposition 5.2 rules out the reversed pattern with two-dimensional fibre only at zero and one-dimensional fibres nearby. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The cutoff and finite-partition lemma in Section 5 of <em>Finite projective modules, frames and K₀</em> supplies the locally compact topology used here. Functional calculus is the exact foundation provider identified in the first Hilbert-module lesson. The module prerequisites supply Cauchy–Schwarz, tensor fibres, closedness of C*-homomorphic images, and the frame projection [<em>Finite projective modules, frames and K₀</em>, Theorem 1.2]. Stabilization and full amplification were proved in the stabilization lesson [Theorems 3.1 and 4.2].</p>
+<p>Theorem 7.4 includes the countable-total-field reduction and complete projection-lifting argument. The preceding lemmas prove paracompact patching, finite-dimensional avoidance and the unit-section approximation, so neither Michael selection nor an external proof link is a required input. The projection proof retains Prokhorova’s credit and CC BY 4.0 licence. The continuous-trace gluing class and its classification are proved after their algebraic prerequisites in <em>The Rieffel correspondence and induced representations</em>, Section 8. The references retain credit for the classical theory. The groupoid-field correspondence has the exact written programme provider and full section conventions stated in Section 8; Connes remains the historical credit. No measurable direct-integral theory or elliptic groupoid calculus is used to prove the ordinary module–field dictionary.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, “A survey of foliations and operator algebras,” <em>Proceedings of Symposia in Pure Mathematics</em> 38, Part I (1982), 521–628, Section 7, “C* modules over C*(V,F) and continuous fields of Hilbert spaces on V/F,” especially Theorem 3. <a href="https://alainconnes.org/wp-content/uploads/foliationsfine.pdf">Author's text</a>.</p>
+<p>[Blackadar 2006] Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">author's revised version</a>, IV.1.6 and IV.1.7.</p>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Section 13.6. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+<p>[Dixmier–Douady] Jacques Dixmier and Adrien Douady, “Champs continus d'espaces hilbertiens et de C*-algèbres,” <em>Bulletin de la Société Mathématique de France</em> 91 (1963), 227–284, Definition 6 and Section 15, Theorem 5. <a href="https://numdam.org/articles/10.24033/bsmf.1596/">Original article</a>.</p>
+<p>[Prokhorova] Marina Prokhorova, <a href="https://ems.press/content/serial-article-files/52400?nt=1">“From graph to Riesz continuity”</a>, <em>Zeitschrift für Analysis und ihre Anwendungen</em> 45 (2026), 1–28, Theorem 6.1 and Lemma 6.2, pp.21–22. ©2025 European Mathematical Society, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; the attributed adaptation and its changes are identified in Section 7.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="unbounded-regular-operators.html">← Unbounded regular operators</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="completely-positive-maps-and-the-ksgns-construction.html">Completely positive maps and the KSGNS construction →</a></span></nav>
+<p class="small source-link"><a href="src/continuous-fields-over-locally-compact-spaces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/hilbert-c-star-modules-and-morita-equivalence">Repository</a></nav>
+</footer>
+</body>
+</html>

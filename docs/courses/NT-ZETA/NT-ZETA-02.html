@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting primes by elementary means: Chebyshev and Mertens · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="counting-primes-by-elementary-means-chebyshev-and-mertens">Counting primes by elementary means: Chebyshev and Mertens</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, Ultra. Public domain (CC0).</em></p>
+<p>How much can we learn about primes before locating any zeros of zeta? A factorial already contains enough information to determine the scale of prime counting. A second use of the same information determines averages over primes, including the precise constant in Mertens's product. These elementary estimates will later control the errors in complex integration.</p>
+<p>We use unique factorization, Möbius inversion and elementary real analysis, together with summation by parts and the pole of zeta proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>. The free comparison source is Koukoulopoulos’s author preliminary version listed below. All the prime-counting results needed here are proved below. The prime number theorem itself belongs to the later lesson <em>The prime number theorem</em>; here we prove the equivalence of its different formulations.</p>
+<p>Throughout, <span class="math" data-tex="$p$">$p$</span> denotes a prime, and all logarithms are natural. For real <span class="math" data-tex="$x\ge1$">$x\ge1$</span>, put</p>
+<span class="math math-display" data-tex="$$\pi(x)=\sum_{p\le x}1,\qquad
+\theta(x)=\sum_{p\le x}\log p,\qquad
+\psi(x)=\sum_{n\le x}\Lambda(n).
+$$">$$\pi(x)=\sum_{p\le x}1,\qquad
+\theta(x)=\sum_{p\le x}\log p,\qquad
+\psi(x)=\sum_{n\le x}\Lambda(n).
+$$</span>
+<p>The function <span class="math" data-tex="$\Lambda$">$\Lambda$</span> equals <span class="math" data-tex="$\log p$">$\log p$</span> at <span class="math" data-tex="$p^k$">$p^k$</span>, <span class="math" data-tex="$k\ge1$">$k\ge1$</span>, and is zero elsewhere. Thus <span class="math" data-tex="$\theta$">$\theta$</span> counts primes with a logarithmic weight, while <span class="math" data-tex="$\psi$">$\psi$</span> also counts their powers. We write <span class="math" data-tex="$f\asymp g$">$f\asymp g$</span> when positive constant multiples of <span class="math" data-tex="$g$">$g$</span> bound <span class="math" data-tex="$f$">$f$</span> above and below for all sufficiently large arguments. The notation <span class="math" data-tex="$f\sim g$">$f\sim g$</span> means <span class="math" data-tex="$f/g\to1$">$f/g\to1$</span>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-from-discrete-weights-to-integrals">1. From discrete weights to integrals</h2>
+<p>The cumulative sum is often easier to estimate than individual coefficients. Summation by parts lets us change the weight without losing that information.</p>
+<p><strong>Lemma 1.1 (partial summation).</strong> Let <span class="math" data-tex="$a(n)$">$a(n)$</span> be complex numbers and <span class="math" data-tex="$A(t)=\sum_{n\le t}a(n)$">$A(t)=\sum_{n\le t}a(n)$</span>. For real <span class="math" data-tex="$1\le y\le x$">$1\le y\le x$</span> and <span class="math" data-tex="$f\in C^1([y,x])$">$f\in C^1([y,x])$</span>,</p>
+<span class="math math-display" data-tex="$$\sum_{y&lt;n\le x}a(n)f(n)
+=A(x)f(x)-A(y)f(y)-\int_y^x A(t)f&#x27;(t)\,dt.
+$$">$$\sum_{y&lt;n\le x}a(n)f(n)
+=A(x)f(x)-A(y)f(y)-\int_y^x A(t)f&#x27;(t)\,dt.
+$$</span>
+<p>Equivalently, the sum is the Riemann--Stieltjes integral <span class="math" data-tex="$\int_{(y,x]}f\,dA$">$\int_{(y,x]}f\,dA$</span>. The half-open interval specifies the endpoint convention, even when <span class="math" data-tex="$y$">$y$</span> or <span class="math" data-tex="$x$">$x$</span> is an integer.</p>
+<p><em>Proof.</em> Apply the finite summation-by-parts argument of the preceding lesson to the integers in <span class="math" data-tex="$(y,x]$">$(y,x]$</span>. Explicitly, write <span class="math" data-tex="$f(n)=f(x)-\int_n^x f&#x27;(t)\,dt$">$f(n)=f(x)-\int_n^x f&#x27;(t)\,dt$</span>. The coefficient of <span class="math" data-tex="$f(x)$">$f(x)$</span> is <span class="math" data-tex="$A(x)-A(y)$">$A(x)-A(y)$</span>, and the inner sum in the integral is <span class="math" data-tex="$A(t)-A(y)$">$A(t)-A(y)$</span>. Expanding and using <span class="math" data-tex="$\int_y^x f&#x27;=f(x)-f(y)$">$\int_y^x f&#x27;=f(x)-f(y)$</span> gives the formula. The Stieltjes measure <span class="math" data-tex="$dA$">$dA$</span> has mass <span class="math" data-tex="$a(n)$">$a(n)$</span> at each integer, so its integral over <span class="math" data-tex="$(y,x]$">$(y,x]$</span> is precisely the finite sum. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>We can also include the mass at the left endpoint by using <span class="math" data-tex="$A(y^-)$">$A(y^-)$</span> instead of <span class="math" data-tex="$A(y)$">$A(y)$</span>. For primes this gives, for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,</p>
+<span class="math math-display" data-tex="$$\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(t)}{t\log^2t}\,dt,\tag{1}
+$$">$$\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(t)}{t\log^2t}\,dt,\tag{1}
+$$</span>
+<p>and</p>
+<span class="math math-display" data-tex="$$\theta(x)=\pi(x)\log x-\int_2^x\frac{\pi(t)}t\,dt.\tag{2}
+$$">$$\theta(x)=\pi(x)\log x-\int_2^x\frac{\pi(t)}t\,dt.\tag{2}
+$$</span>
+<p>Indeed, take respectively <span class="math" data-tex="$a(p)=\log p$">$a(p)=\log p$</span>, <span class="math" data-tex="$f(t)=1/\log t$">$f(t)=1/\log t$</span>, and <span class="math" data-tex="$a(p)=1$">$a(p)=1$</span>, <span class="math" data-tex="$f(t)=\log t$">$f(t)=\log t$</span>, with zero coefficients at composites. In both cases the cumulative sum is zero at <span class="math" data-tex="$2^-$">$2^-$</span>, so there is no lower boundary term.</p>
+<p><strong>Lemma 1.2 (the size of a factorial).</strong> For real <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,</p>
+<span class="math math-display" data-tex="$$\log(\lfloor x\rfloor!)=x\log x-x+O(\log x).\tag{3}$$">$$\log(\lfloor x\rfloor!)=x\log x-x+O(\log x).\tag{3}$$</span>
+<p><em>Proof.</em> Write <span class="math" data-tex="$N=\lfloor x\rfloor$">$N=\lfloor x\rfloor$</span>. Since <span class="math" data-tex="$\log t$">$\log t$</span> is increasing,</p>
+<span class="math math-display" data-tex="$$\int_1^N\log t\,dt\le\sum_{n=2}^N\log n
+\le\int_1^N\log t\,dt+\log N.
+$$">$$\int_1^N\log t\,dt\le\sum_{n=2}^N\log n
+\le\int_1^N\log t\,dt+\log N.
+$$</span>
+<p>The integral is <span class="math" data-tex="$N\log N-N+1$">$N\log N-N+1$</span>. The derivative of <span class="math" data-tex="$t\log t-t$">$t\log t-t$</span> is <span class="math" data-tex="$\log t$">$\log t$</span>, so replacing <span class="math" data-tex="$N$">$N$</span> by <span class="math" data-tex="$x$">$x$</span> costs at most <span class="math" data-tex="$\log x$">$\log x$</span>. This proves (3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is the precision of Stirling's estimate we need for elementary prime counting. The later lesson on the Gamma function gives the sharper formula and its constant.</p>
+<h2 id="2-a-binomial-coefficient-measures-primes">2. A binomial coefficient measures primes</h2>
+<p>Consider the integer <span class="math" data-tex="$\binom{2n}{n}$">$\binom{2n}{n}$</span>. Every prime between <span class="math" data-tex="$n$">$n$</span> and <span class="math" data-tex="$2n$">$2n$</span> divides it. Conversely, no prime contributes more than the largest power of that prime below <span class="math" data-tex="$2n$">$2n$</span>. These two observations give opposite counting bounds.</p>
+<p><strong>Theorem 2.1 (Chebyshev's bounds).</strong> For <span class="math" data-tex="$x\ge1$">$x\ge1$</span>,</p>
+<span class="math math-display" data-tex="$$\theta(x)&lt;(2\log2)x.\tag{4}$$">$$\theta(x)&lt;(2\log2)x.\tag{4}$$</span>
+<p>For <span class="math" data-tex="$x\ge2$">$x\ge2$</span> there is an absolute constant <span class="math" data-tex="$C$">$C$</span> such that</p>
+<span class="math math-display" data-tex="$$\psi(x)\ge(\log2)x-C\log x.\tag{5}$$">$$\psi(x)\ge(\log2)x-C\log x.\tag{5}$$</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="$$\psi(x)-\theta(x)=O(\sqrt x),\qquad
+\theta(x)\asymp\psi(x)\asymp x,\qquad
+\pi(x)\asymp\frac{x}{\log x}.\tag{6}$$">$$\psi(x)-\theta(x)=O(\sqrt x),\qquad
+\theta(x)\asymp\psi(x)\asymp x,\qquad
+\pi(x)\asymp\frac{x}{\log x}.\tag{6}$$</span>
+<p><em>Proof.</em> We first prove a bound for the product <span class="math" data-tex="$P(N)=\prod_{p\le N}p$">$P(N)=\prod_{p\le N}p$</span> by strong induction on the positive integer <span class="math" data-tex="$N$">$N$</span>. The bound is <span class="math" data-tex="$P(N)&lt;4^N$">$P(N)&lt;4^N$</span>; it holds at <span class="math" data-tex="$N=1,2$">$N=1,2$</span>. If <span class="math" data-tex="$N=2m\ge4$">$N=2m\ge4$</span>, this even integer is composite, so <span class="math" data-tex="$P(2m)=P(2m-1)&lt;4^{2m-1}&lt;4^{2m}$">$P(2m)=P(2m-1)&lt;4^{2m-1}&lt;4^{2m}$</span>. If <span class="math" data-tex="$N=2m+1$">$N=2m+1$</span>, every prime in <span class="math" data-tex="$(m+1,2m+1]$">$(m+1,2m+1]$</span> divides <span class="math" data-tex="$\binom{2m+1}{m}$">$\binom{2m+1}{m}$</span>: it occurs in the numerator <span class="math" data-tex="$(m+2)\cdots(2m+1)$">$(m+2)\cdots(2m+1)$</span> and not in <span class="math" data-tex="$m!$">$m!$</span>. The two equal central entries of row <span class="math" data-tex="$2m+1$">$2m+1$</span> of Pascal's triangle have sum strictly less than the sum of the whole row. Therefore</p>
+<span class="math math-display" data-tex="$$\binom{2m+1}{m}&lt;2^{2m}=4^m,$$">$$\binom{2m+1}{m}&lt;2^{2m}=4^m,$$</span>
+<p>and</p>
+<span class="math math-display" data-tex="$$P(2m+1)\le P(m+1)\binom{2m+1}{m}&lt;4^{m+1}4^m=4^{2m+1}.$$">$$P(2m+1)\le P(m+1)\binom{2m+1}{m}&lt;4^{m+1}4^m=4^{2m+1}.$$</span>
+<p>This closes the induction. Taking logarithms and putting <span class="math" data-tex="$N=\lfloor x\rfloor$">$N=\lfloor x\rfloor$</span> proves (4).</p>
+<p>For a prime <span class="math" data-tex="$p$">$p$</span>, counting the multiples of <span class="math" data-tex="$p^k$">$p^k$</span> in a factorial gives</p>
+<span class="math math-display" data-tex="$$v_p(n!)=\sum_{k\ge1}\left\lfloor\frac n{p^k}\right\rfloor.$$">$$v_p(n!)=\sum_{k\ge1}\left\lfloor\frac n{p^k}\right\rfloor.$$</span>
+<p>Consequently,</p>
+<span class="math math-display" data-tex="$$v_p\binom{2n}{n}
+=\sum_{k\ge1}\left(\left\lfloor\frac{2n}{p^k}\right\rfloor
+-2\left\lfloor\frac n{p^k}\right\rfloor\right).
+$$">$$v_p\binom{2n}{n}
+=\sum_{k\ge1}\left(\left\lfloor\frac{2n}{p^k}\right\rfloor
+-2\left\lfloor\frac n{p^k}\right\rfloor\right).
+$$</span>
+<p>Each summand is <span class="math" data-tex="$0$">$0$</span> or <span class="math" data-tex="$1$">$1$</span>, and vanishes if <span class="math" data-tex="$p^k&gt;2n$">$p^k&gt;2n$</span>. Multiplying by <span class="math" data-tex="$\log p$">$\log p$</span> and summing over primes gives</p>
+<span class="math math-display" data-tex="$$\log\binom{2n}{n}\le\sum_{p^k\le2n}\log p=\psi(2n).$$">$$\log\binom{2n}{n}\le\sum_{p^k\le2n}\log p=\psi(2n).$$</span>
+<p>The central entry is the largest of the <span class="math" data-tex="$2n+1$">$2n+1$</span> binomial coefficients, whose sum is <span class="math" data-tex="$4^n$">$4^n$</span>. Hence</p>
+<span class="math math-display" data-tex="$$\psi(2n)\ge2n\log2-\log(2n+1).$$">$$\psi(2n)\ge2n\log2-\log(2n+1).$$</span>
+<p>For arbitrary real <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, take <span class="math" data-tex="$n=\lfloor x/2\rfloor$">$n=\lfloor x/2\rfloor$</span> and use monotonicity of <span class="math" data-tex="$\psi$">$\psi$</span>. Since <span class="math" data-tex="$0\le x-2n&lt;2$">$0\le x-2n&lt;2$</span>, this proves (5).</p>
+<p>Now regroup the prime powers:</p>
+<span class="math math-display" data-tex="$$\psi(x)=\sum_{1\le k\le\log x/\log2}\theta(x^{1/k}).\tag{7}$$">$$\psi(x)=\sum_{1\le k\le\log x/\log2}\theta(x^{1/k}).\tag{7}$$</span>
+<p>Terms with <span class="math" data-tex="$x^{1/k}&lt;2$">$x^{1/k}&lt;2$</span> are zero. Set <span class="math" data-tex="$c=2\log2$">$c=2\log2$</span>. The term with <span class="math" data-tex="$k=2$">$k=2$</span> is at most <span class="math" data-tex="$c\sqrt x$">$c\sqrt x$</span>. Every term with <span class="math" data-tex="$k\ge3$">$k\ge3$</span> is at most <span class="math" data-tex="$cx^{1/3}$">$cx^{1/3}$</span>, and there are at most <span class="math" data-tex="$\log x/\log2$">$\log x/\log2$</span> such terms. Thus</p>
+<span class="math math-display" data-tex="$$0\le\psi(x)-\theta(x)
+\le c\sqrt x+2x^{1/3}\log x.\tag{8}$$">$$0\le\psi(x)-\theta(x)
+\le c\sqrt x+2x^{1/3}\log x.\tag{8}$$</span>
+<p>Because <span class="math" data-tex="$x^{-1/6}\log x$">$x^{-1/6}\log x$</span> is bounded on <span class="math" data-tex="$[2,\infty)$">$[2,\infty)$</span>, the right side is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. Equations (4), (5) and (8) imply upper and lower bounds proportional to <span class="math" data-tex="$x$">$x$</span> for both <span class="math" data-tex="$\theta$">$\theta$</span> and <span class="math" data-tex="$\psi$">$\psi$</span>, after increasing a fixed threshold if necessary.</p>
+<p>For the lower bound on <span class="math" data-tex="$\pi$">$\pi$</span>, use <span class="math" data-tex="$\theta(x)\le\pi(x)\log x$">$\theta(x)\le\pi(x)\log x$</span>. For the upper bound, there are at most <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span> primes up to <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span>, and every larger prime contributes at least <span class="math" data-tex="$\tfrac12\log x$">$\tfrac12\log x$</span> to <span class="math" data-tex="$\theta(x)$">$\theta(x)$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$\pi(x)\le\sqrt x+\frac{2\theta(x)}{\log x}
+\ll\frac{x}{\log x}.$$">$$\pi(x)\le\sqrt x+\frac{2\theta(x)}{\log x}
+\ll\frac{x}{\log x}.$$</span>
+<p>Together these inequalities prove (6). The constants can be enlarged to include all <span class="math" data-tex="$x\ge2$">$x\ge2$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The theorem determines the scale of prime counting. It does not show that the ratio <span class="math" data-tex="$\psi(x)/x$">$\psi(x)/x$</span> tends to a limit. In particular, a two-sided comparison cannot be replaced by an asymptotic equality.</p>
+<h3 id="worked-example-the-prime-product-induction">Worked example: the prime product induction</h3>
+<p>For <span class="math" data-tex="$N\le20$">$N\le20$</span>, the product in the induction changes only at a prime:</p>
+<table>
+<thead>
+<tr>
+<th>Range of <span class="math" data-tex="$N$">$N$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$P(N)$">$P(N)$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="$1$">$1$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$1$">$1$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$2$">$2$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$2$">$2$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$3\le N\le4$">$3\le N\le4$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$6$">$6$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$5\le N\le6$">$5\le N\le6$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$30$">$30$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$7\le N\le10$">$7\le N\le10$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$210$">$210$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$11\le N\le12$">$11\le N\le12$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$2310$">$2310$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$13\le N\le16$">$13\le N\le16$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$30030$">$30030$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$17\le N\le18$">$17\le N\le18$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$510510$">$510510$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$19\le N\le20$">$19\le N\le20$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$9699690$">$9699690$</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example, at <span class="math" data-tex="$N=7$">$N=7$</span>, the induction uses <span class="math" data-tex="$P(4)=6$">$P(4)=6$</span> and <span class="math" data-tex="$\binom73=35$">$\binom73=35$</span>, whose product is <span class="math" data-tex="$210$">$210$</span>. At <span class="math" data-tex="$N=8$">$N=8$</span>, no new prime is introduced. The proof controls the whole product, without requiring an estimate for the number of primes in each individual interval.</p>
+<h2 id="3-factorials-determine-reciprocal-prime-averages">3. Factorials determine reciprocal prime averages</h2>
+<p>The convolution identity <span class="math" data-tex="$\log n=\sum_{d\mid n}\Lambda(d)$">$\log n=\sum_{d\mid n}\Lambda(d)$</span> from the preceding lesson gives an exact factorial identity:</p>
+<span class="math math-display" data-tex="$$\log(\lfloor x\rfloor!)
+=\sum_{n\le x}\Lambda(n)\left\lfloor\frac xn\right\rfloor.\tag{9}$$">$$\log(\lfloor x\rfloor!)
+=\sum_{n\le x}\Lambda(n)\left\lfloor\frac xn\right\rfloor.\tag{9}$$</span>
+<p>The error in replacing a floor by its argument is small here because Chebyshev's theorem already bounds the total weight <span class="math" data-tex="$\psi(x)$">$\psi(x)$</span>.</p>
+<p><strong>Theorem 3.1 (Mertens's weighted estimates).</strong> For <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,</p>
+<span class="math math-display" data-tex="$$\sum_{n\le x}\frac{\Lambda(n)}n=\log x+O(1),\tag{10}$$">$$\sum_{n\le x}\frac{\Lambda(n)}n=\log x+O(1),\tag{10}$$</span>
+<span class="math math-display" data-tex="$$A(x):=\sum_{p\le x}\frac{\log p}p=\log x+O(1).\tag{11}$$">$$A(x):=\sum_{p\le x}\frac{\log p}p=\log x+O(1).\tag{11}$$</span>
+<p>There is a real constant <span class="math" data-tex="$M$">$M$</span> such that</p>
+<span class="math math-display" data-tex="$$B(x):=\sum_{p\le x}\frac1p
+=\log\log x+M+O(1/\log x).\tag{12}$$">$$B(x):=\sum_{p\le x}\frac1p
+=\log\log x+M+O(1/\log x).\tag{12}$$</span>
+<p><em>Proof.</em> In (9), <span class="math" data-tex="$|\lfloor x/n\rfloor-x/n|&lt;1$">$|\lfloor x/n\rfloor-x/n|&lt;1$</span> and <span class="math" data-tex="$\Lambda(n)\ge0$">$\Lambda(n)\ge0$</span>. Thus</p>
+<span class="math math-display" data-tex="$$\log(\lfloor x\rfloor!)
+=x\sum_{n\le x}\frac{\Lambda(n)}n+O(\psi(x))
+=x\sum_{n\le x}\frac{\Lambda(n)}n+O(x).
+$$">$$\log(\lfloor x\rfloor!)
+=x\sum_{n\le x}\frac{\Lambda(n)}n+O(\psi(x))
+=x\sum_{n\le x}\frac{\Lambda(n)}n+O(x).
+$$</span>
+<p>Apply (3) and divide by <span class="math" data-tex="$x$">$x$</span> to get (10). The contribution from higher prime powers is bounded independently of <span class="math" data-tex="$x$">$x$</span>, since</p>
+<span class="math math-display" data-tex="$$\sum_p\sum_{k\ge2}\frac{\log p}{p^k}
+=\sum_p\frac{\log p}{p(p-1)}
+\le\sum_{n\ge2}\frac{\log n}{n(n-1)}&lt;\infty.
+$$">$$\sum_p\sum_{k\ge2}\frac{\log p}{p^k}
+=\sum_p\frac{\log p}{p(p-1)}
+\le\sum_{n\ge2}\frac{\log n}{n(n-1)}&lt;\infty.
+$$</span>
+<p>Subtracting it proves (11).</p>
+<p>Write <span class="math" data-tex="$E(x)=A(x)-\log x$">$E(x)=A(x)-\log x$</span>, which is bounded for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>. Partial summation, including the prime <span class="math" data-tex="$2$">$2$</span>, yields</p>
+<span class="math math-display" data-tex="$$B(x)=\frac{A(x)}{\log x}
++\int_2^x\frac{A(t)}{t\log^2t}\,dt
+=\log\log x+1-\log\log2
++\frac{E(x)}{\log x}
++\int_2^x\frac{E(t)}{t\log^2t}\,dt.
+$$">$$B(x)=\frac{A(x)}{\log x}
++\int_2^x\frac{A(t)}{t\log^2t}\,dt
+=\log\log x+1-\log\log2
++\frac{E(x)}{\log x}
++\int_2^x\frac{E(t)}{t\log^2t}\,dt.
+$$</span>
+<p>The integral with <span class="math" data-tex="$E$">$E$</span> converges absolutely at infinity. Define</p>
+<span class="math math-display" data-tex="$$M=1-\log\log2+\int_2^\infty\frac{E(t)}{t\log^2t}\,dt.$$">$$M=1-\log\log2+\int_2^\infty\frac{E(t)}{t\log^2t}\,dt.$$</span>
+<p>The difference from this limiting constant is bounded by</p>
+<span class="math math-display" data-tex="$$\frac{|E(x)|}{\log x}
++\int_x^\infty\frac{|E(t)|}{t\log^2t}\,dt
+\ll\frac1{\log x}.
+$$">$$\frac{|E(x)|}{\log x}
++\int_x^\infty\frac{|E(t)|}{t\log^2t}\,dt
+\ll\frac1{\log x}.
+$$</span>
+<p>This proves (12). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The definition of <span class="math" data-tex="$M$">$M$</span> by a bounded-error integral proves its existence. To identify it in terms of primes and Euler's constant, we must connect a sharp cutoff to the smoothed sum encoded by zeta. That connection requires keeping a constant which disappears if both sums are estimated only up to <span class="math" data-tex="$O(1)$">$O(1)$</span>.</p>
+<h2 id="4-exponential-smoothing-and-euler-s-constant">4. Exponential smoothing and Euler's constant</h2>
+<p>We need one real integral. It will also explain why Euler's constant, rather than an arbitrary constant, appears in a prime product.</p>
+<p><strong>Lemma 4.1.</strong> With <span class="math" data-tex="$\gamma=\lim_{N\to\infty}(H_N-\log N)$">$\gamma=\lim_{N\to\infty}(H_N-\log N)$</span> and <span class="math" data-tex="$H_N=\sum_{j=1}^N1/j$">$H_N=\sum_{j=1}^N1/j$</span>,</p>
+<span class="math math-display" data-tex="$$\int_0^\infty e^{-u}\log u\,du=-\gamma.\tag{13}$$">$$\int_0^\infty e^{-u}\log u\,du=-\gamma.\tag{13}$$</span>
+<p><em>Proof.</em> For every positive integer <span class="math" data-tex="$N$">$N$</span>, integration by parts gives</p>
+<span class="math math-display" data-tex="$$\int_0^1(1-v)^N\log v\,dv
+=-\frac1{N+1}\int_0^1\frac{1-(1-v)^{N+1}}v\,dv
+=-\frac{H_{N+1}}{N+1}.
+$$">$$\int_0^1(1-v)^N\log v\,dv
+=-\frac1{N+1}\int_0^1\frac{1-(1-v)^{N+1}}v\,dv
+=-\frac{H_{N+1}}{N+1}.
+$$</span>
+<p>For the integration by parts, use the primitive <span class="math" data-tex="$[1-(1-v)^{N+1}]/(N+1)$">$[1-(1-v)^{N+1}]/(N+1)$</span>, which is zero at <span class="math" data-tex="$v=0$">$v=0$</span>. Its product with <span class="math" data-tex="$\log v$">$\log v$</span> tends to zero there. For the last equality put <span class="math" data-tex="$w=1-v$">$w=1-v$</span> and use <span class="math" data-tex="$1+w+\cdots+w^N$">$1+w+\cdots+w^N$</span>.</p>
+<p>Changing variables <span class="math" data-tex="$u=Nv$">$u=Nv$</span> now gives</p>
+<span class="math math-display" data-tex="$$\int_0^N(1-u/N)^N\log u\,du
+=\frac N{N+1}(\log N-H_{N+1}).
+$$">$$\int_0^N(1-u/N)^N\log u\,du
+=\frac N{N+1}(\log N-H_{N+1}).
+$$</span>
+<p>Extend the integrand by zero for <span class="math" data-tex="$u&gt;N$">$u&gt;N$</span>. Its absolute value is bounded by <span class="math" data-tex="$e^{-u}|\log u|$">$e^{-u}|\log u|$</span>, because <span class="math" data-tex="$(1-u/N)^N\le e^{-u}$">$(1-u/N)^N\le e^{-u}$</span> on <span class="math" data-tex="$[0,N]$">$[0,N]$</span>. This bound is integrable on <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span>: <span class="math" data-tex="$|\log u|$">$|\log u|$</span> is integrable at zero and exponential decay controls infinity. Pointwise convergence and dominated convergence show that the left side tends to the integral in (13). The right side tends to <span class="math" data-tex="$-\gamma$">$-\gamma$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 4.2 (Mertens's product and its constant).</strong> The constant in (12) is</p>
+<span class="math math-display" data-tex="$$M=\gamma+\sum_p\left(\log(1-1/p)+1/p\right),\tag{14}$$">$$M=\gamma+\sum_p\left(\log(1-1/p)+1/p\right),\tag{14}$$</span>
+<p>where the series is absolutely convergent. Moreover, for <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,</p>
+<span class="math math-display" data-tex="$$\prod_{p\le x}(1-1/p)
+=\frac{e^{-\gamma}}{\log x}
+\left(1+O(1/\log x)\right).\tag{15}$$">$$\prod_{p\le x}(1-1/p)
+=\frac{e^{-\gamma}}{\log x}
+\left(1+O(1/\log x)\right).\tag{15}$$</span>
+<p><em>Proof.</em> For <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>, partial summation and <span class="math" data-tex="$B(t)\ll1+\log\log t$">$B(t)\ll1+\log\log t$</span> give</p>
+<span class="math math-display" data-tex="$$\sum_p p^{-1-\delta}
+=\delta\int_1^\infty B(t)t^{-1-\delta}\,dt
+=\delta\int_0^\infty B(e^v)e^{-\delta v}\,dv.\tag{16}$$">$$\sum_p p^{-1-\delta}
+=\delta\int_1^\infty B(t)t^{-1-\delta}\,dt
+=\delta\int_0^\infty B(e^v)e^{-\delta v}\,dv.\tag{16}$$</span>
+<p>The boundary term at infinity vanishes, and <span class="math" data-tex="$B(1)=0$">$B(1)=0$</span>. Put <span class="math" data-tex="$a=\log2$">$a=\log2$</span>. For <span class="math" data-tex="$v\ge a$">$v\ge a$</span>, (12) says <span class="math" data-tex="$B(e^v)=\log v+M+O(1/v)$">$B(e^v)=\log v+M+O(1/v)$</span>. For <span class="math" data-tex="$0&lt;v&lt;a$">$0&lt;v&lt;a$</span>, <span class="math" data-tex="$B(e^v)=0$">$B(e^v)=0$</span>. Thus the difference between the last integral in (16) and</p>
+<span class="math math-display" data-tex="$$\delta\int_0^\infty(\log v+M)e^{-\delta v}\,dv$$">$$\delta\int_0^\infty(\log v+M)e^{-\delta v}\,dv$$</span>
+<p>tends to zero as <span class="math" data-tex="$\delta\downarrow0$">$\delta\downarrow0$</span>. To verify this explicitly, the integral over <span class="math" data-tex="$(0,a)$">$(0,a)$</span> is <span class="math" data-tex="$O(\delta)$">$O(\delta)$</span>, since <span class="math" data-tex="$|\log v|+|M|$">$|\log v|+|M|$</span> is integrable there. For <span class="math" data-tex="$\delta&lt;1/a$">$\delta&lt;1/a$</span>, the remaining error is at most a constant times</p>
+<span class="math math-display" data-tex="$$\delta\int_a^\infty\frac{e^{-\delta v}}v\,dv
+\le\delta\log\frac1{a\delta}
++\delta\int_1^\infty\frac{e^{-u}}u\,du=o(1).
+$$">$$\delta\int_a^\infty\frac{e^{-\delta v}}v\,dv
+\le\delta\log\frac1{a\delta}
++\delta\int_1^\infty\frac{e^{-u}}u\,du=o(1).
+$$</span>
+<p>Use <span class="math" data-tex="$u=\delta v$">$u=\delta v$</span> and (13) in the main integral. We obtain</p>
+<span class="math math-display" data-tex="$$\sum_p p^{-1-\delta}
+=\log(1/\delta)+M-\gamma+o(1).\tag{17}$$">$$\sum_p p^{-1-\delta}
+=\log(1/\delta)+M-\gamma+o(1).\tag{17}$$</span>
+<p>Let</p>
+<span class="math math-display" data-tex="$$H=\sum_p\sum_{k\ge2}\frac1{kp^k}.$$">$$H=\sum_p\sum_{k\ge2}\frac1{kp^k}.$$</span>
+<p>This converges absolutely, because <span class="math" data-tex="$\sum_{k\ge2}1/(kp^k)\le1/[p(p-1)]$">$\sum_{k\ge2}1/(kp^k)\le1/[p(p-1)]$</span>. The logarithmic Euler product proved in the preceding lesson, together with dominated convergence for the terms with <span class="math" data-tex="$k\ge2$">$k\ge2$</span>, gives</p>
+<span class="math math-display" data-tex="$$\log\zeta(1+\delta)
+=\log(1/\delta)+M-\gamma+H+o(1).
+$$">$$\log\zeta(1+\delta)
+=\log(1/\delta)+M-\gamma+H+o(1).
+$$</span>
+<p>On the other hand, the residue-one Laurent expansion of zeta at <span class="math" data-tex="$1$">$1$</span> gives <span class="math" data-tex="$\log\zeta(1+\delta)=\log(1/\delta)+O(\delta)$">$\log\zeta(1+\delta)=\log(1/\delta)+O(\delta)$</span>. Therefore</p>
+<span class="math math-display" data-tex="$$M+H=\gamma.\tag{18}$$">$$M+H=\gamma.\tag{18}$$</span>
+<p>The power series for the logarithm gives</p>
+<span class="math math-display" data-tex="$$\log(1-1/p)+1/p=-\sum_{k\ge2}\frac1{kp^k},$$">$$\log(1-1/p)+1/p=-\sum_{k\ge2}\frac1{kp^k},$$</span>
+<p>so (18) is exactly (14), including absolute convergence.</p>
+<p>Finally,</p>
+<span class="math math-display" data-tex="$$\begin{aligned}
+\log\prod_{p\le x}(1-1/p)
+&amp;=-B(x)-\sum_{p\le x}\sum_{k\ge2}\frac1{kp^k}\\
+&amp;=-\log\log x-\gamma+O(1/\log x).
+\end{aligned}$$">$$\begin{aligned}
+\log\prod_{p\le x}(1-1/p)
+&amp;=-B(x)-\sum_{p\le x}\sum_{k\ge2}\frac1{kp^k}\\
+&amp;=-\log\log x-\gamma+O(1/\log x).
+\end{aligned}$$</span>
+<p>Here the omitted tail of the higher powers is <span class="math" data-tex="$O(1/x)$">$O(1/x)$</span>, by comparison with <span class="math" data-tex="$\sum_{n&gt;x}1/[n(n-1)]$">$\sum_{n&gt;x}1/[n(n-1)]$</span>. Exponentiation, using <span class="math" data-tex="$e^r=1+O(r)$">$e^r=1+O(r)$</span> for <span class="math" data-tex="$r\to0$">$r\to0$</span>, proves (15). The bound extends to <span class="math" data-tex="$2\le x$">$2\le x$</span> below any fixed threshold by changing its constant. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The smoothing uses the variable <span class="math" data-tex="$v=\log t$">$v=\log t$</span>. At <span class="math" data-tex="$\delta=1/\log x$">$\delta=1/\log x$</span>, its effective scale agrees with the cutoff <span class="math" data-tex="$t\le x$">$t\le x$</span>, but its constant term differs by <span class="math" data-tex="$-\gamma$">$-\gamma$</span>. Matching scales alone would not identify the product constant.</p>
+<h2 id="5-the-different-forms-of-the-prime-number-theorem">5. The different forms of the prime number theorem</h2>
+<p>For <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>, we use</p>
+<span class="math math-display" data-tex="$$\operatorname{li}(x)=\operatorname{PV}\int_0^x\frac{dt}{\log t},\qquad
+\operatorname{Li}(x)=\int_2^x\frac{dt}{\log t}.
+$$">$$\operatorname{li}(x)=\operatorname{PV}\int_0^x\frac{dt}{\log t},\qquad
+\operatorname{Li}(x)=\int_2^x\frac{dt}{\log t}.
+$$</span>
+<p>The principal value uses symmetric cutoffs around <span class="math" data-tex="$t=1$">$t=1$</span>. The difference is the fixed constant <span class="math" data-tex="$\operatorname{li}(2)$">$\operatorname{li}(2)$</span>, approximately <span class="math" data-tex="$1.045164$">$1.045164$</span>. The two functions therefore have the same asymptotic expansions at infinity, but are different functions.</p>
+<p><strong>Proposition 5.1.</strong> As <span class="math" data-tex="$x\to\infty$">$x\to\infty$</span>,</p>
+<span class="math math-display" data-tex="$$\operatorname{li}(x)
+=\frac{x}{\log x}+\frac{x}{\log^2x}
++\frac{2x}{\log^3x}+O\left(\frac{x}{\log^4x}\right).\tag{19}$$">$$\operatorname{li}(x)
+=\frac{x}{\log x}+\frac{x}{\log^2x}
++\frac{2x}{\log^3x}+O\left(\frac{x}{\log^4x}\right).\tag{19}$$</span>
+<p><em>Proof.</em> For each fixed positive integer <span class="math" data-tex="$m$">$m$</span>, put <span class="math" data-tex="$I_m(x)=\int_2^x dt/\log^m t$">$I_m(x)=\int_2^x dt/\log^m t$</span>. The derivative of <span class="math" data-tex="$t/\log^m t$">$t/\log^m t$</span> is <span class="math" data-tex="$1/\log^m t-m/\log^{m+1}t$">$1/\log^m t-m/\log^{m+1}t$</span>, hence</p>
+<span class="math math-display" data-tex="$$I_m(x)=\frac{x}{\log^m x}-\frac2{\log^m2}+mI_{m+1}(x).$$">$$I_m(x)=\frac{x}{\log^m x}-\frac2{\log^m2}+mI_{m+1}(x).$$</span>
+<p>Apply this with <span class="math" data-tex="$m=1,2,3$">$m=1,2,3$</span>. It gives the three displayed terms, a fixed constant, and <span class="math" data-tex="$6I_4(x)$">$6I_4(x)$</span>. Splitting this last integral at <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span> shows it is <span class="math" data-tex="$O(x/\log^4x)$">$O(x/\log^4x)$</span>: the lower portion is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>, and <span class="math" data-tex="$\log t\ge\tfrac12\log x$">$\log t\ge\tfrac12\log x$</span> on the upper portion. The fixed constants, including <span class="math" data-tex="$\operatorname{li}(2)$">$\operatorname{li}(2)$</span>, are absorbed by the same error. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 5.2 (equivalent prime number theorems).</strong> The following four assertions are equivalent:</p>
+<span class="math math-display" data-tex="$$\psi(x)\sim x,\qquad \theta(x)\sim x,\qquad
+\pi(x)\sim x/\log x,\qquad
+\pi(x)\sim\operatorname{li}(x).
+$$">$$\psi(x)\sim x,\qquad \theta(x)\sim x,\qquad
+\pi(x)\sim x/\log x,\qquad
+\pi(x)\sim\operatorname{li}(x).
+$$</span>
+<p><em>Proof.</em> Equation (8) shows that <span class="math" data-tex="$\psi(x)-\theta(x)=o(x)$">$\psi(x)-\theta(x)=o(x)$</span>, so the first two assertions are equivalent. If <span class="math" data-tex="$\theta(x)\sim x$">$\theta(x)\sim x$</span>, equation (1) gives</p>
+<span class="math math-display" data-tex="$$\pi(x)=\frac{\theta(x)}{\log x}+O(x/\log^2x)
+\sim\frac{x}{\log x}.
+$$">$$\pi(x)=\frac{\theta(x)}{\log x}+O(x/\log^2x)
+\sim\frac{x}{\log x}.
+$$</span>
+<p>For the error estimate, use <span class="math" data-tex="$\theta(t)\ll t$">$\theta(t)\ll t$</span> and split <span class="math" data-tex="$\int_2^x dt/\log^2t$">$\int_2^x dt/\log^2t$</span> at <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span> as in the preceding proof.</p>
+<p>Conversely, if <span class="math" data-tex="$\pi(x)\sim x/\log x$">$\pi(x)\sim x/\log x$</span>, equation (2) yields</p>
+<span class="math math-display" data-tex="$$\theta(x)=\pi(x)\log x-O(x/\log x)\sim x.$$">$$\theta(x)=\pi(x)\log x-O(x/\log x)\sim x.$$</span>
+<p>Indeed, <span class="math" data-tex="$\pi(t)\ll t/\log t$">$\pi(t)\ll t/\log t$</span> implies <span class="math" data-tex="$\int_2^x\pi(t)\,dt/t\ll x/\log x$">$\int_2^x\pi(t)\,dt/t\ll x/\log x$</span>, again by splitting at <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span>. Finally, (19) implies <span class="math" data-tex="$\operatorname{li}(x)\sim x/\log x$">$\operatorname{li}(x)\sim x/\log x$</span>, so the last two assertions are equivalent. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The extra terms of (19) explain why <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> is a more refined candidate than <span class="math" data-tex="$x/\log x$">$x/\log x$</span>. This proposition does not prove that those extra terms approximate <span class="math" data-tex="$\pi$">$\pi$</span> with a particular error. That requires the stronger analytic prime number theorem developed later.</p>
+<h3 id="worked-example-three-ways-to-count-the-same-primes">Worked example: three ways to count the same primes</h3>
+<p>The table uses the principal-value <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> defined above. The values of <span class="math" data-tex="$\theta$">$\theta$</span> and <span class="math" data-tex="$\psi$">$\psi$</span> are rounded to three decimal places, and the two approximations to two places.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="$x$">$x$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$\pi(x)$">$\pi(x)$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$\theta(x)$">$\theta(x)$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$\psi(x)$">$\psi(x)$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$x/\log x$">$x/\log x$</span></th>
+<th style="text-align:right"><span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$100$">$100$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$25$">$25$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$83.728$">$83.728$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$94.045$">$94.045$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$21.71$">$21.71$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$30.13$">$30.13$</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$1000$">$1000$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$168$">$168$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$956.245$">$956.245$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$996.681$">$996.681$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$144.76$">$144.76$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$177.61$">$177.61$</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$10000$">$10000$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$1229$">$1229$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$9895.991$">$9895.991$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$10013.397$">$10013.397$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$1085.74$">$1085.74$</span></td>
+<td style="text-align:right"><span class="math" data-tex="$1246.14$">$1246.14$</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example, <span class="math" data-tex="$\psi(100)-\theta(100)$">$\psi(100)-\theta(100)$</span> adds <span class="math" data-tex="$\log2$">$\log2$</span> at <span class="math" data-tex="$4,8,16,32,64$">$4,8,16,32,64$</span>, <span class="math" data-tex="$\log3$">$\log3$</span> at <span class="math" data-tex="$9,27,81$">$9,27,81$</span>, <span class="math" data-tex="$\log5$">$\log5$</span> at <span class="math" data-tex="$25$">$25$</span>, and <span class="math" data-tex="$\log7$">$\log7$</span> at <span class="math" data-tex="$49$">$49$</span>. The difference is <span class="math" data-tex="$5\log2+3\log3+\log5+\log7$">$5\log2+3\log3+\log5+\log7$</span>. The table illustrates the different weights; three finite rows do not establish an asymptotic theorem.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy: separating prime powers.</strong> Prove the explicit bound (8) directly from (4) and (7), including the range <span class="math" data-tex="$2\le x&lt;8$">$2\le x&lt;8$</span>. Explain why it implies an error <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span> even though its second displayed term contains a logarithm.</p>
+</li>
+<li>
+<p><strong>Medium: a prime between <span class="math" data-tex="$n$">$n$</span> and <span class="math" data-tex="$2n$">$2n$</span>.</strong> Prove Bertrand's postulate: for every positive integer <span class="math" data-tex="$n$">$n$</span> there is a prime <span class="math" data-tex="$p$">$p$</span> with <span class="math" data-tex="$n&lt;p\le2n$">$n&lt;p\le2n$</span>. Use a central binomial coefficient for large <span class="math" data-tex="$n$">$n$</span>, and give an explicit finite verification for the remaining integers. You may use (4), but not the prime number theorem.</p>
+</li>
+<li>
+<p><strong>Medium: a bounded Möbius average.</strong> Prove <span class="math" data-tex="$|\sum_{n\le x}\mu(n)/n|\le1$">$|\sum_{n\le x}\mu(n)/n|\le1$</span> for every real <span class="math" data-tex="$x\ge1$">$x\ge1$</span>.</p>
+</li>
+<li>
+<p><strong>Medium: locating a possible limit.</strong> Deduce from (10) that</p>
+<span class="math math-display" data-tex="$$\liminf_{x\to\infty}\frac{\psi(x)}x\le1
+\le\limsup_{x\to\infty}\frac{\psi(x)}x.$$">$$\liminf_{x\to\infty}\frac{\psi(x)}x\le1
+\le\limsup_{x\to\infty}\frac{\psi(x)}x.$$</span>
+<p>Explain why this is compatible with failure of the prime number theorem.</p>
+</li>
+<li>
+<p><strong>Hard: comparing the smoothed and sharp cutoffs.</strong> Put <span class="math" data-tex="$\delta=1/\log x$">$\delta=1/\log x$</span>. Prove directly from (12), before identifying <span class="math" data-tex="$M$">$M$</span>, that</p>
+<span class="math math-display" data-tex="$$\log\zeta(1+\delta)
+-\sum_{p\le x}\log(1-1/p)^{-1}\longrightarrow-\gamma.$$">$$\log\zeta(1+\delta)
+-\sum_{p\le x}\log(1-1/p)^{-1}\longrightarrow-\gamma.$$</span>
+<p>Identify the constant in Mertens's product from this limit and the Laurent expansion of zeta. Control the region near zero after rescaling the logarithmic variable; pointwise convergence alone is insufficient.</p>
+</li>
+<li>
+<p><strong>Medium: counting lattice points below a hyperbola.</strong> Let <span class="math" data-tex="$d(n)$">$d(n)$</span> count the positive divisors of <span class="math" data-tex="$n$">$n$</span>. Prove Dirichlet's estimate</p>
+<span class="math math-display" data-tex="$$\sum_{n\le x}d(n)=x\log x+(2\gamma-1)x+O(\sqrt x).$$">$$\sum_{n\le x}d(n)=x\log x+(2\gamma-1)x+O(\sqrt x).$$</span>
+<p>Explain geometrically why using a square-root cutoff improves the error obtained from <span class="math" data-tex="$\sum_{a\le x}\lfloor x/a\rfloor$">$\sum_{a\le x}\lfloor x/a\rfloor$</span>. Evaluate the exact count at <span class="math" data-tex="$x=16$">$x=16$</span>.</p>
+</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>Solution 1.</strong> In (7), the <span class="math" data-tex="$k=1$">$k=1$</span> term is <span class="math" data-tex="$\theta(x)$">$\theta(x)$</span>. If <span class="math" data-tex="$k=2$">$k=2$</span> occurs, (4) bounds it by <span class="math" data-tex="$(2\log2)\sqrt x$">$(2\log2)\sqrt x$</span>. For each <span class="math" data-tex="$k\ge3$">$k\ge3$</span> occurring, <span class="math" data-tex="$x^{1/k}\le x^{1/3}$">$x^{1/k}\le x^{1/3}$</span>, and there are at most <span class="math" data-tex="$\log x/\log2$">$\log x/\log2$</span> terms. Their total is at most <span class="math" data-tex="$2x^{1/3}\log x$">$2x^{1/3}\log x$</span>. If <span class="math" data-tex="$2\le x&lt;8$">$2\le x&lt;8$</span>, none of the latter terms occurs, so the same nonnegative upper bound remains valid. The difference itself is nonnegative by definition. Finally <span class="math" data-tex="$x^{1/3}\log x=\sqrt x(x^{-1/6}\log x)$">$x^{1/3}\log x=\sqrt x(x^{-1/6}\log x)$</span>, and the factor in parentheses is bounded: differentiation puts its maximum at <span class="math" data-tex="$x=e^6$">$x=e^6$</span>, apart from endpoints. This proves both claims.</p>
+<p><strong>Solution 2.</strong> Suppose <span class="math" data-tex="$n\ge512$">$n\ge512$</span> and there is no prime in <span class="math" data-tex="$(n,2n]$">$(n,2n]$</span>. For each prime <span class="math" data-tex="$p\le\sqrt{2n}$">$p\le\sqrt{2n}$</span>, the valuation argument in Theorem 2.1 shows that the power of <span class="math" data-tex="$p$">$p$</span> dividing <span class="math" data-tex="$\binom{2n}{n}$">$\binom{2n}{n}$</span> is at most <span class="math" data-tex="$2n$">$2n$</span>. There are at most <span class="math" data-tex="$\sqrt{2n}$">$\sqrt{2n}$</span> such primes, so their combined contribution is at most <span class="math" data-tex="$(2n)^{\sqrt{2n}}$">$(2n)^{\sqrt{2n}}$</span>.</p>
+<p>For <span class="math" data-tex="$p&gt;\sqrt{2n}$">$p&gt;\sqrt{2n}$</span>, the valuation has only its <span class="math" data-tex="$k=1$">$k=1$</span> summand and is at most one. Primes in <span class="math" data-tex="$(2n/3,n]$">$(2n/3,n]$</span> have valuation zero, since <span class="math" data-tex="$\lfloor2n/p\rfloor=2$">$\lfloor2n/p\rfloor=2$</span> and <span class="math" data-tex="$\lfloor n/p\rfloor=1$">$\lfloor n/p\rfloor=1$</span>. Primes above <span class="math" data-tex="$n$">$n$</span> do not exist by the supposition. Thus the remaining contribution is at most <span class="math" data-tex="$\prod_{p\le2n/3}p&lt;4^{2n/3}$">$\prod_{p\le2n/3}p&lt;4^{2n/3}$</span>, by (4). Combining this with the central-coefficient lower bound gives</p>
+<span class="math math-display" data-tex="$$\frac{4^n}{2n+1}\le\binom{2n}{n}
+\le(2n)^{\sqrt{2n}}4^{2n/3}.$$">$$\frac{4^n}{2n+1}\le\binom{2n}{n}
+\le(2n)^{\sqrt{2n}}4^{2n/3}.$$</span>
+<p>It would follow that</p>
+<span class="math math-display" data-tex="$$\frac{\log4}3\le
+\sqrt{\frac2n}\log(2n)+\frac{\log(2n+1)}n.\tag{20}$$">$$\frac{\log4}3\le
+\sqrt{\frac2n}\log(2n)+\frac{\log(2n+1)}n.\tag{20}$$</span>
+<p>Both terms on the right decrease for <span class="math" data-tex="$n\ge512$">$n\ge512$</span>. For the first, differentiation gives <span class="math" data-tex="$\sqrt2 n^{-3/2}(1-\tfrac12\log(2n))&lt;0$">$\sqrt2 n^{-3/2}(1-\tfrac12\log(2n))&lt;0$</span>. For the second, the numerator of the derivative is <span class="math" data-tex="$2n/(2n+1)-\log(2n+1)&lt;0$">$2n/(2n+1)-\log(2n+1)&lt;0$</span>. At <span class="math" data-tex="$n=512$">$n=512$</span>, the right side is less than <span class="math" data-tex="$(320+11)\log2/512$">$(320+11)\log2/512$</span>, because <span class="math" data-tex="$\sqrt{1024}=32$">$\sqrt{1024}=32$</span>, <span class="math" data-tex="$\log1024=10\log2$">$\log1024=10\log2$</span>, and <span class="math" data-tex="$\log1025&lt;11\log2$">$\log1025&lt;11\log2$</span>. This is smaller than <span class="math" data-tex="$\log4/3$">$\log4/3$</span>, since <span class="math" data-tex="$331/512&lt;2/3$">$331/512&lt;2/3$</span>. Equation (20) is impossible.</p>
+<p>For <span class="math" data-tex="$1\le n&lt;512$">$1\le n&lt;512$</span>, use the following increasing chain of primes:</p>
+<span class="math math-display" data-tex="$$2,\ 3,\ 5,\ 7,\ 13,\ 23,\ 43,\ 83,\ 163,\ 317,\ 631.$$">$$2,\ 3,\ 5,\ 7,\ 13,\ 23,\ 43,\ 83,\ 163,\ 317,\ 631.$$</span>
+<p>Each member after the first is less than twice its predecessor. Every integer <span class="math" data-tex="$2\le n&lt;512$">$2\le n&lt;512$</span> lies between consecutive members, say <span class="math" data-tex="$q\le n&lt;r$">$q\le n&lt;r$</span>; then <span class="math" data-tex="$n&lt;r&lt;2q\le2n$">$n&lt;r&lt;2q\le2n$</span>. For <span class="math" data-tex="$n=1$">$n=1$</span> take <span class="math" data-tex="$p=2$">$p=2$</span>. For completeness, trial division verifies primality of the larger members: the relevant odd-prime remainders, excluding <span class="math" data-tex="$3$">$3$</span> and <span class="math" data-tex="$5$">$5$</span> which are handled by digit sum and last digit, are</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Number</th>
+<th>Remainders at the remaining trial primes up to its square root</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$43$">$43$</span></td>
+<td>none</td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$83$">$83$</span></td>
+<td><span class="math" data-tex="$83\bmod7=6$">$83\bmod7=6$</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$163$">$163$</span></td>
+<td>at <span class="math" data-tex="$7,11$">$7,11$</span>: <span class="math" data-tex="$2,9$">$2,9$</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$317$">$317$</span></td>
+<td>at <span class="math" data-tex="$7,11,13,17$">$7,11,13,17$</span>: <span class="math" data-tex="$2,9,5,11$">$2,9,5,11$</span></td>
+</tr>
+<tr>
+<td style="text-align:right"><span class="math" data-tex="$631$">$631$</span></td>
+<td>at <span class="math" data-tex="$7,11,13,17,19,23$">$7,11,13,17,19,23$</span>: <span class="math" data-tex="$1,4,7,2,4,10$">$1,4,7,2,4,10$</span></td>
+</tr>
+</tbody>
+</table>
+<p>They are odd, and their digit sums are not divisible by <span class="math" data-tex="$3$">$3$</span>; the smaller members are checked in the same way. Thus the finite verification uses only proved prime identities and elementary division.</p>
+<p><strong>Solution 3.</strong> Put <span class="math" data-tex="$N=\lfloor x\rfloor$">$N=\lfloor x\rfloor$</span>. Möbius inversion and a finite rearrangement give</p>
+<span class="math math-display" data-tex="$$\sum_{n\le N}\mu(n)\left\lfloor\frac Nn\right\rfloor
+=\sum_{m\le N}\sum_{n\mid m}\mu(n)=1.$$">$$\sum_{n\le N}\mu(n)\left\lfloor\frac Nn\right\rfloor
+=\sum_{m\le N}\sum_{n\mid m}\mu(n)=1.$$</span>
+<p>It follows that</p>
+<span class="math math-display" data-tex="$$N\sum_{n\le N}\frac{\mu(n)}n
+=1+\sum_{n\le N}\mu(n)\{N/n\}.$$">$$N\sum_{n\le N}\frac{\mu(n)}n
+=1+\sum_{n\le N}\mu(n)\{N/n\}.$$</span>
+<p>The term with <span class="math" data-tex="$n=1$">$n=1$</span> in the last sum is zero. The remaining <span class="math" data-tex="$N-1$">$N-1$</span> terms each have absolute value less than or equal to one. The triangle inequality therefore bounds the right side in absolute value by <span class="math" data-tex="$N$">$N$</span>. Divide by <span class="math" data-tex="$N\ge1$">$N\ge1$</span>. The sum at real <span class="math" data-tex="$x$">$x$</span> is the same as at <span class="math" data-tex="$N$">$N$</span>, proving the stated bound.</p>
+<p><strong>Solution 4.</strong> Partial summation gives</p>
+<span class="math math-display" data-tex="$$\sum_{n\le x}\frac{\Lambda(n)}n
+=\frac{\psi(x)}x+\int_1^x\frac{\psi(t)}{t^2}\,dt.\tag{21}$$">$$\sum_{n\le x}\frac{\Lambda(n)}n
+=\frac{\psi(x)}x+\int_1^x\frac{\psi(t)}{t^2}\,dt.\tag{21}$$</span>
+<p>If the liminf of <span class="math" data-tex="$\psi(t)/t$">$\psi(t)/t$</span> were greater than <span class="math" data-tex="$1$">$1$</span>, there would be <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> and <span class="math" data-tex="$X$">$X$</span> such that <span class="math" data-tex="$\psi(t)/t\ge1+\varepsilon$">$\psi(t)/t\ge1+\varepsilon$</span> for all <span class="math" data-tex="$t\ge X$">$t\ge X$</span>. Since the boundary term is nonnegative, (21) would imply a lower bound <span class="math" data-tex="$(1+\varepsilon)\log x+O(1)$">$(1+\varepsilon)\log x+O(1)$</span>, contradicting (10). If the limsup were less than <span class="math" data-tex="$1$">$1$</span>, then <span class="math" data-tex="$\psi(t)/t\le1-\varepsilon$">$\psi(t)/t\le1-\varepsilon$</span> eventually. In this case the boundary term is bounded, and (21) gives an upper bound <span class="math" data-tex="$(1-\varepsilon)\log x+O(1)$">$(1-\varepsilon)\log x+O(1)$</span>, again a contradiction. Therefore <span class="math" data-tex="$1$">$1$</span> lies between the liminf and limsup. This does not force those two quantities to agree.</p>
+<p><strong>Solution 5.</strong> Let <span class="math" data-tex="$X=\log x=1/\delta$">$X=\log x=1/\delta$</span> and use (16). Substituting <span class="math" data-tex="$u=\delta v$">$u=\delta v$</span> and noting <span class="math" data-tex="$\int_0^\infty e^{-u}du=1$">$\int_0^\infty e^{-u}du=1$</span> gives the exact identity</p>
+<span class="math math-display" data-tex="$$\sum_p p^{-1-\delta}-B(x)
+=\int_0^\infty e^{-u}\bigl(B(e^{u/\delta})-B(e^{1/\delta})\bigr)\,du.
+$$">$$\sum_p p^{-1-\delta}-B(x)
+=\int_0^\infty e^{-u}\bigl(B(e^{u/\delta})-B(e^{1/\delta})\bigr)\,du.
+$$</span>
+<p>Write <span class="math" data-tex="$B(e^v)=\log v+M+R(v)$">$B(e^v)=\log v+M+R(v)$</span> for <span class="math" data-tex="$v\ge a=\log2$">$v\ge a=\log2$</span>, with <span class="math" data-tex="$|R(v)|\le C/v$">$|R(v)|\le C/v$</span>. On <span class="math" data-tex="$u\ge a\delta$">$u\ge a\delta$</span>, the integrand in parentheses equals <span class="math" data-tex="$\log u+R(u/\delta)-R(1/\delta)$">$\log u+R(u/\delta)-R(1/\delta)$</span>. The integral of the error is at most</p>
+<span class="math math-display" data-tex="$$C\delta\int_{a\delta}^\infty\frac{e^{-u}}u\,du+C\delta
+=O\bigl(\delta\log(1/\delta)\bigr)=o(1).
+$$">$$C\delta\int_{a\delta}^\infty\frac{e^{-u}}u\,du+C\delta
+=O\bigl(\delta\log(1/\delta)\bigr)=o(1).
+$$</span>
+<p>On <span class="math" data-tex="$0&lt;u&lt;a\delta$">$0&lt;u&lt;a\delta$</span>, <span class="math" data-tex="$B(e^{u/\delta})=0$">$B(e^{u/\delta})=0$</span> and <span class="math" data-tex="$B(e^{1/\delta})=\log(1/\delta)+M+O(\delta)$">$B(e^{1/\delta})=\log(1/\delta)+M+O(\delta)$</span>. The absolute integral over this interval is <span class="math" data-tex="$O(\delta\log(1/\delta))$">$O(\delta\log(1/\delta))$</span>. The omitted integral of <span class="math" data-tex="$|\log u|$">$|\log u|$</span> over the same interval is also <span class="math" data-tex="$O(\delta\log(1/\delta))$">$O(\delta\log(1/\delta))$</span>. Hence the difference tends to <span class="math" data-tex="$\int_0^\infty e^{-u}\log u\,du=-\gamma$">$\int_0^\infty e^{-u}\log u\,du=-\gamma$</span>.</p>
+<p>The difference between the higher-prime-power sums <span class="math" data-tex="$\sum_{p,k\ge2}p^{-k(1+\delta)}/k$">$\sum_{p,k\ge2}p^{-k(1+\delta)}/k$</span> and <span class="math" data-tex="$\sum_{p\le x,k\ge2}p^{-k}/k$">$\sum_{p\le x,k\ge2}p^{-k}/k$</span> tends to zero by absolute convergence and dominated convergence. Adding these sums proves the requested logarithmic comparison. Since <span class="math" data-tex="$\log\zeta(1+\delta)=\log X+o(1)$">$\log\zeta(1+\delta)=\log X+o(1)$</span>, the sharp logarithmic sum equals <span class="math" data-tex="$\log\log x+\gamma+o(1)$">$\log\log x+\gamma+o(1)$</span>. The error estimate and existence argument of Theorem 3.1 give its form <span class="math" data-tex="$\log\log x+K+O(1/\log x)$">$\log\log x+K+O(1/\log x)$</span>, so <span class="math" data-tex="$K=\gamma$">$K=\gamma$</span>. Taking the negative exponential recovers the constant <span class="math" data-tex="$e^{-\gamma}$">$e^{-\gamma}$</span> in (15).</p>
+<p><strong>Solution 6.</strong> The divisor sum counts ordered lattice points <span class="math" data-tex="$(a,b)$">$(a,b)$</span> with positive integer coordinates and <span class="math" data-tex="$ab\le x$">$ab\le x$</span>. Put <span class="math" data-tex="$m=\lfloor\sqrt x\rfloor$">$m=\lfloor\sqrt x\rfloor$</span>. Every such point has <span class="math" data-tex="$a\le m$">$a\le m$</span> or <span class="math" data-tex="$b\le m$">$b\le m$</span>: if both coordinates were at least <span class="math" data-tex="$m+1$">$m+1$</span>, their product would exceed <span class="math" data-tex="$x$">$x$</span>. The intersection of these two sets is the whole <span class="math" data-tex="$m$">$m$</span> by <span class="math" data-tex="$m$">$m$</span> square, because <span class="math" data-tex="$m^2\le x$">$m^2\le x$</span>. Inclusion--exclusion gives the exact identity</p>
+<span class="math math-display" data-tex="$$\sum_{n\le x}d(n)=2\sum_{a\le m}\left\lfloor\frac xa\right\rfloor-m^2
+=2xH_m-m^2+O(m).\tag{22}$$">$$\sum_{n\le x}d(n)=2\sum_{a\le m}\left\lfloor\frac xa\right\rfloor-m^2
+=2xH_m-m^2+O(m).\tag{22}$$</span>
+<p>The definition of <span class="math" data-tex="$\gamma$">$\gamma$</span> also gives <span class="math" data-tex="$H_m=\log m+\gamma+O(1/m)$">$H_m=\log m+\gamma+O(1/m)$</span>. To see the error, subtract successive values of <span class="math" data-tex="$H_j-\log j$">$H_j-\log j$</span>: their positive differences are <span class="math" data-tex="$\log(1+1/j)-1/(j+1)=O(1/j^2)$">$\log(1+1/j)-1/(j+1)=O(1/j^2)$</span>, whose tail is <span class="math" data-tex="$O(1/m)$">$O(1/m)$</span>. For <span class="math" data-tex="$x\ge4$">$x\ge4$</span>, <span class="math" data-tex="$m=\sqrt x+O(1)$">$m=\sqrt x+O(1)$</span>, so <span class="math" data-tex="$2\log m=\log x+O(x^{-1/2})$">$2\log m=\log x+O(x^{-1/2})$</span> and <span class="math" data-tex="$m^2=x+O(\sqrt x)$">$m^2=x+O(\sqrt x)$</span>. Substitute these into (22); the terms <span class="math" data-tex="$x/m$">$x/m$</span> and <span class="math" data-tex="$m$">$m$</span> are both <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. Enlarging the constant covers <span class="math" data-tex="$1\le x&lt;4$">$1\le x&lt;4$</span> and proves the result.</p>
+<figure><img src="figures/hyperbola.png" alt="The positive integer lattice points below ab equals 16, separated into a at most 4 and b at most 4; their overlap is the four by four square." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The exact decomposition used in (22), at <span class="math" data-tex="$x=16$">$x=16$</span>. The vertical part and horizontal part each contain <span class="math" data-tex="$33$">$33$</span> lattice points. Their square overlap contains <span class="math" data-tex="$16$">$16$</span>, giving <span class="math" data-tex="$33+33-16=50$">$33+33-16=50$</span>. Points and boundary are shown at their actual coordinates.</em></p>
+<p>Summing floors all the way to <span class="math" data-tex="$a=x$">$a=x$</span> introduces <span class="math" data-tex="$O(x)$">$O(x)$</span> unit errors. The two short sums in (22) each have only <span class="math" data-tex="$m$">$m$</span> terms, so their total floor error is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. At <span class="math" data-tex="$x=16$">$x=16$</span>, the short floor sum is <span class="math" data-tex="$16+8+5+4=33$">$16+8+5+4=33$</span>, and the exact answer is <span class="math" data-tex="$2\cdot33-16=50$">$2\cdot33-16=50$</span>.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapters 2–3: Chebyshev, the hyperbola method and Mertens estimates.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-01.html">← Dirichlet series and Euler products</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-03.html">The Gamma function and Stirling&#x27;s formula →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

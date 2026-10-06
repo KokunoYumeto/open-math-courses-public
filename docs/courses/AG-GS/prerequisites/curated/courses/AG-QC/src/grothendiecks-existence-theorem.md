@@ -1,0 +1,221 @@
+# Grothendieck's existence theorem
+
+*Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).*
+
+Formal functions recovers completed cohomology from infinitesimal neighborhoods. Grothendieck's existence theorem recovers the sheaves themselves. Over a complete Noetherian base, a compatible coherent sheaf on every thickening of a proper scheme comes from one coherent sheaf, and compatible morphisms come from unique algebraic morphisms.
+
+We use [formal functions](the-theorem-on-formal-functions.md), [Serre generation and vanishing](serres-theorems-on-projective-schemes.md), and proper coherence. The planned *Completion* lesson in *Commutative algebra for geometry* supplies Artin–Rees, Noetherianness and flatness of completion, and completeness of finite modules over a complete Noetherian ring. Chow's lemma belongs to the planned *Projective morphisms and Chow's lemma* lesson in *Morphisms of schemes*; its exact open proof was specified in our proper-coherence lesson.
+
+## 1. Compatible coherent systems
+
+For a Noetherian scheme \(X\) and a coherent ideal \(J\subset\mathcal O_X\), a **coherent formal module** is a system \(\mathfrak F=(F_n)_{n\geq1}\) of coherent sheaves, with
+\[
+J^nF_n=0,\qquad F_{n+1}/J^nF_{n+1}\xrightarrow{\sim}F_n.
+\tag{1}
+\]
+Morphisms are compatible sheaf maps at every level. Equivalently, \(F_n\) is a coherent sheaf on \(X_n=V(J^n)\). Iterating (1) gives \(F_m/J^nF_m=F_n\) for \(m\geq n\). Write \(\operatorname{Coh}(X,J)\) for this category.
+
+**Lemma 1.1 (the affine description).** If \(X=\operatorname{Spec}R\) and \(J=I\mathcal O_X\), this category is equivalent to finite modules over \(\widehat R=\varprojlim R/I^n\). The correspondence is
+\[
+(M_n)\longmapsto M=\varprojlim M_n,
+\qquad M\longmapsto(M/I^nM).
+\]
+
+**Proof.** The transition maps are onto, so a compatible sequence lifting any chosen element of \(M_1\) can be constructed recursively. Lift finitely many generators of \(M_1\) to \(M\). They define maps \((R/I^n)^r\to M_n\), which are onto by Nakayama for the nilpotent ideal \(I/I^n\).
+
+Let \(K_n\) be their kernels. These kernels also have surjective transitions. To lift \(v\in K_n\), lift it to \(w\in(R/I^{n+1})^r\). Its image in \(M_{n+1}\) lies in \(I^nM_{n+1}\), since it vanishes in \(M_n\). Surjectivity of the free-module map lets us subtract an element of \(I^n(R/I^{n+1})^r\) with that same image. The corrected lift belongs to \(K_{n+1}\).
+
+Taking limits gives
+\[
+0\to\varprojlim K_n\to\widehat R^{\,r}\to M\to0.
+\]
+Surjectivity on the right follows by adjusting consecutive lifts using the surjective kernel transitions. Thus \(M\) is finite. Since \(\varprojlim K_n\to K_n\) is onto, reducing this presentation modulo \(I^n\) gives \(M/I^nM=M_n\). Conversely finite modules over the Noetherian complete ring \(\widehat R\) are complete, so are recovered from their quotients. Compatible maps pass uniquely to and from limits, proving the equivalence. \(\square\)
+
+An affine open in a scheme over a complete ring need not have a complete coordinate ring. For instance the \(t\)-adic completion of \(k[[t]][x]\) is the ring
+\[
+k[[t]]\langle x\rangle=\varprojlim_n(k[t]/t^n)[x]
+\]
+of restricted power series: in \(\sum a_jx^j\), the coefficients \(a_j\) tend to zero \(t\)-adically. This contains series of unbounded degree in \(x\), unlike the polynomial ring.
+
+## 2. Exactness and the actual formal kernel
+
+**Theorem 2.1.** The category \(\operatorname{Coh}(X,J)\) is abelian, exactness is local on \(X\), and the completion functor
+\[
+\operatorname{Coh}(X)\longrightarrow\operatorname{Coh}(X,J),
+\qquad F\longmapsto\widehat F=(F/J^nF)
+\]
+is exact.
+
+**Proof.** On an affine, Lemma 1.1 identifies the category with finite modules over a Noetherian ring, an abelian category. We explain why its kernels glue, since taking the kernels separately at each level is generally wrong.
+
+For a morphism \(\alpha:(F_n)\to(G_n)\), take the images
+\[
+K'_{l,m}=\operatorname{im}(\ker\alpha_l\to F_m),\qquad l\geq m.
+\]
+On an affine let \(u:M\to N\) be the corresponding completed-module map, with kernel \(K\) and image \(H\). Artin–Rees for \(H\subset N\) gives a constant \(c\) such that
+\[
+u^{-1}(I^lN)\subset K+I^{l-c}M\quad(l\geq c).
+\]
+Indeed \(H\cap I^lN\subset I^{l-c}H\), and elements of this last module lift from \(I^{l-c}M\). Hence for \(l\geq m+c\), the image \(K'_{l,m}\) is precisely
+\(K/(K\cap I^mM)\). It stabilizes. Artin–Rees for \(K\subset M\) then shows that, for fixed \(n\) and sufficiently large \(m\),
+\[
+K'_m/I^nK'_m
+=K/(K\cap I^mM+I^nK)=K/I^nK.
+\tag{2}
+\]
+All these images and quotients are constructions with coherent sheaves and commute with restriction. A finite affine cover gives uniform stabilization bounds, so they define coherent sheaves globally. The resulting system is the formal kernel: a map of systems killed by \(\alpha\) factors at every level through the stabilized images, then through (2); the factorization is unique. Cokernels are the levelwise cokernels, since quotient formation preserves (1). On affines these constructions give the ordinary module kernel and cokernel, so image equals coimage. They also show that restriction is exact and that exactness can be checked on an open cover.
+
+On an affine the completion functor is \(M\mapsto M\otimes_R\widehat R\) on finite modules. Flatness of Noetherian completion makes it exact. The local characterization just established proves exactness globally. \(\square\)
+
+For example multiplication by \(t\) on \(k[[t]]\) has zero kernel, but multiplication by \(t\) on \(k[t]/t^n\) has kernel \(k\,t^{n-1}\). These nonzero kernels map to zero at the preceding level. Their stabilized formal kernel is zero. An exact sequence in the formal category therefore need not give a left-exact sequence at each fixed quotient level.
+
+A map of formal modules is onto exactly when its first-level map is onto. In the affine description, its cokernel is a finite completed module \(C\); if \(C/IC=0\), Nakayama gives \(C=0\). Here \(I\widehat R\) lies in the Jacobson radical: \(1-a\) is invertible for \(a\in I\widehat R\), by its convergent geometric series. This also proves the assertion locally on \(X\).
+
+## 3. Full faithfulness from formal functions
+
+Now let \(A\) be Noetherian and complete for an ideal \(I\), let \(X\) be proper over \(A\), and set \(J=I\mathcal O_X\).
+
+**Lemma 3.1 (completed Hom).** For coherent \(F,G\), with \(H=\mathcal Hom(F,G)\),
+\[
+\operatorname{Hom}_{\operatorname{Coh}(X,J)}(\widehat F,\widehat G)
+\cong\varprojlim_n\Gamma(X,H/J^nH).
+\tag{3}
+\]
+
+**Proof.** Affine locally, \(F\) has a finite presentation. Applying \(\operatorname{Hom}(-,G)\) describes Hom as the kernel of a map between two finite direct sums of \(G\). Tensoring this kernel with the flat completed ring preserves the kernel and gives
+\[
+\operatorname{Hom}_R(M,N)\otimes_R\widehat R
+=\operatorname{Hom}_{\widehat R}(\widehat M,\widehat N).
+\]
+Lemma 1.1 identifies the right side with compatible maps on the quotients. These natural affine identifications identify the sheaves of completed Hom sections with the sheaves of compatible formal maps. They glue on overlaps. Taking global sections, which commutes with inverse limits of sheaves, gives (3). Notice that no equality of the separate finite-level Hom modules was asserted. \(\square\)
+
+**Theorem 3.2 (full faithfulness).** Completion on coherent sheaves on \(X\) is fully faithful.
+
+**Proof.** The sheaf \(H\) is coherent, so its global section module is finite over \(A\). Formal functions identifies the right side of (3) with \(\widehat{\Gamma(X,H)}\). A finite module over the complete Noetherian ring \(A\) is already complete. Thus (3) identifies formal maps with \(\Gamma(X,H)=\operatorname{Hom}_X(F,G)\), and the identification is the completion map on morphisms. \(\square\)
+
+In particular, an algebraization, when it exists, is unique up to the unique isomorphism inducing a specified formal identification. Formal isomorphisms algebraize because both directions algebraize and faithfulness makes their composites identities.
+
+## 4. One twist for every thickening
+
+Suppose \(X\) is projective over \(A\), and choose a relatively ample invertible sheaf \(L\). For a formal module \(\mathfrak F=(F_n)\), put \(F_0=0\) and
+\[
+D_n=\ker(F_{n+1}\to F_n),\qquad n\geq0.
+\]
+
+**Lemma 4.1 (uniform vanishing).** There exists \(d_0\) such that
+\[
+H^1(X,D_n\otimes L^d)=0\quad\text{for every }n\geq0,
+\quad d\geq d_0.
+\]
+
+**Proof.** Let \(B=\bigoplus_{n\geq0}I^n/I^{n+1}\), a Noetherian graded algebra generated in degree one over \(A/I\). The sheaf \(D=\bigoplus D_n\) is a graded module over \(\mathcal O_X\otimes_A B\). On an affine, Lemma 1.1 identifies it with the associated graded module \(\bigoplus J^nM/J^{n+1}M\) of a finite completed module. It is generated over the associated graded ring in degree zero. The map from the pulled-back \(B\) to that associated graded ring is surjective, because \(J\) is generated by the image of \(I\). Consequently \(D\) is of finite type over \(\mathcal O_X\otimes_A B\). Surjectivity is sufficient; no flatness is needed to identify associated graded rings.
+
+On \(X_B=X\times_A\operatorname{Spec}B\), with affine projection \(p\), the affine sheaf correspondence realizes \(D=p_*E\) for a coherent \(E\). The morphism \(X_B\to\operatorname{Spec}B\) is projective and \(p^*L\) is relatively ample. Serre vanishing gives one bound for the positive cohomology of \(E\otimes p^*L^d\). Affine pushforward, its projection formula, and cohomology commuting with direct sums of quasi-coherent sheaves on this separated quasi-compact scheme identify that cohomology with
+\(\bigoplus_n H^1(X,D_n\otimes L^d)\). Every summand is zero for the same bound. \(\square\)
+
+The bound is uniform in the infinitesimal index. Applying Serre vanishing independently to each \(F_n\) would give bounds depending on \(n\), insufficient for a single finite presentation.
+
+## 5. Existence on a projective scheme
+
+**Theorem 5.1 (projective existence).** For projective \(X\) over \(A\), completion gives an equivalence
+\[
+\operatorname{Coh}(X)\simeq\operatorname{Coh}(X,I\mathcal O_X).
+\]
+
+**Proof.** Full faithfulness is Theorem 3.2. Let \(\mathfrak F\) be a formal module. Choose \(d\) large enough both for Lemma 4.1 and for finitely many sections of \(F_1\otimes L^d\) to generate it. The exact sequences with kernel \(D_n\otimes L^d\) make
+\[
+\Gamma(X,F_{n+1}\otimes L^d)\to\Gamma(X,F_n\otimes L^d)
+\]
+surjective. Lift the chosen finite collection recursively to compatible sections at every level. They give a formal morphism
+\[
+\widehat P\twoheadrightarrow\mathfrak F,
+\qquad P=(L^{-d})^r.
+\]
+It is onto because it is onto at the first level. Its kernel \(\mathfrak K\) is a coherent formal module by Theorem 2.1. Apply the same construction to \(\mathfrak K\) to obtain \(\widehat Q\twoheadrightarrow\mathfrak K\), with \(Q=(L^{-e})^s\) for some \(e,s\). Thus
+\[
+\widehat Q\longrightarrow\widehat P\longrightarrow\mathfrak F\to0
+\]
+is a presentation in the formal category. Full faithfulness algebraizes its first map to \(Q\to P\). Take its coherent cokernel \(F\). Exactness of completion identifies \(\widehat F\) with \(\mathfrak F\), proving essential surjectivity. \(\square\)
+
+The two presentations use different twists if necessary. There is no assertion that their kernel is a vector bundle, or that every coherent sheaf has a finite resolution by line bundles.
+
+## 6. Proper schemes and proper supports
+
+**Theorem 6.1 (Grothendieck existence).** Let \(A\) be Noetherian and \(I\)-adically complete, and let \(X\) be separated and of finite type over \(A\). Completion gives an equivalence between coherent sheaves on \(X\) with support proper over \(A\) and coherent formal modules whose first-level support is proper over \(A\). In particular, when \(X\) is proper, all coherent sheaves and all coherent formal modules participate.
+
+The general reduction has a precise open proof in [Stacks, Tags 088C and 088E]. We explain how it extends Theorem 5.1, including the two technical descent steps and their proof providers. This uses the theorem with proper supports in its full stated generality.
+
+For proper \(X\), argue by Noetherian induction on closed subschemes: a maximal ideal defining a counterexample permits assuming existence for every closed subscheme defined by a nonzero ideal. Chow's lemma gives a proper surjection \(p:Y\to X\), an isomorphism over a dense open \(U\), with \(Y\) projective over \(A\). Pull the formal module back to \(Y\) and algebraize it by Theorem 5.1, obtaining \(E\). Proper coherence makes \(H=p_*E\) coherent.
+
+The precise comparison lemma [Stacks, Tag 088B] constructs
+\[
+\alpha:\mathfrak F\longrightarrow\widehat H
+\]
+whose kernel and cokernel are killed by a fixed power of the ideal \(K\) of \(X\setminus U\). Its construction takes the inverse limit of the adjunction maps to \(p_*(E/I^nE)\); formal functions identifies this limit with the completed pushforward. To establish the fixed bound, work over an affine of \(X\), change flatly to its complete coordinate ring, and apply full faithfulness for the proper morphism there. The comparison becomes the completion of an actual adjunction map, which is an isomorphism over \(U\). Coherent kernel and cokernel supported on \(V(K)\) are killed by one power of \(K\).
+
+The second technical step [Stacks, Tag 088A] says that such a bounded comparison algebraizes \(\mathfrak F\), provided existence holds on every \(V(K^e)\). It algebraizes \(\mathfrak F/K^e\mathfrak F\), changes the direction of completion from \(I\) to \(K\), and uses bounded-error formal gluing [Stacks, Tag 0889]. The uniqueness there recovers the original \(I\)-quotients. The induction hypothesis supplies existence on all \(V(K^e)\): the dense open meets every component, so \(K^e\neq0\). These steps, with their exact proofs, complete the proper case in [Stacks, Tag 088C]. This is an ideal induction, requiring no finite bound on the dimension of the Noetherian base.
+
+For the proper-support assertion, the modification \(Y\) is only quasi-projective over \(A\). Embed it openly in a projective \(\overline Y\). The support of each pulled-back \(F_n\) equals the inverse image of the support of \(F_1\), hence is proper. Its image in \(\overline Y\) is closed, so extension by zero is coherent and gives a formal module on \(\overline Y\). Algebraize this by Theorem 5.1. The algebraized support cannot meet the boundary: its boundary intersection is closed in the projective scheme, has closed image in \(\operatorname{Spec}A\), and misses \(V(I)\). But \(I\) lies in the Jacobson radical of the complete ring \(A\), so every nonempty closed subset of \(\operatorname{Spec}A\) meets \(V(I)\). Thus the support lies in \(Y\) and is proper.
+
+Push forward and use the same comparison. Noetherian induction and the Serre-category property of formal modules with proper support show that the original formal module is annihilated by the ideal of some closed proper subscheme \(Z\subset X\). On \(Z\), the proper case applies. Likewise every coherent sheaf with proper support lives on its proper scheme-theoretic support. Hom maps between any two such sheaves can be computed on the proper closed union of their supports, so full faithfulness follows there. This is the support reduction and full proof furnished by [Stacks, Tag 088E]. Properness of \(X\) itself has not been inserted into that statement.
+
+## 7. Examples: what can fail on an affine line
+
+On \(\mathbf P^1_{k[[t]]}\), the systems \(\mathcal O_{X_n}(d)\) algebraize to \(\mathcal O_X(d)\). The extension system
+\[
+0\to\mathcal O_{X_n}(-2)\to E_n\to\mathcal O_{X_n}\to0
+\]
+with compatible class \(a_n\in k[t]/t^n\) algebraizes to the extension with class \(a=\varprojlim a_n\in k[[t]]\), because \(H^1(\mathcal O_X(-2))=k[[t]]\). Choosing \(a=t\) recovers our cohomology-jump example.
+
+For \(X=\mathbf A^1_{k[[t]]}\), completion is not fully faithful. The restricted series
+\[
+h(x)=\sum_{j\geq0}t^jx^j
+\]
+defines a compatible multiplication map on the systems \(\mathcal O_{X_n}\), but is not a polynomial in \(x\). It therefore does not come from an endomorphism of \(\mathcal O_X\). Faithfulness also fails: the nonzero coherent module \(k[[t]][x]/(tx-1)\) has zero completion, since \(tx-1\) is a unit modulo every power of \(t\).
+
+These are failures of morphism recovery and uniqueness, not examples of nonalgebraizable objects. In fact this particular affine line has a stronger existence property.
+
+**Proposition 7.1.** Every coherent formal module on \(\mathbf A^1_{k[[t]]}\) is algebraizable.
+
+**Proof.** Let \(R=k[[t]][x]\), \(B=\widehat R\), and let the system correspond to a finite \(B\)-module \(M\). The ring \(B\) is a Noetherian domain, and \(B/tB=k[x]\). Thus \((t)\) is prime, and \(B_{(t)}\) is a discrete valuation ring: its maximal ideal is generated by the nonzero element \(t\). The structure theorem over this ring gives
+\[
+M_{(t)}\cong B_{(t)}^{\,r}\oplus\bigoplus_{i=1}^s B_{(t)}/(t^{a_i}).
+\]
+Finite presentations let this isomorphism and its inverse be defined after inverting finitely many elements of \(B\setminus(t)\). The identities defining inverse maps also hold after finitely many such inversions. Let \(h\in k[x]\setminus\{0\}\) be the product of their nonzero reductions modulo \(t\). In the \(t\)-adic completion of \(R[1/h]\), each denominator is a unit, since its reduction modulo \(t\) is a unit. Hence the formal system on \(D(h)\) is isomorphic to the completion of the displayed free-plus-\(t\)-power-torsion module.
+
+The zero set of \(h\) in \(\mathbf P^1_k\) is finite and lies in the affine line: the homogenization has nonzero value at infinity. Let \(V\subset\mathbf P^1_{k[[t]]}\) be the complement of that homogenized zero set. It contains infinity and meets the affine chart in \(D(h)\). On \(V\), take the formal completion of the same free-plus-torsion module. Glue it to the given system on the affine chart using the formal isomorphism on \(D(h)\). This gives compatible coherent sheaves on all projective-line thickenings. Theorem 5.1 algebraizes them on \(\mathbf P^1_{k[[t]]}\). Restricting that sheaf to the affine chart algebraizes the original system. \(\square\)
+
+Thus a claim that an arbitrary formal multiplication series automatically gives a nonalgebraizable coherent module on this affine line would be false. The theorem's equivalence, including morphisms and unique recovery, genuinely needs its support hypotheses; essential surjectivity alone can hold in a special nonproper situation.
+
+## 8. Exercises with solutions
+
+**Exercise 8.1 (easy: exactness).** Explain the sense in which completion of a coherent short exact sequence is exact, and exhibit the failure of left exactness at a fixed quotient level.
+
+**Solution.** On an affine, finite-module completion is tensoring with the flat Noetherian completed ring, so is exact; Theorem 2.1 glues this statement in the formal category. For multiplication by \(t\) on \(k[[t]]\), the original map is injective but its reduction modulo \(t^n\) has kernel \(k t^{n-1}\). These kernels are transient and have stabilized formal kernel zero. Thus finite-level injectivity is not the meaning of exact completion.
+
+**Exercise 8.2 (medium: projective-line maps).** Compute the compatible morphisms from \((\mathcal O_{X_n}(a))\) to \((\mathcal O_{X_n}(b))\) on \(\mathbf P^1_{k[[t]]}\).
+
+**Solution.** They are the limit of sections of \(\mathcal O_{X_n}(b-a)\). If \(b-a<0\), each group is zero. Otherwise its monomial basis gives \((k[t]/t^n)^{b-a+1}\), whose limit is \(k[[t]]^{b-a+1}\). This is exactly the algebraic Hom group from projective-space cohomology, with its coefficientwise restriction map. It proves full faithfulness for these line bundles directly.
+
+**Exercise 8.3 (medium: nonproper failure).** Give both a compatible endomorphism on the affine-line formal structure sheaf that does not algebraize as an endomorphism of \(\mathcal O_X\), and a nonzero coherent sheaf with zero completion.
+
+**Solution.** Multiplication by \(\sum_{j\geq0}t^jx^j\) is defined modulo every \(t^n\), but a polynomial cannot have its unbounded nonzero \(x\)-coefficients, so it does not algebraize as the specified endomorphism. The sheaf associated to \(R/(tx-1)\) is nonzero: its ring is \(k((t))\), with \(x=t^{-1}\). Its reduction modulo \(t^n\) is zero because \(t\) is invertible there. Proposition 7.1 explains why neither example should be misdescribed as a nonalgebraizable formal object.
+
+**Exercise 8.4 (medium: algebraizing a presentation).** Recover projective existence from uniform vanishing, full faithfulness and exactness.
+
+**Solution.** Use a uniform twist to lift a finite generating collection for \(F_1\), giving \(\widehat P\twoheadrightarrow\mathfrak F\). Its formal kernel is coherent. Do the same for that kernel to obtain \(\widehat Q\to\widehat P\to\mathfrak F\to0\). Full faithfulness algebraizes \(Q\to P\), and exactness identifies the completion of its coherent cokernel with \(\mathfrak F\). The construction never assumes the finite-level kernels themselves form the formal kernel.
+
+**Exercise 8.5 (hard: the proper reduction).** Identify the exact two descent inputs needed after algebraizing a formal pullback on a Chow modification, and check their hypotheses.
+
+**Solution.** The proper modification is an isomorphism away from \(V(K)\); its algebraized pullback is coherent. Tag 088B applies to these hypotheses and gives a map to the completed coherent pushforward with kernel and cokernel killed by a fixed power of \(K\). Tag 088A applies once existence is known on every \(V(K^e)\), and turns this bounded comparison into algebraization. Noetherian induction supplies those closed-subscheme equivalences, with full faithfulness on them supplied by Theorem 3.2. The exact open proofs linked in Section 6 furnish the comparison and the change-of-completion gluing step; this is the complete reduction used by Tag 088C.
+
+**Exercise 8.6 (hard: a special affine existence theorem).** Explain the two features of the affine line that make Proposition 7.1 work.
+
+**Solution.** At the generic point of its closed fiber, the completed ring localized at \((t)\) is a discrete valuation ring. A finite module there has a free-plus-\(t\)-power-torsion normal form, which spreads to \(D(h)\) after completing, using finitely many denominators with nonzero reductions. The zero set of the single-variable polynomial \(h\) has projective closure disjoint from infinity. Thus the standard module can be put on an open neighborhood of the entire boundary, and glued to the original system. Projective existence finishes. In higher dimension a hypersurface's closure can meet the boundary, so this argument does not establish unrestricted affine existence in general.
+
+## References
+
+- **[Stacks]** The Stacks project authors, *The Stacks project*, in its AI Integrated Stacks Project edition: affine formal modules [Tag 087W](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-inverse-systems-affine), their abelian category [Tag 087X](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-inverse-systems-abelian), exact completion [Tag 0881](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-exact), completed Hom [Tag 0882](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-completion-internal-hom), full faithfulness [Tag 0883](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-fully-faithful).
+- Uniform vanishing [Tag 0884](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-vanishing-projective), and projective existence [Tag 0885](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-existence-projective).
+- The exact open proper-case descent proofs are the bounded comparison [Tag 088B](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-inverse-systems-push-pull), change of completion [Tag 088A](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-existence-tricky), and bounded formal gluing [Tag 0889](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-existence-easy). They assemble into proper existence [Tag 088C](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-proposition-existence-proper) and proper-support existence [Tag 088E](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-theorem-grothendieck-existence).
+- These linked reference proofs retain GNU FDL 1.2. Sections 1–5, the affine-line argument, examples and solutions are independently written CC0; Section 6 uses the specified open technical proof providers in the full generality of the stated theorem. 

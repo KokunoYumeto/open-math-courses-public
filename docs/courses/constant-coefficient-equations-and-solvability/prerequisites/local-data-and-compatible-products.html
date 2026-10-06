@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local data and compatible products</title><link rel="stylesheet" href="../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a> · <a href="complete-distribution-foundations.html">Complete distribution foundations</a></nav><h1 id="local-data-and-compatible-products">Local data and compatible products</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>A distribution has no values at individual points, but it still has restrictions to open sets. Compatible restrictions determine one global distribution. This local principle explains support, extends the possible test functions, and defines some products even when both factors are singular.</p>
+<p>We use the test topology in <a href="distributions-as-kernels.html">Distributions as kernels of continuous operators</a>, the finite-order extension and completeness results in <a href="order-positivity-and-limits.html">Order, positivity and distributional limits</a>, and the compact-distribution pairing in <a href="when-a-kernel-is-smooth.html">When a kernel is smooth</a>. Smooth cutoffs and partitions are ordinary calculus prerequisites. The open reference is [Dyatlov 2026], Sections 2.3, 3.2 and 8.3. We give full proofs of the local constructions rather than presume that a pointwise definition is available.</p>
+<p>Basic references are Dyatlov’s notes cited below and Hassler Whitney’s <em>Analytic extensions of differentiable functions defined in closed sets</em> (1934), for the finite-jet viewpoint.</p>
+<h2 id="restriction-and-a-local-uniqueness-principle">Restriction and a local uniqueness principle</h2>
+<p>Let <span class="math" data-tex="\(V\subset X\subset\mathbb R^n\)">\(V\subset X\subset\mathbb R^n\)</span> be open. Extending <span class="math" data-tex="\(\phi\in C_c^\infty(V)\)">\(\phi\in C_c^\infty(V)\)</span> by zero gives a smooth compactly supported function on <span class="math" data-tex="\(X\)">\(X\)</span>: its support has positive distance from the complement of <span class="math" data-tex="\(V\)">\(V\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+(u|_V)(\phi)=u(\phi),\qquad u\in\mathcal D&#x27;(X).
+\tag{1.1}
+\]">\[
+(u|_V)(\phi)=u(\phi),\qquad u\in\mathcal D&#x27;(X).
+\tag{1.1}
+\]</span>
+<p>The local distribution estimate on its support proves that this is a distribution on <span class="math" data-tex="\(V\)">\(V\)</span>. Restrictions compose, and restriction to <span class="math" data-tex="\(X\)">\(X\)</span> is the identity.</p>
+<p>Here is the finite partition fact we will repeatedly use. If compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> is covered by open <span class="math" data-tex="\(V_i\)">\(V_i\)</span>, there are finitely many smooth compactly supported functions <span class="math" data-tex="\(\chi_l\)">\(\chi_l\)</span>, each supported in some <span class="math" data-tex="\(V_{i(l)}\)">\(V_{i(l)}\)</span>, with <span class="math" data-tex="\(\sum_l\chi_l=1\)">\(\sum_l\chi_l=1\)</span> on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>. To construct them, cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many smaller balls whose closures lie in the prescribed open sets, choose nonnegative bumps positive on those balls, and write their sum as <span class="math" data-tex="\(S\)">\(S\)</span>. It is positive on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>. Choose a cutoff <span class="math" data-tex="\(\zeta=1\)">\(\zeta=1\)</span> near <span class="math" data-tex="\(K\)">\(K\)</span>, supported in that neighborhood, and set <span class="math" data-tex="\(\chi_l=\zeta b_l/S\)">\(\chi_l=\zeta b_l/S\)</span> there and zero elsewhere. This extension is smooth because <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>'s support lies inside the positive region. Each support is compact in its prescribed set.</p>
+<p><strong>Theorem 1.1 (local uniqueness).</strong> If every point of <span class="math" data-tex="\(X\)">\(X\)</span> has an open neighborhood on which <span class="math" data-tex="\(u\)">\(u\)</span> restricts to zero, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\phi\in\mathcal D(X)\)">\(\phi\in\mathcal D(X)\)</span>, apply the finite partition fact to <span class="math" data-tex="\(K=\operatorname{supp}\phi\)">\(K=\operatorname{supp}\phi\)</span> and neighborhoods on which <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. Then <span class="math" data-tex="\(\phi=\sum_l\chi_l\phi\)">\(\phi=\sum_l\chi_l\phi\)</span>, a finite sum of tests in those neighborhoods, and every pairing <span class="math" data-tex="\(u(\chi_l\phi)\)">\(u(\chi_l\phi)\)</span> is zero. Hence <span class="math" data-tex="\(u(\phi)=0\)">\(u(\phi)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> to be the complement in <span class="math" data-tex="\(X\)">\(X\)</span> of the union of open neighborhoods on which <span class="math" data-tex="\(u\)">\(u\)</span> is zero. It is relatively closed. Theorem 1.1 says <span class="math" data-tex="\(u\)">\(u\)</span> vanishes on that entire open union, not just separately on its constituent neighborhoods. Therefore</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=0\quad\text{if }
+\operatorname{supp}\phi\cap\operatorname{supp}u=\varnothing,
+\qquad \phi\in\mathcal D(X).
+\tag{1.2}
+\]">\[
+u(\phi)=0\quad\text{if }
+\operatorname{supp}\phi\cap\operatorname{supp}u=\varnothing,
+\qquad \phi\in\mathcal D(X).
+\tag{1.2}
+\]</span>
+<p>The support is the smallest relatively closed set with this property. Indeed, if a relatively closed <span class="math" data-tex="\(F\)">\(F\)</span> annihilates every test supported in <span class="math" data-tex="\(X\setminus F\)">\(X\setminus F\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is zero on that open set and <span class="math" data-tex="\(\operatorname{supp}u\subset F\)">\(\operatorname{supp}u\subset F\)</span>.</p>
+<h2 id="gluing-compatible-distributions">Gluing compatible distributions</h2>
+<p><strong>Theorem 2.1 (gluing, including order and limits).</strong> Let <span class="math" data-tex="\(X=\bigcup_{i\in I}X_i\)">\(X=\bigcup_{i\in I}X_i\)</span> be an arbitrary open cover, and let <span class="math" data-tex="\(u_i\in\mathcal D&#x27;(X_i)\)">\(u_i\in\mathcal D&#x27;(X_i)\)</span>. Suppose their restrictions agree on every overlap:</p>
+<span class="math math-display" data-tex="\[
+u_i|_{X_i\cap X_j}=u_j|_{X_i\cap X_j}.
+\tag{2.1}
+\]">\[
+u_i|_{X_i\cap X_j}=u_j|_{X_i\cap X_j}.
+\tag{2.1}
+\]</span>
+<p>There is a unique <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> with <span class="math" data-tex="\(u|_{X_i}=u_i\)">\(u|_{X_i}=u_i\)</span>. If every <span class="math" data-tex="\(u_i\)">\(u_i\)</span> has order at most the same integer <span class="math" data-tex="\(k\)">\(k\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Moreover, if a sequence <span class="math" data-tex="\(v_r\in\mathcal D&#x27;(X)\)">\(v_r\in\mathcal D&#x27;(X)\)</span> has a weak distributional limit on each <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, it has a weak distributional limit on <span class="math" data-tex="\(X\)">\(X\)</span>, whose restrictions are those local limits.</p>
+<p><strong>Proof of existence and uniqueness.</strong> Given a test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, use the finite partition fact to write</p>
+<span class="math math-display" data-tex="\[
+\phi=\sum_{l=1}^N\phi_l,\qquad
+\phi_l\in\mathcal D(X_{i(l)}),
+\]">\[
+\phi=\sum_{l=1}^N\phi_l,\qquad
+\phi_l\in\mathcal D(X_{i(l)}),
+\]</span>
+<p>and propose <span class="math" data-tex="\(u(\phi)=\sum_l u_{i(l)}(\phi_l)\)">\(u(\phi)=\sum_l u_{i(l)}(\phi_l)\)</span>. This definition is independent of the decomposition. It suffices to prove that a finite decomposition of zero gives zero total pairing. If <span class="math" data-tex="\(\sum_l\phi_l=0\)">\(\sum_l\phi_l=0\)</span>, choose a second finite partition <span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span> equal to one near the compact union of their supports, with <span class="math" data-tex="\(\theta_s\)">\(\theta_s\)</span> supported in <span class="math" data-tex="\(X_{j(s)}\)">\(X_{j(s)}\)</span>. Then <span class="math" data-tex="\(\theta_s\phi_l\)">\(\theta_s\phi_l\)</span> is a test in both open sets, so compatibility gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_l u_{i(l)}(\phi_l)
+&amp;=\sum_{l,s}u_{i(l)}(\theta_s\phi_l)\\
+&amp;=\sum_s u_{j(s)}\left(\theta_s\sum_l\phi_l\right)=0.
+\end{aligned}
+\tag{2.2}
+\]">\[
+\begin{aligned}
+\sum_l u_{i(l)}(\phi_l)
+&amp;=\sum_{l,s}u_{i(l)}(\theta_s\phi_l)\\
+&amp;=\sum_s u_{j(s)}\left(\theta_s\sum_l\phi_l\right)=0.
+\end{aligned}
+\tag{2.2}
+\]</span>
+<p>All these sums are finite. Comparing two decompositions through their difference proves independence, and combining decompositions proves linearity.</p>
+<p>To prove continuity, fix compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> and fix one finite partition <span class="math" data-tex="\(\chi_l\)">\(\chi_l\)</span> equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>, subordinate to the cover. For every <span class="math" data-tex="\(\phi\in\mathcal D_K\)">\(\phi\in\mathcal D_K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=\sum_l u_{i(l)}(\chi_l\phi).
+\tag{2.3}
+\]">\[
+u(\phi)=\sum_l u_{i(l)}(\chi_l\phi).
+\tag{2.3}
+\]</span>
+<p>The supports <span class="math" data-tex="\(K\cap\operatorname{supp}\chi_l\)">\(K\cap\operatorname{supp}\chi_l\)</span> are compact subsets of the corresponding <span class="math" data-tex="\(X_{i(l)}\)">\(X_{i(l)}\)</span>. Choose their local order bounds. The product rule bounds the finitely many needed derivatives of <span class="math" data-tex="\(\chi_l\phi\)">\(\chi_l\phi\)</span> by a constant times the derivatives of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> through their maximum order. This proves a finite estimate for <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. If the local orders are all at most <span class="math" data-tex="\(k\)">\(k\)</span>, that maximum can be <span class="math" data-tex="\(k\)">\(k\)</span>; derivatives of the fixed cutoffs do not raise the derivative degree of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>For a test supported in <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, the decomposition consisting of that test alone proves the correct restriction. Uniqueness follows by applying Theorem 1.1 to the difference of two proposed extensions.</p>
+<p><strong>Proof of the limit assertion.</strong> Local limits agree on overlaps because every overlap test has the same scalar limit from either side. Glue them to <span class="math" data-tex="\(u\)">\(u\)</span>. For a fixed global test, (2.3) expresses <span class="math" data-tex="\(v_r(\phi)\)">\(v_r(\phi)\)</span> as finitely many local pairings, each converging to its corresponding <span class="math" data-tex="\(u_i(\chi_l\phi)\)">\(u_i(\chi_l\phi)\)</span>. Their sum is <span class="math" data-tex="\(u(\phi)\)">\(u(\phi)\)</span>. Alternatively their scalar limits define a distribution by <a href="order-positivity-and-limits.html#limits-on-smooth-tests">Order, positivity and distributional limits, Theorem 5.1</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Neither the cover nor its index set must be finite or countable. Compactness of each individual test reduces all the pairing arguments to finite sums.</p>
+<h2 id="tests-that-are-compact-only-on-the-support">Tests that are compact only on the support</h2>
+<p>An integrable function supported in a closed set needs a test only where the two supports meet. A distribution has the same flexibility, with a cutoff supplying the precise definition.</p>
+<p><strong>Theorem 3.1 (support-relative test extension).</strong> Let <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> and let <span class="math" data-tex="\(F\subset X\)">\(F\subset X\)</span> be relatively closed, with <span class="math" data-tex="\(\operatorname{supp}u\subset F\)">\(\operatorname{supp}u\subset F\)</span>. On the vector space</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_F(X)=
+\{f\in C^\infty(X):
+F\cap\operatorname{supp}f\text{ is compact in }X\},
+\tag{3.1}
+\]">\[
+\mathcal E_F(X)=
+\{f\in C^\infty(X):
+F\cap\operatorname{supp}f\text{ is compact in }X\},
+\tag{3.1}
+\]</span>
+<p>there is a unique linear extension <span class="math" data-tex="\(\widetilde u\)">\(\widetilde u\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span> that vanishes whenever <span class="math" data-tex="\(\operatorname{supp}f\cap F=\varnothing\)">\(\operatorname{supp}f\cap F=\varnothing\)</span>. If <span class="math" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equals one near <span class="math" data-tex="\(F\cap\operatorname{supp}f\)">\(F\cap\operatorname{supp}f\)</span>, its formula is</p>
+<span class="math math-display" data-tex="\[
+\widetilde u(f)=u(\chi f).
+\tag{3.2}
+\]">\[
+\widetilde u(f)=u(\chi f).
+\tag{3.2}
+\]</span>
+<p>When <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>, the same construction extends its canonical <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span> pairing to the space defined by (3.1) with <span class="math" data-tex="\(C^k(X)\)">\(C^k(X)\)</span> in place of <span class="math" data-tex="\(C^\infty(X)\)">\(C^\infty(X)\)</span>.</p>
+<p><strong>Proof.</strong> The space is closed under addition and scalar multiplication: the support of a sum is contained in the union of the two supports, and its intersection with closed <span class="math" data-tex="\(F\)">\(F\)</span> is a closed subset of their compact intersections.</p>
+<p>For two suitable cutoffs, <span class="math" data-tex="\((\chi-\chi&#x27;)f\)">\((\chi-\chi&#x27;)f\)</span> has compact support disjoint from <span class="math" data-tex="\(F\)">\(F\)</span>. At points of <span class="math" data-tex="\(F\cap\operatorname{supp}f\)">\(F\cap\operatorname{supp}f\)</span>, the cutoffs agree on a neighborhood; at other points of <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is zero on a neighborhood. Hence (1.2) makes its pairing zero. Formula (3.2) is well-defined. For finitely many functions choose one cutoff near the union of their compact intersections, which proves linearity. For a compact test it agrees with <span class="math" data-tex="\(u\)">\(u\)</span> by (1.2), and for a function disjoint from <span class="math" data-tex="\(F\)">\(F\)</span> it is zero.</p>
+<p>For uniqueness, split <span class="math" data-tex="\(f=\chi f+(1-\chi)f\)">\(f=\chi f+(1-\chi)f\)</span>. The first term is a compact test. The second has support disjoint from <span class="math" data-tex="\(F\)">\(F\)</span>, by the same neighborhood argument. Every extension with the stated vanishing property must therefore give (3.2).</p>
+<p>For the finite-order assertion, use the <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span> pairing from <a href="order-positivity-and-limits.html#local-estimates-and-the-meaning-of-order">Order, positivity and distributional limits, Proposition 1.2</a>. A compact <span class="math" data-tex="\(C^k\)">\(C^k\)</span> function with support disjoint from <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> pairs to zero: approximate it in <span class="math" data-tex="\(C^k\)">\(C^k\)</span> by smooth functions with support in a compact neighborhood still disjoint from that closed set. Thus the entire cutoff argument remains valid. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We henceforth write <span class="math" data-tex="\(u(f)\)">\(u(f)\)</span> for this extension when its domain is specified. Choosing <span class="math" data-tex="\(F=\operatorname{supp}u\)">\(F=\operatorname{supp}u\)</span> gives the largest domain among these choices of <span class="math" data-tex="\(F\)">\(F\)</span>. For compactly supported <span class="math" data-tex="\(u\)">\(u\)</span>, it includes every smooth function, agreeing with the compact-dual pairing already proved. Relative compactness inside <span class="math" data-tex="\(X\)">\(X\)</span> matters: a support intersection escaping toward the boundary is not an allowed compact set in (3.1).</p>
+<h2 id="the-smooth-locus-and-local-operations">The smooth locus and local operations</h2>
+<p>Define the singular support <span class="math" data-tex="\(\operatorname{sing\,supp}u\)">\(\operatorname{sing\,supp}u\)</span> as the complement of the union of open sets where <span class="math" data-tex="\(u\)">\(u\)</span> is represented by a smooth function.</p>
+<p>Smooth representatives on overlaps agree pointwise. To justify this, a continuous function defining the zero distribution must vanish: if its value at a point were nonzero, a fixed complex phase makes its real part positive on a smaller neighborhood, and a nonnegative bump there would have nonzero integral pairing. Consequently the local representatives form one smooth function on the full union. Theorem 1.1 identifies its distribution with the restriction of <span class="math" data-tex="\(u\)">\(u\)</span>. Thus the complement of singular support is the largest open set on which <span class="math" data-tex="\(u\)">\(u\)</span> is smooth, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sing\,supp}u\subset\operatorname{supp}u.
+\tag{4.1}
+\]">\[
+\operatorname{sing\,supp}u\subset\operatorname{supp}u.
+\tag{4.1}
+\]</span>
+<p>For <span class="math" data-tex="\(a\in C^\infty(X)\)">\(a\in C^\infty(X)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(\partial_j u)(\phi)=-u(\partial_j\phi),
+\qquad
+(au)(\phi)=u(a\phi).
+\tag{4.2}
+\]">\[
+(\partial_j u)(\phi)=-u(\partial_j\phi),
+\qquad
+(au)(\phi)=u(a\phi).
+\tag{4.2}
+\]</span>
+<p><strong>Proposition 4.1 (local differential rules).</strong> The operations (4.2) give distributions, commute with restriction, and are continuous in both the weak and strong dual topologies for fixed <span class="math" data-tex="\(a\)">\(a\)</span>. They satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{supp}(\partial_j u)\subset\operatorname{supp}u,
+\qquad
+\operatorname{supp}(au)\subset\operatorname{supp}a\cap\operatorname{supp}u,\\
+\operatorname{sing\,supp}(\partial_j u)\subset\operatorname{sing\,supp}u,
+\qquad
+\operatorname{sing\,supp}(au)\subset\operatorname{supp}a\cap\operatorname{sing\,supp}u,\\
+\partial^\alpha(au)=
+\sum_{\beta\le\alpha}\binom{\alpha}{\beta}
+(\partial^\beta a)\partial^{\alpha-\beta}u.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\operatorname{supp}(\partial_j u)\subset\operatorname{supp}u,
+\qquad
+\operatorname{supp}(au)\subset\operatorname{supp}a\cap\operatorname{supp}u,\\
+\operatorname{sing\,supp}(\partial_j u)\subset\operatorname{sing\,supp}u,
+\qquad
+\operatorname{sing\,supp}(au)\subset\operatorname{supp}a\cap\operatorname{sing\,supp}u,\\
+\partial^\alpha(au)=
+\sum_{\beta\le\alpha}\binom{\alpha}{\beta}
+(\partial^\beta a)\partial^{\alpha-\beta}u.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Partial derivatives commute. Both formulas in (4.2) also hold for every <span class="math" data-tex="\(f\in\mathcal E_{\operatorname{supp}u}(X)\)">\(f\in\mathcal E_{\operatorname{supp}u}(X)\)</span>, using the extended pairings on their left sides.</p>
+<p>If <span class="math" data-tex="\(a\in C^k(X)\)">\(a\in C^k(X)\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>, the second formula still defines <span class="math" data-tex="\(au\)">\(au\)</span>, by the <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span> pairing. It has order at most <span class="math" data-tex="\(k\)">\(k\)</span>, with support contained in the same support intersection. The singular-support assertions require a smooth multiplier.</p>
+<p><strong>Proof.</strong> Differentiation and multiplication send smooth tests with one compact support continuously to tests with that support. Their derivative estimates prove (4.2) is continuous on each support space. On weak duals, evaluating the output on <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is evaluating the input on its transformed fixed test. On strong duals, a bounded test family is sent to another bounded test family; taking the supremum over it proves continuity. Restriction commutes with these test operations. Local vanishing and local smoothness give the support and singular-support inclusions.</p>
+<p>The derivative convention gives <span class="math" data-tex="\((\partial_i\partial_j u)(\phi)=u(\partial_i\partial_j\phi)\)">\((\partial_i\partial_j u)(\phi)=u(\partial_i\partial_j\phi)\)</span>, so commutation of test derivatives gives commutation for distributions. For one derivative,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(a\,\partial_j u)(\phi)
+&amp;=-u(\partial_j(a\phi))\\
+&amp;=-u((\partial_j a)\phi)-u(a\partial_j\phi).
+\end{aligned}
+\]">\[
+\begin{aligned}
+(a\,\partial_j u)(\phi)
+&amp;=-u(\partial_j(a\phi))\\
+&amp;=-u((\partial_j a)\phi)-u(a\partial_j\phi).
+\end{aligned}
+\]</span>
+<p>Rearrange to obtain the first-derivative product rule. Induction on <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>, with the usual binomial recurrence, proves the multi-index formula.</p>
+<p>For a noncompact allowed test <span class="math" data-tex="\(f\)">\(f\)</span>, choose <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-tex="\(\operatorname{supp}u\cap\operatorname{supp}f\)">\(\operatorname{supp}u\cap\operatorname{supp}f\)</span>. The extra derivative term <span class="math" data-tex="\(u(f\partial_j\chi)\)">\(u(f\partial_j\chi)\)</span> is zero, because its compact support misses <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+(\partial_j u)(f)=-u(\partial_j(\chi f))
+=-u(\chi\partial_j f)=-u(\partial_j f).
+\]">\[
+(\partial_j u)(f)=-u(\partial_j(\chi f))
+=-u(\chi\partial_j f)=-u(\partial_j f).
+\]</span>
+<p>Multiplication works with the same cutoff. The supports of <span class="math" data-tex="\(\partial_j f\)">\(\partial_j f\)</span> and <span class="math" data-tex="\(af\)">\(af\)</span> are contained in <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, so their right-hand pairings are allowed. We only claim these identities on this common domain.</p>
+<p>For <span class="math" data-tex="\(a\in C^k\)">\(a\in C^k\)</span>, the product <span class="math" data-tex="\(a\phi\)">\(a\phi\)</span> lies in <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span>. On a fixed compact support the product rule through degree <span class="math" data-tex="\(k\)">\(k\)</span> and the canonical order estimate bound the resulting pairing by <span class="math" data-tex="\(C p_{K,k}(\phi)\)">\(C p_{K,k}(\phi)\)</span>, with a constant that may use a larger compact neighborhood. Local vanishing extends from smooth to <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span> tests as in Theorem 3.1. This proves the order and support assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the Heaviside function <span class="math" data-tex="\(H\)">\(H\)</span> on the line has support <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> and singular support <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>. It is smooth off zero, and cannot have a continuous representative near zero agreeing with its distinct constant values on the two sides. Its derivative is <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>: for a compact test,</p>
+<span class="math math-display" data-tex="\[
+H&#x27;(\phi)=-\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\tag{4.4}
+\]">\[
+H&#x27;(\phi)=-\int_0^\infty\phi&#x27;(x)\,dx=\phi(0).
+\tag{4.4}
+\]</span>
+<p>The derivative has much smaller support, while retaining the same singular point.</p>
+<p>For a point mass in any dimension, the same derivative convention gives <span class="math" data-tex="\((\partial^\alpha\delta_a)(\phi)=(-1)^{|\alpha|}\partial^\alpha\phi(a)\)">\((\partial^\alpha\delta_a)(\phi)=(-1)^{|\alpha|}\partial^\alpha\phi(a)\)</span>. Conversely, every distribution supported at one point is a finite linear combination of these derivatives, as proved in <a href="jets-supported-distributions-and-local-operators.html#the-exact-structure-on-a-plane">Jets, supported distributions and local operators, point-supported specialization</a>. This converse uses finite order and flat-jet annihilation; it is more than a formal differentiation rule.</p>
+<h2 id="products-of-separated-singularities">Products of separated singularities</h2>
+<p><strong>Theorem 5.1 (compatible product and compact pairing).</strong> Suppose <span class="math" data-tex="\(u,v\in\mathcal D&#x27;(X)\)">\(u,v\in\mathcal D&#x27;(X)\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sing\,supp}u\cap\operatorname{sing\,supp}v=\varnothing.
+\tag{5.1}
+\]">\[
+\operatorname{sing\,supp}u\cap\operatorname{sing\,supp}v=\varnothing.
+\tag{5.1}
+\]</span>
+<p>There is a unique distribution <span class="math" data-tex="\(uv\)">\(uv\)</span> obtained locally by multiplying whichever factor is smooth by the other. It is commutative, agrees with ordinary products where both factors are smooth, and satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}(uv)\subset
+\operatorname{supp}u\cap\operatorname{supp}v.
+\tag{5.2}
+\]">\[
+\operatorname{supp}(uv)\subset
+\operatorname{supp}u\cap\operatorname{supp}v.
+\tag{5.2}
+\]</span>
+<p>If this support intersection is compact in <span class="math" data-tex="\(X\)">\(X\)</span>, there is a symmetric scalar pairing</p>
+<span class="math math-display" data-tex="\[
+\langle u,v\rangle=(uv)(1).
+\tag{5.3}
+\]">\[
+\langle u,v\rangle=(uv)(1).
+\tag{5.3}
+\]</span>
+<p>For a smooth <span class="math" data-tex="\(v=f\)">\(v=f\)</span>, it agrees with <span class="math" data-tex="\(u(f)\)">\(u(f)\)</span> from Theorem 3.1. For three distributions with pairwise disjoint singular supports, the compatible products associate.</p>
+<p><strong>Proof.</strong> Condition (5.1) covers <span class="math" data-tex="\(X\)">\(X\)</span> by open sets on each of which <span class="math" data-tex="\(u\)">\(u\)</span> or <span class="math" data-tex="\(v\)">\(v\)</span> has a smooth representative. Define the local product by (4.2). When two neighborhoods choose the same smooth factor, restriction gives agreement. When they choose opposite factors, both factors are smooth on their overlap, and both definitions give the ordinary pointwise product. Theorem 2.1 glues these compatible local distributions uniquely. Swapping the factors changes none of them, giving commutativity.</p>
+<p>Outside either support, that factor is locally zero, a smooth representative, so the product is zero. This proves (5.2). If the support intersection is compact, the product is compactly supported, and its pairing with the constant smooth function one is defined. It is independent of any compact cutoff used to evaluate it.</p>
+<p>When <span class="math" data-tex="\(v=f\)">\(v=f\)</span> is smooth, choose a cutoff <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-tex="\(\operatorname{supp}u\cap\operatorname{supp}f\)">\(\operatorname{supp}u\cap\operatorname{supp}f\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+(uf)(1)=(uf)(\chi)=u(\chi f)=u(f),
+\]">\[
+(uf)(1)=(uf)(\chi)=u(\chi f)=u(f),
+\]</span>
+<p>which proves agreement. The same argument explains the symmetry of this extension of the scalar pairing.</p>
+<p>For the last assertion, near every point at most one of the three factors is singular, so the other two are smooth. Every local bracketing is smooth multiplication by their pointwise product, and agrees by ordinary associativity. Each intermediate product is smooth wherever its two factors are smooth, so its singular support is contained in the union of theirs and remains disjoint from the third singular support. Both bracketings are therefore defined; gluing their local equality proves global associativity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This condition is sufficient, not necessary. Later wavefront estimates permit more products by separating singular directions rather than separating singular points. Nothing here defines <span class="math" data-tex="\(\delta_0^2\)">\(\delta_0^2\)</span>.</p>
+<p><strong>Corollary 5.2 (finite regularity with a fixed order).</strong> Suppose <span class="math" data-tex="\(u,v\)">\(u,v\)</span> have order at most <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(S_k(u)\)">\(S_k(u)\)</span> and <span class="math" data-tex="\(S_k(v)\)">\(S_k(v)\)</span> be the complements of their open <span class="math" data-tex="\(C^k\)">\(C^k\)</span> regular loci: the points near which they are represented by <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions. If <span class="math" data-tex="\(S_k(u)\cap S_k(v)=\varnothing\)">\(S_k(u)\cap S_k(v)=\varnothing\)</span>, the local <span class="math" data-tex="\(C^k\)">\(C^k\)</span>-multiplier rule defines a commutative product of order at most <span class="math" data-tex="\(k\)">\(k\)</span>. Its support satisfies (5.2), and a compact support intersection gives (5.3). With a globally <span class="math" data-tex="\(C^k\)">\(C^k\)</span> factor, the scalar pairing agrees with the <span class="math" data-tex="\(C^k\)">\(C^k\)</span> extension in Theorem 3.1. Three order-<span class="math" data-tex="\(k\)">\(k\)</span> distributions with pairwise disjoint <span class="math" data-tex="\(S_k\)">\(S_k\)</span> sets likewise associate.</p>
+<p><strong>Proof.</strong> Continuous representatives are unique by the same bump argument, so local <span class="math" data-tex="\(C^k\)">\(C^k\)</span> representatives glue as functions and their loci are open. The hypothesis provides a cover with one <span class="math" data-tex="\(C^k\)">\(C^k\)</span> factor on each piece. Proposition 4.1 defines the local products with order at most <span class="math" data-tex="\(k\)">\(k\)</span>. If opposite factors are chosen on an overlap, both are <span class="math" data-tex="\(C^k\)">\(C^k\)</span> there, and their distributional product agrees with their ordinary function product, by uniform approximation in the canonical <span class="math" data-tex="\(C_c^k\)">\(C_c^k\)</span> pairing. Thus Theorem 2.1 glues them and preserves order <span class="math" data-tex="\(k\)">\(k\)</span>. Local vanishing proves the support bound, and evaluating the compact product on one proves the scalar pairing. The cutoff computation from Theorem 5.1 remains valid with <span class="math" data-tex="\(C^k\)">\(C^k\)</span> tests by Theorem 3.1. For three factors, the pairwise disjoint exceptional sets leave at least two <span class="math" data-tex="\(C^k\)">\(C^k\)</span> factors near every point; the product of those functions is <span class="math" data-tex="\(C^k\)">\(C^k\)</span>, and the same local associativity and gluing argument applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Checking compatibility — foundation.</strong> Cover the line by <span class="math" data-tex="\(X_-=(-\infty,1)\)">\(X_-=(-\infty,1)\)</span> and <span class="math" data-tex="\(X_+=(-1,\infty)\)">\(X_+=(-1,\infty)\)</span>. Put <span class="math" data-tex="\(u_-=H\)">\(u_-=H\)</span> and <span class="math" data-tex="\(u_+=H+\delta_2\)">\(u_+=H+\delta_2\)</span>, with each restricted to its indicated open set. Determine the glued distribution. If <span class="math" data-tex="\(\delta_2\)">\(\delta_2\)</span> is replaced by <span class="math" data-tex="\(\delta_{1/2}\)">\(\delta_{1/2}\)</span>, explain exactly why gluing fails.</li>
+<li><strong>A noncompact test — intermediate.</strong> Let <span class="math" data-tex="\(u=\sum_{j\ge1}\delta_j\)">\(u=\sum_{j\ge1}\delta_j\)</span> on the line. Choose a smooth function equal to <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, supported in <span class="math" data-tex="\((1/2,3/2)\)">\((1/2,3/2)\)</span>, and add an arbitrary smooth function supported in <span class="math" data-tex="\((-\infty,-1)\)">\((-\infty,-1)\)</span>. Show its pairing with <span class="math" data-tex="\(u\)">\(u\)</span> is defined and equals <span class="math" data-tex="\(1\)">\(1\)</span>, although the test need not be compactly supported. Explain why the constant function one is outside the domain in Theorem 3.1.</li>
+<li><strong>A finite-order multiplier — intermediate.</strong> For <span class="math" data-tex="\(a\in C^1(\mathbb R)\)">\(a\in C^1(\mathbb R)\)</span>, compute <span class="math" data-tex="\(a\delta&#x27;_0\)">\(a\delta&#x27;_0\)</span> as a linear combination of <span class="math" data-tex="\(\delta&#x27;_0,\delta_0\)">\(\delta&#x27;_0,\delta_0\)</span>. Check both coefficients and show why knowing only <span class="math" data-tex="\(a(0)\)">\(a(0)\)</span> is insufficient.</li>
+<li><strong>Both factors singular — advanced.</strong> Let <span class="math" data-tex="\(u=\delta_0+e^{-x^2}\)">\(u=\delta_0+e^{-x^2}\)</span> and <span class="math" data-tex="\(v=\delta_2+\rho\)">\(v=\delta_2+\rho\)</span>, where <span class="math" data-tex="\(\rho\in C_c^\infty(\mathbb R)\)">\(\rho\in C_c^\infty(\mathbb R)\)</span>. Compute their compatible product and their scalar pairing. State the singular-support and compactness hypotheses explicitly.</li>
+<li><strong>An obstruction to arbitrary multiplication — advanced.</strong> Let <span class="math" data-tex="\(\rho\ge0\)">\(\rho\ge0\)</span> be a nonzero smooth compactly supported function on the line with integral <span class="math" data-tex="\(1\)">\(1\)</span>, and let <span class="math" data-tex="\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)">\(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\)</span>. Prove <span class="math" data-tex="\(\rho_\varepsilon\to\delta_0\)">\(\rho_\varepsilon\to\delta_0\)</span> as distributions but <span class="math" data-tex="\(\rho_\varepsilon^2\)">\(\rho_\varepsilon^2\)</span> has no distributional limit. Deduce that no jointly sequentially continuous multiplication on all pairs of distributions can agree with ordinary smooth multiplication.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> On the overlap <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, <span class="math" data-tex="\(\delta_2\)">\(\delta_2\)</span> restricts to zero, so both local distributions are <span class="math" data-tex="\(H\)">\(H\)</span>. The distribution <span class="math" data-tex="\(H+\delta_2\)">\(H+\delta_2\)</span> on the full line has exactly the stated restrictions. Uniqueness gives this as the gluing. With <span class="math" data-tex="\(\delta_{1/2}\)">\(\delta_{1/2}\)</span>, a bump supported near <span class="math" data-tex="\(1/2\)">\(1/2\)</span> inside the overlap and equal to one there has local pairings differing by one. Thus the two restrictions disagree on the overlap, contradicting (2.1); no global distribution has both restrictions.</p>
+<p><strong>Solution 2.</strong> The distribution has support <span class="math" data-tex="\(\{1,2,\ldots\}\)">\(\{1,2,\ldots\}\)</span>; the sum is locally finite. The specified function's support intersects this set only at <span class="math" data-tex="\(1\)">\(1\)</span>, a compact intersection, so Theorem 3.1 applies. A cutoff near <span class="math" data-tex="\(1\)">\(1\)</span>, supported away from every other positive integer, evaluates the pairing as its value at <span class="math" data-tex="\(1\)">\(1\)</span>, namely <span class="math" data-tex="\(1\)">\(1\)</span>. The negative-side part contributes zero, regardless of its noncompact extent. The constant one has support all of the line, and its intersection with <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> is the unbounded set of positive integers. This is not compact, so (3.1) does not define that pairing. Its formal sum of values would also diverge.</p>
+<p><strong>Solution 3.</strong> The <span class="math" data-tex="\(C^1\)">\(C^1\)</span> pairing gives</p>
+<span class="math math-display" data-tex="\[
+(a\delta&#x27;_0)(\phi)=-(a\phi)&#x27;(0)
+=-a(0)\phi&#x27;(0)-a&#x27;(0)\phi(0).
+\]">\[
+(a\delta&#x27;_0)(\phi)=-(a\phi)&#x27;(0)
+=-a(0)\phi&#x27;(0)-a&#x27;(0)\phi(0).
+\]</span>
+<p>Hence <span class="math" data-tex="\(a\delta&#x27;_0=a(0)\delta&#x27;_0-a&#x27;(0)\delta_0\)">\(a\delta&#x27;_0=a(0)\delta&#x27;_0-a&#x27;(0)\delta_0\)</span>. The second coefficient has a minus sign. Two <span class="math" data-tex="\(C^1\)">\(C^1\)</span> functions with the same value at zero but different first derivatives give different products, because <span class="math" data-tex="\(\delta&#x27;_0\)">\(\delta&#x27;_0\)</span> measures a first jet of the product test.</p>
+<p><strong>Solution 4.</strong> The smooth added functions do not cancel the delta singularities, so the singular supports are exactly <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and <span class="math" data-tex="\(\{2\}\)">\(\{2\}\)</span>, respectively. For example, a delta cannot be smooth near its point: it vanishes on the punctured neighborhood, so a continuous representative there would be zero everywhere, yet it pairs nontrivially with a bump at the point. Thus (5.1) holds. The support of <span class="math" data-tex="\(u\)">\(u\)</span> is the full line, and <span class="math" data-tex="\(v\)">\(v\)</span> has compact support contained in <span class="math" data-tex="\(\{2\}\cup\operatorname{supp}\rho\)">\(\{2\}\cup\operatorname{supp}\rho\)</span>, so the intersection is compact.</p>
+<p>The separated delta product is zero: near <span class="math" data-tex="\(0\)">\(0\)</span> the delta at <span class="math" data-tex="\(2\)">\(2\)</span> is zero, near <span class="math" data-tex="\(2\)">\(2\)</span> the delta at <span class="math" data-tex="\(0\)">\(0\)</span> is zero, and away from both each is zero. The other terms use smooth multiplication. Therefore</p>
+<span class="math math-display" data-tex="\[
+uv=e^{-4}\delta_2+\rho(0)\delta_0+e^{-x^2}\rho(x),
+\qquad
+\langle u,v\rangle=e^{-4}+\rho(0)+
+\int_{\mathbb R}e^{-x^2}\rho(x)\,dx.
+\]">\[
+uv=e^{-4}\delta_2+\rho(0)\delta_0+e^{-x^2}\rho(x),
+\qquad
+\langle u,v\rangle=e^{-4}+\rho(0)+
+\int_{\mathbb R}e^{-x^2}\rho(x)\,dx.
+\]</span>
+<p>All terms have compact support. The same result arises on swapping the two factors.</p>
+<p><strong>Solution 5.</strong> For each smooth compact test, the substitution <span class="math" data-tex="\(x=\varepsilon y\)">\(x=\varepsilon y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\rho_\varepsilon(\phi)=\int\rho(y)\phi(\varepsilon y)\,dy
+\longrightarrow\phi(0)\int\rho(y)\,dy=\phi(0).
+\]">\[
+\rho_\varepsilon(\phi)=\int\rho(y)\phi(\varepsilon y)\,dy
+\longrightarrow\phi(0)\int\rho(y)\,dy=\phi(0).
+\]</span>
+<p>Choose a smooth compactly supported <span class="math" data-tex="\(\phi\)">\(\phi\)</span> equal to one near zero. For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, it is one on the support of <span class="math" data-tex="\(\rho_\varepsilon\)">\(\rho_\varepsilon\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\rho_\varepsilon^2(\phi)
+=\varepsilon^{-1}\int\rho(y)^2\,dy\longrightarrow+\infty.
+\]">\[
+\rho_\varepsilon^2(\phi)
+=\varepsilon^{-1}\int\rho(y)^2\,dy\longrightarrow+\infty.
+\]</span>
+<p>The integral is strictly positive, so there is no finite scalar limit on this test and hence no distributional limit. A jointly sequentially continuous multiplication defined on all distribution pairs would send <span class="math" data-tex="\((\rho_\varepsilon,\rho_\varepsilon)\to(\delta_0,\delta_0)\)">\((\rho_\varepsilon,\rho_\varepsilon)\to(\delta_0,\delta_0)\)</span> to a convergent product sequence. Agreement with smooth multiplication would make that sequence <span class="math" data-tex="\(\rho_\varepsilon^2\)">\(\rho_\varepsilon^2\)</span>, contradicting the calculation. This obstruction concerns the stated global continuity and agreement properties; it does not prevent particular products under additional hypotheses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. Sections 2.3, 3.2 and 8.3. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li>[Whitney 1934] Hassler Whitney, <em>Analytic extensions of differentiable functions defined in closed sets</em>, Transactions of the American Mathematical Society 36 (1934), 63–89. The finite-jet viewpoint explains why nonsmooth multipliers require a specified derivative order. <a href="https://www.ams.org/journals/tran/1934-036-01/S0002-9947-1934-1501735-3/S0002-9947-1934-1501735-3.pdf">Full text</a>.</li>
+</ul>
+<p><a href="src/local-data-and-compatible-products.md">Download the complete original CC0 source</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

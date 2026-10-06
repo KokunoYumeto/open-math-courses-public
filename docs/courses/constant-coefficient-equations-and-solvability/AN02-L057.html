@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Regular balls, moving roots and complex gauges</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="regular-balls-moving-roots-and-complex-gauges">Regular balls, moving roots and complex gauges</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The characteristic Cauchy problem permits a leading time coefficient that depends on tangential frequency. This changes both the root bounds and the geometry of the frequency regions on which individual roots can be followed. We prove the uniform zero-free-ball lemma, the precise weighted root bound, an inset lower bound for the leading coefficient, and full analytic labeling on a ball. We also prove the support-preserving complex gauge change and exhibit its effect on the Schrödinger equation.</p>
+<p>Read <a href="AN02-L044.html">Primitive factors and moving polynomial roots</a>, <a href="AN02-L054.html">Uniqueness in a slab with bounded support</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="a-uniformly-large-zero-free-ball-with-a-real-center">A uniformly large zero-free ball, with a real center</h2>
+<p><strong>Lemma 1.</strong> Fix <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and an integer <span class="math" data-tex="\(M\ge0\)">\(M\ge0\)</span>. There is <span class="math" data-tex="\(\gamma_{d,M}&gt;0\)">\(\gamma_{d,M}&gt;0\)</span> such that every nonzero complex polynomial <span class="math" data-tex="\(R\)">\(R\)</span> of degree at most <span class="math" data-tex="\(M\)">\(M\)</span>, and every complex Euclidean ball <span class="math" data-tex="\(B(c,t)\)">\(B(c,t)\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, contain a ball <span class="math" data-tex="\(B(c&#x27;,\gamma_{d,M}t)\)">\(B(c&#x27;,\gamma_{d,M}t)\)</span> on which <span class="math" data-tex="\(R\)">\(R\)</span> has no zeros. We can choose <span class="math" data-tex="\(c&#x27;\in c+t\mathbb R^d\)">\(c&#x27;\in c+t\mathbb R^d\)</span>. In particular a real original center gives a real new center. No assumption on <span class="math" data-tex="\(R(c)\)">\(R(c)\)</span> is made.</p>
+<p><strong>Proof.</strong> The degree-zero case is immediate with <span class="math" data-tex="\(\gamma=1/4\)">\(\gamma=1/4\)</span>. Suppose <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>. In local coordinates, write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(w)=\sum_{|\alpha|\le M}b_\alpha w^\alpha,\\
+\qquad
+ \|Q\|_{\rm coeff}=\sum_{|\alpha|\le M}|b_\alpha|.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+Q(w)=\sum_{|\alpha|\le M}b_\alpha w^\alpha,\\
+\qquad
+ \|Q\|_{\rm coeff}=\sum_{|\alpha|\le M}|b_\alpha|.
+\end{gathered}
+\tag{1}
+\]</span>
+The coefficient unit sphere is a nonempty closed bounded subset of a finite-dimensional complex coordinate space, hence compact. For that sphere define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q(Q)=\max_{x\in\mathbb R^d,\ |x|\le1/2}|Q(x)|,\\
+\qquad
+ c_{d,M}=\min_{\|Q\|_{\rm coeff}=1}q(Q).
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+q(Q)=\max_{x\in\mathbb R^d,\ |x|\le1/2}|Q(x)|,\\
+\qquad
+ c_{d,M}=\min_{\|Q\|_{\rm coeff}=1}q(Q).
+\end{gathered}
+\tag{2}
+\]</span>
+The maxima exist. Moreover <span class="math" data-tex="\(|q(Q)-q(Q&#x27;)|\le\|Q-Q&#x27;\|_{\rm coeff}\)">\(|q(Q)-q(Q&#x27;)|\le\|Q-Q&#x27;\|_{\rm coeff}\)</span>, since each monomial has modulus at most one on the real half-ball. Thus the minimum exists as well.</p>
+<p>It is positive. A polynomial zero on a real ball is the zero polynomial: take a real coordinate box inside the ball, regard the polynomial as a polynomial in its first coordinate, and use that a nonzero one-variable polynomial has only finitely many zeros. Its coefficient polynomials therefore vanish on the remaining real box; repeat through all coordinates. The coefficient unit sphere excludes that zero polynomial. Positivity at every point of this compact sphere, together with continuity and attainment of the minimum, gives <span class="math" data-tex="\(c_{d,M}&gt;0\)">\(c_{d,M}&gt;0\)</span>. This is uniform across polynomials of smaller degree too.</p>
+<p>For <span class="math" data-tex="\(\|Q\|_{\rm coeff}=1\)">\(\|Q\|_{\rm coeff}=1\)</span>, every <span class="math" data-tex="\(|w|\le1\)">\(|w|\le1\)</span> and complex direction <span class="math" data-tex="\(h\)">\(h\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|dQ(w)h|
+ \\
+\le \sum_\alpha |b_\alpha|\sum_j\alpha_j|h_j|
+ \\
+\le M|h|_2.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+|dQ(w)h|
+ \\
+\le \sum_\alpha |b_\alpha|\sum_j\alpha_j|h_j|
+ \\
+\le M|h|_2.
+\end{gathered}
+\tag{3}
+\]</span>
+Indeed all factors of the differentiated monomials have modulus at most one, <span class="math" data-tex="\(|h_j|\le|h|_2\)">\(|h_j|\le|h|_2\)</span>, and <span class="math" data-tex="\(\sum_j\alpha_j\le M\)">\(\sum_j\alpha_j\le M\)</span>. The ordinary real parameter along a complex line segment gives the same derivative and the usual integral bound.</p>
+<p>Choose a maximizing real point <span class="math" data-tex="\(x\)">\(x\)</span> in the half-ball and set
+<span class="math math-display" data-tex="\[
+ \gamma_{d,M}=\min\left(\frac14,\frac{c_{d,M}}{2M}\right).
+ \tag{4}
+\]">\[
+ \gamma_{d,M}=\min\left(\frac14,\frac{c_{d,M}}{2M}\right).
+ \tag{4}
+\]</span>
+If <span class="math" data-tex="\(|w-x|&lt;\gamma_{d,M}\)">\(|w-x|&lt;\gamma_{d,M}\)</span>, the entire segment between <span class="math" data-tex="\(x,w\)">\(x,w\)</span> is in the unit ball. By(3),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|Q(w)|\\
+\ge |Q(x)|-M|w-x|&gt;c_{d,M}/2&gt;0.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+|Q(w)|\\
+\ge |Q(x)|-M|w-x|&gt;c_{d,M}/2&gt;0.
+\end{gathered}
+\tag{5}
+\]</span>
+Also that new ball lies in the original unit ball because <span class="math" data-tex="\(|x|+\gamma\le3/4\)">\(|x|+\gamma\le3/4\)</span>.</p>
+<p>For the original polynomial use <span class="math" data-tex="\(Q(w)=R(c+tw)/\|R(c+t\,\cdot)\|_{\rm coeff}\)">\(Q(w)=R(c+tw)/\|R(c+t\,\cdot)\|_{\rm coeff}\)</span>. Translation and positive dilation preserve degree and do not turn a nonzero polynomial into zero. The denominator is positive even if <span class="math" data-tex="\(R(c)=0\)">\(R(c)=0\)</span>. Set <span class="math" data-tex="\(c&#x27;=c+tx\)">\(c&#x27;=c+tx\)</span>. This proves the whole assertion, including the requested reality. In dimension zero a nonzero polynomial is a nonzero constant on the single point; any <span class="math" data-tex="\(\gamma\le1\)">\(\gamma\le1\)</span> gives the vacuous-dimensional assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-leading-coefficient-belongs-in-the-root-bound">The leading coefficient belongs in the root bound</h2>
+<p><strong>Lemma 2.</strong> Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(z,s)=\sum_{j=0}^m a_j(z)s^j,\\
+\qquad
+ a=a_m\not\equiv0,\\
+\qquad 1\le m\le M,\\
+\qquad
+ \deg P\le M,\\
+\qquad \kappa=M-m+1.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+P(z,s)=\sum_{j=0}^m a_j(z)s^j,\\
+\qquad
+ a=a_m\not\equiv0,\\
+\qquad 1\le m\le M,\\
+\qquad
+ \deg P\le M,\\
+\qquad \kappa=M-m+1.
+\end{gathered}
+\tag{6}
+\]</span>
+There is <span class="math" data-tex="\(C_P\)">\(C_P\)</span> such that, for all complex <span class="math" data-tex="\(z,s\)">\(z,s\)</span> with <span class="math" data-tex="\(P(z,s)=0\)">\(P(z,s)=0\)</span>,
+<span class="math math-display" data-tex="\[
+ |a(z)s|\le C_P(1+|z|)^\kappa.
+ \tag{7}
+\]">\[
+ |a(z)s|\le C_P(1+|z|)^\kappa.
+ \tag{7}
+\]</span>
+The integer <span class="math" data-tex="\(m\)">\(m\)</span> is the degree in <span class="math" data-tex="\(s\)">\(s\)</span>; it need not be the total order <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(a(z)=0\)">\(a(z)=0\)</span>, the left side is zero, even at a fiber on which <span class="math" data-tex="\(P(z,\cdot)\)">\(P(z,\cdot)\)</span> vanishes identically. Otherwise put <span class="math" data-tex="\(w=a(z)s\)">\(w=a(z)s\)</span> and multiply the equation by <span class="math" data-tex="\(a(z)^{m-1}\)">\(a(z)^{m-1}\)</span>. It becomes
+<span class="math math-display" data-tex="\[
+ w^m+\sum_{k=1}^m a_{m-k}(z)a(z)^{k-1}w^{m-k}=0.
+ \tag{8}
+\]">\[
+ w^m+\sum_{k=1}^m a_{m-k}(z)a(z)^{k-1}w^{m-k}=0.
+ \tag{8}
+\]</span>
+The coefficient of <span class="math" data-tex="\(w^{m-k}\)">\(w^{m-k}\)</span> has degree at most
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(M-m+k)+(k-1)(M-m)\\
+=k\kappa.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+(M-m+k)+(k-1)(M-m)\\
+=k\kappa.
+\end{gathered}
+\tag{9}
+\]</span>
+Consequently its modulus is at most <span class="math" data-tex="\(A_k(1+|z|)^{k\kappa}\)">\(A_k(1+|z|)^{k\kappa}\)</span>, with a fixed nonnegative coefficient bound <span class="math" data-tex="\(A_k\)">\(A_k\)</span>. This follows directly by summing its finitely many monomials, using <span class="math" data-tex="\(|z_j|\le1+|z|\)">\(|z_j|\le1+|z|\)</span>. Divide by <span class="math" data-tex="\((1+|z|)^{m\kappa}\)">\((1+|z|)^{m\kappa}\)</span> and put <span class="math" data-tex="\(v=w/(1+|z|)^\kappa\)">\(v=w/(1+|z|)^\kappa\)</span>. The resulting monic polynomial has its <span class="math" data-tex="\(k\)">\(k\)</span>-th coefficient bounded by <span class="math" data-tex="\(A_k\)">\(A_k\)</span>.</p>
+<p>Take <span class="math" data-tex="\(L=2\max(1,\max_k A_k^{1/k})\)">\(L=2\max(1,\max_k A_k^{1/k})\)</span>. If <span class="math" data-tex="\(|v|&gt;L\)">\(|v|&gt;L\)</span>, division by <span class="math" data-tex="\(v^m\)">\(v^m\)</span> would give <span class="math" data-tex="\(1\le\sum_k A_k|v|^{-k}&lt;\sum_{k=1}^m2^{-k}&lt;1\)">\(1\le\sum_k A_k|v|^{-k}&lt;\sum_{k=1}^m2^{-k}&lt;1\)</span>. Thus <span class="math" data-tex="\(|v|\le L\)">\(|v|\le L\)</span>, proving(7). Repeated roots require no separate argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-lower-bound-inside-a-zero-free-neighborhood">A lower bound inside a zero-free neighborhood</h2>
+<p><strong>Lemma 3.</strong> Let <span class="math" data-tex="\(a\not\equiv0\)">\(a\not\equiv0\)</span> be a complex polynomial of degree <span class="math" data-tex="\(q\)">\(q\)</span>. If <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, choose a fixed unit vector <span class="math" data-tex="\(v\in\mathbb C^d\)">\(v\in\mathbb C^d\)</span> with <span class="math" data-tex="\(a_q(v)\ne0\)">\(a_q(v)\ne0\)</span>, where <span class="math" data-tex="\(a_q\)">\(a_q\)</span> is its highest homogeneous part. If <span class="math" data-tex="\(a\)">\(a\)</span> has no zeros in <span class="math" data-tex="\(B(z,r)\)">\(B(z,r)\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+ |a(z)|\ge |a_q(v)|r^q.
+ \tag{10}
+\]">\[
+ |a(z)|\ge |a_q(v)|r^q.
+ \tag{10}
+\]</span>
+For <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the bound is the fixed positive constant <span class="math" data-tex="\(|a|\)">\(|a|\)</span>. The constant is independent of the center <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Proof.</strong> A nonzero homogeneous polynomial is nonzero somewhere and hence on some unit vector by positive scaling. The one-variable polynomial <span class="math" data-tex="\(a(z+\lambda v)\)">\(a(z+\lambda v)\)</span> has degree exactly <span class="math" data-tex="\(q\)">\(q\)</span> and leading coefficient <span class="math" data-tex="\(a_q(v)\)">\(a_q(v)\)</span>, independent of <span class="math" data-tex="\(z\)">\(z\)</span>. Factor it with multiplicities:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(z+\lambda v)=a_q(v)\prod_{\nu=1}^q(\lambda-\lambda_\nu),\\
+\qquad
+ |\lambda_\nu|\ge r.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+a(z+\lambda v)=a_q(v)\prod_{\nu=1}^q(\lambda-\lambda_\nu),\\
+\qquad
+ |\lambda_\nu|\ge r.
+\end{gathered}
+\tag{11}
+\]</span>
+The root inequality follows because <span class="math" data-tex="\(|\lambda v|=|\lambda|\)">\(|\lambda v|=|\lambda|\)</span> and the open radius-<span class="math" data-tex="\(r\)">\(r\)</span> ball is zero-free. Evaluation at <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> proves(10). A zero exactly at distance <span class="math" data-tex="\(r\)">\(r\)</span> does not spoil the weak lower bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(a\)">\(a\)</span> is zero-free on <span class="math" data-tex="\(B(c,R+1)\)">\(B(c,R+1)\)</span>, every <span class="math" data-tex="\(z\in B(c,R)\)">\(z\in B(c,R)\)</span> has a zero-free radius-one ball. Lemma3 supplies a fixed positive lower bound for <span class="math" data-tex="\(|a(z)|\)">\(|a(z)|\)</span>. Together with Lemma2 this gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|s|\le C(1+|z|)^{M-m+1}
+ \\
+\quad\hbox{if }z\in B(c,R),\ P(z,s)=0,
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+|s|\le C(1+|z|)^{M-m+1}
+ \\
+\quad\hbox{if }z\in B(c,R),\ P(z,s)=0,
+\end{gathered}
+\tag{12}
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> depends on <span class="math" data-tex="\(P\)">\(P\)</span>, and not on <span class="math" data-tex="\(c,R\)">\(c,R\)</span>. This proves the inset root bound used in the characteristic Cauchy necessity argument without an unstated reciprocal-polynomial estimate.</p>
+<h2 id="analytic-labels-on-a-whole-ball">Analytic labels on a whole ball</h2>
+<p><strong>Lemma 4.</strong> Suppose <span class="math" data-tex="\(a_m(z)\ne0\)">\(a_m(z)\ne0\)</span> on a complex ball <span class="math" data-tex="\(B\)">\(B\)</span>, and all roots of <span class="math" data-tex="\(P(z,\cdot)\)">\(P(z,\cdot)\)</span> are simple there. Then there are <span class="math" data-tex="\(m\)">\(m\)</span> distinct holomorphic functions <span class="math" data-tex="\(s_1,\ldots,s_m\)">\(s_1,\ldots,s_m\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(z,s)=a_m(z)\prod_{j=1}^m(s-s_j(z)),\\
+\qquad z\in B.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+P(z,s)=a_m(z)\prod_{j=1}^m(s-s_j(z)),\\
+\qquad z\in B.
+\end{gathered}
+\tag{13}
+\]</span>
+Choosing the labels at one point determines them everywhere.</p>
+<p><strong>Proof.</strong> At any point the holomorphic implicit-function theorem gives one graph for each simple root. Shrink their common base neighborhood so the graphs remain distinct. They account for all <span class="math" data-tex="\(m\)">\(m\)</span> roots: the leading coefficient stays nonzero and the scalar polynomial has degree <span class="math" data-tex="\(m\)">\(m\)</span>. These neighborhoods evenly cover the root set over <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>A continuous path admits unique continuation of a chosen root through those graph neighborhoods. For completeness, cover its compact image by finitely many such neighborhoods. Uniform continuity and the finite-cover distance property subdivide the parameter interval so that each subpath lies in one neighborhood. Its graph uniquely continues the preceding endpoint. The graph choices agree on overlaps, since a common simple root has a unique local graph. This gives existence, uniqueness, and continuation all the way to the endpoint.</p>
+<p>Two paths with the same endpoints give the same final root when they are homotopic with endpoints fixed. Here is the needed finite argument. A homotopy has compact image; choose finitely many evenly covered neighborhoods and a uniform subdivision of its parameter square fine enough that the image of each closed small rectangle lies in one neighborhood. Such a subdivision follows from uniform continuity and the compact-cover distance property. Continuation around each rectangle returns to the same graph, and therefore to the same root. Cancel the oppositely traversed internal edges of the rectangular grid. The continuations along the two boundary paths have equal endpoints. The two fixed-endpoint sides are constant and introduce no change.</p>
+<p>Fix a point <span class="math" data-tex="\(z_0\in B\)">\(z_0\in B\)</span> and its <span class="math" data-tex="\(m\)">\(m\)</span> roots. Continue each along the straight segment from <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to <span class="math" data-tex="\(z\)">\(z\)</span>. The ball is convex. Every other path is homotopic to this segment by straight interpolation between the two paths, with fixed endpoints, inside the ball. Thus the labels are well-defined independently of the path.</p>
+<p>To prove holomorphy near <span class="math" data-tex="\(z\)">\(z\)</span>, continue first to <span class="math" data-tex="\(z\)">\(z\)</span>, then along a short path inside its graph neighborhood. That concatenation is homotopic to the straight segment to the nearby endpoint. The globally continued value therefore agrees with the local holomorphic graph. The labels cannot meet: reverse continuation from a hypothetical meeting point would identify two distinct initial roots. They enumerate all <span class="math" data-tex="\(m\)">\(m\)</span> roots, and scalar factorization gives(13). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For irreducible <span class="math" data-tex="\(P\)">\(P\)</span> of positive <span class="math" data-tex="\(s\)">\(s\)</span>-degree, the full Sylvester calculation in the slab-uniqueness lesson supplies a nonzero exceptional polynomial whose complement has precisely full-degree simple fibers. Its degree is finite and bounded in terms of the degree and dimension of <span class="math" data-tex="\(P\)">\(P\)</span>: the determinant has size <span class="math" data-tex="\(2m-1\)">\(2m-1\)</span>, and every entry is a coefficient polynomial or a scalar multiple of one. Lemma1 therefore gives, inside every tangential ball, a uniformly proportional subball with all <span class="math" data-tex="\(m\)">\(m\)</span> analytic labels. This statement concerns a ball, rather than all of the generally multiply connected exceptional-set complement.</p>
+<h2 id="complex-gauge-changes-preserve-the-support-question">Complex gauge changes preserve the support question</h2>
+<p>For <span class="math" data-tex="\(\theta\in\mathbb C^n\)">\(\theta\in\mathbb C^n\)</span>, let <span class="math" data-tex="\(M_\theta u=e^{ix\cdot\theta}u\)">\(M_\theta u=e^{ix\cdot\theta}u\)</span>, defined for distributions by multiplication by that smooth nowhere-zero function. The product rule, first on smooth functions and then by distributional transposition, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(D_j-\theta_j)M_\theta u=M_\theta D_j u,\\
+\qquad
+ P(D-\theta)M_\theta u=M_\theta P(D)u.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+(D_j-\theta_j)M_\theta u=M_\theta D_j u,\\
+\qquad
+ P(D-\theta)M_\theta u=M_\theta P(D)u.
+\end{gathered}
+\tag{14}
+\]</span>
+The polynomial identity follows by applying the first identity repeatedly; the operators commute. Multiplication does not change distributional support: one inclusion follows from multiplication, and the reverse follows from multiplication by the smooth inverse <span class="math" data-tex="\(e^{-ix\cdot\theta}\)">\(e^{-ix\cdot\theta}\)</span>. If <span class="math" data-tex="\(P(D)E=\delta_0\)">\(P(D)E=\delta_0\)</span>, then <span class="math" data-tex="\(P(D-\theta)M_\theta E=\delta_0\)">\(P(D-\theta)M_\theta E=\delta_0\)</span>, since the multiplier equals one at the origin. In particular existence of a fundamental distribution with a specified halfspace support is invariant under complex translation of the symbol. This assertion imposes no global tempered-growth bound.</p>
+<p>An explicit example makes the distinction from a real-frequency root bound visible. In coordinates <span class="math" data-tex="\((x,t)\)">\((x,t)\)</span>, take <span class="math" data-tex="\(P(\xi,\tau)=\tau-\xi^2\)">\(P(\xi,\tau)=\tau-\xi^2\)</span>, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. Define, for a compactly supported smooth test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E(\phi)=\frac{i}{2\pi}\\
+\int_0^\infty\int_{\mathbb R}
+       e^{it\xi^2}\widehat{\phi}(-\xi,t)\,d\xi\,dt,
+ \\\widehat{\phi}(\xi,t)=\int_{\mathbb R}e^{-ix\xi}\phi(x,t)\,dx.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+E(\phi)=\frac{i}{2\pi}\\
+\int_0^\infty\int_{\mathbb R}
+       e^{it\xi^2}\widehat{\phi}(-\xi,t)\,d\xi\,dt,
+ \\\widehat{\phi}(\xi,t)=\int_{\mathbb R}e^{-ix\xi}\phi(x,t)\,dx.
+\end{gathered}
+\tag{15}
+\]</span>
+This is a distribution. On any fixed compact test support, <span class="math" data-tex="\(t\)">\(t\)</span> ranges over a bounded interval, and two spatial integrations by parts give a bound <span class="math" data-tex="\(C_K(1+|\xi|)^{-2}\)">\(C_K(1+|\xi|)^{-2}\)</span> times a fixed finite derivative seminorm. Thus the integral is absolutely convergent and continuous on that test stage. It vanishes for tests supported in <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, so its support is in <span class="math" data-tex="\(\{t\ge0\}\)">\(\{t\ge0\}\)</span>.</p>
+<p>The formal transpose of <span class="math" data-tex="\(P(D)=-i\partial_t+\partial_x^2\)">\(P(D)=-i\partial_t+\partial_x^2\)</span> is <span class="math" data-tex="\(i\partial_t+\partial_x^2\)">\(i\partial_t+\partial_x^2\)</span>. If <span class="math" data-tex="\(h(\xi,t)=\widehat\phi(-\xi,t)\)">\(h(\xi,t)=\widehat\phi(-\xi,t)\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e^{it\xi^2}\widehat{P(D)^{\rm t}\phi}(-\xi,t)
+   \\
+=i\,\partial_t\bigl(e^{it\xi^2}h(\xi,t)\bigr).
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+e^{it\xi^2}\widehat{P(D)^{\rm t}\phi}(-\xi,t)
+   \\
+=i\,\partial_t\bigl(e^{it\xi^2}h(\xi,t)\bigr).
+\end{gathered}
+\tag{16}
+\]</span>
+Four spatial integrations by parts bound both terms of this derivative integrably in <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, uniformly on the compact time interval. Fubini and time integration by parts are therefore valid. The coefficient <span class="math" data-tex="\(i/(2\pi)\)">\(i/(2\pi)\)</span> makes <span class="math" data-tex="\(E(P(D)^{\rm t}\phi)=(2\pi)^{-1}\int h(\xi,0)\,d\xi=\phi(0,0)\)">\(E(P(D)^{\rm t}\phi)=(2\pi)^{-1}\int h(\xi,0)\,d\xi=\phi(0,0)\)</span> by the Schwartz inversion theorem. Hence this is a halfspace fundamental distribution, with its phase proved directly.</p>
+<p>Now translate the spatial symbol by <span class="math" data-tex="\(i\)">\(i\)</span>: <span class="math" data-tex="\(P_1(\xi,\tau)=\tau-(\xi+i)^2\)">\(P_1(\xi,\tau)=\tau-(\xi+i)^2\)</span>. Its real-frequency roots have imaginary part <span class="math" data-tex="\(2\xi\)">\(2\xi\)</span>, unbounded below. The uniform lower imaginary-root bound in the elementary Petrowsky sufficient condition fails. Nevertheless <span class="math" data-tex="\(E_1=e^xE\)">\(E_1=e^xE\)</span> is a fundamental distribution for <span class="math" data-tex="\(P_1(D)\)">\(P_1(D)\)</span>, by(14) with <span class="math" data-tex="\(\theta=(-i,0)\)">\(\theta=(-i,0)\)</span>, and it has the same halfspace support. A sufficient real-frequency bound cannot be used as a necessary condition.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: a zero at the original center.</strong> For <span class="math" data-tex="\(d=M=1\)">\(d=M=1\)</span>, prove that <span class="math" data-tex="\(\gamma=1/6\)">\(\gamma=1/6\)</span> works for every nonzero affine polynomial, including <span class="math" data-tex="\(R(c)=0\)">\(R(c)=0\)</span>. Identify the normalization that would fail in the latter case.</p>
+<p><strong>Solution.</strong> In normalized local coordinates write <span class="math" data-tex="\(Q(w)=b+aw\)">\(Q(w)=b+aw\)</span>, <span class="math" data-tex="\(|a|+|b|=1\)">\(|a|+|b|=1\)</span>. Set <span class="math" data-tex="\(L=\max(|b+a/2|,|b-a/2|)\)">\(L=\max(|b+a/2|,|b-a/2|)\)</span>. Their sum and difference give <span class="math" data-tex="\(L\ge|b|\)">\(L\ge|b|\)</span> and <span class="math" data-tex="\(L\ge|a|/2\)">\(L\ge|a|/2\)</span>, hence <span class="math" data-tex="\(3L\ge|a|+|b|=1\)">\(3L\ge|a|+|b|=1\)</span>. Choose <span class="math" data-tex="\(x=1/2\)">\(x=1/2\)</span> or <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span> where that maximum is attained. On <span class="math" data-tex="\(|w-x|&lt;1/6\)">\(|w-x|&lt;1/6\)</span>, <span class="math math-display" data-tex="\[
+\begin{gathered}
+|Q(w)|\\
+\ge L-|a||w-x|&gt;1/3-1/6\\
+=1/6
+\end{gathered}
+\]">\[
+\begin{gathered}
+|Q(w)|\\
+\ge L-|a||w-x|&gt;1/3-1/6\\
+=1/6
+\end{gathered}
+\]</span></p>
+<p>The ball is inside the unit ball. Scale back. Dividing by <span class="math" data-tex="\(R(c)\)">\(R(c)\)</span> is invalid when that value is zero; the coefficient norm of <span class="math" data-tex="\(R(c+t\,\cdot)\)">\(R(c+t\,\cdot)\)</span> remains positive and is the correct normalization.</p>
+<p><strong>Exercise 2 — intermediate: the weighted root and the inset margin.</strong> Apply the root and inset lemmas to <span class="math" data-tex="\(P(z,s)=zs-1\)">\(P(z,s)=zs-1\)</span>. Explain why the coefficient factor cannot be discarded globally.</p>
+<p><strong>Solution.</strong> Here the total degree is <span class="math" data-tex="\(M=2\)">\(M=2\)</span>, the <span class="math" data-tex="\(s\)">\(s\)</span>-degree is <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-tex="\(\kappa=2\)">\(\kappa=2\)</span>, and <span class="math" data-tex="\(a(z)=z\)">\(a(z)=z\)</span>. Every actual root has <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, <span class="math" data-tex="\(s=1/z\)">\(s=1/z\)</span>, and <span class="math" data-tex="\(|a(z)s|=1\)">\(|a(z)s|=1\)</span>, satisfying Lemma2 with a stronger constant bound. At <span class="math" data-tex="\(z=0\)">\(z=0\)</span> the polynomial is <span class="math" data-tex="\(-1\)">\(-1\)</span> and has no roots. For <span class="math" data-tex="\(a(z)=z\)">\(a(z)=z\)</span>, choose <span class="math" data-tex="\(v=1\)">\(v=1\)</span>; its highest homogeneous value is one. If <span class="math" data-tex="\(B(z,r)\)">\(B(z,r)\)</span> has no zero, then <span class="math" data-tex="\(|z|\ge r\)">\(|z|\ge r\)</span>, exactly the bound in Lemma3, and <span class="math" data-tex="\(|s|\le1/r\)">\(|s|\le1/r\)</span>. For example on <span class="math" data-tex="\(B(2,1)\)">\(B(2,1)\)</span>, <span class="math" data-tex="\(|s|&lt;1\)">\(|s|&lt;1\)</span>. Globally <span class="math" data-tex="\(z\to0\)">\(z\to0\)</span> through nonzero values makes <span class="math" data-tex="\(|s|\to\infty\)">\(|s|\to\infty\)</span> although <span class="math" data-tex="\(|z|\)">\(|z|\)</span> stays bounded. The weighted product remains bounded and no unweighted global estimate follows.</p>
+<p><strong>Exercise 3 — advanced: the ball hypothesis and monodromy.</strong> Show that the two simple roots of <span class="math" data-tex="\(s^2-z\)">\(s^2-z\)</span> can be labeled on <span class="math" data-tex="\(B(1,1/4)\)">\(B(1,1/4)\)</span>, but cannot be labeled by a single-valued holomorphic square root on <span class="math" data-tex="\(1/2&lt;|z|&lt;2\)">\(1/2&lt;|z|&lt;2\)</span>.</p>
+<p><strong>Solution.</strong> The leading coefficient is one, and <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> on the ball. Both roots are simple, so Lemma4 gives the two holomorphic labels there, once their values at <span class="math" data-tex="\(z=1\)">\(z=1\)</span> are chosen as <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. On the annulus, suppose a single-valued holomorphic <span class="math" data-tex="\(s(z)\)">\(s(z)\)</span> satisfied <span class="math" data-tex="\(s(z)^2=z\)">\(s(z)^2=z\)</span>. Put <span class="math" data-tex="\(g(t)=s(e^{it})\)">\(g(t)=s(e^{it})\)</span>, <span class="math" data-tex="\(0\le t\le2\pi\)">\(0\le t\le2\pi\)</span>. Differentiating <span class="math" data-tex="\(g^2=e^{it}\)">\(g^2=e^{it}\)</span>, and using <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>, gives <span class="math" data-tex="\(g&#x27;=ig/2\)">\(g&#x27;=ig/2\)</span>. Differentiation of <span class="math" data-tex="\(e^{-it/2}g(t)\)">\(e^{-it/2}g(t)\)</span> makes it constant, so <span class="math" data-tex="\(g(2\pi)=-g(0)\)">\(g(2\pi)=-g(0)\)</span>. Single-valuedness at <span class="math" data-tex="\(e^{2\pi i}=1\)">\(e^{2\pi i}=1\)</span> requires <span class="math" data-tex="\(g(2\pi)=g(0)\)">\(g(2\pi)=g(0)\)</span>, a contradiction. Simple local roots alone do not imply global labels on an annulus; the convex ball and its explicit path-homotopy argument supply that missing step.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="B0C8F197452899129205EC69BC9F39BA05F2FC1415EE83FB10AC60F2F58BD806">
+<title>Compact operators, multipliers and the strict topology — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-hilbert-c-star-modules-and-morita-equivalence/compact-operators-multipliers-and-the-strict-topology</span></nav>
+<article id="lesson" class="lesson"><h1 id="compact-operators-multipliers-and-the-strict-topology">Compact operators, multipliers and the strict topology</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An identity operator can be compact on a Hilbert module even when the module is an infinite-dimensional Banach space. For example, on a unital C*-algebra regarded as a module over itself, the identity is a single rank-one module operator. This observation changes the question we ask: which operators are built from the module's inner product, and which operators act as multipliers of that collection?</p>
+<p>We answer both questions. We compute compact operators on the basic modules, prove that every adjointable operator is a multiplier of the compact operators, and describe the topology in which compact operators approximate all adjointable operators. We also explain exactly what compactness says about Hilbert-space fibres.</p>
+<p>The prerequisites are <a href="adjointable-operators.html">Adjointable operators</a> and the basic multiplier terminology of <em>Multipliers and essential extensions</em>. We assume the Hilbert-module Cauchy–Schwarz inequality, the C*-algebra structure of adjointable operators, and ordinary C*-algebra functional calculus and approximate identities. No fullness, separability, unitality, or countable generation is assumed unless stated. Basic references are [Blackadar 1998], [Blackadar 2006], and [Emerson 2024].</p>
+<p>Throughout, <span class="math" data-tex="\(E\)">\(E\)</span> is a right Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module, the inner product is linear in its second variable, and <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> denotes its adjointable operators. Write <span class="math" data-tex="\(\mathbb K=\mathcal K(\ell^2)\)">\(\mathbb K=\mathcal K(\ell^2)\)</span> for Hilbert-space compact operators and use the spatial tensor product.</p>
+<h2 id="1-operators-made-from-vectors">1. Operators made from vectors</h2>
+<p>For <span class="math" data-tex="\(x,y\in E\)">\(x,y\in E\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\theta_{x,y}(z)=x\langle y,z\rangle.
+\]">\[
+\theta_{x,y}(z)=x\langle y,z\rangle.
+\]</span>
+<p>This is a module map, and Cauchy–Schwarz gives <span class="math" data-tex="\(\|\theta_{x,y}\|\leq\|x\|\|y\|\)">\(\|\theta_{x,y}\|\leq\|x\|\|y\|\)</span>. The word “rank” here refers to the module expression: the range lies in <span class="math" data-tex="\(xA\)">\(xA\)</span>, which may be infinite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><span id="proposition-1-1"></span><strong>Proposition 1.1.</strong> For <span class="math" data-tex="\(T\in\mathcal L(E)\)">\(T\in\mathcal L(E)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\theta_{x,y}^*=\theta_{y,x},\qquad
+T\theta_{x,y}=\theta_{Tx,y},\qquad
+\theta_{x,y}T=\theta_{x,T^*y}.
+\]">\[
+\theta_{x,y}^*=\theta_{y,x},\qquad
+T\theta_{x,y}=\theta_{Tx,y},\qquad
+\theta_{x,y}T=\theta_{x,T^*y}.
+\]</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+\theta_{x,y}\theta_{u,v}
+=\theta_{x\langle y,u\rangle,v},\qquad
+\theta_{x,x}\geq0,\qquad
+\|\theta_{x,x}\|=\|x\|^2.
+\]">\[
+\theta_{x,y}\theta_{u,v}
+=\theta_{x\langle y,u\rangle,v},\qquad
+\theta_{x,x}\geq0,\qquad
+\|\theta_{x,x}\|=\|x\|^2.
+\]</span>
+<p><em>Proof.</em> For <span class="math" data-tex="\(z,w\in E\)">\(z,w\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle\theta_{x,y}z,w\rangle
+=\langle y,z\rangle^*\langle x,w\rangle
+=\langle z,\theta_{y,x}w\rangle.
+\]">\[
+\langle\theta_{x,y}z,w\rangle
+=\langle y,z\rangle^*\langle x,w\rangle
+=\langle z,\theta_{y,x}w\rangle.
+\]</span>
+<p>The two formulas involving <span class="math" data-tex="\(T\)">\(T\)</span> follow from module linearity and the adjoint identity. Substituting the definition twice gives the product formula.</p>
+<p>For positivity, the map <span class="math" data-tex="\(R_x:A\to E\)">\(R_x:A\to E\)</span>, <span class="math" data-tex="\(a\mapsto xa\)">\(a\mapsto xa\)</span>, is adjointable, with <span class="math" data-tex="\(R_x^*z=\langle x,z\rangle\)">\(R_x^*z=\langle x,z\rangle\)</span>. Thus <span class="math" data-tex="\(\theta_{x,x}=R_xR_x^*\)">\(\theta_{x,x}=R_xR_x^*\)</span> is positive; these operators can be viewed in <span class="math" data-tex="\(\mathcal L(E\oplus A)\)">\(\mathcal L(E\oplus A)\)</span>. To obtain the lower norm bound, put <span class="math" data-tex="\(a=\langle x,x\rangle\)">\(a=\langle x,x\rangle\)</span>. If <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|\theta_{x,x}x\|^2=\|\langle xa,xa\rangle\|
+=\|a^3\|=\|a\|^3.
+\]">\[
+\|\theta_{x,x}x\|^2=\|\langle xa,xa\rangle\|
+=\|a^3\|=\|a\|^3.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(\|x\|^2=\|a\|\)">\(\|x\|^2=\|a\|\)</span>. The upper bound was already established. The case <span class="math" data-tex="\(x=0\)">\(x=0\)</span> is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the <strong>compact module operators</strong> by</p>
+<span class="math math-display" data-tex="\[
+\mathcal K(E)=
+\overline{\operatorname{span}}\{\theta_{x,y}:x,y\in E\}
+\subseteq\mathcal L(E),
+\]">\[
+\mathcal K(E)=
+\overline{\operatorname{span}}\{\theta_{x,y}:x,y\in E\}
+\subseteq\mathcal L(E),
+\]</span>
+<p>where the closure is in operator norm.</p>
+<p><span id="theorem-1-2"></span><strong>Theorem 1.2.</strong> <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is a closed two-sided ideal of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, and it is essential: every nonzero closed two-sided ideal of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> meets <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> nontrivially.</p>
+<p><em>Proof.</em> Proposition 1.1 makes the finite span a two-sided, involution-stable ideal. Its norm closure is therefore a closed ideal. If <span class="math" data-tex="\(T\mathcal K(E)=0\)">\(T\mathcal K(E)=0\)</span>, then for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0=T\theta_{x,Tx}=\theta_{Tx,Tx}.
+\]">\[
+0=T\theta_{x,Tx}=\theta_{Tx,Tx}.
+\]</span>
+<p>The norm formula implies <span class="math" data-tex="\(Tx=0\)">\(Tx=0\)</span>, hence <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. If an ideal <span class="math" data-tex="\(J\)">\(J\)</span> had zero intersection with <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>, then <span class="math" data-tex="\(Tk\in J\cap\mathcal K(E)\)">\(Tk\in J\cap\mathcal K(E)\)</span> for <span class="math" data-tex="\(T\in J\)">\(T\in J\)</span>, <span class="math" data-tex="\(k\in\mathcal K(E)\)">\(k\in\mathcal K(E)\)</span>; the preceding argument gives <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Essentiality says that the compact operators detect every adjointable operator. Their action also reaches every vector, a fact we need before constructing multipliers.</p>
+<p><span id="lemma-1-3"></span><strong>Lemma 1.3.</strong> The linear span <span class="math" data-tex="\(\mathcal K(E)E\)">\(\mathcal K(E)E\)</span> is dense in <span class="math" data-tex="\(E\)">\(E\)</span>. Every positive contractive approximate identity <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> of <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> satisfies <span class="math" data-tex="\(e_\lambda x\to x\)">\(e_\lambda x\to x\)</span> for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(a=\langle x,x\rangle\)">\(a=\langle x,x\rangle\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, form inverses in the unitization of <span class="math" data-tex="\(A\)">\(A\)</span>. The vector</p>
+<span class="math math-display" data-tex="\[
+\theta_{x,x}\bigl(x(a+t)^{-1}\bigr)
+=xa(a+t)^{-1}
+\]">\[
+\theta_{x,x}\bigl(x(a+t)^{-1}\bigr)
+=xa(a+t)^{-1}
+\]</span>
+<p>belongs to <span class="math" data-tex="\(\mathcal K(E)E\)">\(\mathcal K(E)E\)</span>. Its difference from <span class="math" data-tex="\(x\)">\(x\)</span> has squared norm at most</p>
+<span class="math math-display" data-tex="\[
+\sup_{s\geq0}s\left(\frac{t}{s+t}\right)^2=\frac t4.
+\]">\[
+\sup_{s\geq0}s\left(\frac{t}{s+t}\right)^2=\frac t4.
+\]</span>
+<p>Hence these vectors converge to <span class="math" data-tex="\(x\)">\(x\)</span>. On a vector <span class="math" data-tex="\(ky\)">\(ky\)</span>, approximate identity convergence gives <span class="math" data-tex="\(e_\lambda ky\to ky\)">\(e_\lambda ky\to ky\)</span>. Finite sums are dense, and <span class="math" data-tex="\(\|e_\lambda\|\leq1\)">\(\|e_\lambda\|\leq1\)</span> extends convergence to all vectors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-three-calculations-including-nonunital-coefficients">2. Three calculations, including nonunital coefficients</h2>
+<p>The basic modules are <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(A^n\)">\(A^n\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+H_A=\left\{(a_j)_{j\geq1}:
+\sum_j a_j^*a_j\text{ converges in norm}\right\},
+\qquad
+\langle(a_j),(b_j)\rangle=\sum_j a_j^*b_j.
+\]">\[
+H_A=\left\{(a_j)_{j\geq1}:
+\sum_j a_j^*a_j\text{ converges in norm}\right\},
+\qquad
+\langle(a_j),(b_j)\rangle=\sum_j a_j^*b_j.
+\]</span>
+<p>Finite coordinate truncations approximate every vector of <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. When <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital, a coordinate vector with entry <span class="math" data-tex="\(1\)">\(1\)</span> need not exist; we use vectors whose entries belong to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> There are canonical C*-algebra isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\mathcal K(A)\cong A,\qquad
+\mathcal K(A^n)\cong M_n(A),\qquad
+\mathcal K(H_A)\cong A\otimes\mathbb K.
+\]">\[
+\mathcal K(A)\cong A,\qquad
+\mathcal K(A^n)\cong M_n(A),\qquad
+\mathcal K(H_A)\cong A\otimes\mathbb K.
+\]</span>
+<p><em>Proof.</em> On <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(\theta_{a,b}\)">\(\theta_{a,b}\)</span> is left multiplication by <span class="math" data-tex="\(ab^*\)">\(ab^*\)</span>. Left multiplication <span class="math" data-tex="\(\lambda_c\)">\(\lambda_c\)</span> has norm <span class="math" data-tex="\(\|c\|\)">\(\|c\|\)</span>: the upper estimate is immediate, and <span class="math" data-tex="\(cu_\lambda\to c\)">\(cu_\lambda\to c\)</span> for a contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> gives the lower estimate. Products <span class="math" data-tex="\(ab^*\)">\(ab^*\)</span> have dense linear span, since <span class="math" data-tex="\(cu_\lambda=c(u_\lambda)^*\to c\)">\(cu_\lambda=c(u_\lambda)^*\to c\)</span>. Thus left multiplication identifies <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(\mathcal K(A)\)">\(\mathcal K(A)\)</span>.</p>
+<p>For <span class="math" data-tex="\(A^n\)">\(A^n\)</span>, matrix multiplication defines a faithful *-homomorphism <span class="math" data-tex="\(M_n(A)\to\mathcal L(A^n)\)">\(M_n(A)\to\mathcal L(A^n)\)</span>. Faithfulness follows by testing vectors supported in a single coordinate and using an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>. A faithful C*-homomorphism is isometric. The matrix of <span class="math" data-tex="\(\theta_{x,y}\)">\(\theta_{x,y}\)</span> is <span class="math" data-tex="\((x_i y_j^*)_{ij}\)">\((x_i y_j^*)_{ij}\)</span>. Conversely, vectors supported in coordinates <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> give a matrix with the single entry <span class="math" data-tex="\(ab^*\)">\(ab^*\)</span> in position <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>. Density of these products proves the second assertion.</p>
+<p>On <span class="math" data-tex="\(H_A\)">\(H_A\)</span>, let <span class="math" data-tex="\(V_{ij}(a)\)">\(V_{ij}(a)\)</span> have only the <span class="math" data-tex="\(i\)">\(i\)</span>-th output coordinate nonzero, equal to <span class="math" data-tex="\(az_j\)">\(az_j\)</span>. Its adjoint is <span class="math" data-tex="\(V_{ji}(a^*)\)">\(V_{ji}(a^*)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+V_{ij}(a)V_{kl}(b)=\delta_{jk}V_{il}(ab).
+\]">\[
+V_{ij}(a)V_{kl}(b)=\delta_{jk}V_{il}(ab).
+\]</span>
+<p>Writing <span class="math" data-tex="\(\delta_i a\)">\(\delta_i a\)</span> for the vector with entry <span class="math" data-tex="\(a\)">\(a\)</span> in coordinate <span class="math" data-tex="\(i\)">\(i\)</span>, we have</p>
+<span class="math math-display" data-tex="\[
+\theta_{\delta_i a,\delta_j b}=V_{ij}(ab^*).
+\]">\[
+\theta_{\delta_i a,\delta_j b}=V_{ij}(ab^*).
+\]</span>
+<p>Thus all <span class="math" data-tex="\(V_{ij}(a)\)">\(V_{ij}(a)\)</span> are compact. The finite upper-left matrix algebras <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> act faithfully, hence isometrically, on <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. Their increasing norm closure is the spatial stabilization <span class="math" data-tex="\(A\otimes\mathbb K\)">\(A\otimes\mathbb K\)</span>: on each finite matrix corner the spatial tensor norm is precisely the C*-norm of <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>.</p>
+<p>It remains to show that this closure contains every compact operator. If <span class="math" data-tex="\(P_n\)">\(P_n\)</span> truncates to the first <span class="math" data-tex="\(n\)">\(n\)</span> coordinates, then</p>
+<span class="math math-display" data-tex="\[
+\|\theta_{x,y}-\theta_{P_nx,P_ny}\|
+\leq\|x-P_nx\|\|y\|
++\|P_nx\|\|y-P_ny\|\longrightarrow0.
+\]">\[
+\|\theta_{x,y}-\theta_{P_nx,P_ny}\|
+\leq\|x-P_nx\|\|y\|
++\|P_nx\|\|y-P_ny\|\longrightarrow0.
+\]</span>
+<p>The truncated operator lies in a finite matrix corner. This proves the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, the last calculation is <span class="math" data-tex="\(\mathcal K(\ell^2)=\mathbb K\)">\(\mathcal K(\ell^2)=\mathbb K\)</span>. In contrast, the coordinate truncation <span class="math" data-tex="\(P_n\)">\(P_n\)</span> for general <span class="math" data-tex="\(A\)">\(A\)</span> has entries in <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span>; it need not itself be compact. For example, if <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital, its nonzero diagonal entries are identity multipliers outside <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<h2 id="3-when-a-sequence-can-replace-a-net">3. When a sequence can replace a net</h2>
+<p>A module is <strong>countably generated</strong> if it is the closed linear span of <span class="math" data-tex="\(x_jA\)">\(x_jA\)</span> for some countable family <span class="math" data-tex="\((x_j)\)">\((x_j)\)</span>. A C*-algebra is <strong><span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital</strong> if it has a sequential positive contractive approximate identity.</p>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1.</strong> <span class="math" data-tex="\(E\)">\(E\)</span> is countably generated if and only if <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital.</p>
+<p><em>Proof.</em> Suppose <span class="math" data-tex="\((x_j)\)">\((x_j)\)</span> generates <span class="math" data-tex="\(E\)">\(E\)</span>. Rescale each nonzero generator so that <span class="math" data-tex="\(\|x_j\|\leq1\)">\(\|x_j\|\leq1\)</span>, without changing the generated module, and put</p>
+<span class="math math-display" data-tex="\[
+h=\sum_{j\geq1}2^{-j}\theta_{x_j,x_j}\in\mathcal K(E),
+\qquad e_m=h(h+m^{-1})^{-1}.
+\]">\[
+h=\sum_{j\geq1}2^{-j}\theta_{x_j,x_j}\in\mathcal K(E),
+\qquad e_m=h(h+m^{-1})^{-1}.
+\]</span>
+<p>The series converges in norm. Functional calculus gives positive contractions <span class="math" data-tex="\(e_m\in\mathcal K(E)\)">\(e_m\in\mathcal K(E)\)</span>. With <span class="math" data-tex="\(r_m=1-e_m\)">\(r_m=1-e_m\)</span>, the inequality <span class="math" data-tex="\(h\geq2^{-j}\theta_{x_j,x_j}\)">\(h\geq2^{-j}\theta_{x_j,x_j}\)</span> implies</p>
+<span class="math math-display" data-tex="\[
+\|r_mx_j\|^2
+=\|r_m\theta_{x_j,x_j}r_m\|
+\leq2^j\|r_mhr_m\|
+\leq\frac{2^j}{4m}.
+\]">\[
+\|r_mx_j\|^2
+=\|r_m\theta_{x_j,x_j}r_m\|
+\leq2^j\|r_mhr_m\|
+\leq\frac{2^j}{4m}.
+\]</span>
+<p>The last estimate uses <span class="math" data-tex="\(\sup_{s\geq0}s/(1+ms)^2=1/(4m)\)">\(\sup_{s\geq0}s/(1+ms)^2=1/(4m)\)</span>. Hence <span class="math" data-tex="\(e_mx\to x\)">\(e_mx\to x\)</span> on all generators, their <span class="math" data-tex="\(A\)">\(A\)</span>-linear span, and then all of <span class="math" data-tex="\(E\)">\(E\)</span>. Proposition 1.1 now gives</p>
+<span class="math math-display" data-tex="\[
+e_m\theta_{x,y}=\theta_{e_mx,y}\to\theta_{x,y},
+\qquad
+\theta_{x,y}e_m=\theta_{x,e_my}\to\theta_{x,y}.
+\]">\[
+e_m\theta_{x,y}=\theta_{e_mx,y}\to\theta_{x,y},
+\qquad
+\theta_{x,y}e_m=\theta_{x,e_my}\to\theta_{x,y}.
+\]</span>
+<p>Density and contractivity make <span class="math" data-tex="\((e_m)\)">\((e_m)\)</span> an approximate identity for <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\((e_m)\)">\((e_m)\)</span> be such an approximate identity. Choose finite sums</p>
+<span class="math math-display" data-tex="\[
+f_m=\sum_{j=1}^{N_m}\theta_{v_{mj},w_{mj}},
+\qquad\|f_m-e_m\|&lt;m^{-1}.
+\]">\[
+f_m=\sum_{j=1}^{N_m}\theta_{v_{mj},w_{mj}},
+\qquad\|f_m-e_m\|&lt;m^{-1}.
+\]</span>
+<p>Lemma 1.3 gives <span class="math" data-tex="\(f_mx\to x\)">\(f_mx\to x\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. Each <span class="math" data-tex="\(f_mx\)">\(f_mx\)</span> belongs to the module span of the finitely many <span class="math" data-tex="\(v_{mj}\)">\(v_{mj}\)</span>. The countable union of these vectors generates <span class="math" data-tex="\(E\)">\(E\)</span>. The zero module also satisfies both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof does not require <span class="math" data-tex="\(A\)">\(A\)</span> to be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Applied to <span class="math" data-tex="\(E=A\)">\(E=A\)</span>, it shows that <span class="math" data-tex="\(A\)">\(A\)</span> is countably generated over itself exactly when <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. Merely writing a module as <span class="math" data-tex="\(A\)">\(A\)</span> or <span class="math" data-tex="\(A^n\)">\(A^n\)</span> does not provide finitely many generators when the coefficient algebra lacks a unit.</p>
+<h2 id="4-recovering-all-adjointable-operators">4. Recovering all adjointable operators</h2>
+<p>For a C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, a multiplier can be represented by a pair of bounded linear maps <span class="math" data-tex="\((L,R):B\to B\)">\((L,R):B\to B\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+L(ab)=L(a)b,\quad R(ab)=aR(b),\quad
+aL(b)=R(a)b.
+\]">\[
+L(ab)=L(a)b,\quad R(ab)=aR(b),\quad
+aL(b)=R(a)b.
+\]</span>
+<p>Think of <span class="math" data-tex="\(L(b)=mb\)">\(L(b)=mb\)</span> and <span class="math" data-tex="\(R(b)=bm\)">\(R(b)=bm\)</span>. With ordinary composition of maps, the product and involution are</p>
+<span class="math math-display" data-tex="\[
+(L_1,R_1)(L_2,R_2)=(L_1\circ L_2,R_2\circ R_1),
+\]">\[
+(L_1,R_1)(L_2,R_2)=(L_1\circ L_2,R_2\circ R_1),
+\]</span>
+<span class="math math-display" data-tex="\[
+(L,R)^*=(L^{\#},R^{\#}),\quad
+L^{\#}(b)=R(b^*)^*,\quad R^{\#}(b)=L(b^*)^*.
+\]">\[
+(L,R)^*=(L^{\#},R^{\#}),\quad
+L^{\#}(b)=R(b^*)^*,\quad R^{\#}(b)=L(b^*)^*.
+\]</span>
+<p><strong>Lemma (The double-centralizer algebra).</strong> These pairs form a unital C*-algebra <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span>, with <span class="math" data-tex="\(\|(L,R)\|=\|L\|=\|R\|\)">\(\|(L,R)\|=\|L\|=\|R\|\)</span>. The algebra <span class="math" data-tex="\(B\)">\(B\)</span> embeds isometrically as an essential ideal. Every C*-algebra extension containing <span class="math" data-tex="\(B\)">\(B\)</span> as an ideal has a unique homomorphism into <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span> restricting to identity on <span class="math" data-tex="\(B\)">\(B\)</span>; its kernel is the annihilator of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><em>Proof.</em> The identities defining a pair are closed in the product of the two bounded-map spaces, so the pairs are complete. The displayed product and involution preserve the identities and satisfy the *-algebra laws by substitution; the identity pair is <span class="math" data-tex="\((\operatorname{id},\operatorname{id})\)">\((\operatorname{id},\operatorname{id})\)</span>. For a positive contractive approximate identity <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span>, compatibility gives</p>
+<span class="math math-display" data-tex="\[
+R(a)e_\lambda=aL(e_\lambda),\qquad
+e_\lambda L(a)=R(e_\lambda)a.
+\]">\[
+R(a)e_\lambda=aL(e_\lambda),\qquad
+e_\lambda L(a)=R(e_\lambda)a.
+\]</span>
+<p>Taking norm limits bounds <span class="math" data-tex="\(\|R\|\leq\|L\|\)">\(\|R\|\leq\|L\|\)</span> and conversely. The involution therefore preserves this common norm. Its compatibility also gives</p>
+<span class="math math-display" data-tex="\[
+L(b)^*c=b^*L^{\#}(c),\qquad
+L(b)^*L(b)=b^*L^{\#}L(b).
+\]">\[
+L(b)^*c=b^*L^{\#}(c),\qquad
+L(b)^*L(b)=b^*L^{\#}L(b).
+\]</span>
+<p>Hence <span class="math" data-tex="\(\|L\|^2\leq\|L^{\#}L\|\)">\(\|L\|^2\leq\|L^{\#}L\|\)</span>; composition gives the reverse bound. This proves the C*-identity. Completeness of the bounded-map spaces is proved in the opening lemma of <em>Adjointable operators</em>, Section 2.</p>
+<p>Send <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> to left and right multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>. Approximate identities show that the operator norms equal <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span>. Multiplying a pair by this embedded element gives the embedded element <span class="math" data-tex="\(L(b)\)">\(L(b)\)</span>, and multiplication on the other side gives <span class="math" data-tex="\(R(b)\)">\(R(b)\)</span>, by the three compatibility identities. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is an ideal. A pair annihilating this ideal has <span class="math" data-tex="\(L=0\)">\(L=0\)</span>, hence <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, proving essentiality.</p>
+<p>If <span class="math" data-tex="\(B\)">\(B\)</span> is an ideal in <span class="math" data-tex="\(D\)">\(D\)</span>, send <span class="math" data-tex="\(d\)">\(d\)</span> to <span class="math" data-tex="\((b\mapsto db,b\mapsto bd)\)">\((b\mapsto db,b\mapsto bd)\)</span>. These maps are bounded, form a pair, and preserve products and adjoints. The kernel is exactly <span class="math" data-tex="\(\{d:dB=Bd=0\}\)">\(\{d:dB=Bd=0\}\)</span>. Any homomorphism fixing <span class="math" data-tex="\(B\)">\(B\)</span> must have these same products with every embedded <span class="math" data-tex="\(b\)">\(b\)</span>, so its two centralizers are forced and it equals this one. In particular an essential extension embeds faithfully. For <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, the algebra of pairs is zero and the same assertions have their evident zero-algebra interpretation. ∎</p>
+<p>We next identify this algebra with all adjointable operators on a module whose compact algebra is <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> The map</p>
+<span class="math math-display" data-tex="\[
+\Phi:\mathcal L(E)\longrightarrow M(\mathcal K(E)),
+\qquad T\longmapsto(k\mapsto Tk,\ k\mapsto kT)
+\]">\[
+\Phi:\mathcal L(E)\longrightarrow M(\mathcal K(E)),
+\qquad T\longmapsto(k\mapsto Tk,\ k\mapsto kT)
+\]</span>
+<p>is a canonical C*-algebra isomorphism.</p>
+<p><em>Proof.</em> Set <span class="math" data-tex="\(B=\mathcal K(E)\)">\(B=\mathcal K(E)\)</span>. The ideal property shows that both maps take values in <span class="math" data-tex="\(B\)">\(B\)</span>, and their multiplier identities follow from associativity. Their product and involution agree with those in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. Essentiality proves injectivity.</p>
+<p>For surjectivity, take <span class="math" data-tex="\(m=(L,R)\in M(B)\)">\(m=(L,R)\in M(B)\)</span>. On the dense linear span <span class="math" data-tex="\(D=BE\)">\(D=BE\)</span>, try to define</p>
+<span class="math math-display" data-tex="\[
+T_m\left(\sum_{i=1}^r b_ix_i\right)
+=\sum_{i=1}^r L(b_i)x_i.
+\]">\[
+T_m\left(\sum_{i=1}^r b_ix_i\right)
+=\sum_{i=1}^r L(b_i)x_i.
+\]</span>
+<p>We must show that the formula is independent of the chosen sum and bounded. Let <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> be a positive contractive approximate identity of <span class="math" data-tex="\(B\)">\(B\)</span>. Since <span class="math" data-tex="\(L\)">\(L\)</span> is bounded and <span class="math" data-tex="\(e_\lambda b_i\to b_i\)">\(e_\lambda b_i\to b_i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_i L(b_i)x_i
+=\lim_\lambda L(e_\lambda)\left(\sum_i b_ix_i\right).
+\]">\[
+\sum_i L(b_i)x_i
+=\lim_\lambda L(e_\lambda)\left(\sum_i b_ix_i\right).
+\]</span>
+<p>Here <span class="math" data-tex="\(L(e_\lambda)\in B\subseteq\mathcal L(E)\)">\(L(e_\lambda)\in B\subseteq\mathcal L(E)\)</span> has norm at most <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\left\|\sum_i L(b_i)x_i\right\|
+\leq\|L\|\left\|\sum_i b_ix_i\right\|.
+\]">\[
+\left\|\sum_i L(b_i)x_i\right\|
+\leq\|L\|\left\|\sum_i b_ix_i\right\|.
+\]</span>
+<p>This proves well-definedness and yields a bounded <span class="math" data-tex="\(A\)">\(A\)</span>-linear extension to <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Apply the same construction to <span class="math" data-tex="\(m^*\)">\(m^*\)</span>, obtaining <span class="math" data-tex="\(T_{m^*}\)">\(T_{m^*}\)</span>. Multiplier compatibility, followed by taking adjoints, gives</p>
+<span class="math math-display" data-tex="\[
+L(b)^*c=b^*L^{\#}(c).
+\]">\[
+L(b)^*c=b^*L^{\#}(c).
+\]</span>
+<p>Consequently, for <span class="math" data-tex="\(bx,cy\in D\)">\(bx,cy\in D\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle T_m(bx),cy\rangle
+=\langle x,L(b)^*cy\rangle
+=\langle bx,T_{m^*}(cy)\rangle.
+\]">\[
+\langle T_m(bx),cy\rangle
+=\langle x,L(b)^*cy\rangle
+=\langle bx,T_{m^*}(cy)\rangle.
+\]</span>
+<p>Linearity and continuity give <span class="math" data-tex="\(T_m^*=T_{m^*}\)">\(T_m^*=T_{m^*}\)</span> on all of <span class="math" data-tex="\(E\)">\(E\)</span>. Finally, the construction gives <span class="math" data-tex="\(T_mb=L(b)\)">\(T_mb=L(b)\)</span>. On a dense vector <span class="math" data-tex="\(cx\)">\(cx\)</span>,</p>
+<span class="math math-display" data-tex="\[
+bT_m(cx)=bL(c)x=R(b)cx,
+\]">\[
+bT_m(cx)=bL(c)x=R(b)cx,
+\]</span>
+<p>so <span class="math" data-tex="\(bT_m=R(b)\)">\(bT_m=R(b)\)</span>. Thus <span class="math" data-tex="\(\Phi(T_m)=m\)">\(\Phi(T_m)=m\)</span>. A bijective C*-homomorphism is isometric, completing the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-4-2"></span><strong>Corollary 4.2.</strong> Canonically,</p>
+<span class="math math-display" data-tex="\[
+M(A)=\mathcal L(A),\qquad
+\mathcal L(A^n)=M_n(M(A)),\qquad
+M(A\otimes\mathbb K)=\mathcal L(H_A).
+\]">\[
+M(A)=\mathcal L(A),\qquad
+\mathcal L(A^n)=M_n(M(A)),\qquad
+M(A\otimes\mathbb K)=\mathcal L(H_A).
+\]</span>
+<p><em>Proof.</em> Apply Theorem 4.1 to the calculations of Theorem 2.1. For the middle equality, the coordinate inclusions and projections of <span class="math" data-tex="\(A^n\)">\(A^n\)</span> identify its adjointable operators with matrices of operators in <span class="math" data-tex="\(\mathcal L(A)\)">\(\mathcal L(A)\)</span>, including the adjoint matrix. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the action of <span class="math" data-tex="\(\mathcal K(\ell^2)\)">\(\mathcal K(\ell^2)\)</span> on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> realizes its multiplier algebra as <span class="math" data-tex="\(\mathcal B(\ell^2)\)">\(\mathcal B(\ell^2)\)</span>. More generally, for a faithful nondegenerate representation <span class="math" data-tex="\(\rho:B\to\mathcal B(H)\)">\(\rho:B\to\mathcal B(H)\)</span>, Exercise 5 identifies <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span> with the idealizer</p>
+<span class="math math-display" data-tex="\[
+\{S\in\mathcal B(H):S\rho(B)\subseteq\rho(B),\quad
+\rho(B)S\subseteq\rho(B)\}.
+\]">\[
+\{S\in\mathcal B(H):S\rho(B)\subseteq\rho(B),\quad
+\rho(B)S\subseteq\rho(B)\}.
+\]</span>
+<p>Indeed, an idealizing <span class="math" data-tex="\(S\)">\(S\)</span> defines <span class="math" data-tex="\(L,R\)">\(L,R\)</span> through the isometric map <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; Exercise 5 implements that pair, and nondegeneracy forces the implementing operator to equal <span class="math" data-tex="\(S\)">\(S\)</span>. Thus the double-centralizer, concrete, and module descriptions have the same multiplication and the same action on the original algebra.</p>
+<p><span id="corollary-4-3"></span><strong>Corollary 4.3.</strong> If <span class="math" data-tex="\(p\)">\(p\)</span> is a projection in <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span>, then <span class="math" data-tex="\(M(pBp)\cong pM(B)p\)">\(M(pBp)\cong pM(B)p\)</span>.</p>
+<p><em>Proof.</em> Regard <span class="math" data-tex="\(B\)">\(B\)</span> as a Hilbert module over itself. The complemented submodule <span class="math" data-tex="\(pB\)">\(pB\)</span> has compact algebra <span class="math" data-tex="\(pBp\)">\(pBp\)</span>: its rank-one operators are left multiplications by <span class="math" data-tex="\(pab^*p\)">\(pab^*p\)</span>, whose span is dense in <span class="math" data-tex="\(pBp\)">\(pBp\)</span>. Its adjointable operators identify with <span class="math" data-tex="\(p\mathcal L(B)p\)">\(p\mathcal L(B)p\)</span>, by extending them as zero on <span class="math" data-tex="\((1-p)B\)">\((1-p)B\)</span>. Apply Theorem 4.1 and Corollary 4.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-convergence-tested-against-compact-operators">5. Convergence tested against compact operators</h2>
+<p>The <strong>strict topology</strong> on <span class="math" data-tex="\(\mathcal L(E)=M(\mathcal K(E))\)">\(\mathcal L(E)=M(\mathcal K(E))\)</span> is generated by</p>
+<span class="math math-display" data-tex="\[
+T\longmapsto\|Tk\|,\qquad T\longmapsto\|kT\|,
+\qquad k\in\mathcal K(E).
+\]">\[
+T\longmapsto\|Tk\|,\qquad T\longmapsto\|kT\|,
+\qquad k\in\mathcal K(E).
+\]</span>
+<p>Thus <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span> strictly means norm convergence after multiplying on either side by each fixed compact module operator. Essentiality makes this topology Hausdorff.</p>
+<p><span id="proposition-5-1"></span><strong>Proposition 5.1.</strong> On norm-bounded subsets of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, strict convergence is equivalent to</p>
+<span class="math math-display" data-tex="\[
+T_ix\to Tx,\qquad T_i^*x\to T^*x
+\quad\text{for every }x\in E.
+\]">\[
+T_ix\to Tx,\qquad T_i^*x\to T^*x
+\quad\text{for every }x\in E.
+\]</span>
+<p>Every positive contractive approximate identity of <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> converges strictly to the identity of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, and <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is strictly dense in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>.</p>
+<p><em>Proof.</em> For a uniformly bounded net with the displayed vector convergence,</p>
+<span class="math math-display" data-tex="\[
+(T_i-T)\theta_{x,y}=\theta_{(T_i-T)x,y},\qquad
+\theta_{x,y}(T_i-T)=\theta_{x,(T_i^*-T^*)y}
+\]">\[
+(T_i-T)\theta_{x,y}=\theta_{(T_i-T)x,y},\qquad
+\theta_{x,y}(T_i-T)=\theta_{x,(T_i^*-T^*)y}
+\]</span>
+<p>converge in norm to zero. Approximation by finite sums, using the uniform bound, proves strict convergence against every compact.</p>
+<p>Conversely, strict convergence gives convergence on every vector <span class="math" data-tex="\(ky\)">\(ky\)</span>. Lemma 1.3 and the uniform operator bound extend this to every vector. The adjoint net is strictly convergent because taking adjoints interchanges the two seminorm families; the same argument applies to it.</p>
+<p>For an approximate identity <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span>, strict convergence to <span class="math" data-tex="\(1\)">\(1\)</span> is its defining two-sided approximation property. For any <span class="math" data-tex="\(T\)">\(T\)</span>, the operators <span class="math" data-tex="\(Te_\lambda\)">\(Te_\lambda\)</span> are compact, and</p>
+<span class="math math-display" data-tex="\[
+(Te_\lambda-T)k=T(e_\lambda k-k),\qquad
+k(Te_\lambda-T)=(kT)e_\lambda-kT
+\]">\[
+(Te_\lambda-T)k=T(e_\lambda k-k),\qquad
+k(Te_\lambda-T)=(kT)e_\lambda-kT
+\]</span>
+<p>converge in norm to zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For infinite-dimensional <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, its finite-coordinate projections satisfy <span class="math" data-tex="\(P_n\to1\)">\(P_n\to1\)</span> strictly but <span class="math" data-tex="\(\|1-P_n\|=1\)">\(\|1-P_n\|=1\)</span>. This is the topology in which an infinite system is recovered from finite matrix pieces.</p>
+<p><span id="theorem-5-2"></span><strong>Theorem 5.2.</strong> <span class="math" data-tex="\(M(B)\)">\(M(B)\)</span> is complete in the strict topology for every C*-algebra <span class="math" data-tex="\(B\)">\(B\)</span>. Consequently, <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> is strictly complete and is the strict completion of <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\((m_i)\)">\((m_i)\)</span> be a strict Cauchy net. For every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, both <span class="math" data-tex="\(m_ib\)">\(m_ib\)</span> and <span class="math" data-tex="\(bm_i\)">\(bm_i\)</span> are norm-Cauchy in <span class="math" data-tex="\(B\)">\(B\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+L(b)=\lim_i m_ib,\qquad R(b)=\lim_i bm_i.
+\]">\[
+L(b)=\lim_i m_ib,\qquad R(b)=\lim_i bm_i.
+\]</span>
+<p>Passing to limits gives linearity and all three double-centralizer identities. We still need boundedness; a general Cauchy net need not come with a common operator-norm bound.</p>
+<p>Suppose <span class="math" data-tex="\(b_n\to0\)">\(b_n\to0\)</span> and <span class="math" data-tex="\(L(b_n)\to c\)">\(L(b_n)\to c\)</span> in norm. For every <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ac=\lim_n aL(b_n)=\lim_n R(a)b_n=0.
+\]">\[
+ac=\lim_n aL(b_n)=\lim_n R(a)b_n=0.
+\]</span>
+<p>Taking <span class="math" data-tex="\(a=c^*\)">\(a=c^*\)</span> gives <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. This proves the graph of <span class="math" data-tex="\(L\)">\(L\)</span> is closed, hence <span class="math" data-tex="\(L\)">\(L\)</span> is bounded by the closed graph theorem. For <span class="math" data-tex="\(R\)">\(R\)</span>, if <span class="math" data-tex="\(b_n\to0\)">\(b_n\to0\)</span> and <span class="math" data-tex="\(R(b_n)\to c\)">\(R(b_n)\to c\)</span>, then <span class="math" data-tex="\(ca=\lim_n b_nL(a)=0\)">\(ca=\lim_n b_nL(a)=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>, again implying <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is bounded too. The pair is a multiplier <span class="math" data-tex="\(m\)">\(m\)</span>, and the defining limits say precisely that <span class="math" data-tex="\(m_i\to m\)">\(m_i\to m\)</span> strictly. The last conclusion follows from Proposition 5.1 and Theorem 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Involution is strictly continuous. Multiplication is separately strictly continuous and jointly strictly continuous on bounded sets. For example, if bounded nets satisfy <span class="math" data-tex="\(S_i\to S\)">\(S_i\to S\)</span>, <span class="math" data-tex="\(T_i\to T\)">\(T_i\to T\)</span> strictly, then</p>
+<span class="math math-display" data-tex="\[
+\|(S_iT_i-ST)k\|
+\leq\|S_i\|\|(T_i-T)k\|+\|(S_i-S)Tk\|\to0.
+\]">\[
+\|(S_iT_i-ST)k\|
+\leq\|S_i\|\|(T_i-T)k\|+\|(S_i-S)Tk\|\to0.
+\]</span>
+<p>On the other side use
+<span class="math" data-tex="\(k(S_iT_i-ST)=k(S_i-S)T_i+kS(T_i-T)\)">\(k(S_iT_i-ST)=k(S_i-S)T_i+kS(T_i-T)\)</span>.
+The separate continuity assertions follow by holding one factor fixed.</p>
+<p><span id="example-5-3"></span><strong>Example 5.3: a continuous unitary group.</strong> A representation <span class="math" data-tex="\(g\mapsto U_g\)">\(g\mapsto U_g\)</span> of a topological group by unitaries in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> is strictly continuous exactly when <span class="math" data-tex="\(g\mapsto U_gx\)">\(g\mapsto U_gx\)</span> is norm-continuous for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>. Indeed, <span class="math" data-tex="\(U_g^*=U_{g^{-1}}\)">\(U_g^*=U_{g^{-1}}\)</span>, and unitaries have a common norm bound, so Proposition 5.1 applies.</p>
+<p>On <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, define <span class="math" data-tex="\(U_te_n=e^{int}e_n\)">\(U_te_n=e^{int}e_n\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>. For a fixed vector, its finite-coordinate part varies continuously and its tail contributes at most twice the tail norm. This proves strong, hence strict, continuity. But <span class="math" data-tex="\(\|(U_{\pi/n}-1)e_n\|=2\)">\(\|(U_{\pi/n}-1)e_n\|=2\)</span>, so the group is not norm-continuous at zero. For each <span class="math" data-tex="\(k\in\mathbb K\)">\(k\in\mathbb K\)</span>, the induced conjugation <span class="math" data-tex="\(t\mapsto U_tkU_t^*\)">\(t\mapsto U_tkU_t^*\)</span> is norm-continuous, by splitting its difference into terms using <span class="math" data-tex="\(U_tk-U_sk\)">\(U_tk-U_sk\)</span> and <span class="math" data-tex="\(kU_t^*-kU_s^*\)">\(kU_t^*-kU_s^*\)</span>. This is the continuity needed for actions on compact operators in crossed-product constructions.</p>
+<h2 id="6-fields-bundles-and-the-meaning-of-a-fibre">6. Fields, bundles, and the meaning of a fibre</h2>
+<p>First consider the commutative coefficient algebra. For a locally compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M(C_0(X))=C_b(X).
+\]">\[
+M(C_0(X))=C_b(X).
+\]</span>
+<p>Here is a direct module proof. If <span class="math" data-tex="\(T\in\mathcal L(C_0(X))\)">\(T\in\mathcal L(C_0(X))\)</span>, choose a function <span class="math" data-tex="\(u\)">\(u\)</span> of norm one that equals <span class="math" data-tex="\(1\)">\(1\)</span> near a given point <span class="math" data-tex="\(t\)">\(t\)</span>, and set <span class="math" data-tex="\(f(t)=(Tu)(t)\)">\(f(t)=(Tu)(t)\)</span>. The identity <span class="math" data-tex="\(T(uv)=(Tu)v=(Tv)u\)">\(T(uv)=(Tu)v=(Tv)u\)</span> makes this independent of <span class="math" data-tex="\(u\)">\(u\)</span>. Locally <span class="math" data-tex="\(f=Tu\)">\(f=Tu\)</span>, so it is continuous, and <span class="math" data-tex="\(|f(t)|\leq\|T\|\)">\(|f(t)|\leq\|T\|\)</span>. The same identity gives <span class="math" data-tex="\(Tg=fg\)">\(Tg=fg\)</span> for every <span class="math" data-tex="\(g\in C_0(X)\)">\(g\in C_0(X)\)</span>. Conversely, multiplication by a bounded continuous <span class="math" data-tex="\(f\)">\(f\)</span> is adjointable, with adjoint multiplication by <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span>.</p>
+<p>On bounded subsets of <span class="math" data-tex="\(C_b(X)\)">\(C_b(X)\)</span>, the strict topology is uniform convergence on compact subsets. To see the forward implication, test against a cutoff equal to <span class="math" data-tex="\(1\)">\(1\)</span> on a given compact set. For the reverse implication, split a test function <span class="math" data-tex="\(a\in C_0(X)\)">\(a\in C_0(X)\)</span> into a compact region and a tail where <span class="math" data-tex="\(|a|\)">\(|a|\)</span> is small; the common bound controls the tail. Boundedness matters: on <span class="math" data-tex="\(X=\mathbb N\)">\(X=\mathbb N\)</span>, the functions <span class="math" data-tex="\(f_n=n\,1_{\{n\}}\)">\(f_n=n\,1_{\{n\}}\)</span> converge to zero uniformly on every compact set, whereas</p>
+<span class="math math-display" data-tex="\[
+\|f_na\|=1\quad\text{for }a(j)=1/j.
+\]">\[
+\|f_na\|=1\quad\text{for }a(j)=1/j.
+\]</span>
+<p>Thus they do not converge strictly.</p>
+<p><span id="proposition-6-1"></span><strong>Proposition 6.1: a vector bundle.</strong> If <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> is a finite-rank Hermitian vector bundle over a locally compact Hausdorff space, and <span class="math" data-tex="\(E=\Gamma_0(V)\)">\(E=\Gamma_0(V)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\mathcal K(E)\cong\Gamma_0(\operatorname{End}(V)),
+\]">\[
+\mathcal K(E)\cong\Gamma_0(\operatorname{End}(V)),
+\]</span>
+<p>with fibrewise operator norm and composition.</p>
+<p><em>Proof.</em> A rank-one operator acts at <span class="math" data-tex="\(t\)">\(t\)</span> by
+<span class="math" data-tex="\(v\mapsto x(t)\langle y(t),v\rangle\)">\(v\mapsto x(t)\langle y(t),v\rangle\)</span>. This is a continuous endomorphism section vanishing at infinity, since its norm is at most <span class="math" data-tex="\(\|x(t)\|\|y(t)\|\)">\(\|x(t)\|\|y(t)\|\)</span>. Multiplication by an endomorphism section <span class="math" data-tex="\(F\)">\(F\)</span> has operator norm <span class="math" data-tex="\(\sup_t\|F(t)\|\)">\(\sup_t\|F(t)\|\)</span>: the upper bound is immediate, and a local unit vector extended using a cutoff tests the lower bound at any point.</p>
+<p>Conversely, approximate a vanishing section <span class="math" data-tex="\(F\)">\(F\)</span> uniformly by compactly supported sections. A finite partition subordinate to trivializing neighborhoods on its compact support reduces to one section supported compactly inside one chart. In a local orthonormal frame, write its entries as <span class="math" data-tex="\(f_{ij}\)">\(f_{ij}\)</span>. Choose a scalar cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to <span class="math" data-tex="\(1\)">\(1\)</span> on that support and supported in the chart. The sections <span class="math" data-tex="\(x=f_{ij}e_i\)">\(x=f_{ij}e_i\)</span> and <span class="math" data-tex="\(y=\chi e_j\)">\(y=\chi e_j\)</span>, extended as zero, are global elements of <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(\theta_{x,y}\)">\(\theta_{x,y}\)</span> gives the <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> entry. Summing over the entries proves density of finite-rank module operators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="example-6-2"></span><strong>Example 6.2: operator fields on a compact base.</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact Hausdorff and <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+H_A\cong C(X,\ell^2),\qquad
+\mathcal K(H_A)\cong C(X,\mathbb K).
+\]">\[
+H_A\cong C(X,\ell^2),\qquad
+\mathcal K(H_A)\cong C(X,\mathbb K).
+\]</span>
+<p>For the first equality, square summability in <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span> means uniform convergence of the coordinate tails. Conversely, a continuous <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>-valued function has compact image, on which finite-coordinate truncations converge uniformly. For the second equality, finite matrix fields act as in Theorem 2.1. Every continuous compact-operator field is uniformly approximated by its finite-coordinate compressions: pointwise approximation is uniform on its compact image in <span class="math" data-tex="\(\mathbb K\)">\(\mathbb K\)</span>. These compressions are finite matrix fields.</p>
+<p>In this description, <span class="math" data-tex="\(\mathcal L(H_A)\)">\(\mathcal L(H_A)\)</span> consists precisely of bounded fields</p>
+<span class="math math-display" data-tex="\[
+t\longmapsto B(t)\in\mathcal B(\ell^2)
+\]">\[
+t\longmapsto B(t)\in\mathcal B(\ell^2)
+\]</span>
+<p>such that <span class="math" data-tex="\(B(t)\xi\)">\(B(t)\xi\)</span> and <span class="math" data-tex="\(B(t)^*\xi\)">\(B(t)^*\xi\)</span> are continuous for every <span class="math" data-tex="\(\xi\in\ell^2\)">\(\xi\in\ell^2\)</span>. Equivalently, these are bounded fields continuous for the strict topology of <span class="math" data-tex="\(M(\mathbb K)\)">\(M(\mathbb K)\)</span>.</p>
+<p>To verify the assertion, an adjointable module operator induces bounded operators at every point, using the inequality
+<span class="math" data-tex="\(\langle Tz,Tz\rangle\leq\|T\|^2\langle z,z\rangle\)">\(\langle Tz,Tz\rangle\leq\|T\|^2\langle z,z\rangle\)</span>.
+Apply it to the constant sections <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and to <span class="math" data-tex="\(T^*\)">\(T^*\)</span> to get the two continuity conditions. Conversely, such a bounded field sends continuous sections to continuous sections: near <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, split
+<span class="math" data-tex="\(B(t)z(t)-B(t_0)z(t_0)\)">\(B(t)z(t)-B(t_0)z(t_0)\)</span>
+into <span class="math" data-tex="\(B(t)(z(t)-z(t_0))\)">\(B(t)(z(t)-z(t_0))\)</span> and
+<span class="math" data-tex="\((B(t)-B(t_0))z(t_0)\)">\((B(t)-B(t_0))z(t_0)\)</span>.
+The adjoint field does the same and satisfies the pointwise adjoint identity. This constructs the adjointable operator, of norm <span class="math" data-tex="\(\sup_t\|B(t)\|\)">\(\sup_t\|B(t)\|\)</span>. Proposition 5.1 on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> proves the strict-topology formulation.</p>
+<p>Fibrewise compactness alone still does not characterize <span class="math" data-tex="\(\mathcal K(H_A)\)">\(\mathcal K(H_A)\)</span>. Take
+<span class="math" data-tex="\(X=\{0\}\cup\{1/n:n\geq1\}\)">\(X=\{0\}\cup\{1/n:n\geq1\}\)</span>, and let <span class="math" data-tex="\(B(0)=0\)">\(B(0)=0\)</span>, <span class="math" data-tex="\(B(1/n)=p_n\)">\(B(1/n)=p_n\)</span>, the projection onto <span class="math" data-tex="\(\mathbb Ce_n\)">\(\mathbb Ce_n\)</span>. For each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, <span class="math" data-tex="\(\|p_n\xi\|\to0\)">\(\|p_n\xi\|\to0\)</span>, so both field conditions hold. Every <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> is compact. But <span class="math" data-tex="\(\|B(1/n)\|=1\)">\(\|B(1/n)\|=1\)</span> prevents norm continuity at zero, so the module operator is not compact.</p>
+<p><span id="proposition-6-3"></span><strong>Proposition 6.3: genuine point fibres.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module. Its Hilbert-space fibre <span class="math" data-tex="\(E_t\)">\(E_t\)</span> is the completion of <span class="math" data-tex="\(E\)">\(E\)</span> after dividing out vectors with <span class="math" data-tex="\(\langle x,x\rangle(t)=0\)">\(\langle x,x\rangle(t)=0\)</span>. Every <span class="math" data-tex="\(k\in\mathcal K(E)\)">\(k\in\mathcal K(E)\)</span> induces a compact Hilbert-space operator <span class="math" data-tex="\(k_t\)">\(k_t\)</span> on <span class="math" data-tex="\(E_t\)">\(E_t\)</span>.</p>
+<p><em>Proof.</em> The operator inequality used above gives
+<span class="math" data-tex="\(\|(Tx)_t\|\leq\|T\|\|x_t\|\)">\(\|(Tx)_t\|\leq\|T\|\|x_t\|\)</span>, so an adjointable <span class="math" data-tex="\(T\)">\(T\)</span> descends and extends with norm at most <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>. Rank-one module operators descend to</p>
+<span class="math math-display" data-tex="\[
+(\theta_{x,y})_t=\theta_{x_t,y_t},
+\]">\[
+(\theta_{x,y})_t=\theta_{x_t,y_t},
+\]</span>
+<p>which has Hilbert-space rank at most one. Norm approximation by finite sums passes to fibres contractively, proving compactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are two other comparisons to keep separate. First, a compact module operator need not be compact as an operator on the module's underlying Banach space. On <span class="math" data-tex="\(E=C([0,1])\)">\(E=C([0,1])\)</span>, the identity is <span class="math" data-tex="\(\theta_{1,1}\)">\(\theta_{1,1}\)</span>, but disjoint continuous bumps of norm one show that its unit ball is not relatively compact.</p>
+<p>Second, a representation of a noncommutative coefficient algebra can produce a Hilbert space with an additional infinite-dimensional coefficient factor. For instance, take <span class="math" data-tex="\(A=\mathcal B(\ell^2)\)">\(A=\mathcal B(\ell^2)\)</span>, <span class="math" data-tex="\(E=A\)">\(E=A\)</span>, and represent <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> by its defining action. The Hilbert-space completion of balanced vectors <span class="math" data-tex="\(a\otimes\xi\)">\(a\otimes\xi\)</span> identifies with <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> through <span class="math" data-tex="\(a\otimes\xi\mapsto a\xi\)">\(a\otimes\xi\mapsto a\xi\)</span>: this map preserves the inner product <span class="math" data-tex="\(\langle\xi,a^*b\eta\rangle\)">\(\langle\xi,a^*b\eta\rangle\)</span> and is onto because <span class="math" data-tex="\(A\)">\(A\)</span> is unital. The module compact <span class="math" data-tex="\(\theta_{1,1}\)">\(\theta_{1,1}\)</span> induces the identity on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, which is not Hilbert-space compact. Thus compactness after a general coefficient representation differs from compactness at a <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> point. Geometric representations attached to leaves must be interpreted through their actual coefficient algebra; point-fibre terminology cannot be transferred without that distinction.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> Verify <span class="math" data-tex="\(\theta_{x,y}^*=\theta_{y,x}\)">\(\theta_{x,y}^*=\theta_{y,x}\)</span> and <span class="math" data-tex="\(T\theta_{x,y}=\theta_{Tx,y}\)">\(T\theta_{x,y}=\theta_{Tx,y}\)</span>.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(z,w\in E\)">\(z,w\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle x\langle y,z\rangle,w\rangle
+=\langle y,z\rangle^*\langle x,w\rangle
+=\langle z,y\langle x,w\rangle\rangle.
+\]">\[
+\langle x\langle y,z\rangle,w\rangle
+=\langle y,z\rangle^*\langle x,w\rangle
+=\langle z,y\langle x,w\rangle\rangle.
+\]</span>
+<p>This proves the adjoint identity. Module linearity gives
+<span class="math" data-tex="\(T(x\langle y,z\rangle)=(Tx)\langle y,z\rangle\)">\(T(x\langle y,z\rangle)=(Tx)\langle y,z\rangle\)</span>, which is the second identity.</p>
+<p><strong>Exercise 2 (basic).</strong> Prove <span class="math" data-tex="\(\mathcal K(A)\cong A\)">\(\mathcal K(A)\cong A\)</span> without assuming that <span class="math" data-tex="\(A\)">\(A\)</span> is unital.</p>
+<p><em>Solution.</em> The map <span class="math" data-tex="\(c\mapsto\lambda_c\)">\(c\mapsto\lambda_c\)</span> is an isometric *-homomorphism, since a contractive approximate identity satisfies <span class="math" data-tex="\(cu_\lambda\to c\)">\(cu_\lambda\to c\)</span>. Rank-one operators are <span class="math" data-tex="\(\lambda_{ab^*}\)">\(\lambda_{ab^*}\)</span>. The image of the isometric map is closed, and the span of <span class="math" data-tex="\(ab^*\)">\(ab^*\)</span> is dense in <span class="math" data-tex="\(A\)">\(A\)</span>, because <span class="math" data-tex="\(cu_\lambda\)">\(cu_\lambda\)</span> is such a product. Therefore its image is exactly <span class="math" data-tex="\(\mathcal K(A)\)">\(\mathcal K(A)\)</span>.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Use matrix units to prove <span class="math" data-tex="\(\mathcal K(H_A)\cong A\otimes\mathbb K\)">\(\mathcal K(H_A)\cong A\otimes\mathbb K\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> be the scalar matrix units. Send <span class="math" data-tex="\(a\otimes e_{ij}\)">\(a\otimes e_{ij}\)</span> to <span class="math" data-tex="\(V_{ij}(a)\)">\(V_{ij}(a)\)</span>. The relations
+<span class="math" data-tex="\(V_{ij}(a)V_{kl}(b)=\delta_{jk}V_{il}(ab)\)">\(V_{ij}(a)V_{kl}(b)=\delta_{jk}V_{il}(ab)\)</span>
+and <span class="math" data-tex="\(V_{ij}(a)^*=V_{ji}(a^*)\)">\(V_{ij}(a)^*=V_{ji}(a^*)\)</span> make this a *-homomorphism on finite matrix corners. Each corner is faithful by testing single-coordinate vectors, hence isometric. Its extension from the increasing union therefore embeds <span class="math" data-tex="\(A\otimes\mathbb K\)">\(A\otimes\mathbb K\)</span> isometrically. Its image is contained in <span class="math" data-tex="\(\mathcal K(H_A)\)">\(\mathcal K(H_A)\)</span>, since <span class="math" data-tex="\(\theta_{\delta_i b,\delta_j c}=V_{ij}(bc^*)\)">\(\theta_{\delta_i b,\delta_j c}=V_{ij}(bc^*)\)</span> and products <span class="math" data-tex="\(bc^*\)">\(bc^*\)</span> span a dense subspace of <span class="math" data-tex="\(A\)">\(A\)</span>. Conversely, truncate the two vectors in every <span class="math" data-tex="\(\theta_{x,y}\)">\(\theta_{x,y}\)</span>; the estimate in Theorem 2.1 shows norm convergence to finite matrix operators. The image is closed and contains all compact operators.</p>
+<p><strong>Exercise 4 (intermediate).</strong> The identity of <span class="math" data-tex="\(C_0(\mathbb N)\)">\(C_0(\mathbb N)\)</span>, viewed as a Hilbert module over itself, is a multiplier but is not compact. Prove both assertions, and examine its point fibres.</p>
+<p><em>Solution.</em> The identity is adjointable and belongs to <span class="math" data-tex="\(M(C_0(\mathbb N))=\ell^\infty(\mathbb N)\)">\(M(C_0(\mathbb N))=\ell^\infty(\mathbb N)\)</span> as the constant sequence <span class="math" data-tex="\(1\)">\(1\)</span>. By Exercise 2, compact module operators correspond to <span class="math" data-tex="\(c_0(\mathbb N)\)">\(c_0(\mathbb N)\)</span>, which does not contain this sequence. Each point fibre is <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, where the induced identity is rank one and compact. The missing condition is vanishing at infinity, not pointwise compactness.</p>
+<p><strong>Exercise 5 (advanced).</strong> Let <span class="math" data-tex="\(\pi:A\to\mathcal L(E)\)">\(\pi:A\to\mathcal L(E)\)</span> be a nondegenerate *-homomorphism, meaning that the linear span <span class="math" data-tex="\(\pi(A)E\)">\(\pi(A)E\)</span> is dense. Prove that it extends uniquely to a unital *-homomorphism
+<span class="math" data-tex="\(\widetilde\pi:M(A)\to\mathcal L(E)\)">\(\widetilde\pi:M(A)\to\mathcal L(E)\)</span>, strictly continuous on bounded sets. Deduce the corresponding extension from any C*-algebra containing <span class="math" data-tex="\(A\)">\(A\)</span> as a closed ideal.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\((u_\lambda)\)">\((u_\lambda)\)</span> be a positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>. On <span class="math" data-tex="\(\pi(a)x\)">\(\pi(a)x\)</span>,
+<span class="math" data-tex="\(\pi(u_\lambda)\pi(a)x\to\pi(a)x\)">\(\pi(u_\lambda)\pi(a)x\to\pi(a)x\)</span>.
+Density and contractivity give <span class="math" data-tex="\(\pi(u_\lambda)x\to x\)">\(\pi(u_\lambda)x\to x\)</span> on all of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>For <span class="math" data-tex="\(m\in M(A)\)">\(m\in M(A)\)</span>, consider <span class="math" data-tex="\(\pi(mu_\lambda)\)">\(\pi(mu_\lambda)\)</span>, whose norms are at most <span class="math" data-tex="\(\|m\|\)">\(\|m\|\)</span>. On a dense vector <span class="math" data-tex="\(v=\sum_i\pi(a_i)x_i\)">\(v=\sum_i\pi(a_i)x_i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi(mu_\lambda)v
+\longrightarrow\sum_i\pi(ma_i)x_i.
+\]">\[
+\pi(mu_\lambda)v
+\longrightarrow\sum_i\pi(ma_i)x_i.
+\]</span>
+<p>The common bound makes this limit independent of the expression for <span class="math" data-tex="\(v\)">\(v\)</span> and defines a bounded module map <span class="math" data-tex="\(T_m\)">\(T_m\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. Applying the construction to <span class="math" data-tex="\(m^*\)">\(m^*\)</span> produces its adjoint. In fact,</p>
+<span class="math math-display" data-tex="\[
+\langle \pi(ma)x,\pi(b)y\rangle
+=\langle x,\pi(a^*m^*b)y\rangle
+=\langle\pi(a)x,T_{m^*}\pi(b)y\rangle.
+\]">\[
+\langle \pi(ma)x,\pi(b)y\rangle
+=\langle x,\pi(a^*m^*b)y\rangle
+=\langle\pi(a)x,T_{m^*}\pi(b)y\rangle.
+\]</span>
+<p>Thus <span class="math" data-tex="\(T_m\in\mathcal L(E)\)">\(T_m\in\mathcal L(E)\)</span>, with <span class="math" data-tex="\(T_m^*=T_{m^*}\)">\(T_m^*=T_{m^*}\)</span> and
+<span class="math" data-tex="\(T_m\pi(a)x=\pi(ma)x\)">\(T_m\pi(a)x=\pi(ma)x\)</span>.
+On these same dense vectors, <span class="math" data-tex="\(T_mT_n=T_{mn}\)">\(T_mT_n=T_{mn}\)</span>, linearity holds, <span class="math" data-tex="\(T_1=1\)">\(T_1=1\)</span>, and <span class="math" data-tex="\(T_a=\pi(a)\)">\(T_a=\pi(a)\)</span>. This proves the unital *-homomorphism assertion. If another extension existed, its value at <span class="math" data-tex="\(m\)">\(m\)</span> would have the identical action on every <span class="math" data-tex="\(\pi(a)x\)">\(\pi(a)x\)</span>; density proves uniqueness.</p>
+<p>Suppose <span class="math" data-tex="\(m_i\to m\)">\(m_i\to m\)</span> strictly and <span class="math" data-tex="\(\sup_i\|m_i\|&lt;\infty\)">\(\sup_i\|m_i\|&lt;\infty\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|(T_{m_i}-T_m)\pi(a)x\|
+\leq\|(m_i-m)a\|\|x\|\to0.
+\]">\[
+\|(T_{m_i}-T_m)\pi(a)x\|
+\leq\|(m_i-m)a\|\|x\|\to0.
+\]</span>
+<p>Uniform boundedness of these operators extends convergence to all vectors. Since <span class="math" data-tex="\(m_i^*\to m^*\)">\(m_i^*\to m^*\)</span> strictly, the adjoints converge on all vectors too. Proposition 5.1 proves strict convergence in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>.</p>
+<p>Finally, if <span class="math" data-tex="\(A\)">\(A\)</span> is a closed ideal in <span class="math" data-tex="\(D\)">\(D\)</span>, each <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> gives the multiplier <span class="math" data-tex="\((a\mapsto da,a\mapsto ad)\)">\((a\mapsto da,a\mapsto ad)\)</span>. Compose this homomorphism with <span class="math" data-tex="\(\widetilde\pi\)">\(\widetilde\pi\)</span>. Uniqueness follows on <span class="math" data-tex="\(\pi(A)E\)">\(\pi(A)E\)</span> just as above. If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is faithful, the extension has kernel</p>
+<span class="math math-display" data-tex="\[
+A^\perp=\{d\in D:dA=Ad=0\}.
+\]">\[
+A^\perp=\{d\in D:dA=Ad=0\}.
+\]</span>
+<p>Indeed, a zero image forces <span class="math" data-tex="\(\pi(da)=\pi(ad)=0\)">\(\pi(da)=\pi(ad)=0\)</span> for all <span class="math" data-tex="\(a\)">\(a\)</span>; faithfulness gives both annihilation conditions. Conversely, these conditions make its action zero on the dense subspace. This also explains why nondegeneracy is needed: the dense subspace is what determines the action of each multiplier.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The norm Cauchy–Schwarz inequality is <em>Hilbert C*-modules</em>, Theorem 2.1. Automatic boundedness, the adjointable C*-algebra and its order estimate are <em>Adjointable operators</em>, Theorems 2.1–2.2 and Section 3. The complete-graph and bounded-map arguments are the opening lemma of that lesson's Section 2. The double-centralizer C*-algebra and its maximal essential-extension property are proved in the opening lemma of Section 4 here; Exercise 5 extends nondegenerate module representations.</p>
+<p>Functional calculus, positive contractive approximate identities and isometry of injective C*-homomorphisms are the exact foundational programme results identified in the first Hilbert-module lesson. Blackadar's II.7.3 and the other references below credit the classical multiplier theory. Foliation algebras, general continuous-field theory and crossed products require their own geometric hypotheses and are not used to prove these operator results.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Blackadar 1998]</strong> B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, MSRI Publications 5, Cambridge University Press, 1998. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>. Multiplier algebras and compact module operators are treated in §§12.1, 13.2, and 13.4.</li>
+<li><strong>[Blackadar 2006]</strong> B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006; <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">author's revised text, 2017</a>. Relevant discussions are II.7.2 and II.7.3.</li>
+<li><strong>[Emerson 2024]</strong> H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, 2024. See §§5.3 and 5.5 for multiplier and module viewpoints.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/hilbert-c-star-modules-and-morita-equivalence/compact-operators-multipliers-and-the-strict-topology.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Causal solvability forces hyperbolicity</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="causal-solvability-forces-hyperbolicity">Causal solvability forces hyperbolicity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A causal solution vanishes before its forcing begins. For a noncharacteristic initial plane, merely asking for a distributional causal solution for every compact smooth forcing already imposes a strong algebraic restriction: complex roots cannot escape arbitrarily far in the negative imaginary time direction. We first turn weak solvability into a continuous smooth inverse, then test that inverse on cutoff exponentials.</p>
+<p>Read <a href="AN02-L016.html">Lorentz cones and domain solvability</a>, the prerequisite statements in <a href="AN02-L013.html">Boundary distance and propagation</a>, <a href="AN02-L012.html">Singular supports and arbitrary distribution data</a>, and <a href="AN02-L018.html">Symbols at infinity</a>. The exact analytic inputs are the following.</p>
+<ul>
+<li><strong>Convex continuation.</strong> If <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span> are nonempty convex open sets, every characteristic affine hyperplane meeting <span class="math" data-tex="\(V\)">\(V\)</span> meets <span class="math" data-tex="\(U\)">\(U\)</span>, and a distribution <span class="math" data-tex="\(w\)">\(w\)</span> satisfies <span class="math" data-tex="\(P(D)w=0\)">\(P(D)w=0\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(w=0\)">\(w=0\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>, then <span class="math" data-tex="\(w=0\)">\(w=0\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>. Characteristic normals are nonzero real <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(P_m(M)=0\)">\(P_m(M)=0\)</span>. This is the general theorem declared in the convex-continuation section of the first lesson above; arbitrary complex lower order coefficients are allowed.</li>
+<li><strong>Characteristic halfspaces.</strong> If <span class="math" data-tex="\(P_m(N)=0\)">\(P_m(N)=0\)</span>, a nonzero global smooth homogeneous solution has exact support <span class="math" data-tex="\(\{x: N\cdot x\geq0\}\)">\(\{x: N\cdot x\geq0\}\)</span>. This is the halfspace-solution entry in the second lesson above.</li>
+<li><strong>Compact singular-support hulls.</strong> For nonzero <span class="math" data-tex="\(P\)">\(P\)</span> and compact <span class="math" data-tex="\(v\)">\(v\)</span>, the convex hulls of <span class="math" data-tex="\(\operatorname{singsupp}v\)">\(\operatorname{singsupp}v\)</span> and <span class="math" data-tex="\(\operatorname{singsupp}P(D)v\)">\(\operatorname{singsupp}P(D)v\)</span> are equal, with the empty-set convention. This is the singular-support Fourier entry in the third lesson above.</li>
+<li><strong>Fréchet closed graphs.</strong> A linear map between Fréchet spaces with closed graph is continuous. We use the full Fréchet statement, also used in <a href="AN02-L021.html">Hypoellipticity and complex zeros</a>.</li>
+</ul>
+<p>The projection and one-parameter Puiseux lemmas proved in <em>Symbols at infinity</em>, Lemmas 2.1 and 3.1, are the semialgebraic tools used below. We also use distribution support, multiplication and differentiation, and the usual topology of smooth functions.</p>
+<p>The complete Fréchet closed graph theorem is <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 14.5. <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a> supplies the test-space and seminorm extension tools. General convex continuation, exact characteristic halfspace solutions and the compact singular-support hull identity are planned prerequisites of <a href="prerequisites/planned-foundation-proofs.html">Distributions, kernels and analytic singularities</a>; the bullets below specify the precise statements needed.</p>
+<h2 id="halfspace-uniqueness">Halfspace uniqueness</h2>
+<p>Let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> be a complex polynomial of degree <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, with principal homogeneous part <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, and let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> be real. Write <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and
+<span class="math math-display" data-tex="\[
+H_N=\{x: N\cdot x\geq0\}.
+\]">\[
+H_N=\{x: N\cdot x\geq0\}.
+\]</span>
+The equation with homogeneous past data means the global distributional equation
+<span class="math math-display" data-tex="\[
+P(D)u=f,\qquad \operatorname{supp}u\subset H_N.
+\tag{1}
+\]">\[
+P(D)u=f,\qquad \operatorname{supp}u\subset H_N.
+\tag{1}
+\]</span>
+This support condition includes all normal initial traces when a classical solution is extended by zero; no unsupported assertion about arbitrary finite regularity is needed here.</p>
+<p>Normalize <span class="math" data-tex="\(|N|=1\)">\(|N|=1\)</span>. This leaves the halfspace unchanged. The condition <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span> is unchanged by a positive scaling, since <span class="math" data-tex="\(P_m\)">\(P_m\)</span> is homogeneous. A root barrier for the normalized vector converts to one for the original vector by scaling the imaginary parameter by its positive length.</p>
+<p>Suppose <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span>. Let
+<span class="math math-display" data-tex="\[
+\mathcal C=\{M\in\mathbb R^n: |M|=1,\ P_m(M)=0\}.
+\]">\[
+\mathcal C=\{M\in\mathbb R^n: |M|=1,\ P_m(M)=0\}.
+\]</span>
+If this set is nonempty, it is compact and contains neither <span class="math" data-tex="\(N\)">\(N\)</span> nor <span class="math" data-tex="\(-N\)">\(-N\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\delta=\min_{M\in\mathcal C}|M-(M\cdot N)N|&gt;0.
+\tag{2}
+\]">\[
+\delta=\min_{M\in\mathcal C}|M-(M\cdot N)N|&gt;0.
+\tag{2}
+\]</span>
+Also <span class="math" data-tex="\(\delta\leq1\)">\(\delta\leq1\)</span>. If <span class="math" data-tex="\(\mathcal C=\varnothing\)">\(\mathcal C=\varnothing\)</span>, set <span class="math" data-tex="\(\delta=1\)">\(\delta=1\)</span>; all arguments about characteristic hyperplanes then have an empty hypothesis list.</p>
+<p>If <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> globally and <span class="math" data-tex="\(u\)">\(u\)</span> is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, apply the convex continuation theorem with <span class="math" data-tex="\(V=\mathbb R^n\)">\(V=\mathbb R^n\)</span> and <span class="math" data-tex="\(U=\{N\cdot x&lt;0\}\)">\(U=\{N\cdot x&lt;0\}\)</span>. Every characteristic hyperplane meets <span class="math" data-tex="\(U\)">\(U\)</span>: its normal <span class="math" data-tex="\(M\)">\(M\)</span> is not parallel to <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(M\cdot x\)">\(M\cdot x\)</span> has range all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> on this halfspace. To see this directly, start on that hyperplane and move along the negative projection of <span class="math" data-tex="\(N\)">\(N\)</span> onto <span class="math" data-tex="\(M^\perp\)">\(M^\perp\)</span>; this preserves <span class="math" data-tex="\(M\cdot x\)">\(M\cdot x\)</span> and sends <span class="math" data-tex="\(N\cdot x\)">\(N\cdot x\)</span> to <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>. Thus the convex continuation theorem gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>.</p>
+<p>Conversely, if <span class="math" data-tex="\(P_m(N)=0\)">\(P_m(N)=0\)</span>, the characteristic halfspace theorem supplies a nonzero global smooth homogeneous solution with exact support <span class="math" data-tex="\(H_N\)">\(H_N\)</span>. Hence uniqueness in (1) holds if and only if the boundary is noncharacteristic. The proof retains arbitrary distributions and arbitrary growth. It does not assert uniqueness for characteristic directions on the strength of a familiar well-posedness class.</p>
+<p>For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(P_m=P\ne0\)">\(P_m=P\ne0\)</span>, there are no characteristic normals, and the assertion reduces to the immediate injectivity of multiplication by a nonzero constant.</p>
+<h2 id="a-support-enclosure-with-compact-time-slices">A support enclosure with compact time slices</h2>
+<p>Assume <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span>, and suppose <span class="math" data-tex="\(u\)">\(u\)</span> is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span> and <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> is compactly supported. Let <span class="math" data-tex="\(K=\operatorname{supp}f\)">\(K=\operatorname{supp}f\)</span>; if it is empty, the uniqueness argument gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. Choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;\min(1,\delta^2/2)\)">\(0&lt;\varepsilon&lt;\min(1,\delta^2/2)\)</span>, and choose <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\theta\cdot x\geq-A\qquad(x\in K,\ |\theta-N|&lt;\varepsilon).
+\tag{3}
+\]">\[
+\theta\cdot x\geq-A\qquad(x\in K,\ |\theta-N|&lt;\varepsilon).
+\tag{3}
+\]</span>
+For example <span class="math" data-tex="\(A=1+(1+\varepsilon)\max_{x\in K}|x|\)">\(A=1+(1+\varepsilon)\max_{x\in K}|x|\)</span> suffices.</p>
+<p>For each such <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_\theta=\{x: \theta\cdot x&lt;-A\},\\
+U_\theta=V_\theta\cap\{x: N\cdot x&lt;0\}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_\theta=\{x: \theta\cdot x&lt;-A\},\\
+U_\theta=V_\theta\cap\{x: N\cdot x&lt;0\}.
+\end{gathered}
+\]</span>
+Both sets are convex and open, and <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span> is nonempty: points far along <span class="math" data-tex="\(-N\)">\(-N\)</span> belong to it, since <span class="math" data-tex="\(\theta\cdot N&gt;0\)">\(\theta\cdot N&gt;0\)</span>.</p>
+<p>We verify the exact hyperplane condition in the convex continuation theorem. For a characteristic unit <span class="math" data-tex="\(M\)">\(M\)</span>, put
+<span class="math math-display" data-tex="\[
+v=-\bigl(N-(N\cdot M)M\bigr).
+\]">\[
+v=-\bigl(N-(N\cdot M)M\bigr).
+\]</span>
+Then <span class="math" data-tex="\(M\cdot v=0\)">\(M\cdot v=0\)</span>, <span class="math" data-tex="\(|v|\leq1\)">\(|v|\leq1\)</span>, and
+<span class="math math-display" data-tex="\[
+N\cdot v=-|N-(N\cdot M)M|^2\leq-\delta^2.
+\]">\[
+N\cdot v=-|N-(N\cdot M)M|^2\leq-\delta^2.
+\]</span>
+The equality of the two projection lengths follows by expanding both as <span class="math" data-tex="\(1-(N\cdot M)^2\)">\(1-(N\cdot M)^2\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\theta\cdot v
+=N\cdot v+(\theta-N)\cdot v
+&lt;-\delta^2+\varepsilon&lt;-\delta^2/2.
+\]">\[
+\theta\cdot v
+=N\cdot v+(\theta-N)\cdot v
+&lt;-\delta^2+\varepsilon&lt;-\delta^2/2.
+\]</span>
+Starting at any point of any affine hyperplane with normal <span class="math" data-tex="\(M\)">\(M\)</span>, the path <span class="math" data-tex="\(x+\lambda v\)">\(x+\lambda v\)</span>, <span class="math" data-tex="\(\lambda\to+\infty\)">\(\lambda\to+\infty\)</span>, eventually lies in <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span>. Thus every characteristic hyperplane meets <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span>, in particular every one that meets <span class="math" data-tex="\(V_\theta\)">\(V_\theta\)</span>.</p>
+<p>On <span class="math" data-tex="\(V_\theta\)">\(V_\theta\)</span>, <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> by (3); on <span class="math" data-tex="\(U_\theta\)">\(U_\theta\)</span>, <span class="math" data-tex="\(u=0\)">\(u=0\)</span> by the support condition. The convex continuation theorem gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span> on <span class="math" data-tex="\(V_\theta\)">\(V_\theta\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\operatorname{supp}u\subset
+\bigcap_{|\theta-N|&lt;\varepsilon}\{x: \theta\cdot x\geq-A\}.
+\tag{4}
+\]">\[
+\operatorname{supp}u\subset
+\bigcap_{|\theta-N|&lt;\varepsilon}\{x: \theta\cdot x\geq-A\}.
+\tag{4}
+\]</span>
+For a nonzero <span class="math" data-tex="\(x\)">\(x\)</span> in this support choose <span class="math" data-tex="\(\theta=N-\varepsilon x/(2|x|)\)">\(\theta=N-\varepsilon x/(2|x|)\)</span>. Equation (4) gives
+<span class="math math-display" data-tex="\[
+N\cdot x-\frac{\varepsilon}{2}|x|\geq-A.
+\tag{5}
+\]">\[
+N\cdot x-\frac{\varepsilon}{2}|x|\geq-A.
+\tag{5}
+\]</span>
+Hence the closed set
+<span class="math math-display" data-tex="\[
+\operatorname{supp}u\cap\{x: N\cdot x\leq T\}
+\]">\[
+\operatorname{supp}u\cap\{x: N\cdot x\leq T\}
+\]</span>
+is bounded by <span class="math" data-tex="\(2(T+A)/\varepsilon\)">\(2(T+A)/\varepsilon\)</span> and is compact for each <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>. This proves the precise compact-slice property used below, without assuming <span class="math" data-tex="\(u\)">\(u\)</span> is tempered or globally compact. The enclosure depends on the compact forcing and on the noncharacteristic direction, and does not presuppose hyperbolicity.</p>
+<h2 id="a-smooth-causal-automorphism-from-weak-solvability">A smooth causal automorphism from weak solvability</h2>
+<p>Assume that for every globally smooth compactly supported <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(\operatorname{supp}f\subset H_N\)">\(\operatorname{supp}f\subset H_N\)</span>, there exists <span class="math" data-tex="\(u\in\mathcal D&#x27;(\mathbb R^n)\)">\(u\in\mathcal D&#x27;(\mathbb R^n)\)</span>, supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, with <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>. Retain <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span>.</p>
+<p>First let <span class="math" data-tex="\(f\)">\(f\)</span> be one such compact forcing. The uniqueness argument makes its distributional solution unique, and the support enclosure supplies compact time slices. Fix <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R)\)">\(\chi\in C_c^\infty(\mathbb R)\)</span>, equal to one on <span class="math" data-tex="\([-1,T]\)">\([-1,T]\)</span>, supported in <span class="math" data-tex="\((-2,T+1)\)">\((-2,T+1)\)</span>, and put
+<span class="math math-display" data-tex="\[
+v(x)=\chi(N\cdot x)u(x).
+\]">\[
+v(x)=\chi(N\cdot x)u(x).
+\]</span>
+It is a compact distribution by the support enclosure. The product rule gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(D)v&amp;=\chi(N\cdot x)f\\
+&amp;\quad+[P(D),\chi(N\cdot x)]u.
+\end{aligned}
+\tag{6}
+\]">\[
+\begin{aligned}
+P(D)v&amp;=\chi(N\cdot x)f\\
+&amp;\quad+[P(D),\chi(N\cdot x)]u.
+\end{aligned}
+\tag{6}
+\]</span>
+The first summand is smooth. The second summand is supported where <span class="math" data-tex="\(u\)">\(u\)</span> meets derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. The lower transition has <span class="math" data-tex="\(N\cdot x&lt;0\)">\(N\cdot x&lt;0\)</span> and meets no support of <span class="math" data-tex="\(u\)">\(u\)</span>; the upper transition has <span class="math" data-tex="\(N\cdot x\geq T\)">\(N\cdot x\geq T\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{singsupp}P(D)v\subset\{x: N\cdot x\geq T\}.
+\]">\[
+\operatorname{singsupp}P(D)v\subset\{x: N\cdot x\geq T\}.
+\]</span>
+The halfspace on the right is closed and convex. The compact singular-support hull identity now implies <span class="math" data-tex="\(\operatorname{singsupp}v\subset\{N\cdot x\geq T\}\)">\(\operatorname{singsupp}v\subset\{N\cdot x\geq T\}\)</span>, including when the image singular support is empty. Since <span class="math" data-tex="\(v=u\)">\(v=u\)</span> near <span class="math" data-tex="\(0\leq N\cdot x&lt;T\)">\(0\leq N\cdot x&lt;T\)</span>, and <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in the negative halfspace, <span class="math" data-tex="\(u\)">\(u\)</span> is smooth where <span class="math" data-tex="\(N\cdot x&lt;T\)">\(N\cdot x&lt;T\)</span>. Taking arbitrary <span class="math" data-tex="\(T\)">\(T\)</span> proves <span class="math" data-tex="\(u\in C^\infty(\mathbb R^n)\)">\(u\in C^\infty(\mathbb R^n)\)</span>. It remains supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, so it is flat at its boundary.</p>
+<p>To treat arbitrary noncompact smooth forcing supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, we prove a local dependence statement. If a distribution <span class="math" data-tex="\(w\)">\(w\)</span> is supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span> and
+<span class="math math-display" data-tex="\[
+P(D)w=0\quad\hbox{on }B(0,R),
+\]">\[
+P(D)w=0\quad\hbox{on }B(0,R),
+\]</span>
+then
+<span class="math math-display" data-tex="\[
+w=0\quad\hbox{on }B(0,\delta R/2).
+\tag{7}
+\]">\[
+w=0\quad\hbox{on }B(0,\delta R/2).
+\tag{7}
+\]</span>
+Indeed set <span class="math" data-tex="\(U=B(0,R)\cap\{N\cdot x&lt;0\}\)">\(U=B(0,R)\cap\{N\cdot x&lt;0\}\)</span>, <span class="math" data-tex="\(B_*=B(0,\delta R/2)\)">\(B_*=B(0,\delta R/2)\)</span>, and <span class="math" data-tex="\(V=\operatorname{conv}(U\cup B_*)\)">\(V=\operatorname{conv}(U\cup B_*)\)</span>. This <span class="math" data-tex="\(V\)">\(V\)</span> is open and convex, contains <span class="math" data-tex="\(U,B_*\)">\(U,B_*\)</span>, and is contained in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. For each characteristic unit <span class="math" data-tex="\(M\)">\(M\)</span>, the interval <span class="math" data-tex="\(M\cdot U\)">\(M\cdot U\)</span> contains <span class="math" data-tex="\((-\delta R,\delta R)\)">\((-\delta R,\delta R)\)</span>: take points approaching <span class="math" data-tex="\(N\cdot x=0\)">\(N\cdot x=0\)</span> in the two opposite tangential directions of the projection of <span class="math" data-tex="\(M\)">\(M\)</span> onto <span class="math" data-tex="\(N^\perp\)">\(N^\perp\)</span>, whose length is at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The image of <span class="math" data-tex="\(B_*\)">\(B_*\)</span> is the smaller interval <span class="math" data-tex="\((-\delta R/2,\delta R/2)\)">\((-\delta R/2,\delta R/2)\)</span>. Convexity therefore gives
+<span class="math math-display" data-tex="\[
+M\cdot V=M\cdot U.
+\]">\[
+M\cdot V=M\cdot U.
+\]</span>
+Every characteristic hyperplane meeting <span class="math" data-tex="\(V\)">\(V\)</span> meets <span class="math" data-tex="\(U\)">\(U\)</span>. The convex continuation theorem applies, since <span class="math" data-tex="\(w\)">\(w\)</span> vanishes on <span class="math" data-tex="\(U\)">\(U\)</span>, and gives (7). If there are no characteristic normals, the same application has no hyperplane conditions to check. This also covers <span class="math" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<p>Now take <span class="math" data-tex="\(f\in C^\infty(\mathbb R^n)\)">\(f\in C^\infty(\mathbb R^n)\)</span> supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>. Choose <span class="math" data-tex="\(\chi_j\in C_c^\infty(\mathbb R^n)\)">\(\chi_j\in C_c^\infty(\mathbb R^n)\)</span>, equal to one on <span class="math" data-tex="\(B(0,j)\)">\(B(0,j)\)</span>, and let <span class="math" data-tex="\(u_j\)">\(u_j\)</span> be the unique smooth causal solution for <span class="math" data-tex="\(f_j=\chi_jf\)">\(f_j=\chi_jf\)</span>. If <span class="math" data-tex="\(l\geq j\)">\(l\geq j\)</span>, then
+<span class="math math-display" data-tex="\[
+P(D)(u_l-u_j)=0\quad\hbox{on }B(0,j).
+\]">\[
+P(D)(u_l-u_j)=0\quad\hbox{on }B(0,j).
+\]</span>
+By (7), <span class="math" data-tex="\(u_l=u_j\)">\(u_l=u_j\)</span> on <span class="math" data-tex="\(B(0,\delta j/2)\)">\(B(0,\delta j/2)\)</span>. Thus the sequence eventually agrees exactly on every compact set, together with all derivatives. Its local limit defines a global <span class="math" data-tex="\(u\in C^\infty\)">\(u\in C^\infty\)</span>, supported in <span class="math" data-tex="\(H_N\)">\(H_N\)</span>, and <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>. The uniqueness argument proves uniqueness. No convergence estimate on the unbounded tail of <span class="math" data-tex="\(f\)">\(f\)</span> was used.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+E_H=\{u\in C^\infty(\mathbb R^n):\operatorname{supp}u\subset H_N\}.
+\]">\[
+E_H=\{u\in C^\infty(\mathbb R^n):\operatorname{supp}u\subset H_N\}.
+\]</span>
+It is a closed subspace of the usual smooth Fréchet space: convergence in every compact smooth seminorm preserves vanishing on the negative halfspace. The continuous linear map <span class="math" data-tex="\(P(D):E_H\to E_H\)">\(P(D):E_H\to E_H\)</span> is bijective by the preceding proof. Its inverse has closed graph: if <span class="math" data-tex="\(f_j\to f\)">\(f_j\to f\)</span> and <span class="math" data-tex="\(u_j\to u\)">\(u_j\to u\)</span> in <span class="math" data-tex="\(E_H\)">\(E_H\)</span>, with <span class="math" data-tex="\(P(D)u_j=f_j\)">\(P(D)u_j=f_j\)</span>, continuity gives <span class="math" data-tex="\(P(D)u=f\)">\(P(D)u=f\)</span>. The Fréchet closed graph theorem makes the inverse continuous.</p>
+<p>For any fixed <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(N\cdot y&gt;0\)">\(N\cdot y&gt;0\)</span>, continuity of evaluation composed with this inverse consequently gives a compact <span class="math" data-tex="\(K\)">\(K\)</span>, an integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, and <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|u(y)|\leq C\sum_{|\alpha|\leq k}
+\sup_{x\in K}|D^\alpha P(D)u(x)|,\\
+u\in E_H.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+|u(y)|\leq C\sum_{|\alpha|\leq k}
+\sup_{x\in K}|D^\alpha P(D)u(x)|,\\
+u\in E_H.
+\end{gathered}
+\tag{8}
+\]</span>
+For clarity, a continuous linear functional is bounded by a finite collection of defining seminorms: continuity at zero supplies a basic seminorm neighborhood on which its absolute value is at most one, and scalar dilation gives the inequality. Enlarging the finitely many compact sets to one <span class="math" data-tex="\(K\)">\(K\)</span>, and the derivative orders to one <span class="math" data-tex="\(k\)">\(k\)</span>, gives exactly (8). This is a smooth causal automorphism, with no growth restriction.</p>
+<h2 id="test-a-complex-root">Test a complex root</h2>
+<p>Take the point <span class="math" data-tex="\(y\)">\(y\)</span> in (8), and write <span class="math" data-tex="\(N\cdot y=2c&gt;0\)">\(N\cdot y=2c&gt;0\)</span>. Choose a smooth scalar <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, zero for <span class="math" data-tex="\(t\leq0\)">\(t\leq0\)</span>, equal to one for <span class="math" data-tex="\(t\geq c\)">\(t\geq c\)</span>, with all derivatives bounded. Such a function is obtained by integrating a compact nonnegative bump in <span class="math" data-tex="\((0,c)\)">\((0,c)\)</span> and dividing by its integral. It need not be compactly supported.</p>
+<p>For any complex vector <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, the function
+<span class="math math-display" data-tex="\[
+u_\zeta(x)=e^{i(x-y)\cdot\zeta}\chi(N\cdot x)
+\tag{9}
+\]">\[
+u_\zeta(x)=e^{i(x-y)\cdot\zeta}\chi(N\cdot x)
+\tag{9}
+\]</span>
+belongs to <span class="math" data-tex="\(E_H\)">\(E_H\)</span>, despite its possibly exponential growth, and <span class="math" data-tex="\(u_\zeta(y)=1\)">\(u_\zeta(y)=1\)</span>. The differentiation rule gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(D)u_\zeta&amp;=e^{i(x-y)\cdot\zeta}F_\zeta(N\cdot x),\\
+F_\zeta(t)&amp;=P(\zeta+N D_t)\chi(t).
+\end{aligned}
+\tag{10}
+\]">\[
+\begin{aligned}
+P(D)u_\zeta&amp;=e^{i(x-y)\cdot\zeta}F_\zeta(N\cdot x),\\
+F_\zeta(t)&amp;=P(\zeta+N D_t)\chi(t).
+\end{aligned}
+\tag{10}
+\]</span>
+Expand the polynomial exactly:
+<span class="math math-display" data-tex="\[
+P(\zeta+N D_t)\chi
+=\sum_{j=0}^m\frac{\partial_N^jP(\zeta)}{j!}D_t^j\chi.
+\tag{11}
+\]">\[
+P(\zeta+N D_t)\chi
+=\sum_{j=0}^m\frac{\partial_N^jP(\zeta)}{j!}D_t^j\chi.
+\tag{11}
+\]</span>
+If <span class="math" data-tex="\(P(\zeta)=0\)">\(P(\zeta)=0\)</span>, the <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term vanishes. Every remaining derivative of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is supported in <span class="math" data-tex="\([0,c]\)">\([0,c]\)</span>. Applying <span class="math" data-tex="\(D^\alpha\)">\(D^\alpha\)</span>, <span class="math" data-tex="\(|\alpha|\leq k\)">\(|\alpha|\leq k\)</span>, to (10) introduces at most <span class="math" data-tex="\(k\)">\(k\)</span> further powers of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of order at most <span class="math" data-tex="\(m+k\)">\(m+k\)</span>. Fixed polynomial coefficients and cutoff seminorms therefore give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_c=K\cap\{x: 0\leq N\cdot x\leq c\},\\
+1\leq C_1(1+|\zeta|)^{m+k}
+\sup_{x\in K_c}|e^{i(x-y)\cdot\zeta}|.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+K_c=K\cap\{x: 0\leq N\cdot x\leq c\},\\
+1\leq C_1(1+|\zeta|)^{m+k}
+\sup_{x\in K_c}|e^{i(x-y)\cdot\zeta}|.
+\end{gathered}
+\tag{12}
+\]</span>
+An empty set on the right is interpreted as zero; it would immediately preclude the corresponding root.</p>
+<p>For <span class="math" data-tex="\(\zeta=\xi+i\tau N\)">\(\zeta=\xi+i\tau N\)</span>, <span class="math" data-tex="\(\xi\)">\(\xi\)</span> real and <span class="math" data-tex="\(\tau&lt;0\)">\(\tau&lt;0\)</span>, the absolute value in this strip is
+<span class="math math-display" data-tex="\[
+\exp\bigl(-\tau(N\cdot x-2c)\bigr)\leq e^{c\tau}.
+\]">\[
+\exp\bigl(-\tau(N\cdot x-2c)\bigr)\leq e^{c\tau}.
+\]</span>
+Thus every such root satisfies
+<span class="math math-display" data-tex="\[
+1\leq C_1(1+|\xi+i\tau N|)^{m+k}e^{c\tau}.
+\tag{13}
+\]">\[
+1\leq C_1(1+|\xi+i\tau N|)^{m+k}e^{c\tau}.
+\tag{13}
+\]</span>
+Increasing <span class="math" data-tex="\(C_1\)">\(C_1\)</span> to at least one and taking logarithms yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-c\tau&amp;\leq\log C_1\\
+&amp;\quad+(m+k)\log(1+|\xi+i\tau N|).
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+-c\tau&amp;\leq\log C_1\\
+&amp;\quad+(m+k)\log(1+|\xi+i\tau N|).
+\end{aligned}
+\tag{14}
+\]</span>
+The exponential sign follows from the past strip being below the point <span class="math" data-tex="\(y\)">\(y\)</span>. Reversing it would give no useful restriction.</p>
+<h2 id="from-logarithmic-growth-to-a-fixed-root-barrier">From logarithmic growth to a fixed root barrier</h2>
+<p>For <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal Z_r=\{(\xi,\tau)\in\mathbb R^n\times\mathbb R:\\
+\tau\leq0,\quad|\xi|^2+\tau^2\leq r^2,\\
+P(\xi+i\tau N)=0\},\\
+\begin{aligned}
+\mu(r)&amp;=\max\bigl(\{0\}\cup\\
+&amp;\quad\{-\tau: (\xi,\tau)\in\mathcal Z_r\}\bigr).
+\end{aligned}
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\mathcal Z_r=\{(\xi,\tau)\in\mathbb R^n\times\mathbb R:\\
+\tau\leq0,\quad|\xi|^2+\tau^2\leq r^2,\\
+P(\xi+i\tau N)=0\},\\
+\begin{aligned}
+\mu(r)&amp;=\max\bigl(\{0\}\cup\\
+&amp;\quad\{-\tau: (\xi,\tau)\in\mathcal Z_r\}\bigr).
+\end{aligned}
+\end{gathered}
+\tag{15}
+\]</span>
+The possible root pairs form a compact set, since <span class="math" data-tex="\(N\)">\(N\)</span> has unit length; the adjoined zero makes the maximum defined even when there are no such roots. Thus <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is finite, nonnegative and nondecreasing.</p>
+<p>The root condition is a pair of real polynomial equalities: the real and imaginary parts of <span class="math" data-tex="\(P(\xi+i\tau N)\)">\(P(\xi+i\tau N)\)</span>. Arbitrary complex coefficients simply give fixed real coefficients in these equations. All remaining conditions in (15) are polynomial inequalities. The graph of the maximum can be expressed by the existence of a root attaining a positive maximum, together with the assertion that no root in the same ball has a larger value; the zero case asserts that no negative-imaginary root occurs. The projection lemma above therefore makes <span class="math" data-tex="\(\mu\)">\(\mu\)</span> semialgebraic.</p>
+<p>If <span class="math" data-tex="\(\mu(r)&gt;0\)">\(\mu(r)&gt;0\)</span>, choose a maximizing root and apply (14). We obtain
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu(r)\geq0,\\
+\begin{aligned}
+c\mu(r)&amp;\leq\log C_1\\
+&amp;\quad+(m+k)\log(1+r).
+\end{aligned}
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+\mu(r)\geq0,\\
+\begin{aligned}
+c\mu(r)&amp;\leq\log C_1\\
+&amp;\quad+(m+k)\log(1+r).
+\end{aligned}
+\end{gathered}
+\tag{16}
+\]</span>
+If <span class="math" data-tex="\(\mu\)">\(\mu\)</span> were unbounded, the Puiseux theorem above would give
+<span class="math math-display" data-tex="\[
+\mu(r)=A r^\alpha(1+o(1)),\qquad A&gt;0,\quad\alpha&gt;0.
+\]">\[
+\mu(r)=A r^\alpha(1+o(1)),\qquad A&gt;0,\quad\alpha&gt;0.
+\]</span>
+Nonnegativity gives <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, and unboundedness excludes both <span class="math" data-tex="\(\alpha\leq0\)">\(\alpha\leq0\)</span> and the eventually zero alternative. This contradicts (16), since <span class="math" data-tex="\(r^\alpha/\log(1+r)\to\infty\)">\(r^\alpha/\log(1+r)\to\infty\)</span>. Hence <span class="math" data-tex="\(M=\sup_{r\geq0}\mu(r)&lt;\infty\)">\(M=\sup_{r\geq0}\mu(r)&lt;\infty\)</span>.</p>
+<p>Taking, for example, <span class="math" data-tex="\(\tau_0=-M-1\)">\(\tau_0=-M-1\)</span>, there is no real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and <span class="math" data-tex="\(\tau&lt;\tau_0\)">\(\tau&lt;\tau_0\)</span> with <span class="math" data-tex="\(P(\xi+i\tau N)=0\)">\(P(\xi+i\tau N)=0\)</span>. This is the full necessary condition:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P_m(N)\ne0,\\
+\forall f\in C_c^\infty(\mathbb R^n),\
+\operatorname{supp}f\subset H_N,\\
+\exists u\in\mathcal D&#x27;:\
+\operatorname{supp}u\subset H_N,\\
+P(D)u=f
+\end{gathered}
+\]">\[
+\begin{gathered}
+P_m(N)\ne0,\\
+\forall f\in C_c^\infty(\mathbb R^n),\
+\operatorname{supp}f\subset H_N,\\
+\exists u\in\mathcal D&#x27;:\
+\operatorname{supp}u\subset H_N,\\
+P(D)u=f
+\end{gathered}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Longrightarrow\quad
+\exists\tau_0\in\mathbb R\
+\forall\xi\in\mathbb R^n:\\
+P(\xi+i\tau N)\ne0\quad(\tau&lt;\tau_0).
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+\Longrightarrow\quad
+\exists\tau_0\in\mathbb R\
+\forall\xi\in\mathbb R^n:\\
+P(\xi+i\tau N)\ne0\quad(\tau&lt;\tau_0).
+\end{gathered}
+\tag{17}
+\]</span>
+The empty-root, constant-polynomial, one-dimensional and boundary-flat forcing cases are all retained.</p>
+<p>Accordingly, a nonzero polynomial is <strong>hyperbolic with respect to <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span></strong> when <span class="math" data-tex="\(P_m(N)\ne0\)">\(P_m(N)\ne0\)</span> and the final root barrier in (17) holds for some <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span>. The barrier concerns the full polynomial, including all complex lower order coefficients. For a nonhomogeneous polynomial it is not being replaced here by a statement only about <span class="math" data-tex="\(P_m\)">\(P_m\)</span>. The converse and the stronger algebraic consequences of this definition are developed in later lessons.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (introductory: an elliptic obstruction).</strong> For <span class="math" data-tex="\(P(\tau,\xi)=\tau^2+|\xi|^2\)">\(P(\tau,\xi)=\tau^2+|\xi|^2\)</span> in dimension <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, take <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>. Check that the boundary is noncharacteristic, and show that compact causal solvability in the theorem cannot hold. Explain the one-dimensional exception.</p>
+<p><strong>Solution.</strong> The principal part takes value one at <span class="math" data-tex="\(e_t\)">\(e_t\)</span>. For every real spatial <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the complex vector <span class="math" data-tex="\((-i|\xi|,\xi)\)">\((-i|\xi|,\xi)\)</span> is a root. Its imaginary part is <span class="math" data-tex="\(-|\xi|e_t\)">\(-|\xi|e_t\)</span>, which escapes arbitrarily far down that direction. The root barrier proved above is therefore impossible, so the weak solvability hypothesis fails. In one dimension there is no spatial <span class="math" data-tex="\(\xi\)">\(\xi\)</span>: <span class="math" data-tex="\(P(\tau)=\tau^2\)">\(P(\tau)=\tau^2\)</span> has only the root zero and is hyperbolic in either time direction.</p>
+<p><strong>Exercise 2 (introductory: the wave barrier).</strong> Verify the hyperbolicity definition directly for <span class="math" data-tex="\(P(\tau,\xi)=\tau^2-|\xi|^2\)">\(P(\tau,\xi)=\tau^2-|\xi|^2\)</span>, with <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>.</p>
+<p><strong>Solution.</strong> Write the complex time coordinate as <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span>, with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> real and spatial <span class="math" data-tex="\(\xi\)">\(\xi\)</span> real. The imaginary root equation is <span class="math" data-tex="\(2ab=0\)">\(2ab=0\)</span>. If <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, then <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, but the real equation becomes <span class="math" data-tex="\(-b^2-|\xi|^2=0\)">\(-b^2-|\xi|^2=0\)</span>, an impossibility. Thus no root has nonzero imaginary time part; <span class="math" data-tex="\(\tau_0=0\)">\(\tau_0=0\)</span> works. The principal value at <span class="math" data-tex="\(e_t\)">\(e_t\)</span> is one. This checks the definition without assuming a general causal sufficiency theorem.</p>
+<p><strong>Exercise 3 (intermediate: an unrestricted growing inverse).</strong> Let <span class="math" data-tex="\(P(z)=z-ia\)">\(P(z)=z-ia\)</span> in one variable, <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>. Find an admissible barrier and the smooth causal inverse. Check its complex constant and its regularity at zero.</p>
+<p><strong>Solution.</strong> The only root is <span class="math" data-tex="\(ia\)">\(ia\)</span>, so <span class="math" data-tex="\(\tau_0=a\)">\(\tau_0=a\)</span> is admissible. Since <span class="math" data-tex="\(P(D)=-i(\partial_t+a)\)">\(P(D)=-i(\partial_t+a)\)</span>, the equation is <span class="math" data-tex="\((\partial_t+a)u=if\)">\((\partial_t+a)u=if\)</span>. Its causal solution is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(t)=i\int_0^t e^{-a(t-s)}f(s)\,ds\quad(t\geq0),\\
+u(t)=0\quad(t&lt;0).
+\end{gathered}
+\]">\[
+\begin{gathered}
+u(t)=i\int_0^t e^{-a(t-s)}f(s)\,ds\quad(t\geq0),\\
+u(t)=0\quad(t&lt;0).
+\end{gathered}
+\]</span>
+Differentiation verifies the equation and the factor <span class="math" data-tex="\(i\)">\(i\)</span>. Smooth <span class="math" data-tex="\(f\)">\(f\)</span> supported in the closed positive half-line is flat at zero. The relation <span class="math" data-tex="\(u&#x27;=if-au\)">\(u&#x27;=if-au\)</span>, differentiated recursively, makes every derivative of <span class="math" data-tex="\(u\)">\(u\)</span> zero there too. For <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>, this solution may grow exponentially; the stated solution space permits that growth.</p>
+<p><strong>Exercise 4 (intermediate: why a logarithm is not enough).</strong> Suppose a finite nonnegative semialgebraic function <span class="math" data-tex="\(h(r)\)">\(h(r)\)</span> on a final interval is <span class="math" data-tex="\(O(\log(1+r))\)">\(O(\log(1+r))\)</span>. Prove that it is bounded. Explain the role of polynomial algebra in the root-barrier proof.</p>
+<p><strong>Solution.</strong> The Puiseux lemma makes <span class="math" data-tex="\(h\)">\(h\)</span> eventually zero or asymptotic to <span class="math" data-tex="\(A r^\alpha\)">\(A r^\alpha\)</span>, with <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and rational <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. If it were unbounded, <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, and <span class="math" data-tex="\(r^\alpha/\log(1+r)\to\infty\)">\(r^\alpha/\log(1+r)\to\infty\)</span>, a contradiction. The abstract profile <span class="math" data-tex="\(\log(1+r)\)">\(\log(1+r)\)</span> itself is unbounded and obeys a logarithmic upper estimate. In our proof, the polynomial root equations and the quantified maximum make the root profile semialgebraic, which supplies the additional power law.</p>
+<p><strong>Exercise 5 (advanced: exact stabilization in a concrete geometry).</strong> For the wave principal part and <span class="math" data-tex="\(N=e_t\)">\(N=e_t\)</span>, calculate <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and the radius in the local dependence statement. Show explicitly how it produces a smooth global solution from the compactly forced solutions.</p>
+<p><strong>Solution.</strong> A unit characteristic normal satisfies <span class="math" data-tex="\(M_t^2=|M_x|^2\)">\(M_t^2=|M_x|^2\)</span>, so <span class="math" data-tex="\(|M_x|=1/\sqrt2\)">\(|M_x|=1/\sqrt2\)</span> and <span class="math" data-tex="\(\delta=1/\sqrt2\)">\(\delta=1/\sqrt2\)</span>. The local radius is <span class="math" data-tex="\(R/(2\sqrt2)\)">\(R/(2\sqrt2)\)</span>. If the cutoffs <span class="math" data-tex="\(\chi_j,\chi_l\)">\(\chi_j,\chi_l\)</span> both equal one on <span class="math" data-tex="\(B(0,j)\)">\(B(0,j)\)</span>, <span class="math" data-tex="\(l\geq j\)">\(l\geq j\)</span>, their solution difference has zero image there and support in the positive time halfspace. It vanishes on <span class="math" data-tex="\(B(0,j/(2\sqrt2))\)">\(B(0,j/(2\sqrt2))\)</span>. Every fixed compact set lies in these balls for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>, so the sequence agrees exactly there, with every derivative. Its local limit is smooth and solves the desired equation. This conservative radius suffices for stabilization; no sharp wave propagation radius is inferred.</p>
+<p><strong>Exercise 6 (advanced: a barrier without a noncharacteristic direction).</strong> For the forward heat polynomial <span class="math" data-tex="\(P(\tau,\xi)=i\tau+|\xi|^2\)">\(P(\tau,\xi)=i\tau+|\xi|^2\)</span>, show that a negative imaginary time barrier holds but the noncharacteristic condition fails. Explain why a familiar causal solution class cannot establish the unrestricted uniqueness used here.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\tau=a+ib\)">\(\tau=a+ib\)</span>. The root equations are <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(b=|\xi|^2\geq0\)">\(b=|\xi|^2\geq0\)</span>, so there are no roots with <span class="math" data-tex="\(b&lt;0\)">\(b&lt;0\)</span>. However the degree-two principal part is <span class="math" data-tex="\(|\xi|^2\)">\(|\xi|^2\)</span>, which vanishes at <span class="math" data-tex="\(e_t\)">\(e_t\)</span>. The hyperbolicity definition requires both the barrier and the nonzero principal value, so this polynomial fails that definition in the time direction. The characteristic-halfspace theorem supplies a nonzero global smooth homogeneous solution supported in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, with unrestricted spatial growth. Uniqueness in a smaller growth class does not imply uniqueness in the space used in the lesson.</p>
+<h2 id="references">References</h2>
+<p>The exact convex-continuation, characteristic-halfspace and singular-support entries are stated in the linked prerequisite lessons. The original projection and Puiseux proofs used for the root profile are in <a href="AN02-L018.html">Symbols at infinity</a>, Lemmas 2.1 and 3.1.</p>
+</main></body></html>

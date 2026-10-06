@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dirichlet&#x27;s unit theorem · Number fields</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]'],['$$','$$']]},options:{enableMenu:false},startup:{ready(){MathJax.startup.defaultReady();}}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head><body><main><nav><a href="./">Number fields: contents</a></nav><aside class="notice"><strong>Private repair draft.</strong> The finite source and proof correction pass preserves the complete lesson. Author checks and exact programme proof providers are recorded; independent review retains its stated scope.</aside><article class="lesson"><h1 id="dirichlet-s-unit-theorem">Dirichlet's unit theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>The units of a number field can be infinite, but their multiplicative freedom has a finite dimension. Taking absolute values at the infinite places and then logarithms turns multiplication into addition. The norm forces these vectors into a hyperplane. Dirichlet's theorem says that they fill a complete lattice in that hyperplane.</p>
+<h2 id="places-norms-and-prerequisites">Places, norms, and prerequisites</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> have signature <span class="math" data-tex="\((r_1,r_2)\)">\((r_1,r_2)\)</span>. Put <span class="math" data-tex="\(m=r_1+r_2\)">\(m=r_1+r_2\)</span>, <span class="math" data-tex="\(r=m-1\)">\(r=m-1\)</span>, and <span class="math" data-tex="\(U=O_K^\times\)">\(U=O_K^\times\)</span>. At a real place represented by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, set <span class="math" data-tex="\(|a|_v=|\sigma a|\)">\(|a|_v=|\sigma a|\)</span>; at a complex place represented by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, set
+<span class="math math-display" data-tex="\[
+|a|_v=|\tau a|^2.
+\]">\[
+|a|_v=|\tau a|^2.
+\]</span>
+Thus
+<span class="math math-display" data-tex="\[
+\prod_{v\mid\infty}|a|_v=|N_{K/\mathbf Q}a|.
+\tag{1}
+\]">\[
+\prod_{v\mid\infty}|a|_v=|N_{K/\mathbf Q}a|.
+\tag{1}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+\lambda:K^\times\longrightarrow\mathbf R^m,\qquad
+\lambda(a)=(\log|a|_v)_{v\mid\infty},
+\qquad
+H=\{x\in\mathbf R^m\mid\textstyle\sum_v x_v=0\}.
+\tag{2}
+\]">\[
+\lambda:K^\times\longrightarrow\mathbf R^m,\qquad
+\lambda(a)=(\log|a|_v)_{v\mid\infty},
+\qquad
+H=\{x\in\mathbf R^m\mid\textstyle\sum_v x_v=0\}.
+\tag{2}
+\]</span>
+All logarithms are real natural logarithms.</p>
+<p>From <a href="lattices-minkowskis-theorem-and-the-minkowski-embedding.html"><em>Lattices, Minkowski's theorem and the Minkowski embedding</em></a>, we use Theorem 7.1, Proposition 7.2, and the lattice structure lemma: <span class="math" data-tex="\(O_K\)">\(O_K\)</span> is a complete lattice of covolume <span class="math" data-tex="\(2^{-r_2}\sqrt{|d_K|}\)">\(2^{-r_2}\sqrt{|d_K|}\)</span>, and a discrete subgroup has a free integral basis spanning its real span. From <a href="finiteness-of-the-class-number.html"><em>Finiteness of the class number</em></a> we use the bounded-ideal lemma and Corollary 8.2. Ideal norms are those of Proposition 4.1 in <a href="norms-class-groups-and-modules-over-dedekind-domains.html"><em>Norms, class groups, and modules over Dedekind domains</em></a>.</p>
+<p>An algebraic integer <span class="math" data-tex="\(a\)">\(a\)</span> is a unit precisely when <span class="math" data-tex="\(|N a|=1\)">\(|N a|=1\)</span>: the principal integral ideal <span class="math" data-tex="\((a)\)">\((a)\)</span> has norm <span class="math" data-tex="\(|N a|\)">\(|N a|\)</span>, and norm <span class="math" data-tex="\(1\)">\(1\)</span> means it equals <span class="math" data-tex="\(O_K\)">\(O_K\)</span>. Hence <span class="math" data-tex="\(\lambda(U)\subseteq H\)">\(\lambda(U)\subseteq H\)</span>.</p>
+<p>The complex factor <span class="math" data-tex="\(2\)">\(2\)</span> is part of the convention throughout this lesson, including the regulator.</p>
+<h2 id="the-kernel-and-discreteness">The kernel and discreteness</h2>
+<p>Write <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> for the roots of unity in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Kronecker lemma.</strong> If a nonzero algebraic integer <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> has every conjugate of modulus <span class="math" data-tex="\(1\)">\(1\)</span>, then <span class="math" data-tex="\(a\)">\(a\)</span> is a root of unity.</p>
+<p><strong>Proof.</strong> All the powers <span class="math" data-tex="\(a^j\)">\(a^j\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, lie in <span class="math" data-tex="\(O_K\)">\(O_K\)</span>, and all their embedding coordinates have modulus <span class="math" data-tex="\(1\)">\(1\)</span>. Their images lie in a fixed bounded subset of the Minkowski space. A bounded set meets the lattice <span class="math" data-tex="\(O_K\)">\(O_K\)</span> in finitely many points. Thus two powers agree, <span class="math" data-tex="\(a^j=a^k\)">\(a^j=a^k\)</span> with <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span>, and <span class="math" data-tex="\(a^{j-k}=1\)">\(a^{j-k}=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 9.1.</strong> The group <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> is finite cyclic, <span class="math" data-tex="\(\ker(\lambda|_U)=\mu_K\)">\(\ker(\lambda|_U)=\mu_K\)</span>, and <span class="math" data-tex="\(\lambda(U)\)">\(\lambda(U)\)</span> is discrete in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> Roots of unity are integral and all their conjugates have modulus <span class="math" data-tex="\(1\)">\(1\)</span>; the same bounded-lattice argument makes their set finite. A finite multiplicative subgroup of a field is cyclic, by the elementary cyclicity lemma proved in the Gaussian example of <a href="decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>. This applies to <span class="math" data-tex="\(K\)">\(K\)</span>, not only to finite fields.</p>
+<p>Every root of unity has zero logarithms. Conversely a unit with zero logarithms satisfies the Kronecker lemma, proving the kernel assertion.</p>
+<p>If <span class="math" data-tex="\(\lambda(u)\)">\(\lambda(u)\)</span> lies in any fixed bounded subset of <span class="math" data-tex="\(H\)">\(H\)</span>, all the usual embedding moduli of <span class="math" data-tex="\(u\)">\(u\)</span> are bounded above. There are only finitely many such <span class="math" data-tex="\(u\in O_K\)">\(u\in O_K\)</span>, again by the lattice property. Therefore every bounded subset of <span class="math" data-tex="\(H\)">\(H\)</span> meets <span class="math" data-tex="\(\lambda(U)\)">\(\lambda(U)\)</span> in finitely many points. In particular a neighborhood of zero can be shrunk to exclude all its nonzero points. This proves discreteness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Integrality matters in the Kronecker lemma. The number <span class="math" data-tex="\((3+4i)/5\)">\((3+4i)/5\)</span> and its conjugate both have modulus <span class="math" data-tex="\(1\)">\(1\)</span>, but the number is not integral: its monic minimal polynomial is <span class="math" data-tex="\(X^2-\frac65X+1\)">\(X^2-\frac65X+1\)</span>. The lemma does not apply to it.</p>
+<h2 id="producing-enough-units">Producing enough units</h2>
+<p>The difficult part is to prove that the logarithm lattice spans all of <span class="math" data-tex="\(H\)">\(H\)</span>. We first show that unit logarithms stay within a bounded distance of every point of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Approximation lemma.</strong> There is a constant <span class="math" data-tex="\(B\)">\(B\)</span>, depending only on <span class="math" data-tex="\(K\)">\(K\)</span>, such that for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, some <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span> satisfies
+<span class="math math-display" data-tex="\[
+|\lambda(u)_v-x_v|\leq B
+\quad\hbox{for every infinite place }v.
+\tag{3}
+\]">\[
+|\lambda(u)_v-x_v|\leq B
+\quad\hbox{for every infinite place }v.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(C&gt;1\)">\(C&gt;1\)</span> so large that
+<span class="math math-display" data-tex="\[
+2^{r_1}\pi^{r_2}C^m
+\geq2^{r_1+r_2}\sqrt{|d_K|}.
+\tag{4}
+\]">\[
+2^{r_1}\pi^{r_2}C^m
+\geq2^{r_1+r_2}\sqrt{|d_K|}.
+\tag{4}
+\]</span>
+For <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, form a compact product region with real intervals and complex discs whose normalized absolute values are bounded by <span class="math" data-tex="\(Ce^{x_v}\)">\(Ce^{x_v}\)</span>. Its real radii are <span class="math" data-tex="\(Ce^{x_v}\)">\(Ce^{x_v}\)</span>; its complex radii are <span class="math" data-tex="\((Ce^{x_v})^{1/2}\)">\((Ce^{x_v})^{1/2}\)</span>. Its volume is
+<span class="math math-display" data-tex="\[
+2^{r_1}\pi^{r_2}C^m e^{\sum_v x_v}
+=2^{r_1}\pi^{r_2}C^m.
+\]">\[
+2^{r_1}\pi^{r_2}C^m e^{\sum_v x_v}
+=2^{r_1}\pi^{r_2}C^m.
+\]</span>
+By (4) and Minkowski, it contains a nonzero <span class="math" data-tex="\(a\in O_K\)">\(a\in O_K\)</span>. For this element,
+<span class="math math-display" data-tex="\[
+\lambda(a)_v\leq x_v+\log C,\qquad
+1\leq|Na|\leq C^m.
+\tag{5}
+\]">\[
+\lambda(a)_v\leq x_v+\log C,\qquad
+1\leq|Na|\leq C^m.
+\tag{5}
+\]</span></p>
+<p>Only finitely many principal integral ideals have norm at most <span class="math" data-tex="\(C^m\)">\(C^m\)</span>, by the bounded-ideal lemma. Choose one nonzero generator <span class="math" data-tex="\(b_j\)">\(b_j\)</span> for each of these ideals. Since <span class="math" data-tex="\((a)\)">\((a)\)</span> equals one of them, <span class="math" data-tex="\(u=a/b_j\)">\(u=a/b_j\)</span> is a unit. Consequently
+<span class="math math-display" data-tex="\[
+\lambda(u)_v-x_v\leq \log C-\lambda(b_j)_v.
+\]">\[
+\lambda(u)_v-x_v\leq \log C-\lambda(b_j)_v.
+\]</span>
+Choose <span class="math" data-tex="\(A\geq1\)">\(A\geq1\)</span> bounding every quantity on the right, over the finite set of <span class="math" data-tex="\(j,v\)">\(j,v\)</span>. The differences <span class="math" data-tex="\(\lambda(u)_v-x_v\)">\(\lambda(u)_v-x_v\)</span> have sum zero; since each is at most <span class="math" data-tex="\(A\)">\(A\)</span>, each is at least <span class="math" data-tex="\(-(m-1)A\)">\(-(m-1)A\)</span>. Taking <span class="math" data-tex="\(B=\max(1,m-1)A\)">\(B=\max(1,m-1)A\)</span> proves (3), including <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 9.2 (Dirichlet).</strong> The group of units has the form
+<span class="math math-display" data-tex="\[
+O_K^\times\cong\mu_K\times\mathbf Z^{r_1+r_2-1}.
+\]">\[
+O_K^\times\cong\mu_K\times\mathbf Z^{r_1+r_2-1}.
+\]</span>
+More precisely, <span class="math" data-tex="\(\lambda(U)\)">\(\lambda(U)\)</span> is a complete lattice in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, then <span class="math" data-tex="\(H=\{0\}\)">\(H=\{0\}\)</span>, and Proposition 9.1 gives <span class="math" data-tex="\(U=\mu_K\)">\(U=\mu_K\)</span>. Assume <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, and number the infinite places <span class="math" data-tex="\(1,\ldots,m\)">\(1,\ldots,m\)</span>. Choose <span class="math" data-tex="\(T&gt;B\)">\(T&gt;B\)</span>. For each <span class="math" data-tex="\(i\leq r=m-1\)">\(i\leq r=m-1\)</span>, apply (3) to the vector
+<span class="math math-display" data-tex="\[
+x^{(i)}_i=(m-1)T,\qquad x^{(i)}_j=-T\ (j\ne i).
+\]">\[
+x^{(i)}_i=(m-1)T,\qquad x^{(i)}_j=-T\ (j\ne i).
+\]</span>
+It belongs to <span class="math" data-tex="\(H\)">\(H\)</span>. We obtain a unit <span class="math" data-tex="\(u_i\)">\(u_i\)</span> whose logarithm is negative at every place except <span class="math" data-tex="\(i\)">\(i\)</span>; its <span class="math" data-tex="\(i\)">\(i\)</span>-th logarithm is positive because all coordinates sum to zero.</p>
+<p>Make the <span class="math" data-tex="\(r\times r\)">\(r\times r\)</span> matrix <span class="math" data-tex="\(A\)">\(A\)</span> with row <span class="math" data-tex="\(i\)">\(i\)</span> consisting of the first <span class="math" data-tex="\(r\)">\(r\)</span> coordinates of <span class="math" data-tex="\(\lambda(u_i)\)">\(\lambda(u_i)\)</span>. All off-diagonal entries are negative, and
+<span class="math math-display" data-tex="\[
+A_{ii}&gt;\sum_{\substack{j\leq r\\j\ne i}}|A_{ij}|,
+\tag{6}
+\]">\[
+A_{ii}&gt;\sum_{\substack{j\leq r\\j\ne i}}|A_{ij}|,
+\tag{6}
+\]</span>
+because the omitted <span class="math" data-tex="\(m\)">\(m\)</span>-th coordinate is also strictly negative.</p>
+<p>This strict diagonal dominance implies that <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. If <span class="math" data-tex="\(Az=0\)">\(Az=0\)</span> and <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, choose <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(|z_i|=\max_j|z_j|&gt;0\)">\(|z_i|=\max_j|z_j|&gt;0\)</span>. The <span class="math" data-tex="\(i\)">\(i\)</span>-th equation and the triangle inequality give
+<span class="math math-display" data-tex="\[
+A_{ii}|z_i|
+\leq\sum_{j\ne i}|A_{ij}|\,|z_j|
+\leq\left(\sum_{j\ne i}|A_{ij}|\right)|z_i|,
+\]">\[
+A_{ii}|z_i|
+\leq\sum_{j\ne i}|A_{ij}|\,|z_j|
+\leq\left(\sum_{j\ne i}|A_{ij}|\right)|z_i|,
+\]</span>
+contradicting (6). Thus the <span class="math" data-tex="\(r\)">\(r\)</span> logarithm vectors are real linearly independent.</p>
+<p>Proposition 9.1 and the lattice structure lemma now make <span class="math" data-tex="\(\lambda(U)\)">\(\lambda(U)\)</span> a free abelian group of rank <span class="math" data-tex="\(r\)">\(r\)</span>, spanning <span class="math" data-tex="\(H\)">\(H\)</span>. Choose a <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>-basis <span class="math" data-tex="\(v_1,\ldots,v_r\)">\(v_1,\ldots,v_r\)</span> of this lattice, and units <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> with <span class="math" data-tex="\(\lambda(\varepsilon_i)=v_i\)">\(\lambda(\varepsilon_i)=v_i\)</span>. Each unit has a unique expression
+<span class="math math-display" data-tex="\[
+u=\zeta\varepsilon_1^{a_1}\cdots\varepsilon_r^{a_r},
+\qquad \zeta\in\mu_K,\quad a_i\in\mathbf Z.
+\tag{7}
+\]">\[
+u=\zeta\varepsilon_1^{a_1}\cdots\varepsilon_r^{a_r},
+\qquad \zeta\in\mu_K,\quad a_i\in\mathbf Z.
+\tag{7}
+\]</span>
+Existence follows by subtracting the basis expression for <span class="math" data-tex="\(\lambda(u)\)">\(\lambda(u)\)</span>; the remaining element is in the kernel. Uniqueness follows from independence and the kernel description. This proves the direct product assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> in (7) are a <strong>fundamental system of units</strong>. The sign-pattern units constructed during the proof establish the rank; their logarithms need not themselves be an integral basis. This proof combines the bounded-ideal construction and the diagonal dominance mechanism in [Milne, 5.9–5.10].</p>
+<h2 id="the-regulator">The regulator</h2>
+<p>Let <span class="math" data-tex="\(\varepsilon_1,\ldots,\varepsilon_r\)">\(\varepsilon_1,\ldots,\varepsilon_r\)</span> be a fundamental system, and let <span class="math" data-tex="\(L\)">\(L\)</span> be the <span class="math" data-tex="\(m\times r\)">\(m\times r\)</span> matrix with column <span class="math" data-tex="\(i\)">\(i\)</span> equal to <span class="math" data-tex="\(\lambda(\varepsilon_i)\)">\(\lambda(\varepsilon_i)\)</span>. For an infinite place <span class="math" data-tex="\(v\)">\(v\)</span>, delete its row to obtain <span class="math" data-tex="\(L^{(v)}\)">\(L^{(v)}\)</span>. Define
+<span class="math math-display" data-tex="\[
+R_K=|\det L^{(v)}|.
+\tag{8}
+\]">\[
+R_K=|\det L^{(v)}|.
+\tag{8}
+\]</span>
+When <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the matrix is empty and its determinant is defined to be <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(R_K=1\)">\(R_K=1\)</span>.</p>
+<p><strong>Proposition 9.3.</strong> The positive number <span class="math" data-tex="\(R_K\)">\(R_K\)</span> is independent of the omitted place and the fundamental system. For ordinary Euclidean measure on <span class="math" data-tex="\(H\subseteq\mathbf R^m\)">\(H\subseteq\mathbf R^m\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{covol}_H\lambda(U)=\sqrt m\,R_K.
+\tag{9}
+\]">\[
+\operatorname{covol}_H\lambda(U)=\sqrt m\,R_K.
+\tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> The sum of the rows of <span class="math" data-tex="\(L\)">\(L\)</span> is zero. The last row is therefore minus the sum of the first <span class="math" data-tex="\(r\)">\(r\)</span> rows. In a minor omitting row <span class="math" data-tex="\(i&lt;m\)">\(i&lt;m\)</span>, replace the last row by that sum and expand multilinearly. All summands vanish from a repeated row except the missing <span class="math" data-tex="\(i\)">\(i\)</span>-th row. Thus its determinant differs from the minor omitting row <span class="math" data-tex="\(m\)">\(m\)</span> only by a sign. All minors have the same absolute value. They are nonzero because projection deleting any coordinate is an isomorphism <span class="math" data-tex="\(H\to\mathbf R^r\)">\(H\to\mathbf R^r\)</span>.</p>
+<p>Another fundamental system changes the column basis by a matrix in <span class="math" data-tex="\(\mathrm{GL}_r(\mathbf Z)\)">\(\mathrm{GL}_r(\mathbf Z)\)</span>; multiplying its determinant by <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> leaves (8) unchanged. Root-of-unity factors contribute zero logarithms.</p>
+<p>To compute the Euclidean covolume, append the unit normal vector <span class="math" data-tex="\(q=(1,\ldots,1)/\sqrt m\)">\(q=(1,\ldots,1)/\sqrt m\)</span> as a first column to <span class="math" data-tex="\(L\)">\(L\)</span>. The absolute determinant of this square matrix is the Euclidean volume of the logarithm parallelepiped, because <span class="math" data-tex="\(q\)">\(q\)</span> is perpendicular to <span class="math" data-tex="\(H\)">\(H\)</span> and has length <span class="math" data-tex="\(1\)">\(1\)</span>. Adding all rows to the last row makes its first entry <span class="math" data-tex="\(\sqrt m\)">\(\sqrt m\)</span> and its other entries zero. Expansion gives <span class="math" data-tex="\(\sqrt m|\det L^{(m)}|\)">\(\sqrt m|\det L^{(m)}|\)</span>, proving (9). The same formula gives <span class="math" data-tex="\(1\)">\(1\)</span> when <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(r\)">\(r\)</span> independent units generate a subgroup of index <span class="math" data-tex="\(q\)">\(q\)</span> modulo <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>, their determinant is <span class="math" data-tex="\(qR_K\)">\(qR_K\)</span>: express their logarithms in a fundamental basis and use the determinant-index formula of Lesson 2. Thus finding independent units alone does not establish their fundamentality.</p>
+<h2 id="units-with-allowed-finite-denominators">Units with allowed finite denominators</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be a <strong>finite</strong> set of places of <span class="math" data-tex="\(K\)">\(K\)</span> containing all infinite places. Write its finite places as <span class="math" data-tex="\(\mathfrak p_1,\ldots,\mathfrak p_t\)">\(\mathfrak p_1,\ldots,\mathfrak p_t\)</span>, and define
+<span class="math math-display" data-tex="\[
+O_{K,S}=\{a\in K\mid v_{\mathfrak p}(a)\geq0
+\text{ for every finite }\mathfrak p\notin S\},
+\]">\[
+O_{K,S}=\{a\in K\mid v_{\mathfrak p}(a)\geq0
+\text{ for every finite }\mathfrak p\notin S\},
+\]</span>
+<span class="math math-display" data-tex="\[
+U_S=O_{K,S}^{\times}
+=\{a\in K^\times\mid v_{\mathfrak p}(a)=0
+\text{ for every finite }\mathfrak p\notin S\}.
+\]">\[
+U_S=O_{K,S}^{\times}
+=\{a\in K^\times\mid v_{\mathfrak p}(a)=0
+\text{ for every finite }\mathfrak p\notin S\}.
+\]</span>
+Here <span class="math" data-tex="\(v_{\mathfrak p}(a)\)">\(v_{\mathfrak p}(a)\)</span> is the exponent of <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> in <span class="math" data-tex="\((a)\)">\((a)\)</span>, and may be negative.</p>
+<p><strong>Theorem 9.4 (S-unit theorem).</strong> There is an isomorphism
+<span class="math math-display" data-tex="\[
+U_S\cong\mu_K\times\mathbf Z^{|S|-1}.
+\]">\[
+U_S\cong\mu_K\times\mathbf Z^{|S|-1}.
+\]</span></p>
+<p><strong>Proof.</strong> Consider the valuation homomorphism
+<span class="math math-display" data-tex="\[
+\nu:U_S\longrightarrow\mathbf Z^t,\qquad
+a\longmapsto(v_{\mathfrak p_1}(a),\ldots,v_{\mathfrak p_t}(a)).
+\]">\[
+\nu:U_S\longrightarrow\mathbf Z^t,\qquad
+a\longmapsto(v_{\mathfrak p_1}(a),\ldots,v_{\mathfrak p_t}(a)).
+\]</span>
+Its kernel is <span class="math" data-tex="\(U\)">\(U\)</span>, by unique factorization of fractional ideals. Its image is exactly the kernel of
+<span class="math math-display" data-tex="\[
+\mathbf Z^t\longrightarrow\mathrm{Cl}_K,\qquad
+(a_i)\longmapsto\prod_i[\mathfrak p_i]^{a_i}.
+\tag{10}
+\]">\[
+\mathbf Z^t\longrightarrow\mathrm{Cl}_K,\qquad
+(a_i)\longmapsto\prod_i[\mathfrak p_i]^{a_i}.
+\tag{10}
+\]</span>
+Indeed the indicated product class is trivial precisely when the corresponding fractional ideal is <span class="math" data-tex="\((a)\)">\((a)\)</span> for some <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, whose other valuations are zero.</p>
+<p>Let <span class="math" data-tex="\(h=h_K\)">\(h=h_K\)</span>. Lagrange's theorem in the finite class group gives <span class="math" data-tex="\(\mathfrak p_i^h=(a_i)\)">\(\mathfrak p_i^h=(a_i)\)</span> for some <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. These are S-units, and their valuation vectors are <span class="math" data-tex="\(h\)">\(h\)</span> times the standard basis vectors. Thus the image <span class="math" data-tex="\(V=\nu(U_S)\)">\(V=\nu(U_S)\)</span> contains <span class="math" data-tex="\(h\mathbf Z^t\)">\(h\mathbf Z^t\)</span> and is a free abelian subgroup of rank <span class="math" data-tex="\(t\)">\(t\)</span>. Choose a basis of <span class="math" data-tex="\(V\)">\(V\)</span> and lift it to elements of <span class="math" data-tex="\(U_S\)">\(U_S\)</span>. The subgroup on those lifts maps isomorphically to <span class="math" data-tex="\(V\)">\(V\)</span>: any relation would induce a relation in its free basis. Every S-unit is a product of a lift and an ordinary unit. Therefore
+<span class="math math-display" data-tex="\[
+U_S\cong U\times\mathbf Z^t
+\cong\mu_K\times\mathbf Z^{r+t},
+\]">\[
+U_S\cong U\times\mathbf Z^t
+\cong\mu_K\times\mathbf Z^{r+t},
+\]</span>
+and <span class="math" data-tex="\(r+t=|S|-1\)">\(r+t=|S|-1\)</span>. This also covers <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Normalize the absolute value at a finite prime by
+<span class="math" data-tex="\(|a|_{\mathfrak p}=(N\mathfrak p)^{-v_{\mathfrak p}(a)}\)">\(|a|_{\mathfrak p}=(N\mathfrak p)^{-v_{\mathfrak p}(a)}\)</span>. Ideal norms and (1) give
+<span class="math math-display" data-tex="\[
+\prod_{v\mid\infty}|a|_v
+\prod_{\mathfrak p}|a|_{\mathfrak p}=1.
+\tag{11}
+\]">\[
+\prod_{v\mid\infty}|a|_v
+\prod_{\mathfrak p}|a|_{\mathfrak p}=1.
+\tag{11}
+\]</span>
+For an S-unit the product is over <span class="math" data-tex="\(S\)">\(S\)</span>, so its S-logarithms again have sum zero. For <span class="math" data-tex="\(K=\mathbf Q\)">\(K=\mathbf Q\)</span> and <span class="math" data-tex="\(S=\{\infty,2,3,5\}\)">\(S=\{\infty,2,3,5\}\)</span>, the theorem reads
+<span class="math math-display" data-tex="\[
+U_S=\{\pm2^a3^b5^c\mid a,b,c\in\mathbf Z\}.
+\]">\[
+U_S=\{\pm2^a3^b5^c\mid a,b,c\in\mathbf Z\}.
+\]</span>
+Finiteness of <span class="math" data-tex="\(S\)">\(S\)</span> is required: allowing every rational prime gives <span class="math" data-tex="\(\mathbf Q^\times\)">\(\mathbf Q^\times\)</span>, whose prime-exponent group has infinitely many independent generators.</p>
+<h2 id="fundamental-units-in-real-quadratic-fields">Fundamental units in real quadratic fields</h2>
+<p>Fix the positive square root of a squarefree <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, and use that real embedding. The roots of unity are <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, since a real root of unity is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Dirichlet's theorem gives
+<span class="math math-display" data-tex="\[
+U=\{\pm\varepsilon^k\mid k\in\mathbf Z\}
+\]">\[
+U=\{\pm\varepsilon^k\mid k\in\mathbf Z\}
+\]</span>
+with a unique choice <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span> of generator. It is the smallest unit greater than <span class="math" data-tex="\(1\)">\(1\)</span>. Its regulator is <span class="math" data-tex="\(\log\varepsilon\)">\(\log\varepsilon\)</span>.</p>
+<p>In the full ring write <span class="math" data-tex="\(u=(a+b\sqrt d)/q\)">\(u=(a+b\sqrt d)/q\)</span>, where <span class="math" data-tex="\(q=1\)">\(q=1\)</span> for <span class="math" data-tex="\(d\equiv2,3\pmod4\)">\(d\equiv2,3\pmod4\)</span>, and <span class="math" data-tex="\(q=2\)">\(q=2\)</span> for <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span>, with <span class="math" data-tex="\(a\equiv b\pmod2\)">\(a\equiv b\pmod2\)</span> in the latter case. The unit equation is
+<span class="math math-display" data-tex="\[
+a^2-db^2=\pm q^2.
+\tag{12}
+\]">\[
+a^2-db^2=\pm q^2.
+\tag{12}
+\]</span>
+If <span class="math" data-tex="\(1&lt;u&lt;E\)">\(1&lt;u&lt;E\)</span>, its conjugate <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span> equals <span class="math" data-tex="\(1/u\)">\(1/u\)</span> or <span class="math" data-tex="\(-1/u\)">\(-1/u\)</span>. Hence
+<span class="math math-display" data-tex="\[
+0&lt;b=\frac{q(u-u&#x27;)}{2\sqrt d}
+&lt;\frac{q(E+1)}{2\sqrt d}.
+\tag{13}
+\]">\[
+0&lt;b=\frac{q(u-u&#x27;)}{2\sqrt d}
+&lt;\frac{q(E+1)}{2\sqrt d}.
+\tag{13}
+\]</span>
+This reduces a proposed fundamental unit to a finite, complete coefficient search.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Fundamental unit <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span></th>
+<th>Norm</th>
+<th>Coefficients to check below it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q(\sqrt2)\)">\(\mathbf Q(\sqrt2)\)</span></td>
+<td><span class="math" data-tex="\(1+\sqrt2\)">\(1+\sqrt2\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(b=1\)">\(b=1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q(\sqrt3)\)">\(\mathbf Q(\sqrt3)\)</span></td>
+<td><span class="math" data-tex="\(2+\sqrt3\)">\(2+\sqrt3\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(b=1\)">\(b=1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span></td>
+<td><span class="math" data-tex="\((1+\sqrt5)/2\)">\((1+\sqrt5)/2\)</span></td>
+<td><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td><span class="math" data-tex="\(b=1\)">\(b=1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbf Q(\sqrt7)\)">\(\mathbf Q(\sqrt7)\)</span></td>
+<td><span class="math" data-tex="\(8+3\sqrt7\)">\(8+3\sqrt7\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(b=1,2,3\)">\(b=1,2,3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The bounds in the last column follow directly from (13). For <span class="math" data-tex="\(d=2\)">\(d=2\)</span>, the possibilities <span class="math" data-tex="\(a^2=2b^2\pm1\)">\(a^2=2b^2\pm1\)</span> at <span class="math" data-tex="\(b=1\)">\(b=1\)</span> are <span class="math" data-tex="\(1,3\)">\(1,3\)</span>; the only positive unit greater than <span class="math" data-tex="\(1\)">\(1\)</span> is the listed one. For <span class="math" data-tex="\(d=3\)">\(d=3\)</span>, they are <span class="math" data-tex="\(2,4\)">\(2,4\)</span>, giving <span class="math" data-tex="\(2+\sqrt3\)">\(2+\sqrt3\)</span>. For <span class="math" data-tex="\(d=5\)">\(d=5\)</span>, the full half-integral equation gives <span class="math" data-tex="\(a^2=5\pm4=1,9\)">\(a^2=5\pm4=1,9\)</span>; the <span class="math" data-tex="\(a=1\)">\(a=1\)</span> unit is the listed one, <span class="math" data-tex="\(a=3\)">\(a=3\)</span> gives a larger unit, and negative choices give values below <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For <span class="math" data-tex="\(d=7\)">\(d=7\)</span>, the pairs <span class="math" data-tex="\(7b^2\pm1\)">\(7b^2\pm1\)</span> for <span class="math" data-tex="\(b=1,2,3\)">\(b=1,2,3\)</span> are
+<span class="math math-display" data-tex="\[
+(6,8),\quad(27,29),\quad(62,64).
+\]">\[
+(6,8),\quad(27,29),\quad(62,64).
+\]</span>
+Only <span class="math" data-tex="\(64\)">\(64\)</span> is a square; it gives <span class="math" data-tex="\(8+3\sqrt7\)">\(8+3\sqrt7\)</span>. Each candidate satisfies (12), so is a unit, and the exhaustive searches show that there is no smaller unit greater than <span class="math" data-tex="\(1\)">\(1\)</span>. These are therefore fundamental.</p>
+<p>The full-ring equation for <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span> must be <span class="math" data-tex="\(\pm4\)">\(\pm4\)</span>, rather than just <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>; omitting half-integral units would miss the fundamental unit of <span class="math" data-tex="\(\mathbf Q(\sqrt5)\)">\(\mathbf Q(\sqrt5)\)</span>.</p>
+<h2 id="the-cubic-field-mathbf-q-sqrt-3-2">The cubic field <span class="math" data-tex="\(\mathbf Q(\sqrt[3]{2})\)">\(\mathbf Q(\sqrt[3]{2})\)</span></h2>
+<p>Let <span class="math" data-tex="\(\alpha=\sqrt[3]{2}\)">\(\alpha=\sqrt[3]{2}\)</span> in its unique real embedding. We know <span class="math" data-tex="\(O_K=\mathbf Z[\alpha]\)">\(O_K=\mathbf Z[\alpha]\)</span>, <span class="math" data-tex="\(d_K=-108\)">\(d_K=-108\)</span>, and unit rank <span class="math" data-tex="\(1\)">\(1\)</span>. The element <span class="math" data-tex="\(\beta=\alpha-1\)">\(\beta=\alpha-1\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\beta^3+3\beta^2+3\beta-1=0,
+\]">\[
+\beta^3+3\beta^2+3\beta-1=0,
+\]</span>
+so <span class="math" data-tex="\(N\beta=1\)">\(N\beta=1\)</span>; moreover
+<span class="math math-display" data-tex="\[
+\varepsilon=\beta^{-1}=\alpha^2+\alpha+1.
+\tag{14}
+\]">\[
+\varepsilon=\beta^{-1}=\alpha^2+\alpha+1.
+\tag{14}
+\]</span>
+We prove that <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is the fundamental unit greater than <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>First there is no unit <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(1&lt;\eta\leq2\)">\(1&lt;\eta\leq2\)</span>. Such a unit is not rational, because the rational units in <span class="math" data-tex="\(O_K\)">\(O_K\)</span> are <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and hence generates the cubic field. Its other conjugates are a nonreal conjugate pair. Its norm is positive and is a unit integer, so it is <span class="math" data-tex="\(1\)">\(1\)</span>. Write the conjugates as
+<span class="math math-display" data-tex="\[
+\eta,\quad\eta^{-1/2}e^{i\theta},\quad
+\eta^{-1/2}e^{-i\theta}.
+\]">\[
+\eta,\quad\eta^{-1/2}e^{i\theta},\quad
+\eta^{-1/2}e^{-i\theta}.
+\]</span>
+The product-of-differences discriminant formula gives
+<span class="math math-display" data-tex="\[
+|\operatorname{disc}(1,\eta,\eta^2)|
+=4(\eta^{3/2}+\eta^{-3/2}-2\cos\theta)^2\sin^2\theta
+\leq4(\eta^{3/2}+\eta^{-3/2}+2)^2.
+\tag{15}
+\]">\[
+|\operatorname{disc}(1,\eta,\eta^2)|
+=4(\eta^{3/2}+\eta^{-3/2}-2\cos\theta)^2\sin^2\theta
+\leq4(\eta^{3/2}+\eta^{-3/2}+2)^2.
+\tag{15}
+\]</span>
+The function <span class="math" data-tex="\(s+s^{-1}\)">\(s+s^{-1}\)</span> increases for <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. If <span class="math" data-tex="\(\eta\leq2\)">\(\eta\leq2\)</span>, the last expression is at most
+<span class="math math-display" data-tex="\[
+4\left(\frac94\sqrt2+2\right)^2
+=\frac{113}{2}+36\sqrt2&lt;108.
+\]">\[
+4\left(\frac94\sqrt2+2\right)^2
+=\frac{113}{2}+36\sqrt2&lt;108.
+\]</span>
+For example <span class="math" data-tex="\(\sqrt2&lt;103/72\)">\(\sqrt2&lt;103/72\)</span> proves the strict inequality by squaring the positive rational bound. But the discriminant-index formula of Lesson 2 says that this order discriminant is <span class="math" data-tex="\(108\)">\(108\)</span> times a positive integer square. This contradiction excludes the interval.</p>
+<p>Now <span class="math" data-tex="\(\alpha&lt;13/10\)">\(\alpha&lt;13/10\)</span>, since <span class="math" data-tex="\((13/10)^3&gt;2\)">\((13/10)^3&gt;2\)</span>; (14) implies <span class="math" data-tex="\(1&lt;\varepsilon&lt;399/100&lt;4\)">\(1&lt;\varepsilon&lt;399/100&lt;4\)</span>. If <span class="math" data-tex="\(\varepsilon=\eta^k\)">\(\varepsilon=\eta^k\)</span> for the fundamental unit <span class="math" data-tex="\(\eta&gt;1\)">\(\eta&gt;1\)</span> and <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, then <span class="math" data-tex="\(\eta\leq\sqrt\varepsilon&lt;2\)">\(\eta\leq\sqrt\varepsilon&lt;2\)</span>, which was just excluded. Thus <span class="math" data-tex="\(k=1\)">\(k=1\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+U=\{\pm(\alpha-1)^k\mid k\in\mathbf Z\},
+\qquad R_K=\log(\alpha^2+\alpha+1).
+\]">\[
+U=\{\pm(\alpha-1)^k\mid k\in\mathbf Z\},
+\qquad R_K=\log(\alpha^2+\alpha+1).
+\]</span>
+The supplied small unit <span class="math" data-tex="\(\alpha-1\)">\(\alpha-1\)</span> is fundamental up to inversion; the convention greater than <span class="math" data-tex="\(1\)">\(1\)</span> selects its inverse.</p>
+<h2 id="units-in-a-cm-field">Units in a CM field</h2>
+<p>A <strong>CM field</strong> is a totally imaginary quadratic extension <span class="math" data-tex="\(K/F\)">\(K/F\)</span> of a totally real field <span class="math" data-tex="\(F\)">\(F\)</span>. Its nontrivial <span class="math" data-tex="\(F\)">\(F\)</span>-automorphism will be denoted <span class="math" data-tex="\(c\)">\(c\)</span>, or <span class="math" data-tex="\(a\mapsto\overline a\)">\(a\mapsto\overline a\)</span>. For every embedding <span class="math" data-tex="\(\tau:K\hookrightarrow\mathbf C\)">\(\tau:K\hookrightarrow\mathbf C\)</span>,
+<span class="math math-display" data-tex="\[
+\tau(\overline a)=\overline{\tau(a)}.
+\tag{16}
+\]">\[
+\tau(\overline a)=\overline{\tau(a)}.
+\tag{16}
+\]</span>
+Indeed choose <span class="math" data-tex="\(b\notin F\)">\(b\notin F\)</span> with <span class="math" data-tex="\(c(b)=-b\)">\(c(b)=-b\)</span>, for instance subtract the two conjugates of an element outside <span class="math" data-tex="\(F\)">\(F\)</span>. Then <span class="math" data-tex="\(b^2\in F\)">\(b^2\in F\)</span> and <span class="math" data-tex="\(K=F(b)\)">\(K=F(b)\)</span>. Under each real embedding of <span class="math" data-tex="\(F\)">\(F\)</span>, the value of <span class="math" data-tex="\(b^2\)">\(b^2\)</span> is negative; otherwise that embedding would extend to a real embedding of <span class="math" data-tex="\(K\)">\(K\)</span>, contrary to total imaginarity. Its two square roots in <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> are therefore imaginary conjugates, proving (16).</p>
+<p><strong>Proposition 9.5 (CM unit index).</strong> For a CM field,
+<span class="math math-display" data-tex="\[
+[O_K^\times:\mu_K O_F^\times]\in\{1,2\}.
+\]">\[
+[O_K^\times:\mu_K O_F^\times]\in\{1,2\}.
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(u\in O_K^\times\)">\(u\in O_K^\times\)</span>, the quotient <span class="math" data-tex="\(u/\overline u\)">\(u/\overline u\)</span> is an integral unit, and every conjugate has modulus <span class="math" data-tex="\(1\)">\(1\)</span>, by (16). The Kronecker lemma makes it a root of unity. Thus
+<span class="math math-display" data-tex="\[
+f:O_K^\times\longrightarrow\mu_K/\mu_K^2,\qquad
+u\longmapsto[u/\overline u]
+\]">\[
+f:O_K^\times\longrightarrow\mu_K/\mu_K^2,\qquad
+u\longmapsto[u/\overline u]
+\]</span>
+is a homomorphism.</p>
+<p>For <span class="math" data-tex="\(\zeta\in\mu_K\)">\(\zeta\in\mu_K\)</span> and <span class="math" data-tex="\(v\in O_F^\times\)">\(v\in O_F^\times\)</span>, complex conjugation sends <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to <span class="math" data-tex="\(\zeta^{-1}\)">\(\zeta^{-1}\)</span>, so
+<span class="math" data-tex="\((\zeta v)/\overline{\zeta v}=\zeta^2\)">\((\zeta v)/\overline{\zeta v}=\zeta^2\)</span>. Hence <span class="math" data-tex="\(\mu_K O_F^\times\subseteq\ker f\)">\(\mu_K O_F^\times\subseteq\ker f\)</span>.
+Conversely, if <span class="math" data-tex="\(u/\overline u=\zeta^2\)">\(u/\overline u=\zeta^2\)</span>, then
+<span class="math math-display" data-tex="\[
+\overline{u/\zeta}=\overline u\,\zeta=u/\zeta.
+\]">\[
+\overline{u/\zeta}=\overline u\,\zeta=u/\zeta.
+\]</span>
+Thus <span class="math" data-tex="\(u/\zeta\in F\)">\(u/\zeta\in F\)</span>. It and its inverse are integral, so it belongs to <span class="math" data-tex="\(O_F^\times\)">\(O_F^\times\)</span>. This proves <span class="math" data-tex="\(\ker f=\mu_K O_F^\times\)">\(\ker f=\mu_K O_F^\times\)</span>.</p>
+<p>The finite cyclic group <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> has even order, because it contains <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its quotient by squares has order <span class="math" data-tex="\(2\)">\(2\)</span>. The group <span class="math" data-tex="\(O_K^\times/\mu_K O_F^\times\)">\(O_K^\times/\mu_K O_F^\times\)</span> injects into that quotient, so its order is <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an explicit example let <span class="math" data-tex="\(\zeta=e^{2\pi i/5}\)">\(\zeta=e^{2\pi i/5}\)</span> and <span class="math" data-tex="\(K=\mathbf Q(\zeta)\)">\(K=\mathbf Q(\zeta)\)</span>. The real element <span class="math" data-tex="\(t=\zeta+\zeta^{-1}\)">\(t=\zeta+\zeta^{-1}\)</span> satisfies <span class="math" data-tex="\(t^2+t-1=0\)">\(t^2+t-1=0\)</span>, by <span class="math" data-tex="\(1+\zeta+\cdots+\zeta^4=0\)">\(1+\zeta+\cdots+\zeta^4=0\)</span>. Thus
+<span class="math math-display" data-tex="\[
+F=\mathbf Q(t)=\mathbf Q(\sqrt5),\qquad
+\varphi=1+t=\frac{1+\sqrt5}{2}.
+\]">\[
+F=\mathbf Q(t)=\mathbf Q(\sqrt5),\qquad
+\varphi=1+t=\frac{1+\sqrt5}{2}.
+\]</span>
+Here <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> selects the displayed root. The element <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> satisfies <span class="math" data-tex="\(X^2-tX+1=0\)">\(X^2-tX+1=0\)</span> and is nonreal, so <span class="math" data-tex="\(K/F\)">\(K/F\)</span> is quadratic. Both real embeddings of <span class="math" data-tex="\(F\)">\(F\)</span> send <span class="math" data-tex="\(t\)">\(t\)</span> to a value of modulus less than <span class="math" data-tex="\(2\)">\(2\)</span>, making the two corresponding quadratic roots nonreal. Thus <span class="math" data-tex="\(K\)">\(K\)</span> is CM.</p>
+<p>We can determine its index without a cyclotomic integral-basis theorem. The fundamental real unit <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> has norm <span class="math" data-tex="\(-1\)">\(-1\)</span>; the totally positive units of <span class="math" data-tex="\(F\)">\(F\)</span> are exactly <span class="math" data-tex="\(\varphi^{2k}\)">\(\varphi^{2k}\)</span>. For every <span class="math" data-tex="\(u\in O_K^\times\)">\(u\in O_K^\times\)</span>, its relative norm <span class="math" data-tex="\(u\overline u\)">\(u\overline u\)</span> is a totally positive unit of <span class="math" data-tex="\(F\)">\(F\)</span>, hence <span class="math" data-tex="\(\varphi^{2k}\)">\(\varphi^{2k}\)</span>. The unit <span class="math" data-tex="\(u/\varphi^k\)">\(u/\varphi^k\)</span> then has relative norm <span class="math" data-tex="\(1\)">\(1\)</span>, so all its conjugates have modulus <span class="math" data-tex="\(1\)">\(1\)</span>. It is a root of unity. Therefore
+<span class="math math-display" data-tex="\[
+O_K^\times=\mu_K\varphi^{\mathbf Z},
+\qquad [O_K^\times:\mu_K O_F^\times]=1,
+\qquad R_K=2\log\varphi.
+\]">\[
+O_K^\times=\mu_K\varphi^{\mathbf Z},
+\qquad [O_K^\times:\mu_K O_F^\times]=1,
+\qquad R_K=2\log\varphi.
+\]</span>
+The factor <span class="math" data-tex="\(2\)">\(2\)</span> in this last regulator comes from the complex-place normalization.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Find all units of <span class="math" data-tex="\(\mathbf Z[i]\)">\(\mathbf Z[i]\)</span> and <span class="math" data-tex="\(\mathbf Z[\omega]\)">\(\mathbf Z[\omega]\)</span>, where <span class="math" data-tex="\(\omega=(-1+\sqrt{-3})/2\)">\(\omega=(-1+\sqrt{-3})/2\)</span>. Prove that these are the only imaginary quadratic fields with more than two roots of unity.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Find the fundamental unit greater than <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(\mathbf Q(\sqrt7)\)">\(\mathbf Q(\sqrt7)\)</span> and <span class="math" data-tex="\(\mathbf Q(\sqrt{13})\)">\(\mathbf Q(\sqrt{13})\)</span>, and prove fundamentality in the full rings of integers.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> For a real quadratic field with fundamental unit <span class="math" data-tex="\(\varepsilon&gt;1\)">\(\varepsilon&gt;1\)</span>, prove that a unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span> exists if and only if <span class="math" data-tex="\(N\varepsilon=-1\)">\(N\varepsilon=-1\)</span>. Deduce that <span class="math" data-tex="\(\mathbf Q(\sqrt3)\)">\(\mathbf Q(\sqrt3)\)</span> and <span class="math" data-tex="\(\mathbf Q(\sqrt7)\)">\(\mathbf Q(\sqrt7)\)</span> have no unit of norm <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Prove the CM unit index assertion of Proposition 9.5, including the identification of the kernel of the map to <span class="math" data-tex="\(\mu_K/\mu_K^2\)">\(\mu_K/\mu_K^2\)</span>.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>1.</strong> A Gaussian unit has norm <span class="math" data-tex="\(a^2+b^2=1\)">\(a^2+b^2=1\)</span>, so the four units are <span class="math" data-tex="\(1,-1,i,-i\)">\(1,-1,i,-i\)</span>. In the Eisenstein ring, the norm of <span class="math" data-tex="\(a+b\omega\)">\(a+b\omega\)</span> is
+<span class="math math-display" data-tex="\[
+a^2-ab+b^2=(a-b/2)^2+3b^2/4.
+\]">\[
+a^2-ab+b^2=(a-b/2)^2+3b^2/4.
+\]</span>
+Norm <span class="math" data-tex="\(1\)">\(1\)</span> implies <span class="math" data-tex="\(b=0,\pm1\)">\(b=0,\pm1\)</span>. At <span class="math" data-tex="\(b=0\)">\(b=0\)</span> we get <span class="math" data-tex="\(a=\pm1\)">\(a=\pm1\)</span>; at <span class="math" data-tex="\(b=1\)">\(b=1\)</span>, <span class="math" data-tex="\(a=0,1\)">\(a=0,1\)</span>; at <span class="math" data-tex="\(b=-1\)">\(b=-1\)</span>, <span class="math" data-tex="\(a=0,-1\)">\(a=0,-1\)</span>. These give exactly <span class="math" data-tex="\(\{\pm1,\pm\omega,\pm\omega^2\}\)">\(\{\pm1,\pm\omega,\pm\omega^2\}\)</span>.</p>
+<p>Now suppose an imaginary quadratic field contains a root of unity <span class="math" data-tex="\(\zeta\ne\pm1\)">\(\zeta\ne\pm1\)</span>. It is nonreal, has degree <span class="math" data-tex="\(2\)">\(2\)</span>, and its conjugate is <span class="math" data-tex="\(\zeta^{-1}\)">\(\zeta^{-1}\)</span>. Its trace is an integer
+<span class="math math-display" data-tex="\[
+a=\zeta+\zeta^{-1},\qquad -2&lt;a&lt;2.
+\]">\[
+a=\zeta+\zeta^{-1},\qquad -2&lt;a&lt;2.
+\]</span>
+Thus <span class="math" data-tex="\(a=-1,0,1\)">\(a=-1,0,1\)</span>, and its minimal polynomial is <span class="math" data-tex="\(X^2-aX+1\)">\(X^2-aX+1\)</span>. Their discriminants are respectively <span class="math" data-tex="\(-3,-4,-3\)">\(-3,-4,-3\)</span>. The field is consequently <span class="math" data-tex="\(\mathbf Q(\sqrt{-3})\)">\(\mathbf Q(\sqrt{-3})\)</span> or <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>. All imaginary quadratic units are roots of unity by Dirichlet's rank-zero case, so this also accounts for their full unit groups.</p>
+<p><strong>2.</strong> For <span class="math" data-tex="\(\mathbf Q(\sqrt7)\)">\(\mathbf Q(\sqrt7)\)</span>, the candidate <span class="math" data-tex="\(E=8+3\sqrt7\)">\(E=8+3\sqrt7\)</span> has norm <span class="math" data-tex="\(1\)">\(1\)</span>. Formula (13) forces <span class="math" data-tex="\(b\leq3\)">\(b\leq3\)</span> for any unit <span class="math" data-tex="\(1&lt;u&lt;E\)">\(1&lt;u&lt;E\)</span>. The pairs of possible squares <span class="math" data-tex="\(7b^2\pm1\)">\(7b^2\pm1\)</span> are <span class="math" data-tex="\((6,8),(27,29),(62,64)\)">\((6,8),(27,29),(62,64)\)</span>; the only square is <span class="math" data-tex="\(64\)">\(64\)</span>, giving <span class="math" data-tex="\(u=E\)">\(u=E\)</span>, or its conjugate below <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\(E\)">\(E\)</span> is fundamental.</p>
+<p>For <span class="math" data-tex="\(\mathbf Q(\sqrt{13})\)">\(\mathbf Q(\sqrt{13})\)</span>, the full ring is <span class="math" data-tex="\(\mathbf Z[(1+\sqrt{13})/2]\)">\(\mathbf Z[(1+\sqrt{13})/2]\)</span>. The candidate
+<span class="math math-display" data-tex="\[
+E=\frac{3+\sqrt{13}}2
+\]">\[
+E=\frac{3+\sqrt{13}}2
+\]</span>
+has norm <span class="math" data-tex="\(-1\)">\(-1\)</span>. If <span class="math" data-tex="\(1&lt;u&lt;E\)">\(1&lt;u&lt;E\)</span>, formula (13) with <span class="math" data-tex="\(q=2\)">\(q=2\)</span> gives
+<span class="math math-display" data-tex="\[
+0&lt;b&lt;\frac{E+1}{\sqrt{13}}&lt;2,
+\]">\[
+0&lt;b&lt;\frac{E+1}{\sqrt{13}}&lt;2,
+\]</span>
+so <span class="math" data-tex="\(b=1\)">\(b=1\)</span>. Equation (12) then gives <span class="math" data-tex="\(a^2=13\pm4=9,17\)">\(a^2=13\pm4=9,17\)</span>. Only <span class="math" data-tex="\(9\)">\(9\)</span> is a square, and <span class="math" data-tex="\(a=3\)">\(a=3\)</span> yields <span class="math" data-tex="\(E\)">\(E\)</span>; <span class="math" data-tex="\(a=-3\)">\(a=-3\)</span> yields a value below <span class="math" data-tex="\(1\)">\(1\)</span>. The parity condition is satisfied. There is no smaller unit greater than <span class="math" data-tex="\(1\)">\(1\)</span>, proving fundamentality. Its regulator is <span class="math" data-tex="\(\log((3+\sqrt{13})/2)\)">\(\log((3+\sqrt{13})/2)\)</span>.</p>
+<p><strong>3.</strong> Every unit is <span class="math" data-tex="\(\pm\varepsilon^k\)">\(\pm\varepsilon^k\)</span>, and the norm of <span class="math" data-tex="\(-1\)">\(-1\)</span> in a quadratic field is <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore its norm is <span class="math" data-tex="\((N\varepsilon)^k\)">\((N\varepsilon)^k\)</span>. A norm-<span class="math" data-tex="\(-1\)">\(-1\)</span> unit exists precisely when <span class="math" data-tex="\(N\varepsilon=-1\)">\(N\varepsilon=-1\)</span>, in which case <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> itself is one.</p>
+<p>The full rings for <span class="math" data-tex="\(d=3,7\)">\(d=3,7\)</span> are <span class="math" data-tex="\(\mathbf Z[\sqrt d]\)">\(\mathbf Z[\sqrt d]\)</span>. A norm-<span class="math" data-tex="\(-1\)">\(-1\)</span> unit would solve <span class="math" data-tex="\(a^2-db^2=-1\)">\(a^2-db^2=-1\)</span>. Modulo <span class="math" data-tex="\(3\)">\(3\)</span> or <span class="math" data-tex="\(7\)">\(7\)</span>, this would make <span class="math" data-tex="\(-1\)">\(-1\)</span> a square. The square residues are <span class="math" data-tex="\(0,1\)">\(0,1\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\(0,1,2,4\)">\(0,1,2,4\)</span> modulo <span class="math" data-tex="\(7\)">\(7\)</span>; neither list contains <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus no such unit exists in either field, consistent with the norm-<span class="math" data-tex="\(1\)">\(1\)</span> fundamental units already computed.</p>
+<p><strong>4.</strong> Let <span class="math" data-tex="\(c\)">\(c\)</span> be the nontrivial automorphism of <span class="math" data-tex="\(K/F\)">\(K/F\)</span>. Writing <span class="math" data-tex="\(K=F(b)\)">\(K=F(b)\)</span> with <span class="math" data-tex="\(c(b)=-b\)">\(c(b)=-b\)</span> and <span class="math" data-tex="\(b^2\)">\(b^2\)</span> totally negative proves <span class="math" data-tex="\(\tau(cu)=\overline{\tau(u)}\)">\(\tau(cu)=\overline{\tau(u)}\)</span> for every embedding. For <span class="math" data-tex="\(u\in O_K^\times\)">\(u\in O_K^\times\)</span>, <span class="math" data-tex="\(u/c(u)\)">\(u/c(u)\)</span> is an integral unit with all conjugates of modulus <span class="math" data-tex="\(1\)">\(1\)</span>, hence belongs to <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span>.</p>
+<p>Map <span class="math" data-tex="\(u\)">\(u\)</span> to its class in <span class="math" data-tex="\(\mu_K/\mu_K^2\)">\(\mu_K/\mu_K^2\)</span>. Every product <span class="math" data-tex="\(\zeta v\)">\(\zeta v\)</span>, with <span class="math" data-tex="\(\zeta\in\mu_K\)">\(\zeta\in\mu_K\)</span>, <span class="math" data-tex="\(v\in O_F^\times\)">\(v\in O_F^\times\)</span>, maps to the square class of <span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span>, hence to the identity. Conversely if <span class="math" data-tex="\(u/c(u)=\zeta^2\)">\(u/c(u)=\zeta^2\)</span>, then <span class="math" data-tex="\(c(u/\zeta)=u/\zeta\)">\(c(u/\zeta)=u/\zeta\)</span>. The quotient belongs to <span class="math" data-tex="\(F\)">\(F\)</span>, and it and its inverse are integral, so it is a unit of <span class="math" data-tex="\(O_F\)">\(O_F\)</span>. The kernel is exactly <span class="math" data-tex="\(\mu_K O_F^\times\)">\(\mu_K O_F^\times\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> is cyclic of even order, so its quotient by squares has order <span class="math" data-tex="\(2\)">\(2\)</span>. The quotient of the unit group by the identified kernel is its image in this order-two group, and has order <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>. This is the desired index.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the complete lattice structure and compact-equality Minkowski theorem of Lesson 7, the bounded-ideal lemma and class-group finiteness of Lesson 8, and multiplicative principal-ideal norms of Proposition 4.1. Finite multiplicative subgroups of fields are cyclic by the lemma proved in Lesson 5's Gaussian example. The quadratic and pure-cubic full rings and discriminants are imported from Lessons 1–2; the discriminant-index formula used in (15) is from Lesson 2.</p>
+<p>The examples use complete bounded coefficient searches, so no continued-fraction theorem is imported. No algorithm based on the generalized Riemann hypothesis is needed. The regulator here uses normalized complex logarithms; later class-number formulas must use this same convention.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, Chapter 5, pp. 85–94: 5.5–5.10 for the logarithm lattice and rank; 5.11 for S-units; 5.12 for CM units; the section “Regulators”.</li>
+<li>E. Hecke, <em>Vorlesungen über die Theorie der algebraischen Zahlen</em>, 1923: §§34–35, Sätze 99–100, pp. 122–131.</li>
+</ul>
+</article><nav><a href="src/dirichlets-unit-theorem.md">Editable Markdown source</a> · <a href="./">Course contents</a></nav><footer>Original NT-ANT lesson text: CC0 1.0. The marked Stein adaptations in Lesson 5 retain CC BY-SA 3.0;
+<a href="licenses/">source-component credits and editable extracts</a>. Programme proof snapshots retain their original notices. Referenced works retain their own rights.
+Self-checked by the writing AI.</footer>
+</main></body></html>

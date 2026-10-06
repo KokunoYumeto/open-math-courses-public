@@ -1,0 +1,679 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artin&#x27;s axioms</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="artin-s-axioms">Artin's axioms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An algebraic stack has smooth coordinates, whereas a moduli problem usually arrives as a rule assigning a groupoid to each scheme. Artin's criterion constructs coordinates from that rule. The construction has three stages: obtain a versal deformation over a complete local ring, approximate it by a family of finite type, and enlarge its versal locus to an open set. A second argument explains why a flat presentation, even one with inseparable fibres, can be replaced by a smooth presentation.</p>
+<p>Read <a href="../support/AG-AS--AG-AS-05.html">Algebraic stacks</a> first. We use the quotient and bootstrap theorems of <a href="../support/AG-AS--AG-AS-02.html">The bootstrap theorem</a>, Schlessinger's existence theorem for versal formal objects, the deformation theory of square-zero extensions and the naive cotangent complex, and the commutative algebra of completion and henselization. Precise imported statements appear at the end. All fibre products of groupoids below are 2-fibre products.</p>
+<h2 id="1-infinitesimal-objects-arrows-and-patching">1. Infinitesimal objects, arrows and patching</h2>
+<p>Except in Section 6, let <span class="math" data-tex="\(S\)">\(S\)</span> be locally Noetherian and let <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> be a category fibred in groupoids on schemes over <span class="math" data-tex="\(S\)">\(S\)</span>. The subscript “fppf” on this category specifies its underlying site; it does not by itself assert descent.</p>
+<p>A <strong>finite type field over <span class="math" data-tex="\(S\)">\(S\)</span></strong> means a field <span class="math" data-tex="\(k\)">\(k\)</span> with a morphism <span class="math" data-tex="\(\operatorname{Spec}k\to S\)">\(\operatorname{Spec}k\to S\)</span> of finite type. This is more restrictive than being a finitely generated extension of the residue field at an arbitrary point of <span class="math" data-tex="\(S\)">\(S\)</span>. A point of a scheme is a <strong>finite type point</strong> if its inclusion as the spectrum of its residue field is of finite type. Such a point is closed in some open neighbourhood.</p>
+<p>Fix <span class="math" data-tex="\(x_0\in\mathcal X(k)\)">\(x_0\in\mathcal X(k)\)</span>. Its predeformation groupoid <span class="math" data-tex="\(\mathcal F_{k,x_0}(A)\)">\(\mathcal F_{k,x_0}(A)\)</span>, for an Artinian local <span class="math" data-tex="\(S\)">\(S\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span> with specified residue field <span class="math" data-tex="\(k\)">\(k\)</span>, consists of pairs</p>
+<span class="math math-display" data-tex="\[
+(x,\iota),\qquad x\in\mathcal X(A),\quad
+\iota:x|_k\xrightarrow{\sim}x_0.
+\]">\[
+(x,\iota),\qquad x\in\mathcal X(A),\quad
+\iota:x|_k\xrightarrow{\sim}x_0.
+\]</span>
+<p>An arrow respects <span class="math" data-tex="\(\iota\)">\(\iota\)</span>. Pullback along a ring map gives a covariant functor on Artinian rings. The fibre at <span class="math" data-tex="\(k\)">\(k\)</span> is equivalent to the terminal groupoid: the marking removes the automorphisms of the chosen special object. Automorphisms of its deformations can remain.</p>
+<h3 id="1-1-the-rim-schlessinger-condition">1.1. The Rim–Schlessinger condition</h3>
+<p>For a diagram of Artinian local <span class="math" data-tex="\(S\)">\(S\)</span>-algebras</p>
+<span class="math math-display" data-tex="\[
+A_1\longrightarrow A\longleftarrow A_2,\qquad
+A_2\twoheadrightarrow A,\qquad P=A_1\times_A A_2,
+\tag{1.1}
+\]">\[
+A_1\longrightarrow A\longleftarrow A_2,\qquad
+A_2\twoheadrightarrow A,\qquad P=A_1\times_A A_2,
+\tag{1.1}
+\]</span>
+<p>whose spectra are of finite type over <span class="math" data-tex="\(S\)">\(S\)</span>, condition <strong>(RS)</strong> requires the restriction functor</p>
+<span class="math math-display" data-tex="\[
+\mathcal X(P)\longrightarrow
+\mathcal X(A_1)\times_{\mathcal X(A)}\mathcal X(A_2)
+\tag{1.2}
+\]">\[
+\mathcal X(P)\longrightarrow
+\mathcal X(A_1)\times_{\mathcal X(A)}\mathcal X(A_2)
+\tag{1.2}
+\]</span>
+<p>to be an equivalence. The right side remembers the identification on <span class="math" data-tex="\(A\)">\(A\)</span>. Applying (1.2) to marked objects proves that <span class="math" data-tex="\(\mathcal F_{k,x_0}\)">\(\mathcal F_{k,x_0}\)</span> is a deformation category whenever <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has (RS).</p>
+<p>Condition <strong>(RS<span class="math" data-tex="\(^*\)">\(^*\)</span>)</strong> requires the same equivalence for arbitrary <span class="math" data-tex="\(S\)">\(S\)</span>-algebras, with <span class="math" data-tex="\(A_2\to A\)">\(A_2\to A\)</span> surjective and its kernel square zero. Filtering a nilpotent ideal into square-zero quotients shows that it implies (RS). The quantifier “arbitrary” is essential in Section 5, where products of modules need not be finite. These definitions are [Stacks, Tags 06L9 and 0CXN].</p>
+<p><strong>Lemma 1.1 (the groupoid operations preserve patching).</strong> If <span class="math" data-tex="\(\mathcal X,\mathcal Y,\mathcal Z\)">\(\mathcal X,\mathcal Y,\mathcal Z\)</span> satisfy (RS), then <span class="math" data-tex="\(\mathcal X\times_{\mathcal Y}\mathcal Z\)">\(\mathcal X\times_{\mathcal Y}\mathcal Z\)</span> does too. The assertion also holds for (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>).</p>
+<p><strong>Proof.</strong> A patched object consists of an <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>-object and a <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span>-object on each side, and an arrow between their images in <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>. Patch the two objects by essential surjectivity for <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> and <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span>. Full faithfulness for <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> supplies the unique arrow between their images which restricts to the specified arrows. For morphisms, patch the two component arrows by full faithfulness and test their compatibility after restriction; faithfulness for <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> proves the compatibility upstairs. This proves both essential surjectivity and full faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (algebraic stacks have (RS)).</strong> Every algebraic stack satisfies (RS).</p>
+<p><strong>Proof.</strong> First, a diagram (1.1) is a pushout of affine schemes, and maps from its pushout to an algebraic space patch uniquely. One can check the latter assertion on étale scheme coordinates: after a finite étale cover of the Artinian local pushout, lift the common residue-field point to an étale chart; formal étaleness lifts that choice through the nilpotent thickenings. The two maps then land in a common affine chart, where the assertion is exactly the fibre product identity for rings. Unique lifts make the resulting maps compatible on overlaps, and the algebraic-space sheaf condition descends them. This also proves uniqueness.</p>
+<p>For objects of an algebraic stack, use a smooth scheme atlas. After a finite étale cover of <span class="math" data-tex="\(\operatorname{Spec}P\)">\(\operatorname{Spec}P\)</span>, the object over <span class="math" data-tex="\(A_1\)">\(A_1\)</span> lifts to the atlas: choose a finite separable residue-field point of its smooth atlas fibre and lift through the Artinian thickening. Its restriction to <span class="math" data-tex="\(A\)">\(A\)</span>, together with the given identification, lifts across <span class="math" data-tex="\(A_2\to A\)">\(A_2\to A\)</span> by smoothness. The two atlas maps agree on <span class="math" data-tex="\(A\)">\(A\)</span>, and their closed points lie in a common affine atlas chart. The affine pushout patches them to a map from <span class="math" data-tex="\(\operatorname{Spec}P\)">\(\operatorname{Spec}P\)</span>.</p>
+<p>This constructs the desired object étale locally. The Isom spaces of two such objects are algebraic spaces, so the first paragraph proves that (1.2) is fully faithful. Consequently the local objects have unique compatible descent identifications, including the cocycle equality, and descend to the required object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The stronger assertion for arbitrary affine pushouts along a thickening is [Stacks, Tag 07WM]. Its general flat-space patching input is not needed for the proof just given.</p>
+<h3 id="1-2-two-linear-invariants">1.2. Two linear invariants</h3>
+<p>Write <span class="math" data-tex="\(k[\epsilon]=k[\epsilon]/(\epsilon^2)\)">\(k[\epsilon]=k[\epsilon]/(\epsilon^2)\)</span>. For a deformation category, define</p>
+<span class="math math-display" data-tex="\[
+T_{x_0}\mathcal X=
+\pi_0\mathcal F_{k,x_0}(k[\epsilon]),\qquad
+\operatorname{Inf}_{x_0}\mathcal X=
+\ker\bigl(\operatorname{Aut}(x_0|_{k[\epsilon]})
+\to\operatorname{Aut}(x_0)\bigr).
+\tag{1.3}
+\]">\[
+T_{x_0}\mathcal X=
+\pi_0\mathcal F_{k,x_0}(k[\epsilon]),\qquad
+\operatorname{Inf}_{x_0}\mathcal X=
+\ker\bigl(\operatorname{Aut}(x_0|_{k[\epsilon]})
+\to\operatorname{Aut}(x_0)\bigr).
+\tag{1.3}
+\]</span>
+<p>Patching the split extensions <span class="math" data-tex="\(k\oplus M\)">\(k\oplus M\)</span> makes these <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces. Addition uses the map <span class="math" data-tex="\(k[M\oplus N]\to k[M]\)">\(k[M\oplus N]\to k[M]\)</span> induced by addition of vectors, and scalar multiplication uses multiplication on the square-zero ideal. For infinitesimal automorphisms, addition agrees with composition; terms involving two elements of that ideal vanish.</p>
+<p>More generally, under (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) there are <span class="math" data-tex="\(A\)">\(A\)</span>-linear functors <span class="math" data-tex="\(T_x(M)\)">\(T_x(M)\)</span> and <span class="math" data-tex="\(\operatorname{Inf}_x(M)\)">\(\operatorname{Inf}_x(M)\)</span> for <span class="math" data-tex="\(x\in\mathcal X(A)\)">\(x\in\mathcal X(A)\)</span>. The first is the set of marked lifts to <span class="math" data-tex="\(A[M]=A\oplus M\)">\(A[M]=A\oplus M\)</span>, and the second is the automorphism group of the trivial marked lift. If <span class="math" data-tex="\(A&#x27;\twoheadrightarrow A\)">\(A&#x27;\twoheadrightarrow A\)</span> has square-zero kernel <span class="math" data-tex="\(I\)">\(I\)</span>, then, when lifts exist, their isomorphism classes form a torsor under <span class="math" data-tex="\(T_x(I)\)">\(T_x(I)\)</span>. The automorphisms of every marked lift are canonically <span class="math" data-tex="\(\operatorname{Inf}_x(I)\)">\(\operatorname{Inf}_x(I)\)</span>.</p>
+<p>To see the torsor assertion, use</p>
+<span class="math math-display" data-tex="\[
+A&#x27;\times_A A&#x27;\simeq A&#x27;\times_A A[I],
+\quad
+(a_1,a_2)\longmapsto
+\bigl(a_1,(\overline a_1,a_2-a_1)\bigr).
+\tag{1.4}
+\]">\[
+A&#x27;\times_A A&#x27;\simeq A&#x27;\times_A A[I],
+\quad
+(a_1,a_2)\longmapsto
+\bigl(a_1,(\overline a_1,a_2-a_1)\bigr).
+\tag{1.4}
+\]</span>
+<p>Applying (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) produces a difference between two lifts. On three lifts, the identity
+<span class="math" data-tex="\((a_3-a_1)=(a_2-a_1)+(a_3-a_2)\)">\((a_3-a_1)=(a_2-a_1)+(a_3-a_2)\)</span>
+proves the addition law. Fixing one lift converts differences into the claimed simply transitive action. All constructions commute with maps of square-zero extensions. This is the mechanism behind [Stacks, Tag 07Y6].</p>
+<p><strong>Lemma 1.3 (field change and fibre products).</strong> Under (RS), a finite extension <span class="math" data-tex="\(l/k\)">\(l/k\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+T_{x_0}\mathcal X\otimes_k l\simeq
+T_{x_0|_l}\mathcal X,\qquad
+\operatorname{Inf}_{x_0}\mathcal X\otimes_k l\simeq
+\operatorname{Inf}_{x_0|_l}\mathcal X.
+\tag{1.5}
+\]">\[
+T_{x_0}\mathcal X\otimes_k l\simeq
+T_{x_0|_l}\mathcal X,\qquad
+\operatorname{Inf}_{x_0}\mathcal X\otimes_k l\simeq
+\operatorname{Inf}_{x_0|_l}\mathcal X.
+\tag{1.5}
+\]</span>
+<p>For <span class="math" data-tex="\(w=(x,z,\alpha)\)">\(w=(x,z,\alpha)\)</span> in <span class="math" data-tex="\(\mathcal W=\mathcal X\times_{\mathcal Y}\mathcal Z\)">\(\mathcal W=\mathcal X\times_{\mathcal Y}\mathcal Z\)</span> there is an exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow\operatorname{Inf}_w\mathcal W
+&amp;\longrightarrow\operatorname{Inf}_x\mathcal X\oplus
+\operatorname{Inf}_z\mathcal Z
+\longrightarrow\operatorname{Inf}_y\mathcal Y\\
+&amp;\longrightarrow T_w\mathcal W
+\longrightarrow T_x\mathcal X\oplus T_z\mathcal Z
+\longrightarrow T_y\mathcal Y.
+\end{aligned}
+\tag{1.6}
+\]">\[
+\begin{aligned}
+0\longrightarrow\operatorname{Inf}_w\mathcal W
+&amp;\longrightarrow\operatorname{Inf}_x\mathcal X\oplus
+\operatorname{Inf}_z\mathcal Z
+\longrightarrow\operatorname{Inf}_y\mathcal Y\\
+&amp;\longrightarrow T_w\mathcal W
+\longrightarrow T_x\mathcal X\oplus T_z\mathcal Z
+\longrightarrow T_y\mathcal Y.
+\end{aligned}
+\tag{1.6}
+\]</span>
+<p><strong>Proof.</strong> For an Artinian <span class="math" data-tex="\(l\)">\(l\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, apply (RS) to <span class="math" data-tex="\(B\times_l k\)">\(B\times_l k\)</span>. It identifies marked <span class="math" data-tex="\(k\)">\(k\)</span>-deformations over that ring with marked <span class="math" data-tex="\(l\)">\(l\)</span>-deformations over <span class="math" data-tex="\(B\)">\(B\)</span>. The field-change result for linear deformation functors then gives (1.5), including inseparable finite extensions.</p>
+<p>In (1.6), the second map is the difference between the two induced infinitesimal automorphisms in <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>. The boundary twists the trivial pair of deformations by an infinitesimal automorphism of its identifying arrow. Its kernel consists precisely of twists obtainable from component automorphisms. A pair of component deformations comes from <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> exactly when their <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>-images are isomorphic as marked deformations; choices of such an isomorphism differ by the boundary. These observations verify exactness at each term. The constructions by split extensions make all the maps linear. The same proof gives (1.6) with <span class="math" data-tex="\(T_x(M)\)">\(T_x(M)\)</span> and <span class="math" data-tex="\(\operatorname{Inf}_x(M)\)">\(\operatorname{Inf}_x(M)\)</span> under (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>References:</em> [Stacks, Tags 07WW, 07WY and 07YT]. For a naive obstruction complex <span class="math" data-tex="\(E_x\)">\(E_x\)</span> as in Section 5.3, the analogous field-change maps on <span class="math" data-tex="\(H^i(E_x\otimes^{\mathbf L}k)\)">\(H^i(E_x\otimes^{\mathbf L}k)\)</span> are isomorphisms for <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>: they are dual to the identifications of <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(\operatorname{Inf}\)">\(\operatorname{Inf}\)</span>. The indices here are <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, not <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>.</p>
+<p><strong>Lemma 1.4 (finiteness for an algebraic stack).</strong> If an algebraic stack has a smooth atlas locally of finite type over <span class="math" data-tex="\(S\)">\(S\)</span>, the two spaces (1.3) are finite dimensional.</p>
+<p><strong>Proof.</strong> After a finite separable field extension, lift the object to the atlas. Its tangent space is a quotient of the atlas tangent space, since smoothness lifts deformations. On an affine atlas chart <span class="math" data-tex="\(\operatorname{Spec}B\)">\(\operatorname{Spec}B\)</span> over <span class="math" data-tex="\(\operatorname{Spec}\Lambda\)">\(\operatorname{Spec}\Lambda\)</span>, that space is
+<span class="math" data-tex="\(\operatorname{Hom}_B(\Omega_{B/\Lambda},k)\)">\(\operatorname{Hom}_B(\Omega_{B/\Lambda},k)\)</span>, which is finite dimensional because <span class="math" data-tex="\(B\)">\(B\)</span> is of finite type. The infinitesimal automorphisms inject into the tangent space at the identity point of the relation space; an étale scheme chart of that space is again locally of finite type. Apply the same argument and descend finiteness by (1.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof uses the finite module of differentials, so it also covers inseparable residue-field extensions. The reference is [Stacks, Tag 07X1].</p>
+<h2 id="2-limits-complete-local-rings-and-approximation">2. Limits, complete local rings and approximation</h2>
+<h3 id="2-1-limit-preservation-includes-arrows">2.1. Limit preservation includes arrows</h3>
+<p>The category <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is <strong>limit preserving</strong> if, for every directed inverse system of affine <span class="math" data-tex="\(S\)">\(S\)</span>-schemes with limit <span class="math" data-tex="\(T=\lim T_i\)">\(T=\lim T_i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathop{\operatorname{colim}}_i\mathcal X(T_i)
+\longrightarrow\mathcal X(T)
+\tag{2.1}
+\]">\[
+\mathop{\operatorname{colim}}_i\mathcal X(T_i)
+\longrightarrow\mathcal X(T)
+\tag{2.1}
+\]</span>
+<p>is an equivalence. An object must descend to some stage. An arrow between descended objects must descend after increasing that stage, and two arrows equal on <span class="math" data-tex="\(T\)">\(T\)</span> must become equal at a later stage. Requiring only descent of objects is weaker. For a morphism <span class="math" data-tex="\(\mathcal X\to\mathcal Y\)">\(\mathcal X\to\mathcal Y\)</span>, “limit preserving on objects” refers to descent of a lift of an already descended <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>-object, including its specified identifying arrow. See [Stacks, Tags 07XK and 06CT].</p>
+<p>Finite presentation of algebras, modules, étale charts and their finite diagrams gives the following useful test. An algebraic space <span class="math" data-tex="\(Z\to B\)">\(Z\to B\)</span> is locally of finite presentation exactly when its functor on affine <span class="math" data-tex="\(B\)">\(B\)</span>-schemes preserves directed limits. One checks this on étale affine charts; finite presentation descends the chart and its equality data, and the étale sheaf condition glues the descended morphisms. The converse on an affine chart is the ring criterion for finite presentation, followed by étale descent.</p>
+<p><strong>Lemma 2.1 (testing on finite presentation bases).</strong> Suppose <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> is limit preserving on objects and both categories are Zariski stacks. To establish representability of <span class="math" data-tex="\(f:\mathcal X\to\mathcal Y\)">\(f:\mathcal X\to\mathcal Y\)</span> by algebraic spaces, it suffices to establish it over affine tests <span class="math" data-tex="\(V\)">\(V\)</span> locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>, with a uniform allowable size bound. Once representability is known, any property stable under base change and fppf local on the target can be tested on those same <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Proof.</strong> An affine <span class="math" data-tex="\(V\)">\(V\)</span> mapping into <span class="math" data-tex="\(\operatorname{Spec}\Lambda\subset S\)">\(\operatorname{Spec}\Lambda\subset S\)</span> is a limit of affine schemes of finite presentation over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The object testing <span class="math" data-tex="\(f\)">\(f\)</span> descends to a stage <span class="math" data-tex="\(V_i\)">\(V_i\)</span>; its entire fibre category is therefore represented by the base change of the representing space over <span class="math" data-tex="\(V_i\)">\(V_i\)</span>. For general <span class="math" data-tex="\(V\)">\(V\)</span>, do this on affine opens. On overlaps the representing spaces have canonical compatible isomorphisms, since they represent the same category. Zariski descent glues them. The size bound permits the coproduct of their charts in the chosen site.</p>
+<p>For the property assertion, the same calculation identifies the general fibre morphism with a base change of a finite presentation test. Base change and locality prove the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>References:</em> [Stacks, Tags 07WI and 06CT]. Fibre products preserve limit preservation: descend both component objects, then their identifying arrow, and finally the finitely many equalities required for a morphism.</p>
+<h3 id="2-2-formal-effectiveness-is-a-groupoid-assertion">2.2. Formal effectiveness is a groupoid assertion</h3>
+<p>A formal object over a Noetherian complete local <span class="math" data-tex="\(S\)">\(S\)</span>-algebra <span class="math" data-tex="\(R\)">\(R\)</span>, with residue field of finite type over <span class="math" data-tex="\(S\)">\(S\)</span>, is a compatible system
+<span class="math" data-tex="\(\xi_n\in\mathcal X(R/\mathfrak m^n)\)">\(\xi_n\in\mathcal X(R/\mathfrak m^n)\)</span>, including its transition isomorphisms. It is <strong>effective</strong> if it is the completion of an object of <span class="math" data-tex="\(\mathcal X(R)\)">\(\mathcal X(R)\)</span>. The stronger assertion used in axiom [4] is the equivalence</p>
+<span class="math math-display" data-tex="\[
+\mathcal X(R)\xrightarrow{\ \sim\ }
+\varprojlim_n\mathcal X(R/\mathfrak m^n).
+\tag{2.2}
+\]">\[
+\mathcal X(R)\xrightarrow{\ \sim\ }
+\varprojlim_n\mathcal X(R/\mathfrak m^n).
+\tag{2.2}
+\]</span>
+<p>The limit on the right is a groupoid of compatible systems. The equivalence must include all compatible arrows, not only the existence of algebraizations. These equivalences also respect the local base morphisms in the category of formal objects. See [Stacks, Tag 07X3].</p>
+<p><strong>Lemma 2.2 (formal objects of algebraic stacks).</strong> Every algebraic stack satisfies (2.2).</p>
+<p><strong>Proof.</strong> A compatible system of maps to a scheme has its closed point in one affine open. Ring maps into the complete ring <span class="math" data-tex="\(R=\lim R/\mathfrak m^n\)">\(R=\lim R/\mathfrak m^n\)</span> then give the unique algebraized map. For an algebraic space, choose an étale chart at the formal closed point. After a finite étale extension <span class="math" data-tex="\(R&#x27;/R\)">\(R&#x27;/R\)</span>, formal étaleness gives compatible lifts to that chart. The scheme assertion algebraizes them. Their identifying arrows algebraize by the same argument on the chart relation, and faithfulness verifies the cocycle. Étale descent gives the unique map over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>For a stack, two objects have an algebraic-space Isom sheaf. The preceding paragraph proves full faithfulness in (2.2). To algebraize a formal object, choose a smooth atlas and a finite separable residue-field point of its first fibre. The corresponding finite étale extension <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> of the complete local ring lifts this point. Smoothness successively lifts it at every order. The resulting maps to the scheme atlas algebraize. Over <span class="math" data-tex="\(R&#x27;\otimes_RR&#x27;\)">\(R&#x27;\otimes_RR&#x27;\)</span>, a finite product of complete local rings, full faithfulness algebraizes the formal descent arrows. It also proves their cocycle on the triple product and identifies the descended object's completion with the specified formal object. Effective étale descent finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalences commute with 2-fibre products. Thus (2.2), just like (RS), passes to a fibre product of three categories satisfying it.</p>
+<h3 id="2-3-the-approximation-input-and-its-use">2.3. The approximation input and its use</h3>
+<p>A Noetherian ring is a <strong>G-ring</strong> if every localization has geometrically regular formal fibres. We use the following approximation theorem without proving its desingularization input.</p>
+<p><strong>Artin approximation.</strong> A regular map of Noetherian rings is a filtered colimit of smooth algebras (Popescu's theorem). If <span class="math" data-tex="\(B\)">\(B\)</span> is a henselian Noetherian local G-ring, a finite polynomial system over <span class="math" data-tex="\(B\)">\(B\)</span> with a solution in <span class="math" data-tex="\(\widehat B\)">\(\widehat B\)</span> has, for every <span class="math" data-tex="\(N\)">\(N\)</span>, a solution in <span class="math" data-tex="\(B\)">\(B\)</span> congruent to it modulo <span class="math" data-tex="\(\mathfrak m^N\)">\(\mathfrak m^N\)</span>. For a local G-ring which is not henselian, the solution lies in an étale neighbourhood inducing the same residue field. These are [Stacks, Tags 07GC, 07QY and 07QZ].</p>
+<p>The object version needed here also preserves associated graded rings.</p>
+<p><strong>Lemma 2.3 (approximating a family).</strong> Let <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> be limit preserving on objects. Let <span class="math" data-tex="\(x_R\in\mathcal X(R)\)">\(x_R\in\mathcal X(R)\)</span>, where <span class="math" data-tex="\(R\)">\(R\)</span> is as in (2.2), and let <span class="math" data-tex="\(s\)">\(s\)</span> be the image of its closed point in <span class="math" data-tex="\(S\)">\(S\)</span>. If <span class="math" data-tex="\(\mathcal O_{S,s}\)">\(\mathcal O_{S,s}\)</span> is a G-ring, then, for every <span class="math" data-tex="\(N\)">\(N\)</span>, there are a finite type <span class="math" data-tex="\(S\)">\(S\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a maximal ideal <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>, and <span class="math" data-tex="\(x_A\in\mathcal X(A)\)">\(x_A\in\mathcal X(A)\)</span>, together with</p>
+<span class="math math-display" data-tex="\[
+A/\mathfrak n^N\simeq R/\mathfrak m^N,\qquad
+x_A|_{A/\mathfrak n^N}\simeq x_R|_{R/\mathfrak m^N},\qquad
+\operatorname{gr}_{\mathfrak n}A\simeq
+\operatorname{gr}_{\mathfrak m}R.
+\tag{2.3}
+\]">\[
+A/\mathfrak n^N\simeq R/\mathfrak m^N,\qquad
+x_A|_{A/\mathfrak n^N}\simeq x_R|_{R/\mathfrak m^N},\qquad
+\operatorname{gr}_{\mathfrak n}A\simeq
+\operatorname{gr}_{\mathfrak m}R.
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> Work over <span class="math" data-tex="\(\operatorname{Spec}\Lambda\subset S\)">\(\operatorname{Spec}\Lambda\subset S\)</span>. Limit preservation descends <span class="math" data-tex="\(x_R\)">\(x_R\)</span> to a finitely generated <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-algebra <span class="math" data-tex="\(C\)">\(C\)</span> with a map <span class="math" data-tex="\(C\to R\)">\(C\to R\)</span>. Lift generators of the finite residue extension and generators of <span class="math" data-tex="\(\mathfrak m/\mathfrak m^2\)">\(\mathfrak m/\mathfrak m^2\)</span> to <span class="math" data-tex="\(R\)">\(R\)</span>. They give a surjection <span class="math" data-tex="\(P\twoheadrightarrow R\)">\(P\twoheadrightarrow R\)</span>, where <span class="math" data-tex="\(P\)">\(P\)</span> is the completion of a localization of a polynomial <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-algebra at a maximal ideal. Write its kernel as <span class="math" data-tex="\((b_1,\ldots,b_r)\)">\((b_1,\ldots,b_r)\)</span>, and choose a matrix <span class="math" data-tex="\(K\)">\(K\)</span> of generators of the relations among the <span class="math" data-tex="\(b_i\)">\(b_i\)</span>.</p>
+<p>Choose lifts <span class="math" data-tex="\(a_i\in P\)">\(a_i\in P\)</span> of the images of generators of <span class="math" data-tex="\(C\)">\(C\)</span>. If <span class="math" data-tex="\(C=\Lambda[y_1,\ldots,y_u]/(f_j)\)">\(C=\Lambda[y_1,\ldots,y_u]/(f_j)\)</span>, choose coefficients <span class="math" data-tex="\(c_{ji}\)">\(c_{ji}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+f_j(a)=\sum_i c_{ji}b_i,\qquad
+K(b_1,\ldots,b_r)^{\mathsf t}=0.
+\tag{2.4}
+\]">\[
+f_j(a)=\sum_i c_{ji}b_i,\qquad
+K(b_1,\ldots,b_r)^{\mathsf t}=0.
+\tag{2.4}
+\]</span>
+<p>These are finitely many polynomial equations. The local polynomial ring underlying <span class="math" data-tex="\(P\)">\(P\)</span> is a G-ring, by permanence under essentially finite type extensions. Choose the approximation order larger than both the required <span class="math" data-tex="\(N\)">\(N\)</span> and Artin–Rees constants for
+<span class="math" data-tex="\(P^{\oplus t}\to P^{\oplus r}\to P\)">\(P^{\oplus t}\to P^{\oplus r}\to P\)</span>.
+Approximation gives <span class="math" data-tex="\(a_i&#x27;,b_i&#x27;,c_{ji}&#x27;,K&#x27;\)">\(a_i&#x27;,b_i&#x27;,c_{ji}&#x27;,K&#x27;\)</span> in an étale neighbourhood <span class="math" data-tex="\(B\)">\(B\)</span>, with the same equations and the prescribed congruences in <span class="math" data-tex="\(P=\widehat{B_{\mathfrak n}}\)">\(P=\widehat{B_{\mathfrak n}}\)</span>. Set <span class="math" data-tex="\(A_1=B/(b_i&#x27;)\)">\(A_1=B/(b_i&#x27;)\)</span>. Equations (2.4) give <span class="math" data-tex="\(C\to A_1\)">\(C\to A_1\)</span>, hence the object.</p>
+<p>The congruences give equality modulo order <span class="math" data-tex="\(N\)">\(N\)</span>. The finite-complex Artin–Rees perturbation lemma [Stacks, Tags 07VE and 07VF] says that the images of the two perturbed relation maps have identical initial submodules. Applying it to the displayed presentation identifies the associated graded quotient rings. This explains why one approximates the relations as well as the generators of the ideal.</p>
+<p>The construction is initially essentially of finite type. Express <span class="math" data-tex="\(A_1\)">\(A_1\)</span> as a filtered localization of finite type algebras and descend its object to one stage. That stage has the same local ring at the selected point, so retains all three conclusions of (2.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tag 07XB]. The cited finite-complex lemma is an input from commutative algebra, not an algebraicity criterion.</p>
+<h2 id="3-from-versality-to-a-smooth-chart">3. From versality to a smooth chart</h2>
+<p>A formal object <span class="math" data-tex="\(\xi\)">\(\xi\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span> is <strong>versal</strong> if its functor of marked pullbacks to Artinian local rings is smooth: a pullback over <span class="math" data-tex="\(B\)">\(B\)</span> can be lifted across every small extension <span class="math" data-tex="\(B&#x27;\twoheadrightarrow B\)">\(B&#x27;\twoheadrightarrow B\)</span>, together with the specified identification with a deformation over <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>. A small extension has one-dimensional residue-field kernel.</p>
+<p>For <span class="math" data-tex="\(x\in\mathcal X(U)\)">\(x\in\mathcal X(U)\)</span>, with <span class="math" data-tex="\(U\)">\(U\)</span> locally of finite type over <span class="math" data-tex="\(S\)">\(S\)</span>, say that <span class="math" data-tex="\(x\)">\(x\)</span> is <strong>versal at <span class="math" data-tex="\(u\)">\(u\)</span></strong> when</p>
+<span class="math math-display" data-tex="\[
+\mathcal F_{U,\kappa(u),u}\longrightarrow
+\mathcal F_{\mathcal X,\kappa(u),x_u}
+\tag{3.1}
+\]">\[
+\mathcal F_{U,\kappa(u),u}\longrightarrow
+\mathcal F_{\mathcal X,\kappa(u),x_u}
+\tag{3.1}
+\]</span>
+<p>is smooth. Maps from Artinian local rings with that closed point factor uniquely through the completion of <span class="math" data-tex="\(\mathcal O_{U,u}\)">\(\mathcal O_{U,u}\)</span>; thus (3.1) is exactly versality of the completed object.</p>
+<p>The Schlessinger theorem used as a prerequisite says that (RS) and finite-dimensional tangent space give a versal formal object with Noetherian complete local parameter ring [Stacks, Tag 06IW]. It concerns groupoids and retains their markings; it does not require absence of automorphisms.</p>
+<p><strong>Lemma 3.1 (algebraizing a versal chart).</strong> If <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is effective and versal, <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is limit preserving on objects, and <span class="math" data-tex="\(\mathcal O_{S,s}\)">\(\mathcal O_{S,s}\)</span> is a G-ring at its image point, then <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is isomorphic to the completion of a finite type family <span class="math" data-tex="\(x_A\)">\(x_A\)</span> at a point with the same residue field.</p>
+<p><strong>Proof.</strong> Apply Lemma 2.3 with <span class="math" data-tex="\(N=2\)">\(N=2\)</span>. Versality successively lifts the identifying map at order two to a compatible map from <span class="math" data-tex="\(\xi\)">\(\xi\)</span> to the completion of <span class="math" data-tex="\(x_A\)">\(x_A\)</span>. Its ring map
+<span class="math" data-tex="\(R\to\widehat{A_{\mathfrak n}}\)">\(R\to\widehat{A_{\mathfrak n}}\)</span>
+is surjective: it is surjective on the residue field and cotangent space, and complete Nakayama gives surjectivity at each order, then on the inverse limit. The two rings have equal dimensions of all graded pieces by (2.3). The surjections on their Artinian quotients therefore have equal finite lengths and are isomorphisms. Their inverse limit is an isomorphism, including the family and its transition identifications. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tag 07XH]. Approximation alone would not preserve versality; the graded-ring comparison supplies the missing step.</p>
+<p><strong>Lemma 3.2 (versal everywhere implies smooth).</strong> Suppose <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has representable diagonal, satisfies (RS), and is limit preserving. If <span class="math" data-tex="\(U\)">\(U\)</span> is locally of finite type over <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(x\in\mathcal X(U)\)">\(x\in\mathcal X(U)\)</span> is versal at every finite type point, then <span class="math" data-tex="\(U\to\mathcal X\)">\(U\to\mathcal X\)</span> is smooth.</p>
+<p><strong>Proof.</strong> Its base change by an affine <span class="math" data-tex="\(V\to\mathcal X\)">\(V\to\mathcal X\)</span> locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span> is an algebraic space <span class="math" data-tex="\(Z=U\times_{\mathcal X}V\)">\(Z=U\times_{\mathcal X}V\)</span>. The finite presentation limit test and the fibre product argument in Section 2 show that <span class="math" data-tex="\(Z\)">\(Z\)</span> is locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>. Choose an étale scheme chart <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span>.</p>
+<p>At a finite type point <span class="math" data-tex="\(w\)">\(w\)</span>, the induced field-valued point of <span class="math" data-tex="\(U\)">\(U\)</span> has finite residue extension of the image point. Lemma 1.3 and smoothness under field change for deformation categories therefore preserve versality. The deformation category of <span class="math" data-tex="\(Z\)">\(Z\)</span> is the fibre product of those of <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> over that of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Smoothness of (3.1) passes to this fibre product and then through <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span>. The Artinian lifting test for a morphism of schemes locally of finite type over a locally Noetherian scheme [Stacks, Tag 02HX] makes <span class="math" data-tex="\(W\to V\)">\(W\to V\)</span> smooth at <span class="math" data-tex="\(w\)">\(w\)</span>.</p>
+<p>The smooth locus is open. Every nonempty closed subset of a scheme contains a point closed in an affine open, hence a finite type point. Thus this locus is all of <span class="math" data-tex="\(W\)">\(W\)</span>. Smoothness descends through the étale chart to <span class="math" data-tex="\(Z\to V\)">\(Z\to V\)</span>. Lemma 2.1 extends the conclusion to arbitrary tests <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same argument at a single finite type point proves the version used later: for finite type <span class="math" data-tex="\(U,V\)">\(U,V\)</span>, versality at <span class="math" data-tex="\(u\)">\(u\)</span> makes <span class="math" data-tex="\(U\times_{\mathcal X}V\to V\)">\(U\times_{\mathcal X}V\to V\)</span> smooth at each finite type point above <span class="math" data-tex="\(u\)">\(u\)</span>. The representable diagonal is locally of finite type because its Isom functors preserve limits. These statements explain [Stacks, Tags 07XD and 07XP].</p>
+<p><strong>Openness of versality</strong> asks that a versal finite type point of every finite type family have an open neighbourhood on whose finite type points the family is versal. For <span class="math" data-tex="\(f:\mathcal X\to\mathcal Y\)">\(f:\mathcal X\to\mathcal Y\)</span>, it means openness for every base change by a finite type scheme over <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>. In particular, openness for a diagonal is a separate condition.</p>
+<h2 id="4-the-axioms-and-the-two-artin-criteria">4. The axioms and the two Artin criteria</h2>
+<p>Here is the numbering of [Stacks, Tag 07XJ].</p>
+<table>
+<thead>
+<tr>
+<th>Axiom</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[−1]</td>
+<td>One allowable cardinal bounds the object isomorphism classes and arrow sets of all finite type field fibres, so the required family of charts belongs to the chosen site.</td>
+</tr>
+<tr>
+<td>[0]</td>
+<td><span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is a stack for the étale topology.</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>The full groupoid equivalence (2.1) holds.</td>
+</tr>
+<tr>
+<td>[2]</td>
+<td><span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> satisfies (RS).</td>
+</tr>
+<tr>
+<td>[3]</td>
+<td>Both spaces (1.3) are finite dimensional at every finite type field object.</td>
+</tr>
+<tr>
+<td>[4]</td>
+<td>Completion to formal objects is an equivalence, including arrows, as in (2.2).</td>
+</tr>
+<tr>
+<td>[5]</td>
+<td>Openness of versality holds for <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> and for <span class="math" data-tex="\(\Delta_{\mathcal X}\)">\(\Delta_{\mathcal X}\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>Fix small models of the field groupoids when recording the bound in [−1]; the construction chooses representatives of their isomorphism classes. For a functor in sets, [0] says étale sheaf, [3] concerns only tangents, [4] is bijectivity of completion, and [5] asks openness for the functor itself. This is [Stacks, Tag 07XZ].</p>
+<p><strong>Theorem 4.1 (Artin with representable diagonal).</strong> Suppose <span class="math" data-tex="\(\mathcal O_{S,s}\)">\(\mathcal O_{S,s}\)</span> is a G-ring for every finite type point <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>. Suppose <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has representable diagonal, satisfies [−1]–[3], every formal object is effective, and openness of versality holds for <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Then <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is an algebraic stack. If it is a functor in sets, it is an algebraic space.</p>
+<p><strong>Proof.</strong> For every finite type field object <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, Schlessinger's theorem gives a versal formal object. Effectiveness and Lemma 3.1 give a finite type scheme family through <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, at a point with exactly its residue field. Shrink that scheme by openness of versality. Lemma 3.2 makes the resulting morphism to <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> smooth. Axiom [−1] allows their disjoint union <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>For an affine finite presentation test <span class="math" data-tex="\(V\to\mathcal X\)">\(V\to\mathcal X\)</span>, the image of <span class="math" data-tex="\(U\times_{\mathcal X}V\to V\)">\(U\times_{\mathcal X}V\to V\)</span> is open. It contains every finite type point <span class="math" data-tex="\(v\)">\(v\)</span>: the chart chosen for the object over <span class="math" data-tex="\(\kappa(v)\)">\(\kappa(v)\)</span>, and its specified special point, give a point of this fibre product above <span class="math" data-tex="\(v\)">\(v\)</span>. The complement must consequently be empty. Lemma 2.1 proves surjectivity on every test.</p>
+<p>The relation <span class="math" data-tex="\(R=U\times_{\mathcal X}U\)">\(R=U\times_{\mathcal X}U\)</span> is an algebraic space, with smooth projections. The quotient stack of this smooth groupoid is algebraic by Lesson 5. It agrees with <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> as an étale stack: smooth surjections have local sections for the étale topology, so every <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>-object has local coordinates in <span class="math" data-tex="\(U\)">\(U\)</span>; its arrows and their composition are exactly <span class="math" data-tex="\(R\)">\(R\)</span>. Étale descent identifies the two stacks, proving also the fppf stack condition.</p>
+<p>For a functor in sets the quotient has no automorphisms. The smooth relation is an equivalence relation. The flat bootstrap of Lesson 2 identifies its sheaf quotient as an algebraic space, and the same étale local-coordinate argument identifies that space with the original functor. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves [Stacks, Tags 07Y1 and 07Y4], including the functor criterion's assumption that its diagonal is representable by algebraic spaces.</p>
+<h3 id="4-1-recovering-the-diagonal">4.1. Recovering the diagonal</h3>
+<p>The <strong>second diagonal</strong></p>
+<span class="math math-display" data-tex="\[
+\Delta_\Delta:\mathcal X\longrightarrow
+\mathcal X\times_{\mathcal X\times_S\mathcal X}\mathcal X
+\tag{4.1}
+\]">\[
+\Delta_\Delta:\mathcal X\longrightarrow
+\mathcal X\times_{\mathcal X\times_S\mathcal X}\mathcal X
+\tag{4.1}
+\]</span>
+<p>is the identity section of the inertia category. Its representability says that the condition <span class="math" data-tex="\(\alpha=\operatorname{id}\)">\(\alpha=\operatorname{id}\)</span>, for a family of automorphisms, is represented by an algebraic space over its parameter scheme. For two isomorphisms <span class="math" data-tex="\(\alpha,\beta:x\to y\)">\(\alpha,\beta:x\to y\)</span>, equality is the condition <span class="math" data-tex="\(\alpha^{-1}\beta=\operatorname{id}_x\)">\(\alpha^{-1}\beta=\operatorname{id}_x\)</span>. Consequently (4.1) is representable exactly when every Isom functor has representable diagonal. This is the direct equality test in [Stacks, Tag 07WG].</p>
+<p><strong>Theorem 4.2 (Artin's stack criterion).</strong> Let <span class="math" data-tex="\(S\)">\(S\)</span> be locally Noetherian, with <span class="math" data-tex="\(\mathcal O_{S,s}\)">\(\mathcal O_{S,s}\)</span> a G-ring at every finite type point. Let <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> satisfy [−1]–[5]. If its second diagonal (4.1) is representable by algebraic spaces, then <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is an algebraic stack.</p>
+<p><strong>Proof.</strong> Take an affine <span class="math" data-tex="\(V\)">\(V\)</span> locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>, and two objects <span class="math" data-tex="\(x_1,x_2\in\mathcal X(V)\)">\(x_1,x_2\in\mathcal X(V)\)</span>. Their Isom category is a setoid: an object is an isomorphism between the two fixed objects, and it has no nontrivial automorphisms after the two identifications are fixed. Thus its isomorphism-class functor <span class="math" data-tex="\(I\)">\(I\)</span> is an étale sheaf, by [0]. Its diagonal is representable by the equality test above.</p>
+<p>We verify the remaining functor axioms for <span class="math" data-tex="\(I\)">\(I\)</span>. The bound [−1] follows from the bound on arrows in <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>. Limits and (RS) follow by forming the fibre product of <span class="math" data-tex="\(\mathcal X\to\mathcal X\times_S\mathcal X\)">\(\mathcal X\to\mathcal X\times_S\mathcal X\)</span> with <span class="math" data-tex="\(V\)">\(V\)</span>, using Lemma 1.1 and the full arrow version of limit preservation. The six-term sequence (1.6) shows that its tangent space is an extension of subquotients of the tangents and infinitesimal automorphisms of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>; all are finite dimensional. Lemma 2.2 gives effectiveness for the scheme <span class="math" data-tex="\(V\)">\(V\)</span>, and axiom [4] for <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span>, together with full faithfulness, algebraizes the identifying arrows. Completion therefore commutes with this fibre product. Finally [5] for <span class="math" data-tex="\(\Delta_{\mathcal X}\)">\(\Delta_{\mathcal X}\)</span> is exactly openness of versality for <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>The base <span class="math" data-tex="\(V\)">\(V\)</span> is locally Noetherian. Its local rings at finite type points are essentially of finite type over the corresponding local rings of <span class="math" data-tex="\(S\)">\(S\)</span>, so they are G-rings [Stacks, Tag 07PV]. The functor case of Theorem 4.1 now makes <span class="math" data-tex="\(I\)">\(I\)</span> an algebraic space over <span class="math" data-tex="\(V\)">\(V\)</span>. Lemma 2.1 extends this assertion from finite presentation tests to all tests; its size bound is the field-arrow bound just used, together with the size of the finite type charts constructed in Theorem 4.1. Thus <span class="math" data-tex="\(\Delta_{\mathcal X}\)">\(\Delta_{\mathcal X}\)</span> is representable.</p>
+<p>Apply the stack case of Theorem 4.1. Its hypotheses are now established, and its smooth atlas proves the conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tag 07Y5]. Neither representability of the first diagonal nor algebraicity is assumed in this argument. The G-ring condition is used at the approximation stage, before constructing the atlas.</p>
+<h2 id="5-two-ways-to-prove-openness">5. Two ways to prove openness</h2>
+<h3 id="5-1-a-failed-lift-can-be-placed-in-a-family">5.1. A failed lift can be placed in a family</h3>
+<p>We first isolate the argument which lets infinitesimal information detect an open locus. Suppose <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>), representable diagonal, and limit preservation. Work with <span class="math" data-tex="\(x\in\mathcal X(A)\)">\(x\in\mathcal X(A)\)</span>, where <span class="math" data-tex="\(U=\operatorname{Spec}A\)">\(U=\operatorname{Spec}A\)</span> is of finite type over <span class="math" data-tex="\(\operatorname{Spec}\Lambda\subset S\)">\(\operatorname{Spec}\Lambda\subset S\)</span>.</p>
+<p><strong>Lemma 5.1 (a witness to nonversality).</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> is not versal at a finite type point <span class="math" data-tex="\(u\)">\(u\)</span>, there is a square-zero extension <span class="math" data-tex="\(C\twoheadrightarrow A\)">\(C\twoheadrightarrow A\)</span> with kernel <span class="math" data-tex="\(\kappa(u)\)">\(\kappa(u)\)</span>, and a marked lift <span class="math" data-tex="\(y\in\mathcal X(C)\)">\(y\in\mathcal X(C)\)</span>, which admits no retraction to the family <span class="math" data-tex="\(x\)">\(x\)</span> on any open neighbourhood of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>Here a retraction means a morphism <span class="math" data-tex="\(r:\operatorname{Spec}C\to U\)">\(r:\operatorname{Spec}C\to U\)</span> restricting to the identity on <span class="math" data-tex="\(U\)">\(U\)</span>, and an isomorphism <span class="math" data-tex="\(y\simeq r^*x\)">\(y\simeq r^*x\)</span> restricting to the marking <span class="math" data-tex="\(y|_U\simeq x\)">\(y|_U\simeq x\)</span>.</p>
+<p><strong>Proof.</strong> Failure of versality is witnessed by a small extension <span class="math" data-tex="\(B&#x27;\twoheadrightarrow B\)">\(B&#x27;\twoheadrightarrow B\)</span>, a map <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> with closed point <span class="math" data-tex="\(u\)">\(u\)</span>, and a lift of the resulting object over <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>, for which the specified lifting problem has no solution. Take
+<span class="math" data-tex="\(C=A\times_B B&#x27;\)">\(C=A\times_B B&#x27;\)</span>.
+Its kernel is the one-dimensional <span class="math" data-tex="\(\kappa(u)\)">\(\kappa(u)\)</span>-module of the small extension. Condition (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) patches <span class="math" data-tex="\(x\)">\(x\)</span> and the object over <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> to <span class="math" data-tex="\(y\)">\(y\)</span>. A retraction near <span class="math" data-tex="\(u\)">\(u\)</span> pulls back to <span class="math" data-tex="\(\operatorname{Spec}B&#x27;\)">\(\operatorname{Spec}B&#x27;\)</span>, whose sole point lies over <span class="math" data-tex="\(u\)">\(u\)</span>. It would supply exactly the forbidden lift, with its required identification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.2 (retraction near a versal point).</strong> Let <span class="math" data-tex="\(u_0\)">\(u_0\)</span> be a versal finite type point. Every marked lift of <span class="math" data-tex="\(x\)">\(x\)</span> over a square-zero extension <span class="math" data-tex="\(D\twoheadrightarrow A\)">\(D\twoheadrightarrow A\)</span> which is of finite type over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> admits a retraction after shrinking around <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. The same assertion holds for a possibly infinite extension whenever its marked lift descends to such a finite type extension.</p>
+<p><strong>Proof.</strong> For the descended family <span class="math" data-tex="\(x_D\)">\(x_D\)</span>, form
+<span class="math" data-tex="\(Z=U\times_{\mathcal X}\operatorname{Spec}D\)">\(Z=U\times_{\mathcal X}\operatorname{Spec}D\)</span>.
+The marking gives a section <span class="math" data-tex="\(i:U\to Z\)">\(i:U\to Z\)</span> over the thickening <span class="math" data-tex="\(U\subset\operatorname{Spec}D\)">\(U\subset\operatorname{Spec}D\)</span>. The single-point version of Lemma 3.2 shows that <span class="math" data-tex="\(Z\to\operatorname{Spec}D\)">\(Z\to\operatorname{Spec}D\)</span> is smooth at <span class="math" data-tex="\(i(u_0)\)">\(i(u_0)\)</span>. Shrink <span class="math" data-tex="\(U\)">\(U\)</span> so it is smooth along the whole section. The infinitesimal lifting property of this smooth algebraic space lifts <span class="math" data-tex="\(i\)">\(i\)</span> across the affine square-zero thickening. The lifted map to <span class="math" data-tex="\(Z\)">\(Z\)</span> supplies both a retraction to <span class="math" data-tex="\(U\)">\(U\)</span> and the desired isomorphism of objects. Pullback gives the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These lemmas also show that versality is preserved under generalization among finite type points. Indeed, descend the witness of Lemma 5.1 to a finite type <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-subalgebra of <span class="math" data-tex="\(C\)">\(C\)</span> containing lifts of generators of <span class="math" data-tex="\(A\)">\(A\)</span>. Its map to <span class="math" data-tex="\(A\)">\(A\)</span> is surjective and its kernel square zero. If <span class="math" data-tex="\(u\)">\(u\)</span> specialized to a versal <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, Lemma 5.2 would retract it on a neighbourhood of <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, hence on a neighbourhood of <span class="math" data-tex="\(u\)">\(u\)</span>, a contradiction.</p>
+<p>The following modest Noetherian topological facts will be used. Every subset has the same closure as its points maximal under generalization, and an infinite dense subset of a Noetherian scheme has a countable dense subset [Stacks, Tags 0G2R and 0G2F]. Consequently, if the nonversal finite type points accumulate at a versal <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, one can choose a countable sequence <span class="math" data-tex="\(u_i\)">\(u_i\)</span> of nonversal points, with no specializations between them, whose closure contains <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. No individual <span class="math" data-tex="\(u_i\)">\(u_i\)</span> specializes to <span class="math" data-tex="\(u_0\)">\(u_0\)</span>.</p>
+<p>This gives the strong-effectiveness criterion of [Stacks, Tag 0CXU]. If every compatible system over surjective ring towers <span class="math" data-tex="\(R_n\)">\(R_n\)</span>, with square-zero <span class="math" data-tex="\(\ker(R_m\to R_n)\)">\(\ker(R_m\to R_n)\)</span> for <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, is effective over <span class="math" data-tex="\(\lim R_n\)">\(\lim R_n\)</span>, then openness of versality holds. To prove it, take the witnesses <span class="math" data-tex="\(C_i\to A\)">\(C_i\to A\)</span> just constructed and their finite fibre products</p>
+<span class="math math-display" data-tex="\[
+R_n=C_1\times_A\cdots\times_A C_n.
+\tag{5.1}
+\]">\[
+R_n=C_1\times_A\cdots\times_A C_n.
+\tag{5.1}
+\]</span>
+<p>Their kernels over <span class="math" data-tex="\(A\)">\(A\)</span> are direct sums of <span class="math" data-tex="\(\kappa(u_i)\)">\(\kappa(u_i)\)</span>, with square-zero multiplication. Condition (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) patches their marked objects compatibly. Strong effectiveness gives an object over <span class="math" data-tex="\(\lim R_n\)">\(\lim R_n\)</span>. Limit preservation descends that object to a finite type subalgebra surjecting onto <span class="math" data-tex="\(A\)">\(A\)</span>. Lemma 5.2 gives a retraction near <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Pulling it to any <span class="math" data-tex="\(C_i\)">\(C_i\)</span> whose point lies in that neighbourhood contradicts Lemma 5.1. Thus the accumulating sequence cannot exist. This proves the criterion, with its stronger tower hypothesis explicitly distinguished from axiom [4].</p>
+<h3 id="5-2-product-compatible-obstruction-modules">5.2. Product-compatible obstruction modules</h3>
+<p>An <strong>obstruction theory</strong> consists of <span class="math" data-tex="\(A\)">\(A\)</span>-linear functors
+<span class="math" data-tex="\(\mathcal O_x:\operatorname{Mod}_A\to\operatorname{Mod}_A\)">\(\mathcal O_x:\operatorname{Mod}_A\to\operatorname{Mod}_A\)</span>,
+functorial in the object, base ring and module, and elements</p>
+<span class="math math-display" data-tex="\[
+o_x(A&#x27;)\in\mathcal O_x(I),\qquad I=\ker(A&#x27;\to A),
+\tag{5.2}
+\]">\[
+o_x(A&#x27;)\in\mathcal O_x(I),\qquad I=\ker(A&#x27;\to A),
+\tag{5.2}
+\]</span>
+<p>for each square-zero extension. They must commute with maps of deformation situations, and must satisfy</p>
+<span class="math math-display" data-tex="\[
+x\text{ has a marked lift to }A&#x27;
+\quad\Longleftrightarrow\quad o_x(A&#x27;)=0.
+\tag{5.3}
+\]">\[
+x\text{ has a marked lift to }A&#x27;
+\quad\Longleftrightarrow\quad o_x(A&#x27;)=0.
+\tag{5.3}
+\]</span>
+<p>Functoriality includes the identity and composition laws for maps <span class="math" data-tex="\((A,x,M)\to(B,x|_B,N)\)">\((A,x,M)\to(B,x|_B,N)\)</span>, with an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(M\to N\)">\(M\to N\)</span>. An obstruction module without the equivalence (5.3) is insufficient for the theorem below. See [Stacks, Tag 07YG].</p>
+<p><strong>Theorem 5.3 (the product criterion).</strong> Suppose <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has representable diagonal, (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>), and limit preservation. Suppose it has an obstruction theory such that for every object <span class="math" data-tex="\(x\)">\(x\)</span> and every countable collection of modules <span class="math" data-tex="\(M_i\)">\(M_i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T_x\Bigl(\prod_i M_i\Bigr)\xrightarrow{\sim}
+\prod_iT_x(M_i),\qquad
+\mathcal O_x\Bigl(\prod_i M_i\Bigr)\longrightarrow
+\prod_i\mathcal O_x(M_i)\ \text{is injective}.
+\tag{5.4}
+\]">\[
+T_x\Bigl(\prod_i M_i\Bigr)\xrightarrow{\sim}
+\prod_iT_x(M_i),\qquad
+\mathcal O_x\Bigl(\prod_i M_i\Bigr)\longrightarrow
+\prod_i\mathcal O_x(M_i)\ \text{is injective}.
+\tag{5.4}
+\]</span>
+<p>Then <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> satisfies openness of versality.</p>
+<p><strong>Proof.</strong> If openness fails at <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, choose the sequence and marked witnesses <span class="math" data-tex="\(y_i/C_i\)">\(y_i/C_i\)</span> of Section 5.1. Form the ring</p>
+<span class="math math-display" data-tex="\[
+D=\prod_A C_i
+=\{(c_i)\in\prod_iC_i:\text{all images in }A\text{ agree}\}.
+\]">\[
+D=\prod_A C_i
+=\{(c_i)\in\prod_iC_i:\text{all images in }A\text{ agree}\}.
+\]</span>
+<p>It surjects onto <span class="math" data-tex="\(A\)">\(A\)</span> with square-zero kernel <span class="math" data-tex="\(M=\prod_i\kappa(u_i)\)">\(M=\prod_i\kappa(u_i)\)</span>. The obstruction <span class="math" data-tex="\(o_x(D)\)">\(o_x(D)\)</span> maps to <span class="math" data-tex="\(o_x(C_i)=0\)">\(o_x(C_i)=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. Injectivity in (5.4) makes it zero, so choose a marked lift <span class="math" data-tex="\(y/D\)">\(y/D\)</span>.</p>
+<p>For each <span class="math" data-tex="\(i\)">\(i\)</span>, its restriction and <span class="math" data-tex="\(y_i\)">\(y_i\)</span> differ by <span class="math" data-tex="\(t_i\in T_x(\kappa(u_i))\)">\(t_i\in T_x(\kappa(u_i))\)</span>, using the torsor of Section 1.2. The first condition of (5.4) supplies <span class="math" data-tex="\(t\in T_x(M)\)">\(t\in T_x(M)\)</span> with all these components. Replace <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(t\cdot y\)">\(t\cdot y\)</span>. Its restrictions are now isomorphic to the specified <span class="math" data-tex="\(y_i\)">\(y_i\)</span> as marked lifts. In particular the isomorphisms respect <span class="math" data-tex="\(x\)">\(x\)</span>, which is necessary for the next step.</p>
+<p>Limit preservation descends <span class="math" data-tex="\(y\)">\(y\)</span> to a finite type <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-subalgebra <span class="math" data-tex="\(D_0\subset D\)">\(D_0\subset D\)</span>. Increase <span class="math" data-tex="\(D_0\)">\(D_0\)</span> to include lifts of generators of <span class="math" data-tex="\(A\)">\(A\)</span>. Then <span class="math" data-tex="\(D_0\twoheadrightarrow A\)">\(D_0\twoheadrightarrow A\)</span> is a finite type square-zero extension, and its family restricts to <span class="math" data-tex="\(x\)">\(x\)</span> with the inherited marking. Lemma 5.2 retracts it near <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Pull this retraction through <span class="math" data-tex="\(D_0\to D\to C_i\)">\(D_0\to D\to C_i\)</span>. Since <span class="math" data-tex="\(u_0\)">\(u_0\)</span> lies in the closure of the <span class="math" data-tex="\(u_i\)">\(u_i\)</span>, some <span class="math" data-tex="\(u_i\)">\(u_i\)</span> lies in that neighbourhood. The retraction of the corresponding marked <span class="math" data-tex="\(y_i\)">\(y_i\)</span> contradicts its defining property.</p>
+<p>This proves the theorem directly; no effectiveness assertion for objects over infinite towers is assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is [Stacks, Tag 0CYF]. The proof only needs compatibility of obstruction classes for maps with fixed quotient <span class="math" data-tex="\(A\)">\(A\)</span>, but (5.2) has been stated with the usual full functoriality.</p>
+<h3 id="5-3-naive-cotangent-obstruction-theories">5.3. Naive cotangent obstruction theories</h3>
+<p>Use cohomological indexing. For <span class="math" data-tex="\(A=\Lambda[z_1,\ldots,z_r]/J\)">\(A=\Lambda[z_1,\ldots,z_r]/J\)</span>, the naive cotangent complex is</p>
+<span class="math math-display" data-tex="\[
+\mathrm{NL}_{A/\Lambda}=
+\bigl[J/J^2\longrightarrow A^{\oplus r}\bigr]
+\quad\text{in degrees }-1,0.
+\tag{5.5}
+\]">\[
+\mathrm{NL}_{A/\Lambda}=
+\bigl[J/J^2\longrightarrow A^{\oplus r}\bigr]
+\quad\text{in degrees }-1,0.
+\tag{5.5}
+\]</span>
+<p>A square-zero surjection <span class="math" data-tex="\(A&#x27;\to A\)">\(A&#x27;\to A\)</span> with kernel <span class="math" data-tex="\(I\)">\(I\)</span> gives
+<span class="math" data-tex="\(\mathrm{NL}_{A/A&#x27;}\simeq I[1]\)">\(\mathrm{NL}_{A/A&#x27;}\simeq I[1]\)</span>.
+The successive maps of naive cotangent complexes have zero composition, but in general do not form a distinguished transitivity triangle.</p>
+<p>A <strong>naive obstruction theory</strong> assigns <span class="math" data-tex="\(E_x\in D^-(A)\)">\(E_x\in D^-(A)\)</span> and
+<span class="math" data-tex="\(\xi_x:E_x\to\mathrm{NL}_{A/\Lambda}\)">\(\xi_x:E_x\to\mathrm{NL}_{A/\Lambda}\)</span>, together with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Inf}_x(M)\simeq
+\operatorname{Ext}^{-1}_A(E_x,M),\qquad
+T_x(M)\simeq\operatorname{Ext}^{0}_A(E_x,M).
+\tag{5.6}
+\]">\[
+\operatorname{Inf}_x(M)\simeq
+\operatorname{Ext}^{-1}_A(E_x,M),\qquad
+T_x(M)\simeq\operatorname{Ext}^{0}_A(E_x,M).
+\tag{5.6}
+\]</span>
+<p>Its required compatibilities are as follows. Base change <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> gives maps <span class="math" data-tex="\(E_x\to E_{x|_B}\)">\(E_x\to E_{x|_B}\)</span> in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, compatible with <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, identities and compositions. The identifications (5.6) respect the module and base-change maps of Section 1.2. The class of <span class="math" data-tex="\(E_x\to\mathrm{NL}_{A/\Lambda}\to\Omega_{A/\Lambda}\)">\(E_x\to\mathrm{NL}_{A/\Lambda}\to\Omega_{A/\Lambda}\)</span> is the canonical deformation obtained by pulling <span class="math" data-tex="\(x\)">\(x\)</span> along
+<span class="math" data-tex="\(a\mapsto(a,da)\)">\(a\mapsto(a,da)\)</span> into <span class="math" data-tex="\(A[\Omega_{A/\Lambda}]\)">\(A[\Omega_{A/\Lambda}]\)</span>. Finally, <span class="math" data-tex="\(x\)">\(x\)</span> lifts across <span class="math" data-tex="\(A&#x27;\to A\)">\(A&#x27;\to A\)</span> exactly when</p>
+<span class="math math-display" data-tex="\[
+E_x\longrightarrow\mathrm{NL}_{A/\Lambda}
+\longrightarrow \mathrm{NL}_{A/A&#x27;}\simeq I[1]
+\tag{5.7}
+\]">\[
+E_x\longrightarrow\mathrm{NL}_{A/\Lambda}
+\longrightarrow \mathrm{NL}_{A/A&#x27;}\simeq I[1]
+\tag{5.7}
+\]</span>
+<p>is zero in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. All these requirements, not just a complex of finite modules, enter the definition [Stacks, Tag 07YP].</p>
+<p><strong>Lemma 5.4 (the fibre criterion).</strong> Assume (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) and the tangent and obstruction properties just specified for <span class="math" data-tex="\(x/A\)">\(x/A\)</span>. At a finite type point <span class="math" data-tex="\(u\)">\(u\)</span> with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, consider</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+H^{-1}(E_x\otimes_A^{\mathbf L}k)&amp;\twoheadrightarrow
+H^{-1}(\mathrm{NL}_{A/\Lambda}\otimes_A^{\mathbf L}k),\\
+H^0(E_x\otimes_A^{\mathbf L}k)&amp;\hookrightarrow
+H^0(\mathrm{NL}_{A/\Lambda}\otimes_A^{\mathbf L}k).
+\end{split}
+\tag{5.8}
+\]">\[
+\begin{split}
+H^{-1}(E_x\otimes_A^{\mathbf L}k)&amp;\twoheadrightarrow
+H^{-1}(\mathrm{NL}_{A/\Lambda}\otimes_A^{\mathbf L}k),\\
+H^0(E_x\otimes_A^{\mathbf L}k)&amp;\hookrightarrow
+H^0(\mathrm{NL}_{A/\Lambda}\otimes_A^{\mathbf L}k).
+\end{split}
+\tag{5.8}
+\]</span>
+<p>These conditions imply versality. If <span class="math" data-tex="\(u\)">\(u\)</span> is closed in <span class="math" data-tex="\(U\)">\(U\)</span>, versality implies them.</p>
+<p><strong>Proof.</strong> For a bounded-above complex <span class="math" data-tex="\(E\)">\(E\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^i_A(E,k)
+\simeq\operatorname{Hom}_k(H^{-i}(E\otimes_A^{\mathbf L}k),k).
+\tag{5.9}
+\]">\[
+\operatorname{Ext}^i_A(E,k)
+\simeq\operatorname{Hom}_k(H^{-i}(E\otimes_A^{\mathbf L}k),k).
+\tag{5.9}
+\]</span>
+Resolve by free modules and split the resulting complex of vector spaces to obtain this identity.</p>
+<p>The second condition of (5.8), by (5.9) and the canonical-element compatibility, says that
+<span class="math" data-tex="\(\operatorname{Der}_\Lambda(A,k)\to T_x(k)\)">\(\operatorname{Der}_\Lambda(A,k)\to T_x(k)\)</span>
+is surjective. For a small extension <span class="math" data-tex="\(B&#x27;\to B\)">\(B&#x27;\to B\)</span> with residue field <span class="math" data-tex="\(k\)">\(k\)</span>, the obstruction to lifting <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span> is in
+<span class="math" data-tex="\(\operatorname{Ext}^1_A(\mathrm{NL}_{A/\Lambda},k)\)">\(\operatorname{Ext}^1_A(\mathrm{NL}_{A/\Lambda},k)\)</span>.
+The first condition makes its map to <span class="math" data-tex="\(\operatorname{Ext}^1_A(E_x,k)\)">\(\operatorname{Ext}^1_A(E_x,k)\)</span> injective. If the pulled-back object lifts to <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>, (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) gives a lift of <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(A\times_BB&#x27;\)">\(A\times_BB&#x27;\)</span>, so (5.7) kills that image. The ring obstruction is therefore zero. Choose a lift of the ring map. Its object may differ from the prescribed marked object by a tangent class, but the surjectivity on tangents adjusts the lift by a derivation to remove the difference. This solves the lifting problem, including its identifying arrow, and proves sufficiency.</p>
+<p>For necessity, tangent surjectivity follows immediately from versality. Suppose the first map in (5.8) were not onto. Choose a functional on
+<span class="math" data-tex="\(H^{-1}(\mathrm{NL}\otimes^{\mathbf L}k)\)">\(H^{-1}(\mathrm{NL}\otimes^{\mathbf L}k)\)</span>
+which kills the image and is nonzero. Extend it to <span class="math" data-tex="\(J/J^2\otimes_Ak\)">\(J/J^2\otimes_Ak\)</span>, and denote the resulting functional by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. With <span class="math" data-tex="\(P=\Lambda[z_1,\ldots,z_r]\)">\(P=\Lambda[z_1,\ldots,z_r]\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+A&#x27;=P/\ker\bigl(J\longrightarrow J/J^2\otimes_Ak
+\xrightarrow{\lambda}k\bigr).
+\tag{5.10}
+\]">\[
+A&#x27;=P/\ker\bigl(J\longrightarrow J/J^2\otimes_Ak
+\xrightarrow{\lambda}k\bigr).
+\tag{5.10}
+\]</span>
+<p>Since <span class="math" data-tex="\(u\)">\(u\)</span> is closed, the nonzero image is all of <span class="math" data-tex="\(k\)">\(k\)</span>; the kernel <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(A&#x27;\to A\)">\(A&#x27;\to A\)</span> is <span class="math" data-tex="\(k\)">\(k\)</span> and has square zero. The differential of the discarded relation lies in the kernel of <span class="math" data-tex="\(J/J^2\otimes k\to k^{\oplus r}\)">\(J/J^2\otimes k\to k^{\oplus r}\)</span>. Equivalently, the image under this differential of <span class="math" data-tex="\(\ker\lambda\)">\(\ker\lambda\)</span> equals the image of all <span class="math" data-tex="\(J/J^2\otimes k\)">\(J/J^2\otimes k\)</span>: subtract a multiple of an element in the differential kernel on which <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>. Thus <span class="math" data-tex="\(\Omega_{A&#x27;/\Lambda}\otimes k\to\Omega_{A/\Lambda}\otimes k\)">\(\Omega_{A&#x27;/\Lambda}\otimes k\to\Omega_{A/\Lambda}\otimes k\)</span> is an isomorphism. The extension is essential: a section would add the nonzero derivation to <span class="math" data-tex="\(I=k\)">\(I=k\)</span>, contrary to that isomorphism of differential fibres.</p>
+<p>By (5.9), the choice of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> makes <span class="math" data-tex="\(E_x\to I[1]\)">\(E_x\to I[1]\)</span> zero. Therefore <span class="math" data-tex="\(x\)">\(x\)</span> lifts to <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>. Artin–Rees gives <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\((\mathfrak m&#x27;)^n\cap I=0\)">\((\mathfrak m&#x27;)^n\cap I=0\)</span>. The extension
+<span class="math math-display" data-tex="\[
+B&#x27;=A&#x27;/(\mathfrak m&#x27;)^n\longrightarrow
+B=A/\mathfrak m^n
+\]">\[
+B&#x27;=A&#x27;/(\mathfrak m&#x27;)^n\longrightarrow
+B=A/\mathfrak m^n
+\]</span>
+still has kernel <span class="math" data-tex="\(k\)">\(k\)</span>, and remains essential. Versality lifts the quotient map from the completed local ring of <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(B\)">\(B\)</span> to a map into <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>, with the lifted object. Because the maximal ideal of <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span>-th power zero, that map factors through <span class="math" data-tex="\(B\)">\(B\)</span> and is a section, a contradiction. The first map of (5.8) must be surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This supplies the essential-extension argument behind [Stacks, Tags 07YJ and 07YN], without assuming a transitivity triangle for (5.5).</p>
+<p><strong>Theorem 5.5 (naive obstruction theory gives openness).</strong> Suppose <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> has (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) and a naive obstruction theory. If every <span class="math" data-tex="\(E_x\)">\(E_x\)</span> over a finite type base has finitely generated cohomology modules, then <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> satisfies openness of versality.</p>
+<p><strong>Proof.</strong> Shrink a finite type family so its versal point <span class="math" data-tex="\(u_0\)">\(u_0\)</span> is closed and the base is affine. Set <span class="math" data-tex="\(C=\operatorname{Cone}(\xi_x)\)">\(C=\operatorname{Cone}(\xi_x)\)</span>. It is bounded above with finite cohomology, since <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian and the naive cotangent complex has finite modules. By Lemma 5.4 and the cohomology exact sequence of the cone,
+<span class="math" data-tex="\(H^{-1}(C\otimes^{\mathbf L}k(u_0))=0\)">\(H^{-1}(C\otimes^{\mathbf L}k(u_0))=0\)</span>.</p>
+<p>Represent <span class="math" data-tex="\(C\)">\(C\)</span> by a bounded-above complex of finite free modules locally near <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. Over the residue field it is exact in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>. Choose bases for the image of the incoming differential and a complement mapping isomorphically onto the image of the outgoing differential. Invert the finitely many corresponding matrix minors. Cancelling these invertible blocks removes the whole degree <span class="math" data-tex="\(-1\)">\(-1\)</span> term. The remaining complex consequently has
+<span class="math" data-tex="\(H^{-1}(C\otimes^{\mathbf L}M)=0\)">\(H^{-1}(C\otimes^{\mathbf L}M)=0\)</span>
+for every module on that open neighbourhood.</p>
+<p>In particular the fibre cone has zero <span class="math" data-tex="\(H^{-1}\)">\(H^{-1}\)</span> at every point there. Its cohomology sequence gives both conditions (5.8), and their sufficient direction proves versality at every finite type point in the neighbourhood. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tag 07YU]. This criterion needs the functoriality and canonical tangent class in (5.6)–(5.7). It does not replace them by the bare assertion that obstructions happen to lie in a finite module.</p>
+<h2 id="6-flat-groupoids-over-an-arbitrary-base">6. Flat groupoids over an arbitrary base</h2>
+<p>In this section <span class="math" data-tex="\(S\)">\(S\)</span> is any scheme. No Noetherian or G-ring hypothesis is imposed. The flat bootstrap for sheaves from Lesson 2 will be used, while the stack version will be proved.</p>
+<h3 id="6-1-finite-sources-and-restriction-of-scalars">6.1. Finite sources and restriction of scalars</h3>
+<p><strong>Lemma 6.1 (maps from a finite locally free space).</strong> If <span class="math" data-tex="\(Z\to B\)">\(Z\to B\)</span> is finite locally free and <span class="math" data-tex="\(X\to Z\)">\(X\to Z\)</span> is an algebraic space, the functor
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_{Z/B}(X)(T)=
+\operatorname{Mor}_{Z}(Z_T,X)
+\tag{6.1}
+\]">\[
+\operatorname{Res}_{Z/B}(X)(T)=
+\operatorname{Mor}_{Z}(Z_T,X)
+\tag{6.1}
+\]</span>
+is an algebraic space. Restriction of scalars carries a surjective étale morphism to a surjective étale morphism.</p>
+<p><strong>Proof.</strong> We explain the étale assertion first. For <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span> étale, its section functor over <span class="math" data-tex="\(B\)">\(B\)</span> is étale and representable. This can be checked over an affine <span class="math" data-tex="\(B\)">\(B\)</span>. If <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span> is separated, a section is an open-and-closed subscheme of <span class="math" data-tex="\(W_T\)">\(W_T\)</span>, finite locally free over <span class="math" data-tex="\(T\)">\(T\)</span>, mapping isomorphically to <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span>.</p>
+<p>The finite-part construction of Lesson 2 applies to the separated, flat, locally finitely presented, locally quasi-finite map <span class="math" data-tex="\(W\to B\)">\(W\to B\)</span>, without the extra requirement of containing an identity section. Over the affine base, separated locally quasi-finite recognition first makes <span class="math" data-tex="\(W\)">\(W\)</span> a scheme. The construction's proof is unchanged: over a henselian local base, isolate a selected finite union of fibre components; scheme Zariski main and idempotent lifting extend it to a finite open-and-closed part; finite presentation descends it to an étale neighbourhood. Equality of two such parts is an open-and-closed condition, computed by the ranks of their two finite locally free differences. The étale quotient of these charts represents the finite-part functor.</p>
+<p>Within that functor, the condition of mapping isomorphically to <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> is open. The map from a selected finite part to <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> is finite étale. Its rank is one exactly on the isomorphism locus; the complement of that locus is closed in <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span>, and its finite image in <span class="math" data-tex="\(T\)">\(T\)</span> is closed. Thus the section functor is an open subspace of the finite-part space and is étale over <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>For a general <span class="math" data-tex="\(W\)">\(W\)</span>, cover it by a disjoint union <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> of affine schemes over the affine base. Its map to <span class="math" data-tex="\(Z\)">\(Z\)</span>, and its map to <span class="math" data-tex="\(W\)">\(W\)</span>, are separated. Sections of <span class="math" data-tex="\(W&#x27;\to Z\)">\(W&#x27;\to Z\)</span> therefore form an algebraic space by the preceding argument. They cover the section functor of <span class="math" data-tex="\(W\to Z\)">\(W\to Z\)</span> étale locally: over a strictly henselian local base, the finite scheme <span class="math" data-tex="\(Z\)">\(Z\)</span> is a product of henselian local factors with separably closed residue fields. A surjective étale cover has a section on each factor. Their finite union of choices descends to an étale neighbourhood of the base. The same separated calculation describes every fibre of the map of section functors. The étale bootstrap of Lesson 2 now proves the general assertion.</p>
+<p>For an étale map <span class="math" data-tex="\(X&#x27;\to X\)">\(X&#x27;\to X\)</span>, the fibre of its restriction of scalars at a map <span class="math" data-tex="\(Z_T\to X\)">\(Z_T\to X\)</span> is precisely the section functor of <span class="math" data-tex="\(Z_T\times_XX&#x27;\to Z_T\)">\(Z_T\times_XX&#x27;\to Z_T\)</span>. This proves representability and étaleness, and the preceding local section argument proves surjectivity when the original map is surjective.</p>
+<p>Now trivialize the finite locally free algebra of <span class="math" data-tex="\(Z\)">\(Z\)</span> on affine base opens, and take an étale cover <span class="math" data-tex="\(X&#x27;\to X\)">\(X&#x27;\to X\)</span> with <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> a disjoint union of affine schemes. For a finite union of these affines, maps from <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> are described by algebra maps into the finite free algebra of <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span>. Choose its basis; coordinates for the images of generators and polynomial relations describe an affine scheme. The requirement that a map be over <span class="math" data-tex="\(Z\)">\(Z\)</span> imposes the corresponding equations. Infinite presentations cause no difficulty for representability. Every map from a quasi-compact <span class="math" data-tex="\(Z_T\)">\(Z_T\)</span> uses only finitely many of the affine components. The finite-component functors are open subfunctors, since <span class="math" data-tex="\(Z_T\to T\)">\(Z_T\to T\)</span> is finite and the excluded image has closed image in <span class="math" data-tex="\(T\)">\(T\)</span>. They glue to represent restriction of scalars for <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>.</p>
+<p>The étale assertion already proved gives a representable surjective étale map from that space to (6.1). The sheaf condition follows from descent of morphisms. The étale bootstrap proves (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the restriction-of-scalars input [Stacks, Tag 05YF], including the étale assertion [Stacks, Tag 05YD]. The finite-part argument also explains why separatedness was needed only in an intermediate chart. No separatedness of <span class="math" data-tex="\(X\)">\(X\)</span> is assumed.</p>
+<h3 id="6-2-the-finite-hilbert-stack-used-here">6.2. The finite Hilbert stack used here</h3>
+<p>Let <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span>, for <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, classify finite locally free schemes <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Let <span class="math" data-tex="\(\mathcal H_d(X)\)">\(\mathcal H_d(X)\)</span> also remember a map <span class="math" data-tex="\(Z\to X\)">\(Z\to X\)</span>. These objects are finite maps, not necessarily closed subschemes.</p>
+<p><strong>Lemma 6.2.</strong> Both <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span> and <span class="math" data-tex="\(\mathcal H_d(X)\)">\(\mathcal H_d(X)\)</span>, for an algebraic space <span class="math" data-tex="\(X\)">\(X\)</span>, are algebraic stacks.</p>
+<p><strong>Proof.</strong> Put an arbitrary commutative unital algebra structure on the free module of rank <span class="math" data-tex="\(d\)">\(d\)</span>. Its multiplication coefficients <span class="math" data-tex="\(c_{ij}^k\)">\(c_{ij}^k\)</span> and unit coefficients satisfy finitely many equations expressing commutativity, associativity and the two unit identities. They define an affine scheme <span class="math" data-tex="\(\operatorname{Alg}_d\)">\(\operatorname{Alg}_d\)</span> over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Change of basis gives an action of the smooth group <span class="math" data-tex="\(\operatorname{GL}_d\)">\(\operatorname{GL}_d\)</span>.</p>
+<p>A finite locally free algebra has a Zariski locally chosen basis. The basis changes and all their compatibility equations identify its stack with
+<span class="math" data-tex="\([\operatorname{Alg}_d/\operatorname{GL}_d]\)">\([\operatorname{Alg}_d/\operatorname{GL}_d]\)</span>, after base change to <span class="math" data-tex="\(S\)">\(S\)</span>. This quotient is algebraic by the smooth quotient theorem of Lesson 5. Passing between the algebra groupoid and the finite-scheme groupoid uses <span class="math" data-tex="\(\varphi\mapsto\operatorname{Spec}(\varphi^{-1})\)">\(\varphi\mapsto\operatorname{Spec}(\varphi^{-1})\)</span> on isomorphisms; this inversion makes the functor covariant.</p>
+<p>For a fixed finite scheme <span class="math" data-tex="\(Z/T\)">\(Z/T\)</span>, the fibre of
+<span class="math" data-tex="\(\mathcal H_d(X)\to\mathcal H_d\)">\(\mathcal H_d(X)\to\mathcal H_d\)</span>
+is the space of maps <span class="math" data-tex="\(Z\to X\)">\(Z\to X\)</span>. Lemma 6.1 represents it. Pull back a smooth atlas of <span class="math" data-tex="\(\mathcal H_d\)">\(\mathcal H_d\)</span>; its fibre is an algebraic space, and its smooth scheme atlas supplies a smooth atlas of <span class="math" data-tex="\(\mathcal H_d(X)\)">\(\mathcal H_d(X)\)</span>. The diagonal is represented by the same finite-source equality construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>References:</em> [Stacks, Tags 05YQ and 05YS]. Finite locally free algebras and their isomorphisms descend because their modules, multiplication and unit descend.</p>
+<p>Suppose <span class="math" data-tex="\(q:U\to\mathcal Y\)">\(q:U\to\mathcal Y\)</span> is representable, surjective, flat and locally of finite presentation, with <span class="math" data-tex="\(U\)">\(U\)</span> an algebraic space and <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> an fppf stack. Define <span class="math" data-tex="\(\mathcal H_d(U/\mathcal Y)\)">\(\mathcal H_d(U/\mathcal Y)\)</span> to have objects</p>
+<span class="math math-display" data-tex="\[
+(Z/T,\ y\in\mathcal Y(T),\ f:Z\to U,\
+\alpha:y|_Z\xrightarrow{\sim}q(f)).
+\tag{6.2}
+\]">\[
+(Z/T,\ y\in\mathcal Y(T),\ f:Z\to U,\
+\alpha:y|_Z\xrightarrow{\sim}q(f)).
+\tag{6.2}
+\]</span>
+<p><strong>Lemma 6.3.</strong> The diagonal of <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> is representable, and every <span class="math" data-tex="\(\mathcal H_d(U/\mathcal Y)\)">\(\mathcal H_d(U/\mathcal Y)\)</span> is an algebraic stack.</p>
+<p><strong>Proof.</strong> For two objects over a scheme <span class="math" data-tex="\(T\)">\(T\)</span>, choose an fppf scheme cover <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span> lifting both to <span class="math" data-tex="\(U\)">\(U\)</span>. Their Isom sheaf over <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span> is the pullback of the algebraic space <span class="math" data-tex="\(U\times_{\mathcal Y}U\)">\(U\times_{\mathcal Y}U\)</span> along their two coordinate maps. Its map to the original Isom sheaf is representable, flat, locally of finite presentation and surjective, being the base change of <span class="math" data-tex="\(T&#x27;\to T\)">\(T&#x27;\to T\)</span>. The flat sheaf bootstrap makes the original Isom sheaf algebraic. Thus the diagonal is representable.</p>
+<p>The map
+<span class="math math-display" data-tex="\[
+\mathcal H_d(U/\mathcal Y)\longrightarrow
+\mathcal H_d(U)\times\mathcal Y
+\tag{6.3}
+\]">\[
+\mathcal H_d(U/\mathcal Y)\longrightarrow
+\mathcal H_d(U)\times\mathcal Y
+\tag{6.3}
+\]</span>
+is representable: over a fixed <span class="math" data-tex="\((Z/T,f,y)\)">\((Z/T,f,y)\)</span>, it is
+<span class="math" data-tex="\(\operatorname{Res}_{Z/T}\operatorname{Isom}_{\mathcal Y}(y|_Z,q(f))\)">\(\operatorname{Res}_{Z/T}\operatorname{Isom}_{\mathcal Y}(y|_Z,q(f))\)</span>,
+an algebraic space by Lemma 6.1.</p>
+<p>Choose a smooth scheme atlas <span class="math" data-tex="\(P\to\mathcal H_d(U)\)">\(P\to\mathcal H_d(U)\)</span>, and set
+<span class="math" data-tex="\(W=P\times_{\mathcal H_d(U)}\mathcal H_d(U/\mathcal Y)\)">\(W=P\times_{\mathcal H_d(U)}\mathcal H_d(U/\mathcal Y)\)</span>.
+This is a stack in setoids. An automorphism over the fixed <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> restricts to the identity on <span class="math" data-tex="\(y|_Z\)">\(y|_Z\)</span>; the finite locally free map <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> is an fppf cover because <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, so descent of arrows makes it the identity on <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>By (6.3), <span class="math" data-tex="\(V=W\times_{\mathcal Y}U\)">\(V=W\times_{\mathcal Y}U\)</span> is an algebraic space over <span class="math" data-tex="\(P\times_SU\)">\(P\times_SU\)</span>. Its map to the sheaf associated to <span class="math" data-tex="\(W\)">\(W\)</span> is representable, flat, locally of finite presentation and surjective. The flat sheaf bootstrap makes <span class="math" data-tex="\(W\)">\(W\)</span> an algebraic space. Finally <span class="math" data-tex="\(W\to\mathcal H_d(U/\mathcal Y)\)">\(W\to\mathcal H_d(U/\mathcal Y)\)</span> is representable smooth and surjective, as the base change of <span class="math" data-tex="\(P\)">\(P\)</span>. The smooth stack recognition of Lesson 5 proves algebraicity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the inputs [Stacks, Tags 05XW, 05YH and 06CI] without presupposing the flat stack theorem.</p>
+<h3 id="6-3-why-complete-intersections-give-smooth-coordinates">6.3. Why complete intersections give smooth coordinates</h3>
+<p>In (6.2), the pair <span class="math" data-tex="\((f,\alpha)\)">\((f,\alpha)\)</span> is a map
+<span class="math" data-tex="\(Z\to U_y=U\times_{\mathcal Y}T\)">\(Z\to U_y=U\times_{\mathcal Y}T\)</span>.
+Let <span class="math" data-tex="\(\mathcal H_{d,\mathrm{lci}}(U/\mathcal Y)\)">\(\mathcal H_{d,\mathrm{lci}}(U/\mathcal Y)\)</span> be the subcategory where this map is unramified and a local complete intersection.</p>
+<p>This is an open substack. To check it over a family, use étale scheme charts. Unramifiedness is the vanishing condition for the finite module of relative differentials, and the complete-intersection locus in a flat finitely presented family is open and commutes with base change. The scheme versions follow from finite presentations and the regular-sequence criterion; their algebraic-space formulations are [Stacks, Tags 05X8 and 06CE]. Since <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> is finite, the image of the bad locus is closed in <span class="math" data-tex="\(T\)">\(T\)</span>. Its complement represents exactly the indicated subfunctor. Thus the inclusion is a representable open immersion, including arbitrary base changes.</p>
+<p><strong>Lemma 6.4 (lifting the finite slice).</strong> Let <span class="math" data-tex="\(T\subset T&#x27;\)">\(T\subset T&#x27;\)</span> be an affine square-zero thickening. Let <span class="math" data-tex="\(X&#x27;\to T&#x27;\)">\(X&#x27;\to T&#x27;\)</span> be flat and locally of finite presentation, put <span class="math" data-tex="\(X=X&#x27;\times_{T&#x27;}T\)">\(X=X&#x27;\times_{T&#x27;}T\)</span>, and let <span class="math" data-tex="\(Z\to X\)">\(Z\to X\)</span> be unramified lci with <span class="math" data-tex="\(Z\to T\)">\(Z\to T\)</span> finite locally free of degree <span class="math" data-tex="\(d\)">\(d\)</span>. Then it extends to <span class="math" data-tex="\(Z&#x27;\to X&#x27;\)">\(Z&#x27;\to X&#x27;\)</span>, with <span class="math" data-tex="\(Z&#x27;\to T&#x27;\)">\(Z&#x27;\to T&#x27;\)</span> finite locally free of the same degree and <span class="math" data-tex="\(Z=Z&#x27;\times_{T&#x27;}T\)">\(Z=Z&#x27;\times_{T&#x27;}T\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is the ideal of <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(T&#x27;\)">\(T&#x27;\)</span>, flatness and the regular-immersion conormal calculation give</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow I\otimes_{\mathcal O_T}\mathcal O_Z
+\longrightarrow\mathcal C_{Z/X&#x27;}
+\longrightarrow\mathcal C_{Z/X}
+\longrightarrow0.
+\tag{6.4}
+\]">\[
+0\longrightarrow I\otimes_{\mathcal O_T}\mathcal O_Z
+\longrightarrow\mathcal C_{Z/X&#x27;}
+\longrightarrow\mathcal C_{Z/X}
+\longrightarrow0.
+\tag{6.4}
+\]</span>
+<p>The last module is finite locally free because <span class="math" data-tex="\(Z\to X\)">\(Z\to X\)</span> is unramified lci. The scheme conormal statements, transported by étale charts, are [Stacks, Tags 06CB and 06CC]. Since <span class="math" data-tex="\(Z\)">\(Z\)</span> is affine, (6.4) splits.</p>
+<p>Construct the universal first-order neighbourhood of <span class="math" data-tex="\(Z\)">\(Z\)</span> over <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>. Étale locally an unramified map is a closed immersion into an étale neighbourhood, and this neighbourhood is cut out by the square of its ideal. Uniqueness of infinitesimal lifts between the étale neighbourhoods glues these constructions. Its square-zero ideal on <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(\mathcal C_{Z/X&#x27;}\)">\(\mathcal C_{Z/X&#x27;}\)</span>. Quotient this ideal by the chosen summand <span class="math" data-tex="\(\mathcal C_{Z/X}\)">\(\mathcal C_{Z/X}\)</span>. The resulting neighbourhood <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span> has ideal
+<span class="math" data-tex="\(I\otimes\mathcal O_Z\)">\(I\otimes\mathcal O_Z\)</span> and a map to <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>.</p>
+<p>The natural multiplication map identifies its ideal with the image of <span class="math" data-tex="\(I\)">\(I\)</span>, so the square-zero flatness criterion gives flatness of <span class="math" data-tex="\(Z&#x27;\to T&#x27;\)">\(Z&#x27;\to T&#x27;\)</span> and the stated base-change identity. A nilpotent thickening of an affine scheme is affine. Lift finitely many module generators for the finite algebra of <span class="math" data-tex="\(Z/T\)">\(Z/T\)</span>; they generate the algebra of <span class="math" data-tex="\(Z&#x27;/T&#x27;\)">\(Z&#x27;/T&#x27;\)</span>, since the cokernel equals <span class="math" data-tex="\(I\)">\(I\)</span> times itself and <span class="math" data-tex="\(I^2=0\)">\(I^2=0\)</span>. Thus <span class="math" data-tex="\(Z&#x27;\to T&#x27;\)">\(Z&#x27;\to T&#x27;\)</span> is finite. Locally lift a basis of its reduction of rank <span class="math" data-tex="\(d\)">\(d\)</span>. The resulting map from the free module of rank <span class="math" data-tex="\(d\)">\(d\)</span> is surjective by the same argument. Flatness makes its kernel remain exact after reduction modulo <span class="math" data-tex="\(I\)">\(I\)</span>, so that kernel is equal to <span class="math" data-tex="\(I\)">\(I\)</span> times itself and is zero. The algebra is therefore finite locally free of rank <span class="math" data-tex="\(d\)">\(d\)</span>. The open lci condition above ensures that its map to <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> still belongs to the indicated substack. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the independently established lifting argument of [Stacks, Tag 06D8]. It also proves that
+<span class="math" data-tex="\(\mathcal H_{d,\mathrm{lci}}(U/\mathcal Y)\to\mathcal Y\)">\(\mathcal H_{d,\mathrm{lci}}(U/\mathcal Y)\to\mathcal Y\)</span>
+is formally smooth on objects: apply the lemma to <span class="math" data-tex="\(U_{y&#x27;}\to T&#x27;\)">\(U_{y&#x27;}\to T&#x27;\)</span> for a lift <span class="math" data-tex="\(y&#x27;\)">\(y&#x27;\)</span> of the base object.</p>
+<p>These morphisms are limit preserving on objects. A finite locally free algebra, its map into the fixed locally finitely presented algebraic space <span class="math" data-tex="\(U_y\)">\(U_y\)</span>, and its finitely many compatibility data descend along affine limits. The finite source uses only finitely many charts; the coefficient construction in Lemma 6.1 then involves finite presentations. The open unramified lci condition descends after increasing the stage. This is the finite presentation argument of [Stacks, Tag 06CH].</p>
+<p>Their union over <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span> is surjective on field objects. Indeed <span class="math" data-tex="\(U_y\)">\(U_y\)</span> is a nonempty algebraic space locally of finite presentation over a field <span class="math" data-tex="\(k\)">\(k\)</span>. Take an affine étale chart and a closed point in its Cohen–Macaulay locus, which is nonempty on a finite type scheme. A system of parameters in the Cohen–Macaulay local ring is a regular sequence. After shrinking the chart, its zero scheme is supported only at that point and is finite over <span class="math" data-tex="\(k\)">\(k\)</span>. Call it <span class="math" data-tex="\(Z\)">\(Z\)</span>. The regular immersion followed by the étale map is unramified lci; <span class="math" data-tex="\(Z\)">\(Z\)</span> is a nonzero finite <span class="math" data-tex="\(k\)">\(k\)</span>-algebra, so it is finite locally free of some degree <span class="math" data-tex="\(d\)">\(d\)</span>. It gives an object (6.2). The scheme inputs are [Stacks, Tags 045U and 0570]; they impose no perfection assumption on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Theorem 6.5 (flat stack bootstrap).</strong> If <span class="math" data-tex="\(q:U\to\mathcal Y\)">\(q:U\to\mathcal Y\)</span> is a representable surjective flat locally finitely presented morphism from an algebraic space to an fppf stack, then <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> is an algebraic stack.</p>
+<p><strong>Proof.</strong> Lemma 6.3 gives its representable diagonal and the algebraic stacks <span class="math" data-tex="\(\mathcal H_d(U/\mathcal Y)\)">\(\mathcal H_d(U/\mathcal Y)\)</span>. Their lci opens are algebraic too. Choose smooth scheme atlases for these opens, and take their union <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The map <span class="math" data-tex="\(P\to\mathcal Y\)">\(P\to\mathcal Y\)</span> is representable because <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> has representable diagonal. It is limit preserving on objects and formally smooth on objects: both properties compose, using the lifted identifying arrows in their definitions, and the atlases are smooth. For a representable morphism these two properties mean locally finite presentation and formal smoothness respectively. Test the definitions on <span class="math" data-tex="\(P\times_{\mathcal Y}T\)">\(P\times_{\mathcal Y}T\)</span>; its objects are actual morphisms to that algebraic space, so the limit and infinitesimal criteria apply. The infinitesimal criterion for a finitely presented morphism makes <span class="math" data-tex="\(P\to\mathcal Y\)">\(P\to\mathcal Y\)</span> smooth.</p>
+<p>The finite slices above cover every field object, allowing field extensions to lift to <span class="math" data-tex="\(P\)">\(P\)</span>. This is surjectivity for a representable morphism. Thus <span class="math" data-tex="\(P\to\mathcal Y\)">\(P\to\mathcal Y\)</span> is a smooth surjective scheme atlas. Lesson 5's recognition theorem proves the conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves [Stacks, Tag 06DC]. The uses of limits, formal smoothness and field-surjectivity are the precise notions of [Stacks, Tags 06CT, 06CZ and 06D4].</p>
+<p><strong>Theorem 6.6 (flat groupoids are algebraic).</strong> For any groupoid <span class="math" data-tex="\(R\rightrightarrows U\)">\(R\rightrightarrows U\)</span> in algebraic spaces over <span class="math" data-tex="\(S\)">\(S\)</span>, if both projections are flat and locally of finite presentation, then <span class="math" data-tex="\([U/R]\)">\([U/R]\)</span> is an algebraic stack.</p>
+<p><strong>Proof.</strong> Lesson 5's diagonal calculation represents the Isom sheaves of the quotient: they are locally the pullbacks of the endpoint map <span class="math" data-tex="\(R\to U\times_SU\)">\(R\to U\times_SU\)</span>, and the flat sheaf bootstrap descends them. In particular <span class="math" data-tex="\(U\to[U/R]\)">\(U\to[U/R]\)</span> is representable.</p>
+<p>On an fppf local chart <span class="math" data-tex="\(a:T\to U\)">\(a:T\to U\)</span> of a quotient object, its pullback is <span class="math" data-tex="\(R\times_{s,U,a}T\to T\)">\(R\times_{s,U,a}T\to T\)</span>. This is flat and locally of finite presentation by base change, and is surjective because the identity gives a section. These properties descend fppf locally. Theorem 6.5 therefore applies to <span class="math" data-tex="\(U\to[U/R]\)">\(U\to[U/R]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Stacks, Tags 06FG and 06FI]. This completes the flat-groupoid theorem used as a stated forward reference in <a href="../support/AG-AS--AG-AS-06.html">Quotient stacks and Deligne–Mumford stacks</a>, including examples such as <span class="math" data-tex="\(B\mu_p\)">\(B\mu_p\)</span>.</p>
+<p>For orientation, call a map of stacks <strong>algebraic</strong> when all its scheme-base fibres are algebraic stacks [Stacks, Tag 05XX]. If the target is algebraic, an algebraic map has algebraic source: pull back an atlas and then take an atlas of that fibre. A map from an algebraic stack to a stack with representable diagonal is algebraic for the same reason, using a source atlas. Finally an algebraic map with target having representable diagonal gives representable source diagonal: over each target Isom space, the source Isom fibre is the Isom space of the corresponding algebraic fibre stack. These atlas and Isom calculations prove the three permanence statements without changing the meaning of “representable”.</p>
+<h2 id="7-a-complete-example-and-a-failure-of-effectiveness">7. A complete example and a failure of effectiveness</h2>
+<h3 id="7-1-line-bundles-on-a-proper-flat-curve">7.1. Line bundles on a proper flat curve</h3>
+<p>Let <span class="math" data-tex="\(C\to S\)">\(C\to S\)</span> be proper, flat and of finite presentation, with fibres of dimension at most one. Let <span class="math" data-tex="\(S\)">\(S\)</span> be locally Noetherian with the G-ring condition of Theorem 4.2. Define
+<span class="math" data-tex="\(\mathcal{Pic}_{C/S}(T)\)">\(\mathcal{Pic}_{C/S}(T)\)</span>
+to be the groupoid of invertible sheaves on <span class="math" data-tex="\(C_T\)">\(C_T\)</span>, with all their isomorphisms. This is the Picard <strong>stack</strong>; we do not divide out line bundles pulled back from <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>We will use two precise scheme results. For a proper flat finitely presented scheme and a finitely presented sheaf flat over the base, its derived direct image is perfect and commutes with arbitrary base change [Stacks, Tag 0B91]. For a proper scheme over a complete Noetherian ring, completion gives an equivalence between coherent sheaves and compatible systems of coherent sheaves on its infinitesimal neighbourhoods [Stacks, Tag 088C; EGA III, Theorem 5.1.5]. The latter includes morphisms.</p>
+<p>For a line bundle <span class="math" data-tex="\(N\)">\(N\)</span> on <span class="math" data-tex="\(C_A\)">\(C_A\)</span>, the first result and the dimension bound give</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(C_A,N)\simeq[P^0\longrightarrow P^1]
+\tag{7.1}
+\]">\[
+R\Gamma(C_A,N)\simeq[P^0\longrightarrow P^1]
+\tag{7.1}
+\]</span>
+<p>with <span class="math" data-tex="\(P^i\)">\(P^i\)</span> finite projective <span class="math" data-tex="\(A\)">\(A\)</span>-modules. To justify the two-term range, its derived fibres have cohomology only in degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, by coherent cohomology on proper schemes of dimension at most one. A bounded finite-projective representative can then be shortened: cancel the split surjections at its highest excessive degrees and the split injections at its lowest excessive degrees. Fibrewise exactness and Nakayama make these cancellations valid on the base. On an affine base they give (7.1); the construction also shows the asserted Tor amplitude. Thus (7.1) computes base change to every <span class="math" data-tex="\(A\)">\(A\)</span>-algebra and tensoring with every <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p><strong>[−1].</strong> A finite affine cover of <span class="math" data-tex="\(C_k\)">\(C_k\)</span>, finite presentations of line bundles on that cover, and matrices describing their transitions give a uniform cardinal bound for their isomorphism classes and arrows as <span class="math" data-tex="\(k\)">\(k\)</span> ranges over finite type fields over <span class="math" data-tex="\(S\)">\(S\)</span>. The cardinal can be enlarged once to contain the affine base presentations and the field models. This supplies the site-size condition.</p>
+<p><strong>[0].</strong> Invertible sheaves and their isomorphisms have effective fpqc descent, by descent of quasi-coherent modules followed by the local rank-one condition. In particular this is an étale stack.</p>
+<p><strong>[1].</strong> A line bundle on <span class="math" data-tex="\(C_A\)">\(C_A\)</span>, with <span class="math" data-tex="\(A=\operatorname{colim}A_i\)">\(A=\operatorname{colim}A_i\)</span>, is of finite presentation. Finite affine covers, its local presentations and the finitely many transition maps descend to a stage. Their inverse identities and the rank-one condition hold after increasing the stage. The same finite-presentation argument descends isomorphisms and tests equality of isomorphisms. Thus the full groupoids preserve limits.</p>
+<p><strong>[2].</strong> Flatness of <span class="math" data-tex="\(C/S\)">\(C/S\)</span> makes the structure rings of its affine charts preserve the fibre product (1.1) under base change. Finite projective modules patch over that fibre product, as proved in Exercise 8.2 below. Apply this to the locally free rank-one modules on the charts. Full faithfulness patches their transition maps and checks the cocycle, so the patched sheaf is invertible. This proves (RS), and the same argument with arbitrary square-zero extensions proves (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>).</p>
+<p><strong>[3].</strong> The transition-function calculation gives</p>
+<span class="math math-display" data-tex="\[
+T_L\mathcal{Pic}_{C/S}=H^1(C_k,\mathcal O_{C_k}),\qquad
+\operatorname{Inf}_L\mathcal{Pic}_{C/S}
+=H^0(C_k,\mathcal O_{C_k}).
+\tag{7.2}
+\]">\[
+T_L\mathcal{Pic}_{C/S}=H^1(C_k,\mathcal O_{C_k}),\qquad
+\operatorname{Inf}_L\mathcal{Pic}_{C/S}
+=H^0(C_k,\mathcal O_{C_k}).
+\tag{7.2}
+\]</span>
+<p>Indeed, write a first-order change of transition units as
+<span class="math" data-tex="\(g_{ij}(1+\epsilon a_{ij})\)">\(g_{ij}(1+\epsilon a_{ij})\)</span>. The cocycle equation is the additive Čech cocycle equation for <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>; changing frames adds a coboundary. An automorphism reducing to the identity is <span class="math" data-tex="\(1+\epsilon a\)">\(1+\epsilon a\)</span> with a global section <span class="math" data-tex="\(a\)">\(a\)</span>. The spaces are finite dimensional by proper coherent cohomology.</p>
+<p><strong>[4].</strong> For a complete Noetherian local ring <span class="math" data-tex="\(R\)">\(R\)</span>, apply Grothendieck existence to <span class="math" data-tex="\(C_R\)">\(C_R\)</span> and a compatible system <span class="math" data-tex="\(L_n\)">\(L_n\)</span>. It gives a coherent <span class="math" data-tex="\(L\)">\(L\)</span>, including all compatible morphisms. It is invertible near the closed fibre: completing the local stalk along the base ideal gives a free module of rank one, and the local adic criterion, or faithful flatness of completion after localization at the point, gives local freeness there. The non-invertible locus is closed. Its image in <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span> is closed by properness and misses the closed point. A nonempty closed subset of a local spectrum contains that point, so the locus is empty. Thus <span class="math" data-tex="\(L\)">\(L\)</span> is invertible everywhere. Full faithfulness algebraizes isomorphisms and their inverses, proving (2.2).</p>
+<p><strong>[5] for the stack.</strong> For <span class="math" data-tex="\(L\in\mathcal{Pic}_{C/S}(A)\)">\(L\in\mathcal{Pic}_{C/S}(A)\)</span> and an <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, the same Čech calculation gives
+<span class="math math-display" data-tex="\[
+T_L(M)=H^1(C_A,p^*M),\qquad
+\operatorname{Inf}_L(M)=H^0(C_A,p^*M).
+\tag{7.3}
+\]">\[
+T_L(M)=H^1(C_A,p^*M),\qquad
+\operatorname{Inf}_L(M)=H^0(C_A,p^*M).
+\tag{7.3}
+\]</span>
+The obstruction to lifting <span class="math" data-tex="\(L\)">\(L\)</span> across <span class="math" data-tex="\(A&#x27;\to A\)">\(A&#x27;\to A\)</span> lies in <span class="math" data-tex="\(H^2(C_A,p^*I)\)">\(H^2(C_A,p^*I)\)</span>: lift local frames and transition units; their failure to satisfy the cocycle is a Čech 2-cocycle, and changing the transitions changes it by a coboundary. Its vanishing is precisely the ability to glue a lift. Formula (7.1) for <span class="math" data-tex="\(\mathcal O_C\)">\(\mathcal O_C\)</span> shows that this <span class="math" data-tex="\(H^2\)">\(H^2\)</span> is zero for every <span class="math" data-tex="\(I\)">\(I\)</span>. Thus zero obstruction modules give a functorial obstruction theory.</p>
+<p>Furthermore <span class="math" data-tex="\(H^1(C_A,p^*M)=\operatorname{coker}(P^0\otimes_AM\to P^1\otimes_AM)\)">\(H^1(C_A,p^*M)=\operatorname{coker}(P^0\otimes_AM\to P^1\otimes_AM)\)</span>. Finite projective modules commute with products under tensoring, and products of module sequences are exact. Hence <span class="math" data-tex="\(T_L\)">\(T_L\)</span> commutes with countable products, and the zero obstruction functor has the required injectivity. Theorem 5.3 proves openness.</p>
+<p><strong>[5] for the diagonal, and the second diagonal.</strong> For two line bundles <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>, put <span class="math" data-tex="\(N=L_1^\vee\otimes L_2\)">\(N=L_1^\vee\otimes L_2\)</span>. Their Hom functor is the affine scheme of vectors in <span class="math" data-tex="\(P^0\)">\(P^0\)</span> annihilated by the differential in (7.1). The universal vector gives a section of <span class="math" data-tex="\(N\)">\(N\)</span>. It is an isomorphism exactly where its zero locus in the proper curve has empty image in the parameter scheme. That condition is open, so <span class="math" data-tex="\(\operatorname{Isom}(L_1,L_2)\)">\(\operatorname{Isom}(L_1,L_2)\)</span> is a scheme locally of finite presentation over the base.</p>
+<p>Its diagonal is representable, hence the stack's second diagonal is representable. Openness of versality for these Isom schemes follows from the ordinary Artinian smoothness criterion and the open smooth locus, using étale scheme charts if necessary. This checks the other part of [5].</p>
+<p>All the axioms, including their arrow conditions, have now been verified. Theorem 4.2 proves that <span class="math" data-tex="\(\mathcal{Pic}_{C/S}\)">\(\mathcal{Pic}_{C/S}\)</span> is an algebraic stack. The proof did not replace this stack by its sheaf of isomorphism classes.</p>
+<h3 id="7-2-the-affine-line-loses-a-formal-automorphism">7.2. The affine line loses a formal automorphism</h3>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a complete discrete valuation ring with uniformizer <span class="math" data-tex="\(t\)">\(t\)</span>. On <span class="math" data-tex="\(\mathbf A^1_R\)">\(\mathbf A^1_R\)</span>, the trivial line bundle has automorphism group <span class="math" data-tex="\(R[x]^\times=R^\times\)">\(R[x]^\times=R^\times\)</span>: <span class="math" data-tex="\(R\)">\(R\)</span> is a domain, so a unit polynomial has degree zero.</p>
+<p>Over <span class="math" data-tex="\(R/t^n\)">\(R/t^n\)</span>, however, <span class="math" data-tex="\(1+tx\)">\(1+tx\)</span> is a unit, with inverse</p>
+<span class="math math-display" data-tex="\[
+(1+tx)^{-1}=\sum_{j=0}^{n-1}(-tx)^j.
+\tag{7.4}
+\]">\[
+(1+tx)^{-1}=\sum_{j=0}^{n-1}(-tx)^j.
+\tag{7.4}
+\]</span>
+<p>The units and their inverses form compatible systems. They give an automorphism of the formal trivial line bundle in
+<span class="math" data-tex="\(\lim_n\mathcal{Pic}_{\mathbf A^1/R}(R/t^n)\)">\(\lim_n\mathcal{Pic}_{\mathbf A^1/R}(R/t^n)\)</span>.
+The corresponding element <span class="math" data-tex="\(1+tx\)">\(1+tx\)</span> in
+<span class="math" data-tex="\(\lim_n(R/t^n)[x]\)">\(\lim_n(R/t^n)[x]\)</span>
+is not the image of a unit of <span class="math" data-tex="\(R[x]\)">\(R[x]\)</span>, since that image would be constant. Thus completion is not full on automorphisms, even though the formal object under discussion is already the completion of a trivial line bundle. Axiom [4] fails. This is exactly the groupoid distinction needed in (2.2).</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 8.1 (medium: limits of algebraic stacks).</strong> Show that an algebraic stack locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span> is limit preserving. Do not assume quasi-compactness or quasi-separatedness.</p>
+<p><strong>Solution.</strong> Choose a smooth atlas <span class="math" data-tex="\(U\to\mathcal X\)">\(U\to\mathcal X\)</span> with <span class="math" data-tex="\(U\)">\(U\)</span> locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>. Then <span class="math" data-tex="\(R=U\times_{\mathcal X}U\)">\(R=U\times_{\mathcal X}U\)</span> is smooth over <span class="math" data-tex="\(U\)">\(U\)</span>, hence locally of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>. The morphism <span class="math" data-tex="\(R\to U\times_SU\)">\(R\to U\times_SU\)</span> is locally of finite presentation by the finite-presentation permanence rule on charts. Descent along the atlas therefore shows that the diagonal of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> is locally of finite presentation.</p>
+<p>For descended objects over <span class="math" data-tex="\(T_i\)">\(T_i\)</span>, their Isom space is locally of finite presentation over <span class="math" data-tex="\(T_i\)">\(T_i\)</span>; its affine limit criterion gives descent and eventual equality of all arrows. This proves full faithfulness in (2.1).</p>
+<p>For essential surjectivity, pull the atlas back to an object over an affine <span class="math" data-tex="\(T\)">\(T\)</span>. Choose an étale scheme chart of that smooth algebraic-space cover and finitely many affine opens whose images cover <span class="math" data-tex="\(T\)">\(T\)</span>. Their disjoint union <span class="math" data-tex="\(V\to T\)">\(V\to T\)</span> is a smooth surjection of finite presentation, with a map to <span class="math" data-tex="\(U\)">\(U\)</span> and descent arrows in <span class="math" data-tex="\(R\)">\(R\)</span>. The affine schemes <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(V\times_TV\)">\(V\times_TV\)</span> and its triple product are of finite presentation over <span class="math" data-tex="\(T\)">\(T\)</span>. Their finite equations descend to a sufficiently late <span class="math" data-tex="\(T_i\)">\(T_i\)</span>, as do their maps to the locally finitely presented spaces <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span>. The finitely many identity and cocycle equalities descend after a further increase. Smoothness and surjectivity of the covering descend too. Effective fppf descent in the already algebraic stack produces the object over that <span class="math" data-tex="\(T_i\)">\(T_i\)</span>. Its pullback is the original object. Only a finite portion of the atlas was used for this affine test, so no global compactness assumption was introduced.</p>
+<p><strong>Exercise 8.2 (medium: module patching).</strong> Verify (RS) for finite locally free modules, including the arrows.</p>
+<p><strong>Solution.</strong> For (1.1), the ring <span class="math" data-tex="\(P\)">\(P\)</span> is local, with residue field that of <span class="math" data-tex="\(A_1\)">\(A_1\)</span>. A patched pair of finite free modules must have equal rank, since their restrictions to <span class="math" data-tex="\(A\)">\(A\)</span> are isomorphic. Choose bases. The gluing isomorphism is an invertible matrix <span class="math" data-tex="\(g\)">\(g\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. Lift its entries to <span class="math" data-tex="\(A_2\)">\(A_2\)</span>; its determinant lifts a unit because <span class="math" data-tex="\(\ker(A_2\to A)\)">\(\ker(A_2\to A)\)</span> is nilpotent, so the lifted matrix is invertible. Change the second basis by that matrix. The gluing is now the identity, and the pair is the restriction of <span class="math" data-tex="\(P^r\)">\(P^r\)</span>.</p>
+<p>An arrow between two such pairs is a pair of matrices over <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span> which agree over <span class="math" data-tex="\(A\)">\(A\)</span>. Entrywise it is a unique matrix over <span class="math" data-tex="\(P\)">\(P\)</span>. If the arrow is an isomorphism, its compatible inverse matrices patch as well. This proves full faithfulness and essential surjectivity. Markings at the residue field are preserved by doing the same construction with their specified identifications.</p>
+<p>The general finite-projective version, used for (RS<span class="math" data-tex="\(^*\)">\(^*\)</span>) in Section 7, is obtained by adding complements. Write the module over <span class="math" data-tex="\(A_1\)">\(A_1\)</span> as the image of an idempotent in <span class="math" data-tex="\(A_1^n\)">\(A_1^n\)</span>. Lift its restriction to an idempotent in <span class="math" data-tex="\(A_2^n\)">\(A_2^n\)</span>. Its image is isomorphic to the given second module with its specified reduction: maps between finite projectives lift across the nilpotent ideal, and maps inverse modulo that ideal are inverse after multiplying by an invertible correction. Add the two complementary summands. The enlarged pair is free on both sides, and its gluing matrix lifts as above. Its two projection idempotents, now equal over <span class="math" data-tex="\(A\)">\(A\)</span>, patch to an idempotent over <span class="math" data-tex="\(P\)">\(P\)</span>. Its image is the desired finite projective module. Equivalently that image is the fibre product of the original two modules. Maps patch entrywise in the free ambient modules and respect the idempotents. This proves the finite-projective Milnor patching lemma for arbitrary <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and a square-zero surjection <span class="math" data-tex="\(A_2\to A\)">\(A_2\to A\)</span>, including all arrows.</p>
+<p><strong>Exercise 8.3 (medium: vector-bundle tangents).</strong> For a vector bundle <span class="math" data-tex="\(E\)">\(E\)</span> on a proper curve <span class="math" data-tex="\(C/k\)">\(C/k\)</span>, prove
+<span class="math math-display" data-tex="\[
+T_E\mathcal{Bun}_C=\operatorname{Ext}^1_C(E,E)
+=H^1(C,\mathcal E nd(E)).
+\tag{8.1}
+\]">\[
+T_E\mathcal{Bun}_C=\operatorname{Ext}^1_C(E,E)
+=H^1(C,\mathcal E nd(E)).
+\tag{8.1}
+\]</span></p>
+<p><strong>Solution.</strong> On a finite affine trivializing cover, write its matrices as <span class="math" data-tex="\(g_{ij}\)">\(g_{ij}\)</span>. A first-order change has the form <span class="math" data-tex="\(g_{ij}+\epsilon h_{ij}\)">\(g_{ij}+\epsilon h_{ij}\)</span>. Linearizing the cocycle and the frame changes identifies its class with an additive Čech 1-cocycle in <span class="math" data-tex="\(\mathcal E nd(E)\)">\(\mathcal E nd(E)\)</span>, modulo coboundaries. Since <span class="math" data-tex="\(C\)">\(C\)</span> is separated, affine intersections compute the cohomology of this quasi-coherent sheaf. This gives the last term of (8.1), and addition is exactly the split-extension addition of Section 1.</p>
+<p>There is also an intrinsic description. A first-order bundle <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> gives the extension
+<span class="math math-display" data-tex="\[
+0\to E\xrightarrow{\epsilon}E&#x27;\to E\to0
+\]">\[
+0\to E\xrightarrow{\epsilon}E&#x27;\to E\to0
+\]</span>
+as an <span class="math" data-tex="\(\mathcal O_C\)">\(\mathcal O_C\)</span>-module; flatness over <span class="math" data-tex="\(k[\epsilon]\)">\(k[\epsilon]\)</span> identifies the kernel with <span class="math" data-tex="\(E\)">\(E\)</span>. Conversely, an extension gives the middle term an <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>-action by the composite of its quotient to <span class="math" data-tex="\(E\)">\(E\)</span> and its inclusion of <span class="math" data-tex="\(E\)">\(E\)</span>. Locally the extension splits because <span class="math" data-tex="\(E\)">\(E\)</span> is locally free, and the resulting module is a free deformation over <span class="math" data-tex="\(\mathcal O_C[\epsilon]\)">\(\mathcal O_C[\epsilon]\)</span>. Thus extensions and marked first-order bundles are equivalent on isomorphism classes. Their Baer addition matches the cocycle addition. Finally <span class="math" data-tex="\(\mathcal H om(E,-)\)">\(\mathcal H om(E,-)\)</span> is exact locally, so global derived Hom from <span class="math" data-tex="\(E\)">\(E\)</span> is cohomology of <span class="math" data-tex="\(E^\vee\otimes-\)">\(E^\vee\otimes-\)</span>. This identifies <span class="math" data-tex="\(\operatorname{Ext}^1(E,E)\)">\(\operatorname{Ext}^1(E,E)\)</span> with <span class="math" data-tex="\(H^1(\mathcal E nd(E))\)">\(H^1(\mathcal E nd(E))\)</span>. Infinitesimal automorphisms, for comparison, are <span class="math" data-tex="\(H^0(\mathcal E nd(E))\)">\(H^0(\mathcal E nd(E))\)</span>.</p>
+<p><strong>Exercise 8.4 (hard: the formal Picard groupoid).</strong> For a smooth proper curve <span class="math" data-tex="\(C/k\)">\(C/k\)</span>, verify [3] and [4] for its line-bundle stack.</p>
+<p><strong>Solution.</strong> Formula (7.2) gives the tangent and infinitesimal automorphism spaces at any line bundle after every finite field extension. Proper coherent cohomology makes <span class="math" data-tex="\(H^0\)">\(H^0\)</span> and <span class="math" data-tex="\(H^1\)">\(H^1\)</span> finite dimensional, proving [3]. No assumption that automorphisms vanish is made.</p>
+<p>Given a complete Noetherian local <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(R\)">\(R\)</span>, Grothendieck existence on the proper scheme <span class="math" data-tex="\(C_R\)">\(C_R\)</span> algebraizes every compatible system of line bundles to a coherent sheaf. The completed local modules along the closed fibre are free of rank one, so the sheaf is invertible near that fibre. Its closed non-invertible locus has proper closed image in <span class="math" data-tex="\(\operatorname{Spec}R\)">\(\operatorname{Spec}R\)</span>; such an image cannot be nonempty while missing the closed point. The sheaf is therefore a line bundle on all of <span class="math" data-tex="\(C_R\)">\(C_R\)</span>. Full faithfulness of existence algebraizes every compatible isomorphism. Applying it also to the inverse and using faithfulness proves that the algebraized map is an isomorphism. Consequently completion is an equivalence of groupoids, not merely a surjection on objects. This proves [4], and explains precisely where properness excludes the phenomenon in (7.4).</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>All four acceptance results—Artin's space and stack criteria, openness from naive obstruction theories, and algebraicity of flat groupoid quotients—have been proved above. The product-compatible obstruction criterion and the stronger-effectiveness criterion have also been proved. The imported inputs are:</p>
+<ul>
+<li>Schlessinger's existence theorem for a versal formal object in a predeformation category satisfying (S1), (S2), and finite-dimensional tangent space [Stacks, Tag 06IW], and its field-change, linearity and small-extension tests. These are the assigned formal-deformation prerequisites. The cotangent obstruction to lifting a ring map, the regular-immersion conormal calculation and square-zero flatness criterion are the assigned deformation prerequisites; the space versions are obtained on étale charts [Stacks, Tags 06CB, 06CC and 06BH].</li>
+<li>Popescu's desingularization and Artin approximation as stated in Section 2.3 [Stacks, Tags 07GC, 07QY and 07QZ]. We also import permanence of G-rings under essentially finite type extensions [Stacks, Tag 07PV], and the exact finite-complex Artin–Rees perturbation statements [Stacks, Tags 07VE and 07VF].</li>
+<li>The ordinary-scheme Artinian smoothness test [Stacks, Tag 02HX], étale lifting over henselian local rings, finite presentation descent along affine limits, scheme Zariski main and idempotent lifting from the earlier lessons. The openness criteria for unramified and lci families with flat finitely presented source and target, and the Cohen–Macaulay slicing inputs, have their precise space or scheme formulations in [Stacks, Tags 05X8, 06CE, 045U and 0570].</li>
+<li>The Noetherian topological statements in Section 5.1 [Stacks, Tags 0G2F and 0G2R]; coherent cohomology finiteness and the dimension bound; perfect direct image with arbitrary base change [Stacks, Tag 0B91]; and Grothendieck existence for proper schemes [Stacks, Tag 088C; the proper-support extension is Tag 088E]. Existence is used with all its morphisms. Its conversion from coherent sheaves to invertible sheaves was proved in Section 7.</li>
+</ul>
+<p>The general pushout theorem for algebraic stacks along arbitrary affine thickenings [Stacks, Tag 07WM] is mentioned as a stronger statement. The Artinian assertion needed here was proved in Lemma 1.2. The general theorem's flat-space patching input is not developed in this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project, <em>Artin's Axioms</em>: Tags 07T0, 07T2, 07WM, 06L9, 07WT, 07WW, 07WY, 07X3, 07XA, 07XK, 07XD, 07XP, 07XJ, 07XZ, 07Y0, 07Y1, 07Y3, 07Y4, 07Y5, 0CXN, 0CXR, 07Y6, 07YF, 07YG, 0CYF, 07YJ, 07YP, 07YT and 07YU. Read the chapter in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/artin.html">AI Integrated Stacks Project, Artin's Axioms</a>.</li>
+<li><strong>[Stacks]</strong> <em>Criteria for Representability</em>: Tags 05XF, 05XH, 06CT, 06CZ, 06D4, 05XX, 06DB, 06DC, 06FG and 06FI, and the finite Hilbert and restriction-of-scalars constructions used in Section 6. See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/criteria.html">AI Integrated Stacks Project, Criteria for Representability</a>.</li>
+<li><strong>[Stacks]</strong> <em>Smoothing Ring Maps</em>, Tags 07GC, 07QY and 07QZ; <em>More on Algebra</em>, Tags 07PV, 07VE and 07VF; <em>Formal Deformation Theory</em>, Tag 06IW; and the scheme-theory inputs listed above. See <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/smoothing.html">AI Integrated Stacks Project, Smoothing Ring Maps</a>. AI Integrated Stacks Project retains the upstream tags; its additions and corrections are not reviewed by the Stacks project's maintainers.</li>
+<li><strong>[EGA]</strong> A. Grothendieck, with J. Dieudonné, <em>Éléments de géométrie algébrique III</em>, Theorem 5.1.5, for the existence theorem invoked through its proper-scheme form in [Stacks, Tag 088C].</li>
+</ul>
+</article></main></body></html>

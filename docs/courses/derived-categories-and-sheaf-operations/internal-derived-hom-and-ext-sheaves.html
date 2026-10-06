@@ -1,0 +1,388 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hom complexes, internal derived Hom and Ext sheaves</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Derived categories of sheaves</a></nav><h1 id="hom-complexes-internal-derived-hom-and-ext-sheaves">Hom complexes, internal derived Hom and Ext sheaves</h1>
+<p><em>Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the <a href="licence.html">course notice</a>.</em></p>
+<p>The tensor product combines two inputs, whereas internal Hom records maps from one input to another as an object on the space. Derived internal Hom must detect extensions as well as ordinary maps. Its degree-zero global cohomology recovers maps in the derived category; its other cohomology sheaves record local extensions. These statements involve derived sections, which cannot generally be replaced by ordinary sections of a cohomology sheaf.</p>
+<p>The prerequisites are <a href="derived-pullback-and-pushforward.html">Derived pullback and pushforward</a>, Proposition 3.2 and Theorem 4.1, for restriction and local cohomology; <a href="derived-tensor-products-and-tor-sheaves.html">The derived tensor product and Tor sheaves</a>, Lemma 1.1, Lemma 2.1 and Theorem 2.2, for K-flat models and their localization; and <a href="k-injective-resolutions-in-grothendieck-categories.html">K-injective resolutions in Grothendieck categories</a>, Theorems 4.1 and 5.1. We also use maps into K-injectives and their cone closure from Theorem 3.3 and Lemma 3.1 of <a href="injective-modules-and-bounded-below-derived-functors.html">Injective modules and bounded-below derived functors</a>. The common reading's Theorems 3.1 and 4.2 supply cone triangles and roof cancellation.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathcal O=\mathcal O_X\)">\(\mathcal O=\mathcal O_X\)</span> is a sheaf of commutative unital rings on an arbitrary topological space. Complexes are cohomologically indexed and may be unbounded in both directions. Tensor totalization uses sums, Hom totalization uses products, and a cone triangle ends in the negative projection. Write <span class="math" data-tex="\(\mathsf H(A,B)\)">\(\mathsf H(A,B)\)</span> for the sheaf Hom complex, reserving <span class="math" data-tex="\(\operatorname{Hom}\)">\(\operatorname{Hom}\)</span> for a group of maps.</p>
+<p>The construction follows the Stacks project authors’ <em>Cohomology of Sheaves</em>, “Hom complexes”, “Internal hom”, “Ext sheaves” and “Global derived hom”, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex">AI Integrated Stacks Project edition</a>. Composition is natural in its outer variables and dinatural in the repeated middle variable; Section 4 proves the precise identities. Source attribution and the licence for adapted passages appear in the <a href="licence.html">course notice</a>.</p>
+<h2 id="1-the-sheaf-hom-complex">1. The sheaf Hom complex</h2>
+<p>For two module sheaves define the internal Hom by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal Hom(A,B)(U)\\
+=\operatorname{Hom}_{\mathcal O_U}(A|_U,B|_U).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\mathcal Hom(A,B)(U)\\
+=\operatorname{Hom}_{\mathcal O_U}(A|_U,B|_U).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Restriction means restricting a map. Compatible maps on an open cover glue: for each local section of <span class="math" data-tex="\(A\)">\(A\)</span>, their images agree and glue in <span class="math" data-tex="\(B\)">\(B\)</span>. The glued assignment respects restriction, addition and scalar multiplication because these properties can be checked on the cover. This proves the sheaf condition. Commutativity gives it its <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-module action by multiplying the output.</p>
+<p>For complexes set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathsf H^n(A,B)&amp;=\prod_i\mathcal Hom(A^i,B^{i+n}),\\
+(d\phi)^i&amp;=d_B\phi^i\\
+&amp;\quad-(-1)^n\phi^{i+1}d_A.
+\end{aligned}
+\tag{1.2}
+\]">\[
+\begin{aligned}
+\mathsf H^n(A,B)&amp;=\prod_i\mathcal Hom(A^i,B^{i+n}),\\
+(d\phi)^i&amp;=d_B\phi^i\\
+&amp;\quad-(-1)^n\phi^{i+1}d_A.
+\end{aligned}
+\tag{1.2}
+\]</span>
+<p>The product is the sheaf product; on every open it is the product of the section groups. Applying the differential twice leaves two mixed terms with coefficients <span class="math" data-tex="\(-(-1)^n\)">\(-(-1)^n\)</span> and <span class="math" data-tex="\(-(-1)^{n+1}\)">\(-(-1)^{n+1}\)</span>, which cancel. The remaining terms contain <span class="math" data-tex="\(d_B^2\)">\(d_B^2\)</span> or <span class="math" data-tex="\(d_A^2\)">\(d_A^2\)</span>. Thus this is a complex. A degree-zero cycle is a chain map, and a degree-zero boundary is a null-homotopic map. With the usual shifted differential this proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^n\Gamma(U,\mathsf H(A,B))\\
+=\operatorname{Hom}_{K(\mathcal O_U)}(A|_U,B|_U[n]).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+H^n\Gamma(U,\mathsf H(A,B))\\
+=\operatorname{Hom}_{K(\mathcal O_U)}(A|_U,B|_U[n]).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>Restriction to an open commutes with (1.1) and (1.2): their values on each smaller open are identical. This observation concerns restriction, not passage to a stalk. An infinite product need not commute with stalks, and a germ of a module map need not be an arbitrary map of stalk modules.</p>
+<p><strong>Lemma 1.1 (chain identities).</strong> Hom complexes respect homotopies. There is a natural currying isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathsf H(K,\mathsf H(L,M))\\
+\cong\mathsf H(K\otimes L,M).
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+\mathsf H(K,\mathsf H(L,M))\\
+\cong\mathsf H(K\otimes L,M).
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>Evaluation and composition are chain maps, given on homogeneous elements by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\phi\otimes l&amp;\longmapsto\phi(l),\\
+\phi\otimes\psi&amp;\longmapsto\phi\psi.
+\end{aligned}
+\tag{1.5}
+\]">\[
+\begin{aligned}
+\phi\otimes l&amp;\longmapsto\phi(l),\\
+\phi\otimes\psi&amp;\longmapsto\phi\psi.
+\end{aligned}
+\tag{1.5}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(h:B\to B&#x27;[-1]\)">\(h:B\to B&#x27;[-1]\)</span> is a homotopy between two target maps, the induced Hom homotopy is <span class="math" data-tex="\(\phi\mapsto h\phi\)">\(\phi\mapsto h\phi\)</span>. If <span class="math" data-tex="\(h:A&#x27;\to A[-1]\)">\(h:A&#x27;\to A[-1]\)</span> is a homotopy between two source maps, it is <span class="math" data-tex="\(\phi\mapsto(-1)^n\phi h\)">\(\phi\mapsto(-1)^n\phi h\)</span> on degree <span class="math" data-tex="\(n\)">\(n\)</span>. Substitution into (1.2) gives respectively postcomposition and precomposition with <span class="math" data-tex="\(dh+hd\)">\(dh+hd\)</span>; the mixed terms cancel. Hence both variables descend to homotopy categories.</p>
+<p>Currying sends <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to the map <span class="math" data-tex="\(k\otimes l\mapsto\phi(k)(l)\)">\(k\otimes l\mapsto\phi(k)(l)\)</span>, with no additional sign. The tensor relation is exactly the linearity in each variable. In degree <span class="math" data-tex="\(n\)">\(n\)</span>, both sides are the product over pairs of degrees <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> of
+<span class="math" data-tex="\(\mathcal Hom(K^i\otimes L^j,M^{i+j+n})\)">\(\mathcal Hom(K^i\otimes L^j,M^{i+j+n})\)</span>. This uses the universal property that Hom out of a sum is a product, followed by reindexing a product. It uses no exactness assertion about products. For homogeneous <span class="math" data-tex="\(k\)">\(k\)</span>, their common differential evaluated at <span class="math" data-tex="\(k,l\)">\(k,l\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d_M\phi(k)(l)&amp;-(-1)^n\phi(d_Kk)(l)\\
+&amp;-(-1)^{n+|k|}\phi(k)(d_Ll).
+\end{aligned}
+\]">\[
+\begin{aligned}
+d_M\phi(k)(l)&amp;-(-1)^n\phi(d_Kk)(l)\\
+&amp;-(-1)^{n+|k|}\phi(k)(d_Ll).
+\end{aligned}
+\]</span>
+<p>Finally <span class="math" data-tex="\(d(\phi(l))=(d\phi)(l)+(-1)^{|\phi|}\phi(dl)\)">\(d(\phi(l))=(d\phi)(l)+(-1)^{|\phi|}\phi(dl)\)</span> and
+<span class="math" data-tex="\(d(\phi\psi)=(d\phi)\psi+(-1)^{|\phi|}\phi(d\psi)\)">\(d(\phi\psi)=(d\phi)\psi+(-1)^{|\phi|}\phi(d\psi)\)</span>. These are precisely the tensor differentials, proving (1.5). All constructions are sectionwise and therefore commute with restriction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also need the cone signs. For <span class="math" data-tex="\(g:B\to B&#x27;\)">\(g:B\to B&#x27;\)</span>, the two finite blocks give
+<span class="math" data-tex="\(\mathsf H(A,C(g))=C(\mathsf H(A,g))\)">\(\mathsf H(A,C(g))=C(\mathsf H(A,g))\)</span>; the identity identification preserves the differential and negative projection. For <span class="math" data-tex="\(f:K\to L\)">\(f:K\to L\)</span>, put <span class="math" data-tex="\(h=\mathsf H(f,I)\)">\(h=\mathsf H(f,I)\)</span>. In degree <span class="math" data-tex="\(n\)">\(n\)</span>, an element of <span class="math" data-tex="\(\mathsf H(C(f),I)\)">\(\mathsf H(C(f),I)\)</span> is a pair <span class="math" data-tex="\((b,a)\)">\((b,a)\)</span>, where <span class="math" data-tex="\(b\)">\(b\)</span> has Hom degree <span class="math" data-tex="\(n\)">\(n\)</span> on <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> has degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. The isomorphism to <span class="math" data-tex="\(C(h)[-1]\)">\(C(h)[-1]\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(b,a)\longmapsto\bigl((-1)^{n+1}a,b\bigr).
+\tag{1.6}
+\]">\[
+(b,a)\longmapsto\bigl((-1)^{n+1}a,b\bigr).
+\tag{1.6}
+\]</span>
+<p>Indeed the source differential is <span class="math" data-tex="\((db,da-(-1)^nbf)\)">\((db,da-(-1)^nbf)\)</span>, and the shifted cone differential on <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is <span class="math" data-tex="\((-dx-hy,dy)\)">\((-dx-hy,dy)\)</span>. Formula (1.6) intertwines them. The source-shift identification
+<span class="math" data-tex="\(\mathsf H(K[1],I)\cong\mathsf H(K,I)[-1]\)">\(\mathsf H(K[1],I)\cong\mathsf H(K,I)[-1]\)</span> multiplies degree <span class="math" data-tex="\(n\)">\(n\)</span> by <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. Together these formulas turn a source cone triangle into the reversed distinguished Hom triangle, with its connecting map determined by the negative original projection. This verifies exactness in the contravariant variable, including its shift sign.</p>
+<h2 id="2-constructing-internal-derived-hom">2. Constructing internal derived Hom</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be K-injective. A quasi-isomorphism <span class="math" data-tex="\(s:A\to B\)">\(s:A\to B\)</span> induces a quasi-isomorphism
+<span class="math" data-tex="\(\mathsf H(B,I)\to\mathsf H(A,I)\)">\(\mathsf H(B,I)\to\mathsf H(A,I)\)</span>.</p>
+<p><strong>Proof.</strong> On every open <span class="math" data-tex="\(U\)">\(U\)</span>, the restriction of <span class="math" data-tex="\(I\)">\(I\)</span> is K-injective, by the preceding lesson's Proposition 3.2. Maps into it are unchanged by localization. Thus precomposition by <span class="math" data-tex="\(s|_U\)">\(s|_U\)</span> is a bijection on
+<span class="math" data-tex="\(\operatorname{Hom}_{K(\mathcal O_U)}(-,I|_U[n])\)">\(\operatorname{Hom}_{K(\mathcal O_U)}(-,I|_U[n])\)</span> for every integer <span class="math" data-tex="\(n\)">\(n\)</span>. Formula (1.3) gives a quasi-isomorphism of the section Hom complexes on every open. The cohomology sheaf is the sheafification of section-complex cohomology, as proved in that proposition; sheafifying these isomorphisms proves the claim. Applying the argument to every shift is essential: degree zero alone would not prove a quasi-isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> For any <span class="math" data-tex="\(L,M\)">\(L,M\)</span>, choose a K-injective resolution <span class="math" data-tex="\(M\to I\)">\(M\to I\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+{}[L,M]&amp;:=R\mathcal Hom(L,M)\\
+&amp;=\mathsf H(L,I).
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+{}[L,M]&amp;:=R\mathcal Hom(L,M)\\
+&amp;=\mathsf H(L,I).
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>defines an object of <span class="math" data-tex="\(D(\mathcal O)\)">\(D(\mathcal O)\)</span> and a canonical bifunctor, contravariant in <span class="math" data-tex="\(L\)">\(L\)</span>, covariant in <span class="math" data-tex="\(M\)">\(M\)</span>, exact in each variable. It commutes with restriction to opens.</p>
+<p><strong>Proof.</strong> Resolutions exist for every unbounded complex by the earlier K-injective theorem. The map from <span class="math" data-tex="\(M\)">\(M\)</span> to another resolution determines a unique homotopy class <span class="math" data-tex="\(I\to I&#x27;\)">\(I\to I&#x27;\)</span> under the maps from <span class="math" data-tex="\(M\)">\(M\)</span>: maps into a K-injective are the same in the homotopy and derived categories. Such a comparison is a quasi-isomorphism between K-injectives, hence a homotopy equivalence. Lemma 1.1 carries its two homotopy inverses to inverse Hom maps. Comparisons are unique in the homotopy category, so their composites obey the required identity and cocycle laws.</p>
+<p>In the source variable Lemma 2.1 inverts every quasi-isomorphism. A roof acts by its numerator and the inverse of its denominator; common refinements give the same action because Hom respects homotopies. In the target variable represent a derived map by the unique homotopy class between K-injective models. Composition of these classes, and commutation with source precomposition, prove bifunctoriality and natural independence of resolutions.</p>
+<p>Source cone triangles give reversed Hom triangles by (1.6). A target map between K-injectives has K-injective cone by the earlier cone-closure lemma, so it supplies a model for the entire target triangle. The target cone identity proves exactness there. Shift identifications are those checked after (1.6). Finally restricting <span class="math" data-tex="\(M\to I\)">\(M\to I\)</span> gives a K-injective resolution on each open, and the sectionwise identity for Hom gives the asserted restriction isomorphism, natural in all roofs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.3.</strong> If <span class="math" data-tex="\(P\)">\(P\)</span> is K-flat and <span class="math" data-tex="\(I\)">\(I\)</span> K-injective, then <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> is K-injective.</p>
+<p><strong>Proof.</strong> For an acyclic complex <span class="math" data-tex="\(A\)">\(A\)</span>, Lemma 1.1 and degree-zero homotopy classes give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_K(A,\mathsf H(P,I))
+=\operatorname{Hom}_K(A\otimes P,I)=0.
+\]">\[
+\operatorname{Hom}_K(A,\mathsf H(P,I))
+=\operatorname{Hom}_K(A\otimes P,I)=0.
+\]</span>
+<p>The tensor is acyclic by K-flatness, and the last group vanishes by K-injectivity. This is the defining test for K-injectivity. No injectivity of the individual terms of <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> is required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-adjunction-local-maps-and-ext">3. Adjunction, local maps and Ext</h2>
+<p><strong>Theorem 3.1.</strong> There are natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{}[K,[L,M]]\cong[K\otimes^{\mathbf L}L,M],\\
+\operatorname{Hom}_D(K,[L,M])\\
+\cong\operatorname{Hom}_D(K\otimes^{\mathbf L}L,M).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+{}[K,[L,M]]\cong[K\otimes^{\mathbf L}L,M],\\
+\operatorname{Hom}_D(K,[L,M])\\
+\cong\operatorname{Hom}_D(K\otimes^{\mathbf L}L,M).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>For every open <span class="math" data-tex="\(U\)">\(U\)</span> and integer <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H^n(U,[L,M])\\
+\cong\operatorname{Hom}_{D(\mathcal O_U)}(L|_U,M|_U[n]).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+H^n(U,[L,M])\\
+\cong\operatorname{Hom}_{D(\mathcal O_U)}(L|_U,M|_U[n]).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> Resolve <span class="math" data-tex="\(L\)">\(L\)</span> by a K-flat <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> by a K-injective <span class="math" data-tex="\(I\)">\(I\)</span>. Lemma 2.1 permits the model <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> for <span class="math" data-tex="\([L,M]\)">\([L,M]\)</span>; Lemma 2.3 makes this model K-injective. Therefore (1.4) is an actual complex isomorphism computing both sides of the first line of (3.1). The complex <span class="math" data-tex="\(K\otimes P\)">\(K\otimes P\)</span> computes the derived tensor even when <span class="math" data-tex="\(K\)">\(K\)</span> is not K-flat, by Lemma 1.1 of the tensor lesson. Taking homotopy classes and using maps into K-injectives gives the second line.</p>
+<p>Naturality holds first for chain maps by currying. For source maps represented by roofs, Lemma 2.1 inverts the source denominators, and tensor invariance inverts the denominators on the other side. Comparison maps between K-flat models can be represented in their localized homotopy category, by the tensor lesson's Lemma 2.1. Target comparisons are homotopy classes between K-injectives. Thus the same commuting chain squares and their inverse denominator squares prove naturality for every derived morphism, not only actual chain maps on fixed resolutions.</p>
+<p>For (3.2), restrict these models to <span class="math" data-tex="\(U\)">\(U\)</span>. Restriction preserves K-flatness and K-injectivity. The K-injective model <span class="math" data-tex="\(\mathsf H(P,I)|_U\)">\(\mathsf H(P,I)|_U\)</span> computes derived sections, so (1.3) identifies its cohomology with the stated group of derived maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the Ext sheaves and global derived Hom by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal Ext^n(L,M)=\mathcal H^n([L,M]),\\
+R\operatorname{Hom}_X(L,M)\\
+=R\Gamma(X,[L,M]).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\mathcal Ext^n(L,M)=\mathcal H^n([L,M]),\\
+R\operatorname{Hom}_X(L,M)\\
+=R\Gamma(X,[L,M]).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>The global object is a complex over <span class="math" data-tex="\(\Gamma(X,\mathcal O)\)">\(\Gamma(X,\mathcal O)\)</span>. Its underlying abelian cohomology can equally be computed by the preceding lesson's coefficient comparison. Formula (3.2) identifies its <span class="math" data-tex="\(n\)">\(n\)</span>-th cohomology with <span class="math" data-tex="\(\operatorname{Hom}_D(L,M[n])\)">\(\operatorname{Hom}_D(L,M[n])\)</span>.</p>
+<p>In particular, a derived morphism is represented locally by a degree-zero cycle in a Hom complex into a K-injective target, modulo its degree-zero boundaries. Composition in Proposition 4.1 below induces the usual composition of these classes. For a triangle in either input, Theorem 2.2 gives a triangle of internal Hom objects, and derived sections give the resulting long exact sequence of groups of maps. The source-variable connecting map includes the shift sign in (1.6); the target-variable map includes the negative cone projection. Thus the local extension groups and their boundary operations come from the same proved triangle conventions as the global ones. No choice of an unrelated connecting-homomorphism sign is needed.</p>
+<p>The Ext sheaf is the sheafification of the presheaf sending <span class="math" data-tex="\(U\)">\(U\)</span> to the right side of (3.2). To see this directly, use the model <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span>; sheafifying its section-complex cohomology gives its cohomology sheaf. This does not identify ordinary sections of <span class="math" data-tex="\(\mathcal Ext^n\)">\(\mathcal Ext^n\)</span> with that derived-map group on an arbitrary open. Sheafification may change sections.</p>
+<p>There is also a convenient formula with an arbitrary representative <span class="math" data-tex="\(L\)">\(L\)</span>: the complex <span class="math" data-tex="\(\Gamma(X,\mathsf H(L,I))\)">\(\Gamma(X,\mathsf H(L,I))\)</span> computes global derived Hom. Although <span class="math" data-tex="\(\mathsf H(L,I)\)">\(\mathsf H(L,I)\)</span> need not be K-injective, its comparison to <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> is a quasi-isomorphism on sections by (1.3) and the K-injective map test. The latter is a K-injective sheaf complex, so its sections compute the derived sections. For module sheaves <span class="math" data-tex="\(F,G\)">\(F,G\)</span> in degree zero choose a bounded-below injective resolution <span class="math" data-tex="\(G\to I^{\geq0}\)">\(G\to I^{\geq0}\)</span>. Its Hom complex from <span class="math" data-tex="\(F\)">\(F\)</span> has no negative degrees and degree-zero kernel <span class="math" data-tex="\(\mathcal Hom(F,G)\)">\(\mathcal Hom(F,G)\)</span>. Hence
+<span class="math" data-tex="\(\mathcal Ext^n(F,G)=0\)">\(\mathcal Ext^n(F,G)=0\)</span> for <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>, and <span class="math" data-tex="\(\mathcal Ext^0(F,G)=\mathcal Hom(F,G)\)">\(\mathcal Ext^0(F,G)=\mathcal Hom(F,G)\)</span>.</p>
+<h3 id="internal-hom-into-a-skyscraper">Internal Hom into a skyscraper</h3>
+<p><strong>Proposition 3.2.</strong> For every point <span class="math" data-tex="\(x\)">\(x\)</span>, every unbounded <span class="math" data-tex="\(L\in D(\mathcal O_X)\)">\(L\in D(\mathcal O_X)\)</span>, and every unbounded <span class="math" data-tex="\(M\in D(\mathcal O_x)\)">\(M\in D(\mathcal O_x)\)</span>, there is a natural isomorphism
+<span class="math math-display" data-tex="\[
+R\mathcal Hom_X(L,x_*M)
+\simeq x_*\operatorname{RHom}_{\mathcal O_x}(L_x,M).
+\]">\[
+R\mathcal Hom_X(L,x_*M)
+\simeq x_*\operatorname{RHom}_{\mathcal O_x}(L_x,M).
+\]</span>
+No closed-point or finite-presentation hypothesis is required.</p>
+<p><strong>Proof.</strong> On an open <span class="math" data-tex="\(U\)">\(U\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span>, the stalk–skyscraper adjunction of the first lesson identifies
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathcal O_U}(L|_U,x_*M|_U)
+=\operatorname{Hom}_{\mathcal O_x}(L_x,M).
+\]">\[
+\operatorname{Hom}_{\mathcal O_U}(L|_U,x_*M|_U)
+=\operatorname{Hom}_{\mathcal O_x}(L_x,M).
+\]</span>
+On an open not containing <span class="math" data-tex="\(x\)">\(x\)</span>, the target is zero. These identifications respect restriction and scalar action, so they give the ordinary sheaf-Hom isomorphism. For complexes, apply the identification to each pair of degrees and form the Hom products. The skyscraper preserves products by Proposition 5.3 of the first lesson, and the component identifications commute with the differential <span class="math" data-tex="\(d_M\phi-(-1)^{|\phi|}\phi d_L\)">\(d_M\phi-(-1)^{|\phi|}\phi d_L\)</span>. Thus the same identity holds for Hom complexes.</p>
+<p>Resolve <span class="math" data-tex="\(M\)">\(M\)</span> by a K-injective <span class="math" data-tex="\(J\)">\(J\)</span> over <span class="math" data-tex="\(\mathcal O_x\)">\(\mathcal O_x\)</span>. The exact stalk functor is left adjoint to <span class="math" data-tex="\(x_*\)">\(x_*\)</span>, so <span class="math" data-tex="\(x_*J\)">\(x_*J\)</span> is K-injective by the exact-left-adjoint criterion. Exactness of <span class="math" data-tex="\(x_*\)">\(x_*\)</span> also makes <span class="math" data-tex="\(x_*M\to x_*J\)">\(x_*M\to x_*J\)</span> a quasi-isomorphism. The preceding Hom-complex identity now computes both sides of the derived statement. Functoriality of the ordinary adjunction and the K-injective comparison establish naturality and independence of the choice of <span class="math" data-tex="\(J\)">\(J\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the useful special case developed by Daniel Murfet in <a href="https://therisingsea.org/notes/DerivedCategoriesOfSheaves.pdf"><em>Derived Categories of Sheaves</em>, §7.2, Lemma 104 and Proposition 106</a>. It coexists with the warning after (1.3): for an arbitrary target, passage to stalks need not commute with internal derived Hom. The special target and its two adjunctions are what justify the formula here.</p>
+<h2 id="4-evaluation-composition-and-their-variances">4. Evaluation, composition and their variances</h2>
+<p>The adjunction gives a safe way to construct canonical maps without asserting that an arbitrary ordinary tensor of Hom complexes computes a derived tensor. Its counit is evaluation</p>
+<span class="math math-display" data-tex="\[
+e_{L,M}:[L,M]\otimes^{\mathbf L}L\longrightarrow M.
+\tag{4.1}
+\]">\[
+e_{L,M}:[L,M]\otimes^{\mathbf L}L\longrightarrow M.
+\tag{4.1}
+\]</span>
+<p>It is the transpose of the identity of <span class="math" data-tex="\([L,M]\)">\([L,M]\)</span>. On models it is (1.5), after any K-flat replacement needed for its tensor factors. Currying and its naturality show that this construction is independent of those replacements.</p>
+<p><strong>Proposition 4.1 (composition).</strong> There is a canonical associative, unital composition map</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_{K,L,M}:[L,M]\otimes^{\mathbf L}[K,L]\\
+\longrightarrow[K,M].
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+c_{K,L,M}:[L,M]\otimes^{\mathbf L}[K,L]\\
+\longrightarrow[K,M].
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>It is natural contravariantly in <span class="math" data-tex="\(K\)">\(K\)</span>, covariantly in <span class="math" data-tex="\(M\)">\(M\)</span>, and dinatural in <span class="math" data-tex="\(L\)">\(L\)</span>: for <span class="math" data-tex="\(u:L\to L&#x27;\)">\(u:L\to L&#x27;\)</span>, the two maps from <span class="math" data-tex="\([L&#x27;,M]\otimes^{\mathbf L}[K,L]\)">\([L&#x27;,M]\otimes^{\mathbf L}[K,L]\)</span> to <span class="math" data-tex="\([K,M]\)">\([K,M]\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+c_{K,L,M}\circ([u,M]\otimes1)&amp;\\
+\quad=c_{K,L&#x27;,M}\circ(1\otimes[K,u]).&amp;
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+c_{K,L,M}\circ([u,M]\otimes1)&amp;\\
+\quad=c_{K,L&#x27;,M}\circ(1\otimes[K,u]).&amp;
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(A=[L,M]\)">\(A=[L,M]\)</span>, <span class="math" data-tex="\(B=[K,L]\)">\(B=[K,L]\)</span>. Define (4.2) to be the transpose of successive evaluations</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(A\otimes^{\mathbf L}B)\otimes^{\mathbf L}K
+&amp;\longrightarrow A\otimes^{\mathbf L}L\\
+&amp;\longrightarrow M.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+(A\otimes^{\mathbf L}B)\otimes^{\mathbf L}K
+&amp;\longrightarrow A\otimes^{\mathbf L}L\\
+&amp;\longrightarrow M.
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>Here and below association maps are the coherent tensor isomorphisms proved in the tensor lesson. Evaluation is natural in its target. For a source map <span class="math" data-tex="\(u\)">\(u\)</span>, its defining adjunction gives the identity that evaluating <span class="math" data-tex="\([u,M](a)\)">\([u,M](a)\)</span> on <span class="math" data-tex="\(l\)">\(l\)</span> equals evaluating <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(u(l)\)">\(u(l)\)</span>. This is an identity of morphisms in the derived category: transpose either side by (3.1), and both are precomposition of the same identity map by <span class="math" data-tex="\(u\)">\(u\)</span>. It therefore holds for roofs as well as chain maps.</p>
+<p>Postcomposing (4.4) by a map <span class="math" data-tex="\(M\to M&#x27;\)">\(M\to M&#x27;\)</span> proves target naturality. Precomposing its last tensor factor by a map <span class="math" data-tex="\(K&#x27;\to K\)">\(K&#x27;\to K\)</span>, and applying the source evaluation identity, proves source naturality. For (4.3), transpose both sides and apply that identity once. Both become successive evaluation with <span class="math" data-tex="\(u\)">\(u\)</span> inserted between the two evaluations. Symbolically both give <span class="math" data-tex="\(a(u(b(k)))\)">\(a(u(b(k)))\)</span>. The adjunction is a bijection of map groups, so equality of the transposes proves equality of the maps.</p>
+<p>For four objects, either order of composition transposes to the same three successive evaluations. The tensor associator satisfies the pentagon, so this proves associativity. The identity of <span class="math" data-tex="\(L\)">\(L\)</span> corresponds by (3.2) to a morphism <span class="math" data-tex="\(\mathbf1=\mathcal O\to[L,L]\)">\(\mathbf1=\mathcal O\to[L,L]\)</span>. Evaluation with this morphism is the identity on <span class="math" data-tex="\(L\)">\(L\)</span>, by its transpose; inserting it on either side of (4.4) proves both unit laws. These arguments prove all assertions without changing resolutions in the middle of an unverified diagram. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The word <em>dinatural</em> records the opposing variances of the two occurrences of <span class="math" data-tex="\(L\)">\(L\)</span>. A map <span class="math" data-tex="\(L\to L&#x27;\)">\(L\to L&#x27;\)</span> induces <span class="math" data-tex="\([L&#x27;,M]\to[L,M]\)">\([L&#x27;,M]\to[L,M]\)</span> but <span class="math" data-tex="\([K,L]\to[K,L&#x27;]\)">\([K,L]\to[K,L&#x27;]\)</span>. Thus the source of composition is not a covariant or contravariant one-variable functor of <span class="math" data-tex="\(L\)">\(L\)</span>. Formula (4.3) is the well-typed compatibility statement. It does not require <span class="math" data-tex="\(u\)">\(u\)</span> to be invertible.</p>
+<p><strong>Proposition 4.2 (other canonical maps).</strong> Put <span class="math" data-tex="\(L^\vee=[L,\mathbf1]\)">\(L^\vee=[L,\mathbf1]\)</span>. There are canonical maps</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K&amp;\longrightarrow[L,K\otimes^{\mathbf L}L],\\
+K\otimes^{\mathbf L}[M,L]
+&amp;\longrightarrow[M,K\otimes^{\mathbf L}L],\\
+M\otimes^{\mathbf L}L^\vee&amp;\longrightarrow[L,M],\\
+[L,M]\otimes^{\mathbf L}K&amp;\longrightarrow[[K,L],M].
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+K&amp;\longrightarrow[L,K\otimes^{\mathbf L}L],\\
+K\otimes^{\mathbf L}[M,L]
+&amp;\longrightarrow[M,K\otimes^{\mathbf L}L],\\
+M\otimes^{\mathbf L}L^\vee&amp;\longrightarrow[L,M],\\
+[L,M]\otimes^{\mathbf L}K&amp;\longrightarrow[[K,L],M].
+\end{aligned}
+\tag{4.5}
+\]</span>
+<p>The first is the adjunction unit, natural in <span class="math" data-tex="\(K\)">\(K\)</span> and dinatural in <span class="math" data-tex="\(L\)">\(L\)</span>. The second is natural covariantly in <span class="math" data-tex="\(K,L\)">\(K,L\)</span> and contravariantly in <span class="math" data-tex="\(M\)">\(M\)</span>. The third is natural covariantly in <span class="math" data-tex="\(M\)">\(M\)</span>, contravariantly in <span class="math" data-tex="\(L\)">\(L\)</span>. The last is natural covariantly in <span class="math" data-tex="\(K,M\)">\(K,M\)</span>, contravariantly in <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proof.</strong> Transpose the identity of <span class="math" data-tex="\(K\otimes^{\mathbf L}L\)">\(K\otimes^{\mathbf L}L\)</span> to obtain the first. If <span class="math" data-tex="\(\eta_{K,L}\)">\(\eta_{K,L}\)</span> denotes it and <span class="math" data-tex="\(u:L\to L&#x27;\)">\(u:L\to L&#x27;\)</span>, both sides of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{}[u,K\otimes^{\mathbf L}L&#x27;]\eta_{K,L&#x27;}\\
+=[L,K\otimes^{\mathbf L}u]\eta_{K,L}.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+{}[u,K\otimes^{\mathbf L}L&#x27;]\eta_{K,L&#x27;}\\
+=[L,K\otimes^{\mathbf L}u]\eta_{K,L}.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>transpose to <span class="math" data-tex="\(1_K\otimes u\)">\(1_K\otimes u\)</span>. This proves its middle-variable dinaturality; ordinary target naturality proves its <span class="math" data-tex="\(K\)">\(K\)</span> naturality.</p>
+<p>For the second map, transpose <span class="math" data-tex="\(1_K\otimes e_{M,L}\)">\(1_K\otimes e_{M,L}\)</span>. For the third, transpose <span class="math" data-tex="\(1_M\otimes e_{L,\mathbf1}\)">\(1_M\otimes e_{L,\mathbf1}\)</span>, followed by the unit isomorphism. For the last, its transpose has domain
+<span class="math" data-tex="\(([L,M]\otimes^{\mathbf L}K)\otimes^{\mathbf L}[K,L]\)">\(([L,M]\otimes^{\mathbf L}K)\otimes^{\mathbf L}[K,L]\)</span>. Move <span class="math" data-tex="\(K\)">\(K\)</span> past <span class="math" data-tex="\([K,L]\)">\([K,L]\)</span> using the Koszul symmetry, evaluate <span class="math" data-tex="\([K,L]\)">\([K,L]\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and then evaluate <span class="math" data-tex="\([L,M]\)">\([L,M]\)</span> on the result. Each stated naturality follows from the evaluation identities already proved, followed by the naturality of transposition. On homogeneous chain representatives of degrees <span class="math" data-tex="\(p,q,r\)">\(p,q,r\)</span>, this last construction is</p>
+<span class="math math-display" data-tex="\[
+(\phi\otimes k)(h)=(-1)^{qr}\phi(h(k)).
+\tag{4.7}
+\]">\[
+(\phi\otimes k)(h)=(-1)^{qr}\phi(h(k)).
+\tag{4.7}
+\]</span>
+<p>The sign comes from moving <span class="math" data-tex="\(k\)">\(k\)</span> past <span class="math" data-tex="\(h\)">\(h\)</span>, not past <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Lemma 1.1 and the tensor symmetry prove it is a chain map whenever the chosen models compute these derived constructions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are maps, with no general claim of invertibility. The perfect-complex lesson proves that the third is an isomorphism when <span class="math" data-tex="\(L\)">\(L\)</span> is perfect. The final exercise below shows a concrete failure without this hypothesis. The unit in (4.5), just like composition, has a repeated variable with opposite variances; writing its compatibility as (4.6) prevents a second misleading blanket functoriality claim.</p>
+<h2 id="5-worked-examples">5. Worked examples</h2>
+<p>First, <span class="math" data-tex="\([\mathcal O,M]\cong M\)">\([\mathcal O,M]\cong M\)</span>. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> identifies <span class="math" data-tex="\(\mathsf H(\mathcal O,I)\)">\(\mathsf H(\mathcal O,I)\)</span> with <span class="math" data-tex="\(I\)">\(I\)</span>, including its differential. The K-injective resolution identifies this with <span class="math" data-tex="\(M\)">\(M\)</span>. The corresponding global statement is
+<span class="math" data-tex="\(R\operatorname{Hom}_X(\mathcal O,M)=R\Gamma(X,M)\)">\(R\operatorname{Hom}_X(\mathcal O,M)=R\Gamma(X,M)\)</span>, which may have higher cohomology even when <span class="math" data-tex="\(M\)">\(M\)</span> is a sheaf.</p>
+<p>Let <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> be open. For any K-injective resolution <span class="math" data-tex="\(F\to I\)">\(F\to I\)</span>, the extension-by-zero adjunction on every open <span class="math" data-tex="\(V\)">\(V\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\mathsf H(j_!\mathcal O_U,I)(V)
+=\Gamma(V\cap U,I).
+\]">\[
+\mathsf H(j_!\mathcal O_U,I)(V)
+=\Gamma(V\cap U,I).
+\]</span>
+<p>These identities respect differentials and restrictions. The right side is <span class="math" data-tex="\(j_*(I|_U)(V)\)">\(j_*(I|_U)(V)\)</span>, and <span class="math" data-tex="\(I|_U\)">\(I|_U\)</span> is K-injective. Consequently</p>
+<span class="math math-display" data-tex="\[
+[j_!\mathcal O_U,F]\cong Rj_*(F|_U).
+\tag{5.1}
+\]">\[
+[j_!\mathcal O_U,F]\cong Rj_*(F|_U).
+\tag{5.1}
+\]</span>
+<p>The ordinary Hom sheaf in degree zero is <span class="math" data-tex="\(j_*F|_U\)">\(j_*F|_U\)</span>, not extension by zero. It can have a nonzero boundary stalk. Higher Ext sheaves describe the higher local cohomology of intersections with <span class="math" data-tex="\(U\)">\(U\)</span>, through the local pushforward formula of the preceding lesson.</p>
+<p>For a second example take <span class="math" data-tex="\(X=\mathbf C\)">\(X=\mathbf C\)</span> with holomorphic functions and let <span class="math" data-tex="\(k_a\)">\(k_a\)</span> be the skyscraper residue module at <span class="math" data-tex="\(a\)">\(a\)</span>. The tensor lesson's <a href="derived-tensor-products-and-tor-sheaves.html#holomorphic-coordinate-germs">holomorphic coordinate germ lemma</a> gives the parameter resolution</p>
+<span class="math math-display" data-tex="\[
+P_a=(\mathcal O\xrightarrow{z-a}\mathcal O).
+\tag{5.2}
+\]">\[
+P_a=(\mathcal O\xrightarrow{z-a}\mathcal O).
+\tag{5.2}
+\]</span>
+<p>It lies in degrees minus one and zero, with augmentation given by evaluation at <span class="math" data-tex="\(a\)">\(a\)</span>. At <span class="math" data-tex="\(a\)">\(a\)</span>, the lemma proves that multiplication by <span class="math" data-tex="\(z-a\)">\(z-a\)</span> is injective and that its image is the evaluation kernel. At every other point <span class="math" data-tex="\(z-a\)">\(z-a\)</span> is a holomorphic unit and the residue stalk is zero. Exactness on stalks therefore proves <span class="math" data-tex="\(P_a\to k_a\)">\(P_a\to k_a\)</span> is a quasi-isomorphism. This finite free complex can be used in the source of derived Hom. Indeed <span class="math" data-tex="\(\mathsf H(\mathcal O,-)\)">\(\mathsf H(\mathcal O,-)\)</span> is the identity, so a finite filtration by its two terms shows <span class="math" data-tex="\(\mathsf H(P_a,-)\)">\(\mathsf H(P_a,-)\)</span> preserves quasi-isomorphisms. Thus comparison with any K-injective resolution of <span class="math" data-tex="\(k_b\)">\(k_b\)</span> proves that <span class="math" data-tex="\(\mathsf H(P_a,k_b)\)">\(\mathsf H(P_a,k_b)\)</span> computes <span class="math" data-tex="\([k_a,k_b]\)">\([k_a,k_b]\)</span>. It has <span class="math" data-tex="\(k_b\)">\(k_b\)</span> in degrees zero and one, with differential multiplication by <span class="math" data-tex="\(-(b-a)\)">\(-(b-a)\)</span>. If <span class="math" data-tex="\(b\ne a\)">\(b\ne a\)</span>, this is invertible and the Hom object is zero. If <span class="math" data-tex="\(b=a\)">\(b=a\)</span>, the differential is zero and</p>
+<span class="math math-display" data-tex="\[
+[k_a,k_a]\cong k_a\oplus k_a[-1].
+\tag{5.3}
+\]">\[
+[k_a,k_a]\cong k_a\oplus k_a[-1].
+\tag{5.3}
+\]</span>
+<p>In particular, the sheaf Ext in degree one is <span class="math" data-tex="\(k_a\)">\(k_a\)</span>; all other positive Ext sheaves vanish. These objects describe the derived Hom of modules over the holomorphic structure sheaf, not Hom of arbitrary skyscraper abelian sheaves. Changing the coefficient ring changes the calculation.</p>
+<p>Here is an explicit reason for the stalk warning after (1.3). Let <span class="math" data-tex="\(X=\{0\}\cup\{1,1/2,1/3,\ldots\}\)">\(X=\{0\}\cup\{1,1/2,1/3,\ldots\}\)</span> with its subspace topology, and use the constant ring sheaf <span class="math" data-tex="\(k_X\)">\(k_X\)</span> for a field. Set <span class="math" data-tex="\(A=\bigoplus_{j\geq1}k_X\)">\(A=\bigoplus_{j\geq1}k_X\)</span> and <span class="math" data-tex="\(B=k_X\)">\(B=k_X\)</span>. The sum's universal property gives
+<span class="math" data-tex="\(\mathcal Hom(A,B)=\prod_{j\geq1}k_X\)">\(\mathcal Hom(A,B)=\prod_{j\geq1}k_X\)</span>: specifying a map on an open means specifying the image of the unit in each summand. For each <span class="math" data-tex="\(j\)">\(j\)</span>, let <span class="math" data-tex="\(f_j\)">\(f_j\)</span> be the locally constant function which is one at <span class="math" data-tex="\(1/j\)">\(1/j\)</span> and zero at every other point. It is locally constant at zero too, since a sufficiently small neighborhood excludes that particular point. Hence <span class="math" data-tex="\((f_j)_j\)">\((f_j)_j\)</span> is a section of this product on all of <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Every individual <span class="math" data-tex="\(f_j\)">\(f_j\)</span> has zero germ at zero. The induced map of stalk modules <span class="math" data-tex="\(A_0=\bigoplus_j k\to B_0=k\)">\(A_0=\bigoplus_j k\to B_0=k\)</span> is therefore zero, since an element of the direct sum uses only finitely many coordinates. But the germ of the section <span class="math" data-tex="\((f_j)_j\)">\((f_j)_j\)</span> of the Hom sheaf is nonzero: every neighborhood of zero contains some <span class="math" data-tex="\(1/j\)">\(1/j\)</span>, where its <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate is one. Thus the canonical comparison
+<span class="math" data-tex="\(\mathcal Hom(A,B)_0\to\operatorname{Hom}_k(A_0,B_0)\)">\(\mathcal Hom(A,B)_0\to\operatorname{Hom}_k(A_0,B_0)\)</span> is not even injective. The issue already appears for ordinary Hom, before any derived construction. Restriction to a fixed open is valid because it preserves the whole sectionwise product; moving to a germ cannot uniformly discard the infinitely many shrinking exceptional points.</p>
+<h2 id="6-exercises-with-checked-solutions">6. Exercises with checked solutions</h2>
+<p><strong>Exercise 1 (easy: the unit).</strong> Prove <span class="math" data-tex="\([\mathcal O,M]=M\)">\([\mathcal O,M]=M\)</span>, and determine the unit <span class="math" data-tex="\(K\to[\mathcal O,K\otimes^{\mathbf L}\mathcal O]\)">\(K\to[\mathcal O,K\otimes^{\mathbf L}\mathcal O]\)</span> under the tensor and Hom unit identifications.</p>
+<p><strong>Solution.</strong> A map <span class="math" data-tex="\(\mathcal O|_V\to I^n|_V\)">\(\mathcal O|_V\to I^n|_V\)</span> is determined by the image of <span class="math" data-tex="\(1\)">\(1\)</span>, with every section <span class="math" data-tex="\(a\)">\(a\)</span> sent to <span class="math" data-tex="\(a\)">\(a\)</span> times that image. These identifications commute with restriction and the differential, so <span class="math" data-tex="\(\mathsf H(\mathcal O,I)=I\)">\(\mathsf H(\mathcal O,I)=I\)</span>. For the unit, the adjunction transpose of the identity of <span class="math" data-tex="\(K\otimes^{\mathbf L}\mathcal O\)">\(K\otimes^{\mathbf L}\mathcal O\)</span> is the map in question. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> and the tensor unit both send that identity back to <span class="math" data-tex="\(1_K\)">\(1_K\)</span>. Hence the unit becomes the identity of <span class="math" data-tex="\(K\)">\(K\)</span>, in every degree and for every unbounded complex.</p>
+<p><strong>Exercise 2 (medium: currying without boundedness).</strong> Explain why (3.1) holds without a finiteness condition on any complex. In particular, identify the step where products are needed and distinguish it from an assertion that products of exact sequences are exact.</p>
+<p><strong>Solution.</strong> Choose a K-flat <span class="math" data-tex="\(P\to L\)">\(P\to L\)</span> and K-injective <span class="math" data-tex="\(M\to I\)">\(M\to I\)</span>. In Hom degree <span class="math" data-tex="\(n\)">\(n\)</span>, currying identifies the product indexed by <span class="math" data-tex="\(i,j\)">\(i,j\)</span> of maps <span class="math" data-tex="\(K^i\otimes P^j\to I^{i+j+n}\)">\(K^i\otimes P^j\to I^{i+j+n}\)</span> on both sides. On the tensor side the source in each degree is a direct sum, so specifying a map means independently specifying a map on every summand. Rearranging the resulting products gives exactly the Hom product on the iterated side. Formula (1.4)'s differential calculation proves the identification is a complex isomorphism.</p>
+<p>K-flatness makes <span class="math" data-tex="\(K\otimes P\)">\(K\otimes P\)</span> a model for the derived tensor; Lemma 2.3 makes <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> an admissible K-injective target. Consequently both Hom complexes compute the stated derived Hom objects. Quasi-isomorphisms in the first variable are handled on every open by Lemma 2.1, and target comparisons by homotopy equivalences. No step applies a product to an arbitrary exact sequence of sheaves. The product's universal property and the two resolution properties are sufficient.</p>
+<p><strong>Exercise 3 (medium: a middle-variable example).</strong> Over a field, take <span class="math" data-tex="\(K=M=k\)">\(K=M=k\)</span>, <span class="math" data-tex="\(L=k^2\)">\(L=k^2\)</span>, <span class="math" data-tex="\(L&#x27;=k\)">\(L&#x27;=k\)</span>, and <span class="math" data-tex="\(u(x,y)=x\)">\(u(x,y)=x\)</span>, all in degree zero. Verify (4.3) and explain why it is the appropriate replacement for one-variable naturality.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(a:L&#x27;\to M\)">\(a:L&#x27;\to M\)</span> as multiplication by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and <span class="math" data-tex="\(b:K\to L\)">\(b:K\to L\)</span> as <span class="math" data-tex="\(t\mapsto(\beta t,\gamma t)\)">\(t\mapsto(\beta t,\gamma t)\)</span>. Precomposing <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(u\)">\(u\)</span> gives the row <span class="math" data-tex="\((\alpha,0)\)">\((\alpha,0)\)</span>. Its product with the column <span class="math" data-tex="\((\beta,\gamma)\)">\((\beta,\gamma)\)</span> is multiplication by <span class="math" data-tex="\(\alpha\beta\)">\(\alpha\beta\)</span>. Postcomposing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(u\)">\(u\)</span> gives multiplication by <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, so composing with <span class="math" data-tex="\(a\)">\(a\)</span> gives the same answer. Bilinearity proves equality on the tensor product. All these vector spaces are flat and injective, so the calculation is also the derived one.</p>
+<p>The map on the first factor goes from <span class="math" data-tex="\(\operatorname{Hom}(L&#x27;,M)\)">\(\operatorname{Hom}(L&#x27;,M)\)</span> to <span class="math" data-tex="\(\operatorname{Hom}(L,M)\)">\(\operatorname{Hom}(L,M)\)</span>, whereas the map on the second goes from <span class="math" data-tex="\(\operatorname{Hom}(K,L)\)">\(\operatorname{Hom}(K,L)\)</span> to <span class="math" data-tex="\(\operatorname{Hom}(K,L&#x27;)\)">\(\operatorname{Hom}(K,L&#x27;)\)</span>. Their directions oppose each other. Since <span class="math" data-tex="\(u\)">\(u\)</span> is a noninvertible projection, reversing one direction cannot be done by an inverse. Dinaturality compares the two composites on their common mixed source and does exactly what the calculation verifies.</p>
+<p><strong>Exercise 4 (hard: the K-injective target test).</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be K-flat and <span class="math" data-tex="\(I\)">\(I\)</span> K-injective. Prove that <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span> is K-injective using an explicit correspondence between maps and homotopies. Explain why termwise flatness alone does not justify this argument.</p>
+<p><strong>Solution.</strong> A chain map <span class="math" data-tex="\(A\to\mathsf H(P,I)\)">\(A\to\mathsf H(P,I)\)</span> curries to a chain map <span class="math" data-tex="\(A\otimes P\to I\)">\(A\otimes P\to I\)</span> by (1.4). A homotopy is a degree-minus-one element whose Hom differential is the difference of the two maps. Since (1.4) is an isomorphism of complexes, it carries exactly such homotopies in either direction. Thus it gives a bijection on homotopy classes. If <span class="math" data-tex="\(A\)">\(A\)</span> is acyclic, K-flatness makes <span class="math" data-tex="\(A\otimes P\)">\(A\otimes P\)</span> acyclic, and K-injectivity of <span class="math" data-tex="\(I\)">\(I\)</span> says every resulting chain map is null-homotopic. Uncurrying that null-homotopy proves the defining condition for <span class="math" data-tex="\(\mathsf H(P,I)\)">\(\mathsf H(P,I)\)</span>.</p>
+<p>The flat-resolution lesson, Section 5, gives an unbounded termwise-free complex over the dual numbers whose tensor with an acyclic complex is not acyclic. Termwise flatness therefore cannot supply the crucial implication for an unbounded <span class="math" data-tex="\(P\)">\(P\)</span>. Bounded-above termwise-flat complexes do supply it, by that lesson's Lemma 2.3; the distinction is between that proved bounded case and the general K-flat condition.</p>
+<p><strong>Exercise 5 (hard: a dual map that fails).</strong> Let <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span> on a one-point space and <span class="math" data-tex="\(N=R/(\varepsilon)\)">\(N=R/(\varepsilon)\)</span>. Compute <span class="math" data-tex="\(N^\vee\)">\(N^\vee\)</span>, compare <span class="math" data-tex="\(N\otimes_R^{\mathbf L}N^\vee\)">\(N\otimes_R^{\mathbf L}N^\vee\)</span> with <span class="math" data-tex="\([N,N]\)">\([N,N]\)</span>, and show the canonical degree-zero map is zero.</p>
+<p><strong>Solution.</strong> The only ideals of <span class="math" data-tex="\(R\)">\(R\)</span> are <span class="math" data-tex="\(0,(\varepsilon),R\)">\(0,(\varepsilon),R\)</span>. A map from <span class="math" data-tex="\((\varepsilon)\)">\((\varepsilon)\)</span> to <span class="math" data-tex="\(R\)">\(R\)</span> sends <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> to an element killed by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, necessarily <span class="math" data-tex="\(c\varepsilon\)">\(c\varepsilon\)</span>, and extends by multiplication by <span class="math" data-tex="\(c\)">\(c\)</span>. Maps from the other two ideals extend immediately. Baer's criterion, proved in the bounded-derived lesson's Lemma 2.1, makes <span class="math" data-tex="\(R\)">\(R\)</span> injective. It is therefore K-injective concentrated in degree zero. Consequently</p>
+<span class="math math-display" data-tex="\[
+N^\vee=\operatorname{Hom}_R(N,R)
+=(\varepsilon)\cong N,
+\]">\[
+N^\vee=\operatorname{Hom}_R(N,R)
+=(\varepsilon)\cong N,
+\]</span>
+<p>concentrated in degree zero. A free resolution of <span class="math" data-tex="\(N\)">\(N\)</span> has one copy of <span class="math" data-tex="\(R\)">\(R\)</span> in every nonpositive degree, all negative differentials multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and the quotient augmentation in degree zero. It is exact in negative degrees because the image and kernel of multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> both equal <span class="math" data-tex="\((\varepsilon)\)">\((\varepsilon)\)</span>.</p>
+<p>Tensoring this bounded-above free resolution with <span class="math" data-tex="\(N^\vee\cong N\)">\(N^\vee\cong N\)</span> makes all differentials zero. Thus the left object has cohomology <span class="math" data-tex="\(N\)">\(N\)</span> in every nonpositive degree and zero in positive degrees. Hom from that resolution to <span class="math" data-tex="\(N\)">\(N\)</span> likewise has zero differential but lies in nonnegative degrees. It computes <span class="math" data-tex="\([N,N]\)">\([N,N]\)</span>: a map <span class="math" data-tex="\(a:P\to C\)">\(a:P\to C\)</span> to any acyclic complex has a null-homotopy constructed downwards. In degree zero, <span class="math" data-tex="\(a^0\)">\(a^0\)</span> lands in the cycles of <span class="math" data-tex="\(C^0\)">\(C^0\)</span>, and projectivity lifts it through <span class="math" data-tex="\(d:C^{-1}\to Z^0C\)">\(d:C^{-1}\to Z^0C\)</span> to <span class="math" data-tex="\(h^0\)">\(h^0\)</span>. Having chosen <span class="math" data-tex="\(h^{n+1}\)">\(h^{n+1}\)</span>, the map <span class="math" data-tex="\(a^n-h^{n+1}d_P\)">\(a^n-h^{n+1}d_P\)</span> lands in <span class="math" data-tex="\(Z^nC\)">\(Z^nC\)</span> by the chain-map equation and the preceding homotopy equation. Lift it to <span class="math" data-tex="\(h^n:P^n\to C^{n-1}\)">\(h^n:P^n\to C^{n-1}\)</span>. This constructs <span class="math" data-tex="\(a=dh+hd\)">\(a=dh+hd\)</span> in every nonpositive degree, with no infinite summation. Applying the same argument to every shift proves <span class="math" data-tex="\(\operatorname{Hom}^\bullet(P,C)\)">\(\operatorname{Hom}^\bullet(P,C)\)</span> acyclic. Cone compatibility then proves invariance under every target quasi-isomorphism, including <span class="math" data-tex="\(N\to I\)">\(N\to I\)</span>. The right object therefore has cohomology <span class="math" data-tex="\(N\)">\(N\)</span> in every nonnegative degree, and zero in negative degrees.</p>
+<p>Finally degree-zero evaluation sends <span class="math" data-tex="\(m\otimes\phi\)">\(m\otimes\phi\)</span> to the map <span class="math" data-tex="\(n\mapsto\phi(n)m\)">\(n\mapsto\phi(n)m\)</span>. Every <span class="math" data-tex="\(\phi(n)\)">\(\phi(n)\)</span> lies in <span class="math" data-tex="\((\varepsilon)\)">\((\varepsilon)\)</span>, which acts by zero on <span class="math" data-tex="\(N\)">\(N\)</span>. Hence this induced map on degree-zero cohomology is zero. The canonical dual map is far from an isomorphism in this example. Finite duality in the perfect-complex lesson will require a hypothesis this residue module does not satisfy.</p>
+<footer><a href="src/internal-derived-hom-and-ext-sheaves.md">Editable Markdown source</a> · <span class="unlinked">Sources and authorship</span></footer></main></body></html>

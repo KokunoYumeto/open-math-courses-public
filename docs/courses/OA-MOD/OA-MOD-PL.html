@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A supported inverse weight cocycle · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-PL.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 107 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="recovering-a-supported-weight-from-a-partial-cocycle">Recovering a supported weight from a partial cocycle</h1>
+<p><em>GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.</em></p>
+<p>A faithful weight gives a unitary Connes cocycle. When the weight to be recovered has support smaller than <span class="math" data-tex="\(1\)">\(1\)</span>, the comparison instead has a moving initial projection and a fixed final projection. The trick is to fill the complementary corner, reconstruct a faithful weight from the resulting unitary cocycle, and then restrict back to the desired support. The antecedent is Takesaki, <em>Theory of Operator Algebras II</em>, Chapter VIII, §3, Theorem 3.21. Here “n.s.f.” means normal, semifinite and faithful.</p>
+<h2 id="the-supported-inverse-problem">The supported inverse problem</h2>
+<p>Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be n.s.f. on a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span>. Suppose <span class="math" data-tex="\(u:\mathbb R\to M\)">\(u:\mathbb R\to M\)</span> is a sigma-strong* continuous family and <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span> is a projection such that</p>
+<span class="math math-display" data-tex="\[
+u_{s+t}=u_s\sigma_s^\varphi(u_t),\qquad
+u_tu_t^*=e,\qquad u_t^*u_t=\sigma_t^\varphi(e).
+\tag{PL.1}
+\]">\[
+u_{s+t}=u_s\sigma_s^\varphi(u_t),\qquad
+u_tu_t^*=e,\qquad u_t^*u_t=\sigma_t^\varphi(e).
+\tag{PL.1}
+\]</span>
+<p>Thus each <span class="math" data-tex="\(u_t\)">\(u_t\)</span> is a partial isometry from <span class="math" data-tex="\(\sigma_t^\varphi(e)H\)">\(\sigma_t^\varphi(e)H\)</span> onto <span class="math" data-tex="\(eH\)">\(eH\)</span> in a faithful representation. The case <span class="math" data-tex="\(e=0\)">\(e=0\)</span> is allowed.</p>
+<p><strong>Theorem.</strong> There is exactly one normal semifinite weight <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with support <span class="math" data-tex="\(e\)">\(e\)</span> whose supported spatial cocycle satisfies</p>
+<span class="math math-display" data-tex="\[
+[D\theta:D\varphi]_t=u_t.
+\tag{PL.2}
+\]">\[
+[D\theta:D\varphi]_t=u_t.
+\tag{PL.2}
+\]</span>
+<p>For an n.s.f. commutant reference <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, this cocycle means <span class="math" data-tex="\(A_\theta^{it}A_\varphi^{-it}\)">\(A_\theta^{it}A_\varphi^{-it}\)</span>, where <span class="math" data-tex="\(A_\theta^{it}\)">\(A_\theta^{it}\)</span> is unitary on the support of <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> and zero on its orthogonal complement. We will prove that the expression is independent of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. It does not define a modular automorphism group for <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="filling-the-complementary-corner">Filling the complementary corner</h2>
+<p>Choose an n.s.f. weight <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\((1-e)M(1-e)\)">\((1-e)M(1-e)\)</span> by the <a href="OA-MOD-WH.html#oa-mod-wh-13">weight existence theorem</a>. Its lift <span class="math" data-tex="\(\eta^\uparrow(x)=\eta((1-e)x(1-e))\)">\(\eta^\uparrow(x)=\eta((1-e)x(1-e))\)</span> has support <span class="math" data-tex="\(1-e\)">\(1-e\)</span>, by <a href="OA-MOD-CW.html#oa-mod-cw-05">corner lifting</a>. Compare it spatially with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and put <span class="math" data-tex="\(v_t=[D\eta^\uparrow:D\varphi]_t\)">\(v_t=[D\eta^\uparrow:D\varphi]_t\)</span>. The <span class="unlinked">support formula</span> gives sigma-strong* continuity and</p>
+<span class="math math-display" data-tex="\[
+v_tv_t^*=1-e,\qquad
+v_t^*v_t=\sigma_t^\varphi(1-e),\qquad
+v_{s+t}=v_s\sigma_s^\varphi(v_t).
+\tag{PL.3}
+\]">\[
+v_tv_t^*=1-e,\qquad
+v_t^*v_t=\sigma_t^\varphi(1-e),\qquad
+v_{s+t}=v_s\sigma_s^\varphi(v_t).
+\tag{PL.3}
+\]</span>
+<p>For clarity, the last law follows directly from spatial powers. If <span class="math" data-tex="\(B=d\eta^\uparrow/d\kappa\)">\(B=d\eta^\uparrow/d\kappa\)</span> and <span class="math" data-tex="\(C=d\varphi/d\kappa\)">\(C=d\varphi/d\kappa\)</span>, take <span class="math" data-tex="\(B^{it}\)">\(B^{it}\)</span> to be zero off its support. Then <span class="math" data-tex="\(v_t=B^{it}C^{-it}\)">\(v_t=B^{it}C^{-it}\)</span> lies in <span class="math" data-tex="\(M\)">\(M\)</span> by the commutant covariance of both spatial operators. Since <span class="math" data-tex="\(C^{is}\)">\(C^{is}\)</span> implements <span class="math" data-tex="\(\sigma_s^\varphi\)">\(\sigma_s^\varphi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_s\sigma_s^\varphi(v_t)
+&amp;=B^{is}C^{-is}C^{is}v_tC^{-is}\\
+&amp;=B^{is}B^{it}C^{-it}C^{-is}\\
+&amp;=v_{s+t}.
+\end{aligned}
+\tag{PL.3a}
+\]">\[
+\begin{aligned}
+v_s\sigma_s^\varphi(v_t)
+&amp;=B^{is}C^{-is}C^{is}v_tC^{-is}\\
+&amp;=B^{is}B^{it}C^{-it}C^{-is}\\
+&amp;=v_{s+t}.
+\end{aligned}
+\tag{PL.3a}
+\]</span>
+<p>The powers of <span class="math" data-tex="\(B\)">\(B\)</span> obey the group law on its support, so their zero extensions introduce no extra term.</p>
+<p>The final projections of <span class="math" data-tex="\(u_t,v_t\)">\(u_t,v_t\)</span> are <span class="math" data-tex="\(e,1-e\)">\(e,1-e\)</span>, and their initial projections are <span class="math" data-tex="\(\sigma_t^\varphi(e),\sigma_t^\varphi(1-e)\)">\(\sigma_t^\varphi(e),\sigma_t^\varphi(1-e)\)</span>. Hence <span class="math" data-tex="\(w_t=u_t+v_t\)">\(w_t=u_t+v_t\)</span> is unitary. In <span class="math" data-tex="\(w_s\sigma_s^\varphi(w_t)\)">\(w_s\sigma_s^\varphi(w_t)\)</span>, the two cross terms vanish: the initial projection of <span class="math" data-tex="\(u_s\)">\(u_s\)</span> is orthogonal to the final projection of <span class="math" data-tex="\(\sigma_s^\varphi(v_t)\)">\(\sigma_s^\varphi(v_t)\)</span>, and conversely. The two remaining terms obey their respective cocycle laws. Thus <span class="math" data-tex="\(w_{s+t}=w_s\sigma_s^\varphi(w_t)\)">\(w_{s+t}=w_s\sigma_s^\varphi(w_t)\)</span>. The sum is strongly* continuous.</p>
+<h2 id="cutting-the-faithful-reconstruction-back-to-its-support">Cutting the faithful reconstruction back to its support</h2>
+<p>The <a href="OA-MOD-CX.html#oa-mod-cx-10">faithful inverse-cocycle theorem</a> gives a unique n.s.f. weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\([D\rho:D\varphi]_t=w_t\)">\([D\rho:D\varphi]_t=w_t\)</span>. Its modular covariance implies</p>
+<span class="math math-display" data-tex="\[
+\sigma_t^\rho(e)
+=w_t\sigma_t^\varphi(e)w_t^*
+=u_tu_t^*=e.
+\tag{PL.4}
+\]">\[
+\sigma_t^\rho(e)
+=w_t\sigma_t^\varphi(e)w_t^*
+=u_tu_t^*=e.
+\tag{PL.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(e\)">\(e\)</span> is in the centralizer of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The <a href="OA-MOD-CZ.html">centralizer-corner theorem</a> makes <span class="math" data-tex="\(\rho|_{eMe}\)">\(\rho|_{eMe}\)</span> n.s.f.; lift it to <span class="math" data-tex="\(M\)">\(M\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\theta(x)=\rho(exe),\qquad x\in M_+.
+\tag{PL.5}
+\]">\[
+\theta(x)=\rho(exe),\qquad x\in M_+.
+\tag{PL.5}
+\]</span>
+<p>This is normal semifinite and has support exactly <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p>We still have to recover <span class="math" data-tex="\(u\)">\(u\)</span>, rather than merely construct a weight on the correct corner. Fix a faithful concrete representation and an n.s.f. weight <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> on its commutant. Let <span class="math" data-tex="\(A_\rho=d\rho/d\kappa\)">\(A_\rho=d\rho/d\kappa\)</span> and <span class="math" data-tex="\(A_\varphi=d\varphi/d\kappa\)">\(A_\varphi=d\varphi/d\kappa\)</span>. Because <span class="math" data-tex="\(A_\rho^{it}\)">\(A_\rho^{it}\)</span> implements <span class="math" data-tex="\(\sigma^\rho_t\)">\(\sigma^\rho_t\)</span>, equation (PL.4) implies that <span class="math" data-tex="\(e\)">\(e\)</span> commutes with every <span class="math" data-tex="\(A_\rho^{it}\)">\(A_\rho^{it}\)</span>, hence reduces <span class="math" data-tex="\(A_\rho\)">\(A_\rho\)</span> and its spectral projections.</p>
+<p>For a bounded <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the coefficient map obeys <span class="math" data-tex="\(R_\kappa(e\xi)=eR_\kappa(\xi)\)">\(R_\kappa(e\xi)=eR_\kappa(\xi)\)</span>. Therefore the spatial energies satisfy</p>
+<span class="math math-display" data-tex="\[
+Q_\theta[\xi]
+=\rho\!\left(eR_\kappa(\xi)R_\kappa(\xi)^*e\right)
+=Q_\rho[e\xi].
+\tag{PL.6}
+\]">\[
+Q_\theta[\xi]
+=\rho\!\left(eR_\kappa(\xi)R_\kappa(\xi)^*e\right)
+=Q_\rho[e\xi].
+\tag{PL.6}
+\]</span>
+<p>On the bounded-vector form core, this is the form of <span class="math" data-tex="\(A_\rho|_{eH}\oplus0_{(1-e)H}\)">\(A_\rho|_{eH}\oplus0_{(1-e)H}\)</span>. The core theorem and uniqueness of the represented closed form extend the equality to the full square-root domain. Thus the supported imaginary powers give</p>
+<span class="math math-display" data-tex="\[
+A_\theta^{it}=eA_\rho^{it},\qquad
+[D\theta:D\varphi]_t
+=eA_\rho^{it}A_\varphi^{-it}
+=ew_t=u_t.
+\tag{PL.7}
+\]">\[
+A_\theta^{it}=eA_\rho^{it},\qquad
+[D\theta:D\varphi]_t
+=eA_\rho^{it}A_\varphi^{-it}
+=ew_t=u_t.
+\tag{PL.7}
+\]</span>
+<p>The equality <span class="math" data-tex="\(ew_t=u_t\)">\(ew_t=u_t\)</span> follows from the complementary final projections.</p>
+<h2 id="why-the-answer-is-intrinsic-and-unique">Why the answer is intrinsic and unique</h2>
+<p>Let <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be any normal semifinite weight supported by <span class="math" data-tex="\(e\)">\(e\)</span>. Fill <span class="math" data-tex="\(1-e\)">\(1-e\)</span> with an n.s.f. corner weight <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and set <span class="math" data-tex="\(\gamma=\beta+\zeta^\uparrow\)">\(\gamma=\beta+\zeta^\uparrow\)</span>. The <a href="OA-MOD-CW.html#oa-mod-cw-06">corner sum</a> is n.s.f. and has <span class="math" data-tex="\(e\)">\(e\)</span> in its centralizer. The same coefficient-form calculation as (PL.6) yields <span class="math" data-tex="\(A_\beta^{it}=eA_\gamma^{it}\)">\(A_\beta^{it}=eA_\gamma^{it}\)</span> for every commutant reference. Hence</p>
+<span class="math math-display" data-tex="\[
+[D\beta:D\varphi]_t=e[D\gamma:D\varphi]_t.
+\tag{PL.8}
+\]">\[
+[D\beta:D\varphi]_t=e[D\gamma:D\varphi]_t.
+\tag{PL.8}
+\]</span>
+<p>The cocycle on the right is independent of the reference by the <span class="unlinked">balanced-weight construction</span>. So the supported expression in (PL.2) is intrinsic, including when <span class="math" data-tex="\(\beta=\theta\)">\(\beta=\theta\)</span>.</p>
+<p>If another supported normal semifinite weight has cocycle <span class="math" data-tex="\(u\)">\(u\)</span>, its supported imaginary powers are <span class="math" data-tex="\(u_tA_\varphi^{it}\)">\(u_tA_\varphi^{it}\)</span> on <span class="math" data-tex="\(eH\)">\(eH\)</span> and zero elsewhere. This strongly continuous unitary group on <span class="math" data-tex="\(eH\)">\(eH\)</span> determines the positive operator there through its logarithm and the spectral uniqueness theorem. The <span class="unlinked">spatial recovery theorem</span> then determines the weight, including its infinite values. This proves uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, the complementary corner vanishes and the theorem reduces to faithful cocycle reconstruction. For <span class="math" data-tex="\(e=0\)">\(e=0\)</span>, it yields the zero weight. The analytic half-strip characterization and general operator-valued-weight existence are distinct results and are not proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Takesaki, <em>Theory of Operator Algebras II</em>, Springer, 2003, Chapter VIII, §3, Theorem 3.21. <a href="https://link.springer.com/book/10.1007/978-3-662-10451-4">Publisher record</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Lower semicontinuous C*-weights</span></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Comparing supported weights and transporting their cuts →</span></span></nav>
+<p class="small source-link"><a href="src/supported-cocycle-lift.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

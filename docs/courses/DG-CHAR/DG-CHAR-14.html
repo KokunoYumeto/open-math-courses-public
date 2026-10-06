@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Multiplicative sequences and the signature theorem · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-14.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="multiplicative-sequences-and-the-signature-theorem">Multiplicative sequences and the signature theorem</h1>
+<p><em>Written and self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Independently authored text dedicated under CC0.</em></p>
+<p>The signature can be measured from a rational intersection matrix, while Pontryagin numbers come from the tangent bundle. This chapter asks how those two computations can recover one another. We first establish the form and boundary arguments that make signature a bordism invariant. We then calibrate a degree-eight characteristic polynomial on two different manifolds, and use that calculation to motivate the general construction of multiplicative sequences. The formal power series and projective coefficient proof finally turn the calibration into a theorem in every dimension.</p>
+<p>The algebraic classification is proved over every commutative coefficient ring, including rings with zero divisors. Manifold genera and signature comparison use rational Pontryagin classes, with integral orientation and boundary signs fixed by the earlier chapters. The all-dimensional product proof accounts for alternating middle forms as well as symmetric ones. These distinctions explain which conclusions follow from a matrix, which follow from bordism, and which require the universal polynomial construction.</p>
+<p>The exact prerequisites are <a href="DG-CHAR-07.html">Manifold duality</a>, Sections1–2, for compact-support duality and perfect closed pairings; <a href="DG-CHAR-12.html">The oriented cobordism ring</a>, Section1, for the full collar proof; <a href="DG-CHAR-09.html">Chern classes</a>, Lemma5.1, for integer relative fundamental classes and their boundary sign; <a href="DG-CHAR-06.html">Thom and Euler classes</a>, for singular products, relative excision and coefficient theorems; <a href="DG-CHAR-11.html">Characteristic numbers</a>, Sections2–5, for integral symmetric classes, product evaluations and boundary vanishing; <a href="DG-CHAR-10.html">Pontryagin classes</a>, for rational Whitney and projective tangent classes; and <a href="DG-CHAR-13D.html">Rational oriented bordism</a>, for the full polynomial-basis theorem. The coefficient rings and orientation conventions in these prerequisites fix those used below.</p>
+<p>This is the signature portion of the multiplicative-sequence lesson. Its continuation, <a href="DG-CHAR-14B.html">Odd-prime reduced powers and the Wu classes</a>, constructs the operations and proves the precise Wu polynomial and homotopy theorem. These two chapters supply the complete signature, multiplicative-sequence and odd-prime teaching. No independent AI review is claimed.</p>
+<h2 id="a-the-algebra-behind-the-signature">A. The algebra behind the signature</h2>
+<p>Throughout this section vector spaces are finite dimensional over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. A bilinear form <span class="math" data-tex="\(b:V\times V\to\mathbb Q\)">\(b:V\times V\to\mathbb Q\)</span> is nondegenerate if <span class="math" data-tex="\(v\mapsto b(v,-)\)">\(v\mapsto b(v,-)\)</span> is an isomorphism to <span class="math" data-tex="\(V^*\)">\(V^*\)</span>. For a symmetric nondegenerate form, its signature will count positive diagonal coefficients minus negative ones. We first prove that this is independent of the chosen diagonalization and record the exact vanishing mechanism needed for a boundary.</p>
+<h3 id="a-1-diagonalization-and-its-invariant-counts">A.1. Diagonalization and its invariant counts</h3>
+<p><span id="DG-CHAR-14.lemma-A.1"></span><strong>Lemma A.1.</strong> A nondegenerate symmetric form has a basis in which its matrix is diagonal with nonzero rational entries. The numbers of positive and negative diagonal entries are invariant under change of basis.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>, some <span class="math" data-tex="\(v\)">\(v\)</span> has <span class="math" data-tex="\(b(v,v)\ne0\)">\(b(v,v)\ne0\)</span>. Otherwise polarization would give
+<span class="math math-display" data-tex="\[
+2b(u,v)=b(u+v,u+v)-b(u,u)-b(v,v)=0
+\]">\[
+2b(u,v)=b(u+v,u+v)-b(u,u)-b(v,v)=0
+\]</span>
+for every <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, contradicting nondegeneracy. Put <span class="math" data-tex="\(a=b(v,v)\)">\(a=b(v,v)\)</span>. Each <span class="math" data-tex="\(x\)">\(x\)</span> decomposes uniquely as
+<span class="math math-display" data-tex="\[
+x=\frac{b(x,v)}a v+\left(x-\frac{b(x,v)}a v\right),
+\qquad V=\mathbb Qv\mathbin{\perp}v^\perp.
+\tag{A.1}
+\]">\[
+x=\frac{b(x,v)}a v+\left(x-\frac{b(x,v)}a v\right),
+\qquad V=\mathbb Qv\mathbin{\perp}v^\perp.
+\tag{A.1}
+\]</span>
+The second summand is nondegenerate: a vector there orthogonal to it is also orthogonal to <span class="math" data-tex="\(v\)">\(v\)</span>, and hence to all of <span class="math" data-tex="\(V\)">\(V\)</span>. Induction diagonalizes that summand and gives the first assertion, including the zero-dimensional case with its empty diagonal.</p>
+<p>Extend scalars to <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. For a diagonalization with <span class="math" data-tex="\(p\)">\(p\)</span> positive and <span class="math" data-tex="\(q\)">\(q\)</span> negative coefficients, its positive-coordinate subspace is positive definite of dimension <span class="math" data-tex="\(p\)">\(p\)</span>. Any positive definite subspace has zero intersection with the negative-coordinate subspace; projection to the positive coordinates is consequently injective on it, giving dimension at most <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(p\)">\(p\)</span> is the maximum possible dimension of a positive definite subspace, defined without reference to a basis. The identical argument gives <span class="math" data-tex="\(q\)">\(q\)</span> as the maximum dimension of a negative definite subspace. Both are invariant. ∎</p>
+<p>Define <span class="math" data-tex="\(\operatorname{sign}(b)=p-q\)">\(\operatorname{sign}(b)=p-q\)</span>. The proof gives
+<span class="math math-display" data-tex="\[
+\operatorname{sign}(b\perp c)=\operatorname{sign}(b)+\operatorname{sign}(c),
+\qquad \operatorname{sign}(-b)=-\operatorname{sign}(b).
+\tag{A.2}
+\]">\[
+\operatorname{sign}(b\perp c)=\operatorname{sign}(b)+\operatorname{sign}(c),
+\qquad \operatorname{sign}(-b)=-\operatorname{sign}(b).
+\tag{A.2}
+\]</span>
+Indeed concatenate the diagonal bases, or negate every diagonal coefficient. An isometry of forms preserves the signature by Lemma A.1.</p>
+<h3 id="a-2-an-isotropic-half-cancels-the-entire-signature">A.2. An isotropic half cancels the entire signature</h3>
+<p>For a subspace <span class="math" data-tex="\(L\subset V\)">\(L\subset V\)</span>, set <span class="math" data-tex="\(L^\perp=\{v:b(v,L)=0\}\)">\(L^\perp=\{v:b(v,L)=0\}\)</span>. Restriction of functionals gives a surjection <span class="math" data-tex="\(V\to L^*\)">\(V\to L^*\)</span>: extend a functional from a basis of <span class="math" data-tex="\(L\)">\(L\)</span> to one of <span class="math" data-tex="\(V\)">\(V\)</span>, then use nondegeneracy. Its kernel is <span class="math" data-tex="\(L^\perp\)">\(L^\perp\)</span>, so
+<span class="math math-display" data-tex="\[
+\dim L^\perp=\dim V-\dim L.
+\tag{A.3}
+\]">\[
+\dim L^\perp=\dim V-\dim L.
+\tag{A.3}
+\]</span>
+Call <span class="math" data-tex="\(L\)">\(L\)</span> isotropic when <span class="math" data-tex="\(b(L,L)=0\)">\(b(L,L)=0\)</span>. It then lies in <span class="math" data-tex="\(L^\perp\)">\(L^\perp\)</span>, and (A.3) gives <span class="math" data-tex="\(2\dim L\leq\dim V\)">\(2\dim L\leq\dim V\)</span>.</p>
+<p><span id="DG-CHAR-14.lemma-A.2"></span><strong>Lemma A.2 — Isotropic-half vanishing.</strong> If a nondegenerate symmetric form has an isotropic subspace of half its dimension, its signature is zero. In particular this holds when <span class="math" data-tex="\(L=L^\perp\)">\(L=L^\perp\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(l_1,\ldots,l_h\)">\(l_1,\ldots,l_h\)</span> be a basis of that subspace. The preceding surjection gives vectors <span class="math" data-tex="\(w_j\)">\(w_j\)</span> with <span class="math" data-tex="\(b(l_i,w_j)=\delta_{ij}\)">\(b(l_i,w_j)=\delta_{ij}\)</span>. Put <span class="math" data-tex="\(a_{ij}=b(w_i,w_j)\)">\(a_{ij}=b(w_i,w_j)\)</span> and
+<span class="math math-display" data-tex="\[
+v_i=w_i-\frac12\sum_k a_{ki}l_k.
+\tag{A.4}
+\]">\[
+v_i=w_i-\frac12\sum_k a_{ki}l_k.
+\tag{A.4}
+\]</span>
+The symmetry of <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(b(v_i,v_j)=a_{ij}-a_{ij}/2-a_{ji}/2=0\)">\(b(v_i,v_j)=a_{ij}-a_{ij}/2-a_{ji}/2=0\)</span>, while <span class="math" data-tex="\(b(l_i,v_j)=\delta_{ij}\)">\(b(l_i,v_j)=\delta_{ij}\)</span>. The <span class="math" data-tex="\(2h\)">\(2h\)</span> vectors <span class="math" data-tex="\(l_i,v_i\)">\(l_i,v_i\)</span> are independent: pairing a relation with each <span class="math" data-tex="\(l_j\)">\(l_j\)</span> kills the <span class="math" data-tex="\(v_j\)">\(v_j\)</span> coefficients, and then the <span class="math" data-tex="\(l_i\)">\(l_i\)</span> basis kills the rest. Their number is <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>, so they form a basis, with matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;I_h\\I_h&amp;0\end{pmatrix}.
+\tag{A.5}
+\]">\[
+\begin{pmatrix}0&amp;I_h\\I_h&amp;0\end{pmatrix}.
+\tag{A.5}
+\]</span>
+The vectors <span class="math" data-tex="\(l_i+v_i,l_i-v_i\)">\(l_i+v_i,l_i-v_i\)</span> diagonalize this into <span class="math" data-tex="\(h\)">\(h\)</span> coefficients2 and <span class="math" data-tex="\(h\)">\(h\)</span> coefficients<span class="math" data-tex="\(-2\)">\(-2\)</span>; all cross pairings are zero. Its signature is therefore zero. If <span class="math" data-tex="\(L=L^\perp\)">\(L=L^\perp\)</span>, (A.3) supplies the required half dimension. ∎</p>
+<p>For example, a perfect pairing between two summands of equal dimension, with zero pairing within each, has this form after choosing dual bases. An off-diagonal sign or a nonsingular off-diagonal matrix does not change its zero signature: the first summand is still an isotropic half.</p>
+<h3 id="a-3-alternating-and-tensor-product-forms">A.3. Alternating and tensor-product forms</h3>
+<p><span id="DG-CHAR-14.lemma-A.3"></span><strong>Lemma A.3.</strong> Every nondegenerate alternating form has even dimension and a basis consisting of pairs <span class="math" data-tex="\(e_i,f_i\)">\(e_i,f_i\)</span> with <span class="math" data-tex="\(b(e_i,f_j)=\delta_{ij}\)">\(b(e_i,f_j)=\delta_{ij}\)</span>, <span class="math" data-tex="\(b(e_i,e_j)=b(f_i,f_j)=0\)">\(b(e_i,e_j)=b(f_i,f_j)=0\)</span>. In particular it has an isotropic half-dimensional subspace.</p>
+<p><strong>Proof.</strong> Choose nonzero <span class="math" data-tex="\(e\)">\(e\)</span>. Nondegeneracy gives <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(b(e,f)\ne0\)">\(b(e,f)\ne0\)</span>, and rescale <span class="math" data-tex="\(f\)">\(f\)</span> to make that value1. Alternation makes the matrix on their span <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span>, which is nonsingular. Subtract the uniquely determined components in this span from any vector to put it in its orthogonal complement. This gives a direct orthogonal sum with nondegenerate complement, exactly as in (A.1). Repeat. Each step removes two dimensions, and the zero-dimensional last space terminates the induction. The span of all the <span class="math" data-tex="\(e_i\)">\(e_i\)</span> is the asserted isotropic half. ∎</p>
+<p>If <span class="math" data-tex="\(b,c\)">\(b,c\)</span> are symmetric nondegenerate forms, their tensor form is defined on simple tensors by
+<span class="math math-display" data-tex="\[
+(b\otimes c)(u\otimes x,v\otimes y)=b(u,v)c(x,y).
+\tag{A.6}
+\]">\[
+(b\otimes c)(u\otimes x,v\otimes y)=b(u,v)c(x,y).
+\tag{A.6}
+\]</span>
+Diagonal bases prove nondegeneracy and show that positive products occur for the two equal-sign pairs and negative products for the two opposite-sign pairs. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{sign}(b\otimes c)=\operatorname{sign}(b)\operatorname{sign}(c).
+\tag{A.7}
+\]">\[
+\operatorname{sign}(b\otimes c)=\operatorname{sign}(b)\operatorname{sign}(c).
+\tag{A.7}
+\]</span>
+If instead both forms are alternating and nondegenerate, (A.6) is symmetric and nondegenerate. Nondegeneracy follows, for example, from the tensor product of the two invertible matrices. If <span class="math" data-tex="\(L\)">\(L\)</span> is an isotropic half for the first alternating form, <span class="math" data-tex="\(L\otimes W\)">\(L\otimes W\)</span> is an isotropic half for their tensor form. Lemma A.2 makes its signature zero. The same conclusion holds for the negative of that tensor form, as may arise from a cohomological product sign. These facts will handle all dimensions in the product formula for manifold signatures.</p>
+<h2 id="b-relative-duality-and-the-boundary-pairing">B. Relative duality and the boundary pairing</h2>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be a compact smooth oriented <span class="math" data-tex="\(d\)">\(d\)</span>-manifold, <span class="math" data-tex="\(M=\partial W\)">\(M=\partial W\)</span> with its outward-normal-first orientation, and <span class="math" data-tex="\(U=W\setminus M\)">\(U=W\setminus M\)</span>. Empty boundaries and disconnected manifolds are allowed. The <a href="DG-CHAR-12.html">cobordism chapter</a>, Theorem1.1, supplies the full smooth collar. The <a href="DG-CHAR-09.html">Chern chapter</a>, Lemma5.1, supplies the relative fundamental class with <span class="math" data-tex="\(\partial[W,M]=[M]\)">\(\partial[W,M]=[M]\)</span>. The <a href="DG-CHAR-07.html">manifold chapter</a>, Sections1–2, supplies compact-support Poincaré duality on <span class="math" data-tex="\(U\)">\(U\)</span>, including the right-cap formula and its naturality. We now prove the precise relative comparison needed for a boundary signature.</p>
+<h3 id="b-1-relative-cohomology-as-compact-support-on-the-interior">B.1. Relative cohomology as compact support on the interior</h3>
+<p><span id="DG-CHAR-14.lemma-B.1"></span><strong>Lemma B.1.</strong> There are natural identifications
+<span class="math math-display" data-tex="\[
+H^r(W,M;R)\cong H_c^r(U;R),\qquad
+H_j(U;R)\cong H_j(W;R),
+\tag{B.1}
+\]">\[
+H^r(W,M;R)\cong H_c^r(U;R),\qquad
+H_j(U;R)\cong H_j(W;R),
+\tag{B.1}
+\]</span>
+for every commutative coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span>. They identify right cap with <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span> with compact-support cap on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>Proof.</strong> Use a collar <span class="math" data-tex="\(M\times[0,1)\subset W\)">\(M\times[0,1)\subset W\)</span>, with <span class="math" data-tex="\(M\)">\(M\)</span> at height zero. For <span class="math" data-tex="\(0&lt;a&lt;1/2\)">\(0&lt;a&lt;1/2\)</span>, put
+<span class="math math-display" data-tex="\[
+A_a=M\times[0,a),\qquad K_a=W\setminus A_a.
+\tag{B.2}
+\]">\[
+A_a=M\times[0,a),\qquad K_a=W\setminus A_a.
+\tag{B.2}
+\]</span>
+The set <span class="math" data-tex="\(A_a\)">\(A_a\)</span> is open in <span class="math" data-tex="\(W\)">\(W\)</span>; it retracts to <span class="math" data-tex="\(M\)">\(M\)</span> by shrinking the height. Its complement <span class="math" data-tex="\(K_a\)">\(K_a\)</span> is compact and lies in <span class="math" data-tex="\(U\)">\(U\)</span>. These compact sets are cofinal as <span class="math" data-tex="\(a\)">\(a\)</span> decreases to zero: any compact subset of <span class="math" data-tex="\(U\)">\(U\)</span> avoids some collar of height <span class="math" data-tex="\(a\)">\(a\)</span>, by compactness and the fact that the collar heights of points approaching <span class="math" data-tex="\(M\)">\(M\)</span> tend to zero.</p>
+<p>The long exact sequences of the two pairs and the height retraction give an isomorphism
+<span class="math math-display" data-tex="\[
+H^r(W,A_a;R)\xrightarrow{\cong}H^r(W,M;R).
+\tag{B.3}
+\]">\[
+H^r(W,A_a;R)\xrightarrow{\cong}H^r(W,M;R).
+\tag{B.3}
+\]</span>
+It is induced by the identity on <span class="math" data-tex="\(W\)">\(W\)</span> and the inclusion <span class="math" data-tex="\(M\subset A_a\)">\(M\subset A_a\)</span>; on the neighbouring absolute groups it is the identity and the collar equivalence, so exactness and the five lemma give the isomorphism. Removing <span class="math" data-tex="\(M\)">\(M\)</span>, whose closure lies inside the open <span class="math" data-tex="\(A_a\)">\(A_a\)</span>, is excision for this pair. It gives
+<span class="math math-display" data-tex="\[
+H^r(W,A_a;R)\cong H^r(U,A_a\setminus M;R)
+=H^r(U,U\setminus K_a;R).
+\tag{B.4}
+\]">\[
+H^r(W,A_a;R)\cong H^r(U,A_a\setminus M;R)
+=H^r(U,U\setminus K_a;R).
+\tag{B.4}
+\]</span>
+The excision map in cohomology is justified by the previously proved small-chain deformation equivalence, not by assuming that dualizing an arbitrary homology isomorphism suffices. Both maps in (B.3)–(B.4) commute with decreasing the collar size. Passing to the cofinal filtered direct limit, with the compact-support definition of manifold (1.2), proves the first identification in (B.1).</p>
+<p>For the second, choose a smooth nonnegative cutoff <span class="math" data-tex="\(\chi(t)\)">\(\chi(t)\)</span> equal to one near zero and zero for <span class="math" data-tex="\(t\geq1/2\)">\(t\geq1/2\)</span>, with values at most one. Choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/4\)">\(0&lt;\varepsilon&lt;1/4\)</span>, and move a collar point by
+<span class="math math-display" data-tex="\[
+(x,t)\longmapsto(x,t+s\varepsilon\chi(t)),\qquad0\leq s\leq1,
+\tag{B.5}
+\]">\[
+(x,t)\longmapsto(x,t+s\varepsilon\chi(t)),\qquad0\leq s\leq1,
+\tag{B.5}
+\]</span>
+fixing the complement of the collar. This is continuous and joins the identity to a map <span class="math" data-tex="\(W\to U\)">\(W\to U\)</span>; its heights stay below one and are positive at time one. On <span class="math" data-tex="\(U\)">\(U\)</span>, the entire homotopy stays in <span class="math" data-tex="\(U\)">\(U\)</span>. Thus inclusion <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span> and that last map are homotopy inverses, proving the homology comparison. If the boundary is empty, both assertions in (B.1) reduce to compact-support cohomology on the compact <span class="math" data-tex="\(W=U\)">\(W=U\)</span> and the identity.</p>
+<p>To verify cap compatibility, represent a relative cohomology class by a cocycle <span class="math" data-tex="\(b\)">\(b\)</span> vanishing on all simplices in <span class="math" data-tex="\(A_a\)">\(A_a\)</span>, using (B.3), and represent <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span> by a finite relative cycle <span class="math" data-tex="\(c\)">\(c\)</span>. Subdivide <span class="math" data-tex="\(c\)">\(c\)</span> for the open cover <span class="math" data-tex="\(A_a,U\)">\(A_a,U\)</span>, with the small-chain homotopy preserving its boundary subcomplex. Its pieces in <span class="math" data-tex="\(A_a\)">\(A_a\)</span> have zero right cap, since their evaluated terminal faces lie in <span class="math" data-tex="\(A_a\)">\(A_a\)</span>. The remaining pieces lie in <span class="math" data-tex="\(U\)">\(U\)</span>, and their sum has boundary in <span class="math" data-tex="\(U\cap A_a\)">\(U\cap A_a\)</span>. Their local interior values on <span class="math" data-tex="\(K_a\)">\(K_a\)</span> are the positive orientation values of <span class="math" data-tex="\([W,M]\)">\([W,M]\)</span>. The compact-set uniqueness theorem consequently identifies their relative class with <span class="math" data-tex="\(\mu_{K_a}\)">\(\mu_{K_a}\)</span>. Capping those pieces with the restriction of <span class="math" data-tex="\(b\)">\(b\)</span> is exactly the compact-support duality map on <span class="math" data-tex="\(U\)">\(U\)</span>; inclusion in <span class="math" data-tex="\(W\)">\(W\)</span> gives <span class="math" data-tex="\(R_b c\)">\(R_b c\)</span>. The prism identity shows that subdivision and changes of these representatives do not change the resulting class. This proves the final assertion. ∎</p>
+<h3 id="b-2-both-poincaré-lefschetz-maps">B.2. Both Poincaré–Lefschetz maps</h3>
+<p><span id="DG-CHAR-14.theorem-B.2"></span><strong>Theorem B.2 — Relative duality in the needed generality.</strong> For oriented compact <span class="math" data-tex="\(W\)">\(W\)</span>, right cap with its relative fundamental class induces
+<span class="math math-display" data-tex="\[
+D_{\mathrm{rel}}:H^r(W,M;R)\xrightarrow{\cong}H_{d-r}(W;R)
+\tag{B.6}
+\]">\[
+D_{\mathrm{rel}}:H^r(W,M;R)\xrightarrow{\cong}H_{d-r}(W;R)
+\tag{B.6}
+\]</span>
+for every commutative coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span>. Its integer homology groups are finitely generated and vanish above dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, right cap also induces
+<span class="math math-display" data-tex="\[
+D_{\mathrm{abs}}:H^r(W;\mathbb Q)\xrightarrow{\cong}H_{d-r}(W,M;\mathbb Q),
+\tag{B.7}
+\]">\[
+D_{\mathrm{abs}}:H^r(W;\mathbb Q)\xrightarrow{\cong}H_{d-r}(W,M;\mathbb Q),
+\tag{B.7}
+\]</span>
+and the pairing
+<span class="math math-display" data-tex="\[
+H^{d-r}(W,M;\mathbb Q)\times H^r(W;\mathbb Q)\longrightarrow\mathbb Q,
+\qquad (y,a)\longmapsto\langle y\smile a,[W,M]\rangle
+\tag{B.8}
+\]">\[
+H^{d-r}(W,M;\mathbb Q)\times H^r(W;\mathbb Q)\longrightarrow\mathbb Q,
+\qquad (y,a)\longmapsto\langle y\smile a,[W,M]\rangle
+\tag{B.8}
+\]</span>
+is perfect.</p>
+<p><strong>Proof.</strong> Compact-support duality on <span class="math" data-tex="\(U\)">\(U\)</span>, composed with the two identifications of Lemma B.1, is an isomorphism. Its cap compatibility identifies it with (B.6), proving the first assertion.</p>
+<p>Choose a finite integer relative fundamental cycle <span class="math" data-tex="\(c\)">\(c\)</span>. The cap of a relative cocycle with <span class="math" data-tex="\(c\)">\(c\)</span> is an absolute cycle: the right-cap boundary formula has <span class="math" data-tex="\(R_b\partial c=0\)">\(R_b\partial c=0\)</span> because <span class="math" data-tex="\(b\)">\(b\)</span> vanishes on boundary simplices, and <span class="math" data-tex="\(\delta b=0\)">\(\delta b=0\)</span>. In each degree all these caps belong to the subgroup generated by the finitely many front faces of the simplices of <span class="math" data-tex="\(c\)">\(c\)</span>. The subgroup of its cycles is finitely generated, by the proved subgroup theorem for finite-rank free abelian groups. Surjectivity in (B.6) makes homology a quotient of that subgroup, so it is finitely generated. Negative cohomological degrees in (B.6) give zero homology above <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>The boundary <span class="math" data-tex="\(M\)">\(M\)</span> has finitely generated homology by the closed-manifold theorem. The pair sequence then makes every <span class="math" data-tex="\(H_j(W,M;\mathbb Z)\)">\(H_j(W,M;\mathbb Z)\)</span> finitely generated as well: it is an extension of a quotient of <span class="math" data-tex="\(H_j(W)\)">\(H_j(W)\)</span> by a subgroup of <span class="math" data-tex="\(H_{j-1}(M)\)">\(H_{j-1}(M)\)</span>, and subgroups and quotients of finitely generated abelian groups are finitely generated. Consequently all rational groups used below are finite dimensional.</p>
+<p>The rational coefficient theorem identifies <span class="math" data-tex="\(H^r(W;\mathbb Q)\)">\(H^r(W;\mathbb Q)\)</span> with the dual of <span class="math" data-tex="\(H_r(W;\mathbb Q)\)">\(H_r(W;\mathbb Q)\)</span>. Combine this with (B.6) in degree <span class="math" data-tex="\(d-r\)">\(d-r\)</span>. The cap-evaluation identity is
+<span class="math math-display" data-tex="\[
+\langle a,R_y c\rangle=\langle a\smile y,c\rangle.
+\tag{B.9}
+\]">\[
+\langle a,R_y c\rangle=\langle a\smile y,c\rangle.
+\tag{B.9}
+\]</span>
+It makes the pairing with factor order <span class="math" data-tex="\(a,y\)">\(a,y\)</span> perfect. Graded commutativity changes its order by the fixed sign <span class="math" data-tex="\((-1)^{r(d-r)}\)">\((-1)^{r(d-r)}\)</span>, so (B.8) is perfect too.</p>
+<p>For absolute cocycle <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(R_a c\)">\(R_a c\)</span> is a relative cycle, since <span class="math" data-tex="\(R_a\partial c\)">\(R_a\partial c\)</span> lies in <span class="math" data-tex="\(M\)">\(M\)</span>. Changes of the cocycle or relative fundamental representative give relative boundaries by the same right-cap formula. Thus (B.7) is well defined, and its evaluation against <span class="math" data-tex="\(y\in H^{d-r}(W,M;\mathbb Q)\)">\(y\in H^{d-r}(W,M;\mathbb Q)\)</span> is precisely <span class="math" data-tex="\(\langle y\smile a,c\rangle\)">\(\langle y\smile a,c\rangle\)</span>. Relative rational cohomology is the dual of relative rational homology; its finite dimension and the perfect pairing (B.8) therefore show that (B.7) is an isomorphism. This proves the asserted absolute map, rather than only equality of dimensions. ∎</p>
+<h3 id="b-3-restriction-and-the-connecting-map-are-adjoint">B.3. Restriction and the connecting map are adjoint</h3>
+<p>Now take <span class="math" data-tex="\(d=2m+1\)">\(d=2m+1\)</span>, so <span class="math" data-tex="\(M\)">\(M\)</span> has dimension <span class="math" data-tex="\(2m\)">\(2m\)</span>. Let <span class="math" data-tex="\(i:M\to W\)">\(i:M\to W\)</span> be inclusion and <span class="math" data-tex="\(\delta:H^m(M;\mathbb Q)\to H^{m+1}(W,M;\mathbb Q)\)">\(\delta:H^m(M;\mathbb Q)\to H^{m+1}(W,M;\mathbb Q)\)</span> the cohomology connecting map.</p>
+<p><span id="DG-CHAR-14.lemma-B.3"></span><strong>Lemma B.3.</strong> For <span class="math" data-tex="\(x\in H^m(M;\mathbb Q)\)">\(x\in H^m(M;\mathbb Q)\)</span> and <span class="math" data-tex="\(a\in H^m(W;\mathbb Q)\)">\(a\in H^m(W;\mathbb Q)\)</span>,
+<span class="math math-display" data-tex="\[
+\langle\delta x\smile a,[W,M]\rangle
+=\langle x\smile i^*a,[M]\rangle.
+\tag{B.10}
+\]">\[
+\langle\delta x\smile a,[W,M]\rangle
+=\langle x\smile i^*a,[M]\rangle.
+\tag{B.10}
+\]</span></p>
+<p><strong>Proof.</strong> Represent <span class="math" data-tex="\(x\)">\(x\)</span> by a cocycle on <span class="math" data-tex="\(M\)">\(M\)</span> and extend it to a cochain <span class="math" data-tex="\(X\)">\(X\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, setting any still unspecified simplex values to zero. This is possible because the singular simplices of <span class="math" data-tex="\(M\)">\(M\)</span> form a subset of the singular-simplex basis of <span class="math" data-tex="\(W\)">\(W\)</span>. Its coboundary vanishes on <span class="math" data-tex="\(M\)">\(M\)</span>, represents <span class="math" data-tex="\(\delta x\)">\(\delta x\)</span>, and is a relative cocycle. For an absolute cocycle <span class="math" data-tex="\(A\)">\(A\)</span> representing <span class="math" data-tex="\(a\)">\(a\)</span>, the cochain product identity gives
+<span class="math math-display" data-tex="\[
+\delta(X\smile A)=\delta X\smile A,
+\]">\[
+\delta(X\smile A)=\delta X\smile A,
+\]</span>
+since <span class="math" data-tex="\(\delta A=0\)">\(\delta A=0\)</span>. Evaluate this identity on a relative fundamental cycle <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(\partial c\)">\(\partial c\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>. Cochain evaluation on a boundary yields
+<span class="math math-display" data-tex="\[
+\langle\delta X\smile A,c\rangle
+=\langle X\smile A,\partial c\rangle.
+\]">\[
+\langle\delta X\smile A,c\rangle
+=\langle X\smile A,\partial c\rangle.
+\]</span>
+The right side evaluates <span class="math" data-tex="\(x\smile i^*a\)">\(x\smile i^*a\)</span> on the boundary fundamental class, because <span class="math" data-tex="\([\partial c]=[M]\)">\([\partial c]=[M]\)</span> with the outward convention already proved. This is (B.10), with its sign fixed by that convention. ∎</p>
+<p><span id="DG-CHAR-14.proposition-B.4"></span><strong>Proposition B.4 — The boundary's isotropic half.</strong> For the perfect middle pairing
+<span class="math math-display" data-tex="\[
+b_M(x,y)=\langle x\smile y,[M]\rangle
+\quad\text{on }H^m(M;\mathbb Q),
+\tag{B.11}
+\]">\[
+b_M(x,y)=\langle x\smile y,[M]\rangle
+\quad\text{on }H^m(M;\mathbb Q),
+\tag{B.11}
+\]</span>
+the subspace <span class="math" data-tex="\(L=\operatorname{im}(i^*:H^m(W;\mathbb Q)\to H^m(M;\mathbb Q))\)">\(L=\operatorname{im}(i^*:H^m(W;\mathbb Q)\to H^m(M;\mathbb Q))\)</span> satisfies <span class="math" data-tex="\(L=L^\perp\)">\(L=L^\perp\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x=i^*b\)">\(x=i^*b\)</span>, exactness gives <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span>, so (B.10) gives <span class="math" data-tex="\(b_M(x,i^*a)=0\)">\(b_M(x,i^*a)=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(L\subset L^\perp\)">\(L\subset L^\perp\)</span>. Conversely if <span class="math" data-tex="\(x\)">\(x\)</span> is orthogonal to all of <span class="math" data-tex="\(L\)">\(L\)</span>, (B.10) says that <span class="math" data-tex="\(\delta x\)">\(\delta x\)</span> pairs to zero with every <span class="math" data-tex="\(a\in H^m(W;\mathbb Q)\)">\(a\in H^m(W;\mathbb Q)\)</span>. Theorem B.2's perfect pairing, with relative degree <span class="math" data-tex="\(m+1\)">\(m+1\)</span> and absolute degree <span class="math" data-tex="\(m\)">\(m\)</span>, forces <span class="math" data-tex="\(\delta x=0\)">\(\delta x=0\)</span>. The pair sequence then gives <span class="math" data-tex="\(x\in\operatorname{im}i^*=L\)">\(x\in\operatorname{im}i^*=L\)</span>. Hence <span class="math" data-tex="\(L^\perp\subset L\)">\(L^\perp\subset L\)</span>. Closed-manifold Poincaré duality makes (B.11) nondegenerate, and (A.3) therefore gives <span class="math" data-tex="\(\dim L=\tfrac12\dim H^m(M;\mathbb Q)\)">\(\dim L=\tfrac12\dim H^m(M;\mathbb Q)\)</span>. When <span class="math" data-tex="\(m\)">\(m\)</span> is even the form is symmetric, and Lemma A.2 proves that its signature is zero. ∎</p>
+<p>No assertion that every boundary class extends to <span class="math" data-tex="\(W\)">\(W\)</span> was needed. The extendable classes are exactly this isotropic half, determined through the actual connecting map and its perfect adjoint pairing.</p>
+<h2 id="c-the-signature-as-a-bordism-homomorphism">C. The signature as a bordism homomorphism</h2>
+<p>For a smooth closed oriented manifold <span class="math" data-tex="\(M^{4k}\)">\(M^{4k}\)</span>, <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+\sigma(M)=\operatorname{sign}\left(
+H^{2k}(M;\mathbb Q),\quad
+(x,y)\longmapsto\langle x\smile y,[M]\rangle\right).
+\tag{C.1}
+\]">\[
+\sigma(M)=\operatorname{sign}\left(
+H^{2k}(M;\mathbb Q),\quad
+(x,y)\longmapsto\langle x\smile y,[M]\rangle\right).
+\tag{C.1}
+\]</span>
+The closed-manifold duality theorem makes this a finite-dimensional nondegenerate form. Its degree <span class="math" data-tex="\(2k\)">\(2k\)</span> is even, so the form is symmetric by graded commutativity. Section A proves that the signature is well defined. For dimensions not divisible by four, set <span class="math" data-tex="\(\sigma(M)=0\)">\(\sigma(M)=0\)</span>. In dimension zero use the signed-point fundamental class; its form has one diagonal coefficient equal to the point's sign, so its signature is the signed count.</p>
+<h3 id="c-1-additivity-reversal-and-boundaries">C.1. Additivity, reversal and boundaries</h3>
+<p><span id="DG-CHAR-14.theorem-C.1"></span><strong>Theorem C.1 — The three bordism properties.</strong> For smooth closed oriented manifolds,
+<span class="math math-display" data-tex="\[
+\sigma(M\sqcup N)=\sigma(M)+\sigma(N),\qquad
+\sigma(-M)=-\sigma(M),
+\tag{C.2}
+\]">\[
+\sigma(M\sqcup N)=\sigma(M)+\sigma(N),\qquad
+\sigma(-M)=-\sigma(M),
+\tag{C.2}
+\]</span>
+and an oriented boundary has signature zero. Also
+<span class="math math-display" data-tex="\[
+\sigma(M\times N)=\sigma(M)\sigma(N)
+\tag{C.3}
+\]">\[
+\sigma(M\times N)=\sigma(M)\sigma(N)
+\tag{C.3}
+\]</span>
+with the ordered product orientation, in every pair of dimensions.</p>
+<p><strong>Proof of sums, reversal and boundaries.</strong> Cohomology and the fundamental class of a finite disjoint union split over its components. The middle form is their orthogonal direct sum: cup products supported on different components are zero. Equation (A.2) gives sum additivity. Reversing the orientation negates <span class="math" data-tex="\([M]\)">\([M]\)</span> and hence the entire form, so (A.2) gives the second equality. In nonmultiple-of-four dimensions these assertions also hold by the zero convention.</p>
+<p>If <span class="math" data-tex="\(M^{4k}=\partial W^{4k+1}\)">\(M^{4k}=\partial W^{4k+1}\)</span>, put <span class="math" data-tex="\(m=2k\)">\(m=2k\)</span> in Proposition B.4. The restriction image from <span class="math" data-tex="\(W\)">\(W\)</span> is an isotropic half in this exact middle form, and Lemma A.2 gives zero signature. The proof includes <span class="math" data-tex="\(k=0\)">\(k=0\)</span>: the form on boundary points has equally many positive and negative diagonal coefficients. When the boundary dimension is not divisible by four its signature is zero by definition. This proves boundary vanishing in every degree.</p>
+<h3 id="c-2-the-full-product-proof">C.2. The full product proof</h3>
+<p><strong>Proof of the product property.</strong> Let <span class="math" data-tex="\(a=\dim M\)">\(a=\dim M\)</span>, <span class="math" data-tex="\(b=\dim N\)">\(b=\dim N\)</span>. If <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is not divisible by four, the left side of (C.3) is zero. At least one of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is then not divisible by four, making the right side zero as well. Suppose now <span class="math" data-tex="\(a+b=4k\)">\(a+b=4k\)</span> and put <span class="math" data-tex="\(h=2k\)">\(h=2k\)</span>.</p>
+<p>The full singular-chain product equivalence and field Künneth theorem proved in the Thom/Euler chapter give
+<span class="math math-display" data-tex="\[
+H^h(M\times N;\mathbb Q)=
+\bigoplus_{i+j=h}H^i(M;\mathbb Q)\otimes H^j(N;\mathbb Q).
+\tag{C.4}
+\]">\[
+H^h(M\times N;\mathbb Q)=
+\bigoplus_{i+j=h}H^i(M;\mathbb Q)\otimes H^j(N;\mathbb Q).
+\tag{C.4}
+\]</span>
+The product fundamental-class convention was proved in the manifold chapter. The cup/external-product sign on simple classes is
+<span class="math math-display" data-tex="\[
+(x\times y)\smile(x&#x27;\times y&#x27;)
+=(-1)^{j i&#x27;}(x\smile x&#x27;)\times(y\smile y&#x27;),
+\tag{C.5}
+\]">\[
+(x\times y)\smile(x&#x27;\times y&#x27;)
+=(-1)^{j i&#x27;}(x\smile x&#x27;)\times(y\smile y&#x27;),
+\tag{C.5}
+\]</span>
+where <span class="math" data-tex="\(|y|=j\)">\(|y|=j\)</span>, <span class="math" data-tex="\(|x&#x27;|=i&#x27;\)">\(|x&#x27;|=i&#x27;\)</span>. This is the sign already supplied by the earlier chain cross/cup proof. Evaluation can be nonzero only when <span class="math" data-tex="\(i+i&#x27;=a\)">\(i+i&#x27;=a\)</span> and <span class="math" data-tex="\(j+j&#x27;=b\)">\(j+j&#x27;=b\)</span>.</p>
+<p>Thus the summand indexed by <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> pairs only with the summand indexed by <span class="math" data-tex="\((a-i,b-j)\)">\((a-i,b-j)\)</span>. These indices still sum to <span class="math" data-tex="\(h\)">\(h\)</span> and define an involution on (C.4). For a two-element orbit, both individual summands have zero self-pairing and pair perfectly with one another, by the two factor duality pairings and (C.5). Their direct sum is nondegenerate with an isotropic half, so Lemma A.2 gives zero signature. Distinct orbits are orthogonal.</p>
+<p>There is a fixed orbit exactly when <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are both even; its index is <span class="math" data-tex="\((a/2,b/2)\)">\((a/2,b/2)\)</span>. If either dimension is odd there is none, so all of the middle form has signature zero, agreeing with the right side of (C.3).</p>
+<p>If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are even, their sum divisible by four makes them either both divisible by four or both congruent to two modulo four. In the first case, their middle degrees are even and the sign <span class="math" data-tex="\((-1)^{(a/2)(b/2)}\)">\((-1)^{(a/2)(b/2)}\)</span> in (C.5) is positive. The remaining fixed summand has exactly the tensor product of the two symmetric middle forms. Formula (A.7) makes its signature <span class="math" data-tex="\(\sigma(M)\sigma(N)\)">\(\sigma(M)\sigma(N)\)</span>, proving (C.3) in that case.</p>
+<p>In the second case, both factor middle degrees are odd. Graded commutativity makes their nondegenerate forms alternating, and the sign in (C.5) is negative. Their tensor form, with this sign, has signature zero by Lemma A.3 and its tensor-product consequence. Both factor signatures have been defined to be zero in those dimensions, so (C.3) holds here too. All cases, including zero-dimensional factors, are now covered. ∎</p>
+<p>Together the three properties give a unital ring homomorphism
+<span class="math math-display" data-tex="\[
+\sigma:\Omega_*\longrightarrow\mathbb Z,
+\tag{C.6}
+\]">\[
+\sigma:\Omega_*\longrightarrow\mathbb Z,
+\tag{C.6}
+\]</span>
+extended additively over finite sums of degrees. It is a homomorphism of ordinary rings; its target is not being assigned the source's degree grading. Boundary vanishing makes it independent of the representative. The positive point maps to one. Tensoring gives a unital <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra homomorphism <span class="math" data-tex="\(\Omega_*\otimes\mathbb Q\to\mathbb Q\)">\(\Omega_*\otimes\mathbb Q\to\mathbb Q\)</span>. In particular, any torsion bordism class has signature zero, since a positive integer times its signature would be zero in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<h3 id="c-3-homotopy-invariance-and-projective-values">C.3. Homotopy invariance and projective values</h3>
+<p><span id="DG-CHAR-14.proposition-C.2"></span><strong>Proposition C.2.</strong> An orientation-preserving homotopy equivalence between smooth closed oriented manifolds preserves signature. Also
+<span class="math math-display" data-tex="\[
+\sigma(\mathbb {CP}^{2k})=1\quad(k\geq0).
+\tag{C.7}
+\]">\[
+\sigma(\mathbb {CP}^{2k})=1\quad(k\geq0).
+\tag{C.7}
+\]</span></p>
+<p><strong>Proof.</strong> A homotopy equivalence induces an isomorphism of the rational cohomology rings. Orientation preservation means that it carries the source fundamental class to the target fundamental class. Naturality of cup products and evaluation therefore makes its cohomology isomorphism an isometry of the middle forms. Lemma A.1 preserves signature under that isometry. The zero convention handles other dimensions.</p>
+<p>For <span class="math" data-tex="\(\mathbb {CP}^{2k}\)">\(\mathbb {CP}^{2k}\)</span>, the integral projective-ring and positive-evaluation proof in the Chern chapter gives the degree-two generator <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\langle x^{2k},[\mathbb {CP}^{2k}]\rangle=1\)">\(\langle x^{2k},[\mathbb {CP}^{2k}]\rangle=1\)</span>. Its rational middle cohomology is generated by <span class="math" data-tex="\(x^k\)">\(x^k\)</span>, whose square has that evaluation. Thus its one-by-one middle matrix is <span class="math" data-tex="\((1)\)">\((1)\)</span>, proving (C.7). For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> this is the positive point. ∎</p>
+<p>It follows already that the signature of every projective product <span class="math" data-tex="\(P_I\)">\(P_I\)</span> from the rational-bordism chapter is one. The polynomial-basis theorem then determines the signature of any rational bordism class by summing its projective-product coefficients.</p>
+<p>For a four-manifold this and rational formula (K.10) give
+<span class="math math-display" data-tex="\[
+\sigma(M^4)=\frac{p_1[M]}3.
+\tag{C.8}
+\]">\[
+\sigma(M^4)=\frac{p_1[M]}3.
+\tag{C.8}
+\]</span>
+Since signature is an integer by its definition, this proves divisibility of <span class="math" data-tex="\(p_1[M]\)">\(p_1[M]\)</span> by three. For an eight-manifold with <span class="math" data-tex="\(u=p_1^2[M]\)">\(u=p_1^2[M]\)</span>, <span class="math" data-tex="\(v=p_2[M]\)">\(v=p_2[M]\)</span>, summing the coefficients in rational (K.12) gives
+<span class="math math-display" data-tex="\[
+\sigma(M^8)=\frac{u-2v}{5}+\frac{5v-2u}{9}
+=\frac{7v-u}{45}.
+\tag{C.9}
+\]">\[
+\sigma(M^8)=\frac{u-2v}{5}+\frac{5v-2u}{9}
+=\frac{7v-u}{45}.
+\tag{C.9}
+\]</span>
+Thus <span class="math" data-tex="\(7p_2[M]-p_1^2[M]\)">\(7p_2[M]-p_1^2[M]\)</span> is divisible by45. These are the first two signature polynomials, obtained directly from the already proved rational bordism basis. The next section will identify every degree with the multiplicative sequence defined by the formal <span class="math" data-tex="\(L\)">\(L\)</span>-series.</p>
+<h3 id="calibrating-a-polynomial-with-two-experiments">Calibrating a polynomial with two experiments</h3>
+<p>The degree-eight case explains why one projective example is not enough to identify a characteristic polynomial. Write a candidate as
+<span class="math math-display" data-tex="\[
+P[M]=\alpha p_1^2[M]+\beta p_2[M].
+\]">\[
+P[M]=\alpha p_1^2[M]+\beta p_2[M].
+\]</span>
+The complete projective tangent and product calculations in the earlier chapters give</p>
+<table>
+<thead>
+<tr>
+<th>Manifold, with complex orientation</th>
+<th><span class="math" data-tex="\(p_1^2[M]\)">\(p_1^2[M]\)</span></th>
+<th><span class="math" data-tex="\(p_2[M]\)">\(p_2[M]\)</span></th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span></td>
+<td><span class="math" data-tex="\(25\)">\(25\)</span></td>
+<td><span class="math" data-tex="\(10\)">\(10\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span></td>
+<td><span class="math" data-tex="\(18\)">\(18\)</span></td>
+<td><span class="math" data-tex="\(9\)">\(9\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the first row, <span class="math" data-tex="\(p=(1+x^2)^5\)">\(p=(1+x^2)^5\)</span> and <span class="math" data-tex="\(\langle x^4,[\mathbb {CP}^4]\rangle=1\)">\(\langle x^4,[\mathbb {CP}^4]\rangle=1\)</span>. For the second, <span class="math" data-tex="\(p_1=3x^2+3y^2\)">\(p_1=3x^2+3y^2\)</span>, <span class="math" data-tex="\(p_2=9x^2y^2\)">\(p_2=9x^2y^2\)</span>, and <span class="math" data-tex="\(\langle x^2y^2,[\mathbb {CP}^2\times\mathbb {CP}^2]\rangle=1\)">\(\langle x^2y^2,[\mathbb {CP}^2\times\mathbb {CP}^2]\rangle=1\)</span>; the pure fourth powers vanish on their four-dimensional factors. The signature values follow from Proposition C.2 and the complete product proof.</p>
+<p>Requiring the candidate to agree with those signatures gives
+<span class="math math-display" data-tex="\[
+25\alpha+10\beta=1,\qquad18\alpha+9\beta=1.
+\]">\[
+25\alpha+10\beta=1,\qquad18\alpha+9\beta=1.
+\]</span>
+The determinant is <span class="math" data-tex="\(45\)">\(45\)</span>, so the unique solution over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is
+<span class="math math-display" data-tex="\[
+\alpha=-\frac1{45},\qquad\beta=\frac7{45}.
+\tag{P.1}
+\]">\[
+\alpha=-\frac1{45},\qquad\beta=\frac7{45}.
+\tag{P.1}
+\]</span>
+The rational-bordism theorem proves that these two projective products span the entire degree-eight rational bordism group. Both signature and the two Pontryagin numbers are linear on that group; their agreement on a basis therefore proves the formula for every closed oriented eight-manifold. Torsion contributes zero to each rational characteristic number and to signature. This is the reason the two experiments suffice; their numerical agreement alone would not establish a theorem for all manifolds.</p>
+<p>There is a useful zero-signature check on <span class="math" data-tex="\(S^4\times S^4\)">\(S^4\times S^4\)</span>. Its middle cohomology has basis <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, pulled back from the two positive sphere generators. Their squares vanish and <span class="math" data-tex="\(\langle uv,[S^4\times S^4]\rangle=1\)">\(\langle uv,[S^4\times S^4]\rangle=1\)</span>, so the middle matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]">\[
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\]</span>
+The vectors <span class="math" data-tex="\(u+v,u-v\)">\(u+v,u-v\)</span> have diagonal values <span class="math" data-tex="\(2,-2\)">\(2,-2\)</span>, giving signature zero. The radial normal vector on <span class="math" data-tex="\(S^4\subset\mathbb R^5\)">\(S^4\subset\mathbb R^5\)</span> gives <span class="math" data-tex="\(TS^4\oplus\varepsilon^1\cong\varepsilon^5\)">\(TS^4\oplus\varepsilon^1\cong\varepsilon^5\)</span>; the product tangent bundle is likewise stably trivial. Thus both Pontryagin numbers in (P.1) are zero, and the polynomial agrees with the middle-form computation. The vanishing here comes from a balanced form, not from vanishing middle cohomology.</p>
+<p>The next part supplies the universal multiplicative-polynomial construction. Its role is to identify one compatible sequence in every degree, rather than solving an unrelated linear system in each dimension. The final formal residue calculation verifies its value on every projective generator and completes that all-dimensional comparison.</p>
+<h2 id="d-multiplicative-sequences-from-a-power-series">D. Multiplicative sequences from a power series</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a commutative ring with unit. A weight-graded <span class="math" data-tex="\(A\)">\(A\)</span>-algebra here is commutative in the ordinary sense, with no sign in its multiplication; the characteristic-class application uses degrees divisible by four, so this convention agrees with cup multiplication. Its degree completion consists of sequences, with multiplication by the finite convolution in each degree. In particular <span class="math" data-tex="\(1+a_1+a_2+\cdots\)">\(1+a_1+a_2+\cdots\)</span> is invertible by recursively solving for its inverse coefficients.</p>
+<p>A <strong>multiplicative sequence</strong> consists of polynomials <span class="math" data-tex="\(K_n(a_1,\ldots,a_n)\)">\(K_n(a_1,\ldots,a_n)\)</span>, homogeneous of weight <span class="math" data-tex="\(n\)">\(n\)</span> when <span class="math" data-tex="\(a_j\)">\(a_j\)</span> has weight <span class="math" data-tex="\(j\)">\(j\)</span>, with <span class="math" data-tex="\(K_0=1\)">\(K_0=1\)</span>, such that
+<span class="math math-display" data-tex="\[
+K(ab)=K(a)K(b),\qquad K(a)=1+\sum_{n\geq1}K_n(a_1,\ldots,a_n),
+\tag{D.1}
+\]">\[
+K(ab)=K(a)K(b),\qquad K(a)=1+\sum_{n\geq1}K_n(a_1,\ldots,a_n),
+\tag{D.1}
+\]</span>
+for all such completed units in every weight-graded commutative <span class="math" data-tex="\(A\)">\(A\)</span>-algebra.</p>
+<h3 id="d-1-existence-and-uniqueness-over-an-arbitrary-coefficient-ring">D.1. Existence and uniqueness, over an arbitrary coefficient ring</h3>
+<p><span id="DG-CHAR-14.theorem-D.1"></span><strong>Theorem D.1 — Classification of multiplicative sequences.</strong> Given
+<span class="math math-display" data-tex="\[
+f(t)=1+f_1t+f_2t^2+\cdots\in A[[t]],
+\tag{D.2}
+\]">\[
+f(t)=1+f_1t+f_2t^2+\cdots\in A[[t]],
+\tag{D.2}
+\]</span>
+there is a unique multiplicative sequence with <span class="math" data-tex="\(K(1+t)=f(t)\)">\(K(1+t)=f(t)\)</span> when <span class="math" data-tex="\(t\)">\(t\)</span> has weight one. If <span class="math" data-tex="\(s_I\)">\(s_I\)</span> is the stable integral monomial symmetric polynomial from the characteristic-number chapter, its formula is
+<span class="math math-display" data-tex="\[
+K_n(a_1,\ldots,a_n)=\sum_{I\vdash n}f_I s_I(a_1,\ldots,a_n),
+\qquad f_I=\prod_{j\in I}f_j.
+\tag{D.3}
+\]">\[
+K_n(a_1,\ldots,a_n)=\sum_{I\vdash n}f_I s_I(a_1,\ldots,a_n),
+\qquad f_I=\prod_{j\in I}f_j.
+\tag{D.3}
+\]</span>
+Each repeated part contributes its repeated factor to this product, and each distinct monomial in an orbit sum occurs once.</p>
+<p><strong>Proof.</strong> For variables <span class="math" data-tex="\(t_1,\ldots,t_N\)">\(t_1,\ldots,t_N\)</span> of weight one, expansion gives
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^N f(t_j)=\sum_I f_I m_I(t_1,\ldots,t_N).
+\tag{D.4}
+\]">\[
+\prod_{j=1}^N f(t_j)=\sum_I f_I m_I(t_1,\ldots,t_N).
+\tag{D.4}
+\]</span>
+Indeed each term chooses one exponent on each variable. The multiset of its positive exponents determines its partition <span class="math" data-tex="\(I\)">\(I\)</span> and its coefficient is exactly <span class="math" data-tex="\(f_I\)">\(f_I\)</span>. Repeated exponents do not introduce extra copies of the same monomial. In every fixed weight only finitely many terms occur. The full integral symmetric-polynomial theorem, and the stable orbit-sum proof in characteristic-number Lemma2.1, express its weight-<span class="math" data-tex="\(n\)">\(n\)</span> part as (D.3) with <span class="math" data-tex="\(a_i=e_i(t)\)">\(a_i=e_i(t)\)</span>. Those integer polynomial identities may be evaluated in any <span class="math" data-tex="\(A\)">\(A\)</span>; no division by a stabilizer or coefficient is needed.</p>
+<p>For two disjoint root lists <span class="math" data-tex="\(t,u\)">\(t,u\)</span>, multiply the products in (D.4). Their elementary sequences convolve, exactly as the coefficients of
+<span class="math" data-tex="\(\prod(1+t_j z)\prod(1+u_j z)\)">\(\prod(1+t_j z)\prod(1+u_j z)\)</span>. Thus the root identity gives the weight-<span class="math" data-tex="\(n\)">\(n\)</span> part of (D.1). Choose each root list with at least <span class="math" data-tex="\(n\)">\(n\)</span> variables. The two lists' elementary symmetric functions through degree <span class="math" data-tex="\(n\)">\(n\)</span> are algebraically independent over <span class="math" data-tex="\(A\)">\(A\)</span>: the proved monomial/elementary basis theorem over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, extended coefficientwise to <span class="math" data-tex="\(A\)">\(A\)</span>, shows that a polynomial relation has every coefficient zero. Hence the root identity is an identity in the independent variables <span class="math" data-tex="\(a_i,b_i\)">\(a_i,b_i\)</span>. It can be substituted in every weight-graded commutative <span class="math" data-tex="\(A\)">\(A\)</span>-algebra, proving existence and full multiplicativity. With just one root, (D.4) gives <span class="math" data-tex="\(K(1+t)=f(t)\)">\(K(1+t)=f(t)\)</span>.</p>
+<p>For uniqueness, apply any sequence satisfying (D.1) to
+<span class="math" data-tex="\(a=\prod_{j=1}^N(1+t_j)\)">\(a=\prod_{j=1}^N(1+t_j)\)</span>. Multiplicativity forces its value to be <span class="math" data-tex="\(\prod_j f(t_j)\)">\(\prod_j f(t_j)\)</span>. Algebraic independence of the elementary functions for <span class="math" data-tex="\(N\geq n\)">\(N\geq n\)</span> forces each polynomial <span class="math" data-tex="\(K_n\)">\(K_n\)</span> to equal (D.3). This proves uniqueness over <span class="math" data-tex="\(A\)">\(A\)</span>, including rings with zero divisors. ∎</p>
+<p>For example, using the integral symmetric formulas already proved,
+<span class="math math-display" data-tex="\[
+K_1=f_1a_1,\qquad
+K_2=f_2(a_1^2-2a_2)+f_1^2a_2,
+\tag{D.5}
+\]">\[
+K_1=f_1a_1,\qquad
+K_2=f_2(a_1^2-2a_2)+f_1^2a_2,
+\tag{D.5}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+K_3=f_3(a_1^3-3a_1a_2+3a_3)
++f_2f_1(a_1a_2-3a_3)+f_1^3a_3.
+\tag{D.6}
+\]">\[
+K_3=f_3(a_1^3-3a_1a_2+3a_3)
++f_2f_1(a_1a_2-3a_3)+f_1^3a_3.
+\tag{D.6}
+\]</span>
+The monomial-symmetric description gives both a direct construction and the coefficients needed for calculations.</p>
+<p><strong>Coefficient reciprocity.</strong> The same sequence has the second universal formula
+<span class="math math-display" data-tex="\[
+K_n(a_1,\ldots,a_n)=\sum_{I\vdash n}s_I(f_1,\ldots,f_n)a_I,
+\qquad a_I=\prod_{j\in I}a_j.
+\]">\[
+K_n(a_1,\ldots,a_n)=\sum_{I\vdash n}s_I(f_1,\ldots,f_n)a_I,
+\qquad a_I=\prod_{j\in I}a_j.
+\]</span>
+Here the arguments of <span class="math" data-tex="\(s_I\)">\(s_I\)</span> are elementary-symmetric coordinates, just as in (D.3). Thus each coefficient of an ordinary characteristic monomial can be read from one symmetric polynomial in the coefficients of the defining series.</p>
+<p>To prove the formula without assuming that elements of <span class="math" data-tex="\(A\)">\(A\)</span> have roots, work first over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> with two independent lists <span class="math" data-tex="\(u_1,\ldots,u_N\)">\(u_1,\ldots,u_N\)</span> and <span class="math" data-tex="\(t_1,\ldots,t_M\)">\(t_1,\ldots,t_M\)</span>, where <span class="math" data-tex="\(N,M\geq n\)">\(N,M\geq n\)</span>. Substitute <span class="math" data-tex="\(f_i=e_i(u)\)">\(f_i=e_i(u)\)</span> and <span class="math" data-tex="\(a_i=e_i(t)\)">\(a_i=e_i(t)\)</span>, and use the finite series <span class="math" data-tex="\(f(z)=\prod_j(1+u_jz)\)">\(f(z)=\prod_j(1+u_jz)\)</span>. The root construction (D.4) becomes
+<span class="math math-display" data-tex="\[
+\prod_{i=1}^{M}f(t_i)=\prod_{i=1}^{M}\prod_{j=1}^{N}(1+u_jt_i).
+\]">\[
+\prod_{i=1}^{M}f(t_i)=\prod_{i=1}^{M}\prod_{j=1}^{N}(1+u_jt_i).
+\]</span>
+Group instead by the variables <span class="math" data-tex="\(u_j\)">\(u_j\)</span>. For a fixed <span class="math" data-tex="\(j\)">\(j\)</span>, the coefficient of <span class="math" data-tex="\(u_j^r\)">\(u_j^r\)</span> in its factors is <span class="math" data-tex="\(e_r(t)=a_r\)">\(e_r(t)=a_r\)</span>. In degree <span class="math" data-tex="\(n\)">\(n\)</span> in each list, grouping the positive exponents into a partition <span class="math" data-tex="\(I\)">\(I\)</span> therefore gives <span class="math" data-tex="\(m_I(u)a_I\)">\(m_I(u)a_I\)</span>, with every distinct exponent placement counted once. Since <span class="math" data-tex="\(m_I(u)=s_I(e_1(u),\ldots,e_n(u))\)">\(m_I(u)=s_I(e_1(u),\ldots,e_n(u))\)</span>, this gives the displayed reciprocity identity after substitution. Elementary-symmetric coordinates in each list are algebraically independent over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so the identity already holds in the independent symbols <span class="math" data-tex="\(f_1,\ldots,f_n,a_1,\ldots,a_n\)">\(f_1,\ldots,f_n,a_1,\ldots,a_n\)</span>. Finally substitute these symbols in any commutative <span class="math" data-tex="\(A\)">\(A\)</span>. Coefficients beyond <span class="math" data-tex="\(n\)">\(n\)</span> never enter, so the argument covers infinite defining series and rings with zero divisors. For example, the coefficients of <span class="math" data-tex="\(a_1^2\)">\(a_1^2\)</span> and <span class="math" data-tex="\(a_2\)">\(a_2\)</span> are respectively <span class="math" data-tex="\(f_2\)">\(f_2\)</span> and <span class="math" data-tex="\(f_1^2-2f_2\)">\(f_1^2-2f_2\)</span>, in agreement with (D.5). ∎</p>
+<h3 id="d-2-a-genus-is-a-ring-homomorphism">D.2. A genus is a ring homomorphism</h3>
+<p>Now take <span class="math" data-tex="\(A=\mathbb Q\)">\(A=\mathbb Q\)</span>. For a closed oriented <span class="math" data-tex="\(4n\)">\(4n\)</span>-manifold define the genus
+<span class="math math-display" data-tex="\[
+K[M]=\langle K_n(p_1(TM),\ldots,p_n(TM)),[M]\rangle,
+\tag{D.7}
+\]">\[
+K[M]=\langle K_n(p_1(TM),\ldots,p_n(TM)),[M]\rangle,
+\tag{D.7}
+\]</span>
+and set it to zero in dimensions not divisible by four. In degree zero it is the signed count. All polynomials use tangent Pontryagin classes; the weight corresponds to one quarter of the cohomological degree.</p>
+<p><span id="DG-CHAR-14.theorem-D.2"></span><strong>Theorem D.2 — Genus homomorphism.</strong> This defines a unital ring homomorphism <span class="math" data-tex="\(\Omega_*\to\mathbb Q\)">\(\Omega_*\to\mathbb Q\)</span>, and hence a <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra homomorphism <span class="math" data-tex="\(\Omega_*\otimes\mathbb Q\to\mathbb Q\)">\(\Omega_*\otimes\mathbb Q\to\mathbb Q\)</span>.</p>
+<p><strong>Proof.</strong> Additivity and orientation reversal follow by evaluating on component fundamental classes. Each positive-degree value is a rational linear combination of Pontryagin numbers, whose boundary vanishing was proved integrally. Degree zero uses the signed-count boundary proof. Thus the value depends only on the bordism class.</p>
+<p>For a product, the tangent bundle is the sum of the pulled-back tangent bundles. The integral two-torsion difference in the Pontryagin Whitney formula vanishes after rational coefficient change, so (D.1) gives
+<span class="math math-display" data-tex="\[
+K(p(T(M\times N)))=K(p(TM))\times K(p(TN)).
+\tag{D.8}
+\]">\[
+K(p(T(M\times N)))=K(p(TM))\times K(p(TN)).
+\tag{D.8}
+\]</span>
+If both dimensions are divisible by four, evaluation in the product top degree takes the top component in each factor. The proved product fundamental-class formula then gives <span class="math" data-tex="\(K[M\times N]=K[M]K[N]\)">\(K[M\times N]=K[M]K[N]\)</span>; every degree in question is even and the product sign is positive. If either dimension is not divisible by four, no class of degree divisible by four can have that factor's top degree. The same expansion has zero product evaluation whenever the total dimension is divisible by four, and the genus's zero convention handles the other total dimensions. Both sides are again equal. The positive point has value <span class="math" data-tex="\(K_0=1\)">\(K_0=1\)</span>. This proves the ordinary unital ring homomorphism and its rational extension. ∎</p>
+<p><strong>The converse: prescribing a rational genus.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be any commutative <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra with unit. Every unital <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra homomorphism
+<span class="math math-display" data-tex="\[
+\varphi:\Omega_*\otimes\mathbb Q\longrightarrow B
+\]">\[
+\varphi:\Omega_*\otimes\mathbb Q\longrightarrow B
+\]</span>
+comes from a unique series <span class="math" data-tex="\(f(t)\in1+tB[[t]]\)">\(f(t)\in1+tB[[t]]\)</span> by evaluating its multiplicative sequence on tangent Pontryagin classes. This includes the usual case <span class="math" data-tex="\(B=\mathbb Q\)">\(B=\mathbb Q\)</span>; no integral-domain hypothesis is needed.</p>
+<p>First, the genus construction works over <span class="math" data-tex="\(B\)">\(B\)</span>. In dimension <span class="math" data-tex="\(4n\)">\(4n\)</span>, express <span class="math" data-tex="\(K_n\)">\(K_n\)</span> as a finite <span class="math" data-tex="\(B\)">\(B\)</span>-linear combination of Pontryagin monomials, evaluate each monomial's rational number, and multiply by its coefficient in <span class="math" data-tex="\(B\)">\(B\)</span>. The rational boundary identities and universal product identities used in Theorem D.2 remain identities after this coefficient substitution. Their finite sums prove boundary invariance and multiplicativity over <span class="math" data-tex="\(B\)">\(B\)</span>, including products with a factor of dimension not divisible by four. The signed count and unit in degree zero give a unital homomorphism.</p>
+<p>Write <span class="math" data-tex="\(g_n=\varphi[\mathbb {CP}^{2n}]\)">\(g_n=\varphi[\mathbb {CP}^{2n}]\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The exact projective tangent formula and (D.4) give
+<span class="math math-display" data-tex="\[
+K[\mathbb {CP}^{2n}]=[t^n]f(t)^{2n+1}
+=(2n+1)f_n+R_n(f_1,\ldots,f_{n-1}),
+\]">\[
+K[\mathbb {CP}^{2n}]=[t^n]f(t)^{2n+1}
+=(2n+1)f_n+R_n(f_1,\ldots,f_{n-1}),
+\]</span>
+where <span class="math" data-tex="\(R_n\)">\(R_n\)</span> is an integer polynomial. Indeed the terms containing <span class="math" data-tex="\(f_nt^n\)">\(f_nt^n\)</span> choose it in exactly one of the <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span> factors, while every other contribution has only smaller positive exponents. Since <span class="math" data-tex="\(2n+1\)">\(2n+1\)</span> is a unit in every <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra, recursively set
+<span class="math math-display" data-tex="\[
+f_n=\frac{g_n-R_n(f_1,\ldots,f_{n-1})}{2n+1}.
+\]">\[
+f_n=\frac{g_n-R_n(f_1,\ldots,f_{n-1})}{2n+1}.
+\]</span>
+This defines a unique infinite series; each step uses only the previously defined finite list. Its genus equals <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on every projective generator and on the positive point. The proved polynomial description of rational oriented bordism then makes the two homomorphisms equal on all products and finite linear combinations. The same recursion proves uniqueness. In particular a unital homomorphism <span class="math" data-tex="\(\Omega_*\to\mathbb Q\)">\(\Omega_*\to\mathbb Q\)</span> extends uniquely to rational bordism and is obtained this way: its extension sends <span class="math" data-tex="\(x\otimes q\)">\(x\otimes q\)</span> to <span class="math" data-tex="\(q\varphi(x)\)">\(q\varphi(x)\)</span>, so torsion is killed and the tensor relations are respected. ∎</p>
+<h2 id="e-the-formal-l-series-and-the-signature-theorem">E. The formal L-series and the signature theorem</h2>
+<p>All power series and residues below are formal over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. They require no analytic convergence or complex-integration theorem.</p>
+<p>Define the even series
+<span class="math math-display" data-tex="\[
+\frac{s\cosh s}{\sinh s}=\frac{s}{\tanh s}
+=f_L(s^2),
+\qquad
+f_L(t)=1+\frac t3-\frac{t^2}{45}+\frac{2t^3}{945}+\cdots.
+\tag{E.1}
+\]">\[
+\frac{s\cosh s}{\sinh s}=\frac{s}{\tanh s}
+=f_L(s^2),
+\qquad
+f_L(t)=1+\frac t3-\frac{t^2}{45}+\frac{2t^3}{945}+\cdots.
+\tag{E.1}
+\]</span>
+Here <span class="math" data-tex="\(\sinh s=s(1+s^2/6+\cdots)\)">\(\sinh s=s(1+s^2/6+\cdots)\)</span> and <span class="math" data-tex="\(\cosh s=1+s^2/2+\cdots\)">\(\cosh s=1+s^2/2+\cdots\)</span>, using their factorial-coefficient definitions. After cancelling <span class="math" data-tex="\(s\)">\(s\)</span>, division by the even unit series uniquely defines <span class="math" data-tex="\(f_L\)">\(f_L\)</span>. Let <span class="math" data-tex="\(L_n\)">\(L_n\)</span> be its multiplicative sequence from Theorem D.1. Substituting the first coefficients in (D.5)–(D.6) gives
+<span class="math math-display" data-tex="\[
+L_1=\frac{p_1}{3},\qquad
+L_2=\frac{7p_2-p_1^2}{45},\qquad
+L_3=\frac{62p_3-13p_1p_2+2p_1^3}{945}.
+\tag{E.2}
+\]">\[
+L_1=\frac{p_1}{3},\qquad
+L_2=\frac{7p_2-p_1^2}{45},\qquad
+L_3=\frac{62p_3-13p_1p_2+2p_1^3}{945}.
+\tag{E.2}
+\]</span>
+For instance the coefficient of <span class="math" data-tex="\(p_2\)">\(p_2\)</span> in <span class="math" data-tex="\(L_2\)">\(L_2\)</span> is <span class="math" data-tex="\(2/45+1/9=7/45\)">\(2/45+1/9=7/45\)</span>, retaining the repeated-root convention of (D.3).</p>
+<h3 id="e-1-a-formal-change-of-variable-for-a-coefficient">E.1. A formal change of variable for a coefficient</h3>
+<p>For a formal Laurent series with only finitely many negative powers, define <span class="math" data-tex="\(\operatorname{Res}_s g(s)\,ds\)">\(\operatorname{Res}_s g(s)\,ds\)</span> to be its coefficient of <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>.</p>
+<p><span id="DG-CHAR-14.lemma-E.1"></span><strong>Lemma E.1 — Formal residue substitution.</strong> If <span class="math" data-tex="\(u(s)=s+O(s^2)\)">\(u(s)=s+O(s^2)\)</span>, then
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_s g(u(s))u&#x27;(s)\,ds
+=\operatorname{Res}_u g(u)\,du.
+\tag{E.3}
+\]">\[
+\operatorname{Res}_s g(u(s))u&#x27;(s)\,ds
+=\operatorname{Res}_u g(u)\,du.
+\tag{E.3}
+\]</span></p>
+<p><strong>Proof.</strong> For a monomial <span class="math" data-tex="\(g(u)=u^j\)">\(g(u)=u^j\)</span> with <span class="math" data-tex="\(j\ne-1\)">\(j\ne-1\)</span>, its substituted expression is the derivative of <span class="math" data-tex="\(u(s)^{j+1}/(j+1)\)">\(u(s)^{j+1}/(j+1)\)</span>. A derivative of a Laurent series has zero residue: the only possible source, its constant term, differentiates to zero. For <span class="math" data-tex="\(j=-1\)">\(j=-1\)</span>, write <span class="math" data-tex="\(u(s)=s v(s)\)">\(u(s)=s v(s)\)</span>, where <span class="math" data-tex="\(v\)">\(v\)</span> is a unit power series. Then <span class="math" data-tex="\(u&#x27;/u=s^{-1}+v&#x27;/v\)">\(u&#x27;/u=s^{-1}+v&#x27;/v\)</span>, and the second summand is a power series, so its residue is one. This proves the monomial assertion. The negative part of <span class="math" data-tex="\(g\)">\(g\)</span> is finite; its nonnegative part, after substitution and multiplication by <span class="math" data-tex="\(u&#x27;\)">\(u&#x27;\)</span>, has no negative powers at all. Linearity therefore proves (E.3) for the stated series without an infinite negative-power interchange. ∎</p>
+<h3 id="e-2-all-projective-l-genera-are-one">E.2. All projective L-genera are one</h3>
+<p><span id="DG-CHAR-14.proposition-E.2"></span><strong>Proposition E.2.</strong> For every <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, <span class="math" data-tex="\(L[\mathbb {CP}^{2k}]=1\)">\(L[\mathbb {CP}^{2k}]=1\)</span>.</p>
+<p><strong>Proof.</strong> With the positive projective generator <span class="math" data-tex="\(x\)">\(x\)</span>, the earlier exact tangent computation gives <span class="math" data-tex="\(p(T\mathbb {CP}^{2k})=(1+x^2)^{2k+1}\)">\(p(T\mathbb {CP}^{2k})=(1+x^2)^{2k+1}\)</span>, truncated in the projective ring. The root identity of Theorem D.1 gives
+<span class="math math-display" data-tex="\[
+L(p(T\mathbb {CP}^{2k}))=f_L(x^2)^{2k+1}
+=\left(\frac{x}{\tanh x}\right)^{2k+1}.
+\tag{E.4}
+\]">\[
+L(p(T\mathbb {CP}^{2k}))=f_L(x^2)^{2k+1}
+=\left(\frac{x}{\tanh x}\right)^{2k+1}.
+\tag{E.4}
+\]</span>
+Positive top evaluation makes its genus the coefficient of <span class="math" data-tex="\(x^{2k}\)">\(x^{2k}\)</span>. Thus it is
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_x\frac{dx}{(\tanh x)^{2k+1}}.
+\tag{E.5}
+\]">\[
+\operatorname{Res}_x\frac{dx}{(\tanh x)^{2k+1}}.
+\tag{E.5}
+\]</span>
+Let <span class="math" data-tex="\(u=\tanh x\)">\(u=\tanh x\)</span>. It has linear term <span class="math" data-tex="\(x\)">\(x\)</span> and hence a unique inverse series, found recursively by solving each coefficient after the first. Differentiating the quotient of the formal sinh and cosh series gives <span class="math" data-tex="\(u&#x27;=1-u^2\)">\(u&#x27;=1-u^2\)</span>. The identity <span class="math" data-tex="\(\cosh^2x-\sinh^2x=1\)">\(\cosh^2x-\sinh^2x=1\)</span> used here follows from their expressions in <span class="math" data-tex="\(\exp(x),\exp(-x)\)">\(\exp(x),\exp(-x)\)</span>, whose product is one by the binomial coefficient identity in every positive degree. All divisions are by unit series after the leading power of <span class="math" data-tex="\(x\)">\(x\)</span> has been separated.</p>
+<p>Apply (E.3) to
+<span class="math" data-tex="\(g(u)=u^{-(2k+1)}(1-u^2)^{-1}\)">\(g(u)=u^{-(2k+1)}(1-u^2)^{-1}\)</span>. Its substituted differential is precisely (E.5), so that residue equals
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_u \frac{u^{-(2k+1)}}{1-u^2}\,du
+=[u^{2k}]\sum_{j\geq0}u^{2j}=1.
+\tag{E.6}
+\]">\[
+\operatorname{Res}_u \frac{u^{-(2k+1)}}{1-u^2}\,du
+=[u^{2k}]\sum_{j\geq0}u^{2j}=1.
+\tag{E.6}
+\]</span>
+This includes <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, also represented by the positive point. ∎</p>
+<h3 id="e-3-the-theorem-in-every-dimension">E.3. The theorem in every dimension</h3>
+<p><span id="DG-CHAR-14.theorem-E.3"></span><strong>Theorem E.3 — Hirzebruch signature theorem.</strong> For every smooth closed oriented <span class="math" data-tex="\(4k\)">\(4k\)</span>-manifold, possibly disconnected,
+<span class="math math-display" data-tex="\[
+\sigma(M)=\left\langle L_k(p_1(TM),\ldots,p_k(TM)),[M]\right\rangle.
+\tag{E.7}
+\]">\[
+\sigma(M)=\left\langle L_k(p_1(TM),\ldots,p_k(TM)),[M]\right\rangle.
+\tag{E.7}
+\]</span>
+Consequently its L-genus is an integer and depends only on its oriented homotopy type.</p>
+<p><strong>Proof.</strong> Theorem C.1 makes signature a unital algebra homomorphism on <span class="math" data-tex="\(\Omega_*\otimes\mathbb Q\)">\(\Omega_*\otimes\mathbb Q\)</span>. Theorem D.2 does the same for the L-genus. The rational-bordism chapter proves that this algebra is freely generated by the classes <span class="math" data-tex="\([\mathbb {CP}^{2i}]\)">\([\mathbb {CP}^{2i}]\)</span>, <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>, with the positive point as unit. On each generator, Proposition C.2 and Proposition E.2 make both values equal to one. Unital algebra homomorphisms agreeing on every polynomial generator agree on every monomial and every finite linear combination. Hence they agree on all rational bordism classes, proving (E.7). Its integrality follows from the signature definition, and its oriented homotopy invariance follows from Proposition C.2. ∎</p>
+<p><strong>Signatures of projective fibrations.</strong> Let <span class="math" data-tex="\(\pi:E\to B\)">\(\pi:E\to B\)</span> be a smooth bundle with fibre <span class="math" data-tex="\(\mathbb {CP}^n\)">\(\mathbb {CP}^n\)</span>, <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, and structure group <span class="math" data-tex="\(\operatorname{PGL}(n+1,\mathbb C)\)">\(\operatorname{PGL}(n+1,\mathbb C)\)</span>. Suppose <span class="math" data-tex="\(B\)">\(B\)</span> is smooth, closed and oriented, and orient <span class="math" data-tex="\(E\)">\(E\)</span> by the base orientation followed by the fibre's complex orientation. Then
+<span class="math math-display" data-tex="\[
+\sigma(E)=\sigma(B)\sigma(\mathbb {CP}^n).
+\]">\[
+\sigma(E)=\sigma(B)\sigma(\mathbb {CP}^n).
+\]</span>
+Disconnected bases and total spaces are permitted. The structure group need not lift to a vector-bundle structure group. For an empty base both sides are zero; assume it is nonempty in the following proof.</p>
+<p>The vertical tangent bundle <span class="math" data-tex="\(T_\pi E\)">\(T_\pi E\)</span> is complex because all transition maps are complex projective transformations. The projective tangent calculation makes
+<span class="math" data-tex="\(h=c_1(T_\pi E)/(n+1)\in H^2(E;\mathbb Q)\)">\(h=c_1(T_\pi E)/(n+1)\in H^2(E;\mathbb Q)\)</span> restrict to the positive projective generator. Hence
+<span class="math math-display" data-tex="\[
+H^q(E;\mathbb Q)=\bigoplus_{i=0}^{n}\pi^*H^{q-2i}(B;\mathbb Q)h^i.
+\]">\[
+H^q(E;\mathbb Q)=\bigoplus_{i=0}^{n}\pi^*H^{q-2i}(B;\mathbb Q)h^i.
+\]</span>
+The module proof needs only the local product and these global fibre-basis classes. Over a trivializing open set, the vertical tangent bundle is the pullback of the fibre tangent bundle, so <span class="math" data-tex="\(h\)">\(h\)</span> is its positive fibre generator. The chain-product equivalence and finite free fibre cohomology make the displayed map an isomorphism there. Choose a finite trivializing cover of compact <span class="math" data-tex="\(B\)">\(B\)</span>. Every finite intersection is contained in a trivializing open set. The small-chain Mayer–Vietoris sequences commute with the displayed maps; induction on the cover, with the same induction for its intersections with the last member, and the five lemma give the global isomorphism. This is the full gluing argument of the earlier projective-bundle module theorem, and uses no vector-bundle lift.</p>
+<p>Write <span class="math" data-tex="\(b=\dim B\)">\(b=\dim B\)</span>. For a top-degree base class <span class="math" data-tex="\(\beta\)">\(\beta\)</span>,
+<span class="math math-display" data-tex="\[
+\langle\pi^*\beta\,h^n,[E]\rangle=\langle\beta,[B]\rangle.
+\]">\[
+\langle\pi^*\beta\,h^n,[E]\rangle=\langle\beta,[B]\rangle.
+\]</span>
+Check this first on a local orientation generator supported in a base ball. Its inverse image is a product with the fibre, and the positive fibre class has <span class="math" data-tex="\(n\)">\(n\)</span>-th power evaluating to one. The product fundamental-class convention gives the stated sign. Such local generators span the top cohomology on each component, proving the formula.</p>
+<p>If <span class="math" data-tex="\(b+2n\)">\(b+2n\)</span> is not divisible by four, the total signature and at least one factor on the right are zero. Otherwise write <span class="math" data-tex="\(b+2n=4k\)">\(b+2n=4k\)</span> and equip <span class="math" data-tex="\(V=H^{2k}(E;\mathbb Q)\)">\(V=H^{2k}(E;\mathbb Q)\)</span> with its nondegenerate middle form. Let <span class="math" data-tex="\(F^rV\)">\(F^rV\)</span> be the sum of the displayed terms of base degree at least <span class="math" data-tex="\(r\)">\(r\)</span>. Products of base degrees summing to more than <span class="math" data-tex="\(b\)">\(b\)</span> vanish, so <span class="math" data-tex="\(F^rV\)">\(F^rV\)</span> is orthogonal to <span class="math" data-tex="\(F^{b-r+1}V\)">\(F^{b-r+1}V\)</span>. A term of base degree <span class="math" data-tex="\(s\)">\(s\)</span> has fibre exponent <span class="math" data-tex="\(i=(2k-s)/2\)">\(i=(2k-s)/2\)</span>; its complementary base degree <span class="math" data-tex="\(b-s\)">\(b-s\)</span> has exponent <span class="math" data-tex="\(n-i\)">\(n-i\)</span>. Both are allowed together or both absent. Poincaré duality gives equal dimensions of these complementary terms. Summing gives <span class="math" data-tex="\(\dim F^rV+\dim F^{b-r+1}V=\dim V\)">\(\dim F^rV+\dim F^{b-r+1}V=\dim V\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+(F^rV)^\perp=F^{b-r+1}V.
+\]">\[
+(F^rV)^\perp=F^{b-r+1}V.
+\]</span>
+Here <span class="math" data-tex="\(b\)">\(b\)</span> is even. Thus <span class="math" data-tex="\(L=F^{b/2+1}V\)">\(L=F^{b/2+1}V\)</span> is isotropic and <span class="math" data-tex="\(L^\perp=F^{b/2}V\)">\(L^\perp=F^{b/2}V\)</span>.</p>
+<p>A symmetric form has the signature of <span class="math" data-tex="\(L^\perp/L\)">\(L^\perp/L\)</span> for any isotropic <span class="math" data-tex="\(L\)">\(L\)</span>. Indeed the quotient is nondegenerate since <span class="math" data-tex="\((L^\perp)^\perp=L\)">\((L^\perp)^\perp=L\)</span>. A lift <span class="math" data-tex="\(W\subset L^\perp\)">\(W\subset L^\perp\)</span> of its basis has that nondegenerate form, so <span class="math" data-tex="\(V=W\oplus W^\perp\)">\(V=W\oplus W^\perp\)</span>. The complement contains <span class="math" data-tex="\(L\)">\(L\)</span> and has dimension <span class="math" data-tex="\(2\dim L\)">\(2\dim L\)</span>; Lemma A.2 makes its signature zero. This proves the reduction. In our filtration the quotient has base degree <span class="math" data-tex="\(b/2\)">\(b/2\)</span> and would require fibre exponent <span class="math" data-tex="\(n/2\)">\(n/2\)</span>. If <span class="math" data-tex="\(n\)">\(n\)</span> is odd it is absent and the total signature is zero. If <span class="math" data-tex="\(n\)">\(n\)</span> is even it is <span class="math" data-tex="\(H^{b/2}(B;\mathbb Q)h^{n/2}\)">\(H^{b/2}(B;\mathbb Q)h^{n/2}\)</span>, with exactly the base pairing by the top-degree normalization. In this case <span class="math" data-tex="\(b\)">\(b\)</span> is divisible by four and the total signature is <span class="math" data-tex="\(\sigma(B)\)">\(\sigma(B)\)</span>. These are precisely the two values of <span class="math" data-tex="\(\sigma(\mathbb {CP}^n)\)">\(\sigma(\mathbb {CP}^n)\)</span>. The formulas include <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and empty manifolds. ∎</p>
+<p><strong>Signatures represented by degree-two classes.</strong> Let <span class="math" data-tex="\(M^{4k+2}\)">\(M^{4k+2}\)</span> be smooth, closed and oriented, <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>. Every <span class="math" data-tex="\(x\in H^2(M;\mathbb Z)\)">\(x\in H^2(M;\mathbb Z)\)</span> is represented by the oriented zero set of a transverse section of a smooth complex line bundle with first Chern class <span class="math" data-tex="\(x\)">\(x\)</span>. Its signature depends only on <span class="math" data-tex="\(x\)">\(x\)</span>; call it <span class="math" data-tex="\(\tau(x)\)">\(\tau(x)\)</span>. More generally, transverse sections of the direct sum of line bundles for <span class="math" data-tex="\(x_1,\ldots,x_r\)">\(x_1,\ldots,x_r\)</span> have a common zero set whose signature depends only on the classes; call it <span class="math" data-tex="\(\tau(x_1,\ldots,x_r)\)">\(\tau(x_1,\ldots,x_r)\)</span>. If the real normal rank <span class="math" data-tex="\(2r\)">\(2r\)</span> exceeds the manifold dimension, the transverse zero set is empty and the value is zero. Then
+<span class="math math-display" data-tex="\[
+\tau(x+y)=\tau(x)+\tau(y)-\tau(x,y,x+y).
+\]">\[
+\tau(x+y)=\tau(x)+\tau(y)-\tau(x,y,x+y).
+\]</span></p>
+<p>For empty <span class="math" data-tex="\(M\)">\(M\)</span> the assertion is immediate. Otherwise first supply line-bundle existence. Its unit-scalar quotient is <span class="math" data-tex="\(\mathbb {CP}^\infty\)">\(\mathbb {CP}^\infty\)</span>. To verify contractibility upstairs over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, let <span class="math" data-tex="\(T\)">\(T\)</span> insert a zero first coordinate. The homotopy <span class="math" data-tex="\(((1-t)v+tTv)/\|(1-t)v+tTv\|\)">\(((1-t)v+tTv)/\|(1-t)v+tTv\|\)</span> joins <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(Tv\)">\(Tv\)</span>: for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the coordinate after the last nonzero coordinate of <span class="math" data-tex="\(v\)">\(v\)</span> prevents the denominator from vanishing, and at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> it is one. The homotopy <span class="math" data-tex="\(\cos(\pi t/2)Tv+\sin(\pi t/2)e_1\)">\(\cos(\pi t/2)Tv+\sin(\pi t/2)e_1\)</span> then joins <span class="math" data-tex="\(Tv\)">\(Tv\)</span> to <span class="math" data-tex="\(e_1\)">\(e_1\)</span>; the summands are perpendicular. Each finite sphere stage times the compact parameter interval maps continuously into a finite stage, and the compact-product direct-limit lemma proves joint continuity. Thus the infinite unit sphere is contractible. The projection has the disk-parameter homotopy lifting property: the projection-path transport proof identifies the image lines of a homotopy of orthogonal projections with their initial lines, fixing time zero; normalize the transported initial unit vectors. Compact parameter images lie in finite projective stages, so that proof and the compact-product topology apply. The proof of the fibration homotopy sequence uses exactly these disk lifts. Contractibility upstairs and the circle covering <span class="math" data-tex="\(\mathbb R\to S^1\)">\(\mathbb R\to S^1\)</span> thus give <span class="math" data-tex="\(\pi_2(\mathbb {CP}^\infty)=\mathbb Z\)">\(\pi_2(\mathbb {CP}^\infty)=\mathbb Z\)</span> and all other positive homotopy groups zero. The tautological first Chern class evaluates to minus one on the positive projective line, hence is a normalized generator after choosing this sign for <span class="math" data-tex="\(\pi_2\)">\(\pi_2\)</span>. Here is the needed integral representation argument on a CW complex <span class="math" data-tex="\(X\)">\(X\)</span>. Represent the desired class by a cellular degree-two integer cocycle <span class="math" data-tex="\(a\)">\(a\)</span>. Send the one-skeleton to the basepoint, and map each two-cell modulo its boundary to a sphere representing its integer <span class="math" data-tex="\(a(e)\)">\(a(e)\)</span> in the normalized <span class="math" data-tex="\(\pi_2\)">\(\pi_2\)</span>. For a three-cell, its attaching sphere then has target Hurewicz class <span class="math" data-tex="\(a(\partial e)=0\)">\(a(\partial e)=0\)</span>: these are precisely its oriented cellular incidence coefficients. The first Hurewicz isomorphism in the simply connected target makes it null homotopic, so extend over that cell. Every later attaching sphere has dimension at least three and extends since that target homotopy group is zero. The CW characteristic topology makes all extensions continuous, including infinitely many cells. The pullback first Chern class has the prescribed two-cell values, hence is <span class="math" data-tex="\(a\)">\(a\)</span> by the proved cellular/singular comparison. This proves existence over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>; it does not infer it from the earlier mod-two representation theorem.</p>
+<p>The finite-domination proof gives maps <span class="math" data-tex="\(a:M\to K\)">\(a:M\to K\)</span>, <span class="math" data-tex="\(b:K\to M\)">\(b:K\to M\)</span> to and from a finite CW complex, with <span class="math" data-tex="\(ba\simeq\mathrm{id}_M\)">\(ba\simeq\mathrm{id}_M\)</span>. Represent <span class="math" data-tex="\(b^*x\)">\(b^*x\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> and compose its classifying map with <span class="math" data-tex="\(a\)">\(a\)</span>. Its pullback class is <span class="math" data-tex="\(x\)">\(x\)</span>, and its compact image lies in a finite projective stage. Replace it by a smooth homotopic map as follows. Embed that finite projective manifold in Euclidean space and take a smooth tubular retraction. A finite smooth partition-of-unity average of nearby image points uniformly approximates the continuous map. Choose the error smaller than the distance of the compact image to the complement of the tubular neighbourhood. Retracting this average gives a smooth map; retracting its straight-line homotopy with the original map proves homotopy. The smooth pullback tautological line is the desired bundle.</p>
+<p>A finite chart cover and subordinate smooth functions give finitely many global sections spanning each fibre. Adding their real linear combinations to a section gives a finite-parameter family whose parameter derivative surjects onto the fibre. Parametric transversality supplies a transverse section. For a sum of lines take spanning sections in each summand. Apply the same argument to every partial sum; each has a measure-zero set of bad parameters by Sard's theorem. Avoid their finite union. This also makes the successive codimension-two intersections transverse. Orient the normal bundle by the ordered complex line orientations.</p>
+<p>Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be this common zero set and <span class="math" data-tex="\(i:Y\hookrightarrow M\)">\(i:Y\hookrightarrow M\)</span>. Transversality identifies its normal bundle with <span class="math" data-tex="\(\bigoplus_jL_j|_Y\)">\(\bigoplus_jL_j|_Y\)</span>, so
+<span class="math math-display" data-tex="\[
+TY\oplus\bigoplus_j(L_j)_{\mathbb R}|_Y\cong TM|_Y.
+\]">\[
+TY\oplus\bigoplus_j(L_j)_{\mathbb R}|_Y\cong TM|_Y.
+\]</span>
+For every complementary-degree rational class <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the Thom normalization gives
+<span class="math math-display" data-tex="\[
+\langle i^*\alpha,[Y]\rangle
+=\langle\alpha\,x_1\cdots x_r,[M]\rangle.
+\]">\[
+\langle i^*\alpha,[Y]\rangle
+=\langle\alpha\,x_1\cdots x_r,[M]\rangle.
+\]</span>
+Indeed the relative pullback Thom class lies in <span class="math" data-tex="\(H^{2r}(M,M-Y;\mathbb Z)\)">\(H^{2r}(M,M-Y;\mathbb Z)\)</span>. Its image in absolute cohomology is the Euler class <span class="math" data-tex="\(x_1\cdots x_r\)">\(x_1\cdots x_r\)</span>, because the section is homotopic to the zero section after passing to absolute cohomology. Excision in the tubular neighbourhood of its transverse zeros identifies cap with this class with <span class="math" data-tex="\([Y]\)">\([Y]\)</span>: the normal derivative preserves the chosen normal orientation, and the Thom generator caps the normal disk to its positive centre. The product convention and uniqueness of local fundamental classes give the global evaluation, also for disconnected zero sets.</p>
+<p>The real bundle of a complex line has Pontryagin series <span class="math" data-tex="\(1+x_j^2\)">\(1+x_j^2\)</span>. Rational Whitney multiplication and the tangent-normal identity give
+<span class="math math-display" data-tex="\[
+L(TY)=i^*L(TM)\prod_j\frac{\tanh x_j}{x_j}.
+\]">\[
+L(TY)=i^*L(TM)\prod_j\frac{\tanh x_j}{x_j}.
+\]</span>
+Each quotient is a formal unit series; it does not divide by the cohomology class <span class="math" data-tex="\(x_j\)">\(x_j\)</span>. The signature theorem on <span class="math" data-tex="\(Y\)">\(Y\)</span>, followed by the evaluation formula, gives
+<span class="math math-display" data-tex="\[
+\tau(x_1,\ldots,x_r)
+=\big\langle L(TM)\prod_j\tanh x_j,[M]\big\rangle.
+\]">\[
+\tau(x_1,\ldots,x_r)
+=\big\langle L(TM)\prod_j\tanh x_j,[M]\big\rangle.
+\]</span>
+The top-degree component is understood. If <span class="math" data-tex="\(\dim Y\)">\(\dim Y\)</span> is not divisible by four, this component is zero because its degrees are congruent to <span class="math" data-tex="\(2r\)">\(2r\)</span> modulo four whereas <span class="math" data-tex="\(\dim M=4k+2\)">\(\dim M=4k+2\)</span>. If <span class="math" data-tex="\(2r&gt;\dim M\)">\(2r&gt;\dim M\)</span> it is zero as well. In other cases the signature theorem proves it directly. This proves representative independence and symmetry in the list: exchanging two real rank-two normal factors has sign <span class="math" data-tex="\((-1)^4=1\)">\((-1)^4=1\)</span>.</p>
+<p>Finally put <span class="math" data-tex="\(A=\tanh x\)">\(A=\tanh x\)</span>, <span class="math" data-tex="\(B=\tanh y\)">\(B=\tanh y\)</span>, <span class="math" data-tex="\(C=\tanh(x+y)\)">\(C=\tanh(x+y)\)</span>. The formal exponential identity gives <span class="math" data-tex="\(C(1+AB)=A+B\)">\(C(1+AB)=A+B\)</span>, hence <span class="math" data-tex="\(C=A+B-ABC\)">\(C=A+B-ABC\)</span>; the denominator has constant term one. Positive-degree classes are nilpotent on <span class="math" data-tex="\(M\)">\(M\)</span>, so substitute these identities degree by degree. Multiply by <span class="math" data-tex="\(L(TM)\)">\(L(TM)\)</span>, evaluate, and apply the common-zero formula to <span class="math" data-tex="\(x,y,x+y\)">\(x,y,x+y\)</span>. This proves the addition law. ∎</p>
+<p>For example, let <span class="math" data-tex="\(x\)">\(x\)</span> be the positive generator on <span class="math" data-tex="\(\mathbb {CP}^3\)">\(\mathbb {CP}^3\)</span>. Here <span class="math" data-tex="\(L(TM)=1+4x^2/3\)">\(L(TM)=1+4x^2/3\)</span> and <span class="math" data-tex="\(\tanh(mx)=mx-m^3x^3/3\)">\(\tanh(mx)=mx-m^3x^3/3\)</span>, so <span class="math" data-tex="\(\tau(mx)=(4m-m^3)/3\)">\(\tau(mx)=(4m-m^3)/3\)</span>. Thus <span class="math" data-tex="\(\tau(x)=1\)">\(\tau(x)=1\)</span> and <span class="math" data-tex="\(\tau(2x)=0\)">\(\tau(2x)=0\)</span>. The triple formula gives <span class="math" data-tex="\(\tau(x,x,2x)=2\)">\(\tau(x,x,2x)=2\)</span> from its leading product <span class="math" data-tex="\(2x^3\)">\(2x^3\)</span>. The addition law reads <span class="math" data-tex="\(0=1+1-2\)">\(0=1+1-2\)</span>, exhibiting the correction term explicitly.</p>
+<h3 id="e-4-the-a-hat-sequence-as-a-comparison">E.4. The A-hat sequence as a comparison</h3>
+<p>Another series is
+<span class="math math-display" data-tex="\[
+f_{\widehat A}(t)=\frac{\sqrt t/2}{\sinh(\sqrt t/2)}
+=1-\frac t{24}+\frac{7t^2}{5760}+\cdots.
+\tag{E.8}
+\]">\[
+f_{\widehat A}(t)=\frac{\sqrt t/2}{\sinh(\sqrt t/2)}
+=1-\frac t{24}+\frac{7t^2}{5760}+\cdots.
+\tag{E.8}
+\]</span>
+It is defined formally by cancelling the leading power and dividing the resulting even unit series, just as in (E.1). Theorem D.1 yields
+<span class="math math-display" data-tex="\[
+\widehat A_1=-\frac{p_1}{24},\qquad
+\widehat A_2=\frac{7p_1^2-4p_2}{5760}.
+\tag{E.9}
+\]">\[
+\widehat A_1=-\frac{p_1}{24},\qquad
+\widehat A_2=\frac{7p_1^2-4p_2}{5760}.
+\tag{E.9}
+\]</span>
+The genus theorem gives a rational bordism homomorphism. For example, <span class="math" data-tex="\(\widehat A[\mathbb {CP}^2]=-1/8\)">\(\widehat A[\mathbb {CP}^2]=-1/8\)</span>, while <span class="math" data-tex="\(\widehat A[\mathbb {CP}^4]=3/128\)">\(\widehat A[\mathbb {CP}^4]=3/128\)</span>, using the previously computed Pontryagin numbers. Thus this genus is not generally an integer on all oriented manifolds. Additional spin and index-theoretic conclusions require the corresponding further hypotheses and proofs; only the formal multiplicative sequence and these checked values are asserted here.</p>
+<h2 id="f-exercises-with-complete-solutions">F. Exercises with complete solutions</h2>
+<p><span id="DG-CHAR-14.exercise-F.1"></span><strong>Exercise F.1 — Easy: the first two L-polynomials.</strong> Divide the defining even series through weight two, and use the monomial-symmetric formula to compute <span class="math" data-tex="\(L_1,L_2\)">\(L_1,L_2\)</span>.</p>
+<p><strong>Solution.</strong> The defining quotient is
+<span class="math math-display" data-tex="\[
+\frac{1+t/2+t^2/24+O(t^3)}{1+t/6+t^2/120+O(t^3)}.
+\]">\[
+\frac{1+t/2+t^2/24+O(t^3)}{1+t/6+t^2/120+O(t^3)}.
+\]</span>
+Write it as <span class="math" data-tex="\(1+a t+b t^2+O(t^3)\)">\(1+a t+b t^2+O(t^3)\)</span>. Multiplication by the denominator gives <span class="math" data-tex="\(a+1/6=1/2\)">\(a+1/6=1/2\)</span>, hence <span class="math" data-tex="\(a=1/3\)">\(a=1/3\)</span>, and <span class="math" data-tex="\(b+a/6+1/120=1/24\)">\(b+a/6+1/120=1/24\)</span>, hence <span class="math" data-tex="\(b=-1/45\)">\(b=-1/45\)</span>. Formula (D.5) then gives <span class="math" data-tex="\(L_1=p_1/3\)">\(L_1=p_1/3\)</span> and
+<span class="math math-display" data-tex="\[
+L_2=-\frac{p_1^2-2p_2}{45}+\frac{p_2}{9}
+=\frac{7p_2-p_1^2}{45}.
+\]">\[
+L_2=-\frac{p_1^2-2p_2}{45}+\frac{p_2}{9}
+=\frac{7p_2-p_1^2}{45}.
+\]</span>
+The <span class="math" data-tex="\(f_1^2\)">\(f_1^2\)</span> term corresponds to the partition <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, whose orbit sum is <span class="math" data-tex="\(e_2\)">\(e_2\)</span>; it occurs once, so no extra factor two enters. ∎</p>
+<p><span id="DG-CHAR-14.exercise-F.2"></span><strong>Exercise F.2 — Medium: a boundary with six middle classes.</strong> Suppose <span class="math" data-tex="\(M=\partial W\)">\(M=\partial W\)</span> is four-dimensional and <span class="math" data-tex="\(\dim H^2(M;\mathbb Q)=6\)">\(\dim H^2(M;\mathbb Q)=6\)</span>. Determine the dimension of the extendable subspace and the positive/negative indices of its intersection form. Explain why one cannot conclude that every class extends.</p>
+<p><strong>Solution.</strong> Proposition B.4 identifies the restriction image <span class="math" data-tex="\(L\)">\(L\)</span> with its orthogonal complement. Nondegeneracy and (A.3) give <span class="math" data-tex="\(\dim L=3\)">\(\dim L=3\)</span>. Choose its basis and dual partners; the correction (A.4) makes the partners isotropic as well. The resulting Gram matrix is (A.5) with <span class="math" data-tex="\(h=3\)">\(h=3\)</span>, so it has three positive and three negative coefficients. In particular the signature is zero. The restriction image has dimension three, strictly below six, so exactly this subspace extends; the remaining classes have nonzero connecting class in <span class="math" data-tex="\(H^3(W,M;\mathbb Q)\)">\(H^3(W,M;\mathbb Q)\)</span>. Merely knowing that a form is isotropic on some subspace would not suffice; the perfect relative pairing is what proves its half dimension. ∎</p>
+<p><span id="DG-CHAR-14.exercise-F.3"></span><strong>Exercise F.3 — Medium: integral restrictions from rational formulas.</strong> Obtain integral divisibility conditions on the Pontryagin numbers of closed oriented manifolds in dimensions four and eight. Check them on <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> and <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>, and under orientation reversal.</p>
+<p><strong>Solution.</strong> Signature counts diagonal signs, so is an integer. Equations (C.8)–(C.9) therefore give
+<span class="math math-display" data-tex="\[
+3\mid p_1[M^4],\qquad
+45\mid 7p_2[M^8]-p_1^2[M^8].
+\]">\[
+3\mid p_1[M^4],\qquad
+45\mid 7p_2[M^8]-p_1^2[M^8].
+\]</span>
+For <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, its number3 gives signature1. For <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, its numbers <span class="math" data-tex="\((u,v)=(25,10)\)">\((u,v)=(25,10)\)</span> give <span class="math" data-tex="\((70-25)/45=1\)">\((70-25)/45=1\)</span>. For the product, <span class="math" data-tex="\((18,9)\)">\((18,9)\)</span> gives <span class="math" data-tex="\((63-18)/45=1\)">\((63-18)/45=1\)</span>, also the product of its two factor signatures. Orientation reversal negates the fundamental class, so it negates both top number evaluations, including <span class="math" data-tex="\(p_1^2[M]\)">\(p_1^2[M]\)</span>, and the signature. The divisibility assertions are preserved. This does not negate the cohomology class <span class="math" data-tex="\(p_1^2\)">\(p_1^2\)</span>; it negates its evaluation. ∎</p>
+<p><span id="DG-CHAR-14.exercise-F.4"></span><strong>Exercise F.4 — Hard: the proof from rational bordism.</strong> Use the proved polynomial bordism ring and the projective coefficient identity to show the equality of signature and L-genus for every oriented closed manifold. Account for torsion and for degree zero.</p>
+<p><strong>Solution.</strong> The boundary and full product proofs make signature an ordinary unital ring homomorphism to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, hence an algebra homomorphism on rational bordism to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The multiplicative-sequence and genus proofs make the L-genus another such algebra homomorphism. On each generator <span class="math" data-tex="\([\mathbb {CP}^{2i}]\)">\([\mathbb {CP}^{2i}]\)</span>, the middle form is <span class="math" data-tex="\((1)\)">\((1)\)</span> and the formal residue calculation (E.5)–(E.6) gives L-genus1. Hence the two homomorphisms agree on generators, on their products, and on every finite rational sum of those products. The rational-bordism polynomial theorem says these sums exhaust the algebra, proving equality.</p>
+<p>Each integral manifold maps into that rational algebra. A torsion bordism class maps to zero there; its signature is zero because <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> has no torsion, and its L-genus is zero because <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> has none. Thus no integral torsion contribution was lost. The positive point is the unit, and both homomorphisms take it to one; signed zero-manifolds are covered by linearity. The other degrees give zero by the definitions. This proves the theorem with all these cases retained. ∎</p>
+<p><span id="DG-CHAR-14.exercise-F.5"></span><strong>Exercise F.5 — Medium: six middle classes on a four-torus.</strong> Let <span class="math" data-tex="\(T^4\)">\(T^4\)</span> have its ordered product orientation. Using the four degree-one circle generators <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>, give three orthogonal middle-form blocks and compute its signature.</p>
+<p><strong>Solution.</strong> The circle computation and field product theorem give <span class="math" data-tex="\(H^*(T^4;\mathbb Q)=\Lambda(a,b,c,d)\)">\(H^*(T^4;\mathbb Q)=\Lambda(a,b,c,d)\)</span>, with <span class="math" data-tex="\(\langle abcd,[T^4]\rangle=1\)">\(\langle abcd,[T^4]\rangle=1\)</span>. Its degree-two basis can be grouped as
+<span class="math math-display" data-tex="\[
+(ab,cd),\qquad(ac,bd),\qquad(ad,bc).
+\]">\[
+(ab,cd),\qquad(ac,bd),\qquad(ad,bc).
+\]</span>
+Only complementary pairs have nonzero products. Their evaluations are respectively1, <span class="math" data-tex="\(-1\)">\(-1\)</span>, and1: the middle exchange in <span class="math" data-tex="\(acbd\)">\(acbd\)</span> has one transposition, while <span class="math" data-tex="\(adbc\)">\(adbc\)</span> has two. Degree-two classes commute, so the three Gram blocks are <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)</span>, <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;-1\\-1&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;-1\\-1&amp;0\end{smallmatrix}\right)\)</span>, and the first block again. Each has one positive and one negative coefficient; the total signature is zero. This also verifies <span class="math" data-tex="\(\sigma(T^2\times T^2)=\sigma(T^2)^2=0\)">\(\sigma(T^2\times T^2)=\sigma(T^2)^2=0\)</span>, including a product whose individual dimensions are two modulo four. ∎</p>
+<p><span id="DG-CHAR-14.exercise-F.6"></span><strong>Exercise F.6 — Medium: compare the A-hat genus.</strong> Compute its first two polynomials from (E.8), then its values on <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> and <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>. Verify multiplicativity on the last example and state the integrality conclusion these examples allow.</p>
+<p><strong>Solution.</strong> The denominator after cancelling the leading term is <span class="math" data-tex="\(1+t/24+t^2/1920+O(t^3)\)">\(1+t/24+t^2/1920+O(t^3)\)</span>. Its inverse has coefficients <span class="math" data-tex="\(-1/24\)">\(-1/24\)</span> and <span class="math" data-tex="\(1/576-1/1920=7/5760\)">\(1/576-1/1920=7/5760\)</span>. Formula (D.5) therefore gives
+<span class="math math-display" data-tex="\[
+\widehat A_1=-\frac{p_1}{24},\qquad
+\widehat A_2=\frac{7(p_1^2-2p_2)}{5760}+\frac{p_2}{576}
+=\frac{7p_1^2-4p_2}{5760}.
+\]">\[
+\widehat A_1=-\frac{p_1}{24},\qquad
+\widehat A_2=\frac{7(p_1^2-2p_2)}{5760}+\frac{p_2}{576}
+=\frac{7p_1^2-4p_2}{5760}.
+\]</span>
+The previously computed numbers give <span class="math" data-tex="\(-1/8\)">\(-1/8\)</span> on <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, <span class="math" data-tex="\((175-40)/5760=3/128\)">\((175-40)/5760=3/128\)</span> on <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span>, and <span class="math" data-tex="\((126-36)/5760=1/64\)">\((126-36)/5760=1/64\)</span> on the product. The latter equals <span class="math" data-tex="\((-1/8)^2\)">\((-1/8)^2\)</span>, as multiplicativity requires. These examples disprove integrality on all closed oriented manifolds. They do not address additional spin hypotheses or an index theorem, which have not been assumed. ∎</p>
+<p>This closes the signature and multiplicative-sequence portion. Continue with <a href="DG-CHAR-14B.html">Odd-prime reduced powers and the Wu classes</a> for the complete operation construction and the exact Wu polynomial and homotopy-invariance theorem.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Friedrich Hirzebruch, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1063884/"><em>On Steenrod's Reduced Powers, the Index of Inertia, and the Todd Genus</em></a> (1953), Sections1 and3, introduces the multiplicative sequences and announces the signature formula. John Milnor's <a href="https://webhomes.maths.ed.ac.uk/~v1ranick/papers/milnorcc.pdf"><em>Lectures on Characteristic Classes</em>, with notes by James Stasheff</a> (Spring1957), ChapterXV, Sections1–2, gives the polynomial construction and the projective-generator argument. The coefficient reciprocity and converse genus statements there are supplied above with complete proofs, including their stated coefficient generality and the extension of the converse to any commutative rational algebra. The form algebra, relative boundary duality, full product proof and formal residue substitution are proved here using the earlier course results. The AI wrote the calibration examples, exposition and solved exercises. The companion <a href="DG-CHAR-14B.html">Odd-prime reduced powers and the Wu classes</a> develops the operation construction and Wu polynomial theorem. The projective-fibration and codimension-two addition formulas of its signature section are proved above; its broader almost-complex Todd-genus assertions require their additional arguments.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-13E.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-14B.html">Next chapter</a></nav><p><a href="multiplicative-sequences-and-the-signature-theorem.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

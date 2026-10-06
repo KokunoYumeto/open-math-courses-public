@@ -1,0 +1,517 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tate&#x27;s local theory at the finite places</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 7 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="tate-s-local-theory-at-the-finite-places">Tate's local theory at the finite places</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A local zeta integral is a multiplicative integral of an additive test function. Fourier transformation exchanges its character with the inverse character multiplied by the norm. The extra norm comes from additive change of variables. At an unramified place this gives a ratio of two geometric series; at a ramified place a finite Gauss sum supplies the factor.</p>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be any finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Write <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> for its integral ring, <span class="math" data-tex="\(\mathfrak p=\pi\mathcal O\)">\(\mathfrak p=\pi\mathcal O\)</span> for its maximal ideal, <span class="math" data-tex="\(q=|\mathcal O/\mathfrak p|\)">\(q=|\mathcal O/\mathfrak p|\)</span>, and <span class="math" data-tex="\(|\pi|=q^{-1}\)">\(|\pi|=q^{-1}\)</span>. The classification and conductor of its quasi-characters come from <a href="NT-ADL-06.html">Quasi-characters and Hecke characters</a>. The local Fourier inversion and indicator transforms come from <a href="NT-ADL-05.html">Additive characters, self-dual measures and Poisson summation on the adèles</a>. Our formulas apply to every such <span class="math" data-tex="\(F\)">\(F\)</span>, including its ramified extensions, rather than only to the rational completions.</p>
+<h2 id="the-measures-and-the-test-space">The measures and the test space</h2>
+<p>Let <span class="math" data-tex="\(\psi:F\to\mathbb T\)">\(\psi:F\to\mathbb T\)</span> be a nontrivial additive character. Define its conductor integer by
+<span class="math math-display" data-tex="\[
+ n=n(\psi)=\max\{r\in\mathbb Z:
+                      \psi(\pi^{-r}\mathcal O)=1\}.
+ \tag{1}
+\]">\[
+ n=n(\psi)=\max\{r\in\mathbb Z:
+                      \psi(\pi^{-r}\mathcal O)=1\}.
+ \tag{1}
+\]</span>
+Thus <span class="math" data-tex="\(\pi^{-n}\mathcal O\)">\(\pi^{-n}\mathcal O\)</span> is the largest fractional ideal on which it is trivial. The integer <span class="math" data-tex="\(n\)">\(n\)</span> may be negative. For the number-field character <span class="math" data-tex="\(\psi_F=\psi_{\mathbb Q_p}\circ\operatorname{Tr}_{F/\mathbb Q_p}\)">\(\psi_F=\psi_{\mathbb Q_p}\circ\operatorname{Tr}_{F/\mathbb Q_p}\)</span>, it is the exponent <span class="math" data-tex="\(d\)">\(d\)</span> of the different <span class="math" data-tex="\(\mathfrak D_F=\pi^d\mathcal O\)">\(\mathfrak D_F=\pi^d\mathcal O\)</span>.</p>
+<p>We begin with the self-dual additive measure <span class="math" data-tex="\(dx_\psi\)">\(dx_\psi\)</span>, and write <span class="math" data-tex="\(dx=\lambda dx_\psi\)">\(dx=\lambda dx_\psi\)</span> for a general positive Haar measure, where <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. Put <span class="math" data-tex="\(m=\operatorname{vol}_{dx}(\mathcal O)\)">\(m=\operatorname{vol}_{dx}(\mathcal O)\)</span>. These are the conventions throughout:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Normalization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Absolute value</td>
+<td><span class="math" data-tex="\(\lvert\pi\rvert=q^{-1}\)">\(\lvert\pi\rvert=q^{-1}\)</span></td>
+</tr>
+<tr>
+<td>Basic rational character</td>
+<td><span class="math" data-tex="\(\psi_{\mathbb Q_p}(x)=\exp(2\pi i\{x\}_p)\)">\(\psi_{\mathbb Q_p}(x)=\exp(2\pi i\{x\}_p)\)</span></td>
+</tr>
+<tr>
+<td>Number-field character</td>
+<td><span class="math" data-tex="\(\psi_F=\psi_{\mathbb Q_p}\circ\operatorname{Tr}_{F/\mathbb Q_p}\)">\(\psi_F=\psi_{\mathbb Q_p}\circ\operatorname{Tr}_{F/\mathbb Q_p}\)</span>, with <span class="math" data-tex="\(n=d\)">\(n=d\)</span></td>
+</tr>
+<tr>
+<td>Self-dual additive measure</td>
+<td><span class="math" data-tex="\(\operatorname{vol}(\mathcal O)=q^{-n/2}\)">\(\operatorname{vol}(\mathcal O)=q^{-n/2}\)</span></td>
+</tr>
+<tr>
+<td>General additive measure</td>
+<td><span class="math" data-tex="\(dx=\lambda dx_\psi\)">\(dx=\lambda dx_\psi\)</span>, hence <span class="math" data-tex="\(m=\lambda q^{-n/2}\)">\(m=\lambda q^{-n/2}\)</span></td>
+</tr>
+<tr>
+<td>Multiplicative measure</td>
+<td><span class="math" data-tex="\(d^\times x=\kappa\,dx/\lvert x\rvert\)">\(d^\times x=\kappa\,dx/\lvert x\rvert\)</span>, where <span class="math" data-tex="\(\kappa=[m(1-q^{-1})]^{-1}\)">\(\kappa=[m(1-q^{-1})]^{-1}\)</span>; thus <span class="math" data-tex="\(\operatorname{vol}(\mathcal O^\times)=1\)">\(\operatorname{vol}(\mathcal O^\times)=1\)</span></td>
+</tr>
+<tr>
+<td>Fourier transformation</td>
+<td><span class="math" data-tex="\(\widehat f(y)=\int_F f(x)\psi(xy)\,dx\)">\(\widehat f(y)=\int_F f(x)\psi(xy)\,dx\)</span></td>
+</tr>
+<tr>
+<td>Dual quasi-character</td>
+<td><span class="math" data-tex="\(\check c=c^{-1}\lvert\cdot\rvert\)">\(\check c=c^{-1}\lvert\cdot\rvert\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>To check the measure entry for arbitrary <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, local self-duality expresses it as <span class="math" data-tex="\(\psi_F(ax)\)">\(\psi_F(ax)\)</span> for some <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>. Its conductor is <span class="math" data-tex="\(n=d+\operatorname{ord}(a)\)">\(n=d+\operatorname{ord}(a)\)</span>, and its self-dual measure is <span class="math" data-tex="\(|a|^{1/2}dx_{\psi_F}\)">\(|a|^{1/2}dx_{\psi_F}\)</span>, of integral-ring mass <span class="math" data-tex="\(q^{-n/2}\)">\(q^{-n/2}\)</span>. The multiplicative normalization follows from <span class="math" data-tex="\(\operatorname{vol}_{dx}(\mathcal O^\times)=m(1-q^{-1})\)">\(\operatorname{vol}_{dx}(\mathcal O^\times)=m(1-q^{-1})\)</span>. Multiplying <span class="math" data-tex="\(d^\times x\)">\(d^\times x\)</span> by a constant multiplies both zeta integrals by that constant and leaves their ratio unchanged.</p>
+<p>Let <span class="math" data-tex="\(\mathcal S(F)\)">\(\mathcal S(F)\)</span> be the space of locally constant complex functions of compact support. Every member is a finite linear combination of indicators of cosets of some <span class="math" data-tex="\(\pi^r\mathcal O\)">\(\pi^r\mathcal O\)</span>: a compact support can be covered by finitely many constant neighborhoods, and these neighborhoods may all be shrunk to the same open additive subgroup. Character orthogonality gives
+<span class="math math-display" data-tex="\[
+ \widehat{\mathbf1_{a+\pi^r\mathcal O}}(y)
+   =m q^{-r}\psi(ay)
+                         \mathbf1_{\pi^{-r-n}\mathcal O}(y).
+ \tag{2}
+\]">\[
+ \widehat{\mathbf1_{a+\pi^r\mathcal O}}(y)
+   =m q^{-r}\psi(ay)
+                         \mathbf1_{\pi^{-r-n}\mathcal O}(y).
+ \tag{2}
+\]</span>
+The right side is again locally constant and compactly supported. Thus Fourier transformation preserves <span class="math" data-tex="\(\mathcal S(F)\)">\(\mathcal S(F)\)</span>, and the inversion theorem gives
+<span class="math math-display" data-tex="\[
+ \widehat{\widehat f}(x)=\lambda^2 f(-x).
+ \tag{3}
+\]">\[
+ \widehat{\widehat f}(x)=\lambda^2 f(-x).
+ \tag{3}
+\]</span>
+In particular the self-dual convention has <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>.</p>
+<h2 id="a-finite-part-and-a-geometric-tail">A finite part and a geometric tail</h2>
+<p>For a quasi-character <span class="math" data-tex="\(c\)">\(c\)</span>, set <span class="math" data-tex="\(A=c(\pi)\)">\(A=c(\pi)\)</span>, <span class="math" data-tex="\(\eta=c|_{\mathcal O^\times}\)">\(\eta=c|_{\mathcal O^\times}\)</span>, and <span class="math" data-tex="\(\sigma=\sigma(c)\)">\(\sigma=\sigma(c)\)</span>. Thus <span class="math" data-tex="\(|A|=q^{-\sigma}\)">\(|A|=q^{-\sigma}\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a finite-image unitary character. Define
+<span class="math math-display" data-tex="\[
+ Z(f,c)=\int_{F^\times}f(x)c(x)\,d^\times x.
+ \tag{4}
+\]">\[
+ Z(f,c)=\int_{F^\times}f(x)c(x)\,d^\times x.
+ \tag{4}
+\]</span></p>
+<p><strong>Proposition 7.1.</strong> The integral (4) is absolutely convergent for <span class="math" data-tex="\(\sigma(c)&gt;0\)">\(\sigma(c)&gt;0\)</span>. Fixing <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and varying <span class="math" data-tex="\(A\in\mathbb C^\times\)">\(A\in\mathbb C^\times\)</span>, its continuation is a rational function of <span class="math" data-tex="\(A\)">\(A\)</span>. In a family <span class="math" data-tex="\(c=c_0|\cdot|^s\)">\(c=c_0|\cdot|^s\)</span>, it is therefore rational in <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span>. More precisely, define
+<span class="math math-display" data-tex="\[
+ L(c)=
+ \begin{cases}
+ (1-A)^{-1},&amp;\eta=1,\\
+ 1,&amp;\eta\ne1.
+ \end{cases}
+ \tag{5}
+\]">\[
+ L(c)=
+ \begin{cases}
+ (1-A)^{-1},&amp;\eta=1,\\
+ 1,&amp;\eta\ne1.
+ \end{cases}
+ \tag{5}
+\]</span>
+Then <span class="math" data-tex="\(Z(f,c)/L(c)\)">\(Z(f,c)/L(c)\)</span> is a Laurent polynomial in <span class="math" data-tex="\(A\)">\(A\)</span>, and all such integrals generate <span class="math" data-tex="\(L(c)\mathbb C[A,A^{-1}]\)">\(L(c)\mathbb C[A,A^{-1}]\)</span> as a module over <span class="math" data-tex="\(\mathbb C[A,A^{-1}]\)">\(\mathbb C[A,A^{-1}]\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(F^\times=\coprod_{j\in\mathbb Z}\pi^j\mathcal O^\times\)">\(F^\times=\coprod_{j\in\mathbb Z}\pi^j\mathcal O^\times\)</span>. Each shell has multiplicative volume one. Compact support makes <span class="math" data-tex="\(f\)">\(f\)</span> zero on all shells below some <span class="math" data-tex="\(j_0\)">\(j_0\)</span>, and local constancy at zero gives <span class="math" data-tex="\(f(\pi^j u)=f(0)\)">\(f(\pi^j u)=f(0)\)</span> for all units <span class="math" data-tex="\(u\)">\(u\)</span> and all sufficiently large <span class="math" data-tex="\(j\geq J\)">\(j\geq J\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ Z(f,c)=\sum_{j=j_0}^{J-1}A^j
+       \int_{\mathcal O^\times}f(\pi^j u)\eta(u)\,d^\times u
+       +f(0)\sum_{j\geq J}A^j
+                     \int_{\mathcal O^\times}\eta(u)\,d^\times u.
+ \tag{6}
+\]">\[
+ Z(f,c)=\sum_{j=j_0}^{J-1}A^j
+       \int_{\mathcal O^\times}f(\pi^j u)\eta(u)\,d^\times u
+       +f(0)\sum_{j\geq J}A^j
+                     \int_{\mathcal O^\times}\eta(u)\,d^\times u.
+ \tag{6}
+\]</span>
+The absolute value of the tail is bounded by a constant times <span class="math" data-tex="\(\sum_{j\geq J}|A|^j\)">\(\sum_{j\geq J}|A|^j\)</span>, convergent for <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>. The last unit integral is one if <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span> and zero otherwise: translate by a unit where a nontrivial <span class="math" data-tex="\(\eta\)">\(\eta\)</span> differs from one. In the first case the tail is <span class="math" data-tex="\(f(0)A^J/(1-A)\)">\(f(0)A^J/(1-A)\)</span>; in the second it vanishes. This proves continuation and the Laurent-polynomial assertion.</p>
+<p>If <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>, the test <span class="math" data-tex="\(f=\mathbf1_{\mathcal O}\)">\(f=\mathbf1_{\mathcal O}\)</span> has <span class="math" data-tex="\(Z(f,c)=L(c)\)">\(Z(f,c)=L(c)\)</span>. If <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>, the function equal to <span class="math" data-tex="\(\eta^{-1}\)">\(\eta^{-1}\)</span> on <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span> and zero elsewhere has integral one. Dilating a test function through integral powers of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> multiplies its zeta integral by integral powers of <span class="math" data-tex="\(A\)">\(A\)</span>. These observations prove the module assertion in both cases. ∎</p>
+<p>All assertions about rational families below refer to this continuation. In particular an integral with nonpositive <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is not silently interpreted as an absolutely convergent integral at zero. For the dual character,
+<span class="math math-display" data-tex="\[
+ \check c(\pi)=q^{-1}A^{-1},\qquad
+ \sigma(\check c)=1-\sigma(c),\qquad \check{\check c}=c.
+ \tag{7}
+\]">\[
+ \check c(\pi)=q^{-1}A^{-1},\qquad
+ \sigma(\check c)=1-\sigma(c),\qquad \check{\check c}=c.
+ \tag{7}
+\]</span></p>
+<h2 id="the-fourier-exchange-inside-the-convergence-strip">The Fourier exchange inside the convergence strip</h2>
+<p><strong>Theorem 7.2 (local functional equation).</strong> For <span class="math" data-tex="\(0&lt;\sigma(c)&lt;1\)">\(0&lt;\sigma(c)&lt;1\)</span> and <span class="math" data-tex="\(f,g\in\mathcal S(F)\)">\(f,g\in\mathcal S(F)\)</span>,
+<span class="math math-display" data-tex="\[
+ Z(f,c)Z(\widehat g,\check c)
+       =Z(\widehat f,\check c)Z(g,c).
+ \tag{8}
+\]">\[
+ Z(f,c)Z(\widehat g,\check c)
+       =Z(\widehat f,\check c)Z(g,c).
+ \tag{8}
+\]</span>
+It extends as an identity of rational families. There is a nonzero meromorphic factor <span class="math" data-tex="\(\rho(c,\psi,dx)\)">\(\rho(c,\psi,dx)\)</span>, independent of the test function, such that
+<span class="math math-display" data-tex="\[
+ Z(\widehat f,\check c)=\rho(c,\psi,dx)Z(f,c)
+                  \quad(f\in\mathcal S(F)).
+ \tag{9}
+\]">\[
+ Z(\widehat f,\check c)=\rho(c,\psi,dx)Z(f,c)
+                  \quad(f\in\mathcal S(F)).
+ \tag{9}
+\]</span>
+Ratios of individual integrals give this factor wherever their denominators are nonzero; equation (9) states it without that restriction.</p>
+<p><em>Proof.</em> All four integrals in (8) converge absolutely by Proposition 7.1 and (7). Since <span class="math" data-tex="\(d^\times x=\kappa dx/|x|\)">\(d^\times x=\kappa dx/|x|\)</span>, their first product equals
+<span class="math math-display" data-tex="\[
+ \kappa^2\int_{F^\times}\int_{F^\times}
+ f(x)\widehat g(y)c(x)c(y)^{-1}\frac{dx}{|x|}\,dy.
+ \tag{10}
+\]">\[
+ \kappa^2\int_{F^\times}\int_{F^\times}
+ f(x)\widehat g(y)c(x)c(y)^{-1}\frac{dx}{|x|}\,dy.
+ \tag{10}
+\]</span>
+For each <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, change <span class="math" data-tex="\(y=xz\)">\(y=xz\)</span>. The additive factor <span class="math" data-tex="\(dy=|x|dz\)">\(dy=|x|dz\)</span> cancels <span class="math" data-tex="\(1/|x|\)">\(1/|x|\)</span>, and the character factors become <span class="math" data-tex="\(c(z)^{-1}\)">\(c(z)^{-1}\)</span>. Hence (10) is
+<span class="math math-display" data-tex="\[
+ \kappa^2\int_{F^\times}c(z)^{-1}
+                    \left(\int_F f(x)\widehat g(zx)\,dx\right)dz.
+ \tag{11}
+\]">\[
+ \kappa^2\int_{F^\times}c(z)^{-1}
+                    \left(\int_F f(x)\widehat g(zx)\,dx\right)dz.
+ \tag{11}
+\]</span>
+This double integral is absolutely convergent: undoing the change of variables in its absolute-value integral gives the product of the absolute-value integrals in (10). The point zero has additive measure zero, since <span class="math" data-tex="\(\operatorname{vol}(\pi^r\mathcal O)=mq^{-r}\to0\)">\(\operatorname{vol}(\pi^r\mathcal O)=mq^{-r}\to0\)</span>.</p>
+<p>For each fixed <span class="math" data-tex="\(z\)">\(z\)</span>, ordinary Fubini on the compact supports of <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> gives
+<span class="math math-display" data-tex="\[
+ \int_F f(x)\widehat g(zx)\,dx
+  =\int_F\int_F f(x)g(t)\psi(zxt)\,dt\,dx
+  =\int_F\widehat f(zt)g(t)\,dt.
+ \tag{12}
+\]">\[
+ \int_F f(x)\widehat g(zx)\,dx
+  =\int_F\int_F f(x)g(t)\psi(zxt)\,dt\,dx
+  =\int_F\widehat f(zt)g(t)\,dt.
+ \tag{12}
+\]</span>
+Substitute this identity in (11). The resulting double integral is again absolutely convergent, by the same argument with <span class="math" data-tex="\(g,\widehat f\)">\(g,\widehat f\)</span>. Now change <span class="math" data-tex="\(y=zt\)">\(y=zt\)</span> for <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span>. This produces <span class="math" data-tex="\(Z(g,c)Z(\widehat f,\check c)\)">\(Z(g,c)Z(\widehat f,\check c)\)</span>, proving (8). The argument uses Fubini for two absolutely integrable double integrals and for (12) at fixed <span class="math" data-tex="\(z\)">\(z\)</span>; it does not interchange an unbounded oscillatory triple integral.</p>
+<p>To obtain (9), choose <span class="math" data-tex="\(g=\eta^{-1}\mathbf1_{\mathcal O^\times}\)">\(g=\eta^{-1}\mathbf1_{\mathcal O^\times}\)</span>, whose integral is identically one in the family. Set <span class="math" data-tex="\(\rho=Z(\widehat g,\check c)\)">\(\rho=Z(\widehat g,\check c)\)</span>. Then (8) proves (9) in the strip, and rationality extends it to every <span class="math" data-tex="\(A\in\mathbb C^\times\)">\(A\in\mathbb C^\times\)</span> meromorphically. Finally apply (9) twice and use (3):
+<span class="math math-display" data-tex="\[
+ \rho(c,\psi,dx)\rho(\check c,\psi,dx)
+                     =\lambda^2 c(-1).
+ \tag{13}
+\]">\[
+ \rho(c,\psi,dx)\rho(\check c,\psi,dx)
+                     =\lambda^2 c(-1).
+ \tag{13}
+\]</span>
+For example the equality follows by taking a test with zeta integral identically one. The right side is nonzero, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is not the zero meromorphic function. ∎</p>
+<p>The multiplicative substitution is the reason for the norm in <span class="math" data-tex="\(\check c\)">\(\check c\)</span>. Replacing it by <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> would leave an uncanceled additive scaling factor; Exercise 3 gives a counterexample with all four integrals convergent.</p>
+<h2 id="the-unramified-factor-and-the-primitive-gauss-sum">The unramified factor and the primitive Gauss sum</h2>
+<p>Define <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> by
+<span class="math math-display" data-tex="\[
+ \rho(c,\psi,dx)=\epsilon(c,\psi,dx)
+                                  \frac{L(\check c)}{L(c)}.
+ \tag{14}
+\]">\[
+ \rho(c,\psi,dx)=\epsilon(c,\psi,dx)
+                                  \frac{L(\check c)}{L(c)}.
+ \tag{14}
+\]</span>
+It is this precise quotient convention that fixes every sign and conductor power below.</p>
+<p>For <span class="math" data-tex="\(a=a(c)\geq1\)">\(a=a(c)\geq1\)</span>, choose any <span class="math" data-tex="\(b\in F^\times\)">\(b\in F^\times\)</span> with <span class="math" data-tex="\(\operatorname{ord}(b)=a+n\)">\(\operatorname{ord}(b)=a+n\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \tau(\eta^{-1},\psi,b)
+    =\sum_{u\in(\mathcal O/\mathfrak p^a)^\times}
+                            \eta(u)^{-1}\psi(u/b).
+ \tag{15}
+\]">\[
+ \tau(\eta^{-1},\psi,b)
+    =\sum_{u\in(\mathcal O/\mathfrak p^a)^\times}
+                            \eta(u)^{-1}\psi(u/b).
+ \tag{15}
+\]</span>
+Here unit lifts can be chosen arbitrarily: both factors are unchanged upon replacing a lift by another congruent modulo <span class="math" data-tex="\(\mathfrak p^a\)">\(\mathfrak p^a\)</span>. The induced additive character of <span class="math" data-tex="\(\mathcal O/\mathfrak p^a\)">\(\mathcal O/\mathfrak p^a\)</span> is primitive because <span class="math" data-tex="\(n\)">\(n\)</span> is maximal in (1).</p>
+<p><strong>Theorem 7.3.</strong> With the preceding normalization,
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi,dx)=
+ \begin{cases}
+ m q^n A^n,&amp;a(c)=0,\\
+ m q^n c(b)\tau(\eta^{-1},\psi,b),&amp;a(c)=a\geq1.
+ \end{cases}
+ \tag{16}
+\]">\[
+ \epsilon(c,\psi,dx)=
+ \begin{cases}
+ m q^n A^n,&amp;a(c)=0,\\
+ m q^n c(b)\tau(\eta^{-1},\psi,b),&amp;a(c)=a\geq1.
+ \end{cases}
+ \tag{16}
+\]</span>
+Consequently (14) gives <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; in the ramified case <span class="math" data-tex="\(L(c)=L(\check c)=1\)">\(L(c)=L(\check c)=1\)</span>, so <span class="math" data-tex="\(\rho=\epsilon\)">\(\rho=\epsilon\)</span>. The second expression is independent of the allowed choice of <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>For self-dual <span class="math" data-tex="\(dx\)">\(dx\)</span>, write <span class="math" data-tex="\(c=c_0|\cdot|^s\)">\(c=c_0|\cdot|^s\)</span> with <span class="math" data-tex="\(c_0\)">\(c_0\)</span> unitary and take <span class="math" data-tex="\(b=\pi^{a+n}\)">\(b=\pi^{a+n}\)</span>. These formulas become
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi,dx_\psi)=
+ \begin{cases}
+ c_0(\pi)^n q^{n(1/2-s)},&amp;a=0,\\
+ W(c_0,\psi)q^{(a+n)(1/2-s)},&amp;a\geq1,
+ \end{cases}
+ \tag{17}
+\]">\[
+ \epsilon(c,\psi,dx_\psi)=
+ \begin{cases}
+ c_0(\pi)^n q^{n(1/2-s)},&amp;a=0,\\
+ W(c_0,\psi)q^{(a+n)(1/2-s)},&amp;a\geq1,
+ \end{cases}
+ \tag{17}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+ W(c_0,\psi)=c_0(b)q^{-a/2}
+                                     \tau(\eta^{-1},\psi,b).
+ \tag{18}
+\]">\[
+ W(c_0,\psi)=c_0(b)q^{-a/2}
+                                     \tau(\eta^{-1},\psi,b).
+ \tag{18}
+\]</span>
+The primitive sum satisfies <span class="math" data-tex="\(|\tau|=q^{a/2}\)">\(|\tau|=q^{a/2}\)</span>, and hence <span class="math" data-tex="\(|W|=1\)">\(|W|=1\)</span>.</p>
+<p><em>Proof of the formulas.</em> If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, take <span class="math" data-tex="\(f=\mathbf1_{\mathcal O}\)">\(f=\mathbf1_{\mathcal O}\)</span>. Proposition 7.1 gives <span class="math" data-tex="\(Z(f,c)=L(c)\)">\(Z(f,c)=L(c)\)</span>, while (2) gives <span class="math" data-tex="\(\widehat f=m\mathbf1_{\pi^{-n}\mathcal O}\)">\(\widehat f=m\mathbf1_{\pi^{-n}\mathcal O}\)</span>. Summing its shells for <span class="math" data-tex="\(\check c\)">\(\check c\)</span> gives
+<span class="math math-display" data-tex="\[
+ Z(\widehat f,\check c)
+   =m(q^{-1}A^{-1})^{-n}L(\check c)
+   =mq^n A^nL(\check c).
+ \tag{19}
+\]">\[
+ Z(\widehat f,\check c)
+   =m(q^{-1}A^{-1})^{-n}L(\check c)
+   =mq^n A^nL(\check c).
+ \tag{19}
+\]</span>
+Equations (14) and (19) prove the first case of (16), including negative <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span> and put <span class="math" data-tex="\(f=\eta^{-1}\mathbf1_{\mathcal O^\times}\)">\(f=\eta^{-1}\mathbf1_{\mathcal O^\times}\)</span>. Its zeta integral is one. It is invariant under translation by <span class="math" data-tex="\(\mathfrak p^a\)">\(\mathfrak p^a\)</span>: on each unit residue class modulo <span class="math" data-tex="\(\mathfrak p^a\)">\(\mathfrak p^a\)</span> the character is constant, and translation by that ideal also preserves the nonunit complement. By (2), its transform is supported in <span class="math" data-tex="\(\pi^{-a-n}\mathcal O\)">\(\pi^{-a-n}\mathcal O\)</span>.</p>
+<p>We claim that the transform vanishes unless <span class="math" data-tex="\(\operatorname{ord}(y)=-a-n\)">\(\operatorname{ord}(y)=-a-n\)</span>. For <span class="math" data-tex="\(a\geq2\)">\(a\geq2\)</span>, minimality of the conductor gives a unit <span class="math" data-tex="\(v\in1+\mathfrak p^{a-1}\)">\(v\in1+\mathfrak p^{a-1}\)</span> with <span class="math" data-tex="\(\eta(v)\ne1\)">\(\eta(v)\ne1\)</span>. If <span class="math" data-tex="\(\operatorname{ord}(y)&gt;-a-n\)">\(\operatorname{ord}(y)&gt;-a-n\)</span>, then <span class="math" data-tex="\(yu(v-1)\in\pi^{-n}\mathcal O\)">\(yu(v-1)\in\pi^{-n}\mathcal O\)</span> for every unit <span class="math" data-tex="\(u\)">\(u\)</span>. Changing <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(vu\)">\(vu\)</span> in the Fourier integral therefore leaves its additive character unchanged and multiplies its multiplicative factor by <span class="math" data-tex="\(\eta(v)^{-1}\)">\(\eta(v)^{-1}\)</span>. The integral must be zero. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the same range is <span class="math" data-tex="\(y\in\pi^{-n}\mathcal O\)">\(y\in\pi^{-n}\mathcal O\)</span>; here <span class="math" data-tex="\(\psi(uy)=1\)">\(\psi(uy)=1\)</span> for every unit and ordinary orthogonality of the nontrivial <span class="math" data-tex="\(\eta\)">\(\eta\)</span> gives zero. This also covers <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(y=w/b\)">\(y=w/b\)</span> with <span class="math" data-tex="\(w\in\mathcal O^\times\)">\(w\in\mathcal O^\times\)</span>, change <span class="math" data-tex="\(t=uw\)">\(t=uw\)</span> in its Fourier integral. Splitting the units into additive residue classes of mass <span class="math" data-tex="\(mq^{-a}\)">\(mq^{-a}\)</span> yields
+<span class="math math-display" data-tex="\[
+ \widehat f(w/b)=mq^{-a}\eta(w)
+                                     \tau(\eta^{-1},\psi,b).
+ \tag{20}
+\]">\[
+ \widehat f(w/b)=mq^{-a}\eta(w)
+                                     \tau(\eta^{-1},\psi,b).
+ \tag{20}
+\]</span>
+On this shell, <span class="math" data-tex="\(\check c(w/b)=c(b)|b|^{-1}\eta(w)^{-1}\)">\(\check c(w/b)=c(b)|b|^{-1}\eta(w)^{-1}\)</span>. The shell has multiplicative volume one, so
+<span class="math math-display" data-tex="\[
+ Z(\widehat f,\check c)
+   =mq^{-a}c(b)|b|^{-1}\tau(\eta^{-1},\psi,b)
+   =mq^n c(b)\tau(\eta^{-1},\psi,b).
+ \tag{21}
+\]">\[
+ Z(\widehat f,\check c)
+   =mq^{-a}c(b)|b|^{-1}\tau(\eta^{-1},\psi,b)
+   =mq^n c(b)\tau(\eta^{-1},\psi,b).
+ \tag{21}
+\]</span>
+This proves the second case. Replacing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(vb\)">\(vb\)</span>, with <span class="math" data-tex="\(v\)">\(v\)</span> a unit, multiplies <span class="math" data-tex="\(c(b)\)">\(c(b)\)</span> by <span class="math" data-tex="\(\eta(v)\)">\(\eta(v)\)</span> and the Gauss sum by <span class="math" data-tex="\(\eta(v)^{-1}\)">\(\eta(v)^{-1}\)</span>, proving independence. Substituting <span class="math" data-tex="\(m=q^{-n/2}\)">\(m=q^{-n/2}\)</span> and <span class="math" data-tex="\(c(b)=c_0(b)q^{-s(a+n)}\)">\(c(b)=c_0(b)q^{-s(a+n)}\)</span> proves (17)–(18).</p>
+<p>For the size of the sum one can use finite Fourier inversion directly. With the same <span class="math" data-tex="\(f\)">\(f\)</span>, apply Fourier transformation again to (20) and evaluate at one. Substitution <span class="math" data-tex="\(y=w/b\)">\(y=w/b\)</span> gives
+<span class="math math-display" data-tex="\[
+ \widehat{\widehat f}(1)
+   =m^2q^{n-a}\tau(\eta^{-1},\psi,b)
+                            \tau(\eta,\psi,b).
+ \tag{22}
+\]">\[
+ \widehat{\widehat f}(1)
+   =m^2q^{n-a}\tau(\eta^{-1},\psi,b)
+                            \tau(\eta,\psi,b).
+ \tag{22}
+\]</span>
+For self-dual measure, (3) and <span class="math" data-tex="\(m^2=q^{-n}\)">\(m^2=q^{-n}\)</span> make this the identity
+<span class="math math-display" data-tex="\[
+ \tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+                                  =\eta(-1)q^a.
+ \tag{23}
+\]">\[
+ \tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+                                  =\eta(-1)q^a.
+ \tag{23}
+\]</span>
+Conjugating the first sum and replacing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(-u\)">\(-u\)</span> gives
+<span class="math" data-tex="\(\overline{\tau(\eta^{-1},\psi,b)}=\eta(-1)\tau(\eta,\psi,b)\)">\(\overline{\tau(\eta^{-1},\psi,b)}=\eta(-1)\tau(\eta,\psi,b)\)</span>. Since <span class="math" data-tex="\(\eta(-1)^2=1\)">\(\eta(-1)^2=1\)</span>, (23) implies <span class="math" data-tex="\(|\tau|^2=q^a\)">\(|\tau|^2=q^a\)</span>. It proves nonvanishing as well as the asserted size. ∎</p>
+<p>A single unit coset gives the same factor. Let <span class="math" data-tex="\(h=|\mathcal O^\times/U^{(a)}|=(q-1)q^{a-1}\)">\(h=|\mathcal O^\times/U^{(a)}|=(q-1)q^{a-1}\)</span> and take <span class="math" data-tex="\(f_1=h\mathbf1_{1+\mathfrak p^a}\)">\(f_1=h\mathbf1_{1+\mathfrak p^a}\)</span>. Then <span class="math" data-tex="\(Z(f_1,c)=1\)">\(Z(f_1,c)=1\)</span>, and
+<span class="math math-display" data-tex="\[
+ \widehat f_1(y)=h mq^{-a}\psi(y)
+                         \mathbf1_{\pi^{-a-n}\mathcal O}(y).
+ \tag{24}
+\]">\[
+ \widehat f_1(y)=h mq^{-a}\psi(y)
+                         \mathbf1_{\pi^{-a-n}\mathcal O}(y).
+ \tag{24}
+\]</span>
+In its dual zeta integral, unit orthogonality kills every shell above <span class="math" data-tex="\(-a-n\)">\(-a-n\)</span>, by the same conductor argument used for (20). On the remaining shell the unit average is <span class="math" data-tex="\(h^{-1}\tau(\eta^{-1},\psi,b)\)">\(h^{-1}\tau(\eta^{-1},\psi,b)\)</span>. Equation (21) follows again. Thus both a unit-character test and a translated principal-unit test recover the identical Gauss factor.</p>
+<p>For the trace character of a number-field completion, <span class="math" data-tex="\(n=d\)">\(n=d\)</span>, so the unramified formula is specifically
+<span class="math math-display" data-tex="\[
+ \rho(c_0|\cdot|^s)=
+ c_0(\delta)N(\mathfrak D_F)^{1/2-s}
+                             \frac{L(\check c)}{L(c)},
+ \tag{25}
+\]">\[
+ \rho(c_0|\cdot|^s)=
+ c_0(\delta)N(\mathfrak D_F)^{1/2-s}
+                             \frac{L(\check c)}{L(c)},
+ \tag{25}
+\]</span>
+where <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is any generator of <span class="math" data-tex="\(\mathfrak D_F\)">\(\mathfrak D_F\)</span> and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is unramified. The exponent is <span class="math" data-tex="\(1/2-s\)">\(1/2-s\)</span> under definition (9). Reversing the ratio defining <span class="math" data-tex="\(\rho\)">\(\rho\)</span> reverses that exponent as well. In the ramified formula the summed unit character is <span class="math" data-tex="\(\eta^{-1}\)">\(\eta^{-1}\)</span>, as specified in (15); this matters for nonquadratic characters.</p>
+<p>For a direct comparison with Poonen, §4.9, take <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, additive integral-ring mass <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, and <span class="math" data-tex="\(c_0(\pi)=1\)">\(c_0(\pi)=1\)</span>. His multiplicative measure <span class="math" data-tex="\(dx/|x|\)">\(dx/|x|\)</span> gives each unit residue class modulo <span class="math" data-tex="\(\mathfrak p^a\)">\(\mathfrak p^a\)</span> mass <span class="math" data-tex="\(q^{-a}\)">\(q^{-a}\)</span>. Hence his integral Gauss sum is <span class="math" data-tex="\(g=q^{-a}\tau(\eta^{-1},\psi,\pi^a)\)">\(g=q^{-a}\tau(\eta^{-1},\psi,\pi^a)\)</span>, and the factor <span class="math" data-tex="\(q^{a(1-s)}g\)">\(q^{a(1-s)}g\)</span> equals <span class="math" data-tex="\(q^{-as}\tau\)">\(q^{-as}\tau\)</span>, precisely (21) in these choices. Giving the whole unit group mass one rescales both zeta integrals equally and leaves their ratio unchanged. Equations (16)–(18) retain arbitrary additive conductor, uniformizer value and self-dual measure.</p>
+<h2 id="dependence-on-the-auxiliary-choices">Dependence on the auxiliary choices</h2>
+<p><strong>Proposition 7.4.</strong> The factor defined by (14) satisfies, for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(r\in F^\times\)">\(r\in F^\times\)</span>, and <span class="math" data-tex="\(\psi_r(x)=\psi(rx)\)">\(\psi_r(x)=\psi(rx)\)</span>,
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi,t\,dx)=t\,\epsilon(c,\psi,dx),
+ \tag{26}
+\]">\[
+ \epsilon(c,\psi,t\,dx)=t\,\epsilon(c,\psi,dx),
+ \tag{26}
+\]</span>
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi_r,dx)=c(r)|r|^{-1}
+                                      \epsilon(c,\psi,dx).
+ \tag{27}
+\]">\[
+ \epsilon(c,\psi_r,dx)=c(r)|r|^{-1}
+                                      \epsilon(c,\psi,dx).
+ \tag{27}
+\]</span>
+For self-dual <span class="math" data-tex="\(dx\)">\(dx\)</span>,
+<span class="math math-display" data-tex="\[
+ \epsilon(c,\psi,dx)\epsilon(\check c,\psi,dx)=c(-1),
+ \tag{28}
+\]">\[
+ \epsilon(c,\psi,dx)\epsilon(\check c,\psi,dx)=c(-1),
+ \tag{28}
+\]</span>
+and, for unitary <span class="math" data-tex="\(c_0\)">\(c_0\)</span>,
+<span class="math math-display" data-tex="\[
+ \big|\epsilon(c_0|\cdot|^{1/2},\psi,dx)\big|=1.
+ \tag{29}
+\]">\[
+ \big|\epsilon(c_0|\cdot|^{1/2},\psi,dx)\big|=1.
+ \tag{29}
+\]</span></p>
+<p><em>Proof.</em> Scaling the additive measure scales every Fourier transform by <span class="math" data-tex="\(t\)">\(t\)</span>. Keep the multiplicative measure normalized to unit volume on <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span>; (9) then scales <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by <span class="math" data-tex="\(t\)">\(t\)</span>. The <span class="math" data-tex="\(L\)">\(L\)</span>-factors are unchanged, proving (26). If a fixed multiple of the multiplicative measure is used instead, it still cancels from the ratio.</p>
+<p>For fixed additive measure, Fourier transformation with <span class="math" data-tex="\(\psi_r\)">\(\psi_r\)</span> gives <span class="math" data-tex="\(\widehat f_{\psi_r}(y)=\widehat f_\psi(ry)\)">\(\widehat f_{\psi_r}(y)=\widehat f_\psi(ry)\)</span>. The multiplicative substitution <span class="math" data-tex="\(z=ry\)">\(z=ry\)</span> gives
+<span class="math math-display" data-tex="\[
+ Z(\widehat f_{\psi_r},\check c)
+     =\check c(r)^{-1}Z(\widehat f_\psi,\check c).
+\]">\[
+ Z(\widehat f_{\psi_r},\check c)
+     =\check c(r)^{-1}Z(\widehat f_\psi,\check c).
+\]</span>
+Since <span class="math" data-tex="\(\check c(r)^{-1}=c(r)|r|^{-1}\)">\(\check c(r)^{-1}=c(r)|r|^{-1}\)</span>, this proves (27). Formula (13) with <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, together with cancellation of the opposite <span class="math" data-tex="\(L\)">\(L\)</span>-ratios in (14), proves (28).</p>
+<p>For (29), put <span class="math" data-tex="\(c=c_0|\cdot|^{1/2}\)">\(c=c_0|\cdot|^{1/2}\)</span>, so <span class="math" data-tex="\(\overline c=\check c\)">\(\overline c=\check c\)</span>. Complex conjugation of the defining integrals and their rational continuations gives
+<span class="math math-display" data-tex="\[
+ \overline{\epsilon(c,\psi,dx)}
+                 =\epsilon(\overline c,\overline\psi,dx).
+ \tag{30}
+\]">\[
+ \overline{\epsilon(c,\psi,dx)}
+                 =\epsilon(\overline c,\overline\psi,dx).
+ \tag{30}
+\]</span>
+The positive Haar measure is real and <span class="math" data-tex="\(\overline{L(c)}=L(\overline c)\)">\(\overline{L(c)}=L(\overline c)\)</span>. Because <span class="math" data-tex="\(\overline\psi=\psi_{-1}\)">\(\overline\psi=\psi_{-1}\)</span>, (27) turns the right side into <span class="math" data-tex="\(c(-1)\epsilon(\check c,\psi,dx)\)">\(c(-1)\epsilon(\check c,\psi,dx)\)</span>. Multiplying by <span class="math" data-tex="\(\epsilon(c,\psi,dx)\)">\(\epsilon(c,\psi,dx)\)</span> and using (28) gives absolute-value square <span class="math" data-tex="\(c(-1)^2=1\)">\(c(-1)^2=1\)</span>. There are no singularities here: the unramified denominator has <span class="math" data-tex="\(|A|=q^{-1/2}&lt;1\)">\(|A|=q^{-1/2}&lt;1\)</span>, and the ramified formula is a nonzero monomial times a primitive Gauss sum. ∎</p>
+<p>Equations (26) and (27) specify changes independently. If the measure is adjusted to remain self-dual after replacing <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by <span class="math" data-tex="\(\psi_r\)">\(\psi_r\)</span>, it is multiplied by <span class="math" data-tex="\(|r|^{1/2}\)">\(|r|^{1/2}\)</span>, so the combined change is <span class="math" data-tex="\(c(r)|r|^{-1/2}\)">\(c(r)|r|^{-1/2}\)</span>. Keeping the old measure and calling it self-dual for the new character would give an incorrect normalization.</p>
+<h2 id="three-computations">Three computations</h2>
+<p>For <span class="math" data-tex="\(F=\mathbb Q_p\)">\(F=\mathbb Q_p\)</span>, the basic character has <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and self-dual integral-ring mass one. For <span class="math" data-tex="\(c=|\cdot|^s\)">\(c=|\cdot|^s\)</span>,
+<span class="math math-display" data-tex="\[
+ Z(\mathbf1_{\mathbb Z_p},c)=\frac1{1-p^{-s}},\qquad
+ \epsilon(c)=1,\qquad
+ \rho(c)=\frac{1-p^{-s}}{1-p^{s-1}}.
+ \tag{31}
+\]">\[
+ Z(\mathbf1_{\mathbb Z_p},c)=\frac1{1-p^{-s}},\qquad
+ \epsilon(c)=1,\qquad
+ \rho(c)=\frac{1-p^{-s}}{1-p^{s-1}}.
+ \tag{31}
+\]</span></p>
+<p>For a nontrivial residue character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> at an odd prime, take <span class="math" data-tex="\(c(p)=1\)">\(c(p)=1\)</span>. It has <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, and
+<span class="math math-display" data-tex="\[
+ \rho(c)=\epsilon(c)
+      =\sum_{u\in\mathbb F_p^\times}\eta(u)^{-1}e^{2\pi i u/p}.
+ \tag{32}
+\]">\[
+ \rho(c)=\epsilon(c)
+      =\sum_{u\in\mathbb F_p^\times}\eta(u)^{-1}e^{2\pi i u/p}.
+ \tag{32}
+\]</span>
+Its absolute value is <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span>. Twisting this same character by <span class="math" data-tex="\(|\cdot|^{1/2}\)">\(|\cdot|^{1/2}\)</span> divides the value by <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span>, giving the central unit-modulus factor. For the Dirichlet normalization of Proposition 6.4, <span class="math" data-tex="\(\eta=\chi_p^{-1}\)">\(\eta=\chi_p^{-1}\)</span>, so the sum in (32) uses <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>, as required for the usual Dirichlet Gauss sum.</p>
+<p>As a ramified-field example, let <span class="math" data-tex="\(F=\mathbb Q_3(\sqrt3)\)">\(F=\mathbb Q_3(\sqrt3)\)</span>, <span class="math" data-tex="\(\pi=\sqrt3\)">\(\pi=\sqrt3\)</span>, and use its trace character. The direct trace calculation in Solution 2 of the additive-character lesson gives different exponent one and residue cardinality three. Thus
+<span class="math math-display" data-tex="\[
+ \epsilon(|\cdot|^s)=3^{1/2-s},\qquad
+ \rho(|\cdot|^s)=3^{1/2-s}
+                            \frac{1-3^{-s}}{1-3^{s-1}}.
+ \tag{33}
+\]">\[
+ \epsilon(|\cdot|^s)=3^{1/2-s},\qquad
+ \rho(|\cdot|^s)=3^{1/2-s}
+                            \frac{1-3^{-s}}{1-3^{s-1}}.
+ \tag{33}
+\]</span>
+Indeed <span class="math" data-tex="\(\widehat{\mathbf1_{\mathcal O}}=3^{-1/2}\mathbf1_{\pi^{-1}\mathcal O}\)">\(\widehat{\mathbf1_{\mathcal O}}=3^{-1/2}\mathbf1_{\pi^{-1}\mathcal O}\)</span>. Summing the dual shells starting at <span class="math" data-tex="\(-1\)">\(-1\)</span> gives the factor <span class="math" data-tex="\(3^{-1/2}\cdot3^{1-s}\)">\(3^{-1/2}\cdot3^{1-s}\)</span>, independently checking the exponent in (33).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Compute <span class="math" data-tex="\(Z(\mathbf1_{\mathbb Z_p},|\cdot|^s)\)">\(Z(\mathbf1_{\mathbb Z_p},|\cdot|^s)\)</span> with multiplicative unit volume one, and with <span class="math" data-tex="\(d^\times x=dx/|x|\)">\(d^\times x=dx/|x|\)</span> for <span class="math" data-tex="\(\operatorname{vol}_{dx}(\mathbb Z_p)=1\)">\(\operatorname{vol}_{dx}(\mathbb Z_p)=1\)</span>. State the convergence region and the effect on <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</li>
+<li><strong>Medium.</strong> Let <span class="math" data-tex="\(c:\mathbb Q_p^\times\to\mathbb T\)">\(c:\mathbb Q_p^\times\to\mathbb T\)</span> be trivial on <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span> and satisfy <span class="math" data-tex="\(c(p)=1\)">\(c(p)=1\)</span>. Compute <span class="math" data-tex="\(\rho(c)\)">\(\rho(c)\)</span> with the basic character and self-dual measure, distinguishing a nontrivial residue character from the trivial one.</li>
+<li><strong>Medium.</strong> Give a counterexample to (8) if <span class="math" data-tex="\(\check c\)">\(\check c\)</span> is replaced by <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span>, choosing test functions for which all four resulting integrals converge for some <span class="math" data-tex="\(0&lt;\sigma(c)&lt;1\)">\(0&lt;\sigma(c)&lt;1\)</span>.</li>
+<li><strong>Hard.</strong> Prove the product identity (28) and the central absolute-value identity (29). Also verify them directly using the unramified formula and the primitive Gauss sums.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Each shell <span class="math" data-tex="\(p^j\mathbb Z_p^\times\)">\(p^j\mathbb Z_p^\times\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, has multiplicative volume one in the first convention. The integral is therefore <span class="math" data-tex="\(\sum_{j\geq0}p^{-js}=(1-p^{-s})^{-1}\)">\(\sum_{j\geq0}p^{-js}=(1-p^{-s})^{-1}\)</span> for <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>. In the second convention the shell volume is <span class="math" data-tex="\(1-p^{-1}\)">\(1-p^{-1}\)</span>, because additive scaling cancels the factor <span class="math" data-tex="\(|x|^{-1}\)">\(|x|^{-1}\)</span>. Hence the answer is <span class="math" data-tex="\((1-p^{-1})/(1-p^{-s})\)">\((1-p^{-1})/(1-p^{-s})\)</span>, with the same region of absolute convergence. Both extend as the stated rational functions. Every zeta integral, including the Fourier-transformed one, changes by the same multiplicative constant, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unchanged. It remains the expression in (31), with <span class="math" data-tex="\(\epsilon=1\)">\(\epsilon=1\)</span>.</p>
+<p><strong>Solution 2.</strong> Reduction identifies the unit quotient with <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>, so write <span class="math" data-tex="\(\eta\)">\(\eta\)</span> for its character. If <span class="math" data-tex="\(\eta\ne1\)">\(\eta\ne1\)</span>, the conductor is one and (32) gives the answer. The sum has size <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span> by (23); no inverse may be dropped unless <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is quadratic. If <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span>, the whole character is trivial because <span class="math" data-tex="\(c(p)=1\)">\(c(p)=1\)</span> too. Its integral on <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is not convergent, but the meromorphic factor from (31), at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, has the regular value <span class="math" data-tex="\(\rho(1)=0\)">\(\rho(1)=0\)</span>. This is consistent with a test supported away from zero: for <span class="math" data-tex="\(f=\mathbf1_{\mathbb Z_p^\times}\)">\(f=\mathbf1_{\mathbb Z_p^\times}\)</span>, <span class="math" data-tex="\(Z(f,1)=1\)">\(Z(f,1)=1\)</span> and <span class="math" data-tex="\(\widehat f=\mathbf1_{\mathbb Z_p}-p^{-1}\mathbf1_{p^{-1}\mathbb Z_p}\)">\(\widehat f=\mathbf1_{\mathbb Z_p}-p^{-1}\mathbf1_{p^{-1}\mathbb Z_p}\)</span>; integrating against <span class="math" data-tex="\(\check c=|\cdot|\)">\(\check c=|\cdot|\)</span> gives zero. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span> the residue group is trivial, so only this latter case occurs.</p>
+<p><strong>Solution 3.</strong> Work over <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> with the basic character. Let <span class="math" data-tex="\(c=|\cdot|^s\)">\(c=|\cdot|^s\)</span>, <span class="math" data-tex="\(A=p^{-s}\)">\(A=p^{-s}\)</span>, and
+<span class="math math-display" data-tex="\[
+ f=\mathbf1_{\mathbb Z_p}-p\mathbf1_{p\mathbb Z_p},\qquad
+ g(x)=f(x/p).
+\]">\[
+ f=\mathbf1_{\mathbb Z_p}-p\mathbf1_{p\mathbb Z_p},\qquad
+ g(x)=f(x/p).
+\]</span>
+Their additive integrals vanish, and (2) gives
+<span class="math math-display" data-tex="\[
+ \widehat f=-\mathbf1_{p^{-1}\mathbb Z_p^\times},\qquad
+ \widehat g(y)=p^{-1}\widehat f(py).
+\]">\[
+ \widehat f=-\mathbf1_{p^{-1}\mathbb Z_p^\times},\qquad
+ \widehat g(y)=p^{-1}\widehat f(py).
+\]</span>
+Thus both transforms are supported away from zero, so their integrals against the wrong dual <span class="math" data-tex="\(c^{-1}\)">\(c^{-1}\)</span> converge for every <span class="math" data-tex="\(s\)">\(s\)</span>. The original two integrals converge for <span class="math" data-tex="\(\operatorname{Re}s&gt;0\)">\(\operatorname{Re}s&gt;0\)</span>. Direct shell sums and dilation give
+<span class="math math-display" data-tex="\[
+ Z(f,c)=\frac{1-pA}{1-A},\quad Z(g,c)=A Z(f,c),\quad
+ Z(\widehat f,c^{-1})=-A,\quad
+ Z(\widehat g,c^{-1})=-p^{-1}A^2.
+\]">\[
+ Z(f,c)=\frac{1-pA}{1-A},\quad Z(g,c)=A Z(f,c),\quad
+ Z(\widehat f,c^{-1})=-A,\quad
+ Z(\widehat g,c^{-1})=-p^{-1}A^2.
+\]</span>
+For <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, <span class="math" data-tex="\(Z(f,c)\ne0\)">\(Z(f,c)\ne0\)</span>. The proposed left product is <span class="math" data-tex="\(-p^{-1}A^2Z(f,c)\)">\(-p^{-1}A^2Z(f,c)\)</span>, while the right product is <span class="math" data-tex="\(-A^2Z(f,c)\)">\(-A^2Z(f,c)\)</span>. They differ by <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>, although all four integrals are absolutely convergent. Using <span class="math" data-tex="\(\check c=c^{-1}|\cdot|\)">\(\check c=c^{-1}|\cdot|\)</span> supplies exactly the missing dilation factor.</p>
+<p><strong>Solution 4.</strong> Apply (9) twice with self-dual measure and use <span class="math" data-tex="\(\widehat{\widehat f}=f(-\cdot)\)">\(\widehat{\widehat f}=f(-\cdot)\)</span>. Multiplicative substitution by <span class="math" data-tex="\(-1\)">\(-1\)</span> gives <span class="math" data-tex="\(Z(f(-\cdot),c)=c(-1)Z(f,c)\)">\(Z(f(-\cdot),c)=c(-1)Z(f,c)\)</span>. A test with integral identically one permits cancellation as a meromorphic identity. Thus <span class="math" data-tex="\(\rho(c)\rho(\check c)=c(-1)\)">\(\rho(c)\rho(\check c)=c(-1)\)</span>; the two <span class="math" data-tex="\(L\)">\(L\)</span>-ratios cancel to give (28). At the central character <span class="math" data-tex="\(\overline c=\check c\)">\(\overline c=\check c\)</span>, conjugate the defining integrals. The additive character becomes <span class="math" data-tex="\(\psi_{-1}\)">\(\psi_{-1}\)</span>; formula (27) therefore gives <span class="math" data-tex="\(\overline{\epsilon(c)}=c(-1)\epsilon(\check c)\)">\(\overline{\epsilon(c)}=c(-1)\epsilon(\check c)\)</span>. Multiplying and using (28) proves (29).</p>
+<p>For a direct check, in the unramified case put <span class="math" data-tex="\(A=c(\pi)\)">\(A=c(\pi)\)</span> and <span class="math" data-tex="\(\check A=q^{-1}A^{-1}\)">\(\check A=q^{-1}A^{-1}\)</span>. Formula (16) for self-dual measure gives product <span class="math" data-tex="\(q^n(A\check A)^n=1\)">\(q^n(A\check A)^n=1\)</span>, equal to <span class="math" data-tex="\(c(-1)\)">\(c(-1)\)</span> because an unramified character kills all units. At the central line <span class="math" data-tex="\(|A|=q^{-1/2}\)">\(|A|=q^{-1/2}\)</span>, its individual absolute value <span class="math" data-tex="\(q^{n/2}|A|^n\)">\(q^{n/2}|A|^n\)</span> is one. In the ramified case, use the same <span class="math" data-tex="\(b\)">\(b\)</span> for both characters. Their factors in (16) have product
+<span class="math math-display" data-tex="\[
+ q^n c(b)\check c(b)
+        \tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+    =q^{-a}\tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+    =\eta(-1).
+\]">\[
+ q^n c(b)\check c(b)
+        \tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+    =q^{-a}\tau(\eta^{-1},\psi,b)\tau(\eta,\psi,b)
+    =\eta(-1).
+\]</span>
+Here <span class="math" data-tex="\(c(b)\check c(b)=|b|=q^{-a-n}\)">\(c(b)\check c(b)=|b|=q^{-a-n}\)</span>, and the last equality is (23), proved by Fourier inversion in (22). On the central line, (16) has absolute value <span class="math" data-tex="\(q^{n/2}q^{-(a+n)/2}q^{a/2}=1\)">\(q^{n/2}q^{-(a+n)/2}q^{a/2}=1\)</span>. This verifies both identities for every conductor and every conductor integer of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<ul>
+<li>Local additive self-duality, the trace character's inverse-different conductor, self-dual integral-ring mass, and Fourier inversion are imported from Propositions 5.1–5.2. Formula (2) and its application to the test space are explained here.</li>
+<li>Local quasi-character classification, the definition and finiteness of its conductor, and its unitary/norm decomposition are imported from Proposition 6.1. All zeta continuation, functional-equation, Gauss-sum, and epsilon-factor assertions in Propositions 7.1 and 7.4 and Theorems 7.2–7.3 are proved here.</li>
+<li>Higher-dimensional Weil-group constants and the induction formulas of [Deligne 1973, §5] are outside this lesson. The one-dimensional normalizations are compared with (3.3), (3.4), (5.3)–(5.5), and (5.7)–(5.10) of that work.</li>
+<li>The matrix zeta integrals of [Jacquet–Langlands 1970, §13, Theorem 13.1] are the separate <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> analogue; they are not used to prove this local <span class="math" data-tex="\(\mathrm{GL}_1\)">\(\mathrm{GL}_1\)</span> theory.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Bjorn Poonen, <a href="https://math.mit.edu/~poonen/786/notes.pdf"><em>Tate’s Thesis</em>, MIT 18.786, Spring 2015</a>, §§4.7–4.9, Theorem 4.18 and Proposition 4.21, PDF pages 19–25; and James-Michael Leahy, <a href="https://www.math.mcgill.ca/darmon/theses/leahy/thesis.pdf"><em>An introduction to Tate’s Thesis</em> (2010)</a>, §§4.5–4.6, PDF pages 133–152: local continuation, Fourier exchange, Gauss integrals and dependence on auxiliary choices. The two-integral argument above supplies the absolute-convergence justification at each interchange, and keeps arbitrary <span class="math" data-tex="\(F\)">\(F\)</span>, additive conductor and uniformizer value.</li>
+<li>P. Deligne, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, IAS edition</a>, 1973, §§3.3–3.4 and 5.3–5.9, printed pages 526–528 and 548–550: rank-one local constants, conductor, Haar scaling and the finite Gauss formula. Our quotient direction and the inverse unit character are fixed in (14)–(16).</li>
+<li>A. Connes and M. Marcolli, <a href="https://alainconnes.org/wp-content/uploads/bookwebfinal-2.pdf"><em>Noncommutative Geometry, Quantum Fields and Motives</em>, author version</a>, Chapter 2, §8.4.1, (2.312)–(2.314), PDF page 368: the conductor-zero indicator transform. The subsequent principal-value formulas belong to explicit-formula theory.</li>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/automorphic-forms-on-gl2_rpl.pdf"><em>Automorphic Forms on GL(2)</em>, IAS retyped edition</a>, 1970, §1, Lemma 1.2, printed pages 2–3: the quadratic conductor and Gauss normalization. The matrix zeta integrals in §13, Theorem 13.1, are the separate <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> analogue mentioned above.</li>
+</ul>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-06.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-08.html">Next lesson</a></nav><p><a href="src/NT-ADL-07.md">Markdown source</a></p></main></body></html>

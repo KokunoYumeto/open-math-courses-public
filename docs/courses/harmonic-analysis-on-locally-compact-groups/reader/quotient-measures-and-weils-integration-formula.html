@@ -1,0 +1,617 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quotient measures and Weil&#x27;s integration formula</title><link rel="stylesheet" href="./assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="./assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main id="main" style="max-width:58rem;margin:auto;padding:1.5rem"><nav><a href="./index.html">Harmonic analysis on locally compact groups</a> · <a href="../src/quotient-measures-and-weils-integration-formula.md">Editable source</a></nav><article class="lesson"><h1 id="quotient-measures-and-weil-s-integration-formula">Quotient measures and Weil's integration formula</h1>
+<p><em>Originally written and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. Reconciled, extended and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Bounded internal AI reviews checked the reconstructed proof passages and prerequisite routes; no full-course independent certification or human review is claimed. Original exposition is dedicated under CC0, except the explicitly marked Fremlin adaptations in Lemma 2.1 and Theorem 3.1, which are under the Design Science License. The programme's CC0 sources are credited at the end.</em></p>
+<p>Integration over a group can often be separated into integration along a subgroup and integration over its cosets. For a nonabelian group, an invariant measure on the coset space need not exist. The precise obstruction is the mismatch between two modular functions:
+<span class="math math-display" data-tex="\[
+G/H\text{ has a nonzero invariant Radon measure}
+\quad\Longleftrightarrow\quad
+\Delta_G|_H=\Delta_H.
+\]">\[
+G/H\text{ has a nonzero invariant Radon measure}
+\quad\Longleftrightarrow\quad
+\Delta_G|_H=\Delta_H.
+\]</span>
+When the obstruction does not vanish, a positive continuous density still gives a strongly quasi-invariant measure. We construct it, prove its change-of-variables formula and calculate examples where the distinction matters.</p>
+<p>The lesson works for every locally compact Hausdorff group <span class="math" data-tex="\(G\)">\(G\)</span> and every closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span>. Neither is assumed second countable, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact or unimodular. All interchanges of integrals in the main construction involve continuous functions with compact support. We will not infer a Fubini theorem for arbitrary nonnegative Borel functions on a non-<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite product.</p>
+<h2 id="what-to-know-first">What to know first</h2>
+<p>The preceding programme lesson <a href="haar-measure-on-locally-compact-groups.html">Haar measure on locally compact groups</a> supplies the following exact results:</p>
+<ul>
+<li>Theorem 2.2: a positive linear functional on <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> is represented by a unique Radon measure.</li>
+<li>Proposition 3.1(2): multiplication by a strictly positive continuous function gives a Radon measure in the same measure class.</li>
+<li>Proposition 4.2: iterated integrals of a continuous compactly supported function on a product agree.</li>
+<li>Proposition 9.1 and Theorem 9.2: positivity on nonempty open sets and uniqueness of Haar measure.</li>
+<li>Theorems 10.1 and 11.1: the modular function and the inversion formula.</li>
+</ul>
+<p>Their elementary measure-theory prerequisites are proved in the preceding tools lesson. The topology needed specifically for the quotient construction is proved below, including the cutoff argument sometimes hidden behind a reference to a partition of unity.</p>
+<p>Fix left Haar measures <span class="math" data-tex="\(dg\)">\(dg\)</span> and <span class="math" data-tex="\(dh\)">\(dh\)</span>. Our convention is
+<span class="math math-display" data-tex="\[
+\int_G f(ga)\,dg=\Delta_G(a)^{-1}\int_G f(g)\,dg.
+\tag{1}
+\]">\[
+\int_G f(ga)\,dg=\Delta_G(a)^{-1}\int_G f(g)\,dg.
+\tag{1}
+\]</span>
+Equivalently, the measure of a right translate <span class="math" data-tex="\(Ea\)">\(Ea\)</span> is <span class="math" data-tex="\(\Delta_G(a)\)">\(\Delta_G(a)\)</span> times the measure of <span class="math" data-tex="\(E\)">\(E\)</span>. The same convention defines <span class="math" data-tex="\(\Delta_H\)">\(\Delta_H\)</span>. Put <span class="math" data-tex="\(Y=G/H\)">\(Y=G/H\)</span>, the space of cosets <span class="math" data-tex="\(gH\)">\(gH\)</span>, and <span class="math" data-tex="\(q(g)=gH\)">\(q(g)=gH\)</span>.</p>
+<p>As in the preceding lesson, a Radon measure here is a Borel measure finite on compact sets, outer regular on Borel sets and inner regular on open sets. Equality of Radon measures can therefore be checked on <span class="math" data-tex="\(C_c\)">\(C_c\)</span>. Left and right translations of functions mean <span class="math" data-tex="\(L_af(g)=f(a^{-1}g)\)">\(L_af(g)=f(a^{-1}g)\)</span> and <span class="math" data-tex="\(R_af(g)=f(ga)\)">\(R_af(g)=f(ga)\)</span>.</p>
+<h2 id="local-topology-and-compactly-supported-functions">Local topology and compactly supported functions</h2>
+<p><strong>Lemma 1.1.</strong> An LCH space has a base of relatively compact open neighborhoods. If <span class="math" data-tex="\(K\subset V\)">\(K\subset V\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is compact and <span class="math" data-tex="\(V\)">\(V\)</span> is open, there is <span class="math" data-tex="\(u\in C_c(X)\)">\(u\in C_c(X)\)</span> with <span class="math" data-tex="\(0\leq u\leq1\)">\(0\leq u\leq1\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(\operatorname{supp}u\subset V\)">\(\operatorname{supp}u\subset V\)</span>.</p>
+<p><em>Proof.</em> We first recall the separation argument for a compact Hausdorff space <span class="math" data-tex="\(C\)">\(C\)</span>. For a point <span class="math" data-tex="\(x\)">\(x\)</span> and a closed set <span class="math" data-tex="\(A\)">\(A\)</span> not containing it, separate <span class="math" data-tex="\(x\)">\(x\)</span> from each point of <span class="math" data-tex="\(A\)">\(A\)</span> by disjoint open neighborhoods. A finite subcover of <span class="math" data-tex="\(A\)">\(A\)</span> gives an open neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> whose closure misses <span class="math" data-tex="\(A\)">\(A\)</span>. For two disjoint closed sets, do this for each point of the first, then take a finite union of the resulting neighborhoods. Thus whenever <span class="math" data-tex="\(A\subset O\)">\(A\subset O\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> closed and <span class="math" data-tex="\(O\)">\(O\)</span> open, there is open <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math math-display" data-tex="\[
+A\subset W\subset\overline W\subset O.
+\tag{2}
+\]">\[
+A\subset W\subset\overline W\subset O.
+\tag{2}
+\]</span></p>
+<p>This proves the continuous separation needed here. For disjoint closed <span class="math" data-tex="\(A,B\subset C\)">\(A,B\subset C\)</span>, choose open sets <span class="math" data-tex="\(U_r\)">\(U_r\)</span>, indexed by dyadic rationals <span class="math" data-tex="\(r\in[0,1]\)">\(r\in[0,1]\)</span>, with <span class="math" data-tex="\(A\subset U_0\)">\(A\subset U_0\)</span>, <span class="math" data-tex="\(U_1=C\setminus B\)">\(U_1=C\setminus B\)</span>, and <span class="math" data-tex="\(\overline U_r\subset U_s\)">\(\overline U_r\subset U_s\)</span> when <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. Start by shrinking <span class="math" data-tex="\(A\)">\(A\)</span> inside <span class="math" data-tex="\(C\setminus B\)">\(C\setminus B\)</span>; at each finite dyadic stage use (2) to insert the new intermediate open sets. Set
+<span class="math math-display" data-tex="\[
+v(x)=\inf\{r:x\in U_r\},
+\]">\[
+v(x)=\inf\{r:x\in U_r\},
+\]</span>
+with value <span class="math" data-tex="\(1\)">\(1\)</span> when the set is empty. Then <span class="math" data-tex="\(v=0\)">\(v=0\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(v=1\)">\(v=1\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>. The identity
+<span class="math" data-tex="\(\{v&lt;t\}=\bigcup_{r&lt;t}U_r\)">\(\{v&lt;t\}=\bigcup_{r&lt;t}U_r\)</span> and, for <span class="math" data-tex="\(0\leq t&lt;1\)">\(0\leq t&lt;1\)</span>,
+<span class="math" data-tex="\(\{v&gt;t\}=\bigcup_{r&gt;t}(C\setminus\overline U_r)\)">\(\{v&gt;t\}=\bigcup_{r&gt;t}(C\setminus\overline U_r)\)</span>
+prove continuity. In the second identity, choose a dyadic <span class="math" data-tex="\(r\)">\(r\)</span> strictly between <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(v(x)\)">\(v(x)\)</span>; if <span class="math" data-tex="\(x\in\overline U_r\)">\(x\in\overline U_r\)</span>, the nesting would put <span class="math" data-tex="\(x\)">\(x\)</span> in every <span class="math" data-tex="\(U_s\)">\(U_s\)</span> with <span class="math" data-tex="\(s&gt;r\)">\(s&gt;r\)</span>, contradicting <span class="math" data-tex="\(v(x)&gt;r\)">\(v(x)&gt;r\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(x\in O\subset X\)">\(x\in O\subset X\)</span>, with <span class="math" data-tex="\(O\)">\(O\)</span> open and <span class="math" data-tex="\(X\)">\(X\)</span> LCH. Choose a compact neighborhood <span class="math" data-tex="\(C\)">\(C\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. Apply (2) within <span class="math" data-tex="\(C\)">\(C\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(O\cap\operatorname{int}C\)">\(O\cap\operatorname{int}C\)</span>. The resulting neighborhood lies in <span class="math" data-tex="\(\operatorname{int}C\)">\(\operatorname{int}C\)</span>, so it is open in <span class="math" data-tex="\(X\)">\(X\)</span>, and its closure is compact and lies in <span class="math" data-tex="\(O\)">\(O\)</span>. This proves the neighborhood-base assertion.</p>
+<p>For compact <span class="math" data-tex="\(K\subset V\)">\(K\subset V\)</span>, take finitely many such neighborhoods to obtain open <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(K\subset W\subset\overline W\subset V\)">\(K\subset W\subset\overline W\subset V\)</span> and <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span> compact. In <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span>, continuously separate <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(\overline W\setminus W\)">\(\overline W\setminus W\)</span>, taking the value <span class="math" data-tex="\(1\)">\(1\)</span> on the first and <span class="math" data-tex="\(0\)">\(0\)</span> on the second. Extend the function by zero outside <span class="math" data-tex="\(W\)">\(W\)</span>. The two definitions agree on the boundary, so the pasting lemma on the two closed sets <span class="math" data-tex="\(\overline W\)">\(\overline W\)</span> and <span class="math" data-tex="\(X\setminus W\)">\(X\setminus W\)</span> proves continuity. This is the required <span class="math" data-tex="\(u\)">\(u\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2.</strong> The quotient map <span class="math" data-tex="\(q\)">\(q\)</span> is open, <span class="math" data-tex="\(Y\)">\(Y\)</span> is LCH, and every compact subset <span class="math" data-tex="\(E\subset Y\)">\(E\subset Y\)</span> is the image of a compact subset of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><em>Proof.</em> For open <span class="math" data-tex="\(O\subset G\)">\(O\subset G\)</span>, <span class="math" data-tex="\(q^{-1}(q(O))=OH\)">\(q^{-1}(q(O))=OH\)</span> is open, so <span class="math" data-tex="\(q(O)\)">\(q(O)\)</span> is open. If <span class="math" data-tex="\(xH\neq yH\)">\(xH\neq yH\)</span>, then <span class="math" data-tex="\(y^{-1}x\notin H\)">\(y^{-1}x\notin H\)</span>. Since <span class="math" data-tex="\(H\)">\(H\)</span> is closed, continuity gives neighborhoods <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(W^{-1}V\cap H=\varnothing\)">\(W^{-1}V\cap H=\varnothing\)</span>. Their images under <span class="math" data-tex="\(q\)">\(q\)</span> are disjoint open neighborhoods. Thus <span class="math" data-tex="\(Y\)">\(Y\)</span> is Hausdorff. The image of a compact neighborhood of <span class="math" data-tex="\(g\)">\(g\)</span> contains the image of its interior, an open neighborhood of <span class="math" data-tex="\(gH\)">\(gH\)</span>, so <span class="math" data-tex="\(Y\)">\(Y\)</span> is locally compact.</p>
+<p>For the compact-lift assertion, use the positive averaging construction of Lemma 2.1 below, which uses only the openness and LCH conclusions just proved. Choose <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> with <span class="math" data-tex="\(Pb=1\)">\(Pb=1\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. Then
+<span class="math math-display" data-tex="\[
+K=\operatorname{supp}b\cap q^{-1}(E)
+\]">\[
+K=\operatorname{supp}b\cap q^{-1}(E)
+\]</span>
+is compact, since <span class="math" data-tex="\(E\)">\(E\)</span> is closed in the Hausdorff quotient. Each <span class="math" data-tex="\(y\in E\)">\(y\in E\)</span> has <span class="math" data-tex="\(Pb(y)=1&gt;0\)">\(Pb(y)=1&gt;0\)</span>, so its fiber contains a point where <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, and consequently <span class="math" data-tex="\(q(K)=E\)">\(q(K)=E\)</span>. This proves the last assertion without assuming a continuous section or using compact lifting to construct <span class="math" data-tex="\(b\)">\(b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="averaging-along-the-subgroup">Averaging along the subgroup</h2>
+<p>Why not simply push Haar measure forward through <span class="math" data-tex="\(q\)">\(q\)</span>? Consider <span class="math" data-tex="\(G=\mathbb R^2\)">\(G=\mathbb R^2\)</span>, with two-dimensional Lebesgue measure, and <span class="math" data-tex="\(H=\mathbb R\times\{0\}\)">\(H=\mathbb R\times\{0\}\)</span>, so that <span class="math" data-tex="\(q(x,y)=y\)">\(q(x,y)=y\)</span>. The inverse image of a nondegenerate compact interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> contains every rectangle <span class="math" data-tex="\([-N,N]\times[a,b]\)">\([-N,N]\times[a,b]\)</span>. Its measure is at least <span class="math" data-tex="\(2N(b-a)\)">\(2N(b-a)\)</span> for every <span class="math" data-tex="\(N\)">\(N\)</span>, hence is infinite. The pushforward is therefore not finite on compact intervals and is not the required Radon measure. Nevertheless, the quotient plainly has the invariant measure <span class="math" data-tex="\(dy\)">\(dy\)</span>.</p>
+<p>The construction below separates these two operations. First integrate a compactly supported function along the fiber, rather than measuring the whole infinite fiber. Then integrate the resulting function over the base. For the example, this is precisely <span class="math" data-tex="\(\int f(x,y)\,dx\)">\(\int f(x,y)\,dx\)</span> followed by integration in <span class="math" data-tex="\(y\)">\(y\)</span>. A function constant on every fiber is usually not compactly supported upstairs; the cutoff used below supplies a compactly supported representative without pretending that the fiber has finite mass. This is why surjectivity of the averaging map, rather than existence of a global section or finiteness of subgroup volume, is the useful starting point.</p>
+<p>For <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>, define
+<span class="math math-display" data-tex="\[
+Pf(gH)=\int_H f(gh)\,dh.
+\tag{3}
+\]">\[
+Pf(gH)=\int_H f(gh)\,dh.
+\tag{3}
+\]</span>
+Left invariance of <span class="math" data-tex="\(dh\)">\(dh\)</span> makes this independent of the representative <span class="math" data-tex="\(g\)">\(g\)</span>: replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(gr\)">\(gr\)</span>, <span class="math" data-tex="\(r\in H\)">\(r\in H\)</span>, replaces <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(rh\)">\(rh\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> The map <span class="math" data-tex="\(P:C_c(G)\to C_c(Y)\)">\(P:C_c(G)\to C_c(Y)\)</span> is positive and surjective. For each compact <span class="math" data-tex="\(E\subset Y\)">\(E\subset Y\)</span>, there is <span class="math" data-tex="\(b\in C_c(G)\)">\(b\in C_c(G)\)</span>, <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>, with <span class="math" data-tex="\(Pb=1\)">\(Pb=1\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. A nonnegative function in <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span> has a nonnegative lift through <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><em>Proof.</em> Positivity is immediate. For <span class="math" data-tex="\(g\)">\(g\)</span> in a compact neighborhood <span class="math" data-tex="\(A\)">\(A\)</span> of <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, only
+<span class="math math-display" data-tex="\[
+h\in H\cap A^{-1}\operatorname{supp}f
+\]">\[
+h\in H\cap A^{-1}\operatorname{supp}f
+\]</span>
+can contribute to (3). This set is compact. The continuous function <span class="math" data-tex="\((g,h)\mapsto f(gh)\)">\((g,h)\mapsto f(gh)\)</span> varies uniformly in <span class="math" data-tex="\(h\)">\(h\)</span> on this compact set as <span class="math" data-tex="\(g\to g_0\)">\(g\to g_0\)</span>: a finite cover of that set by continuity neighborhoods proves the assertion. Its integral therefore varies continuously. The resulting continuous function on <span class="math" data-tex="\(G\)">\(G\)</span> is constant on fibers, so descends continuously through the quotient map. Its support lies in <span class="math" data-tex="\(q(\operatorname{supp}f)\)">\(q(\operatorname{supp}f)\)</span>, a compact set.</p>
+<p>The remaining construction follows the freely accessible positivity-set argument of <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex">Fremlin, §443P(v–vi)</a>. For every <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>, select <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(q(g)=y\)">\(q(g)=y\)</span>, and choose <span class="math" data-tex="\(a_y\in C_c(G)\)">\(a_y\in C_c(G)\)</span>, nonnegative, with <span class="math" data-tex="\(a_y(g)&gt;0\)">\(a_y(g)&gt;0\)</span>, by Lemma 1.1. Continuity gives a nonempty open set of <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> on which <span class="math" data-tex="\(a_y(gh)&gt;0\)">\(a_y(gh)&gt;0\)</span>. Haar positivity implies <span class="math" data-tex="\(Pa_y(y)&gt;0\)">\(Pa_y(y)&gt;0\)</span>. Thus the open sets <span class="math" data-tex="\(\{Pa_y&gt;0\}\)">\(\{Pa_y&gt;0\}\)</span> cover <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>For a compact <span class="math" data-tex="\(E\)">\(E\)</span>, finitely many of these sets cover it. Sum the corresponding <span class="math" data-tex="\(a_y\)">\(a_y\)</span> to obtain <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> with <span class="math" data-tex="\(Pa&gt;0\)">\(Pa&gt;0\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. Put <span class="math" data-tex="\(W=\{Pa&gt;0\}\)">\(W=\{Pa&gt;0\}\)</span>. Choose <span class="math" data-tex="\(\chi\in C_c(Y)\)">\(\chi\in C_c(Y)\)</span> equal to one on <span class="math" data-tex="\(E\)">\(E\)</span>, with <span class="math" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span> and support contained in <span class="math" data-tex="\(W\)">\(W\)</span>. The function <span class="math" data-tex="\(r=\chi/Pa\)">\(r=\chi/Pa\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>, extended by zero elsewhere, is continuous: its numerator has compact support contained in <span class="math" data-tex="\(W\)">\(W\)</span>, and is zero near each point outside that support. Define
+<span class="math math-display" data-tex="\[
+b(g)=a(g)r(q(g)).
+\tag{4}
+\]">\[
+b(g)=a(g)r(q(g)).
+\tag{4}
+\]</span>
+It is nonnegative, continuous, compactly supported and satisfies <span class="math" data-tex="\(Pb=rPa=\chi\)">\(Pb=rPa=\chi\)</span>, so <span class="math" data-tex="\(Pb=1\)">\(Pb=1\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. For arbitrary <span class="math" data-tex="\(F\in C_c(Y)\)">\(F\in C_c(Y)\)</span>, take such <span class="math" data-tex="\(b\)">\(b\)</span> for <span class="math" data-tex="\(E=\operatorname{supp}F\)">\(E=\operatorname{supp}F\)</span>. Then <span class="math" data-tex="\(f(g)=F(q(g))b(g)\)">\(f(g)=F(q(g))b(g)\)</span> belongs to <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, and <span class="math" data-tex="\(Pf=F\)">\(Pf=F\)</span>. If <span class="math" data-tex="\(F\geq0\)">\(F\geq0\)</span>, its lift is nonnegative. This proves all the asserted surjectivity and normalization statements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Adaptation terms for the preceding positivity-set construction:</em> Copyright © 1998 D. H. Fremlin; adapted and expanded by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, under the <a href="licenses/design-science-license.txt">Design Science License</a>. The proof of continuity above is original course exposition; the marked construction is separately licensed.</p>
+<p>The map respects left translation and has a simple right-subgroup rule:
+<span class="math math-display" data-tex="\[
+P(L_a f)(y)=Pf(a^{-1}y),\qquad
+P(R_h f)=\Delta_H(h)^{-1}Pf\quad(h\in H).
+\tag{5}
+\]">\[
+P(L_a f)(y)=Pf(a^{-1}y),\qquad
+P(R_h f)=\Delta_H(h)^{-1}Pf\quad(h\in H).
+\tag{5}
+\]</span>
+Both follow directly from (3), with the modular convention (1).</p>
+<h2 id="exactly-when-the-quotient-measure-is-invariant">Exactly when the quotient measure is invariant</h2>
+<p><strong>Theorem 3.1.</strong> The space <span class="math" data-tex="\(G/H\)">\(G/H\)</span> has a nonzero <span class="math" data-tex="\(G\)">\(G\)</span>-invariant Radon measure if and only if <span class="math" data-tex="\(\Delta_G(h)=\Delta_H(h)\)">\(\Delta_G(h)=\Delta_H(h)\)</span> for every <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>. When this holds, it is unique up to a positive scalar. For the fixed measures <span class="math" data-tex="\(dg,dh\)">\(dg,dh\)</span>, there is exactly one normalization <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span> for which
+<span class="math math-display" data-tex="\[
+\int_G f(g)\,dg=\int_Y Pf(y)\,d\mu(y)
+\qquad(f\in C_c(G)).
+\tag{6}
+\]">\[
+\int_G f(g)\,dg=\int_Y Pf(y)\,d\mu(y)
+\qquad(f\in C_c(G)).
+\tag{6}
+\]</span></p>
+<p><em>Proof (from the free functional construction in Fremlin, §§443Q(b), 443R).</em> We first establish the sufficiency direction as an order statement. Suppose <span class="math" data-tex="\(\Delta_G|_H=\Delta_H\)">\(\Delta_G|_H=\Delta_H\)</span>, and let a real <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span> satisfy <span class="math" data-tex="\(Pu\geq0\)">\(Pu\geq0\)</span>. By Lemma 2.1 choose a nonnegative <span class="math" data-tex="\(v\in C_c(G)\)">\(v\in C_c(G)\)</span> with <span class="math" data-tex="\(Pv=1\)">\(Pv=1\)</span> on <span class="math" data-tex="\(q(\operatorname{supp}u)\)">\(q(\operatorname{supp}u)\)</span>. Both <span class="math" data-tex="\((x,h)\mapsto v(x)u(xh)\)">\((x,h)\mapsto v(x)u(xh)\)</span> and its changed-variable integrand below have compact support: the two group coordinates lie in the compact supports of <span class="math" data-tex="\(v,u\)">\(v,u\)</span>, so the subgroup coordinate lies in their compact relative-product intersection with <span class="math" data-tex="\(H\)">\(H\)</span>. The compact-product theorem therefore permits each exchange. Right translation on <span class="math" data-tex="\(G\)">\(G\)</span>, the modular equality, and inversion on <span class="math" data-tex="\(H\)">\(H\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\leq\int_G v(x)Pu(xH)\,dx\\
+ &amp;=\int_H\int_G v(x)u(xh)\,dx\,dh\\
+ &amp;=\int_G u(t)\int_H\Delta_G(h)^{-1}v(th^{-1})\,dh\,dt\\
+ &amp;=\int_G u(t)Pv(tH)\,dt
+ =\int_G u(t)\,dt.
+\end{aligned}
+\tag{7}
+\]">\[
+\begin{aligned}
+0&amp;\leq\int_G v(x)Pu(xH)\,dx\\
+ &amp;=\int_H\int_G v(x)u(xh)\,dx\,dh\\
+ &amp;=\int_G u(t)\int_H\Delta_G(h)^{-1}v(th^{-1})\,dh\,dt\\
+ &amp;=\int_G u(t)Pv(tH)\,dt
+ =\int_G u(t)\,dt.
+\end{aligned}
+\tag{7}
+\]</span>
+Applying the conclusion to <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(-u\)">\(-u\)</span> shows that <span class="math" data-tex="\(Pu=0\)">\(Pu=0\)</span> forces <span class="math" data-tex="\(\int u=0\)">\(\int u=0\)</span>. Apply it to real and imaginary parts for a complex <span class="math" data-tex="\(u\)">\(u\)</span>. Thus the rule
+<span class="math math-display" data-tex="\[
+\Lambda(Pu)=\int_G u\,dg
+\]">\[
+\Lambda(Pu)=\int_G u\,dg
+\]</span>
+defines a linear functional on <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span>, independent of the selected lift. It is positive by the order statement, and its domain is all of <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span> by surjectivity. It is nonzero because a positive nonzero compactly supported group function has positive Haar integral. Riesz representation gives a nonzero Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> representing <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. The intertwining identity (5) and left Haar invariance imply <span class="math" data-tex="\(\Lambda(F(a^{-1}\cdot))=\Lambda(F)\)">\(\Lambda(F(a^{-1}\cdot))=\Lambda(F)\)</span>; Riesz uniqueness makes <span class="math" data-tex="\(\mu\)">\(\mu\)</span> invariant. Its defining identity is (6).</p>
+<p>Conversely suppose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a nonzero invariant Radon measure on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Compose integration against <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(P\)">\(P\)</span>:
+<span class="math math-display" data-tex="\[
+J(u)=\int_Y Pu\,d\eta.
+\]">\[
+J(u)=\int_Y Pu\,d\eta.
+\]</span>
+This functional is positive, nonzero by positive surjectivity and Radon representation, and left invariant by (5). Its representing measure is therefore a left Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span>. Haar uniqueness gives <span class="math" data-tex="\(J(u)=c\int_Gu\,dg\)">\(J(u)=c\int_Gu\,dg\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. For <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, equation (5) evaluates <span class="math" data-tex="\(J(R_hu)\)">\(J(R_hu)\)</span> as <span class="math" data-tex="\(\Delta_H(h)^{-1}J(u)\)">\(\Delta_H(h)^{-1}J(u)\)</span>, whereas the representing Haar measure evaluates it as <span class="math" data-tex="\(\Delta_G(h)^{-1}J(u)\)">\(\Delta_G(h)^{-1}J(u)\)</span>. For a nonnegative nonzero <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(J(u)&gt;0\)">\(J(u)&gt;0\)</span>. The factors must agree, proving necessity.</p>
+<p>Finally the same composition gives a scalar multiple of Haar integration for every invariant quotient measure. Surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> makes its quotient measure a scalar multiple of the one constructed above, and (6) selects precisely one scalar. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Adaptation terms for this proof:</em> D. H. Fremlin’s freely accessible <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt443.tex">§§443Q(b), 443R</a>, Copyright © 1998 D. H. Fremlin; adapted by GPT-6.1 Sol (OpenAI), Ultra, 5 October 2026, under the <a href="licenses/design-science-license.txt">Design Science License</a>. Changes: the course’s outer-regular Borel convention, complex functions by real and imaginary parts, explicit compact support for every exchange, and a cutoff on <span class="math" data-tex="\(q(\operatorname{supp}u)\)">\(q(\operatorname{supp}u)\)</span> even when the subgroup average cancels. The conclusion uses only the internal Riesz, compact-product and Haar proofs already supplied.</p>
+<p>Two useful consequences require no additional construction. A compact subgroup always satisfies the criterion: its modular function is one, and the continuous homomorphism <span class="math" data-tex="\(\Delta_G:H\to(0,\infty)\)">\(\Delta_G:H\to(0,\infty)\)</span> is one on a compact group. An open subgroup also satisfies it, because restriction of Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> is Haar measure and has the same right-translation factors. For a discrete subgroup, however, the criterion is <span class="math" data-tex="\(\Delta_G|_H=1\)">\(\Delta_G|_H=1\)</span>, not an automatic assertion that every discrete-subgroup quotient has an invariant measure.</p>
+<p>A compact cutoff in this proof must equal one on <span class="math" data-tex="\(q(\operatorname{supp}f)\)">\(q(\operatorname{supp}f)\)</span>, not just on the support of <span class="math" data-tex="\(Pf\)">\(Pf\)</span>. For a signed function, subgroup integration can cancel to zero on a coset while <span class="math" data-tex="\(f\)">\(f\)</span> is nonzero there. The choice above covers those cosets as well.</p>
+<h2 id="a-cutoff-over-all-cosets">A cutoff over all cosets</h2>
+<p>For a general subgroup the modular obstruction need not vanish. To construct a compensating density, we need a continuous nonnegative <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> such that
+<span class="math math-display" data-tex="\[
+Pk=1,\qquad
+\operatorname{supp}k\cap q^{-1}(E)\text{ is compact for each compact }E\subset Y.
+\tag{8}
+\]">\[
+Pk=1,\qquad
+\operatorname{supp}k\cap q^{-1}(E)\text{ is compact for each compact }E\subset Y.
+\tag{8}
+\]</span>
+It will not generally have compact support on all of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> A function <span class="math" data-tex="\(k\)">\(k\)</span> with properties (8) exists.</p>
+<p><em>Proof.</em> Choose a relatively compact symmetric open identity neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. The subgroup <span class="math" data-tex="\(L=\bigcup_{n\geq1}V^n\)">\(L=\bigcup_{n\geq1}V^n\)</span> is open and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact: <span class="math" data-tex="\(V^n\subset(\overline V)^n\subset L\)">\(V^n\subset(\overline V)^n\subset L\)</span>, with the latter compact, since <span class="math" data-tex="\(\overline V\subset V^2\)">\(\overline V\subset V^2\)</span>. For the last inclusion, if <span class="math" data-tex="\(x\in\overline V\)">\(x\in\overline V\)</span>, the open set <span class="math" data-tex="\(xV\)">\(xV\)</span> meets <span class="math" data-tex="\(V\)">\(V\)</span>, so <span class="math" data-tex="\(x\in VV^{-1}=V^2\)">\(x\in VV^{-1}=V^2\)</span>.</p>
+<p>The <span class="math" data-tex="\(L\)">\(L\)</span>-orbits in <span class="math" data-tex="\(Y\)">\(Y\)</span> are disjoint open sets, because <span class="math" data-tex="\(q\)">\(q\)</span> is open; their complements are unions of other orbits, so they are also closed. Each orbit <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> is the continuous image of <span class="math" data-tex="\(L\)">\(L\)</span>, hence is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact and LCH.</p>
+<p>On such an orbit choose a compact exhaustion <span class="math" data-tex="\(K_n\subset\operatorname{int}K_{n+1}\)">\(K_n\subset\operatorname{int}K_{n+1}\)</span>, with union <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>. To construct it, start with a countable compact cover; at each step cover the preceding compact set and the next compact set in that cover by finitely many relatively compact open neighborhoods, and take the union of their compact closures. Put <span class="math" data-tex="\(K_0=K_{-1}=\varnothing\)">\(K_0=K_{-1}=\varnothing\)</span>. The compact shells
+<span class="math math-display" data-tex="\[
+S_n=K_n\setminus\operatorname{int}K_{n-1}
+\]">\[
+S_n=K_n\setminus\operatorname{int}K_{n-1}
+\]</span>
+are contained in the open sets <span class="math" data-tex="\(W_n=\operatorname{int}K_{n+1}\setminus K_{n-2}\)">\(W_n=\operatorname{int}K_{n+1}\setminus K_{n-2}\)</span>, and cover <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>. By Lemma 1.1 choose <span class="math" data-tex="\(\chi_n\in C_c(Y_0)\)">\(\chi_n\in C_c(Y_0)\)</span>, nonnegative, equal to one on <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, with support in <span class="math" data-tex="\(W_n\)">\(W_n\)</span>. The family is locally finite: a neighborhood contained in <span class="math" data-tex="\(\operatorname{int}K_N\)">\(\operatorname{int}K_N\)</span> misses <span class="math" data-tex="\(W_n\)">\(W_n\)</span> for <span class="math" data-tex="\(n\geq N+2\)">\(n\geq N+2\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\psi_n=\frac{\chi_n}{\sum_j\chi_j}
+\]">\[
+\psi_n=\frac{\chi_n}{\sum_j\chi_j}
+\]</span>
+are continuous, compactly supported, locally finite, nonnegative and sum to one on <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>.</p>
+<p>Perform this construction in every orbit and extend the functions by zero to <span class="math" data-tex="\(Y\)">\(Y\)</span>. The resulting family <span class="math" data-tex="\((\psi_i)\)">\((\psi_i)\)</span> is still locally finite because the orbits are open, and each <span class="math" data-tex="\(\psi_i\)">\(\psi_i\)</span> has compact support. By Lemma 2.1 choose <span class="math" data-tex="\(b_i\geq0\)">\(b_i\geq0\)</span> in <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> with <span class="math" data-tex="\(Pb_i=1\)">\(Pb_i=1\)</span> on <span class="math" data-tex="\(\operatorname{supp}\psi_i\)">\(\operatorname{supp}\psi_i\)</span>. Set
+<span class="math math-display" data-tex="\[
+k(g)=\sum_i \psi_i(q(g))b_i(g).
+\tag{9}
+\]">\[
+k(g)=\sum_i \psi_i(q(g))b_i(g).
+\tag{9}
+\]</span>
+Local finiteness makes this continuous. Averaging gives <span class="math" data-tex="\(Pk=\sum_i\psi_i=1\)">\(Pk=\sum_i\psi_i=1\)</span>. A compact subset of <span class="math" data-tex="\(Y\)">\(Y\)</span> meets only finitely many supports of this locally finite family; over that compact set, the support of <span class="math" data-tex="\(k\)">\(k\)</span> lies in the union of the corresponding finitely many compact supports of <span class="math" data-tex="\(b_i\)">\(b_i\)</span>. It is closed there, so is compact. This proves (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction uses neither a countable base for <span class="math" data-tex="\(G\)">\(G\)</span> nor a global continuous section of <span class="math" data-tex="\(G\to G/H\)">\(G\to G/H\)</span>.</p>
+<h2 id="the-modular-density-and-weighted-integration">The modular density and weighted integration</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+\chi(h)=\frac{\Delta_G(h)}{\Delta_H(h)}.
+\]">\[
+\chi(h)=\frac{\Delta_G(h)}{\Delta_H(h)}.
+\]</span>
+This is a positive continuous character on <span class="math" data-tex="\(H\)">\(H\)</span>. From the cutoff of Lemma 4.1 define
+<span class="math math-display" data-tex="\[
+\rho(g)=\int_H k(gh)\chi(h)\,dh.
+\tag{10}
+\]">\[
+\rho(g)=\int_H k(gh)\chi(h)\,dh.
+\tag{10}
+\]</span></p>
+<p><strong>Lemma 5.1.</strong> The function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is continuous, strictly positive and finite, and
+<span class="math math-display" data-tex="\[
+\rho(gh)=\frac{\Delta_H(h)}{\Delta_G(h)}\rho(g)
+\qquad(g\in G,\ h\in H).
+\tag{11}
+\]">\[
+\rho(gh)=\frac{\Delta_H(h)}{\Delta_G(h)}\rho(g)
+\qquad(g\in G,\ h\in H).
+\tag{11}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(g\)">\(g\)</span> in a compact neighborhood <span class="math" data-tex="\(A\)">\(A\)</span>, property (8) puts all <span class="math" data-tex="\(gh\)">\(gh\)</span> that contribute into one compact subset <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>. Then <span class="math" data-tex="\(h\)">\(h\)</span> lies in the compact set <span class="math" data-tex="\(H\cap A^{-1}B\)">\(H\cap A^{-1}B\)</span>. The integrand is continuous and varies uniformly on this set; its integral is therefore finite and continuous in <span class="math" data-tex="\(g\)">\(g\)</span>. Since <span class="math" data-tex="\(Pk=1\)">\(Pk=1\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> is not identically zero on any fiber; <span class="math" data-tex="\(\chi&gt;0\)">\(\chi&gt;0\)</span>, so <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span>. For <span class="math" data-tex="\(r\in H\)">\(r\in H\)</span>, substitute <span class="math" data-tex="\(t=rh\)">\(t=rh\)</span> using left invariance:
+<span class="math math-display" data-tex="\[
+\rho(gr)=\int_H k(gt)\chi(r^{-1}t)\,dt
+=\chi(r)^{-1}\rho(g).
+\]">\[
+\rho(gr)=\int_H k(gt)\chi(r^{-1}t)\,dt
+=\chi(r)^{-1}\rho(g).
+\]</span>
+This is (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A continuous positive function satisfying (11) is called a <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-function. It is a density on the group, not usually a function on the quotient.</p>
+<p><strong>Theorem 5.2.</strong> For any <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-function there is a unique Radon measure <span class="math" data-tex="\(\mu_\rho\)">\(\mu_\rho\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\int_Y Pf\,d\mu_\rho=\int_G f(g)\rho(g)\,dg
+\qquad(f\in C_c(G)).
+\tag{12}
+\]">\[
+\int_Y Pf\,d\mu_\rho=\int_G f(g)\rho(g)\,dg
+\qquad(f\in C_c(G)).
+\tag{12}
+\]</span>
+It is positive on nonempty open subsets of <span class="math" data-tex="\(Y\)">\(Y\)</span>. The construction is independent of the cutoff.</p>
+<p><em>Proof.</em> Use a cutoff <span class="math" data-tex="\(k\)">\(k\)</span> as in (8), and define a positive functional by
+<span class="math math-display" data-tex="\[
+\Lambda(F)=\int_G F(q(g))\,k(g)\rho(g)\,dg
+\qquad(F\in C_c(Y)).
+\tag{13}
+\]">\[
+\Lambda(F)=\int_G F(q(g))\,k(g)\rho(g)\,dg
+\qquad(F\in C_c(Y)).
+\tag{13}
+\]</span>
+The integrand has compact support by (8), so this is finite and Radon representation applies.</p>
+<p>For <span class="math" data-tex="\(F=Pf\)">\(F=Pf\)</span>, exchange the integrals in (13) and put <span class="math" data-tex="\(t=gh\)">\(t=gh\)</span>. The translation factor is <span class="math" data-tex="\(\Delta_G(h)^{-1}\)">\(\Delta_G(h)^{-1}\)</span>, while (11) gives
+<span class="math" data-tex="\(\rho(th^{-1})=\chi(h)\rho(t)\)">\(\rho(th^{-1})=\chi(h)\rho(t)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda(Pf)
+&amp;=\int_G f(t)\rho(t)
+ \left(\int_H k(th^{-1})\Delta_H(h)^{-1}\,dh\right)dt\\
+&amp;=\int_G f(t)\rho(t)Pk(tH)\,dt
+=\int_G f(t)\rho(t)\,dt.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+\Lambda(Pf)
+&amp;=\int_G f(t)\rho(t)
+ \left(\int_H k(th^{-1})\Delta_H(h)^{-1}\,dh\right)dt\\
+&amp;=\int_G f(t)\rho(t)Pk(tH)\,dt
+=\int_G f(t)\rho(t)\,dt.
+\end{aligned}
+\tag{14}
+\]</span>
+The first integral before substitution is compactly supported on <span class="math" data-tex="\(G\times H\)">\(G\times H\)</span>: the <span class="math" data-tex="\(g\)">\(g\)</span>'s lie in <span class="math" data-tex="\(\operatorname{supp}k\cap q^{-1}(q(\operatorname{supp}f))\)">\(\operatorname{supp}k\cap q^{-1}(q(\operatorname{supp}f))\)</span>, which is compact, and the <span class="math" data-tex="\(h\)">\(h\)</span>'s then lie in a compact set as in Lemma 2.1. Hence the compact-product theorem justifies the exchange. Inversion on <span class="math" data-tex="\(H\)">\(H\)</span> gives the second line.</p>
+<p>Uniqueness follows from surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> and uniqueness in Radon representation; consequently no choice of cutoff changes the measure. A nonempty open subset of <span class="math" data-tex="\(Y\)">\(Y\)</span> has a nonzero nonnegative <span class="math" data-tex="\(F\in C_c(Y)\)">\(F\in C_c(Y)\)</span> supported there, by Lemma 1.1. Lift it to nonnegative nonzero <span class="math" data-tex="\(f\in C_c(G)\)">\(f\in C_c(G)\)</span>. Then (12), <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> and Haar positivity give <span class="math" data-tex="\(\int F\,d\mu_\rho&gt;0\)">\(\int F\,d\mu_\rho&gt;0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(\rho_1,\rho_2\)">\(\rho_1,\rho_2\)</span> are two <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-functions, their ratio is constant on each coset by (11). It descends to a strictly positive continuous function <span class="math" data-tex="\(r\)">\(r\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, because <span class="math" data-tex="\(q\)">\(q\)</span> is a quotient map. Applying (12) to <span class="math" data-tex="\(r(q(g))f(g)\)">\(r(q(g))f(g)\)</span> and using surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> proves
+<span class="math math-display" data-tex="\[
+d\mu_{\rho_2}=r\,d\mu_{\rho_1}.
+\tag{15}
+\]">\[
+d\mu_{\rho_2}=r\,d\mu_{\rho_1}.
+\tag{15}
+\]</span>
+Thus all the measures constructed from continuous positive <span class="math" data-tex="\(\rho\)">\(\rho\)</span>-functions have the same null sets. No assertion about arbitrary non-regular measures is needed.</p>
+<h2 id="quasi-invariance-and-the-direction-of-translation">Quasi-invariance and the direction of translation</h2>
+<p>Let <span class="math" data-tex="\(T_a(y)=ay\)">\(T_a(y)=ay\)</span>. The ratio
+<span class="math math-display" data-tex="\[
+c(a,gH)=\frac{\rho(ag)}{\rho(g)}
+\tag{16}
+\]">\[
+c(a,gH)=\frac{\rho(ag)}{\rho(g)}
+\tag{16}
+\]</span>
+is well-defined and continuous. Replacing <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(gh\)">\(gh\)</span> multiplies both numerator and denominator by the same factor from (11). Direct cancellation gives
+<span class="math math-display" data-tex="\[
+c(ab,y)=c(a,by)c(b,y).
+\tag{17}
+\]">\[
+c(ab,y)=c(a,by)c(b,y).
+\tag{17}
+\]</span></p>
+<p><strong>Theorem 6.1.</strong> The measure <span class="math" data-tex="\(\mu_\rho\)">\(\mu_\rho\)</span> is strongly quasi-invariant. More precisely,
+<span class="math math-display" data-tex="\[
+\frac{d[E\mapsto\mu_\rho(aE)]}{d\mu_\rho}(gH)
+=\frac{\rho(ag)}{\rho(g)},\qquad
+\frac{d(T_a)_*\mu_\rho}{d\mu_\rho}(gH)
+=\frac{\rho(a^{-1}g)}{\rho(g)}.
+\tag{18}
+\]">\[
+\frac{d[E\mapsto\mu_\rho(aE)]}{d\mu_\rho}(gH)
+=\frac{\rho(ag)}{\rho(g)},\qquad
+\frac{d(T_a)_*\mu_\rho}{d\mu_\rho}(gH)
+=\frac{\rho(a^{-1}g)}{\rho(g)}.
+\tag{18}
+\]</span>
+Both densities are strictly positive and continuous.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(F\in C_c(Y)\)">\(F\in C_c(Y)\)</span>, substitute <span class="math" data-tex="\(g=at\)">\(g=at\)</span> in (13), using left Haar invariance:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\int_Y F(a^{-1}y)\,d\mu_\rho(y)
+&amp;=\int_G F(tH)k(at)\rho(at)\,dt\\
+&amp;=\int_G F(tH)c(a,tH)k(at)\rho(t)\,dt.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\int_Y F(a^{-1}y)\,d\mu_\rho(y)
+&amp;=\int_G F(tH)k(at)\rho(at)\,dt\\
+&amp;=\int_G F(tH)c(a,tH)k(at)\rho(t)\,dt.
+\end{aligned}
+\]</span>
+The function <span class="math" data-tex="\(k_a(t)=k(at)\)">\(k_a(t)=k(at)\)</span> is another cutoff: <span class="math" data-tex="\(Pk_a(tH)=Pk(atH)=1\)">\(Pk_a(tH)=Pk(atH)=1\)</span>, and it has the compact-support-over-compacts property because <span class="math" data-tex="\(a\)">\(a\)</span> acts homeomorphically on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Cutoff independence in Theorem 5.2 therefore identifies the last integral with <span class="math" data-tex="\(\int_Y F(y)c(a,y)\,d\mu_\rho(y)\)">\(\int_Y F(y)c(a,y)\,d\mu_\rho(y)\)</span>.</p>
+<p>Both sides represent Radon measures, so equality on <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span> is equality of those measures. On the left the measure of <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\mu_\rho(aE)\)">\(\mu_\rho(aE)\)</span>. This proves the first formula; replace <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> for the ordinary pushforward convention. A strictly positive density preserves null sets in both directions: if its integral over <span class="math" data-tex="\(E\)">\(E\)</span> vanishes, intersect <span class="math" data-tex="\(E\)">\(E\)</span> with the sets where the density is at least <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, then take their countable union. This proves quasi-invariance. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice the inverse in the second formula. The two expressions describe different measures, not an ambiguity in the modular convention.</p>
+<h3 id="relative-invariance-character">Relative invariance and a character</h3>
+<p>The distinction between invariance and quasi-invariance has a useful intermediate case. Following the freely accessible treatment by Bekka, de la Harpe and Valette, call a nonzero Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> <strong>relatively invariant with character</strong> <span class="math" data-tex="\(\chi\)">\(\chi\)</span> if <span class="math" data-tex="\(\chi:G\to\mathbb R_{&gt;0}\)">\(\chi:G\to\mathbb R_{&gt;0}\)</span> is a continuous homomorphism and
+<span class="math math-display" data-tex="\[
+\mu(aE)=\chi(a)\mu(E)
+\]">\[
+\mu(aE)=\chi(a)\mu(E)
+\]</span>
+for every Borel <span class="math" data-tex="\(E\subset Y\)">\(E\subset Y\)</span>.</p>
+<p><strong>Theorem 6.2.</strong> Such a measure exists if and only if
+<span class="math math-display" data-tex="\[
+\chi(h)=\frac{\Delta_H(h)}{\Delta_G(h)}\qquad(h\in H).
+\tag{6.2}
+\]">\[
+\chi(h)=\frac{\Delta_H(h)}{\Delta_G(h)}\qquad(h\in H).
+\tag{6.2}
+\]</span>
+For a fixed <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, it is unique up to a positive scalar. If it has finite positive total mass, then <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>.</p>
+<p><em>Proof.</em> If (6.2) holds, <span class="math" data-tex="\(\rho=\chi\)">\(\rho=\chi\)</span> is a rho-function. Theorem 5.2 constructs <span class="math" data-tex="\(\mu_\chi\)">\(\mu_\chi\)</span>, and Theorem 6.1 gives <span class="math" data-tex="\(c(a,y)=\chi(a)\)">\(c(a,y)=\chi(a)\)</span>, proving relative invariance.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has this property. Define
+<span class="math math-display" data-tex="\[
+L(f)=\int_Y P(f/\chi)(y)\,d\mu(y)\qquad(f\in C_c(G)).
+\]">\[
+L(f)=\int_Y P(f/\chi)(y)\,d\mu(y)\qquad(f\in C_c(G)).
+\]</span>
+This is a positive nonzero functional: multiplication by <span class="math" data-tex="\(\chi^{-1}\)">\(\chi^{-1}\)</span> preserves <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>, and positive surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> supplies a nonnegative test with positive integral against the nonzero Radon measure. Also
+<span class="math math-display" data-tex="\[
+P((L_af)/\chi)(y)=\chi(a)^{-1}P(f/\chi)(a^{-1}y).
+\]">\[
+P((L_af)/\chi)(y)=\chi(a)^{-1}P(f/\chi)(a^{-1}y).
+\]</span>
+Relative invariance cancels these two factors, so <span class="math" data-tex="\(L(L_af)=L(f)\)">\(L(L_af)=L(f)\)</span>. Riesz representation and Haar uniqueness give <span class="math" data-tex="\(L(f)=C\int_Gf\,dg\)">\(L(f)=C\int_Gf\,dg\)</span>, with <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>. Substituting <span class="math" data-tex="\(\chi f\)">\(\chi f\)</span> yields
+<span class="math math-display" data-tex="\[
+\int_Y Pf\,d\mu=C\int_G\chi(g)f(g)\,dg.
+\]">\[
+\int_Y Pf\,d\mu=C\int_G\chi(g)f(g)\,dg.
+\]</span>
+For <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, the left side with <span class="math" data-tex="\(R_hf\)">\(R_hf\)</span> is multiplied by <span class="math" data-tex="\(\Delta_H(h)^{-1}\)">\(\Delta_H(h)^{-1}\)</span>. Right translation on the right side gives the factor <span class="math" data-tex="\(\Delta_G(h)^{-1}\chi(h)^{-1}\)">\(\Delta_G(h)^{-1}\chi(h)^{-1}\)</span>. A positive test with nonzero integral equates the two factors and proves (6.2). The displayed identity and surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> also prove uniqueness up to <span class="math" data-tex="\(C\)">\(C\)</span>. Finally <span class="math" data-tex="\(\mu(aY)=\mu(Y)\)">\(\mu(aY)=\mu(Y)\)</span>, so finite positive total mass forces <span class="math" data-tex="\(\chi(a)=1\)">\(\chi(a)=1\)</span> for all <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="quasi-regular-representation">The quasi-regular representation</h3>
+<p><strong>Theorem 6.3.</strong> For the rho-function measure, define
+<span class="math math-display" data-tex="\[
+(\pi_\rho(a)\xi)(y)=c(a^{-1},y)^{1/2}\xi(a^{-1}y),
+\qquad \xi\in L^2(Y,\mu_\rho).
+\tag{6.3}
+\]">\[
+(\pi_\rho(a)\xi)(y)=c(a^{-1},y)^{1/2}\xi(a^{-1}y),
+\qquad \xi\in L^2(Y,\mu_\rho).
+\tag{6.3}
+\]</span>
+Then <span class="math" data-tex="\(\pi_\rho\)">\(\pi_\rho\)</span> is a strongly continuous unitary representation of <span class="math" data-tex="\(G\)">\(G\)</span>. If <span class="math" data-tex="\(\mu_{\rho_2}=r\mu_{\rho_1}\)">\(\mu_{\rho_2}=r\mu_{\rho_1}\)</span> as in (15), multiplication by <span class="math" data-tex="\(r^{-1/2}\)">\(r^{-1/2}\)</span> gives a unitary intertwiner from <span class="math" data-tex="\(\pi_{\rho_1}\)">\(\pi_{\rho_1}\)</span> to <span class="math" data-tex="\(\pi_{\rho_2}\)">\(\pi_{\rho_2}\)</span>.</p>
+<p><em>Proof.</em> Quasi-invariance makes composition with <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> well-defined on equivalence classes. Theorem 6.1, first for nonnegative simple functions and then by monotone convergence, gives the change-of-variables rule
+<span class="math math-display" data-tex="\[
+\int_Y\phi(y)\,d\mu_\rho(y)
+=\int_Y\phi(az)c(a,z)\,d\mu_\rho(z).
+\]">\[
+\int_Y\phi(y)\,d\mu_\rho(y)
+=\int_Y\phi(az)c(a,z)\,d\mu_\rho(z).
+\]</span>
+The cocycle identity says <span class="math" data-tex="\(c(a^{-1},az)c(a,z)=1\)">\(c(a^{-1},az)c(a,z)=1\)</span>. Apply the rule to <span class="math" data-tex="\(\phi(y)=c(a^{-1},y)|\xi(a^{-1}y)|^2\)">\(\phi(y)=c(a^{-1},y)|\xi(a^{-1}y)|^2\)</span>; it proves <span class="math" data-tex="\(\|\pi_\rho(a)\xi\|_2=\|\xi\|_2\)">\(\|\pi_\rho(a)\xi\|_2=\|\xi\|_2\)</span>. The same identity gives
+<span class="math math-display" data-tex="\[
+c(a^{-1},y)c(b^{-1},a^{-1}y)=c((ab)^{-1},y),
+\]">\[
+c(a^{-1},y)c(b^{-1},a^{-1}y)=c((ab)^{-1},y),
+\]</span>
+so <span class="math" data-tex="\(\pi_\rho(a)\pi_\rho(b)=\pi_\rho(ab)\)">\(\pi_\rho(a)\pi_\rho(b)=\pi_\rho(ab)\)</span>. Its inverse is <span class="math" data-tex="\(\pi_\rho(a^{-1})\)">\(\pi_\rho(a^{-1})\)</span>, hence it is unitary.</p>
+<p>For <span class="math" data-tex="\(\xi\in C_c(Y)\)">\(\xi\in C_c(Y)\)</span>, fix a compact identity neighborhood <span class="math" data-tex="\(A\subset G\)">\(A\subset G\)</span>, with <span class="math" data-tex="\(e\in A\)">\(e\in A\)</span>. All functions <span class="math" data-tex="\(\pi_\rho(a)\xi\)">\(\pi_\rho(a)\xi\)</span>, <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, vanish off the compact set <span class="math" data-tex="\(A\operatorname{supp}\xi\)">\(A\operatorname{supp}\xi\)</span>. The continuous function
+<span class="math" data-tex="\((a,y)\mapsto c(a^{-1},y)^{1/2}\xi(a^{-1}y)\)">\((a,y)\mapsto c(a^{-1},y)^{1/2}\xi(a^{-1}y)\)</span>
+converges uniformly on this compact set to <span class="math" data-tex="\(\xi(y)\)">\(\xi(y)\)</span> as <span class="math" data-tex="\(a\to e\)">\(a\to e\)</span>: continuity at every <span class="math" data-tex="\((e,y)\)">\((e,y)\)</span> and a finite cover of the compact set give a common identity neighborhood for each prescribed error. Radon finiteness on that compact set proves convergence in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. The density of <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span> in <span class="math" data-tex="\(L^2(Y,\mu_\rho)\)">\(L^2(Y,\mu_\rho)\)</span>, proved by the Haar lesson's Radon-measure Proposition 3.1(4), and the unitary norm bound extend convergence to every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The representation law gives continuity at every <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>For the last assertion, <span class="math" data-tex="\(U\xi=r^{-1/2}\xi\)">\(U\xi=r^{-1/2}\xi\)</span> satisfies
+<span class="math" data-tex="\(\int|U\xi|^2\,d\mu_{\rho_2}=\int|\xi|^2\,d\mu_{\rho_1}\)">\(\int|U\xi|^2\,d\mu_{\rho_2}=\int|\xi|^2\,d\mu_{\rho_1}\)</span>
+and has inverse multiplication by <span class="math" data-tex="\(r^{1/2}\)">\(r^{1/2}\)</span>. Since
+<span class="math math-display" data-tex="\[
+c_2(a^{-1},y)=\frac{r(a^{-1}y)}{r(y)}c_1(a^{-1},y),
+\]">\[
+c_2(a^{-1},y)=\frac{r(a^{-1}y)}{r(y)}c_1(a^{-1},y),
+\]</span>
+substitution in (6.3) gives <span class="math" data-tex="\(U\pi_{\rho_1}(a)=\pi_{\rho_2}(a)U\)">\(U\pi_{\rho_1}(a)=\pi_{\rho_2}(a)U\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the affine action on the real line in the following examples, <span class="math" data-tex="\(c((a,b),t)=a\)">\(c((a,b),t)=a\)</span>. Formula (6.3) consequently becomes
+<span class="math math-display" data-tex="\[
+(\pi(a,b)\xi)(t)=a^{-1/2}\xi((t-b)/a).
+\]">\[
+(\pi(a,b)\xi)(t)=a^{-1/2}\xi((t-b)/a).
+\]</span>
+The square root of the inverse scaling is exactly the factor needed for unitarity on <span class="math" data-tex="\(L^2(\mathbb R,dt)\)">\(L^2(\mathbb R,dt)\)</span>.</p>
+<h3 id="finite-covolume-unimodularity">Finite covolume forces unimodularity</h3>
+<p><strong>Proposition 6.4.</strong> If <span class="math" data-tex="\(H\)">\(H\)</span> is a closed unimodular subgroup and <span class="math" data-tex="\(G/H\)">\(G/H\)</span> has a nonzero invariant Radon measure of finite total mass, then <span class="math" data-tex="\(G\)">\(G\)</span> is unimodular. In particular, every group admitting a lattice is unimodular.</p>
+<p><em>Proof.</em> Theorem 3.1 gives <span class="math" data-tex="\(\Delta_G|_H=1\)">\(\Delta_G|_H=1\)</span>, so <span class="math" data-tex="\(d(gH)=\Delta_G(g)\)">\(d(gH)=\Delta_G(g)\)</span> is a well-defined continuous positive function on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Suppose <span class="math" data-tex="\(\Delta_G(a)=s&gt;1\)">\(\Delta_G(a)=s&gt;1\)</span>; if a nontrivial modular value is smaller than one, replace that element by its inverse. The Borel sets
+<span class="math math-display" data-tex="\[
+E_j=\{y:s^j\leq d(y)&lt;s^{j+1}\},\qquad j\in\mathbb Z,
+\]">\[
+E_j=\{y:s^j\leq d(y)&lt;s^{j+1}\},\qquad j\in\mathbb Z,
+\]</span>
+are disjoint and cover <span class="math" data-tex="\(Y\)">\(Y\)</span>. Since <span class="math" data-tex="\(d(ay)=s\,d(y)\)">\(d(ay)=s\,d(y)\)</span>, multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> sends <span class="math" data-tex="\(E_j\)">\(E_j\)</span> onto <span class="math" data-tex="\(E_{j+1}\)">\(E_{j+1}\)</span>. Invariance makes their measures equal. Positive total mass forces at least one to have positive measure, whereas infinitely many disjoint sets of that same positive measure contradict finite total mass. Thus <span class="math" data-tex="\(\Delta_G=1\)">\(\Delta_G=1\)</span>. A discrete subgroup is unimodular for counting measure. It is also closed: choose an open identity neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V^{-1}V\cap\Gamma=\{e\}\)">\(V^{-1}V\cap\Gamma=\{e\}\)</span>. Every translate <span class="math" data-tex="\(xV\)">\(xV\)</span> meets <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> in at most one point. If <span class="math" data-tex="\(x\)">\(x\)</span> lies in its closure, choose <span class="math" data-tex="\(\gamma\in xV\cap\Gamma\)">\(\gamma\in xV\cap\Gamma\)</span>; if <span class="math" data-tex="\(x\ne\gamma\)">\(x\ne\gamma\)</span>, the open neighborhood <span class="math" data-tex="\(xV\setminus\{\gamma\}\)">\(xV\setminus\{\gamma\}\)</span> would miss <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, a contradiction. Hence <span class="math" data-tex="\(x\in\Gamma\)">\(x\in\Gamma\)</span>. This proves the closedness needed to apply the proposition and completes the lattice assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.5.</strong> If <span class="math" data-tex="\(H\)">\(H\)</span> is closed and unimodular and <span class="math" data-tex="\(G/H\)">\(G/H\)</span> is compact, then <span class="math" data-tex="\(G\)">\(G\)</span> is unimodular and <span class="math" data-tex="\(G/H\)">\(G/H\)</span> has a finite nonzero invariant Radon measure. In particular, a closed discrete cocompact subgroup is a lattice, often called a <strong>uniform lattice</strong>.</p>
+<p><em>Proof.</em> The character <span class="math" data-tex="\(\chi=\Delta_G^{-1}\)">\(\chi=\Delta_G^{-1}\)</span> satisfies (6.2) because <span class="math" data-tex="\(\Delta_H=1\)">\(\Delta_H=1\)</span>. Theorem 6.2 gives a nonzero relatively invariant Radon measure. Compactness makes its total mass finite; its last assertion therefore gives <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>, or <span class="math" data-tex="\(\Delta_G=1\)">\(\Delta_G=1\)</span>. The measure is invariant and has positive mass. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="quotient-density-integral">Integration of quotient densities</h3>
+<p>Vogan's freely accessible treatment gives an intrinsic formulation even when an invariant scalar measure does not exist. It regards the modular correction as part of the function being integrated. Here is the formulation and a full derivation from the weighted Weil formula.</p>
+<p><strong>Corollary 6.6.</strong> Let <span class="math" data-tex="\(\mathcal D_c(G/H)\)">\(\mathcal D_c(G/H)\)</span> be the continuous functions <span class="math" data-tex="\(F:G\to\mathbb C\)">\(F:G\to\mathbb C\)</span>, with support compact modulo <span class="math" data-tex="\(H\)">\(H\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+F(gh)=\frac{\Delta_H(h)}{\Delta_G(h)}F(g).
+\tag{6.6}
+\]">\[
+F(gh)=\frac{\Delta_H(h)}{\Delta_G(h)}F(g).
+\tag{6.6}
+\]</span>
+Here support compact modulo <span class="math" data-tex="\(H\)">\(H\)</span> means that the support of the descended function <span class="math" data-tex="\(F/\rho\)">\(F/\rho\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> is compact; this condition is independent of the positive rho-function. The map
+<span class="math math-display" data-tex="\[
+Af(g)=\int_H f(gh)\frac{\Delta_G(h)}{\Delta_H(h)}\,dh
+\]">\[
+Af(g)=\int_H f(gh)\frac{\Delta_G(h)}{\Delta_H(h)}\,dh
+\]</span>
+sends <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> onto <span class="math" data-tex="\(\mathcal D_c(G/H)\)">\(\mathcal D_c(G/H)\)</span>. There is a unique positive linear integral <span class="math" data-tex="\(J\)">\(J\)</span> on this space with
+<span class="math math-display" data-tex="\[
+J(Af)=\int_G f(g)\,dg.
+\tag{6.7}
+\]">\[
+J(Af)=\int_G f(g)\,dg.
+\tag{6.7}
+\]</span>
+It is independent of the choice of rho-function and invariant under <span class="math" data-tex="\(F(g)\mapsto F(a^{-1}g)\)">\(F(g)\mapsto F(a^{-1}g)\)</span>.</p>
+<p><em>Proof.</em> Equation (11) gives
+<span class="math math-display" data-tex="\[
+Af(g)=\rho(g)P(f/\rho)(gH).
+\]">\[
+Af(g)=\rho(g)P(f/\rho)(gH).
+\]</span>
+Thus <span class="math" data-tex="\(Af\)">\(Af\)</span> has the covariance (6.6) and compact quotient support. Conversely, <span class="math" data-tex="\(F/\rho\)">\(F/\rho\)</span> descends to a member <span class="math" data-tex="\(\phi\in C_c(Y)\)">\(\phi\in C_c(Y)\)</span>. Choose <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span> with <span class="math" data-tex="\(Pu=\phi\)">\(Pu=\phi\)</span> by Lemma 2.1. Then <span class="math" data-tex="\(f=\rho u\)">\(f=\rho u\)</span> is compactly supported and <span class="math" data-tex="\(Af=F\)">\(Af=F\)</span>. Define
+<span class="math math-display" data-tex="\[
+J(F)=\int_Y\frac{F(g)}{\rho(g)}\,d\mu_\rho(gH).
+\]">\[
+J(F)=\int_Y\frac{F(g)}{\rho(g)}\,d\mu_\rho(gH).
+\]</span>
+The quotient integrand is well-defined, continuous and compactly supported. Theorem 5.2 gives <span class="math" data-tex="\(J(Af)=\int(f/\rho)\rho\,dg=\int f\,dg\)">\(J(Af)=\int(f/\rho)\rho\,dg=\int f\,dg\)</span>. This also proves uniqueness and positivity, using a positive lift when <span class="math" data-tex="\(F\geq0\)">\(F\geq0\)</span>.</p>
+<p>If <span class="math" data-tex="\(\rho_2=r\rho_1\)">\(\rho_2=r\rho_1\)</span> on the quotient, then <span class="math" data-tex="\(\mu_{\rho_2}=r\mu_{\rho_1}\)">\(\mu_{\rho_2}=r\mu_{\rho_1}\)</span>, and the factors cancel in this definition of <span class="math" data-tex="\(J\)">\(J\)</span>. Finally <span class="math" data-tex="\(A(L_af)(g)=Af(a^{-1}g)\)">\(A(L_af)(g)=Af(a^{-1}g)\)</span>. Surjectivity of <span class="math" data-tex="\(A\)">\(A\)</span> and left Haar invariance in (6.7) prove the claimed invariance of <span class="math" data-tex="\(J\)">\(J\)</span>. The integral on these covariant functions therefore survives even when Theorem 3.1 rules out an invariant scalar measure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="examples-that-test-the-formula">Examples that test the formula</h2>
+<p><strong>Translations inside the affine group.</strong> Write
+<span class="math math-display" data-tex="\[
+G=\{(a,b):a&gt;0,\ b\in\mathbb R\},\qquad
+(a,b)(a&#x27;,b&#x27;)=(aa&#x27;,b+ab&#x27;).
+\]">\[
+G=\{(a,b):a&gt;0,\ b\in\mathbb R\},\qquad
+(a,b)(a&#x27;,b&#x27;)=(aa&#x27;,b+ab&#x27;).
+\]</span>
+The preceding Haar lesson, Example 11.3, calculates <span class="math" data-tex="\(dg=a^{-2}\,da\,db\)">\(dg=a^{-2}\,da\,db\)</span> and <span class="math" data-tex="\(\Delta_G(a,b)=a^{-1}\)">\(\Delta_G(a,b)=a^{-1}\)</span>. For <span class="math" data-tex="\(H=\{(1,t):t\in\mathbb R\}\)">\(H=\{(1,t):t\in\mathbb R\}\)</span>, <span class="math" data-tex="\(dh=dt\)">\(dh=dt\)</span> and <span class="math" data-tex="\(\Delta_H=1\)">\(\Delta_H=1\)</span>. The restriction of <span class="math" data-tex="\(\Delta_G\)">\(\Delta_G\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span> is one, so the quotient has an invariant measure. It is parametrized by <span class="math" data-tex="\(a\)">\(a\)</span>, and (6) becomes
+<span class="math math-display" data-tex="\[
+\int_0^\infty\int_{\mathbb R}f(a,b)\,\frac{db\,da}{a^2}
+=\int_0^\infty\left(\int_{\mathbb R}f(a,at)\,dt\right)\frac{da}{a}.
+\tag{19}
+\]">\[
+\int_0^\infty\int_{\mathbb R}f(a,b)\,\frac{db\,da}{a^2}
+=\int_0^\infty\left(\int_{\mathbb R}f(a,at)\,dt\right)\frac{da}{a}.
+\tag{19}
+\]</span>
+The substitution <span class="math" data-tex="\(b=at\)">\(b=at\)</span> verifies the formula and identifies the quotient measure <span class="math" data-tex="\(da/a\)">\(da/a\)</span>.</p>
+<p><strong>Dilations inside the same group.</strong> Instead take <span class="math" data-tex="\(H=\{(a,0):a&gt;0\}\)">\(H=\{(a,0):a&gt;0\}\)</span>, with <span class="math" data-tex="\(dh=da/a\)">\(dh=da/a\)</span>. It is abelian, so <span class="math" data-tex="\(\Delta_H=1\)">\(\Delta_H=1\)</span>, but <span class="math" data-tex="\(\Delta_G|_H=a^{-1}\)">\(\Delta_G|_H=a^{-1}\)</span>. There is no invariant quotient measure. The quotient is parametrized by <span class="math" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-tex="\(\rho(a,b)=a\)">\(\rho(a,b)=a\)</span> satisfies (11). Formula (12) gives ordinary <span class="math" data-tex="\(db\)">\(db\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>:
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R}\int_0^\infty f(a,b)\,\frac{da}{a}\,db
+=\int_G f(a,b)\rho(a,b)\,dg.
+\]">\[
+\int_{\mathbb R}\int_0^\infty f(a,b)\,\frac{da}{a}\,db
+=\int_G f(a,b)\rho(a,b)\,dg.
+\]</span>
+The element <span class="math" data-tex="\((a_0,b_0)\)">\((a_0,b_0)\)</span> acts by <span class="math" data-tex="\(b\mapsto b_0+a_0b\)">\(b\mapsto b_0+a_0b\)</span>. Its pullback-on-sets density is <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, and its pushforward density is <span class="math" data-tex="\(a_0^{-1}\)">\(a_0^{-1}\)</span>, precisely as in (18).</p>
+<p><strong>Compact subgroups.</strong> If <span class="math" data-tex="\(H\)">\(H\)</span> is compact, normalize <span class="math" data-tex="\(dh(H)=1\)">\(dh(H)=1\)</span>. Then <span class="math" data-tex="\(\rho=1\)">\(\rho=1\)</span> is allowed and averaging is ordinary fiberwise probability averaging. The quotient measure need not itself be finite: <span class="math" data-tex="\(\mathbb R/\{0\}\)">\(\mathbb R/\{0\}\)</span> is already a counterexample. Compactness of the fiber does not mean compactness of the base.</p>
+<p><strong>The upper half-plane.</strong> Let <span class="math" data-tex="\(G=\operatorname{SL}_2(\mathbb R)\)">\(G=\operatorname{SL}_2(\mathbb R)\)</span> and <span class="math" data-tex="\(H=\operatorname{SO}(2)\)">\(H=\operatorname{SO}(2)\)</span>. The action
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}z=\frac{az+b}{cz+d}
+\]">\[
+\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}z=\frac{az+b}{cz+d}
+\]</span>
+preserves <span class="math" data-tex="\(\mathbb H=\{x+iy:y&gt;0\}\)">\(\mathbb H=\{x+iy:y&gt;0\}\)</span>, since direct subtraction of the complex conjugate gives
+<span class="math math-display" data-tex="\[
+\operatorname{Im}(gz)=\frac{y}{|cz+d|^2}.
+\]">\[
+\operatorname{Im}(gz)=\frac{y}{|cz+d|^2}.
+\]</span>
+The denominator never vanishes on <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>. The element
+<span class="math" data-tex="\(s(x+iy)=\begin{pmatrix}\sqrt y&amp;x/\sqrt y\\0&amp;1/\sqrt y\end{pmatrix}\)">\(s(x+iy)=\begin{pmatrix}\sqrt y&amp;x/\sqrt y\\0&amp;1/\sqrt y\end{pmatrix}\)</span>
+sends <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>. Solving <span class="math" data-tex="\(gi=i\)">\(gi=i\)</span> gives <span class="math" data-tex="\(a=d\)">\(a=d\)</span>, <span class="math" data-tex="\(b=-c\)">\(b=-c\)</span>, <span class="math" data-tex="\(a^2+b^2=1\)">\(a^2+b^2=1\)</span>, so the stabilizer is exactly <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(gH\mapsto gi\)">\(gH\mapsto gi\)</span> is a continuous bijection <span class="math" data-tex="\(G/H\to\mathbb H\)">\(G/H\to\mathbb H\)</span>, and its inverse is the continuous map <span class="math" data-tex="\(z\mapsto s(z)H\)">\(z\mapsto s(z)H\)</span>. This proves the claimed identification, including its topology.</p>
+<p>Here is a direct integral proof of invariance of
+<span class="math math-display" data-tex="\[
+ dA(z)=y^{-2}\,dx\,dy.
+ \tag{20}
+\]">\[
+ dA(z)=y^{-2}\,dx\,dy.
+ \tag{20}
+\]</span>
+This positive continuous density defines a Radon measure. Upper triangular matrices act by translations <span class="math" data-tex="\(z\mapsto z+t\)">\(z\mapsto z+t\)</span> and positive dilations <span class="math" data-tex="\(z\mapsto a^2z\)">\(z\mapsto a^2z\)</span>. Iterated one-variable substitution proves that both preserve <span class="math" data-tex="\(dA\)">\(dA\)</span>. The substitution and integrated-derivative rules are proved in <a href="measure-and-hilbert-space-tools.html">Measure and Hilbert space tools for Haar integration</a>, Lemma 6.1.</p>
+<p>Here are the differential facts used for the rotation computation. The one-variable rules and sine/cosine derivatives have been proved in <a href="dependencies/function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.html">the preceding topology lesson</a>, Appendix (B1)–(B2). A real <span class="math" data-tex="\(C^1\)">\(C^1\)</span> function <span class="math" data-tex="\(F\)">\(F\)</span> on an open subset of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ F(x+h)=F(x)+\sum_j\partial_jF(x)h_j+o(|h|).
+ \tag{20a}
+\]">\[
+ F(x+h)=F(x)+\sum_j\partial_jF(x)h_j+o(|h|).
+ \tag{20a}
+\]</span>
+To prove this, take a small box about <span class="math" data-tex="\(x\)">\(x\)</span> in the domain and change its coordinates one at a time. The one-variable mean value theorem writes the <span class="math" data-tex="\(j\)">\(j\)</span>-th increment as <span class="math" data-tex="\(\partial_jF(\xi_j)h_j\)">\(\partial_jF(\xi_j)h_j\)</span>, with <span class="math" data-tex="\(\xi_j\to x\)">\(\xi_j\to x\)</span> as <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>. Continuity of each partial derivative makes the error at most <span class="math" data-tex="\(\max_j|\partial_jF(\xi_j)-\partial_jF(x)|\sum_j|h_j|=o(|h|)\)">\(\max_j|\partial_jF(\xi_j)-\partial_jF(x)|\sum_j|h_j|=o(|h|)\)</span>. Inserting the first-order expansion of a differentiable curve or map into (20a) proves the corresponding chain rule. Complex <span class="math" data-tex="\(F\)">\(F\)</span> is treated coordinatewise; matrix-valued and complex-coordinate maps are treated by their finitely many real components.</p>
+<p>Write <span class="math" data-tex="\(T_\theta(z)=k_\theta z\)">\(T_\theta(z)=k_\theta z\)</span>, <span class="math" data-tex="\(C=\cos\theta\)">\(C=\cos\theta\)</span>, <span class="math" data-tex="\(S=\sin\theta\)">\(S=\sin\theta\)</span>. Its formula is
+<span class="math math-display" data-tex="\[
+ T_\theta(z)=\frac{Cz+S}{-Sz+C}.
+\]">\[
+ T_\theta(z)=\frac{Cz+S}{-Sz+C}.
+\]</span>
+The denominator cannot vanish for <span class="math" data-tex="\(z\in\mathbb H\)">\(z\in\mathbb H\)</span>: if <span class="math" data-tex="\(S\ne0\)">\(S\ne0\)</span>, its imaginary part is <span class="math" data-tex="\(-Sy\ne0\)">\(-Sy\ne0\)</span>; if <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, <span class="math" data-tex="\(|C|=1\)">\(|C|=1\)</span>. The functions are smooth in the real coordinates by the product, reciprocal, chain and sine/cosine derivative rules of (B1)–(B2). At zero, the numerator has derivative one and the denominator derivative <span class="math" data-tex="\(-z\)">\(-z\)</span>, so
+<span class="math math-display" data-tex="\[
+ \left.\frac{d}{d\theta}T_\theta(z)\right|_{\theta=0}=1+z^2.
+\]">\[
+ \left.\frac{d}{d\theta}T_\theta(z)\right|_{\theta=0}=1+z^2.
+\]</span>
+Taking coordinates gives <span class="math" data-tex="\(v(x,y)=(1+x^2-y^2,2xy)\)">\(v(x,y)=(1+x^2-y^2,2xy)\)</span>. The matrix multiplication law gives <span class="math" data-tex="\(T_{\theta+h}=T_\theta\circ T_h\)">\(T_{\theta+h}=T_\theta\circ T_h\)</span>; differentiate <span class="math" data-tex="\(F(T_\theta(T_hz))\)">\(F(T_\theta(T_hz))\)</span> at <span class="math" data-tex="\(h=0\)">\(h=0\)</span> using (20a). Thus
+<span class="math math-display" data-tex="\[
+ \frac{d}{d\theta}F(T_\theta z)
+ =v(z)\cdot\nabla_z(F\circ T_\theta)(z).
+ \tag{20b}
+\]">\[
+ \frac{d}{d\theta}F(T_\theta z)
+ =v(z)\cdot\nabla_z(F\circ T_\theta)(z).
+ \tag{20b}
+\]</span></p>
+<p>For rotations <span class="math" data-tex="\(k_\theta=\begin{pmatrix}\cos\theta&amp;\sin\theta\\ -\sin\theta&amp;\cos\theta\end{pmatrix}\)">\(k_\theta=\begin{pmatrix}\cos\theta&amp;\sin\theta\\ -\sin\theta&amp;\cos\theta\end{pmatrix}\)</span>, their action has infinitesimal vector field
+<span class="math math-display" data-tex="\[
+ v(x,y)=(1+x^2-y^2,2xy),\qquad
+ \partial_x(y^{-2}v_1)+\partial_y(y^{-2}v_2)=0.
+\]">\[
+ v(x,y)=(1+x^2-y^2,2xy),\qquad
+ \partial_x(y^{-2}v_1)+\partial_y(y^{-2}v_2)=0.
+\]</span>
+If <span class="math" data-tex="\(F\in C_c^1(\mathbb H)\)">\(F\in C_c^1(\mathbb H)\)</span>, put <span class="math" data-tex="\(J(\theta)=\int F(k_\theta z)\,dA(z)\)">\(J(\theta)=\int F(k_\theta z)\,dA(z)\)</span>. On every compact parameter interval, the supports of these functions and their derivatives lie in one compact subset of <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>: it is the image of that interval times <span class="math" data-tex="\(\operatorname{supp}F\)">\(\operatorname{supp}F\)</span> under <span class="math" data-tex="\((\theta,w)\mapsto k_{-\theta}w\)">\((\theta,w)\mapsto k_{-\theta}w\)</span>. The derivatives are bounded there, and <span class="math" data-tex="\(y\)">\(y\)</span> is bounded away from zero. On a slightly larger compact parameter interval the one-variable mean value theorem bounds every parameter difference quotient, separately in its real and imaginary parts, by a constant times the indicator of this common compact support. That bound is integrable, so dominated convergence permits differentiation. The flow identity gives
+<span class="math math-display" data-tex="\[
+ J&#x27;(\theta)=\int v(z)\cdot\nabla_z(F(k_\theta z))\,y^{-2}\,dx\,dy=0.
+\]">\[
+ J&#x27;(\theta)=\int v(z)\cdot\nabla_z(F(k_\theta z))\,y^{-2}\,dx\,dy=0.
+\]</span>
+For the last equality, integrate each coordinate derivative of the compactly supported product <span class="math" data-tex="\(y^{-2}v_jF(k_\theta z)\)">\(y^{-2}v_jF(k_\theta z)\)</span>. Its integral is zero by the integrated-derivative rule and Fubini. The remaining term is minus the displayed divergence, hence zero. Therefore rotations preserve the integral.</p>
+<p>This extends to <span class="math" data-tex="\(C_c(\mathbb H)\)">\(C_c(\mathbb H)\)</span> without assuming a smoothing theorem. On a rectangle strictly inside <span class="math" data-tex="\(\mathbb H\)">\(\mathbb H\)</span>, polynomials uniformly approximate a continuous function by <a href="dependencies/function-algebras-and-approximation/the-stone-weierstrass-theorem-for-functions-vanishing-at-infinity.html">the compact Stone–Weierstrass theorem</a>, Theorem 9.1(a), applied to real and imaginary parts. Multiply them by a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> cutoff equal to one on the function's support and supported in that rectangle. Such a cutoff is a product of one-variable plateaus joined to zero by the cubic <span class="math" data-tex="\(3t^2-2t^3\)">\(3t^2-2t^3\)</span>, whose endpoint derivatives vanish. The approximants have one compact support and converge uniformly; both their original and rotated integrals converge because the relevant compact sets have finite area.</p>
+<p>Finally every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> is <span class="math" data-tex="\(s(z)k\)">\(s(z)k\)</span>, as proved by its action on <span class="math" data-tex="\(i\)">\(i\)</span>; <span class="math" data-tex="\(s(z)\)">\(s(z)\)</span> is upper triangular. Translations, positive dilations and rotations therefore generate the action of <span class="math" data-tex="\(G\)">\(G\)</span>. This proves invariance of (20) under every <span class="math" data-tex="\(g\)">\(g\)</span>. By Theorem 3.1 it is the quotient measure up to Haar normalization. The next lesson calculates the modular lattice volume from this measure.</p>
+<p><strong>An integer lattice.</strong> For <span class="math" data-tex="\(G=\mathbb R^n\)">\(G=\mathbb R^n\)</span>, <span class="math" data-tex="\(H=\mathbb Z^n\)">\(H=\mathbb Z^n\)</span>, Lebesgue and counting measures give
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^n}f(x)\,dx
+=\int_{[0,1)^n}\sum_{m\in\mathbb Z^n}f(x+m)\,dx.
+\tag{21}
+\]">\[
+\int_{\mathbb R^n}f(x)\,dx
+=\int_{[0,1)^n}\sum_{m\in\mathbb Z^n}f(x+m)\,dx.
+\tag{21}
+\]</span>
+For <span class="math" data-tex="\(f\in C_c(\mathbb R^n)\)">\(f\in C_c(\mathbb R^n)\)</span>, only finitely many lattice translates meet its support while <span class="math" data-tex="\(x\)">\(x\)</span> ranges over the unit cube. Translate each summand and use the disjoint half-open tiling of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. This proves (21); the boundary faces have Lebesgue measure zero. The resulting quotient measure has total mass one.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>1. Rescaling the measures.</strong> If <span class="math" data-tex="\(dg\)">\(dg\)</span> is multiplied by <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and <span class="math" data-tex="\(dh\)">\(dh\)</span> by <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, how does the normalized invariant quotient measure change?</p>
+<p><em>Solution.</em> The new averaging operator is <span class="math" data-tex="\(BP\)">\(BP\)</span>. To keep (6), the quotient measure must be multiplied by <span class="math" data-tex="\(A/B\)">\(A/B\)</span>. The same rule holds in (12) when the function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is kept fixed. The modular functions do not change under Haar rescaling.</p>
+<p><strong>2. A discrete subgroup with no invariant quotient measure.</strong> In the affine group let <span class="math" data-tex="\(H=\{(2^n,0):n\in\mathbb Z\}\)">\(H=\{(2^n,0):n\in\mathbb Z\}\)</span>. Prove that <span class="math" data-tex="\(H\)">\(H\)</span> is closed and discrete, and decide whether <span class="math" data-tex="\(G/H\)">\(G/H\)</span> has an invariant measure.</p>
+<p><em>Solution.</em> Any compact interval in the <span class="math" data-tex="\(a\)">\(a\)</span>-coordinate bounded away from zero meets <span class="math" data-tex="\(\{2^n\}\)">\(\{2^n\}\)</span> finitely. Around each group element one may choose such an interval, so there is no accumulation point in <span class="math" data-tex="\(G\)">\(G\)</span>, and each point of <span class="math" data-tex="\(H\)">\(H\)</span> is isolated. Thus <span class="math" data-tex="\(H\)">\(H\)</span> is closed and discrete. Its modular function is one, whereas <span class="math" data-tex="\(\Delta_G(2^n,0)=2^{-n}\)">\(\Delta_G(2^n,0)=2^{-n}\)</span>. Theorem 3.1 rules out a nonzero invariant quotient measure. This shows why “discrete” cannot replace the modular criterion.</p>
+<p><strong>3. Two choices of density.</strong> Suppose <span class="math" data-tex="\(\rho_1,\rho_2\)">\(\rho_1,\rho_2\)</span> satisfy (11). Prove both (15) and the transformation rule
+<span class="math math-display" data-tex="\[
+c_2(a,y)=\frac{r(ay)}{r(y)}c_1(a,y).
+\]">\[
+c_2(a,y)=\frac{r(ay)}{r(y)}c_1(a,y).
+\]</span></p>
+<p><em>Solution.</em> Their ratio <span class="math" data-tex="\(r(q(g))=\rho_2(g)/\rho_1(g)\)">\(r(q(g))=\rho_2(g)/\rho_1(g)\)</span> is unchanged by right multiplication by <span class="math" data-tex="\(H\)">\(H\)</span>, hence is continuous on the quotient. For <span class="math" data-tex="\(F=Pf\)">\(F=Pf\)</span>, the integral of <span class="math" data-tex="\(F\)">\(F\)</span> against <span class="math" data-tex="\(r\mu_{\rho_1}\)">\(r\mu_{\rho_1}\)</span> is, by (12), <span class="math" data-tex="\(\int_G f(g)r(q(g))\rho_1(g)\,dg=\int_G f(g)\rho_2(g)\,dg\)">\(\int_G f(g)r(q(g))\rho_1(g)\,dg=\int_G f(g)\rho_2(g)\,dg\)</span>. Surjectivity of <span class="math" data-tex="\(P\)">\(P\)</span> and Radon uniqueness give (15). Substitution in (16) gives the cocycle formula. In particular, changing the density changes the cocycle by this explicit ratio, without changing the measure class.</p>
+<p><strong>4. Quotient averaging is equivariant.</strong> Prove (5) and use it to show that two invariant quotient measures normalized by (6) coincide.</p>
+<p><em>Solution.</em> Directly,
+<span class="math math-display" data-tex="\[
+P(L_a f)(gH)=\int_Hf(a^{-1}gh)\,dh=Pf(a^{-1}gH).
+\]">\[
+P(L_a f)(gH)=\int_Hf(a^{-1}gh)\,dh=Pf(a^{-1}gH).
+\]</span>
+For <span class="math" data-tex="\(r\in H\)">\(r\in H\)</span>, right translation in the integration variable gives <span class="math" data-tex="\(\int_H f(ghr)\,dh=\Delta_H(r)^{-1}Pf(gH)\)">\(\int_H f(ghr)\,dh=\Delta_H(r)^{-1}Pf(gH)\)</span>. If two measures satisfy (6), they integrate <span class="math" data-tex="\(Pf\)">\(Pf\)</span> equally for every <span class="math" data-tex="\(f\)">\(f\)</span>. Lemma 2.1 says every member of <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span> is such a <span class="math" data-tex="\(Pf\)">\(Pf\)</span>; Radon uniqueness proves equality.</p>
+<p><strong>5. No global compact cutoff on a noncompact base.</strong> Show that a cutoff <span class="math" data-tex="\(k\)">\(k\)</span> satisfying <span class="math" data-tex="\(Pk=1\)">\(Pk=1\)</span> cannot have compact support in <span class="math" data-tex="\(G\)">\(G\)</span> when <span class="math" data-tex="\(Y\)">\(Y\)</span> is noncompact.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(k\)">\(k\)</span> had compact support, then <span class="math" data-tex="\(\operatorname{supp}Pk\subset q(\operatorname{supp}k)\)">\(\operatorname{supp}Pk\subset q(\operatorname{supp}k)\)</span> would be compact. But <span class="math" data-tex="\(Pk=1\)">\(Pk=1\)</span> has support all of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Therefore <span class="math" data-tex="\(Y\)">\(Y\)</span> would be compact. The weaker compactness condition in (8) is exactly what permits the global construction.</p>
+<p><strong>6. Track one modular factor.</strong> In (14), explain why the product of the right-translation factor and the density-change factor is <span class="math" data-tex="\(\Delta_H(h)^{-1}\)">\(\Delta_H(h)^{-1}\)</span>, not <span class="math" data-tex="\(\Delta_H(h)\)">\(\Delta_H(h)\)</span>.</p>
+<p><em>Solution.</em> Writing <span class="math" data-tex="\(t=gh\)">\(t=gh\)</span> in an integral over <span class="math" data-tex="\(g\)">\(g\)</span> contributes <span class="math" data-tex="\(\Delta_G(h)^{-1}\)">\(\Delta_G(h)^{-1}\)</span>. Equation (11) gives <span class="math" data-tex="\(\rho(th^{-1})=\Delta_G(h)\Delta_H(h)^{-1}\rho(t)\)">\(\rho(th^{-1})=\Delta_G(h)\Delta_H(h)^{-1}\rho(t)\)</span>. Multiplying cancels <span class="math" data-tex="\(\Delta_G(h)\)">\(\Delta_G(h)\)</span>, leaving <span class="math" data-tex="\(\Delta_H(h)^{-1}\)">\(\Delta_H(h)^{-1}\)</span>. That is exactly the factor in the inversion formula <span class="math" data-tex="\(\int_H a(h^{-1})\Delta_H(h)^{-1}\,dh=\int_Ha(h)\,dh\)">\(\int_H a(h^{-1})\Delta_H(h)^{-1}\,dh=\int_Ha(h)\,dh\)</span>.</p>
+<h2 id="what-this-enables">What this enables</h2>
+<p>The invariant criterion is available to the programme's subgroup and quotient, adèle and automorphic courses. Theorem 6.3 turns the density and cocycle formulas into a strongly continuous quasi-regular representation, including its unitary equivalence under a change of density. Proposition 6.4 and Corollary 6.5 explain the unimodularity and compactness constraints on lattices. Corollary 6.6 gives an invariant integral on quotient densities. The two inverse-translation conventions in (18) remain explicit in these action formulas.</p>
+<p>The principal formulas above are stated and proved on <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>. Extending them to arbitrary measurable functions requires the precise regularity and support conventions of the preceding measure-theory lessons. The abelian Fourier course already proves its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> extension. This lesson does not quietly replace the general non-<span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite measure theory by a second-countable argument.</p>
+<h2 id="sources-and-credit">Sources and credit</h2>
+<ul>
+<li>D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/index.htm"><em>Measure Theory</em>, Volume 4</a>, develops positive subgroup averaging, quotient integration and the same modular criterion. His complete, locally determined measure convention is related to ours by <a href="haar-measure-on-locally-compact-groups.html#haar-measure-convention-bridge">Proposition 13.7 of the Haar lesson</a>. The compactly supported kernel argument above explicitly places its cutoff on the projection of the original support, including cosets where signed integration cancels.</li>
+<li>David Vogan, <a href="https://math.mit.edu/~dav/integration.pdf"><em>Invariant measures on homogeneous spaces</em></a>, gives a complementary treatment of averaging and the invariant-measure criterion, and the quotient-density viewpoint developed in Corollary 6.6.</li>
+<li><em>Haar measure on locally compact groups</em>, programme lesson originally by Claude Opus 5.5, supplies the Haar, Radon-product and modular proofs named above. Retained programme expression is CC0.</li>
+<li><em>Quotient measure and the subgroup modular correction</em>, OA-FLOW lesson 43, credits OpenAI Codex. Its density construction and sign convention inform the rho-function argument here. Its historical exact model is not recorded.</li>
+<li><em>Subgroups, quotients and annihilators</em>, HA-LCA lesson by GPT-6.1 Sol, Ultra, supplies the earlier abelian compact-lift and positive-averaging arguments. The present lesson proves their general-group versions in full.</li>
+<li>B. Bekka, P. de la Harpe and A. Valette, <a href="https://perso.univ-rennes1.fr/bachir.bekka/KazhdanTotal.pdf"><em>Kazhdan’s Property (T)</em></a>, freely accessible author preprint dated 23 February 2007. Its homogeneous-space and lattice treatment motivates Theorems 6.2–6.3 and the finite-covolume results. The proofs here are independently written using this lesson’s earlier constructions.</li>
+</ul>
+<h2 id="terms-for-the-marked-fremlin-adaptations">Terms for the marked Fremlin adaptations</h2>
+<p>THE WORK IS PROVIDED &quot;AS IS,&quot; AND COMES WITH ABSOLUTELY NO WARRANTY, EXPRESS OR IMPLIED, TO THE EXTENT PERMITTED BY APPLICABLE LAW. The full warranty and liability terms are in the accompanying Design Science License.</p>
+</article></main></body></html>

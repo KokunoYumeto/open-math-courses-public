@@ -1,0 +1,1005 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trace inequalities for finite von Neumann algebras · Injective factors</title>
+<meta name="description" content="A lesson of the course Injective factors. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/injective-factors/trace-inequalities-for-finite-von-neumann-algebras.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Injective factors</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="trace-inequalities-for-finite-von-neumann-algebras">Trace inequalities for finite von Neumann algebras</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), September 2026, revised October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October revisions are self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>In a von Neumann algebra with a trace, the trace turns operators into &quot;noncommutative functions&quot;, and the
+spaces <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and <span class="math" data-tex="\(L^2\)">\(L^2\)</span> of integrable and square-integrable operators behave in many ways like their classical
+namesakes. This lesson proves a handful of quantitative inequalities in these spaces. They are the analytic tools
+behind the classification of injective factors: they turn &quot;almost commuting&quot; information measured in the trace norm
+into projections, and into unitaries, that are close to what one wants.</p>
+<p>The lesson has four themes.</p>
+<ol>
+<li><strong>Joint distribution of two positive operators.</strong> Two positive operators <span class="math" data-tex="\(h,k\)">\(h,k\)</span> do not commute, so they have no
+joint spectral measure inside the algebra. Nevertheless there is a measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on the plane which computes
+every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> distance <span class="math" data-tex="\(\|f(h)-g(k)\|_2\)">\(\|f(h)-g(k)\|_2\)</span> exactly (Theorem 2.1). The reason is that on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, left multiplication
+by <span class="math" data-tex="\(h\)">\(h\)</span> and right multiplication by <span class="math" data-tex="\(k\)">\(k\)</span> commute. The same measure does <em>not</em> compute <span class="math" data-tex="\(L^1\)">\(L^1\)</span> distances
+(Example 2.2).</li>
+<li><strong>The Powers–Størmer inequality.</strong> For positive <span class="math" data-tex="\(h,k\)">\(h,k\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>,
+<span class="math" data-tex="\(\|h-k\|_2^2\le\|h^2-k^2\|_1\)">\(\|h-k\|_2^2\le\|h^2-k^2\|_1\)</span> (Theorem 3.1). So the square root is Hölder continuous of order <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> from
+<span class="math" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and the modulus <span class="math" data-tex="\(x\mapsto|x|\)">\(x\mapsto|x|\)</span> is continuous on <span class="math" data-tex="\(L^2\)">\(L^2\)</span> with an explicit modulus of continuity.</li>
+<li><strong>Integrating over the level.</strong> The spectral projection <span class="math" data-tex="\(E_a(h)=\chi_{(a,\infty)}(h)\)">\(E_a(h)=\chi_{(a,\infty)}(h)\)</span> depends very
+discontinuously on <span class="math" data-tex="\(h\)">\(h\)</span>, but after integrating over the level <span class="math" data-tex="\(a\)">\(a\)</span> it becomes continuous in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>
+(Propositions 4.2 and 4.3). The <span class="math" data-tex="\(L^1\)">\(L^1\)</span> analogue holds only in type I algebras of bounded degree (Theorem 5.1).
+From these integrated estimates we get the main result: for a finite family <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span> of nearby vectors in
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span> there is a common level <span class="math" data-tex="\(a\)">\(a\)</span> at which the truncated polar parts <span class="math" data-tex="\(u_a(x_j)\)">\(u_a(x_j)\)</span> are all close to each other
+(Theorem 7.1). Applied to conjugates of a positive operator, this gives a projection that almost commutes with a
+given finite set of unitaries (Theorem 8.2).</li>
+<li><strong>Two projections.</strong> If <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> are equivalent finite projections, there is a unitary <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math" data-tex="\(WeW^*=f\)">\(WeW^*=f\)</span> and <span class="math" data-tex="\(|W-1|\le\sqrt2\,|e-f|\)">\(|W-1|\le\sqrt2\,|e-f|\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> commutes with <span class="math" data-tex="\(|e-f|\)">\(|e-f|\)</span> (Theorem 9.4). The constant <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>
+is optimal.</li>
+</ol>
+<p>Although the course uses these results for finite von Neumann algebras (II₁ factors and their ultrapowers), all
+proofs work for a faithful normal <em>semifinite</em> trace, and we state them in that generality. The finite case is the
+special case <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span>.</p>
+<p>Later lessons of this course use Theorem 3.1 (with Corollary 3.2), Theorem 7.1 (with Corollary 7.2), Theorem 8.2 (with
+Corollary 8.3) and Theorem 9.4 (with Corollary 9.5); among them are &quot;Property <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and the algebra generated by a
+factor and its commutant&quot;, &quot;Approximately inner and centrally trivial automorphisms&quot; and &quot;Uniqueness of the injective
+II₁ factor&quot;.</p>
+<p><em>What is assumed.</em> Basic von Neumann algebra theory, as in the lessons &quot;Projections and types of von Neumann
+algebras&quot; and &quot;Traces on von Neumann algebras&quot;; noncommutative integration for a trace, as in &quot;Measurable operators for
+a trace: examples, convergence and the commutant&quot; and &quot;Trace densities and noncommutative integration&quot;; and the
+spectral theorem with joint spectral measures, as in &quot;Spectral calculus with its domains retained&quot; and &quot;Joint spectral
+measures and commutator estimates in standard form&quot;. These are lessons of this programme.
+The facts used are listed precisely below.</p>
+<p>Basic references are [Connes 1976], [Powers–Størmer 1970], [Haagerup 1975], [Fack–Kosaki 1986], [Connes 1994]
+and [Anantharaman–Popa].</p>
+<h2 id="results-used-from-other-lessons">Results used from other lessons</h2>
+<p>Throughout, <span class="math" data-tex="\(N\)">\(N\)</span> is a von Neumann algebra and <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal semifinite trace on <span class="math" data-tex="\(N\)">\(N\)</span>. All
+functions are Borel functions.</p>
+<p><strong>(B1) Measurable operators and <span class="math" data-tex="\(L^p\)">\(L^p\)</span>.</strong> A closed densely defined operator <span class="math" data-tex="\(x\)">\(x\)</span> affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> is
+<span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable if <span class="math" data-tex="\(\tau(\chi_{(\lambda,\infty)}(|x|))&lt;\infty\)">\(\tau(\chi_{(\lambda,\infty)}(|x|))&lt;\infty\)</span> for some <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. The <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable
+operators form a <span class="math" data-tex="\(*\)">\(*\)</span>-algebra under the closure of the sum and of the product, containing <span class="math" data-tex="\(N\)">\(N\)</span>, and the usual
+algebraic rules hold. For a positive self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> put
+<span class="math math-display" data-tex="\[
+\nu_h(B)=\tau(\chi_B(h))\qquad(B\subset(0,\infty)\ \text{Borel}),
+\]">\[
+\nu_h(B)=\tau(\chi_B(h))\qquad(B\subset(0,\infty)\ \text{Borel}),
+\]</span>
+a positive measure on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> (by normality of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>), and for a function <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with
+<span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> put <span class="math" data-tex="\(\tau(f(h))=\int_{(0,\infty)}f\,d\nu_h\in[0,\infty]\)">\(\tau(f(h))=\int_{(0,\infty)}f\,d\nu_h\in[0,\infty]\)</span>. This extends <span class="math" data-tex="\(\tau\)">\(\tau\)</span> from <span class="math" data-tex="\(N^+\)">\(N^+\)</span>, and is
+additive and monotone on positive <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable operators. For <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>,
+<span class="math" data-tex="\(L^p(N,\tau)\)">\(L^p(N,\tau)\)</span> is the space of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\|x\|_p=\tau(|x|^p)^{1/p}&lt;\infty\)">\(\|x\|_p=\tau(|x|^p)^{1/p}&lt;\infty\)</span>; it is a Banach
+space, <span class="math" data-tex="\(N\cap L^p\)">\(N\cap L^p\)</span> is dense in it, and <span class="math" data-tex="\(\|x^*\|_p=\||x|\|_p=\|x\|_p\)">\(\|x^*\|_p=\||x|\|_p=\|x\|_p\)</span>. The space <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span> is a Hilbert space
+with <span class="math" data-tex="\(\langle x,y\rangle=\tau(y^*x)\)">\(\langle x,y\rangle=\tau(y^*x)\)</span>. If <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> is affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, then <span class="math" data-tex="\(f(h)\in L^p\)">\(f(h)\in L^p\)</span> if and
+only if <span class="math" data-tex="\(\int|f|^p\,d\nu_h&lt;\infty\)">\(\int|f|^p\,d\nu_h&lt;\infty\)</span>, and then <span class="math" data-tex="\(\|f(h)\|_p^p=\int|f|^p\,d\nu_h\)">\(\|f(h)\|_p^p=\int|f|^p\,d\nu_h\)</span>. The <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable operators and their algebra are constructed in
+<a href="../OA-MOD/OA-MOD-MT.html#OA-MOD-MT-09">Operators recovered from small trace defects</a> (§§MT-05–MT-12), and the spaces
+<span class="math" data-tex="\(L^p(N,\tau)\)">\(L^p(N,\tau)\)</span>, their completeness, density of <span class="math" data-tex="\(N\cap L^p\)">\(N\cap L^p\)</span> and the Hilbert space <span class="math" data-tex="\(L^2\)">\(L^2\)</span> in <a href="../OA-MOD/OA-MOD-TI.html#OA-MOD-TI-09">Trace densities and
+noncommutative integration, §§TI-09 and TI-15</a>. The formulas for <span class="math" data-tex="\(\tau(f(h))\)">\(\tau(f(h))\)</span> are the
+spectral theorem for <span class="math" data-tex="\(h\)">\(h\)</span> together with normality of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; see also <a href="../traces-and-noncommutative-integration/measurable-operators-for-a-trace-examples-convergence-and-the-commutant.html">Measurable operators for a trace, Section
+9</a>. See also [Fack–Kosaki 1986].</p>
+<p><strong>(B2) Hölder inequality and cyclicity.</strong> If <span class="math" data-tex="\(1\le p,q,r&lt;\infty\)">\(1\le p,q,r&lt;\infty\)</span>, <span class="math" data-tex="\(1/p+1/q=1/r\)">\(1/p+1/q=1/r\)</span>, <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, <span class="math" data-tex="\(y\in L^q\)">\(y\in L^q\)</span>, then
+<span class="math" data-tex="\(xy\in L^r\)">\(xy\in L^r\)</span> and <span class="math" data-tex="\(\|xy\|_r\le\|x\|_p\|y\|_q\)">\(\|xy\|_r\le\|x\|_p\|y\|_q\)</span>. If <span class="math" data-tex="\(a,b\in N\)">\(a,b\in N\)</span> and <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span>, then <span class="math" data-tex="\(\|axb\|_p\le\|a\|\|x\|_p\|b\|\)">\(\|axb\|_p\le\|a\|\|x\|_p\|b\|\)</span>.
+The trace extends to a positive linear functional on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> with <span class="math" data-tex="\(|\tau(x)|\le\|x\|_1\)">\(|\tau(x)|\le\|x\|_1\)</span>; if <span class="math" data-tex="\(1/p+1/q=1\)">\(1/p+1/q=1\)</span> (allowing
+<span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>, with <span class="math" data-tex="\(L^\infty=N\)">\(L^\infty=N\)</span>), <span class="math" data-tex="\(x\in L^p\)">\(x\in L^p\)</span> and <span class="math" data-tex="\(y\in L^q\)">\(y\in L^q\)</span>, then <span class="math" data-tex="\(\tau(xy)=\tau(yx)\)">\(\tau(xy)=\tau(yx)\)</span>. For <span class="math" data-tex="\(y\in L^1\)">\(y\in L^1\)</span> the
+functional <span class="math" data-tex="\(a\mapsto\tau(ay)\)">\(a\mapsto\tau(ay)\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span> is normal. If <span class="math" data-tex="\(x\in L^1\)">\(x\in L^1\)</span> has polar decomposition <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span>, then
+<span class="math" data-tex="\(\|x\|_1=\tau(u^*x)\)">\(\|x\|_1=\tau(u^*x)\)</span>. Proved in <a href="../OA-MOD/OA-MOD-TI.html#OA-MOD-TI-10">Trace densities and noncommutative integration</a>: the
+Hölder inequality in §TI-10, the trace on <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, its bound and its normality in §TI-06. The last formula holds because
+<span class="math" data-tex="\(u^*x=|x|\)">\(u^*x=|x|\)</span>. See also [Fack–Kosaki 1986].</p>
+<p><strong>(B3) Polar decomposition.</strong> Every <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable <span class="math" data-tex="\(x\)">\(x\)</span> has a unique decomposition <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span> with
+<span class="math" data-tex="\(|x|=(x^*x)^{1/2}\)">\(|x|=(x^*x)^{1/2}\)</span> and <span class="math" data-tex="\(u\in N\)">\(u\in N\)</span> a partial isometry with <span class="math" data-tex="\(u^*u\)">\(u^*u\)</span> equal to the support projection <span class="math" data-tex="\(s(|x|)\)">\(s(|x|)\)</span> of
+<span class="math" data-tex="\(|x|\)">\(|x|\)</span>. Uniqueness means: if <span class="math" data-tex="\(x=vk\)">\(x=vk\)</span> with <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable and <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span> a partial isometry with
+<span class="math" data-tex="\(v^*v=s(k)\)">\(v^*v=s(k)\)</span>, then <span class="math" data-tex="\(k=|x|\)">\(k=|x|\)</span> and <span class="math" data-tex="\(v=u\)">\(v=u\)</span>. Moreover <span class="math" data-tex="\(|x^*|=u|x|u^*\)">\(|x^*|=u|x|u^*\)</span>. If <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span> is unitary and <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span>, then
+<span class="math" data-tex="\(f(v^*hv)=v^*f(h)v\)">\(f(v^*hv)=v^*f(h)v\)</span>. The polar decomposition and its uniqueness are proved in <a href="../OA-MOD/OA-MOD-MT.html#OA-MOD-MT-12">Operators recovered from small
+trace defects, §MT-12</a>; <span class="math" data-tex="\(|x^*|=u|x|u^*\)">\(|x^*|=u|x|u^*\)</span> follows from uniqueness applied to <span class="math" data-tex="\(x^*=u^*(u|x|u^*)\)">\(x^*=u^*(u|x|u^*)\)</span>,
+and the last formula holds because <span class="math" data-tex="\(\chi_B(v^*hv)=v^*\chi_B(h)v\)">\(\chi_B(v^*hv)=v^*\chi_B(h)v\)</span> for the spectral projections.</p>
+<p><strong>(B4) <span class="math" data-tex="\(L^2\)">\(L^2\)</span> as a bimodule.</strong> For <span class="math" data-tex="\(a,b\in N\)">\(a,b\in N\)</span>, the maps <span class="math" data-tex="\(L(a)\colon\xi\mapsto a\xi\)">\(L(a)\colon\xi\mapsto a\xi\)</span> and
+<span class="math" data-tex="\(R(b)\colon\xi\mapsto\xi b\)">\(R(b)\colon\xi\mapsto\xi b\)</span> are bounded on <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span>, <span class="math" data-tex="\(L(a)R(b)=R(b)L(a)\)">\(L(a)R(b)=R(b)L(a)\)</span>, <span class="math" data-tex="\(a\mapsto L(a)\)">\(a\mapsto L(a)\)</span> is a normal
+representation and <span class="math" data-tex="\(b\mapsto R(b)\)">\(b\mapsto R(b)\)</span> is a normal antirepresentation (increasing bounded nets go to strongly convergent
+nets). This is the standard form of <span class="math" data-tex="\(N\)">\(N\)</span>. Proved in <a href="../traces-and-noncommutative-integration/integration-for-a-trace-the-commutation-theorem-and-applications.html">Integration for a trace, Sections 2–3</a>
+(Lemma 2.2 and Theorem 3.1).</p>
+<p><strong>(B5) Joint spectral measures.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> be projection-valued measures on the Borel sets of
+<span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, acting on the same Hilbert space, with <span class="math" data-tex="\(P(A)Q(B)=Q(B)P(A)\)">\(P(A)Q(B)=Q(B)P(A)\)</span> for all <span class="math" data-tex="\(A,B\)">\(A,B\)</span>. There is a unique
+projection-valued measure <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> on the Borel sets of <span class="math" data-tex="\([0,\infty)^2\)">\([0,\infty)^2\)</span> with <span class="math" data-tex="\(\Pi(A\times B)=P(A)Q(B)\)">\(\Pi(A\times B)=P(A)Q(B)\)</span>, and for
+bounded functions <span class="math" data-tex="\(f,g\)">\(f,g\)</span> one has <span class="math" data-tex="\(\int f(s)g(t)\,d\Pi(s,t)=\big(\int f\,dP\big)\big(\int g\,dQ\big)\)">\(\int f(s)g(t)\,d\Pi(s,t)=\big(\int f\,dP\big)\big(\int g\,dQ\big)\)</span>. For a vector
+<span class="math" data-tex="\(\xi\)">\(\xi\)</span>, <span class="math" data-tex="\(\Delta\mapsto\langle\Pi(\Delta)\xi,\xi\rangle\)">\(\Delta\mapsto\langle\Pi(\Delta)\xi,\xi\rangle\)</span> is a finite positive measure and
+<span class="math" data-tex="\(\langle(\int\varphi\,d\Pi)\xi,\xi\rangle=\int\varphi\,d\langle\Pi\xi,\xi\rangle\)">\(\langle(\int\varphi\,d\Pi)\xi,\xi\rangle=\int\varphi\,d\langle\Pi\xi,\xi\rangle\)</span> for bounded <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.
+This is proved as in <a href="../OA-MOD/OA-MOD-NC.html#OA-MOD-NC-20">Joint spectral measures and commutator estimates in standard form, Theorem in
+§NC-20</a>: the bounded operators <span class="math" data-tex="\(A=\int\arctan\,dP\)">\(A=\int\arctan\,dP\)</span> and <span class="math" data-tex="\(B=\int\arctan\,dQ\)">\(B=\int\arctan\,dQ\)</span> commute, so
+<span class="math" data-tex="\(T=A+iB\)">\(T=A+iB\)</span> is normal; its spectral measure (<a href="../OA-MOD/OA-MOD-SK.html#OA-MOD-SK-04">Spectral calculus with its domains retained, §SK-04</a>),
+carried to the plane by <span class="math" data-tex="\(z\mapsto(\tan\operatorname{Re}z,\tan\operatorname{Im}z)\)">\(z\mapsto(\tan\operatorname{Re}z,\tan\operatorname{Im}z)\)</span>, is <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span>, and uniqueness holds because
+Borel rectangles generate the Borel sets.</p>
+<p><strong>(B6) Isomorphisms.</strong> Let <span class="math" data-tex="\(\theta\colon N\to N_1\)">\(\theta\colon N\to N_1\)</span> be a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism onto a von Neumann algebra with a faithful
+normal semifinite trace <span class="math" data-tex="\(\tau_1\)">\(\tau_1\)</span> such that <span class="math" data-tex="\(\tau_1\circ\theta=\lambda\tau\)">\(\tau_1\circ\theta=\lambda\tau\)</span> for some <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>. Then <span class="math" data-tex="\(\theta\)">\(\theta\)</span>
+extends uniquely to a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism <span class="math" data-tex="\(\tilde\theta\)">\(\tilde\theta\)</span> from the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable to the <span class="math" data-tex="\(\tau_1\)">\(\tau_1\)</span>-measurable
+operators, and <span class="math" data-tex="\(\tilde\theta\)">\(\tilde\theta\)</span> commutes with the Borel functional calculus of positive operators, with moduli and with
+polar decompositions. This is <a href="../traces-and-noncommutative-integration/measurable-operators-for-a-trace-examples-convergence-and-the-commutant.html">Measurable operators for a trace, Theorem 14.1</a>. See also
+[Nelson 1974].</p>
+<p><strong>(B7) Comparison of projections.</strong> Equivalent projections have equal trace. If <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> is a central
+projection, then <span class="math" data-tex="\(pc\sim qc\)">\(pc\sim qc\)</span>. Sums of orthogonal families of pairwise equivalent projections (with the first family
+orthogonal and the second family orthogonal) are equivalent. For any projections <span class="math" data-tex="\(p,q\)">\(p,q\)</span> there is a central projection
+<span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(pc\precsim qc\)">\(pc\precsim qc\)</span> and <span class="math" data-tex="\(q(1-c)\precsim p(1-c)\)">\(q(1-c)\precsim p(1-c)\)</span> (comparison theorem). A projection <span class="math" data-tex="\(p\)">\(p\)</span> is <em>finite</em> if
+<span class="math" data-tex="\(p\sim p&#x27;\le p\)">\(p\sim p&#x27;\le p\)</span> implies <span class="math" data-tex="\(p&#x27;=p\)">\(p&#x27;=p\)</span>; subprojections of finite projections are finite; a projection of finite trace is
+finite. For any projections <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, <span class="math" data-tex="\(p\vee q-p\sim q-p\wedge q\)">\(p\vee q-p\sim q-p\wedge q\)</span> (Kaplansky's formula). Equal traces:
+<span class="math" data-tex="\(\tau(v^*v)=\tau(vv^*)\)">\(\tau(v^*v)=\tau(vv^*)\)</span>. Central cuts and orthogonal sums: <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#OA-FND-TA-01">Traces on von Neumann algebras, Lemmas 1.1 and
+1.2</a>. The comparison theorem: <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-03">Projections and types of von Neumann algebras, Theorem
+5.5</a>. Finite projections: <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-09">Section 6</a> there; a projection <span class="math" data-tex="\(p\)">\(p\)</span> of finite trace is
+finite, because <span class="math" data-tex="\(p\sim p&#x27;\le p\)">\(p\sim p&#x27;\le p\)</span> gives <span class="math" data-tex="\(\tau(p-p&#x27;)=0\)">\(\tau(p-p&#x27;)=0\)</span>, hence <span class="math" data-tex="\(p&#x27;=p\)">\(p&#x27;=p\)</span> by faithfulness. Kaplansky's formula:
+<a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-04">Proposition 4.4</a> there.</p>
+<p><strong>(B8) Type structure of semifinite algebras.</strong> <span class="math" data-tex="\(N\)">\(N\)</span> is the direct sum of a type I and a type II algebra. A type I
+algebra is a direct sum <span class="math" data-tex="\(\bigoplus_\kappa N_\kappa\)">\(\bigoplus_\kappa N_\kappa\)</span> over cardinals <span class="math" data-tex="\(\kappa\ge1\)">\(\kappa\ge1\)</span>, where <span class="math" data-tex="\(N_\kappa\)">\(N_\kappa\)</span> is zero or of
+type I<span class="math" data-tex="\(_\kappa\)">\(_\kappa\)</span>: its unit is the sum of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> mutually orthogonal equivalent abelian projections with central
+support <span class="math" data-tex="\(1\)">\(1\)</span>. A type I<span class="math" data-tex="\(_n\)">\(_n\)</span> algebra with <span class="math" data-tex="\(n\)">\(n\)</span> finite is <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphic to <span class="math" data-tex="\(M_n(Z)\)">\(M_n(Z)\)</span> with <span class="math" data-tex="\(Z\)">\(Z\)</span> abelian. Every
+subprojection of an abelian projection <span class="math" data-tex="\(q\)">\(q\)</span> has the form <span class="math" data-tex="\(qc\)">\(qc\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> central. In a type II<span class="math" data-tex="\(_1\)">\(_1\)</span> algebra, for
+every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> the unit is a sum of <span class="math" data-tex="\(n\)">\(n\)</span> mutually orthogonal equivalent projections. If <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> is a central
+projection of <span class="math" data-tex="\(N\)">\(N\)</span> of type II and <span class="math" data-tex="\(p\le z\)">\(p\le z\)</span> is a nonzero projection with <span class="math" data-tex="\(\tau(p)&lt;\infty\)">\(\tau(p)&lt;\infty\)</span>, then <span class="math" data-tex="\(pNp\)">\(pNp\)</span> is of type
+II<span class="math" data-tex="\(_1\)">\(_1\)</span>. Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful and semifinite, every nonzero projection majorizes a nonzero projection of finite
+trace. The type decomposition and the structure of type I algebras are proved in <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-14">Projections and types of von Neumann
+algebras, Theorems 7.2 and 10.3</a>, and <span class="math" data-tex="\(M_n(Z)\)">\(M_n(Z)\)</span> for type I<span class="math" data-tex="\(_n\)">\(_n\)</span> by its matrix units (<a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-11">Proposition
+8.4</a>). If <span class="math" data-tex="\(q\)">\(q\)</span> is abelian, <span class="math" data-tex="\(qNq\)">\(qNq\)</span> is abelian with centre <span class="math" data-tex="\(Zq\)">\(Zq\)</span> (<a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#OA-FND-TA-01">Traces on von Neumann algebras,
+Lemma 1.5</a>), so <span class="math" data-tex="\(qNq=Zq\)">\(qNq=Zq\)</span> and its projections have the form <span class="math" data-tex="\(qc\)">\(qc\)</span>. The last statement is the
+semifiniteness of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> (<a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html#OA-FND-TA-04">Traces on von Neumann algebras, Proposition 2.5</a>). The division of the
+unit of a type II₁ algebra into <span class="math" data-tex="\(n\)">\(n\)</span> equivalent projections is <a href="../OA-FOUND-REMAINDER/reader/supplements/traces-on-von-neumann-algebras-part-a-def-v-2-1-to-def-v-2-17.html">Traces on von Neumann algebras, Corollary
+5.18</a>, and the type of <span class="math" data-tex="\(pNp\)">\(pNp\)</span> is Corollary 5.19 there.</p>
+<p><strong>(B9) Matrices over commutative algebras.</strong> If <span class="math" data-tex="\(Z\cong C(\Omega)\)">\(Z\cong C(\Omega)\)</span> is a commutative C*-algebra, then <span class="math" data-tex="\(M_n(Z)\)">\(M_n(Z)\)</span> is
+the C*-algebra <span class="math" data-tex="\(C(\Omega,M_n(\mathbb C))\)">\(C(\Omega,M_n(\mathbb C))\)</span> with the norm <span class="math" data-tex="\(\|x\|=\sup_{\omega}\|x(\omega)\|\)">\(\|x\|=\sup_{\omega}\|x(\omega)\|\)</span>. Indeed <span class="math" data-tex="\(M_n(Z)\to C(\Omega,M_n(\mathbb C))\)">\(M_n(Z)\to C(\Omega,M_n(\mathbb C))\)</span> is an injective
+<span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism onto, and both sides are C*-algebras, so it is isometric (<a href="../NCG-FOLIATIONS/companions/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras: continuous functional
+calculus, automatic continuity, positive cones, approximate identities and quotients, Corollary 4.6</a>).</p>
+<h2 id="1-setting-and-notation">1. Setting and notation</h2>
+<p><strong>Definition 1.1.</strong> A positive self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> is <em>tail-finite</em> if
+<span class="math" data-tex="\(\nu_h([\varepsilon,\infty))=\tau(\chi_{[\varepsilon,\infty)}(h))&lt;\infty\)">\(\nu_h([\varepsilon,\infty))=\tau(\chi_{[\varepsilon,\infty)}(h))&lt;\infty\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>.</p>
+<p>A tail-finite operator is <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable. If <span class="math" data-tex="\(h\in L^p(N,\tau)^+\)">\(h\in L^p(N,\tau)^+\)</span> with <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span>, then <span class="math" data-tex="\(h\)">\(h\)</span> is tail-finite,
+since by (B1)
+<span class="math math-display" data-tex="\[
+\nu_h([\varepsilon,\infty))\le\varepsilon^{-p}\int t^p\,d\nu_h(t)=\varepsilon^{-p}\|h\|_p^p .\tag{1.1}
+\]">\[
+\nu_h([\varepsilon,\infty))\le\varepsilon^{-p}\int t^p\,d\nu_h(t)=\varepsilon^{-p}\|h\|_p^p .\tag{1.1}
+\]</span></p>
+<p><strong>Notation 1.2.</strong> For a positive self-adjoint operator <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+E_a(h)=\chi_{(a,\infty)}(h),
+\]">\[
+E_a(h)=\chi_{(a,\infty)}(h),
+\]</span>
+the spectral projection of <span class="math" data-tex="\(h\)">\(h\)</span> for the half-line <span class="math" data-tex="\((a,\infty)\)">\((a,\infty)\)</span>. For a closed densely defined operator <span class="math" data-tex="\(x\)">\(x\)</span>
+affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>, with polar decomposition <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span> (B3), we write <span class="math" data-tex="\(u(x)=u\)">\(u(x)=u\)</span>, and for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+u_a(x)=u(x)\,E_a(|x|).
+\]">\[
+u_a(x)=u(x)\,E_a(|x|).
+\]</span>
+We call <span class="math" data-tex="\(u_a(x)\)">\(u_a(x)\)</span> the <em>truncated polar part</em> of <span class="math" data-tex="\(x\)">\(x\)</span> at level <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Since <span class="math" data-tex="\(E_a(|x|)\le s(|x|)=u^*u\)">\(E_a(|x|)\le s(|x|)=u^*u\)</span>, <span class="math" data-tex="\(u_a(x)\)">\(u_a(x)\)</span> is a partial isometry in <span class="math" data-tex="\(N\)">\(N\)</span> with initial projection <span class="math" data-tex="\(E_a(|x|)\)">\(E_a(|x|)\)</span> and
+final projection <span class="math" data-tex="\(uE_a(|x|)u^*=E_a(u|x|u^*)=E_a(|x^*|)\)">\(uE_a(|x|)u^*=E_a(u|x|u^*)=E_a(|x^*|)\)</span>. If <span class="math" data-tex="\(x\in L^2\)">\(x\in L^2\)</span>, then <span class="math" data-tex="\(\tau(E_a(|x|))\le a^{-2}\|x\|_2^2\)">\(\tau(E_a(|x|))\le a^{-2}\|x\|_2^2\)</span> by
+(1.1), so <span class="math" data-tex="\(u_a(x)\in N\cap L^2\)">\(u_a(x)\in N\cap L^2\)</span> and <span class="math" data-tex="\(\|u_a(x)\|_2^2=\tau(E_a(|x|))\)">\(\|u_a(x)\|_2^2=\tau(E_a(|x|))\)</span>. For positive <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(u(h)=s(h)\)">\(u(h)=s(h)\)</span> and
+<span class="math" data-tex="\(u_a(h)=E_a(h)\)">\(u_a(h)=E_a(h)\)</span>.</p>
+<p>The map <span class="math" data-tex="\(x\mapsto u(x)\)">\(x\mapsto u(x)\)</span> is badly discontinuous, even for <span class="math" data-tex="\(N=\mathbb C^2\)">\(N=\mathbb C^2\)</span>: see Example 7.3. The truncation
+<span class="math" data-tex="\(E_a(|x|)\)">\(E_a(|x|)\)</span> removes the small part of <span class="math" data-tex="\(|x|\)">\(|x|\)</span>, where the phase <span class="math" data-tex="\(u(x)\)">\(u(x)\)</span> is unstable.</p>
+<p><strong>Lemma 1.3.</strong> Let <span class="math" data-tex="\(h\)">\(h\)</span> be tail-finite and <span class="math" data-tex="\(w\in N\)">\(w\in N\)</span>.</p>
+<p>(a) For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(E_a(h)\in N\cap L^1\cap L^2\)">\(E_a(h)\in N\cap L^1\cap L^2\)</span>.</p>
+<p>(b) The map <span class="math" data-tex="\((0,\infty)\ni a\mapsto wE_a(h)\in L^2(N,\tau)\)">\((0,\infty)\ni a\mapsto wE_a(h)\in L^2(N,\tau)\)</span> is right-continuous, and
+<span class="math" data-tex="\(a\mapsto\tau(E_a(h))=\nu_h((a,\infty))\)">\(a\mapsto\tau(E_a(h))=\nu_h((a,\infty))\)</span> is finite, nonincreasing and right-continuous.</p>
+<p>(c) A right-continuous function <span class="math" data-tex="\(F\colon(0,\infty)\to\mathbb R\)">\(F\colon(0,\infty)\to\mathbb R\)</span> is Borel.</p>
+<p><strong>Proof.</strong> (a) <span class="math" data-tex="\(\tau(E_a(h))\le\nu_h([a,\infty))&lt;\infty\)">\(\tau(E_a(h))\le\nu_h([a,\infty))&lt;\infty\)</span>, and a projection of finite trace lies in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> and
+<span class="math" data-tex="\(L^2\)">\(L^2\)</span>. (b) For <span class="math" data-tex="\(0&lt;a&lt;a&#x27;\)">\(0&lt;a&lt;a&#x27;\)</span>, <span class="math" data-tex="\(E_a(h)-E_{a&#x27;}(h)=\chi_{(a,a&#x27;]}(h)\)">\(E_a(h)-E_{a&#x27;}(h)=\chi_{(a,a&#x27;]}(h)\)</span>, so by (B2)
+<span class="math" data-tex="\(\|w(E_a(h)-E_{a&#x27;}(h))\|_2^2\le\|w\|^2\nu_h((a,a&#x27;])\)">\(\|w(E_a(h)-E_{a&#x27;}(h))\|_2^2\le\|w\|^2\nu_h((a,a&#x27;])\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(a&#x27;\downarrow a\)">\(a&#x27;\downarrow a\)</span> because <span class="math" data-tex="\(\nu_h\)">\(\nu_h\)</span> is
+finite on <span class="math" data-tex="\([a,\infty)\)">\([a,\infty)\)</span>. The second statement is the same fact for the finite measure <span class="math" data-tex="\(\nu_h\)">\(\nu_h\)</span> restricted to
+<span class="math" data-tex="\([a,\infty)\)">\([a,\infty)\)</span>. (c) <span class="math" data-tex="\(F\)">\(F\)</span> is the pointwise limit of the Borel step functions
+<span class="math" data-tex="\(F_m(a)=F(2^{-m}\lceil 2^ma\rceil)\)">\(F_m(a)=F(2^{-m}\lceil 2^ma\rceil)\)</span> (for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(2^{-m}\lceil2^ma\rceil\downarrow a\)">\(2^{-m}\lceil2^ma\rceil\downarrow a\)</span>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-joint-distribution-of-two-positive-operators">2. The joint distribution of two positive operators</h2>
+<p>Two positive operators in <span class="math" data-tex="\(N\)">\(N\)</span> that do not commute have no joint spectral measure in <span class="math" data-tex="\(N\)">\(N\)</span>. The following theorem
+shows that for <span class="math" data-tex="\(L^2\)">\(L^2\)</span> quantities they behave as if they had one.</p>
+<p>Put <span class="math" data-tex="\(X=[0,\infty)^2\setminus\{(0,0)\}\)">\(X=[0,\infty)^2\setminus\{(0,0)\}\)</span>, a locally compact space, and let <span class="math" data-tex="\(H(s,t)=s\)">\(H(s,t)=s\)</span> and <span class="math" data-tex="\(K(s,t)=t\)">\(K(s,t)=t\)</span> be the
+coordinate functions on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(h,k\)">\(h,k\)</span> be tail-finite positive operators affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> (for instance <span class="math" data-tex="\(h,k\in
+L^2(N,\tau)^+\)">\(h,k\in
+L^2(N,\tau)^+\)</span>). There is exactly one positive Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> with
+<span class="math math-display" data-tex="\[
+\mu(A\times B)=\tau(\chi_A(h)\chi_B(k))\tag{2.1}
+\]">\[
+\mu(A\times B)=\tau(\chi_A(h)\chi_B(k))\tag{2.1}
+\]</span>
+for all Borel sets <span class="math" data-tex="\(A,B\subset[0,\infty)\)">\(A,B\subset[0,\infty)\)</span> with <span class="math" data-tex="\(A\subset[\varepsilon,\infty)\)">\(A\subset[\varepsilon,\infty)\)</span> or <span class="math" data-tex="\(B\subset[\varepsilon,\infty)\)">\(B\subset[\varepsilon,\infty)\)</span>
+for some <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. It has the following properties.</p>
+<p>(a) For every function <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>,
+<span class="math math-display" data-tex="\[
+\int_Xf(H)\,d\mu=\tau(f(h)),\qquad\int_Xf(K)\,d\mu=\tau(f(k))\qquad(\text{in }[0,\infty]).
+\]">\[
+\int_Xf(H)\,d\mu=\tau(f(h)),\qquad\int_Xf(K)\,d\mu=\tau(f(k))\qquad(\text{in }[0,\infty]).
+\]</span>
+In particular <span class="math" data-tex="\(f(H)\)">\(f(H)\)</span> is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-integrable if and only if <span class="math" data-tex="\(f(h)\)">\(f(h)\)</span> is integrable.</p>
+<p>(b) For all complex functions <span class="math" data-tex="\(f,g\)">\(f,g\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with <span class="math" data-tex="\(f(0)=g(0)=0\)">\(f(0)=g(0)=0\)</span> and <span class="math" data-tex="\(f(h),g(k)\in L^2(N,\tau)\)">\(f(h),g(k)\in L^2(N,\tau)\)</span>,
+<span class="math math-display" data-tex="\[
+\langle f(h),g(k)\rangle=\int_Xf(H)\,\overline{g(K)}\,d\mu,\qquad
+\|f(h)-g(k)\|_2=\|f(H)-g(K)\|_{L^2(X,\mu)} .
+\]">\[
+\langle f(h),g(k)\rangle=\int_Xf(H)\,\overline{g(K)}\,d\mu,\qquad
+\|f(h)-g(k)\|_2=\|f(H)-g(K)\|_{L^2(X,\mu)} .
+\]</span></p>
+<p><em>Reference:</em> [Connes 1976, §2.5].</p>
+<p>The right side of (2.1) is a trace of a product of two operators of which at least one has finite trace, so it is
+defined; it equals <span class="math" data-tex="\(\tau(\chi_A(h)\chi_B(k)\chi_A(h))\ge0\)">\(\tau(\chi_A(h)\chi_B(k)\chi_A(h))\ge0\)</span> when <span class="math" data-tex="\(\chi_A(h)\)">\(\chi_A(h)\)</span> has finite trace.</p>
+<p><strong>Proof.</strong> <em>The joint spectral measure.</em> By (B4), <span class="math" data-tex="\(P(A)=L(\chi_A(h))\)">\(P(A)=L(\chi_A(h))\)</span> and <span class="math" data-tex="\(Q(B)=R(\chi_B(k))\)">\(Q(B)=R(\chi_B(k))\)</span> are commuting
+projection-valued measures on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> acting on <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span>; countable additivity comes from normality. Let
+<span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be their joint projection-valued measure on <span class="math" data-tex="\([0,\infty)^2\)">\([0,\infty)^2\)</span> (B5). For a bounded function <span class="math" data-tex="\(f\)">\(f\)</span> on
+<span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, <span class="math" data-tex="\(\int f\,dP=L(f(h))\)">\(\int f\,dP=L(f(h))\)</span>: this holds for simple <span class="math" data-tex="\(f\)">\(f\)</span>, and both sides are norm-continuous in <span class="math" data-tex="\(f\)">\(f\)</span> for
+uniform convergence. Similarly <span class="math" data-tex="\(\int g\,dQ=R(g(k))\)">\(\int g\,dQ=R(g(k))\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\Big(\int f(s)g(t)\,d\Pi(s,t)\Big)\xi=f(h)\,\xi\,g(k)\qquad(\xi\in L^2).\tag{2.2}
+\]">\[
+\Big(\int f(s)g(t)\,d\Pi(s,t)\Big)\xi=f(h)\,\xi\,g(k)\qquad(\xi\in L^2).\tag{2.2}
+\]</span></p>
+<p><em>Local pieces.</em> For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> let <span class="math" data-tex="\(p_\varepsilon=\chi_{[\varepsilon,\infty)}(h)\)">\(p_\varepsilon=\chi_{[\varepsilon,\infty)}(h)\)</span>,
+<span class="math" data-tex="\(q_\varepsilon=\chi_{[\varepsilon,\infty)}(k)\)">\(q_\varepsilon=\chi_{[\varepsilon,\infty)}(k)\)</span> and <span class="math" data-tex="\(r_\varepsilon=p_\varepsilon\vee q_\varepsilon\)">\(r_\varepsilon=p_\varepsilon\vee q_\varepsilon\)</span>. Since
+<span class="math" data-tex="\(\tau(p\vee q)\le\tau(p)+\tau(q)\)">\(\tau(p\vee q)\le\tau(p)+\tau(q)\)</span> (because <span class="math" data-tex="\(p\vee q-p\sim q-p\wedge q\)">\(p\vee q-p\sim q-p\wedge q\)</span>), <span class="math" data-tex="\(r_\varepsilon\)">\(r_\varepsilon\)</span> has finite trace, so
+<span class="math" data-tex="\(r_\varepsilon\in L^2\)">\(r_\varepsilon\in L^2\)</span>. Let <span class="math" data-tex="\(m_\varepsilon(\Delta)=\langle\Pi(\Delta)r_\varepsilon,r_\varepsilon\rangle\)">\(m_\varepsilon(\Delta)=\langle\Pi(\Delta)r_\varepsilon,r_\varepsilon\rangle\)</span>, a finite
+positive measure on <span class="math" data-tex="\([0,\infty)^2\)">\([0,\infty)^2\)</span>. If <span class="math" data-tex="\(A\subset[\varepsilon,\infty)\)">\(A\subset[\varepsilon,\infty)\)</span>, then <span class="math" data-tex="\(\chi_A(h)\le p_\varepsilon\le
+r_\varepsilon\)">\(\chi_A(h)\le p_\varepsilon\le
+r_\varepsilon\)</span>, so <span class="math" data-tex="\(r_\varepsilon\chi_A(h)r_\varepsilon=\chi_A(h)\)">\(r_\varepsilon\chi_A(h)r_\varepsilon=\chi_A(h)\)</span> and, by (2.2) and (B2),
+<span class="math math-display" data-tex="\[
+m_\varepsilon(A\times B)=\tau\big(r_\varepsilon\,\chi_A(h)\,r_\varepsilon\,\chi_B(k)\big)=\tau(\chi_A(h)\chi_B(k)).
+\]">\[
+m_\varepsilon(A\times B)=\tau\big(r_\varepsilon\,\chi_A(h)\,r_\varepsilon\,\chi_B(k)\big)=\tau(\chi_A(h)\chi_B(k)).
+\]</span>
+If instead <span class="math" data-tex="\(B\subset[\varepsilon,\infty)\)">\(B\subset[\varepsilon,\infty)\)</span>, the same holds after moving <span class="math" data-tex="\(r_\varepsilon\)">\(r_\varepsilon\)</span> around by cyclicity:
+<span class="math" data-tex="\(\tau(r_\varepsilon\chi_A(h)r_\varepsilon\chi_B(k))=\tau(\chi_A(h)\,r_\varepsilon\chi_B(k)r_\varepsilon)
+=\tau(\chi_A(h)\chi_B(k))\)">\(\tau(r_\varepsilon\chi_A(h)r_\varepsilon\chi_B(k))=\tau(\chi_A(h)\,r_\varepsilon\chi_B(k)r_\varepsilon)
+=\tau(\chi_A(h)\chi_B(k))\)</span>.</p>
+<p>Let <span class="math" data-tex="\(U_\varepsilon=[0,\infty)^2\setminus[0,\varepsilon)^2\)">\(U_\varepsilon=[0,\infty)^2\setminus[0,\varepsilon)^2\)</span>. The rectangles <span class="math" data-tex="\(A\times B\)">\(A\times B\)</span> with
+<span class="math" data-tex="\(A\subset[\varepsilon,\infty)\)">\(A\subset[\varepsilon,\infty)\)</span> or <span class="math" data-tex="\(B\subset[\varepsilon,\infty)\)">\(B\subset[\varepsilon,\infty)\)</span>, together with <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span>, form a family
+closed under finite intersections which generates the Borel sets of <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span>. For <span class="math" data-tex="\(\varepsilon&#x27;&lt;\varepsilon\)">\(\varepsilon&#x27;&lt;\varepsilon\)</span>,
+the measures <span class="math" data-tex="\(m_\varepsilon\)">\(m_\varepsilon\)</span> and <span class="math" data-tex="\(m_{\varepsilon&#x27;}\)">\(m_{\varepsilon&#x27;}\)</span> agree on these rectangles (both give (2.1)), hence on
+<span class="math" data-tex="\(U_\varepsilon=S\cup T\)">\(U_\varepsilon=S\cup T\)</span> with <span class="math" data-tex="\(S=[\varepsilon,\infty)\times[0,\infty)\)">\(S=[\varepsilon,\infty)\times[0,\infty)\)</span>, <span class="math" data-tex="\(T=[0,\infty)\times[\varepsilon,\infty)\)">\(T=[0,\infty)\times[\varepsilon,\infty)\)</span>
+(inclusion–exclusion, <span class="math" data-tex="\(S\cap T\)">\(S\cap T\)</span> being such a rectangle). By the uniqueness theorem for finite measures agreeing on a
+generating <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-system, <span class="math" data-tex="\(m_\varepsilon\)">\(m_\varepsilon\)</span> and <span class="math" data-tex="\(m_{\varepsilon&#x27;}\)">\(m_{\varepsilon&#x27;}\)</span> agree on all Borel subsets of <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span>.</p>
+<p><em>The measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</em> For Borel <span class="math" data-tex="\(\Delta\subset X\)">\(\Delta\subset X\)</span> put
+<span class="math" data-tex="\(\mu(\Delta)=\lim_{j\to\infty}m_{1/j}(\Delta\cap U_{1/j})\)">\(\mu(\Delta)=\lim_{j\to\infty}m_{1/j}(\Delta\cap U_{1/j})\)</span>. The sequence is nondecreasing, since
+<span class="math" data-tex="\(m_{1/j}(\Delta\cap U_{1/j})=m_{1/(j+1)}(\Delta\cap U_{1/j})\le m_{1/(j+1)}(\Delta\cap U_{1/(j+1)})\)">\(m_{1/j}(\Delta\cap U_{1/j})=m_{1/(j+1)}(\Delta\cap U_{1/j})\le m_{1/(j+1)}(\Delta\cap U_{1/(j+1)})\)</span>. A nondecreasing
+limit of measures is a measure, so <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a positive measure on <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(\mu(\Delta)=m_\varepsilon(\Delta)\)">\(\mu(\Delta)=m_\varepsilon(\Delta)\)</span>
+for Borel <span class="math" data-tex="\(\Delta\subset U_\varepsilon\)">\(\Delta\subset U_\varepsilon\)</span>. Every compact subset of <span class="math" data-tex="\(X\)">\(X\)</span> lies in some <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span>, which has finite
+measure; so <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is a locally finite Borel measure on a locally compact second countable space, that is, a Radon
+measure. It satisfies (2.1). Uniqueness: two measures satisfying (2.1) agree on the Borel subsets of each
+<span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span> by the <span class="math" data-tex="\(\pi\)">\(\pi\)</span>-system argument, and <span class="math" data-tex="\(X=\bigcup_jU_{1/j}\)">\(X=\bigcup_jU_{1/j}\)</span>.</p>
+<p>(a) Let <span class="math" data-tex="\(A\subset(0,\infty)\)">\(A\subset(0,\infty)\)</span> be Borel and <span class="math" data-tex="\(A_j=A\cap[1/j,\infty)\)">\(A_j=A\cap[1/j,\infty)\)</span>. By (2.1), <span class="math" data-tex="\(\mu(A_j\times[0,\infty))=
+\tau(\chi_{A_j}(h))=\nu_h(A_j)\)">\(\mu(A_j\times[0,\infty))=
+\tau(\chi_{A_j}(h))=\nu_h(A_j)\)</span>. Letting <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>, <span class="math" data-tex="\(\mu(\{H\in A\})=\nu_h(A)\)">\(\mu(\{H\in A\})=\nu_h(A)\)</span>. Thus the image of
+<span class="math" data-tex="\(\mu|_{\{H&gt;0\}}\)">\(\mu|_{\{H&gt;0\}}\)</span> under <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(\nu_h\)">\(\nu_h\)</span>, and for <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>,
+<span class="math" data-tex="\(\int_Xf(H)\,d\mu=\int_{\{H&gt;0\}}f(H)\,d\mu=\int_{(0,\infty)}f\,d\nu_h=\tau(f(h))\)">\(\int_Xf(H)\,d\mu=\int_{\{H&gt;0\}}f(H)\,d\mu=\int_{(0,\infty)}f\,d\nu_h=\tau(f(h))\)</span>. The same for <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>(b) First let <span class="math" data-tex="\(f,g\)">\(f,g\)</span> be bounded and vanish on <span class="math" data-tex="\([0,\varepsilon)\)">\([0,\varepsilon)\)</span>. Then <span class="math" data-tex="\(f(h)=f(h)p_\varepsilon\)">\(f(h)=f(h)p_\varepsilon\)</span> and
+<span class="math" data-tex="\(r_\varepsilon f(h)r_\varepsilon=f(h)\)">\(r_\varepsilon f(h)r_\varepsilon=f(h)\)</span>, so by (2.2), with <span class="math" data-tex="\(\varphi(s,t)=f(s)\overline{g(t)}\)">\(\varphi(s,t)=f(s)\overline{g(t)}\)</span>,
+<span class="math math-display" data-tex="\[
+\int\varphi\,dm_\varepsilon=\langle f(h)\,r_\varepsilon\,\overline g(k),r_\varepsilon\rangle
+=\tau\big(r_\varepsilon f(h)r_\varepsilon\,\overline g(k)\big)=\tau\big(f(h)\,\overline g(k)\big)
+=\tau\big(\overline g(k)f(h)\big)=\langle f(h),g(k)\rangle .
+\]">\[
+\int\varphi\,dm_\varepsilon=\langle f(h)\,r_\varepsilon\,\overline g(k),r_\varepsilon\rangle
+=\tau\big(r_\varepsilon f(h)r_\varepsilon\,\overline g(k)\big)=\tau\big(f(h)\,\overline g(k)\big)
+=\tau\big(\overline g(k)f(h)\big)=\langle f(h),g(k)\rangle .
+\]</span>
+Since <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> vanishes off <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span>, <span class="math" data-tex="\(\int\varphi\,dm_\varepsilon=\int_X\varphi\,d\mu\)">\(\int\varphi\,dm_\varepsilon=\int_X\varphi\,d\mu\)</span>. This proves the
+first identity for such <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, and by (a) and polarization also <span class="math" data-tex="\(\langle f(h),f&#x27;(h)\rangle=\int f(H)\overline{f&#x27;(H)}\,d\mu\)">\(\langle f(h),f&#x27;(h)\rangle=\int f(H)\overline{f&#x27;(H)}\,d\mu\)</span> and the
+same for <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>In general, let <span class="math" data-tex="\(\mathcal F_h\)">\(\mathcal F_h\)</span> be the space of functions <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> and <span class="math" data-tex="\(\int|f|^2d\nu_h&lt;\infty\)">\(\int|f|^2d\nu_h&lt;\infty\)</span>. By (B1)
+and (a), both <span class="math" data-tex="\(f\mapsto f(h)\in L^2(N,\tau)\)">\(f\mapsto f(h)\in L^2(N,\tau)\)</span> and <span class="math" data-tex="\(f\mapsto f(H)\in L^2(X,\mu)\)">\(f\mapsto f(H)\in L^2(X,\mu)\)</span> are isometric on <span class="math" data-tex="\(\mathcal F_h\)">\(\mathcal F_h\)</span> for
+the norm of <span class="math" data-tex="\(L^2(\nu_h)\)">\(L^2(\nu_h)\)</span>. The truncations <span class="math" data-tex="\(f_j=f\,\chi_{[1/j,\infty)}\,\chi_{\{|f|\le j\}}\)">\(f_j=f\,\chi_{[1/j,\infty)}\,\chi_{\{|f|\le j\}}\)</span> are bounded, vanish near
+<span class="math" data-tex="\(0\)">\(0\)</span>, and converge to <span class="math" data-tex="\(f\)">\(f\)</span> in <span class="math" data-tex="\(L^2(\nu_h)\)">\(L^2(\nu_h)\)</span> by dominated convergence. Approximating <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> this way and
+passing to the limit in the identity already proved gives
+<span class="math" data-tex="\(\langle f(h),g(k)\rangle=\int_Xf(H)\overline{g(K)}\,d\mu\)">\(\langle f(h),g(k)\rangle=\int_Xf(H)\overline{g(K)}\,d\mu\)</span>. Expanding
+<span class="math" data-tex="\(\|f(h)-g(k)\|_2^2=\|f(h)\|_2^2+\|g(k)\|_2^2-2\operatorname{Re}\langle f(h),g(k)\rangle\)">\(\|f(h)-g(k)\|_2^2=\|f(h)\|_2^2+\|g(k)\|_2^2-2\operatorname{Re}\langle f(h),g(k)\rangle\)</span> and the same expression in
+<span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span> gives the norm identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Remark.</em> If <span class="math" data-tex="\(\tau(1)&lt;\infty\)">\(\tau(1)&lt;\infty\)</span>, then <span class="math" data-tex="\(1\in L^2\)">\(1\in L^2\)</span> and one can take <span class="math" data-tex="\(r_\varepsilon=1\)">\(r_\varepsilon=1\)</span> throughout: <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the
+restriction to <span class="math" data-tex="\(X\)">\(X\)</span> of the finite measure <span class="math" data-tex="\(\Delta\mapsto\langle\Pi(\Delta)1,1\rangle\)">\(\Delta\mapsto\langle\Pi(\Delta)1,1\rangle\)</span>, the spectral measure of the
+trace vector for the commuting pair &quot;left multiplication by <span class="math" data-tex="\(h\)">\(h\)</span>, right multiplication by <span class="math" data-tex="\(k\)">\(k\)</span>&quot;. The origin is
+removed in the semifinite case because <span class="math" data-tex="\(\tau(\chi_{\{0\}}(h)\chi_{\{0\}}(k))\)">\(\tau(\chi_{\{0\}}(h)\chi_{\{0\}}(k))\)</span> may be meaningless.</p>
+<p><strong>Example 2.2 (<span class="math" data-tex="\(\mu\)">\(\mu\)</span> does not see <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms).</strong> Let <span class="math" data-tex="\(N=M_2(\mathbb C)\)">\(N=M_2(\mathbb C)\)</span> with <span class="math" data-tex="\(\tau=\operatorname{Tr}\)">\(\tau=\operatorname{Tr}\)</span>, let
+<span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span>, and let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> be the projections onto <span class="math" data-tex="\(\mathbb C(1,0)\)">\(\mathbb C(1,0)\)</span> and <span class="math" data-tex="\(\mathbb C(\cos\theta,\sin\theta)\)">\(\mathbb C(\cos\theta,\sin\theta)\)</span>.
+Then <span class="math" data-tex="\(\tau(ef)=\cos^2\theta\)">\(\tau(ef)=\cos^2\theta\)</span> and <span class="math" data-tex="\(\tau(e(1-f))=\tau((1-e)f)=\sin^2\theta\)">\(\tau(e(1-f))=\tau((1-e)f)=\sin^2\theta\)</span>, so <span class="math" data-tex="\(\mu\)">\(\mu\)</span> has atoms of mass
+<span class="math" data-tex="\(\cos^2\theta\)">\(\cos^2\theta\)</span> at <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> and <span class="math" data-tex="\(\sin^2\theta\)">\(\sin^2\theta\)</span> at <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> and at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. As Theorem 2.1(b) predicts,
+<span class="math" data-tex="\(\|e-f\|_2^2=2\sin^2\theta=\int|H-K|^2\,d\mu\)">\(\|e-f\|_2^2=2\sin^2\theta=\int|H-K|^2\,d\mu\)</span>. But <span class="math" data-tex="\(e-f\)">\(e-f\)</span> has eigenvalues <span class="math" data-tex="\(\pm\sin\theta\)">\(\pm\sin\theta\)</span>, so
+<span class="math" data-tex="\(\|e-f\|_1=2\sin\theta\)">\(\|e-f\|_1=2\sin\theta\)</span>, while <span class="math" data-tex="\(\int|H-K|\,d\mu=2\sin^2\theta\)">\(\int|H-K|\,d\mu=2\sin^2\theta\)</span>.</p>
+<p>In fact no positive measure <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> satisfies <span class="math" data-tex="\(\int|f(H)-g(K)|\,d\lambda=\|f(e)-g(f)\|_1\)">\(\int|f(H)-g(K)|\,d\lambda=\|f(e)-g(f)\|_1\)</span> for all
+<span class="math" data-tex="\(f,g\)">\(f,g\)</span> with <span class="math" data-tex="\(f(0)=g(0)=0\)">\(f(0)=g(0)=0\)</span>. Taking <span class="math" data-tex="\(g=0\)">\(g=0\)</span> and then <span class="math" data-tex="\(f=0\)">\(f=0\)</span> shows that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> lives on the three points
+<span class="math" data-tex="\((1,1),(1,0),(0,1)\)">\((1,1),(1,0),(0,1)\)</span>, with masses <span class="math" data-tex="\(\alpha,1-\alpha,1-\alpha\)">\(\alpha,1-\alpha,1-\alpha\)</span>. The functions <span class="math" data-tex="\(f(t)=g(t)=t\)">\(f(t)=g(t)=t\)</span> give
+<span class="math" data-tex="\(2(1-\alpha)=2\sin\theta\)">\(2(1-\alpha)=2\sin\theta\)</span>, and <span class="math" data-tex="\(f(t)=2t\)">\(f(t)=2t\)</span>, <span class="math" data-tex="\(g(t)=t\)">\(g(t)=t\)</span> give <span class="math" data-tex="\(\alpha+2(1-\alpha)+(1-\alpha)=1+2\sin\theta\)">\(\alpha+2(1-\alpha)+(1-\alpha)=1+2\sin\theta\)</span>. But
+<span class="math" data-tex="\(2e-f\)">\(2e-f\)</span> has trace <span class="math" data-tex="\(1\)">\(1\)</span> and determinant <span class="math" data-tex="\(-2\sin^2\theta\)">\(-2\sin^2\theta\)</span>, so <span class="math" data-tex="\(\|2e-f\|_1=(1+8\sin^2\theta)^{1/2}&lt;1+2\sin\theta\)">\(\|2e-f\|_1=(1+8\sin^2\theta)^{1/2}&lt;1+2\sin\theta\)</span> for
+<span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span>. The proof of Theorem 2.1 used the Hilbert space <span class="math" data-tex="\(L^2\)">\(L^2\)</span> in an essential way.</p>
+<h2 id="3-the-powers-størmer-inequality">3. The Powers–Størmer inequality</h2>
+<p><strong>Theorem 3.1 (Powers–Størmer inequality).</strong> For <span class="math" data-tex="\(h,k\in L^2(N,\tau)^+\)">\(h,k\in L^2(N,\tau)^+\)</span>,
+<span class="math math-display" data-tex="\[
+\|h-k\|_2^2\le\|h^2-k^2\|_1 .\tag{3.1}
+\]">\[
+\|h-k\|_2^2\le\|h^2-k^2\|_1 .\tag{3.1}
+\]</span>
+Equivalently, for <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span>, <span class="math" data-tex="\(\|h^{1/2}-k^{1/2}\|_2^2\le\|h-k\|_1\)">\(\|h^{1/2}-k^{1/2}\|_2^2\le\|h-k\|_1\)</span>.</p>
+<p><em>Reference:</em> [Powers–Størmer 1970], [Haagerup 1975].</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(d=h-k\)">\(d=h-k\)</span> and <span class="math" data-tex="\(s=h+k\)">\(s=h+k\)</span>, both in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and let <span class="math" data-tex="\(P=\chi_{(0,\infty)}(d)\)">\(P=\chi_{(0,\infty)}(d)\)</span>, <span class="math" data-tex="\(Q=\chi_{(-\infty,0)}(d)\)">\(Q=\chi_{(-\infty,0)}(d)\)</span>,
+<span class="math" data-tex="\(U=P-Q\in N\)">\(U=P-Q\in N\)</span>. Then <span class="math" data-tex="\(\|U\|\le1\)">\(\|U\|\le1\)</span>, <span class="math" data-tex="\(Ud=dU=|d|\)">\(Ud=dU=|d|\)</span>, and <span class="math" data-tex="\(d_+=Pd=PdP\)">\(d_+=Pd=PdP\)</span>, <span class="math" data-tex="\(d_-=-Qd=-QdQ\)">\(d_-=-Qd=-QdQ\)</span> are positive, with
+<span class="math" data-tex="\(d=d_+-d_-\)">\(d=d_+-d_-\)</span>, <span class="math" data-tex="\(|d|=d_++d_-\)">\(|d|=d_++d_-\)</span>, <span class="math" data-tex="\(d_+d_-=0\)">\(d_+d_-=0\)</span>. In the algebra of measurable operators
+<span class="math" data-tex="\(h^2-k^2=\tfrac12(ds+sd)\)">\(h^2-k^2=\tfrac12(ds+sd)\)</span>, and every product below of two elements of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> lies in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> (B2).</p>
+<p>By cyclicity (B2), <span class="math" data-tex="\(\tau(dsU)=\tau(sUd)=\tau(s|d|)\)">\(\tau(dsU)=\tau(sUd)=\tau(s|d|)\)</span> and <span class="math" data-tex="\(\tau(sdU)=\tau(s|d|)\)">\(\tau(sdU)=\tau(s|d|)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\tau(s|d|)=\tau\big((h^2-k^2)U\big)\le\|U\|\,\|h^2-k^2\|_1\le\|h^2-k^2\|_1 .
+\]">\[
+\tau(s|d|)=\tau\big((h^2-k^2)U\big)\le\|U\|\,\|h^2-k^2\|_1\le\|h^2-k^2\|_1 .
+\]</span>
+Now <span class="math" data-tex="\(\tau(s|d|)=\tau(sd_+)+\tau(sd_-)\)">\(\tau(s|d|)=\tau(sd_+)+\tau(sd_-)\)</span>, and <span class="math" data-tex="\(\tau(sd_+)=\tau(sPd_+P)=\tau(PsP\,d_+)\)">\(\tau(sd_+)=\tau(sPd_+P)=\tau(PsP\,d_+)\)</span>. The operator
+<span class="math" data-tex="\(PsP-d_+=P(s-d)P=2PkP\)">\(PsP-d_+=P(s-d)P=2PkP\)</span> is positive. For positive <span class="math" data-tex="\(y,z\in L^2\)">\(y,z\in L^2\)</span> one has <span class="math" data-tex="\(\tau(yz)\ge0\)">\(\tau(yz)\ge0\)</span>: indeed
+<span class="math" data-tex="\(y^{1/2}\in L^4\)">\(y^{1/2}\in L^4\)</span>, <span class="math" data-tex="\(y^{1/2}z\in L^{4/3}\)">\(y^{1/2}z\in L^{4/3}\)</span>, and <span class="math" data-tex="\(\tau(yz)=\tau(y^{1/2}\,y^{1/2}z)=\tau(y^{1/2}zy^{1/2})\ge0\)">\(\tau(yz)=\tau(y^{1/2}\,y^{1/2}z)=\tau(y^{1/2}zy^{1/2})\ge0\)</span> by (B2).
+Therefore <span class="math" data-tex="\(\tau(PsP\,d_+)\ge\tau(d_+^2)\)">\(\tau(PsP\,d_+)\ge\tau(d_+^2)\)</span>. In the same way <span class="math" data-tex="\(\tau(sd_-)=\tau(QsQ\,d_-)\)">\(\tau(sd_-)=\tau(QsQ\,d_-)\)</span> and
+<span class="math" data-tex="\(QsQ-d_-=Q(s+d)Q=2QhQ\ge0\)">\(QsQ-d_-=Q(s+d)Q=2QhQ\ge0\)</span>, so <span class="math" data-tex="\(\tau(sd_-)\ge\tau(d_-^2)\)">\(\tau(sd_-)\ge\tau(d_-^2)\)</span>. Adding,
+<span class="math math-display" data-tex="\[
+\|h^2-k^2\|_1\ge\tau(d_+^2)+\tau(d_-^2)=\tau(d^2)=\|h-k\|_2^2 .
+\]">\[
+\|h^2-k^2\|_1\ge\tau(d_+^2)+\tau(d_-^2)=\tau(d^2)=\|h-k\|_2^2 .
+\]</span>
+The second form follows by applying the first to <span class="math" data-tex="\(h^{1/2},k^{1/2}\in L^2\)">\(h^{1/2},k^{1/2}\in L^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> For <span class="math" data-tex="\(x,y\in L^2(N,\tau)\)">\(x,y\in L^2(N,\tau)\)</span>,
+<span class="math math-display" data-tex="\[
+\big\||x|-|y|\big\|_2^2\le\big\||x|^2-|y|^2\big\|_1\le\|x-y\|_2\,(\|x\|_2+\|y\|_2).\tag{3.2}
+\]">\[
+\big\||x|-|y|\big\|_2^2\le\big\||x|^2-|y|^2\big\|_1\le\|x-y\|_2\,(\|x\|_2+\|y\|_2).\tag{3.2}
+\]</span>
+In particular <span class="math" data-tex="\(x\mapsto|x|\)">\(x\mapsto|x|\)</span> is continuous on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: <span class="math" data-tex="\(\||x|-|y|\|_2\le(\|x-y\|_2(\|x\|_2+\|y\|_2))^{1/2}\)">\(\||x|-|y|\|_2\le(\|x-y\|_2(\|x\|_2+\|y\|_2))^{1/2}\)</span>.</p>
+<p><strong>Proof.</strong> The first inequality is (3.1) for <span class="math" data-tex="\(|x|,|y|\)">\(|x|,|y|\)</span>. For the second, <span class="math" data-tex="\(x^*x-y^*y=x^*(x-y)+(x-y)^*y\)">\(x^*x-y^*y=x^*(x-y)+(x-y)^*y\)</span>, so by the
+Hölder inequality <span class="math" data-tex="\(\|x^*x-y^*y\|_1\le\|x\|_2\|x-y\|_2+\|x-y\|_2\|y\|_2\)">\(\|x^*x-y^*y\|_1\le\|x\|_2\|x-y\|_2+\|x-y\|_2\|y\|_2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Remarks.</em> (1) The constant <span class="math" data-tex="\(1\)">\(1\)</span> in (3.1) is sharp: take <span class="math" data-tex="\(k=0\)">\(k=0\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> a projection of finite trace. For commuting
+<span class="math" data-tex="\(h,k\)">\(h,k\)</span>, (3.1) is the pointwise inequality <span class="math" data-tex="\(|\lambda-\kappa|^2\le|\lambda-\kappa|(\lambda+\kappa)\)">\(|\lambda-\kappa|^2\le|\lambda-\kappa|(\lambda+\kappa)\)</span> (Exercise 3).</p>
+<p>(2) In the finite case, <span class="math" data-tex="\(h\in L^1(N,\tau)^+\)">\(h\in L^1(N,\tau)^+\)</span> is the density of the normal positive functional
+<span class="math" data-tex="\(\varphi_h=\tau(h\,\cdot\,)\)">\(\varphi_h=\tau(h\,\cdot\,)\)</span>, and <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> is the vector representing <span class="math" data-tex="\(\varphi_h\)">\(\varphi_h\)</span> in the positive cone of the
+standard form <span class="math" data-tex="\(L^2(N,\tau)\)">\(L^2(N,\tau)\)</span>. Theorem 3.1 then says <span class="math" data-tex="\(\|\xi_\varphi-\xi_\psi\|^2\le\|\varphi-\psi\|\)">\(\|\xi_\varphi-\xi_\psi\|^2\le\|\varphi-\psi\|\)</span> for the
+representing vectors; in this form the inequality holds for every von Neumann algebra in standard form
+[Haagerup 1975].</p>
+<h2 id="4-integrating-over-the-level">4. Integrating over the level</h2>
+<p>The projections <span class="math" data-tex="\(E_a(h)\)">\(E_a(h)\)</span> jump when <span class="math" data-tex="\(a\)">\(a\)</span> crosses an eigenvalue of <span class="math" data-tex="\(h\)">\(h\)</span>, so a small change of <span class="math" data-tex="\(h\)">\(h\)</span> can change
+<span class="math" data-tex="\(E_a(h)\)">\(E_a(h)\)</span> a lot. The remedy is to average over <span class="math" data-tex="\(a\)">\(a\)</span>. The basic tool is a noncommutative &quot;layer-cake&quot; formula.</p>
+<p><strong>Lemma 4.1 (layer-cake formula).</strong> Let <span class="math" data-tex="\(h\in L^2(N,\tau)^+\)">\(h\in L^2(N,\tau)^+\)</span> and <span class="math" data-tex="\(c\in N^+\)">\(c\in N^+\)</span>. For Borel <span class="math" data-tex="\(B\subset(0,\infty)\)">\(B\subset(0,\infty)\)</span> put
+<span class="math" data-tex="\(\rho_c(B)=\tau(c^{1/2}\chi_B(h)c^{1/2})\in[0,\infty]\)">\(\rho_c(B)=\tau(c^{1/2}\chi_B(h)c^{1/2})\in[0,\infty]\)</span>.</p>
+<p>(a) <span class="math" data-tex="\(\rho_c\)">\(\rho_c\)</span> is a positive measure with <span class="math" data-tex="\(\rho_c\le\|c\|\,\nu_h\)">\(\rho_c\le\|c\|\,\nu_h\)</span>, and <span class="math" data-tex="\(\rho_c(B)=\tau(c\,\chi_B(h))=
+\|c^{1/2}\chi_B(h)\|_2^2\)">\(\rho_c(B)=\tau(c\,\chi_B(h))=
+\|c^{1/2}\chi_B(h)\|_2^2\)</span> whenever <span class="math" data-tex="\(\nu_h(B)&lt;\infty\)">\(\nu_h(B)&lt;\infty\)</span>.</p>
+<p>(b) For every complex function <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> and <span class="math" data-tex="\(f(h)\in L^2\)">\(f(h)\in L^2\)</span>: <span class="math" data-tex="\(\|c^{1/2}f(h)\|_2^2=\int|f|^2\,d\rho_c\)">\(\|c^{1/2}f(h)\|_2^2=\int|f|^2\,d\rho_c\)</span>.</p>
+<p>(c) For <span class="math" data-tex="\(0&lt;b\le\infty\)">\(0&lt;b\le\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\int_0^b\tau\big(c\,E_{\sqrt a}(h)\big)\,da=\big\|c^{1/2}\min(h,\sqrt b)\big\|_2^2 ;\qquad\text{in particular}\qquad
+\int_0^\infty\tau\big(c\,E_{\sqrt a}(h)\big)\,da=\|c^{1/2}h\|_2^2=\tau(hch).\tag{4.1}
+\]">\[
+\int_0^b\tau\big(c\,E_{\sqrt a}(h)\big)\,da=\big\|c^{1/2}\min(h,\sqrt b)\big\|_2^2 ;\qquad\text{in particular}\qquad
+\int_0^\infty\tau\big(c\,E_{\sqrt a}(h)\big)\,da=\|c^{1/2}h\|_2^2=\tau(hch).\tag{4.1}
+\]</span></p>
+<p><strong>Proof.</strong> (a) If <span class="math" data-tex="\(B=\bigsqcup_iB_i\)">\(B=\bigsqcup_iB_i\)</span>, the partial sums of <span class="math" data-tex="\(c^{1/2}\chi_{B_i}(h)c^{1/2}\)">\(c^{1/2}\chi_{B_i}(h)c^{1/2}\)</span> increase to
+<span class="math" data-tex="\(c^{1/2}\chi_B(h)c^{1/2}\)">\(c^{1/2}\chi_B(h)c^{1/2}\)</span>, so countable additivity follows from normality of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. With <span class="math" data-tex="\(y=\chi_B(h)c^{1/2}\)">\(y=\chi_B(h)c^{1/2}\)</span>,
+the trace property gives <span class="math" data-tex="\(\rho_c(B)=\tau(y^*y)=\tau(yy^*)=\tau(\chi_B(h)c\chi_B(h))\le\|c\|\nu_h(B)\)">\(\rho_c(B)=\tau(y^*y)=\tau(yy^*)=\tau(\chi_B(h)c\chi_B(h))\le\|c\|\nu_h(B)\)</span>. If
+<span class="math" data-tex="\(\nu_h(B)&lt;\infty\)">\(\nu_h(B)&lt;\infty\)</span>, this equals <span class="math" data-tex="\(\|c^{1/2}\chi_B(h)\|_2^2\)">\(\|c^{1/2}\chi_B(h)\|_2^2\)</span>, and <span class="math" data-tex="\(\tau(\chi_B(h)c\chi_B(h))=\tau(c\chi_B(h))\)">\(\tau(\chi_B(h)c\chi_B(h))=\tau(c\chi_B(h))\)</span> by
+cyclicity (B2).</p>
+<p>(b) Let <span class="math" data-tex="\(f=\sum_i\lambda_i\chi_{B_i}\)">\(f=\sum_i\lambda_i\chi_{B_i}\)</span> be simple with disjoint <span class="math" data-tex="\(B_i\subset[\varepsilon,\infty)\)">\(B_i\subset[\varepsilon,\infty)\)</span>, and
+<span class="math" data-tex="\(P_i=\chi_{B_i}(h)\)">\(P_i=\chi_{B_i}(h)\)</span>. For <span class="math" data-tex="\(i\ne l\)">\(i\ne l\)</span>, <span class="math" data-tex="\(\tau(P_icP_l)=\tau(cP_lP_i)=0\)">\(\tau(P_icP_l)=\tau(cP_lP_i)=0\)</span> by cyclicity, so
+<span class="math" data-tex="\(\|c^{1/2}f(h)\|_2^2=\sum_{i,l}\overline{\lambda_i}\lambda_l\tau(P_icP_l)=\sum_i|\lambda_i|^2\rho_c(B_i)
+=\int|f|^2d\rho_c\)">\(\|c^{1/2}f(h)\|_2^2=\sum_{i,l}\overline{\lambda_i}\lambda_l\tau(P_icP_l)=\sum_i|\lambda_i|^2\rho_c(B_i)
+=\int|f|^2d\rho_c\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> is bounded and vanishes on <span class="math" data-tex="\([0,\varepsilon)\)">\([0,\varepsilon)\)</span>, take simple <span class="math" data-tex="\(f_j\to f\)">\(f_j\to f\)</span> uniformly,
+vanishing on <span class="math" data-tex="\([0,\varepsilon)\)">\([0,\varepsilon)\)</span>; then <span class="math" data-tex="\(\|f_j(h)-f(h)\|_2\le\|f_j-f\|_\infty\nu_h([\varepsilon,\infty))^{1/2}\to0\)">\(\|f_j(h)-f(h)\|_2\le\|f_j-f\|_\infty\nu_h([\varepsilon,\infty))^{1/2}\to0\)</span>, and
+<span class="math" data-tex="\(\int|f_j|^2d\rho_c\to\int|f|^2d\rho_c\)">\(\int|f_j|^2d\rho_c\to\int|f|^2d\rho_c\)</span> because <span class="math" data-tex="\(\rho_c([\varepsilon,\infty))&lt;\infty\)">\(\rho_c([\varepsilon,\infty))&lt;\infty\)</span>. In general, let
+<span class="math" data-tex="\(f_j=f\chi_{[1/j,\infty)}\chi_{\{|f|\le j\}}\)">\(f_j=f\chi_{[1/j,\infty)}\chi_{\{|f|\le j\}}\)</span>: then <span class="math" data-tex="\(f_j(h)\to f(h)\)">\(f_j(h)\to f(h)\)</span> in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by (B1) and dominated convergence,
+and <span class="math" data-tex="\(\int|f_j|^2d\rho_c\uparrow\int|f|^2d\rho_c\)">\(\int|f_j|^2d\rho_c\uparrow\int|f|^2d\rho_c\)</span> by monotone convergence.</p>
+<p>(c) By (a), <span class="math" data-tex="\(\tau(cE_{\sqrt a}(h))=\rho_c((\sqrt a,\infty))\)">\(\tau(cE_{\sqrt a}(h))=\rho_c((\sqrt a,\infty))\)</span>. By Tonelli's theorem and the identity
+<span class="math" data-tex="\(\int_0^b\chi_{\{t^2&gt;a\}}\,da=\min(t^2,b)\)">\(\int_0^b\chi_{\{t^2&gt;a\}}\,da=\min(t^2,b)\)</span>,
+<span class="math math-display" data-tex="\[
+\int_0^b\rho_c((\sqrt a,\infty))\,da=\int\!\!\int_0^b\chi_{\{t^2&gt;a\}}\,da\,d\rho_c(t)=\int\min(t^2,b)\,d\rho_c(t),
+\]">\[
+\int_0^b\rho_c((\sqrt a,\infty))\,da=\int\!\!\int_0^b\chi_{\{t^2&gt;a\}}\,da\,d\rho_c(t)=\int\min(t^2,b)\,d\rho_c(t),
+\]</span>
+which is <span class="math" data-tex="\(\|c^{1/2}\min(h,\sqrt b)\|_2^2\)">\(\|c^{1/2}\min(h,\sqrt b)\|_2^2\)</span> by (b). For <span class="math" data-tex="\(b=\infty\)">\(b=\infty\)</span> the integrand is <span class="math" data-tex="\(t^2\)">\(t^2\)</span> and (b) applies to
+<span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span>. Finally <span class="math" data-tex="\(\|c^{1/2}h\|_2^2=\tau(hch)\)">\(\|c^{1/2}h\|_2^2=\tau(hch)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, (4.1) reads <span class="math" data-tex="\(\int_0^\infty\tau(E_{\sqrt a}(h))\,da=\|h\|_2^2\)">\(\int_0^\infty\tau(E_{\sqrt a}(h))\,da=\|h\|_2^2\)</span>: the function <span class="math" data-tex="\(a\mapsto\tau(E_{\sqrt a}(h))\)">\(a\mapsto\tau(E_{\sqrt a}(h))\)</span>
+is a probability density when <span class="math" data-tex="\(\|h\|_2=1\)">\(\|h\|_2=1\)</span>. This is used in Section 7.</p>
+<p><strong>Proposition 4.2.</strong> Let <span class="math" data-tex="\(x\in L^2(N,\tau)\)">\(x\in L^2(N,\tau)\)</span>, <span class="math" data-tex="\(h=|x|\)">\(h=|x|\)</span>, and <span class="math" data-tex="\(w\in N\)">\(w\in N\)</span>. Then
+<span class="math math-display" data-tex="\[
+\int_0^\infty\big\|u_{\sqrt a}(x)-w\,E_{\sqrt a}(h)\big\|_2^2\,da=\|x-wh\|_2^2 .\tag{4.2}
+\]">\[
+\int_0^\infty\big\|u_{\sqrt a}(x)-w\,E_{\sqrt a}(h)\big\|_2^2\,da=\|x-wh\|_2^2 .\tag{4.2}
+\]</span>
+In particular (<span class="math" data-tex="\(w=1\)">\(w=1\)</span>):
+<span class="math math-display" data-tex="\[
+\int_0^\infty\big\|u_{\sqrt a}(x)-u_{\sqrt a}(|x|)\big\|_2^2\,da=\big\|x-|x|\big\|_2^2 .
+\]">\[
+\int_0^\infty\big\|u_{\sqrt a}(x)-u_{\sqrt a}(|x|)\big\|_2^2\,da=\big\|x-|x|\big\|_2^2 .
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(u=u(x)\)">\(u=u(x)\)</span> and <span class="math" data-tex="\(c=(u-w)^*(u-w)\in N^+\)">\(c=(u-w)^*(u-w)\in N^+\)</span>. Since <span class="math" data-tex="\(u_{\sqrt a}(x)=uE_{\sqrt a}(h)\)">\(u_{\sqrt a}(x)=uE_{\sqrt a}(h)\)</span>,
+<span class="math math-display" data-tex="\[
+\|u_{\sqrt a}(x)-wE_{\sqrt a}(h)\|_2^2=\|(u-w)E_{\sqrt a}(h)\|_2^2=\tau(E_{\sqrt a}(h)\,c\,E_{\sqrt a}(h))
+=\tau(c\,E_{\sqrt a}(h)).
+\]">\[
+\|u_{\sqrt a}(x)-wE_{\sqrt a}(h)\|_2^2=\|(u-w)E_{\sqrt a}(h)\|_2^2=\tau(E_{\sqrt a}(h)\,c\,E_{\sqrt a}(h))
+=\tau(c\,E_{\sqrt a}(h)).
+\]</span>
+By (4.1) the integral is <span class="math" data-tex="\(\tau(hch)=\|(u-w)h\|_2^2=\|x-wh\|_2^2\)">\(\tau(hch)=\|(u-w)h\|_2^2=\|x-wh\|_2^2\)</span>, since <span class="math" data-tex="\(uh=x\)">\(uh=x\)</span>. For <span class="math" data-tex="\(w=1\)">\(w=1\)</span> note
+<span class="math" data-tex="\(u_{\sqrt a}(|x|)=E_{\sqrt a}(h)\)">\(u_{\sqrt a}(|x|)=E_{\sqrt a}(h)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.3.</strong> Let <span class="math" data-tex="\(h,k\)">\(h,k\)</span> be tail-finite and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> their joint distribution (Theorem 2.1).</p>
+<p>(a) <span class="math" data-tex="\(\displaystyle\int_0^\infty\|E_a(h)-E_a(k)\|_2^2\,da=\int_X|H-K|\,d\mu\)">\(\displaystyle\int_0^\infty\|E_a(h)-E_a(k)\|_2^2\,da=\int_X|H-K|\,d\mu\)</span> (in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>).</p>
+<p>(b) If <span class="math" data-tex="\(h,k\in L^2(N,\tau)^+\)">\(h,k\in L^2(N,\tau)^+\)</span>, then
+<span class="math math-display" data-tex="\[
+\int_0^\infty\big\|E_{\sqrt a}(h)-E_{\sqrt a}(k)\big\|_2^2\,da=\int_X|H^2-K^2|\,d\mu\le\|h-k\|_2\,\|h+k\|_2 .\tag{4.3}
+\]">\[
+\int_0^\infty\big\|E_{\sqrt a}(h)-E_{\sqrt a}(k)\big\|_2^2\,da=\int_X|H^2-K^2|\,d\mu\le\|h-k\|_2\,\|h+k\|_2 .\tag{4.3}
+\]</span></p>
+<p><strong>Proof.</strong> (a) For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, Theorem 2.1(b) with <span class="math" data-tex="\(f=g=\chi_{(a,\infty)}\)">\(f=g=\chi_{(a,\infty)}\)</span> gives
+<span class="math" data-tex="\(\|E_a(h)-E_a(k)\|_2^2=\int_X|\chi_{\{H&gt;a\}}-\chi_{\{K&gt;a\}}|\,d\mu\)">\(\|E_a(h)-E_a(k)\|_2^2=\int_X|\chi_{\{H&gt;a\}}-\chi_{\{K&gt;a\}}|\,d\mu\)</span> (the integrand takes the values <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, so it
+equals its square). The function <span class="math" data-tex="\((a,\xi)\mapsto|\chi_{\{H(\xi)&gt;a\}}-\chi_{\{K(\xi)&gt;a\}}|\)">\((a,\xi)\mapsto|\chi_{\{H(\xi)&gt;a\}}-\chi_{\{K(\xi)&gt;a\}}|\)</span> is Borel on
+<span class="math" data-tex="\((0,\infty)\times X\)">\((0,\infty)\times X\)</span>, and for <span class="math" data-tex="\(s,t\ge0\)">\(s,t\ge0\)</span>, <span class="math" data-tex="\(\int_0^\infty|\chi_{\{s&gt;a\}}-\chi_{\{t&gt;a\}}|\,da=|s-t|\)">\(\int_0^\infty|\chi_{\{s&gt;a\}}-\chi_{\{t&gt;a\}}|\,da=|s-t|\)</span>. Tonelli's
+theorem gives (a).</p>
+<p>(b) The same argument with <span class="math" data-tex="\(f=g=\chi_{(\sqrt a,\infty)}\)">\(f=g=\chi_{(\sqrt a,\infty)}\)</span> and <span class="math" data-tex="\(\{H&gt;\sqrt a\}=\{H^2&gt;a\}\)">\(\{H&gt;\sqrt a\}=\{H^2&gt;a\}\)</span> gives the equality. Then
+<span class="math" data-tex="\(|H^2-K^2|=|H-K|(H+K)\)">\(|H^2-K^2|=|H-K|(H+K)\)</span>, and the Cauchy–Schwarz inequality in <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span> together with Theorem 2.1(b) (for
+<span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> and <span class="math" data-tex="\(g(t)=\pm t\)">\(g(t)=\pm t\)</span>) gives <span class="math" data-tex="\(\int|H^2-K^2|\,d\mu\le\|H-K\|_{L^2(\mu)}\|H+K\|_{L^2(\mu)}=\|h-k\|_2\|h+k\|_2\)">\(\int|H^2-K^2|\,d\mu\le\|H-K\|_{L^2(\mu)}\|H+K\|_{L^2(\mu)}=\|h-k\|_2\|h+k\|_2\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(N\)">\(N\)</span> is commutative, the left side of (4.3) is the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of <span class="math" data-tex="\(h^2-k^2\)">\(h^2-k^2\)</span> (by the scalar identity used in
+the proof), and it is tempting to bound the left side
+of (4.3) by <span class="math" data-tex="\(\|h^2-k^2\|_1\)">\(\|h^2-k^2\|_1\)</span> in general, which would sharpen (4.3) through Theorem 3.1. This is false:</p>
+<p><strong>Example 4.4.</strong> Let <span class="math" data-tex="\(N=M_2(\mathbb C)\)">\(N=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(\tau=\operatorname{Tr}\)">\(\tau=\operatorname{Tr}\)</span>, <span class="math" data-tex="\(A=\operatorname{diag}(0,2)\)">\(A=\operatorname{diag}(0,2)\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> have
+eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(\mathbb C(\cos\theta,\sin\theta)\)">\(\mathbb C(\cos\theta,\sin\theta)\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> on <span class="math" data-tex="\(\mathbb C(-\sin\theta,\cos\theta)\)">\(\mathbb C(-\sin\theta,\cos\theta)\)</span>, with
+<span class="math" data-tex="\(\theta=\pi/6\)">\(\theta=\pi/6\)</span>. Put <span class="math" data-tex="\(h=A^{1/2}\)">\(h=A^{1/2}\)</span>, <span class="math" data-tex="\(k=B^{1/2}\)">\(k=B^{1/2}\)</span>, so <span class="math" data-tex="\(E_{\sqrt a}(h)=E_a(A)\)">\(E_{\sqrt a}(h)=E_a(A)\)</span>, <span class="math" data-tex="\(E_{\sqrt a}(k)=E_a(B)\)">\(E_{\sqrt a}(k)=E_a(B)\)</span>. For
+<span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, <span class="math" data-tex="\(E_a(A)-E_a(B)\)">\(E_a(A)-E_a(B)\)</span> is minus the projection onto <span class="math" data-tex="\(\mathbb C(1,0)\)">\(\mathbb C(1,0)\)</span>, with squared <span class="math" data-tex="\(2\)">\(2\)</span>-norm <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(1\le a&lt;2\)">\(1\le a&lt;2\)</span>
+it is the difference of the projections onto <span class="math" data-tex="\(\mathbb C(0,1)\)">\(\mathbb C(0,1)\)</span> and <span class="math" data-tex="\(\mathbb C(-\sin\theta,\cos\theta)\)">\(\mathbb C(-\sin\theta,\cos\theta)\)</span>, with squared
+<span class="math" data-tex="\(2\)">\(2\)</span>-norm <span class="math" data-tex="\(2\sin^2\theta=\tfrac12\)">\(2\sin^2\theta=\tfrac12\)</span>. For <span class="math" data-tex="\(2\le a&lt;3\)">\(2\le a&lt;3\)</span> it is minus a rank-one projection, squared norm <span class="math" data-tex="\(1\)">\(1\)</span>. So the
+left side of (4.3) is <span class="math" data-tex="\(\tfrac52\)">\(\tfrac52\)</span>. On the other hand
+<span class="math math-display" data-tex="\[
+A-B=\begin{pmatrix}-\tfrac32&amp;\tfrac{\sqrt3}2\\ \tfrac{\sqrt3}2&amp;-\tfrac12\end{pmatrix}
+\]">\[
+A-B=\begin{pmatrix}-\tfrac32&amp;\tfrac{\sqrt3}2\\ \tfrac{\sqrt3}2&amp;-\tfrac12\end{pmatrix}
+\]</span>
+has trace <span class="math" data-tex="\(-2\)">\(-2\)</span> and determinant <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(\|h^2-k^2\|_1=\|A-B\|_1=2&lt;\tfrac52\)">\(\|h^2-k^2\|_1=\|A-B\|_1=2&lt;\tfrac52\)</span>.</p>
+<h2 id="5-level-integration-in-the-trace-norm">5. Level integration in the trace norm</h2>
+<p>For <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span> put
+<span class="math math-display" data-tex="\[
+\Phi(h,k)=\int_0^\infty\|E_a(h)-E_a(k)\|_1\,da\in[0,\infty].
+\]">\[
+\Phi(h,k)=\int_0^\infty\|E_a(h)-E_a(k)\|_1\,da\in[0,\infty].
+\]</span>
+We always have <span class="math" data-tex="\(\Phi(h,k)\ge\|h-k\|_1\)">\(\Phi(h,k)\ge\|h-k\|_1\)</span> (Lemma 5.2(c)), with equality when <span class="math" data-tex="\(N\)">\(N\)</span> is abelian (Lemma 5.3 with
+<span class="math" data-tex="\(d=1\)">\(d=1\)</span>); the reason is the scalar identity <span class="math" data-tex="\(\int_0^\infty|\chi_{\{\lambda&gt;a\}}-\chi_{\{\kappa&gt;a\}}|\,da=|\lambda-\kappa|\)">\(\int_0^\infty|\chi_{\{\lambda&gt;a\}}-\chi_{\{\kappa&gt;a\}}|\,da=|\lambda-\kappa|\)</span>.
+In general <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is not controlled by <span class="math" data-tex="\(\|h-k\|_1\)">\(\|h-k\|_1\)</span>, unless <span class="math" data-tex="\(N\)">\(N\)</span> is small. Say that <span class="math" data-tex="\(N\)">\(N\)</span> is <em>of bounded type I</em> if it is of type I and there is
+an integer <span class="math" data-tex="\(d\)">\(d\)</span> such that <span class="math" data-tex="\(N\)">\(N\)</span> has no nonzero summand of type I<span class="math" data-tex="\(_\kappa\)">\(_\kappa\)</span> with <span class="math" data-tex="\(\kappa&gt;d\)">\(\kappa&gt;d\)</span> (finite or infinite).</p>
+<p><strong>Theorem 5.1.</strong> The following are equivalent.</p>
+<p>(i) There is a constant <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(\Phi(h,k)\le C\|h-k\|_1\)">\(\Phi(h,k)\le C\|h-k\|_1\)</span> for all <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span>.</p>
+<p>(ii) <span class="math" data-tex="\(N\)">\(N\)</span> is of bounded type I.</p>
+<p>If <span class="math" data-tex="\(N\)">\(N\)</span> is of type I with summands of type I<span class="math" data-tex="\(_n\)">\(_n\)</span>, <span class="math" data-tex="\(n\le d\)">\(n\le d\)</span> only, then (i) holds with <span class="math" data-tex="\(C=d^2\)">\(C=d^2\)</span>. In every
+case <span class="math" data-tex="\(\Phi(h,k)\ge\|h-k\|_1\)">\(\Phi(h,k)\ge\|h-k\|_1\)</span>, so <span class="math" data-tex="\(C\ge1\)">\(C\ge1\)</span>, and <span class="math" data-tex="\(C=1\)">\(C=1\)</span> works when <span class="math" data-tex="\(N\)">\(N\)</span> is abelian.</p>
+<p><em>Reference:</em> [Connes 1976, §2.5, Remark 1] (stated there without proof).</p>
+<p>We first make sure that <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is well defined, and record a semicontinuity property.</p>
+<p><strong>Lemma 5.2.</strong> (a) For <span class="math" data-tex="\(y\in N\cap L^1\)">\(y\in N\cap L^1\)</span>, <span class="math" data-tex="\(\|y\|_1=\sup\{|\tau(yz)|:z\in N\cap L^1,\ \|z\|\le1\}\)">\(\|y\|_1=\sup\{|\tau(yz)|:z\in N\cap L^1,\ \|z\|\le1\}\)</span>. If <span class="math" data-tex="\(y_m\in N\cap
+L^1\)">\(y_m\in N\cap
+L^1\)</span> is a bounded sequence converging strongly to <span class="math" data-tex="\(y\in N\cap L^1\)">\(y\in N\cap L^1\)</span>, then <span class="math" data-tex="\(\|y\|_1\le\liminf_m\|y_m\|_1\)">\(\|y\|_1\le\liminf_m\|y_m\|_1\)</span>.</p>
+<p>(b) For <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span>, the function <span class="math" data-tex="\(a\mapsto\|E_a(h)-E_a(k)\|_1\)">\(a\mapsto\|E_a(h)-E_a(k)\|_1\)</span> is Borel on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<p>(c) For <span class="math" data-tex="\(h\in L^1(N,\tau)^+\)">\(h\in L^1(N,\tau)^+\)</span> and <span class="math" data-tex="\(z\in N\)">\(z\in N\)</span>, <span class="math" data-tex="\(\int_0^\infty\tau(zE_a(h))\,da=\tau(zh)\)">\(\int_0^\infty\tau(zE_a(h))\,da=\tau(zh)\)</span>, the integral converging
+absolutely. Consequently <span class="math" data-tex="\(\|h-k\|_1\le\Phi(h,k)\)">\(\|h-k\|_1\le\Phi(h,k)\)</span> for <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span>.</p>
+<p><strong>Proof.</strong> (a) &quot;<span class="math" data-tex="\(\ge\)">\(\ge\)</span>&quot; is <span class="math" data-tex="\(|\tau(yz)|\le\|z\|\|y\|_1\)">\(|\tau(yz)|\le\|z\|\|y\|_1\)</span>. For &quot;<span class="math" data-tex="\(\le\)">\(\le\)</span>&quot;, let <span class="math" data-tex="\(y=u|y|\)">\(y=u|y|\)</span> and
+<span class="math" data-tex="\(p_j=\chi_{(1/j,\infty)}(|y|)\)">\(p_j=\chi_{(1/j,\infty)}(|y|)\)</span>, of finite trace by (1.1); with <span class="math" data-tex="\(z=p_ju^*\)">\(z=p_ju^*\)</span>, <span class="math" data-tex="\(\tau(yz)=\tau(zy)=\tau(p_j|y|)\uparrow
+\tau(|y|)\)">\(\tau(yz)=\tau(zy)=\tau(p_j|y|)\uparrow
+\tau(|y|)\)</span>. For each such <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(a\mapsto\tau(az)\)">\(a\mapsto\tau(az)\)</span> is normal (B2), so <span class="math" data-tex="\(\tau(y_mz)\to\tau(yz)\)">\(\tau(y_mz)\to\tau(yz)\)</span>; taking the supremum
+over <span class="math" data-tex="\(z\)">\(z\)</span> gives the semicontinuity.</p>
+<p>(b) Let <span class="math" data-tex="\(D_a=E_a(h)-E_a(k)\in N\cap L^1\)">\(D_a=E_a(h)-E_a(k)\in N\cap L^1\)</span> and <span class="math" data-tex="\(F(a)=\|D_a\|_1=\sup_z|\tau(D_az)|\)">\(F(a)=\|D_a\|_1=\sup_z|\tau(D_az)|\)</span>. For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(a\mapsto
+\tau(D_az)\)">\(a\mapsto
+\tau(D_az)\)</span> is right-continuous: <span class="math" data-tex="\(D_{a&#x27;}\to D_a\)">\(D_{a&#x27;}\to D_a\)</span> strongly as <span class="math" data-tex="\(a&#x27;\downarrow a\)">\(a&#x27;\downarrow a\)</span>, and <span class="math" data-tex="\(\tau(\,\cdot\,z)\)">\(\tau(\,\cdot\,z)\)</span> is normal.
+Hence <span class="math" data-tex="\(F\)">\(F\)</span> is lower semicontinuous from the right: if <span class="math" data-tex="\(F(a)&gt;\gamma\)">\(F(a)&gt;\gamma\)</span>, some <span class="math" data-tex="\(z\)">\(z\)</span> has <span class="math" data-tex="\(|\tau(D_az)|&gt;\gamma\)">\(|\tau(D_az)|&gt;\gamma\)</span>, and then
+<span class="math" data-tex="\(F&gt;\gamma\)">\(F&gt;\gamma\)</span> on some <span class="math" data-tex="\([a,a+\eta)\)">\([a,a+\eta)\)</span>. So <span class="math" data-tex="\(V=\{F&gt;\gamma\}\)">\(V=\{F&gt;\gamma\}\)</span> is a union of half-open intervals <span class="math" data-tex="\([a,a+\eta_a)\)">\([a,a+\eta_a)\)</span>. The points of
+<span class="math" data-tex="\(V\)">\(V\)</span> not interior to <span class="math" data-tex="\(V\)">\(V\)</span> are left endpoints <span class="math" data-tex="\(a\)">\(a\)</span> of such intervals, and for two of them, <span class="math" data-tex="\(a&lt;a&#x27;\)">\(a&lt;a&#x27;\)</span>, we have
+<span class="math" data-tex="\(a&#x27;\ge a+\eta_a\)">\(a&#x27;\ge a+\eta_a\)</span> (otherwise <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> would be interior). So the open intervals <span class="math" data-tex="\((a,a+\eta_a)\)">\((a,a+\eta_a)\)</span> attached to them are
+disjoint, and there are countably many such points. Thus <span class="math" data-tex="\(V\)">\(V\)</span> is an open set plus a countable set, a Borel set.</p>
+<p>(c) Put <span class="math" data-tex="\(g=h^{1/2}\in L^2\)">\(g=h^{1/2}\in L^2\)</span>; then <span class="math" data-tex="\(E_{\sqrt a}(g)=E_a(h)\)">\(E_{\sqrt a}(g)=E_a(h)\)</span>. For <span class="math" data-tex="\(c\in N^+\)">\(c\in N^+\)</span>, (4.1) of Lemma 4.1 gives <span class="math" data-tex="\(\int_0^\infty\tau(cE_a(h))\,da=\tau(gcg)=\tau(ch)\)">\(\int_0^\infty\tau(cE_a(h))\,da=\tau(gcg)=\tau(ch)\)</span>, by cyclicity. Every
+<span class="math" data-tex="\(z\in N\)">\(z\in N\)</span> is a linear combination of four elements of <span class="math" data-tex="\(N^+\)">\(N^+\)</span>, and <span class="math" data-tex="\(|\tau(zE_a(h))|\le\|z\|\tau(E_a(h))\)">\(|\tau(zE_a(h))|\le\|z\|\tau(E_a(h))\)</span> with
+<span class="math" data-tex="\(\int_0^\infty\tau(E_a(h))\,da=\tau(h)&lt;\infty\)">\(\int_0^\infty\tau(E_a(h))\,da=\tau(h)&lt;\infty\)</span>; this gives the formula. Now let <span class="math" data-tex="\(h-k=w|h-k|\)">\(h-k=w|h-k|\)</span> and <span class="math" data-tex="\(z=w^*\)">\(z=w^*\)</span>. Then
+<span class="math" data-tex="\(\|h-k\|_1=\tau(z(h-k))=\int_0^\infty\tau\big(z(E_a(h)-E_a(k))\big)\,da\le\int_0^\infty\|E_a(h)-E_a(k)\|_1\,da\)">\(\|h-k\|_1=\tau(z(h-k))=\int_0^\infty\tau\big(z(E_a(h)-E_a(k))\big)\,da\le\int_0^\infty\|E_a(h)-E_a(k)\|_1\,da\)</span>.
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3 (the bounded case).</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is of type I with summands of type I<span class="math" data-tex="\(_n\)">\(_n\)</span>, <span class="math" data-tex="\(n\le d\)">\(n\le d\)</span> only, then
+<span class="math" data-tex="\(\Phi(h,k)\le d^2\|h-k\|_1\)">\(\Phi(h,k)\le d^2\|h-k\|_1\)</span> for all <span class="math" data-tex="\(h,k\in L^1(N,\tau)^+\)">\(h,k\in L^1(N,\tau)^+\)</span>.</p>
+<p><strong>Proof.</strong> <em>Step 1: finite spectrum.</em> Suppose <span class="math" data-tex="\(h=\sum_i\lambda_iP_i\)">\(h=\sum_i\lambda_iP_i\)</span> and <span class="math" data-tex="\(k=\sum_j\kappa_jQ_j\)">\(k=\sum_j\kappa_jQ_j\)</span> are finite sums with
+distinct <span class="math" data-tex="\(\lambda_i\ge0\)">\(\lambda_i\ge0\)</span>, distinct <span class="math" data-tex="\(\kappa_j\ge0\)">\(\kappa_j\ge0\)</span>, and <span class="math" data-tex="\(\sum_iP_i=\sum_jQ_j=1\)">\(\sum_iP_i=\sum_jQ_j=1\)</span> (spectral projections; the one
+for the value <span class="math" data-tex="\(0\)">\(0\)</span> may have infinite trace). Put <span class="math" data-tex="\(Y=h-k\in L^1\)">\(Y=h-k\in L^1\)</span>. Then <span class="math" data-tex="\(P_iYQ_j=(\lambda_i-\kappa_j)P_iQ_j\)">\(P_iYQ_j=(\lambda_i-\kappa_j)P_iQ_j\)</span>, so for
+<span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>
+<span class="math math-display" data-tex="\[
+E_a(h)-E_a(k)=\sum_{i,j}\big(\chi_{\{\lambda_i&gt;a\}}-\chi_{\{\kappa_j&gt;a\}}\big)P_iQ_j
+=\sum_{(i,j):\,\lambda_i\ne\kappa_j}c_{ij}(a)\,P_iYQ_j ,\qquad
+c_{ij}(a)=\frac{\chi_{\{\lambda_i&gt;a\}}-\chi_{\{\kappa_j&gt;a\}}}{\lambda_i-\kappa_j},
+\]">\[
+E_a(h)-E_a(k)=\sum_{i,j}\big(\chi_{\{\lambda_i&gt;a\}}-\chi_{\{\kappa_j&gt;a\}}\big)P_iQ_j
+=\sum_{(i,j):\,\lambda_i\ne\kappa_j}c_{ij}(a)\,P_iYQ_j ,\qquad
+c_{ij}(a)=\frac{\chi_{\{\lambda_i&gt;a\}}-\chi_{\{\kappa_j&gt;a\}}}{\lambda_i-\kappa_j},
+\]</span>
+the terms with <span class="math" data-tex="\(\lambda_i=\kappa_j\)">\(\lambda_i=\kappa_j\)</span> being zero. Since <span class="math" data-tex="\(\int_0^\infty|c_{ij}(a)|\,da=1\)">\(\int_0^\infty|c_{ij}(a)|\,da=1\)</span>,
+<span class="math" data-tex="\(\Phi(h,k)\le\sum_{i,j}\|P_iYQ_j\|_1\)">\(\Phi(h,k)\le\sum_{i,j}\|P_iYQ_j\|_1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(P_iYQ_j=w_{ij}|P_iYQ_j|\)">\(P_iYQ_j=w_{ij}|P_iYQ_j|\)</span> be the polar decomposition; then <span class="math" data-tex="\(w_{ij}^*=Q_jw_{ij}^*P_i\)">\(w_{ij}^*=Q_jw_{ij}^*P_i\)</span> and, by (B2),
+<span class="math" data-tex="\(\|P_iYQ_j\|_1=\tau(w_{ij}^*P_iYQ_j)=\tau(Q_jw_{ij}^*P_iY)\)">\(\|P_iYQ_j\|_1=\tau(w_{ij}^*P_iYQ_j)=\tau(Q_jw_{ij}^*P_iY)\)</span>. Hence
+<span class="math" data-tex="\(\sum_{i,j}\|P_iYQ_j\|_1=\tau(TY)\le\|T\|\,\|Y\|_1\)">\(\sum_{i,j}\|P_iYQ_j\|_1=\tau(TY)\le\|T\|\,\|Y\|_1\)</span> with <span class="math" data-tex="\(T=\sum_{i,j}Q_jw_{ij}^*P_i\)">\(T=\sum_{i,j}Q_jw_{ij}^*P_i\)</span>. By (B8) and (B9),
+<span class="math" data-tex="\(N=\bigoplus_{n\le d}C(\Omega_n,M_n(\mathbb C))\)">\(N=\bigoplus_{n\le d}C(\Omega_n,M_n(\mathbb C))\)</span> as a C*-algebra, and <span class="math" data-tex="\(\|T\|=\max_n\sup_{\omega}\|T(\omega)\|\)">\(\|T\|=\max_n\sup_{\omega}\|T(\omega)\|\)</span>. For
+fixed <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the <span class="math" data-tex="\(P_i(\omega)\)">\(P_i(\omega)\)</span> are mutually orthogonal projections in <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>, so at most <span class="math" data-tex="\(n\)">\(n\)</span>
+of them are nonzero, and likewise for the <span class="math" data-tex="\(Q_j(\omega)\)">\(Q_j(\omega)\)</span>; the other terms of <span class="math" data-tex="\(T(\omega)\)">\(T(\omega)\)</span> vanish, and each remaining
+term has norm at most <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(\|T(\omega)\|\le n^2\le d^2\)">\(\|T(\omega)\|\le n^2\le d^2\)</span>, and <span class="math" data-tex="\(\Phi(h,k)\le d^2\|h-k\|_1\)">\(\Phi(h,k)\le d^2\|h-k\|_1\)</span>.</p>
+<p><em>Step 2: general <span class="math" data-tex="\(h,k\)">\(h,k\)</span>.</em> Let <span class="math" data-tex="\(g_m(t)=\min(m,2^{-m}\lfloor2^mt\rfloor)\)">\(g_m(t)=\min(m,2^{-m}\lfloor2^mt\rfloor)\)</span>, a nondecreasing sequence of step functions
+with finitely many values, <span class="math" data-tex="\(g_m(t)\le t\)">\(g_m(t)\le t\)</span>, <span class="math" data-tex="\(g_m(t)\uparrow t\)">\(g_m(t)\uparrow t\)</span>. Put <span class="math" data-tex="\(h_m=g_m(h)\)">\(h_m=g_m(h)\)</span>, <span class="math" data-tex="\(k_m=g_m(k)\)">\(k_m=g_m(k)\)</span>. Then
+<span class="math" data-tex="\(\|h-h_m\|_1=\int(t-g_m(t))\,d\nu_h(t)\to0\)">\(\|h-h_m\|_1=\int(t-g_m(t))\,d\nu_h(t)\to0\)</span> by dominated convergence, and likewise for <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> the sets
+<span class="math" data-tex="\(\{g_m&gt;a\}\)">\(\{g_m&gt;a\}\)</span> increase to <span class="math" data-tex="\(\{t&gt;a\}\)">\(\{t&gt;a\}\)</span>, so <span class="math" data-tex="\(E_a(h_m)\uparrow E_a(h)\)">\(E_a(h_m)\uparrow E_a(h)\)</span> strongly, and similarly for <span class="math" data-tex="\(k\)">\(k\)</span>. By
+Lemma 5.2(a) and Fatou's lemma,
+<span class="math math-display" data-tex="\[
+\Phi(h,k)\le\int_0^\infty\liminf_m\|E_a(h_m)-E_a(k_m)\|_1\,da\le\liminf_m\Phi(h_m,k_m)
+\le d^2\lim_m\|h_m-k_m\|_1=d^2\|h-k\|_1 .\qquad\square
+\]">\[
+\Phi(h,k)\le\int_0^\infty\liminf_m\|E_a(h_m)-E_a(k_m)\|_1\,da\le\liminf_m\Phi(h_m,k_m)
+\le d^2\lim_m\|h_m-k_m\|_1=d^2\|h-k\|_1 .\qquad\square
+\]</span></p>
+<p><strong>Lemma 5.4 (matrix units).</strong> If <span class="math" data-tex="\(N\)">\(N\)</span> is not of bounded type I, then for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> there are matrix units
+<span class="math" data-tex="\((e_{pq})_{p,q=1}^n\)">\((e_{pq})_{p,q=1}^n\)</span> in <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(0&lt;\tau(e_{11})&lt;\infty\)">\(0&lt;\tau(e_{11})&lt;\infty\)</span>.</p>
+<p><strong>Proof.</strong> If the type II summand <span class="math" data-tex="\(Nz\)">\(Nz\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span> is nonzero, choose a nonzero projection <span class="math" data-tex="\(r\le z\)">\(r\le z\)</span> with
+<span class="math" data-tex="\(\tau(r)&lt;\infty\)">\(\tau(r)&lt;\infty\)</span> (B8). Then <span class="math" data-tex="\(rNr\)">\(rNr\)</span> is of type II<span class="math" data-tex="\(_1\)">\(_1\)</span>, so <span class="math" data-tex="\(r=e_1+\dots+e_n\)">\(r=e_1+\dots+e_n\)</span> with orthogonal equivalent
+projections <span class="math" data-tex="\(e_p\)">\(e_p\)</span>. Otherwise <span class="math" data-tex="\(N\)">\(N\)</span> is of type I and has a nonzero summand <span class="math" data-tex="\(Nz\)">\(Nz\)</span> of type I<span class="math" data-tex="\(_\kappa\)">\(_\kappa\)</span> with
+<span class="math" data-tex="\(\kappa\ge n\)">\(\kappa\ge n\)</span>. Take <span class="math" data-tex="\(n\)">\(n\)</span> mutually orthogonal equivalent abelian projections <span class="math" data-tex="\(q_1,\dots,q_n\le z\)">\(q_1,\dots,q_n\le z\)</span> with central
+support <span class="math" data-tex="\(z\)">\(z\)</span>, and a nonzero projection <span class="math" data-tex="\(r\le q_1\)">\(r\le q_1\)</span> of finite trace. By (B8) <span class="math" data-tex="\(r=q_1c\)">\(r=q_1c\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> central; put
+<span class="math" data-tex="\(e_p=q_pc\)">\(e_p=q_pc\)</span>, which are orthogonal, equivalent to <span class="math" data-tex="\(r\)">\(r\)</span> (B7), and nonzero. In both cases choose partial isometries
+<span class="math" data-tex="\(v_p\)">\(v_p\)</span> with <span class="math" data-tex="\(v_p^*v_p=e_1\)">\(v_p^*v_p=e_1\)</span>, <span class="math" data-tex="\(v_pv_p^*=e_p\)">\(v_pv_p^*=e_p\)</span> (<span class="math" data-tex="\(v_1=e_1\)">\(v_1=e_1\)</span>) and put <span class="math" data-tex="\(e_{pq}=v_pv_q^*\)">\(e_{pq}=v_pv_q^*\)</span>. Then <span class="math" data-tex="\(\tau(e_{11})\)">\(\tau(e_{11})\)</span> is
+finite and nonzero since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.5 (a Hilbert matrix).</strong> For <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span> the Hilbert matrix <span class="math" data-tex="\(\mathsf H_r=(1/(\alpha+\beta-1))_{\alpha,\beta=1}^r\)">\(\mathsf H_r=(1/(\alpha+\beta-1))_{\alpha,\beta=1}^r\)</span>
+is positive semidefinite, and <span class="math" data-tex="\(\operatorname{Tr}|\mathsf H_r|=\operatorname{Tr}\mathsf H_r=\sum_{\alpha=1}^r
+\frac1{2\alpha-1}\ge\tfrac12\log(r+1)\)">\(\operatorname{Tr}|\mathsf H_r|=\operatorname{Tr}\mathsf H_r=\sum_{\alpha=1}^r
+\frac1{2\alpha-1}\ge\tfrac12\log(r+1)\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(1/(\alpha+\beta-1)=\int_0^1t^{\alpha-1}t^{\beta-1}\,dt\)">\(1/(\alpha+\beta-1)=\int_0^1t^{\alpha-1}t^{\beta-1}\,dt\)</span> is the Gram matrix of the functions
+<span class="math" data-tex="\(t^{\alpha-1}\)">\(t^{\alpha-1}\)</span> in <span class="math" data-tex="\(L^2[0,1]\)">\(L^2[0,1]\)</span>, hence positive semidefinite, so its trace norm is its trace. Finally
+<span class="math" data-tex="\(\sum_{\alpha\le r}\frac1{2\alpha-1}\ge\frac12\sum_{\alpha\le r}\frac1\alpha\ge\frac12\log(r+1)\)">\(\sum_{\alpha\le r}\frac1{2\alpha-1}\ge\frac12\sum_{\alpha\le r}\frac1\alpha\ge\frac12\log(r+1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 5.1.</strong> (ii) ⇒ (i) with <span class="math" data-tex="\(C=d^2\)">\(C=d^2\)</span> is Lemma 5.3.</p>
+<p>(i) ⇒ (ii). Suppose (i) holds with a constant <span class="math" data-tex="\(C\)">\(C\)</span> but <span class="math" data-tex="\(N\)">\(N\)</span> is not of bounded type I. Fix <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span> and matrix units
+as in Lemma 5.4, with <span class="math" data-tex="\(t=\tau(e_{11})\)">\(t=\tau(e_{11})\)</span>. The map <span class="math" data-tex="\(\iota(y)=\sum_{p,q}y_{pq}e_{pq}\)">\(\iota(y)=\sum_{p,q}y_{pq}e_{pq}\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism
+<span class="math" data-tex="\(M_n(\mathbb C)\to N\)">\(M_n(\mathbb C)\to N\)</span> with <span class="math" data-tex="\(\tau(\iota(y))=t\operatorname{Tr}(y)\)">\(\tau(\iota(y))=t\operatorname{Tr}(y)\)</span> (since <span class="math" data-tex="\(\tau(e_{pq})=\tau(e_{pp}e_{pq})=
+\tau(e_{pq}e_{pp})=0\)">\(\tau(e_{pq})=\tau(e_{pp}e_{pq})=
+\tau(e_{pq}e_{pp})=0\)</span> for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>). Hence <span class="math" data-tex="\(\|\iota(y)\|_1=\tau(\iota(|y|))=t\operatorname{Tr}|y|\)">\(\|\iota(y)\|_1=\tau(\iota(|y|))=t\operatorname{Tr}|y|\)</span>, and for positive
+<span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, <span class="math" data-tex="\(E_a(\iota(y))=\iota(E_a(y))\)">\(E_a(\iota(y))=\iota(E_a(y))\)</span> (write <span class="math" data-tex="\(E_a(y)=\pi(y)\)">\(E_a(y)=\pi(y)\)</span> with a polynomial <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, <span class="math" data-tex="\(\pi(0)=0\)">\(\pi(0)=0\)</span>,
+interpolating <span class="math" data-tex="\(\chi_{(a,\infty)}\)">\(\chi_{(a,\infty)}\)</span> on the spectrum of <span class="math" data-tex="\(y\)">\(y\)</span> and at <span class="math" data-tex="\(0\)">\(0\)</span>). So (i) gives, for positive <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span>
+matrices <span class="math" data-tex="\(y,y&#x27;\)">\(y,y&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\int_0^\infty\operatorname{Tr}|E_a(y)-E_a(y&#x27;)|\,da\le C\operatorname{Tr}|y-y&#x27;| .\tag{5.1}
+\]">\[
+\int_0^\infty\operatorname{Tr}|E_a(y)-E_a(y&#x27;)|\,da\le C\operatorname{Tr}|y-y&#x27;| .\tag{5.1}
+\]</span>
+Let <span class="math" data-tex="\(D=\operatorname{diag}(1,2,\dots,n)\)">\(D=\operatorname{diag}(1,2,\dots,n)\)</span>, let <span class="math" data-tex="\(S\)">\(S\)</span> be the self-adjoint matrix with <span class="math" data-tex="\(S_{pq}=\mathrm i/(q-p)\)">\(S_{pq}=\mathrm i/(q-p)\)</span> for
+<span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span> and <span class="math" data-tex="\(S_{pp}=0\)">\(S_{pp}=0\)</span>, and <span class="math" data-tex="\(U_\sigma=e^{\mathrm i\sigma S}\)">\(U_\sigma=e^{\mathrm i\sigma S}\)</span> for <span class="math" data-tex="\(\sigma\in\mathbb R\)">\(\sigma\in\mathbb R\)</span>. Let <span class="math" data-tex="\(P_m\)">\(P_m\)</span>
+(<span class="math" data-tex="\(1\le m\le n-1\)">\(1\le m\le n-1\)</span>) be the projection onto the span of the basis vectors <span class="math" data-tex="\(m+1,\dots,n\)">\(m+1,\dots,n\)</span>. For <span class="math" data-tex="\(a\in[m,m+1)\)">\(a\in[m,m+1)\)</span> we have
+<span class="math" data-tex="\(E_a(D)=P_m\)">\(E_a(D)=P_m\)</span>, for <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span> <span class="math" data-tex="\(E_a(D)=1\)">\(E_a(D)=1\)</span>, and for <span class="math" data-tex="\(a\ge n\)">\(a\ge n\)</span> <span class="math" data-tex="\(E_a(D)=0\)">\(E_a(D)=0\)</span>; the same holds for <span class="math" data-tex="\(U_\sigma DU_\sigma^*\)">\(U_\sigma DU_\sigma^*\)</span>
+with <span class="math" data-tex="\(P_m\)">\(P_m\)</span> replaced by <span class="math" data-tex="\(U_\sigma P_mU_\sigma^*\)">\(U_\sigma P_mU_\sigma^*\)</span>. Applying (5.1) to <span class="math" data-tex="\(y=D\)">\(y=D\)</span>, <span class="math" data-tex="\(y&#x27;=U_\sigma DU_\sigma^*\)">\(y&#x27;=U_\sigma DU_\sigma^*\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{m=1}^{n-1}\operatorname{Tr}|P_m-U_\sigma P_mU_\sigma^*|\le C\operatorname{Tr}|D-U_\sigma DU_\sigma^*| .
+\]">\[
+\sum_{m=1}^{n-1}\operatorname{Tr}|P_m-U_\sigma P_mU_\sigma^*|\le C\operatorname{Tr}|D-U_\sigma DU_\sigma^*| .
+\]</span>
+Divide by <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> and let <span class="math" data-tex="\(\sigma\to0\)">\(\sigma\to0\)</span>. Since <span class="math" data-tex="\(\sigma^{-1}(Y-U_\sigma YU_\sigma^*)\to-\mathrm i[S,Y]\)">\(\sigma^{-1}(Y-U_\sigma YU_\sigma^*)\to-\mathrm i[S,Y]\)</span> in norm,
+and all norms on <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span> are equivalent,
+<span class="math math-display" data-tex="\[
+\sum_{m=1}^{n-1}\operatorname{Tr}|[S,P_m]|\le C\operatorname{Tr}|[S,D]| .\tag{5.2}
+\]">\[
+\sum_{m=1}^{n-1}\operatorname{Tr}|[S,P_m]|\le C\operatorname{Tr}|[S,D]| .\tag{5.2}
+\]</span>
+<em>Right side.</em> <span class="math" data-tex="\([S,D]_{pq}=(q-p)S_{pq}=\mathrm i\)">\([S,D]_{pq}=(q-p)S_{pq}=\mathrm i\)</span> for <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span>, so <span class="math" data-tex="\([S,D]=\mathrm i(J-1)\)">\([S,D]=\mathrm i(J-1)\)</span> where <span class="math" data-tex="\(J\)">\(J\)</span> is the
+all-ones matrix. The eigenvalues of <span class="math" data-tex="\(J-1\)">\(J-1\)</span> are <span class="math" data-tex="\(n-1\)">\(n-1\)</span> (once) and <span class="math" data-tex="\(-1\)">\(-1\)</span> (<span class="math" data-tex="\(n-1\)">\(n-1\)</span> times), so
+<span class="math" data-tex="\(\operatorname{Tr}|[S,D]|=2(n-1)\)">\(\operatorname{Tr}|[S,D]|=2(n-1)\)</span>.</p>
+<p><em>Left side.</em> Let <span class="math" data-tex="\(Z_m=(1-P_m)SP_m\)">\(Z_m=(1-P_m)SP_m\)</span>. Since <span class="math" data-tex="\(S\)">\(S\)</span> is self-adjoint, <span class="math" data-tex="\([S,P_m]=Z_m-Z_m^*\)">\([S,P_m]=Z_m-Z_m^*\)</span>, and because <span class="math" data-tex="\(Z_m^2=0\)">\(Z_m^2=0\)</span>, the
+operator <span class="math" data-tex="\(Z_m-Z_m^*\)">\(Z_m-Z_m^*\)</span> has <span class="math" data-tex="\(|Z_m-Z_m^*|^2=Z_m^*Z_m+Z_mZ_m^*\)">\(|Z_m-Z_m^*|^2=Z_m^*Z_m+Z_mZ_m^*\)</span> with orthogonal summands; so
+<span class="math" data-tex="\(\operatorname{Tr}|[S,P_m]|=2\operatorname{Tr}|Z_m|\)">\(\operatorname{Tr}|[S,P_m]|=2\operatorname{Tr}|Z_m|\)</span>. The entries of <span class="math" data-tex="\(Z_m\)">\(Z_m\)</span> are <span class="math" data-tex="\(S_{pq}=\mathrm i/(q-p)\)">\(S_{pq}=\mathrm i/(q-p)\)</span> for
+<span class="math" data-tex="\(p\le m&lt;q\)">\(p\le m&lt;q\)</span>. Let <span class="math" data-tex="\(r=\min(m,n-m)\)">\(r=\min(m,n-m)\)</span> and restrict to the rows <span class="math" data-tex="\(p=m+1-\beta\)">\(p=m+1-\beta\)</span> and columns <span class="math" data-tex="\(q=m+\alpha\)">\(q=m+\alpha\)</span>,
+<span class="math" data-tex="\(1\le\alpha,\beta\le r\)">\(1\le\alpha,\beta\le r\)</span>: there <span class="math" data-tex="\(q-p=\alpha+\beta-1\)">\(q-p=\alpha+\beta-1\)</span>, so this compression of <span class="math" data-tex="\(Z_m\)">\(Z_m\)</span> is <span class="math" data-tex="\(\mathrm i\,\mathsf H_r\)">\(\mathrm i\,\mathsf H_r\)</span> up to a
+permutation. Compressions do not increase the trace norm, so by Lemma 5.5,
+<span class="math" data-tex="\(\operatorname{Tr}|[S,P_m]|\ge\log(1+\min(m,n-m))\)">\(\operatorname{Tr}|[S,P_m]|\ge\log(1+\min(m,n-m))\)</span>.</p>
+<p>For the integers <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(n/4\le m\le3n/4\)">\(n/4\le m\le3n/4\)</span> (at least <span class="math" data-tex="\(n/2-1\)">\(n/2-1\)</span> of them, all between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(n-1\)">\(n-1\)</span>) we have
+<span class="math" data-tex="\(\min(m,n-m)\ge n/4\)">\(\min(m,n-m)\ge n/4\)</span>. So (5.2) gives <span class="math" data-tex="\((n/2-1)\log(1+n/4)\le2C(n-1)\)">\((n/2-1)\log(1+n/4)\le2C(n-1)\)</span>, that is,
+<span class="math" data-tex="\(\log(1+n/4)\le4C(n-1)/(n-2)\le6C\)">\(\log(1+n/4)\le4C(n-1)/(n-2)\le6C\)</span> for all <span class="math" data-tex="\(n\ge4\)">\(n\ge4\)</span>. This is absurd for large <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Remark.</em> The growth <span class="math" data-tex="\(\log n\)">\(\log n\)</span> in dimension <span class="math" data-tex="\(n\)">\(n\)</span> is the same phenomenon as the failure of the absolute value map to be
+Lipschitz on the trace class, found by Davies. It is the reason why the estimates of Section 4, which use squared
+<span class="math" data-tex="\(2\)">\(2\)</span>-norms and <span class="math" data-tex="\(\|h-k\|_2\)">\(\|h-k\|_2\)</span>, are the right ones.</p>
+<h2 id="6-truncated-polar-decompositions">6. Truncated polar decompositions</h2>
+<p>Recall <span class="math" data-tex="\(u_a(x)=u(x)E_a(|x|)\)">\(u_a(x)=u(x)E_a(|x|)\)</span> (Notation 1.2). For <span class="math" data-tex="\(x\)">\(x\)</span> affiliated with <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, put
+<span class="math" data-tex="\(x_{[b]}=x\,E_b(|x|)\)">\(x_{[b]}=x\,E_b(|x|)\)</span>: this cuts off the part of <span class="math" data-tex="\(x\)">\(x\)</span> where <span class="math" data-tex="\(|x|\le b\)">\(|x|\le b\)</span>.</p>
+<p><strong>Lemma 6.1.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.</p>
+<p>(1) For every unitary <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span>: <span class="math" data-tex="\(u_a(vx)=v\,u_a(x)\)">\(u_a(vx)=v\,u_a(x)\)</span> and <span class="math" data-tex="\(u_a(xv)=u_a(x)\,v\)">\(u_a(xv)=u_a(x)\,v\)</span>.</p>
+<p>(2) If <span class="math" data-tex="\(\theta\colon N\to N_1\)">\(\theta\colon N\to N_1\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with <span class="math" data-tex="\(\tau_1\circ\theta=\lambda\tau\)">\(\tau_1\circ\theta=\lambda\tau\)</span> as in (B6), then
+<span class="math" data-tex="\(u_a(\tilde\theta(x))=\theta(u_a(x))\)">\(u_a(\tilde\theta(x))=\theta(u_a(x))\)</span>.</p>
+<p>(3) For <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> and <span class="math" data-tex="\(c=\max(a,b)\)">\(c=\max(a,b)\)</span>: <span class="math" data-tex="\(u_a(x_{[b]})=u_c(x)\)">\(u_a(x_{[b]})=u_c(x)\)</span> and <span class="math" data-tex="\(u_a(x_{[b]})\,|x_{[b]}|=u_c(x)\,|x|\)">\(u_a(x_{[b]})\,|x_{[b]}|=u_c(x)\,|x|\)</span>.</p>
+<p>(4) If <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> and <span class="math" data-tex="\(g\colon[0,\infty)\to[0,\infty)\)">\(g\colon[0,\infty)\to[0,\infty)\)</span> is an increasing bijection, then
+<span class="math" data-tex="\(u_{g(a)}(g(h))=u_a(h)=E_a(h)\)">\(u_{g(a)}(g(h))=u_a(h)=E_a(h)\)</span>.</p>
+<p>(5) For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>: <span class="math" data-tex="\(u_a(sx)=u_{a/s}(x)\)">\(u_a(sx)=u_{a/s}(x)\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span>.</p>
+<p>(1) <span class="math" data-tex="\(vx=(vu)|x|\)">\(vx=(vu)|x|\)</span>, and <span class="math" data-tex="\(vu\)">\(vu\)</span> is a partial isometry with <span class="math" data-tex="\((vu)^*(vu)=u^*u=s(|x|)\)">\((vu)^*(vu)=u^*u=s(|x|)\)</span>; by uniqueness (B3),
+<span class="math" data-tex="\(u(vx)=vu\)">\(u(vx)=vu\)</span> and <span class="math" data-tex="\(|vx|=|x|\)">\(|vx|=|x|\)</span>, so <span class="math" data-tex="\(u_a(vx)=vuE_a(|x|)\)">\(u_a(vx)=vuE_a(|x|)\)</span>. Next <span class="math" data-tex="\(xv=(uv)(v^*|x|v)\)">\(xv=(uv)(v^*|x|v)\)</span>, where <span class="math" data-tex="\(v^*|x|v\ge0\)">\(v^*|x|v\ge0\)</span>,
+<span class="math" data-tex="\((v^*|x|v)^2=v^*x^*xv\)">\((v^*|x|v)^2=v^*x^*xv\)</span>, and <span class="math" data-tex="\((uv)^*(uv)=v^*s(|x|)v=s(v^*|x|v)\)">\((uv)^*(uv)=v^*s(|x|)v=s(v^*|x|v)\)</span>. So <span class="math" data-tex="\(|xv|=v^*|x|v\)">\(|xv|=v^*|x|v\)</span>, <span class="math" data-tex="\(u(xv)=uv\)">\(u(xv)=uv\)</span>, and
+<span class="math" data-tex="\(E_a(|xv|)=v^*E_a(|x|)v\)">\(E_a(|xv|)=v^*E_a(|x|)v\)</span> (B3); hence <span class="math" data-tex="\(u_a(xv)=uvv^*E_a(|x|)v=u_a(x)v\)">\(u_a(xv)=uvv^*E_a(|x|)v=u_a(x)v\)</span>.</p>
+<p>(2) By (B6), <span class="math" data-tex="\(\tilde\theta(x)=\theta(u)\tilde\theta(|x|)\)">\(\tilde\theta(x)=\theta(u)\tilde\theta(|x|)\)</span> is the polar decomposition of <span class="math" data-tex="\(\tilde\theta(x)\)">\(\tilde\theta(x)\)</span>, and
+<span class="math" data-tex="\(E_a(\tilde\theta(|x|))=\theta(E_a(|x|))\)">\(E_a(\tilde\theta(|x|))=\theta(E_a(|x|))\)</span>.</p>
+<p>(3) <span class="math" data-tex="\(x_{[b]}^*x_{[b]}=E_b(|x|)|x|^2E_b(|x|)=(|x|E_b(|x|))^2\)">\(x_{[b]}^*x_{[b]}=E_b(|x|)|x|^2E_b(|x|)=(|x|E_b(|x|))^2\)</span>, so <span class="math" data-tex="\(|x_{[b]}|=|x|E_b(|x|)=\gamma(|x|)\)">\(|x_{[b]}|=|x|E_b(|x|)=\gamma(|x|)\)</span> with
+<span class="math" data-tex="\(\gamma(t)=t\chi_{(b,\infty)}(t)\)">\(\gamma(t)=t\chi_{(b,\infty)}(t)\)</span>. Also <span class="math" data-tex="\(x_{[b]}=(uE_b(|x|))\,|x_{[b]}|\)">\(x_{[b]}=(uE_b(|x|))\,|x_{[b]}|\)</span>, and <span class="math" data-tex="\(uE_b(|x|)\)">\(uE_b(|x|)\)</span> is a partial isometry
+with initial projection <span class="math" data-tex="\(E_b(|x|)=s(|x_{[b]}|)\)">\(E_b(|x|)=s(|x_{[b]}|)\)</span> (as <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>); so <span class="math" data-tex="\(u(x_{[b]})=uE_b(|x|)\)">\(u(x_{[b]})=uE_b(|x|)\)</span>. Since
+<span class="math" data-tex="\(\chi_{(a,\infty)}(\gamma(t))=\chi_{(c,\infty)}(t)\)">\(\chi_{(a,\infty)}(\gamma(t))=\chi_{(c,\infty)}(t)\)</span> for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, <span class="math" data-tex="\(E_a(|x_{[b]}|)=E_c(|x|)\le E_b(|x|)\)">\(E_a(|x_{[b]}|)=E_c(|x|)\le E_b(|x|)\)</span>. Hence
+<span class="math" data-tex="\(u_a(x_{[b]})=uE_b(|x|)E_c(|x|)=u_c(x)\)">\(u_a(x_{[b]})=uE_b(|x|)E_c(|x|)=u_c(x)\)</span>, and <span class="math" data-tex="\(u_a(x_{[b]})|x_{[b]}|=uE_c(|x|)|x|E_b(|x|)=u_c(x)|x|\)">\(u_a(x_{[b]})|x_{[b]}|=uE_c(|x|)|x|E_b(|x|)=u_c(x)|x|\)</span>.</p>
+<p>(4) <span class="math" data-tex="\(g(h)\ge0\)">\(g(h)\ge0\)</span>, so <span class="math" data-tex="\(u_{g(a)}(g(h))=E_{g(a)}(g(h))=\chi_{(g(a),\infty)}\circ g\,(h)=\chi_{(a,\infty)}(h)\)">\(u_{g(a)}(g(h))=E_{g(a)}(g(h))=\chi_{(g(a),\infty)}\circ g\,(h)=\chi_{(a,\infty)}(h)\)</span>, since
+<span class="math" data-tex="\(g\)">\(g\)</span> is strictly increasing.</p>
+<p>(5) <span class="math" data-tex="\(|sx|=s|x|\)">\(|sx|=s|x|\)</span>, <span class="math" data-tex="\(u(sx)=u\)">\(u(sx)=u\)</span>, and <span class="math" data-tex="\(E_a(s|x|)=E_{a/s}(|x|)\)">\(E_a(s|x|)=E_{a/s}(|x|)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-stability-of-truncated-polar-decompositions">7. Stability of truncated polar decompositions</h2>
+<p>The phase <span class="math" data-tex="\(u(x)\)">\(u(x)\)</span> of an element of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> is not continuous in <span class="math" data-tex="\(x\)">\(x\)</span>, and neither is <span class="math" data-tex="\(u_a(x)\)">\(u_a(x)\)</span> for a fixed level
+<span class="math" data-tex="\(a\)">\(a\)</span>. The main theorem says that for finitely many nearby vectors one can always find <em>some</em> level at which all the
+truncated phases are close, and at which the truncation loses little of the first vector.</p>
+<p><strong>Theorem 7.1.</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon\in(0,1]\)">\(\varepsilon\in(0,1]\)</span> with <span class="math" data-tex="\(30\,n\,\varepsilon^{1/4}&lt;1\)">\(30\,n\,\varepsilon^{1/4}&lt;1\)</span>. Let
+<span class="math" data-tex="\(x_1,\dots,x_n\in L^2(N,\tau)\)">\(x_1,\dots,x_n\in L^2(N,\tau)\)</span> with <span class="math" data-tex="\(x_1\ne0\)">\(x_1\ne0\)</span> and
+<span class="math math-display" data-tex="\[
+\|x_j-x_1\|_2\le\varepsilon\|x_1\|_2\qquad(j=1,\dots,n).\tag{7.1}
+\]">\[
+\|x_j-x_1\|_2\le\varepsilon\|x_1\|_2\qquad(j=1,\dots,n).\tag{7.1}
+\]</span>
+Then there is <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> such that</p>
+<p>(i) <span class="math" data-tex="\(\|u_a(x_j)-u_a(x_1)\|_2\le\varepsilon^{1/8}\,\|u_a(x_1)\|_2\)">\(\|u_a(x_j)-u_a(x_1)\|_2\le\varepsilon^{1/8}\,\|u_a(x_1)\|_2\)</span> for <span class="math" data-tex="\(j=1,\dots,n\)">\(j=1,\dots,n\)</span>;</p>
+<p>(ii) <span class="math" data-tex="\(\|x_1-u_a(x_1)|x_1|\|_2\le(30n)^{1/2}\varepsilon^{1/8}\,\|x_1\|_2&lt;\|x_1\|_2\)">\(\|x_1-u_a(x_1)|x_1|\|_2\le(30n)^{1/2}\varepsilon^{1/8}\,\|x_1\|_2&lt;\|x_1\|_2\)</span>; in particular
+<span class="math" data-tex="\(u_a(x_1)\ne0\)">\(u_a(x_1)\ne0\)</span>.</p>
+<p><em>Reference:</em> [Connes 1976, §2.5].</p>
+<p><strong>Proof.</strong> By Lemma 6.1(5), replacing every <span class="math" data-tex="\(x_j\)">\(x_j\)</span> by <span class="math" data-tex="\(x_j/\|x_1\|_2\)">\(x_j/\|x_1\|_2\)</span> replaces <span class="math" data-tex="\(u_a\)">\(u_a\)</span> by <span class="math" data-tex="\(u_{a\|x_1\|_2}\)">\(u_{a\|x_1\|_2}\)</span>, so we
+may assume <span class="math" data-tex="\(\|x_1\|_2=1\)">\(\|x_1\|_2=1\)</span>. Write <span class="math" data-tex="\(x_j=u_jh_j\)">\(x_j=u_jh_j\)</span> (polar decompositions), <span class="math" data-tex="\(u=u_1\)">\(u=u_1\)</span>, <span class="math" data-tex="\(h=h_1\)">\(h=h_1\)</span>. Then
+<span class="math" data-tex="\(\|x_j\|_2\le1+\varepsilon\le2\)">\(\|x_j\|_2\le1+\varepsilon\le2\)</span>.</p>
+<p><em>Step 1: the moduli are close.</em> By Corollary 3.2,
+<span class="math" data-tex="\(\|h_j-h\|_2^2\le\|x_j-x_1\|_2(\|x_j\|_2+\|x_1\|_2)\le\varepsilon(2+\varepsilon)\le3\varepsilon\)">\(\|h_j-h\|_2^2\le\|x_j-x_1\|_2(\|x_j\|_2+\|x_1\|_2)\le\varepsilon(2+\varepsilon)\le3\varepsilon\)</span>.</p>
+<p><em>Step 2: comparing phases with the phase of <span class="math" data-tex="\(x_1\)">\(x_1\)</span>.</em> By Proposition 4.2 with <span class="math" data-tex="\(x=x_j\)">\(x=x_j\)</span> and <span class="math" data-tex="\(w=u\)">\(w=u\)</span>,
+<span class="math math-display" data-tex="\[
+\int_0^\infty\|u_{\sqrt a}(x_j)-u\,E_{\sqrt a}(h_j)\|_2^2\,da=\|x_j-uh_j\|_2^2
+\le\big(\|x_j-x_1\|_2+\|u(h-h_j)\|_2\big)^2\le\big(\varepsilon+(3\varepsilon)^{1/2}\big)^2\le9\varepsilon ,
+\]">\[
+\int_0^\infty\|u_{\sqrt a}(x_j)-u\,E_{\sqrt a}(h_j)\|_2^2\,da=\|x_j-uh_j\|_2^2
+\le\big(\|x_j-x_1\|_2+\|u(h-h_j)\|_2\big)^2\le\big(\varepsilon+(3\varepsilon)^{1/2}\big)^2\le9\varepsilon ,
+\]</span>
+using <span class="math" data-tex="\(x_1=uh\)">\(x_1=uh\)</span>, <span class="math" data-tex="\(\|u\|\le1\)">\(\|u\|\le1\)</span> and <span class="math" data-tex="\(\varepsilon\le\varepsilon^{1/2}\)">\(\varepsilon\le\varepsilon^{1/2}\)</span>.</p>
+<p><em>Step 3: comparing spectral projections.</em> By Proposition 4.3(b) and Step 1,
+<span class="math math-display" data-tex="\[
+\int_0^\infty\|u(E_{\sqrt a}(h_j)-E_{\sqrt a}(h))\|_2^2\,da\le\|h_j-h\|_2\|h_j+h\|_2
+\le(3\varepsilon)^{1/2}(2+\varepsilon)\le3\sqrt3\,\varepsilon^{1/2}.
+\]">\[
+\int_0^\infty\|u(E_{\sqrt a}(h_j)-E_{\sqrt a}(h))\|_2^2\,da\le\|h_j-h\|_2\|h_j+h\|_2
+\le(3\varepsilon)^{1/2}(2+\varepsilon)\le3\sqrt3\,\varepsilon^{1/2}.
+\]</span>
+<em>Step 4.</em> Since <span class="math" data-tex="\(u_{\sqrt a}(x_1)=uE_{\sqrt a}(h)\)">\(u_{\sqrt a}(x_1)=uE_{\sqrt a}(h)\)</span>, we have <span class="math" data-tex="\(u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)=
+[u_{\sqrt a}(x_j)-uE_{\sqrt a}(h_j)]+u[E_{\sqrt a}(h_j)-E_{\sqrt a}(h)]\)">\(u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)=
+[u_{\sqrt a}(x_j)-uE_{\sqrt a}(h_j)]+u[E_{\sqrt a}(h_j)-E_{\sqrt a}(h)]\)</span>, and <span class="math" data-tex="\(\|y+z\|_2^2\le2\|y\|_2^2+2\|z\|_2^2\)">\(\|y+z\|_2^2\le2\|y\|_2^2+2\|z\|_2^2\)</span>
+gives
+<span class="math math-display" data-tex="\[
+\int_0^\infty\|u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)\|_2^2\,da\le18\varepsilon+6\sqrt3\,\varepsilon^{1/2}
+\le30\,\varepsilon^{1/2}.\tag{7.2}
+\]">\[
+\int_0^\infty\|u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)\|_2^2\,da\le18\varepsilon+6\sqrt3\,\varepsilon^{1/2}
+\le30\,\varepsilon^{1/2}.\tag{7.2}
+\]</span>
+<em>Step 5: choosing the level.</em> Define on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>
+<span class="math math-display" data-tex="\[
+F(a)=\sum_{j=2}^n\|u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)\|_2^2,\qquad G(a)=\|u_{\sqrt a}(x_1)\|_2^2=\tau(E_{\sqrt a}(h)).
+\]">\[
+F(a)=\sum_{j=2}^n\|u_{\sqrt a}(x_j)-u_{\sqrt a}(x_1)\|_2^2,\qquad G(a)=\|u_{\sqrt a}(x_1)\|_2^2=\tau(E_{\sqrt a}(h)).
+\]</span>
+By Lemma 1.3, <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> are finite, right-continuous and Borel; <span class="math" data-tex="\(G\)">\(G\)</span> is nonincreasing. By (7.2),
+<span class="math" data-tex="\(\int_0^\infty F\le30(n-1)\varepsilon^{1/2}\)">\(\int_0^\infty F\le30(n-1)\varepsilon^{1/2}\)</span>, and by (4.1) with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, <span class="math" data-tex="\(\int_0^\infty G=\|h\|_2^2=1\)">\(\int_0^\infty G=\|h\|_2^2=1\)</span>. Let
+<span class="math" data-tex="\(\mathcal B=\{a&gt;0:F(a)&gt;\varepsilon^{1/4}G(a)\}\)">\(\mathcal B=\{a&gt;0:F(a)&gt;\varepsilon^{1/4}G(a)\}\)</span>, a Borel set. On <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, <span class="math" data-tex="\(G&lt;\varepsilon^{-1/4}F\)">\(G&lt;\varepsilon^{-1/4}F\)</span>, so
+<span class="math math-display" data-tex="\[
+\int_{\mathcal B}G\le\varepsilon^{-1/4}\int_0^\infty F\le30(n-1)\varepsilon^{1/4}&lt;1=\int_0^\infty G .
+\]">\[
+\int_{\mathcal B}G\le\varepsilon^{-1/4}\int_0^\infty F\le30(n-1)\varepsilon^{1/4}&lt;1=\int_0^\infty G .
+\]</span>
+Hence the complement <span class="math" data-tex="\(\mathcal B^c=(0,\infty)\setminus\mathcal B\)">\(\mathcal B^c=(0,\infty)\setminus\mathcal B\)</span> is nonempty. It is closed under limits from the
+right: if <span class="math" data-tex="\(a_k\downarrow a&gt;0\)">\(a_k\downarrow a&gt;0\)</span> with <span class="math" data-tex="\(a_k\in\mathcal B^c\)">\(a_k\in\mathcal B^c\)</span>, right-continuity gives <span class="math" data-tex="\(F(a)\le\varepsilon^{1/4}G(a)\)">\(F(a)\le\varepsilon^{1/4}G(a)\)</span>.
+Let <span class="math" data-tex="\(b_0=\inf\mathcal B^c\)">\(b_0=\inf\mathcal B^c\)</span>. If <span class="math" data-tex="\(b_0&gt;0\)">\(b_0&gt;0\)</span>, then <span class="math" data-tex="\(b_0\in\mathcal B^c\)">\(b_0\in\mathcal B^c\)</span> and <span class="math" data-tex="\((0,b_0)\subset\mathcal B\)">\((0,b_0)\subset\mathcal B\)</span>; put <span class="math" data-tex="\(b=b_0\)">\(b=b_0\)</span>,
+so <span class="math" data-tex="\(\int_0^bG\le30(n-1)\varepsilon^{1/4}\)">\(\int_0^bG\le30(n-1)\varepsilon^{1/4}\)</span>. If <span class="math" data-tex="\(b_0=0\)">\(b_0=0\)</span>, choose <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> with <span class="math" data-tex="\(\int_0^tG\le30n\varepsilon^{1/4}\)">\(\int_0^tG\le30n\varepsilon^{1/4}\)</span>
+(possible since <span class="math" data-tex="\(G\)">\(G\)</span> is integrable) and <span class="math" data-tex="\(b\in\mathcal B^c\cap(0,t)\)">\(b\in\mathcal B^c\cap(0,t)\)</span>. In both cases
+<span class="math math-display" data-tex="\[
+b\in\mathcal B^c,\qquad\int_0^bG(a)\,da\le30\,n\,\varepsilon^{1/4}.\tag{7.3}
+\]">\[
+b\in\mathcal B^c,\qquad\int_0^bG(a)\,da\le30\,n\,\varepsilon^{1/4}.\tag{7.3}
+\]</span>
+<em>Step 6: conclusion.</em> Let <span class="math" data-tex="\(a=\sqrt b\)">\(a=\sqrt b\)</span>. Since <span class="math" data-tex="\(b\notin\mathcal B\)">\(b\notin\mathcal B\)</span>, each term of <span class="math" data-tex="\(F(b)\)">\(F(b)\)</span> is at most
+<span class="math" data-tex="\(\varepsilon^{1/4}G(b)\)">\(\varepsilon^{1/4}G(b)\)</span>, which is (i). For (ii), <span class="math" data-tex="\(x_1-u_a(x_1)|x_1|=u(h-E_a(h)h)=u\,\chi_{[0,a]}(h)h\)">\(x_1-u_a(x_1)|x_1|=u(h-E_a(h)h)=u\,\chi_{[0,a]}(h)h\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> is
+isometric on the range of <span class="math" data-tex="\(h\)">\(h\)</span>, so by (B1), Lemma 4.1(c) with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, and (7.3),
+<span class="math math-display" data-tex="\[
+\|x_1-u_a(x_1)|x_1|\|_2^2=\int t^2\chi_{[0,a]}(t)\,d\nu_h(t)\le\int\min(t^2,b)\,d\nu_h(t)=\int_0^bG(s)\,ds
+\le30n\varepsilon^{1/4}&lt;1 .
+\]">\[
+\|x_1-u_a(x_1)|x_1|\|_2^2=\int t^2\chi_{[0,a]}(t)\,d\nu_h(t)\le\int\min(t^2,b)\,d\nu_h(t)=\int_0^bG(s)\,ds
+\le30n\varepsilon^{1/4}&lt;1 .
+\]</span>
+If <span class="math" data-tex="\(u_a(x_1)\)">\(u_a(x_1)\)</span> were <span class="math" data-tex="\(0\)">\(0\)</span>, the left side would be <span class="math" data-tex="\(\|x_1\|_2^2=1\)">\(\|x_1\|_2^2=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 7.2.</strong> Let <span class="math" data-tex="\(\delta\in(0,1)\)">\(\delta\in(0,1)\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon=(\delta/6n)^8\)">\(\varepsilon=(\delta/6n)^8\)</span>. If <span class="math" data-tex="\(x_1,\dots,x_n\in
+L^2(N,\tau)\)">\(x_1,\dots,x_n\in
+L^2(N,\tau)\)</span>, <span class="math" data-tex="\(x_1\ne0\)">\(x_1\ne0\)</span>, and <span class="math" data-tex="\(\|x_j-x_1\|_2\le\varepsilon\|x_1\|_2\)">\(\|x_j-x_1\|_2\le\varepsilon\|x_1\|_2\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span> (for instance, if the set
+<span class="math" data-tex="\(\{x_1,\dots,x_n\}\)">\(\{x_1,\dots,x_n\}\)</span> has diameter at most <span class="math" data-tex="\(\varepsilon\|x_1\|_2\)">\(\varepsilon\|x_1\|_2\)</span>), then there is <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+\|u_a(x_j)-u_a(x_1)\|_2\le\delta\|u_a(x_1)\|_2\quad(j=1,\dots,n),\qquad\|x_1-u_a(x_1)|x_1|\|_2\le\delta\|x_1\|_2 ,
+\]">\[
+\|u_a(x_j)-u_a(x_1)\|_2\le\delta\|u_a(x_1)\|_2\quad(j=1,\dots,n),\qquad\|x_1-u_a(x_1)|x_1|\|_2\le\delta\|x_1\|_2 ,
+\]</span>
+and <span class="math" data-tex="\(u_a(x_1)\ne0\)">\(u_a(x_1)\ne0\)</span>.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>, <span class="math" data-tex="\(\varepsilon^{1/8}=\delta/6n\le\delta\)">\(\varepsilon^{1/8}=\delta/6n\le\delta\)</span>, <span class="math" data-tex="\(30n\varepsilon^{1/4}=30\delta^2/36n&lt;1\)">\(30n\varepsilon^{1/4}=30\delta^2/36n&lt;1\)</span> and
+<span class="math" data-tex="\((30n)^{1/2}\varepsilon^{1/8}=\delta\,(30/36n)^{1/2}\le\delta\)">\((30n)^{1/2}\varepsilon^{1/8}=\delta\,(30/36n)^{1/2}\le\delta\)</span>. Apply Theorem 7.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 7.3 (why the level must be chosen).</strong> Let <span class="math" data-tex="\(N=\mathbb C^2\)">\(N=\mathbb C^2\)</span> with <span class="math" data-tex="\(\tau(s,t)=s+t\)">\(\tau(s,t)=s+t\)</span>. For small <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> let
+<span class="math" data-tex="\(x=(1,\eta)\)">\(x=(1,\eta)\)</span> and <span class="math" data-tex="\(y=(1,-\eta)\)">\(y=(1,-\eta)\)</span>. Then <span class="math" data-tex="\(\|x-y\|_2=2\eta\)">\(\|x-y\|_2=2\eta\)</span>, but <span class="math" data-tex="\(u(x)=(1,1)\)">\(u(x)=(1,1)\)</span> and <span class="math" data-tex="\(u(y)=(1,-1)\)">\(u(y)=(1,-1)\)</span>, so
+<span class="math" data-tex="\(\|u(x)-u(y)\|_2=2\)">\(\|u(x)-u(y)\|_2=2\)</span>. At every level <span class="math" data-tex="\(a\in[\eta,1)\)">\(a\in[\eta,1)\)</span>, <span class="math" data-tex="\(u_a(x)=u_a(y)=(1,0)\)">\(u_a(x)=u_a(y)=(1,0)\)</span>: the truncation removes the unstable
+phase. On the other hand no single level works for all nearby vectors: given <span class="math" data-tex="\(a\in(0,1)\)">\(a\in(0,1)\)</span> and <span class="math" data-tex="\(0&lt;\eta&lt;a\)">\(0&lt;\eta&lt;a\)</span>, the positive vectors
+<span class="math" data-tex="\(x&#x27;=(1,a+\eta)\)">\(x&#x27;=(1,a+\eta)\)</span> and <span class="math" data-tex="\(y&#x27;=(1,a-\eta)\)">\(y&#x27;=(1,a-\eta)\)</span> satisfy <span class="math" data-tex="\(\|x&#x27;-y&#x27;\|_2=2\eta\)">\(\|x&#x27;-y&#x27;\|_2=2\eta\)</span> but <span class="math" data-tex="\(u_a(x&#x27;)=(1,1)\)">\(u_a(x&#x27;)=(1,1)\)</span>, <span class="math" data-tex="\(u_a(y&#x27;)=(1,0)\)">\(u_a(y&#x27;)=(1,0)\)</span>. This is
+why Theorem 7.1 chooses <span class="math" data-tex="\(a\)">\(a\)</span> depending on the finite family, by an averaging argument over the level.</p>
+<h2 id="8-a-projection-almost-commuting-with-finitely-many-unitaries">8. A projection almost commuting with finitely many unitaries</h2>
+<p>We now apply Theorem 7.1 to the conjugates of a positive operator. Commutators with projections are measured in the
+<span class="math" data-tex="\(2\)">\(2\)</span>-norm, and the Powers–Størmer inequality transfers the information to square roots.</p>
+<p><strong>Lemma 8.1.</strong> Let <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span> be unitary and <span class="math" data-tex="\(e\in N\)">\(e\in N\)</span> a projection of finite trace. Then
+<span class="math math-display" data-tex="\[
+\|vev^*-e\|_1\le2\,\|[v,e]\|_2\,\|e\|_2 .
+\]">\[
+\|vev^*-e\|_1\le2\,\|[v,e]\|_2\,\|e\|_2 .
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(x=ev^*\)">\(x=ev^*\)</span> and <span class="math" data-tex="\(y=v^*e\)">\(y=v^*e\)</span>. Then <span class="math" data-tex="\(x^*x=vev^*\)">\(x^*x=vev^*\)</span>, <span class="math" data-tex="\(y^*y=e\)">\(y^*y=e\)</span>, <span class="math" data-tex="\(\|x\|_2=\|y\|_2=\|e\|_2\)">\(\|x\|_2=\|y\|_2=\|e\|_2\)</span>, and
+<span class="math" data-tex="\(x-y=v^*(ve-ev)v^*\)">\(x-y=v^*(ve-ev)v^*\)</span>, so <span class="math" data-tex="\(\|x-y\|_2=\|[v,e]\|_2\)">\(\|x-y\|_2=\|[v,e]\|_2\)</span>. Apply the second inequality of (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 8.2.</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon\in(0,1]\)">\(\varepsilon\in(0,1]\)</span> with <span class="math" data-tex="\(30n\varepsilon^{1/4}&lt;1\)">\(30n\varepsilon^{1/4}&lt;1\)</span>. Let <span class="math" data-tex="\(v_1,\dots,v_{n-1}\in N\)">\(v_1,\dots,v_{n-1}\in N\)</span>
+be unitaries and <span class="math" data-tex="\(e_1,\dots,e_m\in N\)">\(e_1,\dots,e_m\in N\)</span> projections of finite trace, not all zero, such that
+<span class="math math-display" data-tex="\[
+\|[v_k,e_s]\|_2\le\tfrac12\varepsilon^2\,\|e_s\|_2\qquad\text{for all }k,s.\tag{8.1}
+\]">\[
+\|[v_k,e_s]\|_2\le\tfrac12\varepsilon^2\,\|e_s\|_2\qquad\text{for all }k,s.\tag{8.1}
+\]</span>
+Let <span class="math" data-tex="\(x_0=(e_1+\dots+e_m)^{1/2}\)">\(x_0=(e_1+\dots+e_m)^{1/2}\)</span>. There is <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> such that the spectral projection <span class="math" data-tex="\(e=E_a(x_0)\)">\(e=E_a(x_0)\)</span> satisfies:
+<span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>, <span class="math" data-tex="\(e\le e_1\vee\dots\vee e_m\)">\(e\le e_1\vee\dots\vee e_m\)</span>, <span class="math" data-tex="\(\tau(e)&lt;\infty\)">\(\tau(e)&lt;\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\|[e,v_k]\|_2\le\varepsilon^{1/8}\|e\|_2\quad(k=1,\dots,n-1),\qquad
+\sum_{s=1}^m\|e_s-ee_s\|_2^2\le30n\varepsilon^{1/4}\sum_{s=1}^m\tau(e_s).\tag{8.2}
+\]">\[
+\|[e,v_k]\|_2\le\varepsilon^{1/8}\|e\|_2\quad(k=1,\dots,n-1),\qquad
+\sum_{s=1}^m\|e_s-ee_s\|_2^2\le30n\varepsilon^{1/4}\sum_{s=1}^m\tau(e_s).\tag{8.2}
+\]</span></p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(x_0\ge0\)">\(x_0\ge0\)</span>, <span class="math" data-tex="\(x_0\in L^2\)">\(x_0\in L^2\)</span>, and <span class="math" data-tex="\(\|x_0\|_2^2=\tau(x_0^2)=\sum_s\tau(e_s)&gt;0\)">\(\|x_0\|_2^2=\tau(x_0^2)=\sum_s\tau(e_s)&gt;0\)</span>. Put
+<span class="math" data-tex="\(x_k=v_kx_0v_k^*\)">\(x_k=v_kx_0v_k^*\)</span> for <span class="math" data-tex="\(1\le k\le n-1\)">\(1\le k\le n-1\)</span>. By Lemma 8.1 and (8.1),
+<span class="math math-display" data-tex="\[
+\|v_kx_0^2v_k^*-x_0^2\|_1\le\sum_s\|v_ke_sv_k^*-e_s\|_1\le\sum_s\varepsilon^2\|e_s\|_2^2=\varepsilon^2\|x_0\|_2^2 ,
+\]">\[
+\|v_kx_0^2v_k^*-x_0^2\|_1\le\sum_s\|v_ke_sv_k^*-e_s\|_1\le\sum_s\varepsilon^2\|e_s\|_2^2=\varepsilon^2\|x_0\|_2^2 ,
+\]</span>
+and Theorem 3.1 (for <span class="math" data-tex="\(v_kx_0v_k^*=(v_kx_0^2v_k^*)^{1/2}\)">\(v_kx_0v_k^*=(v_kx_0^2v_k^*)^{1/2}\)</span> and <span class="math" data-tex="\(x_0\)">\(x_0\)</span>) gives <span class="math" data-tex="\(\|x_k-x_0\|_2\le\varepsilon\|x_0\|_2\)">\(\|x_k-x_0\|_2\le\varepsilon\|x_0\|_2\)</span>.
+Theorem 7.1, applied to the <span class="math" data-tex="\(n\)">\(n\)</span> vectors <span class="math" data-tex="\(x_0,x_1,\dots,x_{n-1}\)">\(x_0,x_1,\dots,x_{n-1}\)</span> (with <span class="math" data-tex="\(x_0\)">\(x_0\)</span> in the role of <span class="math" data-tex="\(x_1\)">\(x_1\)</span>), gives <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.
+Since <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-tex="\(x_k\)">\(x_k\)</span> are positive, <span class="math" data-tex="\(u_a(x_0)=E_a(x_0)=e\)">\(u_a(x_0)=E_a(x_0)=e\)</span> and <span class="math" data-tex="\(u_a(x_k)=E_a(v_kx_0v_k^*)=v_kev_k^*\)">\(u_a(x_k)=E_a(v_kx_0v_k^*)=v_kev_k^*\)</span> (B3). So
+(i) of Theorem 7.1 reads <span class="math" data-tex="\(\|v_kev_k^*-e\|_2=\|v_ke-ev_k\|_2\le\varepsilon^{1/8}\|e\|_2\)">\(\|v_kev_k^*-e\|_2=\|v_ke-ev_k\|_2\le\varepsilon^{1/8}\|e\|_2\)</span>. By (ii), <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span> and, as <span class="math" data-tex="\(e\)">\(e\)</span>
+commutes with <span class="math" data-tex="\(x_0\)">\(x_0\)</span>,
+<span class="math math-display" data-tex="\[
+\|x_0-ex_0\|_2^2=\tau\big((1-e)x_0^2(1-e)\big)=\sum_s\tau\big((1-e)e_s(1-e)\big)=\sum_s\|e_s-ee_s\|_2^2
+\le30n\varepsilon^{1/4}\|x_0\|_2^2 .
+\]">\[
+\|x_0-ex_0\|_2^2=\tau\big((1-e)x_0^2(1-e)\big)=\sum_s\tau\big((1-e)e_s(1-e)\big)=\sum_s\|e_s-ee_s\|_2^2
+\le30n\varepsilon^{1/4}\|x_0\|_2^2 .
+\]</span>
+Finally <span class="math" data-tex="\(e\le s(x_0)\)">\(e\le s(x_0)\)</span>, and the kernel of <span class="math" data-tex="\(\sum_se_s\)">\(\sum_se_s\)</span> is <span class="math" data-tex="\(\bigcap_s\ker e_s\)">\(\bigcap_s\ker e_s\)</span> (if <span class="math" data-tex="\(\sum_s\langle e_s\xi,\xi\rangle=0\)">\(\sum_s\langle e_s\xi,\xi\rangle=0\)</span>
+then each <span class="math" data-tex="\(e_s\xi=0\)">\(e_s\xi=0\)</span>), so <span class="math" data-tex="\(s(x_0)=e_1\vee\dots\vee e_m\)">\(s(x_0)=e_1\vee\dots\vee e_m\)</span>; and <span class="math" data-tex="\(\tau(e)\le a^{-2}\|x_0\|_2^2\)">\(\tau(e)\le a^{-2}\|x_0\|_2^2\)</span> by (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 8.3.</strong> Let <span class="math" data-tex="\(\delta\in(0,1)\)">\(\delta\in(0,1)\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(\varepsilon_0=(\delta/24n)^{16}\)">\(\varepsilon_0=(\delta/24n)^{16}\)</span>. Let
+<span class="math" data-tex="\(v_1,\dots,v_{n-1}\in N\)">\(v_1,\dots,v_{n-1}\in N\)</span> be unitaries and <span class="math" data-tex="\(e_1,e_2\in N\)">\(e_1,e_2\in N\)</span> projections with <span class="math" data-tex="\(\tau(e_1)=\tau(e_2)&lt;\infty\)">\(\tau(e_1)=\tau(e_2)&lt;\infty\)</span> (for
+instance, equivalent projections of finite trace), such that <span class="math" data-tex="\(\|[v_k,e_s]\|_2\le\varepsilon_0\|e_s\|_2\)">\(\|[v_k,e_s]\|_2\le\varepsilon_0\|e_s\|_2\)</span> for all <span class="math" data-tex="\(k\)">\(k\)</span>
+and <span class="math" data-tex="\(s=1,2\)">\(s=1,2\)</span>. Then there is a projection <span class="math" data-tex="\(e\le e_1\vee e_2\)">\(e\le e_1\vee e_2\)</span> with
+<span class="math math-display" data-tex="\[
+\|ee_s-e_s\|_2\le\delta\|e_s\|_2\quad(s=1,2),\qquad\|[e,v_k]\|_2\le\delta\|e\|_2\quad(k=1,\dots,n-1).
+\]">\[
+\|ee_s-e_s\|_2\le\delta\|e_s\|_2\quad(s=1,2),\qquad\|[e,v_k]\|_2\le\delta\|e\|_2\quad(k=1,\dots,n-1).
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(e_1=e_2=0\)">\(e_1=e_2=0\)</span> take <span class="math" data-tex="\(e=0\)">\(e=0\)</span>. Otherwise both are nonzero, and we apply Theorem 8.2 with <span class="math" data-tex="\(m=2\)">\(m=2\)</span> and
+<span class="math" data-tex="\(\varepsilon=(2\varepsilon_0)^{1/2}=2^{1/2}(\delta/24n)^8\)">\(\varepsilon=(2\varepsilon_0)^{1/2}=2^{1/2}(\delta/24n)^8\)</span>, so that (8.1) holds. We have <span class="math" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>,
+<span class="math" data-tex="\(30n\varepsilon^{1/4}=30\cdot2^{1/8}\delta^2/(576\,n)&lt;0.06\,\delta^2&lt;1\)">\(30n\varepsilon^{1/4}=30\cdot2^{1/8}\delta^2/(576\,n)&lt;0.06\,\delta^2&lt;1\)</span>, and <span class="math" data-tex="\(\varepsilon^{1/8}=2^{1/16}\delta/24n&lt;\delta\)">\(\varepsilon^{1/8}=2^{1/16}\delta/24n&lt;\delta\)</span>.
+By (8.2) and <span class="math" data-tex="\(\tau(e_1)=\tau(e_2)\)">\(\tau(e_1)=\tau(e_2)\)</span>, <span class="math" data-tex="\(\|e_s-ee_s\|_2^2\le0.06\,\delta^2\cdot2\tau(e_s)\le\delta^2\|e_s\|_2^2\)">\(\|e_s-ee_s\|_2^2\le0.06\,\delta^2\cdot2\tau(e_s)\le\delta^2\|e_s\|_2^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Remark.</em> In a II₁ factor the typical use is this: if two projections <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> of the same trace <em>both</em> almost
+commute with finitely many unitaries in the <span class="math" data-tex="\(2\)">\(2\)</span>-norm, each relative to its own size, then there is a spectral
+projection of <span class="math" data-tex="\((e_1+e_2)^{1/2}\)">\((e_1+e_2)^{1/2}\)</span> that almost commutes with the unitaries <em>and</em> almost contains <span class="math" data-tex="\(e_1\)">\(e_1\)</span> and <span class="math" data-tex="\(e_2\)">\(e_2\)</span>. The
+hypothesis on <span class="math" data-tex="\(e_2\)">\(e_2\)</span> cannot be dropped. Let <span class="math" data-tex="\(M_3\subseteq N\)">\(M_3\subseteq N\)</span> be a unital copy of the <span class="math" data-tex="\(3\times3\)">\(3\times3\)</span> matrices, let
+<span class="math" data-tex="\(v=\operatorname{diag}(1,1,-1)\)">\(v=\operatorname{diag}(1,1,-1)\)</span>, let <span class="math" data-tex="\(e_1\)">\(e_1\)</span> be the projection onto the first coordinate and <span class="math" data-tex="\(e_2\)">\(e_2\)</span> the projection
+onto <span class="math" data-tex="\((0,1,1)/\sqrt2\)">\((0,1,1)/\sqrt2\)</span>. Then <span class="math" data-tex="\([v,e_1]=0\)">\([v,e_1]=0\)</span> and <span class="math" data-tex="\(\tau(e_1)=\tau(e_2)=\tfrac13\)">\(\tau(e_1)=\tau(e_2)=\tfrac13\)</span>. But <span class="math" data-tex="\(e_1\perp e_2\)">\(e_1\perp e_2\)</span>, so
+<span class="math" data-tex="\(p=e_1+e_2\)">\(p=e_1+e_2\)</span> is a projection and <span class="math" data-tex="\(p\)">\(p\)</span> is the only nonzero spectral projection of <span class="math" data-tex="\((e_1+e_2)^{1/2}=p\)">\((e_1+e_2)^{1/2}=p\)</span>, while
+<span class="math" data-tex="\([v,p]=[v,e_2]\)">\([v,p]=[v,e_2]\)</span> has <span class="math" data-tex="\(\|[v,p]\|_2^2=\tfrac23=\|p\|_2^2\)">\(\|[v,p]\|_2^2=\tfrac23=\|p\|_2^2\)</span>. The square root is essential: Lemma 8.1 controls
+<span class="math" data-tex="\(v(e_1+e_2)v^*-(e_1+e_2)\)">\(v(e_1+e_2)v^*-(e_1+e_2)\)</span> only in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, and Theorem 3.1 turns this into <span class="math" data-tex="\(L^2\)">\(L^2\)</span> control of the square root, which is
+what Theorem 7.1 needs.</p>
+<h2 id="9-conjugating-two-projections-by-a-unitary-close-to-the-identity">9. Conjugating two projections by a unitary close to the identity</h2>
+<p>Let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> be projections in a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> (no trace is needed in this section). We want a unitary
+<span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(WeW^*=f\)">\(WeW^*=f\)</span> and <span class="math" data-tex="\(W-1\)">\(W-1\)</span> as small as <span class="math" data-tex="\(e-f\)">\(e-f\)</span>, in the strongest sense: as an operator inequality
+<span class="math" data-tex="\(|W-1|\le C|e-f|\)">\(|W-1|\le C|e-f|\)</span>. Such an inequality implies <span class="math" data-tex="\(\|W-1\|\le C\|e-f\|\)">\(\|W-1\|\le C\|e-f\|\)</span> and, when the two sides commute (as they will), also
+<span class="math" data-tex="\(\|W-1\|_p\le C\|e-f\|_p\)">\(\|W-1\|_p\le C\|e-f\|_p\)</span> for a trace and every <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>The two self-adjoint operators
+<span class="math math-display" data-tex="\[
+\mathsf a=e-f,\qquad\mathsf b=e+f-1
+\]">\[
+\mathsf a=e-f,\qquad\mathsf b=e+f-1
+\]</span>
+carry the geometry of the pair. Let <span class="math" data-tex="\(z\)">\(z\)</span> be the projection onto the kernel of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>, and
+<span class="math" data-tex="\(\sigma=\chi_{(0,\infty)}(\mathsf b)-\chi_{(-\infty,0)}(\mathsf b)\)">\(\sigma=\chi_{(0,\infty)}(\mathsf b)-\chi_{(-\infty,0)}(\mathsf b)\)</span>, the sign of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>; so
+<span class="math" data-tex="\(\sigma=\sigma^*\)">\(\sigma=\sigma^*\)</span>, <span class="math" data-tex="\(\sigma^2=1-z\)">\(\sigma^2=1-z\)</span>, <span class="math" data-tex="\(\sigma\mathsf b=|\mathsf b|\)">\(\sigma\mathsf b=|\mathsf b|\)</span>.</p>
+<p><strong>Lemma 9.1.</strong> (a) <span class="math" data-tex="\(\mathsf a^2+\mathsf b^2=1\)">\(\mathsf a^2+\mathsf b^2=1\)</span>; <span class="math" data-tex="\(\|\mathsf b\|\le1\)">\(\|\mathsf b\|\le1\)</span>; <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>;
+<span class="math" data-tex="\(\mathsf be=fe\)">\(\mathsf be=fe\)</span> and <span class="math" data-tex="\(e\mathsf b=ef\)">\(e\mathsf b=ef\)</span>.</p>
+<p>(b) <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span> and <span class="math" data-tex="\(|\mathsf a|\)">\(|\mathsf a|\)</span> commute with <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span>; <span class="math" data-tex="\(z\)">\(z\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span> and
+<span class="math" data-tex="\(f\)">\(f\)</span>; <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(ez=e\wedge(1-f)\)">\(ez=e\wedge(1-f)\)</span>, <span class="math" data-tex="\(fz=(1-e)\wedge f\)">\(fz=(1-e)\wedge f\)</span>, <span class="math" data-tex="\(ez+fz=z\)">\(ez+fz=z\)</span>, and <span class="math" data-tex="\(\mathsf a^2z=z\)">\(\mathsf a^2z=z\)</span>.</p>
+<p><strong>Proof.</strong> (a) <span class="math" data-tex="\(\mathsf a^2=e+f-ef-fe\)">\(\mathsf a^2=e+f-ef-fe\)</span> and <span class="math" data-tex="\(\mathsf b^2=1-e-f+ef+fe\)">\(\mathsf b^2=1-e-f+ef+fe\)</span>. Then <span class="math" data-tex="\(e\mathsf a^2=e-efe=\mathsf a^2e\)">\(e\mathsf a^2=e-efe=\mathsf a^2e\)</span>, and
+similarly for <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\mathsf be=e+fe-e=fe\)">\(\mathsf be=e+fe-e=fe\)</span>, <span class="math" data-tex="\(e\mathsf b=ef\)">\(e\mathsf b=ef\)</span>. Since <span class="math" data-tex="\(0\le e+f\le2\)">\(0\le e+f\le2\)</span>, <span class="math" data-tex="\(-1\le\mathsf b\le1\)">\(-1\le\mathsf b\le1\)</span>.</p>
+<p>(b) <span class="math" data-tex="\(\mathsf b^2=1-\mathsf a^2\)">\(\mathsf b^2=1-\mathsf a^2\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span>, <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>; <span class="math" data-tex="\(z=\chi_{\{0\}}(\mathsf b^2)\)">\(z=\chi_{\{0\}}(\mathsf b^2)\)</span>
+and <span class="math" data-tex="\(|\mathsf b|=(\mathsf b^2)^{1/2}\)">\(|\mathsf b|=(\mathsf b^2)^{1/2}\)</span> are functions of <span class="math" data-tex="\(\mathsf b^2\)">\(\mathsf b^2\)</span>, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, <span class="math" data-tex="\(|\mathsf a|=(1-\mathsf b^2)^{1/2}\)">\(|\mathsf a|=(1-\mathsf b^2)^{1/2}\)</span>
+are functions of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(\mathsf bz=0\)">\(\mathsf bz=0\)</span> means <span class="math" data-tex="\((e+f)z=z\)">\((e+f)z=z\)</span>, so <span class="math" data-tex="\(ez+fz=z\)">\(ez+fz=z\)</span>. Multiplying <span class="math" data-tex="\(ez+efz=ez\)">\(ez+efz=ez\)</span> (which is <span class="math" data-tex="\(e\)">\(e\)</span> applied to
+<span class="math" data-tex="\(ez+fz=z\)">\(ez+fz=z\)</span>) shows <span class="math" data-tex="\(efz=0\)">\(efz=0\)</span>, i.e. <span class="math" data-tex="\(fz\,ez=0\)">\(fz\,ez=0\)</span> and <span class="math" data-tex="\(ez\le1-f\)">\(ez\le1-f\)</span>; so <span class="math" data-tex="\(ez\le e\wedge(1-f)\)">\(ez\le e\wedge(1-f)\)</span>. Conversely, if
+<span class="math" data-tex="\(\xi\in\operatorname{ran}(e\wedge(1-f))\)">\(\xi\in\operatorname{ran}(e\wedge(1-f))\)</span>, then <span class="math" data-tex="\(\mathsf b\xi=\xi+0-\xi=0\)">\(\mathsf b\xi=\xi+0-\xi=0\)</span>, so <span class="math" data-tex="\(\xi=z\xi=ez\xi\)">\(\xi=z\xi=ez\xi\)</span>. The same argument
+gives <span class="math" data-tex="\(fz=(1-e)\wedge f\)">\(fz=(1-e)\wedge f\)</span>. Finally <span class="math" data-tex="\(\mathsf a^2z=(1-\mathsf b^2)z=z\)">\(\mathsf a^2z=(1-\mathsf b^2)z=z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 9.2 (the part off the kernel).</strong> The operator <span class="math" data-tex="\(W_1=\sigma(2e-1)\in M\)">\(W_1=\sigma(2e-1)\in M\)</span> is a partial isometry with
+<span class="math" data-tex="\(W_1^*W_1=W_1W_1^*=1-z\)">\(W_1^*W_1=W_1W_1^*=1-z\)</span>. It satisfies <span class="math" data-tex="\(W_1eW_1^*=f(1-z)\)">\(W_1eW_1^*=f(1-z)\)</span>, <span class="math" data-tex="\(W_1+W_1^*=2|\mathsf b|\)">\(W_1+W_1^*=2|\mathsf b|\)</span>, and it commutes with
+<span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span>, <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span> and <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(2e-1\)">\(2e-1\)</span> is a self-adjoint unitary commuting with <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(\sigma^2=1-z\)">\(\sigma^2=1-z\)</span>, so
+<span class="math" data-tex="\(W_1^*W_1=(2e-1)(1-z)(2e-1)=1-z\)">\(W_1^*W_1=(2e-1)(1-z)(2e-1)=1-z\)</span> and <span class="math" data-tex="\(W_1W_1^*=\sigma(2e-1)^2\sigma=1-z\)">\(W_1W_1^*=\sigma(2e-1)^2\sigma=1-z\)</span>. Commutation with <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span>,
+<span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span>, <span class="math" data-tex="\(z\)">\(z\)</span> follows from Lemma 9.1(b).</p>
+<p>We use repeatedly: <em>if <span class="math" data-tex="\(Y\in M\)">\(Y\in M\)</span> and <span class="math" data-tex="\(|\mathsf b|\,Y=0\)">\(|\mathsf b|\,Y=0\)</span>, then <span class="math" data-tex="\((1-z)Y=0\)">\((1-z)Y=0\)</span></em>, because the range of <span class="math" data-tex="\(Y\)">\(Y\)</span> lies in the
+kernel of <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span>, which is the range of <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><em>Sum.</em> <span class="math" data-tex="\(|\mathsf b|(\sigma e+e\sigma)=\mathsf be+e\mathsf b=fe+ef\)">\(|\mathsf b|(\sigma e+e\sigma)=\mathsf be+e\mathsf b=fe+ef\)</span> (using that <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span>),
+and <span class="math" data-tex="\(|\mathsf b|(\sigma+|\mathsf b|)=\mathsf b+\mathsf b^2=ef+fe\)">\(|\mathsf b|(\sigma+|\mathsf b|)=\mathsf b+\mathsf b^2=ef+fe\)</span>. So <span class="math" data-tex="\(Y=\sigma e+e\sigma-\sigma-|\mathsf b|\)">\(Y=\sigma e+e\sigma-\sigma-|\mathsf b|\)</span>
+satisfies <span class="math" data-tex="\(|\mathsf b|Y=0\)">\(|\mathsf b|Y=0\)</span>, whence <span class="math" data-tex="\((1-z)Y=0\)">\((1-z)Y=0\)</span>. Also <span class="math" data-tex="\(zY=0\)">\(zY=0\)</span>, because <span class="math" data-tex="\(z\sigma=\sigma z=0\)">\(z\sigma=\sigma z=0\)</span>, <span class="math" data-tex="\(z|\mathsf b|=0\)">\(z|\mathsf b|=0\)</span> and
+<span class="math" data-tex="\(z\)">\(z\)</span> commutes with <span class="math" data-tex="\(e\)">\(e\)</span>. So <span class="math" data-tex="\(Y=0\)">\(Y=0\)</span>, that is, <span class="math" data-tex="\(\sigma e+e\sigma=\sigma+|\mathsf b|\)">\(\sigma e+e\sigma=\sigma+|\mathsf b|\)</span>. Therefore <span class="math" data-tex="\(W_1+W_1^*=\sigma(2e-1)+(2e-1)\sigma=2(\sigma e+e\sigma)-2\sigma=
+2|\mathsf b|\)">\(W_1+W_1^*=\sigma(2e-1)+(2e-1)\sigma=2(\sigma e+e\sigma)-2\sigma=
+2|\mathsf b|\)</span>.</p>
+<p><em>Conjugation.</em> <span class="math" data-tex="\(W_1eW_1^*=\sigma(2e-1)e(2e-1)\sigma=\sigma e\sigma\)">\(W_1eW_1^*=\sigma(2e-1)e(2e-1)\sigma=\sigma e\sigma\)</span>. Now <span class="math" data-tex="\(\mathsf be\mathsf b=f(e\mathsf b)=fef\)">\(\mathsf be\mathsf b=f(e\mathsf b)=fef\)</span> by
+Lemma 9.1(a), and <span class="math" data-tex="\(f\mathsf b^2=f-fe-f+fef+fe=fef\)">\(f\mathsf b^2=f-fe-f+fef+fe=fef\)</span>. So with <span class="math" data-tex="\(Y=\sigma e\sigma-f(1-z)\)">\(Y=\sigma e\sigma-f(1-z)\)</span> we get
+<span class="math" data-tex="\(|\mathsf b|\,Y|\mathsf b|=\mathsf be\mathsf b-f\mathsf b^2=0\)">\(|\mathsf b|\,Y|\mathsf b|=\mathsf be\mathsf b-f\mathsf b^2=0\)</span>. By the observation above (applied to <span class="math" data-tex="\(Y|\mathsf b|\)">\(Y|\mathsf b|\)</span> and
+then to the adjoint), <span class="math" data-tex="\((1-z)Y(1-z)=0\)">\((1-z)Y(1-z)=0\)</span>. Since <span class="math" data-tex="\(Y=(1-z)Y(1-z)\)">\(Y=(1-z)Y(1-z)\)</span>, <span class="math" data-tex="\(W_1eW_1^*=f(1-z)\)">\(W_1eW_1^*=f(1-z)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 9.3.</strong> If <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span> and <span class="math" data-tex="\(e,f\)">\(e,f\)</span> are finite (for instance, if <span class="math" data-tex="\(M\)">\(M\)</span> is finite and <span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span>), then
+<span class="math" data-tex="\(e\wedge(1-f)\sim(1-e)\wedge f\)">\(e\wedge(1-f)\sim(1-e)\wedge f\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 9.1(c) we must show <span class="math" data-tex="\(ez\sim fz\)">\(ez\sim fz\)</span>. By Lemma 9.2, <span class="math" data-tex="\(w=W_1e\)">\(w=W_1e\)</span> is a partial isometry with
+<span class="math" data-tex="\(w^*w=e(1-z)\)">\(w^*w=e(1-z)\)</span> and <span class="math" data-tex="\(ww^*=f(1-z)\)">\(ww^*=f(1-z)\)</span>. By the comparison theorem (B7) there is a central projection <span class="math" data-tex="\(c\)">\(c\)</span> with
+<span class="math" data-tex="\(ezc\precsim fzc\)">\(ezc\precsim fzc\)</span> and <span class="math" data-tex="\(fz(1-c)\precsim ez(1-c)\)">\(fz(1-c)\precsim ez(1-c)\)</span>. Let <span class="math" data-tex="\(ezc\sim r\le fzc\)">\(ezc\sim r\le fzc\)</span>. Since <span class="math" data-tex="\(e(1-z)c\sim f(1-z)c\)">\(e(1-z)c\sim f(1-z)c\)</span> (via
+<span class="math" data-tex="\(wc\)">\(wc\)</span>), <span class="math" data-tex="\(ezc\perp e(1-z)c\)">\(ezc\perp e(1-z)c\)</span> and <span class="math" data-tex="\(r\perp f(1-z)c\)">\(r\perp f(1-z)c\)</span>, we get <span class="math" data-tex="\(ec\sim r+f(1-z)c\le fc\)">\(ec\sim r+f(1-z)c\le fc\)</span> (B7). Also <span class="math" data-tex="\(ec\sim fc\)">\(ec\sim fc\)</span>. So
+<span class="math" data-tex="\(fc\)">\(fc\)</span> is equivalent to its subprojection <span class="math" data-tex="\(r+f(1-z)c\)">\(r+f(1-z)c\)</span>; as <span class="math" data-tex="\(fc\)">\(fc\)</span> is finite, <span class="math" data-tex="\(r+f(1-z)c=fc\)">\(r+f(1-z)c=fc\)</span>, i.e. <span class="math" data-tex="\(r=fzc\)">\(r=fzc\)</span>. Thus
+<span class="math" data-tex="\(ezc\sim fzc\)">\(ezc\sim fzc\)</span>. Exchanging the roles of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> (and using that <span class="math" data-tex="\(e\)">\(e\)</span> is finite) gives
+<span class="math" data-tex="\(fz(1-c)\sim ez(1-c)\)">\(fz(1-c)\sim ez(1-c)\)</span>. Adding, <span class="math" data-tex="\(ez\sim fz\)">\(ez\sim fz\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 9.4.</strong> Let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> be projections in a von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(e\wedge(1-f)\sim(1-e)\wedge f\)">\(e\wedge(1-f)\sim(1-e)\wedge f\)</span> (by
+Proposition 9.3 this holds when <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> are equivalent finite projections). Choose a partial isometry <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span>
+with <span class="math" data-tex="\(v^*v=e\wedge(1-f)\)">\(v^*v=e\wedge(1-f)\)</span>, <span class="math" data-tex="\(vv^*=(1-e)\wedge f\)">\(vv^*=(1-e)\wedge f\)</span>, and put
+<span class="math math-display" data-tex="\[
+W=\operatorname{sgn}(e+f-1)\,(2e-1)+v-v^* .
+\]">\[
+W=\operatorname{sgn}(e+f-1)\,(2e-1)+v-v^* .
+\]</span>
+Then <span class="math" data-tex="\(W\)">\(W\)</span> is a unitary in <span class="math" data-tex="\(M\)">\(M\)</span>, and:</p>
+<p>(a) <span class="math" data-tex="\(WeW^*=f\)">\(WeW^*=f\)</span>;</p>
+<p>(b) <span class="math" data-tex="\(W\)">\(W\)</span> commutes with <span class="math" data-tex="\(|e-f|\)">\(|e-f|\)</span> and with <span class="math" data-tex="\(|e+f-1|\)">\(|e+f-1|\)</span>;</p>
+<p>(c) <span class="math" data-tex="\((W-1)^*(W-1)=2\big(1-|e+f-1|\big)\le2\,(e-f)^2\)">\((W-1)^*(W-1)=2\big(1-|e+f-1|\big)\le2\,(e-f)^2\)</span>; consequently <span class="math" data-tex="\(|W-1|\le\sqrt2\,|e-f|\le3|e-f|\)">\(|W-1|\le\sqrt2\,|e-f|\le3|e-f|\)</span>.</p>
+<p><em>Reference:</em> the estimate with the constant <span class="math" data-tex="\(3\)">\(3\)</span> is a lemma of Connes in his classification of injective factors.</p>
+<p><strong>Proof.</strong> With the notation above, <span class="math" data-tex="\(W=W_1+W_z\)">\(W=W_1+W_z\)</span> where <span class="math" data-tex="\(W_1=\sigma(2e-1)\)">\(W_1=\sigma(2e-1)\)</span> and <span class="math" data-tex="\(W_z=v-v^*\)">\(W_z=v-v^*\)</span>. By Lemma 9.1(c),
+<span class="math" data-tex="\(v^*v=ez\)">\(v^*v=ez\)</span> and <span class="math" data-tex="\(vv^*=fz\)">\(vv^*=fz\)</span>, which are orthogonal with sum <span class="math" data-tex="\(z\)">\(z\)</span>. Hence <span class="math" data-tex="\(v=fz\,v\,ez\)">\(v=fz\,v\,ez\)</span>, <span class="math" data-tex="\(v^2=0\)">\(v^2=0\)</span>, <span class="math" data-tex="\(v^*ez=0\)">\(v^*ez=0\)</span> and
+<span class="math" data-tex="\(ezv=0\)">\(ezv=0\)</span>, and
+<span class="math math-display" data-tex="\[
+W_z^*W_z=W_zW_z^*=v^*v+vv^*=z,\qquad W_z\,ez\,W_z^*=v\,ez\,v^*=fz,\qquad W_z^*=-W_z .
+\]">\[
+W_z^*W_z=W_zW_z^*=v^*v+vv^*=z,\qquad W_z\,ez\,W_z^*=v\,ez\,v^*=fz,\qquad W_z^*=-W_z .
+\]</span>
+Since <span class="math" data-tex="\(W_1=(1-z)W_1(1-z)\)">\(W_1=(1-z)W_1(1-z)\)</span> and <span class="math" data-tex="\(W_z=zW_zz\)">\(W_z=zW_zz\)</span>, Lemma 9.2 shows that <span class="math" data-tex="\(W\)">\(W\)</span> is unitary and
+<span class="math" data-tex="\(WeW^*=W_1e(1-z)W_1^*+W_z\,ez\,W_z^*=f(1-z)+fz=f\)">\(WeW^*=W_1e(1-z)W_1^*+W_z\,ez\,W_z^*=f(1-z)+fz=f\)</span>, which is (a).</p>
+<p>(b) <span class="math" data-tex="\(W_1\)">\(W_1\)</span> commutes with <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span> and <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span> (Lemma 9.2). On the range of <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\mathsf a^2=1\)">\(\mathsf a^2=1\)</span> and
+<span class="math" data-tex="\(|\mathsf b|=0\)">\(|\mathsf b|=0\)</span> (Lemma 9.1(c)); as <span class="math" data-tex="\(W_z=zW_zz\)">\(W_z=zW_zz\)</span>, it commutes with <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span> and <span class="math" data-tex="\(|\mathsf b|\)">\(|\mathsf b|\)</span>. Hence <span class="math" data-tex="\(W\)">\(W\)</span>
+commutes with <span class="math" data-tex="\(\mathsf a^2\)">\(\mathsf a^2\)</span>, so with <span class="math" data-tex="\(|\mathsf a|=|e-f|\)">\(|\mathsf a|=|e-f|\)</span>, and with <span class="math" data-tex="\(|\mathsf b|=|e+f-1|\)">\(|\mathsf b|=|e+f-1|\)</span>.</p>
+<p>(c) <span class="math" data-tex="\((W-1)^*(W-1)=2-(W+W^*)=2-2|\mathsf b|-(W_z+W_z^*)=2(1-|\mathsf b|)\)">\((W-1)^*(W-1)=2-(W+W^*)=2-2|\mathsf b|-(W_z+W_z^*)=2(1-|\mathsf b|)\)</span>. Since <span class="math" data-tex="\(0\le|\mathsf b|\le1\)">\(0\le|\mathsf b|\le1\)</span>, we have
+<span class="math" data-tex="\(1-|\mathsf b|\le1-\mathsf b^2=\mathsf a^2\)">\(1-|\mathsf b|\le1-\mathsf b^2=\mathsf a^2\)</span>. Both <span class="math" data-tex="\(|W-1|=(2(1-|\mathsf b|))^{1/2}\)">\(|W-1|=(2(1-|\mathsf b|))^{1/2}\)</span> and <span class="math" data-tex="\(\sqrt2|\mathsf
+a|=(2(1-\mathsf b^2))^{1/2}\)">\(\sqrt2|\mathsf
+a|=(2(1-\mathsf b^2))^{1/2}\)</span> are functions of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>, and <span class="math" data-tex="\((2(1-|t|))^{1/2}\le(2(1-t^2))^{1/2}\)">\((2(1-|t|))^{1/2}\le(2(1-t^2))^{1/2}\)</span> for
+<span class="math" data-tex="\(t\in[-1,1]\)">\(t\in[-1,1]\)</span>; so <span class="math" data-tex="\(|W-1|\le\sqrt2|\mathsf a|\)">\(|W-1|\le\sqrt2|\mathsf a|\)</span> by the functional calculus. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 9.5.</strong> Let <span class="math" data-tex="\(e,f\)">\(e,f\)</span> be equivalent finite projections in <span class="math" data-tex="\(M\)">\(M\)</span> (for instance, equivalent projections in a
+finite von Neumann algebra). There is a unitary <span class="math" data-tex="\(W\in M\)">\(W\in M\)</span> with <span class="math" data-tex="\(WeW^*=f\)">\(WeW^*=f\)</span>, <span class="math" data-tex="\([W,|e-f|]=0\)">\([W,|e-f|]=0\)</span> and
+<span class="math" data-tex="\(|W-1|\le\sqrt2\,|e-f|\)">\(|W-1|\le\sqrt2\,|e-f|\)</span>. Moreover <span class="math" data-tex="\(\varphi(|W-1|)\le\varphi(\sqrt2|e-f|)\)">\(\varphi(|W-1|)\le\varphi(\sqrt2|e-f|)\)</span> for every nondecreasing function
+<span class="math" data-tex="\(\varphi\colon[0,\infty)\to[0,\infty)\)">\(\varphi\colon[0,\infty)\to[0,\infty)\)</span>. In particular <span class="math" data-tex="\(\|W-1\|\le\sqrt2\|e-f\|\)">\(\|W-1\|\le\sqrt2\|e-f\|\)</span>, and if <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is a faithful normal
+semifinite trace on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(1\le p&lt;\infty\)">\(1\le p&lt;\infty\)</span>, then <span class="math" data-tex="\(\|W-1\|_p\le\sqrt2\,\|e-f\|_p\)">\(\|W-1\|_p\le\sqrt2\,\|e-f\|_p\)</span> (both sides possibly infinite).</p>
+<p><strong>Proof.</strong> Theorem 9.4 and Proposition 9.3. Both <span class="math" data-tex="\(|W-1|\)">\(|W-1|\)</span> and <span class="math" data-tex="\(\sqrt2|e-f|\)">\(\sqrt2|e-f|\)</span> are functions of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span>, and
+the pointwise inequality of the proof of (c) persists after composing with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. With <span class="math" data-tex="\(\varphi(t)=t^p\)">\(\varphi(t)=t^p\)</span>,
+<span class="math" data-tex="\(\tau(|W-1|^p)\le2^{p/2}\tau(|e-f|^p)\)">\(\tau(|W-1|^p)\le2^{p/2}\tau(|e-f|^p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 9.6.</strong> (1) <em>Two lines in the plane.</em> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> let <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> be the projections onto
+<span class="math" data-tex="\(\mathbb C(1,0)\)">\(\mathbb C(1,0)\)</span> and <span class="math" data-tex="\(\mathbb C(\cos\theta,\sin\theta)\)">\(\mathbb C(\cos\theta,\sin\theta)\)</span>, <span class="math" data-tex="\(0&lt;\theta&lt;\pi/2\)">\(0&lt;\theta&lt;\pi/2\)</span>. Then
+<span class="math" data-tex="\(e+f-1=\cos\theta\begin{pmatrix}\cos\theta&amp;\sin\theta\\\sin\theta&amp;-\cos\theta\end{pmatrix}\)">\(e+f-1=\cos\theta\begin{pmatrix}\cos\theta&amp;\sin\theta\\\sin\theta&amp;-\cos\theta\end{pmatrix}\)</span>, whose sign is the
+reflection <span class="math" data-tex="\(\begin{pmatrix}\cos\theta&amp;\sin\theta\\\sin\theta&amp;-\cos\theta\end{pmatrix}\)">\(\begin{pmatrix}\cos\theta&amp;\sin\theta\\\sin\theta&amp;-\cos\theta\end{pmatrix}\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> is the rotation by
+<span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Here <span class="math" data-tex="\(|e-f|=\sin\theta\)">\(|e-f|=\sin\theta\)</span>, <span class="math" data-tex="\(|e+f-1|=\cos\theta\)">\(|e+f-1|=\cos\theta\)</span>, and <span class="math" data-tex="\(|W-1|=(2-2\cos\theta)^{1/2}=2\sin(\theta/2)\)">\(|W-1|=(2-2\cos\theta)^{1/2}=2\sin(\theta/2)\)</span>, in
+accordance with Theorem 9.4(c).</p>
+<p>(2) <em>The constant <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> is optimal.</em> If <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> are orthogonal, equivalent and nonzero, then <span class="math" data-tex="\(|e-f|\)">\(|e-f|\)</span> is
+the projection <span class="math" data-tex="\(p=e+f\)">\(p=e+f\)</span>. Let <span class="math" data-tex="\(W\)">\(W\)</span> be any unitary with <span class="math" data-tex="\(WeW^*=f\)">\(WeW^*=f\)</span>, and suppose <span class="math" data-tex="\(T=|W-1|\le Cp\)">\(T=|W-1|\le Cp\)</span> for some
+<span class="math" data-tex="\(C\ge0\)">\(C\ge0\)</span>. Then <span class="math" data-tex="\((1-p)T(1-p)\le0\)">\((1-p)T(1-p)\le0\)</span>, so <span class="math" data-tex="\(T^{1/2}(1-p)=0\)">\(T^{1/2}(1-p)=0\)</span> and <span class="math" data-tex="\(T=pTp\)">\(T=pTp\)</span>; thus <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(p\)">\(p\)</span>, and
+<span class="math" data-tex="\(0\le T\le C\)">\(0\le T\le C\)</span> on the range of <span class="math" data-tex="\(p\)">\(p\)</span>, whence <span class="math" data-tex="\(T^2\le C^2p\)">\(T^2\le C^2p\)</span>. For a unit vector <span class="math" data-tex="\(\xi\in\operatorname{ran}e\)">\(\xi\in\operatorname{ran}e\)</span> we have
+<span class="math" data-tex="\(W\xi=We\xi=fW\xi\in\operatorname{ran}f\perp\xi\)">\(W\xi=We\xi=fW\xi\in\operatorname{ran}f\perp\xi\)</span>, so
+<span class="math" data-tex="\(2=\|W\xi-\xi\|^2=\|T\xi\|^2=\langle T^2\xi,\xi\rangle\le C^2\)">\(2=\|W\xi-\xi\|^2=\|T\xi\|^2=\langle T^2\xi,\xi\rangle\le C^2\)</span>. Hence no inequality <span class="math" data-tex="\(|W-1|\le C|e-f|\)">\(|W-1|\le C|e-f|\)</span> with
+<span class="math" data-tex="\(C&lt;\sqrt2\)">\(C&lt;\sqrt2\)</span> can hold, for any choice of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>(3) <em>Finiteness cannot be dropped.</em> Let <span class="math" data-tex="\(M=B(\ell^2)\)">\(M=B(\ell^2)\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> the unilateral shift, <span class="math" data-tex="\(e=1\)">\(e=1\)</span> and <span class="math" data-tex="\(f=SS^*\)">\(f=SS^*\)</span>. Then
+<span class="math" data-tex="\(e\sim f\)">\(e\sim f\)</span>, but <span class="math" data-tex="\(WeW^*=1\ne f\)">\(WeW^*=1\ne f\)</span> for every unitary <span class="math" data-tex="\(W\)">\(W\)</span>. Here <span class="math" data-tex="\(e\wedge(1-f)=1-SS^*\ne0\)">\(e\wedge(1-f)=1-SS^*\ne0\)</span> while
+<span class="math" data-tex="\((1-e)\wedge f=0\)">\((1-e)\wedge f=0\)</span>.</p>
+<h2 id="10-exercises">10. Exercises</h2>
+<p><strong>Exercise 1.</strong> Show that the measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of Theorem 2.1 is determined by the numbers
+<span class="math" data-tex="\(\tau(\chi_{[s,\infty)}(h)\chi_{[t,\infty)}(k))\)">\(\tau(\chi_{[s,\infty)}(h)\chi_{[t,\infty)}(k))\)</span>, <span class="math" data-tex="\(s,t\ge0\)">\(s,t\ge0\)</span>, <span class="math" data-tex="\(\max(s,t)&gt;0\)">\(\max(s,t)&gt;0\)</span>.</p>
+<p><em>Solution.</em> Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. The sets <span class="math" data-tex="\([s,\infty)\times[t,\infty)\)">\([s,\infty)\times[t,\infty)\)</span> with <span class="math" data-tex="\(\max(s,t)\ge\varepsilon\)">\(\max(s,t)\ge\varepsilon\)</span> form a
+family closed under intersection (the intersection of two of them is <span class="math" data-tex="\([\max(s,s&#x27;),\infty)\times[\max(t,t&#x27;),\infty)\)">\([\max(s,s&#x27;),\infty)\times[\max(t,t&#x27;),\infty)\)</span>,
+still with <span class="math" data-tex="\(\max\ge\varepsilon\)">\(\max\ge\varepsilon\)</span>), and they generate the Borel sets of <span class="math" data-tex="\(U_\varepsilon=[0,\infty)^2\setminus
+[0,\varepsilon)^2\)">\(U_\varepsilon=[0,\infty)^2\setminus
+[0,\varepsilon)^2\)</span>: indeed <span class="math" data-tex="\([s,s&#x27;)\times[t,\infty)\)">\([s,s&#x27;)\times[t,\infty)\)</span> with <span class="math" data-tex="\(s\ge\varepsilon\)">\(s\ge\varepsilon\)</span> is a difference of two of them, so the
+generated <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-algebra contains all Borel rectangles in <span class="math" data-tex="\([\varepsilon,\infty)\times[0,\infty)\)">\([\varepsilon,\infty)\times[0,\infty)\)</span> and in
+<span class="math" data-tex="\([0,\infty)\times[\varepsilon,\infty)\)">\([0,\infty)\times[\varepsilon,\infty)\)</span>. The set <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span> is the union of <span class="math" data-tex="\([\varepsilon,\infty)\times
+[0,\infty)\)">\([\varepsilon,\infty)\times
+[0,\infty)\)</span> and <span class="math" data-tex="\([0,\infty)\times[\varepsilon,\infty)\)">\([0,\infty)\times[\varepsilon,\infty)\)</span>, members of the family, and its measure is given by
+inclusion–exclusion. The restriction of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> to <span class="math" data-tex="\(U_\varepsilon\)">\(U_\varepsilon\)</span> is finite, so by the uniqueness theorem it is
+determined by the given numbers; and <span class="math" data-tex="\(X=\bigcup_jU_{1/j}\)">\(X=\bigcup_jU_{1/j}\)</span>.</p>
+<p><strong>Exercise 2.</strong> In Example 9.6(1), compute the joint distribution <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(e,f\)">\(e,f\)</span> and check Theorem 2.1(b) for
+<span class="math" data-tex="\(f(t)=g(t)=t\)">\(f(t)=g(t)=t\)</span> and Proposition 4.3(a) directly. Then show that the unitary <span class="math" data-tex="\(W\)">\(W\)</span> of Theorem 9.4 always satisfies
+<span class="math" data-tex="\(|e-f|\le|W-1|\le\sqrt2\,|e-f|\)">\(|e-f|\le|W-1|\le\sqrt2\,|e-f|\)</span>, and check both inequalities in Example 9.6(1).</p>
+<p><em>Solution.</em> By Example 2.2, <span class="math" data-tex="\(\mu=\cos^2\theta\,\delta_{(1,1)}+\sin^2\theta\,(\delta_{(1,0)}+\delta_{(0,1)})\)">\(\mu=\cos^2\theta\,\delta_{(1,1)}+\sin^2\theta\,(\delta_{(1,0)}+\delta_{(0,1)})\)</span>. Then
+<span class="math" data-tex="\(\int|H-K|^2d\mu=2\sin^2\theta=\|e-f\|_2^2\)">\(\int|H-K|^2d\mu=2\sin^2\theta=\|e-f\|_2^2\)</span>. For Proposition 4.3(a): <span class="math" data-tex="\(E_a(e)=e\)">\(E_a(e)=e\)</span>, <span class="math" data-tex="\(E_a(f)=f\)">\(E_a(f)=f\)</span> for <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, and both
+vanish for <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>, so the left side is <span class="math" data-tex="\(\|e-f\|_2^2=2\sin^2\theta\)">\(\|e-f\|_2^2=2\sin^2\theta\)</span>, and indeed <span class="math" data-tex="\(\int|H-K|\,d\mu=2\sin^2\theta\)">\(\int|H-K|\,d\mu=2\sin^2\theta\)</span>.
+By Theorem 9.4(c), <span class="math" data-tex="\(|W-1|^2=2(1-|\mathsf b|)\)">\(|W-1|^2=2(1-|\mathsf b|)\)</span> and <span class="math" data-tex="\(|e-f|^2=1-\mathsf b^2\)">\(|e-f|^2=1-\mathsf b^2\)</span>, both functions of <span class="math" data-tex="\(\mathsf b\)">\(\mathsf b\)</span> with
+values in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>; since <span class="math" data-tex="\(2(1-t)-(1-t^2)=(1-t)^2\ge0\)">\(2(1-t)-(1-t^2)=(1-t)^2\ge0\)</span> and <span class="math" data-tex="\(1-t\le1-t^2\)">\(1-t\le1-t^2\)</span> for <span class="math" data-tex="\(t=|\mathsf b|\in[0,1]\)">\(t=|\mathsf b|\in[0,1]\)</span>, we get
+<span class="math" data-tex="\(|e-f|^2\le|W-1|^2\le2|e-f|^2\)">\(|e-f|^2\le|W-1|^2\le2|e-f|^2\)</span>, and taking square roots of these commuting operators gives the claim. In the example,
+<span class="math" data-tex="\(|e-f|=\sin\theta\)">\(|e-f|=\sin\theta\)</span> and <span class="math" data-tex="\(|W-1|=2\sin(\theta/2)\)">\(|W-1|=2\sin(\theta/2)\)</span>: the inequality <span class="math" data-tex="\(\sin\theta=2\sin(\theta/2)\cos(\theta/2)\le
+2\sin(\theta/2)\)">\(\sin\theta=2\sin(\theta/2)\cos(\theta/2)\le
+2\sin(\theta/2)\)</span> is clear, and <span class="math" data-tex="\(2\sin(\theta/2)\le\sqrt2\sin\theta\)">\(2\sin(\theta/2)\le\sqrt2\sin\theta\)</span> means <span class="math" data-tex="\(\cos(\theta/2)\ge1/\sqrt2\)">\(\cos(\theta/2)\ge1/\sqrt2\)</span>, true for
+<span class="math" data-tex="\(\theta\le\pi/2\)">\(\theta\le\pi/2\)</span>, with equality at <span class="math" data-tex="\(\theta=\pi/2\)">\(\theta=\pi/2\)</span>.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-tex="\(h,k\in L^2(N,\tau)^+\)">\(h,k\in L^2(N,\tau)^+\)</span> commute (their spectral projections commute). Show that
+<span class="math" data-tex="\(\|h-k\|_2^2\le\|h^2-k^2\|_1\)">\(\|h-k\|_2^2\le\|h^2-k^2\|_1\)</span> holds with equality if and only if <span class="math" data-tex="\(hk(h-k)=0\)">\(hk(h-k)=0\)</span>. Show also that positive
+operators with <span class="math" data-tex="\(hk=0\)">\(hk=0\)</span> commute, and give a noncommuting pair with strict inequality.</p>
+<p><em>Solution.</em> Use the joint Borel functional calculus of the commuting pair <span class="math" data-tex="\((h,k)\)">\((h,k)\)</span>: its spectral projections
+<span class="math" data-tex="\(\chi_A(h)\chi_B(k)\)">\(\chi_A(h)\chi_B(k)\)</span> lie in <span class="math" data-tex="\(N\)">\(N\)</span>, so bounded or positive Borel functions <span class="math" data-tex="\(\varphi(h,k)\)">\(\varphi(h,k)\)</span> are affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>,
+and the rules of the calculus hold for them. With <span class="math" data-tex="\(m=\min(h,k)\)">\(m=\min(h,k)\)</span> we have <span class="math" data-tex="\(|h^2-k^2|=|h-k|(h+k)\)">\(|h^2-k^2|=|h-k|(h+k)\)</span> and
+<span class="math" data-tex="\(h+k=|h-k|+2m\)">\(h+k=|h-k|+2m\)</span>, all factors commuting. Hence
+<span class="math math-display" data-tex="\[
+\|h^2-k^2\|_1-\|h-k\|_2^2=\tau\big(|h-k|(h+k)\big)-\tau\big(|h-k|^2\big)=2\,\tau\big(|h-k|\,m\big)\ge0 ,
+\]">\[
+\|h^2-k^2\|_1-\|h-k\|_2^2=\tau\big(|h-k|(h+k)\big)-\tau\big(|h-k|^2\big)=2\,\tau\big(|h-k|\,m\big)\ge0 ,
+\]</span>
+where <span class="math" data-tex="\(|h-k|m\ge0\)">\(|h-k|m\ge0\)</span> (a product of commuting positive operators) has finite trace because
+<span class="math" data-tex="\(|h-k|m\le|h-k|(h+k)\)">\(|h-k|m\le|h-k|(h+k)\)</span>. Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful, equality holds iff <span class="math" data-tex="\(|h-k|\,m=0\)">\(|h-k|\,m=0\)</span>, i.e. iff the function
+<span class="math" data-tex="\(|\lambda-\kappa|\min(\lambda,\kappa)\)">\(|\lambda-\kappa|\min(\lambda,\kappa)\)</span> vanishes on the joint spectrum; this function vanishes exactly where
+<span class="math" data-tex="\(\lambda\kappa(\lambda-\kappa)\)">\(\lambda\kappa(\lambda-\kappa)\)</span> does, so the condition is <span class="math" data-tex="\(hk(h-k)=0\)">\(hk(h-k)=0\)</span>. If <span class="math" data-tex="\(h,k\ge0\)">\(h,k\ge0\)</span> and <span class="math" data-tex="\(hk=0\)">\(hk=0\)</span>, then
+<span class="math" data-tex="\(kh=(hk)^*=0=hk\)">\(kh=(hk)^*=0=hk\)</span>. A noncommuting pair with strict inequality is <span class="math" data-tex="\(e,f\)">\(e,f\)</span> of Example 2.2:
+<span class="math" data-tex="\(\|e-f\|_2^2=2\sin^2\theta&lt;2\sin\theta=\|e^2-f^2\|_1\)">\(\|e-f\|_2^2=2\sin^2\theta&lt;2\sin\theta=\|e^2-f^2\|_1\)</span>.</p>
+<p><strong>Exercise 4.</strong> For <span class="math" data-tex="\(x\in L^2(N,\tau)\)">\(x\in L^2(N,\tau)\)</span> let <span class="math" data-tex="\(\beta(a)=\|x-u_a(x)|x|\|_2\)">\(\beta(a)=\|x-u_a(x)|x|\|_2\)</span>. Show that
+<span class="math" data-tex="\(\beta(a)^2=\int_{(0,a]}t^2\,d\nu_{|x|}(t)\)">\(\beta(a)^2=\int_{(0,a]}t^2\,d\nu_{|x|}(t)\)</span>, that <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is nondecreasing and right-continuous, that
+<span class="math" data-tex="\(\beta(a)\to0\)">\(\beta(a)\to0\)</span> as <span class="math" data-tex="\(a\to0\)">\(a\to0\)</span> and <span class="math" data-tex="\(\beta(a)\to\|x\|_2\)">\(\beta(a)\to\|x\|_2\)</span> as <span class="math" data-tex="\(a\to\infty\)">\(a\to\infty\)</span>, and that <span class="math" data-tex="\(\beta(a)^2\le a^2\,
+\tau(\chi_{(0,a]}(|x|))\)">\(\beta(a)^2\le a^2\,
+\tau(\chi_{(0,a]}(|x|))\)</span>.</p>
+<p><em>Solution.</em> With <span class="math" data-tex="\(x=u|x|\)">\(x=u|x|\)</span>, <span class="math" data-tex="\(x-u_a(x)|x|=u\,\chi_{[0,a]}(|x|)|x|\)">\(x-u_a(x)|x|=u\,\chi_{[0,a]}(|x|)|x|\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> is isometric on the range of <span class="math" data-tex="\(|x|\)">\(|x|\)</span>,
+so <span class="math" data-tex="\(\beta(a)^2=\|\chi_{[0,a]}(|x|)|x|\|_2^2=\int t^2\chi_{(0,a]}(t)\,d\nu_{|x|}(t)\)">\(\beta(a)^2=\|\chi_{[0,a]}(|x|)|x|\|_2^2=\int t^2\chi_{(0,a]}(t)\,d\nu_{|x|}(t)\)</span> by (B1). This is nondecreasing and
+right-continuous in <span class="math" data-tex="\(a\)">\(a\)</span> (continuity from above of the finite measure <span class="math" data-tex="\(t^2d\nu_{|x|}\)">\(t^2d\nu_{|x|}\)</span>), tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(a\to0\)">\(a\to0\)</span>
+(continuity from above at the empty set) and to <span class="math" data-tex="\(\int t^2d\nu_{|x|}=\|x\|_2^2\)">\(\int t^2d\nu_{|x|}=\|x\|_2^2\)</span> as <span class="math" data-tex="\(a\to\infty\)">\(a\to\infty\)</span>. Finally
+<span class="math" data-tex="\(t^2\le a^2\)">\(t^2\le a^2\)</span> on <span class="math" data-tex="\((0,a]\)">\((0,a]\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Connes 1976] A. Connes, <em>On the classification of von Neumann algebras and their automorphisms</em>, IHÉS preprint
+IHES/P/76/132, February 1976. Free at
+https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1976-1984/P_76_132/P_76_132_web.pdf</li>
+<li>[Connes 1994] A. Connes, <em>Noncommutative geometry</em>, Academic Press, San Diego, CA, 1994. Free at
+https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf</li>
+<li>[Powers–Størmer 1970] R. T. Powers and E. Størmer, Free states of the canonical anticommutation relations, Comm.
+Math. Phys. 16 (1970), 1–33. Free at
+https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-16/issue-1/Free-states-of-the-canonical-anticommutation-relations/cmp/1103842028.full</li>
+<li>[Haagerup 1975] U. Haagerup, The standard form of von Neumann algebras, Math. Scand. 37 (1975), 271–283.
+https://doi.org/10.7146/math.scand.a-11606</li>
+<li>[Fack–Kosaki 1986] T. Fack and H. Kosaki, Generalized s-numbers of τ-measurable operators, Pacific J. Math. 123
+(1986), no. 2, 269–300. https://doi.org/10.2140/pjm.1986.123.269</li>
+<li>[Nelson 1974] E. Nelson, Notes on non-commutative integration, J. Functional Analysis 15 (1974), 103–116.
+https://doi.org/10.1016/0022-1236(74)90014-7. Free at https://linkinghub.elsevier.com/retrieve/pii/0022123674900147</li>
+<li>[Anantharaman–Popa] C. Anantharaman and S. Popa, <em>An introduction to II₁ factors</em>, book draft. Free at
+https://www.math.ucla.edu/~popa/Books/IIun.pdf</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="property-gamma-and-the-algebra-generated-by-a-factor-and-its-commutant.html">Property Γ and the algebra generated by a factor and its commutant →</a></span></nav>
+<p class="small source-link"><a href="src/trace-inequalities-for-finite-von-neumann-algebras.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/injective-factors">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Riemann-Hilbert correspondence · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/the-riemann-hilbert-correspondence.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>The Riemann-Hilbert correspondence</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-riemann-hilbert-correspondence">The Riemann-Hilbert correspondence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The Riemann-Hilbert correspondence turns regular differential equations into constructible topology. At a nonsingular point a connection becomes a local system. Across a singular point, the topology also remembers how that local system attaches to the point. On the affine line this extra information can be calculated with two vector spaces and two arrows.</p>
+<p>We state the general correspondence, then prove its integer-monodromic affine-line case. The proof computes the actual de Rham attaching map; an abstract equivalence between two diagram categories would not by itself identify the de Rham functor.</p>
+<p>We keep left D-modules and the normalization <span class="math" data-tex="$\operatorname{DR}(\mathcal O_X)=\mathbb C_{X^{\rm an}}[d_X]$">$\operatorname{DR}(\mathcal O_X)=\mathbb C_{X^{\rm an}}[d_X]$</span> from <a href="the-de-rham-functor.html">The de Rham functor</a>. Algebraic regularity includes infinity, as in <a href="regular-singularities.html">Regular singularities</a>. The Weyl-algebra classification works over a characteristic-zero field <span class="math" data-tex="$k$">$k$</span>; the de Rham comparison uses <span class="math" data-tex="$k=\mathbb C$">$k=\mathbb C$</span>. We use the perverse heart of <a href="../GL-PERV/the-perverse-t-structure.html">The perverse t-structure</a> and the independently proved two-stratum diagram equivalence in <span class="unlinked">Nearby and vanishing cycles</span>, Theorem 3.1.</p>
+<h2 id="1-the-general-theorem-and-its-precise-target">1. The general theorem and its precise target</h2>
+<p>Write <span class="math" data-tex="$D^b_{c,\rm alg}(X^{\rm an},\mathbb C)$">$D^b_{c,\rm alg}(X^{\rm an},\mathbb C)$</span> for bounded complexes with finite-dimensional stalks, constructible with respect to a finite algebraic stratification of <span class="math" data-tex="$X$">$X$</span>. The strata are smooth locally closed algebraic subvarieties. The qualifier matters: an arbitrary locally finite analytic stratification can have infinitely many singular points on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> and need not come from algebraic data.</p>
+<p><strong>Theorem 1.1 (Riemann-Hilbert; statement).</strong> For a smooth separated complex algebraic variety <span class="math" data-tex="$X$">$X$</span>, analytification followed by normalized de Rham gives an equivalence
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X:
+D^b_{\rm rh}(\mathcal D_X)
+\ \simeq\ D^b_{c,\rm alg}(X^{\rm an},\mathbb C).                 \tag{1.1}
+\]">\[
+\operatorname{DR}_X:
+D^b_{\rm rh}(\mathcal D_X)
+\ \simeq\ D^b_{c,\rm alg}(X^{\rm an},\mathbb C).                 \tag{1.1}
+\]</span>
+It identifies the standard D-module t-structure with the middle perverse t-structure. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{DR}_X(\mathcal H^qM)
+\simeq{}^p\mathcal H^q(\operatorname{DR}_X M),\qquad
+\operatorname{Mod}_{\rm rh}(\mathcal D_X)
+\simeq\operatorname{Perv}_{\rm alg}(X^{\rm an},\mathbb C).        \tag{1.2}
+\]">\[
+\operatorname{DR}_X(\mathcal H^qM)
+\simeq{}^p\mathcal H^q(\operatorname{DR}_X M),\qquad
+\operatorname{Mod}_{\rm rh}(\mathcal D_X)
+\simeq\operatorname{Perv}_{\rm alg}(X^{\rm an},\mathbb C).        \tag{1.2}
+\]</span>
+For every algebraic morphism <span class="math" data-tex="$f:X\to Y$">$f:X\to Y$</span> it commutes with the four map operations <span class="math" data-tex="$f_*,f_!,f^!,f^*$">$f_*,f_!,f^!,f^*$</span>, with holonomic/Verdier duality, and with external products. Here sheaf <span class="math" data-tex="$f^*$">$f^*$</span> means inverse image; D-module <span class="math" data-tex="$f^*$">$f^*$</span> is the dual-defined functor fixed in <a href="adjunctions-base-change-and-the-projection-formula.html">Adjunctions, base change and the projection formula</a>.</p>
+<p>The Riemann–Hilbert correspondence is due to Kashiwara and to Mebkhout; for statements see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §9.2, and V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>. Bhatt–Blickle–Lyubeznik–Singh–Zhang, §2, the covariant Riemann-Hilbert theorem, states the same normalization and specifies algebraic constructibility before the theorem. We use these as statements, not as a proof of (1.1).</p>
+<p>Tensor compatibility uses the tensor convention already fixed:
+<span class="math math-display" data-tex="\[
+M\otimes^!N=\Delta_X^!(M\boxtimes N)
+\simeq(M\otimes_{\mathcal O_X}^L N)[-d_X].
+\]">\[
+M\otimes^!N=\Delta_X^!(M\boxtimes N)
+\simeq(M\otimes_{\mathcal O_X}^L N)[-d_X].
+\]</span>
+On sheaves it is <span class="math" data-tex="$\Delta_{X^{\rm an}}^!(F\boxtimes G)$">$\Delta_{X^{\rm an}}^!(F\boxtimes G)$</span>. Thus it follows from external-product and inverse-image compatibility. The unit <span class="math" data-tex="$\mathcal O_X[d_X]$">$\mathcal O_X[d_X]$</span> becomes the dualizing sheaf <span class="math" data-tex="$\mathbb C_X[2d_X]$">$\mathbb C_X[2d_X]$</span>. Taking the dual tensor gives compatibility with the corresponding Hom operation. One should not replace these operations by an unshifted ordinary tensor without changing the normalization.</p>
+<p>The theorem sends a minimal extension of an irreducible regular connection <span class="math" data-tex="$E$">$E$</span> on a smooth <span class="math" data-tex="$U$">$U$</span> to
+<span class="math math-display" data-tex="\[
+\operatorname{DR}(j_{!*}E)=j_{!*}(L[d_U])=\operatorname{IC}(L),  \tag{1.3}
+\]">\[
+\operatorname{DR}(j_{!*}E)=j_{!*}(L[d_U])=\operatorname{IC}(L),  \tag{1.3}
+\]</span>
+where <span class="math" data-tex="$L$">$L$</span> is its horizontal local system, with closed extension to the ambient support understood. Indeed an exact equivalence preserves the image defining intermediate extension and preserves simplicity. The local system must be irreducible for the IC to be simple.</p>
+<p>The contravariant solution functor satisfies
+<span class="math" data-tex="$\operatorname{Sol}(M)=\operatorname{DR}(\mathbb D M)$">$\operatorname{Sol}(M)=\operatorname{DR}(\mathbb D M)$</span> with the normalized shifts used here. For a connection it sees the dual local system, so its monodromy is the inverse transpose of de Rham monodromy. This distinction is visible in the calculation below.</p>
+<h2 id="2-the-integer-block-of-the-weyl-algebra">2. The integer block of the Weyl algebra</h2>
+<p>Let <span class="math" data-tex="$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$">$A=k\langle x,\partial\rangle/(\partial x-x\partial-1)$</span> and <span class="math" data-tex="$\theta=x\partial$">$\theta=x\partial$</span>. Call an <span class="math" data-tex="$A$">$A$</span>-module <strong>monodromic</strong> if every vector lies in a finite-dimensional <span class="math" data-tex="$\theta$">$\theta$</span>-stable subspace. In the integer block its generalized eigenvalues belong to <span class="math" data-tex="$\mathbb Z\subset k$">$\mathbb Z\subset k$</span>.</p>
+<p>Local finiteness gives the direct sum
+<span class="math math-display" data-tex="\[
+M=\bigoplus_{n\in\mathbb Z}M^n,\qquad
+M^n=\{m:(\theta-n)^q m=0\text{ for some }q\}.                  \tag{2.1}
+\]">\[
+M=\bigoplus_{n\in\mathbb Z}M^n,\qquad
+M^n=\{m:(\theta-n)^q m=0\text{ for some }q\}.                  \tag{2.1}
+\]</span>
+This follows by decomposing the finite-dimensional <span class="math" data-tex="$\theta$">$\theta$</span>-span of each vector; polynomial spectral projectors separate its distinct integer eigenvalues. The commutators
+<span class="math" data-tex="$[\theta,x]=x$">$[\theta,x]=x$</span>, <span class="math" data-tex="$[\theta,\partial]=-\partial$">$[\theta,\partial]=-\partial$</span> show that <span class="math" data-tex="$x:M^n\to M^{n+1}$">$x:M^n\to M^{n+1}$</span> and <span class="math" data-tex="$\partial:M^n\to M^{n-1}$">$\partial:M^n\to M^{n-1}$</span>.</p>
+<p>The identities
+<span class="math math-display" data-tex="\[
+x\partial=\theta,\qquad \partial x=\theta+1                  \tag{2.2}
+\]">\[
+x\partial=\theta,\qquad \partial x=\theta+1                  \tag{2.2}
+\]</span>
+make <span class="math" data-tex="$x:M^n\to M^{n+1}$">$x:M^n\to M^{n+1}$</span> invertible unless <span class="math" data-tex="$n=-1$">$n=-1$</span>, and <span class="math" data-tex="$\partial:M^n\to M^{n-1}$">$\partial:M^n\to M^{n-1}$</span> invertible unless <span class="math" data-tex="$n=0$">$n=0$</span>. For example a nonzero scalar plus a locally nilpotent operator has inverse given on each vector by its terminating geometric series. Applying (2.2) on both weight spaces supplies both a left and a right inverse.</p>
+<p>Only the two arrows across these exceptional weights remain:
+<span class="math math-display" data-tex="\[
+V_0=M^0,\quad V_1=M^{-1},\quad
+a=x:V_1\to V_0,\quad b=\partial:V_0\to V_1.
+\]">\[
+V_0=M^0,\quad V_1=M^{-1},\quad
+a=x:V_1\to V_0,\quad b=\partial:V_0\to V_1.
+\]</span>
+Put <span class="math" data-tex="$N_0=ab$">$N_0=ab$</span>, <span class="math" data-tex="$N_1=ba$">$N_1=ba$</span>. They are respectively <span class="math" data-tex="$\theta|_{M^0}$">$\theta|_{M^0}$</span> and <span class="math" data-tex="$(\theta+1)|_{M^{-1}}$">$(\theta+1)|_{M^{-1}}$</span>, and are locally nilpotent.</p>
+<p><strong>Theorem 2.1 (two-space classification).</strong> Integer-block monodromic <span class="math" data-tex="$A$">$A$</span>-modules are equivalent to quadruples <span class="math" data-tex="$(V_0,V_1,a,b)$">$(V_0,V_1,a,b)$</span> with <span class="math" data-tex="$ab$">$ab$</span> locally nilpotent. For finitely generated modules the two spaces are finite-dimensional and the composites are nilpotent. In this category a module is holonomic if and only if both spaces are finite-dimensional.</p>
+<p>The local qualification in the unrestricted statement is necessary. A direct sum of nilpotent Jordan blocks of all sizes is locally nilpotent without a common nilpotence exponent. For finite-dimensional spaces local nilpotence is nilpotence. Also
+<span class="math" data-tex="$(ba)^{q+1}=b(ab)^q a$">$(ba)^{q+1}=b(ab)^q a$</span> proves local nilpotence of <span class="math" data-tex="$ba$">$ba$</span> from that of <span class="math" data-tex="$ab$">$ab$</span>.</p>
+<p><strong>Proof: reconstruction.</strong> Make one copy of <span class="math" data-tex="$V_0$">$V_0$</span> for each weight <span class="math" data-tex="$n\geq0$">$n\geq0$</span>, and one copy of <span class="math" data-tex="$V_1$">$V_1$</span> for each <span class="math" data-tex="$n\leq-1$">$n\leq-1$</span>, and take their algebraic direct sum. Define the operators between those copies by
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+\text{weight of the input}&amp;x&amp;\partial\\ \hline
+n\geq1&amp;I&amp;nI+N_0\\
+n=0&amp;I&amp;b\\
+n=-1&amp;a&amp;I\\
+n\leq-2&amp;(n+1)I+N_1&amp;I .
+\end{array}                                                   \tag{2.3}
+\]">\[
+\begin{array}{c|c|c}
+\text{weight of the input}&amp;x&amp;\partial\\ \hline
+n\geq1&amp;I&amp;nI+N_0\\
+n=0&amp;I&amp;b\\
+n=-1&amp;a&amp;I\\
+n\leq-2&amp;(n+1)I+N_1&amp;I .
+\end{array}                                                   \tag{2.3}
+\]</span>
+Each entry lands in the adjacent weight. In the first row <span class="math" data-tex="$x$">$x$</span> lands at weight <span class="math" data-tex="$n+1$">$n+1$</span>, while <span class="math" data-tex="$\partial$">$\partial$</span> lands at <span class="math" data-tex="$n-1$">$n-1$</span>.</p>
+<p>For <span class="math" data-tex="$n\geq1$">$n\geq1$</span>, <span class="math" data-tex="$\partial x-x\partial=(n+1+N_0)-(n+N_0)=I$">$\partial x-x\partial=(n+1+N_0)-(n+N_0)=I$</span>. At weight zero it is <span class="math" data-tex="$(1+N_0)-ab=I$">$(1+N_0)-ab=I$</span>; at weight minus one it is <span class="math" data-tex="$ba-(-1+N_1)=I$">$ba-(-1+N_1)=I$</span>; and in all lower weights it is again the difference of two consecutive scalars. Thus (2.3) is an <span class="math" data-tex="$A$">$A$</span>-module. Its <span class="math" data-tex="$\theta$">$\theta$</span> is <span class="math" data-tex="$n+N_0$">$n+N_0$</span> on the nonnegative copies and <span class="math" data-tex="$n+N_1$">$n+N_1$</span> on the negative copies. Local nilpotence makes this action locally finite and gives exactly the prescribed generalized eigenspaces.</p>
+<p>Starting with <span class="math" data-tex="$M$">$M$</span>, identify <span class="math" data-tex="$M^n$">$M^n$</span> for <span class="math" data-tex="$n\geq0$">$n\geq0$</span> with <span class="math" data-tex="$M^0$">$M^0$</span> by powers of <span class="math" data-tex="$x$">$x$</span>, and <span class="math" data-tex="$M^n$">$M^n$</span> for <span class="math" data-tex="$n\leq-1$">$n\leq-1$</span> with <span class="math" data-tex="$M^{-1}$">$M^{-1}$</span> by powers of <span class="math" data-tex="$\partial$">$\partial$</span>. These maps are invertible by (2.2). The resulting actions are exactly (2.3); no choices beyond those two initial spaces are required. A pair of linear maps commuting with <span class="math" data-tex="$a,b$">$a,b$</span> extends on every copy to an <span class="math" data-tex="$A$">$A$</span>-linear map. Conversely an <span class="math" data-tex="$A$">$A$</span>-map preserves generalized weights and is determined by the initial two spaces. The constructions are inverse on objects and morphisms.</p>
+<p><strong>Proof: finiteness and holonomicity.</strong> If both spaces are finite, bases of the weight-zero and weight-minus-one copies generate every other copy. Let <span class="math" data-tex="$F_p$">$F_p$</span> be the Bernstein filtration generated by their span. A word of length at most <span class="math" data-tex="$p$">$p$</span> reaches only weights between <span class="math" data-tex="$-1-p$">$-1-p$</span> and <span class="math" data-tex="$p$">$p$</span>; each has dimension at most <span class="math" data-tex="$\dim V_0+\dim V_1$">$\dim V_0+\dim V_1$</span>. Thus <span class="math" data-tex="$\dim F_p=O(p)$">$\dim F_p=O(p)$</span>. A nonzero finitely generated Weyl module of this growth is holonomic, by the Bernstein inequality and dimension criterion proved earlier.</p>
+<p>Conversely take finitely many generators of a monodromic module. Enlarge them to a finite-dimensional <span class="math" data-tex="$\theta$">$\theta$</span>-stable space and separate its finitely many weights; this still gives finitely many generators. The degree-<span class="math" data-tex="$q$">$q$</span> part of <span class="math" data-tex="$A$">$A$</span> for <span class="math" data-tex="$\deg x=1$">$\deg x=1$</span>, <span class="math" data-tex="$\deg\partial=-1$">$\deg\partial=-1$</span> is <span class="math" data-tex="$x^qk[\theta]$">$x^qk[\theta]$</span> for <span class="math" data-tex="$q\geq0$">$q\geq0$</span>, and <span class="math" data-tex="$\partial^{-q}k[\theta]$">$\partial^{-q}k[\theta]$</span> for <span class="math" data-tex="$q&lt;0$">$q&lt;0$</span>. This follows by reducing each fixed-degree PBW monomial with <span class="math" data-tex="$x^j\partial^j=\theta(\theta-1)\cdots(\theta-j+1)$">$x^j\partial^j=\theta(\theta-1)\cdots(\theta-j+1)$</span>. On each generator, <span class="math" data-tex="$k[\theta]$">$k[\theta]$</span> has finite-dimensional image. For any fixed target weight, only one degree from each generator weight can contribute. Hence every <span class="math" data-tex="$M^n$">$M^n$</span>, in particular <span class="math" data-tex="$M^0,M^{-1}$">$M^0,M^{-1}$</span>, is finite-dimensional. A holonomic module is finitely generated, so this proves the remaining implication. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Every finite object here is algebraically regular. On <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, localization identifies it with the connection
+<span class="math math-display" data-tex="\[
+\mathcal O_{\mathbb G_m}\otimes V_0,\qquad
+\partial(v)=x^{-1}N_0v.                                      \tag{2.4}
+\]">\[
+\mathcal O_{\mathbb G_m}\otimes V_0,\qquad
+\partial(v)=x^{-1}N_0v.                                      \tag{2.4}
+\]</span>
+To see the negative weights, the vector <span class="math" data-tex="$w\in V_1$">$w\in V_1$</span> at weight <span class="math" data-tex="$-1$">$-1$</span> localizes to <span class="math" data-tex="$x^{-1}aw$">$x^{-1}aw$</span>; further negative weights follow by differentiating this identity. The zero-space case includes modules supported at zero. Connection (2.4) has logarithmic lattices at both zero and infinity. A simple factor meeting <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span> therefore has a regular generic connection, and a simple factor supported at zero is a delta module. The regularity definition proves the assertion.</p>
+<h2 id="3-the-elementary-extension-dictionary">3. The elementary extension dictionary</h2>
+<p>Here <span class="math" data-tex="$j:\mathbb G_m\hookrightarrow\mathbb A^1$">$j:\mathbb G_m\hookrightarrow\mathbb A^1$</span> and <span class="math" data-tex="$\delta_0=A/Ax$">$\delta_0=A/Ax$</span>. The following table lists <span class="math" data-tex="$(V_0,V_1,a,b)$">$(V_0,V_1,a,b)$</span>:</p>
+<table>
+<thead>
+<tr>
+<th>D-module</th>
+<th><span class="math" data-tex="$V_0$">$V_0$</span></th>
+<th><span class="math" data-tex="$V_1$">$V_1$</span></th>
+<th><span class="math" data-tex="$a=x$">$a=x$</span></th>
+<th><span class="math" data-tex="$b=\partial$">$b=\partial$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="$\mathcal O_{\mathbb A^1}$">$\mathcal O_{\mathbb A^1}$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$\delta_0$">$\delta_0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$j_*\mathcal O_{\mathbb G_m}=k[x,x^{-1}]$">$j_*\mathcal O_{\mathbb G_m}=k[x,x^{-1}]$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$1$">$1$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$j_!\mathcal O_{\mathbb G_m}=A/A(x\partial)$">$j_!\mathcal O_{\mathbb G_m}=A/A(x\partial)$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$1$">$1$</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="$j_{!*}\mathcal O_{\mathbb G_m}$">$j_{!*}\mathcal O_{\mathbb G_m}$</span></td>
+<td><span class="math" data-tex="$k$">$k$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+<td><span class="math" data-tex="$0$">$0$</span></td>
+</tr>
+</tbody>
+</table>
+<p>For polynomials, <span class="math" data-tex="$\theta x^n=nx^n$">$\theta x^n=nx^n$</span> and only nonnegative weights occur. For <span class="math" data-tex="$\delta_0$">$\delta_0$</span>, the vectors <span class="math" data-tex="$\partial^q\delta$">$\partial^q\delta$</span> have weights <span class="math" data-tex="$-1-q$">$-1-q$</span>, and <span class="math" data-tex="$x\partial\delta=-\delta$">$x\partial\delta=-\delta$</span>. For Laurent polynomials the exceptional spaces are generated by <span class="math" data-tex="$1$">$1$</span> and <span class="math" data-tex="$x^{-1}$">$x^{-1}$</span>, with <span class="math" data-tex="$x(x^{-1})=1$">$x(x^{-1})=1$</span>, <span class="math" data-tex="$\partial1=0$">$\partial1=0$</span>.</p>
+<p>For the shriek extension use the generator <span class="math" data-tex="$u$">$u$</span> with <span class="math" data-tex="$x\partial u=0$">$x\partial u=0$</span>. The vectors <span class="math" data-tex="$x^q u$">$x^q u$</span> and <span class="math" data-tex="$\partial^{q+1}u$">$\partial^{q+1}u$</span> form the nonnegative and negative weight strings. They are independent and nonzero by the reconstructed module (2.3) with <span class="math" data-tex="$a=0,b=1$">$a=0,b=1$</span>; conversely the relation and PBW span this module, so the presentation is exact. Its identification with <span class="math" data-tex="$j_!\mathcal O$">$j_!\mathcal O$</span> was proved by duality in <a href="holonomic-d-modules-and-duality.html">Holonomic D-modules and duality</a>. The canonical map <span class="math" data-tex="$j_!\mathcal O\to j_*\mathcal O$">$j_!\mathcal O\to j_*\mathcal O$</span> is <span class="math" data-tex="$(1,0)$">$(1,0)$</span> on the two spaces; its image is <span class="math" data-tex="$(k,0)$">$(k,0)$</span>, proving the final row.</p>
+<p>More generally the logarithmic connection (2.4) has star extension
+<span class="math" data-tex="$(V,V,I,N)$">$(V,V,I,N)$</span> and shriek extension <span class="math" data-tex="$(V,V,N,I)$">$(V,V,N,I)$</span>. The Laurent connection gives the star row directly. Here is an adjunction check for the shriek row. A morphism from <span class="math" data-tex="$(V,V,N,I)$">$(V,V,N,I)$</span> to <span class="math" data-tex="$(V_0&#x27;,V_1&#x27;,a&#x27;,b&#x27;)$">$(V_0&#x27;,V_1&#x27;,a&#x27;,b&#x27;)$</span> is uniquely determined by <span class="math" data-tex="$f_0:V\to V_0&#x27;$">$f_0:V\to V_0&#x27;$</span> with <span class="math" data-tex="$f_0N=N_0&#x27;f_0$">$f_0N=N_0&#x27;f_0$</span>, since its other component must be <span class="math" data-tex="$f_1=b&#x27;f_0$">$f_1=b&#x27;f_0$</span>. These are exactly connection maps on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, so this diagram represents shriek adjunction in the monodromic category. The actual <span class="math" data-tex="$j_!E$">$j_!E$</span> belongs to that category: a nilpotent-residue connection has a finite flag with trivial connection quotients; <span class="math" data-tex="$j_!$">$j_!$</span> on such connections is exact by duality and exact Laurent localization, so <span class="math" data-tex="$j_!E$">$j_!E$</span> is an extension of copies of the already computed <span class="math" data-tex="$j_!\mathcal O$">$j_!\mathcal O$</span>. Local finiteness with integer spectrum is preserved under extensions, since an annihilating polynomial for a quotient vector followed by one for its lift in the submodule annihilates the original vector. Thus Theorem 2.1 applies to <span class="math" data-tex="$j_!E$">$j_!E$</span>, and adjunction identifies the diagram. In Section 4 we identify both extensions by their actual sheaf attaching maps.</p>
+<p>For a Jordan example choose <span class="math" data-tex="$V_0=V_1=k^2$">$V_0=V_1=k^2$</span>, <span class="math" data-tex="$a=I$">$a=I$</span> and
+<span class="math math-display" data-tex="\[
+b=N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.                       \tag{3.1}
+\]">\[
+b=N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}.                       \tag{3.1}
+\]</span>
+It is the star extension of the rank-two logarithmic connection with residue <span class="math" data-tex="$N$">$N$</span>. The powers in (2.3) describe the whole Weyl module, not just its fiber. The shriek version instead has <span class="math" data-tex="$a=N,b=I$">$a=N,b=I$</span>.</p>
+<h2 id="4-computing-de-rham-and-its-attaching-map">4. Computing de Rham and its attaching map</h2>
+<p>Work over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. The sheaf prerequisite gives diagrams
+<span class="math math-display" data-tex="\[
+V\xrightarrow{u}W\xrightarrow{v}V,\qquad I+vu\text{ invertible},
+\]">\[
+V\xrightarrow{u}W\xrightarrow{v}V,\qquad I+vu\text{ invertible},
+\]</span>
+where <span class="math" data-tex="$V=\Psi_xK$">$V=\Psi_xK$</span>, <span class="math" data-tex="$W=\Phi_xK$">$W=\Phi_xK$</span>, <span class="math" data-tex="$u=\mathrm{can}$">$u=\mathrm{can}$</span>, <span class="math" data-tex="$v=\mathrm{var}$">$v=\mathrm{var}$</span>, with convention
+<span class="math" data-tex="$vu=T_V-I$">$vu=T_V-I$</span>. For such a diagram,
+<span class="math math-display" data-tex="\[
+i^*K=[V\xrightarrow{u}W]\quad(-1,0),\qquad
+i^!K=[W\xrightarrow{v}V]\quad(0,1).                           \tag{4.1}
+\]">\[
+i^*K=[V\xrightarrow{u}W]\quad(-1,0),\qquad
+i^!K=[W\xrightarrow{v}V]\quad(0,1).                           \tag{4.1}
+\]</span>
+It reconstructs <span class="math" data-tex="$K$">$K$</span> from its local system on the puncture and the attaching map
+<span class="math math-display" data-tex="\[
+(I,v):[V\xrightarrow{u}W]\longrightarrow
+[V\xrightarrow{T_V-I}V].                                    \tag{4.2}
+\]">\[
+(I,v):[V\xrightarrow{u}W]\longrightarrow
+[V\xrightarrow{T_V-I}V].                                    \tag{4.2}
+\]</span>
+The general sheaf diagram theorem is used as a prerequisite, already proved by gluing; we now compute these data for a D-module.</p>
+<p><strong>Lemma 4.1 (analytic stalk).</strong> For a finite quadruple, the normalized de Rham stalk at zero is naturally homotopy equivalent to
+<span class="math math-display" data-tex="\[
+[V_0\xrightarrow{b}V_1]\quad\text{in degrees }-1,0.            \tag{4.3}
+\]">\[
+[V_0\xrightarrow{b}V_1]\quad\text{in degrees }-1,0.            \tag{4.3}
+\]</span></p>
+<p><strong>Proof.</strong> Analytification of the weight presentation replaces the nonnegative polynomial tail by a convergent power-series tail with coefficients in <span class="math" data-tex="$V_0$">$V_0$</span>, while negative weights remain finite sums of vectors from the <span class="math" data-tex="$V_1$">$V_1$</span> copies. One can verify this normal form directly by Taylor division: for a negative-weight vector and a holomorphic multiplier, repeatedly separate its constant term and divide the remainder by <span class="math" data-tex="$x$">$x$</span> until multiplication reaches the nonnegative part. The finite relations in (2.3) then determine the convergent tail. Conversely these formulas define the holomorphic multiplication action on this normal-form space and invert the map from <span class="math" data-tex="$\mathcal O^{\rm an}_0\otimes_{\mathbb C[x]}M$">$\mathcal O^{\rm an}_0\otimes_{\mathbb C[x]}M$</span>.</p>
+<p>The unshifted de Rham differential is <span class="math" data-tex="$\partial$">$\partial$</span>, with target tensored by <span class="math" data-tex="$dx$">$dx$</span>. On all negative inputs it carries each weight copy identically to the next lower target copy. On positive inputs of weight <span class="math" data-tex="$n\geq1$">$n\geq1$</span> it is <span class="math" data-tex="$nI+N_0$">$nI+N_0$</span>, and its only exceptional component is <span class="math" data-tex="$b$">$b$</span> from weight zero to target weight minus one. All other components are isomorphisms. Their inverses preserve convergence: for nilpotent <span class="math" data-tex="$N_0$">$N_0$</span>,
+<span class="math math-display" data-tex="\[
+(nI+N_0)^{-1}
+=\sum_{q\geq0}(-1)^q n^{-q-1}N_0^q                           \tag{4.4}
+\]">\[
+(nI+N_0)^{-1}
+=\sum_{q\geq0}(-1)^q n^{-q-1}N_0^q                           \tag{4.4}
+\]</span>
+is a fixed finite sum, uniformly <span class="math" data-tex="$O(n^{-1})$">$O(n^{-1})$</span> for <span class="math" data-tex="$n\geq1$">$n\geq1$</span>. Negative tails remain finite. Contract those pairs. The remaining differential is <span class="math" data-tex="$b$">$b$</span>, and normalization by <span class="math" data-tex="$[1]$">$[1]$</span> gives the displayed degrees. All contractions commute with morphisms of quadruples. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The punctured local system has fiber <span class="math" data-tex="$V_0$">$V_0$</span> and positive monodromy
+<span class="math math-display" data-tex="\[
+T_0=e^{-2\pi iN_0}.                                          \tag{4.5}
+\]">\[
+T_0=e^{-2\pi iN_0}.                                          \tag{4.5}
+\]</span>
+Its boundary circle complex is <span class="math" data-tex="$[V_0\xrightarrow{T_0-I}V_0]$">$[V_0\xrightarrow{T_0-I}V_0]$</span> in degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>.</p>
+<p>Define the power series, evaluated as a finite polynomial on a nilpotent operator,
+<span class="math math-display" data-tex="\[
+h(z)=\frac{e^{-2\pi iz}-1}{z}
+=\sum_{q\geq0}\frac{(-2\pi i)^{q+1}}{(q+1)!}z^q,
+\qquad h(0)=-2\pi i.                                        \tag{4.6}
+\]">\[
+h(z)=\frac{e^{-2\pi iz}-1}{z}
+=\sum_{q\geq0}\frac{(-2\pi i)^{q+1}}{(q+1)!}z^q,
+\qquad h(0)=-2\pi i.                                        \tag{4.6}
+\]</span>
+Thus <span class="math" data-tex="$h(N_0)$">$h(N_0)$</span> is invertible, including when <span class="math" data-tex="$N_0=0$">$N_0=0$</span>.</p>
+<p><strong>Lemma 4.2 (the actual boundary comparison).</strong> In the contractions of Lemma 4.1, restriction to the puncture gives the attaching map
+<span class="math math-display" data-tex="\[
+(I,h(N_0)a):
+[V_0\xrightarrow{b}V_1]\longrightarrow
+[V_0\xrightarrow{T_0-I}V_0].                                \tag{4.7}
+\]">\[
+(I,h(N_0)a):
+[V_0\xrightarrow{b}V_1]\longrightarrow
+[V_0\xrightarrow{T_0-I}V_0].                                \tag{4.7}
+\]</span></p>
+<p><strong>Proof.</strong> The degree-minus-one representative is the constant coefficient <span class="math" data-tex="$v_0$">$v_0$</span> in the logarithmic frame. Evaluate it at a chosen point of a small circle to identify the fiber with <span class="math" data-tex="$V_0$">$V_0$</span>; this gives <span class="math" data-tex="$I$">$I$</span>.</p>
+<p>A representative <span class="math" data-tex="$w\in V_1$">$w\in V_1$</span> in the remaining degree-zero term is the one-form whose coefficient has weight minus one. On localization it is <span class="math" data-tex="$x^{-1}aw\,dx$">$x^{-1}aw\,dx$</span> by (2.4). Parameterize the circle by <span class="math" data-tex="$x=r e^{i\vartheta}$">$x=r e^{i\vartheta}$</span>, <span class="math" data-tex="$0\leq\vartheta\leq2\pi$">$0\leq\vartheta\leq2\pi$</span>. Parallel transport back to the initial frame multiplies coefficients by <span class="math" data-tex="$e^{i\vartheta N_0}$">$e^{i\vartheta N_0}$</span>.</p>
+<p>With the cellular cochain differential chosen as <span class="math" data-tex="$T_0-I$">$T_0-I$</span>, the map on one-forms is minus <span class="math" data-tex="$T_0$">$T_0$</span> times the transported integral. This sign and factor can be checked on every single-valued section <span class="math" data-tex="$s(\vartheta)$">$s(\vartheta)$</span>:
+<span class="math math-display" data-tex="\[
+-T_0\int_0^{2\pi}e^{i\vartheta N_0}
+\bigl(s&#x27;(\vartheta)+iN_0s(\vartheta)\bigr)\,d\vartheta
+=(T_0-I)s(0).                                                \tag{4.8}
+\]">\[
+-T_0\int_0^{2\pi}e^{i\vartheta N_0}
+\bigl(s&#x27;(\vartheta)+iN_0s(\vartheta)\bigr)\,d\vartheta
+=(T_0-I)s(0).                                                \tag{4.8}
+\]</span>
+Indeed the integral before multiplication is
+<span class="math" data-tex="$e^{2\pi iN_0}s(2\pi)-s(0)$">$e^{2\pi iN_0}s(2\pi)-s(0)$</span>, and <span class="math" data-tex="$s(2\pi)=s(0)$">$s(2\pi)=s(0)$</span>.
+For our form the integral is
+<span class="math" data-tex="$\int_0^{2\pi}e^{i\vartheta N_0}i\,aw\,d\vartheta$">$\int_0^{2\pi}e^{i\vartheta N_0}i\,aw\,d\vartheta$</span>.
+Its product with <span class="math" data-tex="$-T_0$">$-T_0$</span> is <span class="math" data-tex="$h(N_0)aw$">$h(N_0)aw$</span>, by the finite power-series identity. The calculation holds on each sufficiently small circle and commutes with restriction of germs. The contracted acyclic weight pairs merely give the associated chain homotopies. This proves (4.7), not just its effect on dimensions. Its chain-map equation is also visible directly:
+<span class="math" data-tex="$h(N_0)ab=h(N_0)N_0=T_0-I$">$h(N_0)ab=h(N_0)N_0=T_0-I$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 4.3 (the monodromic correspondence, proved).</strong> The normalized de Rham functor is an equivalence between finite integer-block monodromic D-modules on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> and perverse sheaves on <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> constructible for <span class="math" data-tex="$\mathbb C^*,\{0\}$">$\mathbb C^*,\{0\}$</span> with unipotent nearby monodromy. On diagrams it is
+<span class="math math-display" data-tex="\[
+(V_0,V_1,a,b)\longmapsto
+(V=V_0,W=V_1,u=b,v=h(N_0)a).                                 \tag{4.9}
+\]">\[
+(V_0,V_1,a,b)\longmapsto
+(V=V_0,W=V_1,u=b,v=h(N_0)a).                                 \tag{4.9}
+\]</span></p>
+<p><strong>Proof.</strong> The stalk and attaching map were computed in Lemmas 4.1–4.2. On the open stratum, the analytic Poincaré lemma for a flat connection identifies de Rham with its horizontal local system shifted by <span class="math" data-tex="$[1]$">$[1]$</span>. Gluing along the point therefore gives exactly the diagram (4.9). Its two composites are
+<span class="math math-display" data-tex="\[
+vu=e^{-2\pi iN_0}-I,\qquad uv=e^{-2\pi iN_1}-I,                \tag{4.10}
+\]">\[
+vu=e^{-2\pi iN_0}-I,\qquad uv=e^{-2\pi iN_1}-I,                \tag{4.10}
+\]</span>
+using <span class="math" data-tex="$b\,p(N_0)=p(N_1)b$">$b\,p(N_0)=p(N_1)b$</span> and <span class="math" data-tex="$p(N_0)a=a\,p(N_1)$">$p(N_0)a=a\,p(N_1)$</span> for every polynomial <span class="math" data-tex="$p$">$p$</span>. Both monodromies are unipotent. Formula (4.1), or the proved sheaf diagram theorem, shows that this gluing is perverse; no use of the general correspondence is required.</p>
+<p>Conversely, given a finite sheaf diagram with <span class="math" data-tex="$I+vu$">$I+vu$</span> unipotent, put
+<span class="math math-display" data-tex="\[
+N_0=-\frac1{2\pi i}\log(I+vu),\quad
+N_1=-\frac1{2\pi i}\log(I+uv),\quad
+b=u,\quad a=h(N_0)^{-1}v.                                   \tag{4.11}
+\]">\[
+N_0=-\frac1{2\pi i}\log(I+vu),\quad
+N_1=-\frac1{2\pi i}\log(I+uv),\quad
+b=u,\quad a=h(N_0)^{-1}v.                                   \tag{4.11}
+\]</span>
+The logarithms are finite nilpotent series. Nilpotence of <span class="math" data-tex="$vu$">$vu$</span> implies that of <span class="math" data-tex="$uv$">$uv$</span> by <span class="math" data-tex="$(uv)^{q+1}=u(vu)^qv$">$(uv)^{q+1}=u(vu)^qv$</span>. Polynomial intertwining gives <span class="math" data-tex="$ab=N_0$">$ab=N_0$</span> and <span class="math" data-tex="$ba=N_1$">$ba=N_1$</span>, because <span class="math" data-tex="$h(N_j)N_j=e^{-2\pi iN_j}-I$">$h(N_j)N_j=e^{-2\pi iN_j}-I$</span>. Thus Theorem 2.1 reconstructs a finite, regular holonomic D-module. Equations (4.9) and (4.11) are inverse.</p>
+<p>A morphism of either kind is a pair commuting with its two arrows. Such a pair commutes with all the displayed polynomial functions of their composites. It therefore commutes with the arrows on the other side as well. The transformations are inverse on morphisms, and preserve composition. This proves full faithfulness and essential surjectivity for the actual de Rham functor. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular <span class="math" data-tex="$a$">$a$</span> by itself is not the variation arrow with our monodromy normalization. The invertible correction <span class="math" data-tex="$h(N_0)$">$h(N_0)$</span> is essential.</p>
+<p>For the elementary modules this gives
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+\mathcal O_{\mathbb A^1}&amp;\mathbb C_{\mathbb C}[1]\\
+\delta_0&amp;\mathbb C_{\{0\}}\\
+j_*\mathcal O_{\mathbb G_m}&amp;Rj_*\mathbb C_{\mathbb C^*}[1]\\
+j_!\mathcal O_{\mathbb G_m}&amp;j_!\mathbb C_{\mathbb C^*}[1]\\
+j_{!*}\mathcal O_{\mathbb G_m}&amp;\mathbb C_{\mathbb C}[1].
+\end{array}                                                   \tag{4.12}
+\]">\[
+\begin{array}{c|c}
+\mathcal O_{\mathbb A^1}&amp;\mathbb C_{\mathbb C}[1]\\
+\delta_0&amp;\mathbb C_{\{0\}}\\
+j_*\mathcal O_{\mathbb G_m}&amp;Rj_*\mathbb C_{\mathbb C^*}[1]\\
+j_!\mathcal O_{\mathbb G_m}&amp;j_!\mathbb C_{\mathbb C^*}[1]\\
+j_{!*}\mathcal O_{\mathbb G_m}&amp;\mathbb C_{\mathbb C}[1].
+\end{array}                                                   \tag{4.12}
+\]</span>
+For the star row, (4.9) has <span class="math" data-tex="$u=0,v=-2\pi iI$">$u=0,v=-2\pi iI$</span>; rescale the vanishing space to get the usual <span class="math" data-tex="$u=0,v=I$">$u=0,v=I$</span>. The shriek row already has <span class="math" data-tex="$u=I,v=0$">$u=I,v=0$</span>. The smooth and point rows fix which of the two spaces is nearby and which is vanishing.</p>
+<p>For the Jordan example (3.1),
+<span class="math math-display" data-tex="\[
+T_0=I-2\pi iN,\quad
+u=N,\quad v=-2\pi iI-2\pi^2N.                                \tag{4.13}
+\]">\[
+T_0=I-2\pi iN,\quad
+u=N,\quad v=-2\pi iI-2\pi^2N.                                \tag{4.13}
+\]</span>
+The invertible change on the vanishing space <span class="math" data-tex="$h(N)$">$h(N)$</span> puts this into the standard star diagram <span class="math" data-tex="$u=T_0-I,v=I$">$u=T_0-I,v=I$</span>. Its stalk groups are <span class="math" data-tex="$\ker N$">$\ker N$</span> in degree <span class="math" data-tex="$-1$">$-1$</span> and <span class="math" data-tex="$\operatorname{coker}N$">$\operatorname{coker}N$</span> in degree zero, each one-dimensional. The shriek version has zero stalk. Intermediate extension instead has vanishing space <span class="math" data-tex="$\operatorname{im}N$">$\operatorname{im}N$</span>, of dimension one, rather than the two-dimensional vanishing space of either full extension.</p>
+<h2 id="5-nonintegral-blocks-and-the-role-of-regularity">5. Nonintegral blocks and the role of regularity</h2>
+<p>Let <span class="math" data-tex="$\lambda\notin\mathbb Z$">$\lambda\notin\mathbb Z$</span>. The Laurent connection
+<span class="math math-display" data-tex="\[
+E_\lambda=\mathbb C[x,x^{-1}]e,\qquad
+\partial e=\lambda x^{-1}e                                  \tag{5.1}
+\]">\[
+E_\lambda=\mathbb C[x,x^{-1}]e,\qquad
+\partial e=\lambda x^{-1}e                                  \tag{5.1}
+\]</span>
+has weights <span class="math" data-tex="$\lambda+\mathbb Z$">$\lambda+\mathbb Z$</span>, so it does not belong to Theorem 2.1's integer block. Its monodromy is <span class="math" data-tex="$e^{-2\pi i\lambda}$">$e^{-2\pi i\lambda}$</span>.</p>
+<p>More generally on a finite space <span class="math" data-tex="$V$">$V$</span> take residue <span class="math" data-tex="$\lambda I+N$">$\lambda I+N$</span> with <span class="math" data-tex="$N$">$N$</span> nilpotent. On the copy of <span class="math" data-tex="$V$">$V$</span> of weight <span class="math" data-tex="$\lambda+n$">$\lambda+n$</span>, define <span class="math" data-tex="$x=I$">$x=I$</span> to the next copy and <span class="math" data-tex="$\partial=(\lambda+n)I+N$">$\partial=(\lambda+n)I+N$</span> to the previous one. The Weyl relation holds by subtracting consecutive scalars. Every such scalar-plus-nilpotent operator is invertible, so both exceptional-arrow analogues are invertible. The module is the Laurent connection with that residue.</p>
+<p>The same analytic contraction as in Lemma 4.1 now contracts <strong>every</strong> weight pair, since there is no zero scalar. It has zero de Rham stalk at zero, while the punctured local system has
+<span class="math" data-tex="$T=e^{-2\pi i(\lambda I+N)}$">$T=e^{-2\pi i(\lambda I+N)}$</span> with <span class="math" data-tex="$T-I$">$T-I$</span> invertible. The circle complex is acyclic, so the extension is simultaneously <span class="math" data-tex="$j_!L[1]$">$j_!L[1]$</span> and <span class="math" data-tex="$Rj_*L[1]$">$Rj_*L[1]$</span>. This proves the nonresonant star/shriek equality on the line directly.</p>
+<p>This also completes the heart correspondence for <strong>all</strong> finitely generated monodromic modules over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, not just the integer block. Their finitely many eigenvalues modulo <span class="math" data-tex="$\mathbb Z$">$\mathbb Z$</span> separate them into blocks, because <span class="math" data-tex="$x,\partial$">$x,\partial$</span> preserve those classes. In a nonintegral block every <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$\partial$">$\partial$</span> transition is invertible by (2.2). Identify all weights with one finite space through <span class="math" data-tex="$x$">$x$</span>; the module is exactly the Laurent model above. Maps are constant residue intertwiners.</p>
+<p>On the sheaf side decompose nearby and vanishing spaces into the generalized eigenspaces of their invertible monodromies. The two arrows preserve these decompositions. Away from eigenvalue one, both composites are invertible, so both arrows are invertible and give the unique common star/shriek extension. Every such <span class="math" data-tex="$T$">$T$</span> is realized by a residue <span class="math" data-tex="$\lambda I+N$">$\lambda I+N$</span> using the finite logarithm on its generalized eigenblock, as in the preceding lesson. Normalized residues in one representative of each class modulo integers have exactly the same intertwiners as their exponentials. Eigenvalue one is Theorem 4.3's block; point-supported contributions belong there too. These decompositions are functorial, so combining the proved block equivalences gives the full monodromic heart equivalence on the two-stratum line.</p>
+<p>There is no nonzero analogue with both <span class="math" data-tex="$a$">$a$</span> and <span class="math" data-tex="$b$">$b$</span> invertible in the nilpotent integer-block diagram: then <span class="math" data-tex="$ab$">$ab$</span> would be both invertible and nilpotent. This elementary obstruction is why the nonintegral block must be specified.</p>
+<p>Finally, the regularity hypothesis in (1.1) cannot be removed. The trivial connection and <span class="math" data-tex="$\mathcal O.e^x$">$\mathcal O.e^x$</span> on <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span> both have analytically trivial rank-one horizontal local systems, but they are not algebraically isomorphic. An algebraic connection map between them would require a nonzero polynomial solution of <span class="math" data-tex="$g&#x27;+g=0$">$g&#x27;+g=0$</span> or <span class="math" data-tex="$g&#x27;-g=0$">$g&#x27;-g=0$</span>, impossible by comparing the highest degree. The exponential is irregular at infinity. Their zero-section characteristic varieties do not separate them.</p>
+<p>Even the algebraic Fourier transform need not preserve regularity. In the convention <span class="math" data-tex="$x_{\rm new}=\partial_{\rm old}$">$x_{\rm new}=\partial_{\rm old}$</span>, <span class="math" data-tex="$\partial_{\rm new}=-x_{\rm old}$">$\partial_{\rm new}=-x_{\rm old}$</span>, the regular delta module at <span class="math" data-tex="$c\neq0$">$c\neq0$</span> becomes the connection with <span class="math" data-tex="$\partial_{\rm new}e=-c e$">$\partial_{\rm new}e=-c e$</span>. It is irregular at infinity by the rank-one test. The Fourier operation is still an equivalence of holonomic categories; it requires the broader differential-equation category.</p>
+<h2 id="6-where-the-correspondence-enters-geometric-langlands">6. Where the correspondence enters geometric Langlands</h2>
+<p>For a smooth complete complex curve and a connected reductive group <span class="math" data-tex="$G$">$G$</span>, Gaitsgory–Raskin, <a href="https://arxiv.org/abs/2405.03599"><em>Proof of the geometric Langlands conjecture I: construction of the functor</em>, introduction and §4.2</a>, compares the restricted de Rham and restricted Betti settings through Riemann-Hilbert. The automorphic categories use half-twisted objects on <span class="math" data-tex="$\operatorname{Bun}_G$">$\operatorname{Bun}_G$</span> with nilpotent singular support.</p>
+<p>The regularity input is substantial: §4.2 invokes Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Corollary 16.5.6, to identify that D-module category with its regular-singular part. The stack formulation first takes ind-completions on affine schemes and then limits over affine maps to the stack. It is not the bounded finite-dimensional theorem applied directly to one infinite-dimensional space.</p>
+<p>Riemann-Hilbert also identifies the restricted local-system prestacks through their Tannakian input. The commuting square of restricted Langlands functors in §4.2 then transfers equivalence between the two settings. Full-formulation comparison uses further arguments there. We state these applications; no geometric Langlands theorem or stack extension is proved here.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 14.1 (easy).</strong> Compute the quadruples of <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>, <span class="math" data-tex="$\delta_0$">$\delta_0$</span>, <span class="math" data-tex="$j_*\mathcal O$">$j_*\mathcal O$</span> and <span class="math" data-tex="$j_!\mathcal O$">$j_!\mathcal O$</span>.</p>
+<p><strong>Solution.</strong> The weight-zero and weight-minus-one spaces in polynomials are <span class="math" data-tex="$k,0$">$k,0$</span>; in delta they are <span class="math" data-tex="$0,k$">$0,k$</span>. In Laurent polynomials they are generated by <span class="math" data-tex="$1,x^{-1}$">$1,x^{-1}$</span>, with <span class="math" data-tex="$a(x^{-1})=1$">$a(x^{-1})=1$</span> and <span class="math" data-tex="$b(1)=0$">$b(1)=0$</span>, giving <span class="math" data-tex="$(k,k,1,0)$">$(k,k,1,0)$</span>. For <span class="math" data-tex="$A/A(x\partial)$">$A/A(x\partial)$</span> they are generated by <span class="math" data-tex="$u,\partial u$">$u,\partial u$</span>, with <span class="math" data-tex="$a(\partial u)=0$">$a(\partial u)=0$</span> and <span class="math" data-tex="$b(u)=\partial u$">$b(u)=\partial u$</span>, giving <span class="math" data-tex="$(k,k,0,1)$">$(k,k,0,1)$</span>. Their entire modules are recovered by (2.3), so no further extension parameter is hidden.</p>
+<p><strong>Exercise 14.2 (easy).</strong> Show that <span class="math" data-tex="$j_{!*}\mathcal O_{\mathbb G_m}$">$j_{!*}\mathcal O_{\mathbb G_m}$</span> has quadruple <span class="math" data-tex="$(k,0)$">$(k,0)$</span>.</p>
+<p><strong>Solution.</strong> The canonical map from the shriek diagram <span class="math" data-tex="$(k,k,0,1)$">$(k,k,0,1)$</span> to the star diagram <span class="math" data-tex="$(k,k,1,0)$">$(k,k,1,0)$</span> is <span class="math" data-tex="$(1,0)$">$(1,0)$</span>. It commutes with both arrows, and its open restriction is the identity. Intermediate extension is its image; kernels and images of this equivalence are computed on the two vector spaces. The image is <span class="math" data-tex="$(k,0)$">$(k,0)$</span>, the polynomial module.</p>
+<p><strong>Exercise 14.3 (medium).</strong> Reconstruct the module from a nilpotent quadruple and prove the equivalence.</p>
+<p><strong>Solution.</strong> Place <span class="math" data-tex="$V_0$">$V_0$</span> in every nonnegative integer weight and <span class="math" data-tex="$V_1$">$V_1$</span> in every negative one, and use (2.3). At the two boundary weights the Weyl commutator is respectively <span class="math" data-tex="$(I+ab)-ab=I$">$(I+ab)-ab=I$</span> and <span class="math" data-tex="$ba-(-I+ba)=I$">$ba-(-I+ba)=I$</span>; elsewhere it is the difference of consecutive integers. Its <span class="math" data-tex="$\theta$">$\theta$</span> eigenvalues and nilpotent parts are the desired ones. Starting from any integer-block module, the invertible <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$\partial$">$\partial$</span> arrows away from weights <span class="math" data-tex="$-1,0$">$-1,0$</span> identify it with this reconstruction. Every morphism is determined by the two initial weight maps, and the commuting equations with <span class="math" data-tex="$a,b$">$a,b$</span> extend those maps uniquely to all other weights. The two functors are inverse. For unrestricted infinite spaces replace nilpotence by local nilpotence as in Theorem 2.1.</p>
+<p><strong>Exercise 14.4 (medium).</strong> Identify the de Rham images of the four elementary modules as perverse sheaves on the line.</p>
+<p><strong>Solution.</strong> Apply (4.9). Polynomials give nearby <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> and vanishing zero, hence <span class="math" data-tex="$\mathbb C[1]$">$\mathbb C[1]$</span>; delta gives nearby zero and vanishing <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, hence the point sheaf in degree zero. The Laurent module gives <span class="math" data-tex="$u=0,v=-2\pi i$">$u=0,v=-2\pi i$</span>, isomorphic by rescaling to the star diagram, hence <span class="math" data-tex="$Rj_*\mathbb C[1]$">$Rj_*\mathbb C[1]$</span>. The shriek module gives <span class="math" data-tex="$u=1,v=0$">$u=1,v=0$</span>, hence <span class="math" data-tex="$j_!\mathbb C[1]$">$j_!\mathbb C[1]$</span>. Their stalks are respectively <span class="math" data-tex="$\mathbb C[1]$">$\mathbb C[1]$</span>, <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> in degree zero, one copy in each of degrees <span class="math" data-tex="$-1,0$">$-1,0$</span>, and zero. These degrees agree with (4.3).</p>
+<p><strong>Exercise 14.5 (hard; corrected scope).</strong> Can a nonzero nilpotent quadruple have both arrows invertible? Prove the intended equality <span class="math" data-tex="$j_*L[1]=j_!L[1]$">$j_*L[1]=j_!L[1]$</span> in a nonintegral block.</p>
+<p><strong>Solution.</strong> If both arrows were invertible, <span class="math" data-tex="$ab$">$ab$</span> would be invertible. If <span class="math" data-tex="$(ab)^q=0$">$(ab)^q=0$</span>, multiplying by its inverse <span class="math" data-tex="$q$">$q$</span> times gives <span class="math" data-tex="$I=0$">$I=0$</span>, so both spaces must be zero. Thus the assertion for nonzero integer-block nilpotent quadruples would be false.</p>
+<p>For the intended nonresonant assertion take residue <span class="math" data-tex="$\lambda I+N$">$\lambda I+N$</span>, <span class="math" data-tex="$\lambda\notin\mathbb Z$">$\lambda\notin\mathbb Z$</span>, <span class="math" data-tex="$N$">$N$</span> nilpotent. Every transition <span class="math" data-tex="$(\lambda+n)I+N$">$(\lambda+n)I+N$</span> is invertible by its terminating inverse series. The resulting module is a Laurent logarithmic connection, regular at both ends. Analytic de Rham contracts every weight pair at zero; its stalk is zero. Its local monodromy has sole eigenvalue <span class="math" data-tex="$e^{-2\pi i\lambda}\neq1$">$e^{-2\pi i\lambda}\neq1$</span>, so the complex <span class="math" data-tex="$[V\xrightarrow{T-I}V]$">$[V\xrightarrow{T-I}V]$</span> is acyclic. The localization triangle identifies <span class="math" data-tex="$j_!L[1]\to Rj_*L[1]$">$j_!L[1]\to Rj_*L[1]$</span> as an isomorphism, and the computed de Rham extension is this common object. Direct sums give the same conclusion for all finite local systems whose monodromy has no eigenvalue one.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We state the general algebraic Riemann-Hilbert equivalence, its perverse t-exactness and the full map/duality/external-product compatibility with the precise locators in Section 1. The normalized tensor statement is a consequence of those compatibilities. The independent two-stratum sheaf diagram theorem is a prerequisite from <em>Nearby and vanishing cycles</em>; its proof is not repeated here. We use the nonsingular analytic flat-connection Poincaré lemma already proved in this course.</p>
+<p>The affine-line integer-monodromic correspondence, including reconstruction, finiteness, actual boundary comparison, exponential correction and inverse diagram functor, is proved here. We do not deduce a derived equivalence on this subcategory solely from the heart calculation. The stack regularity input, ind-completion and restricted geometric Langlands comparison in Section 6 are stated applications of Gaitsgory–Raskin, not new proofs.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §§9.2 and 9.5, and V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>: the Riemann–Hilbert correspondence, perverse sheaves and intermediate extensions. The irreducible IC assertion is used only for an irreducible local system.</li>
+<li>Bhatt, Blickle, Lyubeznik, Singh and Zhang, <a href="https://arxiv.org/abs/2308.03155"><em>Applications of perverse sheaves in commutative algebra</em></a>, §2, covariant Riemann-Hilbert theorem and its properties; the sketch's §1 locator is corrected to §2.</li>
+<li>M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), Chapter 9: perversity of normalized holonomic solution complexes, with solution/de Rham duality as in the preceding lessons.</li>
+<li><em>Nearby and vanishing cycles</em>, Theorem 3.1 and Section 4, for the perverse diagram theorem, attaching maps and extension dictionary used here.</li>
+<li>Gaitsgory and Raskin, <em>Proof of the geometric Langlands conjecture I: construction of the functor</em>, arXiv:2405.03599, introduction and §4.2, “Applications of Riemann-Hilbert”; the regularity result cited there is Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Corollary 16.5.6.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/the-riemann-hilbert-correspondence.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

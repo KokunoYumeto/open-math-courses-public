@@ -1,0 +1,1166 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Decomposing an action over its fixed centre · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L75.html">Previous lesson</a><a href="OA-FLOW-ED.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L42.md">Lesson source</a></nav><h1 id="OA-FLOW.CENTERG.SETTING">Decomposing an action over its fixed centre</h1>
+<p><em>Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.</em></p>
+<p>A group can move the centre of a von Neumann algebra even when it leaves some central observables fixed. Those fixed observables provide a base over which the action can be separated into components. We will prove that each component has no further fixed central observable except scalars. The main difficulty is to obtain a genuine continuous action on each component: separate choices of an operator field for each group element do not supply that conclusion.</p>
+<p>We first construct the algebra field and then give two ways to recover continuous fibre representations. One integrates an almost representation against Haar measure; the other uses strict measurable cocycles. We finish by computing the entire fixed-centre field with countably many compact equations. This last step distinguishes central ergodicity from both factoriality and ergodicity of the full algebra.</p>
+<p><a id="oa-flow.centerg.setting"></a></p>
+<h2 id="the-decomposition-to-be-proved">The decomposition to be proved</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a von Neumann algebra with separable predual. Let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be an action continuous in the predual topology: <span class="math" data-tex="\(g\mapsto\omega\circ\alpha_g\)">\(g\mapsto\omega\circ\alpha_g\)</span> is norm-continuous for every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>. Set
+<span class="math math-display" data-tex="\[
+ D=Z(M)^\alpha
+   =\{z\in Z(M):\alpha_g(z)=z\text{ for every }g\in G\}.
+ \tag{T1}
+\]">\[
+ D=Z(M)^\alpha
+   =\{z\in Z(M):\alpha_g(z)=z\text{ for every }g\in G\}.
+ \tag{T1}
+\]</span>
+We call the system <strong>centrally ergodic</strong> if <span class="math" data-tex="\(D=\mathbb C1\)">\(D=\mathbb C1\)</span>, and <strong>ergodic</strong> if <span class="math" data-tex="\(M^\alpha=\mathbb C1\)">\(M^\alpha=\mathbb C1\)</span>. Ergodicity implies central ergodicity because <span class="math" data-tex="\(D\subseteq M^\alpha\)">\(D\subseteq M^\alpha\)</span>.</p>
+<p><strong>Central-ergodic decomposition theorem.</strong> There are a standard probability space <span class="math" data-tex="\((Y,\nu)\)">\((Y,\nu)\)</span>, a measurable field of nonzero separable Hilbert spaces <span class="math" data-tex="\(H_y\)">\(H_y\)</span>, and a whole measurable field of von Neumann algebras <span class="math" data-tex="\(M_y\subseteq B(H_y)\)">\(M_y\subseteq B(H_y)\)</span> such that
+<span class="math math-display" data-tex="\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=L^\infty(Y,\nu)1_y.
+ \tag{T2}
+\]">\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=L^\infty(Y,\nu)1_y.
+ \tag{T2}
+\]</span>
+On one conull measurable subset of <span class="math" data-tex="\(Y\)">\(Y\)</span>, each fibre admits a strongly continuous unitary representation <span class="math" data-tex="\(V_y:G\to\mathcal U(H_y)\)">\(V_y:G\to\mathcal U(H_y)\)</span> normalizing <span class="math" data-tex="\(M_y\)">\(M_y\)</span>. Write <span class="math" data-tex="\(\alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}\)">\(\alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}\)</span>. Each <span class="math" data-tex="\(\alpha_{\cdot,y}\)">\(\alpha_{\cdot,y}\)</span> is a continuous action in the predual topology, and
+<span class="math math-display" data-tex="\[
+ \alpha_g(a)=\int_Y^\oplus\alpha_{g,y}(a_y)\,d\nu(y)
+ \quad(g\in G,\ a=\textstyle\int_Y^\oplus a_y\,d\nu(y)\in M),
+ \qquad Z(M_y)^{\alpha_y}=\mathbb C1_y.
+ \tag{T3}
+\]">\[
+ \alpha_g(a)=\int_Y^\oplus\alpha_{g,y}(a_y)\,d\nu(y)
+ \quad(g\in G,\ a=\textstyle\int_Y^\oplus a_y\,d\nu(y)\in M),
+ \qquad Z(M_y)^{\alpha_y}=\mathbb C1_y.
+ \tag{T3}
+\]</span>
+Here “whole” means every essentially bounded measurable section of the indicated fibre algebras belongs to the integral algebra. For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the field <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> is measurable and integrates to the canonical global implementer. The pointwise group law and continuity of each retained <span class="math" data-tex="\(V_y\)">\(V_y\)</span> hold for all <span class="math" data-tex="\(g,h\)">\(g,h\)</span>; we will not infer them by taking an uncountable intersection of conull sets. The theorem is proved at the <a href="#oa-flow.centerg.conclusion">conclusion</a>.</p>
+<p>The field can be chosen as standard forms <span class="math" data-tex="\((M_y,H_y,J_y,P_y)\)">\((M_y,H_y,J_y,P_y)\)</span>, with <span class="math" data-tex="\(J=\int^\oplus J_y\)">\(J=\int^\oplus J_y\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> the cone of square-integrable sections taking values in <span class="math" data-tex="\(P_y\)">\(P_y\)</span>. On a single conull set, the representations preserve <span class="math" data-tex="\(J_y\)">\(J_y\)</span> and <span class="math" data-tex="\(P_y\)">\(P_y\)</span> for every group element, so they are the canonical standard implementations of the fibre actions.</p>
+<p>No invariant state is assumed. Separability of <span class="math" data-tex="\(G\)">\(G\)</span> is not strengthened to second countability. The zero algebra, if permitted as a von Neumann algebra, has the empty direct-integral decomposition and requires no nonzero fibre assertion.</p>
+<p><span id="OA-FLOW.CENTERG.SETUP"></span><a id="oa-flow.centerg.setup"></a></p>
+<h2 id="the-fixed-central-algebra-and-its-standard-hilbert-field">The fixed central algebra and its standard Hilbert field</h2>
+<p>Let <span class="math" data-tex="\(M\ne0\)">\(M\ne0\)</span> be a von Neumann algebra with separable predual, let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group, and let <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> be a continuous action by normal automorphisms. Continuity means norm continuity on each predual orbit; <a href="OA-FLOW-AT.html#oa-flow.at.3">AT-1–3</a> also proves the equivalence with point-ultraweak continuity. Set</p>
+<p><span class="math math-display" data-tex="\[
+ D=Z(M)^G=\{z\in Z(M):\alpha_g(z)=z\text{ for every }g\in G\}.
+ \tag{A1}
+\]">\[
+ D=Z(M)^G=\{z\in Z(M):\alpha_g(z)=z\text{ for every }g\in G\}.
+ \tag{A1}
+\]</span></p>
+<p>This is a unital abelian von Neumann algebra. Indeed the center and each fixed-point space are ultraweakly closed, and their intersection is a unital, adjoint-closed algebra. We use a standard form <span class="math" data-tex="\((M,H,J,P)\)">\((M,H,J,P)\)</span>. Its canonical implementation, proved in <a href="OA-FLOW-NR.html#oa-flow.nr.1">NR-1</a>, satisfies</p>
+<p><span class="math math-display" data-tex="\[
+ U_g aU_g^*=\alpha_g(a),\qquad U_gJ=JU_g,\qquad U_gP=P,
+ \qquad U_gU_h=U_{gh}.
+ \tag{A2}
+\]">\[
+ U_g aU_g^*=\alpha_g(a),\qquad U_gJ=JU_g,\qquad U_gP=P,
+ \qquad U_gU_h=U_{gh}.
+ \tag{A2}
+\]</span></p>
+<p>The representation <span class="math" data-tex="\(U\)">\(U\)</span> is strongly continuous. None of these assumptions requires an invariant state or a unimodular group.</p>
+<p>The Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> is separable. To see this directly, choose a norm-dense sequence <span class="math" data-tex="\((f_n)\)">\((f_n)\)</span> in <span class="math" data-tex="\(M_*^+\)">\(M_*^+\)</span>. Such a sequence exists because the positive cone is a subspace of the separable metric space <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. By <a href="OA-FLOW-CR.html#oa-flow.cr.8">CR-8</a>, every <span class="math" data-tex="\(f\in M_*^+\)">\(f\in M_*^+\)</span> has a unique representing vector <span class="math" data-tex="\(\xi_f\in P\)">\(\xi_f\in P\)</span>, and <a href="OA-FLOW-CR.html#oa-flow.cr.6">CR-6</a> gives</p>
+<p><span class="math math-display" data-tex="\[
+ \|\xi_f-\xi_{f_n}\|^2\leq\|f-f_n\|.
+ \tag{A3}
+\]">\[
+ \|\xi_f-\xi_{f_n}\|^2\leq\|f-f_n\|.
+ \tag{A3}
+\]</span></p>
+<p>Consequently the vectors <span class="math" data-tex="\(\xi_{f_n}\)">\(\xi_{f_n}\)</span> are dense in <span class="math" data-tex="\(P\)">\(P\)</span>. The complex span of <span class="math" data-tex="\(P\)">\(P\)</span> is all of <span class="math" data-tex="\(H\)">\(H\)</span>, by <a href="OA-FLOW-CR.html#oa-flow.cr.1">CR-1</a>. Finite rational complex combinations of the <span class="math" data-tex="\(\xi_{f_n}\)">\(\xi_{f_n}\)</span> therefore form a countable dense set in <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>We will also need a faithful normal state. The norm-convergent positive series</p>
+<p><span class="math math-display" data-tex="\[
+ \psi=\sum_{n\geq1}2^{-n}\frac{f_n}{1+\|f_n\|},
+ \qquad \varphi=\frac{\psi}{\psi(1)}
+ \tag{A4}
+\]">\[
+ \psi=\sum_{n\geq1}2^{-n}\frac{f_n}{1+\|f_n\|},
+ \qquad \varphi=\frac{\psi}{\psi(1)}
+ \tag{A4}
+\]</span></p>
+<p>supplies one. If <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span> and <span class="math" data-tex="\(\psi(a)=0\)">\(\psi(a)=0\)</span>, every <span class="math" data-tex="\(f_n(a)\)">\(f_n(a)\)</span> is zero, so density gives <span class="math" data-tex="\(f(a)=0\)">\(f(a)=0\)</span> for every positive normal functional <span class="math" data-tex="\(f\)">\(f\)</span>. Positive vector functionals in any faithful concrete representation separate positive operators, whence <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. In particular <span class="math" data-tex="\(\psi(1)&gt;0\)">\(\psi(1)&gt;0\)</span>. Its cone vector <span class="math" data-tex="\(\Omega=\xi_\varphi\)">\(\Omega=\xi_\varphi\)</span> is cyclic and separating by <a href="OA-FLOW-CR.html#oa-flow.cr.8">CR-8</a>, and <a href="OA-FLOW-CR.html#oa-flow.cr.4">CR-4</a> identifies the GNS standard form of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> with our given <span class="math" data-tex="\((M,H,J,P)\)">\((M,H,J,P)\)</span>.</p>
+<h3 id="the-whole-algebra-over-the-specified-diagonal">The whole algebra over the specified diagonal</h3>
+<p>Apply <span class="unlinked">DC-7, existence over a specified central algebra</span> to <span class="math" data-tex="\((M,H,D)\)">\((M,H,D)\)</span>. Its hypotheses are exactly that <span class="math" data-tex="\(H\)">\(H\)</span> is separable and <span class="math" data-tex="\(D\subseteq Z(M)\)">\(D\subseteq Z(M)\)</span> is unital. Together with <span class="unlinked">DC-6</span>, it gives a standard Borel probability base, completed when taking equivalence classes, and a faithful diagonal realization</p>
+<p><span class="math math-display" data-tex="\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=\{M_f:f\in L^\infty(Y,\nu)\}.
+ \tag{A5}
+\]">\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=\{M_f:f\in L^\infty(Y,\nu)\}.
+ \tag{A5}
+\]</span></p>
+<p>Here <span class="math" data-tex="\(H_y\ne0\)">\(H_y\ne0\)</span> is separable and <span class="math" data-tex="\(M_y\subseteq B(H_y)\)">\(M_y\subseteq B(H_y)\)</span> is a nonzero unital von Neumann algebra almost everywhere. The middle identity denotes <strong>all</strong> measurable essentially bounded fields with values in <span class="math" data-tex="\(M_y\)">\(M_y\)</span>, not just a chosen generating family. DC-7 proves it by constructing the measurable fiber commutants and identifying their entire integral commutant. The diagonal has no kernel on the retained base. Every <span class="math" data-tex="\(M_y\)">\(M_y\)</span> also has separable predual: <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP-6</a> realizes it as a quotient of <span class="math" data-tex="\(H_y\widehat\otimes_\pi\overline{H_y}\)">\(H_y\widehat\otimes_\pi\overline{H_y}\)</span>, whose finite rational tensors from a countable dense subset are norm dense.</p>
+<p>Since <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span> fixes <span class="math" data-tex="\(D\)">\(D\)</span> pointwise, <span class="math" data-tex="\(U_g\)">\(U_g\)</span> commutes with every scalar multiplication <span class="math" data-tex="\(M_f\)">\(M_f\)</span>. The <span class="unlinked">DF-8 diagonal-commutant theorem</span> therefore supplies, for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, a measurable unitary field representing <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. Unitarity follows by decomposing <span class="math" data-tex="\(U_g^*U_g=U_gU_g^*=I\)">\(U_g^*U_g=U_gU_g^*=I\)</span> and using DF-8 uniqueness. At this stage its exceptional null set can depend on <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<h3 id="a-compatible-field-of-standard-forms">A compatible field of standard forms</h3>
+<p>We can choose (A5) with the full standard-form data as well. The additional input is the proved <span class="unlinked">MW-7 central weight disintegration</span>. That theorem applies to a faithful normal semifinite weight on a separably acting algebra and <strong>any</strong> specified unital <span class="math" data-tex="\(D\subseteq Z(M)\)">\(D\subseteq Z(M)\)</span>. In particular it applies to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> from (A4). Its <a href="../OA-MOD/OA-MOD-DI.html#reverse-assembly-over-a-specified-central-diagonal">DI-13 reverse assembly</a> begins with the whole algebra decomposition of <span class="math" data-tex="\((M,H,D)\)">\((M,H,D)\)</span>, localizes both closed involution graphs, and constructs the full fiber Hilbert algebras. The <a href="../OA-MOD/OA-MOD-GFR.html#the-reverse-comparison-and-the-realization-obstruction">GFR comparison</a> transports those fibers to their actual GNS spaces. Thus the resulting GNS, algebra and diagonal identifications are compatible with each other.</p>
+<p>Initially write the fiber weights as <span class="math" data-tex="\(\widetilde\varphi_y\)">\(\widetilde\varphi_y\)</span> and the reference measure as <span class="math" data-tex="\(\widetilde\nu\)">\(\widetilde\nu\)</span>. <span class="unlinked">MW-5</span> gives the identity for every positive element, including the unit. Hence the measurable function</p>
+<p><span class="math math-display" data-tex="\[
+ h(y)=\widetilde\varphi_y(1),\qquad
+ 0&lt;h(y)&lt;\infty\text{ almost everywhere},\qquad
+ \int h\,d\widetilde\nu=1
+ \tag{A6}
+\]">\[
+ h(y)=\widetilde\varphi_y(1),\qquad
+ 0&lt;h(y)&lt;\infty\text{ almost everywhere},\qquad
+ \int h\,d\widetilde\nu=1
+ \tag{A6}
+\]</span></p>
+<p>is a strictly positive density. Positivity uses nonzero fibers and faithfulness; finiteness follows from the displayed integral. Replace the base by <span class="math" data-tex="\(d\nu=h\,d\widetilde\nu\)">\(d\nu=h\,d\widetilde\nu\)</span> and the fiber weights by <span class="math" data-tex="\(\varphi_y=h^{-1}\widetilde\varphi_y\)">\(\varphi_y=h^{-1}\widetilde\varphi_y\)</span>. The resulting <span class="math" data-tex="\(\varphi_y\)">\(\varphi_y\)</span> are faithful normal states. The density change and its GNS unitary are proved in MW-7: on the GNS core, the map <span class="math" data-tex="\(\Lambda_{\widetilde\varphi_y}(a)\mapsto\Lambda_{\varphi_y}(a)\)">\(\Lambda_{\widetilde\varphi_y}(a)\mapsto\Lambda_{\varphi_y}(a)\)</span> has norm factor <span class="math" data-tex="\(h(y)^{-1/2}\)">\(h(y)^{-1/2}\)</span>, precisely compensated by <span class="math" data-tex="\(d\nu=h\,d\widetilde\nu\)">\(d\nu=h\,d\widetilde\nu\)</span>. We use these normalized coordinates in (A5).</p>
+<p>The full GNS-ideal assertion of MW-5 and the full closed-operator assertion of <span class="unlinked">MW-4</span> now give</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \varphi(a)&amp;=\int_Y\varphi_y(a(y))\,d\nu(y)&amp;&amp; (a\in M_+),\\
+ \Omega(y)&amp;=\Omega_y=\Lambda_{\varphi_y}(1),&amp;\quad \|\Omega_y\|&amp;=1,\\
+ J&amp;=\int_Y^\oplus J_y\,d\nu(y),&amp;
+ \Delta_\varphi&amp;=\int_Y^\oplus\Delta_y\,d\nu(y).
+ \end{aligned}
+ \tag{A7}
+\]">\[
+ \begin{aligned}
+ \varphi(a)&amp;=\int_Y\varphi_y(a(y))\,d\nu(y)&amp;&amp; (a\in M_+),\\
+ \Omega(y)&amp;=\Omega_y=\Lambda_{\varphi_y}(1),&amp;\quad \|\Omega_y\|&amp;=1,\\
+ J&amp;=\int_Y^\oplus J_y\,d\nu(y),&amp;
+ \Delta_\varphi&amp;=\int_Y^\oplus\Delta_y\,d\nu(y).
+ \end{aligned}
+ \tag{A7}
+\]</span></p>
+<p>The last equality includes the full operator domain. Bounded Borel functions of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> integrate fiberwise; unbounded powers are recovered by spectral truncation with their exact square-integrability domains. Notice also that, for <span class="math" data-tex="\(f\in L^\infty(Y,\nu)\)">\(f\in L^\infty(Y,\nu)\)</span>,
+<span class="math" data-tex="\(\varphi(M_f)=\int f\,d\nu\)">\(\varphi(M_f)=\int f\,d\nu\)</span>. Thus this normalization realizes the restriction of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to the specified diagonal.</p>
+<p>Each faithful-state GNS space has its natural cone</p>
+<p><span class="math math-display" data-tex="\[
+ P_y=\overline{\Delta_y^{1/4}(M_y)_+\Omega_y}.
+ \tag{A8}
+\]">\[
+ P_y=\overline{\Delta_y^{1/4}(M_y)_+\Omega_y}.
+ \tag{A8}
+\]</span></p>
+<p><a href="OA-FLOW-NC.html#oa-flow.nc.5">NC-5</a> proves this formula and the standard-form axioms. We next prove that these are a measurable field of cones and that their integral is the original cone:</p>
+<p><span class="math math-display" data-tex="\[
+ P=\left\{\eta\in H:\eta(y)\in P_y
+               \text{ for almost every }y\right\}.
+ \tag{A9}
+\]">\[
+ P=\left\{\eta\in H:\eta(y)\in P_y
+               \text{ for almost every }y\right\}.
+ \tag{A9}
+\]</span></p>
+<p>The <a href="../OA-MOD/OA-MOD-GFR.html#a-common-countable-strong-dense-contraction-family">GFR-7 common contraction family</a> provides measurable contractions <span class="math" data-tex="\(q_j(y)\)">\(q_j(y)\)</span> strongly-star dense in the unit ball of every <span class="math" data-tex="\(M_y\)">\(M_y\)</span>, in this actual GNS realization, off one null set. Include zero and form all fields <span class="math" data-tex="\(a_j=kq_i^*q_i\)">\(a_j=kq_i^*q_i\)</span>, for positive integers <span class="math" data-tex="\(k\)">\(k\)</span>; enumerate them as one sequence. Each is positive and globally bounded. For every positive <span class="math" data-tex="\(b\in M_y\)">\(b\in M_y\)</span>, suitable such fields approximate <span class="math" data-tex="\(b\)">\(b\)</span> strongly at that fiber: approximate <span class="math" data-tex="\((b/k)^{1/2}\)">\((b/k)^{1/2}\)</span> strongly-star in the contraction ball, with <span class="math" data-tex="\(k\geq\|b\|\)">\(k\geq\|b\|\)</span>.</p>
+<p>For <span class="math" data-tex="\(b\in M_y\)">\(b\in M_y\)</span>, the Tomita identity and Cauchy–Schwarz in the spectral measure give</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|\Delta_y^{1/4}b\Omega_y\|^2
+ &amp;=\langle\Delta_y^{1/2}b\Omega_y,b\Omega_y\rangle\\
+ &amp;\leq\|b\Omega_y\|\,\|b^*\Omega_y\|.
+ \end{aligned}
+ \tag{A10}
+\]">\[
+ \begin{aligned}
+ \|\Delta_y^{1/4}b\Omega_y\|^2
+ &amp;=\langle\Delta_y^{1/2}b\Omega_y,b\Omega_y\rangle\\
+ &amp;\leq\|b\Omega_y\|\,\|b^*\Omega_y\|.
+ \end{aligned}
+ \tag{A10}
+\]</span></p>
+<p>All domains here are valid because <span class="math" data-tex="\(M_y\Omega_y\subseteq D(S_y)=D(\Delta_y^{1/2})\)">\(M_y\Omega_y\subseteq D(S_y)=D(\Delta_y^{1/2})\)</span>. For self-adjoint differences, (A10) shows that strong approximation of the positive elements passes to their quarter-power vectors. Consequently the measurable sections</p>
+<p><span class="math math-display" data-tex="\[
+ v_j(y)=\Delta_y^{1/4}a_j(y)\Omega_y
+ \tag{A11}
+\]">\[
+ v_j(y)=\Delta_y^{1/4}a_j(y)\Omega_y
+ \tag{A11}
+\]</span></p>
+<p>are dense in <span class="math" data-tex="\(P_y\)">\(P_y\)</span>. Measurability follows by applying the bounded spectral truncations of the quarter power from (A7), then taking the pointwise norm limit. Moreover <span class="math" data-tex="\(\|v_j(y)\|\leq\|a_j\|\)">\(\|v_j(y)\|\leq\|a_j\|\)</span>, so every <span class="math" data-tex="\(v_j\)">\(v_j\)</span> is square integrable on our probability base.</p>
+<p>By <a href="OA-FLOW-NC.html#oa-flow.nc.5">NC-5</a> and <a href="OA-FLOW-CR.html#oa-flow.cr.4">CR-4</a>, <span class="math" data-tex="\(P=\overline{\Delta_\varphi^{1/4}M_+\Omega}\)">\(P=\overline{\Delta_\varphi^{1/4}M_+\Omega}\)</span>. Equations (A7)–(A8) put every one of these generating vectors in the right side of (A9). That side is norm closed: from an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-convergent sequence choose a subsequence converging pointwise almost everywhere, and use closedness of every <span class="math" data-tex="\(P_y\)">\(P_y\)</span>. This proves one inclusion.</p>
+<p>For the reverse inclusion, let <span class="math" data-tex="\(\eta(y)\in P_y\)">\(\eta(y)\in P_y\)</span> be square integrable. For each <span class="math" data-tex="\(n\)">\(n\)</span>, choose the first index <span class="math" data-tex="\(j_n(y)\)">\(j_n(y)\)</span> such that <span class="math" data-tex="\(\|\eta(y)-v_{j_n(y)}(y)\|&lt;1/n\)">\(\|\eta(y)-v_{j_n(y)}(y)\|&lt;1/n\)</span>. This is measurable, since each of the countably many distance functions is measurable. Choose a finite <span class="math" data-tex="\(k_n\)">\(k_n\)</span> so that
+<span class="math" data-tex="\(\int_{\{j_n&gt;k_n\}}\|\eta(y)\|^2\,d\nu&lt;1/n^2\)">\(\int_{\{j_n&gt;k_n\}}\|\eta(y)\|^2\,d\nu&lt;1/n^2\)</span>, possible by dominated convergence. On <span class="math" data-tex="\(\{j_n=j\}\)">\(\{j_n=j\}\)</span>, <span class="math" data-tex="\(j\leq k_n\)">\(j\leq k_n\)</span>, put <span class="math" data-tex="\(b_n(y)=a_j(y)\)">\(b_n(y)=a_j(y)\)</span>, and put <span class="math" data-tex="\(b_n(y)=0\)">\(b_n(y)=0\)</span> elsewhere. This is a bounded positive measurable field, so the <strong>whole algebra</strong> identity in (A5) places <span class="math" data-tex="\(b_n\)">\(b_n\)</span> in <span class="math" data-tex="\(M_+\)">\(M_+\)</span>. Its global quarter-power vector has the corresponding values <span class="math" data-tex="\(v_j(y)\)">\(v_j(y)\)</span>, by (A7), and</p>
+<p><span class="math math-display" data-tex="\[
+ \|\eta-\Delta_\varphi^{1/4}b_n\Omega\|^2\leq\frac{2}{n^2}.
+ \tag{A12}
+\]">\[
+ \|\eta-\Delta_\varphi^{1/4}b_n\Omega\|^2\leq\frac{2}{n^2}.
+ \tag{A12}
+\]</span></p>
+<p>Thus <span class="math" data-tex="\(\eta\in P\)">\(\eta\in P\)</span>, proving (A9). This also constructs a countable measurable family dense in each fiber cone. We have established the compatible field of standard forms <span class="math" data-tex="\((M_y,H_y,J_y,P_y)\)">\((M_y,H_y,J_y,P_y)\)</span> over the fixed diagonal <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><span id="OA-FLOW.CENTERG.ALMOST"></span><a id="oa-flow.centerg.almost"></a></p>
+<h2 id="repairing-an-almost-representation-by-integration">Repairing an almost representation by integration</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group. Fix left Haar measure <span class="math" data-tex="\(dg\)">\(dg\)</span> and use the convention
+<span class="math math-display" data-tex="\[
+ \int_G f(th)\,dt=\Delta_G(h)^{-1}\int_Gf(t)\,dt,\qquad
+ f^*(t)=\Delta_G(t^{-1})\,\overline{f(t^{-1})}.
+ \tag{I1}
+\]">\[
+ \int_G f(th)\,dt=\Delta_G(h)^{-1}\int_Gf(t)\,dt,\qquad
+ f^*(t)=\Delta_G(t^{-1})\,\overline{f(t^{-1})}.
+ \tag{I1}
+\]</span>
+These are the <a href="OA-FLOW-L24.html#oa-flow.grp.translations">translation and inversion conventions of L24</a>. The group need not have a countable neighborhood base. It is nevertheless sigma compact: if <span class="math" data-tex="\(O\)">\(O\)</span> is a relatively compact identity neighborhood and <span class="math" data-tex="\(Q\)">\(Q\)</span> is a countable dense subset, then every open <span class="math" data-tex="\(gO^{-1}\)">\(gO^{-1}\)</span> meets <span class="math" data-tex="\(Q\)">\(Q\)</span>, so
+<span class="math math-display" data-tex="\[
+ G=\bigcup_{q\in Q}qO\subseteq\bigcup_{q\in Q}q\overline O=G.
+ \tag{I2}
+\]">\[
+ G=\bigcup_{q\in Q}qO\subseteq\bigcup_{q\in Q}q\overline O=G.
+ \tag{I2}
+\]</span>
+Thus Haar measure is sigma-finite. Products below use the completed Radon product of Haar measures, for which <a href="OA-FLOW-HR.html#hr-05">HR5</a> proves Borel Tonelli and Fubini on sigma-finite carriers. All of <span class="math" data-tex="\(G^n\)">\(G^n\)</span> is such a carrier. No equality between the full Borel sigma-algebra of <span class="math" data-tex="\(G^2\)">\(G^2\)</span> and <span class="math" data-tex="\(\mathcal B(G)\otimes\mathcal B(G)\)">\(\mathcal B(G)\otimes\mathcal B(G)\)</span> is needed.</p>
+<p><strong>Almost-representation lemma.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be a separable Hilbert space and <span class="math" data-tex="\(W:G\to\mathcal U(K)\)">\(W:G\to\mathcal U(K)\)</span> weakly Haar-measurable. Assume
+<span class="math math-display" data-tex="\[
+ W(st)=W(s)W(t)
+ \quad\text{for product-Haar-almost every }(s,t)\in G^2.
+ \tag{I3}
+\]">\[
+ W(st)=W(s)W(t)
+ \quad\text{for product-Haar-almost every }(s,t)\in G^2.
+ \tag{I3}
+\]</span>
+Then there is a unique strongly continuous unitary representation <span class="math" data-tex="\(V:G\to\mathcal U(K)\)">\(V:G\to\mathcal U(K)\)</span> such that <span class="math" data-tex="\(V(g)=W(g)\)">\(V(g)=W(g)\)</span> for Haar-almost every <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>The zero Hilbert space has its unique representation, so we can suppose <span class="math" data-tex="\(K\ne0\)">\(K\ne0\)</span>. Weak measurability becomes strong measurability on each vector here. Indeed, in a finite or countable orthonormal basis, the coefficients of <span class="math" data-tex="\(W(g)\xi\)">\(W(g)\xi\)</span> are measurable, and their finite coordinate sums converge in norm for every <span class="math" data-tex="\(g\)">\(g\)</span>. A countable net in the separable space <span class="math" data-tex="\(K\)">\(K\)</span>, with least-index choices and a sigma-finite exhaustion, then gives the simple-function approximants in <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24's vector-integration construction</a>.</p>
+<p>We can also use a Borel unitary representative. Choose Borel versions of the countably many vector maps <span class="math" data-tex="\(g\mapsto W(g)e_n\)">\(g\mapsto W(g)e_n\)</span>, changing them on one Borel Haar-null set; Borel versions for completed measurable functions follow from <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">the completion argument in L75</a>, applied to their countably many coordinates and a finite-measure exhaustion. Explicitly, the coordinate versions have square-summable values off one null set. On the Borel set where their squared sum is finite, their finite coordinate sums reconstruct a Borel vector map; use zero elsewhere. Countably many columns have one common null carrier. The chosen columns define a unitary exactly when they have the prescribed basis Gram matrix and have dense range. The latter has the countable tests
+<span class="math math-display" data-tex="\[
+ \inf_{a\in\mathbb Q(i)^{(\mathbb N)}}
+       \left\|e_m-\sum_n a_n w_n(g)\right\|=0
+       \qquad(m\ge1),
+ \tag{I4}
+\]">\[
+ \inf_{a\in\mathbb Q(i)^{(\mathbb N)}}
+       \left\|e_m-\sum_n a_n w_n(g)\right\|=0
+       \qquad(m\ge1),
+ \tag{I4}
+\]</span>
+where the coefficients have finite support; in finite dimension use only the existing basis vectors. These tests and the Gram equalities are Borel. On their common good set the columns extend to an isometry with dense, hence full, range; on the complement use the identity. The resulting matrix coefficients are Borel and agree with those of <span class="math" data-tex="\(W\)">\(W\)</span> off one null set. They define a Borel map into the strong unitary group, whose topology is determined by those countably many vector columns.</p>
+<p>Replacing <span class="math" data-tex="\(W\)">\(W\)</span> by this representative preserves (I3). If <span class="math" data-tex="\(N\)">\(N\)</span> is the Borel null set of changes, the possible failures occur where <span class="math" data-tex="\(s\in N\)">\(s\in N\)</span>, <span class="math" data-tex="\(t\in N\)">\(t\in N\)</span>, or <span class="math" data-tex="\(st\in N\)">\(st\in N\)</span>. The first two sets are product null by sigma-finiteness. The last is Borel, and its section for every fixed <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(s^{-1}N\)">\(s^{-1}N\)</span>, which is Haar-null; HR5 makes it product null. We henceforth use this Borel representative.</p>
+<p>For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> define
+<span class="math math-display" data-tex="\[
+ \Pi(f)\xi=\int_G f(g)W(g)\xi\,dg,\qquad
+ \|\Pi(f)\|\le\|f\|_1.
+ \tag{I5}
+\]">\[
+ \Pi(f)\xi=\int_G f(g)W(g)\xi\,dg,\qquad
+ \|\Pi(f)\|\le\|f\|_1.
+ \tag{I5}
+\]</span>
+This is a vector integral, not an assertion of norm measurability into <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>. The separability just proved and the bound
+<span class="math" data-tex="\(\|f(g)W(g)\xi\|=|f(g)|\|\xi\|\)">\(\|f(g)W(g)\xi\|=|f(g)|\|\xi\|\)</span>
+give existence. The <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">vector Fubini theorem in L24</a>, the almost-everywhere law (I3), and the substitution <span class="math" data-tex="\(r=st\)">\(r=st\)</span> give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Pi(f)\Pi(h)\xi
+ &amp;=\int_{G^2}f(s)h(t)W(s)W(t)\xi\,ds\,dt\\
+ &amp;=\int_G\left(\int_G f(s)h(s^{-1}r)\,ds\right)W(r)\xi\,dr\\
+ &amp;=\Pi(f*h)\xi.
+ \end{aligned}
+ \tag{I6}
+\]">\[
+ \begin{aligned}
+ \Pi(f)\Pi(h)\xi
+ &amp;=\int_{G^2}f(s)h(t)W(s)W(t)\xi\,ds\,dt\\
+ &amp;=\int_G\left(\int_G f(s)h(s^{-1}r)\,ds\right)W(r)\xi\,dr\\
+ &amp;=\Pi(f*h)\xi.
+ \end{aligned}
+ \tag{I6}
+\]</span>
+The double norm integral is bounded by
+<span class="math" data-tex="\(\|f\|_1\|h\|_1\|\xi\|\)">\(\|f\|_1\|h\|_1\|\xi\|\)</span>, so every exchange is justified. The changes of variables act on Borel functions and preserve the relevant completed null classes.</p>
+<p>The involution requires a separate null-set argument. The maps
+<span class="math math-display" data-tex="\[
+ (g,t)\longmapsto(g,g^{-1}t),\qquad
+ (g,t)\longmapsto(g^{-1},t)
+ \tag{I7}
+\]">\[
+ (g,t)\longmapsto(g,g^{-1}t),\qquad
+ (g,t)\longmapsto(g^{-1},t)
+ \tag{I7}
+\]</span>
+are homeomorphisms. The first preserves the Radon product, by left Haar invariance in the second coordinate and the <a href="OA-FLOW-HR.html#hr-07">product-change proof of HR7</a>. The second preserves its null ideal: inversion changes the first Haar measure by the everywhere positive density <span class="math" data-tex="\(\Delta_G(g^{-1})\)">\(\Delta_G(g^{-1})\)</span>, by (I1). Their inverses have the same null-class properties. Apply (I3) along these two legitimate transformations. For almost every <span class="math" data-tex="\((g,t)\)">\((g,t)\)</span>,
+<span class="math math-display" data-tex="\[
+ W(t)=W(g)W(g^{-1}t),\qquad
+ W(g^{-1}t)=W(g^{-1})W(t).
+ \tag{I8}
+\]">\[
+ W(t)=W(g)W(g^{-1}t),\qquad
+ W(g^{-1}t)=W(g^{-1})W(t).
+ \tag{I8}
+\]</span>
+Multiplication and the unitarity of <span class="math" data-tex="\(W(t)\)">\(W(t)\)</span> give <span class="math" data-tex="\(W(g)W(g^{-1})=1\)">\(W(g)W(g^{-1})=1\)</span>. Fubini now makes this true for almost every <span class="math" data-tex="\(g\)">\(g\)</span>: for each such <span class="math" data-tex="\(g\)">\(g\)</span>, its conull set of valid <span class="math" data-tex="\(t\)">\(t\)</span>'s is nonempty since Haar measure is nonzero. Hence
+<span class="math math-display" data-tex="\[
+ W(g^{-1})=W(g)^*\quad\text{for Haar-almost every }g.
+ \tag{I9}
+\]">\[
+ W(g^{-1})=W(g)^*\quad\text{for Haar-almost every }g.
+ \tag{I9}
+\]</span>
+In particular we have made no substitution on the potentially null graph <span class="math" data-tex="\(t=g^{-1}\)">\(t=g^{-1}\)</span>. Scalar matrix coefficients, (I9) and the full inversion formula give
+<span class="math math-display" data-tex="\[
+ \Pi(f)^*
+ =\int_G\overline{f(g)}W(g^{-1})\,dg
+ =\int_G\Delta_G(t^{-1})\overline{f(t^{-1})}W(t)\,dt
+ =\Pi(f^*).
+ \tag{I10}
+\]">\[
+ \Pi(f)^*
+ =\int_G\overline{f(g)}W(g^{-1})\,dg
+ =\int_G\Delta_G(t^{-1})\overline{f(t^{-1})}W(t)\,dt
+ =\Pi(f^*).
+ \tag{I10}
+\]</span>
+Each displayed operator integral means its vector or scalar-coefficient integral. Equations (I5), (I6), (I10), together with <a href="OA-FLOW-L24.html#oa-flow.grp.algebra">L24's Banach star algebra</a>, make <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> a bounded star representation of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>.</p>
+<p>This representation is nondegenerate. If <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is orthogonal to the span of all <span class="math" data-tex="\(\Pi(f)\eta\)">\(\Pi(f)\eta\)</span>, then
+<span class="math math-display" data-tex="\[
+ \int_G f(g)\langle W(g)\eta,\zeta\rangle\,dg=0
+ \quad(f\in L^1(G),\ \eta\in K).
+ \tag{I11}
+\]">\[
+ \int_G f(g)\langle W(g)\eta,\zeta\rangle\,dg=0
+ \quad(f\in L^1(G),\ \eta\in K).
+ \tag{I11}
+\]</span>
+A bounded measurable scalar function <span class="math" data-tex="\(b\)">\(b\)</span> whose integrals against every <span class="math" data-tex="\(L^1\)">\(L^1\)</span> function vanish is zero almost everywhere: on a finite-Haar-measure exhaustion <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, take
+<span class="math" data-tex="\(f=1_{E_n}\overline b\)">\(f=1_{E_n}\overline b\)</span> and obtain <span class="math" data-tex="\(\int_{E_n}|b|^2=0\)">\(\int_{E_n}|b|^2=0\)</span>.
+Apply this to (I11) for a countable dense set of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>'s. Off one common null set, <span class="math" data-tex="\(W(g)^*\zeta=0\)">\(W(g)^*\zeta=0\)</span>, so <span class="math" data-tex="\(\zeta=0\)">\(\zeta=0\)</span> by unitarity. Therefore
+<span class="math math-display" data-tex="\[
+ \mathcal K_0=\operatorname{span}\{\Pi(f)\eta:
+                    f\in L^1(G),\ \eta\in K\}
+ \quad\text{is dense in }K.
+ \tag{I12}
+\]">\[
+ \mathcal K_0=\operatorname{span}\{\Pi(f)\eta:
+                    f\in L^1(G),\ \eta\in K\}
+ \quad\text{is dense in }K.
+ \tag{I12}
+\]</span></p>
+<p>For clarity, we retain the explicit continuous recovery construction from <a href="OA-FLOW-L24.html#oa-flow.grp.recovery">L24</a>. Write <span class="math" data-tex="\(L_gf(t)=f(g^{-1}t)\)">\(L_gf(t)=f(g^{-1}t)\)</span> and prescribe
+<span class="math math-display" data-tex="\[
+ V(g)\left(\sum_{j=1}^m\Pi(f_j)\eta_j\right)
+       =\sum_{j=1}^m\Pi(L_gf_j)\eta_j.
+ \tag{I13}
+\]">\[
+ V(g)\left(\sum_{j=1}^m\Pi(f_j)\eta_j\right)
+       =\sum_{j=1}^m\Pi(L_gf_j)\eta_j.
+ \tag{I13}
+\]</span>
+The identity
+<span class="math math-display" data-tex="\[
+ (L_gh)^**(L_gf)=h^**f
+ \tag{I14}
+\]">\[
+ (L_gh)^**(L_gf)=h^**f
+ \tag{I14}
+\]</span>
+preserves all pairwise inner products of these finite sums. One direct verification starts from
+<span class="math" data-tex="\((h^**f)(r)=\int_G\overline{h(t)}f(tr)\,dt\)">\((h^**f)(r)=\int_G\overline{h(t)}f(tr)\,dt\)</span>, obtained by the weighted inversion formula. Substitution <span class="math" data-tex="\(t=gs\)">\(t=gs\)</span> proves (I14) for compact continuous functions, and the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> convolution estimate and density extend it to all <span class="math" data-tex="\(f,h\in L^1(G)\)">\(f,h\in L^1(G)\)</span>. Thus (I13) is independent of the expression of a vector and is an isometry on <span class="math" data-tex="\(\mathcal K_0\)">\(\mathcal K_0\)</span>. Its inverse there is the formula for <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. It extends to an onto unitary on <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(L_gL_h=L_{gh}\)">\(L_gL_h=L_{gh}\)</span> proves the representation law.</p>
+<p>For every generating vector,
+<span class="math math-display" data-tex="\[
+ \|(V(g)-V(h))\Pi(f)\eta\|
+ \le\|L_gf-L_hf\|_1\,\|\eta\|.
+ \tag{I15}
+\]">\[
+ \|(V(g)-V(h))\Pi(f)\eta\|
+ \le\|L_gf-L_hf\|_1\,\|\eta\|.
+ \tag{I15}
+\]</span>
+<a href="OA-FLOW-L24.html#oa-flow.grp.translations">L24's translation-continuity proof</a> applies to arbitrary locally compact groups. It proves continuity on <span class="math" data-tex="\(\mathcal K_0\)">\(\mathcal K_0\)</span>, and the uniform unitary bound extends it to every vector of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The recovered representation has exactly the original integral. The identity
+<span class="math" data-tex="\(\int_G f(g)L_gh\,dg=f*h\)">\(\int_G f(g)L_gh\,dg=f*h\)</span> is a Bochner identity in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, proved in L24 by vector Fubini and its bilinear norm bound. Its measurability does not require <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> to be separable: the continuous orbit <span class="math" data-tex="\(g\mapsto L_gh\)">\(g\mapsto L_gh\)</span> has separable image, because <span class="math" data-tex="\(G\)">\(G\)</span> is sigma compact and each compact image in a metric space is separable. Applying (I13) gives
+<span class="math math-display" data-tex="\[
+ \left(\int_G f(g)V(g)\,dg\right)\Pi(h)\eta
+   =\Pi(f*h)\eta=\Pi(f)\Pi(h)\eta.
+ \tag{I16}
+\]">\[
+ \left(\int_G f(g)V(g)\,dg\right)\Pi(h)\eta
+   =\Pi(f*h)\eta=\Pi(f)\Pi(h)\eta.
+ \tag{I16}
+\]</span>
+Both operators are bounded and agree on the dense space (I12). Their integrals therefore agree for every <span class="math" data-tex="\(f\)">\(f\)</span>. Test this equality against countably many dense pairs of vectors and apply the scalar test following (I11). It gives <span class="math" data-tex="\(W(g)=V(g)\)">\(W(g)=V(g)\)</span> on one Haar-conull set.</p>
+<p>Finally, two strongly continuous representations agreeing almost everywhere agree everywhere. Each of their scalar coefficient differences is continuous and zero almost everywhere. A continuous scalar function nonzero at a point is bounded away from zero on a nonempty open set, whose Haar measure is positive. This is impossible here. This proves uniqueness and the lemma.</p>
+<p><span id="OA-FLOW.CENTERG.NONSEPARABLE"></span><a id="oa-flow.centerg.nonseparable"></a></p>
+<h2 id="why-separable-hilbert-fibres-matter">Why separable Hilbert fibres matter</h2>
+<p>Scalar weak measurability alone does not allow the Hilbert-space separability hypothesis in the preceding almost-representation lemma to be removed. Let
+<span class="math math-display" data-tex="\[
+ K=\ell^2(\mathbb R_{\mathrm{discrete}}),\qquad
+ W(t)e_s=e_{s+t}\quad(s,t\in\mathbb R).
+ \tag{N1}
+\]">\[
+ K=\ell^2(\mathbb R_{\mathrm{discrete}}),\qquad
+ W(t)e_s=e_{s+t}\quad(s,t\in\mathbb R).
+ \tag{N1}
+\]</span>
+Each <span class="math" data-tex="\(W(t)\)">\(W(t)\)</span> permutes the orthonormal basis, hence is unitary; <span class="math" data-tex="\(W(t+u)=W(t)W(u)\)">\(W(t+u)=W(t)W(u)\)</span> for every pair.</p>
+<p>Every vector <span class="math" data-tex="\(\xi\in K\)">\(\xi\in K\)</span> has countable support. Indeed for each integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> the set <span class="math" data-tex="\(\{s:|\xi_s|\ge1/n\}\)">\(\{s:|\xi_s|\ge1/n\}\)</span> is finite, since any finite subset of it has cardinality at most <span class="math" data-tex="\(n^2\|\xi\|^2\)">\(n^2\|\xi\|^2\)</span>; the support is the countable union of these sets. If <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> have supports <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, respectively, then
+<span class="math math-display" data-tex="\[
+ \langle W(t)\xi,\eta\rangle=0\qquad(t\notin B-A).
+ \tag{N2}
+\]">\[
+ \langle W(t)\xi,\eta\rangle=0\qquad(t\notin B-A).
+ \tag{N2}
+\]</span>
+The set <span class="math" data-tex="\(B-A\)">\(B-A\)</span> is countable. A scalar function supported on a countable subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> is Borel: away from zero its inverse images are subsets of that countable set, hence countable unions of closed singletons, and sets containing zero are handled by complements. Thus <span class="math" data-tex="\(W\)">\(W\)</span> is scalar weakly measurable. Each coefficient is zero Lebesgue-almost everywhere and is bounded by <span class="math" data-tex="\(\|\xi\|\|\eta\|\)">\(\|\xi\|\|\eta\|\)</span>. Consequently every weak operator integral <span class="math" data-tex="\(\int f(t)W(t)\,dt\)">\(\int f(t)W(t)\,dt\)</span>, for <span class="math" data-tex="\(f\in L^1(\mathbb R)\)">\(f\in L^1(\mathbb R)\)</span>, equals the zero operator.</p>
+<p>Suppose a strongly continuous representation <span class="math" data-tex="\(V\)">\(V\)</span> agreed with <span class="math" data-tex="\(W\)">\(W\)</span> as operators almost everywhere. The continuous scalar function <span class="math" data-tex="\(c(t)=\langle V(t)e_0,e_0\rangle\)">\(c(t)=\langle V(t)e_0,e_0\rangle\)</span> would vanish almost everywhere by (N2). A continuous function on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> vanishing almost everywhere vanishes everywhere: a nonzero value would give an open interval on which its absolute value is bounded below. Hence <span class="math" data-tex="\(c(0)=0\)">\(c(0)=0\)</span>, contradicting <span class="math" data-tex="\(V(0)=1\)">\(V(0)=1\)</span>. This also disproves a weaker assertion requiring only coefficientwise almost-everywhere agreement, by applying it to <span class="math" data-tex="\(e_0,e_0\)">\(e_0,e_0\)</span>.</p>
+<p>The failure concerns nondegeneracy of the integrated operators. In the separable proof, a countable total vector family lets one choose a single conull set on which all relevant coefficients vanish. There is no such countable total family in (N1). The present lesson obtains separable fibres from the separable predual, so its application retains exactly the hypothesis needed by that proof.</p>
+<p><span id="OA-FLOW.CENTERG.JOINT"></span><a id="oa-flow.centerg.joint"></a></p>
+<h2 id="joint-unitary-fields-from-a-decomposable-representation">Joint unitary fields from a decomposable representation</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+ \mathscr H=\int_X^\oplus H_x\,d\mu(x)
+ \tag{I17}
+\]">\[
+ \mathscr H=\int_X^\oplus H_x\,d\mu(x)
+ \tag{I17}
+\]</span>
+be a separable Hilbert direct integral over a standard Borel probability space, with separable fibers and a specified countable measurable fundamental family. Suppose <span class="math" data-tex="\(U:G\to\mathcal U(\mathscr H)\)">\(U:G\to\mathcal U(\mathscr H)\)</span> is strongly continuous and every <span class="math" data-tex="\(U_g\)">\(U_g\)</span> commutes with the diagonal <span class="math" data-tex="\(L^\infty(X,\mu)\)">\(L^\infty(X,\mu)\)</span>. We prove that there are continuous unitary representations <span class="math" data-tex="\(V_x\)">\(V_x\)</span> on the fibers such that, for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, their field is measurable and integrates to <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. We will in fact obtain joint Borel matrix coefficients for the repaired field.</p>
+<p>The exact field inputs are the <span class="unlinked">measurable orthonormal frame</span>, its <span class="unlinked">ambient realization</span>, and the <span class="unlinked">full diagonal-commutant theorem</span>. Choose a frame <span class="math" data-tex="\(e_n(x)\)">\(e_n(x)\)</span>, with each vector either zero or norm one, whose nonzero members are an orthonormal basis of <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. Realize <span class="math" data-tex="\(H_x\)">\(H_x\)</span> as the corresponding coordinate subspace of <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. Its projection is diagonal with Borel zero-or-one entries. Countably many completed scalar coordinates can be replaced by Borel versions and their null carriers discarded once; thus these frame data can be taken Borel on a common Borel conull base. We work on that base. The zero fibers, if any, cause no difficulty.</p>
+<p>Because <span class="math" data-tex="\(\mu(X)=1\)">\(\mu(X)=1\)</span>, every <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is a vector of <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span>. By the diagonal-commutant theorem, for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(U_g\)">\(U_g\)</span> has a measurable operator field. Its field is unitary almost everywhere: both equations <span class="math" data-tex="\(U_g^*U_g=U_gU_g^*=1\)">\(U_g^*U_g=U_gU_g^*=1\)</span> localize by the <span class="unlinked">field integration and adjoint theorem</span>, followed by its countable-frame uniqueness. These separate choices will be replaced by a joint one.</p>
+<p>Choose a countable dense family <span class="math" data-tex="\((v_j)\)">\((v_j)\)</span> in <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span> and Borel field representatives for its members. For <span class="math" data-tex="\(n,k\ge1\)">\(n,k\ge1\)</span> let
+<span class="math math-display" data-tex="\[
+ j(n,k,g)=\min\{j:\|U_ge_n-v_j\|_{\mathscr H}&lt;2^{-k}\},
+ \qquad b_{n,k}(g,x)=v_{j(n,k,g)}(x).
+ \tag{I18}
+\]">\[
+ j(n,k,g)=\min\{j:\|U_ge_n-v_j\|_{\mathscr H}&lt;2^{-k}\},
+ \qquad b_{n,k}(g,x)=v_{j(n,k,g)}(x).
+ \tag{I18}
+\]</span>
+The least index is Borel in <span class="math" data-tex="\(g\)">\(g\)</span>, since its defining norm functions are continuous. Countable pasting makes <span class="math" data-tex="\(b_{n,k}\)">\(b_{n,k}\)</span> jointly Borel as a vector in the ambient <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>. For a fixed <span class="math" data-tex="\(g,n\)">\(g,n\)</span>,
+<span class="math math-display" data-tex="\[
+ \sum_{k\ge1}\|b_{n,k+1}(g,\cdot)-b_{n,k}(g,\cdot)\|_{L^2}
+ \le \sum_{k\ge1}(2^{-k-1}+2^{-k})&lt;\infty.
+ \tag{I19}
+\]">\[
+ \sum_{k\ge1}\|b_{n,k+1}(g,\cdot)-b_{n,k}(g,\cdot)\|_{L^2}
+ \le \sum_{k\ge1}(2^{-k-1}+2^{-k})&lt;\infty.
+ \tag{I19}
+\]</span>
+The <span class="math" data-tex="\(L^1(\mu)\)">\(L^1(\mu)\)</span> norm of a nonnegative function is bounded by its <span class="math" data-tex="\(L^2(\mu)\)">\(L^2(\mu)\)</span> norm here. Monotone convergence applied to the sum of pointwise norms shows that this vector sequence is Cauchy in <span class="math" data-tex="\(H_x\)">\(H_x\)</span> for almost every <span class="math" data-tex="\(x\)">\(x\)</span>, for the fixed <span class="math" data-tex="\(g,n\)">\(g,n\)</span>. Its limit represents <span class="math" data-tex="\(U_ge_n\)">\(U_ge_n\)</span>: take any representative of that vector and apply Fatou to the squared differences, whose integrals tend to zero by (I18).</p>
+<p>The Cauchy condition is a countable Borel condition in <span class="math" data-tex="\((g,x)\)">\((g,x)\)</span>. Define <span class="math" data-tex="\(b_n(g,x)\)">\(b_n(g,x)\)</span> to be the limit where it exists and zero elsewhere. The coordinate limits are Borel; the ambient spaces <span class="math" data-tex="\(H_x\)">\(H_x\)</span> are closed, so these limits lie in the right fiber. The resulting section is jointly Borel, and for every fixed <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+ b_n(g,\cdot)\text{ represents }U_ge_n
+ \quad\text{for every }n
+ \quad\text{outside one }\mu\text{-null set}.
+ \tag{I20}
+\]">\[
+ b_n(g,\cdot)\text{ represents }U_ge_n
+ \quad\text{for every }n
+ \quad\text{outside one }\mu\text{-null set}.
+ \tag{I20}
+\]</span></p>
+<p>Now impose, jointly in <span class="math" data-tex="\((g,x)\)">\((g,x)\)</span>, both the Gram and the dense-range tests
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \langle b_n(g,x),b_m(g,x)\rangle
+       &amp;=\langle e_n(x),e_m(x)\rangle &amp;&amp;(n,m\ge1),\\
+ \inf_{a\in\mathbb Q(i)^{(\mathbb N)}}
+       \left\|e_m(x)-\sum_n a_n b_n(g,x)\right\|
+       &amp;=0 &amp;&amp;(m\ge1).
+ \end{aligned}
+ \tag{I21}
+\]">\[
+ \begin{aligned}
+ \langle b_n(g,x),b_m(g,x)\rangle
+       &amp;=\langle e_n(x),e_m(x)\rangle &amp;&amp;(n,m\ge1),\\
+ \inf_{a\in\mathbb Q(i)^{(\mathbb N)}}
+       \left\|e_m(x)-\sum_n a_n b_n(g,x)\right\|
+       &amp;=0 &amp;&amp;(m\ge1).
+ \end{aligned}
+ \tag{I21}
+\]</span>
+They define a Borel set <span class="math" data-tex="\(\mathcal T\subseteq G\times X\)">\(\mathcal T\subseteq G\times X\)</span>. For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, its section has measure one, by (I20) and the already known unitary decomposition of <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. On <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, the assignment <span class="math" data-tex="\(e_n(x)\mapsto b_n(g,x)\)">\(e_n(x)\mapsto b_n(g,x)\)</span> preserves all finite linear relations and inner products. It extends to an isometry on <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. The second line says that its range is dense. The range of an isometry from a complete Hilbert space is closed, so the extension is onto. Define that unitary to be <span class="math" data-tex="\(u(g,x)\)">\(u(g,x)\)</span>; off <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, set <span class="math" data-tex="\(u(g,x)=1_{H_x}\)">\(u(g,x)=1_{H_x}\)</span>. Thus <span class="math" data-tex="\(u(g,x)\)">\(u(g,x)\)</span> is unitary for every pair, not merely isometric.</p>
+<p>Its matrix coefficients in the frame are jointly Borel. Indeed, on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> they are the coefficients of <span class="math" data-tex="\(b_n\)">\(b_n\)</span>, and off it they are those of the identity. Finite coordinate sums then prove that <span class="math" data-tex="\(u(g,x)\)">\(u(g,x)\)</span> applied to a jointly Borel section is jointly Borel. By construction and decomposable uniqueness,
+<span class="math math-display" data-tex="\[
+ U_g=\int_X^\oplus u(g,x)\,d\mu(x)
+ \qquad\text{for every fixed }g.
+ \tag{I22}
+\]">\[
+ U_g=\int_X^\oplus u(g,x)\,d\mu(x)
+ \qquad\text{for every fixed }g.
+ \tag{I22}
+\]</span>
+The exceptional set in comparison with an earlier representative may depend on <span class="math" data-tex="\(g\)">\(g\)</span>. The jointly Borel field <span class="math" data-tex="\(u\)">\(u\)</span> itself has been specified everywhere.</p>
+<p>We next justify the product Fubini step at the actual group scope. A standard Borel base can be <a href="OA-FLOW-L75.html#oa-flow.kernel.coding">coded as a Borel subset of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span></a>; extend <span class="math" data-tex="\(\mu\)">\(\mu\)</span> by zero to that compact metric interval, and use zero fibers off the coded subset. Its extended finite Borel measure is Radon by <a href="OA-FLOW-IS.html#is-2">finite metric-measure regularity</a>. The failure set of
+<span class="math math-display" data-tex="\[
+ u(gh,x)=u(g,x)u(h,x)
+ \tag{I23}
+\]">\[
+ u(gh,x)=u(g,x)u(h,x)
+ \tag{I23}
+\]</span>
+is Borel in <span class="math" data-tex="\(G^2\times X\)">\(G^2\times X\)</span>: test its countably many frame entries. On the left compose the joint Borel entries of <span class="math" data-tex="\(u\)">\(u\)</span> with the continuous multiplication map <span class="math" data-tex="\((g,h)\mapsto gh\)">\((g,h)\mapsto gh\)</span>; on the right use the convergent coordinate sums for a product of bounded operators. Products with the second-countable interval have
+<span class="math" data-tex="\(\mathcal B(G^2\times[0,1])=\mathcal B(G^2)\otimes\mathcal B([0,1])\)">\(\mathcal B(G^2\times[0,1])=\mathcal B(G^2)\otimes\mathcal B([0,1])\)</span>:
+every open set is a countable union of rectangles using a fixed countable basis in the interval and the corresponding open unions in <span class="math" data-tex="\(G^2\)">\(G^2\)</span>. This assertion concerns <span class="math" data-tex="\(G^2\)">\(G^2\)</span> as one space and does not assume a product-Borel assertion for the two group coordinates.</p>
+<p>For every fixed pair <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, (I22), <span class="math" data-tex="\(U_{gh}=U_gU_h\)">\(U_{gh}=U_gU_h\)</span>, and uniqueness of decomposable fields make the <span class="math" data-tex="\(x\)">\(x\)</span>-section of that failure set null. Apply HR5 to the Radon product on <span class="math" data-tex="\(G^2\)">\(G^2\)</span> and the interval, on their sigma-finite carrier. On this mixed product its rectangle values agree with the ordinary sigma-finite product, so uniqueness of the product measure identifies the two on the displayed product sigma-algebra. Fubini shows that the failure set has zero product measure, and that its <span class="math" data-tex="\(G^2\)">\(G^2\)</span>-section is Haar-product-null for almost every <span class="math" data-tex="\(x\)">\(x\)</span>. A Borel common good base can be chosen: the section measure is Borel in <span class="math" data-tex="\(x\)">\(x\)</span>, by ordinary parameter integration for the sigma-finite measure on the single Borel space <span class="math" data-tex="\(G^2\)">\(G^2\)</span> and the displayed product sigma-algebra. Equivalently, exhaust <span class="math" data-tex="\(G^2\)">\(G^2\)</span> by finite-measure compact sets and apply the finite rectangle-class argument to each. Let
+<span class="math math-display" data-tex="\[
+ X_{\mathrm{law}}
+ =\left\{x:
+     \int_{G^2}1_{\{u(gh,x)\ne u(g,x)u(h,x)\}}\,dg\,dh=0
+       \right\}.
+ \tag{I24}
+\]">\[
+ X_{\mathrm{law}}
+ =\left\{x:
+     \int_{G^2}1_{\{u(gh,x)\ne u(g,x)u(h,x)\}}\,dg\,dh=0
+       \right\}.
+ \tag{I24}
+\]</span>
+It is Borel and conull. For each <span class="math" data-tex="\(x\)">\(x\)</span> in it, <span class="math" data-tex="\(g\mapsto u(g,x)\)">\(g\mapsto u(g,x)\)</span> is a weakly Borel unitary almost representation on the separable Hilbert space <span class="math" data-tex="\(H_x\)">\(H_x\)</span>. The lemma produces its unique strongly continuous representative <span class="math" data-tex="\(V_x\)">\(V_x\)</span>. The next step proves measurability and the correct fixed-parameter integral of these representatives.</p>
+<p><span id="OA-FLOW.CENTERG.RECOVERY"></span><a id="oa-flow.centerg.recovery"></a></p>
+<h2 id="recovering-each-fixed-group-element-from-integrated-vectors">Recovering each fixed group element from integrated vectors</h2>
+<p>For <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span>, with a Borel representative, define on every fiber
+<span class="math math-display" data-tex="\[
+ T_f(x)\xi=\int_G f(t)u(t,x)\xi\,dt,\qquad
+ \|T_f(x)\|\le\|f\|_1.
+ \tag{I25}
+\]">\[
+ T_f(x)\xi=\int_G f(t)u(t,x)\xi\,dt,\qquad
+ \|T_f(x)\|\le\|f\|_1.
+ \tag{I25}
+\]</span>
+These integrals exist for every <span class="math" data-tex="\(x\)">\(x\)</span>, since the fibers are separable and <span class="math" data-tex="\(u(t,x)\)">\(u(t,x)\)</span> is unitary and weakly Borel. The field <span class="math" data-tex="\(T_f\)">\(T_f\)</span> is Borel. Its frame coefficients are parameter integrals of the product-measurable functions
+<span class="math" data-tex="\(f(t)\langle u(t,x)e_n(x),e_m(x)\rangle\)">\(f(t)\langle u(t,x)e_n(x),e_m(x)\rangle\)</span>, with absolute integral at most <span class="math" data-tex="\(\|f\|_1\)">\(\|f\|_1\)</span>. Here the original construction (I18)–(I21) is measurable for <span class="math" data-tex="\(\mathcal B(G)\otimes\mathcal B(X)\)">\(\mathcal B(G)\otimes\mathcal B(X)\)</span>; this also follows from the interval argument above with one group coordinate. Finite coordinate sums show that <span class="math" data-tex="\(T_f(x)\eta(x)\)">\(T_f(x)\eta(x)\)</span> is Borel for every Borel section <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, by the <span class="unlinked">bounded-operator field criterion</span>.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ \Pi_U(f)=\int_G f(t)U_t\,dt.
+\]">\[
+ \Pi_U(f)=\int_G f(t)U_t\,dt.
+\]</span>
+Scalar Fubini against arbitrary <span class="math" data-tex="\(\xi,\eta\in\mathscr H\)">\(\xi,\eta\in\mathscr H\)</span> gives
+<span class="math math-display" data-tex="\[
+ \Pi_U(f)=\int_X^\oplus T_f(x)\,d\mu(x).
+ \tag{I26}
+\]">\[
+ \Pi_U(f)=\int_X^\oplus T_f(x)\,d\mu(x).
+ \tag{I26}
+\]</span>
+Indeed the absolute value of the joint scalar integrand is bounded by
+<span class="math" data-tex="\(|f(t)|\,\|\xi(x)\|\,\|\eta(x)\|\)">\(|f(t)|\,\|\xi(x)\|\,\|\eta(x)\|\)</span>, whose integral is at most
+<span class="math" data-tex="\(\|f\|_1\|\xi\|_{\mathscr H}\|\eta\|_{\mathscr H}\)">\(\|f\|_1\|\xi\|_{\mathscr H}\|\eta\|_{\mathscr H}\)</span>.
+For each <span class="math" data-tex="\(t\)">\(t\)</span>, (I22) gives the global scalar coefficient. Integrating it in <span class="math" data-tex="\(t\)">\(t\)</span> and exchanging integrals yields (I26). This proves the equality on the entire Hilbert space. The pointwise formula (I25), rather than arbitrary separately chosen representatives of <span class="math" data-tex="\(\Pi_U(f)\)">\(\Pi_U(f)\)</span>, is used from now on.</p>
+<p>For every <span class="math" data-tex="\(x\in X_{\mathrm{law}}\)">\(x\in X_{\mathrm{law}}\)</span>, the almost-representation lemma gives operator equality <span class="math" data-tex="\(u(t,x)=V_x(t)\)">\(u(t,x)=V_x(t)\)</span> for Haar-almost every <span class="math" data-tex="\(t\)">\(t\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ T_f(x)=\int_Gf(t)V_x(t)\,dt,\qquad
+ V_x(g)T_f(x)=T_{L_gf}(x)
+ \quad(f\in L^1(G),\ g\in G)
+ \tag{I27}
+\]">\[
+ T_f(x)=\int_Gf(t)V_x(t)\,dt,\qquad
+ V_x(g)T_f(x)=T_{L_gf}(x)
+ \quad(f\in L^1(G),\ g\in G)
+ \tag{I27}
+\]</span>
+for that same <span class="math" data-tex="\(x\)">\(x\)</span>. There is no additional exceptional base set depending on <span class="math" data-tex="\(f\)">\(f\)</span>: the lemma's almost-everywhere operator equality in <span class="math" data-tex="\(t\)">\(t\)</span> gives all its integrals at once.</p>
+<p>The global integrated representation <span class="math" data-tex="\(\Pi_U\)">\(\Pi_U\)</span> is nondegenerate by <a href="OA-FLOW-L24.html#oa-flow.grp.integration">L24's integrated-representation theorem</a>. The short approximation behind this assertion is useful here. Choose nonnegative normalized compact bumps <span class="math" data-tex="\(a_O\)">\(a_O\)</span>, supported in sufficiently small identity neighborhoods. Strong continuity gives
+<span class="math math-display" data-tex="\[
+ \|\Pi_U(a_O)\eta-\eta\|
+ \le\sup_{t\in O}\|U_t\eta-\eta\|\longrightarrow0.
+ \tag{I28}
+\]">\[
+ \|\Pi_U(a_O)\eta-\eta\|
+ \le\sup_{t\in O}\|U_t\eta-\eta\|\longrightarrow0.
+ \tag{I28}
+\]</span>
+These are neighborhoods in a net; no countable neighborhood basis is assumed. A countable dense family of vectors in the separable <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span>, with errors <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>, needs only one chosen bump for each vector and each error. We thus obtain countably many individual integrated vectors
+<span class="math math-display" data-tex="\[
+ \zeta_j=\Pi_U(f_j)\eta_j,\qquad
+ \overline{\operatorname{span}}\{\zeta_j:j\ge1\}=\mathscr H.
+ \tag{I29}
+\]">\[
+ \zeta_j=\Pi_U(f_j)\eta_j,\qquad
+ \overline{\operatorname{span}}\{\zeta_j:j\ge1\}=\mathscr H.
+ \tag{I29}
+\]</span>
+This selection uses separability of <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span>. It does not select or presume a dense countable subset of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. Fix Borel representatives of the <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> and choose the particular representatives
+<span class="math math-display" data-tex="\[
+ \zeta_j(x)=T_{f_j}(x)\eta_j(x).
+ \tag{I30}
+\]">\[
+ \zeta_j(x)=T_{f_j}(x)\eta_j(x).
+ \tag{I30}
+\]</span>
+They are Borel and square integrable by (I25)–(I26).</p>
+<p>The vectors <span class="math" data-tex="\(\zeta_j(x)\)">\(\zeta_j(x)\)</span> are total in <span class="math" data-tex="\(H_x\)">\(H_x\)</span> on a common Borel conull set. To prove this, let <span class="math" data-tex="\(P_x\)">\(P_x\)</span> be the projection onto their closed span. The <span class="unlinked">specified-subfield projection construction</span> makes <span class="math" data-tex="\(P_x\)">\(P_x\)</span> a Borel projection field: it applies measurable Gram–Schmidt to the countable family and sums the resulting orthogonal rank-one projections. The event <span class="math" data-tex="\(P_x=1\)">\(P_x=1\)</span> is the countable Borel test
+<span class="math" data-tex="\(\|(1-P_x)e_n(x)\|=0\)">\(\|(1-P_x)e_n(x)\|=0\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>.
+If it failed on a positive-measure set, for some <span class="math" data-tex="\(n\)">\(n\)</span> the bounded Borel section
+<span class="math" data-tex="\((1-P_x)e_n(x)\)">\((1-P_x)e_n(x)\)</span> would have positive <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm. This section is pointwise orthogonal to every <span class="math" data-tex="\(\zeta_j(x)\)">\(\zeta_j(x)\)</span>, hence globally orthogonal to every <span class="math" data-tex="\(\zeta_j\)">\(\zeta_j\)</span>, contradicting (I29). Thus
+<span class="math math-display" data-tex="\[
+ X_1=X_{\mathrm{law}}\cap\{x:P_x=1\}
+ \quad\text{is Borel and conull}.
+ \tag{I31}
+\]">\[
+ X_1=X_{\mathrm{law}}\cap\{x:P_x=1\}
+ \quad\text{is Borel and conull}.
+ \tag{I31}
+\]</span></p>
+<p>For all <span class="math" data-tex="\(x\in X_1\)">\(x\in X_1\)</span>, all <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, and all <span class="math" data-tex="\(j\)">\(j\)</span>, the recovery formula is
+<span class="math math-display" data-tex="\[
+ V_x(g)\zeta_j(x)
+       =T_{L_gf_j}(x)\eta_j(x).
+ \tag{I32}
+\]">\[
+ V_x(g)\zeta_j(x)
+       =T_{L_gf_j}(x)\eta_j(x).
+ \tag{I32}
+\]</span>
+For a fixed <span class="math" data-tex="\(g\)">\(g\)</span>, its right side is a Borel section by (I25). The family <span class="math" data-tex="\(\zeta_j(x)\)">\(\zeta_j(x)\)</span> is total on <span class="math" data-tex="\(X_1\)">\(X_1\)</span>, so it determines <span class="math" data-tex="\(V_x(g)\)">\(V_x(g)\)</span> measurably. Here is an explicit test rather than just a determination assertion. For each <span class="math" data-tex="\(m,k\)">\(m,k\)</span>, choose on <span class="math" data-tex="\(X_1\)">\(X_1\)</span> the first rational finite combination of the <span class="math" data-tex="\(\zeta_j(x)\)">\(\zeta_j(x)\)</span> whose distance from <span class="math" data-tex="\(e_m(x)\)">\(e_m(x)\)</span> is below <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. These choices are Borel by countably many Borel norm tests. Replacing each <span class="math" data-tex="\(\zeta_j(x)\)">\(\zeta_j(x)\)</span> in that combination by the right side of (I32) gives Borel approximants to <span class="math" data-tex="\(V_x(g)e_m(x)\)">\(V_x(g)e_m(x)\)</span>, with errors below <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span> because <span class="math" data-tex="\(V_x(g)\)">\(V_x(g)\)</span> is unitary. Their pointwise limits are Borel. The field criterion therefore makes <span class="math" data-tex="\(x\mapsto V_x(g)\)">\(x\mapsto V_x(g)\)</span> a measurable unitary field. Off <span class="math" data-tex="\(X_1\)">\(X_1\)</span> put <span class="math" data-tex="\(V_x(g)=1_{H_x}\)">\(V_x(g)=1_{H_x}\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>; this is also a continuous representation.</p>
+<p>It remains to prove that this field gives the prescribed global implementer for every fixed <span class="math" data-tex="\(g\)">\(g\)</span>. Left Haar substitution in the vector integral gives
+<span class="math math-display" data-tex="\[
+ U_g\Pi_U(f)=\Pi_U(L_gf).
+ \tag{I33}
+\]">\[
+ U_g\Pi_U(f)=\Pi_U(L_gf).
+ \tag{I33}
+\]</span>
+This is also the group recovery identity in <a href="OA-FLOW-L25.html#oa-flow.ccov.grouprecovery">L25</a>, here with scalar coefficients. Equations (I26), (I30), (I32) imply
+<span class="math math-display" data-tex="\[
+ \left(\int_X^\oplus V_x(g)\,d\mu(x)\right)\zeta_j
+   =\Pi_U(L_gf_j)\eta_j
+   =U_g\zeta_j
+       \qquad(j\ge1).
+ \tag{I34}
+\]">\[
+ \left(\int_X^\oplus V_x(g)\,d\mu(x)\right)\zeta_j
+   =\Pi_U(L_gf_j)\eta_j
+   =U_g\zeta_j
+       \qquad(j\ge1).
+ \tag{I34}
+\]</span>
+Both sides are bounded unitaries; the globally dense span in (I29) proves
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ U_g=\int_X^\oplus V_x(g)\,d\mu(x)
+ \quad\text{for every }g\in G.}
+ \tag{I35}
+\]">\[
+ \boxed{\displaystyle
+ U_g=\int_X^\oplus V_x(g)\,d\mu(x)
+ \quad\text{for every }g\in G.}
+ \tag{I35}
+\]</span>
+This is a separate fixed-<span class="math" data-tex="\(g\)">\(g\)</span> identity of operators, proved for every <span class="math" data-tex="\(g\)">\(g\)</span>, while each <span class="math" data-tex="\(V_x\)">\(V_x\)</span> on <span class="math" data-tex="\(X_1\)">\(X_1\)</span> obeys its continuous representation law for every pair <span class="math" data-tex="\(g,h\)">\(g,h\)</span>. Neither assertion is obtained by taking an uncountable union of exceptional sets.</p>
+<p>The repaired field can be made jointly Borel in these same representatives. Fix a countable dense set <span class="math" data-tex="\(Q=\{q_l\}\subseteq G\)">\(Q=\{q_l\}\subseteq G\)</span>. For each one of the chosen functions <span class="math" data-tex="\(f_j\)">\(f_j\)</span>, the family <span class="math" data-tex="\(\{L_{q_l}f_j:l\ge1\}\)">\(\{L_{q_l}f_j:l\ge1\}\)</span> is dense in its left-translation orbit: continuity of <span class="math" data-tex="\(g\mapsto L_gf_j\)">\(g\mapsto L_gf_j\)</span> sends the dense set to a dense subset of that image. Let
+<span class="math math-display" data-tex="\[
+ l(j,k,g)=\min\{l:\|L_gf_j-L_{q_l}f_j\|_1&lt;2^{-k}\}.
+ \tag{I36}
+\]">\[
+ l(j,k,g)=\min\{l:\|L_gf_j-L_{q_l}f_j\|_1&lt;2^{-k}\}.
+ \tag{I36}
+\]</span>
+It is Borel in <span class="math" data-tex="\(g\)">\(g\)</span>, by norm continuity. For every <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ \left\|
+ T_{L_gf_j}(x)\eta_j(x)
+ -
+ T_{L_{q_{l(j,k,g)}}f_j}(x)\eta_j(x)
+ \right\|
+ \le 2^{-k}\|\eta_j(x)\|.
+ \tag{I37}
+\]">\[
+ \left\|
+ T_{L_gf_j}(x)\eta_j(x)
+ -
+ T_{L_{q_{l(j,k,g)}}f_j}(x)\eta_j(x)
+ \right\|
+ \le 2^{-k}\|\eta_j(x)\|.
+ \tag{I37}
+\]</span>
+Each approximant is jointly Borel by countable pasting of the Borel sections for the fixed functions <span class="math" data-tex="\(L_{q_l}f_j\)">\(L_{q_l}f_j\)</span>. The pointwise norm limit is therefore jointly Borel. In (I32)'s rational approximants to <span class="math" data-tex="\(V_x(g)e_m(x)\)">\(V_x(g)e_m(x)\)</span>, the choices of combinations depend only on <span class="math" data-tex="\(x\)">\(x\)</span>, and their image sections are now jointly Borel by (I37). Passing to their limits gives joint Borel frame columns and hence joint Borel matrix coefficients of <span class="math" data-tex="\((g,x)\mapsto V_x(g)\)">\((g,x)\mapsto V_x(g)\)</span>. The definition by the identity off <span class="math" data-tex="\(X_1\)">\(X_1\)</span> preserves that assertion.</p>
+<p>This last argument uses countable dense subsets of the individual translation orbits of the selected <span class="math" data-tex="\(f_j\)">\(f_j\)</span>; it never asserts that the whole <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> space is separable. Together, (I31), (I35) and the joint columns give the required field of genuine continuous representations at the full separable locally compact group scope.</p>
+<p><span id="OA-FLOW.CENTERG.STRICT"></span><a id="oa-flow.centerg.strict"></a></p>
+<h2 id="a-second-construction-of-continuous-fiber-implementations">A second construction of continuous fiber implementations</h2>
+<p>There is a useful route to continuous fiber representations through a Polish group of unitaries. It applies even when the original separable locally compact group is not second countable.</p>
+<h3 id="an-effective-second-countable-group">An effective second-countable group</h3>
+<p>On a nonzero separable Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>, the strong topology makes <span class="math" data-tex="\(\mathcal U(K)\)">\(\mathcal U(K)\)</span> a Polish group. For clarity, take a countable dense sequence <span class="math" data-tex="\((e_n)\)">\((e_n)\)</span> in its unit ball. A compatible complete metric is</p>
+<p><span class="math math-display" data-tex="\[
+ d(v,w)=\sum_{n\geq1}2^{-n-1}
+       \bigl(\|(v-w)e_n\|+\|(v^*-w^*)e_n\|\bigr).
+ \tag{A13}
+\]">\[
+ d(v,w)=\sum_{n\geq1}2^{-n-1}
+       \bigl(\|(v-w)e_n\|+\|(v^*-w^*)e_n\|\bigr).
+ \tag{A13}
+\]</span></p>
+<p>Completeness follows as follows. A Cauchy sequence has strong limits <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> for its unitaries and their adjoints, by completeness of <span class="math" data-tex="\(K\)">\(K\)</span> and their common norm bound. Passing to products shows <span class="math" data-tex="\(vw=wv=I\)">\(vw=wv=I\)</span> and <span class="math" data-tex="\(w=v^*\)">\(w=v^*\)</span>; hence the limit is unitary. The adjoint is strongly continuous within the unitary group because <span class="math" data-tex="\(\|(v_n^*-v^*)\xi\|=\|(v-v_n)v^*\xi\|\)">\(\|(v_n^*-v^*)\xi\|=\|(v-v_n)v^*\xi\|\)</span>. Separability follows by embedding this metrizable group into the countable product of the separable spaces containing <span class="math" data-tex="\((ve_n,v^*e_n)_n\)">\((ve_n,v^*e_n)_n\)</span>; that product, and every subspace of it, is second countable.</p>
+<p>Apply the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#4-the-full-separable-locally-compact-scope">effective Polish-image lemma</a> to the actual continuous homomorphism <span class="math" data-tex="\(U:G\to\mathcal U(H)\)">\(U:G\to\mathcal U(H)\)</span>. If</p>
+<p><span class="math math-display" data-tex="\[
+ K_0=\ker U,\qquad Q=G/K_0,\qquad
+ \kappa:G\longrightarrow Q,
+ \tag{A14}
+\]">\[
+ K_0=\ker U,\qquad Q=G/K_0,\qquad
+ \kappa:G\longrightarrow Q,
+ \tag{A14}
+\]</span></p>
+<p>then <span class="math" data-tex="\(Q\)">\(Q\)</span> is second countable, locally compact and Hausdorff, and <span class="math" data-tex="\(U\)">\(U\)</span> factors through a continuous representation <span class="math" data-tex="\(\overline U:Q\to\mathcal U(H)\)">\(\overline U:Q\to\mathcal U(H)\)</span>. Here is the relevant mechanism. The kernel is closed and normal, the quotient is locally compact and separable, and the induced map from <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(\mathcal U(H)\)">\(\mathcal U(H)\)</span> is injective and continuous. On a compact identity neighborhood it is a homeomorphism onto its compact metrizable image. This gives a countable local base in <span class="math" data-tex="\(Q\)">\(Q\)</span>; translates by a countable dense subset then give a countable base for <span class="math" data-tex="\(Q\)">\(Q\)</span>. There is no assumption that <span class="math" data-tex="\(U(G)\)">\(U(G)\)</span> is closed, or that its subspace topology is the quotient topology everywhere.</p>
+<p>The group <span class="math" data-tex="\(Q\)">\(Q\)</span> acts on <span class="math" data-tex="\(M\)">\(M\)</span> by <span class="math" data-tex="\(\overline\alpha_q=\operatorname{Ad}\overline U_q|_M\)">\(\overline\alpha_q=\operatorname{Ad}\overline U_q|_M\)</span>. This is well defined: every element of <span class="math" data-tex="\(K_0\)">\(K_0\)</span> implements the identity. It fixes <span class="math" data-tex="\(D\)">\(D\)</span> pointwise. We will perform the measurable construction for <span class="math" data-tex="\(Q\)">\(Q\)</span>, then pull it back along <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<h3 id="measurable-unitary-fields-with-a-borel-group-parameter">Measurable unitary fields with a Borel group parameter</h3>
+<p>The <span class="unlinked">DF-2 compact-frame construction</span> gives measurable dimension strata
+<span class="math" data-tex="\(Y_d=\{y:\dim H_y=d\}\)">\(Y_d=\{y:\dim H_y=d\}\)</span>, where <span class="math" data-tex="\(d\in\{1,2,\ldots,\infty\}\)">\(d\in\{1,2,\ldots,\infty\}\)</span>, and an orthonormal frame on each. Completed measurable data can be replaced by Borel versions outside one null set: the frame has countably many coordinates, so one common deletion suffices for all its identities. We identify the fibers on <span class="math" data-tex="\(Y_d\)">\(Y_d\)</span> with <span class="math" data-tex="\(H^{(d)}=\mathbb C^d\)">\(H^{(d)}=\mathbb C^d\)</span> or <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, according as <span class="math" data-tex="\(d\)">\(d\)</span> is finite or infinite. Null strata can be discarded; on every remaining stratum normalize the restricted finite measure to a probability. This normalization is used only to describe its <span class="math" data-tex="\(L^0\)">\(L^0\)</span> topology. The global integral still uses <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p>Decomposability and uniqueness from DF-8 define a map</p>
+<p><span class="math math-display" data-tex="\[
+ F_d:Q\longrightarrow L^0\bigl(Y_d,\mathcal U(H^{(d)})\bigr),
+ \qquad F_d(q)=[\text{field of }\overline U_q|_{Y_d}].
+ \tag{A15}
+\]">\[
+ F_d:Q\longrightarrow L^0\bigl(Y_d,\mathcal U(H^{(d)})\bigr),
+ \qquad F_d(q)=[\text{field of }\overline U_q|_{Y_d}].
+ \tag{A15}
+\]</span></p>
+<p>This map is continuous for convergence in measure. Indeed strong convergence of the global unitaries and their adjoints gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence of their fields on every constant frame vector of this finite-measure stratum. Chebyshev's inequality gives convergence in measure of each coordinate difference. The finite head and uniformly bounded tail in (A13) give convergence in measure for that metric. Conversely, convergence in measure for (A13), with the uniform bound on unitaries, gives <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence on every constant vector: split its squared error into where it is at most <span class="math" data-tex="\(\varepsilon^2\)">\(\varepsilon^2\)</span> and its complement. Finite simple vector sections are dense in the Hilbert integral, so strong convergence follows. Both spaces in question are metrizable; these sequential implications establish the asserted continuity. Restriction to a stratum is legitimate since its scalar projection commutes with every <span class="math" data-tex="\(\overline U_q\)">\(\overline U_q\)</span>.</p>
+<p>The parameter space <span class="math" data-tex="\(Q\)">\(Q\)</span> is standard Borel and the value group <span class="math" data-tex="\(\mathcal U(H^{(d)})\)">\(\mathcal U(H^{(d)})\)</span> is Polish. The general representative assertion of <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#5-localizing-the-automorphism-action">Lemma 5.1</a> therefore gives a jointly Borel map</p>
+<p><span class="math math-display" data-tex="\[
+ u_d:Q\times Y_d\longrightarrow\mathcal U(H^{(d)})
+ \quad\text{with}\quad [u_d(q,\cdot)]=F_d(q)
+ \text{ for every fixed }q.
+ \tag{A16}
+\]">\[
+ u_d:Q\times Y_d\longrightarrow\mathcal U(H^{(d)})
+ \quad\text{with}\quad [u_d(q,\cdot)]=F_d(q)
+ \text{ for every fixed }q.
+ \tag{A16}
+\]</span></p>
+<p>For this assertion, only its general Polish-valued representative construction is used. Briefly, take a bounded complete value metric and countably many dense Borel simple fields. For each <span class="math" data-tex="\(L^0\)">\(L^0\)</span> class choose the first such field within <span class="math" data-tex="\(2^{-2n}\)">\(2^{-2n}\)</span> in the integral metric. These indices are Borel in the class. Successive integral distances are summable, so for each class Tonelli gives pointwise Cauchy convergence almost everywhere. Take the limit on the joint Borel Cauchy set and the identity elsewhere. This supplies a Borel representative of each parameter's class.</p>
+<p>For each fixed <span class="math" data-tex="\(q,r\in Q\)">\(q,r\in Q\)</span>, the global representation identity and DF-8 uniqueness give</p>
+<p><span class="math math-display" data-tex="\[
+ u_d(qr,y)=u_d(q,y)u_d(r,y)
+ \quad\text{for almost every }y\in Y_d.
+ \tag{A17}
+\]">\[
+ u_d(qr,y)=u_d(q,y)u_d(r,y)
+ \quad\text{for almost every }y\in Y_d.
+ \tag{A17}
+\]</span></p>
+<p>The quantifier in (A17) is exactly the hypothesis needed next; it does not assert that the original representatives obey all these equations outside one null set.</p>
+<h3 id="strict-group-laws-continuity-and-the-original-group">Strict group laws, continuity, and the original group</h3>
+<p>Give <span class="math" data-tex="\(Q\)">\(Q\)</span> the <strong>trivial</strong> action on the standard measured space <span class="math" data-tex="\(Y_d\)">\(Y_d\)</span>. This is a strict Borel nonsingular action, and (A17) is its cocycle identity. The <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#3-making-a-measurable-cocycle-strict">strict Polish-cocycle theorem, Theorem 3.1</a>, applied with value group <span class="math" data-tex="\(\mathcal U(H^{(d)})\)">\(\mathcal U(H^{(d)})\)</span>, now gives a conull Borel <span class="math" data-tex="\(E_d\subseteq Y_d\)">\(E_d\subseteq Y_d\)</span> and a jointly Borel <span class="math" data-tex="\(v_d:Q\times E_d\to\mathcal U(H^{(d)})\)">\(v_d:Q\times E_d\to\mathcal U(H^{(d)})\)</span> such that</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ v_d(qr,y)&amp;=v_d(q,y)v_d(r,y),&amp; v_d(e,y)&amp;=I
+       &amp;&amp;(q,r\in Q,\ y\in E_d),\\
+ v_d(q,y)&amp;=u_d(q,y)&amp;&amp;&amp;\text{for almost every }y
+       \text{ for each fixed }q.
+ \end{aligned}
+ \tag{A18}
+\]">\[
+ \begin{aligned}
+ v_d(qr,y)&amp;=v_d(q,y)v_d(r,y),&amp; v_d(e,y)&amp;=I
+       &amp;&amp;(q,r\in Q,\ y\in E_d),\\
+ v_d(q,y)&amp;=u_d(q,y)&amp;&amp;&amp;\text{for almost every }y
+       \text{ for each fixed }q.
+ \end{aligned}
+ \tag{A18}
+\]</span></p>
+<p>All hypotheses have now been checked: a second-countable locally compact group, a standard measured base, a strict nonsingular base action, a Polish value group, a joint Borel input and the fixed-pair almost-everywhere law. The theorem changes representatives, while preserving every fixed group element's field class. Since the base action is trivial, every Borel subset of the base is invariant.</p>
+<p>For each <span class="math" data-tex="\(y\in E_d\)">\(y\in E_d\)</span>, the map <span class="math" data-tex="\(q\mapsto v_d(q,y)\)">\(q\mapsto v_d(q,y)\)</span> is a Borel homomorphism. It is continuous by <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#4-the-full-separable-locally-compact-scope">Lemma 4.2</a>. The proof explains why mere Borel dependence is enough here. Given an identity neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> in the Polish target, choose an open <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(VV^{-1}\subseteq W\)">\(VV^{-1}\subseteq W\)</span>. Countably many right translates <span class="math" data-tex="\(Vc_i\)">\(Vc_i\)</span> cover the target. One Borel inverse image has positive Haar measure, since <span class="math" data-tex="\(Q\)">\(Q\)</span> is sigma finite. Take a finite positive-measure subset <span class="math" data-tex="\(B\)">\(B\)</span> of it. Continuity of translations in <span class="math" data-tex="\(L^1(Q)\)">\(L^1(Q)\)</span> gives <span class="math" data-tex="\(|B\cap sB|&gt;0\)">\(|B\cap sB|&gt;0\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span> sufficiently close to the identity. Hence <span class="math" data-tex="\(s\in BB^{-1}\)">\(s\in BB^{-1}\)</span> and <span class="math" data-tex="\(v_d(s,y)\in VV^{-1}\subseteq W\)">\(v_d(s,y)\in VV^{-1}\subseteq W\)</span>. This proves continuity at the identity and therefore everywhere.</p>
+<p>Combining the countably many strata and transporting back through their orthonormal frames, define</p>
+<p><span class="math math-display" data-tex="\[
+ V_y(g)=v_d(\kappa(g),y)\quad(y\in E_d).
+ \tag{A19}
+\]">\[
+ V_y(g)=v_d(\kappa(g),y)\quad(y\in E_d).
+ \tag{A19}
+\]</span></p>
+<p>On <span class="math" data-tex="\(E=\bigcup_d E_d\)">\(E=\bigcup_d E_d\)</span>, these are strongly continuous unitary representations of the original <span class="math" data-tex="\(G\)">\(G\)</span>, with the group law true for every <span class="math" data-tex="\(g,h,y\)">\(g,h,y\)</span>. Their coordinate coefficients are jointly Borel in <span class="math" data-tex="\((g,y)\)">\((g,y)\)</span>. Indeed they are compositions of Borel functions on the standard Borel product <span class="math" data-tex="\(Q\times Y_d\)">\(Q\times Y_d\)</span> with <span class="math" data-tex="\((g,y)\mapsto(\kappa(g),y)\)">\((g,y)\mapsto(\kappa(g),y)\)</span>; the latter is measurable for the product Borel sigma algebras. Equations (A15)–(A18) give the exact global equality</p>
+<p><span class="math math-display" data-tex="\[
+ U_g=\int_E^\oplus V_y(g)\,d\nu(y)
+ \qquad(g\in G).
+ \tag{A20}
+\]">\[
+ U_g=\int_E^\oplus V_y(g)\,d\nu(y)
+ \qquad(g\in G).
+ \tag{A20}
+\]</span></p>
+<p>This equality means that for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the new field represents the global operator <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. It asserts no simultaneous pointwise equality with previously chosen representatives at all group parameters.</p>
+<h3 id="the-standard-forms-are-preserved-on-one-common-conull-set">The standard forms are preserved on one common conull set</h3>
+<p>The representations from (A19) can be restricted to a further conull Borel set on which, simultaneously for every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ V_y(g)M_yV_y(g)^*=M_y,\qquad
+ V_y(g)J_y=J_yV_y(g),\qquad
+ V_y(g)P_y=P_y.
+ \tag{A21}
+\]">\[
+ V_y(g)M_yV_y(g)^*=M_y,\qquad
+ V_y(g)J_y=J_yV_y(g),\qquad
+ V_y(g)P_y=P_y.
+ \tag{A21}
+\]</span></p>
+<p>Here are the countable tests giving that conclusion. Choose a countable dense subgroup <span class="math" data-tex="\(Q_0\subseteq Q\)">\(Q_0\subseteq Q\)</span>. Such a subgroup is generated by a countable dense set. For a fixed <span class="math" data-tex="\(q\in Q_0\)">\(q\in Q_0\)</span>, apply the covariance of <span class="math" data-tex="\(\overline U_q\)">\(\overline U_q\)</span> to every global contraction field <span class="math" data-tex="\(q_j\)">\(q_j\)</span> from GFR-7. Both its conjugate and the conjugate by <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> belong to the whole algebra <span class="math" data-tex="\(M\)">\(M\)</span>. Decomposable-field uniqueness therefore gives
+<span class="math" data-tex="\(v_d(q,y)q_j(y)v_d(q,y)^*\in M_y\)">\(v_d(q,y)q_j(y)v_d(q,y)^*\in M_y\)</span> almost everywhere for each <span class="math" data-tex="\(j\)">\(j\)</span>, and likewise for <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>. Removing the countably many exceptional sets and using the strong density of the <span class="math" data-tex="\(q_j(y)\)">\(q_j(y)\)</span> proves that these unitaries normalize <span class="math" data-tex="\(M_y\)">\(M_y\)</span>.</p>
+<p>The equality <span class="math" data-tex="\(\overline U_qJ=J\overline U_q\)">\(\overline U_qJ=J\overline U_q\)</span>, tested on the countable measurable frame, gives commutation with <span class="math" data-tex="\(J_y\)">\(J_y\)</span>. For the cone, every section <span class="math" data-tex="\(v_j\)">\(v_j\)</span> from (A11) belongs to the global <span class="math" data-tex="\(P\)">\(P\)</span>, by (A9). Since <span class="math" data-tex="\(\overline U_qP=P\)">\(\overline U_qP=P\)</span>, equations (A9) and (A20) give <span class="math" data-tex="\(v_d(q,y)v_j(y)\in P_y\)">\(v_d(q,y)v_j(y)\in P_y\)</span> almost everywhere. Countably many <span class="math" data-tex="\(j\)">\(j\)</span>, density in <span class="math" data-tex="\(P_y\)">\(P_y\)</span>, and the same argument for <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span> prove cone equality. Take the countable union of these null sets over <span class="math" data-tex="\(q\in Q_0\)">\(q\in Q_0\)</span>; choose Borel representatives for the exceptional sets before deleting them.</p>
+<p>For a remaining <span class="math" data-tex="\(y\)">\(y\)</span>, let <span class="math" data-tex="\(q_n\in Q_0\)">\(q_n\in Q_0\)</span> converge to any <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>. Continuity of the fiber representation implies strong convergence of both <span class="math" data-tex="\(v_d(q_n,y)\)">\(v_d(q_n,y)\)</span> and their adjoints. For <span class="math" data-tex="\(a\in M_y\)">\(a\in M_y\)</span>, their conjugates of <span class="math" data-tex="\(a\)">\(a\)</span> converge strongly to the conjugate by <span class="math" data-tex="\(v_d(q,y)\)">\(v_d(q,y)\)</span>, which belongs to <span class="math" data-tex="\(M_y\)">\(M_y\)</span> by strong closedness. Applying this also to the inverse gives equality of algebras. Passing to the limit in the conjugation equation proves commutation with <span class="math" data-tex="\(J_y\)">\(J_y\)</span>, and closedness of <span class="math" data-tex="\(P_y\)">\(P_y\)</span>, followed again by the inverse, proves cone equality. This establishes (A21) for every <span class="math" data-tex="\(q\)">\(q\)</span>, and hence every <span class="math" data-tex="\(g\)">\(g\)</span>, on a single conull set.</p>
+<p>In particular</p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_{g,y}(a)=V_y(g)aV_y(g)^*\quad(a\in M_y)
+ \tag{A22}
+\]">\[
+ \alpha_{g,y}(a)=V_y(g)aV_y(g)^*\quad(a\in M_y)
+ \tag{A22}
+\]</span></p>
+<p>is a continuous action by normal automorphisms in every retained fiber. Strong continuity of its implementing unitaries gives point-ultraweak continuity: it gives continuity first for vector coefficients, then for every normal functional by its norm-convergent vector-functional expansion from <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP-4–6</a> and uniform boundedness. The equivalence in <a href="OA-FLOW-AT.html#oa-flow.at.3">AT-1–3</a> gives predual norm continuity as well. Each <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> is the canonical standard implementer of <span class="math" data-tex="\(\alpha_{g,y}\)">\(\alpha_{g,y}\)</span>, by the uniqueness theorem <a href="OA-FLOW-MC.html#oa-flow.mc.1">MC-1</a> and (A21). For every fixed <span class="math" data-tex="\(g\)">\(g\)</span> and every <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, global covariance yields</p>
+<p><span class="math math-display" data-tex="\[
+ \alpha_g(a)(y)=\alpha_{g,y}(a(y))
+ \quad\text{for almost every }y.
+ \tag{A23}
+\]">\[
+ \alpha_g(a)(y)=\alpha_{g,y}(a(y))
+ \quad\text{for almost every }y.
+ \tag{A23}
+\]</span></p>
+<p>The base remains stationary throughout: <span class="math" data-tex="\(D\)">\(D\)</span> is represented by scalar functions of <span class="math" data-tex="\(y\)">\(y\)</span>, and <span class="math" data-tex="\(G\)">\(G\)</span> acts trivially on these functions. The construction has imposed neither second countability on the original <span class="math" data-tex="\(G\)">\(G\)</span> nor a factoriality assumption on the fibers.</p>
+<p><span id="OA-FLOW.CENTERG.COVARIANCE"></span><a id="oa-flow.centerg.covariance"></a></p>
+<h2 id="covariance-on-one-common-conull-base">Covariance on one common conull base</h2>
+<p>We now use the <a href="#oa-flow.centerg.recovery">recovered fibre representations</a>. Let <span class="math" data-tex="\(G\)">\(G\)</span> be a separable locally compact Hausdorff group and suppose that
+<span class="math math-display" data-tex="\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=Z(M)^\alpha=L^\infty(Y,\nu)1_y.
+ \tag{C1}
+\]">\[
+ H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ M=\int_Y^\oplus M_y\,d\nu(y),\qquad
+ D=Z(M)^\alpha=L^\infty(Y,\nu)1_y.
+ \tag{C1}
+\]</span>
+The base is the standard finite base obtained by decomposing over the specified central algebra <span class="math" data-tex="\(D\)">\(D\)</span>; each retained <span class="math" data-tex="\(H_y\)">\(H_y\)</span> is separable and nonzero. The middle equality denotes the <strong>whole algebra of essentially bounded measurable sections</strong> with values in <span class="math" data-tex="\(M_y\)">\(M_y\)</span>. The preceding recovery theorem gives, on one conull base, genuine strongly continuous unitary representations <span class="math" data-tex="\(V_y:G\to\mathcal U(H_y)\)">\(V_y:G\to\mathcal U(H_y)\)</span>, such that for every fixed <span class="math" data-tex="\(g\)">\(g\)</span>
+<span class="math math-display" data-tex="\[
+ U_g=\int_Y^\oplus V_y(g)\,d\nu(y),\qquad
+ \alpha_g(x)=U_gxU_g^*\quad(x\in M).
+ \tag{C2}
+\]">\[
+ U_g=\int_Y^\oplus V_y(g)\,d\nu(y),\qquad
+ \alpha_g(x)=U_gxU_g^*\quad(x\in M).
+ \tag{C2}
+\]</span>
+Here <span class="math" data-tex="\(U\)">\(U\)</span> is the strongly continuous global representation. We must still show that all these fibre unitaries normalize their fibre algebras on a single conull base.</p>
+<p>The <span class="unlinked">whole-algebra construction over a specified central subalgebra</span> supplies countably many measurable contraction fields <span class="math" data-tex="\(a_j(y)\)">\(a_j(y)\)</span> generating <span class="math" data-tex="\(M_y\)">\(M_y\)</span>. Their integrals <span class="math" data-tex="\(a_j\)">\(a_j\)</span> belong to <span class="math" data-tex="\(M\)">\(M\)</span>. Include their adjoints. The <span class="unlinked">measurable commutant-generator construction</span> gives measurable contractions <span class="math" data-tex="\(b_l(y)\)">\(b_l(y)\)</span> generating <span class="math" data-tex="\(M_y'\)">\(M_y'\)</span>, again with adjoints included. Its <span class="unlinked">exact integral commutant proof</span> shows that their integrals <span class="math" data-tex="\(b_l\)">\(b_l\)</span> belong to <span class="math" data-tex="\(M'\)">\(M'\)</span>, and that
+<span class="math math-display" data-tex="\[
+ M'=\int_Y^\oplus M_y'\,d\nu(y).
+ \tag{C3}
+\]">\[
+ M'=\int_Y^\oplus M_y'\,d\nu(y).
+ \tag{C3}
+\]</span>
+These are assertions about all bounded measurable commutant sections, not just the displayed generators.</p>
+<p>Choose a countable dense subgroup <span class="math" data-tex="\(Q\subseteq G\)">\(Q\subseteq G\)</span>: take the subgroup generated by any countable dense subset. For every <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span> and all <span class="math" data-tex="\(j,l\)">\(j,l\)</span>,
+<span class="math math-display" data-tex="\[
+ [U_qa_jU_q^*,b_l]=0.
+ \tag{C4}
+\]">\[
+ [U_qa_jU_q^*,b_l]=0.
+ \tag{C4}
+\]</span>
+Indeed the first operator is in <span class="math" data-tex="\(M\)">\(M\)</span> and the second is in <span class="math" data-tex="\(M'\)">\(M'\)</span>. Products and adjoints of bounded decomposable fields integrate to the corresponding operator products and adjoints. The <span class="unlinked">countable common-null localization proof</span>, or its localized frame tests, therefore yields one conull set on which
+<span class="math math-display" data-tex="\[
+ [V_y(q)a_j(y)V_y(q)^*,b_l(y)]=0
+ \qquad(q\in Q,\ j,l\ge1).
+ \tag{C5}
+\]">\[
+ [V_y(q)a_j(y)V_y(q)^*,b_l(y)]=0
+ \qquad(q\in Q,\ j,l\ge1).
+ \tag{C5}
+\]</span>
+Only countably many operator identities were localized. Since the <span class="math" data-tex="\(b_l(y)\)">\(b_l(y)\)</span> generate <span class="math" data-tex="\(M_y'\)">\(M_y'\)</span>, (C5) implies
+<span class="math" data-tex="\(V_y(q)a_j(y)V_y(q)^*\in(M_y')'=M_y\)">\(V_y(q)a_j(y)V_y(q)^*\in(M_y')'=M_y\)</span>.
+Conjugation by a fixed unitary preserves weak operator convergence. Taking the von Neumann algebra generated by the <span class="math" data-tex="\(a_j(y)\)">\(a_j(y)\)</span> gives
+<span class="math" data-tex="\(V_y(q)M_yV_y(q)^*\subseteq M_y\)">\(V_y(q)M_yV_y(q)^*\subseteq M_y\)</span>.
+Apply this to <span class="math" data-tex="\(q^{-1}\in Q\)">\(q^{-1}\in Q\)</span> and use the genuine representation law. It gives the reverse inclusion, so
+<span class="math math-display" data-tex="\[
+ V_y(q)M_yV_y(q)^*=M_y\qquad(q\in Q)
+ \tag{C6}
+\]">\[
+ V_y(q)M_yV_y(q)^*=M_y\qquad(q\in Q)
+ \tag{C6}
+\]</span>
+on that same set.</p>
+<p>Fix a retained <span class="math" data-tex="\(y\)">\(y\)</span>. Continuity sends the dense set <span class="math" data-tex="\(Q\)">\(Q\)</span> to a dense subset of <span class="math" data-tex="\(V_y(G)\)">\(V_y(G)\)</span> in the strong unitary topology. Explicitly, the inverse image of any neighbourhood of <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> is an open set containing <span class="math" data-tex="\(g\)">\(g\)</span>, hence meets <span class="math" data-tex="\(Q\)">\(Q\)</span>. That topology is metrizable on the unitary group of the separable space <span class="math" data-tex="\(H_y\)">\(H_y\)</span>, using a countable dense vector set. Thus for each <span class="math" data-tex="\(g\)">\(g\)</span> there are <span class="math" data-tex="\(q_n\in Q\)">\(q_n\in Q\)</span> with <span class="math" data-tex="\(V_y(q_n)\to V_y(g)\)">\(V_y(q_n)\to V_y(g)\)</span> strongly. The inverses converge strongly too: if unitaries <span class="math" data-tex="\(W_n\to W\)">\(W_n\to W\)</span> strongly and <span class="math" data-tex="\(W\)">\(W\)</span> is unitary, then
+<span class="math math-display" data-tex="\[
+ \|(W_n^*-W^*)\xi\|=\|\xi-W_nW^*\xi\|\longrightarrow0.
+ \tag{C7}
+\]">\[
+ \|(W_n^*-W^*)\xi\|=\|\xi-W_nW^*\xi\|\longrightarrow0.
+ \tag{C7}
+\]</span>
+For <span class="math" data-tex="\(x\in M_y\)">\(x\in M_y\)</span>, boundedness and (C7) give
+<span class="math" data-tex="\(V_y(q_n)xV_y(q_n)^*\to V_y(g)xV_y(g)^*\)">\(V_y(q_n)xV_y(q_n)^*\to V_y(g)xV_y(g)^*\)</span> strongly. The strong closedness of <span class="math" data-tex="\(M_y\)">\(M_y\)</span> proves inclusion in <span class="math" data-tex="\(M_y\)">\(M_y\)</span>; use <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> for equality. Consequently, on one conull base,
+<span class="math math-display" data-tex="\[
+ \alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}
+ \quad\hbox{defines an action on }M_y\text{ for every }g\in G.
+ \tag{C8}
+\]">\[
+ \alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}
+ \quad\hbox{defines an action on }M_y\text{ for every }g\in G.
+ \tag{C8}
+\]</span>
+There was no requirement that <span class="math" data-tex="\(G\)">\(G\)</span> have a countable neighbourhood basis. The sequential limit was taken in the unitary group of one separable fibre. There was also no uncountable union of exceptional sets: after (C6), the argument is entirely pointwise on the retained fibres.</p>
+<p>Each <span class="math" data-tex="\(\alpha_{g,y}\)">\(\alpha_{g,y}\)</span> and its inverse are normal. Indeed the <a href="OA-FLOW-CP.html#oa-flow.cp.6">concrete-predual vector-series description</a> expresses every normal functional as
+<span class="math" data-tex="\(\omega(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)">\(\omega(x)=\sum_n\langle x\xi_n,\eta_n\rangle\)</span>, with <span class="math" data-tex="\(\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty\)">\(\sum_n\|\xi_n\|\|\eta_n\|&lt;\infty\)</span>. Pulling it back by unitary conjugation replaces its vectors by <span class="math" data-tex="\(V_y(g)^*\xi_n,V_y(g)^*\eta_n\)">\(V_y(g)^*\xi_n,V_y(g)^*\eta_n\)</span>, retaining that summable bound. This gives ultraweak continuity in both directions. The same description proves continuity in the predual norm. For a vector functional <span class="math" data-tex="\(\omega_{\xi,\eta}(x)=\langle x\xi,\eta\rangle\)">\(\omega_{\xi,\eta}(x)=\langle x\xi,\eta\rangle\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|\omega_{\xi,\eta}\circ\alpha_{g,y}
+       -\omega_{\xi,\eta}\circ\alpha_{h,y}\|
+ &amp;\le \|(V_y(g)^*-V_y(h)^*)\xi\|\,\|\eta\|\\
+ &amp;\quad+\|\xi\|\,\|(V_y(g)^*-V_y(h)^*)\eta\|.
+ \end{aligned}
+ \tag{C9}
+\]">\[
+ \begin{aligned}
+ \|\omega_{\xi,\eta}\circ\alpha_{g,y}
+       -\omega_{\xi,\eta}\circ\alpha_{h,y}\|
+ &amp;\le \|(V_y(g)^*-V_y(h)^*)\xi\|\,\|\eta\|\\
+ &amp;\quad+\|\xi\|\,\|(V_y(g)^*-V_y(h)^*)\eta\|.
+ \end{aligned}
+ \tag{C9}
+\]</span>
+Strong continuity makes this tend to zero as <span class="math" data-tex="\(g\to h\)">\(g\to h\)</span>. For a summable vector series, approximate by its finite partial sums; the discarded difference has norm at most twice the sum of the discarded products, uniformly in <span class="math" data-tex="\(g,h\)">\(g,h\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ g\longmapsto\omega\circ\alpha_{g,y}
+ \quad\hbox{is norm continuous for every }\omega\in(M_y)_*.
+ \tag{C10}
+\]">\[
+ g\longmapsto\omega\circ\alpha_{g,y}
+ \quad\hbox{is norm continuous for every }\omega\in(M_y)_*.
+ \tag{C10}
+\]</span>
+Finally, for every fixed <span class="math" data-tex="\(g\)">\(g\)</span> and every <span class="math" data-tex="\(x=\int^\oplus x_y\in M\)">\(x=\int^\oplus x_y\in M\)</span>, measurable multiplication in (C2) yields
+<span class="math math-display" data-tex="\[
+ \alpha_g(x)=\int_Y^\oplus\alpha_{g,y}(x_y)\,d\nu(y).
+ \tag{C11}
+\]">\[
+ \alpha_g(x)=\int_Y^\oplus\alpha_{g,y}(x_y)\,d\nu(y).
+ \tag{C11}
+\]</span>
+This is an equality of global operators for every <span class="math" data-tex="\(g,x\)">\(g,x\)</span>. It does not select a universal representative for all elements of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><span id="OA-FLOW.CENTERG.FIXED"></span><a id="oa-flow.centerg.fixed"></a></p>
+<h2 id="the-entire-fixed-centre-field">The entire fixed-centre field</h2>
+<p>Taking the intersection of the whole-algebra equalities (C1) and (C3) gives
+<span class="math math-display" data-tex="\[
+ Z(M)=\int_Y^\oplus Z(M_y)\,d\nu(y).
+ \tag{C12}
+\]">\[
+ Z(M)=\int_Y^\oplus Z(M_y)\,d\nu(y).
+ \tag{C12}
+\]</span>
+For completeness, a central global operator lies in both integral algebras. The uniqueness of decomposable fields identifies its two representatives off a null set, so its fibre belongs to both <span class="math" data-tex="\(M_y\)">\(M_y\)</span> and <span class="math" data-tex="\(M_y'\)">\(M_y'\)</span>. Conversely every essentially bounded measurable field in their intersection integrates to an element of both <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(M'\)">\(M'\)</span>. This is the full <span class="unlinked">centre-field argument</span>.</p>
+<p>On each retained fibre put
+<span class="math math-display" data-tex="\[
+ F_y=Z(M_y)\cap\{V_y(q):q\in Q\}'
+     =Z(M_y)^{\alpha_y}.
+ \tag{C13}
+\]">\[
+ F_y=Z(M_y)\cap\{V_y(q):q\in Q\}'
+     =Z(M_y)^{\alpha_y}.
+ \tag{C13}
+\]</span>
+The last equality follows from strong continuity: commutation with every <span class="math" data-tex="\(V_y(q)\)">\(V_y(q)\)</span> passes to the strong limit <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span>. We verify measurability of this algebra field and of the tests for its nonscalar elements.</p>
+<p>Realize the measurable Hilbert field as <span class="math" data-tex="\(H_y=P_y\ell^2\)">\(H_y=P_y\ell^2\)</span>, using the <span class="unlinked">ambient Hilbert-field realization</span>. Extend each fibre operator by zero on <span class="math" data-tex="\(H_y^\perp\)">\(H_y^\perp\)</span>. In the WOT compact metrizable unit ball of <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span>, the unit ball of <span class="math" data-tex="\(F_y\)">\(F_y\)</span> is exactly the set of solutions of
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ T=P_yTP_y,\\
+ [T,a_j(y)]=0,\qquad [T,b_l(y)]=0,\qquad
+ [T,V_y(q)]=0\quad(j,l\ge1,\ q\in Q).
+ \end{gathered}
+ \tag{C14}
+\]">\[
+ \begin{gathered}
+ T=P_yTP_y,\\
+ [T,a_j(y)]=0,\qquad [T,b_l(y)]=0,\qquad
+ [T,V_y(q)]=0\quad(j,l\ge1,\ q\in Q).
+ \end{gathered}
+ \tag{C14}
+\]</span>
+The first two commutation families say precisely that the restriction of <span class="math" data-tex="\(T\)">\(T\)</span> is in <span class="math" data-tex="\(M_y'\cap M_y\)">\(M_y'\cap M_y\)</span>. The last one is the fixedness condition. For each fixed <span class="math" data-tex="\(y\)">\(y\)</span>, every matrix coefficient of the equations is WOT continuous in <span class="math" data-tex="\(T\)">\(T\)</span>, since multiplication by a fixed bounded operator is WOT continuous. For each fixed <span class="math" data-tex="\(T\)">\(T\)</span>, the coefficients are measurable in <span class="math" data-tex="\(y\)">\(y\)</span>, by measurability of operator products and adjoints. Enumerate the coefficients against the ambient basis and their real and imaginary parts. These are countably many closed equations, with the zero operator as a solution at every point.</p>
+<p>The <span class="unlinked">compact-equation selector and dense-selector proof</span> applies to exactly these equations. It supplies measurable contraction sections <span class="math" data-tex="\(z_k(y)\)">\(z_k(y)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \{z_k(y):k\ge1\}\quad\hbox{is WOT dense in }(F_y)_1
+ \quad\hbox{for every retained }y.
+ \tag{C15}
+\]">\[
+ \{z_k(y):k\ge1\}\quad\hbox{is WOT dense in }(F_y)_1
+ \quad\hbox{for every retained }y.
+ \tag{C15}
+\]</span>
+Its construction works on the original measurable base, not just after completion. A measurable map into the ambient WOT unit ball is a measurable operator field: its basis images are limits of measurable finite coordinate sections, and uniform boundedness extends the assertion to all measurable vector sections. Restricting to <span class="math" data-tex="\(H_y\)">\(H_y\)</span> therefore gives the claimed sections. These arguments supply both the field and its countable dense families; measurability of an unspecified fibrewise fixed algebra has not been assumed.</p>
+<p>We now have the whole fixed-centre equality
+<span class="math math-display" data-tex="\[
+ D=Z(M)^\alpha
+   =\left\{\int_Y^\oplus z_y\,d\nu(y):
+       z_y\in F_y\text{ a.e.},\ z\text{ measurable and essentially bounded}\right\}.
+ \tag{C16}
+\]">\[
+ D=Z(M)^\alpha
+   =\left\{\int_Y^\oplus z_y\,d\nu(y):
+       z_y\in F_y\text{ a.e.},\ z\text{ measurable and essentially bounded}\right\}.
+ \tag{C16}
+\]</span>
+To prove the inclusion from left to right, use (C12) and localize the equalities <span class="math" data-tex="\(U_qzU_q^*=z\)">\(U_qzU_q^*=z\)</span> for the countably many <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>. On their common conull set, (C2) puts <span class="math" data-tex="\(z_y\)">\(z_y\)</span> in <span class="math" data-tex="\(F_y\)">\(F_y\)</span>. For the converse, any such field is central by (C12). It commutes with every <span class="math" data-tex="\(U_q\)">\(U_q\)</span> after integration. Global strong continuity, density of <span class="math" data-tex="\(Q\)">\(Q\)</span>, and the same fixed-operator strong-limit argument show that it commutes with every <span class="math" data-tex="\(U_g\)">\(U_g\)</span>. It therefore belongs to <span class="math" data-tex="\(D\)">\(D\)</span>. Both inclusions concern all essentially bounded measurable sections, so (C16) is not merely a generator inclusion.</p>
+<p><span id="OA-FLOW.CENTERG.SCALAR"></span><a id="oa-flow.centerg.scalar"></a></p>
+<h2 id="detecting-and-excluding-nonscalar-fixed-centres">Detecting and excluding nonscalar fixed centres</h2>
+<p>Choose the compact measurable orthonormal frame <span class="math" data-tex="\((e_r(y))\)">\((e_r(y))\)</span> supplied by the <span class="unlinked">Hilbert-field frame construction</span>: the nonzero vectors are an orthonormal basis, and zero vectors follow when the dimension is finite. In particular <span class="math" data-tex="\(\|e_1(y)\|=1\)">\(\|e_1(y)\|=1\)</span> on our nonzero fibres. Following the explicit centre test in the preceding DC result, define
+<span class="math math-display" data-tex="\[
+ c_k(y)=\langle z_k(y)e_1(y),e_1(y)\rangle,
+ \qquad t_k(y)=z_k(y)-c_k(y)1_y.
+ \tag{C17}
+\]">\[
+ c_k(y)=\langle z_k(y)e_1(y),e_1(y)\rangle,
+ \qquad t_k(y)=z_k(y)-c_k(y)1_y.
+ \tag{C17}
+\]</span>
+The function <span class="math" data-tex="\(c_k\)">\(c_k\)</span> is measurable and bounded by one. The field <span class="math" data-tex="\(t_k\)">\(t_k\)</span> is measurable, lies in <span class="math" data-tex="\(F_y\)">\(F_y\)</span>, is bounded by two, and has first diagonal coefficient zero. Its nonzero event has the explicit measurable description
+<span class="math math-display" data-tex="\[
+ B_k=\{y:t_k(y)\ne0\}
+ =\bigcup_{r,s,m\ge1}
+   \left\{y:\left|\langle t_k(y)e_r(y),e_s(y)\rangle\right|&gt;1/m\right\}.
+ \tag{C18}
+\]">\[
+ B_k=\{y:t_k(y)\ne0\}
+ =\bigcup_{r,s,m\ge1}
+   \left\{y:\left|\langle t_k(y)e_r(y),e_s(y)\rangle\right|&gt;1/m\right\}.
+ \tag{C18}
+\]</span>
+Indeed an operator is zero exactly when every matrix coefficient on a total orthonormal frame is zero. This also handles variable finite dimension, because zero frame vectors contribute zero coefficients.</p>
+<p>For a fixed nonzero <span class="math" data-tex="\(H_y\)">\(H_y\)</span>, the scalar operators form a WOT closed subspace. To see this without a selection argument, if <span class="math" data-tex="\(\lambda_i1_y\)">\(\lambda_i1_y\)</span> converges weakly to <span class="math" data-tex="\(T\)">\(T\)</span>, its coefficient against <span class="math" data-tex="\(e_1(y)\)">\(e_1(y)\)</span> makes <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> converge to <span class="math" data-tex="\(c=\langle Te_1,e_1\rangle\)">\(c=\langle Te_1,e_1\rangle\)</span>. Every other coefficient then equals that of <span class="math" data-tex="\(c1_y\)">\(c1_y\)</span>, so <span class="math" data-tex="\(T=c1_y\)">\(T=c1_y\)</span>. It follows from (C15) that
+<span class="math math-display" data-tex="\[
+ \{y:F_y\ne\mathbb C1_y\}=\bigcup_{k\ge1}B_k.
+ \tag{C19}
+\]">\[
+ \{y:F_y\ne\mathbb C1_y\}=\bigcup_{k\ge1}B_k.
+ \tag{C19}
+\]</span>
+If all the dense selectors at a point are scalar, their WOT closure is scalar; if one is nonscalar, subtracting its first diagonal coefficient in (C17) is nonzero. Thus (C19) is also a proof that the nonscalar event is measurable.</p>
+<p>By (C16), each <span class="math" data-tex="\(t_k\)">\(t_k\)</span> integrates to an element of <span class="math" data-tex="\(D\)">\(D\)</span>. But (C1) says that every element of <span class="math" data-tex="\(D\)">\(D\)</span> has a scalar representative <span class="math" data-tex="\(f(y)1_y\)">\(f(y)1_y\)</span>. Uniqueness of decomposable fields therefore makes
+<span class="math" data-tex="\(t_k(y)=f(y)1_y\)">\(t_k(y)=f(y)1_y\)</span> almost everywhere. The first diagonal coefficient of <span class="math" data-tex="\(t_k\)">\(t_k\)</span> is identically zero, so <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere and <span class="math" data-tex="\(\nu(B_k)=0\)">\(\nu(B_k)=0\)</span>. The countable union in (C19) is null. On its complement,
+<span class="math math-display" data-tex="\[
+ Z(M_y)^{\alpha_y}=\mathbb C1_y.
+ \tag{C20}
+\]">\[
+ Z(M_y)^{\alpha_y}=\mathbb C1_y.
+ \tag{C20}
+\]</span>
+Removing this one further null set leaves all the representations, covariance and continuity assertions above intact. Thus decomposition over the invariant centre gives centrally ergodic continuous systems on almost every component.</p>
+<p>The conclusion concerns the <strong>fixed part of the centre</strong>. A fibre can have a larger centre whose elements are moved by the group. Its full fixed algebra <span class="math" data-tex="\(M_y^{\alpha_y}\)">\(M_y^{\alpha_y}\)</span> can also contain nonscalar operators. If <span class="math" data-tex="\(M\)">\(M\)</span> is abelian, the countable generating fields commute on one conull set by localization of their pairwise commutators; hence every retained <span class="math" data-tex="\(M_y\)">\(M_y\)</span> is abelian. In that case (C20) is ordinary ergodicity, <span class="math" data-tex="\(M_y^{\alpha_y}=\mathbb C1_y\)">\(M_y^{\alpha_y}=\mathbb C1_y\)</span>.</p>
+<p><span id="OA-FLOW.CENTERG.EXAMPLE"></span><a id="oa-flow.centerg.example"></a></p>
+<h2 id="a-centrally-ergodic-component-with-a-matrix-fixed-algebra">A centrally ergodic component with a matrix fixed algebra</h2>
+<p>Let <span class="math" data-tex="\(G=C_2=\{e,s\}\)">\(G=C_2=\{e,s\}\)</span> and
+<span class="math math-display" data-tex="\[
+ M=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+ \alpha_s(A,B)=(B,A).
+ \tag{E1}
+\]">\[
+ M=M_2(\mathbb C)\oplus M_2(\mathbb C),\qquad
+ \alpha_s(A,B)=(B,A).
+ \tag{E1}
+\]</span>
+On <span class="math" data-tex="\(\mathbb C^2\oplus\mathbb C^2\)">\(\mathbb C^2\oplus\mathbb C^2\)</span>, the unitary <span class="math" data-tex="\(U_s(\xi,\eta)=(\eta,\xi)\)">\(U_s(\xi,\eta)=(\eta,\xi)\)</span> implements this action, and <span class="math" data-tex="\(U_s^2=1\)">\(U_s^2=1\)</span>. The finite discrete group makes continuity automatic. A matrix commuting with every matrix unit has zero off-diagonal entries, by commutation with the diagonal matrix units, and has all diagonal entries equal, by commutation with the remaining units. Thus <span class="math" data-tex="\(Z(M_d(\mathbb C))=\mathbb CI_d\)">\(Z(M_d(\mathbb C))=\mathbb CI_d\)</span>, and in (E1)
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ Z(M)&amp;=\{(\lambda I_2,\gamma I_2):\lambda,\gamma\in\mathbb C\},\\
+ D=Z(M)^\alpha&amp;=\{(\lambda I_2,\lambda I_2):\lambda\in\mathbb C\},\\
+ M^\alpha&amp;=\{(A,A):A\in M_2(\mathbb C)\}\cong M_2(\mathbb C).
+ \end{aligned}
+ \tag{E2}
+\]">\[
+ \begin{aligned}
+ Z(M)&amp;=\{(\lambda I_2,\gamma I_2):\lambda,\gamma\in\mathbb C\},\\
+ D=Z(M)^\alpha&amp;=\{(\lambda I_2,\lambda I_2):\lambda\in\mathbb C\},\\
+ M^\alpha&amp;=\{(A,A):A\in M_2(\mathbb C)\}\cong M_2(\mathbb C).
+ \end{aligned}
+ \tag{E2}
+\]</span>
+The equality for the fixed algebra follows directly from <span class="math" data-tex="\((A,B)=(B,A)\)">\((A,B)=(B,A)\)</span>, which is equivalent to <span class="math" data-tex="\(A=B\)">\(A=B\)</span>. The two minimal central projections <span class="math" data-tex="\((I_2,0)\)">\((I_2,0)\)</span> and <span class="math" data-tex="\((0,I_2)\)">\((0,I_2)\)</span> are exchanged. Their individual values cannot define invariant-centre coordinates. The algebra <span class="math" data-tex="\(D=\mathbb C1\)">\(D=\mathbb C1\)</span> gives a one-point base, and its single component is the whole system (E1). It is centrally ergodic, has a two-dimensional centre and is not a factor. Its fixed algebra has complex dimension four and is not scalar, so it is not ergodic.</p>
+<p>To see a nontrivial invariant-centre base in the same calculation, adjoin an unswapped summand:
+<span class="math math-display" data-tex="\[
+ \widetilde M=M_2(\mathbb C)\oplus M_2(\mathbb C)\oplus M_3(\mathbb C),
+ \qquad \widetilde\alpha_s(A,B,C)=(B,A,C).
+ \tag{E3}
+\]">\[
+ \widetilde M=M_2(\mathbb C)\oplus M_2(\mathbb C)\oplus M_3(\mathbb C),
+ \qquad \widetilde\alpha_s(A,B,C)=(B,A,C).
+ \tag{E3}
+\]</span>
+The full centre, invariant centre and fixed algebra are respectively
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ Z(\widetilde M)&amp;=\{(\lambda I_2,\gamma I_2,\delta I_3)\}
+                      \cong\mathbb C^3,\\
+ \widetilde D&amp;=\{(\lambda I_2,\lambda I_2,\delta I_3)\}
+                      \cong\mathbb C^2,\\
+ \widetilde M^{\widetilde\alpha}
+       &amp;=\{(A,A,C):A\in M_2(\mathbb C),\ C\in M_3(\mathbb C)\}
+                      \cong M_2(\mathbb C)\oplus M_3(\mathbb C).
+ \end{aligned}
+ \tag{E4}
+\]">\[
+ \begin{aligned}
+ Z(\widetilde M)&amp;=\{(\lambda I_2,\gamma I_2,\delta I_3)\}
+                      \cong\mathbb C^3,\\
+ \widetilde D&amp;=\{(\lambda I_2,\lambda I_2,\delta I_3)\}
+                      \cong\mathbb C^2,\\
+ \widetilde M^{\widetilde\alpha}
+       &amp;=\{(A,A,C):A\in M_2(\mathbb C),\ C\in M_3(\mathbb C)\}
+                      \cong M_2(\mathbb C)\oplus M_3(\mathbb C).
+ \end{aligned}
+ \tag{E4}
+\]</span>
+Here the unspecified Greek parameters range independently over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The two minimal projections of <span class="math" data-tex="\(\widetilde D\)">\(\widetilde D\)</span> are
+<span class="math math-display" data-tex="\[
+ d_a=(I_2,I_2,0),\qquad d_b=(0,0,I_3).
+ \tag{E5}
+\]">\[
+ d_a=(I_2,I_2,0),\qquad d_b=(0,0,I_3).
+ \tag{E5}
+\]</span>
+The figure denotes the three minimal central projections by <span class="math" data-tex="\(e_1=(I_2,0,0)\)">\(e_1=(I_2,0,0)\)</span>, <span class="math" data-tex="\(e_2=(0,I_2,0)\)">\(e_2=(0,I_2,0)\)</span>, and <span class="math" data-tex="\(e_3=(0,0,I_3)\)">\(e_3=(0,0,I_3)\)</span>, so <span class="math" data-tex="\(d_a=e_1+e_2\)">\(d_a=e_1+e_2\)</span> and <span class="math" data-tex="\(d_b=e_3\)">\(d_b=e_3\)</span>. Consequently the invariant-centre base is <span class="math" data-tex="\(Y=\{a,b\}\)">\(Y=\{a,b\}\)</span>, with either strictly positive mass at each point; for definiteness use <span class="math" data-tex="\(\nu(\{a\})=\nu(\{b\})=1/2\)">\(\nu(\{a\})=\nu(\{b\})=1/2\)</span>. The two fibre systems are
+<span class="math math-display" data-tex="\[
+ \begin{array}{c|c|c|c|c}
+ y&amp;M_y&amp;\alpha_{s,y}&amp;Z(M_y)^{\alpha_y}&amp;M_y^{\alpha_y}\\ \hline
+ a&amp;M_2\oplus M_2&amp;(A,B)\mapsto(B,A)&amp;\mathbb C(I_2,I_2)&amp;\{(A,A)\}\cong M_2\\
+ b&amp;M_3&amp;C\mapsto C&amp;\mathbb CI_3&amp;M_3.
+ \end{array}
+ \tag{E6}
+\]">\[
+ \begin{array}{c|c|c|c|c}
+ y&amp;M_y&amp;\alpha_{s,y}&amp;Z(M_y)^{\alpha_y}&amp;M_y^{\alpha_y}\\ \hline
+ a&amp;M_2\oplus M_2&amp;(A,B)\mapsto(B,A)&amp;\mathbb C(I_2,I_2)&amp;\{(A,A)\}\cong M_2\\
+ b&amp;M_3&amp;C\mapsto C&amp;\mathbb CI_3&amp;M_3.
+ \end{array}
+ \tag{E6}
+\]</span>
+These identifications come from multiplying by <span class="math" data-tex="\(d_a,d_b\)">\(d_a,d_b\)</span>, so the algebra integral is the entire direct sum (E3). On the corresponding Hilbert fibres <span class="math" data-tex="\(\mathbb C^4\)">\(\mathbb C^4\)</span> and <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>, the direct-integral inner product with weights <span class="math" data-tex="\(1/2,1/2\)">\(1/2,1/2\)</span> is identified with the original Hilbert sum by multiplying each original vector component by <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. This unitary identification leaves the displayed multiplication operators and swap implementer unchanged.</p>
+<p>Both fibre systems are centrally ergodic. The first is still not a factor; the second is a factor with the trivial action. Neither has scalar full fixed algebra. The full centre has three independent scalar coordinates, the invariant centre has two, and the fixed algebra has complex dimension <span class="math" data-tex="\(4+9=13\)">\(4+9=13\)</span>. Those are three different calculations.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Two matrix summands exchanged by an involution form one invariant-centre component, while an unswapped matrix summand forms a second; each component has scalar fixed centre but a matrix fixed algebra." src="assets/central-ergodic-components/fixed-centre-components.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 42.1. Exact finite-dimensional decomposition for (E3)–(E6). The action exchanges the first two central projections and fixes the third. Their invariant sums label the two base points. The component at <span class="math" data-tex="\(a\)">\(a\)</span> has full centre <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> and fixed centre <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, whereas its full fixed algebra is <span class="math" data-tex="\(M_2\)">\(M_2\)</span>. Removing the unswapped <span class="math" data-tex="\(M_3\)">\(M_3\)</span> summand leaves the original one-point example (E1)–(E2).</em></p>
+<p><strong>Problem.</strong> Why would replacing central ergodicity by a factor conclusion be wrong?</p>
+<p><strong>Solution.</strong> A factor conclusion would require the whole centre to be scalar. In (E1) the two nonzero central projections are exchanged, so only their equal-coefficient combinations are fixed. The fixed centre is scalar although the whole centre is not.</p>
+<p><span id="OA-FLOW.CENTERG.CONCLUSION"></span><a id="oa-flow.centerg.conclusion"></a></p>
+<h2 id="the-central-ergodic-decomposition-theorem-follows">The central-ergodic decomposition theorem follows</h2>
+<p>Use the <a href="#oa-flow.centerg.setup">separable global representation and central algebra decomposition</a>. The <a href="#oa-flow.centerg.joint">joint-field construction</a>, the <a href="#oa-flow.centerg.almost">almost-representation lemma</a>, and <a href="#oa-flow.centerg.recovery">fixed-parameter recovery</a> supply continuous <span class="math" data-tex="\(V_y\)">\(V_y\)</span> and the equality <span class="math" data-tex="\(U_g=\int^\oplus V_y(g)\,d\nu(y)\)">\(U_g=\int^\oplus V_y(g)\,d\nu(y)\)</span> for every fixed <span class="math" data-tex="\(g\)">\(g\)</span>. Alternatively use the <a href="#oa-flow.centerg.strict">strict-cocycle construction</a>. Both constructions retain the original separable locally compact Hausdorff group.</p>
+<p>The <a href="#oa-flow.centerg.covariance">covariance proof</a> puts <span class="math" data-tex="\(\alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}\)">\(\alpha_{g,y}=\operatorname{Ad}V_y(g)|_{M_y}\)</span> on one conull set and proves its predual continuity. For any fixed <span class="math" data-tex="\(g\)">\(g\)</span> and any <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, multiplication and adjoints of decomposable fields give
+<span class="math math-display" data-tex="\[
+ U_gaU_g^*=
+ \int_Y^\oplus V_y(g)a_yV_y(g)^*\,d\nu(y).
+ \tag{T4}
+\]">\[
+ U_gaU_g^*=
+ \int_Y^\oplus V_y(g)a_yV_y(g)^*\,d\nu(y).
+ \tag{T4}
+\]</span>
+The left side equals <span class="math" data-tex="\(\alpha_g(a)\)">\(\alpha_g(a)\)</span> by the canonical implementation. Finally, the <a href="#oa-flow.centerg.fixed">whole fixed-centre identity</a> and the <a href="#oa-flow.centerg.scalar">scalar-fibre argument</a> give <span class="math" data-tex="\(Z(M_y)^{\alpha_y}=\mathbb C1_y\)">\(Z(M_y)^{\alpha_y}=\mathbb C1_y\)</span> on one further conull set. Intersecting the finitely many common sets used in these constructions proves (T2)–(T3) with all their quantifiers.</p>
+<p>The standard-form assertion follows from (A7)–(A12) and the common-conull tests proving (A21). Those tests also apply to the integrated construction: take a countable dense subgroup of the original <span class="math" data-tex="\(G\)">\(G\)</span>, localize <span class="math" data-tex="\(U_gJ=JU_g\)">\(U_gJ=JU_g\)</span> against the frame and <span class="math" data-tex="\(U_gP=P\)">\(U_gP=P\)</span> against the countable cone sections (A11), and include the inverse elements. On the common conull set the equations extend to every <span class="math" data-tex="\(g\)">\(g\)</span> by strong continuity, exactly as in (C7) and the argument after (A21). Thus either route gives canonical standard implementers. In particular the standard-form refinement is proved using the compatible modular field, rather than inferred from the algebra decomposition alone.</p>
+<p>When <span class="math" data-tex="\(M\)">\(M\)</span> is abelian, each <span class="math" data-tex="\(M_y\)">\(M_y\)</span> is abelian almost everywhere: choose a countable adjoint-closed generating family for <span class="math" data-tex="\(M\)">\(M\)</span>, localize its countably many pairwise commutator equations, and take the strong closure in each fibre. Thus <span class="math" data-tex="\(Z(M_y)=M_y\)">\(Z(M_y)=M_y\)</span>, and the conclusion becomes <span class="math" data-tex="\(M_y^{\alpha_y}=\mathbb C1_y\)">\(M_y^{\alpha_y}=\mathbb C1_y\)</span>, ordinary ergodicity of each abelian component. This operator-algebra conclusion by itself does not assert a pointwise conditional-probability model for a given measured space.</p>
+<p><span id="OA-FLOW.CENTERG.EXERCISES"></span><a id="oa-flow.centerg.exercises"></a></p>
+<h2 id="two-null-set-checks">Two null-set checks</h2>
+<p><strong>Problem 1.</strong> Explain why a countable dense subgroup suffices in the covariance and fixed-centre proofs, even if <span class="math" data-tex="\(G\)">\(G\)</span> has no countable neighbourhood base.</p>
+<p><strong>Solution.</strong> A countable dense subset generates a countable dense subgroup <span class="math" data-tex="\(Q\)">\(Q\)</span>. For a continuous map <span class="math" data-tex="\(V_y\)">\(V_y\)</span>, every neighbourhood of <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> pulls back to a neighbourhood of <span class="math" data-tex="\(g\)">\(g\)</span>, so it meets <span class="math" data-tex="\(Q\)">\(Q\)</span>. Therefore <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> lies in the strong closure of <span class="math" data-tex="\(V_y(Q)\)">\(V_y(Q)\)</span>. On a separable Hilbert space the strong topology on its unitary group is metrizable, for example by summing the truncated distances on a countable dense vector family. Hence one may approximate <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> by a sequence of <span class="math" data-tex="\(V_y(q_n)\)">\(V_y(q_n)\)</span>, without obtaining or needing a sequence <span class="math" data-tex="\(q_n\to g\)">\(q_n\to g\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. Strong convergence of unitaries to a unitary implies strong convergence of their adjoints: <span class="math" data-tex="\(\|u_n^*\xi-u^*\xi\|=\|\xi-u_nu^*\xi\|\to0\)">\(\|u_n^*\xi-u^*\xi\|=\|\xi-u_nu^*\xi\|\to0\)</span>. Normalizer equalities and commutation equations consequently pass to the limit.</p>
+<p><strong>Problem 2.</strong> A jointly measurable field <span class="math" data-tex="\(u(g,y)\)">\(u(g,y)\)</span> obeys <span class="math" data-tex="\(u(gh,y)=u(g,y)u(h,y)\)">\(u(gh,y)=u(g,y)u(h,y)\)</span> for almost every <span class="math" data-tex="\(y\)">\(y\)</span>, for every fixed pair <span class="math" data-tex="\((g,h)\)">\((g,h)\)</span>. Why does this not yet give fibre representations? Why can one not obtain the adjoint relation by substituting <span class="math" data-tex="\(h=g^{-1}\)">\(h=g^{-1}\)</span> into a product-almost-everywhere law?</p>
+<p><strong>Solution.</strong> The exceptional set may depend on the pair, and an uncountable union of null sets need not be null. Product measurability and sigma-finite Haar measure first yield the law for Haar-almost every pair on almost every fibre. The almost-representation lemma then supplies the missing pointwise representation. A product-null exceptional set can contain the entire inversion graph: in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> the line <span class="math" data-tex="\(h=-g\)">\(h=-g\)</span> has product Lebesgue measure zero. The involution proof therefore uses nonsingular changes of variables in two independent Haar variables and Fubini, as carried out in the lemma, rather than a substitution on that graph.</p>
+<p><strong>Reading.</strong> M. Takesaki, <em>Theory of Operator Algebras II</em>, §X.3, especially Corollary X.3.14, Lemma X.3.15 and Definition X.3.16, pp. 288–289, treats decomposition over the fixed centre. For the scalar-weakly-measurable almost-representation step, keep the separable Hilbert-space hypothesis used here; (N1)–(N2) show why the unrestricted formulation needs an additional hypothesis. All mathematical inputs for this lesson are proved above or linked to their programme proofs at the point of use.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L75.html">Previous lesson</a><a href="OA-FLOW-ED.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-L42.md">Lesson source</a></nav></main></body></html>

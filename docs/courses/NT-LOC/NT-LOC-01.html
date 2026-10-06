@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Absolute values, valuations and Ostrowski&#x27;s theorem · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="absolute-values-valuations-and-ostrowski-s-theorem">Absolute values, valuations and Ostrowski's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>Two rational numbers can be close because their difference is small in the real sense. They can also be close because their difference is divisible by a large power of a prime. These notions of distance lead to different limits, and eventually to different complete fields. The purpose of this lesson is to discover which measurements are possible, which measurements describe the same place, and how several places can be used at once.</p>
+<p>We prove Ostrowski's classification for the rational numbers, the correspondence between non-archimedean places of a number field and its prime ideals, and the weak approximation theorem of Artin and Whaples. The product formula for the rational numbers explains why the normalizations at the different places fit together.</p>
+<p>We assume elementary field theory, prime factorization and Bézout's identity for integers, polynomial division, and the notions of metric topology and convergence from <em>Point-Set Topology</em>. From <em>Discrete valuation rings and Dedekind domains</em> we use the properties explicitly recalled below. We do not assume that an absolute value extends to a larger field or that any completion has already been constructed. Those questions belong to <em>Completions, the p-adic numbers and complete discretely valued fields</em> and <em>Extensions of complete valued fields</em>.</p>
+<p>The freely available reference is [Milne ANT]. For valuation rings, [Stacks] also treats valuations with more general ordered value groups. Here additive valuations take values in the real numbers, with an extra value for zero.</p>
+<h2 id="1-distance-and-the-triangle-inequality">1. Distance and the triangle inequality</h2>
+<p>An <strong>absolute value</strong> on a field <span class="math" data-tex="\(K\)">\(K\)</span> is a function <span class="math" data-tex="\(|\cdot|:K\to\mathbb R_{\geq0}\)">\(|\cdot|:K\to\mathbb R_{\geq0}\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+|x|=0\Longleftrightarrow x=0,\qquad
+|xy|=|x||y|,\qquad
+|x+y|\leq |x|+|y|.
+\]">\[
+|x|=0\Longleftrightarrow x=0,\qquad
+|xy|=|x||y|,\qquad
+|x+y|\leq |x|+|y|.
+\]</span>
+<p>Multiplicativity gives <span class="math" data-tex="\(|1|=1\)">\(|1|=1\)</span>, <span class="math" data-tex="\(|-1|=1\)">\(|-1|=1\)</span>, <span class="math" data-tex="\(|-x|=|x|\)">\(|-x|=|x|\)</span>, and <span class="math" data-tex="\(|x^{-1}|=|x|^{-1}\)">\(|x^{-1}|=|x|^{-1}\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>. If <span class="math" data-tex="\(\zeta^m=1\)">\(\zeta^m=1\)</span> with <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, then <span class="math" data-tex="\(|\zeta|^m=1\)">\(|\zeta|^m=1\)</span>, so <span class="math" data-tex="\(|\zeta|=1\)">\(|\zeta|=1\)</span>.</p>
+<p>The <strong>trivial absolute value</strong> is zero at zero and one everywhere else. Every absolute value defines the metric</p>
+<span class="math math-display" data-tex="\[
+d(x,y)=|x-y|.
+\]">\[
+d(x,y)=|x-y|.
+\]</span>
+<p>Definiteness and symmetry follow from the first axiom and <span class="math" data-tex="\(|-x|=|x|\)">\(|-x|=|x|\)</span>; applying the triangle inequality to <span class="math" data-tex="\(x-y=(x-z)+(z-y)\)">\(x-y=(x-z)+(z-y)\)</span> gives the metric triangle inequality. Its open balls are <span class="math" data-tex="\(B(a,r)=\{x:|x-a|&lt;r\}\)">\(B(a,r)=\{x:|x-a|&lt;r\}\)</span>, with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Thus <span class="math" data-tex="\(x_j\to a\)">\(x_j\to a\)</span> means <span class="math" data-tex="\(|x_j-a|\to0\)">\(|x_j-a|\to0\)</span> as real numbers. The trivial absolute value gives the discrete topology. A nontrivial absolute value has an element <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(0&lt;|u|&lt;1\)">\(0&lt;|u|&lt;1\)</span>: invert an element of value greater than one if necessary. Then the distinct nonzero elements <span class="math" data-tex="\(u^j\)">\(u^j\)</span> converge to zero. Its topology is therefore not discrete.</p>
+<p>Applying the ordinary triangle inequality to <span class="math" data-tex="\(x=(x-y)+y\)">\(x=(x-y)+y\)</span>, and then exchanging <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, gives the useful estimate <span class="math" data-tex="\(\big||x|-|y|\big|\leq|x-y|\)">\(\big||x|-|y|\big|\leq|x-y|\)</span>. In particular, the absolute-value function is continuous in its own metric.</p>
+<p>We call an absolute value <strong>non-archimedean</strong> if the values of the integer multiples <span class="math" data-tex="\(n\cdot1_K\)">\(n\cdot1_K\)</span> are bounded. Otherwise it is <strong>archimedean</strong>. The following result replaces a condition about integers by a condition about every pair of field elements.</p>
+<p><strong>Proposition 1.1 (the strong triangle inequality).</strong> The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is non-archimedean.</li>
+<li><span class="math" data-tex="\(|n\cdot1_K|\leq1\)">\(|n\cdot1_K|\leq1\)</span> for every <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>.</li>
+<li><span class="math" data-tex="\(|x+y|\leq\max(|x|,|y|)\)">\(|x+y|\leq\max(|x|,|y|)\)</span> for every <span class="math" data-tex="\(x,y\in K\)">\(x,y\in K\)</span>.</li>
+</ol>
+<p>When these conditions hold and <span class="math" data-tex="\(|x|\ne|y|\)">\(|x|\ne|y|\)</span>, one has</p>
+<span class="math math-display" data-tex="\[
+|x+y|=\max(|x|,|y|).
+\]">\[
+|x+y|=\max(|x|,|y|).
+\]</span>
+<p><em>Proof.</em> Condition 3 bounds a sum of any finite number of ones by one, and also handles negative integers because <span class="math" data-tex="\(|-1|=1\)">\(|-1|=1\)</span>. Thus it implies condition 2, which implies condition 1.</p>
+<p>Suppose condition 1 holds with bound <span class="math" data-tex="\(C\geq1\)">\(C\geq1\)</span>. For every integer <span class="math" data-tex="\(m\)">\(m\)</span> and positive integer <span class="math" data-tex="\(r\)">\(r\)</span>, multiplicativity gives</p>
+<span class="math math-display" data-tex="\[
+|m\cdot1_K|^r=|m^r\cdot1_K|\leq C.
+\]">\[
+|m\cdot1_K|^r=|m^r\cdot1_K|\leq C.
+\]</span>
+<p>Taking <span class="math" data-tex="\(r\)">\(r\)</span>-th roots and letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> proves condition 2.</p>
+<p>Now assume condition 2. Write <span class="math" data-tex="\(M=\max(|x|,|y|)\)">\(M=\max(|x|,|y|)\)</span>. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, there is nothing to prove. For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, the binomial expansion and the ordinary triangle inequality give</p>
+<span class="math math-display" data-tex="\[
+|x+y|^r
+\leq \sum_{j=0}^r\left|\binom rj\cdot1_K\right||x|^j|y|^{r-j}
+\leq (r+1)M^r.
+\]">\[
+|x+y|^r
+\leq \sum_{j=0}^r\left|\binom rj\cdot1_K\right||x|^j|y|^{r-j}
+\leq (r+1)M^r.
+\]</span>
+<p>Since <span class="math" data-tex="\((r+1)^{1/r}\to1\)">\((r+1)^{1/r}\to1\)</span>, taking roots proves condition 3.</p>
+<p>Finally, suppose <span class="math" data-tex="\(|x|&lt;|y|\)">\(|x|&lt;|y|\)</span>. The strong inequality bounds <span class="math" data-tex="\(|x+y|\)">\(|x+y|\)</span> by <span class="math" data-tex="\(|y|\)">\(|y|\)</span>. Applying it to <span class="math" data-tex="\(y=(x+y)-x\)">\(y=(x+y)-x\)</span> shows</p>
+<span class="math math-display" data-tex="\[
+|y|\leq\max(|x+y|,|x|).
+\]">\[
+|y|\leq\max(|x+y|,|x|).
+\]</span>
+<p>The second entry is smaller than <span class="math" data-tex="\(|y|\)">\(|y|\)</span>, so the first must equal <span class="math" data-tex="\(|y|\)">\(|y|\)</span>. The other case follows by exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The strong triangle inequality is also called the <strong>ultrametric inequality</strong>. Its equality assertion is the <strong>isosceles principle</strong>: if two sides of a triangle have different lengths, the third has the larger length. In particular, a sum with a unique summand of largest absolute value cannot be zero. Indeed, the sum of the other terms has smaller absolute value, so the isosceles principle applies.</p>
+<p>There is a related change in the geometry of balls. If <span class="math" data-tex="\(b\in B(a,r)\)">\(b\in B(a,r)\)</span>, then <span class="math" data-tex="\(B(b,r)=B(a,r)\)">\(B(b,r)=B(a,r)\)</span>. For example, if <span class="math" data-tex="\(x\in B(b,r)\)">\(x\in B(b,r)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|x-a|\leq\max(|x-b|,|b-a|)&lt;r;
+\]">\[
+|x-a|\leq\max(|x-b|,|b-a|)&lt;r;
+\]</span>
+<p>the reverse inclusion follows in the same way. Every point of an ultrametric ball can serve as its center.</p>
+<p>In positive characteristic the integer multiples of one form a finite set. Proposition 1.1 therefore proves that every absolute value on such a field is non-archimedean. This does not say that it is trivial: rational function fields will provide counterexamples.</p>
+<p><strong>Examples.</strong> On <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the usual real absolute value is archimedean. Its square root is also an absolute value, since</p>
+<span class="math math-display" data-tex="\[
+\sqrt{|x+y|}\leq\sqrt{|x|+|y|}\leq\sqrt{|x|}+\sqrt{|y|}.
+\]">\[
+\sqrt{|x+y|}\leq\sqrt{|x|+|y|}\leq\sqrt{|x|}+\sqrt{|y|}.
+\]</span>
+<p>Its square is not: <span class="math" data-tex="\(|1+1|^2=4&gt;2=|1|^2+|1|^2\)">\(|1+1|^2=4&gt;2=|1|^2+|1|^2\)</span>. An absolute value on a finite field is trivial. For every nonzero element, two of its powers agree, so some positive power is one, and its absolute value is one.</p>
+<h2 id="2-recording-smallness-by-an-additive-valuation">2. Recording smallness by an additive valuation</h2>
+<p>For a non-archimedean absolute value define</p>
+<span class="math math-display" data-tex="\[
+v(x)=-\log|x|\quad(x\ne0),\qquad v(0)=\infty.
+\]">\[
+v(x)=-\log|x|\quad(x\ne0),\qquad v(0)=\infty.
+\]</span>
+<p>Here <span class="math" data-tex="\(\log\)">\(\log\)</span> is the natural logarithm. The symbol <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is larger than every real number, and <span class="math" data-tex="\(\infty+a=\infty\)">\(\infty+a=\infty\)</span>, including <span class="math" data-tex="\(a=\infty\)">\(a=\infty\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+v(xy)=v(x)+v(y),\qquad
+v(x+y)\geq\min(v(x),v(y)),\qquad
+v(x)=\infty\Longleftrightarrow x=0.
+\]">\[
+v(xy)=v(x)+v(y),\qquad
+v(x+y)\geq\min(v(x),v(y)),\qquad
+v(x)=\infty\Longleftrightarrow x=0.
+\]</span>
+<p>A function with these properties is an <strong>additive valuation</strong>. Conversely, for an additive valuation and a real number <span class="math" data-tex="\(A&gt;1\)">\(A&gt;1\)</span>, the formula</p>
+<span class="math math-display" data-tex="\[
+|x|=A^{-v(x)},\qquad A^{-\infty}=0,
+\]">\[
+|x|=A^{-v(x)},\qquad A^{-\infty}=0,
+\]</span>
+<p>defines a non-archimedean absolute value. These assertions follow respectively by taking logarithms and exponentiating the defining inequalities. Larger valuations mean smaller absolute values. The function <span class="math" data-tex="\(-\log|x|\)">\(-\log|x|\)</span> for an archimedean absolute value need not satisfy the valuation inequality; for example, its value at <span class="math" data-tex="\(1+1\)">\(1+1\)</span> is negative although its values at both summands are zero.</p>
+<p><strong>Proposition 2.1 (the ring belonging to a valuation).</strong> Let <span class="math" data-tex="\(v\)">\(v\)</span> be an additive valuation on <span class="math" data-tex="\(K\)">\(K\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_v=\{x:v(x)\geq0\},\qquad
+\mathfrak m_v=\{x:v(x)&gt;0\}
+\]">\[
+\mathcal O_v=\{x:v(x)\geq0\},\qquad
+\mathfrak m_v=\{x:v(x)&gt;0\}
+\]</span>
+<p>are a subring of <span class="math" data-tex="\(K\)">\(K\)</span> and its unique maximal ideal. Their unit group and residue field are</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_v^\times=\{x\ne0:v(x)=0\},\qquad
+\kappa(v)=\mathcal O_v/\mathfrak m_v.
+\]">\[
+\mathcal O_v^\times=\{x\ne0:v(x)=0\},\qquad
+\kappa(v)=\mathcal O_v/\mathfrak m_v.
+\]</span>
+<p>The fraction field of <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> is <span class="math" data-tex="\(K\)">\(K\)</span>, and for every nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, either <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span> belongs to <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>.</p>
+<p><em>Proof.</em> The valuation identities give <span class="math" data-tex="\(v(1)=0\)">\(v(1)=0\)</span>, <span class="math" data-tex="\(v(-x)=v(x)\)">\(v(-x)=v(x)\)</span>, and <span class="math" data-tex="\(v(x^{-1})=-v(x)\)">\(v(x^{-1})=-v(x)\)</span>. They prove closure of <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> under addition, subtraction, and multiplication. They also show that <span class="math" data-tex="\(\mathfrak m_v\)">\(\mathfrak m_v\)</span> is an ideal: adding two elements of positive valuation preserves positive valuation, and multiplying one by an element of nonnegative valuation does the same. It is proper because it excludes one.</p>
+<p>An element of value zero has its inverse in <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>. An element of positive value does not. Consequently every element outside <span class="math" data-tex="\(\mathfrak m_v\)">\(\mathfrak m_v\)</span> is a unit, and every proper ideal is contained in <span class="math" data-tex="\(\mathfrak m_v\)">\(\mathfrak m_v\)</span>. This proves maximality and uniqueness, and the quotient is a field. Finally, <span class="math" data-tex="\(v(x)\)">\(v(x)\)</span> and <span class="math" data-tex="\(v(x^{-1})\)">\(v(x^{-1})\)</span> have opposite signs. If <span class="math" data-tex="\(x\notin\mathcal O_v\)">\(x\notin\mathcal O_v\)</span>, write <span class="math" data-tex="\(x=1/x^{-1}\)">\(x=1/x^{-1}\)</span> to see that it is in its fraction field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A subring with this last alternative is a <strong>valuation ring</strong>. This agrees with the ring-theoretic notion in [Stacks, Tag 00I8]. The subgroup</p>
+<span class="math math-display" data-tex="\[
+\Gamma_v=v(K^\times)\subseteq(\mathbb R,+)
+\]">\[
+\Gamma_v=v(K^\times)\subseteq(\mathbb R,+)
+\]</span>
+<p>is its <strong>value group</strong>. Multiplication and inverses prove that it is a subgroup. It is zero for the trivial valuation. More general valuation rings can have ordered value groups that do not embed in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; the present discussion concerns real-valued valuations.</p>
+<p>A nontrivial valuation is <strong>discrete</strong> if <span class="math" data-tex="\(\Gamma_v\)">\(\Gamma_v\)</span> is discrete in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. In that case <span class="math" data-tex="\(\Gamma_v=\gamma\mathbb Z\)">\(\Gamma_v=\gamma\mathbb Z\)</span> for some <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>. To see this, choose <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> such that no nonzero group element has absolute value less than <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Distinct group elements are at least <span class="math" data-tex="\(\eta\)">\(\eta\)</span> apart, so there are only finitely many in any bounded interval. The positive elements therefore have a least element <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Subtracting an integer multiple of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> from any group element leaves a remainder in <span class="math" data-tex="\([0,\gamma)\)">\([0,\gamma)\)</span>, which must be zero. Dividing <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> gives a <strong>normalized discrete valuation</strong>, with value group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>We recall two facts from <em>Discrete valuation rings and Dedekind domains</em>. The valuation ring of a normalized discrete valuation is a <strong>discrete valuation ring</strong>, or <strong>DVR</strong>. A DVR has a generator <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of its maximal ideal, called a <strong>uniformizer</strong>, and each nonzero element of its fraction field has a unique expression</p>
+<span class="math math-display" data-tex="\[
+x=u\pi^m,\qquad u\in\mathcal O_v^\times,\quad m\in\mathbb Z.
+\]">\[
+x=u\pi^m,\qquad u\in\mathcal O_v^\times,\quad m\in\mathbb Z.
+\]</span>
+<p>Conversely this expression defines the normalized valuation of a DVR by <span class="math" data-tex="\(v(x)=m\)">\(v(x)=m\)</span>. The ring characterizations are [Stacks, Tag 00PD]. The nontriviality requirement matters: the trivial valuation has <span class="math" data-tex="\(\mathcal O_v=K\)">\(\mathcal O_v=K\)</span>, <span class="math" data-tex="\(\mathfrak m_v=0\)">\(\mathfrak m_v=0\)</span>, and value group zero. A field is a valuation ring, but is not a DVR.</p>
+<p>Recall that a <strong>Dedekind domain</strong> is a Noetherian integrally closed domain of Krull dimension one; this convention excludes fields. For a Dedekind domain <span class="math" data-tex="\(R\)">\(R\)</span> with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, and a nonzero prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, the localization</p>
+<span class="math math-display" data-tex="\[
+R_{\mathfrak p}=\{a/s:a\in R,\ s\in R\setminus\mathfrak p\}
+\]">\[
+R_{\mathfrak p}=\{a/s:a\in R,\ s\in R\setminus\mathfrak p\}
+\]</span>
+<p>is a DVR [Stacks, Tag 034X]. Its normalized valuation <span class="math" data-tex="\(v_{\mathfrak p}(x)\)">\(v_{\mathfrak p}(x)\)</span> is the exponent of <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> in the factorization of the principal fractional ideal <span class="math" data-tex="\(xR\)">\(xR\)</span> [Milne ANT, Theorem 3.20 and Example 3.26(c)]. We use these results without reproving ideal factorization.</p>
+<p><strong>Example: divisibility at one rational prime.</strong> For a prime <span class="math" data-tex="\(p\)">\(p\)</span> and a nonzero rational number <span class="math" data-tex="\(x=a/b\)">\(x=a/b\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+v_p(x)=v_p(a)-v_p(b),\qquad |x|_p=p^{-v_p(x)},
+\]">\[
+v_p(x)=v_p(a)-v_p(b),\qquad |x|_p=p^{-v_p(x)},
+\]</span>
+<p>where <span class="math" data-tex="\(v_p(a)\)">\(v_p(a)\)</span> counts the factors of <span class="math" data-tex="\(p\)">\(p\)</span> in the nonzero integer <span class="math" data-tex="\(a\)">\(a\)</span>. Set <span class="math" data-tex="\(v_p(0)=\infty\)">\(v_p(0)=\infty\)</span> and <span class="math" data-tex="\(|0|_p=0\)">\(|0|_p=0\)</span>. These definitions are independent of the fraction representing <span class="math" data-tex="\(x\)">\(x\)</span>. Unique factorization proves additivity under products. Writing two fractions over a common denominator proves</p>
+<span class="math math-display" data-tex="\[
+v_p(x+y)\geq\min(v_p(x),v_p(y));
+\]">\[
+v_p(x+y)\geq\min(v_p(x),v_p(y));
+\]</span>
+<p>the sum of two integers divisible by <span class="math" data-tex="\(p^r\)">\(p^r\)</span> remains divisible by <span class="math" data-tex="\(p^r\)">\(p^r\)</span>. Thus <span class="math" data-tex="\(|\cdot|_p\)">\(|\cdot|_p\)</span> is an absolute value. Its valuation ring is <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span>, the rationals representable with denominator prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and its residue field is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. Reduction sends <span class="math" data-tex="\(a/b\)">\(a/b\)</span> to <span class="math" data-tex="\(\overline a\,\overline b^{-1}\)">\(\overline a\,\overline b^{-1}\)</span>; it is onto and its kernel consists of the elements of positive valuation.</p>
+<p>In this metric, <span class="math" data-tex="\(p^j\to0\)">\(p^j\to0\)</span>. At a different prime <span class="math" data-tex="\(q\)">\(q\)</span>, all these terms have value one. For <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, the usual large integer <span class="math" data-tex="\(125\)">\(125\)</span> has absolute value <span class="math" data-tex="\(1/125\)">\(1/125\)</span>.</p>
+<h2 id="3-when-two-absolute-values-describe-one-place">3. When two absolute values describe one place</h2>
+<p>Changing a measurement can preserve all limits. For example, the usual absolute value and its square root give the same open sets on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Two absolute values are <strong>equivalent</strong> when they induce the same topology on the field.</p>
+<p><strong>Proposition 3.1 (equivalence).</strong> For two nontrivial absolute values <span class="math" data-tex="\(|\cdot|_1,|\cdot|_2\)">\(|\cdot|_1,|\cdot|_2\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>, the following are equivalent:</p>
+<ol>
+<li>Their metric topologies agree.</li>
+<li><span class="math" data-tex="\(\{x:|x|_1&lt;1\}=\{x:|x|_2&lt;1\}\)">\(\{x:|x|_1&lt;1\}=\{x:|x|_2&lt;1\}\)</span>.</li>
+<li>There is a real number <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> such that <span class="math" data-tex="\(|x|_1=|x|_2^c\)">\(|x|_1=|x|_2^c\)</span> for every <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>.</li>
+</ol>
+<p>In fact, even the one-direction implication <span class="math" data-tex="\(|x|_1&lt;1\Rightarrow |x|_2&lt;1\)">\(|x|_1&lt;1\Rightarrow |x|_2&lt;1\)</span> implies equivalence.</p>
+<p><em>Proof.</em> For any absolute value, <span class="math" data-tex="\(x^r\to0\)">\(x^r\to0\)</span> as <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> exactly when <span class="math" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span>. Equal topologies therefore give condition 2.</p>
+<p>Suppose now only that the stated one-direction implication holds. Choose <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span> with <span class="math" data-tex="\(|t|_1&gt;1\)">\(|t|_1&gt;1\)</span>. Applying the implication to <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> gives <span class="math" data-tex="\(|t|_2&gt;1\)">\(|t|_2&gt;1\)</span>. For <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, define real numbers</p>
+<span class="math math-display" data-tex="\[
+\alpha=\frac{\log|x|_1}{\log|t|_1},\qquad
+\beta=\frac{\log|x|_2}{\log|t|_2}.
+\]">\[
+\alpha=\frac{\log|x|_1}{\log|t|_1},\qquad
+\beta=\frac{\log|x|_2}{\log|t|_2}.
+\]</span>
+<p>If integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, with <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, satisfy <span class="math" data-tex="\(m/n&gt;\alpha\)">\(m/n&gt;\alpha\)</span>, then <span class="math" data-tex="\(|x^nt^{-m}|_1&lt;1\)">\(|x^nt^{-m}|_1&lt;1\)</span>. The implication yields <span class="math" data-tex="\(|x^nt^{-m}|_2&lt;1\)">\(|x^nt^{-m}|_2&lt;1\)</span>, hence <span class="math" data-tex="\(\beta&lt;m/n\)">\(\beta&lt;m/n\)</span>. If <span class="math" data-tex="\(m/n&lt;\alpha\)">\(m/n&lt;\alpha\)</span>, use <span class="math" data-tex="\(t^mx^{-n}\)">\(t^mx^{-n}\)</span> instead to obtain <span class="math" data-tex="\(m/n&lt;\beta\)">\(m/n&lt;\beta\)</span>. Rational numbers approach <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> from both sides, so <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span>. This holds also when <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is zero or negative. Consequently</p>
+<span class="math math-display" data-tex="\[
+\log|x|_1=c\log|x|_2,
+\qquad c=\frac{\log|t|_1}{\log|t|_2}&gt;0.
+\]">\[
+\log|x|_1=c\log|x|_2,
+\qquad c=\frac{\log|t|_1}{\log|t|_2}&gt;0.
+\]</span>
+<p>This proves condition 3, including at zero. Condition 2 implies the one-direction hypothesis we just used. Finally, under condition 3,</p>
+<span class="math math-display" data-tex="\[
+|x-a|_1&lt;r\Longleftrightarrow |x-a|_2&lt;r^{1/c},
+\]">\[
+|x-a|_1&lt;r\Longleftrightarrow |x-a|_2&lt;r^{1/c},
+\]</span>
+<p>so the balls give the same topology. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>place</strong> is an equivalence class of nontrivial absolute values. An exponent <span class="math" data-tex="\(c\)">\(c\)</span> changes radii but leaves the place unchanged. For non-archimedean values it also leaves the valuation ring and maximal ideal unchanged, and rescales the additive valuation. Being archimedean or non-archimedean is preserved by equivalence, since positive powers preserve boundedness of the integer values. A power of an archimedean absolute value need not itself satisfy the triangle inequality; equivalence here compares functions that are already absolute values.</p>
+<h2 id="4-all-measurements-on-the-rational-numbers">4. All measurements on the rational numbers</h2>
+<p>Write <span class="math" data-tex="\(|\cdot|_\infty\)">\(|\cdot|_\infty\)</span> for the usual real absolute value on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Alongside it are the absolute values <span class="math" data-tex="\(|\cdot|_p\)">\(|\cdot|_p\)</span> constructed in Section 2.</p>
+<p><strong>Theorem 4.1 (Ostrowski).</strong> Every nontrivial absolute value on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is equivalent to exactly one of</p>
+<span class="math math-display" data-tex="\[
+|\cdot|_\infty,\quad |\cdot|_2,\quad |\cdot|_3,\quad |\cdot|_5,\quad\ldots.
+\]">\[
+|\cdot|_\infty,\quad |\cdot|_2,\quad |\cdot|_3,\quad |\cdot|_5,\quad\ldots.
+\]</span>
+<p><em>Proof.</em> First suppose <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is non-archimedean. Every integer has value at most one. If all nonzero integers had value one, multiplicativity would make every nonzero rational have value one. Thus some integer has value less than one. Factoring that integer shows that there is a prime <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(|p|&lt;1\)">\(|p|&lt;1\)</span>.</p>
+<p>There cannot be two such primes. For distinct primes <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, Bézout's identity gives integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with <span class="math" data-tex="\(ap+bq=1\)">\(ap+bq=1\)</span>. If both prime values were less than one, then</p>
+<span class="math math-display" data-tex="\[
+1=|ap+bq|\leq\max(|a||p|,|b||q|)&lt;1,
+\]">\[
+1=|ap+bq|\leq\max(|a||p|,|b||q|)&lt;1,
+\]</span>
+<p>since <span class="math" data-tex="\(|a|,|b|\leq1\)">\(|a|,|b|\leq1\)</span>. This is impossible. All primes other than <span class="math" data-tex="\(p\)">\(p\)</span> therefore have value one. The prime factorization of a nonzero rational number now gives</p>
+<span class="math math-display" data-tex="\[
+|x|=|p|^{v_p(x)}=|x|_p^c,
+\qquad c=-\frac{\log|p|}{\log p}&gt;0.
+\]">\[
+|x|=|p|^{v_p(x)}=|x|_p^c,
+\qquad c=-\frac{\log|p|}{\log p}&gt;0.
+\]</span>
+<p>Now suppose <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is archimedean. We need an estimate that does not assume in advance that every integer greater than one has value greater than one. Fix integers <span class="math" data-tex="\(m,b\geq2\)">\(m,b\geq2\)</span>, and set <span class="math" data-tex="\(A_b=\max(1,|b|)\)">\(A_b=\max(1,|b|)\)</span>. Expand <span class="math" data-tex="\(m^r\)">\(m^r\)</span> in base <span class="math" data-tex="\(b\)">\(b\)</span>:</p>
+<span class="math math-display" data-tex="\[
+m^r=d_0+d_1b+\cdots+d_\ell b^\ell,
+\qquad 0\leq d_j&lt;b,
+\qquad \ell\leq\frac{r\log m}{\log b}.
+\]">\[
+m^r=d_0+d_1b+\cdots+d_\ell b^\ell,
+\qquad 0\leq d_j&lt;b,
+\qquad \ell\leq\frac{r\log m}{\log b}.
+\]</span>
+<p>The ordinary triangle inequality bounds <span class="math" data-tex="\(|d_j|\)">\(|d_j|\)</span> by <span class="math" data-tex="\(d_j\leq b\)">\(d_j\leq b\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|m|^r\leq b(\ell+1)A_b^\ell
+\leq b\left(1+\frac{r\log m}{\log b}\right)
+A_b^{r\log m/\log b}.
+\]">\[
+|m|^r\leq b(\ell+1)A_b^\ell
+\leq b\left(1+\frac{r\log m}{\log b}\right)
+A_b^{r\log m/\log b}.
+\]</span>
+<p>Taking <span class="math" data-tex="\(r\)">\(r\)</span>-th roots and letting <span class="math" data-tex="\(r\to\infty\)">\(r\to\infty\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+|m|\leq\max(1,|b|)^{\log m/\log b}. \tag{4.1}
+\]">\[
+|m|\leq\max(1,|b|)^{\log m/\log b}. \tag{4.1}
+\]</span>
+<p>Archimedeanness supplies an integer <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span> with <span class="math" data-tex="\(|b|&gt;1\)">\(|b|&gt;1\)</span>. If some integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> had <span class="math" data-tex="\(|m|\leq1\)">\(|m|\leq1\)</span>, applying (4.1) with the roles of <span class="math" data-tex="\(m,b\)">\(m,b\)</span> reversed would give <span class="math" data-tex="\(|b|\leq1\)">\(|b|\leq1\)</span>, a contradiction. Thus <span class="math" data-tex="\(|m|&gt;1\)">\(|m|&gt;1\)</span> for every <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>.</p>
+<p>We can now drop the maximum in (4.1). Applying the estimate in both directions shows</p>
+<span class="math math-display" data-tex="\[
+\frac{\log|m|}{\log m}=\frac{\log|b|}{\log b}=\alpha&gt;0
+\]">\[
+\frac{\log|m|}{\log m}=\frac{\log|b|}{\log b}=\alpha&gt;0
+\]</span>
+<p>for every <span class="math" data-tex="\(m,b\geq2\)">\(m,b\geq2\)</span>. Multiplicativity, inverses, and <span class="math" data-tex="\(|-1|=1\)">\(|-1|=1\)</span> extend <span class="math" data-tex="\(|m|=m^\alpha\)">\(|m|=m^\alpha\)</span> to</p>
+<span class="math math-display" data-tex="\[
+|x|=|x|_\infty^\alpha\qquad(x\in\mathbb Q).
+\]">\[
+|x|=|x|_\infty^\alpha\qquad(x\in\mathbb Q).
+\]</span>
+<p>The original triangle inequality at <span class="math" data-tex="\(1+1\)">\(1+1\)</span> also gives <span class="math" data-tex="\(2^\alpha\leq2\)">\(2^\alpha\leq2\)</span>, so <span class="math" data-tex="\(0&lt;\alpha\leq1\)">\(0&lt;\alpha\leq1\)</span>.</p>
+<p>For uniqueness, the ordinary absolute value is archimedean, whereas every <span class="math" data-tex="\(p\)">\(p\)</span>-adic one is non-archimedean. Distinct primes give distinct places: <span class="math" data-tex="\(|p|_p&lt;1\)">\(|p|_p&lt;1\)</span> but <span class="math" data-tex="\(|p|_q=1\)">\(|p|_q=1\)</span> for <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span>, contradicting condition 2 of Proposition 3.1 if they were equivalent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Milne ANT, Theorem 7.12].</p>
+<p>The trivial absolute value is excluded from this list of places. The archimedean branch also explains the restriction on exponents: positive powers describe the topology, but powers greater than one of the usual absolute value fail the defining triangle inequality.</p>
+<h2 id="5-approximating-several-targets-at-once">5. Approximating several targets at once</h2>
+<p>For two inequivalent absolute values, a sequence can tend to zero in one metric and grow in the other. The next construction turns that separation into simultaneous approximation. It uses only the ordinary triangle inequality, so it includes archimedean places.</p>
+<p><strong>Lemma 5.1 (separating one place from the others).</strong> For pairwise inequivalent nontrivial absolute values <span class="math" data-tex="\(|\cdot|_1,\ldots,|\cdot|_n\)">\(|\cdot|_1,\ldots,|\cdot|_n\)</span>, there exists <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|z|_1&gt;1,\qquad |z|_i&lt;1\quad(2\leq i\leq n).
+\]">\[
+|z|_1&gt;1,\qquad |z|_i&lt;1\quad(2\leq i\leq n).
+\]</span>
+<p><em>Proof.</em> For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, use nontriviality. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, the last assertion of Proposition 3.1, applied in both directions, supplies nonzero elements <span class="math" data-tex="\(u,w\)">\(u,w\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|u|_1&lt;1,\quad |u|_2\geq1,
+\qquad |w|_2&lt;1,\quad |w|_1\geq1.
+\]">\[
+|u|_1&lt;1,\quad |u|_2\geq1,
+\qquad |w|_2&lt;1,\quad |w|_1\geq1.
+\]</span>
+<p>Then <span class="math" data-tex="\(z=w/u\)">\(z=w/u\)</span> has the required strict inequalities.</p>
+<p>Inductively choose <span class="math" data-tex="\(b\)">\(b\)</span> separating place 1 from places <span class="math" data-tex="\(2,\ldots,n-1\)">\(2,\ldots,n-1\)</span>, and <span class="math" data-tex="\(c\)">\(c\)</span> separating place 1 from place <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(|b|_n&lt;1\)">\(|b|_n&lt;1\)</span>, use <span class="math" data-tex="\(b\)">\(b\)</span>. If <span class="math" data-tex="\(|b|_n=1\)">\(|b|_n=1\)</span>, use <span class="math" data-tex="\(cb^r\)">\(cb^r\)</span> for sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span>: its value grows at place 1, tends to zero at places <span class="math" data-tex="\(2,\ldots,n-1\)">\(2,\ldots,n-1\)</span>, and stays <span class="math" data-tex="\(|c|_n&lt;1\)">\(|c|_n&lt;1\)</span> at place <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>If <span class="math" data-tex="\(|b|_n&gt;1\)">\(|b|_n&gt;1\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+c\frac{b^r}{1+b^r}.
+\]">\[
+c\frac{b^r}{1+b^r}.
+\]</span>
+<p>The denominator is never zero because <span class="math" data-tex="\(|b|_1&gt;1\)">\(|b|_1&gt;1\)</span>. In any absolute value, the reverse triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+|1+b^r|\geq\big||b|^r-1\big|.
+\]">\[
+|1+b^r|\geq\big||b|^r-1\big|.
+\]</span>
+<p>If <span class="math" data-tex="\(|b|&gt;1\)">\(|b|&gt;1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{b^r}{1+b^r}-1\right|
+\leq\frac1{|b|^r-1}\longrightarrow0.
+\]">\[
+\left|\frac{b^r}{1+b^r}-1\right|
+\leq\frac1{|b|^r-1}\longrightarrow0.
+\]</span>
+<p>If <span class="math" data-tex="\(|b|&lt;1\)">\(|b|&lt;1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\left|\frac{b^r}{1+b^r}\right|
+\leq\frac{|b|^r}{1-|b|^r}\longrightarrow0.
+\]">\[
+\left|\frac{b^r}{1+b^r}\right|
+\leq\frac{|b|^r}{1-|b|^r}\longrightarrow0.
+\]</span>
+<p>Consequently the proposed element tends to <span class="math" data-tex="\(c\)">\(c\)</span> at places 1 and <span class="math" data-tex="\(n\)">\(n\)</span>, and to zero at all intermediate places. Its required strict inequalities hold for large <span class="math" data-tex="\(r\)">\(r\)</span>. Here we use continuity of absolute value, which follows from <span class="math" data-tex="\(\big||x|-|y|\big|\leq|x-y|\)">\(\big||x|-|y|\big|\leq|x-y|\)</span>. This completes the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (weak approximation; Artin–Whaples).</strong> Let <span class="math" data-tex="\(|\cdot|_1,\ldots,|\cdot|_n\)">\(|\cdot|_1,\ldots,|\cdot|_n\)</span> be pairwise inequivalent nontrivial absolute values on a field <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. For targets <span class="math" data-tex="\(a_1,\ldots,a_n\in K\)">\(a_1,\ldots,a_n\in K\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there exists <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|x-a_i|_i&lt;\varepsilon\qquad(1\leq i\leq n).
+\]">\[
+|x-a_i|_i&lt;\varepsilon\qquad(1\leq i\leq n).
+\]</span>
+<p><em>Proof.</em> For each <span class="math" data-tex="\(j\)">\(j\)</span>, reorder the places in Lemma 5.1 to obtain <span class="math" data-tex="\(z_j\)">\(z_j\)</span> with <span class="math" data-tex="\(|z_j|_j&gt;1\)">\(|z_j|_j&gt;1\)</span> and <span class="math" data-tex="\(|z_j|_i&lt;1\)">\(|z_j|_i&lt;1\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+e_{j,r}=\frac{z_j^r}{1+z_j^r}.
+\]">\[
+e_{j,r}=\frac{z_j^r}{1+z_j^r}.
+\]</span>
+<p>The denominators are nonzero, as their vanishing would give <span class="math" data-tex="\(|z_j|_j^r=1\)">\(|z_j|_j^r=1\)</span>. The estimates in the lemma prove</p>
+<span class="math math-display" data-tex="\[
+e_{j,r}\longrightarrow
+\begin{cases}1&amp;\text{at place }j,\\0&amp;\text{at every other listed place.}\end{cases}
+\]">\[
+e_{j,r}\longrightarrow
+\begin{cases}1&amp;\text{at place }j,\\0&amp;\text{at every other listed place.}\end{cases}
+\]</span>
+<p>Let <span class="math" data-tex="\(M=\max_{i,j}|a_j|_i\)">\(M=\max_{i,j}|a_j|_i\)</span>, a finite nonnegative real number, and choose</p>
+<span class="math math-display" data-tex="\[
+\delta=\frac{\varepsilon}{2n(1+M)}.
+\]">\[
+\delta=\frac{\varepsilon}{2n(1+M)}.
+\]</span>
+<p>There are finitely many convergence conditions, so one sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span> makes <span class="math" data-tex="\(|e_{i,r}-1|_i&lt;\delta\)">\(|e_{i,r}-1|_i&lt;\delta\)</span> and <span class="math" data-tex="\(|e_{j,r}|_i&lt;\delta\)">\(|e_{j,r}|_i&lt;\delta\)</span> for all <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Put <span class="math" data-tex="\(x=\sum_j a_je_{j,r}\)">\(x=\sum_j a_je_{j,r}\)</span>. At place <span class="math" data-tex="\(i\)">\(i\)</span>, the ordinary triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|x-a_i|_i
+&amp;\leq |a_i|_i|e_{i,r}-1|_i
++\sum_{j\ne i}|a_j|_i|e_{j,r}|_i\\
+&amp;\leq nM\delta&lt;\varepsilon.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|x-a_i|_i
+&amp;\leq |a_i|_i|e_{i,r}-1|_i
++\sum_{j\ne i}|a_j|_i|e_{j,r}|_i\\
+&amp;\leq nM\delta&lt;\varepsilon.
+\end{aligned}
+\]</span>
+<p>If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, all targets are zero and <span class="math" data-tex="\(x=0\)">\(x=0\)</span> works as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Milne ANT, Theorem 7.20]; the theorem is due to Artin and Whaples.</p>
+<p>Equivalently, the diagonal map <span class="math" data-tex="\(K\to K^n\)">\(K\to K^n\)</span> has dense image when the factors carry the respective metric topologies: a basic product neighborhood prescribes finitely many target balls, and one can use the smallest of their radii. This statement requires no completion.</p>
+<p>The inequivalence hypothesis has content. For two identical absolute values, approximating the targets 0 and 1 with both errors less than 1/2 would give <span class="math" data-tex="\(1\leq|x|+|1-x|&lt;1\)">\(1\leq|x|+|1-x|&lt;1\)</span>.</p>
+<p><strong>Worked example.</strong> The rational number <span class="math" data-tex="\(x=272/299\)">\(x=272/299\)</span> is within <span class="math" data-tex="\(1/10\)">\(1/10\)</span> of the target 1 in the real metric, the target 0 in the 2-adic metric, and the target 1 in the 3-adic metric:</p>
+<span class="math math-display" data-tex="\[
+|x-1|_\infty=\frac{27}{299}&lt;\frac1{10},\qquad
+|x|_2=\frac1{16}&lt;\frac1{10},\qquad
+|x-1|_3=\frac1{27}&lt;\frac1{10}.
+\]">\[
+|x-1|_\infty=\frac{27}{299}&lt;\frac1{10},\qquad
+|x|_2=\frac1{16}&lt;\frac1{10},\qquad
+|x-1|_3=\frac1{27}&lt;\frac1{10}.
+\]</span>
+<p>For the second equality, <span class="math" data-tex="\(272=16\cdot17\)">\(272=16\cdot17\)</span> and 299 is odd. For the third, <span class="math" data-tex="\(x-1=-27/299\)">\(x-1=-27/299\)</span> and 299 is prime to 3. An integer cannot meet these three requirements: the real condition forces it to be 1, whose 2-adic distance from zero is one. The theorem allows the rational denominator that makes all three conditions compatible.</p>
+<h2 id="6-prime-ideals-as-non-archimedean-places">6. Prime ideals as non-archimedean places</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, that is, a finite extension of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and let <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> be its ring of algebraic integers. Recall that <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> is a Dedekind domain [<em>Number fields</em>, lesson 3, Proposition 3.1]. It is free of rank <span class="math" data-tex="\([K:\mathbb Q]\)">\([K:\mathbb Q]\)</span> over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and its fraction field is <span class="math" data-tex="\(K\)">\(K\)</span> [Milne ANT, Proposition 2.29 and its proof].</p>
+<p>For a nonzero prime ideal <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+N(\mathfrak p)=\#(\mathcal O_K/\mathfrak p).
+\]">\[
+N(\mathfrak p)=\#(\mathcal O_K/\mathfrak p).
+\]</span>
+<p>This is a finite integer greater than one. Indeed, choose <span class="math" data-tex="\(0\ne a\in\mathfrak p\)">\(0\ne a\in\mathfrak p\)</span>. A monic integer polynomial satisfied by <span class="math" data-tex="\(a\)">\(a\)</span> can be chosen with nonzero constant term, by removing powers of the variable if needed. Its equation shows that this constant term belongs to <span class="math" data-tex="\(\mathfrak p\cap\mathbb Z\)">\(\mathfrak p\cap\mathbb Z\)</span>. Thus <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> contains a nonzero integer <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(\mathcal O_K/\mathfrak p\)">\(\mathcal O_K/\mathfrak p\)</span> is a quotient of the finite group <span class="math" data-tex="\(\mathcal O_K/m\mathcal O_K\)">\(\mathcal O_K/m\mathcal O_K\)</span>. It is a domain because <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is prime. A finite domain is a field: multiplication by a nonzero element is injective and hence surjective. This also verifies the meaning of its cardinality.</p>
+<p><strong>Proposition 6.1 (prime ideals and places).</strong> The non-archimedean places of <span class="math" data-tex="\(K\)">\(K\)</span> correspond bijectively to the nonzero prime ideals of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. The place belonging to <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> has representative</p>
+<span class="math math-display" data-tex="\[
+|x|_{\mathfrak p}=N(\mathfrak p)^{-v_{\mathfrak p}(x)}.
+\]">\[
+|x|_{\mathfrak p}=N(\mathfrak p)^{-v_{\mathfrak p}(x)}.
+\]</span>
+<p>Its valuation ring is <span class="math" data-tex="\((\mathcal O_K)_{\mathfrak p}\)">\((\mathcal O_K)_{\mathfrak p}\)</span>, and its residue field is <span class="math" data-tex="\(\mathcal O_K/\mathfrak p\)">\(\mathcal O_K/\mathfrak p\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> be a nontrivial non-archimedean absolute value on <span class="math" data-tex="\(K\)">\(K\)</span>. Every integer has value at most one. If <span class="math" data-tex="\(a\in\mathcal O_K\)">\(a\in\mathcal O_K\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+a^d+c_{d-1}a^{d-1}+\cdots+c_0=0,\qquad c_j\in\mathbb Z,
+\]">\[
+a^d+c_{d-1}a^{d-1}+\cdots+c_0=0,\qquad c_j\in\mathbb Z,
+\]</span>
+<p>and <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>, its leading term has value <span class="math" data-tex="\(|a|^d\)">\(|a|^d\)</span>, strictly larger than every other term. The observation following Proposition 1.1 rules this out. Therefore <span class="math" data-tex="\(|a|\leq1\)">\(|a|\leq1\)</span> on <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\mathfrak p=\{a\in\mathcal O_K:|a|&lt;1\}.
+\]">\[
+\mathfrak p=\{a\in\mathcal O_K:|a|&lt;1\}.
+\]</span>
+<p>The ultrametric inequality and the bound on <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> make this a proper ideal. If <span class="math" data-tex="\(ab\in\mathfrak p\)">\(ab\in\mathfrak p\)</span> and <span class="math" data-tex="\(a,b\in\mathcal O_K\)">\(a,b\in\mathcal O_K\)</span>, then <span class="math" data-tex="\(|a||b|&lt;1\)">\(|a||b|&lt;1\)</span> with both factors at most one; at least one is less than one. Thus <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is prime. It is nonzero: otherwise every nonzero element of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> would have value one, and the fraction-field property would make the absolute value trivial on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Put <span class="math" data-tex="\(R=(\mathcal O_K)_{\mathfrak p}\)">\(R=(\mathcal O_K)_{\mathfrak p}\)</span>. Its elements have value at most one, since a denominator outside <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> has value one. This ring is a DVR by the recalled Dedekind-domain theorem. Choose a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Since <span class="math" data-tex="\(\pi\in\mathfrak pR\)">\(\pi\in\mathfrak pR\)</span>, it can be written <span class="math" data-tex="\(a/s\)">\(a/s\)</span> with <span class="math" data-tex="\(a\in\mathfrak p\)">\(a\in\mathfrak p\)</span>, <span class="math" data-tex="\(s\notin\mathfrak p\)">\(s\notin\mathfrak p\)</span>, so <span class="math" data-tex="\(0&lt;|\pi|&lt;1\)">\(0&lt;|\pi|&lt;1\)</span>. For a unit <span class="math" data-tex="\(u\in R^\times\)">\(u\in R^\times\)</span>, both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> have value at most one; hence <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span>.</p>
+<p>The DVR expression <span class="math" data-tex="\(x=u\pi^{v_{\mathfrak p}(x)}\)">\(x=u\pi^{v_{\mathfrak p}(x)}\)</span> consequently gives</p>
+<span class="math math-display" data-tex="\[
+|x|=|\pi|^{v_{\mathfrak p}(x)}
+=|x|_{\mathfrak p}^{\,c},
+\qquad c=-\frac{\log|\pi|}{\log N(\mathfrak p)}&gt;0.
+\]">\[
+|x|=|\pi|^{v_{\mathfrak p}(x)}
+=|x|_{\mathfrak p}^{\,c},
+\qquad c=-\frac{\log|\pi|}{\log N(\mathfrak p)}&gt;0.
+\]</span>
+<p>It also proves that <span class="math" data-tex="\(|x|\leq1\)">\(|x|\leq1\)</span> precisely when <span class="math" data-tex="\(x\in R\)">\(x\in R\)</span>, so the entire valuation ring, not just its intersection with <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, has been identified.</p>
+<p>Conversely, the discrete valuation <span class="math" data-tex="\(v_{\mathfrak p}\)">\(v_{\mathfrak p}\)</span> defines the displayed nontrivial absolute value. For <span class="math" data-tex="\(a\in\mathcal O_K\)">\(a\in\mathcal O_K\)</span>, positive valuation means <span class="math" data-tex="\(a/1\in\mathfrak pR\)">\(a/1\in\mathfrak pR\)</span>, equivalently <span class="math" data-tex="\(sa\in\mathfrak p\)">\(sa\in\mathfrak p\)</span> for some <span class="math" data-tex="\(s\notin\mathfrak p\)">\(s\notin\mathfrak p\)</span>. Primality makes this equivalent to <span class="math" data-tex="\(a\in\mathfrak p\)">\(a\in\mathfrak p\)</span>. Thus its elements of value less than one in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> are exactly <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Equivalent absolute values have the same such set, so different prime ideals give different places. The two constructions are inverse. Finally, reduction <span class="math" data-tex="\(R\to\mathcal O_K/\mathfrak p\)">\(R\to\mathcal O_K/\mathfrak p\)</span>, sending <span class="math" data-tex="\(a/s\)">\(a/s\)</span> to <span class="math" data-tex="\(\overline a/\overline s\)">\(\overline a/\overline s\)</span>, has kernel <span class="math" data-tex="\(\mathfrak pR\)">\(\mathfrak pR\)</span> and is onto. This proves the residue-field assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normalization here uses the size of the residue field. For <span class="math" data-tex="\(K=\mathbb Q\)">\(K=\mathbb Q\)</span>, it gives <span class="math" data-tex="\(N((p))=p\)">\(N((p))=p\)</span>, and recovers the earlier <span class="math" data-tex="\(p\)">\(p\)</span>-adic value. We have classified the non-archimedean places of number fields without assuming an extension theorem for absolute values. The classification of their archimedean places and the product formula for general number fields are developed later in <em>Places of number fields in extensions and the product formula</em>.</p>
+<h2 id="7-a-balance-across-all-rational-places">7. A balance across all rational places</h2>
+<p><strong>Proposition 7.1 (the product formula for <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>).</strong> With <span class="math" data-tex="\(|p|_p=1/p\)">\(|p|_p=1/p\)</span> and the usual <span class="math" data-tex="\(|\cdot|_\infty\)">\(|\cdot|_\infty\)</span>, every <span class="math" data-tex="\(x\in\mathbb Q^\times\)">\(x\in\mathbb Q^\times\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\prod_v|x|_v=|x|_\infty\prod_{p\text{ prime}}|x|_p=1.
+\]">\[
+\prod_v|x|_v=|x|_\infty\prod_{p\text{ prime}}|x|_p=1.
+\]</span>
+<p>Only finitely many factors differ from one.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(x=\pm\prod_p p^{e_p}\)">\(x=\pm\prod_p p^{e_p}\)</span>, with integer exponents <span class="math" data-tex="\(e_p\)">\(e_p\)</span>, almost all zero. Then</p>
+<span class="math math-display" data-tex="\[
+|x|_\infty=\prod_p p^{e_p},\qquad |x|_p=p^{-e_p}.
+\]">\[
+|x|_\infty=\prod_p p^{e_p},\qquad |x|_p=p^{-e_p}.
+\]</span>
+<p>The finite products cancel. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Worked example.</strong> Since <span class="math" data-tex="\(360/7=2^3 3^2 5\,7^{-1}\)">\(360/7=2^3 3^2 5\,7^{-1}\)</span>, the values are</p>
+<table>
+<thead>
+<tr>
+<th>Place</th>
+<th style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\infty\)">\(\infty\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(\lvert360/7\rvert_v\)">\(\lvert360/7\rvert_v\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/8\)">\(1/8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/9\)">\(1/9\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/5\)">\(1/5\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(360/7\)">\(360/7\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>All other values are one. Their product is <span class="math" data-tex="\((1/8)(1/9)(1/5)7(360/7)=1\)">\((1/8)(1/9)(1/5)7(360/7)=1\)</span>. A prime in the denominator gives a negative valuation and an absolute value greater than one.</p>
+<p>The chosen representatives of the places are essential. Replacing only <span class="math" data-tex="\(|\cdot|_\infty\)">\(|\cdot|_\infty\)</span> by its square root would make the product at <span class="math" data-tex="\(x=2\)">\(x=2\)</span> equal to <span class="math" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span>. Equivalence alone does not fix a product formula. Taking logarithms of the correctly normalized formula gives</p>
+<span class="math math-display" data-tex="\[
+\log|x|_\infty=\sum_p v_p(x)\log p.
+\]">\[
+\log|x|_\infty=\sum_p v_p(x)\log p.
+\]</span>
+<p>This is the identity used to interpret a principal divisor as having degree zero in <em>The projective line over <span class="math" data-tex="\(\mathbb F_1\)">\(\mathbb F_1\)</span> and the ABC conjecture</em>.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>Exercise 1 (easy: powers of a measurement).</strong> Prove that <span class="math" data-tex="\(|\cdot|^c\)">\(|\cdot|^c\)</span> is an absolute value for <span class="math" data-tex="\(0&lt;c\leq1\)">\(0&lt;c\leq1\)</span>. If <span class="math" data-tex="\(|\cdot|\)">\(|\cdot|\)</span> is non-archimedean, prove this for every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</p>
+<p><strong>Exercise 2 (easy: a balance of prime factors).</strong> Verify the product formula for <span class="math" data-tex="\(x=3/10\)">\(x=3/10\)</span>, giving every factor that differs from one.</p>
+<p><strong>Exercise 3 (medium: algebraic constant fields).</strong> Show that every absolute value on an algebraic extension of a finite field is trivial. The extension need not be finite.</p>
+<p><strong>Exercise 4 (medium: the rational function field).</strong> Classify the absolute values of <span class="math" data-tex="\(\mathbb F_q(t)\)">\(\mathbb F_q(t)\)</span> that are trivial on <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, both as actual functions and up to equivalence. Include the trivial absolute value. Describe the valuation at infinity and normalized representatives of all the nontrivial places.</p>
+<p><strong>Exercise 5 (hard: constructing simultaneous approximations).</strong> Prove weak approximation for pairwise inequivalent nontrivial absolute values without taking Theorem 5.2 as a black box. Start from the one-direction criterion in Proposition 3.1, construct an element large at one place and small at the others, and convert it into approximations to 1 and 0. Give an explicit error bound for the final sum.</p>
+<h2 id="9-complete-solutions">9. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Definiteness and multiplicativity survive every positive power. For <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> and <span class="math" data-tex="\(0&lt;c\leq1\)">\(0&lt;c\leq1\)</span>, we claim <span class="math" data-tex="\((a+b)^c\leq a^c+b^c\)">\((a+b)^c\leq a^c+b^c\)</span>. If <span class="math" data-tex="\(a+b&gt;0\)">\(a+b&gt;0\)</span>, put <span class="math" data-tex="\(s=a/(a+b)\)">\(s=a/(a+b)\)</span>. Since <span class="math" data-tex="\(s^c\geq s\)">\(s^c\geq s\)</span> and <span class="math" data-tex="\((1-s)^c\geq1-s\)">\((1-s)^c\geq1-s\)</span>, multiplying their sum by <span class="math" data-tex="\((a+b)^c\)">\((a+b)^c\)</span> proves the claim. If <span class="math" data-tex="\(a+b=0\)">\(a+b=0\)</span>, it is immediate. Thus</p>
+<span class="math math-display" data-tex="\[
+|x+y|^c\leq(|x|+|y|)^c\leq|x|^c+|y|^c.
+\]">\[
+|x+y|^c\leq(|x|+|y|)^c\leq|x|^c+|y|^c.
+\]</span>
+<p>For an ultrametric value and any <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, monotonicity gives directly</p>
+<span class="math math-display" data-tex="\[
+|x+y|^c\leq\max(|x|^c,|y|^c),
+\]">\[
+|x+y|^c\leq\max(|x|^c,|y|^c),
+\]</span>
+<p>which implies the ordinary triangle inequality. The square of the real absolute value from Section 1 shows why the exponent restriction is needed in the general assertion.</p>
+<p><strong>Solution 2.</strong> The nonzero valuations are <span class="math" data-tex="\(v_2(x)=-1\)">\(v_2(x)=-1\)</span>, <span class="math" data-tex="\(v_3(x)=1\)">\(v_3(x)=1\)</span>, and <span class="math" data-tex="\(v_5(x)=-1\)">\(v_5(x)=-1\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|x|_2=2,\qquad |x|_3=1/3,\qquad |x|_5=5,
+\qquad |x|_\infty=3/10.
+\]">\[
+|x|_2=2,\qquad |x|_3=1/3,\qquad |x|_5=5,
+\qquad |x|_\infty=3/10.
+\]</span>
+<p>All other finite-place values are one, and <span class="math" data-tex="\(2(1/3)5(3/10)=1\)">\(2(1/3)5(3/10)=1\)</span>.</p>
+<p><strong>Solution 3.</strong> Let <span class="math" data-tex="\(L/\mathbb F_q\)">\(L/\mathbb F_q\)</span> be algebraic and <span class="math" data-tex="\(a\in L^\times\)">\(a\in L^\times\)</span>. The field <span class="math" data-tex="\(\mathbb F_q(a)\)">\(\mathbb F_q(a)\)</span> has finite degree <span class="math" data-tex="\(d\)">\(d\)</span>, and hence <span class="math" data-tex="\(q^d\)">\(q^d\)</span> elements: coordinates in any field basis have <span class="math" data-tex="\(q\)">\(q\)</span> choices each. Powers of <span class="math" data-tex="\(a\)">\(a\)</span> therefore repeat, so <span class="math" data-tex="\(a^m=1\)">\(a^m=1\)</span> for some <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. Multiplicativity gives <span class="math" data-tex="\(|a|^m=1\)">\(|a|^m=1\)</span>, and <span class="math" data-tex="\(|a|=1\)">\(|a|=1\)</span>. Every element is treated in its own finite subextension; no bound on <span class="math" data-tex="\([L:\mathbb F_q]\)">\([L:\mathbb F_q]\)</span> is needed. Thus the value is trivial on all of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Solution 4.</strong> The constant field is finite, so every absolute value on it is automatically trivial. Positive characteristic and Proposition 1.1 make every absolute value on <span class="math" data-tex="\(\mathbb F_q(t)\)">\(\mathbb F_q(t)\)</span> ultrametric. Consider a nontrivial one. In the formulas below <span class="math" data-tex="\(f,g\)">\(f,g\)</span> are nonzero polynomials; the absolute values take zero to zero, and the additive valuations take zero to <span class="math" data-tex="\(\infty\)">\(\infty\)</span>.</p>
+<p>If <span class="math" data-tex="\(|t|&gt;1\)">\(|t|&gt;1\)</span>, the nonzero terms of a polynomial <span class="math" data-tex="\(f(t)=\sum a_it^i\)">\(f(t)=\sum a_it^i\)</span> have distinct absolute values <span class="math" data-tex="\(|t|^i\)">\(|t|^i\)</span>. The leading term is uniquely largest. The isosceles principle therefore gives</p>
+<span class="math math-display" data-tex="\[
+|f|=|t|^{\deg f},\qquad
+|f/g|=B^{\deg f-\deg g},\quad B=|t|&gt;1.
+\]">\[
+|f|=|t|^{\deg f},\qquad
+|f/g|=B^{\deg f-\deg g},\quad B=|t|&gt;1.
+\]</span>
+<p>This is the place at infinity, whose normalized additive valuation is</p>
+<span class="math math-display" data-tex="\[
+v_\infty(f/g)=\deg g-\deg f.
+\]">\[
+v_\infty(f/g)=\deg g-\deg f.
+\]</span>
+<p>It measures order of vanishing at zero after substituting <span class="math" data-tex="\(t=1/s\)">\(t=1/s\)</span>: write</p>
+<span class="math math-display" data-tex="\[
+\frac{f(1/s)}{g(1/s)}
+=s^{\deg g-\deg f}
+\frac{s^{\deg f}f(1/s)}{s^{\deg g}g(1/s)}.
+\]">\[
+\frac{f(1/s)}{g(1/s)}
+=s^{\deg g-\deg f}
+\frac{s^{\deg f}f(1/s)}{s^{\deg g}g(1/s)}.
+\]</span>
+<p>The last numerator and denominator have nonzero constant terms. In particular <span class="math" data-tex="\(v_\infty(t)=-1\)">\(v_\infty(t)=-1\)</span>.</p>
+<p>If <span class="math" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>, every polynomial has value at most one. The set</p>
+<span class="math math-display" data-tex="\[
+I=\{f\in\mathbb F_q[t]:|f|&lt;1\}
+\]">\[
+I=\{f\in\mathbb F_q[t]:|f|&lt;1\}
+\]</span>
+<p>is a proper prime ideal by the same multiplication and addition arguments as in Proposition 6.1. It is nonzero, for otherwise all nonzero polynomials, and hence all nonzero fractions, would have value one. Polynomial division makes <span class="math" data-tex="\(\mathbb F_q[t]\)">\(\mathbb F_q[t]\)</span> a principal ideal domain, so <span class="math" data-tex="\(I=(P)\)">\(I=(P)\)</span> for a unique monic irreducible polynomial <span class="math" data-tex="\(P\)">\(P\)</span>. Explicitly, a monic element of least positive degree generates <span class="math" data-tex="\(I\)">\(I\)</span> by division; primality forces it to be irreducible. Put <span class="math" data-tex="\(A=|P|\)">\(A=|P|\)</span>, so <span class="math" data-tex="\(0&lt;A&lt;1\)">\(0&lt;A&lt;1\)</span>. If <span class="math" data-tex="\(f=P^r f_0\)">\(f=P^r f_0\)</span> with <span class="math" data-tex="\(P\nmid f_0\)">\(P\nmid f_0\)</span>, then <span class="math" data-tex="\(f_0\notin I\)">\(f_0\notin I\)</span>, and <span class="math" data-tex="\(|f_0|=1\)">\(|f_0|=1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+|f/g|=A^{\operatorname{ord}_P(f)-\operatorname{ord}_P(g)}.
+\]">\[
+|f/g|=A^{\operatorname{ord}_P(f)-\operatorname{ord}_P(g)}.
+\]</span>
+<p>Conversely, each such formula, and each infinity formula with <span class="math" data-tex="\(B&gt;1\)">\(B&gt;1\)</span>, is an absolute value. Products add orders or degrees. For sums, divisibility gives the valuation inequality at <span class="math" data-tex="\(P\)">\(P\)</span>; at infinity, a common denominator and <span class="math" data-tex="\(\deg(f+h)\leq\max(\deg f,\deg h)\)">\(\deg(f+h)\leq\max(\deg f,\deg h)\)</span> give it. These checks also show independence of the presentation as a fraction.</p>
+<p>Distinct polynomials give distinct places because the set <span class="math" data-tex="\(I\)">\(I\)</span> recovers <span class="math" data-tex="\(P\)">\(P\)</span>. The infinity place has <span class="math" data-tex="\(|t|&gt;1\)">\(|t|&gt;1\)</span>, whereas all finite places have <span class="math" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>. Positive powers vary <span class="math" data-tex="\(A\)">\(A\)</span> through <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, or <span class="math" data-tex="\(B\)">\(B\)</span> through <span class="math" data-tex="\((1,\infty)\)">\((1,\infty)\)</span>, so Proposition 3.1 gives exactly one place for each <span class="math" data-tex="\(P\)">\(P\)</span>, and one at infinity. The trivial absolute value is the remaining actual function and is not a place.</p>
+<p>Normalized representatives are</p>
+<span class="math math-display" data-tex="\[
+|x|_P=q^{-\deg(P)\operatorname{ord}_P(x)},\qquad
+|f/g|_\infty=q^{\deg f-\deg g}.
+\]">\[
+|x|_P=q^{-\deg(P)\operatorname{ord}_P(x)},\qquad
+|f/g|_\infty=q^{\deg f-\deg g}.
+\]</span>
+<p>The finite residue field <span class="math" data-tex="\(\mathbb F_q[t]/(P)\)">\(\mathbb F_q[t]/(P)\)</span> has <span class="math" data-tex="\(q^{\deg P}\)">\(q^{\deg P}\)</span> elements, explaining the finite normalization. At infinity put <span class="math" data-tex="\(s=1/t\)">\(s=1/t\)</span>. The valuation ring consists of fractions regular at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, namely <span class="math" data-tex="\(\mathbb F_q[s]_{(s)}\)">\(\mathbb F_q[s]_{(s)}\)</span>. Taking the value at zero maps this ring onto <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, with kernel generated by <span class="math" data-tex="\(s\)">\(s\)</span>. Thus the uniformizer is <span class="math" data-tex="\(1/t\)">\(1/t\)</span>, and the residue field is <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. For example, over <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, the fraction <span class="math" data-tex="\((t^2+t+1)/t^3\)">\((t^2+t+1)/t^3\)</span> has values <span class="math" data-tex="\(1/4\)">\(1/4\)</span> at <span class="math" data-tex="\(P=t^2+t+1\)">\(P=t^2+t+1\)</span>, <span class="math" data-tex="\(8\)">\(8\)</span> at <span class="math" data-tex="\(t\)">\(t\)</span>, and <span class="math" data-tex="\(1/2\)">\(1/2\)</span> at infinity. Their product is one; all other finite values are one.</p>
+<p><strong>Solution 5.</strong> For two inequivalent places, failure of the one-direction criterion in each direction gives <span class="math" data-tex="\(u,w\)">\(u,w\)</span> with <span class="math" data-tex="\(|u|_1&lt;1\leq|u|_2\)">\(|u|_1&lt;1\leq|u|_2\)</span> and <span class="math" data-tex="\(|w|_2&lt;1\leq|w|_1\)">\(|w|_2&lt;1\leq|w|_1\)</span>. Their quotient <span class="math" data-tex="\(w/u\)">\(w/u\)</span> is large at place 1 and small at place 2. For one place, nontriviality supplies a large element.</p>
+<p>Inductively let <span class="math" data-tex="\(b\)">\(b\)</span> be large at place 1 and small at places <span class="math" data-tex="\(2,\ldots,n-1\)">\(2,\ldots,n-1\)</span>; let <span class="math" data-tex="\(c\)">\(c\)</span> be large at place 1 and small at place <span class="math" data-tex="\(n\)">\(n\)</span>. If <span class="math" data-tex="\(|b|_n\leq1\)">\(|b|_n\leq1\)</span>, the elements <span class="math" data-tex="\(cb^r\)">\(cb^r\)</span> eventually have the desired values at every place: they grow at place 1, decay at the intermediate places, and at place <span class="math" data-tex="\(n\)">\(n\)</span> have value at most <span class="math" data-tex="\(|c|_n&lt;1\)">\(|c|_n&lt;1\)</span>. If <span class="math" data-tex="\(|b|_n&gt;1\)">\(|b|_n&gt;1\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+\frac{c}{1+b^{-r}}.
+\]">\[
+\frac{c}{1+b^{-r}}.
+\]</span>
+<p>At places 1 and <span class="math" data-tex="\(n\)">\(n\)</span>, this tends to <span class="math" data-tex="\(c\)">\(c\)</span>; at each intermediate place it tends to zero. For the last assertion, if <span class="math" data-tex="\(D=|b|^{-r}&gt;1\)">\(D=|b|^{-r}&gt;1\)</span>, the reverse triangle inequality bounds its value by <span class="math" data-tex="\(|c|/(D-1)\)">\(|c|/(D-1)\)</span>. At a place with <span class="math" data-tex="\(|b|&gt;1\)">\(|b|&gt;1\)</span>, its difference from <span class="math" data-tex="\(c\)">\(c\)</span> has value at most</p>
+<span class="math math-display" data-tex="\[
+\frac{|c||b|^{-r}}{1-|b|^{-r}}\longrightarrow0.
+\]">\[
+\frac{|c||b|^{-r}}{1-|b|^{-r}}\longrightarrow0.
+\]</span>
+<p>All denominators are nonzero because <span class="math" data-tex="\(|b|_1&gt;1\)">\(|b|_1&gt;1\)</span>. This proves separation for any finite list, and reordering separates any chosen place.</p>
+<p>Choose separators <span class="math" data-tex="\(z_j\)">\(z_j\)</span>, one for each place, and set <span class="math" data-tex="\(h_{j,r}=(1+z_j^{-r})^{-1}\)">\(h_{j,r}=(1+z_j^{-r})^{-1}\)</span>. At place <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(h_{j,r}\to1\)">\(h_{j,r}\to1\)</span>, with error at most <span class="math" data-tex="\(|z_j|_j^{-r}/(1-|z_j|_j^{-r})\)">\(|z_j|_j^{-r}/(1-|z_j|_j^{-r})\)</span>. At a different place <span class="math" data-tex="\(i\)">\(i\)</span>, it tends to zero, with value at most <span class="math" data-tex="\(1/(|z_j|_i^{-r}-1)\)">\(1/(|z_j|_i^{-r}-1)\)</span>. Given the targets, put <span class="math" data-tex="\(M=\max_{i,j}|a_j|_i\)">\(M=\max_{i,j}|a_j|_i\)</span> and <span class="math" data-tex="\(\delta=\varepsilon/[2n(1+M)]\)">\(\delta=\varepsilon/[2n(1+M)]\)</span>. Take a common sufficiently large <span class="math" data-tex="\(r\)">\(r\)</span> so every specified error is less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The element <span class="math" data-tex="\(x=\sum_j a_jh_{j,r}\)">\(x=\sum_j a_jh_{j,r}\)</span> then satisfies, for every <span class="math" data-tex="\(i\)">\(i\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|x-a_i|_i\leq
+|a_i|_i|h_{i,r}-1|_i+
+\sum_{j\ne i}|a_j|_i|h_{j,r}|_i
+\leq nM\delta&lt;\varepsilon.
+\]">\[
+|x-a_i|_i\leq
+|a_i|_i|h_{i,r}-1|_i+
+\sum_{j\ne i}|a_j|_i|h_{j,r}|_i
+\leq nM\delta&lt;\varepsilon.
+\]</span>
+<p>If all targets are zero, simply use zero. This is the required theorem with the estimates and all induction cases supplied.</p>
+<h2 id="10-what-this-lesson-does-not-prove">10. What this lesson does not prove</h2>
+<p>The ring-theoretic prerequisites used in Section 2 and Section 6 are the following. These are the prerequisites from <em>Discrete valuation rings and Dedekind domains</em>; we use the precise statements at the indicated source locators.</p>
+<ul>
+<li>For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> is a Noetherian integrally closed domain and every nonzero prime ideal is maximal [<em>Number fields</em>, lesson 3, Proposition 3.1]. It is free of rank <span class="math" data-tex="\([K:\mathbb Q]\)">\([K:\mathbb Q]\)</span> over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> and has fraction field <span class="math" data-tex="\(K\)">\(K\)</span> [Milne ANT, Proposition 2.29 and its proof].</li>
+<li>The valuation ring of a normalized discrete valuation is a DVR [Milne ANT, Proposition 3.27]. A Noetherian normal local domain of dimension one is a DVR; a DVR has the uniformizer expressions used above [Stacks, Tag 00PD]. For a Dedekind domain, localization at every nonzero prime ideal is a DVR [Stacks, Tag 034X]. The prime must be nonzero: localization at the zero prime is a field.</li>
+<li>Nonzero fractional ideals of a Dedekind domain factor uniquely as finite products of integer powers of nonzero prime ideals. For a principal fractional ideal, the exponent at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> agrees with the normalized valuation of its localization [Milne ANT, Theorem 3.20 and Example 3.26(c)].</li>
+</ul>
+<p>The general ring-theoretic comparison of definitions of a valuation ring is [Stacks, Tag 00I8]. Proposition 2.1 proves directly the properties needed for real-valued valuations here. No result about extensions of absolute values, completed fields, or the general number-field product formula is used in our proofs.</p>
+<p>The written programme proofs are in <em>Number fields</em>: lesson 2, <strong>Discriminants and integral bases</strong>, Theorem 2.3 for the integer lattice; and lesson 3, <strong>Discrete valuation rings and Dedekind domains</strong>, Proposition 3.1, Theorem 3.2 and its two local characterizations for Dedekindness, unique fractional-ideal factorization and DVR localizations. These are preceding ring-theoretic dependencies, not external-book proof substitutes. The classical sources below give attribution and comparison.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, 19 July 2020. Free author notes; the precise results used for comparison are identified above.</li>
+<li><a href="https://stacks.math.columbia.edu/">The Stacks project</a> and the separately identified <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI Integrated Stacks Project English edition</a>. The exact tags and scope of the comparisons are identified in the text.</li>
+</ul>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span></span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-LOC-02.html">Completions, the p-adic numbers and complete discretely valued fields →</a></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

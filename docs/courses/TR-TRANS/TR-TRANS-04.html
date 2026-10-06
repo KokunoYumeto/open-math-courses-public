@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lindemann, pi and the Lindemann–Weierstrass theorem · Transcendental numbers</title>
+<meta name="description" content="A lesson of the course Transcendental numbers. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-TRANS/TR-TRANS-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Transcendental numbers</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 13</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="lindemann-pi-and-the-lindemann-weierstrass-theorem">Lindemann, pi and the Lindemann–Weierstrass theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol at Ultra. Public domain (CC0).</em></p>
+<p>Hermite's proof made an integer from derivatives and made the same integer small by integration. To treat <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the evaluation points must be algebraic rather than rational. To treat an arbitrary exponential relation, its coefficients must also be algebraic. Two operations extend the method: multiply conjugate expressions to obtain rational coefficients, and multiply conjugate auxiliary quantities to obtain a rational integer. The analytic estimate still comes from the same integral.</p>
+<p>The prerequisites are <a href="TR-TRANS-03.html">Hermite and the transcendence of e</a>, the algebraic-integer and norm conventions of <a href="TR-TRANS-02.html">Heights of algebraic numbers</a>, and finite splitting fields from Abstract Algebra II. The exact algebra input is this: in a finite splitting field of separable polynomials over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, automorphisms permute the roots, every conjugate occurs under an automorphism, and the elements fixed by every automorphism are precisely <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. The Abstract Algebra source, Judson's <em>Abstract Algebra: Theory and Applications</em>, proves these facts in <a href="https://judsonbooks.org/aata-files/aata-html/galois-section-field-automorphisms.html">Field Automorphisms, Theorem 23.1.7</a> and <a href="https://judsonbooks.org/aata-files/aata-html/galois-section-fund-theorem-galois-theory.html">The Fundamental Theorem, Proposition 23.2.4</a>, including the extension-of-isomorphisms argument. The linked author edition is dated August 4, 2026 and is licensed under <a href="https://judsonbooks.org/aata-files/aata-html/aata-3.html">GFDL 1.2 or later</a>. We use its exact results as prerequisites;  The number-field input is the existing lesson <em>Algebraic integers and rings of integers</em>, Propositions 1.1–1.2, in <em>Number fields</em>: algebraic integers form a ring, a rational algebraic integer is an integer, and the norm of a nonzero algebraic integer in a number field is a nonzero integer. These are the same arithmetic prerequisites used in the height lesson.</p>
+<p>We prove Lindemann's theorem first, then make the symmetrization and nonvanishing steps for Lindemann–Weierstrass explicit. Soundararajan's notes <em>Transcendental Number Theory</em>, §§1–2, and Evertse's <em>Diophantine Approximation</em>, Chapter 4, §4.2, are principal references for these arguments. Lindemann proved the transcendence of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in 1882 and sketched the general theorem; Weierstrass supplied the rigorous general proof in 1885.</p>
+<h2 id="1-symmetry-and-integer-coefficients">1. Symmetry and integer coefficients</h2>
+<p>For variables <span class="math" data-tex="\(Y_1,\ldots,Y_d\)">\(Y_1,\ldots,Y_d\)</span>, let <span class="math" data-tex="\(s_j\)">\(s_j\)</span> denote their <span class="math" data-tex="\(j\)">\(j\)</span>-th elementary symmetric polynomial. Thus <span class="math" data-tex="\(s_1=\sum Y_i\)">\(s_1=\sum Y_i\)</span>, <span class="math" data-tex="\(s_d=\prod Y_i\)">\(s_d=\prod Y_i\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\prod_{i=1}^d(X-Y_i)
+=X^d-s_1X^{d-1}+s_2X^{d-2}-\cdots+(-1)^ds_d.
+\]">\[
+\prod_{i=1}^d(X-Y_i)
+=X^d-s_1X^{d-1}+s_2X^{d-2}-\cdots+(-1)^ds_d.
+\]</span>
+<h3 id="lemma-4-1-symmetric-polynomials-over-the-integers">Lemma 4.1. Symmetric polynomials over the integers</h3>
+<p>Every symmetric polynomial in <span class="math" data-tex="\(\mathbb Z[Y_1,\ldots,Y_d]\)">\(\mathbb Z[Y_1,\ldots,Y_d]\)</span> is a polynomial in <span class="math" data-tex="\(s_1,\ldots,s_d\)">\(s_1,\ldots,s_d\)</span> with integer coefficients. The same assertion holds with any coefficient ring in place of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> Work separately with each homogeneous degree, since symmetry preserves degree. Order monomials lexicographically with <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span> first. If the leading monomial of a symmetric polynomial is <span class="math" data-tex="\(cY_1^{a_1}\cdots Y_d^{a_d}\)">\(cY_1^{a_1}\cdots Y_d^{a_d}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+a_1\geq a_2\geq\cdots\geq a_d\geq0.
+\]">\[
+a_1\geq a_2\geq\cdots\geq a_d\geq0.
+\]</span>
+<p>Otherwise, interchanging two variables at the first increasing pair produces a larger monomial with the same nonzero coefficient, contradicting maximality. The polynomial</p>
+<span class="math math-display" data-tex="\[
+c\,s_1^{a_1-a_2}s_2^{a_2-a_3}\cdots
+s_{d-1}^{a_{d-1}-a_d}s_d^{a_d}
+\]">\[
+c\,s_1^{a_1-a_2}s_2^{a_2-a_3}\cdots
+s_{d-1}^{a_{d-1}-a_d}s_d^{a_d}
+\]</span>
+<p>has that leading monomial with that coefficient: the leading monomial of <span class="math" data-tex="\(s_j\)">\(s_j\)</span> is <span class="math" data-tex="\(Y_1\cdots Y_j\)">\(Y_1\cdots Y_j\)</span>. Subtract it. The difference is symmetric, remains homogeneous of the same degree, and has a strictly smaller leading monomial. There are only finitely many monomials of that degree, so the process terminates. No division of coefficients has occurred. Summing the homogeneous expressions proves the assertion over any coefficient ring. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, a symmetric rational polynomial in a complete set of conjugates of an algebraic number is rational. If the conjugates are algebraic integers and the polynomial has integer coefficients, its value is an integer. Indeed, the elementary symmetric functions are coefficients of the monic minimal polynomial, which are integers.</p>
+<p>There is a useful variant. Let <span class="math" data-tex="\(A_1,\ldots,A_n\)">\(A_1,\ldots,A_n\)</span> be algebraic integers, possibly repeated, whose multiset is preserved by every automorphism of a finite splitting field <span class="math" data-tex="\(K/\mathbb Q\)">\(K/\mathbb Q\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+G(Y)=\prod_{k=1}^n(Y-A_k)\in\mathbb Z[Y].
+\]">\[
+G(Y)=\prod_{k=1}^n(Y-A_k)\in\mathbb Z[Y].
+\]</span>
+<p>Each coefficient is integral and is fixed by every automorphism, hence is rational and therefore an integer. The same reasoning applies to the sum or product of any equivariantly indexed integral quantities. Repeated values retain their multiplicities.</p>
+<h3 id="lemma-4-2-derivatives-at-integral-points">Lemma 4.2. Derivatives at integral points</h3>
+<p>If <span class="math" data-tex="\(P\in\mathcal O_K[Y]\)">\(P\in\mathcal O_K[Y]\)</span> and <span class="math" data-tex="\(A\in\mathcal O_K\)">\(A\in\mathcal O_K\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+P^{(j)}(A)=j!\,C_j\quad\text{with }C_j\in\mathcal O_K.
+\]">\[
+P^{(j)}(A)=j!\,C_j\quad\text{with }C_j\in\mathcal O_K.
+\]</span>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is a zero of multiplicity at least <span class="math" data-tex="\(r\)">\(r\)</span>, then <span class="math" data-tex="\(C_j=0\)">\(C_j=0\)</span> for <span class="math" data-tex="\(j&lt;r\)">\(j&lt;r\)</span>.</p>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(P(A+Z)=\sum C_jZ^j\)">\(P(A+Z)=\sum C_jZ^j\)</span>. Each coefficient is a sum of products of integral coefficients, powers of <span class="math" data-tex="\(A\)">\(A\)</span>, and ordinary binomial coefficients, so belongs to <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. Taylor's polynomial identity gives <span class="math" data-tex="\(P^{(j)}(A)=j!C_j\)">\(P^{(j)}(A)=j!C_j\)</span>. Divisibility by <span class="math" data-tex="\((Y-A)^r\)">\((Y-A)^r\)</span> gives the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The prime method will divide these derivatives by <span class="math" data-tex="\((p-1)!\)">\((p-1)!\)</span>. For every <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>, the integer <span class="math" data-tex="\(j!/(p-1)!\)">\(j!/(p-1)!\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. A zero of order <span class="math" data-tex="\(p-1\)">\(p-1\)</span> leaves exactly one exceptional derivative; a zero of order <span class="math" data-tex="\(p\)">\(p\)</span> leaves none.</p>
+<h2 id="2-the-transcendence-of-pi">2. The transcendence of pi</h2>
+<h3 id="theorem-4-3-lindemann-s-theorem">Theorem 4.3. Lindemann's theorem</h3>
+<p>The number <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> Assume that <span class="math" data-tex="\(\theta=i\pi\)">\(\theta=i\pi\)</span> is algebraic and let <span class="math" data-tex="\(\theta_1=\theta,\ldots,\theta_d\)">\(\theta_1=\theta,\ldots,\theta_d\)</span> be all its conjugates. Euler's identity gives</p>
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^d(1+e^{\theta_j})=0.
+\]">\[
+\prod_{j=1}^d(1+e^{\theta_j})=0.
+\]</span>
+<p>Expand this product over all subsets of <span class="math" data-tex="\(\{1,\ldots,d\}\)">\(\{1,\ldots,d\}\)</span>. Every term is <span class="math" data-tex="\(e^{\eta}\)">\(e^{\eta}\)</span>, with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> a sum of distinct members of the list of conjugates. Let <span class="math" data-tex="\(q\)">\(q\)</span> be the number of zero subset sums, and list all the nonzero subset sums as <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>, retaining repetitions. The empty subset shows that <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. A singleton subset is nonzero, so <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+q+\sum_{k=1}^n e^{\alpha_k}=0. \tag{4.1}
+\]">\[
+q+\sum_{k=1}^n e^{\alpha_k}=0. \tag{4.1}
+\]</span>
+<p>Choose a positive integer <span class="math" data-tex="\(l\)">\(l\)</span> such that all <span class="math" data-tex="\(l\theta_j\)">\(l\theta_j\)</span> are algebraic integers; the leading coefficient of the primitive minimal polynomial will do. Then <span class="math" data-tex="\(A_k=l\alpha_k\)">\(A_k=l\alpha_k\)</span> are algebraic integers. The multiset of subset sums is preserved by conjugation, as is the submultiset of nonzero sums. Consequently</p>
+<span class="math math-display" data-tex="\[
+G(Y)=\prod_{k=1}^n(Y-A_k)\in\mathbb Z[Y],\qquad
+C=G(0)=\prod_{k=1}^n(-A_k)\in\mathbb Z\setminus\{0\}.
+\]">\[
+G(Y)=\prod_{k=1}^n(Y-A_k)\in\mathbb Z[Y],\qquad
+C=G(0)=\prod_{k=1}^n(-A_k)\in\mathbb Z\setminus\{0\}.
+\]</span>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+P(Y)=Y^{p-1}G(Y)^p,\qquad
+f(X)=\frac{l^{np}X^{p-1}\prod_{k=1}^n(X-\alpha_k)^p}{(p-1)!}
+=\frac{l^{1-p}P(lX)}{(p-1)!}.
+\]">\[
+P(Y)=Y^{p-1}G(Y)^p,\qquad
+f(X)=\frac{l^{np}X^{p-1}\prod_{k=1}^n(X-\alpha_k)^p}{(p-1)!}
+=\frac{l^{1-p}P(lX)}{(p-1)!}.
+\]</span>
+<p>The apparently negative power of <span class="math" data-tex="\(l\)">\(l\)</span> causes no denominator problem at the relevant derivatives. Since <span class="math" data-tex="\(P\)">\(P\)</span> is divisible by <span class="math" data-tex="\(Y^{p-1}\)">\(Y^{p-1}\)</span>, its coefficient of <span class="math" data-tex="\(Y^j\)">\(Y^j\)</span> is zero for <span class="math" data-tex="\(j&lt;p-1\)">\(j&lt;p-1\)</span>. For <span class="math" data-tex="\(j\geq p-1\)">\(j\geq p-1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f^{(j)}(\alpha_k)
+=\frac{l^{j-p+1}P^{(j)}(A_k)}{(p-1)!}.
+\]">\[
+f^{(j)}(\alpha_k)
+=\frac{l^{j-p+1}P^{(j)}(A_k)}{(p-1)!}.
+\]</span>
+<p>At every <span class="math" data-tex="\(A_k\)">\(A_k\)</span>, the multiplicity is at least <span class="math" data-tex="\(p\)">\(p\)</span>. Lemma 4.2 therefore shows that all these derivatives are in <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span>. At zero, derivatives of order less than <span class="math" data-tex="\(p-1\)">\(p-1\)</span> vanish, the exceptional derivative is</p>
+<span class="math math-display" data-tex="\[
+f^{(p-1)}(0)=C^p,
+\]">\[
+f^{(p-1)}(0)=C^p,
+\]</span>
+<p>and every derivative of higher order is an integer divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Write <span class="math" data-tex="\(F=\sum_{j=0}^{(n+1)p-1}f^{(j)}\)">\(F=\sum_{j=0}^{(n+1)p-1}f^{(j)}\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+F(0)\in\mathbb Z,\qquad F(0)\equiv C^p\pmod p.
+\]">\[
+F(0)\in\mathbb Z,\qquad F(0)\equiv C^p\pmod p.
+\]</span>
+<p>The sum <span class="math" data-tex="\(\sum_k F(\alpha_k)\)">\(\sum_k F(\alpha_k)\)</span> is integral and fixed by conjugation, so is an integer. It belongs to <span class="math" data-tex="\(p\mathcal O_K\)">\(p\mathcal O_K\)</span>; dividing by <span class="math" data-tex="\(p\)">\(p\)</span> gives a rational algebraic integer, so it is in <span class="math" data-tex="\(p\mathbb Z\)">\(p\mathbb Z\)</span>.</p>
+<p>Use Hermite's identity from the previous lesson, with this <span class="math" data-tex="\(f\)">\(f\)</span>:</p>
+<span class="math math-display" data-tex="\[
+I(t)=\int_0^t e^{t-u}f(u)\,du=e^tF(0)-F(t).
+\]">\[
+I(t)=\int_0^t e^{t-u}f(u)\,du=e^tF(0)-F(t).
+\]</span>
+<p>The relation (4.1) makes</p>
+<span class="math math-display" data-tex="\[
+J:=\sum_{k=1}^n I(\alpha_k)
+=-qF(0)-\sum_{k=1}^nF(\alpha_k)
+\in\mathbb Z,
+\qquad J\equiv-qC^p\pmod p.
+\]">\[
+J:=\sum_{k=1}^n I(\alpha_k)
+=-qF(0)-\sum_{k=1}^nF(\alpha_k)
+\in\mathbb Z,
+\qquad J\equiv-qC^p\pmod p.
+\]</span>
+<p>Choose primes not dividing <span class="math" data-tex="\(qC\)">\(qC\)</span>. Then <span class="math" data-tex="\(J\neq0\)">\(J\neq0\)</span>, so <span class="math" data-tex="\(|J|\geq1\)">\(|J|\geq1\)</span>.</p>
+<p>It remains to estimate the same quantity. Put <span class="math" data-tex="\(R=\max(1,|\alpha_1|,\ldots,|\alpha_n|)\)">\(R=\max(1,|\alpha_1|,\ldots,|\alpha_n|)\)</span>. Along any segment from zero to an <span class="math" data-tex="\(\alpha_k\)">\(\alpha_k\)</span>, <span class="math" data-tex="\(|u|\leq R\)">\(|u|\leq R\)</span> and <span class="math" data-tex="\(|u-\alpha_j|\leq2R\)">\(|u-\alpha_j|\leq2R\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|f(u)|\leq
+\frac{[l^nR(2R)^n]^p}{(p-1)!},\qquad
+|J|\leq nRe^R\frac{[l^nR(2R)^n]^p}{(p-1)!}.
+\]">\[
+|f(u)|\leq
+\frac{[l^nR(2R)^n]^p}{(p-1)!},\qquad
+|J|\leq nRe^R\frac{[l^nR(2R)^n]^p}{(p-1)!}.
+\]</span>
+<p>For every fixed <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, <span class="math" data-tex="\(B^p/(p-1)!\to0\)">\(B^p/(p-1)!\to0\)</span>; for example, the ratio of consecutive terms is <span class="math" data-tex="\(B/p\)">\(B/p\)</span>. Infinitely many primes avoid the fixed nonzero integer <span class="math" data-tex="\(qC\)">\(qC\)</span>. For all sufficiently large such primes, the bound gives <span class="math" data-tex="\(|J|&lt;1\)">\(|J|&lt;1\)</span>, a contradiction. Thus <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span>, and hence <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, is transcendental. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example: where the constant term comes from.</strong> If the list of conjugates happens to contain just <span class="math" data-tex="\(\theta,-\theta\)">\(\theta,-\theta\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+(1+e^\theta)(1+e^{-\theta})
+=2+e^\theta+e^{-\theta}.
+\]">\[
+(1+e^\theta)(1+e^{-\theta})
+=2+e^\theta+e^{-\theta}.
+\]</span>
+<p>The empty and full subsets both have sum zero, so <span class="math" data-tex="\(q=2\)">\(q=2\)</span>. This illustrates the collection step; the proof does not assume that the hypothetical minimal polynomial of <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span> has degree two, or that all its subset sums are distinct.</p>
+<h2 id="3-multiplying-relations-without-losing-their-content">3. Multiplying relations without losing their content</h2>
+<p>The proof above had a positive constant term and coefficients equal to one. A general algebraic relation has neither feature. Before constructing integrals, we arrange that its coefficients are integers and are constant on complete conjugacy orbits.</p>
+<p>We need to distinguish a <em>formal exponential expression</em> from its value. Write <span class="math" data-tex="\([a]\)">\([a]\)</span> for a symbol indexed by an algebraic number, use</p>
+<span class="math math-display" data-tex="\[
+[a][b]=[a+b],\qquad [0]=1,
+\]">\[
+[a][b]=[a+b],\qquad [0]=1,
+\]</span>
+<p>and collect equal indices when adding expressions. Evaluation is the map <span class="math" data-tex="\([a]\mapsto e^a\)">\([a]\mapsto e^a\)</span>. A nonzero formal expression may evaluate to zero; indeed, that is the hypothetical relation we are trying to exclude. No independence theorem is assumed in defining this notation.</p>
+<p>Order complex numbers lexicographically: compare real parts first and imaginary parts second. This total order is preserved by addition. Every finite nonempty support therefore has a greatest member.</p>
+<h3 id="lemma-4-4-the-greatest-exponent-survives">Lemma 4.4. The greatest exponent survives</h3>
+<p>A product of nonzero finite formal exponential expressions over a field is nonzero. Its greatest exponent is the sum of the greatest exponents of the factors, and its coefficient is the product of their coefficients.</p>
+<p><strong>Proof.</strong> For two factors, let <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> be their greatest exponents. Every exponent chosen from the first factor is at most <span class="math" data-tex="\(a\)">\(a\)</span>, and every exponent chosen from the second is at most <span class="math" data-tex="\(b\)">\(b\)</span>. If either choice is smaller, their sum is strictly smaller than <span class="math" data-tex="\(a+b\)">\(a+b\)</span>, by translation invariance of the order. Thus only the pair of greatest terms contributes to <span class="math" data-tex="\([a+b]\)">\([a+b]\)</span>, with a nonzero product coefficient. Repeat for any finite number of factors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-4-5-a-symmetric-integer-relation">Lemma 4.5. A symmetric integer relation</h3>
+<p>Suppose that distinct algebraic numbers <span class="math" data-tex="\(a_1,\ldots,a_s\)">\(a_1,\ldots,a_s\)</span> and nonzero algebraic numbers <span class="math" data-tex="\(c_1,\ldots,c_s\)">\(c_1,\ldots,c_s\)</span> satisfy <span class="math" data-tex="\(\sum c_je^{a_j}=0\)">\(\sum c_je^{a_j}=0\)</span>. Then there are distinct algebraic numbers <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> and nonzero integers <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=1}^n b_ke^{\alpha_k}=0, \tag{4.2}
+\]">\[
+\sum_{k=1}^n b_ke^{\alpha_k}=0, \tag{4.2}
+\]</span>
+<p>and the following symmetry holds: every automorphism of a finite splitting field containing the <span class="math" data-tex="\(\alpha_k\)">\(\alpha_k\)</span>'s permutes the indexed pairs <span class="math" data-tex="\((\alpha_k,b_k)\)">\((\alpha_k,b_k)\)</span>. In particular the exponent set is a union of complete conjugacy orbits, with one integer coefficient on each orbit.</p>
+<p><strong>Proof.</strong> First remove algebraic coefficients. For each <span class="math" data-tex="\(j\)">\(j\)</span>, list all the conjugates <span class="math" data-tex="\(c_j^{(1)},\ldots,c_j^{(d_j)}\)">\(c_j^{(1)},\ldots,c_j^{(d_j)}\)</span>, and form the formal product</p>
+<span class="math math-display" data-tex="\[
+U=\prod_{1\leq t_j\leq d_j\ (1\leq j\leq s)}
+\left(\sum_{j=1}^s c_j^{(t_j)}[a_j]\right).
+\]">\[
+U=\prod_{1\leq t_j\leq d_j\ (1\leq j\leq s)}
+\left(\sum_{j=1}^s c_j^{(t_j)}[a_j]\right).
+\]</span>
+<p>Every coefficient after collecting exponents is a polynomial with integer coefficients in the <span class="math" data-tex="\(c_j^{(t)}\)">\(c_j^{(t)}\)</span>, symmetric separately in the conjugate list of each <span class="math" data-tex="\(c_j\)">\(c_j\)</span>: permutations of such a list merely permute the factors. Apply Lemma 4.1 successively to these lists. Their elementary symmetric functions are rational, so all collected coefficients are rational. Each factor is nonzero, and Lemma 4.4 proves that <span class="math" data-tex="\(U\)">\(U\)</span> is nonzero. More explicitly, the greatest <span class="math" data-tex="\(a_j\)">\(a_j\)</span> is greatest in every factor, and its conjugate coefficients are all nonzero. One factor is the original relation, so the evaluation of <span class="math" data-tex="\(U\)">\(U\)</span> is zero. Clear rational denominators and discard zero collected coefficients. We now have a nonzero integer-coefficient formal expression <span class="math" data-tex="\(V=\sum b_j[\gamma_j]\)">\(V=\sum b_j[\gamma_j]\)</span> whose evaluation is zero, with distinct algebraic <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>.</p>
+<p>Next arrange symmetry of the exponents. Choose a squarefree polynomial in <span class="math" data-tex="\(\mathbb Q[X]\)">\(\mathbb Q[X]\)</span> whose roots contain all the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>. List all its distinct roots as <span class="math" data-tex="\(\gamma_1,\ldots,\gamma_N\)">\(\gamma_1,\ldots,\gamma_N\)</span>, using coefficient zero for any newly added roots. Form</p>
+<span class="math math-display" data-tex="\[
+W=\prod_{\tau\in S_N}
+\left(\sum_{j=1}^N b_j[\gamma_{\tau(j)}]\right).
+\]">\[
+W=\prod_{\tau\in S_N}
+\left(\sum_{j=1}^N b_j[\gamma_{\tau(j)}]\right).
+\]</span>
+<p>Each factor is nonzero: its nonzero coefficients occur at distinct indices. Lemma 4.4 again proves that the product is nonzero. Its coefficients are integers, and its evaluation is zero because the identity-permutation factor evaluates to zero.</p>
+<p>An automorphism of a splitting field permutes the <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span>'s. Acting on the formal indices of <span class="math" data-tex="\(W\)">\(W\)</span> therefore permutes its factors. After collecting equal exponents, it permutes the support and preserves the corresponding integer coefficient. Discard zero coefficients and call the remaining indices <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span>, with coefficients <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span>. Every conjugate of an index occurs under a splitting-field automorphism, so its full orbit is included. This gives all the assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice what the reduction avoids. We never apply an algebraic-field automorphism to <span class="math" data-tex="\(e^{a_j}\)">\(e^{a_j}\)</span>, and never assume that <span class="math" data-tex="\(\sigma(e^{a_j})=e^{\sigma(a_j)}\)">\(\sigma(e^{a_j})=e^{\sigma(a_j)}\)</span>. Automorphisms act only on algebraic coefficients and on the indices of the formal expressions. The zero evaluation comes from multiplying an expression that already evaluates to zero by other expressions.</p>
+<h2 id="4-the-lindemann-weierstrass-theorem">4. The Lindemann–Weierstrass theorem</h2>
+<h3 id="theorem-4-6-independence-of-exponentials-of-distinct-algebraic-numbers">Theorem 4.6. Independence of exponentials of distinct algebraic numbers</h3>
+<p>If <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> are distinct algebraic numbers and <span class="math" data-tex="\(\beta_1,\ldots,\beta_n\)">\(\beta_1,\ldots,\beta_n\)</span> are nonzero algebraic numbers, then</p>
+<span class="math math-display" data-tex="\[
+\beta_1e^{\alpha_1}+\cdots+\beta_ne^{\alpha_n}\neq0.
+\]">\[
+\beta_1e^{\alpha_1}+\cdots+\beta_ne^{\alpha_n}\neq0.
+\]</span>
+<p>Equivalently, the numbers <span class="math" data-tex="\(e^{\alpha_1},\ldots,e^{\alpha_n}\)">\(e^{\alpha_1},\ldots,e^{\alpha_n}\)</span> are linearly independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>.</p>
+<p><strong>Proof.</strong> A relation with one term is impossible because the exponential never vanishes. Otherwise Lemma 4.5 reduces a hypothetical relation to (4.2), with integer coefficients and complete conjugacy symmetry. Let <span class="math" data-tex="\(K\)">\(K\)</span> be a finite splitting field containing its exponents, and choose a positive integer <span class="math" data-tex="\(l\)">\(l\)</span> such that <span class="math" data-tex="\(A_k=l\alpha_k\in\mathcal O_K\)">\(A_k=l\alpha_k\in\mathcal O_K\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>. The <span class="math" data-tex="\(A_k\)">\(A_k\)</span>'s are still distinct.</p>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span> and a selected index <span class="math" data-tex="\(i\)">\(i\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+P_i(Y)=(Y-A_i)^{p-1}\prod_{k\neq i}(Y-A_k)^p,
+\qquad f_i(X)=\frac{lP_i(lX)}{(p-1)!}.
+\]">\[
+P_i(Y)=(Y-A_i)^{p-1}\prod_{k\neq i}(Y-A_k)^p,
+\qquad f_i(X)=\frac{lP_i(lX)}{(p-1)!}.
+\]</span>
+<p>Thus</p>
+<span class="math math-display" data-tex="\[
+f_i(X)=\frac{l^{np}\prod_{k=1}^n(X-\alpha_k)^p}
+{(p-1)!(X-\alpha_i)}.
+\]">\[
+f_i(X)=\frac{l^{np}\prod_{k=1}^n(X-\alpha_k)^p}
+{(p-1)!(X-\alpha_i)}.
+\]</span>
+<p>The numerator is divisible by <span class="math" data-tex="\(X-\alpha_i\)">\(X-\alpha_i\)</span>, so this is a polynomial of degree <span class="math" data-tex="\(m=np-1\)">\(m=np-1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+F_i=\sum_{j=0}^m f_i^{(j)},\quad
+I_i(t)=\int_0^t e^{t-u}f_i(u)\,du,
+\quad J_i=\sum_{k=1}^n b_kI_i(\alpha_k).
+\]">\[
+F_i=\sum_{j=0}^m f_i^{(j)},\quad
+I_i(t)=\int_0^t e^{t-u}f_i(u)\,du,
+\quad J_i=\sum_{k=1}^n b_kI_i(\alpha_k).
+\]</span>
+<p>Hermite's identity and (4.2) give</p>
+<span class="math math-display" data-tex="\[
+J_i=-\sum_{k=1}^n b_kF_i(\alpha_k). \tag{4.3}
+\]">\[
+J_i=-\sum_{k=1}^n b_kF_i(\alpha_k). \tag{4.3}
+\]</span>
+<p>We examine the arithmetic of this expression before estimating the integrals.</p>
+<p><strong>The exceptional residue.</strong> The scaling makes</p>
+<span class="math math-display" data-tex="\[
+f_i^{(j)}(\alpha_k)
+=l^{j+1}\frac{P_i^{(j)}(A_k)}{(p-1)!}.
+\]">\[
+f_i^{(j)}(\alpha_k)
+=l^{j+1}\frac{P_i^{(j)}(A_k)}{(p-1)!}.
+\]</span>
+<p>For <span class="math" data-tex="\(k\neq i\)">\(k\neq i\)</span>, all derivatives of order less than <span class="math" data-tex="\(p\)">\(p\)</span> vanish. At <span class="math" data-tex="\(k=i\)">\(k=i\)</span>, all derivatives of order less than <span class="math" data-tex="\(p-1\)">\(p-1\)</span> vanish. For <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>, Lemma 4.2 makes every displayed derivative integral and divisible by <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. The only remaining derivative is</p>
+<span class="math math-display" data-tex="\[
+f_i^{(p-1)}(\alpha_i)
+=l^p\prod_{k\neq i}(A_i-A_k)^p=D_i^p,
+\qquad D_i=l\prod_{k\neq i}(A_i-A_k)\neq0.
+\]">\[
+f_i^{(p-1)}(\alpha_i)
+=l^p\prod_{k\neq i}(A_i-A_k)^p=D_i^p,
+\qquad D_i=l\prod_{k\neq i}(A_i-A_k)\neq0.
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+J_i\in\mathcal O_K,\qquad
+J_i\equiv-b_iD_i^p\pmod{p\mathcal O_K}. \tag{4.4}
+\]">\[
+J_i\in\mathcal O_K,\qquad
+J_i\equiv-b_iD_i^p\pmod{p\mathcal O_K}. \tag{4.4}
+\]</span>
+<p>Exclude the finitely many primes dividing any <span class="math" data-tex="\(b_i\)">\(b_i\)</span> or any nonzero integer <span class="math" data-tex="\(N_{K/\mathbb Q}(D_i)\)">\(N_{K/\mathbb Q}(D_i)\)</span>. Then the residue in (4.4) is nonzero. To check this without choosing a prime ideal, suppose <span class="math" data-tex="\(b_iD_i^p=pE\)">\(b_iD_i^p=pE\)</span> with <span class="math" data-tex="\(E\in\mathcal O_K\)">\(E\in\mathcal O_K\)</span>. Taking norms would give</p>
+<span class="math math-display" data-tex="\[
+b_i^{[K:\mathbb Q]}N(D_i)^p
+=p^{[K:\mathbb Q]}N(E),
+\]">\[
+b_i^{[K:\mathbb Q]}N(D_i)^p
+=p^{[K:\mathbb Q]}N(E),
+\]</span>
+<p>contradicting the choice of <span class="math" data-tex="\(p\)">\(p\)</span>. Thus every <span class="math" data-tex="\(J_i\)">\(J_i\)</span> is nonzero.</p>
+<p><strong>The rational product.</strong> If <span class="math" data-tex="\(\sigma\in\operatorname{Gal}(K/\mathbb Q)\)">\(\sigma\in\operatorname{Gal}(K/\mathbb Q)\)</span> sends <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> to <span class="math" data-tex="\(\alpha_{i&#x27;}\)">\(\alpha_{i&#x27;}\)</span>, it sends <span class="math" data-tex="\(P_i\)">\(P_i\)</span> to <span class="math" data-tex="\(P_{i&#x27;}\)">\(P_{i&#x27;}\)</span>, since the whole exponent set is permuted. Equation (4.3), expressed entirely in algebraic derivatives, then gives <span class="math" data-tex="\(\sigma(J_i)=J_{i&#x27;}\)">\(\sigma(J_i)=J_{i&#x27;}\)</span>: the coefficient attached to a conjugate exponent is unchanged. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathcal J=\prod_{i=1}^nJ_i
+\]">\[
+\mathcal J=\prod_{i=1}^nJ_i
+\]</span>
+<p>is fixed by every automorphism. It is an algebraic integer and is nonzero, so <span class="math" data-tex="\(\mathcal J\in\mathbb Z\setminus\{0\}\)">\(\mathcal J\in\mathbb Z\setminus\{0\}\)</span> and <span class="math" data-tex="\(|\mathcal J|\geq1\)">\(|\mathcal J|\geq1\)</span>. In the unnormalized convention, each <span class="math" data-tex="\(J_i\)">\(J_i\)</span> is multiplied by <span class="math" data-tex="\((p-1)!\)">\((p-1)!\)</span>; the product is then an integer divisible by <span class="math" data-tex="\(((p-1)!)^n\)">\(((p-1)!)^n\)</span>. The normalized convention packages exactly the same lower bound as one.</p>
+<p><strong>The integral estimate.</strong> Set <span class="math" data-tex="\(R=\max(1,|\alpha_1|,\ldots,|\alpha_n|)\)">\(R=\max(1,|\alpha_1|,\ldots,|\alpha_n|)\)</span>, <span class="math" data-tex="\(A=Re^R\sum_k|b_k|\)">\(A=Re^R\sum_k|b_k|\)</span>, and <span class="math" data-tex="\(B=l^n(2R)^n\)">\(B=l^n(2R)^n\)</span>. Along any segment from zero to an <span class="math" data-tex="\(\alpha_k\)">\(\alpha_k\)</span>, all distances to the <span class="math" data-tex="\(\alpha_j\)">\(\alpha_j\)</span>'s are at most <span class="math" data-tex="\(2R\)">\(2R\)</span>. In the polynomial form with exponents <span class="math" data-tex="\(p-1,p,\ldots,p\)">\(p-1,p,\ldots,p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f_i(u)|
+\leq\frac{l^{np}(2R)^{np-1}}{(p-1)!}
+\leq\frac{B^p}{(p-1)!}.
+\]">\[
+|f_i(u)|
+\leq\frac{l^{np}(2R)^{np-1}}{(p-1)!}
+\leq\frac{B^p}{(p-1)!}.
+\]</span>
+<p>The length of the segment is at most <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(|e^{\alpha_k-u}|\leq e^R\)">\(|e^{\alpha_k-u}|\leq e^R\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|J_i|\leq A\frac{B^p}{(p-1)!},\qquad
+|\mathcal J|\leq
+A^n\frac{B^{np}}{((p-1)!)^n}\longrightarrow0.
+\]">\[
+|J_i|\leq A\frac{B^p}{(p-1)!},\qquad
+|\mathcal J|\leq
+A^n\frac{B^{np}}{((p-1)!)^n}\longrightarrow0.
+\]</span>
+<p>For a sufficiently large prime outside the finite excluded set, this contradicts <span class="math" data-tex="\(|\mathcal J|\geq1\)">\(|\mathcal J|\geq1\)</span>. The hypothetical relation is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The role of each component is now visible. The greatest-exponent argument prevents the reductions from becoming formal zero expressions. Different zero multiplicities preserve one residue. Conjugacy turns the product of algebraic integers into a rational integer. Factorial normalization makes every analytic upper bound tend to zero.</p>
+<figure><img src="figures/hermite-zero-orders.png" alt="An auxiliary polynomial with a zero of order four at zero and of order five at minus one and one." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 4.1. The multiplicity mechanism of Theorem 4.6, illustrated at nodes <span class="math" data-tex="\(-1,0,1\)">\(-1,0,1\)</span>, with <span class="math" data-tex="\(p=5\)">\(p=5\)</span>, <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, and selected node zero. The exact polynomial is <span class="math" data-tex="\(f(X)=X^4(X^2-1)^5/4!\)">\(f(X)=X^4(X^2-1)^5/4!\)</span>; its fourth derivative at zero is <span class="math" data-tex="\(-1\)">\(-1\)</span>, while derivatives of orders below five vanish at the other two nodes. Higher derivatives at these integer nodes are divisible by five. The vertical axis displays <span class="math" data-tex="\(1000f\)">\(1000f\)</span> to show the profile. This is an illustration of the polynomial construction, not a claim that a hypothetical exponential relation holds at these nodes. Original course figure; prime-integral method as in Soundararajan's notes, §2.</em></p>
+<p>Editable vector figure.</p>
+<h2 id="5-algebraic-independence-and-elementary-consequences">5. Algebraic independence and elementary consequences</h2>
+<h3 id="theorem-4-7-the-algebraic-independence-form">Theorem 4.7. The algebraic-independence form</h3>
+<p>If algebraic numbers <span class="math" data-tex="\(a_1,\ldots,a_r\)">\(a_1,\ldots,a_r\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, then <span class="math" data-tex="\(e^{a_1},\ldots,e^{a_r}\)">\(e^{a_1},\ldots,e^{a_r}\)</span> are algebraically independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>. This assertion for every finite independent list is equivalent to Theorem 4.6.</p>
+<p><strong>Proof.</strong> Write a nonzero polynomial with algebraic coefficients as</p>
+<span class="math math-display" data-tex="\[
+P(X_1,\ldots,X_r)=\sum_{\nu\in S}c_\nu X_1^{\nu_1}\cdots X_r^{\nu_r},
+\]">\[
+P(X_1,\ldots,X_r)=\sum_{\nu\in S}c_\nu X_1^{\nu_1}\cdots X_r^{\nu_r},
+\]</span>
+<p>where <span class="math" data-tex="\(S\subset\mathbb Z_{\geq0}^r\)">\(S\subset\mathbb Z_{\geq0}^r\)</span> is finite, distinct multi-indices occur once, and <span class="math" data-tex="\(c_\nu\neq0\)">\(c_\nu\neq0\)</span>. Substitution gives</p>
+<span class="math math-display" data-tex="\[
+P(e^{a_1},\ldots,e^{a_r})
+=\sum_{\nu\in S}c_\nu e^{\nu_1a_1+\cdots+\nu_ra_r}.
+\]">\[
+P(e^{a_1},\ldots,e^{a_r})
+=\sum_{\nu\in S}c_\nu e^{\nu_1a_1+\cdots+\nu_ra_r}.
+\]</span>
+<p>The exponents are distinct by rational linear independence of the <span class="math" data-tex="\(a_j\)">\(a_j\)</span>'s, and are algebraic. Theorem 4.6 says that this sum cannot vanish.</p>
+<p>Conversely, suppose the algebraic-independence assertion is known. Given a finite set of distinct algebraic exponents <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span>, choose a <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-basis <span class="math" data-tex="\(a_1,\ldots,a_r\)">\(a_1,\ldots,a_r\)</span> of their span and a positive integer <span class="math" data-tex="\(M\)">\(M\)</span> clearing all their rational coordinates. Set <span class="math" data-tex="\(z_j=e^{a_j/M}\)">\(z_j=e^{a_j/M}\)</span>. The numbers <span class="math" data-tex="\(a_j/M\)">\(a_j/M\)</span> are still algebraic and rationally independent, so the <span class="math" data-tex="\(z_j\)">\(z_j\)</span>'s are algebraically independent over <span class="math" data-tex="\(\overline{\mathbb Q}\)">\(\overline{\mathbb Q}\)</span>. Each <span class="math" data-tex="\(e^{\alpha_i}\)">\(e^{\alpha_i}\)</span> is a Laurent monomial <span class="math" data-tex="\(\prod_j z_j^{m_{ij}}\)">\(\prod_j z_j^{m_{ij}}\)</span>, with <span class="math" data-tex="\(m_{ij}\in\mathbb Z\)">\(m_{ij}\in\mathbb Z\)</span>, and distinct exponents give distinct exponent vectors. A nontrivial algebraic linear relation among these Laurent monomials, multiplied by a monomial making every exponent nonnegative, is a nonzero polynomial relation among the <span class="math" data-tex="\(z_j\)">\(z_j\)</span>'s, a contradiction. If the span has dimension zero, there is only the exponent zero, for which a one-term relation is impossible directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(e^{\sqrt2}\)">\(e^{\sqrt2}\)</span> are algebraically independent, because <span class="math" data-tex="\(1,\sqrt2\)">\(1,\sqrt2\)</span> are rationally independent. The theorem does not establish algebraic independence of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span>; that is a different question, revisited in <em>Algebraic independence and Schanuel's conjecture</em>.</p>
+<h3 id="corollary-4-8-exponentials-trigonometric-values-and-logarithms">Corollary 4.8. Exponentials, trigonometric values and logarithms</h3>
+<p>For every nonzero algebraic <span class="math" data-tex="\(a\)">\(a\)</span>, the numbers <span class="math" data-tex="\(e^a\)">\(e^a\)</span>, <span class="math" data-tex="\(\sin a\)">\(\sin a\)</span>, <span class="math" data-tex="\(\cos a\)">\(\cos a\)</span>, and <span class="math" data-tex="\(\tan a\)">\(\tan a\)</span> wherever defined are transcendental. If <span class="math" data-tex="\(b\)">\(b\)</span> is a nonzero algebraic number and <span class="math" data-tex="\(L\neq0\)">\(L\neq0\)</span> is any determination of its logarithm, meaning <span class="math" data-tex="\(e^L=b\)">\(e^L=b\)</span>, then <span class="math" data-tex="\(L\)">\(L\)</span> is transcendental.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(e^a=c\)">\(e^a=c\)</span> were algebraic, <span class="math" data-tex="\(e^a-c e^0=0\)">\(e^a-c e^0=0\)</span> would contradict Theorem 4.6 at the two distinct algebraic exponents <span class="math" data-tex="\(a,0\)">\(a,0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(z=e^{ia}\)">\(z=e^{ia}\)</span>, which is transcendental by this argument. If <span class="math" data-tex="\(s=\sin a\)">\(s=\sin a\)</span> were algebraic, then</p>
+<span class="math math-display" data-tex="\[
+z^2-2is z-1=0
+\]">\[
+z^2-2is z-1=0
+\]</span>
+<p>would make <span class="math" data-tex="\(z\)">\(z\)</span> algebraic over the algebraic numbers, hence algebraic by the opening lesson. Similarly, an algebraic <span class="math" data-tex="\(c=\cos a\)">\(c=\cos a\)</span> gives <span class="math" data-tex="\(z^2-2cz+1=0\)">\(z^2-2cz+1=0\)</span>. Both are impossible.</p>
+<p>If <span class="math" data-tex="\(t=\tan a\)">\(t=\tan a\)</span> is defined, the exponential identities yield</p>
+<span class="math math-display" data-tex="\[
+t=\frac{z^2-1}{i(z^2+1)},\qquad
+(1-it)z^2=1+it.
+\]">\[
+t=\frac{z^2-1}{i(z^2+1)},\qquad
+(1-it)z^2=1+it.
+\]</span>
+<p>The case <span class="math" data-tex="\(1-it=0\)">\(1-it=0\)</span> would make the right-hand side equal to two, which is impossible. An algebraic <span class="math" data-tex="\(t\)">\(t\)</span> would therefore make <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, and then <span class="math" data-tex="\(z\)">\(z\)</span>, algebraic. Finally, if a nonzero logarithm <span class="math" data-tex="\(L\)">\(L\)</span> of algebraic <span class="math" data-tex="\(b\)">\(b\)</span> were algebraic, the exponential assertion would say that <span class="math" data-tex="\(e^L=b\)">\(e^L=b\)</span> is transcendental. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This includes <span class="math" data-tex="\(e^{\sqrt2}\)">\(e^{\sqrt2}\)</span>, <span class="math" data-tex="\(\sin1\)">\(\sin1\)</span>, <span class="math" data-tex="\(\tan\sqrt2\)">\(\tan\sqrt2\)</span>, and <span class="math" data-tex="\(\log3\)">\(\log3\)</span>. It includes every nonzero logarithm of one, such as <span class="math" data-tex="\(2\pi ik\)">\(2\pi ik\)</span> with <span class="math" data-tex="\(k\neq0\)">\(k\neq0\)</span>. For nonzero algebraic <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(\cos a\)">\(\cos a\)</span> cannot vanish, because zero is algebraic; thus the trigonometric tangent in this corollary is in fact defined at every such <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>The positive real ratio <span class="math" data-tex="\(\log2/\log3\)">\(\log2/\log3\)</span> is irrational: equality to <span class="math" data-tex="\(m/n\)">\(m/n\)</span> with positive integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span> would give <span class="math" data-tex="\(2^n=3^m\)">\(2^n=3^m\)</span>, contradicted by parity. Its transcendence is not a consequence of the theorem just proved. It follows from the Gelfond–Schneider theorem in the later lesson on Hilbert's seventh problem.</p>
+<h2 id="6-constructibility-and-the-area-of-a-circle">6. Constructibility and the area of a circle</h2>
+<p>Start with a unit segment and its endpoints <span class="math" data-tex="\((0,0),(1,0)\)">\((0,0),(1,0)\)</span>. A straightedge-and-compass construction consists of finitely many steps drawing a line through two previously obtained distinct points, drawing a circle with a previously obtained center and distance as radius, and taking an isolated intersection point of two such curves. Coincident curves do not authorize selecting an arbitrary new point. Changing coordinates by the initial unit segment fixes the arithmetic meaning of a constructed length.</p>
+<h3 id="proposition-4-9-the-quadratic-field-obstruction">Proposition 4.9. The quadratic-field obstruction</h3>
+<p>Every real constructible number belongs to a tower</p>
+<span class="math math-display" data-tex="\[
+\mathbb Q=K_0\subset K_1\subset\cdots\subset K_m\subset\mathbb R,
+\qquad [K_j:K_{j-1}]\in\{1,2\}.
+\]">\[
+\mathbb Q=K_0\subset K_1\subset\cdots\subset K_m\subset\mathbb R,
+\qquad [K_j:K_{j-1}]\in\{1,2\}.
+\]</span>
+<p>In particular, its degree over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is a power of two. A square whose area equals the area of a unit disc cannot be constructed by straightedge and compass.</p>
+<p><strong>Proof.</strong> Suppose all current point coordinates lie in a field <span class="math" data-tex="\(K\subset\mathbb R\)">\(K\subset\mathbb R\)</span>. A line through two such points has an equation <span class="math" data-tex="\(ax+by+c=0\)">\(ax+by+c=0\)</span> with coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>. A circle with center <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> and radius equal to a distance between existing points has equation</p>
+<span class="math math-display" data-tex="\[
+(x-u)^2+(y-v)^2=r^2,
+\qquad u,v,r^2\in K.
+\]">\[
+(x-u)^2+(y-v)^2=r^2,
+\qquad u,v,r^2\in K.
+\]</span>
+<p>The radius itself need not yet be in <span class="math" data-tex="\(K\)">\(K\)</span>; its squared distance is in <span class="math" data-tex="\(K\)">\(K\)</span>, which is all the equation requires.</p>
+<p>Two nonparallel lines give coordinates in <span class="math" data-tex="\(K\)">\(K\)</span> by solving two linear equations. For a line and a circle, solve the line for one coordinate and substitute into the circle. The other coordinate satisfies a quadratic equation over <span class="math" data-tex="\(K\)">\(K\)</span>; its two real solutions, when they exist, lie in <span class="math" data-tex="\(K(\sqrt\Delta)\)">\(K(\sqrt\Delta)\)</span> for some <span class="math" data-tex="\(\Delta\in K\)">\(\Delta\in K\)</span> with <span class="math" data-tex="\(\Delta\geq0\)">\(\Delta\geq0\)</span>. The remaining coordinate lies in the same field. For two distinct circles, subtract their equations. If the centers differ, this gives a line and reduces to the preceding case. If the centers agree and the radii differ, there is no intersection; if both agree, the curves coincide and produce no isolated new point. Tangencies require no additional extension. Thus each step adjoins at most one square root.</p>
+<p>If the requested output is a distance between constructed points, taking that distance adjoins at most one more square root. This proves the tower assertion. The tower basis theorem from the opening lesson gives <span class="math" data-tex="\([K_m:\mathbb Q]=2^s\)">\([K_m:\mathbb Q]=2^s\)</span>. Since <span class="math" data-tex="\(\mathbb Q(a)\subset K_m\)">\(\mathbb Q(a)\subset K_m\)</span>, the same theorem gives</p>
+<span class="math math-display" data-tex="\[
+2^s=[K_m:\mathbb Q(a)]\,[\mathbb Q(a):\mathbb Q].
+\]">\[
+2^s=[K_m:\mathbb Q(a)]\,[\mathbb Q(a):\mathbb Q].
+\]</span>
+<p>Hence the degree of <span class="math" data-tex="\(a\)">\(a\)</span> is a divisor of <span class="math" data-tex="\(2^s\)">\(2^s\)</span>, and is itself a power of two. This is a necessary condition; we are not claiming that every algebraic number of such a degree is constructible.</p>
+<p>A square of area <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has positive side length <span class="math" data-tex="\(\sqrt\pi\)">\(\sqrt\pi\)</span>. If it were constructible, this length would be algebraic, and its square <span class="math" data-tex="\(\pi\)">\(\pi\)</span> would be algebraic. Theorem 4.3 excludes that possibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-a-second-viewpoint-newton-interpolation-for-pi">7. A second viewpoint: Newton interpolation for pi</h2>
+<p>The integral proof preserves one derivative modulo a prime. Newton interpolation offers a complementary mechanism: it produces polynomial values at <span class="math" data-tex="\(\pi\)">\(\pi\)</span> that are too small for a nonzero value at an algebraic number. We give the argument because it connects this lesson to the analytic estimates used next. The Complex Analysis source, Jiří Lebl's <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026, supplies the exact contour prerequisites: Theorem 3.3.4 proves Cauchy's formula for derivatives, and Theorem 5.3.2 proves the residue theorem for isolated singularities and a homologous-to-zero cycle. These include the circular contours and repeated poles used below. The linked proofs retain their <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> licence, selected from the book's dual licence.  Waldschmidt's <em>Auxiliary functions in transcendence proofs</em>, §§2.2–2.3, explains the interpolation formula of Hermite used below and the interpolation-series method of Pólya and Gelfond, in which arithmetic forces the coefficients of an interpolation series to vanish.</p>
+<p>Fix an integer <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, repeat the nodes <span class="math" data-tex="\(1,2,\ldots,m\)">\(1,2,\ldots,m\)</span> periodically, and write</p>
+<span class="math math-display" data-tex="\[
+F_n(z)=\prod_{j=1}^n(z-z_j),\qquad F_0=1.
+\]">\[
+F_n(z)=\prod_{j=1}^n(z-z_j),\qquad F_0=1.
+\]</span>
+<p>For an entire function <span class="math" data-tex="\(h\)">\(h\)</span>, define its divided-difference coefficient by</p>
+<span class="math math-display" data-tex="\[
+A_n=\frac1{2\pi i}\int_C\frac{h(\zeta)}{F_{n+1}(\zeta)}\,d\zeta,
+\]">\[
+A_n=\frac1{2\pi i}\int_C\frac{h(\zeta)}{F_{n+1}(\zeta)}\,d\zeta,
+\]</span>
+<p>where <span class="math" data-tex="\(C\)">\(C\)</span> is any positively oriented circle enclosing the nodes. The value is independent of the enclosing circle, by the residue theorem.</p>
+<h3 id="lemma-4-10-the-interpolation-identity-and-its-sine-estimate">Lemma 4.10. The interpolation identity and its sine estimate</h3>
+<p>For a circle <span class="math" data-tex="\(C\)">\(C\)</span> enclosing the first <span class="math" data-tex="\(n\)">\(n\)</span> nodes and <span class="math" data-tex="\(z\)">\(z\)</span>,</p>
+<span class="math math-display" data-tex="\[
+h(z)=\sum_{k=0}^{n-1}A_kF_k(z)+R_n(z),\qquad
+R_n(z)=\frac1{2\pi i}\int_C
+\frac{F_n(z)h(\zeta)}{F_n(\zeta)(\zeta-z)}\,d\zeta.
+\]">\[
+h(z)=\sum_{k=0}^{n-1}A_kF_k(z)+R_n(z),\qquad
+R_n(z)=\frac1{2\pi i}\int_C
+\frac{F_n(z)h(\zeta)}{F_n(\zeta)(\zeta-z)}\,d\zeta.
+\]</span>
+<p>For <span class="math" data-tex="\(h(z)=\sin\pi z\)">\(h(z)=\sin\pi z\)</span>, the remainder tends to zero uniformly on every bounded disc. Also, for <span class="math" data-tex="\(n&gt;2m\)">\(n&gt;2m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|A_n|\leq 2^{n+1}e^{\pi n}n^{-n}
+&lt;\exp(-n\log n+5n).
+\]">\[
+|A_n|\leq 2^{n+1}e^{\pi n}n^{-n}
+&lt;\exp(-n\log n+5n).
+\]</span>
+<p><strong>Proof.</strong> The finite rational identity</p>
+<span class="math math-display" data-tex="\[
+\frac1{\zeta-z}
+=\sum_{k=0}^{n-1}\frac{F_k(z)}{F_{k+1}(\zeta)}
++\frac{F_n(z)}{F_n(\zeta)(\zeta-z)}
+\]">\[
+\frac1{\zeta-z}
+=\sum_{k=0}^{n-1}\frac{F_k(z)}{F_{k+1}(\zeta)}
++\frac{F_n(z)}{F_n(\zeta)(\zeta-z)}
+\]</span>
+<p>follows by telescoping the difference of the consecutive fractions <span class="math" data-tex="\(F_k(z)/F_k(\zeta)\)">\(F_k(z)/F_k(\zeta)\)</span>. Multiply by <span class="math" data-tex="\(h(\zeta)/(2\pi i)\)">\(h(\zeta)/(2\pi i)\)</span> and integrate. Cauchy's formula gives the left side, and the other terms give the asserted coefficients and remainder. Repeated nodes are allowed because the rational identity does not require distinct nodes.</p>
+<p>For <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span> and <span class="math" data-tex="\(n&gt;2\max(R,m)\)">\(n&gt;2\max(R,m)\)</span>, choose <span class="math" data-tex="\(|\zeta|=n\)">\(|\zeta|=n\)</span>. Then <span class="math" data-tex="\(|F_n(z)|\leq(R+m)^n\)">\(|F_n(z)|\leq(R+m)^n\)</span>, every <span class="math" data-tex="\(|\zeta-z_j|\geq n-m&gt;n/2\)">\(|\zeta-z_j|\geq n-m&gt;n/2\)</span>, <span class="math" data-tex="\(|\zeta-z|&gt;n/2\)">\(|\zeta-z|&gt;n/2\)</span>, and <span class="math" data-tex="\(|\sin\pi\zeta|\leq e^{\pi n}\)">\(|\sin\pi\zeta|\leq e^{\pi n}\)</span>. The circle has length <span class="math" data-tex="\(2\pi n\)">\(2\pi n\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+|R_n(z)|\leq
+\frac{2^{n+1}(R+m)^ne^{\pi n}}{n^n}\longrightarrow0.
+\]">\[
+|R_n(z)|\leq
+\frac{2^{n+1}(R+m)^ne^{\pi n}}{n^n}\longrightarrow0.
+\]</span>
+<p>The same circle applied to <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, with <span class="math" data-tex="\(n+1\)">\(n+1\)</span> factors in its denominator, gives the first coefficient bound. Since <span class="math" data-tex="\(\pi+\log2&lt;4\)">\(\pi+\log2&lt;4\)</span> and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the extra factor two is absorbed by <span class="math" data-tex="\(e^n\)">\(e^n\)</span>, giving the displayed bound with five. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="lemma-4-11-arithmetic-of-the-interpolation-coefficients">Lemma 4.11. Arithmetic of the interpolation coefficients</h3>
+<p>Let <span class="math" data-tex="\(n+1\geq m\)">\(n+1\geq m\)</span>, and let <span class="math" data-tex="\(s_k\)">\(s_k\)</span> be the number of occurrences of node <span class="math" data-tex="\(k\)">\(k\)</span> among <span class="math" data-tex="\(z_1,\ldots,z_{n+1}\)">\(z_1,\ldots,z_{n+1}\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+r_k=s_k-1\geq0,\quad r=\max_k r_k\leq n/m,
+\quad M=\operatorname{lcm}(1,2,\ldots,m).
+\]">\[
+r_k=s_k-1\geq0,\quad r=\max_k r_k\leq n/m,
+\quad M=\operatorname{lcm}(1,2,\ldots,m).
+\]</span>
+<p>There is a polynomial <span class="math" data-tex="\(P_n\in\mathbb Z[X]\)">\(P_n\in\mathbb Z[X]\)</span> of degree at most <span class="math" data-tex="\(r\)">\(r\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+P_n(\pi)=r!M^{n-1}A_n,\qquad
+H(P_n)\leq r!(2M)^n.
+\]">\[
+P_n(\pi)=r!M^{n-1}A_n,\qquad
+H(P_n)\leq r!(2M)^n.
+\]</span>
+<p>Here the height of the zero polynomial is zero.</p>
+<p><strong>Proof.</strong> The residues of <span class="math" data-tex="\(\sin\pi\zeta/F_{n+1}(\zeta)\)">\(\sin\pi\zeta/F_{n+1}(\zeta)\)</span> are at <span class="math" data-tex="\(k=1,\ldots,m\)">\(k=1,\ldots,m\)</span>. At <span class="math" data-tex="\(k\)">\(k\)</span>, its numerator has expansion</p>
+<span class="math math-display" data-tex="\[
+\sin\pi(k+w)=(-1)^k
+\sum_{j\geq0}\frac{(-1)^j\pi^{2j+1}w^{2j+1}}{(2j+1)!}.
+\]">\[
+\sin\pi(k+w)=(-1)^k
+\sum_{j\geq0}\frac{(-1)^j\pi^{2j+1}w^{2j+1}}{(2j+1)!}.
+\]</span>
+<p>Only terms <span class="math" data-tex="\(2j+1\leq r_k\)">\(2j+1\leq r_k\)</span> can contribute to a residue. Let <span class="math" data-tex="\(a_{kj}\)">\(a_{kj}\)</span> be the residue of</p>
+<span class="math math-display" data-tex="\[
+\frac{(\zeta-k)^{2j+1}}{\prod_{s=1}^m(\zeta-s)^{r_s+1}}
+\]">\[
+\frac{(\zeta-k)^{2j+1}}{\prod_{s=1}^m(\zeta-s)^{r_s+1}}
+\]</span>
+<p>at <span class="math" data-tex="\(k\)">\(k\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+A_n=\sum_{k=1}^m\sum_{2j+1\leq r_k}
+\frac{(-1)^{j+k}a_{kj}}{(2j+1)!}\pi^{2j+1}. \tag{4.5}
+\]">\[
+A_n=\sum_{k=1}^m\sum_{2j+1\leq r_k}
+\frac{(-1)^{j+k}a_{kj}}{(2j+1)!}\pi^{2j+1}. \tag{4.5}
+\]</span>
+<p>Expand the factors at the other nodes as</p>
+<span class="math math-display" data-tex="\[
+(k-s+w)^{-(r_s+1)}
+=\sum_{t\geq0}(-1)^t\binom{r_s+t}{t}
+\frac{w^t}{(k-s)^{r_s+1+t}}.
+\]">\[
+(k-s+w)^{-(r_s+1)}
+=\sum_{t\geq0}(-1)^t\binom{r_s+t}{t}
+\frac{w^t}{(k-s)^{r_s+1+t}}.
+\]</span>
+<p>The residue coefficient requires <span class="math" data-tex="\(\sum_{s\neq k}t_s=r_k-(2j+1)\)">\(\sum_{s\neq k}t_s=r_k-(2j+1)\)</span>. Hence the sum of the denominator exponents is</p>
+<span class="math math-display" data-tex="\[
+\sum_{s\neq k}(r_s+1+t_s)=n-(2j+1)\leq n-1.
+\]">\[
+\sum_{s\neq k}(r_s+1+t_s)=n-(2j+1)\leq n-1.
+\]</span>
+<p>Each nonzero integer <span class="math" data-tex="\(k-s\)">\(k-s\)</span> divides <span class="math" data-tex="\(M\)">\(M\)</span>. Thus <span class="math" data-tex="\(M^{n-1}a_{kj}\in\mathbb Z\)">\(M^{n-1}a_{kj}\in\mathbb Z\)</span>. Also <span class="math" data-tex="\(r!/(2j+1)!\)">\(r!/(2j+1)!\)</span> is an integer. Multiplying (4.5) by <span class="math" data-tex="\(r!M^{n-1}\)">\(r!M^{n-1}\)</span> therefore gives an integer polynomial of degree at most <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>For the height estimate, integrate the defining residue on <span class="math" data-tex="\(|\zeta-k|=1/2\)">\(|\zeta-k|=1/2\)</span>. Every distance <span class="math" data-tex="\(|\zeta-s|\)">\(|\zeta-s|\)</span> is at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and the numerator has modulus <span class="math" data-tex="\(2^{-(2j+1)}\)">\(2^{-(2j+1)}\)</span>. The circle length divided by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+|a_{kj}|\leq2^{n-2j-1}\leq2^{n-1}.
+\]">\[
+|a_{kj}|\leq2^{n-2j-1}\leq2^{n-1}.
+\]</span>
+<p>For any fixed coefficient of <span class="math" data-tex="\(\pi^{2j+1}\)">\(\pi^{2j+1}\)</span>, at most <span class="math" data-tex="\(m\)">\(m\)</span> nodes contribute. Its absolute value after multiplication is at most <span class="math" data-tex="\(m r!M^{n-1}2^{n-1}\leq r!(2M)^n\)">\(m r!M^{n-1}2^{n-1}\leq r!(2M)^n\)</span>, since <span class="math" data-tex="\(M\geq m\)">\(M\geq m\)</span>. Finally, periodicity makes <span class="math" data-tex="\(\max s_k=\lceil(n+1)/m\rceil\)">\(\max s_k=\lceil(n+1)/m\rceil\)</span>, so <span class="math" data-tex="\(r=\lfloor n/m\rfloor\)">\(r=\lfloor n/m\rfloor\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The second proof of Theorem 4.3.</strong> Suppose <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is algebraic of degree <span class="math" data-tex="\(d\)">\(d\)</span>, and choose <span class="math" data-tex="\(m=d+1\)">\(m=d+1\)</span>. We need the polynomial-value norm bound with the sharper exponent <span class="math" data-tex="\(d-1\)">\(d-1\)</span> on its coefficient length. Here is that specialization, using the arithmetic already introduced in the height lesson. Let <span class="math" data-tex="\(a\)">\(a\)</span> be a fixed positive integer making <span class="math" data-tex="\(a\pi\)">\(a\pi\)</span> integral, and let <span class="math" data-tex="\(\pi=\pi_1,\ldots,\pi_d\)">\(\pi=\pi_1,\ldots,\pi_d\)</span> be its conjugates. For <span class="math" data-tex="\(P\in\mathbb Z[X]\)">\(P\in\mathbb Z[X]\)</span> of degree at most <span class="math" data-tex="\(r\)">\(r\)</span>, the number <span class="math" data-tex="\(a^rP(\pi)\)">\(a^rP(\pi)\)</span> is integral, because <span class="math" data-tex="\(a^r\pi^j=a^{r-j}(a\pi)^j\)">\(a^r\pi^j=a^{r-j}(a\pi)^j\)</span> is integral for every <span class="math" data-tex="\(j\leq r\)">\(j\leq r\)</span>. If <span class="math" data-tex="\(P(\pi)\neq0\)">\(P(\pi)\neq0\)</span>, none of its conjugate values is zero, and its nonzero integer norm gives</p>
+<span class="math math-display" data-tex="\[
+1\leq a^{rd}\prod_{j=1}^d|P(\pi_j)|
+\leq a^{rd}|P(\pi)|L(P)^{d-1}
+\prod_{j=2}^d\max(1,|\pi_j|)^r.
+\]">\[
+1\leq a^{rd}\prod_{j=1}^d|P(\pi_j)|
+\leq a^{rd}|P(\pi)|L(P)^{d-1}
+\prod_{j=2}^d\max(1,|\pi_j|)^r.
+\]</span>
+<p>Thus, for a constant <span class="math" data-tex="\(c_0\)">\(c_0\)</span> depending only on the hypothetical algebraic <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, a nonzero polynomial value of degree at most <span class="math" data-tex="\(r\)">\(r\)</span> and height at most <span class="math" data-tex="\(H\)">\(H\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\log|P_n(\pi)|\geq
+-(d-1)\log H-c_0r-c_0\log(r+1)
+\]">\[
+\log|P_n(\pi)|\geq
+-(d-1)\log H-c_0r-c_0\log(r+1)
+\]</span>
+<p>Use <span class="math" data-tex="\(L(P_n)\leq(r+1)H\)">\(L(P_n)\leq(r+1)H\)</span> in the norm bound and enlarge <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. This sharper coefficient exponent comes from estimating the other <span class="math" data-tex="\(d-1\)">\(d-1\)</span> conjugates; the general placewise height bound alone would not suffice at this point. Since <span class="math" data-tex="\(r\leq n/m\)">\(r\leq n/m\)</span> and <span class="math" data-tex="\(H\leq r!(2M)^n\)">\(H\leq r!(2M)^n\)</span>, this lower bound becomes</p>
+<span class="math math-display" data-tex="\[
+\log|P_n(\pi)|\geq
+-\frac{m-2}{m}n\log n-c_1n
+\]">\[
+\log|P_n(\pi)|\geq
+-\frac{m-2}{m}n\log n-c_1n
+\]</span>
+<p>for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, whenever the value is nonzero. We used <span class="math" data-tex="\(\log(r!)\leq r\log\max(1,r)\)">\(\log(r!)\leq r\log\max(1,r)\)</span>; the constants depend on the fixed hypothetical <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>But Lemma 4.10 and <span class="math" data-tex="\(P_n(\pi)=r!M^{n-1}A_n\)">\(P_n(\pi)=r!M^{n-1}A_n\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\log|P_n(\pi)|\leq
+-\frac{m-1}{m}n\log n+c_2n
+\]">\[
+\log|P_n(\pi)|\leq
+-\frac{m-1}{m}n\log n+c_2n
+\]</span>
+<p>when the value is nonzero. The coefficients of <span class="math" data-tex="\(n\log n\)">\(n\log n\)</span> differ by <span class="math" data-tex="\(1/m\)">\(1/m\)</span>, so the bounds are incompatible for large <span class="math" data-tex="\(n\)">\(n\)</span>. Therefore <span class="math" data-tex="\(A_n=0\)">\(A_n=0\)</span> for every sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>. Lemma 4.10 then makes <span class="math" data-tex="\(\sin\pi z\)">\(\sin\pi z\)</span> a finite sum of polynomials, hence a polynomial. It has infinitely many distinct zeros at the integers and is not identically zero, for <span class="math" data-tex="\(\sin(\pi/2)=1\)">\(\sin(\pi/2)=1\)</span>. A nonzero polynomial cannot have infinitely many roots. This is the contradiction.</p>
+<p>Both proofs compare arithmetic rigidity with analytic decay. The first isolates a nonzero residue. The second forces a whole tail of interpolation coefficients to vanish. Weierstrass's original argument, Hilbert's simplifications and the later work of Beukers, Bézivin and Robba are historical routes to the same independence theorem; no additional theorem is being assumed from those references here.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy — recovering the two classical constants.</strong> Use Theorem 4.6 directly to show that <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> are transcendental. State precisely what is assumed algebraic in each contradiction.</li>
+<li><strong>Easy — a tangent value.</strong> Show that <span class="math" data-tex="\(\tan\sqrt2\)">\(\tan\sqrt2\)</span> is defined and transcendental. Derive the polynomial equation for <span class="math" data-tex="\(e^{i\sqrt2}\)">\(e^{i\sqrt2}\)</span> that would follow if this tangent were algebraic.</li>
+<li><strong>Medium — linear and algebraic independence.</strong> Prove both directions of Theorem 4.7, including the clearing of rational coordinates, the possible negative exponents, and the zero-dimensional span case.</li>
+<li><strong>Medium — the surviving coefficient.</strong> In the first product of Lemma 4.5, suppose <span class="math" data-tex="\(a_s\)">\(a_s\)</span> is the greatest original exponent. Compute the greatest exponent and its coefficient. Then explain why the permutation product used in the second reduction also has a nonzero greatest coefficient, although different factors need not have the same greatest exponent.</li>
+<li><strong>Medium — the geometric obstruction.</strong> Starting from a unit segment, prove the quadratic tower condition for straightedge-and-compass constructions. Deduce the impossibility of squaring the circle, and explain why the argument only establishes a necessary degree condition for constructibility.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>If <span class="math" data-tex="\(e=c\)">\(e=c\)</span> were algebraic, the relation <span class="math" data-tex="\(-c e^0+e^1=0\)">\(-c e^0+e^1=0\)</span> would have distinct algebraic exponents and nonzero algebraic coefficients. It contradicts Theorem 4.6. If <span class="math" data-tex="\(\pi\)">\(\pi\)</span> were algebraic, <span class="math" data-tex="\(i\pi\neq0\)">\(i\pi\neq0\)</span> would be algebraic; Euler's identity would give <span class="math" data-tex="\(e^0+e^{i\pi}=0\)">\(e^0+e^{i\pi}=0\)</span>, again contradicting that theorem. The second argument assumes algebraicity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span> only for the purpose of applying the theorem; <span class="math" data-tex="\(i\pi\)">\(i\pi\)</span> is not asserted to be algebraic in reality.</li>
+<li>If <span class="math" data-tex="\(\cos\sqrt2=0\)">\(\cos\sqrt2=0\)</span>, this cosine would be algebraic, contrary to Corollary 4.8. Thus the tangent is defined. Put <span class="math" data-tex="\(z=e^{i\sqrt2}\)">\(z=e^{i\sqrt2}\)</span> and suppose <span class="math" data-tex="\(t=\tan\sqrt2\)">\(t=\tan\sqrt2\)</span> is algebraic. The identity <span class="math" data-tex="\(i t(z^2+1)=z^2-1\)">\(i t(z^2+1)=z^2-1\)</span> gives <span class="math" data-tex="\((1-it)z^2-(1+it)=0\)">\((1-it)z^2-(1+it)=0\)</span>. The coefficient <span class="math" data-tex="\(1-it\)">\(1-it\)</span> cannot be zero, since that would force <span class="math" data-tex="\(0=2\)">\(0=2\)</span>. Hence this is a nonzero polynomial over the algebraic numbers having <span class="math" data-tex="\(z\)">\(z\)</span> as a root, so <span class="math" data-tex="\(z\)">\(z\)</span> is algebraic. But <span class="math" data-tex="\(i\sqrt2\neq0\)">\(i\sqrt2\neq0\)</span> is algebraic and its exponential is transcendental by Theorem 4.6. This contradiction proves the claim.</li>
+<li>In the forward direction, a nonzero polynomial relation expands into a finite sum of exponentials indexed by distinct nonnegative integer vectors. Rational independence of the algebraic input numbers makes their exponent sums distinct, so Theorem 4.6 excludes the relation. In the converse direction, choose a rational basis of the span of a hypothetical finite list of exponents, clear their coordinates by one positive integer <span class="math" data-tex="\(M\)">\(M\)</span>, and use algebraic independence of the exponentials of the basis elements divided by <span class="math" data-tex="\(M\)">\(M\)</span>. The hypothetical relation is a Laurent polynomial with distinct monomials. Multiply by <span class="math" data-tex="\(\prod z_j^{q_j}\)">\(\prod z_j^{q_j}\)</span>, choosing <span class="math" data-tex="\(q_j\)">\(q_j\)</span> at least minus the smallest exponent in coordinate <span class="math" data-tex="\(j\)">\(j\)</span>; it becomes a polynomial, retains distinct monomials and retains a nonzero coefficient. None of the <span class="math" data-tex="\(z_j\)">\(z_j\)</span>'s vanishes. This contradicts their algebraic independence. If the span is zero, all exponents are zero; a distinct list then has at most one member, and its exponential is one, so no nonzero one-term relation can vanish.</li>
+<li>Let <span class="math" data-tex="\(T=\prod_{j=1}^s d_j\)">\(T=\prod_{j=1}^s d_j\)</span> be the number of factors. The greatest exponent is <span class="math" data-tex="\(Ta_s\)">\(Ta_s\)</span>. Every occurrence must select the <span class="math" data-tex="\(a_s\)">\(a_s\)</span>-term, because selecting a smaller term in any factor strictly decreases the sum. Each conjugate of <span class="math" data-tex="\(c_s\)">\(c_s\)</span> occurs <span class="math" data-tex="\(T/d_s\)">\(T/d_s\)</span> times among those choices, so the coefficient is <span class="math" data-tex="\(\bigl(\prod_{t=1}^{d_s}c_s^{(t)}\bigr)^{T/d_s}\neq0\)">\(\bigl(\prod_{t=1}^{d_s}c_s^{(t)}\bigr)^{T/d_s}\neq0\)</span>. It is rational, being a power of the product of the roots of the minimal polynomial of <span class="math" data-tex="\(c_s\)">\(c_s\)</span>. In the permutation product, each factor has its own greatest exponent with nonzero integer coefficient. The greatest exponent of the product is the sum of those factorwise greatest exponents, with coefficient the product of the corresponding nonzero integers. Translation invariance of the lexicographic order makes this contribution unique. Thus collisions among other exponent sums cannot cancel this coefficient.</li>
+<li>Let <span class="math" data-tex="\(K\)">\(K\)</span> contain the coordinates of all points obtained so far. A new line has linear coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>, and a new circle has coefficients in <span class="math" data-tex="\(K\)">\(K\)</span>, because its squared radius is a sum of squared differences of existing coordinates. Two lines give linear solutions in <span class="math" data-tex="\(K\)">\(K\)</span>. Subtracting two circle equations gives a line, except for concentric circles, which have either no intersections or coincide. Substituting a line into a circle gives a quadratic equation, whose real solutions require at most one square root. Thus each finite step extends the current field by degree at most two; taking a final length adds at most one further square root. Tower multiplicativity makes the ambient degree a power of two, and the degree of any constructed number divides it. The positive side length of a square of area <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is <span class="math" data-tex="\(\sqrt\pi\)">\(\sqrt\pi\)</span>; if constructible it would be algebraic, making <span class="math" data-tex="\(\pi\)">\(\pi\)</span> algebraic, contrary to Theorem 4.3. The degree divisibility argument goes only from construction to degree. It does not show that an arbitrary algebraic extension of degree a power of two can be built by successive quadratic extensions inside the real numbers, so it supplies no converse.</li>
+</ol>
+<h2 id="references">References</h2>
+<ul>
+<li>K. Soundararajan, <a href="https://math.stanford.edu/~ksound/TransNotes.pdf"><em>Transcendental Number Theory</em></a>, Math 249A course notes, Stanford University, Fall 2010, written up by I. Petrow, §1, Claim 3, and §2, Theorem 7: prime-integral proofs of the transcendence of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, through sums over subsets of conjugates, and of the Lindemann–Weierstrass theorem, with the two symmetrizations.</li>
+<li>J.-H. Evertse, <a href="https://pub.math.leidenuniv.nl/~evertsejh/dio19-4.pdf"><em>Diophantine Approximation</em>, Chapter 4: Transcendence results</a>, Leiden course notes, §4.2, Theorems 4.8 and 4.11 and Corollaries 4.9–4.10, and Exercise 4.6: the Lindemann–Weierstrass theorem with algebraic coefficients, its symmetric form, the algebraic-independence form and elementary consequences.</li>
+<li>Michel Waldschmidt, <a href="https://arxiv.org/abs/0908.4024"><em>Auxiliary functions in transcendence proofs</em></a>, arXiv:0908.4024, 2009, §§2.2–2.3: Newton interpolation series, Hermite's formula for their coefficients and remainders, and the interpolation methods of Pólya and Gelfond.</li>
+<li>T. W. Judson, <em>Abstract Algebra: Theory and Applications</em>, author HTML edition dated August 4, 2026, <a href="https://judsonbooks.org/aata-files/aata-html/galois-section-field-automorphisms.html">§23.1, Theorem 23.1.7</a>, and <a href="https://judsonbooks.org/aata-files/aata-html/galois-section-fund-theorem-galois-theory.html">§23.2, Proposition 23.2.4</a>: the exact splitting-field and fixed-field prerequisite proofs. The linked book retains its GFDL licence.</li>
+<li>Jiří Lebl, <a href="https://www.jirka.org/ca/ca.pdf"><em>Guide to Cultivating Complex Analysis</em></a>, version 1.9, July 11, 2026: Theorems 3.3.4 and 5.3.2, the exact open Cauchy-formula and residue prerequisites. Copyright © 2019–2026 Jiří Lebl; dual CC BY-NC-SA 4.0 / CC BY-SA 4.0, with CC BY-SA used for these linked proofs. The original text of this lesson remains CC0.</li>
+<li>F. Lindemann, <a href="https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0020/LOG_0031.pdf">“Ueber die Zahl <span class="math" data-tex="\(\pi\)">\(\pi\)</span>”</a>, <em>Mathematische Annalen</em> <strong>20</strong> (1882), 213–225; K. Weierstrass, <a href="https://archive.org/details/mathematischewer02weieuoft/page/341/mode/1up">“Zu Lindemann's Abhandlung: Über die Ludolph'sche Zahl”</a>, <em>Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu Berlin</em> (1885), reprinted in <em>Mathematische Werke</em> II (1895), 341–362: historical credit.</li>
+<li>F. Beukers, J.-P. Bézivin and P. Robba gave another proof of the Lindemann–Weierstrass theorem in 1990. M. Klazar, <a href="https://arxiv.org/abs/2601.01019v8"><em>The transcendence of e via formal power series</em></a>, arXiv:2601.01019v8, 2026, §2, presents its specialization to the transcendence of <span class="math" data-tex="\(e\)">\(e\)</span>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="TR-TRANS-03.html">← Hermite and the transcendence of e</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-TRANS-05.html">Siegel&#x27;s lemma, analytic estimates and the six exponentials theorem →</a></span></nav>
+<p class="small source-link"><a href="src/TR-TRANS-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-TRANS">Repository</a></nav>
+</footer>
+</body>
+</html>

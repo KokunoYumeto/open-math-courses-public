@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forms in several variables and Hilbert finiteness · Invariants and finiteness</title>
+<meta name="description" content="A lesson of the course Invariants and finiteness. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-INV/NOE-INV-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Invariants and finiteness</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 5</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="forms-in-several-variables-and-hilbert-finiteness">Forms in several variables and Hilbert finiteness</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original exposition and proofs are CC0. This evolving lesson is being checked by its writing AI; no independent review is recorded.</em></p>
+<p>A finite list of explicit covariants answers one computational problem. Hilbert's argument answers a different question: why must some finite list exist for every polynomial representation of the special linear group? Its essential step is a projection that turns coefficients in an ideal expression into invariant coefficients. We then determine the entire invariant ring of a ternary cubic by restricting to the Hesse pencil, before turning to nullcones and determinant operators.</p>
+<p>We work over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. A polynomial representation of <span class="math" data-tex="\(G=\operatorname{SL}_n(\mathbb C)\)">\(G=\operatorname{SL}_n(\mathbb C)\)</span> is a homomorphism <span class="math" data-tex="\(G\to\operatorname{GL}(W)\)">\(G\to\operatorname{GL}(W)\)</span> whose matrix entries are regular functions of the matrix entries of <span class="math" data-tex="\(g\)">\(g\)</span>; on <span class="math" data-tex="\(G\)">\(G\)</span>, inverse entries are polynomial as well, since <span class="math" data-tex="\(g^{-1}=\operatorname{adj}(g)\)">\(g^{-1}=\operatorname{adj}(g)\)</span>. Put <span class="math" data-tex="\(A=\mathbb C[W]\)">\(A=\mathbb C[W]\)</span>, with action <span class="math" data-tex="\((gF)(w)=F(g^{-1}w)\)">\((gF)(w)=F(g^{-1}w)\)</span>. Each degree <span class="math" data-tex="\(A_d\)">\(A_d\)</span> is a finite-dimensional polynomial representation.</p>
+<p>We use normalized Haar measure from <a href="../NCG-FOLIATIONS/companions/haar-functional.html">Haar measure on locally compact groups, Theorems 8.3 and 9.2</a>, the Hilbert basis theorem from <a href="../AG-CA/AG-CA-03.html">Noetherian and Artinian rings, Theorem 2.1</a>, and the Nullstellensatz from <a href="../AG-CA/AG-CA-06.html">The Nullstellensatz and Jacobson rings</a>. These are existing prerequisite lessons with their own proofs. From the first lesson of this course we need the action conventions and covariance of alternating contractions; we do not assume its finite-generation conclusion.</p>
+<h2 id="1-determinants-and-mixed-variables">1. Determinants and mixed variables</h2>
+<p>For vector columns <span class="math" data-tex="\(v_1,\ldots,v_m\in\mathbb C^n\)">\(v_1,\ldots,v_m\in\mathbb C^n\)</span>, write
+<span class="math math-display" data-tex="\[
+[i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
+\]">\[
+[i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
+\]</span>
+Multiplication of the matrix by <span class="math" data-tex="\(g\)">\(g\)</span> multiplies every bracket by <span class="math" data-tex="\(\det g\)">\(\det g\)</span>, so these are special-linear invariants. The first fundamental theorem, proved in <em>Polarization and invariants of many vectors</em>, says they generate the invariant ring on any number of vectors.</p>
+<p>For a dual vector <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the pairing <span class="math" data-tex="\(\alpha(v)\)">\(\alpha(v)\)</span> is invariant under
+<span class="math" data-tex="\(v\mapsto gv,\ \alpha\mapsto\alpha g^{-1}\)">\(v\mapsto gv,\ \alpha\mapsto\alpha g^{-1}\)</span>.
+Determinants of <span class="math" data-tex="\(n\)">\(n\)</span> dual rows instead scale by <span class="math" data-tex="\(\det(g)^{-1}\)">\(\det(g)^{-1}\)</span>. In symbolic notation, the letters of a form are dual rows and its ordinary variables are vector columns. Auxiliary dual variables describe contravariants. Polynomials depending on several sorts of auxiliary variables are called concomitants. These transformation rules keep the variable sorts distinct.</p>
+<p>For exactly <span class="math" data-tex="\(n\)">\(n\)</span> vector columns, bracket generation has a short direct proof. If <span class="math" data-tex="\(F\)">\(F\)</span> is invariant, define <span class="math" data-tex="\(h(t)=F(\operatorname{diag}(t,1,\ldots,1))\)">\(h(t)=F(\operatorname{diag}(t,1,\ldots,1))\)</span>. On invertible matrices, two matrices have the same determinant exactly when one is obtained from the other by left multiplication by a special-linear matrix. Thus <span class="math" data-tex="\(F(X)=h(\det X)\)">\(F(X)=h(\det X)\)</span> there. Since <span class="math" data-tex="\(h\)">\(h\)</span> is polynomial and invertible matrices form a dense open set, the equality holds for all <span class="math" data-tex="\(X\)">\(X\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\mathbb C[\operatorname{Mat}_n]^{\operatorname{SL}_n}=\mathbb C[\det X].
+\tag{1}
+\]">\[
+\mathbb C[\operatorname{Mat}_n]^{\operatorname{SL}_n}=\mathbb C[\det X].
+\tag{1}
+\]</span>
+For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> this proves the invariant ring of a pair of vectors is <span class="math" data-tex="\(\mathbb C[[12]]\)">\(\mathbb C[[12]]\)</span>.</p>
+<h2 id="2-compact-averaging-and-the-unitary-trick">2. Compact averaging and the unitary trick</h2>
+<p><strong>Theorem 2.1 (compact complete reducibility).</strong> Every finite-dimensional continuous complex representation of a compact group <span class="math" data-tex="\(K\)">\(K\)</span> has an invariant positive-definite Hermitian inner product. Every invariant subspace has an invariant complement.</p>
+<p><strong>Proof.</strong> Start with any positive-definite Hermitian form <span class="math" data-tex="\(\langle\ ,\ \rangle_0\)">\(\langle\ ,\ \rangle_0\)</span>, and normalized Haar measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. On a compact group this measure is also right invariant: the right translate of a left Haar measure is left Haar, has the same total mass, and hence equals it by uniqueness. Define
+<span class="math math-display" data-tex="\[
+\langle v,w\rangle_K=\int_K
+\langle kv,kw\rangle_0\,d\mu(k).
+\]">\[
+\langle v,w\rangle_K=\int_K
+\langle kv,kw\rangle_0\,d\mu(k).
+\]</span>
+It is Hermitian and invariant, by right translation in the integral. For <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the continuous positive function <span class="math" data-tex="\(\langle kv,kv\rangle_0\)">\(\langle kv,kv\rangle_0\)</span> has a positive minimum on <span class="math" data-tex="\(K\)">\(K\)</span>; its integral is positive. If <span class="math" data-tex="\(U\)">\(U\)</span> is invariant, unitarity makes its orthogonal complement invariant: for <span class="math" data-tex="\(v\perp U\)">\(v\perp U\)</span> and <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>,
+<span class="math" data-tex="\(\langle kv,u\rangle_K=\langle v,k^{-1}u\rangle_K=0\)">\(\langle kv,u\rangle_K=\langle v,k^{-1}u\rangle_K=0\)</span>.
+Splitting successively proves complete reducibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(G=\operatorname{SL}_n(\mathbb C)\)">\(G=\operatorname{SL}_n(\mathbb C)\)</span>, take
+<span class="math math-display" data-tex="\[
+K=\operatorname{SU}(n)=\{g:g^*g=I,\ \det g=1\}.
+\]">\[
+K=\operatorname{SU}(n)=\{g:g^*g=I,\ \det g=1\}.
+\]</span>
+It is closed and bounded in a finite-dimensional real vector space, hence compact.</p>
+<p><strong>Lemma 2.2 (density of the unitary subgroup).</strong> A regular function on <span class="math" data-tex="\(G\)">\(G\)</span> that vanishes on <span class="math" data-tex="\(K\)">\(K\)</span> is zero. The same holds for a holomorphic function.</p>
+<p><strong>Proof.</strong> The real Lie algebra
+<span class="math" data-tex="\(\mathfrak k=\{X:X^*=-X,\ \operatorname{tr}X=0\}\)">\(\mathfrak k=\{X:X^*=-X,\ \operatorname{tr}X=0\}\)</span>
+has complex span <span class="math" data-tex="\(\mathfrak{sl}_n(\mathbb C)\)">\(\mathfrak{sl}_n(\mathbb C)\)</span>. Indeed every trace-zero matrix is the sum of a skew-Hermitian trace-zero matrix and <span class="math" data-tex="\(i\)">\(i\)</span> times another one, by separating its Hermitian and skew-Hermitian parts. Choose a real basis <span class="math" data-tex="\(X_1,\ldots,X_{n^2-1}\)">\(X_1,\ldots,X_{n^2-1}\)</span> of <span class="math" data-tex="\(\mathfrak k\)">\(\mathfrak k\)</span>; it is a complex basis of that complex span.</p>
+<p>The holomorphic map
+<span class="math math-display" data-tex="\[
+\Phi(z_1,\ldots,z_{n^2-1})
+=\exp(z_1X_1)\cdots\exp(z_{n^2-1}X_{n^2-1})
+\]">\[
+\Phi(z_1,\ldots,z_{n^2-1})
+=\exp(z_1X_1)\cdots\exp(z_{n^2-1}X_{n^2-1})
+\]</span>
+has invertible derivative at zero, so the complex inverse-function theorem gives a complex open neighbourhood of the identity in its image. For real <span class="math" data-tex="\(z_j\)">\(z_j\)</span>, its image lies in <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> vanishes on <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(P\circ\Phi\)">\(P\circ\Phi\)</span> vanishes on a real open box. Applying the one-variable identity theorem to one coordinate at a time makes it zero on a complex neighbourhood of zero. Hence <span class="math" data-tex="\(P\)">\(P\)</span> vanishes on a complex open neighbourhood in <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>The group <span class="math" data-tex="\(G\)">\(G\)</span> is connected: elementary row operations express its matrices as products of elementary unipotent matrices and determinant-one diagonal matrices; the latter are products of diagonal <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> blocks, themselves products of elementary matrices by the explicit calculation in the first lesson. Each elementary subgroup is the image of the connected plane <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, and products give paths to the identity. Holomorphic continuation on this connected complex manifold now proves <span class="math" data-tex="\(P=0\)">\(P=0\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (the unitary trick).</strong> Every finite-dimensional polynomial representation of <span class="math" data-tex="\(G\)">\(G\)</span> is completely reducible.</p>
+<p><strong>Proof.</strong> First, a <span class="math" data-tex="\(K\)">\(K\)</span>-invariant subspace <span class="math" data-tex="\(U\)">\(U\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. For <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span> and a linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> vanishing on <span class="math" data-tex="\(U\)">\(U\)</span>, the regular function <span class="math" data-tex="\(g\mapsto\ell(gu)\)">\(g\mapsto\ell(gu)\)</span> vanishes on <span class="math" data-tex="\(K\)">\(K\)</span>, and hence on <span class="math" data-tex="\(G\)">\(G\)</span> by Lemma 2.2. Therefore <span class="math" data-tex="\(gu\in U\)">\(gu\in U\)</span>.</p>
+<p>Given a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant subspace, Theorem 2.1 supplies a <span class="math" data-tex="\(K\)">\(K\)</span>-invariant complement; the preceding argument makes that complement <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. Repeating in finite dimension gives a direct sum of irreducibles. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The passage from <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(G\)">\(G\)</span> uses holomorphic matrix coefficients. It does not apply to an arbitrary continuous representation of the underlying real group <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="3-the-reynolds-projection">3. The Reynolds projection</h2>
+<p>Let <span class="math" data-tex="\(B=A^G\)">\(B=A^G\)</span>. Degree by degree, define
+<span class="math math-display" data-tex="\[
+\rho(F)=\int_K kF\,d\mu(k).
+\tag{2}
+\]">\[
+\rho(F)=\int_K kF\,d\mu(k).
+\tag{2}
+\]</span>
+The integral is just integration of the finitely many coordinates in <span class="math" data-tex="\(A_d\)">\(A_d\)</span>, not integration over an infinite-dimensional space.</p>
+<p><strong>Theorem 3.1 (Reynolds).</strong> The map <span class="math" data-tex="\(\rho:A\to B\)">\(\rho:A\to B\)</span> is the unique degree-preserving, <span class="math" data-tex="\(G\)">\(G\)</span>-equivariant projection onto <span class="math" data-tex="\(B\)">\(B\)</span>. It satisfies
+<span class="math math-display" data-tex="\[
+\rho(bF)=b\rho(F)\quad(b\in B),\qquad
+\rho(b)=b.
+\tag{3}
+\]">\[
+\rho(bF)=b\rho(F)\quad(b\in B),\qquad
+\rho(b)=b.
+\tag{3}
+\]</span></p>
+<p><strong>Proof.</strong> Translation in (2) makes its image <span class="math" data-tex="\(K\)">\(K\)</span>-fixed, hence <span class="math" data-tex="\(G\)">\(G\)</span>-fixed by density. Averaging a fixed vector gives that vector, so it is a projection. It preserves degrees. Left and right invariance of Haar measure make it commute with <span class="math" data-tex="\(K\)">\(K\)</span>, and density makes this commutation hold with <span class="math" data-tex="\(G\)">\(G\)</span> on every finite-dimensional degree piece. Pulling the <span class="math" data-tex="\(K\)">\(K\)</span>-fixed factor <span class="math" data-tex="\(b\)">\(b\)</span> out of the integral proves (3).</p>
+<p>For uniqueness, use Theorem 2.3 on each <span class="math" data-tex="\(A_d\)">\(A_d\)</span>. Any equivariant map to the trivial representation kills every nontrivial irreducible: a nonzero map from an irreducible to a trivial representation would be injective, forcing that irreducible to be trivial. On the sum of trivial summands a projection onto <span class="math" data-tex="\(B_d\)">\(B_d\)</span> is the identity. These two conditions determine it uniquely. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a Reynolds projection is more than a linear choice of a complement. Its invariant-linearity is what permits the next degree induction.</p>
+<h2 id="4-hilbert-finiteness-and-normality">4. Hilbert finiteness and normality</h2>
+<p><strong>Theorem 4.1 (Hilbert finiteness).</strong> For every finite-dimensional polynomial representation <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(\operatorname{SL}_n(\mathbb C)\)">\(\operatorname{SL}_n(\mathbb C)\)</span>, the invariant ring <span class="math" data-tex="\(B=\mathbb C[W]^G\)">\(B=\mathbb C[W]^G\)</span> is generated by finitely many homogeneous invariants.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(I=A\,B_+\)">\(I=A\,B_+\)</span> be the ideal generated by all positive-degree homogeneous invariants. The polynomial ring <span class="math" data-tex="\(A\)">\(A\)</span> is Noetherian by the Hilbert basis theorem. Hence <span class="math" data-tex="\(I\)">\(I\)</span> has finitely many ideal generators. Each is a finite <span class="math" data-tex="\(A\)">\(A\)</span>-linear combination of elements of <span class="math" data-tex="\(B_+\)">\(B_+\)</span>, so collecting the finitely many invariants occurring in those expressions gives homogeneous invariants <span class="math" data-tex="\(f_1,\ldots,f_s\)">\(f_1,\ldots,f_s\)</span> generating <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>If <span class="math" data-tex="\(f\in B\)">\(f\in B\)</span> is homogeneous of positive degree <span class="math" data-tex="\(d\)">\(d\)</span>, write
+<span class="math" data-tex="\(f=\sum_i a_if_i\)">\(f=\sum_i a_if_i\)</span>.
+Taking degree <span class="math" data-tex="\(d\)">\(d\)</span> components lets us choose <span class="math" data-tex="\(a_i\)">\(a_i\)</span> homogeneous of degree <span class="math" data-tex="\(d-\deg f_i\)">\(d-\deg f_i\)</span>, omitting a term when this number is negative. Apply (3):
+<span class="math math-display" data-tex="\[
+f=\rho(f)=\sum_i\rho(a_i)f_i.
+\]">\[
+f=\rho(f)=\sum_i\rho(a_i)f_i.
+\]</span>
+Every nonzero <span class="math" data-tex="\(\rho(a_i)\)">\(\rho(a_i)\)</span> has degree strictly less than <span class="math" data-tex="\(d\)">\(d\)</span>. Induction on <span class="math" data-tex="\(d\)">\(d\)</span>, starting with <span class="math" data-tex="\(B_0=\mathbb C\)">\(B_0=\mathbb C\)</span>, expresses <span class="math" data-tex="\(f\)">\(f\)</span> as a polynomial in the <span class="math" data-tex="\(f_i\)">\(f_i\)</span>. Every invariant is a sum of homogeneous invariants, because the action preserves degree. Thus <span class="math" data-tex="\(B=\mathbb C[f_1,\ldots,f_s]\)">\(B=\mathbb C[f_1,\ldots,f_s]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof establishes existence; the basis theorem does not supply a numerical bound on the degrees of the chosen <span class="math" data-tex="\(f_i\)">\(f_i\)</span>.</p>
+<p><strong>Corollary 4.2 (normality).</strong> <span class="math" data-tex="\(B\)">\(B\)</span> is a Noetherian normal domain.</p>
+<p><strong>Proof.</strong> It is a finite-type algebra over a field, hence Noetherian, and a subring of the domain <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(z\in\operatorname{Frac}B\)">\(z\in\operatorname{Frac}B\)</span> is integral over <span class="math" data-tex="\(B\)">\(B\)</span>, the same monic equation makes it integral over <span class="math" data-tex="\(A\)">\(A\)</span>. Polynomial rings are normal, by <a href="../AG-CA/AG-CA-05.html">Integral extensions, lying over, going up and going down, Proposition 2.3</a>, so <span class="math" data-tex="\(z\in A\)">\(z\in A\)</span>. Since it is a fraction of invariant elements, <span class="math" data-tex="\(z\)">\(z\)</span> is fixed by <span class="math" data-tex="\(G\)">\(G\)</span>. Hence <span class="math" data-tex="\(z\in B\)">\(z\in B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the quadratic calculation in the first lesson gives
+<span class="math" data-tex="\(\mathbb C[\operatorname{Sym}^2(\mathbb C^2)^*]^{\operatorname{SL}_2}
+=\mathbb C[ac-b^2]\)">\(\mathbb C[\operatorname{Sym}^2(\mathbb C^2)^*]^{\operatorname{SL}_2}
+=\mathbb C[ac-b^2]\)</span>.
+Applying Theorem 4.1 to coefficient variables together with auxiliary vector or dual-vector variables proves finite generation for their covariant and concomitant algebras as well.</p>
+<h3 id="the-complete-invariant-ring-of-a-ternary-cubic">The complete invariant ring of a ternary cubic</h3>
+<p>Hilbert's theorem supplies finiteness without choosing generators. For a ternary cubic, two explicit contractions suffice. The completeness proof below uses a two-dimensional family and a finite group acting on it. The finite-group counting formula is Theorem 4.1 of <a href="NOE-INV-03.html#4-counting-invariants-molien-s-formula">Invariants of finite groups and Noether's degree bound</a>; its proof uses finite averaging and is independent of this cubic example.</p>
+<p>Write a general cubic with multinomial coefficients:
+<span class="math math-display" data-tex="\[
+f(x,y,z)=\sum_{i+j+k=3}\frac{3!}{i!j!k!}c_{ijk}x^iy^jz^k.
+\]">\[
+f(x,y,z)=\sum_{i+j+k=3}\frac{3!}{i!j!k!}c_{ijk}x^iy^jz^k.
+\]</span>
+For four independent symbolic rows <span class="math" data-tex="\(u,v,w,r\)">\(u,v,w,r\)</span>, let <span class="math" data-tex="\(U_f\)">\(U_f\)</span> replace a degree-three monomial in each row by the corresponding coefficient <span class="math" data-tex="\(c_{ijk}\)">\(c_{ijk}\)</span>. Define
+<span class="math math-display" data-tex="\[
+S(f)=U_f\bigl([uvw][uvr][uwr][vwr]\bigr),\qquad
+H_f=\det\left(\frac{\partial^2f}{\partial x_i\partial x_j}\right),
+\qquad
+T(f)=\left.\frac{d}{ds}S(f+sH_f)\right|_{s=0}.
+\tag{A1}
+\]">\[
+S(f)=U_f\bigl([uvw][uvr][uwr][vwr]\bigr),\qquad
+H_f=\det\left(\frac{\partial^2f}{\partial x_i\partial x_j}\right),
+\qquad
+T(f)=\left.\frac{d}{ds}S(f+sH_f)\right|_{s=0}.
+\tag{A1}
+\]</span>
+Every symbolic row in the bracket product occurs three times, so its evaluation is defined. Equivariance of the umbral map makes <span class="math" data-tex="\(S\)">\(S\)</span> special-linear invariant and homogeneous of coefficient degree four. The chain rule gives
+<span class="math" data-tex="\(H_{f\circ h}=\det(h)^2H_f\circ h\)">\(H_{f\circ h}=\det(h)^2H_f\circ h\)</span>. Thus the cubic <span class="math" data-tex="\(H_f\)">\(H_f\)</span>, whose coefficients have degree three in those of <span class="math" data-tex="\(f\)">\(f\)</span>, is a special-linear covariant. Applying invariance of <span class="math" data-tex="\(S\)">\(S\)</span> to <span class="math" data-tex="\(f+sH_f\)">\(f+sH_f\)</span> shows that <span class="math" data-tex="\(T\)">\(T\)</span> is invariant, of coefficient degree six. These are fixed normalizations of the Aronhold invariants; multiplying either by a nonzero constant changes neither its zero set nor the algebra it generates.</p>
+<p>Consider the <strong>Hesse pencil of forms</strong>, here including its scalar parameter:
+<span class="math math-display" data-tex="\[
+f_{a,b}=aF+bQ,\qquad F=x^3+y^3+z^3,\quad Q=xyz.
+\tag{A2}
+\]">\[
+f_{a,b}=aF+bQ,\qquad F=x^3+y^3+z^3,\quad Q=xyz.
+\tag{A2}
+\]</span>
+The two parameters <span class="math" data-tex="\(a,b\)">\(a,b\)</span> range independently over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<p><strong>Lemma 4.3 (restriction to the pencil is injective).</strong> A polynomial invariant of ternary cubics is determined by its values on (A2).</p>
+<p><strong>Proof.</strong> Consider the holomorphic map
+<span class="math math-display" data-tex="\[
+\operatorname{SL}_3(\mathbb C)\times\mathbb C^2
+\longrightarrow \operatorname{Sym}^3(\mathbb C^3)^*,
+\qquad (h,a,b)\longmapsto f_{a,b}\circ h.
+\]">\[
+\operatorname{SL}_3(\mathbb C)\times\mathbb C^2
+\longrightarrow \operatorname{Sym}^3(\mathbb C^3)^*,
+\qquad (h,a,b)\longmapsto f_{a,b}\circ h.
+\]</span>
+At <span class="math" data-tex="\((I,1,0)\)">\((I,1,0)\)</span>, its six off-diagonal matrix directions give the six distinct monomials <span class="math" data-tex="\(3x_i^2x_j\)">\(3x_i^2x_j\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Two trace-zero diagonal directions give
+<span class="math" data-tex="\(3(x^3-z^3),3(y^3-z^3)\)">\(3(x^3-z^3),3(y^3-z^3)\)</span>. The pencil directions give <span class="math" data-tex="\(F,Q\)">\(F,Q\)</span>. These ten cubics are independent: the mixed monomials and <span class="math" data-tex="\(Q\)">\(Q\)</span> are distinct, while the two differences and the sum <span class="math" data-tex="\(F\)">\(F\)</span> span the pure cubes. The derivative therefore has rank ten. The complex inverse-function theorem puts a nonempty complex open set in the image. If an invariant vanishes on the pencil, it vanishes on this image by invariance, hence on that open set. A polynomial vanishing on a complex open set is identically zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument needs no classification of singular cubics, and makes no claim that every cubic has a Hesse presentation. Density is enough to determine a polynomial.</p>
+<p>We next identify enough symmetries of the pencil to count its possible invariant polynomials. Fix a primitive cube root <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, and put
+<span class="math math-display" data-tex="\[
+d=3(\zeta^2-\zeta),\qquad d^2=-27,
+\qquad
+A=\begin{pmatrix}\zeta&amp;0\\0&amp;1\end{pmatrix},\qquad
+B=\frac1d\begin{pmatrix}3&amp;1\\18&amp;-3\end{pmatrix}.
+\tag{A3}
+\]">\[
+d=3(\zeta^2-\zeta),\qquad d^2=-27,
+\qquad
+A=\begin{pmatrix}\zeta&amp;0\\0&amp;1\end{pmatrix},\qquad
+B=\frac1d\begin{pmatrix}3&amp;1\\18&amp;-3\end{pmatrix}.
+\tag{A3}
+\]</span>
+These matrices act on the column <span class="math" data-tex="\((a,b)^t\)">\((a,b)^t\)</span>. Both actions arise from determinant-one substitutions on <span class="math" data-tex="\((x,y,z)\)">\((x,y,z)\)</span>. For <span class="math" data-tex="\(A\)">\(A\)</span>, choose <span class="math" data-tex="\(\rho^3=\zeta\)">\(\rho^3=\zeta\)</span> and substitute
+<span class="math" data-tex="\(\rho\operatorname{diag}(\zeta^{-1},1,1)(x,y,z)^t\)">\(\rho\operatorname{diag}(\zeta^{-1},1,1)(x,y,z)^t\)</span>. Its determinant is one, and it sends <span class="math" data-tex="\(aF+bQ\)">\(aF+bQ\)</span> to <span class="math" data-tex="\(\zeta aF+bQ\)">\(\zeta aF+bQ\)</span>.</p>
+<p>For <span class="math" data-tex="\(B\)">\(B\)</span>, let
+<span class="math math-display" data-tex="\[
+M=\begin{pmatrix}
+1&amp;1&amp;1\\1&amp;\zeta&amp;\zeta^2\\1&amp;\zeta^2&amp;\zeta
+\end{pmatrix}.
+\]">\[
+M=\begin{pmatrix}
+1&amp;1&amp;1\\1&amp;\zeta&amp;\zeta^2\\1&amp;\zeta^2&amp;\zeta
+\end{pmatrix}.
+\]</span>
+Its determinant is <span class="math" data-tex="\(d\)">\(d\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+F(Mx)=3F(x)+18Q(x),\qquad Q(Mx)=F(x)-3Q(x).
+\]">\[
+F(Mx)=3F(x)+18Q(x),\qquad Q(Mx)=F(x)-3Q(x).
+\]</span>
+Choose <span class="math" data-tex="\(\sigma^3=d^{-1}\)">\(\sigma^3=d^{-1}\)</span>. Substitution by <span class="math" data-tex="\(\sigma M\)">\(\sigma M\)</span> has determinant one and induces exactly <span class="math" data-tex="\(B\)">\(B\)</span>. Consequently, restriction of an invariant of ternary cubics is invariant under the group <span class="math" data-tex="\(\Gamma=\langle A,B\rangle\)">\(\Gamma=\langle A,B\rangle\)</span>.</p>
+<p><strong>Lemma 4.4 (the finite pencil group).</strong> The group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has 24 elements, and
+<span class="math math-display" data-tex="\[
+\sum_{m\geq0}\dim\bigl(\mathbb C[a,b]^\Gamma_m\bigr)t^m
+=\frac1{(1-t^4)(1-t^6)}.
+\tag{A4}
+\]">\[
+\sum_{m\geq0}\dim\bigl(\mathbb C[a,b]^\Gamma_m\bigr)t^m
+=\frac1{(1-t^4)(1-t^6)}.
+\tag{A4}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(C=ABA^{-1}\)">\(C=ABA^{-1}\)</span> and <span class="math" data-tex="\(D=A^2BA^{-2}\)">\(D=A^2BA^{-2}\)</span>. Multiplying the displayed two-by-two matrices, using <span class="math" data-tex="\(1+\zeta+\zeta^2=0\)">\(1+\zeta+\zeta^2=0\)</span>, gives
+<span class="math math-display" data-tex="\[
+A^3=I,\qquad B^2=C^2=D^2=-I,\qquad
+BC=D=-CB,
+\]">\[
+A^3=I,\qquad B^2=C^2=D^2=-I,\qquad
+BC=D=-CB,
+\]</span>
+and conjugation by <span class="math" data-tex="\(A\)">\(A\)</span> cycles <span class="math" data-tex="\(B,C,D\)">\(B,C,D\)</span>. In particular
+<span class="math" data-tex="\(\{I,-I,\pm B,\pm C,\pm D\}\)">\(\{I,-I,\pm B,\pm C,\pm D\}\)</span> is a quaternion subgroup of eight distinct matrices. The three cosets obtained by multiplying it by <span class="math" data-tex="\(I,A,A^2\)">\(I,A,A^2\)</span> form a group containing both generators. They are distinct because their determinants are respectively <span class="math" data-tex="\(1,\zeta,\zeta^2\)">\(1,\zeta,\zeta^2\)</span>. This proves the order 24 and gives every element without an appeal to a group classification.</p>
+<p>The same multiplication gives this entire trace and determinant list:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Number of matrices</th>
+<th>Trace</th>
+<th>Determinant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><span class="math" data-tex="\(1+\zeta\)">\(1+\zeta\)</span></td>
+<td><span class="math" data-tex="\(\zeta\)">\(\zeta\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><span class="math" data-tex="\(-1-\zeta\)">\(-1-\zeta\)</span></td>
+<td><span class="math" data-tex="\(\zeta\)">\(\zeta\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><span class="math" data-tex="\(\zeta\)">\(\zeta\)</span></td>
+<td><span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span></td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td><span class="math" data-tex="\(-\zeta\)">\(-\zeta\)</span></td>
+<td><span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For a two-by-two matrix the Molien denominator is
+<span class="math" data-tex="\(1-\operatorname{tr}(g)t+\det(g)t^2\)">\(1-\operatorname{tr}(g)t+\det(g)t^2\)</span>. Averaging over <span class="math" data-tex="\(g\)">\(g\)</span> or <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> gives the same sum, so the convention for the induced function action does not change it. Pairing the last four rows and using <span class="math" data-tex="\(\zeta+\zeta^2=-1\)">\(\zeta+\zeta^2=-1\)</span> gives
+<span class="math math-display" data-tex="\[
+\frac1{24}\left(
+\frac1{(1-t)^2}+\frac1{(1+t)^2}+\frac6{1+t^2}
++\frac{4(2+t)}{(1-t)(1+t+t^2)}
++\frac{4(2-t)}{(1+t)(1-t+t^2)}\right).
+\]">\[
+\frac1{24}\left(
+\frac1{(1-t)^2}+\frac1{(1+t)^2}+\frac6{1+t^2}
++\frac{4(2+t)}{(1-t)(1+t+t^2)}
++\frac{4(2-t)}{(1+t)(1-t+t^2)}\right).
+\]</span>
+Multiplication by <span class="math" data-tex="\((1-t^4)(1-t^6)\)">\((1-t^4)(1-t^6)\)</span> reduces the parenthesis to 24; this is (A4). Molien's formula is an identity of formal power series, so this calculation determines every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restrictions of our two global invariants can now be calculated. Their normalizations are
+<span class="math math-display" data-tex="\[
+\begin{split}
+S(f_{a,b})&amp;=\frac{b^4-216a^3b}{54},\\
+T(f_{a,b})&amp;=\frac4{27}
+\bigl(b^6+540a^3b^3-5832a^6\bigr).
+\end{split}
+\tag{A5}
+\]">\[
+\begin{split}
+S(f_{a,b})&amp;=\frac{b^4-216a^3b}{54},\\
+T(f_{a,b})&amp;=\frac4{27}
+\bigl(b^6+540a^3b^3-5832a^6\bigr).
+\end{split}
+\tag{A5}
+\]</span>
+Here is a small way to check all constants. Invariance under <span class="math" data-tex="\(A\)">\(A\)</span> and degree four leave only <span class="math" data-tex="\(a^3b,b^4\)">\(a^3b,b^4\)</span> in the first restriction. In the product of four determinants in (A1), the coefficient of the monomial using each of the three coordinates of each row once is 24. The coefficient using a pure cube in each of three rows and the product of coordinates in the remaining row, summed over the row choices, is <span class="math" data-tex="\(-24\)">\(-24\)</span>. Since <span class="math" data-tex="\(c_{111}=b/6\)">\(c_{111}=b/6\)</span> and <span class="math" data-tex="\(c_{300}=c_{030}=c_{003}=a\)">\(c_{300}=c_{030}=c_{003}=a\)</span> on the pencil, these give <span class="math" data-tex="\(24(b/6)^4-24a^3(b/6)\)">\(24(b/6)^4-24a^3(b/6)\)</span>, the first formula. Both coefficients follow by expanding the determinants as signed sums of their six permutations; the symbolic construction specifies the calculation completely.</p>
+<p>For the second formula, the Hessian matrix has diagonal entries <span class="math" data-tex="\(6ax,6ay,6az\)">\(6ax,6ay,6az\)</span> and off-diagonal entries <span class="math" data-tex="\(bz,by,bx\)">\(bz,by,bx\)</span>. Its determinant is
+<span class="math math-display" data-tex="\[
+H_{f_{a,b}}=-6ab^2F+(216a^3+2b^3)Q.
+\]">\[
+H_{f_{a,b}}=-6ab^2F+(216a^3+2b^3)Q.
+\]</span>
+Differentiate the first formula in the parameter direction
+<span class="math" data-tex="\((-6ab^2,216a^3+2b^3)\)">\((-6ab^2,216a^3+2b^3)\)</span>. This gives exactly the second formula of (A5). Finally their parameter Jacobian is
+<span class="math math-display" data-tex="\[
+\det\frac{\partial(S(f_{a,b}),T(f_{a,b}))}{\partial(a,b)}
+=-\frac{256}{9}a^2(b^3+27a^3)^2,
+\tag{A6}
+\]">\[
+\det\frac{\partial(S(f_{a,b}),T(f_{a,b}))}{\partial(a,b)}
+=-\frac{256}{9}a^2(b^3+27a^3)^2,
+\tag{A6}
+\]</span>
+which is nonzero as a polynomial. Thus these two restrictions are algebraically independent. For completeness, in characteristic zero a polynomial relation of least positive degree would, on differentiation and inversion of this nonzero Jacobian over <span class="math" data-tex="\(\mathbb C(a,b)\)">\(\mathbb C(a,b)\)</span>, give two relations of smaller degree. Its two partial derivatives must therefore be zero polynomials, making it constant, a contradiction.</p>
+<p><strong>Theorem 4.5 (Aronhold's generators).</strong> The invariant ring of a ternary cubic is
+<span class="math math-display" data-tex="\[
+\mathbb C[\operatorname{Sym}^3(\mathbb C^3)^*]^{\operatorname{SL}_3}
+=\mathbb C[S,T],\qquad \deg S=4,\quad\deg T=6.
+\tag{A7}
+\]">\[
+\mathbb C[\operatorname{Sym}^3(\mathbb C^3)^*]^{\operatorname{SL}_3}
+=\mathbb C[S,T],\qquad \deg S=4,\quad\deg T=6.
+\tag{A7}
+\]</span>
+There is no algebraic relation between the two generators.</p>
+<p><strong>Proof.</strong> Algebraic independence makes the subalgebra of <span class="math" data-tex="\(\mathbb C[a,b]^\Gamma\)">\(\mathbb C[a,b]^\Gamma\)</span> generated by the two restrictions a polynomial algebra, with series
+<span class="math" data-tex="\(1/((1-t^4)(1-t^6))\)">\(1/((1-t^4)(1-t^6))\)</span>. Lemma 4.4 gives exactly that series for the whole invariant ring of the pencil. The inclusion is graded, and each degree is finite-dimensional. Equality of its dimensions in every degree therefore proves equality of the two algebras.</p>
+<p>Now let <span class="math" data-tex="\(P\)">\(P\)</span> be any invariant of ternary cubics. Its restriction is a <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant, hence a polynomial <span class="math" data-tex="\(q(S(f_{a,b}),T(f_{a,b}))\)">\(q(S(f_{a,b}),T(f_{a,b}))\)</span>. Both <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(q(S,T)\)">\(q(S,T)\)</span> are global invariants with the same restriction. Lemma 4.3 makes them equal. Independence of the restrictions also rules out a global relation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, <span class="math" data-tex="\(S(F)=0,T(F)=-864\)">\(S(F)=0,T(F)=-864\)</span>, whereas
+<span class="math" data-tex="\(S(xyz)=1/54,T(xyz)=4/27\)">\(S(xyz)=1/54,T(xyz)=4/27\)</span>. A cubic with zero Hessian need not be recognized by a smooth normal form; the polynomial theorem applies to all coefficient values, including singular and zero cubics. Its nullcone is exactly <span class="math" data-tex="\(V(S,T)\)">\(V(S,T)\)</span>.</p>
+<p>The construction and completeness statement are due to Aronhold. The Hesse pencil and its finite symmetry group belong to the classical geometry surveyed by Artebani and Dolgachev in <a href="https://arxiv.org/abs/math/0611590">The Hesse pencil of plane cubic curves</a>. The proof here gives the explicit substitutions, finite group, generating invariants and all-degree dimension comparison, rather than requiring their proofs as an external input.</p>
+<p>The same theorem holds over any field of characteristic zero. Indeed the constructions have rational coefficients. In a fixed coefficient degree, invariance is the common kernel of the six rational matrices induced by <span class="math" data-tex="\(x_j\partial/\partial x_i\)">\(x_j\partial/\partial x_i\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Annihilation implies invariance under their unipotent subgroups by their finite exponential series, and these subgroups generate the special linear group by elementary matrix operations. Taking a kernel of these finite matrices commutes with extension of the ground field. The monomials <span class="math" data-tex="\(S^iT^j\)">\(S^iT^j\)</span> form a basis of the kernel over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> by (A7); rational linear independence and rank then make them a basis over every characteristic-zero field. This descent does not assume that the entire field embeds into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>.</p>
+<h2 id="5-equations-for-the-nullcone-give-module-finiteness">5. Equations for the nullcone give module finiteness</h2>
+<p>Define the <strong>nullcone</strong>
+<span class="math math-display" data-tex="\[
+\mathcal N=\{w\in W:b(w)=0\text{ for every }b\in B_+\}.
+\]">\[
+\mathcal N=\{w\in W:b(w)=0\text{ for every }b\in B_+\}.
+\]</span>
+Theorem 4.1 makes this an algebraic set defined by finitely many equations.</p>
+<p><strong>Theorem 5.1 (Hilbert's nullcone finiteness theorem).</strong> Suppose homogeneous positive-degree invariants <span class="math" data-tex="\(q_1,\ldots,q_r\)">\(q_1,\ldots,q_r\)</span> have common zero set <span class="math" data-tex="\(\mathcal N\)">\(\mathcal N\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span>. Then <span class="math" data-tex="\(B\)">\(B\)</span> is a finite module over <span class="math" data-tex="\(\mathbb C[q_1,\ldots,q_r]\)">\(\mathbb C[q_1,\ldots,q_r]\)</span>.</p>
+<p><strong>Proof.</strong> Choose homogeneous algebra generators <span class="math" data-tex="\(b_1,\ldots,b_s\)">\(b_1,\ldots,b_s\)</span> for <span class="math" data-tex="\(B\)">\(B\)</span>. Each <span class="math" data-tex="\(b_i\)">\(b_i\)</span> vanishes on the common zero set of the <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. The Nullstellensatz gives an integer <span class="math" data-tex="\(N_i&gt;0\)">\(N_i&gt;0\)</span> and an expression
+<span class="math math-display" data-tex="\[
+b_i^{N_i}=\sum_j a_{ij}q_j\quad(a_{ij}\in A).
+\]">\[
+b_i^{N_i}=\sum_j a_{ij}q_j\quad(a_{ij}\in A).
+\]</span>
+Applying <span class="math" data-tex="\(\rho\)">\(\rho\)</span> makes the coefficients invariant, so
+<span class="math" data-tex="\(b_i^{N_i}\in(q_1,\ldots,q_r)B\)">\(b_i^{N_i}\in(q_1,\ldots,q_r)B\)</span>.
+Thus <span class="math" data-tex="\(B/(q_1,\ldots,q_r)B\)">\(B/(q_1,\ldots,q_r)B\)</span> is spanned by the finitely many monomials
+<span class="math" data-tex="\(\prod_i b_i^{e_i}\)">\(\prod_i b_i^{e_i}\)</span>, <span class="math" data-tex="\(0\leq e_i&lt;N_i\)">\(0\leq e_i&lt;N_i\)</span>.
+Choose homogeneous lifts <span class="math" data-tex="\(u_1,\ldots,u_t\)">\(u_1,\ldots,u_t\)</span> of a homogeneous vector-space basis of that quotient.</p>
+<p>For a homogeneous <span class="math" data-tex="\(b\in B_d\)">\(b\in B_d\)</span>, subtract a complex linear combination of the <span class="math" data-tex="\(u_i\)">\(u_i\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span> to obtain an element of <span class="math" data-tex="\((q_1,\ldots,q_r)B\)">\((q_1,\ldots,q_r)B\)</span>. Write that remainder as <span class="math" data-tex="\(\sum_jq_jc_j\)">\(\sum_jq_jc_j\)</span>, choosing <span class="math" data-tex="\(c_j\)">\(c_j\)</span> of degree <span class="math" data-tex="\(d-\deg q_j&lt;d\)">\(d-\deg q_j&lt;d\)</span>. Induction on degree expresses every <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, and hence <span class="math" data-tex="\(b\)">\(b\)</span>, in the <span class="math" data-tex="\(\mathbb C[q_1,\ldots,q_r]\)">\(\mathbb C[q_1,\ldots,q_r]\)</span>-module generated by the <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. This proves module finiteness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is stronger than the assertion that some finite generating set exists: any homogeneous invariant equations cutting out the nullcone give an integral, finite subalgebra. It does not assert that the <span class="math" data-tex="\(q_j\)">\(q_j\)</span> are algebraically independent.</p>
+<h2 id="6-the-nullcone-of-binary-forms">6. The nullcone of binary forms</h2>
+<p>For a binary <span class="math" data-tex="\(d\)">\(d\)</span>-ic, the root formulation has a complete elementary proof. We need first a fact about symmetric root expressions.</p>
+<p><strong>Lemma 6.1 (descending a root expression).</strong> Let
+<span class="math math-display" data-tex="\[
+f(x,y)=\prod_{\nu=1}^d(u_\nu x+v_\nu y)
+=\sum_{r=0}^d c_rx^{d-r}y^r.
+\]">\[
+f(x,y)=\prod_{\nu=1}^d(u_\nu x+v_\nu y)
+=\sum_{r=0}^d c_rx^{d-r}y^r.
+\]</span>
+A polynomial in the <span class="math" data-tex="\(u_\nu,v_\nu\)">\(u_\nu,v_\nu\)</span> that is symmetric in the <span class="math" data-tex="\(d\)">\(d\)</span> pairs and homogeneous of degree <span class="math" data-tex="\(q\)">\(q\)</span> in each pair is a unique polynomial, homogeneous of degree <span class="math" data-tex="\(q\)">\(q\)</span>, in <span class="math" data-tex="\(c_0,\ldots,c_d\)">\(c_0,\ldots,c_d\)</span>. This assertion and its proof hold with coefficients in any commutative ring, including <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> Set all <span class="math" data-tex="\(u_\nu=1\)">\(u_\nu=1\)</span>. The resulting polynomial <span class="math" data-tex="\(P(v_1,\ldots,v_d)\)">\(P(v_1,\ldots,v_d)\)</span> is symmetric and has degree at most <span class="math" data-tex="\(q\)">\(q\)</span> in each <span class="math" data-tex="\(v_\nu\)">\(v_\nu\)</span>. Use the usual leading-monomial proof of the fundamental theorem of symmetric polynomials, with lexicographic order <span class="math" data-tex="\(v_1&gt;\cdots&gt;v_d\)">\(v_1&gt;\cdots&gt;v_d\)</span>. A leading monomial has exponents
+<span class="math" data-tex="\(\alpha_1\geq\cdots\geq\alpha_d\)">\(\alpha_1\geq\cdots\geq\alpha_d\)</span>, since exchanging a larger later exponent with an earlier smaller one would give a larger monomial. Subtract its coefficient times
+<span class="math math-display" data-tex="\[
+e_1^{\alpha_1-\alpha_2}e_2^{\alpha_2-\alpha_3}
+\cdots e_d^{\alpha_d}.
+\]">\[
+e_1^{\alpha_1-\alpha_2}e_2^{\alpha_2-\alpha_3}
+\cdots e_d^{\alpha_d}.
+\]</span>
+This product has the chosen leading monomial with coefficient one. It uses <span class="math" data-tex="\(\alpha_1\leq q\)">\(\alpha_1\leq q\)</span> elementary-symmetric factors, and has degree at most <span class="math" data-tex="\(q\)">\(q\)</span> in each variable. The subtraction therefore stays within the finite set of possible monomials of individual degree at most <span class="math" data-tex="\(q\)">\(q\)</span>, and strictly lowers the leading monomial. It terminates without division by any integer or coefficient.</p>
+<p>For <span class="math" data-tex="\(u_\nu\ne0\)">\(u_\nu\ne0\)</span>, put <span class="math" data-tex="\(z_\nu=v_\nu/u_\nu\)">\(z_\nu=v_\nu/u_\nu\)</span>. Homogeneity gives the original polynomial as
+<span class="math" data-tex="\((\prod u_\nu)^qP(z_1,\ldots,z_d)\)">\((\prod u_\nu)^qP(z_1,\ldots,z_d)\)</span>.
+Here <span class="math" data-tex="\(c_0=\prod u_\nu\)">\(c_0=\prod u_\nu\)</span> and <span class="math" data-tex="\(c_r=c_0e_r(z)\)">\(c_r=c_0e_r(z)\)</span>. A term using <span class="math" data-tex="\(h\leq q\)">\(h\leq q\)</span> elementary-symmetric factors becomes their corresponding product of <span class="math" data-tex="\(c_r\)">\(c_r\)</span>'s times <span class="math" data-tex="\(c_0^{q-h}\)">\(c_0^{q-h}\)</span>. This is a homogeneous coefficient polynomial of degree <span class="math" data-tex="\(q\)">\(q\)</span>. The equality in the localization where the <span class="math" data-tex="\(u_\nu\)">\(u_\nu\)</span> are inverted is a polynomial equality before localization: multiplication by a monomial in polynomial variables is injective over any coefficient ring.</p>
+<p>For uniqueness, distinct products of the elementary symmetric functions have distinct leading monomials, given by their successive cumulative exponents, and leading coefficient one. They are therefore linearly independent over any coefficient ring. A homogeneous relation of degree <span class="math" data-tex="\(q\)">\(q\)</span> in the <span class="math" data-tex="\(c_r\)">\(c_r\)</span>'s, evaluated at every <span class="math" data-tex="\(u_\nu=1\)">\(u_\nu=1\)</span>, becomes a relation between these products in <span class="math" data-tex="\(c_1=e_1,\ldots,c_d=e_d\)">\(c_1=e_1,\ldots,c_d=e_d\)</span>; the power of <span class="math" data-tex="\(c_0\)">\(c_0\)</span> in each term was fixed by total degree. Every coefficient is zero. Different coefficient degrees give different degrees in each root pair, so the entire coefficient-to-root substitution is injective as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (binary nullcone).</strong> A binary form belongs to the nullcone for <span class="math" data-tex="\(\operatorname{SL}_2(\mathbb C)\)">\(\operatorname{SL}_2(\mathbb C)\)</span> if and only if it has a root of multiplicity strictly greater than <span class="math" data-tex="\(d/2\)">\(d/2\)</span>. The zero form belongs to the nullcone.</p>
+<p><strong>Proof.</strong> If a nonzero form has such a root, change coordinates so its repeated factor is <span class="math" data-tex="\(x^m\)">\(x^m\)</span>, <span class="math" data-tex="\(m&gt;d/2\)">\(m&gt;d/2\)</span>. Under inverse substitution by <span class="math" data-tex="\(\operatorname{diag}(t^{-1},t)\)">\(\operatorname{diag}(t^{-1},t)\)</span>, every monomial <span class="math" data-tex="\(x^ry^{d-r}\)">\(x^ry^{d-r}\)</span> occurring in it scales by <span class="math" data-tex="\(t^{2r-d}\)">\(t^{2r-d}\)</span>, with <span class="math" data-tex="\(r\geq m\)">\(r\geq m\)</span>. Thus the transformed coefficient vector tends to zero as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>. Every homogeneous positive-degree invariant is constant along this transformation and continuous at zero, so its value on the form is zero.</p>
+<p>Conversely, factor a nonzero form into <span class="math" data-tex="\(d\)">\(d\)</span> nonzero linear factors, and assume no root line occurs more than <span class="math" data-tex="\(d/2\)">\(d/2\)</span> times. Make two copies of each factor index, and arrange the <span class="math" data-tex="\(2d\)">\(2d\)</span> copies so that indices with the same root line form consecutive blocks. Every block has length at most <span class="math" data-tex="\(d\)">\(d\)</span>. Pair position <span class="math" data-tex="\(r\)">\(r\)</span> with position <span class="math" data-tex="\(r+d\)">\(r+d\)</span>, for <span class="math" data-tex="\(1\leq r\leq d\)">\(1\leq r\leq d\)</span>. Two paired positions cannot belong to the same block, so the bracket of their root covectors is nonzero.</p>
+<p>The product <span class="math" data-tex="\(M\)">\(M\)</span> of these <span class="math" data-tex="\(d\)">\(d\)</span> brackets is therefore nonzero at this tuple of root covectors. Each original factor index occurs twice, so <span class="math" data-tex="\(M\)">\(M\)</span> has degree two in each root pair. Consider
+<span class="math math-display" data-tex="\[
+\prod_{\sigma\in S_d}(T-\sigma M)
+=T^{d!}+\sum_{j=1}^{d!}Q_jT^{d!-j}.
+\tag{4}
+\]">\[
+\prod_{\sigma\in S_d}(T-\sigma M)
+=T^{d!}+\sum_{j=1}^{d!}Q_jT^{d!-j}.
+\tag{4}
+\]</span>
+Each <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is symmetric in the root pairs, has degree <span class="math" data-tex="\(2j\)">\(2j\)</span> in each pair, and is special-linear invariant, since every bracket is. Lemma 6.1 writes it as a coefficient polynomial <span class="math" data-tex="\(I_j(f)\)">\(I_j(f)\)</span>, homogeneous of positive degree <span class="math" data-tex="\(2j\)">\(2j\)</span>. That coefficient polynomial is invariant: the intertwining equality follows on every factored form, and every binary form factors over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, so it holds on every coefficient vector.</p>
+<p>At least one <span class="math" data-tex="\(Q_j\)">\(Q_j\)</span> is nonzero at the chosen tuple. Otherwise (4) would specialize to <span class="math" data-tex="\(T^{d!}\)">\(T^{d!}\)</span>, whose only root is zero, contradicting the nonzero root <span class="math" data-tex="\(M\)">\(M\)</span>. Hence some positive-degree invariant <span class="math" data-tex="\(I_j\)">\(I_j\)</span> is nonzero at <span class="math" data-tex="\(f\)">\(f\)</span>, and <span class="math" data-tex="\(f\notin\mathcal N\)">\(f\notin\mathcal N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For cubics the threshold is two: the nullcone is the double-root locus, equivalently <span class="math" data-tex="\(\Delta=0\)">\(\Delta=0\)</span>. For quartics it is three. In the first lesson the quartic invariant ring is <span class="math" data-tex="\(\mathbb C[i,j]\)">\(\mathbb C[i,j]\)</span>, so the equations <span class="math" data-tex="\(i=j=0\)">\(i=j=0\)</span> cut out precisely the triple-root locus. A double-root quartic need not lie in the nullcone: <span class="math" data-tex="\(x^2y^2\)">\(x^2y^2\)</span> has <span class="math" data-tex="\(c=1/6\)">\(c=1/6\)</span> and <span class="math" data-tex="\(i=1/12\ne0\)">\(i=1/12\ne0\)</span>.</p>
+<p>The strict inequality matters for every even degree. A form with two equally multiple roots is on the discriminant locus but has a nonzero invariant.</p>
+<figure><img src="figures/root-matching.png" alt="A binary sextic with root multiplicities three, two and one. Two copies of each of its six factor slots are placed in twelve positions. Pairing each of the first six positions with the position six later joins different root lines and gives the nonzero product of brackets 14 squared, 25 squared and 36 squared." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>This is the matching step of Theorem 6.2 for <span class="math" data-tex="\(d=6\)">\(d=6\)</span> and three distinct root lines <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span> of multiplicities <span class="math" data-tex="\(3,2,1\)">\(3,2,1\)</span>. Each factor slot occurs twice; every paired bracket joins different root lines. The depicted nonzero product still needs the symmetric-polynomial step (4) to become a coefficient invariant. Editable diagram.</p>
+<h2 id="7-cayley-s-determinant-differential-operator">7. Cayley's determinant differential operator</h2>
+<p>Let <span class="math" data-tex="\(X=(x_{ij})\)">\(X=(x_{ij})\)</span>, <span class="math" data-tex="\(\Delta_X=\det X\)">\(\Delta_X=\det X\)</span>, and
+<span class="math math-display" data-tex="\[
+\Omega_X=\det(\partial_{x_{ij}})
+=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n\partial_{x_{i,\sigma(i)}}.
+\]">\[
+\Omega_X=\det(\partial_{x_{ij}})
+=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n\partial_{x_{i,\sigma(i)}}.
+\]</span></p>
+<p><strong>Theorem 7.1 (Cayley's identity).</strong> For every positive integer <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+\Omega_X\Delta_X^s
+=s(s+1)\cdots(s+n-1)\Delta_X^{s-1}.
+\tag{5}
+\]">\[
+\Omega_X\Delta_X^s
+=s(s+1)\cdots(s+n-1)\Delta_X^{s-1}.
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> The chain rule for left and right matrix multiplication shows that <span class="math" data-tex="\(\Omega_X\Delta_X^s\)">\(\Omega_X\Delta_X^s\)</span> transforms, on either side, with determinant exponent <span class="math" data-tex="\(s-1\)">\(s-1\)</span>. On invertible matrices the action is transitive, so the result is a scalar times <span class="math" data-tex="\(\Delta_X^{s-1}\)">\(\Delta_X^{s-1}\)</span>; polynomial density makes this true on all matrices. Evaluate the scalar at <span class="math" data-tex="\(X=I\)">\(X=I\)</span>.</p>
+<p>For a fixed permutation <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, the derivative
+<span class="math" data-tex="\(\prod_i\partial_{x_{i,\sigma(i)}}\Delta_X^s\)">\(\prod_i\partial_{x_{i,\sigma(i)}}\Delta_X^s\)</span> at <span class="math" data-tex="\(I\)">\(I\)</span>
+is the coefficient of <span class="math" data-tex="\(\prod_i t_{i,\sigma(i)}\)">\(\prod_i t_{i,\sigma(i)}\)</span> in
+<span class="math" data-tex="\(\det(I+T)^s\)">\(\det(I+T)^s\)</span>. In formal power series,
+<span class="math math-display" data-tex="\[
+\det(I+T)^s
+=\exp\left(s\sum_{r\geq1}\frac{(-1)^{r-1}}r
+\operatorname{tr}(T^r)\right).
+\]">\[
+\det(I+T)^s
+=\exp\left(s\sum_{r\geq1}\frac{(-1)^{r-1}}r
+\operatorname{tr}(T^r)\right).
+\]</span>
+To obtain that square-free monomial, each term in a trace must trace one cycle of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>: every selected entry has its prescribed outgoing and incoming index, so a closed path cannot leave its cycle. A cycle of length <span class="math" data-tex="\(r\)">\(r\)</span> occurs <span class="math" data-tex="\(r\)">\(r\)</span> times in <span class="math" data-tex="\(\operatorname{tr}(T^r)\)">\(\operatorname{tr}(T^r)\)</span>, canceling the denominator <span class="math" data-tex="\(r\)">\(r\)</span>. It contributes <span class="math" data-tex="\(s(-1)^{r-1}\)">\(s(-1)^{r-1}\)</span>. The exponential joins disjoint cycles, with its factorial canceling their orderings. The coefficient is therefore
+<span class="math" data-tex="\(\operatorname{sgn}(\sigma)s^{c(\sigma)}\)">\(\operatorname{sgn}(\sigma)s^{c(\sigma)}\)</span>, where <span class="math" data-tex="\(c(\sigma)\)">\(c(\sigma)\)</span> counts cycles, including fixed points.</p>
+<p>Summing with the signs in <span class="math" data-tex="\(\Omega_X\)">\(\Omega_X\)</span> gives <span class="math" data-tex="\(\sum_\sigma s^{c(\sigma)}\)">\(\sum_\sigma s^{c(\sigma)}\)</span>. This sum equals <span class="math" data-tex="\(s(s+1)\cdots(s+n-1)\)">\(s(s+1)\cdots(s+n-1)\)</span>: when inserting the last letter into a permutation of <span class="math" data-tex="\(n-1\)">\(n-1\)</span> letters, it either forms a singleton, giving a factor <span class="math" data-tex="\(s\)">\(s\)</span>, or is inserted after one of the <span class="math" data-tex="\(n-1\)">\(n-1\)</span> existing letters in a cycle, preserving the number of cycles. The recurrence starts with the value <span class="math" data-tex="\(s\)">\(s\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. This proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is an algebraic form of compact averaging. For a homogeneous matrix polynomial <span class="math" data-tex="\(P(X)\)">\(P(X)\)</span> of degree <span class="math" data-tex="\(rn\)">\(rn\)</span>, put
+<span class="math math-display" data-tex="\[
+L(P)=\frac{(\Omega_X^rP)(0)}{c_r},\qquad
+c_r=\prod_{s=1}^r s(s+1)\cdots(s+n-1);
+\quad c_0=1.
+\tag{6}
+\]">\[
+L(P)=\frac{(\Omega_X^rP)(0)}{c_r},\qquad
+c_r=\prod_{s=1}^r s(s+1)\cdots(s+n-1);
+\quad c_0=1.
+\tag{6}
+\]</span>
+Put <span class="math" data-tex="\(L(P)=0\)">\(L(P)=0\)</span> on homogeneous degrees not divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, and extend linearly.</p>
+<p><strong>Proposition 7.2 (the Omega projection).</strong> <span class="math" data-tex="\(L\)">\(L\)</span> descends to a bi-invariant linear functional on
+<span class="math" data-tex="\(\mathbb C[G]=\mathbb C[x_{ij}]/(\Delta_X-1)\)">\(\mathbb C[G]=\mathbb C[x_{ij}]/(\Delta_X-1)\)</span>,
+with <span class="math" data-tex="\(L(1)=1\)">\(L(1)=1\)</span>. Applying <span class="math" data-tex="\(L\)">\(L\)</span> to the matrix coefficients of the action on <span class="math" data-tex="\(A\)">\(A\)</span> gives the Reynolds operator of Theorem 3.1.</p>
+<p><strong>Proof.</strong> The determinant chain rule makes <span class="math" data-tex="\(L\)">\(L\)</span> invariant under left and right multiplication by <span class="math" data-tex="\(G\)">\(G\)</span>. By (1), the left-invariant polynomials of degree <span class="math" data-tex="\(rn\)">\(rn\)</span> are exactly the scalar multiples of <span class="math" data-tex="\(\Delta_X^r\)">\(\Delta_X^r\)</span>; degrees not divisible by <span class="math" data-tex="\(n\)">\(n\)</span> have none. Complete reducibility from Theorem 2.3 therefore implies that an invariant functional on each homogeneous piece is determined by its value on this single invariant vector, or is zero when no such vector exists. Cayley's identity gives <span class="math" data-tex="\(L(\Delta_X^r)=1\)">\(L(\Delta_X^r)=1\)</span>.</p>
+<p>For homogeneous <span class="math" data-tex="\(P\)">\(P\)</span> of degree <span class="math" data-tex="\(rn\)">\(rn\)</span>, the two functionals <span class="math" data-tex="\(P\mapsto L(P)\)">\(P\mapsto L(P)\)</span> and <span class="math" data-tex="\(P\mapsto L(\Delta_XP)\)">\(P\mapsto L(\Delta_XP)\)</span> are invariant and both take the value one on <span class="math" data-tex="\(\Delta_X^r\)">\(\Delta_X^r\)</span>. Hence they coincide by that uniqueness. For other degrees both are zero. Thus <span class="math" data-tex="\(L((\Delta_X-1)P)=0\)">\(L((\Delta_X-1)P)=0\)</span> for every polynomial <span class="math" data-tex="\(P\)">\(P\)</span>, proving descent.</p>
+<p>For <span class="math" data-tex="\(F\in A\)">\(F\in A\)</span>, its translate <span class="math" data-tex="\(gF\)">\(gF\)</span> is a polynomial in the entries of <span class="math" data-tex="\(g\)">\(g\)</span> with coefficients in a finite-dimensional part of <span class="math" data-tex="\(A\)">\(A\)</span>. Choose any representative <span class="math" data-tex="\(P(X)\)">\(P(X)\)</span> for those matrix coefficients in the quotient coordinate ring and apply <span class="math" data-tex="\(L\)">\(L\)</span> coefficientwise. Descent makes the answer independent of that choice. Bi-invariance makes the resulting map equivariant with invariant image. Since <span class="math" data-tex="\(L(1)=1\)">\(L(1)=1\)</span>, it is the identity on invariants and hence a projection. It preserves the degree in <span class="math" data-tex="\(W\)">\(W\)</span>. Uniqueness in Theorem 3.1 identifies it with <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, these formulas are evaluation at <span class="math" data-tex="\(X=1\)">\(X=1\)</span>, as they should be for the trivial group.</p>
+<h2 id="8-decomposing-a-matrix-product">8. Decomposing a matrix product</h2>
+<p>Noether's papers <em>On the invariant theory of forms in several variables</em> replace a collection of determinant expressions by a matrix product that retains entire exterior-power rows. Here is one of the decomposition identities in modern notation, with its signs and its reduction step.</p>
+<p>Let <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_\rho,\beta_1,\ldots,\beta_\sigma\)">\(\alpha_1,\ldots,\alpha_\rho,\beta_1,\ldots,\beta_\sigma\)</span> be covectors on <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, and let <span class="math" data-tex="\(y_1,\ldots,y_{\rho+\sigma}\)">\(y_1,\ldots,y_{\rho+\sigma}\)</span> be vectors, where <span class="math" data-tex="\(\rho+\sigma\leq n\)">\(\rho+\sigma\leq n\)</span>. Define the matrix product by
+<span class="math math-display" data-tex="\[
+\langle\alpha_1\wedge\cdots\wedge\alpha_\rho,\,
+y_1\wedge\cdots\wedge y_\rho\rangle
+=\det(\alpha_i(y_j))_{1\leq i,j\leq\rho}.
+\]">\[
+\langle\alpha_1\wedge\cdots\wedge\alpha_\rho,\,
+y_1\wedge\cdots\wedge y_\rho\rangle
+=\det(\alpha_i(y_j))_{1\leq i,j\leq\rho}.
+\]</span>
+It depends on the exterior-power rows, not on the individual factors chosen to represent them.</p>
+<p><strong>Proposition 8.1 (decomposition identity).</strong> Put <span class="math" data-tex="\(q=\alpha_1\wedge\cdots\wedge\alpha_\rho\)">\(q=\alpha_1\wedge\cdots\wedge\alpha_\rho\)</span> and <span class="math" data-tex="\(a=\beta_1\wedge\cdots\wedge\beta_\sigma\)">\(a=\beta_1\wedge\cdots\wedge\beta_\sigma\)</span>. Then
+<span class="math math-display" data-tex="\[
+\langle q\wedge a,y_1\wedge\cdots\wedge y_{\rho+\sigma}\rangle
+=\sum_{\substack{I\subset\{1,\ldots,\rho+\sigma\}\\|I|=\rho}}
+(-1)^{\sum_{i\in I}i-\rho(\rho+1)/2}
+\langle q,y_I\rangle\langle a,y_{I^c}\rangle.
+\tag{7}
+\]">\[
+\langle q\wedge a,y_1\wedge\cdots\wedge y_{\rho+\sigma}\rangle
+=\sum_{\substack{I\subset\{1,\ldots,\rho+\sigma\}\\|I|=\rho}}
+(-1)^{\sum_{i\in I}i-\rho(\rho+1)/2}
+\langle q,y_I\rangle\langle a,y_{I^c}\rangle.
+\tag{7}
+\]</span>
+The factors within <span class="math" data-tex="\(y_I,y_{I^c}\)">\(y_I,y_{I^c}\)</span> are in increasing index order.</p>
+<p><strong>Proof.</strong> Form the <span class="math" data-tex="\((\rho+\sigma)\)">\((\rho+\sigma)\)</span>-square pairing matrix with its <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-rows first and its <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-rows last. Expand its determinant along the first <span class="math" data-tex="\(\rho\)">\(\rho\)</span> rows. Choosing their columns <span class="math" data-tex="\(I=\{i_1&lt;\cdots&lt;i_\rho\}\)">\(I=\{i_1&lt;\cdots&lt;i_\rho\}\)</span> leaves columns <span class="math" data-tex="\(I^c\)">\(I^c\)</span> for the other rows. The column shuffle has sign
+<span class="math" data-tex="\((-1)^{\sum_j(i_j-j)}\)">\((-1)^{\sum_j(i_j-j)}\)</span>, the displayed exponent. The two resulting minors are the two pairings on the right. This proves (7). Since both factors are exterior pairings, the formula also proves that the apparent dependence on the individual vectors enters only through the exterior product on the left. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is Noether's 1911 paper, Section 5, equation (32). Her exponent adds rather than subtracts <span class="math" data-tex="\(\rho(\rho+1)/2\)">\(\rho(\rho+1)/2\)</span>; the difference is the even integer <span class="math" data-tex="\(\rho(\rho+1)\)">\(\rho(\rho+1)\)</span>, so the signs agree. Her 1910 announcement describes why retaining the exterior-power rows makes the symbolic representation explicit.</p>
+<p>The case <span class="math" data-tex="\(\rho=1,\sigma=r-1\)">\(\rho=1,\sigma=r-1\)</span> is also a useful reduction formula:
+<span class="math math-display" data-tex="\[
+\langle\alpha\wedge b,y_1\wedge\cdots\wedge y_r\rangle
+=\sum_{j=1}^r(-1)^{j-1}
+\alpha(y_j)\langle b,y_1\wedge\cdots\widehat{y_j}\cdots\wedge y_r\rangle.
+\tag{8}
+\]">\[
+\langle\alpha\wedge b,y_1\wedge\cdots\wedge y_r\rangle
+=\sum_{j=1}^r(-1)^{j-1}
+\alpha(y_j)\langle b,y_1\wedge\cdots\widehat{y_j}\cdots\wedge y_r\rangle.
+\tag{8}
+\]</span>
+It is the first-row Laplace expansion, corresponding to the product identity of Section 3, equation (16) of the same paper. It replaces a pairing involving <span class="math" data-tex="\(r\)">\(r\)</span> rows by products involving one and <span class="math" data-tex="\(r-1\)">\(r-1\)</span> rows. Iterating reduces it to products of ordinary scalar pairings, with the alternating signs preserving the exterior row.</p>
+<p>For example, in dimension three it gives the entire reduction
+<span class="math math-display" data-tex="\[
+\begin{split}
+[\alpha\beta\gamma]\,[y_1y_2y_3]
+={}&amp;\alpha(y_1)\bigl(\beta(y_2)\gamma(y_3)-\beta(y_3)\gamma(y_2)\bigr)\\
+&amp;-\alpha(y_2)\bigl(\beta(y_1)\gamma(y_3)-\beta(y_3)\gamma(y_1)\bigr)\\
+&amp;+\alpha(y_3)\bigl(\beta(y_1)\gamma(y_2)-\beta(y_2)\gamma(y_1)\bigr).
+\end{split}
+\tag{9}
+\]">\[
+\begin{split}
+[\alpha\beta\gamma]\,[y_1y_2y_3]
+={}&amp;\alpha(y_1)\bigl(\beta(y_2)\gamma(y_3)-\beta(y_3)\gamma(y_2)\bigr)\\
+&amp;-\alpha(y_2)\bigl(\beta(y_1)\gamma(y_3)-\beta(y_3)\gamma(y_1)\bigr)\\
+&amp;+\alpha(y_3)\bigl(\beta(y_1)\gamma(y_2)-\beta(y_2)\gamma(y_1)\bigr).
+\end{split}
+\tag{9}
+\]</span>
+The left side is the determinant of the pairing matrix by multiplicativity of determinants; (8) gives exactly the right side. Every term is an invariant. If its covector rows are symbolic letters assigned to forms, umbral evaluation preserves the equality by linearity and gives a relation among actual concomitants. This is a concrete reduction inside invariant expressions, with no non-invariant coefficient introduced.</p>
+<h2 id="exercises-and-solutions">Exercises and solutions</h2>
+<p><strong>Exercise 1 — The determinant character.</strong> Show that a bracket of <span class="math" data-tex="\(n\)">\(n\)</span> vector columns is special-linear invariant and changes by <span class="math" data-tex="\(\det g\)">\(\det g\)</span> under <span class="math" data-tex="\(v_i\mapsto gv_i\)">\(v_i\mapsto gv_i\)</span>.</p>
+<p><strong>Solution.</strong> The new column matrix is <span class="math" data-tex="\(g(v_{i_1}\ \cdots\ v_{i_n})\)">\(g(v_{i_1}\ \cdots\ v_{i_n})\)</span>. Multiplicativity of the determinant gives
+<span class="math" data-tex="\([gv_{i_1}\cdots gv_{i_n}]=\det(g)[v_{i_1}\cdots v_{i_n}]\)">\([gv_{i_1}\cdots gv_{i_n}]=\det(g)[v_{i_1}\cdots v_{i_n}]\)</span>.
+On <span class="math" data-tex="\(\operatorname{SL}_n\)">\(\operatorname{SL}_n\)</span> the factor is one. Under the induced action on polynomial functions, <span class="math" data-tex="\(gF(v)=F(g^{-1}v)\)">\(gF(v)=F(g^{-1}v)\)</span>, the character is its inverse. Keeping these two assertions separate avoids a sign change in determinant weights.</p>
+<p><strong>Exercise 2 — Density from unit quaternions.</strong> Prove the density of <span class="math" data-tex="\(\operatorname{SU}(2)\)">\(\operatorname{SU}(2)\)</span> directly from its quaternion parametrization.</p>
+<p><strong>Solution.</strong> Every element is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}
+u+iv&amp;s+it\\-s+it&amp;u-iv
+\end{pmatrix},
+\qquad u,v,s,t\in\mathbb R,\quad u^2+v^2+s^2+t^2=1.
+\]">\[
+\begin{pmatrix}
+u+iv&amp;s+it\\-s+it&amp;u-iv
+\end{pmatrix},
+\qquad u,v,s,t\in\mathbb R,\quad u^2+v^2+s^2+t^2=1.
+\]</span>
+To check the parametrization, a unitary determinant-one matrix has second row equal to the negative conjugate-swapped first row, and the norm condition gives the sphere equation; the converse follows by multiplication.</p>
+<p>Near the identity use real coordinates <span class="math" data-tex="\(v,s,t\)">\(v,s,t\)</span>, with
+<span class="math" data-tex="\(u=(1-v^2-s^2-t^2)^{1/2}\)">\(u=(1-v^2-s^2-t^2)^{1/2}\)</span> and the positive root. The same formula is holomorphic for complex <span class="math" data-tex="\(v,s,t\)">\(v,s,t\)</span> near zero, using the square root with value one. Its derivative gives the three complex-independent matrices
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},
+\]">\[
+\begin{pmatrix}i&amp;0\\0&amp;-i\end{pmatrix},\quad
+\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+\begin{pmatrix}0&amp;i\\i&amp;0\end{pmatrix},
+\]</span>
+a basis of <span class="math" data-tex="\(\mathfrak{sl}_2(\mathbb C)\)">\(\mathfrak{sl}_2(\mathbb C)\)</span>. Thus it parametrizes a complex open neighbourhood of the identity. A polynomial vanishing on the real unit sphere vanishes on the real coordinate box here; the coordinatewise identity theorem makes it vanish on that complex neighbourhood. Connectedness, proved in Lemma 2.2 by elementary matrices, makes it vanish on all of <span class="math" data-tex="\(\operatorname{SL}_2(\mathbb C)\)">\(\operatorname{SL}_2(\mathbb C)\)</span>.</p>
+<p><strong>Exercise 3 — Averaging a linear-form representation.</strong> Compute <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(\mathbb C[x,y]_2\)">\(\mathbb C[x,y]_2\)</span> for the standard special-linear action, and determine it in every positive degree.</p>
+<p><strong>Solution.</strong> Transitivity on nonzero vectors shows that an invariant polynomial on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> is constant: it has the same value on the punctured plane, a dense set. Hence the invariant subspace in every positive homogeneous degree is zero. A Reynolds operator projects onto that subspace, so
+<span class="math" data-tex="\(\rho(ax^2+bxy+cy^2)=0\)">\(\rho(ax^2+bxy+cy^2)=0\)</span>, and likewise in every positive degree. On constants it is the identity. In particular <span class="math" data-tex="\(\rho(x^2)\)">\(\rho(x^2)\)</span> is not obtained by keeping only a torus-fixed monomial; being fixed by the whole group is the condition.</p>
+<p><strong>Exercise 4 — Finite generation and normality.</strong> Deduce that <span class="math" data-tex="\(B\)">\(B\)</span> is a Noetherian normal domain. Explain why finite generation alone does not prove normality, using <span class="math" data-tex="\(\mathbb C[t^2,t^3]\)">\(\mathbb C[t^2,t^3]\)</span>.</p>
+<p><strong>Solution.</strong> Theorem 4.1 makes <span class="math" data-tex="\(B\)">\(B\)</span> a quotient of a finite polynomial ring, hence Noetherian by the Hilbert basis theorem. It is a domain because <span class="math" data-tex="\(A\)">\(A\)</span> is, and the monic-equation argument of Corollary 4.2 proves it is integrally closed in its fraction field. For <span class="math" data-tex="\(R=\mathbb C[t^2,t^3]\)">\(R=\mathbb C[t^2,t^3]\)</span>, the element <span class="math" data-tex="\(t=t^3/t^2\)">\(t=t^3/t^2\)</span> belongs to <span class="math" data-tex="\(\operatorname{Frac}R\)">\(\operatorname{Frac}R\)</span>, and satisfies the monic polynomial <span class="math" data-tex="\(Z^2-t^2\in R[Z]\)">\(Z^2-t^2\in R[Z]\)</span>. But <span class="math" data-tex="\(t\notin R\)">\(t\notin R\)</span>: every nonconstant monomial in its generators has degree at least two. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is finite type and a domain but is not normal.</p>
+<p><strong>Exercise 5 — The cubic nullcone.</strong> Determine the nullcone of binary cubics and identify its defining invariant.</p>
+<p><strong>Solution.</strong> Theorem 6.2 gives root multiplicity <span class="math" data-tex="\(&gt;3/2\)">\(&gt;3/2\)</span>, hence at least two, for every nonzero cubic in the nullcone. The zero cubic is also there. The first lesson proves that the invariant ring is <span class="math" data-tex="\(\mathbb C[\Delta]\)">\(\mathbb C[\Delta]\)</span>, with
+<span class="math" data-tex="\(\Delta=(2/27)[12]^2[13]^2[23]^2\)">\(\Delta=(2/27)[12]^2[13]^2[23]^2\)</span>.
+Its zero set is exactly the repeated-root locus, including zero, so <span class="math" data-tex="\(\mathcal N=V(\Delta)\)">\(\mathcal N=V(\Delta)\)</span>. Alternatively, a double-root cubic can be moved to one divisible by <span class="math" data-tex="\(x^2\)">\(x^2\)</span>, and the diagonal one-parameter substitution in Theorem 6.2 sends it to zero; a three-distinct-root cubic has nonzero <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<h2 id="sources-and-further-reading">Sources and further reading</h2>
+<p>The full Noether papers are supplied below in German and in the maintained English edition. The explicit invariant computations, compact averaging, Hesse-pencil proof and determinant arguments in the modern lesson are independently written. Noether’s 1910 announcement and 1911 paper explain the matrix and decomposition programme; Hilbert’s 1893 paper, Section 4, is the original source for the nullcone finiteness argument. Different normalizations of the Aronhold invariants rescale the formulas in (A5).</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-INV-01.html">← Covariants of binary and ternary forms</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-INV-03.html">Invariants of finite groups and Noether&#x27;s degree bound →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-INV-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-INV">Repository</a></nav>
+</footer>
+</body>
+</html>

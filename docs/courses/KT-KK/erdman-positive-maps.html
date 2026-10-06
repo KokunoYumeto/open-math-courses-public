@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complete positivity: finite matrix tests and compression</title>
+<meta name="description" content="Complete finite-dimensional proofs and exercises on matrix positivity.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<p><a href="index.html">Kasparov’s KK-theory</a></p><article class="lesson math">
+<h1 id="complete-positivity-finite-matrix-tests-and-compression">Complete positivity: finite matrix tests and compression</h1>
+<p><em>Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A positive map carries a positive matrix to a positive matrix. Complete positivity asks for the same property when the entries of a larger positive matrix are themselves matrices. Compression has this stronger property because its quadratic form can be tested before compression. Transpose preserves positivity of individual matrices, but reversing one of two matrix coordinates can produce a negative quadratic form.</p>
+<p>We prove the finite matrix criterion first, then apply it to compression, transpose and explicit maps. All finite-dimensional facts needed in the arguments are proved below. The final reference is optional reading.</p>
+<span id="cp-positive-factorization"></span>
+<h2 id="1-positive-matrices-and-gram-factorizations">1. Positive matrices and Gram factorizations</h2>
+<p>Vectors are columns, <span class="math" data-tex="\(x^*y\)">\(x^*y\)</span> is the usual inner product, and <span class="math" data-tex="\(A^*\)">\(A^*\)</span> is conjugate transpose. A matrix <span class="math" data-tex="\(A\in M_d(\mathbb C)\)">\(A\in M_d(\mathbb C)\)</span> is <strong>positive</strong> if <span class="math" data-tex="\(A=A^*\)">\(A=A^*\)</span> and <span class="math" data-tex="\(x^*Ax\geq0\)">\(x^*Ax\geq0\)</span> for every <span class="math" data-tex="\(x\in\mathbb C^d\)">\(x\in\mathbb C^d\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> A Hermitian matrix has an orthonormal eigenbasis with real eigenvalues. Consequently a matrix is positive exactly when it can be written
+<span class="math math-display" data-tex="\[
+A=RR^*=\sum_{\alpha=1}^r w_\alpha w_\alpha^*.
+\tag{1.1}
+\]">\[
+A=RR^*=\sum_{\alpha=1}^r w_\alpha w_\alpha^*.
+\tag{1.1}
+\]</span>
+The columns <span class="math" data-tex="\(w_\alpha\)">\(w_\alpha\)</span> can be chosen with <span class="math" data-tex="\(r\leq d\)">\(r\leq d\)</span>. For any rectangular matrix <span class="math" data-tex="\(V\)">\(V\)</span>, positivity of <span class="math" data-tex="\(A\)">\(A\)</span> implies positivity of <span class="math" data-tex="\(V^*AV\)">\(V^*AV\)</span>.</p>
+<p><strong>Proof.</strong> The unit sphere in <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> is compact: a bounded sequence has a convergent subsequence in each of its finitely many real and imaginary coordinates, by repeatedly selecting a half of a bounded interval containing infinitely many terms. A diagonal choice gives convergence of all coordinates, and <span class="math" data-tex="\(x^*x=1\)">\(x^*x=1\)</span> passes to the limit. The continuous real function <span class="math" data-tex="\(x\mapsto x^*Ax\)">\(x\mapsto x^*Ax\)</span> therefore has a maximum on this sphere: a sequence approaching its supremum has a convergent subsequence.</p>
+<p>Choose a maximizing unit vector <span class="math" data-tex="\(u\)">\(u\)</span>, and put <span class="math" data-tex="\(\lambda=u^*Au\in\mathbb R\)">\(\lambda=u^*Au\in\mathbb R\)</span>. For <span class="math" data-tex="\(y\perp u\)">\(y\perp u\)</span>, the derivative at zero of
+<span class="math math-display" data-tex="\[
+\frac{(u+ty)^*A(u+ty)}{1+t^2\|y\|^2}
+\]">\[
+\frac{(u+ty)^*A(u+ty)}{1+t^2\|y\|^2}
+\]</span>
+is <span class="math" data-tex="\(2\operatorname{Re}(y^*Au)\)">\(2\operatorname{Re}(y^*Au)\)</span>, so it vanishes. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(iy\)">\(iy\)</span> also makes the imaginary part vanish. Hence <span class="math" data-tex="\(Au=\lambda u\)">\(Au=\lambda u\)</span>. Hermitian symmetry makes <span class="math" data-tex="\(u^\perp\)">\(u^\perp\)</span> invariant: <span class="math" data-tex="\(u^*Ay=(Au)^*y=0\)">\(u^*Ay=(Au)^*y=0\)</span>. Induction gives the eigenbasis. Its eigenvalues are real because <span class="math" data-tex="\(v^*Av\)">\(v^*Av\)</span> is real for each unit eigenvector.</p>
+<p>In this basis, <span class="math" data-tex="\(x^*Ax=\sum_j\lambda_j|x_j|^2\)">\(x^*Ax=\sum_j\lambda_j|x_j|^2\)</span>, so positivity is equivalent to every <span class="math" data-tex="\(\lambda_j\geq0\)">\(\lambda_j\geq0\)</span>. Taking <span class="math" data-tex="\(w_j=\sqrt{\lambda_j}v_j\)">\(w_j=\sqrt{\lambda_j}v_j\)</span> for positive eigenvalues proves (1.1). Conversely, <span class="math" data-tex="\(x^*RR^*x=\|R^*x\|^2\geq0\)">\(x^*RR^*x=\|R^*x\|^2\geq0\)</span>. Finally,
+<span class="math math-display" data-tex="\[
+z^*V^*AVz=(Vz)^*A(Vz)\geq0,
+\]">\[
+z^*V^*AVz=(Vz)^*A(Vz)\geq0,
+\]</span>
+and <span class="math" data-tex="\(V^*AV\)">\(V^*AV\)</span> is Hermitian. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is also the <strong>Gram test</strong>. A matrix is positive exactly when its entries have the form <span class="math" data-tex="\(A_{ij}=u_i^*u_j\)">\(A_{ij}=u_i^*u_j\)</span> for finitely many vectors <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. In fact, take <span class="math" data-tex="\(u_i\)">\(u_i\)</span> to be the columns of <span class="math" data-tex="\(R^*\)">\(R^*\)</span> in (1.1). Conversely, the quadratic form of this Gram matrix is
+<span class="math math-display" data-tex="\[
+\sum_{i,j}\overline z_i\,u_i^*u_jz_j
+=\left\|\sum_j z_ju_j\right\|^2\geq0.
+\]">\[
+\sum_{i,j}\overline z_i\,u_i^*u_jz_j
+=\left\|\sum_j z_ju_j\right\|^2\geq0.
+\]</span>
+Finite sums of positive matrices are positive because their quadratic forms add.</p>
+<h2 id="2-amplification-and-the-finite-choi-test">2. Amplification and the finite Choi test</h2>
+<p>Let <span class="math" data-tex="\(\Phi:M_n(\mathbb C)\to M_m(\mathbb C)\)">\(\Phi:M_n(\mathbb C)\to M_m(\mathbb C)\)</span> be complex linear. Its <span class="math" data-tex="\(k\)">\(k\)</span>-th <strong>amplification</strong> applies <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to each block:
+<span class="math math-display" data-tex="\[
+\Phi^{(k)}([A_{ab}])=[\Phi(A_{ab})],
+\qquad
+M_k(M_n(\mathbb C))\longrightarrow M_k(M_m(\mathbb C)).
+\tag{2.1}
+\]">\[
+\Phi^{(k)}([A_{ab}])=[\Phi(A_{ab})],
+\qquad
+M_k(M_n(\mathbb C))\longrightarrow M_k(M_m(\mathbb C)).
+\tag{2.1}
+\]</span>
+These are operators on <span class="math" data-tex="\(\mathbb C^k\otimes\mathbb C^n\)">\(\mathbb C^k\otimes\mathbb C^n\)</span> and <span class="math" data-tex="\(\mathbb C^k\otimes\mathbb C^m\)">\(\mathbb C^k\otimes\mathbb C^m\)</span>, respectively. The map is <strong><span class="math" data-tex="\(k\)">\(k\)</span>-positive</strong> if this amplification preserves positivity, and <strong>completely positive</strong> if it is <span class="math" data-tex="\(k\)">\(k\)</span>-positive for every positive integer <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Write <span class="math" data-tex="\(E_{ij}=e_ie_j^*\in M_n(\mathbb C)\)">\(E_{ij}=e_ie_j^*\in M_n(\mathbb C)\)</span>. The <strong>Choi matrix</strong> is the single <span class="math" data-tex="\(nm\)">\(nm\)</span>-by-<span class="math" data-tex="\(nm\)">\(nm\)</span> matrix
+<span class="math math-display" data-tex="\[
+C_\Phi=[\Phi(E_{ij})]_{i,j=1}^n
+       =\sum_{i,j=1}^n E_{ij}\otimes\Phi(E_{ij}).
+\tag{2.2}
+\]">\[
+C_\Phi=[\Phi(E_{ij})]_{i,j=1}^n
+       =\sum_{i,j=1}^n E_{ij}\otimes\Phi(E_{ij}).
+\tag{2.2}
+\]</span></p>
+<span id="cp-choi-test"></span>
+<p><strong>Theorem 2.1.</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is completely positive.</li>
+<li><span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is <span class="math" data-tex="\(n\)">\(n\)</span>-positive.</li>
+<li><span class="math" data-tex="\(C_\Phi\)">\(C_\Phi\)</span> is positive.</li>
+<li>There are finitely many matrices <span class="math" data-tex="\(V_\alpha:\mathbb C^n\to\mathbb C^m\)">\(V_\alpha:\mathbb C^n\to\mathbb C^m\)</span> such that
+<span class="math math-display" data-tex="\[
+\Phi(A)=\sum_\alpha V_\alpha A V_\alpha^*.
+\tag{2.3}
+\]">\[
+\Phi(A)=\sum_\alpha V_\alpha A V_\alpha^*.
+\tag{2.3}
+\]</span></li>
+</ol>
+<p>At most <span class="math" data-tex="\(nm\)">\(nm\)</span> matrices are needed in (4). Equivalently, (3) requires Hermitian symmetry of the blocks and
+<span class="math math-display" data-tex="\[
+\sum_{i,j=1}^n y_i^*\Phi(E_{ij})y_j\geq0
+\quad\text{for every }y_1,\ldots,y_n\in\mathbb C^m.
+\tag{2.4}
+\]">\[
+\sum_{i,j=1}^n y_i^*\Phi(E_{ij})y_j\geq0
+\quad\text{for every }y_1,\ldots,y_n\in\mathbb C^m.
+\tag{2.4}
+\]</span></p>
+<p><strong>Proof.</strong> Complete positivity implies <span class="math" data-tex="\(n\)">\(n\)</span>-positivity. Put <span class="math" data-tex="\(\Omega=\sum_i e_i\otimes e_i\)">\(\Omega=\sum_i e_i\otimes e_i\)</span>. The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>-block of the positive matrix <span class="math" data-tex="\(\Omega\Omega^*\)">\(\Omega\Omega^*\)</span> is <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>. Applying <span class="math" data-tex="\(\Phi^{(n)}\)">\(\Phi^{(n)}\)</span> gives <span class="math" data-tex="\(C_\Phi\)">\(C_\Phi\)</span>, proving (2) implies (3).</p>
+<p>If <span class="math" data-tex="\(C_\Phi\geq0\)">\(C_\Phi\geq0\)</span>, Lemma 1.1 gives
+<span class="math math-display" data-tex="\[
+C_\Phi=\sum_\alpha w_\alpha w_\alpha^*,
+\qquad
+w_\alpha=\sum_{i=1}^n e_i\otimes v_{\alpha i},
+\quad v_{\alpha i}\in\mathbb C^m.
+\]">\[
+C_\Phi=\sum_\alpha w_\alpha w_\alpha^*,
+\qquad
+w_\alpha=\sum_{i=1}^n e_i\otimes v_{\alpha i},
+\quad v_{\alpha i}\in\mathbb C^m.
+\]</span>
+There are at most <span class="math" data-tex="\(nm\)">\(nm\)</span> vectors. Define <span class="math" data-tex="\(V_\alpha e_i=v_{\alpha i}\)">\(V_\alpha e_i=v_{\alpha i}\)</span>. Equality of the <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>-blocks says
+<span class="math math-display" data-tex="\[
+\Phi(E_{ij})=\sum_\alpha v_{\alpha i}v_{\alpha j}^*
+            =\sum_\alpha V_\alpha E_{ij}V_\alpha^*.
+\]">\[
+\Phi(E_{ij})=\sum_\alpha v_{\alpha i}v_{\alpha j}^*
+            =\sum_\alpha V_\alpha E_{ij}V_\alpha^*.
+\]</span>
+Linearity on the matrix units proves (2.3). Conversely, (2.3) gives at every size <span class="math" data-tex="\(k\)">\(k\)</span>
+<span class="math math-display" data-tex="\[
+\Phi^{(k)}(X)
+=\sum_\alpha (I_k\otimes V_\alpha)
+                   X(I_k\otimes V_\alpha)^*.
+\tag{2.5}
+\]">\[
+\Phi^{(k)}(X)
+=\sum_\alpha (I_k\otimes V_\alpha)
+                   X(I_k\otimes V_\alpha)^*.
+\tag{2.5}
+\]</span>
+Each summand is positive when <span class="math" data-tex="\(X\)">\(X\)</span> is positive, by Lemma 1.1; their sum is positive. This proves complete positivity. Finally a vector of <span class="math" data-tex="\(\mathbb C^n\otimes\mathbb C^m\)">\(\mathbb C^n\otimes\mathbb C^m\)</span> is uniquely <span class="math" data-tex="\(\sum_i e_i\otimes y_i\)">\(\sum_i e_i\otimes y_i\)</span>, and its quadratic form for (2.2) is (2.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The factorization (2.3) is often called a <strong>Kraus representation</strong>. Factoring the Choi matrix constructs it. Also,
+<span class="math math-display" data-tex="\[
+\Phi(I_n)=\sum_\alpha V_\alpha V_\alpha^*,
+\tag{2.6}
+\]">\[
+\Phi(I_n)=\sum_\alpha V_\alpha V_\alpha^*,
+\tag{2.6}
+\]</span>
+so this map is unital exactly when the sum is <span class="math" data-tex="\(I_m\)">\(I_m\)</span>.</p>
+<span id="cp-compression"></span>
+<h2 id="3-compression-preserves-every-matrix-level">3. Compression preserves every matrix level</h2>
+<p><strong>Proposition 3.1.</strong> Let <span class="math" data-tex="\(H,K\)">\(H,K\)</span> be complex Hilbert spaces and let <span class="math" data-tex="\(V:K\to H\)">\(V:K\to H\)</span> be bounded with adjoint <span class="math" data-tex="\(V^*\)">\(V^*\)</span>. The map
+<span class="math math-display" data-tex="\[
+\Psi:\mathcal B(H)\longrightarrow\mathcal B(K),
+\qquad \Psi(A)=V^*AV
+\tag{3.1}
+\]">\[
+\Psi:\mathcal B(H)\longrightarrow\mathcal B(K),
+\qquad \Psi(A)=V^*AV
+\tag{3.1}
+\]</span>
+is completely positive. It is unital when <span class="math" data-tex="\(V^*V=I_K\)">\(V^*V=I_K\)</span>. These conclusions also hold on a concrete operator algebra containing <span class="math" data-tex="\(I_H\)">\(I_H\)</span>, with its inherited matrix positivity.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(X=[A_{ab}]\)">\(X=[A_{ab}]\)</span> be a positive operator matrix on <span class="math" data-tex="\(H^k\)">\(H^k\)</span>. Set <span class="math" data-tex="\(W(z_1,\ldots,z_k)=(Vz_1,\ldots,Vz_k)\)">\(W(z_1,\ldots,z_k)=(Vz_1,\ldots,Vz_k)\)</span>. Block multiplication gives
+<span class="math math-display" data-tex="\[
+[V^*A_{ab}V]=W^*XW.
+\]">\[
+[V^*A_{ab}V]=W^*XW.
+\]</span>
+Its quadratic form at <span class="math" data-tex="\(z\in K^k\)">\(z\in K^k\)</span> is the nonnegative quadratic form of <span class="math" data-tex="\(X\)">\(X\)</span> at <span class="math" data-tex="\(Wz\)">\(Wz\)</span>. It is self-adjoint because <span class="math" data-tex="\(X\)">\(X\)</span> is. This proves positivity at every level, without an infinite-dimensional spectral theorem. Equation (3.1) gives <span class="math" data-tex="\(\Psi(I_H)=V^*V\)">\(\Psi(I_H)=V^*V\)</span>. Restricting the same computation proves the assertion for a concrete algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite coordinate spaces, a single summand <span class="math" data-tex="\(A\mapsto QAQ^*\)">\(A\mapsto QAQ^*\)</span> in (2.3) is a compression with <span class="math" data-tex="\(V=Q^*\)">\(V=Q^*\)</span>. Finite sums are completely positive by addition of quadratic forms at every level. Compositions are completely positive because the amplified composition is <span class="math" data-tex="\(\Psi^{(k)}\Phi^{(k)}\)">\(\Psi^{(k)}\Phi^{(k)}\)</span>: it preserves positivity through two successive applications.</p>
+<p>For an orthogonal projection <span class="math" data-tex="\(P=P^*=P^2\)">\(P=P^*=P^2\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, include <span class="math" data-tex="\(PH\)">\(PH\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span> by <span class="math" data-tex="\(V\)">\(V\)</span>. Then <span class="math" data-tex="\(V^*AV\)">\(V^*AV\)</span> is <span class="math" data-tex="\(PAP\)">\(PAP\)</span> restricted to <span class="math" data-tex="\(PH\)">\(PH\)</span>, and <span class="math" data-tex="\(V^*V=I_{PH}\)">\(V^*V=I_{PH}\)</span>. The range <span class="math" data-tex="\(PH\)">\(PH\)</span> is closed: a limit <span class="math" data-tex="\(x\)">\(x\)</span> of vectors fixed by <span class="math" data-tex="\(P\)">\(P\)</span> still satisfies <span class="math" data-tex="\(Px=x\)">\(Px=x\)</span>. This explains the matrix-level positivity of compression used in <a href="KT-KK-01.html"><em>Extensions of C*-algebras and the Busby invariant</em></a>, Proposition 3.2. Its extension and section assertions are proved there.</p>
+<span id="cp-transpose"></span>
+<h2 id="4-transpose-and-the-exchange-of-two-coordinates">4. Transpose and the exchange of two coordinates</h2>
+<p>For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, let <span class="math" data-tex="\(T_n(A)=A^t\)">\(T_n(A)=A^t\)</span>, transpose without conjugation. This is a complex linear map.</p>
+<p><strong>Theorem 4.1.</strong> <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is positive for every <span class="math" data-tex="\(n\)">\(n\)</span>. It is completely positive for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, and fails to be two-positive for every <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span>, Lemma 1.1 gives <span class="math" data-tex="\(A=RR^*\)">\(A=RR^*\)</span>. Hence
+<span class="math math-display" data-tex="\[
+A^t=\overline R\,R^t
+   =\overline R\,(\overline R)^*\geq0.
+\tag{4.1}
+\]">\[
+A^t=\overline R\,R^t
+   =\overline R\,(\overline R)^*\geq0.
+\tag{4.1}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, transpose and all its amplifications are identity maps.</p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, take the first two standard vectors <span class="math" data-tex="\(p_1,p_2\in\mathbb C^n\)">\(p_1,p_2\in\mathbb C^n\)</span>, and let <span class="math" data-tex="\(f_1,f_2\)">\(f_1,f_2\)</span> be the basis of the block coordinate <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. The vector
+<span class="math math-display" data-tex="\[
+w=f_1\otimes p_1+f_2\otimes p_2
+\]">\[
+w=f_1\otimes p_1+f_2\otimes p_2
+\]</span>
+defines a positive rank-one operator <span class="math" data-tex="\(X=ww^*\)">\(X=ww^*\)</span>. Its <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>-block is <span class="math" data-tex="\(p_ap_b^*\)">\(p_ap_b^*\)</span>. Amplified transpose sends it to <span class="math" data-tex="\(p_bp_a^*\)">\(p_bp_a^*\)</span>. On the span of the four vectors <span class="math" data-tex="\(f_a\otimes p_b\)">\(f_a\otimes p_b\)</span>, the resulting operator sends
+<span class="math math-display" data-tex="\[
+f_a\otimes p_b\longmapsto f_b\otimes p_a.
+\]">\[
+f_a\otimes p_b\longmapsto f_b\otimes p_a.
+\]</span>
+It vanishes on the other coordinate vectors. The unit vector
+<span class="math math-display" data-tex="\[
+\zeta=\frac{f_1\otimes p_2-f_2\otimes p_1}{\sqrt2}
+\]">\[
+\zeta=\frac{f_1\otimes p_2-f_2\otimes p_1}{\sqrt2}
+\]</span>
+therefore has image <span class="math" data-tex="\(-\zeta\)">\(-\zeta\)</span>. Its quadratic form is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(T_n^{(2)}(X)\)">\(T_n^{(2)}(X)\)</span> is not positive. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full Choi matrix acts the same way:
+<span class="math math-display" data-tex="\[
+C_{T_n}(e_a\otimes e_b)=e_b\otimes e_a,
+\tag{4.2}
+\]">\[
+C_{T_n}(e_a\otimes e_b)=e_b\otimes e_a,
+\tag{4.2}
+\]</span>
+since <span class="math" data-tex="\(C_{T_n}=\sum_{i,j}E_{ij}\otimes E_{ji}\)">\(C_{T_n}=\sum_{i,j}E_{ij}\otimes E_{ji}\)</span>, and only the term with <span class="math" data-tex="\(j=a,\ i=b\)">\(j=a,\ i=b\)</span> acts nontrivially. Symmetric vectors have eigenvalue <span class="math" data-tex="\(+1\)">\(+1\)</span>, and nonzero antisymmetric vectors have eigenvalue <span class="math" data-tex="\(-1\)">\(-1\)</span>. Theorem 2.1 thus also detects the failure of complete positivity. The two-dimensional corner proof establishes the specific failure at level two.</p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><strong>Exercise 5.1.</strong> The diagonal map <span class="math" data-tex="\(D:M_n(\mathbb C)\to M_n(\mathbb C)\)">\(D:M_n(\mathbb C)\to M_n(\mathbb C)\)</span> removes all off-diagonal entries. Prove that it is completely positive, unital and idempotent. Compute its Choi matrix.</p>
+<p><strong>Solution.</strong> With <span class="math" data-tex="\(P_i=E_{ii}\)">\(P_i=E_{ii}\)</span>, multiplication gives <span class="math" data-tex="\(P_iAP_i=A_{ii}P_i\)">\(P_iAP_i=A_{ii}P_i\)</span>, so <span class="math" data-tex="\(D(A)=\sum_iP_iAP_i\)">\(D(A)=\sum_iP_iAP_i\)</span>. This is (2.3), hence completely positive. Since <span class="math" data-tex="\(\sum_iP_i=I_n\)">\(\sum_iP_i=I_n\)</span>, it is unital. Removing off-diagonal entries twice has the same effect as removing them once, so <span class="math" data-tex="\(D^2=D\)">\(D^2=D\)</span>. As <span class="math" data-tex="\(D(E_{ij})=0\)">\(D(E_{ij})=0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> and <span class="math" data-tex="\(D(E_{ii})=E_{ii}\)">\(D(E_{ii})=E_{ii}\)</span>,
+<span class="math math-display" data-tex="\[
+C_D=\sum_iE_{ii}\otimes E_{ii}.
+\]">\[
+C_D=\sum_iE_{ii}\otimes E_{ii}.
+\]</span>
+This is the sum of the rank-one positive operators on <span class="math" data-tex="\(e_i\otimes e_i\)">\(e_i\otimes e_i\)</span>.</p>
+<p><strong>Exercise 5.2.</strong> For <span class="math" data-tex="\(H=[h_{ij}]\in M_n(\mathbb C)\)">\(H=[h_{ij}]\in M_n(\mathbb C)\)</span>, define entrywise multiplication <span class="math" data-tex="\(S_H(A)=[h_{ij}A_{ij}]\)">\(S_H(A)=[h_{ij}A_{ij}]\)</span>. Prove that <span class="math" data-tex="\(S_H\)">\(S_H\)</span> is completely positive exactly when <span class="math" data-tex="\(H\geq0\)">\(H\geq0\)</span>. Determine when it is unital.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span> be the column with every entry <span class="math" data-tex="\(1\)">\(1\)</span>. The matrix <span class="math" data-tex="\(J=\mathbf1\mathbf1^*\)">\(J=\mathbf1\mathbf1^*\)</span> is positive. If <span class="math" data-tex="\(S_H\)">\(S_H\)</span> is completely positive, its first level gives <span class="math" data-tex="\(H=S_H(J)\geq0\)">\(H=S_H(J)\geq0\)</span>.</p>
+<p>Conversely, write <span class="math" data-tex="\(H=\sum_\alpha c_\alpha c_\alpha^*\)">\(H=\sum_\alpha c_\alpha c_\alpha^*\)</span> by Lemma 1.1, and let <span class="math" data-tex="\(Q_\alpha\)">\(Q_\alpha\)</span> be diagonal with entries <span class="math" data-tex="\(c_{\alpha i}\)">\(c_{\alpha i}\)</span>. Then
+<span class="math math-display" data-tex="\[
+(Q_\alpha A Q_\alpha^*)_{ij}
+=c_{\alpha i}\overline{c_{\alpha j}}A_{ij},
+\qquad
+S_H(A)=\sum_\alpha Q_\alpha A Q_\alpha^*.
+\]">\[
+(Q_\alpha A Q_\alpha^*)_{ij}
+=c_{\alpha i}\overline{c_{\alpha j}}A_{ij},
+\qquad
+S_H(A)=\sum_\alpha Q_\alpha A Q_\alpha^*.
+\]</span>
+Theorem 2.1 proves complete positivity. The diagonal entries of <span class="math" data-tex="\(S_H(I_n)\)">\(S_H(I_n)\)</span> are <span class="math" data-tex="\(h_{ii}\)">\(h_{ii}\)</span>, so the map is unital exactly when every <span class="math" data-tex="\(h_{ii}=1\)">\(h_{ii}=1\)</span>. No separate entrywise-product theorem is used.</p>
+<p><strong>Exercise 5.3.</strong> On <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, let
+<span class="math math-display" data-tex="\[
+\Phi_\lambda(A)=\lambda A+(1-\lambda)A^t,
+\qquad 0\leq\lambda\leq1.
+\]">\[
+\Phi_\lambda(A)=\lambda A+(1-\lambda)A^t,
+\qquad 0\leq\lambda\leq1.
+\]</span>
+Prove that every <span class="math" data-tex="\(\Phi_\lambda\)">\(\Phi_\lambda\)</span> is positive and unital, but is completely positive only for <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>.</p>
+<p><strong>Solution.</strong> Identity and transpose are positive and unital. Nonnegative linear combinations preserve positivity by addition of quadratic forms, and the coefficients here sum to one. With <span class="math" data-tex="\(\Omega=e_1\otimes e_1+e_2\otimes e_2\)">\(\Omega=e_1\otimes e_1+e_2\otimes e_2\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> the exchange of tensor coordinates, (2.2) and (4.2) give
+<span class="math math-display" data-tex="\[
+C_{\Phi_\lambda}
+=\lambda\Omega\Omega^*+(1-\lambda)F.
+\]">\[
+C_{\Phi_\lambda}
+=\lambda\Omega\Omega^*+(1-\lambda)F.
+\]</span>
+For <span class="math" data-tex="\(\eta=(e_1\otimes e_2-e_2\otimes e_1)/\sqrt2\)">\(\eta=(e_1\otimes e_2-e_2\otimes e_1)/\sqrt2\)</span>, one has <span class="math" data-tex="\(\Omega^*\eta=0\)">\(\Omega^*\eta=0\)</span> and <span class="math" data-tex="\(F\eta=-\eta\)">\(F\eta=-\eta\)</span>. Its Choi quadratic form is <span class="math" data-tex="\(-(1-\lambda)\)">\(-(1-\lambda)\)</span>, negative if <span class="math" data-tex="\(\lambda&lt;1\)">\(\lambda&lt;1\)</span>. Theorem 2.1 rules out complete positivity there. At <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span> the map is the identity and is completely positive.</p>
+<p><strong>Exercise 5.4.</strong> For <span class="math" data-tex="\(R\in M_m(\mathbb C)\)">\(R\in M_m(\mathbb C)\)</span>, set <span class="math" data-tex="\(\Theta_R(A)=\operatorname{Tr}(A)R\)">\(\Theta_R(A)=\operatorname{Tr}(A)R\)</span> on <span class="math" data-tex="\(M_n(\mathbb C)\)">\(M_n(\mathbb C)\)</span>, where <span class="math" data-tex="\(\operatorname{Tr}(A)=\sum_iA_{ii}\)">\(\operatorname{Tr}(A)=\sum_iA_{ii}\)</span>. Determine when it is completely positive, and when it is both completely positive and unital.</p>
+<p><strong>Solution.</strong> Complete positivity implies <span class="math" data-tex="\(R=\Theta_R(E_{11})\geq0\)">\(R=\Theta_R(E_{11})\geq0\)</span>. Conversely, factor <span class="math" data-tex="\(R=\sum_\alpha w_\alpha w_\alpha^*\)">\(R=\sum_\alpha w_\alpha w_\alpha^*\)</span> by Lemma 1.1, and set <span class="math" data-tex="\(V_{\alpha i}=w_\alpha e_i^*:\mathbb C^n\to\mathbb C^m\)">\(V_{\alpha i}=w_\alpha e_i^*:\mathbb C^n\to\mathbb C^m\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+\sum_{\alpha,i}V_{\alpha i}A V_{\alpha i}^*
+=\sum_{\alpha,i}A_{ii}w_\alpha w_\alpha^*
+=\operatorname{Tr}(A)R.
+\]">\[
+\sum_{\alpha,i}V_{\alpha i}A V_{\alpha i}^*
+=\sum_{\alpha,i}A_{ii}w_\alpha w_\alpha^*
+=\operatorname{Tr}(A)R.
+\]</span>
+Theorem 2.1 proves complete positivity. Since <span class="math" data-tex="\(\Theta_R(I_n)=nR\)">\(\Theta_R(I_n)=nR\)</span>, it is unital exactly when <span class="math" data-tex="\(R=I_m/n\)">\(R=I_m/n\)</span>, a positive matrix. Its Choi matrix is <span class="math" data-tex="\(I_n\otimes R\)">\(I_n\otimes R\)</span>, because off-diagonal matrix units have trace zero and diagonal ones have trace one.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>John M. Erdman, <em>Functional Analysis and Operator Algebras: An Introduction</em>, author version dated October 4, 2015, Section 16.4. <a href="https://web.pdx.edu/~erdman/FAOA/functional_analysis_operator_algebras_pdf.pdf">Freely accessible author PDF</a>. This is optional further reading; no external result is required for the proofs above. The linked work retains its author's attribution and licence.</p>
+</article>
+<p class="small source-link"><span class="unlinked">Complete available text as a PDF</span> · <a href="sources.html">Sources and component terms</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

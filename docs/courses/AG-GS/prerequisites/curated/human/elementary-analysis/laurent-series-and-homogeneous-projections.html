@@ -1,0 +1,214 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laurent series and homogeneous projections · Open Mathematics Courses</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header class="site-header"><div class="header-inner">Open Mathematics Courses</div></header><main id="main"><article class="lesson"><h1 id="laurent-series-and-homogeneous-projections">Laurent series and homogeneous projections</h1>
+<p><em>The one-variable theorem and its contour proof are adapted from Jiří Lebl's <strong>Guide to Cultivating Complex Analysis: Working the Complex Field</strong>, version 1.9. This modified teaching unit is CC BY-SA 4.0. GPT-6 Astra (OpenAI), in Codex at Ultra, wrote the product-domain estimates, homogeneous projections, complex contraction and worked solutions, and self-checked the unit. No independent AI or human review is claimed. <a href="laurent-source-notice.html">Source and edition</a>.</em></p>
+<p>A Laurent series distinguishes two kinds of behaviour: powers that extend through a coordinate hyperplane, and negative powers that need that hyperplane removed. Keeping that distinction in several coordinates gives a precise way to extend parts of a holomorphic function. It also explains the elementary complex underlying analytic projective-space cohomology.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Read <a href="../../courses/foundations-of-von-neumann-algebras/cauchy-s-theorem-for-cycles-and-its-consequences.html">Cauchy's theorem for cycles and its consequences</a>: Lemma 0.1 proves integration and interchange on compact rectangles; Lemma 1.1 computes the index of a circle; Theorem 4.2 proves the cycle formula and integral theorem. Lemma 3.1 and Corollary 3.5 justify differentiated power series and locally uniform holomorphic limits. Only the scalar assertions are used here, not the later Banach-space extension.</p>
+<p>For several variables, <a href="../../courses/complex-analytic-spaces-and-coherent-sheaves/holomorphic-functions-of-several-variables.html#1-polydiscs-and-the-definition-of-holomorphy">Holomorphic functions of several variables, Theorems 1.2 and 2.1</a> supplies the iterated disc formula and local power-series interpretation. Neither prerequisite uses projective cohomology.</p>
+<p>We say that a series of functions is <strong>normally convergent</strong> on an open set if, for every compact subset <span class="math" data-tex="\(K\)">\(K\)</span>, the sum of the suprema of the absolute values of its terms on <span class="math" data-tex="\(K\)">\(K\)</span> is finite. This implies absolute uniform convergence, permits arbitrary regrouping and permits termwise integration along compact piecewise smooth paths.</p>
+<h2 id="1-a-full-laurent-expansion-on-an-annulus">1. A full Laurent expansion on an annulus</h2>
+<p>Write <span class="math" data-tex="\(A(p;r,R)=\{z:r&lt;|z-p|&lt;R\}\)">\(A(p;r,R)=\{z:r&lt;|z-p|&lt;R\}\)</span>, allowing <span class="math" data-tex="\(0\leq r&lt;R\leq\infty\)">\(0\leq r&lt;R\leq\infty\)</span>. If <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, the centre is still omitted.</p>
+<p><strong>Theorem 1 (Laurent expansion).</strong> Every holomorphic function <span class="math" data-tex="\(f:A(p;r,R)\to\mathbf C\)">\(f:A(p;r,R)\to\mathbf C\)</span> has a unique normally convergent expansion</p>
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{k\in\mathbf Z}c_k(z-p)^k,
+\qquad
+c_k=\frac1{2\pi i}\int_{|\zeta-p|=s}
+f(\zeta)(\zeta-p)^{-k-1}\,d\zeta
+\]">\[
+f(z)=\sum_{k\in\mathbf Z}c_k(z-p)^k,
+\qquad
+c_k=\frac1{2\pi i}\int_{|\zeta-p|=s}
+f(\zeta)(\zeta-p)^{-k-1}\,d\zeta
+\]</span>
+<p>for any <span class="math" data-tex="\(r&lt;s&lt;R\)">\(r&lt;s&lt;R\)</span>, with counterclockwise orientation. The nonnegative part extends holomorphically to <span class="math" data-tex="\(|z-p|&lt;R\)">\(|z-p|&lt;R\)</span>. The negative part extends to <span class="math" data-tex="\(|z-p|&gt;r\)">\(|z-p|&gt;r\)</span>, including arbitrary large finite <span class="math" data-tex="\(z\)">\(z\)</span> when <span class="math" data-tex="\(R\)">\(R\)</span> is finite.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(r&lt;u&lt;v&lt;R\)">\(r&lt;u&lt;v&lt;R\)</span>. The cycle consisting of the outer circle counterclockwise and the inner circle clockwise has index zero off <span class="math" data-tex="\(A(p;r,R)\)">\(A(p;r,R)\)</span>, and index one when <span class="math" data-tex="\(u&lt;|z-p|&lt;v\)">\(u&lt;|z-p|&lt;v\)</span>. Cauchy's cycle formula therefore gives</p>
+<span class="math math-display" data-tex="\[
+f(z)=\frac1{2\pi i}\int_{|\zeta-p|=v}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+-\frac1{2\pi i}\int_{|\zeta-p|=u}\frac{f(\zeta)}{\zeta-z}\,d\zeta.
+\tag{1}
+\]">\[
+f(z)=\frac1{2\pi i}\int_{|\zeta-p|=v}\frac{f(\zeta)}{\zeta-z}\,d\zeta
+-\frac1{2\pi i}\int_{|\zeta-p|=u}\frac{f(\zeta)}{\zeta-z}\,d\zeta.
+\tag{1}
+\]</span>
+<p><img src="laurent-contours.png" alt="Two-circle contour, with outer counterclockwise and inner clockwise orientations" class="course-figure" width="640" height="340" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="two-circle-contour" data-asset-sha256="7D4E89D9545E7DB19B68E89324528323CAC3BF7F1DBB6222353F087F540E6809"></p>
+<p><em>The dashed circles mark the annulus boundaries; the solid circles lie inside them. The darker region has index one for the oriented two-circle cycle. The drawing is schematic: only the inequalities <span class="math" data-tex="\(r&lt;u&lt;|z-p|&lt;v&lt;R\)">\(r&lt;u&lt;|z-p|&lt;v&lt;R\)</span>, not the drawn lengths, enter the proof.</em></p>
+<p>On the outer circle expand</p>
+<span class="math math-display" data-tex="\[
+\frac1{\zeta-z}=\sum_{k\geq0}\frac{(z-p)^k}{(\zeta-p)^{k+1}}.
+\]">\[
+\frac1{\zeta-z}=\sum_{k\geq0}\frac{(z-p)^k}{(\zeta-p)^{k+1}}.
+\]</span>
+<p>On the inner circle expand the negative of the kernel as</p>
+<span class="math math-display" data-tex="\[
+-\frac1{\zeta-z}=\sum_{m\geq0}\frac{(\zeta-p)^m}{(z-p)^{m+1}}.
+\]">\[
+-\frac1{\zeta-z}=\sum_{m\geq0}\frac{(\zeta-p)^m}{(z-p)^{m+1}}.
+\]</span>
+<p>Both geometric expansions are uniformly absolutely convergent with respect to the integration variable when <span class="math" data-tex="\(z\)">\(z\)</span> ranges in a compact subannulus of <span class="math" data-tex="\(u&lt;|z-p|&lt;v\)">\(u&lt;|z-p|&lt;v\)</span>. Integrating them in (1) gives the stated powers, with the outer-circle coefficient for <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> and the inner-circle coefficient for <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>.</p>
+<p>The coefficient is independent of its radius. Indeed <span class="math" data-tex="\(f(\zeta)(\zeta-p)^{-k-1}\)">\(f(\zeta)(\zeta-p)^{-k-1}\)</span> is holomorphic on the original annulus, and the difference of any two concentric counterclockwise circles has index zero outside that annulus. Cauchy's integral theorem makes the two integrals equal. Thus the expansions obtained from different <span class="math" data-tex="\(u,v\)">\(u,v\)</span> have the same coefficients.</p>
+<p>Here is the convergence estimate, including the extensions. Put <span class="math" data-tex="\(M_s=\max_{|\zeta-p|=s}|f(\zeta)|\)">\(M_s=\max_{|\zeta-p|=s}|f(\zeta)|\)</span>. For all integers <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|c_k|\leq M_s s^{-k}.
+\tag{2}
+\]">\[
+|c_k|\leq M_s s^{-k}.
+\tag{2}
+\]</span>
+<p>For a compact set with <span class="math" data-tex="\(a\leq|z-p|\leq b\)">\(a\leq|z-p|\leq b\)</span>, where <span class="math" data-tex="\(r&lt;a\leq b&lt;R\)">\(r&lt;a\leq b&lt;R\)</span>, choose <span class="math" data-tex="\(r&lt;u&lt;a\leq b&lt;v&lt;R\)">\(r&lt;u&lt;a\leq b&lt;v&lt;R\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\geq0}\sup_K|c_k(z-p)^k|
+\leq\frac{M_v}{1-b/v},
+\qquad
+\sum_{m\geq1}\sup_K|c_{-m}(z-p)^{-m}|
+\leq M_u\frac{u/a}{1-u/a}.
+\tag{3}
+\]">\[
+\sum_{k\geq0}\sup_K|c_k(z-p)^k|
+\leq\frac{M_v}{1-b/v},
+\qquad
+\sum_{m\geq1}\sup_K|c_{-m}(z-p)^{-m}|
+\leq M_u\frac{u/a}{1-u/a}.
+\tag{3}
+\]</span>
+<p>The first estimate works on every compact subset of the disc of radius <span class="math" data-tex="\(R\)">\(R\)</span>, including the centre. The second works on every compact subset of <span class="math" data-tex="\(|z-p|&gt;r\)">\(|z-p|&gt;r\)</span>, without an outer bound imposed by the original <span class="math" data-tex="\(R\)">\(R\)</span>. Their locally uniform sums are holomorphic by the earlier limit theorem. Every compact subset of the original annulus is bounded between such <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, so the full Laurent series is normally convergent there. Infinite outer radius and zero inner radius cause no change: all contour radii used are finite and strictly positive.</p>
+<p>Finally, if another normally convergent Laurent expansion represents <span class="math" data-tex="\(f\)">\(f\)</span>, integrate it on any interior circle after multiplication by <span class="math" data-tex="\((z-p)^{-j-1}\)">\((z-p)^{-j-1}\)</span>. Termwise integration is allowed, and</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi i}\int_{|z-p|=s}(z-p)^{k-j-1}\,dz
+=\begin{cases}1&amp;k=j,\\0&amp;k\ne j.\end{cases}
+\]">\[
+\frac1{2\pi i}\int_{|z-p|=s}(z-p)^{k-j-1}\,dz
+=\begin{cases}1&amp;k=j,\\0&amp;k\ne j.\end{cases}
+\]</span>
+<p>For exponent <span class="math" data-tex="\(-1\)">\(-1\)</span> this follows by the circle parametrization; for every other integer exponent it follows from the single-valued primitive <span class="math" data-tex="\((z-p)^{k-j}/(k-j)\)">\((z-p)^{k-j}/(k-j)\)</span>. Hence the coefficient must equal <span class="math" data-tex="\(c_j\)">\(c_j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-products-of-annuli-and-discs">2. Products of annuli and discs</h2>
+<p>Let <span class="math" data-tex="\(I\subseteq\{1,\ldots,m\}\)">\(I\subseteq\{1,\ldots,m\}\)</span>. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span> take <span class="math" data-tex="\(0\leq r_i&lt;R_i\leq\infty\)">\(0\leq r_i&lt;R_i\leq\infty\)</span>; for <span class="math" data-tex="\(i\notin I\)">\(i\notin I\)</span> take <span class="math" data-tex="\(0&lt;R_i\leq\infty\)">\(0&lt;R_i\leq\infty\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+D=\prod_{i\in I}\{r_i&lt;|z_i|&lt;R_i\}
+\times\prod_{i\notin I}\{|z_i|&lt;R_i\},
+\]">\[
+D=\prod_{i\in I}\{r_i&lt;|z_i|&lt;R_i\}
+\times\prod_{i\notin I}\{|z_i|&lt;R_i\},
+\]</span>
+<p>where coordinates retain their original order. Write <span class="math" data-tex="\(z^\alpha=\prod_i z_i^{\alpha_i}\)">\(z^\alpha=\prod_i z_i^{\alpha_i}\)</span>. Translating each coordinate gives the identical theorem for arbitrary centres.</p>
+<p><strong>Theorem 2 (mixed Laurent–Taylor expansion).</strong> Every holomorphic <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span> has a unique normally convergent series</p>
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{\alpha\in\mathbf Z^I\times\mathbf N_0^{I^c}}c_\alpha z^\alpha.
+\tag{4}
+\]">\[
+f(z)=\sum_{\alpha\in\mathbf Z^I\times\mathbf N_0^{I^c}}c_\alpha z^\alpha.
+\tag{4}
+\]</span>
+<p>Its coefficients are</p>
+<span class="math math-display" data-tex="\[
+c_\alpha=\frac1{(2\pi i)^m}
+\int_{|\zeta_1|=s_1}\!\cdots\!\int_{|\zeta_m|=s_m}
+f(\zeta)\prod_{i=1}^m\zeta_i^{-\alpha_i-1}
+\,d\zeta_m\cdots d\zeta_1,
+\tag{5}
+\]">\[
+c_\alpha=\frac1{(2\pi i)^m}
+\int_{|\zeta_1|=s_1}\!\cdots\!\int_{|\zeta_m|=s_m}
+f(\zeta)\prod_{i=1}^m\zeta_i^{-\alpha_i-1}
+\,d\zeta_m\cdots d\zeta_1,
+\tag{5}
+\]</span>
+<p>where <span class="math" data-tex="\(r_i&lt;s_i&lt;R_i\)">\(r_i&lt;s_i&lt;R_i\)</span> for annulus coordinates and <span class="math" data-tex="\(0&lt;s_i&lt;R_i\)">\(0&lt;s_i&lt;R_i\)</span> for disc coordinates. They are independent of all these radii and of the integration order. All finite partial derivatives are obtained by termwise differentiation, again normally on compact subsets.</p>
+<p><strong>Proof.</strong> First choose a compact product with <span class="math" data-tex="\(a_i\leq|z_i|\leq b_i\)">\(a_i\leq|z_i|\leq b_i\)</span> in the annulus coordinates and <span class="math" data-tex="\(|z_i|\leq b_i\)">\(|z_i|\leq b_i\)</span> in the disc coordinates. Choose inner radii <span class="math" data-tex="\(r_i&lt;u_i&lt;a_i\)">\(r_i&lt;u_i&lt;a_i\)</span> where applicable and outer radii <span class="math" data-tex="\(b_i&lt;v_i&lt;R_i\)">\(b_i&lt;v_i&lt;R_i\)</span>, taking <span class="math" data-tex="\(b_i&gt;0\)">\(b_i&gt;0\)</span>. Apply (1) in each annulus coordinate and the ordinary disc Cauchy formula in every other coordinate. Iteration is valid with the remaining variables fixed; the resulting integrands are continuous on compact products of circles. Lemma 0.1's rectangle argument permits changing integration order after parametrizing the circles. The result is a sum of <span class="math" data-tex="\(2^{|I|}\)">\(2^{|I|}\)</span> product-contour integrals.</p>
+<p>Expand each outer kernel in nonnegative powers and each negative inner kernel in strictly negative powers, exactly as in Theorem 1. Products of their geometric majorants have finite sums, uniformly on the compact product and integration tori. Therefore the limit of their finite rectangular sums can be passed through the integrals. This gives (4) with (5), initially choosing <span class="math" data-tex="\(s_i=u_i\)">\(s_i=u_i\)</span> for negative exponents and <span class="math" data-tex="\(s_i=v_i\)">\(s_i=v_i\)</span> for nonnegative exponents. Each radius can be changed separately by the one-variable integral theorem; the other integrations are unaffected. In disc coordinates a putative coefficient with <span class="math" data-tex="\(\alpha_i&lt;0\)">\(\alpha_i&lt;0\)</span> vanishes: the integrand in that coordinate is <span class="math" data-tex="\(f\)">\(f\)</span> times a nonnegative power, holomorphic on the whole disc.</p>
+<p>More explicitly, for a fixed sign set <span class="math" data-tex="\(N=\{i:\alpha_i&lt;0\}\subseteq I\)">\(N=\{i:\alpha_i&lt;0\}\subseteq I\)</span>, put <span class="math" data-tex="\(s_i=u_i\)">\(s_i=u_i\)</span> for <span class="math" data-tex="\(i\in N\)">\(i\in N\)</span> and <span class="math" data-tex="\(s_i=v_i\)">\(s_i=v_i\)</span> otherwise, and let <span class="math" data-tex="\(M_N\)">\(M_N\)</span> be the maximum of <span class="math" data-tex="\(|f|\)">\(|f|\)</span> on that torus. Equation (5) gives</p>
+<span class="math math-display" data-tex="\[
+|c_\alpha|\leq M_N\prod_i s_i^{-\alpha_i},
+\]">\[
+|c_\alpha|\leq M_N\prod_i s_i^{-\alpha_i},
+\]</span>
+<p>and thus</p>
+<span class="math math-display" data-tex="\[
+\sum_{\{\alpha:\,\alpha_i&lt;0\ \Leftrightarrow\ i\in N\}}
+\sup_K|c_\alpha z^\alpha|
+\leq M_N
+\prod_{i\in N}\frac{u_i/a_i}{1-u_i/a_i}
+\prod_{i\notin N}\frac1{1-b_i/v_i}.
+\tag{6}
+\]">\[
+\sum_{\{\alpha:\,\alpha_i&lt;0\ \Leftrightarrow\ i\in N\}}
+\sup_K|c_\alpha z^\alpha|
+\leq M_N
+\prod_{i\in N}\frac{u_i/a_i}{1-u_i/a_i}
+\prod_{i\notin N}\frac1{1-b_i/v_i}.
+\tag{6}
+\]</span>
+<p>There are finitely many sign sets. Every compact subset of <span class="math" data-tex="\(D\)">\(D\)</span> lies in a product of this form, so this proves normal convergence on all of <span class="math" data-tex="\(D\)">\(D\)</span>. Coefficient extraction on a product torus proves uniqueness: the monomial integrals in each coordinate are exactly the zero-or-one integrals from Theorem 1.</p>
+<p>For derivatives, surround a given compact product by a slightly larger one still inside <span class="math" data-tex="\(D\)">\(D\)</span>. Differentiating a monomial a fixed number of times multiplies its bound by at most a polynomial in the absolute exponents, times constants depending on the chosen radii. Negative powers are evaluated away from zero; for nonnegative powers use positive upper radii even if the compact set meets zero. The bounds still sum, because for <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span> and every fixed integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, <span class="math" data-tex="\(\sum_{j\geq0}(1+j)^kq^j&lt;\infty\)">\(\sum_{j\geq0}(1+j)^kq^j&lt;\infty\)</span>: choose <span class="math" data-tex="\(q&lt;t&lt;1\)">\(q&lt;t&lt;1\)</span>; the ratio of consecutive terms of <span class="math" data-tex="\((1+j)^k(q/t)^j\)">\((1+j)^k(q/t)^j\)</span> tends to <span class="math" data-tex="\(q/t&lt;1\)">\(q/t&lt;1\)</span>, so this sequence is bounded, and compare with <span class="math" data-tex="\(\sum t^j\)">\(\sum t^j\)</span>. Locally uniform convergence of the differentiated sums and the one-variable differentiation theorem, applied successively, identify them with the partial derivatives of <span class="math" data-tex="\(f\)">\(f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-extending-the-parts-with-specified-negative-powers">3. Extending the parts with specified negative powers</h2>
+<p>For <span class="math" data-tex="\(S\subseteq V=\{0,\ldots,n\}\)">\(S\subseteq V=\{0,\ldots,n\}\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\Omega_S=\{T\in\mathbf C^{n+1}:T_i\ne0\text{ for every }i\in S\}.
+\]">\[
+\Omega_S=\{T\in\mathbf C^{n+1}:T_i\ne0\text{ for every }i\in S\}.
+\]</span>
+<p>In particular <span class="math" data-tex="\(\Omega_\varnothing=\mathbf C^{n+1}\)">\(\Omega_\varnothing=\mathbf C^{n+1}\)</span>. These are products of punctured planes and planes.</p>
+<p><strong>Theorem 3 (coordinate projections).</strong> For a holomorphic function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span> and every <span class="math" data-tex="\(N\subseteq S\)">\(N\subseteq S\)</span>, retain exactly the Laurent monomials whose negative-index set is <span class="math" data-tex="\(N\)">\(N\)</span>. The resulting function <span class="math" data-tex="\(P_Nf\)">\(P_Nf\)</span> extends holomorphically to <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span>, with its differentiated series normally convergent on compact subsets there. On <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f=\sum_{N\subseteq S}P_Nf.
+\tag{7}
+\]">\[
+f=\sum_{N\subseteq S}P_Nf.
+\tag{7}
+\]</span>
+<p>These are linear, pairwise orthogonal projections: applying <span class="math" data-tex="\(P_M\)">\(P_M\)</span> to a component keeps it when <span class="math" data-tex="\(M=N\)">\(M=N\)</span> and gives zero otherwise. If <span class="math" data-tex="\(S\subseteq S&#x27;\)">\(S\subseteq S&#x27;\)</span>, restriction from <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span> to <span class="math" data-tex="\(\Omega_{S&#x27;}\)">\(\Omega_{S&#x27;}\)</span> preserves every coefficient; the new negative-index components with <span class="math" data-tex="\(N\not\subseteq S\)">\(N\not\subseteq S\)</span> are zero.</p>
+<p><strong>Proof.</strong> Theorem 2 gives the series and the finite decomposition on <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. For a compact <span class="math" data-tex="\(K\subseteq\Omega_N\)">\(K\subseteq\Omega_N\)</span>, choose numbers <span class="math" data-tex="\(0&lt;u_i&lt;a_i=\min_K|T_i|\)">\(0&lt;u_i&lt;a_i=\min_K|T_i|\)</span> for <span class="math" data-tex="\(i\in N\)">\(i\in N\)</span>, and <span class="math" data-tex="\(v_i&gt;b_i\geq\max_K|T_i|\)">\(v_i&gt;b_i\geq\max_K|T_i|\)</span>, with <span class="math" data-tex="\(b_i&gt;0\)">\(b_i&gt;0\)</span>, for all other coordinates. The torus with radii <span class="math" data-tex="\(u_i\)">\(u_i\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(v_i\)">\(v_i\)</span> elsewhere lies in <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>, including when some coordinates of <span class="math" data-tex="\(K\)">\(K\)</span> itself vanish. Bound (6) on this torus proves normal convergence of the selected subseries on <span class="math" data-tex="\(K\)">\(K\)</span>. The same larger-radius argument proves convergence of its derivatives. This constructs a holomorphic extension on the whole <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span>, not just near an individual hyperplane. Empty <span class="math" data-tex="\(K\)">\(K\)</span> requires no estimate.</p>
+<p>Uniqueness of Laurent coefficients on the common subdomain <span class="math" data-tex="\((\mathbf C^*)^{n+1}\)">\((\mathbf C^*)^{n+1}\)</span> proves the projection identities and restriction compatibility. It also proves uniqueness of the extension: a holomorphic extension has the same Laurent coefficients on that product, hence is equal everywhere on its product domain by Theorem 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-homogeneous-functions-and-the-ordered-complex">4. Homogeneous functions and the ordered complex</h2>
+<p>Fix an integer <span class="math" data-tex="\(d\)">\(d\)</span>. A function on <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span> has <strong>weight <span class="math" data-tex="\(d\)">\(d\)</span></strong> if <span class="math" data-tex="\(f(\lambda T)=\lambda^d f(T)\)">\(f(\lambda T)=\lambda^d f(T)\)</span> for every <span class="math" data-tex="\(\lambda\in\mathbf C^*\)">\(\lambda\in\mathbf C^*\)</span>. For nonempty <span class="math" data-tex="\(S\)">\(S\)</span> the domain has no origin. Weight-zero functions descend to holomorphic functions on the projective intersection <span class="math" data-tex="\(U_S=\bigcap_{i\in S}\{T_i\ne0\}\)">\(U_S=\bigcap_{i\in S}\{T_i\ne0\}\)</span>: choose <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span> and restrict to <span class="math" data-tex="\(T_j=1\)">\(T_j=1\)</span>; invariance proves independence of the chosen representative.</p>
+<p><strong>Theorem 4 (homogeneous decomposition).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> has weight <span class="math" data-tex="\(d\)">\(d\)</span>, its Laurent coefficient <span class="math" data-tex="\(c_\alpha\)">\(c_\alpha\)</span> is zero unless <span class="math" data-tex="\(\sum_i\alpha_i=d\)">\(\sum_i\alpha_i=d\)</span>. Every component <span class="math" data-tex="\(P_Nf\)">\(P_Nf\)</span> has the same weight on <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span>. Let <span class="math" data-tex="\(F_N^d\)">\(F_N^d\)</span> be the space of these homogeneous holomorphic functions on <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span> with negative-index set exactly <span class="math" data-tex="\(N\)">\(N\)</span>. For every nonempty <span class="math" data-tex="\(S\)">\(S\)</span>, restriction identifies its weight-<span class="math" data-tex="\(d\)">\(d\)</span> function space with the finite direct sum <span class="math" data-tex="\(\bigoplus_{N\subseteq S}F_N^d\)">\(\bigoplus_{N\subseteq S}F_N^d\)</span>.</p>
+<p><strong>Proof.</strong> Substitute <span class="math" data-tex="\(2T\)">\(2T\)</span> in the unique Laurent expansion. Uniqueness applied to <span class="math" data-tex="\(f(2T)=2^df(T)\)">\(f(2T)=2^df(T)\)</span> gives <span class="math" data-tex="\((2^{\sum\alpha_i}-2^d)c_\alpha=0\)">\((2^{\sum\alpha_i}-2^d)c_\alpha=0\)</span>, hence the assertion about exponents. Each selected series consequently transforms by <span class="math" data-tex="\(\lambda^d\)">\(\lambda^d\)</span> wherever it converges, including the extended domain from Theorem 3. Its coefficient support shows directness of the finite sum; Theorem 3 gives existence and the asserted identifications. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consider the ordered cochain complex whose degree <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span> is the product of weight-<span class="math" data-tex="\(d\)">\(d\)</span> function spaces on <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>, for <span class="math" data-tex="\(|S|=q+1\)">\(|S|=q+1\)</span>; its differential is the alternating restriction map</p>
+<span class="math math-display" data-tex="\[
+(dc)_S=\sum_{i=0}^{q+1}(-1)^i c_{S\setminus\{s_i\}}\big|_{\Omega_S},
+\quad S=\{s_0&lt;\cdots&lt;s_{q+1}\}.
+\tag{8}
+\]">\[
+(dc)_S=\sum_{i=0}^{q+1}(-1)^i c_{S\setminus\{s_i\}}\big|_{\Omega_S},
+\quad S=\{s_0&lt;\cdots&lt;s_{q+1}\}.
+\tag{8}
+\]</span>
+<p><strong>Theorem 5 (the contraction and its two ends).</strong> In the summand with fixed negative set <span class="math" data-tex="\(N\)">\(N\)</span>, the complex is exact whenever <span class="math" data-tex="\(\varnothing\ne N\ne V\)">\(\varnothing\ne N\ne V\)</span>. For <span class="math" data-tex="\(N=\varnothing\)">\(N=\varnothing\)</span>, only degree zero cohomology remains, equal to the degree-<span class="math" data-tex="\(d\)">\(d\)</span> homogeneous polynomials (zero for <span class="math" data-tex="\(d&lt;0\)">\(d&lt;0\)</span>). For <span class="math" data-tex="\(N=V\)">\(N=V\)</span>, only degree <span class="math" data-tex="\(n\)">\(n\)</span> remains, with basis the monomials <span class="math" data-tex="\(T^\alpha\)">\(T^\alpha\)</span> for <span class="math" data-tex="\(\alpha_i&lt;0\)">\(\alpha_i&lt;0\)</span> and <span class="math" data-tex="\(\sum\alpha_i=d\)">\(\sum\alpha_i=d\)</span>. In particular, when <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, the whole complex has <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> in degree zero and zero in every positive degree, including when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(N\)">\(N\)</span>, each face <span class="math" data-tex="\(S\supseteq N\)">\(S\supseteq N\)</span> carries the same coefficient space <span class="math" data-tex="\(F_N^d\)">\(F_N^d\)</span>, by Theorem 4; other faces carry zero. All restrictions between present faces are identities in this description. Choose <span class="math" data-tex="\(j\in V\setminus N\)">\(j\in V\setminus N\)</span>. For a face <span class="math" data-tex="\(S\)">\(S\)</span> not containing <span class="math" data-tex="\(j\)">\(j\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+(hc)_S=(-1)^{p(j,S\cup\{j\})}c_{S\cup\{j\}},
+\tag{9}
+\]">\[
+(hc)_S=(-1)^{p(j,S\cup\{j\})}c_{S\cup\{j\}},
+\tag{9}
+\]</span>
+<p>and set it to zero when <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>. Here <span class="math" data-tex="\(p(j,A)\)">\(p(j,A)\)</span> is the number of indices of <span class="math" data-tex="\(A\)">\(A\)</span> less than <span class="math" data-tex="\(j\)">\(j\)</span>; the right side denotes the unique extension to <span class="math" data-tex="\(\Omega_N\)">\(\Omega_N\)</span>, restricted back to <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. Missing faces are interpreted as zero.</p>
+<p>We verify <span class="math" data-tex="\(dh+hd=1\)">\(dh+hd=1\)</span>. If <span class="math" data-tex="\(j\in S\)">\(j\in S\)</span>, the only term of <span class="math" data-tex="\(dh\)">\(dh\)</span> that survives removes <span class="math" data-tex="\(j\)">\(j\)</span>, and the two signs are both <span class="math" data-tex="\((-1)^{p(j,S)}\)">\((-1)^{p(j,S)}\)</span>, giving <span class="math" data-tex="\(c_S\)">\(c_S\)</span>; <span class="math" data-tex="\(hd\)">\(hd\)</span> is zero. If <span class="math" data-tex="\(j\notin S\)">\(j\notin S\)</span>, the term of <span class="math" data-tex="\(hd\)">\(hd\)</span> that removes the inserted <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(c_S\)">\(c_S\)</span>. For every <span class="math" data-tex="\(i\in S\)">\(i\in S\)</span>, the other term obtained by removing <span class="math" data-tex="\(i\)">\(i\)</span> in <span class="math" data-tex="\(hd\)">\(hd\)</span> cancels the term in <span class="math" data-tex="\(dh\)">\(dh\)</span>: if <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, removing <span class="math" data-tex="\(i\)">\(i\)</span> lowers the insertion position by one; if <span class="math" data-tex="\(i&gt;j\)">\(i&gt;j\)</span>, inserting <span class="math" data-tex="\(j\)">\(j\)</span> raises the removal position by one. In either case the exponents of <span class="math" data-tex="\((-1)\)">\((-1)\)</span> differ by one. When removing <span class="math" data-tex="\(i\)">\(i\)</span> also removes an element of <span class="math" data-tex="\(N\)">\(N\)</span>, both terms have zero coefficient space. This proves the identity in every degree when <span class="math" data-tex="\(N\ne\varnothing\)">\(N\ne\varnothing\)</span>; the degree-minus-one space is zero, so this includes degree zero.</p>
+<p>For <span class="math" data-tex="\(N=\varnothing\)">\(N=\varnothing\)</span>, adjoin the empty face in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, carrying <span class="math" data-tex="\(F_\varnothing^d\)">\(F_\varnothing^d\)</span>, with differential the diagonal map. Formula (9) then contracts the augmented complex, so the unaugmented complex has precisely <span class="math" data-tex="\(F_\varnothing^d\)">\(F_\varnothing^d\)</span> in degree zero. Nonnegative exponents of fixed total degree form the homogeneous polynomial basis, or no basis if <span class="math" data-tex="\(d&lt;0\)">\(d&lt;0\)</span>.</p>
+<p>If <span class="math" data-tex="\(N=V\)">\(N=V\)</span>, the only allowable face is <span class="math" data-tex="\(V\)">\(V\)</span>, in degree <span class="math" data-tex="\(n\)">\(n\)</span>. Write <span class="math" data-tex="\(\alpha_i=-1-\beta_i\)">\(\alpha_i=-1-\beta_i\)</span>, <span class="math" data-tex="\(\beta_i\geq0\)">\(\beta_i\geq0\)</span>. Then <span class="math" data-tex="\(\sum\beta_i=-d-n-1\)">\(\sum\beta_i=-d-n-1\)</span>, so the set of monomials is finite, and empty unless <span class="math" data-tex="\(d\leq-n-1\)">\(d\leq-n-1\)</span>. This gives the stated basis. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> it is empty, and <span class="math" data-tex="\(F_\varnothing^0=\mathbf C\)">\(F_\varnothing^0=\mathbf C\)</span>. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span> these same two end summands lie in degree zero: exactly one of them contributes for a given integer <span class="math" data-tex="\(d\)">\(d\)</span>, and for <span class="math" data-tex="\(d=0\)">\(d=0\)</span> it is the constant summand. All decompositions have only finitely many sign sets and normally convergent components, so the algebraic cancellation applies to actual holomorphic functions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-examples-and-exercises-with-solutions">5. Examples and exercises with solutions</h2>
+<p><strong>Example.</strong> On <span class="math" data-tex="\((\mathbf C^*)^2\)">\((\mathbf C^*)^2\)</span>, the function <span class="math" data-tex="\(T_0/T_1+T_1/T_0+3\)">\(T_0/T_1+T_1/T_0+3\)</span> has weight zero. Its three nonzero components have negative sets <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>, <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> and <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>. They extend respectively to <span class="math" data-tex="\(T_1\ne0\)">\(T_1\ne0\)</span>, <span class="math" data-tex="\(T_0\ne0\)">\(T_0\ne0\)</span>, and all of <span class="math" data-tex="\(\mathbf C^2\)">\(\mathbf C^2\)</span>. Neither of the first two extends to the whole plane product. The extension domain is controlled by the negative set, not by weight zero alone.</p>
+<p><strong>Exercise 1.</strong> Expand <span class="math" data-tex="\(1/((z-1)(z-2))\)">\(1/((z-1)(z-2))\)</span> on each of <span class="math" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, <span class="math" data-tex="\(1&lt;|z|&lt;2\)">\(1&lt;|z|&lt;2\)</span>, and <span class="math" data-tex="\(|z|&gt;2\)">\(|z|&gt;2\)</span>, and identify the domains of the positive and negative parts in the middle annulus.</p>
+<p><strong>Solution.</strong> Partial fractions give <span class="math" data-tex="\(-1/(z-1)+1/(z-2)\)">\(-1/(z-1)+1/(z-2)\)</span>. The three expansions are, respectively,</p>
+<span class="math math-display" data-tex="\[
+\sum_{k\geq0}(1-2^{-k-1})z^k,
+\qquad
+-\sum_{m\geq1}z^{-m}-\sum_{k\geq0}2^{-k-1}z^k,
+\qquad
+\sum_{m\geq1}(2^{m-1}-1)z^{-m}.
+\]">\[
+\sum_{k\geq0}(1-2^{-k-1})z^k,
+\qquad
+-\sum_{m\geq1}z^{-m}-\sum_{k\geq0}2^{-k-1}z^k,
+\qquad
+\sum_{m\geq1}(2^{m-1}-1)z^{-m}.
+\]</span>
+<p>Their geometric ratios give exactly the stated regions of normal convergence. In the middle annulus the positive part extends to <span class="math" data-tex="\(|z|&lt;2\)">\(|z|&lt;2\)</span>, and the negative part to <span class="math" data-tex="\(|z|&gt;1\)">\(|z|&gt;1\)</span>. The poles at 2 and 1 show why these particular extensions cannot be enlarged across their respective boundary points.</p>
+<p><strong>Exercise 2.</strong> For <span class="math" data-tex="\(n=2,d=-3\)">\(n=2,d=-3\)</span>, find all monomials in the final summand <span class="math" data-tex="\(F_V^d\)">\(F_V^d\)</span>. For arbitrary <span class="math" data-tex="\(n,d\)">\(n,d\)</span>, when this summand is nonzero, compute its dimension.</p>
+<p><strong>Solution.</strong> Strict negativity and total degree <span class="math" data-tex="\(-3\)">\(-3\)</span> force all three exponents to be <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the basis is <span class="math" data-tex="\((T_0T_1T_2)^{-1}\)">\((T_0T_1T_2)^{-1}\)</span>. Generally <span class="math" data-tex="\(\beta_i=-\alpha_i-1\)">\(\beta_i=-\alpha_i-1\)</span> are nonnegative integers summing to <span class="math" data-tex="\(k=-d-n-1\)">\(k=-d-n-1\)</span>. Choosing the positions of <span class="math" data-tex="\(n\)">\(n\)</span> separators among <span class="math" data-tex="\(k+n\)">\(k+n\)</span> positions bijects such tuples with subsets of size <span class="math" data-tex="\(n\)">\(n\)</span>, giving dimension <span class="math" data-tex="\(\binom{-d-1}{n}\)">\(\binom{-d-1}{n}\)</span> when <span class="math" data-tex="\(d\leq-n-1\)">\(d\leq-n-1\)</span>, and zero otherwise.</p>
+<p><strong>Exercise 3.</strong> Explain why the weight assumption cannot be omitted from the claim that the final negative-index summand vanishes.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-tex="\((T_0\cdots T_n)^{-1}\)">\((T_0\cdots T_n)^{-1}\)</span> has strictly negative exponent in every coordinate and is holomorphic on <span class="math" data-tex="\(\Omega_V\)">\(\Omega_V\)</span>. It is a nonzero final summand of weight <span class="math" data-tex="\(-n-1\)">\(-n-1\)</span>. Its existence is compatible with Theorem 5 but contradicts the proposed unrestricted vanishing. It is the equation <span class="math" data-tex="\(\sum\alpha_i=0\)">\(\sum\alpha_i=0\)</span>, not convergence alone, that removes this summand in weight zero.</p>
+<p><strong>Exercise 4.</strong> Why is a Laurent expansion in projective ratios unnecessary in the proof of the weight-zero case? What is still needed to identify the ordered complex with sheaf cohomology?</p>
+<p><strong>Solution.</strong> A function on <span class="math" data-tex="\(U_S\)">\(U_S\)</span> lifts to a weight-zero function on <span class="math" data-tex="\(\Omega_S\)">\(\Omega_S\)</span>. The product domain gives a single coefficient system in the homogeneous coordinates, and uniqueness makes it compatible with restrictions. No change of denominator or regrouping in a different chart is needed. To compute sheaf cohomology one separately needs acyclicity of all finite intersections and the Čech comparison theorem. Theorem 5 computes only the specified complex; it does not prove those two inputs. Their programme proofs are linked where the complex is used in the GAGA lesson.</p>
+<h2 id="source-and-further-reading">Source and further reading</h2>
+<p>Jiří Lebl's <a href="https://www.jirka.org/ca/"><em>Guide to Cultivating Complex Analysis: Working the Complex Field</em></a>, version 1.9, supplies the one-variable Laurent theorem and its proof. <a href="https://github.com/jirilebl/ca/blob/v1.9/ca.tex">The author's editable LaTeX</a> and the <a href="LEBL-LAURENT-SOURCE.tex">selected unmodified source passage</a> accompany the <a href="laurent-source-notice.html">source notice</a>. The explicit estimates, several-variable statements, homogeneous complex, illustration and solutions in this teaching unit are identified AI contributions; the unit retains CC BY-SA 4.0 throughout. Earlier programme proofs keep their own notices and terms.</p>
+</article></main></body></html>

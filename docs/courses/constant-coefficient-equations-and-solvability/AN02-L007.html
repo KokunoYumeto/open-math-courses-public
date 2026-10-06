@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Freezing coefficients without losing strength</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="freezing-coefficients-without-losing-strength">Freezing coefficients without losing strength</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A variable-coefficient equation can behave locally like a fixed polynomial equation even when it is not elliptic. The useful hypothesis is that freezing the coefficients at different points always gives operators of equal strength. This lesson turns that hypothesis into a finite perturbation problem. Continuous coefficients suffice for an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> inverse. Smooth coefficients give one neighborhood and one inverse that work for every moderate Fourier weight.</p>
+<p>Read <a href="AN02-L005.html">Operator strength and local inverses</a>, Theorem 4.1, and <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, Sections 1–3, first. We use the slowly moving weights, cutoffs, convolution and duality proved in <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>, Theorems 2.1, 4.1 and 5.1 and Proposition 4.2, and the modulation and local-space estimates in <a href="AN02-L003.html">Local regularity, sharp embeddings, and compactness</a>. The kernel section uses <a href="prerequisites/distributions-as-kernels.html#the-local-kernel-theorem">Distributions as kernels of continuous operators</a>, Lemma 3.1 and Theorem 4.1, and the Fourier definition of a wave front set with its usual cutoff stability, recalled in the opening of <a href="AN02-L019.html">Wavefronts of regular kernels</a>. Melrose [Melrose], Grubb's exact free Fourier chapter [Grubb] and Mantlik [Mantlik] give background; the local inverse, strength and opposite-covector arguments are proved in the linked lessons and below.</p>
+<h2 id="a-finite-space-of-allowable-symbols">A finite space of allowable symbols</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+A(x,D)=\sum_{|\alpha|\leq m}a_\alpha(x)D^\alpha
+\]">\[
+A(x,D)=\sum_{|\alpha|\leq m}a_\alpha(x)D^\alpha
+\]</span>
+on an open set <span class="math" data-tex="\(U\)">\(U\)</span>. We say that <span class="math" data-tex="\(A\)">\(A\)</span> has <strong>constant strength</strong> if every frozen polynomial <span class="math" data-tex="\(A(x,\xi)\)">\(A(x,\xi)\)</span> is nonzero and every pair <span class="math" data-tex="\(A(x,\cdot),A(y,\cdot)\)">\(A(x,\cdot),A(y,\cdot)\)</span> has equal strength. The comparison constants may initially depend on the pair of points. This is a condition in the given affine coordinates.</p>
+<p>Fix <span class="math" data-tex="\(x_0\in U\)">\(x_0\in U\)</span>, put <span class="math" data-tex="\(P(\xi)=A(x_0,\xi)\)">\(P(\xi)=A(x_0,\xi)\)</span>, and let <span class="math" data-tex="\(W_P\)">\(W_P\)</span> be the finite-dimensional space of polynomials weaker than <span class="math" data-tex="\(P\)">\(P\)</span>. Choose a basis <span class="math" data-tex="\(Q_1,\ldots,Q_N\)">\(Q_1,\ldots,Q_N\)</span> of that space.</p>
+<p><strong>Lemma 1.1.</strong> There are unique coefficient functions <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span> such that
+<span class="math math-display" data-tex="\[
+A(x,D)=P(D)+\sum_{\nu=1}^N b_\nu(x)Q_\nu(D),
+\qquad b_\nu(x_0)=0.
+\tag{1}
+\]">\[
+A(x,D)=P(D)+\sum_{\nu=1}^N b_\nu(x)Q_\nu(D),
+\qquad b_\nu(x_0)=0.
+\tag{1}
+\]</span>
+They have the same continuity and differentiability as the original coefficients. If the coefficients are continuous, the frozen strength comparisons with <span class="math" data-tex="\(P\)">\(P\)</span> can be chosen uniformly on a sufficiently small neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p><strong>Proof.</strong> Every <span class="math" data-tex="\(A(x,\cdot)-P\)">\(A(x,\cdot)-P\)</span> belongs to <span class="math" data-tex="\(W_P\)">\(W_P\)</span>. Its basis coordinates are fixed linear functions of its polynomial coefficients. This proves existence, uniqueness, regularity, and the vanishing at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. For the final assertion, let <span class="math" data-tex="\(C_\nu\)">\(C_\nu\)</span> satisfy <span class="math" data-tex="\(S_{Q_\nu}\leq C_\nu S_P\)">\(S_{Q_\nu}\leq C_\nu S_P\)</span>. The derivative-vector triangle inequality gives
+<span class="math math-display" data-tex="\[
+|S_{A(x)}(\xi)-S_P(\xi)|
+\leq\sum_\nu |b_\nu(x)|S_{Q_\nu}(\xi)
+\leq\left(\sum_\nu C_\nu|b_\nu(x)|\right)S_P(\xi).
+\]">\[
+|S_{A(x)}(\xi)-S_P(\xi)|
+\leq\sum_\nu |b_\nu(x)|S_{Q_\nu}(\xi)
+\leq\left(\sum_\nu C_\nu|b_\nu(x)|\right)S_P(\xi).
+\]</span>
+The coefficient in parentheses tends to zero. Make it less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to get uniform two-sided bounds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 1.2.</strong> The operators
+<span class="math math-display" data-tex="\[
+A(x,D)=D_1^2+iD_2+b(x)D_1+c(x)
+\tag{2}
+\]">\[
+A(x,D)=D_1^2+iD_2+b(x)D_1+c(x)
+\tag{2}
+\]</span>
+have constant strength for arbitrary scalar coefficient functions <span class="math" data-tex="\(b,c\)">\(b,c\)</span>. The highest homogeneous part <span class="math" data-tex="\(\xi_1^2\)">\(\xi_1^2\)</span> is not of principal type in two variables: its gradient vanishes at <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Nevertheless, the added terms are dominated by <span class="math" data-tex="\(P(\xi)=\xi_1^2+i\xi_2\)">\(P(\xi)=\xi_1^2+i\xi_2\)</span>, since <span class="math" data-tex="\(\xi_1=\tfrac12\partial_1P\)">\(\xi_1=\tfrac12\partial_1P\)</span> and <span class="math" data-tex="\(1=-i\partial_2P\)">\(1=-i\partial_2P\)</span>, and every positive-order symbol derivative is dominated by its symbol. The stable-strength lemma gives the claimed equivalence at each point. No ellipticity in two variables is asserted.</p>
+<h2 id="continuous-coefficients-the-correct-meaning-of-the-equation">Continuous coefficients: the correct meaning of the equation</h2>
+<p>For continuous <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span>, the expression <span class="math" data-tex="\(b_\nu Q_\nu(D)u\)">\(b_\nu Q_\nu(D)u\)</span> is not defined for an arbitrary distribution <span class="math" data-tex="\(u\)">\(u\)</span>. We instead use the domain
+<span class="math math-display" data-tex="\[
+\mathcal H_P(X)=\{u\in L^2(X):Q_\nu(D)u\in L^2(X)
+\text{ for every }\nu\}.
+\tag{3}
+\]">\[
+\mathcal H_P(X)=\{u\in L^2(X):Q_\nu(D)u\in L^2(X)
+\text{ for every }\nu\}.
+\tag{3}
+\]</span>
+The derivatives in (3) are distributional derivatives represented by <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions. Since the <span class="math" data-tex="\(Q_\nu\)">\(Q_\nu\)</span> form a basis of <span class="math" data-tex="\(W_P\)">\(W_P\)</span>, this domain does not depend on the chosen basis. It includes <span class="math" data-tex="\(P(D)u\in L^2\)">\(P(D)u\in L^2\)</span>, because <span class="math" data-tex="\(P\in W_P\)">\(P\in W_P\)</span>. On a set where all <span class="math" data-tex="\(b_\nu\)">\(b_\nu\)</span> are bounded, (1) defines <span class="math" data-tex="\(Au\)">\(Au\)</span> as an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function for <span class="math" data-tex="\(u\in\mathcal H_P(X)\)">\(u\in\mathcal H_P(X)\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> has continuous coefficients and constant strength near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. There is an open neighborhood <span class="math" data-tex="\(X\)">\(X\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and a bounded linear map
+<span class="math math-display" data-tex="\[
+T_A:L^2(X)\longrightarrow\mathcal H_P(X)
+\]">\[
+T_A:L^2(X)\longrightarrow\mathcal H_P(X)
+\]</span>
+such that
+<span class="math math-display" data-tex="\[
+AT_Af=f\qquad(f\in L^2(X)).
+\tag{4}
+\]">\[
+AT_Af=f\qquad(f\in L^2(X)).
+\tag{4}
+\]</span>
+Every <span class="math" data-tex="\(Q(D)T_A\)">\(Q(D)T_A\)</span>, with <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, is bounded on <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>. Also
+<span class="math math-display" data-tex="\[
+T_AAu=u\qquad(u\in C_c^\infty(X)).
+\tag{5}
+\]">\[
+T_AAu=u\qquad(u\in C_c^\infty(X)).
+\tag{5}
+\]</span>
+The norm on the target in the displayed map is the graph norm <span class="math" data-tex="\(\|u\|_2+\sum_\nu\|Q_\nu(D)u\|_2\)">\(\|u\|_2+\sum_\nu\|Q_\nu(D)u\|_2\)</span>.</p>
+<p><strong>Proof.</strong> Choose a bounded neighborhood <span class="math" data-tex="\(U_0\)">\(U_0\)</span> with closure in the region of continuous constant strength. The constant-coefficient inverse construction supplies an inverse <span class="math" data-tex="\(T_X\)">\(T_X\)</span> for <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> on every open <span class="math" data-tex="\(X\subset U_0\)">\(X\subset U_0\)</span>, with
+<span class="math math-display" data-tex="\[
+\|Q_\nu(D)T_X\|_{L^2(X)\to L^2(X)}\leq M_\nu
+\tag{6}
+\]">\[
+\|Q_\nu(D)T_X\|_{L^2(X)\to L^2(X)}\leq M_\nu
+\tag{6}
+\]</span>
+independent of <span class="math" data-tex="\(X\)">\(X\)</span>. To see that uniformity directly, use one regular fundamental solution and one cutoff equal to one near <span class="math" data-tex="\(\overline{U_0}-\overline{U_0}\)">\(\overline{U_0}-\overline{U_0}\)</span> in the proof of the bounded inverse theorem. The multiplier bounds then stay the same for every smaller set.</p>
+<p>On <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span>, define
+<span class="math math-display" data-tex="\[
+R_Xf=\sum_\nu b_\nu Q_\nu(D)T_Xf.
+\]">\[
+R_Xf=\sum_\nu b_\nu Q_\nu(D)T_Xf.
+\]</span>
+Continuity and <span class="math" data-tex="\(b_\nu(x_0)=0\)">\(b_\nu(x_0)=0\)</span> allow a small <span class="math" data-tex="\(X\)">\(X\)</span> with
+<span class="math math-display" data-tex="\[
+\|R_X\|\leq\sum_\nu M_\nu\|b_\nu\|_{L^\infty(X)}&lt;\tfrac12.
+\]">\[
+\|R_X\|\leq\sum_\nu M_\nu\|b_\nu\|_{L^\infty(X)}&lt;\tfrac12.
+\]</span>
+Set <span class="math" data-tex="\(T_A=T_X(I+R_X)^{-1}\)">\(T_A=T_X(I+R_X)^{-1}\)</span>. The inverse is given by a norm-convergent Neumann series. The identity <span class="math" data-tex="\(P(D)T_X=I\)">\(P(D)T_X=I\)</span> gives
+<span class="math math-display" data-tex="\[
+AT_Xg=(I+R_X)g,
+\]">\[
+AT_Xg=(I+R_X)g,
+\]</span>
+with every term interpreted in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. This proves (4) and the graph-norm bound. Any weaker <span class="math" data-tex="\(Q\)">\(Q\)</span> is a linear combination of the basis polynomials, proving its derivative bound as well.</p>
+<p>If <span class="math" data-tex="\(u\in C_c^\infty(X)\)">\(u\in C_c^\infty(X)\)</span>, the constant inverse satisfies <span class="math" data-tex="\(T_XP(D)u=u\)">\(T_XP(D)u=u\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(I+R_X)P(D)u=P(D)u+\sum_\nu b_\nu Q_\nu(D)u=Au.
+\]">\[
+(I+R_X)P(D)u=P(D)u+\sum_\nu b_\nu Q_\nu(D)u=Au.
+\]</span>
+Uniqueness of the Neumann-series inverse yields <span class="math" data-tex="\((I+R_X)^{-1}Au=P(D)u\)">\((I+R_X)^{-1}Au=P(D)u\)</span>. Applying <span class="math" data-tex="\(T_X\)">\(T_X\)</span> proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This result permits merely continuous coefficients because it first controls the needed derivatives as functions. It never multiplies an arbitrary distribution by a continuous function. Smooth test functions in (5) are a safe left-inverse domain under this coefficient hypothesis.</p>
+<h2 id="smooth-cutoffs-that-make-all-weights-work">Smooth cutoffs that make all weights work</h2>
+<p>For smooth coefficients, the same small neighborhood can work for every <span class="math" data-tex="\(p\)">\(p\)</span> and every moderate weight. The neighborhood must be chosen before the weight. Two estimates make this possible.</p>
+<p>Write
+<span class="math math-display" data-tex="\[
+\|h\|_{1,1}=(2\pi)^{-n}\int|\widehat h(\xi)|\,d\xi
+\]">\[
+\|h\|_{1,1}=(2\pi)^{-n}\int|\widehat h(\xi)|\,d\xi
+\]</span>
+for the unweighted Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm.</p>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be moderate and let
+<span class="math math-display" data-tex="\[
+k_\delta(\xi)=\sup_y e^{-\delta|y|}k(\xi-y).
+\]">\[
+k_\delta(\xi)=\sup_y e^{-\delta|y|}k(\xi-y).
+\]</span>
+For any fixed <span class="math" data-tex="\(h\in\mathcal S\)">\(h\in\mathcal S\)</span>, there is <span class="math" data-tex="\(\delta_0&gt;0\)">\(\delta_0&gt;0\)</span> such that, for <span class="math" data-tex="\(0&lt;\delta&lt;\delta_0\)">\(0&lt;\delta&lt;\delta_0\)</span>,
+<span class="math math-display" data-tex="\[
+\|hu\|_{p,k_\delta}\leq2\|h\|_{1,1}\|u\|_{p,k_\delta}
+\qquad(1\leq p\leq\infty).
+\tag{7}
+\]">\[
+\|hu\|_{p,k_\delta}\leq2\|h\|_{1,1}\|u\|_{p,k_\delta}
+\qquad(1\leq p\leq\infty).
+\tag{7}
+\]</span>
+If <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the assertion is immediate.</p>
+<p><strong>Proof.</strong> The cutoff estimate bounds the multiplier norm by
+<span class="math" data-tex="\((2\pi)^{-n}\int M_{k_\delta}(\eta)|\widehat h(\eta)|\,d\eta\)">\((2\pi)^{-n}\int M_{k_\delta}(\eta)|\widehat h(\eta)|\,d\eta\)</span>.
+The shift functions tend to one pointwise as <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. They are bounded by the original polynomial shift bound for <span class="math" data-tex="\(k\)">\(k\)</span>. Dominated convergence makes the integral tend to <span class="math" data-tex="\(\|h\|_{1,1}\)">\(\|h\|_{1,1}\)</span>, proving (7). For finitely many multipliers, take the minimum of their allowable <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>'s. The weights <span class="math" data-tex="\(k,k_\delta\)">\(k,k_\delta\)</span> are equivalent, although that equivalence constant may depend on <span class="math" data-tex="\(k,\delta\)">\(k,\delta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> Fix <span class="math" data-tex="\(w\in C_c^\infty\)">\(w\in C_c^\infty\)</span> and put <span class="math" data-tex="\(w_r(x)=w((x-x_0)/r)\)">\(w_r(x)=w((x-x_0)/r)\)</span>. If <span class="math" data-tex="\(b\)">\(b\)</span> is smooth near <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-tex="\(b(x_0)=0\)">\(b(x_0)=0\)</span>, then
+<span class="math math-display" data-tex="\[
+\|w_rb\|_{1,1}\leq Cr
+\quad\hbox{for all sufficiently small }r&gt;0.
+\tag{8}
+\]">\[
+\|w_rb\|_{1,1}\leq Cr
+\quad\hbox{for all sufficiently small }r&gt;0.
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> After translation, take <span class="math" data-tex="\(x_0=0\)">\(x_0=0\)</span>. On a fixed neighborhood,
+<span class="math math-display" data-tex="\[
+b(x)=\sum_{j=1}^n x_j b_j(x),
+\qquad b_j(x)=\int_0^1\partial_jb(tx)\,dt.
+\]">\[
+b(x)=\sum_{j=1}^n x_j b_j(x),
+\qquad b_j(x)=\int_0^1\partial_jb(tx)\,dt.
+\]</span>
+Multiply the <span class="math" data-tex="\(b_j\)">\(b_j\)</span>'s by a fixed cutoff equal to one near all small supports of <span class="math" data-tex="\(w_r\)">\(w_r\)</span>, giving fixed compactly supported smooth functions <span class="math" data-tex="\(\widetilde b_j\)">\(\widetilde b_j\)</span>. The Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is submultiplicative under multiplication. Scaling the transform gives
+<span class="math math-display" data-tex="\[
+\|x_jw(x/r)\|_{1,1}=r\|x_jw(x)\|_{1,1}.
+\]">\[
+\|x_jw(x/r)\|_{1,1}=r\|x_jw(x)\|_{1,1}.
+\]</span>
+Thus <span class="math" data-tex="\(\|w_rb\|_{1,1}\leq r\sum_j\|x_jw\|_{1,1}\|\widetilde b_j\|_{1,1}\)">\(\|w_rb\|_{1,1}\leq r\sum_j\|x_jw\|_{1,1}\|\widetilde b_j\|_{1,1}\)</span>, proving (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="one-inverse-for-every-weighted-scale">One inverse for every weighted scale</h2>
+<p><strong>Theorem 4.1.</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> has smooth coefficients and constant strength near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. There is a neighborhood <span class="math" data-tex="\(X\)">\(X\)</span> and a linear map
+<span class="math math-display" data-tex="\[
+E_A:\mathcal E&#x27;(\mathbb R^n)\longrightarrow\mathcal E&#x27;(\mathbb R^n)
+\]">\[
+E_A:\mathcal E&#x27;(\mathbb R^n)\longrightarrow\mathcal E&#x27;(\mathbb R^n)
+\]</span>
+with the following properties:
+<span class="math math-display" data-tex="\[
+AE_Af=f\quad\hbox{in }X,\qquad f\in\mathcal E&#x27;(\mathbb R^n),
+\tag{9}
+\]">\[
+AE_Af=f\quad\hbox{in }X,\qquad f\in\mathcal E&#x27;(\mathbb R^n),
+\tag{9}
+\]</span>
+<span class="math math-display" data-tex="\[
+E_AAu=u\quad\hbox{in }X,\qquad u\in\mathcal E&#x27;(X),
+\tag{10}
+\]">\[
+E_AAu=u\quad\hbox{in }X,\qquad u\in\mathcal E&#x27;(X),
+\tag{10}
+\]</span>
+and, for every moderate <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(1\leq p\leq\infty\)">\(1\leq p\leq\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\|E_Af\|_{p,kS_P}\leq C_{p,k}\|f\|_{p,k},
+\qquad f\in\mathcal E&#x27;\cap B_{p,k}.
+\tag{11}
+\]">\[
+\|E_Af\|_{p,kS_P}\leq C_{p,k}\|f\|_{p,k},
+\qquad f\in\mathcal E&#x27;\cap B_{p,k}.
+\tag{11}
+\]</span>
+The neighborhood and the map are independent of <span class="math" data-tex="\(p,k\)">\(p,k\)</span>. In particular every <span class="math" data-tex="\(Q(D)E_A\)">\(Q(D)E_A\)</span>, with <span class="math" data-tex="\(Q\prec P\)">\(Q\prec P\)</span>, is bounded from <span class="math" data-tex="\(\mathcal E&#x27;\cap B_{p,k}\)">\(\mathcal E&#x27;\cap B_{p,k}\)</span> to <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>.</p>
+<p><strong>Proof.</strong> Choose a ball <span class="math" data-tex="\(U_0\)">\(U_0\)</span> around <span class="math" data-tex="\(x_0\)">\(x_0\)</span> whose closure stays in the coefficient neighborhood. Let <span class="math" data-tex="\(E_0\)">\(E_0\)</span> be a regular fundamental solution of <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span>, and choose <span class="math" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span> equal to one near <span class="math" data-tex="\(\overline{U_0}-\overline{U_0}\)">\(\overline{U_0}-\overline{U_0}\)</span>. Put <span class="math" data-tex="\(F=\psi E_0\)">\(F=\psi E_0\)</span>. Thus <span class="math" data-tex="\(F\in\mathcal E&#x27;\cap B_{\infty,S_P}\)">\(F\in\mathcal E&#x27;\cap B_{\infty,S_P}\)</span>. For <span class="math" data-tex="\(g\in\mathcal E&#x27;(U_0)\)">\(g\in\mathcal E&#x27;(U_0)\)</span>,
+<span class="math math-display" data-tex="\[
+P(D)(F*g)=g\quad\hbox{in }U_0,
+\qquad F*P(D)g=g\quad\hbox{in }U_0.
+\tag{12}
+\]">\[
+P(D)(F*g)=g\quad\hbox{in }U_0,
+\qquad F*P(D)g=g\quad\hbox{in }U_0.
+\tag{12}
+\]</span>
+Both identities follow by replacing <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(E_0\)">\(E_0\)</span> on the relevant differences of supports.</p>
+<p>Choose <span class="math" data-tex="\(w\in C_c^\infty\)">\(w\in C_c^\infty\)</span> equal to one near the closed unit ball, with support in the ball of radius two, and take <span class="math" data-tex="\(r\)">\(r\)</span> small enough that <span class="math" data-tex="\(\operatorname{supp}w_r\subset U_0\)">\(\operatorname{supp}w_r\subset U_0\)</span>. Define
+<span class="math math-display" data-tex="\[
+K_rg=\sum_\nu w_rb_\nu\,Q_\nu(D)(F*g).
+\tag{13}
+\]">\[
+K_rg=\sum_\nu w_rb_\nu\,Q_\nu(D)(F*g).
+\tag{13}
+\]</span>
+The products <span class="math" data-tex="\(w_rb_\nu\)">\(w_rb_\nu\)</span> are understood as global compactly supported smooth functions, extended by zero. Since
+<span class="math math-display" data-tex="\[
+M_\nu:=\sup_\xi|Q_\nu(\xi)\widehat F(\xi)|&lt;\infty,
+\]">\[
+M_\nu:=\sup_\xi|Q_\nu(\xi)\widehat F(\xi)|&lt;\infty,
+\]</span>
+the Fourier multiplier <span class="math" data-tex="\(Q_\nu(D)F*\)">\(Q_\nu(D)F*\)</span> has norm at most <span class="math" data-tex="\(M_\nu\)">\(M_\nu\)</span> in every <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>, independently of the weight. Lemma 3.2 lets us fix <span class="math" data-tex="\(r\)">\(r\)</span>, before choosing a weight, so that
+<span class="math math-display" data-tex="\[
+2\sum_\nu M_\nu\|w_rb_\nu\|_{1,1}&lt;\tfrac12.
+\tag{14}
+\]">\[
+2\sum_\nu M_\nu\|w_rb_\nu\|_{1,1}&lt;\tfrac12.
+\tag{14}
+\]</span>
+For a given <span class="math" data-tex="\(k\)">\(k\)</span>, choose <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in Lemma 3.1 for the finite set of multipliers <span class="math" data-tex="\(w_rb_\nu\)">\(w_rb_\nu\)</span> and <span class="math" data-tex="\(w_r\)">\(w_r\)</span>. Then (13)–(14) give
+<span class="math math-display" data-tex="\[
+\|K_rg\|_{p,k_\delta}\leq\tfrac12\|g\|_{p,k_\delta},
+\qquad
+\|w_rf\|_{p,k_\delta}\leq2\|w_r\|_{1,1}\|f\|_{p,k_\delta}.
+\tag{15}
+\]">\[
+\|K_rg\|_{p,k_\delta}\leq\tfrac12\|g\|_{p,k_\delta},
+\qquad
+\|w_rf\|_{p,k_\delta}\leq2\|w_r\|_{1,1}\|f\|_{p,k_\delta}.
+\tag{15}
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+g+K_rg=w_rf
+\tag{16}
+\]">\[
+g+K_rg=w_rf
+\tag{16}
+\]</span>
+has a unique solution in <span class="math" data-tex="\(B_{p,k_\delta}=B_{p,k}\)">\(B_{p,k_\delta}=B_{p,k}\)</span>, with a bound in either equivalent norm. Equation (16) shows directly that <span class="math" data-tex="\(g\)">\(g\)</span> has support in the fixed compact set <span class="math" data-tex="\(\operatorname{supp}w_r\)">\(\operatorname{supp}w_r\)</span>.</p>
+<p>Every compactly supported distribution belongs to some <span class="math" data-tex="\(B_{\infty,\langle\xi\rangle^{-N}}\)">\(B_{\infty,\langle\xi\rangle^{-N}}\)</span>: its Fourier transform has polynomial growth. Thus (16) gives a compactly supported solution for every <span class="math" data-tex="\(f\in\mathcal E&#x27;\)">\(f\in\mathcal E&#x27;\)</span>. It is unique among all compactly supported distributions. Indeed a difference of two such solutions is a compact distribution in one of these sufficiently negative weighted spaces; choose its equivalent slow weight and apply the contraction estimate (15) to the homogeneous equation. The difference must be zero. Therefore solutions constructed using different <span class="math" data-tex="\(p,k,\delta\)">\(p,k,\delta\)</span> agree. This is the reason there is one map, rather than a separate inverse for each norm.</p>
+<p>Define <span class="math" data-tex="\(E_Af=F*g\)">\(E_Af=F*g\)</span>, using this unique solution. It has compact support in <span class="math" data-tex="\(\operatorname{supp}F+\operatorname{supp}w_r\)">\(\operatorname{supp}F+\operatorname{supp}w_r\)</span>, independent of <span class="math" data-tex="\(f\)">\(f\)</span>. The convolution estimate gives
+<span class="math math-display" data-tex="\[
+\|F*g\|_{p,kS_P}\leq\|F\|_{\infty,S_P}\|g\|_{p,k}.
+\]">\[
+\|F*g\|_{p,kS_P}\leq\|F\|_{\infty,S_P}\|g\|_{p,k}.
+\]</span>
+Combining with (15) and equivalence of the weights proves (11). Let <span class="math" data-tex="\(X\)">\(X\)</span> be the ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> about <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, reduced slightly if needed so that <span class="math" data-tex="\(w_r=1\)">\(w_r=1\)</span> on a neighborhood of its closure. On <span class="math" data-tex="\(X\)">\(X\)</span>, (12) and (16) yield (9).</p>
+<p>For <span class="math" data-tex="\(u\in\mathcal E&#x27;(X)\)">\(u\in\mathcal E&#x27;(X)\)</span>, put <span class="math" data-tex="\(g=P(D)u\)">\(g=P(D)u\)</span>. It has compact support in <span class="math" data-tex="\(X\)">\(X\)</span>. By (12), <span class="math" data-tex="\(F*g=u\)">\(F*g=u\)</span> near <span class="math" data-tex="\(\operatorname{supp}w_r\)">\(\operatorname{supp}w_r\)</span>. Therefore the left side of (16) is
+<span class="math math-display" data-tex="\[
+P(D)u+w_r\sum_\nu b_\nu Q_\nu(D)u=w_rAu.
+\]">\[
+P(D)u+w_r\sum_\nu b_\nu Q_\nu(D)u=w_rAu.
+\]</span>
+In the last equality, <span class="math" data-tex="\(w_r=1\)">\(w_r=1\)</span> near the support of <span class="math" data-tex="\(P(D)u\)">\(P(D)u\)</span>. Uniqueness in (16) identifies this <span class="math" data-tex="\(g\)">\(g\)</span> as the one used to define <span class="math" data-tex="\(E_AAu\)">\(E_AAu\)</span>. Equation (12) now proves (10). Finally apply the differential-operator estimate and <span class="math" data-tex="\(S_Q\leq CS_P\)">\(S_Q\leq CS_P\)</span> to (11) for the weaker-derivative assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> On the neighborhood in Theorem 4.1, if <span class="math" data-tex="\(u\in\mathcal E&#x27;(X)\)">\(u\in\mathcal E&#x27;(X)\)</span> and <span class="math" data-tex="\(Au\in B_{p,k}\)">\(Au\in B_{p,k}\)</span>, then <span class="math" data-tex="\(u\in B_{p,kS_P}\)">\(u\in B_{p,kS_P}\)</span>. Also every <span class="math" data-tex="\(f\in C^\infty(X)\)">\(f\in C^\infty(X)\)</span> has a smooth solution locally on a smaller neighborhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>.</p>
+<p><strong>Proof.</strong> For the first assertion, (10) agrees with <span class="math" data-tex="\(u\)">\(u\)</span> near its compact support. Use a cutoff equal to one there and the estimate (11). For the second, shrink to a neighborhood with closure in <span class="math" data-tex="\(X\)">\(X\)</span>, multiply <span class="math" data-tex="\(f\)">\(f\)</span> by a cutoff supported in <span class="math" data-tex="\(X\)">\(X\)</span> and equal to one on the smaller neighborhood, and extend the resulting smooth function by zero. This compact smooth datum belongs to every <span class="math" data-tex="\(B_{\infty,\langle\xi\rangle^j}\)">\(B_{\infty,\langle\xi\rangle^j}\)</span>. Equation (11) and the positive lower bound for <span class="math" data-tex="\(S_P\)">\(S_P\)</span> put its image in every such weighted space as well. Their intersection is <span class="math" data-tex="\(C^\infty\)">\(C^\infty\)</span>. Equation (9) gives the desired equation on the smaller neighborhood. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(f\)">\(f\)</span> is a smooth function on all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, the same construction gives a smooth solution on <span class="math" data-tex="\(X\)">\(X\)</span> itself, by applying <span class="math" data-tex="\(E_A\)">\(E_A\)</span> to a compact smooth extension equal to <span class="math" data-tex="\(f\)">\(f\)</span> near <span class="math" data-tex="\(\operatorname{supp}w_r\)">\(\operatorname{supp}w_r\)</span>.</p>
+<h2 id="transposition-and-composition-preserve-the-strength">Transposition and composition preserve the strength</h2>
+<p>For smooth coefficients, define the formal transpose by the bilinear identity
+<span class="math math-display" data-tex="\[
+\int (Au)v\,dx=\int u(A^tv)\,dx
+\]">\[
+\int (Au)v\,dx=\int u(A^tv)\,dx
+\]</span>
+when one factor has compact support. There is no coefficient conjugation in this convention.</p>
+<p><strong>Theorem 5.1.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is smooth and has constant strength, then its formal transpose also has constant strength. At each point <span class="math" data-tex="\(x\)">\(x\)</span>, its frozen polynomial has equal strength to <span class="math" data-tex="\(A(x,-\xi)\)">\(A(x,-\xi)\)</span>.</p>
+<p><strong>Proof.</strong> In (1),
+<span class="math math-display" data-tex="\[
+A^t=P(-D)+\sum_\nu Q_\nu(-D)b_\nu.
+\]">\[
+A^t=P(-D)+\sum_\nu Q_\nu(-D)b_\nu.
+\]</span>
+Expanding the products gives, at a fixed point <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+A^t(x,\xi)=A(x,-\xi)+
+\sum_{\nu,\ |\alpha|\geq1}
+\frac{(-D)^\alpha b_\nu(x)}{\alpha!}
+(\partial_\xi^\alpha Q_\nu)(-\xi).
+\tag{17}
+\]">\[
+A^t(x,\xi)=A(x,-\xi)+
+\sum_{\nu,\ |\alpha|\geq1}
+\frac{(-D)^\alpha b_\nu(x)}{\alpha!}
+(\partial_\xi^\alpha Q_\nu)(-\xi).
+\tag{17}
+\]</span>
+Reflection preserves weak comparison and domination. Each derivative polynomial in the correction is dominated by <span class="math" data-tex="\(P(-\xi)\)">\(P(-\xi)\)</span>, hence by the equally strong <span class="math" data-tex="\(A(x,-\xi)\)">\(A(x,-\xi)\)</span>. A finite linear combination is dominated too. The stable-strength lemma shows that (17) has the stated strength. Since the frozen polynomials <span class="math" data-tex="\(A(x,-\xi)\)">\(A(x,-\xi)\)</span> have equal strength at all points, so do those of <span class="math" data-tex="\(A^t\)">\(A^t\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Reflection in this statement matters. It is not always true that <span class="math" data-tex="\(P(\xi)\)">\(P(\xi)\)</span> and <span class="math" data-tex="\(P(-\xi)\)">\(P(-\xi)\)</span> have equal strength.</p>
+<p><strong>Theorem 5.2.</strong> Let <span class="math" data-tex="\(A(x,D)\)">\(A(x,D)\)</span> and <span class="math" data-tex="\(B(x,D)\)">\(B(x,D)\)</span> have constant strength. If <span class="math" data-tex="\(B\)">\(B\)</span> has order <span class="math" data-tex="\(r\)">\(r\)</span> and the coefficients of <span class="math" data-tex="\(A\)">\(A\)</span> are <span class="math" data-tex="\(C^r\)">\(C^r\)</span>, then the composed operator <span class="math" data-tex="\(B(x,D)A(x,D)\)">\(B(x,D)A(x,D)\)</span> has constant strength. At each point its frozen polynomial has equal strength to the pointwise product <span class="math" data-tex="\(B(x,\xi)A(x,\xi)\)">\(B(x,\xi)A(x,\xi)\)</span>.</p>
+<p><strong>Proof.</strong> In a fixed weaker-polynomial basis for <span class="math" data-tex="\(A\)">\(A\)</span>, every coefficient derivative <span class="math" data-tex="\(D_x^\alpha A(x,\xi)\)">\(D_x^\alpha A(x,\xi)\)</span> is weaker than <span class="math" data-tex="\(A(x,\xi)\)">\(A(x,\xi)\)</span>. Leibniz's formula for the composition gives
+<span class="math math-display" data-tex="\[
+(BA)(x,\xi)=B(x,\xi)A(x,\xi)+
+\sum_{|\alpha|\geq1}
+\frac{1}{\alpha!}
+(\partial_\xi^\alpha B)(x,\xi)(D_x^\alpha A)(x,\xi).
+\tag{18}
+\]">\[
+(BA)(x,\xi)=B(x,\xi)A(x,\xi)+
+\sum_{|\alpha|\geq1}
+\frac{1}{\alpha!}
+(\partial_\xi^\alpha B)(x,\xi)(D_x^\alpha A)(x,\xi).
+\tag{18}
+\]</span>
+Only <span class="math" data-tex="\(|\alpha|\leq r\)">\(|\alpha|\leq r\)</span> occur. The differentiated factor from <span class="math" data-tex="\(B\)">\(B\)</span> is dominated by <span class="math" data-tex="\(B(x,\xi)\)">\(B(x,\xi)\)</span>; the other factor is weaker than <span class="math" data-tex="\(A(x,\xi)\)">\(A(x,\xi)\)</span>. The product rule for domination shows that every correction in (18) is dominated by <span class="math" data-tex="\(BA\)">\(BA\)</span>'s pointwise polynomial product. Apply the stable-strength lemma. Finally, the pointwise products have equal strength at different points by the product rule for weak comparison. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Nonlinear coordinate changes can destroy constant strength. For example, use the global change of coordinates <span class="math" data-tex="\(y_1=x_1\)">\(y_1=x_1\)</span>, <span class="math" data-tex="\(y_2=e^{x_1}x_2\)">\(y_2=e^{x_1}x_2\)</span>. The constant operator <span class="math" data-tex="\(\partial_{x_1}\)">\(\partial_{x_1}\)</span> becomes <span class="math" data-tex="\(\partial_{y_1}+y_2\partial_{y_2}\)">\(\partial_{y_1}+y_2\partial_{y_2}\)</span>. Its frozen linear symbols have real active directions <span class="math" data-tex="\((1,y_2)\)">\((1,y_2)\)</span>, which differ as <span class="math" data-tex="\(y_2\)">\(y_2\)</span> varies. Two nonparallel first-order directions do not have equal strength. Thus the transformed operator is not of constant strength on any open set.</p>
+<h2 id="the-inverse-kernel-has-opposite-covectors">The inverse kernel has opposite covectors</h2>
+<p>Let <span class="math" data-tex="\(e(x,y)\)">\(e(x,y)\)</span> be the Schwartz kernel of <span class="math" data-tex="\(E_A\)">\(E_A\)</span>. It exists because (11) with <span class="math" data-tex="\(p=2,k=1\)">\(p=2,k=1\)</span>, and the lower bound for <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, give an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound. In particular the restriction of <span class="math" data-tex="\(E_A\)">\(E_A\)</span> to test functions is continuous into distributions. Equations (9)–(10) imply, on <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>,
+<span class="math math-display" data-tex="\[
+A(x,D_x)e(x,y)=A^t(y,D_y)e(x,y)=\delta(x-y).
+\tag{19}
+\]">\[
+A(x,D_x)e(x,y)=A^t(y,D_y)e(x,y)=\delta(x-y).
+\tag{19}
+\]</span>
+These identities follow by testing against products of test functions and then using the kernel theorem.</p>
+<p><strong>Theorem 6.1.</strong> The wave front set of this kernel satisfies
+<span class="math math-display" data-tex="\[
+(x,y;\xi,\eta)\in\operatorname{WF}(e)
+\quad\Longrightarrow\quad\xi+\eta=0.
+\tag{20}
+\]">\[
+(x,y;\xi,\eta)\in\operatorname{WF}(e)
+\quad\Longrightarrow\quad\xi+\eta=0.
+\tag{20}
+\]</span>
+This constrains covectors. It does not require the spatial points <span class="math" data-tex="\(x,y\)">\(x,y\)</span> to agree.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(a,b\in C_c^\infty\)">\(a,b\in C_c^\infty\)</span>, and let <span class="math" data-tex="\(H\)">\(H\)</span> be the Fourier transform of <span class="math" data-tex="\(a(x)b(y)e(x,y)\)">\(a(x)b(y)e(x,y)\)</span>. The weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound in (11), after dropping the factor <span class="math" data-tex="\(S_P\)">\(S_P\)</span> using its lower bound, and the weighted <span class="math" data-tex="\(L^2\)">\(L^2\)</span> duality give
+<span class="math math-display" data-tex="\[
+|H(\xi,-\eta)|\leq C_k\,
+\|b(y)e^{iy\cdot\eta}\|_{2,k}
+\|\overline{a(x)}e^{ix\cdot\xi}\|_{2,1/k}
+\leq C&#x27;_k\frac{k(\eta)}{k(\xi)}.
+\tag{21}
+\]">\[
+|H(\xi,-\eta)|\leq C_k\,
+\|b(y)e^{iy\cdot\eta}\|_{2,k}
+\|\overline{a(x)}e^{ix\cdot\xi}\|_{2,1/k}
+\leq C&#x27;_k\frac{k(\eta)}{k(\xi)}.
+\tag{21}
+\]</span>
+The last step uses the fixed-cutoff modulation estimate. Constants may depend on the chosen weight and cutoffs.</p>
+<p>We prove rapid decrease outside any conic neighborhood of <span class="math" data-tex="\(\xi=\eta\)">\(\xi=\eta\)</span>. If it failed, there would be some <span class="math" data-tex="\(N\)">\(N\)</span>, some <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, and a sequence with total frequency tending to infinity such that
+<span class="math math-display" data-tex="\[
+|\xi_j-\eta_j|\geq d(|\xi_j|+|\eta_j|),
+\qquad
+|H(\xi_j,-\eta_j)|\geq(1+|\xi_j|+|\eta_j|)^{-N}.
+\tag{22}
+\]">\[
+|\xi_j-\eta_j|\geq d(|\xi_j|+|\eta_j|),
+\qquad
+|H(\xi_j,-\eta_j)|\geq(1+|\xi_j|+|\eta_j|)^{-N}.
+\tag{22}
+\]</span>
+Pass to one of the two cases <span class="math" data-tex="\(|\eta_j|\leq|\xi_j|\)">\(|\eta_j|\leq|\xi_j|\)</span> or <span class="math" data-tex="\(|\xi_j|\leq|\eta_j|\)">\(|\xi_j|\leq|\eta_j|\)</span>. In the first, put <span class="math" data-tex="\(R_j=1+|\xi_j|\)">\(R_j=1+|\xi_j|\)</span>. Take a subsequence so that <span class="math" data-tex="\(R_j\to\infty\)">\(R_j\to\infty\)</span> and <span class="math" data-tex="\(R_{j+1}\geq16R_j^2\)">\(R_{j+1}\geq16R_j^2\)</span>. For a positive integer <span class="math" data-tex="\(M\)">\(M\)</span>, define the weight
+<span class="math math-display" data-tex="\[
+k(z)=\max\left(1,\sup_j\frac{R_j^M}{(1+|z-\xi_j|)^M}\right).
+\tag{23}
+\]">\[
+k(z)=\max\left(1,\sup_j\frac{R_j^M}{(1+|z-\xi_j|)^M}\right).
+\tag{23}
+\]</span>
+It is finite everywhere: for fixed <span class="math" data-tex="\(z\)">\(z\)</span>, all sufficiently late centers satisfy <span class="math" data-tex="\(1+|z-\xi_j|\geq R_j/2\)">\(1+|z-\xi_j|\geq R_j/2\)</span>, while only finitely many earlier terms remain. Every term and the constant one have the same moderate shift bound <span class="math" data-tex="\((1+|h|)^M\)">\((1+|h|)^M\)</span>. Taking the supremum preserves that bound, so (23) is a positive moderate weight.</p>
+<p>At the centers, <span class="math" data-tex="\(k(\xi_j)\geq R_j^M\)">\(k(\xi_j)\geq R_j^M\)</span>. At <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>, the term with center <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span> is bounded by a constant depending on <span class="math" data-tex="\(d,M\)">\(d,M\)</span>, because of (22). All later centers contribute at most a fixed constant, since <span class="math" data-tex="\(|\eta_j|\leq|\xi_j|\)">\(|\eta_j|\leq|\xi_j|\)</span> and the centers grow rapidly. Every earlier term is at most <span class="math" data-tex="\(R_{j-1}^M\leq R_j^{M/2}\)">\(R_{j-1}^M\leq R_j^{M/2}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\frac{k(\eta_j)}{k(\xi_j)}\leq C R_j^{-M/2}.
+\]">\[
+\frac{k(\eta_j)}{k(\xi_j)}\leq C R_j^{-M/2}.
+\]</span>
+Choose <span class="math" data-tex="\(M&gt;2N\)">\(M&gt;2N\)</span>. Equation (21) contradicts the lower bound in (22). In the second case build the same peaked weight around the larger frequencies <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>, and use its reciprocal in (21); the identical argument gives the contradiction.</p>
+<p>Thus every product localization has rapid Fourier decrease away from the opposite-covector set. Choose <span class="math" data-tex="\(a,b\)">\(a,b\)</span> nonzero at any specified pair <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>; their product is a valid localizing function there. The Fourier definition of the wave front set yields (20). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of every moderate weight in (21) is essential to this proof. A fixed isotropic Sobolev scale cannot distinguish two large frequencies of the same length that point in different directions. The peaked weight separates them.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> In (2), freeze the coefficients at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. Write the coefficient differences in a weaker-polynomial basis and identify the quantities that must be small for the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Neumann series.</p>
+<p><strong>Solution.</strong> The difference is <span class="math" data-tex="\((b(x)-b(x_0))\xi_1+(c(x)-c(x_0))\)">\((b(x)-b(x_0))\xi_1+(c(x)-c(x_0))\)</span>. Both polynomials are weaker than the frozen symbol. The sufficient condition is
+<span class="math math-display" data-tex="\[
+M_1\|b-b(x_0)\|_{L^\infty(X)}+
+M_2\|c-c(x_0)\|_{L^\infty(X)}&lt;1,
+\]">\[
+M_1\|b-b(x_0)\|_{L^\infty(X)}+
+M_2\|c-c(x_0)\|_{L^\infty(X)}&lt;1,
+\]</span>
+where <span class="math" data-tex="\(M_1,M_2\)">\(M_1,M_2\)</span> bound <span class="math" data-tex="\(D_1T_X\)">\(D_1T_X\)</span> and <span class="math" data-tex="\(T_X\)">\(T_X\)</span> for the frozen inverse. Taking a bound below <span class="math" data-tex="\(1/2\)">\(1/2\)</span> gives the convenient inverse-norm estimate two. Continuity makes this possible on a small neighborhood.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Explain why smoothness of the coefficients matters in Theorem 4.1 even though continuity suffices in Theorem 2.1.</p>
+<p><strong>Solution.</strong> The <span class="math" data-tex="\(L^2\)">\(L^2\)</span> proof uses the multiplication norm <span class="math" data-tex="\(\|b_\nu\|_\infty\)">\(\|b_\nu\|_\infty\)</span>. For arbitrary Fourier weights we need multiplication by <span class="math" data-tex="\(w_rb_\nu\)">\(w_rb_\nu\)</span> to be bounded on every <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span>, and we need its Fourier <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm to tend to zero independently of <span class="math" data-tex="\(k\)">\(k\)</span>. Smoothness gives compactly supported smooth multipliers, the representation <span class="math" data-tex="\(b_\nu(x)=\sum_j(x_j-x_{0,j})b_{\nu,j}(x)\)">\(b_\nu(x)=\sum_j(x_j-x_{0,j})b_{\nu,j}(x)\)</span>, and estimate (8). A merely continuous multiplier need not have an integrable Fourier transform or preserve these spaces.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Give a polynomial for which reflection changes strength. Check it on one explicit frequency sequence.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(P(\xi_1,\xi_2)=\xi_1^2+\xi_2+i\)">\(P(\xi_1,\xi_2)=\xi_1^2+\xi_2+i\)</span>. Along <span class="math" data-tex="\((s,-s^2)\)">\((s,-s^2)\)</span>,
+<span class="math math-display" data-tex="\[
+S_P^2=4s^2+6,
+\]">\[
+S_P^2=4s^2+6,
+\]</span>
+whereas <span class="math" data-tex="\(P(-s,s^2)=2s^2+i\)">\(P(-s,s^2)=2s^2+i\)</span>. Thus <span class="math" data-tex="\(S_{P(-\cdot)}/S_P\)">\(S_{P(-\cdot)}/S_P\)</span> is unbounded on this sequence. The reflected polynomial is not weaker than <span class="math" data-tex="\(P\)">\(P\)</span>, so they do not have equal strength. This is why Theorem 5.1 retains the reflected frozen symbol.</p>
+<p><strong>Exercise 4 (advanced).</strong> Can condition (20) imply that the inverse is a pseudodifferential operator with a kernel singular only on <span class="math" data-tex="\(x=y\)">\(x=y\)</span>? Use transport to decide.</p>
+<p><strong>Solution.</strong> It cannot. In two variables, an inverse for <span class="math" data-tex="\(\partial_{x_1}\)">\(\partial_{x_1}\)</span> has a convolution kernel supported on the forward <span class="math" data-tex="\(x_1\)">\(x_1\)</span>-ray, tensored with a delta in <span class="math" data-tex="\(x_2\)">\(x_2\)</span>. Away from the origin along the ray it is smooth in <span class="math" data-tex="\(x_1\)">\(x_1\)</span> but remains singular normally in <span class="math" data-tex="\(x_2\)">\(x_2\)</span>. The corresponding two-point kernel is singular at pairs with <span class="math" data-tex="\(x_2=y_2\)">\(x_2=y_2\)</span> and <span class="math" data-tex="\(x_1&gt;y_1\)">\(x_1&gt;y_1\)</span>, including pairs with <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>. Its two covectors are opposite because it depends on <span class="math" data-tex="\(x-y\)">\(x-y\)</span>. Thus the covector restriction in (20) allows nonlocal propagation along a direction.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, sections on distributions, kernels, and differential operators. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>[Grubb] Gerd Grubb, author-hosted lecture chapter §5, <em>Fourier transformation of distributions</em>, §§5.1–5.3, from the 2007–2008 lecture notes for <em>Distributions and Operators</em>. <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>. Fourier and tempered-distribution background; the strength and inverse proofs are supplied by the linked lessons and the present lesson.</li>
+<li>[Mantlik] Frank Mantlik, <em>Partial differential operators depending analytically on a parameter</em>, Annales de l'Institut Fourier <strong>41</strong> (1991), 577–599. <a href="https://www.numdam.org/item/10.5802/aif.1266/">Original article</a>.</li>
+<li>Internal kernel proof: <a href="prerequisites/distributions-as-kernels.html#the-local-kernel-theorem">Distributions as kernels of continuous operators</a>, Sections 1–4, especially Lemma 3.1 (product tests) and Theorem 4.1 (the local Schwartz kernel theorem). The local inverse, transpose, composition and opposite-covector results are proved in Theorems 2.1 and 4.1–6.1 of this lesson.</li>
+</ul>
+</main></body></html>

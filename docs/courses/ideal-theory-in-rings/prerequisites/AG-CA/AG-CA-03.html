@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noetherian and Artinian rings · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/noetherian-and-artinian-rings.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="noetherian-and-artinian-rings">Noetherian and Artinian
+rings</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An ideal can describe infinitely many equations even when a geometric
+problem initially presents only a few. The Noetherian condition says
+that this proliferation eventually stops: every ideal, including an
+ideal produced by elimination or a kernel, has finitely many generators.
+The Artinian condition controls a different phenomenon. It prevents
+infinitely many successive quotients from extracting smaller pieces of a
+module. When both conditions hold, a module can be measured by a finite
+list of simple pieces.</p>
+<p>We will connect these finiteness conditions to two questions about
+powers of an ideal. How does the filtration on a module meet a
+submodule? Can a nonzero element belong to every power? The answers are
+Artin–Rees and Krull intersection. Their proofs explain exactly where
+finite generation enters.</p>
+<p>Rings are commutative with identity, and modules are unital. “Finite”
+means finitely generated. A local ring has exactly one maximal ideal; it
+need not be Noetherian unless we say so. We use exactness of
+localization and the determinant form of Nakayama from <a
+href="AG-CA-02.html"><em>Localization, local properties and
+support</em></a>. The zero ring is allowed, has empty spectrum, and has
+length zero as a module over itself.</p>
+<h2 id="three-ways-to-recognize-a-noetherian-module">1. Three ways to
+recognize a Noetherian module</h2>
+<p>A module is <strong>Noetherian</strong> if every ascending chain of
+submodules stabilizes. A ring is Noetherian if it is Noetherian as a
+module over itself, so the condition concerns its ideals.</p>
+<p><strong>Theorem 1.1.</strong> For an arbitrary module <span
+class="math inline">\(M\)</span>, the following conditions are
+equivalent:</p>
+<ol type="1">
+<li>Every ascending chain of submodules stabilizes.</li>
+<li>Every nonempty family of submodules contains a maximal member under
+inclusion.</li>
+<li>Every submodule of <span class="math inline">\(M\)</span> is
+finite.</li>
+</ol>
+<p><strong>Proof.</strong> If a nonempty family has no maximal member,
+start with one member and successively choose a strictly larger member
+of that family. This produces a nonstabilizing ascending chain. Thus the
+first condition implies the second. Conversely, a maximal member of the
+family formed by a chain forces that chain to stabilize.</p>
+<p>Apply the second condition to the finite submodules of a fixed
+submodule <span class="math inline">\(N\)</span>. Choose a maximal one,
+<span class="math inline">\(L\)</span>. If <span
+class="math inline">\(x\in N\setminus L\)</span>, the submodule <span
+class="math inline">\(L+Rx\)</span> is finite and strictly larger, a
+contradiction. Hence <span class="math inline">\(N=L\)</span>. Finally,
+suppose every submodule is finite and consider a chain <span
+class="math inline">\(N_1\subseteq N_2\subseteq\cdots\)</span>. Its
+union is a submodule. Finitely many generators of the union all belong
+to one <span class="math inline">\(N_j\)</span>, so the union equals
+<span class="math inline">\(N_j\)</span> and the chain stabilizes. <span
+class="math inline">\(\square\)</span></p>
+<p>In particular, a Noetherian module itself is finite. The converse
+requires a condition on the ring: one generator over an arbitrary ring
+need not control the relations among its multiples.</p>
+<p><strong>Proposition 1.2.</strong> Submodules and quotients of
+Noetherian modules are Noetherian. In an exact sequence</p>
+<p><span class="math display">\[
+0\longrightarrow L\longrightarrow M\longrightarrow N\longrightarrow0,
+\]</span></p>
+<p>the module <span class="math inline">\(M\)</span> is Noetherian if
+and only if both <span class="math inline">\(L\)</span> and <span
+class="math inline">\(N\)</span> are Noetherian. Consequently every
+finite module over a Noetherian ring is Noetherian.</p>
+<p><strong>Proof.</strong> Submodules inherit the condition that their
+submodules are finite. Submodules of a quotient correspond to submodules
+containing the kernel, so ascending chains lift to ascending chains
+upstairs. This proves the forward implication.</p>
+<p>For the converse, let <span class="math inline">\(K\subseteq
+M\)</span>. Its intersection with <span class="math inline">\(L\)</span>
+is finite, and its image in <span class="math inline">\(N\)</span> is
+finite. Lift finitely many generators of that image to <span
+class="math inline">\(K\)</span>, and adjoin generators of <span
+class="math inline">\(K\cap L\)</span>. They generate <span
+class="math inline">\(K\)</span>: subtracting a combination of the lifts
+from any element leaves an element of the intersection. Thus every <span
+class="math inline">\(K\)</span> is finite. A finite direct sum of
+copies of a Noetherian ring is Noetherian by repeated extensions, and
+any finite module is a quotient of such a sum. <span
+class="math inline">\(\square\)</span></p>
+<p>There are already instructive examples. Every ideal of <span
+class="math inline">\(\mathbb Z\)</span> is principal, so <span
+class="math inline">\(\mathbb Z\)</span> is Noetherian. The ring <span
+class="math inline">\(k[x_1,x_2,\ldots]\)</span>, with countably many
+independent variables, is not: the ideals <span
+class="math inline">\((x_1,\ldots,x_n)\)</span> strictly increase.
+Setting the first <span class="math inline">\(n\)</span> variables to
+zero shows that <span class="math inline">\(x_{n+1}\)</span> is not in
+the <span class="math inline">\(n\)</span>-th ideal.</p>
+<h2 id="polynomial-rings-and-finite-geometric-descriptions">2.
+Polynomial rings and finite geometric descriptions</h2>
+<p>The following theorem allows finitely many coordinates to be added
+without losing control of ideals.</p>
+<p><strong>Theorem 2.1 (Hilbert basis theorem).</strong> If <span
+class="math inline">\(R\)</span> is Noetherian, then <span
+class="math inline">\(R[t]\)</span> is Noetherian. Every finite type
+<span class="math inline">\(R\)</span>-algebra and every localization of
+<span class="math inline">\(R\)</span> is therefore Noetherian.</p>
+<p><strong>Proof.</strong> Fix an ideal <span
+class="math inline">\(J\subseteq R[t]\)</span>. Let <span
+class="math inline">\(C\subseteq R\)</span> consist of zero and the
+leading coefficients of nonzero elements of <span
+class="math inline">\(J\)</span>. It is an ideal. To add two leading
+coefficients, multiply the corresponding polynomials by powers of <span
+class="math inline">\(t\)</span> until their degrees agree, then add. If
+the proposed leading coefficient cancels, the sum of the coefficients is
+zero, which is already in <span class="math inline">\(C\)</span>.
+Multiplication by <span class="math inline">\(r\in R\)</span> has the
+same dichotomy: the leading coefficient is multiplied by <span
+class="math inline">\(r\)</span>, or becomes zero.</p>
+<p>Choose generators <span class="math inline">\(a_1,\ldots,a_s\)</span>
+of <span class="math inline">\(C\)</span>, realized by polynomials <span
+class="math inline">\(f_1,\ldots,f_s\in J\)</span> with degrees <span
+class="math inline">\(d_i\)</span>. If <span
+class="math inline">\(C=0\)</span>, then <span
+class="math inline">\(J=0\)</span> and there is nothing to prove.
+Otherwise put <span class="math inline">\(d=\max_i d_i\)</span>.
+Whenever <span class="math inline">\(f\in J\)</span> has degree <span
+class="math inline">\(n\geq d\)</span>, write its leading coefficient as
+<span class="math inline">\(\sum r_i a_i\)</span>. Then</p>
+<p><span class="math display">\[
+f-\sum_i r_i t^{n-d_i}f_i
+\]</span></p>
+<p>has smaller degree. Repetition leaves a polynomial of degree less
+than <span class="math inline">\(d\)</span>.</p>
+<p>The polynomials of degree less than <span
+class="math inline">\(d\)</span> form a finite free <span
+class="math inline">\(R\)</span>-module, with the zero module understood
+when <span class="math inline">\(d=0\)</span>. Its submodule <span
+class="math inline">\(J\cap R[t]_{&lt;d}\)</span> is finite by
+Proposition 1.2. Choose module generators <span
+class="math inline">\(g_1,\ldots,g_u\)</span>. The reduction just
+performed shows that <span class="math inline">\(f_i,g_j\)</span>
+generate <span class="math inline">\(J\)</span> as an ideal. This proves
+the theorem for one variable; induction handles finitely many variables.
+A finite type algebra is a quotient of such a polynomial ring, and
+quotients preserve the condition.</p>
+<p>For localization, an ideal <span class="math inline">\(K\subseteq
+S^{-1}R\)</span> is the extension of its contraction <span
+class="math inline">\(J\subseteq R\)</span>. Indeed, if <span
+class="math inline">\(a/s\in K\)</span>, then <span
+class="math inline">\(a/1=(s/1)(a/s)\in K\)</span>; the reverse
+inclusion is immediate. Extending finite generators of <span
+class="math inline">\(J\)</span> gives finite generators of <span
+class="math inline">\(K\)</span>. This argument includes localization to
+the zero ring. <span class="math inline">\(\square\)</span></p>
+<p>The theorem gives no corresponding assertion about arbitrary
+subrings. Inside <span class="math inline">\(k[x,y]\)</span>,
+consider</p>
+<p><span class="math display">\[
+B=k[x,xy,xy^2,xy^3,\ldots].
+\]</span></p>
+<p>Every nonconstant monomial of <span class="math inline">\(B\)</span>
+has positive <span class="math inline">\(x\)</span>-degree. Consequently
+the component of <span class="math inline">\(x\)</span>-degree one in
+the ideal <span class="math inline">\((x,xy,\ldots,xy^n)\)</span> is
+spanned over <span class="math inline">\(k\)</span> by precisely those
+displayed monomials: multiplying them by nonconstant elements raises the
+<span class="math inline">\(x\)</span>-degree. Thus <span
+class="math inline">\(xy^{n+1}\)</span> does not belong to this ideal.
+The ideals strictly increase, so <span class="math inline">\(B\)</span>
+is not Noetherian, although its ambient ring is.</p>
+<p><strong>Proposition 2.2.</strong> If <span
+class="math inline">\(R\)</span> is Noetherian, then <span
+class="math inline">\(\operatorname{Spec}R\)</span> is a Noetherian
+topological space, <span class="math inline">\(R\)</span> has finitely
+many minimal primes, its nilradical is nilpotent, and every ideal <span
+class="math inline">\(I\)</span> contains a power of <span
+class="math inline">\(\sqrt I\)</span>.</p>
+<p><strong>Proof.</strong> A descending chain of closed sets corresponds
+to an ascending chain of radical ideals, using the radical–closed-set
+correspondence in <em>Spectra of rings</em>. It stabilizes. The finite
+irreducible decomposition proved there then gives finitely many minimal
+primes.</p>
+<p>The nilradical has finitely many generators <span
+class="math inline">\(z_1,\ldots,z_r\)</span>. Choose positive integers
+<span class="math inline">\(e_i\)</span> with <span
+class="math inline">\(z_i^{e_i}=0\)</span>. Any product of</p>
+<p><span class="math display">\[
+1+\sum_{i=1}^r(e_i-1)
+\]</span></p>
+<p>generators contains at least <span class="math inline">\(e_i\)</span>
+copies of some <span class="math inline">\(z_i\)</span>, so it is zero.
+Thus the nilradical is nilpotent. Apply the same argument in the
+Noetherian quotient <span class="math inline">\(R/I\)</span>. Its
+nilradical is <span class="math inline">\(\sqrt I/I\)</span>, so <span
+class="math inline">\((\sqrt I)^N\subseteq I\)</span> for some positive
+<span class="math inline">\(N\)</span>. If the relevant ideal is zero,
+choose <span class="math inline">\(N=1\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>This is a uniform conclusion. In an arbitrary ring every individual
+nilpotent has some vanishing power; the Noetherian hypothesis makes one
+exponent work for the entire nilradical. Conversely, a Noetherian
+spectrum does not imply a Noetherian ring: the one-point square-zero
+example in <em>Spectra of rings</em> still applies.</p>
+<h2 id="measuring-a-module-by-simple-pieces">3. Measuring a module by
+simple pieces</h2>
+<p>A nonzero module <span class="math inline">\(S\)</span> is
+<strong>simple</strong> if its only submodules are zero and itself. If
+<span class="math inline">\(s\neq0\)</span>, simplicity makes <span
+class="math inline">\(Rs=S\)</span>, so <span
+class="math inline">\(S\cong R/\mathfrak m\)</span> for a maximal ideal
+<span class="math inline">\(\mathfrak m\)</span>: the kernel of <span
+class="math inline">\(R\to S\)</span> is maximal because the quotient
+has no proper nonzero ideals. Conversely each <span
+class="math inline">\(R/\mathfrak m\)</span> is simple.</p>
+<p>A <strong>composition series</strong> of <span
+class="math inline">\(M\)</span> is a finite strict chain</p>
+<p><span class="math display">\[
+0=M_0\subsetneq M_1\subsetneq\cdots\subsetneq M_n=M
+\]</span></p>
+<p>whose successive quotients are simple. A module admitting one has
+<strong>finite length</strong>. We must prove that the number <span
+class="math inline">\(n\)</span>, and more strongly the simple factors,
+do not depend on the series.</p>
+<p><strong>Lemma 3.1.</strong> If <span class="math inline">\(M\)</span>
+has a composition series of <span class="math inline">\(n\)</span>
+steps, every submodule and quotient has a composition series of at most
+<span class="math inline">\(n\)</span> steps. A proper submodule has a
+series of at most <span class="math inline">\(n-1\)</span> steps.</p>
+<p><strong>Proof.</strong> For <span class="math inline">\(B\subseteq
+M\)</span>, intersect the given series with <span
+class="math inline">\(B\)</span>. The map</p>
+<p><span class="math display">\[
+(B\cap M_i)/(B\cap M_{i-1})\longrightarrow M_i/M_{i-1}
+\]</span></p>
+<p>is injective. Its image is either zero or the whole simple factor.
+Remove repetitions to obtain a composition series of <span
+class="math inline">\(B\)</span>. If none of the <span
+class="math inline">\(n\)</span> steps vanished, induction gives <span
+class="math inline">\(M_i\subseteq B\)</span> for every <span
+class="math inline">\(i\)</span>: surjectivity of the displayed map
+expresses each element of <span class="math inline">\(M_i\)</span> as an
+element of <span class="math inline">\(B\cap M_i\)</span> plus an
+element of <span class="math inline">\(M_{i-1}\)</span>. Hence <span
+class="math inline">\(B=M\)</span>. This proves the strict bound for
+proper submodules. For a quotient, take the images of the <span
+class="math inline">\(M_i\)</span>. Each new quotient is a quotient of a
+simple factor, so is zero or simple. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (Jordan–Hölder).</strong> Any two composition
+series of a finite-length module have the same multiset of simple
+factors up to isomorphism. Their common number of steps is its length
+<span class="math inline">\(\ell_R(M)\)</span>.</p>
+<p><strong>Proof.</strong> Induct on the number <span
+class="math inline">\(n\)</span> of steps in one chosen series. The zero
+module has the unique empty series. For <span
+class="math inline">\(n&gt;0\)</span>, compare the penultimate
+submodules <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> of two series. Both are maximal proper
+submodules, since their quotients in <span
+class="math inline">\(M\)</span> are simple. Lemma 3.1 puts every proper
+submodule within the induction range.</p>
+<p>If <span class="math inline">\(A=B\)</span>, apply induction to the
+two series of <span class="math inline">\(A\)</span>, then append their
+identical last factor <span class="math inline">\(M/A\)</span>. If <span
+class="math inline">\(A\neq B\)</span>, maximality gives <span
+class="math inline">\(A+B=M\)</span>. Put <span
+class="math inline">\(C=A\cap B\)</span>. The maps into the opposite
+quotients give isomorphisms</p>
+<p><span class="math display">\[
+A/C\cong M/B,\qquad B/C\cong M/A.
+\]</span></p>
+<p>Choose a composition series of <span
+class="math inline">\(C\)</span>, supplied by Lemma 3.1. Appending <span
+class="math inline">\(A\)</span> gives a series of <span
+class="math inline">\(A\)</span> whose last factor is <span
+class="math inline">\(M/B\)</span>; appending <span
+class="math inline">\(B\)</span> instead gives a series of <span
+class="math inline">\(B\)</span> whose last factor is <span
+class="math inline">\(M/A\)</span>. Induction identifies the factors of
+each of these with those of the respective original series below <span
+class="math inline">\(A\)</span> or <span
+class="math inline">\(B\)</span>. Thus both original series of <span
+class="math inline">\(M\)</span> have the factors of <span
+class="math inline">\(C\)</span>, together with <span
+class="math inline">\(M/A\)</span> and <span
+class="math inline">\(M/B\)</span>. The multisets agree, completing the
+induction. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 3.3.</strong> Finite length is equivalent to being
+both Noetherian and Artinian, where <strong>Artinian</strong> means that
+every descending chain of submodules stabilizes. In a short exact
+sequence, the middle module has finite length if and only if the two end
+modules do, and then</p>
+<p><span class="math display">\[
+\ell_R(M)=\ell_R(L)+\ell_R(N).
+\]</span></p>
+<p><strong>Proof.</strong> First suppose <span
+class="math inline">\(M\)</span> has finite length. Lemma 3.1 gives
+finite length to its submodules and quotients. For <span
+class="math inline">\(A\subsetneq B\subseteq M\)</span>, concatenate a
+series of <span class="math inline">\(A\)</span> with the inverse images
+of a series of <span class="math inline">\(B/A\)</span>. This is a
+composition series of <span class="math inline">\(B\)</span>, so
+Jordan–Hölder gives</p>
+<p><span class="math display">\[
+\ell_R(B)=\ell_R(A)+\ell_R(B/A)&gt;\ell_R(A).
+\]</span></p>
+<p>All these integers lie between zero and <span
+class="math inline">\(\ell_R(M)\)</span>. An ascending or descending
+chain can therefore have only finitely many strict steps. This proves
+both chain conditions.</p>
+<p>Conversely, suppose both conditions hold. Every nonzero submodule has
+a maximal proper submodule, by the maximal condition for the nonempty
+family of its proper submodules. Starting with <span
+class="math inline">\(M\)</span>, repeatedly choose one. The descending
+chain condition makes the process terminate at zero; it cannot terminate
+at a nonzero module, where another choice is available. Reversing this
+chain gives a composition series.</p>
+<p>If the middle module of the displayed exact sequence has finite
+length, Lemma 3.1 applies to the ends. If the ends have finite length,
+concatenate a series of <span class="math inline">\(L\)</span> with the
+inverse images of a series of <span class="math inline">\(N\)</span>.
+The resulting series of <span class="math inline">\(M\)</span> has
+exactly the sum of their lengths, proving both the equivalence and the
+formula. <span class="math inline">\(\square\)</span></p>
+<p>For a vector space over <span class="math inline">\(k\)</span>, the
+simple modules are the one-dimensional spaces. A basis gives a
+composition series when the dimension is finite; conversely a
+composition series and dimension additivity show that its dimension is
+the length. If a module is annihilated by <span
+class="math inline">\(J\)</span>, its <span
+class="math inline">\(R\)</span>-submodules and <span
+class="math inline">\(R/J\)</span>-submodules are identical. Thus its
+length can be computed over either ring.</p>
+<p><strong>Proposition 3.4.</strong> Let <span
+class="math inline">\(M\)</span> have finite length and let <span
+class="math inline">\(S\subseteq R\)</span> be multiplicative. The
+length of <span class="math inline">\(S^{-1}M\)</span> over <span
+class="math inline">\(S^{-1}R\)</span> is the number of factors <span
+class="math inline">\(R/\mathfrak m\)</span> in a composition series of
+<span class="math inline">\(M\)</span> for which <span
+class="math inline">\(S\cap\mathfrak m=\varnothing\)</span>, counted
+with multiplicity. In particular it is at most <span
+class="math inline">\(\ell_R(M)\)</span>.</p>
+<p><strong>Proof.</strong> Localize a composition series, using
+exactness. If <span class="math inline">\(S\)</span> meets <span
+class="math inline">\(\mathfrak m\)</span>, an element of <span
+class="math inline">\(S\)</span> kills <span
+class="math inline">\(R/\mathfrak m\)</span>, so that factor becomes
+zero. Otherwise all denominators have nonzero images in the field <span
+class="math inline">\(R/\mathfrak m\)</span>. Localization leaves this
+field unchanged, and it is a simple module over <span
+class="math inline">\(S^{-1}R\)</span> through the surjective map to
+that field. Remove the zero steps from the localized series and count
+the surviving simple factors. <span
+class="math inline">\(\square\)</span></p>
+<p>For example, the chain <span
+class="math inline">\(0\subset(p^{n-1})\subset\cdots\subset(p)\subset\mathbb
+Z/p^n\)</span> has <span class="math inline">\(n\)</span> factors <span
+class="math inline">\(\mathbb F_p\)</span>. The ring <span
+class="math inline">\(\mathbb Z/p^n\)</span> therefore has length <span
+class="math inline">\(n\)</span>. In contrast, <span
+class="math inline">\(\mathbb Z\)</span> is not Artinian, as <span
+class="math inline">\((2)\supsetneq(4)\supsetneq(8)\supsetneq\cdots\)</span>.
+Finite generation alone gives no finite length.</p>
+<h2 id="what-an-artinian-ring-looks-like">4. What an Artinian ring looks
+like</h2>
+<p>We now prove the structure theorem without assuming in advance that
+an Artinian ring is Noetherian. This order matters: applying the
+finite-module version of Nakayama to an ideal before proving its finite
+generation would be circular.</p>
+<p><strong>Lemma 4.1.</strong> In an Artinian ring every prime is
+maximal, there are finitely many maximal ideals, and the Jacobson
+radical is nilpotent.</p>
+<p><strong>Proof.</strong> A quotient by a prime is an Artinian domain.
+For a nonzero element <span class="math inline">\(a\)</span> in that
+domain, the chain <span
+class="math inline">\((a)\supseteq(a^2)\supseteq\cdots\)</span>
+stabilizes. An equality <span
+class="math inline">\((a^n)=(a^{n+1})\)</span> gives <span
+class="math inline">\(a^n=a^{n+1}b\)</span>; cancellation gives <span
+class="math inline">\(ab=1\)</span>. Thus the domain is a field.</p>
+<p>If there were infinitely many distinct maximal ideals <span
+class="math inline">\(\mathfrak m_1,\mathfrak m_2,\ldots\)</span>, their
+finite intersections would form a strictly descending chain. To see
+strictness at step <span class="math inline">\(n+1\)</span>, choose
+<span class="math inline">\(a_i\in\mathfrak m_i\setminus\mathfrak
+m_{n+1}\)</span> for <span class="math inline">\(i\leq n\)</span>. Their
+product lies in the first <span class="math inline">\(n\)</span> ideals
+and not in the prime <span class="math inline">\(\mathfrak
+m_{n+1}\)</span>. This contradicts the descending chain condition.</p>
+<p>Put <span class="math inline">\(J=\operatorname{Jac}(R)\)</span>. Its
+powers stabilize: choose <span class="math inline">\(n\geq1\)</span>
+with <span class="math inline">\(J^n=J^{n+1}\)</span>. Set <span
+class="math inline">\(E=J^n\)</span>; then <span
+class="math inline">\(E^2=E\)</span>. Suppose <span
+class="math inline">\(E\neq0\)</span>. Among ideals <span
+class="math inline">\(K\)</span> with <span
+class="math inline">\(EK\neq0\)</span>, choose a minimal one using the
+descending chain condition. There is <span class="math inline">\(a\in
+K\)</span> with <span class="math inline">\(E(a)\neq0\)</span>, since
+ideal products consist of finite sums of products. Minimality gives
+<span class="math inline">\(K=(a)\)</span>.</p>
+<p>Since <span class="math inline">\(E^2K=EK\neq0\)</span>, some <span
+class="math inline">\(x\in E\)</span> satisfies <span
+class="math inline">\(E(xK)\neq0\)</span>. Minimality again gives <span
+class="math inline">\(xK=K\)</span>. Thus <span
+class="math inline">\(a=xra\)</span> for some <span
+class="math inline">\(r\in R\)</span>. But <span
+class="math inline">\(x\in J\)</span>, so <span
+class="math inline">\(1-xr\)</span> is a unit by the Jacobson-radical
+unit test from the preceding lesson. The equality <span
+class="math inline">\((1-xr)a=0\)</span> forces <span
+class="math inline">\(a=0\)</span>, a contradiction. Consequently <span
+class="math inline">\(E=0\)</span> and <span
+class="math inline">\(J\)</span> is nilpotent. This argument did not
+assume that <span class="math inline">\(J\)</span> or <span
+class="math inline">\(E\)</span> was finite. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> For a ring <span
+class="math inline">\(R\)</span>, the following are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(R\)</span> is Artinian.</li>
+<li><span class="math inline">\(R\)</span> is Noetherian and every prime
+ideal is maximal.</li>
+<li><span class="math inline">\(R\)</span> has finite length as an <span
+class="math inline">\(R\)</span>-module.</li>
+</ol>
+<p>Such a ring has finitely many maximal ideals <span
+class="math inline">\(\mathfrak m_1,\ldots,\mathfrak m_s\)</span>, and
+the natural map</p>
+<p><span class="math display">\[
+R\longrightarrow\prod_{i=1}^s R_{\mathfrak m_i}
+\]</span></p>
+<p>is an isomorphism. Each factor is Artinian local. For the zero ring
+the product is empty.</p>
+<p><strong>Proof.</strong> Suppose first that <span
+class="math inline">\(R\)</span> is Artinian and nonzero. Lemma 4.1
+gives finitely many maximal ideals and <span
+class="math inline">\(J^N=0\)</span>. Distinct maximal ideals are
+comaximal, so the Chinese remainder theorem identifies</p>
+<p><span class="math display">\[
+R/J\cong\prod_{i=1}^s R/\mathfrak m_i.
+\]</span></p>
+<p>For completeness, comaximal ideals <span
+class="math inline">\(A,B\)</span> satisfy <span
+class="math inline">\(A\cap B=AB\)</span>: writing <span
+class="math inline">\(1=a+b\)</span> expresses any <span
+class="math inline">\(z\in A\cap B\)</span> as <span
+class="math inline">\(za+zb\in AB\)</span>. The map to <span
+class="math inline">\(R/A\times R/B\)</span> is surjective because <span
+class="math inline">\(ub+va\)</span> realizes the residues of <span
+class="math inline">\(u,v\)</span>. Induction gives the finite version
+used here.</p>
+<p>Each <span class="math inline">\(J^i/J^{i+1}\)</span> is an Artinian
+module over <span class="math inline">\(R/J\)</span>. The coordinate
+idempotents of the finite product split it into finitely many vector
+spaces over the residue fields. Each such vector space is Artinian and
+hence finite-dimensional. Indeed, an infinite-dimensional space has a
+basis containing distinct <span
+class="math inline">\(v_1,v_2,\ldots\)</span>; the spans of the basis
+with <span class="math inline">\(v_1,\ldots,v_n\)</span> removed form a
+strictly descending chain. Thus each layer has finite length. The
+filtration by the finitely many powers of <span
+class="math inline">\(J\)</span>, and Theorem 3.3, give finite length to
+<span class="math inline">\(R\)</span>.</p>
+<p>Finite length implies both chain conditions by Theorem 3.3, and an
+Artinian ring has only maximal primes by Lemma 4.1. This proves that the
+third condition implies the second and first. Conversely, suppose <span
+class="math inline">\(R\)</span> is Noetherian and all primes are
+maximal. Every prime contains a minimal prime; since that minimal prime
+is already maximal, they agree. Proposition 2.2 makes their set finite
+and makes their intersection <span
+class="math inline">\(J=\sqrt{(0)}\)</span> nilpotent. Again <span
+class="math inline">\(R/J\)</span> is a finite product of fields. Now
+each <span class="math inline">\(J^i/J^{i+1}\)</span> is finite, so its
+coordinate vector spaces are finite-dimensional. The same filtration
+proves finite length. This proves all equivalences.</p>
+<p>To identify the product factors explicitly, the ideals <span
+class="math inline">\(\mathfrak m_i^N\)</span> are pairwise comaximal.
+If <span class="math inline">\(a+b=1\)</span>, with <span
+class="math inline">\(a\in\mathfrak m_i\)</span> and <span
+class="math inline">\(b\in\mathfrak m_j\)</span>, expand <span
+class="math inline">\((a+b)^{2N-1}\)</span>; each term lies in one of
+these two <span class="math inline">\(N\)</span>-th powers.
+Therefore</p>
+<p><span class="math display">\[
+\bigcap_i\mathfrak m_i^N
+=\prod_i\mathfrak m_i^N
+=\left(\prod_i\mathfrak m_i\right)^N
+=J^N=0,
+\qquad
+R\cong\prod_i R/\mathfrak m_i^N.
+\]</span></p>
+<p>The only prime of <span class="math inline">\(R/\mathfrak
+m_i^N\)</span> is <span class="math inline">\(\mathfrak m_i/\mathfrak
+m_i^N\)</span>, since a prime containing the power contains <span
+class="math inline">\(\mathfrak m_i\)</span>. Thus this quotient is
+local and Artinian. Under the product decomposition, localization at
+<span class="math inline">\(\mathfrak m_i\)</span> keeps the <span
+class="math inline">\(i\)</span>-th factor: the <span
+class="math inline">\(i\)</span>-th coordinate idempotent becomes one,
+the others become zero, and elements outside the unique maximal ideal of
+the remaining factor are already units. The projection is consequently
+the localization map, establishing the asserted natural isomorphism. The
+zero ring satisfies all three conditions directly. <span
+class="math inline">\(\square\)</span></p>
+<p>An Artinian spectrum is therefore a finite discrete set. The residue
+field at each point need not equal the local ring. Nilpotent directions
+remain, and their successive layers are measured by length. For <span
+class="math inline">\(k[x,y]/(x^2,xy,y^3)\)</span>, for instance, the
+residue field is <span class="math inline">\(k\)</span>, while the
+classes of <span class="math inline">\(1,x,y,y^2\)</span> give four
+independent layers in total. A composition series will make this precise
+in the exercises.</p>
+<h2 id="intersecting-a-filtration-with-a-submodule">5. Intersecting a
+filtration with a submodule</h2>
+<p>Fix a Noetherian ring <span class="math inline">\(R\)</span>, an
+ideal <span class="math inline">\(I\)</span>, a finite module <span
+class="math inline">\(M\)</span>, and a submodule <span
+class="math inline">\(N\subseteq M\)</span>. The powers <span
+class="math inline">\(I^nM\)</span> induce the filtration <span
+class="math inline">\(I^nM\cap N\)</span> on <span
+class="math inline">\(N\)</span>. It need not be the same as <span
+class="math inline">\(I^nN\)</span>. For example, in <span
+class="math inline">\(R=k[t]\)</span>, take <span
+class="math inline">\(I=(t)\)</span>, <span
+class="math inline">\(M=R\)</span>, and <span
+class="math inline">\(N=(t^3)\)</span>. Then</p>
+<p><span class="math display">\[
+I^nM\cap N=(t^{\max(n,3)}),\qquad I^nN=(t^{n+3}).
+\]</span></p>
+<p>These are different, but the first filtration becomes predictable
+after degree three. Artin–Rees says that some finite degree works for
+every such inclusion.</p>
+<p><strong>Theorem 5.1 (Artin–Rees).</strong> Under the hypotheses just
+stated, there is an integer <span class="math inline">\(c\geq0\)</span>
+such that for every <span class="math inline">\(n\geq c\)</span>,</p>
+<p><span class="math display">\[
+I^nM\cap N=I^{n-c}(I^cM\cap N).
+\]</span></p>
+<p><strong>Proof.</strong> Introduce an indeterminate <span
+class="math inline">\(t\)</span> which records the filtration degree.
+The <strong>Rees algebra</strong> and <strong>Rees module</strong>
+are</p>
+<p><span class="math display">\[
+\mathcal R=\bigoplus_{n\geq0} I^nt^n\subseteq R[t],
+\qquad
+\mathcal M=\bigoplus_{n\geq0} I^nM\,t^n\subseteq M[t].
+\]</span></p>
+<p>Here <span class="math inline">\(I^0=R\)</span>. Since <span
+class="math inline">\(I\)</span> is finite, with generators <span
+class="math inline">\(a_1,\ldots,a_r\)</span>, the algebra <span
+class="math inline">\(\mathcal R\)</span> is generated over <span
+class="math inline">\(R\)</span> by <span
+class="math inline">\(a_1t,\ldots,a_rt\)</span>. Hilbert’s theorem makes
+it Noetherian. Generators of <span class="math inline">\(M\)</span>,
+placed in degree zero, generate <span class="math inline">\(\mathcal
+M\)</span> over <span class="math inline">\(\mathcal R\)</span>, so this
+module is Noetherian by Proposition 1.2.</p>
+<p>The graded submodule</p>
+<p><span class="math display">\[
+\mathcal N=\bigoplus_{n\geq0}(I^nM\cap N)t^n
+\]</span></p>
+<p>is consequently finite. It has finitely many homogeneous generators:
+replace any finite generating set by all of its homogeneous components,
+which still belong to this graded submodule. Let their degrees be <span
+class="math inline">\(d_1,\ldots,d_v\)</span>, and put <span
+class="math inline">\(c=\max d_i\)</span>, choosing <span
+class="math inline">\(c=0\)</span> if <span
+class="math inline">\(\mathcal N=0\)</span>.</p>
+<p>For <span class="math inline">\(n\geq c\)</span>, the component of
+degree <span class="math inline">\(n\)</span> is generated by products
+of these generators with elements of <span
+class="math inline">\(I^{n-d_i}\)</span>. If <span
+class="math inline">\(z_i\in I^{d_i}M\cap N\)</span> is the coefficient
+of a degree-<span class="math inline">\(d_i\)</span> generator, then</p>
+<p><span class="math display">\[
+I^{n-d_i}z_i
+=I^{n-c}I^{c-d_i}z_i
+\subseteq I^{n-c}(I^cM\cap N).
+\]</span></p>
+<p>This gives one inclusion. The other follows directly: multiplying
+<span class="math inline">\(I^cM\cap N\)</span> by <span
+class="math inline">\(I^{n-c}\)</span> lands both in <span
+class="math inline">\(I^nM\)</span> and in <span
+class="math inline">\(N\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The proof packages all degrees into one module, then uses finite
+generation once. The integer <span class="math inline">\(c\)</span>
+depends on the inclusion and ideal; it is not a universal number for the
+ring. No freeness of <span class="math inline">\(M\)</span>,
+principal-ideal hypothesis, or local hypothesis was used.</p>
+<p>One useful comparison follows immediately. For <span
+class="math inline">\(n\geq c\)</span>,</p>
+<p><span class="math display">\[
+I^nN\subseteq I^nM\cap N\subseteq I^{n-c}N.
+\]</span></p>
+<p>Thus the powers on <span class="math inline">\(N\)</span> and the
+induced powers from <span class="math inline">\(M\)</span> differ by a
+bounded shift. This is the mechanism that will later make completion
+preserve exact sequences of finite modules.</p>
+<h2 id="what-can-survive-every-power">6. What can survive every
+power?</h2>
+<p><strong>Theorem 6.1 (Krull intersection).</strong> Let <span
+class="math inline">\(R\)</span> be Noetherian, <span
+class="math inline">\(I\subseteq R\)</span> an ideal, and <span
+class="math inline">\(M\)</span> finite. Put <span
+class="math inline">\(K=\bigcap_{n\geq0}I^nM\)</span>. Then <span
+class="math inline">\(IK=K\)</span>, and one element <span
+class="math inline">\(1+a\)</span>, with <span
+class="math inline">\(a\in I\)</span>, annihilates all of <span
+class="math inline">\(K\)</span>. More precisely,</p>
+<p><span class="math display">\[
+\bigcap_{n\geq0}I^nM
+=\{x\in M:(1+a)x=0\text{ for some }a\in I\}.
+\]</span></p>
+<p>In particular:</p>
+<ul>
+<li>If <span
+class="math inline">\(I\subseteq\operatorname{Jac}(R)\)</span>, then
+<span class="math inline">\(K=0\)</span>.</li>
+<li>If <span class="math inline">\(R\)</span> is a domain, <span
+class="math inline">\(I\)</span> is proper, and <span
+class="math inline">\(M\)</span> is torsion-free, then <span
+class="math inline">\(K=0\)</span>. This includes <span
+class="math inline">\(M=R\)</span>.</li>
+</ul>
+<p><strong>Proof.</strong> The submodule <span
+class="math inline">\(K\)</span> is finite because <span
+class="math inline">\(M\)</span> is Noetherian. Apply Artin–Rees to
+<span class="math inline">\(K\subseteq M\)</span>. Since <span
+class="math inline">\(K\subseteq I^nM\)</span> for every <span
+class="math inline">\(n\)</span>, its formula at <span
+class="math inline">\(n=c+1\)</span> reads</p>
+<p><span class="math display">\[
+K=I^{c+1}M\cap K=I(I^cM\cap K)=IK.
+\]</span></p>
+<p>The determinant form of Nakayama, which does not require <span
+class="math inline">\(I\)</span> to lie in a radical, supplies an
+annihilator <span class="math inline">\(1+a\)</span> of <span
+class="math inline">\(K\)</span>, with <span class="math inline">\(a\in
+I\)</span>. Explicitly, choose generators of <span
+class="math inline">\(K\)</span>, write each as an <span
+class="math inline">\(I\)</span>-linear combination of them, and form
+the coefficient matrix <span class="math inline">\(A\)</span>. The
+adjugate of <span class="math inline">\(1-A\)</span> shows that <span
+class="math inline">\(\det(1-A)\)</span> annihilates each generator. Its
+determinant has the form <span class="math inline">\(1+a\)</span>, since
+all nonconstant determinant terms belong to <span
+class="math inline">\(I\)</span>. If <span
+class="math inline">\(K=0\)</span>, choose <span
+class="math inline">\(a=0\)</span>.</p>
+<p>This proves containment in the set on the right. Conversely, if <span
+class="math inline">\((1+a)x=0\)</span> for some <span
+class="math inline">\(a\in I\)</span>, then <span
+class="math inline">\(x=-ax\)</span>, hence <span
+class="math inline">\(x=(-a)^nx\in I^nM\)</span> for every <span
+class="math inline">\(n\)</span>. This also proves that, although the
+right side allows an element-dependent <span
+class="math inline">\(a\)</span>, a single choice annihilates the entire
+intersection.</p>
+<p>If <span
+class="math inline">\(I\subseteq\operatorname{Jac}(R)\)</span>, every
+<span class="math inline">\(1+a\)</span> is a unit, so it kills only
+zero. If <span class="math inline">\(R\)</span> is a domain and <span
+class="math inline">\(I\)</span> is proper, <span
+class="math inline">\(1+a\neq0\)</span>, since otherwise <span
+class="math inline">\(-1\in I\)</span>. Torsion-freeness then again
+forces each killed element to be zero. <span
+class="math inline">\(\square\)</span></p>
+<p>For a Noetherian local ring <span class="math inline">\((R,\mathfrak
+m)\)</span> and a finite module,</p>
+<p><span class="math display">\[
+\bigcap_{n\geq0}\mathfrak m^nM=0.
+\]</span></p>
+<p>This assertion says that distinct elements can eventually be
+distinguished modulo a sufficiently high power of the maximal ideal. It
+does not say that every compatible sequence modulo those powers already
+comes from an element of <span class="math inline">\(M\)</span>; that is
+the separate issue of completeness.</p>
+<p>The torsion-free hypothesis in the domain conclusion cannot be
+deleted. Over <span class="math inline">\(R=\mathbb Z\)</span>, the
+ideal <span class="math inline">\(I=(2)\)</span> is proper, but for
+<span class="math inline">\(M=\mathbb Z/3\)</span>, multiplication by
+two is invertible. Thus <span class="math inline">\(I^nM=M\)</span> for
+every <span class="math inline">\(n\)</span>, and the intersection is
+nonzero. The annihilator formula remains correct: <span
+class="math inline">\(1+2=3\)</span> kills <span
+class="math inline">\(M\)</span>. A proper ideal in a domain suffices
+for the intersection of its powers <em>inside the ring</em>; it does not
+suffice for arbitrary finite modules.</p>
+<h3 id="a-smooth-function-invisible-to-every-finite-order">A smooth
+function invisible to every finite order</h3>
+<p>Let <span class="math inline">\(G\)</span> be the ring of germs at
+zero of smooth real functions in one variable. It is local: a germ with
+nonzero value at zero has a smooth reciprocal near zero, while a germ
+with value zero cannot be a unit. Its maximal ideal is <span
+class="math inline">\(\mathfrak m=(x)\)</span>. Indeed, for a
+representative with <span class="math inline">\(f(0)=0\)</span>,</p>
+<p><span class="math display">\[
+f(x)=x\int_0^1 f&#39;(sx)\,ds,
+\]</span></p>
+<p>and the integral is smooth in <span
+class="math inline">\(x\)</span>.</p>
+<p>Define <span class="math inline">\(h(0)=0\)</span> and <span
+class="math inline">\(h(x)=\exp(-1/x^2)\)</span> for <span
+class="math inline">\(x\neq0\)</span>. For every nonnegative integer
+<span class="math inline">\(n\)</span>, the function <span
+class="math inline">\(h(x)/x^n\)</span>, extended by zero at zero, is
+smooth. Its derivatives away from zero are sums of powers of <span
+class="math inline">\(1/x\)</span> times <span
+class="math inline">\(\exp(-1/x^2)\)</span>; all approach zero because
+<span class="math inline">\(u^d e^{-u^2}\to0\)</span> as <span
+class="math inline">\(u\to\infty\)</span>, for every fixed <span
+class="math inline">\(d\)</span>. Applying this to each derivative
+proves smoothness and vanishing of all derivatives of the extension.
+Hence the nonzero germ <span class="math inline">\(h\)</span> belongs to
+every <span class="math inline">\((x^n)=\mathfrak m^n\)</span>.</p>
+<p>The germ is nonzero because its representative is positive at every
+sufficiently small nonzero point. Thus <span
+class="math inline">\(\bigcap\mathfrak m^n\neq0\)</span>, although <span
+class="math inline">\(G\)</span> is local and <span
+class="math inline">\(\mathfrak m\)</span> is principal. By Theorem 6.1,
+<span class="math inline">\(G\)</span> cannot be Noetherian. The example
+identifies the failure: finite-order data need not determine a smooth
+germ, whereas the Noetherian local theorem forces separation by ideal
+powers.</p>
+<h2 id="exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (first steps).</strong> Let <span
+class="math inline">\(M\)</span> be a Noetherian module and <span
+class="math inline">\(u:M\to M\)</span> a surjective endomorphism. Prove
+injectivity using stabilization of the kernels of its iterates. Compare
+this argument with the finite-module determinant proof in the preceding
+lesson.</p>
+<p><strong>Exercise 7.2 (first steps).</strong> Give composition series
+for <span class="math inline">\(\mathbb Z/360\)</span> and <span
+class="math inline">\(A=k[x,y]/(x^2,xy,y^3)\)</span>. Identify every
+factor and compute the lengths, over <span class="math inline">\(\mathbb
+Z\)</span> and over <span class="math inline">\(A\)</span>
+respectively.</p>
+<p><strong>Exercise 7.3 (structural).</strong> Prove that <span
+class="math inline">\(R[[t]]\)</span> is Noetherian whenever <span
+class="math inline">\(R\)</span> is Noetherian. Use the lowest nonzero
+coefficients of elements of an ideal to form a homogeneous ideal in
+<span class="math inline">\(R[T]\)</span>. Explain why your final
+expression is a finite sum of multiples of fixed generators; merely
+taking a limit of elements of the ideal would not suffice.</p>
+<p><strong>Exercise 7.4 (arithmetic).</strong> For a positive integer
+<span class="math inline">\(n\)</span>, use Theorem 4.2 to recover</p>
+<p><span class="math display">\[
+\mathbb Z/n\cong\prod_{p^e\parallel n}\mathbb Z/p^e.
+\]</span></p>
+<p>Identify its localizations, and compute its length. Include <span
+class="math inline">\(n=1\)</span>.</p>
+<p><strong>Exercise 7.5 (structural).</strong> In a Noetherian local
+ring <span class="math inline">\((R,\mathfrak m)\)</span>, prove that
+<span class="math inline">\(\mathfrak m=\mathfrak m^2\)</span> forces
+<span class="math inline">\(\mathfrak m=0\)</span>, and that <span
+class="math inline">\(R\)</span> is a field if and only if <span
+class="math inline">\(\mathfrak m/\mathfrak m^2=0\)</span>. Explain
+which finiteness hypothesis your proof uses.</p>
+<p><strong>Exercise 7.6 (synthesis).</strong> Let <span
+class="math inline">\(R=k\times k\)</span> and <span
+class="math inline">\(I=k\times0\)</span>. Compute <span
+class="math inline">\(\bigcap_{n\geq0}I^n\)</span>. Find one <span
+class="math inline">\(a\in I\)</span> such that <span
+class="math inline">\(1+a\)</span> kills every element of this
+intersection, and determine why the zero-intersection conclusion for
+ideals in the Jacobson radical does not apply.</p>
+<h2 id="solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> The submodules <span
+class="math inline">\(\ker u^j\)</span> ascend. Choose <span
+class="math inline">\(r\)</span> with <span class="math inline">\(\ker
+u^r=\ker u^{r+1}\)</span>. If <span class="math inline">\(x\in\ker
+u\)</span>, surjectivity of <span class="math inline">\(u^r\)</span>
+supplies <span class="math inline">\(y\)</span> with <span
+class="math inline">\(u^ry=x\)</span>. Then <span
+class="math inline">\(u^{r+1}y=0\)</span>, so <span
+class="math inline">\(y\in\ker u^{r+1}=\ker u^r\)</span>, giving <span
+class="math inline">\(x=0\)</span>. The previous determinant argument
+proves the same conclusion for a finite module over any commutative
+ring. The present argument instead uses the ascending chain condition
+directly. Its hypotheses imply finite generation by Theorem 1.1, so it
+is consistent with that stronger result.</p>
+<p><strong>Solution 7.2.</strong> In <span class="math inline">\(\mathbb
+Z/360\)</span>, use the ideals generated by the following divisors, in
+this order:</p>
+<p><span class="math display">\[
+(360)=0\subset(180)\subset(90)\subset(45)\subset(15)\subset(5)\subset(1).
+\]</span></p>
+<p>If <span class="math inline">\(d&#39;\mid d\mid360\)</span>, then
+<span class="math inline">\((d&#39;)/(d)\)</span> in this chain is a
+cyclic group of order <span class="math inline">\(d/d&#39;\)</span>:
+multiplication by <span class="math inline">\(d&#39;\)</span> identifies
+it with <span class="math inline">\(\mathbb Z/(d/d&#39;)\)</span>. The
+six factors are therefore <span class="math inline">\(\mathbb
+F_2,\mathbb F_2,\mathbb F_2,\mathbb F_3,\mathbb F_3,\mathbb
+F_5\)</span>, all simple <span class="math inline">\(\mathbb
+Z\)</span>-modules. The length is six.</p>
+<p>In <span class="math inline">\(A\)</span>, the monomials not
+divisible by <span class="math inline">\(x^2,xy,y^3\)</span> are <span
+class="math inline">\(1,x,y,y^2\)</span>. They form a basis: the ideal
+generated by the three prohibited monomials is precisely the span of
+their monomial multiples, so no relation among these four remaining
+monomials lies in it. The ideal <span class="math inline">\(\mathfrak
+m=(x,y)\)</span> is nilpotent and <span
+class="math inline">\(A/\mathfrak m=k\)</span>; an element with nonzero
+constant coefficient is a unit by a finite geometric series in its
+nilpotent part. Thus <span class="math inline">\(A\)</span> is local.
+The chain</p>
+<p><span class="math display">\[
+0\subset(y^2)\subset(y)\subset(x,y)\subset A
+\]</span></p>
+<p>has successive one-dimensional <span
+class="math inline">\(k\)</span>-vector spaces, each annihilated by
+<span class="math inline">\(\mathfrak m\)</span>. Each factor is the
+simple <span class="math inline">\(A\)</span>-module <span
+class="math inline">\(k\)</span>. The length over <span
+class="math inline">\(A\)</span> is four, agreeing with the vector-space
+dimension here because every simple factor is this residue field.</p>
+<p><strong>Solution 7.3.</strong> Set <span
+class="math inline">\(B=R[[t]]\)</span>, and let <span
+class="math inline">\(J\subseteq B\)</span> be an ideal. For each <span
+class="math inline">\(d\geq0\)</span>, let <span
+class="math inline">\(E_d\subseteq R\)</span> consist of the
+coefficients of <span class="math inline">\(t^d\)</span> in elements of
+<span class="math inline">\(J\cap t^dB\)</span>. These are ideals, and
+multiplication by <span class="math inline">\(t\)</span> shows <span
+class="math inline">\(E_d\subseteq E_{d+1}\)</span>. Consequently</p>
+<p><span class="math display">\[
+H=\bigoplus_{d\geq0}E_dT^d\subseteq R[T]
+\]</span></p>
+<p>is a homogeneous ideal. Hilbert’s theorem gives finite homogeneous
+generators <span class="math inline">\(a_iT^{d_i}\)</span>, <span
+class="math inline">\(1\leq i\leq s\)</span>: start with finite
+generators of <span class="math inline">\(H\)</span> and take their
+homogeneous components. For each choose <span
+class="math inline">\(f_i\in J\cap t^{d_i}B\)</span> with coefficient
+<span class="math inline">\(a_i\)</span> in degree <span
+class="math inline">\(d_i\)</span>. Zero generators may be discarded. If
+<span class="math inline">\(H=0\)</span>, all coefficients of every
+nonzero element of <span class="math inline">\(J\)</span> would have to
+vanish at its first nonzero degree, so <span
+class="math inline">\(J=0\)</span>.</p>
+<p>We claim <span class="math inline">\(J=(f_1,\ldots,f_s)\)</span>.
+Take <span class="math inline">\(f\in J\)</span>. Cancel its
+coefficients in increasing degree. If a residual <span
+class="math inline">\(g\in J\cap t^dB\)</span> has coefficient <span
+class="math inline">\(a\)</span> in degree <span
+class="math inline">\(d\)</span>, the homogeneous generation of <span
+class="math inline">\(H\)</span> gives</p>
+<p><span class="math display">\[
+aT^d=\sum_{d_i\leq d}r_iT^{d-d_i}a_iT^{d_i},\qquad r_i\in R.
+\]</span></p>
+<p>Subtract <span class="math inline">\(\sum r_it^{d-d_i}f_i\)</span>.
+The result still lies in <span class="math inline">\(J\)</span> and now
+belongs to <span class="math inline">\(t^{d+1}B\)</span>. If the
+coefficient was already zero, no subtraction is needed. Repeating degree
+by degree constructs, for each fixed <span
+class="math inline">\(i\)</span>, a series <span
+class="math inline">\(q_i\in R[[t]]\)</span> from the coefficients added
+to that generator. At degree <span class="math inline">\(d\)</span>, the
+increment to <span class="math inline">\(q_i\)</span> has degree <span
+class="math inline">\(d-d_i\)</span>; these degrees tend to infinity.
+Thus each coefficient of <span class="math inline">\(q_i\)</span> is
+well defined. For any fixed degree <span
+class="math inline">\(m\)</span>, the cancellation process eventually
+makes the residual zero through degree <span
+class="math inline">\(m\)</span>. It follows coefficient by coefficient
+that</p>
+<p><span class="math display">\[
+f=\sum_{i=1}^s q_i f_i.
+\]</span></p>
+<p>This is a finite sum in the ideal generated by the <span
+class="math inline">\(f_i\)</span>. We have proved finite generation
+without assuming beforehand that arbitrary ideals are closed under
+limits. Repeating the one-variable result also proves that <span
+class="math inline">\(R[[t_1,\ldots,t_r]]\)</span> is Noetherian for
+finite <span class="math inline">\(r\)</span>, since iterated formal
+series in finitely many variables are the same coefficient arrays.</p>
+<p><strong>Solution 7.4.</strong> For <span
+class="math inline">\(n&gt;1\)</span>, the finite ring <span
+class="math inline">\(A=\mathbb Z/n\)</span> is Artinian: it has only
+finitely many subsets and hence finitely many ideals. Its maximal ideals
+are <span class="math inline">\((p)\)</span> for the primes dividing
+<span class="math inline">\(n\)</span>, by the correspondence with
+maximal ideals of <span class="math inline">\(\mathbb Z\)</span>
+containing <span class="math inline">\((n)\)</span>. Let <span
+class="math inline">\(p^e\parallel n\)</span> and write <span
+class="math inline">\(n=p^e m\)</span>, <span
+class="math inline">\(p\nmid m\)</span>. The natural map <span
+class="math inline">\(A\to\mathbb Z/p^e\)</span> sends every element
+outside <span class="math inline">\((p)\)</span> to a unit, so it
+induces a map from <span class="math inline">\(A_{(p)}\)</span>. In that
+localization <span class="math inline">\(m\)</span> is a unit and <span
+class="math inline">\(p^em=0\)</span>, whence <span
+class="math inline">\(p^e=0\)</span>. There is therefore a map <span
+class="math inline">\(\mathbb Z/p^e\to A_{(p)}\)</span>. The composites
+fix the integer classes; uniqueness of localization makes them inverse.
+Thus <span class="math inline">\(A_{(p)}\cong\mathbb Z/p^e\)</span>.
+Theorem 4.2 gives the claimed product through these natural reduction
+maps.</p>
+<p>Each local factor has length <span class="math inline">\(e\)</span>,
+by its filtration by powers of <span class="math inline">\(p\)</span>.
+The coordinate idempotents decompose the product as a direct sum of
+modules, so additivity gives <span class="math inline">\(\ell_A(A)=\sum
+e\)</span>. The same length is obtained over <span
+class="math inline">\(\mathbb Z\)</span>, because restriction along the
+surjection <span class="math inline">\(\mathbb Z\to A\)</span> does not
+change submodules. If <span class="math inline">\(n=1\)</span>, the ring
+is zero, the product over the empty prime set is the zero ring, and the
+length is zero.</p>
+<p><strong>Solution 7.5.</strong> Since <span
+class="math inline">\(R\)</span> is Noetherian, its ideal <span
+class="math inline">\(\mathfrak m\)</span> is finite. The equality <span
+class="math inline">\(\mathfrak m=\mathfrak m^2\)</span> says that <span
+class="math inline">\(\mathfrak m\mathfrak m=\mathfrak m\)</span>.
+Nakayama applies to the module <span class="math inline">\(\mathfrak
+m\)</span> and the ideal <span class="math inline">\(\mathfrak
+m\subseteq\operatorname{Jac}(R)\)</span>, and gives <span
+class="math inline">\(\mathfrak m=0\)</span>. Conversely, <span
+class="math inline">\(\mathfrak m/\mathfrak m^2=0\)</span> is exactly
+that equality. A local ring with maximal ideal zero is a field: any
+nonzero element is outside the maximal ideal and hence a unit. A field
+has maximal ideal zero and therefore zero quotient <span
+class="math inline">\(\mathfrak m/\mathfrak m^2\)</span>. The proof
+needs finite generation of <span class="math inline">\(\mathfrak
+m\)</span>; Noetherianness guarantees it. It does not require a
+completeness hypothesis.</p>
+<p><strong>Solution 7.6.</strong> The ideal <span
+class="math inline">\(I\)</span> satisfies <span
+class="math inline">\(I^2=I\)</span>, since it is generated by the
+idempotent <span class="math inline">\((1,0)\)</span>. Hence every
+positive power is <span class="math inline">\(I\)</span>, and the
+intersection, including the zeroth power <span
+class="math inline">\(R\)</span>, is <span
+class="math inline">\(I\neq0\)</span>. Take <span
+class="math inline">\(a=(-1,0)\)</span>. Then <span
+class="math inline">\(1+a=(0,1)\)</span>, which kills <span
+class="math inline">\(I\)</span>. The maximal ideals are <span
+class="math inline">\(k\times0\)</span> and <span
+class="math inline">\(0\times k\)</span>, so their intersection, the
+Jacobson radical, is zero. Thus <span class="math inline">\(I\)</span>
+is not contained in it. The annihilator formula predicts the nonzero
+intersection exactly; it does not require <span
+class="math inline">\(1+a\)</span> to be a unit.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not
+prove</h2>
+<p>Every finiteness, length, Artinian structure, Artin–Rees, and
+Krull-intersection assertion used in this lesson has been proved here,
+including the formal-power-series assertion in Solution 7.3. We import
+the preceding lesson’s exactness of localization, local unit test, and
+Nakayama theorem. We have compared ideal-power filtrations but have not
+yet constructed completion or proved its exactness; those belong to
+<em>Completion and formal neighborhoods</em>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Sections 3.6, 6.5, and
+13.9. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+<li>Timothy J. Ford, <em>Commutative Algebra</em>, version of 23 September 2026, Chapter 4, Sections 1 and 4 on chain conditions, composition series and commutative noetherian and artinian rings; Chapter 5, Section 2.1 on the Hilbert Basis Theorem; Chapter 6, Sections 2.2 and 3.2 on the Artin–Rees and Krull Intersection Theorems. Section 3.2 states the domain conclusion and the finitely generated module conclusion separately. <a href="https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf">Author's version</a>.</li>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Noetherian-permanence">Tag
+00FN</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Noetherian-power-series">Tag
+0306</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-length-additive">Tag
+00IV</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-length-localize">Tag
+00IZ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-artinian-radical-nilpotent">Tag
+00J8</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-dimension-zero-ring">Tag
+00KJ</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Artin-Rees">Tag
+00IN</a>, and <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-intersection-powers-ideal-module">Tag
+00IQ</a>.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

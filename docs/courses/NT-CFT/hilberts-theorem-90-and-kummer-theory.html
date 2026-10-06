@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilbert&#x27;s Theorem 90 and Kummer theory · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/hilberts-theorem-90-and-kummer-theory.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (1)</summary><ul><li><a href="profinite-groups-and-infinite-galois-theory.html">Profinite groups and infinite Galois theory</a></li></ul></details>
+<article class="lesson">
+<h1 id="hilbert-s-theorem-90-and-kummer-theory">Hilbert's Theorem 90 and Kummer theory</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>A norm-one element looks like a ratio of conjugates: the norm of <span class="math" data-tex="\(\sigma(b)/b\)">\(\sigma(b)/b\)</span> telescopes to 1. Hilbert's Theorem 90 says that this observation accounts for every norm-one element in a cyclic extension. Its cocycle form works for any finite Galois group and supplies the existence step in Kummer theory. In positive characteristic the parallel construction uses differences and the equation <span class="math" data-tex="\(X^p-X=a\)">\(X^p-X=a\)</span>.</p>
+<p>We assume finite Galois theory and the closed-subgroup and continuity results of <a href="profinite-groups-and-infinite-galois-theory.html">Profinite groups and infinite Galois theory</a>. The norm-one and cocycle arguments below are explicit; they can be read before the Tate-group language of <a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a>. Basic references are Milne’s freely available notes and the Stacks project. All extensions below lie in a chosen separable closure when a common ambient field is needed.</p>
+<h2 id="1-detecting-a-nonzero-averaging-operator">1. Detecting a nonzero averaging operator</h2>
+<p>If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is finite Galois, averaging <span class="math" data-tex="\(x\)">\(x\)</span> over its conjugates gives a trace. In characteristic dividing <span class="math" data-tex="\([L:K]\)">\([L:K]\)</span>, the trace of 1 is zero. That does not mean that the trace map is zero. The following independence argument will provide the nonzero averages we actually need.</p>
+<p><strong>Dedekind's independence lemma.</strong> Distinct group homomorphisms <span class="math" data-tex="\(\chi_1,\ldots,\chi_m:S\to F^\times\)">\(\chi_1,\ldots,\chi_m:S\to F^\times\)</span>, where <span class="math" data-tex="\(F\)">\(F\)</span> is a field, are linearly independent over <span class="math" data-tex="\(F\)">\(F\)</span> as functions on <span class="math" data-tex="\(S\)">\(S\)</span>. In particular, distinct field embeddings into <span class="math" data-tex="\(F\)">\(F\)</span> are linearly independent.</p>
+<p><strong>Proof.</strong> Suppose a nonzero relation exists and choose one with as few nonzero coefficients as possible. A one-term relation is impossible because a character takes nonzero values. Relabel its terms so that all its coefficients are nonzero. Choose <span class="math" data-tex="\(h\in S\)">\(h\in S\)</span> with <span class="math" data-tex="\(\chi_1(h)\ne\chi_m(h)\)">\(\chi_1(h)\ne\chi_m(h)\)</span>. Evaluate the relation at <span class="math" data-tex="\(hx\)">\(hx\)</span> and subtract <span class="math" data-tex="\(\chi_m(h)\)">\(\chi_m(h)\)</span> times the relation at <span class="math" data-tex="\(x\)">\(x\)</span>. The last term disappears while the first does not. This is a nonzero relation with fewer terms, a contradiction. For embeddings, apply the result to their restrictions to the multiplicative group of the domain field. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a linear combination <span class="math" data-tex="\(\sum_{g\in G}a_g g\)">\(\sum_{g\in G}a_g g\)</span> of distinct Galois automorphisms is a nonzero operator whenever its coefficients are not all zero. This is stronger than asserting that a particular value, such as its value at 1, is nonzero.</p>
+<h2 id="2-ratios-of-conjugates">2. Ratios of conjugates</h2>
+<h3 id="theorem-3-1-hilbert-s-theorem-90">Theorem 3.1. Hilbert's Theorem 90</h3>
+<p>For a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, with group <span class="math" data-tex="\(G\)">\(G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^1(G,L^\times)=0.
+\]">\[
+H^1(G,L^\times)=0.
+\]</span>
+<p>If <span class="math" data-tex="\(G=\langle\sigma\rangle\)">\(G=\langle\sigma\rangle\)</span> is cyclic, then</p>
+<span class="math math-display" data-tex="\[
+N_{L/K}(a)=1
+\quad\Longleftrightarrow\quad
+a=\frac{\sigma(b)}b\text{ for some }b\in L^\times.
+\]">\[
+N_{L/K}(a)=1
+\quad\Longleftrightarrow\quad
+a=\frac{\sigma(b)}b\text{ for some }b\in L^\times.
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(c:G\to L^\times\)">\(c:G\to L^\times\)</span> be a multiplicative cocycle, so <span class="math" data-tex="\(c(gh)=c(g)g(c(h))\)">\(c(gh)=c(g)g(c(h))\)</span>. Independence gives <span class="math" data-tex="\(t\in L\)">\(t\in L\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+S=\sum_{h\in G}c(h)h(t)\ne0.
+\]">\[
+S=\sum_{h\in G}c(h)h(t)\ne0.
+\]</span>
+<p>For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, reindex the sum by <span class="math" data-tex="\(gh\)">\(gh\)</span>:</p>
+<span class="math math-display" data-tex="\[
+g(S)=\sum_h g(c(h))gh(t)
+=c(g)^{-1}\sum_h c(gh)gh(t)
+=c(g)^{-1}S.
+\]">\[
+g(S)=\sum_h g(c(h))gh(t)
+=c(g)^{-1}\sum_h c(gh)gh(t)
+=c(g)^{-1}S.
+\]</span>
+<p>Taking <span class="math" data-tex="\(b=S^{-1}\)">\(b=S^{-1}\)</span> gives <span class="math" data-tex="\(g(b)/b=c(g)\)">\(g(b)/b=c(g)\)</span>. Every cocycle is therefore a coboundary.</p>
+<p>For cyclic <span class="math" data-tex="\(G\)">\(G\)</span> of order <span class="math" data-tex="\(n\)">\(n\)</span>, a norm-one element <span class="math" data-tex="\(a\)">\(a\)</span> defines the cocycle</p>
+<span class="math math-display" data-tex="\[
+c(\sigma^j)=\prod_{i=0}^{j-1}\sigma^i(a).
+\]">\[
+c(\sigma^j)=\prod_{i=0}^{j-1}\sigma^i(a).
+\]</span>
+<p>The norm-one condition makes this definition compatible with <span class="math" data-tex="\(\sigma^n=1\)">\(\sigma^n=1\)</span>. Apply the first part and evaluate at <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Conversely, the norm of <span class="math" data-tex="\(\sigma(b)/b\)">\(\sigma(b)/b\)</span> is 1 by telescoping. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, in <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, take <span class="math" data-tex="\(\sigma(i)=-i\)">\(\sigma(i)=-i\)</span> and <span class="math" data-tex="\(b=2-i\)">\(b=2-i\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\frac{\sigma(b)}b=\frac{2+i}{2-i}=\frac{3+4i}{5}.
+\]">\[
+\frac{\sigma(b)}b=\frac{2+i}{2-i}=\frac{3+4i}{5}.
+\]</span>
+<p>Any two nonzero choices of <span class="math" data-tex="\(b\)">\(b\)</span> for the same ratio differ by a factor in <span class="math" data-tex="\(\mathbf Q^\times\)">\(\mathbf Q^\times\)</span>: their quotient is fixed by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. The theorem produces an element, not a preferred element.</p>
+<h2 id="3-differences-of-conjugates">3. Differences of conjugates</h2>
+<h3 id="proposition-3-2-additive-hilbert-90">Proposition 3.2. Additive Hilbert 90</h3>
+<p>For a finite Galois extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^1(G,L)=0.
+\]">\[
+H^1(G,L)=0.
+\]</span>
+<p>If <span class="math" data-tex="\(G=\langle\sigma\rangle\)">\(G=\langle\sigma\rangle\)</span> is cyclic, then <span class="math" data-tex="\(\operatorname{Tr}_{L/K}(a)=0\)">\(\operatorname{Tr}_{L/K}(a)=0\)</span> if and only if <span class="math" data-tex="\(a=\sigma(b)-b\)">\(a=\sigma(b)-b\)</span> for some <span class="math" data-tex="\(b\in L\)">\(b\in L\)</span>.</p>
+<p><strong>Proof.</strong> Independence says that <span class="math" data-tex="\(\sum_{g\in G}g\)">\(\sum_{g\in G}g\)</span> is a nonzero operator. Its image lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Choose <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(\operatorname{Tr}_{L/K}(t)=1\)">\(\operatorname{Tr}_{L/K}(t)=1\)</span>, by scaling a value with nonzero trace.</p>
+<p>Given an additive cocycle <span class="math" data-tex="\(c(gh)=c(g)+g c(h)\)">\(c(gh)=c(g)+g c(h)\)</span>, put <span class="math" data-tex="\(S=\sum_h c(h)h(t)\)">\(S=\sum_h c(h)h(t)\)</span>. Reindexing gives</p>
+<span class="math math-display" data-tex="\[
+g(S)=\sum_h(c(gh)-c(g))gh(t)=S-c(g).
+\]">\[
+g(S)=\sum_h(c(gh)-c(g))gh(t)=S-c(g).
+\]</span>
+<p>Thus <span class="math" data-tex="\(b=-S\)">\(b=-S\)</span> satisfies <span class="math" data-tex="\(g(b)-b=c(g)\)">\(g(b)-b=c(g)\)</span>. For a cyclic group of order <span class="math" data-tex="\(n\)">\(n\)</span>, a trace-zero element <span class="math" data-tex="\(a\)">\(a\)</span> defines the cocycle <span class="math" data-tex="\(c(\sigma^j)=\sum_{i=0}^{j-1}\sigma^i(a)\)">\(c(\sigma^j)=\sum_{i=0}^{j-1}\sigma^i(a)\)</span>, with <span class="math" data-tex="\(c(1)=0\)">\(c(1)=0\)</span>. Trace zero makes this formula periodic modulo <span class="math" data-tex="\(n\)">\(n\)</span>; splitting a sum at <span class="math" data-tex="\(j\)">\(j\)</span> verifies <span class="math" data-tex="\(c(\sigma^{j+k})=c(\sigma^j)+\sigma^j c(\sigma^k)\)">\(c(\sigma^{j+k})=c(\sigma^j)+\sigma^j c(\sigma^k)\)</span>, including when the indices wrap around. The coboundary formula at <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives <span class="math" data-tex="\(a=\sigma(b)-b\)">\(a=\sigma(b)-b\)</span>. Conversely that difference has trace zero by telescoping. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof works even when the characteristic divides <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. Dividing by <span class="math" data-tex="\(|G|\)">\(|G|\)</span> would fail in that case; choosing a trace-one element avoids that division.</p>
+<p><strong>Finite character lemma.</strong> If a finite abelian group <span class="math" data-tex="\(B\)">\(B\)</span> is killed by <span class="math" data-tex="\(n\)">\(n\)</span>, and a field contains all <span class="math" data-tex="\(n\)">\(n\)</span> distinct <span class="math" data-tex="\(n\)">\(n\)</span>-th roots of unity, then
+<span class="math" data-tex="\(\operatorname{Hom}(B,\mu_n)\)">\(\operatorname{Hom}(B,\mu_n)\)</span> has <span class="math" data-tex="\(|B|\)">\(|B|\)</span> elements and its characters separate elements of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(B\)">\(B\)</span> additively. Every finite subgroup of a field's multiplicative group is cyclic, by the exponent and polynomial-root argument of lesson 1, section 0. In particular <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span> is cyclic of order <span class="math" data-tex="\(c\)">\(c\)</span> for every <span class="math" data-tex="\(c\mid n\)">\(c\mid n\)</span>. Suppose a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is defined on a subgroup <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span>, and adjoin <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>. Let <span class="math" data-tex="\(c\)">\(c\)</span> be the order of <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(d\)">\(d\)</span> its order modulo <span class="math" data-tex="\(A\)">\(A\)</span>; then <span class="math" data-tex="\(d\mid c\)">\(d\mid c\)</span> and <span class="math" data-tex="\(dx\in A\)">\(dx\in A\)</span>. We have <span class="math" data-tex="\(\chi(dx)^{c/d}=1\)">\(\chi(dx)^{c/d}=1\)</span>. In the cyclic group <span class="math" data-tex="\(\mu_c\)">\(\mu_c\)</span>, the image of the <span class="math" data-tex="\(d\)">\(d\)</span>-th power map is exactly <span class="math" data-tex="\(\mu_{c/d}\)">\(\mu_{c/d}\)</span>, so choose <span class="math" data-tex="\(z\in\mu_c\)">\(z\in\mu_c\)</span> with <span class="math" data-tex="\(z^d=\chi(dx)\)">\(z^d=\chi(dx)\)</span>. The formula
+<span class="math math-display" data-tex="\[
+\chi&#x27;(a+kx)=\chi(a)z^k
+\]">\[
+\chi&#x27;(a+kx)=\chi(a)z^k
+\]</span>
+defines an extension to <span class="math" data-tex="\(A+\langle x\rangle\)">\(A+\langle x\rangle\)</span>: changing a representation changes <span class="math" data-tex="\(k\)">\(k\)</span> by a multiple of <span class="math" data-tex="\(d\)">\(d\)</span>, and the accompanying factor from <span class="math" data-tex="\(A\)">\(A\)</span> cancels by the equation for <span class="math" data-tex="\(z\)">\(z\)</span>. There are exactly <span class="math" data-tex="\(d\)">\(d\)</span> choices for <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>, since <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>; all have <span class="math" data-tex="\(z^c=(z^d)^{c/d}=1\)">\(z^c=(z^d)^{c/d}=1\)</span>, so each gives an extension. Starting at the trivial subgroup and adjoining generators therefore multiplies the character count by the same indices as the group order. The count is <span class="math" data-tex="\(|B|\)">\(|B|\)</span>. To separate a nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, first assign to <span class="math" data-tex="\(x\)">\(x\)</span> a primitive root of its order on <span class="math" data-tex="\(\langle x\rangle\)">\(\langle x\rangle\)</span>, then extend this character through the remaining generators. Its value at <span class="math" data-tex="\(x\)">\(x\)</span> stays nontrivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-radicals-as-characters">4. Radicals as characters</h2>
+<p>Let <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> be prime to <span class="math" data-tex="\(\operatorname{char}K\)">\(\operatorname{char}K\)</span>, and assume <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>. Write <span class="math" data-tex="\(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\)">\(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\)</span>. For <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\alpha^n=a\)">\(\alpha^n=a\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\chi_a(g)=\frac{g(\alpha)}{\alpha}\in\mu_n.
+\]">\[
+\chi_a(g)=\frac{g(\alpha)}{\alpha}\in\mu_n.
+\]</span>
+<p>All <span class="math" data-tex="\(n\)">\(n\)</span>-th roots of <span class="math" data-tex="\(a\)">\(a\)</span> differ by an element of <span class="math" data-tex="\(\mu_n\subset K\)">\(\mu_n\subset K\)</span>, so this character does not depend on the chosen root. It is a homomorphism because <span class="math" data-tex="\(G_K\)">\(G_K\)</span> acts trivially on <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>, and it is continuous because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> lies in a finite extension. Multiplying <span class="math" data-tex="\(a\)">\(a\)</span> by an <span class="math" data-tex="\(n\)">\(n\)</span>-th power in <span class="math" data-tex="\(K\)">\(K\)</span> does not change it.</p>
+<p>The resulting map</p>
+<span class="math math-display" data-tex="\[
+K^\times/K^{\times n}\longrightarrow
+\operatorname{Hom}_{\mathrm{cont}}(G_K,\mu_n)
+\]">\[
+K^\times/K^{\times n}\longrightarrow
+\operatorname{Hom}_{\mathrm{cont}}(G_K,\mu_n)
+\]</span>
+<p>is an isomorphism. Injectivity holds because a root fixed by all of <span class="math" data-tex="\(G_K\)">\(G_K\)</span> belongs to <span class="math" data-tex="\(K\)">\(K\)</span>. For surjectivity, a continuous character factors through the Galois group of some finite Galois <span class="math" data-tex="\(E/K\)">\(E/K\)</span>: its open kernel contains an open normal subgroup. Regard the character as an <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>-valued cocycle. Hilbert 90 gives <span class="math" data-tex="\(\alpha\in E^\times\)">\(\alpha\in E^\times\)</span> with <span class="math" data-tex="\(g(\alpha)/\alpha=\chi(g)\)">\(g(\alpha)/\alpha=\chi(g)\)</span>. Then <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> is fixed by the finite group and belongs to <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, giving the desired preimage.</p>
+<h3 id="theorem-3-3-kummer-correspondence">Theorem 3.3. Kummer correspondence</h3>
+<p>Under these hypotheses, the assignments</p>
+<span class="math math-display" data-tex="\[
+\Delta\longmapsto K(\Delta^{1/n}),
+\qquad
+L\longmapsto\{a\in K^\times:a\text{ has an }n\text{-th root in }L\}
+\]">\[
+\Delta\longmapsto K(\Delta^{1/n}),
+\qquad
+L\longmapsto\{a\in K^\times:a\text{ has an }n\text{-th root in }L\}
+\]</span>
+<p>are inverse inclusion-preserving bijections between subgroups
+<span class="math" data-tex="\(K^{\times n}\subset\Delta\subset K^\times\)">\(K^{\times n}\subset\Delta\subset K^\times\)</span> and abelian Galois extensions <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>. They include infinite extensions. The pairing</p>
+<span class="math math-display" data-tex="\[
+\langle g,a\rangle=\frac{g(\alpha)}\alpha,
+\qquad \alpha^n=a,
+\]">\[
+\langle g,a\rangle=\frac{g(\alpha)}\alpha,
+\qquad \alpha^n=a,
+\]</span>
+<p>identifies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(K(\Delta^{1/n})/K)
+\simeq\operatorname{Hom}(\Delta/K^{\times n},\mu_n).
+\]">\[
+\operatorname{Gal}(K(\Delta^{1/n})/K)
+\simeq\operatorname{Hom}(\Delta/K^{\times n},\mu_n).
+\]</span>
+<p>Give <span class="math" data-tex="\(\Delta/K^{\times n}\)">\(\Delta/K^{\times n}\)</span> the discrete topology and the Hom group the topology inherited from the product <span class="math" data-tex="\(\mu_n^{\Delta/K^{\times n}}\)">\(\mu_n^{\Delta/K^{\times n}}\)</span>. Finite subgroups correspond to finite extensions, with</p>
+<span class="math math-display" data-tex="\[
+[K(\Delta^{1/n}):K]=|\Delta/K^{\times n}|.
+\]">\[
+[K(\Delta^{1/n}):K]=|\Delta/K^{\times n}|.
+\]</span>
+<p><strong>Proof.</strong> Start with a finite subgroup <span class="math" data-tex="\(D=\Delta/K^{\times n}\)">\(D=\Delta/K^{\times n}\)</span>. Choose finitely many representatives generating it. Their root fields are Galois because all the required roots of unity are in <span class="math" data-tex="\(K\)">\(K\)</span>; their compositum <span class="math" data-tex="\(L\)">\(L\)</span> is finite Galois. Its Galois action injects into <span class="math" data-tex="\(\operatorname{Hom}(D,\mu_n)\)">\(\operatorname{Hom}(D,\mu_n)\)</span>, since the roots generate <span class="math" data-tex="\(L\)">\(L\)</span>. In particular its group <span class="math" data-tex="\(G\)">\(G\)</span> is abelian of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>The pairing also injects <span class="math" data-tex="\(D\)">\(D\)</span> into <span class="math" data-tex="\(\operatorname{Hom}(G,\mu_n)\)">\(\operatorname{Hom}(G,\mu_n)\)</span>: if every element of <span class="math" data-tex="\(G\)">\(G\)</span> fixes a chosen root, that root is in <span class="math" data-tex="\(K\)">\(K\)</span>, so the represented class is zero. For every finite abelian group <span class="math" data-tex="\(B\)">\(B\)</span> killed by <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\operatorname{Hom}(B,\mu_n)|=|B|.
+\]">\[
+|\operatorname{Hom}(B,\mu_n)|=|B|.
+\]</span>
+<p>This is the finite character lemma proved above. The two injections consequently force <span class="math" data-tex="\(|G|=|D|\)">\(|G|=|D|\)</span>, and both pairing maps are isomorphisms. This proves the degree formula and perfectness.</p>
+<p>For a finite abelian extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>, each character <span class="math" data-tex="\(G\to\mu_n\)">\(G\to\mu_n\)</span> is an <span class="math" data-tex="\(L^\times\)">\(L^\times\)</span>-valued cocycle. Hilbert 90 realizes it by a radical <span class="math" data-tex="\(\alpha\in L\)">\(\alpha\in L\)</span>, with <span class="math" data-tex="\(\alpha^n\in K\)">\(\alpha^n\in K\)</span>. The finite character lemma says these characters separate elements. Hence the common stabilizer of these radicals is trivial, and they generate <span class="math" data-tex="\(L\)">\(L\)</span>. Moreover, <span class="math" data-tex="\(D_L=(L^{\times n}\cap K^\times)/K^{\times n}\)">\(D_L=(L^{\times n}\cap K^\times)/K^{\times n}\)</span> maps bijectively to <span class="math" data-tex="\(\operatorname{Hom}(G,\mu_n)\)">\(\operatorname{Hom}(G,\mu_n)\)</span> by this same argument. For an extension originally constructed from <span class="math" data-tex="\(D\)">\(D\)</span>, the subgroup <span class="math" data-tex="\(D\subset D_L\)">\(D\subset D_L\)</span> already has order <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, so it equals <span class="math" data-tex="\(D_L\)">\(D_L\)</span>. The two assignments are inverse in the finite case.</p>
+<p>For arbitrary <span class="math" data-tex="\(D\)">\(D\)</span>, take the union of its finitely generated subgroups. Each is finite, since its generators have order dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Their root fields have union <span class="math" data-tex="\(K(\Delta^{1/n})\)">\(K(\Delta^{1/n})\)</span>, and the inverse-limit description of its Galois group is exactly <span class="math" data-tex="\(\operatorname{Hom}(D,\mu_n)\)">\(\operatorname{Hom}(D,\mu_n)\)</span>. Conversely, an infinite abelian extension of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span> is the union of its finite Galois subextensions. The finite correspondence applies to each. A root in the union lies in one finite subextension, so the inverse assignment introduces no additional classes. This proves both the infinite correspondence and the topology assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For finite <span class="math" data-tex="\(D\)">\(D\)</span>, perfectness means that each side is the full dual of the other. For infinite <span class="math" data-tex="\(D\)">\(D\)</span>, the second dual consists of the <strong>continuous</strong> characters of its compact Galois group: a continuous character factors through a finite stage. Omitting this continuity would give a larger and incorrect dual.</p>
+<p>If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is cyclic of degree <span class="math" data-tex="\(n\)">\(n\)</span>, choose a faithful character <span class="math" data-tex="\(G\to\mu_n\)">\(G\to\mu_n\)</span> and apply Hilbert 90. Its radical has trivial stabilizer and generates <span class="math" data-tex="\(L\)">\(L\)</span>, proving <span class="math" data-tex="\(L=K(a^{1/n})\)">\(L=K(a^{1/n})\)</span>. Conversely, <span class="math" data-tex="\(K(a^{1/n})/K\)">\(K(a^{1/n})/K\)</span> is cyclic of degree the order of the class of <span class="math" data-tex="\(a\)">\(a\)</span> in <span class="math" data-tex="\(K^\times/K^{\times n}\)">\(K^\times/K^{\times n}\)</span>; that order can be a proper divisor of <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For example, the three independent square classes 2, 3 and 5 give</p>
+<span class="math math-display" data-tex="\[
+\mathbf Q(\sqrt2,\sqrt3,\sqrt5)/\mathbf Q,
+\qquad G\simeq(\mathbf Z/2\mathbf Z)^3.
+\]">\[
+\mathbf Q(\sqrt2,\sqrt3,\sqrt5)/\mathbf Q,
+\qquad G\simeq(\mathbf Z/2\mathbf Z)^3.
+\]</span>
+<p>Their independence follows from the valuations at 2, 3 and 5. The pairing records the three independent sign changes.</p>
+<h2 id="5-the-additive-version-in-characteristic-p">5. The additive version in characteristic p</h2>
+<p>Assume now <span class="math" data-tex="\(\operatorname{char}K=p&gt;0\)">\(\operatorname{char}K=p&gt;0\)</span>, and put <span class="math" data-tex="\(\wp(x)=x^p-x\)">\(\wp(x)=x^p-x\)</span>. This is an additive map whose kernel is <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>. Every polynomial <span class="math" data-tex="\(X^p-X-a\)">\(X^p-X-a\)</span> is separable, since its derivative is <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>For a root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the function <span class="math" data-tex="\(g\mapsto g(\alpha)-\alpha\)">\(g\mapsto g(\alpha)-\alpha\)</span> takes values in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> and is a continuous homomorphism. Changing the root adds a constant in <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>, and changing <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(\wp(b)\)">\(\wp(b)\)</span>, for <span class="math" data-tex="\(b\in K\)">\(b\in K\)</span>, replaces a root by <span class="math" data-tex="\(\alpha+b\)">\(\alpha+b\)</span>. Thus this construction depends only on <span class="math" data-tex="\(a\bmod\wp(K)\)">\(a\bmod\wp(K)\)</span>.</p>
+<h3 id="proposition-3-4-artin-schreier-correspondence">Proposition 3.4. Artin–Schreier correspondence</h3>
+<p>There is an isomorphism of <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-vector spaces</p>
+<span class="math math-display" data-tex="\[
+K/\wp(K)\simeq\operatorname{Hom}_{\mathrm{cont}}(G_K,\mathbf F_p).
+\]">\[
+K/\wp(K)\simeq\operatorname{Hom}_{\mathrm{cont}}(G_K,\mathbf F_p).
+\]</span>
+<p>Subspaces <span class="math" data-tex="\(D\subset K/\wp(K)\)">\(D\subset K/\wp(K)\)</span> correspond, preserving inclusion, to abelian Galois extensions of exponent dividing <span class="math" data-tex="\(p\)">\(p\)</span>, by adjoining roots of <span class="math" data-tex="\(X^p-X-a\)">\(X^p-X-a\)</span> for the classes <span class="math" data-tex="\(a\in D\)">\(a\in D\)</span>. Their Galois groups are</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathbf F_p}(D,\mathbf F_p),
+\]">\[
+\operatorname{Hom}_{\mathbf F_p}(D,\mathbf F_p),
+\]</span>
+<p>with the product topology. A finite-dimensional <span class="math" data-tex="\(D\)">\(D\)</span> gives degree <span class="math" data-tex="\(p^{\dim D}\)">\(p^{\dim D}\)</span>.</p>
+<p><strong>Proof.</strong> A class maps to zero exactly when its root is fixed by <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, hence lies in <span class="math" data-tex="\(K\)">\(K\)</span>; that is exactly <span class="math" data-tex="\(a\in\wp(K)\)">\(a\in\wp(K)\)</span>. A continuous homomorphism to <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span> factors through some finite Galois <span class="math" data-tex="\(E/K\)">\(E/K\)</span>. Additive Hilbert 90 realizes it as <span class="math" data-tex="\(g(\alpha)-\alpha\)">\(g(\alpha)-\alpha\)</span>, with <span class="math" data-tex="\(\alpha\in E\)">\(\alpha\in E\)</span>. Then <span class="math" data-tex="\(\wp(\alpha)\)">\(\wp(\alpha)\)</span> is fixed and lies in <span class="math" data-tex="\(K\)">\(K\)</span>, proving surjectivity.</p>
+<p>For a finite-dimensional subspace, its root field is finite Galois, and its action injects into the vector-space dual of <span class="math" data-tex="\(D\)">\(D\)</span>. The translation pairing injects <span class="math" data-tex="\(D\)">\(D\)</span> into the dual of the Galois group, since a root fixed by that group lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Equal dimensions, or the two resulting cardinality inequalities, make both maps isomorphisms. Conversely, additive Hilbert 90 realizes all characters of a finite elementary abelian <span class="math" data-tex="\(p\)">\(p\)</span>-group by roots; they separate the group and therefore generate its field. This proves the finite correspondence and its inverse. Taking unions of finite-dimensional subspaces and inverse limits of their Galois groups proves the general case, exactly as in Theorem 3.3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(K=\mathbf F_p(t)\)">\(K=\mathbf F_p(t)\)</span>, the class of <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> is nonzero in <span class="math" data-tex="\(K/\wp(K)\)">\(K/\wp(K)\)</span>. A pole of order <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> in <span class="math" data-tex="\(b\)">\(b\)</span> becomes a pole of order <span class="math" data-tex="\(pm\)">\(pm\)</span> in <span class="math" data-tex="\(b^p-b\)">\(b^p-b\)</span>; if <span class="math" data-tex="\(b\)">\(b\)</span> has no pole at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, neither does <span class="math" data-tex="\(b^p-b\)">\(b^p-b\)</span>. Neither possibility gives the pole of order 1 of <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>. Hence <span class="math" data-tex="\(X^p-X=t^{-1}\)">\(X^p-X=t^{-1}\)</span> defines a cyclic extension of degree <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> In <span class="math" data-tex="\(\mathbf Q(i)\)">\(\mathbf Q(i)\)</span>, find every <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> satisfying <span class="math" data-tex="\(\sigma(b)/b=(3+4i)/5\)">\(\sigma(b)/b=(3+4i)/5\)</span>, where <span class="math" data-tex="\(\sigma(i)=-i\)">\(\sigma(i)=-i\)</span>.</li>
+<li><strong>Medium.</strong> Describe all quadratic and biquadratic extensions of <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> in terms of square classes. Apply the description to the two classes <span class="math" data-tex="\(-2\)">\(-2\)</span> and 7.</li>
+<li><strong>Medium.</strong> For a finite subgroup <span class="math" data-tex="\(D\subset K^\times/K^{\times n}\)">\(D\subset K^\times/K^{\times n}\)</span>, prove that the Kummer pairing of Theorem 3.3 is perfect without assuming a degree formula for radical extensions.</li>
+<li><strong>Hard.</strong> Prove additive Hilbert 90 in arbitrary characteristic using a trace-one element. Use it to derive the Artin–Schreier character isomorphism and the correspondence for infinite elementary abelian extensions.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>The element <span class="math" data-tex="\(b_0=2-i\)">\(b_0=2-i\)</span> satisfies the equation by direct multiplication. If <span class="math" data-tex="\(b\)">\(b\)</span> is another solution, then <span class="math" data-tex="\(\sigma(b/b_0)=b/b_0\)">\(\sigma(b/b_0)=b/b_0\)</span>, so <span class="math" data-tex="\(b/b_0\in\mathbf Q^\times\)">\(b/b_0\in\mathbf Q^\times\)</span>. All solutions are therefore <span class="math" data-tex="\(b=r(2-i)\)">\(b=r(2-i)\)</span>, with <span class="math" data-tex="\(r\in\mathbf Q^\times\)">\(r\in\mathbf Q^\times\)</span>.</li>
+<li>A quadratic extension is determined by a one-dimensional subspace of <span class="math" data-tex="\(\mathbf Q^\times/\mathbf Q^{\times2}\)">\(\mathbf Q^\times/\mathbf Q^{\times2}\)</span>, and has the form <span class="math" data-tex="\(\mathbf Q(\sqrt d)\)">\(\mathbf Q(\sqrt d)\)</span>, where <span class="math" data-tex="\(d\)">\(d\)</span> is a nontrivial square class. It has a unique squarefree integer representative. A biquadratic extension is determined by a two-dimensional subspace, generated by two independent classes <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; its field is <span class="math" data-tex="\(\mathbf Q(\sqrt a,\sqrt b)\)">\(\mathbf Q(\sqrt a,\sqrt b)\)</span>, and its three quadratic subfields correspond to <span class="math" data-tex="\(a,b,ab\)">\(a,b,ab\)</span>. Different bases of the same subspace give the same extension. The classes <span class="math" data-tex="\(-2\)">\(-2\)</span> and 7 are independent by their valuations at 2 and 7. The resulting field has degree 4 and quadratic subfields <span class="math" data-tex="\(\mathbf Q(\sqrt{-2})\)">\(\mathbf Q(\sqrt{-2})\)</span>, <span class="math" data-tex="\(\mathbf Q(\sqrt7)\)">\(\mathbf Q(\sqrt7)\)</span> and <span class="math" data-tex="\(\mathbf Q(\sqrt{-14})\)">\(\mathbf Q(\sqrt{-14})\)</span>.</li>
+<li>Let <span class="math" data-tex="\(L\)">\(L\)</span> be the root field and <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>. The map <span class="math" data-tex="\(G\to\operatorname{Hom}(D,\mu_n)\)">\(G\to\operatorname{Hom}(D,\mu_n)\)</span> is injective because the roots generate <span class="math" data-tex="\(L\)">\(L\)</span>. This also proves that <span class="math" data-tex="\(G\)">\(G\)</span> is abelian of exponent dividing <span class="math" data-tex="\(n\)">\(n\)</span>. The map in the other direction is injective because a root fixed by all of <span class="math" data-tex="\(G\)">\(G\)</span> lies in <span class="math" data-tex="\(K\)">\(K\)</span>. The finite character lemma above proves that each of these dual groups has the same order as its group. Thus <span class="math" data-tex="\(|G|\leq|D|\leq|G|\)">\(|G|\leq|D|\leq|G|\)</span>, and both injections are surjective. This proves perfectness and simultaneously establishes the degree formula.</li>
+<li>Independence of the distinct embeddings makes the trace a nonzero <span class="math" data-tex="\(K\)">\(K\)</span>-linear map to <span class="math" data-tex="\(K\)">\(K\)</span>, so choose <span class="math" data-tex="\(t\)">\(t\)</span> of trace 1. For an additive cocycle, <span class="math" data-tex="\(S=\sum_h c(h)h(t)\)">\(S=\sum_h c(h)h(t)\)</span> satisfies <span class="math" data-tex="\(gS=S-c(g)\)">\(gS=S-c(g)\)</span>, and <span class="math" data-tex="\(b=-S\)">\(b=-S\)</span> gives <span class="math" data-tex="\(c(g)=gb-b\)">\(c(g)=gb-b\)</span>. No division by <span class="math" data-tex="\(|G|\)">\(|G|\)</span> occurs. Given a continuous character <span class="math" data-tex="\(G_K\to\mathbf F_p\)">\(G_K\to\mathbf F_p\)</span>, factor it through finite Galois <span class="math" data-tex="\(E/K\)">\(E/K\)</span> and use this construction to obtain <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(g\alpha-\alpha=\chi(g)\)">\(g\alpha-\alpha=\chi(g)\)</span>. Then <span class="math" data-tex="\(\alpha^p-\alpha\in K\)">\(\alpha^p-\alpha\in K\)</span>. Its class maps to the character; the kernel consists exactly of <span class="math" data-tex="\(\wp(K)\)">\(\wp(K)\)</span>. The finite-dimensional translation pairing is perfect by the two injections and equality of dual dimensions. Any subspace is a union of finite-dimensional ones; their root fields have the corresponding union, and their Galois groups have the inverse limit. Conversely, every element of an infinite elementary abelian extension lies in a finite Galois subextension. Applying the finite inverse assignments there proves the infinite correspondence with no finiteness assumption on <span class="math" data-tex="\(K/\wp(K)\)">\(K/\wp(K)\)</span>.</li>
+</ol>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 1–3 prove independence and both forms of Hilbert 90 in every characteristic. The finite character lemma proves dual size and separation before the full finite and infinite Kummer and Artin–Schreier correspondences.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/FT.pdf">J. S. Milne, Fields and Galois Theory, version 5.10</a>.</li>
+<li><a href="https://stacks.math.columbia.edu/">The Stacks project, independence, Kummer and Artin–Schreier sections</a>.</li>
+</ul>
+<p>The Stacks comparisons are Tags <a href="https://stacks.math.columbia.edu/tag/0CKK">0CKK</a>, <a href="https://stacks.math.columbia.edu/tag/09I6">09I6</a> and <a href="https://stacks.math.columbia.edu/tag/09I7">09I7</a>. Related independently written programme material belongs to the AI Integrated Stacks Project; it has not been reviewed by the official Stacks maintainers.</p>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">← Cohomology of cyclic groups and the Herbrand quotient</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="frobenius-lifts-and-abstract-reciprocity.html">Frobenius lifts and abstract reciprocity →</a></span></nav>
+<p class="small source-link"><a href="files/hilberts-theorem-90-and-kummer-theory.md">Markdown source of this lesson</a> · <a download href="files/hilberts-theorem-90-and-kummer-theory.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Weighted control on the negative half-space</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="weighted-control-on-the-negative-half-space">Weighted control on the negative half-space</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>The analytic-branch estimate controls a supremum of one-dimensional restriction norms. We now turn it into a norm estimate on the whole negative half-space, with an arbitrary moderate weight in all frequency variables. The two changes have separate mechanisms: a spatial cutoff brings complex frequencies back to the real axis, and a compact modulated convolution window localizes the weight. The final argument uses the exact disintegration already proved.</p>
+<p>Read <a href="AN02-L062.html">Weighted estimates from analytic root branches</a>, <a href="AN02-L063.html">Disintegrating half-space restriction norms</a>, <a href="AN02-L006.html">Rescaled symbols and stable strength</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-statement-and-the-normalized-root-hypothesis">The statement and the normalized root hypothesis</h2>
+<p>Write <span class="math" data-tex="\((x,t)\in\mathbb R^d\times\mathbb R\)">\((x,t)\in\mathbb R^d\times\mathbb R\)</span>, <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, and let <span class="math" data-tex="\(P(z,s)\ne0\)">\(P(z,s)\ne0\)</span> be a polynomial. Assume that for some <span class="math" data-tex="\(A\ge1\)">\(A\ge1\)</span>, every analytic root <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on a complex ball of radius <span class="math" data-tex="\(A\)">\(A\)</span> with real center satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(z,\tau(z))=0
+       \\
+\quad\Longrightarrow\\
+\quad
+       \sup\operatorname{Im}\tau\ge A+1
+       \text{ on that ball}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P(z,\tau(z))=0
+       \\
+\quad\Longrightarrow\\
+\quad
+       \sup\operatorname{Im}\tau\ge A+1
+       \text{ on that ball}.
+\end{gathered}
+\tag{1}
+\]</span>
+Let <span class="math" data-tex="\(S_P\)">\(S_P\)</span> denote the exact full polynomial derivative norm. For a positive moderate joint weight <span class="math" data-tex="\(k\)">\(k\)</span>, use the full-space and negative-half-space norms(<a href="AN02-L063.html">equation 1 in Disintegrating half-space restriction norms</a>)–(<a href="AN02-L063.html">equation 2 in Disintegrating half-space restriction norms</a>).</p>
+<p><strong>Theorem.</strong> There is <span class="math" data-tex="\(\kappa\ge0\)">\(\kappa\ge0\)</span>, depending only on <span class="math" data-tex="\(P,A,d\)">\(P,A,d\)</span>, such that for every <span class="math" data-tex="\(1\le p\le\infty\)">\(1\le p\le\infty\)</span> and every such weight <span class="math" data-tex="\(k\)">\(k\)</span>, there is <span class="math" data-tex="\(C_{p,k}&lt;\infty\)">\(C_{p,k}&lt;\infty\)</span> with
+<span class="math math-display" data-tex="\[
+ \|v\|^-_{p,k}\le C_{p,k}e^{\kappa L}
+                         \|P(D)v\|^-_{p,k/S_P},
+ \tag{2}
+\]">\[
+ \|v\|^-_{p,k}\le C_{p,k}e^{\kappa L}
+                         \|P(D)v\|^-_{p,k/S_P},
+ \tag{2}
+\]</span>
+whenever <span class="math" data-tex="\(v\in C_c^\infty(\mathbb R^{d+1})\)">\(v\in C_c^\infty(\mathbb R^{d+1})\)</span>, <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span>, and
+<span class="math" data-tex="\(|x|\le L\)">\(|x|\le L\)</span> on <span class="math" data-tex="\(\operatorname{supp}v\cap\{t&lt;0\}\)">\(\operatorname{supp}v\cap\{t&lt;0\}\)</span>.
+The exponent <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is independent of <span class="math" data-tex="\(p,k\)">\(p,k\)</span>. Reducible polynomials and repeated factors are included.</p>
+<h2 id="integrating-actual-schwartz-representatives">Integrating actual Schwartz representatives</h2>
+<p>We first record the integral inequality needed for a quotient norm. Fix a moderate time weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and let <span class="math" data-tex="\(H(\eta,t)\)">\(H(\eta,t)\)</span> be a continuous Schwartz-valued function of the real parameter <span class="math" data-tex="\(\eta\in\mathbb R^d\)">\(\eta\in\mathbb R^d\)</span>. Assume every Schwartz seminorm of <span class="math" data-tex="\(H(\eta,\cdot)\)">\(H(\eta,\cdot)\)</span> has an integrable parameter bound. Its actual pointwise integral and every fixed time derivative then define a time-Schwartz function <span class="math" data-tex="\(h=\int H(\eta,\cdot)\,d\eta\)">\(h=\int H(\eta,\cdot)\,d\eta\)</span>, by dominated differentiation and the seminorm bounds. The fixed restriction norm satisfies
+<span class="math math-display" data-tex="\[
+ \left\|\int H(\eta,\cdot)\,d\eta\right\|^-_{p,\rho}
+                \le\int\|H(\eta,\cdot)\|^-_{p,\rho}\,d\eta.
+ \tag{3}
+\]">\[
+ \left\|\int H(\eta,\cdot)\,d\eta\right\|^-_{p,\rho}
+                \le\int\|H(\eta,\cdot)\|^-_{p,\rho}\,d\eta.
+ \tag{3}
+\]</span>
+For completeness, truncated Riemann sums converge to this integral in each Schwartz seminorm. On a compact parameter box, continuity gives uniform continuity in each of finitely many specified seminorms; choose a fine mesh for them. Integrable seminorm tails give convergence as the boxes increase. A diagonal choice controls successively every seminorm. The quotient map is continuous on Schwartz space, so its composition with each continuous unit-norm functional commutes with this limit and with the scalar integral. Scalar absolute-value bounds and the norm test B6 prove(3). Equivalently its norm is bounded by the integral of its norms at the finite-sum stage and in the limit. A completed quotient or an unproved Banach-valued integral is unnecessary.</p>
+<p>All applications below have a joint Schwartz time family multiplied by a rapidly decreasing parameter kernel, so these integrable seminorm bounds hold.</p>
+<h2 id="from-complex-frequencies-to-a-real-integral">From complex frequencies to a real integral</h2>
+<p>Assume first that <span class="math" data-tex="\(P\)">\(P\)</span> is irreducible and that <span class="math" data-tex="\(k=k(s)\)">\(k=k(s)\)</span> depends only on the time frequency. Set <span class="math" data-tex="\(g=P(D)v\)">\(g=P(D)v\)</span> and
+<span class="math math-display" data-tex="\[
+ F(\eta)=\|\mathcal F_xg(\eta,\cdot)\|^-_{p,k/S_P(\eta,\cdot)}.
+ \tag{4}
+\]">\[
+ F(\eta)=\|\mathcal F_xg(\eta,\cdot)\|^-_{p,k/S_P(\eta,\cdot)}.
+ \tag{4}
+\]</span>
+This is continuous by the <a href="AN02-L063.html">Disintegrating half-space restriction norms</a> varying-weight argument and is integrable. Indeed the real partial transform of <span class="math" data-tex="\(g\)">\(g\)</span> decays with every time-Schwartz seminorm as <span class="math" data-tex="\(|\eta|\to\infty\)">\(|\eta|\to\infty\)</span>, <span class="math" data-tex="\(k(s)\)">\(k(s)\)</span> has polynomial growth, and <span class="math" data-tex="\(S_P(\eta,s)\)">\(S_P(\eta,s)\)</span> has a uniform positive lower bound from one constant highest derivative.</p>
+<p>Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R^d)\)">\(\chi\in C_c^\infty(\mathbb R^d)\)</span> equal to one on the unit ball and supported in the closed ball of radius two. Put <span class="math" data-tex="\(B=\max(1,L)\)">\(B=\max(1,L)\)</span>, <span class="math" data-tex="\(\chi_B(x)=\chi(x/B)\)">\(\chi_B(x)=\chi(x/B)\)</span>. Locality of <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> implies that <span class="math" data-tex="\(g\)">\(g\)</span>'s negative-time spatial support is also inside the radius-<span class="math" data-tex="\(L\)">\(L\)</span> ball. Therefore <span class="math" data-tex="\(\chi_Bg=g\)">\(\chi_Bg=g\)</span> for <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>.</p>
+<p>The product-transform formula gives an actual full-time Schwartz representative
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal F_x(\chi_Bg)(z,t)
+   \\
+=(2\pi)^{-d}\int_{\mathbb R^d}
+        \\
+\widehat\chi_B(z-\eta)\mathcal F_xg(\eta,t)\,d\eta,
+             \\z\in\mathbb C^d.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\mathcal F_x(\chi_Bg)(z,t)
+   \\
+=(2\pi)^{-d}\int_{\mathbb R^d}
+        \\
+\widehat\chi_B(z-\eta)\mathcal F_xg(\eta,t)\,d\eta,
+             \\z\in\mathbb C^d.
+\end{gathered}
+\tag{5}
+\]</span>
+To justify complex <span class="math" data-tex="\(z\)">\(z\)</span>, insert the real-frequency inverse transform of <span class="math" data-tex="\(g\)">\(g\)</span>; compact support of <span class="math" data-tex="\(\chi_B\)">\(\chi_B\)</span>, the real Schwartz decay of that transform and a finite bound on <span class="math" data-tex="\(e^{x\cdot\operatorname{Im}z}\)">\(e^{x\cdot\operatorname{Im}z}\)</span> make Fubini absolutely convergent. Each time derivative obeys the same bounds. This representative has the same negative-time restriction as <span class="math" data-tex="\(\mathcal F_xg(z,\cdot)\)">\(\mathcal F_xg(z,\cdot)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(m=\deg P\)">\(m=\deg P\)</span>. The finite jet-matrix shift, valid with complex base points, gives
+<span class="math" data-tex="\(S_P(\eta,s)/S_P(z,s)\le(1+C_P|z-\eta|)^m\)">\(S_P(\eta,s)/S_P(z,s)\le(1+C_P|z-\eta|)^m\)</span>.
+Use the fixed time weight <span class="math" data-tex="\(k/S_P(z,\cdot)\)">\(k/S_P(z,\cdot)\)</span> in(3) and then this pointwise weight comparison. The result is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\mathcal F_xg(z,\cdot)\|^-_{p,k/S_P(z,\cdot)}
+ \\
+\le (2\pi)^{-d}\int
+   \\
+|\widehat\chi_B(z-\eta)|\\
+(1+C_P|z-\eta|)^m F(\eta)\,d\eta.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+\|\mathcal F_xg(z,\cdot)\|^-_{p,k/S_P(z,\cdot)}
+ \\
+\le (2\pi)^{-d}\int
+   \\
+|\widehat\chi_B(z-\eta)|\\
+(1+C_P|z-\eta|)^m F(\eta)\,d\eta.
+\end{gathered}
+\tag{6}
+\]</span>
+No parameter-dependent norm is moved through an analytic argument here: for each fixed <span class="math" data-tex="\(z\)">\(z\)</span>,(3) uses one fixed weight.</p>
+<p>For every integer <span class="math" data-tex="\(J\)">\(J\)</span>, the compact spatial transform and integration by parts in a coordinate of largest complex modulus give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\widehat\chi_B(w)|
+       \\
+\le C_J B^d e^{2B|\operatorname{Im}w|}
+                             (1+B|w|)^{-J}.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+|\widehat\chi_B(w)|
+       \\
+\le C_J B^d e^{2B|\operatorname{Im}w|}
+                             (1+B|w|)^{-J}.
+\end{gathered}
+\tag{7}
+\]</span>
+The factor <span class="math" data-tex="\(B^d\)">\(B^d\)</span> is its exact scaling factor. For <span class="math" data-tex="\(|Bw|\le1\)">\(|Bw|\le1\)</span>, use the compact integral bound; otherwise integrate <span class="math" data-tex="\(J\)">\(J\)</span> derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, as in the <a href="AN02-L059.html">Analytic norms and propagation on complex balls</a> full-complex decay proof. No real-frequency-only decay estimate is substituted for this bound.</p>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be the radius in the <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> strip theorem, and take <span class="math" data-tex="\(J\ge m\)">\(J\ge m\)</span>. Since <span class="math" data-tex="\(B\ge1\)">\(B\ge1\)</span>, the kernel in(6) is uniformly bounded for <span class="math" data-tex="\(|\operatorname{Im}w|&lt;R\)">\(|\operatorname{Im}w|&lt;R\)</span> by
+<span class="math math-display" data-tex="\[
+ C B^d e^{2RB}\le C&#x27; e^{(2R+1)B}.
+ \tag{8}
+\]">\[
+ C B^d e^{2RB}\le C&#x27; e^{(2R+1)B}.
+ \tag{8}
+\]</span>
+The last inequality absorbs the fixed polynomial <span class="math" data-tex="\(B^d\)">\(B^d\)</span> into <span class="math" data-tex="\(e^B\)">\(e^B\)</span>. The constants depend on the symbol and cutoff, not on the time weight or norm exponent. Taking the strip supremum and then the <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> estimate yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{\xi\in\mathbb R^d}
+        \|\mathcal F_xv(\xi,\cdot)\|^-_{p,k}
+       \\
+\le C_0 e^{\kappa_0 L}\int_{\mathbb R^d}F(\eta)\,d\eta,
+ \\\kappa_0=\kappa_{\rm WE}+2R+1.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\sup_{\xi\in\mathbb R^d}
+        \|\mathcal F_xv(\xi,\cdot)\|^-_{p,k}
+       \\
+\le C_0 e^{\kappa_0 L}\int_{\mathbb R^d}F(\eta)\,d\eta,
+ \\\kappa_0=\kappa_{\rm WE}+2R+1.
+\end{gathered}
+\tag{9}
+\]</span>
+Here <span class="math" data-tex="\(B\le L+1\)">\(B\le L+1\)</span>, so its extra fixed exponential is absorbed into <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Most importantly, <span class="math" data-tex="\(C_0,\kappa_0\)">\(C_0,\kappa_0\)</span> are uniform over all time-only weights and all <span class="math" data-tex="\(p\)">\(p\)</span>: the <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> estimate is uniform in them, the integral norm inequality has coefficient one and every comparison above is a pointwise symbol comparison.</p>
+<h2 id="a-modulated-window-allows-an-arbitrary-joint-weight">A modulated window allows an arbitrary joint weight</h2>
+<p>Now let <span class="math" data-tex="\(k=k(\eta,s)\)">\(k=k(\eta,s)\)</span> be a joint moderate weight with constants <span class="math" data-tex="\(C_k,N_k\)">\(C_k,N_k\)</span>. Choose a nonnegative <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^d)\)">\(\phi\in C_c^\infty(\mathbb R^d)\)</span>, supported in the unit ball, with <span class="math" data-tex="\(\int\phi=1\)">\(\int\phi=1\)</span>. Thus <span class="math" data-tex="\(\widehat\phi(0)=1\)">\(\widehat\phi(0)=1\)</span>. For each real <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_\eta(x)=e^{ix\cdot\eta}\phi(x),\\
+\qquad
+ v_\eta=\phi_\eta*_xv,\\
+\qquad
+ \mathcal F_xv_\eta(\xi,t)
+                    =\widehat\phi(\xi-\eta)\mathcal F_xv(\xi,t).
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\phi_\eta(x)=e^{ix\cdot\eta}\phi(x),\\
+\qquad
+ v_\eta=\phi_\eta*_xv,\\
+\qquad
+ \mathcal F_xv_\eta(\xi,t)
+                    =\widehat\phi(\xi-\eta)\mathcal F_xv(\xi,t).
+\end{gathered}
+\tag{10}
+\]</span>
+Tangential convolution commutes with <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span>, so <span class="math" data-tex="\(P(D)v_\eta=\phi_\eta*_xg\)">\(P(D)v_\eta=\phi_\eta*_xg\)</span>. All these functions are smooth and compactly supported; at negative times their spatial support lies inside the radius-<span class="math" data-tex="\((L+1)\)">\((L+1)\)</span> ball.</p>
+<p>Apply(9) to <span class="math" data-tex="\(v_\eta\)">\(v_\eta\)</span> with time-only weight <span class="math" data-tex="\(k_\eta(s)=k(\eta,s)\)">\(k_\eta(s)=k(\eta,s)\)</span>. Its constants are uniform in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, since they are uniform over time weights. Evaluate its left side at <span class="math" data-tex="\(\xi=\eta\)">\(\xi=\eta\)</span>, where the window transform equals one. Moderation of the joint weight gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V(\eta):\\
+=\|\mathcal F_xv(\eta,\cdot)\|^-_{p,k_\eta}
+ \\
+\le C_1 e^{\kappa_0 L}\int_{\mathbb R^d}
+     K(\eta-\xi)G(\xi)\,d\xi,
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+V(\eta):\\
+=\|\mathcal F_xv(\eta,\cdot)\|^-_{p,k_\eta}
+ \\
+\le C_1 e^{\kappa_0 L}\int_{\mathbb R^d}
+     K(\eta-\xi)G(\xi)\,d\xi,
+\end{gathered}
+\tag{11}
+\]</span>
+where
+<span class="math" data-tex="\(G(\xi)=\|\mathcal F_xg(\xi,\cdot)\|^-_{p,k_\xi/S_P(\xi,\cdot)}\)">\(G(\xi)=\|\mathcal F_xg(\xi,\cdot)\|^-_{p,k_\xi/S_P(\xi,\cdot)}\)</span>
+and
+<span class="math" data-tex="\(K(h)=|\widehat\phi(-h)|(1+C_k|h|)^{N_k}\)">\(K(h)=|\widehat\phi(-h)|(1+C_k|h|)^{N_k}\)</span>.
+The scalar window factor comes out of the restriction norm by homogeneity. The weight comparison is uniform in <span class="math" data-tex="\(s\)">\(s\)</span> and retains the same <span class="math" data-tex="\(S_P(\xi,s)\)">\(S_P(\xi,s)\)</span> on both sides. The factor <span class="math" data-tex="\(e^{\kappa_0}\)">\(e^{\kappa_0}\)</span> from the window support is absorbed into <span class="math" data-tex="\(C_1\)">\(C_1\)</span>.</p>
+<p>The real Schwartz transform of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> makes <span class="math" data-tex="\(K\in L^1\)">\(K\in L^1\)</span>, for any fixed moderation exponent. Young's <span class="math" data-tex="\(L^1*L^p\)">\(L^1*L^p\)</span> inequality and the exact <a href="AN02-L063.html">Disintegrating half-space restriction norms</a> identity now give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|v\|^-_{p,k}
+  &amp;=(2\pi)^{-d/p}\|V\|_p\\
+  &amp;\le C_1 e^{\kappa_0 L}\|K\|_1
+                      (2\pi)^{-d/p}\|G\|_p\\
+  &amp;=C_1\|K\|_1 e^{\kappa_0 L}\|P(D)v\|^-_{p,k/S_P}.
+ \end{aligned}
+ \tag{12}
+\]">\[
+ \begin{aligned}
+ \|v\|^-_{p,k}
+  &amp;=(2\pi)^{-d/p}\|V\|_p\\
+  &amp;\le C_1 e^{\kappa_0 L}\|K\|_1
+                      (2\pi)^{-d/p}\|G\|_p\\
+  &amp;=C_1\|K\|_1 e^{\kappa_0 L}\|P(D)v\|^-_{p,k/S_P}.
+ \end{aligned}
+ \tag{12}
+\]</span>
+This is valid at <span class="math" data-tex="\(p=1,\infty\)">\(p=1,\infty\)</span> as well as every intermediate exponent. The dependence on the weight is confined to the finite constant <span class="math" data-tex="\(\|K\|_1\)">\(\|K\|_1\)</span>; it does not change <span class="math" data-tex="\(\kappa_0\)">\(\kappa_0\)</span>.</p>
+<h2 id="reducible-polynomials-and-multiplicities">Reducible polynomials and multiplicities</h2>
+<p>Factor <span class="math" data-tex="\(P=cP_1\cdots P_\ell\)">\(P=cP_1\cdots P_\ell\)</span>, with <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span> and each <span class="math" data-tex="\(P_j\)">\(P_j\)</span> irreducible, repeating factors with their multiplicities. Every analytic root of a factor is an analytic root of <span class="math" data-tex="\(P\)">\(P\)</span>, so(1) passes to each factor with the same <span class="math" data-tex="\(A\)">\(A\)</span>. The already written product derivative-norm lemma gives constants <span class="math" data-tex="\(c_*,C_*&gt;0\)">\(c_*,C_*&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_*\prod_j S_{P_j}\le S_{P_1\cdots P_\ell}
+                       \le C_*\prod_jS_{P_j},\\
+\qquad
+ S_P=|c|S_{P_1\cdots P_\ell}.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+c_*\prod_j S_{P_j}\le S_{P_1\cdots P_\ell}
+                       \le C_*\prod_jS_{P_j},\\
+\qquad
+ S_P=|c|S_{P_1\cdots P_\ell}.
+\end{gathered}
+\tag{13}
+\]</span>
+Apply the irreducible estimate successively to <span class="math" data-tex="\(v,P_1(D)v,\ldots,P_{\ell-1}(D)\cdots P_1(D)v\)">\(v,P_1(D)v,\ldots,P_{\ell-1}(D)\cdots P_1(D)v\)</span>, with weights <span class="math" data-tex="\(k,k/S_{P_1},\ldots,k/\prod_{j&lt;\ell}S_{P_j}\)">\(k,k/S_{P_1},\ldots,k/\prod_{j&lt;\ell}S_{P_j}\)</span>. These are positive moderate weights. The intermediate differential operators preserve compact support and the negative-time spatial bound by locality. Their individual exponential coefficients depend only on their symbols, so their sum is independent of all the weights.</p>
+<p>The final restriction norm uses <span class="math" data-tex="\(k/\prod_jS_{P_j}\)">\(k/\prod_jS_{P_j}\)</span>. By(13) it is bounded by a constant times the norm with weight <span class="math" data-tex="\(k/S_{P_1\cdots P_\ell}\)">\(k/S_{P_1\cdots P_\ell}\)</span>. Scalar norm homogeneity converts the resulting last term exactly to <span class="math" data-tex="\(\|P(D)v\|^-_{p,k/S_P}\)">\(\|P(D)v\|^-_{p,k/S_P}\)</span>; the scalar <span class="math" data-tex="\(c\)">\(c\)</span> cancels its identical norm factor. This proves(2) for all nonzero <span class="math" data-tex="\(P\)">\(P\)</span>. A nonzero constant has <span class="math" data-tex="\(S_P=|P|\)">\(S_P=|P|\)</span> and gives equality. Repetition introduces another valid factor estimate, not a distinct-root assumption.</p>
+<p>In tangential dimension zero, the full norm is the one-dimensional norm. The <a href="AN02-L062.html">Weighted estimates from analytic root branches</a> zero-dimensional argument proves the same estimate directly, with no cutoff or window. Thus that dimension is included with its stated convention.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: the window normalization.</strong> Explain why <span class="math" data-tex="\(\phi(0)=1\)">\(\phi(0)=1\)</span> cannot replace <span class="math" data-tex="\(\widehat\phi(0)=1\)">\(\widehat\phi(0)=1\)</span> in(10). Construct a smooth compact example with value one at zero and transform zero at zero.</p>
+<p><strong>Solution.</strong> Evaluation at the selected frequency <span class="math" data-tex="\(\xi=\eta\)">\(\xi=\eta\)</span> produces the multiplier <span class="math" data-tex="\(\widehat\phi(0)=\int\phi\)">\(\widehat\phi(0)=\int\phi\)</span>, not the physical-space value. Choose a smooth cutoff <span class="math" data-tex="\(b\)">\(b\)</span> supported in a small ball about zero with <span class="math" data-tex="\(b(0)=1\)">\(b(0)=1\)</span> and positive integral. Choose a nonnegative smooth bump <span class="math" data-tex="\(a\)">\(a\)</span> in another small ball inside the unit ball, disjoint from zero, with positive integral. The function
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi=b-\frac{\int b}{\int a}a
+                 \\
+\quad\text{satisfies}\\
+\quad
+                 \phi(0)=1,\\
+\qquad \widehat\phi(0)=0.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+\phi=b-\frac{\int b}{\int a}a
+                 \\
+\quad\text{satisfies}\\
+\quad
+                 \phi(0)=1,\\
+\qquad \widehat\phi(0)=0.
+\end{gathered}
+\tag{14}
+\]</span>
+At the selected frequency it would erase the very fiber being estimated. A valid window is obtained by dividing any nonnegative nonzero compact bump by its positive integral. Its modulation then shifts the transform by exactly <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, and tangential convolution has the product-transform identity with no extra Fourier factor.</p>
+<p><strong>Exercise 2 — intermediate: constants versus exponential rate.</strong> Show that the spatial scaling factor <span class="math" data-tex="\(B^d\)">\(B^d\)</span>, <span class="math" data-tex="\(B\ge1\)">\(B\ge1\)</span>, can be absorbed in <span class="math" data-tex="\(e^B\)">\(e^B\)</span> with a degree-dependent constant. Explain why a larger moderation exponent for the joint weight need not increase <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, differentiation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{d}{dB}(B^de^{-B})
+                   =B^{d-1}e^{-B}(d-B),\\
+\qquad
+ B^d\le d^de^{-d}e^B\\
+\quad(B\ge1).
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\frac{d}{dB}(B^de^{-B})
+                   =B^{d-1}e^{-B}(d-B),\\
+\qquad
+ B^d\le d^de^{-d}e^B\\
+\quad(B\ge1).
+\end{gathered}
+\tag{15}
+\]</span>
+Its maximum on this interval occurs at <span class="math" data-tex="\(B=d\)">\(B=d\)</span>, including the endpoint <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Dimension zero permits the weaker constant one directly. Thus the one extra support exponential in(8) suffices regardless of the scaling polynomial.</p>
+<p>The joint weight enters later through <span class="math" data-tex="\(K(h)=|\widehat\phi(-h)|(1+C_k|h|)^{N_k}\)">\(K(h)=|\widehat\phi(-h)|(1+C_k|h|)^{N_k}\)</span>. For every fixed <span class="math" data-tex="\(N_k\)">\(N_k\)</span>, choose a Schwartz decay bound of order greater than <span class="math" data-tex="\(N_k+d\)">\(N_k+d\)</span>. This proves a finite <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm for <span class="math" data-tex="\(K\)">\(K\)</span>. Increasing <span class="math" data-tex="\(N_k\)">\(N_k\)</span> may increase that finite constant, but the window still has spatial radius one and the first-stage exponent <span class="math" data-tex="\(\kappa_0\)">\(\kappa_0\)</span> was uniform over time weights. Therefore the same <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> remains valid.</p>
+<p><strong>Exercise 3 — advanced: repeated factors and the exact derivative norm.</strong> For the one-variable symbol <span class="math" data-tex="\(P(s)=(s-2i)^2\)">\(P(s)=(s-2i)^2\)</span>, calculate <span class="math" data-tex="\(S_P(s)\)">\(S_P(s)\)</span> on the real axis and compare it to the product of the two first-order derivative norms. Explain its role in the repeated-factor step.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(R(s)=s-2i\)">\(R(s)=s-2i\)</span>. For real <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(S_R(s)=\sqrt{s^2+5}\)">\(S_R(s)=\sqrt{s^2+5}\)</span>. The squared norm of <span class="math" data-tex="\(P\)">\(P\)</span> includes its value, first derivative <span class="math" data-tex="\(2(s-2i)\)">\(2(s-2i)\)</span> and second derivative <span class="math" data-tex="\(2\)">\(2\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(s)^2\\
+=(s^2+4)^2+4(s^2+4)+4\\
+=(s^2+6)^2,\\S_R(s)^2=s^2+5.
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+S_P(s)^2\\
+=(s^2+4)^2+4(s^2+4)+4\\
+=(s^2+6)^2,\\S_R(s)^2=s^2+5.
+\end{gathered}
+\tag{16}
+\]</span>
+Consequently <span class="math" data-tex="\(S_P(s)=s^2+6\)">\(S_P(s)=s^2+6\)</span>, while the product of the first-order norms is <span class="math" data-tex="\(s^2+5\)">\(s^2+5\)</span>. Their ratio lies between one and <span class="math" data-tex="\(6/5\)">\(6/5\)</span>. The product weight is comparable to the exact derivative norm and is not literally identical to it. Applying the first-order estimate twice gives the weight <span class="math" data-tex="\(k/(s^2+5)\)">\(k/(s^2+5)\)</span>; this comparison converts it to the target weight <span class="math" data-tex="\(k/(s^2+6)\)">\(k/(s^2+6)\)</span> with a finite constant. Its constant root <span class="math" data-tex="\(2i\)">\(2i\)</span> satisfies(1) with <span class="math" data-tex="\(A=1\)">\(A=1\)</span>, and the one-variable half-line inverse gives the resulting bound with no spatial exponential.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

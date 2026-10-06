@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Uniqueness in a slab with bounded support</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="uniqueness-in-a-slab-with-bounded-support">Uniqueness in a slab with bounded support</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Polynomial factors determine whether a homogeneous solution can stay in a bounded part of a slab. Moving leading coefficients, branched roots at infinity and Fourier-sector vanishing give a full distributional uniqueness theorem.</p>
+<p>Read <a href="AN02-L044.html">Primitive factors and moving polynomial roots</a>, <a href="AN02-L011.html">Choosing polynomial and exponential approximants</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, <a href="AN02-L053.html">Fourier windows, sector growth and branched vanishing</a>, <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz inversion; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the integration estimates. <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorems 1.1–2.1, proves proper convolution and compact smoothing. <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, Corollary 4.3, proves compact-support injectivity of nonzero polynomial differential operators.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs below use the linked prerequisite lessons and the stated planned results.</p>
+<h2 id="irreducible-covers-with-a-moving-leading-coefficient">Irreducible covers with a moving leading coefficient</h2>
+<p>Let <span class="math" data-tex="\(w\in\mathbb C^\ell\)">\(w\in\mathbb C^\ell\)</span>, <span class="math" data-tex="\(\ell\ge1\)">\(\ell\ge1\)</span>, and let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(w,s)=\sum_{j=0}^{\mu}a_j(w)s^j,\\
+\qquad
+ \mu\ge1,\\
+\qquad a=a_\mu\ne0,
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P(w,s)=\sum_{j=0}^{\mu}a_j(w)s^j,\\
+\qquad
+ \mu\ge1,\\
+\qquad a=a_\mu\ne0,
+\end{gathered}
+\tag{1}
+\]</span>
+be irreducible in <span class="math" data-tex="\(\mathbb C[w,s]\)">\(\mathbb C[w,s]\)</span>. We specify the exceptional set rather than treating every fiber as a fixed-degree polynomial.</p>
+<p><strong>Lemma 1.</strong> There is a nonzero polynomial <span class="math" data-tex="\(D(w)\)">\(D(w)\)</span> whose complement consists exactly of the parameters with full degree <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and simple roots. The regular root cover
+<span class="math math-display" data-tex="\[
+ \mathcal V=\{(w,s):D(w)\ne0,\ P(w,s)=0\}
+ \tag{2}
+\]">\[
+ \mathcal V=\{(w,s):D(w)\ne0,\ P(w,s)=0\}
+ \tag{2}
+\]</span>
+is connected. A holomorphic function on this cover which vanishes on a nonempty open subset vanishes everywhere.</p>
+<p><strong>Proof.</strong> Over the field <span class="math" data-tex="\(K=\mathbb C(w)\)">\(K=\mathbb C(w)\)</span>, Gauss's lemma makes <span class="math" data-tex="\(P\)">\(P\)</span> irreducible. Its derivative <span class="math" data-tex="\(P_s\)">\(P_s\)</span> has smaller degree, is nonzero in characteristic zero, and is coprime to <span class="math" data-tex="\(P\)">\(P\)</span>. Consider the square linear map
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S(w):(A,B)\longmapsto AP+BP_s,\\
+\qquad
+ \deg_s A&lt;\mu-1,\\
+\quad \deg_s B&lt;\mu,
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+S(w):(A,B)\longmapsto AP+BP_s,\\
+\qquad
+ \deg_s A&lt;\mu-1,\\
+\quad \deg_s B&lt;\mu,
+\end{gathered}
+\tag{3}
+\]</span>
+with target the polynomials of degree less than <span class="math" data-tex="\(2\mu-1\)">\(2\mu-1\)</span>. The first summand is zero when <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span>. In coefficient bases its entries are polynomials in <span class="math" data-tex="\(w\)">\(w\)</span>. Over <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(AP+BP_s=0\)">\(AP+BP_s=0\)</span> implies <span class="math" data-tex="\(P\mid B\)">\(P\mid B\)</span>, then <span class="math" data-tex="\(B=0\)">\(B=0\)</span> by its degree bound, and finally <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. Thus <span class="math" data-tex="\(\det S\)">\(\det S\)</span> is a nonzero polynomial.</p>
+<p>At a parameter with <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the same reasoning shows that <span class="math" data-tex="\(S\)">\(S\)</span> is invertible when the scalar polynomials <span class="math" data-tex="\(P,P_s\)">\(P,P_s\)</span> are coprime. If they have a common root, evaluation at that root is a nonzero functional on the target annihilating the image, so <span class="math" data-tex="\(S\)">\(S\)</span> is singular. The scalar factorization theorem identifies this coprimality with simple roots. When <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(\mu\ge2\)">\(\mu\ge2\)</span>, both terms in (3) have degree at most <span class="math" data-tex="\(2\mu-3\)">\(2\mu-3\)</span>; the coefficient of <span class="math" data-tex="\(s^{2\mu-2}\)">\(s^{2\mu-2}\)</span> is missing and <span class="math" data-tex="\(S\)">\(S\)</span> is singular. For <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span>, its determinant is <span class="math" data-tex="\(a\)">\(a\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ D=a\det S
+ \tag{4}
+\]">\[
+ D=a\det S
+ \tag{4}
+\]</span>
+has exactly the required complement. Multiplying by <span class="math" data-tex="\(a\)">\(a\)</span> introduces no additional excluded parameter.</p>
+<p>We reduce the varying leading coefficient to a monic polynomial without extending the escaping roots through <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(w,y)\\
+=a(w)^{\mu-1}P\bigl(w,y/a(w)\bigr)
+       \\
+=y^\mu+\sum_{j&lt;\mu}a_j(w)a(w)^{\mu-1-j}y^j.
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+R(w,y)\\
+=a(w)^{\mu-1}P\bigl(w,y/a(w)\bigr)
+       \\
+=y^\mu+\sum_{j&lt;\mu}a_j(w)a(w)^{\mu-1-j}y^j.
+\end{gathered}
+\tag{5}
+\]</span>
+This is a polynomial, is monic, and is irreducible over <span class="math" data-tex="\(K\)">\(K\)</span>: the change <span class="math" data-tex="\(s=y/a\)">\(s=y/a\)</span> and multiplication by a nonzero field element preserve irreducibility. It is primitive in <span class="math" data-tex="\(\mathbb C[w][y]\)">\(\mathbb C[w][y]\)</span>, so Gauss's lemma gives irreducibility in <span class="math" data-tex="\(\mathbb C[w,y]\)">\(\mathbb C[w,y]\)</span>. Over <span class="math" data-tex="\(U=\{D\ne0\}\)">\(U=\{D\ne0\}\)</span>, the change <span class="math" data-tex="\(y=a(w)s\)">\(y=a(w)s\)</span> is a holomorphic isomorphism of the two root covers, and all roots of <span class="math" data-tex="\(R\)">\(R\)</span> are simple.</p>
+<p>The base <span class="math" data-tex="\(U\)">\(U\)</span> is path connected. If <span class="math" data-tex="\(w_0,w_1\in U\)">\(w_0,w_1\in U\)</span>, the polynomial <span class="math" data-tex="\(D(w_0+z(w_1-w_0))\)">\(D(w_0+z(w_1-w_0))\)</span> is not identically zero, since it is nonzero at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Its finitely many zeros in the complex <span class="math" data-tex="\(z\)">\(z\)</span>-plane can be avoided by a polygonal path from 0 to 1. This supplies a path in <span class="math" data-tex="\(U\)">\(U\)</span>; equal endpoints need no path construction.</p>
+<p>Simple-root charts continue each root along every compact base path. Indeed, roots of a monic polynomial <span class="math" data-tex="\(y^\mu+\sum_{j&lt;\mu}b_jy^j\)">\(y^\mu+\sum_{j&lt;\mu}b_jy^j\)</span> satisfy
+<span class="math math-display" data-tex="\[
+ |y|\le 1+\max_{j&lt;\mu}|b_j|.
+ \tag{6}
+\]">\[
+ |y|\le 1+\max_{j&lt;\mu}|b_j|.
+ \tag{6}
+\]</span>
+For if <span class="math" data-tex="\(|y|&gt;1+\max|b_j|\)">\(|y|&gt;1+\max|b_j|\)</span>, the geometric sum gives
+<span class="math" data-tex="\(\sum_{j&lt;\mu}|b_jy^j|&lt;|y|^\mu\)">\(\sum_{j&lt;\mu}|b_jy^j|&lt;|y|^\mu\)</span>, contradicting the equation. On a compact path these bounds are uniform. At a limit point, compactness gives a limiting root, which remains simple on <span class="math" data-tex="\(U\)">\(U\)</span> and has a unique local chart. This rules out finite-time failure of continuation. Subdivision into finitely many charts gives uniqueness of path lifting.</p>
+<p>Fix one base point. Loops based there permute its finite root fiber. Suppose an orbit <span class="math" data-tex="\(O\)">\(O\)</span> is proper and nonempty. Continue this subset to every point of <span class="math" data-tex="\(U\)">\(U\)</span>. The subset is independent of the chosen path, because two choices differ by a loop and the orbit is loop invariant. The coefficients of
+<span class="math math-display" data-tex="\[
+ R_O(w,y)=\prod_{\rho\in O(w)}(y-\rho)
+ \tag{7}
+\]">\[
+ R_O(w,y)=\prod_{\rho\in O(w)}(y-\rho)
+ \tag{7}
+\]</span>
+are therefore single-valued and holomorphic on <span class="math" data-tex="\(U\)">\(U\)</span>. Near every excluded parameter, (6) bounds all the roots and hence these symmetric coefficients. The bounded-removal proof in Lemma 3.1 of <a href="AN02-L011.html">Choosing polynomial and exponential approximants</a> extends them holomorphically across <span class="math" data-tex="\(D=0\)">\(D=0\)</span>.</p>
+<p>The polynomial coefficients of <span class="math" data-tex="\(R\)">\(R\)</span> and (6) also give global bounds <span class="math" data-tex="\(C(1+|w|)^L\)">\(C(1+|w|)^L\)</span> for the extended coefficients of <span class="math" data-tex="\(R_O\)">\(R_O\)</span>, for some finite <span class="math" data-tex="\(L\)">\(L\)</span>. The polydisk Cauchy estimate makes every derivative of order greater than <span class="math" data-tex="\(L\)">\(L\)</span> at the origin zero: bound the derivative on a polydisk of radius <span class="math" data-tex="\(r\)">\(r\)</span> by a constant times <span class="math" data-tex="\(r^{L-|\alpha|}\)">\(r^{L-|\alpha|}\)</span>, then let <span class="math" data-tex="\(r\)">\(r\)</span> tend to infinity. Its Taylor series is consequently a polynomial. Apply the same argument to the complementary root subset. Their product equals <span class="math" data-tex="\(R\)">\(R\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, and polynomial identity makes it equal everywhere. Both factors have positive <span class="math" data-tex="\(y\)">\(y\)</span>-degree. This contradicts irreducibility.</p>
+<p>The loop action is thus transitive. Path lifting in the connected base, followed by a loop if needed to select its endpoint root, joins any two points of the cover. This proves connectedness. Finally, each simple-root chart identifies the cover locally with an open subset of <span class="math" data-tex="\(\mathbb C^\ell\)">\(\mathbb C^\ell\)</span>. The holomorphic identity principle in these charts propagates vanishing along the finite chart chain of any path, proving the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When there is no parameter variable, an irreducible polynomial in <span class="math" data-tex="\(\mathbb C[s]\)">\(\mathbb C[s]\)</span> is linear, so its root cover is a single point. This scalar endpoint requires no monodromy argument.</p>
+<h2 id="a-finite-cover-at-infinity">A finite cover at infinity</h2>
+<p>Write <span class="math" data-tex="\(P_m=F\)">\(P_m=F\)</span> for the homogeneous part of total degree <span class="math" data-tex="\(m\)">\(m\)</span>. In this section <span class="math" data-tex="\(P\)">\(P\)</span> need not be irreducible. Its variables are <span class="math" data-tex="\((\zeta,s)\in\mathbb C^d\times\mathbb C\)">\((\zeta,s)\in\mathbb C^d\times\mathbb C\)</span>, <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>.</p>
+<p><strong>Lemma 2.</strong> Suppose <span class="math" data-tex="\(e\in\mathbb R^d\)">\(e\in\mathbb R^d\)</span> satisfies <span class="math" data-tex="\(F(e,0)\ne0\)">\(F(e,0)\ne0\)</span>, and <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is a root of <span class="math" data-tex="\(F(c e,1)\)">\(F(c e,1)\)</span>. For every <span class="math" data-tex="\(\eta\in\mathbb C^d\)">\(\eta\in\mathbb C^d\)</span>, there are an integer <span class="math" data-tex="\(1\le p\le m!\)">\(1\le p\le m!\)</span>, an exterior radius, and a holomorphic function <span class="math" data-tex="\(t(w)\)">\(t(w)\)</span> on that exterior such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P\bigl(t(w)e+\eta,w^p\bigr)=0,\\
+\qquad
+ t(w)=c_0w^p+O(|w|^{p-1})
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+P\bigl(t(w)e+\eta,w^p\bigr)=0,\\
+\qquad
+ t(w)=c_0w^p+O(|w|^{p-1})
+\end{gathered}
+\tag{8}
+\]</span>
+uniformly for all arguments of <span class="math" data-tex="\(w\)">\(w\)</span>. Repeated roots of the restricted polynomial are permitted.</p>
+<p><strong>Proof.</strong> Introduce the polynomial
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(v,z)\\
+=z^mP\bigl(z^{-1}(v e+z\eta),z^{-1}\bigr)
+       \\
+=\sum_{j=0}^{m}z^{m-j}P_j(v e+z\eta,1).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+G(v,z)\\
+=z^mP\bigl(z^{-1}(v e+z\eta),z^{-1}\bigr)
+       \\
+=\sum_{j=0}^{m}z^{m-j}P_j(v e+z\eta,1).
+\end{gathered}
+\tag{9}
+\]</span>
+The second expression defines it also at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Its degree in <span class="math" data-tex="\(v\)">\(v\)</span> is <span class="math" data-tex="\(m\)">\(m\)</span>, with constant nonzero leading coefficient <span class="math" data-tex="\(F(e,0)\)">\(F(e,0)\)</span>, and <span class="math" data-tex="\(G(v,0)=F(v e,1)\)">\(G(v,0)=F(v e,1)\)</span>. Divide by this leading coefficient for the following monic root bounds.</p>
+<p>Over <span class="math" data-tex="\(\mathbb C(z)\)">\(\mathbb C(z)\)</span>, form the monic squarefree part
+<span class="math math-display" data-tex="\[
+ q(v,z)=G(v,z)/\gcd(G,G_v).
+ \tag{10}
+\]">\[
+ q(v,z)=G(v,z)/\gcd(G,G_v).
+ \tag{10}
+\]</span>
+Here the normalized monic <span class="math" data-tex="\(G\)">\(G\)</span> is understood; the gcd is monic. Its degree <span class="math" data-tex="\(r\)">\(r\)</span> is between 1 and <span class="math" data-tex="\(m\)">\(m\)</span>. Its coefficients are rational functions of <span class="math" data-tex="\(z\)">\(z\)</span>, and its discriminant is a nonzero rational function, since it is squarefree in characteristic zero. Choose a sufficiently small punctured disk so that none of their poles or nonzero discriminant zeros occurs there. At every point of this punctured disk the roots of <span class="math" data-tex="\(q\)">\(q\)</span> are exactly the distinct roots of <span class="math" data-tex="\(G\)">\(G\)</span>. The monic bound (6), applied to <span class="math" data-tex="\(G\)">\(G\)</span>, bounds all of them uniformly. The coefficients of <span class="math" data-tex="\(q\)">\(q\)</span>, being elementary symmetric functions of these roots, are bounded too. The one-variable removable-point argument extends them holomorphically at zero. This does not assert that its discriminant is nonzero at zero.</p>
+<p>Choose disjoint small circles around the distinct roots of <span class="math" data-tex="\(G(v,0)\)">\(G(v,0)\)</span>. On each circle, continuity of coefficients makes <span class="math" data-tex="\(G(v,z)\)">\(G(v,z)\)</span> uniformly close to <span class="math" data-tex="\(G(v,0)\)">\(G(v,0)\)</span>. The persistent-cluster proof in Corollary 2.3 of <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a> shows that the number of <span class="math" data-tex="\(G\)">\(G\)</span>-roots inside, counted with multiplicity, is unchanged. No root crosses a circle for sufficiently small <span class="math" data-tex="\(z\)">\(z\)</span>. In particular, the cluster around <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is nonempty. Continuation of a <span class="math" data-tex="\(q\)">\(q\)</span>-root in this cluster remains in it.</p>
+<p>For completeness, the finite-cover step uses only simple-root charts and a path argument. Put <span class="math" data-tex="\(z=\exp h\)">\(z=\exp h\)</span> on the half-plane <span class="math" data-tex="\(\operatorname{Re}h&lt;\log\delta\)">\(\operatorname{Re}h&lt;\log\delta\)</span>. The simple roots of <span class="math" data-tex="\(q\)">\(q\)</span> lift along every path there: on compact paths the coefficients and roots are bounded, and the nonvanishing discriminant gives the limiting simple-root chart, as in Lemma 1. Endpoints of lifts are unchanged by a homotopy with fixed endpoints. To see this, the lift along a fixed path is covered by finitely many simple-root neighborhoods. Subdivide the path so that each segment lies in one such neighborhood. A sufficiently close path has its lift in the same successive charts, and its endpoint varies continuously. For a continuous homotopy on the compact square, repeat this construction in a neighborhood of each homotopy parameter and use a finite subdivision. Endpoints lie in a finite, discrete root fiber, so they are locally constant and hence constant. The half-plane is convex; straight-line homotopies make all paths with the same endpoints homotopic.</p>
+<p>There are therefore <span class="math" data-tex="\(r\)">\(r\)</span> single-valued holomorphic root branches <span class="math" data-tex="\(V_j(h)\)">\(V_j(h)\)</span> on this half-plane. The shift <span class="math" data-tex="\(h\mapsto h+2\pi i\)">\(h\mapsto h+2\pi i\)</span> permutes them. The permutation is the same throughout: at one point it determines the identification of simple-root germs, and uniqueness of continuation propagates that identification. Let <span class="math" data-tex="\(p\)">\(p\)</span> be its order. Then <span class="math" data-tex="\(p\le r!\le m!\)">\(p\le r!\le m!\)</span>, and each branch is invariant under <span class="math" data-tex="\(h\mapsto h+2\pi ip\)">\(h\mapsto h+2\pi ip\)</span>.</p>
+<p>Take a branch in the <span class="math" data-tex="\(c_0\)">\(c_0\)</span> cluster and set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(u)=V(p\log u),\\
+\qquad 0&lt;|u|&lt;\delta^{1/p}.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+v(u)=V(p\log u),\\
+\qquad 0&lt;|u|&lt;\delta^{1/p}.
+\end{gathered}
+\tag{11}
+\]</span>
+Changing the logarithm adds <span class="math" data-tex="\(2\pi ip\)">\(2\pi ip\)</span>, so this is single valued and holomorphic. It is bounded and extends across zero by the removable-point argument. Its value there is <span class="math" data-tex="\(c_0\)">\(c_0\)</span>: any limiting root lies in the chosen cluster and satisfies <span class="math" data-tex="\(G(v,0)=0\)">\(G(v,0)=0\)</span>, and this cluster contains only <span class="math" data-tex="\(c_0\)">\(c_0\)</span> among the distinct roots at zero. Thus <span class="math" data-tex="\(v(u)=c_0+O(|u|)\)">\(v(u)=c_0+O(|u|)\)</span>, uniformly in a small disk, by its convergent Taylor series.</p>
+<p>Finally let <span class="math" data-tex="\(t(w)=w^pv(1/w)\)">\(t(w)=w^pv(1/w)\)</span>. In (9), take <span class="math" data-tex="\(z=w^{-p}\)">\(z=w^{-p}\)</span> and <span class="math" data-tex="\(v=v(1/w)\)">\(v=v(1/w)\)</span>. Equations (10)–(11) give <span class="math" data-tex="\(G(v,z)=0\)">\(G(v,z)=0\)</span>, whence (8). The Taylor estimate gives the asserted remainder uniformly on the entire exterior domain. This proves the branch even when <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span>, when several roots coalesce at zero, or when the original restriction has repeated factors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="removing-vertical-components-on-a-generic-line">Removing vertical components on a generic line</h2>
+<p><strong>Lemma 3.</strong> Let <span class="math" data-tex="\(P(\zeta,s)\)">\(P(\zeta,s)\)</span> be irreducible and of positive <span class="math" data-tex="\(s\)">\(s\)</span>-degree. For each fixed nonzero vector <span class="math" data-tex="\(e\)">\(e\)</span>, there is a nonzero polynomial <span class="math" data-tex="\(E(\eta)\)">\(E(\eta)\)</span> such that, when <span class="math" data-tex="\(E(\eta)\ne0\)">\(E(\eta)\ne0\)</span>, the restricted polynomial
+<span class="math math-display" data-tex="\[
+ P_\eta(t,s)=P(\eta+t e,s)
+ \tag{12}
+\]">\[
+ P_\eta(t,s)=P(\eta+t e,s)
+ \tag{12}
+\]</span>
+has no nonconstant factor depending only on <span class="math" data-tex="\(t\)">\(t\)</span>. Equivalently, its coefficients as a polynomial in <span class="math" data-tex="\(s\)">\(s\)</span> never vanish simultaneously at any <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span>.</p>
+<p><strong>Proof.</strong> Adjoining an independent variable <span class="math" data-tex="\(t\)">\(t\)</span> preserves irreducibility of <span class="math" data-tex="\(P\)">\(P\)</span>: its principal ideal is prime in the polynomial UFD, the quotient is a domain, and a polynomial ring over that quotient remains a domain. The change <span class="math" data-tex="\(\eta\mapsto\eta+t e\)">\(\eta\mapsto\eta+t e\)</span> is a polynomial-ring automorphism, with inverse <span class="math" data-tex="\(\eta\mapsto\eta-t e\)">\(\eta\mapsto\eta-t e\)</span>. Thus (12), viewed with <span class="math" data-tex="\(\eta,t,s\)">\(\eta,t,s\)</span> all independent, is irreducible and has positive <span class="math" data-tex="\(s\)">\(s\)</span>-degree.</p>
+<p>Write its coefficients as <span class="math" data-tex="\(b_j(\eta,t)=a_j(\eta+t e)\)">\(b_j(\eta,t)=a_j(\eta+t e)\)</span>. They have no nonunit common divisor in <span class="math" data-tex="\(\mathbb C[\eta,t]\)">\(\mathbb C[\eta,t]\)</span>, since such a divisor would be a proper factor of the irreducible polynomial. They consequently have gcd 1 in <span class="math" data-tex="\(K[t]\)">\(K[t]\)</span>, <span class="math" data-tex="\(K=\mathbb C(\eta)\)">\(K=\mathbb C(\eta)\)</span>. Indeed, a common nonconstant divisor there has a primitive representative of positive <span class="math" data-tex="\(t\)">\(t\)</span>-degree in <span class="math" data-tex="\(\mathbb C[\eta][t]\)">\(\mathbb C[\eta][t]\)</span>; Gauss divisibility would make this representative divide every <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in that polynomial ring, a contradiction.</p>
+<p>The scalar Euclidean algorithm over <span class="math" data-tex="\(K\)">\(K\)</span>, applied successively to the finitely many nonzero coefficients, gives a Bezout identity. Clear its finitely many denominators in <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to obtain polynomials <span class="math" data-tex="\(B_j\)">\(B_j\)</span> and a nonzero <span class="math" data-tex="\(E\)">\(E\)</span> with
+<span class="math math-display" data-tex="\[
+ \sum_j B_j(\eta,t)a_j(\eta+t e)=E(\eta).
+ \tag{13}
+\]">\[
+ \sum_j B_j(\eta,t)a_j(\eta+t e)=E(\eta).
+ \tag{13}
+\]</span>
+If <span class="math" data-tex="\(E(\eta)\ne0\)">\(E(\eta)\ne0\)</span>, evaluation at any <span class="math" data-tex="\(t\)">\(t\)</span> rules out simultaneous vanishing. A nonconstant polynomial in <span class="math" data-tex="\(t\)">\(t\)</span> has a complex root; divisibility of every coefficient would force simultaneous vanishing there. Conversely, simultaneous vanishing at <span class="math" data-tex="\(t_*\)">\(t_*\)</span> makes <span class="math" data-tex="\(t-t_*\)">\(t-t_*\)</span> divide every coefficient. This proves both formulations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restriction can acquire such a factor at exceptional parameters even if <span class="math" data-tex="\(P\)">\(P\)</span> itself is irreducible. We do not assume that every restricted curve meets the line <span class="math" data-tex="\(t=0\)">\(t=0\)</span>.</p>
+<h2 id="choosing-coordinates-without-losing-the-slab">Choosing coordinates without losing the slab</h2>
+<p>For a homogeneous nonzero polynomial <span class="math" data-tex="\(F\)">\(F\)</span>, we use the following definition. It is hyperbolic with respect to a real vector <span class="math" data-tex="\(N\)">\(N\)</span> if <span class="math" data-tex="\(F(N)\ne0\)">\(F(N)\ne0\)</span> and every root in <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of <span class="math" data-tex="\(F(\xi+\tau N)\)">\(F(\xi+\tau N)\)</span> is real for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Multiplying <span class="math" data-tex="\(F\)">\(F\)</span> by a nonzero scalar or replacing <span class="math" data-tex="\(N\)">\(N\)</span> by a nonzero real multiple preserves this property.</p>
+<p><strong>Lemma 4.</strong> Suppose <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, and the degree-<span class="math" data-tex="\(m\)">\(m\)</span> homogeneous polynomial <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, is not hyperbolic with respect to <span class="math" data-tex="\(N\)">\(N\)</span>. There is a real complementary frequency space to <span class="math" data-tex="\(\mathbb RN\)">\(\mathbb RN\)</span>, with coordinates <span class="math" data-tex="\(\zeta\in\mathbb R^{n-1}\)">\(\zeta\in\mathbb R^{n-1}\)</span>, and an <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span> in that space such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(e,0)\ne0,\\
+\qquad F(c_0 e,1)=0,\\
+\qquad
+ c_0=0\ \text{or}\ \operatorname{Im}c_0\ne0.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+F(e,0)\ne0,\\
+\qquad F(c_0 e,1)=0,\\
+\qquad
+ c_0=0\ \text{or}\ \operatorname{Im}c_0\ne0.
+\end{gathered}
+\tag{14}
+\]</span>
+Here the last frequency coordinate represents <span class="math" data-tex="\(N\)">\(N\)</span>, and the spatial coordinate corresponding to it is exactly <span class="math" data-tex="\(x\cdot N\)">\(x\cdot N\)</span>.</p>
+<p><strong>Proof.</strong> A nonzero complex polynomial cannot vanish on a real open ball: fixing all but one real coordinate and applying the scalar polynomial identity, then successively varying the other coordinates, makes all its coefficients zero. Its real zero set therefore has empty interior. Choose a real <span class="math" data-tex="\(r\)">\(r\)</span> with <span class="math" data-tex="\(F(r)\ne0\)">\(F(r)\ne0\)</span> and <span class="math" data-tex="\(r\notin\mathbb RN\)">\(r\notin\mathbb RN\)</span>. The noncollinearity condition is an open, nonempty condition when <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Choose a real complement <span class="math" data-tex="\(H\)">\(H\)</span> of <span class="math" data-tex="\(\mathbb RN\)">\(\mathbb RN\)</span> containing <span class="math" data-tex="\(r\)">\(r\)</span>; then <span class="math" data-tex="\(F|_H\)">\(F|_H\)</span> is not identically zero.</p>
+<p>If <span class="math" data-tex="\(F(N)=0\)">\(F(N)=0\)</span>, take <span class="math" data-tex="\(e=r\)">\(e=r\)</span> and <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span>. The equations in (14) follow immediately.</p>
+<p>If <span class="math" data-tex="\(F(N)\ne0\)">\(F(N)\ne0\)</span>, failure of hyperbolicity provides a real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and a nonreal root <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(F(\xi+\sigma N)\)">\(F(\xi+\sigma N)\)</span>. Write <span class="math" data-tex="\(\xi=\eta+\alpha N\)">\(\xi=\eta+\alpha N\)</span> with <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span> and <span class="math" data-tex="\(\alpha\in\mathbb R\)">\(\alpha\in\mathbb R\)</span>. The root becomes <span class="math" data-tex="\(\sigma+\alpha\)">\(\sigma+\alpha\)</span>, still nonreal. A small circle around that root, disjoint from the real axis and from the other distinct roots, retains at least one root when <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is perturbed in <span class="math" data-tex="\(H\)">\(H\)</span>: apply the persistent-cluster estimate to <span class="math" data-tex="\(F(\eta+sN)\)">\(F(\eta+sN)\)</span>, whose leading coefficient <span class="math" data-tex="\(F(N)\)">\(F(N)\)</span> is fixed and nonzero. This gives a real open neighborhood with a nonreal root. Within it choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(F(\eta)\ne0\)">\(F(\eta)\ne0\)</span>, using the empty-interior assertion for <span class="math" data-tex="\(F|_H\)">\(F|_H\)</span>. Set <span class="math" data-tex="\(e=\eta\)">\(e=\eta\)</span> and choose one of its nonreal roots <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. It is nonzero. Homogeneity gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(\sigma^{-1}e+N)\\
+=\sigma^{-m}F(e+\sigma N)=0.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+F(\sigma^{-1}e+N)\\
+=\sigma^{-m}F(e+\sigma N)=0.
+\end{gathered}
+\tag{15}
+\]</span>
+Thus <span class="math" data-tex="\(c_0=\sigma^{-1}\)">\(c_0=\sigma^{-1}\)</span> is nonreal and satisfies (14).</p>
+<p>To check the coordinate assertion, let <span class="math" data-tex="\(B\)">\(B\)</span> have a real basis of <span class="math" data-tex="\(H\)">\(H\)</span> as its first <span class="math" data-tex="\(n-1\)">\(n-1\)</span> columns and <span class="math" data-tex="\(N\)">\(N\)</span> as its last column. It is invertible. In physical coordinates <span class="math" data-tex="\((y,t)=B^Tx\)">\((y,t)=B^Tx\)</span>, one has <span class="math" data-tex="\(t=x\cdot N\)">\(t=x\cdot N\)</span>, and <span class="math" data-tex="\(D_x=B D_{(y,t)}\)">\(D_x=B D_{(y,t)}\)</span>. The transformed symbol is <span class="math" data-tex="\(P(B(\zeta,s))\)">\(P(B(\zeta,s))\)</span>, exactly the frequency identification used above. Bounded sets remain bounded under this invertible linear map. Orthogonality of <span class="math" data-tex="\(H\)">\(H\)</span> is neither needed nor imposed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An affine change <span class="math" data-tex="\(t\mapsto4(t-(a+b)/2)/(b-a)\)">\(t\mapsto4(t-(a+b)/2)/(b-a)\)</span>, for finite <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, puts the slab into <span class="math" data-tex="\(-2&lt;t&lt;2\)">\(-2&lt;t&lt;2\)</span>. It replaces the last frequency vector by the positive multiple <span class="math" data-tex="\(4N/(b-a)\)">\(4N/(b-a)\)</span>. The hyperbolicity condition is invariant under this change. We may apply Lemma 4 after it. Coordinate choices for different irreducible factors may differ; each preserves the same physical slab after its own normalization.</p>
+<h2 id="the-smooth-uniqueness-theorem">The smooth uniqueness theorem</h2>
+<p><strong>Theorem 5.</strong> Let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> be a complex polynomial on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(N\in\mathbb R^n\)">\(N\in\mathbb R^n\)</span>, and <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. Suppose that the principal part of every nonconstant irreducible factor of <span class="math" data-tex="\(P\)">\(P\)</span> is not hyperbolic with respect to <span class="math" data-tex="\(N\)">\(N\)</span>. On
+<span class="math math-display" data-tex="\[
+ X=\{x\in\mathbb R^n:a&lt;x\cdot N&lt;b\},
+ \tag{16}
+\]">\[
+ X=\{x\in\mathbb R^n:a&lt;x\cdot N&lt;b\},
+ \tag{16}
+\]</span>
+a distribution <span class="math" data-tex="\(u\)">\(u\)</span> satisfying <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span>, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, and having bounded relative support is zero. No global growth or finite global order of <span class="math" data-tex="\(u\)">\(u\)</span> is assumed.</p>
+<p>We first prove the smooth irreducible case with <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. The remaining cases are treated below.</p>
+<p><strong>Proof for a smooth function and one irreducible factor.</strong> Use Lemma 4 and the affine slab normalization. Write the transformed symbol again as <span class="math" data-tex="\(P(\zeta,s)\)">\(P(\zeta,s)\)</span>, with principal part <span class="math" data-tex="\(F\)">\(F\)</span>, total degree <span class="math" data-tex="\(m\)">\(m\)</span>, and the vector <span class="math" data-tex="\(e\)">\(e\)</span> and root <span class="math" data-tex="\(c_0\)">\(c_0\)</span> in (14). Bounded support gives a fixed spatial ball <span class="math" data-tex="\(\{|y|\le M\}\)">\(\{|y|\le M\}\)</span> containing the support at every <span class="math" data-tex="\(-2&lt;t&lt;2\)">\(-2&lt;t&lt;2\)</span>. Let <span class="math" data-tex="\(U\)">\(U\)</span> be its partial Fourier transform and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(\zeta,s,\lambda)=\frac{P(\zeta,s)-P(\zeta,\lambda)}{s-\lambda},
+ \\
+\qquad W(\zeta,s,t)=Q(\zeta,s,D_t)U(\zeta,t).
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+Q(\zeta,s,\lambda)=\frac{P(\zeta,s)-P(\zeta,\lambda)}{s-\lambda},
+ \\
+\qquad W(\zeta,s,t)=Q(\zeta,s,D_t)U(\zeta,t).
+\end{gathered}
+\tag{17}
+\]</span>
+The fraction denotes a polynomial difference quotient, including at <span class="math" data-tex="\(s=\lambda\)">\(s=\lambda\)</span>. Lemmas A and B of <a href="AN02-L053.html">Fourier windows, sector growth and branched vanishing</a> give entire dependence on <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> and the exact estimate
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|W(\zeta,s,0)|\le
+ C(1+|s|)^{m-1}
+ \\
+\exp\bigl(M|\operatorname{Im}\zeta|-|\operatorname{Im}s|\bigr)
+ \\
+\quad\text{when }P(\zeta,s)=0.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+|W(\zeta,s,0)|\le
+ C(1+|s|)^{m-1}
+ \\
+\exp\bigl(M|\operatorname{Im}\zeta|-|\operatorname{Im}s|\bigr)
+ \\
+\quad\text{when }P(\zeta,s)=0.
+\end{gathered}
+\tag{18}
+\]</span>
+This uses times <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> within the slab and retains the full complex norm, the original spatial radius, and the phase <span class="math" data-tex="\(W(t)=e^{ist}W(0)\)">\(W(t)=e^{ist}W(0)\)</span>.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> has <span class="math" data-tex="\(s\)">\(s\)</span>-degree zero, <span class="math" data-tex="\(P(\zeta)U(\zeta,t)=0\)">\(P(\zeta)U(\zeta,t)=0\)</span>. On the nonempty open set where <span class="math" data-tex="\(P(\zeta)\ne0\)">\(P(\zeta)\ne0\)</span> the transform is zero; the entire identity principle gives zero everywhere, and Schwartz inversion gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. Thus assume its <span class="math" data-tex="\(s\)">\(s\)</span>-degree <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is positive.</p>
+<p>Let <span class="math" data-tex="\(D(\eta)\)">\(D(\eta)\)</span> be the polynomial from Lemma 1 and <span class="math" data-tex="\(E(\eta)\)">\(E(\eta)\)</span> that from Lemma 3. Their product is nonzero, so <span class="math" data-tex="\(\Omega=\{DE\ne0\}\)">\(\Omega=\{DE\ne0\}\)</span> is nonempty and open. Fix <span class="math" data-tex="\(\eta\in\Omega\)">\(\eta\in\Omega\)</span>. Lemma 2 supplies <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(t(w)\)">\(t(w)\)</span> satisfying (8) with our nonreal or zero slope <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. Define
+<span class="math math-display" data-tex="\[
+ f(w)=W\bigl(\eta+t(w)e,w^p,0\bigr).
+ \tag{19}
+\]">\[
+ f(w)=W\bigl(\eta+t(w)e,w^p,0\bigr).
+ \tag{19}
+\]</span>
+It is holomorphic on an exterior domain. Estimate (18) is precisely the hypothesis of Proposition 3 of <a href="AN02-L053.html">Fourier windows, sector growth and branched vanishing</a>, with exponent <span class="math" data-tex="\(a=m-1\)">\(a=m-1\)</span>. Hence <span class="math" data-tex="\(f\)">\(f\)</span> vanishes identically on that exterior domain. This conclusion uses its finite ray cover on all sheets, not just decay along a single ray.</p>
+<p>We now propagate this zero to a root over <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, proving rather than assuming that the chosen branch reaches <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. Factor <span class="math" data-tex="\(P_\eta(t,s)=P(\eta+t e,s)\)">\(P_\eta(t,s)=P(\eta+t e,s)\)</span> into irreducible polynomials <span class="math" data-tex="\(H_i(t,s)\)">\(H_i(t,s)\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Lemma 3 makes every <span class="math" data-tex="\(H_i\)">\(H_i\)</span> have positive <span class="math" data-tex="\(s\)">\(s\)</span>-degree. Since <span class="math" data-tex="\(D(\eta)\ne0\)">\(D(\eta)\ne0\)</span>, <span class="math" data-tex="\(P_\eta(0,s)\)">\(P_\eta(0,s)\)</span> has its full degree <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and simple roots. Addition of <span class="math" data-tex="\(s\)">\(s\)</span>-degrees in the product shows that every <span class="math" data-tex="\(H_i(0,s)\)">\(H_i(0,s)\)</span> has its full <span class="math" data-tex="\(s\)">\(s\)</span>-degree: none of their leading coefficients can vanish at zero. The simple roots of the product also make every factor's roots simple there, and exclude repeated factors.</p>
+<p>The product of the finitely many holomorphic functions <span class="math" data-tex="\(H_i(t(w),w^p)\)">\(H_i(t(w),w^p)\)</span> is zero on the connected exterior. A finite product of holomorphic functions on a connected domain can vanish identically only if one factor does: for a nonzero factor its zero set has empty interior, and the complement is open dense; finitely many such complements have nonempty intersection. Choose <span class="math" data-tex="\(H\)">\(H\)</span> with
+<span class="math math-display" data-tex="\[
+ H(t(w),w^p)=0\quad\text{identically}.
+ \tag{20}
+\]">\[
+ H(t(w),w^p)=0\quad\text{identically}.
+ \tag{20}
+\]</span>
+The function <span class="math" data-tex="\(t(w)\)">\(t(w)\)</span> is nonconstant. Otherwise (8) would make <span class="math" data-tex="\(P_\eta(t_*,s)\)">\(P_\eta(t_*,s)\)</span> vanish for all <span class="math" data-tex="\(s=w^p\)">\(s=w^p\)</span> in an exterior open set, hence vanish as a scalar polynomial. All its coefficients at <span class="math" data-tex="\(t_*\)">\(t_*\)</span> would be zero, contrary to (13).</p>
+<p>Apply Lemma 1 to <span class="math" data-tex="\(H(t,s)\)">\(H(t,s)\)</span>, with the one-dimensional parameter <span class="math" data-tex="\(t\)">\(t\)</span>. Its regular-base polynomial <span class="math" data-tex="\(D_H(t)\)">\(D_H(t)\)</span> satisfies <span class="math" data-tex="\(D_H(0)\ne0\)">\(D_H(0)\ne0\)</span>, by the full degree and simple roots just proved. The nonzero polynomial <span class="math" data-tex="\(D_H\)">\(D_H\)</span> cannot vanish identically on the values of the nonconstant holomorphic <span class="math" data-tex="\(t(w)\)">\(t(w)\)</span>: a continuous map from a connected domain into its finite zero set would be constant. Thus choose <span class="math" data-tex="\(w_*\)">\(w_*\)</span> with <span class="math" data-tex="\(D_H(t(w_*))\ne0\)">\(D_H(t(w_*))\ne0\)</span>. Near that point the root is a simple chart <span class="math" data-tex="\(s=s(t)\)">\(s=s(t)\)</span>, and differentiation of <span class="math" data-tex="\(w^p=s(t(w))\)">\(w^p=s(t(w))\)</span> gives
+<span class="math math-display" data-tex="\[
+ p w^{p-1}=s&#x27;(t(w))t&#x27;(w).
+ \tag{21}
+\]">\[
+ p w^{p-1}=s&#x27;(t(w))t&#x27;(w).
+ \tag{21}
+\]</span>
+Since <span class="math" data-tex="\(w_*\ne0\)">\(w_*\ne0\)</span>, <span class="math" data-tex="\(t&#x27;(w_*)\ne0\)">\(t&#x27;(w_*)\ne0\)</span>. The one-variable inverse-function proof, which is the holomorphic implicit-function proof applied to <span class="math" data-tex="\(t(w)-t_*\)">\(t(w)-t_*\)</span>, gives an open <span class="math" data-tex="\(t\)">\(t\)</span>-neighborhood parametrized by <span class="math" data-tex="\(w\)">\(w\)</span>. Therefore (19) says that the holomorphic function <span class="math" data-tex="\(W(\eta+t e,s,0)\)">\(W(\eta+t e,s,0)\)</span> vanishes on a nonempty open subset of the regular <span class="math" data-tex="\(H\)">\(H\)</span>-cover. Connectedness and the identity assertion in Lemma 1 extend this vanishing to its entire regular cover. In particular it vanishes at every root of <span class="math" data-tex="\(H(0,s)\)">\(H(0,s)\)</span>.</p>
+<p>For this fixed <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, at least one root <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(P(\eta,s)\)">\(P(\eta,s)\)</span> has <span class="math" data-tex="\(W(\eta,s,0)=0\)">\(W(\eta,s,0)=0\)</span>. We have proved this for every <span class="math" data-tex="\(\eta\in\Omega\)">\(\eta\in\Omega\)</span>; we have not yet inferred that every root over each parameter vanishes.</p>
+<p>Take a small connected ball in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> on which the <span class="math" data-tex="\(\mu\)">\(\mu\)</span> roots of <span class="math" data-tex="\(P(\eta,s)\)">\(P(\eta,s)\)</span> have simple holomorphic labels <span class="math" data-tex="\(s_1(\eta),\ldots,s_\mu(\eta)\)">\(s_1(\eta),\ldots,s_\mu(\eta)\)</span>. At every point at least one of the functions <span class="math" data-tex="\(W(\eta,s_j(\eta),0)\)">\(W(\eta,s_j(\eta),0)\)</span> is zero, so
+<span class="math math-display" data-tex="\[
+ \prod_{j=1}^{\mu}W(\eta,s_j(\eta),0)=0
+ \tag{22}
+\]">\[
+ \prod_{j=1}^{\mu}W(\eta,s_j(\eta),0)=0
+ \tag{22}
+\]</span>
+on the ball. The same finite-product argument makes one factor identically zero on the ball. We thus obtain a nonempty open subset of the global regular <span class="math" data-tex="\(P\)">\(P\)</span>-cover on which <span class="math" data-tex="\(W(\zeta,s,0)\)">\(W(\zeta,s,0)\)</span> is zero. Lemma 1 now propagates its zero to the whole connected cover.</p>
+<p>All roots over every <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> with <span class="math" data-tex="\(D(\zeta)\ne0\)">\(D(\zeta)\ne0\)</span> consequently have zero <span class="math" data-tex="\(W(\zeta,s,0)\)">\(W(\zeta,s,0)\)</span>. Lemma C of <a href="AN02-L053.html">Fourier windows, sector growth and branched vanishing</a>, with the full leading coefficient in its interpolation formula, gives <span class="math" data-tex="\(U(\zeta,t)=0\)">\(U(\zeta,t)=0\)</span> for all times. This set of parameters is dense: a nonzero polynomial has no complex open zero set. Continuity, or the entire identity principle, gives <span class="math" data-tex="\(U=0\)">\(U=0\)</span> also at all exceptional parameters, including those where the leading coefficient vanishes or the fiber is identically zero. For each real <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(u(\cdot,t)\)">\(u(\cdot,t)\)</span> is smooth and compactly supported, hence Schwartz. Exact Schwartz inversion gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="products-distributions-and-degenerate-endpoints">Products, distributions and degenerate endpoints</h2>
+<p><strong>Completion of Theorem 5.</strong> Unique factorization writes a nonconstant polynomial as
+<span class="math math-display" data-tex="\[
+ P=c\prod_{j=1}^{k}q_j^{\,e_j},\qquad
+ c\ne0,\quad e_j\ge1,
+ \tag{23}
+\]">\[
+ P=c\prod_{j=1}^{k}q_j^{\,e_j},\qquad
+ c\ne0,\quad e_j\ge1,
+ \tag{23}
+\]</span>
+with nonconstant irreducible <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. For a smooth bounded-support solution, remove one factor at a time. If <span class="math" data-tex="\(P=qR\)">\(P=qR\)</span>, put <span class="math" data-tex="\(v=R(D)u\)">\(v=R(D)u\)</span>. Derivatives do not enlarge relative support, so <span class="math" data-tex="\(v\)">\(v\)</span> is smooth and has bounded support in the same slab. Since <span class="math" data-tex="\(q(D)v=0\)">\(q(D)v=0\)</span>, the irreducible case gives <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. Repeat for the remaining factors, including every repeated copy in (23). A final nonzero constant operator is injective. This proves the smooth theorem for <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>Let <span class="math" data-tex="\(u\)">\(u\)</span> now be a distribution, with <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> and finite <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. Choose a smooth compactly supported approximate identity
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho\in C_c^\infty(\mathbb R^n),\\
+\quad
+ \operatorname{supp}\rho\subset\{|x|\le1\},\\
+\quad
+ \int\rho=1,\\
+\qquad
+ \rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon).
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+\rho\in C_c^\infty(\mathbb R^n),\\
+\quad
+ \operatorname{supp}\rho\subset\{|x|\le1\},\\
+\quad
+ \int\rho=1,\\
+\qquad
+ \rho_\varepsilon(x)=\varepsilon^{-n}\rho(x/\varepsilon).
+\end{gathered}
+\tag{24}
+\]</span>
+Its existence follows from the written cutoff construction and normalization by its positive integral. For
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_\varepsilon=
+ \{x:a+\varepsilon|N|\\
+&lt;x\cdot N&lt;b-\varepsilon|N|\}
+\end{gathered}
+\tag{25}
+\]">\[
+\begin{gathered}
+X_\varepsilon=
+ \{x:a+\varepsilon|N|\\
+&lt;x\cdot N&lt;b-\varepsilon|N|\}
+\end{gathered}
+\tag{25}
+\]</span>
+and sufficiently small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, define
+<span class="math math-display" data-tex="\[
+ u_\varepsilon(x)=\langle u(z),\rho_\varepsilon(x-z)\rangle .
+ \tag{26}
+\]">\[
+ u_\varepsilon(x)=\langle u(z),\rho_\varepsilon(x-z)\rangle .
+ \tag{26}
+\]</span>
+The test support is compactly contained in <span class="math" data-tex="\(X\)">\(X\)</span> for each such <span class="math" data-tex="\(x\)">\(x\)</span>. On every relatively compact part of <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span>, all these tests have a common compact support in <span class="math" data-tex="\(X\)">\(X\)</span>. The proper-convolution/smoothing proof in <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> applies there after inserting a cutoff equal to one on that compact support. Its result is independent of the cutoff, and its local results agree on overlaps. Thus <span class="math" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> is smooth. Direct test differentiation also gives <span class="math" data-tex="\(P(D_x)u_\varepsilon=\langle P(D_z)u,\rho_\varepsilon(x-z)\rangle=0\)">\(P(D_x)u_\varepsilon=\langle P(D_z)u,\rho_\varepsilon(x-z)\rangle=0\)</span>: distributional transposition and <span class="math" data-tex="\(\partial_z\rho_\varepsilon(x-z)=-\partial_x\rho_\varepsilon(x-z)\)">\(\partial_z\rho_\varepsilon(x-z)=-\partial_x\rho_\varepsilon(x-z)\)</span> cancel their signs, with <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> unchanged.</p>
+<p>If <span class="math" data-tex="\(K=\operatorname{supp}_X u\)">\(K=\operatorname{supp}_X u\)</span> is bounded, <span class="math" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> is zero wherever its test support is disjoint from <span class="math" data-tex="\(K\)">\(K\)</span>. Its relative support in <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span> is therefore contained in the bounded set <span class="math" data-tex="\(\overline K+\{|x|\le\varepsilon\}\)">\(\overline K+\{|x|\le\varepsilon\}\)</span>. The already proved smooth theorem on the finite inner slab <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span> gives <span class="math" data-tex="\(u_\varepsilon=0\)">\(u_\varepsilon=0\)</span>.</p>
+<p>For any fixed <span class="math" data-tex="\(\phi\in C_c^\infty(X)\)">\(\phi\in C_c^\infty(X)\)</span>, choose <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> small enough that its support and all the convolution tests below remain inside <span class="math" data-tex="\(X_\varepsilon\)">\(X_\varepsilon\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span>, respectively. Proper convolution, equivalently integration of the smooth compactly supported test family against the distribution, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0=\langle u_\varepsilon,\phi\rangle
+   \\
+=\langle u,\phi*\check\rho_\varepsilon\rangle,
+ \\
+\qquad \check\rho_\varepsilon(x)=\rho_\varepsilon(-x).
+\end{gathered}
+\tag{27}
+\]">\[
+\begin{gathered}
+0=\langle u_\varepsilon,\phi\rangle
+   \\
+=\langle u,\phi*\check\rho_\varepsilon\rangle,
+ \\
+\qquad \check\rho_\varepsilon(x)=\rho_\varepsilon(-x).
+\end{gathered}
+\tag{27}
+\]</span>
+All <span class="math" data-tex="\(\phi*\check\rho_\varepsilon\)">\(\phi*\check\rho_\varepsilon\)</span> have support in one fixed compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>. For every multi-index <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial^\alpha(\phi*\check\rho_\varepsilon-\phi)(z)
+  \\
+=\int\rho(y)
+       \bigl[\partial^\alpha\phi(z+\varepsilon y)
+                         \\
+-\partial^\alpha\phi(z)\bigr]\,dy
+       \\
+\longrightarrow0
+\end{gathered}
+\tag{28}
+\]">\[
+\begin{gathered}
+\partial^\alpha(\phi*\check\rho_\varepsilon-\phi)(z)
+  \\
+=\int\rho(y)
+       \bigl[\partial^\alpha\phi(z+\varepsilon y)
+                         \\
+-\partial^\alpha\phi(z)\bigr]\,dy
+       \\
+\longrightarrow0
+\end{gathered}
+\tag{28}
+\]</span>
+uniformly in <span class="math" data-tex="\(z\)">\(z\)</span>, by uniform continuity of the compactly supported smooth derivative and the finite integral of <span class="math" data-tex="\(|\rho|\)">\(|\rho|\)</span>. This is convergence in the fixed-support test-function topology. The distribution is continuous on this space; (27) therefore gives <span class="math" data-tex="\(\langle u,\phi\rangle=0\)">\(\langle u,\phi\rangle=0\)</span>. All tests <span class="math" data-tex="\(\phi\)">\(\phi\)</span> were arbitrary, so <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. There is no extension of <span class="math" data-tex="\(u\)">\(u\)</span> across either slab endpoint, and no assumption on its behavior near those endpoints.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is a nonzero constant, <span class="math" data-tex="\(P(D)u=Pu\)">\(P(D)u=Pu\)</span> is already injective. If <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, every nonconstant irreducible polynomial is linear. Its principal part is a nonzero multiple of the one frequency coordinate, which is hyperbolic with respect to any such <span class="math" data-tex="\(N\)">\(N\)</span>. The theorem's hypothesis therefore allows only the constant case.</p>
+<p>If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the slab is empty unless <span class="math" data-tex="\(a&lt;0&lt;b\)">\(a&lt;0&lt;b\)</span>. An empty-domain distribution is zero. In the other case <span class="math" data-tex="\(X=\mathbb R^n\)">\(X=\mathbb R^n\)</span>; bounded relative support is closed and bounded in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, hence compact. The compact-support hull corollary <a href="prerequisites/convex-supports-and-convolution-cancellation.html">Convex supports and convolution cancellation</a>, Corollary 4.3, with the <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> convention, says a nonzero constant-coefficient polynomial is injective on compactly supported distributions. It gives <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, without using a directional coordinate or the factor hypothesis. In dimension zero a nonzero polynomial is a constant and is handled by that scalar case.</p>
+<p>The statement was made for finite real <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>. If an endpoint is allowed to be infinite, restriction to every finite inner slab has bounded relative support and the same equation. The theorem on those slabs proves zero on their union. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: a root escaping through a leading coefficient.</strong> For <span class="math" data-tex="\(P(w,s)=ws-1\)">\(P(w,s)=ws-1\)</span>, compute the polynomial <span class="math" data-tex="\(D\)">\(D\)</span>, the monic rescaling, and the regular cover in Lemma 1. Explain why connectedness does not mean that its root extends through <span class="math" data-tex="\(w=0\)">\(w=0\)</span>.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(\mu=1\)">\(\mu=1\)</span>, <span class="math" data-tex="\(a=w\)">\(a=w\)</span>, and <span class="math" data-tex="\(P_s=w\)">\(P_s=w\)</span>. In (3), <span class="math" data-tex="\(A=0\)">\(A=0\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> is constant, so <span class="math" data-tex="\(S\)">\(S\)</span> is multiplication by <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(\det S=w\)">\(\det S=w\)</span>. Thus <span class="math" data-tex="\(D=w^2\)">\(D=w^2\)</span>. Formula (5) gives <span class="math" data-tex="\(R(w,y)=y-1\)">\(R(w,y)=y-1\)</span>, since <span class="math" data-tex="\(y=ws\)">\(y=ws\)</span>. The regular cover is
+<span class="math math-display" data-tex="\[
+ \{(w,1/w):w\in\mathbb C\setminus\{0\}\}.
+ \tag{29}
+\]">\[
+ \{(w,1/w):w\in\mathbb C\setminus\{0\}\}.
+ \tag{29}
+\]</span>
+Its projection is a holomorphic isomorphism to the punctured plane, which is path connected. Its original root <span class="math" data-tex="\(s=1/w\)">\(s=1/w\)</span> has a pole at zero and does not extend there as a finite root. The rescaled root <span class="math" data-tex="\(y=1\)">\(y=1\)</span> does extend, exactly as the monic argument needs. An entire transformed solution <span class="math" data-tex="\(U(w,t)\)">\(U(w,t)\)</span> which vanishes for all <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span> vanishes also at <span class="math" data-tex="\(w=0\)">\(w=0\)</span> by continuity; this final parameter continuation concerns <span class="math" data-tex="\(U\)">\(U\)</span>, not extension of the escaping root.</p>
+<p><strong>Exercise 2 — intermediate: a zero leading slope.</strong> For <span class="math" data-tex="\(P(t,s)=t^2+s+1\)">\(P(t,s)=t^2+s+1\)</span>, construct the branch in Lemma 2 with <span class="math" data-tex="\(e=1\)">\(e=1\)</span>, <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>, and <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span>. Check its uniform asymptotic estimate and explain why the twofold cover is natural.</p>
+<p><strong>Solution.</strong> The total degree is 2 and <span class="math" data-tex="\(F(t,s)=t^2\)">\(F(t,s)=t^2\)</span>. Thus <span class="math" data-tex="\(F(1,0)=1\)">\(F(1,0)=1\)</span> and <span class="math" data-tex="\(F(c,1)=c^2\)">\(F(c,1)=c^2\)</span>, with root <span class="math" data-tex="\(c_0=0\)">\(c_0=0\)</span>. Equation (9) gives <span class="math" data-tex="\(G(v,z)=v^2+z+z^2\)">\(G(v,z)=v^2+z+z^2\)</span>. For <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> close to zero its two roots are distinct; both approach zero as <span class="math" data-tex="\(z\to0\)">\(z\to0\)</span>. Their continuation once around zero exchanges them. This can be seen by writing a root as <span class="math" data-tex="\(i\sqrt z\,\sqrt{1+z}\)">\(i\sqrt z\,\sqrt{1+z}\)</span>, where the second square root has its single-valued branch near 1 and the first changes sign once around zero. The monodromy permutation has order 2.</p>
+<p>Take <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(s=w^2\)">\(s=w^2\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t(w)=iw\sqrt{1+w^{-2}},
+ \\
+\qquad
+ t(w)^2+w^2+1=0.
+\end{gathered}
+\tag{30}
+\]">\[
+\begin{gathered}
+t(w)=iw\sqrt{1+w^{-2}},
+ \\
+\qquad
+ t(w)^2+w^2+1=0.
+\end{gathered}
+\tag{30}
+\]</span>
+The square root in this expression is the holomorphic branch near 1 with value 1, supplied by the simple-root implicit-function proof. Its Taylor series gives
+<span class="math" data-tex="\(t(w)=iw+i/(2w)+O(|w|^{-3})\)">\(t(w)=iw+i/(2w)+O(|w|^{-3})\)</span>, uniformly for all sufficiently large <span class="math" data-tex="\(w\)">\(w\)</span>, in every direction. In particular <span class="math" data-tex="\(t(w)=0\cdot w^2+O(|w|)\)">\(t(w)=0\cdot w^2+O(|w|)\)</span>, the exact <span class="math" data-tex="\(p=2,c_0=0\)">\(p=2,c_0=0\)</span> case of (8), and <span class="math" data-tex="\(t(w)/w^2\to0\)">\(t(w)/w^2\to0\)</span>. The vanishing adapter does not require a nonzero slope: its zero-slope case compares an <span class="math" data-tex="\(O(|w|)\)">\(O(|w|)\)</span> spatial displacement with the order-<span class="math" data-tex="\(|w|^2\)">\(|w|^2\)</span> time-frequency term and then covers all sheet arguments.</p>
+<p><strong>Exercise 3 — advanced: repeated factors and the hypothesis on each factor.</strong> In two frequency variables <span class="math" data-tex="\((\zeta,s)\)">\((\zeta,s)\)</span>, apply Theorem 5 with normal in the <span class="math" data-tex="\(s\)">\(s\)</span>-direction to
+<span class="math math-display" data-tex="\[
+ P(\zeta,s)=(s+i\zeta)^2(\zeta^2+s^2+1).
+ \tag{31}
+\]">\[
+ P(\zeta,s)=(s+i\zeta)^2(\zeta^2+s^2+1).
+ \tag{31}
+\]</span>
+Then show that adjoining the factor <span class="math" data-tex="\(s-\zeta\)">\(s-\zeta\)</span> permits a nonzero smooth solution with bounded relative support on every finite time slab.</p>
+<p><strong>Solution.</strong> The linear factor <span class="math" data-tex="\(s+i\zeta\)">\(s+i\zeta\)</span> is irreducible, and its principal part has the nonreal root <span class="math" data-tex="\(s=-i\zeta\)">\(s=-i\zeta\)</span> for real <span class="math" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span>; hence it is not hyperbolic with respect to the time normal. The quadratic is irreducible. Indeed, it is monic in <span class="math" data-tex="\(s\)">\(s\)</span>; reducibility over <span class="math" data-tex="\(\mathbb C(\zeta)\)">\(\mathbb C(\zeta)\)</span> would give a rational square root of <span class="math" data-tex="\(-(\zeta^2+1)\)">\(-(\zeta^2+1)\)</span>. The zero at <span class="math" data-tex="\(\zeta=i\)">\(\zeta=i\)</span> is simple, whereas every square of a rational function has even zero or pole order: write its numerator and denominator as products of scalar linear factors and double their multiplicities. This is impossible. Gauss's lemma then gives irreducibility in <span class="math" data-tex="\(\mathbb C[\zeta,s]\)">\(\mathbb C[\zeta,s]\)</span>. Its principal part <span class="math" data-tex="\(\zeta^2+s^2\)">\(\zeta^2+s^2\)</span> has roots <span class="math" data-tex="\(s=\pm i\zeta\)">\(s=\pm i\zeta\)</span>, again nonreal for real <span class="math" data-tex="\(\zeta\ne0\)">\(\zeta\ne0\)</span>. Theorem 5 applies to all three copies of these factors. Any bounded-relative-support distributional solution of <span class="math" data-tex="\(P(D)u=0\)">\(P(D)u=0\)</span> on the slab is zero.</p>
+<p>For the enlarged polynomial <span class="math" data-tex="\((s-\zeta)P\)">\((s-\zeta)P\)</span>, choose a nonzero <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R)\)">\(f\in C_c^\infty(\mathbb R)\)</span> and set <span class="math" data-tex="\(u(y,t)=f(y+t)\)">\(u(y,t)=f(y+t)\)</span>. Then <span class="math" data-tex="\((D_t-D_y)u=-if&#x27;(y+t)+if&#x27;(y+t)=0\)">\((D_t-D_y)u=-if&#x27;(y+t)+if&#x27;(y+t)=0\)</span>. Constant-coefficient operators commute, so the enlarged product also annihilates <span class="math" data-tex="\(u\)">\(u\)</span>. On a finite slab <span class="math" data-tex="\(a&lt;t&lt;b\)">\(a&lt;t&lt;b\)</span>, its support lies where <span class="math" data-tex="\(y+t\in\operatorname{supp}f\)">\(y+t\in\operatorname{supp}f\)</span>. Both <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> are bounded there, so its relative support is bounded. This is a nonzero solution. The new factor's principal part <span class="math" data-tex="\(s-\zeta\)">\(s-\zeta\)</span> is hyperbolic with respect to the time normal, with the real root <span class="math" data-tex="\(s=\zeta\)">\(s=\zeta\)</span>. The example verifies the need to impose the condition on every nonconstant factor, including when other factors already satisfy the condition.</p>
+<h2 id="the-equivalent-factorwise-condition">The equivalent factorwise condition</h2>
+<p>Excluding every nonconstant factor with hyperbolic principal part is equivalent to the irreducible-factor hypothesis. If a product of principal parts were hyperbolic, its value at <span class="math" data-tex="\(N\)">\(N\)</span> would be nonzero, so every constituent would be nonzero there. At every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, every root of each constituent <span class="math" data-tex="\(F_j(\xi+\tau N)\)">\(F_j(\xi+\tau N)\)</span> is also a root of their product. All these roots would therefore be real, making every constituent hyperbolic. Thus a product involving any of our nonhyperbolic constituents cannot acquire a hyperbolic principal part. The reverse implication follows by taking a single irreducible factor. Nonzero constant factors carry no positive-degree hyperbolicity condition.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

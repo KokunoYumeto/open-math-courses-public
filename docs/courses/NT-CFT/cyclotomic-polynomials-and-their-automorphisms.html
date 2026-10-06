@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyclotomic polynomials and their automorphisms</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+
+<link rel="stylesheet" href="runtime/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="runtime/mathjax/tex-chtml-full.js"></script>
+</head><body><main id="main"><nav><a href="index.html">Class field theory</a> · <a href="free-proofs.html">Human proof sources</a> · <a href="later-material.html">Release scope</a></nav><article class="lesson"><h1 id="cyclotomic-polynomials-and-their-automorphisms">Cyclotomic polynomials and their automorphisms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is pending. Public domain (CC0).</em></p>
+<p>A supporting excerpt: definitions and the complete Theorem 12.1 proof, not the full parent lesson.</p>
+<p>Fix the complex embedding and write
+<span class="math math-display" data-tex="\[
+\zeta_n=e^{2\pi i/n},\qquad K_n=\mathbf Q(\zeta_n),\qquad
+U_n=(\mathbf Z/n\mathbf Z)^\times.
+\tag{1}
+\]">\[
+\zeta_n=e^{2\pi i/n},\qquad K_n=\mathbf Q(\zeta_n),\qquad
+U_n=(\mathbf Z/n\mathbf Z)^\times.
+\tag{1}
+\]</span>
+We take <span class="math" data-tex="\(U_1\)">\(U_1\)</span> to be the trivial group and <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span>. Both <span class="math" data-tex="\(K_1\)">\(K_1\)</span> and <span class="math" data-tex="\(K_2\)">\(K_2\)</span> are <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>.</p>
+<h2 id="cyclotomic-polynomials-and-their-automorphisms-2">Cyclotomic polynomials and their automorphisms</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\(a,n)=1}}(X-\zeta_n^a).
+\]">\[
+\Phi_n(X)=\prod_{\substack{1\leq a\leq n\\(a,n)=1}}(X-\zeta_n^a).
+\]</span>
+Grouping roots by their exact orders gives
+<span class="math math-display" data-tex="\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]">\[
+X^n-1=\prod_{d\mid n}\Phi_d(X).
+\tag{2}
+\]</span>
+Inductively, every <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> is monic and integral. Indeed, divide <span class="math" data-tex="\(X^n-1\)">\(X^n-1\)</span> by the product of the already integral monic factors for proper divisors. Monic division has integer quotient and remainder; the identity over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> makes that remainder zero.</p>
+<p><strong>Monic factor lemma.</strong> If a monic polynomial in <span class="math" data-tex="\(\mathbf Z[X]\)">\(\mathbf Z[X]\)</span> is a product of two monic polynomials <span class="math" data-tex="\(f,g\in\mathbf Q[X]\)">\(f,g\in\mathbf Q[X]\)</span>, then <span class="math" data-tex="\(f,g\in\mathbf Z[X]\)">\(f,g\in\mathbf Z[X]\)</span>.</p>
+<p><strong>Proof.</strong> After clearing denominators and dividing the resulting coefficients by their greatest common divisor, write <span class="math" data-tex="\(f_0=af\)">\(f_0=af\)</span>, <span class="math" data-tex="\(g_0=bg\)">\(g_0=bg\)</span>, where <span class="math" data-tex="\(f_0,g_0\)">\(f_0,g_0\)</span> are primitive integer polynomials and <span class="math" data-tex="\(a,b\)">\(a,b\)</span> are positive integers: they are the leading coefficients because <span class="math" data-tex="\(f,g\)">\(f,g\)</span> are monic. The product of two primitive polynomials is primitive. Indeed, for each prime <span class="math" data-tex="\(p\)">\(p\)</span> their reductions are nonzero polynomials over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>; the product is nonzero because that polynomial ring is a domain. Thus no prime divides every coefficient of the product. But <span class="math" data-tex="\(f_0g_0=abfg\)">\(f_0g_0=abfg\)</span> has coefficient greatest common divisor <span class="math" data-tex="\(ab\)">\(ab\)</span>, since <span class="math" data-tex="\(fg\)">\(fg\)</span> is monic and integral. Consequently <span class="math" data-tex="\(ab=1\)">\(ab=1\)</span>, so both factors were integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 12.1.</strong> The polynomial <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span> is irreducible over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Its degree is <span class="math" data-tex="\(\varphi(n)\)">\(\varphi(n)\)</span>, and the map
+<span class="math math-display" data-tex="\[
+U_n\xrightarrow{\sim}\operatorname{Gal}(K_n/\mathbf Q),
+\qquad a\longmapsto\sigma_a,\quad \sigma_a(\zeta_n)=\zeta_n^a
+\tag{3}
+\]">\[
+U_n\xrightarrow{\sim}\operatorname{Gal}(K_n/\mathbf Q),
+\qquad a\longmapsto\sigma_a,\quad \sigma_a(\zeta_n)=\zeta_n^a
+\tag{3}
+\]</span>
+is an isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be the monic minimal polynomial of <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>. It divides the monic integral polynomial <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span>; the monic factor lemma makes its coefficients integers. Suppose <span class="math" data-tex="\(p\nmid n\)">\(p\nmid n\)</span> is prime and <span class="math" data-tex="\(\zeta_n^p\)">\(\zeta_n^p\)</span> is not a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Let <span class="math" data-tex="\(g\)">\(g\)</span> be its monic minimal polynomial, a distinct irreducible factor of <span class="math" data-tex="\(\Phi_n\)">\(\Phi_n\)</span>. Since <span class="math" data-tex="\(g(\zeta_n^p)=0\)">\(g(\zeta_n^p)=0\)</span>, we have <span class="math" data-tex="\(f(X)\mid g(X^p)\)">\(f(X)\mid g(X^p)\)</span> in <span class="math" data-tex="\(\mathbf Z[X]\)">\(\mathbf Z[X]\)</span>.</p>
+<p>Reduce modulo <span class="math" data-tex="\(p\)">\(p\)</span>. The identity <span class="math" data-tex="\(g(X^p)=g(X)^p\)">\(g(X^p)=g(X)^p\)</span> there shows that any irreducible factor of <span class="math" data-tex="\(\overline f\)">\(\overline f\)</span> also divides <span class="math" data-tex="\(\overline g\)">\(\overline g\)</span>. Since <span class="math" data-tex="\(fg\mid X^n-1\)">\(fg\mid X^n-1\)</span>, the latter polynomial would have a repeated factor modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Its derivative <span class="math" data-tex="\(nX^{n-1}\)">\(nX^{n-1}\)</span> is relatively prime to it, which is a contradiction.</p>
+<p>The same argument works for any primitive root that is already a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Every positive integer <span class="math" data-tex="\(a\)">\(a\)</span> coprime to <span class="math" data-tex="\(n\)">\(n\)</span> is a product of primes not dividing <span class="math" data-tex="\(n\)">\(n\)</span>. Repeated application therefore puts every <span class="math" data-tex="\(\zeta_n^a\)">\(\zeta_n^a\)</span> among the roots of <span class="math" data-tex="\(f\)">\(f\)</span>. Thus <span class="math" data-tex="\(f=\Phi_n\)">\(f=\Phi_n\)</span>. All these roots lie in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>; sending <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> to any one of them defines an automorphism. Composition multiplies exponents, proving (3). The cases <span class="math" data-tex="\(n=1,2\)">\(n=1,2\)</span> are linear polynomials and trivial groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The isomorphism (3) follows from the action on roots of unity. Throughout this lesson Frobenius means the <strong>arithmetic</strong> automorphism acting on residue fields by <span class="math" data-tex="\(x\mapsto x^p\)">\(x\mapsto x^p\)</span>.</p>
+<h2 id="references">References</h2>
+<p>The cyclotomic irreducibility argument is compared with J. S. Milne’s freely available <a href="https://www.jmilne.org/math/CourseNotes/FT.pdf">Fields and Galois Theory</a>, section on cyclotomic extensions, and <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">Algebraic Number Theory</a>. The monic factor argument and complete Theorem 12.1 proof are written above.</p>
+<p><a href="src/cyclotomic-polynomials-and-their-automorphisms.md">Editable supporting source</a> · <a download href="files/cyclotomic-polynomials-and-their-automorphisms.tex">Complete LaTeX source</a> · <a href="licence.html">Attribution and use</a></p></article></main></body></html>

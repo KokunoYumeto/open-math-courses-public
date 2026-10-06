@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-modules, flat connections and local systems · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/d-modules-flat-connections-and-local-systems.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>D-modules, flat connections and local systems</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="d-modules-flat-connections-and-local-systems">D-modules, flat connections and local systems</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The equation <span class="math" data-tex="\(u&#x27;=u\)">\(u&#x27;=u\)</span> has the solution <span class="math" data-tex="\(e^x\)">\(e^x\)</span>. We can record the equation algebraically without adjoining that function: take a generator <span class="math" data-tex="\(e\)">\(e\)</span> and impose <span class="math" data-tex="\(\partial e=e\)">\(\partial e=e\)</span>. A map from this module to a space of functions sends <span class="math" data-tex="\(e\)">\(e\)</span> to a solution. A horizontal section <strong>inside</strong> the module, however, is <span class="math" data-tex="\(e^{-x}e\)">\(e^{-x}e\)</span>. These two uses of the exponential have opposite signs. Keeping them distinct will organize the passage from differential equations to modules and then to local systems.</p>
+<p>We assume the <a href="differential-operators-and-the-weyl-algebra.html">preceding lesson</a>, elementary coherent sheaf theory, Nakayama's lemma and the separatedness of the maximal-ideal filtration on a Noetherian local ring. The analytic part uses holomorphic power series and locally constant sheaves; its local differential-equation argument is proved below. The <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D100">Algebraic Geometry Bridge</a>, <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D60">Algebraic Topology</a> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a> provide background.</p>
+<p>Throughout, <span class="math" data-tex="\(k\)">\(k\)</span> has characteristic zero and <span class="math" data-tex="\(X\)">\(X\)</span> is a smooth separated variety of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. Write <span class="math" data-tex="\(\mathcal D=\mathcal D_X\)">\(\mathcal D=\mathcal D_X\)</span>, <span class="math" data-tex="\(\mathcal T=\mathcal T_X\)">\(\mathcal T=\mathcal T_X\)</span> and <span class="math" data-tex="\(\omega_X=\bigwedge^d\Omega_X^1\)">\(\omega_X=\bigwedge^d\Omega_X^1\)</span>. A D-module is a left <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>-module quasi-coherent over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. Coherence over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> and coherence over <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> are different conditions. Analytification is used only over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. All local systems here have finite-dimensional complex stalks. No cohomological shift enters the horizontal-section functor in this lesson.</p>
+<h2 id="1-three-meanings-of-a-section">1. Three meanings of a section</h2>
+<p>On an étale coordinate chart, put <span class="math" data-tex="\(\partial_i=\partial/\partial x_i\)">\(\partial_i=\partial/\partial x_i\)</span>. A left D-module gives operators on its sections satisfying</p>
+<span class="math math-display" data-tex="\[
+\partial_i(fm)=\partial_i(f)m+f\partial_i(m),
+\qquad [\partial_i,\partial_j]m=0.
+\tag{1.1}
+\]">\[
+\partial_i(fm)=\partial_i(f)m+f\partial_i(m),
+\qquad [\partial_i,\partial_j]m=0.
+\tag{1.1}
+\]</span>
+<p>Thus differentiation acts on both a coefficient and a module element. For a local frame <span class="math" data-tex="\(e=(e_1,\ldots,e_r)\)">\(e=(e_1,\ldots,e_r)\)</span>, write sections as <span class="math" data-tex="\(e v\)">\(e v\)</span>, where <span class="math" data-tex="\(v\)">\(v\)</span> is a column. Matrices <span class="math" data-tex="\(A_i\)">\(A_i\)</span> defined by <span class="math" data-tex="\(\partial_i(e v)=e(\partial_i v+A_i v)\)">\(\partial_i(e v)=e(\partial_i v+A_i v)\)</span> encode the action. Horizontal sections satisfy</p>
+<span class="math math-display" data-tex="\[
+\partial_i v=-A_i v.
+\tag{1.2}
+\]">\[
+\partial_i v=-A_i v.
+\tag{1.2}
+\]</span>
+<p>For a cyclic module <span class="math" data-tex="\(M=\mathcal D/\mathcal D P\)">\(M=\mathcal D/\mathcal D P\)</span>, a D-linear map <span class="math" data-tex="\(M\to F\)">\(M\to F\)</span> is determined by the image <span class="math" data-tex="\(u\)">\(u\)</span> of the generator, and the condition is <span class="math" data-tex="\(Pu=0\)">\(Pu=0\)</span>. In symbols,</p>
+<span class="math math-display" data-tex="\[
+\mathcal H om_{\mathcal D}(\mathcal D/\mathcal D P,F)
+=\ker(P:F\longrightarrow F).
+\tag{1.3}
+\]">\[
+\mathcal H om_{\mathcal D}(\mathcal D/\mathcal D P,F)
+=\ker(P:F\longrightarrow F).
+\tag{1.3}
+\]</span>
+<p>Here <span class="math" data-tex="\(u\)">\(u\)</span> is a section of the <strong>target</strong> <span class="math" data-tex="\(F\)">\(F\)</span>. If <span class="math" data-tex="\(M\)">\(M\)</span> itself is a bundle with connection, its horizontal sections are instead elements of <span class="math" data-tex="\(M\)">\(M\)</span> killed by its connection. For <span class="math" data-tex="\(\partial e=a e\)">\(\partial e=a e\)</span>, the represented equation is <span class="math" data-tex="\(u&#x27;=a u\)">\(u&#x27;=a u\)</span>, whereas the horizontal coefficient equation is <span class="math" data-tex="\(v&#x27;=-a v\)">\(v&#x27;=-a v\)</span>. The solution local system is the dual of the horizontal local system: a horizontal covector is exactly a D-linear map to <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Section 7 will compute both on the punctured line.</p>
+<h2 id="2-the-connection-carried-by-a-d-module">2. The connection carried by a D-module</h2>
+<p>A connection on an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span> is a <span class="math" data-tex="\(k\)">\(k\)</span>-linear sheaf map</p>
+<span class="math math-display" data-tex="\[
+\nabla:M\longrightarrow\Omega_X^1\otimes_{\mathcal O_X}M,
+\qquad \nabla(fm)=df\otimes m+f\nabla m.
+\tag{2.1}
+\]">\[
+\nabla:M\longrightarrow\Omega_X^1\otimes_{\mathcal O_X}M,
+\qquad \nabla(fm)=df\otimes m+f\nabla m.
+\tag{2.1}
+\]</span>
+<p>Contracting with a vector field gives <span class="math" data-tex="\(\nabla_\xi\)">\(\nabla_\xi\)</span>. Extend the map to forms by</p>
+<span class="math math-display" data-tex="\[
+\nabla(\alpha\otimes m)=d\alpha\otimes m+(-1)^q\alpha\wedge\nabla m,
+\qquad \alpha\in\Omega_X^q.
+\tag{2.2}
+\]">\[
+\nabla(\alpha\otimes m)=d\alpha\otimes m+(-1)^q\alpha\wedge\nabla m,
+\qquad \alpha\in\Omega_X^q.
+\tag{2.2}
+\]</span>
+<p>The coefficient Leibniz rule makes this formula balanced over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>. The connection is <strong>integrable</strong>, or flat, if <span class="math" data-tex="\(\nabla^2=0\)">\(\nabla^2=0\)</span>. Its curvature evaluated on vector fields is</p>
+<span class="math math-display" data-tex="\[
+R(\xi,\eta)=[\nabla_\xi,\nabla_\eta]-\nabla_{[\xi,\eta]}.
+\tag{2.3}
+\]">\[
+R(\xi,\eta)=[\nabla_\xi,\nabla_\eta]-\nabla_{[\xi,\eta]}.
+\tag{2.3}
+\]</span>
+<p>This is <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-linear in both vector fields and in <span class="math" data-tex="\(m\)">\(m\)</span>. In commuting coordinates, (2.2) gives</p>
+<span class="math math-display" data-tex="\[
+\nabla^2m=\sum_{i&lt;j}dx_i\wedge dx_j\otimes
+[\nabla_{\partial_i},\nabla_{\partial_j}]m.
+\tag{2.4}
+\]">\[
+\nabla^2m=\sum_{i&lt;j}dx_i\wedge dx_j\otimes
+[\nabla_{\partial_i},\nabla_{\partial_j}]m.
+\tag{2.4}
+\]</span>
+<p>Hence vanishing in (2.3) and (2.4) are equivalent. For a bundle matrix as in Section 1, flatness reads</p>
+<span class="math math-display" data-tex="\[
+\partial_i A_j-\partial_j A_i+[A_i,A_j]=0.
+\tag{2.5}
+\]">\[
+\partial_i A_j-\partial_j A_i+[A_i,A_j]=0.
+\tag{2.5}
+\]</span>
+<p><strong>Theorem 2.1.</strong> Left D-module structures on a fixed quasi-coherent <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-module are in bijection with integrable connections. The correspondence also identifies their morphisms.</p>
+<p><strong>Proof.</strong> A D-action defines <span class="math" data-tex="\(\nabla_\xi m=\xi m\)">\(\nabla_\xi m=\xi m\)</span>. The relation <span class="math" data-tex="\(\xi f-f\xi=\xi(f)\)">\(\xi f-f\xi=\xi(f)\)</span> gives (2.1), and the relation between commutators of vector fields gives (2.3) with zero curvature. Since <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is locally free and dual to <span class="math" data-tex="\(\Omega_X^1\)">\(\Omega_X^1\)</span>, these contracted maps uniquely specify <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span>.</p>
+<p>Conversely, choose étale coordinates. Flatness makes the operators <span class="math" data-tex="\(\nabla_i=\nabla_{\partial_i}\)">\(\nabla_i=\nabla_{\partial_i}\)</span> commute. For the unique normal form established in the preceding lesson, set</p>
+<span class="math math-display" data-tex="\[
+\left(\sum_\alpha a_\alpha\partial^\alpha\right)m
+=\sum_\alpha a_\alpha\nabla_1^{\alpha_1}\cdots\nabla_d^{\alpha_d}m.
+\tag{2.6}
+\]">\[
+\left(\sum_\alpha a_\alpha\partial^\alpha\right)m
+=\sum_\alpha a_\alpha\nabla_1^{\alpha_1}\cdots\nabla_d^{\alpha_d}m.
+\tag{2.6}
+\]</span>
+<p>Iterating (2.1) yields the multi-index Leibniz identity</p>
+<span class="math math-display" data-tex="\[
+\nabla^\alpha(fm)=
+\sum_{\beta\leq\alpha}\binom\alpha\beta
+\partial^\beta(f)\nabla^{\alpha-\beta}m.
+\tag{2.7}
+\]">\[
+\nabla^\alpha(fm)=
+\sum_{\beta\leq\alpha}\binom\alpha\beta
+\partial^\beta(f)\nabla^{\alpha-\beta}m.
+\tag{2.7}
+\]</span>
+<p>For completeness, differentiating one more time splits each summand into the derivative of its coefficient and the derivative of its module part; Pascal's identity joins the two contributions. This proves (2.7) by induction on <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>. It is exactly the multiplication rule for normal forms in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, so (2.6) respects composition and the identity.</p>
+<p>If <span class="math" data-tex="\(\xi=\sum_i b_i\partial_i\)">\(\xi=\sum_i b_i\partial_i\)</span>, its action is <span class="math" data-tex="\(\sum_i b_i\nabla_i\)">\(\sum_i b_i\nabla_i\)</span>, which is the intrinsic contraction <span class="math" data-tex="\(\nabla_\xi\)">\(\nabla_\xi\)</span>. The local actions agree on functions and all vector fields on overlaps; these generate <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, so the actions glue and do not depend on coordinates. The two constructions are inverse because the same generators determine the action. Finally, an <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-linear map commutes with <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> precisely when it commutes with vector fields, hence with all of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument applies even when <span class="math" data-tex="\(M\)">\(M\)</span> has infinitely many generators. It is a statement about quasi-coherent modules with connection, not only about vector bundles. The ordinary Leibniz and integrability formulas agree with the formulas in the crystalline setting of [Stacks, Tag 07J5]; the identification with the characteristic-zero differential-operator action is proved here.</p>
+<h2 id="3-why-finite-modules-cannot-have-relations-at-a-smooth-point">3. Why finite modules cannot have relations at a smooth point</h2>
+<p>The next theorem upgrades a finite module with a connection to a vector bundle. We first isolate the local mechanism.</p>
+<p>At a <span class="math" data-tex="\(k\)">\(k\)</span>-rational smooth point <span class="math" data-tex="\(p\)">\(p\)</span>, étale parameters <span class="math" data-tex="\(t_i=x_i-x_i(p)\)">\(t_i=x_i-x_i(p)\)</span> identify the completed local ring with <span class="math" data-tex="\(k[[t_1,\ldots,t_d]]\)">\(k[[t_1,\ldots,t_d]]\)</span>. One way to obtain this description is to apply the unique lifting property of the coordinate chart to each quotient by a power of the maximal ideal, and then take the inverse limit. Coordinate derivations extend continuously to the completion and become the formal partial derivatives. Consequently a nonzero element, or a nonzero vector of elements, has a finite least total degree. If that degree is positive, some partial derivative of its leading homogeneous part is nonzero and lowers the degree by one. Characteristic zero is essential for this last assertion.</p>
+<p><strong>Theorem 3.1.</strong> A D-module coherent over <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> is locally free of finite rank.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed, and let <span class="math" data-tex="\(A=\mathcal O_{X,p}\)">\(A=\mathcal O_{X,p}\)</span> at a closed point, with maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Choose a minimal set <span class="math" data-tex="\(m_1,\ldots,m_r\)">\(m_1,\ldots,m_r\)</span> of generators of <span class="math" data-tex="\(M_p\)">\(M_p\)</span>. If <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, Nakayama's lemma gives <span class="math" data-tex="\(M_p=0\)">\(M_p=0\)</span>, which is free of rank zero. Otherwise let</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K\longrightarrow A^r\xrightarrow{\pi}M_p\longrightarrow0.
+\tag{3.1}
+\]">\[
+0\longrightarrow K\longrightarrow A^r\xrightarrow{\pi}M_p\longrightarrow0.
+\tag{3.1}
+\]</span>
+<p>Minimality means that the images of the generators form a basis of <span class="math" data-tex="\(M_p/\mathfrak mM_p\)">\(M_p/\mathfrak mM_p\)</span>; therefore <span class="math" data-tex="\(K\subset\mathfrak m A^r\)">\(K\subset\mathfrak m A^r\)</span>. For each coordinate derivative choose a matrix <span class="math" data-tex="\(B_i\)">\(B_i\)</span> whose columns lift the elements <span class="math" data-tex="\(\nabla_i m_j\)">\(\nabla_i m_j\)</span>. The operator <span class="math" data-tex="\(D_i(v)=\partial_i v+B_i v\)">\(D_i(v)=\partial_i v+B_i v\)</span> on <span class="math" data-tex="\(A^r\)">\(A^r\)</span> then satisfies</p>
+<span class="math math-display" data-tex="\[
+\pi D_i(v)=\nabla_i\pi(v),\qquad D_i(K)\subset K.
+\tag{3.2}
+\]">\[
+\pi D_i(v)=\nabla_i\pi(v),\qquad D_i(K)\subset K.
+\tag{3.2}
+\]</span>
+<p>Suppose <span class="math" data-tex="\(0\ne v\in K\)">\(0\ne v\in K\)</span>. Separatedness embeds <span class="math" data-tex="\(A^r\)">\(A^r\)</span> in its completion, so <span class="math" data-tex="\(v\)">\(v\)</span> has a finite order <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. Choose <span class="math" data-tex="\(i\)">\(i\)</span> so that <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> does not kill its leading homogeneous vector. Then <span class="math" data-tex="\(\partial_i v\)">\(\partial_i v\)</span> has order <span class="math" data-tex="\(q-1\)">\(q-1\)</span>, while <span class="math" data-tex="\(B_i v\)">\(B_i v\)</span> has order at least <span class="math" data-tex="\(q\)">\(q\)</span>. Thus <span class="math" data-tex="\(D_i(v)\in K\)">\(D_i(v)\in K\)</span> is nonzero of order <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. Repeating, with a suitable derivative at each step, gives a relation of order zero. That contradicts <span class="math" data-tex="\(K\subset\mathfrak m A^r\)">\(K\subset\mathfrak m A^r\)</span>. Hence <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, proving freeness at <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>A finite presentation makes freeness at a stalk persist on an open neighborhood: lift a stalk basis to sections, and shrink until the finitely generated kernel and cokernel of the resulting presentation vanish. Every point of a finite-type variety specializes to a closed point. An open neighborhood of that closed point contains its generalizations. Therefore these neighborhoods cover <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For a general characteristic-zero field, extend scalars to an algebraic closure. The pulled-back connection has the same properties, so the pulled-back module is locally free. To justify descent without a geometric shortcut, work on an affine chart <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span>. For every <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>, flat base change gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}_1^A(M,N)\otimes_k\overline k
+\cong\operatorname{Tor}_1^{A\otimes_k\overline k}
+(M\otimes_k\overline k,N\otimes_k\overline k)=0.
+\tag{3.3}
+\]">\[
+\operatorname{Tor}_1^A(M,N)\otimes_k\overline k
+\cong\operatorname{Tor}_1^{A\otimes_k\overline k}
+(M\otimes_k\overline k,N\otimes_k\overline k)=0.
+\tag{3.3}
+\]</span>
+<p>Faithfulness of the field extension makes the group on the left zero before base change. Thus <span class="math" data-tex="\(M\)">\(M\)</span> is flat over <span class="math" data-tex="\(A\)">\(A\)</span>. A finite flat module over a Noetherian local ring is free: for a minimal presentation (3.1), tensor with the residue field. Flatness and minimality imply <span class="math" data-tex="\(K/\mathfrak mK=0\)">\(K/\mathfrak mK=0\)</span>, so Nakayama gives <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. This proves the assertion over <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof used the Leibniz rule and smoothness, but did not need zero curvature. Any connection on a coherent module in characteristic zero already forces local freeness. Integrability determines which bundles carry a D-action.</p>
+<h2 id="4-analytic-flat-frames-and-local-systems">4. Analytic flat frames and local systems</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> now be a complex manifold. By a holomorphic flat bundle we mean a finite-rank holomorphic vector bundle with an integrable holomorphic connection. An algebraic flat bundle on a smooth complex variety gives such a bundle on <span class="math" data-tex="\(X^{an}\)">\(X^{an}\)</span>.</p>
+<p>The analytic differential-operator sheaf used below consists in coordinates of finite sums <span class="math" data-tex="\(\sum a_\alpha(z)\partial^\alpha\)">\(\sum a_\alpha(z)\partial^\alpha\)</span> with holomorphic coefficients. Its normal forms are independent by testing on coordinate monomials; its multiplication follows from Leibniz's rule. Thus the coordinate algebra arguments also apply to these holomorphic operators.</p>
+<p><strong>Lemma 4.1.</strong> Near every point a holomorphic flat bundle has a frame of horizontal sections.</p>
+<p><strong>Proof.</strong> Trivialize the bundle on a polydisc with coordinates <span class="math" data-tex="\(z_1,\ldots,z_d\)">\(z_1,\ldots,z_d\)</span> centered at the point, and write the matrices <span class="math" data-tex="\(A_i\)">\(A_i\)</span> as in (2.5). We will construct an invertible holomorphic matrix <span class="math" data-tex="\(H\)">\(H\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\partial_i H=-A_iH\quad(1\leq i\leq d).
+\tag{4.1}
+\]">\[
+\partial_i H=-A_iH\quad(1\leq i\leq d).
+\tag{4.1}
+\]</span>
+<p>Here is the required one-variable existence argument with parameters. For a holomorphic matrix <span class="math" data-tex="\(A(z,w)\)">\(A(z,w)\)</span>, uniformly bounded by <span class="math" data-tex="\(C\)">\(C\)</span> on a smaller closed polydisc, solve <span class="math" data-tex="\(\partial_z H=-AH\)">\(\partial_z H=-AH\)</span>, <span class="math" data-tex="\(H(0,w)=I\)">\(H(0,w)=I\)</span>, by iterated integrals. Set <span class="math" data-tex="\(U_0=I\)">\(U_0=I\)</span> and</p>
+<span class="math math-display" data-tex="\[
+U_{n+1}(z,w)=-\int_0^z A(\zeta,w)U_n(\zeta,w)\,d\zeta.
+\tag{4.2}
+\]">\[
+U_{n+1}(z,w)=-\int_0^z A(\zeta,w)U_n(\zeta,w)\,d\zeta.
+\tag{4.2}
+\]</span>
+<p>Integration is along the straight segment. Each term is holomorphic in all variables, and <span class="math" data-tex="\(\|U_n\|\leq C^n|z|^n/n!\)">\(\|U_n\|\leq C^n|z|^n/n!\)</span>. The series <span class="math" data-tex="\(H=\sum_{n\geq0}U_n\)">\(H=\sum_{n\geq0}U_n\)</span> therefore converges uniformly on compact subsets, is holomorphic, and solves the integral equation and hence the differential equation. For uniqueness, the integral equation for a difference with zero initial value, iterated <span class="math" data-tex="\(n\)">\(n\)</span> times, bounds it by <span class="math" data-tex="\(C^n|z|^n/n!\)">\(C^n|z|^n/n!\)</span> times its supremum; letting <span class="math" data-tex="\(n\)">\(n\)</span> grow gives zero. Multilinearity of the determinant and the differential equation give <span class="math" data-tex="\(\partial_z\det H=-(\operatorname{tr}A)\det H\)">\(\partial_z\det H=-(\operatorname{tr}A)\det H\)</span>. Its initial value is one, so <span class="math" data-tex="\(\det H=\exp(-\int_0^z\operatorname{tr}A)\ne0\)">\(\det H=\exp(-\int_0^z\operatorname{tr}A)\ne0\)</span>.</p>
+<p>Apply this construction to <span class="math" data-tex="\(A_1\)">\(A_1\)</span>, treating <span class="math" data-tex="\(z_2,\ldots,z_d\)">\(z_2,\ldots,z_d\)</span> as parameters, and use the frame change <span class="math" data-tex="\(e&#x27;=eH\)">\(e&#x27;=eH\)</span>. Its connection matrices are</p>
+<span class="math math-display" data-tex="\[
+A_i&#x27;=H^{-1}A_iH+H^{-1}\partial_iH.
+\tag{4.3}
+\]">\[
+A_i&#x27;=H^{-1}A_iH+H^{-1}\partial_iH.
+\tag{4.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(A_1&#x27;=0\)">\(A_1&#x27;=0\)</span>. Curvature transforms by conjugation, so (2.5) becomes <span class="math" data-tex="\(\partial_1A_j&#x27;=0\)">\(\partial_1A_j&#x27;=0\)</span> for <span class="math" data-tex="\(j&gt;1\)">\(j&gt;1\)</span>. The remaining matrices depend only on <span class="math" data-tex="\(z_2,\ldots,z_d\)">\(z_2,\ldots,z_d\)</span> and form a flat connection in those variables. Induction on <span class="math" data-tex="\(d\)">\(d\)</span>, starting with the one-variable construction, kills all the remaining matrices by a frame change independent of <span class="math" data-tex="\(z_1\)">\(z_1\)</span>. The resulting frame is horizontal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> Taking horizontal sections is an equivalence between holomorphic flat bundles on <span class="math" data-tex="\(X\)">\(X\)</span> and finite-rank complex local systems on <span class="math" data-tex="\(X\)">\(X\)</span>. Its inverse is</p>
+<span class="math math-display" data-tex="\[
+L\longmapsto(\mathcal O_X\otimes_{\mathbf C}L,d\otimes1).
+\tag{4.4}
+\]">\[
+L\longmapsto(\mathcal O_X\otimes_{\mathbf C}L,d\otimes1).
+\tag{4.4}
+\]</span>
+<p><strong>Proof.</strong> In a horizontal frame, a section is horizontal precisely when all partial derivatives of its coefficients vanish. On a connected small polydisc these coefficients are constant. The kernel sheaf is therefore locally constant with stalk dimension equal to the bundle rank. Evaluation gives a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X\otimes_{\mathbf C}\ker\nabla\longrightarrow M.
+\tag{4.5}
+\]">\[
+\mathcal O_X\otimes_{\mathbf C}\ker\nabla\longrightarrow M.
+\tag{4.5}
+\]</span>
+<p>It is an isomorphism because horizontal frames are local bases, and it preserves connections by the Leibniz rule. Conversely, local trivializations of a local system have locally constant transition matrices. Extending these matrices to holomorphic functions glues a vector bundle, and their derivatives vanish, so the trivial local connections glue. Its horizontal sections recover <span class="math" data-tex="\(L\)">\(L\)</span>. A map between flat bundles, written in horizontal frames, preserves connections precisely when its matrix has constant entries. Such matrices are exactly maps between the corresponding local systems. This proves the equivalence on objects and morphisms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is an analytic equivalence. It does not say that an algebraic connection is determined by its horizontal local system. The exponential example in Section 7 will exhibit two distinct algebraic connections with isomorphic analytic flat bundles. Their behavior at infinity belongs to the later study of regular singularities.</p>
+<h2 id="5-densities-change-the-side-of-the-action">5. Densities change the side of the action</h2>
+<p>A right module must respect operator composition in the opposite order from a left module. The canonical bundle supplies the correction needed when coordinates change. For a top form <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\rho\cdot f=f\rho,
+\qquad \rho\cdot\xi=-\mathcal L_\xi\rho.
+\tag{5.1}
+\]">\[
+\rho\cdot f=f\rho,
+\qquad \rho\cdot\xi=-\mathcal L_\xi\rho.
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal L_\xi\)">\(\mathcal L_\xi\)</span> is the Lie derivative. If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a nonvanishing local top form, define <span class="math" data-tex="\(\operatorname{div}_\rho\xi\)">\(\operatorname{div}_\rho\xi\)</span> by <span class="math" data-tex="\(\mathcal L_\xi\rho=(\operatorname{div}_\rho\xi)\rho\)">\(\mathcal L_\xi\rho=(\operatorname{div}_\rho\xi)\rho\)</span>. For the coordinate volume form and <span class="math" data-tex="\(\xi=\sum b_i\partial_i\)">\(\xi=\sum b_i\partial_i\)</span>, the divergence is <span class="math" data-tex="\(\sum\partial_i b_i\)">\(\sum\partial_i b_i\)</span>. Indeed Cartan's formula <span class="math" data-tex="\(\mathcal L_\xi=d\iota_\xi+\iota_\xi d\)">\(\mathcal L_\xi=d\iota_\xi+\iota_\xi d\)</span> applied to <span class="math" data-tex="\(dx_1\wedge\cdots\wedge dx_d\)">\(dx_1\wedge\cdots\wedge dx_d\)</span> differentiates precisely those coefficients.</p>
+<p><strong>Theorem 5.1.</strong> For a left D-module <span class="math" data-tex="\(M\)">\(M\)</span>, the tensor product <span class="math" data-tex="\(M^r=\omega_X\otimes_{\mathcal O_X}M\)">\(M^r=\omega_X\otimes_{\mathcal O_X}M\)</span> has the right action</p>
+<span class="math math-display" data-tex="\[
+(\rho\otimes m)\cdot\xi
+=-\mathcal L_\xi\rho\otimes m-\rho\otimes\nabla_\xi m.
+\tag{5.2}
+\]">\[
+(\rho\otimes m)\cdot\xi
+=-\mathcal L_\xi\rho\otimes m-\rho\otimes\nabla_\xi m.
+\tag{5.2}
+\]</span>
+<p>The resulting functor is an equivalence from left to right quasi-coherent D-modules, with inverse <span class="math" data-tex="\(N\mapsto\omega_X^{-1}\otimes_{\mathcal O_X}N\)">\(N\mapsto\omega_X^{-1}\otimes_{\mathcal O_X}N\)</span>.</p>
+<p><strong>Proof.</strong> Formula (5.2) is balanced. Moving a coefficient <span class="math" data-tex="\(f\)">\(f\)</span> between its factors gives the same extra term <span class="math" data-tex="\(-\xi(f)\rho\otimes m\)">\(-\xi(f)\rho\otimes m\)</span>, because both the Lie derivative and the connection satisfy their Leibniz rules.</p>
+<p>In the coordinate volume frame, (5.2) becomes <span class="math" data-tex="\(m\cdot\partial_i=-\nabla_i m\)">\(m\cdot\partial_i=-\nabla_i m\)</span>. The transpose</p>
+<span class="math math-display" data-tex="\[
+t(f)=f,\qquad t(\partial_i)=-\partial_i,
+\qquad t(PQ)=t(Q)t(P)
+\tag{5.3}
+\]">\[
+t(f)=f,\qquad t(\partial_i)=-\partial_i,
+\qquad t(PQ)=t(Q)t(P)
+\tag{5.3}
+\]</span>
+<p>is an anti-automorphism of the coordinate differential-operator algebra. To check it, transposing <span class="math" data-tex="\(\partial_i f-f\partial_i=\partial_i(f)\)">\(\partial_i f-f\partial_i=\partial_i(f)\)</span> gives the same relation, and commuting coordinate derivatives remain commuting. The normal form from the preceding lesson then establishes it on the whole algebra. It is involutive on the generators, hence on every operator. Thus the local right action <span class="math" data-tex="\(m\cdot P=t(P)m\)">\(m\cdot P=t(P)m\)</span> is an associative action. For <span class="math" data-tex="\(\xi=\sum b_i\partial_i\)">\(\xi=\sum b_i\partial_i\)</span>, it reads</p>
+<span class="math math-display" data-tex="\[
+m\cdot\xi=-\sum_i\nabla_i(b_i m)
+=-\nabla_\xi m-(\operatorname{div}_\rho\xi)m,
+\tag{5.4}
+\]">\[
+m\cdot\xi=-\sum_i\nabla_i(b_i m)
+=-\nabla_\xi m-(\operatorname{div}_\rho\xi)m,
+\tag{5.4}
+\]</span>
+<p>which is exactly (5.2). Since (5.2) is intrinsic, the local right actions glue. Setting <span class="math" data-tex="\(M=\mathcal O_X\)">\(M=\mathcal O_X\)</span> recovers (5.1).</p>
+<p>For the inverse construction, choose a local nonvanishing form <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. On <span class="math" data-tex="\(\rho^{-1}\otimes N\)">\(\rho^{-1}\otimes N\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\nabla_\xi(\rho^{-1}\otimes n)
+=\rho^{-1}\otimes
+\bigl(-n\cdot\xi-(\operatorname{div}_\rho\xi)n\bigr).
+\tag{5.5}
+\]">\[
+\nabla_\xi(\rho^{-1}\otimes n)
+=\rho^{-1}\otimes
+\bigl(-n\cdot\xi-(\operatorname{div}_\rho\xi)n\bigr).
+\tag{5.5}
+\]</span>
+<p>This is independent of the frame. Replacing <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by <span class="math" data-tex="\(g\rho\)">\(g\rho\)</span> replaces the coefficient <span class="math" data-tex="\(n\)">\(n\)</span> representing a fixed section by <span class="math" data-tex="\(gn\)">\(gn\)</span>. The identities</p>
+<span class="math math-display" data-tex="\[
+(gn)\cdot\xi=g(n\cdot\xi)-\xi(g)n,
+\qquad \operatorname{div}_{g\rho}\xi
+=\operatorname{div}_\rho\xi+g^{-1}\xi(g)
+\tag{5.6}
+\]">\[
+(gn)\cdot\xi=g(n\cdot\xi)-\xi(g)n,
+\qquad \operatorname{div}_{g\rho}\xi
+=\operatorname{div}_\rho\xi+g^{-1}\xi(g)
+\tag{5.6}
+\]</span>
+<p>show that the extra terms cancel in (5.5). In coordinate volume frames it is just the inverse of (5.3); hence it is a flat connection and defines a left D-action by Theorem 2.1. The evaluation isomorphisms <span class="math" data-tex="\(\omega_X^{-1}\otimes\omega_X\otimes M\cong M\)">\(\omega_X^{-1}\otimes\omega_X\otimes M\cong M\)</span> and <span class="math" data-tex="\(\omega_X\otimes\omega_X^{-1}\otimes N\cong N\)">\(\omega_X\otimes\omega_X^{-1}\otimes N\cong N\)</span> preserve the actions by (5.2) and (5.5). They also commute with morphisms. This proves the equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The divergence explains a frequent shift in Euler parameters. On the punctured line let <span class="math" data-tex="\(\theta=x\partial\)">\(\theta=x\partial\)</span> and <span class="math" data-tex="\(\theta e=\lambda e\)">\(\theta e=\lambda e\)</span>. In the frame <span class="math" data-tex="\(dx\)">\(dx\)</span>, the right generator has</p>
+<span class="math math-display" data-tex="\[
+(dx\otimes e)\cdot\theta=-(\lambda+1)(dx\otimes e).
+\tag{5.7}
+\]">\[
+(dx\otimes e)\cdot\theta=-(\lambda+1)(dx\otimes e).
+\tag{5.7}
+\]</span>
+<p>In the invariant frame <span class="math" data-tex="\(dx/x\)">\(dx/x\)</span>, the divergence of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is zero, so its right eigenvalue is <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>. The generators differ by the invertible function <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>; the two formulas describe the same right module.</p>
+<h2 id="6-tensor-products-and-covectors">6. Tensor products and covectors</h2>
+<p>For two left D-modules, define on <span class="math" data-tex="\(M\otimes_{\mathcal O_X}N\)">\(M\otimes_{\mathcal O_X}N\)</span></p>
+<span class="math math-display" data-tex="\[
+\nabla_\xi(m\otimes n)
+=\nabla_\xi m\otimes n+m\otimes\nabla_\xi n.
+\tag{6.1}
+\]">\[
+\nabla_\xi(m\otimes n)
+=\nabla_\xi m\otimes n+m\otimes\nabla_\xi n.
+\tag{6.1}
+\]</span>
+<p>Both ways of moving a function across the tensor product produce the same <span class="math" data-tex="\(\xi(f)m\otimes n\)">\(\xi(f)m\otimes n\)</span>, so the action is well-defined and satisfies the Leibniz rule. Its curvature is</p>
+<span class="math math-display" data-tex="\[
+R_{M\otimes N}(\xi,\eta)
+=R_M(\xi,\eta)\otimes1+1\otimes R_N(\xi,\eta).
+\tag{6.2}
+\]">\[
+R_{M\otimes N}(\xi,\eta)
+=R_M(\xi,\eta)\otimes1+1\otimes R_N(\xi,\eta).
+\tag{6.2}
+\]</span>
+<p>To verify this identity, expand the two composite actions in (6.1): the terms differentiating both factors occur once in each order and cancel in the commutator. Subtracting the action of <span class="math" data-tex="\([\xi,\eta]\)">\([\xi,\eta]\)</span> leaves the two curvatures. Thus the tensor product is again a D-module. Quasi-coherence is preserved by the ordinary sheaf tensor product. The tensor unit is <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> with its usual derivations.</p>
+<p>For the sheaf <span class="math" data-tex="\(\mathcal H om_{\mathcal O_X}(M,N)\)">\(\mathcal H om_{\mathcal O_X}(M,N)\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+(\nabla_\xi\phi)(m)
+=\nabla_\xi^N\phi(m)-\phi(\nabla_\xi^M m).
+\tag{6.3}
+\]">\[
+(\nabla_\xi\phi)(m)
+=\nabla_\xi^N\phi(m)-\phi(\nabla_\xi^M m).
+\tag{6.3}
+\]</span>
+<p>The coefficient terms cancel to make <span class="math" data-tex="\(\nabla_\xi\phi\)">\(\nabla_\xi\phi\)</span> <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-linear in <span class="math" data-tex="\(m\)">\(m\)</span>. The formula satisfies the Leibniz rule in <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and expanding its commutator gives <span class="math" data-tex="\(R_N\phi-\phi R_M=0\)">\(R_N\phi-\phi R_M=0\)</span>. It therefore defines a flat connection on this sheaf. If <span class="math" data-tex="\(M\)">\(M\)</span> is a finite-rank bundle, the Hom sheaf is <span class="math" data-tex="\(M^\vee\otimes N\)">\(M^\vee\otimes N\)</span>, hence quasi-coherent and a D-module in our category. For arbitrary quasi-coherent <span class="math" data-tex="\(M\)">\(M\)</span>, the Hom sheaf need not be quasi-coherent; the connection formula still makes sense, but that categorical qualifier is necessary.</p>
+<p>For example, on <span class="math" data-tex="\(\operatorname{Spec}k[x]\)">\(\operatorname{Spec}k[x]\)</span>, the Hom sheaf from <span class="math" data-tex="\(\bigoplus_{n\geq0}\mathcal O\)">\(\bigoplus_{n\geq0}\mathcal O\)</span> to <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> has sections <span class="math" data-tex="\(\prod_{n\geq0}k[x]\)">\(\prod_{n\geq0}k[x]\)</span>. On <span class="math" data-tex="\(D(x)\)">\(D(x)\)</span> it has sections <span class="math" data-tex="\(\prod_{n\geq0}k[x,x^{-1}]\)">\(\prod_{n\geq0}k[x,x^{-1}]\)</span>. Localization of the first product has a common bound on the denominators of every component. The tuple <span class="math" data-tex="\((1,x^{-1},x^{-2},\ldots)\)">\((1,x^{-1},x^{-2},\ldots)\)</span> has no such bound, so this sheaf is not the quasi-coherent sheaf associated to its affine sections.</p>
+<p>For a flat bundle <span class="math" data-tex="\(M\)">\(M\)</span>, its dual connection is the special case <span class="math" data-tex="\(N=\mathcal O_X\)">\(N=\mathcal O_X\)</span> of (6.3). Evaluation <span class="math" data-tex="\(M^\vee\otimes M\to\mathcal O_X\)">\(M^\vee\otimes M\to\mathcal O_X\)</span> is D-linear because its two connection terms sum to the derivative of the pairing. Horizontal covectors are D-linear maps to <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>, establishing the duality between the two local systems described in Section 1.</p>
+<h2 id="7-calculations-on-the-line">7. Calculations on the line</h2>
+<h3 id="functions-operators-and-a-point-module">Functions, operators and a point module</h3>
+<p>The structure sheaf <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span> is a D-module by ordinary differentiation. The regular left module <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span> is generated by one element over <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span>, but on a positive-dimensional coordinate chart it has infinitely many independent <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>-basis elements <span class="math" data-tex="\(\partial^\alpha\)">\(\partial^\alpha\)</span>. Thus D-coherence alone does not imply the finite-rank conclusion of Theorem 3.1.</p>
+<p>On <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span>, let <span class="math" data-tex="\(A_1=k\langle x,\partial\rangle/(\partial x-x\partial-1)\)">\(A_1=k\langle x,\partial\rangle/(\partial x-x\partial-1)\)</span>. Normal form gives</p>
+<span class="math math-display" data-tex="\[
+A_1/A_1\partial\cong k[x],
+\qquad \partial(x^j)=j x^{j-1}.
+\tag{7.1}
+\]">\[
+A_1/A_1\partial\cong k[x],
+\qquad \partial(x^j)=j x^{j-1}.
+\tag{7.1}
+\]</span>
+<p>For the point module <span class="math" data-tex="\(\delta_0=A_1/A_1x\)">\(\delta_0=A_1/A_1x\)</span>, order the normal form with <span class="math" data-tex="\(x\)">\(x\)</span> on the right. Its basis is <span class="math" data-tex="\(\delta,\partial\delta,\partial^2\delta,\ldots\)">\(\delta,\partial\delta,\partial^2\delta,\ldots\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+x\partial^j\delta=-j\partial^{j-1}\delta,
+\qquad \partial(\partial^j\delta)=\partial^{j+1}\delta.
+\tag{7.2}
+\]">\[
+x\partial^j\delta=-j\partial^{j-1}\delta,
+\qquad \partial(\partial^j\delta)=\partial^{j+1}\delta.
+\tag{7.2}
+\]</span>
+<p>Indeed <span class="math" data-tex="\([x,\partial^j]=-j\partial^{j-1}\)">\([x,\partial^j]=-j\partial^{j-1}\)</span>, and the term <span class="math" data-tex="\(\partial^jx\delta\)">\(\partial^jx\delta\)</span> is zero. Each vector is killed by a sufficiently large power of <span class="math" data-tex="\(x\)">\(x\)</span>, so localization away from zero vanishes. Yet <span class="math" data-tex="\(x\delta_0=\delta_0\)">\(x\delta_0=\delta_0\)</span>, since every <span class="math" data-tex="\(\partial^j\delta\)">\(\partial^j\delta\)</span> is <span class="math" data-tex="\(x(-\partial^{j+1}\delta/(j+1))\)">\(x(-\partial^{j+1}\delta/(j+1))\)</span>. Its ordinary fiber <span class="math" data-tex="\(\delta_0/x\delta_0\)">\(\delta_0/x\delta_0\)</span> is zero although the module is nonzero. There is no contradiction with Nakayama: this module is not finite over <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>.</p>
+<h3 id="exponential-connections">Exponential connections</h3>
+<p>For <span class="math" data-tex="\(f\in k[x]\)">\(f\in k[x]\)</span>, define <span class="math" data-tex="\(E^f=k[x]e\)">\(E^f=k[x]e\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\partial(ge)=(g&#x27;+f&#x27;g)e.
+\tag{7.3}
+\]">\[
+\partial(ge)=(g&#x27;+f&#x27;g)e.
+\tag{7.3}
+\]</span>
+<p>It is the cyclic module <span class="math" data-tex="\(A_1/A_1(\partial-f&#x27;)\)">\(A_1/A_1(\partial-f&#x27;)\)</span>. To see this, repeated reduction of the highest power of <span class="math" data-tex="\(\partial\)">\(\partial\)</span> by the monic operator <span class="math" data-tex="\(\partial-f&#x27;\)">\(\partial-f&#x27;\)</span>, with coefficients on the left, leaves a unique polynomial coefficient times the generator. The resulting action is (7.3); a nonzero polynomial remainder cannot annihilate the free generator of <span class="math" data-tex="\(k[x]e\)">\(k[x]e\)</span>.</p>
+<p>Over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, the represented scalar equation has solutions <span class="math" data-tex="\(u=c e^f\)">\(u=c e^f\)</span>; horizontal module sections are <span class="math" data-tex="\(c e^{-f}e\)">\(c e^{-f}e\)</span>. For <span class="math" data-tex="\(f=x\)">\(f=x\)</span>, any algebraic <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-module isomorphism <span class="math" data-tex="\(\mathcal O\to E^x\)">\(\mathcal O\to E^x\)</span> multiplies its generator by a unit of <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, hence by a nonzero constant. D-linearity would require <span class="math" data-tex="\(g&#x27;+g=0\)">\(g&#x27;+g=0\)</span>, impossible for that constant. The modules are not algebraically D-isomorphic. Analytically, multiplication by the nowhere-zero entire function <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span> gives an isomorphism <span class="math" data-tex="\(\mathcal O^{an}\to(E^x)^{an}\)">\(\mathcal O^{an}\to(E^x)^{an}\)</span> preserving the connections. Both analytic horizontal local systems are constant of rank one.</p>
+<h3 id="powers-and-their-monodromy">Powers and their monodromy</h3>
+<p>On <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, put <span class="math" data-tex="\(B=k[x,x^{-1}]\)">\(B=k[x,x^{-1}]\)</span> and <span class="math" data-tex="\(\theta=x\partial\)">\(\theta=x\partial\)</span>. The module</p>
+<span class="math math-display" data-tex="\[
+K_\lambda=\mathcal D_{\mathbf G_m}/\mathcal D_{\mathbf G_m}(\theta-\lambda)
+=B e_\lambda
+\tag{7.4}
+\]">\[
+K_\lambda=\mathcal D_{\mathbf G_m}/\mathcal D_{\mathbf G_m}(\theta-\lambda)
+=B e_\lambda
+\tag{7.4}
+\]</span>
+<p>has action <span class="math" data-tex="\(\partial(ge_\lambda)=(g&#x27;+\lambda x^{-1}g)e_\lambda\)">\(\partial(ge_\lambda)=(g&#x27;+\lambda x^{-1}g)e_\lambda\)</span>. Monic reduction by <span class="math" data-tex="\(\partial-\lambda x^{-1}\)">\(\partial-\lambda x^{-1}\)</span> proves that its underlying <span class="math" data-tex="\(B\)">\(B\)</span>-module is free of rank one. In particular,</p>
+<span class="math math-display" data-tex="\[
+\theta(x^j e_\lambda)=(j+\lambda)x^j e_\lambda.
+\tag{7.5}
+\]">\[
+\theta(x^j e_\lambda)=(j+\lambda)x^j e_\lambda.
+\tag{7.5}
+\]</span>
+<p>Choose a branch of <span class="math" data-tex="\(\log x\)">\(\log x\)</span> on a simply connected analytic open set. Its horizontal sections are <span class="math" data-tex="\(c x^{-\lambda}e_\lambda\)">\(c x^{-\lambda}e_\lambda\)</span>, with positive-loop monodromy <span class="math" data-tex="\(e^{-2\pi i\lambda}\)">\(e^{-2\pi i\lambda}\)</span>. The scalar equation <span class="math" data-tex="\((\theta-\lambda)u=0\)">\((\theta-\lambda)u=0\)</span> has solutions <span class="math" data-tex="\(c x^\lambda\)">\(c x^\lambda\)</span>, with monodromy <span class="math" data-tex="\(e^{2\pi i\lambda}\)">\(e^{2\pi i\lambda}\)</span>. These are dual rank-one local systems. Tensoring the generators gives</p>
+<span class="math math-display" data-tex="\[
+K_\lambda\otimes_{\mathcal O}K_\mu\cong K_{\lambda+\mu},
+\qquad K_\lambda^\vee\cong K_{-\lambda}.
+\tag{7.6}
+\]">\[
+K_\lambda\otimes_{\mathcal O}K_\mu\cong K_{\lambda+\mu},
+\qquad K_\lambda^\vee\cong K_{-\lambda}.
+\tag{7.6}
+\]</span>
+<p>The ordinary Laurent-polynomial module with the usual derivative is <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. As a module on <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span>, <span class="math" data-tex="\(k[x,x^{-1}]\)">\(k[x,x^{-1}]\)</span> still has a D-action; it is not coherent over <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>. It is generated over <span class="math" data-tex="\(A_1\)">\(A_1\)</span> by <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>: derivatives supply all negative powers, and multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> supplies the nonnegative powers.</p>
+<h3 id="euler-weights-before-restriction">Euler weights before restriction</h3>
+<p>On the full affine line the cyclic module <span class="math" data-tex="\(Q_\lambda=A_1/A_1(\theta-\lambda)\)">\(Q_\lambda=A_1/A_1(\theta-\lambda)\)</span> has the basis</p>
+<span class="math math-display" data-tex="\[
+u_j=x^j e\ (j\geq0),\qquad
+u_{-s}=\partial^s e\ (s\geq1).
+\tag{7.7}
+\]">\[
+u_j=x^j e\ (j\geq0),\qquad
+u_{-s}=\partial^s e\ (s\geq1).
+\tag{7.7}
+\]</span>
+<p>The actions are</p>
+<span class="math math-display" data-tex="\[
+xu_j=\begin{cases}u_{j+1}&amp;j\geq0,\\
+(\lambda+j+1)u_{j+1}&amp;j&lt;0,\end{cases}
+\qquad
+\partial u_j=\begin{cases}(\lambda+j)u_{j-1}&amp;j&gt;0,\\
+u_{j-1}&amp;j\leq0.\end{cases}
+\tag{7.8}
+\]">\[
+xu_j=\begin{cases}u_{j+1}&amp;j\geq0,\\
+(\lambda+j+1)u_{j+1}&amp;j&lt;0,\end{cases}
+\qquad
+\partial u_j=\begin{cases}(\lambda+j)u_{j-1}&amp;j&gt;0,\\
+u_{j-1}&amp;j\leq0.\end{cases}
+\tag{7.8}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\theta u_j=(\lambda+j)u_j\)">\(\theta u_j=(\lambda+j)u_j\)</span>. To prove these formulas, commute <span class="math" data-tex="\(\partial\)">\(\partial\)</span> past a positive power of <span class="math" data-tex="\(x\)">\(x\)</span>, or commute <span class="math" data-tex="\(x\)">\(x\)</span> past a positive power of <span class="math" data-tex="\(\partial\)">\(\partial\)</span>, and use <span class="math" data-tex="\(\theta e=\lambda e\)">\(\theta e=\lambda e\)</span>. They reduce any mixed monomial <span class="math" data-tex="\(x^a\partial^b e\)">\(x^a\partial^b e\)</span> with <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>, proving spanning. For independence, start with an abstract vector space on the displayed <span class="math" data-tex="\(u_j\)">\(u_j\)</span> and define the two actions by (7.8). Direct substitution gives <span class="math" data-tex="\((\partial x-x\partial)u_j=u_j\)">\((\partial x-x\partial)u_j=u_j\)</span>, including <span class="math" data-tex="\(j=-1,0\)">\(j=-1,0\)</span>: at <span class="math" data-tex="\(-1\)">\(-1\)</span> the two coefficients are <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(\lambda-1\)">\(\lambda-1\)</span>, and at zero they are <span class="math" data-tex="\(\lambda+1\)">\(\lambda+1\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Thus this is an <span class="math" data-tex="\(A_1\)">\(A_1\)</span>-module generated by <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, with <span class="math" data-tex="\((\theta-\lambda)u_0=0\)">\((\theta-\lambda)u_0=0\)</span>. The spanning map from <span class="math" data-tex="\(Q_\lambda\)">\(Q_\lambda\)</span> onto it proves independence as well.</p>
+<p>Restriction to <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> sends the positive vectors to <span class="math" data-tex="\(x^j e_\lambda\)">\(x^j e_\lambda\)</span> and sends</p>
+<span class="math math-display" data-tex="\[
+\partial^s e\longmapsto
+\lambda(\lambda-1)\cdots(\lambda-s+1)x^{-s}e_\lambda.
+\tag{7.9}
+\]">\[
+\partial^s e\longmapsto
+\lambda(\lambda-1)\cdots(\lambda-s+1)x^{-s}e_\lambda.
+\tag{7.9}
+\]</span>
+<p>This follows by differentiating successively in (7.4). The falling factorial records precisely which of these vectors disappear on restriction at integral parameters. For example, at <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> every <span class="math" data-tex="\(u_{-s}\)">\(u_{-s}\)</span> restricts to zero. Those vectors form a nonzero submodule supported at the origin. Local systems on the punctured line alone cannot detect it.</p>
+<h3 id="the-euler-solution-complex-at-zero">The Euler solution complex at zero</h3>
+<p>Consider on the analytic line the unshifted two-term complex</p>
+<span class="math math-display" data-tex="\[
+\mathcal O^{an}\xrightarrow{z\partial_z-\lambda}\mathcal O^{an},
+\quad\text{in degrees }0,1.
+\tag{7.10}
+\]">\[
+\mathcal O^{an}\xrightarrow{z\partial_z-\lambda}\mathcal O^{an},
+\quad\text{in degrees }0,1.
+\tag{7.10}
+\]</span>
+<p>It computes the degree-zero solution sheaf and the first derived solution sheaf of <span class="math" data-tex="\(\mathcal D/\mathcal D(z\partial_z-\lambda)\)">\(\mathcal D/\mathcal D(z\partial_z-\lambda)\)</span>. Indeed right multiplication by this nonzero operator gives an injective map of free left D-modules: the order-symbol domain argument in coordinates proves injectivity. Applying Hom into <span class="math" data-tex="\(\mathcal O^{an}\)">\(\mathcal O^{an}\)</span> gives (7.10).</p>
+<p>At the origin, write a holomorphic germ as <span class="math" data-tex="\(\sum_{j\geq0}a_jz^j\)">\(\sum_{j\geq0}a_jz^j\)</span>. The operator multiplies its <span class="math" data-tex="\(j\)">\(j\)</span>-th coefficient by <span class="math" data-tex="\(j-\lambda\)">\(j-\lambda\)</span>. If <span class="math" data-tex="\(\lambda\notin\mathbf Z_{\geq0}\)">\(\lambda\notin\mathbf Z_{\geq0}\)</span>, these numbers are nonzero and their inverses are uniformly bounded for <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>; division therefore preserves convergence. Both kernel and cokernel stalks at zero vanish. If <span class="math" data-tex="\(\lambda=N\in\mathbf Z_{\geq0}\)">\(\lambda=N\in\mathbf Z_{\geq0}\)</span>, the kernel is <span class="math" data-tex="\(\mathbf C z^N\)">\(\mathbf C z^N\)</span> and the cokernel is the one-dimensional class of <span class="math" data-tex="\(z^N\)">\(z^N\)</span>, since the same convergent division works for the other coefficients.</p>
+<p>Away from zero the kernel is the rank-one system of branches of <span class="math" data-tex="\(z^\lambda\)">\(z^\lambda\)</span>. The cokernel is locally zero: for a given holomorphic <span class="math" data-tex="\(g\)">\(g\)</span>, on a small simply connected open set avoiding zero the formula</p>
+<span class="math math-display" data-tex="\[
+u=z^\lambda\left(c+\int z^{-\lambda-1}g(z)\,dz\right)
+\tag{7.11}
+\]">\[
+u=z^\lambda\left(c+\int z^{-\lambda-1}g(z)\,dz\right)
+\tag{7.11}
+\]</span>
+<p>solves <span class="math" data-tex="\((z\partial_z-\lambda)u=g\)">\((z\partial_z-\lambda)u=g\)</span>. Thus for nonintegral <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> the kernel has no nonzero section on the full punctured disc, because its monodromy has no fixed vector. For negative integral <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> it is constant on the punctured disc but has zero stalk at the origin. For nonnegative integral <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the kernel extends as a constant rank-one sheaf, generated locally by <span class="math" data-tex="\(z^N\)">\(z^N\)</span>, and the first cohomology sheaf is a skyscraper at zero. This reproduces the example of [Kashiwara–Schapira, Section 2.9.14] by direct power-series calculation. Perverse normalization would shift this solution complex by <span class="math" data-tex="\([1]\)">\([1]\)</span>; its extensions will be studied later.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Give the isomorphisms in (7.1) and (7.2), including the actions, and compute the ordinary fiber of the point module at zero.</p>
+<p><strong>Solution.</strong> The map <span class="math" data-tex="\(A_1\to k[x]\)">\(A_1\to k[x]\)</span>, <span class="math" data-tex="\(P\mapsto P(1)\)">\(P\mapsto P(1)\)</span>, is surjective. In the normal form <span class="math" data-tex="\(P=\sum a_j(x)\partial^j\)">\(P=\sum a_j(x)\partial^j\)</span>, its value is <span class="math" data-tex="\(a_0(x)\)">\(a_0(x)\)</span>; hence its kernel is <span class="math" data-tex="\(A_1\partial\)">\(A_1\partial\)</span>. This proves (7.1) and the usual actions. The reversed normal form <span class="math" data-tex="\(P=\sum b_j(\partial)x^j\)">\(P=\sum b_j(\partial)x^j\)</span> is unique by transposition of normal form. Modulo <span class="math" data-tex="\(A_1x\)">\(A_1x\)</span>, only <span class="math" data-tex="\(b_0(\partial)\)">\(b_0(\partial)\)</span> remains, giving the basis <span class="math" data-tex="\(k[\partial]\delta\)">\(k[\partial]\delta\)</span>. The commutator calculation yields (7.2). Multiplication by <span class="math" data-tex="\(x\)">\(x\)</span> is surjective on this basis, so the ordinary fiber is zero. Its localization at zero is nevertheless nonzero: if <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span> has nonzero constant term, <span class="math" data-tex="\(h(x)\delta=h(0)\delta\ne0\)">\(h(x)\delta=h(0)\delta\ne0\)</span>, so <span class="math" data-tex="\(\delta\)">\(\delta\)</span> survives that localization.</p>
+<p><strong>Exercise 8.2 (easy).</strong> Compute the coordinate transpose of <span class="math" data-tex="\(P=x^2\partial^2+x\partial\)">\(P=x^2\partial^2+x\partial\)</span>, and compare the right Euler actions in the frames <span class="math" data-tex="\(dx\)">\(dx\)</span> and <span class="math" data-tex="\(dx/x\)">\(dx/x\)</span>.</p>
+<p><strong>Solution.</strong> Reversing the factors gives</p>
+<span class="math math-display" data-tex="\[
+t(P)=\partial^2x^2-\partial x
+=x^2\partial^2+3x\partial+1,
+\tag{8.1}
+\]">\[
+t(P)=\partial^2x^2-\partial x
+=x^2\partial^2+3x\partial+1,
+\tag{8.1}
+\]</span>
+<p>because <span class="math" data-tex="\(\partial^2x^2=x^2\partial^2+4x\partial+2\)">\(\partial^2x^2=x^2\partial^2+4x\partial+2\)</span> and <span class="math" data-tex="\(\partial x=x\partial+1\)">\(\partial x=x\partial+1\)</span>. For a left Euler eigenvector of eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, (5.2) gives <span class="math" data-tex="\(-\lambda-1\)">\(-\lambda-1\)</span> in the volume frame <span class="math" data-tex="\(dx\)">\(dx\)</span>, whose divergence is one. The invariant form <span class="math" data-tex="\(dx/x\)">\(dx/x\)</span> has Lie derivative zero, giving eigenvalue <span class="math" data-tex="\(-\lambda\)">\(-\lambda\)</span>. Equivalently, if <span class="math" data-tex="\(n=dx\otimes e\)">\(n=dx\otimes e\)</span>, the right-module identity gives <span class="math" data-tex="\((x^{-1}n)\theta=x^{-1}(n\theta)-\theta(x^{-1})n=-\lambda x^{-1}n\)">\((x^{-1}n)\theta=x^{-1}(n\theta)-\theta(x^{-1})n=-\lambda x^{-1}n\)</span>.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Determine when <span class="math" data-tex="\(E^f\)">\(E^f\)</span> and <span class="math" data-tex="\(E^g\)">\(E^g\)</span>, for polynomials <span class="math" data-tex="\(f,g\in k[x]\)">\(f,g\in k[x]\)</span>, are algebraically isomorphic as D-modules. Over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, determine when their analytifications are isomorphic.</p>
+<p><strong>Solution.</strong> An algebraic isomorphism must send <span class="math" data-tex="\(e_f\)">\(e_f\)</span> to <span class="math" data-tex="\(h e_g\)">\(h e_g\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> is a unit of <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, hence a nonzero constant. Commuting with <span class="math" data-tex="\(\partial\)">\(\partial\)</span> gives <span class="math" data-tex="\(h&#x27;+g&#x27;h=f&#x27;h\)">\(h&#x27;+g&#x27;h=f&#x27;h\)</span>, so <span class="math" data-tex="\(f&#x27;=g&#x27;\)">\(f&#x27;=g&#x27;\)</span>. In characteristic zero this says <span class="math" data-tex="\(f-g\)">\(f-g\)</span> is constant; the converse is immediate because the actions then agree. Analytically the nonzero entire function <span class="math" data-tex="\(h=e^{f-g}\)">\(h=e^{f-g}\)</span> satisfies the same equation, so any two of these analytic flat bundles are isomorphic. In particular <span class="math" data-tex="\(E^x\)">\(E^x\)</span> and <span class="math" data-tex="\(E^0\)">\(E^0\)</span> give the required distinction between algebraic and analytic connections.</p>
+<p><strong>Exercise 8.4 (medium).</strong> Verify integrability of a tensor connection and compute <span class="math" data-tex="\(K_\lambda\otimes K_\mu\)">\(K_\lambda\otimes K_\mu\)</span> and <span class="math" data-tex="\(\mathcal H om_{\mathcal O}(K_\lambda,K_\mu)\)">\(\mathcal H om_{\mathcal O}(K_\lambda,K_\mu)\)</span>, including both monodromy conventions.</p>
+<p><strong>Solution.</strong> Expanding two successive applications of (6.1) gives the two curvatures in (6.2); the mixed terms cancel. Thus flat factors give a flat tensor connection. For <span class="math" data-tex="\(e_\lambda\otimes e_\mu\)">\(e_\lambda\otimes e_\mu\)</span>, the Euler eigenvalue is <span class="math" data-tex="\(\lambda+\mu\)">\(\lambda+\mu\)</span>, so the tensor module is <span class="math" data-tex="\(K_{\lambda+\mu}\)">\(K_{\lambda+\mu}\)</span>. The map <span class="math" data-tex="\(\phi(e_\lambda)=e_\mu\)">\(\phi(e_\lambda)=e_\mu\)</span> is a basis of the Hom line, and (6.3) gives <span class="math" data-tex="\(\theta\phi=(\mu-\lambda)\phi\)">\(\theta\phi=(\mu-\lambda)\phi\)</span>; hence the Hom module is <span class="math" data-tex="\(K_{\mu-\lambda}\)">\(K_{\mu-\lambda}\)</span>. Their horizontal monodromies are respectively <span class="math" data-tex="\(e^{-2\pi i(\lambda+\mu)}\)">\(e^{-2\pi i(\lambda+\mu)}\)</span> and <span class="math" data-tex="\(e^{-2\pi i(\mu-\lambda)}\)">\(e^{-2\pi i(\mu-\lambda)}\)</span>. Their scalar solution monodromies are the reciprocals.</p>
+<p><strong>Exercise 8.5 (hard).</strong> Prove that every Fitting ideal of a coherent module with connection is stable under derivations. Use this to give a second proof of Theorem 3.1.</p>
+<p><strong>Solution.</strong> Work in a local coordinate ring <span class="math" data-tex="\(A\)">\(A\)</span>, and let <span class="math" data-tex="\(M\)">\(M\)</span> be finite. For a presentation <span class="math" data-tex="\(A^s\to A^r\to M\to0\)">\(A^s\to A^r\to M\to0\)</span>, the ideal <span class="math" data-tex="\(\operatorname{Fitt}_i(M)\)">\(\operatorname{Fitt}_i(M)\)</span> is generated by the <span class="math" data-tex="\((r-i)\)">\((r-i)\)</span>-minors of its relation matrix, with the usual conventions for zero-size or oversized minors. These ideals are independent of presentation. Invertible row and column operations preserve the minor ideals. Adjoining a generator with its defining relation, then eliminating its coefficient by row operations, adjoins an identity block and preserves the prescribed minor ideal. Adjoining a redundant relation also changes no minor ideal, by multilinearity in its column. Adjoin the generators of both presentations to obtain the same surjection onto <span class="math" data-tex="\(M\)">\(M\)</span>. Their two sets of relation columns generate the same kernel, so each set consists of linear combinations of the other; multilinearity then proves equality of their minor ideals. The same description shows that Fitting ideals commute with ring base change.</p>
+<p>Fix a derivation <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, and put <span class="math" data-tex="\(B=A[\epsilon]/(\epsilon^2)\)">\(B=A[\epsilon]/(\epsilon^2)\)</span>. The map <span class="math" data-tex="\(\sigma(a)=a+\epsilon\delta(a)\)">\(\sigma(a)=a+\epsilon\delta(a)\)</span>, <span class="math" data-tex="\(\sigma(\epsilon)=\epsilon\)">\(\sigma(\epsilon)=\epsilon\)</span>, is an automorphism of <span class="math" data-tex="\(B\)">\(B\)</span> with inverse given by the minus sign. On <span class="math" data-tex="\(M\otimes_A B=M\oplus\epsilon M\)">\(M\otimes_A B=M\oplus\epsilon M\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+T(m+\epsilon n)=m+\epsilon(n+\nabla_\delta m)
+\tag{8.2}
+\]">\[
+T(m+\epsilon n)=m+\epsilon(n+\nabla_\delta m)
+\tag{8.2}
+\]</span>
+<p>is an invertible <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-semilinear map. Its semilinearity is exactly the Leibniz rule; its inverse replaces <span class="math" data-tex="\(\nabla_\delta\)">\(\nabla_\delta\)</span> by its negative. Transporting a presentation by <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sigma\bigl(\operatorname{Fitt}_i(M)B\bigr)
+=\operatorname{Fitt}_i(M)B.
+\tag{8.3}
+\]">\[
+\sigma\bigl(\operatorname{Fitt}_i(M)B\bigr)
+=\operatorname{Fitt}_i(M)B.
+\tag{8.3}
+\]</span>
+<p>For <span class="math" data-tex="\(a\)">\(a\)</span> in the Fitting ideal, <span class="math" data-tex="\(a+\epsilon\delta(a)\)">\(a+\epsilon\delta(a)\)</span> lies in its extension to <span class="math" data-tex="\(B\)">\(B\)</span>. Membership is coefficientwise in <span class="math" data-tex="\(A\oplus\epsilon A\)">\(A\oplus\epsilon A\)</span>; therefore <span class="math" data-tex="\(\delta(a)\)">\(\delta(a)\)</span> lies in the original ideal. This proves stability.</p>
+<p>At an algebraically closed smooth closed point, a nonzero derivation-stable ideal <span class="math" data-tex="\(J\)">\(J\)</span> equals <span class="math" data-tex="\(A\)">\(A\)</span>. Indeed a nonzero element has finite order in the completed power-series ring; repeated suitable coordinate derivatives lower that order until an element has nonzero constant term and is a unit. All these derivatives still belong to <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Now choose a minimal presentation (3.1) of <span class="math" data-tex="\(M_p\)">\(M_p\)</span> with <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. The entries of any finite generating relation matrix lie in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Their ideal is <span class="math" data-tex="\(\operatorname{Fitt}_{r-1}(M_p)\)">\(\operatorname{Fitt}_{r-1}(M_p)\)</span>, so it is proper. Its derivation stability forces it to be zero. Thus every relation entry is zero, <span class="math" data-tex="\(K=0\)">\(K=0\)</span>, and <span class="math" data-tex="\(M_p\)">\(M_p\)</span> is free. The rank-zero case follows from Nakayama. The open-neighborhood and field-descent arguments of Theorem 3.1 finish the proof globally. This proof, too, needs a connection but not its integrability.</p>
+<p><strong>Exercise 8.6 (medium).</strong> Classify the algebraic D-isomorphisms between <span class="math" data-tex="\(K_\lambda\)">\(K_\lambda\)</span> and <span class="math" data-tex="\(K_\mu\)">\(K_\mu\)</span> on <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>. Show that over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span> the answer agrees with the isomorphism classification of their horizontal local systems.</p>
+<p><strong>Solution.</strong> An isomorphism sends <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span> to <span class="math" data-tex="\(h e_\mu\)">\(h e_\mu\)</span> with <span class="math" data-tex="\(h\in B^\times\)">\(h\in B^\times\)</span>. Every Laurent-polynomial unit is <span class="math" data-tex="\(c x^n\)">\(c x^n\)</span>, <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>, <span class="math" data-tex="\(n\in\mathbf Z\)">\(n\in\mathbf Z\)</span>: the difference between its highest and lowest exponents adds under multiplication, so a unit has that difference zero. D-linearity requires <span class="math" data-tex="\(\theta(h)+\mu h=\lambda h\)">\(\theta(h)+\mu h=\lambda h\)</span>, which gives <span class="math" data-tex="\(n+\mu=\lambda\)">\(n+\mu=\lambda\)</span>. Hence the modules are isomorphic exactly when <span class="math" data-tex="\(\lambda-\mu\in\mathbf Z\)">\(\lambda-\mu\in\mathbf Z\)</span>. The horizontal local systems have monodromies <span class="math" data-tex="\(e^{-2\pi i\lambda}\)">\(e^{-2\pi i\lambda}\)</span> and <span class="math" data-tex="\(e^{-2\pi i\mu}\)">\(e^{-2\pi i\mu}\)</span>; these agree exactly under the same condition. This agreement for this family does not eliminate the exponential counterexample on the affine line.</p>
+<p><strong>Exercise 8.7 (hard).</strong> In characteristic <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, give a coherent nonfree module with an integrable connection on the affine line, and explain why it does not carry the action of every Grothendieck differential operator extending the usual multiplication action.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(M=k[x]/(x^p)\)">\(M=k[x]/(x^p)\)</span>, ordinary differentiation is well-defined because <span class="math" data-tex="\(\partial(x^p)=0\)">\(\partial(x^p)=0\)</span>, and defines a connection by <span class="math" data-tex="\(\nabla m=dx\otimes\partial m\)">\(\nabla m=dx\otimes\partial m\)</span>. In dimension one its curvature is zero. The module is finite and nonfree near zero. However, the Hasse operator <span class="math" data-tex="\(H_p(x^j)=\binom jp x^{j-p}\)">\(H_p(x^j)=\binom jp x^{j-p}\)</span> satisfies <span class="math" data-tex="\([H_p,x^p]=1\)">\([H_p,x^p]=1\)</span> as an operator on <span class="math" data-tex="\(k[x]\)">\(k[x]\)</span>, by the binomial identity <span class="math" data-tex="\(\binom{j+p}p=\binom jp+1\)">\(\binom{j+p}p=\binom jp+1\)</span> in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>. Since <span class="math" data-tex="\(x^p\)">\(x^p\)</span> acts by zero on <span class="math" data-tex="\(M\)">\(M\)</span>, its commutator with any endomorphism of <span class="math" data-tex="\(M\)">\(M\)</span> is zero; it cannot equal the identity on this nonzero module. Thus the connection does not extend to the full differential-operator ring. This pinpoints why both the connection-to-D-module argument and the order-lowering proof use characteristic zero.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The commutative algebra prerequisites are <a href="https://stacks.math.columbia.edu/tag/00DV">Nakayama's lemma, Stacks Tag 00DV</a>, separatedness <span class="math" data-tex="\(\bigcap_q\mathfrak m^qA=0\)">\(\bigcap_q\mathfrak m^qA=0\)</span> for a Noetherian local ring, and the local coordinate description of a smooth variety. For the separatedness assertion, <a href="https://stacks.math.columbia.edu/tag/00IP">Krull's intersection theorem, Stacks Tag 00IP</a>, states that <span class="math" data-tex="\(\bigcap_n I^nM=0\)">\(\bigcap_n I^nM=0\)</span> for a finite module over a Noetherian local ring and a proper ideal <span class="math" data-tex="\(I\)">\(I\)</span>; apply it to <span class="math" data-tex="\(M=A\)">\(M=A\)</span> and <span class="math" data-tex="\(I=\mathfrak m\)">\(I=\mathfrak m\)</span>. Étale coordinates identify the completed local ring at a rational smooth point with a formal power-series ring by nilpotent lifting, as discussed in Section 3. We also use the elementary flat-base-change identity for Tor, which follows by tensoring a free resolution with a flat algebra. Smooth coordinate charts and étale lifting were the geometric prerequisites of the preceding lesson.</p>
+<p>All four central equivalences and local-freeness assertions are proved here. We have not proved algebraic Riemann–Hilbert, a regularity criterion at the boundary of a compactification, or the extension theory of perverse sheaves. Nor have we identified flat connections with crystals on a de Rham prestack; that requires a later construction. The crystalline definitions in [Stacks, Tags 07IR and 07J5] provide background, with their own divided-power hypotheses, rather than a substitute for the characteristic-zero proofs above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project, <em>Crystalline Cohomology</em>, <a href="https://stacks.math.columbia.edu/tag/07J5">Tag 07J5, Connections</a>, and <a href="https://stacks.math.columbia.edu/tag/07IR">Tag 07IR, Crystals in modules</a>; <em>Sheaves of Modules</em>, <a href="https://stacks.math.columbia.edu/tag/0G3P">Tag 0G3P</a>. These sections were compared in the <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/crystalline.html#section-connections">AI Integrated Stacks Project English reader</a>, an edition with AI-proposed corrections and additions, not reviewed by the official Stacks maintainers.</li>
+<li>Edward Frenkel, <em>Lectures on the Langlands Program and Conformal Field Theory</em>, Sections 3.4–3.6, for cyclic equations, the Euler example and the distinction between algebraic and analytic descriptions. <a href="https://arxiv.org/abs/hep-th/0512172">Author's arXiv text</a>. The actions and sign conventions used here are derived from <span class="math" data-tex="\([\partial,x]=1\)">\([\partial,x]=1\)</span>.</li>
+<li>Alexander Beilinson and Vladimir Drinfeld, <em>Quantization of Hitchin's integrable system and Hecke eigensheaves</em>, Sections 7.2.1–7.2.3, for D-complexes, differential forms and tensor structures. Side-changing is given directly in Section 5 above; no derived equivalence from that appendix is required here.</li>
+<li>V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, for solution complexes of D-modules. Section 7 above computes the stalks and local monodromy of the Euler solution complex directly, without the general Riemann–Hilbert theorem.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/d-modules-flat-connections-and-local-systems.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

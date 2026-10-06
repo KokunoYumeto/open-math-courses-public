@@ -1,0 +1,391 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dense probes and reconstruction from colimits</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><p class="notice">Subsequent full independent model review: reviewer model not specified, Ultra; no corrections requested. This review covers the recorded version of this lesson and its specified prerequisite interfaces.</p><h1 id="dense-probes-and-reconstruction-from-colimits">Dense probes and reconstruction from colimits</h1>
+<p>A detecting family tells us whether a map is invertible. A dense family does more: it recovers every map from its action on the probes. This distinction matters when the goal is to reconstruct a category inside a presheaf category. The missing information is compatibility among tests, and colimits provide a way to assemble it.</p>
+<p>Fix a universe, take all Hom sets and the specified small diagrams in that universe, and let <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> be locally small. Use the category-of-elements convention and canonical presheaf density from <a href="ind-objects-through-their-elements.html">Ind-objects through their elements</a>, the componentwise detecting and separating conventions from <a href="generators-and-small-quotient-families.html">Generators and small quotient families</a>, and the coimage and strict-epimorphism results from <a href="coimages-images-and-composition-of-quotients.html">Coimages, images and composition of quotients</a>. An essentially small full subcategory may be replaced by a small skeleton. Closure of probes under a construction means closure up to isomorphism.</p>
+<h2 id="1-the-nerve-and-its-realization">1. The nerve and its realization</h2>
+<p>For a small full subcategory <span class="math" data-tex="\(\mathsf A\subset\mathsf C\)">\(\mathsf A\subset\mathsf C\)</span>, write <span class="math" data-tex="\(\widehat{\mathsf A}=\mathsf{Set}^{\mathsf A^{\rm op}}\)">\(\widehat{\mathsf A}=\mathsf{Set}^{\mathsf A^{\rm op}}\)</span> and define the restricted Yoneda functor, or nerve, by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N:\mathsf C\longrightarrow\widehat{\mathsf A},\\
+N(X)(T)=\operatorname{Hom}_{\mathsf C}(T,X).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+N:\mathsf C\longrightarrow\widehat{\mathsf A},\\
+N(X)(T)=\operatorname{Hom}_{\mathsf C}(T,X).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Maps in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> act by precomposition; maps in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> act by postcomposition. We call <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> <em>dense</em> if <span class="math" data-tex="\(N\)">\(N\)</span> is fully faithful. This is the restricted-Yoneda convention in <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Definition 6.5.11</a>. A dense family is detecting, because a fully faithful functor reflects isomorphisms: lift the inverse of the image map and use faithfulness for its two inverse identities.</p>
+<p>If <span class="math" data-tex="\(T\in\mathsf A\)">\(T\in\mathsf A\)</span>, fullness of the inclusion makes <span class="math" data-tex="\(N(T)\)">\(N(T)\)</span> the representable presheaf <span class="math" data-tex="\(h_T\)">\(h_T\)</span>. Yoneda therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(N(T),N(X))\\
+\simeq\operatorname{Hom}_{\mathsf C}(T,X).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(N(T),N(X))\\
+\simeq\operatorname{Hom}_{\mathsf C}(T,X).
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p><strong>Enlargement lemma.</strong> If <span class="math" data-tex="\(\mathsf A\subset\mathsf B\subset\mathsf C\)">\(\mathsf A\subset\mathsf B\subset\mathsf C\)</span> are small full subcategories and <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> is dense, then <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> is dense.</p>
+<p><strong>Proof.</strong> Restriction from <span class="math" data-tex="\(\mathsf B\)">\(\mathsf B\)</span> to <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> shows that the larger nerve is faithful. For a natural transformation <span class="math" data-tex="\(\alpha:N_{\mathsf B}(X)\to N_{\mathsf B}(Y)\)">\(\alpha:N_{\mathsf B}(X)\to N_{\mathsf B}(Y)\)</span>, density on <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> determines a unique map <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>. If <span class="math" data-tex="\(V\in\mathsf B\)">\(V\in\mathsf B\)</span>, <span class="math" data-tex="\(v:V\to X\)">\(v:V\to X\)</span>, <span class="math" data-tex="\(T\in\mathsf A\)">\(T\in\mathsf A\)</span>, and <span class="math" data-tex="\(s:T\to V\)">\(s:T\to V\)</span>, naturality gives</p>
+<span class="math math-display" data-tex="\[
+\alpha_V(v)s=\alpha_T(vs)=fvs.
+\]">\[
+\alpha_V(v)s=\alpha_T(vs)=fvs.
+\]</span>
+<p>The faithful smaller nerve distinguishes the maps <span class="math" data-tex="\(\alpha_V(v)\)">\(\alpha_V(v)\)</span> and <span class="math" data-tex="\(fv\)">\(fv\)</span>. Thus <span class="math" data-tex="\(\alpha=N_{\mathsf B}(f)\)">\(\alpha=N_{\mathsf B}(f)\)</span>. This proves fullness as well as uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Suppose now that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> admits all small colimits. For <span class="math" data-tex="\(P\in\widehat{\mathsf A}\)">\(P\in\widehat{\mathsf A}\)</span>, its element category <span class="math" data-tex="\(\mathsf E_P\)">\(\mathsf E_P\)</span> is small: its objects are pairs <span class="math" data-tex="\((T,p)\)">\((T,p)\)</span> with <span class="math" data-tex="\(p\in P(T)\)">\(p\in P(T)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+L(P)=\mathop{\rm colim}_{(T,p)\in\mathsf E_P}T.
+\tag{1.3}
+\]">\[
+L(P)=\mathop{\rm colim}_{(T,p)\in\mathsf E_P}T.
+\tag{1.3}
+\]</span>
+<p>This is the inclusion specialization of the canonical nerve–realization adjunction in <a href="https://emilyriehl.github.io/files/context.pdf">Riehl, Proposition 6.5.12</a>. Its exact interface is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(L(P),X)\\
+\simeq\lim_{\mathsf E_P^{\rm op}}
+\operatorname{Hom}_{\mathsf C}(T,X)\\
+\simeq\operatorname{Nat}(P,N(X)).
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(L(P),X)\\
+\simeq\lim_{\mathsf E_P^{\rm op}}
+\operatorname{Hom}_{\mathsf C}(T,X)\\
+\simeq\operatorname{Nat}(P,N(X)).
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>The last bijection uses the already retained presheaf density <span class="math" data-tex="\(P=\operatorname{colim}_{\mathsf E_P}h_T\)">\(P=\operatorname{colim}_{\mathsf E_P}h_T\)</span>, whose trivial-site specialization comes from <a href="https://stacks.math.columbia.edu/tag/00WO">Stacks, Lemma 7.12.6</a>. For an arrow <span class="math" data-tex="\(P\to Q\)">\(P\to Q\)</span>, the induced element-category functor and colimit cocone give <span class="math" data-tex="\(L(P)\to L(Q)\)">\(L(P)\to L(Q)\)</span>; their uniqueness proves identities and composition. The bijections in (1.4) are natural in both variables.</p>
+<p>Write <span class="math" data-tex="\(\eta:P\to NL(P)\)">\(\eta:P\to NL(P)\)</span> for the unit and <span class="math" data-tex="\(\epsilon:LN(X)\to X\)">\(\epsilon:LN(X)\to X\)</span> for the counit. The counit is the colimit map whose component at <span class="math" data-tex="\((T,a:T\to X)\)">\((T,a:T\to X)\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span>. The canonical adjunction criterion <a href="https://stacks.math.columbia.edu/tag/07RB">Stacks, Lemma 4.24.4</a> says that <span class="math" data-tex="\(N\)">\(N\)</span> is fully faithful exactly when this actual counit is invertible. Thus density is equivalent to reconstruction by the specified probe diagram:</p>
+<span class="math math-display" data-tex="\[
+\mathop{\rm colim}_{(T,a)\in\mathsf A/X}T
+\xrightarrow{\ \epsilon_X\ }X.
+\tag{1.5}
+\]">\[
+\mathop{\rm colim}_{(T,a)\in\mathsf A/X}T
+\xrightarrow{\ \epsilon_X\ }X.
+\tag{1.5}
+\]</span>
+<p>The assertion includes the structural map, rather than only an abstract isomorphism between its source and target.</p>
+<h2 id="2-which-presheaves-are-nerves">2. Which presheaves are nerves?</h2>
+<p>Assume throughout this section that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> admits small colimits and <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> is dense. For <span class="math" data-tex="\(P\in\widehat{\mathsf A}\)">\(P\in\widehat{\mathsf A}\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+H_P(X)=\operatorname{Nat}(N(X),P).
+\]">\[
+H_P(X)=\operatorname{Nat}(N(X),P).
+\]</span>
+<p>This is a functor on <span class="math" data-tex="\(\mathsf C^{\rm op}\)">\(\mathsf C^{\rm op}\)</span>. Say that it preserves limits in <span class="math" data-tex="\(\mathsf C^{\rm op}\)">\(\mathsf C^{\rm op}\)</span>, meaning that it sends every small colimit in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> to the corresponding limit of sets.</p>
+<p><strong>Theorem 2.1.</strong> The essential image of <span class="math" data-tex="\(N\)">\(N\)</span> consists exactly of the <span class="math" data-tex="\(P\)">\(P\)</span> with this property. Every functor <span class="math" data-tex="\(F:\mathsf C^{\rm op}\to\mathsf{Set}\)">\(F:\mathsf C^{\rm op}\to\mathsf{Set}\)</span> sending small colimits to limits is representable.</p>
+<p><strong>Proof of the image assertion.</strong> If <span class="math" data-tex="\(P=N(Y)\)">\(P=N(Y)\)</span>, full faithfulness identifies <span class="math" data-tex="\(H_P\)">\(H_P\)</span> with <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf C}(-,Y)\)">\(\operatorname{Hom}_{\mathsf C}(-,Y)\)</span>, which has the required property.</p>
+<p>Conversely, suppose <span class="math" data-tex="\(H_P\)">\(H_P\)</span> has that property. For any <span class="math" data-tex="\(Q\in\widehat{\mathsf A}\)">\(Q\in\widehat{\mathsf A}\)</span>, realization, probe Yoneda, and presheaf density identify</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}(NL(Q),P)\\
+\simeq\lim_{(T,q)\in\mathsf E_Q^{\rm op}}
+\operatorname{Nat}(N(T),P)\\
+\simeq\operatorname{Nat}(Q,P).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}(NL(Q),P)\\
+\simeq\lim_{(T,q)\in\mathsf E_Q^{\rm op}}
+\operatorname{Nat}(N(T),P)\\
+\simeq\operatorname{Nat}(Q,P).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>The map is precomposition with <span class="math" data-tex="\(\eta_Q\)">\(\eta_Q\)</span>, since its restrictions are precisely the element-indexed cocone maps. At <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span>, lift <span class="math" data-tex="\(\operatorname{id}_P\)">\(\operatorname{id}_P\)</span> to <span class="math" data-tex="\(v:NL(P)\to P\)">\(v:NL(P)\to P\)</span>. Then <span class="math" data-tex="\(v\eta_P=\operatorname{id}_P\)">\(v\eta_P=\operatorname{id}_P\)</span>. The object <span class="math" data-tex="\(NL(P)\)">\(NL(P)\)</span> already lies in the essential image, so (2.1) also holds with target <span class="math" data-tex="\(NL(P)\)">\(NL(P)\)</span>. The maps <span class="math" data-tex="\(\eta_Pv\)">\(\eta_Pv\)</span> and <span class="math" data-tex="\(\operatorname{id}_{NL(P)}\)">\(\operatorname{id}_{NL(P)}\)</span> have the same precomposition with <span class="math" data-tex="\(\eta_P\)">\(\eta_P\)</span>, hence are equal. Thus <span class="math" data-tex="\(\eta_P\)">\(\eta_P\)</span> is invertible and <span class="math" data-tex="\(P\simeq NL(P)\)">\(P\simeq NL(P)\)</span>. Both inverse identities have been checked.</p>
+<p><strong>Proof of representability.</strong> Restrict <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(\mathsf A^{\rm op}\)">\(\mathsf A^{\rm op}\)</span>, obtaining <span class="math" data-tex="\(P\)">\(P\)</span>. Reconstruction (1.5) and preservation give, naturally in <span class="math" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(X)\simeq
+\lim_{(T,a)\in(\mathsf A/X)^{\rm op}}F(T)\\
+\simeq\operatorname{Nat}(N(X),P).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+F(X)\simeq
+\lim_{(T,a)\in(\mathsf A/X)^{\rm op}}F(T)\\
+\simeq\operatorname{Nat}(N(X),P).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The first map sends an element to its restrictions along all <span class="math" data-tex="\(a:T\to X\)">\(a:T\to X\)</span>; the second records those restrictions as a natural transformation. Thus <span class="math" data-tex="\(H_P\simeq F\)">\(H_P\simeq F\)</span> has the required preservation property. The image assertion gives <span class="math" data-tex="\(P\simeq N(L(P))\)">\(P\simeq N(L(P))\)</span>, and full faithfulness now gives <span class="math" data-tex="\(F(X)\simeq\operatorname{Hom}_{\mathsf C}(X,L(P))\)">\(F(X)\simeq\operatorname{Hom}_{\mathsf C}(X,L(P))\)</span>. All comparisons respect arrows in <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These arguments do not require ordinary quotient classes to be small. They use a small dense collection of probes instead.</p>
+<h2 id="3-density-from-stability-under-base-change">3. Density from stability under base change</h2>
+<p>Assume that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has small colimits and finite limits. A specified class of colimits is <em>stable under base change</em> if, for every <span class="math" data-tex="\(T\to X\)">\(T\to X\)</span>, pulling back a diagram in <span class="math" data-tex="\(\mathsf C/X\)">\(\mathsf C/X\)</span> preserves its colimit. Colimits in a slice are computed in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>: the compatible structure maps to <span class="math" data-tex="\(X\)">\(X\)</span> determine the colimit's map to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> be an essentially small full subcategory whose objects form a componentwise detecting family. The generator results already proved imply that <span class="math" data-tex="\(N\)">\(N\)</span> is conservative and faithful. For clarity, faithfulness uses the equalizer <span class="math" data-tex="\(e:E\to Y\)">\(e:E\to Y\)</span> of two maps <span class="math" data-tex="\(Y\rightrightarrows Z\)">\(Y\rightrightarrows Z\)</span> with equal nerve. Every map from a probe factors uniquely through <span class="math" data-tex="\(e\)">\(e\)</span>, so <span class="math" data-tex="\(N(e)\)">\(N(e)\)</span> is invertible. Detection makes <span class="math" data-tex="\(e\)">\(e\)</span> invertible, and the original maps agree.</p>
+<p><strong>Theorem 3.1.</strong> The subcategory <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> is dense under either of these two assumptions:</p>
+<ul>
+<li>all small colimits are stable under base change;</li>
+<li>filtered small colimits are stable under base change, and <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> admits finite colimits which its inclusion in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> preserves.</li>
+</ul>
+<p><strong>Proof.</strong> We first prove a reconstruction test. Let <span class="math" data-tex="\(i\mapsto T_i\)">\(i\mapsto T_i\)</span> be a small diagram in <span class="math" data-tex="\(\mathsf A/X\)">\(\mathsf A/X\)</span>. Suppose that its specified comparison</p>
+<span class="math math-display" data-tex="\[
+\operatorname{colim}_i N(T_i)\longrightarrow N(X)
+\tag{3.1}
+\]">\[
+\operatorname{colim}_i N(T_i)\longrightarrow N(X)
+\tag{3.1}
+\]</span>
+<p>is invertible. Put <span class="math" data-tex="\(Y=\operatorname{colim}_iT_i\)">\(Y=\operatorname{colim}_iT_i\)</span>, with maps <span class="math" data-tex="\(j_i:T_i\to Y\)">\(j_i:T_i\to Y\)</span>, and write <span class="math" data-tex="\(u:Y\to X\)">\(u:Y\to X\)</span> for the comparison. The factorization of (3.1) through <span class="math" data-tex="\(N(Y)\)">\(N(Y)\)</span> makes <span class="math" data-tex="\(N(u)\)">\(N(u)\)</span> pointwise surjective.</p>
+<p>For any two indices <span class="math" data-tex="\(i,k\)">\(i,k\)</span>, the projections from <span class="math" data-tex="\(T_i\times_XT_k\)">\(T_i\times_XT_k\)</span> give two maps into <span class="math" data-tex="\(Y\)">\(Y\)</span>. Their nerves agree: the two maps into the presheaf colimit in (3.1) have the same image in <span class="math" data-tex="\(N(X)\)">\(N(X)\)</span>, and (3.1) is invertible. Faithfulness makes the original maps into <span class="math" data-tex="\(Y\)">\(Y\)</span> equal. Therefore the canonical inclusion of pullbacks is invertible:</p>
+<span class="math math-display" data-tex="\[
+T_i\times_YT_k\longrightarrow T_i\times_XT_k.
+\tag{3.2}
+\]">\[
+T_i\times_YT_k\longrightarrow T_i\times_XT_k.
+\tag{3.2}
+\]</span>
+<p>Indeed, the equality just obtained supplies the inverse into the left pullback, with both projections unchanged; the two inverse identities follow from the pullback universal property.</p>
+<p>Base-change stability applied twice identifies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{i,k}(T_i\times_YT_k)
+\simeq Y,\\
+\operatorname{colim}_{i,k}(T_i\times_XT_k)
+\simeq Y\times_XY.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{i,k}(T_i\times_YT_k)
+\simeq Y,\\
+\operatorname{colim}_{i,k}(T_i\times_XT_k)
+\simeq Y\times_XY.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>The map induced by (3.2) is the diagonal <span class="math" data-tex="\(Y\to Y\times_XY\)">\(Y\to Y\times_XY\)</span>, since both of its projections restrict to <span class="math" data-tex="\(j_i\)">\(j_i\)</span> on the first colimit cocone. It is invertible. A map with invertible diagonal is monic: for <span class="math" data-tex="\(a,b:V\to Y\)">\(a,b:V\to Y\)</span> with <span class="math" data-tex="\(ua=ub\)">\(ua=ub\)</span>, their pullback map <span class="math" data-tex="\(V\to Y\times_XY\)">\(V\to Y\times_XY\)</span> factors through that diagonal, forcing <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Hence <span class="math" data-tex="\(N(u)\)">\(N(u)\)</span> is pointwise injective as well as surjective. Detection makes <span class="math" data-tex="\(u\)">\(u\)</span> invertible.</p>
+<p>Under the first assumption, this test works for arbitrary <span class="math" data-tex="\(i\)">\(i\)</span>, including an empty index. Under the second, it works for filtered indices, because the two successive colimits in (3.3) are filtered.</p>
+<p>Apply the test to <span class="math" data-tex="\(\mathsf A/X\)">\(\mathsf A/X\)</span>. Canonical presheaf density identifies <span class="math" data-tex="\(\operatorname{colim}_{\mathsf A/X}N(T)\to N(X)\)">\(\operatorname{colim}_{\mathsf A/X}N(T)\to N(X)\)</span> with an isomorphism. In the second case, <span class="math" data-tex="\(\mathsf A/X\)">\(\mathsf A/X\)</span> is filtered: its initial probe maps to <span class="math" data-tex="\(X\)">\(X\)</span>; the coproduct of two probes supplies a common receiver; and the coequalizer in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> of parallel arrows over <span class="math" data-tex="\(X\)">\(X\)</span> is also their coequalizer in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>, so its structure map to <span class="math" data-tex="\(X\)">\(X\)</span> exists. These are all three filteredness conditions. The reconstruction test makes <span class="math" data-tex="\(\epsilon_X\)">\(\epsilon_X\)</span> invertible, and the canonical counit criterion proves density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Suppose <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has small colimits, finite limits, filtered colimits stable under base change, and a detecting object <span class="math" data-tex="\(G\)">\(G\)</span>. Then every colimit-to-limit functor <span class="math" data-tex="\(\mathsf C^{\rm op}\to\mathsf{Set}\)">\(\mathsf C^{\rm op}\to\mathsf{Set}\)</span> is representable.</p>
+<p><strong>Proof.</strong> Start with an initial object and <span class="math" data-tex="\(G\)">\(G\)</span>. Repeatedly adjoin one chosen pushout for every span among the objects already included, taking the full subcategory at each stage. Each stage is small by local smallness, and the union over the natural numbers is small.</p>
+<p>This union contains finite coproducts, since a coproduct is a pushout over the initial object. It also contains coequalizers: for <span class="math" data-tex="\(a,b\colon T\rightrightarrows V\)">\(a,b\colon T\rightrightarrows V\)</span>, take the pushout of</p>
+<span class="math math-display" data-tex="\[
+V\ \xleftarrow{\ [a,b]\ }\ T\amalg T\
+\xrightarrow{\ \nabla\ }\ T.
+\tag{3.4}
+\]">\[
+V\ \xleftarrow{\ [a,b]\ }\ T\amalg T\
+\xrightarrow{\ \nabla\ }\ T.
+\tag{3.4}
+\]</span>
+<p>A map from that pushout to <span class="math" data-tex="\(W\)">\(W\)</span> is exactly a map <span class="math" data-tex="\(v:V\to W\)">\(v:V\to W\)</span> with <span class="math" data-tex="\(va=vb\)">\(va=vb\)</span>; the other component is then forced to equal <span class="math" data-tex="\(va\)">\(va\)</span>. Thus its map from <span class="math" data-tex="\(V\)">\(V\)</span> is the coequalizer. Coproducts and coequalizers construct every finite colimit, so the inclusion preserves finite colimits. The family is detecting because it contains <span class="math" data-tex="\(G\)">\(G\)</span>. Apply the second case of Theorem 3.1 and then Theorem 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If filtered colimits commute with finite limits, the required base-change stability follows. For a filtered slice diagram, express each pullback as a finite limit. The colimits of the constant <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> diagrams are <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>, because a filtered category is nonempty and connected. Commutation therefore identifies the colimit of the pullbacks with the pullback of the colimit. Exactness is one sufficient condition, rather than an additional assumption in Corollary 3.2.</p>
+<h2 id="4-a-different-criterion-using-strict-quotients">4. A different criterion using strict quotients</h2>
+<p>Finite-colimit closure of the probes can be replaced by finite-coproduct closure if ordinary epimorphisms are strict.</p>
+<p><strong>Theorem 4.1.</strong> Suppose <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has small colimits and finite limits, filtered colimits are stable under base change, and every epimorphism is strict. If an essentially small full detecting subcategory <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> is closed under finite coproducts, then it is dense.</p>
+<p><strong>Proof.</strong> Again <span class="math" data-tex="\(N\)">\(N\)</span> is faithful and conservative. It also reflects pointwise surjective maps as epimorphisms. If <span class="math" data-tex="\(N(f)\)">\(N(f)\)</span> is surjective and <span class="math" data-tex="\(bf=cf\)">\(bf=cf\)</span>, every <span class="math" data-tex="\(a:T\to\operatorname{codom}(f)\)">\(a:T\to\operatorname{codom}(f)\)</span> from a probe lifts through <span class="math" data-tex="\(f\)">\(f\)</span>; hence <span class="math" data-tex="\(ba=ca\)">\(ba=ca\)</span>. Faithfulness of <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(b=c\)">\(b=c\)</span>.</p>
+<p>First let <span class="math" data-tex="\((Y_i\to X)_{i\in I}\)">\((Y_i\to X)_{i\in I}\)</span> be an arbitrary small filtered slice diagram, and put <span class="math" data-tex="\(Y_\infty=\operatorname{colim}_iY_i\)">\(Y_\infty=\operatorname{colim}_iY_i\)</span>. The diagonal <span class="math" data-tex="\(I\to I\times I\)">\(I\to I\times I\)</span> is cofinal. Its comma category at <span class="math" data-tex="\((i,k)\)">\((i,k)\)</span> consists of common receivers of <span class="math" data-tex="\(i,k\)">\(i,k\)</span>. It is nonempty by filteredness; two such receivers map to a common receiver, and filtered equalization of the two maps from <span class="math" data-tex="\(i\)">\(i\)</span> and the two from <span class="math" data-tex="\(k\)">\(k\)</span> makes those receiving maps compatible. Thus the comma category is connected, which is the cofinality convention retained from <a href="https://stacks.math.columbia.edu/tag/09WN">Stacks, Definition 4.17.1</a>. Consequently, two applications of base-change stability give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_i(Y_i\times_XY_i)\\
+\simeq\operatorname{colim}_{i,k}(Y_i\times_XY_k)\\
+\simeq Y_\infty\times_XY_\infty.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_i(Y_i\times_XY_i)\\
+\simeq\operatorname{colim}_{i,k}(Y_i\times_XY_k)\\
+\simeq Y_\infty\times_XY_\infty.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Coequalizers commute with these colimits by their universal property: a map out of either iterated colimit is the same compatible family of maps equalizing the same pairs. Thus, with the specified projections and comparison maps,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_i\operatorname{Coim}(Y_i\to X)\\
+\simeq\operatorname{Coim}(Y_\infty\to X).
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_i\operatorname{Coim}(Y_i\to X)\\
+\simeq\operatorname{Coim}(Y_\infty\to X).
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Fix <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the directed poset of finite subsets of the object set of <span class="math" data-tex="\(\mathsf A/X\)">\(\mathsf A/X\)</span>, including the empty subset. For <span class="math" data-tex="\(B\in J\)">\(B\in J\)</span>, let <span class="math" data-tex="\(S_B\)">\(S_B\)</span> be the coproduct of its probes, with its evaluation map to <span class="math" data-tex="\(X\)">\(X\)</span>. Choose a representative in <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> and the resulting coproduct injections; they determine coherent transition maps by the coproduct universal property.</p>
+<p>Every <span class="math" data-tex="\(a:T\to X\)">\(a:T\to X\)</span> is a summand of <span class="math" data-tex="\(S_{\{(T,a)\}}\to X\)">\(S_{\{(T,a)\}}\to X\)</span>. Hence <span class="math" data-tex="\(N(\operatorname{colim}_B S_B)\to N(X)\)">\(N(\operatorname{colim}_B S_B)\to N(X)\)</span> is pointwise surjective. Its source-to-<span class="math" data-tex="\(X\)">\(X\)</span> comparison <span class="math" data-tex="\(e\)">\(e\)</span> is epic, hence strict. Formula (4.2) and the coimage criterion already proved identify the specified cocone as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{B\in J}Q_B\simeq X,\\
+Q_B=\operatorname{Coim}(S_B\to X).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{B\in J}Q_B\simeq X,\\
+Q_B=\operatorname{Coim}(S_B\to X).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Set <span class="math" data-tex="\(M_B=\operatorname{Im}(N(S_B)\to N(X))\)">\(M_B=\operatorname{Im}(N(S_B)\to N(X))\)</span>, the pointwise image presheaf. For every <span class="math" data-tex="\(Z\)">\(Z\)</span>, there is a natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(Q_B,Z)\\
+\simeq\operatorname{Nat}(M_B,N(Z)).
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(Q_B,Z)\\
+\simeq\operatorname{Nat}(M_B,N(Z)).
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>To check it, a map from <span class="math" data-tex="\(Q_B\)">\(Q_B\)</span> is a map <span class="math" data-tex="\(S_B\to Z\)">\(S_B\to Z\)</span> equalizing the kernel pair. Probe Yoneda identifies maps from <span class="math" data-tex="\(S_B\)">\(S_B\)</span> with natural maps <span class="math" data-tex="\(N(S_B)\to N(Z)\)">\(N(S_B)\to N(Z)\)</span>, since <span class="math" data-tex="\(S_B\in\mathsf A\)">\(S_B\in\mathsf A\)</span>. The nerve preserves that kernel pair because each of its values is representable. Faithfulness of <span class="math" data-tex="\(N\)">\(N\)</span> ensures that the two original kernel-pair composites agree exactly when their nerves agree. Finally, the pointwise surjection <span class="math" data-tex="\(N(S_B)\to M_B\)">\(N(S_B)\to M_B\)</span> is the coequalizer of its kernel pair in presheaves, as checked in the earlier strict-morphism lesson. Its natural descent property gives (4.4), including uniqueness and both inverse maps.</p>
+<p>The <span class="math" data-tex="\(M_B\)">\(M_B\)</span> are increasing subpresheaves of <span class="math" data-tex="\(N(X)\)">\(N(X)\)</span>, and every element belongs to the singleton-summand image. Thus <span class="math" data-tex="\(\operatorname{colim}_B M_B=N(X)\)">\(\operatorname{colim}_B M_B=N(X)\)</span>. Combining this with (4.3) and (4.4) gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(X,Z)\\
+\simeq\lim_{B\in J^{\rm op}}\operatorname{Hom}_{\mathsf C}(Q_B,Z)\\
+\simeq\operatorname{Nat}(\operatorname{colim}_B M_B,N(Z))\\
+=\operatorname{Nat}(N(X),N(Z)).
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(X,Z)\\
+\simeq\lim_{B\in J^{\rm op}}\operatorname{Hom}_{\mathsf C}(Q_B,Z)\\
+\simeq\operatorname{Nat}(\operatorname{colim}_B M_B,N(Z))\\
+=\operatorname{Nat}(N(X),N(Z)).
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>The correspondence sends a map to its actual nerve, since every comparison was induced by the evaluation cocone. This proves full faithfulness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Theorem 4.1 assumes filtered base-change stability, without asserting that strict epimorphisms are stable under pullback. Those are different properties. Its finite-coproduct condition is sufficient; the exercises below show that some much smaller probe collections are already dense.</p>
+<h2 id="5-internal-homs-a-classification-and-a-failure-of-density">5. Internal Homs, a classification, and a failure of density</h2>
+<p><strong>Internal-Hom consequence.</strong> Suppose <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has small colimits, finite limits, all small colimits stable under base change, and a detecting object. Then for each <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> there is an object <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span> with natural bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(Z,[X,Y])\\
+\simeq\operatorname{Hom}_{\mathsf C}(Z\times X,Y).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C}(Z,[X,Y])\\
+\simeq\operatorname{Hom}_{\mathsf C}(Z\times X,Y).
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p><strong>Proof.</strong> Pullback along <span class="math" data-tex="\(X\to 1\)">\(X\to 1\)</span>, followed by forgetting the slice structure, is <span class="math" data-tex="\(Z\mapsto Z\times X\)">\(Z\mapsto Z\times X\)</span>. The first functor preserves all small colimits by assumption, and the second creates them. Therefore <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf C}(-\times X,Y)\)">\(\operatorname{Hom}_{\mathsf C}(-\times X,Y)\)</span> sends small colimits to limits. Construct a small dense subcategory as in Corollary 3.2 and apply Theorem 2.1. Representability gives (5.1), with its evaluation map. Precomposition in <span class="math" data-tex="\(X\)">\(X\)</span> and postcomposition in <span class="math" data-tex="\(Y\)">\(Y\)</span> determine the arrows between internal Homs by Yoneda; their identities and composites follow from the uniqueness of representing arrows. Thus the construction is contravariant in <span class="math" data-tex="\(X\)">\(X\)</span> and covariant in <span class="math" data-tex="\(Y\)">\(Y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.1.</strong> Under these same colimit and base-change assumptions, if a detecting object <span class="math" data-tex="\(G\)">\(G\)</span> has <span class="math" data-tex="\(\operatorname{End}_{\mathsf C}(G)=\{\operatorname{id}_G\}\)">\(\operatorname{End}_{\mathsf C}(G)=\{\operatorname{id}_G\}\)</span>, then <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is equivalent to <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>, to the ordered category <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, or to the terminal category.</p>
+<p><strong>Proof.</strong> The first case of Theorem 3.1 makes the single-object full subcategory on <span class="math" data-tex="\(G\)">\(G\)</span> dense. Its presheaf category is <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>. Hence <span class="math" data-tex="\(N=\operatorname{Hom}(G,-)\)">\(N=\operatorname{Hom}(G,-)\)</span> embeds <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> fully faithfully into sets, with left adjoint <span class="math" data-tex="\(L\)">\(L\)</span>; its essential image <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> is a full replete reflective subcategory. It contains a singleton because <span class="math" data-tex="\(N(G)\)">\(N(G)\)</span> is a singleton.</p>
+<p>If <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> contains a set <span class="math" data-tex="\(B\)">\(B\)</span> with distinct elements <span class="math" data-tex="\(b_0,b_1\)">\(b_0,b_1\)</span>, every reflection unit <span class="math" data-tex="\(r:S\to N(L(S))\)">\(r:S\to N(L(S))\)</span> is bijective. If <span class="math" data-tex="\(r\)">\(r\)</span> identified two distinct elements of <span class="math" data-tex="\(S\)">\(S\)</span>, a function <span class="math" data-tex="\(S\to B\)">\(S\to B\)</span> taking different values on those elements could not factor through it, contrary to reflection. If an element of <span class="math" data-tex="\(N(L(S))\)">\(N(L(S))\)</span> were outside the image of <span class="math" data-tex="\(r\)">\(r\)</span>, two functions from that set to <span class="math" data-tex="\(B\)">\(B\)</span>, equal on the image and different at that element, would contradict the uniqueness of factorization. Thus <span class="math" data-tex="\(r\)">\(r\)</span> is both injective and surjective for every <span class="math" data-tex="\(S\)">\(S\)</span>, including <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>. The image is all sets.</p>
+<p>Otherwise every set in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> has at most one element. Repleteness and the singleton already in <span class="math" data-tex="\(\mathsf D\)">\(\mathsf D\)</span> leave exactly two possibilities: it also contains the empty set, giving the category <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, or it does not, giving the terminal category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All three possibilities satisfy the hypotheses. For the ordered category <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>, colimits are joins of the diagram's object values, with the empty join equal to <span class="math" data-tex="\(0\)">\(0\)</span>; finite limits are meets. Pullback along <span class="math" data-tex="\(t\le x\)">\(t\le x\)</span> is meet with <span class="math" data-tex="\(t\)">\(t\)</span>, and meets in this two-element lattice distribute over arbitrary joins, including the empty one. Thus all colimits are stable under base change. The object <span class="math" data-tex="\(1\)">\(1\)</span> detects its only noninvertible map <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span>, since the induced map <span class="math" data-tex="\(\operatorname{Hom}(1,0)\to\operatorname{Hom}(1,1)\)">\(\operatorname{Hom}(1,0)\to\operatorname{Hom}(1,1)\)</span> is <span class="math" data-tex="\(\varnothing\to\{*\}\)">\(\varnothing\to\{*\}\)</span>. Its endomorphism is the identity. Sets satisfy the base-change condition because <span class="math" data-tex="\(\mathsf{Set}/X\)">\(\mathsf{Set}/X\)</span> is the category of <span class="math" data-tex="\(X\)">\(X\)</span>-indexed families of sets: colimits are computed in each fibre and pullback reindexes the fibres. The terminal category satisfies the conditions directly.</p>
+<p><strong>A detecting probe need not be dense.</strong> Over any field <span class="math" data-tex="\(k\)">\(k\)</span>, the single probe <span class="math" data-tex="\(k\)">\(k\)</span> detects linear isomorphisms, since <span class="math" data-tex="\(\operatorname{Hom}_k(k,V)\simeq V\)">\(\operatorname{Hom}_k(k,V)\simeq V\)</span>. Its endomorphisms test scalar multiplication but do not test addition. On <span class="math" data-tex="\(V=k^2\)">\(V=k^2\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+b(x,y)=
+\begin{cases}
+x,&amp;y=0,\\
+0,&amp;y\ne0.
+\end{cases}
+\tag{5.2}
+\]">\[
+b(x,y)=
+\begin{cases}
+x,&amp;y=0,\\
+0,&amp;y\ne0.
+\end{cases}
+\tag{5.2}
+\]</span>
+<p>For every scalar <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(b(av)=ab(v)\)">\(b(av)=ab(v)\)</span>: for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, vanishing of the second coordinate is unchanged, and the case <span class="math" data-tex="\(a=0\)">\(a=0\)</span> holds separately. Thus <span class="math" data-tex="\(b\)">\(b\)</span> defines a natural transformation between the nerves of <span class="math" data-tex="\(k^2\)">\(k^2\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span> on this single-object probe category. But <span class="math" data-tex="\(b(1,0)=1\)">\(b(1,0)=1\)</span>, <span class="math" data-tex="\(b(0,1)=0\)">\(b(0,1)=0\)</span>, and <span class="math" data-tex="\(b(1,1)=0\)">\(b(1,1)=0\)</span>, so it is not additive. The example works over every field, including the two-element field.</p>
+<p>The category of all <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces has all small colimits and finite limits, every epimorphism is strict, and filtered colimits commute with finite limits: every finite tuple and every finite list of linear equations is represented and checked at a common stage. Hence filtered colimits are stable under base change. The single probe fails finite-coproduct closure, and the example shows that this condition cannot simply be deleted from Theorem 4.1. It also shows that the first alternative of Theorem 3.1 cannot be replaced by filtered stability without another condition on the probes.</p>
+<h2 id="6-graded-exercises-with-complete-solutions">6. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (basic: one set as a dense probe).</strong> Fix a set <span class="math" data-tex="\(A\)">\(A\)</span> and take the full subcategory of <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span> consisting of <span class="math" data-tex="\(A\)">\(A\)</span> alone. Determine exactly when it is dense. In the dense case, recover an arbitrary map <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span> from an endomorphism-equivariant function <span class="math" data-tex="\(X^A\to Y^A\)">\(X^A\to Y^A\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(A=\varnothing\)">\(A=\varnothing\)</span>, every nerve is a singleton. The two maps <span class="math" data-tex="\(1\to2\)">\(1\to2\)</span> have the same nerve, so the functor is not faithful.</p>
+<p>Suppose <span class="math" data-tex="\(A\ne\varnothing\)">\(A\ne\varnothing\)</span>. A natural transformation is a function <span class="math" data-tex="\(T:X^A\to Y^A\)">\(T:X^A\to Y^A\)</span> commuting with precomposition by every self-map of <span class="math" data-tex="\(A\)">\(A\)</span>. Write <span class="math" data-tex="\(c_x:A\to X\)">\(c_x:A\to X\)</span> for a constant function. The function <span class="math" data-tex="\(T(c_x)\)">\(T(c_x)\)</span> is unchanged by every self-map of <span class="math" data-tex="\(A\)">\(A\)</span>, hence is constant: precomposition with the constant map at any <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> forces all its values to equal its value at <span class="math" data-tex="\(a\)">\(a\)</span>. Denote that value by <span class="math" data-tex="\(u(x)\)">\(u(x)\)</span>. For <span class="math" data-tex="\(f:A\to X\)">\(f:A\to X\)</span> and a constant self-map <span class="math" data-tex="\(d_a\)">\(d_a\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span>, equivariance gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(f)d_a=T(fd_a)\\
+=T(c_{f(a)})=c_{u(f(a))}.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+T(f)d_a=T(fd_a)\\
+=T(c_{f(a)})=c_{u(f(a))}.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>Evaluating at any point of <span class="math" data-tex="\(A\)">\(A\)</span> yields <span class="math" data-tex="\(T(f)(a)=u(f(a))\)">\(T(f)(a)=u(f(a))\)</span>. Thus <span class="math" data-tex="\(T(f)=u\circ f\)">\(T(f)=u\circ f\)</span>, and the constant functions recover <span class="math" data-tex="\(u\)">\(u\)</span> uniquely. Conversely every <span class="math" data-tex="\(u:X\to Y\)">\(u:X\to Y\)</span> has this equivariance. If <span class="math" data-tex="\(X\)">\(X\)</span> is empty, the nerve <span class="math" data-tex="\(X^A\)">\(X^A\)</span> is empty and the map out of it is unique, matching the unique map <span class="math" data-tex="\(\varnothing\to Y\)">\(\varnothing\to Y\)</span>. If <span class="math" data-tex="\(Y\)">\(Y\)</span> is empty and <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty, both kinds of maps are absent. Therefore the nerve is fully faithful exactly when <span class="math" data-tex="\(A\ne\varnothing\)">\(A\ne\varnothing\)</span>.</p>
+<p><strong>Exercise 2 (intermediate: one free module of rank at least two).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be an arbitrary unital ring, possibly noncommutative, and let <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> be finite. Prove that the single-object full subcategory on the left module <span class="math" data-tex="\(R^r\)">\(R^r\)</span> is dense in <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Deduce that the two probes <span class="math" data-tex="\(R,R^2\)">\(R,R^2\)</span> are dense as well.</p>
+<p><strong>Solution.</strong> Evaluation on the standard basis identifies <span class="math" data-tex="\(\operatorname{Hom}_R(R^r,X)\)">\(\operatorname{Hom}_R(R^r,X)\)</span> with <span class="math" data-tex="\(X^r\)">\(X^r\)</span>. If a left-linear endomorphism sends the <span class="math" data-tex="\(j\)">\(j\)</span>-th basis vector to <span class="math" data-tex="\(\sum_i a_{ji}e_i\)">\(\sum_i a_{ji}e_i\)</span>, precomposition sends a tuple to the tuple with entries <span class="math" data-tex="\(\sum_i a_{ji}x_i\)">\(\sum_i a_{ji}x_i\)</span>. Thus all coordinate selections, coordinate transfers, sums of two coordinates, and left scalar multiplications arise from probe endomorphisms. This basis description fixes the side of every scalar even when <span class="math" data-tex="\(R\)">\(R\)</span> is noncommutative.</p>
+<p>Let <span class="math" data-tex="\(T:X^r\to Y^r\)">\(T:X^r\to Y^r\)</span> commute with these operations. The zero operation gives <span class="math" data-tex="\(T(0)=0\)">\(T(0)=0\)</span>. Let <span class="math" data-tex="\(D_i\)">\(D_i\)</span> keep only coordinate <span class="math" data-tex="\(i\)">\(i\)</span>. Since <span class="math" data-tex="\(T D_i=D_iT\)">\(T D_i=D_iT\)</span>, the output on a tuple supported in coordinate <span class="math" data-tex="\(i\)">\(i\)</span> is supported there. Call its coordinate <span class="math" data-tex="\(u_i(x)\)">\(u_i(x)\)</span>. Transfer from coordinate <span class="math" data-tex="\(i\)">\(i\)</span> to coordinate <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(u_i=u_j\)">\(u_i=u_j\)</span>; call the common function <span class="math" data-tex="\(u\)">\(u\)</span>. Applying <span class="math" data-tex="\(D_i\)">\(D_i\)</span> to an arbitrary tuple now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T(x_1,\ldots,x_r)\\
+=(u(x_1),\ldots,u(x_r)).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+T(x_1,\ldots,x_r)\\
+=(u(x_1),\ldots,u(x_r)).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The operation <span class="math" data-tex="\((x_1,x_2,\ldots)\mapsto(x_1+x_2,0,\ldots)\)">\((x_1,x_2,\ldots)\mapsto(x_1+x_2,0,\ldots)\)</span> gives <span class="math" data-tex="\(u(x+y)=u(x)+u(y)\)">\(u(x+y)=u(x)+u(y)\)</span>. The operation <span class="math" data-tex="\((x_1,\ldots)\mapsto(ax_1,0,\ldots)\)">\((x_1,\ldots)\mapsto(ax_1,0,\ldots)\)</span> gives <span class="math" data-tex="\(u(ax)=au(x)\)">\(u(ax)=au(x)\)</span> for every <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span>. Together with <span class="math" data-tex="\(u(0)=0\)">\(u(0)=0\)</span>, this proves that <span class="math" data-tex="\(u\)">\(u\)</span> is a left-module homomorphism. Conversely every such homomorphism commutes with all the indicated linear combinations and hence with every probe endomorphism. This recovers all natural transformations and proves density, also for zero modules and the zero ring.</p>
+<p>Take <span class="math" data-tex="\(r=2\)">\(r=2\)</span> and apply the enlargement lemma to the full category on <span class="math" data-tex="\(R,R^2\)">\(R,R^2\)</span>. This proves its density without requiring it to contain every finite free module.</p>
+<p><strong>Exercise 3 (advanced: equivariant function objects).</strong> For an arbitrary group <span class="math" data-tex="\(H\)">\(H\)</span>, prove that the regular left <span class="math" data-tex="\(H\)">\(H\)</span>-set is a dense probe in all left <span class="math" data-tex="\(H\)">\(H\)</span>-sets. Check the base-change hypotheses for this category and construct its internal Hom, including its action and its empty-set cases.</p>
+<p><strong>Solution.</strong> Evaluation at the identity identifies <span class="math" data-tex="\(\operatorname{Hom}_H(H,X)\)">\(\operatorname{Hom}_H(H,X)\)</span> with the underlying set of <span class="math" data-tex="\(X\)">\(X\)</span>. Every equivariant endomorphism of <span class="math" data-tex="\(H\)">\(H\)</span> is right multiplication by a unique <span class="math" data-tex="\(h\)">\(h\)</span>. Precomposition by it acts on the evaluated element as left multiplication by <span class="math" data-tex="\(h\)">\(h\)</span>. Therefore natural maps between the single-probe nerves are exactly equivariant functions <span class="math" data-tex="\(X\to Y\)">\(X\to Y\)</span>, proving full faithfulness. An equivariant bijection has equivariant inverse, so this probe is detecting.</p>
+<p>Small colimits are set colimits with the induced action; finite limits are set limits with the componentwise action. Both assertions follow because the action respects the defining equivalence relations or compatible tuples, and the corresponding set universal maps remain equivariant. Pullbacks and slice colimits have these same underlying sets. Set colimits are stable under base change by the fibre calculation above, so the canonical equivariant comparison is an underlying bijection and hence invertible. Thus all the required colimits are stable under base change.</p>
+<p>Take the set of all functions <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, rather than only the equivariant ones, and give it the action</p>
+<span class="math math-display" data-tex="\[
+(h\cdot f)(x)=h\cdot f(h^{-1}\cdot x).
+\tag{6.3}
+\]">\[
+(h\cdot f)(x)=h\cdot f(h^{-1}\cdot x).
+\tag{6.3}
+\]</span>
+<p>The identity acts trivially. Substitution shows that <span class="math" data-tex="\(h\cdot(k\cdot f)=(hk)\cdot f\)">\(h\cdot(k\cdot f)=(hk)\cdot f\)</span>, so this is an <span class="math" data-tex="\(H\)">\(H\)</span>-set. For an equivariant <span class="math" data-tex="\(a:Z\times X\to Y\)">\(a:Z\times X\to Y\)</span>, put <span class="math" data-tex="\(\widetilde a(z)(x)=a(z,x)\)">\(\widetilde a(z)(x)=a(z,x)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\widetilde a(hz)(x)
+=h\,a(z,h^{-1}x)
+=(h\cdot\widetilde a(z))(x).
+\]">\[
+\widetilde a(hz)(x)
+=h\,a(z,h^{-1}x)
+=(h\cdot\widetilde a(z))(x).
+\]</span>
+<p>Thus currying gives an equivariant map into this function object. Conversely, evaluation of any such map is equivariant, since <span class="math" data-tex="\(f(hz)(hx)=h f(z)(x)\)">\(f(hz)(hx)=h f(z)(x)\)</span>. Currying and evaluation are inverse and natural in all three variables, proving (5.1) explicitly. If <span class="math" data-tex="\(X\)">\(X\)</span> is empty, the function object is a singleton with trivial action for every <span class="math" data-tex="\(Y\)">\(Y\)</span>. If <span class="math" data-tex="\(X\)">\(X\)</span> is nonempty and <span class="math" data-tex="\(Y\)">\(Y\)</span> is empty, it is empty. These include <span class="math" data-tex="\(X=Y=\varnothing\)">\(X=Y=\varnothing\)</span>, and the same inverse formulas verify all the cases.</p>
+<p><strong>Exercise 4 (expert: reflectors of sets and pullbacks).</strong> Classify full replete reflective subcategories of <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>. Determine which of their reflectors, viewed as endofunctors of sets, preserve finite limits. Show that all three reflectors preserve finite products.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(r:S\to R(S)\)">\(r:S\to R(S)\)</span> be the reflection unit. If the reflective subcategory contains a set with at least two elements, the separation and uniqueness argument in Theorem 5.1 makes every <span class="math" data-tex="\(r\)">\(r\)</span> bijective, so it is all of <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span>. Otherwise all its objects have at most one element. The unit <span class="math" data-tex="\(1\to R(1)\)">\(1\to R(1)\)</span> makes <span class="math" data-tex="\(R(1)\)">\(R(1)\)</span> nonempty, so repleteness puts <span class="math" data-tex="\(1\)">\(1\)</span> in the subcategory. It either also contains <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, or contains only singletons. This gives exactly the three categories in Theorem 5.1.</p>
+<p>Up to natural isomorphism, their reflectors are the identity, the constant singleton functor, and the support functor</p>
+<span class="math math-display" data-tex="\[
+S(X)=
+\begin{cases}
+\varnothing,&amp;X=\varnothing,\\
+1,&amp;X\ne\varnothing.
+\end{cases}
+\tag{6.4}
+\]">\[
+S(X)=
+\begin{cases}
+\varnothing,&amp;X=\varnothing,\\
+1,&amp;X\ne\varnothing.
+\end{cases}
+\tag{6.4}
+\]</span>
+<p>For the support case, maps to either a singleton or the empty set verify the reflection bijections: a map to the empty set exists exactly when the source is empty. The unit sends each element of a nonempty set to the sole point. The constant singleton similarly reflects into the singleton category.</p>
+<p>The identity and constant singleton preserve finite limits. The support functor preserves the terminal object and binary products, because a product of two sets is nonempty exactly when both factors are nonempty. The canonical product comparison is therefore a bijection in every case. The other two reflectors plainly preserve finite products as well.</p>
+<p>Support fails to preserve pullbacks. Map two singleton sets to a two-element set, choosing a different element for each map. Their pullback is empty, so its support is empty. After applying support, both arrows are <span class="math" data-tex="\(1\to1\)">\(1\to1\)</span>, whose pullback is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus support is not left exact. This does not contradict base-change stability inside the category <span class="math" data-tex="\(0&lt;1\)">\(0&lt;1\)</span>: a reflection's preservation of limits of arbitrary set diagrams is a separate assertion.</p>
+<p><em>Original lesson text: CC0 1.0. Canonical presheaf density and the nerve–realization adjunction are retained through checked interfaces; source prose is not reproduced. Self-checked; no independent review has occurred.</em></p>
+</main></body></html>

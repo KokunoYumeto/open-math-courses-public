@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="0F75B70088A3AAB6FC6BAD26AB8233C60B492BEDCF2740E7E2F40D77C7D56A5C">
+<title>Unitary representations and the two group C\* completions — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-OA-FLOW/repaired-20261004/group-representations-and-completions</span></nav>
+<article id="lesson" class="lesson"><p><span id="oa-flow.grp.setting"></span></p>
+<h1 id="unitary-representations-and-the-two-group-c-completions">Unitary representations and the two group C* completions</h1>
+<p><em>Original exposition, proofs and illustration source are dedicated under CC0.</em></p>
+<p>A unitary action of a group can be averaged against integrable functions. The resulting operators remember the action, including its intertwiners. Completing the integrable functions in the largest representation norm gives the full group C* algebra; completing in the left regular norm gives its reduced counterpart. They can have different norms.</p>
+<p>Throughout, <span class="math" data-tex="$G$">$G$</span> is a locally compact Hausdorff group. Neither <span class="math" data-tex="$G$">$G$</span> nor any Hilbert space is assumed separable. The group need not be second countable, sigma compact or unimodular. Inner products are linear in the first variable. A representation of an algebra means an algebraic complex linear star homomorphism into bounded operators; boundedness and nondegeneracy will be proved or explicitly required.</p>
+<p><span id="oa-flow.grp.import.foundations"></span></p>
+<h2 id="1-the-precise-earlier-inputs">1. The precise earlier inputs</h2>
+<p>The earlier <a href="haar-and-radon-foundations.html#hr-06">HR-06 Haar existence</a>, <a href="haar-and-radon-foundations.html#hr-07">HR-07 Haar uniqueness</a>, <a href="haar-and-radon-foundations.html#hr-03">HR-03 finite-set regularity and compact-continuous density</a>, <a href="haar-and-radon-foundations.html#hr-05">HR-05 qualified Radon-product Fubini and scalar tensor unitary</a>, <a href="haar-and-radon-foundations.html#hr-08">HR-08 sigma compact cosets</a> and <a href="haar-and-radon-foundations.html#hr-09">HR-09 both Haar conventions and finite-exponent isometry</a> are the actual measure proofs. Compact cutoffs, finite partitions and the abstract tensor construction are the whole earlier <a href="compact-topology-and-hilbert-tensors.html#l138-h0">H0: compact topology and Hilbert tensor</a>. Scalar convergence and norms are <a href="scalar-measure-convergence-and-calculus.html#sc-03">SC-03</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-04">SC-04</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-05">SC-05</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-06">SC-06</a>, <a href="scalar-measure-convergence-and-calculus.html#sc-07">SC-07</a>. Hilbert completion is <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.10">CF-10</a>; projection, linear Riesz and adjoints are <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.8">CF-8</a>, and the bounded-form operator corollary is <a href="integration-lemmas.html#KTCP-INTEGRATION-FORM-001">Theorem 1.1 of the integration lemmas</a>; continuous calculus, positivity, order and forced unitization are <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.6">CF-6</a>, <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.7">CF-7</a>, <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.8">CF-8</a>, <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.9">CF-9</a>. The quotient facts are proved locally in Section 10. Vector integration, convolution, automatic boundedness and representation correspondence are proved here.</p>
+<p>These are written earlier programme proof bodies at arbitrary LCH and arbitrary-Hilbert-space generality. <a href="haar-and-radon-foundations.html#hr-05">HR-05</a> uses the Radon product on the full product Borel sigma algebra, and its general Borel Tonelli/Fubini assertion retains the exact sigma-finite carrier qualification. <a href="haar-and-radon-foundations.html#hr-09">HR-09</a> identifies finite-exponent equivalence classes while retaining distinct raw measurable/null conventions. <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.1">CF-1</a> supplies the explicitly declared choice and scalar primitives. The actual earlier theorem bodies, rather than an external bibliography, provide these inputs.</p>
+<p><span id="oa-flow.grp.haarconventions"></span></p>
+<h2 id="2-which-haar-measurable-functions-are-being-used">2. Which Haar measurable functions are being used?</h2>
+<p>Fix an outer regular Radon left Haar measure <span class="math" data-tex="$\mu_o$">$\mu_o$</span>, completed on its global null sets. It is finite on compact sets and inner regular on open sets and on measurable sets of finite measure. For a non sigma compact group, it need not be inner regular on every Borel set.</p>
+<p><span id="lemma-2-1"></span><strong>Lemma 2.1 (a decomposition into sigma compact pieces).</strong> There is an open and closed sigma compact subgroup <span class="math" data-tex="$H$">$H$</span> of <span class="math" data-tex="$G$">$G$</span>. Its left cosets are open and closed, and every compact subset of <span class="math" data-tex="$G$">$G$</span> meets only finitely many of them.</p>
+<p><strong>Proof.</strong> Choose a compact symmetric neighbourhood <span class="math" data-tex="$C=C^{-1}$">$C=C^{-1}$</span> of the identity, and set <span class="math" data-tex="$H=\bigcup_{n\geq1}C^n$">$H=\bigcup_{n\geq1}C^n$</span>. Products of compact sets are compact; this union is a subgroup. Since <span class="math" data-tex="$C$">$C$</span> contains an open identity neighbourhood <span class="math" data-tex="$V$">$V$</span>, every <span class="math" data-tex="$h\in H$">$h\in H$</span> has <span class="math" data-tex="$hV\subset H$">$hV\subset H$</span>, so <span class="math" data-tex="$H$">$H$</span> is open. Its complement is a union of open cosets, so it is closed. The cosets form an open cover of any compact set; a finite subcover proves the last assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>On each coset <span class="math" data-tex="$D$">$D$</span>, the completed restriction of <span class="math" data-tex="$\mu_o$">$\mu_o$</span> is a sigma-finite measure <span class="math" data-tex="$\mu_D$">$\mu_D$</span>. Let <span class="math" data-tex="$\Sigma_\ell$">$\Sigma_\ell$</span> consist of sets <span class="math" data-tex="$A\subset G$">$A\subset G$</span> whose sections <span class="math" data-tex="$A\cap D$">$A\cap D$</span> are measurable for all these measures, and put</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="$$
+\mu_\ell(A)=\sum_D\mu_D(A\cap D).
+\tag{2.1}
+$$">$$
+\mu_\ell(A)=\sum_D\mu_D(A\cap D).
+\tag{2.1}
+$$</span>
+<p>An uncountable sum of nonnegative numbers means the supremum of its finite subsums. This defines a complete measure: countable additivity follows by interchanging the supremum of finite subsums with the sum of nonnegative terms, and completeness follows separately on every coset. This is the locally determined Haar convention used for pointwise representatives in this lesson.</p>
+<p><span id="lemma-2-2"></span><strong>Lemma 2.2 (finite-exponent comparison).</strong> For <span class="math" data-tex="$1\leq p&lt;\infty$">$1\leq p&lt;\infty$</span>, restriction to cosets gives a canonical isometric identification</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="$$
+L^p(G,\mu_o)\ \cong\ L^p(G,\mu_\ell).
+\tag{2.2}
+$$">$$
+L^p(G,\mu_o)\ \cong\ L^p(G,\mu_\ell).
+\tag{2.2}
+$$</span>
+<p>Every class on the right has a representative which is zero outside a sigma compact Borel set. A set is <span class="math" data-tex="$\mu_\ell$">$\mu_\ell$</span>-null exactly when its intersection with every compact set is <span class="math" data-tex="$\mu_o$">$\mu_o$</span>-null.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$\sum_D b_D&lt;\infty$">$\sum_D b_D&lt;\infty$</span>, then for each <span class="math" data-tex="$n$">$n$</span> only finitely many <span class="math" data-tex="$b_D$">$b_D$</span> are at least <span class="math" data-tex="$1/n$">$1/n$</span>; hence only countably many are nonzero. Applied to <span class="math" data-tex="$b_D=\int_D|f|^p\,d\mu_D$">$b_D=\int_D|f|^p\,d\mu_D$</span>, this shows that an integrable <span class="math" data-tex="$f$">$f$</span> has only countably many nonzero section classes. Set it equal to zero on the other cosets. On each remaining coset choose a Borel representative, possible by completion. Their union is a sigma compact open set, and the representative extended by zero is globally Borel.</p>
+<p>Conversely, a globally <span class="math" data-tex="$\mu_o$">$\mu_o$</span>-integrable <span class="math" data-tex="$f$">$f$</span> has sigma compact support modulo a global null set. Indeed, every set <span class="math" data-tex="$\{|f|&gt;1/n\}$">$\{|f|&gt;1/n\}$</span> has finite measure. By finite-set inner regularity choose countably many compact subsets whose union exhausts that set modulo a null set. Taking their union over <span class="math" data-tex="$n$">$n$</span> proves the claim. A compact support meets finitely many cosets, so countable additivity on this sigma compact carrier gives equality of the two integrals. The same argument applied to a difference of representatives proves injectivity. Surjectivity was proved in the first paragraph.</p>
+<p>If a set is null in every coset, each compact intersection is null by the finite-coset assertion. Conversely, an exhaustion of a coset by countably many compact sets shows that compact-local nullity implies nullity in that coset. This also shows that (2.1) is independent of the chosen <span class="math" data-tex="$H$">$H$</span>: for <span class="math" data-tex="$A\in\Sigma_\ell$">$A\in\Sigma_\ell$</span>,</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="$$
+\mu_\ell(A)=\sup_{K\subset G\ {\rm compact}}\mu_o(A\cap K).
+\tag{2.3}
+$$">$$
+\mu_\ell(A)=\sup_{K\subset G\ {\rm compact}}\mu_o(A\cap K).
+\tag{2.3}
+$$</span>
+<p>On a coset, inner regularity on finite sets and exhaustion give the equality, and finite unions of its compact approximants give the equality for the direct sum. The criterion of measurability is likewise intrinsic: on each sigma compact coset it is enough to check its intersections with compact sets. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The raw measures are different in general. On <span class="math" data-tex="$G=\mathbb R\times\mathbb R_d$">$G=\mathbb R\times\mathbb R_d$</span>, with the second copy discrete, the set <span class="math" data-tex="$S=\{0\}\times\mathbb R_d$">$S=\{0\}\times\mathbb R_d$</span> meets every compact set in a null set. Thus <span class="math" data-tex="$\mu_\ell(S)=0$">$\mu_\ell(S)=0$</span>. Every open neighbourhood of <span class="math" data-tex="$S$">$S$</span>, however, has a positive interval section in each of uncountably many components, so its outer regular product Haar measure is infinite and <span class="math" data-tex="$\mu_o(S)=\infty$">$\mu_o(S)=\infty$</span>. Equation (2.2) concerns integrable equivalence classes; it does not equate these raw null sets.</p>
+<p>We write <span class="math" data-tex="$L^p(G)$">$L^p(G)$</span> for (2.2). Scalar representatives can always be chosen Borel with sigma compact carriers. In a multiple integral we use the <strong>Radon product</strong>, not an unrestricted non sigma-finite ordinary product. The earlier Radon-product Fubini theorem applies to Borel integrands with sigma-finite support. In particular, it applies on products of the carriers just constructed. No equality between the full Borel sigma algebra of a product and the product of the Borel sigma algebras is asserted.</p>
+<p><span id="oa-flow.grp.translations"></span></p>
+<h2 id="3-translations-the-modular-function-and-inversion">3. Translations, the modular function and inversion</h2>
+<p>Write <span class="math" data-tex="$L_s f(t)=f(s^{-1}t)$">$L_s f(t)=f(s^{-1}t)$</span>. There is a unique scalar <span class="math" data-tex="$\Delta(s)&gt;0$">$\Delta(s)&gt;0$</span> such that <span class="math" data-tex="$\mu_o(Es)=\Delta(s)\mu_o(E)$">$\mu_o(Es)=\Delta(s)\mu_o(E)$</span>. Indeed, right translation transports <span class="math" data-tex="$\mu_o$">$\mu_o$</span> to another left Haar measure, so Haar uniqueness applies. It follows successively that</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="$$
+\Delta(sr)=\Delta(s)\Delta(r),\qquad
+\int f(ts)\,dt=\Delta(s)^{-1}\int f(t)\,dt.
+\tag{3.1}
+$$">$$
+\Delta(sr)=\Delta(s)\Delta(r),\qquad
+\int f(ts)\,dt=\Delta(s)^{-1}\int f(t)\,dt.
+\tag{3.1}
+$$</span>
+<p>The second formula is first checked for indicators and then extended by simple approximation and scalar convergence. These identities pass to the locally determined convention by Lemma 2.2 and compact-local nullity.</p>
+<p>For <span class="math" data-tex="$f\in C_c(G)$">$f\in C_c(G)$</span>, left and right translates tend uniformly to <span class="math" data-tex="$f$">$f$</span> as <span class="math" data-tex="$s\to e$">$s\to e$</span>. One proof uses the continuous map <span class="math" data-tex="$(s,t)\mapsto f(s^{-1}t)-f(t)$">$(s,t)\mapsto f(s^{-1}t)-f(t)$</span>: on a fixed compact neighbourhood of <span class="math" data-tex="$\operatorname{supp}f$">$\operatorname{supp}f$</span>, finitely many product neighbourhoods bound it by any given <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>; outside that compact set both terms are zero for <span class="math" data-tex="$s$">$s$</span> in a sufficiently small relatively compact neighbourhood. The map <span class="math" data-tex="$(s,t)\mapsto f(ts)-f(t)$">$(s,t)\mapsto f(ts)-f(t)$</span> gives the right-hand assertion by the same finite-cover argument.</p>
+<p>For a nonzero positive <span class="math" data-tex="$f\in C_c(G)$">$f\in C_c(G)$</span>, the translated supports lie in one compact set locally in <span class="math" data-tex="$s$">$s$</span>. Therefore <span class="math" data-tex="$s\mapsto\int f(ts)\,dt$">$s\mapsto\int f(ts)\,dt$</span> is continuous. Equation (3.1) shows that <span class="math" data-tex="$\Delta^{-1}$">$\Delta^{-1}$</span>, and hence <span class="math" data-tex="$\Delta$">$\Delta$</span>, is continuous. Positivity of <span class="math" data-tex="$\int f$">$\int f$</span> follows from Haar positivity: if a nonempty open set had measure zero, its translates would cover every compact set by finitely many null sets, contradicting nonzero Haar measure and open-set inner regularity.</p>
+<p>The exact inversion identity is</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="$$
+\int f(s^{-1})\Delta(s^{-1})\,ds=\int f(s)\,ds.
+\tag{3.2}
+$$">$$
+\int f(s^{-1})\Delta(s^{-1})\,ds=\int f(s)\,ds.
+\tag{3.2}
+$$</span>
+<p>Here is a normalization proof without Radon-Nikodym. Let <span class="math" data-tex="$Tf(s)=f(s^{-1})\Delta(s^{-1})$">$Tf(s)=f(s^{-1})\Delta(s^{-1})$</span>. The positive functional <span class="math" data-tex="$J(f)=\int Tf$">$J(f)=\int Tf$</span> on <span class="math" data-tex="$C_c(G)$">$C_c(G)$</span> is left invariant: substituting <span class="math" data-tex="$s=tr^{-1}$">$s=tr^{-1}$</span> in <span class="math" data-tex="$J(L_r f)$">$J(L_r f)$</span>, the factor <span class="math" data-tex="$\Delta(r)^{-1}$">$\Delta(r)^{-1}$</span> from right translation cancels the factor <span class="math" data-tex="$\Delta(r)$">$\Delta(r)$</span> in <span class="math" data-tex="$\Delta(s^{-1})$">$\Delta(s^{-1})$</span>. Thus <span class="math" data-tex="$J=cI$">$J=cI$</span> by Haar uniqueness. But <span class="math" data-tex="$T^2=1$">$T^2=1$</span>, and for <span class="math" data-tex="$0\ne g\in C_c(G)_+$">$0\ne g\in C_c(G)_+$</span> the function <span class="math" data-tex="$h=g+Tg$">$h=g+Tg$</span> is positive and <span class="math" data-tex="$Th=h$">$Th=h$</span>. Hence <span class="math" data-tex="$J(h)=I(h)&gt;0$">$J(h)=I(h)&gt;0$</span> forces <span class="math" data-tex="$c=1$">$c=1$</span>. Simple approximation and convergence extend the identity to nonnegative Borel and integrable functions. Inversion preserves compact-local null sets because its weighted transported measure has the same null sets on each compact set.</p>
+<p><span id="lemma-3-1"></span><strong>Lemma 3.1 (density and norm continuity).</strong> <span class="math" data-tex="$C_c(G)$">$C_c(G)$</span> is dense in <span class="math" data-tex="$L^p(G)$">$L^p(G)$</span> for finite <span class="math" data-tex="$p$">$p$</span>, <span class="math" data-tex="$L_s$">$L_s$</span> is an isometry on each such space, and</p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="$$
+R_s f(t)=\Delta(s)^{-1}f(ts^{-1})
+\tag{3.3}
+$$">$$
+R_s f(t)=\Delta(s)^{-1}f(ts^{-1})
+\tag{3.3}
+$$</span>
+<p>is an isometry on <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>. Both <span class="math" data-tex="$s\mapsto L_s f$">$s\mapsto L_s f$</span> and <span class="math" data-tex="$s\mapsto R_s f$">$s\mapsto R_s f$</span> are norm continuous on <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>; <span class="math" data-tex="$s\mapsto L_s f$">$s\mapsto L_s f$</span> is norm continuous on <span class="math" data-tex="$L^2(G)$">$L^2(G)$</span>.</p>
+<p><strong>Proof.</strong> Simple functions of finite-measure sets are dense by truncation and scalar convergence. Use Lemma 2.2 to choose a globally <span class="math" data-tex="$\mu_o$">$\mu_o$</span>-finite Borel representative of each such indicator class. For this representative <span class="math" data-tex="$E$">$E$</span>, choose a compact <span class="math" data-tex="$K\subset E$">$K\subset E$</span> and an open <span class="math" data-tex="$U\supset E$">$U\supset E$</span> with <span class="math" data-tex="$\mu_o(U\setminus K)$">$\mu_o(U\setminus K)$</span> small, and a compact cutoff <span class="math" data-tex="$0\leq h\leq1$">$0\leq h\leq1$</span> which is one on <span class="math" data-tex="$K$">$K$</span> and supported in <span class="math" data-tex="$U$">$U$</span>. Then <span class="math" data-tex="$|1_E-h|^p\leq1_{U\setminus K}$">$|1_E-h|^p\leq1_{U\setminus K}$</span>. This proves density. Left invariance and (3.1) prove the norm identities. For <span class="math" data-tex="$C_c$">$C_c$</span> functions, uniform continuity, locally common compact supports and continuity of <span class="math" data-tex="$\Delta$">$\Delta$</span> prove the asserted norm continuity. For a general <span class="math" data-tex="$f$">$f$</span>, approximate by <span class="math" data-tex="$h\in C_c$">$h\in C_c$</span> and bound the error of either isometric translate by <span class="math" data-tex="$2\|f-h\|_p$">$2\|f-h\|_p$</span>. Continuity at every <span class="math" data-tex="$s$">$s$</span> follows from the group law. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="oa-flow.grp.vectorintegration"></span></p>
+<h2 id="4-vector-integrals-and-the-hilbert-tensor-identification">4. Vector integrals and the Hilbert tensor identification</h2>
+<p>Let <span class="math" data-tex="$E$">$E$</span> be any Banach space. A <strong>strongly measurable</strong> function on a sigma-finite carrier is an almost everywhere limit of finite-valued measurable simple functions. Its range is contained, outside a null set, in the closure of a countable set. Conversely, a measurable function with such a separable essential range has simple approximants: use a countable <span class="math" data-tex="$1/n$">$1/n$</span>-net in the range, partition according to the first net point within <span class="math" data-tex="$1/n$">$1/n$</span>, and then truncate the partition, the norm and a finite-measure exhaustion of the carrier. Only countably many approximants and exceptional sets occur. This definition does not assume that <span class="math" data-tex="$E$">$E$</span> itself is separable.</p>
+<p>For arbitrary <span class="math" data-tex="$G$">$G$</span>, define <span class="math" data-tex="$L^1(G,E)$">$L^1(G,E)$</span> using these strongly measurable representatives on a sigma compact carrier, extended by zero, and <span class="math" data-tex="$\int\|F\|&lt;\infty$">$\int\|F\|&lt;\infty$</span>, with compact-local almost everywhere equality. This agrees with the locally strongly measurable, integrable convention: section norm integrability leaves only countably many nonzero cosets; on each such coset strong measurability and completion give a global representative. Countably many separable essential ranges have a separable closed linear span.</p>
+<p><span id="proposition-4-1"></span><strong>Proposition 4.1 (Bochner integral).</strong> The space <span class="math" data-tex="$L^1(G,E)$">$L^1(G,E)$</span> is a Banach space. It has a unique bounded linear integral agreeing with</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="$$
+\int \sum_{j=1}^m1_{A_j}(s)x_j\,ds
+=\sum_{j=1}^m\mu_\ell(A_j)x_j
+\tag{4.1}
+$$">$$
+\int \sum_{j=1}^m1_{A_j}(s)x_j\,ds
+=\sum_{j=1}^m\mu_\ell(A_j)x_j
+\tag{4.1}
+$$</span>
+<p>for disjoint finite-measure sets. It satisfies</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="$$
+\left\|\int F\right\|\leq\int\|F\|,\qquad
+B\!\left(\int F\right)=\int BF
+\tag{4.2}
+$$">$$
+\left\|\int F\right\|\leq\int\|F\|,\qquad
+B\!\left(\int F\right)=\int BF
+\tag{4.2}
+$$</span>
+<p>for every bounded linear map <span class="math" data-tex="$B:E\to E&#x27;$">$B:E\to E&#x27;$</span>. Continuous compactly supported <span class="math" data-tex="$E$">$E$</span>-valued functions are integrable and dense in this space.</p>
+<p><strong>Proof.</strong> The norm inequality in (4.2) for simple functions is the triangle inequality. Simple approximation as described above gives <span class="math" data-tex="$L^1$">$L^1$</span> approximation: first discard the norm tail and the complement of a finite-measure member of an exhaustion; approximate the bounded range there to accuracy <span class="math" data-tex="$\varepsilon/\mu(A)$">$\varepsilon/\mu(A)$</span>, then discard the remaining finitely truncated partition tail. Thus the simple integral extends uniquely to the completion, with (4.2).</p>
+<p>For completeness, choose from a Cauchy sequence a subsequence <span class="math" data-tex="$F_n$">$F_n$</span> with <span class="math" data-tex="$\sum_n\|F_{n+1}-F_n\|_1&lt;\infty$">$\sum_n\|F_{n+1}-F_n\|_1&lt;\infty$</span>. Scalar monotone convergence gives <span class="math" data-tex="$\sum_n\|F_{n+1}(s)-F_n(s)\|&lt;\infty$">$\sum_n\|F_{n+1}(s)-F_n(s)\|&lt;\infty$</span> almost everywhere on the union of their carriers. Completeness of <span class="math" data-tex="$E$">$E$</span> produces a pointwise limit <span class="math" data-tex="$F$">$F$</span>. Its range is in one separable closed linear span; its simple approximants, or diagonal approximants to <span class="math" data-tex="$F_n$">$F_n$</span>, show strong measurability. Fatou's inequality, which follows by applying monotone convergence to the infima of scalar tails, gives
+<span class="math" data-tex="$\|F-F_n\|_1\leq\sum_{k\geq n}\|F_{k+1}-F_k\|_1\to0$">$\|F-F_n\|_1\leq\sum_{k\geq n}\|F_{k+1}-F_k\|_1\to0$</span>.
+Thus the completion is the stated function space. The full Cauchy sequence has this limit. Bounded-map compatibility follows first on simple functions and then from the norm bound.</p>
+<p>A compact image in a metric Banach space is separable: choose finite <span class="math" data-tex="$1/n$">$1/n$</span>-nets for all <span class="math" data-tex="$n$">$n$</span>. A continuous compactly supported function therefore is strongly measurable, with bounded norm and finite-measure support. To prove density, approximate each indicator in a simple function by the compact cutoffs from Lemma 3.1 and multiply by its fixed vector. Their finite sums lie in <span class="math" data-tex="$C_c(G,E)$">$C_c(G,E)$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The same summable-difference argument proves completeness of <span class="math" data-tex="$L^2(G,K)$">$L^2(G,K)$</span> for any Hilbert space <span class="math" data-tex="$K$">$K$</span>, with norm squared <span class="math" data-tex="$\int\|F(s)\|^2\,ds$">$\int\|F(s)\|^2\,ds$</span>. More explicitly, for a subsequence with <span class="math" data-tex="$\sum_n\|F_{n+1}-F_n\|_2&lt;\infty$">$\sum_n\|F_{n+1}-F_n\|_2&lt;\infty$</span>, the scalar <span class="math" data-tex="$L^2$">$L^2$</span> triangle inequality bounds the <span class="math" data-tex="$L^2$">$L^2$</span> norm of every partial sum of <span class="math" data-tex="$\sum_n\|F_{n+1}(s)-F_n(s)\|$">$\sum_n\|F_{n+1}(s)-F_n(s)\|$</span> by that finite total. Monotone convergence applied to the squared partial sums gives a finite squared integral for the full sum, so it is finite almost everywhere. Pointwise convergence and the <span class="math" data-tex="$L^2$">$L^2$</span> norm bound on each tail now give a strongly measurable <span class="math" data-tex="$L^2$">$L^2$</span> limit. Simple functions of finite-measure sets are dense by truncation, finite-measure exhaustion and range approximation as above.</p>
+<p><span id="proposition-4-2"></span><strong>Proposition 4.2 (tensor identification).</strong> For every Hilbert space <span class="math" data-tex="$K$">$K$</span>, the rule</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="$$
+J(h\otimes\xi)(s)=h(s)\xi
+\tag{4.3}
+$$">$$
+J(h\otimes\xi)(s)=h(s)\xi
+\tag{4.3}
+$$</span>
+<p>extends to a unitary <span class="math" data-tex="$J:L^2(G)\otimes K\longrightarrow L^2(G,K)$">$J:L^2(G)\otimes K\longrightarrow L^2(G,K)$</span>.</p>
+<p><strong>Proof.</strong> For finite sums, scalar integration gives</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="$$
+\left\langle\sum_i h_i\xi_i,\sum_j k_j\eta_j\right\rangle
+=\sum_{i,j}\langle h_i,k_j\rangle_{L^2}\langle\xi_i,\eta_j\rangle_K.
+\tag{4.4}
+$$">$$
+\left\langle\sum_i h_i\xi_i,\sum_j k_j\eta_j\right\rangle
+=\sum_{i,j}\langle h_i,k_j\rangle_{L^2}\langle\xi_i,\eta_j\rangle_K.
+\tag{4.4}
+$$</span>
+<p>The right side is the Hilbert tensor inner product. Its positivity can also be seen by expressing the finitely many vectors in an orthonormal basis of their finite-dimensional span. Thus <span class="math" data-tex="$J$">$J$</span> is an isometry on the algebraic tensor product and extends to the Hilbert completion. Every finite-valued, finite-measure simple function is in its image. Those functions are dense in <span class="math" data-tex="$L^2(G,K)$">$L^2(G,K)$</span>, and the image of an isometry from a complete space is closed; hence <span class="math" data-tex="$J$">$J$</span> is onto. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="proposition-4-3"></span><strong>Proposition 4.3 (vector Fubini on the required supports).</strong> Let <span class="math" data-tex="$F:X\times Y\to E$">$F:X\times Y\to E$</span> be strongly measurable, with a sigma compact carrier for the Radon product and <span class="math" data-tex="$\int\|F\|&lt;\infty$">$\int\|F\|&lt;\infty$</span>. Its iterated Bochner integrals exist almost everywhere and equal its product integral.</p>
+<p><strong>Proof.</strong> Approximate <span class="math" data-tex="$F$">$F$</span> by finite simple <span class="math" data-tex="$E$">$E$</span>-valued functions in <span class="math" data-tex="$L^1$">$L^1$</span>. For an indicator of a Borel set of finite measure the scalar Radon-product theorem gives the two section integrals; completion handles sets differing by a null set because their sections differ by null sets almost everywhere. Hence the assertion holds for finite simple functions. Choose simple approximants <span class="math" data-tex="$S_n$">$S_n$</span> with <span class="math" data-tex="$\sum_n\|S_{n+1}-S_n\|_{L^1}&lt;\infty$">$\sum_n\|S_{n+1}-S_n\|_{L^1}&lt;\infty$</span> and <span class="math" data-tex="$S_n\to F$">$S_n\to F$</span> in <span class="math" data-tex="$L^1$">$L^1$</span> and almost everywhere. Scalar Fubini applied to the nonnegative sum of their pointwise norm differences shows that for almost every <span class="math" data-tex="$x$">$x$</span> the sequence <span class="math" data-tex="$S_n(x,\cdot)$">$S_n(x,\cdot)$</span> converges in <span class="math" data-tex="$L^1(Y,E)$">$L^1(Y,E)$</span> to <span class="math" data-tex="$F(x,\cdot)$">$F(x,\cdot)$</span>. The integral estimate (4.2) gives convergence of its section integrals in <span class="math" data-tex="$L^1(X,E)$">$L^1(X,E)$</span>. Passing through the bounded integrals proves the assertion. Reversing <span class="math" data-tex="$X,Y$">$X,Y$</span> proves the other order. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A continuous map from a sigma compact space into a metric space has separable image, because each compact image has finite <span class="math" data-tex="$1/n$">$1/n$</span>-nets. This observation justifies strong measurability of the continuous vector orbit maps used below. The word “continuous” here never asserts operator norm continuity of a unitary representation.</p>
+<p><span id="oa-flow.grp.algebra"></span></p>
+<h2 id="5-the-banach-star-algebra-and-its-approximate-identity">5. The Banach star algebra and its approximate identity</h2>
+<p>For <span class="math" data-tex="$f,g\in C_c(G)$">$f,g\in C_c(G)$</span> define</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="$$
+(f*g)(t)=\int f(s)g(s^{-1}t)\,ds,\qquad
+f^*(t)=\Delta(t^{-1})\overline{f(t^{-1})}.
+\tag{5.1}
+$$">$$
+(f*g)(t)=\int f(s)g(s^{-1}t)\,ds,\qquad
+f^*(t)=\Delta(t^{-1})\overline{f(t^{-1})}.
+\tag{5.1}
+$$</span>
+<p>The convolution is continuous with support in <span class="math" data-tex="$(\operatorname{supp}f)(\operatorname{supp}g)$">$(\operatorname{supp}f)(\operatorname{supp}g)$</span>. To check continuity near <span class="math" data-tex="$t_0$">$t_0$</span>, the integrand has <span class="math" data-tex="$s$">$s$</span> in <span class="math" data-tex="$\operatorname{supp}f$">$\operatorname{supp}f$</span>; continuity of <span class="math" data-tex="$g(s^{-1}t)$">$g(s^{-1}t)$</span> is uniform on this compact set locally in <span class="math" data-tex="$t$">$t$</span>, by a finite-cover argument. This gives continuity under the integral.</p>
+<p><span id="theorem-5-1"></span><strong>Theorem 5.1.</strong> Formulas (5.1) extend to a complete Banach star algebra <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>, and</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="$$
+\|f*g\|_1\leq\|f\|_1\|g\|_1,\qquad
+\|f^*\|_1=\|f\|_1.
+\tag{5.2}
+$$">$$
+\|f*g\|_1\leq\|f\|_1\|g\|_1,\qquad
+\|f^*\|_1=\|f\|_1.
+\tag{5.2}
+$$</span>
+<p>The convolution formula holds almost everywhere for Borel sigma compact representatives of <span class="math" data-tex="$f,g$">$f,g$</span>.</p>
+<p><strong>Proof.</strong> For compactly supported functions, scalar Radon-product Fubini and left invariance give</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="$$
+\iint |f(s)|\,|g(s^{-1}t)|\,dt\,ds
+=\|f\|_1\|g\|_1.
+\tag{5.3}
+$$">$$
+\iint |f(s)|\,|g(s^{-1}t)|\,dt\,ds
+=\|f\|_1\|g\|_1.
+\tag{5.3}
+$$</span>
+<p>The change <span class="math" data-tex="$(s,r)\mapsto(s,sr)$">$(s,r)\mapsto(s,sr)$</span> preserves the Radon product measure: on compactly supported continuous integrands, integrate first in <span class="math" data-tex="$r$">$r$</span> and use left invariance; uniqueness of the Radon measure representing these integrals gives the assertion on Borel sets and integrable functions. The carrier is the image of a product of sigma compact sets, so the qualified Fubini theorem applies. Consequently (5.3) holds for integrable representatives as well, including the statement that almost all convolution sections are integrable.</p>
+<p>The estimate defines the bilinear extension from the dense <span class="math" data-tex="$C_c(G)$">$C_c(G)$</span>. To identify it with the almost everywhere integral for general <span class="math" data-tex="$f,g$">$f,g$</span>, approximate both in <span class="math" data-tex="$L^1$">$L^1$</span> by <span class="math" data-tex="$f_n,g_n\in C_c$">$f_n,g_n\in C_c$</span>; (5.3) bounds the product-integrand error by
+<span class="math" data-tex="$\|f_n-f\|_1\|g_n\|_1+\|f\|_1\|g_n-g\|_1$">$\|f_n-f\|_1\|g_n\|_1+\|f\|_1\|g_n-g\|_1$</span>.
+Section integration is bounded into <span class="math" data-tex="$L^1$">$L^1$</span>, so the integrals converge to the algebraic extension. This argument also establishes independence of representatives and measurability of the resulting class.</p>
+<p>For three compactly supported functions, both <span class="math" data-tex="$(f*g)*h$">$(f*g)*h$</span> and <span class="math" data-tex="$f*(g*h)$">$f*(g*h)$</span> equal</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="$$
+\iint f(s)g(r)h(r^{-1}s^{-1}t)\,dr\,ds:
+\tag{5.4}
+$$">$$
+\iint f(s)g(r)h(r^{-1}s^{-1}t)\,dr\,ds:
+\tag{5.4}
+$$</span>
+<p>in the first expression substitute <span class="math" data-tex="$u=sr$">$u=sr$</span>; the triple absolute integral is at most <span class="math" data-tex="$\|f\|_1\|g\|_1\|h\|_1$">$\|f\|_1\|g\|_1\|h\|_1$</span>. Density and (5.2) give associativity on <span class="math" data-tex="$L^1$">$L^1$</span>. Formula (3.2) gives the involution norm identity and <span class="math" data-tex="$(f^*)^*=f$">$(f^*)^*=f$</span>. For its product reversal, conjugate the convolution at <span class="math" data-tex="$t^{-1}$">$t^{-1}$</span>, multiply by <span class="math" data-tex="$\Delta(t^{-1})$">$\Delta(t^{-1})$</span>, and put <span class="math" data-tex="$r=ts$">$r=ts$</span> in the formula for <span class="math" data-tex="$g^**f^*(t)$">$g^**f^*(t)$</span>:</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="$$
+\begin{aligned}
+(g^**f^*)(t)
+&amp;=\int \Delta(r^{-1})\overline{g(r^{-1})}
+\Delta(t^{-1}r)\overline{f(t^{-1}r)}\,dr\\
+&amp;=\Delta(t^{-1})\int
+\overline{g(s^{-1}t^{-1})}\,\overline{f(s)}\,ds
+=(f*g)^*(t).
+\end{aligned}
+\tag{5.5}
+$$">$$
+\begin{aligned}
+(g^**f^*)(t)
+&amp;=\int \Delta(r^{-1})\overline{g(r^{-1})}
+\Delta(t^{-1}r)\overline{f(t^{-1}r)}\,dr\\
+&amp;=\Delta(t^{-1})\int
+\overline{g(s^{-1}t^{-1})}\,\overline{f(s)}\,ds
+=(f*g)^*(t).
+\end{aligned}
+\tag{5.5}
+$$</span>
+<p>The substitution is left translation and has no modular Jacobian. Extend by norm continuity. Completeness is scalar <span class="math" data-tex="$L^1$">$L^1$</span> completeness. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="theorem-5-2"></span><strong>Theorem 5.2 (a two-sided contractive approximate identity).</strong> For each sufficiently small identity neighbourhood <span class="math" data-tex="$V$">$V$</span> choose <span class="math" data-tex="$a_V\in C_c(G)_+$">$a_V\in C_c(G)_+$</span> supported in <span class="math" data-tex="$V$">$V$</span>, with <span class="math" data-tex="$\int a_V=1$">$\int a_V=1$</span>. Ordered by shrinking neighbourhoods, these functions satisfy</p>
+<span id="equation-5-6"></span><span class="math math-display" data-tex="$$
+\|a_V\|_1=1,\qquad a_V*f\longrightarrow f,\qquad f*a_V\longrightarrow f
+\quad\hbox{in }L^1(G).
+\tag{5.6}
+$$">$$
+\|a_V\|_1=1,\qquad a_V*f\longrightarrow f,\qquad f*a_V\longrightarrow f
+\quad\hbox{in }L^1(G).
+\tag{5.6}
+$$</span>
+<p><strong>Proof.</strong> Compact cutoff functions and positivity of Haar measure supply the normalized bumps. By Proposition 4.1 and Lemma 3.1,</p>
+<span id="equation-5-7"></span><span class="math math-display" data-tex="$$
+a_V*f=\int a_V(s)L_s f\,ds,\qquad
+f*a_V=\int a_V(s)R_s f\,ds
+\tag{5.7}
+$$">$$
+a_V*f=\int a_V(s)L_s f\,ds,\qquad
+f*a_V=\int a_V(s)R_s f\,ds
+\tag{5.7}
+$$</span>
+<p>as Bochner integrals in <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>. For the second identity, the pointwise substitution <span class="math" data-tex="$s=t r^{-1}$">$s=t r^{-1}$</span> in <span class="math" data-tex="$f*a_V(t)$">$f*a_V(t)$</span> gives
+<span class="math" data-tex="$\int a_V(r)\Delta(r)^{-1}f(tr^{-1})\,dr$">$\int a_V(r)\Delta(r)^{-1}f(tr^{-1})\,dr$</span>, by (3.2) and left invariance. Equivalently, verify (5.7) first on <span class="math" data-tex="$C_c$">$C_c$</span> by Fubini and then extend by the norm estimate. The orbit maps are continuous and bounded and the integrators have compact support. Thus</p>
+<span id="equation-5-8"></span><span class="math math-display" data-tex="$$
+\|a_V*f-f\|_1\leq\sup_{s\in V}\|L_s f-f\|_1,\quad
+\|f*a_V-f\|_1\leq\sup_{s\in V}\|R_s f-f\|_1,
+\tag{5.8}
+$$">$$
+\|a_V*f-f\|_1\leq\sup_{s\in V}\|L_s f-f\|_1,\quad
+\|f*a_V-f\|_1\leq\sup_{s\in V}\|R_s f-f\|_1,
+\tag{5.8}
+$$</span>
+<p>which tend to zero. The net need not be a sequence. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="oa-flow.grp.contractivity"></span></p>
+<h2 id="6-algebraic-representations-are-automatically-contractive">6. Algebraic representations are automatically contractive</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="$A$">$A$</span> be a complete normed complex star algebra with
+<span class="math" data-tex="$\|ab\|\leq\|a\|\|b\|$">$\|ab\|\leq\|a\|\|b\|$</span> and <span class="math" data-tex="$\|a^*\|=\|a\|$">$\|a^*\|=\|a\|$</span>. Every algebraic star homomorphism
+<span class="math" data-tex="$\pi:A\to B(H)$">$\pi:A\to B(H)$</span> satisfies <span class="math" data-tex="$\|\pi(a)\|\leq\|a\|$">$\|\pi(a)\|\leq\|a\|$</span>. Continuity and
+nondegeneracy of <span class="math" data-tex="$\pi$">$\pi$</span> are not hypotheses.</p>
+<p><strong>Proof.</strong> The unitization is the Banach algebra <span class="math" data-tex="$A^+=A\oplus\mathbb C$">$A^+=A\oplus\mathbb C$</span> with
+<span class="math" data-tex="$(a,z)(b,w)=(ab+zb+wa,zw)$">$(a,z)(b,w)=(ab+zb+wa,zw)$</span>, identity <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, and norm
+<span class="math" data-tex="$\|(a,z)\|=\|a\|+|z|$">$\|(a,z)\|=\|a\|+|z|$</span>. Submultiplicativity follows by expanding this product;
+completeness follows from completeness of its two coordinates. The formula
+<span class="math" data-tex="$\pi^+(a,z)=\pi(a)+zI$">$\pi^+(a,z)=\pi(a)+zI$</span> is a unital algebra homomorphism, regardless of whether
+<span class="math" data-tex="$A$">$A$</span> already has an identity or <span class="math" data-tex="$\pi$">$\pi$</span> is nondegenerate.</p>
+<p>Fix <span class="math" data-tex="$a\in A$">$a\in A$</span> and write <span class="math" data-tex="$B=\pi(a)$">$B=\pi(a)$</span>, <span class="math" data-tex="$T=B^*B$">$T=B^*B$</span>, and <span class="math" data-tex="$c=\|B\|^2$">$c=\|B\|^2$</span>.
+For every bounded operator <span class="math" data-tex="$B$">$B$</span>, Cauchy–Schwarz and the adjoint identity give
+<span class="math" data-tex="$\|B^*\|=\|B\|$">$\|B^*\|=\|B\|$</span>. Indeed,</p>
+<span class="math math-display" data-tex="$$
+\|B^*y\|=\sup_{\|x\|=1}|\langle B^*y,x\rangle|
+=\sup_{\|x\|=1}|\langle y,Bx\rangle|
+\leq\|B\|\|y\|,
+$$">$$
+\|B^*y\|=\sup_{\|x\|=1}|\langle B^*y,x\rangle|
+=\sup_{\|x\|=1}|\langle y,Bx\rangle|
+\leq\|B\|\|y\|,
+$$</span>
+<p>and applying the same inequality to <span class="math" data-tex="$B^*$">$B^*$</span> gives the reverse norm inequality.
+It follows that <span class="math" data-tex="$\|T\|\leq c$">$\|T\|\leq c$</span>. Conversely, for every unit vector <span class="math" data-tex="$x$">$x$</span>,
+<span class="math" data-tex="$\|Bx\|^2=\langle Tx,x\rangle\leq\|T\|$">$\|Bx\|^2=\langle Tx,x\rangle\leq\|T\|$</span>; taking the supremum gives
+<span class="math" data-tex="$c\leq\|T\|$">$c\leq\|T\|$</span>. Thus <span class="math" data-tex="$\|T\|=c$">$\|T\|=c$</span>.</p>
+<p>If <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, choose unit vectors <span class="math" data-tex="$x_n$">$x_n$</span> with <span class="math" data-tex="$\|Bx_n\|^2\to c$">$\|Bx_n\|^2\to c$</span>. Since <span class="math" data-tex="$T$">$T$</span> is
+self-adjoint and <span class="math" data-tex="$\langle Tx_n,x_n\rangle=\|Bx_n\|^2$">$\langle Tx_n,x_n\rangle=\|Bx_n\|^2$</span> is real,</p>
+<span class="math math-display" data-tex="$$
+\|(cI-T)x_n\|^2
+=c^2-2c\langle Tx_n,x_n\rangle+\|Tx_n\|^2
+\leq2c\bigl(c-\langle Tx_n,x_n\rangle\bigr)\longrightarrow0.
+$$">$$
+\|(cI-T)x_n\|^2
+=c^2-2c\langle Tx_n,x_n\rangle+\|Tx_n\|^2
+\leq2c\bigl(c-\langle Tx_n,x_n\rangle\bigr)\longrightarrow0.
+$$</span>
+<p>Consequently <span class="math" data-tex="$cI-T$">$cI-T$</span> has no bounded inverse: an inverse <span class="math" data-tex="$R$">$R$</span> would give
+<span class="math" data-tex="$1=\|x_n\|\leq\|R\|\|(cI-T)x_n\|\to0$">$1=\|x_n\|\leq\|R\|\|(cI-T)x_n\|\to0$</span>.</p>
+<p>Suppose now that <span class="math" data-tex="$c&gt;\|a\|^2$">$c&gt;\|a\|^2$</span>. In <span class="math" data-tex="$A^+$">$A^+$</span> put <span class="math" data-tex="$b=(a^*a,0)$">$b=(a^*a,0)$</span>. Then
+<span class="math" data-tex="$\|b\|\leq\|a\|^2&lt;c$">$\|b\|\leq\|a\|^2&lt;c$</span>, so the series</p>
+<span class="math math-display" data-tex="$$
+v=c^{-1}\sum_{k=0}^{\infty}(b/c)^k
+$$">$$
+v=c^{-1}\sum_{k=0}^{\infty}(b/c)^k
+$$</span>
+<p>converges in norm. Multiplying its finite partial sums by <span class="math" data-tex="$c1-b$">$c1-b$</span> on either
+side leaves <span class="math" data-tex="$1-(b/c)^{N+1}$">$1-(b/c)^{N+1}$</span>, which converges to <span class="math" data-tex="$1$">$1$</span>. Continuity of
+multiplication therefore gives <span class="math" data-tex="$(c1-b)v=v(c1-b)=1$">$(c1-b)v=v(c1-b)=1$</span>.
+Applying the algebra homomorphism <span class="math" data-tex="$\pi^+$">$\pi^+$</span> to these two identities makes
+<span class="math" data-tex="$\pi^+(v)$">$\pi^+(v)$</span> a bounded two-sided inverse of <span class="math" data-tex="$cI-T$">$cI-T$</span>, a contradiction. This step
+uses only the two algebraic identities; it does not pass <span class="math" data-tex="$\pi^+$">$\pi^+$</span> through an
+infinite series. Hence <span class="math" data-tex="$\|\pi(a)\|^2=c\leq\|a\|^2$">$\|\pi(a)\|^2=c\leq\|a\|^2$</span>. The case <span class="math" data-tex="$c=0$">$c=0$</span> is immediate.
+The zero Hilbert space has the same immediate conclusion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proposition applies to the algebra constructed in Section 5. In particular, every algebraic star representation of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>, including a degenerate one, is bounded by the <span class="math" data-tex="$L^1$">$L^1$</span> norm.</p>
+<p><span id="oa-flow.grp.integration"></span></p>
+<h2 id="7-integrating-a-continuous-unitary-action">7. Integrating a continuous unitary action</h2>
+<p>Let <span class="math" data-tex="$U:G\to\mathcal U(K)$">$U:G\to\mathcal U(K)$</span> be a group homomorphism such that <span class="math" data-tex="$s\mapsto U_s\xi$">$s\mapsto U_s\xi$</span> is norm continuous for every <span class="math" data-tex="$\xi\in K$">$\xi\in K$</span>. Define, on each vector,</p>
+<span id="equation-7-1"></span><span class="math math-display" data-tex="$$
+\pi_U(f)\xi=\int f(s)U_s\xi\,ds.
+\tag{7.1}
+$$">$$
+\pi_U(f)\xi=\int f(s)U_s\xi\,ds.
+\tag{7.1}
+$$</span>
+<p>This is a Bochner integral: <span class="math" data-tex="$f$">$f$</span> has a sigma compact carrier, the orbit has separable range on that carrier, and its norm is bounded by <span class="math" data-tex="$|f(s)|\|\xi\|$">$|f(s)|\|\xi\|$</span>. It defines a bounded operator, with</p>
+<span id="equation-7-2"></span><span class="math math-display" data-tex="$$
+\|\pi_U(f)\|\leq\|f\|_1.
+\tag{7.2}
+$$">$$
+\|\pi_U(f)\|\leq\|f\|_1.
+\tag{7.2}
+$$</span>
+<p><span id="theorem-7-1"></span><strong>Theorem 7.1.</strong> The map <span class="math" data-tex="$\pi_U$">$\pi_U$</span> is a nondegenerate star representation of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>.</p>
+<p><strong>Proof.</strong> Linearity is integral linearity. On a vector <span class="math" data-tex="$\xi$">$\xi$</span>, the product <span class="math" data-tex="$\pi_U(f)\pi_U(g)\xi$">$\pi_U(f)\pi_U(g)\xi$</span> is</p>
+<span id="equation-7-3"></span><span class="math math-display" data-tex="$$
+\iint f(s)g(r)U_{sr}\xi\,dr\,ds.
+\tag{7.3}
+$$">$$
+\iint f(s)g(r)U_{sr}\xi\,dr\,ds.
+\tag{7.3}
+$$</span>
+<p>Its norm integrand is bounded by <span class="math" data-tex="$|f(s)||g(r)|\|\xi\|$">$|f(s)||g(r)|\|\xi\|$</span>, on the product of two sigma compact carriers. Proposition 4.3 permits the iterated integration. Substituting <span class="math" data-tex="$t=sr$">$t=sr$</span> in the inner integral identifies (7.3) with <span class="math" data-tex="$\pi_U(f*g)\xi$">$\pi_U(f*g)\xi$</span>. For the adjoint, scalar inner products, <span class="math" data-tex="$U_s^*=U_{s^{-1}}$">$U_s^*=U_{s^{-1}}$</span>, and (3.2) give</p>
+<span id="equation-7-4"></span><span class="math math-display" data-tex="$$
+\begin{aligned}
+\langle\pi_U(f)\xi,\eta\rangle
+&amp;=\int f(s)\langle\xi,U_{s^{-1}}\eta\rangle\,ds\\
+&amp;=\int \Delta(t^{-1})f(t^{-1})\langle\xi,U_t\eta\rangle\,dt
+=\langle\xi,\pi_U(f^*)\eta\rangle .
+\end{aligned}
+\tag{7.4}
+$$">$$
+\begin{aligned}
+\langle\pi_U(f)\xi,\eta\rangle
+&amp;=\int f(s)\langle\xi,U_{s^{-1}}\eta\rangle\,ds\\
+&amp;=\int \Delta(t^{-1})f(t^{-1})\langle\xi,U_t\eta\rangle\,dt
+=\langle\xi,\pi_U(f^*)\eta\rangle .
+\end{aligned}
+\tag{7.4}
+$$</span>
+<p>Thus <span class="math" data-tex="$\pi_U(f)^*=\pi_U(f^*)$">$\pi_U(f)^*=\pi_U(f^*)$</span>. Finally,</p>
+<span id="equation-7-5"></span><span class="math math-display" data-tex="$$
+\|\pi_U(a_V)\xi-\xi\|
+\leq\sup_{s\in V}\|U_s\xi-\xi\|\longrightarrow0.
+\tag{7.5}
+$$">$$
+\|\pi_U(a_V)\xi-\xi\|
+\leq\sup_{s\in V}\|U_s\xi-\xi\|\longrightarrow0.
+\tag{7.5}
+$$</span>
+<p>Every <span class="math" data-tex="$\xi$">$\xi$</span> is therefore in the closure of <span class="math" data-tex="$\pi_U(L^1(G))K$">$\pi_U(L^1(G))K$</span>, which is nondegeneracy. The proof remains valid for the zero Hilbert space. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="oa-flow.grp.recovery"></span></p>
+<h2 id="8-recovering-the-action-on-the-essential-space">8. Recovering the action on the essential space</h2>
+<p>Let <span class="math" data-tex="$\pi:L^1(G)\to B(K)$">$\pi:L^1(G)\to B(K)$</span> be an arbitrary algebraic star representation, and put</p>
+<span id="equation-8-1"></span><span class="math math-display" data-tex="$$
+K_e=\overline{\operatorname{span}\{\pi(f)\xi:f\in L^1(G),\ \xi\in K\}}.
+\tag{8.1}
+$$">$$
+K_e=\overline{\operatorname{span}\{\pi(f)\xi:f\in L^1(G),\ \xi\in K\}}.
+\tag{8.1}
+$$</span>
+<p>It is a reducing subspace. Indeed, each <span class="math" data-tex="$\pi(g)$">$\pi(g)$</span> and <span class="math" data-tex="$\pi(g)^*=\pi(g^*)$">$\pi(g)^*=\pi(g^*)$</span> sends its generating vectors back into it. Moreover <span class="math" data-tex="$\pi(g)$">$\pi(g)$</span> vanishes on <span class="math" data-tex="$K_e^\perp$">$K_e^\perp$</span>: for <span class="math" data-tex="$\xi\in K_e^\perp$">$\xi\in K_e^\perp$</span> and any <span class="math" data-tex="$\eta$">$\eta$</span>,
+<span class="math" data-tex="$\langle\pi(g)\xi,\eta\rangle=\langle\xi,\pi(g^*)\eta\rangle=0$">$\langle\pi(g)\xi,\eta\rangle=\langle\xi,\pi(g^*)\eta\rangle=0$</span>.</p>
+<p><span id="theorem-8-1"></span><strong>Theorem 8.1 (recovery).</strong> There is a unique strongly continuous unitary representation <span class="math" data-tex="$U^\pi$">$U^\pi$</span> on <span class="math" data-tex="$K_e$">$K_e$</span> such that the integrated representation is <span class="math" data-tex="$\pi|_{K_e}$">$\pi|_{K_e}$</span>. On its actual dense vector domain it is given by</p>
+<span id="equation-8-2"></span><span class="math math-display" data-tex="$$
+U^\pi_s\!\left(\sum_{j=1}^m\pi(f_j)\xi_j\right)
+=\sum_{j=1}^m\pi(L_s f_j)\xi_j.
+\tag{8.2}
+$$">$$
+U^\pi_s\!\left(\sum_{j=1}^m\pi(f_j)\xi_j\right)
+=\sum_{j=1}^m\pi(L_s f_j)\xi_j.
+\tag{8.2}
+$$</span>
+<p><strong>Proof.</strong> The algebra identity</p>
+<span id="equation-8-3"></span><span class="math math-display" data-tex="$$
+(L_s g)^**(L_s f)=g^**f
+\tag{8.3}
+$$">$$
+(L_s g)^**(L_s f)=g^**f
+\tag{8.3}
+$$</span>
+<p>holds first on compactly supported functions and then by density. To verify it directly, the left side at <span class="math" data-tex="$t$">$t$</span> is
+<span class="math" data-tex="$\int\Delta(r^{-1})\overline{g(s^{-1}r^{-1})}f(s^{-1}r^{-1}t)\,dr$">$\int\Delta(r^{-1})\overline{g(s^{-1}r^{-1})}f(s^{-1}r^{-1}t)\,dr$</span>.
+Put <span class="math" data-tex="$q=rs$">$q=rs$</span>. Right translation contributes <span class="math" data-tex="$\Delta(s)^{-1}$">$\Delta(s)^{-1}$</span> to the integral, while <span class="math" data-tex="$\Delta(r^{-1})=\Delta(s)\Delta(q^{-1})$">$\Delta(r^{-1})=\Delta(s)\Delta(q^{-1})$</span>; the two factors cancel.</p>
+<p>For two finite generating sums, their inner product after (8.2) is unchanged, because</p>
+<span id="equation-8-4"></span><span class="math math-display" data-tex="$$
+\langle\pi(L_s f_i)\xi_i,\pi(L_s g_j)\eta_j\rangle
+=\langle\pi((L_s g_j)^**(L_s f_i))\xi_i,\eta_j\rangle
+=\langle\pi(g_j^**f_i)\xi_i,\eta_j\rangle.
+\tag{8.4}
+$$">$$
+\langle\pi(L_s f_i)\xi_i,\pi(L_s g_j)\eta_j\rangle
+=\langle\pi((L_s g_j)^**(L_s f_i))\xi_i,\eta_j\rangle
+=\langle\pi(g_j^**f_i)\xi_i,\eta_j\rangle.
+\tag{8.4}
+$$</span>
+<p>Thus a sum representing zero maps to zero, so (8.2) is well defined and isometric. Its inverse on this domain is the formula for <span class="math" data-tex="$s^{-1}$">$s^{-1}$</span>. It extends to a unitary on <span class="math" data-tex="$K_e$">$K_e$</span>, and <span class="math" data-tex="$L_sL_r=L_{sr}$">$L_sL_r=L_{sr}$</span> proves the group law on the dense domain and then everywhere.</p>
+<p>For a generating vector, contractivity from Section 6 gives
+<span class="math" data-tex="$\|(U^\pi_s-U^\pi_r)\pi(f)\xi\|\leq\|L_s f-L_r f\|_1\|\xi\|$">$\|(U^\pi_s-U^\pi_r)\pi(f)\xi\|\leq\|L_s f-L_r f\|_1\|\xi\|$</span>.
+This tends to zero by Lemma 3.1. Finite sums are continuous, and approximation by these sums, together with <span class="math" data-tex="$\|U^\pi_s\|=1$">$\|U^\pi_s\|=1$</span>, proves strong continuity on all of <span class="math" data-tex="$K_e$">$K_e$</span>.</p>
+<p>It remains to identify the integral, rather than only produce an action. For <span class="math" data-tex="$g\in L^1(G)$">$g\in L^1(G)$</span>, the Bochner <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>-valued integral</p>
+<span id="equation-8-5"></span><span class="math math-display" data-tex="$$
+\int f(s)L_sg\,ds=f*g
+\tag{8.5}
+$$">$$
+\int f(s)L_sg\,ds=f*g
+\tag{8.5}
+$$</span>
+<p>follows first for compactly supported functions by Fubini, and then by its bilinear norm bound. On a generating vector, bounded-map compatibility of the integral now gives</p>
+<span id="equation-8-6"></span><span class="math math-display" data-tex="$$
+\pi_{U^\pi}(f)\pi(g)\xi
+=\int f(s)\pi(L_sg)\xi\,ds
+=\pi(f*g)\xi=\pi(f)\pi(g)\xi.
+\tag{8.6}
+$$">$$
+\pi_{U^\pi}(f)\pi(g)\xi
+=\int f(s)\pi(L_sg)\xi\,ds
+=\pi(f*g)\xi=\pi(f)\pi(g)\xi.
+\tag{8.6}
+$$</span>
+<p>Both sides are bounded operators on <span class="math" data-tex="$K_e$">$K_e$</span>; equality on the dense generating domain proves equality everywhere.</p>
+<p>For uniqueness, any integrated action <span class="math" data-tex="$W$">$W$</span> satisfies
+<span class="math" data-tex="$\pi_W(L_sg)=W_s\pi_W(g)$">$\pi_W(L_sg)=W_s\pi_W(g)$</span>, by left substitution in its vector integral. Thus an action integrating to <span class="math" data-tex="$\pi|_{K_e}$">$\pi|_{K_e}$</span> must obey (8.2), which determines it on a dense domain. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular, integrating and recovering are inverse constructions for nondegenerate representations. The original <span class="math" data-tex="$\pi$">$\pi$</span> is their integrated representation on <span class="math" data-tex="$K_e$">$K_e$</span> and zero on <span class="math" data-tex="$K_e^\perp$">$K_e^\perp$</span>. No unitary action on the latter summand is specified by <span class="math" data-tex="$\pi$">$\pi$</span>.</p>
+<p><span id="oa-flow.grp.intertwiners"></span></p>
+<h2 id="9-intertwiners-and-faithfulness-of-the-regular-representation">9. Intertwiners and faithfulness of the regular representation</h2>
+<p><span id="proposition-9-1"></span><strong>Proposition 9.1.</strong> For continuous unitary representations <span class="math" data-tex="$U$">$U$</span> on <span class="math" data-tex="$K$">$K$</span> and <span class="math" data-tex="$W$">$W$</span> on <span class="math" data-tex="$K&#x27;$">$K&#x27;$</span>, a bounded operator <span class="math" data-tex="$T:K\to K&#x27;$">$T:K\to K&#x27;$</span> satisfies</p>
+<span id="equation-9-1"></span><span class="math math-display" data-tex="$$
+TU_s=W_sT\quad(s\in G)
+\quad\Longleftrightarrow\quad
+T\pi_U(f)=\pi_W(f)T\quad(f\in L^1(G)).
+\tag{9.1}
+$$">$$
+TU_s=W_sT\quad(s\in G)
+\quad\Longleftrightarrow\quad
+T\pi_U(f)=\pi_W(f)T\quad(f\in L^1(G)).
+\tag{9.1}
+$$</span>
+<p><strong>Proof.</strong> The forward implication follows by moving the bounded map through the vector integral. Conversely,</p>
+<span id="equation-9-2"></span><span class="math math-display" data-tex="$$
+\pi_U(L_sa_V)=U_s\pi_U(a_V)\longrightarrow U_s
+\quad\hbox{strongly},
+\tag{9.2}
+$$">$$
+\pi_U(L_sa_V)=U_s\pi_U(a_V)\longrightarrow U_s
+\quad\hbox{strongly},
+\tag{9.2}
+$$</span>
+<p>by (7.5), and the same is true for <span class="math" data-tex="$W$">$W$</span>. Apply the assumed intertwining identity to <span class="math" data-tex="$L_sa_V$">$L_sa_V$</span>, evaluate it on a vector, and pass to the limit. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular, the two commutants agree. A closed subspace is invariant under all <span class="math" data-tex="$U_s$">$U_s$</span> precisely when it reduces them, because their inverses also belong to the representation. For an algebra star representation, invariance under all <span class="math" data-tex="$\pi(f)$">$\pi(f)$</span> likewise implies reduction because the adjoints are <span class="math" data-tex="$\pi(f^*)$">$\pi(f^*)$</span>. Applying (9.1) to its orthogonal projection proves that irreducibility is preserved by integration and recovery on the essential space.</p>
+<p><span id="oa-flow.grp.regular"></span></p>
+<h3 id="the-faithful-regular-representation">The faithful regular representation</h3>
+<p>The <strong>left regular representation</strong> is <span class="math" data-tex="$(\lambda_s h)(t)=h(s^{-1}t)$">$(\lambda_s h)(t)=h(s^{-1}t)$</span> on <span class="math" data-tex="$L^2(G)$">$L^2(G)$</span>. It is unitary by left invariance and strongly continuous by Lemma 3.1. Its integrated operator <span class="math" data-tex="$\lambda(f)=\pi_\lambda(f)$">$\lambda(f)=\pi_\lambda(f)$</span> has norm at most <span class="math" data-tex="$\|f\|_1$">$\|f\|_1$</span>.</p>
+<p><span id="theorem-9-2"></span><strong>Theorem 9.2.</strong> The integrated map <span class="math" data-tex="$\lambda:L^1(G)\to B(L^2(G))$">$\lambda:L^1(G)\to B(L^2(G))$</span> is injective.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$f\in L^1(G)$">$f\in L^1(G)$</span> and <span class="math" data-tex="$h\in C_c(G)\subset L^1(G)\cap L^2(G)$">$h\in C_c(G)\subset L^1(G)\cap L^2(G)$</span>, the vector integral <span class="math" data-tex="$\lambda(f)h$">$\lambda(f)h$</span> is the convolution <span class="math" data-tex="$f*h$">$f*h$</span> as an <span class="math" data-tex="$L^2$">$L^2$</span> class. Indeed,
+<span class="math" data-tex="$\int |f(s)|\|\lambda_s h\|_2\,ds=\|f\|_1\|h\|_2$">$\int |f(s)|\|\lambda_s h\|_2\,ds=\|f\|_1\|h\|_2$</span>;
+Bochner integration and scalar testing give the formula first for compact <span class="math" data-tex="$f$">$f$</span>, then by <span class="math" data-tex="$L^1$">$L^1$</span> approximation. The same convolution is in <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>, by (5.2). One pointwise convolution representative represents both classes: approximate <span class="math" data-tex="$f$">$f$</span> in <span class="math" data-tex="$L^1$">$L^1$</span>, pass to a common subsequence converging almost everywhere in the <span class="math" data-tex="$L^1$">$L^1$</span> and <span class="math" data-tex="$L^2$">$L^2$</span> convolution limits, and use the integral identification from Theorem 5.1.</p>
+<p>If <span class="math" data-tex="$\lambda(f)=0$">$\lambda(f)=0$</span>, this common representative is zero almost everywhere when <span class="math" data-tex="$h=a_V$">$h=a_V$</span>. Therefore <span class="math" data-tex="$f*a_V=0$">$f*a_V=0$</span> in <span class="math" data-tex="$L^1$">$L^1$</span> for every <span class="math" data-tex="$V$">$V$</span>. Equation (5.6) gives <span class="math" data-tex="$f=0$">$f=0$</span>. This argument tests an actual <span class="math" data-tex="$L^1\cap L^2$">$L^1\cap L^2$</span> vector domain; it does not assume convolution is pointwise defined on every <span class="math" data-tex="$L^2$">$L^2$</span> vector. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="oa-flow.grp.cstarquotients"></span></p>
+<h2 id="10-the-c-quotient-facts-with-their-inputs-exposed">10. The C* quotient facts, with their inputs exposed</h2>
+<p>We use here the earlier continuous functional calculus for self-adjoint elements of a C* algebra and its forced C* unitization. In particular it proves: <span class="math" data-tex="$x^*x\geq0$">$x^*x\geq0$</span>, its spectral maximum is <span class="math" data-tex="$\|x\|^2$">$\|x\|^2$</span>, continuous scalar functions on a compact real interval can be approximated in the calculus by polynomials, a function vanishing at zero of an element in an ideal belongs to that ideal, and positive conjugation and the norm respect order. The following arguments prove the additional quotient and closed-range facts.</p>
+<p><span id="lemma-10-1"></span><strong>Lemma 10.1.</strong> Every algebraic star homomorphism <span class="math" data-tex="$\phi:A\to B$">$\phi:A\to B$</span> between C* algebras is contractive. If it is injective, it is isometric and has closed range.</p>
+<p><strong>Proof.</strong> Extend the homomorphism algebraically to the forced unitizations. If <span class="math" data-tex="$c=\|\phi(a)\|^2&gt;\|a\|^2$">$c=\|\phi(a)\|^2&gt;\|a\|^2$</span>, the Neumann series in the Banach algebra <span class="math" data-tex="$A^+$">$A^+$</span> makes <span class="math" data-tex="$c1-a^*a$">$c1-a^*a$</span> invertible. Its image <span class="math" data-tex="$c1-\phi(a)^*\phi(a)$">$c1-\phi(a)^*\phi(a)$</span> would be invertible in <span class="math" data-tex="$B^+$">$B^+$</span>. But the positive calculus in <span class="math" data-tex="$B^+$">$B^+$</span> puts <span class="math" data-tex="$c$">$c$</span> in the spectrum of <span class="math" data-tex="$\phi(a)^*\phi(a)$">$\phi(a)^*\phi(a)$</span>, a contradiction. Thus <span class="math" data-tex="$\|\phi(a)\|\leq\|a\|$">$\|\phi(a)\|\leq\|a\|$</span>. This uses only the image of the two inverse identities, not any continuity before it is proved.</p>
+<p>Suppose <span class="math" data-tex="$\phi$">$\phi$</span> is injective but <span class="math" data-tex="$\|\phi(a)\|&lt;\|a\|$">$\|\phi(a)\|&lt;\|a\|$</span>, and put <span class="math" data-tex="$h=a^*a$">$h=a^*a$</span>, <span class="math" data-tex="$b=\|\phi(h)\|&lt;\|h\|$">$b=\|\phi(h)\|&lt;\|h\|$</span>. Choose a continuous real function <span class="math" data-tex="$g$">$g$</span> on <span class="math" data-tex="$[0,\|h\|]$">$[0,\|h\|]$</span> which vanishes on <span class="math" data-tex="$[0,b]$">$[0,b]$</span> and is one at <span class="math" data-tex="$\|h\|$">$\|h\|$</span>. It vanishes at zero, so <span class="math" data-tex="$g(h)\in A$">$g(h)\in A$</span>, and <span class="math" data-tex="$g(h)\ne0$">$g(h)\ne0$</span> by the isometric functional calculus. Polynomial approximation and the contractivity just proved show
+<span class="math" data-tex="$\phi(g(h))=g(\phi(h))=0$">$\phi(g(h))=g(\phi(h))=0$</span>, contrary to injectivity. Thus <span class="math" data-tex="$\phi$">$\phi$</span> is isometric. Its complete image is closed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="lemma-10-2"></span><strong>Lemma 10.2.</strong> Let <span class="math" data-tex="$I$">$I$</span> be a closed two-sided star ideal in a C* algebra <span class="math" data-tex="$A$">$A$</span>. It has a two-sided approximate identity <span class="math" data-tex="$(e_i)$">$(e_i)$</span> of positive contractions, <span class="math" data-tex="$A/I$">$A/I$</span> is a C* algebra in its quotient norm, and</p>
+<span id="equation-10-1"></span><span class="math math-display" data-tex="$$
+\|x+I\|=\lim_i\|x(1-e_i)\|.
+\tag{10.1}
+$$">$$
+\|x+I\|=\lim_i\|x(1-e_i)\|.
+\tag{10.1}
+$$</span>
+<p><strong>Proof.</strong> For a finite <span class="math" data-tex="$F\subset I$">$F\subset I$</span> and <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, set</p>
+<span id="equation-10-2"></span><span class="math math-display" data-tex="$$
+b_F=\sum_{x\in F}(x^*x+xx^*),\qquad
+e_{F,\varepsilon}=b_F(b_F+\varepsilon1)^{-1}.
+\tag{10.2}
+$$">$$
+b_F=\sum_{x\in F}(x^*x+xx^*),\qquad
+e_{F,\varepsilon}=b_F(b_F+\varepsilon1)^{-1}.
+\tag{10.2}
+$$</span>
+<p>The positive calculus gives <span class="math" data-tex="$e_{F,\varepsilon}\in I$">$e_{F,\varepsilon}\in I$</span>, <span class="math" data-tex="$0\leq e_{F,\varepsilon}\leq1$">$0\leq e_{F,\varepsilon}\leq1$</span>. Since <span class="math" data-tex="$x^*x\leq b_F$">$x^*x\leq b_F$</span> and <span class="math" data-tex="$xx^*\leq b_F$">$xx^*\leq b_F$</span>,</p>
+<span id="equation-10-3"></span><span class="math math-display" data-tex="$$
+\|x(1-e_{F,\varepsilon})\|^2,\
+\|(1-e_{F,\varepsilon})x\|^2
+\leq\|(1-e_{F,\varepsilon})b_F(1-e_{F,\varepsilon})\|
+\leq\varepsilon/4
+\quad(x\in F).
+\tag{10.3}
+$$">$$
+\|x(1-e_{F,\varepsilon})\|^2,\
+\|(1-e_{F,\varepsilon})x\|^2
+\leq\|(1-e_{F,\varepsilon})b_F(1-e_{F,\varepsilon})\|
+\leq\varepsilon/4
+\quad(x\in F).
+\tag{10.3}
+$$</span>
+<p>The last bound is the scalar maximum of <span class="math" data-tex="$t\varepsilon^2/(t+\varepsilon)^2$">$t\varepsilon^2/(t+\varepsilon)^2$</span>, attained at <span class="math" data-tex="$t=\varepsilon$">$t=\varepsilon$</span>. Direct the pairs by inclusion of <span class="math" data-tex="$F$">$F$</span> and decreasing <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>; this proves the approximate identity.</p>
+<p>For each <span class="math" data-tex="$z\in I$">$z\in I$</span>, <span class="math" data-tex="$\|z(1-e_i)\|\to0$">$\|z(1-e_i)\|\to0$</span>, and <span class="math" data-tex="$\|1-e_i\|\leq1$">$\|1-e_i\|\leq1$</span> in the unitization. Thus</p>
+<span id="equation-10-4"></span><span class="math math-display" data-tex="$$
+\|x+I\|\leq\|x(1-e_i)\|
+\leq\|x+z\|+\|z(1-e_i)\|.
+\tag{10.4}
+$$">$$
+\|x+I\|\leq\|x(1-e_i)\|
+\leq\|x+z\|+\|z(1-e_i)\|.
+\tag{10.4}
+$$</span>
+<p>Taking limsup and then the infimum over <span class="math" data-tex="$z$">$z$</span> proves (10.1).</p>
+<p>The quotient is complete: from a quotient-norm Cauchy sequence select a subsequence whose successive quotient distances are summable; choose representatives for the successive differences within a summable error of those distances. Their norm-convergent series gives a representative of the quotient limit, and the full sequence converges to it. Products and the involution pass to the quotient because <span class="math" data-tex="$I$">$I$</span> is a star ideal; its involution is isometric and its norm is submultiplicative. For <span class="math" data-tex="$z\in I$">$z\in I$</span>, <span class="math" data-tex="$(1-e_i)z(1-e_i)\to0$">$(1-e_i)z(1-e_i)\to0$</span>. Hence</p>
+<span id="equation-10-5"></span><span class="math math-display" data-tex="$$
+\begin{aligned}
+\|x+I\|^2
+&amp;=\lim_i\|x(1-e_i)\|^2\\
+&amp;=\lim_i\|(1-e_i)x^*x(1-e_i)\|\\
+&amp;\leq\|x^*x+z\|.
+\end{aligned}
+\tag{10.5}
+$$">$$
+\begin{aligned}
+\|x+I\|^2
+&amp;=\lim_i\|x(1-e_i)\|^2\\
+&amp;=\lim_i\|(1-e_i)x^*x(1-e_i)\|\\
+&amp;\leq\|x^*x+z\|.
+\end{aligned}
+\tag{10.5}
+$$</span>
+<p>Taking the infimum over <span class="math" data-tex="$z$">$z$</span> proves
+<span class="math" data-tex="$\|x+I\|^2\leq\|(x+I)^*(x+I)\|$">$\|x+I\|^2\leq\|(x+I)^*(x+I)\|$</span>.
+The reverse inequality is submultiplicativity and isometric involution, so the C* identity holds. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="corollary-10-3"></span><strong>Corollary 10.3.</strong> A star homomorphism between C* algebras has closed range and identifies its range isometrically with the quotient by its kernel.</p>
+<p><strong>Proof.</strong> Its kernel is a closed star ideal by Lemma 10.1. Lemma 10.2 makes the quotient a C* algebra. The induced injective homomorphism is isometric by Lemma 10.1, so its range is closed. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><span id="oa-flow.grp.completions"></span></p>
+<h2 id="11-the-full-and-reduced-completions">11. The full and reduced completions</h2>
+<p>Define</p>
+<span id="equation-11-1"></span><span class="math math-display" data-tex="$$
+\|f\|_u=\sup_\pi\|\pi(f)\|,\qquad
+\|f\|_r=\|\lambda(f)\|.
+\tag{11.1}
+$$">$$
+\|f\|_u=\sup_\pi\|\pi(f)\|,\qquad
+\|f\|_r=\|\lambda(f)\|.
+\tag{11.1}
+$$</span>
+<p>The first supremum ranges over algebraic star representations on Hilbert spaces. It is bounded by <span class="math" data-tex="$\|f\|_1$">$\|f\|_1$</span> by Section 6. Degenerate representations give the same supremum as nondegenerate ones because their zero summand contributes no norm. Equivalently, it is a supremum over integrated strongly continuous unitary representations, by Sections 7-8.</p>
+<p>There is no set-size obstruction in this definition. For a representation and vector <span class="math" data-tex="$\xi$">$\xi$</span>, the essential cyclic subspace <span class="math" data-tex="$\overline{\pi(L^1(G))\xi}$">$\overline{\pi(L^1(G))\xi}$</span> is reducing, contains the relevant cyclic action, and has Hilbert dimension bounded by the cardinality of a dense subset of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>, times a countable cardinal. Operator norms are detected on such subspaces (and the zero summand). Choose Hilbert representatives of dimensions at most this fixed cardinal. The resulting homomorphisms form a set, and give the same supremum.</p>
+<p>For completeness, <span class="math" data-tex="$\pi(a_V)$">$\pi(a_V)$</span> converges strongly to the projection <span class="math" data-tex="$P_e$">$P_e$</span> onto <span class="math" data-tex="$K_e$">$K_e$</span>: on a vector <span class="math" data-tex="$\pi(g)\eta$">$\pi(g)\eta$</span> this is the left approximate-identity property; the uniform bound <span class="math" data-tex="$\|\pi(a_V)\|\leq1$">$\|\pi(a_V)\|\leq1$</span> extends convergence to <span class="math" data-tex="$K_e$">$K_e$</span>, and these operators vanish on <span class="math" data-tex="$K_e^\perp$">$K_e^\perp$</span>. Thus <span class="math" data-tex="$P_e\xi$">$P_e\xi$</span> belongs to the cyclic subspace above and <span class="math" data-tex="$\pi(f)\xi=\pi(f)P_e\xi$">$\pi(f)\xi=\pi(f)P_e\xi$</span>. This proves the assertion that the cyclic restrictions detect every operator norm, even for a degenerate representation.</p>
+<p><span id="theorem-11-1"></span><strong>Theorem 11.1.</strong> Both norms in (11.1) are C* norms, with</p>
+<span id="equation-11-2"></span><span class="math math-display" data-tex="$$
+\|f\|_r\leq\|f\|_u\leq\|f\|_1.
+\tag{11.2}
+$$">$$
+\|f\|_r\leq\|f\|_u\leq\|f\|_1.
+\tag{11.2}
+$$</span>
+<p>Their completions <span class="math" data-tex="$C^*(G)$">$C^*(G)$</span> and <span class="math" data-tex="$C_r^*(G)$">$C_r^*(G)$</span> are C* algebras. The identity on <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span> extends to a surjective star homomorphism</p>
+<span id="equation-11-3"></span><span class="math math-display" data-tex="$$
+q:C^*(G)\longrightarrow C_r^*(G).
+\tag{11.3}
+$$">$$
+q:C^*(G)\longrightarrow C_r^*(G).
+\tag{11.3}
+$$</span>
+<p><strong>Proof.</strong> Regular faithfulness makes both norms definite. The triangle inequality and submultiplicativity hold in every representation and therefore in the supremum; the involution is isometric for the same reason. The C* identity is</p>
+<span id="equation-11-4"></span><span class="math math-display" data-tex="$$
+\|f^**f\|_u
+=\sup_\pi\|\pi(f)^*\pi(f)\|
+=\sup_\pi\|\pi(f)\|^2=\|f\|_u^2,
+\tag{11.4}
+$$">$$
+\|f^**f\|_u
+=\sup_\pi\|\pi(f)^*\pi(f)\|
+=\sup_\pi\|\pi(f)\|^2=\|f\|_u^2,
+\tag{11.4}
+$$</span>
+<p>and likewise for the reduced norm. Products and involution extend to the completions, and the norm identity passes to limits. Concretely, <span class="math" data-tex="$C_r^*(G)$">$C_r^*(G)$</span> is the operator norm closure of <span class="math" data-tex="$\lambda(L^1(G))$">$\lambda(L^1(G))$</span>.</p>
+<p>The inequality (11.2) gives the continuous extension <span class="math" data-tex="$q$">$q$</span>. It is a star homomorphism because it is one on the dense initial algebra, and its image is dense by the definition of the reduced completion. Corollary 10.3 makes its image closed; hence it is surjective. Also
+<span class="math" data-tex="$C^*(G)/\ker q\cong C_r^*(G)$">$C^*(G)/\ker q\cong C_r^*(G)$</span> isometrically.
+Density alone would not have established surjectivity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Every algebraic star representation of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span> extends uniquely to <span class="math" data-tex="$C^*(G)$">$C^*(G)$</span>, because its norm is bounded by <span class="math" data-tex="$\|\cdot\|_u$">$\|\cdot\|_u$</span>. Conversely, restricting a C* representation gives one of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>. Nondegeneracy agrees: <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span> is dense in the completion, so its generated vector span is dense exactly when the completion's is. Together with recovery this is a bijection between nondegenerate C* representations and continuous unitary representations, preserving bounded intertwiners.</p>
+<p><span id="oa-flow.grp.models"></span></p>
+<h2 id="12-a-group-with-five-elements-complete-fourier-coordinates">12. A group with five elements: complete Fourier coordinates</h2>
+<p>Give <span class="math" data-tex="$C_5=\{e,a,a^2,a^3,a^4\}$">$C_5=\{e,a,a^2,a^3,a^4\}$</span>, <span class="math" data-tex="$a^5=e$">$a^5=e$</span>, counting Haar measure. Set <span class="math" data-tex="$\zeta=e^{2\pi i/5}$">$\zeta=e^{2\pi i/5}$</span> and</p>
+<span id="equation-12-1"></span><span class="math math-display" data-tex="$$
+\widehat f(j)=\sum_{k=0}^4 f(a^k)\zeta^{jk}\quad(0\leq j&lt;5).
+\tag{12.1}
+$$">$$
+\widehat f(j)=\sum_{k=0}^4 f(a^k)\zeta^{jk}\quad(0\leq j&lt;5).
+\tag{12.1}
+$$</span>
+<p>These are five coordinates, not a transform of a function on a continuum.</p>
+<p><span id="proposition-12-1"></span><strong>Proposition 12.1.</strong> For <span class="math" data-tex="$f\in\mathbb C[C_5]$">$f\in\mathbb C[C_5]$</span>,</p>
+<span id="equation-12-2"></span><span class="math math-display" data-tex="$$
+\|f\|_u=\|f\|_r=\max_{0\leq j&lt;5}|\widehat f(j)|,
+\qquad C^*(C_5)=C_r^*(C_5)\cong\mathbb C^5 .
+\tag{12.2}
+$$">$$
+\|f\|_u=\|f\|_r=\max_{0\leq j&lt;5}|\widehat f(j)|,
+\qquad C^*(C_5)=C_r^*(C_5)\cong\mathbb C^5 .
+\tag{12.2}
+$$</span>
+<p><strong>Proof.</strong> A unitary representation is determined by a unitary <span class="math" data-tex="$V=U_a$">$V=U_a$</span> with <span class="math" data-tex="$V^5=1$">$V^5=1$</span>. Define</p>
+<span id="equation-12-3"></span><span class="math math-display" data-tex="$$
+P_j=\frac15\sum_{k=0}^4\zeta^{-jk}V^k.
+\tag{12.3}
+$$">$$
+P_j=\frac15\sum_{k=0}^4\zeta^{-jk}V^k.
+\tag{12.3}
+$$</span>
+<p>The geometric-series identity <span class="math" data-tex="$\sum_{k=0}^4\zeta^{mk}=0$">$\sum_{k=0}^4\zeta^{mk}=0$</span> unless <span class="math" data-tex="$5$">$5$</span> divides <span class="math" data-tex="$m$">$m$</span>, in which case it is <span class="math" data-tex="$5$">$5$</span>, proves directly that <span class="math" data-tex="$P_j^*=P_j$">$P_j^*=P_j$</span>, <span class="math" data-tex="$P_iP_j=\delta_{ij}P_j$">$P_iP_j=\delta_{ij}P_j$</span>, <span class="math" data-tex="$\sum_jP_j=1$">$\sum_jP_j=1$</span> and <span class="math" data-tex="$VP_j=\zeta^jP_j$">$VP_j=\zeta^jP_j$</span>. Therefore <span class="math" data-tex="$\pi_U(f)=\sum_j\widehat f(j)P_j$">$\pi_U(f)=\sum_j\widehat f(j)P_j$</span> and its norm is at most the maximum in (12.2). A one-dimensional action <span class="math" data-tex="$V=\zeta^j$">$V=\zeta^j$</span> attains each coordinate, so this is the full norm.</p>
+<p>In the regular representation, <span class="math" data-tex="$v_j(a^k)=5^{-1/2}\zeta^{-jk}$">$v_j(a^k)=5^{-1/2}\zeta^{-jk}$</span> are five orthonormal eigenvectors of <span class="math" data-tex="$\lambda_a$">$\lambda_a$</span>, with eigenvalue <span class="math" data-tex="$\zeta^j$">$\zeta^j$</span>. They form a basis by dimension, so the reduced norm has the same value. Finite geometric sums give</p>
+<span id="equation-12-4"></span><span class="math math-display" data-tex="$$
+f(a^k)=\frac15\sum_{j=0}^4\widehat f(j)\zeta^{-jk}.
+\tag{12.4}
+$$">$$
+f(a^k)=\frac15\sum_{j=0}^4\widehat f(j)\zeta^{-jk}.
+\tag{12.4}
+$$</span>
+<p>Thus the coordinate map is onto <span class="math" data-tex="$\mathbb C^5$">$\mathbb C^5$</span>. Directly summing convolution and involution, or using the five one-dimensional actions, gives pointwise products and complex conjugates of the coordinates. It is the claimed isometric star isomorphism. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For instance <span class="math" data-tex="$f=\delta_a+\delta_{a^{-1}}$">$f=\delta_a+\delta_{a^{-1}}$</span> has the five real coordinates <span class="math" data-tex="$2\cos(2\pi j/5)$">$2\cos(2\pi j/5)$</span>, so its full and reduced norms are both <span class="math" data-tex="$2$">$2$</span>.</p>
+<p><span id="oa-flow.grp.freegroupgap"></span></p>
+<h2 id="13-a-strict-gap-the-free-group-on-two-generators">13. A strict gap: the free group on two generators</h2>
+<p>Let <span class="math" data-tex="$F_2$">$F_2$</span> be the discrete group of reduced words in <span class="math" data-tex="$a,a^{-1},b,b^{-1}$">$a,a^{-1},b,b^{-1}$</span>, and give it counting measure. Put</p>
+<span id="equation-13-1"></span><span class="math math-display" data-tex="$$
+x=\delta_a+\delta_{a^{-1}}+\delta_b+\delta_{b^{-1}},\qquad
+A=\lambda(x)\quad\hbox{on }\ell^2(F_2).
+\tag{13.1}
+$$">$$
+x=\delta_a+\delta_{a^{-1}}+\delta_b+\delta_{b^{-1}},\qquad
+A=\lambda(x)\quad\hbox{on }\ell^2(F_2).
+\tag{13.1}
+$$</span>
+<p>Its Cayley graph is a four-regular tree. Indeed, adjacent vertices differ by left multiplication by one of the four letters; reduction makes the path to the identity unique. A cycle without immediate backtracking would give a nonempty reduced word equal to the identity, impossible in the reduced-word definition of <span class="math" data-tex="$F_2$">$F_2$</span>.</p>
+<p><span id="proposition-13-1"></span><strong>Proposition 13.1.</strong> The exact norms are</p>
+<span id="equation-13-2"></span><span class="math math-display" data-tex="$$
+\|x\|_u=4,\qquad \|x\|_r=2\sqrt3.
+\tag{13.2}
+$$">$$
+\|x\|_u=4,\qquad \|x\|_r=2\sqrt3.
+\tag{13.2}
+$$</span>
+<p>In particular <span class="math" data-tex="$q:C^*(F_2)\to C_r^*(F_2)$">$q:C^*(F_2)\to C_r^*(F_2)$</span> has a nonzero kernel.</p>
+<p><strong>Proof of the reduced upper bound.</strong> Choose one end of the tree, for example the end determined by the ray <span class="math" data-tex="$e,a,a^2,\ldots$">$e,a,a^2,\ldots$</span>. For each vertex <span class="math" data-tex="$v$">$v$</span>, its unique neighbour toward that end is its parent. The other three neighbours are its children. This is true even at <span class="math" data-tex="$e$">$e$</span>: this orientation points toward an end, not away from a root. Define</p>
+<span id="equation-13-3"></span><span class="math math-display" data-tex="$$
+(R\xi)(v)=\sum_{w:\ {\rm parent}(w)=v}\xi(w).
+\tag{13.3}
+$$">$$
+(R\xi)(v)=\sum_{w:\ {\rm parent}(w)=v}\xi(w).
+\tag{13.3}
+$$</span>
+<p>Every vertex has exactly three children, and the child sets for distinct vertices are disjoint. Cauchy-Schwarz gives <span class="math" data-tex="$\|R\xi\|^2\leq3\|\xi\|^2$">$\|R\xi\|^2\leq3\|\xi\|^2$</span>. Its adjoint satisfies <span class="math" data-tex="$(R^*\eta)(w)=\eta({\rm parent}(w))$">$(R^*\eta)(w)=\eta({\rm parent}(w))$</span>, so <span class="math" data-tex="$RR^*=3I$">$RR^*=3I$</span> and <span class="math" data-tex="$\|R\|=\sqrt3$">$\|R\|=\sqrt3$</span>. The four adjacency neighbours at <span class="math" data-tex="$v$">$v$</span> are its parent and three children, hence <span class="math" data-tex="$A=R+R^*$">$A=R+R^*$</span>. It follows that <span class="math" data-tex="$\|A\|\leq2\sqrt3$">$\|A\|\leq2\sqrt3$</span>.</p>
+<p><strong>Proof of the reverse bound.</strong> For an integer <span class="math" data-tex="$n\geq1$">$n\geq1$</span>, let <span class="math" data-tex="$\xi_n(v)=3^{-k/2}$">$\xi_n(v)=3^{-k/2}$</span> if the graph distance <span class="math" data-tex="$k=d(e,v)$">$k=d(e,v)$</span> is at most <span class="math" data-tex="$n$">$n$</span>, and zero otherwise. Level <span class="math" data-tex="$0$">$0$</span> has one vertex and level <span class="math" data-tex="$k\geq1$">$k\geq1$</span> has <span class="math" data-tex="$4\cdot3^{k-1}$">$4\cdot3^{k-1}$</span>. Consequently</p>
+<span id="equation-13-4"></span><span class="math math-display" data-tex="$$
+\|\xi_n\|^2=1+\frac43n,\qquad
+\langle A\xi_n,\xi_n\rangle
+=2\sum_{k=0}^{n-1}(4\cdot3^k)3^{-k/2}3^{-(k+1)/2}
+=\frac{8n}{\sqrt3}.
+\tag{13.4}
+$$">$$
+\|\xi_n\|^2=1+\frac43n,\qquad
+\langle A\xi_n,\xi_n\rangle
+=2\sum_{k=0}^{n-1}(4\cdot3^k)3^{-k/2}3^{-(k+1)/2}
+=\frac{8n}{\sqrt3}.
+\tag{13.4}
+$$</span>
+<p>The factor <span class="math" data-tex="$2$">$2$</span> counts each undirected edge in both directions. Therefore</p>
+<span id="equation-13-5"></span><span class="math math-display" data-tex="$$
+\|A\|\geq
+\frac{\langle A\xi_n,\xi_n\rangle}{\|\xi_n\|^2}
+=\frac{2\sqrt3}{1+3/(4n)}
+\longrightarrow2\sqrt3.
+\tag{13.5}
+$$">$$
+\|A\|\geq
+\frac{\langle A\xi_n,\xi_n\rangle}{\|\xi_n\|^2}
+=\frac{2\sqrt3}{1+3/(4n)}
+\longrightarrow2\sqrt3.
+\tag{13.5}
+$$</span>
+<p>These finitely supported vectors prove the lower bound for the infinite-tree operator; no norm formula for a finite truncated tree is being assumed.</p>
+<p>The trivial one-dimensional representation sends <span class="math" data-tex="$x$">$x$</span> to <span class="math" data-tex="$4$">$4$</span>. The <span class="math" data-tex="$L^1$">$L^1$</span> bound gives <span class="math" data-tex="$\|x\|_u\leq4$">$\|x\|_u\leq4$</span>, proving the full norm. If <span class="math" data-tex="$q$">$q$</span> were injective, Lemma 10.1 would make it isometric, contradicting (13.2). Hence its kernel is nonzero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><img class="course-figure" style="max-width:100%;height:auto" loading="lazy" decoding="async" src="../../src/OA-FLOW/repaired-20261004/figures/l24-reconstruction/L24-original-completions.svg" alt="Five Fourier coordinates, a tree oriented toward an end, and the exact full/reduced norm gap" data-asset-sha256="0F4178F862D9CE55995E3B25E42695F51202A950C5BB952D972811B567A53C53"></p>
+<p><em>Figure 1. Original CC0 illustration of Propositions 12.1 and 13.1. The five points are the eigenvalues <span class="math" data-tex="$\zeta^j$">$\zeta^j$</span> of <span class="math" data-tex="$V$">$V$</span>, with projections <span class="math" data-tex="$P_j$">$P_j$</span>. The oriented tree has one parent and three children at each vertex. The green curve is the exact radial Rayleigh bound (13.5); the horizontal lines are the proved reduced norm <span class="math" data-tex="$2\sqrt3$">$2\sqrt3$</span> and full norm <span class="math" data-tex="$4$">$4$</span>. The displayed tree fragment is a schematic of the infinite tree, and the radial samples are not finite-tree spectral approximations. Free primary background for the integrated full/reduced constructions: Echterhoff, Section 3.2, Remark 3.4(6); the exact bounds are proved here. Reproducible figure source accompanies the lesson.</em></p>
+<p><span id="oa-flow.grp.problems"></span></p>
+<h2 id="14-exercises-and-complete-solutions">14. Exercises and complete solutions</h2>
+<p><strong>Exercise 14.1 (the modular factor).</strong> Show that if a left Haar group is unimodular, (5.1) reduces to <span class="math" data-tex="$f^*(s)=\overline{f(s^{-1})}$">$f^*(s)=\overline{f(s^{-1})}$</span>. Show on the group <span class="math" data-tex="$(u,v)(u&#x27;,v&#x27;)=(uu&#x27;,v+uv&#x27;)$">$(u,v)(u&#x27;,v&#x27;)=(uu&#x27;,v+uv&#x27;)$</span>, <span class="math" data-tex="$u,u&#x27;&gt;0$">$u,u&#x27;&gt;0$</span>, that the left Haar density is <span class="math" data-tex="$u^{-2}\,du\,dv$">$u^{-2}\,du\,dv$</span>, <span class="math" data-tex="$\Delta(u,v)=u^{-1}$">$\Delta(u,v)=u^{-1}$</span>, and omitting the factor in <span class="math" data-tex="$f^*$">$f^*$</span> is not an isometric operation on <span class="math" data-tex="$L^1$">$L^1$</span>.</p>
+<p><strong>Solution.</strong> The first assertion is substitution of <span class="math" data-tex="$\Delta=1$">$\Delta=1$</span>. Left translation by <span class="math" data-tex="$(c,d)$">$(c,d)$</span> has Jacobian <span class="math" data-tex="$c^2$">$c^2$</span> and sends the first coordinate to <span class="math" data-tex="$cu$">$cu$</span>; the factor <span class="math" data-tex="$(cu)^{-2}$">$(cu)^{-2}$</span> cancels this Jacobian. Right translation by <span class="math" data-tex="$(c,d)$">$(c,d)$</span> sends <span class="math" data-tex="$(u,v)$">$(u,v)$</span> to <span class="math" data-tex="$(uc,v+ud)$">$(uc,v+ud)$</span>, with Jacobian <span class="math" data-tex="$c$">$c$</span>; thus the image-set measure is <span class="math" data-tex="$c^{-1}$">$c^{-1}$</span> times the original measure, proving <span class="math" data-tex="$\Delta(c,d)=c^{-1}$">$\Delta(c,d)=c^{-1}$</span>. Inversion sends <span class="math" data-tex="$(u,v)$">$(u,v)$</span> to <span class="math" data-tex="$(u^{-1},-v/u)$">$(u^{-1},-v/u)$</span>, with absolute Jacobian <span class="math" data-tex="$u^{-3}$">$u^{-3}$</span>. Thus the norm of the unweighted inverse-conjugate of <span class="math" data-tex="$f$">$f$</span> is <span class="math" data-tex="$\int |f(u,v)|u\,u^{-2}\,du\,dv$">$\int |f(u,v)|u\,u^{-2}\,du\,dv$</span>, whereas <span class="math" data-tex="$\|f\|_1=\int |f(u,v)|u^{-2}\,du\,dv$">$\|f\|_1=\int |f(u,v)|u^{-2}\,du\,dv$</span>. Taking a nonzero nonnegative compact function supported in <span class="math" data-tex="$u&gt;2$">$u&gt;2$</span> makes these norms different. The correct involution includes <span class="math" data-tex="$\Delta((u,v)^{-1})=u$">$\Delta((u,v)^{-1})=u$</span>, with inversion evaluated in its argument as in (5.1), and (3.2) proves its isometry. The Jacobian calculations are ordinary two-variable substitutions on compact supports; exhaustion extends them to the stated measures.</p>
+<p><strong>Exercise 14.2 (degenerate representations).</strong> Let <span class="math" data-tex="$U$">$U$</span> be a continuous unitary action on <span class="math" data-tex="$K_0$">$K_0$</span>, and define <span class="math" data-tex="$\pi(f)=\pi_U(f)\oplus0$">$\pi(f)=\pi_U(f)\oplus0$</span> on <span class="math" data-tex="$K_0\oplus K_1$">$K_0\oplus K_1$</span>. Determine its essential space. Explain why integration does not recover a prescribed action on <span class="math" data-tex="$K_1$">$K_1$</span>.</p>
+<p><strong>Solution.</strong> Equation (7.5) puts every vector of <span class="math" data-tex="$K_0$">$K_0$</span> in the essential space, while every range vector has zero <span class="math" data-tex="$K_1$">$K_1$</span> component. Thus <span class="math" data-tex="$K_e=K_0\oplus0$">$K_e=K_0\oplus0$</span>. The formula (8.2) determines the action only there. Any continuous unitary action on a nonzero <span class="math" data-tex="$K_1$">$K_1$</span> integrates nondegenerately by Theorem 7.1, so it cannot integrate to the zero algebra action on that summand.</p>
+<p><strong>Exercise 14.3 (five projections).</strong> For <span class="math" data-tex="$C_5$">$C_5$</span>, put <span class="math" data-tex="$p_j=\frac15\sum_{k=0}^4\zeta^{-jk}\delta_{a^k}$">$p_j=\frac15\sum_{k=0}^4\zeta^{-jk}\delta_{a^k}$</span>. Find its five Fourier coordinates, and prove <span class="math" data-tex="$\sum_jp_j=\delta_e$">$\sum_jp_j=\delta_e$</span> and <span class="math" data-tex="$p_ip_j=\delta_{ij}p_j$">$p_ip_j=\delta_{ij}p_j$</span>.</p>
+<p><strong>Solution.</strong> At coordinate <span class="math" data-tex="$\ell$">$\ell$</span>, the transform is <span class="math" data-tex="$\frac15\sum_k\zeta^{(\ell-j)k}=\delta_{\ell j}$">$\frac15\sum_k\zeta^{(\ell-j)k}=\delta_{\ell j}$</span>. Coordinate sums and products therefore give the stated identities. The inverse formula (12.4) makes the coordinate transform injective, so those identities hold in the group algebra. Its involution fixes <span class="math" data-tex="$p_j$">$p_j$</span>, since its coordinates are real. These are the five minimal coordinate projections of <span class="math" data-tex="$\mathbb C^5$">$\mathbb C^5$</span>.</p>
+<p><strong>Exercise 14.4 (the gap is quantitative).</strong> For <span class="math" data-tex="$y=x/4$">$y=x/4$</span> in (13.1), compute its two norms and an explicit finite-support Rayleigh lower bound. For a target <span class="math" data-tex="$0&lt;\varepsilon&lt;1$">$0&lt;\varepsilon&lt;1$</span>, how large must <span class="math" data-tex="$n$">$n$</span> be to make that lower bound at least <span class="math" data-tex="$(1-\varepsilon)\|y\|_r$">$(1-\varepsilon)\|y\|_r$</span>?</p>
+<p><strong>Solution.</strong> <span class="math" data-tex="$\|y\|_u=1$">$\|y\|_u=1$</span>, <span class="math" data-tex="$\|y\|_r=\sqrt3/2$">$\|y\|_r=\sqrt3/2$</span>. The vector <span class="math" data-tex="$\xi_n$">$\xi_n$</span> gives
+<span class="math" data-tex="$\langle\lambda(y)\xi_n,\xi_n\rangle/\|\xi_n\|^2 =(\sqrt3/2)/(1+3/(4n))$">$\langle\lambda(y)\xi_n,\xi_n\rangle/\|\xi_n\|^2 =(\sqrt3/2)/(1+3/(4n))$</span>.
+The desired inequality is equivalent to <span class="math" data-tex="$n\geq3(1-\varepsilon)/(4\varepsilon)$">$n\geq3(1-\varepsilon)/(4\varepsilon)$</span>, so any positive integer at least that real number works.</p>
+<p><strong>Exercise 14.5 (intertwiners on the correct domain).</strong> Suppose <span class="math" data-tex="$\pi,\rho$">$\pi,\rho$</span> are nondegenerate representations of <span class="math" data-tex="$L^1(G)$">$L^1(G)$</span>, and <span class="math" data-tex="$T\pi(f)=\rho(f)T$">$T\pi(f)=\rho(f)T$</span>. Use (8.2) directly to show that <span class="math" data-tex="$T$">$T$</span> intertwines the recovered actions.</p>
+<p><strong>Solution.</strong> On a generating vector <span class="math" data-tex="$\pi(g)\xi$">$\pi(g)\xi$</span>,</p>
+<span class="math math-display" data-tex="$$
+TU^\pi_s\pi(g)\xi=T\pi(L_sg)\xi
+=\rho(L_sg)T\xi=U^\rho_s\rho(g)T\xi
+=U^\rho_sT\pi(g)\xi.
+$$">$$
+TU^\pi_s\pi(g)\xi=T\pi(L_sg)\xi
+=\rho(L_sg)T\xi=U^\rho_s\rho(g)T\xi
+=U^\rho_sT\pi(g)\xi.
+$$</span>
+<p>Their spans are dense in the actual spaces by nondegeneracy. Both operators in this identity are bounded, so it extends to every vector. This argument does not apply a formula for the recovered action to a vector outside its established dense domain.</p>
+<p><span id="oa-flow.grp.antecedents"></span></p>
+<h2 id="15-free-primary-reading">15. Free primary reading</h2>
+<p>The normalizations and the distinction between global and local null sets can be compared with Dana P. Williams, <em>Crossed Products of C* Algebras</em>, freely accessible author manuscript, version 3.1, Section 1.3, Section 1.5 and Appendix B: <a href="https://math.dartmouth.edu/~dana/cpcsa/draft3.1.pdf">complete author draft</a>. Its Haar existence theorem is stated without proof; the earlier programme Haar proof is therefore required.</p>
+<p>For the passage from group actions to integrated algebra actions and its later extension to coefficients, see Siegfried Echterhoff, <em>Crossed products and the Mackey-Rieffel-Green machine</em>, freely accessible version 4, Section 3: <a href="https://arxiv.org/abs/1006.4975v4">arXiv:1006.4975v4</a>. These are comparison sources. The proof of every new claim of this lesson is given above, and its earlier foundational proof boundary is specified in Section 1.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../../index.html">Course contents</a> <a href="../../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../../src/OA-FLOW/repaired-20261004/group-representations-and-completions.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

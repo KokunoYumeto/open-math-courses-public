@@ -1,0 +1,232 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hensel&#x27;s lemma, squares and roots of unity in p-adic fields</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="hensel-s-lemma-squares-and-roots-of-unity-in-p-adic-fields">Hensel's lemma, squares and roots of unity in p-adic fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>An approximate solution of a polynomial equation need not have a nearby exact solution. The derivative measures whether the error can be removed. In a complete nonarchimedean field, a sufficiently small error can be corrected repeatedly, with the new error bounded by the square of the old one. This gives a useful test for roots, and a parallel argument lifts polynomial factorizations.</p>
+<p>We first prove the root test and use it to decide squares. We then prove factorization lifting in a form that allows nondiscrete valuations and a drop in the degree after reduction. Finally we separate the finite roots of unity from the principal units. These two elementary invariants will even distinguish the fields <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> as abstract fields.</p>
+<p>The prerequisite is <em>Completions, the p-adic numbers and complete discretely valued fields</em>: completeness, the valuation ring, reduction, and p-adic congruences are used throughout. Our field <span class="math" data-tex="\(K\)">\(K\)</span> is complete for a nonarchimedean absolute value. Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal O=\{x:|x|\le1\},\qquad
+\mathfrak m=\{x:|x|&lt;1\},\qquad
+\kappa=\mathcal O/\mathfrak m.
+\]">\[
+\mathcal O=\{x:|x|\le1\},\qquad
+\mathfrak m=\{x:|x|&lt;1\},\qquad
+\kappa=\mathcal O/\mathfrak m.
+\]</span>
+<p>A bar denotes reduction to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. No discrete valuation or uniformizer is assumed in the lifting theorems. For <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, we use <span class="math" data-tex="\(v_p(p)=1\)">\(v_p(p)=1\)</span> and <span class="math" data-tex="\(|x|_p=p^{-v_p(x)}\)">\(|x|_p=p^{-v_p(x)}\)</span>. References for the lifting theory are [Milne] and [Fesenko–Vostokov]; the general local-ring definition is discussed in [Stacks, Tag 04GE].</p>
+<h2 id="1-a-root-from-a-shrinking-error">1. A root from a shrinking error</h2>
+<p>For <span class="math" data-tex="\(f\in\mathcal O[X]\)">\(f\in\mathcal O[X]\)</span> and <span class="math" data-tex="\(x,h\in\mathcal O\)">\(x,h\in\mathcal O\)</span>, expansion of each monomial gives</p>
+<span class="math math-display" data-tex="\[
+f(x+h)=f(x)+f&#x27;(x)h+h^2 A(x,h),
+\qquad A(x,h)\in\mathcal O,
+\tag{1}
+\]">\[
+f(x+h)=f(x)+f&#x27;(x)h+h^2 A(x,h),
+\qquad A(x,h)\in\mathcal O,
+\tag{1}
+\]</span>
+<p>and <span class="math" data-tex="\(|f&#x27;(x+h)-f&#x27;(x)|\le |h|\)">\(|f&#x27;(x+h)-f&#x27;(x)|\le |h|\)</span>. The integer coefficients in these expansions have absolute value at most one. Thus these estimates work in every characteristic.</p>
+<p><strong>Theorem 1.1 (Newton lifting).</strong> Let <span class="math" data-tex="\(f\in\mathcal O[X]\)">\(f\in\mathcal O[X]\)</span> and <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span>. Suppose</p>
+<span class="math math-display" data-tex="\[
+|f(a)|&lt;|f&#x27;(a)|^2.
+\]">\[
+|f(a)|&lt;|f&#x27;(a)|^2.
+\]</span>
+<p>Then there is exactly one root <span class="math" data-tex="\(b\in K\)">\(b\in K\)</span> with <span class="math" data-tex="\(|b-a|&lt;|f&#x27;(a)|\)">\(|b-a|&lt;|f&#x27;(a)|\)</span>. It belongs to <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+|b-a|\le \left|\frac{f(a)}{f&#x27;(a)}\right|.
+\tag{2}
+\]">\[
+|b-a|\le \left|\frac{f(a)}{f&#x27;(a)}\right|.
+\tag{2}
+\]</span>
+<p>If <span class="math" data-tex="\(f(a)\ne0\)">\(f(a)\ne0\)</span>, equality holds in (2).</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(D=|f&#x27;(a)|\)">\(D=|f&#x27;(a)|\)</span>. The strict hypothesis implies <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>, and integrality gives <span class="math" data-tex="\(D\le1\)">\(D\le1\)</span>. If <span class="math" data-tex="\(f(a)=0\)">\(f(a)=0\)</span>, take <span class="math" data-tex="\(b=a\)">\(b=a\)</span>; the uniqueness argument below still applies. Otherwise put <span class="math" data-tex="\(q=|f(a)|/D^2\)">\(q=|f(a)|/D^2\)</span>, so <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+a_0=a,\qquad a_{n+1}=a_n-\frac{f(a_n)}{f&#x27;(a_n)}.
+\]">\[
+a_0=a,\qquad a_{n+1}=a_n-\frac{f(a_n)}{f&#x27;(a_n)}.
+\]</span>
+<p>We prove inductively that</p>
+<span class="math math-display" data-tex="\[
+a_n\in\mathcal O,\qquad |f&#x27;(a_n)|=D,\qquad
+|f(a_n)|\le D^2 q^{2^n}.
+\tag{3}
+\]">\[
+a_n\in\mathcal O,\qquad |f&#x27;(a_n)|=D,\qquad
+|f(a_n)|\le D^2 q^{2^n}.
+\tag{3}
+\]</span>
+<p>At the initial step these assertions hold by definition. If they hold at <span class="math" data-tex="\(n\)">\(n\)</span>, the increment <span class="math" data-tex="\(h_n=a_{n+1}-a_n\)">\(h_n=a_{n+1}-a_n\)</span> has size at most <span class="math" data-tex="\(Dq^{2^n}&lt;D\le1\)">\(Dq^{2^n}&lt;D\le1\)</span>. Hence <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span> is integral. The derivative changes by less than <span class="math" data-tex="\(D\)">\(D\)</span>, so the ultrametric strict-dominance rule keeps its absolute value equal to <span class="math" data-tex="\(D\)">\(D\)</span>. In (1), the constant and linear terms cancel. Therefore</p>
+<span class="math math-display" data-tex="\[
+|f(a_{n+1})|\le |h_n|^2\le D^2q^{2^{n+1}},
+\]">\[
+|f(a_{n+1})|\le |h_n|^2\le D^2q^{2^{n+1}},
+\]</span>
+<p>which proves (3). If an iterate is already a root, the later iterates are constant.</p>
+<p>The increments tend to zero. The ultrametric inequality bounds every tail difference by its largest increment, so <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> is Cauchy. Its limit <span class="math" data-tex="\(b\)">\(b\)</span> is integral and satisfies <span class="math" data-tex="\(f(b)=0\)">\(f(b)=0\)</span>, by continuity of polynomial evaluation. Moreover</p>
+<span class="math math-display" data-tex="\[
+|b-a|\le Dq=|f(a)/f&#x27;(a)|&lt;D.
+\]">\[
+|b-a|\le Dq=|f(a)/f&#x27;(a)|&lt;D.
+\]</span>
+<p>When <span class="math" data-tex="\(f(a)\ne0\)">\(f(a)\ne0\)</span>, the first increment has size exactly <span class="math" data-tex="\(Dq\)">\(Dq\)</span>, and the sum of all later increments has size at most <span class="math" data-tex="\(Dq^2&lt;Dq\)">\(Dq^2&lt;Dq\)</span>. This proves equality in (2).</p>
+<p>For uniqueness, any point within distance <span class="math" data-tex="\(D\)">\(D\)</span> of <span class="math" data-tex="\(a\)">\(a\)</span> is integral and has derivative of size <span class="math" data-tex="\(D\)">\(D\)</span>. If <span class="math" data-tex="\(c\)">\(c\)</span> is another root in this ball, then <span class="math" data-tex="\(|c-b|&lt;D\)">\(|c-b|&lt;D\)</span>. Expanding at <span class="math" data-tex="\(b\)">\(b\)</span>, if <span class="math" data-tex="\(c\ne b\)">\(c\ne b\)</span> the linear term <span class="math" data-tex="\(f&#x27;(b)(c-b)\)">\(f&#x27;(b)(c-b)\)</span> has size <span class="math" data-tex="\(D|c-b|\)">\(D|c-b|\)</span>, strictly larger than the bound <span class="math" data-tex="\(|c-b|^2\)">\(|c-b|^2\)</span> on the remaining terms. Their sum cannot vanish. Thus <span class="math" data-tex="\(c=b\)">\(c=b\)</span>. ∎</p>
+<p>The radius in the uniqueness assertion matters. A larger ball may contain more than one root. For example, for</p>
+<span class="math math-display" data-tex="\[
+f(X)=(X-2)(X-6),\qquad a=10\quad\text{in }\mathbb Q_2,
+\]">\[
+f(X)=(X-2)(X-6),\qquad a=10\quad\text{in }\mathbb Q_2,
+\]</span>
+<p>we have <span class="math" data-tex="\(|f(a)|_2=1/32\)">\(|f(a)|_2=1/32\)</span> and <span class="math" data-tex="\(|f&#x27;(a)|_2=1/4\)">\(|f&#x27;(a)|_2=1/4\)</span>. The root <span class="math" data-tex="\(2\)">\(2\)</span> has distance <span class="math" data-tex="\(1/8\)">\(1/8\)</span> from <span class="math" data-tex="\(10\)">\(10\)</span>, while <span class="math" data-tex="\(6\)">\(6\)</span> has distance <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Only the first lies in the strict Newton ball. Both lie in the larger ball of radius <span class="math" data-tex="\(|f(a)/f&#x27;(a)^2|_2=1/2\)">\(|f(a)/f&#x27;(a)^2|_2=1/2\)</span>.</p>
+<p><strong>Corollary 1.2 (simple residue roots).</strong> If <span class="math" data-tex="\(\bar a\in\kappa\)">\(\bar a\in\kappa\)</span> is a root of <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> and <span class="math" data-tex="\(\bar f&#x27;(\bar a)\ne0\)">\(\bar f&#x27;(\bar a)\ne0\)</span>, it has a unique lift <span class="math" data-tex="\(b\in\mathcal O\)">\(b\in\mathcal O\)</span> satisfying <span class="math" data-tex="\(f(b)=0\)">\(f(b)=0\)</span> and <span class="math" data-tex="\(\bar b=\bar a\)">\(\bar b=\bar a\)</span>.</p>
+<p><strong>Proof.</strong> Any representative <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span> satisfies <span class="math" data-tex="\(|f(a)|&lt;1\)">\(|f(a)|&lt;1\)</span> and <span class="math" data-tex="\(|f&#x27;(a)|=1\)">\(|f&#x27;(a)|=1\)</span>. Apply Theorem 1.1. The condition <span class="math" data-tex="\(|b-a|&lt;1\)">\(|b-a|&lt;1\)</span> is precisely equality of residues. ∎</p>
+<p><strong>A cube root.</strong> For <span class="math" data-tex="\(f(X)=X^3-2\)">\(f(X)=X^3-2\)</span> over <span class="math" data-tex="\(\mathbb Q_5\)">\(\mathbb Q_5\)</span>, the residue <span class="math" data-tex="\(3\)">\(3\)</span> is a root, since <span class="math" data-tex="\(27-2=25\)">\(27-2=25\)</span>. Its derivative is <span class="math" data-tex="\(3\cdot3^2=27\)">\(3\cdot3^2=27\)</span>, a unit modulo five. The lift is unique among elements congruent to <span class="math" data-tex="\(3\)">\(3\)</span> modulo five. Its first Newton iterate is <span class="math" data-tex="\(56/27\)">\(56/27\)</span>, and its distance from <span class="math" data-tex="\(3\)">\(3\)</span> is <span class="math" data-tex="\(1/25\)">\(1/25\)</span>. The error at this iterate has valuation at least four, by (3).</p>
+<h2 id="2-squares-and-their-obstructions">2. Squares and their obstructions</h2>
+<p>Every <span class="math" data-tex="\(x\in\mathbb Q_p^\times\)">\(x\in\mathbb Q_p^\times\)</span> is uniquely <span class="math" data-tex="\(p^r u\)">\(p^r u\)</span>, with <span class="math" data-tex="\(r\in\mathbb Z\)">\(r\in\mathbb Z\)</span> and <span class="math" data-tex="\(u\in\mathbb Z_p^\times\)">\(u\in\mathbb Z_p^\times\)</span>. A necessary condition for a square is that <span class="math" data-tex="\(r\)">\(r\)</span> be even. Once this holds, the question reduces to the unit <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Proposition 2.1 (square test).</strong> For odd <span class="math" data-tex="\(p\)">\(p\)</span>, a unit <span class="math" data-tex="\(u\in\mathbb Z_p^\times\)">\(u\in\mathbb Z_p^\times\)</span> is a square exactly when its residue is a square in <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>. A unit of <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span> is a square exactly when it is congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(8\)">\(8\)</span>.</p>
+<p>Consequently, for a nonsquare unit <span class="math" data-tex="\(u_0\)">\(u_0\)</span> at odd <span class="math" data-tex="\(p\)">\(p\)</span>, the four elements</p>
+<span class="math math-display" data-tex="\[
+1,\ u_0,\ p,\ pu_0
+\]">\[
+1,\ u_0,\ p,\ pu_0
+\]</span>
+<p>represent all square classes in <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span>. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the eight representatives are</p>
+<span class="math math-display" data-tex="\[
+1,-1,5,-5,2,-2,10,-10.
+\tag{4}
+\]">\[
+1,-1,5,-5,2,-2,10,-10.
+\tag{4}
+\]</span>
+<p><strong>Proof.</strong> At odd <span class="math" data-tex="\(p\)">\(p\)</span>, a unit square reduces to a nonzero square. Conversely, if <span class="math" data-tex="\(a^2\equiv u\pmod p\)">\(a^2\equiv u\pmod p\)</span>, then <span class="math" data-tex="\(a\)">\(a\)</span> is a unit and the derivative of <span class="math" data-tex="\(X^2-u\)">\(X^2-u\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(2a\)">\(2a\)</span>, also a unit. Corollary 1.2 supplies a square root.</p>
+<p>The square map on the finite group <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> has kernel <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, hence image of index two. Its image and its other coset distinguish the two unit square classes. The parity of the valuation distinguishes two more possibilities, giving exactly four classes.</p>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the square of each odd residue modulo eight is one. This proves necessity for units. If <span class="math" data-tex="\(u\equiv1\pmod8\)">\(u\equiv1\pmod8\)</span>, apply Theorem 1.1 to <span class="math" data-tex="\(f(X)=X^2-u\)">\(f(X)=X^2-u\)</span> at <span class="math" data-tex="\(a=1\)">\(a=1\)</span>:</p>
+<span class="math math-display" data-tex="\[
+|f(1)|_2\le1/8&lt;1/4=|f&#x27;(1)|_2^2.
+\]">\[
+|f(1)|_2\le1/8&lt;1/4=|f&#x27;(1)|_2^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(u\)">\(u\)</span> has a square root in <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span>. Two units have the same square class exactly when their quotient is one modulo eight, equivalently when their residues modulo eight agree. The unit representatives <span class="math" data-tex="\(1,-1,5,-5\)">\(1,-1,5,-5\)</span> have the four different residues <span class="math" data-tex="\(1,7,5,3\)">\(1,7,5,3\)</span>. Adding valuation parity gives (4), with all eight classes distinct. ∎</p>
+<p>This classifies nonzero elements. Zero is of course a square, but does not belong to the multiplicative square-class group.</p>
+<p><strong>Four roots to test.</strong> In <span class="math" data-tex="\(\mathbb Q_5\)">\(\mathbb Q_5\)</span>, <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> has the simple residue root <span class="math" data-tex="\(2\)">\(2\)</span>, so <span class="math" data-tex="\(-1\)">\(-1\)</span> is a square. Its first Newton iterate is <span class="math" data-tex="\(3/4\)">\(3/4\)</span>, and the root congruent to two modulo five has distance <span class="math" data-tex="\(1/5\)">\(1/5\)</span> from two. The residue two is not a square modulo five, so <span class="math" data-tex="\(\sqrt2\notin\mathbb Q_5\)">\(\sqrt2\notin\mathbb Q_5\)</span>. In <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>, seven reduces to one and therefore is a square. Finally, for <span class="math" data-tex="\(X^2-17\)">\(X^2-17\)</span> at <span class="math" data-tex="\(a=1\)">\(a=1\)</span> in <span class="math" data-tex="\(\mathbb Q_2\)">\(\mathbb Q_2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|f(1)|_2=1/16&lt;1/4=|f&#x27;(1)|_2^2.
+\]">\[
+|f(1)|_2=1/16&lt;1/4=|f&#x27;(1)|_2^2.
+\]</span>
+<p>Newton lifting applies even though the derivative is not a unit. The first iterate is nine; the nearby root has distance <span class="math" data-tex="\(1/8\)">\(1/8\)</span> from one. The other root is its negative and does not lie in that same Newton ball.</p>
+<h2 id="3-correcting-a-factorization">3. Correcting a factorization</h2>
+<p>For a polynomial <span class="math" data-tex="\(P=\sum a_iX^i\)">\(P=\sum a_iX^i\)</span>, write <span class="math" data-tex="\(\|P\|=\max_i|a_i|\)">\(\|P\|=\max_i|a_i|\)</span>, with <span class="math" data-tex="\(\|0\|=0\)">\(\|0\|=0\)</span>. Coefficientwise addition satisfies the ultrametric inequality and <span class="math" data-tex="\(\|PQ\|\le\|P\|\|Q\|\)">\(\|PQ\|\le\|P\|\|Q\|\)</span>. Thus a polynomial is integral exactly when its coefficient norm is at most one.</p>
+<p><strong>Lemma 3.1 (bounded linear correction).</strong> Let <span class="math" data-tex="\(g\in\mathcal O[X]\)">\(g\in\mathcal O[X]\)</span> be monic of degree <span class="math" data-tex="\(r\)">\(r\)</span>, and let <span class="math" data-tex="\(h\in\mathcal O[X]\)">\(h\in\mathcal O[X]\)</span> have degree at most <span class="math" data-tex="\(s\)">\(s\)</span>. Assume <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span> and <span class="math" data-tex="\(\bar h\)">\(\bar h\)</span> are coprime. For every polynomial <span class="math" data-tex="\(E\)">\(E\)</span> of degree at most <span class="math" data-tex="\(r+s\)">\(r+s\)</span> there is a unique pair</p>
+<span class="math math-display" data-tex="\[
+\deg u&lt;r,\qquad \deg v\le s,\qquad uh+vg=E.
+\tag{5}
+\]">\[
+\deg u&lt;r,\qquad \deg v\le s,\qquad uh+vg=E.
+\tag{5}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(\max(\|u\|,\|v\|)\le\|E\|\)">\(\max(\|u\|,\|v\|)\le\|E\|\)</span>.</p>
+<p><strong>Proof.</strong> Division by the monic polynomial <span class="math" data-tex="\(g\)">\(g\)</span> identifies <span class="math" data-tex="\(\mathcal O[X]/(g)\)">\(\mathcal O[X]/(g)\)</span> with the free module with basis <span class="math" data-tex="\(1,X,\ldots,X^{r-1}\)">\(1,X,\ldots,X^{r-1}\)</span>. Multiplication by <span class="math" data-tex="\(h\)">\(h\)</span> is represented by a matrix with entries in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. On reduction it is invertible: coprimality gives a Bézout identity in <span class="math" data-tex="\(\kappa[X]\)">\(\kappa[X]\)</span>. Its determinant is therefore a unit of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, and its inverse, computed by the adjugate, also has integral entries.</p>
+<p>Take <span class="math" data-tex="\(u\)">\(u\)</span> to be the unique representative of degree less than <span class="math" data-tex="\(r\)">\(r\)</span> of the inverse image of <span class="math" data-tex="\(E\)">\(E\)</span> modulo <span class="math" data-tex="\(g\)">\(g\)</span>, and set <span class="math" data-tex="\(v=(E-uh)/g\)">\(v=(E-uh)/g\)</span>. These operations are <span class="math" data-tex="\(K\)">\(K\)</span>-linear. Monic division never increases the coefficient norm when <span class="math" data-tex="\(\|g\|\le1\)">\(\|g\|\le1\)</span>; the inverse matrix likewise has operator norm at most one for the maximum norm. Therefore <span class="math" data-tex="\(\|u\|,\|v\|\le\|E\|\)">\(\|u\|,\|v\|\le\|E\|\)</span>. The degree bound on <span class="math" data-tex="\(v\)">\(v\)</span> follows from division of a polynomial of degree at most <span class="math" data-tex="\(r+s\)">\(r+s\)</span>. Uniqueness follows first modulo <span class="math" data-tex="\(g\)">\(g\)</span>, and then in (5). If <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, then <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, and the assertion follows directly. ∎</p>
+<p><strong>Theorem 3.2 (factorization lifting).</strong> Suppose <span class="math" data-tex="\(f\in\mathcal O[X]\)">\(f\in\mathcal O[X]\)</span> has nonzero reduction and</p>
+<span class="math math-display" data-tex="\[
+\bar f=\bar g\bar h,\qquad (\bar g,\bar h)=1.
+\]">\[
+\bar f=\bar g\bar h,\qquad (\bar g,\bar h)=1.
+\]</span>
+<p>If <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span> is monic, there is a unique factorization <span class="math" data-tex="\(f=gh\)">\(f=gh\)</span> with <span class="math" data-tex="\(g\)">\(g\)</span> monic, <span class="math" data-tex="\(\deg g=\deg\bar g\)">\(\deg g=\deg\bar g\)</span>, and prescribed reductions <span class="math" data-tex="\(\bar g,\bar h\)">\(\bar g,\bar h\)</span>. The factors are strictly coprime: <span class="math" data-tex="\((g,h)=\mathcal O[X]\)">\((g,h)=\mathcal O[X]\)</span>.</p>
+<p>For an arbitrary nonzero <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span>, a factorization with the prescribed reductions and <span class="math" data-tex="\(\deg g=\deg\bar g\)">\(\deg g=\deg\bar g\)</span> still exists. It becomes unique once the leading coefficient of <span class="math" data-tex="\(g\)">\(g\)</span> is fixed to a chosen lift of the leading coefficient of <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span>.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span> monic. Put <span class="math" data-tex="\(n=\deg f\)">\(n=\deg f\)</span>, <span class="math" data-tex="\(r=\deg\bar g\)">\(r=\deg\bar g\)</span>, <span class="math" data-tex="\(s=n-r\)">\(s=n-r\)</span>. Choose a monic lift <span class="math" data-tex="\(g_0\)">\(g_0\)</span> of degree <span class="math" data-tex="\(r\)">\(r\)</span>, and a lift <span class="math" data-tex="\(h_0\)">\(h_0\)</span> of degree at most <span class="math" data-tex="\(s\)">\(s\)</span>. Then <span class="math" data-tex="\(E_0=f-g_0h_0\)">\(E_0=f-g_0h_0\)</span> has coefficient norm <span class="math" data-tex="\(\rho&lt;1\)">\(\rho&lt;1\)</span>, because each of its finitely many coefficients reduces to zero. If <span class="math" data-tex="\(E_0=0\)">\(E_0=0\)</span>, this is already a factorization.</p>
+<p>Otherwise use Lemma 3.1 successively to solve</p>
+<span class="math math-display" data-tex="\[
+u_jh_j+v_jg_j=E_j,\qquad
+g_{j+1}=g_j+u_j,\quad h_{j+1}=h_j+v_j.
+\]">\[
+u_jh_j+v_jg_j=E_j,\qquad
+g_{j+1}=g_j+u_j,\quad h_{j+1}=h_j+v_j.
+\]</span>
+<p>The new error is <span class="math" data-tex="\(E_{j+1}=-u_jv_j\)">\(E_{j+1}=-u_jv_j\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\|E_j\|\le\rho^{2^j},\qquad
+\|u_j\|,\|v_j\|\le\rho^{2^j}.
+\tag{6}
+\]">\[
+\|E_j\|\le\rho^{2^j},\qquad
+\|u_j\|,\|v_j\|\le\rho^{2^j}.
+\tag{6}
+\]</span>
+<p>All corrections reduce to zero. Thus the reductions remain coprime, <span class="math" data-tex="\(g_j\)">\(g_j\)</span> stays monic of degree <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(\deg h_j\le s\)">\(\deg h_j\le s\)</span>. Completeness applied to each coefficient gives polynomials <span class="math" data-tex="\(g,h\)">\(g,h\)</span> with the required degrees and reductions. Formula (6) makes the error tend to zero, so <span class="math" data-tex="\(f=gh\)">\(f=gh\)</span>. There was no need for a smallest positive value of the valuation.</p>
+<p>For uniqueness, suppose another pair <span class="math" data-tex="\(g&#x27;,h&#x27;\)">\(g&#x27;,h&#x27;\)</span> has these properties. Set <span class="math" data-tex="\(u=g&#x27;-g\)">\(u=g&#x27;-g\)</span>, <span class="math" data-tex="\(v=h&#x27;-h\)">\(v=h&#x27;-h\)</span>. The degree restrictions of Lemma 3.1 apply, and <span class="math" data-tex="\(t=\max(\|u\|,\|v\|)&lt;1\)">\(t=\max(\|u\|,\|v\|)&lt;1\)</span>. Subtracting the factorizations gives</p>
+<span class="math math-display" data-tex="\[
+uh+vg=-uv.
+\]">\[
+uh+vg=-uv.
+\]</span>
+<p>The bounded inverse in Lemma 3.1 yields <span class="math" data-tex="\(t\le\|uv\|\le t^2\)">\(t\le\|uv\|\le t^2\)</span>. This forces <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, proving equality of both pairs. Applying the lemma to <span class="math" data-tex="\(E=1\)">\(E=1\)</span> also produces <span class="math" data-tex="\(uh+vg=1\)">\(uh+vg=1\)</span>, which proves strict coprimality.</p>
+<p>In general, let <span class="math" data-tex="\(c\in\mathcal O^\times\)">\(c\in\mathcal O^\times\)</span> lift the leading coefficient of <span class="math" data-tex="\(\bar g\)">\(\bar g\)</span>. Replace the residue factors by <span class="math" data-tex="\(\bar c^{-1}\bar g\)">\(\bar c^{-1}\bar g\)</span> and <span class="math" data-tex="\(\bar c\bar h\)">\(\bar c\bar h\)</span>. The first is monic. Lift them by the first part, obtaining <span class="math" data-tex="\(G,H\)">\(G,H\)</span>, and put <span class="math" data-tex="\(g=cG\)">\(g=cG\)</span>, <span class="math" data-tex="\(h=c^{-1}H\)">\(h=c^{-1}H\)</span>. These have the original reductions. The same normalization proves the final uniqueness assertion. ∎</p>
+<p>In the usual monic form, <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> are all monic and their degrees equal their residue degrees. The more general form is useful when the leading coefficient of <span class="math" data-tex="\(f\)">\(f\)</span> lies in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. For example, over <span class="math" data-tex="\(\mathbb Q_5\)">\(\mathbb Q_5\)</span>, the polynomial</p>
+<span class="math math-display" data-tex="\[
+5X^2+X+1
+\]">\[
+5X^2+X+1
+\]</span>
+<p>reduces to <span class="math" data-tex="\(X+1\)">\(X+1\)</span>. Its simple root modulo five lifts to an integral root, producing a monic linear factor; the remaining linear factor has leading coefficient five and constant nonzero reduction. Dropping the degree condition on the monic factor would hide this distinction.</p>
+<p>Coprimality cannot be removed. The reduction of <span class="math" data-tex="\(X^2-p\)">\(X^2-p\)</span> is <span class="math" data-tex="\(X\cdot X\)">\(X\cdot X\)</span>, yet <span class="math" data-tex="\(X^2-p\)">\(X^2-p\)</span> has no root in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>: a root would have valuation <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, whereas the value group of <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span> is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<h2 id="4-residues-lift-multiplicatively">4. Residues lift multiplicatively</h2>
+<p>Assume now <span class="math" data-tex="\(\kappa=\mathbb F_q\)">\(\kappa=\mathbb F_q\)</span>, where <span class="math" data-tex="\(q=p^f\)">\(q=p^f\)</span>. The polynomial <span class="math" data-tex="\(X^{q-1}-1\)">\(X^{q-1}-1\)</span> has every nonzero residue as a simple root: its derivative is <span class="math" data-tex="\((q-1)X^{q-2}\)">\((q-1)X^{q-2}\)</span>, a unit at those roots.</p>
+<p><strong>Proposition 4.1 (Teichmüller representatives).</strong> Reduction induces an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\mu_{q-1}(K)\xrightarrow{\sim}\mathbb F_q^\times,
+\]">\[
+\mu_{q-1}(K)\xrightarrow{\sim}\mathbb F_q^\times,
+\]</span>
+<p>where <span class="math" data-tex="\(\mu_m(K)=\{z\in K:z^m=1\}\)">\(\mu_m(K)=\{z\in K:z^m=1\}\)</span>. Its inverse <span class="math" data-tex="\(a\mapsto[a]\)">\(a\mapsto[a]\)</span> is multiplicative. With <span class="math" data-tex="\([0]=0\)">\([0]=0\)</span>, the elements <span class="math" data-tex="\([a]\)">\([a]\)</span> give representatives of all residue classes. In particular a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, with its complete extended absolute value and residue field <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, contains all <span class="math" data-tex="\((q-1)\)">\((q-1)\)</span>-st roots of unity.</p>
+<p><strong>Proof.</strong> Corollary 1.2 provides exactly one root over each nonzero residue. Every root of unity has absolute value one, hence lies in <span class="math" data-tex="\(\mathcal O^\times\)">\(\mathcal O^\times\)</span>. The polynomial has degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>; the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> lifted roots exhaust its roots. The product <span class="math" data-tex="\([a][b]\)">\([a][b]\)</span> is another <span class="math" data-tex="\((q-1)\)">\((q-1)\)</span>-st root of unity and reduces to <span class="math" data-tex="\(ab\)">\(ab\)</span>, so uniqueness gives <span class="math" data-tex="\([a][b]=[ab]\)">\([a][b]=[ab]\)</span>. ∎</p>
+<p>The completeness and uniqueness of the extended value on finite extensions will be proved in <em>Extensions of complete valued fields</em>. The proposition itself proves the stronger conditional statement for every complete field with this residue field, and does not use any extension theorem. The representatives are usually not additive: for example in <span class="math" data-tex="\(\mathbb Q_3\)">\(\mathbb Q_3\)</span>, <span class="math" data-tex="\([1]+[1]=2\)">\([1]+[1]=2\)</span>, while <span class="math" data-tex="\([2]=-1\)">\([2]=-1\)</span>.</p>
+<p>To determine all roots of unity of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, we must also control units that reduce to one.</p>
+<p><strong>Lemma 4.2 (valuation of a power).</strong> If <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> and <span class="math" data-tex="\(r=v_p(z)\ge1\)">\(r=v_p(z)\ge1\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span>, or <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, then for every positive integer <span class="math" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+v_p((1+z)^m-1)=r+v_p(m).
+\tag{7}
+\]">\[
+v_p((1+z)^m-1)=r+v_p(m).
+\tag{7}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, the linear term <span class="math" data-tex="\(mz\)">\(mz\)</span> has valuation <span class="math" data-tex="\(r\)">\(r\)</span>; all higher terms in the binomial expansion have valuation at least <span class="math" data-tex="\(2r&gt;r\)">\(2r&gt;r\)</span>. Thus the valuation is <span class="math" data-tex="\(r\)">\(r\)</span>. For the exponent <span class="math" data-tex="\(p\)">\(p\)</span>, the term <span class="math" data-tex="\(pz\)">\(pz\)</span> has valuation <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. At odd <span class="math" data-tex="\(p\)">\(p\)</span>, the intermediate binomial coefficients are divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, giving valuations at least <span class="math" data-tex="\(1+2r&gt;r+1\)">\(1+2r&gt;r+1\)</span>; the last term has valuation <span class="math" data-tex="\(pr&gt;r+1\)">\(pr&gt;r+1\)</span>. At two the other term is <span class="math" data-tex="\(z^2\)">\(z^2\)</span>, of valuation <span class="math" data-tex="\(2r&gt;r+1\)">\(2r&gt;r+1\)</span>. Thus taking a <span class="math" data-tex="\(p\)">\(p\)</span>-th power increases the valuation exactly by one. Apply this repeatedly to the <span class="math" data-tex="\(p\)">\(p\)</span>-power part of <span class="math" data-tex="\(m\)">\(m\)</span>, and apply the first observation to its prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> part. ∎</p>
+<p><strong>Proposition 4.3 (torsion in <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span>).</strong> For odd <span class="math" data-tex="\(p\)">\(p\)</span>, the group <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span> has no nonidentity element of finite order, and</p>
+<span class="math math-display" data-tex="\[
+\mu(\mathbb Q_p)=\mu_{p-1}(\mathbb Q_p).
+\]">\[
+\mu(\mathbb Q_p)=\mu_{p-1}(\mathbb Q_p).
+\]</span>
+<p>For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the group <span class="math" data-tex="\(1+4\mathbb Z_2\)">\(1+4\mathbb Z_2\)</span> is torsion-free and <span class="math" data-tex="\(\mu(\mathbb Q_2)=\{1,-1\}\)">\(\mu(\mathbb Q_2)=\{1,-1\}\)</span>.</p>
+<p><strong>Proof.</strong> Formula (7) is finite for every positive <span class="math" data-tex="\(m\)">\(m\)</span>, so <span class="math" data-tex="\((1+z)^m\ne1\)">\((1+z)^m\ne1\)</span> whenever <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> has the stated valuation. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, divide a root of unity <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by the Teichmüller lift of its residue. The quotient is a torsion element in <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span>, hence one. For two, every unit has odd residue modulo four; its square is one modulo eight. Thus the square of any root of unity lies in the torsion-free group <span class="math" data-tex="\(1+4\mathbb Z_2\)">\(1+4\mathbb Z_2\)</span>, and is one. The solutions of <span class="math" data-tex="\(X^2=1\)">\(X^2=1\)</span> in a characteristic-zero field are exactly <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. ∎</p>
+<p>Notice why <span class="math" data-tex="\(1+2\mathbb Z_2\)">\(1+2\mathbb Z_2\)</span> was excluded: it contains <span class="math" data-tex="\(-1\)">\(-1\)</span>. These elementary power estimates will later be replaced by the logarithm on sufficiently deep unit groups.</p>
+<h2 id="5-henselian-fields-beyond-completion">5. Henselian fields beyond completion</h2>
+<p>A valued field is called <em>henselian</em> when its valuation ring is henselian: every simple residue root of a monic integral polynomial lifts to a root in the valuation ring. The lift, when it exists, is unique. The equivalent coprime-factorization formulations are part of the general theory in [Stacks, Tag 04GE]. Corollary 1.2 proves directly that every complete nonarchimedean valued field is henselian, and Theorem 3.2 gives the factorization form as well.</p>
+<p>Completeness is a sufficient condition, rather than the definition. Every valued field has a henselization: a henselian algebraic extension with the universal mapping property among henselian valued extensions. A henselization is unique up to the unique valued isomorphism compatible with the original field [Stacks, Tags 04GN and 0ASK]. This existence theorem, and henselization and strict henselization for general local rings, belong to <em>Henselian local rings and henselization</em>. We do not prove them here.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>Decide which of <span class="math" data-tex="\(2,3,-1,7\)">\(2,3,-1,7\)</span> are squares in <span class="math" data-tex="\(\mathbb Q_7\)">\(\mathbb Q_7\)</span>. Distinguish the residue obstruction from the valuation obstruction.</li>
+<li>Prove that <span class="math" data-tex="\(X^2-p\)">\(X^2-p\)</span> is irreducible over <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, and explain why the repeated factor in its reduction does not lift.</li>
+<li>Prove directly, without a logarithm, that <span class="math" data-tex="\(1+p\mathbb Z_p\)">\(1+p\mathbb Z_p\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(1+4\mathbb Z_2\)">\(1+4\mathbb Z_2\)</span> have no nonidentity roots of unity. Determine the valuation of <span class="math" data-tex="\(u^m-1\)">\(u^m-1\)</span> for <span class="math" data-tex="\(u\ne1\)">\(u\ne1\)</span> in these groups.</li>
+<li>Prove that every element of <span class="math" data-tex="\(1+8\mathbb Z_2\)">\(1+8\mathbb Z_2\)</span> is a square, and verify that the eight elements in (4) form a complete set of distinct square classes.</li>
+<li>Show that <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> and <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span> are not isomorphic as fields when <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>. Do not assume that an abstract field isomorphism is continuous.</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> The nonzero squares modulo seven are <span class="math" data-tex="\(1,2,4\)">\(1,2,4\)</span>, obtained by squaring <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span> and their negatives. Thus two is a square in <span class="math" data-tex="\(\mathbb Q_7\)">\(\mathbb Q_7\)</span>, while three and minus one (residue six) are not, by Proposition 2.1. Seven has valuation one and therefore is not a square. All four decisions are now justified by a necessary and sufficient test.</p>
+<p><strong>2.</strong> If <span class="math" data-tex="\(b^2=p\)">\(b^2=p\)</span>, then <span class="math" data-tex="\(2v_p(b)=1\)">\(2v_p(b)=1\)</span>, contradicting the integer value group. A quadratic polynomial over a field is reducible exactly when it has a root, so the polynomial is irreducible. Its reduction is <span class="math" data-tex="\(X^2\)">\(X^2\)</span>; the two factors <span class="math" data-tex="\(X\)">\(X\)</span> are not coprime, and the factorization theorem has no applicable hypothesis. This example proves that this hypothesis is needed, even for monic polynomials.</p>
+<p><strong>3.</strong> Write <span class="math" data-tex="\(u=1+z\)">\(u=1+z\)</span>, with <span class="math" data-tex="\(r=v_p(z)\)">\(r=v_p(z)\)</span> in the stated range. For <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span>, the binomial expansion gives <span class="math" data-tex="\(v_p(u^d-1)=r\)">\(v_p(u^d-1)=r\)</span> because its linear term has uniquely least valuation. The expansion for exponent <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(v_p(u^p-1)=r+1\)">\(v_p(u^p-1)=r+1\)</span>: for odd <span class="math" data-tex="\(p\)">\(p\)</span> its intermediate terms have valuation at least <span class="math" data-tex="\(1+2r\)">\(1+2r\)</span> and its last term has valuation <span class="math" data-tex="\(pr\)">\(pr\)</span>; for two the last term has valuation <span class="math" data-tex="\(2r\)">\(2r\)</span>. All are strictly greater than <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. Iterating and writing <span class="math" data-tex="\(m=p^a d\)">\(m=p^a d\)</span>, <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span>, gives <span class="math" data-tex="\(v_p(u^m-1)=r+a\)">\(v_p(u^m-1)=r+a\)</span>. This is finite for every positive <span class="math" data-tex="\(m\)">\(m\)</span>, so <span class="math" data-tex="\(u\)">\(u\)</span> cannot have finite order. The condition <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> at two is indispensable, since <span class="math" data-tex="\(-1=1-2\)">\(-1=1-2\)</span> has order two.</p>
+<p><strong>4.</strong> For <span class="math" data-tex="\(u\in1+8\mathbb Z_2\)">\(u\in1+8\mathbb Z_2\)</span>, evaluate <span class="math" data-tex="\(X^2-u\)">\(X^2-u\)</span> at one. Its error has valuation at least three, while its derivative has valuation one. The strict Newton inequality holds, so <span class="math" data-tex="\(u\)">\(u\)</span> is a square. Conversely an odd square is one modulo eight: if <span class="math" data-tex="\(a=2k+1\)">\(a=2k+1\)</span>, then <span class="math" data-tex="\(a^2=1+4k(k+1)\)">\(a^2=1+4k(k+1)\)</span>, and <span class="math" data-tex="\(k(k+1)\)">\(k(k+1)\)</span> is even. This identity holds modulo eight for every element of <span class="math" data-tex="\(\mathbb Z_2\)">\(\mathbb Z_2\)</span> by reduction. A nonzero element is <span class="math" data-tex="\(2^r u\)">\(2^r u\)</span>. Removing <span class="math" data-tex="\(2^{2\lfloor r/2\rfloor}\)">\(2^{2\lfloor r/2\rfloor}\)</span> leaves valuation zero or one; removing a unit square leaves exactly one of the residues represented by <span class="math" data-tex="\(1,-1,5,-5\)">\(1,-1,5,-5\)</span>. Their products with two give all eight representatives. Distinct valuation parities cannot differ by a square; within the same parity, distinct odd residues modulo eight cannot differ by a square. This proves completeness and distinctness.</p>
+<p><strong>5.</strong> A field isomorphism preserves the set of all roots of unity, because each equation <span class="math" data-tex="\(X^m=1\)">\(X^m=1\)</span> is preserved. Proposition 4.3 shows that this set has <span class="math" data-tex="\(p-1\)">\(p-1\)</span> elements for odd <span class="math" data-tex="\(p\)">\(p\)</span> and two elements for <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Different odd primes therefore give different cardinalities. The same distinguishes two from every odd prime other than three. The remaining pair is <span class="math" data-tex="\(\mathbb Q_2,\mathbb Q_3\)">\(\mathbb Q_2,\mathbb Q_3\)</span>. A field isomorphism also induces an isomorphism of multiplicative groups and of their quotients by squares. Proposition 2.1 gives cardinalities eight and four for these two quotients, respectively. Thus this pair is impossible too. The argument covers all distinct primes and uses no topology on an alleged isomorphism.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the field-completion and value-group results from <em>Completions, the p-adic numbers and complete discretely valued fields</em>, and elementary polynomial division and matrix inversion over a field. The usual finite-field square count follows here from the kernel of the square map; cyclicity of finite-field multiplicative groups is not needed for that count.</p>
+<p>The completeness and unique extended absolute value on a finite extension of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> are proved in <em>Extensions of complete valued fields</em>. The Teichmüller construction above already proves the assertion for any complete field with finite residue field.</p>
+<p>The general equivalence of henselian-local-ring criteria is cited from [Stacks, Tag 04GE]. Existence of henselization is cited from [Stacks, Tags 04GN and 0ASK]. These topics are developed in <em>Henselian local rings and henselization</em>. They are not prerequisites for any lifting proof in this lesson. We do not classify ramified extensions or their roots of unity beyond <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne]</strong> J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em>, version 3.08</a>, Chapter 7, Newton's lemma, Propositions 7.31 and Theorems 7.32–7.33. Theorem 1.1 above specifies the smaller ball in which the root is unique.</li>
+<li><strong>[Fesenko–Vostokov]</strong> I. B. Fesenko and S. V. Vostokov, <em>Local Fields and Their Extensions</em>, second edition, Chapter I, §4, on completion, and Chapter II, §1, on the Hensel lemma and Henselian fields. <a href="https://ivanfesenko.org/wp-content/uploads/2021/10/vol.pdf">Author-hosted edition</a>.</li>
+<li><strong>[Stacks]</strong> <em>The Stacks project</em>, read in the AI Integrated Stacks Project English edition: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-section-henselian">Tag 04GE, henselian local rings</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-henselization">Tag 04GN, henselization</a>; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-henselization-valuation-ring">Tag 0ASK, henselization of valuation rings</a>. This is an unofficial edition with AI-proposed corrections and supplements; those additions have not been reviewed by the Stacks project maintainers. The <a href="https://stacks.math.columbia.edu/">official Stacks project</a> maintains the tagged source.</li>
+</ul>
+</article></main></body></html>

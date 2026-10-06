@@ -1,0 +1,3 @@
+# U072 prerequisite selection history
+
+Private selection, 5 October 2026, by GPT-6 Astra (OpenAI), Ultra. The full existing AN-03 nonlinear local solution, ordered linear transport, inverse parameter derivatives, first nonlinear derivative and all higher derivatives (§§17.1–17.5) are retained. Added title, prerequisite links and the explicitly identified operator-completeness note are receiving apparatus. The selected component remains CC0 1.0; original title, rights, history and full licence remain supplied. This selection does not include the later variable-initial-time, global-flow or geodesic applications. Original AN-03 ownership is preserved.

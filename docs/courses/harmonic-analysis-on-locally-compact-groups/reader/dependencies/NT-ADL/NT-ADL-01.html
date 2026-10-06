@@ -1,0 +1,443 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Restricted products and profinite completions</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main id="main" style="max-width:58rem;margin:auto;padding:1.5rem"><nav><a href="../../index.html">Harmonic analysis on locally compact groups</a> · <a href="../../../src/dependencies/NT-ADL/src/NT-ADL-01.md">Editable source</a></nav><article class="lesson"><h1 id="restricted-products-and-profinite-completions">Restricted products and profinite completions</h1>
+<p><em>Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026, and dedicated under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Source adaptations are credited below. Self-checked by the writing AI. This revised lesson as a whole is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>; the prior CC0 dedication of its original components remains in force.</em></p>
+<p>A finite adèle records one number in each field <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, with an integrality condition at all but finitely many primes. Its topology must allow those finitely many exceptions while retaining a compact neighbourhood. Restricted products provide exactly this construction. They also explain how local integrals and local characters combine into global ones.</p>
+<p>We first build the topology, then integration and characters. We apply the construction to the profinite integers and finite adèles, and finish with test functions and the topology of finite idèles. The prerequisites are point-set topology and measure and integration, together with <a href="../../../../NT-ADL/prerequisites/haar-measure-on-locally-compact-groups.html">Haar measure on locally compact groups</a>, <a href="../../../../HA-LCA/src/characters-and-the-dual-group.html">Characters and the dual group</a>, <a href="../../../../HA-LCA/HA-LCA-03.html">The dual group as the Gelfand spectrum of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span></a>, <a href="../../../../HA-LCA/src/the-pontryagin-duality-theorem.html">The Pontryagin duality theorem</a>, <a href="../../../../HA-LCA/src/subgroups-quotients-and-annihilators.html">Subgroups, quotients and annihilators</a>, and <a href="../../../../HA-LCA/src/totally-disconnected-groups-the-p-adic-numbers-and-the-adeles.html">Totally disconnected groups, the p-adic numbers and the adèles</a>. The precise background statements used without proof are listed below.</p>
+<p>The restricted-product construction can be compared with [Getz–Hahn, §2.3] and [Sutherland 25, §25.2]. [Bost–Connes, §3] gives the finite rational adèle ring, and [Lenstra, Example 2.2] describes the profinite integers. The general character theorem and all residue calculations needed here are proved below.</p>
+<h2 id="why-an-unrestricted-product-can-fail-to-be-locally-compact">Why an unrestricted product can fail to be locally compact</h2>
+<p>Let <span class="math" data-tex="\(G_v\)">\(G_v\)</span> be a family of locally compact Hausdorff groups, and consider the full product <span class="math" data-tex="\(\prod_v G_v\)">\(\prod_v G_v\)</span>, with its product topology. Suppose infinitely many factors <span class="math" data-tex="\(G_v\)">\(G_v\)</span> are noncompact. If the product had a compact neighbourhood <span class="math" data-tex="\(C\)">\(C\)</span> of the identity, then <span class="math" data-tex="\(C\)">\(C\)</span> would contain a basic product neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span>. Such a neighbourhood restricts only finitely many coordinates. At every remaining coordinate <span class="math" data-tex="\(v\)">\(v\)</span>, its projection is all of <span class="math" data-tex="\(G_v\)">\(G_v\)</span>. Since <span class="math" data-tex="\(U\subseteq C\)">\(U\subseteq C\)</span>, the projection of <span class="math" data-tex="\(C\)">\(C\)</span> is also all of <span class="math" data-tex="\(G_v\)">\(G_v\)</span>. A continuous image of a compact space is compact, so all factors outside that finite set would be compact, a contradiction.</p>
+<p>The restricted product avoids this obstruction by requiring membership in a compact open subgroup <span class="math" data-tex="\(K_v\)">\(K_v\)</span> outside a finite set. Its open stages then have compact tails. Proposition 1.1 supplies the full construction and proof.</p>
+<p>This motivation adapts Andrew V. Sutherland’s <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/">MIT 18.785 Lecture 25, §25.1, p.1</a> (29 November 2021), provided by MIT OpenCourseWare under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. GPT-6.1 Sol (OpenAI), Ultra, adapted the argument to topological groups and this lesson’s notation. The source’s attribution, noncommercial and ShareAlike conditions apply to this revised lesson as a whole.</p>
+<h2 id="a-topology-with-finitely-many-exceptional-coordinates">A topology with finitely many exceptional coordinates</h2>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be any index set. Each <span class="math" data-tex="\(G_v\)">\(G_v\)</span> is a locally compact Hausdorff group. Fix a finite set <span class="math" data-tex="\(E\subseteq V\)">\(E\subseteq V\)</span>, and for <span class="math" data-tex="\(v\notin E\)">\(v\notin E\)</span> choose a compact open subgroup <span class="math" data-tex="\(K_v\leq G_v\)">\(K_v\leq G_v\)</span>. Coordinates in <span class="math" data-tex="\(E\)">\(E\)</span> are unrestricted; this permits real or complex factors. Throughout, “almost all” means all but finitely many.</p>
+<p>The <strong>restricted product</strong> is the group
+<span class="math math-display" data-tex="\[
+G=\prod_{v\in V}&#x27;(G_v,K_v)
+=\left\{x\in\prod_{v\in V}G_v:
+x_v\in K_v\text{ for almost all }v\notin E\right\}.
+\]">\[
+G=\prod_{v\in V}&#x27;(G_v,K_v)
+=\left\{x\in\prod_{v\in V}G_v:
+x_v\in K_v\text{ for almost all }v\notin E\right\}.
+\]</span>
+For finite <span class="math" data-tex="\(S\supseteq E\)">\(S\supseteq E\)</span>, set
+<span class="math math-display" data-tex="\[
+G_S=\prod_{v\in S}G_v\times\prod_{v\notin S}K_v.
+\]">\[
+G_S=\prod_{v\in S}G_v\times\prod_{v\notin S}K_v.
+\]</span>
+Give <span class="math" data-tex="\(G\)">\(G\)</span> the topology with basis
+<span class="math math-display" data-tex="\[
+B(S;U)=\prod_{v\in S}U_v\times\prod_{v\notin S}K_v,
+\qquad U_v\subseteq G_v\text{ open}.
+\tag{1}
+\]">\[
+B(S;U)=\prod_{v\in S}U_v\times\prod_{v\notin S}K_v,
+\qquad U_v\subseteq G_v\text{ open}.
+\tag{1}
+\]</span>
+The finite set can always be enlarged: a newly included coordinate is assigned the open set <span class="math" data-tex="\(K_v\)">\(K_v\)</span>. This observation proves that intersections of basic sets are basic sets, allowing empty factors.</p>
+<p><strong>Proposition 1.1.</strong> The restricted product is a locally compact Hausdorff topological group. It is the upward-directed union of the open subgroups <span class="math" data-tex="\(G_S\)">\(G_S\)</span>, and each <span class="math" data-tex="\(G_S\)">\(G_S\)</span> has its product topology. Every compact subset of <span class="math" data-tex="\(G\)">\(G\)</span> lies in some <span class="math" data-tex="\(G_S\)">\(G_S\)</span>.</p>
+<p><strong>Proof.</strong> Every tuple satisfies the defining restriction outside a finite set, so <span class="math" data-tex="\(G=\bigcup_SG_S\)">\(G=\bigcup_SG_S\)</span>. Coordinatewise multiplication and inversion preserve the condition because the <span class="math" data-tex="\(K_v\)">\(K_v\)</span> are subgroups. Thus <span class="math" data-tex="\(G\)">\(G\)</span> is an algebraic subgroup of the full product.</p>
+<p>The sets <span class="math" data-tex="\(G_S\)">\(G_S\)</span> are open by (1). Intersecting (1) with <span class="math" data-tex="\(G_S\)">\(G_S\)</span> imposes open conditions on only finitely many factors of its product decomposition. Conversely, every product neighbourhood in <span class="math" data-tex="\(G_S\)">\(G_S\)</span> is obtained this way, since its finitely many conditions on tail factors are open in the corresponding <span class="math" data-tex="\(G_v\)">\(G_v\)</span>. Hence the induced topology is the product topology.</p>
+<p>For <span class="math" data-tex="\(x,y\in G\)">\(x,y\in G\)</span>, choose one <span class="math" data-tex="\(G_S\)">\(G_S\)</span> containing both. Multiplication is continuous on <span class="math" data-tex="\(G_S\times G_S\)">\(G_S\times G_S\)</span>, and inversion is continuous on <span class="math" data-tex="\(G_S\)">\(G_S\)</span>. These are open neighbourhoods of the relevant points in the domain, proving continuity on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Each coordinate projection is continuous: at a point, enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to include that coordinate. Distinct tuples therefore have disjoint neighbourhoods pulled back from a Hausdorff factor. This proves the Hausdorff property.</p>
+<p>For <span class="math" data-tex="\(x\in G_S\)">\(x\in G_S\)</span>, choose a compact neighbourhood <span class="math" data-tex="\(C_v\)">\(C_v\)</span> of <span class="math" data-tex="\(x_v\)">\(x_v\)</span> in each of the finitely many factors indexed by <span class="math" data-tex="\(S\)">\(S\)</span>. The set
+<span class="math math-display" data-tex="\[
+\prod_{v\in S}C_v\times\prod_{v\notin S}K_v
+\]">\[
+\prod_{v\in S}C_v\times\prod_{v\notin S}K_v
+\]</span>
+is a compact neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>, by the compact-product theorem. This proves local compactness. Finally, the open cover <span class="math" data-tex="\((G_S)_S\)">\((G_S)_S\)</span> of a compact subset has a finite subcover. The union of the finitely many indexing sets gives a single chart containing that subset. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inclusion <span class="math" data-tex="\(G\hookrightarrow\prod_vG_v\)">\(G\hookrightarrow\prod_vG_v\)</span> is continuous. It generally fails to be a topological embedding: (1) constrains every coordinate outside <span class="math" data-tex="\(S\)">\(S\)</span>, whereas a product neighbourhood constrains only finitely many coordinates. Exercise 1 proves the exact criterion. Changing the chosen subgroups at finitely many indices changes neither the underlying restricted product nor its topology; include those indices in every chart.</p>
+<p>There is also an intrinsic stage test for this topology: <span class="math" data-tex="\(U\subseteq G\)">\(U\subseteq G\)</span> is open if and only if <span class="math" data-tex="\(U\cap G_S\)">\(U\cap G_S\)</span> is open in every product stage. One implication follows by restriction; for the other, each <span class="math" data-tex="\(U\cap G_S\)">\(U\cap G_S\)</span> is open in <span class="math" data-tex="\(G\)">\(G\)</span>, because <span class="math" data-tex="\(G_S\)">\(G_S\)</span> is open, and their union is <span class="math" data-tex="\(U\)">\(U\)</span>. This explains why the product topology is correct on a fixed stage even when it fails on the full restricted product. [Getz–Hahn, §2.3, pp.46–48] describes countably indexed restricted products; [Sutherland 25, Proposition 25.5, pp.3–4] gives the open-stage description for arbitrary index sets. Our Proposition 1.1 and Exercise 1 retain that arbitrary-index scope.</p>
+<h2 id="integrating-local-data">Integrating local data</h2>
+<p>Choose left Haar measures <span class="math" data-tex="\(\mu_v\)">\(\mu_v\)</span> on <span class="math" data-tex="\(G_v\)">\(G_v\)</span>. Enlarge <span class="math" data-tex="\(E\)">\(E\)</span>, if necessary, so that
+<span class="math math-display" data-tex="\[
+\mu_v(K_v)=1\qquad(v\notin E).
+\tag{2}
+\]">\[
+\mu_v(K_v)=1\qquad(v\notin E).
+\tag{2}
+\]</span>
+The enlargement retains any exceptional local normalization as an actual finite factor. An infinite product of arbitrary normalization constants is not part of the construction.</p>
+<p>On the compact group <span class="math" data-tex="\(L_S=\prod_{v\notin S}K_v\)">\(L_S=\prod_{v\notin S}K_v\)</span>, let <span class="math" data-tex="\(m_S\)">\(m_S\)</span> be Haar probability. Its projection to any finite product of tail factors has the product of their normalized Haar measures: the projected measure is invariant, has total mass one, and Haar uniqueness applies. This describes the infinite product as a Radon measure on its compact product topology.</p>
+<p>Use the <strong>Radon product</strong> for finite products of locally compact spaces: it is the measure determined by iterated integrals of compactly supported continuous functions. It avoids imposing a countability assumption on the Borel sets of a product.</p>
+<p><strong>Proposition 1.2.</strong> The measures
+<span class="math math-display" data-tex="\[
+\mu_S=\left(\mathop{\widehat\bigotimes}_{v\in S}\mu_v\right)
+\widehat\otimes m_S
+\quad\text{on }G_S
+\tag{3}
+\]">\[
+\mu_S=\left(\mathop{\widehat\bigotimes}_{v\in S}\mu_v\right)
+\widehat\otimes m_S
+\quad\text{on }G_S
+\tag{3}
+\]</span>
+are compatible under restriction and determine a unique left Haar measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span>. If <span class="math" data-tex="\(f_v\)">\(f_v\)</span> are Borel integrable functions and <span class="math" data-tex="\(f_v=1_{K_v}\)">\(f_v=1_{K_v}\)</span> for all <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, where <span class="math" data-tex="\(S\supseteq E\)">\(S\supseteq E\)</span> is finite, then
+<span class="math math-display" data-tex="\[
+f(x)=\bigotimes_v f_v(x):=\prod_v f_v(x_v)
+\]">\[
+f(x)=\bigotimes_v f_v(x):=\prod_v f_v(x_v)
+\]</span>
+is integrable and
+<span class="math math-display" data-tex="\[
+\int_Gf\,d\mu=\prod_v\int_{G_v}f_v\,d\mu_v.
+\tag{4}
+\]">\[
+\int_Gf\,d\mu=\prod_v\int_{G_v}f_v\,d\mu_v.
+\tag{4}
+\]</span>
+The product on the right has only finitely many factors different from one. In particular, (4) applies to compactly supported continuous local functions.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(S\subseteq T\)">\(S\subseteq T\)</span>. Restricting <span class="math" data-tex="\(\mu_T\)">\(\mu_T\)</span> to <span class="math" data-tex="\(G_S\)">\(G_S\)</span> replaces each <span class="math" data-tex="\(\mu_v\)">\(\mu_v\)</span>, for <span class="math" data-tex="\(v\in T\setminus S\)">\(v\in T\setminus S\)</span>, by its restriction to <span class="math" data-tex="\(K_v\)">\(K_v\)</span>, of mass one. Their finite product with <span class="math" data-tex="\(m_T\)">\(m_T\)</span> is Haar probability on <span class="math" data-tex="\(L_S\)">\(L_S\)</span>, hence is <span class="math" data-tex="\(m_S\)">\(m_S\)</span>. This proves compatibility in (3).</p>
+<p>For <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, Proposition 1.1 places its support in some <span class="math" data-tex="\(G_S\)">\(G_S\)</span>. Define
+<span class="math math-display" data-tex="\[
+I(h)=\int_{G_S}h\,d\mu_S.
+\]">\[
+I(h)=\int_{G_S}h\,d\mu_S.
+\]</span>
+Compatibility makes this independent of <span class="math" data-tex="\(S\)">\(S\)</span>, and a common larger chart proves linearity and positivity. Given <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, a chart containing both <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(\operatorname{supp}h\)">\(\operatorname{supp}h\)</span> also contains <span class="math" data-tex="\(g\operatorname{supp}h\)">\(g\operatorname{supp}h\)</span>. Its measure is a product of left Haar measures, so <span class="math" data-tex="\(I(h(g^{-1}\cdot))=I(h)\)">\(I(h(g^{-1}\cdot))=I(h)\)</span>.</p>
+<p>The Riesz representation theorem gives a unique Radon measure representing <span class="math" data-tex="\(I\)">\(I\)</span>. It is nonzero and left invariant, so it is Haar. Functions in <span class="math" data-tex="\(C_c(G_S)\)">\(C_c(G_S)\)</span> extend by zero to <span class="math" data-tex="\(G\)">\(G\)</span>, since an open subgroup is also closed. Riesz uniqueness then gives <span class="math" data-tex="\(\mu|_{G_S}=\mu_S\)">\(\mu|_{G_S}=\mu_S\)</span>, establishing the asserted restrictions and uniqueness.</p>
+<p>For (4), <span class="math" data-tex="\(f\)">\(f\)</span> vanishes off <span class="math" data-tex="\(G_S\)">\(G_S\)</span>, and on that chart it is a finite product of local functions, independent of <span class="math" data-tex="\(L_S\)">\(L_S\)</span>. Each set <span class="math" data-tex="\(\{f_v\neq0\}\)">\(\{f_v\neq0\}\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finite for <span class="math" data-tex="\(\mu_v\)">\(\mu_v\)</span>: it is the union of the finite-measure sets <span class="math" data-tex="\(\{|f_v|&gt;1/j\}\)">\(\{|f_v|&gt;1/j\}\)</span>. The rectangle and Tonelli theorems for Radon products therefore apply to the absolute values of these factors. They give
+<span class="math math-display" data-tex="\[
+\int_G|f|\,d\mu=\prod_{v\in S}\int|f_v|\,d\mu_v&lt;\infty.
+\]">\[
+\int_G|f|\,d\mu=\prod_{v\in S}\int|f_v|\,d\mu_v&lt;\infty.
+\]</span>
+Fubini now gives (4). This argument uses <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finiteness of the nonzero sets of the particular functions, not of the ambient groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus the notation <span class="math" data-tex="\(\mu=\bigotimes_v\mu_v\)">\(\mu=\bigotimes_v\mu_v\)</span> means the compatible Radon measure just constructed. Its definition does not require <span class="math" data-tex="\(G\)">\(G\)</span> to be second countable or <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-compact.</p>
+<h2 id="characters-see-only-finitely-many-integral-tails">Characters see only finitely many integral tails</h2>
+<p>Now assume all <span class="math" data-tex="\(G_v\)">\(G_v\)</span> are abelian and write their law additively. Put <span class="math" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span>. The dual <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> of an LCA group consists of continuous homomorphisms <span class="math" data-tex="\(H\to\mathbb T\)">\(H\to\mathbb T\)</span>, with uniform convergence on compact sets. For a subgroup <span class="math" data-tex="\(K\leq H\)">\(K\leq H\)</span>, its annihilator is
+<span class="math math-display" data-tex="\[
+K^\perp=\{\chi\in\widehat H:\chi(k)=1\text{ for every }k\in K\}.
+\]">\[
+K^\perp=\{\chi\in\widehat H:\chi(k)=1\text{ for every }k\in K\}.
+\]</span>
+The subgroup and quotient duality theorems imply that <span class="math" data-tex="\(K_v^\perp\)">\(K_v^\perp\)</span> is compact and open when <span class="math" data-tex="\(K_v\)">\(K_v\)</span> is compact and open. These are the distinguished subgroups on the dual side.</p>
+<p>We use a small fact about the circle. The arc <span class="math" data-tex="\(A=\{z\in\mathbb T:\operatorname{Re}z&gt;0\}\)">\(A=\{z\in\mathbb T:\operatorname{Re}z&gt;0\}\)</span> contains no nontrivial subgroup. Indeed, write a nonidentity element as <span class="math" data-tex="\(e^{2\pi it}\)">\(e^{2\pi it}\)</span> with <span class="math" data-tex="\(0&lt;|t|\leq1/2\)">\(0&lt;|t|\leq1/2\)</span>. If <span class="math" data-tex="\(|t|\geq1/4\)">\(|t|\geq1/4\)</span>, it is already outside <span class="math" data-tex="\(A\)">\(A\)</span>. Otherwise choose the least positive integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(m|t|\geq1/4\)">\(m|t|\geq1/4\)</span>. Then <span class="math" data-tex="\(1/4\leq m|t|&lt;1/2\)">\(1/4\leq m|t|&lt;1/2\)</span>, and its <span class="math" data-tex="\(m\)">\(m\)</span>-th power is outside <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Theorem 1.3.</strong> There is a canonical isomorphism of topological groups
+<span class="math math-display" data-tex="\[
+\Phi:\prod_v&#x27;(\widehat G_v,K_v^\perp)
+\xrightarrow{\ \sim\ }\widehat G,
+\qquad
+\Phi((\chi_v))(x)=\prod_v\chi_v(x_v).
+\tag{5}
+\]">\[
+\Phi:\prod_v&#x27;(\widehat G_v,K_v^\perp)
+\xrightarrow{\ \sim\ }\widehat G,
+\qquad
+\Phi((\chi_v))(x)=\prod_v\chi_v(x_v).
+\tag{5}
+\]</span>
+The factors indexed by <span class="math" data-tex="\(E\)">\(E\)</span> remain unrestricted. Every continuous character of <span class="math" data-tex="\(G\)">\(G\)</span> has local restrictions trivial on <span class="math" data-tex="\(K_v\)">\(K_v\)</span> for almost all <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> For a tuple on the left and an element <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>, both restrictions hold outside finite sets. Consequently all but finitely many factors in (5) equal one. On a chart containing the exceptional coordinates of the character tuple, (5) is a finite product of continuous local characters. It is therefore a continuous character on the open cover of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(\chi\in\widehat G\)">\(\chi\in\widehat G\)</span>. Continuity provides a basic neighbourhood <span class="math" data-tex="\(B(S;U)\)">\(B(S;U)\)</span> of zero whose image lies in <span class="math" data-tex="\(A\)">\(A\)</span>. The compact subgroup
+<span class="math math-display" data-tex="\[
+T_S=\{0\}^{S}\times\prod_{v\notin S}K_v
+\]">\[
+T_S=\{0\}^{S}\times\prod_{v\notin S}K_v
+\]</span>
+lies in this neighbourhood. Since <span class="math" data-tex="\(\chi(T_S)\)">\(\chi(T_S)\)</span> is a subgroup contained in <span class="math" data-tex="\(A\)">\(A\)</span>, it is trivial. Restricting <span class="math" data-tex="\(\chi\)">\(\chi\)</span> to the embedded coordinate group gives <span class="math" data-tex="\(\chi_v\in\widehat G_v\)">\(\chi_v\in\widehat G_v\)</span>, and <span class="math" data-tex="\(\chi_v\in K_v^\perp\)">\(\chi_v\in K_v^\perp\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. For any <span class="math" data-tex="\(x\)">\(x\)</span>, enlarge <span class="math" data-tex="\(S\)">\(S\)</span> to contain its nonintegral coordinates. Decompose <span class="math" data-tex="\(x\)">\(x\)</span> into a finite-coordinate part and an element of <span class="math" data-tex="\(T_S\)">\(T_S\)</span>. The latter contributes one, so <span class="math" data-tex="\(\chi(x)=\prod_v\chi_v(x_v)\)">\(\chi(x)=\prod_v\chi_v(x_v)\)</span>. Uniqueness follows by evaluating on individual coordinates. This proves algebraic bijectivity.</p>
+<p>We verify both topologies explicitly. Let <span class="math" data-tex="\(C\subseteq G\)">\(C\subseteq G\)</span> be compact. Choose <span class="math" data-tex="\(S\supseteq E\)">\(S\supseteq E\)</span> with <span class="math" data-tex="\(C\subseteq G_S\)">\(C\subseteq G_S\)</span>, and let <span class="math" data-tex="\(C_v\)">\(C_v\)</span> be its compact coordinate projections for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>. Restrict dual tuples to the open dual chart
+<span class="math math-display" data-tex="\[
+H_S=\prod_{v\in S}\widehat G_v\times\prod_{v\notin S}K_v^\perp.
+\]">\[
+H_S=\prod_{v\in S}\widehat G_v\times\prod_{v\notin S}K_v^\perp.
+\]</span>
+Their evaluations on <span class="math" data-tex="\(C\)">\(C\)</span> have only the factors indexed by <span class="math" data-tex="\(S\)">\(S\)</span>. Requiring each such factor to be uniformly within <span class="math" data-tex="\(\varepsilon/\max(1,|S|)\)">\(\varepsilon/\max(1,|S|)\)</span> of one on <span class="math" data-tex="\(C_v\)">\(C_v\)</span> gives an open neighbourhood in <span class="math" data-tex="\(H_S\)">\(H_S\)</span>. The inequality
+<span class="math math-display" data-tex="\[
+\left|\prod_{j=1}^rz_j-1\right|\leq\sum_{j=1}^r|z_j-1|\qquad(z_j\in\mathbb T)
+\]">\[
+\left|\prod_{j=1}^rz_j-1\right|\leq\sum_{j=1}^r|z_j-1|\qquad(z_j\in\mathbb T)
+\]</span>
+shows that its image is uniformly within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of one on <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is continuous.</p>
+<p>For the inverse, take a basic identity neighbourhood with finite-coordinate conditions <span class="math" data-tex="\(\chi_v\in U_v\)">\(\chi_v\in U_v\)</span> for <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span>, and the condition <span class="math" data-tex="\(\chi_v\in K_v^\perp\)">\(\chi_v\in K_v^\perp\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. Restriction <span class="math" data-tex="\(\widehat G\to\widehat G_v\)">\(\widehat G\to\widehat G_v\)</span> is continuous, since a compact set in <span class="math" data-tex="\(G_v\)">\(G_v\)</span> embeds as a compact set in <span class="math" data-tex="\(G\)">\(G\)</span>. The remaining conditions say exactly that <span class="math" data-tex="\(\chi\)">\(\chi\)</span> annihilates <span class="math" data-tex="\(T_S\)">\(T_S\)</span>. Its annihilator is open: the compact-open condition <span class="math" data-tex="\(\chi(T_S)\subseteq A\)">\(\chi(T_S)\subseteq A\)</span> is equivalent to triviality there. Intersecting this open annihilator with the finitely many inverse images of <span class="math" data-tex="\(U_v\)">\(U_v\)</span> gives the image of the chosen neighbourhood. This proves continuity of <span class="math" data-tex="\(\Phi^{-1}\)">\(\Phi^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem concerns a restricted product of <strong>abelian</strong> groups. Proposition 1.1 and the Haar construction require no commutativity.</p>
+<h2 id="integral-residues-and-finite-adèles">Integral residues and finite adèles</h2>
+<p>The Chinese remainder theorem used below has a short algebraic proof. For pairwise coprime positive integers <span class="math" data-tex="\(m_1,\ldots,m_r\)">\(m_1,\ldots,m_r\)</span>, put <span class="math" data-tex="\(M=\prod_i m_i\)">\(M=\prod_i m_i\)</span>. Bézout's identity gives <span class="math" data-tex="\(b_i\)">\(b_i\)</span> with <span class="math" data-tex="\(b_i(M/m_i)\equiv1\pmod{m_i}\)">\(b_i(M/m_i)\equiv1\pmod{m_i}\)</span>. Given residues <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, the integer <span class="math" data-tex="\(\sum_i a_i b_i(M/m_i)\)">\(\sum_i a_i b_i(M/m_i)\)</span> realizes all of them. An integer divisible by every <span class="math" data-tex="\(m_i\)">\(m_i\)</span> is divisible by <span class="math" data-tex="\(M\)">\(M\)</span>, proving uniqueness modulo <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Define the <strong>profinite integers</strong> by
+<span class="math math-display" data-tex="\[
+\widehat{\mathbb Z}=\varprojlim_{n\geq1}\mathbb Z/n\mathbb Z,
+\]">\[
+\widehat{\mathbb Z}=\varprojlim_{n\geq1}\mathbb Z/n\mathbb Z,
+\]</span>
+where indices are ordered by divisibility and the transition maps are reduction maps. A point is a compatible collection of residues. The topology is inherited from the product of the finite discrete rings. Compatibility is closed, so this is a compact Hausdorff ring.</p>
+<p>For each prime <span class="math" data-tex="\(p\)">\(p\)</span>, we use <span class="math" data-tex="\(\mathbb Z_p=\varprojlim_k\mathbb Z/p^k\mathbb Z\)">\(\mathbb Z_p=\varprojlim_k\mathbb Z/p^k\mathbb Z\)</span> and its fraction field <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Its additive neighbourhoods are <span class="math" data-tex="\(p^k\mathbb Z_p\)">\(p^k\mathbb Z_p\)</span>, for <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>; <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is compact and open. Define
+<span class="math math-display" data-tex="\[
+\mathbb A_f=\prod_p&#x27;(\mathbb Q_p,\mathbb Z_p).
+\]">\[
+\mathbb A_f=\prod_p&#x27;(\mathbb Q_p,\mathbb Z_p).
+\]</span>
+Addition and multiplication are coordinatewise. This is a topological ring: on each open chart <span class="math" data-tex="\(\prod_{p\in S}\mathbb Q_p\times\prod_{p\notin S}\mathbb Z_p\)">\(\prod_{p\in S}\mathbb Q_p\times\prod_{p\notin S}\mathbb Z_p\)</span> both operations are continuous and preserve the chart. Proposition 1.1 gives local compactness.</p>
+<p><strong>Proposition 1.4.</strong> There are canonical isomorphisms
+<span class="math math-display" data-tex="\[
+\widehat{\mathbb Z}\simeq\prod_p\mathbb Z_p,
+\qquad
+\widehat{\mathbb Z}^{\times}\simeq\prod_p\mathbb Z_p^{\times},
+\tag{6}
+\]">\[
+\widehat{\mathbb Z}\simeq\prod_p\mathbb Z_p,
+\qquad
+\widehat{\mathbb Z}^{\times}\simeq\prod_p\mathbb Z_p^{\times},
+\tag{6}
+\]</span>
+of compact topological rings and of compact topological groups, respectively. Moreover,
+<span class="math math-display" data-tex="\[
+\mathbb A_f\simeq\mathbb Q\otimes_{\mathbb Z}\widehat{\mathbb Z}
+=\bigcup_{n\geq1}\frac1n\widehat{\mathbb Z}
+\tag{7}
+\]">\[
+\mathbb A_f\simeq\mathbb Q\otimes_{\mathbb Z}\widehat{\mathbb Z}
+=\bigcup_{n\geq1}\frac1n\widehat{\mathbb Z}
+\tag{7}
+\]</span>
+as topological rings, when the tensor product is given the topology specified below. There are isomorphisms of discrete groups
+<span class="math math-display" data-tex="\[
+\mathbb A_f/\widehat{\mathbb Z}
+\simeq\mathbb Q/\mathbb Z
+\simeq\bigoplus_p\mathbb Q_p/\mathbb Z_p,
+\qquad
+\widehat{\widehat{\mathbb Z}}\simeq\mathbb Q/\mathbb Z.
+\tag{8}
+\]">\[
+\mathbb A_f/\widehat{\mathbb Z}
+\simeq\mathbb Q/\mathbb Z
+\simeq\bigoplus_p\mathbb Q_p/\mathbb Z_p,
+\qquad
+\widehat{\widehat{\mathbb Z}}\simeq\mathbb Q/\mathbb Z.
+\tag{8}
+\]</span>
+In the last formula, the outer hat denotes the character group.</p>
+<p><strong>Proof.</strong> Restriction to the prime-power residues maps <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> to <span class="math" data-tex="\(\prod_p\mathbb Z_p\)">\(\prod_p\mathbb Z_p\)</span>. Conversely, given prime-power residues and <span class="math" data-tex="\(n=\prod_{p\mid n}p^{a_p}\)">\(n=\prod_{p\mid n}p^{a_p}\)</span>, the Chinese remainder theorem supplies a unique residue modulo <span class="math" data-tex="\(n\)">\(n\)</span>. These residues are compatible as <span class="math" data-tex="\(n\)">\(n\)</span> varies. This proves (6) for rings. The map is continuous, and a continuous bijection from a compact space to a Hausdorff space is a homeomorphism. A tuple in a product ring is a unit precisely when every component is a unit; componentwise inversion is continuous on the compact product of the local unit groups. This proves the second assertion.</p>
+<p>We will need the more precise residue calculation
+<span class="math math-display" data-tex="\[
+\widehat{\mathbb Z}/n\widehat{\mathbb Z}\simeq\mathbb Z/n\mathbb Z.
+\tag{9}
+\]">\[
+\widehat{\mathbb Z}/n\widehat{\mathbb Z}\simeq\mathbb Z/n\mathbb Z.
+\tag{9}
+\]</span>
+In <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>, the kernel of reduction modulo <span class="math" data-tex="\(p^a\)">\(p^a\)</span> is <span class="math" data-tex="\(p^a\mathbb Z_p\)">\(p^a\mathbb Z_p\)</span>: a compatible tuple in the kernel can be divided by <span class="math" data-tex="\(p^a\)">\(p^a\)</span> by using its residues modulo <span class="math" data-tex="\(p^{a+k}\)">\(p^{a+k}\)</span>. Multiplication by an integer prime to <span class="math" data-tex="\(p\)">\(p\)</span> is invertible, because its inverses modulo every <span class="math" data-tex="\(p^k\)">\(p^k\)</span> are compatible. The kernel of reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span> in (6) is therefore exactly <span class="math" data-tex="\(n\widehat{\mathbb Z}\)">\(n\widehat{\mathbb Z}\)</span>, and reduction is surjective by the Chinese remainder theorem. This proves (9). In particular, this kernel is compact and open and has index <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>Identify <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> with the compact open subring <span class="math" data-tex="\(\prod_p\mathbb Z_p\)">\(\prod_p\mathbb Z_p\)</span> of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>. Given <span class="math" data-tex="\(x\in\mathbb A_f\)">\(x\in\mathbb A_f\)</span>, only finitely many coordinates have negative valuation. Choose
+<span class="math math-display" data-tex="\[
+n=\prod_p p^{\max(0,-v_p(x_p))},
+\]">\[
+n=\prod_p p^{\max(0,-v_p(x_p))},
+\]</span>
+where zero coordinates contribute exponent zero. Then <span class="math" data-tex="\(nx\in\widehat{\mathbb Z}\)">\(nx\in\widehat{\mathbb Z}\)</span>. Thus the union in (7) is all of <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>.</p>
+<p>Every tensor can be put over a common denominator, hence written as <span class="math" data-tex="\((1/n)\otimes z\)">\((1/n)\otimes z\)</span>. The map <span class="math" data-tex="\(q\otimes z\mapsto(qz_p)_p\)">\(q\otimes z\mapsto(qz_p)_p\)</span> is surjective by the preceding paragraph. It is injective: if the image of <span class="math" data-tex="\((1/n)\otimes z\)">\((1/n)\otimes z\)</span> is zero, every component of <span class="math" data-tex="\(z\)">\(z\)</span> is zero. This identifies the tensor product algebraically with the localization of <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> at the nonzero integers.</p>
+<p>Give each stage <span class="math" data-tex="\(n^{-1}\widehat{\mathbb Z}\)">\(n^{-1}\widehat{\mathbb Z}\)</span> the compact topology transported by <span class="math" data-tex="\(z\mapsto z/n\)">\(z\mapsto z/n\)</span>. Give their union the <strong>stage topology</strong>: a subset is open precisely when its intersection with each stage is open there. In <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> the stage is
+<span class="math math-display" data-tex="\[
+\prod_{p\mid n}p^{-v_p(n)}\mathbb Z_p
+\times\prod_{p\nmid n}\mathbb Z_p,
+\]">\[
+\prod_{p\mid n}p^{-v_p(n)}\mathbb Z_p
+\times\prod_{p\nmid n}\mathbb Z_p,
+\]</span>
+so it is compact and open with exactly that transported topology. Since these open stages cover <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>, their stage topology is its topology. This proves the topological assertion in (7); the algebraic tensor product alone does not specify a topology.</p>
+<p>The diagonal map <span class="math" data-tex="\(\mathbb Q\to\mathbb A_f/\widehat{\mathbb Z}\)">\(\mathbb Q\to\mathbb A_f/\widehat{\mathbb Z}\)</span> has kernel <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: a rational number integral at every prime has no prime in its reduced denominator. To prove surjectivity, write <span class="math" data-tex="\(x=z/n\)">\(x=z/n\)</span>. By (9), choose <span class="math" data-tex="\(a\in\mathbb Z\)">\(a\in\mathbb Z\)</span> with <span class="math" data-tex="\(z-a\in n\widehat{\mathbb Z}\)">\(z-a\in n\widehat{\mathbb Z}\)</span>. Then <span class="math" data-tex="\(x-a/n\in\widehat{\mathbb Z}\)">\(x-a/n\in\widehat{\mathbb Z}\)</span>. Hence the first isomorphism in (8) follows. The quotient is discrete because <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> is open; give <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> its discrete topology.</p>
+<p>Coordinate residues give a surjection
+<span class="math math-display" data-tex="\[
+\mathbb A_f\longrightarrow\bigoplus_p\mathbb Q_p/\mathbb Z_p
+\]">\[
+\mathbb A_f\longrightarrow\bigoplus_p\mathbb Q_p/\mathbb Z_p
+\]</span>
+with kernel <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>: every finite collection of local cosets is represented by a tuple with zero in all other coordinates. This proves the middle identification, with the direct sum also discrete. In particular <span class="math" data-tex="\(\mathbb Q_p/\mathbb Z_p\simeq\mathbb Z[1/p]/\mathbb Z\)">\(\mathbb Q_p/\mathbb Z_p\simeq\mathbb Z[1/p]/\mathbb Z\)</span>. For surjectivity of this local map, write <span class="math" data-tex="\(x=p^{-k}z\)">\(x=p^{-k}z\)</span> and choose an integer with the same residue as <span class="math" data-tex="\(z\)">\(z\)</span> modulo <span class="math" data-tex="\(p^k\)">\(p^k\)</span>; its kernel consists of the ordinary integers.</p>
+<p>Finally, duality for surjective inverse systems of compact abelian groups gives
+<span class="math math-display" data-tex="\[
+\widehat{\widehat{\mathbb Z}}
+\simeq\varinjlim_n\widehat{\mathbb Z/n\mathbb Z}.
+\]">\[
+\widehat{\widehat{\mathbb Z}}
+\simeq\varinjlim_n\widehat{\mathbb Z/n\mathbb Z}.
+\]</span>
+This is Proposition 4.2 of <a href="../../../../HA-LCA/src/totally-disconnected-groups-the-p-adic-numbers-and-the-adeles.html">Totally disconnected groups, the p-adic numbers and the adèles</a>, applied to the surjective reduction maps ordered by divisibility. A character of <span class="math" data-tex="\(\mathbb Z/n\mathbb Z\)">\(\mathbb Z/n\mathbb Z\)</span> is determined by an <span class="math" data-tex="\(n\)">\(n\)</span>-th root of unity, so its dual identifies with <span class="math" data-tex="\(n^{-1}\mathbb Z/\mathbb Z\)">\(n^{-1}\mathbb Z/\mathbb Z\)</span>. For <span class="math" data-tex="\(n\mid m\)">\(n\mid m\)</span>, pullback sends <span class="math" data-tex="\(a/n\)">\(a/n\)</span> to <span class="math" data-tex="\((ma/n)/m\)">\((ma/n)/m\)</span>, the same rational class. The limit is <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>. Explicitly the pairing is
+<span class="math math-display" data-tex="\[
+\langle z,a/n+\mathbb Z\rangle
+=\exp\!\left(2\pi i\frac{a z_n}{n}\right),
+\tag{10}
+\]">\[
+\langle z,a/n+\mathbb Z\rangle
+=\exp\!\left(2\pi i\frac{a z_n}{n}\right),
+\tag{10}
+\]</span>
+where <span class="math" data-tex="\(z_n\)">\(z_n\)</span> is any integer representative of the residue of <span class="math" data-tex="\(z\)">\(z\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span>. Compatibility makes it independent of all representatives. The dual of a compact group is discrete, so this is a topological isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For this particular inverse limit, the character factorization can also be checked directly. If <span class="math" data-tex="\(\chi:\widehat{\mathbb Z}\to\mathbb T\)">\(\chi:\widehat{\mathbb Z}\to\mathbb T\)</span> is continuous, the inverse image of the arc <span class="math" data-tex="\(A\)">\(A\)</span> used in Theorem 1.3 contains a basic neighbourhood of zero. That neighbourhood restricts only finitely many residues, say modulo <span class="math" data-tex="\(n_1,\ldots,n_r\)">\(n_1,\ldots,n_r\)</span>. Put <span class="math" data-tex="\(n=\operatorname{lcm}(n_1,\ldots,n_r)\)">\(n=\operatorname{lcm}(n_1,\ldots,n_r)\)</span>, with <span class="math" data-tex="\(n=1\)">\(n=1\)</span> when there are no conditions. Equation (9) implies that <span class="math" data-tex="\(n\widehat{\mathbb Z}\)">\(n\widehat{\mathbb Z}\)</span> lies in that neighbourhood. Its image under <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a subgroup contained in <span class="math" data-tex="\(A\)">\(A\)</span>, so is trivial. Thus <span class="math" data-tex="\(\chi\)">\(\chi\)</span> factors through <span class="math" data-tex="\(\mathbb Z/n\mathbb Z\)">\(\mathbb Z/n\mathbb Z\)</span>, whose characters are exactly (10). This supplies a complete elementary alternative for (8), while the preceding programme result also treats general surjective inverse systems of compact abelian groups.</p>
+<h3 id="worked-example-one-rational-representative">Worked example: one rational representative</h3>
+<p>Take <span class="math" data-tex="\(x_2=1/8\)">\(x_2=1/8\)</span>, <span class="math" data-tex="\(x_3=2/9\)">\(x_3=2/9\)</span>, and <span class="math" data-tex="\(x_p=0\)">\(x_p=0\)</span> at all other primes. Then <span class="math" data-tex="\(72x\in\widehat{\mathbb Z}\)">\(72x\in\widehat{\mathbb Z}\)</span>. Its residues modulo <span class="math" data-tex="\(8\)">\(8\)</span> and <span class="math" data-tex="\(9\)">\(9\)</span> are respectively <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(7\)">\(7\)</span>. The integer <span class="math" data-tex="\(25\)">\(25\)</span> has both residues, so
+<span class="math math-display" data-tex="\[
+x+\widehat{\mathbb Z}=25/72+\widehat{\mathbb Z}.
+\]">\[
+x+\widehat{\mathbb Z}=25/72+\widehat{\mathbb Z}.
+\]</span>
+Indeed, the difference at <span class="math" data-tex="\(2\)">\(2\)</span> is <span class="math" data-tex="\(-2/9\)">\(-2/9\)</span>, and the difference at <span class="math" data-tex="\(3\)">\(3\)</span> is <span class="math" data-tex="\(-1/8\)">\(-1/8\)</span>, both integral in their respective fields. At every other prime the denominator <span class="math" data-tex="\(72\)">\(72\)</span> is a unit. This illustrates how independent local residues combine into one rational class.</p>
+<p>The stages also have a useful countable form:
+<span class="math math-display" data-tex="\[
+\mathbb A_f=\bigcup_{j\geq1}\frac1{j!}\widehat{\mathbb Z}.
+\tag{11}
+\]">\[
+\mathbb A_f=\bigcup_{j\geq1}\frac1{j!}\widehat{\mathbb Z}.
+\tag{11}
+\]</span>
+They increase because <span class="math" data-tex="\(j!\mid(j+1)!\)">\(j!\mid(j+1)!\)</span>, and every denominator divides some factorial. They are compact open <strong>additive subgroups</strong>. For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, <span class="math" data-tex="\(n^{-1}\widehat{\mathbb Z}\)">\(n^{-1}\widehat{\mathbb Z}\)</span> is not a subring: if <span class="math" data-tex="\(p\mid n\)">\(p\mid n\)</span>, the square of the diagonal element <span class="math" data-tex="\(1/n\)">\(1/n\)</span> has valuation <span class="math" data-tex="\(-2v_p(n)&lt;-v_p(n)\)">\(-2v_p(n)&lt;-v_p(n)\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span>, so it leaves that stage.</p>
+<h2 id="finite-idèles-and-the-normalization-table">Finite idèles and the normalization table</h2>
+<p>An element <span class="math" data-tex="\(x\in\mathbb A_f\)">\(x\in\mathbb A_f\)</span> is a ring unit exactly when every <span class="math" data-tex="\(x_p\neq0\)">\(x_p\neq0\)</span> and <span class="math" data-tex="\(x_p\in\mathbb Z_p^\times\)">\(x_p\in\mathbb Z_p^\times\)</span> for almost all <span class="math" data-tex="\(p\)">\(p\)</span>. Necessity follows because both <span class="math" data-tex="\(x\)">\(x\)</span> and its inverse must be integral at almost all primes; sufficiency follows by taking the componentwise inverse. Thus, algebraically,
+<span class="math math-display" data-tex="\[
+\mathbb A_f^\times=\prod_p&#x27;(\mathbb Q_p^\times,\mathbb Z_p^\times).
+\]">\[
+\mathbb A_f^\times=\prod_p&#x27;(\mathbb Q_p^\times,\mathbb Z_p^\times).
+\]</span>
+We give this <strong>finite idèle group</strong> the restricted product topology. Its compact open subgroup is <span class="math" data-tex="\(\widehat{\mathbb Z}^\times\)">\(\widehat{\mathbb Z}^\times\)</span>. This differs from its additive subspace topology; Exercise 2 identifies the correct topology through the graph of inversion.</p>
+<p>For example, the tuple <span class="math" data-tex="\((p)_p\)">\((p)_p\)</span> is an adèle with no zero coordinate, yet is not a unit: its coordinatewise inverse fails integrality at every prime. In contrast, a nonzero rational number gives a finite idèle, because its numerator and denominator involve only finitely many primes. The valuation map identifies
+<span class="math math-display" data-tex="\[
+\mathbb A_f^\times/\widehat{\mathbb Z}^\times\simeq\bigoplus_p\mathbb Z.
+\]">\[
+\mathbb A_f^\times/\widehat{\mathbb Z}^\times\simeq\bigoplus_p\mathbb Z.
+\]</span>
+It is surjective by taking <span class="math" data-tex="\(x_p=p^{k_p}\)">\(x_p=p^{k_p}\)</span> for a finitely supported integer tuple <span class="math" data-tex="\((k_p)\)">\((k_p)\)</span>, and its kernel is precisely the unit subgroup. The quotient is discrete because that subgroup is open.</p>
+<p>All measures in this lesson use the following normalizations.</p>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Distinguished compact open subgroup</th>
+<th style="text-align:right">Its measure</th>
+<th>Useful consequence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\((\mathbb Q_p,+)\)">\((\mathbb Q_p,+)\)</span></td>
+<td><span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(\mu_p(p^k\mathbb Z_p)=p^{-k}\)">\(\mu_p(p^k\mathbb Z_p)=p^{-k}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span></td>
+<td><span class="math" data-tex="\(\mathbb Z_p^\times\)">\(\mathbb Z_p^\times\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(\mu_p^\times(p^k\mathbb Z_p^\times)=1\)">\(\mu_p^\times(p^k\mathbb Z_p^\times)=1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((\mathbb A_f,+)\)">\((\mathbb A_f,+)\)</span></td>
+<td><span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(\mu(n^{-1}\widehat{\mathbb Z})=n\)">\(\mu(n^{-1}\widehat{\mathbb Z})=n\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathbb A_f^\times\)">\(\mathbb A_f^\times\)</span></td>
+<td><span class="math" data-tex="\(\widehat{\mathbb Z}^\times\)">\(\widehat{\mathbb Z}^\times\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td>multiplicative translates have measure <span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span> and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. The additive local formula follows by partitioning <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> into its <span class="math" data-tex="\(p^k\)">\(p^k\)</span> residue cosets for <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>; negative <span class="math" data-tex="\(k\)">\(k\)</span> follow by partitioning the larger ball into cosets of <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. The multiplicative formula is Haar invariance. Equation (9) shows that <span class="math" data-tex="\(n^{-1}\widehat{\mathbb Z}\)">\(n^{-1}\widehat{\mathbb Z}\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span> additive cosets of <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>, proving its measure formula. Proposition 1.2 gives both global normalizations.</p>
+<h3 id="worked-example-a-restricted-box">Worked example: a restricted box</h3>
+<p>The compact open set
+<span class="math math-display" data-tex="\[
+B=2^{-2}\mathbb Z_2\times(1+9\mathbb Z_3)
+\times\prod_{p\neq2,3}\mathbb Z_p
+\]">\[
+B=2^{-2}\mathbb Z_2\times(1+9\mathbb Z_3)
+\times\prod_{p\neq2,3}\mathbb Z_p
+\]</span>
+has additive measure <span class="math" data-tex="\(4/9\)">\(4/9\)</span>. The first factor contributes <span class="math" data-tex="\(4\)">\(4\)</span>, the second contributes <span class="math" data-tex="\(1/9\)">\(1/9\)</span>, and every other factor contributes one. Translating the centre of a local ball leaves its additive measure unchanged. This example also explains why the tail factors in (2) must have measure one.</p>
+<h2 id="test-functions-made-from-local-pieces">Test functions made from local pieces</h2>
+<p>On <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, define a Bruhat–Schwartz function to be a locally constant, compactly supported complex function. Write this space as <span class="math" data-tex="\(\mathcal S(\mathbb Q_p)\)">\(\mathcal S(\mathbb Q_p)\)</span>. On <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> use the same definition. Then
+<span class="math math-display" data-tex="\[
+\mathcal S(\mathbb A_f)
+=\operatorname{span}\left\{\bigotimes_p f_p:
+f_p\in\mathcal S(\mathbb Q_p),\quad
+f_p=1_{\mathbb Z_p}\text{ for almost all }p\right\}.
+\tag{12}
+\]">\[
+\mathcal S(\mathbb A_f)
+=\operatorname{span}\left\{\bigotimes_p f_p:
+f_p\in\mathcal S(\mathbb Q_p),\quad
+f_p=1_{\mathbb Z_p}\text{ for almost all }p\right\}.
+\tag{12}
+\]</span></p>
+<p><strong>Proof of (12).</strong> A tensor on the right is locally constant. Its support is a finite product of compact local supports with the compact integral tail, so it is compact. Finite sums retain both properties.</p>
+<p>Conversely, let <span class="math" data-tex="\(f\)">\(f\)</span> be locally constant with compact support. At each point of its support, choose a compact open restricted rectangle on which <span class="math" data-tex="\(f\)">\(f\)</span> is constant. Such rectangles exist because the local balls <span class="math" data-tex="\(a+p^k\mathbb Z_p\)">\(a+p^k\mathbb Z_p\)</span> form a neighbourhood basis. The rectangles can lie inside <span class="math" data-tex="\(\{f\neq0\}\)">\(\{f\neq0\}\)</span>: this set equals the support, since local constancy makes its complement open. Compactness gives a finite cover by these rectangles.</p>
+<p>Include all their exceptional coordinates in one finite set <span class="math" data-tex="\(S\)">\(S\)</span>. They now have the same tail <span class="math" data-tex="\(\prod_{p\notin S}\mathbb Z_p\)">\(\prod_{p\notin S}\mathbb Z_p\)</span>, and each local factor in <span class="math" data-tex="\(S\)">\(S\)</span> is compact and open. At each of these finitely many primes, partition the union of the local factors into the finitely many disjoint sets obtained by their intersections and differences. These sets are compact and open. The resulting finite rectangular partition makes <span class="math" data-tex="\(f\)">\(f\)</span> constant on each cell, and zero on cells outside its support. The indicator of every cell is a tensor of local compact open indicators with integral tail. Expressing <span class="math" data-tex="\(f\)">\(f\)</span> as its constant value times these indicators proves (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof works for restricted products of groups whose local topologies have bases of compact open sets. More generally, given local test spaces <span class="math" data-tex="\(\mathcal S(G_v)\)">\(\mathcal S(G_v)\)</span> containing <span class="math" data-tex="\(1_{K_v}\)">\(1_{K_v}\)</span> outside <span class="math" data-tex="\(E\)">\(E\)</span>, define their restricted tensor space as the span of <span class="math" data-tex="\(\bigotimes_v f_v\)">\(\bigotimes_v f_v\)</span> with <span class="math" data-tex="\(f_v\in\mathcal S(G_v)\)">\(f_v\in\mathcal S(G_v)\)</span> and <span class="math" data-tex="\(f_v=1_{K_v}\)">\(f_v=1_{K_v}\)</span> for almost all <span class="math" data-tex="\(v\)">\(v\)</span>. This definition specifies the local choices; it does not identify the resulting space with all of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span>.</p>
+<p>For arbitrary LCA factors, the intrinsic construction of local Bruhat–Schwartz spaces uses their structure theory and is beyond this lesson. Formula (12) proves the full identification needed for finite adèles. With a Euclidean factor, the adelic test space is defined using finite sums of products of an ordinary Schwartz function on that factor and functions in (12).</p>
+<p>For example,
+<span class="math math-display" data-tex="\[
+f=1_B-\frac49\,1_{\widehat{\mathbb Z}}
+\]">\[
+f=1_B-\frac49\,1_{\widehat{\mathbb Z}}
+\]</span>
+belongs to <span class="math" data-tex="\(\mathcal S(\mathbb A_f)\)">\(\mathcal S(\mathbb A_f)\)</span> and has integral zero. Both terms are factorizable, and their integrals are the measures already computed. Such finite local descriptions are what make adelic integration practical.</p>
+<h2 id="exercises">Exercises</h2>
+<p><strong>Exercise 1 (easy).</strong> Prove that the restricted product topology equals the subspace topology from <span class="math" data-tex="\(\prod_vG_v\)">\(\prod_vG_v\)</span> if and only if <span class="math" data-tex="\(K_v=G_v\)">\(K_v=G_v\)</span> for almost all <span class="math" data-tex="\(v\notin E\)">\(v\notin E\)</span>.</p>
+<p><strong>Solution.</strong> If equality holds outside a finite set, include that set in <span class="math" data-tex="\(S\)">\(S\)</span>. Then <span class="math" data-tex="\(G\)">\(G\)</span> is the full product, and (1) is its product topology. Conversely, suppose infinitely many <span class="math" data-tex="\(K_v\)">\(K_v\)</span> are proper. The subgroup <span class="math" data-tex="\(G_E\)">\(G_E\)</span> is open in the restricted topology. Any product neighbourhood of the identity constrains only a finite set <span class="math" data-tex="\(F\)">\(F\)</span> of coordinates. Choose <span class="math" data-tex="\(v\notin E\cup F\)">\(v\notin E\cup F\)</span> with <span class="math" data-tex="\(K_v\neq G_v\)">\(K_v\neq G_v\)</span>, and an element <span class="math" data-tex="\(g_v\notin K_v\)">\(g_v\notin K_v\)</span>. The tuple with that single nonidentity coordinate belongs to <span class="math" data-tex="\(G\)">\(G\)</span> and to the chosen product neighbourhood but not to <span class="math" data-tex="\(G_E\)">\(G_E\)</span>. Thus <span class="math" data-tex="\(G_E\)">\(G_E\)</span> is not open in the subspace topology, and the two topologies differ.</p>
+<p><strong>Exercise 2 (medium).</strong> Show that inversion on <span class="math" data-tex="\(\mathbb A_f^\times\)">\(\mathbb A_f^\times\)</span>, with the subspace topology from <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>, is discontinuous. Show also that
+<span class="math math-display" data-tex="\[
+j:x\longmapsto(x,x^{-1})
+\]">\[
+j:x\longmapsto(x,x^{-1})
+\]</span>
+identifies the restricted product topology with the topology induced from <span class="math" data-tex="\(\mathbb A_f\times\mathbb A_f\)">\(\mathbb A_f\times\mathbb A_f\)</span>.</p>
+<p><strong>Solution.</strong> Enumerate the primes increasingly as <span class="math" data-tex="\(q_r\)">\(q_r\)</span>. Let <span class="math" data-tex="\(u^{(r)}\)">\(u^{(r)}\)</span> have coordinate <span class="math" data-tex="\(q_r\)">\(q_r\)</span> at <span class="math" data-tex="\(q_r\)">\(q_r\)</span>, and coordinate one elsewhere. Each tuple is an idèle. In an additive neighbourhood of one, only finitely many coordinates have extra local conditions; outside them, membership in <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> suffices. Consequently <span class="math" data-tex="\(u^{(r)}\to1\)">\(u^{(r)}\to1\)</span> in <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span>. But <span class="math" data-tex="\((u^{(r)})^{-1}\notin\widehat{\mathbb Z}\)">\((u^{(r)})^{-1}\notin\widehat{\mathbb Z}\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>. Since <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> is an additive neighbourhood of one, these inverses do not converge to one. This proves discontinuity.</p>
+<p>Take a basic product neighbourhood of <span class="math" data-tex="\((x,x^{-1})\)">\((x,x^{-1})\)</span> in <span class="math" data-tex="\(\mathbb A_f\times\mathbb A_f\)">\(\mathbb A_f\times\mathbb A_f\)</span>, and enlarge its two finite indexing sets to one <span class="math" data-tex="\(S\)">\(S\)</span> containing the exceptional coordinates of <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(x^{-1}\)">\(x^{-1}\)</span>. Its inverse image under <span class="math" data-tex="\(j\)">\(j\)</span> has finite-coordinate conditions
+<span class="math math-display" data-tex="\[
+y_p\in U_p\cap V_p^{-1}\qquad(p\in S),
+\]">\[
+y_p\in U_p\cap V_p^{-1}\qquad(p\in S),
+\]</span>
+which are open in <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span>. Outside <span class="math" data-tex="\(S\)">\(S\)</span>, both <span class="math" data-tex="\(y_p\)">\(y_p\)</span> and <span class="math" data-tex="\(y_p^{-1}\)">\(y_p^{-1}\)</span> must be integral, equivalently <span class="math" data-tex="\(y_p\in\mathbb Z_p^\times\)">\(y_p\in\mathbb Z_p^\times\)</span>. The inverse image is therefore open in the restricted topology.</p>
+<p>Conversely, let a restricted basic neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> prescribe <span class="math" data-tex="\(y_p\in W_p\subseteq\mathbb Q_p^\times\)">\(y_p\in W_p\subseteq\mathbb Q_p^\times\)</span> for <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, and local units elsewhere. Each <span class="math" data-tex="\(W_p\)">\(W_p\)</span> is open in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, because <span class="math" data-tex="\(\mathbb Q_p^\times\)">\(\mathbb Q_p^\times\)</span> is open there. Use the additive basic sets with factors <span class="math" data-tex="\(W_p\)">\(W_p\)</span> and <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, respectively, at <span class="math" data-tex="\(p\in S\)">\(p\in S\)</span>, and integral tails for both. Their product pulls back under <span class="math" data-tex="\(j\)">\(j\)</span> to precisely that restricted neighbourhood. Hence both induced topologies agree, and injectivity of <span class="math" data-tex="\(j\)">\(j\)</span> proves the claimed identification.</p>
+<p><strong>Exercise 3 (medium).</strong> Compute the multiplicative measure and the additive measure of <span class="math" data-tex="\(\widehat{\mathbb Z}^\times\)">\(\widehat{\mathbb Z}^\times\)</span>, with the normalizations in the table.</p>
+<p><strong>Solution.</strong> Its multiplicative measure is one, by Proposition 1.2. Additively, <span class="math" data-tex="\(\mathbb Z_p^\times=\mathbb Z_p\setminus p\mathbb Z_p\)">\(\mathbb Z_p^\times=\mathbb Z_p\setminus p\mathbb Z_p\)</span> has measure <span class="math" data-tex="\(1-1/p\)">\(1-1/p\)</span>. Let
+<span class="math math-display" data-tex="\[
+C_N=\prod_{p\leq N}\mathbb Z_p^\times
+\times\prod_{p&gt;N}\mathbb Z_p.
+\]">\[
+C_N=\prod_{p\leq N}\mathbb Z_p^\times
+\times\prod_{p&gt;N}\mathbb Z_p.
+\]</span>
+These compact sets decrease to <span class="math" data-tex="\(\widehat{\mathbb Z}^\times\)">\(\widehat{\mathbb Z}^\times\)</span>, within the set <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span> of finite additive measure one. Continuity from above and the product formula give
+<span class="math math-display" data-tex="\[
+\mu(\widehat{\mathbb Z}^\times)
+=\lim_{N\to\infty}\prod_{p\leq N}(1-1/p)=0.
+\]">\[
+\mu(\widehat{\mathbb Z}^\times)
+=\lim_{N\to\infty}\prod_{p\leq N}(1-1/p)=0.
+\]</span>
+For completeness, the limit is zero without any asymptotic theorem about primes. Multiplying the finitely many geometric series gives
+<span class="math math-display" data-tex="\[
+\prod_{p\leq N}(1-1/p)^{-1}
+=\sum_{\substack{m\geq1\\\text{every prime divisor of }m\leq N}}\frac1m
+\geq\sum_{m=1}^{\lfloor N\rfloor}\frac1m.
+\]">\[
+\prod_{p\leq N}(1-1/p)^{-1}
+=\sum_{\substack{m\geq1\\\text{every prime divisor of }m\leq N}}\frac1m
+\geq\sum_{m=1}^{\lfloor N\rfloor}\frac1m.
+\]</span>
+The harmonic sums diverge: each block <span class="math" data-tex="\(2^{k-1}&lt;m\leq2^k\)">\(2^{k-1}&lt;m\leq2^k\)</span> contributes at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. This proves the zero limit. The different answers arise from two different Haar measures on two different groups.</p>
+<p><strong>Exercise 4 (hard).</strong> Reconstruct the proof of Theorem 1.3 using an open annihilator to establish the topology. Treat the compact integral tail as a whole, rather than assuming a continuous character is a finite product in advance.</p>
+<p><strong>Solution.</strong> For a tuple <span class="math" data-tex="\((\chi_v)\)">\((\chi_v)\)</span> in the restricted dual product, the formula <span class="math" data-tex="\(\chi(x)=\prod_v\chi_v(x_v)\)">\(\chi(x)=\prod_v\chi_v(x_v)\)</span> has only finitely many nontrivial factors. It is multiplicative and continuous on every chart containing the tuple's exceptional coordinates, hence on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>For a continuous <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span>, choose <span class="math" data-tex="\(B(S;U)\)">\(B(S;U)\)</span> mapped into <span class="math" data-tex="\(\{\operatorname{Re}z&gt;0\}\)">\(\{\operatorname{Re}z&gt;0\}\)</span>. Its tail subgroup <span class="math" data-tex="\(T_S\)">\(T_S\)</span> has trivial image by the circle argument. The coordinate restrictions consequently annihilate <span class="math" data-tex="\(K_v\)">\(K_v\)</span> outside <span class="math" data-tex="\(S\)">\(S\)</span>. Splitting any element into its finitely many exceptional coordinates and a tail element recovers the product formula and proves bijectivity.</p>
+<p>For continuity of the product map, put a given compact set <span class="math" data-tex="\(C\)">\(C\)</span> inside <span class="math" data-tex="\(G_S\)">\(G_S\)</span>. Within the dual chart <span class="math" data-tex="\(H_S\)">\(H_S\)</span>, the tail contributes one on <span class="math" data-tex="\(C\)">\(C\)</span>. Uniformly small evaluations on the finitely many compact projections <span class="math" data-tex="\(C_v\)">\(C_v\)</span> make the product uniformly small, using the product inequality in the theorem's proof.</p>
+<p>For continuity in the other direction, the condition of belonging to <span class="math" data-tex="\(H_S\)">\(H_S\)</span> is exactly membership in <span class="math" data-tex="\(T_S^\perp\)">\(T_S^\perp\)</span>. The latter is open in <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, because its defining triviality condition can be tested by uniform containment of the image of the compact subgroup <span class="math" data-tex="\(T_S\)">\(T_S\)</span> in the same circle arc. On that open subgroup, any finite-coordinate neighbourhood is obtained by the continuous restriction maps <span class="math" data-tex="\(\widehat G\to\widehat G_v\)">\(\widehat G\to\widehat G_v\)</span>. Thus every restricted basic neighbourhood has open image. The two continuity statements prove the topological isomorphism, including for uncountable index sets and with unrestricted factors in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<p>The following are the background results used here.</p>
+<ul>
+<li>The compact-product theorem is Lemma 4.1 of <a href="../../../../NT-ADL/prerequisites/HA-LCA-PRE-BANACH.html">Spectral radius and characters of a Banach algebra</a>, with a proof for arbitrary products using the axiom of choice. A continuous surjection <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> from a compact space to a Hausdorff space is closed: every closed subset of <span class="math" data-tex="\(X\)">\(X\)</span> is compact, so its image is compact and hence closed in <span class="math" data-tex="\(Y\)">\(Y\)</span>. If <span class="math" data-tex="\(f^{-1}(B)\)">\(f^{-1}(B)\)</span> is closed, surjectivity gives <span class="math" data-tex="\(B=f(f^{-1}(B))\)">\(B=f(f^{-1}(B))\)</span>, which is therefore closed; the converse follows from continuity. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is a quotient map. If it is also bijective, its closedness makes the inverse continuous, so it is a homeomorphism. Bézout’s identity for coprime integers is assumed; the Chinese remainder argument was given above.</li>
+<li>Riesz representation for positive functionals on <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>, Haar existence and uniqueness on locally compact Hausdorff groups, and finite Radon products with their integrable-function Fubini theorem are proved in <a href="../../../../NT-ADL/prerequisites/haar-measure-on-locally-compact-groups.html">Haar measure on locally compact groups</a>, Theorem 2.2, Definition 4.3, Theorem 5.1, Theorems 8.3 and 9.2, and Proposition 12.1. No global <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-finiteness is assumed.</li>
+<li>The dual of an LCA group is LCA by Corollary 2.2 of <a href="../../../../HA-LCA/HA-LCA-03.html">The dual group as the Gelfand spectrum of <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span></a>. Compact groups have discrete duals and discrete groups have compact duals by Theorem 2.1 of <a href="../../../../HA-LCA/src/characters-and-the-dual-group.html">Characters and the dual group</a>; its Proposition 4.1 and Theorem 4.3 give finite-product and arbitrary compact-product/discrete-sum duality. Evaluation identifies <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(\widehat{\widehat H}\)">\(\widehat{\widehat H}\)</span> by Theorem 2.1 of <a href="../../../../HA-LCA/src/the-pontryagin-duality-theorem.html">The Pontryagin duality theorem</a>, whose Corollary 4.4 gives the compact/discrete converse implications.</li>
+<li>For closed <span class="math" data-tex="\(K\leq H\)">\(K\leq H\)</span>, pullback identifies <span class="math" data-tex="\(\widehat{H/K}\)">\(\widehat{H/K}\)</span> with <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span>, and restriction identifies <span class="math" data-tex="\(\widehat H/K^\perp\)">\(\widehat H/K^\perp\)</span> with <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span>, topologically. These are Theorem 2.1 of <a href="../../../../HA-LCA/src/subgroups-quotients-and-annihilators.html">Subgroups, quotients and annihilators</a>. Its Corollary 2.2 proves that annihilation exchanges compact and open subgroups. In particular, the annihilator of a compact open subgroup is compact and open.</li>
+<li>For a surjective inverse system of compact abelian groups, every character of the limit factors through a coordinate group, and its discrete dual is the direct limit of the coordinate duals under pullback. This is Proposition 4.2 of <a href="../../../../HA-LCA/src/totally-disconnected-groups-the-p-adic-numbers-and-the-adeles.html">Totally disconnected groups, the p-adic numbers and the adèles</a>. We use its independent general proof for finite cyclic groups, with the explicit pullback maps given above; its later adelic examples are not needed.</li>
+<li>The construction of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, its valuation and the compact open ring <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> are Theorem 2.1 and Proposition 2.2 of <a href="../../../../NT-LOC/NT-LOC-02.html">Completions, the p-adic numbers and complete discretely valued fields</a>. Proposition 2.3 gives the corresponding inverse-limit description for a complete discrete valuation ring. The elementary residue and unit calculations needed for (6)–(9) were proved here.</li>
+</ul>
+<p>The self-duality of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> and of the adèles, the diagonal lattice in the full adèle ring, and Poisson summation are treated in <em>The adèle ring of a number field</em> and <em>Additive characters, self-dual measures and Poisson summation on the adèles</em>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Getz–Hahn] J. R. Getz and H. Hahn, <em>An Introduction to Automorphic Representations: With a View toward Trace Formulae</em>, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">author-hosted draft dated 22 April 2022</a>, §2.3, pp.46–48. These locators refer to that draft.</li>
+<li>[Bost–Connes] J.-B. Bost and A. Connes, <em>Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory</em>, Selecta Mathematica (N.S.) 1 (1995), 411–457, §3, pp.422–423, the finite-adèle definition (a)–(c). <a href="https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf">Author-hosted scan</a>.</li>
+<li><strong>[Sutherland 25]</strong> A. V. Sutherland, <em>The ring of adeles, strong approximation</em>, MIT 18.785, Lecture 25 (29 November 2021), <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/">MIT OpenCourseWare notes</a>, §§25.1–25.4, pp.1–10. The local-compactness motivation explicitly credited above is adapted under CC BY-NC-SA 4.0.</li>
+<li>[Lenstra] H. Lenstra, <em>Profinite Groups</em>, <a href="https://websites.math.leidenuniv.nl/algebra/Lenstra-Profinite.pdf">Leiden-hosted notes</a>, §2, Example 2.2, p.3, for the inverse-limit, prime-product and factorial presentations of <span class="math" data-tex="\(\widehat{\mathbb Z}\)">\(\widehat{\mathbb Z}\)</span>. The residue and character proofs used here are given above.</li>
+</ul>
+</article></main></body></html>

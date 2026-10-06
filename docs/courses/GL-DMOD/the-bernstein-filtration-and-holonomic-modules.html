@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bernstein filtration and holonomic modules over the Weyl algebra · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/the-bernstein-filtration-and-holonomic-modules.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 10</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-bernstein-filtration-and-holonomic-modules-over-the-weyl-algebra">The Bernstein filtration and holonomic modules over the Weyl algebra</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An operator can be complicated in two different ways: it can differentiate many times, or its coefficients can have large polynomial degree. The order filtration measures the first. The Bernstein filtration measures both. Its finite-dimensional pieces let us count how quickly an operator module grows. A remarkable lower bound says that a nonzero module over differential operators in <span class="math" data-tex="$n$">$n$</span> variables grows at least like a polynomial algebra in <span class="math" data-tex="$n$">$n$</span> variables. At this smallest possible growth, a positive integer controls every chain of submodules.</p>
+<p>We work over a field <span class="math" data-tex="$k$">$k$</span> of characteristic zero and write</p>
+<span class="math math-display" data-tex="\[
+A_n=k\langle x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\rangle,
+\qquad [\partial_i,x_j]=\delta_{ij}.
+\]">\[
+A_n=k\langle x_1,\ldots,x_n,\partial_1,\ldots,\partial_n\rangle,
+\qquad [\partial_i,x_j]=\delta_{ij}.
+\]</span>
+<p>All modules are left modules. Unless stated otherwise they are finitely generated. Geometric statements may be read over an algebraic closure. The preceding chapter, Good filtrations and the characteristic variety, provides the order characteristic variety, strict filtered exact sequences, generic component lengths, and Gabber's dimension bound. From <em>Krull dimension and Noether normalization</em> we use Noether normalization for a finite-type <span class="math" data-tex="$k$">$k$</span>-algebra. From <em>Graded modules and Hilbert–Samuel functions</em> we use the elementary theory of numerical polynomials; the Hilbert-series argument needed here is recalled below.</p>
+<h2 id="1-counting-with-the-bernstein-filtration">1. Counting with the Bernstein filtration</h2>
+<p>Put <span class="math" data-tex="$B_pA_n=0$">$B_pA_n=0$</span> for <span class="math" data-tex="$p&lt;0$">$p&lt;0$</span>, and for <span class="math" data-tex="$p\geq0$">$p\geq0$</span> put</p>
+<span class="math math-display" data-tex="\[
+B_pA_n=\operatorname{span}_k\{x^\alpha\partial^\beta:
+|\alpha|+|\beta|\leq p\}.
+\tag{1.1}
+\]">\[
+B_pA_n=\operatorname{span}_k\{x^\alpha\partial^\beta:
+|\alpha|+|\beta|\leq p\}.
+\tag{1.1}
+\]</span>
+<p>The normal forms proved in Differential operators and the Weyl algebra give</p>
+<span class="math math-display" data-tex="\[
+\dim_k B_pA_n=\binom{p+2n}{2n},\qquad
+\operatorname{gr}_B A_n\simeq
+S=k[x_1,\ldots,x_n,\xi_1,\ldots,\xi_n],
+\tag{1.2}
+\]">\[
+\dim_k B_pA_n=\binom{p+2n}{2n},\qquad
+\operatorname{gr}_B A_n\simeq
+S=k[x_1,\ldots,x_n,\xi_1,\ldots,\xi_n],
+\tag{1.2}
+\]</span>
+<p>where every variable in <span class="math" data-tex="$S$">$S$</span> has degree one. Moving a derivative past a coordinate creates a term whose total degree is two smaller. Thus multiplication respects <span class="math" data-tex="$B$">$B$</span>, and</p>
+<span class="math math-display" data-tex="\[
+[B_pA_n,B_qA_n]\subseteq B_{p+q-2}A_n.
+\tag{1.3}
+\]">\[
+[B_pA_n,B_qA_n]\subseteq B_{p+q-2}A_n.
+\tag{1.3}
+\]</span>
+<p>In particular, a commutator with any <span class="math" data-tex="$x_i$">$x_i$</span> or <span class="math" data-tex="$\partial_i$">$\partial_i$</span> lowers Bernstein degree by at least one. The symbol ring is a domain, so for nonzero operators</p>
+<span class="math math-display" data-tex="\[
+\deg_B(PQ)=\deg_B P+\deg_B Q.
+\tag{1.4}
+\]">\[
+\deg_B(PQ)=\deg_B P+\deg_B Q.
+\tag{1.4}
+\]</span>
+<p>A <strong>good Bernstein filtration</strong> on <span class="math" data-tex="$M$">$M$</span> is an exhaustive increasing filtration <span class="math" data-tex="$\Gamma_pM$">$\Gamma_pM$</span>, bounded below, such that <span class="math" data-tex="$B_a\Gamma_b\subseteq\Gamma_{a+b}$">$B_a\Gamma_b\subseteq\Gamma_{a+b}$</span> and <span class="math" data-tex="$\operatorname{gr}_\Gamma M$">$\operatorname{gr}_\Gamma M$</span> is a finite <span class="math" data-tex="$S$">$S$</span>-module. Its pieces are finite-dimensional. Indeed, homogeneous generators of the graded module lift to finitely many elements <span class="math" data-tex="$m_j\in\Gamma_{a_j}M$">$m_j\in\Gamma_{a_j}M$</span>, and induction from the lower bound gives</p>
+<span class="math math-display" data-tex="\[
+\Gamma_pM=\sum_j B_{p-a_j}A_n\,m_j.
+\tag{1.5}
+\]">\[
+\Gamma_pM=\sum_j B_{p-a_j}A_n\,m_j.
+\tag{1.5}
+\]</span>
+<p>To see the induction, express the degree-<span class="math" data-tex="$p$">$p$</span> symbol of an element using the chosen symbols, lift its coefficients, and subtract. The difference belongs to <span class="math" data-tex="$\Gamma_{p-1}M$">$\Gamma_{p-1}M$</span>. Repeating terminates at the lower bound. Conversely, a filtration of the form (1.5) is good. Every finite module has one: choose a finite-dimensional generating space <span class="math" data-tex="$V\subseteq M$">$V\subseteq M$</span> and take <span class="math" data-tex="$\Gamma_p=B_pV$">$\Gamma_p=B_pV$</span>.</p>
+<p>The lower bound is part of the definition. Assigning <span class="math" data-tex="$\Gamma_p=M$">$\Gamma_p=M$</span> for every integer <span class="math" data-tex="$p$">$p$</span> would give a zero graded module for a nonzero <span class="math" data-tex="$M$">$M$</span>, and would invalidate this argument.</p>
+<h3 id="theorem-1-1-the-growth-polynomial">Theorem 1.1. The growth polynomial</h3>
+<p>For a good Bernstein filtration, <span class="math" data-tex="$h_\Gamma(p)=\dim_k\Gamma_pM$">$h_\Gamma(p)=\dim_k\Gamma_pM$</span> agrees for all sufficiently large integers <span class="math" data-tex="$p$">$p$</span> with a polynomial <span class="math" data-tex="$P_\Gamma(p)\in\mathbb Q[p]$">$P_\Gamma(p)\in\mathbb Q[p]$</span>. If <span class="math" data-tex="$M\ne0$">$M\ne0$</span>, it has the form</p>
+<span class="math math-display" data-tex="\[
+P_\Gamma(p)=\frac{e(M)}{d(M)!}p^{d(M)}+
+\text{terms of smaller degree},
+\qquad e(M)\in\mathbb Z_{&gt;0}.
+\tag{1.6}
+\]">\[
+P_\Gamma(p)=\frac{e(M)}{d(M)!}p^{d(M)}+
+\text{terms of smaller degree},
+\qquad e(M)\in\mathbb Z_{&gt;0}.
+\tag{1.6}
+\]</span>
+<p>Both the degree <span class="math" data-tex="$d(M)$">$d(M)$</span> and the integer <span class="math" data-tex="$e(M)$">$e(M)$</span> are independent of the good filtration. The whole polynomial need not be independent.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$N=\operatorname{gr}_\Gamma M$">$N=\operatorname{gr}_\Gamma M$</span>. A finite graded module over a polynomial ring in <span class="math" data-tex="$r=2n$">$r=2n$</span> degree-one variables has a Hilbert series of the form</p>
+<span class="math math-display" data-tex="\[
+H_N(t)=\sum_p(\dim_kN_p)t^p=\frac{q(t)}{(1-t)^r},
+\qquad q(t)\in\mathbb Z[t,t^{-1}].
+\tag{1.7}
+\]">\[
+H_N(t)=\sum_p(\dim_kN_p)t^p=\frac{q(t)}{(1-t)^r},
+\qquad q(t)\in\mathbb Z[t,t^{-1}].
+\tag{1.7}
+\]</span>
+<p>Here is the induction behind this formula. For the last variable <span class="math" data-tex="$z$">$z$</span>, use the graded exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow (0:_Nz)(-1)\longrightarrow N(-1)
+\xrightarrow{z}N\longrightarrow N/zN\longrightarrow0.
+\]">\[
+0\longrightarrow (0:_Nz)(-1)\longrightarrow N(-1)
+\xrightarrow{z}N\longrightarrow N/zN\longrightarrow0.
+\]</span>
+<p>The kernel and cokernel are finite modules over the polynomial ring with that variable removed. Consequently</p>
+<span class="math math-display" data-tex="\[
+(1-t)H_N(t)=H_{N/zN}(t)-tH_{(0:_Nz)}(t).
+\]">\[
+(1-t)H_N(t)=H_{N/zN}(t)-tH_{(0:_Nz)}(t).
+\]</span>
+<p>The case of no variables is a finite Laurent polynomial, which starts the induction. Summing graded dimensions multiplies the series by <span class="math" data-tex="$1/(1-t)$">$1/(1-t)$</span>. Expanding the resulting denominator shows that its coefficients are eventually a polynomial in <span class="math" data-tex="$p$">$p$</span>. This proves existence of <span class="math" data-tex="$P_\Gamma$">$P_\Gamma$</span>.</p>
+<p>If <span class="math" data-tex="$M\ne0$">$M\ne0$</span>, the cumulative dimensions are eventually positive and nondecreasing, so their nonzero polynomial has positive leading coefficient. A rational polynomial that is integer-valued on all sufficiently large integers has integral finite differences. Its <span class="math" data-tex="$d$">$d$</span>-th difference is <span class="math" data-tex="$d!$">$d!$</span> times its leading coefficient. Thus the integer <span class="math" data-tex="$e$">$e$</span> in (1.6) is positive.</p>
+<p>For two good filtrations <span class="math" data-tex="$\Gamma$">$\Gamma$</span> and <span class="math" data-tex="$\Lambda$">$\Lambda$</span>, (1.5) shows that their finite sets of generators occur in uniformly bounded degrees in the other filtration. There is therefore <span class="math" data-tex="$c\geq0$">$c\geq0$</span> such that</p>
+<span class="math math-display" data-tex="\[
+\Gamma_{p-c}\subseteq\Lambda_p\subseteq\Gamma_{p+c}
+\quad\text{for all }p.
+\tag{1.8}
+\]">\[
+\Gamma_{p-c}\subseteq\Lambda_p\subseteq\Gamma_{p+c}
+\quad\text{for all }p.
+\tag{1.8}
+\]</span>
+<p>Comparing the eventual dimension polynomials in these inclusions gives the same degree and the same leading coefficient: shifting the argument by a constant changes neither. This proves the asserted independence. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For the zero module set <span class="math" data-tex="$d(0)=-\infty$">$d(0)=-\infty$</span> and <span class="math" data-tex="$e(0)=0$">$e(0)=0$</span>. The growth degree of a nonzero module also equals its <strong>Gelfand–Kirillov dimension</strong>, defined from a finite generating space by</p>
+<span class="math math-display" data-tex="\[
+\operatorname{GKdim}M=
+\inf\{a\geq0:\exists C&gt;0,\ \dim_k(B_pV)\leq Cp^a
+\text{ for }p\gg0\}.
+\tag{1.9}
+\]">\[
+\operatorname{GKdim}M=
+\inf\{a\geq0:\exists C&gt;0,\ \dim_k(B_pV)\leq Cp^a
+\text{ for }p\gg0\}.
+\tag{1.9}
+\]</span>
+<p>Indeed, (1.6) gives growth bounded above and below by positive multiples of <span class="math" data-tex="$p^{d(M)}$">$p^{d(M)}$</span>. In this setting GK dimension is an integer. This integrality uses the finite polynomial symbol ring; it is not a general property of finitely generated noncommutative algebras.</p>
+<h3 id="proposition-1-2-exact-sequences-and-leading-coefficients">Proposition 1.2. Exact sequences and leading coefficients</h3>
+<p>For an exact sequence of finite <span class="math" data-tex="$A_n$">$A_n$</span>-modules</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow N\longrightarrow M\longrightarrow Q\longrightarrow0,
+\tag{1.10}
+\]">\[
+0\longrightarrow N\longrightarrow M\longrightarrow Q\longrightarrow0,
+\tag{1.10}
+\]</span>
+<p>one has</p>
+<span class="math math-display" data-tex="\[
+d(M)=\max\{d(N),d(Q)\}.
+\tag{1.11}
+\]">\[
+d(M)=\max\{d(N),d(Q)\}.
+\tag{1.11}
+\]</span>
+<p>If every nonzero term has the same degree <span class="math" data-tex="$d$">$d$</span>, then</p>
+<span class="math math-display" data-tex="\[
+e(M)=e(N)+e(Q).
+\tag{1.12}
+\]">\[
+e(M)=e(N)+e(Q).
+\tag{1.12}
+\]</span>
+<p><strong>Proof.</strong> Give <span class="math" data-tex="$M$">$M$</span> a good filtration. Give <span class="math" data-tex="$N$">$N$</span> the intersections <span class="math" data-tex="$N\cap\Gamma_pM$">$N\cap\Gamma_pM$</span> and <span class="math" data-tex="$Q$">$Q$</span> the images of <span class="math" data-tex="$\Gamma_pM$">$\Gamma_pM$</span>. The resulting sequence is exact in every filtered degree and in every graded degree. The graded submodule and quotient of <span class="math" data-tex="$\operatorname{gr}M$">$\operatorname{gr}M$</span> are finite over the Noetherian ring <span class="math" data-tex="$S$">$S$</span>. The induced filtrations are bounded below and exhaustive, so they are good by the lifting argument above. Hence</p>
+<span class="math math-display" data-tex="\[
+h_M(p)=h_N(p)+h_Q(p).
+\]">\[
+h_M(p)=h_N(p)+h_Q(p).
+\]</span>
+<p>The polynomials add. Their leading coefficients are positive when the modules are nonzero, which proves (1.11), and comparing equal-degree coefficients proves (1.12). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The ring <span class="math" data-tex="$A_n$">$A_n$</span> is left Noetherian, as proved by lifting generators from its polynomial symbol ring in the first chapter. Thus every submodule occurring here is finite; there is no hidden restriction to a selected class of submodules.</p>
+<h2 id="2-examples-before-the-lower-bound">2. Examples before the lower bound</h2>
+<p>On <span class="math" data-tex="$\mathcal O=k[x_1,\ldots,x_n]$">$\mathcal O=k[x_1,\ldots,x_n]$</span>, coordinates multiply and derivatives differentiate. The generating vector <span class="math" data-tex="$1$">$1$</span> gives</p>
+<span class="math math-display" data-tex="\[
+B_p1=k[x_1,\ldots,x_n]_{\leq p},\qquad
+h_{\mathcal O}(p)=\binom{p+n}{n}.
+\tag{2.1}
+\]">\[
+B_p1=k[x_1,\ldots,x_n]_{\leq p},\qquad
+h_{\mathcal O}(p)=\binom{p+n}{n}.
+\tag{2.1}
+\]</span>
+<p>Multiplication produces every polynomial of degree at most <span class="math" data-tex="$p$">$p$</span>, and derivatives cannot increase degree. Hence <span class="math" data-tex="$d(\mathcal O)=n$">$d(\mathcal O)=n$</span> and <span class="math" data-tex="$e(\mathcal O)=1$">$e(\mathcal O)=1$</span>. At the other extreme, (1.2) gives <span class="math" data-tex="$d(A_n)=2n$">$d(A_n)=2n$</span> and <span class="math" data-tex="$e(A_n)=1$">$e(A_n)=1$</span>. A multiplicity of one does not by itself mean small dimension or finite module length.</p>
+<p>The point module <span class="math" data-tex="$\delta_0=A_n/\sum_iA_nx_i$">$\delta_0=A_n/\sum_iA_nx_i$</span> has basis <span class="math" data-tex="$\partial^\beta\delta$">$\partial^\beta\delta$</span>. Normal forms give</p>
+<span class="math math-display" data-tex="\[
+x_i\partial^\beta\delta=-\beta_i\partial^{\beta-e_i}\delta.
+\]">\[
+x_i\partial^\beta\delta=-\beta_i\partial^{\beta-e_i}\delta.
+\]</span>
+<p>Thus its Bernstein filtration has the same counting function as (2.1), with <span class="math" data-tex="$x$">$x$</span>-monomials replaced by derivative monomials. It too has <span class="math" data-tex="$d=n,e=1$">$d=n,e=1$</span>.</p>
+<p>There is a useful exact formula in one variable. Write <span class="math" data-tex="$A=A_1$">$A=A_1$</span>.</p>
+<h3 id="proposition-2-1-a-single-operator-on-the-line">Proposition 2.1. A single operator on the line</h3>
+<p>Let <span class="math" data-tex="$P\in A$">$P\in A$</span> be nonzero, with <span class="math" data-tex="$r=\deg_BP$">$r=\deg_BP$</span>. Give <span class="math" data-tex="$M_P=A/AP$">$M_P=A/AP$</span> the quotient Bernstein filtration. If <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, then, for <span class="math" data-tex="$p\geq r$">$p\geq r$</span>,</p>
+<span class="math math-display" data-tex="\[
+h_{M_P}(p)=\binom{p+2}{2}-\binom{p-r+2}{2}
+=rp+\frac{3r-r^2}{2}.
+\tag{2.2}
+\]">\[
+h_{M_P}(p)=\binom{p+2}{2}-\binom{p-r+2}{2}
+=rp+\frac{3r-r^2}{2}.
+\tag{2.2}
+\]</span>
+<p>Consequently <span class="math" data-tex="$d(M_P)=1$">$d(M_P)=1$</span> and <span class="math" data-tex="$e(M_P)=r$">$e(M_P)=r$</span>. If <span class="math" data-tex="$r=0$">$r=0$</span>, <span class="math" data-tex="$P$">$P$</span> is a nonzero scalar and <span class="math" data-tex="$M_P=0$">$M_P=0$</span>.</p>
+<p><strong>Proof.</strong> By (1.4), right multiplication by <span class="math" data-tex="$P$">$P$</span> identifies <span class="math" data-tex="$B_{p-r}A$">$B_{p-r}A$</span> with <span class="math" data-tex="$AP\cap B_pA$">$AP\cap B_pA$</span>. It is injective, since <span class="math" data-tex="$A$">$A$</span> is a domain. Taking dimensions gives (2.2). Equivalently,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{gr}_B M_P\simeq k[x,\xi]/(\sigma_B(P)).
+\tag{2.3}
+\]">\[
+\operatorname{gr}_B M_P\simeq k[x,\xi]/(\sigma_B(P)).
+\tag{2.3}
+\]</span>
+<p>For <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>, the polynomial in (2.2) is nonzero, so the quotient is nonzero and has the stated invariants. For <span class="math" data-tex="$r=0$">$r=0$</span>, the left ideal is the entire ring. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$P=\partial-1$">$P=\partial-1$</span>, (2.2) gives <span class="math" data-tex="$h(p)=p+1$">$h(p)=p+1$</span>. The quotient is the rank-one connection with basis <span class="math" data-tex="$v$">$v$</span>, where</p>
+<span class="math math-display" data-tex="\[
+\partial(fv)=(f&#x27;+f)v.
+\]">\[
+\partial(fv)=(f&#x27;+f)v.
+\]</span>
+<p>Every element of <span class="math" data-tex="$B_pv$">$B_pv$</span> has polynomial coefficient of degree at most <span class="math" data-tex="$p$">$p$</span>, and all such coefficients occur by multiplication with <span class="math" data-tex="$x$">$x$</span>. Thus the connection description checks the same polynomial directly.</p>
+<p>For <span class="math" data-tex="$Q_\lambda=A/A(x\partial-\lambda)$">$Q_\lambda=A/A(x\partial-\lambda)$</span>, the Bernstein symbol is <span class="math" data-tex="$x\xi$">$x\xi$</span>, regardless of <span class="math" data-tex="$\lambda$">$\lambda$</span>. The standard monomials in its symbol quotient are <span class="math" data-tex="$1,x,\ldots,x^p,\xi,\ldots,\xi^p$">$1,x,\ldots,x^p,\xi,\ldots,\xi^p$</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+h_{Q_\lambda}(p)=2p+1,\qquad d(Q_\lambda)=1,\qquad e(Q_\lambda)=2.
+\tag{2.4}
+\]">\[
+h_{Q_\lambda}(p)=2p+1,\qquad d(Q_\lambda)=1,\qquad e(Q_\lambda)=2.
+\tag{2.4}
+\]</span>
+<p>The preceding chapter computed its order characteristic variety as the union of the zero section and the fibre over zero. For a nonintegral <span class="math" data-tex="$\lambda$">$\lambda$</span>, <span class="math" data-tex="$Q_\lambda$">$Q_\lambda$</span> is simple even though its Bernstein multiplicity is two. The forthcoming length bound can be strict.</p>
+<h2 id="3-joseph-s-argument-for-bernstein-s-inequality">3. Joseph's argument for Bernstein's inequality</h2>
+<p>The next proof uses only commutators, finite-dimensional spaces, and polynomial growth. It avoids any dimension theorem about symplectic varieties.</p>
+<h3 id="theorem-3-1-bernstein-s-inequality">Theorem 3.1. Bernstein's inequality</h3>
+<p>For a nonzero finite <span class="math" data-tex="$A_n$">$A_n$</span>-module,</p>
+<span class="math math-display" data-tex="\[
+d(M)\geq n.
+\tag{3.1}
+\]">\[
+d(M)\geq n.
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Choose a finite-dimensional nonzero generating space <span class="math" data-tex="$V$">$V$</span> and set <span class="math" data-tex="$\Gamma_p=B_pV$">$\Gamma_p=B_pV$</span>, with <span class="math" data-tex="$\Gamma_p=0$">$\Gamma_p=0$</span> for <span class="math" data-tex="$p&lt;0$">$p&lt;0$</span>. For every <span class="math" data-tex="$p\geq0$">$p\geq0$</span>, consider the action map</p>
+<span class="math math-display" data-tex="\[
+\rho_p:B_pA_n\longrightarrow
+\operatorname{Hom}_k(\Gamma_pM,\Gamma_{2p}M).
+\tag{3.2}
+\]">\[
+\rho_p:B_pA_n\longrightarrow
+\operatorname{Hom}_k(\Gamma_pM,\Gamma_{2p}M).
+\tag{3.2}
+\]</span>
+<p>We prove by induction that <span class="math" data-tex="$\rho_p$">$\rho_p$</span> is injective. For <span class="math" data-tex="$p=0$">$p=0$</span>, a scalar killing the nonzero space <span class="math" data-tex="$V$">$V$</span> is zero. Suppose injectivity is known at <span class="math" data-tex="$p-1$">$p-1$</span>, and <span class="math" data-tex="$T\in B_p$">$T\in B_p$</span> kills <span class="math" data-tex="$\Gamma_p$">$\Gamma_p$</span>. For <span class="math" data-tex="$w\in\Gamma_{p-1}$">$w\in\Gamma_{p-1}$</span>, both <span class="math" data-tex="$x_iw$">$x_iw$</span> and <span class="math" data-tex="$\partial_iw$">$\partial_iw$</span> belong to <span class="math" data-tex="$\Gamma_p$">$\Gamma_p$</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+[x_i,T]w=x_iTw-Tx_iw=0,\qquad
+[\partial_i,T]w=\partial_iTw-T\partial_iw=0.
+\]">\[
+[x_i,T]w=x_iTw-Tx_iw=0,\qquad
+[\partial_i,T]w=\partial_iTw-T\partial_iw=0.
+\]</span>
+<p>Both commutators lie in <span class="math" data-tex="$B_{p-1}$">$B_{p-1}$</span>. By the induction hypothesis they are zero as operators in <span class="math" data-tex="$A_n$">$A_n$</span>.</p>
+<p>An operator commuting with all coordinates and derivatives is a scalar. To verify this directly, write <span class="math" data-tex="$T=\sum c_{\alpha\beta}x^\alpha\partial^\beta$">$T=\sum c_{\alpha\beta}x^\alpha\partial^\beta$</span>. Commuting with <span class="math" data-tex="$x_i$">$x_i$</span> differentiates this normal-form polynomial with respect to <span class="math" data-tex="$\partial_i$">$\partial_i$</span>, up to sign, so characteristic zero forces all positive derivative exponents to disappear. Commuting next with <span class="math" data-tex="$\partial_i$">$\partial_i$</span> removes every positive coordinate exponent. Thus <span class="math" data-tex="$T\in k$">$T\in k$</span>, and its action on the nonzero space <span class="math" data-tex="$\Gamma_p$">$\Gamma_p$</span> forces <span class="math" data-tex="$T=0$">$T=0$</span>. This completes the induction.</p>
+<p>Injectivity of (3.2) now gives</p>
+<span class="math math-display" data-tex="\[
+\binom{p+2n}{2n}\leq
+(\dim_k\Gamma_pM)(\dim_k\Gamma_{2p}M).
+\tag{3.3}
+\]">\[
+\binom{p+2n}{2n}\leq
+(\dim_k\Gamma_pM)(\dim_k\Gamma_{2p}M).
+\tag{3.3}
+\]</span>
+<p>For large <span class="math" data-tex="$p$">$p$</span>, the left side has positive leading term of degree <span class="math" data-tex="$2n$">$2n$</span>; the right side has positive leading term of degree <span class="math" data-tex="$2d(M)$">$2d(M)$</span>. An inequality of this form for arbitrarily large <span class="math" data-tex="$p$">$p$</span> requires <span class="math" data-tex="$2n\leq2d(M)$">$2n\leq2d(M)$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The action map in the proof is injective on a bounded operator space, although <span class="math" data-tex="$M$">$M$</span> may have many vectors killed by individual nonzero operators. It says that no nonzero operator of degree at most <span class="math" data-tex="$p$">$p$</span> can kill the whole space of vectors already obtainable in degree <span class="math" data-tex="$p$">$p$</span>.</p>
+<p>Every finite module is a quotient of <span class="math" data-tex="$A_n^s$">$A_n^s$</span>, so Proposition 1.2 also gives <span class="math" data-tex="$d(M)\leq2n$">$d(M)\leq2n$</span>. The possible dimensions of nonzero finite modules are therefore the integers between <span class="math" data-tex="$n$">$n$</span> and <span class="math" data-tex="$2n$">$2n$</span>.</p>
+<h2 id="4-equality-with-the-order-characteristic-dimension">4. Equality with the order characteristic dimension</h2>
+<p>The order filtration gives degree zero to every <span class="math" data-tex="$x_i$">$x_i$</span> and degree one to every <span class="math" data-tex="$\partial_i$">$\partial_i$</span>. Its symbol ring is also the polynomial algebra <span class="math" data-tex="$S=k[x,\xi]$">$S=k[x,\xi]$</span>, but now only <span class="math" data-tex="$\xi$">$\xi$</span> has positive degree. Its pieces need not be finite-dimensional over <span class="math" data-tex="$k$">$k$</span>. Neither a constant shift nor a fixed rescaling compares the order and Bernstein filtrations on the entire ring: <span class="math" data-tex="$x^a$">$x^a$</span> has order zero for arbitrarily large <span class="math" data-tex="$a$">$a$</span>.</p>
+<h3 id="theorem-4-1-comparison-of-dimensions">Theorem 4.1. Comparison of dimensions</h3>
+<p>For every nonzero finite <span class="math" data-tex="$A_n$">$A_n$</span>-module,</p>
+<span class="math math-display" data-tex="\[
+d(M)=\dim\operatorname{Ch}_{\mathrm{ord}}(M).
+\tag{4.1}
+\]">\[
+d(M)=\dim\operatorname{Ch}_{\mathrm{ord}}(M).
+\tag{4.1}
+\]</span>
+<p>We give a proof for all finite modules, then make the cyclic calculation explicit. The finite basis in the proof is essential: symbols of an arbitrary generating set for a left ideal or submodule may miss additional relations.</p>
+<p><strong>A commutative growth lemma.</strong> For a finite module <span class="math" data-tex="$N$">$N$</span> over a polynomial ring <span class="math" data-tex="$S=k[z_1,\ldots,z_s]$">$S=k[z_1,\ldots,z_s]$</span>, with the filtration generated by a finite set using polynomials of total degree at most <span class="math" data-tex="$p$">$p$</span>, its growth degree equals <span class="math" data-tex="$\dim\operatorname{Supp}N$">$\dim\operatorname{Supp}N$</span>.</p>
+<p>Here are the details of the dimension assertion. The Hilbert-series proof in Section 1 applies to the total-degree symbol module, so there is an eventual growth polynomial. A finite module has a finite filtration with factors <span class="math" data-tex="$S/\mathfrak p$">$S/\mathfrak p$</span>. Indeed, a maximal annihilator of a nonzero element is prime: if <span class="math" data-tex="$ab$">$ab$</span> kills that element and <span class="math" data-tex="$b$">$b$</span> does not, the annihilator of the nonzero element obtained by multiplying by <span class="math" data-tex="$b$">$b$</span> contains the original annihilator; maximality forces <span class="math" data-tex="$a$">$a$</span> into it. Insert the resulting cyclic submodule and repeat on the quotient. The ascending chain condition makes this process terminate. Good induced filtrations and strict exact sequences, exactly as in Proposition 1.2, show that the growth degree and support dimension are the maxima of the respective quantities for these factors.</p>
+<p>For <span class="math" data-tex="$R=S/\mathfrak p$">$R=S/\mathfrak p$</span>, Noether normalization gives a polynomial subring <span class="math" data-tex="$T=k[y_1,\ldots,y_r]\subseteq R$">$T=k[y_1,\ldots,y_r]\subseteq R$</span> such that <span class="math" data-tex="$R$">$R$</span> is finite over <span class="math" data-tex="$T$">$T$</span> and <span class="math" data-tex="$r=\dim R$">$r=\dim R$</span>. Represent the <span class="math" data-tex="$y_i$">$y_i$</span> by polynomials of degrees at most <span class="math" data-tex="$L$">$L$</span>, taking <span class="math" data-tex="$L\geq1$">$L\geq1$</span>. Their monomials of degree at most <span class="math" data-tex="$\lfloor p/L\rfloor$">$\lfloor p/L\rfloor$</span> are independent and belong to <span class="math" data-tex="$R_{\leq p}$">$R_{\leq p}$</span>; this gives a lower bound proportional to <span class="math" data-tex="$p^r$">$p^r$</span>. For the upper bound choose finite <span class="math" data-tex="$T$">$T$</span>-module generators <span class="math" data-tex="$v_j$">$v_j$</span> of <span class="math" data-tex="$R$">$R$</span>, including <span class="math" data-tex="$1$">$1$</span>. Multiplication by each <span class="math" data-tex="$z_i$">$z_i$</span> on these generators is expressed using finitely many coefficient polynomials in <span class="math" data-tex="$y$">$y$</span>, of degrees at most <span class="math" data-tex="$C$">$C$</span>, with <span class="math" data-tex="$C\geq1$">$C\geq1$</span>. A word of length at most <span class="math" data-tex="$p$">$p$</span> in the <span class="math" data-tex="$z_i$">$z_i$</span>, acting on <span class="math" data-tex="$1$">$1$</span>, is therefore a combination of the <span class="math" data-tex="$v_j$">$v_j$</span> with coefficients of degree at most <span class="math" data-tex="$Cp$">$Cp$</span>. Its span has dimension at most</p>
+<span class="math math-display" data-tex="\[
+(\#\{v_j\})\binom{Cp+r}{r}.
+\]">\[
+(\#\{v_j\})\binom{Cp+r}{r}.
+\]</span>
+<p>The two bounds give growth degree <span class="math" data-tex="$r$">$r$</span>, proving the lemma. For <span class="math" data-tex="$r=0$">$r=0$</span>, they mean bounded positive dimension, and the same conclusion holds.</p>
+<p><strong>Proof of Theorem 4.1.</strong> Choose a presentation <span class="math" data-tex="$M=A_n^s/K$">$M=A_n^s/K$</span>. Give the free module the filtration with all its basis vectors in degree zero and give <span class="math" data-tex="$M$">$M$</span> the quotient filtrations. We will compare both growth and order symbols through the same set of monomials.</p>
+<p>Order the free-module monomials <span class="math" data-tex="$x^\alpha\partial^\beta e_j$">$x^\alpha\partial^\beta e_j$</span> first by <span class="math" data-tex="$|\beta|$">$|\beta|$</span>, then by <span class="math" data-tex="$|\alpha|$">$|\alpha|$</span>, then by a fixed lexicographic order on exponents and basis positions. Larger tuples mean larger monomials. This is a well-order compatible with adding exponent vectors. The leading monomial of a product is the product of leading monomials, since the additional terms in commuting derivatives past coordinates have smaller derivative degree.</p>
+<p>The monomial submodule generated by the leading monomials of all nonzero elements of <span class="math" data-tex="$K$">$K$</span> is a submodule of the Noetherian polynomial module <span class="math" data-tex="$S^s$">$S^s$</span>. Choose finitely many <span class="math" data-tex="$g_1,\ldots,g_a\in K$">$g_1,\ldots,g_a\in K$</span> whose leading monomials generate it. These form a left Gröbner basis in the following concrete sense. Whenever the leading monomial of an element of <span class="math" data-tex="$K$">$K$</span> is divisible by one of theirs, subtract a monomial multiple of that <span class="math" data-tex="$g_i$">$g_i$</span> to cancel it. The leading monomial strictly decreases. The process terminates, since the order is a well-order, and a nonzero remainder in <span class="math" data-tex="$K$">$K$</span> would still have a divisible leading monomial. Hence every element of <span class="math" data-tex="$K$">$K$</span> reduces to zero.</p>
+<p>Call a monomial <strong>standard</strong> if it is not divisible, in its basis position, by any of these leading monomials. Division of any vector in <span class="math" data-tex="$A_n^s$">$A_n^s$</span>, moving nondivisible terms to the remainder, terminates by the same argument. Standard monomials span the quotient. They are independent: a nonzero linear combination belonging to <span class="math" data-tex="$K$">$K$</span> would have a standard leading monomial, which is impossible. Thus they form a <span class="math" data-tex="$k$">$k$</span>-basis of <span class="math" data-tex="$M$">$M$</span>.</p>
+<p>There is a uniform positive integer <span class="math" data-tex="$c$">$c$</span> for which division does not increase the weight</p>
+<span class="math math-display" data-tex="\[
+w(x^\alpha\partial^\beta e_j)=|\alpha|+c|\beta|.
+\tag{4.2}
+\]">\[
+w(x^\alpha\partial^\beta e_j)=|\alpha|+c|\beta|.
+\tag{4.2}
+\]</span>
+<p>To choose it, inspect the finitely many terms in the <span class="math" data-tex="$g_i$">$g_i$</span>. A nonleading term with the same derivative degree has no larger coordinate degree. A term of smaller derivative degree can have larger coordinate degree, but taking <span class="math" data-tex="$c$">$c$</span> larger than all such finite degree increases makes its weight no larger than the leading term's. Multiplying a <span class="math" data-tex="$g_i$">$g_i$</span> by a monomial preserves these weight inequalities; every commutation term further lowers weight. Each subtraction in division consequently has this same property.</p>
+<p>Let <span class="math" data-tex="$a(p)$">$a(p)$</span> count standard monomials of ordinary total degree at most <span class="math" data-tex="$p$">$p$</span>, and let <span class="math" data-tex="$h_M(p)$">$h_M(p)$</span> be the quotient Bernstein counting function. Standard monomials of degree at most <span class="math" data-tex="$p$">$p$</span> are independent elements of <span class="math" data-tex="$B_pM$">$B_pM$</span>, so <span class="math" data-tex="$a(p)\leq h_M(p)$">$a(p)\leq h_M(p)$</span>. Conversely, a representative of Bernstein degree at most <span class="math" data-tex="$p$">$p$</span> has weight at most <span class="math" data-tex="$cp$">$cp$</span>. Its standard remainder has weight at most <span class="math" data-tex="$cp$">$cp$</span>, hence total degree at most <span class="math" data-tex="$cp$">$cp$</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+a(p)\leq h_M(p)\leq a(cp).
+\tag{4.3}
+\]">\[
+a(p)\leq h_M(p)\leq a(cp).
+\tag{4.3}
+\]</span>
+<p>It remains to identify the growth exponent of <span class="math" data-tex="$a(p)$">$a(p)$</span>. Put <span class="math" data-tex="$J=\operatorname{gr}_{\mathrm{ord}}K\subseteq S^s$">$J=\operatorname{gr}_{\mathrm{ord}}K\subseteq S^s$</span>, so that <span class="math" data-tex="$\operatorname{gr}_{\mathrm{ord}}M=S^s/J$">$\operatorname{gr}_{\mathrm{ord}}M=S^s/J$</span>. The leading monomial submodule of <span class="math" data-tex="$J$">$J$</span>, for the same monomial order, is exactly the leading monomial submodule of <span class="math" data-tex="$K$">$K$</span>. In one direction, the order symbol of <span class="math" data-tex="$u\in K$">$u\in K$</span> retains its terms of highest derivative degree, including its leading monomial. In the other, <span class="math" data-tex="$J$">$J$</span> is graded in derivative degree, and every homogeneous component is such an order symbol; the highest derivative-degree component of an arbitrary element of <span class="math" data-tex="$J$">$J$</span> supplies its leading monomial. These observations prove both inclusions.</p>
+<p>Thus the order symbols <span class="math" data-tex="$\sigma_{\mathrm{ord}}(g_i)$">$\sigma_{\mathrm{ord}}(g_i)$</span> form a commutative Gröbner basis of <span class="math" data-tex="$J$">$J$</span>. Each such symbol is homogeneous in derivative degree, and its leading term has greatest coordinate degree among its terms. Division by these symbols cannot increase ordinary total degree. Consequently the ordinary total-degree filtration on <span class="math" data-tex="$S^s/J$">$S^s/J$</span> has dimension exactly <span class="math" data-tex="$a(p)$">$a(p)$</span>: the same standard monomials form a basis, and degree-bounded division gives both inequalities for that assertion.</p>
+<p>The commutative growth lemma identifies the exponent of <span class="math" data-tex="$a(p)$">$a(p)$</span> with <span class="math" data-tex="$\dim\operatorname{Supp}(S^s/J)=\dim\operatorname{Ch}_{\mathrm{ord}}M$">$\dim\operatorname{Supp}(S^s/J)=\dim\operatorname{Ch}_{\mathrm{ord}}M$</span>. The bounds (4.3) identify it with <span class="math" data-tex="$d(M)$">$d(M)$</span>. This proves (4.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="the-cyclic-comparison-without-a-gröbner-basis">The cyclic comparison without a Gröbner basis</h3>
+<p>For <span class="math" data-tex="$P\in A_1$">$P\in A_1$</span> nonzero, write</p>
+<span class="math math-display" data-tex="\[
+P=\sum_{j=0}^m a_j(x)\partial^j,\qquad a_m\ne0.
+\]">\[
+P=\sum_{j=0}^m a_j(x)\partial^j,\qquad a_m\ne0.
+\]</span>
+<p>The integral order symbol ring gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{gr}_{\mathrm{ord}}(A_1/A_1P)
+\simeq k[x,\xi]/(a_m(x)\xi^m).
+\tag{4.4}
+\]">\[
+\operatorname{gr}_{\mathrm{ord}}(A_1/A_1P)
+\simeq k[x,\xi]/(a_m(x)\xi^m).
+\tag{4.4}
+\]</span>
+<p>If <span class="math" data-tex="$P$">$P$</span> is nonconstant, the support in (4.4) has dimension one. For <span class="math" data-tex="$m&gt;0$">$m&gt;0$</span>, it contains the zero section, together with fibres over the roots of <span class="math" data-tex="$a_m$">$a_m$</span>. For <span class="math" data-tex="$m=0$">$m=0$</span>, <span class="math" data-tex="$a_0$">$a_0$</span> is nonconstant, and its roots give fibres of dimension one after extending to an algebraic closure. Proposition 2.1 independently gave <span class="math" data-tex="$d=1$">$d=1$</span>. A nonzero constant gives the zero module on both sides.</p>
+<p>The dimension comparison does not equate the two multiplicities. For example, <span class="math" data-tex="$A_1/A_1(\partial-x^2)$">$A_1/A_1(\partial-x^2)$</span> is the polynomial rank-one connection <span class="math" data-tex="$\partial(fv)=(f&#x27;+x^2f)v$">$\partial(fv)=(f&#x27;+x^2f)v$</span>. Its order characteristic cycle is the zero section with multiplicity one, while (2.2) gives Bernstein multiplicity two. Both dimensions are one. Even the supports given by the two filtrations differ: the Bernstein symbol is <span class="math" data-tex="$-x^2$">$-x^2$</span>, whereas the order symbol is <span class="math" data-tex="$\xi$">$\xi$</span>.</p>
+<h2 id="5-holonomicity-and-finite-length">5. Holonomicity and finite length</h2>
+<p>A finite <span class="math" data-tex="$A_n$">$A_n$</span>-module is <strong>holonomic</strong> if it is zero or <span class="math" data-tex="$d(M)=n$">$d(M)=n$</span>. By Theorem 4.1, this is equivalent to the geometric definition: its order characteristic variety has dimension at most <span class="math" data-tex="$n$">$n$</span>. Bernstein's inequality makes the dimension exactly <span class="math" data-tex="$n$">$n$</span> when the module is nonzero.</p>
+<h3 id="theorem-5-1-the-holonomic-category">Theorem 5.1. The holonomic category</h3>
+<p>Holonomic modules form a Serre subcategory of finite <span class="math" data-tex="$A_n$">$A_n$</span>-modules: they are closed under submodules, quotients, and extensions. On this category the Bernstein multiplicity is additive. Every holonomic module has finite length, with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{length}_{A_n}M\leq e(M).
+\tag{5.1}
+\]">\[
+\operatorname{length}_{A_n}M\leq e(M).
+\tag{5.1}
+\]</span>
+<p><strong>Proof.</strong> For a submodule <span class="math" data-tex="$N\subseteq M$">$N\subseteq M$</span>, Proposition 1.2 bounds the dimensions of <span class="math" data-tex="$N$">$N$</span> and <span class="math" data-tex="$M/N$">$M/N$</span> by <span class="math" data-tex="$d(M)$">$d(M)$</span>. If <span class="math" data-tex="$M$">$M$</span> is holonomic, every nonzero one of those modules has dimension at least <span class="math" data-tex="$n$">$n$</span> by Theorem 3.1, hence exactly <span class="math" data-tex="$n$">$n$</span>. Conversely, an extension of two holonomic modules has dimension <span class="math" data-tex="$n$">$n$</span> when it is nonzero, again by Proposition 1.2. This proves the Serre assertion. Every nonzero term of an exact sequence in this category has dimension <span class="math" data-tex="$n$">$n$</span>, so (1.12) gives multiplicity additivity, including zero terms with <span class="math" data-tex="$e(0)=0$">$e(0)=0$</span>.</p>
+<p>Consider any finite strictly increasing chain</p>
+<span class="math math-display" data-tex="\[
+0=N_0\subsetneq N_1\subsetneq\cdots\subsetneq N_r\subseteq M.
+\]">\[
+0=N_0\subsetneq N_1\subsetneq\cdots\subsetneq N_r\subseteq M.
+\]</span>
+<p>Every quotient <span class="math" data-tex="$N_i/N_{i-1}$">$N_i/N_{i-1}$</span> is nonzero and holonomic, so its multiplicity is a positive integer. Repeated additivity gives</p>
+<span class="math math-display" data-tex="\[
+e(M)=e(M/N_r)+\sum_{i=1}^r e(N_i/N_{i-1})\geq r.
+\tag{5.2}
+\]">\[
+e(M)=e(M/N_r)+\sum_{i=1}^r e(N_i/N_{i-1})\geq r.
+\tag{5.2}
+\]</span>
+<p>The same argument bounds the number of strict inclusions in a decreasing chain. Thus both ascending and descending chains terminate. To construct a composition series explicitly, if <span class="math" data-tex="$M$">$M$</span> is not simple choose a proper nonzero submodule. Both that submodule and its nonzero quotient have smaller positive multiplicity than <span class="math" data-tex="$M$">$M$</span>. Induction on <span class="math" data-tex="$e(M)$">$e(M)$</span> constructs composition series for them; lifting the quotient's series and joining it to the submodule's series constructs one for <span class="math" data-tex="$M$">$M$</span>. Formula (5.2), applied to this series, proves (5.1). The zero module is immediate. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Every nonzero module on the line defined by one nonconstant operator is holonomic, by Proposition 2.1. The statement also includes nonzero constant operators, whose quotients are zero. Therefore it is correct to say that <span class="math" data-tex="$A_1/A_1P$">$A_1/A_1P$</span> is holonomic for every nonzero <span class="math" data-tex="$P$">$P$</span>, provided zero is included in the holonomic category.</p>
+<p>The modules <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> and <span class="math" data-tex="$\delta_0$">$\delta_0$</span> from Section 2 are simple: they are nonzero holonomic modules of multiplicity one. In contrast, the left regular module <span class="math" data-tex="$A_n$">$A_n$</span>, for <span class="math" data-tex="$n\geq1$">$n\geq1$</span>, is not holonomic. It has an infinite descending chain of left ideals</p>
+<span class="math math-display" data-tex="\[
+A_n\supsetneq A_nx_1\supsetneq A_nx_1^2\supsetneq\cdots.
+\]">\[
+A_n\supsetneq A_nx_1\supsetneq A_nx_1^2\supsetneq\cdots.
+\]</span>
+<p>Strictness follows from (1.4): an equation <span class="math" data-tex="$x_1^r=Qx_1^{r+1}$">$x_1^r=Qx_1^{r+1}$</span> would require <span class="math" data-tex="$r=\deg_BQ+r+1$">$r=\deg_BQ+r+1$</span>.</p>
+<p>There is also a useful geometric consequence beyond affine space. On a smooth variety <span class="math" data-tex="$X$">$X$</span> of pure dimension <span class="math" data-tex="$n$">$n$</span>, a coherent <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-module is holonomic if its characteristic support has dimension at most <span class="math" data-tex="$n$">$n$</span>. By the previous chapter's Gabber consequence, every component of a nonzero such support has dimension <span class="math" data-tex="$n$">$n$</span>. Characteristic support is a union in a short exact sequence, so these modules form a Serre category. Their characteristic cycles are now additive on all components, because all have this common dimension.</p>
+<p>Let <span class="math" data-tex="$c(M)$">$c(M)$</span> be the sum of the generic component lengths in that cycle, and set <span class="math" data-tex="$c(0)=0$">$c(0)=0$</span>. There are finitely many components, and <span class="math" data-tex="$c(M)$">$c(M)$</span> is a positive integer for <span class="math" data-tex="$M\ne0$">$M\ne0$</span>. The local Noetherian property of <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>, together with a finite affine covering of <span class="math" data-tex="$X$">$X$</span>, makes submodules of coherent modules coherent. Additivity of the cycles gives the same chain argument as (5.2), with <span class="math" data-tex="$c$">$c$</span> in place of <span class="math" data-tex="$e$">$e$</span>. Thus a holonomic coherent sheaf has finite length, bounded by <span class="math" data-tex="$c(M)$">$c(M)$</span>. This geometric bound and the Bernstein bound use different multiplicities; the example following (4.4) shows why their values need not agree.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<h3 id="exercise-6-1-easy-a-polynomial-module-on-the-line">Exercise 6.1 — easy: a polynomial module on the line</h3>
+<p>Compute the Bernstein Hilbert polynomial of <span class="math" data-tex="$k[x]$">$k[x]$</span> from the generator <span class="math" data-tex="$1$">$1$</span>. Then give a different good filtration with a different Hilbert polynomial and the same <span class="math" data-tex="$d,e$">$d,e$</span>.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="$\partial1=0$">$\partial1=0$</span>, every normal-form operator applied to <span class="math" data-tex="$1$">$1$</span> produces a polynomial of degree at most its Bernstein degree. All <span class="math" data-tex="$1,x,\ldots,x^p$">$1,x,\ldots,x^p$</span> occur. Thus <span class="math" data-tex="$\Gamma_p=k[x]_{\leq p}$">$\Gamma_p=k[x]_{\leq p}$</span>, with <span class="math" data-tex="$h(p)=p+1$">$h(p)=p+1$</span> for <span class="math" data-tex="$p\geq0$">$p\geq0$</span>, <span class="math" data-tex="$d=1$">$d=1$</span>, and <span class="math" data-tex="$e=1$">$e=1$</span>. Set <span class="math" data-tex="$\Lambda_p=\Gamma_{p+1}$">$\Lambda_p=\Gamma_{p+1}$</span> for every integer <span class="math" data-tex="$p$">$p$</span>. This is a shifted good filtration, bounded below by <span class="math" data-tex="$\Lambda_p=0$">$\Lambda_p=0$</span> for <span class="math" data-tex="$p&lt;-1$">$p&lt;-1$</span>, with eventual polynomial <span class="math" data-tex="$p+2$">$p+2$</span>. Its degree and leading coefficient are unchanged.</p>
+<h3 id="exercise-6-2-easy-the-regular-module">Exercise 6.2 — easy: the regular module</h3>
+<p>Compute the Bernstein invariants of <span class="math" data-tex="$A_n$">$A_n$</span>, and explain why its multiplicity does not make it holonomic when <span class="math" data-tex="$n\geq1$">$n\geq1$</span>.</p>
+<p><strong>Solution.</strong> Normal forms are indexed by <span class="math" data-tex="$2n$">$2n$</span> nonnegative exponents. Introducing a slack exponent gives <span class="math" data-tex="$\binom{p+2n}{2n}$">$\binom{p+2n}{2n}$</span> monomials of total degree at most <span class="math" data-tex="$p$">$p$</span>. The leading term is <span class="math" data-tex="$p^{2n}/(2n)!$">$p^{2n}/(2n)!$</span>, so <span class="math" data-tex="$d=2n$">$d=2n$</span> and <span class="math" data-tex="$e=1$">$e=1$</span>. Holonomicity is the condition <span class="math" data-tex="$d=n$">$d=n$</span>, not the condition <span class="math" data-tex="$e=1$">$e=1$</span>. For <span class="math" data-tex="$n\geq1$">$n\geq1$</span> these dimensions differ. The descending chain in Section 5 also shows directly that the module does not have finite length.</p>
+<h3 id="exercise-6-3-medium-submodules-and-multiplicity">Exercise 6.3 — medium: submodules and multiplicity</h3>
+<p>Let <span class="math" data-tex="$N\subseteq M$">$N\subseteq M$</span>, where <span class="math" data-tex="$M$">$M$</span> is holonomic. Prove that <span class="math" data-tex="$N$">$N$</span> is holonomic and that <span class="math" data-tex="$e(N)\leq e(M)$">$e(N)\leq e(M)$</span>, with equality precisely when <span class="math" data-tex="$N=M$">$N=M$</span>.</p>
+<p><strong>Solution.</strong> The ring is Noetherian, so <span class="math" data-tex="$N$">$N$</span> is finite. Exactness gives <span class="math" data-tex="$d(N)\leq n$">$d(N)\leq n$</span>. If <span class="math" data-tex="$N\ne0$">$N\ne0$</span>, Bernstein's inequality gives <span class="math" data-tex="$d(N)\geq n$">$d(N)\geq n$</span>, so <span class="math" data-tex="$N$">$N$</span> is holonomic; the zero case is included by definition. The quotient is holonomic by the identical argument. Thus <span class="math" data-tex="$e(M)=e(N)+e(M/N)$">$e(M)=e(N)+e(M/N)$</span>. This implies the inequality, and a nonzero quotient has positive multiplicity, so equality occurs exactly for the zero quotient. In this proof, dimension exactness and Bernstein's inequality establish holonomicity before multiplicity additivity is used; assuming equal-degree additivity first would be circular.</p>
+<h3 id="exercise-6-4-medium-an-arbitrary-equation-on-the-line">Exercise 6.4 — medium: an arbitrary equation on the line</h3>
+<p>For nonzero <span class="math" data-tex="$P\in A_1$">$P\in A_1$</span>, prove holonomicity of <span class="math" data-tex="$A_1/A_1P$">$A_1/A_1P$</span> and compute its Bernstein multiplicity. Apply your formula to <span class="math" data-tex="$P=x^2\partial-1$">$P=x^2\partial-1$</span>, and compare its order characteristic cycle.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="$P$">$P$</span> is a scalar the quotient is zero and has <span class="math" data-tex="$e=0$">$e=0$</span>. Otherwise <span class="math" data-tex="$r=\deg_BP\geq1$">$r=\deg_BP\geq1$</span>, and right multiplication by <span class="math" data-tex="$P$">$P$</span> gives the dimension difference (2.2). Its degree is one and its leading coefficient is <span class="math" data-tex="$r$">$r$</span>; thus the module is holonomic with <span class="math" data-tex="$e=r$">$e=r$</span>. For <span class="math" data-tex="$x^2\partial-1$">$x^2\partial-1$</span>, <span class="math" data-tex="$r=3$">$r=3$</span>, and <span class="math" data-tex="$h(p)=3p$">$h(p)=3p$</span> for <span class="math" data-tex="$p\geq3$">$p\geq3$</span>. Its order symbol is <span class="math" data-tex="$x^2\xi$">$x^2\xi$</span>, giving zero section <span class="math" data-tex="$Z$">$Z$</span> and fibre <span class="math" data-tex="$F$">$F$</span> over zero. At the generic prime <span class="math" data-tex="$(\xi)$">$(\xi)$</span>, <span class="math" data-tex="$x$">$x$</span> is invertible and the symbol quotient has local length one. At <span class="math" data-tex="$(x)$">$(x)$</span>, <span class="math" data-tex="$\xi$">$\xi$</span> is invertible and it has local length two. The order cycle is <span class="math" data-tex="$[Z]+2[F]$">$[Z]+2[F]$</span>, in agreement with the previous chapter's calculation.</p>
+<h3 id="exercise-6-5-hard-the-precise-length-bound">Exercise 6.5 — hard: the precise length bound</h3>
+<p>Prove (5.1) without assuming in advance that a composition series exists. Determine when a holonomic module attains equality in that bound.</p>
+<p><strong>Solution.</strong> Every nonzero holonomic module has a positive integer multiplicity. If the module is simple its length is one, at most that integer. If it is not simple, take a proper nonzero submodule <span class="math" data-tex="$N$">$N$</span>. Both <span class="math" data-tex="$e(N)$">$e(N)$</span> and <span class="math" data-tex="$e(M/N)$">$e(M/N)$</span> are positive and smaller than <span class="math" data-tex="$e(M)$">$e(M)$</span>, by the Serre property and additivity. Induction therefore constructs finite composition series for both pieces, and their concatenation constructs one for <span class="math" data-tex="$M$">$M$</span>. If its simple factors are <span class="math" data-tex="$L_1,\ldots,L_r$">$L_1,\ldots,L_r$</span>, then <span class="math" data-tex="$e(M)=\sum_i e(L_i)\geq r$">$e(M)=\sum_i e(L_i)\geq r$</span>. Equality holds exactly when every simple factor has multiplicity one. This criterion does not depend on a chosen series, since it is equivalent to the numerical equality <span class="math" data-tex="$\operatorname{length}M=e(M)$">$\operatorname{length}M=e(M)$</span>.</p>
+<h3 id="exercise-6-6-hard-a-bound-that-is-strict">Exercise 6.6 — hard: a bound that is strict</h3>
+<p>Prove that <span class="math" data-tex="$E=A_1/A_1(\partial-x^2)$">$E=A_1/A_1(\partial-x^2)$</span> is simple. Compute its Bernstein multiplicity and its order characteristic multiplicity.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="$v$">$v$</span> denote the cyclic generator. The map to the polynomial connection <span class="math" data-tex="$k[x]v$">$k[x]v$</span>, with <span class="math" data-tex="$\partial(fv)=(f&#x27;+x^2f)v$">$\partial(fv)=(f&#x27;+x^2f)v$</span>, is an isomorphism: reduction using the monic derivative relation writes every class as <span class="math" data-tex="$f(x)v$">$f(x)v$</span>, and the target proves these polynomial classes independent. A submodule corresponds to an ideal <span class="math" data-tex="$I\subseteq k[x]$">$I\subseteq k[x]$</span> stable under <span class="math" data-tex="$f\mapsto f&#x27;+x^2f$">$f\mapsto f&#x27;+x^2f$</span>. Since <span class="math" data-tex="$I$">$I$</span> is already stable under multiplication by <span class="math" data-tex="$x^2$">$x^2$</span>, it is stable under ordinary differentiation. If nonzero, choose a nonzero polynomial in it of smallest degree. A positive-degree polynomial has a nonzero derivative of smaller degree in characteristic zero, a contradiction. Thus <span class="math" data-tex="$I$">$I$</span> contains a nonzero constant, so <span class="math" data-tex="$I=k[x]$">$I=k[x]$</span>. This proves simplicity and length one. The Bernstein degree of the defining operator is two, so Proposition 2.1 gives <span class="math" data-tex="$e(E)=2$">$e(E)=2$</span>. The constant bundle order filtration has <span class="math" data-tex="$\operatorname{gr}_{\mathrm{ord}}E=k[x]$">$\operatorname{gr}_{\mathrm{ord}}E=k[x]$</span>, supported on the zero section with generic length one. Hence this example has length one, Bernstein multiplicity two, and geometric multiplicity one.</p>
+<h2 id="references-and-what-this-lesson-does-not-prove">References and what this lesson does not prove</h2>
+<p>The central module statements in this chapter are proved above: the independence of growth degree and multiplicity, exactness, Joseph's injectivity argument and Bernstein's inequality, the full order–Bernstein dimension comparison, cyclic holonomicity, the Serre property, and finite length with its bound. All six exercises have complete solutions.</p>
+<p>We use Noether normalization rather than reprove it; its exact assertion is the finite polynomial subring of dimension <span class="math" data-tex="$r$">$r$</span> used in Section 4. See <a href="https://stacks.math.columbia.edu/tag/00OY">Stacks, Tag 00OY</a>, read with the corresponding AI Integrated Stacks Project statement. The elementary graded Hilbert-polynomial input is discussed in <a href="https://stacks.math.columbia.edu/tag/00K1">Stacks, Tag 00K1</a>. Gabber's involutivity theorem is not proved here or in the preceding chapter; the latter states it with its verified hypotheses and proves its dimension consequence. It is used only for the final geometric extension in Section 5, not for the Weyl-algebra lower bound or filtration comparison.</p>
+<p>For the growth perspective, see R. Bezrukavnikov, <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/mit18_706_s23_full_lec.pdf"><em>Noncommutative Algebra</em>, MIT 18.706</a>, Sections 24.1 and 24.6, especially Definition 24.14 and Proposition 24.17. The polynomial symbol algebra and finite generation hypotheses are essential in applying that comparison here. D. Miličić, <a href="https://www.math.utah.edu/~milicic/Eprints/hk_chapter1.pdf"><em>D-modules on smooth algebraic varieties</em>, Chapter I</a>, Theorem 6.3, Theorem 7.7, and Theorem 8.1, give further treatments of the inequality, characteristic dimension, and holonomic category. Section 4 above supplies the finite Gröbner-basis justification needed for the comparison, rather than assuming that symbols of arbitrary generators generate an initial ideal. E. Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172"><em>Lectures on the Langlands program and conformal field theory</em></a>, Section 3.5, discusses the Euler-module example; its actions and both filtrations are computed explicitly in this course.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="bernstein-sato-polynomials.html">Bernstein-Sato polynomials →</a></span></nav>
+<p class="small source-link"><a href="src/the-bernstein-filtration-and-holonomic-modules.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

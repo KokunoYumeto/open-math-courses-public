@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A real coercive equation in the bounded modular construction · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/real-coercivity/real-coercive-equations.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="a-real-coercive-equation-in-the-bounded-modular-construction">A real coercive equation in the bounded modular construction</h1>
+<p><strong>Original exposition and proof: OpenAI Codex (GPT-6 Astra, Ultra), October 2026. CC0-1.0.</strong></p>
+<p>A complex scalar can turn the real part of a Hilbert inner product into a nonsymmetric bilinear form. Positivity on the diagonal then gives coercivity, but does not make the form an inner product. The existence step in Rieffel and Van Daele's <a href="https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf#page=26">Lemma 5.6, printed page 211</a> can be justified by the following bounded-operator argument.</p>
+<p>The Hilbert-space inputs are proved below from completeness and the inner-product axioms. The matrix example also contains its own two-dimensional square-root construction. Thus the real representation proof can serve as a foundation for the later bounded operator calculus.</p>
+<p>Throughout, the complex inner product is linear in its first variable. Write
+<span class="math math-display" data-tex="\[
+(x,y)_{\mathbb R}=\operatorname{Re}\langle x,y\rangle.
+\]">\[
+(x,y)_{\mathbb R}=\operatorname{Re}\langle x,y\rangle.
+\]</span>
+A closed real subspace is complete for this real inner product. No complex-linearity, finite dimension, or countability assumption is imposed on it.</p>
+<h2 id="the-real-hilbert-tools-used-below">The real Hilbert tools used below</h2>
+<p><strong>The inner-product inequalities.</strong> Positivity and definiteness are inner-product axioms. If <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, expansion using the linear-first convention gives
+<span class="math math-display" data-tex="\[
+0\leq\left\|x-\frac{\langle x,y\rangle}{\|y\|^2}y\right\|^2
+=\|x\|^2-\frac{|\langle x,y\rangle|^2}{\|y\|^2}.
+\]">\[
+0\leq\left\|x-\frac{\langle x,y\rangle}{\|y\|^2}y\right\|^2
+=\|x\|^2-\frac{|\langle x,y\rangle|^2}{\|y\|^2}.
+\]</span>
+Hence <span class="math" data-tex="\(|\langle x,y\rangle|\leq\|x\|\|y\|\)">\(|\langle x,y\rangle|\leq\|x\|\|y\|\)</span>; the case <span class="math" data-tex="\(y=0\)">\(y=0\)</span> is immediate. For a real inner product the same computation uses the real scalar <span class="math" data-tex="\((x,y)_{\mathbb R}/\|y\|^2\)">\((x,y)_{\mathbb R}/\|y\|^2\)</span>. Expansion and this inequality give
+<span class="math math-display" data-tex="\[
+\|x+y\|^2
+=\|x\|^2+2\operatorname{Re}\langle x,y\rangle+\|y\|^2
+\leq(\|x\|+\|y\|)^2,
+\]">\[
+\|x+y\|^2
+=\|x\|^2+2\operatorname{Re}\langle x,y\rangle+\|y\|^2
+\leq(\|x\|+\|y\|)^2,
+\]</span>
+so the induced norm satisfies the triangle inequality. Expanding both squares and cancelling the mixed terms also gives the parallelogram identity
+<span class="math math-display" data-tex="\[
+\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.
+\]">\[
+\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2.
+\]</span>
+These computations apply in arbitrary dimension and to the underlying real Hilbert space.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> be a closed real subspace of a Hilbert space regarded as real. Every <span class="math" data-tex="\(x\)">\(x\)</span> has a unique closest point <span class="math" data-tex="\(P_E x\)">\(P_E x\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span>. Indeed, if <span class="math" data-tex="\(d=\inf_{e\in E}\|x-e\|\)">\(d=\inf_{e\in E}\|x-e\|\)</span> and <span class="math" data-tex="\(e_n\)">\(e_n\)</span> is a minimizing sequence, the parallelogram identity gives
+<span class="math math-display" data-tex="\[
+\|e_n-e_m\|^2
+\leq 2\|x-e_n\|^2+2\|x-e_m\|^2-4d^2\longrightarrow0.
+\]">\[
+\|e_n-e_m\|^2
+\leq 2\|x-e_n\|^2+2\|x-e_m\|^2-4d^2\longrightarrow0.
+\]</span>
+Completeness and closedness give a minimizing limit. Varying that limit by <span class="math" data-tex="\(t e\)">\(t e\)</span>, for real <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(e\in E\)">\(e\in E\)</span>, shows that the residual is real-orthogonal to <span class="math" data-tex="\(E\)">\(E\)</span>. This orthogonality proves uniqueness, real-linearity of <span class="math" data-tex="\(P_E\)">\(P_E\)</span>, and <span class="math" data-tex="\(\|P_E x\|\leq\|x\|\)">\(\|P_E x\|\leq\|x\|\)</span>.</p>
+<p>Every bounded real-linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> on a real Hilbert space has a unique vector <span class="math" data-tex="\(v\)">\(v\)</span> such that <span class="math" data-tex="\(\ell(z)=(v,z)_{\mathbb R}\)">\(\ell(z)=(v,z)_{\mathbb R}\)</span>, with <span class="math" data-tex="\(\|v\|=\|\ell\|\)">\(\|v\|=\|\ell\|\)</span>. To see this without an additional representation theorem, suppose <span class="math" data-tex="\(\ell\ne0\)">\(\ell\ne0\)</span>, put <span class="math" data-tex="\(N=\ker\ell\)">\(N=\ker\ell\)</span>, and choose <span class="math" data-tex="\(x_0\notin N\)">\(x_0\notin N\)</span>. The preceding projection construction gives <span class="math" data-tex="\(u=x_0-P_Nx_0\ne0\)">\(u=x_0-P_Nx_0\ne0\)</span>, with <span class="math" data-tex="\(u\perp_{\mathbb R}N\)">\(u\perp_{\mathbb R}N\)</span> and <span class="math" data-tex="\(\ell(u)=\ell(x_0)\ne0\)">\(\ell(u)=\ell(x_0)\ne0\)</span>. Since
+<span class="math math-display" data-tex="\[
+z-\frac{\ell(z)}{\ell(u)}u\in N,
+\]">\[
+z-\frac{\ell(z)}{\ell(u)}u\in N,
+\]</span>
+one may take <span class="math" data-tex="\(v=\ell(u)u/\|u\|^2\)">\(v=\ell(u)u/\|u\|^2\)</span>. The case <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> uses <span class="math" data-tex="\(v=0\)">\(v=0\)</span>. The norm equality follows from Cauchy–Schwarz and testing at <span class="math" data-tex="\(v/\|v\|\)">\(v/\|v\|\)</span> when <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Uniqueness follows by testing the difference of two representing vectors against itself.</p>
+<h2 id="solving-the-nonsymmetric-equation">Solving the nonsymmetric equation</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a closed real subspace of a complex Hilbert space. Let <span class="math" data-tex="\(\lambda=a+ib\)">\(\lambda=a+ib\)</span>, where <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and let <span class="math" data-tex="\(\ell:E\to\mathbb R\)">\(\ell:E\to\mathbb R\)</span> be bounded and real-linear. There is exactly one <span class="math" data-tex="\(\eta\in E\)">\(\eta\in E\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\operatorname{Re}\bigl(\lambda\langle\eta,\zeta\rangle\bigr)
+=\ell(\zeta)\qquad(\zeta\in E).
+\tag{RC.1}
+\]">\[
+\operatorname{Re}\bigl(\lambda\langle\eta,\zeta\rangle\bigr)
+=\ell(\zeta)\qquad(\zeta\in E).
+\tag{RC.1}
+\]</span>
+It obeys
+<span class="math math-display" data-tex="\[
+\|\eta\|\leq\frac{\|\ell\|}{a}.
+\tag{RC.2}
+\]">\[
+\|\eta\|\leq\frac{\|\ell\|}{a}.
+\tag{RC.2}
+\]</span></p>
+<p><strong>Proof.</strong> The compression of multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> is the bounded real-linear operator
+<span class="math math-display" data-tex="\[
+C:E\longrightarrow E,\qquad Cx=P_E(ix).
+\]">\[
+C:E\longrightarrow E,\qquad Cx=P_E(ix).
+\]</span>
+It satisfies <span class="math" data-tex="\(\|C\|\leq1\)">\(\|C\|\leq1\)</span> and
+<span class="math math-display" data-tex="\[
+(Cx,y)_{\mathbb R}=-(x,Cy)_{\mathbb R}.
+\tag{RC.3}
+\]">\[
+(Cx,y)_{\mathbb R}=-(x,Cy)_{\mathbb R}.
+\tag{RC.3}
+\]</span>
+The last identity follows from <span class="math" data-tex="\(\operatorname{Re}\langle ix,y\rangle=-\operatorname{Re}\langle x,iy\rangle\)">\(\operatorname{Re}\langle ix,y\rangle=-\operatorname{Re}\langle x,iy\rangle\)</span>, followed by real orthogonal projection. Put
+<span class="math math-display" data-tex="\[
+A=aI+bC,\qquad A^*=aI-bC.
+\]">\[
+A=aI+bC,\qquad A^*=aI-bC.
+\]</span>
+Here the star denotes the adjoint for the real inner product; its displayed formula follows directly from (RC.3). For every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,
+<span class="math math-display" data-tex="\[
+(Ax,x)_{\mathbb R}=(A^*x,x)_{\mathbb R}=a\|x\|^2.
+\]">\[
+(Ax,x)_{\mathbb R}=(A^*x,x)_{\mathbb R}=a\|x\|^2.
+\]</span>
+Cauchy–Schwarz therefore gives
+<span class="math math-display" data-tex="\[
+\|Ax\|\geq a\|x\|,\qquad
+\|A^*x\|\geq a\|x\|.
+\tag{RC.4}
+\]">\[
+\|Ax\|\geq a\|x\|,\qquad
+\|A^*x\|\geq a\|x\|.
+\tag{RC.4}
+\]</span>
+The first inequality makes <span class="math" data-tex="\(A\)">\(A\)</span> injective and its range closed: convergence of <span class="math" data-tex="\(Ax_n\)">\(Ax_n\)</span> forces <span class="math" data-tex="\(x_n\)">\(x_n\)</span> to be Cauchy, and continuity identifies the limit. If <span class="math" data-tex="\(y\)">\(y\)</span> is orthogonal to its range, then <span class="math" data-tex="\((x,A^*y)_{\mathbb R}=0\)">\((x,A^*y)_{\mathbb R}=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, hence <span class="math" data-tex="\(A^*y=0\)">\(A^*y=0\)</span> and <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. A proper closed range would have a nonzero orthogonal residual by the projection construction above. Thus the range is all of <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(\|A^{-1}\|\leq a^{-1}\)">\(\|A^{-1}\|\leq a^{-1}\)</span>.</p>
+<p>Represent <span class="math" data-tex="\(\ell\)">\(\ell\)</span> in the original real inner product by <span class="math" data-tex="\(v\)">\(v\)</span>. Set <span class="math" data-tex="\(\eta=A^{-1}v\)">\(\eta=A^{-1}v\)</span>. For <span class="math" data-tex="\(\eta,\zeta\in E\)">\(\eta,\zeta\in E\)</span>,
+<span class="math math-display" data-tex="\[
+(A\eta,\zeta)_{\mathbb R}
+=\operatorname{Re}\bigl((a+ib)\langle\eta,\zeta\rangle\bigr).
+\]">\[
+(A\eta,\zeta)_{\mathbb R}
+=\operatorname{Re}\bigl((a+ib)\langle\eta,\zeta\rangle\bigr).
+\]</span>
+This proves (RC.1), uniqueness, and (RC.2). The proof also covers <span class="math" data-tex="\(E=\{0\}\)">\(E=\{0\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> is sharp: take <span class="math" data-tex="\(H=\mathbb C\)">\(H=\mathbb C\)</span>, <span class="math" data-tex="\(E=\mathbb R\)">\(E=\mathbb R\)</span>, and <span class="math" data-tex="\(\ell(t)=t\)">\(\ell(t)=t\)</span>. Then <span class="math" data-tex="\(C=0\)">\(C=0\)</span> and the solution is <span class="math" data-tex="\(\eta=a^{-1}\)">\(\eta=a^{-1}\)</span>, for every <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<h2 id="the-equation-needed-in-the-modular-proof">The equation needed in the modular proof</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a closed real subspace of <span class="math" data-tex="\(H\)">\(H\)</span> and set
+<span class="math math-display" data-tex="\[
+E=(iK)^{\perp_{\mathbb R}}.
+\]">\[
+E=(iK)^{\perp_{\mathbb R}}.
+\]</span>
+For <span class="math" data-tex="\(\xi\in K\)">\(\xi\in K\)</span> and <span class="math" data-tex="\(\zeta\in E\)">\(\zeta\in E\)</span>, the number <span class="math" data-tex="\(\langle\xi,\zeta\rangle\)">\(\langle\xi,\zeta\rangle\)</span> is real: its imaginary part is the negative of <span class="math" data-tex="\(\operatorname{Re}\langle i\xi,\zeta\rangle\)">\(\operatorname{Re}\langle i\xi,\zeta\rangle\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\ell_\xi(\zeta)=\langle\xi,\zeta\rangle
+\]">\[
+\ell_\xi(\zeta)=\langle\xi,\zeta\rangle
+\]</span>
+is a bounded real-linear functional on <span class="math" data-tex="\(E\)">\(E\)</span>, of norm at most <span class="math" data-tex="\(\|\xi\|\)">\(\|\xi\|\)</span>. Applying the theorem yields a unique <span class="math" data-tex="\(\eta\in E\)">\(\eta\in E\)</span> with
+<span class="math math-display" data-tex="\[
+\langle\xi,\zeta\rangle
+=\operatorname{Re}\bigl(\lambda\langle\eta,\zeta\rangle\bigr)
+\quad(\zeta\in E),\qquad
+\|\eta\|\leq\frac{\|\xi\|}{\operatorname{Re}\lambda}.
+\tag{RC.5}
+\]">\[
+\langle\xi,\zeta\rangle
+=\operatorname{Re}\bigl(\lambda\langle\eta,\zeta\rangle\bigr)
+\quad(\zeta\in E),\qquad
+\|\eta\|\leq\frac{\|\xi\|}{\operatorname{Re}\lambda}.
+\tag{RC.5}
+\]</span>
+When <span class="math" data-tex="\(\operatorname{Re}\lambda=1\)">\(\operatorname{Re}\lambda=1\)</span>, this is exactly the existence-and-uniqueness assertion needed at the start of Lemma 5.6. The representing real vector is <span class="math" data-tex="\(v=P_E\xi\)">\(v=P_E\xi\)</span>; no new inner product is introduced. The standard-real-subspace assumptions <span class="math" data-tex="\(K\cap iK=\{0\}\)">\(K\cap iK=\{0\}\)</span> and <span class="math" data-tex="\(\overline{K+iK}=H\)">\(\overline{K+iK}=H\)</span>, needed elsewhere in modular theory, are unnecessary for this equation itself.</p>
+<p>The remaining bounded-multiplication assertion is proved in the continuation <a href="bounded-right-multiplier.html">From a coercive vector equation to bounded multiplication, GP1–GP5</a>. It derives the graph-projection identities, a positive lower bound for the first block, and the sharp estimate for the resulting right multiplier. Its continuous-cutoff construction is proved in GP0. The vector equation here is its input; the full modular theorem requires further steps.</p>
+<h2 id="a-matrix-example-showing-why-symmetry-matters">A matrix example showing why symmetry matters</h2>
+<p>We first supply the finite-dimensional positive square root used here. For a positive Hermitian matrix
+<span class="math math-display" data-tex="\[
+q=\begin{pmatrix}\alpha&amp;z\\\overline z&amp;\beta\end{pmatrix},
+\]">\[
+q=\begin{pmatrix}\alpha&amp;z\\\overline z&amp;\beta\end{pmatrix},
+\]</span>
+testing the two coordinate vectors gives <span class="math" data-tex="\(\alpha,\beta\geq0\)">\(\alpha,\beta\geq0\)</span>. If <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, testing <span class="math" data-tex="\((-z/\alpha,1)\)">\((-z/\alpha,1)\)</span> gives <span class="math" data-tex="\(\beta-|z|^2/\alpha\geq0\)">\(\beta-|z|^2/\alpha\geq0\)</span>. If <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>, varying the first coordinate in <span class="math" data-tex="\((w,1)\)">\((w,1)\)</span> forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Thus <span class="math" data-tex="\(\det q=\alpha\beta-|z|^2\geq0\)">\(\det q=\alpha\beta-|z|^2\geq0\)</span>. A nonzero positive <span class="math" data-tex="\(q\)">\(q\)</span> has <span class="math" data-tex="\(t=\alpha+\beta&gt;0\)">\(t=\alpha+\beta&gt;0\)</span>, since zero diagonal entries would force <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. Put <span class="math" data-tex="\(\delta=\sqrt{\det q}\)">\(\delta=\sqrt{\det q}\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+q^2-tq+\delta^2 I=0,\qquad
+r=\frac{q+\delta I}{\sqrt{t+2\delta}}\geq0,\qquad r^2=q.
+\]">\[
+q^2-tq+\delta^2 I=0,\qquad
+r=\frac{q+\delta I}{\sqrt{t+2\delta}}\geq0,\qquad r^2=q.
+\]</span>
+For <span class="math" data-tex="\(q=0\)">\(q=0\)</span> take <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. This constructs the required positive root using only real square roots and matrix multiplication. Every Hermitian matrix <span class="math" data-tex="\(h=(h_{ij})\)">\(h=(h_{ij})\)</span> is a difference of positive matrices: with <span class="math" data-tex="\(c=2\max_{i,j}|h_{ij}|\)">\(c=2\max_{i,j}|h_{ij}|\)</span>, the entrywise estimate
+<span class="math math-display" data-tex="\[
+|\langle hv,v\rangle|
+\leq \max_{i,j}|h_{ij}|(|v_1|+|v_2|)^2
+\leq c\|v\|^2
+\]">\[
+|\langle hv,v\rangle|
+\leq \max_{i,j}|h_{ij}|(|v_1|+|v_2|)^2
+\leq c\|v\|^2
+\]</span>
+makes <span class="math" data-tex="\(h+cI\)">\(h+cI\)</span> and <span class="math" data-tex="\(cI\)">\(cI\)</span> positive. Each is of the form <span class="math" data-tex="\(r^*r\)">\(r^*r\)</span> by the construction above. The real span of the algebra-positive matrices is therefore exactly the Hermitian part.</p>
+<p>The nonsymmetry can occur for a real subspace arising from an actual left Hilbert algebra. Let
+<span class="math math-display" data-tex="\[
+H=M_2(\mathbb C),\quad
+\langle x,y\rangle=\operatorname{Tr}(xy^*),\quad
+d=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}.
+\]">\[
+H=M_2(\mathbb C),\quad
+\langle x,y\rangle=\operatorname{Tr}(xy^*),\quad
+d=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}.
+\]</span>
+Identify the algebra <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> with <span class="math" data-tex="\(H\)">\(H\)</span> through <span class="math" data-tex="\(j(a)=ad^{1/2}\)">\(j(a)=ad^{1/2}\)</span>. Transport its multiplication and involution along <span class="math" data-tex="\(j\)">\(j\)</span>. Left multiplication by <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span> is ordinary matrix multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>, its adjoint is multiplication by <span class="math" data-tex="\(a^*\)">\(a^*\)</span>, and products span <span class="math" data-tex="\(H\)">\(H\)</span>. The involution is bounded in this finite-dimensional space, so this is a left Hilbert algebra.</p>
+<p>The real span of its algebra-positive vectors and the corresponding real orthogonal space are
+<span class="math math-display" data-tex="\[
+K=\{ad^{1/2}:a=a^*\},\qquad
+E=(iK)^{\perp_{\mathbb R}}
+ =\{bd^{-1/2}:b=b^*\}.
+\tag{RC.6}
+\]">\[
+K=\{ad^{1/2}:a=a^*\},\qquad
+E=(iK)^{\perp_{\mathbb R}}
+ =\{bd^{-1/2}:b=b^*\}.
+\tag{RC.6}
+\]</span>
+Indeed, <span class="math" data-tex="\(\zeta\in E\)">\(\zeta\in E\)</span> precisely when <span class="math" data-tex="\(\operatorname{Tr}(a d^{1/2}\zeta^*)\)">\(\operatorname{Tr}(a d^{1/2}\zeta^*)\)</span> is real for every Hermitian <span class="math" data-tex="\(a\)">\(a\)</span>. A matrix <span class="math" data-tex="\(T\)">\(T\)</span> has real <span class="math" data-tex="\(\operatorname{Tr}(aT)\)">\(\operatorname{Tr}(aT)\)</span> for every Hermitian <span class="math" data-tex="\(a\)">\(a\)</span> exactly when <span class="math" data-tex="\(T\)">\(T\)</span> is Hermitian: write <span class="math" data-tex="\(T=A+iB\)">\(T=A+iB\)</span> with <span class="math" data-tex="\(A,B\)">\(A,B\)</span> Hermitian and test the imaginary part at <span class="math" data-tex="\(a=B\)">\(a=B\)</span>. This proves (RC.6). Also <span class="math" data-tex="\(K\cap iK=\{0\}\)">\(K\cap iK=\{0\}\)</span> and <span class="math" data-tex="\(K+iK=H\)">\(K+iK=H\)</span>, by the unique Hermitian real-and-imaginary decomposition before applying <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\qquad
+r=Xd^{-1/2},\quad s=Yd^{-1/2}.
+\]">\[
+X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\qquad
+r=Xd^{-1/2},\quad s=Yd^{-1/2}.
+\]</span>
+Both <span class="math" data-tex="\(r,s\)">\(r,s\)</span> belong to <span class="math" data-tex="\(E\)">\(E\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+\langle r,s\rangle=\operatorname{Tr}(Xd^{-1}Y)=-\frac i2,
+\qquad \langle s,r\rangle=\frac i2.
+\]">\[
+\langle r,s\rangle=\operatorname{Tr}(Xd^{-1}Y)=-\frac i2,
+\qquad \langle s,r\rangle=\frac i2.
+\]</span>
+For <span class="math" data-tex="\(\lambda=1+i\)">\(\lambda=1+i\)</span>, the real bilinear form <span class="math" data-tex="\(B(x,y)=\operatorname{Re}(\lambda\langle x,y\rangle)\)">\(B(x,y)=\operatorname{Re}(\lambda\langle x,y\rangle)\)</span> consequently satisfies
+<span class="math math-display" data-tex="\[
+B(r,s)=\frac12,\qquad B(s,r)=-\frac12,
+\qquad B(x,x)=\|x\|^2.
+\tag{RC.7}
+\]">\[
+B(r,s)=\frac12,\qquad B(s,r)=-\frac12,
+\qquad B(x,x)=\|x\|^2.
+\tag{RC.7}
+\]</span>
+The last equality gives coercivity for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, while the first two exclude symmetry. The original real inner product and the invertible operator <span class="math" data-tex="\(I+C\)">\(I+C\)</span> provide the required solution despite that nonsymmetry.</p>
+<p>For a geometric view, normalize these two real-orthogonal vectors to <span class="math" data-tex="\(e=r/\sqrt{3/2}\)">\(e=r/\sqrt{3/2}\)</span> and <span class="math" data-tex="\(f=s/\sqrt{3/2}\)">\(f=s/\sqrt{3/2}\)</span>. The real space <span class="math" data-tex="\(E\)">\(E\)</span> is the orthogonal sum of their plane and its diagonal-matrix part. Multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> keeps off-diagonal matrices orthogonal to that diagonal part. Equation (RC.3) and the displayed pairings therefore give
+<span class="math math-display" data-tex="\[
+Ce=\tfrac13 f,\qquad Cf=-\tfrac13 e,\qquad
+Ae=e+\tfrac13 f,\qquad Af=f-\tfrac13 e.
+\tag{RC.8}
+\]">\[
+Ce=\tfrac13 f,\qquad Cf=-\tfrac13 e,\qquad
+Ae=e+\tfrac13 f,\qquad Af=f-\tfrac13 e.
+\tag{RC.8}
+\]</span></p>
+<figure><img src="figures/real-coercivity.svg" alt="The image of e has a positive one-third f component, while the image of f has a negative one-third e component." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Exact restriction of <span class="math" data-tex="\(A=I+C\)">\(A=I+C\)</span> to the real orthonormal <span class="math" data-tex="\((e,f)\)">\((e,f)\)</span>-plane in this example. Gray arrows are the unit basis vectors; blue arrows are their images, and orange arrows are the skew contributions. The cross terms have opposite signs, while each diagonal pairing is one. This plane is a subspace of the four-dimensional real space <span class="math" data-tex="\(E\)">\(E\)</span>. Coordinates and constants are those of (RC.8). Reproducible figure source.</em></p>
+<h2 id="source-and-scope">Source and scope</h2>
+<p>Marc A. Rieffel and Alfons Van Daele, <em>A bounded operator approach to Tomita–Takesaki theory</em>, Pacific Journal of Mathematics <strong>69</strong> (1977), 187–221, <a href="https://msp.org/pjm/1977/69-1/pjm-v69-n1-p17-s.pdf">freely readable publisher PDF</a>. The relevant source locations are Notation 5.1, Definition 5.5, and the first proof paragraph of Lemma 5.6, printed pages 208 and 211. Its subsequent bounded-multiplication argument occupies pages 212–213.</p>
+<p>The argument above proves the real equation and its norm bound, and gives an explicit example of the distinction between coercivity and symmetry. It does not replace the later graph-projection, commutant, spectral, or analytic parts of the modular construction. All exposition and calculations here are independently written.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

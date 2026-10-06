@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Frobenius groups and Frobenius&#x27;s theorem · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/frobenius-groups-and-frobeniuss-theorem.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="groups-with-an-abelian-normal-subgroup-the-little-group-method.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-09.md" download>Editable source</a><a href="artins-induction-theorem-and-rationality.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-2-1">Lemma 2.1</a></li><li><a href="#proposition-3-1">Proposition 3.1</a></li><li><a href="#theorem-3-2">Theorem 3.2</a></li><li><a href="#proposition-4-1">Proposition 4.1</a></li><li><a href="#lemma-4-2">Lemma 4.2</a></li><li><a href="#theorem-4-3">Theorem 4.3</a></li></ul></details><h1 id="frobenius-groups-and-frobenius-s-theorem">Frobenius groups and Frobenius's theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the AI that wrote it. Public domain (CC0).</em></p>
+<p>A transitive permutation group can have a strikingly rigid fixed-point pattern: every nonidentity element fixes at most one point. Elements that fix a point lie in a conjugate of a point stabilizer. The remaining elements, together with the identity, turn out to form a normal subgroup.</p>
+<p>Closure of this set under multiplication is far from apparent. Character theory will supply a representation whose kernel is exactly that set. The decisive step is to construct irreducible characters by subtracting an induced trivial character and then restoring the correct degree.</p>
+<p>Historical references for character methods and normal-complement questions are Frobenius's <em>Über auflösbare Gruppen IV</em> and Schur's <em>Neuer Beweis eines Satzes über endliche Gruppen</em>. The proofs in this lesson proceed from the earlier course results listed below.</p>
+<h2 id="prerequisites-and-conventions">Prerequisites and conventions</h2>
+<p>We use complex representations of finite groups. From <em>Characters and the orthogonality relations</em> we use the irreducible-character basis, the regular character and the degree-square identity. From <em>Induced representations and Frobenius reciprocity</em> we use the induction formula and reciprocity for class functions. The degree result and the last exercise use the Clifford correspondence from <em>Mackey theory and Clifford's theorem</em>.</p>
+<p>Our inner product is linear in its first variable:</p>
+<span class="math math-display" data-tex="\[
+\langle f,k\rangle_G=\frac1{|G|}\sum_{g\in G}f(g)\overline{k(g)}.
+\tag{1}
+\]">\[
+\langle f,k\rangle_G=\frac1{|G|}\sum_{g\in G}f(g)\overline{k(g)}.
+\tag{1}
+\]</span>
+<p>A generalized character is an integer linear combination of irreducible characters. It may have negative coefficients. An actual character has nonnegative integer coefficients.</p>
+<h2 id="1-stabilizers-that-meet-only-at-the-identity">1. Stabilizers that meet only at the identity</h2>
+<p>Let <span class="math" data-tex="\(H&lt;G\)">\(H&lt;G\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+H\cap gHg^{-1}=\{1\}\qquad(g\notin H).
+\tag{2}
+\]">\[
+H\cap gHg^{-1}=\{1\}\qquad(g\notin H).
+\tag{2}
+\]</span>
+<p>When <span class="math" data-tex="\(1&lt;H&lt;G\)">\(1&lt;H&lt;G\)</span>, we call <span class="math" data-tex="\(H\)">\(H\)</span> a <strong>Frobenius complement</strong> and <span class="math" data-tex="\(G\)">\(G\)</span> a <strong>Frobenius group</strong> for this action. We will also allow <span class="math" data-tex="\(H=\{1\}\)">\(H=\{1\}\)</span> in the theorem; that is the regular-action endpoint.</p>
+<p>Consider the transitive action on <span class="math" data-tex="\(G/H\)">\(G/H\)</span>. The stabilizer of <span class="math" data-tex="\(gH\)">\(gH\)</span> is <span class="math" data-tex="\(gHg^{-1}\)">\(gHg^{-1}\)</span>. Condition (2) says exactly that a nonidentity element cannot fix both <span class="math" data-tex="\(H\)">\(H\)</span> and a different coset. Conjugating this assertion proves that it cannot fix any two distinct cosets. Conversely, the at-most-one-fixed-point property implies (2). The action is faithful: its kernel is contained in every stabilizer, including <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(gHg^{-1}\)">\(gHg^{-1}\)</span> for any <span class="math" data-tex="\(g\notin H\)">\(g\notin H\)</span>, whose intersection is trivial.</p>
+<p>Define the set</p>
+<span class="math math-display" data-tex="\[
+S=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}.
+\tag{3}
+\]">\[
+S=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}.
+\tag{3}
+\]</span>
+<p>Its nonidentity elements are exactly the elements with no fixed coset. At this point <span class="math" data-tex="\(S\)">\(S\)</span> is only a conjugation-invariant set. We have not assumed it is a subgroup.</p>
+<p>Some basic examples illustrate the condition.</p>
+<ul>
+<li>For the affine group of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, a point stabilizer consists of maps <span class="math" data-tex="\(u\mapsto au\)">\(u\mapsto au\)</span>. An affine map fixing two distinct points has <span class="math" data-tex="\(a=1\)">\(a=1\)</span> and translation part zero, so is the identity. A nonzero translation has no fixed point; a map <span class="math" data-tex="\(u\mapsto au+b\)">\(u\mapsto au+b\)</span> with <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span> has the unique fixed point <span class="math" data-tex="\(b/(1-a)\)">\(b/(1-a)\)</span>.</li>
+<li>In the natural action of <span class="math" data-tex="\(A_4\)">\(A_4\)</span> on four letters, a nonidentity three-cycle fixes one letter and a double transposition fixes none. The stabilizer of a letter is <span class="math" data-tex="\(C_3\)">\(C_3\)</span>, and (2) holds.</li>
+<li>For odd <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, <span class="math" data-tex="\(D_n\)">\(D_n\)</span> acts on <span class="math" data-tex="\(\mathbb Z/n\mathbb Z\)">\(\mathbb Z/n\mathbb Z\)</span> by translations and <span class="math" data-tex="\(j\mapsto-j\)">\(j\mapsto-j\)</span>. A reflection <span class="math" data-tex="\(j\mapsto b-j\)">\(j\mapsto b-j\)</span> fixes exactly the solution of <span class="math" data-tex="\(2j=b\)">\(2j=b\)</span>, while a nontrivial rotation fixes none. A reflection subgroup <span class="math" data-tex="\(C_2\)">\(C_2\)</span> is a complement. For even <span class="math" data-tex="\(n\)">\(n\)</span>, the reflection <span class="math" data-tex="\(j\mapsto-j\)">\(j\mapsto-j\)</span> fixes both <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(n/2\)">\(n/2\)</span>, so this action fails (2).</li>
+</ul>
+<p>One can count <span class="math" data-tex="\(S\)">\(S\)</span> before proving closure. Conjugates indexed by distinct cosets of <span class="math" data-tex="\(H\)">\(H\)</span> have disjoint nonidentity parts: a common nonidentity element would fix two cosets. Therefore, writing <span class="math" data-tex="\(m=|H|\)">\(m=|H|\)</span> and <span class="math" data-tex="\(n=[G:H]\)">\(n=[G:H]\)</span>, the union in (3) has <span class="math" data-tex="\(1+n(m-1)\)">\(1+n(m-1)\)</span> elements, and</p>
+<span class="math math-display" data-tex="\[
+|S|=mn-n(m-1)=n.
+\tag{4}
+\]">\[
+|S|=mn-n(m-1)=n.
+\tag{4}
+\]</span>
+<p>For <span class="math" data-tex="\(H=\{1\}\)">\(H=\{1\}\)</span>, all the nonidentity stabilizer parts are empty and the same formula gives <span class="math" data-tex="\(S=G\)">\(S=G\)</span>. Counting alone does not make <span class="math" data-tex="\(S\)">\(S\)</span> a subgroup.</p>
+<h2 id="2-an-isometry-for-class-functions-of-degree-zero">2. An isometry for class functions of degree zero</h2>
+<p>For a class function <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, induction is</p>
+<span class="math math-display" data-tex="\[
+(\operatorname{Ind}_H^G\alpha)(g)
+=\frac1{|H|}
+\sum_{\substack{x\in G\\x^{-1}gx\in H}}\alpha(x^{-1}gx).
+\tag{5}
+\]">\[
+(\operatorname{Ind}_H^G\alpha)(g)
+=\frac1{|H|}
+\sum_{\substack{x\in G\\x^{-1}gx\in H}}\alpha(x^{-1}gx).
+\tag{5}
+\]</span>
+<p>It is defined for arbitrary class functions, by the same formula as for characters.</p>
+<p id="lemma-2-1" class="result-link"><strong>Lemma 2.1.</strong> Suppose (2) holds. If <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> are class functions on <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(\alpha(1)=\beta(1)=0\)">\(\alpha(1)=\beta(1)=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Res}_H^G\operatorname{Ind}_H^G\alpha=\alpha,
+\qquad
+\langle\operatorname{Ind}_H^G\alpha,\operatorname{Ind}_H^G\beta\rangle_G
+=\langle\alpha,\beta\rangle_H.
+\tag{6}
+\]">\[
+\operatorname{Res}_H^G\operatorname{Ind}_H^G\alpha=\alpha,
+\qquad
+\langle\operatorname{Ind}_H^G\alpha,\operatorname{Ind}_H^G\beta\rangle_G
+=\langle\alpha,\beta\rangle_H.
+\tag{6}
+\]</span>
+<p>Moreover, the induced function vanishes on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(1\)">\(1\)</span>, (5) is <span class="math" data-tex="\([G:H]\alpha(1)=0\)">\([G:H]\alpha(1)=0\)</span>. For <span class="math" data-tex="\(h\in H\setminus\{1\}\)">\(h\in H\setminus\{1\}\)</span>, a term in (5) can occur only if <span class="math" data-tex="\(h\in H\cap xHx^{-1}\)">\(h\in H\cap xHx^{-1}\)</span>. Condition (2) forces <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>. There are <span class="math" data-tex="\(|H|\)">\(|H|\)</span> such terms, all equal to <span class="math" data-tex="\(\alpha(h)\)">\(\alpha(h)\)</span>, since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a class function on <span class="math" data-tex="\(H\)">\(H\)</span>. This proves the restriction identity at every element of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Frobenius reciprocity for class functions, in the orientation appropriate to (1), gives</p>
+<span class="math math-display" data-tex="\[
+\langle\operatorname{Ind}\alpha,\operatorname{Ind}\beta\rangle_G
+=\langle\operatorname{Res}\operatorname{Ind}\alpha,\beta\rangle_H
+=\langle\alpha,\beta\rangle_H.
+\]">\[
+\langle\operatorname{Ind}\alpha,\operatorname{Ind}\beta\rangle_G
+=\langle\operatorname{Res}\operatorname{Ind}\alpha,\beta\rangle_H
+=\langle\alpha,\beta\rangle_H.
+\]</span>
+<p>For <span class="math" data-tex="\(s\in S\setminus\{1\}\)">\(s\in S\setminus\{1\}\)</span>, no conjugate of <span class="math" data-tex="\(s\)">\(s\)</span> belongs to <span class="math" data-tex="\(H\)">\(H\)</span>, so the sum (5) is empty. Its value at <span class="math" data-tex="\(1\)">\(1\)</span> is already zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The degree-zero condition is essential. Inducing <span class="math" data-tex="\(1_H\)">\(1_H\)</span> gives the permutation character on <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, whose value at the identity is <span class="math" data-tex="\([G:H]\)">\([G:H]\)</span>, not <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h2 id="3-a-normal-subgroup-forced-by-characters">3. A normal subgroup forced by characters</h2>
+<p>Fix <span class="math" data-tex="\(\theta\in\operatorname{Irr}(H)\)">\(\theta\in\operatorname{Irr}(H)\)</span> and put <span class="math" data-tex="\(d=\theta(1)\)">\(d=\theta(1)\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\theta^\ast
+=\operatorname{Ind}_H^G(\theta-d1_H)+d1_G.
+\tag{7}
+\]">\[
+\theta^\ast
+=\operatorname{Ind}_H^G(\theta-d1_H)+d1_G.
+\tag{7}
+\]</span>
+<p>The difference inside induction vanishes at <span class="math" data-tex="\(1\)">\(1\)</span>. Formula (7) is an integer combination of characters, so is a generalized character of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p id="proposition-3-1" class="result-link"><strong>Proposition 3.1.</strong> Each <span class="math" data-tex="\(\theta^\ast\)">\(\theta^\ast\)</span> is an irreducible character of <span class="math" data-tex="\(G\)">\(G\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\theta^\ast(1)=d,\qquad
+\operatorname{Res}_H^G\theta^\ast=\theta,\qquad
+\theta^\ast(s)=d\quad(s\in S).
+\tag{8}
+\]">\[
+\theta^\ast(1)=d,\qquad
+\operatorname{Res}_H^G\theta^\ast=\theta,\qquad
+\theta^\ast(s)=d\quad(s\in S).
+\tag{8}
+\]</span>
+<p>Distinct <span class="math" data-tex="\(\theta\)">\(\theta\)</span>'s give distinct <span class="math" data-tex="\(\theta^\ast\)">\(\theta^\ast\)</span>'s.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\theta=1_H\)">\(\theta=1_H\)</span>, (7) gives <span class="math" data-tex="\(1_G\)">\(1_G\)</span>, so all assertions hold. Otherwise set <span class="math" data-tex="\(\alpha=\theta-d1_H\)">\(\alpha=\theta-d1_H\)</span>. Orthogonality on <span class="math" data-tex="\(H\)">\(H\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\langle\alpha,\alpha\rangle_H=1+d^2,
+\qquad
+\langle\alpha,1_H\rangle_H=-d.
+\]">\[
+\langle\alpha,\alpha\rangle_H=1+d^2,
+\qquad
+\langle\alpha,1_H\rangle_H=-d.
+\]</span>
+<p>Lemma 2.1 and reciprocity imply</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\theta^\ast,\theta^\ast\rangle_G
+&amp;=(1+d^2)+d(-d)+d(-d)+d^2\\
+&amp;=1.
+\end{aligned}
+\tag{9}
+\]">\[
+\begin{aligned}
+\langle\theta^\ast,\theta^\ast\rangle_G
+&amp;=(1+d^2)+d(-d)+d(-d)+d^2\\
+&amp;=1.
+\end{aligned}
+\tag{9}
+\]</span>
+<p>Expand this generalized character as <span class="math" data-tex="\(\sum_\chi a_\chi\chi\)">\(\sum_\chi a_\chi\chi\)</span>, with <span class="math" data-tex="\(a_\chi\in\mathbb Z\)">\(a_\chi\in\mathbb Z\)</span>. Its squared norm is <span class="math" data-tex="\(\sum_\chi a_\chi^2=1\)">\(\sum_\chi a_\chi^2=1\)</span>. Hence it is either an irreducible character or the negative of one. Since induction of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has degree <span class="math" data-tex="\([G:H]\alpha(1)=0\)">\([G:H]\alpha(1)=0\)</span>, its degree in (7) is <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. The negative possibility is excluded.</p>
+<p>The restriction identity in Lemma 2.1 gives <span class="math" data-tex="\(\theta-d1_H+d1_H=\theta\)">\(\theta-d1_H+d1_H=\theta\)</span>. Its vanishing assertion gives the constant value <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. Finally, equality of two such characters would imply equality of their restrictions to <span class="math" data-tex="\(H\)">\(H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We need one elementary kernel test. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is an actual character of degree <span class="math" data-tex="\(D\)">\(D\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+g\in\ker\chi\quad\Longleftrightarrow\quad\chi(g)=D.
+\tag{10}
+\]">\[
+g\in\ker\chi\quad\Longleftrightarrow\quad\chi(g)=D.
+\tag{10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\ker\chi\)">\(\ker\chi\)</span> means the kernel of a representation affording <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. To prove the test, the eigenvalues of its finite-order operator at <span class="math" data-tex="\(g\)">\(g\)</span> are roots of unity. If their sum is <span class="math" data-tex="\(D\)">\(D\)</span>, the sum of their real parts is <span class="math" data-tex="\(D\)">\(D\)</span>; each real part is at most <span class="math" data-tex="\(1\)">\(1\)</span>. Every eigenvalue is therefore <span class="math" data-tex="\(1\)">\(1\)</span>. The operator is diagonalizable, so it is the identity. The converse is immediate.</p>
+<p id="theorem-3-2" class="result-link"><strong>Theorem 3.2 (Frobenius).</strong> If <span class="math" data-tex="\(H&lt;G\)">\(H&lt;G\)</span> satisfies (2), then the set <span class="math" data-tex="\(S\)">\(S\)</span> in (3) is a normal subgroup <span class="math" data-tex="\(N\)">\(N\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+|N|=[G:H],\qquad N\cap H=\{1\},\qquad G=NH\simeq N\rtimes H.
+\tag{11}
+\]">\[
+|N|=[G:H],\qquad N\cap H=\{1\},\qquad G=NH\simeq N\rtimes H.
+\tag{11}
+\]</span>
+<p><strong>Proof.</strong> Form the actual character</p>
+<span class="math math-display" data-tex="\[
+\Xi=\sum_{\theta\in\operatorname{Irr}(H)}\theta(1)\theta^\ast.
+\tag{12}
+\]">\[
+\Xi=\sum_{\theta\in\operatorname{Irr}(H)}\theta(1)\theta^\ast.
+\tag{12}
+\]</span>
+<p>It has degree <span class="math" data-tex="\(\sum_\theta\theta(1)^2=|H|\)">\(\sum_\theta\theta(1)^2=|H|\)</span>. For <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>, Proposition 3.1 gives <span class="math" data-tex="\(\Xi(s)=|H|\)">\(\Xi(s)=|H|\)</span>. On <span class="math" data-tex="\(H\setminus\{1\}\)">\(H\setminus\{1\}\)</span>, its restriction is the regular character of <span class="math" data-tex="\(H\)">\(H\)</span>, so is zero. Every element outside <span class="math" data-tex="\(S\)">\(S\)</span> is conjugate to a nonidentity element of <span class="math" data-tex="\(H\)">\(H\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\Xi(g)=
+\begin{cases}
+|H|,&amp;g\in S,\\
+0,&amp;g\notin S.
+\end{cases}
+\tag{13}
+\]">\[
+\Xi(g)=
+\begin{cases}
+|H|,&amp;g\in S,\\
+0,&amp;g\notin S.
+\end{cases}
+\tag{13}
+\]</span>
+<p>By (10), <span class="math" data-tex="\(S=\ker\Xi\)">\(S=\ker\Xi\)</span>. This proves it is a normal subgroup, without assuming any closure property. Equivalently, it is <span class="math" data-tex="\(\bigcap_\theta\ker\theta^\ast\)">\(\bigcap_\theta\ker\theta^\ast\)</span>, since (12) is a direct sum of positive numbers of copies of the representations affording these characters.</p>
+<p>Its order is (4). There is also a character calculation of the order: the distinct irreducibles in (12) give <span class="math" data-tex="\(\langle\Xi,\Xi\rangle_G=\sum_\theta\theta(1)^2=|H|\)">\(\langle\Xi,\Xi\rangle_G=\sum_\theta\theta(1)^2=|H|\)</span>, while (13) gives that norm as <span class="math" data-tex="\(|H|^2|N|/|G|\)">\(|H|^2|N|/|G|\)</span>. Hence <span class="math" data-tex="\(|N|=|G|/|H|\)">\(|N|=|G|/|H|\)</span>.</p>
+<p>By definition, <span class="math" data-tex="\(N\cap H=\{1\}\)">\(N\cap H=\{1\}\)</span>. Since <span class="math" data-tex="\(N\)">\(N\)</span> is normal, <span class="math" data-tex="\(NH\)">\(NH\)</span> is a subgroup, and its order is <span class="math" data-tex="\(|N||H|=|G|\)">\(|N||H|=|G|\)</span>, so it is all of <span class="math" data-tex="\(G\)">\(G\)</span>. Conjugation by <span class="math" data-tex="\(H\)">\(H\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>, together with this unique factorization, realizes the semidirect product in (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The subgroup <span class="math" data-tex="\(N\)">\(N\)</span> is the <strong>Frobenius kernel</strong>. The characters <span class="math" data-tex="\(\theta^\ast\)">\(\theta^\ast\)</span> have a simple interpretation after the theorem: they are the characters of <span class="math" data-tex="\(G/N\simeq H\)">\(G/N\simeq H\)</span>, inflated to <span class="math" data-tex="\(G\)">\(G\)</span>. Their restrictions are <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and they kill <span class="math" data-tex="\(N\)">\(N\)</span>, so this follows from the unique factorization <span class="math" data-tex="\(G=NH\)">\(G=NH\)</span>.</p>
+<h2 id="4-fixed-point-free-conjugation-and-irreducible-degrees">4. Fixed-point-free conjugation and irreducible degrees</h2>
+<p id="proposition-4-1" class="result-link"><strong>Proposition 4.1.</strong> In a Frobenius group <span class="math" data-tex="\(G=N\rtimes H\)">\(G=N\rtimes H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+C_N(h)=\{1\}\quad(h\in H\setminus\{1\}),
+\qquad
+|N|\equiv1\pmod{|H|}.
+\tag{14}
+\]">\[
+C_N(h)=\{1\}\quad(h\in H\setminus\{1\}),
+\qquad
+|N|\equiv1\pmod{|H|}.
+\tag{14}
+\]</span>
+<p>In particular, <span class="math" data-tex="\(|N|\)">\(|N|\)</span> and <span class="math" data-tex="\(|H|\)">\(|H|\)</span> are coprime.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(n\in N\setminus\{1\}\)">\(n\in N\setminus\{1\}\)</span> commutes with a nonidentity <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, then <span class="math" data-tex="\(h\in H\cap nHn^{-1}\)">\(h\in H\cap nHn^{-1}\)</span>. Since <span class="math" data-tex="\(n\notin H\)">\(n\notin H\)</span>, this contradicts (2). Thus the stabilizer in <span class="math" data-tex="\(H\)">\(H\)</span> of every element of <span class="math" data-tex="\(N\setminus\{1\}\)">\(N\setminus\{1\}\)</span>, under conjugation, is trivial. Those elements partition into orbits of size <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, proving the congruence. A common divisor of <span class="math" data-tex="\(|N|\)">\(|N|\)</span> and <span class="math" data-tex="\(|H|\)">\(|H|\)</span> divides <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same argument shows</p>
+<span class="math math-display" data-tex="\[
+C_N(g)=\{1\}\quad(g\in G\setminus N).
+\tag{15}
+\]">\[
+C_N(g)=\{1\}\quad(g\in G\setminus N).
+\tag{15}
+\]</span>
+<p>Indeed, such <span class="math" data-tex="\(g\)">\(g\)</span> is conjugate to a nonidentity element of <span class="math" data-tex="\(H\)">\(H\)</span>, and normality of <span class="math" data-tex="\(N\)">\(N\)</span> allows us to conjugate the centralizer assertion.</p>
+<p>We will transfer this action from elements to irreducible characters. The transfer is a linear-algebra fact sometimes called Brauer's permutation lemma, and we prove the instance needed here.</p>
+<p id="lemma-4-2" class="result-link"><strong>Lemma 4.2.</strong> An automorphism <span class="math" data-tex="\(u\)">\(u\)</span> of a finite group <span class="math" data-tex="\(K\)">\(K\)</span> fixes the same number of conjugacy classes as it fixes irreducible characters.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(u\)">\(u\)</span> act on the space of class functions by <span class="math" data-tex="\(f\mapsto f\circ u^{-1}\)">\(f\mapsto f\circ u^{-1}\)</span>. In the basis of indicator functions of conjugacy classes, it is a permutation matrix whose trace is the number of fixed classes. In the irreducible-character basis, it is also a permutation matrix: precomposing a representation with <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span> preserves irreducibility and transports its character accordingly. Its trace in that basis counts fixed irreducible characters. A linear operator has the same trace in every basis, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(h\in H\setminus\{1\}\)">\(h\in H\setminus\{1\}\)</span>, the only <span class="math" data-tex="\(N\)">\(N\)</span>-conjugacy class fixed by conjugation by <span class="math" data-tex="\(h\)">\(h\)</span> is the identity class. Suppose a nonidentity <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span> had its class fixed. Then <span class="math" data-tex="\(hnh^{-1}=ana^{-1}\)">\(hnh^{-1}=ana^{-1}\)</span> for some <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span>. The element <span class="math" data-tex="\(a^{-1}h\)">\(a^{-1}h\)</span> centralizes <span class="math" data-tex="\(n\)">\(n\)</span> and lies outside <span class="math" data-tex="\(N\)">\(N\)</span>, contradicting (15). Lemma 4.2 now says that the only irreducible character of <span class="math" data-tex="\(N\)">\(N\)</span> fixed by <span class="math" data-tex="\(h\)">\(h\)</span> is the trivial one. Consequently <span class="math" data-tex="\(H\)">\(H\)</span> acts freely on
+<span class="math" data-tex="\(\operatorname{Irr}(N)\setminus\{1_N\}\)">\(\operatorname{Irr}(N)\setminus\{1_N\}\)</span>.</p>
+<p id="theorem-4-3" class="result-link"><strong>Theorem 4.3.</strong> The irreducible representations of <span class="math" data-tex="\(G\)">\(G\)</span> are:</p>
+<ol>
+<li>the inflations of the irreducibles of <span class="math" data-tex="\(H\simeq G/N\)">\(H\simeq G/N\)</span>;</li>
+<li>one representation <span class="math" data-tex="\(\operatorname{Ind}_N^G W\)">\(\operatorname{Ind}_N^G W\)</span> for each <span class="math" data-tex="\(H\)">\(H\)</span>-orbit of nontrivial irreducibles <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span>.</li>
+</ol>
+<p>The representations in the second list are irreducible and have degree <span class="math" data-tex="\(|H|\dim W\)">\(|H|\dim W\)</span>. In particular, every irreducible representation that does not kill <span class="math" data-tex="\(N\)">\(N\)</span> has degree divisible by <span class="math" data-tex="\(|H|\)">\(|H|\)</span>.</p>
+<p><strong>Proof.</strong> Conjugation by <span class="math" data-tex="\(N\)">\(N\)</span> fixes the isomorphism class of every <span class="math" data-tex="\(N\)">\(N\)</span>-representation. The free <span class="math" data-tex="\(H\)">\(H\)</span>-action just proved therefore makes the inertia group of a nontrivial <span class="math" data-tex="\(W\)">\(W\)</span> exactly <span class="math" data-tex="\(N\)">\(N\)</span>. Clifford correspondence makes <span class="math" data-tex="\(\operatorname{Ind}_N^G W\)">\(\operatorname{Ind}_N^G W\)</span> irreducible. Its dimension is <span class="math" data-tex="\([G:N]\dim W=|H|\dim W\)">\([G:N]\dim W=|H|\dim W\)</span>.</p>
+<p>If an irreducible <span class="math" data-tex="\(V\)">\(V\)</span> does not kill <span class="math" data-tex="\(N\)">\(N\)</span>, its restriction contains a nontrivial irreducible <span class="math" data-tex="\(W\)">\(W\)</span>. Otherwise its completely reducible restriction would be a sum of trivial representations, meaning <span class="math" data-tex="\(N\)">\(N\)</span> acts identically. The same correspondence identifies <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(\operatorname{Ind}_N^G W\)">\(\operatorname{Ind}_N^G W\)</span>. Its <span class="math" data-tex="\(N\)">\(N\)</span>-constituents form the orbit of <span class="math" data-tex="\(W\)">\(W\)</span>, each once, so two such inductions are isomorphic precisely for the same orbit. The remaining irreducibles factor through <span class="math" data-tex="\(G/N\)">\(G/N\)</span>, giving the first list. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This gives more than a divisibility test. To build the remaining representations, one only needs the irreducibles of <span class="math" data-tex="\(N\)">\(N\)</span> and the free action of the complement on their nontrivial types. If <span class="math" data-tex="\(N\)">\(N\)</span> is abelian, every representation in the second list has degree exactly <span class="math" data-tex="\(|H|\)">\(|H|\)</span>.</p>
+<h2 id="5-computing-the-kernel-and-the-remaining-characters">5. Computing the kernel and the remaining characters</h2>
+<h3 id="affine-transformations">Affine transformations</h3>
+<p>The affine group of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, has complement <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>. The fixed-point calculation in Section 1 says that <span class="math" data-tex="\(S\setminus\{1\}\)">\(S\setminus\{1\}\)</span> consists exactly of nonzero translations. Thus the theorem identifies the kernel with <span class="math" data-tex="\((\mathbb F_q,+)\)">\((\mathbb F_q,+)\)</span>.</p>
+<p>The complement acts transitively on its <span class="math" data-tex="\(q-1\)">\(q-1\)</span> nontrivial characters, as shown in <em>Groups with an abelian normal subgroup: the little-group method</em>. Theorem 4.3 gives one remaining irreducible of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>, alongside the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> inflated characters of the complement. At <span class="math" data-tex="\(q=2\)">\(q=2\)</span>, the complement is trivial; this is the regular-action endpoint, with kernel <span class="math" data-tex="\(C_2\)">\(C_2\)</span> and two linear characters.</p>
+<h3 id="the-alternating-group">The alternating group</h3>
+<p>In <span class="math" data-tex="\(A_4\)">\(A_4\)</span>, the elements with no fixed letter are the three double transpositions, so <span class="math" data-tex="\(N=V_4\)">\(N=V_4\)</span>. The complement <span class="math" data-tex="\(C_3\)">\(C_3\)</span> cycles the three nontrivial characters of <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. Thus Theorem 4.3 gives the degree-three representation and the three characters inflated from <span class="math" data-tex="\(C_3\)">\(C_3\)</span>. The kernel congruence reads <span class="math" data-tex="\(4\equiv1\pmod3\)">\(4\equiv1\pmod3\)</span>.</p>
+<h3 id="a-nonabelian-group-of-order-twenty-one">A nonabelian group of order twenty-one</h3>
+<p>Let <span class="math" data-tex="\(G=\mathbb F_7\rtimes\{1,2,4\}\)">\(G=\mathbb F_7\rtimes\{1,2,4\}\)</span>, acting by affine transformations. Nonidentity multipliers again have exactly one fixed point, and nonzero translations have none. Its complement has order three and its kernel is <span class="math" data-tex="\(\mathbb F_7\)">\(\mathbb F_7\)</span>.</p>
+<p>Take <span class="math" data-tex="\(\zeta=e^{2\pi i/7}\)">\(\zeta=e^{2\pi i/7}\)</span> and <span class="math" data-tex="\(\lambda_t(b)=\zeta^{tb}\)">\(\lambda_t(b)=\zeta^{tb}\)</span>. The nontrivial kernel characters split into the two complement orbits</p>
+<span class="math math-display" data-tex="\[
+\{1,2,4\},\qquad \{3,5,6\}.
+\]">\[
+\{1,2,4\},\qquad \{3,5,6\}.
+\]</span>
+<p>There are three linear characters from the quotient and two irreducibles of degree three. For either orbit <span class="math" data-tex="\(O\)">\(O\)</span>, induction from the translation subgroup gives the character</p>
+<span class="math math-display" data-tex="\[
+\chi_O(b,a)=
+\begin{cases}
+\displaystyle\sum_{t\in O}\zeta^{tb},&amp;a=1,\\
+0,&amp;a\ne1.
+\end{cases}
+\tag{16}
+\]">\[
+\chi_O(b,a)=
+\begin{cases}
+\displaystyle\sum_{t\in O}\zeta^{tb},&amp;a=1,\\
+0,&amp;a\ne1.
+\end{cases}
+\tag{16}
+\]</span>
+<p>For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the restriction of induction is the sum of the three conjugate kernel characters. For <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>, no conjugate of <span class="math" data-tex="\((b,a)\)">\((b,a)\)</span> belongs to the kernel, so the induction formula is zero. This proves (16) on every element. The degree-square check is <span class="math" data-tex="\(3\cdot1^2+2\cdot3^2=21\)">\(3\cdot1^2+2\cdot3^2=21\)</span>, and the congruence is <span class="math" data-tex="\(7\equiv1\pmod3\)">\(7\equiv1\pmod3\)</span>.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Verify the kernel theorem directly for <span class="math" data-tex="\(A_4\)">\(A_4\)</span> and <span class="math" data-tex="\(D_5\)">\(D_5\)</span>, including the semidirect decompositions.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(A_4\)">\(A_4\)</span>, take the stabilizer <span class="math" data-tex="\(H=\langle(123)\rangle\)">\(H=\langle(123)\rangle\)</span> of <span class="math" data-tex="\(4\)">\(4\)</span>. Its nonidentity elements and their conjugates are precisely the eight three-cycles. The remaining three nonidentity elements are the double transpositions, so the set (3) is <span class="math" data-tex="\(V_4\)">\(V_4\)</span>. This is a normal subgroup: conjugation permutes the three double transpositions, and the product of two distinct ones is the third. Its intersection with <span class="math" data-tex="\(H\)">\(H\)</span> is trivial, and <span class="math" data-tex="\(4\cdot3=12\)">\(4\cdot3=12\)</span> shows <span class="math" data-tex="\(A_4=V_4H\)">\(A_4=V_4H\)</span>. No nonidentity element fixes two letters, verifying (2).</p>
+<p>For <span class="math" data-tex="\(D_5=\langle r,s\rangle\)">\(D_5=\langle r,s\rangle\)</span>, take <span class="math" data-tex="\(H=\langle s\rangle\)">\(H=\langle s\rangle\)</span>. Conjugating <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(r^j\)">\(r^j\)</span> gives <span class="math" data-tex="\(r^{2j}s\)">\(r^{2j}s\)</span>; multiplication by <span class="math" data-tex="\(2\)">\(2\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span> is a bijection, so these are all five reflections. Distinct subgroups generated by reflections meet only at the identity. The elements outside their union are the four nonidentity rotations, so (3) is <span class="math" data-tex="\(\langle r\rangle\simeq C_5\)">\(\langle r\rangle\simeq C_5\)</span>. It is normal by <span class="math" data-tex="\(srs^{-1}=r^{-1}\)">\(srs^{-1}=r^{-1}\)</span>, meets <span class="math" data-tex="\(H\)">\(H\)</span> trivially and gives <span class="math" data-tex="\(D_5=C_5\rtimes C_2\)">\(D_5=C_5\rtimes C_2\)</span>.</p>
+<p><strong>Exercise 2.</strong> Prove <span class="math" data-tex="\(|N|\equiv1\pmod{|H|}\)">\(|N|\equiv1\pmod{|H|}\)</span> using the conjugation action, rather than character degrees.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(n\in N\setminus\{1\}\)">\(n\in N\setminus\{1\}\)</span>. If <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> fixes it under conjugation, then <span class="math" data-tex="\(h\in H\cap nHn^{-1}\)">\(h\in H\cap nHn^{-1}\)</span>. Since <span class="math" data-tex="\(N\cap H=\{1\}\)">\(N\cap H=\{1\}\)</span>, the element <span class="math" data-tex="\(n\)">\(n\)</span> is outside <span class="math" data-tex="\(H\)">\(H\)</span>, and (2) forces <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. The orbit-stabilizer formula therefore gives orbit size <span class="math" data-tex="\(|H|\)">\(|H|\)</span> for every such <span class="math" data-tex="\(n\)">\(n\)</span>. If there are <span class="math" data-tex="\(r\)">\(r\)</span> orbits, then <span class="math" data-tex="\(|N|-1=r|H|\)">\(|N|-1=r|H|\)</span>. This is the congruence, and it also proves the orders of kernel and complement are coprime.</p>
+<p><strong>Exercise 3.</strong> Prove both assertions of Lemma 2.1 by double cosets and reciprocity.</p>
+<p><strong>Solution.</strong> Apply Mackey's restriction formula to the class function <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, extended linearly from characters. The identity double coset contributes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Every other representative <span class="math" data-tex="\(g\notin H\)">\(g\notin H\)</span> has intersection <span class="math" data-tex="\(H\cap gHg^{-1}=\{1\}\)">\(H\cap gHg^{-1}=\{1\}\)</span>. The restriction of its conjugate inducing function to this intersection is its value <span class="math" data-tex="\(\alpha(1)=0\)">\(\alpha(1)=0\)</span>, so its induced contribution is zero. Therefore <span class="math" data-tex="\(\operatorname{Res}_H^G\operatorname{Ind}_H^G\alpha=\alpha\)">\(\operatorname{Res}_H^G\operatorname{Ind}_H^G\alpha=\alpha\)</span> as a class function.</p>
+<p>For completeness, arbitrary class functions admit the irreducible-character expansion from the prerequisites, so applying the character version linearly and conjugate-linearly in the inner product is valid. Reciprocity now gives
+<span class="math" data-tex="\(\langle\operatorname{Ind}\alpha,\operatorname{Ind}\beta\rangle_G
+=\langle\operatorname{Res}\operatorname{Ind}\alpha,\beta\rangle_H
+=\langle\alpha,\beta\rangle_H\)">\(\langle\operatorname{Ind}\alpha,\operatorname{Ind}\beta\rangle_G
+=\langle\operatorname{Res}\operatorname{Ind}\alpha,\beta\rangle_H
+=\langle\alpha,\beta\rangle_H\)</span>.
+This proves the full complex-valued statement, not merely its restriction to generalized characters.</p>
+<p><strong>Exercise 4.</strong> Show that an irreducible character of <span class="math" data-tex="\(G\)">\(G\)</span> whose representation does not kill <span class="math" data-tex="\(N\)">\(N\)</span> has degree a multiple of <span class="math" data-tex="\(|H|\)">\(|H|\)</span>.</p>
+<p><strong>Solution.</strong> First, <span class="math" data-tex="\(C_N(g)=\{1\}\)">\(C_N(g)=\{1\}\)</span> for <span class="math" data-tex="\(g\notin N\)">\(g\notin N\)</span>: conjugate <span class="math" data-tex="\(g\)">\(g\)</span> into <span class="math" data-tex="\(H\setminus\{1\}\)">\(H\setminus\{1\}\)</span> and use the trivial-intersection argument of Exercise 2. If <span class="math" data-tex="\(h\in H\setminus\{1\}\)">\(h\in H\setminus\{1\}\)</span> fixed the <span class="math" data-tex="\(N\)">\(N\)</span>-class of some <span class="math" data-tex="\(n\ne1\)">\(n\ne1\)</span>, an equation <span class="math" data-tex="\(hnh^{-1}=ana^{-1}\)">\(hnh^{-1}=ana^{-1}\)</span> with <span class="math" data-tex="\(a\in N\)">\(a\in N\)</span> would make <span class="math" data-tex="\(a^{-1}h\notin N\)">\(a^{-1}h\notin N\)</span> centralize <span class="math" data-tex="\(n\)">\(n\)</span>, a contradiction.</p>
+<p>Thus <span class="math" data-tex="\(h\)">\(h\)</span> fixes exactly one conjugacy class of <span class="math" data-tex="\(N\)">\(N\)</span>. Its action on class functions has trace one in the conjugacy-class indicator basis. In the irreducible-character basis the trace counts fixed irreducibles; the trivial character is always fixed, so no other irreducible is fixed. This proves that <span class="math" data-tex="\(H\)">\(H\)</span> acts freely on all nontrivial irreducible types of <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>Choose one such constituent <span class="math" data-tex="\(W\)">\(W\)</span> of the given representation <span class="math" data-tex="\(V|_N\)">\(V|_N\)</span>; it exists because complete reducibility would otherwise make <span class="math" data-tex="\(N\)">\(N\)</span> act trivially. Inner conjugations by <span class="math" data-tex="\(N\)">\(N\)</span> preserve <span class="math" data-tex="\(W\)">\(W\)</span>'s type, while no nonidentity element of <span class="math" data-tex="\(H\)">\(H\)</span> does, so its inertia group is <span class="math" data-tex="\(N\)">\(N\)</span>. Clifford correspondence gives <span class="math" data-tex="\(V\simeq\operatorname{Ind}_N^G W\)">\(V\simeq\operatorname{Ind}_N^G W\)</span>, and hence
+<span class="math" data-tex="\(\dim V=[G:N]\dim W=|H|\dim W\)">\(\dim V=[G:N]\dim W=|H|\dim W\)</span>.
+This proves the claimed divisibility with its precise source.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The character orthogonality, induction, Mackey and Clifford results listed under prerequisites. Every new assertion used about Frobenius groups, their kernels, the transferred action on characters and their irreducible degrees is proved here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Ferdinand Georg Frobenius, <a href="https://archive.org/details/sitzungsberichte1901deut/page/1216/mode/1up"><em>Über auflösbare Gruppen IV</em></a>, Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin (1901), 1216–1230. A historical treatment of conjugacy and normal-complement questions.</li>
+<li>Issai Schur, <a href="https://archive.org/details/sitzungsberichte1902deut/page/1013/mode/1up"><em>Neuer Beweis eines Satzes über endliche Gruppen</em></a>, Sitzungsberichte der Königlich Preußischen Akademie der Wissenschaften zu Berlin (1902), 1013–1019. A historical proof for the conjugacy and commutator-order hypotheses stated in that paper.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

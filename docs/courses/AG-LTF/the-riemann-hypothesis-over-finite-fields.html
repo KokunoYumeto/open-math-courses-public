@@ -1,0 +1,966 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Riemann hypothesis over finite fields</title><link rel="stylesheet" href="runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-riemann-hypothesis-over-finite-fields">The Riemann hypothesis over finite fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, with bounded internal checks of the geometric providers and their integration recorded separately. Independent human review is not claimed. Public domain (CC0).</em></p>
+<p>The smooth-proper reduction in §6 uses the complete <a href="support/AG-LTF--smooth-projective-alterations.html">Smooth projective alterations</a> and <a href="support/AG-LTF--stable-pointed-family-extension.html">Stable pointed-family extension</a> proofs and gives its rational pullback-and-trace projector explicitly.</p>
+<p>For a smooth projective variety over a finite field, Frobenius on degree-<span class="math" data-tex="\(i\)">\(i\)</span> cohomology has eigenvalues of complex absolute value <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>, under every conjugate embedding. This lesson proves the higher-dimensional theorem from the pencil theory and the fundamental estimate developed in Lessons 9–10. Section 6 passes to the canonical theorem for every smooth proper variety using the smooth projective alteration constructed in the two proof lessons named above. Its pullback-and-trace splitting, finite-field descent, integrality and independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> are proved explicitly here.</p>
+<p>The remaining rationality issue is substantive: a vanishing quotient of fibre cohomology need not visibly have rational characteristic polynomials. We settle it by recovering the constant factors of fibre zeta functions. Chebotarev and a measure-zero argument prevent those factors from being hidden by systematic cancellation. We then prove the even-dimensional estimate with error <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, remove that error by tensor powers, and derive integrality, independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and point-count bounds.</p>
+<h2 id="1-the-statement-inputs-and-reductions">1. The statement, inputs and reductions</h2>
+<p>Let <span class="math" data-tex="\(X_0\)">\(X_0\)</span> be smooth and projective over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, and let
+<span class="math" data-tex="\(X=X_0\times_{\mathbf F_q}\overline{\mathbf F}_q\)">\(X=X_0\times_{\mathbf F_q}\overline{\mathbf F}_q\)</span>. All cohomology has coefficients in <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, <span class="math" data-tex="\(\ell\ne\operatorname{char}\mathbf F_q\)">\(\ell\ne\operatorname{char}\mathbf F_q\)</span>, unless a finite coefficient-field extension is specified. Frobenius <span class="math" data-tex="\(F\)">\(F\)</span> is geometric, so its eigenvalue on <span class="math" data-tex="\(\mathbf Q_\ell(-r)\)">\(\mathbf Q_\ell(-r)\)</span> is <span class="math" data-tex="\(q^r\)">\(q^r\)</span>.</p>
+<p><strong>Theorem 1.1 (Deligne).</strong> Every eigenvalue of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(H^i(X,\mathbf Q_\ell)\)">\(H^i(X,\mathbf Q_\ell)\)</span> is algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Every complex conjugate has absolute value <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>.</p>
+<p>This is <em>Weil I</em>, (1.7); the integer characteristic polynomials and independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> in its stronger (1.6) are proved in §6. Finiteness, Künneth and the trace formula come from the preceding lessons. <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps</a>, §§1–2 and 8–13, constructs the higher-dimensional trace, smooth duality and the actual Gysin adjunctions. We prove the weak Lefschetz deduction below, using the written affine theorem at its exact proof home. The geometric existence and local/global pencil inputs are those of Lesson 9; their use is isolated in §§4–5. Hard Lefschetz is not an input.</p>
+<p>Lesson 9 proves the geometric statements used here. Theorem 1.0 gives characteristic-sensitive pencil existence; Sections NC, Q and PL prove the higher-dimensional singular rank-one calculation and the Picard–Lefschetz normalization with actual support and trace maps; Section 4 proves tameness, compatible inertia conjugacy, the zero-cycle alternative and the invariant-space description; Sections 5–6 prove symplectic openness. Its general higher-dimensional restriction excludes characteristic two with even fibre dimension; degree zero is treated separately in every characteristic. Section 5 below needs only odd-dimensional fibres: in characteristic two their higher-dimensional polar form is nondegenerate, and the odd-dimensional local and tame conclusions of Lesson 9 apply. The deductions in §§4–5 retain both the nonzero-cycle and zero-cycle cases.</p>
+<p>The independent curve prerequisite is <a href="cycle-classes-and-the-lefschetz-fixed-point-formula-for-curves.html">Lesson 5, Theorem 5.3</a>: its §§2.1–2.7 prove the surface Hodge inequality, and §5 applies it to Frobenius graphs on <span class="math" data-tex="\(C\times C\)">\(C\times C\)</span>. That argument proves rationality, the functional equation and the Riemann hypothesis for every smooth projective curve inside this course. We use it on the covering curves and their twists in §2.</p>
+<h3 id="affine-vanishing-and-weak-lefschetz">Affine vanishing and weak Lefschetz</h3>
+<p>The precise affine input is <a href="support/ag-etale-cohomology--cohomological-dimension-and-the-kunneth-formula.html"><em>Cohomological dimension and the Künneth formula</em>, Theorem 5.1</a>. Its §§2–5 give the complete simultaneous dimension induction: limits and curve/field bounds, strict-local finite models, closed support approximation, and the two Leray spectral sequences for <span class="math" data-tex="\(\mathbf A^d\subset\mathbf P^1\times\mathbf A^{d-1}\)">\(\mathbf A^d\subset\mathbf P^1\times\mathbf A^{d-1}\)</span>. The result is
+<span class="math math-display" data-tex="\[
+H^r(W,G)=0\quad(r&gt;\dim W)
+\tag{1.1}
+\]">\[
+H^r(W,G)=0\quad(r&gt;\dim W)
+\tag{1.1}
+\]</span>
+for <strong>every torsion étale sheaf</strong> <span class="math" data-tex="\(G\)">\(G\)</span> on an affine finite-type scheme <span class="math" data-tex="\(W\)">\(W\)</span> over an algebraically closed field. Neither smoothness of <span class="math" data-tex="\(W\)">\(W\)</span> nor local constancy of <span class="math" data-tex="\(G\)">\(G\)</span> is required. We consume its prime-to-characteristic constant-coefficient case; the all-torsion assertion does not extend Poincaré duality to characteristic-primary coefficients.</p>
+<p><strong>Proposition 1.2 (weak Lefschetz, with its dual map).</strong> Let <span class="math" data-tex="\(X/k\)">\(X/k\)</span> be smooth projective of pure dimension <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, with <span class="math" data-tex="\(k\)">\(k\)</span> algebraically closed, and let <span class="math" data-tex="\(i:Y\hookrightarrow X\)">\(i:Y\hookrightarrow X\)</span> be a smooth ample effective Cartier divisor. For any integer <span class="math" data-tex="\(a\)">\(a\)</span>, restriction
+<span class="math math-display" data-tex="\[
+i^*:H^r(X,\mathbf Q_\ell(a))\longrightarrow
+H^r(Y,\mathbf Q_\ell(a))
+\tag{1.2}
+\]">\[
+i^*:H^r(X,\mathbf Q_\ell(a))\longrightarrow
+H^r(Y,\mathbf Q_\ell(a))
+\tag{1.2}
+\]</span>
+is an isomorphism for <span class="math" data-tex="\(r&lt;d-1\)">\(r&lt;d-1\)</span> and injective for <span class="math" data-tex="\(r=d-1\)">\(r=d-1\)</span>. Its dual Gysin map
+<span class="math math-display" data-tex="\[
+i_*:H^{2d-2-r}(Y,\mathbf Q_\ell(-1))
+\longrightarrow H^{2d-r}(X,\mathbf Q_\ell)
+\tag{1.3}
+\]">\[
+i_*:H^{2d-2-r}(Y,\mathbf Q_\ell(-1))
+\longrightarrow H^{2d-r}(X,\mathbf Q_\ell)
+\tag{1.3}
+\]</span>
+is an isomorphism in the first range and surjective at <span class="math" data-tex="\(r=d-1\)">\(r=d-1\)</span>. All maps are Frobenius-equivariant when the pair is defined over a finite field.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(U=X-Y\)">\(U=X-Y\)</span>. This complement is affine. Indeed, choose a power <span class="math" data-tex="\(L^{\otimes b}\)">\(L^{\otimes b}\)</span> of the ample line bundle <span class="math" data-tex="\(L=\mathcal O_X(Y)\)">\(L=\mathcal O_X(Y)\)</span> which is very ample. Include the nonzero section <span class="math" data-tex="\(s^b\)">\(s^b\)</span>, whose vanishing support is <span class="math" data-tex="\(Y\)">\(Y\)</span>, in a basis of its global sections. The resulting embedding realizes <span class="math" data-tex="\(U\)">\(U\)</span> as the closed subscheme of the affine chart where that coordinate is nonzero. If a component is disjoint from <span class="math" data-tex="\(Y\)">\(Y\)</span>, ampleness would make a positive-dimensional projective component affine, which is impossible; dimension-zero components are excluded by pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is smooth of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Work first over <span class="math" data-tex="\(\Lambda_b=\mathbf Z/\ell^b\mathbf Z\)">\(\Lambda_b=\mathbf Z/\ell^b\mathbf Z\)</span>. The affine theorem gives <span class="math" data-tex="\(H^{2d-t}(U,\Lambda_b(d-a))=0\)">\(H^{2d-t}(U,\Lambda_b(d-a))=0\)</span> for <span class="math" data-tex="\(t&lt;d\)">\(t&lt;d\)</span>. The finite-coefficient smooth duality theorem in the supporting lesson identifies its exact <span class="math" data-tex="\(\Lambda_b\)">\(\Lambda_b\)</span>-dual with <span class="math" data-tex="\(H^t_c(U,\Lambda_b(a))\)">\(H^t_c(U,\Lambda_b(a))\)</span>; hence
+<span class="math math-display" data-tex="\[
+H^t_c(U,\Lambda_b(a))=0\quad(t&lt;d).
+\tag{1.4}
+\]">\[
+H^t_c(U,\Lambda_b(a))=0\quad(t&lt;d).
+\tag{1.4}
+\]</span>
+For these smooth schemes the finite-coefficient groups are finite. Their inverse systems therefore satisfy Mittag–Leffler: the descending images in each fixed finite group stabilize. The Milnor sequence for derived inverse limit consequently has zero <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> term. Taking <span class="math" data-tex="\(R\varprojlim_b\)">\(R\varprojlim_b\)</span> in (1.4), then tensoring with <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, gives <span class="math" data-tex="\(H^t_c(U,\mathbf Q_\ell(a))=0\)">\(H^t_c(U,\mathbf Q_\ell(a))=0\)</span> for <span class="math" data-tex="\(t&lt;d\)">\(t&lt;d\)</span>. This also explains why an unexamined ordinary inverse limit of an exact sequence would be insufficient.</p>
+<p>The closed-open triangle on proper <span class="math" data-tex="\(X\)">\(X\)</span> gives
+<span class="math math-display" data-tex="\[
+H^r_c(U,\mathbf Q_\ell(a))\longrightarrow H^r(X,\mathbf Q_\ell(a))
+\xrightarrow{i^*}H^r(Y,\mathbf Q_\ell(a))
+\longrightarrow H^{r+1}_c(U,\mathbf Q_\ell(a)).
+\tag{1.5}
+\]">\[
+H^r_c(U,\mathbf Q_\ell(a))\longrightarrow H^r(X,\mathbf Q_\ell(a))
+\xrightarrow{i^*}H^r(Y,\mathbf Q_\ell(a))
+\longrightarrow H^{r+1}_c(U,\mathbf Q_\ell(a)).
+\tag{1.5}
+\]</span>
+Both outer terms vanish when <span class="math" data-tex="\(r&lt;d-1\)">\(r&lt;d-1\)</span>; the first vanishes when <span class="math" data-tex="\(r=d-1\)">\(r=d-1\)</span>. This proves the restriction assertions, including <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, where the asserted isomorphism range in nonnegative degrees is empty.</p>
+<p>For <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, the transpose of restriction under the perfect pairings is the map from <span class="math" data-tex="\(H^{2d-2-r}(Y,\mathbf Q_\ell(d-1))\)">\(H^{2d-2-r}(Y,\mathbf Q_\ell(d-1))\)</span> to <span class="math" data-tex="\(H^{2d-r}(X,\mathbf Q_\ell(d))\)">\(H^{2d-r}(X,\mathbf Q_\ell(d))\)</span>. It is the Gysin counit, because the supporting lesson's projection formula and trace compatibility give
+<span class="math" data-tex="\(\int_Y i^*x\cup y=\int_Xx\cup i_*y\)">\(\int_Y i^*x\cup y=\int_Xx\cup i_*y\)</span>.
+Cancelling the common twist <span class="math" data-tex="\((d)\)">\((d)\)</span> gives exactly (1.3). The dual of an injective map of finite-dimensional spaces is surjective, and the dual of an isomorphism is an isomorphism. The constructions commute with field automorphisms, so the equivariance and the twisted assertions follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, for a smooth <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional pencil fibre and its smooth hyperplane section, the degree-<span class="math" data-tex="\(n-1\)">\(n-1\)</span> restriction is injective and
+<span class="math" data-tex="\(H^{n-1}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)\)">\(H^{n-1}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)\)</span>.
+These are the two maps used in §5, with their precise Tate sign. We have obtained them before any weight theorem or hard Lefschetz theorem.</p>
+<p>Here are three reductions we will use throughout.</p>
+<ul>
+<li>Replacing <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span> by <span class="math" data-tex="\(\mathbf F_{q^r}\)">\(\mathbf F_{q^r}\)</span> replaces <span class="math" data-tex="\(F\)">\(F\)</span> by <span class="math" data-tex="\(F^r\)">\(F^r\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span>. If <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span> is algebraic, then <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is algebraic, since it satisfies <span class="math" data-tex="\(T^r-\alpha^r=0\)">\(T^r-\alpha^r=0\)</span>. Bounds for every conjugate of <span class="math" data-tex="\(\alpha^r\)">\(\alpha^r\)</span> give the corresponding bounds for every conjugate of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by taking <span class="math" data-tex="\(r\)">\(r\)</span>-th roots.</li>
+<li>After a finite extension, Frobenius preserves every geometric component. A smooth connected variety over an algebraically closed field is irreducible, since its regular irreducible components cannot meet. Thus disjoint unions and finite extension reduce to geometrically irreducible varieties of a fixed dimension.</li>
+<li>Duality identifies complementary operators by <span class="math" data-tex="\(\alpha\mapsto q^d/\alpha\)">\(\alpha\mapsto q^d/\alpha\)</span> between degrees <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(2d-i\)">\(2d-i\)</span>. It converts weight <span class="math" data-tex="\(i\)">\(i\)</span> into weight <span class="math" data-tex="\(2d-i\)">\(2d-i\)</span>, with algebraicity and all conjugates preserved.</li>
+</ul>
+<p>We first prove the rationality needed for a pencil. The final purity argument is in §§5–6.</p>
+<h2 id="2-chebotarev-including-constant-fields">2. Chebotarev, including constant fields</h2>
+<p>Let <span class="math" data-tex="\(U_0\)">\(U_0\)</span> be a smooth geometrically connected curve over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, not necessarily proper, and let <span class="math" data-tex="\(Y_0\to U_0\)">\(Y_0\to U_0\)</span> be a connected finite étale Galois cover with group <span class="math" data-tex="\(G\)">\(G\)</span>. Let its field of constants be <span class="math" data-tex="\(\mathbf F_{q^e}\)">\(\mathbf F_{q^e}\)</span>. The geometric subgroup <span class="math" data-tex="\(H\)">\(H\)</span> has index <span class="math" data-tex="\(e\)">\(e\)</span>, with
+<span class="math math-display" data-tex="\[
+1\longrightarrow H\longrightarrow G\longrightarrow
+\mathbf Z/e\mathbf Z\longrightarrow1.
+\tag{2.1}
+\]">\[
+1\longrightarrow H\longrightarrow G\longrightarrow
+\mathbf Z/e\mathbf Z\longrightarrow1.
+\tag{2.1}
+\]</span>
+Choose the quotient generator to be <strong>geometric</strong> constant-field Frobenius. Write <span class="math" data-tex="\(G_d\)">\(G_d\)</span> for the coset mapping to <span class="math" data-tex="\(d\bmod e\)">\(d\bmod e\)</span>. A degree-<span class="math" data-tex="\(d\)">\(d\)</span> geometric Frobenius class can only lie in <span class="math" data-tex="\(G_d\)">\(G_d\)</span>.</p>
+<p>For a conjugacy-invariant subset <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span>, let <span class="math" data-tex="\(A_C(d)\)">\(A_C(d)\)</span> count degree-<span class="math" data-tex="\(d\)">\(d\)</span> closed points of <span class="math" data-tex="\(U_0\)">\(U_0\)</span> whose geometric Frobenius lies in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Theorem 2.1 (Chebotarev with an error bound).</strong> There is a constant <span class="math" data-tex="\(K\)">\(K\)</span>, depending only on the cover and its compactifications, such that
+<span class="math math-display" data-tex="\[
+\left|A_C(d)-
+\frac{e\,|C\cap G_d|}{|G|}\frac{q^d}{d}\right|
+\le K\frac{q^{d/2}}d
+\quad(d\ge1).
+\tag{2.2}
+\]">\[
+\left|A_C(d)-
+\frac{e\,|C\cap G_d|}{|G|}\frac{q^d}{d}\right|
+\le K\frac{q^{d/2}}d
+\quad(d\ge1).
+\tag{2.2}
+\]</span>
+In particular the Dirichlet density of these closed points is <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>.</p>
+<p>One permissible explicit constant is
+<span class="math math-display" data-tex="\[
+K=2g_Y+e+B_Y+(2+2g_U)\frac q{q-1},
+\tag{2.3}
+\]">\[
+K=2g_Y+e+B_Y+(2+2g_U)\frac q{q-1},
+\tag{2.3}
+\]</span>
+where <span class="math" data-tex="\(g_U\)">\(g_U\)</span> is the genus of the smooth projective completion of <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, <span class="math" data-tex="\(g_Y\)">\(g_Y\)</span> is the sum of the genera of the <span class="math" data-tex="\(e\)">\(e\)</span> geometric components of the smooth projective completion of <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>, and <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span> is the number of geometric boundary points of that completion.</p>
+<p><strong>Proof.</strong> We first count rational points over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>, including those of smaller closed degree. To avoid an inverse hidden in a deck-action convention, make this part of the calculation with arithmetic Frobenius <span class="math" data-tex="\(\Phi^d\)">\(\Phi^d\)</span> on geometric points. At the end replace each arithmetic conjugacy class by its inverse; the quotient in (2.1) was chosen with the inverse, geometric generator.</p>
+<p>Fix a compatible arithmetic class represented by <span class="math" data-tex="\(g\)">\(g\)</span>. The operator <span class="math" data-tex="\(g^{-1}\Phi^d\)">\(g^{-1}\Phi^d\)</span> preserves each of the <span class="math" data-tex="\(e\)">\(e\)</span> geometric components of <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>. It is the Frobenius of a twist over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>: twist the constant-field descent datum by the finite-order deck transformation <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>. This is effective finite Galois descent for a quasiprojective variety, or for its projective completion. Compatibility is exactly what makes each component descend over this field. Each resulting completed curve has the same geometric genus as the original component. The curve Riemann hypothesis therefore gives
+<span class="math math-display" data-tex="\[
+\left|\#\operatorname{Fix}(g^{-1}\Phi^d\mid Y)
+-e q^d\right|
+\le 2g_Yq^{d/2}+e+B_Y.
+\tag{2.4}
+\]">\[
+\left|\#\operatorname{Fix}(g^{-1}\Phi^d\mid Y)
+-e q^d\right|
+\le 2g_Yq^{d/2}+e+B_Y.
+\tag{2.4}
+\]</span>
+The <span class="math" data-tex="\(e\)">\(e\)</span> accounts for the constant terms in the projective curve counts; removing the boundary changes the count by at most <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span>. In an incompatible class no component is preserved, so the count is zero.</p>
+<p>Over <span class="math" data-tex="\(u\in U_0(\mathbf F_{q^d})\)">\(u\in U_0(\mathbf F_{q^d})\)</span>, the geometric fibre is a <span class="math" data-tex="\(G\)">\(G\)</span>-torsor. If its arithmetic Frobenius is conjugate to <span class="math" data-tex="\(g\)">\(g\)</span>, exactly <span class="math" data-tex="\(|Z_G(g)|\)">\(|Z_G(g)|\)</span> points in that fibre satisfy <span class="math" data-tex="\(\Phi^d y=g y\)">\(\Phi^d y=g y\)</span>; otherwise none do. Indeed changing a torsor point conjugates the element describing Frobenius, and the number giving a specified conjugate is its centralizer order. Thus (2.4), divided by <span class="math" data-tex="\(|Z_G(g)|\)">\(|Z_G(g)|\)</span>, counts the rational base points with that class. Since <span class="math" data-tex="\(1/|Z_G(g)|=|[g]|/|G|\)">\(1/|Z_G(g)|=|[g]|/|G|\)</span>, summing over compatible classes and then taking inverses gives
+<span class="math math-display" data-tex="\[
+R_C(d):=\#\{u\in U_0(\mathbf F_{q^d}):
+\text{geometric Frobenius over }\mathbf F_{q^d}\text{ lies in }C\}
+\]">\[
+R_C(d):=\#\{u\in U_0(\mathbf F_{q^d}):
+\text{geometric Frobenius over }\mathbf F_{q^d}\text{ lies in }C\}
+\]</span>
+with
+<span class="math math-display" data-tex="\[
+\left|R_C(d)-
+\frac{e|C\cap G_d|}{|G|}q^d\right|
+\le(2g_Y+e+B_Y)q^{d/2}.
+\tag{2.5}
+\]">\[
+\left|R_C(d)-
+\frac{e|C\cap G_d|}{|G|}q^d\right|
+\le(2g_Y+e+B_Y)q^{d/2}.
+\tag{2.5}
+\]</span>
+We used <span class="math" data-tex="\(|C|/|G|\le1\)">\(|C|/|G|\le1\)</span> to obtain a single constant for every <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Every degree-<span class="math" data-tex="\(m\)">\(m\)</span> point, <span class="math" data-tex="\(m\mid d\)">\(m\mid d\)</span>, gives <span class="math" data-tex="\(m\)">\(m\)</span> rational points over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>, with Frobenius the <span class="math" data-tex="\((d/m)\)">\((d/m)\)</span>-th power of its degree-<span class="math" data-tex="\(m\)">\(m\)</span> Frobenius. Consequently
+<span class="math math-display" data-tex="\[
+R_C(d)=dA_C(d)+
+\sum_{\substack{m\mid d\\m&lt;d}}
+m\,\#\{x:\deg x=m,\ F_x^{d/m}\in C\}.
+\tag{2.6}
+\]">\[
+R_C(d)=dA_C(d)+
+\sum_{\substack{m\mid d\\m&lt;d}}
+m\,\#\{x:\deg x=m,\ F_x^{d/m}\in C\}.
+\tag{2.6}
+\]</span>
+Every proper divisor <span class="math" data-tex="\(m\)">\(m\)</span> is at most <span class="math" data-tex="\(d/2\)">\(d/2\)</span>. The omitted sum is bounded by
+<span class="math math-display" data-tex="\[
+\sum_{1\le m\le d/2}\#U_0(\mathbf F_{q^m})
+\le(2+2g_U)\sum_{1\le m\le d/2}q^m
+\le(2+2g_U)\frac q{q-1}q^{d/2}.
+\]">\[
+\sum_{1\le m\le d/2}\#U_0(\mathbf F_{q^m})
+\le(2+2g_U)\sum_{1\le m\le d/2}q^m
+\le(2+2g_U)\frac q{q-1}q^{d/2}.
+\]</span>
+Here the curve count bound is <span class="math" data-tex="\(q^m+1+2g_Uq^{m/2}\)">\(q^m+1+2g_Uq^{m/2}\)</span>, and removing boundary points only decreases it. Combining with (2.5) and dividing by <span class="math" data-tex="\(d\)">\(d\)</span> proves (2.2)–(2.3).</p>
+<p>For density, put <span class="math" data-tex="\(z=q^{1-s}\)">\(z=q^{1-s}\)</span>, <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>, and sum (2.2) against <span class="math" data-tex="\(q^{-sd}\)">\(q^{-sd}\)</span>. The error sum stays bounded as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>. The sequence
+<span class="math" data-tex="\(a_d=e|C\cap G_d|/|G|\)">\(a_d=e|C\cap G_d|/|G|\)</span> has period <span class="math" data-tex="\(e\)">\(e\)</span> and mean <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>. A periodic sequence of mean zero has bounded partial sums; summation by parts shows that its contribution to <span class="math" data-tex="\(\sum a_dz^d/d\)">\(\sum a_dz^d/d\)</span> stays bounded for <span class="math" data-tex="\(0&lt;z&lt;1\)">\(0&lt;z&lt;1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\sum_{\substack{x\in|U_0|\\F_x\in C}}q^{-s\deg x}
+=\frac{|C|}{|G|}\bigl[-\log(1-z)\bigr]+O(1).
+\tag{2.7}
+\]">\[
+\sum_{\substack{x\in|U_0|\\F_x\in C}}q^{-s\deg x}
+=\frac{|C|}{|G|}\bigl[-\log(1-z)\bigr]+O(1).
+\tag{2.7}
+\]</span>
+The total closed-point sum is <span class="math" data-tex="\(-\log(1-z)+O(1)\)">\(-\log(1-z)+O(1)\)</span>, by the curve count and the same proper-divisor estimate. Their ratio tends to <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>, the asserted Dirichlet density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(e&gt;1\)">\(e&gt;1\)</span>, a class can have no points in some degrees. Replacing the coefficient in (2.2) by <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span> in every degree would be false. If the connected base curve has a larger constant field, take that as the base field; rescaling all degrees in the two sums leaves the density statement unchanged. Disconnected bases are handled component by component.</p>
+<p><strong>Corollary 2.2.</strong> In a compact image <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> of <span class="math" data-tex="\(\pi_1(U_0)\)">\(\pi_1(U_0)\)</span>, Frobenius conjugacy classes are dense. A closed conjugacy-invariant subset of Haar measure zero is hit by closed-point Frobenius with Dirichlet density zero.</p>
+<p><strong>Proof.</strong> Every finite quotient of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> corresponds to a connected finite étale Galois cover. A nonempty conjugacy-stable open subset contains the inverse image of a nonempty union of classes in one such quotient; its density is positive by Theorem 2.1. This proves density of the union of Frobenius conjugacy classes.</p>
+<p>For a closed invariant set <span class="math" data-tex="\(Z\)">\(Z\)</span> of measure zero, choose normal open subgroups decreasing to the identity. The inverse images of the images of <span class="math" data-tex="\(Z\)">\(Z\)</span> in their finite quotients are conjugacy-stable clopen neighbourhoods decreasing to <span class="math" data-tex="\(Z\)">\(Z\)</span>. Their normalized Haar measures tend to zero. Theorem 2.1 identifies their closed-point densities with those measures, so the upper density of the points hitting <span class="math" data-tex="\(Z\)">\(Z\)</span> is at most every one of them, hence zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the points with degree <span class="math" data-tex="\(1\bmod M\)">\(1\bmod M\)</span> have density <span class="math" data-tex="\(1/M\)">\(1/M\)</span>: use the constant extension <span class="math" data-tex="\(\mathbf F_{q^M}\)">\(\mathbf F_{q^M}\)</span>. Such a set cannot be contained in a density-zero exceptional set. This elementary consequence will keep the reconstruction argument from assuming a good point in every degree.</p>
+<h2 id="3-avoiding-prescribed-eigenvalues-and-recovering-power-families">3. Avoiding prescribed eigenvalues and recovering power families</h2>
+<h3 id="the-measure-zero-step">The measure-zero step</h3>
+<p>Let <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> be a nonzero lisse sheaf with a nondegenerate alternating pairing into <span class="math" data-tex="\(\mathbf Q_\ell(-n)\)">\(\mathbf Q_\ell(-n)\)</span>, and open geometric monodromy in its symplectic group. This is the vanishing quotient from Lesson 9, with odd <span class="math" data-tex="\(n\)">\(n\)</span>. The following argument does not assume its local polynomials are rational.</p>
+<p>Write <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> for the compact image of
+<span class="math math-display" data-tex="\[
+\pi_1(U_0)\longrightarrow\widehat{\mathbf Z}
+\times\operatorname{GSp}(V),\qquad h\longmapsto(\deg h,\rho(h)),
+\tag{3.1}
+\]">\[
+\pi_1(U_0)\longrightarrow\widehat{\mathbf Z}
+\times\operatorname{GSp}(V),\qquad h\longmapsto(\deg h,\rho(h)),
+\tag{3.1}
+\]</span>
+using geometric Frobenius as the degree generator. Then
+<span class="math" data-tex="\(\mu(\rho(h))=q^{n\deg h}\)">\(\mu(\rho(h))=q^{n\deg h}\)</span>, where <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is the similitude multiplier. The degree projection is surjective. Its kernel is an open compact subgroup of <span class="math" data-tex="\(\operatorname{Sp}(V)\)">\(\operatorname{Sp}(V)\)</span>. The degree-<span class="math" data-tex="\(z\)">\(z\)</span> fibre is a translate of that kernel inside the algebraic similitude fibre with multiplier <span class="math" data-tex="\(q^{nz}\)">\(q^{nz}\)</span>.</p>
+<p>In fact <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is open in the ambient group
+<span class="math" data-tex="\(\{(z,g):\mu(g)=q^{nz}\}\)">\(\{(z,g):\mu(g)=q^{nz}\}\)</span>. Here is a direct topological proof. If it were not open, take elements <span class="math" data-tex="\(h_i\notin\Gamma\)">\(h_i\notin\Gamma\)</span> tending to the identity. Choose <span class="math" data-tex="\(\gamma_i\in\Gamma\)">\(\gamma_i\in\Gamma\)</span> with the same degree. Compactness gives a convergent subsequence <span class="math" data-tex="\(\gamma_i\to\gamma\)">\(\gamma_i\to\gamma\)</span>, with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in the degree-zero kernel. Now <span class="math" data-tex="\(h_i\gamma_i^{-1}\)">\(h_i\gamma_i^{-1}\)</span> lies in the ambient symplectic kernel and tends to <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span>. Openness of the geometric image in that kernel forces these elements eventually into <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, hence <span class="math" data-tex="\(h_i\in\Gamma\)">\(h_i\in\Gamma\)</span>, a contradiction. These groups are metrizable, so the sequence criterion for openness used here applies.</p>
+<p>For any <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic unit <span class="math" data-tex="\(\delta\)">\(\delta\)</span> in a finite extension of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, the power <span class="math" data-tex="\(\delta^z\)">\(\delta^z\)</span> is defined continuously for <span class="math" data-tex="\(z\in\widehat{\mathbf Z}\)">\(z\in\widehat{\mathbf Z}\)</span>: exponentiation of integers extends into the compact closure of its cyclic unit subgroup. Consider
+<span class="math math-display" data-tex="\[
+Z_\delta=\{(z,g)\in\Gamma:\det(g-\delta^z)=0\}.
+\tag{3.2}
+\]">\[
+Z_\delta=\{(z,g)\in\Gamma:\det(g-\delta^z)=0\}.
+\tag{3.2}
+\]</span>
+It is closed and conjugacy-invariant.</p>
+<p>For fixed <span class="math" data-tex="\(z\)">\(z\)</span>, the eigenvalue equation is a proper algebraic hypersurface in the similitude fibre. To check properness, in a symplectic basis choose a diagonal similitude with eigenvalues
+<span class="math math-display" data-tex="\[
+t_1,\ldots,t_r,\quad q^{nz}/t_1,\ldots,q^{nz}/t_r;
+\]">\[
+t_1,\ldots,t_r,\quad q^{nz}/t_1,\ldots,q^{nz}/t_r;
+\]</span>
+each nonzero <span class="math" data-tex="\(t_i\in\mathbf Q_\ell\)">\(t_i\in\mathbf Q_\ell\)</span> can avoid the finitely many values making one of these equal <span class="math" data-tex="\(\delta^z\)">\(\delta^z\)</span>. Thus the equation is not identically zero. Its restriction to any nonempty analytic open ball in that fibre is also not identically zero, since the fibre is an irreducible translate of the symplectic group.</p>
+<p>For completeness, a nonzero convergent <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic analytic function on a ball has a zero set of measure zero. In one variable, after rescaling to the unit ball, let <span class="math" data-tex="\(N\)">\(N\)</span> be the largest index at which the coefficient has maximal absolute value; the coefficients tend to zero. Division by a root <span class="math" data-tex="\(a\)">\(a\)</span> in the ball gives coefficients
+<span class="math math-display" data-tex="\[
+b_j=\sum_{i\ge j+1}a_i a^{i-j-1},
+\]">\[
+b_j=\sum_{i\ge j+1}a_i a^{i-j-1},
+\]</span>
+and lowers that largest maximal index by one. If <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the constant term dominates and there is no root. Induction gives at most <span class="math" data-tex="\(N\)">\(N\)</span> distinct roots. This is the elementary Strassmann argument. In several variables, expand in the last variable. At least one coefficient is a nonzero analytic function of the other variables. By induction its zero set has measure zero; off that set the last-variable function has only finitely many roots. Fubini proves the claim. Analytic group charts identify Haar measure with a nonvanishing local density times product <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic measure, so the same conclusion holds on our compact open fibre.</p>
+<p>Conditional Haar measure on each fibre of <span class="math" data-tex="\(\Gamma\to\widehat{\mathbf Z}\)">\(\Gamma\to\widehat{\mathbf Z}\)</span> is translated Haar measure on its kernel. The fibre of <span class="math" data-tex="\(Z_\delta\)">\(Z_\delta\)</span> therefore has measure zero for every <span class="math" data-tex="\(z\)">\(z\)</span>, and Fubini gives <span class="math" data-tex="\(\operatorname{measure}(Z_\delta)=0\)">\(\operatorname{measure}(Z_\delta)=0\)</span>. Corollary 2.2 now proves:</p>
+<p><strong>Lemma 3.1.</strong> The closed points <span class="math" data-tex="\(x\)">\(x\)</span> for which <span class="math" data-tex="\(\delta^{\deg x}\)">\(\delta^{\deg x}\)</span> is an eigenvalue of <span class="math" data-tex="\(F_x\)">\(F_x\)</span> on <span class="math" data-tex="\(\mathcal V_{0,x}\)">\(\mathcal V_{0,x}\)</span> have Dirichlet density zero. The same holds for a finite union of prescribed units.</p>
+<p>This supplies Deligne's (6.11)–(6.13), with the measure-zero and finite-quotient density steps made explicit. In the source, the degree generator in the multiplier equation is arithmetic; (3.1) uses the geometric generator, so the exponent has the corresponding opposite sign.</p>
+<h3 id="power-family-rigidity">Power-family rigidity</h3>
+<p>For a finite multiset <span class="math" data-tex="\(A\)">\(A\)</span> of field elements write
+<span class="math math-display" data-tex="\[
+A^{[d]}=\{a^d:a\in A\},\qquad
+P_A^{[d]}(T)=\prod_{a\in A}(1-a^dT).
+\tag{3.3}
+\]">\[
+A^{[d]}=\{a^d:a\in A\},\qquad
+P_A^{[d]}(T)=\prod_{a\in A}(1-a^dT).
+\tag{3.3}
+\]</span>
+Multiplicities are retained.</p>
+<p><strong>Lemma 3.2 (Deligne (6.7)).</strong> Let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be finite multisets in a field. If <span class="math" data-tex="\(A^{[d]}=B^{[d]}\)">\(A^{[d]}=B^{[d]}\)</span> for every sufficiently large positive <span class="math" data-tex="\(d\)">\(d\)</span> not divisible by any member of a fixed finite set of integers at least <span class="math" data-tex="\(2\)">\(2\)</span>, then <span class="math" data-tex="\(A=B\)">\(A=B\)</span>.</p>
+<p><strong>Proof.</strong> Equality for one such <span class="math" data-tex="\(d\)">\(d\)</span> gives equal cardinalities and equal numbers of zeros; remove the zero entries. If an entry <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> equals no entry <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, the positive integers satisfying <span class="math" data-tex="\(a^d=b^d\)">\(a^d=b^d\)</span> are either absent or the multiples of the order <span class="math" data-tex="\(h_b\ge2\)">\(h_b\ge2\)</span> of the root of unity <span class="math" data-tex="\(a/b\)">\(a/b\)</span>. Choose <span class="math" data-tex="\(M\)">\(M\)</span> divisible by all these finitely many orders and by all the prescribed excluded integers. Arbitrarily large <span class="math" data-tex="\(d\equiv1\bmod M\)">\(d\equiv1\bmod M\)</span> avoid them all. Then <span class="math" data-tex="\(a^d\)">\(a^d\)</span> equals no entry of <span class="math" data-tex="\(B^{[d]}\)">\(B^{[d]}\)</span>, a contradiction. Some equal pair can therefore be removed; equality of the power multisets survives removing it, and induction proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The excluded integers must be nontrivial positive divisors. Allowing an exclusion that divides every positive integer would make the hypothesis vacuous.</p>
+<p>We also need its sparse closed-point version: if two finite multisets of nonzero elements have equal degree-power multisets outside a density-zero exceptional set and finitely many divisibility exclusions, they are equal. The identical proof works: choose <span class="math" data-tex="\(M\)">\(M\)</span> as above, and Corollary 2.2 supplies a good closed point of degree <span class="math" data-tex="\(1\bmod M\)">\(1\bmod M\)</span>. Remove equal pairs and repeat. It is not necessary to claim a good point in each sufficiently large degree.</p>
+<p><strong>Lemma 3.3 (denominator and universal-divisor detection).</strong> For <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> as above, let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> be finite multisets of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic units, with no common entry. Outside a density-zero set and finitely many nontrivial degree-divisibility conditions, the reduced denominator of
+<span class="math math-display" data-tex="\[
+\det(1-F_xT\mid\mathcal V_{0,x})
+\frac{P_A^{[\deg x]}(T)}{P_B^{[\deg x]}(T)}
+\tag{3.4}
+\]">\[
+\det(1-F_xT\mid\mathcal V_{0,x})
+\frac{P_A^{[\deg x]}(T)}{P_B^{[\deg x]}(T)}
+\tag{3.4}
+\]</span>
+is exactly <span class="math" data-tex="\(P_B^{[\deg x]}(T)\)">\(P_B^{[\deg x]}(T)\)</span>. Moreover, if for finite unit multisets <span class="math" data-tex="\(R,S\)">\(R,S\)</span>,
+<span class="math math-display" data-tex="\[
+P_S^{[\deg x]}\ \mid\
+P_R^{[\deg x]}\det(1-F_xT\mid\mathcal V_{0,x})
+\quad\text{for every }x,
+\tag{3.5}
+\]">\[
+P_S^{[\deg x]}\ \mid\
+P_R^{[\deg x]}\det(1-F_xT\mid\mathcal V_{0,x})
+\quad\text{for every }x,
+\tag{3.5}
+\]</span>
+then <span class="math" data-tex="\(P_S^{[1]}\mid P_R^{[1]}\)">\(P_S^{[1]}\mid P_R^{[1]}\)</span>.</p>
+<p><strong>Proof.</strong> A collision <span class="math" data-tex="\(a^d=b^d\)">\(a^d=b^d\)</span> with <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span> can occur only when <span class="math" data-tex="\(d\)">\(d\)</span> is divisible by a root-of-unity order at least <span class="math" data-tex="\(2\)">\(2\)</span>. Exclude these finitely many orders. Lemma 3.1 excludes, on a density-zero set, all occurrences of <span class="math" data-tex="\(b^{\deg x}\)">\(b^{\deg x}\)</span> as a varying eigenvalue. No denominator factor in (3.4) can then cancel.</p>
+<p>For (3.5), cancel common entries of <span class="math" data-tex="\(R,S\)">\(R,S\)</span>, with multiplicity. If <span class="math" data-tex="\(S\)">\(S\)</span> still has an entry <span class="math" data-tex="\(s\)">\(s\)</span>, exclude its possible degree-power coincidences with <span class="math" data-tex="\(R\)">\(R\)</span> and its varying-eigenvalue exceptional set. A degree-<span class="math" data-tex="\(1\bmod M\)">\(1\bmod M\)</span> point outside that exceptional set exists by Corollary 2.2. At this point <span class="math" data-tex="\(s^{\deg x}\)">\(s^{\deg x}\)</span> is a reciprocal root of the left polynomial but not the right polynomial, contradicting divisibility. No entry of <span class="math" data-tex="\(S\)">\(S\)</span> remains. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-rationality-of-the-vanishing-quotient">4. Rationality of the vanishing quotient</h2>
+<p>Let <span class="math" data-tex="\(f_0:\widetilde X_0\to D_0\simeq\mathbf P^1_{\mathbf F_q}\)">\(f_0:\widetilde X_0\to D_0\simeq\mathbf P^1_{\mathbf F_q}\)</span> be a Lefschetz pencil on a smooth projective geometrically connected variety of even dimension <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, so <span class="math" data-tex="\(n\)">\(n\)</span> is odd. Let <span class="math" data-tex="\(U_0=D_0-S_0\)">\(U_0=D_0-S_0\)</span>. On <span class="math" data-tex="\(U_0\)">\(U_0\)</span> put
+<span class="math math-display" data-tex="\[
+\mathcal H_0=(R^nf_{0*}\mathbf Q_\ell)|_{U_0},\qquad
+\mathcal E_0=\text{vanishing subspace sheaf},\qquad
+\mathcal R_0=\mathcal E_0\cap\mathcal E_0^\perp,\qquad
+\mathcal V_0=\mathcal E_0/\mathcal R_0.
+\tag{4.1}
+\]">\[
+\mathcal H_0=(R^nf_{0*}\mathbf Q_\ell)|_{U_0},\qquad
+\mathcal E_0=\text{vanishing subspace sheaf},\qquad
+\mathcal R_0=\mathcal E_0\cap\mathcal E_0^\perp,\qquad
+\mathcal V_0=\mathcal E_0/\mathcal R_0.
+\tag{4.1}
+\]</span>
+These are defined arithmetically: Frobenius permutes the local vanishing directions and preserves their span, orthogonal complement and radical. The pairing on <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> is alternating, nondegenerate and valued in <span class="math" data-tex="\(\mathbf Q_\ell(-n)\)">\(\mathbf Q_\ell(-n)\)</span>. The twist convention in (4.1) is <strong>untwisted</strong> middle cohomology, unlike the scalar-normalized notation of Lesson 9.</p>
+<p><strong>Theorem 4.1 (Deligne (6.2)).</strong> For every closed point <span class="math" data-tex="\(x\in U_0\)">\(x\in U_0\)</span>,
+<span class="math math-display" data-tex="\[
+P_x(T):=\det(1-F_xT\mid\mathcal V_{0,x})\in\mathbf Q[T].
+\tag{4.2}
+\]">\[
+P_x(T):=\det(1-F_xT\mid\mathcal V_{0,x})\in\mathbf Q[T].
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\mathcal V_0=0\)">\(\mathcal V_0=0\)</span>, then <span class="math" data-tex="\(P_x=1\)">\(P_x=1\)</span>. Assume otherwise. Lesson 9 gives open geometric symplectic monodromy, so Lemmas 3.1–3.3 apply.</p>
+<p>The sheaves <span class="math" data-tex="\(R^if_{0*}\mathbf Q_\ell\)">\(R^if_{0*}\mathbf Q_\ell\)</span> for <span class="math" data-tex="\(i\ne n\)">\(i\ne n\)</span>, <span class="math" data-tex="\(\mathcal H_0/\mathcal E_0\)">\(\mathcal H_0/\mathcal E_0\)</span>, and <span class="math" data-tex="\(\mathcal R_0\)">\(\mathcal R_0\)</span> are geometrically constant. For the quotient, local Picard–Lefschetz transformations differ from the identity by vectors in <span class="math" data-tex="\(\mathcal E_0\)">\(\mathcal E_0\)</span>; for the radical, Lesson 9 identifies it with a subspace of the geometric invariants. A geometrically constant lisse sheaf comes from a representation of <span class="math" data-tex="\(\operatorname{Gal}(\overline{\mathbf F}_q/\mathbf F_q)\)">\(\operatorname{Gal}(\overline{\mathbf F}_q/\mathbf F_q)\)</span>, so its degree-<span class="math" data-tex="\(d\)">\(d\)</span> polynomial is the product of <span class="math" data-tex="\(1-\lambda^dT\)">\(1-\lambda^dT\)</span> over the eigenvalues <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of base-field Frobenius.</p>
+<p>These eigenvalues are <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic units. Indeed any compact <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic matrix group preserves a lattice: the sum of all translates of a fixed lattice is contained in a bounded larger lattice, hence finitely generated, and is stable. Both a matrix and its inverse are integral on that stable lattice, so every eigenvalue and its inverse are integral.</p>
+<p>The cohomological zeta formula for the smooth fibre <span class="math" data-tex="\(X_x\)">\(X_x\)</span>, and the filtration
+<span class="math" data-tex="\(\mathcal R_0\subset\mathcal E_0\subset\mathcal H_0\)">\(\mathcal R_0\subset\mathcal E_0\subset\mathcal H_0\)</span>, now give finite unit multisets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, independent of <span class="math" data-tex="\(x\)">\(x\)</span>, such that
+<span class="math math-display" data-tex="\[
+Z(X_x,T)=P_x(T)
+\frac{P_A^{[d_x]}(T)}{P_B^{[d_x]}(T)}\in\mathbf Q(T).
+\tag{4.3}
+\]">\[
+Z(X_x,T)=P_x(T)
+\frac{P_A^{[d_x]}(T)}{P_B^{[d_x]}(T)}\in\mathbf Q(T).
+\tag{4.3}
+\]</span>
+The middle dimension <span class="math" data-tex="\(n\)">\(n\)</span> is odd, so its determinant occurs in the numerator. All its remaining factors and every other degree factor are constant-field factors of the indicated type. The last rationality is the whole-fibre zeta rationality proved in Lesson 8; it does not assume rationality of the individual middle quotient. Cancel common entries of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>.</p>
+<p>By Lemma 3.3, at good points the normalized reduced denominator of (4.3) is exactly <span class="math" data-tex="\(P_B^{[d_x]}\)">\(P_B^{[d_x]}\)</span>. It is therefore rational. A good point exists, so every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is algebraic over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>: <span class="math" data-tex="\(b^{d_x}\)">\(b^{d_x}\)</span> is a reciprocal root of a rational polynomial, and taking a <span class="math" data-tex="\(d_x\)">\(d_x\)</span>-th root preserves algebraicity. Moreover every conjugate of <span class="math" data-tex="\(b\)">\(b\)</span> remains an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic unit. Its degree power is a reciprocal root of that same polynomial, all of whose reciprocal roots are the original unit entries <span class="math" data-tex="\(b&#x27;^{\,d_x}\)">\(b&#x27;^{\,d_x}\)</span>.</p>
+<p>For every automorphism <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of <span class="math" data-tex="\(\overline{\mathbf Q}/\mathbf Q\)">\(\overline{\mathbf Q}/\mathbf Q\)</span>, rationality of the good-point reduced denominators gives
+<span class="math math-display" data-tex="\[
+B^{[d_x]}=(\sigma B)^{[d_x]}
+\quad\text{at all good points}.
+\]">\[
+B^{[d_x]}=(\sigma B)^{[d_x]}
+\quad\text{at all good points}.
+\]</span>
+The sparse rigidity statement after Lemma 3.2 implies <span class="math" data-tex="\(B=\sigma B\)">\(B=\sigma B\)</span>. Hence <span class="math" data-tex="\(P_B^{[1]}\in\mathbf Q[T]\)">\(P_B^{[1]}\in\mathbf Q[T]\)</span>.</p>
+<p>Multiplying (4.3) by <span class="math" data-tex="\(P_B^{[d_x]}\)">\(P_B^{[d_x]}\)</span> gives, at every point, the polynomial
+<span class="math math-display" data-tex="\[
+Q_x(T)=P_x(T)P_A^{[d_x]}(T)\in\mathbf Q[T].
+\tag{4.4}
+\]">\[
+Q_x(T)=P_x(T)P_A^{[d_x]}(T)\in\mathbf Q[T].
+\tag{4.4}
+\]</span>
+The right expression is a polynomial, and the left is a rational function over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>; its finite Taylor coefficients therefore are rational. Every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> is algebraic by taking a reciprocal root of one such <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>. Its conjugates are units as well: all reciprocal roots of <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> are unit eigenvalues from <span class="math" data-tex="\(P_x\)">\(P_x\)</span> or unit entries from <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Since <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is rational, <span class="math" data-tex="\(P_{\sigma A}^{[d_x]}\)">\(P_{\sigma A}^{[d_x]}\)</span> divides <span class="math" data-tex="\(Q_x=P_xP_A^{[d_x]}\)">\(Q_x=P_xP_A^{[d_x]}\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. This is genuine polynomial divisibility over <span class="math" data-tex="\(\overline{\mathbf Q}\)">\(\overline{\mathbf Q}\)</span>: the original divisor is algebraic, and polynomial division of <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> by it has zero remainder. Lemma 3.3 yields <span class="math" data-tex="\(P_{\sigma A}^{[1]}\mid P_A^{[1]}\)">\(P_{\sigma A}^{[1]}\mid P_A^{[1]}\)</span>. They have equal degrees, so they coincide. Thus <span class="math" data-tex="\(P_A^{[1]}\in\mathbf Q[T]\)">\(P_A^{[1]}\in\mathbf Q[T]\)</span>.</p>
+<p>Finally (4.3) expresses <span class="math" data-tex="\(P_x=Z(X_x,T)P_B^{[d_x]}/P_A^{[d_x]}\)">\(P_x=Z(X_x,T)P_B^{[d_x]}/P_A^{[d_x]}\)</span> as a rational function over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. It is already known to be a polynomial; hence it belongs to <span class="math" data-tex="\(\mathbf Q[T]\)">\(\mathbf Q[T]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conjugates in this argument were proved to be units using rational point polynomials before Lemma 3.3 was applied to them. No assumption that an arbitrary automorphism of an algebraic closure of <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span> preserves its valuation was made. The sparse rigidity argument also avoids strengthening density zero into a nonexistent guarantee about every degree.</p>
+<p><strong>Corollary 4.2.</strong> The eigenvalues on
+<span class="math" data-tex="\(H^1(D,j_*\mathcal V)\)">\(H^1(D,j_*\mathcal V)\)</span> are algebraic, and all conjugates satisfy
+<span class="math math-display" data-tex="\[
+q^{n/2}\le|\alpha|\le q^{n/2+1}.
+\tag{4.5}
+\]">\[
+q^{n/2}\le|\alpha|\le q^{n/2+1}.
+\tag{4.5}
+\]</span>
+<strong>Proof.</strong> The pairing, Lesson 9's openness, and Theorem 4.1 verify all hypotheses of the fundamental estimate with <span class="math" data-tex="\(\beta=n\)">\(\beta=n\)</span>. Apply Lesson 10, Corollary 6.2. This is Deligne (6.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-even-dimensional-estimate">5. The even-dimensional estimate</h2>
+<p><strong>Lemma 5.1 (Deligne (7.1)).</strong> Let <span class="math" data-tex="\(X_0\)">\(X_0\)</span> be smooth, projective and geometrically irreducible, of even dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Every eigenvalue on <span class="math" data-tex="\(H^d(X,\mathbf Q_\ell)\)">\(H^d(X,\mathbf Q_\ell)\)</span> is algebraic and every complex conjugate satisfies
+<span class="math math-display" data-tex="\[
+q^{d/2-1/2}\le|\alpha|\le q^{d/2+1/2}.
+\tag{5.1}
+\]">\[
+q^{d/2-1/2}\le|\alpha|\le q^{d/2+1/2}.
+\tag{5.1}
+\]</span></p>
+<p><strong>Proof.</strong> Induct over even <span class="math" data-tex="\(d\)">\(d\)</span>. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> is a point and the only eigenvalue is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(d=n+1=2m+2\ge2\)">\(d=n+1=2m+2\ge2\)</span>. By Lesson 9 and the finite-extension reduction, choose a Lefschetz pencil after re-embedding. Extend the field further so that its singular parameters are rational, its sign-defined vanishing cycles in <span class="math" data-tex="\(H^n(m)\)">\(H^n(m)\)</span> are defined over the field, it has a rational smooth member <span class="math" data-tex="\(X_u\)">\(X_u\)</span>, and that member has a smooth hyperplane section <span class="math" data-tex="\(Y\)">\(Y\)</span> defined over the field. Each condition requires only a finite extension. The section <span class="math" data-tex="\(Y\)">\(Y\)</span> has even dimension <span class="math" data-tex="\(d-2\)">\(d-2\)</span>; if it is disconnected, apply the induction componentwise.</p>
+<p>The codimension-two blow-up formula injects <span class="math" data-tex="\(H^d(X)\)">\(H^d(X)\)</span> as a Frobenius-stable summand of <span class="math" data-tex="\(H^d(\widetilde X)\)">\(H^d(\widetilde X)\)</span>. For <span class="math" data-tex="\(f:\widetilde X\to D=\mathbf P^1\)">\(f:\widetilde X\to D=\mathbf P^1\)</span>, Leray gives a Frobenius-equivariant filtration whose associated pieces are subquotients of
+<span class="math math-display" data-tex="\[
+H^2(D,R^{n-1}f_*\mathbf Q_\ell),\quad
+H^1(D,R^nf_*\mathbf Q_\ell),\quad
+H^0(D,R^{n+1}f_*\mathbf Q_\ell).
+\tag{5.2}
+\]">\[
+H^2(D,R^{n-1}f_*\mathbf Q_\ell),\quad
+H^1(D,R^nf_*\mathbf Q_\ell),\quad
+H^0(D,R^{n+1}f_*\mathbf Q_\ell).
+\tag{5.2}
+\]</span>
+It suffices to bound every eigenvalue on these three terms. Taking invariant subspaces, quotients or finite extensions of representations cannot introduce a new eigenvalue. No degeneration of Leray is asserted.</p>
+<p><strong>The first term.</strong> The sheaf <span class="math" data-tex="\(R^{n-1}f_*\mathbf Q_\ell\)">\(R^{n-1}f_*\mathbf Q_\ell\)</span> is geometrically constant in both pencil alternatives of Lesson 9. Its arithmetic fibre is <span class="math" data-tex="\(H^{n-1}(X_u)\)">\(H^{n-1}(X_u)\)</span>, hence the term is
+<span class="math" data-tex="\(H^{n-1}(X_u)(-1)\)">\(H^{n-1}(X_u)(-1)\)</span>. Weak Lefschetz gives the equivariant injection
+<span class="math math-display" data-tex="\[
+H^{n-1}(X_u)(-1)\hookrightarrow
+H^{d-2}(Y)(-1).
+\tag{5.3}
+\]">\[
+H^{n-1}(X_u)(-1)\hookrightarrow
+H^{d-2}(Y)(-1).
+\tag{5.3}
+\]</span>
+The induction bound for <span class="math" data-tex="\(Y\)">\(Y\)</span> is <span class="math" data-tex="\(q^{(d-2)/2\pm1/2}\)">\(q^{(d-2)/2\pm1/2}\)</span>. Twisting by <span class="math" data-tex="\((-1)\)">\((-1)\)</span> multiplies eigenvalues by <span class="math" data-tex="\(q\)">\(q\)</span>, giving (5.1).</p>
+<p><strong>The third term.</strong> The dual Gysin map
+<span class="math math-display" data-tex="\[
+H^{d-2}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)
+\tag{5.4}
+\]">\[
+H^{d-2}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)
+\tag{5.4}
+\]</span>
+is surjective, so the same bound applies to its target. If the cycles are nonzero, <span class="math" data-tex="\(R^{n+1}f_*\mathbf Q_\ell\)">\(R^{n+1}f_*\mathbf Q_\ell\)</span> is geometrically constant and its <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is this target. If the cycles are zero, the global exceptional sequence of Lesson 9 makes its <span class="math" data-tex="\(H^0\)">\(H^0\)</span> an extension of that target by a subquotient of
+<span class="math math-display" data-tex="\[
+\bigoplus_{s\in S}\mathbf Q_\ell(m-n).
+\tag{5.5}
+\]">\[
+\bigoplus_{s\in S}\mathbf Q_\ell(m-n).
+\tag{5.5}
+\]</span>
+There is no <span class="math" data-tex="\(H^1\)">\(H^1\)</span> of this punctual sheaf. Since <span class="math" data-tex="\(m-n=-d/2\)">\(m-n=-d/2\)</span>, Frobenius on (5.5) is <span class="math" data-tex="\(q^{d/2}\)">\(q^{d/2}\)</span>, within (5.1). This uses the chosen field of definition of the sign-defined cycles.</p>
+<p><strong>The middle term.</strong> Put <span class="math" data-tex="\(M=R^nf_*\mathbf Q_\ell\)">\(M=R^nf_*\mathbf Q_\ell\)</span>. If all cycles are zero, <span class="math" data-tex="\(M\)">\(M\)</span> is geometrically constant and <span class="math" data-tex="\(H^1(D,M)=0\)">\(H^1(D,M)=0\)</span>. Otherwise <span class="math" data-tex="\(M=j_*\mathcal H\)">\(M=j_*\mathcal H\)</span>. Use <span class="math" data-tex="\(\mathcal E,\mathcal R,\mathcal V\)">\(\mathcal E,\mathcal R,\mathcal V\)</span> from (4.1); the vanishing cycles are conjugate.</p>
+<p>First suppose their images in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> are nonzero. The following sequences of sheaves on <span class="math" data-tex="\(D\)">\(D\)</span> are exact:
+<span class="math math-display" data-tex="\[
+0\to j_*\mathcal E\to M\to C_1\to0,\qquad
+0\to C_2\to j_*\mathcal E\to j_*\mathcal V\to0,
+\tag{5.6}
+\]">\[
+0\to j_*\mathcal E\to M\to C_1\to0,\qquad
+0\to C_2\to j_*\mathcal E\to j_*\mathcal V\to0,
+\tag{5.6}
+\]</span>
+where <span class="math" data-tex="\(C_1\)">\(C_1\)</span> is the geometrically constant quotient <span class="math" data-tex="\(\mathcal H/\mathcal E\)">\(\mathcal H/\mathcal E\)</span>, and <span class="math" data-tex="\(C_2=j_*\mathcal R\)">\(C_2=j_*\mathcal R\)</span> is geometrically constant.</p>
+<p>We check surjectivity at a singular point, where taking inertia invariants need not generally be exact. A stalk of <span class="math" data-tex="\(M\)">\(M\)</span> is
+<span class="math" data-tex="\(\delta_s^\perp\subset H^n(X_u)\)">\(\delta_s^\perp\subset H^n(X_u)\)</span>. Any class of <span class="math" data-tex="\(H/\mathcal E\)">\(H/\mathcal E\)</span> has a representative orthogonal to <span class="math" data-tex="\(\delta_s\)">\(\delta_s\)</span>: adjust it by an element of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, whose pairing with <span class="math" data-tex="\(\delta_s\)">\(\delta_s\)</span> is nonzero for a suitable element because <span class="math" data-tex="\(\delta_s\notin\mathcal R\)">\(\delta_s\notin\mathcal R\)</span>. This proves the first surjectivity. For the second, an invariant class in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is orthogonal to the nonzero <span class="math" data-tex="\(\bar\delta_s\)">\(\bar\delta_s\)</span>. Every lift in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> has that same pairing, since <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> pairs trivially; hence the lift is inertia-invariant. This proves the second surjectivity. The kernels are the indicated subspaces, and away from <span class="math" data-tex="\(S\)">\(S\)</span> exactness is immediate.</p>
+<p>Since <span class="math" data-tex="\(H^1(D,C_i)=0\)">\(H^1(D,C_i)=0\)</span>, the long exact sequences give a surjection
+<span class="math math-display" data-tex="\[
+H^1(D,j_*\mathcal E)\twoheadrightarrow H^1(D,M)
+\]">\[
+H^1(D,j_*\mathcal E)\twoheadrightarrow H^1(D,M)
+\]</span>
+and an injection
+<span class="math math-display" data-tex="\[
+H^1(D,j_*\mathcal E)\hookrightarrow H^1(D,j_*\mathcal V).
+\]">\[
+H^1(D,j_*\mathcal E)\hookrightarrow H^1(D,j_*\mathcal V).
+\]</span>
+Thus <span class="math" data-tex="\(H^1(D,M)\)">\(H^1(D,M)\)</span> is a subquotient of the space in Corollary 4.2. Its bounds <span class="math" data-tex="\(q^{n/2}\)">\(q^{n/2}\)</span> to <span class="math" data-tex="\(q^{n/2+1}\)">\(q^{n/2+1}\)</span> are precisely (5.1).</p>
+<p>The remaining alternative is that the nonzero cycles all belong to the radical. Their span is then <span class="math" data-tex="\(\mathcal E=\mathcal R\subset\mathcal E^\perp\)">\(\mathcal E=\mathcal R\subset\mathcal E^\perp\)</span>, and <span class="math" data-tex="\(\mathcal E^\perp\)">\(\mathcal E^\perp\)</span> is geometrically constant by the invariant-space theorem. The quotient <span class="math" data-tex="\(C=\mathcal H/\mathcal E^\perp\)">\(C=\mathcal H/\mathcal E^\perp\)</span> is also geometrically constant: every local transformation changes a vector by a vector in <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, hence acts trivially on this quotient. At <span class="math" data-tex="\(s\)">\(s\)</span>, the image of <span class="math" data-tex="\(M_s=\delta_s^\perp\)">\(M_s=\delta_s^\perp\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span> is the kernel of the nonzero functional given by pairing with <span class="math" data-tex="\(\delta_s\)">\(\delta_s\)</span>. Consequently there are exact sequences
+<span class="math math-display" data-tex="\[
+0\to j_*\mathcal E^\perp\to M\to K\to0,\qquad
+0\to K\to C\to
+\bigoplus_{s\in S}\mathbf Q_\ell(m-n)_s\to0.
+\tag{5.7}
+\]">\[
+0\to j_*\mathcal E^\perp\to M\to K\to0,\qquad
+0\to K\to C\to
+\bigoplus_{s\in S}\mathbf Q_\ell(m-n)_s\to0.
+\tag{5.7}
+\]</span>
+The final map is surjective at each punctual stalk because <span class="math" data-tex="\(\delta_s\ne0\)">\(\delta_s\ne0\)</span> and the full fibre pairing is nondegenerate. Since the two constant sheaves have no <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, these sequences inject <span class="math" data-tex="\(H^1(D,M)\)">\(H^1(D,M)\)</span> into <span class="math" data-tex="\(H^1(D,K)\)">\(H^1(D,K)\)</span>, which is a quotient of (5.5). Its eigenvalues are therefore <span class="math" data-tex="\(q^{d/2}\)">\(q^{d/2}\)</span>.</p>
+<p>This last case is needed before hard Lefschetz has been proved. The punctual line in (5.7) has twist <span class="math" data-tex="\(m-n=-d/2\)">\(m-n=-d/2\)</span>, as follows directly from <span class="math" data-tex="\(x\mapsto(x,\delta_s)\)">\(x\mapsto(x,\delta_s)\)</span> with <span class="math" data-tex="\(\delta_s\in H^n(m)\)">\(\delta_s\in H^n(m)\)</span>. The printed <span class="math" data-tex="\(n-m\)">\(n-m\)</span> in Deligne's (7.1.5) and its following cohomology line would give <span class="math" data-tex="\(q^{-d/2}\)">\(q^{-d/2}\)</span>, contrary to the stated <span class="math" data-tex="\(q^{d/2}\)">\(q^{d/2}\)</span>. The local pairing fixes the sign used here.</p>
+<p>All terms in (5.2) have algebraic eigenvalues with the all-conjugates bound (5.1). The Leray filtration and the blow-up summand then prove the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-removing-the-error-and-proving-all-degrees">6. Removing the error and proving all degrees</h2>
+<p><strong>Proposition 6.1.</strong> Middle cohomology of a smooth projective geometrically irreducible <span class="math" data-tex="\(d\)">\(d\)</span>-fold is pure of weight <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> For every positive even <span class="math" data-tex="\(k\)">\(k\)</span>, Künneth places
+<span class="math math-display" data-tex="\[
+H^d(X)^{\otimes k}\subset H^{kd}(X^k)
+\]">\[
+H^d(X)^{\otimes k}\subset H^{kd}(X^k)
+\]</span>
+as a Frobenius-stable direct summand. Thus <span class="math" data-tex="\(\alpha^k\)">\(\alpha^k\)</span> is an eigenvalue in middle degree <span class="math" data-tex="\(kd\)">\(kd\)</span>, which is even. Lemma 5.1 gives algebraicity and
+<span class="math math-display" data-tex="\[
+q^{kd/2-1/2}\le|\alpha&#x27;|^k\le q^{kd/2+1/2}
+\tag{6.1}
+\]">\[
+q^{kd/2-1/2}\le|\alpha&#x27;|^k\le q^{kd/2+1/2}
+\tag{6.1}
+\]</span>
+for every conjugate <span class="math" data-tex="\(\alpha&#x27;\)">\(\alpha&#x27;\)</span>, once algebraicity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is recovered from any one such power. Take <span class="math" data-tex="\(k\)">\(k\)</span>-th roots and let <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> through the even integers. Both bounds tend to <span class="math" data-tex="\(q^{d/2}\)">\(q^{d/2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 1.1 in every degree.</strong> After the component and extension reductions of §1, assume <span class="math" data-tex="\(X_0\)">\(X_0\)</span> geometrically irreducible of dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Middle degree is Proposition 6.1. If <span class="math" data-tex="\(i&lt;d\)">\(i&lt;d\)</span>, successively choose smooth hyperplane sections over finite extensions. Weak Lefschetz embeds <span class="math" data-tex="\(H^i(X)\)">\(H^i(X)\)</span> into the degree-<span class="math" data-tex="\(i\)">\(i\)</span> cohomology of a smooth projective variety of dimension <span class="math" data-tex="\(i\)">\(i\)</span>; at the last step restriction is injective, and earlier steps are isomorphisms. Proposition 6.1 applies to the middle degree of each component of that variety. Eigenvalues of the original subspace satisfy the same algebraicity and all-conjugates assertion. The finite-extension reduction descends it to the original field.</p>
+<p>If <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>, Poincaré duality reduces to <span class="math" data-tex="\(2d-i&lt;d\)">\(2d-i&lt;d\)</span>. Its paired eigenvalue is <span class="math" data-tex="\(q^d/\alpha\)">\(q^d/\alpha\)</span>, of modulus <span class="math" data-tex="\(q^{(2d-i)/2}\)">\(q^{(2d-i)/2}\)</span>, giving <span class="math" data-tex="\(|\alpha|=q^{i/2}\)">\(|\alpha|=q^{i/2}\)</span>. Degrees outside <span class="math" data-tex="\(0,\ldots,2d\)">\(0,\ldots,2d\)</span> have zero cohomology. The zero-dimensional reduction is the permutation action on the finitely many geometric points, whose eigenvalues are roots of unity. Disjoint unions finish the general case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="an-alternative-passage-from-middle-degree-to-all-degrees">An alternative passage from middle degree to all degrees</h3>
+<p>There is also a product argument, attributed to A. Mellit in Milne's <em>Lectures</em>, §28, footnote on printed p.162. It begins <strong>after</strong> Proposition 6.1, so it does not remove the weak Lefschetz input from Lemma 5.1. We spell it out to distinguish the two reductions.</p>
+<p>Let <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> and let <span class="math" data-tex="\(X_0\)">\(X_0\)</span> be geometrically connected. Frobenius on <span class="math" data-tex="\(H^0(X)\)">\(H^0(X)\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, and on <span class="math" data-tex="\(H^{2d}(X)\)">\(H^{2d}(X)\)</span> is <span class="math" data-tex="\(q^d\)">\(q^d\)</span>, by the normalized trace. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> occurs in <span class="math" data-tex="\(H^i(X)\)">\(H^i(X)\)</span> and <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>, Künneth puts
+<span class="math math-display" data-tex="\[
+H^i(X)^{\otimes d}\otimes H^0(X)^{\otimes(i-d)}
+\subset H^{id}(X^i).
+\tag{6.1a}
+\]">\[
+H^i(X)^{\otimes d}\otimes H^0(X)^{\otimes(i-d)}
+\subset H^{id}(X^i).
+\tag{6.1a}
+\]</span>
+The product has dimension <span class="math" data-tex="\(id\)">\(id\)</span>, and its middle eigenvalue includes <span class="math" data-tex="\(\alpha^d\)">\(\alpha^d\)</span>. Proposition 6.1 therefore makes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> algebraic and gives <span class="math" data-tex="\(|\sigma(\alpha)|^d=q^{id/2}\)">\(|\sigma(\alpha)|^d=q^{id/2}\)</span>, hence weight <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\le i&lt;d\)">\(0\le i&lt;d\)</span>, use instead
+<span class="math math-display" data-tex="\[
+H^i(X)^{\otimes d}\otimes H^{2d}(X)^{\otimes(d-i)}
+\subset H^{d(2d-i)}(X^{2d-i}).
+\tag{6.1b}
+\]">\[
+H^i(X)^{\otimes d}\otimes H^{2d}(X)^{\otimes(d-i)}
+\subset H^{d(2d-i)}(X^{2d-i}).
+\tag{6.1b}
+\]</span>
+Its eigenvalue is <span class="math" data-tex="\(\alpha^d q^{d(d-i)}\)">\(\alpha^d q^{d(d-i)}\)</span>. Middle purity makes this algebraic and has modulus <span class="math" data-tex="\(q^{d(2d-i)/2}\)">\(q^{d(2d-i)/2}\)</span>. Dividing by the rational power <span class="math" data-tex="\(q^{d(d-i)}\)">\(q^{d(d-i)}\)</span> and taking the <span class="math" data-tex="\(d\)">\(d\)</span>-th root again gives <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span> for every conjugate. An eigenvalue of a tensor product is a product of eigenvalues even for nondiagonalizable operators: triangularize each matrix over a splitting field and read the diagonal of the tensor matrix. Thus neither reduction assumes semisimplicity. The component and finite-extension reductions of §1 finish this second proof.</p>
+<h3 id="the-integer-polynomials-and-independence-of-ell">The integer polynomials and independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span></h3>
+<p>Put <span class="math" data-tex="\(P_i(T)=\det(1-FT\mid H^i(X,\mathbf Q_\ell))\)">\(P_i(T)=\det(1-FT\mid H^i(X,\mathbf Q_\ell))\)</span>. Lesson 8 gives
+<span class="math math-display" data-tex="\[
+Z(X_0,T)=\prod_iP_i(T)^{(-1)^{i+1}}\in\mathbf Q(T),
+\qquad Z(X_0,T)\in1+T\mathbf Z[[T]].
+\tag{6.2}
+\]">\[
+Z(X_0,T)=\prod_iP_i(T)^{(-1)^{i+1}}\in\mathbf Q(T),
+\qquad Z(X_0,T)\in1+T\mathbf Z[[T]].
+\tag{6.2}
+\]</span>
+The theorem separates the reciprocal roots in degree <span class="math" data-tex="\(i\)">\(i\)</span> by their modulus <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>. Different degrees have different moduli, so no cancellation occurs between different degree factors. The reduced numerator and denominator of <span class="math" data-tex="\(Z\)">\(Z\)</span> therefore determine <span class="math" data-tex="\(P_i\)">\(P_i\)</span> uniquely by this modulus and its parity. Every conjugate of a degree-<span class="math" data-tex="\(i\)">\(i\)</span> eigenvalue has the same modulus, so these factors are Galois-stable and belong to <span class="math" data-tex="\(\mathbf Q[T]\)">\(\mathbf Q[T]\)</span>. The same unique factorization of the same rational zeta function determines them for every <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, proving independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>We include the integrality argument. Write the reduced zeta fraction <span class="math" data-tex="\(P/Q\)">\(P/Q\)</span>, normalized by <span class="math" data-tex="\(P(0)=Q(0)=1\)">\(P(0)=Q(0)=1\)</span>, over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. For any prime <span class="math" data-tex="\(v\)">\(v\)</span>, its integral Taylor coefficients converge <span class="math" data-tex="\(v\)">\(v\)</span>-adically on <span class="math" data-tex="\(|T|_v&lt;1\)">\(|T|_v&lt;1\)</span>. There can be no denominator root in that disc: the convergent identity <span class="math" data-tex="\(Q(T)Z(T)=P(T)\)">\(Q(T)Z(T)=P(T)\)</span> at such a root would force a common numerator root, contradicting reduction. Hence every reciprocal denominator root has <span class="math" data-tex="\(|\alpha|_v\le1\)">\(|\alpha|_v\le1\)</span>, for every embedding into a <span class="math" data-tex="\(v\)">\(v\)</span>-adic algebraic closure and every <span class="math" data-tex="\(v\)">\(v\)</span>. These roots are algebraic integers.</p>
+<p>For clarity, that last criterion is elementary: the conjugate roots of the monic minimal polynomial all have <span class="math" data-tex="\(v\)">\(v\)</span>-adic absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>, so every rational elementary-symmetric coefficient belongs to <span class="math" data-tex="\(\mathbf Z_v\)">\(\mathbf Z_v\)</span> for every prime <span class="math" data-tex="\(v\)">\(v\)</span>, and therefore to <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. The coefficients of <span class="math" data-tex="\(Q\)">\(Q\)</span> are thus integers. Then <span class="math" data-tex="\(P=QZ\)">\(P=QZ\)</span> also has integer coefficients. Its reciprocal polynomial is monic integral because <span class="math" data-tex="\(P(0)=1\)">\(P(0)=1\)</span>, so its reciprocal roots are algebraic integers too.</p>
+<p>Each rational <span class="math" data-tex="\(P_i\)">\(P_i\)</span> is a factor selected from these numerator or denominator roots. Its coefficients are rational algebraic integers, hence integers. We have proved
+<span class="math math-display" data-tex="\[
+P_i(T)\in\mathbf Z[T],
+\quad\text{independent of }\ell.
+\tag{6.3}
+\]">\[
+P_i(T)\in\mathbf Z[T],
+\quad\text{independent of }\ell.
+\tag{6.3}
+\]</span>
+This argument does not invoke a separate unproved general integrality theorem.</p>
+<p>Together, (6.2)–(6.3), Theorem 1.1, and the duality functional equation proved in Lesson 8 give the Weil conjectures. If <span class="math" data-tex="\(X_0\)">\(X_0\)</span> has pure dimension <span class="math" data-tex="\(d\)">\(d\)</span> and Euler characteristic <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, that functional equation is
+<span class="math math-display" data-tex="\[
+Z(X_0,1/(q^dT))
+=\varepsilon\,q^{d\chi/2}T^\chi Z(X_0,T),
+\qquad\varepsilon\in\{1,-1\},
+\tag{6.4}
+\]">\[
+Z(X_0,1/(q^dT))
+=\varepsilon\,q^{d\chi/2}T^\chi Z(X_0,T),
+\qquad\varepsilon\in\{1,-1\},
+\tag{6.4}
+\]</span>
+with the precise sign as in Lesson 8. No comparison with singular cohomology of a complex lift was needed; the <span class="math" data-tex="\(b_i=\dim H^i(X,\mathbf Q_\ell)\)">\(b_i=\dim H^i(X,\mathbf Q_\ell)\)</span> here are étale Betti numbers.</p>
+<h3 id="the-full-smooth-proper-scope-and-its-alteration-proof">The full smooth-proper scope and its alteration proof</h3>
+<p><strong>Smooth-proper theorem (Deligne, Weil II (3.3.9)).</strong> For every smooth proper <span class="math" data-tex="\(X_0/\mathbf F_q\)">\(X_0/\mathbf F_q\)</span>, without a projectivity, pure-dimension or geometric-connectedness assumption, every eigenvalue on <span class="math" data-tex="\(H^i(X,\mathbf Q_\ell)\)">\(H^i(X,\mathbf Q_\ell)\)</span> is algebraic and every complex conjugate has modulus <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>. Each individual polynomial
+<span class="math math-display" data-tex="\[
+P_i(T)=\det(1-FT\mid H^i(X,\mathbf Q_\ell))
+\in\mathbf Z[T]
+\tag{6.5}
+\]">\[
+P_i(T)=\det(1-FT\mid H^i(X,\mathbf Q_\ell))
+\in\mathbf Z[T]
+\tag{6.5}
+\]</span>
+is independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. This is the full purity input needed for the smooth-proper factorization theorem of Lesson 8. The projective case is already proved above. We now give the geometric input at its proof homes and the complete cohomological passage to the proper case.</p>
+<p><strong>Geometric input (smooth projective alteration).</strong> For each smooth proper geometrically integral <span class="math" data-tex="\(d\)">\(d\)</span>-fold <span class="math" data-tex="\(X_0/\mathbf F_q\)">\(X_0/\mathbf F_q\)</span>, <a href="support/AG-LTF--smooth-projective-alterations.html">Smooth projective alterations, Theorem 1.1</a> gives, after a finite extension <span class="math" data-tex="\(k&#x27;=\mathbf F_{q^a}\)">\(k&#x27;=\mathbf F_{q^a}\)</span>, a proper dominant generically finite and generically separable morphism
+<span class="math math-display" data-tex="\[
+ f_0:Y_0\longrightarrow X_0\times_{\mathbf F_q}k&#x27;,
+\]">\[
+ f_0:Y_0\longrightarrow X_0\times_{\mathbf F_q}k&#x27;,
+\]</span>
+where <span class="math" data-tex="\(Y_0/k&#x27;\)">\(Y_0/k&#x27;\)</span> is smooth projective and geometrically integral. Its generic degree <span class="math" data-tex="\(e\)">\(e\)</span> is a positive integer, and it is finite étale of rank <span class="math" data-tex="\(e\)">\(e\)</span> over a nonempty open.</p>
+<p>Here is the precise dependency of this geometric theorem. The alteration lesson first makes a projective birational modification of a proper integral target, then constructs and flattens a marked curve fibration. Its §5 uses <a href="support/AG-LTF--stable-pointed-family-extension.html">Stable pointed-family extension, Theorem S.9 in §9</a>, including genus zero and genus one, with the labelled generic identifying isomorphism retained. Its §6 extends the curve map; §7 proves the global monomial resolution and the induction for pairs with boundary. Those modifications are projective and birational, and the field-changing covers are generically separable. Thus the result has the smooth projective source required here.</p>
+<p>The finite-field assertion is the finite-algebraic descent in its §8. Over <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span>, the schemes, morphisms, projective embeddings, finitely many coherent blowup ideals and a dense finite étale comparison open use only finitely many coefficients. They therefore descend together to one finite extension <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>. Smoothness, geometric integrality, properness and the comparison open's finite étale rank descend by faithfully flat base change. The completed coordinates used to check local charts are proof certificates; no arbitrary formal power series has to descend. This supplies exactly the former alteration premise of Proposition 6.2.</p>
+<p><strong>Proposition 6.2 (pullback and trace).</strong> The geometric input above, the projective theorem, and the constructed smooth trace and duality maps imply the full smooth-proper theorem.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(X_0\)">\(X_0\)</span> be geometrically integral of dimension <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Base change <span class="math" data-tex="\(f_0\)">\(f_0\)</span> to <span class="math" data-tex="\(\overline{\mathbf F}_q\)">\(\overline{\mathbf F}_q\)</span> and write <span class="math" data-tex="\(f:Y\to X\)">\(f:Y\to X\)</span>. Put <span class="math" data-tex="\(E=\mathbf Q_\ell\)">\(E=\mathbf Q_\ell\)</span>. Both <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are smooth proper of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, so <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps, Theorem 10.1</a> and coefficient recovery give the normalized perfect pairings
+<span class="math math-display" data-tex="\[
+ H^i(X,E)\times H^{2d-i}(X,E(d))
+ \longrightarrow E,\qquad (x,v)\longmapsto\int_X x\cup v,
+\]">\[
+ H^i(X,E)\times H^{2d-i}(X,E(d))
+ \longrightarrow E,\qquad (x,v)\longmapsto\int_X x\cup v,
+\]</span>
+and the same pairing on <span class="math" data-tex="\(Y\)">\(Y\)</span>. Define an actual linear map
+<span class="math math-display" data-tex="\[
+ f_*:H^i(Y,E)\longrightarrow H^i(X,E)
+ \quad\text{by}\quad
+ \int_X f_*u\cup v=\int_Y u\cup f^*v
+ \tag{6.6}
+\]">\[
+ f_*:H^i(Y,E)\longrightarrow H^i(X,E)
+ \quad\text{by}\quad
+ \int_X f_*u\cup v=\int_Y u\cup f^*v
+ \tag{6.6}
+\]</span>
+for every <span class="math" data-tex="\(v\in H^{2d-i}(X,E(d))\)">\(v\in H^{2d-i}(X,E(d))\)</span>. Perfection makes the right side the functional of one and only one class. The trace and pullback are natural under field automorphisms; since <span class="math" data-tex="\(f_0\)">\(f_0\)</span> is defined over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span>, <span class="math" data-tex="\(f_*\)">\(f_*\)</span> and <span class="math" data-tex="\(f^*\)">\(f^*\)</span> commute with <span class="math" data-tex="\(F^a\)">\(F^a\)</span>. We do not assume that <span class="math" data-tex="\(f\)">\(f\)</span> is smooth.</p>
+<p>We verify the degree normalization rather than assume a pushforward formula. Choose the dense open <span class="math" data-tex="\(U\subset X\)">\(U\subset X\)</span> on which <span class="math" data-tex="\(f\)">\(f\)</span> is finite étale of rank <span class="math" data-tex="\(e\)">\(e\)</span>, and put <span class="math" data-tex="\(V=f^{-1}U\)">\(V=f^{-1}U\)</span>. Write <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span> and <span class="math" data-tex="\(j&#x27;:V\hookrightarrow Y\)">\(j&#x27;:V\hookrightarrow Y\)</span>. Both proper complements have dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Their cohomology vanishes in degrees <span class="math" data-tex="\(2d-1\)">\(2d-1\)</span> and <span class="math" data-tex="\(2d\)">\(2d\)</span>, by the compact-support dimension bound and properness. Localization consequently gives isomorphisms
+<span class="math math-display" data-tex="\[
+ j_!:H^{2d}_c(U,E(d))\xrightarrow{\sim}H^{2d}(X,E(d)),
+ \qquad
+ j&#x27;_!:H^{2d}_c(V,E(d))\xrightarrow{\sim}H^{2d}(Y,E(d)).
+\]">\[
+ j_!:H^{2d}_c(U,E(d))\xrightarrow{\sim}H^{2d}(X,E(d)),
+ \qquad
+ j&#x27;_!:H^{2d}_c(V,E(d))\xrightarrow{\sim}H^{2d}(Y,E(d)).
+\]</span>
+The map <span class="math" data-tex="\(f\)">\(f\)</span> is proper, so pullback preserves these compact supports. The Cartesian open square, or equivalently <span class="math" data-tex="\(f^*j_!E=j&#x27;_!E\)">\(f^*j_!E=j&#x27;_!E\)</span>, identifies this pullback with the finite étale pullback from <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>; it is compatible with the two displayed extension maps.</p>
+<p>On the finite étale cover, the actual sheet-sum trace satisfies
+<span class="math math-display" data-tex="\[
+ \operatorname{tr}_{V/U}\circ f^*=e\,\mathrm{id}.
+\]">\[
+ \operatorname{tr}_{V/U}\circ f^*=e\,\mathrm{id}.
+\]</span>
+The trace lesson's §2.4 proves compatibility of the smooth trace with these étale sheet sums and with open extension. Hence for <span class="math" data-tex="\(z\in H^{2d}(X,E(d))\)">\(z\in H^{2d}(X,E(d))\)</span>, lift <span class="math" data-tex="\(z\)">\(z\)</span> uniquely to <span class="math" data-tex="\(z_U\in H^{2d}_c(U,E(d))\)">\(z_U\in H^{2d}_c(U,E(d))\)</span> and calculate
+<span class="math math-display" data-tex="\[
+ \int_Y f^*z
+ =\int_V f^*z_U
+ =\int_U\operatorname{tr}_{V/U}f^*z_U
+ =e\int_U z_U
+ =e\int_X z.
+ \tag{6.7}
+\]">\[
+ \int_Y f^*z
+ =\int_V f^*z_U
+ =\int_U\operatorname{tr}_{V/U}f^*z_U
+ =e\int_U z_U
+ =e\int_X z.
+ \tag{6.7}
+\]</span>
+Every map here is one of the previously constructed trace, pullback or open-extension maps. In particular this calculation uses smoothness of the two varieties and étaleness on the comparison open, without a trace construction on a singular alteration source.</p>
+<p>For <span class="math" data-tex="\(x\in H^i(X,E)\)">\(x\in H^i(X,E)\)</span> and the complementary-degree test class <span class="math" data-tex="\(v\)">\(v\)</span>, cup-product naturality gives
+<span class="math math-display" data-tex="\[
+ \int_X f_*f^*x\cup v
+ =\int_Y f^*(x\cup v)
+ =e\int_X x\cup v.
+\]">\[
+ \int_X f_*f^*x\cup v
+ =\int_Y f^*(x\cup v)
+ =e\int_X x\cup v.
+\]</span>
+Perfection proves <span class="math" data-tex="\(f_*f^*=e\,\mathrm{id}\)">\(f_*f^*=e\,\mathrm{id}\)</span> in every degree. The integer <span class="math" data-tex="\(e\)">\(e\)</span> is invertible in <span class="math" data-tex="\(E\)">\(E\)</span>, even when <span class="math" data-tex="\(\ell\mid e\)">\(\ell\mid e\)</span>. Thus <span class="math" data-tex="\(r=e^{-1}f_*\)">\(r=e^{-1}f_*\)</span> is a retraction of <span class="math" data-tex="\(f^*\)">\(f^*\)</span>, and
+<span class="math math-display" data-tex="\[
+ p=e^{-1}f^*f_*:H^i(Y,E)\longrightarrow H^i(Y,E),
+ \qquad p^2=p,
+ \tag{6.8}
+\]">\[
+ p=e^{-1}f^*f_*:H^i(Y,E)\longrightarrow H^i(Y,E),
+ \qquad p^2=p,
+ \tag{6.8}
+\]</span>
+is a rational <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic projector commuting with <span class="math" data-tex="\(F^a\)">\(F^a\)</span>. Its image is <span class="math" data-tex="\(f^*H^i(X,E)\)">\(f^*H^i(X,E)\)</span>, and its kernel is <span class="math" data-tex="\(\ker f_*\)">\(\ker f_*\)</span>. We obtain the actual <span class="math" data-tex="\(F^a\)">\(F^a\)</span>-stable decomposition
+<span class="math math-display" data-tex="\[
+ H^i(Y,E)=f^*H^i(X,E)\oplus\ker f_*.
+\]">\[
+ H^i(Y,E)=f^*H^i(X,E)\oplus\ker f_*.
+\]</span>
+No prime-to-<span class="math" data-tex="\(\ell\)">\(\ell\)</span> degree restriction and no Frobenius semisimplicity are needed.</p>
+<p>If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is an eigenvalue of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(H^i(X,E)\)">\(H^i(X,E)\)</span>, then <span class="math" data-tex="\(\alpha^a\)">\(\alpha^a\)</span> is an eigenvalue of <span class="math" data-tex="\(F^a\)">\(F^a\)</span>; triangularization proves this also for a nondiagonalizable operator. The splitting places it among the eigenvalues on <span class="math" data-tex="\(H^i(Y,E)\)">\(H^i(Y,E)\)</span>. Projective purity over <span class="math" data-tex="\(k&#x27;\)">\(k&#x27;\)</span> makes <span class="math" data-tex="\(\alpha^a\)">\(\alpha^a\)</span> algebraic and gives every complex conjugate modulus <span class="math" data-tex="\(q^{ai/2}\)">\(q^{ai/2}\)</span>. If <span class="math" data-tex="\(m(S)\in\mathbf Q[S]\)">\(m(S)\in\mathbf Q[S]\)</span> annihilates <span class="math" data-tex="\(\alpha^a\)">\(\alpha^a\)</span>, then <span class="math" data-tex="\(m(T^a)\)">\(m(T^a)\)</span> annihilates <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, proving its algebraicity. Every embedding <span class="math" data-tex="\(\sigma:\mathbf Q(\alpha)\hookrightarrow\mathbf C\)">\(\sigma:\mathbf Q(\alpha)\hookrightarrow\mathbf C\)</span> restricts to one on <span class="math" data-tex="\(\mathbf Q(\alpha^a)\)">\(\mathbf Q(\alpha^a)\)</span>, so
+<span class="math math-display" data-tex="\[
+ |\sigma(\alpha)|^a
+ =|\sigma(\alpha^a)|=q^{ai/2}.
+\]">\[
+ |\sigma(\alpha)|^a
+ =|\sigma(\alpha^a)|=q^{ai/2}.
+\]</span>
+Taking the positive <span class="math" data-tex="\(a\)">\(a\)</span>-th root gives <span class="math" data-tex="\(|\sigma(\alpha)|=q^{i/2}\)">\(|\sigma(\alpha)|=q^{i/2}\)</span>. This is the complete weight descent through the finite-field extension.</p>
+<p>For a general smooth proper <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, its finitely many geometric irreducible components are disjoint: they are the connected components of a regular scheme. After a finite extension each component and its defining equations descend separately, and Frobenius raised to that extension degree preserves them. Apply the preceding argument to each geometrically integral component in its own dimension. A zero-dimensional smooth component consists geometrically of points and has only degree-zero cohomology with permutation eigenvalues. Direct sums and the same power descent therefore prove algebraicity and weight <span class="math" data-tex="\(i\)">\(i\)</span> without a dimension or connectedness restriction.</p>
+<p>It remains to recover the individual integer polynomials over the original field. Use only Lesson 8's whole-function rationality, Corollary 3.2, and its Euler product (1.2):
+<span class="math math-display" data-tex="\[
+ Z(X_0,T)=\prod_i\det(1-FT\mid H^i(X,E))^{(-1)^{i+1}}
+ \in\mathbf Q(T)\cap(1+T\mathbf Z[[T]]).
+\]">\[
+ Z(X_0,T)=\prod_i\det(1-FT\mid H^i(X,E))^{(-1)^{i+1}}
+ \in\mathbf Q(T)\cap(1+T\mathbf Z[[T]]).
+\]</span>
+Lesson 8's individual-factor Theorem 3.4 is a forward consequence of the purity we have just proved, so it is not an input. Pure weights give different moduli <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span> in different degrees, and therefore prevent cancellation between their factors. Every algebraic conjugate stays in the same degree's modulus group. Grouping the reciprocal roots of the reduced rational numerator and denominator by those moduli, with their multiplicities, makes each <span class="math" data-tex="\(P_i\)">\(P_i\)</span> Galois-stable and hence rational. The prime-by-prime argument of (6.2)–(6.3) makes these roots algebraic integers and their rational factor coefficients integers. Finally the point-count zeta function and this unique grouping are independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. This proves (6.5) for the full smooth-proper scope. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The route consists of the constructed smooth projective alteration and the splitting just proved. It establishes the canonical constant-coefficient smooth-proper statement without importing Weil II's general direct-image theorem. The mixed-sheaf, pure-lisse and hard-Lefschetz results in §7 retain their separate stated proof requirements.</p>
+<h2 id="7-applications-and-examples">7. Applications and examples</h2>
+<h3 id="complete-intersections">Complete intersections</h3>
+<p><strong>Theorem 7.1 (Deligne (8.1)).</strong> Let <span class="math" data-tex="\(X_0\subset\mathbf P^{n+r}_{\mathbf F_q}\)">\(X_0\subset\mathbf P^{n+r}_{\mathbf F_q}\)</span> be a smooth complete intersection of dimension <span class="math" data-tex="\(n\)">\(n\)</span>. Let <span class="math" data-tex="\(b\)">\(b\)</span> be the dimension of its primitive middle cohomology, defined as the quotient by the ambient middle class when <span class="math" data-tex="\(n\)">\(n\)</span> is even and as all middle cohomology when <span class="math" data-tex="\(n\)">\(n\)</span> is odd. Then for every <span class="math" data-tex="\(a\ge1\)">\(a\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\left|\#X_0(\mathbf F_{q^a})-\#\mathbf P^n(\mathbf F_{q^a})\right|
+\le bq^{an/2}.
+\tag{7.1}
+\]">\[
+\left|\#X_0(\mathbf F_{q^a})-\#\mathbf P^n(\mathbf F_{q^a})\right|
+\le bq^{an/2}.
+\tag{7.1}
+\]</span></p>
+<p>We first justify the cohomology outside the middle, including for a presentation whose intermediate intersections might be singular. Fix the multidegrees <span class="math" data-tex="\(d_1,\ldots,d_r\)">\(d_1,\ldots,d_r\)</span>. Over the algebraic closure, tuples of defining equations belong to a product of projective coefficient spaces. The locus <span class="math" data-tex="\(T\)">\(T\)</span> where their intersection is smooth of the expected dimension is open and contains the given tuple. It is an irreducible, hence connected, nonempty open subset. The universal complete intersection over <span class="math" data-tex="\(T\)">\(T\)</span> is smooth and proper. Smooth proper base change makes each <span class="math" data-tex="\(R^if_*\mathbf Q_\ell\)">\(R^if_*\mathbf Q_\ell\)</span> lisse, so its rank is constant on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>There is a tuple for which all successive intersections are smooth: choose each equation generally on the previous smooth intersection, using Bertini for the very ample bundle <span class="math" data-tex="\(\mathcal O(d_j)\)">\(\mathcal O(d_j)\)</span>. For that tuple, successive weak Lefschetz and duality give the ranks
+<span class="math math-display" data-tex="\[
+\dim H^i(X)=
+\begin{cases}
+1,&amp;i\ne n,\ 0\le i\le2n,\ i\text{ even},\\
+0,&amp;i\ne n,\ i\text{ odd}.
+\end{cases}
+\tag{7.2}
+\]">\[
+\dim H^i(X)=
+\begin{cases}
+1,&amp;i\ne n,\ 0\le i\le2n,\ i\text{ even},\\
+0,&amp;i\ne n,\ i\text{ odd}.
+\end{cases}
+\tag{7.2}
+\]</span>
+Rank constancy proves (7.2) for every smooth tuple in <span class="math" data-tex="\(T\)">\(T\)</span>. This deformation argument uses étale smooth proper base change, not a complex lift.</p>
+<p>To recover exactly Deligne's topological constant, form the same product of coefficient projective spaces over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. Its open locus <span class="math" data-tex="\(T_{\mathbf Z}\)">\(T_{\mathbf Z}\)</span> of smooth complete intersections of the expected dimension is integral and contains the given characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> tuple. The universal family on that locus is smooth proper. The connected open <span class="math" data-tex="\(T_{\mathbf Z}[1/\ell]\)">\(T_{\mathbf Z}[1/\ell]\)</span> contains that tuple and a characteristic-zero geometric point, so smooth proper base change equates their étale Betti numbers. Embed the latter point's algebraic-number field in <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. <a href="support/ag-etale-cohomology--comparison-with-singular-cohomology.html"><em>Comparison with singular cohomology</em>, Theorem 7.2 and §14</a> proves proper finite-coefficient comparison and its derived-limit passage to <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>, using its expressly stated Riemann-existence and projective-curve GAGA inputs. Consequently
+<span class="math math-display" data-tex="\[
+b=b_n(X^{\mathrm{an}}_{\mathbf C})-\begin{cases}1,&amp;n\text{ even},\\0,&amp;n\text{ odd},\end{cases}
+\tag{7.2a}
+\]">\[
+b=b_n(X^{\mathrm{an}}_{\mathbf C})-\begin{cases}1,&amp;n\text{ even},\\0,&amp;n\text{ odd},\end{cases}
+\tag{7.2a}
+\]</span>
+for any complex smooth complete intersection of these multidegrees. Thus the étale formulation gives the same constant as Deligne (8.1); topological comparison is needed for this identification, not for the point-count inequality itself.</p>
+<p>Let <span class="math" data-tex="\(h=c_1(\mathcal O_X(1))\in H^2(X,\mathbf Q_\ell(1))\)">\(h=c_1(\mathcal O_X(1))\in H^2(X,\mathbf Q_\ell(1))\)</span>. The degree formula
+<span class="math" data-tex="\(\int_Xh^n=d_1\cdots d_r\ne0\)">\(\int_Xh^n=d_1\cdots d_r\ne0\)</span> shows that every <span class="math" data-tex="\(h^j\)">\(h^j\)</span>, <span class="math" data-tex="\(0\le j\le n\)">\(0\le j\le n\)</span>, is nonzero: if one were zero, multiplication by the remaining powers would make <span class="math" data-tex="\(h^n\)">\(h^n\)</span> zero. Therefore it generates each one-dimensional even group outside the middle. Frobenius on its untwisted degree-<span class="math" data-tex="\(2j\)">\(2j\)</span> line is <span class="math" data-tex="\(q^j\)">\(q^j\)</span>. When <span class="math" data-tex="\(n\)">\(n\)</span> is even it also gives a Frobenius-stable middle line, of eigenvalue <span class="math" data-tex="\(q^{n/2}\)">\(q^{n/2}\)</span>; use the quotient by this line to define the primitive part. No splitting by hard Lefschetz is required.</p>
+<p>The trace formula, subtracting these ambient lines, gives the exact identity
+<span class="math math-display" data-tex="\[
+\#X_0(\mathbf F_{q^a})
+ =1+q^a+\cdots+q^{an}
+   +(-1)^n\operatorname{Tr}(F^a\mid H^n_{\rm prim}(X)).
+\tag{7.3}
+\]">\[
+\#X_0(\mathbf F_{q^a})
+ =1+q^a+\cdots+q^{an}
+   +(-1)^n\operatorname{Tr}(F^a\mid H^n_{\rm prim}(X)).
+\tag{7.3}
+\]</span>
+The primitive quotient has <span class="math" data-tex="\(b\)">\(b\)</span> eigenvalues. Theorem 1.1 gives modulus <span class="math" data-tex="\(q^{n/2}\)">\(q^{n/2}\)</span> for each; powers have modulus <span class="math" data-tex="\(q^{an/2}\)">\(q^{an/2}\)</span>, and the triangle inequality proves (7.1). For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the ambient line is the unit class in <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, <span class="math" data-tex="\(b=\deg X_0-1\)">\(b=\deg X_0-1\)</span>, and the same argument applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="odd-dimensional-hypersurfaces-and-the-pencil-shortcut">Odd-dimensional hypersurfaces and the pencil shortcut</h3>
+<p>For a smooth hypersurface of odd dimension <span class="math" data-tex="\(n\)">\(n\)</span>, (7.2) says that the entire middle group is primitive, and
+<span class="math math-display" data-tex="\[
+Z(X_0,T)=
+\frac{\det(1-FT\mid H^n(X))}
+     {\prod_{j=0}^{n}(1-q^jT)}.
+\tag{7.4}
+\]">\[
+Z(X_0,T)=
+\frac{\det(1-FT\mid H^n(X))}
+     {\prod_{j=0}^{n}(1-q^jT)}.
+\tag{7.4}
+\]</span>
+Its middle numerator is rational even before the final purity separation: multiply its rational zeta function by the displayed rational denominator. The integral-series argument of §6 then makes this polynomial integral.</p>
+<p>Here is the geometry behind Deligne's remark (5.12). In a genuine Lefschetz pencil of degree-<span class="math" data-tex="\(d\)">\(d\)</span> hypersurfaces on <span class="math" data-tex="\(\mathbf P^{n+1}\)">\(\mathbf P^{n+1}\)</span>, let <span class="math" data-tex="\(B\)">\(B\)</span> be the smooth axis. The blow-up formula and (7.2) for the even-dimensional complete intersection <span class="math" data-tex="\(B\)">\(B\)</span> give
+<span class="math math-display" data-tex="\[
+H^n(\widetilde{\mathbf P}^{n+1})
+ =H^n(\mathbf P^{n+1})\oplus H^{n-2}(B)(-1)=0.
+\tag{7.5}
+\]">\[
+H^n(\widetilde{\mathbf P}^{n+1})
+ =H^n(\mathbf P^{n+1})\oplus H^{n-2}(B)(-1)=0.
+\tag{7.5}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the second summand is a negative-degree group and is zero.</p>
+<p>After the theorem proved in §6, we can check explicitly that all middle cohomology is vanishing. In Leray, <span class="math" data-tex="\(H^0(D,R^nf_*\mathbf Q_\ell)\)">\(H^0(D,R^nf_*\mathbf Q_\ell)\)</span> embeds into the cohomology of a smooth fibre, so it is pure of weight <span class="math" data-tex="\(n\)">\(n\)</span>. The possible outgoing differential
+<span class="math math-display" data-tex="\[
+H^0(D,R^nf_*\mathbf Q_\ell)
+\longrightarrow H^2(D,R^{n-1}f_*\mathbf Q_\ell)
+\]">\[
+H^0(D,R^nf_*\mathbf Q_\ell)
+\longrightarrow H^2(D,R^{n-1}f_*\mathbf Q_\ell)
+\]</span>
+has target pure of weight <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, because <span class="math" data-tex="\(R^{n-1}\)">\(R^{n-1}\)</span> is geometrically constant and <span class="math" data-tex="\(H^2(D)\)">\(H^2(D)\)</span> adds <span class="math" data-tex="\((-1)\)">\((-1)\)</span>. Frobenius-equivariance and disjoint eigenvalue moduli force this differential to vanish. There are no other outgoing or incoming differentials at this position. Equation (7.5) forces the source to be zero. The invariant-space theorem of Lesson 9 identifies this source with <span class="math" data-tex="\(E^\perp\)">\(E^\perp\)</span>; hence <span class="math" data-tex="\(E^\perp=0\)">\(E^\perp=0\)</span>, and <span class="math" data-tex="\(E=H^n\)">\(E=H^n\)</span>. Its pairing is nondegenerate, so the vanishing quotient is also all <span class="math" data-tex="\(H^n\)">\(H^n\)</span>.</p>
+<p>Consequently, when this identification and a pencil containing the fibre are available, the fundamental estimate of Lesson 10, with <span class="math" data-tex="\(\beta=n\)">\(\beta=n\)</span>, applies directly to the middle numerator (7.4). Our verification of the identification above uses the completed purity theorem. It is an application of that theorem and supplies no circular input to §5.</p>
+<p>Deligne explicitly notes in (5.12), printed p.294, that the required pencil for an arbitrary prescribed hypersurface is not supplied by the sketch and that completing the argument needs the later induction. The unconditional assertion for every smooth odd-dimensional hypersurface follows from §6 and (7.1), including when that shortcut has not been constructed.</p>
+<h3 id="smooth-cubic-surfaces">Smooth cubic surfaces</h3>
+<p>Use the classical geometric fact that every smooth cubic surface over an algebraically closed field is the blow-up of <span class="math" data-tex="\(\mathbf P^2\)">\(\mathbf P^2\)</span> at six points in general position. This additional input for the example is recorded in Dolgachev–Duncan, §2, pp.8–9, in arbitrary characteristic.</p>
+<p>Successive blow-up formulas give seven divisor classes spanning <span class="math" data-tex="\(H^2(X,\mathbf Q_\ell(1))\)">\(H^2(X,\mathbf Q_\ell(1))\)</span>: the pullback of a line and the six exceptional divisors. They are all defined over some finite extension of the finite base field. Thus some power <span class="math" data-tex="\(F^a\)">\(F^a\)</span> acts as the identity on this twisted group. Every untwisted <span class="math" data-tex="\(H^2\)">\(H^2\)</span>-eigenvalue is <span class="math" data-tex="\(q\zeta\)">\(q\zeta\)</span> with <span class="math" data-tex="\(\zeta^a=1\)">\(\zeta^a=1\)</span>. This proves its weight directly from algebraic classes. Formula (7.2) gives no odd cohomology, and the trace formula becomes
+<span class="math math-display" data-tex="\[
+\#X_0(\mathbf F_q)=1+q^2+q\sum_{j=1}^7\zeta_j.
+\tag{7.6}
+\]">\[
+\#X_0(\mathbf F_q)=1+q^2+q\sum_{j=1}^7\zeta_j.
+\tag{7.6}
+\]</span>
+The ambient hyperplane class contributes <span class="math" data-tex="\(\zeta=1\)">\(\zeta=1\)</span>; the primitive dimension is six. If all seven classes are defined over the base field, the count is <span class="math" data-tex="\(q^2+7q+1\)">\(q^2+7q+1\)</span>.</p>
+<p>For a concrete nonsplit example, the Fermat cubic <span class="math" data-tex="\(\sum_{j=0}^3x_j^3=0\)">\(\sum_{j=0}^3x_j^3=0\)</span> is smooth over <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>. Cubing is a bijection of <span class="math" data-tex="\(\mathbf F_5\)">\(\mathbf F_5\)</span>, so its affine cone has <span class="math" data-tex="\(5^3\)">\(5^3\)</span> points and its projective surface has <span class="math" data-tex="\((5^3-1)/4=31\)">\((5^3-1)/4=31\)</span> points. Its 27 lines are obtained by partitioning the four coordinates into two pairs and setting <span class="math" data-tex="\(x_i+\omega x_j=x_k+\eta x_l=0\)">\(x_i+\omega x_j=x_k+\eta x_l=0\)</span>, where <span class="math" data-tex="\(\omega^3=\eta^3=1\)">\(\omega^3=\eta^3=1\)</span>. They are all defined over <span class="math" data-tex="\(\mathbf F_{25}\)">\(\mathbf F_{25}\)</span>. Six skew lines and the hyperplane class span <span class="math" data-tex="\(H^2(1)\)">\(H^2(1)\)</span>: in the blow-up model the latter is <span class="math" data-tex="\(3H-\sum E_i\)">\(3H-\sum E_i\)</span>, so they also recover <span class="math" data-tex="\(H\)">\(H\)</span>. Therefore every <span class="math" data-tex="\(H^2\)">\(H^2\)</span>-eigenvalue squares to <span class="math" data-tex="\(25\)">\(25\)</span>. The trace is <span class="math" data-tex="\(31-1-25=5\)">\(31-1-25=5\)</span>; seven eigenvalues each equal to <span class="math" data-tex="\(5\)">\(5\)</span> or <span class="math" data-tex="\(-5\)">\(-5\)</span> must consist of four <span class="math" data-tex="\(5\)">\(5\)</span>'s and three <span class="math" data-tex="\(-5\)">\(-5\)</span>'s. Thus
+<span class="math math-display" data-tex="\[
+P_2(T)=(1-5T)^4(1+5T)^3,\qquad
+\#X_0(\mathbf F_{25})=25^2+7\cdot25+1=801.
+\tag{7.6a}
+\]">\[
+P_2(T)=(1-5T)^4(1+5T)^3,\qquad
+\#X_0(\mathbf F_{25})=25^2+7\cdot25+1=801.
+\tag{7.6a}
+\]</span></p>
+<h3 id="kloosterman-sums">Kloosterman sums</h3>
+<p>For <span class="math" data-tex="\(a\in\mathbf F_q^\times\)">\(a\in\mathbf F_q^\times\)</span> and a nontrivial additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, put
+<span class="math math-display" data-tex="\[
+\operatorname{Kl}(a)
+ =\sum_{x\in\mathbf F_q^\times}\psi(x+a/x).
+\]">\[
+\operatorname{Kl}(a)
+ =\sum_{x\in\mathbf F_q^\times}\psi(x+a/x).
+\]</span>
+The Artin–Schreier calculation of Lesson 8 identifies this with the negative Frobenius trace on a two-dimensional nontrivial-character sector of the smooth projective completion of
+<span class="math math-display" data-tex="\[
+z^p-z=x+a/x.
+\tag{7.7}
+\]">\[
+z^p-z=x+a/x.
+\tag{7.7}
+\]</span>
+For an arbitrary <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, absorb its nonzero scalar into the right-hand side. The two simple poles remain, so the sector still has dimension two. The compact-support group on <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span> maps isomorphically to this sector: the boundary points are totally ramified and their permutation representations have no nontrivial character sector. Hence this particular <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> is a summand of projective curve <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, and is pure of weight one. If its eigenvalues are <span class="math" data-tex="\(\beta_1,\beta_2\)">\(\beta_1,\beta_2\)</span>, Theorem 1.1 gives
+<span class="math math-display" data-tex="\[
+|\operatorname{Kl}(a)|=|\beta_1+\beta_2|\le2\sqrt q.
+\tag{7.8}
+\]">\[
+|\operatorname{Kl}(a)|=|\beta_1+\beta_2|\le2\sqrt q.
+\tag{7.8}
+\]</span>
+This explanation of the compact-support group matters: general <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> of an open curve need not be pure of weight one.</p>
+<p>For example, over <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>, with <span class="math" data-tex="\(a=1\)">\(a=1\)</span> and <span class="math" data-tex="\(\psi(1)=e^{2\pi i/3}\)">\(\psi(1)=e^{2\pi i/3}\)</span>, the two summands are <span class="math" data-tex="\(\psi(2)\)">\(\psi(2)\)</span> and <span class="math" data-tex="\(\psi(1)\)">\(\psi(1)\)</span>, so <span class="math" data-tex="\(\operatorname{Kl}(1)=-1\)">\(\operatorname{Kl}(1)=-1\)</span>. Its sector polynomial, computed in Lesson 8, is <span class="math" data-tex="\(1-T+3T^2\)">\(1-T+3T^2\)</span>, with reciprocal roots <span class="math" data-tex="\((1\pm i\sqrt{11})/2\)">\((1\pm i\sqrt{11})/2\)</span>; both have modulus <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>.</p>
+<h3 id="two-further-statements-and-the-weil-ii-outlook">Two further statements and the Weil II outlook</h3>
+<p><strong>Exponential-sum bound (Deligne (8.4), stated).</strong> Let <span class="math" data-tex="\(Q\in\mathbf F_q[x_1,\ldots,x_s]\)">\(Q\in\mathbf F_q[x_1,\ldots,x_s]\)</span> have degree <span class="math" data-tex="\(D\ge1\)">\(D\ge1\)</span>, prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and suppose its leading homogeneous part defines a smooth hypersurface in <span class="math" data-tex="\(\mathbf P^{s-1}\)">\(\mathbf P^{s-1}\)</span>. For a nontrivial additive character,
+<span class="math math-display" data-tex="\[
+\left|\sum_{x\in\mathbf F_q^s}\psi(Q(x))\right|
+\le(D-1)^s q^{s/2}.
+\tag{7.9}
+\]">\[
+\left|\sum_{x\in\mathbf F_q^s}\psi(Q(x))\right|
+\le(D-1)^s q^{s/2}.
+\tag{7.9}
+\]</span>
+For <span class="math" data-tex="\(D=1\)">\(D=1\)</span> the sum is zero. The higher-degree deduction requires Deligne's (8.5)–(8.13): the nontrivial Artin–Schreier sectors are concentrated in degree <span class="math" data-tex="\(s\)">\(s\)</span>, have dimension <span class="math" data-tex="\((D-1)^s\)">\((D-1)^s\)</span>, and have a perfect compact-support pairing, so inject into smooth projective cohomology. His parameter-family argument obtains these facts from the separated polynomial <span class="math" data-tex="\(\sum x_j^D\)">\(\sum x_j^D\)</span>, Künneth and the one-variable Swan calculation. Its additional geometric premise is a simultaneous smooth projective compactification with relative normal-crossing boundary, constructed using canonical resolution of surfaces because the singularities at infinity are étale locally products with a fixed surface singularity. That resolution and family construction are not proved here. Thus (7.9) is a stated application with a specific additional proof requirement, rather than a consequence of the general weight bound alone.</p>
+<p><strong>Ramanujan–Petersson (Deligne (8.2), stated).</strong> Let <span class="math" data-tex="\(f=\sum_{m\ge1}a_m e^{2\pi imz}\)">\(f=\sum_{m\ge1}a_m e^{2\pi imz}\)</span>, <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span>, be a holomorphic cuspidal newform of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, level <span class="math" data-tex="\(N\)">\(N\)</span>, and nebentype <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For a prime <span class="math" data-tex="\(v\nmid N\)">\(v\nmid N\)</span>, both roots of
+<span class="math math-display" data-tex="\[
+T^2-a_vT+\varepsilon(v)v^{k-1}
+\]">\[
+T^2-a_vT+\varepsilon(v)v^{k-1}
+\]</span>
+have modulus <span class="math" data-tex="\(v^{(k-1)/2}\)">\(v^{(k-1)/2}\)</span>. In particular
+<span class="math math-display" data-tex="\[
+|a_v|\le2v^{(k-1)/2}.
+\tag{7.10}
+\]">\[
+|a_v|\le2v^{(k-1)/2}.
+\tag{7.10}
+\]</span>
+Its deduction uses the realization of these roots in middle cohomology through Eichler–Shimura and Kuga–Sato constructions. Those constructions are outside this course.</p>
+<p>Weil II extends the framework from constant coefficients on projective varieties to mixed sheaves and separated maps. Fix <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, a finite coefficient extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>, and an embedding <span class="math" data-tex="\(\iota:\overline{\mathbf Q}_\ell\to\mathbf C\)">\(\iota:\overline{\mathbf Q}_\ell\to\mathbf C\)</span>. A constructible <span class="math" data-tex="\(E\)">\(E\)</span>-Weil sheaf is <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-pure of weight <span class="math" data-tex="\(w\)">\(w\)</span> if, at every closed point <span class="math" data-tex="\(x\)">\(x\)</span>, each Frobenius eigenvalue has <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-absolute value <span class="math" data-tex="\(q_x^{w/2}\)">\(q_x^{w/2}\)</span>. It is <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-mixed of weights at most <span class="math" data-tex="\(w\)">\(w\)</span> if it has a finite filtration with pure graded pieces of weights at most <span class="math" data-tex="\(w\)">\(w\)</span>. For algebraic eigenvalues, asserting this for every embedding is the all-conjugates version used in this lesson. No definition of purity includes diagonalizability.</p>
+<p><strong>Weil II direct-image theorem (Deligne (3.3.1) and (3.3.10), stated).</strong> If <span class="math" data-tex="\(f:X_0\to Y_0\)">\(f:X_0\to Y_0\)</span> is separated and of finite type over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, and <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> is a constructible <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-mixed <span class="math" data-tex="\(E\)">\(E\)</span>-Weil sheaf of weights at most <span class="math" data-tex="\(w\)">\(w\)</span>, then <span class="math" data-tex="\(R^if_!\mathcal F_0\)">\(R^if_!\mathcal F_0\)</span> is <span class="math" data-tex="\(\iota\)">\(\iota\)</span>-mixed of weights at most <span class="math" data-tex="\(w+i\)">\(w+i\)</span>. This includes a bound on each closed fibre. It does not assert purity of those direct images. Deligne (3.3.10) is the fixed-<span class="math" data-tex="\(\iota\)">\(\iota\)</span>, real-weight version; (3.3.1) is the algebraic, integral-weight formulation.</p>
+<p>For constant coefficients of weight zero, the theorem and smooth duality would give the following broader conclusions:</p>
+<table>
+<thead>
+<tr>
+<th>Geometry of <span class="math" data-tex="\(X_0\)">\(X_0\)</span></th>
+<th>Cohomology</th>
+<th>Weight conclusion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>separated, finite type</td>
+<td><span class="math" data-tex="\(H^i_c(X)\)">\(H^i_c(X)\)</span></td>
+<td>mixed, weights at most <span class="math" data-tex="\(i\)">\(i\)</span></td>
+</tr>
+<tr>
+<td>proper, possibly singular</td>
+<td><span class="math" data-tex="\(H^i(X)=H^i_c(X)\)">\(H^i(X)=H^i_c(X)\)</span></td>
+<td>mixed, weights at most <span class="math" data-tex="\(i\)">\(i\)</span></td>
+</tr>
+<tr>
+<td>smooth of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span></td>
+<td><span class="math" data-tex="\(H^i(X)\)">\(H^i(X)\)</span></td>
+<td>mixed, weights at least <span class="math" data-tex="\(i\)">\(i\)</span></td>
+</tr>
+<tr>
+<td>smooth proper</td>
+<td><span class="math" data-tex="\(H^i(X)=H^i_c(X)\)">\(H^i(X)=H^i_c(X)\)</span></td>
+<td>pure of weight <span class="math" data-tex="\(i\)">\(i\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For the third row, duality pairs <span class="math" data-tex="\(H^i(X)\)">\(H^i(X)\)</span> with <span class="math" data-tex="\(H^{2d-i}_c(X)\)">\(H^{2d-i}_c(X)\)</span> into <span class="math" data-tex="\(E(-d)\)">\(E(-d)\)</span>. An upper weight <span class="math" data-tex="\(v\le2d-i\)">\(v\le2d-i\)</span> of the compact group gives weight <span class="math" data-tex="\(2d-v\ge i\)">\(2d-v\ge i\)</span> on the ordinary group. For the last row the lower and upper bounds meet. More generally a pure lisse sheaf of weight <span class="math" data-tex="\(w\)">\(w\)</span> on smooth proper <span class="math" data-tex="\(X_0\)">\(X_0\)</span> has <span class="math" data-tex="\(H^i\)">\(H^i\)</span> pure of weight <span class="math" data-tex="\(w+i\)">\(w+i\)</span>, by applying the direct-image theorem to it and its dual. These deductions explain the canonical smooth-proper extension without pretending that a nonprojective variety has the pencils used in §5. The general direct-image theorem itself requires the additional weight and local-monodromy arguments of Weil II; it has not been proved by the special symplectic estimate of Lesson 10.</p>
+<p>The formulation in Stacks, Tag 03VH, starts with a representation whose closed-point characteristic polynomials have coefficients in a number field and whose eigenvalues are pure of weight zero. Under those stipulated conclusions, the theorem above with <span class="math" data-tex="\(w=0\)">\(w=0\)</span> gives its compact-cohomology bound, and smooth proper duality gives purity in degree <span class="math" data-tex="\(i\)">\(i\)</span>. Obtaining number-field coefficients and compatible companion representations from an irreducible representation with finite-order determinant is a separate representation-theoretic problem; it is not a consequence of our constant-coefficient tensor argument.</p>
+<p>For example, localization for <span class="math" data-tex="\(\mathbf G_m=\mathbf P^1-\{0,\infty\}\)">\(\mathbf G_m=\mathbf P^1-\{0,\infty\}\)</span> gives <span class="math" data-tex="\(H^1_c(\mathbf G_m,E)=E\)">\(H^1_c(\mathbf G_m,E)=E\)</span> and <span class="math" data-tex="\(H^2_c(\mathbf G_m,E)=E(-1)\)">\(H^2_c(\mathbf G_m,E)=E(-1)\)</span>, whereas duality gives <span class="math" data-tex="\(H^1(\mathbf G_m,E)=E(-1)\)">\(H^1(\mathbf G_m,E)=E(-1)\)</span>. The degree-one compact group has weight zero, and its ordinary counterpart has weight two. The two inequalities are sharp and cannot be replaced by degree-one purity.</p>
+<p><strong>Hard Lefschetz (Deligne (4.1.1) and the coefficient extension (6.2.13), stated).</strong> If <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is smooth projective of pure dimension <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> is a pure lisse <span class="math" data-tex="\(E\)">\(E\)</span>-Weil sheaf, and <span class="math" data-tex="\(h\)">\(h\)</span> is the class of an ample line bundle, then for <span class="math" data-tex="\(0\le r\le d\)">\(0\le r\le d\)</span>,
+<span class="math math-display" data-tex="\[
+h^r:H^{d-r}(X,\mathcal F)
+\xrightarrow{\ \sim\ }
+H^{d+r}(X,\mathcal F(r)).
+\tag{7.11}
+\]">\[
+h^r:H^{d-r}(X,\mathcal F)
+\xrightarrow{\ \sim\ }
+H^{d+r}(X,\mathcal F(r)).
+\tag{7.11}
+\]</span>
+Theorem (4.1.1) is the constant-coefficient theorem. For the coefficient extension apply (6.2.13) with <span class="math" data-tex="\(K=\mathcal F\)">\(K=\mathcal F\)</span> in degree zero and <span class="math" data-tex="\(n=d\)">\(n=d\)</span>: on smooth <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(DK[-2d]=\mathcal F^\vee(d)\)">\(DK[-2d]=\mathcal F^\vee(d)\)</span> is also in degree zero and both support conditions hold. The sheaf spread from the given finite-field pure sheaf supplies potential purity. Its proof requires Weil II's Lefschetz and invariant-cycle arguments in addition to weights. These are outlook results with these separate proof requirements; (7.11) is not available to simplify the radical case of (5.7).</p>
+<p>The finite-field theorem supplies local Frobenius weights for varieties over finite residue fields. An analogue for a global arithmetic zeta function would require further global objects and analytic properties; no such global construction follows from this proof.</p>
+<h2 id="8-graded-exercises-with-solutions">8. Graded exercises with solutions</h2>
+<p><strong>Exercise 11.1 (easy — the curve consequence).</strong> For a smooth projective geometrically connected curve of genus <span class="math" data-tex="\(g\)">\(g\)</span>, derive its Riemann-hypothesis factorization and point-count bound from Theorem 1.1. Identify where the independent curve proof was used in this lesson.</p>
+<p><strong>Solution.</strong> Its three cohomological polynomials are <span class="math" data-tex="\(P_0=1-T\)">\(P_0=1-T\)</span>, <span class="math" data-tex="\(P_1=\prod_{j=1}^{2g}(1-\alpha_jT)\)">\(P_1=\prod_{j=1}^{2g}(1-\alpha_jT)\)</span>, and <span class="math" data-tex="\(P_2=1-qT\)">\(P_2=1-qT\)</span>. The theorem gives <span class="math" data-tex="\(|\sigma(\alpha_j)|=\sqrt q\)">\(|\sigma(\alpha_j)|=\sqrt q\)</span>, and §6 gives <span class="math" data-tex="\(P_1\in\mathbf Z[T]\)">\(P_1\in\mathbf Z[T]\)</span>, independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+Z(C_0,T)=\frac{P_1(T)}{(1-T)(1-qT)},\qquad
+\#C_0(\mathbf F_{q^a})=q^a+1-\sum_j\alpha_j^a,
+\]">\[
+Z(C_0,T)=\frac{P_1(T)}{(1-T)(1-qT)},\qquad
+\#C_0(\mathbf F_{q^a})=q^a+1-\sum_j\alpha_j^a,
+\]</span>
+and the absolute difference from <span class="math" data-tex="\(q^a+1\)">\(q^a+1\)</span> is at most <span class="math" data-tex="\(2gq^{a/2}\)">\(2gq^{a/2}\)</span>. Lesson 5, Theorem 5.3, proves the curve Riemann hypothesis independently using the surface Hodge inequality and Frobenius graphs on <span class="math" data-tex="\(C\times C\)">\(C\times C\)</span>. We used that result on completed covering curves and their twists in §2. The consequence above is consistent with that input and does not replace its independent proof.</p>
+<p><strong>Exercise 11.2 (medium — the tensor-power reduction).</strong> Assume only the even-dimensional estimate (5.1), weak Lefschetz, duality and Künneth. Prove purity in every dimension and degree, including algebraicity and descent through finite extensions.</p>
+<p><strong>Solution.</strong> For a geometrically irreducible <span class="math" data-tex="\(d\)">\(d\)</span>-fold and a middle eigenvalue <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, every positive even <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(\alpha^k\)">\(\alpha^k\)</span> in middle cohomology of <span class="math" data-tex="\(X^k\)">\(X^k\)</span>, of even dimension <span class="math" data-tex="\(kd\)">\(kd\)</span>. Algebraicity of <span class="math" data-tex="\(\alpha^2\)">\(\alpha^2\)</span> makes <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> algebraic, since it satisfies <span class="math" data-tex="\(T^2-\alpha^2=0\)">\(T^2-\alpha^2=0\)</span>. Every complex conjugate <span class="math" data-tex="\(\alpha&#x27;\)">\(\alpha&#x27;\)</span> then satisfies
+<span class="math math-display" data-tex="\[
+q^{d/2-1/(2k)}\le|\alpha&#x27;|\le q^{d/2+1/(2k)}.
+\]">\[
+q^{d/2-1/(2k)}\le|\alpha&#x27;|\le q^{d/2+1/(2k)}.
+\]</span>
+Letting even <span class="math" data-tex="\(k\)">\(k\)</span> tend to infinity proves middle purity.</p>
+<p>For <span class="math" data-tex="\(i&lt;d\)">\(i&lt;d\)</span>, choose smooth successive hyperplane sections over a finite extension until dimension <span class="math" data-tex="\(i\)">\(i\)</span>. The restriction maps are isomorphisms while <span class="math" data-tex="\(i&lt;\dim(\text{section})\)">\(i&lt;\dim(\text{section})\)</span>, and the final one is injective. Thus every degree-<span class="math" data-tex="\(i\)">\(i\)</span> eigenvalue is a middle eigenvalue on a component of the last section. For <span class="math" data-tex="\(i&gt;d\)">\(i&gt;d\)</span>, duality pairs it with <span class="math" data-tex="\(q^d/\alpha\)">\(q^d/\alpha\)</span> in degree <span class="math" data-tex="\(2d-i\)">\(2d-i\)</span>, so the lower-degree result gives modulus <span class="math" data-tex="\(q^{i/2}\)">\(q^{i/2}\)</span>.</p>
+<p>If the construction required <span class="math" data-tex="\(\mathbf F_{q^a}\)">\(\mathbf F_{q^a}\)</span>, it proved algebraicity and modulus <span class="math" data-tex="\(q^{ai/2}\)">\(q^{ai/2}\)</span> for <span class="math" data-tex="\(\alpha^a\)">\(\alpha^a\)</span>. The equation <span class="math" data-tex="\(T^a-\alpha^a=0\)">\(T^a-\alpha^a=0\)</span> gives algebraicity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>; for every conjugate <span class="math" data-tex="\(\alpha&#x27;\)">\(\alpha&#x27;\)</span>, its <span class="math" data-tex="\(a\)">\(a\)</span>-th power is a conjugate of <span class="math" data-tex="\(\alpha^a\)">\(\alpha^a\)</span>, hence <span class="math" data-tex="\(|\alpha&#x27;|^a=q^{ai/2}\)">\(|\alpha&#x27;|^a=q^{ai/2}\)</span>. This descends purity. Split geometric components after a finite extension; direct sums and this same descent handle their permutations over the original field. Zero-dimensional groups have permutation eigenvalues, which are roots of unity; degrees outside the cohomological range are zero.</p>
+<p><strong>Exercise 11.3 (medium — complete-intersection counts).</strong> Establish the bound in Theorem 7.1, explaining the primitive quotient, the case of singular intermediate intersections, and the finite-extension counts.</p>
+<p><strong>Solution.</strong> For fixed multidegrees, the smooth expected-dimension locus in the product of coefficient projective spaces is irreducible. The universal intersection is smooth proper, so all geometric cohomology ranks are constant there. Choose one tuple with smooth successive intersections by Bertini; weak Lefschetz and duality give the projective-space ranks outside degree <span class="math" data-tex="\(n\)">\(n\)</span>. Thus those ranks hold for the given tuple even if its specified intermediate intersections are singular.</p>
+<p>The hyperplane powers are nonzero since their top product has nonzero degree <span class="math" data-tex="\(d_1\cdots d_r\)">\(d_1\cdots d_r\)</span>. They span the even groups outside the middle. If <span class="math" data-tex="\(n\)">\(n\)</span> is even, remove the one-dimensional middle hyperplane line by taking its quotient; if <span class="math" data-tex="\(n\)">\(n\)</span> is odd, use all <span class="math" data-tex="\(H^n\)">\(H^n\)</span>. Call its dimension <span class="math" data-tex="\(b\)">\(b\)</span>. Trace additivity for the quotient gives
+<span class="math math-display" data-tex="\[
+\#X_0(\mathbf F_{q^a})-\sum_{j=0}^{n}q^{aj}
+=(-1)^n\sum_{j=1}^{b}\alpha_j^a.
+\]">\[
+\#X_0(\mathbf F_{q^a})-\sum_{j=0}^{n}q^{aj}
+=(-1)^n\sum_{j=1}^{b}\alpha_j^a.
+\]</span>
+Theorem 1.1 gives <span class="math" data-tex="\(|\alpha_j|=q^{n/2}\)">\(|\alpha_j|=q^{n/2}\)</span>. The triangle inequality gives <span class="math" data-tex="\(bq^{an/2}\)">\(bq^{an/2}\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, quotient by the unit line and use <span class="math" data-tex="\(b=\deg X_0-1\)">\(b=\deg X_0-1\)</span>. All groups and traces are étale; no assertion about complex topological Betti numbers is needed.</p>
+<p><strong>Exercise 11.4 (medium — power-family rigidity).</strong> Prove Lemma 3.2, retaining zero entries and multiplicities. Explain why equality only for degrees divisible by a fixed integer would be insufficient.</p>
+<p><strong>Solution.</strong> Choose one admissible positive exponent. Equal powered multisets have the same total cardinality and the same number of zero entries, because a field element has zero positive power exactly when it is zero. Remove their common zeros. If <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> has no equal entry in <span class="math" data-tex="\(B\)">\(B\)</span>, equality <span class="math" data-tex="\(a^d=b^d\)">\(a^d=b^d\)</span> can occur only when <span class="math" data-tex="\(a/b\)">\(a/b\)</span> is a root of unity of finite order <span class="math" data-tex="\(h_b\ge2\)">\(h_b\ge2\)</span> and <span class="math" data-tex="\(h_b\mid d\)">\(h_b\mid d\)</span>. Let <span class="math" data-tex="\(M\)">\(M\)</span> be a common multiple of these orders and of the finitely many divisibility exclusions in the hypothesis. There are arbitrarily large <span class="math" data-tex="\(d\equiv1\bmod M\)">\(d\equiv1\bmod M\)</span>; they meet the hypothesis and avoid every <span class="math" data-tex="\(h_b\)">\(h_b\)</span>. For them <span class="math" data-tex="\(a^d\)">\(a^d\)</span> appears on the left and nowhere on the right, a contradiction.</p>
+<p>Thus there is an equal pair <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Remove one occurrence on each side; for every admissible exponent, one equal occurrence of its power is removed from each powered multiset, so equality survives with all remaining multiplicities. Induct on cardinality. The counterexample to restricting to multiples is <span class="math" data-tex="\(A=\{1\}\)">\(A=\{1\}\)</span>, <span class="math" data-tex="\(B=\{-1\}\)">\(B=\{-1\}\)</span> in characteristic zero: all even powers agree, but the original families differ. The degree-<span class="math" data-tex="\(1\bmod M\)">\(1\bmod M\)</span> argument is what excludes such torsion ambiguity.</p>
+<p><strong>Exercise 11.5 (hard — Chebotarev from covering curves).</strong> Prove Chebotarev for a connected finite étale Galois cover of a smooth curve, allowing a larger field of constants and nonproper curves. Give a uniform error constant and deduce density. Explain its relation to the covering-curve/Artin-character method.</p>
+<p><strong>Solution.</strong> Let the group be <span class="math" data-tex="\(G\)">\(G\)</span>, its geometric subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(e=[G:H]\)">\(e=[G:H]\)</span>. Use the geometric generator of <span class="math" data-tex="\(G/H\)">\(G/H\)</span>; the Frobenius of a degree-<span class="math" data-tex="\(d\)">\(d\)</span> point lies in its coset <span class="math" data-tex="\(G_d\)">\(G_d\)</span>.</p>
+<p>For the fixed-point calculation use arithmetic Frobenius <span class="math" data-tex="\(\Phi^d\)">\(\Phi^d\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> is in the compatible arithmetic coset, <span class="math" data-tex="\(g^{-1}\Phi^d\)">\(g^{-1}\Phi^d\)</span> preserves all <span class="math" data-tex="\(e\)">\(e\)</span> components of the completed cover. Twisting descent makes each component a curve over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>. Curve purity bounds the sum of their counts by <span class="math" data-tex="\(e(q^d+1)\)">\(e(q^d+1)\)</span> with error <span class="math" data-tex="\(2g_Yq^{d/2}\)">\(2g_Yq^{d/2}\)</span>. Removing the geometric boundary adds error at most <span class="math" data-tex="\(B_Y\)">\(B_Y\)</span>. Thus its open fixed count differs from <span class="math" data-tex="\(eq^d\)">\(eq^d\)</span> by at most <span class="math" data-tex="\(2g_Yq^{d/2}+e+B_Y\)">\(2g_Yq^{d/2}+e+B_Y\)</span>. Incompatible <span class="math" data-tex="\(g\)">\(g\)</span> has zero fixed points.</p>
+<p>Each base point with Frobenius class <span class="math" data-tex="\([g]\)">\([g]\)</span> contributes exactly <span class="math" data-tex="\(|Z_G(g)|\)">\(|Z_G(g)|\)</span> fixed points; points of another class contribute none. Divide by this centralizer order, sum over the desired classes, and replace the arithmetic classes by their inverses. The resulting rational-base-point count <span class="math" data-tex="\(R_C(d)\)">\(R_C(d)\)</span> differs from <span class="math" data-tex="\(e|C\cap G_d|q^d/|G|\)">\(e|C\cap G_d|q^d/|G|\)</span> by at most <span class="math" data-tex="\((2g_Y+e+B_Y)q^{d/2}\)">\((2g_Y+e+B_Y)q^{d/2}\)</span>.</p>
+<p>Subtract points of smaller closed degree:
+<span class="math math-display" data-tex="\[
+R_C(d)-dA_C(d)
+=\sum_{\substack{m\mid d\\m&lt;d}}m\,
+ \#\{x:\deg x=m,\ F_x^{d/m}\in C\}.
+\]">\[
+R_C(d)-dA_C(d)
+=\sum_{\substack{m\mid d\\m&lt;d}}m\,
+ \#\{x:\deg x=m,\ F_x^{d/m}\in C\}.
+\]</span>
+This is nonnegative and at most
+<span class="math math-display" data-tex="\[
+\sum_{m\le d/2}\#U_0(\mathbf F_{q^m})
+\le(2+2g_U)\frac q{q-1}q^{d/2}.
+\]">\[
+\sum_{m\le d/2}\#U_0(\mathbf F_{q^m})
+\le(2+2g_U)\frac q{q-1}q^{d/2}.
+\]</span>
+Dividing by <span class="math" data-tex="\(d\)">\(d\)</span> proves the error estimate with
+<span class="math math-display" data-tex="\[
+K=2g_Y+e+B_Y+(2+2g_U)\frac q{q-1}.
+\]">\[
+K=2g_Y+e+B_Y+(2+2g_U)\frac q{q-1}.
+\]</span>
+For <span class="math" data-tex="\(z=q^{1-s}\)">\(z=q^{1-s}\)</span>, summing against <span class="math" data-tex="\(q^{-sd}\)">\(q^{-sd}\)</span> gives an error bounded as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>. The main coefficient <span class="math" data-tex="\(e|C\cap G_d|/|G|\)">\(e|C\cap G_d|/|G|\)</span> is periodic with mean <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>. Its zero-mean remainder has bounded partial sums, hence bounded contribution to <span class="math" data-tex="\(\sum z^d/d\)">\(\sum z^d/d\)</span> by summation by parts. The numerator of the density ratio is therefore
+<span class="math" data-tex="\((|C|/|G|)(-\log(1-z))+O(1)\)">\((|C|/|G|)(-\log(1-z))+O(1)\)</span>; the total-point denominator is <span class="math" data-tex="\(-\log(1-z)+O(1)\)">\(-\log(1-z)+O(1)\)</span>. Their ratio tends to <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>.</p>
+<p>The alternative Artin-character calculation expands the class indicator as
+<span class="math math-display" data-tex="\[
+1_C(h)=\sum_{\chi\in\widehat G}a_\chi\chi(h),
+\qquad
+a_\chi=\frac1{|G|}\sum_{g\in C}\overline{\chi(g)}.
+\]">\[
+1_C(h)=\sum_{\chi\in\widehat G}a_\chi\chi(h),
+\qquad
+a_\chi=\frac1{|G|}\sum_{g\in C}\overline{\chi(g)}.
+\]</span>
+The trivial coefficient is <span class="math" data-tex="\(|C|/|G|\)">\(|C|/|G|\)</span>. Characters factoring through <span class="math" data-tex="\(G/H\)">\(G/H\)</span> supply the periodic constant-field main term; the other terms come from <span class="math" data-tex="\(H^1\)">\(H^1\)</span> of completed covering curves and, for open curves, boundary terms. The curve terms have square-root bounds and the boundary eigenvalues are roots of unity. Intermediate-cover counts use the permutation characters <span class="math" data-tex="\(\operatorname{Ind}_J^G1\)">\(\operatorname{Ind}_J^G1\)</span> for <span class="math" data-tex="\(Y/J\)">\(Y/J\)</span>. Our twist count above computes the same class indicator through the regular <span class="math" data-tex="\(G\)">\(G\)</span>-torsor and centralizers, without requiring an unproved Artin holomorphy assertion. It also retains the representation multiplicities that must accompany a regular-character decomposition.</p>
+<p><strong>Exercise 11.6 (advanced — the exceptional Tate sign).</strong> In the radical case of (5.7), let <span class="math" data-tex="\(n=2m+1\)">\(n=2m+1\)</span> and <span class="math" data-tex="\(\delta_s\in H^n(X_u,\mathbf Q_\ell(m))\)">\(\delta_s\in H^n(X_u,\mathbf Q_\ell(m))\)</span> be rational over the chosen field. Determine the target of <span class="math" data-tex="\(x\mapsto(x,\delta_s)\)">\(x\mapsto(x,\delta_s)\)</span> for untwisted <span class="math" data-tex="\(x\in H^n(X_u,\mathbf Q_\ell)\)">\(x\in H^n(X_u,\mathbf Q_\ell)\)</span>, and the Frobenius eigenvalue on the punctual quotient. Explain why hard Lefschetz cannot be used to remove this case from the proof.</p>
+<p><strong>Solution.</strong> The untwisted pairing has target <span class="math" data-tex="\(H^{2n}(X_u)=\mathbf Q_\ell(-n)\)">\(H^{2n}(X_u)=\mathbf Q_\ell(-n)\)</span>. Pairing with a class carrying twist <span class="math" data-tex="\((m)\)">\((m)\)</span> changes that target to <span class="math" data-tex="\(\mathbf Q_\ell(m-n)\)">\(\mathbf Q_\ell(m-n)\)</span>. Since
+<span class="math math-display" data-tex="\[
+m-n=-m-1=-(n+1)/2=-d/2,
+\]">\[
+m-n=-m-1=-(n+1)/2=-d/2,
+\]</span>
+geometric Frobenius acts there as <span class="math" data-tex="\(q^{n-m}=q^{d/2}\)">\(q^{n-m}=q^{d/2}\)</span>. The map is nonzero and surjective on each one-dimensional punctual target, because the full fibre pairing is nondegenerate and <span class="math" data-tex="\(\delta_s\ne0\)">\(\delta_s\ne0\)</span>. The two exact sequences (5.7) therefore make <span class="math" data-tex="\(H^1(D,M)\)">\(H^1(D,M)\)</span> a subquotient of the direct sum of these lines, which already satisfies (5.1). Using the opposite twist would give <span class="math" data-tex="\(q^{-d/2}\)">\(q^{-d/2}\)</span> and fail the claimed bound. Hard Lefschetz would constrain the radical, but it is a later consequence of Weil II and was not among the inputs to the proof of Weil I; the exceptional case must be handled by these sequences.</p>
+<p><strong>Exercise 11.7 (medium — the actual weak Lefschetz maps).</strong> For a smooth projective <span class="math" data-tex="\(d\)">\(d\)</span>-fold and smooth ample divisor <span class="math" data-tex="\(Y\)">\(Y\)</span>, derive the exact restriction and Gysin ranges from torsion affine vanishing. Explain the inverse-limit step, and specialize the result to the two maps (5.3)–(5.4).</p>
+<p><strong>Solution.</strong> The ample section's sufficiently high power embeds its nonvanishing locus as a closed subscheme of an affine projective chart, so <span class="math" data-tex="\(U=X-Y\)">\(U=X-Y\)</span> is affine. Over <span class="math" data-tex="\(\Lambda_b\)">\(\Lambda_b\)</span>, affine vanishing and finite duality give <span class="math" data-tex="\(H^t_c(U,\Lambda_b(a))=0\)">\(H^t_c(U,\Lambda_b(a))=0\)</span> for <span class="math" data-tex="\(t&lt;d\)">\(t&lt;d\)</span>. The finite cohomology groups have stabilizing images, so <span class="math" data-tex="\(\varprojlim^1\)">\(\varprojlim^1\)</span> vanishes; derived inverse limit and rationalization give the same compact-support vanishing over <span class="math" data-tex="\(\mathbf Q_\ell\)">\(\mathbf Q_\ell\)</span>. In (1.5) both outer terms vanish for <span class="math" data-tex="\(r&lt;d-1\)">\(r&lt;d-1\)</span>, and the first vanishes for <span class="math" data-tex="\(r=d-1\)">\(r=d-1\)</span>. Transposing restriction and cancelling the common twist <span class="math" data-tex="\((d)\)">\((d)\)</span> gives (1.3): Gysin is an isomorphism onto degree <span class="math" data-tex="\(2d-r&gt;d+1\)">\(2d-r&gt;d+1\)</span> and a surjection onto degree <span class="math" data-tex="\(d+1\)">\(d+1\)</span>. Set the ambient dimension equal to the pencil fibre dimension <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(r=n-1\)">\(r=n-1\)</span>; this gives the injection <span class="math" data-tex="\(H^{n-1}(X_u)\hookrightarrow H^{n-1}(Y)\)">\(H^{n-1}(X_u)\hookrightarrow H^{n-1}(Y)\)</span> and surjection <span class="math" data-tex="\(H^{n-1}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)\)">\(H^{n-1}(Y)(-1)\twoheadrightarrow H^{n+1}(X_u)\)</span>. Neither map uses hard Lefschetz.</p>
+<p><strong>Exercise 11.8 (medium — compact support and ordinary weights).</strong> Compute the four nonzero ordinary and compact-support groups of <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, with their Frobenius eigenvalues, and compare them with the Weil II outlook table.</p>
+<p><strong>Solution.</strong> Localization in <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> has degree-zero restriction <span class="math" data-tex="\(E\to E\oplus E\)">\(E\to E\oplus E\)</span>, <span class="math" data-tex="\(c\mapsto(c,c)\)">\(c\mapsto(c,c)\)</span>. Its cokernel is <span class="math" data-tex="\(H^1_c(\mathbf G_m,E)=E\)">\(H^1_c(\mathbf G_m,E)=E\)</span>, with eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span>; its kernel is zero, so <span class="math" data-tex="\(H^0_c=0\)">\(H^0_c=0\)</span>. The remaining compact group is <span class="math" data-tex="\(H^2_c=E(-1)\)">\(H^2_c=E(-1)\)</span>, with eigenvalue <span class="math" data-tex="\(q\)">\(q\)</span>. Connectedness gives <span class="math" data-tex="\(H^0=E\)">\(H^0=E\)</span>, with eigenvalue <span class="math" data-tex="\(1\)">\(1\)</span>; curve duality gives <span class="math" data-tex="\(H^1=E(-1)\)">\(H^1=E(-1)\)</span>, with eigenvalue <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(H^2=0\)">\(H^2=0\)</span>. Thus compact degree one has weight zero and ordinary degree one weight two, while both degree-zero ordinary and degree-two compact groups have their indicated pure weights. The general upper and lower bounds allow these values. The computations themselves follow from localization and duality and do not use Weil II.</p>
+<h2 id="scope-and-references">Scope and references</h2>
+<p>Chebotarev, the unit-family lemmas, vanishing-quotient rationality, the even-dimensional estimate, the tensor-power removal of its error, projective integrality and independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and the complete-intersection bound have been proved here from the identified inputs. Proposition 1.2 supplies the complete weak Lefschetz deduction from the exact written affine theorem and the course’s smooth-duality proof. Künneth and the trace formula come from earlier lessons; §§4–5 use the precise pencil inputs and openness theorem of Lesson 9, the fundamental estimate of Lesson 10, and the independently proved curve Riemann hypothesis in Lesson 5. The all-degree product argument gives a second reduction after middle purity. Proposition 6.2 gives the extension to every smooth proper variety through the smooth projective alteration and stable pointed-family proof lessons identified in §6. Its explicit rational pullback-and-trace projector and finite-field descent retain the full theorem, including individual integer polynomials independent of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Bertini and smooth proper base change supply the complete-intersection deformation argument, and the exact owned proper-comparison theorem identifies its topological constant. The classical six-point model is an additional geometric input only for the cubic-surface example. The two further applications and the Weil II results are stated with their separate proof requirements.</p>
+<ul>
+<li><a href="https://www.numdam.org/item/PMIHES_1974__43__273_0/">Deligne, <em>La conjecture de Weil I</em></a>, (1.6)–(1.7) for the theorem; remark (5.12), printed p.294, for the qualified hypersurface shortcut; §6, pp.294–298, especially (6.2), (6.6)–(6.8), and (6.11)–(6.13), for rationality; §7, pp.299–301, for the even-dimensional induction and tensor powers; (8.1)–(8.4), pp.301–303, for applications. The punctual Tate sign in (7.1.5), p.300, is corrected in §5 and Exercise 11.6 by its defining pairing.</li>
+<li><a href="https://arxiv.org/abs/1509.00797">Milne, <em>The Riemann Hypothesis over Finite Fields: From Weil to the Present Day</em></a>, “Proof of the Riemann hypothesis for hypersurfaces of odd degree,” “The main lemma (restricted form),” “A reduction,” “Completion of the proof,” and “Beyond the Riemann hypothesis over finite fields.” Despite that heading's “odd degree,” its numerator formula and skew pairing require <strong>odd dimension</strong>, as in Deligne (5.12). The lower exponent in its completion passage is <span class="math" data-tex="\(d/2-1/2\)">\(d/2-1/2\)</span>, as follows from duality, rather than the printed <span class="math" data-tex="\(d-1/2\)">\(d-1/2\)</span>. Vanishing-quotient rationality requires §4, not just the induction hypothesis for full fibre cohomology.</li>
+<li><a href="https://stacks.math.columbia.edu/tag/0F5Q">Stacks, The Trace Formula</a>, especially <a href="https://stacks.math.columbia.edu/tag/03VH">03VH</a>, the stated Weil II theorem, and <a href="https://stacks.math.columbia.edu/tag/03W3">03W3</a>, the Chebotarev sketch with its warning about the coefficient. Section 2 supplies the constant-field term and error explicitly. The regular representation has each irreducible with its dimension as multiplicity; for an actual rank-<span class="math" data-tex="\(r\)">\(r\)</span> geometrically nontrivial irreducible local system on a proper unramified curve, the <span class="math" data-tex="\(H^1\)">\(H^1\)</span>-dimension is <span class="math" data-tex="\((2g-2)r\)">\((2g-2)r\)</span>.</li>
+<li><a href="https://www.numdam.org/item/PMIHES_1980__52__137_0/">Deligne, <em>La conjecture de Weil II</em></a>, (3.3.1), (3.3.4)–(3.3.10), (4.1.1) and (6.2.13), for the exact smooth-proper scope, mixed-weight bounds and the constant and pure-lisse forms of hard Lefschetz. These later results have distinct proofs and are not inputs to the proof of Weil I.</li>
+<li><a href="https://www.numdam.org/item/PMIHES_1996__83__51_0/">A. J. de Jong, <em>Smoothness, semi-stability and alterations</em></a>, Theorem 4.1 and Remark 4.2, is the primary comparison for the geometric theorem used in Proposition 6.2. The course proof homes are <a href="support/AG-LTF--smooth-projective-alterations.html">Smooth projective alterations</a>, §§1–8, and <a href="support/AG-LTF--stable-pointed-family-extension.html">Stable pointed-family extension</a>, Theorem S.9. They supply the projective source, separable generic field and finite-algebraic descent; §6 above proves the actual rational cohomological splitting.</li>
+<li><a href="https://arxiv.org/abs/1712.01167">Dolgachev and Duncan, <em>Automorphisms of cubic surfaces in positive characteristic</em></a>, §2, pp.8–9, for the classical six-point blow-up model in arbitrary characteristic.</li>
+<li><a href="https://www.jmilne.org/math/CourseNotes/LEC.pdf">Milne, <em>Lectures on Étale Cohomology</em>, version 2.21</a>, §§26–28 and 33, printed pp.151–162 and 193–196. Section 33 expressly omits vanishing-quotient rationality and the zero-cycle case; §§3–5 here prove both. Its footnote on p.162 credits A. Mellit for the further product reduction, proved in (6.1a)–(6.1b).</li>
+<li><a href="support/ag-etale-cohomology--cohomological-dimension-and-the-kunneth-formula.html"><em>Cohomological dimension and the Künneth formula</em>, §§2–5, Theorem 5.1</a>, for the complete affine proof; <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps</a>, for the coefficient-compatible smooth pairing and actual counits. Proposition 1.2 proves the needed weak Lefschetz statement here.</li>
+<li><a href="cycle-classes-and-the-lefschetz-fixed-point-formula-for-curves.html">Lesson 5</a>, Theorem 5.3; <a href="lefschetz-pencils-and-vanishing-cycles.html">Lesson 9</a>; <a href="the-fundamental-estimate.html">Lesson 10</a>; and <a href="l-functions-rationality-and-the-functional-equation.html">Lesson 8</a>, for the precise course inputs used above.</li>
+</ul>
+<p>The Stacks comparisons were also read in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/trace.html#trace-theorem-weil-II">AI Integrated Stacks Project, English, <em>The Trace Formula</em></a>, at source revision <code>565b10e987aba5969b21145a0833f42d69f96790</code>, and its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-proposition-cd-affine">affine cohomological-dimension proof</a>. The degree-<span class="math" data-tex="\(i\)">\(i\)</span> weight exponent is <span class="math" data-tex="\(i/2\)">\(i/2\)</span>, as in Theorem 1.1. The Chebotarev comparison retains constant fields, boundary errors and regular-representation multiplicities as in §2. Human Stacks authors retain their credit and GFDL terms; the AI-integrated additions and corrections are not independent verification of this lesson.</p>
+<p>The exposition, proofs, examples and exercise solutions are independently authored. Linked sources retain their own rights.</p>
+</article></main></body></html>

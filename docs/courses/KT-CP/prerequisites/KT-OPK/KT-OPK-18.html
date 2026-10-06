@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="B821F8BB26774B4572CBE35A7AA27DF6E4D7CCDBFA70E0BE847F08A39B796EA6">
+<title>The Pimsner–Voiculescu exact sequence — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-KT-OPK/KT-OPK-18</span></nav>
+<article id="lesson" class="lesson"><h1 id="the-pimsner-voiculescu-exact-sequence">The Pimsner–Voiculescu exact sequence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Crossing an algebra by an automorphism compares its K-classes with their translates. The Pimsner–Voiculescu sequence makes that comparison exact. Its coefficient arrows are the maps induced by the actual inclusion into the crossed product. We will verify that identification on Fourier functions, then compute reflection and Cantor examples and recover the Bunce–Deddens algebra from an odometer.</p>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be an arbitrary complex C*-algebra and <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(A)\)">\(\alpha\in\operatorname{Aut}(A)\)</span>. Set <span class="math" data-tex="\(B=A\rtimes_\alpha\mathbb Z\)">\(B=A\rtimes_\alpha\mathbb Z\)</span>, with convention</p>
+<span id="equation-0-1"></span><span class="math math-display" data-tex="\[
+uau^*=\alpha(a),\qquad \iota:A\longrightarrow B.
+\tag{0.1}
+\]">\[
+uau^*=\alpha(a),\qquad \iota:A\longrightarrow B.
+\tag{0.1}
+\]</span>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is a multiplier; the elements <span class="math" data-tex="\(au^n\)">\(au^n\)</span> belong to <span class="math" data-tex="\(B\)">\(B\)</span>. Full and reduced crossed products agree here because <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is amenable. These facts and the positive gauge action are <a href="../../KT-CP-05.html#an-automorphism-and-its-gauge-action">KT-CP-05, Proposition 5.1 and its Fourier discussion</a>.</p>
+<h2 id="1-the-sequence-and-the-proof-inputs">1. The sequence and the proof inputs</h2>
+<p><span id="theorem-1-1"></span><strong>Theorem 1.1 (Pimsner–Voiculescu).</strong> There are natural maps <span class="math" data-tex="\(d_i:K_i(B)\to K_{1-i}(A)\)">\(d_i:K_i(B)\to K_{1-i}(A)\)</span> making the following cyclic sequence exact:</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(A)\xrightarrow{1-\alpha_{*,0}}K_0(A),\\
+K_0(A)\xrightarrow{\iota_*}K_0(B),\\
+K_0(B)\xrightarrow{d_0}K_1(A),\\
+K_1(A)\xrightarrow{1-\alpha_{*,1}}K_1(A),\\
+K_1(A)\xrightarrow{\iota_*}K_1(B),\\
+K_1(B)\xrightarrow{d_1}K_0(A).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+K_0(A)\xrightarrow{1-\alpha_{*,0}}K_0(A),\\
+K_0(A)\xrightarrow{\iota_*}K_0(B),\\
+K_0(B)\xrightarrow{d_0}K_1(A),\\
+K_1(A)\xrightarrow{1-\alpha_{*,1}}K_1(A),\\
+K_1(A)\xrightarrow{\iota_*}K_1(B),\\
+K_1(B)\xrightarrow{d_1}K_0(A).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>The last arrow is followed by the first. Naturality means compatibility with *-homomorphisms <span class="math" data-tex="\(v:A\to A&#x27;\)">\(v:A\to A&#x27;\)</span> satisfying <span class="math" data-tex="\(v\alpha=\alpha&#x27;v\)">\(v\alpha=\alpha&#x27;v\)</span>, including nonunital and degenerate maps. Our proof below defines the boundary maps, rather than leaving their normalization implicit.</p>
+<p>We use three proved crossed-product inputs, with the same positive dual convention:</p>
+<ul>
+<li><a href="../../KT-CP-05.html#a-periodic-flow-becomes-a-mapping-torus">KT-CP-05, Theorem 5.3</a>: a period-one flow has its real crossed product identified with the mapping torus of the positive dual automorphism of its circle crossed product.</li>
+<li><a href="../../KT-CP-08.html#the-surviving-action-and-the-generator-formulas">KT-CP-08, Theorem 8.3 and Proposition 8.4</a>: Takai duality, including the generator formulas (8.15) and the double dual action (8.16).</li>
+<li><a href="../../KT-CP-11.html#naturality-and-the-two-normalizations">KT-CP-11, Theorem 11.3 and equations (11.22)–(11.26)</a>: the natural Thom isomorphism in its normalization <span class="math" data-tex="\(\Phi=-T\)">\(\Phi=-T\)</span>, where <span class="math" data-tex="\(T\)">\(T\)</span> is the inverse Wiener–Hopf boundary. At a trivial real action, <span class="math" data-tex="\(\Phi^0=\beta\)">\(\Phi^0=\beta\)</span> and <span class="math" data-tex="\(\Phi^1=\theta\)">\(\Phi^1=\theta\)</span>, both the positive suspension maps.</li>
+</ul>
+<p>Write <span class="math" data-tex="\(b_A^0=\beta_A:K_0(A)\to K_1(SA)\)">\(b_A^0=\beta_A:K_0(A)\to K_1(SA)\)</span> and <span class="math" data-tex="\(b_A^1=\theta_A:K_1(A)\to K_0(SA)\)">\(b_A^1=\theta_A:K_1(A)\to K_0(SA)\)</span>, from <a href="KT-OPK-10.html#4-the-boundary-proves-periodicity-and-fixes-its-sign">Lessons 10</a> and <a href="KT-OPK-08.html#2-the-idempotent-loop-of-an-invertible">8</a>. These typed maps fix the ordinary suspension signs. The mapping-torus extension and both boundaries are <a href="KT-OPK-17.html#2-both-connecting-maps-with-their-signs">Lesson 17, Theorem 2.1</a>.</p>
+<h2 id="2-the-fourier-window-identifies-the-inclusion-arrows">2. The Fourier window identifies the inclusion arrows</h2>
+<p>Let <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> be the gauge flow on <span class="math" data-tex="\(B\)">\(B\)</span>: it fixes <span class="math" data-tex="\(A\)">\(A\)</span> and sends <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(e^{2\pi it}u\)">\(e^{2\pi it}u\)</span>. Its period is one. Put</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+C=B\rtimes_\beta\mathbb T,\\
+D=A\otimes\mathcal K(\ell^2\mathbb Z),\\
+\gamma=\alpha\otimes\operatorname{Ad}\lambda_1,\\
+(\lambda_1\xi)(n)=\xi(n-1).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+C=B\rtimes_\beta\mathbb T,\\
+D=A\otimes\mathcal K(\ell^2\mathbb Z),\\
+\gamma=\alpha\otimes\operatorname{Ad}\lambda_1,\\
+(\lambda_1\xi)(n)=\xi(n-1).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>Takai duality identifies <span class="math" data-tex="\(C\)">\(C\)</span> with <span class="math" data-tex="\(D\)">\(D\)</span>, carrying its positive dual automorphism to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Combining it with the period-one theorem gives an isomorphism</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+\Lambda:B\rtimes_\beta\mathbb R\longrightarrow M_\gamma.
+\tag{2.2}
+\]">\[
+\Lambda:B\rtimes_\beta\mathbb R\longrightarrow M_\gamma.
+\tag{2.2}
+\]</span>
+<p>Here the mapping torus satisfies <span class="math" data-tex="\(H(1)=\gamma(H(0))\)">\(H(1)=\gamma(H(0))\)</span>, and its quotient is evaluation at 0. Fix the stability corner <span class="math" data-tex="\(\kappa(a)=a\otimes e_{00}\)">\(\kappa(a)=a\otimes e_{00}\)</span>; compact stability in <a href="KT-OPK-05.html#4-compact-operator-stabilization">Lessons 5, Theorem 4.1</a> and <a href="KT-OPK-06.html#4-realizing-an-invertible-path-at-a-late-stage">6, Corollary 4.2</a> makes <span class="math" data-tex="\(\kappa_*\)">\(\kappa_*\)</span> an isomorphism in both degrees.</p>
+<p>The map <span class="math" data-tex="\(\iota\)">\(\iota\)</span> is equivariant from the trivial real action on <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Its integrated map is therefore</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="\[
+\iota\rtimes\mathbb R:C_0(\mathbb R,A)
+\longrightarrow B\rtimes_\beta\mathbb R,
+\tag{2.3}
+\]">\[
+\iota\rtimes\mathbb R:C_0(\mathbb R,A)
+\longrightarrow B\rtimes_\beta\mathbb R,
+\tag{2.3}
+\]</span>
+<p>using the positive Fourier transform <span class="math" data-tex="\(\widehat g(\xi)=\int g(t)e^{2\pi it\xi}\,dt\)">\(\widehat g(\xi)=\int g(t)e^{2\pi it\xi}\,dt\)</span>.</p>
+<p><span id="lemma-2-1"></span><strong>Lemma 2.1 (window formula).</strong> For <span class="math" data-tex="\(F\in C_0(\mathbb R,A)\)">\(F\in C_0(\mathbb R,A)\)</span>, write <span class="math" data-tex="\(H=\Lambda(\iota\rtimes\mathbb R)(F)\)">\(H=\Lambda(\iota\rtimes\mathbb R)(F)\)</span>. Its diagonal entries are</p>
+<span id="equation-2-4"></span><span class="math math-display" data-tex="\[
+H_{nn}(s)=\alpha^n(F(s-n)).
+\tag{2.4}
+\]">\[
+H_{nn}(s)=\alpha^n(F(s-n)).
+\tag{2.4}
+\]</span>
+<p>If <span class="math" data-tex="\(e:SA\to C_0(\mathbb R,A)\)">\(e:SA\to C_0(\mathbb R,A)\)</span> extends a function by zero outside <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, then</p>
+<span id="equation-2-5"></span><span class="math math-display" data-tex="\[
+\Lambda(\iota\rtimes\mathbb R)e=j\,S\kappa,
+\tag{2.5}
+\]">\[
+\Lambda(\iota\rtimes\mathbb R)e=j\,S\kappa,
+\tag{2.5}
+\]</span>
+<p>where <span class="math" data-tex="\(j:SD\to M_\gamma\)">\(j:SD\to M_\gamma\)</span> is inclusion.</p>
+<p><em>Proof.</em> In the final Takai coordinates of KT-CP-08, a coefficient <span class="math" data-tex="\(a\)">\(a\)</span> acts diagonally by <span class="math" data-tex="\(\alpha^n(a)\)">\(\alpha^n(a)\)</span>, and the circle group multiplier <span class="math" data-tex="\(v_t\)">\(v_t\)</span> acts diagonally by <span class="math" data-tex="\(e^{-2\pi itn}\)">\(e^{-2\pi itn}\)</span>. The period-one fiber at <span class="math" data-tex="\(s\)">\(s\)</span> replaces the real group multiplier by <span class="math" data-tex="\(e^{2\pi ist}v_t\)">\(e^{2\pi ist}v_t\)</span>. Thus the integrated elementary function <span class="math" data-tex="\(a g(t)\)">\(a g(t)\)</span> has diagonal entry</p>
+<span id="equation-2-6"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha^n(a)\int g(t)e^{2\pi it(s-n)}\,dt
+\\
+=\alpha^n(a)\widehat g(s-n).
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+\alpha^n(a)\int g(t)e^{2\pi it(s-n)}\,dt
+\\
+=\alpha^n(a)\widehat g(s-n).
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p>Finite sums of these Fourier functions are dense in <span class="math" data-tex="\(C_0(\mathbb R,A)\)">\(C_0(\mathbb R,A)\)</span>, by the Fourier isomorphism of KT-CP-05, Proposition 5.2. For fixed <span class="math" data-tex="\(s\)">\(s\)</span>, the proposed diagonal entries tend to zero as <span class="math" data-tex="\(|n|\to\infty\)">\(|n|\to\infty\)</span>, so they define a compact diagonal matrix over <span class="math" data-tex="\(A\)">\(A\)</span>. Their norm is at most <span class="math" data-tex="\(\|F\|_\infty\)">\(\|F\|_\infty\)</span>, uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>, since automorphisms are isometric. Density proves (2.4) for all <span class="math" data-tex="\(F\)">\(F\)</span>. The endpoint relation also follows directly: <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> shifts index <span class="math" data-tex="\(n-1\)">\(n-1\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span> and applies <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, giving <span class="math" data-tex="\(\alpha^n(F(s+1-n))\)">\(\alpha^n(F(s+1-n))\)</span>.</p>
+<p>For <span class="math" data-tex="\(F=e(f)\)">\(F=e(f)\)</span> and <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, only index <span class="math" data-tex="\(n=0\)">\(n=0\)</span> can contribute; at the endpoints it too is zero. Thus the family is exactly <span class="math" data-tex="\(f(s)\otimes e_{00}\)">\(f(s)\otimes e_{00}\)</span>, proving (2.5). This is an equality of algebra maps before applying K-theory. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also need the orientation of the window inclusion. It sends the interval maps <span class="math" data-tex="\(b_A^i\)">\(b_A^i\)</span> to the corresponding positive real-line Bott maps. To check this, choose an increasing homeomorphism <span class="math" data-tex="\(h:\mathbb R\to(0,1)\)">\(h:\mathbb R\to(0,1)\)</span>, and let <span class="math" data-tex="\(c(\xi)\)">\(c(\xi)\)</span> equal 0 below 0, <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and 1 above 1. For a based unitary loop <span class="math" data-tex="\(L\)">\(L\)</span>, interpolate its argument by</p>
+<span id="equation-2-7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+h_r(\xi)=(1-r)h(\xi)+r c(\xi),\\
+0\leq r\leq1.
+\end{gathered}
+\tag{2.7}
+\]">\[
+\begin{gathered}
+h_r(\xi)=(1-r)h(\xi)+r c(\xi),\\
+0\leq r\leq1.
+\end{gathered}
+\tag{2.7}
+\]</span>
+<p>The nonconstant part of <span class="math" data-tex="\(L(h_r(\xi))\)">\(L(h_r(\xi))\)</span> vanishes at infinity uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>, because both arguments tend uniformly to the respective endpoints there. Uniform continuity of <span class="math" data-tex="\(L\)">\(L\)</span> makes this a norm-continuous homotopy. It joins the real-line representative <span class="math" data-tex="\(L\circ h\)">\(L\circ h\)</span> to the zero-extended interval representative. The same proof applies to the idempotent loop defining <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, subtracting its constant scalar projection instead of identity. Relative representatives retain their scalar normalization throughout. This proves the window assertion in both degrees for nonunital as well as unital <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Define isomorphisms, with indices modulo two,</p>
+<span id="equation-2-8"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+L_i=\Lambda_*\Phi_\beta^i,\\
+L_i:K_i(B)\longrightarrow K_{1-i}(M_\gamma).
+\end{gathered}
+\tag{2.8}
+\]">\[
+\begin{gathered}
+L_i=\Lambda_*\Phi_\beta^i,\\
+L_i:K_i(B)\longrightarrow K_{1-i}(M_\gamma).
+\end{gathered}
+\tag{2.8}
+\]</span>
+<p>Thom naturality for <span class="math" data-tex="\(\iota\)">\(\iota\)</span>, its trivial-action normalization, the window assertion, and (2.5) give the required comparison:</p>
+<span id="equation-2-9"></span><span class="math math-display" data-tex="\[
+L_i\iota_*=j_*b_D^i\kappa_*.
+\tag{2.9}
+\]">\[
+L_i\iota_*=j_*b_D^i\kappa_*.
+\tag{2.9}
+\]</span>
+<p>Thus transporting the suspended-ideal inclusion through the Thom and Takai isomorphisms gives exactly <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span>. Naturality alone would not identify that ideal inclusion; the explicit window computation supplies the missing step.</p>
+<h2 id="3-completing-the-proof-and-extracting-group-extensions">3. Completing the proof and extracting group extensions</h2>
+<p><em>Proof of Theorem 1.1.</em> Under stability, <span class="math" data-tex="\(\gamma_*\)">\(\gamma_*\)</span> is <span class="math" data-tex="\(\alpha_*\)">\(\alpha_*\)</span>. Indeed,</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+\gamma\kappa(a)=\alpha(a)\otimes e_{11}.
+\tag{3.1}
+\]">\[
+\gamma\kappa(a)=\alpha(a)\otimes e_{11}.
+\tag{3.1}
+\]</span>
+<p>The corners <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> and <span class="math" data-tex="\(e_{00}\)">\(e_{00}\)</span> have the same K-map: a unitary interchanging these two coordinates conjugates their embeddings, and a norm-continuous unitary path on that finite two-dimensional block joins this conjugation to identity. It acts trivially on the other coordinates and works in the multiplier algebra for nonunital coefficients. Hence <span class="math" data-tex="\(\gamma_*\kappa_*=\kappa_*\alpha_*\)">\(\gamma_*\kappa_*=\kappa_*\alpha_*\)</span>.</p>
+<p>Apply the six-term mapping-torus sequence of Lesson 17 to <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. In degree <span class="math" data-tex="\(i\)">\(i\)</span> its relevant portion, after the positive suspension identification, is</p>
+<span id="equation-3-2"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K_i(D)&amp;\xrightarrow{\gamma_*-1}K_i(D)\\
+&amp;\xrightarrow{j_*b_D^i}K_{1-i}(M_\gamma)\\
+&amp;\xrightarrow{q_*}K_{1-i}(D).
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+K_i(D)&amp;\xrightarrow{\gamma_*-1}K_i(D)\\
+&amp;\xrightarrow{j_*b_D^i}K_{1-i}(M_\gamma)\\
+&amp;\xrightarrow{q_*}K_{1-i}(D).
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>Use <span class="math" data-tex="\(\kappa_*\)">\(\kappa_*\)</span> on the coefficient groups and <span class="math" data-tex="\(L_i\)">\(L_i\)</span> on the middle group. Equation (2.9) identifies its second arrow with <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span>. Define</p>
+<span id="equation-3-3"></span><span class="math math-display" data-tex="\[
+d_i=\kappa_*^{-1}q_*L_i.
+\tag{3.3}
+\]">\[
+d_i=\kappa_*^{-1}q_*L_i.
+\tag{3.3}
+\]</span>
+<p>The transported first arrow is <span class="math" data-tex="\(\alpha_*-1\)">\(\alpha_*-1\)</span>. Replacing this endomorphism in each degree by its negative <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> preserves both its kernel and image, so the cyclic sequence with <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span> and the specified <span class="math" data-tex="\(d_i\)">\(d_i\)</span> remains exact. This gives precisely (1.1), with the same quotient evaluation and Thom normalization in (3.3).</p>
+<p>All these maps are natural. An equivariant coefficient map commutes with the period-one integrated formula, the Takai diagonal formulas, the stability corner and evaluation; Thom maps are natural by the exact imported result. These give commuting squares for <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span>, <span class="math" data-tex="\(d_i\)">\(d_i\)</span>, and <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Formula (3.3) fixes our boundary normalization. Negating a boundary arrow produces another commonly used PV presentation; it does not change the induced inclusion arrows. Replacing the covariance relation by <span class="math" data-tex="\(u^*au=\alpha(a)\)">\(u^*au=\alpha(a)\)</span> replaces the generating automorphism by <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>. Also,</p>
+<span id="equation-3-4"></span><span class="math math-display" data-tex="\[
+1-\alpha_*^{-1}=-\alpha_*^{-1}(1-\alpha_*),
+\tag{3.4}
+\]">\[
+1-\alpha_*^{-1}=-\alpha_*^{-1}(1-\alpha_*),
+\tag{3.4}
+\]</span>
+<p>so the inverse-automorphism version has the same kernels and images, but its actual coefficient endomorphism is different.</p>
+<p>Exactness gives, for <span class="math" data-tex="\(i=0,1\)">\(i=0,1\)</span>,</p>
+<span id="equation-3-5"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+C_i=K_i(A)/(1-\alpha_{*,i})K_i(A),\\
+\begin{aligned}
+0&amp;\longrightarrow C_i\xrightarrow{\overline{\iota_*}}K_i(B)\\
+&amp;\xrightarrow{d_i}\ker(1-\alpha_{*,1-i})\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+C_i=K_i(A)/(1-\alpha_{*,i})K_i(A),\\
+\begin{aligned}
+0&amp;\longrightarrow C_i\xrightarrow{\overline{\iota_*}}K_i(B)\\
+&amp;\xrightarrow{d_i}\ker(1-\alpha_{*,1-i})\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>The quotient injection follows because <span class="math" data-tex="\(\ker\iota_*\)">\(\ker\iota_*\)</span> is exactly the displayed image. Its image is <span class="math" data-tex="\(\ker d_i\)">\(\ker d_i\)</span>, and <span class="math" data-tex="\(d_i\)">\(d_i\)</span> maps onto the displayed kernel. A free right-hand group admits a section by lifting a basis. Without such a section, the outer groups need not determine the middle group.</p>
+<p>If <span class="math" data-tex="\(\alpha_t\)">\(\alpha_t\)</span> is a point-norm continuous path of automorphisms, then <span class="math" data-tex="\(\alpha_t\otimes\operatorname{Ad}\lambda_1\)">\(\alpha_t\otimes\operatorname{Ad}\lambda_1\)</span> is a path of automorphisms of <span class="math" data-tex="\(D\)">\(D\)</span>. Lesson 17, Theorem 4.1, makes their mapping tori isomorphic. The isomorphisms <span class="math" data-tex="\(L_i\)">\(L_i\)</span> consequently show that the crossed products' K-groups depend, up to isomorphism, only on the automorphism-homotopy class. This assertion does not identify the crossed-product algebras themselves.</p>
+<h2 id="4-stable-finiteness-and-cantor-coefficients">4. Stable finiteness and Cantor coefficients</h2>
+<p><span id="proposition-4-1"></span><strong>Proposition 4.1.</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is nonzero, unital and stably finite, then <span class="math" data-tex="\(K_1(A\rtimes_\alpha\mathbb Z)\ne0\)">\(K_1(A\rtimes_\alpha\mathbb Z)\ne0\)</span>. In particular, a crossed product of a nonzero unital AF-algebra by <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is never AF.</p>
+<p><em>Proof.</em> First <span class="math" data-tex="\([1_A]\ne0\)">\([1_A]\ne0\)</span> in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. Otherwise group completion of the projection monoid gives a projection <span class="math" data-tex="\(p\)">\(p\)</span> such that <span class="math" data-tex="\(1_A\oplus p\)">\(1_A\oplus p\)</span> is stably equivalent to <span class="math" data-tex="\(p\)">\(p\)</span>. After placing them in a common finite matrix algebra, let <span class="math" data-tex="\(E=P+Q\)">\(E=P+Q\)</span>, where <span class="math" data-tex="\(P\)">\(P\)</span> is the copy of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> the nonzero copy of the unit on a disjoint block. A partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> implementing the equivalence has <span class="math" data-tex="\(v^*v=E\)">\(v^*v=E\)</span> and <span class="math" data-tex="\(vv^*=P&lt;E\)">\(vv^*=P&lt;E\)</span>. It lies in the <span class="math" data-tex="\(E\)">\(E\)</span>-corner. Then <span class="math" data-tex="\(v+(I-E)\)">\(v+(I-E)\)</span> is an isometry in that matrix algebra with range projection <span class="math" data-tex="\(I-Q&lt;I\)">\(I-Q&lt;I\)</span>, contradicting stable finiteness. Since <span class="math" data-tex="\(\alpha_*[1_A]=[1_A]\)">\(\alpha_*[1_A]=[1_A]\)</span>, the kernel of <span class="math" data-tex="\(1-\alpha_{*,0}\)">\(1-\alpha_{*,0}\)</span> is nonzero. Exactness makes it the image of <span class="math" data-tex="\(d_1\)">\(d_1\)</span>, so <span class="math" data-tex="\(K_1(B)\ne0\)">\(K_1(B)\ne0\)</span>. Unital AF-algebras are stably finite by their ordered projection invariant, while their <span class="math" data-tex="\(K_1\)">\(K_1\)</span> vanishes by <a href="../availability.html">Lesson 16, Proposition 1.1</a>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> cannot be AF. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Unitality matters. Translation of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> on itself gives <span class="math" data-tex="\(C_0(\mathbb Z)\rtimes\mathbb Z\cong\mathcal K(\ell^2\mathbb Z)\)">\(C_0(\mathbb Z)\rtimes\mathbb Z\cong\mathcal K(\ell^2\mathbb Z)\)</span>, an AF-algebra. Apply KT-CP-08, Theorem 8.3, to the trivial circle action on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: its first crossed product is <span class="math" data-tex="\(c_0(\mathbb Z)\)">\(c_0(\mathbb Z)\)</span>, its dual action is translation, and its double crossed product is <span class="math" data-tex="\(\mathcal K(L^2(\mathbb T))\cong\mathcal K(\ell^2\mathbb Z)\)">\(\mathcal K(L^2(\mathbb T))\cong\mathcal K(\ell^2\mathbb Z)\)</span>.</p>
+<p><span id="proposition-4-2"></span><strong>Proposition 4.2 (Cantor systems).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be the Cantor set, <span class="math" data-tex="\(\varphi:X\to X\)">\(\varphi:X\to X\)</span> a homeomorphism, and <span class="math" data-tex="\(\alpha(f)=f\circ\varphi^{-1}\)">\(\alpha(f)=f\circ\varphi^{-1}\)</span>. Then</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(C(X)\rtimes_\alpha\mathbb Z)\\
+=C(X,\mathbb Z)/(1-\alpha_*)C(X,\mathbb Z),\\
+K_1(C(X)\rtimes_\alpha\mathbb Z)\\
+\cong\{h\in C(X,\mathbb Z):h\circ\varphi^{-1}=h\}.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+K_0(C(X)\rtimes_\alpha\mathbb Z)\\
+=C(X,\mathbb Z)/(1-\alpha_*)C(X,\mathbb Z),\\
+K_1(C(X)\rtimes_\alpha\mathbb Z)\\
+\cong\{h\in C(X,\mathbb Z):h\circ\varphi^{-1}=h\}.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>If <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is minimal, the latter group is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, generated by <span class="math" data-tex="\([u]\)">\([u]\)</span>.</p>
+<p><em>Proof.</em> Finite clopen partitions give finite-dimensional subalgebras of <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. Choose a refining sequence whose mesh tends to zero. A continuous function is uniformly approximated by a function constant on a sufficiently fine partition, so these subalgebras have dense union. Their <span class="math" data-tex="\(K_0\)">\(K_0\)</span> groups are the rank functions on the cells, and refinement repeats each cell's rank on its subcells. Continuity of K-theory identifies their limit with <span class="math" data-tex="\(C(X,\mathbb Z)\)">\(C(X,\mathbb Z)\)</span>: every continuous integer-valued function has finite image and clopen fibers. Their <span class="math" data-tex="\(K_1\)">\(K_1\)</span> groups are zero. The action on rank functions is the stated pullback. Applying (3.5) proves (4.1).</p>
+<p>For a minimal homeomorphism, an invariant continuous integer-valued function is constant on every orbit. Each orbit is dense, so continuity makes it constant on <span class="math" data-tex="\(X\)">\(X\)</span>. Thus <span class="math" data-tex="\(d_1\)">\(d_1\)</span> identifies <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span> with the constant integers. To check its generator, apply naturality to the equivariant scalar map <span class="math" data-tex="\(\mathbb C\to C(X)\)">\(\mathbb C\to C(X)\)</span>. Its crossed-product map sends the coordinate unitary <span class="math" data-tex="\(z\in C(S^1)\)">\(z\in C(S^1)\)</span> to <span class="math" data-tex="\(u\)">\(u\)</span>. For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, (1.1) makes <span class="math" data-tex="\(d_1:K_1(C(S^1))\to K_0(\mathbb C)\)">\(d_1:K_1(C(S^1))\to K_0(\mathbb C)\)</span> an isomorphism, so it sends <span class="math" data-tex="\([z]\)">\([z]\)</span> to <span class="math" data-tex="\(s[1]\)">\(s[1]\)</span> for a fixed <span class="math" data-tex="\(s\in\{1,-1\}\)">\(s\in\{1,-1\}\)</span>. Therefore <span class="math" data-tex="\(d_1[u]=s[1_X]\)">\(d_1[u]=s[1_X]\)</span>, a generator of the invariant subgroup. It follows that <span class="math" data-tex="\([u]\)">\([u]\)</span> is a generator of <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span>. This argument needs no unverified numerical choice for the transported boundary's orientation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The coinvariant subgroup is unchanged if pullback by <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is used instead of <span class="math" data-tex="\(\varphi^{-1}\)">\(\varphi^{-1}\)</span>, by (3.4). The formula above states which action occurs in (0.1).</p>
+<h3 id="positive-cutdowns-and-the-simplicity-argument">Positive cutdowns and the simplicity argument</h3>
+<p>The analytic input in the outer-powers simplicity criterion is the following property of an automorphism <span class="math" data-tex="\(\eta\)">\(\eta\)</span>: for every nonzero hereditary C*-subalgebra <span class="math" data-tex="\(H\subseteq A\)">\(H\subseteq A\)</span>, every <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span> and every <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, there is <span class="math" data-tex="\(b\in H_+\)">\(b\in H_+\)</span> such that</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+\|b\|=1,\qquad \|b c\eta(b)\|&lt;\delta.
+\tag{4.2}
+\]">\[
+\|b\|=1,\qquad \|b c\eta(b)\|&lt;\delta.
+\tag{4.2}
+\]</span>
+<p>Here hereditary means that <span class="math" data-tex="\(0\leq a\leq h\)">\(0\leq a\leq h\)</span>, <span class="math" data-tex="\(h\in H_+\)">\(h\in H_+\)</span>, implies <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>. We call (4.2) the positive cutdown property. Theorem 4.8 below proves Kishimoto's outer-automorphism lemma: every outer automorphism of a simple C*-algebra has this property, where inner in the nonunital case means implemented by a unitary of <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span>. Lemma 4.3 and Theorem 4.4 prove its passage to simplicity. The proofs require neither separability nor a unit, nuclearity or an invariant trace.</p>
+<p><span id="lemma-4-3"></span><strong>Lemma 4.3 (simultaneous cutdowns).</strong> Let <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, let <span class="math" data-tex="\(c_1,\ldots,c_m\in A\)">\(c_1,\ldots,c_m\in A\)</span>, and let <span class="math" data-tex="\(\eta_1,\ldots,\eta_m\)">\(\eta_1,\ldots,\eta_m\)</span> have the positive cutdown property. For <span class="math" data-tex="\(\varepsilon,\delta&gt;0\)">\(\varepsilon,\delta&gt;0\)</span>, there is <span class="math" data-tex="\(x\in A_+\)">\(x\in A_+\)</span>, <span class="math" data-tex="\(\|x\|=1\)">\(\|x\|=1\)</span>, with</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\|xax\|\geq\|a\|-\varepsilon,\\
+\|x c_i\eta_i(x)\|&lt;\delta\quad(1\leq i\leq m).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+\|xax\|\geq\|a\|-\varepsilon,\\
+\|x c_i\eta_i(x)\|&lt;\delta\quad(1\leq i\leq m).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p><em>Proof.</em> We first justify the hereditary algebras we will use. For <span class="math" data-tex="\(d\in A_+\)">\(d\in A_+\)</span>, <span class="math" data-tex="\(\overline{dAd}\)">\(\overline{dAd}\)</span> is a C*-subalgebra, since <span class="math" data-tex="\(dAd\)">\(dAd\)</span> is closed under multiplication and adjoints. The contractions <span class="math" data-tex="\(e_k=d(d+1/k)^{-1}\)">\(e_k=d(d+1/k)^{-1}\)</span> form an approximate identity there, as <span class="math" data-tex="\(e_kd\to d\)">\(e_kd\to d\)</span>. If <span class="math" data-tex="\(0\leq y\leq h\)">\(0\leq y\leq h\)</span> with <span class="math" data-tex="\(h\)">\(h\)</span> in that algebra, then
+<span class="math" data-tex="\(\|(1-e_k)y^{1/2}\|^2\leq\|(1-e_k)h(1-e_k)\|\to0\)">\(\|(1-e_k)y^{1/2}\|^2\leq\|(1-e_k)h(1-e_k)\|\to0\)</span>.
+Hence <span class="math" data-tex="\(e_kye_k\to y\)">\(e_kye_k\to y\)</span>, and each <span class="math" data-tex="\(e_kye_k\)">\(e_kye_k\)</span> lies in <span class="math" data-tex="\(dAd\)">\(dAd\)</span>; this proves heredity. If <span class="math" data-tex="\(d\)">\(d\)</span> belongs to an already hereditary algebra <span class="math" data-tex="\(H\)">\(H\)</span>, the inequality <span class="math" data-tex="\(0\leq dcd\leq\|c\|d^2\)">\(0\leq dcd\leq\|c\|d^2\)</span> for <span class="math" data-tex="\(c\geq0\)">\(c\geq0\)</span>, followed by linear decomposition of arbitrary <span class="math" data-tex="\(c\)">\(c\)</span>, proves <span class="math" data-tex="\(\overline{dAd}\subseteq H\)">\(\overline{dAd}\subseteq H\)</span>.</p>
+<p>Put <span class="math" data-tex="\(t=\|a\|\)">\(t=\|a\|\)</span> and replace <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> by a smaller positive number if necessary so that <span class="math" data-tex="\(\varepsilon&lt;t\)">\(\varepsilon&lt;t\)</span>. The element <span class="math" data-tex="\(d=(a-(t-\varepsilon))_+\)">\(d=(a-(t-\varepsilon))_+\)</span> is nonzero, since <span class="math" data-tex="\(t\)">\(t\)</span> belongs to the spectrum of <span class="math" data-tex="\(a\)">\(a\)</span>. Let <span class="math" data-tex="\(H_0=\overline{dAd}\)">\(H_0=\overline{dAd}\)</span>. In a faithful representation its support projection <span class="math" data-tex="\(p\)">\(p\)</span> is the spectral projection of <span class="math" data-tex="\(a\)">\(a\)</span> for <span class="math" data-tex="\((t-\varepsilon,t]\)">\((t-\varepsilon,t]\)</span>. Every <span class="math" data-tex="\(x\in H_0\)">\(x\in H_0\)</span> satisfies <span class="math" data-tex="\(px=x=xp\)">\(px=x=xp\)</span>, by approximation with <span class="math" data-tex="\(dAd\)">\(dAd\)</span>. Thus, for positive <span class="math" data-tex="\(x\)">\(x\)</span> of norm one in <span class="math" data-tex="\(H_0\)">\(H_0\)</span>,</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+xax\geq(t-\varepsilon)x^2,\\
+\|xax\|\geq t-\varepsilon.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+xax\geq(t-\varepsilon)x^2,\\
+\|xax\|\geq t-\varepsilon.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>The support projection is used only to check this inequality; it need not belong to <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Inductively choose positive norm-one <span class="math" data-tex="\(b_i\in H_{i-1}\)">\(b_i\in H_{i-1}\)</span> with
+<span class="math" data-tex="\(\|b_i c_i\eta_i(b_i)\|&lt;\delta/4\)">\(\|b_i c_i\eta_i(b_i)\|&lt;\delta/4\)</span>, and put
+<span class="math" data-tex="\(H_i=\overline{(b_i-1/2)_+A(b_i-1/2)_+}\)">\(H_i=\overline{(b_i-1/2)_+A(b_i-1/2)_+}\)</span>.
+This is a nonzero hereditary subalgebra of <span class="math" data-tex="\(H_{i-1}\)">\(H_{i-1}\)</span>: the positive part is nonzero because <span class="math" data-tex="\(1\in\operatorname{sp}(b_i)\)">\(1\in\operatorname{sp}(b_i)\)</span>, and heredity of <span class="math" data-tex="\(H_{i-1}\)">\(H_{i-1}\)</span> places its generated hereditary algebra inside it. After the last step choose any positive norm-one <span class="math" data-tex="\(x\in H_m\)">\(x\in H_m\)</span>. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, choose it in <span class="math" data-tex="\(H_0\)">\(H_0\)</span>.</p>
+<p>Define the continuous function <span class="math" data-tex="\(h\)">\(h\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> by <span class="math" data-tex="\(h(s)=2\)">\(h(s)=2\)</span> for <span class="math" data-tex="\(s\leq1/2\)">\(s\leq1/2\)</span> and <span class="math" data-tex="\(h(s)=1/s\)">\(h(s)=1/s\)</span> for <span class="math" data-tex="\(s\geq1/2\)">\(s\geq1/2\)</span>. Functional calculus in the unitization gives <span class="math" data-tex="\(\|h(b_i)\|\leq2\)">\(\|h(b_i)\|\leq2\)</span>. On <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, multiplication by <span class="math" data-tex="\(h(b_i)b_i\)">\(h(b_i)b_i\)</span> is identity on either side. Indeed, its product with <span class="math" data-tex="\((b_i-1/2)_+\)">\((b_i-1/2)_+\)</span> is that same positive part; density of its two-sided products proves the assertion. As <span class="math" data-tex="\(x\in H_m\subseteq H_i\)">\(x\in H_m\subseteq H_i\)</span>,</p>
+<span id="equation-4-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+x c_i\eta_i(x)
+&amp;=x h(b_i)\,[b_i c_i\eta_i(b_i)]\\
+&amp;\qquad\times\eta_i(h(b_i)x),\\
+\|x c_i\eta_i(x)\|
+&amp;\leq4\|b_i c_i\eta_i(b_i)\|&lt;\delta.
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+x c_i\eta_i(x)
+&amp;=x h(b_i)\,[b_i c_i\eta_i(b_i)]\\
+&amp;\qquad\times\eta_i(h(b_i)x),\\
+\|x c_i\eta_i(x)\|
+&amp;\leq4\|b_i c_i\eta_i(b_i)\|&lt;\delta.
+\end{aligned}
+\tag{4.5}
+\]</span>
+<p>Automorphisms extend to the unitization in this identity. Each estimate uses its own <span class="math" data-tex="\(b_i\)">\(b_i\)</span>, so no error accumulates through subsequent cutdowns. Equation (4.4) proves the other assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-4-4"></span><strong>Theorem 4.4 (the ideal-intersection argument).</strong> Suppose that <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> has the positive cutdown property for every <span class="math" data-tex="\(n\in\mathbb Z\setminus\{0\}\)">\(n\in\mathbb Z\setminus\{0\}\)</span>. Let <span class="math" data-tex="\(B=A\rtimes_{\alpha,r}\mathbb Z\)">\(B=A\rtimes_{\alpha,r}\mathbb Z\)</span>, with faithful canonical expectation <span class="math" data-tex="\(E:B\to A\)">\(E:B\to A\)</span>. Every *-homomorphism <span class="math" data-tex="\(q:B\to C\)">\(q:B\to C\)</span> that is injective on <span class="math" data-tex="\(A\)">\(A\)</span> is injective on <span class="math" data-tex="\(B\)">\(B\)</span>. More precisely, for <span class="math" data-tex="\(b\in B_+\)">\(b\in B_+\)</span>,</p>
+<span id="equation-4-6"></span><span class="math math-display" data-tex="\[
+\|E(b)\|\leq\|q(b)\|.
+\tag{4.6}
+\]">\[
+\|E(b)\|\leq\|q(b)\|.
+\tag{4.6}
+\]</span>
+<p>Consequently every nonzero closed two-sided ideal of <span class="math" data-tex="\(B\)">\(B\)</span> meets <span class="math" data-tex="\(A\)">\(A\)</span> nontrivially. If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> is simple, then <span class="math" data-tex="\(B\)">\(B\)</span> is simple.</p>
+<p><em>Proof.</em> Injective C*-homomorphisms are isometric, so <span class="math" data-tex="\(q|_A\)">\(q|_A\)</span> is isometric. Fix <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span> and <span class="math" data-tex="\(\zeta&gt;0\)">\(\zeta&gt;0\)</span>, and choose a finite Fourier polynomial <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(\|b-P\|&lt;\zeta\)">\(\|b-P\|&lt;\zeta\)</span>. Contractivity of <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(\|E(b)-E(P)\|&lt;\zeta\)">\(\|E(b)-E(P)\|&lt;\zeta\)</span>. Replacing its constant coefficient by <span class="math" data-tex="\(a=E(b)\)">\(a=E(b)\)</span> produces</p>
+<span id="equation-4-7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+S=a+\sum_{n\in F}c_nu^n,\\
+F\subset\mathbb Z\setminus\{0\}\text{ finite},\\
+\|b-S\|&lt;2\zeta.
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+S=a+\sum_{n\in F}c_nu^n,\\
+F\subset\mathbb Z\setminus\{0\}\text{ finite},\\
+\|b-S\|&lt;2\zeta.
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>If <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, (4.6) is automatic. Otherwise apply Lemma 4.3 to <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(c_n\)">\(c_n\)</span> and <span class="math" data-tex="\(\eta_n=\alpha^n\)">\(\eta_n=\alpha^n\)</span>. The covariance convention gives <span class="math" data-tex="\(x c_nu^n x=x c_n\alpha^n(x)u^n\)">\(x c_nu^n x=x c_n\alpha^n(x)u^n\)</span>. Multiplication by the unitary multiplier <span class="math" data-tex="\(u^n\)">\(u^n\)</span> preserves norm, also for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>. Thus</p>
+<span id="equation-4-8"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\|q(b)\|
+&amp;\geq\|q(xbx)\|\\
+&amp;\geq\|q(xSx)\|-2\zeta\\
+&amp;\geq\|xax\|-|F|\delta-2\zeta\\
+&amp;\geq\|E(b)\|-\varepsilon-|F|\delta-2\zeta.
+\end{aligned}
+\tag{4.8}
+\]">\[
+\begin{aligned}
+\|q(b)\|
+&amp;\geq\|q(xbx)\|\\
+&amp;\geq\|q(xSx)\|-2\zeta\\
+&amp;\geq\|xax\|-|F|\delta-2\zeta\\
+&amp;\geq\|E(b)\|-\varepsilon-|F|\delta-2\zeta.
+\end{aligned}
+\tag{4.8}
+\]</span>
+<p>The third inequality uses isometry of <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(A\)">\(A\)</span> and contractivity on all of <span class="math" data-tex="\(B\)">\(B\)</span>. First let <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> tend to zero for the fixed polynomial, then let <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> tend to zero. This proves (4.6). If <span class="math" data-tex="\(q(y)=0\)">\(q(y)=0\)</span>, apply (4.6) to <span class="math" data-tex="\(y^*y\)">\(y^*y\)</span>. Faithfulness of <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(y=0\)">\(y=0\)</span>.</p>
+<p>Now take <span class="math" data-tex="\(q\)">\(q\)</span> to be the quotient by an ideal <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(J\cap A=0\)">\(J\cap A=0\)</span>. The assertion just proved gives <span class="math" data-tex="\(J=0\)">\(J=0\)</span>. If <span class="math" data-tex="\(A\)">\(A\)</span> is simple and <span class="math" data-tex="\(J\ne0\)">\(J\ne0\)</span>, its intersection with <span class="math" data-tex="\(A\)">\(A\)</span> is a nonzero ideal of <span class="math" data-tex="\(A\)">\(A\)</span>, hence equals <span class="math" data-tex="\(A\)">\(A\)</span>. To see that <span class="math" data-tex="\(J=B\)">\(J=B\)</span> also without a unit, let <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> be an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>. On every monomial <span class="math" data-tex="\(c_nu^n\)">\(c_nu^n\)</span>, left multiplication by <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span> converges to identity in norm. Fourier-polynomial density and <span class="math" data-tex="\(\|e_\lambda\|\leq1\)">\(\|e_\lambda\|\leq1\)</span> prove the same on <span class="math" data-tex="\(B\)">\(B\)</span>. Since <span class="math" data-tex="\(e_\lambda\in A\subseteq J\)">\(e_\lambda\in A\subseteq J\)</span>, every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> is a norm limit of <span class="math" data-tex="\(e_\lambda b\in J\)">\(e_\lambda b\in J\)</span>. Therefore <span class="math" data-tex="\(J=B\)">\(J=B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="why-an-outer-automorphism-has-positive-cutdowns">Why an outer automorphism has positive cutdowns</h3>
+<p>We now prove the analytic implication used above. Three elementary pieces make its mechanism visible: pure-state compressions detect a failed cutdown, the compact dual action has a homogeneous primitive ideal space, and continuous functions on that space give central multipliers.</p>
+<p>The precise earlier programme inputs are <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/kaplansky-s-density-theorem-and-its-consequences.html#OA-FND-KD-13">Kadison transitivity, Theorem 11.1</a>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-10">pure states and irreducible representations, §8</a>, <a href="../availability.html">minimal pure-state supports, Lemma 1.1</a>, and the <a href="../availability.html">self-adjoint multiplier criterion, (2.6)</a>. The latter uses <a href="../availability.html">the exact monotone-cone identity, Theorem 4.1</a>. We use normal representation extensions and central ideal supports as in <a href="../availability.html">the bidual lesson, Lemmas 2.1 and 4.2</a>. These written programme components apply without separability. Their separate review state does not assert independent certification here.</p>
+<p><span id="lemma-4-5"></span><strong>Lemma 4.5 (compression to a pure state).</strong> Suppose <span class="math" data-tex="\(H\subseteq A\)">\(H\subseteq A\)</span> is a nonzero hereditary C*-subalgebra, <span class="math" data-tex="\(\eta\in\operatorname{Aut}(A)\)">\(\eta\in\operatorname{Aut}(A)\)</span>, <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>, and <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> satisfy</p>
+<span id="equation-4-9"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\|b c\eta(b)\|\geq d\\
+(b\in H_+,\ \|b\|=1).
+\end{gathered}
+\tag{4.9}
+\]">\[
+\begin{gathered}
+\|b c\eta(b)\|\geq d\\
+(b\in H_+,\ \|b\|=1).
+\end{gathered}
+\tag{4.9}
+\]</span>
+<p>For every pure state <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> whose restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is a state, its minimal bidual support <span class="math" data-tex="\(p\)">\(p\)</span> satisfies</p>
+<span id="equation-4-10"></span><span class="math math-display" data-tex="\[
+\|p c\eta^{**}(p)\|\geq d.
+\tag{4.10}
+\]">\[
+\|p c\eta^{**}(p)\|\geq d.
+\tag{4.10}
+\]</span>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(q\)">\(q\)</span> be the strong limit of a positive contractive approximate identity of <span class="math" data-tex="\(H\)">\(H\)</span>, in <span class="math" data-tex="\(M=A^{**}\)">\(M=A^{**}\)</span>. Then <span class="math" data-tex="\(H^{**}=qMq\)">\(H^{**}=qMq\)</span>. Here is the hereditary-corner justification. For <span class="math" data-tex="\(h\in H_+\)">\(h\in H_+\)</span> and <span class="math" data-tex="\(a\in A_+\)">\(a\in A_+\)</span>, <span class="math" data-tex="\(0\leq hah\leq\|a\|h^2\)">\(0\leq hah\leq\|a\|h^2\)</span>, so <span class="math" data-tex="\(hah\in H\)">\(hah\in H\)</span>. Linear decomposition and approximation with the positive approximate identity give <span class="math" data-tex="\(HAH\subseteq H\)">\(HAH\subseteq H\)</span>. Thus <span class="math" data-tex="\(e_i a e_i\in H\)">\(e_i a e_i\in H\)</span> and <span class="math" data-tex="\(e_i a e_i\to qaq\)">\(e_i a e_i\to qaq\)</span> strongly. Weak density of <span class="math" data-tex="\(A\)">\(A\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span> then makes the weak closure of <span class="math" data-tex="\(H\)">\(H\)</span> equal to <span class="math" data-tex="\(qMq\)">\(qMq\)</span>. The bidual of its inclusion has precisely this range. A pure state of <span class="math" data-tex="\(H\)">\(H\)</span> has minimal support in <span class="math" data-tex="\(qMq\)">\(qMq\)</span>, which is also minimal in <span class="math" data-tex="\(M\)">\(M\)</span>; its normal corner state restricts to a pure state of <span class="math" data-tex="\(A\)">\(A\)</span> with norm-one restriction to <span class="math" data-tex="\(H\)">\(H\)</span>. Such states therefore exist. Conversely the state in the assertion has <span class="math" data-tex="\(p\leq q\)">\(p\leq q\)</span>, and its restriction to <span class="math" data-tex="\(H\)">\(H\)</span> is pure by this same minimal-corner criterion.</p>
+<p>Write <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> also for its normal extension. Its positive pins are</p>
+<span id="equation-4-11"></span><span class="math math-display" data-tex="\[
+\mathcal P_\varphi
+=\left\{b\in H\ \middle|\ 
+\begin{gathered}0\leq b\leq1\\\varphi(b)=1\end{gathered}
+\right\}.
+\tag{4.11}
+\]">\[
+\mathcal P_\varphi
+=\left\{b\in H\ \middle|\ 
+\begin{gathered}0\leq b\leq1\\\varphi(b)=1\end{gathered}
+\right\}.
+\tag{4.11}
+\]</span>
+<p>This set is nonempty. Positive Kadison transitivity in its irreducible GNS representation gives <span class="math" data-tex="\(y\in H_+\)">\(y\in H_+\)</span> with <span class="math" data-tex="\(y\xi=\xi\)">\(y\xi=\xi\)</span>. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(\min(y,1)\)">\(\min(y,1)\)</span>, a continuous functional-calculus function vanishing at zero, gives a pin. Put <span class="math" data-tex="\(p_b=1_{\{1\}}(b)\in qMq\)">\(p_b=1_{\{1\}}(b)\in qMq\)</span>. The support of the state is below <span class="math" data-tex="\(p_b\)">\(p_b\)</span>. The pin <span class="math" data-tex="\((b_1+b_2)/2\)">\((b_1+b_2)/2\)</span> has top spectral projection <span class="math" data-tex="\(p_{b_1}\wedge p_{b_2}\)">\(p_{b_1}\wedge p_{b_2}\)</span>: the kernel of the sum of the two positive operators <span class="math" data-tex="\(1-b_j\)">\(1-b_j\)</span> is their common kernel. Hence these projections decrease on a directed set.</p>
+<p>Their infimum is exactly <span class="math" data-tex="\(p\)">\(p\)</span>. To prove this, suppose a state <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span> takes value one on every pin, and fix a pin <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Let <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> satisfy <span class="math" data-tex="\(\varphi(x^*x)=0\)">\(\varphi(x^*x)=0\)</span>, and put <span class="math" data-tex="\(f(t)=t/(1+t)\)">\(f(t)=t/(1+t)\)</span>. The positive contraction</p>
+<span id="equation-4-12"></span><span class="math math-display" data-tex="\[
+b=b_0^{1/2}(1-f(x^*x))b_0^{1/2}
+\tag{4.12}
+\]">\[
+b=b_0^{1/2}(1-f(x^*x))b_0^{1/2}
+\tag{4.12}
+\]</span>
+<p>lies in <span class="math" data-tex="\(H\)">\(H\)</span> and is a pin: on the GNS vector, <span class="math" data-tex="\(b_0^{1/2}\xi=\xi\)">\(b_0^{1/2}\xi=\xi\)</span> and <span class="math" data-tex="\(x\xi=0\)">\(x\xi=0\)</span>. Since <span class="math" data-tex="\(\psi(b_0)=\psi(b)=1\)">\(\psi(b_0)=\psi(b)=1\)</span>, and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is supported on the top spectral projection of <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, their difference gives <span class="math" data-tex="\(\psi(f(x^*x))=0\)">\(\psi(f(x^*x))=0\)</span>. The inequality <span class="math" data-tex="\(f(x^*x)\geq x^*x/(1+\|x\|^2)\)">\(f(x^*x)\geq x^*x/(1+\|x\|^2)\)</span> implies <span class="math" data-tex="\(\psi(x^*x)=0\)">\(\psi(x^*x)=0\)</span>. Thus the GNS null left ideal of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is contained in that of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>For <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>, norm-controlled Kadison transitivity gives <span class="math" data-tex="\(t\in H\)">\(t\in H\)</span> with <span class="math" data-tex="\(t\xi=a\xi\)">\(t\xi=a\xi\)</span> and <span class="math" data-tex="\(\|t\|\leq(1+\varepsilon)\|a\xi\|\)">\(\|t\|\leq(1+\varepsilon)\|a\xi\|\)</span>. Therefore <span class="math" data-tex="\(a-t\)">\(a-t\)</span> is null for both states, and Cauchy–Schwarz gives</p>
+<span id="equation-4-13"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+\psi(a^*a)&amp;=\psi(t^*t)\\
+&amp;\leq(1+\varepsilon)^2\varphi(a^*a).
+\end{aligned}
+\tag{4.13}
+\]">\[
+\begin{aligned}
+\psi(a^*a)&amp;=\psi(t^*t)\\
+&amp;\leq(1+\varepsilon)^2\varphi(a^*a).
+\end{aligned}
+\tag{4.13}
+\]</span>
+<p>Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> proves <span class="math" data-tex="\(\psi\leq\varphi\)">\(\psi\leq\varphi\)</span>. Both states have norm one, so the positive functional <span class="math" data-tex="\(\varphi-\psi\)">\(\varphi-\psi\)</span> has norm zero, and <span class="math" data-tex="\(\psi=\varphi\)">\(\psi=\varphi\)</span>. If <span class="math" data-tex="\(r=\bigwedge_b p_b\)">\(r=\bigwedge_b p_b\)</span> exceeded <span class="math" data-tex="\(p\)">\(p\)</span>, a normal state supported on <span class="math" data-tex="\(r-p\)">\(r-p\)</span>, restricted to <span class="math" data-tex="\(H\)">\(H\)</span>, would be a state taking value one on all pins. Its normal extension would then equal <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, contradicting its support. This proves <span class="math" data-tex="\(p_b\downarrow p\)">\(p_b\downarrow p\)</span>.</p>
+<p>We must pass the lower bound to these projections without assuming norm convergence of the powers. In <span class="math" data-tex="\(M_2(A^{\sim})\)">\(M_2(A^{\sim})\)</span> put</p>
+<span id="equation-4-14"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+T=\begin{pmatrix}0&amp;c\\c^*&amp;0\end{pmatrix},\\
+D_b=\operatorname{diag}(b,\eta(b)),\\
+R_b=\operatorname{diag}(p_b,\eta^{**}(p_b)).
+\end{gathered}
+\tag{4.14}
+\]">\[
+\begin{gathered}
+T=\begin{pmatrix}0&amp;c\\c^*&amp;0\end{pmatrix},\\
+D_b=\operatorname{diag}(b,\eta(b)),\\
+R_b=\operatorname{diag}(p_b,\eta^{**}(p_b)).
+\end{gathered}
+\tag{4.14}
+\]</span>
+<p>Here <span class="math" data-tex="\(A^{\sim}\)">\(A^{\sim}\)</span> means <span class="math" data-tex="\(A\)">\(A\)</span> if already unital and its minimal unitization otherwise. Each <span class="math" data-tex="\(b^n\)">\(b^n\)</span> has norm one. Thus the off-diagonal self-adjoint operator <span class="math" data-tex="\(D_b^n T D_b^n\)">\(D_b^n T D_b^n\)</span> has norm at least <span class="math" data-tex="\(d\)">\(d\)</span>; its spectrum is symmetric about zero, by conjugation with <span class="math" data-tex="\(\operatorname{diag}(1,-1)\)">\(\operatorname{diag}(1,-1)\)</span>. Choose a state <span class="math" data-tex="\(\theta_n\)">\(\theta_n\)</span> whose value on this operator is at least <span class="math" data-tex="\(d-1/n\)">\(d-1/n\)</span>, and define the positive functional <span class="math" data-tex="\(\psi_n(X)=\theta_n(D_b^n X D_b^n)\)">\(\psi_n(X)=\theta_n(D_b^n X D_b^n)\)</span>, of norm at most one. A weak* cluster point <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has <span class="math" data-tex="\(\psi(T)\geq d\)">\(\psi(T)\geq d\)</span>. Since <span class="math" data-tex="\(\|D_b^n(1-D_b)\|\to0\)">\(\|D_b^n(1-D_b)\|\to0\)</span>, it also satisfies <span class="math" data-tex="\(\psi((1-D_b)^2)=0\)">\(\psi((1-D_b)^2)=0\)</span>. Its normal extension is supported on <span class="math" data-tex="\(R_b\)">\(R_b\)</span>. In the nonunital case, the additional scalar summand of <span class="math" data-tex="\((A^{\sim})^{**}=A^{**}\oplus\mathbb C\)">\((A^{\sim})^{**}=A^{**}\oplus\mathbb C\)</span> is killed by this same equation, since <span class="math" data-tex="\(b=0\)">\(b=0\)</span> there. Consequently <span class="math" data-tex="\(\|p_b c\eta^{**}(p_b)\|\geq d\)">\(\|p_b c\eta^{**}(p_b)\|\geq d\)</span>.</p>
+<p>For each pin choose a normal positive functional of norm at most one, supported on <span class="math" data-tex="\(R_b\)">\(R_b\)</span>, whose value on <span class="math" data-tex="\(T\)">\(T\)</span> is at least <span class="math" data-tex="\(d-\varepsilon\)">\(d-\varepsilon\)</span>. Direct the pins by decreasing <span class="math" data-tex="\(p_b\)">\(p_b\)</span> and let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Restrict the functionals to <span class="math" data-tex="\(M_2(A^{\sim})\)">\(M_2(A^{\sim})\)</span> and take a weak* cluster point. For every fixed pin <span class="math" data-tex="\(b_0\)">\(b_0\)</span>, the eventual support is below <span class="math" data-tex="\(R_{b_0}\)">\(R_{b_0}\)</span>, so the limit vanishes on <span class="math" data-tex="\((1-D_{b_0})^2\)">\((1-D_{b_0})^2\)</span>. Its normal extension is therefore supported on <span class="math" data-tex="\(\bigwedge_b R_b=\operatorname{diag}(p,\eta^{**}(p))\)">\(\bigwedge_b R_b=\operatorname{diag}(p,\eta^{**}(p))\)</span>, and still takes value at least <span class="math" data-tex="\(d\)">\(d\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>. Compression of <span class="math" data-tex="\(T\)">\(T\)</span> to that support proves (4.10). This uses compact nets, not a countable family of pins. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="lemma-4-6"></span><strong>Lemma 4.6 (compact dual orbits).</strong> Let <span class="math" data-tex="\(\beta:\mathbb T\to\operatorname{Aut}(C)\)">\(\beta:\mathbb T\to\operatorname{Aut}(C)\)</span> be point-norm continuous, with <span class="math" data-tex="\(C\ne0\)">\(C\ne0\)</span>, and suppose <span class="math" data-tex="\(C\)">\(C\)</span> has no nonzero proper <span class="math" data-tex="\(\beta\)">\(\beta\)</span>-invariant closed ideal. For <span class="math" data-tex="\(P\in\operatorname{Prim}(C)\)">\(P\in\operatorname{Prim}(C)\)</span>, its stabilizer <span class="math" data-tex="\(L=\{t:\beta_t(P)=P\}\)">\(L=\{t:\beta_t(P)=P\}\)</span> is closed, and the orbit map is a homeomorphism</p>
+<span id="equation-4-15"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb T/L\ \longrightarrow\ \operatorname{Prim}(C),\\
+tL\longmapsto\beta_t(P).
+\end{gathered}
+\tag{4.15}
+\]">\[
+\begin{gathered}
+\mathbb T/L\ \longrightarrow\ \operatorname{Prim}(C),\\
+tL\longmapsto\beta_t(P).
+\end{gathered}
+\tag{4.15}
+\]</span>
+<p><em>Proof.</em> Recall the hull-kernel topology: the closure of a family <span class="math" data-tex="\(S\)">\(S\)</span> of primitive ideals consists of the primitive ideals containing <span class="math" data-tex="\(\bigcap_{Q\in S}Q\)">\(\bigcap_{Q\in S}Q\)</span>. Its open sets are <span class="math" data-tex="\(U_I=\{Q\mid I\nsubseteq Q\}\)">\(U_I=\{Q\mid I\nsubseteq Q\}\)</span>, for closed ideals <span class="math" data-tex="\(I\)">\(I\)</span>. These statements follow directly by taking hulls of ideals; ideals are intersections of their containing primitive ideals because irreducible representations separate every quotient. A primitive ideal is prime for finite intersections of ideals. Indeed, in its irreducible quotient representation, a nonzero ideal acts nondegenerately: its essential space is a nonzero invariant subspace. If two such ideals had zero product, one would annihilate the dense essential space of the other. This is impossible. Induction proves the finite assertion.</p>
+<p>For a closed neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(1\in\mathbb T\)">\(1\in\mathbb T\)</span>, define <span class="math" data-tex="\(J_V=\bigcap_{t\in V}\beta_t(P)\)">\(J_V=\bigcap_{t\in V}\beta_t(P)\)</span>. As <span class="math" data-tex="\(V\)">\(V\)</span> shrinks, these ideals exhaust a norm-dense part of <span class="math" data-tex="\(P\)">\(P\)</span>. For if <span class="math" data-tex="\(a\in P_+\)">\(a\in P_+\)</span>, then</p>
+<span id="equation-4-16"></span><span class="math math-display" data-tex="\[
+\|a+\beta_t(P)\|
+\leq\|\beta_{t^{-1}}(a)-a\|.
+\tag{4.16}
+\]">\[
+\|a+\beta_t(P)\|
+\leq\|\beta_{t^{-1}}(a)-a\|.
+\tag{4.16}
+\]</span>
+<p>Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, this is less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> near <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\((a-\varepsilon)_+\in J_V\)">\((a-\varepsilon)_+\in J_V\)</span> for all sufficiently small <span class="math" data-tex="\(V\)">\(V\)</span>. Such cutoffs approximate <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>The ideal <span class="math" data-tex="\(\bigcap_{t\in\mathbb T}\beta_t(P)\)">\(\bigcap_{t\in\mathbb T}\beta_t(P)\)</span> is invariant and proper, hence zero. A finite cover of the circle by <span class="math" data-tex="\(t_j V\)">\(t_j V\)</span> gives <span class="math" data-tex="\(\bigcap_j\beta_{t_j}(J_V)=0\)">\(\bigcap_j\beta_{t_j}(J_V)=0\)</span>. For any primitive ideal <span class="math" data-tex="\(Q\)">\(Q\)</span>, primality therefore gives <span class="math" data-tex="\(\beta_{t_V}(J_V)\subseteq Q\)">\(\beta_{t_V}(J_V)\subseteq Q\)</span> for some <span class="math" data-tex="\(t_V\)">\(t_V\)</span>. Compactness provides a subnet <span class="math" data-tex="\(t_V\to t_0\)">\(t_V\to t_0\)</span> while <span class="math" data-tex="\(V\)">\(V\)</span> still shrinks. Applying (4.16) to every fixed positive cutoff and using closedness of <span class="math" data-tex="\(Q\)">\(Q\)</span> proves <span class="math" data-tex="\(\beta_{t_0}(P)\subseteq Q\)">\(\beta_{t_0}(P)\subseteq Q\)</span>. Interchanging <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> gives <span class="math" data-tex="\(\beta_s(Q)\subseteq P\)">\(\beta_s(Q)\subseteq P\)</span> for some <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p>If <span class="math" data-tex="\(\beta_v(Q)\subseteq Q\)">\(\beta_v(Q)\subseteq Q\)</span>, all positive powers have the same inclusion. The inverse <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span> is a limit of nonnegative powers of <span class="math" data-tex="\(v\)">\(v\)</span>. For completeness, positive powers have an accumulation point by compactness; quotients of sufficiently close powers give positive powers tending to <span class="math" data-tex="\(1\)">\(1\)</span>, and their preceding powers tend to <span class="math" data-tex="\(v^{-1}\)">\(v^{-1}\)</span>. If those exponents stay bounded, <span class="math" data-tex="\(v\)">\(v\)</span> has finite order and the assertion is exact. Norm continuity and closedness of <span class="math" data-tex="\(Q\)">\(Q\)</span> now give <span class="math" data-tex="\(\beta_{v^{-1}}(Q)\subseteq Q\)">\(\beta_{v^{-1}}(Q)\subseteq Q\)</span>, hence equality in the original inclusion. Apply this to <span class="math" data-tex="\(v=t_0s\)">\(v=t_0s\)</span>. The chain <span class="math" data-tex="\(\beta_{t_0s}(Q)\subseteq\beta_{t_0}(P)\subseteq Q\)">\(\beta_{t_0s}(Q)\subseteq\beta_{t_0}(P)\subseteq Q\)</span> becomes a chain with equal endpoints. Therefore <span class="math" data-tex="\(Q=\beta_{t_0}(P)\)">\(Q=\beta_{t_0}(P)\)</span>. The action is transitive, and an inclusion between two members of this orbit is always equality.</p>
+<p>The stabilizer is closed: limits of its elements preserve <span class="math" data-tex="\(P\)">\(P\)</span> in both directions by norm continuity. The orbit map is continuous because the preimage of <span class="math" data-tex="\(U_I\)">\(U_I\)</span> is the union, for <span class="math" data-tex="\(a\in I\)">\(a\in I\)</span>, of the open sets where <span class="math" data-tex="\(\|\beta_{t^{-1}}(a)+P\|&gt;0\)">\(\|\beta_{t^{-1}}(a)+P\|&gt;0\)</span>. We verify the inverse topology explicitly. For a subset <span class="math" data-tex="\(S\subseteq\mathbb T/L\)">\(S\subseteq\mathbb T/L\)</span>, let <span class="math" data-tex="\(K\)">\(K\)</span> be the inverse image of its compact closure under the quotient map. Suppose <span class="math" data-tex="\(\bigcap_{sL\in S}\beta_s(P)\subseteq\beta_t(P)\)">\(\bigcap_{sL\in S}\beta_s(P)\subseteq\beta_t(P)\)</span>. Cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many <span class="math" data-tex="\(s_j V\)">\(s_j V\)</span>, with centers in <span class="math" data-tex="\(K\)">\(K\)</span>. The intersection of the ideals <span class="math" data-tex="\(\beta_{s_j}(J_V)\)">\(\beta_{s_j}(J_V)\)</span> is contained in that over <span class="math" data-tex="\(S\)">\(S\)</span>, so primality gives one <span class="math" data-tex="\(\beta_{s_V}(J_V)\subseteq\beta_t(P)\)">\(\beta_{s_V}(J_V)\subseteq\beta_t(P)\)</span>. A subnet of the centers converges to <span class="math" data-tex="\(s_0\in K\)">\(s_0\in K\)</span>. The cutoff argument again gives <span class="math" data-tex="\(\beta_{s_0}(P)\subseteq\beta_t(P)\)">\(\beta_{s_0}(P)\subseteq\beta_t(P)\)</span>, hence equality. Thus <span class="math" data-tex="\(tL\)">\(tL\)</span> belongs to the closure of <span class="math" data-tex="\(S\)">\(S\)</span>. Conversely continuity sends that closure into the hull-kernel closure of the orbit image. This proves (4.15), and in particular the primitive ideal space is compact Hausdorff. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="lemma-4-7"></span><strong>Lemma 4.7 (central coordinates).</strong> If <span class="math" data-tex="\(X=\operatorname{Prim}(C)\)">\(X=\operatorname{Prim}(C)\)</span> is compact Hausdorff, every <span class="math" data-tex="\(f\in C(X)\)">\(f\in C(X)\)</span> has a unique central multiplier <span class="math" data-tex="\(m_f\)">\(m_f\)</span> satisfying</p>
+<span id="equation-4-17"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\widetilde\pi(m_f)=f(\ker\pi)1\\
+\text{for every irreducible }\pi.
+\end{gathered}
+\tag{4.17}
+\]">\[
+\begin{gathered}
+\widetilde\pi(m_f)=f(\ker\pi)1\\
+\text{for every irreducible }\pi.
+\end{gathered}
+\tag{4.17}
+\]</span>
+<p>The map <span class="math" data-tex="\(f\mapsto m_f\)">\(f\mapsto m_f\)</span> is a unital *-homomorphism. Here <span class="math" data-tex="\(\widetilde\pi\)">\(\widetilde\pi\)</span> is the nondegenerate extension to <span class="math" data-tex="\(M(C)\)">\(M(C)\)</span>.</p>
+<p><em>Proof.</em> This is the compact Hausdorff case of the central-multiplier theorem of Dauns and Hofmann; we give the needed construction. For an open set <span class="math" data-tex="\(U\subseteq X\)">\(U\subseteq X\)</span>, let <span class="math" data-tex="\(I_U\)">\(I_U\)</span> be the corresponding ideal and <span class="math" data-tex="\(z_U\in Z(C^{**})\)">\(z_U\in Z(C^{**})\)</span> its support projection. Its positive approximate identity increases to <span class="math" data-tex="\(z_U\)">\(z_U\)</span>. Finite unions of open sets correspond to joins of these projections, intersections to meets, and <span class="math" data-tex="\(z_X=1\)">\(z_X=1\)</span>. To verify the intersection assertion directly, approximate identities of two ideals have products in their intersection, whose strong limits give the product of the two central supports. Unions follow by taking the norm-closed sum of the ideals. Thus disjoint open sets have orthogonal supports, and two open sets covering <span class="math" data-tex="\(X\)">\(X\)</span> have support join one.</p>
+<p>Take <span class="math" data-tex="\(0\leq f\leq R\)">\(0\leq f\leq R\)</span>, <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, and put <span class="math" data-tex="\(z(t)=z_{\{f&gt;t\}}\)">\(z(t)=z_{\{f&gt;t\}}\)</span>. For a uniform mesh <span class="math" data-tex="\(\Delta=R/n\)">\(\Delta=R/n\)</span>, define lower and upper sums</p>
+<span id="equation-4-18"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+h_n=\Delta\sum_{k=1}^{n}z(k\Delta),\\
+H_n=\Delta\sum_{k=0}^{n-1}z(k\Delta),\\
+0\leq H_n-h_n\leq\Delta1.
+\end{gathered}
+\tag{4.18}
+\]">\[
+\begin{gathered}
+h_n=\Delta\sum_{k=1}^{n}z(k\Delta),\\
+H_n=\Delta\sum_{k=0}^{n-1}z(k\Delta),\\
+0\leq H_n-h_n\leq\Delta1.
+\end{gathered}
+\tag{4.18}
+\]</span>
+<p>The last bound telescopes. On dyadic refinements the lower sums increase and the upper sums decrease. Thus they converge in norm to the same central positive element <span class="math" data-tex="\(h_f\in C^{**}\)">\(h_f\in C^{**}\)</span>. Each finite positive sum of ideal supports is a bounded increasing limit from <span class="math" data-tex="\(C_+\)">\(C_+\)</span>, by taking the product net of their approximate identities. Hence <span class="math" data-tex="\(h_f\in\mathcal C=\overline{C_{\mathrm{sa}}^\uparrow}^{\|\cdot\|}\)">\(h_f\in\mathcal C=\overline{C_{\mathrm{sa}}^\uparrow}^{\|\cdot\|}\)</span>.</p>
+<p>Apply the same construction to <span class="math" data-tex="\(R-f\)">\(R-f\)</span>, obtaining <span class="math" data-tex="\(h_{R-f}\in\mathcal C\)">\(h_{R-f}\in\mathcal C\)</span>. At each threshold <span class="math" data-tex="\(k\Delta\)">\(k\Delta\)</span>, the open sets <span class="math" data-tex="\({f&gt;k\Delta}\)">\({f&gt;k\Delta}\)</span> and <span class="math" data-tex="\({f&lt;k\Delta}\)">\({f&lt;k\Delta}\)</span> are disjoint, whereas <span class="math" data-tex="\({f&gt;k\Delta}\)">\({f&gt;k\Delta}\)</span> and <span class="math" data-tex="\({f&lt;(k+1)\Delta}\)">\({f&lt;(k+1)\Delta}\)</span> cover <span class="math" data-tex="\(X\)">\(X\)</span>. Summing their commuting support inequalities gives, for the lower sums of <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(R-f\)">\(R-f\)</span>,</p>
+<span id="equation-4-19"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+S_n=h_n(f)+h_n(R-f),\\
+(R-2\Delta)1\leq S_n\leq R1.
+\end{gathered}
+\tag{4.19}
+\]">\[
+\begin{gathered}
+S_n=h_n(f)+h_n(R-f),\\
+(R-2\Delta)1\leq S_n\leq R1.
+\end{gathered}
+\tag{4.19}
+\]</span>
+<p>Indeed the upper sums paired at successive thresholds have sum at least <span class="math" data-tex="\(R1\)">\(R1\)</span>, and each differs from its lower sum by at most <span class="math" data-tex="\(\Delta1\)">\(\Delta1\)</span>; lower sums paired at the identical interior thresholds have sum at most <span class="math" data-tex="\(R1\)">\(R1\)</span>. Passing to the limit proves <span class="math" data-tex="\(h_f+h_{R-f}=R1\)">\(h_f+h_{R-f}=R1\)</span>. The exact multiplier criterion (2.6) cited above now applies: <span class="math" data-tex="\(h_f\in\mathcal C\cap(R1-\mathcal C)\subseteq M(C)_{\mathrm{sa}}\)">\(h_f\in\mathcal C\cap(R1-\mathcal C)\subseteq M(C)_{\mathrm{sa}}\)</span>. It is central since it was central in the bidual.</p>
+<p>For an irreducible representation with kernel <span class="math" data-tex="\(P\)">\(P\)</span>, the normal image of <span class="math" data-tex="\(z_U\)">\(z_U\)</span> is zero if <span class="math" data-tex="\(P\notin U\)">\(P\notin U\)</span>, and identity if <span class="math" data-tex="\(P\in U\)">\(P\in U\)</span>. In the second case the nonzero represented ideal has essential space the entire representation space. Therefore the scalar lower sums in (4.18) converge to <span class="math" data-tex="\(f(P)\)">\(f(P)\)</span>, proving (4.17) for positive <span class="math" data-tex="\(f\)">\(f\)</span>. Real functions are differences of positive ones, and complex functions are complex linear combinations of real ones. Irreducible representations separate multipliers: if every extension kills <span class="math" data-tex="\(m\)">\(m\)</span>, then every representation kills <span class="math" data-tex="\(mc\)">\(mc\)</span> for <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>, so <span class="math" data-tex="\(mc=0\)">\(mc=0\)</span> for all <span class="math" data-tex="\(c\)">\(c\)</span>, and <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. This proves uniqueness, independence of the decompositions, linearity, preservation of products and adjoints, and <span class="math" data-tex="\(m_1=1\)">\(m_1=1\)</span>, by checking each in (4.17). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-4-8"></span><strong>Theorem 4.8 (Kishimoto's outer-automorphism cutdown).</strong> An outer automorphism <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of a nonzero simple C*-algebra has property (4.2). Innerness here means implementation by a unitary in <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span>, including when <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital.</p>
+<p><em>Proof.</em> Suppose property (4.2) fails, so some <span class="math" data-tex="\(H,c,d\)">\(H,c,d\)</span> satisfy (4.9). Choose a pure state with norm-one restriction to <span class="math" data-tex="\(H\)">\(H\)</span>, as in Lemma 4.5. Let <span class="math" data-tex="\(p\)">\(p\)</span> be its support and <span class="math" data-tex="\(z\)">\(z\)</span> its central support in <span class="math" data-tex="\(A^{**}\)">\(A^{**}\)</span>. By (4.10), <span class="math" data-tex="\(pc\eta^{**}(p)\ne0\)">\(pc\eta^{**}(p)\ne0\)</span>. Both end projections are minimal. Its polar decomposition is therefore a partial isometry from <span class="math" data-tex="\(\eta^{**}(p)\)">\(\eta^{**}(p)\)</span> onto <span class="math" data-tex="\(p\)">\(p\)</span>; in fact the two corner squares are positive scalars times their respective projections. Equivalent projections have the same central support, giving <span class="math" data-tex="\(\eta^{**}(z)=z\)">\(\eta^{**}(z)=z\)</span>.</p>
+<p>The factor <span class="math" data-tex="\(A^{**}z\)">\(A^{**}z\)</span> is <span class="math" data-tex="\(B(\mathcal H_\varphi)\)">\(B(\mathcal H_\varphi)\)</span>, by the pure-state support lemma. The induced normal automorphism of this factor is spatial. To see this without a dimension restriction, choose rank-one matrix units <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> from an orthonormal basis. Their images are rank-one matrix units with strong diagonal sum one. Choose a unit vector <span class="math" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> in the image of <span class="math" data-tex="\(e_{00}\)">\(e_{00}\)</span> and put <span class="math" data-tex="\(\zeta_i=\eta^{**}(e_{i0})\zeta_0\)">\(\zeta_i=\eta^{**}(e_{i0})\zeta_0\)</span>. These form a complete orthonormal basis. The unitary <span class="math" data-tex="\(V\)">\(V\)</span> carrying the original basis to them implements the automorphism on matrix units, and then on all operators by normality and weak density of the finite-rank operators. Consequently</p>
+<span id="equation-4-20"></span><span class="math math-display" data-tex="\[
+V\pi_\varphi(a)V^*=\pi_\varphi(\eta(a)).
+\tag{4.20}
+\]">\[
+V\pi_\varphi(a)V^*=\pi_\varphi(\eta(a)).
+\tag{4.20}
+\]</span>
+<p>Use <span class="math" data-tex="\(C=A\rtimes_\eta\mathbb Z\)">\(C=A\rtimes_\eta\mathbb Z\)</span>, its implementing multiplier <span class="math" data-tex="\(U\)">\(U\)</span>, and its dual circle action <span class="math" data-tex="\(\beta_t(U)=tU\)">\(\beta_t(U)=tU\)</span>. This covariant pair defines an irreducible representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>; its restriction to <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\pi_\varphi\)">\(\pi_\varphi\)</span>, and <span class="math" data-tex="\(\widetilde\rho(U)=V\)">\(\widetilde\rho(U)=V\)</span>. It is irreducible because its restriction is. Write <span class="math" data-tex="\(P=\ker\rho\)">\(P=\ker\rho\)</span>.</p>
+<p>The dual action is simple on ideals. Here are also the full-versus-reduced details used in this argument. The average <span class="math" data-tex="\(E=\int\beta_t\,dt\)">\(E=\int\beta_t\,dt\)</span> on the full product is faithful: if <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span> has average zero, every positive functional applied to the continuous positive orbit function has integral zero, hence has value zero at <span class="math" data-tex="\(x\)">\(x\)</span>. All positive functionals therefore vanish at <span class="math" data-tex="\(x\)">\(x\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Fourier-polynomial density shows that its range, the fixed algebra, is <span class="math" data-tex="\(A\)">\(A\)</span>. The canonical quotient to the reduced product preserves <span class="math" data-tex="\(A\)">\(A\)</span> and intertwines their averages. Applying faithfulness to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> in its kernel proves that this quotient is injective. If <span class="math" data-tex="\(J\ne0\)">\(J\ne0\)</span> is a dual-invariant ideal, <span class="math" data-tex="\(E(x^*x)\in J\cap A\)">\(E(x^*x)\in J\cap A\)</span> is nonzero for <span class="math" data-tex="\(x\in J\setminus\{0\}\)">\(x\in J\setminus\{0\}\)</span>. Simplicity of <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(A\subseteq J\)">\(A\subseteq J\)</span>. Its approximate identity is one for <span class="math" data-tex="\(C\)">\(C\)</span>, as checked on monomials <span class="math" data-tex="\(aU^n\)">\(aU^n\)</span>, so <span class="math" data-tex="\(J=C\)">\(J=C\)</span>. Lemma 4.6 applies.</p>
+<p>We show that the stabilizer of <span class="math" data-tex="\(P\)">\(P\)</span> is trivial. Put <span class="math" data-tex="\(F=\bar\pi_\varphi(q)\)">\(F=\bar\pi_\varphi(q)\)</span>, for the hereditary support <span class="math" data-tex="\(q\)">\(q\)</span> in Lemma 4.5. The represented algebra <span class="math" data-tex="\(\pi_\varphi(H)\)">\(\pi_\varphi(H)\)</span>, on <span class="math" data-tex="\(F\mathcal H_\varphi\)">\(F\mathcal H_\varphi\)</span>, is irreducible: its weak closure is <span class="math" data-tex="\(F B(\mathcal H_\varphi)F\)">\(F B(\mathcal H_\varphi)F\)</span>, since <span class="math" data-tex="\(H^{**}=qA^{**}q\)">\(H^{**}=qA^{**}q\)</span>. For a unitary <span class="math" data-tex="\(w\in H+\mathbb C1\)">\(w\in H+\mathbb C1\)</span>, the state vector <span class="math" data-tex="\(\pi_\varphi(w)\xi_\varphi\)">\(\pi_\varphi(w)\xi_\varphi\)</span> has minimal support <span class="math" data-tex="\(wpw^*\leq q\)">\(wpw^*\leq q\)</span>. Lemma 4.5 applies to this pure state too. Kadison's unitary transitivity reaches every unit vector <span class="math" data-tex="\(\zeta\in F\mathcal H_\varphi\)">\(\zeta\in F\mathcal H_\varphi\)</span> in this way. For precision about lifting, <span class="math" data-tex="\(\pi_\varphi|_H\)">\(\pi_\varphi|_H\)</span> is faithful because <span class="math" data-tex="\(A\)">\(A\)</span> is simple. Its unitization therefore identifies with the concrete unitization on <span class="math" data-tex="\(F\mathcal H_\varphi\)">\(F\mathcal H_\varphi\)</span>; if <span class="math" data-tex="\(H\)">\(H\)</span> has a unit, the concrete unitary is extended by identity on its complementary corner. The rank-one norm in (4.10) now says</p>
+<span id="equation-4-21"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+|\langle\pi_\varphi(c)V\zeta,\zeta\rangle|\geq d\\
+(\|\zeta\|=1,\ F\zeta=\zeta).
+\end{gathered}
+\tag{4.21}
+\]">\[
+\begin{gathered}
+|\langle\pi_\varphi(c)V\zeta,\zeta\rangle|\geq d\\
+(\|\zeta\|=1,\ F\zeta=\zeta).
+\end{gathered}
+\tag{4.21}
+\]</span>
+<p>The numerical range of <span class="math" data-tex="\(F\pi_\varphi(c)VF\)">\(F\pi_\varphi(c)VF\)</span> is convex. One direct proof compresses to the span of any two vectors. For a two-dimensional compression, the expectations of a matrix on unit vectors are the affine real-linear image of the Bloch sphere in <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>: with a unit vector <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>, its coordinates are <span class="math" data-tex="\(2\operatorname{Re}(\bar a b)\)">\(2\operatorname{Re}(\bar a b)\)</span>, <span class="math" data-tex="\(2\operatorname{Im}(\bar a b)\)">\(2\operatorname{Im}(\bar a b)\)</span>, and <span class="math" data-tex="\(|a|^2-|b|^2\)">\(|a|^2-|b|^2\)</span>. The linear map has target <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> and hence a nonzero kernel. Its image of the sphere equals its image of the closed ball, since each fiber meeting the ball also meets the sphere. That image is convex. Thus the segment between any two numerical values remains a numerical value; the one-dimensional case is immediate. By (4.21), the compact closure of the numerical range avoids the open disk of radius <span class="math" data-tex="\(d\)">\(d\)</span>. A closest point to zero in this closed convex set gives a phase <span class="math" data-tex="\(\omega\in\mathbb T\)">\(\omega\in\mathbb T\)</span> with real part at least <span class="math" data-tex="\(d\)">\(d\)</span> throughout the numerical range. Therefore, for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, the following order inequality holds in <span class="math" data-tex="\(C/P\)">\(C/P\)</span>:</p>
+<span id="equation-4-22"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+x^*\operatorname{Re}(\omega cU)x\geq d x^*x\\
+\text{in }C/P.
+\end{gathered}
+\tag{4.22}
+\]">\[
+\begin{gathered}
+x^*\operatorname{Re}(\omega cU)x\geq d x^*x\\
+\text{in }C/P.
+\end{gathered}
+\tag{4.22}
+\]</span>
+<p>Indeed its faithful represented image is the sandwich of <span class="math" data-tex="\(\operatorname{Re}(\omega\pi_\varphi(c)V)\geq dF\)">\(\operatorname{Re}(\omega\pi_\varphi(c)V)\geq dF\)</span> on <span class="math" data-tex="\(F\mathcal H_\varphi\)">\(F\mathcal H_\varphi\)</span> by <span class="math" data-tex="\(\pi_\varphi(x)\)">\(\pi_\varphi(x)\)</span>. If <span class="math" data-tex="\(t\ne1\)">\(t\ne1\)</span> stabilized <span class="math" data-tex="\(P\)">\(P\)</span>, the quotient automorphisms <span class="math" data-tex="\(\beta_{t^k}\)">\(\beta_{t^k}\)</span> would preserve (4.22). Averaging for <span class="math" data-tex="\(0\leq k&lt;N\)">\(0\leq k&lt;N\)</span> replaces <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on the left by <span class="math" data-tex="\(\omega N^{-1}\sum_{k=0}^{N-1}t^k\to0\)">\(\omega N^{-1}\sum_{k=0}^{N-1}t^k\to0\)</span>, while leaving the right side fixed. Closedness of the positive cone would give <span class="math" data-tex="\(-d x^*x\geq0\pmod P\)">\(-d x^*x\geq0\pmod P\)</span>. A nonzero <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> contradicts faithfulness of <span class="math" data-tex="\(\rho|_A\)">\(\rho|_A\)</span>. Hence the stabilizer is <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>.</p>
+<p>Lemma 4.6 identifies <span class="math" data-tex="\(\operatorname{Prim}(C)\)">\(\operatorname{Prim}(C)\)</span> with the circle, <span class="math" data-tex="\(t\mapsto\beta_t(P)\)">\(t\mapsto\beta_t(P)\)</span>. Lemma 4.7 supplies a central unitary multiplier <span class="math" data-tex="\(Z\)">\(Z\)</span> for the continuous function <span class="math" data-tex="\(f(\beta_t(P))=\bar t\)">\(f(\beta_t(P))=\bar t\)</span>. The action on its scalar values gives</p>
+<span id="equation-4-23"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta_s(Z)=sZ,\\
+W=UZ^*\in U(M(C)),\\
+\beta_s(W)=W.
+\end{gathered}
+\tag{4.23}
+\]">\[
+\begin{gathered}
+\beta_s(Z)=sZ,\\
+W=UZ^*\in U(M(C)),\\
+\beta_s(W)=W.
+\end{gathered}
+\tag{4.23}
+\]</span>
+<p>For example the value of <span class="math" data-tex="\(\beta_s(Z)\)">\(\beta_s(Z)\)</span> at <span class="math" data-tex="\(\beta_t(P)\)">\(\beta_t(P)\)</span> is <span class="math" data-tex="\(f(\beta_{s^{-1}t}(P))=s\bar t\)">\(f(\beta_{s^{-1}t}(P))=s\bar t\)</span>, proving the first identity by multiplier separation. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, the four elements <span class="math" data-tex="\(Wa,aW,W^*a,aW^*\)">\(Wa,aW,W^*a,aW^*\)</span> belong to <span class="math" data-tex="\(C\)">\(C\)</span> and are fixed, hence belong to <span class="math" data-tex="\(A\)">\(A\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> restricts to a unitary multiplier of <span class="math" data-tex="\(A\)">\(A\)</span>. The coefficient approximate identity is an approximate identity of <span class="math" data-tex="\(C\)">\(C\)</span>, so this restriction has the same products and unitary identities. Centrality of <span class="math" data-tex="\(Z\)">\(Z\)</span> finally gives</p>
+<span id="equation-4-24"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+WaW^*=UaU^*=\eta(a)\\
+(a\in A).
+\end{gathered}
+\tag{4.24}
+\]">\[
+\begin{gathered}
+WaW^*=UaU^*=\eta(a)\\
+(a\in A).
+\end{gathered}
+\tag{4.24}
+\]</span>
+<p>The automorphism is inner. This proves the contrapositive, and therefore (4.2) for every outer automorphism. Every step allowed arbitrary nets and multiplier unitaries, so the assertion includes nonunital and nonseparable simple algebras. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-4-9"></span><strong>Corollary 4.9 (outer powers imply simplicity).</strong> If <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span> is simple and <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> is outer for every nonzero integer <span class="math" data-tex="\(n\)">\(n\)</span>, then <span class="math" data-tex="\(A\rtimes_\alpha\mathbb Z\)">\(A\rtimes_\alpha\mathbb Z\)</span> is simple. Apply Theorem 4.8 to those powers and then Theorem 4.4. The faithful gauge argument in the proof also identifies its full and reduced versions.</p>
+<h2 id="5-five-exercises-with-complete-solutions">5. Five exercises with complete solutions</h2>
+<p><strong>Exercise 18.1 (trivial action).</strong> Check the PV sequence against the coefficient-circle computation, including the inclusion arrows.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, universality identifies <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(C(S^1,A)\)">\(C(S^1,A)\)</span>: the implementing unitary commutes with <span class="math" data-tex="\(A\)">\(A\)</span>, and finite Laurent sums with coefficients in <span class="math" data-tex="\(A\)">\(A\)</span> are dense. The tensor norm is unambiguous because the circle function algebra is nuclear, as proved in KT-CP-08, Lemma 8.1. The inclusion <span class="math" data-tex="\(\iota\)">\(\iota\)</span> becomes the map of constant functions. Evaluation at the circle basepoint is a *-homomorphic left inverse, so <span class="math" data-tex="\(\iota_*\)">\(\iota_*\)</span> is injective. The two endomorphisms in (1.1) are zero, and exactness gives <span class="math" data-tex="\(0\to K_i(A)\to K_i(B)\xrightarrow{d_i}K_{1-i}(A)\to0\)">\(0\to K_i(A)\to K_i(B)\xrightarrow{d_i}K_{1-i}(A)\to0\)</span>.</p>
+<p>Lesson 12, Theorem 5.1, already identifies the group with <span class="math" data-tex="\(K_i(A)\oplus K_{1-i}(A)\)">\(K_i(A)\oplus K_{1-i}(A)\)</span>, with the first coordinate supplied by constants and the second by the suspended ideal. The restriction of <span class="math" data-tex="\(d_i\)">\(d_i\)</span> to that second summand is an isomorphism: its kernel is zero by <span class="math" data-tex="\(\ker d_i=\operatorname{im}\iota_*\)">\(\ker d_i=\operatorname{im}\iota_*\)</span>, and it is onto because <span class="math" data-tex="\(d_i\)">\(d_i\)</span> is onto. Using this isomorphism as the second coordinate makes the PV maps explicitly <span class="math" data-tex="\(x\mapsto(x,0)\)">\(x\mapsto(x,0)\)</span> and <span class="math" data-tex="\((x,y)\mapsto y\)">\((x,y)\mapsto y\)</span>. This checks the exact sequence with the boundary normalization (3.3), without assigning it an unproved positive-loop sign.</p>
+<p><strong>Exercise 18.2 (reflection as an integer action).</strong> For <span class="math" data-tex="\(A=C(S^1)\)">\(A=C(S^1)\)</span> and <span class="math" data-tex="\(\alpha(f)(z)=f(\overline z)\)">\(\alpha(f)(z)=f(\overline z)\)</span>, compute the crossed product by <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with generators.</p>
+<p><em>Solution.</em> Rank is fixed and winding changes sign. Thus <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> is zero on <span class="math" data-tex="\(K_0(A)=\mathbb Z\)">\(K_0(A)=\mathbb Z\)</span> and multiplication by 2 on <span class="math" data-tex="\(K_1(A)=\mathbb Z\)">\(K_1(A)=\mathbb Z\)</span>. Formula (3.5) gives</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(B)\cong\mathbb Z\,[1_B],\\
+\begin{aligned}
+0&amp;\longrightarrow\mathbb Z/2\longrightarrow K_1(B)\\
+&amp;\xrightarrow{d_1}\mathbb Z\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+K_0(B)\cong\mathbb Z\,[1_B],\\
+\begin{aligned}
+0&amp;\longrightarrow\mathbb Z/2\longrightarrow K_1(B)\\
+&amp;\xrightarrow{d_1}\mathbb Z\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>The torsion generator is <span class="math" data-tex="\(\iota_*[z]\)">\(\iota_*[z]\)</span> and has exact order 2 by the cokernel injection. Scalar naturality as in Proposition 4.2 gives <span class="math" data-tex="\(d_1[u]=s[1_A]\)">\(d_1[u]=s[1_A]\)</span> with <span class="math" data-tex="\(s=\pm1\)">\(s=\pm1\)</span>. Hence <span class="math" data-tex="\([u]\)">\([u]\)</span> is primitive in the free quotient and supplies a section after choosing that sign. Every class is uniquely an integral multiple of <span class="math" data-tex="\([u]\)">\([u]\)</span> plus either zero or <span class="math" data-tex="\(\iota_*[z]\)">\(\iota_*[z]\)</span>; a relation involving a nonzero multiple of <span class="math" data-tex="\([u]\)">\([u]\)</span> is excluded by applying <span class="math" data-tex="\(d_1\)">\(d_1\)</span>. Thus <span class="math" data-tex="\(K_1(B)=\mathbb Z\oplus\mathbb Z/2\)">\(K_1(B)=\mathbb Z\oplus\mathbb Z/2\)</span>. This is the infinite cyclic crossed product of the reflection; the acting group here is not the order-two group.</p>
+<p><strong>Exercise 18.3 (why the unit forces a nonzero group).</strong> Prove the stable-finiteness consequence without assuming cancellation of projection classes or the existence of a trace.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\([1_A]=0\)">\([1_A]=0\)</span>, equality in the group completion supplies a projection class <span class="math" data-tex="\([p]\)">\([p]\)</span> with <span class="math" data-tex="\([1_A]+[p]=[p]\)">\([1_A]+[p]=[p]\)</span> in the stabilized projection monoid. Choose equivalent projections representing <span class="math" data-tex="\(P+Q\)">\(P+Q\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span> on disjoint blocks in a common finite matrix algebra. Their implementing partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> satisfies <span class="math" data-tex="\(v^*v=P+Q\)">\(v^*v=P+Q\)</span> and <span class="math" data-tex="\(vv^*=P\)">\(vv^*=P\)</span>. The cross terms in <span class="math" data-tex="\((v+I-P-Q)^*(v+I-P-Q)\)">\((v+I-P-Q)^*(v+I-P-Q)\)</span> vanish because <span class="math" data-tex="\(v\)">\(v\)</span> lies in the <span class="math" data-tex="\((P+Q)\)">\((P+Q)\)</span>-corner. The product is identity; the reverse product is <span class="math" data-tex="\(I-Q\)">\(I-Q\)</span>. This proper isometry contradicts stable finiteness and proves <span class="math" data-tex="\([1_A]\ne0\)">\([1_A]\ne0\)</span>. Automorphisms fix that class, so exactness at <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> forces a nonzero element in <span class="math" data-tex="\(K_1(B)\)">\(K_1(B)\)</span> mapping to it. No cancellation or trace assumption entered the argument. The AF conclusion follows from the zero <span class="math" data-tex="\(K_1\)">\(K_1\)</span> of AF-algebras established in Lesson 16.</p>
+<p><strong>Exercise 18.4 (the dyadic odometer is the standard Bunce–Deddens system).</strong> Let <span class="math" data-tex="\(X=\varprojlim\mathbb Z/2^k\mathbb Z\)">\(X=\varprojlim\mathbb Z/2^k\mathbb Z\)</span>, let <span class="math" data-tex="\(\varphi(x)=x+1\)">\(\varphi(x)=x+1\)</span>, and let <span class="math" data-tex="\(\alpha(f)=f\circ\varphi^{-1}\)">\(\alpha(f)=f\circ\varphi^{-1}\)</span>. Compute the crossed product and identify its actual connecting maps with Lesson 16.</p>
+<p><em>Solution.</em> The locally constant coefficient algebras <span class="math" data-tex="\(A_n=C(\mathbb Z/n\mathbb Z)\)">\(A_n=C(\mathbb Z/n\mathbb Z)\)</span>, for <span class="math" data-tex="\(n=2^k\)">\(n=2^k\)</span>, are invariant and have dense union in <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>. Write <span class="math" data-tex="\(p_j\)">\(p_j\)</span> for their residue projections. Then <span class="math" data-tex="\(up_ju^*=p_{j+1}\)">\(up_ju^*=p_{j+1}\)</span>, indices modulo <span class="math" data-tex="\(n\)">\(n\)</span>. In <span class="math" data-tex="\(A_n\rtimes\mathbb Z\)">\(A_n\rtimes\mathbb Z\)</span>, define</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+e_{ij}=u^ip_0u^{-j},\quad0\leq i,j&lt;n,\\
+w=u^np_0\in p_0(A_n\rtimes\mathbb Z)p_0.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+e_{ij}=u^ip_0u^{-j},\quad0\leq i,j&lt;n,\\
+w=u^np_0\in p_0(A_n\rtimes\mathbb Z)p_0.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>The projections <span class="math" data-tex="\(p_j\)">\(p_j\)</span> are orthogonal. Thus <span class="math" data-tex="\(p_0u^{k-j}p_0\)">\(p_0u^{k-j}p_0\)</span> is zero unless <span class="math" data-tex="\(k=j\)">\(k=j\)</span> when <span class="math" data-tex="\(0\leq j,k&lt;n\)">\(0\leq j,k&lt;n\)</span>. It follows that <span class="math" data-tex="\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)">\(e_{ij}e_{kl}=\delta_{jk}e_{il}\)</span>, <span class="math" data-tex="\(e_{ij}^*=e_{ji}\)">\(e_{ij}^*=e_{ji}\)</span>, and <span class="math" data-tex="\(\sum e_{ii}=1\)">\(\sum e_{ii}=1\)</span>. The corner element <span class="math" data-tex="\(w\)">\(w\)</span> is unitary with corner identity <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. Gauge automorphisms send it to <span class="math" data-tex="\(z^n w\)">\(z^n w\)</span>; its nonempty spectrum is therefore invariant under all circle rotations and equals the full circle. Functional calculus consequently embeds <span class="math" data-tex="\(C(S^1)\)">\(C(S^1)\)</span> faithfully into that corner.</p>
+<p>The matrix units extend this to an injective map from <span class="math" data-tex="\(M_n(C(S^1))\)">\(M_n(C(S^1))\)</span>. It is onto because its image contains all <span class="math" data-tex="\(p_j\)">\(p_j\)</span> and</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+u=\sum_{j=0}^{n-2}e_{j+1,j}+w e_{0,n-1}.
+\tag{5.3}
+\]">\[
+u=\sum_{j=0}^{n-2}e_{j+1,j}+w e_{0,n-1}.
+\tag{5.3}
+\]</span>
+<p>Thus the implementing unitary becomes the cyclic matrix <span class="math" data-tex="\(C_n(z)\)">\(C_n(z)\)</span> of Lesson 16, with last-to-first entry <span class="math" data-tex="\(z\)">\(z\)</span>. Its determinant is <span class="math" data-tex="\((-1)^{n-1}z\)">\((-1)^{n-1}z\)</span>, of winding 1.</p>
+<p>These finite-stage crossed products inject into <span class="math" data-tex="\(B=C(X)\rtimes\mathbb Z\)">\(B=C(X)\rtimes\mathbb Z\)</span>. Indeed, the map is gauge equivariant and injective on coefficients. If an element is in its kernel, its positive square has zero gauge average in the coefficient algebra; injectivity there and faithfulness of the average force the element to be zero. Finite sums of coefficient monomials from these stages are dense in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>For a refinement <span class="math" data-tex="\(N=nm\)">\(N=nm\)</span>, coarse <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is the sum of fine <span class="math" data-tex="\(p_{ln}\)">\(p_{ln}\)</span>, <span class="math" data-tex="\(0\leq l&lt;m\)">\(0\leq l&lt;m\)</span>. Reorder the fine indices <span class="math" data-tex="\(ln+i\)">\(ln+i\)</span> as <span class="math" data-tex="\((i,l)\)">\((i,l)\)</span>. Each coarse matrix unit then acts as <span class="math" data-tex="\(E_{ij}\otimes I_m\)">\(E_{ij}\otimes I_m\)</span>: it moves <span class="math" data-tex="\(ln+j\)">\(ln+j\)</span> to <span class="math" data-tex="\(ln+i\)">\(ln+i\)</span> without crossing a block endpoint. The coarse corner unitary <span class="math" data-tex="\(u^np_0\)">\(u^np_0\)</span> moves <span class="math" data-tex="\(ln\)">\(ln\)</span> to <span class="math" data-tex="\((l+1)n\)">\((l+1)n\)</span>, with a final wrap contributing the fine circle coordinate. On that corner it is exactly <span class="math" data-tex="\(C_m(z)\)">\(C_m(z)\)</span>. Thus the connecting map is</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+E_{ij}z^r\longmapsto E_{ij}\otimes C_m(z)^r,\\
+r\in\mathbb Z.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+E_{ij}z^r\longmapsto E_{ij}\otimes C_m(z)^r,\\
+r\in\mathbb Z.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>Continuity extends this formula from Laurent matrix polynomials to the whole circle algebra. For dyadic stages <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, these are precisely the cyclic/root embeddings of <a href="../availability.html">Lesson 16, Lemma 3.1 and Theorem 3.2</a>. The algebra, not merely its abstract groups, is the standard Bunce–Deddens limit. Consequently</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+K_0(B)&amp;=\mathbb Z[1/2],\quad[1_B]=1,\\
+K_1(B)&amp;=\mathbb Z,\quad [u]\text{ generates}.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+K_0(B)&amp;=\mathbb Z[1/2],\quad[1_B]=1,\\
+K_1(B)&amp;=\mathbb Z,\quad [u]\text{ generates}.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The first connecting map multiplies minimal rank by 2; the second preserves the winding-one cyclic unitary. This also proves the generator assertion directly. Translation by 1 is minimal on <span class="math" data-tex="\(X\)">\(X\)</span>: every residue cylinder is visited by each integer orbit. Thus the Cantor formula applies as well. The same argument with <span class="math" data-tex="\(n_k\mid n_{k+1}\)">\(n_k\mid n_{k+1}\)</span> and unbounded <span class="math" data-tex="\(n_k\)">\(n_k\)</span> gives the Bunce–Deddens algebra of the corresponding generalized integer.</p>
+<p><strong>Exercise 18.5 (torsion from an AF automorphism).</strong> Use the simple unital AF realization <span class="math" data-tex="\(A_3\)">\(A_3\)</span> from Lesson 16, Theorem 5.7 with ordered group <span class="math" data-tex="\(G=D\oplus D\)">\(G=D\oplus D\)</span>, <span class="math" data-tex="\(D=\mathbb Z[1/2]\)">\(D=\mathbb Z[1/2]\)</span>, positive cone <span class="math" data-tex="\(\{0\}\cup\{(r,s):r&gt;0\}\)">\(\{0\}\cup\{(r,s):r&gt;0\}\)</span>, and unit <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>. Lift the group automorphism <span class="math" data-tex="\(\sigma(r,s)=(r,-2s)\)">\(\sigma(r,s)=(r,-2s)\)</span>, and compute the resulting crossed product's groups and stable finiteness.</p>
+<p><em>Solution.</em> For the realization, apply <a href="../availability.html">Lesson 16, Theorem 5.7</a> to the one-point simplex and <span class="math" data-tex="\(\rho(r,s)=r\)">\(\rho(r,s)=r\)</span>. Its range <span class="math" data-tex="\(D\)">\(D\)</span> is dense in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the group <span class="math" data-tex="\(D\oplus D\)">\(D\oplus D\)</span> is countable and torsion-free, and <span class="math" data-tex="\(\rho(1,0)=1\)">\(\rho(1,0)=1\)</span>. The theorem proves precisely this strict cone, unit and simple AF realization, including its infinitesimal second summand. This is Blackadar’s example in §7.6. The map <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is an ordered group automorphism: multiplication by <span class="math" data-tex="\(-2\)">\(-2\)</span> is bijective on <span class="math" data-tex="\(D\)">\(D\)</span>, and the positive cone and unit are unchanged. The automorphism-lifting result used in <a href="../availability.html">Lesson 16, §1</a>, namely the AF classification lesson's Corollary 8.4, supplies <span class="math" data-tex="\(\alpha\in\operatorname{Aut}(A_3)\)">\(\alpha\in\operatorname{Aut}(A_3)\)</span> with <span class="math" data-tex="\(\alpha_*=\sigma\)">\(\alpha_*=\sigma\)</span>.</p>
+<p>Since <span class="math" data-tex="\(K_1(A_3)=0\)">\(K_1(A_3)=0\)</span>, the PV sequence gives</p>
+<span id="equation-5-6"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(B)=G/(0\oplus3D)\\
+\cong D\oplus\mathbb Z/3,\\
+K_1(B)=\ker(1-\sigma)\\
+=D\oplus0\cong D.
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+K_0(B)=G/(0\oplus3D)\\
+\cong D\oplus\mathbb Z/3,\\
+K_1(B)=\ker(1-\sigma)\\
+=D\oplus0\cong D.
+\end{gathered}
+\tag{5.6}
+\]</span>
+<p>For completeness, <span class="math" data-tex="\(D/3D\cong\mathbb Z/3\)">\(D/3D\cong\mathbb Z/3\)</span> by <span class="math" data-tex="\(a/2^k\mapsto a(2^k)^{-1}\pmod3\)">\(a/2^k\mapsto a(2^k)^{-1}\pmod3\)</span>. The formula is well-defined under multiplying numerator and denominator by 2, is onto, and has kernel exactly <span class="math" data-tex="\(3D\)">\(3D\)</span>. The order-three class of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> survives through the injective coefficient cokernel map.</p>
+<p>There is a unique normalized ordered-group state, <span class="math" data-tex="\((r,s)\mapsto r\)">\((r,s)\mapsto r\)</span>. Indeed, a state must take <span class="math" data-tex="\((r,0)\)">\((r,0)\)</span> to <span class="math" data-tex="\(r\)">\(r\)</span> for dyadic <span class="math" data-tex="\(r\)">\(r\)</span>. For every integer <span class="math" data-tex="\(N\)">\(N\)</span>, both <span class="math" data-tex="\((1,0)\pm N(0,s)\)">\((1,0)\pm N(0,s)\)</span> are positive, so positivity bounds <span class="math" data-tex="\(|N\tau(0,s)|\leq1\)">\(|N\tau(0,s)|\leq1\)</span>; letting <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span> makes the second coordinate zero. The AF trace correspondence of Lesson 13 therefore gives a unique normalized trace on <span class="math" data-tex="\(A_3\)">\(A_3\)</span>, fixed by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. It is faithful because the algebra is simple.</p>
+<p>Let <span class="math" data-tex="\(E:B\to A_3\)">\(E:B\to A_3\)</span> be the faithful gauge average. The state <span class="math" data-tex="\(\widetilde\tau=\tau E\)">\(\widetilde\tau=\tau E\)</span> is tracial. On monomials <span class="math" data-tex="\(au^m,bu^n\)">\(au^m,bu^n\)</span>, both product traces vanish unless <span class="math" data-tex="\(m+n=0\)">\(m+n=0\)</span>; in that case invariance and cyclicity give <span class="math" data-tex="\(\tau(a\alpha^m(b))=\tau(b\alpha^{-m}(a))\)">\(\tau(a\alpha^m(b))=\tau(b\alpha^{-m}(a))\)</span>. Density proves traciality on <span class="math" data-tex="\(B\)">\(B\)</span>. Faithfulness of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> proves faithfulness of <span class="math" data-tex="\(\widetilde\tau\)">\(\widetilde\tau\)</span>. Its faithful matrix extensions exclude proper isometries, so <span class="math" data-tex="\(B\)">\(B\)</span> is stably finite.</p>
+<p>The crossed product is also simple by Corollary 4.9, whose outer-to-cutdown and ideal-intersection steps are proved in Theorems 4.8 and 4.4. This is the criterion stated and applied in Blackadar, Exercise 10.11.2(a), and Kishimoto's crossed-product simplicity theorem. Here <span class="math" data-tex="\(\sigma^n\ne1\)">\(\sigma^n\ne1\)</span> for every nonzero <span class="math" data-tex="\(n\)">\(n\)</span>, since <span class="math" data-tex="\((-2)^n\ne1\)">\((-2)^n\ne1\)</span>. Inner automorphisms act trivially on K-theory by matrix conjugacy, so every <span class="math" data-tex="\(\alpha^n\)">\(\alpha^n\)</span> is outer. Amenability identifies reduced and full products. Thus this example is simple, unital, stably finite and has nonzero torsion in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. Its full positive cone in the crossed product has not been inferred from the trace alone.</p>
+<h2 id="sources-and-precise-imports">Sources and precise imports</h2>
+<ul>
+<li>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition (1998), §§10.1–10.5, especially Theorem 10.2.1 and Propositions 10.3.2, 10.4.1–10.4.3, 10.5.1; Exercises 10.11.1–10.11.2. The sequence and inclusion arrows are proved here from the cited crossed-product prerequisites and the corrected mapping-torus conventions of Lesson 17. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li>J. Rosenberg, “Examples and applications of noncommutative geometry and K-theory” (2012), §2.5, printed p. 108. The coefficient-arrow identification left as a check there is established by Lemma 2.1 and equation (2.9).</li>
+<li>H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em> (2024), §11.5, Corollaries 11.5.15–11.5.16. The Cantor groups and implementing-unitary generator are proved in Proposition 4.2; the odometer's actual circle connecting maps are proved in Exercise 18.4.</li>
+<li>The exact imported period-one, Takai and Thom statements are listed in §1. Compact stability, ordinary suspension maps, AF trace correspondence, AF automorphism lifting and the specified simple AF realization are reused with the locators above. Lemmas 4.3 and 4.5–4.7, Theorems 4.4 and 4.8, and Corollary 4.9 prove the full outer-powers simplicity criterion, including arbitrary nonunital and nonseparable simple coefficients. The exact written analytic prerequisites and their required scope are listed before Lemma 4.5.</li>
+</ul>
+<p>Blackadar's proof discussion in §10.2 describes alternative routes through Green imprimitivity or the Toeplitz extension, referring the latter to the KK argument in §19.9.2. The completed Fourier-window proof above uses the three exact crossed-product inputs listed in §1.</p>
+<ul>
+<li>
+<p>G. A. Elliott, <em>Some Simple C*-Algebras Constructed as Crossed Products with Discrete Outer Automorphism Groups</em>, Publications of RIMS 16 (1980), 299–311, <a href="https://ems.press/journals/prims/articles/2960">original article</a>, §3. Theorem 4.4 writes out the expectation and quotient-norm argument, with the analytic cutdown hypothesis explicit.</p>
+</li>
+<li>
+<p>A. Kishimoto, <em>Outer automorphisms and reduced crossed products of simple C*-algebras</em>, Communications in Mathematical Physics 81 (1981), 429–435, <a href="https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-81/issue-3/Outer-automorphisms-and-reduced-crossed-products-of-simple-C-algebras/cmp/1103920327.full">full text</a>, Lemmas 1.1 and 3.2 and Theorem 3.1. Theorem 4.8 proves the outer-to-cutdown implication, with the pure-state compression written in Lemma 4.5 and compact dual-orbit and central-multiplier steps proved in Lemmas 4.6–4.7. Lemma 4.3 gives the finite simultaneous refinement.</p>
+</li>
+<li>
+<p>A. Kishimoto, <em>Simple crossed products of C*-algebras by locally compact abelian groups</em>, Yokohama Mathematical Journal 28 (1980), 69–85, §3, Lemma 3.7. <a href="https://ynu.repo.nii.ac.jp/record/6663/files/YMJ_28_N1-2_1980_069-085.pdf">Original journal article</a>. The compact-orbit mechanism is supplied in full in Lemma 4.6, including its hull-kernel topology; the compact Hausdorff case of the Dauns–Hofmann central-multiplier theorem is constructed in Lemma 4.7.</p>
+</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/KT-OPK/KT-OPK-18.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

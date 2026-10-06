@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The prime number theorem with the classical error term · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-12.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-prime-number-theorem-with-the-classical-error-term">The prime number theorem with the classical error term</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The prime number theorem says that the weighted prime count is asymptotic to <span class="math" data-tex="$x$">$x$</span>. Its error depends on how far zeros stay from the line one. The logarithmic zero-free region gives a saving exponential in <span class="math" data-tex="$\sqrt{\log x}$">$\sqrt{\log x}$</span>. We prove that error first for prime powers, then transfer it to primes. A contour for the reciprocal of zeta gives the corresponding cancellation among Möbius values.</p>
+<p>We use the zero-free region and reciprocal bounds proved in <a href="NT-ZETA-08.html">Nonvanishing on the line one and a zero-free region</a>, Theorems 3.2 and 4.1; the sharp explicit formula and finite Perron formula from <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>, Theorem 2.2 and Proposition 1.2; and the reciprocal-ordinate estimate in <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorem 4.1. Elementary prime-power comparisons and partial summation are proved in <a href="NT-ZETA-02.html">Counting primes by elementary means</a>, Theorems 2.1 and 5.2. The ordinary convergence <span class="math" data-tex="$\sum\mu(n)/n=0$">$\sum\mu(n)/n=0$</span> is proved in <a href="NT-ZETA-09.html">The prime number theorem</a>, Theorem 4.1 and Solution 3. The same results are treated in Koukoulopoulos’s preliminary version, Chapter 8, Theorem 8.1 and its proof, listed below.</p>
+<p>Throughout, <span class="math" data-tex="$\psi(x)=\sum_{n\le x}\Lambda(n)$">$\psi(x)=\sum_{n\le x}\Lambda(n)$</span>, <span class="math" data-tex="$\theta(x)=\sum_{p\le x}\log p$">$\theta(x)=\sum_{p\le x}\log p$</span>, and <span class="math" data-tex="$M(x)=\sum_{n\le x}\mu(n)$">$M(x)=\sum_{n\le x}\mu(n)$</span>. The letter <span class="math" data-tex="$c$">$c$</span> denotes a positive absolute constant whose value may decrease between estimates. We retain explicit names for the constants in the zero-free region when using them in a contour. As before, <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Ei}(\log x)$">$\operatorname{li}(x)=\operatorname{Ei}(\log x)$</span> and <span class="math" data-tex="$\operatorname{Li}(x)=\int_2^xdt/\log t$">$\operatorname{Li}(x)=\int_2^xdt/\log t$</span> differ by the constant <span class="math" data-tex="$\operatorname{li}(2)$">$\operatorname{li}(2)$</span>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-a-quantitative-prime-power-count">1. A quantitative prime-power count</h2>
+<p><strong>Theorem 1.1.</strong> There is a positive absolute constant <span class="math" data-tex="$c$">$c$</span> such that, for every <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)=x+O\bigl(xe^{-c\sqrt{\log x}}\bigr).
+\tag{1.1}
+$$">$$
+\psi(x)=x+O\bigl(xe^{-c\sqrt{\log x}}\bigr).
+\tag{1.1}
+$$</span></p>
+<p><strong>Proof.</strong> The preceding zero-free proof supplied <span class="math" data-tex="$C=1/2000$">$C=1/2000$</span> with
+<span class="math math-display" data-tex="$$
+\beta&lt;1-\frac C{\log(|\gamma|+2)}
+$$">$$
+\beta&lt;1-\frac C{\log(|\gamma|+2)}
+$$</span>
+for every nontrivial zero <span class="math" data-tex="$\rho=\beta+i\gamma$">$\rho=\beta+i\gamma$</span>. For <span class="math" data-tex="$|\gamma|&lt;T$">$|\gamma|&lt;T$</span>, <span class="math" data-tex="$T\ge2$">$T\ge2$</span>, this implies
+<span class="math math-display" data-tex="$$
+|x^\rho|\le x\exp\left(-\frac{C\log x}{\log(T+2)}\right).
+$$">$$
+|x^\rho|\le x\exp\left(-\frac{C\log x}{\log(T+2)}\right).
+$$</span>
+The zero-counting estimate and partial summation give <span class="math" data-tex="$\sum_{|\gamma|&lt;T}1/|\rho|\ll\log^2(T+4)$">$\sum_{|\gamma|&lt;T}1/|\rho|\ll\log^2(T+4)$</span>, including the finitely many small ordinates. Hence the sharp explicit formula gives
+<span class="math math-display" data-tex="$$
+|\psi(x)-x|\ll
+x\log^2(T+4)e^{-C\log x/\log(T+2)}
++\frac{x\log^2(xT)}T+\log x.
+\tag{1.2}
+$$">$$
+|\psi(x)-x|\ll
+x\log^2(T+4)e^{-C\log x/\log(T+2)}
++\frac{x\log^2(xT)}T+\log x.
+\tag{1.2}
+$$</span>
+The last term includes both the nearest-prime-power error, whose minimum factor is at most one, and the change from <span class="math" data-tex="$\psi_0$">$\psi_0$</span> to <span class="math" data-tex="$\psi$">$\psi$</span>. The constant and trivial-zero terms are bounded for <span class="math" data-tex="$x\ge2$">$x\ge2$</span> and are absorbed as well. Thus (1.2) holds at prime powers and between them, with no restriction on the chosen height.</p>
+<p>Put <span class="math" data-tex="$L=\log x$">$L=\log x$</span> and <span class="math" data-tex="$T=e^{\sqrt L}$">$T=e^{\sqrt L}$</span>. For sufficiently large <span class="math" data-tex="$L$">$L$</span>, <span class="math" data-tex="$\log(T+2)\le2\sqrt L$">$\log(T+2)\le2\sqrt L$</span> and <span class="math" data-tex="$\log(T+4)\ll\sqrt L$">$\log(T+4)\ll\sqrt L$</span>. The first term in (1.2) is <span class="math" data-tex="$O(xL e^{-(C/2)\sqrt L})$">$O(xL e^{-(C/2)\sqrt L})$</span>, and the second is <span class="math" data-tex="$O(xL^2e^{-\sqrt L})$">$O(xL^2e^{-\sqrt L})$</span>. For each fixed <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span> and integer <span class="math" data-tex="$m\ge0$">$m\ge0$</span>, <span class="math" data-tex="$L^m e^{-a\sqrt L}=O(e^{-(a/2)\sqrt L})$">$L^m e^{-a\sqrt L}=O(e^{-(a/2)\sqrt L})$</span>: set <span class="math" data-tex="$v=\sqrt L$">$v=\sqrt L$</span> and use the boundedness of <span class="math" data-tex="$v^{2m}e^{-(a/2)v}$">$v^{2m}e^{-(a/2)v}$</span>. The remaining <span class="math" data-tex="$\log x$">$\log x$</span> is also absorbed in <span class="math" data-tex="$xe^{-c\sqrt L}$">$xe^{-c\sqrt L}$</span>. These observations prove (1.1) for sufficiently large <span class="math" data-tex="$x$">$x$</span>. Enlarging the implied constant covers the fixed interval below that threshold. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is a proof with an absolute positive saving. It does not claim a useful numerical error at moderate <span class="math" data-tex="$x$">$x$</span> from our deliberately small zero-free constant.</p>
+<h2 id="2-passing-from-powers-to-primes">2. Passing from powers to primes</h2>
+<p><strong>Theorem 2.1.</strong> For some positive absolute constant <span class="math" data-tex="$c$">$c$</span> and all <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,
+<span class="math math-display" data-tex="$$
+\theta(x)=x+O\bigl(xe^{-c\sqrt{\log x}}\bigr),\qquad
+\pi(x)=\operatorname{li}(x)+O\bigl(xe^{-c\sqrt{\log x}}\bigr).
+\tag{2.1}
+$$">$$
+\theta(x)=x+O\bigl(xe^{-c\sqrt{\log x}}\bigr),\qquad
+\pi(x)=\operatorname{li}(x)+O\bigl(xe^{-c\sqrt{\log x}}\bigr).
+\tag{2.1}
+$$</span></p>
+<p><strong>Proof.</strong> The proved elementary comparison <span class="math" data-tex="$0\le\psi(x)-\theta(x)\ll\sqrt x$">$0\le\psi(x)-\theta(x)\ll\sqrt x$</span> gives the first result, since <span class="math" data-tex="$\sqrt x=O(xe^{-c\sqrt{\log x}})$">$\sqrt x=O(xe^{-c\sqrt{\log x}})$</span> for each fixed <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>. Write <span class="math" data-tex="$\theta(t)=t+E(t)$">$\theta(t)=t+E(t)$</span>, with <span class="math" data-tex="$E(t)\ll te^{-a\sqrt{\log t}}$">$E(t)\ll te^{-a\sqrt{\log t}}$</span> for some <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>. Partial summation, retaining the lower endpoint, gives
+<span class="math math-display" data-tex="$$
+\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(t)}{t\log^2t}\,dt.
+$$">$$
+\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(t)}{t\log^2t}\,dt.
+$$</span>
+The terms with <span class="math" data-tex="$\theta(t)$">$\theta(t)$</span> replaced by <span class="math" data-tex="$t$">$t$</span> equal
+<span class="math math-display" data-tex="$$
+\frac{x}{\log x}+\int_2^x\frac{dt}{\log^2t}
+=\operatorname{Li}(x)+\frac2{\log2}.
+$$">$$
+\frac{x}{\log x}+\int_2^x\frac{dt}{\log^2t}
+=\operatorname{Li}(x)+\frac2{\log2}.
+$$</span>
+This identity follows by differentiating <span class="math" data-tex="$t/\log t$">$t/\log t$</span>. Its constant difference from <span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span> is harmless for the present error.</p>
+<p>The endpoint error is at most <span class="math" data-tex="$Cxe^{-a\sqrt{\log x}}/\log x$">$Cxe^{-a\sqrt{\log x}}/\log x$</span>. For large <span class="math" data-tex="$x$">$x$</span>, split the error integral at <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span>. On the first portion, the elementary bound <span class="math" data-tex="$|E(t)|\ll t$">$|E(t)|\ll t$</span> gives <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. On the second portion, <span class="math" data-tex="$\sqrt{\log t}\ge\sqrt{\log x}/\sqrt2$">$\sqrt{\log t}\ge\sqrt{\log x}/\sqrt2$</span>; therefore its modulus is at most
+<span class="math math-display" data-tex="$$
+Ce^{-(a/\sqrt2)\sqrt{\log x}}
+\int_{\sqrt x}^x\frac{dt}{\log^2t}
+\ll xe^{-(a/\sqrt2)\sqrt{\log x}}.
+$$">$$
+Ce^{-(a/\sqrt2)\sqrt{\log x}}
+\int_{\sqrt x}^x\frac{dt}{\log^2t}
+\ll xe^{-(a/\sqrt2)\sqrt{\log x}}.
+$$</span>
+The constant term and the initial interval are absorbed by reducing <span class="math" data-tex="$c$">$c$</span> and enlarging its implied constant. This proves the second assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-a-contour-for-the-möbius-sum">3. A contour for the Möbius sum</h2>
+<p>The reciprocal is holomorphic at one and has a zero there. Its counting contour consequently has no main-term residue.</p>
+<p><strong>Lemma 3.1 (a finite formula for bounded coefficients).</strong> Suppose <span class="math" data-tex="$|b(n)|\le1$">$|b(n)|\le1$</span> and <span class="math" data-tex="$D(s)=\sum b(n)n^{-s}$">$D(s)=\sum b(n)n^{-s}$</span> for <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>. If <span class="math" data-tex="$X=N+1/2\ge2$">$X=N+1/2\ge2$</span> with integer <span class="math" data-tex="$N$">$N$</span>, <span class="math" data-tex="$a_X=1+1/\log X$">$a_X=1+1/\log X$</span>, and <span class="math" data-tex="$T\ge2$">$T\ge2$</span>, then
+<span class="math math-display" data-tex="$$
+\sum_{n\le N}b(n)
+=\frac1{2\pi i}\int_{a_X-iT}^{a_X+iT}D(s)\frac{X^s}s\,ds
++O\left(\frac{X\log X}T\right).
+\tag{3.1}
+$$">$$
+\sum_{n\le N}b(n)
+=\frac1{2\pi i}\int_{a_X-iT}^{a_X+iT}D(s)\frac{X^s}s\,ds
++O\left(\frac{X\log X}T\right).
+\tag{3.1}
+$$</span></p>
+<p><strong>Proof.</strong> Apply the finite Perron formula. There is no term <span class="math" data-tex="$n=X$">$n=X$</span> because <span class="math" data-tex="$X$">$X$</span> is a half integer. For <span class="math" data-tex="$n\le X/2$">$n\le X/2$</span> or <span class="math" data-tex="$n\ge2X$">$n\ge2X$</span>, <span class="math" data-tex="$|\log(X/n)|\ge\log2$">$|\log(X/n)|\ge\log2$</span>, so the error is at most <span class="math" data-tex="$CX^a\sum n^{-a}/T\ll X\log X/T$">$CX^a\sum n^{-a}/T\ll X\log X/T$</span>, using <span class="math" data-tex="$X^a=eX$">$X^a=eX$</span> and <span class="math" data-tex="$\zeta(a)\le1+1/(a-1)$">$\zeta(a)\le1+1/(a-1)$</span>. In the middle range, <span class="math" data-tex="$(X/n)^a\ll1$">$(X/n)^a\ll1$</span> and <span class="math" data-tex="$|\log(X/n)|\ge|X-n|/(2X)$">$|\log(X/n)|\ge|X-n|/(2X)$</span>. Every distance is at least <span class="math" data-tex="$1/2$">$1/2$</span>. The two terms at distances below one cost <span class="math" data-tex="$O(X/T)$">$O(X/T)$</span>, because <span class="math" data-tex="$\min(1,CX/T)\le CX/T$">$\min(1,CX/T)\le CX/T$</span>. Grouping all remaining distances in unit intervals gives at most two integers per group and the bound <span class="math" data-tex="$CX\sum_{j\le2X}1/(Tj)\ll X\log X/T$">$CX\sum_{j\le2X}1/(Tj)\ll X\log X/T$</span>. This proves (3.1) directly, without an endpoint convention for signed coefficients. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2.</strong> There is a positive absolute constant <span class="math" data-tex="$c$">$c$</span> such that
+<span class="math math-display" data-tex="$$
+M(x)=O\bigl(xe^{-c\sqrt{\log x}}\bigr)\qquad(x\ge2).
+\tag{3.2}
+$$">$$
+M(x)=O\bigl(xe^{-c\sqrt{\log x}}\bigr)\qquad(x\ge2).
+\tag{3.2}
+$$</span></p>
+<p><strong>Proof.</strong> The Euler product proves <span class="math" data-tex="$D(s)=1/\zeta(s)=\sum\mu(n)n^{-s}$">$D(s)=1/\zeta(s)=\sum\mu(n)n^{-s}$</span> for <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>. Take <span class="math" data-tex="$X=\lfloor x\rfloor+1/2$">$X=\lfloor x\rfloor+1/2$</span>, so <span class="math" data-tex="$M(X)=M(x)$">$M(X)=M(x)$</span>, and use Lemma 3.1. Put
+<span class="math math-display" data-tex="$$
+d=\frac1{10000},\qquad \kappa=\frac d4,\qquad
+\eta=\frac\kappa{\log(T+4)},\qquad b=1-\eta.
+$$">$$
+d=\frac1{10000},\qquad \kappa=\frac d4,\qquad
+\eta=\frac\kappa{\log(T+4)},\qquad b=1-\eta.
+$$</span>
+The rectangle <span class="math" data-tex="$b\le\sigma\le a_X$">$b\le\sigma\le a_X$</span>, <span class="math" data-tex="$|t|\le T$">$|t|\le T$</span> is zero-free by lesson eight, Theorem 3.2. For <span class="math" data-tex="$2\le|t|\le T$">$2\le|t|\le T$</span>, its left edge satisfies
+<span class="math math-display" data-tex="$$
+\eta\le\frac d{2\log(|t|+2)},
+$$">$$
+\eta\le\frac d{2\log(|t|+2)},
+$$</span>
+so Theorem 4.1 of that lesson gives <span class="math" data-tex="$|D(s)|\ll\log(T+4)$">$|D(s)|\ll\log(T+4)$</span> throughout this part of the rectangle. The portion <span class="math" data-tex="$|t|\le2$">$|t|\le2$</span> lies in the fixed compact rectangle
+<span class="math math-display" data-tex="$$
+1-\frac\kappa{\log6}\le\sigma\le1+\frac1{\log2},\qquad |t|\le2.
+$$">$$
+1-\frac\kappa{\log6}\le\sigma\le1+\frac1{\log2},\qquad |t|\le2.
+$$</span>
+It is zero-free, and <span class="math" data-tex="$D$">$D$</span> extends holomorphically at the pole <span class="math" data-tex="$s=1$">$s=1$</span> with value zero. Continuity on that compact set therefore bounds <span class="math" data-tex="$D$">$D$</span> by an absolute constant there. Together these facts give the required bound on every side, including the small-height part.</p>
+<p>Cauchy's theorem shifts the finite integral in (3.1) to <span class="math" data-tex="$\sigma=b$">$\sigma=b$</span>; no pole is crossed, and <span class="math" data-tex="$b&gt;3/4$">$b&gt;3/4$</span> keeps the kernel pole zero outside the rectangle. The new vertical integral is bounded by
+<span class="math math-display" data-tex="$$
+CX^b\log(T+4)\int_{-T}^T\frac{dt}{|b+it|}
+\ll X^{1-\eta}\log^2(T+4).
+$$">$$
+CX^b\log(T+4)\int_{-T}^T\frac{dt}{|b+it|}
+\ll X^{1-\eta}\log^2(T+4).
+$$</span>
+Each horizontal integral is at most
+<span class="math math-display" data-tex="$$
+\frac{C\log(T+4)}T\int_b^{a_X}X^\sigma d\sigma
+\ll\frac{X\log(T+4)}T.
+$$">$$
+\frac{C\log(T+4)}T\int_b^{a_X}X^\sigma d\sigma
+\ll\frac{X\log(T+4)}T.
+$$</span>
+The interval has bounded length and <span class="math" data-tex="$X^{a_X}=eX$">$X^{a_X}=eX$</span>, which suffices for the last inequality. Consequently
+<span class="math math-display" data-tex="$$
+|M(x)|\ll
+Xe^{-\kappa\log X/\log(T+4)}\log^2(T+4)
++\frac{X(\log X+\log(T+4))}T.
+\tag{3.3}
+$$">$$
+|M(x)|\ll
+Xe^{-\kappa\log X/\log(T+4)}\log^2(T+4)
++\frac{X(\log X+\log(T+4))}T.
+\tag{3.3}
+$$</span>
+Choose <span class="math" data-tex="$T=e^{\sqrt{\log X}}$">$T=e^{\sqrt{\log X}}$</span>. Exactly the exponential absorption used in Theorem 1.1 gives <span class="math" data-tex="$M(x)\ll Xe^{-c\sqrt{\log X}}$">$M(x)\ll Xe^{-c\sqrt{\log X}}$</span>. Since <span class="math" data-tex="$X=x+O(1)$">$X=x+O(1)$</span> and <span class="math" data-tex="$X$">$X$</span> is comparable to <span class="math" data-tex="$x$">$x$</span>, this is (3.2); a fixed initial interval is covered by changing the implied constant. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 3.3.</strong> For a positive absolute constant <span class="math" data-tex="$c$">$c$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{n\le x}\frac{\mu(n)}n
+=O\bigl(e^{-c\sqrt{\log x}}\bigr)\qquad(x\ge2).
+\tag{3.4}
+$$">$$
+\sum_{n\le x}\frac{\mu(n)}n
+=O\bigl(e^{-c\sqrt{\log x}}\bigr)\qquad(x\ge2).
+\tag{3.4}
+$$</span></p>
+<p><strong>Proof.</strong> Partial summation gives <span class="math" data-tex="$\sum_{n\le x}\mu(n)/n=M(x)/x+\int_1^xM(t)t^{-2}dt$">$\sum_{n\le x}\mu(n)/n=M(x)/x+\int_1^xM(t)t^{-2}dt$</span>. Theorem 3.2 makes the infinite integral absolutely convergent, and <span class="math" data-tex="$M(x)/x\to0$">$M(x)/x\to0$</span>. The already proved ordinary limit <span class="math" data-tex="$\sum\mu(n)/n=0$">$\sum\mu(n)/n=0$</span> therefore identifies that integral's value as zero. Thus the exact tail identity is
+<span class="math math-display" data-tex="$$
+\sum_{n\le x}\frac{\mu(n)}n
+=\frac{M(x)}x-\int_x^\infty\frac{M(t)}{t^2}\,dt.
+\tag{3.5}
+$$">$$
+\sum_{n\le x}\frac{\mu(n)}n
+=\frac{M(x)}x-\int_x^\infty\frac{M(t)}{t^2}\,dt.
+\tag{3.5}
+$$</span>
+For <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>, substituting <span class="math" data-tex="$v=\sqrt{\log t}$">$v=\sqrt{\log t}$</span> computes
+<span class="math math-display" data-tex="$$
+\int_x^\infty e^{-a\sqrt{\log t}}\frac{dt}t
+=2e^{-a\sqrt{\log x}}
+\left(\frac{\sqrt{\log x}}a+\frac1{a^2}\right).
+\tag{3.6}
+$$">$$
+\int_x^\infty e^{-a\sqrt{\log t}}\frac{dt}t
+=2e^{-a\sqrt{\log x}}
+\left(\frac{\sqrt{\log x}}a+\frac1{a^2}\right).
+\tag{3.6}
+$$</span>
+Apply this to the bound for <span class="math" data-tex="$M(t)/t$">$M(t)/t$</span> and absorb the factor <span class="math" data-tex="$1+\sqrt{\log x}$">$1+\sqrt{\log x}$</span> by decreasing the exponential constant. This proves (3.4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The zero limit in (3.5) matters: a bound for <span class="math" data-tex="$M$">$M$</span> and absolute convergence of the integral alone would leave its limiting constant unidentified. Our preceding proof fixes that constant before estimating the tail.</p>
+<h2 id="4-the-scale-of-the-cutoff">4. The scale of the cutoff</h2>
+<p><strong>Example 4.1.</strong> Write <span class="math" data-tex="$u=\log T$">$u=\log T$</span> and <span class="math" data-tex="$L=\log x$">$L=\log x$</span>. For <span class="math" data-tex="$T\ge2$">$T\ge2$</span>, <span class="math" data-tex="$\log(T+2)\le2u$">$\log(T+2)\le2u$</span> and <span class="math" data-tex="$\log(T+4)\ll u$">$\log(T+4)\ll u$</span>. With <span class="math" data-tex="$a=C/2=1/4000$">$a=C/2=1/4000$</span>, the two principal relative bounds in (1.2) have the forms
+<span class="math math-display" data-tex="$$
+E_{\mathrm{zeros}}=u^2e^{-aL/u},\qquad
+E_{\mathrm{contour}}=(L+u)^2e^{-u},
+\tag{4.1}
+$$">$$
+E_{\mathrm{zeros}}=u^2e^{-aL/u},\qquad
+E_{\mathrm{contour}}=(L+u)^2e^{-u},
+\tag{4.1}
+$$</span>
+up to absolute multiplicative constants. For <span class="math" data-tex="$L+u\ge2$">$L+u\ge2$</span>, increasing <span class="math" data-tex="$u$">$u$</span> makes the contour term nonincreasing while enlarging the zero term. Indeed,
+<span class="math math-display" data-tex="$$
+\frac{d}{du}\log E_{\mathrm{contour}}=\frac2{L+u}-1\le0,
+\qquad
+\frac{d}{du}\log E_{\mathrm{zeros}}=\frac2u+\frac{aL}{u^2}&gt;0.
+$$">$$
+\frac{d}{du}\log E_{\mathrm{contour}}=\frac2{L+u}-1\le0,
+\qquad
+\frac{d}{du}\log E_{\mathrm{zeros}}=\frac2u+\frac{aL}{u^2}&gt;0.
+$$</span> The simple choice <span class="math" data-tex="$u=\sqrt L$">$u=\sqrt L$</span> proves the required order even with our small <span class="math" data-tex="$a$">$a$</span>. Balancing the exponential factors alone gives <span class="math" data-tex="$u=\sqrt{aL}$">$u=\sqrt{aL}$</span>; including the polynomial factors shifts the balance by lower-order logarithmic terms.</p>
+<figure><img src="figures/NT-ZETA-12/cutoff_balance.png" alt="The two normalized error components against the logarithm of the cutoff height" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The two functions in (4.1), at the stated theoretical parameter <span class="math" data-tex="$L=10^8$">$L=10^8$</span> and the proved constant <span class="math" data-tex="$a=1/4000$">$a=1/4000$</span>. The vertical axis is logarithmic. Common implicit constants are suppressed; this plots the analytic bound's components, not a measured prime-counting error. The marked crossing includes both polynomial prefactors. The dotted line is the balance of the exponential factors alone. The Python source retains all parameters and reproduces the figure.</em></p>
+<h2 id="5-exercises-and-worked-solutions">5. Exercises and worked solutions</h2>
+<p><strong>Exercise 1.</strong> Deduce the asserted estimate for <span class="math" data-tex="$\pi(x)$">$\pi(x)$</span> directly from (1.1), keeping the logarithmic-integral convention explicit.</p>
+<p><strong>Solution 1.</strong> First subtract the higher prime powers, whose total weight is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span> by lesson two, to get the estimate for <span class="math" data-tex="$\theta$">$\theta$</span>. Then the exact partial-summation formula in Theorem 2.1 has main term <span class="math" data-tex="$\operatorname{Li}(x)+2/\log2$">$\operatorname{Li}(x)+2/\log2$</span>. For its error, the range below <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span> contributes <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>, and above <span class="math" data-tex="$\sqrt x$">$\sqrt x$</span> the exponential saving is at least <span class="math" data-tex="$e^{-(a/\sqrt2)\sqrt{\log x}}$">$e^{-(a/\sqrt2)\sqrt{\log x}}$</span>. The endpoint term has the same saving. Add the fixed difference <span class="math" data-tex="$2/\log2-\operatorname{li}(2)$">$2/\log2-\operatorname{li}(2)$</span> to convert to <span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span>, and absorb it in the growing error envelope. This proves the claimed estimate with a possibly smaller positive constant.</p>
+<p><strong>Exercise 2.</strong> Prove the sharper Mertens estimate
+<span class="math math-display" data-tex="$$
+\sum_{p\le x}\frac1p=\log\log x+M_{\mathrm{pr}}+O\bigl(e^{-c\sqrt{\log x}}\bigr).
+$$">$$
+\sum_{p\le x}\frac1p=\log\log x+M_{\mathrm{pr}}+O\bigl(e^{-c\sqrt{\log x}}\bigr).
+$$</span>
+Identify the constant with the one proved in lesson two.</p>
+<p><strong>Solution 2.</strong> Write <span class="math" data-tex="$\pi(t)=\operatorname{li}(t)+E(t)$">$\pi(t)=\operatorname{li}(t)+E(t)$</span> using Theorem 2.1. Partial summation yields <span class="math" data-tex="$\sum_{p\le x}1/p=\pi(x)/x+\int_2^x\pi(t)t^{-2}dt$">$\sum_{p\le x}1/p=\pi(x)/x+\int_2^x\pi(t)t^{-2}dt$</span>. Differentiation of <span class="math" data-tex="$\operatorname{li}(t)/t$">$\operatorname{li}(t)/t$</span> shows that its main terms equal
+<span class="math math-display" data-tex="$$
+\log\log x-\log\log2+\frac{\operatorname{li}(2)}2.
+$$">$$
+\log\log x-\log\log2+\frac{\operatorname{li}(2)}2.
+$$</span>
+Since <span class="math" data-tex="$E(t)\ll te^{-a\sqrt{\log t}}$">$E(t)\ll te^{-a\sqrt{\log t}}$</span>, the integral <span class="math" data-tex="$\int_2^\infty E(t)t^{-2}dt$">$\int_2^\infty E(t)t^{-2}dt$</span> converges absolutely by (3.6). Defining the constant by that integral leaves the error <span class="math" data-tex="$E(x)/x-\int_x^\infty E(t)t^{-2}dt$">$E(x)/x-\int_x^\infty E(t)t^{-2}dt$</span>. Formula (3.6) and exponential absorption bound it by <span class="math" data-tex="$O(e^{-c\sqrt{\log x}})$">$O(e^{-c\sqrt{\log x}})$</span>. Its limiting constant must equal the constant already identified in lesson two, Theorems 3.1 and 4.2, because both are limits of <span class="math" data-tex="$\sum_{p\le x}1/p-\log\log x$">$\sum_{p\le x}1/p-\log\log x$</span>. Therefore
+<span class="math math-display" data-tex="$$
+M_{\mathrm{pr}}=\gamma+\sum_p\bigl(\log(1-1/p)+1/p\bigr).
+$$">$$
+M_{\mathrm{pr}}=\gamma+\sum_p\bigl(\log(1-1/p)+1/p\bigr).
+$$</span>
+The notation <span class="math" data-tex="$M_{\mathrm{pr}}$">$M_{\mathrm{pr}}$</span> keeps this constant distinct from the summatory function <span class="math" data-tex="$M(x)$">$M(x)$</span>.</p>
+<p><strong>Exercise 3.</strong> Prove (3.4) from the bound for the Möbius sum and the preceding lesson's zero limit.</p>
+<p><strong>Solution 3.</strong> Partial summation followed by the zero limit gives exactly (3.5). Its endpoint is <span class="math" data-tex="$O(e^{-a\sqrt{\log x}})$">$O(e^{-a\sqrt{\log x}})$</span>, and (3.6) bounds its tail by <span class="math" data-tex="$O((1+\sqrt{\log x})e^{-a\sqrt{\log x}})$">$O((1+\sqrt{\log x})e^{-a\sqrt{\log x}})$</span>. The function <span class="math" data-tex="$(1+v)e^{-(a/2)v}$">$(1+v)e^{-(a/2)v}$</span> is bounded for <span class="math" data-tex="$v\ge0$">$v\ge0$</span>, so both terms are <span class="math" data-tex="$O(e^{-(a/2)\sqrt{\log x}})$">$O(e^{-(a/2)\sqrt{\log x}})$</span>. This proves the assertion and explicitly controls the integral, rather than treating it as automatically the same size as the endpoint.</p>
+<p><strong>Exercise 4.</strong> Explain why optimization of these zero-free-region bounds alone cannot improve the square-root exponent scale. Distinguish this statement about a bound from a lower bound on the true arithmetic error.</p>
+<p><strong>Solution 4.</strong> Ignoring polynomial factors, the available normalized error envelope contains <span class="math" data-tex="$e^{-u}$">$e^{-u}$</span> and <span class="math" data-tex="$e^{-aL/u}$">$e^{-aL/u}$</span>. For every <span class="math" data-tex="$u&gt;0$">$u&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\min\{u,aL/u\}\le\sqrt{aL},\qquad
+\max\{e^{-u},e^{-aL/u}\}\ge e^{-\sqrt{aL}}.
+$$">$$
+\min\{u,aL/u\}\le\sqrt{aL},\qquad
+\max\{e^{-u},e^{-aL/u}\}\ge e^{-\sqrt{aL}}.
+$$</span>
+If <span class="math" data-tex="$u\le\sqrt{aL}$">$u\le\sqrt{aL}$</span> the first inequality follows from its first entry; otherwise it follows from its second entry. Equality occurs at <span class="math" data-tex="$u=\sqrt{aL}$">$u=\sqrt{aL}$</span>. Thus optimizing the two available components cannot yield an exponent proportional to <span class="math" data-tex="$L^\alpha$">$L^\alpha$</span> with <span class="math" data-tex="$\alpha&gt;1/2$">$\alpha&gt;1/2$</span>. The polynomial prefactors in (4.1) do not improve this obstruction and change the loss by logarithmic terms. This is a limitation of this pair of upper bounds and this contour method; it does not prove that <span class="math" data-tex="$|\psi(x)-x|$">$|\psi(x)-x|$</span> is as large as that envelope. A wider zero-free region supplies different components and can improve the exponent scale.</p>
+<p><strong>Exercise 5.</strong> For Liouville's function <span class="math" data-tex="$\lambda(n)=(-1)^{\Omega(n)}$">$\lambda(n)=(-1)^{\Omega(n)}$</span>, prove <span class="math" data-tex="$\sum_{n\le x}\lambda(n)=O(xe^{-c\sqrt{\log x}})$">$\sum_{n\le x}\lambda(n)=O(xe^{-c\sqrt{\log x}})$</span>.</p>
+<p><strong>Solution 5.</strong> Complete multiplicativity gives the absolutely convergent Euler product
+<span class="math math-display" data-tex="$$
+\sum_{n\ge1}\frac{\lambda(n)}{n^s}
+=\prod_p(1+p^{-s})^{-1}
+=\frac{\zeta(2s)}{\zeta(s)}\qquad(\Re s&gt;1),
+$$">$$
+\sum_{n\ge1}\frac{\lambda(n)}{n^s}
+=\prod_p(1+p^{-s})^{-1}
+=\frac{\zeta(2s)}{\zeta(s)}\qquad(\Re s&gt;1),
+$$</span>
+since <span class="math" data-tex="$(1+z)^{-1}=(1-z)/(1-z^2)$">$(1+z)^{-1}=(1-z)/(1-z^2)$</span>. Absolute convergence follows from <span class="math" data-tex="$|\lambda(n)|=1$">$|\lambda(n)|=1$</span> and <span class="math" data-tex="$\sum n^{-\sigma}&lt;\infty$">$\sum n^{-\sigma}&lt;\infty$</span>; it justifies all these product identities. Apply Lemma 3.1 to these coefficients and shift the same rectangle as in Theorem 3.2. Its left edge has <span class="math" data-tex="$b&gt;3/4$">$b&gt;3/4$</span>, so the numerator is holomorphic throughout and <span class="math" data-tex="$|\zeta(2s)|\le\zeta(2b)\le\zeta(3/2)$">$|\zeta(2s)|\le\zeta(2b)\le\zeta(3/2)$</span>. In particular its pole at <span class="math" data-tex="$s=1/2$">$s=1/2$</span> lies outside the rectangle. The denominator has no zero inside, and its pole at one produces a removable zero of the quotient. Thus the quotient is holomorphic, bounded by <span class="math" data-tex="$C\log(T+4)$">$C\log(T+4)$</span> on all sides. The same vertical and horizontal estimates give (3.3) for the Liouville sum. Choose <span class="math" data-tex="$T=e^{\sqrt{\log X}}$">$T=e^{\sqrt{\log X}}$</span>, absorb the polynomial factors and replace <span class="math" data-tex="$X=\lfloor x\rfloor+1/2$">$X=\lfloor x\rfloor+1/2$</span> by <span class="math" data-tex="$x$">$x$</span> as before. This proves the required cancellation.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, freely readable author preliminary version, 367 pages. Chapter 8, Theorem 8.1, with its proof on.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-11.html">← Perron&#x27;s formula and the explicit formula for ψ(x)</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-13.html">Growth bounds and wider zero-free regions →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-12.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

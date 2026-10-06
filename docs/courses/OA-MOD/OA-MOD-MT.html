@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operators recovered from small trace defects · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-MT.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 57 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="operators-recovered-from-small-trace-defects">Operators recovered from small trace defects</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A large operator can become bounded after removing a projection with very small trace. This observation leads to a topology whose completion remembers both an operator and the vectors on which it acts. We construct that completion, recover its closed operators with their actual domains, and then characterize the result by spectral tails. Projection geometry provides the uniqueness argument that makes the algebraic operations rigorous.</p>
+<p>The mathematical antecedents for this cluster are Takesaki, <em>Theory of Operator Algebras II</em>, Chapter IX, §2, items 2.1–2.11. The exposition is organized around quantitative cutoffs, the completed module and graph uniqueness; the spectral and trace statements appear after their domain requirements have been proved. The course audits record the exact source comparisons and the separate open closed-graph prerequisite.</p>
+<h2 id="the-traced-representation-and-the-inputs"><span id="oa-mod-mt-01"></span><span id="OA-MOD-MT-01"></span>The traced representation and the inputs</h2>
+<p>Throughout, <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> is a von Neumann algebra acting nondegenerately on a complex Hilbert space, and <span class="math" data-tex="\(\tau:M_+\to[0,\infty]\)">\(\tau:M_+\to[0,\infty]\)</span> is a faithful normal semifinite trace. Neither <span class="math" data-tex="\(H\)">\(H\)</span> nor <span class="math" data-tex="\(M\)">\(M\)</span> is assumed separable, and no faithful normal state is assumed to exist. Inner products are linear in the first entry. The zero representation is allowed. Write <span class="math" data-tex="\(e^\perp=1-e\)">\(e^\perp=1-e\)</span> for a projection's complement.</p>
+<p>The trace condition means <span class="math" data-tex="\(\tau(x^*x)=\tau(xx^*)\)">\(\tau(x^*x)=\tau(xx^*)\)</span> for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>; additivity, homogeneity, normality and faithfulness have the meanings fixed in OA-MOD-WG-002. The finite-domain algebra and its linear trace are supplied by WG-003–005. We use the bounded operator kernel, the spectral calculus of OA-MOD-SK-04–09, and the closed-operator polar decomposition of OA-MOD-RD-02. These inputs retain all operator domains. The additional closed graph theorem input is the exact Banach-space theorem that an everywhere defined linear map with closed graph between two Banach spaces is bounded; its open-source statement and specialization are bound in the trace-measure closed graph audit. It does not assert that an arbitrary densely defined closed operator is bounded.</p>
+<p>A closed densely defined linear operator <span class="math" data-tex="\(T:D(T)\subseteq H\to H\)">\(T:D(T)\subseteq H\to H\)</span> is <strong>affiliated</strong> with <span class="math" data-tex="\(M\)">\(M\)</span> if every unitary <span class="math" data-tex="\(u\in M&#x27;\)">\(u\in M&#x27;\)</span> preserves <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> and <span class="math" data-tex="\(Tu\xi=uT\xi\)">\(Tu\xi=uT\xi\)</span> there. An equality of unbounded operators always includes equality of domains. Later, a product or sum with an overline denotes the closure of the ordinary operator on its ordinary domain; its existence will be proved before the notation is used as an algebraic operation.</p>
+<h2 id="projection-geometry-measures-what-is-removed"><span id="oa-mod-mt-02"></span><span id="OA-MOD-MT-02"></span>Projection geometry measures what is removed</h2>
+<p>Two projections <span class="math" data-tex="\(e,f\in M\)">\(e,f\in M\)</span> are equivalent when a partial isometry <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span> satisfies <span class="math" data-tex="\(v^*v=e\)">\(v^*v=e\)</span> and <span class="math" data-tex="\(vv^*=f\)">\(vv^*=f\)</span>. Write <span class="math" data-tex="\(e\precsim f\)">\(e\precsim f\)</span> when <span class="math" data-tex="\(e\)">\(e\)</span> is equivalent to a subprojection of <span class="math" data-tex="\(f\)">\(f\)</span>. The trace condition gives equal traces to equivalent projections, including when the common value is infinite. Consequently</p>
+<span class="math math-display" data-tex="\[
+e\precsim f\quad\Longrightarrow\quad\tau(e)\leq\tau(f).
+\tag{MT.1}
+\]">\[
+e\precsim f\quad\Longrightarrow\quad\tau(e)\leq\tau(f).
+\tag{MT.1}
+\]</span>
+<p><strong>Projection estimates.</strong> For any projections <span class="math" data-tex="\(e,f\)">\(e,f\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(e\vee f)\leq\tau(e)+\tau(f),\qquad
+e\wedge f=0\ \Longrightarrow\ e\precsim f^\perp.
+\tag{MT.2}
+\]">\[
+\tau(e\vee f)\leq\tau(e)+\tau(f),\qquad
+e\wedge f=0\ \Longrightarrow\ e\precsim f^\perp.
+\tag{MT.2}
+\]</span>
+<p>For a countable family <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span>, the first inequality gives</p>
+<span class="math math-display" data-tex="\[
+\tau\!\left(1-\bigwedge_j e_j\right)
+\leq\sum_j\tau(1-e_j).
+\tag{MT.3}
+\]">\[
+\tau\!\left(1-\bigwedge_j e_j\right)
+\leq\sum_j\tau(1-e_j).
+\tag{MT.3}
+\]</span>
+<p><strong>Proof.</strong> The bounded operator <span class="math" data-tex="\((1-e)f\)">\((1-e)f\)</span> belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. Its range closure is <span class="math" data-tex="\((e\vee f-e)H\)">\((e\vee f-e)H\)</span>: projecting the closed span of <span class="math" data-tex="\(eH+fH\)">\(eH+fH\)</span> onto <span class="math" data-tex="\((1-e)H\)">\((1-e)H\)</span> leaves precisely the closure of <span class="math" data-tex="\((1-e)fH\)">\((1-e)fH\)</span>. Its right support is at most <span class="math" data-tex="\(f\)">\(f\)</span>. Polar decomposition and (MT.1) therefore give <span class="math" data-tex="\(\tau(e\vee f-e)\leq\tau(f)\)">\(\tau(e\vee f-e)\leq\tau(f)\)</span>. Add <span class="math" data-tex="\(\tau(e)\)">\(\tau(e)\)</span>, using the orthogonality of the two projections. If <span class="math" data-tex="\(e\wedge f=0\)">\(e\wedge f=0\)</span>, the operator <span class="math" data-tex="\((1-f)e\)">\((1-f)e\)</span> has zero kernel on <span class="math" data-tex="\(eH\)">\(eH\)</span>. Its polar decomposition has initial projection <span class="math" data-tex="\(e\)">\(e\)</span> and final projection at most <span class="math" data-tex="\(1-f\)">\(1-f\)</span>, proving the second assertion. Finite induction and normality for the increasing finite joins prove (MT.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here is a useful consequence with no subtraction of infinite traces. If projections <span class="math" data-tex="\(e,f\)">\(e,f\)</span> have the following property,</p>
+<span class="math math-display" data-tex="\[
+\text{for every }d&gt;0\text{ there is }p\in\operatorname{Proj}(M)
+\text{ with }\tau(p^\perp)&lt;d\text{ and }e\wedge p=f\wedge p,
+\tag{MT.4}
+\]">\[
+\text{for every }d&gt;0\text{ there is }p\in\operatorname{Proj}(M)
+\text{ with }\tau(p^\perp)&lt;d\text{ and }e\wedge p=f\wedge p,
+\tag{MT.4}
+\]</span>
+<p>then <span class="math" data-tex="\(e=f\)">\(e=f\)</span>. Indeed, put <span class="math" data-tex="\(r=e-(e\wedge f)\)">\(r=e-(e\wedge f)\)</span>. A vector in <span class="math" data-tex="\(rH\cap pH\)">\(rH\cap pH\)</span> belongs to <span class="math" data-tex="\((e\wedge p)H=(f\wedge p)H\)">\((e\wedge p)H=(f\wedge p)H\)</span>, and also is orthogonal to <span class="math" data-tex="\((e\wedge f)H\)">\((e\wedge f)H\)</span>, so it is zero. Thus <span class="math" data-tex="\(r\precsim1-p\)">\(r\precsim1-p\)</span>, <span class="math" data-tex="\(\tau(r)&lt;d\)">\(\tau(r)&lt;d\)</span>, and faithfulness gives <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Interchange <span class="math" data-tex="\(e,f\)">\(e,f\)</span>.</p>
+<p>For later cutoffs, if <span class="math" data-tex="\(p_n\)">\(p_n\)</span> increases and <span class="math" data-tex="\(\tau(1-p_n)\to0\)">\(\tau(1-p_n)\to0\)</span>, then <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span> strongly. Its strong supremum <span class="math" data-tex="\(p\)">\(p\)</span> lies in <span class="math" data-tex="\(M\)">\(M\)</span>; <span class="math" data-tex="\(\tau(1-p)\leq\tau(1-p_n)\)">\(\tau(1-p)\leq\tau(1-p_n)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, so faithfulness gives <span class="math" data-tex="\(p=1\)">\(p=1\)</span>.</p>
+<h2 id="two-neighborhood-systems-and-their-estimates"><span id="oa-mod-mt-03"></span><span id="OA-MOD-MT-03"></span>Two neighborhood systems and their estimates</h2>
+<p>For <span class="math" data-tex="\(r,d&gt;0\)">\(r,d&gt;0\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U(r,d)&amp;=\{x\in M:\ \|xp\|&lt;r,\ \tau(1-p)&lt;d
+\text{ for some projection }p\in M\},\\
+V(r,d)&amp;=\{\xi\in H:\ \|p\xi\|&lt;r,\ \tau(1-p)&lt;d
+\text{ for some projection }p\in M\}.
+\end{aligned}
+\tag{MT.5}
+\]">\[
+\begin{aligned}
+U(r,d)&amp;=\{x\in M:\ \|xp\|&lt;r,\ \tau(1-p)&lt;d
+\text{ for some projection }p\in M\},\\
+V(r,d)&amp;=\{\xi\in H:\ \|p\xi\|&lt;r,\ \tau(1-p)&lt;d
+\text{ for some projection }p\in M\}.
+\end{aligned}
+\tag{MT.5}
+\]</span>
+<p>Their translates define the <strong>measure topologies</strong> on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(H\)">\(H\)</span>. The parameters are strictly positive, and the displayed inequalities are strict. These choices remove ambiguity at a spectral atom. Both families are balanced, are monotone in each parameter, and contain norm balls. The estimates below prove the addition and scalar-multiplication axioms; thus they define topological vector spaces.</p>
+<p>For positive parameters,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+U(r,d)^*&amp;=U(r,d),\\
+U(r_1,d_1)+U(r_2,d_2)&amp;\subseteq U(r_1+r_2,d_1+d_2),\\
+U(r_1,d_1)U(r_2,d_2)&amp;\subseteq U(r_1r_2,d_1+d_2),\\
+V(r_1,d_1)+V(r_2,d_2)&amp;\subseteq V(r_1+r_2,d_1+d_2),\\
+U(r_1,d_1)V(r_2,d_2)&amp;\subseteq V(r_1r_2,d_1+d_2).
+\end{aligned}
+\tag{MT.6}
+\]">\[
+\begin{aligned}
+U(r,d)^*&amp;=U(r,d),\\
+U(r_1,d_1)+U(r_2,d_2)&amp;\subseteq U(r_1+r_2,d_1+d_2),\\
+U(r_1,d_1)U(r_2,d_2)&amp;\subseteq U(r_1r_2,d_1+d_2),\\
+V(r_1,d_1)+V(r_2,d_2)&amp;\subseteq V(r_1+r_2,d_1+d_2),\\
+U(r_1,d_1)V(r_2,d_2)&amp;\subseteq V(r_1r_2,d_1+d_2).
+\end{aligned}
+\tag{MT.6}
+\]</span>
+<p><strong>Proof of the adjoint estimate.</strong> Suppose <span class="math" data-tex="\(\|xp\|&lt;r\)">\(\|xp\|&lt;r\)</span>. Choose <span class="math" data-tex="\(c\)">\(c\)</span> strictly between <span class="math" data-tex="\(\|xp\|\)">\(\|xp\|\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span>, and let <span class="math" data-tex="\(s=1_{(c,\infty)}(|x|)\)">\(s=1_{(c,\infty)}(|x|)\)</span>. If <span class="math" data-tex="\(0\ne\eta\in sH\cap pH\)">\(0\ne\eta\in sH\cap pH\)</span>, the scalar spectral integral gives <span class="math" data-tex="\(\|x\eta\|&gt;c\|\eta\|\)">\(\|x\eta\|&gt;c\|\eta\|\)</span>, contradicting the choice of <span class="math" data-tex="\(c\)">\(c\)</span>. Hence <span class="math" data-tex="\(s\wedge p=0\)">\(s\wedge p=0\)</span>, and <span class="math" data-tex="\(\tau(s)\leq\tau(1-p)\)">\(\tau(s)\leq\tau(1-p)\)</span>. If <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span> is its polar decomposition, set <span class="math" data-tex="\(q=1-vsv^*\)">\(q=1-vsv^*\)</span>. Then <span class="math" data-tex="\(\tau(1-q)=\tau(s)\)">\(\tau(1-q)=\tau(s)\)</span> and <span class="math" data-tex="\(\|qx\|\leq c&lt;r\)">\(\|qx\|\leq c&lt;r\)</span>. Therefore <span class="math" data-tex="\(\|x^*q\|&lt;r\)">\(\|x^*q\|&lt;r\)</span>, proving one inclusion. Apply it to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> for equality. This argument also gives a left cutoff with the same trace allowance whenever a right cutoff is given.</p>
+<p><strong>Proof of the algebra estimates.</strong> For sums, intersect the two witnessing projections and use (MT.3). For products, suppose <span class="math" data-tex="\(\|ap\|&lt;r_1\)">\(\|ap\|&lt;r_1\)</span>, <span class="math" data-tex="\(\|bq\|&lt;r_2\)">\(\|bq\|&lt;r_2\)</span> with the corresponding trace bounds. Let <span class="math" data-tex="\(k\)">\(k\)</span> be the projection onto the kernel of <span class="math" data-tex="\((1-p)b\)">\((1-p)b\)</span>. The right support of this operator is <span class="math" data-tex="\(1-k\)">\(1-k\)</span>, and its left support is at most <span class="math" data-tex="\(1-p\)">\(1-p\)</span>. Polar decomposition gives <span class="math" data-tex="\(\tau(1-k)\leq\tau(1-p)\)">\(\tau(1-k)\leq\tau(1-p)\)</span>. On <span class="math" data-tex="\(s=q\wedge k\)">\(s=q\wedge k\)</span>, one has <span class="math" data-tex="\(bs=pbs\)">\(bs=pbs\)</span>, whence</p>
+<span class="math math-display" data-tex="\[
+\|abs\|=\|apbqs\|&lt;r_1r_2,
+\qquad \tau(1-s)&lt;d_1+d_2.
+\]">\[
+\|abs\|=\|apbqs\|&lt;r_1r_2,
+\qquad \tau(1-s)&lt;d_1+d_2.
+\]</span>
+<p><strong>Proof of the vector estimates.</strong> The sum estimate again uses an intersection. To prove the action estimate, take a left cutoff <span class="math" data-tex="\(e\)">\(e\)</span> for <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\|ea\|&lt;r_1\)">\(\|ea\|&lt;r_1\)</span>, and choose <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(\|q\xi\|&lt;r_2\)">\(\|q\xi\|&lt;r_2\)</span>. Let <span class="math" data-tex="\(l\)">\(l\)</span> be the left support of <span class="math" data-tex="\(a(1-q)\)">\(a(1-q)\)</span>. Its right support is at most <span class="math" data-tex="\(1-q\)">\(1-q\)</span>, so <span class="math" data-tex="\(\tau(l)\leq\tau(1-q)\)">\(\tau(l)\leq\tau(1-q)\)</span>. With <span class="math" data-tex="\(s=e\wedge(1-l)\)">\(s=e\wedge(1-l)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+sa\xi=saq\xi,\qquad
+\|sa\xi\|\leq\|ea\|\,\|q\xi\|&lt;r_1r_2,
+\qquad \tau(1-s)&lt;d_1+d_2.
+\]">\[
+sa\xi=saq\xi,\qquad
+\|sa\xi\|\leq\|ea\|\,\|q\xi\|&lt;r_1r_2,
+\qquad \tau(1-s)&lt;d_1+d_2.
+\]</span>
+<p>This proves the last line of (MT.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For scalar multiplication at a fixed <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, norm continuity gives continuity of <span class="math" data-tex="\(z\mapsto zx\)">\(z\mapsto zx\)</span> and <span class="math" data-tex="\(z\mapsto z\xi\)">\(z\mapsto z\xi\)</span>. Continuity jointly in a scalar and a variable follows from balanced neighborhoods and the addition estimate. The countable families <span class="math" data-tex="\(U(2^{-n},2^{-n})\)">\(U(2^{-n},2^{-n})\)</span> and <span class="math" data-tex="\(V(2^{-n},2^{-n})\)">\(V(2^{-n},2^{-n})\)</span> are neighborhood bases.</p>
+<h2 id="separation-and-bounded-sets">Separation and bounded sets</h2>
+<p><strong>The measure topologies are Hausdorff.</strong> To see this first for <span class="math" data-tex="\(H\)">\(H\)</span>, suppose <span class="math" data-tex="\(\xi\in V(2^{-n},2^{-n})\)">\(\xi\in V(2^{-n},2^{-n})\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, witnessed by <span class="math" data-tex="\(q_n\)">\(q_n\)</span>. Put <span class="math" data-tex="\(p_n=\bigwedge_{j\geq n}q_j\)">\(p_n=\bigwedge_{j\geq n}q_j\)</span>. Formula (MT.3) gives <span class="math" data-tex="\(\tau(1-p_n)\leq2^{1-n}\)">\(\tau(1-p_n)\leq2^{1-n}\)</span>; hence <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span> strongly. For every <span class="math" data-tex="\(j\geq n\)">\(j\geq n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|p_n\xi\|=\|p_nq_j\xi\|&lt;2^{-j}.
+\]">\[
+\|p_n\xi\|=\|p_nq_j\xi\|&lt;2^{-j}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(p_n\xi=0\)">\(p_n\xi=0\)</span>, and <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. If <span class="math" data-tex="\(a\)">\(a\)</span> lies in every operator neighborhood, then for each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the last estimate in (MT.6), applied with <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in a suitable norm ball, places <span class="math" data-tex="\(a\xi\)">\(a\xi\)</span> in every vector neighborhood. Hence <span class="math" data-tex="\(a\xi=0\)">\(a\xi=0\)</span> for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>A subset <span class="math" data-tex="\(S\)">\(S\)</span> of either space is <strong>bounded in measure</strong> if every neighborhood of zero absorbs it: for each neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> there is <span class="math" data-tex="\(t_0&gt;0\)">\(t_0&gt;0\)</span> such that <span class="math" data-tex="\(tS\subseteq W\)">\(tS\subseteq W\)</span> whenever <span class="math" data-tex="\(|t|\leq t_0\)">\(|t|\leq t_0\)</span>. In terms of (MT.5), this says that for every <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> there is a finite <span class="math" data-tex="\(R\)">\(R\)</span> such that <span class="math" data-tex="\(S\subseteq U(R,d)\)">\(S\subseteq U(R,d)\)</span>, or <span class="math" data-tex="\(S\subseteq V(R,d)\)">\(S\subseteq V(R,d)\)</span>, respectively. Indeed, scaling changes only the first parameter. Singletons and norm-bounded sets are bounded in measure.</p>
+<p>Multiplication and the action are jointly continuous and uniformly continuous on every product of two bounded-in-measure sets. Here is the quantitative point. If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> range over such fixed sets, choose <span class="math" data-tex="\(R_1,R_2\)">\(R_1,R_2\)</span> giving cutoffs with trace allowance <span class="math" data-tex="\(d/8\)">\(d/8\)</span>. For perturbations <span class="math" data-tex="\(h,k\in U(s,d/8)\)">\(h,k\in U(s,d/8)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(a+h)(b+k)-ab=ak+hb+hk.
+\]">\[
+(a+h)(b+k)-ab=ak+hb+hk.
+\]</span>
+<p>By (MT.6), the right side belongs to</p>
+<span class="math math-display" data-tex="\[
+U(R_1s+R_2s+s^2,\,3d/4).
+\tag{MT.7}
+\]">\[
+U(R_1s+R_2s+s^2,\,3d/4).
+\tag{MT.7}
+\]</span>
+<p>Choose <span class="math" data-tex="\(s\)">\(s\)</span> with the first parameter smaller than the desired <span class="math" data-tex="\(r\)">\(r\)</span>. The same calculation, with <span class="math" data-tex="\(b,k\)">\(b,k\)</span> replaced by <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> and the appropriate vector neighborhoods, proves uniform continuity of the action. Fixed pairs are covered by singleton sets. Involution and both additions are uniformly continuous on the whole spaces.</p>
+<p>Every Cauchy sequence is bounded in measure. For a prescribed <span class="math" data-tex="\(d\)">\(d\)</span>, its tail differs from one term by elements of <span class="math" data-tex="\(U(1,d/2)\)">\(U(1,d/2)\)</span>, or <span class="math" data-tex="\(V(1,d/2)\)">\(V(1,d/2)\)</span>. Absorb that one term with trace allowance <span class="math" data-tex="\(d/2\)">\(d/2\)</span>, and then absorb the finitely many terms before the tail by increasing the first parameter. This observation is essential: continuity alone would not justify multiplying two arbitrary Cauchy sequences.</p>
+<h2 id="completing-the-algebra-and-its-representation-together"><span id="oa-mod-mt-05"></span><span id="OA-MOD-MT-05"></span>Completing the algebra and its representation together</h2>
+<p>Let <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> and <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> be the Hausdorff completions of the two additive uniform spaces just constructed. One explicit construction uses Cauchy sequences, with <span class="math" data-tex="\((x_n)\)">\((x_n)\)</span> and <span class="math" data-tex="\((y_n)\)">\((y_n)\)</span> equivalent when <span class="math" data-tex="\(x_n-y_n\to0\)">\(x_n-y_n\to0\)</span> in measure. Constant sequences embed the original spaces injectively by MT-04. Neighborhoods of a class are obtained by requiring an approximating sequence eventually to lie in a prescribed neighborhood, and allowing a smaller neighborhood before taking its closure. The sum estimate in (MT.6) shows that this definition is independent of representatives and has the same uniform structure on the embedded original space.</p>
+<p>For completeness of this construction, choose a subsequence from a Cauchy sequence of classes whose successive differences lie in neighborhoods with both parameters at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. Choose representatives in the original space with errors in the same neighborhoods. Their successive differences then have summable parameters. Finite addition in (MT.6) proves that the representatives are Cauchy and that their class is the limit of the selected subsequence, hence of the original Cauchy sequence. A Cauchy net reduces to this case by choosing, for each member of the countable neighborhood base, an index after which all its differences lie in that neighborhood. The resulting Cauchy sequence has the same limit as the net. Thus the construction is a full uniform completion, not merely a sequential closure.</p>
+<p>The operations are defined on representatives:</p>
+<span class="math math-display" data-tex="\[
+[a_n]^*=[a_n^*],\quad
+[a_n]+[b_n]=[a_n+b_n],\quad
+[a_n][b_n]=[a_nb_n],\quad
+[a_n][\xi_n]=[a_n\xi_n].
+\tag{MT.8}
+\]">\[
+[a_n]^*=[a_n^*],\quad
+[a_n]+[b_n]=[a_n+b_n],\quad
+[a_n][b_n]=[a_nb_n],\quad
+[a_n][\xi_n]=[a_n\xi_n].
+\tag{MT.8}
+\]</span>
+<p>MT-04 proves that these are Cauchy sequences and are unchanged by changing representatives. For example, the difference of two representative products is
+<span class="math" data-tex="\((a_n-a&#x27;_n)b_n+a&#x27;_n(b_n-b&#x27;_n)\)">\((a_n-a&#x27;_n)b_n+a&#x27;_n(b_n-b&#x27;_n)\)</span>; each factor sequence is bounded in measure and (MT.7) makes the difference tend to zero. The vector action has the identical argument with its proved vector estimate. Addition, associativity, distributivity, the star laws and the module identity now follow term by term before passage to equivalence classes. The identity of <span class="math" data-tex="\(M\)">\(M\)</span> remains the identity of <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> and of its action on <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>.</p>
+<p>All five operations retain their continuity properties: the star and additions are uniformly continuous everywhere, and multiplication and action are uniformly continuous on products of sets bounded in measure in the completed spaces. To check the latter assertion without assuming bounded representatives, fix a target neighborhood and a bounded set in the completion. Choose its uniform cutoff bound with a smaller trace allowance. By density, each of its elements can be approximated within one still smaller neighborhood by an element of the original space. These approximants have one common enlarged cutoff bound, by the addition estimate. Apply (MT.7) to them and let the approximation error tend to zero, reserving a smaller first and second parameter before taking closures. This proves precisely the desired uniform estimate for the completed bounded sets.</p>
+<p>Norm convergence in <span class="math" data-tex="\(M\)">\(M\)</span> or <span class="math" data-tex="\(H\)">\(H\)</span> implies convergence in measure, so norm limits that already exist agree with their limits in the completion. Elements of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> act continuously on <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>: for <span class="math" data-tex="\(b\in M&#x27;\)">\(b\in M&#x27;\)</span>, <span class="math" data-tex="\(p b\xi=b p\xi\)">\(p b\xi=b p\xi\)</span>, and hence <span class="math" data-tex="\(bV(r,d)\subseteq V(\|b\|r,d)\)">\(bV(r,d)\subseteq V(\|b\|r,d)\)</span> when <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>; the zero case is immediate. Their action commutes with <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>, first on the original spaces and then by density and continuity.</p>
+<h2 id="bounded-pieces-of-an-element-of-the-completion">Bounded pieces of an element of the completion</h2>
+<p><strong>Cutoff theorem.</strong> Given <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span>, there are increasing projections <span class="math" data-tex="\(p_n\in M\)">\(p_n\in M\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\tau(1-p_n)\longrightarrow0,\qquad ap_n\in M.
+\tag{MT.9}
+\]">\[
+\tau(1-p_n)\longrightarrow0,\qquad ap_n\in M.
+\tag{MT.9}
+\]</span>
+<p>In particular, a bounded piece can be found with any prescribed positive trace defect.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(a_n\in M\)">\(a_n\in M\)</span> converging to <span class="math" data-tex="\(a\)">\(a\)</span>, and pass to a subsequence for which <span class="math" data-tex="\(a_{n+1}-a_n\in U(2^{-n},2^{-n})\)">\(a_{n+1}-a_n\in U(2^{-n},2^{-n})\)</span>. Take witnessing projections <span class="math" data-tex="\(q_n\)">\(q_n\)</span>, and set <span class="math" data-tex="\(p_n=\bigwedge_{j\geq n}q_j\)">\(p_n=\bigwedge_{j\geq n}q_j\)</span>. The trace defect is at most <span class="math" data-tex="\(2^{1-n}\)">\(2^{1-n}\)</span>, and <span class="math" data-tex="\(p_n\)">\(p_n\)</span> increases. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a_kp_n=a_np_n+\sum_{j=n}^{k-1}(a_{j+1}-a_j)p_n
+\qquad(k&gt;n).
+\tag{MT.10}
+\]">\[
+a_kp_n=a_np_n+\sum_{j=n}^{k-1}(a_{j+1}-a_j)p_n
+\qquad(k&gt;n).
+\tag{MT.10}
+\]</span>
+<p>The summands have norms less than <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>, so the series converges in operator norm to some <span class="math" data-tex="\(c_n\in M\)">\(c_n\in M\)</span>. Continuity of multiplication in the completion gives <span class="math" data-tex="\(a_kp_n\to ap_n\)">\(a_kp_n\to ap_n\)</span> in measure, while norm convergence gives the measure limit <span class="math" data-tex="\(c_n\)">\(c_n\)</span>. Separation proves <span class="math" data-tex="\(ap_n=c_n\)">\(ap_n=c_n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a projection <span class="math" data-tex="\(p\)">\(p\)</span>, membership <span class="math" data-tex="\(ap\in M\)">\(ap\in M\)</span> means equality in <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> to an actual bounded operator. It is not a formal statement that the product of an unbounded symbol and a projection is always bounded. Also, <span class="math" data-tex="\(p_n\to1\)">\(p_n\to1\)</span> in measure whenever <span class="math" data-tex="\(\tau(1-p_n)\to0\)">\(\tau(1-p_n)\to0\)</span>: the complement is annihilated on <span class="math" data-tex="\(p_n\)">\(p_n\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+ap_n\longrightarrow a\quad\text{in measure}.
+\tag{MT.11}
+\]">\[
+ap_n\longrightarrow a\quad\text{in measure}.
+\tag{MT.11}
+\]</span>
+<h2 id="closed-graphs-detected-outside-small-defects"><span id="oa-mod-mt-07"></span><span id="OA-MOD-MT-07"></span>Closed graphs detected outside small defects</h2>
+<p>We first record the promised closed graph specialization. If a closed operator <span class="math" data-tex="\(T\)">\(T\)</span> has <span class="math" data-tex="\(eH\subseteq D(T)\)">\(eH\subseteq D(T)\)</span>, define <span class="math" data-tex="\(A:H\to H\)">\(A:H\to H\)</span> by <span class="math" data-tex="\(A\xi=T(e\xi)\)">\(A\xi=T(e\xi)\)</span>. Its graph is the inverse image of the closed graph of <span class="math" data-tex="\(T\)">\(T\)</span> under the continuous map <span class="math" data-tex="\((\xi,\eta)\mapsto(e\xi,\eta)\)">\((\xi,\eta)\mapsto(e\xi,\eta)\)</span>. It is therefore closed, and the exact Banach closed graph theorem in MT-01 makes <span class="math" data-tex="\(A\)">\(A\)</span> bounded. If <span class="math" data-tex="\(T\)">\(T\)</span> is affiliated and <span class="math" data-tex="\(e\in M\)">\(e\in M\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> commutes with every unitary of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>; the four-unitary span and bicommutant theorem give</p>
+<span class="math math-display" data-tex="\[
+eH\subseteq D(T)\quad\Longrightarrow\quad Te\in M.
+\tag{MT.12}
+\]">\[
+eH\subseteq D(T)\quad\Longrightarrow\quad Te\in M.
+\tag{MT.12}
+\]</span>
+<p>For a closed densely defined affiliated operator <span class="math" data-tex="\(T\)">\(T\)</span>, its graph projection <span class="math" data-tex="\(g_T\)">\(g_T\)</span> belongs to <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span>. Indeed, <span class="math" data-tex="\(\operatorname{graph}(T)\)">\(\operatorname{graph}(T)\)</span> is invariant under both <span class="math" data-tex="\(\operatorname{diag}(u,u)\)">\(\operatorname{diag}(u,u)\)</span> and its inverse for every unitary <span class="math" data-tex="\(u\in M&#x27;\)">\(u\in M&#x27;\)</span>. It is a reducing subspace for these unitaries, so its orthogonal projection commutes with them. Each of the four matrix entries then belongs to <span class="math" data-tex="\((M&#x27;)&#x27;=M\)">\((M&#x27;)&#x27;=M\)</span>.</p>
+<p>For clarity, the projection itself is determined by the closed polar decomposition. Write <span class="math" data-tex="\(h=|T|\)">\(h=|T|\)</span>, <span class="math" data-tex="\(T=vh\)">\(T=vh\)</span>,</p>
+<span class="math math-display" data-tex="\[
+c=(1+h^2)^{-1/2},\qquad b=Tc=v h(1+h^2)^{-1/2}.
+\]">\[
+c=(1+h^2)^{-1/2},\qquad b=Tc=v h(1+h^2)^{-1/2}.
+\]</span>
+<p>Both <span class="math" data-tex="\(c,b\)">\(c,b\)</span> are bounded, <span class="math" data-tex="\(cH=D(T)\)">\(cH=D(T)\)</span>, and <span class="math" data-tex="\(c^2+b^*b=1\)">\(c^2+b^*b=1\)</span>. The map <span class="math" data-tex="\(W\xi=(c\xi,b\xi)\)">\(W\xi=(c\xi,b\xi)\)</span> is therefore an isometry onto <span class="math" data-tex="\(\operatorname{graph}(T)\)">\(\operatorname{graph}(T)\)</span>. Onto follows because for <span class="math" data-tex="\(\eta\in D(h)\)">\(\eta\in D(h)\)</span>, <span class="math" data-tex="\((1+h^2)^{1/2}\eta\in H\)">\((1+h^2)^{1/2}\eta\in H\)</span>, and applying <span class="math" data-tex="\(W\)">\(W\)</span> to that vector gives <span class="math" data-tex="\((\eta,T\eta)\)">\((\eta,T\eta)\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+g_T=WW^*=\begin{pmatrix}c^2&amp;cb^*\\bc&amp;bb^*\end{pmatrix}.
+\tag{MT.13}
+\]">\[
+g_T=WW^*=\begin{pmatrix}c^2&amp;cb^*\\bc&amp;bb^*\end{pmatrix}.
+\tag{MT.13}
+\]</span>
+<p>Every entry in this formula is a product of bounded operators. No unbounded matrix product is left implicit.</p>
+<p>On positive matrices define <span class="math" data-tex="\(\tau_2(X)=\tau(X_{11})+\tau(X_{22})\)">\(\tau_2(X)=\tau(X_{11})+\tau(X_{22})\)</span>. Additivity and normality follow on the two diagonal entries. Faithfulness follows because zero diagonal quadratic forms force a positive matrix's square root to vanish on both coordinate spaces. Finally
+<span class="math" data-tex="\(\tau_2(Y^*Y)=\sum_{i,j}\tau(Y_{ij}^*Y_{ij})
+=\sum_{i,j}\tau(Y_{ij}Y_{ij}^*)=\tau_2(YY^*)\)">\(\tau_2(Y^*Y)=\sum_{i,j}\tau(Y_{ij}^*Y_{ij})
+=\sum_{i,j}\tau(Y_{ij}Y_{ij}^*)=\tau_2(YY^*)\)</span>.
+This trace is also semifinite. To see this using the finite-domain definition in WG-002–003, write <span class="math" data-tex="\(E_{ij}(x)\)">\(E_{ij}(x)\)</span> for the matrix with entry <span class="math" data-tex="\(x\)">\(x\)</span> in position <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> and zero elsewhere. If <span class="math" data-tex="\(x\in\mathfrak n_\tau\)">\(x\in\mathfrak n_\tau\)</span>, then <span class="math" data-tex="\(E_{ij}(x)^*E_{ij}(x)=E_{jj}(x^*x)\)">\(E_{ij}(x)^*E_{ij}(x)=E_{jj}(x^*x)\)</span> has finite <span class="math" data-tex="\(\tau_2\)">\(\tau_2\)</span>-trace, so <span class="math" data-tex="\(E_{ij}(x)\in\mathfrak n_{\tau_2}\)">\(E_{ij}(x)\in\mathfrak n_{\tau_2}\)</span>. For any fixed row index <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E_{ki}(x)^*E_{kj}(y)=E_{ij}(x^*y)
+\qquad(x,y\in\mathfrak n_\tau).
+\]">\[
+E_{ki}(x)^*E_{kj}(y)=E_{ij}(x^*y)
+\qquad(x,y\in\mathfrak n_\tau).
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\mathfrak m_{\tau_2}\)">\(\mathfrak m_{\tau_2}\)</span> contains every matrix with entries in <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>. These matrices are ultraweakly dense in <span class="math" data-tex="\(M_2(M)\)">\(M_2(M)\)</span>: the finite matrix-entry maps are ultraweakly continuous, and <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> is ultraweakly dense in <span class="math" data-tex="\(M\)">\(M\)</span> by semifiniteness. Thus <span class="math" data-tex="\(\tau_2\)">\(\tau_2\)</span> is semifinite in precisely the sense of WG-002. The projection estimates and the projection uniqueness assertion of MT-02 therefore apply in this matrix algebra. Their proofs themselves only need faithfulness, normality and the trace identity.</p>
+<p><strong>Graph uniqueness theorem.</strong> Let <span class="math" data-tex="\(S,T\)">\(S,T\)</span> be closed densely defined affiliated operators. Suppose that for every <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> a projection <span class="math" data-tex="\(p\)">\(p\)</span> exists with <span class="math" data-tex="\(\tau(1-p)&lt;d\)">\(\tau(1-p)&lt;d\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+pH\cap D(S)\cap S^{-1}(pH)
+&amp;=pH\cap D(T)\cap T^{-1}(pH)=D_p,\\
+S\xi&amp;=T\xi\qquad(\xi\in D_p).
+\end{aligned}
+\tag{MT.14}
+\]">\[
+\begin{aligned}
+pH\cap D(S)\cap S^{-1}(pH)
+&amp;=pH\cap D(T)\cap T^{-1}(pH)=D_p,\\
+S\xi&amp;=T\xi\qquad(\xi\in D_p).
+\end{aligned}
+\tag{MT.14}
+\]</span>
+<p>Then <span class="math" data-tex="\(S=T\)">\(S=T\)</span>. In particular it suffices that, for every <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, such a <span class="math" data-tex="\(p\)">\(p\)</span> has <span class="math" data-tex="\(pH\subseteq D(S)\cap D(T)\)">\(pH\subseteq D(S)\cap D(T)\)</span> and <span class="math" data-tex="\(Sp=Tp\)">\(Sp=Tp\)</span>.</p>
+<p><strong>Proof.</strong> Formula (MT.14) says exactly that</p>
+<span class="math math-display" data-tex="\[
+g_S\wedge\operatorname{diag}(p,p)
+=g_T\wedge\operatorname{diag}(p,p).
+\]">\[
+g_S\wedge\operatorname{diag}(p,p)
+=g_T\wedge\operatorname{diag}(p,p).
+\]</span>
+<p>The complement of the diagonal projection has <span class="math" data-tex="\(\tau_2\)">\(\tau_2\)</span>-trace less than <span class="math" data-tex="\(2d\)">\(2d\)</span>. Apply (MT.4) in the matrix algebra to obtain <span class="math" data-tex="\(g_S=g_T\)">\(g_S=g_T\)</span>, hence equality of the graphs. The stated special case implies (MT.14), since the two restrictions on all of <span class="math" data-tex="\(pH\)">\(pH\)</span> already agree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-operator-associated-to-a-completion-element"><span id="oa-mod-mt-08"></span><span id="OA-MOD-MT-08"></span>The operator associated to a completion element</h2>
+<p>For <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(T_a)&amp;=\{\xi\in H:a\xi\text{ belongs to the embedded copy of }H
+\text{ in }\widehat H\},\\
+T_a\xi&amp;=a\xi\quad(\xi\in D(T_a)),
+\end{aligned}
+\tag{MT.15}
+\]">\[
+\begin{aligned}
+D(T_a)&amp;=\{\xi\in H:a\xi\text{ belongs to the embedded copy of }H
+\text{ in }\widehat H\},\\
+T_a\xi&amp;=a\xi\quad(\xi\in D(T_a)),
+\end{aligned}
+\tag{MT.15}
+\]</span>
+<p>where the second equality is interpreted using that injective embedding.</p>
+<p><strong>Realization theorem.</strong> The operator <span class="math" data-tex="\(T_a\)">\(T_a\)</span> is closed, densely defined and affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>. It has no proper closed affiliated extension. Moreover, <span class="math" data-tex="\(a\mapsto T_a\)">\(a\mapsto T_a\)</span> is injective and extends the original representation of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(ap\in M\)">\(ap\in M\)</span>, then for <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span> the module identity gives <span class="math" data-tex="\(a(p\xi)=(ap)\xi\in H\)">\(a(p\xi)=(ap)\xi\in H\)</span>. Thus <span class="math" data-tex="\(pH\subseteq D(T_a)\)">\(pH\subseteq D(T_a)\)</span> and <span class="math" data-tex="\(T_ap=ap\)">\(T_ap=ap\)</span>. The projections of MT-06 increase strongly to one, proving density.</p>
+<p>If <span class="math" data-tex="\(\xi_n\in D(T_a)\)">\(\xi_n\in D(T_a)\)</span>, <span class="math" data-tex="\(\xi_n\to\xi\)">\(\xi_n\to\xi\)</span> in Hilbert norm and <span class="math" data-tex="\(T_a\xi_n\to\eta\)">\(T_a\xi_n\to\eta\)</span> in Hilbert norm, both convergences hold in <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>. Continuity of multiplication by the fixed element <span class="math" data-tex="\(a\)">\(a\)</span> gives <span class="math" data-tex="\(a\xi_n\to a\xi\)">\(a\xi_n\to a\xi\)</span> there. Separation therefore gives <span class="math" data-tex="\(a\xi=\eta\)">\(a\xi=\eta\)</span>; this is exactly <span class="math" data-tex="\(\xi\in D(T_a)\)">\(\xi\in D(T_a)\)</span> and <span class="math" data-tex="\(T_a\xi=\eta\)">\(T_a\xi=\eta\)</span>. Hence <span class="math" data-tex="\(T_a\)">\(T_a\)</span> is closed.</p>
+<p>For a unitary <span class="math" data-tex="\(u\in M&#x27;\)">\(u\in M&#x27;\)</span>, MT-05 gives <span class="math" data-tex="\(a(u\xi)=u(a\xi)\)">\(a(u\xi)=u(a\xi)\)</span>. Both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u^*\)">\(u^*\)</span> preserve the original <span class="math" data-tex="\(H\)">\(H\)</span> inside <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>, so they preserve <span class="math" data-tex="\(D(T_a)\)">\(D(T_a)\)</span> and commute with its action. This proves affiliation. If a closed affiliated <span class="math" data-tex="\(S\)">\(S\)</span> extends <span class="math" data-tex="\(T_a\)">\(T_a\)</span>, then on the projections in (MT.9), <span class="math" data-tex="\(Sp=T_ap\)">\(Sp=T_ap\)</span>; MT-07 gives <span class="math" data-tex="\(S=T_a\)">\(S=T_a\)</span>.</p>
+<p>Finally, if <span class="math" data-tex="\(T_a=T_b\)">\(T_a=T_b\)</span>, choose cutoffs for <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with arbitrarily small trace defect and intersect them. On their intersection <span class="math" data-tex="\(p\)">\(p\)</span>, the bounded operators <span class="math" data-tex="\(ap=T_ap\)">\(ap=T_ap\)</span> and <span class="math" data-tex="\(bp=T_bp\)">\(bp=T_bp\)</span> agree. Select such <span class="math" data-tex="\(p_n\)">\(p_n\)</span> with defects tending to zero. Then <span class="math" data-tex="\((a-b)p_n=0\)">\((a-b)p_n=0\)</span>, and continuity together with <span class="math" data-tex="\(p_n\to1\)">\(p_n\to1\)</span> in measure gives <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. For <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, the original action sends all <span class="math" data-tex="\(H\)">\(H\)</span> into itself and (MT.15) is exactly the bounded operator <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="adjoint-addition-and-multiplication-keep-the-domains"><span id="OA-MOD-MT-09"></span><span id="oa-mod-mt-09"></span>Adjoint, addition and multiplication keep the domains</h2>
+<p>For all <span class="math" data-tex="\(a,b\in\widehat M\)">\(a,b\in\widehat M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T_{a^*}=T_a^*,\qquad
+T_{a+b}=\overline{T_a+T_b},\qquad
+T_{ab}=\overline{T_aT_b}.
+\tag{MT.16}
+\]">\[
+T_{a^*}=T_a^*,\qquad
+T_{a+b}=\overline{T_a+T_b},\qquad
+T_{ab}=\overline{T_aT_b}.
+\tag{MT.16}
+\]</span>
+<p>The ordinary domains on the right are, respectively,
+<span class="math" data-tex="\(D(T_a)\cap D(T_b)\)">\(D(T_a)\cap D(T_b)\)</span> and
+<span class="math" data-tex="\(\{\xi\in D(T_b):T_b\xi\in D(T_a)\}\)">\(\{\xi\in D(T_b):T_b\xi\in D(T_a)\}\)</span>.
+Both are dense, and their operators are closable.</p>
+<p><strong>Adjoints.</strong> Put <span class="math" data-tex="\(T=T_a\)">\(T=T_a\)</span>. For its spectral projections <span class="math" data-tex="\(q_n=1_{[0,n]}(|T|)\)">\(q_n=1_{[0,n]}(|T|)\)</span>, the closed polar calculus gives <span class="math" data-tex="\(q_n\uparrow1\)">\(q_n\uparrow1\)</span>, <span class="math" data-tex="\(Tq_n\in M\)">\(Tq_n\in M\)</span>, and <span class="math" data-tex="\(Tq_n\xi\to T\xi\)">\(Tq_n\xi\to T\xi\)</span> for every <span class="math" data-tex="\(\xi\in D(T)\)">\(\xi\in D(T)\)</span>. These are graph cutoffs; no assertion about their trace defects is needed. Since <span class="math" data-tex="\(a q_n\)">\(a q_n\)</span> acts on every vector as the bounded operator <span class="math" data-tex="\(Tq_n\)">\(Tq_n\)</span>, injectivity in MT-08 gives <span class="math" data-tex="\(a q_n=Tq_n\)">\(a q_n=Tq_n\)</span> in <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>.</p>
+<p>Choose a projection <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(a^*p\in M\)">\(a^*p\in M\)</span> and small trace defect. For <span class="math" data-tex="\(\eta\in pH\)">\(\eta\in pH\)</span> and <span class="math" data-tex="\(\xi\in D(T)\)">\(\xi\in D(T)\)</span>, use the bounded adjoint identity and (MT.8):</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle Tq_n\xi,\eta\rangle
+&amp;=\langle\xi,(Tq_n)^*p\eta\rangle\\
+&amp;=\langle\xi,q_n(a^*p)\eta\rangle
+\longrightarrow\langle\xi,(a^*p)\eta\rangle.
+\end{aligned}
+\tag{MT.17}
+\]">\[
+\begin{aligned}
+\langle Tq_n\xi,\eta\rangle
+&amp;=\langle\xi,(Tq_n)^*p\eta\rangle\\
+&amp;=\langle\xi,q_n(a^*p)\eta\rangle
+\longrightarrow\langle\xi,(a^*p)\eta\rangle.
+\end{aligned}
+\tag{MT.17}
+\]</span>
+<p>Thus <span class="math" data-tex="\(pH\subseteq D(T^*)\)">\(pH\subseteq D(T^*)\)</span> and <span class="math" data-tex="\(T^*p=a^*p=T_{a^*}p\)">\(T^*p=a^*p=T_{a^*}p\)</span>. In particular <span class="math" data-tex="\(T^*\)">\(T^*\)</span> is densely defined, even directly from these cutoffs. It is closed and affiliated: the adjoint test transfers the commutation with each unitary of <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>. Graph uniqueness proves <span class="math" data-tex="\(T^*=T_{a^*}\)">\(T^*=T_{a^*}\)</span>.</p>
+<p><strong>Sums.</strong> The module identity gives <span class="math" data-tex="\(T_a+T_b\subseteq T_{a+b}\)">\(T_a+T_b\subseteq T_{a+b}\)</span>. The sum is therefore closable. Intersect cutoffs for <span class="math" data-tex="\(a,b\)">\(a,b\)</span>; their ranges lie in its domain, so this domain is dense. The closure is affiliated because its graph is the closure of a graph invariant under the diagonal commutant unitaries. On the intersected cutoffs it agrees with <span class="math" data-tex="\(T_{a+b}\)">\(T_{a+b}\)</span>. MT-07 gives equality.</p>
+<p><strong>Products.</strong> Again the module identity gives <span class="math" data-tex="\(T_aT_b\subseteq T_{ab}\)">\(T_aT_b\subseteq T_{ab}\)</span>. Choose <span class="math" data-tex="\(p,q\)">\(p,q\)</span> with small trace defects and <span class="math" data-tex="\(ap,bq\in M\)">\(ap,bq\in M\)</span>, and put <span class="math" data-tex="\(c=bq\in M\)">\(c=bq\in M\)</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span> be the kernel projection of <span class="math" data-tex="\((1-p)c\)">\((1-p)c\)</span>, and put <span class="math" data-tex="\(s=q\wedge k\)">\(s=q\wedge k\)</span>. As in MT-03,</p>
+<span class="math math-display" data-tex="\[
+\tau(1-s)\leq\tau(1-q)+\tau(1-p).
+\]">\[
+\tau(1-s)\leq\tau(1-q)+\tau(1-p).
+\]</span>
+<p>For <span class="math" data-tex="\(\xi\in sH\)">\(\xi\in sH\)</span>, <span class="math" data-tex="\(\xi\in D(T_b)\)">\(\xi\in D(T_b)\)</span>, <span class="math" data-tex="\(T_b\xi=c\xi\in pH\subseteq D(T_a)\)">\(T_b\xi=c\xi\in pH\subseteq D(T_a)\)</span>, and <span class="math" data-tex="\(T_aT_b\xi=T_{ab}\xi\)">\(T_aT_b\xi=T_{ab}\xi\)</span>. Arbitrarily small defects prove density of the product domain. The inclusion proves closability; graph invariance proves affiliation of the closure. Apply graph uniqueness once more. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This establishes the algebra laws for closed sums and products without treating three unbounded factors as if they were everywhere defined. Associativity belongs first to <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>, where it was proved using bounded Cauchy representatives; (MT.16) transports it to the closed operators.</p>
+<h2 id="increasing-domains-determine-a-unique-closed-operator"><span id="oa-mod-mt-10"></span><span id="OA-MOD-MT-10"></span>Increasing domains determine a unique closed operator</h2>
+<p><strong>Increasing-domain theorem.</strong> Suppose <span class="math" data-tex="\(p_n\in M\)">\(p_n\in M\)</span> increases, <span class="math" data-tex="\(\tau(1-p_n)\to0\)">\(\tau(1-p_n)\to0\)</span>, and a linear operator <span class="math" data-tex="\(A\)">\(A\)</span> is defined on</p>
+<span class="math math-display" data-tex="\[
+D_0=\bigcup_n p_nH.
+\]">\[
+D_0=\bigcup_n p_nH.
+\]</span>
+<p>Assume that each everywhere defined map <span class="math" data-tex="\(Ap_n:H\to H\)">\(Ap_n:H\to H\)</span> is a bounded member of <span class="math" data-tex="\(M\)">\(M\)</span>. Then <span class="math" data-tex="\(A\)">\(A\)</span> is closable, and there is a unique <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\overline A=T_a.
+\tag{MT.18}
+\]">\[
+\overline A=T_a.
+\tag{MT.18}
+\]</span>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(a_n=Ap_n\)">\(a_n=Ap_n\)</span>. Whenever <span class="math" data-tex="\(m,n\geq k\)">\(m,n\geq k\)</span>,
+<span class="math" data-tex="\((a_m-a_n)p_k=0\)">\((a_m-a_n)p_k=0\)</span>. Since <span class="math" data-tex="\(\tau(1-p_k)\to0\)">\(\tau(1-p_k)\to0\)</span>, this makes <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> Cauchy in measure, regardless of how quickly the norms <span class="math" data-tex="\(\|a_n\|\)">\(\|a_n\|\)</span> grow. Let <span class="math" data-tex="\(a\)">\(a\)</span> be its limit in <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>.</p>
+<p>If <span class="math" data-tex="\(\xi\in p_kH\)">\(\xi\in p_kH\)</span>, then <span class="math" data-tex="\(a_n\xi=A\xi\)">\(a_n\xi=A\xi\)</span> for all <span class="math" data-tex="\(n\geq k\)">\(n\geq k\)</span>. Continuity of the action gives <span class="math" data-tex="\(a\xi=A\xi\)">\(a\xi=A\xi\)</span> in <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>. The right side belongs to <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(A\subseteq T_a\)">\(A\subseteq T_a\)</span>. Therefore <span class="math" data-tex="\(A\)">\(A\)</span> is closable and its closure is densely defined, because <span class="math" data-tex="\(p_n\uparrow1\)">\(p_n\uparrow1\)</span>.</p>
+<p>The domain <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is invariant under each unitary <span class="math" data-tex="\(u\in M&#x27;\)">\(u\in M&#x27;\)</span>, since every <span class="math" data-tex="\(p_n\)">\(p_n\)</span> commutes with <span class="math" data-tex="\(u\)">\(u\)</span>. For <span class="math" data-tex="\(\xi\in p_nH\)">\(\xi\in p_nH\)</span>,
+<span class="math" data-tex="\(Au\xi=Ap_nu\xi=uAp_n\xi=uA\xi\)">\(Au\xi=Ap_nu\xi=uAp_n\xi=uA\xi\)</span>.
+This proves affiliation of the graph closure. It agrees with <span class="math" data-tex="\(T_a\)">\(T_a\)</span> on every <span class="math" data-tex="\(p_nH\)">\(p_nH\)</span>, and graph uniqueness gives (MT.18). Injectivity in MT-08 gives uniqueness of <span class="math" data-tex="\(a\)">\(a\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The compatibility here is carried by the single operator <span class="math" data-tex="\(A\)">\(A\)</span>. If bounded operators <span class="math" data-tex="\(c_n\)">\(c_n\)</span> are supplied instead, the sufficient compatibility condition is <span class="math" data-tex="\(c_np_n=c_n\)">\(c_np_n=c_n\)</span> and <span class="math" data-tex="\(c_mp_n=c_n\)">\(c_mp_n=c_n\)</span> for <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>; then <span class="math" data-tex="\(A\xi=c_n\xi\)">\(A\xi=c_n\xi\)</span> for <span class="math" data-tex="\(\xi\in p_nH\)">\(\xi\in p_nH\)</span> is well defined and the theorem applies.</p>
+<h2 id="spectral-tails-characterize-the-resulting-operators"><span id="oa-mod-mt-11"></span><span id="OA-MOD-MT-11"></span>Spectral tails characterize the resulting operators</h2>
+<p>A closed densely defined affiliated operator is called <strong><span class="math" data-tex="\(\tau\)">\(\tau\)</span>-measurable</strong> when it is <span class="math" data-tex="\(T_a\)">\(T_a\)</span> for some <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span>. Write <span class="math" data-tex="\(S(M,\tau)\)">\(S(M,\tau)\)</span> for this set of concrete operators. The following characterization also makes sense without referring to the completion.</p>
+<p><strong>Spectral-tail theorem.</strong> For a closed densely defined affiliated <span class="math" data-tex="\(T\)">\(T\)</span>, with <span class="math" data-tex="\(h=|T|\)">\(h=|T|\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(T\in S(M,\tau)\)">\(T\in S(M,\tau)\)</span>.</li>
+<li>For every <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, some projection <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span> has <span class="math" data-tex="\(\tau(1-p)&lt;d\)">\(\tau(1-p)&lt;d\)</span> and <span class="math" data-tex="\(pH\subseteq D(T)\)">\(pH\subseteq D(T)\)</span>.</li>
+<li><span class="math" data-tex="\(\tau(1_{(R,\infty)}(h))\to0\)">\(\tau(1_{(R,\infty)}(h))\to0\)</span> as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>.</li>
+<li><span class="math" data-tex="\(\tau(1_{(R_0,\infty)}(h))&lt;\infty\)">\(\tau(1_{(R_0,\infty)}(h))&lt;\infty\)</span> for at least one finite <span class="math" data-tex="\(R_0\geq0\)">\(R_0\geq0\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> The implication 1 to 2 follows from MT-06 and MT-08. For 2 to 3, the closed graph specialization makes <span class="math" data-tex="\(Tp\)">\(Tp\)</span> bounded. If <span class="math" data-tex="\(R&gt;\|Tp\|\)">\(R&gt;\|Tp\|\)</span>, the spectral projection <span class="math" data-tex="\(s=1_{(R,\infty)}(h)\)">\(s=1_{(R,\infty)}(h)\)</span> has zero intersection with <span class="math" data-tex="\(p\)">\(p\)</span>: a nonzero vector in the intersection lies in <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> and has squared spectral integral strictly greater than <span class="math" data-tex="\(R^2\)">\(R^2\)</span> times its squared norm, contradicting the bound on <span class="math" data-tex="\(Tp\)">\(Tp\)</span>. Hence <span class="math" data-tex="\(\tau(s)\leq\tau(1-p)&lt;d\)">\(\tau(s)\leq\tau(1-p)&lt;d\)</span> by MT-02. Since <span class="math" data-tex="\(d\)">\(d\)</span> is arbitrary, the tails tend to zero. The implication 3 to 4 is immediate.</p>
+<p>For 4 to 3, set <span class="math" data-tex="\(s_R=1_{(R,\infty)}(h)\)">\(s_R=1_{(R,\infty)}(h)\)</span> for <span class="math" data-tex="\(R\geq R_0\)">\(R\geq R_0\)</span>. The differences <span class="math" data-tex="\(s_{R_0}-s_R\)">\(s_{R_0}-s_R\)</span> increase strongly to <span class="math" data-tex="\(s_{R_0}\)">\(s_{R_0}\)</span>. Normality and finiteness of <span class="math" data-tex="\(\tau(s_{R_0})\)">\(\tau(s_{R_0})\)</span> imply</p>
+<span class="math math-display" data-tex="\[
+\tau(s_R)=\tau(s_{R_0})-\tau(s_{R_0}-s_R)\longrightarrow0.
+\]">\[
+\tau(s_R)=\tau(s_{R_0})-\tau(s_{R_0}-s_R)\longrightarrow0.
+\]</span>
+<p>Only finite numbers are subtracted in this argument.</p>
+<p>Finally, if 3 holds, take <span class="math" data-tex="\(p_n=1_{[0,n]}(h)\)">\(p_n=1_{[0,n]}(h)\)</span>. These projections increase, their trace defects tend to zero, and <span class="math" data-tex="\(Tp_n\in M\)">\(Tp_n\in M\)</span> by the polar calculus. The restriction of <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(\bigcup_n p_nH\)">\(\bigcup_n p_nH\)</span> has closure <span class="math" data-tex="\(T\)">\(T\)</span>, because the spectral cutoffs converge in its graph norm. MT-10 now gives <span class="math" data-tex="\(T=T_a\)">\(T=T_a\)</span> for a unique <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In condition 2, the projection is allowed to depend on <span class="math" data-tex="\(d\)">\(d\)</span>; there is no assertion of a common domain for all measurable operators. Nevertheless the proof of MT-09 supplies a trace-dense domain for each particular finite sum or product. Affiliation alone is weaker than measurability: it gives bounded spectral cutoffs, but does not force their complement traces to be finite or to tend to zero.</p>
+<h2 id="positivity-square-roots-and-polar-decomposition"><span id="OA-MOD-MT-12"></span><span id="oa-mod-mt-12"></span>Positivity, square roots and polar decomposition</h2>
+<p>The bijection <span class="math" data-tex="\(a\mapsto T_a\)">\(a\mapsto T_a\)</span> identifies <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> with the complete topological star-algebra <span class="math" data-tex="\(S(M,\tau)\)">\(S(M,\tau)\)</span>, whose operations are (MT.16). Its positive cone can equivalently be described as</p>
+<span class="math math-display" data-tex="\[
+\widehat M_+=\{b^*b:b\in\widehat M\}
+=\{a\in\widehat M:T_a\text{ is positive self-adjoint}\}.
+\tag{MT.19}
+\]">\[
+\widehat M_+=\{b^*b:b\in\widehat M\}
+=\{a\in\widehat M:T_a\text{ is positive self-adjoint}\}.
+\tag{MT.19}
+\]</span>
+<p>Every positive element has a unique positive square root. This is a pointed convex cone, and every <span class="math" data-tex="\(a\in\widehat M\)">\(a\in\widehat M\)</span> has a polar decomposition</p>
+<span class="math math-display" data-tex="\[
+a=v|a|,\qquad v\in M,\qquad |a|=(a^*a)^{1/2},
+\tag{MT.20}
+\]">\[
+a=v|a|,\qquad v\in M,\qquad |a|=(a^*a)^{1/2},
+\tag{MT.20}
+\]</span>
+<p>with the usual initial and final support projections and uniqueness of <span class="math" data-tex="\(v\)">\(v\)</span> on the support of <span class="math" data-tex="\(|a|\)">\(|a|\)</span>.</p>
+<p><strong>Proof.</strong> The operator corresponding to <span class="math" data-tex="\(b^*b\)">\(b^*b\)</span> is <span class="math" data-tex="\(T_b^*T_b\)">\(T_b^*T_b\)</span>. This ordinary product is already the positive self-adjoint operator furnished by the closed polar calculus, so its closure in (MT.16) changes nothing. Conversely, if <span class="math" data-tex="\(A=T_a\)">\(A=T_a\)</span> is positive self-adjoint, its positive square root is affiliated; its spectral tail above <span class="math" data-tex="\(R\)">\(R\)</span> is the spectral tail of <span class="math" data-tex="\(A\)">\(A\)</span> above <span class="math" data-tex="\(R^2\)">\(R^2\)</span>. MT-11 makes <span class="math" data-tex="\(A^{1/2}\)">\(A^{1/2}\)</span> measurable, and (MT.16) gives <span class="math" data-tex="\(a=b^*b\)">\(a=b^*b\)</span> for its corresponding positive element <span class="math" data-tex="\(b\)">\(b\)</span>. Uniqueness of the positive operator square root in the spectral calculus, followed by injectivity, gives uniqueness in the algebra.</p>
+<p>If <span class="math" data-tex="\(a,b\)">\(a,b\)</span> correspond to positive operators, <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is self-adjoint by (MT.16). Its operator is the closure of their sum. On the dense sum domain its quadratic form is nonnegative, and this remains true on the graph closure by continuity of the inner product. Thus it is positive self-adjoint. Nonnegative scaling is immediate. If both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(-A\)">\(-A\)</span> are positive, then <span class="math" data-tex="\(\langle A\xi,\xi\rangle=0\)">\(\langle A\xi,\xi\rangle=0\)</span> on <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>. Polarization gives <span class="math" data-tex="\(\langle A\xi,\eta\rangle=0\)">\(\langle A\xi,\eta\rangle=0\)</span> for <span class="math" data-tex="\(\xi,\eta\in D(A)\)">\(\xi,\eta\in D(A)\)</span>; density gives <span class="math" data-tex="\(A\xi=0\)">\(A\xi=0\)</span>. Its closed graph and dense domain then imply <span class="math" data-tex="\(A=0\)">\(A=0\)</span> on all of <span class="math" data-tex="\(H\)">\(H\)</span>. This proves pointedness.</p>
+<p>For general <span class="math" data-tex="\(T_a=v h\)">\(T_a=v h\)</span>, the closed polar calculus puts <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, while <span class="math" data-tex="\(h\)">\(h\)</span> is measurable by MT-11 because it has the same spectral tails used there. Also <span class="math" data-tex="\(T_a^*T_a=h^2\)">\(T_a^*T_a=h^2\)</span>, so the square-root assertion identifies its algebra element as <span class="math" data-tex="\(|a|\)">\(|a|\)</span>. The polar equality and its supports are transported to (MT.20) by (MT.16) and injectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-first-integral-and-the-bounded-trace-ideals"><span id="oa-mod-mt-13"></span><span id="OA-MOD-MT-13"></span>The first integral and the bounded trace ideals</h2>
+<p>For a positive measurable <span class="math" data-tex="\(h\)">\(h\)</span>, define its extended trace by</p>
+<span class="math math-display" data-tex="\[
+\tau(h)=\lim_{\varepsilon\downarrow0}
+\tau\bigl(h(1+\varepsilon h)^{-1}\bigr).
+\tag{MT.21}
+\]">\[
+\tau(h)=\lim_{\varepsilon\downarrow0}
+\tau\bigl(h(1+\varepsilon h)^{-1}\bigr).
+\tag{MT.21}
+\]</span>
+<p>The expression inside the trace is a bounded positive member of <span class="math" data-tex="\(M\)">\(M\)</span>. Its scalar spectral function increases to the identity function, so the limit exists in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>. Equivalently, if <span class="math" data-tex="\(E_h\)">\(E_h\)</span> is the spectral measure, normality makes <span class="math" data-tex="\(B\mapsto\tau(E_h(B))\)">\(B\mapsto\tau(E_h(B))\)</span> a countably additive extended measure, and</p>
+<span class="math math-display" data-tex="\[
+\tau(h)=\int_{[0,\infty)}t\,d(\tau\circ E_h)(t)
+=\sup_n\tau\bigl(\min(h,n)\bigr).
+\tag{MT.22}
+\]">\[
+\tau(h)=\int_{[0,\infty)}t\,d(\tau\circ E_h)(t)
+=\sup_n\tau\bigl(\min(h,n)\bigr).
+\tag{MT.22}
+\]</span>
+<p>These equalities follow first for nonnegative simple spectral functions and then by monotone convergence. Infinite mass at zero causes no problem because the integrand there is zero. On bounded positive <span class="math" data-tex="\(h\)">\(h\)</span>, (MT.21) agrees with the original trace by normality.</p>
+<p>Every measurable <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span> has bounded regularizations</p>
+<span class="math math-display" data-tex="\[
+x_\varepsilon=x(1+\varepsilon|x|)^{-1}\in M,
+\qquad x_\varepsilon\longrightarrow x\quad\text{in measure}.
+\tag{MT.23}
+\]">\[
+x_\varepsilon=x(1+\varepsilon|x|)^{-1}\in M,
+\qquad x_\varepsilon\longrightarrow x\quad\text{in measure}.
+\tag{MT.23}
+\]</span>
+<p>Indeed, boundedness follows from <span class="math" data-tex="\(t/(1+\varepsilon t)\leq1/\varepsilon\)">\(t/(1+\varepsilon t)\leq1/\varepsilon\)</span>. On a fixed spectral cutoff <span class="math" data-tex="\(e_R=1_{[0,R]}(|x|)\)">\(e_R=1_{[0,R]}(|x|)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|(x-x_\varepsilon)e_R\|
+\leq\frac{\varepsilon R^2}{1+\varepsilon R}\longrightarrow0.
+\]">\[
+\|(x-x_\varepsilon)e_R\|
+\leq\frac{\varepsilon R^2}{1+\varepsilon R}\longrightarrow0.
+\]</span>
+<p>First choose <span class="math" data-tex="\(R\)">\(R\)</span> making <span class="math" data-tex="\(\tau(1-e_R)\)">\(\tau(1-e_R)\)</span> small, then choose <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> making this norm small. This proves precisely convergence in the topology already constructed.</p>
+<p>We also need the trace identities on the original bounded algebra. Put</p>
+<span class="math math-display" data-tex="\[
+\mathfrak n_\tau=\{z\in M:\tau(z^*z)&lt;\infty\},\qquad
+\mathfrak m_\tau=\operatorname{span}(\mathfrak n_\tau^*\mathfrak n_\tau).
+\]">\[
+\mathfrak n_\tau=\{z\in M:\tau(z^*z)&lt;\infty\},\qquad
+\mathfrak m_\tau=\operatorname{span}(\mathfrak n_\tau^*\mathfrak n_\tau).
+\]</span>
+<p>Both are two-sided ideals, and <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> is invariant under adjoints. The linear trace on <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\tau(xy)=\tau(yx)\quad(x,y\in\mathfrak n_\tau),\qquad
+\tau(ab)=\tau(ba)\quad(a\in\mathfrak m_\tau,\ b\in M).
+\tag{MT.24}
+\]">\[
+\tau(xy)=\tau(yx)\quad(x,y\in\mathfrak n_\tau),\qquad
+\tau(ab)=\tau(ba)\quad(a\in\mathfrak m_\tau,\ b\in M).
+\tag{MT.24}
+\]</span>
+<p><strong>Proof of the ideal and cyclicity assertions.</strong> Adjoint invariance is the trace condition. For <span class="math" data-tex="\(b\in M\)">\(b\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau((bz)^*(bz))&amp;\leq\|b\|^2\tau(z^*z),\\
+\tau((zb)^*(zb))&amp;=\tau(zbb^*z^*)
+\leq\|b\|^2\tau(zz^*)
+=\|b\|^2\tau(z^*z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau((bz)^*(bz))&amp;\leq\|b\|^2\tau(z^*z),\\
+\tau((zb)^*(zb))&amp;=\tau(zbb^*z^*)
+\leq\|b\|^2\tau(zz^*)
+=\|b\|^2\tau(z^*z).
+\end{aligned}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> is two-sided; its product span is too. Polarizing the identity <span class="math" data-tex="\(\tau(w^*w)=\tau(ww^*)\)">\(\tau(w^*w)=\tau(ww^*)\)</span> on the complex vector space <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span> gives <span class="math" data-tex="\(\tau(z^*w)=\tau(wz^*)\)">\(\tau(z^*w)=\tau(wz^*)\)</span>. Replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(x^*\)">\(x^*\)</span> proves the first identity in (MT.24).</p>
+<p>For the second, every <span class="math" data-tex="\(a\in\mathfrak m_\tau\)">\(a\in\mathfrak m_\tau\)</span> can be factored as <span class="math" data-tex="\(a=xy\)">\(a=xy\)</span> with <span class="math" data-tex="\(x,y\in\mathfrak n_\tau\)">\(x,y\in\mathfrak n_\tau\)</span>. To justify this beyond positive <span class="math" data-tex="\(a\)">\(a\)</span>, write its bounded polar decomposition <span class="math" data-tex="\(a=v|a|\)">\(a=v|a|\)</span>. The two-sided ideal property puts <span class="math" data-tex="\(|a|=v^*a\)">\(|a|=v^*a\)</span> in <span class="math" data-tex="\(\mathfrak m_\tau\)">\(\mathfrak m_\tau\)</span>. By the finite-positive-domain identity in WG-003, <span class="math" data-tex="\(\tau(|a|)&lt;\infty\)">\(\tau(|a|)&lt;\infty\)</span>. Hence take <span class="math" data-tex="\(x=v|a|^{1/2}\)">\(x=v|a|^{1/2}\)</span> and <span class="math" data-tex="\(y=|a|^{1/2}\)">\(y=|a|^{1/2}\)</span>. Now <span class="math" data-tex="\(yb,bx\in\mathfrak n_\tau\)">\(yb,bx\in\mathfrak n_\tau\)</span>, and repeated use of the already proved two-factor identity gives</p>
+<span class="math math-display" data-tex="\[
+\tau(ab)=\tau(x(yb))=\tau((yb)x)
+=\tau(y(bx))=\tau((bx)y)=\tau(ba).
+\]">\[
+\tau(ab)=\tau(x(yb))=\tau((yb)x)
+=\tau(y(bx))=\tau((bx)y)=\tau(ba).
+\]</span>
+<p>All expressions belong to the finite trace ideal, so no infinite scalar subtraction is involved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A useful refined Cauchy–Schwarz estimate is</p>
+<span class="math math-display" data-tex="\[
+|\tau(xy)|^2
+\leq \tau(|x^*|\,|y|)\,\tau(|x|\,|y^*|),
+\qquad x\in\mathfrak m_\tau,\quad y\in M.
+\tag{MT.25}
+\]">\[
+|\tau(xy)|^2
+\leq \tau(|x^*|\,|y|)\,\tau(|x|\,|y^*|),
+\qquad x\in\mathfrak m_\tau,\quad y\in M.
+\tag{MT.25}
+\]</span>
+<p>The two traces on the right are nonnegative finite real numbers even though their written bounded products need not be positive operators: cyclicity identifies each with a positive sandwich.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(x=u h\)">\(x=u h\)</span>, <span class="math" data-tex="\(y=v k\)">\(y=v k\)</span>, where <span class="math" data-tex="\(h=|x|\)">\(h=|x|\)</span>, <span class="math" data-tex="\(k=|y|\)">\(k=|y|\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+z=h^{1/2}v k^{1/2},\qquad w=k^{1/2}u h^{1/2}.
+\]">\[
+z=h^{1/2}v k^{1/2},\qquad w=k^{1/2}u h^{1/2}.
+\]</span>
+<p>Both lie in <span class="math" data-tex="\(\mathfrak n_\tau\)">\(\mathfrak n_\tau\)</span>, because <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> does and this is a two-sided ideal. Cyclicity gives <span class="math" data-tex="\(\tau(xy)=\tau(zw)\)">\(\tau(xy)=\tau(zw)\)</span>. Apply the weight Cauchy–Schwarz inequality to <span class="math" data-tex="\(z^*,w\)">\(z^*,w\)</span>:</p>
+<span class="math math-display" data-tex="\[
+|\tau(zw)|^2\leq\tau(zz^*)\tau(w^*w).
+\]">\[
+|\tau(zw)|^2\leq\tau(zz^*)\tau(w^*w).
+\]</span>
+<p>Again by cyclicity,</p>
+<span class="math math-display" data-tex="\[
+\tau(zz^*)=\tau(h vkv^*)=\tau(|x|\,|y^*|),\qquad
+\tau(w^*w)=\tau(u h u^* k)=\tau(|x^*|\,|y|).
+\]">\[
+\tau(zz^*)=\tau(h vkv^*)=\tau(|x|\,|y^*|),\qquad
+\tau(w^*w)=\tau(u h u^* k)=\tau(|x^*|\,|y|).
+\]</span>
+<p>The identities <span class="math" data-tex="\(vkv^*=|y^*|\)">\(vkv^*=|y^*|\)</span> and <span class="math" data-tex="\(uhu^*=|x^*|\)">\(uhu^*=|x^*|\)</span> are the bounded polar calculus, including their zero-support parts. This proves (MT.25). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction (MT.21) is the positive spectral integral. Its full algebraic extension to all integrable measurable operators, the measure-closed integral estimates and the ensuing <span class="math" data-tex="\(L^p\)">\(L^p\)</span> spaces require further results; (MT.24)–(MT.25) have been asserted and proved here on their stated bounded ideals.</p>
+<h2 id="three-models-that-separate-the-assumptions">Three models that separate the assumptions</h2>
+<p><strong>A diffuse finite trace permits unbounded operators.</strong> On <span class="math" data-tex="\(H=L^2(0,1)\)">\(H=L^2(0,1)\)</span>, let <span class="math" data-tex="\(M=L^\infty(0,1)\)">\(M=L^\infty(0,1)\)</span> act by multiplication and <span class="math" data-tex="\(\tau(f)=\int_0^1f(t)\,dt\)">\(\tau(f)=\int_0^1f(t)\,dt\)</span> for <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>. Multiplication by <span class="math" data-tex="\(g(t)=t^{-2}\)">\(g(t)=t^{-2}\)</span>, on the domain where <span class="math" data-tex="\(g\xi\in L^2\)">\(g\xi\in L^2\)</span>, is closed and affiliated. For <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{(R,\infty)}(|g|))=R^{-1/2}.
+\]">\[
+\tau(1_{(R,\infty)}(|g|))=R^{-1/2}.
+\]</span>
+<p>It is measurable, although it is unbounded. Multiplication by any measurable function finite almost everywhere is similarly measurable: its high-value sets decrease to a null set, and the ambient measure is finite. The criterion explicitly excludes a function infinite on a set of positive measure, since it would not give a densely defined multiplication operator.</p>
+<p><strong>The counting trace can force boundedness.</strong> Let <span class="math" data-tex="\(M=B(\ell^2(I))\)">\(M=B(\ell^2(I))\)</span> with its canonical trace, for an arbitrary index set <span class="math" data-tex="\(I\)">\(I\)</span>. Every nonzero projection has trace at least one. A spectral tail with trace less than one must therefore be zero. MT-11 shows that every measurable operator is bounded, so <span class="math" data-tex="\(S(M,\tau)=M\)">\(S(M,\tau)=M\)</span>. In both neighborhood systems, taking <span class="math" data-tex="\(d&lt;1\)">\(d&lt;1\)</span> forces the witnessing projection to be one. Thus both measure topologies are exactly the original norm topologies and <span class="math" data-tex="\(\widehat H=H\)">\(\widehat H=H\)</span>. The affiliated diagonal operator <span class="math" data-tex="\(De_n=ne_n\)">\(De_n=ne_n\)</span> on <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span> is not measurable: every tail projection has infinite trace. Strong convergence of its bounded spectral cutoffs does not imply convergence in this measure topology.</p>
+<p><strong>A trace with uncountable support still has measurable unbounded elements.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be uncountable and <span class="math" data-tex="\(M=\ell^\infty(I)\)">\(M=\ell^\infty(I)\)</span> act diagonally on <span class="math" data-tex="\(\ell^2(I)\)">\(\ell^2(I)\)</span>. Choose distinct <span class="math" data-tex="\(i_n\in I\)">\(i_n\in I\)</span>, assign weights <span class="math" data-tex="\(w_{i_n}=2^{-n}\)">\(w_{i_n}=2^{-n}\)</span>, and put <span class="math" data-tex="\(w_i=1\)">\(w_i=1\)</span> elsewhere. The trace <span class="math" data-tex="\(\tau(f)=\sum_iw_if_i\)">\(\tau(f)=\sum_iw_if_i\)</span>, interpreted as the supremum of finite sums, is faithful, normal and semifinite. It admits no faithful normal state: any normal functional on this diagonal algebra has at most countable support. Define <span class="math" data-tex="\(g(i_n)=2^n\)">\(g(i_n)=2^n\)</span> and <span class="math" data-tex="\(g(i)=0\)">\(g(i)=0\)</span> elsewhere. The corresponding diagonal operator is unbounded but densely defined and closed; for <span class="math" data-tex="\(R\geq1\)">\(R\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(1_{(R,\infty)}(|g|))
+=\sum_{2^n&gt;R}2^{-n}\longrightarrow0.
+\]">\[
+\tau(1_{(R,\infty)}(|g|))
+=\sum_{2^n&gt;R}2^{-n}\longrightarrow0.
+\]</span>
+<p>The construction therefore lies within the full, possibly non-sigma-finite setting of the unit. The small complements used for this one operator do not make the entire algebra sigma-finite.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>Problem 1: the completed vector space can enlarge the Hilbert space.</strong> Use the diffuse representation in MT-14. Show that <span class="math" data-tex="\(\xi_n(t)=\min(n,t^{-1/2})\)">\(\xi_n(t)=\min(n,t^{-1/2})\)</span> is Cauchy for the vector measure topology, and that its limit in <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> does not belong to <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(m,n\geq N\)">\(m,n\geq N\)</span>, the functions agree on <span class="math" data-tex="\([N^{-2},1)\)">\([N^{-2},1)\)</span>, so multiplying their difference by the projection of this set gives zero; the discarded trace is <span class="math" data-tex="\(N^{-2}\)">\(N^{-2}\)</span>. Hence they are Cauchy. If their completion limit were some <span class="math" data-tex="\(\eta\in L^2(0,1)\)">\(\eta\in L^2(0,1)\)</span>, vector measure convergence would force <span class="math" data-tex="\(\xi_n\to\eta\)">\(\xi_n\to\eta\)</span> in ordinary scalar measure. Indeed, if a projection <span class="math" data-tex="\(p=1_E\)">\(p=1_E\)</span> satisfies <span class="math" data-tex="\(\|p(\xi_n-\eta)\|_2&lt;r\)">\(\|p(\xi_n-\eta)\|_2&lt;r\)</span> and <span class="math" data-tex="\(|E^c|&lt;d\)">\(|E^c|&lt;d\)</span>, then Chebyshev's inequality gives</p>
+<span class="math math-display" data-tex="\[
+|\{|\xi_n-\eta|&gt;s\}|\leq d+r^2/s^2.
+\]">\[
+|\{|\xi_n-\eta|&gt;s\}|\leq d+r^2/s^2.
+\]</span>
+<p>Let <span class="math" data-tex="\(r,d\to0\)">\(r,d\to0\)</span>. On the other hand <span class="math" data-tex="\(\xi_n\to t^{-1/2}\)">\(\xi_n\to t^{-1/2}\)</span> in measure, since they agree with that function outside a set of measure <span class="math" data-tex="\(n^{-2}\)">\(n^{-2}\)</span>. Uniqueness of scalar limits in measure follows from the triangle inequality for the exceptional sets, so <span class="math" data-tex="\(\eta=t^{-1/2}\)">\(\eta=t^{-1/2}\)</span> almost everywhere. Its squared integral is infinite, a contradiction.</p>
+<p><strong>Problem 2: two finite cutoffs need not commute.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span> with the unnormalized trace, let <span class="math" data-tex="\(e\)">\(e\)</span> project onto <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span>, and let <span class="math" data-tex="\(f\)">\(f\)</span> project onto <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. Compute <span class="math" data-tex="\(e\wedge f\)">\(e\wedge f\)</span>, <span class="math" data-tex="\(e\vee f\)">\(e\vee f\)</span>, and the initial and final projections of <span class="math" data-tex="\((1-e)f\)">\((1-e)f\)</span>. Explain how this checks the noncommuting step of MT-02.</p>
+<p><strong>Solution.</strong> The two lines meet only at zero and span <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, so <span class="math" data-tex="\(e\wedge f=0\)">\(e\wedge f=0\)</span> and <span class="math" data-tex="\(e\vee f=1\)">\(e\vee f=1\)</span>. The map <span class="math" data-tex="\((1-e)f\)">\((1-e)f\)</span> has kernel <span class="math" data-tex="\(f^\perp H\)">\(f^\perp H\)</span> and range <span class="math" data-tex="\(e^\perp H\)">\(e^\perp H\)</span>. Its polar partial isometry therefore has initial projection <span class="math" data-tex="\(f\)">\(f\)</span> and final projection <span class="math" data-tex="\(1-e\)">\(1-e\)</span>. This gives <span class="math" data-tex="\(e\vee f-e\sim f\)">\(e\vee f-e\sim f\)</span> in this case and <span class="math" data-tex="\(\tau(e\vee f)=2=\tau(e)+\tau(f)\)">\(\tau(e\vee f)=2=\tau(e)+\tau(f)\)</span>, without requiring <span class="math" data-tex="\(ef=fe\)">\(ef=fe\)</span>.</p>
+<p><strong>Problem 3: one finite tail is enough, but finite projections alone are not.</strong> For a closed affiliated <span class="math" data-tex="\(T\)">\(T\)</span>, suppose <span class="math" data-tex="\(\tau(1_{(7,\infty)}(|T|))&lt;\infty\)">\(\tau(1_{(7,\infty)}(|T|))&lt;\infty\)</span>. Prove measurability. Contrast this with merely having increasing finite-trace projections <span class="math" data-tex="\(e_n\uparrow1\)">\(e_n\uparrow1\)</span> such that <span class="math" data-tex="\(Te_n\)">\(Te_n\)</span> is bounded.</p>
+<p><strong>Solution.</strong> The finite-tail argument in MT-11 applies with <span class="math" data-tex="\(R_0=7\)">\(R_0=7\)</span>: inside that finite-trace projection, normality makes the traces of the decreasing high tails tend to zero. Hence <span class="math" data-tex="\(T\)">\(T\)</span> is measurable. For the contrast use <span class="math" data-tex="\(De_n=ne_n\)">\(De_n=ne_n\)</span> on <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span> with the canonical trace, and let <span class="math" data-tex="\(p_N\)">\(p_N\)</span> project onto the first <span class="math" data-tex="\(N\)">\(N\)</span> basis vectors. Each <span class="math" data-tex="\(p_N\)">\(p_N\)</span> has finite trace and <span class="math" data-tex="\(Dp_N\)">\(Dp_N\)</span> is bounded, but <span class="math" data-tex="\(\tau(1-p_N)=\infty\)">\(\tau(1-p_N)=\infty\)</span>. Every high spectral tail of <span class="math" data-tex="\(D\)">\(D\)</span> also has infinite trace, so <span class="math" data-tex="\(D\)">\(D\)</span> is not measurable. The increasing-domain theorem needs small trace of the complements, not finite trace of the retained projections.</p>
+<p><strong>Problem 4: recover an operator from compatible pieces.</strong> In the uncountable diagonal model of MT-14, put <span class="math" data-tex="\(p_N=1-1_{\{i_n:n&gt;N\}}\)">\(p_N=1-1_{\{i_n:n&gt;N\}}\)</span>, and let <span class="math" data-tex="\(c_N\)">\(c_N\)</span> be multiplication by the bounded function equal to <span class="math" data-tex="\(2^n\)">\(2^n\)</span> at <span class="math" data-tex="\(i_n\)">\(i_n\)</span> for <span class="math" data-tex="\(n\leq N\)">\(n\leq N\)</span> and zero elsewhere. Verify the compatibility in MT-10 and identify the closed operator obtained there, including its domain.</p>
+<p><strong>Solution.</strong> The projections increase and <span class="math" data-tex="\(\tau(1-p_N)=\sum_{n&gt;N}2^{-n}=2^{-N}\to0\)">\(\tau(1-p_N)=\sum_{n&gt;N}2^{-n}=2^{-N}\to0\)</span>. Also <span class="math" data-tex="\(c_Np_N=c_N\)">\(c_Np_N=c_N\)</span>, and <span class="math" data-tex="\(c_Mp_N=c_N\)">\(c_Mp_N=c_N\)</span> for <span class="math" data-tex="\(M\geq N\)">\(M\geq N\)</span>. Thus the theorem applies even though <span class="math" data-tex="\(\|c_N\|=2^N\)">\(\|c_N\|=2^N\)</span>. Its operator is multiplication by the function <span class="math" data-tex="\(g\)">\(g\)</span> in MT-14 on</p>
+<span class="math math-display" data-tex="\[
+D(T)=\left\{\xi\in\ell^2(I):\sum_{n\geq1}4^n|\xi_{i_n}|^2&lt;\infty\right\},
+\quad (T\xi)_{i_n}=2^n\xi_{i_n},\quad (T\xi)_i=0\ (i\notin\{i_n\}).
+\]">\[
+D(T)=\left\{\xi\in\ell^2(I):\sum_{n\geq1}4^n|\xi_{i_n}|^2&lt;\infty\right\},
+\quad (T\xi)_{i_n}=2^n\xi_{i_n},\quad (T\xi)_i=0\ (i\notin\{i_n\}).
+\]</span>
+<p>This multiplication operator is closed by coordinate convergence. The projections <span class="math" data-tex="\(p_N\)">\(p_N\)</span> converge in its graph norm on the displayed domain, since the omitted squared image norms are tails of a convergent nonnegative series. Therefore it is precisely the closure of the compatible operator on <span class="math" data-tex="\(\bigcup_Np_NH\)">\(\bigcup_Np_NH\)</span>, not merely an extension of it.</p>
+<h2 id="what-has-been-constructed-and-what-follows">What has been constructed and what follows</h2>
+<p>Projection estimates and graph uniqueness were proved in MT-02 and MT-07. MT-03–06 construct the measure completions of the algebra and its representation space, with uniform continuity on bounded-in-measure sets. MT-08–10 identify the completion with closed affiliated operators, prove all domain-sensitive algebra operations, and treat increasing trace-cofinite domains. MT-11 gives both forms of the spectral-tail criterion. MT-12 supplies positivity, square roots and polar decomposition. MT-13 begins integration and proves the bounded trace-ideal identities and their refined Cauchy–Schwarz estimate.</p>
+<p>The next integration unit must prove the trace inequalities on measurable limits, construct the full integrable ideal and the noncommutative <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norms, and establish completeness, duality and interpolation at their exact parameter ranges. Measurable-operator constructions for nontracial weights use additional machinery. None of those later results, nor the complete assigned B8 source inventory, is declared closed by this unit.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-CG.html">← Closed graphs and bounded operator cutoffs</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-MG.html">When a small trace defect must vanish →</a></span></nav>
+<p class="small source-link"><a href="src/trace-measurable-operators.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

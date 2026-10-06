@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local inverses and distance-weighted elliptic estimates</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="local-inverses-and-distance-weighted-elliptic-estimates">Local inverses and distance-weighted elliptic estimates</h1>
+<p><strong>AN-03 · Unit AN03-U006 · Independent English AI draft, not admitted.</strong></p>
+<p>Ellipticity gives a local inverse with exactly as many derivatives as the order of the operator. The useful question here is how little regularity its coefficients may have. Continuity will suffice for the highest-order coefficients. Lower-order coefficients can be unbounded; their admissible integrability depends on how many derivatives separate their term from the principal part.</p>
+<p>We first build a constant-coefficient solver and record its quantitative bounds. Multiplication estimates then determine the coefficient assumptions. A separate localization argument gives estimates on arbitrary open subsets of one fixed neighborhood, with constants independent of the subset. Finally, a commutator argument supplies the missing highest derivatives when the equation is initially defined only as a distribution.</p>
+<h2 id="AN03-LCE-001"><span id="an03-lce-001"></span><span id="an03-lce-001-conventions-and-prerequisite-contracts"></span>AN03-LCE-001 — Conventions and prerequisite contracts</h2>
+<p>Let <span class="math" data-tex="\(n,m\geq1\)">\(n,m\geq1\)</span> be integers and <span class="math" data-tex="\(1&lt;p&lt;\infty\)">\(1&lt;p&lt;\infty\)</span>. The order <span class="math" data-tex="\(m\)">\(m\)</span> is arbitrary. Coefficients and functions may be complex-valued. We use the Fourier convention of AN03-DEP-001 in <em>Prerequisite bridges</em>:</p>
+<span class="math math-display" data-tex="\[
+D_j=-i\partial_j,\qquad
+\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+\mathcal F^{-1}h(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}h(\xi)\,d\xi.
+\]">\[
+D_j=-i\partial_j,\qquad
+\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+\mathcal F^{-1}h(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}h(\xi)\,d\xi.
+\]</span>
+<p>The space <span class="math" data-tex="\(W^{s,p}(V)\)">\(W^{s,p}(V)\)</span>, for a nonnegative integer <span class="math" data-tex="\(s\)">\(s\)</span>, consists of distributions whose derivatives of orders at most <span class="math" data-tex="\(s\)">\(s\)</span> belong to <span class="math" data-tex="\(L^p(V)\)">\(L^p(V)\)</span>. We write <span class="math" data-tex="\(\nabla^j u\)">\(\nabla^j u\)</span> for the finite array <span class="math" data-tex="\((D^\alpha u)_{|\alpha|=j}\)">\((D^\alpha u)_{|\alpha|=j}\)</span>, using its pointwise <span class="math" data-tex="\(\ell^p\)">\(\ell^p\)</span> norm inside an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norm. Switching to the sum of the component norms changes only constants depending on <span class="math" data-tex="\(n,m,p\)">\(n,m,p\)</span>.</p>
+<p>The following are precise imports, rather than additional conclusions of this unit.</p>
+<ul>
+<li><strong>DEP-LCE-DIST:</strong> Distributions carry the usual test-function topology. Multiplication by a smooth function and distributional differentiation are continuous operations. A distribution supported in a compact set has finite order: after inserting a fixed cutoff near its support, its pairing is bounded by a constant times finitely many suprema of derivatives of the test function on a fixed compact neighborhood. It therefore acts on smooth functions through that cutoff and is tempered. Convolution is defined when one factor is compactly supported; differentiation transfers between its factors, and associativity holds in the uses here where all but at most one factor are compactly supported. Convolution of a tempered distribution with a compactly supported distribution is tempered. A smooth kernel paired with a compactly supported distribution gives a smooth function, also locally when all relevant kernel arguments stay away from its singular set. Fourier inversion of a compactly supported distribution is smooth, with derivatives obtained by differentiating its exponential pairing.</li>
+<li><strong>DEP-LCE-LP:</strong> Lebesgue integration, Hölder and Young inequalities, Tonelli, dominated and monotone convergence; completeness of <span class="math" data-tex="\(L^p\)">\(L^p\)</span>; density of <span class="math" data-tex="\(C_c^\infty(\mathbb R^n)\)">\(C_c^\infty(\mathbb R^n)\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span> for finite <span class="math" data-tex="\(p\)">\(p\)</span>; translation continuity and convergence of smooth approximate identities in these spaces. Locally, smooth approximation holds in integer <span class="math" data-tex="\(W^{s,p}\)">\(W^{s,p}\)</span>. A distribution represented by an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> limit has the corresponding distributional derivatives. These are the basic integration and weak-derivative prerequisites, not a new introductory distribution course.</li>
+<li><strong>DEP-LCE-MULT:</strong> If <span class="math" data-tex="\(b\in C^{n+2}(\mathbb R^n\setminus\{0\})\)">\(b\in C^{n+2}(\mathbb R^n\setminus\{0\})\)</span> and
+<span class="math math-display" data-tex="\[
+\max_{|\beta|\leq n+2}\sup_{\xi\ne0}
+|\xi|^{|\beta|}|\partial_\xi^\beta b(\xi)|\leq B,
+\]">\[
+\max_{|\beta|\leq n+2}\sup_{\xi\ne0}
+|\xi|^{|\beta|}|\partial_\xi^\beta b(\xi)|\leq B,
+\]</span>
+then <span class="math" data-tex="\(b(D)\)">\(b(D)\)</span> extends from Schwartz functions to <span class="math" data-tex="\(L^p(\mathbb R^n)\)">\(L^p(\mathbb R^n)\)</span>, with norm at most <span class="math" data-tex="\(C_{n,p}B\)">\(C_{n,p}B\)</span>. The precise independent reading is Terence Tao, <em>Lecture Notes 4 for 247A</em>, Theorem 4.4, printed/PDF pages 19–20; its singular-integral implication is Corollary 2.10, pages 8–9. This contract imports the multiplier theorem, including its dependence on finitely many symbol bounds.</li>
+<li><strong>DEP-LCE-FRAC:</strong> For <span class="math" data-tex="\(0&lt;s&lt;n\)">\(0&lt;s&lt;n\)</span>, <span class="math" data-tex="\(1&lt;p&lt;q&lt;\infty\)">\(1&lt;p&lt;q&lt;\infty\)</span>, and <span class="math" data-tex="\(1/q=1/p-s/n\)">\(1/q=1/p-s/n\)</span>, convolution with <span class="math" data-tex="\(|x|^{s-n}\)">\(|x|^{s-n}\)</span> maps <span class="math" data-tex="\(L^p(\mathbb R^n)\)">\(L^p(\mathbb R^n)\)</span> to <span class="math" data-tex="\(L^q(\mathbb R^n)\)">\(L^q(\mathbb R^n)\)</span>. The precise independent reading is Tao, <em>Lecture Notes 2 for 247A</em>, Corollary 6.3, page 16, with Proposition 6.1 on page 15. No strong <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> endpoint is included.</li>
+<li><strong>DEP-LCE-LIP:</strong> A Lipschitz scalar function has weak first derivatives in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span>, bounded by its Lipschitz constant, and satisfies the weak product rule with smooth functions. This local fact also permits integration by parts against compactly supported smooth functions. It will be used only in the weak-coefficient part.</li>
+</ul>
+<p>There is also an earlier <strong>constant-strength antecedent, DEP-LCE-CS</strong>: Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Theorem 13.2.1. For an operator with nonzero frozen symbol, continuous coefficients and constant strength near a point, it provides a local <span class="math" data-tex="\(L^2\)">\(L^2\)</span> right inverse, a left inverse on compactly supported smooth functions, and bounded <span class="math" data-tex="\(Q(D)E\)">\(Q(D)E\)</span> when the constant-coefficient operator <span class="math" data-tex="\(Q\)">\(Q\)</span> is weaker than the frozen operator. In this terminology, write
+<span class="math" data-tex="\(\widetilde q(\xi)^2=\sum_\beta|\partial_\xi^\beta q(\xi)|^2\)">\(\widetilde q(\xi)^2=\sum_\beta|\partial_\xi^\beta q(\xi)|^2\)</span>;
+“weaker” means <span class="math" data-tex="\(\widetilde q\leq C\widetilde p\)">\(\widetilde q\leq C\widetilde p\)</span>, and constant strength means pairwise comparability of the frozen <span class="math" data-tex="\(\widetilde p_x\)">\(\widetilde p_x\)</span>. This antecedent has an explicit dependency on that volume's constant-coefficient inverse theorem 10.3.7. It is not an already closed result of this course and does not supply the rough lower-coefficient <span class="math" data-tex="\(L^p\)">\(L^p\)</span> theorem below. We give the elliptic construction needed here directly, leaving the more general constant-strength contract separate.</p>
+<p>The equation in DEP-LCE-CS has a specific interpretation. The finite-dimensional weaker-operator representation is
+<span class="math" data-tex="\(P(x,D)=P_0(D)+\sum_{\nu=1}^r c_\nu(x)P_\nu(D)\)">\(P(x,D)=P_0(D)+\sum_{\nu=1}^r c_\nu(x)P_\nu(D)\)</span>, with <span class="math" data-tex="\(P_0\)">\(P_0\)</span> the frozen operator, <span class="math" data-tex="\(P_\nu\)">\(P_\nu\)</span> weaker than <span class="math" data-tex="\(P_0\)">\(P_0\)</span>, and continuous <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> vanishing at the frozen point. Define <span class="math" data-tex="\(PEf=P_0Ef+\sum_\nu c_\nu P_\nu Ef\)">\(PEf=P_0Ef+\sum_\nu c_\nu P_\nu Ef\)</span>. Each <span class="math" data-tex="\(P_\nu Ef\)">\(P_\nu Ef\)</span>, including <span class="math" data-tex="\(P_0Ef\)">\(P_0Ef\)</span>, belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by the stated operator bounds; after shrinking the neighborhood, its product with <span class="math" data-tex="\(c_\nu\)">\(c_\nu\)</span> is an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function. This is the interpretation in the first remark following Theorem 13.2.1, not multiplication of arbitrary distributions by continuous coefficients.</p>
+<p>The proofs below supply the fundamental solution, the local Hölder multiplier bound, the perturbation argument, the distance-weighted estimate, and the Lipschitz commutator. The Banach-space geometric-series argument is also available in AN03-FRE-003 of <em>Finite defects under perturbation</em>; we recall its short application where it is needed.</p>
+<h2 id="AN03-LCE-002"><span id="an03-lce-002"></span><span id="an03-lce-002-a-frozen-solver-without-a-restriction-on-dimension-or-order"></span>AN03-LCE-002 — A frozen solver without a restriction on dimension or order</h2>
+<p>Let <span class="math" data-tex="\(q(\xi)\)">\(q(\xi)\)</span> be homogeneous of degree <span class="math" data-tex="\(m\)">\(m\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+|q(\xi)|\geq c|\xi|^m\quad(\xi\in\mathbb R^n).                 \tag{L1}
+\]">\[
+|q(\xi)|\geq c|\xi|^m\quad(\xi\in\mathbb R^n).                 \tag{L1}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\chi\in C_c^\infty(\mathbb R^n)\)">\(\chi\in C_c^\infty(\mathbb R^n)\)</span>, equal to one for <span class="math" data-tex="\(|\xi|\leq1/2\)">\(|\xi|\leq1/2\)</span> and zero for <span class="math" data-tex="\(|\xi|\geq1\)">\(|\xi|\geq1\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+b_0(\xi)=\frac{1-\chi(\xi)}{q(\xi)},\qquad F_0=\mathcal F^{-1}b_0.
+\tag{L2}
+\]">\[
+b_0(\xi)=\frac{1-\chi(\xi)}{q(\xi)},\qquad F_0=\mathcal F^{-1}b_0.
+\tag{L2}
+\]</span>
+<p>The quotient is smooth across zero because its numerator vanishes there. Repeated differentiation of a reciprocal, or induction in the identity <span class="math" data-tex="\(q/q=1\)">\(q/q=1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|\partial^\beta b_0(\xi)|\leq C_\beta(1+|\xi|)^{-m-|\beta|}.
+\tag{L3}
+\]">\[
+|\partial^\beta b_0(\xi)|\leq C_\beta(1+|\xi|)^{-m-|\beta|}.
+\tag{L3}
+\]</span>
+<p>In particular <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is tempered and
+<span class="math" data-tex="\(q(D)F_0=\delta+\omega\)">\(q(D)F_0=\delta+\omega\)</span>, where <span class="math" data-tex="\(\omega=-\mathcal F^{-1}\chi\)">\(\omega=-\mathcal F^{-1}\chi\)</span> is Schwartz.</p>
+<p>Here is an exact fundamental solution. When <span class="math" data-tex="\(m&lt;n\)">\(m&lt;n\)</span>, the locally integrable function <span class="math" data-tex="\(1/q\)">\(1/q\)</span> defines a tempered distribution <span class="math" data-tex="\(T\)">\(T\)</span>. When <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, put <span class="math" data-tex="\(L=m-n\)">\(L=m-n\)</span> and define, for <span class="math" data-tex="\(\varphi\in\mathcal S\)">\(\varphi\in\mathcal S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle T,\varphi\rangle=
+\int_{\mathbb R^n}\frac{\displaystyle\varphi(\xi)-\chi(\xi)
+\sum_{|\beta|\leq L}\frac{\partial^\beta\varphi(0)}{\beta!}\xi^\beta}
+{q(\xi)}\,d\xi.                                                   \tag{L4}
+\]">\[
+\langle T,\varphi\rangle=
+\int_{\mathbb R^n}\frac{\displaystyle\varphi(\xi)-\chi(\xi)
+\sum_{|\beta|\leq L}\frac{\partial^\beta\varphi(0)}{\beta!}\xi^\beta}
+{q(\xi)}\,d\xi.                                                   \tag{L4}
+\]</span>
+<p>Taylor's theorem bounds the numerator by <span class="math" data-tex="\(C|\xi|^{L+1}\)">\(C|\xi|^{L+1}\)</span> near zero. Its quotient is integrable there, since the radial power after including the volume element is <span class="math" data-tex="\(n-1-m+L+1=0\)">\(n-1-m+L+1=0\)</span>. At infinity, Schwartz decay applies. These same estimates, in terms of finitely many Schwartz seminorms, prove that <span class="math" data-tex="\(T\)">\(T\)</span> is tempered. As <span class="math" data-tex="\(L&lt;m\)">\(L&lt;m\)</span>, all derivatives of <span class="math" data-tex="\(q\varphi\)">\(q\varphi\)</span> of orders at most <span class="math" data-tex="\(L\)">\(L\)</span> vanish at zero. Consequently <span class="math" data-tex="\(qT=1\)">\(qT=1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+G=\mathcal F^{-1}T,\qquad q(D)G=\delta.                            \tag{L5}
+\]">\[
+G=\mathcal F^{-1}T,\qquad q(D)G=\delta.                            \tag{L5}
+\]</span>
+<p>Moreover, <span class="math" data-tex="\(T-b_0\)">\(T-b_0\)</span> is supported in <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>. Its inverse Fourier transform <span class="math" data-tex="\(H=G-F_0\)">\(H=G-F_0\)</span> is smooth: on a fixed compact frequency set one may differentiate the exponential in its distributional pairing any number of times. Those differentiated pairings depend continuously on <span class="math" data-tex="\(x\)">\(x\)</span>, by the finite-order bound for a compactly supported distribution. This proves smoothness, without assuming that <span class="math" data-tex="\(G\)">\(G\)</span> is an ordinary homogeneous function. In the dimensions where logarithmic terms occur, (L4) includes them automatically.</p>
+<p>We need two kernel estimates. Fix <span class="math" data-tex="\(|\alpha|=j\leq m\)">\(|\alpha|=j\leq m\)</span> and put <span class="math" data-tex="\(k=m-j\)">\(k=m-j\)</span>. The symbol of <span class="math" data-tex="\(D^\alpha F_0\)">\(D^\alpha F_0\)</span> is <span class="math" data-tex="\(\xi^\alpha b_0(\xi)\)">\(\xi^\alpha b_0(\xi)\)</span>. With
+<span class="math" data-tex="\(\psi(\xi)=\chi(\xi/2)-\chi(\xi)\)">\(\psi(\xi)=\chi(\xi/2)-\chi(\xi)\)</span>, its decomposition into annuli has inverse transforms</p>
+<span class="math math-display" data-tex="\[
+K_\ell(x)=2^{\ell(n-k)}\kappa_\alpha(2^\ell x),\quad
+\kappa_\alpha=\mathcal F^{-1}\!\left(\psi(\xi)\frac{\xi^\alpha}{q(\xi)}\right),
+\quad \ell=0,1,\ldots.                                             \tag{L6}
+\]">\[
+K_\ell(x)=2^{\ell(n-k)}\kappa_\alpha(2^\ell x),\quad
+\kappa_\alpha=\mathcal F^{-1}\!\left(\psi(\xi)\frac{\xi^\alpha}{q(\xi)}\right),
+\quad \ell=0,1,\ldots.                                             \tag{L6}
+\]</span>
+<p>The function <span class="math" data-tex="\(\kappa_\alpha\)">\(\kappa_\alpha\)</span> is Schwartz. Indeed its Fourier transform is smooth with compact support away from zero; multiplication by powers of <span class="math" data-tex="\(x\)">\(x\)</span> in the inverse transform is integration by parts. The telescoping identity <span class="math" data-tex="\(\sum_{\ell\geq0}\psi(2^{-\ell}\xi)=1-\chi(\xi)\)">\(\sum_{\ell\geq0}\psi(2^{-\ell}\xi)=1-\chi(\xi)\)</span> proves (L6) in tempered distributions. For every integer <span class="math" data-tex="\(N\)">\(N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|K_\ell(x)|\leq C_N2^{\ell(n-k)}(1+2^\ell|x|)^{-N}.              \tag{L7}
+\]">\[
+|K_\ell(x)|\leq C_N2^{\ell(n-k)}(1+2^\ell|x|)^{-N}.              \tag{L7}
+\]</span>
+<p>If <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, then <span class="math" data-tex="\(\sum_\ell\|K_\ell\|_1\leq C\sum_\ell2^{-\ell k}&lt;\infty\)">\(\sum_\ell\|K_\ell\|_1\leq C\sum_\ell2^{-\ell k}&lt;\infty\)</span>. It therefore represents an <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel. Splitting the sum at <span class="math" data-tex="\(2^\ell|x|=1\)">\(2^\ell|x|=1\)</span> gives, for <span class="math" data-tex="\(0&lt;|x|\leq1\)">\(0&lt;|x|\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|D^\alpha F_0(x)|\leq C
+\begin{cases}
+|x|^{k-n},&amp;0&lt;k&lt;n,\\
+1+|\log|x||,&amp;k=n,\\
+1,&amp;k&gt;n.
+\end{cases}                                                       \tag{L8}
+\]">\[
+|D^\alpha F_0(x)|\leq C
+\begin{cases}
+|x|^{k-n},&amp;0&lt;k&lt;n,\\
+1+|\log|x||,&amp;k=n,\\
+1,&amp;k&gt;n.
+\end{cases}                                                       \tag{L8}
+\]</span>
+<p>For example the terms below the splitting point form a geometric sum when <span class="math" data-tex="\(k\ne n\)">\(k\ne n\)</span>; when <span class="math" data-tex="\(k=n\)">\(k=n\)</span>, their number is at most <span class="math" data-tex="\(C(1+|\log|x||)\)">\(C(1+|\log|x||)\)</span>. Terms above the splitting point form a convergent geometric tail if <span class="math" data-tex="\(N&gt;n-k\)">\(N&gt;n-k\)</span>. When <span class="math" data-tex="\(|x|\geq1\)">\(|x|\geq1\)</span>, (L7), with <span class="math" data-tex="\(N\)">\(N\)</span> as large as desired, gives rapid decay. These arguments also prove smoothness away from zero by differentiating (L7). In particular,</p>
+<span class="math math-display" data-tex="\[
+D^\alpha F_0\in L^r_{\mathrm{loc}}
+\quad\hbox{if}\quad k&gt;n(1-1/r),\qquad 1\leq r\leq\infty.          \tag{L9}
+\]">\[
+D^\alpha F_0\in L^r_{\mathrm{loc}}
+\quad\hbox{if}\quad k&gt;n(1-1/r),\qquad 1\leq r\leq\infty.          \tag{L9}
+\]</span>
+<p>For <span class="math" data-tex="\(r&lt;\infty\)">\(r&lt;\infty\)</span> this follows by integrating <span class="math" data-tex="\(\rho^{r(k-n)+n-1}\)">\(\rho^{r(k-n)+n-1}\)</span>; the logarithmic case is integrable to every finite power. The stated condition for <span class="math" data-tex="\(r=\infty\)">\(r=\infty\)</span> is <span class="math" data-tex="\(k&gt;n\)">\(k&gt;n\)</span>. No assertion that a highest derivative is an integrable kernel is being made. When <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, its boundedness on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> follows from DEP-LCE-MULT and (L3).</p>
+<p>For <span class="math" data-tex="\(0&lt;k&lt;n/p\)">\(0&lt;k&lt;n/p\)</span>, (L8), its decay at infinity, and DEP-LCE-FRAC give the finite endpoint</p>
+<span class="math math-display" data-tex="\[
+\|D^\alpha F_0*g\|_q\leq C\|g\|_p,
+\qquad \frac1q=\frac1p-\frac{k}{n}.                              \tag{L10}
+\]">\[
+\|D^\alpha F_0*g\|_q\leq C\|g\|_p,
+\qquad \frac1q=\frac1p-\frac{k}{n}.                              \tag{L10}
+\]</span>
+<p>Together with the multiplier case <span class="math" data-tex="\(k=0,q=p\)">\(k=0,q=p\)</span>, this is the global endpoint estimate whenever the displayed <span class="math" data-tex="\(q\)">\(q\)</span> is finite. For strictly larger <span class="math" data-tex="\(1/q\)">\(1/q\)</span>, Young's inequality applies to a localized kernel: choose <span class="math" data-tex="\(r\)">\(r\)</span> by <span class="math" data-tex="\(1+1/q=1/p+1/r\)">\(1+1/q=1/p+1/r\)</span> and use (L9). This includes <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span> precisely when <span class="math" data-tex="\(k&gt;n/p\)">\(k&gt;n/p\)</span>. Interpolation with, or the finite-measure inclusion from, the finite endpoint handles the other <span class="math" data-tex="\(p\leq q&lt;\infty\)">\(p\leq q&lt;\infty\)</span>.</p>
+<p>Consequently, if <span class="math" data-tex="\(V\subset B_1\)">\(V\subset B_1\)</span>, extend <span class="math" data-tex="\(g\in L^p(V)\)">\(g\in L^p(V)\)</span> by zero and define
+<span class="math" data-tex="\(S_Vg=(G*g)|_V\)">\(S_Vg=(G*g)|_V\)</span>. For every <span class="math" data-tex="\(j\leq m\)">\(j\leq m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|D^\alpha S_Vg\|_{L^q(V)}\leq C\|g\|_{L^p(V)},\qquad
+p\leq q\leq\infty,\quad
+\frac1q\geq\frac1p-\frac{k}{n},                                  \tag{L11}
+\]">\[
+\|D^\alpha S_Vg\|_{L^q(V)}\leq C\|g\|_{L^p(V)},\qquad
+p\leq q\leq\infty,\quad
+\frac1q\geq\frac1p-\frac{k}{n},                                  \tag{L11}
+\]</span>
+<p>where the last inequality must be strict if <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>. The constant is independent of the particular <span class="math" data-tex="\(V\subset B_1\)">\(V\subset B_1\)</span>, with the frozen polynomial and the chosen exponents fixed. To verify the smooth correction, all arguments <span class="math" data-tex="\(x-y\)">\(x-y\)</span>, for <span class="math" data-tex="\(x,y\in V\)">\(x,y\in V\)</span>, lie in <span class="math" data-tex="\(B_2\)">\(B_2\)</span>; hence each derivative of <span class="math" data-tex="\(H\)">\(H\)</span> is bounded there and its convolution is bounded by <span class="math" data-tex="\(C\|g\|_1\leq C|B_1|^{1-1/p}\|g\|_p\)">\(C\|g\|_1\leq C|B_1|^{1-1/p}\|g\|_p\)</span>. Its <span class="math" data-tex="\(L^q(V)\)">\(L^q(V)\)</span> norm has the required uniform bound. The same reasoning localizes the kernels in the strict Young estimates.</p>
+<p>Both inverse identities are exact:</p>
+<span class="math math-display" data-tex="\[
+q(D)S_Vg=g\text{ in }V,\qquad S_Vq(D)v=v\quad(v\in C_c^\infty(V)).
+\tag{L12}
+\]">\[
+q(D)S_Vg=g\text{ in }V,\qquad S_Vq(D)v=v\quad(v\in C_c^\infty(V)).
+\tag{L12}
+\]</span>
+<p>For the first, convolve (L5) with the compactly supported distribution given by the zero extension of <span class="math" data-tex="\(g\)">\(g\)</span>. For the second, differentiation may be transferred to the compactly supported smooth factor: <span class="math" data-tex="\(G*q(D)v=(q(D)G)*v=v\)">\(G*q(D)v=(q(D)G)*v=v\)</span>.</p>
+<p>For completeness, any other fundamental solution differs from <span class="math" data-tex="\(G\)">\(G\)</span> by a smooth function. If <span class="math" data-tex="\(q(D)w=0\)">\(q(D)w=0\)</span>, take a cutoff <span class="math" data-tex="\(\eta\)">\(\eta\)</span> equal to one near any prescribed compact set. Then
+<span class="math math-display" data-tex="\[
+\eta w=F_0*q(D)(\eta w)-\omega*(\eta w).
+\]">\[
+\eta w=F_0*q(D)(\eta w)-\omega*(\eta w).
+\]</span>
+Here <span class="math" data-tex="\(q(D)(\eta w)=[q(D),\eta]w\)">\(q(D)(\eta w)=[q(D),\eta]w\)</span> has compact support away from that set. The first convolution is smooth near the set because <span class="math" data-tex="\(F_0\)">\(F_0\)</span> is smooth away from zero; the second is smooth because <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is smooth and <span class="math" data-tex="\(\eta w\)">\(\eta w\)</span> has compact support. This proves the assertion locally everywhere. It also explains the smooth-remainder assertion for a regularized inverse with a different low-frequency cutoff.</p>
+<h2 id="AN03-LCE-003"><span id="an03-lce-003"></span><span id="an03-lce-003-a-parameter-in-the-constant-coefficient-estimate"></span>AN03-LCE-003 — A parameter in the constant-coefficient estimate</h2>
+<p><strong>Lemma.</strong> For a homogeneous elliptic <span class="math" data-tex="\(q\)">\(q\)</span> of degree <span class="math" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{|\alpha|\leq m} A^{m-|\alpha|}\|D^\alpha v\|_p
+\leq C\bigl(\|q(D)v\|_p+A^m\|v\|_p\bigr),\qquad A&gt;0,\quad
+v\in W^{m,p}(\mathbb R^n).                                        \tag{L13}
+\]">\[
+\sum_{|\alpha|\leq m} A^{m-|\alpha|}\|D^\alpha v\|_p
+\leq C\bigl(\|q(D)v\|_p+A^m\|v\|_p\bigr),\qquad A&gt;0,\quad
+v\in W^{m,p}(\mathbb R^n).                                        \tag{L13}
+\]</span>
+<p>The constant is independent of <span class="math" data-tex="\(A\)">\(A\)</span>. It can also be chosen uniformly when <span class="math" data-tex="\(q\)">\(q\)</span> ranges over a compact set of homogeneous elliptic polynomials of degree <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(A=1\)">\(A=1\)</span>, the Fourier identity <span class="math" data-tex="\(q b_0=1+\widehat\omega\)">\(q b_0=1+\widehat\omega\)</span> gives
+<span class="math math-display" data-tex="\[
+D^\alpha v=(D^\alpha F_0)*q(D)v-(D^\alpha\omega)*v.                \tag{L14}
+\]">\[
+D^\alpha v=(D^\alpha F_0)*q(D)v-(D^\alpha\omega)*v.                \tag{L14}
+\]</span>
+It holds first on Schwartz functions. Each first operator is bounded on <span class="math" data-tex="\(L^p\)">\(L^p\)</span> by the multiplier contract for top order, and by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel estimate for lower orders. The second kernel is Schwartz. Smooth cutoff and mollification approximate any <span class="math" data-tex="\(W^{m,p}\)">\(W^{m,p}\)</span> function in that norm, so the identity and estimate extend to the stated domain. For <span class="math" data-tex="\(w(y)=v(y/A)\)">\(w(y)=v(y/A)\)</span>, the derivative norm is
+<span class="math" data-tex="\(\|D^\alpha w\|_p=A^{n/p-|\alpha|}\|D^\alpha v\|_p\)">\(\|D^\alpha w\|_p=A^{n/p-|\alpha|}\|D^\alpha v\|_p\)</span>,
+while homogeneity gives
+<span class="math" data-tex="\(\|q(D)w\|_p=A^{n/p-m}\|q(D)v\|_p\)">\(\|q(D)w\|_p=A^{n/p-m}\|q(D)v\|_p\)</span>.
+Apply the estimate at one and multiply by <span class="math" data-tex="\(A^{m-n/p}\)">\(A^{m-n/p}\)</span>.</p>
+<p>Finally, a compact family of elliptic polynomials has a positive common minimum of <span class="math" data-tex="\(|q(\theta)|\)">\(|q(\theta)|\)</span> on the unit sphere. Its coefficients are bounded. The reciprocal differentiation identity bounds every required derivative in (L3) uniformly; the integrations by parts and the multiplier theorem use only finitely many of these bounds. The same <span class="math" data-tex="\(C\)">\(C\)</span> therefore works for the family. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-004"><span id="an03-lce-004"></span><span id="an03-lce-004-the-coefficient-table-and-a-local-inverse-in-l-p"></span>AN03-LCE-004 — The coefficient table and a local inverse in <span class="math" data-tex="\(L^p\)">\(L^p\)</span></h2>
+<p>Consider
+<span class="math math-display" data-tex="\[
+P=\sum_{|\alpha|\leq m}a_\alpha(x)D^\alpha,
+\qquad P_m=\sum_{|\alpha|=m}a_\alpha(x)D^\alpha                     \tag{L15}
+\]">\[
+P=\sum_{|\alpha|\leq m}a_\alpha(x)D^\alpha,
+\qquad P_m=\sum_{|\alpha|=m}a_\alpha(x)D^\alpha                     \tag{L15}
+\]</span>
+near zero. Assume that the coefficients of <span class="math" data-tex="\(P_m\)">\(P_m\)</span> are continuous and its frozen symbol
+<span class="math" data-tex="\(q(\xi)=\sum_{|\alpha|=m}a_\alpha(0)\xi^\alpha\)">\(q(\xi)=\sum_{|\alpha|=m}a_\alpha(0)\xi^\alpha\)</span> is elliptic. For every lower-order term set <span class="math" data-tex="\(k=m-|\alpha|&gt;0\)">\(k=m-|\alpha|&gt;0\)</span> and require the following local integrability.</p>
+<p>| Derivative gap <span class="math" data-tex="\(k\)">\(k\)</span> | Coefficient space <span class="math" data-tex="\(L^{r_\alpha}_{\rm loc}\)">\(L^{r_\alpha}_{\rm loc}\)</span> | Exponent used for <span class="math" data-tex="\(D^\alpha S_Vg\)">\(D^\alpha S_Vg\)</span> |
+| --- | --- | --- |
+| <span class="math" data-tex="\(k&lt;n/p\)">\(k&lt;n/p\)</span> | <span class="math" data-tex="\(r_\alpha=n/k\)">\(r_\alpha=n/k\)</span> | <span class="math" data-tex="\(1/q_\alpha=1/p-k/n\)">\(1/q_\alpha=1/p-k/n\)</span> |
+| <span class="math" data-tex="\(k=n/p\)">\(k=n/p\)</span> | <span class="math" data-tex="\(r_\alpha=p+\varepsilon_\alpha\)">\(r_\alpha=p+\varepsilon_\alpha\)</span>, some <span class="math" data-tex="\(\varepsilon_\alpha&gt;0\)">\(\varepsilon_\alpha&gt;0\)</span> | <span class="math" data-tex="\(q_\alpha=p(p+\varepsilon_\alpha)/\varepsilon_\alpha\)">\(q_\alpha=p(p+\varepsilon_\alpha)/\varepsilon_\alpha\)</span> |
+| <span class="math" data-tex="\(k&gt;n/p\)">\(k&gt;n/p\)</span> | <span class="math" data-tex="\(r_\alpha=p\)">\(r_\alpha=p\)</span> | <span class="math" data-tex="\(q_\alpha=\infty\)">\(q_\alpha=\infty\)</span> |</p>
+<p>There are finitely many coefficients, so different positive <span class="math" data-tex="\(\varepsilon_\alpha\)">\(\varepsilon_\alpha\)</span> cause no difficulty. At the critical gap any finite <span class="math" data-tex="\(q_\alpha\)">\(q_\alpha\)</span> is allowed by (L11). The table gives <span class="math" data-tex="\(1/p=1/r_\alpha+1/q_\alpha\)">\(1/p=1/r_\alpha+1/q_\alpha\)</span> in every row.</p>
+<p><strong>Theorem.</strong> Every sufficiently small open neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of zero has a linear operator <span class="math" data-tex="\(E:L^p(V)\to L^p(V)\)">\(E:L^p(V)\to L^p(V)\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+PEf=f\quad(f\in L^p(V)),\qquad EPv=v\quad(v\in C_c^\infty(V)),     \tag{L16}
+\]">\[
+PEf=f\quad(f\in L^p(V)),\qquad EPv=v\quad(v\in C_c^\infty(V)),     \tag{L16}
+\]</span>
+<p>and, simultaneously for all <span class="math" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+D^\alpha E:L^p(V)\longrightarrow L^q(V)\text{ bounded if }
+p\leq q\leq\infty,\quad
+\frac1q\geq\frac1p-\frac{m-|\alpha|}{n},                           \tag{L17}
+\]">\[
+D^\alpha E:L^p(V)\longrightarrow L^q(V)\text{ bounded if }
+p\leq q\leq\infty,\quad
+\frac1q\geq\frac1p-\frac{m-|\alpha|}{n},                           \tag{L17}
+\]</span>
+<p>with strict inequality when <span class="math" data-tex="\(q=\infty\)">\(q=\infty\)</span>. The equation in (L16) is a distributional equality and every term of <span class="math" data-tex="\(PEf\)">\(PEf\)</span> is represented by an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function. In particular <span class="math" data-tex="\(Ef\in W^{m,p}(V)\)">\(Ef\in W^{m,p}(V)\)</span>.</p>
+<p><strong>Proof.</strong> Use <span class="math" data-tex="\(S_V\)">\(S_V\)</span> from (L11), with the same frozen polynomial, and compute
+<span class="math math-display" data-tex="\[
+PS_V=I+R_V,\qquad
+R_Vg=\sum_{|\alpha|=m}(a_\alpha-a_\alpha(0))D^\alpha S_Vg
+       +\sum_{|\alpha|&lt;m}a_\alpha D^\alpha S_Vg.                   \tag{L18}
+\]">\[
+PS_V=I+R_V,\qquad
+R_Vg=\sum_{|\alpha|=m}(a_\alpha-a_\alpha(0))D^\alpha S_Vg
+       +\sum_{|\alpha|&lt;m}a_\alpha D^\alpha S_Vg.                   \tag{L18}
+\]</span>
+The top-order terms have norms at most
+<span class="math" data-tex="\(C\sup_V|a_\alpha-a_\alpha(0)|\|g\|_p\)">\(C\sup_V|a_\alpha-a_\alpha(0)|\|g\|_p\)</span>.
+For a lower-order term, Hölder's inequality and the corresponding row of the table give
+<span class="math math-display" data-tex="\[
+\|a_\alpha D^\alpha S_Vg\|_p
+\leq C\|a_\alpha\|_{L^{r_\alpha}(V)}\|g\|_p.                      \tag{L19}
+\]">\[
+\|a_\alpha D^\alpha S_Vg\|_p
+\leq C\|a_\alpha\|_{L^{r_\alpha}(V)}\|g\|_p.                      \tag{L19}
+\]</span>
+All <span class="math" data-tex="\(r_\alpha\)">\(r_\alpha\)</span> are finite. On shrinking the surrounding ball, the first coefficients tend to zero by continuity and the norms in (L19) tend to zero by absolute continuity of their integrals. The constants in (L11) do not grow as <span class="math" data-tex="\(V\)">\(V\)</span> shrinks inside <span class="math" data-tex="\(B_1\)">\(B_1\)</span>. Choose the ball so that <span class="math" data-tex="\(\|R_V\|\leq1/2\)">\(\|R_V\|\leq1/2\)</span> for every <span class="math" data-tex="\(V\)">\(V\)</span> contained in it.</p>
+<p>The series <span class="math" data-tex="\(B_V=\sum_{\nu=0}^\infty(-R_V)^\nu\)">\(B_V=\sum_{\nu=0}^\infty(-R_V)^\nu\)</span> converges in operator norm, since <span class="math" data-tex="\(L^p(V)\)">\(L^p(V)\)</span> is Banach. Multiplication of its finite partial sums by <span class="math" data-tex="\(I+R_V\)">\(I+R_V\)</span> leaves an error of norm at most <span class="math" data-tex="\(2^{-N}\)">\(2^{-N}\)</span>, so <span class="math" data-tex="\(B_V\)">\(B_V\)</span> is its two-sided inverse and <span class="math" data-tex="\(\|B_V\|\leq2\)">\(\|B_V\|\leq2\)</span>. Define
+<span class="math math-display" data-tex="\[
+E=S_VB_V.                                                        \tag{L20}
+\]">\[
+E=S_VB_V.                                                        \tag{L20}
+\]</span>
+Equations (L18) and (L11) give the right identity and every bound in (L17). They also justify all coefficient products used in the equation.</p>
+<p>For the left identity let <span class="math" data-tex="\(g=q(D)v\)">\(g=q(D)v\)</span>, extended by zero, where <span class="math" data-tex="\(v\in C_c^\infty(V)\)">\(v\in C_c^\infty(V)\)</span>. The second identity in (L12) gives <span class="math" data-tex="\(S_Vg=v\)">\(S_Vg=v\)</span>, and therefore <span class="math" data-tex="\((I+R_V)g=Pv\)">\((I+R_V)g=Pv\)</span>. The inverse on <span class="math" data-tex="\(L^p(V)\)">\(L^p(V)\)</span> implies <span class="math" data-tex="\(B_VPv=g\)">\(B_VPv=g\)</span>, and hence <span class="math" data-tex="\(EPv=v\)">\(EPv=v\)</span>. This checks the same <span class="math" data-tex="\(E\)">\(E\)</span> on both stated domains. It asserts neither a boundary condition for <span class="math" data-tex="\(Ef\)">\(Ef\)</span> nor uniqueness among all local solutions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-005"><span id="an03-lce-005"></span><span id="an03-lce-005-the-holder-alternative-with-its-scaling-made-explicit"></span>AN03-LCE-005 — The Hölder alternative, with its scaling made explicit</h2>
+<p>For <span class="math" data-tex="\(0&lt;\gamma&lt;1\)">\(0&lt;\gamma&lt;1\)</span>, let <span class="math" data-tex="\(\overline C^\gamma(V)\)">\(\overline C^\gamma(V)\)</span> be the bounded functions with finite seminorm
+<span class="math" data-tex="\([f]_{\gamma,V}=\sup_{x\ne y\in V}|f(x)-f(y)|/|x-y|^\gamma\)">\([f]_{\gamma,V}=\sup_{x\ne y\in V}|f(x)-f(y)|/|x-y|^\gamma\)</span>.
+On a ball <span class="math" data-tex="\(B_r\)">\(B_r\)</span> use the equivalent, scaled norm
+<span class="math math-display" data-tex="\[
+N_r(f)=\|f\|_{\infty,B_r}+r^\gamma[f]_{\gamma,B_r}.                 \tag{L21}
+\]">\[
+N_r(f)=\|f\|_{\infty,B_r}+r^\gamma[f]_{\gamma,B_r}.                 \tag{L21}
+\]</span>
+This is a Banach norm: a Cauchy sequence converges uniformly, and the difference quotient bound passes to that limit, including the Cauchy bound for the seminorm. The product inequality
+<span class="math" data-tex="\(N_r(fg)\leq N_r(f)N_r(g)\)">\(N_r(fg)\leq N_r(f)N_r(g)\)</span> follows by adding and subtracting <span class="math" data-tex="\(f(x)g(y)\)">\(f(x)g(y)\)</span>.</p>
+<p><strong>Extension.</strong> A function in this space has a unique continuous extension to <span class="math" data-tex="\(\overline B_r\)">\(\overline B_r\)</span>, by its Hölder bound. Extend it to all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> by
+<span class="math math-display" data-tex="\[
+\mathcal A_rf(x)=
+\begin{cases}
+f(x),&amp;|x|\leq r,\\
+(2-|x|/r)f(rx/|x|),&amp;r&lt;|x|&lt;2r,\\
+0,&amp;|x|\geq2r.
+\end{cases}                                                       \tag{L22}
+\]">\[
+\mathcal A_rf(x)=
+\begin{cases}
+f(x),&amp;|x|\leq r,\\
+(2-|x|/r)f(rx/|x|),&amp;r&lt;|x|&lt;2r,\\
+0,&amp;|x|\geq2r.
+\end{cases}                                                       \tag{L22}
+\]</span>
+To check the norm including pairs in different regions, let <span class="math" data-tex="\(\pi_r\)">\(\pi_r\)</span> be radial projection onto <span class="math" data-tex="\(\overline B_r\)">\(\overline B_r\)</span>, and let <span class="math" data-tex="\(\theta_r(x)=\min(1,\max(0,2-|x|/r))\)">\(\theta_r(x)=\min(1,\max(0,2-|x|/r))\)</span>. Then <span class="math" data-tex="\(\mathcal A_rf=\theta_r(f\circ\pi_r)\)">\(\mathcal A_rf=\theta_r(f\circ\pi_r)\)</span>. The projection has Lipschitz constant at most two: for exterior points expand the difference of their normalized vectors, ordering their radii; for an interior and an exterior point insert the point where their connecting segment first meets the sphere. Also
+<span class="math" data-tex="\(|\theta_r(x)-\theta_r(y)|\leq\min(1,|x-y|/r)\leq(|x-y|/r)^\gamma\)">\(|\theta_r(x)-\theta_r(y)|\leq\min(1,|x-y|/r)\leq(|x-y|/r)^\gamma\)</span>.
+The product difference estimate now gives
+<span class="math math-display" data-tex="\[
+\|\mathcal A_rf\|_\infty+r^\gamma[\mathcal A_rf]_{\gamma,\mathbb R^n}
+\leq C_\gamma N_r(f),                                             \tag{L23}
+\]">\[
+\|\mathcal A_rf\|_\infty+r^\gamma[\mathcal A_rf]_{\gamma,\mathbb R^n}
+\leq C_\gamma N_r(f),                                             \tag{L23}
+\]</span>
+with a constant independent of <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>The frozen Hölder bound.</strong> For <span class="math" data-tex="\(h\)">\(h\)</span> bounded and globally <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>-Hölder, the top-order kernels in (L6) have zero integral. Thus
+<span class="math math-display" data-tex="\[
+K_\ell*h(x)=\int K_\ell(z)(h(x-z)-h(x))\,dz,
+\quad
+\|K_\ell*h\|_\infty\leq C2^{-\ell\gamma}[h]_\gamma.                \tag{L24}
+\]">\[
+K_\ell*h(x)=\int K_\ell(z)(h(x-z)-h(x))\,dz,
+\quad
+\|K_\ell*h\|_\infty\leq C2^{-\ell\gamma}[h]_\gamma.                \tag{L24}
+\]</span>
+The derivative kernel also has zero integral, and the same computation gives
+<span class="math" data-tex="\(\|\nabla(K_\ell*h)\|_\infty\leq C2^{\ell(1-\gamma)}[h]_\gamma\)">\(\|\nabla(K_\ell*h)\|_\infty\leq C2^{\ell(1-\gamma)}[h]_\gamma\)</span>.
+For points a distance <span class="math" data-tex="\(t\leq1\)">\(t\leq1\)</span> apart, estimate a term either by twice its supremum or by <span class="math" data-tex="\(t\)">\(t\)</span> times its derivative supremum. Sum the derivative bound where <span class="math" data-tex="\(2^\ell t\leq1\)">\(2^\ell t\leq1\)</span> and the supremum bound where <span class="math" data-tex="\(2^\ell t&gt;1\)">\(2^\ell t&gt;1\)</span>. The geometric sums are at most
+<span class="math" data-tex="\(C_\gamma t^\gamma[h]_\gamma\)">\(C_\gamma t^\gamma[h]_\gamma\)</span>.
+For <span class="math" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>, the convergent supremum sum suffices. Therefore the sum defines a bounded <span class="math" data-tex="\(C^\gamma\)">\(C^\gamma\)</span> function with norm at most <span class="math" data-tex="\(C_\gamma(\|h\|_\infty+[h]_\gamma)\)">\(C_\gamma(\|h\|_\infty+[h]_\gamma)\)</span>. For compactly supported <span class="math" data-tex="\(h\)">\(h\)</span>, it is the distribution <span class="math" data-tex="\((D^\alpha F_0)*h\)">\((D^\alpha F_0)*h\)</span>: the symbol partial sums converge on Schwartz test functions, and (L24) identifies their locally uniform limit. For lower orders <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, the sum of the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> kernel norms is finite, so both the supremum and the Hölder seminorm are bounded directly by convolution. Finally, convolution with <span class="math" data-tex="\(D^\alpha H\)">\(D^\alpha H\)</span>, for <span class="math" data-tex="\(h\)">\(h\)</span> supported in <span class="math" data-tex="\(B_2\)">\(B_2\)</span> and output restricted to <span class="math" data-tex="\(B_1\)">\(B_1\)</span>, is bounded in the full <span class="math" data-tex="\(C^\gamma\)">\(C^\gamma\)</span> norm. Use the supremum of that derivative and its first derivatives on <span class="math" data-tex="\(B_3\)">\(B_3\)</span>, the mean-value theorem, and <span class="math" data-tex="\(\|h\|_1\leq|B_2|\|h\|_\infty\)">\(\|h\|_1\leq|B_2|\|h\|_\infty\)</span>.</p>
+<p>It follows that the operator <span class="math" data-tex="\(T f=(G*\mathcal A_1 f)|_{B_1}\)">\(T f=(G*\mathcal A_1 f)|_{B_1}\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\|D^\alpha Tf\|_{\overline C^\gamma(B_1)}
+\leq C\|f\|_{\overline C^\gamma(B_1)},\qquad |\alpha|\leq m.       \tag{L25}
+\]">\[
+\|D^\alpha Tf\|_{\overline C^\gamma(B_1)}
+\leq C\|f\|_{\overline C^\gamma(B_1)},\qquad |\alpha|\leq m.       \tag{L25}
+\]</span>
+This argument works directly for the full Hölder space. It does not require smooth functions to be dense in the same Hölder norm.</p>
+<p>Rescale this single solver by
+<span class="math math-display" data-tex="\[
+S_rf(x)=r^m\,T(f(r\,\cdot))(x/r),\qquad x\in B_r.
+\]">\[
+S_rf(x)=r^m\,T(f(r\,\cdot))(x/r),\qquad x\in B_r.
+\]</span>
+Homogeneity of <span class="math" data-tex="\(q\)">\(q\)</span> gives
+<span class="math math-display" data-tex="\[
+q(D)S_rf=f,\qquad
+N_r(D^\alpha S_rf)\leq C r^{m-|\alpha|}N_r(f).                    \tag{L26}
+\]">\[
+q(D)S_rf=f,\qquad
+N_r(D^\alpha S_rf)\leq C r^{m-|\alpha|}N_r(f).                    \tag{L26}
+\]</span>
+If <span class="math" data-tex="\(g=q(D)v\)">\(g=q(D)v\)</span> with <span class="math" data-tex="\(v\in C_c^\infty(B_r)\)">\(v\in C_c^\infty(B_r)\)</span>, its rescaled extension in (L22) is precisely its zero extension. Equivalently <span class="math" data-tex="\(S_rg\)">\(S_rg\)</span> is convolution with the fundamental solution <span class="math" data-tex="\(r^{m-n}G(\cdot/r)\)">\(r^{m-n}G(\cdot/r)\)</span>. Hence <span class="math" data-tex="\(S_rq(D)v=v\)">\(S_rq(D)v=v\)</span>. This remains true when <span class="math" data-tex="\(G\)">\(G\)</span> has logarithmic terms; no homogeneity assertion about <span class="math" data-tex="\(G\)">\(G\)</span> was used.</p>
+<p><strong>Theorem.</strong> If every coefficient of <span class="math" data-tex="\(P\)">\(P\)</span> is <span class="math" data-tex="\(C^\gamma\)">\(C^\gamma\)</span> near zero and its frozen principal symbol is elliptic, then on a sufficiently small centered ball there is a linear <span class="math" data-tex="\(E_\gamma\)">\(E_\gamma\)</span> on <span class="math" data-tex="\(\overline C^\gamma\)">\(\overline C^\gamma\)</span> with
+<span class="math math-display" data-tex="\[
+PE_\gamma f=f,\qquad E_\gamma Pv=v\ (v\in C_c^\infty),\qquad
+D^\alpha E_\gamma:\overline C^\gamma\to\overline C^\gamma
+\text{ bounded for }|\alpha|\leq m.                              \tag{L27}
+\]">\[
+PE_\gamma f=f,\qquad E_\gamma Pv=v\ (v\in C_c^\infty),\qquad
+D^\alpha E_\gamma:\overline C^\gamma\to\overline C^\gamma
+\text{ bounded for }|\alpha|\leq m.                              \tag{L27}
+\]</span></p>
+<p><strong>Proof.</strong> Compute <span class="math" data-tex="\(PS_r=I+R_r\)">\(PS_r=I+R_r\)</span> as in (L18). For a highest-order coefficient,
+<span class="math math-display" data-tex="\[
+N_r(a_\alpha-a_\alpha(0))\leq2r^\gamma[a_\alpha]_{\gamma,B_r}.
+\]">\[
+N_r(a_\alpha-a_\alpha(0))\leq2r^\gamma[a_\alpha]_{\gamma,B_r}.
+\]</span>
+For a lower-order coefficient its norm <span class="math" data-tex="\(N_r(a_\alpha)\)">\(N_r(a_\alpha)\)</span> remains bounded as <span class="math" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>, while (L26) supplies the extra factor <span class="math" data-tex="\(r^{m-|\alpha|}\)">\(r^{m-|\alpha|}\)</span>. The product inequality therefore gives
+<span class="math math-display" data-tex="\[
+\|R_r\|_{N_r\to N_r}\leq C\left(
+r^\gamma\sum_{|\alpha|=m}[a_\alpha]_{\gamma,B_r}
+ +\sum_{|\alpha|&lt;m}r^{m-|\alpha|}N_r(a_\alpha)\right)\longrightarrow0.
+                                                                    \tag{L28}
+\]">\[
+\|R_r\|_{N_r\to N_r}\leq C\left(
+r^\gamma\sum_{|\alpha|=m}[a_\alpha]_{\gamma,B_r}
+ +\sum_{|\alpha|&lt;m}r^{m-|\alpha|}N_r(a_\alpha)\right)\longrightarrow0.
+                                                                    \tag{L28}
+\]</span>
+Choose this norm below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and set <span class="math" data-tex="\(E_\gamma=S_r(I+R_r)^{-1}\)">\(E_\gamma=S_r(I+R_r)^{-1}\)</span>. The same geometric-series and test-function argument used for (L20) proves both identities. Equation (L26) gives the stronger estimate
+<span class="math" data-tex="\(N_r(D^\alpha E_\gamma f)\leq2C r^{m-|\alpha|}N_r(f)\)">\(N_r(D^\alpha E_\gamma f)\leq2C r^{m-|\alpha|}N_r(f)\)</span>.
+At fixed <span class="math" data-tex="\(r\)">\(r\)</span>, scaled and unscaled norms are equivalent, proving (L27). The small factor in the top terms is <span class="math" data-tex="\(r^\gamma\)">\(r^\gamma\)</span>; the unscaled Hölder seminorm of a coefficient need not decrease on smaller balls. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-006"><span id="an03-lce-006"></span><span id="an03-lce-006-an-estimate-uniform-over-open-subsets"></span>AN03-LCE-006 — An estimate uniform over open subsets</h2>
+<p>In this part the operator is the principal part <span class="math" data-tex="\(P_m\)">\(P_m\)</span> alone. Fix a compact neighborhood <span class="math" data-tex="\(K\)">\(K\)</span> of zero, contained in the coefficient domain, on which the coefficients are continuous and
+<span class="math math-display" data-tex="\[
+\left|\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha\right|
+\geq c_K|\xi|^m\qquad(x\in K,\ \xi\in\mathbb R^n).                \tag{L29}
+\]">\[
+\left|\sum_{|\alpha|=m}a_\alpha(x)\xi^\alpha\right|
+\geq c_K|\xi|^m\qquad(x\in K,\ \xi\in\mathbb R^n).                \tag{L29}
+\]</span>
+Such a <span class="math" data-tex="\(K\)">\(K\)</span> is obtained by shrinking around an elliptic point, using continuity and compactness of the unit sphere. For any open <span class="math" data-tex="\(V\subset K\)">\(V\subset K\)</span>, let
+<span class="math" data-tex="\(d_V(x)=\operatorname{dist}(x,\mathbb R^n\setminus V)\)">\(d_V(x)=\operatorname{dist}(x,\mathbb R^n\setminus V)\)</span>.</p>
+<p><strong>Theorem.</strong> There is a constant <span class="math" data-tex="\(C\)">\(C\)</span>, depending on <span class="math" data-tex="\(K,P_m,n,m,p\)">\(K,P_m,n,m,p\)</span> but not on <span class="math" data-tex="\(V\)">\(V\)</span>, such that, for <span class="math" data-tex="\(u\in W^{m,p}(V)\)">\(u\in W^{m,p}(V)\)</span> and <span class="math" data-tex="\(0\leq j\leq m\)">\(0\leq j\leq m\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|d_V^j\nabla^j u\|_{L^p(V)}
+\leq C\bigl(\|d_V^mP_mu\|_{L^p(V)}+\|u\|_{L^p(V)}\bigr)^{j/m}
+\|u\|_{L^p(V)}^{1-j/m}.                                  \tag{L30}
+\]">\[
+\|d_V^j\nabla^j u\|_{L^p(V)}
+\leq C\bigl(\|d_V^mP_mu\|_{L^p(V)}+\|u\|_{L^p(V)}\bigr)^{j/m}
+\|u\|_{L^p(V)}^{1-j/m}.                                  \tag{L30}
+\]</span>
+<p>For <span class="math" data-tex="\(j=m\)">\(j=m\)</span> this is a linear estimate, and for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> it is the identity bound. If <span class="math" data-tex="\(u=0\)">\(u=0\)</span> as an <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function, every derivative is zero, and the assertion is interpreted accordingly. Lower-order terms are not included in <span class="math" data-tex="\(P_m\)">\(P_m\)</span> in (L30).</p>
+<p><strong>Proof.</strong> The frozen polynomials
+<span class="math" data-tex="\(q_y(\xi)=\sum_{|\alpha|=m}a_\alpha(y)\xi^\alpha\)">\(q_y(\xi)=\sum_{|\alpha|=m}a_\alpha(y)\xi^\alpha\)</span>, <span class="math" data-tex="\(y\in K\)">\(y\in K\)</span>, form a compact family satisfying (L29). Thus (L13) has a common constant. Let <span class="math" data-tex="\(\eta\in C_c^\infty(B_1)\)">\(\eta\in C_c^\infty(B_1)\)</span> equal one on <span class="math" data-tex="\(B_{1/2}\)">\(B_{1/2}\)</span>. For a ball <span class="math" data-tex="\(B(y,r)\subset V\)">\(B(y,r)\subset V\)</span>, apply (L13) to <span class="math" data-tex="\(\eta((x-y)/r)u(x)\)">\(\eta((x-y)/r)u(x)\)</span>, extended by zero, with <span class="math" data-tex="\(A=M/r\)">\(A=M/r\)</span>. On <span class="math" data-tex="\(B(y,r/2)\)">\(B(y,r/2)\)</span> its derivatives equal those of <span class="math" data-tex="\(u\)">\(u\)</span>. Expanding the frozen operator gives three types of terms:
+<span class="math math-display" data-tex="\[
+q_y(D)(\eta_yu)=\eta_yP_mu+\eta_y(q_y(D)-P_m)u+[q_y(D),\eta_y]u.
+\]">\[
+q_y(D)(\eta_yu)=\eta_yP_mu+\eta_y(q_y(D)-P_m)u+[q_y(D),\eta_y]u.
+\]</span>
+The middle term is at most <span class="math" data-tex="\(\omega_a(r)|\nabla^m u|\)">\(\omega_a(r)|\nabla^m u|\)</span>, up to a fixed array constant, where <span class="math" data-tex="\(\omega_a(r)\to0\)">\(\omega_a(r)\to0\)</span> is a common modulus of continuity of the finitely many coefficients on <span class="math" data-tex="\(K\)">\(K\)</span>. Every term in the last commutator contains a derivative of <span class="math" data-tex="\(u\)">\(u\)</span> of some order <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>, multiplied by a coefficient bounded by <span class="math" data-tex="\(Cr^{j-m}\)">\(Cr^{j-m}\)</span>. Taking <span class="math" data-tex="\(p\)">\(p\)</span>th powers, using the finite-sum inequality, and multiplying by <span class="math" data-tex="\(r^{mp}\)">\(r^{mp}\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{split}
+\sum_{j=0}^m M^{p(m-j)}r^{pj}
+       \int_{B(y,r/2)}|\nabla^j u|^p
+\leq C\bigg(&amp;\int_{B(y,r)}|r^mP_mu|^p
+ +\omega_a(r)^p\int_{B(y,r)}|r^m\nabla^m u|^p\\
+ &amp;+\sum_{j&lt;m}\int_{B(y,r)}|r^j\nabla^j u|^p
+ +M^{mp}\int_{B(y,r)}|u|^p\bigg).
+\end{split}                                                       \tag{L31}
+\]">\[
+\begin{split}
+\sum_{j=0}^m M^{p(m-j)}r^{pj}
+       \int_{B(y,r/2)}|\nabla^j u|^p
+\leq C\bigg(&amp;\int_{B(y,r)}|r^mP_mu|^p
+ +\omega_a(r)^p\int_{B(y,r)}|r^m\nabla^m u|^p\\
+ &amp;+\sum_{j&lt;m}\int_{B(y,r)}|r^j\nabla^j u|^p
+ +M^{mp}\int_{B(y,r)}|u|^p\bigg).
+\end{split}                                                       \tag{L31}
+\]</span>
+All constants in this inequality are independent of <span class="math" data-tex="\(M,r,y,V\)">\(M,r,y,V\)</span>.</p>
+<p>Choose a small number <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span>, to be fixed below, and put
+<span class="math math-display" data-tex="\[
+\rho(y)=\min(r_0,d_V(y)/2).                                       \tag{L32}
+\]">\[
+\rho(y)=\min(r_0,d_V(y)/2).                                       \tag{L32}
+\]</span>
+The distance function is 1-Lipschitz, by the triangle inequality and taking an infimum. Thus <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>-Lipschitz. Every ball <span class="math" data-tex="\(B(y,\rho(y))\)">\(B(y,\rho(y))\)</span> is contained in <span class="math" data-tex="\(V\)">\(V\)</span>. The following two geometric bounds ensure uniform overlap when the centers, rather than a discrete covering, are integrated:
+<span class="math math-display" data-tex="\[
+\begin{array}{ll}
+|x-y|&lt;\rho(y)&amp;\Longrightarrow\quad
+       \rho(y)/2&lt;\rho(x)&lt;3\rho(y)/2,\\[2pt]
+|x-y|&lt;2\rho(x)/5&amp;\Longrightarrow\quad
+       4\rho(x)/5&lt;\rho(y)&lt;6\rho(x)/5
+       \quad\hbox{and}\quad |x-y|&lt;\rho(y)/2.
+\end{array}                                                       \tag{L33}
+\]">\[
+\begin{array}{ll}
+|x-y|&lt;\rho(y)&amp;\Longrightarrow\quad
+       \rho(y)/2&lt;\rho(x)&lt;3\rho(y)/2,\\[2pt]
+|x-y|&lt;2\rho(x)/5&amp;\Longrightarrow\quad
+       4\rho(x)/5&lt;\rho(y)&lt;6\rho(x)/5
+       \quad\hbox{and}\quad |x-y|&lt;\rho(y)/2.
+\end{array}                                                       \tag{L33}
+\]</span>
+They follow immediately by subtracting the two radii and using the Lipschitz bound. The second ball of centers lies in <span class="math" data-tex="\(V\)">\(V\)</span>, since <span class="math" data-tex="\(2\rho(x)/5&lt;d_V(x)\)">\(2\rho(x)/5&lt;d_V(x)\)</span>. Writing <span class="math" data-tex="\(v_n=|B_1|\)">\(v_n=|B_1|\)</span>, they imply
+<span class="math math-display" data-tex="\[
+\int_{\{y:x\in B(y,\rho(y))\}}\frac{dy}{\rho(y)^n}\leq3^n v_n,
+\qquad
+\int_{\{y:x\in B(y,\rho(y)/2)\}}\frac{dy}{\rho(y)^n}\geq3^{-n}v_n.
+                                                                    \tag{L34}
+\]">\[
+\int_{\{y:x\in B(y,\rho(y))\}}\frac{dy}{\rho(y)^n}\leq3^n v_n,
+\qquad
+\int_{\{y:x\in B(y,\rho(y)/2)\}}\frac{dy}{\rho(y)^n}\geq3^{-n}v_n.
+                                                                    \tag{L34}
+\]</span>
+For the upper bound, the centers lie in <span class="math" data-tex="\(B(x,2\rho(x))\)">\(B(x,2\rho(x))\)</span> and <span class="math" data-tex="\(\rho(y)&gt;2\rho(x)/3\)">\(\rho(y)&gt;2\rho(x)/3\)</span>. For the lower bound, integrate just over <span class="math" data-tex="\(B(x,2\rho(x)/5)\)">\(B(x,2\rho(x)/5)\)</span>, where <span class="math" data-tex="\(\rho(y)&lt;6\rho(x)/5\)">\(\rho(y)&lt;6\rho(x)/5\)</span>. The same estimates, with constants depending also on <span class="math" data-tex="\(j,p\)">\(j,p\)</span>, hold if the integrands are multiplied by <span class="math" data-tex="\(\rho(y)^{pj}\)">\(\rho(y)^{pj}\)</span>, after factoring out <span class="math" data-tex="\(\rho(x)^{pj}\)">\(\rho(x)^{pj}\)</span>.</p>
+<p>Integrate (L31), with <span class="math" data-tex="\(r=\rho(y)\)">\(r=\rho(y)\)</span>, against <span class="math" data-tex="\(dy/\rho(y)^n\)">\(dy/\rho(y)^n\)</span>. Tonelli and (L34) give
+<span class="math math-display" data-tex="\[
+\begin{split}
+\sum_{j=0}^m M^{p(m-j)}\|\rho^j\nabla^j u\|_p^p
+\leq C\bigg(&amp;\|\rho^mP_mu\|_p^p
+ +\omega_a(r_0)^p\|\rho^m\nabla^m u\|_p^p\\
+ &amp;+\sum_{j&lt;m}\|\rho^j\nabla^j u\|_p^p+M^{mp}\|u\|_p^p\bigg).
+\end{split}                                                       \tag{L35}
+\]">\[
+\begin{split}
+\sum_{j=0}^m M^{p(m-j)}\|\rho^j\nabla^j u\|_p^p
+\leq C\bigg(&amp;\|\rho^mP_mu\|_p^p
+ +\omega_a(r_0)^p\|\rho^m\nabla^m u\|_p^p\\
+ &amp;+\sum_{j&lt;m}\|\rho^j\nabla^j u\|_p^p+M^{mp}\|u\|_p^p\bigg).
+\end{split}                                                       \tag{L35}
+\]</span>
+First choose <span class="math" data-tex="\(r_0\)">\(r_0\)</span> so the coefficient of the highest-order term on the right is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Next choose <span class="math" data-tex="\(M_0\geq1\)">\(M_0\geq1\)</span> sufficiently large that the terms of all lower orders on the right can be absorbed by half of their terms on the left whenever <span class="math" data-tex="\(M\geq M_0\)">\(M\geq M_0\)</span>. Indeed each corresponding left coefficient is at least <span class="math" data-tex="\(M^p\)">\(M^p\)</span>. This proves, with <span class="math" data-tex="\(F=\|\rho^mP_mu\|_p\)">\(F=\|\rho^mP_mu\|_p\)</span> and <span class="math" data-tex="\(U=\|u\|_p\)">\(U=\|u\|_p\)</span>,
+<span class="math math-display" data-tex="\[
+\|\rho^j\nabla^j u\|_p
+\leq C\bigl(M^{j-m}F+M^jU\bigr),\qquad M\geq M_0.               \tag{L36}
+\]">\[
+\|\rho^j\nabla^j u\|_p
+\leq C\bigl(M^{j-m}F+M^jU\bigr),\qquad M\geq M_0.               \tag{L36}
+\]</span></p>
+<p>If <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> and <span class="math" data-tex="\(F&gt;M_0^mU\)">\(F&gt;M_0^mU\)</span>, choose <span class="math" data-tex="\(M=(F/U)^{1/m}\)">\(M=(F/U)^{1/m}\)</span>, obtaining
+<span class="math" data-tex="\(C F^{j/m}U^{1-j/m}\)">\(C F^{j/m}U^{1-j/m}\)</span>. If <span class="math" data-tex="\(F\leq M_0^mU\)">\(F\leq M_0^mU\)</span>, choose <span class="math" data-tex="\(M=M_0\)">\(M=M_0\)</span>, obtaining <span class="math" data-tex="\(CU\)">\(CU\)</span>. In both cases the bound is at most
+<span class="math" data-tex="\(C(F+U)^{j/m}U^{1-j/m}\)">\(C(F+U)^{j/m}U^{1-j/m}\)</span>. Finally <span class="math" data-tex="\(d_V\)">\(d_V\)</span> is bounded above by a constant depending only on the bounded set <span class="math" data-tex="\(K\)">\(K\)</span>; (L32) therefore gives <span class="math" data-tex="\(c\,d_V\leq\rho\leq d_V/2\)">\(c\,d_V\leq\rho\leq d_V/2\)</span>, with <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> depending only on <span class="math" data-tex="\(K,r_0\)">\(K,r_0\)</span>. Replacing <span class="math" data-tex="\(\rho\)">\(\rho\)</span> by <span class="math" data-tex="\(d_V\)">\(d_V\)</span> proves (L30), with a constant independent of the shape, connectedness, or boundary regularity of <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-007"><span id="an03-lce-007"></span><span id="an03-lce-007-a-lipschitz-coefficient-through-a-mollifier"></span>AN03-LCE-007 — A Lipschitz coefficient through a mollifier</h2>
+<p>We now give the exact weak product used in the remainder of the unit. If <span class="math" data-tex="\(v\in L^p_{\rm loc}\)">\(v\in L^p_{\rm loc}\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> is Lipschitz, define
+<span class="math math-display" data-tex="\[
+aD_jv=D_j(av)-(D_ja)v                                             \tag{L37}
+\]">\[
+aD_jv=D_j(av)-(D_ja)v                                             \tag{L37}
+\]</span>
+as a distribution. The two products on the right are locally integrable. This definition agrees with the usual product for smooth <span class="math" data-tex="\(v\)">\(v\)</span>, and depends continuously on <span class="math" data-tex="\(v\)">\(v\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span> on compact sets, when tested against a fixed compactly supported smooth function.</p>
+<p>If <span class="math" data-tex="\(u\in W^{m-1,p}_{\rm loc}\)">\(u\in W^{m-1,p}_{\rm loc}\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(\alpha_j&gt;0\)">\(\alpha_j&gt;0\)</span> and use (L37) with <span class="math" data-tex="\(v=D^{\alpha-e_j}u\)">\(v=D^{\alpha-e_j}u\)</span> to define <span class="math" data-tex="\(aD^\alpha u\)">\(aD^\alpha u\)</span>, <span class="math" data-tex="\(|\alpha|=m\)">\(|\alpha|=m\)</span>. This is independent of that choice: smooth approximation of <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(W^{m-1,p}\)">\(W^{m-1,p}\)</span> on a neighborhood of a test function's support makes each definition converge to the same classical product on the approximants. The continuous dependence just proved identifies the limits.</p>
+<p><strong>Commutator lemma.</strong> Suppose <span class="math" data-tex="\(a:\mathbb R^n\to\mathbb C\)">\(a:\mathbb R^n\to\mathbb C\)</span> has Lipschitz constant <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(v\in L^p(\mathbb R^n)\)">\(v\in L^p(\mathbb R^n)\)</span>, and <span class="math" data-tex="\(\varphi\in C_c^\infty(\mathbb R^n)\)">\(\varphi\in C_c^\infty(\mathbb R^n)\)</span>. Put <span class="math" data-tex="\(\varphi_\varepsilon(x)=\varepsilon^{-n}\varphi(x/\varepsilon)\)">\(\varphi_\varepsilon(x)=\varepsilon^{-n}\varphi(x/\varepsilon)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{split}
+C_\varepsilon^a v&amp;=(aD_jv)*\varphi_\varepsilon
+                     -a(D_jv*\varphi_\varepsilon),\\
+\|C_\varepsilon^a v\|_p
+&amp;\leq M\|v\|_p\int_{\mathbb R^n}
+       \bigl(|\varphi(z)|+|z|\,|D_j\varphi(z)|\bigr)\,dz,
+\end{split}                                                       \tag{L38}
+\]">\[
+\begin{split}
+C_\varepsilon^a v&amp;=(aD_jv)*\varphi_\varepsilon
+                     -a(D_jv*\varphi_\varepsilon),\\
+\|C_\varepsilon^a v\|_p
+&amp;\leq M\|v\|_p\int_{\mathbb R^n}
+       \bigl(|\varphi(z)|+|z|\,|D_j\varphi(z)|\bigr)\,dz,
+\end{split}                                                       \tag{L38}
+\]</span>
+and <span class="math" data-tex="\(C_\varepsilon^a v\to0\)">\(C_\varepsilon^a v\to0\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span> for each fixed <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> Applying (L37), or integrating by parts first for smooth <span class="math" data-tex="\(v\)">\(v\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{split}
+C_\varepsilon^a v(x)
+={}&amp;\int [a(x-y)-a(x)]v(x-y)D_j\varphi_\varepsilon(y)\,dy\\
+ &amp;-\int (D_ja)(x-y)v(x-y)\varphi_\varepsilon(y)\,dy.
+\end{split}                \tag{L39}
+\]">\[
+\begin{split}
+C_\varepsilon^a v(x)
+={}&amp;\int [a(x-y)-a(x)]v(x-y)D_j\varphi_\varepsilon(y)\,dy\\
+ &amp;-\int (D_ja)(x-y)v(x-y)\varphi_\varepsilon(y)\,dy.
+\end{split}                \tag{L39}
+\]</span>
+The right side makes sense for <span class="math" data-tex="\(v\in L^p\)">\(v\in L^p\)</span>. Its absolute value is bounded by convolution of <span class="math" data-tex="\(M|v|\)">\(M|v|\)</span> with
+<span class="math" data-tex="\(|y||D_j\varphi_\varepsilon(y)|+|\varphi_\varepsilon(y)|\)">\(|y||D_j\varphi_\varepsilon(y)|+|\varphi_\varepsilon(y)|\)</span>.
+Young's inequality yields (L38), because changing <span class="math" data-tex="\(y=\varepsilon z\)">\(y=\varepsilon z\)</span> makes that kernel's <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Approximation in <span class="math" data-tex="\(L^p\)">\(L^p\)</span> proves that (L39) represents the distribution in (L38), using the continuity of the product (L37) on compact sets. No boundedness of <span class="math" data-tex="\(a\)">\(a\)</span> on all of <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> is required; its at most linear growth also makes the original products legitimate distributions.</p>
+<p>For <span class="math" data-tex="\(h\in C_c^\infty\)">\(h\in C_c^\infty\)</span>, use the unintegrated expression
+<span class="math math-display" data-tex="\[
+C_\varepsilon^a h(x)=\int[a(x-y)-a(x)]D_jh(x-y)\varphi_\varepsilon(y)\,dy.
+\]">\[
+C_\varepsilon^a h(x)=\int[a(x-y)-a(x)]D_jh(x-y)\varphi_\varepsilon(y)\,dy.
+\]</span>
+Its <span class="math" data-tex="\(L^p\)">\(L^p\)</span> norm is at most
+<span class="math" data-tex="\(\varepsilon M\|D_jh\|_p\int|z||\varphi(z)|\,dz\)">\(\varepsilon M\|D_jh\|_p\int|z||\varphi(z)|\,dz\)</span>, which tends to zero. Given <span class="math" data-tex="\(v\)">\(v\)</span>, approximate it by such an <span class="math" data-tex="\(h\)">\(h\)</span>; (L38) bounds <span class="math" data-tex="\(C_\varepsilon^a(v-h)\)">\(C_\varepsilon^a(v-h)\)</span> uniformly in <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> first, and then <span class="math" data-tex="\(\|v-h\|_p\downarrow0\)">\(\|v-h\|_p\downarrow0\)</span>. This proves strong convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-008"><span id="an03-lce-008"></span><span id="an03-lce-008-recovering-the-highest-derivatives-from-the-equation"></span>AN03-LCE-008 — Recovering the highest derivatives from the equation</h2>
+<p><strong>Weak regularity and weighted estimate.</strong> Retain the fixed compact neighborhood and ellipticity of AN03-LCE-006, and suppose that all coefficients of <span class="math" data-tex="\(P_m\)">\(P_m\)</span> are Lipschitz on a neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>. Let <span class="math" data-tex="\(V\subset K\)">\(V\subset K\)</span> be open. If
+<span class="math math-display" data-tex="\[
+u\in W^{m-1,p}(V),\qquad P_mu\in L^p(V),                           \tag{L40}
+\]">\[
+u\in W^{m-1,p}(V),\qquad P_mu\in L^p(V),                           \tag{L40}
+\]</span>
+where <span class="math" data-tex="\(P_mu\)">\(P_mu\)</span> is defined by (L37), then <span class="math" data-tex="\(u\in W^{m,p}_{\rm loc}(V)\)">\(u\in W^{m,p}_{\rm loc}(V)\)</span>, all the weighted derivatives in (L30) belong to <span class="math" data-tex="\(L^p(V)\)">\(L^p(V)\)</span>, and (L30) holds with the same type of constant. Global unweighted highest-derivative integrability up to <span class="math" data-tex="\(\partial V\)">\(\partial V\)</span> is not asserted.</p>
+<p><strong>Proof.</strong> Fix a ball <span class="math" data-tex="\(B_0\)">\(B_0\)</span> compactly contained in <span class="math" data-tex="\(V\)">\(V\)</span>. Choose nested slightly larger balls inside <span class="math" data-tex="\(V\)">\(V\)</span>, a cutoff <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> equal to one near <span class="math" data-tex="\(\overline B_0\)">\(\overline B_0\)</span>, and a cutoff <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> equal to one on an open neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(\operatorname{supp}\chi_0\)">\(\operatorname{supp}\chi_0\)</span>. Take <span class="math" data-tex="\(\overline W\subset V\)">\(\overline W\subset V\)</span>. Set <span class="math" data-tex="\(v=\chi_0u\)">\(v=\chi_0u\)</span>, extend it by zero, and set <span class="math" data-tex="\(b_\alpha=\chi_1a_\alpha\)">\(b_\alpha=\chi_1a_\alpha\)</span>, extended by zero to <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. These <span class="math" data-tex="\(b_\alpha\)">\(b_\alpha\)</span> are globally Lipschitz and bounded. Product differentiation, justified by the smooth approximation used after (L37), gives
+<span class="math math-display" data-tex="\[
+P_mv=\chi_0P_mu+
+\sum_{|\alpha|=m}\sum_{\substack{\beta\leq\alpha\\|\beta|&lt;m}}
+ \binom{\alpha}{\beta}a_\alpha(D^{\alpha-\beta}\chi_0)D^\beta u.
+                                                                    \tag{L41}
+\]">\[
+P_mv=\chi_0P_mu+
+\sum_{|\alpha|=m}\sum_{\substack{\beta\leq\alpha\\|\beta|&lt;m}}
+ \binom{\alpha}{\beta}a_\alpha(D^{\alpha-\beta}\chi_0)D^\beta u.
+                                                                    \tag{L41}
+\]</span>
+Every term on the right is <span class="math" data-tex="\(L^p\)">\(L^p\)</span> and supported in <span class="math" data-tex="\(V\)">\(V\)</span>; its zero extension is also <span class="math" data-tex="\(\sum b_\alpha D^\alpha v\)">\(\sum b_\alpha D^\alpha v\)</span> on the whole space.</p>
+<p>Choose <span class="math" data-tex="\(\varphi\in C_c^\infty\)">\(\varphi\in C_c^\infty\)</span> of integral one and let <span class="math" data-tex="\(v_\varepsilon=v*\varphi_\varepsilon\)">\(v_\varepsilon=v*\varphi_\varepsilon\)</span>. For each top-order <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, choose <span class="math" data-tex="\(j\)">\(j\)</span> as in (L37). Applying (L38) to <span class="math" data-tex="\(D^{\alpha-e_j}v\in L^p\)">\(D^{\alpha-e_j}v\in L^p\)</span> shows
+<span class="math math-display" data-tex="\[
+\sum_{|\alpha|=m} b_\alpha D^\alpha v_\varepsilon
+=(P_mv)*\varphi_\varepsilon
+ -\sum_{|\alpha|=m}C_\varepsilon^{b_\alpha}(D^{\alpha-e_j}v)
+\longrightarrow P_mv\quad\hbox{in }L^p(\mathbb R^n).              \tag{L42}
+\]">\[
+\sum_{|\alpha|=m} b_\alpha D^\alpha v_\varepsilon
+=(P_mv)*\varphi_\varepsilon
+ -\sum_{|\alpha|=m}C_\varepsilon^{b_\alpha}(D^{\alpha-e_j}v)
+\longrightarrow P_mv\quad\hbox{in }L^p(\mathbb R^n).              \tag{L42}
+\]</span>
+For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the support of <span class="math" data-tex="\(v_\varepsilon\)">\(v_\varepsilon\)</span> is in <span class="math" data-tex="\(W\)">\(W\)</span>, where <span class="math" data-tex="\(b_\alpha=a_\alpha\)">\(b_\alpha=a_\alpha\)</span>. In particular, (L42) is convergence of <span class="math" data-tex="\(P_mv_\varepsilon\)">\(P_mv_\varepsilon\)</span> in <span class="math" data-tex="\(L^p(W)\)">\(L^p(W)\)</span>. Also <span class="math" data-tex="\(v_\varepsilon\to v\)">\(v_\varepsilon\to v\)</span> in <span class="math" data-tex="\(L^p\)">\(L^p\)</span>. Apply (L30), with <span class="math" data-tex="\(j=m\)">\(j=m\)</span> and open set <span class="math" data-tex="\(W\)">\(W\)</span>, to the smooth difference <span class="math" data-tex="\(v_\varepsilon-v_\delta\)">\(v_\varepsilon-v_\delta\)</span>. Its right side tends to zero. Since <span class="math" data-tex="\(d_W\)">\(d_W\)</span> has a positive lower bound on <span class="math" data-tex="\(\overline B_0\)">\(\overline B_0\)</span>, every highest derivative is Cauchy in <span class="math" data-tex="\(L^p(B_0)\)">\(L^p(B_0)\)</span>. Its limit is the corresponding distributional derivative of <span class="math" data-tex="\(v=u\)">\(v=u\)</span> there. This proves local <span class="math" data-tex="\(W^{m,p}\)">\(W^{m,p}\)</span> regularity.</p>
+<p>To pass to the full open set without imposing boundary regularity, put
+<span class="math" data-tex="\(V_t=\{x\in V:d_V(x)&gt;t\}\)">\(V_t=\{x\in V:d_V(x)&gt;t\}\)</span>, <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Its closure is compact in <span class="math" data-tex="\(V\)">\(V\)</span>, since <span class="math" data-tex="\(V\subset K\)">\(V\subset K\)</span> is bounded. Local regularity and a finite compact cover imply <span class="math" data-tex="\(u\in W^{m,p}(V_t)\)">\(u\in W^{m,p}(V_t)\)</span>. For <span class="math" data-tex="\(x\in V_t\)">\(x\in V_t\)</span>, its own distance function satisfies
+<span class="math math-display" data-tex="\[
+d_V(x)-t\leq d_{V_t}(x)\leq d_V(x).                               \tag{L43}
+\]">\[
+d_V(x)-t\leq d_{V_t}(x)\leq d_V(x).                               \tag{L43}
+\]</span>
+The first inequality follows because the ball of radius <span class="math" data-tex="\(d_V(x)-t\)">\(d_V(x)-t\)</span> about <span class="math" data-tex="\(x\)">\(x\)</span> lies in <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, by the Lipschitz property of <span class="math" data-tex="\(d_V\)">\(d_V\)</span>; the second follows from <span class="math" data-tex="\(V_t\subset V\)">\(V_t\subset V\)</span>. Hence, as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, the distances, extended by zero off <span class="math" data-tex="\(V_t\)">\(V_t\)</span>, increase pointwise to <span class="math" data-tex="\(d_V\)">\(d_V\)</span>. Apply (L30) on <span class="math" data-tex="\(V_t\)">\(V_t\)</span>. Its constants are independent of <span class="math" data-tex="\(t\)">\(t\)</span>. Monotone convergence for the derivative integrals, and dominated convergence for the <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(P_mu\)">\(P_mu\)</span> integrals, give (L30) on <span class="math" data-tex="\(V\)">\(V\)</span>. This also proves the asserted weighted integrability. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="AN03-LCE-009"><span id="an03-lce-009"></span><span id="an03-lce-009-annular-decay-and-infinite-order-vanishing"></span>AN03-LCE-009 — Annular decay and infinite-order vanishing</h2>
+<p>Let <span class="math" data-tex="\(P_m\)">\(P_m\)</span> be elliptic with continuous principal coefficients on a fixed neighborhood of zero. Suppose <span class="math" data-tex="\(u\in W^{m,p}_{\rm loc}(K^\circ\setminus\{0\})\)">\(u\in W^{m,p}_{\rm loc}(K^\circ\setminus\{0\})\)</span>, and for some real <span class="math" data-tex="\(N\)">\(N\)</span> and all sufficiently small <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{r&lt;|x|&lt;2r}|u|^p\,dx=O(r^N),\qquad
+|P_mu(x)|\leq C\sum_{|\alpha|&lt;m}|x|^{|\alpha|-m}|D^\alpha u(x)|
+\quad\hbox{a.e. off zero}.                                      \tag{L44}
+\]">\[
+\int_{r&lt;|x|&lt;2r}|u|^p\,dx=O(r^N),\qquad
+|P_mu(x)|\leq C\sum_{|\alpha|&lt;m}|x|^{|\alpha|-m}|D^\alpha u(x)|
+\quad\hbox{a.e. off zero}.                                      \tag{L44}
+\]</span></p>
+<p><strong>Corollary.</strong> For every <span class="math" data-tex="\(|\alpha|\leq m\)">\(|\alpha|\leq m\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{r&lt;|x|&lt;2r}|r^{|\alpha|}D^\alpha u|^p\,dx=O(r^N).             \tag{L45}
+\]">\[
+\int_{r&lt;|x|&lt;2r}|r^{|\alpha|}D^\alpha u|^p\,dx=O(r^N).             \tag{L45}
+\]</span>
+The same conclusion holds when the principal coefficients are Lipschitz and the initial assumption is only <span class="math" data-tex="\(u\in W^{m-1,p}_{\rm loc}\)">\(u\in W^{m-1,p}_{\rm loc}\)</span> off zero, with (L44) interpreted distributionally as in (L37). In that case the inequality in (L44) means that the distribution <span class="math" data-tex="\(P_mu\)">\(P_mu\)</span> has the indicated locally <span class="math" data-tex="\(L^p\)">\(L^p\)</span> representative.</p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(A_r=\{r&lt;|x|&lt;2r\}\)">\(A_r=\{r&lt;|x|&lt;2r\}\)</span>, let <span class="math" data-tex="\(d=d_{A_r}\)">\(d=d_{A_r}\)</span>, <span class="math" data-tex="\(U=\|u\|_{L^p(A_r)}\)">\(U=\|u\|_{L^p(A_r)}\)</span>, and
+<span class="math" data-tex="\(S=\sum_{j&lt;m}\|d^j\nabla^j u\|_{L^p(A_r)}\)">\(S=\sum_{j&lt;m}\|d^j\nabla^j u\|_{L^p(A_r)}\)</span>.
+The weak version is first legitimate on this annulus by AN03-LCE-008; all lower derivatives and <span class="math" data-tex="\(P_mu\)">\(P_mu\)</span> are <span class="math" data-tex="\(L^p\)">\(L^p\)</span> on it because its closure lies in the punctured neighborhood. The same is true in the original strong version. Since <span class="math" data-tex="\(d\leq r\leq|x|\)">\(d\leq r\leq|x|\)</span>, (L44) implies
+<span class="math" data-tex="\(F=\|d^mP_mu\|_p\leq C S\)">\(F=\|d^mP_mu\|_p\leq C S\)</span>. Notice also that <span class="math" data-tex="\(U\leq S\)">\(U\leq S\)</span>. Applying (L30) at every <span class="math" data-tex="\(j&lt;m\)">\(j&lt;m\)</span>,
+<span class="math math-display" data-tex="\[
+S\leq C\sum_{j&lt;m}S^{j/m}U^{1-j/m}
+\leq C S^{(m-1)/m}U^{1/m}.                                      \tag{L46}
+\]">\[
+S\leq C\sum_{j&lt;m}S^{j/m}U^{1-j/m}
+\leq C S^{(m-1)/m}U^{1/m}.                                      \tag{L46}
+\]</span>
+If <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, the desired bound is immediate. Otherwise divide by <span class="math" data-tex="\(S^{(m-1)/m}\)">\(S^{(m-1)/m}\)</span> and raise to the <span class="math" data-tex="\(m\)">\(m\)</span>th power, obtaining <span class="math" data-tex="\(S\leq CU\)">\(S\leq CU\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the sum is just <span class="math" data-tex="\(S=U\)">\(S=U\)</span>, consistent with this calculation. The top-order case of (L30) then gives <span class="math" data-tex="\(\|d^m\nabla^m u\|_p\leq C(F+U)\leq CU\)">\(\|d^m\nabla^m u\|_p\leq C(F+U)\leq CU\)</span>.</p>
+<p>On <span class="math" data-tex="\(M_r=\{4r/3&lt;|x|&lt;5r/3\}\)">\(M_r=\{4r/3&lt;|x|&lt;5r/3\}\)</span> one has <span class="math" data-tex="\(d\geq r/3\)">\(d\geq r/3\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\int_{M_r}|r^j\nabla^j u|^p\,dx\leq C U^p=O(r^N),\qquad j\leq m.
+                                                                    \tag{L47}
+\]">\[
+\int_{M_r}|r^j\nabla^j u|^p\,dx\leq C U^p=O(r^N),\qquad j\leq m.
+                                                                    \tag{L47}
+\]</span>
+To obtain the original full annulus, not just its middle, use <span class="math" data-tex="\(M_{s r}\)">\(M_{s r}\)</span> for
+<span class="math" data-tex="\(s=3/4,9/10,11/10,13/10\)">\(s=3/4,9/10,11/10,13/10\)</span>. Their radial intervals overlap and cover <span class="math" data-tex="\((r,2r)\)">\((r,2r)\)</span>: after dividing by <span class="math" data-tex="\(r\)">\(r\)</span>, they are <span class="math" data-tex="\((1,5/4)\)">\((1,5/4)\)</span>, <span class="math" data-tex="\((6/5,3/2)\)">\((6/5,3/2)\)</span>, <span class="math" data-tex="\((22/15,11/6)\)">\((22/15,11/6)\)</span>, and <span class="math" data-tex="\((26/15,13/6)\)">\((26/15,13/6)\)</span>. Their associated larger annuli still lie in the coefficient neighborhood for small <span class="math" data-tex="\(r\)">\(r\)</span>. Each application of (L47) has <span class="math" data-tex="\((sr)^N=O(r^N)\)">\((sr)^N=O(r^N)\)</span>, and <span class="math" data-tex="\(r^j\)">\(r^j\)</span> is a fixed multiple of <span class="math" data-tex="\((sr)^j\)">\((sr)^j\)</span>. Summing these four bounds proves (L45). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Under the differential inequality in (L44), the condition that its annular integral be <span class="math" data-tex="\(O(r^N)\)">\(O(r^N)\)</span> for every <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span> is therefore equivalent to the same condition for every scaled derivative in (L45). It suffices to include orders below <span class="math" data-tex="\(m\)">\(m\)</span>, because they include <span class="math" data-tex="\(u\)">\(u\)</span>; the top-order bounds then follow. This is the infinite-order vanishing statement used later in unique continuation.</p>
+<p>The annular and ball formulations agree as well. If an annular bound holds for a positive exponent <span class="math" data-tex="\(N\)">\(N\)</span>, split <span class="math" data-tex="\(B_r\setminus\{0\}\)">\(B_r\setminus\{0\}\)</span> into the disjoint annuli of inner radii <span class="math" data-tex="\(2^{-\nu-1}r\)">\(2^{-\nu-1}r\)</span>, <span class="math" data-tex="\(\nu\geq0\)">\(\nu\geq0\)</span>. Their bounds sum to at most <span class="math" data-tex="\(C r^N\sum_{\nu\geq0}2^{-(\nu+1)N}\)">\(C r^N\sum_{\nu\geq0}2^{-(\nu+1)N}\)</span>. The value at the origin has no effect on the integral. Conversely, an annulus is contained in <span class="math" data-tex="\(B_{2r}\)">\(B_{2r}\)</span>. For an unweighted derivative of order <span class="math" data-tex="\(j\)">\(j\)</span>, replace <span class="math" data-tex="\(N\)">\(N\)</span> in (L45) by <span class="math" data-tex="\(N+pj\)">\(N+pj\)</span>; this gives every desired positive decay exponent for that derivative as well. This argument establishes decay and integrability; a conclusion that the solution vanishes in a neighborhood requires a unique-continuation theorem in addition.</p>
+<h2 id="AN03-LPS-001"><span id="an03-lps-001"></span><span id="an03-lps-001-problems-with-full-solutions"></span>AN03-LPS-001 — Problems with full solutions</h2>
+<p><strong>Problem 1: all three coefficient regimes in one operator.</strong> In dimension six, take <span class="math" data-tex="\(m=4\)">\(m=4\)</span>, <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, and
+<span class="math math-display" data-tex="\[
+P=(1+|x|^{1/3})(D_1^2+\cdots+D_6^2)^2
+  +\sum_{|\alpha|\leq3}b_\alpha(x)D^\alpha.
+\]">\[
+P=(1+|x|^{1/3})(D_1^2+\cdots+D_6^2)^2
+  +\sum_{|\alpha|\leq3}b_\alpha(x)D^\alpha.
+\]</span>
+Determine sufficient local spaces for each <span class="math" data-tex="\(b_\alpha\)">\(b_\alpha\)</span>, and all admissible derivative exponents for its inverse.</p>
+<p><strong>Solution.</strong> The frozen symbol is <span class="math" data-tex="\(|\xi|^4\)">\(|\xi|^4\)</span>; the principal coefficients are continuous, although no first derivative at zero is required. The critical gap is <span class="math" data-tex="\(n/p=3\)">\(n/p=3\)</span>. Order-three coefficients have gap one and may lie in <span class="math" data-tex="\(L^6_{\rm loc}\)">\(L^6_{\rm loc}\)</span>; order-two coefficients may lie in <span class="math" data-tex="\(L^3_{\rm loc}\)">\(L^3_{\rm loc}\)</span>; order-one coefficients require <span class="math" data-tex="\(L^{2+\varepsilon_\alpha}_{\rm loc}\)">\(L^{2+\varepsilon_\alpha}_{\rm loc}\)</span>; and order-zero coefficients require only <span class="math" data-tex="\(L^2_{\rm loc}\)">\(L^2_{\rm loc}\)</span>. These coefficients can be unbounded. For example, a coefficient of order three equal to <span class="math" data-tex="\(|x|^{-1/2}\)">\(|x|^{-1/2}\)</span> near zero is in <span class="math" data-tex="\(L^6_{\rm loc}(\mathbb R^6)\)">\(L^6_{\rm loc}(\mathbb R^6)\)</span>, because its sixth power has radial integral proportional to <span class="math" data-tex="\(\int_0^r t^2\,dt\)">\(\int_0^r t^2\,dt\)</span>.</p>
+<p>On a sufficiently small neighborhood, (L17) gives order-four derivatives in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, order-three derivatives in every <span class="math" data-tex="\(L^q\)">\(L^q\)</span> with <span class="math" data-tex="\(2\leq q\leq3\)">\(2\leq q\leq3\)</span>, order-two derivatives for <span class="math" data-tex="\(2\leq q\leq6\)">\(2\leq q\leq6\)</span>, order-one derivatives for every finite <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, and the solution itself in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> as well as all these finite spaces. The first-order term uses, in particular, <span class="math" data-tex="\(q=2(2+\varepsilon_\alpha)/\varepsilon_\alpha\)">\(q=2(2+\varepsilon_\alpha)/\varepsilon_\alpha\)</span>. There is no <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> assertion for the first derivatives at this critical gap.</p>
+<p><strong>Problem 2: why <span class="math" data-tex="\(L^p\)">\(L^p\)</span> alone is insufficient in the critical multiplication step.</strong> In a small disk in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, construct <span class="math" data-tex="\(a\in L^2\)">\(a\in L^2\)</span> and <span class="math" data-tex="\(w\in W^{1,2}\)">\(w\in W^{1,2}\)</span> such that <span class="math" data-tex="\(aw\notin L^2\)">\(aw\notin L^2\)</span>. Relate this to the critical row of the table.</p>
+<p><strong>Solution.</strong> Near zero write <span class="math" data-tex="\(L(r)=\log(e/r)\)">\(L(r)=\log(e/r)\)</span> and take
+<span class="math math-display" data-tex="\[
+w(x)=L(|x|)^{1/4},\qquad
+a(x)=|x|^{-1}L(|x|)^{-5/8},
+\]">\[
+w(x)=L(|x|)^{1/4},\qquad
+a(x)=|x|^{-1}L(|x|)^{-5/8},
+\]</span>
+with smooth cutoffs away from zero. The integral for <span class="math" data-tex="\(|a|^2\)">\(|a|^2\)</span> near zero is a constant times <span class="math" data-tex="\(\int_0^r t^{-1}L(t)^{-5/4}\,dt\)">\(\int_0^r t^{-1}L(t)^{-5/4}\,dt\)</span>, which is finite. The function <span class="math" data-tex="\(w\)">\(w\)</span> is square-integrable, and its gradient has squared radial integral bounded by <span class="math" data-tex="\(C\int_0^r t^{-1}L(t)^{-3/2}\,dt&lt;\infty\)">\(C\int_0^r t^{-1}L(t)^{-3/2}\,dt&lt;\infty\)</span>. These classical derivatives off zero are also its weak derivatives: integration by parts outside a disk of radius <span class="math" data-tex="\(\delta\)">\(\delta\)</span> produces a boundary term bounded by <span class="math" data-tex="\(C\delta L(\delta)^{1/4}\)">\(C\delta L(\delta)^{1/4}\)</span>, tending to zero. Thus <span class="math" data-tex="\(w\in W^{1,2}\)">\(w\in W^{1,2}\)</span>. But <span class="math" data-tex="\(|aw|^2\)">\(|aw|^2\)</span> has radial integral <span class="math" data-tex="\(\int_0^r t^{-1}L(t)^{-3/4}\,dt=\infty\)">\(\int_0^r t^{-1}L(t)^{-3/4}\,dt=\infty\)</span>.</p>
+<p>Here <span class="math" data-tex="\(k=1=n/p\)">\(k=1=n/p\)</span>. The example disproves the unrestricted multiplication estimate <span class="math" data-tex="\(L^2\cdot W^{1,2}\subset L^2\)">\(L^2\cdot W^{1,2}\subset L^2\)</span>, which would be needed to use just <span class="math" data-tex="\(a\in L^p\)">\(a\in L^p\)</span> at the critical gap. It does not purport to be a nonexistence example for every elliptic equation. The stronger coefficient space <span class="math" data-tex="\(L^{2+\varepsilon}\)">\(L^{2+\varepsilon}\)</span>, paired with a sufficiently large finite derivative exponent, is exactly what makes (L19) valid. The displayed <span class="math" data-tex="\(a\)">\(a\)</span> belongs to no <span class="math" data-tex="\(L^{2+\varepsilon}\)">\(L^{2+\varepsilon}\)</span>, as its extra radial power already forces divergence.</p>
+<p><strong>Problem 3: check the annular weights on a singular solution profile.</strong> Let <span class="math" data-tex="\(P_2=\sum_jD_j^2=-\Delta\)">\(P_2=\sum_jD_j^2=-\Delta\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and <span class="math" data-tex="\(u(x)=|x|^\lambda\)">\(u(x)=|x|^\lambda\)</span> off zero, with <span class="math" data-tex="\(\lambda\in\mathbb R\)">\(\lambda\in\mathbb R\)</span>. Find the annular exponent and verify the differential inequality required in (L44).</p>
+<p><strong>Solution.</strong> Direct radial differentiation gives
+<span class="math" data-tex="\(-\Delta u=-\lambda(\lambda+n-2)|x|^{\lambda-2}\)">\(-\Delta u=-\lambda(\lambda+n-2)|x|^{\lambda-2}\)</span>.
+Thus <span class="math" data-tex="\(|P_2u|\leq C|x|^{-2}|u|\)">\(|P_2u|\leq C|x|^{-2}|u|\)</span>, one of the allowed terms in (L44). All derivatives exist and are locally <span class="math" data-tex="\(L^p\)">\(L^p\)</span> in the punctured neighborhood. On an annulus, changing variables <span class="math" data-tex="\(x=ry\)">\(x=ry\)</span> gives
+<span class="math math-display" data-tex="\[
+\int_{r&lt;|x|&lt;2r}|u|^p\,dx
+=r^{p\lambda+n}\int_{1&lt;|y|&lt;2}|y|^{p\lambda}\,dy.
+\]">\[
+\int_{r&lt;|x|&lt;2r}|u|^p\,dx
+=r^{p\lambda+n}\int_{1&lt;|y|&lt;2}|y|^{p\lambda}\,dy.
+\]</span>
+So <span class="math" data-tex="\(N=p\lambda+n\)">\(N=p\lambda+n\)</span>, which may be negative, zero, or positive. A derivative of order <span class="math" data-tex="\(j\leq2\)">\(j\leq2\)</span> is homogeneous of degree <span class="math" data-tex="\(\lambda-j\)">\(\lambda-j\)</span>, unless it vanishes identically. Multiplication by <span class="math" data-tex="\(r^j\)">\(r^j\)</span> restores the same power <span class="math" data-tex="\(r^{p\lambda+n}\)">\(r^{p\lambda+n}\)</span> after integration. This verifies both the weight and the exponent in (L45), including profiles that are not integrable at the origin before imposing a sufficiently positive exponent.</p>
+<p><strong>Problem 4: strong commutator convergence need not be operator norm convergence.</strong> Let <span class="math" data-tex="\(a(x)=x_j\)">\(a(x)=x_j\)</span> in (L38), and choose <span class="math" data-tex="\(\varphi\in C_c^\infty\)">\(\varphi\in C_c^\infty\)</span> of integral one. Show why the commutator tends to zero on each fixed <span class="math" data-tex="\(L^p\)">\(L^p\)</span> function even though its <span class="math" data-tex="\(L^p\)">\(L^p\)</span> operator norm does not tend to zero.</p>
+<p><strong>Solution.</strong> Formula (L39), with <span class="math" data-tex="\(D_j=-i\partial_j\)">\(D_j=-i\partial_j\)</span>, gives convolution with
+<span class="math math-display" data-tex="\[
+k_\varepsilon(y)=i\partial_{y_j}\bigl(y_j\varphi_\varepsilon(y)\bigr)
+=\varepsilon^{-n}k_1(y/\varepsilon).
+\]">\[
+k_\varepsilon(y)=i\partial_{y_j}\bigl(y_j\varphi_\varepsilon(y)\bigr)
+=\varepsilon^{-n}k_1(y/\varepsilon).
+\]</span>
+This is a nonzero smooth compactly supported kernel: if <span class="math" data-tex="\(\partial_j(y_j\varphi)=0\)">\(\partial_j(y_j\varphi)=0\)</span>, then on each line parallel to the <span class="math" data-tex="\(j\)">\(j\)</span>th axis the compactly supported function <span class="math" data-tex="\(y_j\varphi\)">\(y_j\varphi\)</span> is constant, hence zero, forcing <span class="math" data-tex="\(\varphi=0\)">\(\varphi=0\)</span>, contrary to its integral. There is <span class="math" data-tex="\(h\in C_c^\infty\)">\(h\in C_c^\infty\)</span> with <span class="math" data-tex="\(k_1*h\ne0\)">\(k_1*h\ne0\)</span>; for instance, convolution with a smooth approximate identity converges to the nonzero <span class="math" data-tex="\(k_1\)">\(k_1\)</span>. Define <span class="math" data-tex="\(h_\varepsilon(x)=\varepsilon^{-n/p}h(x/\varepsilon)\)">\(h_\varepsilon(x)=\varepsilon^{-n/p}h(x/\varepsilon)\)</span>. A change of variables gives
+<span class="math math-display" data-tex="\[
+\|h_\varepsilon\|_p=\|h\|_p,\qquad
+\|k_\varepsilon*h_\varepsilon\|_p=\|k_1*h\|_p&gt;0.
+\]">\[
+\|h_\varepsilon\|_p=\|h\|_p,\qquad
+\|k_\varepsilon*h_\varepsilon\|_p=\|k_1*h\|_p&gt;0.
+\]</span>
+Thus the operator norm is bounded below independently of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The lemma applies to a fixed input; this example changes the input with the smoothing scale. The weak regularity proof in (L42) uses precisely the strong convergence on its finitely many fixed lower derivatives.</p>
+<h2 id="reading-routes-and-scope-of-the-imports">Reading routes and scope of the imports</h2>
+<p>The mathematical antecedent for the local coefficient theorem and the subordinate estimates in this unit is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators</em>, corrected second printing, 1994, §17.1. The organization, exposition, expanded arguments and solved problems here are independently written. In particular, the finite-part construction, the scaled Hölder proof and the explicit annular cover expose steps needed for the stated generality. The earlier Vol. II antecedent has its separate interface in DEP-LCE-CS.</p>
+<p>Tao's <a href="https://www.math.ucla.edu/~tao/247a.1.06f/notes4.pdf"><em>Lecture Notes 4 for 247A</em></a>, Theorem 4.4 and Corollary 2.10, is the specified multiplier reading. His <a href="https://www.math.ucla.edu/~tao/247a.1.06f/notes2.pdf"><em>Lecture Notes 2 for 247A</em></a>, Proposition 6.1 and Corollary 6.3, is the specified fractional-integration reading. Their normalization uses <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> in the Fourier phase; the change of frequency variable gives our convention without changing the multiplier or exponent conditions.</p>
+<p>In the multiplier proof on page 20 of Notes 4, read the two intermediate gradient formulas with the frequency and scale factors restored:
+<span class="math math-display" data-tex="\[
+\nabla K_j=(2\pi i\xi m_j)^\vee,\qquad
+|\nabla K_j(x)|\lesssim 2^{j(d+1)}
+       \min\bigl(1,(2^j|x|)^{-(d+2)}\bigr).
+\]">\[
+\nabla K_j=(2\pi i\xi m_j)^\vee,\qquad
+|\nabla K_j(x)|\lesssim 2^{j(d+1)}
+       \min\bigl(1,(2^j|x|)^{-(d+2)}\bigr).
+\]</span>
+Here <span class="math" data-tex="\(d\)">\(d\)</span> is that reading's dimension. Its subsequent expression with the factor <span class="math" data-tex="\(|x|^{-d-1}\)">\(|x|^{-d-1}\)</span> already has the correct scaling. These printing corrections preserve the theorem and its <span class="math" data-tex="\(d+2\)">\(d+2\)</span>-derivative hypothesis.</p>
+<p>For a complementary proof technique, John K. Hunter's <a href="https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf"><em>Notes on Partial Differential Equations</em>, revised 18 June 2014</a>, Theorem 2.28 estimates the Newtonian potential in Hölder spaces by splitting spatial integrals. Its scope is the Laplacian; (L24)–(L26) handle arbitrary homogeneous elliptic order. Hunter's Lemma 8.11 treats a commutator for first-order systems with <span class="math" data-tex="\(C^1\)">\(C^1\)</span> coefficients in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Our proof in (L38)–(L39) gives the scalar Lipschitz, arbitrary finite <span class="math" data-tex="\(p\)">\(p\)</span> version used here. The comparisons do not substitute the smoother assumptions of those examples for the hypotheses of this unit.</p>
+<p>The imported multiplier and fractional-integration theorems retain their own harmonic-analysis prerequisites. The general constant-strength antecedent DEP-LCE-CS retains its separate dependency on the Vol. II constant-coefficient theory.</p>
+<footer><p>CC0 1.0. <a href="notices/AN-03/RIGHTS.md">Rights</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 dedication</a> · <a href="notices/AN-03/TITLE_PAGE.md">Original title</a> · <a href="notices/AN-03/HISTORY.md">Original history</a> · <a href="notices/AN-02/RENDERING.md">This rendering</a></p><p><span class="unlinked">Editable Markdown</span>. Source commit ab6fb17dcee250eb2fb6c550358b6b3362854f30.</p></footer></main></body></html>

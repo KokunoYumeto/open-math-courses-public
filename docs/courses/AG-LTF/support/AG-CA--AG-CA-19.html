@@ -1,0 +1,334 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Completion</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="completion">Completion</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Completion collects compatible answers at every finite order. Its usefulness depends on whether those answers preserve equations, submodules and dimensions. Artin–Rees will supply the required control for finite modules over Noetherian rings. We will also see exactly why both finiteness conditions matter.</p>
+<p>For an ideal <span class="math" data-tex="\(I\subseteq R\)">\(I\subseteq R\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\widehat M=\varprojlim_{n\geq1}M/I^nM,\qquad
+\widehat R=\varprojlim_{n\geq1}R/I^n.
+\tag{1}
+\]">\[
+\widehat M=\varprojlim_{n\geq1}M/I^nM,\qquad
+\widehat R=\varprojlim_{n\geq1}R/I^n.
+\tag{1}
+\]</span>
+<p>All completions in a statement use its specified ideal. Local ring completions use the maximal ideal. A module is <em>complete</em> when its canonical map to (1) is an isomorphism; this includes separatedness. We use Artin–Rees and Krull intersection from <em>Noetherian and Artinian rings</em>, Theorems 5.1 and 6.1; the ideal flatness criterion from <em>Tor and flat modules</em>, Theorem 2.1; and faithful flatness criteria and ideal contraction from <em>Faithful flatness and the local criterion for flatness</em>, Theorems 1.1 and 2.2.</p>
+<h2 id="1-compatible-choices-in-an-inverse-system">1. Compatible choices in an inverse system</h2>
+<p>For maps <span class="math" data-tex="\(A_{n+1}\to A_n\)">\(A_{n+1}\to A_n\)</span>, the inverse limit is the subgroup of <span class="math" data-tex="\(\prod_n A_n\)">\(\prod_n A_n\)</span> consisting of sequences whose neighboring coordinates agree under these maps. A map into this subgroup is precisely a compatible family of maps into all <span class="math" data-tex="\(A_n\)">\(A_n\)</span>; this proves its universal property.</p>
+<p>An inverse system is <em>Mittag–Leffler</em> if, for each fixed stage <span class="math" data-tex="\(n\)">\(n\)</span>, the descending images of all later stages in <span class="math" data-tex="\(A_n\)">\(A_n\)</span> eventually become constant. Surjective transition maps satisfy this condition. [Stacks, Tag 0595.]</p>
+<p><strong>Lemma 1.1.</strong> A countable Mittag–Leffler inverse system of nonempty sets has a nonempty limit.</p>
+<p><strong>Proof.</strong> First suppose the indices are positive integers. Let <span class="math" data-tex="\(E_n&#x27;\)">\(E_n&#x27;\)</span> be the eventual image inside <span class="math" data-tex="\(E_n\)">\(E_n\)</span>. Its elements come from every sufficiently late stage. The maps <span class="math" data-tex="\(E_{n+1}&#x27;\to E_n&#x27;\)">\(E_{n+1}&#x27;\to E_n&#x27;\)</span> are surjective: given an element in <span class="math" data-tex="\(E_n&#x27;\)">\(E_n&#x27;\)</span>, lift it from a stage beyond stabilization for both <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and take its image in <span class="math" data-tex="\(E_{n+1}\)">\(E_{n+1}\)</span>. Starting with a point of <span class="math" data-tex="\(E_1&#x27;\)">\(E_1&#x27;\)</span>, choose successive preimages. They give a compatible sequence.</p>
+<p>For a countable directed set, enumerate its indices and choose recursively an index above both the preceding chosen index and the next index in the enumeration. This is a cofinal increasing sequence. Restricting an inverse system to it preserves its limit: recover any omitted coordinate by mapping down from a chosen index above it, and compatibility makes this independent of the choice. It also preserves the Mittag–Leffler condition. Apply the integer-indexed case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2.</strong> For a short exact sequence of countable directed inverse systems of abelian groups, if <span class="math" data-tex="\((A_n)\)">\((A_n)\)</span> is Mittag–Leffler, then</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\varprojlim A_n
+\longrightarrow\varprojlim B_n
+\longrightarrow\varprojlim C_n\longrightarrow0
+\tag{2}
+\]">\[
+0\longrightarrow\varprojlim A_n
+\longrightarrow\varprojlim B_n
+\longrightarrow\varprojlim C_n\longrightarrow0
+\tag{2}
+\]</span>
+<p>is exact. [Stacks, Tags 0598, 02N1.]</p>
+<p><strong>Proof.</strong> Injectivity and the kernel assertion hold coordinate by coordinate. Fix a compatible element <span class="math" data-tex="\(c=(c_n)\)">\(c=(c_n)\)</span> in the last limit. At stage <span class="math" data-tex="\(n\)">\(n\)</span>, its set of lifts in <span class="math" data-tex="\(B_n\)">\(B_n\)</span> is a nonempty coset of <span class="math" data-tex="\(A_n\)">\(A_n\)</span>. The images of later lift sets inside this set are nested nonempty cosets of the corresponding images of <span class="math" data-tex="\(A_j\)">\(A_j\)</span> in <span class="math" data-tex="\(A_n\)">\(A_n\)</span>. Once these subgroups stabilize, the nested cosets coincide. Thus the system of lift sets is Mittag–Leffler. Lemma 1.1 supplies compatible lifts, proving surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Two descending filtrations <span class="math" data-tex="\(F_n,G_n\)">\(F_n,G_n\)</span> of the same module are <em>cofinal</em> if every term of either contains some term of the other. Their inverse-limit quotients are canonically isomorphic. To define each quotient coordinate, project from a sufficiently fine term of the other filtration. A common finer term proves independence of the choice and compatibility; using it again proves that the two resulting maps compose to the identity.</p>
+<h2 id="2-topology-and-the-powers-of-the-ideal">2. Topology and the powers of the ideal</h2>
+<p>The <span class="math" data-tex="\(I\)">\(I\)</span>-adic neighborhoods of <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span> are <span class="math" data-tex="\(m+I^nM\)">\(m+I^nM\)</span>. The kernel of <span class="math" data-tex="\(M\to\widehat M\)">\(M\to\widehat M\)</span> is <span class="math" data-tex="\(\bigcap_n I^nM\)">\(\bigcap_n I^nM\)</span>. The closure of a submodule <span class="math" data-tex="\(N\)">\(N\)</span> is
+<span class="math" data-tex="\(\bigcap_n(N+I^nM)\)">\(\bigcap_n(N+I^nM)\)</span>, directly from this neighborhood description. Ring operations and module actions on the limits are defined coordinatewise, so <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> is a <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span>-module.</p>
+<p><strong>Lemma 2.1.</strong> For any ring and any submodule <span class="math" data-tex="\(N\subseteq M\)">\(N\subseteq M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\varprojlim N/(N\cap I^nM)
+\longrightarrow\widehat M
+\longrightarrow\widehat{M/N}\longrightarrow0
+\tag{3}
+\]">\[
+0\longrightarrow\varprojlim N/(N\cap I^nM)
+\longrightarrow\widehat M
+\longrightarrow\widehat{M/N}\longrightarrow0
+\tag{3}
+\]</span>
+<p>is exact. In particular completion preserves surjections.</p>
+<p><strong>Proof.</strong> The corresponding quotient sequence is exact at each stage: the quotient filtration on <span class="math" data-tex="\(M/N\)">\(M/N\)</span> is <span class="math" data-tex="\(I^n(M/N)\)">\(I^n(M/N)\)</span>. The transition maps on the left are surjective, since they are quotients of the same module <span class="math" data-tex="\(N\)">\(N\)</span>. Apply Theorem 1.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The left term in (3) uses the <em>induced</em> filtration on <span class="math" data-tex="\(N\)">\(N\)</span>, which need not be its own <span class="math" data-tex="\(I\)">\(I\)</span>-adic filtration.</p>
+<p><strong>Proposition 2.2.</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is finitely generated, then for every <span class="math" data-tex="\(R\)">\(R\)</span>-module <span class="math" data-tex="\(M\)">\(M\)</span>, without a finiteness condition on <span class="math" data-tex="\(M\)">\(M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+I^a\widehat M=\ker(\widehat M\to M/I^aM),\qquad
+\widehat M/I^a\widehat M=M/I^aM.
+\tag{4}
+\]">\[
+I^a\widehat M=\ker(\widehat M\to M/I^aM),\qquad
+\widehat M/I^a\widehat M=M/I^aM.
+\tag{4}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> is <span class="math" data-tex="\(I\)">\(I\)</span>-adically complete. [Stacks, Tag 05GG; the theorem is attributed there to Matlis, and the finite-generator proof to Bjorn Poonen (5 November 2016).]</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(n\geq a\)">\(n\geq a\)</span>, apply Theorem 1.2 to</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow I^aM/I^nM
+\longrightarrow M/I^nM\longrightarrow M/I^aM\longrightarrow0.
+\tag{5}
+\]">\[
+0\longrightarrow I^aM/I^nM
+\longrightarrow M/I^nM\longrightarrow M/I^aM\longrightarrow0.
+\tag{5}
+\]</span>
+<p>The left system has surjective transitions. Its limit is the completion of <span class="math" data-tex="\(I^aM\)">\(I^aM\)</span>, because the latter's own filtration is
+<span class="math" data-tex="\(I^b(I^aM)=I^{a+b}M\)">\(I^b(I^aM)=I^{a+b}M\)</span>. Choose finite generators <span class="math" data-tex="\(h_1,\ldots,h_r\)">\(h_1,\ldots,h_r\)</span> of <span class="math" data-tex="\(I^a\)">\(I^a\)</span>. The surjection <span class="math" data-tex="\(M^r\to I^aM\)">\(M^r\to I^aM\)</span>, given by these generators, remains surjective on completion by Lemma 2.1. Completion commutes with this finite direct sum, as is seen coordinatewise. Composing with the injection supplied by (5), its image in <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> is exactly <span class="math" data-tex="\(I^a\widehat M\)">\(I^a\widehat M\)</span>. This proves the kernel identity and the quotient identity. Taking their compatible inverse limits proves that the canonical map from <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span> to its completion is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inverse-limit topology always uses the kernels of the projections in (1). Proposition 2.2 identifies them with ideal powers when <span class="math" data-tex="\(I\)">\(I\)</span> is finite. Without that hypothesis, the two topologies can differ; a completion can fail to be complete for its own maximal ideal, as Exercise 7.6 shows.</p>
+<p>For any complete ring with respect to an ideal <span class="math" data-tex="\(J\)">\(J\)</span>, one has <span class="math" data-tex="\(J\subseteq\operatorname{Jac}(R)\)">\(J\subseteq\operatorname{Jac}(R)\)</span>. Indeed, for <span class="math" data-tex="\(u\in J\)">\(u\in J\)</span>, the partial sums of <span class="math" data-tex="\(\sum_{i\geq0}u^i\)">\(\sum_{i\geq0}u^i\)</span> converge; multiplication by <span class="math" data-tex="\(1-u\)">\(1-u\)</span> gives one in the limit. Applying this to every <span class="math" data-tex="\(u=av\)">\(u=av\)</span>, <span class="math" data-tex="\(v\in J\)">\(v\in J\)</span>, proves the Jacobson radical assertion by its unit characterization.</p>
+<p><strong>Proposition 2.3.</strong> Completion at a maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is a local ring with residue field <span class="math" data-tex="\(R/\mathfrak m\)">\(R/\mathfrak m\)</span>. Its maximal ideal is the kernel of projection to that field; when <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is finite, it equals <span class="math" data-tex="\(\mathfrak m\widehat R\)">\(\mathfrak m\widehat R\)</span>.</p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(R/\mathfrak m^n\)">\(R/\mathfrak m^n\)</span> is local: the radical of <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span> is <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, so there is exactly one maximal ideal. An element of the limit with nonzero residue has a unit in every coordinate. Their inverses are compatible and give its inverse in the limit. The projection to <span class="math" data-tex="\(R/\mathfrak m\)">\(R/\mathfrak m\)</span> is surjective, by successive lifting through the surjective transition maps. Hence its kernel is the unique maximal ideal. The last assertion is (4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-noetherian-exactness-tensoring-and-flatness">3. Noetherian exactness, tensoring and flatness</h2>
+<p><strong>Theorem 3.1.</strong> If <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian, completion is exact on finite <span class="math" data-tex="\(R\)">\(R\)</span>-modules, and for every such module</p>
+<span class="math math-display" data-tex="\[
+M\otimes_R\widehat R\ \cong\ \widehat M.
+\tag{6}
+\]">\[
+M\otimes_R\widehat R\ \cong\ \widehat M.
+\tag{6}
+\]</span>
+<p>[Stacks, Tag 00MA.]</p>
+<p><strong>Proof.</strong> In a short exact sequence <span class="math" data-tex="\(0\to N\to M\to L\to0\)">\(0\to N\to M\to L\to0\)</span> of finite modules, Artin–Rees supplies <span class="math" data-tex="\(c\)">\(c\)</span> with</p>
+<span class="math math-display" data-tex="\[
+I^nN\subseteq N\cap I^nM\subseteq I^{n-c}N
+\quad(n\geq c).
+\tag{7}
+\]">\[
+I^nN\subseteq N\cap I^nM\subseteq I^{n-c}N
+\quad(n\geq c).
+\tag{7}
+\]</span>
+<p>These filtrations on <span class="math" data-tex="\(N\)">\(N\)</span> are cofinal. Lemma 2.1 and the cofinal-filtration comparison turn (3) into the required exact sequence
+<span class="math" data-tex="\(0\to\widehat N\to\widehat M\to\widehat L\to0\)">\(0\to\widehat N\to\widehat M\to\widehat L\to0\)</span>.</p>
+<p>A finite <span class="math" data-tex="\(M\)">\(M\)</span> has a finite presentation
+<span class="math math-display" data-tex="\[
+R^r\xrightarrow{A}R^s\longrightarrow M\longrightarrow0,
+\]">\[
+R^r\xrightarrow{A}R^s\longrightarrow M\longrightarrow0,
+\]</span>
+because kernels of maps between finite modules over a Noetherian ring are finite. Write <span class="math" data-tex="\(K=\operatorname{im}A\)">\(K=\operatorname{im}A\)</span>. Exactness just proved applies to <span class="math" data-tex="\(0\to K\to R^s\to M\to0\)">\(0\to K\to R^s\to M\to0\)</span>, and completion preserves the surjection <span class="math" data-tex="\(R^r\to K\)">\(R^r\to K\)</span> by Lemma 2.1. Consequently completing the presentation is right exact, with cokernel <span class="math" data-tex="\(\widehat M\)">\(\widehat M\)</span>.</p>
+<p>Tensoring the same presentation with <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> is right exact as well. Indeed, for any target module, balanced bilinear maps on the free generators and the tensor factor descend uniquely to the presented module precisely when they vanish on the relations. The tensor universal property therefore identifies maps from <span class="math" data-tex="\(M\otimes_R\widehat R\)">\(M\otimes_R\widehat R\)</span> to every target with maps from the cokernel of the tensor presentation. This proves right exactness directly.</p>
+<p>Completion commutes with each finite free module, and tensoring <span class="math" data-tex="\(R^j\)">\(R^j\)</span> gives <span class="math" data-tex="\(\widehat R^j\)">\(\widehat R^j\)</span>. Both resulting presentations therefore have the same map <span class="math" data-tex="\(\widehat R^r\xrightarrow{A}\widehat R^s\)">\(\widehat R^r\xrightarrow{A}\widehat R^s\)</span>, with the original matrix entries. The identity on this common presentation identifies its two cokernels, giving the natural isomorphism (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2.</strong> For a Noetherian <span class="math" data-tex="\(R\)">\(R\)</span>, the map <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span> is flat. If <span class="math" data-tex="\(I\subseteq\operatorname{Jac}(R)\)">\(I\subseteq\operatorname{Jac}(R)\)</span>, it is faithfully flat.
+[Stacks, Tags 00MB, 00MC.]</p>
+<p><strong>Proof.</strong> Every ideal <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span> is finite. Theorem 3.1 identifies its tensor map
+<span class="math" data-tex="\(J\otimes_R\widehat R\to\widehat R\)">\(J\otimes_R\widehat R\to\widehat R\)</span>
+with the injection <span class="math" data-tex="\(\widehat J\to\widehat R\)">\(\widehat J\to\widehat R\)</span>. The ideal criterion for flatness applies.</p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is in every maximal ideal <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, the completion of <span class="math" data-tex="\(R/\mathfrak m\)">\(R/\mathfrak m\)</span> is itself. Formula (6) gives
+<span class="math" data-tex="\(\widehat R/\mathfrak m\widehat R=R/\mathfrak m\ne0\)">\(\widehat R/\mathfrak m\widehat R=R/\mathfrak m\ne0\)</span>.
+The maximal-residue criterion for a flat module makes <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> faithfully flat. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Faithful flatness gives an injection <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span>, and for every ideal <span class="math" data-tex="\(J\)">\(J\)</span> of <span class="math" data-tex="\(R\)">\(R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+J\widehat R\cap R=J.
+\tag{8}
+\]">\[
+J\widehat R\cap R=J.
+\tag{8}
+\]</span>
+<p>These follow from the universal injection and ideal-contraction theorem of the faithful flatness lesson. For local completion, <span class="math" data-tex="\(I=\mathfrak m\)">\(I=\mathfrak m\)</span> always satisfies the hypothesis.</p>
+<p><strong>Theorem 3.3.</strong> If <span class="math" data-tex="\(R\)">\(R\)</span> is Noetherian, then <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> is Noetherian and complete with respect to <span class="math" data-tex="\(J=I\widehat R\)">\(J=I\widehat R\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\widehat R/J^n=R/I^n,\qquad
+\operatorname{gr}_J\widehat R=\operatorname{gr}_I R.
+\tag{9}
+\]">\[
+\widehat R/J^n=R/I^n,\qquad
+\operatorname{gr}_J\widehat R=\operatorname{gr}_I R.
+\tag{9}
+\]</span>
+<p>[Stacks, Tags 05GH, 0316, 031C.]</p>
+<p><strong>Proof.</strong> The ideal <span class="math" data-tex="\(I\)">\(I\)</span> is finite, so Proposition 2.2 proves completeness and the quotient identities. The extended-ideal powers are <span class="math" data-tex="\(J^n=I^n\widehat R\)">\(J^n=I^n\widehat R\)</span>. The compatible identities for two consecutive quotients identify their kernels, giving the graded-ring identity.</p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> has <span class="math" data-tex="\(r\)">\(r\)</span> generators, its associated graded ring is a quotient of
+<span class="math" data-tex="\((R/I)[T_1,\ldots,T_r]\)">\((R/I)[T_1,\ldots,T_r]\)</span>, by mapping each variable to the corresponding degree-one class. Thus the Hilbert basis theorem makes this graded ring Noetherian.</p>
+<p>Let <span class="math" data-tex="\(Q\)">\(Q\)</span> be any ideal of <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span>. Its initial classes form the homogeneous ideal
+<span class="math" data-tex="\(\bigoplus_n(Q\cap J^n)/(Q\cap J^{n+1})\)">\(\bigoplus_n(Q\cap J^n)/(Q\cap J^{n+1})\)</span>
+inside <span class="math" data-tex="\(\operatorname{gr}_J\widehat R\)">\(\operatorname{gr}_J\widehat R\)</span>. Choose finitely many homogeneous generators and lift them to <span class="math" data-tex="\(q_1,\ldots,q_\ell\in Q\)">\(q_1,\ldots,q_\ell\in Q\)</span>, of respective orders <span class="math" data-tex="\(d_i\)">\(d_i\)</span>. We prove they generate <span class="math" data-tex="\(Q\)">\(Q\)</span> itself.</p>
+<p>Starting with <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>, at step <span class="math" data-tex="\(n\)">\(n\)</span> express the degree-<span class="math" data-tex="\(n\)">\(n\)</span> class of the residual element by those generators. Lift its coefficients to <span class="math" data-tex="\(a_{i,n}\in J^{n-d_i}\)">\(a_{i,n}\in J^{n-d_i}\)</span> for <span class="math" data-tex="\(d_i\leq n\)">\(d_i\leq n\)</span>, and use zero for the other indices. Subtraction leaves a residual element in <span class="math" data-tex="\(Q\cap J^{n+1}\)">\(Q\cap J^{n+1}\)</span>. For each fixed <span class="math" data-tex="\(i\)">\(i\)</span>, the series <span class="math" data-tex="\(\sum_n a_{i,n}\)">\(\sum_n a_{i,n}\)</span> converges in the complete ring, since the orders of its terms tend to infinity. Write its sum as <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Then
+<span class="math" data-tex="\(q-\sum_i a_iq_i\)">\(q-\sum_i a_iq_i\)</span>
+belongs to every <span class="math" data-tex="\(J^n\)">\(J^n\)</span> and is zero by separatedness. Thus <span class="math" data-tex="\(Q=(q_1,\ldots,q_\ell)\)">\(Q=(q_1,\ldots,q_\ell)\)</span>. Every ideal is finite, proving Noetherianity without assuming in advance that <span class="math" data-tex="\(Q\)">\(Q\)</span> is closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When the original Noetherian ring is <span class="math" data-tex="\(I\)">\(I\)</span>-adically complete, (6) shows that every finite module is complete. If <span class="math" data-tex="\(I\)">\(I\)</span> lies in its Jacobson radical, every submodule of a finite module is closed: its finite quotient has zero intersection of ideal powers by Krull intersection, and the closure formula in §2 applies. Completeness of quotients must retain this separation condition.</p>
+<h2 id="4-local-dimension-and-regularity">4. Local dimension and regularity</h2>
+<p><strong>Theorem 4.1.</strong> For a Noetherian local ring <span class="math" data-tex="\((R,\mathfrak m,\kappa)\)">\((R,\mathfrak m,\kappa)\)</span>, its completion is a Noetherian local ring with maximal ideal <span class="math" data-tex="\(\widehat{\mathfrak m}=\mathfrak m\widehat R\)">\(\widehat{\mathfrak m}=\mathfrak m\widehat R\)</span>, residue field <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\dim\widehat R=\dim R,\qquad
+R\text{ regular}\ \Longleftrightarrow\ \widehat R\text{ regular}.
+\tag{10}
+\]">\[
+\dim\widehat R=\dim R,\qquad
+R\text{ regular}\ \Longleftrightarrow\ \widehat R\text{ regular}.
+\tag{10}
+\]</span>
+<p><strong>Proof.</strong> Propositions 2.3 and Theorem 3.3 give the ring and residue assertions. Formula (9) gives</p>
+<span class="math math-display" data-tex="\[
+\ell_{\widehat R}(\widehat R/\widehat{\mathfrak m}^{\,n})
+=\ell_R(R/\mathfrak m^n).
+\tag{11}
+\]">\[
+\ell_{\widehat R}(\widehat R/\widehat{\mathfrak m}^{\,n})
+=\ell_R(R/\mathfrak m^n).
+\tag{11}
+\]</span>
+<p>The lengths agree because both actions factor through the same quotient ring, so their submodule lattices agree. Theorem 2.1 of <em>Dimension theory of Noetherian local rings</em> identifies the degree of this Hilbert–Samuel polynomial with the local dimension. Hence the dimensions are equal. The first graded piece in (9) identifies
+<span class="math" data-tex="\(\widehat{\mathfrak m}/\widehat{\mathfrak m}^2\)">\(\widehat{\mathfrak m}/\widehat{\mathfrak m}^2\)</span>
+with <span class="math" data-tex="\(\mathfrak m/\mathfrak m^2\)">\(\mathfrak m/\mathfrak m^2\)</span>, so the embedding dimensions are equal too. Equality of embedding dimension and dimension is the definition of regularity in both rings. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Compatible truncated polynomials give, directly,</p>
+<span class="math math-display" data-tex="\[
+\widehat{k[X_1,\ldots,X_d]_{(X_1,\ldots,X_d)}}
+=k[[X_1,\ldots,X_d]].
+\tag{12}
+\]">\[
+\widehat{k[X_1,\ldots,X_d]_{(X_1,\ldots,X_d)}}
+=k[[X_1,\ldots,X_d]].
+\tag{12}
+\]</span>
+<p>At order <span class="math" data-tex="\(n\)">\(n\)</span>, only monomials of total degree smaller than <span class="math" data-tex="\(n\)">\(n\)</span> remain. Every denominator outside the maximal ideal has nonzero constant term and a truncated geometric-series inverse, so localization does not change these quotients. Their compatible coefficients are exactly formal power series. The same reasoning gives the <span class="math" data-tex="\((T)\)">\((T)\)</span>-adic completion of <span class="math" data-tex="\(k[T]\)">\(k[T]\)</span> and of <span class="math" data-tex="\(k[T]_{(T)}\)">\(k[T]_{(T)}\)</span> as <span class="math" data-tex="\(k[[T]]\)">\(k[[T]]\)</span>.</p>
+<p>The next required lesson, <a href="AG-CA--AG-CA-19S.html">Coefficient rings and the Cohen structure theorem</a>, proves coefficient-ring existence in <a href="AG-CA--AG-CA-19S.html#5-coefficient-subrings-in-every-complete-local-ring">Theorem 5.1</a> for every complete local ring, without a Noetherian or perfect-residue-field hypothesis. Its <a href="AG-CA--AG-CA-19S.html#6-the-power-series-presentation">Theorem 6.1</a> proves the <strong>Cohen structure theorem</strong>: a complete local ring with finitely generated maximal ideal is a quotient of a finite-variable power-series ring over a field or a Cohen ring. In positive residue characteristic the coefficient map may have a kernel when a power of the prime integer vanishes. The completion arguments above supply its inverse-limit prerequisites. [Stacks, Tags 0327, 032A.]</p>
+<h2 id="5-hensel-lifting-in-every-complete-local-ring">5. Hensel lifting in every complete local ring</h2>
+<p>In this section <span class="math" data-tex="\((R,\mathfrak m,\kappa)\)">\((R,\mathfrak m,\kappa)\)</span> is complete for its maximal ideal; it need not be Noetherian.</p>
+<p><strong>Theorem 5.1 (simple-root Hensel lemma).</strong> If a monic <span class="math" data-tex="\(f\in R[T]\)">\(f\in R[T]\)</span> has a root <span class="math" data-tex="\(\bar a\in\kappa\)">\(\bar a\in\kappa\)</span> with <span class="math" data-tex="\(f&#x27;(\bar a)\ne0\)">\(f&#x27;(\bar a)\ne0\)</span>, then exactly one root <span class="math" data-tex="\(a\in R\)">\(a\in R\)</span> reduces to <span class="math" data-tex="\(\bar a\)">\(\bar a\)</span>.
+[Stacks, Tag 04GM.]</p>
+<p><strong>Proof.</strong> Start with any lift <span class="math" data-tex="\(a_0\)">\(a_0\)</span>. Its derivative is a unit. Define</p>
+<span class="math math-display" data-tex="\[
+a_{n+1}=a_n-f&#x27;(a_n)^{-1}f(a_n).
+\tag{13}
+\]">\[
+a_{n+1}=a_n-f&#x27;(a_n)^{-1}f(a_n).
+\tag{13}
+\]</span>
+<p>Every <span class="math" data-tex="\(a_n\)">\(a_n\)</span> has the same residue, so every derivative remains a unit. Polynomial expansion gives
+<span class="math" data-tex="\(f(a+h)=f(a)+f&#x27;(a)h+h^2H(a,h)\)">\(f(a+h)=f(a)+f&#x27;(a)h+h^2H(a,h)\)</span>.
+Induction in (13) therefore gives</p>
+<span class="math math-display" data-tex="\[
+f(a_n)\in\mathfrak m^{2^n},\qquad
+a_{n+1}-a_n\in\mathfrak m^{2^n}.
+\tag{14}
+\]">\[
+f(a_n)\in\mathfrak m^{2^n},\qquad
+a_{n+1}-a_n\in\mathfrak m^{2^n}.
+\tag{14}
+\]</span>
+<p>Completeness supplies their limit <span class="math" data-tex="\(a\)">\(a\)</span>. Polynomial operations respect congruences modulo all powers of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, so <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> is in every such power and equals zero. If <span class="math" data-tex="\(b\)">\(b\)</span> is another root with the same residue, then
+<span class="math" data-tex="\(0=f(b)-f(a)=(b-a)(f&#x27;(a)+(b-a)H)\)">\(0=f(b)-f(a)=(b-a)(f&#x27;(a)+(b-a)H)\)</span>.
+The second factor has nonzero residue and is a unit, proving <span class="math" data-tex="\(b=a\)">\(b=a\)</span>. This argument also works for a nonmonic polynomial with the same simple-root hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2 (coprime factor lifting).</strong> If monic <span class="math" data-tex="\(f\in R[T]\)">\(f\in R[T]\)</span> reduces to a product of coprime monic polynomials <span class="math" data-tex="\(\bar g\bar h\)">\(\bar g\bar h\)</span> over <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, there are unique monic <span class="math" data-tex="\(g,h\)">\(g,h\)</span> of the same respective degrees and residues with <span class="math" data-tex="\(f=gh\)">\(f=gh\)</span>.</p>
+<p><strong>Proof.</strong> Let the degrees be <span class="math" data-tex="\(r,s\)">\(r,s\)</span>. For monic lifts <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, consider the coefficient map between free <span class="math" data-tex="\(R\)">\(R\)</span>-modules of rank <span class="math" data-tex="\(r+s\)">\(r+s\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L_{g,h}:R[T]_{&lt;r}\oplus R[T]_{&lt;s}\longrightarrow R[T]_{&lt;r+s},
+\qquad (U,V)\longmapsto hU+gV.
+\tag{15}
+\]">\[
+L_{g,h}:R[T]_{&lt;r}\oplus R[T]_{&lt;s}\longrightarrow R[T]_{&lt;r+s},
+\qquad (U,V)\longmapsto hU+gV.
+\tag{15}
+\]</span>
+<p>Its reduction is injective: if <span class="math" data-tex="\(\bar hU=-\bar gV\)">\(\bar hU=-\bar gV\)</span>, coprimality implies <span class="math" data-tex="\(\bar g\mid U\)">\(\bar g\mid U\)</span>, and the degree bound forces <span class="math" data-tex="\(U=0\)">\(U=0\)</span>; then <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. Equal finite dimensions make it an isomorphism over <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Its matrix determinant is consequently a unit in <span class="math" data-tex="\(R\)">\(R\)</span>, making (15) invertible over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>Choose initial monic lifts. Their error <span class="math" data-tex="\(E=f-gh\)">\(E=f-gh\)</span> has degree smaller than <span class="math" data-tex="\(r+s\)">\(r+s\)</span> and coefficients in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Whenever <span class="math" data-tex="\(E\)">\(E\)</span> has coefficients in <span class="math" data-tex="\(\mathfrak m^N\)">\(\mathfrak m^N\)</span>, choose <span class="math" data-tex="\((U,V)=L_{g,h}^{-1}(E)\)">\((U,V)=L_{g,h}^{-1}(E)\)</span>, whose coefficients also lie there. Replace <span class="math" data-tex="\(g,h\)">\(g,h\)</span> by <span class="math" data-tex="\(g+U,h+V\)">\(g+U,h+V\)</span>. Their new error is <span class="math" data-tex="\(-UV\)">\(-UV\)</span>, with coefficients in <span class="math" data-tex="\(\mathfrak m^{2N}\)">\(\mathfrak m^{2N}\)</span>. Iterate from <span class="math" data-tex="\(N=1\)">\(N=1\)</span>. The finitely many coefficients converge; the limits remain monic, have the prescribed degrees and residues, and multiply to <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>For uniqueness, the differences of two lifts initially have coefficients in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. The equality of their products says
+<span class="math" data-tex="\(L_{g,h}(\delta g,\delta h)=-\delta g\,\delta h\)">\(L_{g,h}(\delta g,\delta h)=-\delta g\,\delta h\)</span>.
+Its inverse puts the differences in <span class="math" data-tex="\(\mathfrak m^2\)">\(\mathfrak m^2\)</span>, then in <span class="math" data-tex="\(\mathfrak m^4\)">\(\mathfrak m^4\)</span>, and so on. Separatedness makes them zero. Degree zero factors, where the corresponding coefficient module is zero, are included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-two-ways-exactness-can-fail">6. Two ways exactness can fail</h2>
+<p><strong>Infinite modules over a Noetherian ring.</strong> Let <span class="math" data-tex="\(R=k[t]\)">\(R=k[t]\)</span>, <span class="math" data-tex="\(I=(t)\)">\(I=(t)\)</span>, and <span class="math" data-tex="\(E=\bigoplus_{j\geq1}R\)">\(E=\bigoplus_{j\geq1}R\)</span>. The map <span class="math" data-tex="\(E\to E\)">\(E\to E\)</span> multiplying the <span class="math" data-tex="\(j\)">\(j\)</span>-th coordinate by <span class="math" data-tex="\(t^{2j}\)">\(t^{2j}\)</span> is injective, with cokernel
+<span class="math" data-tex="\(\bigoplus_jR/(t^{2j})\)">\(\bigoplus_jR/(t^{2j})\)</span>.
+The completion of <span class="math" data-tex="\(E\)">\(E\)</span> consists of families <span class="math" data-tex="\(b_j\in k[[t]]\)">\(b_j\in k[[t]]\)</span> tending to zero <span class="math" data-tex="\(t\)">\(t\)</span>-adically: modulo each <span class="math" data-tex="\(t^n\)">\(t^n\)</span> only finitely many coordinates are nonzero. This follows by identifying <span class="math" data-tex="\(E/t^nE\)">\(E/t^nE\)</span> and then taking compatible coordinates.</p>
+<p>The family <span class="math" data-tex="\(b_j=t^{2j+1}\)">\(b_j=t^{2j+1}\)</span> is in the completed middle term and maps to zero in the completed cokernel. Its only possible preimage has every coordinate equal to <span class="math" data-tex="\(t\)">\(t\)</span>, which does not tend to zero. Thus completion loses middle exactness. Tensoring with <span class="math" data-tex="\(\widehat R\)">\(\widehat R\)</span> remains exact by flatness; completion and tensoring need not agree on these infinite modules. [Stacks, Section 05JF.]</p>
+<p><strong>Finite presentation over a non-Noetherian ring.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be the <span class="math" data-tex="\(k\)">\(k\)</span>-vector space with basis <span class="math" data-tex="\(u_j,v_{j,a}\)">\(u_j,v_{j,a}\)</span> for <span class="math" data-tex="\(j\geq1,a\geq0\)">\(j\geq1,a\geq0\)</span>. Put <span class="math" data-tex="\(A=k[t][[s]]\)">\(A=k[t][[s]]\)</span> and <span class="math" data-tex="\(M=V[[s]]\)">\(M=V[[s]]\)</span>, where each coefficient is a finite linear combination of basis vectors. Define an <span class="math" data-tex="\(A\)">\(A\)</span>-module structure by</p>
+<span class="math math-display" data-tex="\[
+t u_j=s^jv_{j,0},\qquad
+t v_{j,a}=v_{j,a+1}.
+\tag{16}
+\]">\[
+t u_j=s^jv_{j,0},\qquad
+t v_{j,a}=v_{j,a+1}.
+\tag{16}
+\]</span>
+<p>These actions commute with <span class="math" data-tex="\(s\)">\(s\)</span>. They define the action of <span class="math" data-tex="\(A\)">\(A\)</span>, since at each <span class="math" data-tex="\(s\)">\(s\)</span>-degree a power series calculation uses only finitely many coefficient polynomials. Both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> are <span class="math" data-tex="\(s\)">\(s\)</span>-adically separated and complete. The ring <span class="math" data-tex="\(B=A\oplus M\)">\(B=A\oplus M\)</span>, with multiplication
+<span class="math" data-tex="\((a,m)(b,n)=(ab,an+bm)\)">\((a,m)(b,n)=(ab,an+bm)\)</span>, is therefore complete too.</p>
+<p>The element <span class="math" data-tex="\(\eta=\sum_{j\geq1}s^jv_{j,0}\)">\(\eta=\sum_{j\geq1}s^jv_{j,0}\)</span> lies in the closure of <span class="math" data-tex="\(tB\)">\(tB\)</span>: its truncation before degree <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\(t\sum_{j&lt;N}u_j\)">\(t\sum_{j&lt;N}u_j\)</span>, with remainder in <span class="math" data-tex="\(s^NB\)">\(s^NB\)</span>. But <span class="math" data-tex="\(\eta\notin tB\)">\(\eta\notin tB\)</span>. If <span class="math" data-tex="\(t(a,m)=\eta\)">\(t(a,m)=\eta\)</span>, then <span class="math" data-tex="\(ta=0\)">\(ta=0\)</span> in the domain <span class="math" data-tex="\(A\)">\(A\)</span>, forcing <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. In <span class="math" data-tex="\(tm\)">\(tm\)</span>, the coefficient of <span class="math" data-tex="\(s^jv_{j,0}\)">\(s^jv_{j,0}\)</span> can only come from the coefficient of <span class="math" data-tex="\(u_j\)">\(u_j\)</span> in the degree-zero coefficient of <span class="math" data-tex="\(m\)">\(m\)</span>. Equation (16) would require that coefficient to be one for every <span class="math" data-tex="\(j\)">\(j\)</span>, impossible because that single coefficient has finite support.</p>
+<p>Thus <span class="math" data-tex="\(B/(t)\)">\(B/(t)\)</span>, although a finitely presented <span class="math" data-tex="\(B\)">\(B\)</span>-module, is not <span class="math" data-tex="\(s\)">\(s\)</span>-adically separated. Its map to its completion is not injective. Since <span class="math" data-tex="\(\widehat B=B\)">\(\widehat B=B\)</span>, tensoring it with <span class="math" data-tex="\(\widehat B\)">\(\widehat B\)</span> does not equal completion. Finite presentation alone cannot replace the Noetherian hypothesis in Theorem 3.1.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Define <span class="math" data-tex="\(\mathbb Z_p=\varprojlim_n\mathbb Z/p^n\mathbb Z\)">\(\mathbb Z_p=\varprojlim_n\mathbb Z/p^n\mathbb Z\)</span>. Show that it is a DVR and that <span class="math" data-tex="\(\mathbb Z\to\mathbb Z_p\)">\(\mathbb Z\to\mathbb Z_p\)</span> is flat. Is this map faithfully flat?</p>
+<p><strong>Exercise 7.2 (medium).</strong> Over a field of characteristic different from two, let
+<span class="math" data-tex="\(R=(k[x,y]/(y^2-x^2(1+x)))_{(x,y)}\)">\(R=(k[x,y]/(y^2-x^2(1+x)))_{(x,y)}\)</span>.
+Prove that <span class="math" data-tex="\(R\)">\(R\)</span> is a domain but its completion is isomorphic to <span class="math" data-tex="\(k[[u,v]]/(uv)\)">\(k[[u,v]]/(uv)\)</span>.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Compute the maximal-ideal completion of <span class="math" data-tex="\(\mathbb Z[x]_{(p,x)}\)">\(\mathbb Z[x]_{(p,x)}\)</span>.</p>
+<p><strong>Exercise 7.4 (medium).</strong> For a Noetherian local ring, deduce injectivity of <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span> and <span class="math" data-tex="\(J\widehat R\cap R=J\)">\(J\widehat R\cap R=J\)</span> for every ideal <span class="math" data-tex="\(J\)">\(J\)</span>, directly from faithful flatness.</p>
+<p><strong>Exercise 7.5 (hard).</strong> Prove that a Noetherian local ring is regular if and only if its completion is regular, by comparing the Hilbert–Samuel function and the cotangent space. Apply this to the completion of <span class="math" data-tex="\(k[x,y,z]_{(x,y,z)}/(xy-z^2)\)">\(k[x,y,z]_{(x,y,z)}/(xy-z^2)\)</span> in every characteristic.</p>
+<p><strong>Exercise 7.6 (hard).</strong> Complete <span class="math" data-tex="\(R_0=k[X_1,X_2,\ldots]_{(X_1,X_2,\ldots)}\)">\(R_0=k[X_1,X_2,\ldots]_{(X_1,X_2,\ldots)}\)</span> at its maximal ideal. Describe its limit ring <span class="math" data-tex="\(C\)">\(C\)</span>, show that its maximal ideal differs from the extended original ideal, and prove that <span class="math" data-tex="\(C\)">\(C\)</span> is not complete for its own maximal ideal.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> Localizing <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> at <span class="math" data-tex="\((p)\)">\((p)\)</span> does not change <span class="math" data-tex="\(\mathbb Z/p^n\)">\(\mathbb Z/p^n\)</span>: every integer prime to <span class="math" data-tex="\(p\)">\(p\)</span> has an inverse there. Hence <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is also the completion of the DVR <span class="math" data-tex="\(\mathbb Z_{(p)}\)">\(\mathbb Z_{(p)}\)</span>. Theorem 4.1 makes it regular local of dimension one, with maximal ideal generated by <span class="math" data-tex="\(p\)">\(p\)</span>. Theorem 1.1 of <em>Regular local rings</em> also makes it a domain. The DVR characterization in Theorem 1.2 of <em>Discrete valuation rings, normal rings and Serre's criterion</em> now makes it a DVR. Theorem 3.2 applied to the Noetherian ring <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> gives flatness. It is not faithfully flat over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>: a prime integer <span class="math" data-tex="\(q\ne p\)">\(q\ne p\)</span> is a unit in every coordinate, so
+<span class="math" data-tex="\((\mathbb Z/q)\otimes_{\mathbb Z}\mathbb Z_p=0\)">\((\mathbb Z/q)\otimes_{\mathbb Z}\mathbb Z_p=0\)</span>
+although <span class="math" data-tex="\(\mathbb Z/q\ne0\)">\(\mathbb Z/q\ne0\)</span>.</p>
+<p><strong>Solution 7.2.</strong> The rational function <span class="math" data-tex="\(1+x\)">\(1+x\)</span> is not a square in <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span>, because its order at <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span> is one, whereas a rational square has even order. Thus <span class="math" data-tex="\(y^2-x^2(1+x)\)">\(y^2-x^2(1+x)\)</span> is irreducible over <span class="math" data-tex="\(k(x)\)">\(k(x)\)</span>; a root would make <span class="math" data-tex="\(1+x\)">\(1+x\)</span> a square. Gauss factorization and monic division show that it is prime in <span class="math" data-tex="\(k[x,y]\)">\(k[x,y]\)</span>. Its quotient and the indicated localization are domains.</p>
+<p>By (12) and finite-module exactness,</p>
+<span class="math math-display" data-tex="\[
+\widehat R=k[[x,y]]/(y^2-x^2(1+x)).
+\tag{17}
+\]">\[
+\widehat R=k[[x,y]]/(y^2-x^2(1+x)).
+\tag{17}
+\]</span>
+<p>Apply Theorem 5.1 in <span class="math" data-tex="\(k[[x]]\)">\(k[[x]]\)</span> to <span class="math" data-tex="\(G^2-(1+x)\)">\(G^2-(1+x)\)</span>, with residue root one and derivative two. There is <span class="math" data-tex="\(g(x)\)">\(g(x)\)</span> with <span class="math" data-tex="\(g(0)=1\)">\(g(0)=1\)</span> and <span class="math" data-tex="\(g(x)^2=1+x\)">\(g(x)^2=1+x\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+u=y-xg(x),\qquad v=y+xg(x).
+\tag{18}
+\]">\[
+u=y-xg(x),\qquad v=y+xg(x).
+\tag{18}
+\]</span>
+<p>This is an invertible formal change of coordinates. To verify it, the series <span class="math" data-tex="\(F(x)=xg(x)\)">\(F(x)=xg(x)\)</span> has leading coefficient one and constant term zero. Its compositional inverse is constructed coefficient by coefficient: after choosing coefficients through degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, the coefficient in degree <span class="math" data-tex="\(n\)">\(n\)</span> of <span class="math" data-tex="\(F(H(T))\)">\(F(H(T))\)</span> contains the new coefficient of <span class="math" data-tex="\(H\)">\(H\)</span> with coefficient one, so a unique choice makes it equal to <span class="math" data-tex="\(T\)">\(T\)</span>. This gives a right inverse; the same uniqueness gives a two-sided inverse. The inverse of (18) is
+<span class="math" data-tex="\(x=F^{-1}((v-u)/2)\)">\(x=F^{-1}((v-u)/2)\)</span>, <span class="math" data-tex="\(y=(u+v)/2\)">\(y=(u+v)/2\)</span>.
+All substitutions have zero constant term and are well-defined on formal series. The equation becomes <span class="math" data-tex="\(uv\)">\(uv\)</span>. Neither <span class="math" data-tex="\(u\)">\(u\)</span> nor <span class="math" data-tex="\(v\)">\(v\)</span> vanishes in <span class="math" data-tex="\(k[[u,v]]/(uv)\)">\(k[[u,v]]/(uv)\)</span>, as reduction modulo the other variable shows, but their product vanishes. The completed local ring is not a domain.</p>
+<p><strong>Solution 7.3.</strong> Write <span class="math" data-tex="\(\mathfrak m=(p,x)\)">\(\mathfrak m=(p,x)\)</span>. The ring
+<span class="math" data-tex="\(\mathbb Z[x]/\mathfrak m^n\)">\(\mathbb Z[x]/\mathfrak m^n\)</span> is local Artinian, so denominators outside <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> are already units and localization does not change it. Its elements have representatives of degree smaller than <span class="math" data-tex="\(n\)">\(n\)</span>, with the coefficient of <span class="math" data-tex="\(x^i\)">\(x^i\)</span> taken modulo <span class="math" data-tex="\(p^{n-i}\)">\(p^{n-i}\)</span>. This follows from the generators <span class="math" data-tex="\(p^{n-i}x^i\)">\(p^{n-i}x^i\)</span>, <span class="math" data-tex="\(0\leq i\leq n\)">\(0\leq i\leq n\)</span>, of <span class="math" data-tex="\((p,x)^n\)">\((p,x)^n\)</span>. Compatible coefficients therefore give</p>
+<span class="math math-display" data-tex="\[
+\widehat{\mathbb Z[x]_{(p,x)}}=\mathbb Z_p[[x]].
+\tag{19}
+\]">\[
+\widehat{\mathbb Z[x]_{(p,x)}}=\mathbb Z_p[[x]].
+\tag{19}
+\]</span>
+<p>Conversely every such series determines the described truncated polynomials, so this is a bijection respecting addition and multiplication. Its maximal ideal is <span class="math" data-tex="\((p,x)\)">\((p,x)\)</span>. The coefficient congruences also identify its limit topology with the <span class="math" data-tex="\((p,x)\)">\((p,x)\)</span>-adic topology.</p>
+<p><strong>Solution 7.4.</strong> Theorem 3.2 makes <span class="math" data-tex="\(R\to\widehat R\)">\(R\to\widehat R\)</span> faithfully flat. Theorem 2.2 of the faithful flatness lesson says that <span class="math" data-tex="\(M\to M\otimes_R\widehat R\)">\(M\to M\otimes_R\widehat R\)</span> is injective for every module. For <span class="math" data-tex="\(M=R\)">\(M=R\)</span> this gives the first assertion. For <span class="math" data-tex="\(M=R/J\)">\(M=R/J\)</span>, its target is <span class="math" data-tex="\(\widehat R/J\widehat R\)">\(\widehat R/J\widehat R\)</span>; the kernel consists exactly of <span class="math" data-tex="\((J\widehat R\cap R)/J\)">\((J\widehat R\cap R)/J\)</span>, giving the second assertion. No separate assumption that <span class="math" data-tex="\(J\)">\(J\)</span> is the completion ideal is involved.</p>
+<p><strong>Solution 7.5.</strong> The quotients in (9) have the same submodules and composition factors over either ring, so their lengths agree for every <span class="math" data-tex="\(n\)">\(n\)</span>. Their eventual Hilbert–Samuel polynomials are identical. The dimension theorem gives equal dimensions. The degree-one graded pieces are the same vector space over the same residue field, so the embedding dimensions agree. The equality defining regularity holds for one ring exactly when it holds for the other.</p>
+<p>For the cone, §6 of <em>Regular local rings</em> gives local dimension two at the origin in every characteristic. Its maximal ideal has three independent classes modulo its square, because <span class="math" data-tex="\(xy-z^2\)">\(xy-z^2\)</span> has no linear term. Completion gives <span class="math" data-tex="\(k[[x,y,z]]/(xy-z^2)\)">\(k[[x,y,z]]/(xy-z^2)\)</span>, by the quotient computation used in (17). Its dimension is therefore two and its embedding dimension three. Both local rings are nonregular, including in characteristic two.</p>
+<p><strong>Solution 7.6.</strong> Modulo degree <span class="math" data-tex="\(n\)">\(n\)</span>, a polynomial with nonzero constant term has a finite geometric-series inverse. Thus localization does not change the quotients, and <span class="math" data-tex="\(C\)">\(C\)</span> consists of series with only finitely many nonzero monomials in each total degree. Let <span class="math" data-tex="\(K_n\)">\(K_n\)</span> be the series of degrees at least <span class="math" data-tex="\(n\)">\(n\)</span>. It is complete and separated for this degree filtration. Proposition 2.3 makes it local with maximal ideal <span class="math" data-tex="\(\mathfrak n=K_1\)">\(\mathfrak n=K_1\)</span>.</p>
+<p>The series <span class="math" data-tex="\(\sum_{j\geq1}X_j^j\)">\(\sum_{j\geq1}X_j^j\)</span> is in <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> but not in <span class="math" data-tex="\((X_1,X_2,\ldots)C\)">\((X_1,X_2,\ldots)C\)</span>. A member of the latter uses finitely many of these variable generators. Setting them to zero kills that member but leaves a nonzero tail of the displayed series. Hence the two ideals differ.</p>
+<p>We next show <span class="math" data-tex="\(K_2\ne\mathfrak n^2\)">\(K_2\ne\mathfrak n^2\)</span>. Partition variables into disjoint blocks <span class="math" data-tex="\(B_j\)">\(B_j\)</span> of size <span class="math" data-tex="\(2j+1\)">\(2j+1\)</span>. Choose strictly increasing integers <span class="math" data-tex="\(e_j&gt;1\)">\(e_j&gt;1\)</span> not divisible by the characteristic, and set</p>
+<span class="math math-display" data-tex="\[
+z=\sum_{j\geq1}z_j,\qquad z_j=\sum_{X\in B_j}X^{e_j}.
+\tag{20}
+\]">\[
+z=\sum_{j\geq1}z_j,\qquad z_j=\sum_{X\in B_j}X^{e_j}.
+\tag{20}
+\]</span>
+<p>This is an element of <span class="math" data-tex="\(K_2\)">\(K_2\)</span>. Suppose <span class="math" data-tex="\(z=\sum_{i=1}^t f_i g_i\)">\(z=\sum_{i=1}^t f_i g_i\)</span> with <span class="math" data-tex="\(f_i,g_i\in\mathfrak n\)">\(f_i,g_i\in\mathfrak n\)</span>. Choose <span class="math" data-tex="\(j\geq t\)">\(j\geq t\)</span> and set all variables outside <span class="math" data-tex="\(B_j\)">\(B_j\)</span> to zero. In <span class="math" data-tex="\(D=k[[B_j]]\)">\(D=k[[B_j]]\)</span> we obtain <span class="math" data-tex="\(z_j=\sum_i F_iG_i\)">\(z_j=\sum_i F_iG_i\)</span>, with all factors in its maximal ideal. Formal differentiation gives</p>
+<span class="math math-display" data-tex="\[
+\left(\frac{\partial z_j}{\partial X}:X\in B_j\right)
+\subseteq(F_1,\ldots,F_t,G_1,\ldots,G_t).
+\tag{21}
+\]">\[
+\left(\frac{\partial z_j}{\partial X}:X\in B_j\right)
+\subseteq(F_1,\ldots,F_t,G_1,\ldots,G_t).
+\tag{21}
+\]</span>
+<p>The left ideal has radical the full maximal ideal, since <span class="math" data-tex="\(e_j\)">\(e_j\)</span> is a unit. Thus the right ideal would be primary to that maximal ideal. But <span class="math" data-tex="\(D\)">\(D\)</span> is regular local of dimension <span class="math" data-tex="\(2j+1\)">\(2j+1\)</span>, by (12) and Theorem 4.1 applied to the polynomial local ring. An ideal generated by <span class="math" data-tex="\(2t\)">\(2t\)</span> elements cannot have height <span class="math" data-tex="\(2j+1&gt;2t\)">\(2j+1&gt;2t\)</span>, by Theorem 3.1 of the local dimension lesson. This contradiction proves <span class="math" data-tex="\(z\notin\mathfrak n^2\)">\(z\notin\mathfrak n^2\)</span>.</p>
+<p>For the final completeness assertion, <span class="math" data-tex="\(\mathfrak n^n\subseteq K_n\)">\(\mathfrak n^n\subseteq K_n\)</span> gives short exact sequences</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow K_n/\mathfrak n^n
+\longrightarrow C/\mathfrak n^n
+\longrightarrow C/K_n\longrightarrow0.
+\tag{22}
+\]">\[
+0\longrightarrow K_n/\mathfrak n^n
+\longrightarrow C/\mathfrak n^n
+\longrightarrow C/K_n\longrightarrow0.
+\tag{22}
+\]</span>
+<p>The left transition maps are surjective. Indeed, subtract the finite degree-<span class="math" data-tex="\(n\)">\(n\)</span> homogeneous part of an element of <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. That part is in <span class="math" data-tex="\(\mathfrak n^n\)">\(\mathfrak n^n\)</span>, and the remainder is in <span class="math" data-tex="\(K_{n+1}\)">\(K_{n+1}\)</span>. Since <span class="math" data-tex="\(K_2/\mathfrak n^2\ne0\)">\(K_2/\mathfrak n^2\ne0\)</span>, compatible preimages give a nonzero element of its inverse limit. Theorem 1.2 applied to (22) therefore gives a surjection
+<span class="math" data-tex="\(\varprojlim C/\mathfrak n^n\to C\)">\(\varprojlim C/\mathfrak n^n\to C\)</span>
+with nonzero kernel. Its composite with the canonical map <span class="math" data-tex="\(C\to\varprojlim C/\mathfrak n^n\)">\(C\to\varprojlim C/\mathfrak n^n\)</span> is the identity, because <span class="math" data-tex="\(\varprojlim C/K_n=C\)">\(\varprojlim C/K_n=C\)</span>. If that canonical map were an isomorphism, this kernel would be zero. It is not, so <span class="math" data-tex="\(C\)">\(C\)</span> is not <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>-adically complete. The inverse-limit topology and the maximal-ideal topology have different consequences here.</p>
+<h2 id="references-and-proof-scope">References and proof scope</h2>
+<p>The Stacks project supplies the Mittag–Leffler, completion and Cohen locators cited above. Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, public draft of 27 July 2024, §§13.9 and 28.1, discusses Artin–Rees and completion. The inverse-system arguments, completion proofs, examples and complete solutions are supplied in this lesson; the full coefficient-ring construction is proved in the linked supplement. The sources retain their own licences.</p>
+<p>Verified tag references: <a href="https://stacks.math.columbia.edu/algebra.html#definition-ML-system">Tag 0595</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-ML-exact-sequence">Tag 0598</a>, <a href="https://stacks.math.columbia.edu/homology.html#lemma-Mittag-Leffler">Tag 02N1</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-generalities">Tag 0315</a>, <a href="https://stacks.math.columbia.edu/algebra.html#definition-complete">Tag 0317</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-tensor">Tag 00MA</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-flat">Tag 00MB</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-faithfully-flat">Tag 00MC</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-Noetherian">Tag 05GH</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-Noetherian-Noetherian">Tag 0316</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-completion-complete">Tag 031C</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-complete-henselian">Tag 04GM</a>, <a href="https://stacks.math.columbia.edu/algebra.html#theorem-cohen-structure-theorem">Tag 032A</a>, <a href="https://stacks.math.columbia.edu/algebra.html#definition-cohen-ring">Tag 0327</a>, <a href="https://stacks.math.columbia.edu/algebra.html#lemma-hathat-finitely-generated">Tag 05GG</a>, <a href="https://stacks.math.columbia.edu/algebra.html#section-mittag-leffler">Tag 0594</a>, <a href="https://stacks.math.columbia.edu/examples.html#section-completion-not-exact">Tag 05JF</a>, <a href="https://stacks.math.columbia.edu/examples.html#section-noncomplete-completion">Tag 05JA</a>, <a href="https://stacks.math.columbia.edu/examples.html#section-noncomplete-quotient">Tag 05JD</a>.</p>
+<p><strong>Proof dependencies.</strong> The coefficient-ring construction and Cohen presentation discussed in §4 are proved in the required coefficient-ring lesson, <a href="AG-CA--AG-CA-19S.html#4-cohen-rings-for-all-positive-characteristic-fields">Theorem 4.1</a>, <a href="AG-CA--AG-CA-19S.html#5-coefficient-subrings-in-every-complete-local-ring">Theorem 5.1</a> and <a href="AG-CA--AG-CA-19S.html#6-the-power-series-presentation">Theorem 6.1</a>. All five assigned result groups, finite-ideal arbitrary-module completeness, both Hensel lifting forms, the two exactness counterexamples and all six exercises have proofs above. The prerequisite Artin–Rees, flatness, Hilbert–Samuel dimension, regularity, DVR and height results are used at the stated earlier-course locators.</p>
+</article></main></body></html>

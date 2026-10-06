@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spectral triples and dimension spectrum · Spectral triples and the local index formula</title>
+<meta name="description" content="A lesson of the course Spectral triples and the local index formula. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-LOCAL-INDEX/spectral-triples-and-dimension-spectrum.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Spectral triples and the local index formula</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 3</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="spectral-triples-and-dimension-spectrum">Spectral triples and dimension spectrum</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra. Draft; self-checked by the writing AI. A separate Codex session checked all 13 numbered results and 10 solved exercises under explicit imports. Reviewer corrections are adopted; the subsequent arrangement and proof links are author checked. Exact reviewer model unverified. Original text: public domain (CC0).</em></p>
+<p>A Dirac operator supplies both a differential and a way of measuring size. Its bounded commutators differentiate algebra elements; its high eigenvalues determine which products have a trace. To turn these two facts into an index formula, we need a calculus that moves powers of the operator past coefficients with a controlled remainder. We will construct that calculus before imposing any meromorphic-continuation hypothesis.</p>
+<p>The prerequisites are <a href="singular-values-and-the-dixmier-trace.html">Singular values and the Dixmier trace</a>, complex Hilbert spaces, elementary linear algebra, real and complex calculus, and integration with monotone and dominated convergence. We first establish the spectral domains, graph interpolation, Fourier inversion and distribution facts used in the course. The geometry lesson uses these foundations to prove coordinate transport and classical trace formulas. The underlying positive spectral calculus is referenced by exact proof components in <a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a>. Smooth charts, vector bundles, finite partitions of unity and the differential geometry of connections are the additional entry base for the geometric lessons. References for the analytic framework are [Connes–Moscovici 1995], [Higson 2004], and [Carey–Phillips–Rennie–Sukochev 2006]. The distinction between regularity, summability, and dimension spectrum is essential: none of the three will stand in for the other two.</p>
+<h2 id="spectral-domains-graph-interpolation-and-fourier-analysis">Spectral domains, graph interpolation and Fourier analysis</h2>
+<p>This section specifies the proofs behind the spectral and Fourier operations. The compact-resolvent case already has its eigenbasis and graph domains in Lemma 9.2 of the first lesson. We also need a spectral construction for a declared selfadjoint operator on a noncompact manifold, where no eigenbasis is assumed.</p>
+<h3 id="positive-calculus-and-recovery-of-a-selfadjoint-operator">Positive calculus and recovery of a selfadjoint operator</h3>
+<p>The reference <a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a>, AN03-SPC-001–003, constructs the bounded and unbounded Borel calculus of an injective positive contraction <span class="math" data-tex="\(R\)">\(R\)</span>. Its exact statements include a strongly countably additive projection-valued measure <span class="math" data-tex="\(E_R\)">\(E_R\)</span>, the domain and norm formulas
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Dom}h(R)
+&amp;=\left\{x:\int |h(r)|^2\,d\langle E_R(r)x,x\rangle&lt;\infty\right\},\\
+\|h(R)x\|^2&amp;=\int |h(r)|^2\,d\langle E_R(r)x,x\rangle .
+\end{aligned}
+\tag{10.1}
+\]">\[
+\begin{aligned}
+\operatorname{Dom}h(R)
+&amp;=\left\{x:\int |h(r)|^2\,d\langle E_R(r)x,x\rangle&lt;\infty\right\},\\
+\|h(R)x\|^2&amp;=\int |h(r)|^2\,d\langle E_R(r)x,x\rangle .
+\end{aligned}
+\tag{10.1}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}(h(R)k(R))
+=\operatorname{Dom}k(R)\cap\operatorname{Dom}(hk)(R).
+\tag{10.2}
+\]">\[
+\operatorname{Dom}(h(R)k(R))
+=\operatorname{Dom}k(R)\cap\operatorname{Dom}(hk)(R).
+\tag{10.2}
+\]</span>
+The product equals <span class="math" data-tex="\((hk)(R)\)">\((hk)(R)\)</span> on that domain, and its closure is the full product multiplier. Adjoint domains are also proved there. The entry base of those proofs consists of Hilbert completeness, interval compactness, scalar integration and elementary polynomial algebra. AN03-SPC-004 recovers the original domain of any lower-bounded selfadjoint operator by applying this construction to its shifted inverse. Here is the adapter for an arbitrary selfadjoint <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proposition 10.1 (the full selfadjoint spectral domain).</strong> Every selfadjoint <span class="math" data-tex="\(D\)">\(D\)</span> has a unique real projection-valued measure representing it, with
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}h(D)
+=\left\{x:\int_{\mathbb R}|h(\lambda)|^2\,d\mu_x(\lambda)&lt;\infty\right\}.
+\tag{10.3}
+\]">\[
+\operatorname{Dom}h(D)
+=\left\{x:\int_{\mathbb R}|h(\lambda)|^2\,d\mu_x(\lambda)&lt;\infty\right\}.
+\tag{10.3}
+\]</span>
+Products keep the intersection in (10.2), adjoints conjugate the multiplier, and bounded pointwise convergence with a common bound gives strong convergence. In particular all the real and complex powers, heat operators, and spectral cutoffs used in this course have these domains.</p>
+<p><strong>Proof.</strong> The range and adjoint argument in the first lesson's Lemma 9.2 constructs the two resolvents without compactness. Their product
+<span class="math math-display" data-tex="\[
+R=(D-i)^{-1}(D+i)^{-1}
+\]">\[
+R=(D-i)^{-1}(D+i)^{-1}
+\]</span>
+is an injective positive contraction. Its range is <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>, and
+<span class="math" data-tex="\(D^2=R^{-1}-I\)">\(D^2=R^{-1}-I\)</span> on that exact domain. This statement follows by multiplication of the two resolvents, so it does not assume a spectral theorem for <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>Apply (10.1)–(10.2) to <span class="math" data-tex="\(R\)">\(R\)</span>. Put <span class="math" data-tex="\(Q_n=E_R([1/n,1])\)">\(Q_n=E_R([1/n,1])\)</span>. These projections preserve <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span> and commute there with <span class="math" data-tex="\(D\)">\(D\)</span>. To justify the assertion, polynomials in <span class="math" data-tex="\(R\)">\(R\)</span> have this property by the resolvent identities. Uniform continuous approximation preserves it by closedness of <span class="math" data-tex="\(D\)">\(D\)</span>. Finally approximate the indicator of <span class="math" data-tex="\([1/n,1]\)">\([1/n,1]\)</span> by continuous functions bounded by one and converging pointwise. Their values converge strongly on both <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(Dx\)">\(Dx\)</span>, so closedness again gives the assertion. Each <span class="math" data-tex="\(Q_nH\)">\(Q_nH\)</span> lies in <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>, because <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> is bounded on its spectral support.</p>
+<p>For any <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, symmetry on that subspace gives
+<span class="math math-display" data-tex="\[
+\|DQ_nx\|^2
+=\langle (R^{-1}-I)Q_nx,Q_nx\rangle
+=\int_{[1/n,1]}(r^{-1}-1)\,d\mu_x^R(r).
+\tag{10.4}
+\]">\[
+\|DQ_nx\|^2
+=\langle (R^{-1}-I)Q_nx,Q_nx\rangle
+=\int_{[1/n,1]}(r^{-1}-1)\,d\mu_x^R(r).
+\tag{10.4}
+\]</span>
+If <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span>, the commutation and <span class="math" data-tex="\(Q_n\to I\)">\(Q_n\to I\)</span> show that the left side converges to <span class="math" data-tex="\(\|Dx\|^2\)">\(\|Dx\|^2\)</span>. Conversely, finiteness of the full integral makes <span class="math" data-tex="\(DQ_nx\)">\(DQ_nx\)</span> Cauchy: apply (10.4) to the difference of two nested projections. Closedness then gives <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span>. Thus the domain is exactly this moment domain. Since <span class="math" data-tex="\(\mu_x^R([0,1])=\|x\|^2\)">\(\mu_x^R([0,1])=\|x\|^2\)</span> and <span class="math" data-tex="\(E_R(\{0\})=0\)">\(E_R(\{0\})=0\)</span>, it is also
+<span class="math" data-tex="\(\operatorname{Dom}R^{-1/2}=\operatorname{Ran}R^{1/2}\)">\(\operatorname{Dom}R^{-1/2}=\operatorname{Ran}R^{1/2}\)</span>, with the last equality following from (10.2).</p>
+<p>Define <span class="math" data-tex="\(F=DR^{1/2}\)">\(F=DR^{1/2}\)</span> on all of <span class="math" data-tex="\(H\)">\(H\)</span>. Formula (10.4) gives
+<span class="math math-display" data-tex="\[
+\|Fx\|^2=\|x\|^2-\|R^{1/2}x\|^2.
+\]">\[
+\|Fx\|^2=\|x\|^2-\|R^{1/2}x\|^2.
+\]</span>
+Commutation of <span class="math" data-tex="\(R^{1/2}\)">\(R^{1/2}\)</span> with <span class="math" data-tex="\(D\)">\(D\)</span> on its domain makes <span class="math" data-tex="\(F\)">\(F\)</span> symmetric on a dense subspace, hence selfadjoint as a bounded operator. The same identities, first on <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span> and then by density, give
+<span class="math math-display" data-tex="\[
+\|F\|\leq1,\qquad F^2=I-R.
+\tag{10.5}
+\]">\[
+\|F\|\leq1,\qquad F^2=I-R.
+\tag{10.5}
+\]</span>
+The bounded operator <span class="math" data-tex="\(S=(I+F)/2\)">\(S=(I+F)/2\)</span> is a positive contraction. It is injective: <span class="math" data-tex="\(Fx=-x\)">\(Fx=-x\)</span> would imply <span class="math" data-tex="\(Rx=(I-F^2)x=0\)">\(Rx=(I-F^2)x=0\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The referenced interval construction therefore supplies its full Borel calculus, and an affine change of coordinate supplies the calculus of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Neither endpoint has spectral mass, because the kernel of <span class="math" data-tex="\(1-F^2=R\)">\(1-F^2=R\)</span> is zero.</p>
+<p>On <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, set
+<span class="math math-display" data-tex="\[
+d(f)=\frac{f}{\sqrt{1-f^2}},\qquad
+h(f)=\frac1{\sqrt{1-f^2}}.
+\tag{10.6}
+\]">\[
+d(f)=\frac{f}{\sqrt{1-f^2}},\qquad
+h(f)=\frac1{\sqrt{1-f^2}}.
+\tag{10.6}
+\]</span>
+Bounded composition and the moment construction identify
+<span class="math" data-tex="\(h(F)=R^{-1/2}\)">\(h(F)=R^{-1/2}\)</span>; this can also be checked on the bounded cutoffs before taking their graph limits. The two domains coincide because <span class="math" data-tex="\(h^2=1+d^2\)">\(h^2=1+d^2\)</span>. If <span class="math" data-tex="\(x=R^{1/2}y\)">\(x=R^{1/2}y\)</span>, then
+<span class="math math-display" data-tex="\[
+d(F)x=Fh(F)x=Fy=DR^{1/2}y=Dx.
+\]">\[
+d(F)x=Fh(F)x=Fy=DR^{1/2}y=Dx.
+\]</span>
+Thus the pushforward of <span class="math" data-tex="\(E_F\)">\(E_F\)</span> under the bijection <span class="math" data-tex="\(d:(-1,1)\to\mathbb R\)">\(d:(-1,1)\to\mathbb R\)</span> represents the given <span class="math" data-tex="\(D\)">\(D\)</span> with its actual domain. The bounded and unbounded norm, product, adjoint and convergence formulas transfer by this coordinate change.</p>
+<p>For uniqueness, any other spectral representation of <span class="math" data-tex="\(D\)">\(D\)</span> gives its two resolvents with their original inverse actions. It therefore gives this same <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(F=DR^{1/2}\)">\(F=DR^{1/2}\)</span>. The interval uniqueness in AN03-SPC-003 identifies the measure of <span class="math" data-tex="\(S\)">\(S\)</span>, hence of <span class="math" data-tex="\(F\)">\(F\)</span>; the inverse coordinate in (10.6) identifies the real measure. This proves the proposition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="interpolation-in-the-graph-scale">Interpolation in the graph scale</h3>
+<p>We use the maximum principle for holomorphic functions and Cauchy's integral formula as part of the complex-calculus entry base.</p>
+<p><strong>Lemma 10.2 (three lines and graph interpolation).</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be bounded and continuous on <span class="math" data-tex="\(0\leq\operatorname{Re}z\leq1\)">\(0\leq\operatorname{Re}z\leq1\)</span>, holomorphic inside, with boundary bounds <span class="math" data-tex="\(M_0,M_1\)">\(M_0,M_1\)</span>. Then
+<span class="math math-display" data-tex="\[
+|f(\theta)|\leq M_0^{1-\theta}M_1^\theta,\qquad 0\leq\theta\leq1.
+\tag{10.7}
+\]">\[
+|f(\theta)|\leq M_0^{1-\theta}M_1^\theta,\qquad 0\leq\theta\leq1.
+\tag{10.7}
+\]</span>
+Consequently, if <span class="math" data-tex="\(T:H^a\to H^{a-r}\)">\(T:H^a\to H^{a-r}\)</span> and <span class="math" data-tex="\(T:H^b\to H^{b-r}\)">\(T:H^b\to H^{b-r}\)</span> are consistent bounded maps, then for <span class="math" data-tex="\(s=(1-\theta)a+\theta b\)">\(s=(1-\theta)a+\theta b\)</span>
+<span class="math math-display" data-tex="\[
+\|T\|_{H^s\to H^{s-r}}
+\leq \|T\|_{H^a\to H^{a-r}}^{1-\theta}
+       \|T\|_{H^b\to H^{b-r}}^\theta .
+\tag{10.8}
+\]">\[
+\|T\|_{H^s\to H^{s-r}}
+\leq \|T\|_{H^a\to H^{a-r}}^{1-\theta}
+       \|T\|_{H^b\to H^{b-r}}^\theta .
+\tag{10.8}
+\]</span>
+Here the graph scales may be defined by any positive selfadjoint <span class="math" data-tex="\(\Lambda\geq c&gt;0\)">\(\Lambda\geq c&gt;0\)</span>; completions are used at negative exponents.</p>
+<p><strong>Proof.</strong> Suppose first <span class="math" data-tex="\(M_0,M_1&gt;0\)">\(M_0,M_1&gt;0\)</span>, and put
+<span class="math" data-tex="\(g(z)=f(z)M_0^{z-1}M_1^{-z}\)">\(g(z)=f(z)M_0^{z-1}M_1^{-z}\)</span>. It is bounded on the strip and has boundary modulus at most one. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the function
+<span class="math" data-tex="\(g(z)e^{\varepsilon(z^2-z)}\)">\(g(z)e^{\varepsilon(z^2-z)}\)</span> has boundary modulus at most one, and its modulus on the two horizontal edges of a tall rectangle tends uniformly to zero. The maximum principle on that rectangle yields
+<span class="math" data-tex="\(|g(\theta)|\leq e^{\varepsilon\theta(1-\theta)}\)">\(|g(\theta)|\leq e^{\varepsilon\theta(1-\theta)}\)</span>.
+Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Replacing either zero boundary bound by a positive number and then taking its limit treats zero bounds. Boundary points follow by continuity.</p>
+<p>For the operator assertion use spectral cutoffs with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-spectrum in a compact interval of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. On such vectors, test
+<span class="math math-display" data-tex="\[
+\Lambda^{a+z(b-a)-r}T\Lambda^{-a-z(b-a)}
+\]">\[
+\Lambda^{a+z(b-a)-r}T\Lambda^{-a-z(b-a)}
+\]</span>
+against another cutoff vector. Its scalar pairing is holomorphic; all powers on the tested spectral intervals are bounded, so the scalar function is bounded on the whole strip. On either vertical boundary the imaginary conjugations are unitary, and the bound is the corresponding endpoint norm times the norms of the two vectors. Formula (10.7) proves the asserted intermediate bound. These cutoffs are dense in every graph completion by (10.3). The bounded intermediate map consequently extends uniquely to the whole scale; consistency follows on the common cutoff core and then by closure. This proves (10.8), including negative and nonintegral exponents. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="fourier-inversion-l-2-and-distributions">Fourier inversion, <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and distributions</h3>
+<p>The calculus entry base here includes Taylor's formula, integration by parts, absolutely integrable Fubini, changes of variables, and approximation of Lebesgue integrable functions by simple functions. Let <span class="math" data-tex="\(\mathcal S(\mathbb R^d)\)">\(\mathcal S(\mathbb R^d)\)</span> have seminorms
+<span class="math" data-tex="\(\sup_x|x^\alpha\partial^\beta f(x)|\)">\(\sup_x|x^\alpha\partial^\beta f(x)|\)</span>. Use
+<span class="math math-display" data-tex="\[
+\mathcal Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+\mathcal Gv(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi.
+\tag{10.9}
+\]">\[
+\mathcal Ff(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
+\mathcal Gv(x)=(2\pi)^{-d}\int e^{ix\cdot\xi}v(\xi)\,d\xi.
+\tag{10.9}
+\]</span>
+Thus the one-dimensional inverse convention earlier in this lesson has
+<span class="math" data-tex="\(\widehat f=(2\pi)^{-1}\mathcal Ff\)">\(\widehat f=(2\pi)^{-1}\mathcal Ff\)</span>.</p>
+<p><strong>Lemma 10.3 (Fourier foundations).</strong> The maps <span class="math" data-tex="\(\mathcal F,\mathcal G\)">\(\mathcal F,\mathcal G\)</span> are inverse continuous automorphisms of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathcal F(-i\partial_jf)=\xi_j\mathcal Ff,\qquad
+\mathcal F(x_jf)=i\partial_{\xi_j}\mathcal Ff,\qquad
+\|\mathcal Ff\|_2^2=(2\pi)^d\|f\|_2^2.
+\tag{10.10}
+\]">\[
+\mathcal F(-i\partial_jf)=\xi_j\mathcal Ff,\qquad
+\mathcal F(x_jf)=i\partial_{\xi_j}\mathcal Ff,\qquad
+\|\mathcal Ff\|_2^2=(2\pi)^d\|f\|_2^2.
+\tag{10.10}
+\]</span>
+They extend by transposition to tempered distributions and by completion to inverse <span class="math" data-tex="\(L^2\)">\(L^2\)</span> transforms with this normalization.</p>
+<p><strong>Proof.</strong> Integration by parts and differentiation under an absolutely convergent integral prove the first two identities. More generally,
+<span class="math" data-tex="\(\xi^\alpha\partial_\xi^\beta\mathcal Ff\)">\(\xi^\alpha\partial_\xi^\beta\mathcal Ff\)</span> is a finite linear combination of transforms of derivatives of <span class="math" data-tex="\(x^\beta f\)">\(x^\beta f\)</span>. Its sup norm is bounded by the <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms of those derivatives. Each such <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is controlled by finitely many Schwartz seminorms: insert an integrable weight <span class="math" data-tex="\((1+|x|)^{-d-1}\)">\((1+|x|)^{-d-1}\)</span>. This proves continuity into <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and the same argument applies to <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>.</p>
+<p>The elementary Gaussian integral and its Fourier transform give
+<span class="math math-display" data-tex="\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi
+=(4\pi\varepsilon)^{-d/2}e^{-|x|^2/(4\varepsilon)}
+=:k_\varepsilon(x).
+\tag{10.11}
+\]">\[
+(2\pi)^{-d}\int e^{ix\cdot\xi}e^{-\varepsilon|\xi|^2}\,d\xi
+=(4\pi\varepsilon)^{-d/2}e^{-|x|^2/(4\varepsilon)}
+=:k_\varepsilon(x).
+\tag{10.11}
+\]</span>
+For clarity, <span class="math" data-tex="\(\int_{\mathbb R}e^{-t^2}\,dt=\sqrt\pi\)">\(\int_{\mathbb R}e^{-t^2}\,dt=\sqrt\pi\)</span> follows by squaring the integral and using polar coordinates in the plane. Differentiating the transform of <span class="math" data-tex="\(e^{-\varepsilon t^2}\)">\(e^{-\varepsilon t^2}\)</span> and integrating by parts gives the ordinary differential equation <span class="math" data-tex="\(J&#x27;(x)=-xJ(x)/(2\varepsilon)\)">\(J&#x27;(x)=-xJ(x)/(2\varepsilon)\)</span>; its value at zero fixes the constant. Tensor products prove (10.11).</p>
+<p>Fubini, with the Gaussian cutoff, now proves
+<span class="math math-display" data-tex="\[
+\mathcal G(e^{-\varepsilon|\xi|^2}\mathcal Ff)=k_\varepsilon*f.
+\]">\[
+\mathcal G(e^{-\varepsilon|\xi|^2}\mathcal Ff)=k_\varepsilon*f.
+\]</span>
+As <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, the left side converges to <span class="math" data-tex="\(\mathcal G\mathcal Ff\)">\(\mathcal G\mathcal Ff\)</span> in <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. Indeed multiplication by the cutoff converges to the identity in every Schwartz seminorm: on a fixed ball use its differentiated convergence, and outside the ball reserve an extra decay power of <span class="math" data-tex="\(f\)">\(f\)</span>.
+The right side converges to <span class="math" data-tex="\(f\)">\(f\)</span> in the same topology. Translation is continuous in each Schwartz seminorm, by Taylor's formula; its seminorms grow at most polynomially with the translation parameter. Integrate these bounds against <span class="math" data-tex="\(k_\varepsilon\)">\(k_\varepsilon\)</span>, splitting into a small neighborhood of zero and its complement. The first part uses translation continuity and mass one; every polynomially weighted Gaussian tail on the complement tends to zero. Thus <span class="math" data-tex="\(\mathcal G\mathcal F=I\)">\(\mathcal G\mathcal F=I\)</span>. With reflection <span class="math" data-tex="\(\mathcal Rf(x)=f(-x)\)">\(\mathcal Rf(x)=f(-x)\)</span>, a change of variables gives
+<span class="math" data-tex="\(\mathcal F\mathcal R=\mathcal R\mathcal F\)">\(\mathcal F\mathcal R=\mathcal R\mathcal F\)</span> and
+<span class="math" data-tex="\(\mathcal G=(2\pi)^{-d}\mathcal R\mathcal F\)">\(\mathcal G=(2\pi)^{-d}\mathcal R\mathcal F\)</span>; hence also
+<span class="math" data-tex="\(\mathcal F\mathcal G=I\)">\(\mathcal F\mathcal G=I\)</span>.</p>
+<p>Absolute Fubini and inversion, first for two Schwartz functions, yield
+<span class="math math-display" data-tex="\[
+\int \mathcal Ff\,\overline{\mathcal Fg}
+=(2\pi)^d\int f\,\overline g .
+\]">\[
+\int \mathcal Ff\,\overline{\mathcal Fg}
+=(2\pi)^d\int f\,\overline g .
+\]</span>
+This proves the norm identity. Smooth compact functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: truncate the support and values, approximate by finite sums of box indicators, then approximate those indicators by smooth cutoffs with transition strips of measure tending to zero. Completion therefore gives the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> extension. Its range is all of <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, since it contains <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> by inversion and is closed by its norm identity.</p>
+<p>For a complex-linear distribution pairing, define
+<span class="math" data-tex="\(\langle\mathcal Fu,\phi\rangle=\langle u,\mathcal F\phi\rangle\)">\(\langle\mathcal Fu,\phi\rangle=\langle u,\mathcal F\phi\rangle\)</span>, and similarly for <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span>. Continuity on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> makes these continuous maps on its dual. Their inverse and differentiation identities follow by transposing the proved identities; Fubini shows agreement with the integral for regular distributions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The box approximation above can be obtained directly from the defining regularity of Lebesgue measure: a finite-measure measurable set is approximated in measure by a finite union of boxes. No eigenfunction completeness is being assumed in the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> Fourier step.
+For the torus the corresponding basis assertion follows from the Fejér kernels. In one dimension,
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac1{N+1}\left|\sum_{j=0}^Ne^{ijt}\right|^2
+\]">\[
+K_N(t)=\frac1{N+1}\left|\sum_{j=0}^Ne^{ijt}\right|^2
+\]</span>
+is nonnegative, has integral <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, and its normalized mass outside any neighborhood of zero tends to zero, by the finite geometric-series formula. Uniform continuity shows that convolution with <span class="math" data-tex="\(K_N/(2\pi)\)">\(K_N/(2\pi)\)</span> converges uniformly on continuous periodic functions. Product kernels give the assertion in every finite dimension. Such convolutions are trigonometric polynomials, and continuous periodic functions are <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-dense by the same cutoff approximation. The exponentials therefore form a complete orthonormal system; Pythagoras gives torus Parseval. This supplies the Fourier bases and Sobolev truncations used in the geometric examples.</p>
+<p><strong>Lemma 10.4 (finite order and point support).</strong> A distribution has finite order on each fixed compact test support. A distribution on <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span> supported at zero has the form
+<span class="math math-display" data-tex="\[
+u=\sum_{|\alpha|\leq m}c_\alpha\partial^\alpha\delta_0.
+\tag{10.12}
+\]">\[
+u=\sum_{|\alpha|\leq m}c_\alpha\partial^\alpha\delta_0.
+\tag{10.12}
+\]</span>
+The inverse Fourier transform of such a tempered distribution is a polynomial.</p>
+<p><strong>Proof.</strong> On the space of smooth functions supported in a fixed compact set, the defining topology has seminorms
+<span class="math" data-tex="\(\max_{|\alpha|\leq m}\|\partial^\alpha\phi\|_\infty\)">\(\max_{|\alpha|\leq m}\|\partial^\alpha\phi\|_\infty\)</span>.
+Continuity of a linear functional gives a bound by a finite number of them, hence by a single such seminorm with some <span class="math" data-tex="\(m\)">\(m\)</span>.
+If <span class="math" data-tex="\(u\)">\(u\)</span> is supported at zero, choose a compact cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero. For any test <span class="math" data-tex="\(\phi\)">\(\phi\)</span> whose derivatives through order <span class="math" data-tex="\(m\)">\(m\)</span> vanish at zero, Taylor's formula gives
+<span class="math math-display" data-tex="\[
+|\partial^\beta\phi(x)|\leq C|x|^{m+1-|\beta|}
+\quad(|\beta|\leq m)
+\]">\[
+|\partial^\beta\phi(x)|\leq C|x|^{m+1-|\beta|}
+\quad(|\beta|\leq m)
+\]</span>
+near zero. Put <span class="math" data-tex="\(\chi_\varepsilon(x)=\chi(x/\varepsilon)\)">\(\chi_\varepsilon(x)=\chi(x/\varepsilon)\)</span>. The product rule then bounds every derivative of <span class="math" data-tex="\(\chi_\varepsilon\phi\)">\(\chi_\varepsilon\phi\)</span> through order <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(C\varepsilon\)">\(C\varepsilon\)</span>, on one fixed compact support.
+The support condition gives <span class="math" data-tex="\(u(\phi)=u(\chi_\varepsilon\phi)\)">\(u(\phi)=u(\chi_\varepsilon\phi)\)</span>, and the finite-order bound makes this tend to zero. Thus <span class="math" data-tex="\(u\)">\(u\)</span> depends only on the finite Taylor jet of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> at zero. The coordinate functionals of that jet are <span class="math" data-tex="\((-1)^{|\alpha|}\partial^\alpha\delta_0\)">\((-1)^{|\alpha|}\partial^\alpha\delta_0\)</span>, which proves (10.12). Finally (10.9), transposed, gives
+<span class="math math-display" data-tex="\[
+\mathcal G(\partial^\alpha\delta_0)(x)
+=(2\pi)^{-d}(-ix)^\alpha .
+\]">\[
+\mathcal G(\partial^\alpha\delta_0)(x)
+=(2\pi)^{-d}(-ix)^\alpha .
+\]</span>
+This proves the polynomial assertion with its normalization. In particular a frequency-point-supported distribution whose inverse transform vanishes on the open half-space <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> is zero: a polynomial zero on an open set has all coefficients zero, by successive one-variable polynomial identities. This is the uniqueness step in the causal heat construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="banach-principles-in-the-fredholm-import">Banach principles in the Fredholm import</h3>
+<p><strong>Lemma 10.5.</strong> A complete metric space is a Baire space. A bounded linear bijection between Banach spaces has a bounded linear inverse. A pointwise bounded family of bounded linear maps from a Banach space to a fixed normed space has uniformly bounded operator norms. Quotients of Banach spaces by closed linear subspaces are Banach.</p>
+<p><strong>Proof.</strong> These exact statements, including their completeness and arbitrary-family hypotheses, have complete proofs in <a href="../elliptic-boundary-reduction/banach-foundation-bridges.html#quotient-norms-and-completeness">Banach foundations</a>: Section 4 for the quotient, Section 6 for Baire on complete metric spaces, Section 7 for arbitrary pointwise bounded families, and Section 8 for the summable-correction open-mapping and bounded-inverse argument. This is the version containing the full Baire proof, including empty and isolated metric cases. Its finite linear algebra, real completeness and Zorn entry base is contained in ours. Applying those statements to the Hilbert spaces and closed graph domains in this course therefore supplies each asserted conclusion. A surjection is only claimed to be open; a bounded linear right inverse is not being inferred. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Together with the Hilbert and finite-dimensional entry base, Lemma 9.4 of the first lesson supplies the remaining extension assumption of the referenced Fredholm proofs. In our Hilbert specialization an extension from a finite-dimensional subspace can alternatively be obtained by composing with its orthogonal projection. Thus AN03-FRE-002–005, the exact parametrix and norm-stability results used in the index lesson, have their required analytic premises here. Their broader assertions about arbitrary parameter nets are not needed for these applications.</p>
+<p>With the spectral domains and graph estimates established, we can represent differentiation by operator commutators.</p>
+<h2 id="1-differentiation-represented-on-a-hilbert-space">1. Differentiation represented on a Hilbert space</h2>
+<p>A <strong>spectral triple</strong> is a represented unital complex *-algebra <span class="math" data-tex="\(A\subset B(H)\)">\(A\subset B(H)\)</span>, a selfadjoint operator <span class="math" data-tex="\(D\)">\(D\)</span> with compact resolvent, and the following domain condition. Every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> preserves <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>, and the commutator <span class="math" data-tex="\(Da-aD\)">\(Da-aD\)</span> on that domain extends to a bounded operator, denoted <span class="math" data-tex="\(da\)">\(da\)</span>.</p>
+<p>In an <strong>even</strong> triple a selfadjoint unitary <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> commutes with <span class="math" data-tex="\(A\)">\(A\)</span> and anticommutes with <span class="math" data-tex="\(D\)">\(D\)</span>. A triple with no chosen such grading is <strong>odd</strong>. Reality operators and orientability axioms are additional structures; they are not part of this definition.</p>
+<p>For the analytic construction in this lesson assume <span class="math" data-tex="\(D\)">\(D\)</span> is invertible. Set</p>
+<span class="math math-display" data-tex="\[
+\Lambda=|D|\geq cI&gt;0,\qquad \Delta=D^2=\Lambda^2,\qquad
+\delta(T)=[\Lambda,T],\quad \nabla(T)=[\Delta,T].
+\tag{1.1}
+\]">\[
+\Lambda=|D|\geq cI&gt;0,\qquad \Delta=D^2=\Lambda^2,\qquad
+\delta(T)=[\Lambda,T],\quad \nabla(T)=[\Delta,T].
+\tag{1.1}
+\]</span>
+<p>The invertibility assumption makes every negative power unambiguous. If <span class="math" data-tex="\(D\)">\(D\)</span> has a kernel, use <span class="math" data-tex="\(\Lambda=|D|+P_{\ker D}\)">\(\Lambda=|D|+P_{\ker D}\)</span> and <span class="math" data-tex="\(\Delta=D^2+P_{\ker D}\)">\(\Delta=D^2+P_{\ker D}\)</span> for this analytic calculus. The projection is finite rank and smooth. When regular coefficients are used, replacing <span class="math" data-tex="\(\nabla=[D^2,\cdot]\)">\(\nabla=[D^2,\cdot]\)</span> by this modified commutator changes expressions by smoothing terms. This does not license deleting a kernel contribution to an index: the index formula must retain its degree-zero finite-dimensional information.</p>
+<p>Define <span class="math" data-tex="\(\operatorname{Dom}\delta\)">\(\operatorname{Dom}\delta\)</span> to consist of bounded operators preserving <span class="math" data-tex="\(\operatorname{Dom}\Lambda\)">\(\operatorname{Dom}\Lambda\)</span> whose commutator has a bounded extension. Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal R=\bigcap_{m\geq0}\operatorname{Dom}\delta^m.
+\]">\[
+\mathcal R=\bigcap_{m\geq0}\operatorname{Dom}\delta^m.
+\]</span>
+<p>The triple is <strong>regular</strong> if <span class="math" data-tex="\(a,da\in\mathcal R\)">\(a,da\in\mathcal R\)</span> for every <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>. Products and adjoints preserve <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>: the commutator product rule iterates to</p>
+<span class="math math-display" data-tex="\[
+\delta^m(ST)=\sum_{j=0}^m\binom mj\delta^j(S)\delta^{m-j}(T),
+\tag{1.2}
+\]">\[
+\delta^m(ST)=\sum_{j=0}^m\binom mj\delta^j(S)\delta^{m-j}(T),
+\tag{1.2}
+\]</span>
+<p>and the adjoint rule is <span class="math" data-tex="\(\delta(T^*)=-\delta(T)^*\)">\(\delta(T^*)=-\delta(T)^*\)</span>. These identities also verify the needed domains by induction.</p>
+<p>We call <span class="math" data-tex="\(p\)">\(p\)</span> a <strong>summability bound</strong> if <span class="math" data-tex="\(\operatorname{Tr}\Lambda^{-s}&lt;\infty\)">\(\operatorname{Tr}\Lambda^{-s}&lt;\infty\)</span> for every real <span class="math" data-tex="\(s&gt;p\)">\(s&gt;p\)</span>. A stated endpoint estimate <span class="math" data-tex="\(\mu_j(\Lambda^{-1})=O((j+1)^{-1/p})\)">\(\mu_j(\Lambda^{-1})=O((j+1)^{-1/p})\)</span>, for <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, is stronger and implies that bound. When the endpoint is required, we say so explicitly.</p>
+<h2 id="2-smooth-coefficients-act-on-every-sobolev-space">2. Smooth coefficients act on every Sobolev space</h2>
+<p>Let <span class="math" data-tex="\(H^s\)">\(H^s\)</span> be the completion of the finite spectral vectors for the norm <span class="math" data-tex="\(\|\Lambda^s\xi\|\)">\(\|\Lambda^s\xi\|\)</span>, and put <span class="math" data-tex="\(H^\infty=\bigcap_{s\geq0}H^s\)">\(H^\infty=\bigcap_{s\geq0}H^s\)</span>. For negative <span class="math" data-tex="\(s\)">\(s\)</span> this definition is a completion, rather than simply the domain of a bounded negative power with its original topology.</p>
+<p>Write <span class="math" data-tex="\(T\in\operatorname{op}^r\)">\(T\in\operatorname{op}^r\)</span> if it acts continuously <span class="math" data-tex="\(H^s\to H^{s-r}\)">\(H^s\to H^{s-r}\)</span> for every real <span class="math" data-tex="\(s\)">\(s\)</span>. Define the finer class</p>
+<span class="math math-display" data-tex="\[
+\operatorname{OP}^r=\Lambda^r\mathcal R,\qquad
+p_m^{(r)}(T)=\|\delta^m(\Lambda^{-r}T)\|.
+\tag{2.1}
+\]">\[
+\operatorname{OP}^r=\Lambda^r\mathcal R,\qquad
+p_m^{(r)}(T)=\|\delta^m(\Lambda^{-r}T)\|.
+\tag{2.1}
+\]</span>
+<p><strong>Theorem 2.1.</strong> A regular coefficient <span class="math" data-tex="\(b\)">\(b\)</span> lies in <span class="math" data-tex="\(\operatorname{op}^0\)">\(\operatorname{op}^0\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+b-\Lambda b\Lambda^{-1}=-\delta(b)\Lambda^{-1}\in\operatorname{OP}^{-1}
+\subset\operatorname{op}^{-1}.
+\tag{2.2}
+\]">\[
+b-\Lambda b\Lambda^{-1}=-\delta(b)\Lambda^{-1}\in\operatorname{OP}^{-1}
+\subset\operatorname{op}^{-1}.
+\tag{2.2}
+\]</span>
+<p>For every complex <span class="math" data-tex="\(z\)">\(z\)</span>, conjugation <span class="math" data-tex="\(T\mapsto\Lambda^zT\Lambda^{-z}\)">\(T\mapsto\Lambda^zT\Lambda^{-z}\)</span> preserves <span class="math" data-tex="\(\operatorname{OP}^r\)">\(\operatorname{OP}^r\)</span>.</p>
+<p><strong>Proof.</strong> For an integer <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>, the commutator binomial identity on finite spectral vectors gives</p>
+<span class="math math-display" data-tex="\[
+\Lambda^n b\Lambda^{-n}
+=\sum_{j=0}^n\binom nj\delta^j(b)\Lambda^{-j}.
+\tag{2.3}
+\]">\[
+\Lambda^n b\Lambda^{-n}
+=\sum_{j=0}^n\binom nj\delta^j(b)\Lambda^{-j}.
+\tag{2.3}
+\]</span>
+<p>All terms are bounded. Applying this to <span class="math" data-tex="\(b^*\)">\(b^*\)</span> and taking adjoints proves boundedness for negative integers as well. In particular the exact identity at exponent minus one is</p>
+<span class="math math-display" data-tex="\[
+\Lambda^{-1}b\Lambda=b-\Lambda^{-1}\delta(b).
+\tag{2.4}
+\]">\[
+\Lambda^{-1}b\Lambda=b-\Lambda^{-1}\delta(b).
+\tag{2.4}
+\]</span>
+<p>Interpolation between adjacent integers proves boundedness for real exponents. One may see the interpolation directly by testing <span class="math" data-tex="\(\Lambda^z b\Lambda^{-z}\)">\(\Lambda^z b\Lambda^{-z}\)</span> between finite spectral vectors on a vertical strip: the imaginary powers are unitary, the integer-boundary estimates come from (2.3), and the three-lines inequality gives the intermediate bound. Apply this also to every <span class="math" data-tex="\(\delta^m(b)\)">\(\delta^m(b)\)</span>. Since <span class="math" data-tex="\(\delta\)">\(\delta\)</span> commutes with conjugation, the conjugated coefficient is in <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>. Pure imaginary powers add no change to any norm. Multiplication by <span class="math" data-tex="\(\Lambda^r\)">\(\Lambda^r\)</span> then proves the conjugation assertion for (2.1) and the inclusion <span class="math" data-tex="\(\operatorname{OP}^r\subset\operatorname{op}^r\)">\(\operatorname{OP}^r\subset\operatorname{op}^r\)</span>. Equation (2.2) follows from the definition of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently <span class="math" data-tex="\(\operatorname{OP}^r\operatorname{OP}^s\subset\operatorname{OP}^{r+s}\)">\(\operatorname{OP}^r\operatorname{OP}^s\subset\operatorname{OP}^{r+s}\)</span>, and adjoints preserve order. To check the product, move the <span class="math" data-tex="\(\Lambda^s\)">\(\Lambda^s\)</span> factor in <span class="math" data-tex="\(\Lambda^r b\Lambda^s c\)">\(\Lambda^r b\Lambda^s c\)</span> to the left by Theorem 2.1. The remaining coefficient is a product of two elements of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>.</p>
+<h2 id="3-an-alternative-regularity-test">3. An alternative regularity test</h2>
+<p>Two commutators using <span class="math" data-tex="\(D^2\)">\(D^2\)</span> are often easier to calculate:</p>
+<span class="math math-display" data-tex="\[
+L(T)=\Lambda^{-1}\nabla(T),\qquad
+R(T)=\nabla(T)\Lambda^{-1}.
+\tag{3.1}
+\]">\[
+L(T)=\Lambda^{-1}\nabla(T),\qquad
+R(T)=\nabla(T)\Lambda^{-1}.
+\tag{3.1}
+\]</span>
+<p>Here and below a commutator initially defined on <span class="math" data-tex="\(H^\infty\)">\(H^\infty\)</span> belongs to a bounded domain only when it has a bounded extension. An assertion about all <span class="math" data-tex="\(L^kR^q\)">\(L^kR^q\)</span> includes those domain requirements.</p>
+<p><strong>Theorem 3.1.</strong> On bounded operators,</p>
+<span class="math math-display" data-tex="\[
+\bigcap_{k,q\geq0}\operatorname{Dom}L^kR^q=\mathcal R.
+\tag{3.2}
+\]">\[
+\bigcap_{k,q\geq0}\operatorname{Dom}L^kR^q=\mathcal R.
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(T\in\mathcal R\)">\(T\in\mathcal R\)</span>, direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+R(T)=2\delta(T)+\delta^2(T)\Lambda^{-1},\qquad
+L(T)=2\delta(T)-\Lambda^{-1}\delta^2(T).
+\tag{3.3}
+\]">\[
+R(T)=2\delta(T)+\delta^2(T)\Lambda^{-1},\qquad
+L(T)=2\delta(T)-\Lambda^{-1}\delta^2(T).
+\tag{3.3}
+\]</span>
+<p>Both belong to <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>; repeated use proves one inclusion.</p>
+<p>For the converse, let <span class="math" data-tex="\(\lambda_i&gt;0\)">\(\lambda_i&gt;0\)</span> be the eigenvalues of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in a spectral basis. The matrix entries of <span class="math" data-tex="\(L(T)+R(T)\)">\(L(T)+R(T)\)</span> are</p>
+<span class="math math-display" data-tex="\[
+(\lambda_i-\lambda_j)\frac{(\lambda_i+\lambda_j)^2}{\lambda_i\lambda_j}T_{ij}.
+\]">\[
+(\lambda_i-\lambda_j)\frac{(\lambda_i+\lambda_j)^2}{\lambda_i\lambda_j}T_{ij}.
+\]</span>
+<p>The smooth function</p>
+<span class="math math-display" data-tex="\[
+f(u)=\frac{e^u}{(1+e^u)^2}=\frac1{4\cosh^2(u/2)}
+\]">\[
+f(u)=\frac{e^u}{(1+e^u)^2}=\frac1{4\cosh^2(u/2)}
+\]</span>
+<p>and all its derivatives decay exponentially. Its Fourier transform is integrable: two integrations by parts give <span class="math" data-tex="\(O((1+|t|)^{-2})\)">\(O((1+|t|)^{-2})\)</span>, while <span class="math" data-tex="\(f\in L^1\)">\(f\in L^1\)</span> controls bounded <span class="math" data-tex="\(t\)">\(t\)</span>. With the Fourier convention <span class="math" data-tex="\(f(u)=\int \widehat f(t)e^{itu}\,dt\)">\(f(u)=\int \widehat f(t)e^{itu}\,dt\)</span>, define the bounded multiplier</p>
+<span class="math math-display" data-tex="\[
+\mathcal F(B)=\int_{\mathbb R}\widehat f(t)\Lambda^{it}B\Lambda^{-it}\,dt.
+\tag{3.4}
+\]">\[
+\mathcal F(B)=\int_{\mathbb R}\widehat f(t)\Lambda^{it}B\Lambda^{-it}\,dt.
+\tag{3.4}
+\]</span>
+<p>The integral is defined in the weak operator sense; its norm is at most <span class="math" data-tex="\(\|\widehat f\|_1\|B\|\)">\(\|\widehat f\|_1\|B\|\)</span>. Its matrix entries multiply <span class="math" data-tex="\(B_{ij}\)">\(B_{ij}\)</span> by <span class="math" data-tex="\(f(\log\lambda_i-\log\lambda_j)\)">\(f(\log\lambda_i-\log\lambda_j)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\delta(T)=\mathcal F((L+R)T)
+\tag{3.5}
+\]">\[
+\delta(T)=\mathcal F((L+R)T)
+\tag{3.5}
+\]</span>
+<p>as a bounded matrix commutator. A bounded matrix commutator really gives membership in <span class="math" data-tex="\(\operatorname{Dom}\delta\)">\(\operatorname{Dom}\delta\)</span>. First take <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the finite spectral core. Its coordinate identity
+<span class="math" data-tex="\(\Lambda T\xi=T\Lambda\xi+K\xi\)">\(\Lambda T\xi=T\Lambda\xi+K\xi\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> is that bounded matrix, has its right side in <span class="math" data-tex="\(H\)">\(H\)</span>. The domain characterization of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> gives <span class="math" data-tex="\(T\xi\in\operatorname{Dom}\Lambda\)">\(T\xi\in\operatorname{Dom}\Lambda\)</span>. For an arbitrary <span class="math" data-tex="\(\xi\in\operatorname{Dom}\Lambda\)">\(\xi\in\operatorname{Dom}\Lambda\)</span>, take spectral truncations <span class="math" data-tex="\(\xi_N\)">\(\xi_N\)</span> converging to <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the graph norm. Then <span class="math" data-tex="\(T\xi_N\to T\xi\)">\(T\xi_N\to T\xi\)</span> and
+<span class="math" data-tex="\(\Lambda T\xi_N=T\Lambda\xi_N+K\xi_N\to T\Lambda\xi+K\xi\)">\(\Lambda T\xi_N=T\Lambda\xi_N+K\xi_N\to T\Lambda\xi+K\xi\)</span>.
+Closedness of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> proves the required domain preservation and identity.</p>
+<p>All multipliers <span class="math" data-tex="\(L,R,\mathcal F\)">\(L,R,\mathcal F\)</span> commute on finite spectral sections, since they multiply matrix entries by scalar functions of <span class="math" data-tex="\(\lambda_i,\lambda_j\)">\(\lambda_i,\lambda_j\)</span>. The assumed bounded extensions of every <span class="math" data-tex="\(L^kR^q(T)\)">\(L^kR^q(T)\)</span> therefore give</p>
+<span class="math math-display" data-tex="\[
+\delta^m(T)=\mathcal F^m((L+R)^mT)
+\]">\[
+\delta^m(T)=\mathcal F^m((L+R)^mT)
+\]</span>
+<p>as a bounded extension for every <span class="math" data-tex="\(m\)">\(m\)</span>. The preceding domain argument, applied successively, proves <span class="math" data-tex="\(T\in\mathcal R\)">\(T\in\mathcal R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(b\in\mathcal R\)">\(b\in\mathcal R\)</span>, <span class="math" data-tex="\(\nabla(b)=\Lambda\delta(b)+\delta(b)\Lambda\in\operatorname{OP}^1\)">\(\nabla(b)=\Lambda\delta(b)+\delta(b)\Lambda\in\operatorname{OP}^1\)</span>. As <span class="math" data-tex="\(\nabla(\Lambda^r)=0\)">\(\nabla(\Lambda^r)=0\)</span>, induction gives</p>
+<span class="math math-display" data-tex="\[
+\nabla^m(b)\in\operatorname{OP}^m.
+\tag{3.6}
+\]">\[
+\nabla^m(b)\in\operatorname{OP}^m.
+\tag{3.6}
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> be the algebra generated by <span class="math" data-tex="\(\nabla^m(a)\)">\(\nabla^m(a)\)</span> and <span class="math" data-tex="\(\nabla^m(da)\)">\(\nabla^m(da)\)</span>. Give each generator degree <span class="math" data-tex="\(m\)">\(m\)</span>, and give a product the sum of its degrees. Then <span class="math" data-tex="\(\mathcal D^q\subset\operatorname{OP}^q\)">\(\mathcal D^q\subset\operatorname{OP}^q\)</span> and <span class="math" data-tex="\(\nabla(\mathcal D^q)\subset\mathcal D^{q+1}\)">\(\nabla(\mathcal D^q)\subset\mathcal D^{q+1}\)</span>.</p>
+<h2 id="4-a-fourier-estimate-for-a-taylor-remainder">4. A Fourier estimate for a Taylor remainder</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\mathsf S(T)=\Delta T\Delta^{-1},\qquad
+\mathsf E(T)=\nabla(T)\Delta^{-1}=(\mathsf S-1)(T).
+\tag{4.1}
+\]">\[
+\mathsf S(T)=\Delta T\Delta^{-1},\qquad
+\mathsf E(T)=\nabla(T)\Delta^{-1}=(\mathsf S-1)(T).
+\tag{4.1}
+\]</span>
+<p>For <span class="math" data-tex="\(T\in\mathcal D^q\)">\(T\in\mathcal D^q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathsf E^j(T)=\nabla^j(T)\Delta^{-j}\in\operatorname{OP}^{q-j}.
+\tag{4.2}
+\]">\[
+\mathsf E^j(T)=\nabla^j(T)\Delta^{-j}\in\operatorname{OP}^{q-j}.
+\tag{4.2}
+\]</span>
+<p>The identities follow because <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> annihilates <span class="math" data-tex="\(\Delta^{-1}\)">\(\Delta^{-1}\)</span>.</p>
+<p>Here is a useful uniform remainder estimate. Let <span class="math" data-tex="\(0&lt;\operatorname{Re}\alpha&lt;1\)">\(0&lt;\operatorname{Re}\alpha&lt;1\)</span>, <span class="math" data-tex="\(0&lt;\beta&lt;\operatorname{Re}\alpha\)">\(0&lt;\beta&lt;\operatorname{Re}\alpha\)</span>, and <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. The operator</p>
+<span class="math math-display" data-tex="\[
+\mathsf S^\beta\int_0^1(1+t(\mathsf S-1))^{-\alpha}
+\frac{(1-t)^n}{n!}\,dt
+\tag{4.3}
+\]">\[
+\mathsf S^\beta\int_0^1(1+t(\mathsf S-1))^{-\alpha}
+\frac{(1-t)^n}{n!}\,dt
+\tag{4.3}
+\]</span>
+<p>preserves every <span class="math" data-tex="\(\operatorname{OP}^r\)">\(\operatorname{OP}^r\)</span>. The expression is defined by its spectral multiplier, rather than by a claim that <span class="math" data-tex="\(\mathsf S\)">\(\mathsf S\)</span> is a bounded operator on <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>.</p>
+<p><strong>Proof.</strong> On matrix entries, (4.3) has multiplier</p>
+<span class="math math-display" data-tex="\[
+g(u)=e^{\beta u}\int_0^1(1+t(e^u-1))^{-\alpha}
+\frac{(1-t)^n}{n!}\,dt,\qquad
+u=\log(\lambda_i^2/\lambda_j^2).
+\]">\[
+g(u)=e^{\beta u}\int_0^1(1+t(e^u-1))^{-\alpha}
+\frac{(1-t)^n}{n!}\,dt,\qquad
+u=\log(\lambda_i^2/\lambda_j^2).
+\]</span>
+<p>For <span class="math" data-tex="\(u\geq0\)">\(u\geq0\)</span>, replacing the positive denominator by <span class="math" data-tex="\(te^u\)">\(te^u\)</span> bounds its modulus by a constant times <span class="math" data-tex="\(e^{(\beta-\operatorname{Re}\alpha)u}\int_0^1t^{-\operatorname{Re}\alpha}(1-t)^n\,dt\)">\(e^{(\beta-\operatorname{Re}\alpha)u}\int_0^1t^{-\operatorname{Re}\alpha}(1-t)^n\,dt\)</span>. For <span class="math" data-tex="\(u\leq0\)">\(u\leq0\)</span>, replace the denominator by <span class="math" data-tex="\(1-t\)">\(1-t\)</span>; integrability holds because <span class="math" data-tex="\(n-\operatorname{Re}\alpha&gt;-1\)">\(n-\operatorname{Re}\alpha&gt;-1\)</span>, giving a bound <span class="math" data-tex="\(Ce^{\beta u}\)">\(Ce^{\beta u}\)</span>. Each derivative in <span class="math" data-tex="\(u\)">\(u\)</span> inserts bounded factors <span class="math" data-tex="\(te^u/(1-t+te^u)\)">\(te^u/(1-t+te^u)\)</span>, so the same estimates hold for all derivatives. The function is smooth at finite <span class="math" data-tex="\(u\)">\(u\)</span> and belongs to the Schwartz space. Its Fourier transform is integrable.</p>
+<p>Consequently (4.3) is <span class="math" data-tex="\(\int\widehat g(s)\mathsf S^{is}\,ds\)">\(\int\widehat g(s)\mathsf S^{is}\,ds\)</span>. Imaginary conjugations preserve every seminorm (2.1), because they are unitary and commute with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Integrating their estimates proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-complex-powers-with-an-order-controlled-error">5. Complex powers with an order-controlled error</h2>
+<p><strong>Theorem 5.1.</strong> For <span class="math" data-tex="\(T\in\mathcal D^q\)">\(T\in\mathcal D^q\)</span>, <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, and <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Delta^zT\Delta^{-z}
+-\sum_{j=0}^n\binom zj\nabla^j(T)\Delta^{-j}
+\in\operatorname{OP}^{q-n-1}.
+\tag{5.1}
+\]">\[
+\Delta^zT\Delta^{-z}
+-\sum_{j=0}^n\binom zj\nabla^j(T)\Delta^{-j}
+\in\operatorname{OP}^{q-n-1}.
+\tag{5.1}
+\]</span>
+<p>The generalized binomial coefficients are polynomials in <span class="math" data-tex="\(z\)">\(z\)</span>. The remainder is an operator statement on the Sobolev scale, not a convergent infinite series in operator norm.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(|\operatorname{Re}z|&lt;1/4\)">\(|\operatorname{Re}z|&lt;1/4\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+r_{n,z}(u)=
+\frac{e^{zu}-\sum_{j=0}^n\binom zj(e^u-1)^j}
+{(e^u-1)^{n+1}}.
+\]">\[
+r_{n,z}(u)=
+\frac{e^{zu}-\sum_{j=0}^n\binom zj(e^u-1)^j}
+{(e^u-1)^{n+1}}.
+\]</span>
+<p>The singularity at <span class="math" data-tex="\(u=0\)">\(u=0\)</span> is removable by the ordinary Taylor formula for <span class="math" data-tex="\((1+x)^z\)">\((1+x)^z\)</span>. The function <span class="math" data-tex="\(h_{n,z}(u)=e^{u/2}r_{n,z}(u)\)">\(h_{n,z}(u)=e^{u/2}r_{n,z}(u)\)</span> and all its derivatives decay exponentially at both ends. At plus infinity the possible exponents before multiplication by <span class="math" data-tex="\(e^{u/2}\)">\(e^{u/2}\)</span> are <span class="math" data-tex="\(\operatorname{Re}z-n-1\)">\(\operatorname{Re}z-n-1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span>; at minus infinity they are <span class="math" data-tex="\(\operatorname{Re}z\)">\(\operatorname{Re}z\)</span> and zero. All resulting exponents have the required signs. Hence <span class="math" data-tex="\(\widehat h_{n,z}\in L^1\)">\(\widehat h_{n,z}\in L^1\)</span>.</p>
+<p>The scalar Taylor identity, first on finite spectral sections, says that the left side of (5.1) is</p>
+<span class="math math-display" data-tex="\[
+\mathsf S^{-1/2}\int_{\mathbb R}
+\widehat h_{n,z}(t)\mathsf S^{it}(\mathsf E^{n+1}(T))\,dt.
+\tag{5.2}
+\]">\[
+\mathsf S^{-1/2}\int_{\mathbb R}
+\widehat h_{n,z}(t)\mathsf S^{it}(\mathsf E^{n+1}(T))\,dt.
+\tag{5.2}
+\]</span>
+<p>By (4.2) the input has order <span class="math" data-tex="\(q-n-1\)">\(q-n-1\)</span>. Theorem 2.1 handles the real conjugation <span class="math" data-tex="\(\mathsf S^{-1/2}\)">\(\mathsf S^{-1/2}\)</span>, and the imaginary-conjugation seminorm estimates justify the weak integral in that same order class. To verify this, factor out the fixed power of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and test each iterated commutator on finite spectral vectors; the weak integral of the corresponding bounded commutators supplies its bounded extension.</p>
+<p>For arbitrary <span class="math" data-tex="\(z\)">\(z\)</span>, choose an integer <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span> so <span class="math" data-tex="\(w=z/M\)">\(w=z/M\)</span> lies in the preceding strip. Repeatedly apply the proved identity for <span class="math" data-tex="\(\mathsf S^w\)">\(\mathsf S^w\)</span>. It also applies to <span class="math" data-tex="\(\mathsf S^{jw}(T)\)">\(\mathsf S^{jw}(T)\)</span>, since <span class="math" data-tex="\(\mathsf E\)">\(\mathsf E\)</span> commutes with conjugation and (4.2) remains valid after conjugation. Terms with at least <span class="math" data-tex="\(n+1\)">\(n+1\)</span> factors of <span class="math" data-tex="\(\mathsf E\)">\(\mathsf E\)</span> have order at most <span class="math" data-tex="\(q-n-1\)">\(q-n-1\)</span>; every conjugation preserves that class. Modulo that class, the product of the <span class="math" data-tex="\(M\)">\(M\)</span> truncated polynomials <span class="math" data-tex="\(\sum_{j=0}^n\binom wj x^j\)">\(\sum_{j=0}^n\binom wj x^j\)</span> agrees with the Taylor polynomial of <span class="math" data-tex="\((1+x)^{Mw}\)">\((1+x)^{Mw}\)</span>. This follows by multiplying ordinary power series near <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, or by the finite Vandermonde identity for their coefficients. Since <span class="math" data-tex="\(Mw=z\)">\(Mw=z\)</span>, it gives exactly (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof, with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in place of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, gives for regular coefficients</p>
+<span class="math math-display" data-tex="\[
+\Lambda^z b\sim\sum_{j\geq0}\binom zj\delta^j(b)\Lambda^{z-j}.
+\tag{5.3}
+\]">\[
+\Lambda^z b\sim\sum_{j\geq0}\binom zj\delta^j(b)\Lambda^{z-j}.
+\tag{5.3}
+\]</span>
+<p>The meaning of the symbol <span class="math" data-tex="\(\sim\)">\(\sim\)</span> is that truncating after <span class="math" data-tex="\(j=n\)">\(j=n\)</span> leaves an operator of order <span class="math" data-tex="\(\operatorname{Re}z-n-1\)">\(\operatorname{Re}z-n-1\)</span>. Formula (5.3) proves composition and adjoint expansions for operators assembled from regular coefficients and powers of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<h2 id="6-which-coefficient-algebra-has-a-dimension-spectrum">6. Which coefficient algebra has a dimension spectrum?</h2>
+<p>Choose a <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-stable algebra <span class="math" data-tex="\(\mathcal B\subset\mathcal R\)">\(\mathcal B\subset\mathcal R\)</span>. Two distinct choices are worth naming:</p>
+<span class="math math-display" data-tex="\[
+\mathcal B_A=\operatorname{alg}\{\delta^j(a):a\in A,\ j\geq0\},
+\quad
+\mathcal B_D=\operatorname{alg}\{\delta^j(a),\delta^j(da):a\in A,\ j\geq0\}.
+\tag{6.1}
+\]">\[
+\mathcal B_A=\operatorname{alg}\{\delta^j(a):a\in A,\ j\geq0\},
+\quad
+\mathcal B_D=\operatorname{alg}\{\delta^j(a),\delta^j(da):a\in A,\ j\geq0\}.
+\tag{6.1}
+\]</span>
+<p>Regularity supplies bounded smooth coefficients in both algebras. It supplies <strong>no</strong> meromorphic continuation by itself.</p>
+<p>In the <strong>general isolated-singularity convention</strong>, the triple has discrete dimension spectrum relative to <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> if the initially holomorphic functions</p>
+<span class="math math-display" data-tex="\[
+\zeta_b(z)=\operatorname{Tr}(b\Lambda^{-z}),\qquad
+\operatorname{Re}z&gt;p,\quad b\in\mathcal B,
+\tag{6.2}
+\]">\[
+\zeta_b(z)=\operatorname{Tr}(b\Lambda^{-z}),\qquad
+\operatorname{Re}z&gt;p,\quad b\in\mathcal B,
+\tag{6.2}
+\]</span>
+<p>extend as single-valued holomorphic functions on <span class="math" data-tex="\(\mathbb C\setminus S\)">\(\mathbb C\setminus S\)</span>, for a common discrete set <span class="math" data-tex="\(S\)">\(S\)</span>. This convention allows isolated essential singularities. It does not imply that the continuation is meromorphic.</p>
+<p>For finite-pole formulas and highest-residue statements we use the <strong>meromorphic variant</strong>: every nonremovable singularity is a pole. The spectrum is simple if all poles are simple. It has finite multiplicity <span class="math" data-tex="\(r\)">\(r\)</span> if their orders are at most <span class="math" data-tex="\(r\)">\(r\)</span>, uniformly over the coefficient algebra. These are additional hypotheses. The trace-defect identity in Section 7 also holds under the general isolated-singularity convention. We take the actual spectrum to be the union of nonremovable singularities, or of poles in the meromorphic variant, so <span class="math" data-tex="\(\operatorname{Re}S\leq p\)">\(\operatorname{Re}S\leq p\)</span>. An allowed containing set can be larger than this actual spectrum.</p>
+<p>The algebra <span class="math" data-tex="\(\mathcal B_A\)">\(\mathcal B_A\)</span> gives a dimension test using only algebra coefficients. The index formula also contains <span class="math" data-tex="\(da\)">\(da\)</span> and its iterated commutators. We will require continuation for the algebra containing those actual coefficients, such as <span class="math" data-tex="\(\mathcal B_D\)">\(\mathcal B_D\)</span>, whenever using that formula. An assertion about (6.2) on the smaller algebra is not silently enlarged.</p>
+<p>To shift Mellin contours in a heat proof, we further require appropriate growth estimates: on pole-free vertical lines, the relevant gamma-weighted zeta functions must decay fast enough for contour integrals and their differentiated versions. Meromorphic continuation and pole multiplicity alone do not include that condition.</p>
+<h3 id="finite-direct-sums">Finite direct sums</h3>
+<p><strong>Proposition 6.1.</strong> Let <span class="math" data-tex="\((A_i,H_i,D_i)\)">\((A_i,H_i,D_i)\)</span>, <span class="math" data-tex="\(1\leq i\leq N\)">\(1\leq i\leq N\)</span>, be finitely many unital triples, with invertible reference operators and coefficient algebras <span class="math" data-tex="\(\mathcal B_i\)">\(\mathcal B_i\)</span> generated by the chosen regular coefficients. Use the full direct-sum algebra, Hilbert space and operator:
+<span class="math math-display" data-tex="\[
+A=\bigoplus_iA_i,\qquad H=\bigoplus_iH_i,\qquad D=\bigoplus_iD_i.
+\tag{6.3}
+\]">\[
+A=\bigoplus_iA_i,\qquad H=\bigoplus_iH_i,\qquad D=\bigoplus_iD_i.
+\tag{6.3}
+\]</span>
+Then the actual dimension spectrum is
+<span class="math math-display" data-tex="\[
+S=\bigcup_iS_i.
+\tag{6.4}
+\]">\[
+S=\bigcup_iS_i.
+\tag{6.4}
+\]</span>
+This holds in both the isolated-singularity and meromorphic conventions. A uniform finite pole bound for the sum is the maximum of the component bounds.</p>
+<p><strong>Proof.</strong> All algebra actions and commutators are block diagonal. The central projection onto each <span class="math" data-tex="\(H_i\)">\(H_i\)</span> belongs to <span class="math" data-tex="\(A\)">\(A\)</span>, so the coefficient algebra is <span class="math" data-tex="\(\bigoplus_i\mathcal B_i\)">\(\bigoplus_i\mathcal B_i\)</span>. The finite block decomposition preserves regularity, compact resolvent and a common finite summability bound. For <span class="math" data-tex="\(b=(b_i)\)">\(b=(b_i)\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta_b(z)=\sum_i\operatorname{Tr}(b_i|D_i|^{-z}).
+\]">\[
+\zeta_b(z)=\sum_i\operatorname{Tr}(b_i|D_i|^{-z}).
+\]</span>
+This finite sum has no singularities outside the union. Conversely, choose a coefficient supported in one block. Its zeta function is the corresponding component zeta function, so every actual component singularity occurs in the sum's coefficient family. This proves equality. Finite sums cannot increase the maximum pole order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The full algebra matters. If an algebra is represented only diagonally across several blocks, its coefficients might not isolate one block. Cancellation must then be checked before asserting equality of actual singularity sets.</p>
+<h3 id="products-and-heat-coefficients-that-individual-zeta-functions-hide">Products and heat coefficients that individual zeta functions hide</h3>
+<p>For two even triples, the standard graded product operator is
+<span class="math math-display" data-tex="\[
+D=D_1\otimes I+\gamma_1\otimes D_2,\qquad
+D^2=D_1^2\otimes I+I\otimes D_2^2.
+\tag{6.5}
+\]">\[
+D=D_1\otimes I+\gamma_1\otimes D_2,\qquad
+D^2=D_1^2\otimes I+I\otimes D_2^2.
+\tag{6.5}
+\]</span>
+The square identity follows from <span class="math" data-tex="\(\gamma_1D_1=-D_1\gamma_1\)">\(\gamma_1D_1=-D_1\gamma_1\)</span>. On tensor products of spectral eigenspaces it is an identity of finite matrices; spectral closure gives the indicated selfadjoint product realization. For bounded coefficient tensors <span class="math" data-tex="\(b_1\otimes b_2\)">\(b_1\otimes b_2\)</span>, trace-class heat operators satisfy
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl((b_1\otimes b_2)e^{-tD^2}\bigr)
+=\operatorname{Tr}(b_1e^{-tD_1^2})
+\operatorname{Tr}(b_2e^{-tD_2^2}).
+\tag{6.6}
+\]">\[
+\operatorname{Tr}\bigl((b_1\otimes b_2)e^{-tD^2}\bigr)
+=\operatorname{Tr}(b_1e^{-tD_1^2})
+\operatorname{Tr}(b_2e^{-tD_2^2}).
+\tag{6.6}
+\]</span>
+This is proved by expanding traces in tensor orthonormal bases, with absolute convergence supplied by the trace norms. It says that heat expansions multiply. Actual zeta pole sets need not simply add.</p>
+<p><strong>Example 6.2 (a hidden term becomes a positive pole).</strong> Let <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, let
+<span class="math math-display" data-tex="\[
+H_a=\ell^2(\mathbb N_0)\otimes\mathbb C^2,\quad
+A_a=\mathbb C I,\quad
+D_a(e_k\otimes u)=\sqrt{k+a}\,e_k\otimes\sigma_1u,\quad
+\gamma_a=\sigma_3,
+\tag{6.7}
+\]">\[
+H_a=\ell^2(\mathbb N_0)\otimes\mathbb C^2,\quad
+A_a=\mathbb C I,\quad
+D_a(e_k\otimes u)=\sqrt{k+a}\,e_k\otimes\sigma_1u,\quad
+\gamma_a=\sigma_3,
+\tag{6.7}
+\]</span>
+where <span class="math" data-tex="\(\sigma_1=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)">\(\sigma_1=\left(\begin{smallmatrix}0&amp;1\\1&amp;0\end{smallmatrix}\right)\)</span> and
+<span class="math" data-tex="\(\sigma_3=\left(\begin{smallmatrix}1&amp;0\\0&amp;-1\end{smallmatrix}\right)\)">\(\sigma_3=\left(\begin{smallmatrix}1&amp;0\\0&amp;-1\end{smallmatrix}\right)\)</span> act on the second factor. The domain consists of vectors with
+<span class="math" data-tex="\(\sum_k(k+a)\|u_k\|^2&lt;\infty\)">\(\sum_k(k+a)\|u_k\|^2&lt;\infty\)</span>.
+The operator is selfadjoint and invertible, anticommutes with <span class="math" data-tex="\(\gamma_a\)">\(\gamma_a\)</span>, and has compact resolvent. All algebra commutators are zero. Its coefficient algebra is <span class="math" data-tex="\(\mathbb C I\)">\(\mathbb C I\)</span>, and
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}|D_a|^{-z}=2\zeta(z/2,a).
+\tag{6.8}
+\]">\[
+\operatorname{Tr}|D_a|^{-z}=2\zeta(z/2,a).
+\tag{6.8}
+\]</span>
+The Hurwitz continuation proved in Section 8 has only a simple pole at argument one. Therefore the actual dimension spectrum is <span class="math" data-tex="\(\{2\}\)">\(\{2\}\)</span>.</p>
+<p>Take the graded product of parameters <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>, and put <span class="math" data-tex="\(c=a+b\)">\(c=a+b\)</span>. On the <span class="math" data-tex="\((k,l)\)">\((k,l)\)</span> block its square is <span class="math" data-tex="\((k+l+c)I_4\)">\((k+l+c)I_4\)</span>. There are <span class="math" data-tex="\(r+1\)">\(r+1\)</span> pairs with <span class="math" data-tex="\(k+l=r\)">\(k+l=r\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}|D|^{-z}
+&amp;=4\sum_{r=0}^\infty(r+1)(r+c)^{-z/2}\\
+&amp;=4\zeta(z/2-1,c)+4(1-c)\zeta(z/2,c).
+\end{aligned}
+\tag{6.9}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}|D|^{-z}
+&amp;=4\sum_{r=0}^\infty(r+1)(r+c)^{-z/2}\\
+&amp;=4\zeta(z/2-1,c)+4(1-c)\zeta(z/2,c).
+\end{aligned}
+\tag{6.9}
+\]</span>
+The equality holds first for <span class="math" data-tex="\(\operatorname{Re}z&gt;4\)">\(\operatorname{Re}z&gt;4\)</span>, then by continuation. Its residue at <span class="math" data-tex="\(z=4\)">\(z=4\)</span> is eight. If <span class="math" data-tex="\(c\neq1\)">\(c\neq1\)</span>, it also has a pole at <span class="math" data-tex="\(z=2\)">\(z=2\)</span>, with residue <span class="math" data-tex="\(8(1-c)\)">\(8(1-c)\)</span>. For <span class="math" data-tex="\(a=b=1/4\)">\(a=b=1/4\)</span>, the factor spectra are both <span class="math" data-tex="\(\{2\}\)">\(\{2\}\)</span>, whereas the product spectrum is <span class="math" data-tex="\(\{4,2\}\)">\(\{4,2\}\)</span>. Thus the rule “the actual product spectrum equals the sum of the actual factor spectra, except at nonpositive integers” is not valid under these hypotheses.</p>
+<p>The mechanism is visible in the heat functions:
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}e^{-tD_a^2}
+=\frac{2e^{-at}}{1-e^{-t}}
+=2t^{-1}+(1-2a)+O(t).
+\tag{6.10}
+\]">\[
+\operatorname{Tr}e^{-tD_a^2}
+=\frac{2e^{-at}}{1-e^{-t}}
+=2t^{-1}+(1-2a)+O(t).
+\tag{6.10}
+\]</span>
+The constant heat term in a factor is canceled by the zero of <span class="math" data-tex="\(1/\Gamma(z/2)\)">\(1/\Gamma(z/2)\)</span> at <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. In the product, its multiplication by the other factor's <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> term can create a <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> term, whose zeta pole is at the positive point <span class="math" data-tex="\(z=2\)">\(z=2\)</span>. The individual actual pole sets omitted the information needed to predict that product pole.</p>
+<p>A precise product statement can instead be made at the level of heat expansions. Suppose each relevant coefficient heat trace has, to every prescribed remainder order, an expansion by finitely many terms
+<span class="math math-display" data-tex="\[
+H_i(t)\sim\sum_{\alpha,\ell}
+c^{(i)}_{\alpha,\ell}t^{-\alpha/2}(\log t)^\ell,
+\tag{6.11}
+\]">\[
+H_i(t)\sim\sum_{\alpha,\ell}
+c^{(i)}_{\alpha,\ell}t^{-\alpha/2}(\log t)^\ell,
+\tag{6.11}
+\]</span>
+with seminorm or scalar remainder estimates sufficient for the coefficient family being used. Assume that the resulting summed exponents form a locally finite set. For (6.6), the product coefficient at exponent <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and log degree <span class="math" data-tex="\(j\)">\(j\)</span> is
+<span class="math math-display" data-tex="\[
+C_{\theta,j}
+=\sum_{\substack{\alpha+\beta=\theta\\\ell+m=j}}
+c^{(1)}_{\alpha,\ell}c^{(2)}_{\beta,m}.
+\tag{6.12}
+\]">\[
+C_{\theta,j}
+=\sum_{\substack{\alpha+\beta=\theta\\\ell+m=j}}
+c^{(1)}_{\alpha,\ell}c^{(2)}_{\beta,m}.
+\tag{6.12}
+\]</span>
+The sums in each required finite expansion are finite. These statements concern the specified tensor coefficients; to claim them for the entire product coefficient algebra, one must establish that algebra's corresponding expansion and remainder estimates.</p>
+<p><strong>Proposition 6.3 (the heat-expansion product rule).</strong> Under these hypotheses, the principal part of the product zeta function at <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the negative-power part of
+<span class="math math-display" data-tex="\[
+\frac1{\Gamma(z/2)}
+\sum_j\frac{(-1)^j j!\,2^{j+1}C_{\theta,j}}
+{(z-\theta)^{j+1}}.
+\tag{6.13}
+\]">\[
+\frac1{\Gamma(z/2)}
+\sum_j\frac{(-1)^j j!\,2^{j+1}C_{\theta,j}}
+{(z-\theta)^{j+1}}.
+\tag{6.13}
+\]</span>
+Thus actual product poles are determined by nonzero coefficients after the collisions in (6.12) and the gamma zeros in (6.13). An exponent sum with a zero resulting principal part is removable.</p>
+<p><strong>Proof.</strong> The factorization (6.6) multiplies the two finite expansions term by term. To obtain an arbitrary requested product remainder, choose the two factor remainders sufficiently deep: each other heat trace has a fixed polynomial upper bound near zero, so multiplication retains the desired positive margin. Such a bound also follows from finite summability, using
+<span class="math" data-tex="\(e^{-t\lambda^2}\leq C_qt^{-q/2}\lambda^{-q}\)">\(e^{-t\lambda^2}\leq C_qt^{-q/2}\lambda^{-q}\)</span>
+for a trace-class negative power.</p>
+<p>Mellin's identity in the initial trace-class half-plane gives
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}\bigl((b_1\otimes b_2)|D|^{-z}\bigr)
+=\frac1{\Gamma(z/2)}
+\int_0^\infty t^{z/2-1}H_1(t)H_2(t)\,dt.
+\]">\[
+\operatorname{Tr}\bigl((b_1\otimes b_2)|D|^{-z}\bigr)
+=\frac1{\Gamma(z/2)}
+\int_0^\infty t^{z/2-1}H_1(t)H_2(t)\,dt.
+\]</span>
+The tail from <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span> is entire when the factor reference operators are invertible: their heat traces, and any logarithmically differentiated integrand on a compact <span class="math" data-tex="\(z\)">\(z\)</span>-set, decrease exponentially. On <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, subtract a finite expansion deep enough for a neighborhood of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Its remainder integral is holomorphic there, by the strict exponent margin and dominated convergence for every <span class="math" data-tex="\(z\)">\(z\)</span>-derivative. Each subtracted term has integral
+<span class="math math-display" data-tex="\[
+\int_0^1t^{(z-\theta)/2-1}(\log t)^j\,dt
+=\frac{(-1)^j j!\,2^{j+1}}{(z-\theta)^{j+1}}.
+\]">\[
+\int_0^1t^{(z-\theta)/2-1}(\log t)^j\,dt
+=\frac{(-1)^j j!\,2^{j+1}}{(z-\theta)^{j+1}}.
+\]</span>
+This proves (6.13). The zeros of <span class="math" data-tex="\(1/\Gamma(z/2)\)">\(1/\Gamma(z/2)\)</span> are simple at <span class="math" data-tex="\(z=0,-2,-4,\ldots\)">\(z=0,-2,-4,\ldots\)</span>; there they reduce a pole order by one. A simple heat pole can disappear completely, whereas a higher log pole can survive. Collisions can also make all the coefficients at an exponent vanish. Local finiteness and continuation uniqueness permit these local continuations to be joined. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is therefore a valid exponent-addition rule for full heat data under stated remainder assumptions. A rule for actual zeta spectra needs extra conditions ensuring both that no hidden heat term produces a new pole and that the proposed sums do not cancel. Discreteness, regularity and summability alone do not establish those conditions.</p>
+<p><strong>Example 6.4 (algebra coefficients do not control differential coefficients).</strong> The difference between the two algebras in (6.1) is substantive. Put
+<span class="math math-display" data-tex="\[
+H=\bigoplus_{n\geq1}\mathbb C^2,\qquad
+\chi_n=
+\begin{cases}1,&amp;n=2^{k!}\text{ for some }k\geq1,\\0,&amp;\text{otherwise},\end{cases}
+\]">\[
+H=\bigoplus_{n\geq1}\mathbb C^2,\qquad
+\chi_n=
+\begin{cases}1,&amp;n=2^{k!}\text{ for some }k\geq1,\\0,&amp;\text{otherwise},\end{cases}
+\]</span>
+and define, on the square-summability domain with weight <span class="math" data-tex="\(n^2\)">\(n^2\)</span>,
+<span class="math math-display" data-tex="\[
+D_n=n\begin{pmatrix}1&amp;0\\0&amp;1-2\chi_n\end{pmatrix},
+\qquad
+a_n=\frac1{2n}\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},
+\qquad A=\mathbb C[a].
+\tag{6.14}
+\]">\[
+D_n=n\begin{pmatrix}1&amp;0\\0&amp;1-2\chi_n\end{pmatrix},
+\qquad
+a_n=\frac1{2n}\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},
+\qquad A=\mathbb C[a].
+\tag{6.14}
+\]</span>
+The real diagonal operator <span class="math" data-tex="\(D\)">\(D\)</span> is selfadjoint with compact resolvent and is invertible. Its absolute value is <span class="math" data-tex="\(\Lambda_n=nI_2\)">\(\Lambda_n=nI_2\)</span>. The coefficient <span class="math" data-tex="\(a\)">\(a\)</span> is bounded and selfadjoint, preserves <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>, and
+<span class="math math-display" data-tex="\[
+[D,a]_n=\chi_n\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\tag{6.15}
+\]">\[
+[D,a]_n=\chi_n\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix}.
+\tag{6.15}
+\]</span>
+Both <span class="math" data-tex="\(a\)">\(a\)</span> and this bounded commutator commute with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Polynomial products preserve the domain and obey the bounded first-commutator rule. Thus the triple is regular, with summability bound one.</p>
+<p>Here <span class="math" data-tex="\(\delta(a)=0\)">\(\delta(a)=0\)</span>, so <span class="math" data-tex="\(\mathcal B_A=A\)">\(\mathcal B_A=A\)</span>. Odd powers of <span class="math" data-tex="\(a\)">\(a\)</span> have zero matrix trace, and
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(a^{2j}\Lambda^{-z})
+=2^{1-2j}\zeta(z+2j),\qquad j\geq0.
+\tag{6.16}
+\]">\[
+\operatorname{Tr}(a^{2j}\Lambda^{-z})
+=2^{1-2j}\zeta(z+2j),\qquad j\geq0.
+\tag{6.16}
+\]</span>
+The continuation in Section 8 shows that the actual <span class="math" data-tex="\(\mathcal B_A\)">\(\mathcal B_A\)</span> spectrum is the simple discrete set <span class="math" data-tex="\(\{1,-1,-3,\ldots\}\)">\(\{1,-1,-3,\ldots\}\)</span>.
+But <span class="math" data-tex="\(b=[D,a]^2\)">\(b=[D,a]^2\)</span> belongs to <span class="math" data-tex="\(\mathcal B_D\)">\(\mathcal B_D\)</span>, and its initially convergent zeta function is
+<span class="math math-display" data-tex="\[
+\zeta_b(z)=-2\sum_{k\geq1}2^{-k!z}.
+\tag{6.17}
+\]">\[
+\zeta_b(z)=-2\sum_{k\geq1}2^{-k!z}.
+\tag{6.17}
+\]</span>
+It has no continuation holomorphic off a discrete subset of the plane.
+Indeed, for any rational <span class="math" data-tex="\(q\)">\(q\)</span>, set <span class="math" data-tex="\(z_q=2\pi i q/\log2\)">\(z_q=2\pi i q/\log2\)</span>. For sufficiently large <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(qk!\)">\(qk!\)</span> is an integer. Along <span class="math" data-tex="\(z=z_q+x\)">\(z=z_q+x\)</span>, <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, the tail in (6.17) is therefore a sum of positive real numbers <span class="math" data-tex="\(e^{-xk!\log2}\)">\(e^{-xk!\log2}\)</span>, whose sum tends to infinity as <span class="math" data-tex="\(x\downarrow0\)">\(x\downarrow0\)</span>. To see the divergence, retain an arbitrarily long finite tail segment; every term tends to one. The remaining finite initial segment stays bounded, so the singularity at <span class="math" data-tex="\(z_q\)">\(z_q\)</span> cannot be removable. These points are dense on the imaginary axis, and no discrete exceptional set can contain them all. A holomorphic neighborhood at any omitted one would give bounded values along that approach, a contradiction.</p>
+<p>Thus regularity and simple continuation on <span class="math" data-tex="\(\mathcal B_A\)">\(\mathcal B_A\)</span> do not imply the needed continuation on <span class="math" data-tex="\(\mathcal B_D\)">\(\mathcal B_D\)</span>. When a residue formula contains differential coefficients, its continuation hypothesis must cover those coefficients. This example proves why the stated algebra interface cannot be omitted.</p>
+<figure><img src="figures/coefficient-algebra-boundary.png" alt="Dense rational boundary singularities and finite positive exponential tails" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The upper panel shows a finite subset of the proved singularities <span class="math" data-tex="\(z_q=2\pi i q/\log2\)">\(z_q=2\pi i q/\log2\)</span>, <span class="math" data-tex="\(q\in\mathbb Q\)">\(q\in\mathbb Q\)</span>. The selected <span class="math" data-tex="\(q=1/3\)">\(q=1/3\)</span> makes every term with <span class="math" data-tex="\(k\geq3\)">\(k\geq3\)</span> positive along the indicated horizontal approach. The lower panel plots the exact finite sums <span class="math" data-tex="\(T_N(x)=\sum_{k=3}^N e^{-xk!\log2}\)">\(T_N(x)=\sum_{k=3}^N e^{-xk!\log2}\)</span>, numerically evaluated for <span class="math" data-tex="\(N=3,5,8\)">\(N=3,5,8\)</span>. Their limits are <span class="math" data-tex="\(N-2\)">\(N-2\)</span>; allowing arbitrarily large <span class="math" data-tex="\(N\)">\(N\)</span> proves divergence of the full tail. The curves are finite samples, and the density and divergence assertions have their proofs in Example 6.4. The original reproducible figure source accompanies the course.</em></p>
+<h2 id="7-zeta-functions-for-operators-of-arbitrary-order">7. Zeta functions for operators of arbitrary order</h2>
+<p>Let <span class="math" data-tex="\(\Psi^*(\mathcal B)\)">\(\Psi^*(\mathcal B)\)</span> consist of operators with an expansion</p>
+<span class="math math-display" data-tex="\[
+P\sim b_q\Lambda^q+b_{q-1}\Lambda^{q-1}+\cdots,\qquad b_j\in\mathcal B,\quad q\in\mathbb Z,
+\tag{7.1}
+\]">\[
+P\sim b_q\Lambda^q+b_{q-1}\Lambda^{q-1}+\cdots,\qquad b_j\in\mathcal B,\quad q\in\mathbb Z,
+\tag{7.1}
+\]</span>
+<p>where the remainder after any sufficiently long truncation has the corresponding lower order. Formula (5.3) makes this an algebra.</p>
+<p><strong>Theorem 7.1.</strong> If the dimension-spectrum hypothesis holds on <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+h_P(z)=\operatorname{Tr}(P\Lambda^{-2z})
+\]">\[
+h_P(z)=\operatorname{Tr}(P\Lambda^{-2z})
+\]</span>
+<p>is holomorphic for <span class="math" data-tex="\(\operatorname{Re}z&gt;(q+p)/2\)">\(\operatorname{Re}z&gt;(q+p)/2\)</span> and continues holomorphically off a locally finite discrete set. Its possible singularities are in</p>
+<span class="math math-display" data-tex="\[
+\bigcup_{j\leq q}(S+j)/2.
+\tag{7.2}
+\]">\[
+\bigcup_{j\leq q}(S+j)/2.
+\tag{7.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(S\)">\(S\)</span> is the set of actual coefficient singularities, rather than a larger admissible set. If the coefficient functions have meromorphic continuation, so does <span class="math" data-tex="\(h_P\)">\(h_P\)</span>; finite pole multiplicity is retained. Under the broader isolated-singularity hypothesis, an essential coefficient singularity is allowed.</p>
+<p><strong>Proof.</strong> An operator of order <span class="math" data-tex="\(u&lt;-p\)">\(u&lt;-p\)</span> is trace class: move its regular coefficient across the <span class="math" data-tex="\(\Lambda^u\)">\(\Lambda^u\)</span> factor by Theorem 2.1, and use <span class="math" data-tex="\(\operatorname{Tr}\Lambda^u&lt;\infty\)">\(\operatorname{Tr}\Lambda^u&lt;\infty\)</span>. The same factorization, with a strict exponent margin, permits <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives; powers of <span class="math" data-tex="\(\log\Lambda\)">\(\log\Lambda\)</span> are dominated by any fixed positive power of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. This proves initial trace-norm holomorphy.</p>
+<p>On a chosen compact set in the <span class="math" data-tex="\(z\)">\(z\)</span>-plane, truncate (7.1) far enough that the remainder times <span class="math" data-tex="\(\Lambda^{-2z}\)">\(\Lambda^{-2z}\)</span> is trace class throughout a neighborhood of that set. Its trace is holomorphic there. Each retained term has trace <span class="math" data-tex="\(\zeta_{b_j}(2z-j)\)">\(\zeta_{b_j}(2z-j)\)</span>, which has the stated continuation. On overlaps these constructions agree in their initial convergence region and then by uniqueness of analytic continuation away from the isolated singularities. Finally, each actual coefficient singularity has real part at most <span class="math" data-tex="\(p\)">\(p\)</span>, because its original trace is holomorphic in the strict half-plane <span class="math" data-tex="\(\operatorname{Re}z&gt;p\)">\(\operatorname{Re}z&gt;p\)</span>. For a singularity in a bounded region, <span class="math" data-tex="\(2\operatorname{Re}z\leq p+j\)">\(2\operatorname{Re}z\leq p+j\)</span> therefore forces a lower bound on <span class="math" data-tex="\(j\)">\(j\)</span>. Only finitely many integers <span class="math" data-tex="\(j\leq q\)">\(j\leq q\)</span> can contribute there; each shifted copy of <span class="math" data-tex="\(S\)">\(S\)</span> is discrete. This proves local finiteness. A finite sum of meromorphic coefficient functions is meromorphic, with no greater pole multiplicity, proving the additional assertion under that condition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\tau_k(P)=\operatorname*{Res}_{z=0}z^k h_P(z).
+\tag{7.3}
+\]">\[
+\tau_k(P)=\operatorname*{Res}_{z=0}z^k h_P(z).
+\tag{7.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\tau_k\)">\(\tau_k\)</span> is the coefficient of <span class="math" data-tex="\(z^{-k-1}\)">\(z^{-k-1}\)</span>. We will also need
+<span class="math" data-tex="\(\tau_{-1}(P)=\operatorname*{Res}_{z=0}z^{-1}h_P(z)\)">\(\tau_{-1}(P)=\operatorname*{Res}_{z=0}z^{-1}h_P(z)\)</span>, the constant Laurent coefficient.</p>
+<p><strong>Theorem 7.2 (the higher-residue trace defect).</strong> Let <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> be an integer and let <span class="math" data-tex="\(\mathscr L(P)=[\log\Delta,P]\)">\(\mathscr L(P)=[\log\Delta,P]\)</span>, interpreted through its order-lowering expansion. Then</p>
+<span class="math math-display" data-tex="\[
+\tau_k(PQ-QP)=
+\sum_{m\geq1}\frac{(-1)^{m-1}}{m!}
+\tau_{k+m}(P\mathscr L^m(Q)).
+\tag{7.4}
+\]">\[
+\tau_k(PQ-QP)=
+\sum_{m\geq1}\frac{(-1)^{m-1}}{m!}
+\tau_{k+m}(P\mathscr L^m(Q)).
+\tag{7.4}
+\]</span>
+<p>For fixed <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> this sum is finite by operator order, even under the general isolated-singularity convention. In the additional meromorphic finite-multiplicity case, if the maximum pole order is <span class="math" data-tex="\(r\)">\(r\)</span>, the highest possible nonzero residue <span class="math" data-tex="\(\tau_{r-1}\)">\(\tau_{r-1}\)</span> is a trace. For simple spectrum, <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> is a trace.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\varepsilon(P)=\delta(P)\Lambda^{-1}\)">\(\varepsilon(P)=\delta(P)\Lambda^{-1}\)</span>, conjugation by <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is <span class="math" data-tex="\(1+\varepsilon\)">\(1+\varepsilon\)</span>, and (5.3) gives the asymptotic identity</p>
+<span class="math math-display" data-tex="\[
+\mathscr L=2\log(1+\varepsilon)
+=2\sum_{j\geq1}\frac{(-1)^{j-1}}j\varepsilon^j.
+\tag{7.5}
+\]">\[
+\mathscr L=2\log(1+\varepsilon)
+=2\sum_{j\geq1}\frac{(-1)^{j-1}}j\varepsilon^j.
+\tag{7.5}
+\]</span>
+<p>Each application lowers order by one. More precisely, choose <span class="math" data-tex="\(M\)">\(M\)</span> with
+<span class="math" data-tex="\(\operatorname{Ord}P+\operatorname{Ord}Q-M-1&lt;-p\)">\(\operatorname{Ord}P+\operatorname{Ord}Q-M-1&lt;-p\)</span>, retaining a strict margin. The complex-power expansion gives
+<span class="math math-display" data-tex="\[
+e^{-z\mathscr L}(Q)
+=\sum_{m=0}^{M}\frac{(-z)^m}{m!}\mathscr L^m(Q)+R_M(z),
+\qquad
+\operatorname{Ord}R_M(z)\leq\operatorname{Ord}Q-M-1
+\tag{7.8}
+\]">\[
+e^{-z\mathscr L}(Q)
+=\sum_{m=0}^{M}\frac{(-z)^m}{m!}\mathscr L^m(Q)+R_M(z),
+\qquad
+\operatorname{Ord}R_M(z)\leq\operatorname{Ord}Q-M-1
+\tag{7.8}
+\]</span>
+near <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, with the family estimates needed for trace-norm holomorphy after multiplication by <span class="math" data-tex="\(P\Lambda^{-2z}\)">\(P\Lambda^{-2z}\)</span>.
+To verify the coefficients, conjugation by <span class="math" data-tex="\(\Lambda^{-2z}\)">\(\Lambda^{-2z}\)</span> has the formal expansion
+<span class="math" data-tex="\((1+\varepsilon)^{-2z}\)">\((1+\varepsilon)^{-2z}\)</span>. Modulo terms containing <span class="math" data-tex="\(\varepsilon^{M+1}\)">\(\varepsilon^{M+1}\)</span>, this is the ordinary finite algebra identity
+<span class="math" data-tex="\(\exp(-2z\log(1+\varepsilon))\)">\(\exp(-2z\log(1+\varepsilon))\)</span>. Theorem 5.1 supplies its actual order remainder; differentiating on a compact <span class="math" data-tex="\(z\)">\(z\)</span>-set and reserving a small order margin preserves the trace-class estimate. Thus the difference between the actual family and the finite polynomial in (7.8) contributes a holomorphic trace near zero. Also, for <span class="math" data-tex="\(m&gt;M\)">\(m&gt;M\)</span>, <span class="math" data-tex="\(P\mathscr L^m(Q)\)">\(P\mathscr L^m(Q)\)</span> has order less than <span class="math" data-tex="\(-p\)">\(-p\)</span>, so every <span class="math" data-tex="\(\tau_{k+m}\)">\(\tau_{k+m}\)</span> of that operator is zero. This proves finiteness without a pole-order bound.</p>
+<p>In a right half-plane ordinary trace cyclicity gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(QP\Lambda^{-2z})
+=\operatorname{Tr}\bigl(P\,e^{-z\mathscr L}(Q)\Lambda^{-2z}\bigr).
+\tag{7.6}
+\]">\[
+\operatorname{Tr}(QP\Lambda^{-2z})
+=\operatorname{Tr}\bigl(P\,e^{-z\mathscr L}(Q)\Lambda^{-2z}\bigr).
+\tag{7.6}
+\]</span>
+<p>For possibly unbounded <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>, insert a sufficiently large power of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in the factorization to make the cyclic interchange one of a bounded factor and a trace-class factor. More explicitly, if <span class="math" data-tex="\(Q\)">\(Q\)</span> has order <span class="math" data-tex="\(v\)">\(v\)</span>, write <span class="math" data-tex="\(Q=(Q\Lambda^{-v})\Lambda^v\)">\(Q=(Q\Lambda^{-v})\Lambda^v\)</span> and cycle the bounded factor <span class="math" data-tex="\(Q\Lambda^{-v}\)">\(Q\Lambda^{-v}\)</span> against the trace-class factor <span class="math" data-tex="\(\Lambda^vP\Lambda^{-2z}\)">\(\Lambda^vP\Lambda^{-2z}\)</span>. The resulting trace equals that of <span class="math" data-tex="\(P\Lambda^{-2z}Q\)">\(P\Lambda^{-2z}Q\)</span> by summing diagonals in a spectral basis: the two conjugating powers cancel on every diagonal entry, and both operators are trace class in the strict half-plane. This justifies the cyclic interchange. Continue (7.6) by Theorem 7.1, use (7.8), and extract the coefficient of <span class="math" data-tex="\(z^{-k-1}\)">\(z^{-k-1}\)</span> on a small circle about zero containing no other singularity. Laurent coefficient extraction is valid also at an isolated essential singularity. A factor <span class="math" data-tex="\(z^m\)">\(z^m\)</span> selects <span class="math" data-tex="\(\tau_{k+m}\)">\(\tau_{k+m}\)</span>; subtracting the <span class="math" data-tex="\(m=0\)">\(m=0\)</span> term gives (7.4). The remainder is holomorphic and has zero residue for <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>. If a uniform maximum pole order <span class="math" data-tex="\(r\)">\(r\)</span> is additionally assumed, all <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> with <span class="math" data-tex="\(j\geq r\)">\(j\geq r\)</span> vanish. Applying (7.4) at <span class="math" data-tex="\(k=r-1\)">\(k=r-1\)</span> proves the final trace assertion. No highest nonzero residue is asserted for the essential case. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Keep the scale in (7.3) visible. If <span class="math" data-tex="\(P=\Lambda^{-p}\)">\(P=\Lambda^{-p}\)</span>, <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>, has singular values <span class="math" data-tex="\(O(1/n)\)">\(O(1/n)\)</span> and a measurable logarithmic coefficient <span class="math" data-tex="\(L\)">\(L\)</span>, then a simple meromorphic pole gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname*{Res}_{z=0}\operatorname{Tr}(\Lambda^{-p-2z})
+=\frac p2 L.
+\tag{7.7}
+\]">\[
+\operatorname*{Res}_{z=0}\operatorname{Tr}(\Lambda^{-p-2z})
+=\frac p2 L.
+\tag{7.7}
+\]</span>
+<p>Indeed set <span class="math" data-tex="\(s=1+2z/p\)">\(s=1+2z/p\)</span> in the zeta function of <span class="math" data-tex="\(P\)">\(P\)</span> and apply the previous lesson. Thus a residue with exponent <span class="math" data-tex="\(-2z\)">\(-2z\)</span> equals <span class="math" data-tex="\(p/2\)">\(p/2\)</span> times this Dixmier trace at critical order. That factor becomes different if the zeta variable or the order of the reference operator changes.</p>
+<h2 id="8-a-complete-example-on-a-circle">8. A complete example on a circle</h2>
+<p>Let <span class="math" data-tex="\(A=C^\infty(\mathbb R/2\pi\mathbb Z)\)">\(A=C^\infty(\mathbb R/2\pi\mathbb Z)\)</span> act by multiplication on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+D=-i\partial_x+\eta,\qquad 0&lt;\eta&lt;1.
+\]">\[
+D=-i\partial_x+\eta,\qquad 0&lt;\eta&lt;1.
+\]</span>
+<p>The Fourier basis <span class="math" data-tex="\(e_k(x)=(2\pi)^{-1/2}e^{ikx}\)">\(e_k(x)=(2\pi)^{-1/2}e^{ikx}\)</span> diagonalizes <span class="math" data-tex="\(D\)">\(D\)</span> with eigenvalues <span class="math" data-tex="\(k+\eta\)">\(k+\eta\)</span>. The resolvent is compact, <span class="math" data-tex="\(D\)">\(D\)</span> is invertible, and <span class="math" data-tex="\(da=-iM_{a&#x27;}\)">\(da=-iM_{a&#x27;}\)</span> is bounded. Its inverse singular values are <span class="math" data-tex="\(O(1/n)\)">\(O(1/n)\)</span>, so the summability bound is one.</p>
+<p>For a smooth <span class="math" data-tex="\(a\)">\(a\)</span>, the matrix entries of <span class="math" data-tex="\(\delta^m(M_a)\)">\(\delta^m(M_a)\)</span> are</p>
+<span class="math math-display" data-tex="\[
+(|k+\eta|-|\ell+\eta|)^m\widehat a(k-\ell).
+\]">\[
+(|k+\eta|-|\ell+\eta|)^m\widehat a(k-\ell).
+\]</span>
+<p>Their row and column absolute sums are bounded by <span class="math" data-tex="\(\sum_{r\in\mathbb Z}|r|^m|\widehat a(r)|&lt;\infty\)">\(\sum_{r\in\mathbb Z}|r|^m|\widehat a(r)|&lt;\infty\)</span>. The elementary Schur bound, proved by Cauchy–Schwarz with these row and column sums, makes them bounded operators. The domain argument from Theorem 3.1 verifies the iterated commutator domains. This proves regularity, including for <span class="math" data-tex="\(da\)">\(da\)</span>.</p>
+<p>Write <span class="math" data-tex="\(F=\operatorname{sign}D\)">\(F=\operatorname{sign}D\)</span>. Modulo smoothing operators,</p>
+<span class="math math-display" data-tex="\[
+\delta(M_a)=F M_{-ia&#x27;},\qquad [F,M_a]=0,\qquad \delta(F)=0.
+\tag{8.1}
+\]">\[
+\delta(M_a)=F M_{-ia&#x27;},\qquad [F,M_a]=0,\qquad \delta(F)=0.
+\tag{8.1}
+\]</span>
+<p>To check smoothing, the errors have matrix entries only when <span class="math" data-tex="\(k+\eta\)">\(k+\eta\)</span> and <span class="math" data-tex="\(\ell+\eta\)">\(\ell+\eta\)</span> have opposite signs. Then <span class="math" data-tex="\(|k-\ell|\)">\(|k-\ell|\)</span> bounds <span class="math" data-tex="\(|k|+|\ell|\)">\(|k|+|\ell|\)</span> up to a fixed constant. Rapid decay of <span class="math" data-tex="\(\widehat a(k-\ell)\)">\(\widehat a(k-\ell)\)</span>, even after arbitrary powers of <span class="math" data-tex="\(|k|+|\ell|\)">\(|k|+|\ell|\)</span>, proves continuity on every Sobolev scale with an arbitrarily improving order.</p>
+<p>Consequently every element of <span class="math" data-tex="\(\mathcal B_D\)">\(\mathcal B_D\)</span> has the form <span class="math" data-tex="\(M_f+FM_g+K\)">\(M_f+FM_g+K\)</span>, with <span class="math" data-tex="\(f,g\)">\(f,g\)</span> smooth and <span class="math" data-tex="\(K\)">\(K\)</span> smoothing. Smoothing terms remain smoothing after products and commutators here; (8.1) proves this description by induction. The zeta function of <span class="math" data-tex="\(K\)">\(K\)</span> is entire by the trace-class estimate at every order. For the other two terms their diagonal entries give</p>
+<span class="math math-display" data-tex="\[
+\zeta_{M_f}(z)=\widehat f(0)\bigl(\zeta(z,\eta)+\zeta(z,1-\eta)\bigr),
+\quad
+\zeta_{FM_g}(z)=\widehat g(0)\bigl(\zeta(z,\eta)-\zeta(z,1-\eta)\bigr).
+\tag{8.2}
+\]">\[
+\zeta_{M_f}(z)=\widehat f(0)\bigl(\zeta(z,\eta)+\zeta(z,1-\eta)\bigr),
+\quad
+\zeta_{FM_g}(z)=\widehat g(0)\bigl(\zeta(z,\eta)-\zeta(z,1-\eta)\bigr).
+\tag{8.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\zeta(z,a)=\sum_{n\geq0}(n+a)^{-z}\)">\(\zeta(z,a)=\sum_{n\geq0}(n+a)^{-z}\)</span> initially for <span class="math" data-tex="\(\operatorname{Re}z&gt;1\)">\(\operatorname{Re}z&gt;1\)</span>.</p>
+<p>For completeness, its continuation needs no spectral assumption. Taylor-expand <span class="math" data-tex="\((n+a+t)^{-z}\)">\((n+a+t)^{-z}\)</span>, <span class="math" data-tex="\(0\leq t\leq1\)">\(0\leq t\leq1\)</span>, to order <span class="math" data-tex="\(M-1\)">\(M-1\)</span> and integrate. Summing over <span class="math" data-tex="\(n\)">\(n\)</span> in the original half-plane gives</p>
+<span class="math math-display" data-tex="\[
+\zeta(z,a)=\frac{a^{1-z}}{z-1}
+-\sum_{j=1}^{M-1}\frac{(-1)^j(z)_j}{j!(j+1)}\zeta(z+j,a)
++R_M(z),
+\tag{8.3}
+\]">\[
+\zeta(z,a)=\frac{a^{1-z}}{z-1}
+-\sum_{j=1}^{M-1}\frac{(-1)^j(z)_j}{j!(j+1)}\zeta(z+j,a)
++R_M(z),
+\tag{8.3}
+\]</span>
+<p>where <span class="math" data-tex="\((z)_j=z(z+1)\cdots(z+j-1)\)">\((z)_j=z(z+1)\cdots(z+j-1)\)</span>. The integral Taylor remainder satisfies a locally uniform bound by <span class="math" data-tex="\(C(n+a)^{-\operatorname{Re}z-M}\)">\(C(n+a)^{-\operatorname{Re}z-M}\)</span>, with extra logarithmic factors after differentiation, so <span class="math" data-tex="\(R_M\)">\(R_M\)</span> is holomorphic for <span class="math" data-tex="\(\operatorname{Re}z&gt;1-M\)">\(\operatorname{Re}z&gt;1-M\)</span>. Starting with <span class="math" data-tex="\(M=2\)">\(M=2\)</span> and continuing inductively in half-planes proves continuation to all <span class="math" data-tex="\(z\)">\(z\)</span>. A possible pole of a shifted zeta function at <span class="math" data-tex="\(z=1-j\)">\(z=1-j\)</span> is canceled by the zero of <span class="math" data-tex="\((z)_j\)">\((z)_j\)</span> there. The only pole is at one, with residue one.</p>
+<p>Equation (8.2) proves that the actual dimension spectrum relative to <span class="math" data-tex="\(\mathcal B_D\)">\(\mathcal B_D\)</span> is the simple set <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. Thus both regularity and continuation have been established for this example. If <span class="math" data-tex="\(P=\Lambda^{-1}\)">\(P=\Lambda^{-1}\)</span>, its logarithmic trace is two, while
+<span class="math" data-tex="\(\operatorname*{Res}_{z=0}\operatorname{Tr}(\Lambda^{-1-2z})=1\)">\(\operatorname*{Res}_{z=0}\operatorname{Tr}(\Lambda^{-1-2z})=1\)</span>, confirming (7.7).</p>
+<h2 id="9-graded-exercises-with-solutions">9. Graded exercises with solutions</h2>
+<p><strong>Exercise 1 (basic).</strong> If <span class="math" data-tex="\(D\)">\(D\)</span> has eigenvalues <span class="math" data-tex="\(2^j\)">\(2^j\)</span>, <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, and <span class="math" data-tex="\(A=\mathbb C I\)">\(A=\mathbb C I\)</span>, compute its summability bounds and dimension spectrum.</p>
+<p><strong>Solution.</strong> Every <span class="math" data-tex="\(\operatorname{Tr}|D|^{-s}=\sum_{j\geq0}2^{-js}\)">\(\operatorname{Tr}|D|^{-s}=\sum_{j\geq0}2^{-js}\)</span> converges for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, so <span class="math" data-tex="\(p=0\)">\(p=0\)</span> is a bound. Regularity is immediate, since every commutator is zero. The zeta function is <span class="math" data-tex="\(1/(1-2^{-z})\)">\(1/(1-2^{-z})\)</span>; its poles are simple at <span class="math" data-tex="\(z=2\pi i m/\log2\)">\(z=2\pi i m/\log2\)</span>, <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>. The dimension spectrum is that discrete set, illustrating that a summability bound is not a list of all spectral dimensions.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be invertible and regular. Prove that <span class="math" data-tex="\(\delta^m([D,a])\Lambda^{-j}\)">\(\delta^m([D,a])\Lambda^{-j}\)</span> has order at most <span class="math" data-tex="\(-j\)">\(-j\)</span>, whereas <span class="math" data-tex="\(\nabla^m([D,a])\Lambda^{-2m-j}\)">\(\nabla^m([D,a])\Lambda^{-2m-j}\)</span> has order at most <span class="math" data-tex="\(-m-j\)">\(-m-j\)</span>.</p>
+<p><strong>Solution.</strong> Regularity places every <span class="math" data-tex="\(\delta^m([D,a])\)">\(\delta^m([D,a])\)</span> in <span class="math" data-tex="\(\mathcal R=\operatorname{OP}^0\)">\(\mathcal R=\operatorname{OP}^0\)</span>. Multiplying by <span class="math" data-tex="\(\Lambda^{-j}\)">\(\Lambda^{-j}\)</span> lowers order by <span class="math" data-tex="\(j\)">\(j\)</span>. Equation (3.6) places the second numerator in <span class="math" data-tex="\(\operatorname{OP}^m\)">\(\operatorname{OP}^m\)</span>, so its total order is <span class="math" data-tex="\(m-2m-j=-m-j\)">\(m-2m-j=-m-j\)</span>. These are different derivations, and their order changes must not be interchanged.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Suppose the coefficient zeta functions have pole order at most three. Write out the trace defects for <span class="math" data-tex="\(\tau_2,\tau_1,\tau_0\)">\(\tau_2,\tau_1,\tau_0\)</span>.</p>
+<p><strong>Solution.</strong> All <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> with <span class="math" data-tex="\(j\geq3\)">\(j\geq3\)</span> vanish. Formula (7.4) gives</p>
+<span class="math math-display" data-tex="\[
+\tau_2([P,Q])=0,\qquad
+\tau_1([P,Q])=\tau_2(P\mathscr L(Q)),
+\]">\[
+\tau_2([P,Q])=0,\qquad
+\tau_1([P,Q])=\tau_2(P\mathscr L(Q)),
+\]</span>
+<span class="math math-display" data-tex="\[
+\tau_0([P,Q])=\tau_1(P\mathscr L(Q))
+-\tfrac12\tau_2(P\mathscr L^2(Q)).
+\]">\[
+\tau_0([P,Q])=\tau_1(P\mathscr L(Q))
+-\tfrac12\tau_2(P\mathscr L^2(Q)).
+\]</span>
+<p>Only the top coefficient is automatically a trace. The signs and the factor one-half come from the exponential in (7.6).</p>
+<p><strong>Exercise 4 (advanced).</strong> Let <span class="math" data-tex="\(H^+=H^-=\mathbb C^2\)">\(H^+=H^-=\mathbb C^2\)</span>, let <span class="math" data-tex="\(D\)">\(D\)</span> have off-diagonal blocks <span class="math" data-tex="\(I_2\)">\(I_2\)</span>, and represent <span class="math" data-tex="\(A=\mathbb C\oplus\mathbb C\)">\(A=\mathbb C\oplus\mathbb C\)</span> by
+<span class="math" data-tex="\(\pi_+(a,b)=aI_2\)">\(\pi_+(a,b)=aI_2\)</span>, <span class="math" data-tex="\(\pi_-(a,b)=\operatorname{diag}(a,b)\)">\(\pi_-(a,b)=\operatorname{diag}(a,b)\)</span>. For <span class="math" data-tex="\(e=(1,0)\)">\(e=(1,0)\)</span>, compute the index of <span class="math" data-tex="\(eF^+e:eH^+\to eH^-\)">\(eF^+e:eH^+\to eH^-\)</span>, where <span class="math" data-tex="\(F=D\)">\(F=D\)</span>. Compare it with the residues of <span class="math" data-tex="\(\operatorname{Tr}(\gamma e|D|^{-2z})\)">\(\operatorname{Tr}(\gamma e|D|^{-2z})\)</span>.</p>
+<p><strong>Solution.</strong> The map is the first-coordinate projection from <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Its kernel has dimension one and its cokernel has dimension zero, so its index is one. Since <span class="math" data-tex="\(|D|=I\)">\(|D|=I\)</span>, the graded zeta function is the constant <span class="math" data-tex="\(2-1=1\)">\(2-1=1\)</span>. All residues <span class="math" data-tex="\(\tau_k\)">\(\tau_k\)</span>, <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, vanish; its constant Laurent coefficient <span class="math" data-tex="\(\tau_{-1}(\gamma e)\)">\(\tau_{-1}(\gamma e)\)</span> is one. The triple is regular and finitely summable because every operator is finite dimensional. This example explains why an even local index formula needs a degree-zero constant coefficient in addition to residues.</p>
+<p><strong>Exercise 5 (advanced).</strong> Prove that changing the reference scale <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to <span class="math" data-tex="\(c\Lambda\)">\(c\Lambda\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, changes the residue coefficients by</p>
+<span class="math math-display" data-tex="\[
+\tau_k^{\,c}(P)=\sum_{j\geq0}\frac{(-2\log c)^j}{j!}\tau_{k+j}(P).
+\]">\[
+\tau_k^{\,c}(P)=\sum_{j\geq0}\frac{(-2\log c)^j}{j!}\tau_{k+j}(P).
+\]</span>
+<p><strong>Solution.</strong> The new zeta function is <span class="math" data-tex="\(c^{-2z}h_P(z)\)">\(c^{-2z}h_P(z)\)</span>. Multiply its Laurent series by the Taylor series of <span class="math" data-tex="\(e^{-2z\log c}\)">\(e^{-2z\log c}\)</span>. The coefficient of <span class="math" data-tex="\(z^{-k-1}\)">\(z^{-k-1}\)</span> is exactly the displayed sum. This remains valid at an isolated essential singularity. On any sufficiently small circle <span class="math" data-tex="\(|z|=\rho&gt;0\)">\(|z|=\rho&gt;0\)</span> containing no other singularity, put <span class="math" data-tex="\(M_\rho=\max_{|z|=\rho}|h_P(z)|\)">\(M_\rho=\max_{|z|=\rho}|h_P(z)|\)</span>. Cauchy's coefficient formula bounds <span class="math" data-tex="\(|\tau_{k+j}(P)|\leq M_\rho\rho^{k+j+1}\)">\(|\tau_{k+j}(P)|\leq M_\rho\rho^{k+j+1}\)</span>. The displayed series is therefore absolutely convergent, bounded in absolute value by <span class="math" data-tex="\(M_\rho\rho^{k+1}\exp(2|\log c|\rho)\)">\(M_\rho\rho^{k+1}\exp(2|\log c|\rho)\)</span>; the uniformly convergent exponential series on that circle justifies termwise coefficient extraction. Finite pole multiplicity makes the sum finite. For simple spectrum <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> is unchanged; lower coefficients in a higher-pole expansion can change. This is a scale effect, rather than a change in the trace-defect identity.</p>
+<p><strong>Exercise 6 (intermediate).</strong> For a positive graph generator, a map has norm at most <span class="math" data-tex="\(9\)">\(9\)</span> from <span class="math" data-tex="\(H^0\)">\(H^0\)</span> to <span class="math" data-tex="\(H^{-r}\)">\(H^{-r}\)</span>, and at most <span class="math" data-tex="\(16\)">\(16\)</span> from <span class="math" data-tex="\(H^2\)">\(H^2\)</span> to <span class="math" data-tex="\(H^{2-r}\)">\(H^{2-r}\)</span>. What bound does Lemma 10.2 give from <span class="math" data-tex="\(H^1\)">\(H^1\)</span> to <span class="math" data-tex="\(H^{1-r}\)">\(H^{1-r}\)</span>?</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(a=0,b=2,\theta=1/2\)">\(a=0,b=2,\theta=1/2\)</span>. The bound is <span class="math" data-tex="\(9^{1/2}16^{1/2}=12\)">\(9^{1/2}16^{1/2}=12\)</span>. The same proof applies to completed negative graph spaces; <span class="math" data-tex="\(1-r\)">\(1-r\)</span> need not be nonnegative.</p>
+<p><strong>Exercise 7 (intermediate).</strong> With the Fourier normalization (10.9), compute the inverse transform of <span class="math" data-tex="\(\partial_{\xi_1}^2\delta_0\)">\(\partial_{\xi_1}^2\delta_0\)</span> in dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Can that distribution have inverse transform supported in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, if one coordinate is called <span class="math" data-tex="\(t\)">\(t\)</span>?</p>
+<p><strong>Solution.</strong> Lemma 10.4 gives <span class="math" data-tex="\((2\pi)^{-d}(-ix_1)^2=-(2\pi)^{-d}x_1^2\)">\((2\pi)^{-d}(-ix_1)^2=-(2\pi)^{-d}x_1^2\)</span>. This nonzero polynomial does not vanish on the open half-space <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>. It therefore cannot have the claimed support, regardless of which coordinate is time. More generally the lemma rules out any nonzero frequency-point-supported correction to a causal extension.</p>
+<p><strong>Exercise 8 (advanced).</strong> A declared selfadjoint <span class="math" data-tex="\(D\)">\(D\)</span> has continuous spectrum. In Proposition 10.1, determine the multiplier and domain of <span class="math" data-tex="\(R^{-1/2}\)">\(R^{-1/2}\)</span>, and explain why the proof does not require finite-rank <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span>.</p>
+<p><strong>Solution.</strong> In the real <span class="math" data-tex="\(D\)">\(D\)</span>-coordinate, <span class="math" data-tex="\(R=(1+D^2)^{-1}\)">\(R=(1+D^2)^{-1}\)</span> multiplies by <span class="math" data-tex="\((1+\lambda^2)^{-1}\)">\((1+\lambda^2)^{-1}\)</span>, so <span class="math" data-tex="\(R^{-1/2}\)">\(R^{-1/2}\)</span> multiplies by <span class="math" data-tex="\((1+\lambda^2)^{1/2}\)">\((1+\lambda^2)^{1/2}\)</span>. Its domain is <span class="math" data-tex="\(\{x:\int(1+\lambda^2)\,d\mu_x&lt;\infty\}=\operatorname{Dom}D\)">\(\{x:\int(1+\lambda^2)\,d\mu_x&lt;\infty\}=\operatorname{Dom}D\)</span>. The projections <span class="math" data-tex="\(Q_n\)">\(Q_n\)</span> are supported where <span class="math" data-tex="\(1+\lambda^2\leq n\)">\(1+\lambda^2\leq n\)</span>, which bounds every required multiplier on their ranges. Strong convergence and the exact moment identities supply the limits; finite rank plays no role. Thus an infinite-dimensional spectral interval is permitted.</p>
+<p><strong>Exercise 9 (advanced).</strong> In Theorem 7.2, let <span class="math" data-tex="\(p=4\)">\(p=4\)</span>, <span class="math" data-tex="\(\operatorname{Ord}P=3\)">\(\operatorname{Ord}P=3\)</span> and <span class="math" data-tex="\(\operatorname{Ord}Q=2\)">\(\operatorname{Ord}Q=2\)</span>. Give an order cutoff for the trace-defect sum without assuming finite pole multiplicity.</p>
+<p><strong>Solution.</strong> The order of <span class="math" data-tex="\(P\mathscr L^m(Q)\)">\(P\mathscr L^m(Q)\)</span> is at most <span class="math" data-tex="\(5-m\)">\(5-m\)</span>. For <span class="math" data-tex="\(m\geq10\)">\(m\geq10\)</span> this is strictly below <span class="math" data-tex="\(-4\)">\(-4\)</span>, so its zeta trace is holomorphic near zero and all its nonnegative-index residues vanish. Thus only <span class="math" data-tex="\(1\leq m\leq9\)">\(1\leq m\leq9\)</span> can contribute. Taking <span class="math" data-tex="\(M=9\)">\(M=9\)</span> in (7.8) leaves a remainder of order at most <span class="math" data-tex="\(-5\)">\(-5\)</span>, with a strict trace-class margin. An essential singularity in a retained coefficient can have infinitely many negative Laurent terms, but it does not restore any of the discarded operator-order terms.</p>
+<p><strong>Exercise 10 (advanced).</strong> In Example 6.4, replace <span class="math" data-tex="\(\chi_n\)">\(\chi_n\)</span> by the indicator of <span class="math" data-tex="\(n=2^k\)">\(n=2^k\)</span>, <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. Compute the differential-coefficient zeta function and explain why this replacement does not prove the same failure.</p>
+<p><strong>Solution.</strong> The squared commutator still has trace <span class="math" data-tex="\(-2\chi_n\)">\(-2\chi_n\)</span>, so
+<span class="math" data-tex="\(\zeta_b(z)=-2\sum_{k\geq1}2^{-kz}=-2/(2^z-1)\)">\(\zeta_b(z)=-2\sum_{k\geq1}2^{-kz}=-2/(2^z-1)\)</span> for <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>. This extends meromorphically, with a discrete set of simple poles <span class="math" data-tex="\(2\pi i m/\log2\)">\(2\pi i m/\log2\)</span>, <span class="math" data-tex="\(m\in\mathbb Z\)">\(m\in\mathbb Z\)</span>. Geometric spacing does not create the dense boundary singularities of factorial spacing. The original example uses divisibility of <span class="math" data-tex="\(k!\)">\(k!\)</span> by every fixed denominator, which makes the unbounded approach occur at all rational multiples of <span class="math" data-tex="\(2\pi i/\log2\)">\(2\pi i/\log2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>[Connes–Moscovici 1995] Alain Connes and Henri Moscovici, <em>The local index formula in noncommutative geometry</em>, Geometric and Functional Analysis 5 (1995), 174–243; <a href="https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_19/M_95_19.pdf">IHÉS preprint</a>.</p>
+</li>
+<li>
+<p>[Higson 2004] Nigel Higson, <em>The local index formula in noncommutative geometry</em>, in <em>Contemporary developments in algebraic K-theory</em>, ICTP Lecture Notes 15 (2004); <a href="https://nigel.higson.ca/uploads/1/2/1/4/121496570/higson_-_2004_-_the_local_index_formula_in_noncommutative_geometry.pdf">author's lecture notes</a>.</p>
+</li>
+<li>
+<p>[Carey–Phillips–Rennie–Sukochev 2006] Alan L. Carey, John Phillips, Adam Rennie, and Fedor A. Sukochev, <em>The local index formula in semifinite von Neumann algebras I: spectral flow</em>, Advances in Mathematics 202 (2006), 451–516; <a href="https://arxiv.org/abs/math/0411019">open preprint</a>.</p>
+</li>
+<li>
+<p><a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a> <em>Spectral measures with the original operator domain retained</em>, Elliptic Operators &amp; Boundary Problems, AN03-P005, AN03-SPC-001–004; <a href="../elliptic-boundary-reduction/src/lower-bounded-spectral-calculus.md">proof source</a>. Independently written programme proof, CC0. Sections 1–4 retain the full spectral measure and operator-domain statements.</p>
+</li>
+<li>
+<p><a href="../elliptic-boundary-reduction/banach-foundation-bridges.html#quotient-norms-and-completeness">Banach foundations</a> <em>Banach estimates, quotient spaces and compact parameter arguments</em>, Elliptic Operators &amp; Boundary Problems, AN03-P004, Sections 4–8, reader-facing draft dated September 2026. Independently written programme proof, CC0. Sections 4–8 include the complete-metric Baire theorem and the full Banach-space consequences.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="singular-values-and-the-dixmier-trace.html">← Singular values and the Dixmier trace</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-local-index-formula.html">The local index formula →</a></span></nav>
+<p class="small source-link"><a href="src/spectral-triples-and-dimension-spectrum.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NCG-LOCAL-INDEX">Repository</a></nav>
+</footer>
+</body>
+</html>

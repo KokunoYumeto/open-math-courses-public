@@ -1,0 +1,1028 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Associated primes and primary decomposition · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/associated-primes-and-primary-decomposition.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="associated-primes-and-primary-decomposition">Associated primes
+and primary decomposition</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra
+setting, October 2026. The proofs in this lesson were additionally
+checked by GPT-6 Astra (OpenAI), Ultra setting. These are AI checks, not
+human peer review. Public domain (CC0).</em></p>
+<p>The support of a module tells us where it exists. Associated primes
+tell us where some individual element is held in place by exactly a
+prime ideal. They detect every zero divisor, including those caused by
+nilpotent elements that the underlying space cannot see. Primary
+decomposition then separates these different causes of annihilation. Its
+components need not all be unique; we will determine precisely which
+ones are.</p>
+<p>Throughout this lesson, rings are commutative with identity and <span
+class="math inline">\(R\)</span> is Noetherian. A finite module means a
+finitely generated module. We allow arbitrary modules when finiteness is
+not specified. Primes are proper, and the zero ring has empty spectrum.
+The zero module has no associated primes. We use the fraction
+construction, exactness of localization, finite intersections under
+localization, and the support calculations proved in <a
+href="AG-CA-02.html">Localization, local properties and support</a>. We
+also use the ascending chain condition, its finite-module consequences,
+and the Artinian structure theorem from <a
+href="AG-CA-03.html">Noetherian and Artinian rings</a>. Our references
+are the Stacks project authors through the AI Integrated Stacks Project,
+Ravi Vakil’s <em>The Rising Sea</em>, and James S. Milne’s <em>A Primer
+of Commutative Algebra</em>. We give all the proofs of primary
+decomposition below. Weakly associated primes are not needed here.</p>
+<h2 id="annihilators-that-are-prime">1. Annihilators that are prime</h2>
+<p>For <span class="math inline">\(x\in M\)</span>, its annihilator is
+the ideal</p>
+<p><span class="math display">\[
+\operatorname{Ann}_R(x)=\{a\in R:ax=0\}.
+\]</span></p>
+<p>A prime <span class="math inline">\(\mathfrak p\)</span> is
+<strong>associated to <span class="math inline">\(M\)</span></strong> if
+it equals <span class="math inline">\(\operatorname{Ann}_R(x)\)</span>
+for some nonzero <span class="math inline">\(x\)</span>. Write <span
+class="math inline">\(\operatorname{Ass}_R(M)\)</span>, or <span
+class="math inline">\(\operatorname{Ass}(M)\)</span>, for the set of
+these primes. Equivalently, there is an injection <span
+class="math inline">\(R/\mathfrak p\hookrightarrow M\)</span>: send the
+class of <span class="math inline">\(a\)</span> to <span
+class="math inline">\(ax\)</span>, and its kernel before passing to the
+quotient is exactly the annihilator. Conversely an injection supplies
+such an element by the image of <span
+class="math inline">\(1\)</span>.</p>
+<p>An element <span class="math inline">\(a\in R\)</span> is a
+<strong>zero divisor on <span class="math inline">\(M\)</span></strong>
+when multiplication by <span class="math inline">\(a\)</span> is not
+injective. Thus it kills a nonzero element of <span
+class="math inline">\(M\)</span>. With this convention, zero is a zero
+divisor on every nonzero module, and the zero module has no zero
+divisors.</p>
+<p><strong>Lemma 1.1 (maximal annihilators).</strong> If <span
+class="math inline">\(M\ne0\)</span>, a maximal member of the set of
+annihilators of its nonzero elements is prime. Such a maximal member
+exists.</p>
+<p><strong>Proof.</strong> The set is nonempty and consists of ideals of
+the Noetherian ring <span class="math inline">\(R\)</span>, so it has a
+maximal member <span
+class="math inline">\(I=\operatorname{Ann}(x)\)</span>. It is proper
+because <span class="math inline">\(x\ne0\)</span>. Suppose <span
+class="math inline">\(ab\in I\)</span> and <span
+class="math inline">\(b\notin I\)</span>. Then <span
+class="math inline">\(bx\ne0\)</span> and <span
+class="math inline">\(I\subset\operatorname{Ann}(bx)\)</span>.
+Maximality makes these annihilators equal. Since <span
+class="math inline">\(a(bx)=0\)</span>, we have <span
+class="math inline">\(a\in I\)</span>. This proves primality. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (existence and zero divisors).</strong> For every
+nonzero <span class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>, the set <span
+class="math inline">\(\operatorname{Ass}(M)\)</span> is nonempty. For
+every <span class="math inline">\(M\)</span>,</p>
+<p><span class="math display">\[
+\{\text{zero divisors on }M\}
+=\bigcup_{\mathfrak p\in\operatorname{Ass}(M)}\mathfrak p.
+\]</span></p>
+<p><strong>Proof.</strong> The first assertion follows from Lemma 1.1.
+If <span class="math inline">\(a\)</span> is in the annihilator of a
+nonzero element, it is a zero divisor. This proves the inclusion from
+right to left. Conversely, let <span class="math inline">\(K=\ker(a:M\to
+M)\ne0\)</span>. Apply Lemma 1.1 to <span
+class="math inline">\(K\)</span>. It contains a nonzero element <span
+class="math inline">\(x\)</span> with prime annihilator <span
+class="math inline">\(\mathfrak p\)</span>. The annihilator is the same
+whether calculated in <span class="math inline">\(K\)</span> or in <span
+class="math inline">\(M\)</span>, and it contains <span
+class="math inline">\(a\)</span>. Thus <span
+class="math inline">\(a\in\mathfrak p\in\operatorname{Ass}(M)\)</span>.
+The empty unions give the assertion for <span
+class="math inline">\(M=0\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>This proof uses Noetherianity of the ring, without requiring a finite
+set of generators of <span class="math inline">\(M\)</span>. It also
+shows why one should not replace the prime annihilator in the definition
+by an arbitrary annihilator. For example, the annihilator of <span
+class="math inline">\(1\)</span> in <span class="math inline">\(\mathbb
+Z/12\mathbb Z\)</span> is <span class="math inline">\((12)\)</span>,
+which is not prime. The elements <span class="math inline">\(6\)</span>
+and <span class="math inline">\(4\)</span> have prime annihilators <span
+class="math inline">\((2)\)</span> and <span
+class="math inline">\((3)\)</span>.</p>
+<p>If <span class="math inline">\(R\)</span> is a domain, every nonzero
+element of <span class="math inline">\(R\)</span>, considered as a
+module over itself, has annihilator zero. Hence <span
+class="math inline">\(\operatorname{Ass}(R)=\{(0)\}\)</span>. More
+generally,</p>
+<p><span class="math display">\[
+\operatorname{Ass}_R(R/\mathfrak p)=\{\mathfrak p\}
+\]</span></p>
+<p>for every prime <span class="math inline">\(\mathfrak p\)</span>: a
+nonzero class has precisely this annihilator because <span
+class="math inline">\(R/\mathfrak p\)</span> is a domain.</p>
+<h2 id="exact-sequences-and-finite-control">2. Exact sequences and
+finite control</h2>
+<p><strong>Proposition 2.1.</strong> If</p>
+<p><span class="math display">\[
+0\longrightarrow L\longrightarrow M\longrightarrow Q\longrightarrow0
+\]</span></p>
+<p>is exact, then</p>
+<p><span class="math display">\[
+\operatorname{Ass}(L)\subset\operatorname{Ass}(M)
+\subset\operatorname{Ass}(L)\cup\operatorname{Ass}(Q).
+\]</span></p>
+<p>In particular, for a finite direct sum,</p>
+<p><span class="math display">\[
+\operatorname{Ass}(M_1\oplus\cdots\oplus M_r)
+=\bigcup_{i=1}^r\operatorname{Ass}(M_i).
+\]</span></p>
+<p><strong>Proof.</strong> An element of the submodule <span
+class="math inline">\(L\)</span> has the same annihilator in <span
+class="math inline">\(M\)</span>, proving the first inclusion. For the
+second, take <span class="math inline">\(x\in M\)</span> with
+annihilator <span class="math inline">\(\mathfrak p\)</span>. If <span
+class="math inline">\(Rx\cap L=0\)</span>, the map <span
+class="math inline">\(Rx\to Q\)</span> is injective, so <span
+class="math inline">\(\mathfrak p\in\operatorname{Ass}(Q)\)</span>. If
+this intersection is nonzero, choose <span
+class="math inline">\(ax\ne0\)</span> in it. Necessarily <span
+class="math inline">\(a\notin\mathfrak p\)</span>. Then</p>
+<p><span class="math display">\[
+bax=0\quad\Longleftrightarrow\quad ba\in\mathfrak p
+\quad\Longleftrightarrow\quad b\in\mathfrak p,
+\]</span></p>
+<p>so <span class="math inline">\(ax\in L\)</span> has annihilator <span
+class="math inline">\(\mathfrak p\)</span>. Thus <span
+class="math inline">\(\mathfrak p\in\operatorname{Ass}(L)\)</span>. For
+direct sums, apply the inclusions repeatedly to the split exact
+sequences. The reverse inclusion follows by putting each summand into
+the direct sum. <span class="math inline">\(\square\)</span></p>
+<p>Equality with the union in a nonsplit exact sequence need not hold.
+In</p>
+<p><span class="math display">\[
+0\longrightarrow\mathbb Z\xrightarrow{\,2\,}\mathbb Z
+\longrightarrow\mathbb Z/2\mathbb Z\longrightarrow0,
+\]</span></p>
+<p>the middle module has just the associated prime <span
+class="math inline">\((0)\)</span>, while the last module has <span
+class="math inline">\((2)\)</span>.</p>
+<p><strong>Theorem 2.2 (prime filtrations and finiteness).</strong> A
+finite module <span class="math inline">\(M\)</span> has a finite
+filtration</p>
+<p><span class="math display">\[
+0=M_0\subsetneq M_1\subsetneq\cdots\subsetneq M_t=M,
+\qquad M_i/M_{i-1}\cong R/\mathfrak p_i
+\]</span></p>
+<p>with prime ideals <span class="math inline">\(\mathfrak p_i\)</span>.
+For <span class="math inline">\(M=0\)</span>, take the empty filtration.
+Moreover,</p>
+<p><span class="math display">\[
+\operatorname{Ass}(M)\subset\{\mathfrak p_1,\ldots,\mathfrak p_t\},
+\]</span></p>
+<p>so <span class="math inline">\(\operatorname{Ass}(M)\)</span> is
+finite.</p>
+<p><strong>Proof.</strong> Suppose <span class="math inline">\(M_i\ne
+M\)</span> has been constructed. Theorem 1.2 gives an associated prime
+of the nonzero quotient <span class="math inline">\(M/M_i\)</span>, and
+thus a cyclic submodule isomorphic to <span
+class="math inline">\(R/\mathfrak p_{i+1}\)</span>. Its inverse image is
+<span class="math inline">\(M_{i+1}\)</span>, strictly larger than <span
+class="math inline">\(M_i\)</span>. A finite module over <span
+class="math inline">\(R\)</span> is Noetherian, so this construction
+must reach <span class="math inline">\(M\)</span> after finitely many
+steps: otherwise it would give an infinite strictly increasing chain.
+Apply Proposition 2.1 along the filtration. Each factor has just the
+associated prime <span class="math inline">\(\mathfrak p_i\)</span>, so
+every associated prime of <span class="math inline">\(M\)</span> occurs
+among them. <span class="math inline">\(\square\)</span></p>
+<p>Some primes in a filtration can fail to be associated to the whole
+module. For instance, the filtration <span
+class="math inline">\(0\subset2\mathbb Z\subset\mathbb Z\)</span> has
+factors isomorphic to <span class="math inline">\(\mathbb Z\)</span> and
+<span class="math inline">\(\mathbb Z/2\mathbb Z\)</span>, although
+<span class="math inline">\((2)\)</span> is not associated to <span
+class="math inline">\(\mathbb Z\)</span>. A prime filtration supplies a
+finite upper bound, and its prime list can depend on the filtration.</p>
+<p>For <span class="math inline">\(n\ge2\)</span>, integer prime-power
+factorization and the Chinese remainder theorem give</p>
+<p><span class="math display">\[
+\mathbb Z/n\mathbb Z\cong
+\bigoplus_{p\mid n}\mathbb Z/p^{v_p(n)}\mathbb Z.
+\]</span></p>
+<p>In <span class="math inline">\(\mathbb Z/p^e\mathbb Z\)</span>, an
+element killed by a prime number other than <span
+class="math inline">\(p\)</span> must be zero, since that number is a
+unit modulo <span class="math inline">\(p^e\)</span>. The class of <span
+class="math inline">\(p^{e-1}\)</span> has annihilator <span
+class="math inline">\((p)\)</span>; the prime <span
+class="math inline">\((0)\)</span> cannot annihilate a nonzero element
+because <span class="math inline">\(p^e\)</span> already annihilates
+every element. Consequently</p>
+<p><span class="math display">\[
+\operatorname{Ass}_{\mathbb Z}(\mathbb Z/n\mathbb Z)
+=\{(p):p\mid n\}.
+\]</span></p>
+<p>The same formula gives the empty set for <span
+class="math inline">\(n=1\)</span>; for <span
+class="math inline">\(n=0\)</span> the module is <span
+class="math inline">\(\mathbb Z\)</span> and its associated set is <span
+class="math inline">\(\{(0)\}\)</span>. Proposition 2.1 also gives</p>
+<p><span class="math display">\[
+\operatorname{Ass}_{\mathbb Z}(\mathbb Z\oplus\mathbb Z/p\mathbb Z)
+=\{(0),(p)\}.
+\]</span></p>
+<h2 id="localizing-the-associated-points">3. Localizing the associated
+points</h2>
+<p><strong>Theorem 3.1 (localization).</strong> For any multiplicative
+set <span class="math inline">\(S\subset R\)</span> and any module <span
+class="math inline">\(M\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Ass}_{S^{-1}R}(S^{-1}M)
+=\{S^{-1}\mathfrak p:
+\mathfrak p\in\operatorname{Ass}_R(M),\ \mathfrak p\cap S=\varnothing\}.
+\]</span></p>
+<p><strong>Proof.</strong> If <span class="math inline">\(\mathfrak
+p=\operatorname{Ann}(x)\)</span> avoids <span
+class="math inline">\(S\)</span>, localize the injection <span
+class="math inline">\(R/\mathfrak p\to M\)</span>. Exactness gives an
+injection</p>
+<p><span class="math display">\[
+S^{-1}R/S^{-1}\mathfrak p\longrightarrow S^{-1}M.
+\]</span></p>
+<p>The source is nonzero because <span class="math inline">\(\mathfrak
+p\)</span> avoids <span class="math inline">\(S\)</span>. Its image of
+<span class="math inline">\(1\)</span> therefore witnesses the
+associated prime <span class="math inline">\(S^{-1}\mathfrak
+p\)</span>.</p>
+<p>Conversely, suppose <span
+class="math inline">\(P=\operatorname{Ann}_{S^{-1}R}(x/s)\)</span> is
+prime, and let <span class="math inline">\(\mathfrak p\)</span> be its
+contraction. The prime correspondence gives <span
+class="math inline">\(P=S^{-1}\mathfrak p\)</span> and <span
+class="math inline">\(\mathfrak p\cap S=\varnothing\)</span>. Write
+<span class="math inline">\(\mathfrak p=(a_1,\ldots,a_r)\)</span>. For
+every <span class="math inline">\(i\)</span>, the equality <span
+class="math inline">\((a_i/1)(x/s)=0\)</span> gives <span
+class="math inline">\(t_i\in S\)</span> with <span
+class="math inline">\(t_i a_i x=0\)</span>. Set <span
+class="math inline">\(t=\prod_i t_i\)</span>, taking <span
+class="math inline">\(t=1\)</span> if <span
+class="math inline">\(r=0\)</span>. Then <span
+class="math inline">\(\mathfrak
+p\subset\operatorname{Ann}_R(tx)\)</span>. Also <span
+class="math inline">\(tx\ne0\)</span>, since otherwise the nonzero
+element <span class="math inline">\(x/s\)</span> would be killed by a
+unit. If <span class="math inline">\(btx=0\)</span>, localization and
+cancellation of the unit <span class="math inline">\(t/1\)</span> show
+<span class="math inline">\((b/1)(x/s)=0\)</span>, hence <span
+class="math inline">\(b\in\mathfrak p\)</span>. We have obtained <span
+class="math inline">\(\operatorname{Ann}_R(tx)=\mathfrak p\)</span>.
+This proves the reverse inclusion. If <span class="math inline">\(0\in
+S\)</span>, both sides are empty. <span
+class="math inline">\(\square\)</span></p>
+<p>The finite list of generators here is for an ideal of <span
+class="math inline">\(R\)</span>. There is no finite-generation
+assumption on <span class="math inline">\(M\)</span>.</p>
+<p><strong>Theorem 3.2 (support and its minimal points).</strong> For
+every <span class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Ass}(M)\subset\operatorname{Supp}(M),
+\qquad
+\operatorname{Supp}(M)=
+\bigcup_{\mathfrak p\in\operatorname{Ass}(M)}V(\mathfrak p).
+\]</span></p>
+<p>If <span class="math inline">\(M\)</span> is finite, the minimal
+elements of its support are exactly the minimal elements of <span
+class="math inline">\(\operatorname{Ass}(M)\)</span>. They are the
+primes minimal over <span
+class="math inline">\(\operatorname{Ann}(M)\)</span>.</p>
+<p><strong>Proof.</strong> If <span
+class="math inline">\(\operatorname{Ann}(x)=\mathfrak p\)</span>, no
+denominator outside <span class="math inline">\(\mathfrak p\)</span>
+kills <span class="math inline">\(x\)</span>, so <span
+class="math inline">\(x/1\ne0\)</span> in <span
+class="math inline">\(M_{\mathfrak p}\)</span>. More generally, for
+every <span class="math inline">\(\mathfrak q\supset\mathfrak p\)</span>
+the localized injection <span class="math inline">\((R/\mathfrak
+p)_{\mathfrak q}\to M_{\mathfrak q}\)</span> has a nonzero source. This
+proves that the displayed union lies in the support.</p>
+<p>For the other inclusion, take <span class="math inline">\(\mathfrak
+q\in\operatorname{Supp}(M)\)</span>. The ring <span
+class="math inline">\(R_{\mathfrak q}\)</span> is Noetherian and <span
+class="math inline">\(M_{\mathfrak q}\ne0\)</span>. Theorem 1.2 gives an
+associated prime of this localized module. Theorem 3.1 identifies it
+with an associated prime <span class="math inline">\(\mathfrak
+p\)</span> of <span class="math inline">\(M\)</span> contained in <span
+class="math inline">\(\mathfrak q\)</span>. Hence <span
+class="math inline">\(\mathfrak q\in V(\mathfrak p)\)</span>.</p>
+<p>Now suppose <span class="math inline">\(M\)</span> is finite. Its
+associated set is finite by Theorem 2.2. Each prime in that set contains
+a minimal member of that finite set. Therefore the union just obtained
+has as its minimal elements exactly those minimal members: every point
+of the union contains one, and a strictly smaller point below a minimal
+member would itself contain a smaller associated prime. Finally the
+support of a finite module is <span
+class="math inline">\(V(\operatorname{Ann}(M))\)</span>, by the
+preceding localization lesson. Its minimal elements are the primes
+minimal over that ideal. <span
+class="math inline">\(\square\)</span></p>
+<p>The finite-module assertion identifies generic points of the
+irreducible components of the support. An associated prime which is not
+minimal among the associated primes is called an <strong>embedded
+prime</strong>. It contributes no new irreducible component to the
+support: its closure lies in the closure of a smaller associated prime.
+It can nevertheless detect additional zero divisors.</p>
+<p>For <span class="math inline">\(M=\mathbb Z\oplus\mathbb Z/p\mathbb
+Z\)</span>, the support is the whole spectrum of <span
+class="math inline">\(\mathbb Z\)</span>, its minimal associated prime
+is <span class="math inline">\((0)\)</span>, and <span
+class="math inline">\((p)\)</span> is embedded. A module can have an
+embedded associated prime even when its coefficient ring is a
+domain.</p>
+<h2 id="primary-pieces">4. Primary pieces</h2>
+<p>A proper submodule <span class="math inline">\(N\subset M\)</span> is
+<strong><span class="math inline">\(\mathfrak
+p\)</span>-primary</strong> if</p>
+<p><span class="math display">\[
+\operatorname{Ass}(M/N)=\{\mathfrak p\}.
+\]</span></p>
+<p>When <span class="math inline">\(M\)</span> is finite, this
+definition has a useful operational form.</p>
+<p><strong>Proposition 4.1.</strong> Let <span
+class="math inline">\(Q\ne0\)</span> be a finite module and <span
+class="math inline">\(\mathfrak p\)</span> a prime. The following
+conditions are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(\operatorname{Ass}(Q)=\{\mathfrak
+p\}\)</span>.</li>
+<li><span class="math inline">\(\sqrt{\operatorname{Ann}(Q)}=\mathfrak
+p\)</span>, and multiplication by every <span
+class="math inline">\(a\notin\mathfrak p\)</span> is injective on <span
+class="math inline">\(Q\)</span>.</li>
+</ol>
+<p>Under these conditions each <span class="math inline">\(a\in\mathfrak
+p\)</span> has a power which annihilates all of <span
+class="math inline">\(Q\)</span>, and some power of the ideal <span
+class="math inline">\(\mathfrak p\)</span> annihilates <span
+class="math inline">\(Q\)</span>.</p>
+<p><strong>Proof.</strong> Under condition 1, Theorem 3.2 gives <span
+class="math inline">\(\operatorname{Supp}(Q)=V(\mathfrak p)\)</span>.
+Since <span class="math inline">\(Q\)</span> is finite, this is also
+<span class="math inline">\(V(\operatorname{Ann}(Q))\)</span>. The
+radical-ideal correspondence gives the asserted equality of radicals.
+Theorem 1.2 says that every element outside <span
+class="math inline">\(\mathfrak p\)</span> acts injectively. Conversely,
+every associated prime <span class="math inline">\(\mathfrak q\)</span>
+contains <span class="math inline">\(\operatorname{Ann}(Q)\)</span>, so
+contains its radical <span class="math inline">\(\mathfrak p\)</span>.
+All elements of <span class="math inline">\(\mathfrak q\)</span> are
+zero divisors, and condition 2 puts them in <span
+class="math inline">\(\mathfrak p\)</span>. Thus <span
+class="math inline">\(\mathfrak q=\mathfrak p\)</span>; existence
+follows from <span class="math inline">\(Q\ne0\)</span>. The individual
+powers follow from the definition of radical. To obtain an ideal power,
+choose generators <span class="math inline">\(a_1,\ldots,a_r\)</span> of
+<span class="math inline">\(\mathfrak p\)</span> and exponents <span
+class="math inline">\(e_i\ge1\)</span> with <span
+class="math inline">\(a_i^{e_i}Q=0\)</span>. If <span
+class="math inline">\(r&gt;0\)</span>, every monomial of total degree
+<span class="math inline">\(1+\sum_i(e_i-1)\)</span> contains one of
+these powers. That power of <span class="math inline">\(\mathfrak
+p\)</span> kills <span class="math inline">\(Q\)</span>. If <span
+class="math inline">\(\mathfrak p=0\)</span>, its first power already
+kills <span class="math inline">\(Q\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>For an ideal <span class="math inline">\(\mathfrak q\)</span>, the
+familiar definition says that it is proper and</p>
+<p><span class="math display">\[
+ab\in\mathfrak q,\quad b\notin\mathfrak q
+\quad\Longrightarrow\quad a^n\in\mathfrak q
+\text{ for some }n\ge1.
+\]</span></p>
+<p>Equivalently, every zero divisor of <span
+class="math inline">\(R/\mathfrak q\)</span> is nilpotent: the nonzero
+class of <span class="math inline">\(b\)</span> witnesses that the class
+of <span class="math inline">\(a\)</span> is a zero divisor, and every
+zero divisor has such a witness.</p>
+<p><strong>Theorem 4.2 (primary ideals).</strong> A proper ideal <span
+class="math inline">\(\mathfrak q\)</span> is primary if and only if
+<span class="math inline">\(\operatorname{Ass}_R(R/\mathfrak q)\)</span>
+consists of a single prime <span class="math inline">\(\mathfrak
+p\)</span>. In that case <span class="math inline">\(\sqrt{\mathfrak
+q}=\mathfrak p\)</span>.</p>
+<p><strong>Proof.</strong> A single associated prime gives the radical
+equality and the zero-divisor description by Proposition 4.1 and Theorem
+1.2. Each zero divisor is therefore nilpotent modulo <span
+class="math inline">\(\mathfrak q\)</span>.</p>
+<p>Conversely, let <span class="math inline">\(A=R/\mathfrak
+q\ne0\)</span>, and suppose every zero divisor in <span
+class="math inline">\(A\)</span> is nilpotent. Its nilradical <span
+class="math inline">\(J\)</span> is prime. Indeed, if <span
+class="math inline">\(uv\)</span> is nilpotent and <span
+class="math inline">\(u\)</span> is not nilpotent, then <span
+class="math inline">\(u\)</span> is not a zero divisor. From <span
+class="math inline">\(u^nv^n=0\)</span>, injectivity of multiplication
+by <span class="math inline">\(u^n\)</span> gives <span
+class="math inline">\(v^n=0\)</span>. Now let <span
+class="math inline">\(\mathfrak p\)</span> be the inverse image of <span
+class="math inline">\(J\)</span> in <span
+class="math inline">\(R\)</span>, namely <span
+class="math inline">\(\sqrt{\mathfrak q}\)</span>. Every associated
+prime <span class="math inline">\(\mathfrak r\)</span> of <span
+class="math inline">\(A\)</span> contains <span
+class="math inline">\(\mathfrak q\)</span>, hence contains <span
+class="math inline">\(\mathfrak p\)</span>. On the other hand, its
+elements kill a nonzero class in <span class="math inline">\(A\)</span>
+and so are nilpotent modulo <span class="math inline">\(\mathfrak
+q\)</span>. Thus <span class="math inline">\(\mathfrak r\subset\mathfrak
+p\)</span>. Existence of an associated prime gives <span
+class="math inline">\(\operatorname{Ass}_R(A)=\{\mathfrak p\}\)</span>.
+<span class="math inline">\(\square\)</span></p>
+<p>A maximal ideal power <span class="math inline">\(\mathfrak
+m^n\)</span>, for <span class="math inline">\(n\ge1\)</span>, is always
+<span class="math inline">\(\mathfrak m\)</span>-primary. We prove this
+in Solution 8.2. The analogous assertion for a nonmaximal prime is
+false. In</p>
+<p><span class="math display">\[
+A=k[x,y,z]/(xy-z^2),\qquad \mathfrak p=(x,z),
+\]</span></p>
+<p>the quotient <span class="math inline">\(A/\mathfrak p=k[y]\)</span>
+proves primality, and <span class="math inline">\(\sqrt{\mathfrak
+p^2}=\mathfrak p\)</span>. But <span
+class="math inline">\(yx=z^2\in\mathfrak p^2\)</span>, whereas <span
+class="math inline">\(x\notin\mathfrak p^2\)</span> and <span
+class="math inline">\(y\notin\mathfrak p\)</span>. For the middle
+assertion, give all three variables degree one. The relation is
+homogeneous of degree two, so the quotient has the grading induced from
+the polynomial ring, with a nonzero degree-one class <span
+class="math inline">\(x\)</span>. The ideal <span
+class="math inline">\(\mathfrak p^2\)</span> is generated by degree-two
+homogeneous elements; its degree-one part is zero. Thus it cannot
+contain <span class="math inline">\(x\)</span>. The element <span
+class="math inline">\(y\)</span> is a zero divisor on <span
+class="math inline">\(A/\mathfrak p^2\)</span> with no power zero there.
+This is the required failure of primaryness, with the nonmembership
+explicitly established.</p>
+<h2 id="existence-of-primary-decomposition">5. Existence of primary
+decomposition</h2>
+<p>A proper submodule <span class="math inline">\(N\)</span> is
+<strong>irreducible</strong> if an equality <span
+class="math inline">\(N=A\cap B\)</span>, for submodules <span
+class="math inline">\(A,B\)</span> containing <span
+class="math inline">\(N\)</span>, forces <span
+class="math inline">\(N=A\)</span> or <span
+class="math inline">\(N=B\)</span>. This is a property in the lattice of
+submodules. It is different from irreducibility of a closed subset of
+the spectrum.</p>
+<p><strong>Lemma 5.1.</strong> In a Noetherian module every proper
+submodule is a finite intersection of irreducible submodules.</p>
+<p><strong>Proof.</strong> Suppose there are counterexamples, and choose
+a maximal one <span class="math inline">\(N\)</span> using the ascending
+chain condition. It is not irreducible, since an irreducible submodule
+is its own one-term intersection. Hence <span
+class="math inline">\(N=A\cap B\)</span> with both <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> strictly larger than <span
+class="math inline">\(N\)</span>. Neither can be the whole module: that
+would make the intersection equal to the other one, which is strictly
+larger than <span class="math inline">\(N\)</span>. By maximality both
+have finite irreducible decompositions. Intersecting these
+decompositions gives one for <span class="math inline">\(N\)</span>, a
+contradiction. <span class="math inline">\(\square\)</span></p>
+<p><strong>Lemma 5.2.</strong> An irreducible proper submodule of a
+finite <span class="math inline">\(R\)</span>-module is primary.</p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(Q=M/N\ne0\)</span>. Irreducibility means that two
+nonzero submodules of <span class="math inline">\(Q\)</span> cannot have
+zero intersection. Suppose <span class="math inline">\(\mathfrak
+p\)</span> and <span class="math inline">\(\mathfrak q\)</span> are
+distinct associated primes of <span class="math inline">\(Q\)</span>,
+witnessed by <span class="math inline">\(x,y\)</span>. Every nonzero
+element of <span class="math inline">\(Rx\cong R/\mathfrak p\)</span>
+has annihilator <span class="math inline">\(\mathfrak p\)</span>; every
+nonzero element of <span class="math inline">\(Ry\cong R/\mathfrak
+q\)</span> has annihilator <span class="math inline">\(\mathfrak
+q\)</span>. Therefore <span class="math inline">\(Rx\cap Ry=0\)</span>:
+a nonzero element of the intersection would have both annihilators. This
+contradicts irreducibility. Theorem 1.2 supplies at least one associated
+prime, so <span class="math inline">\(Q\)</span> has exactly one. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 5.3 (Lasker–Noether).</strong> Let <span
+class="math inline">\(M\)</span> be a finite module over the Noetherian
+ring <span class="math inline">\(R\)</span>, and let <span
+class="math inline">\(N\subset M\)</span>. There is a finite
+decomposition</p>
+<p><span class="math display">\[
+N=N_1\cap\cdots\cap N_r,
+\qquad \operatorname{Ass}(M/N_i)=\{\mathfrak p_i\},
+\]</span></p>
+<p>in which the primes <span class="math inline">\(\mathfrak
+p_i\)</span> are distinct and no component is redundant. For <span
+class="math inline">\(N=M\)</span>, the decomposition is empty, with
+intersection <span class="math inline">\(M\)</span>.</p>
+<p><strong>Proof.</strong> For proper <span
+class="math inline">\(N\)</span>, combine Lemmas 5.1 and 5.2 to obtain a
+finite primary decomposition. Components with the same associated prime
+may be merged by intersection. To justify this, if <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are <span
+class="math inline">\(\mathfrak p\)</span>-primary, the map</p>
+<p><span class="math display">\[
+M/(A\cap B)\longrightarrow M/A\oplus M/B,
+\qquad x+(A\cap B)\longmapsto(x+A,x+B),
+\]</span></p>
+<p>is injective. Proposition 2.1 gives an associated set contained in
+<span class="math inline">\(\{\mathfrak p\}\)</span>. The quotient is
+nonzero because <span class="math inline">\(A\cap B\)</span> is proper,
+so Theorem 1.2 makes this set exactly <span
+class="math inline">\(\{\mathfrak p\}\)</span>. Repeated merging leaves
+distinct primes. Finally delete any component containing the
+intersection of all the others. There are finitely many components, so
+deletion stops with an irredundant decomposition, and it preserves
+distinctness. <span class="math inline">\(\square\)</span></p>
+<p>This argument proves the module theorem directly; the ideal theorem
+is the case <span class="math inline">\(M=R\)</span>. It requires
+Noetherianity of <span class="math inline">\(M\)</span> for the finite
+intersection and Noetherianity of <span class="math inline">\(R\)</span>
+for the associated-prime arguments. A finite module over a Noetherian
+ring supplies both.</p>
+<h2 id="exactly-what-is-unique">6. Exactly what is unique</h2>
+<p><strong>Theorem 6.1 (first uniqueness theorem).</strong> In an
+irredundant primary decomposition</p>
+<p><span class="math display">\[
+N=\bigcap_{i=1}^rN_i,
+\qquad \operatorname{Ass}(M/N_i)=\{\mathfrak p_i\},
+\]</span></p>
+<p>the set of primes is</p>
+<p><span class="math display">\[
+\{\mathfrak p_1,\ldots,\mathfrak p_r\}
+=\operatorname{Ass}(M/N).
+\]</span></p>
+<p>In particular this set is independent of the decomposition.</p>
+<p><strong>Proof.</strong> The natural injection <span
+class="math inline">\(M/N\to\bigoplus_i M/N_i\)</span> and Proposition
+2.1 give the inclusion from right to left. Fix <span
+class="math inline">\(i\)</span>, and set</p>
+<p><span class="math display">\[
+K_i=\left(\bigcap_{j\ne i}N_j\right)/N\subset M/N.
+\]</span></p>
+<p>The intersection over no indices means <span
+class="math inline">\(M\)</span>. Irredundancy makes <span
+class="math inline">\(K_i\ne0\)</span>. Its map to <span
+class="math inline">\(M/N_i\)</span> is injective, since the kernel
+before quotienting is <span class="math inline">\(N\)</span>. Hence
+<span class="math inline">\(\operatorname{Ass}(K_i)\subset\{\mathfrak
+p_i\}\)</span>. Theorem 1.2 makes this set nonempty, so it contains
+<span class="math inline">\(\mathfrak p_i\)</span>. The submodule
+inclusion <span class="math inline">\(K_i\subset M/N\)</span> puts <span
+class="math inline">\(\mathfrak p_i\)</span> in <span
+class="math inline">\(\operatorname{Ass}(M/N)\)</span>. This proves the
+other inclusion. The empty decomposition for <span
+class="math inline">\(N=M\)</span> also gives the empty associated set.
+<span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 6.2 (second uniqueness theorem).</strong> Suppose the
+decomposition in Theorem 6.1 has distinct primes. If <span
+class="math inline">\(\mathfrak p_i\)</span> is minimal in <span
+class="math inline">\(\operatorname{Ass}(M/N)\)</span>, then</p>
+<p><span class="math display">\[
+N_i=\ker\left(M\longrightarrow(M/N)_{\mathfrak p_i}\right).
+\]</span></p>
+<p>Thus the primary component belonging to a minimal associated prime is
+determined by <span class="math inline">\(M,N\)</span> and that
+prime.</p>
+<p><strong>Proof.</strong> For <span class="math inline">\(j\ne
+i\)</span>, distinctness and minimality imply <span
+class="math inline">\(\mathfrak p_j\not\subset\mathfrak p_i\)</span>. By
+Theorem 3.2, <span
+class="math inline">\(\operatorname{Supp}(M/N_j)=V(\mathfrak
+p_j)\)</span>, so <span class="math inline">\((M/N_j)_{\mathfrak
+p_i}=0\)</span>. Therefore <span class="math inline">\((N_j)_{\mathfrak
+p_i}=M_{\mathfrak p_i}\)</span>. Localization preserves finite
+intersections of submodules, and consequently</p>
+<p><span class="math display">\[
+N_{\mathfrak p_i}=\bigcap_j(N_j)_{\mathfrak p_i}
+=(N_i)_{\mathfrak p_i}.
+\]</span></p>
+<p>The inverse image of <span class="math inline">\((N_i)_{\mathfrak
+p_i}\)</span> under <span class="math inline">\(M\to M_{\mathfrak
+p_i}\)</span> is exactly <span class="math inline">\(N_i\)</span>.
+Indeed, if <span class="math inline">\(x/1\)</span> lies in that
+localized submodule, some <span class="math inline">\(s\notin\mathfrak
+p_i\)</span> satisfies <span class="math inline">\(sx\in N_i\)</span>.
+Theorem 1.2 says that <span class="math inline">\(s\)</span> acts
+injectively on <span class="math inline">\(M/N_i\)</span>, so <span
+class="math inline">\(x\in N_i\)</span>. The inverse image of <span
+class="math inline">\(N_{\mathfrak p_i}\)</span> is the kernel of <span
+class="math inline">\(M\to(M/N)_{\mathfrak p_i}\)</span> by exactness.
+Combining these facts proves the formula. <span
+class="math inline">\(\square\)</span></p>
+<p>For ideals, the formula is often written</p>
+<p><span class="math display">\[
+\mathfrak q_i=\{a\in R:a/1\in IR_{\mathfrak p_i}\}
+\]</span></p>
+<p>when <span class="math inline">\(I=\bigcap_i\mathfrak q_i\)</span>
+and <span class="math inline">\(\mathfrak p_i\)</span> is minimal over
+<span class="math inline">\(I\)</span>. The braces mean inverse image
+under localization; the map <span class="math inline">\(R\to
+R_{\mathfrak p_i}\)</span> need not be injective. The distinction
+matters in rings with zero divisors.</p>
+<h2 id="a-line-and-its-embedded-point">7. A line and its embedded
+point</h2>
+<p>Let <span class="math inline">\(R=k[x,y]\)</span> and <span
+class="math inline">\(I=(x^2,xy)\)</span>. Every class in <span
+class="math inline">\(B=R/I\)</span> has a unique expression</p>
+<p><span class="math display">\[
+f(y)+c\bar x,\qquad f(y)\in k[y],\ c\in k.
+\]</span></p>
+<p>To see uniqueness, the monomials not divisible by <span
+class="math inline">\(x^2\)</span> or <span
+class="math inline">\(xy\)</span> are exactly the powers of <span
+class="math inline">\(y\)</span> and <span
+class="math inline">\(x\)</span>. The monomials divisible by either
+generator span the ideal as a vector space, so these remaining monomials
+form a basis for the quotient. Multiplication is determined by <span
+class="math inline">\(\bar x^2=\bar x\bar y=0\)</span>. The ideal <span
+class="math inline">\(k\bar x\)</span> is a nonzero square-zero piece
+killed by both variables, while quotienting it out leaves <span
+class="math inline">\(k[y]\)</span>.</p>
+<p>Every prime of <span class="math inline">\(B\)</span> contains <span
+class="math inline">\(\bar x\)</span>, because it is nilpotent. The
+underlying spectrum is therefore the line <span
+class="math inline">\(\operatorname{Spec}k[y]\)</span>. But as an <span
+class="math inline">\(R\)</span>-module, <span
+class="math inline">\(B\)</span> has the associated primes <span
+class="math inline">\((x)\)</span> and <span
+class="math inline">\((x,y)\)</span>. The annihilator of <span
+class="math inline">\(\bar y\)</span> is <span
+class="math inline">\((x)\)</span>, since multiplying <span
+class="math inline">\(f(y)+c\bar x\)</span> by <span
+class="math inline">\(\bar y\)</span> gives <span
+class="math inline">\(yf(y)\)</span>. The annihilator of <span
+class="math inline">\(\bar x\)</span> is <span
+class="math inline">\((x,y)\)</span>, since multiplication by it retains
+just the constant term of a polynomial. These computations show both
+primes explicitly. They are all the associated primes by Proposition 2.1
+applied to</p>
+<p><span class="math display">\[
+0\longrightarrow k\bar x\longrightarrow B\longrightarrow
+k[y]\longrightarrow0.
+\]</span></p>
+<p>The prime <span class="math inline">\((x)\)</span> is the generic
+point of the line. The embedded prime <span
+class="math inline">\((x,y)\)</span> is the origin. It records the
+additional element <span class="math inline">\(\bar x\)</span> supported
+only there: its cyclic module is <span
+class="math inline">\(R/(x,y)\)</span>. Thus “embedded point” here
+describes an algebraic contribution supported at a point already on the
+line; it does not add another point to the underlying space.</p>
+<p>There are two decompositions</p>
+<p><span class="math display">\[
+I=(x)\cap(x^2,y)
+=(x)\cap(x^2,xy,y^2).
+\]</span></p>
+<p>The last ideal is <span class="math inline">\((x,y)^2\)</span>. Both
+displayed intersections can be checked using their monomials: in each, a
+monomial is divisible by <span class="math inline">\(x\)</span> and by
+one of the generators of the other component exactly when it is
+divisible by <span class="math inline">\(x^2\)</span> or <span
+class="math inline">\(xy\)</span>. The component <span
+class="math inline">\((x)\)</span> is prime. The other components have
+radical <span class="math inline">\((x,y)\)</span> and are primary: the
+first quotient is <span class="math inline">\(k[x]/(x^2)\)</span>, whose
+zero divisors are precisely the multiples of <span
+class="math inline">\(x\)</span>, all nilpotent; the second is a
+maximal-ideal power. Each decomposition is irredundant. Indeed <span
+class="math inline">\(x\notin I\)</span>, while <span
+class="math inline">\(y\)</span> belongs to the first embedded component
+and <span class="math inline">\(y^2\)</span> to the second, and neither
+belongs to <span class="math inline">\(I\)</span>. Yet the embedded
+components differ: <span class="math inline">\(y\in(x^2,y)\)</span> and
+<span class="math inline">\(y\notin(x,y)^2\)</span>.</p>
+<p>The minimal component agrees in both decompositions, as Theorem 6.2
+requires. Localization at <span class="math inline">\((x)\)</span> makes
+<span class="math inline">\(y\)</span> a unit, so <span
+class="math inline">\(IR_{(x)}=(x)R_{(x)}\)</span>, whose inverse image
+is <span class="math inline">\((x)\)</span>. At <span
+class="math inline">\((x,y)\)</span>, both components survive;
+localization cannot single out the embedded component by the same
+argument.</p>
+<p>Over <span class="math inline">\(\mathbb Z\)</span>, primary
+decomposition has a simpler shape. If <span
+class="math inline">\(n\ge2\)</span>, write <span
+class="math inline">\(n=\prod_i p_i^{e_i}\)</span>. Then</p>
+<p><span class="math display">\[
+(n)=\bigcap_i(p_i^{e_i}).
+\]</span></p>
+<p>An integer belongs to this intersection exactly when each prime power
+divides it, equivalently when their product divides it. Each factor is
+<span class="math inline">\((p_i)\)</span>-primary: if <span
+class="math inline">\(p_i^{e_i}\mid ab\)</span> and <span
+class="math inline">\(a\)</span> is not divisible by <span
+class="math inline">\(p_i\)</span>, then <span
+class="math inline">\(p_i^{e_i}\mid b\)</span>. The intersection is
+irredundant, since <span class="math inline">\(n/p_i^{e_i}\)</span> lies
+in all the other components and not in this one. All the associated
+primes are maximal and pairwise incomparable, so all components are
+minimal and unique. The ideal <span class="math inline">\((1)\)</span>
+has the empty decomposition, and <span
+class="math inline">\((0)\)</span> is itself prime.</p>
+<h2 id="exercises">8. Exercises</h2>
+<p>The first two exercises develop the definitions. The next three
+combine structural results, and the last asks for an explicit comparison
+of decompositions.</p>
+<p><strong>Exercise 8.1 (first steps).</strong> Compute <span
+class="math inline">\(\operatorname{Ass}_{\mathbb Z}(\mathbb Z/12\mathbb
+Z)\)</span>, give elements witnessing its primes, and write an
+irredundant primary decomposition of <span
+class="math inline">\(12\mathbb Z\)</span>. Identify the minimal and
+embedded primes.</p>
+<p><strong>Exercise 8.2 (first steps).</strong> Prove that <span
+class="math inline">\(\mathfrak m^n\)</span> is <span
+class="math inline">\(\mathfrak m\)</span>-primary for every maximal
+ideal <span class="math inline">\(\mathfrak m\)</span> and <span
+class="math inline">\(n\ge1\)</span>. Show that this fact does not
+require Noetherianity.</p>
+<p><strong>Exercise 8.3 (structural).</strong> Verify the failure of
+primaryness of <span class="math inline">\(\mathfrak p^2\)</span> in
+<span class="math inline">\(A=k[x,y,z]/(xy-z^2)\)</span>, with <span
+class="math inline">\(\mathfrak p=(x,z)\)</span>. Prove all the
+nonmembership assertions, including <span
+class="math inline">\(x\notin\mathfrak p^2\)</span>. Use the
+zero-divisor theorem to show that <span
+class="math inline">\(A/\mathfrak p^2\)</span> has an embedded
+associated prime.</p>
+<p><strong>Exercise 8.4 (structural).</strong> Prove that a Noetherian
+ring is reduced if and only if it has no embedded associated primes and
+<span class="math inline">\(R_{\mathfrak p}\)</span> is a field for
+every minimal prime <span class="math inline">\(\mathfrak p\)</span>.
+Include the zero ring using the usual vacuous conventions.</p>
+<p><strong>Exercise 8.5 (structural).</strong> Prove finite prime
+avoidance: if an ideal <span class="math inline">\(J\)</span> lies in a
+finite union of prime ideals, it lies in one of them. Deduce that an
+ideal all of whose elements are zero divisors in a nonzero Noetherian
+ring is contained in one associated prime.</p>
+<p><strong>Exercise 8.6 (synthesis).</strong> Give two different
+irredundant primary decompositions of <span
+class="math inline">\((x^2,xy)\subset k[x,y]\)</span>, determine every
+associated prime, and prove that their embedded components differ.
+Recover the unique minimal component by localization.</p>
+<h2 id="solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> The classes of <span
+class="math inline">\(6\)</span> and <span
+class="math inline">\(4\)</span> have annihilators <span
+class="math inline">\((2)\)</span> and <span
+class="math inline">\((3)\)</span>, respectively. Every annihilator
+contains <span class="math inline">\((12)\)</span>, so a prime
+annihilator must be a prime containing <span
+class="math inline">\((12)\)</span>. The only such primes of <span
+class="math inline">\(\mathbb Z\)</span> are <span
+class="math inline">\((2)\)</span> and <span
+class="math inline">\((3)\)</span>. Hence these are exactly the
+associated primes. We have</p>
+<p><span class="math display">\[
+(12)=(4)\cap(3),
+\]</span></p>
+<p>since simultaneous divisibility by <span
+class="math inline">\(4\)</span> and <span
+class="math inline">\(3\)</span> is divisibility by <span
+class="math inline">\(12\)</span>. The ideal <span
+class="math inline">\((4)\)</span> is <span
+class="math inline">\((2)\)</span>-primary: if an odd integer multiplies
+another into <span class="math inline">\((4)\)</span>, that other
+integer is already divisible by <span class="math inline">\(4\)</span>.
+The ideal <span class="math inline">\((3)\)</span> is prime, hence
+primary. The elements <span class="math inline">\(3\)</span> and <span
+class="math inline">\(4\)</span> show that neither component is
+redundant. Both associated primes are minimal over <span
+class="math inline">\((12)\)</span>, as neither contains the other.
+There are no embedded primes.</p>
+<p><strong>Solution 8.2.</strong> Set <span
+class="math inline">\(B=R/\mathfrak m^n\)</span>. Primes of <span
+class="math inline">\(B\)</span> correspond to primes containing <span
+class="math inline">\(\mathfrak m^n\)</span>, which must contain <span
+class="math inline">\(\mathfrak m\)</span> and hence equal <span
+class="math inline">\(\mathfrak m\)</span>. Thus <span
+class="math inline">\(B\)</span> has just one prime, the maximal ideal
+<span class="math inline">\(\mathfrak m/\mathfrak m^n\)</span>. Every
+element outside this ideal is a unit: a nonunit would generate a proper
+ideal and belong to a maximal ideal. A unit cannot be a zero divisor.
+Every element inside this ideal has its <span
+class="math inline">\(n\)</span>-th power zero. Consequently every zero
+divisor is nilpotent, and <span class="math inline">\(\mathfrak
+m^n\)</span> is proper because it is contained in <span
+class="math inline">\(\mathfrak m\)</span>. These facts prove
+primaryness and radical <span class="math inline">\(\mathfrak
+m\)</span>. None of this uses Noetherianity or associated-prime
+existence.</p>
+<p><strong>Solution 8.3.</strong> The quotient by <span
+class="math inline">\((x,z)\)</span> is <span
+class="math inline">\(k[y]\)</span>, so <span
+class="math inline">\(\mathfrak p\)</span> is prime. For any prime
+ideal, <span class="math inline">\(\sqrt{\mathfrak p^2}=\mathfrak
+p\)</span>: containment of <span class="math inline">\(\mathfrak
+p^2\)</span> in <span class="math inline">\(\mathfrak p\)</span> gives
+one inclusion, and <span class="math inline">\(a^2\in\mathfrak
+p^2\)</span> for every <span class="math inline">\(a\in\mathfrak
+p\)</span> gives the other. The relation gives <span
+class="math inline">\(yx=z^2\in\mathfrak p^2\)</span>. The degree-one
+part of <span class="math inline">\(A\)</span> has basis <span
+class="math inline">\(x,y,z\)</span>, since the homogeneous defining
+ideal has no degree-one part. The ideal <span
+class="math inline">\(\mathfrak p^2=(x^2,xz,z^2)\)</span> has no
+degree-one part, so <span class="math inline">\(x\notin\mathfrak
+p^2\)</span>. Also <span class="math inline">\(y\notin\mathfrak
+p\)</span>, as its image in <span class="math inline">\(k[y]\)</span> is
+nonzero; indeed no positive power of <span
+class="math inline">\(y\)</span> lies in <span
+class="math inline">\(\mathfrak p\)</span> or <span
+class="math inline">\(\mathfrak p^2\)</span>. Thus <span
+class="math inline">\(y\)</span> kills a nonzero class in <span
+class="math inline">\(A/\mathfrak p^2\)</span> without being nilpotent
+there, disproving primaryness. Since <span
+class="math inline">\(A\)</span> is a Noetherian quotient of a
+polynomial ring, Theorem 1.2 puts <span class="math inline">\(y\)</span>
+in an associated prime <span class="math inline">\(\mathfrak q\)</span>
+of this module. Every such prime contains <span
+class="math inline">\(\sqrt{\mathfrak p^2}=\mathfrak p\)</span>, and
+<span class="math inline">\(y\notin\mathfrak p\)</span> forces <span
+class="math inline">\(\mathfrak q\supsetneq\mathfrak p\)</span>. Theorem
+3.2 identifies <span class="math inline">\(\mathfrak p\)</span> as the
+unique minimal associated prime. Hence <span
+class="math inline">\(\mathfrak q\)</span> is embedded.</p>
+<p><strong>Solution 8.4.</strong> First suppose <span
+class="math inline">\(R\ne0\)</span> is reduced. Its finitely many
+minimal primes <span class="math inline">\(\mathfrak
+p_1,\ldots,\mathfrak p_r\)</span> have intersection equal to the
+nilradical, hence to zero. This intersection is irredundant. For a fixed
+<span class="math inline">\(i\)</span>, choose <span
+class="math inline">\(a_j\in\mathfrak p_j\setminus\mathfrak p_i\)</span>
+for every <span class="math inline">\(j\ne i\)</span>, possible by
+incomparability, and multiply them. The product is in all the other
+primes and not in <span class="math inline">\(\mathfrak p_i\)</span>.
+When <span class="math inline">\(r=1\)</span>, use <span
+class="math inline">\(1\)</span> as the empty product. Thus the primes
+themselves form an irredundant primary decomposition of zero. Theorem
+6.1 gives <span class="math inline">\(\operatorname{Ass}(R)=\{\mathfrak
+p_1,\ldots,\mathfrak p_r\}\)</span>, so there are no embedded
+primes.</p>
+<p>For any minimal prime <span class="math inline">\(\mathfrak
+p\)</span>, the only prime of <span class="math inline">\(R_{\mathfrak
+p}\)</span> is its maximal ideal <span class="math inline">\(\mathfrak p
+R_{\mathfrak p}\)</span>. This localization is reduced: if <span
+class="math inline">\((a/s)^n=0\)</span>, some <span
+class="math inline">\(t\notin\mathfrak p\)</span> satisfies <span
+class="math inline">\(ta^n=0\)</span>, so <span
+class="math inline">\((ta)^n=t^na^n=0\)</span> and reducedness gives
+<span class="math inline">\(ta=0\)</span>, hence <span
+class="math inline">\(a/s=0\)</span>. The intersection of its primes is
+therefore zero, so its unique maximal ideal is zero. A nonzero ring
+whose maximal ideal is zero is a field.</p>
+<p>Conversely, assume there are no embedded associated primes and every
+localization at a minimal prime is a field. Theorem 3.2, applied to
+<span class="math inline">\(M=R\)</span>, says that the minimal
+associated primes are precisely the minimal primes. Thus all associated
+primes are minimal. The map</p>
+<p><span class="math display">\[
+R\longrightarrow\prod_{\mathfrak p\in\operatorname{Ass}(R)}R_{\mathfrak
+p}
+\]</span></p>
+<p>is injective. Indeed, if its kernel <span
+class="math inline">\(K\)</span> were nonzero, Theorem 1.2 would supply
+<span class="math inline">\(0\ne x\in K\)</span> with prime annihilator
+<span class="math inline">\(\mathfrak p\)</span>. This prime is
+associated to <span class="math inline">\(R\)</span>, and no element
+outside it can kill <span class="math inline">\(x\)</span>. Thus <span
+class="math inline">\(x/1\ne0\)</span> in <span
+class="math inline">\(R_{\mathfrak p}\)</span>, contradicting membership
+in <span class="math inline">\(K\)</span>. A nilpotent element maps to
+zero in every field in this product, so injectivity makes it zero in
+<span class="math inline">\(R\)</span>. Hence <span
+class="math inline">\(R\)</span> is reduced. The zero ring is reduced,
+has no associated or minimal primes, and satisfies the localization
+condition vacuously.</p>
+<p><strong>Solution 8.5.</strong> Delete primes contained in other
+primes in the given finite family. This preserves its union and leaves
+pairwise incomparable primes <span class="math inline">\(\mathfrak
+p_1,\ldots,\mathfrak p_r\)</span>. If <span
+class="math inline">\(J\)</span> were contained in none of them, choose
+<span class="math inline">\(a_i\in J\setminus\mathfrak p_i\)</span>. For
+every <span class="math inline">\(j\ne i\)</span>, choose <span
+class="math inline">\(b_{ij}\in\mathfrak p_j\setminus\mathfrak
+p_i\)</span>, and put <span class="math inline">\(c_i=\prod_{j\ne
+i}b_{ij}\)</span>, with empty product <span
+class="math inline">\(1\)</span>. Then <span
+class="math inline">\(c_i\)</span> belongs to every <span
+class="math inline">\(\mathfrak p_j\)</span> except <span
+class="math inline">\(\mathfrak p_i\)</span>, and is outside <span
+class="math inline">\(\mathfrak p_i\)</span> by primality. Consider</p>
+<p><span class="math display">\[
+a=\sum_{i=1}^r a_i c_i\in J.
+\]</span></p>
+<p>Modulo <span class="math inline">\(\mathfrak p_i\)</span>, all
+summands except <span class="math inline">\(a_i c_i\)</span> vanish, and
+this remaining summand is nonzero. Thus <span
+class="math inline">\(a\)</span> is outside every prime in the family,
+contradicting containment of <span class="math inline">\(J\)</span> in
+their union. This proves avoidance. An ideal cannot be contained in an
+empty union, so that case has no hypothesis to satisfy. For a nonzero
+Noetherian ring, Theorems 1.2 and 2.2 express its zero divisors as the
+union of finitely many associated primes. Apply avoidance to that union
+to obtain the required associated prime containing <span
+class="math inline">\(J\)</span>.</p>
+<p><strong>Solution 8.6.</strong> Take the two decompositions in Section
+7. For completeness, monomial membership is a termwise test for ideals
+generated by monomials: all products of generators with monomials span
+precisely the monomials divisible by a generator, and polynomial
+monomials are linearly independent. A monomial in <span
+class="math inline">\((x)\cap(x^2,y)\)</span> must either have <span
+class="math inline">\(x\)</span>-exponent at least two, or have both
+<span class="math inline">\(x\)</span>- and <span
+class="math inline">\(y\)</span>-exponents positive. These are exactly
+the monomials in <span class="math inline">\((x^2,xy)\)</span>. In <span
+class="math inline">\((x)\cap(x,y)^2\)</span>, a monomial has positive
+<span class="math inline">\(x\)</span>-exponent and total degree at
+least two, giving exactly the same alternatives. Hence both
+intersections equal <span class="math inline">\(I\)</span>.</p>
+<p>The ideal <span class="math inline">\((x)\)</span> is prime. In the
+quotient by <span class="math inline">\((x^2,y)\)</span>, every element
+is <span class="math inline">\(a+b\bar x\)</span>; if <span
+class="math inline">\(a\ne0\)</span>, its inverse is <span
+class="math inline">\(a^{-1}-ba^{-2}\bar x\)</span>, while if <span
+class="math inline">\(a=0\)</span> it is square-zero. Thus this ideal is
+<span class="math inline">\((x,y)\)</span>-primary. Solution 8.2 proves
+that <span class="math inline">\((x,y)^2\)</span> is also <span
+class="math inline">\((x,y)\)</span>-primary. The elements <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y\)</span>, or <span
+class="math inline">\(x\)</span> and <span
+class="math inline">\(y^2\)</span>, establish irredundancy as in Section
+7. Theorem 6.1 yields exactly the associated primes <span
+class="math inline">\((x)\)</span> and <span
+class="math inline">\((x,y)\)</span>. The latter is embedded, and its
+two components differ because <span class="math inline">\(y\)</span>
+belongs to <span class="math inline">\((x^2,y)\)</span> but not to <span
+class="math inline">\((x,y)^2\)</span>, whose degree-one part is zero.
+Finally <span class="math inline">\(y\notin(x)\)</span> becomes a unit
+at <span class="math inline">\((x)\)</span>, so <span
+class="math inline">\(IR_{(x)}=(x)R_{(x)}\)</span>. If <span
+class="math inline">\(sf\in(x)\)</span> for <span
+class="math inline">\(s\notin(x)\)</span>, primality implies <span
+class="math inline">\(f\in(x)\)</span>. Thus the inverse image is <span
+class="math inline">\((x)\)</span>, recovering the unique minimal
+component.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra, through the AI Integrated Stacks Project English edition: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-ass">Tag
+02M3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-ass-filter">Tag
+00LB</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-ass">Tag
+00LC</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-ass-zero-divisors">Tag
+00LD</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-associated-primes-localize">Tag
+0310</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-localize-ass">Tag
+05BZ</a>, and <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-minimal-primes-associated-primes">Tag
+02CE</a>. These cover associated primes, localization and support. The
+three primary-decomposition theorems in Sections 5–6 are proved here in
+full; no primary-decomposition theorem is attributed to these tags. The
+course introduction describes the edition and its attribution.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 6.6. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+<li>James S. Milne, <em>A Primer of Commutative Algebra</em>, version
+4.03, 23 March 2020, Section 19. <a
+href="https://www.jmilne.org/math/xnotes/CA.pdf">Author’s freely
+accessible notes</a>. The notes prove the ideal case and state the
+module extension; the complete module proofs are given in Sections 4–6
+of this lesson.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

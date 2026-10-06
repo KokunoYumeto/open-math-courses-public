@@ -1,0 +1,857 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Effective lower bounds I: Baker\textquotesingle s theorem and its arithmetic tools},
+  pdfauthor={GPT-6.1 Sol (OpenAI), Ultra},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Effective lower bounds I: Baker\textquotesingle s theorem and its
+arithmetic tools}
+\author{GPT-6.1 Sol (OpenAI), Ultra}
+\date{October 2026}
+
+\providecommand{\Eta}{\mathrm{H}}
+\begin{document}
+\maketitle
+
+\emph{Draft. Public domain (CC0).}
+
+An effective logarithm estimate combines a rank argument with a
+comparison of arithmetic and analytic size. We begin with the rank test:
+how many exact zeros would force an exponential polynomial to be zero?
+We then choose polynomial bases that preserve its coefficients, prove
+the denominator bounds needed to clear its derivatives, and account for
+the height cost of normalizing the logarithmic form.
+
+Theorem 4.1 states the target, including the algebraic constant and
+arbitrary fixed logarithm branches. The next lesson,
+\href{../TR-BAKER-05.html}{\emph{Effective lower bounds II: proof of
+Baker's theorem}}, gives its induction and parameter choices. The tools
+proved here include a degree-adapted polynomial family with a derivative
+denominator independent of the evaluation point; this supplies an
+alternative to the interval denominator in the classical construction.
+
+We use the qualitative theorem from
+\href{../TR-BAKER-03.html}{\emph{Baker's theorem II: extrapolation and
+the end of the proof}}, elementary polynomial algebra and integer
+factorization. The algebraic-integer criterion is proved in
+\href{../../NT-ANT/algebraic-integers-and-rings-of-integers.html}{\emph{Algebraic
+integers and rings of integers}}, Proposition 1.1. The freely accessible
+{[}Waldschmidt 2000{]} supplies the effective logarithm estimates and
+Matveev polynomial method discussed here. The logarithm methods of
+Baker, Feldman and Matveev are credited in the references. All the
+arithmetic arguments used below are supplied in full.
+
+\subsection{1. The theorem, with its
+quantifiers}\label{the-theorem-with-its-quantifiers}
+
+For an algebraic number \(\gamma\), let \(H(\gamma)\) be the maximum
+absolute coefficient of its primitive irreducible polynomial in
+\(\mathbb Z[X]\), with positive leading coefficient. This is the
+\textbf{naive height}. Thus \[
+H(p/q)=\max(|p|,q)\quad(\gcd(p,q)=1,\ q>0),\qquad
+H(0)=H(1)=H(i)=1.
+\] It differs from the logarithmic absolute Weil height used in the
+first lesson.
+
+\textbf{Theorem 4.1 (target: Baker's effective lower bound).} Fix an
+integer \(n\ge1\), an integer \(d\ge1\), nonzero algebraic numbers
+\(\alpha_1,\ldots,\alpha_n\) of degree at most \(d\) and naive height at
+most \(A\), where \(A\ge2\), and a determination \(\ell_j\) of each
+logarithm: \[
+e^{\ell_j}=\alpha_j.
+\] There is an effectively computable \(C>0\), depending on \(n,d,A\)
+and these determinations, with the following property. For every
+\(B\ge2\) and every tuple of algebraic numbers
+\(\beta_0,\ldots,\beta_n\), each of degree at most \(d\) and naive
+height at most \(B\), the form \[
+\Lambda=\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n
+\] satisfies \[
+\Lambda=0\quad\hbox{or}\quad |\Lambda|>B^{-C}. \tag{4.1}
+\] The constant is uniform in \(B\) and in all the allowed coefficients.
+No rational independence assumption on the logarithms is required.
+
+``Effective'' means that the proof gives a terminating procedure for
+choosing \(C\) from the fixed algebraic data and the logarithm branches.
+It does not promise that the resulting number is small. Increasing \(C\)
+preserves (4.1), which is useful for absorbing fixed numerical factors.
+
+The separation into zero and nonzero cases matters. For example,
+\(2\log2-\log4=0\) on the real branches. A lower-bound theorem cannot
+exclude that relation. The proof will either find a bounded integer
+relation and reduce the number of logarithms, or force the proposed very
+small form to be zero.
+
+For principal logarithms, or a specified bounded family of branches, the
+proof gives a power of \(\log A\): \[
+C=C'(n,d)(\log A)^{\kappa(n)} \tag{4.2}
+\] in the principal case, after increasing the effective constant if
+necessary. The next lesson establishes this dependence. For arbitrary
+branches the leading constant also depends on their branch integers.
+This qualification is necessary; it is not removable by an adjustment
+depending only on \(n,d\).
+
+To see why, set both bases equal to \(1\), take \(A=B=2\), and use the
+coefficients \(\sqrt2,-1\). Write \[
+(1+\sqrt2)^r=p_r+q_r\sqrt2,\qquad p_r,q_r\in\mathbb Z.
+\] Choose logarithms \(2\pi iq_r\) and \(2\pi ip_r\) of the two bases.
+The nonzero form becomes \[
+2\pi i(q_r\sqrt2-p_r)=-2\pi i(1-\sqrt2)^r,
+\] whose absolute value tends to zero while the degrees and naive
+heights stay fixed. Hence a common \(C\) over all branch choices is
+impossible. The fixed-branch quantifier in Theorem 4.1 avoids this
+problem.
+
+\subsection{2. What the estimate gives}\label{what-the-estimate-gives}
+
+The effective theorem is the target of the construction below; its proof
+is completed in the next lesson. The resulting transcendence measures
+for logarithms and the fixed-base multiplicative bound are proved after
+that argument, in
+\href{../TR-BAKER-05.html\#10-consequences-and-later-refinements}{\emph{Effective
+lower bounds II: proof of Baker's theorem}}, Section 10.
+
+Later applications need sharper height dependence than a single power of
+\(\log A\). The individual-height product \(\prod_j\log A_j\), and the
+different coefficient and branch hypotheses of the modern estimates, are
+treated in {[}Waldschmidt 2000{]} and {[}Waldschmidt 2003{]}. The later
+lesson \href{../TR-BAKER-08.html}{\emph{Linear forms in many logarithms:
+the modern estimates and how to use them}} gives the precise modern
+estimates and their proofs. The present theorem first establishes the
+decisive polynomial dependence on the coefficient height.
+
+\subsection{3. Plan the final rank test}\label{plan-the-final-rank-test}
+
+Before estimating an auxiliary function, decide what enough zeros would
+imply. Suppose its values have the form \[
+F(i)=\sum_{s=0}^{l-1}P_s(i)w_s^i,\qquad \deg P_s<k.
+\] There are \(kl\) polynomial coefficients. Evaluation at
+\(i=0,\ldots,kl-1\) is a square linear map from those coefficients to
+the values of \(F\). If its matrix is invertible, vanishing of all those
+values forces every coefficient to vanish. In a construction with a
+nonzero coefficient vector, that is the contradiction we want.
+
+The two possible failures have different meanings. Coincident nodes
+combine frequency blocks, so the values can no longer distinguish their
+coefficients. When \(k\ge2\), a zero node destroys the polynomially
+weighted columns. The next formula identifies both failures exactly. It
+also gives the complete rank test when each frequency carries several
+polynomial coefficients.
+
+\textbf{Lemma 4.6.} Let \(k,l\ge1\), and let \(w_0,\ldots,w_{l-1}\) be
+distinct nonzero complex numbers. Order the columns by pairs \((s,r)\),
+first \(s=0,\ldots,l-1\), then \(r=0,\ldots,k-1\). The matrix with rows
+\(i=0,\ldots,kl-1\) and entries \[
+A_{i,(s,r)}=i^r w_s^i,\qquad 0^0=1,
+\] has determinant \[
+\det A=
+\left(\prod_{s=0}^{l-1}w_s^{k(k-1)/2}\right)
+\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{0\le s<t<l}(w_t-w_s)^{k^2}. \tag{4.15}
+\] In particular, it is nonzero.
+
+\textbf{Proof.} Put \(N=kl\) and \(K_0=k(k-1)/2\). The ordinary
+Vandermonde determinant at nodes \(z_0,\ldots,z_{N-1}\) is
+\(\prod_{a<b}(z_b-z_a)\). Indeed, its polynomial determinant changes
+sign under exchanging nodes, is divisible by each difference, and has
+the same total degree as that product; the coefficient obtained by
+choosing the successive highest powers is \(1\).
+
+Apply this identity to the nodes \[
+z_{s,r}=w_s+r\varepsilon\quad(0\le s<l,\ 0\le r<k)
+\] in our column order, and compare the coefficient of the lowest
+nonzero power \(\varepsilon^{lK_0}\). Taylor expansion of the columns
+shows that in each block the derivative orders must be distinct, since
+equal orders give repeated columns. The smallest total order is \(K_0\),
+attained exactly by \(0,\ldots,k-1\). Its coefficient within that block
+is \[
+\det\left(\frac{r^t}{t!}\right)_{0\le t,r<k}
+=\frac{\prod_{a<b}(b-a)}{\prod_{t=0}^{k-1}t!}=1.
+\] Thus the coefficient on the determinant side is the determinant of
+the confluent matrix \[
+F_{i,(s,r)}=(i)_r w_s^{i-r},\qquad
+(i)_r=i(i-1)\cdots(i-r+1),
+\] with \((i)_0=1\). On the product side, the within-block differences
+contribute \(\left(\prod_{r=0}^{k-1}r!\right)^l\varepsilon^{lK_0}\);
+each pair of different blocks contributes \((w_t-w_s)^{k^2}\).
+Consequently \[
+\det F=\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{s<t}(w_t-w_s)^{k^2}. \tag{4.16}
+\]
+
+The falling factorials \((i)_0,\ldots,(i)_r\) form a triangular monic
+basis for polynomials in \(i\) of degree at most \(r\). Write \[
+i^r=\sum_{t=0}^r S(r,t)(i)_t,\qquad S(r,r)=1.
+\] Then the \(r\)-th column of the \(s\)-block of \(A\) is
+\(\sum_{t\le r}S(r,t)w_s^t F_{(s,t)}\). This triangular column change
+has determinant \(\prod_{r=0}^{k-1}w_s^r=w_s^{K_0}\) for each block.
+Multiplying (4.16) by these factors proves (4.15). \(\square\)
+
+For \(k=l=2\), the exact formula is \[
+\det\begin{pmatrix}
+1&0&1&0\\
+w_0&w_0&w_1&w_1\\
+w_0^2&2w_0^2&w_1^2&2w_1^2\\
+w_0^3&3w_0^3&w_1^3&3w_1^3
+\end{pmatrix}
+=w_0w_1(w_1-w_0)^4. \tag{4.17}
+\] At \(w_0=2,w_1=3\), the determinant is \(6\). Nonzero nodes are
+needed: when \(k\ge2\), a node \(w_s=0\) makes the column with \(r=1\)
+identically zero.
+
+\subsubsection{Recover four coefficients from four
+values}\label{recover-four-coefficients-from-four-values}
+
+Take \[
+F(i)=(a+bi)2^i+(c+di)3^i,\qquad y_j=F(j).
+\] The determinant \(6\) calculated above proves uniqueness. Solving the
+same system gives the more informative identities \[
+\begin{aligned}
+a&=-27y_0+36y_1-15y_2+2y_3,\\
+b&=-9y_0+\tfrac{21}{2}y_1-4y_2+\tfrac12y_3,\\
+c&=28y_0-36y_1+15y_2-2y_3,\\
+d&=-4y_0+\tfrac{16}{3}y_1-\tfrac73y_2+\tfrac13y_3.
+\end{aligned}
+\] For example, \((y_0,y_1,y_2,y_3)=(3,9,32,119)\) recovers
+\((a,b,c,d)=(1,-1,2,1)\). These identities can be verified by inserting
+the four rows in (4.17); they give an explicit inverse, rather than a
+numerical rank calculation.
+
+The count of values is essential. With only \(y_0=y_1=y_2=0\), the
+nonzero choice \((a,b,c,d)=(6,\tfrac32,-6,1)\) is possible and gives
+\(y_3=3\). Thus three zeros do not yet force the four coefficients to
+vanish. In the effective proof, extrapolation must reach the number of
+rows required by the rank test. A small analytic estimate before that
+point would not finish the argument.
+
+The polynomial coefficient blocks need not initially be written in
+monomials. We next construct a basis that retains the same coefficient
+count while accommodating the integer-valued polynomials used for
+denominator control.
+
+\subsection{4. Preserve the polynomial
+coefficients}\label{preserve-the-polynomial-coefficients}
+
+\textbf{Lemma 4.5.} Let \(K\) be a field of characteristic zero,
+\(P\in K[X]\) a polynomial of degree \(n>0\), and \(0\le m\le n\). The
+\(n+1\) polynomials \[
+P(X),P(X+1),\ldots,P(X+m),\quad
+1,X,\ldots,X^{n-m-1} \tag{4.14}
+\] are linearly independent over \(K\). If \(m=n\), the second list is
+empty. They consequently form a basis of \(K[X]_{\le n}\).
+
+\textbf{Proof.} Suppose \(\sum_{j=0}^m A_jP(X+j)\) has degree at most
+\(n-m-1\). For \(0\le t\le m\), the coefficient of \(X^{n-t}\) in
+\(P(X+j)\), as a polynomial \(q_t(j)\), has degree \(t\) and leading
+coefficient \(a_n\binom nt\ne0\). Therefore \(q_0,\ldots,q_m\) form a
+basis of the polynomials of degree at most \(m\) in \(j\).
+
+Vanishing of those highest \(m+1\) coefficients gives
+\(\sum_j A_jq_t(j)=0\) for all \(t\). By the basis assertion it gives
+\(\sum_j A_jj^t=0\) for \(t=0,\ldots,m\). The Vandermonde matrix at the
+distinct elements \(0,\ldots,m\) is invertible, so every \(A_j=0\). The
+remaining monomials are independent. \(\square\)
+
+For \(P(X)=X^2,\ m=1\), the basis is \(X^2,(X+1)^2,1\). Subtracting the
+first and third elements from the second produces \(2X\); characteristic
+zero permits division by \(2\).
+
+The characteristic assumption is essential. In characteristic \(p\),
+\(P(X)=X^p-X\) satisfies \(P(X+1)=P(X)\), so even two of the proposed
+translates coincide. All coefficient fields in the effective proof are
+subfields of \(\mathbb C\), where Lemma 4.5 applies. Exercise 3 gives
+the complete induction proof by finite differences.
+
+\subsubsection{Read the basis as a finite-difference
+calculation}\label{read-the-basis-as-a-finite-difference-calculation}
+
+For \(P(X)=X^3\) and \(m=2\), the proposed basis is \[
+X^3,\quad (X+1)^3,\quad (X+2)^3,\quad 1.
+\] Its first difference is \((X+1)^3-X^3=3X^2+3X+1\). Its second
+difference is \[
+(X+2)^3-2(X+1)^3+X^3=6X+6.
+\] Together with \(1\), these recover \(X\), then \(X^2\), and finally
+\(X^3\). Each difference removes one highest degree. Lemma 4.5
+formalizes that mechanism for any polynomial with nonzero leading
+coefficient; Solution 3 gives the induction in full.
+
+This explains a practical division of labour. The translate basis
+preserves all polynomial coefficients needed by the rank test. The
+choice of its underlying polynomial controls the arithmetic size of
+those coefficients and their derivatives. We now choose that polynomial.
+
+\subsection{5. Form normalized
+derivatives}\label{form-normalized-derivatives}
+
+For the auxiliary construction, derivatives must satisfy two
+requirements at once: their values must be small enough analytically,
+and their rational denominators must be cheap enough to clear. The
+normalization by \(m!\) makes the first requirement a coefficient
+estimate. A product of consecutive factors makes the second requirement
+accessible to divisibility arguments.
+
+After Lemma 4.3, Section 6 will give a stronger common denominator
+independent of the integer evaluation point. We first prove the direct
+interval bound because its positive coefficient expansion shows exactly
+how the normalized derivative is formed, and because the effective
+argument can use it without changing its original parameter choices.
+
+For the classical construction, use \[
+\Delta(x;k)=\frac{(x+1)\cdots(x+k)}{k!},\qquad
+\Delta(x;k,l,m)=\frac1{m!}\frac{d^m}{dx^m}\Delta(x;k)^l, \tag{4.7}
+\] where \(k\ge1\) and \(l,m\ge0\) are integers. For a nonnegative
+integer \(x\), set \[
+\nu(x;k)=\operatorname{lcm}(x+1,\ldots,x+k).
+\] The normalized derivative is exactly the coefficient of \(t^m\) in
+\(\Delta(x+t;k)^l\).
+
+\textbf{Lemma 4.3.} For every integer \(x\ge0\), \[
+\nu(x;k)^m\Delta(x;k,l,m)\in\mathbb Z_{\ge0},\qquad
+0\le\Delta(x;k,l,m)\le4^{l(x+k)}. \tag{4.8}
+\] The integer is positive when \(0\le m\le kl\), and is zero when
+\(m>kl\).
+
+\textbf{Proof.} First \(\Delta(x;k)=\binom{x+k}{k}\) is a positive
+integer. Regard the list \(x+1,\ldots,x+k\) as repeated \(l\) times.
+Expanding \[
+\Delta(x+t;k)^l
+=\Delta(x;k)^l\prod_{j=1}^k\left(1+\frac{t}{x+j}\right)^l
+\] gives \[
+\Delta(x;k,l,m)=\Delta(x;k)^l
+\sum_{\substack{\text{choices of }m\\\text{positions in the repeated list}}}
+\frac1{(x+j_1)\cdots(x+j_m)}. \tag{4.9}
+\] There are \(\binom{kl}{m}\) choices, with the sum read as zero when
+\(m>kl\). Multiplication by \(\nu(x;k)^m\) clears every denominator,
+proving integrality and the positivity assertion. For \(l=0\), the only
+nonzero derivative is \(m=0\), with value \(1\).
+
+Since \(x+j\ge1\), each reciprocal product is at most \(1\). The
+inequalities \(\binom{x+k}{k}\le2^{x+k}\) and \(\binom{kl}{m}\le2^{kl}\)
+therefore give \[
+\Delta(x;k,l,m)\le2^{l(x+k)+kl}\le4^{l(x+k)}.
+\] \(\square\)
+
+For example, at \(k=l=2\), \[
+\Delta(x;2)^2=\frac{x^4+6x^3+13x^2+12x+4}{4}.
+\] At \(x=1\), its normalized derivatives for \(m=0,\ldots,5\) are \[
+9,\quad15,\quad\frac{37}{4},\quad\frac52,\quad\frac14,\quad0.
+\] Here \(\nu(1;2)=6\), so multiplying the \(m\)-th entry by \(6^m\)
+gives an integer. The final zero illustrates why an assertion of
+positivity for \emph{all} orders would be false.
+
+\subsection{6. Compare denominator
+costs}\label{compare-denominator-costs}
+
+\textbf{Lemma 4.4.} For all integers \(x\ge0,\ k\ge1\), \[
+\nu(x;k)\le\left(\frac{16(x+k)}k\right)^{2k}. \tag{4.10}
+\]
+
+\textbf{Proof.} Write \(V(N)=\operatorname{lcm}(1,\ldots,N)\). We first
+prove \[
+V(N)\le8^N\quad(N\ge1). \tag{4.11}
+\] For a prime power \(p^a\), the factorial valuation formula is \[
+v_p(N!)=\sum_{j\ge1}\left\lfloor\frac{N}{p^j}\right\rfloor,
+\] because multiples of \(p^j\) contribute one extra factor of \(p\).
+Put \(u=\lfloor N/2\rfloor,\ v=\lceil N/2\rceil\). If the highest power
+\(p^a\le N\) is at most \(v\), its full contribution to \(V(N)\) already
+divides \(V(v)\). Otherwise \(p^a>v\), but \(p^{a-1}\le N/2\le v\). The
+term \(j=a\) in \(v_p\binom Nu\) is \(1-0-0=1\), and every other floor
+difference is nonnegative. Hence \[
+V(N)\mid \binom Nu V(v).
+\] Using \(\binom Nu\le2^N\), induction gives \[
+V(N)\le2^N8^{\lceil N/2\rceil}\le8^N;
+\] the exponent inequality \(N+3\lceil N/2\rceil\le3N\) holds for
+\(N\ge2\), including \(N=3\). The base \(N=1\) is immediate.
+
+Now set \(N=x+k\) and split \(\nu(x;k)=\nu'\nu''\), according as the
+prime divisor is at most \(k\) or greater than \(k\). For \(p\le k\),
+let \(a_0=\lfloor\log_p k\rfloor\). Every interval of \(k\) consecutive
+integers contains a multiple of \(p^{a_0}\), so \(V(k)\mid\nu'\). If
+\(p^a\) is the highest power of \(p\) dividing an integer in our
+interval, then \(p^a\le N\) and \(p^{a_0}>k/p\). Thus \[
+p^{a-a_0}<\frac{pN}{k}
+\] whenever an extra power occurs; the weak inequality with this upper
+bound also covers \(a=a_0\). Therefore \[
+\nu'\le V(k)\prod_{p\le k}p\,(N/k)^{\pi(k)}
+\le64^k(N/k)^k, \tag{4.12}
+\] where \(\prod_{p\le k}p\mid V(k)\), \(\pi(k)\le k\), \(N/k\ge1\), and
+(4.11) were used.
+
+A prime \(p>k\) divides at most one of the consecutive integers
+\(x+1,\ldots,x+k\). Its valuation in their product is consequently its
+valuation in \(\nu''\), while \(v_p(k!)=0\). Hence
+\(\nu''\mid\binom Nk\). Finally \[
+\binom Nk\le\frac{N^k}{k!}\le(eN/k)^k. \tag{4.13}
+\] For the last inequality,
+\(\sum_{j=1}^k\log j\ge\int_1^k\log t\,dt=k\log k-k+1\) suffices, also
+at \(k=1\). Combining (4.12)--(4.13) gives \[
+\nu(x;k)\le(64e)^k(N/k)^{2k}
+\le(16N/k)^{2k},
+\] since \(e<4\). \(\square\)
+
+The point of (4.10) is its dependence on the ratio \(x/k\). If \(x\) is
+comparable with \(k\), then \(\log\nu(x;k)=O(k)\). A crude factorial
+denominator would have logarithm \(O(k\log k)\); losing that extra
+factor would spoil the effective auxiliary-function count.
+
+Here are three different parameter regimes in the original bound,
+keeping their dependence visible:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Evaluation point
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consequence of (4.10)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dependence on \(k\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(x=0\) & \(\log\nu\le2k\log16\), sharpened by (4.11) to \(k\log8\) &
+linear \\
+\(x=k\) & \(\log\nu\le2k\log32\) & linear \\
+\(x=k^2\) & \(\log\nu\le2k\log(16(k+1))\) & \(O(k\log k)\) \\
+\end{longtable}
+}
+
+The last row prevents a mistaken uniform \(O(k)\) assertion when the
+evaluation interval moves far from zero. Lemma 4.7 below supplies a
+uniform denominator for normalized derivatives even in that regime; it
+does not assert that the interval LCM itself becomes small.
+
+\subsubsection{A denominator independent of the evaluation
+point}\label{a-denominator-independent-of-the-evaluation-point}
+
+The preceding interval estimate grows with \(x/k\). A different
+divisibility argument removes this dependence from the derivative
+denominator. It also accommodates arbitrary polynomial degrees. This is
+the polynomial family introduced by Matveev and treated in
+{[}Waldschmidt 2000{]}.
+
+For integers \(a\ge0\) and \(b\ge1\), write \(a=bq+r\), with
+\(0\le r<b\), and define \[
+D_b(Z;a)=
+\left(\frac{Z(Z+1)\cdots(Z+b-1)}{b!}\right)^q
+\frac{Z(Z+1)\cdots(Z+r-1)}{r!}.
+\] An empty product is \(1\). This polynomial has degree exactly \(a\).
+In particular, for fixed \(b\), the polynomials
+\(D_b(Z;0),\ldots,D_b(Z;A)\) form a basis of \(\mathbb Q[Z]_{\le A}\):
+their distinct degrees and nonzero leading coefficients make the
+coefficient matrix triangular and invertible.
+
+\textbf{Lemma 4.7 (uniform derivative denominators and analytic size).}
+Let \(a,C\ge0\), \(b\ge1\) be integers, and put
+\(V(b)=\operatorname{lcm}(1,\ldots,b)\). For every integer \(u\),
+including negative integers, and every \(0\le c\le C\), \[
+\frac{V(b)^C}{c!}D_b^{(c)}(u;a)\in\mathbb Z.
+\] For every \(z\in\mathbb C\), \[
+\sum_{c=0}^{C}\binom Cc\left|D_b^{(c)}(z;a)\right|
+\le C!e^{a+b}\left(1+\frac{|z|}{b}\right)^a.
+\] Derivatives of order greater than \(a\) are zero.
+
+\textbf{Proof.} Each consecutive-factor quotient is integer-valued on
+\(\mathbb Z\). For \(u\ge1\) it is \(\binom{u+t-1}{t}\), and for
+\(u\le0\) it is \((-1)^t\binom{-u}{t}\), for a block of length \(t\).
+These formulas include its zeros.
+
+To prove the sharper derivative assertion, expand the coefficient of
+\(T^c\) in \(D_b(u+T;a)\). Every term is obtained by deleting \(c\)
+factors from the numerator's \(a\) linear factors, then dividing the
+surviving product by \((b!)^qr!\). No extra combinatorial denominator
+appears, since that coefficient is \(D_b^{(c)}(u;a)/c!\).
+
+Fix a prime \(p\), and let \(L=\lfloor\log_p b\rfloor\). For
+\(1\le j\le L\), each block of \(b\) consecutive integers contains at
+least \(\lfloor b/p^j\rfloor\) multiples of \(p^j\), and the shorter
+block contains at least \(\lfloor r/p^j\rfloor\). Set \[
+t_j=q\lfloor b/p^j\rfloor+\lfloor r/p^j\rfloor.
+\] Deleting \(c\) factors leaves at least \(\max(t_j-c,0)\) such
+multiples. A surviving product that is zero contributes the integer
+zero. Every nonzero surviving product has \(p\)-valuation at least
+\(\sum_{j=1}^{L}\max(t_j-c,0)\). The denominator has valuation
+\(\sum_{j=1}^{L}t_j\), while \(V(b)^C\) has valuation \(CL\). Therefore
+its cleared term has valuation at least \[
+\sum_{j=1}^{L}\bigl(C+\max(t_j-c,0)-t_j\bigr)\ge0,
+\] because \(c\le C\). For \(p>b\), the denominator has valuation zero.
+Every term is consequently an integer after multiplication by
+\(V(b)^C\), and so is their sum. This proof uses intervals of integers
+and remains valid when \(u\) is negative.
+
+For the analytic bound, set \(W=|z|+b-1\). Expanding the differentiated
+product gives \[
+|D_b^{(c)}(z;a)|\le
+\frac{c!\binom ac W^{a-c}}{(b!)^qr!}\quad(0\le c\le a).
+\] If \(W=0\), the expression is interpreted by the underlying
+polynomial: a term with exponent zero has value \(1\), including at
+zero. Since \(\binom Cc c!=C!/(C-c)!\le C!\), summing and then
+completing the binomial sum gives \[
+\sum_{c=0}^{C}\binom Cc|D_b^{(c)}(z;a)|
+\le \frac{C!(W+1)^a}{(b!)^qr!}.
+\] The elementary factorial inequality \(t!\ge(t/e)^t\), proved in
+(4.13), yields \[
+\frac1{(b!)^qr!}\le
+\frac{e^a}{b^a}\left(\frac br\right)^r
+\le \frac{e^{a+b}}{b^a}.
+\] At \(r=0\) the middle factor is read as \(1\). Otherwise
+\(r\log(b/r)\le b/e<b\), by maximizing \(t\log(1/t)\) on \(0<t\le1\).
+Substitution of \(W+1=|z|+b\) proves the stated bound. The degree gives
+the final zero assertion. \(\square\)
+
+For the original polynomial, \(D_k(x+1;kl)=\Delta(x;k)^l\). Taking
+\(C=m\) gives the useful specialization \[
+V(k)^m\Delta(x;k,l,m)\in\mathbb Z\qquad(x\in\mathbb Z).
+\] At \(k=l=2,x=1\), multiplication of the five nonzero normalized
+derivatives by \(2^m\) gives \[
+9,\quad30,\quad37,\quad20,\quad4.
+\] The interval denominator in Lemma 4.3 used \(6^m\) at this point. At
+\(x=-1\), the normalized derivatives instead are \[
+0,\quad0,\quad\tfrac14,\quad\tfrac12,\quad\tfrac14;
+\] the same \(2^m\) still clears them. Positivity from Lemma 4.3 is
+confined to its nonnegative evaluation points; the integer-valued
+assertion in Lemma 4.7 has no such restriction.
+
+Together with (4.11), this gives a uniform logarithmic denominator cost
+at most \(km\log8\). The general family lets us keep the polynomial
+degree \(a\) and the block size \(b\) as separate parameters. A large
+degree need not force a factorial-size derivative denominator. The
+analytic bound records the corresponding size cost explicitly; it is
+this pair of bounds that makes the alternative basis useful.
+
+\subsection{7. Budget the coefficient
+heights}\label{budget-the-coefficient-heights}
+
+The rank and denominator arguments leave one bookkeeping question: how
+much does division by an algebraic coefficient change the degree and
+height? We first prove the elementary sum and product estimate, then
+compute its effect on a lower-bound exponent.
+
+\textbf{Lemma 4.2.} If \(\alpha,\beta\) have degree at most \(d\) and
+naive height at most \(H\), where \(H\ge2\), then each of
+\(\alpha+\beta,\alpha\beta\) has degree at most \(d^2\), and \[
+H(\alpha+\beta),\,H(\alpha\beta)
+\le (1+d^2)^{d^2}H^{4d^2}. \tag{4.6}
+\] In particular, \(\log H(\alpha+\beta)\) and \(\log H(\alpha\beta)\)
+are at most \(c(d)\log H\), with \[
+c(d)=d^2\left(4+\frac{\log(1+d^2)}{\log2}\right).
+\] For \(H\ge1\), the same logarithmic conclusion holds with
+\(\log(2H)\).
+
+\textbf{Proof.} Suppose \(aX^s+\cdots+a_s\) is the primitive minimal
+polynomial of \(\alpha\). Here \(1\le a\le H\) and \(s\le d\). If
+\(|\alpha|\ge1\), its defining equation gives \[
+a|\alpha|^s\le H\sum_{j=0}^{s-1}|\alpha|^j\le sH|\alpha|^{s-1}.
+\] Thus every conjugate of \(\alpha\) has size at most \(dH\); the same
+holds for \(\beta\). Also \(a\alpha\) is an algebraic integer:
+substituting \(X/a\) into the defining polynomial and multiplying by
+\(a^{s-1}\) gives a monic integral polynomial in \(X\).
+
+Let \(b\le H\) be the leading coefficient for \(\beta\), and set
+\(q=ab\). Both \[
+q\alpha\beta=(a\alpha)(b\beta),\qquad
+q(\alpha+\beta)=b(a\alpha)+a(b\beta)
+\] are algebraic integers. The compositum \(\mathbb Q(\alpha,\beta)\) is
+spanned by the products of powers \(1,\alpha,\ldots,\alpha^{s-1}\) and
+\(1,\beta,\ldots,\beta^{t-1}\); consequently either new number
+\(\gamma\) has degree \(D\le st\le d^2\).
+
+The monic minimal polynomial of \(q\gamma\) has integral coefficients.
+Evaluating it at \(qX\) gives an integral polynomial with root
+\(\gamma\) and leading coefficient \(q^D\). By Gauss's lemma, the
+positive leading coefficient \(c\) of the primitive minimal polynomial
+of \(\gamma\) divides \(q^D\). Hence \(c\le H^{2D}\).
+
+Every conjugate of \(\gamma=\alpha\beta\) has size at most \(d^2H^2\). A
+conjugate of \(\alpha+\beta\) has size at most \(2dH\le d^2H^2\), since
+\(H\ge2\). Expanding \[
+c\prod_{j=1}^D(X-\gamma^{(j)})
+\] shows that each coefficient is at most \[
+c\prod_j(1+|\gamma^{(j)}|)
+\le H^{2D}(1+d^2H^2)^D
+\le (1+d^2)^{d^2}H^{4d^2}.
+\] This proves (4.6). Taking logarithms and using \(\log H\ge\log2\)
+gives the displayed \(c(d)\). For \(1\le H<2\), apply the result with
+\(2H\). \(\square\)
+
+The restriction or padding at height one is real: \(H(1)=1\), but
+\(H(1+1)=2\). A statement \(\log H'\le c(d)\log H\) without padding
+cannot hold at \(H=1\). Inversion is particularly simple: reversing the
+minimal polynomial gives \(H(\alpha^{-1})=H(\alpha)\) for
+\(\alpha\ne0\), with unchanged degree. Combining this fact with Lemma
+4.2 handles every finite sum, product and quotient appearing in the
+later induction.
+
+\subsubsection{Account for the constant when dividing by a
+coefficient}\label{account-for-the-constant-when-dividing-by-a-coefficient}
+
+The effective proof normalizes a nonzero logarithm coefficient to
+\(-1\). A degree or height estimate alone does not finish that step:
+after obtaining a lower bound for the normalized form, we must multiply
+back by the coefficient and absorb every fixed factor into an exponent
+of \(B\).
+
+\textbf{Lemma 4.8 (normalization budget).} Suppose
+\(\beta_0,\ldots,\beta_n\) have degree at most \(d\), naive height at
+most \(B\ge2\), and \(\beta_n\ne0\). Put \[
+r=4d^2,\qquad K_d=(1+d^2)^{d^2},\qquad
+\gamma_j=-\beta_j/\beta_n\quad(0\le j<n).
+\] Each \(\gamma_j\) has degree at most \(d^2\) and height at most
+\(K_dB^r\). For fixed logarithms define \[
+\Lambda_* =\gamma_0+\sum_{j=1}^{n-1}\gamma_j\ell_j-\ell_n
+=-\Lambda/\beta_n.
+\] If \(|\Lambda_*|>(K_dB^r)^{-C_*}\), with \(C_*>0\), then \[
+|\Lambda|>B^{-C},\qquad
+C=1+rC_*+\frac{\log d+C_*\log K_d}{\log2}.
+\]
+
+\textbf{Proof.} Inversion preserves naive height and degree, and
+changing sign preserves them too. Apply Lemma 4.2 to \(-\beta_j\) and
+\(\beta_n^{-1}\). This proves the asserted degree and height bounds,
+including zero coefficients.
+
+The root bound proved in Lemma 4.2, now applied to \(\beta_n^{-1}\),
+gives \(|\beta_n^{-1}|\le dB\), hence \(|\beta_n|\ge(dB)^{-1}\).
+Consequently \[
+|\Lambda|=|\beta_n||\Lambda_*|
+>d^{-1}K_d^{-C_*}B^{-(1+rC_*)}.
+\] For a fixed \(M=dK_d^{C_*}\ge1\) and \(B\ge2\), we have
+\(M\le B^{\log M/\log2}\). Absorbing precisely this factor gives the
+displayed exponent. \(\square\)
+
+If every logarithm coefficient is zero, the form is simply \(\beta_0\).
+It is either zero, or the same inverse root bound gives \[
+|\beta_0|\ge(dB)^{-1}\ge B^{-1-\log d/\log2}.
+\] Increasing the exponent slightly makes the final inequality strict,
+as in Theorem 4.1. This also covers the constant-only case without
+dividing by a nonexistent logarithm coefficient.
+
+The normalization budget keeps the coefficient-height variable separate
+from the fixed bases and branches. The theorem's exponent may
+deteriorate when we normalize or eliminate a coefficient, but it remains
+independent of \(B\). In the next lesson the analytic gain must exceed
+all the denominator and height costs proved here.
+
+\subsection{8. Exercises}\label{exercises}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Easy.} Prove directly that \(\Delta(x;k)=\binom{x+k}{k}\) is
+  an integer for \(x\ge0\). Explain the cases \(x=0\) and \(k=1\).
+\item
+  \textbf{Medium.} Prove (4.10) with an explicit absolute constant,
+  without the prime number theorem. State where you use that the
+  interval contains exactly \(k\) consecutive integers.
+\item
+  \textbf{Medium.} Prove Lemma 4.5 by induction on \(\deg P\), using
+  \(Q(X)=P(X)-P(X+1)\). Treat \(m=0\) and \(m=n\) explicitly.
+\item
+  \textbf{Hard.} Compute (4.17) by column operations. Explain separately
+  the factors \(w_0w_1\) and \((w_1-w_0)^4\), and verify the numerical
+  case \(w_0=2,w_1=3\).
+\item
+  \textbf{Medium.} At \(k=l=2\), compare the interval and uniform
+  denominators for the normalized derivatives at \(x=1\). Compute the
+  derivatives at \(x=-1\), and explain why the uniform integer-valued
+  assertion survives although positivity no longer holds at every order.
+\item
+  \textbf{Hard.} Suppose all coefficients in Lemma 4.8 are rational of
+  naive height at most \(B\). Prove that each normalized coefficient has
+  height at most \(B^2\), and show that a bound
+  \(|\Lambda_*|>(B^2)^{-C_*}\) gives \(|\Lambda|>B^{-(1+2C_*)}\).
+  Compare this exponent with the general bound at \(d=1\).
+\end{enumerate}
+
+\subsection{9. Solutions}\label{solutions}
+
+\textbf{Solution 1.} The product in (4.7) is \((x+k)!/x!\); dividing by
+\(k!\) gives the binomial coefficient counting the \(k\)-element subsets
+of a set of size \(x+k\). Hence it is integral. At \(x=0\) it equals
+\(1\), and at \(k=1\) it equals \(x+1\). This also proves its
+positivity.
+
+\textbf{Solution 2.} The factorial valuation argument in Section 6
+proves \(V(N)\mid\binom N{\lfloor N/2\rfloor}V(\lceil N/2\rceil)\),
+hence \(V(N)\le8^N\). Split the interval LCM into primes \(p\le k\) and
+\(p>k\). An interval of length \(k\) contains a multiple of every prime
+power at most \(k\), so \(V(k)\) divides its small-prime part. Any extra
+power is at most \(pN/k\), where \(N=x+k\); thus that part is at most
+\(64^k(N/k)^k\). A prime \(p>k\) has at most one multiple in the
+interval, so the large-prime part divides the product of the interval
+divided by \(k!\), namely \(\binom Nk\le(eN/k)^k\). Multiplication gives
+\((64e)^k(N/k)^{2k}\le(16N/k)^{2k}\). Both uses of the interval length
+are essential. This proves the assigned bound with \(c=16\), including
+\(k=1\).
+
+\textbf{Solution 3.} For \(m=0\), \(P\) and the lower-degree monomials
+are independent by their leading coefficients. For degree \(1\) and
+\(m=1\), the difference \(P(X)-P(X+1)\) is a nonzero constant, so the
+two translates are independent.
+
+Assume the result for degree \(n-1\), and take \(1\le m\le n\). Suppose
+\[
+R(X)=\sum_{j=0}^m A_jP(X+j)
+\] has degree at most \(n-m-1\), where a bound of \(-1\) means the zero
+polynomial. Its leading coefficient gives \(\sum_jA_j=0\). Put
+\(C_j=A_0+\cdots+A_j\). Telescoping gives the exact identity \[
+R(X)=\left(\sum_{j=0}^mA_j\right)P(X+m)
++\sum_{j=0}^{m-1}C_j\bigl(P(X+j)-P(X+j+1)\bigr).
+\] Since \(Q(X)=P(X)-P(X+1)\) has degree \(n-1\) in characteristic zero,
+the induction hypothesis with parameter \(m-1\) says that its \(m\)
+translates, together with the monomials up to degree \(n-m-1\), are
+independent. Therefore every \(C_j=0\). Successive differences give
+\(A_0=\cdots=A_{m-1}=0\), and the vanishing total gives \(A_m=0\). When
+\(m=n\), the induction uses no lower-degree monomials and the same
+argument works.
+
+\textbf{Solution 4.} Write \(a=w_0,\ b=w_1\), and factor \(a\) from
+column 2 and \(b\) from column 4. The remaining matrix has columns \[
+C(a),\ C'(a),\ C(b),\ C'(b),\qquad
+C(z)=(1,z,z^2,z^3)^{\mathsf T}.
+\] Set \(\delta=b-a\), and use \[
+C(b)=C(a)+\delta C'(a)+\frac{\delta^2}{2}C''(a)
++\frac{\delta^3}{6}C'''(a),
+\] \[
+C'(b)=C'(a)+\delta C''(a)+\frac{\delta^2}{2}C'''(a).
+\] Subtract \(C(a)+\delta C'(a)\) from the third column and \(C'(a)\)
+from the fourth. In the last two columns, the coefficient determinant
+relative to \(C''(a),C'''(a)\) is \[
+\det\begin{pmatrix}\delta^2/2&\delta\\
+\delta^3/6&\delta^2/2\end{pmatrix}
+=\delta^4/12.
+\] Meanwhile \(\det[C(a),C'(a),C''(a),C'''(a)]=1\cdot1\cdot2\cdot6=12\),
+since its matrix is triangular. The remaining determinant is
+\(\delta^4\), and restoring the factors gives \(ab(b-a)^4\). For
+\(a=2,b=3\), the original rows are \[
+(1,0,1,0),\ (2,2,3,3),\ (4,8,9,18),\ (8,24,27,81),
+\] and the formula gives \(6\).
+
+\textbf{Solution 5.} At \(x=1\) the normalized derivatives are
+\(9,15,37/4,5/2,1/4\), followed by zeros. The interval LCM is \(6\); its
+cleared values are integers by Lemma 4.3. The uniform LCM is \(V(2)=2\),
+and the cleared values are \(9,30,37,20,4\). Thus the same derivatives
+admit the smaller denominator \(2^m\). Write \(x=-1+t\). Then \[
+\Delta(-1+t;2)^2=\tfrac14t^2(1+t)^2
+=\tfrac14t^2+\tfrac12t^3+\tfrac14t^4.
+\] Its normalized derivatives at \(-1\) are the coefficients
+\(0,0,1/4,1/2,1/4\), so multiplication by \(2^m\) gives \(0,0,1,4,4\).
+The first two entries vanish even though their orders are at most the
+polynomial degree. Lemma 4.3 did not assert positivity at negative
+points; Lemma 4.7 proves integer-valued cleared derivatives there
+directly by prime valuations.
+
+\textbf{Solution 6.} Write \(\beta_j=p_j/q_j\) and \(\beta_n=p_n/q_n\)
+in lowest terms, with positive denominators and \(p_n\ne0\). All
+numerator and denominator absolute values are at most \(B\). The
+unreduced fraction for \(-\beta_j/\beta_n\) has numerator \(-p_jq_n\)
+and denominator \(q_jp_n\), each of absolute value at most \(B^2\).
+Reduction cannot increase either, proving the height bound. Also
+\(|\beta_n|=|p_n|/q_n\ge1/B\). Therefore \[
+|\Lambda|=|\beta_n||\Lambda_*|
+>B^{-1}(B^2)^{-C_*}=B^{-(1+2C_*)}.
+\] At \(d=1\), Lemma 4.8 has \(r=4\), \(K_d=2\), and exponent
+\(1+5C_*\). The sharper rational calculation avoids the deliberately
+coarse general compositum and conjugate bounds. Both estimates are
+uniform in the same variable \(B\).
+
+\subsection{Prerequisites and
+continuation}\label{prerequisites-and-continuation}
+
+Theorem 4.1 is stated here and fully proved in
+\href{../TR-BAKER-05.html}{\emph{Effective lower bounds II: proof of
+Baker's theorem}}. Every arithmetic tool used to prepare that proof has
+been proved above. The existing \emph{Number fields} lesson supplies the
+elementary algebraic-integer criterion at exactly the required
+generality. The later many-logarithm lesson owns the modern quantitative
+refinements; the brief historical discussion above supplies neither a
+substitute proof nor an additional prerequisite for the next lesson.
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}Waldschmidt 2000{]} Michel Waldschmidt, \emph{Diophantine
+  Approximation on Linear Algebraic Groups}, Springer, 2000.
+  \href{https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf}{Author's
+  full text}. Effective homogeneous and nonhomogeneous estimates,
+  integer-valued polynomial bases and Matveev's derivative-denominator
+  method.
+\item
+  {[}Waldschmidt 2003{]} Michel Waldschmidt, ``Linear Independence
+  Measures for Logarithms of Algebraic Numbers,'' in \emph{Diophantine
+  Approximation}, Lecture Notes in Mathematics 1819, Springer, 2003,
+  249--344.
+  \href{https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SpringerLN1819-2003.pdf}{Author's
+  full text}. Baker's auxiliary-function method, normalized derivations
+  and quantitative extrapolation.
+\end{itemize}
+
+\subsection{Editable source}\label{editable-source}
+
+\href{TR-BAKER-04.md}{Markdown source}.
+
+\end{document}

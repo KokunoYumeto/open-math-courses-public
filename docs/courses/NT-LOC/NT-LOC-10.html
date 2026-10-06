@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herbrand&#x27;s function and the upper numbering · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-10.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="herbrand-s-function-and-the-upper-numbering">Herbrand's function and the upper numbering</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>Lower ramification numbers measure motion in the upper field's normalized valuation. They behave well when we restrict to a subgroup. Passing to a quotient changes that upper field and its valuation scale, so the same indices no longer work. Herbrand's function makes the required change of variable. The resulting upper numbering is compatible with every Galois quotient and therefore with infinite Galois extensions.</p>
+<p>Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois, with both fields nonarchimedean local fields in either characteristic, and put <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>. We use the results of <strong>Ramification groups and the different of a local extension</strong>:
+<span class="math math-display" data-tex="\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),
+\quad
+G_i=\{\sigma:i_G(\sigma)\geq i+1\},
+\quad
+G_u=G_{\lceil u\rceil}\quad(u\geq-1).
+\]">\[
+i_G(\sigma)=\min_{x\in\mathcal O_L}v_L(\sigma x-x),
+\quad
+G_i=\{\sigma:i_G(\sigma)\geq i+1\},
+\quad
+G_u=G_{\lceil u\rceil}\quad(u\geq-1).
+\]</span>
+Here <span class="math" data-tex="\(v_L\)">\(v_L\)</span> is normalized to have value group <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, and <span class="math" data-tex="\(i_G(1)=+\infty\)">\(i_G(1)=+\infty\)</span>. In particular <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is inertia and <span class="math" data-tex="\(e=|G_0|\)">\(e=|G_0|\)</span>.</p>
+<h2 id="1-rescaling-the-lower-index">1. Rescaling the lower index</h2>
+<p>Define
+<span class="math math-display" data-tex="\[
+\varphi_{L/K}(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq0,\\
+\displaystyle\int_0^u\frac{|G_t|}{|G_0|}\,dt,&amp;u\geq0.
+\end{cases}
+\tag{1.1}
+\]">\[
+\varphi_{L/K}(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq0,\\
+\displaystyle\int_0^u\frac{|G_t|}{|G_0|}\,dt,&amp;u\geq0.
+\end{cases}
+\tag{1.1}
+\]</span>
+Write <span class="math" data-tex="\(\psi_{L/K}\)">\(\psi_{L/K}\)</span> for its inverse.</p>
+<p><strong>Proposition 1.1.</strong> The function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is a continuous, strictly increasing, piecewise linear, concave bijection from <span class="math" data-tex="\([-1,\infty)\)">\([-1,\infty)\)</span> to itself. Its inverse <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is continuous, strictly increasing, piecewise linear and convex. For every <span class="math" data-tex="\(u\geq-1\)">\(u\geq-1\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi_{L/K}(u)
+=\frac1e\sum_{\sigma\in G}\min\{i_G(\sigma),u+1\}-1.
+\tag{1.2}
+\]">\[
+\varphi_{L/K}(u)
+=\frac1e\sum_{\sigma\in G}\min\{i_G(\sigma),u+1\}-1.
+\tag{1.2}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the integrand is a positive step function. Its values decrease as the lower groups decrease, and lie between <span class="math" data-tex="\(1/e\)">\(1/e\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. Thus the integral is continuous, strictly increasing and piecewise linear, with nonincreasing slopes. It joins the slope-one segment on <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span>, so is concave on the whole domain. It tends to infinity because its slope is at least <span class="math" data-tex="\(1/e\)">\(1/e\)</span>. This proves bijectivity; inverting each linear segment proves the assertions about <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p>For (1.2), denote its right side by <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span>. A noninertial automorphism has <span class="math" data-tex="\(i_G(\sigma)=0\)">\(i_G(\sigma)=0\)</span>, and every inertial one has <span class="math" data-tex="\(i_G(\sigma)\geq1\)">\(i_G(\sigma)\geq1\)</span>. Hence on <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> the sum is <span class="math" data-tex="\(e(u+1)\)">\(e(u+1)\)</span>, giving <span class="math" data-tex="\(F(u)=u\)">\(F(u)=u\)</span>. Both <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> are continuous and piecewise linear. If <span class="math" data-tex="\(m&lt;u&lt;m+1\)">\(m&lt;u&lt;m+1\)</span>, with integral <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, the terms of <span class="math" data-tex="\(F\)">\(F\)</span> with positive slope are exactly those with
+<span class="math math-display" data-tex="\[
+i_G(\sigma)\geq m+2,
+\]">\[
+i_G(\sigma)\geq m+2,
+\]</span>
+because the finite motion numbers are integers. There are <span class="math" data-tex="\(|G_{m+1}|\)">\(|G_{m+1}|\)</span> such terms, including identity. Thus
+<span class="math" data-tex="\(F&#x27;(u)=|G_{m+1}|/e=\varphi&#x27;(u)\)">\(F&#x27;(u)=|G_{m+1}|/e=\varphi&#x27;(u)\)</span>.
+Equality at zero and equality of slopes on every open segment prove (1.2), including all endpoints. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <strong>upper ramification groups</strong> are
+<span class="math math-display" data-tex="\[
+G^v=G_{\psi_{L/K}(v)}\qquad(v\geq-1).
+\tag{1.3}
+\]">\[
+G^v=G_{\psi_{L/K}(v)}\qquad(v\geq-1).
+\tag{1.3}
+\]</span>
+If <span class="math" data-tex="\(b\)">\(b\)</span> is a lower jump, the corresponding upper jump is <span class="math" data-tex="\(\varphi(b)\)">\(\varphi(b)\)</span>. Our groups retain their value at the jump and decrease immediately after it.</p>
+<p>For any finite tame Galois extension, put <span class="math" data-tex="\(e=|G_0|\)">\(e=|G_0|\)</span>. Every positive lower group is trivial, so
+<span class="math math-display" data-tex="\[
+\varphi(u)=u/e,\quad\psi(v)=ev\qquad(u,v\geq0).
+\tag{1.4}
+\]">\[
+\varphi(u)=u/e,\quad\psi(v)=ev\qquad(u,v\geq0).
+\tag{1.4}
+\]</span>
+The upper groups are <span class="math" data-tex="\(G\)">\(G\)</span> at <span class="math" data-tex="\(v=-1\)">\(v=-1\)</span>, inertia <span class="math" data-tex="\(G_0\)">\(G_0\)</span> on <span class="math" data-tex="\(-1&lt;v\leq0\)">\(-1&lt;v\leq0\)</span>, and identity for <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>. Consequently <span class="math" data-tex="\(-1\)">\(-1\)</span> is a jump exactly when the residue degree <span class="math" data-tex="\(f&gt;1\)">\(f&gt;1\)</span>, and zero is a jump exactly when <span class="math" data-tex="\(e&gt;1\)">\(e&gt;1\)</span>. The formula includes unramified extensions and the trivial extension.</p>
+<h2 id="2-a-quotient-averages-motion-over-its-fibers">2. A quotient averages motion over its fibers</h2>
+<p>Let <span class="math" data-tex="\(H\triangleleft G\)">\(H\triangleleft G\)</span>, put <span class="math" data-tex="\(L&#x27;=L^H\)">\(L&#x27;=L^H\)</span>, and write <span class="math" data-tex="\(Q=G/H=\operatorname{Gal}(L&#x27;/K)\)">\(Q=G/H=\operatorname{Gal}(L&#x27;/K)\)</span>. Set <span class="math" data-tex="\(e_H=e(L/L&#x27;)=|H_0|\)">\(e_H=e(L/L&#x27;)=|H_0|\)</span>.</p>
+<p><strong>Lemma 2.1 (coset motion formula).</strong> For <span class="math" data-tex="\(s\in Q\)">\(s\in Q\)</span>,
+<span class="math math-display" data-tex="\[
+i_Q(s)=\frac1{e_H}\sum_{\sigma\mapsto s}i_G(\sigma).
+\tag{2.1}
+\]">\[
+i_Q(s)=\frac1{e_H}\sum_{\sigma\mapsto s}i_G(\sigma).
+\tag{2.1}
+\]</span>
+For <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, both sides are <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>.</p>
+<p><em>Proof.</em> Choose integral generators <span class="math" data-tex="\(\mathcal O_L=\mathcal O_K[\alpha]\)">\(\mathcal O_L=\mathcal O_K[\alpha]\)</span> and <span class="math" data-tex="\(\mathcal O_{L&#x27;}=\mathcal O_K[\beta]\)">\(\mathcal O_{L&#x27;}=\mathcal O_K[\beta]\)</span>. Then also <span class="math" data-tex="\(\mathcal O_L=\mathcal O_{L&#x27;}[\alpha]\)">\(\mathcal O_L=\mathcal O_{L&#x27;}[\alpha]\)</span>. Let <span class="math" data-tex="\(f\in\mathcal O_{L&#x27;}[X]\)">\(f\in\mathcal O_{L&#x27;}[X]\)</span> be the monic minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> over <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span>. Fix a lift <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of a nonidentity <span class="math" data-tex="\(s\)">\(s\)</span>. Put
+<span class="math math-display" data-tex="\[
+a=s\beta-\beta,\qquad
+b=(\sigma f)(\alpha)
+ =\prod_{h\in H}(\alpha-\sigma h\alpha).
+\]">\[
+a=s\beta-\beta,\qquad
+b=(\sigma f)(\alpha)
+ =\prod_{h\in H}(\alpha-\sigma h\alpha).
+\]</span>
+We show that <span class="math" data-tex="\(a,b\)">\(a,b\)</span> generate the same ideal in <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>.</p>
+<p>Each coefficient <span class="math" data-tex="\(c\)">\(c\)</span> of <span class="math" data-tex="\(f\)">\(f\)</span> is a polynomial in <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with coefficients in <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>. The difference <span class="math" data-tex="\(sc-c\)">\(sc-c\)</span> is therefore divisible by <span class="math" data-tex="\(a\)">\(a\)</span>. As <span class="math" data-tex="\(f(\alpha)=0\)">\(f(\alpha)=0\)</span>, this proves that
+<span class="math" data-tex="\(b=(\sigma f-f)(\alpha)\)">\(b=(\sigma f-f)(\alpha)\)</span> is divisible by <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>Conversely, write <span class="math" data-tex="\(\beta=P(\alpha)\)">\(\beta=P(\alpha)\)</span>, with <span class="math" data-tex="\(P\in\mathcal O_K[X]\)">\(P\in\mathcal O_K[X]\)</span>. Divide <span class="math" data-tex="\(P(X)-\beta\)">\(P(X)-\beta\)</span> by the monic <span class="math" data-tex="\(f\)">\(f\)</span>; the remainder has degree less than <span class="math" data-tex="\(\deg f\)">\(\deg f\)</span> and vanishes at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, so it is zero. Thus
+<span class="math math-display" data-tex="\[
+P(X)-\beta=f(X)R(X),\qquad R\in\mathcal O_{L&#x27;}[X].
+\]">\[
+P(X)-\beta=f(X)R(X),\qquad R\in\mathcal O_{L&#x27;}[X].
+\]</span>
+Apply <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> to coefficients and evaluate at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The left side is <span class="math" data-tex="\(\beta-s\beta=-a\)">\(\beta-s\beta=-a\)</span>; the right side is <span class="math" data-tex="\(b(\sigma R)(\alpha)\)">\(b(\sigma R)(\alpha)\)</span>. Hence <span class="math" data-tex="\(a\)">\(a\)</span> is divisible by <span class="math" data-tex="\(b\)">\(b\)</span>. Neither is zero, since <span class="math" data-tex="\(s\ne1\)">\(s\ne1\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> generates <span class="math" data-tex="\(L\)">\(L\)</span>. Their equal values now give
+<span class="math math-display" data-tex="\[
+e_H i_Q(s)
+=v_L(s\beta-\beta)
+=\sum_{h\in H}v_L(\alpha-\sigma h\alpha)
+=\sum_{\sigma&#x27;\mapsto s}i_G(\sigma&#x27;).
+\]">\[
+e_H i_Q(s)
+=v_L(s\beta-\beta)
+=\sum_{h\in H}v_L(\alpha-\sigma h\alpha)
+=\sum_{\sigma&#x27;\mapsto s}i_G(\sigma&#x27;).
+\]</span>
+The first equality uses <span class="math" data-tex="\(v_L|_{L&#x27;}=e_H v_{L&#x27;}\)">\(v_L|_{L&#x27;}=e_H v_{L&#x27;}\)</span>. If <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, the fiber contains identity, so the sum and <span class="math" data-tex="\(i_Q(1)\)">\(i_Q(1)\)</span> are both infinite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This identity includes the ramification scale <span class="math" data-tex="\(e_H\)">\(e_H\)</span>, even when the intermediate extension has a nontrivial unramified part.</p>
+<h2 id="3-herbrand-s-theorem">3. Herbrand's theorem</h2>
+<p><strong>Theorem 3.1 (quotients and towers).</strong> For <span class="math" data-tex="\(u\geq-1\)">\(u\geq-1\)</span>,
+<span class="math math-display" data-tex="\[
+G_uH/H=Q_{\varphi_{L/L&#x27;}(u)}.
+\tag{3.1}
+\]">\[
+G_uH/H=Q_{\varphi_{L/L&#x27;}(u)}.
+\tag{3.1}
+\]</span>
+The functions satisfy
+<span class="math math-display" data-tex="\[
+\varphi_{L/K}=\varphi_{L&#x27;/K}\circ\varphi_{L/L&#x27;},
+\qquad
+\psi_{L/K}=\psi_{L/L&#x27;}\circ\psi_{L&#x27;/K}.
+\tag{3.2}
+\]">\[
+\varphi_{L/K}=\varphi_{L&#x27;/K}\circ\varphi_{L/L&#x27;},
+\qquad
+\psi_{L/K}=\psi_{L/L&#x27;}\circ\psi_{L&#x27;/K}.
+\tag{3.2}
+\]</span>
+Consequently, for every <span class="math" data-tex="\(v\geq-1\)">\(v\geq-1\)</span>,
+<span class="math math-display" data-tex="\[
+G^vH/H=Q^v.
+\tag{3.3}
+\]">\[
+G^vH/H=Q^v.
+\tag{3.3}
+\]</span></p>
+<p><em>Proof.</em> First observe that
+<span class="math math-display" data-tex="\[
+i_G(\sigma\tau)\geq\min\{i_G(\sigma),i_G(\tau)\},
+\tag{3.4}
+\]">\[
+i_G(\sigma\tau)\geq\min\{i_G(\sigma),i_G(\tau)\},
+\tag{3.4}
+\]</span>
+with equality if the two finite motion numbers differ. To check this, apply
+<span class="math" data-tex="\(\sigma\tau\alpha-\alpha=\sigma(\tau\alpha-\alpha)+(\sigma\alpha-\alpha)\)">\(\sigma\tau\alpha-\alpha=\sigma(\tau\alpha-\alpha)+(\sigma\alpha-\alpha)\)</span>.
+The two summands have the stated values, and unequal values cannot cancel.</p>
+<p>For a nonidentity coset <span class="math" data-tex="\(s\in Q\)">\(s\in Q\)</span>, choose a lift <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> whose motion number <span class="math" data-tex="\(m=i_G(\sigma)\)">\(m=i_G(\sigma)\)</span> is maximal among that finite fiber. For each <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, (3.4) gives
+<span class="math math-display" data-tex="\[
+i_G(\sigma h)=\min\{m,i_G(h)\}.
+\tag{3.5}
+\]">\[
+i_G(\sigma h)=\min\{m,i_G(h)\}.
+\tag{3.5}
+\]</span>
+Indeed, if <span class="math" data-tex="\(i_G(h)&lt;m\)">\(i_G(h)&lt;m\)</span>, equality follows from unequal values. If <span class="math" data-tex="\(i_G(h)\geq m\)">\(i_G(h)\geq m\)</span>, the value is at least <span class="math" data-tex="\(m\)">\(m\)</span> and cannot exceed <span class="math" data-tex="\(m\)">\(m\)</span> by maximality.</p>
+<p>Lower numbering respects subgroups, so <span class="math" data-tex="\(i_H(h)=i_G(h)\)">\(i_H(h)=i_G(h)\)</span>. Lemma 2.1 and (1.2) applied to <span class="math" data-tex="\(L/L&#x27;\)">\(L/L&#x27;\)</span> therefore give
+<span class="math math-display" data-tex="\[
+i_Q(s)-1
+=\frac1{e_H}\sum_{h\in H}\min\{m,i_H(h)\}-1
+=\varphi_{L/L&#x27;}(m-1).
+\tag{3.6}
+\]">\[
+i_Q(s)-1
+=\frac1{e_H}\sum_{h\in H}\min\{m,i_H(h)\}-1
+=\varphi_{L/L&#x27;}(m-1).
+\tag{3.6}
+\]</span>
+Here <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, so <span class="math" data-tex="\(m-1\geq-1\)">\(m-1\geq-1\)</span> is in the domain.</p>
+<p>The coset <span class="math" data-tex="\(s\)">\(s\)</span> occurs in <span class="math" data-tex="\(G_uH/H\)">\(G_uH/H\)</span> exactly when its maximal motion number satisfies <span class="math" data-tex="\(m-1\geq u\)">\(m-1\geq u\)</span>. Strict increase of <span class="math" data-tex="\(\varphi_{L/L&#x27;}\)">\(\varphi_{L/L&#x27;}\)</span> and (3.6) make this equivalent to
+<span class="math" data-tex="\(i_Q(s)-1\geq\varphi_{L/L&#x27;}(u)\)">\(i_Q(s)-1\geq\varphi_{L/L&#x27;}(u)\)</span>, precisely membership in the right side of (3.1). Identity belongs to both sides. This proves (3.1), including real indices and their endpoints.</p>
+<p>Let <span class="math" data-tex="\(t=\varphi_{L/L&#x27;}(u)\)">\(t=\varphi_{L/L&#x27;}(u)\)</span>. The kernel on <span class="math" data-tex="\(G_u\)">\(G_u\)</span> is <span class="math" data-tex="\(H_u\)">\(H_u\)</span>, so (3.1) yields
+<span class="math math-display" data-tex="\[
+|G_u|=|H_u|\,|Q_t|.
+\tag{3.7}
+\]">\[
+|G_u|=|H_u|\,|Q_t|.
+\tag{3.7}
+\]</span>
+Ramification indices multiply in towers: <span class="math" data-tex="\(e_G=e_H e_Q\)">\(e_G=e_H e_Q\)</span>. Away from the finitely many breakpoints on any bounded interval, (3.7) gives
+<span class="math math-display" data-tex="\[
+\varphi&#x27;_{L/K}(u)
+=\frac{|G_u|}{e_G}
+=\frac{|H_u|}{e_H}\frac{|Q_t|}{e_Q}
+=\bigl(\varphi_{L&#x27;/K}\circ\varphi_{L/L&#x27;}\bigr)&#x27;(u).
+\]">\[
+\varphi&#x27;_{L/K}(u)
+=\frac{|G_u|}{e_G}
+=\frac{|H_u|}{e_H}\frac{|Q_t|}{e_Q}
+=\bigl(\varphi_{L&#x27;/K}\circ\varphi_{L/L&#x27;}\bigr)&#x27;(u).
+\]</span>
+For negative indices all functions are identity. For nonnegative indices the two continuous piecewise linear functions agree at zero and on the slope of every common linear segment. This proves the first formula in (3.2); inversion gives the second.</p>
+<p>Finally choose <span class="math" data-tex="\(u=\psi_{L/K}(v)\)">\(u=\psi_{L/K}(v)\)</span>. Equation (3.2) says that <span class="math" data-tex="\(\varphi_{L/L&#x27;}(u)=\psi_{L&#x27;/K}(v)\)">\(\varphi_{L/L&#x27;}(u)=\psi_{L&#x27;/K}(v)\)</span>. Substitution into (3.1) gives (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The order of composition in (3.2) is essential. The first rescaling removes the upper extension <span class="math" data-tex="\(L/L&#x27;\)">\(L/L&#x27;\)</span>; the second removes <span class="math" data-tex="\(L&#x27;/K\)">\(L&#x27;/K\)</span>. Inverse rescalings act in the reverse order.</p>
+<h2 id="4-infinite-galois-extensions">4. Infinite Galois extensions</h2>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(M/K\)">\(M/K\)</span> be an algebraic Galois extension, possibly infinite. For real <span class="math" data-tex="\(v\geq-1\)">\(v\geq-1\)</span>, define
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(M/K)^v
+=\{\sigma : \sigma|_L\in\operatorname{Gal}(L/K)^v
+       \text{ for every finite Galois }L/K\text{ in }M\}.
+\tag{4.1}
+\]">\[
+\operatorname{Gal}(M/K)^v
+=\{\sigma : \sigma|_L\in\operatorname{Gal}(L/K)^v
+       \text{ for every finite Galois }L/K\text{ in }M\}.
+\tag{4.1}
+\]</span>
+These are closed normal decreasing subgroups, and
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(M/K)^v
+\simeq\varprojlim_L\operatorname{Gal}(L/K)^v.
+\tag{4.2}
+\]">\[
+\operatorname{Gal}(M/K)^v
+\simeq\varprojlim_L\operatorname{Gal}(L/K)^v.
+\tag{4.2}
+\]</span>
+Restriction onto each finite upper group is surjective. A cofinal family of finite Galois subextensions gives the same groups.</p>
+<p><em>Proof.</em> Finite Galois subextensions form a directed system under compositum. The finite quotient theorem says that restriction between their upper groups at this fixed <span class="math" data-tex="\(v\)">\(v\)</span> is surjective. Thus they form an inverse system of finite groups.</p>
+<p>The usual Galois inverse-limit identification turns (4.1) exactly into (4.2). Each condition in (4.1) is the inverse image of a normal subgroup in a finite discrete group, so is closed and normal. Intersections preserve these properties; decrease follows at every finite level.</p>
+<p>For surjectivity onto one finite level, fix an element of its upper group. In the product of the finite groups, impose compatibility and that fixed coordinate. Every finite set of these conditions can be solved at a common larger finite Galois level, using the surjective restriction maps. They are closed conditions in a compact product of finite spaces. The finite intersection property gives a compatible point solving all of them. This proves surjectivity.</p>
+<p>A cofinal family determines all other coordinates by restriction; Herbrand's theorem carries its upper-group conditions down to every smaller level. Conversely any full inverse-limit element satisfies the cofinal conditions. Hence the choice of cofinal family changes nothing. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This definition concerns the algebraic extension <span class="math" data-tex="\(M\)">\(M\)</span>. It does not replace <span class="math" data-tex="\(M\)">\(M\)</span> by its valuation completion.</p>
+<p><strong>Hasse–Arf theorem.</strong> For a finite abelian extension of local fields, every upper jump is an integer. Here a jump <span class="math" data-tex="\(v\)">\(v\)</span> means <span class="math" data-tex="\(G^v\ne G^{v+\epsilon}\)">\(G^v\ne G^{v+\epsilon}\)</span> for every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. It is Corollary 10.3 of <a href="../NT-CFT/abelian-ramification-conductors-and-hasse-arf.html#corollary-10-3-hasse-arf"><strong>Abelian ramification, conductors and Hasse–Arf</strong></a> in <em>Class field theory</em>, proved there from local reciprocity. The quotient theorem proved above does not require Hasse–Arf. Section 7 gives a nonabelian jump at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<h2 id="5-cyclotomic-upper-numbering">5. Cyclotomic upper numbering</h2>
+<p>Let <span class="math" data-tex="\(L_n=\mathbf Q_p(\zeta_{p^n})\)">\(L_n=\mathbf Q_p(\zeta_{p^n})\)</span> and <span class="math" data-tex="\(G_n=(\mathbf Z/p^n\mathbf Z)^\times\)">\(G_n=(\mathbf Z/p^n\mathbf Z)^\times\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> For <span class="math" data-tex="\(-1\leq v\leq0\)">\(-1\leq v\leq0\)</span>, <span class="math" data-tex="\(G_n^v=G_n\)">\(G_n^v=G_n\)</span>. For <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+G_n^v=
+\{a\in G_n:a\equiv1\pmod{p^{\lceil v\rceil}}\}.
+\tag{5.1}
+\]">\[
+G_n^v=
+\{a\in G_n:a\equiv1\pmod{p^{\lceil v\rceil}}\}.
+\tag{5.1}
+\]</span>
+A congruence exponent at least <span class="math" data-tex="\(n\)">\(n\)</span> means the trivial subgroup. The positive upper jumps are exactly <span class="math" data-tex="\(1,\ldots,n-1\)">\(1,\ldots,n-1\)</span>. Zero is also a jump when <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, and is not a jump when <span class="math" data-tex="\(p=2\)">\(p=2\)</span>.</p>
+<p>For <span class="math" data-tex="\(L_\infty=\bigcup_n L_n\)">\(L_\infty=\bigcup_n L_n\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(L_\infty/\mathbf Q_p)=\mathbf Z_p^\times,
+\qquad
+\operatorname{Gal}(L_\infty/\mathbf Q_p)^v
+=1+p^{\lceil v\rceil}\mathbf Z_p\quad(v&gt;0),
+\tag{5.2}
+\]">\[
+\operatorname{Gal}(L_\infty/\mathbf Q_p)=\mathbf Z_p^\times,
+\qquad
+\operatorname{Gal}(L_\infty/\mathbf Q_p)^v
+=1+p^{\lceil v\rceil}\mathbf Z_p\quad(v&gt;0),
+\tag{5.2}
+\]</span>
+with the full group for <span class="math" data-tex="\(-1\leq v\leq0\)">\(-1\leq v\leq0\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(b_k=p^k-1\)">\(b_k=p^k-1\)</span>, so <span class="math" data-tex="\(b_0=0\)">\(b_0=0\)</span>, and <span class="math" data-tex="\(N=(p-1)p^{n-1}\)">\(N=(p-1)p^{n-1}\)</span>. The lower computation in <strong>Ramification groups and the different of a local extension</strong> gives, for <span class="math" data-tex="\(1\leq k&lt;n\)">\(1\leq k&lt;n\)</span>, a group of order <span class="math" data-tex="\(p^{n-k}\)">\(p^{n-k}\)</span> on
+<span class="math math-display" data-tex="\[
+b_{k-1}&lt;u\leq b_k.
+\]">\[
+b_{k-1}&lt;u\leq b_k.
+\]</span>
+The slope of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> there is
+<span class="math math-display" data-tex="\[
+\frac{p^{n-k}}N=\frac1{(p-1)p^{k-1}},
+\]">\[
+\frac{p^{n-k}}N=\frac1{(p-1)p^{k-1}},
+\]</span>
+and the interval length is <span class="math" data-tex="\((p-1)p^{k-1}\)">\((p-1)p^{k-1}\)</span>. Each interval therefore contributes exactly <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Thus <span class="math" data-tex="\(\varphi(b_k)=k\)">\(\varphi(b_k)=k\)</span>, with
+<span class="math math-display" data-tex="\[
+\varphi(u)=
+(k-1)+\frac{u-b_{k-1}}{(p-1)p^{k-1}}
+\quad(b_{k-1}\leq u\leq b_k).
+\tag{5.3}
+\]">\[
+\varphi(u)=
+(k-1)+\frac{u-b_{k-1}}{(p-1)p^{k-1}}
+\quad(b_{k-1}\leq u\leq b_k).
+\tag{5.3}
+\]</span>
+Beyond the last lower break,
+<span class="math math-display" data-tex="\[
+\varphi(u)=n-1+\frac{u-b_{n-1}}N.
+\tag{5.4}
+\]">\[
+\varphi(u)=n-1+\frac{u-b_{n-1}}N.
+\tag{5.4}
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, (5.4) is the entire nonnegative formula.</p>
+<p>These linear changes carry the lower congruence subgroup of level <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(k-1&lt;v\leq k\)">\(k-1&lt;v\leq k\)</span>. That is (5.1), including the jump endpoints. Consecutive positive congruence groups have index <span class="math" data-tex="\(p\)">\(p\)</span> until they become trivial. At zero the quotient has order <span class="math" data-tex="\(p-1\)">\(p-1\)</span>, so a jump is present exactly when <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>. This also covers the trivial <span class="math" data-tex="\(p=2,n=1\)">\(p=2,n=1\)</span> extension.</p>
+<p>At finite levels the automorphisms are compatible unit exponents modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. Their inverse limit is <span class="math" data-tex="\(\mathbf Z_p^\times\)">\(\mathbf Z_p^\times\)</span>. For fixed <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, the conditions (5.1) at all levels say exactly that this unit is <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(p^{\lceil v\rceil}\)">\(p^{\lceil v\rceil}\)</span>. Proposition 4.1 then gives (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-two-quadratic-rescalings">6. Two quadratic rescalings</h2>
+<p><strong>Example 6.1.</strong> For <span class="math" data-tex="\(\mathbf Q_2(i)/\mathbf Q_2\)">\(\mathbf Q_2(i)/\mathbf Q_2\)</span>, the lower groups are <span class="math" data-tex="\(G_0=G_1=G\)">\(G_0=G_1=G\)</span>, followed by identity. Hence
+<span class="math math-display" data-tex="\[
+\varphi(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq1,\\
+1+(u-1)/2,&amp;u\geq1,
+\end{cases}
+\qquad
+\psi(v)=
+\begin{cases}
+v,&amp;-1\leq v\leq1,\\
+1+2(v-1),&amp;v\geq1.
+\end{cases}
+\]">\[
+\varphi(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq1,\\
+1+(u-1)/2,&amp;u\geq1,
+\end{cases}
+\qquad
+\psi(v)=
+\begin{cases}
+v,&amp;-1\leq v\leq1,\\
+1+2(v-1),&amp;v\geq1.
+\end{cases}
+\]</span>
+The upper group is the order-two group through <span class="math" data-tex="\(v=1\)">\(v=1\)</span>, and trivial for <span class="math" data-tex="\(v&gt;1\)">\(v&gt;1\)</span>.</p>
+<p><strong>Example 6.2.</strong> For <span class="math" data-tex="\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)">\(\mathbf Q_2(\sqrt2)/\mathbf Q_2\)</span>, the lower group remains the order-two group through index <span class="math" data-tex="\(2\)">\(2\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\varphi(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq2,\\
+2+(u-2)/2,&amp;u\geq2,
+\end{cases}
+\qquad
+\psi(v)=
+\begin{cases}
+v,&amp;-1\leq v\leq2,\\
+2+2(v-2),&amp;v\geq2.
+\end{cases}
+\]">\[
+\varphi(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq2,\\
+2+(u-2)/2,&amp;u\geq2,
+\end{cases}
+\qquad
+\psi(v)=
+\begin{cases}
+v,&amp;-1\leq v\leq2,\\
+2+2(v-2),&amp;v\geq2.
+\end{cases}
+\]</span>
+Its unique upper jump is <span class="math" data-tex="\(2\)">\(2\)</span>. Both examples satisfy the integral-jump conclusion of Hasse–Arf.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li>
+<p>Compute <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and the upper groups for <span class="math" data-tex="\(\mathbf Q_2(i)/\mathbf Q_2\)">\(\mathbf Q_2(i)/\mathbf Q_2\)</span>.</p>
+</li>
+<li>
+<p>Prove the closed formula (1.2), including negative indices and jump endpoints.</p>
+</li>
+<li>
+<p>Verify the quotient and tower formulas for
+<span class="math" data-tex="\(\mathbf Q_p(\zeta_{p^2})\supseteq\mathbf Q_p(\zeta_p)\supseteq\mathbf Q_p\)">\(\mathbf Q_p(\zeta_{p^2})\supseteq\mathbf Q_p(\zeta_p)\supseteq\mathbf Q_p\)</span>.</p>
+</li>
+<li>
+<p>Compute the lower and upper groups of the splitting field of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> over <span class="math" data-tex="\(\mathbf Q_3\)">\(\mathbf Q_3\)</span>. Prove its group is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, and check Herbrand's theorem on the quotient <span class="math" data-tex="\(\mathbf Q_3(\sqrt{-3})\)">\(\mathbf Q_3(\sqrt{-3})\)</span>.</p>
+</li>
+</ol>
+<h2 id="8-complete-solutions">8. Complete solutions</h2>
+<p><strong>Solution 1.</strong> The uniformizer <span class="math" data-tex="\(i-1\)">\(i-1\)</span> moves by <span class="math" data-tex="\(-2i\)">\(-2i\)</span> under conjugation, of normalized value <span class="math" data-tex="\(2\)">\(2\)</span>. Thus <span class="math" data-tex="\(G_u=G\)">\(G_u=G\)</span> for <span class="math" data-tex="\(-1\leq u\leq1\)">\(-1\leq u\leq1\)</span>, and <span class="math" data-tex="\(G_u=1\)">\(G_u=1\)</span> for <span class="math" data-tex="\(u&gt;1\)">\(u&gt;1\)</span>. The slope <span class="math" data-tex="\(|G_u|/|G_0|\)">\(|G_u|/|G_0|\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> up to <span class="math" data-tex="\(1\)">\(1\)</span>, then <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Integrating gives the formula in Example 6.1. Inversion doubles the distance beyond the break: <span class="math" data-tex="\(\psi(v)=1+2(v-1)\)">\(\psi(v)=1+2(v-1)\)</span> for <span class="math" data-tex="\(v\geq1\)">\(v\geq1\)</span>. Therefore <span class="math" data-tex="\(G^v=G\)">\(G^v=G\)</span> through <span class="math" data-tex="\(v=1\)">\(v=1\)</span>, followed by identity.</p>
+<p><strong>Solution 2.</strong> A noninertial automorphism has motion zero, while each of the <span class="math" data-tex="\(e\)">\(e\)</span> inertial automorphisms has motion at least one. For <span class="math" data-tex="\(-1\leq u\leq0\)">\(-1\leq u\leq0\)</span>, the capped sum in (1.2) is thus <span class="math" data-tex="\(e(u+1)\)">\(e(u+1)\)</span>, giving <span class="math" data-tex="\(u\)">\(u\)</span>. On an open positive interval <span class="math" data-tex="\(m&lt;u&lt;m+1\)">\(m&lt;u&lt;m+1\)</span>, its derivative counts exactly the motion numbers at least <span class="math" data-tex="\(m+2\)">\(m+2\)</span>. These are the elements of <span class="math" data-tex="\(G_{m+1}=G_u\)">\(G_{m+1}=G_u\)</span>, so the derivative is <span class="math" data-tex="\(|G_u|/e\)">\(|G_u|/e\)</span>. Both sides equal zero at zero and are continuous. Equality on each open linear segment therefore extends to every integer endpoint. Identity contributes the finite cap <span class="math" data-tex="\(u+1\)">\(u+1\)</span>, so its infinite motion number causes no divergent summand.</p>
+<p><strong>Solution 3.</strong> Write <span class="math" data-tex="\(L_2,L_1,K\)">\(L_2,L_1,K\)</span> for the three fields and <span class="math" data-tex="\(H=\operatorname{Gal}(L_2/L_1)\)">\(H=\operatorname{Gal}(L_2/L_1)\)</span>. Their degrees are <span class="math" data-tex="\(p(p-1),p-1,1\)">\(p(p-1),p-1,1\)</span>, so <span class="math" data-tex="\(H\)">\(H\)</span> has order <span class="math" data-tex="\(p\)">\(p\)</span>. The full lower groups of <span class="math" data-tex="\(L_2/K\)">\(L_2/K\)</span> are <span class="math" data-tex="\(G_0=G\)">\(G_0=G\)</span>, <span class="math" data-tex="\(G_i=H\)">\(G_i=H\)</span> for <span class="math" data-tex="\(1\leq i\leq p-1\)">\(1\leq i\leq p-1\)</span>, and identity for <span class="math" data-tex="\(i\geq p\)">\(i\geq p\)</span>. Subgroup intersection gives <span class="math" data-tex="\(H_i=H\)">\(H_i=H\)</span> through <span class="math" data-tex="\(i=p-1\)">\(i=p-1\)</span>, then identity. Thus, for <span class="math" data-tex="\(u\geq0\)">\(u\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+\varphi_{L_2/L_1}(u)=
+\begin{cases}
+u,&amp;u\leq p-1,\\
+p-1+(u-p+1)/p,&amp;u\geq p-1.
+\end{cases}
+\]">\[
+\varphi_{L_2/L_1}(u)=
+\begin{cases}
+u,&amp;u\leq p-1,\\
+p-1+(u-p+1)/p,&amp;u\geq p-1.
+\end{cases}
+\]</span>
+The tame quotient <span class="math" data-tex="\(L_1/K\)">\(L_1/K\)</span> has function <span class="math" data-tex="\(t/(p-1)\)">\(t/(p-1)\)</span>. Composing gives
+<span class="math math-display" data-tex="\[
+\varphi_{L_2/K}(u)=
+\begin{cases}
+u/(p-1),&amp;u\leq p-1,\\
+1+(u-p+1)/(p(p-1)),&amp;u\geq p-1,
+\end{cases}
+\]">\[
+\varphi_{L_2/K}(u)=
+\begin{cases}
+u/(p-1),&amp;u\leq p-1,\\
+1+(u-p+1)/(p(p-1)),&amp;u\geq p-1,
+\end{cases}
+\]</span>
+exactly the integral of the full lower group sizes. All three functions are identity on <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span>.</p>
+<p>For <span class="math" data-tex="\(u\leq0\)">\(u\leq0\)</span>, the lower image is the full quotient. For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, it is trivial; the rescaled index <span class="math" data-tex="\(\varphi_{L_2/L_1}(u)\)">\(\varphi_{L_2/L_1}(u)\)</span> is positive, where the tame quotient is also trivial. This verifies (3.1). The full upper group is <span class="math" data-tex="\(H\)">\(H\)</span> on <span class="math" data-tex="\(0&lt;v\leq1\)">\(0&lt;v\leq1\)</span>, then identity, whose positive-index images in the quotient are trivial. At nonpositive indices its image is the full quotient. This verifies (3.3) and, by inversion of the displayed functions, both tower identities. When <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, <span class="math" data-tex="\(L_1=K\)">\(L_1=K\)</span>, the quotient is trivial, and the same formulas hold with <span class="math" data-tex="\(p-1=1\)">\(p-1=1\)</span>.</p>
+<p><strong>Solution 4.</strong> Let <span class="math" data-tex="\(\alpha^3=2\)">\(\alpha^3=2\)</span>, <span class="math" data-tex="\(\zeta^3=1\)">\(\zeta^3=1\)</span> with <span class="math" data-tex="\(\zeta\ne1\)">\(\zeta\ne1\)</span>, and <span class="math" data-tex="\(L=\mathbf Q_3(\alpha,\zeta)\)">\(L=\mathbf Q_3(\alpha,\zeta)\)</span>. The element <span class="math" data-tex="\(\beta=\alpha+1\)">\(\beta=\alpha+1\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\beta^3-3\beta^2+3\beta-3=0,
+\]">\[
+\beta^3-3\beta^2+3\beta-3=0,
+\]</span>
+an Eisenstein polynomial at <span class="math" data-tex="\(3\)">\(3\)</span>. Hence <span class="math" data-tex="\(M=\mathbf Q_3(\alpha)\)">\(M=\mathbf Q_3(\alpha)\)</span> is totally ramified of degree <span class="math" data-tex="\(3\)">\(3\)</span>, with uniformizer <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The field <span class="math" data-tex="\(T=\mathbf Q_3(\zeta)=\mathbf Q_3(\sqrt{-3})\)">\(T=\mathbf Q_3(\zeta)=\mathbf Q_3(\sqrt{-3})\)</span> is a totally ramified quadratic field: <span class="math" data-tex="\(2\zeta+1\)">\(2\zeta+1\)</span> has square <span class="math" data-tex="\(-3\)">\(-3\)</span>. Its uniformizer <span class="math" data-tex="\(\lambda=\zeta-1\)">\(\lambda=\zeta-1\)</span> satisfies <span class="math" data-tex="\(Y^2+3Y+3=0\)">\(Y^2+3Y+3=0\)</span>.</p>
+<p>The degrees <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> give <span class="math" data-tex="\([L : \mathbf Q_3]=6\)">\([L : \mathbf Q_3]=6\)</span>. All three cubic roots <span class="math" data-tex="\(\alpha,\zeta\alpha,\zeta^2\alpha\)">\(\alpha,\zeta\alpha,\zeta^2\alpha\)</span> lie in <span class="math" data-tex="\(L\)">\(L\)</span>, so it is the splitting field and is Galois. Its action on the three roots embeds its group in <span class="math" data-tex="\(S_3\)">\(S_3\)</span>; order <span class="math" data-tex="\(6\)">\(6\)</span> proves equality. Its ramification index is divisible by both <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, hence is <span class="math" data-tex="\(6\)">\(6\)</span>; the extension is totally ramified.</p>
+<p>In the normalized valuation of <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(v_L(\beta)=2\)">\(v_L(\beta)=2\)</span> and <span class="math" data-tex="\(v_L(\lambda)=3\)">\(v_L(\lambda)=3\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\pi=\lambda/\beta
+\]">\[
+\pi=\lambda/\beta
+\]</span>
+is a uniformizer, and integral uniformizer generation permits the motion calculation with <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\sigma(\alpha)=\zeta\alpha\)">\(\sigma(\alpha)=\zeta\alpha\)</span>, <span class="math" data-tex="\(\sigma(\zeta)=\zeta\)">\(\sigma(\zeta)=\zeta\)</span>, an order-three element. Then <span class="math" data-tex="\(\sigma\beta-\beta=\lambda\alpha\)">\(\sigma\beta-\beta=\lambda\alpha\)</span>, and
+<span class="math math-display" data-tex="\[
+\sigma\pi-\pi
+=-\frac{\lambda^2\alpha}{\beta\,\sigma\beta}.
+\]">\[
+\sigma\pi-\pi
+=-\frac{\lambda^2\alpha}{\beta\,\sigma\beta}.
+\]</span>
+The value is <span class="math" data-tex="\(6-2-2=2\)">\(6-2-2=2\)</span>, since <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unit and <span class="math" data-tex="\(\sigma\beta\)">\(\sigma\beta\)</span> has the same value as <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. The inverse order-three element has the same motion number, either by the intrinsic inverse rule or by the same calculation.</p>
+<p>Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> fix <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and send <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to <span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span>. It is an involution and satisfies <span class="math" data-tex="\(\tau\pi/\pi=\zeta+1\)">\(\tau\pi/\pi=\zeta+1\)</span>. The residue of this ratio is <span class="math" data-tex="\(2\)">\(2\)</span> in <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>, so <span class="math" data-tex="\(v_L(\tau\pi-\pi)=1\)">\(v_L(\tau\pi-\pi)=1\)</span>. All three involutions are conjugate in <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, and intrinsic motion is conjugation invariant, so they all have motion <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>It follows that
+<span class="math math-display" data-tex="\[
+G_{-1}=G_0=S_3,\qquad G_1=A_3,\qquad G_2=1.
+\]">\[
+G_{-1}=G_0=S_3,\qquad G_1=A_3,\qquad G_2=1.
+\]</span>
+For real positive indices, <span class="math" data-tex="\(G_u=A_3\)">\(G_u=A_3\)</span> on <span class="math" data-tex="\(0&lt;u\leq1\)">\(0&lt;u\leq1\)</span>, and identity beyond <span class="math" data-tex="\(1\)">\(1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\varphi_{L/\mathbf Q_3}(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq0,\\
+u/2,&amp;0\leq u\leq1,\\
+1/2+(u-1)/6,&amp;u\geq1.
+\end{cases}
+\]">\[
+\varphi_{L/\mathbf Q_3}(u)=
+\begin{cases}
+u,&amp;-1\leq u\leq0,\\
+u/2,&amp;0\leq u\leq1,\\
+1/2+(u-1)/6,&amp;u\geq1.
+\end{cases}
+\]</span>
+The upper groups are <span class="math" data-tex="\(S_3\)">\(S_3\)</span> for <span class="math" data-tex="\(-1\leq v\leq0\)">\(-1\leq v\leq0\)</span>, <span class="math" data-tex="\(A_3\)">\(A_3\)</span> for <span class="math" data-tex="\(0&lt;v\leq1/2\)">\(0&lt;v\leq1/2\)</span>, and identity for <span class="math" data-tex="\(v&gt;1/2\)">\(v&gt;1/2\)</span>. The positive upper jump <span class="math" data-tex="\(1/2\)">\(1/2\)</span> is nonintegral.</p>
+<p>For the quotient field <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(H=A_3\)">\(H=A_3\)</span>. Its subgroup lower groups are <span class="math" data-tex="\(H_0=H_1=H\)">\(H_0=H_1=H\)</span>, followed by identity, so
+<span class="math math-display" data-tex="\[
+\varphi_{L/T}(u)=u\ (0\leq u\leq1),
+\qquad
+\varphi_{L/T}(u)=1+(u-1)/3\ (u\geq1).
+\]">\[
+\varphi_{L/T}(u)=u\ (0\leq u\leq1),
+\qquad
+\varphi_{L/T}(u)=1+(u-1)/3\ (u\geq1).
+\]</span>
+The quotient <span class="math" data-tex="\(T/\mathbf Q_3\)">\(T/\mathbf Q_3\)</span> is tame quadratic and has <span class="math" data-tex="\(\varphi_{T/\mathbf Q_3}(t)=t/2\)">\(\varphi_{T/\mathbf Q_3}(t)=t/2\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Composing gives exactly the displayed full <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. Every positive lower group of <span class="math" data-tex="\(G\)">\(G\)</span> maps trivially to <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, matching the quotient's trivial lower group at the positive rescaled index. The upper image is likewise full at nonpositive indices and trivial at every positive index. This checks Herbrand's theorem explicitly.</p>
+<p>This also attains the sharp wild bound in <a href="NT-LOC-09.html"><strong>Ramification groups and the different of a local extension</strong>, Theorem 3.1</a>: <span class="math" data-tex="\(e=6\)">\(e=6\)</span>, <span class="math" data-tex="\(|G_1|=p=3\)">\(|G_1|=p=3\)</span>, and <span class="math" data-tex="\(G_2=1\)">\(G_2=1\)</span>, so <span class="math" data-tex="\(d=e+p-2=7\)">\(d=e+p-2=7\)</span>. As a different check, Hilbert's formula gives <span class="math" data-tex="\(d(L/\mathbf Q_3)=(6-1)+(3-1)=7\)">\(d(L/\mathbf Q_3)=(6-1)+(3-1)=7\)</span>. The cubic Eisenstein field has different exponent <span class="math" data-tex="\(v_M(3\alpha^2)=3\)">\(v_M(3\alpha^2)=3\)</span>. The extension <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is tame quadratic with different exponent <span class="math" data-tex="\(1\)">\(1\)</span>; the tower formula gives <span class="math" data-tex="\(2\cdot3+1=7\)">\(2\cdot3+1=7\)</span> again.</p>
+<h2 id="9-what-this-lesson-does-not-prove">9. What this lesson does not prove</h2>
+<ul>
+<li>The intrinsic motion formula, integral monogenicity, inertia order, subgroup compatibility and cyclotomic lower groups are Proposition 1.1, Section 2 and Proposition 5.1 of <strong>Ramification groups and the different of a local extension</strong>. Its Theorem 3.1 is Hilbert's different formula. Integral uniformizer generation and multiplication of ramification indices are supplied by <strong>Unramified and totally ramified extensions</strong>, Theorem 5.1 and Section 1.</li>
+<li>A Galois group of an algebraic normal separable extension is the inverse limit of its finite Galois quotient groups, with the Krull topology. Compactness of a product of finite discrete spaces is the compact-product theorem. Proposition 4.1 proves the additional compatibility and surjectivity needed for upper groups.</li>
+<li>Hasse–Arf is stated in Section 4 and used only to compare the abelian examples with its conclusion. Its proof is Corollary 10.3 of <a href="../NT-CFT/abelian-ramification-conductors-and-hasse-arf.html#corollary-10-3-hasse-arf"><strong>Abelian ramification, conductors and Hasse–Arf</strong></a> in <em>Class field theory</em>.</li>
+<li>In the final different check, transitivity means <span class="math" data-tex="\(\mathfrak D_{L/K}=\mathfrak D_{L/M}\mathfrak D_{M/K}\mathcal O_L\)">\(\mathfrak D_{L/K}=\mathfrak D_{L/M}\mathfrak D_{M/K}\mathcal O_L\)</span>, hence <span class="math" data-tex="\(d(L/K)=d(L/M)+e(L/M)d(M/K)\)">\(d(L/K)=d(L/M)+e(L/M)d(M/K)\)</span>. The written programme proof is <em>Number fields</em>, lesson 14, <strong>The different and the discriminant</strong>, Proposition 14.1 for finite separable towers over a Dedekind base with finite integral closures. Its Proposition 14.2 proves the derivative formula for a monogenic full integral closure. The ramification filtrations themselves were computed without either tower calculation.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, Chapter 7, “Ramification groups,” for the lower filtration used here.</p>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-LOC-09.html">← Ramification groups and the different of a local extension</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-LOC-11.html">The multiplicative group of a local field →</a></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-10.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

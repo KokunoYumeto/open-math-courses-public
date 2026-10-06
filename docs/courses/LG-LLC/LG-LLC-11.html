@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harris–Taylor: geometry, numerical counting and existence · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-11.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 10 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="harris-taylor-geometry-numerical-counting-and-existence">Harris–Taylor: geometry, numerical counting and existence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The cohomology of a tower can attach a Weil representation to a supercuspidal representation without yet proving a correspondence. Three questions remain: is that Weil representation irreducible, do its local factors agree with the automorphic ones, and does every supercuspidal occur in the part of the construction where these assertions have been established? Harris and Taylor connect the tower to global Shimura varieties. Automorphic induction supplies parameters in the image; Henniart's numerical theorem then supplies the exhaustion.</p>
+<p>This lesson states those substantial inputs and proves the two counting deductions that finish the argument. The theorems of Harris and Taylor are stated as in [Carayol 2000] and [Wedhorn 2000]; [Scholze 2013] gives another proof of the local correspondence.</p>
+<h2 id="1-the-existence-theorem-and-its-normalization">1. The existence theorem and its normalization</h2>
+<p>Let <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> be finite. Reciprocity <span class="math" data-tex="\(\operatorname{Art}_F\)">\(\operatorname{Art}_F\)</span> sends a uniformizer to geometric Frobenius <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, and <span class="math" data-tex="\(\|\Phi\|=q^{-1}\)">\(\|\Phi\|=q^{-1}\)</span>. A Frobenius-semisimple Weil–Deligne parameter <span class="math" data-tex="\((r,N)\)">\((r,N)\)</span> satisfies
+<span class="math math-display" data-tex="\[
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{1.1}
+\]">\[
+r(w)Nr(w)^{-1}=\|w\|N.
+\tag{1.1}
+\]</span>
+Write <span class="math" data-tex="\(\mathcal A_n(F)\)">\(\mathcal A_n(F)\)</span> for irreducible admissible representations of <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>, <span class="math" data-tex="\(\mathcal C_n(F)\)">\(\mathcal C_n(F)\)</span> for its supercuspidal subset, <span class="math" data-tex="\(\mathcal W_n(F)\)">\(\mathcal W_n(F)\)</span> for irreducible <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional complex Weil representations with open inertia kernel, and <span class="math" data-tex="\(\mathcal D_n(F)\)">\(\mathcal D_n(F)\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional parameters in (1.1).</p>
+<p><strong>Theorem 1.1 (Harris–Taylor, stated).</strong> For every finite extension <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> there are bijections, simultaneously in all ranks,
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_F:\mathcal A_n(F)\longrightarrow\mathcal D_n(F).
+\tag{1.2}
+\]">\[
+\operatorname{rec}_F:\mathcal A_n(F)\longrightarrow\mathcal D_n(F).
+\tag{1.2}
+\]</span>
+They satisfy the following five properties.</p>
+<ol>
+<li>In rank one, <span class="math" data-tex="\(\operatorname{rec}_F(\chi)=\widehat\chi=\chi\circ\operatorname{Art}_F^{-1}\)">\(\operatorname{rec}_F(\chi)=\widehat\chi=\chi\circ\operatorname{Art}_F^{-1}\)</span>.</li>
+<li>For any ranks <span class="math" data-tex="\(n,m\)">\(n,m\)</span>, any <span class="math" data-tex="\(\pi,\pi&#x27;\)">\(\pi,\pi&#x27;\)</span> of those ranks, and any nontrivial additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(s,\pi\times\pi&#x27;)&amp;=L(s,\operatorname{rec}_F(\pi)\otimes\operatorname{rec}_F(\pi&#x27;)),\\
+\varepsilon(s,\pi\times\pi&#x27;,\psi)&amp;=
+\varepsilon(s,\operatorname{rec}_F(\pi)\otimes\operatorname{rec}_F(\pi&#x27;),\psi).
+\end{aligned}
+\tag{1.3}
+\]">\[
+\begin{aligned}
+L(s,\pi\times\pi&#x27;)&amp;=L(s,\operatorname{rec}_F(\pi)\otimes\operatorname{rec}_F(\pi&#x27;)),\\
+\varepsilon(s,\pi\times\pi&#x27;,\psi)&amp;=
+\varepsilon(s,\operatorname{rec}_F(\pi)\otimes\operatorname{rec}_F(\pi&#x27;),\psi).
+\end{aligned}
+\tag{1.3}
+\]</span></li>
+<li>Twisting by <span class="math" data-tex="\(\chi\circ\det\)">\(\chi\circ\det\)</span> tensors the parameter by <span class="math" data-tex="\(\widehat\chi\)">\(\widehat\chi\)</span>.</li>
+<li>If <span class="math" data-tex="\(\omega_\pi\)">\(\omega_\pi\)</span> is the central character, then <span class="math" data-tex="\(\det\operatorname{rec}_F(\pi)=\widehat{\omega_\pi}\)">\(\det\operatorname{rec}_F(\pi)=\widehat{\omega_\pi}\)</span>.</li>
+<li>Taking the contragredient takes the dual parameter.</li>
+</ol>
+<p>The map restricts to a bijection <span class="math" data-tex="\(\mathcal C_n(F)\to\mathcal W_n(F)\)">\(\mathcal C_n(F)\to\mathcal W_n(F)\)</span>, with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. This is the main theorem of Harris and Taylor; see [Carayol 2000, §§2.1–2.4] and [Wedhorn 2000, (1.2.2) and (4.2.2)], and [Scholze 2013, Theorem 1.2] for another proof. The factor convention and the reduction from supercuspidals are those established in the correspondence-statement and monodromy-block lessons. This theorem concerns all representations in (1.2), including nongeneric Langlands quotients.</p>
+<p>For the construction, choose <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span> and a coefficient identification <span class="math" data-tex="\(\iota:\overline{\mathbb Q}_\ell\simeq\mathbb C\)">\(\iota:\overline{\mathbb Q}_\ell\simeq\mathbb C\)</span> taking the chosen square root of the norm to its positive real value. Set <span class="math" data-tex="\(\nu=|\det|_F\)">\(\nu=|\det|_F\)</span>. The earlier Jacquet–Langlands lesson specified the virtual vanishing-cycle representation <span class="math" data-tex="\(\Psi(\rho)\)">\(\Psi(\rho)\)</span> for a division-algebra representation <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. The construction theorem of Harris and Taylor [Carayol 2000, §5.6, Théorème 2; Wedhorn 2000, (4.4.1)] produces a true <span class="math" data-tex="\(n\)">\(n\)</span>-dimensional Weil representation <span class="math" data-tex="\(r_\ell(\pi)\)">\(r_\ell(\pi)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+[\Psi(\operatorname{JL}^{-1}(\pi)^\vee)]
+=[\pi\otimes r_\ell(\pi)]
+\tag{1.4}
+\]">\[
+[\Psi(\operatorname{JL}^{-1}(\pi)^\vee)]
+=[\pi\otimes r_\ell(\pi)]
+\tag{1.4}
+\]</span>
+for supercuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The definition of the factor-normalized assignment is
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_{F,\ell}(\pi)
+=r_\ell\bigl(\pi^\vee\otimes\nu^{(1-n)/2}\bigr).
+\tag{1.5}
+\]">\[
+\operatorname{rec}_{F,\ell}(\pi)
+=r_\ell\bigl(\pi^\vee\otimes\nu^{(1-n)/2}\bigr).
+\tag{1.5}
+\]</span>
+Formula (1.4) is a virtual identity. It does not assert, on its own, concentration in a single cohomological degree. At this stage (1.5) takes values in semisimple Weil representations; its irreducibility and bijectivity are conclusions of the subsequent argument.</p>
+<h2 id="2-the-global-statement-that-identifies-local-information">2. The global statement that identifies local information</h2>
+<p>The companion compatibility result has hypotheses which matter.</p>
+<p><strong>Theorem 2.1 (Harris–Taylor, stated).</strong> Let <span class="math" data-tex="\(L\)">\(L\)</span> be a CM field, with complex conjugation <span class="math" data-tex="\(c\)">\(c\)</span>, and let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be a cuspidal automorphic representation of <span class="math" data-tex="\(\mathrm{GL}_n(\mathbb A_L)\)">\(\mathrm{GL}_n(\mathbb A_L)\)</span>. Assume
+<span class="math math-display" data-tex="\[
+\Pi^\vee\simeq\Pi^c,
+\tag{2.1}
+\]">\[
+\Pi^\vee\simeq\Pi^c,
+\tag{2.1}
+\]</span>
+that <span class="math" data-tex="\(\Pi_\infty\)">\(\Pi_\infty\)</span> has the infinitesimal character of an algebraic representation of <span class="math" data-tex="\(\operatorname{Res}_{L/\mathbb Q}\mathrm{GL}_n\)">\(\operatorname{Res}_{L/\mathbb Q}\mathrm{GL}_n\)</span>, and that <span class="math" data-tex="\(\Pi_x\)">\(\Pi_x\)</span> is square-integrable at some finite place <span class="math" data-tex="\(x\)">\(x\)</span>. There are a nonzero integer <span class="math" data-tex="\(a(\Pi)\)">\(a(\Pi)\)</span> and a continuous <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic Galois representation <span class="math" data-tex="\(R_\ell(\Pi)\)">\(R_\ell(\Pi)\)</span> such that for every finite <span class="math" data-tex="\(y\nmid\ell\)">\(y\nmid\ell\)</span>,
+<span class="math math-display" data-tex="\[
+[R_\ell(\Pi)|_{W_{L_y}}]
+=a(\Pi)[r_\ell(\Pi_y)].
+\tag{2.2}
+\]">\[
+[R_\ell(\Pi)|_{W_{L_y}}]
+=a(\Pi)[r_\ell(\Pi_y)].
+\tag{2.2}
+\]</span>
+The brackets denote semisimple classes. This is the global compatibility theorem of Harris and Taylor as recalled in [Taylor–Yoshida 2007, Introduction]; [Carayol 2000, §7, Théorème 3] states its form for the cohomology of the Shimura varieties. Here <span class="math" data-tex="\(r_\ell\)">\(r_\ell\)</span> on general representations is extended from their supercuspidal support with norm shifts; see [Carayol 2000, §7.3].</p>
+<p>In particular (2.2) supplies bad-place Weil information as well as good-place information. It does <strong>not</strong> identify the monodromy operators on the two sides. [Taylor–Yoshida 2007, Introduction] states this limitation explicitly. The full Weil–Deligne compatibility for modular forms stated in the preceding lesson has its own Carayol authority; it must not be attributed to (2.2).</p>
+<p>The point of globalizing a prescribed local supercuspidal is that good-place information, global Galois representations and global functional equations become available. The local component can be prescribed up to an unramified twist. Harris and Taylor proved this globalization, and [Scholze 2013, Theorem 10.7] states it as follows. Every finite extension <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> is the completion <span class="math" data-tex="\(L_w\)">\(L_w\)</span> of a suitable CM field <span class="math" data-tex="\(L\)">\(L\)</span> at a finite place <span class="math" data-tex="\(w\)">\(w\)</span> [Scholze 2013, §8 and Remark 10.4]. For every essentially square-integrable representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\mathrm{GL}_n(F)\)">\(\mathrm{GL}_n(F)\)</span>, in particular for every supercuspidal one, there is a cuspidal automorphic representation <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> of <span class="math" data-tex="\(\mathrm{GL}_n(\mathbb A_L)\)">\(\mathrm{GL}_n(\mathbb A_L)\)</span> with <span class="math" data-tex="\(\Pi^\vee\simeq\Pi^c\)">\(\Pi^\vee\simeq\Pi^c\)</span>, with <span class="math" data-tex="\(\Pi_\infty\)">\(\Pi_\infty\)</span> having the infinitesimal character of an algebraic representation of <span class="math" data-tex="\(\operatorname{Res}_{L/\mathbb Q}\mathrm{GL}_n\)">\(\operatorname{Res}_{L/\mathbb Q}\mathrm{GL}_n\)</span>, and with <span class="math" data-tex="\(\Pi_x\)">\(\Pi_x\)</span> supercuspidal at a finite place <span class="math" data-tex="\(x\ne w\)">\(x\ne w\)</span>, such that <span class="math" data-tex="\(\Pi_w\)">\(\Pi_w\)</span> is an unramified twist of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Such a <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> satisfies the hypotheses of Theorem 2.1. Theorem 2.1 then returns the resulting comparison to the prescribed place, and the local twist formulas remove the auxiliary twist.</p>
+<h2 id="3-how-the-shimura-variety-and-the-tower-meet">3. How the Shimura variety and the tower meet</h2>
+<p>Here is the architecture, with the geometry treated as stated input. Write <span class="math" data-tex="\(L=L^+E\)">\(L=L^+E\)</span>, where <span class="math" data-tex="\(L^+\)">\(L^+\)</span> is totally real and <span class="math" data-tex="\(E\)">\(E\)</span> is imaginary quadratic with <span class="math" data-tex="\(p=uu^c\)">\(p=uu^c\)</span> split in <span class="math" data-tex="\(E\)">\(E\)</span>. Choose a central division algebra <span class="math" data-tex="\(B/L\)">\(B/L\)</span> with an involution inducing <span class="math" data-tex="\(c\)">\(c\)</span> on its center and satisfying the splitting and parity conditions in [Carayol 2000, §§6.1–6.2]. For the associated unitary similitude group <span class="math" data-tex="\(G\)">\(G\)</span>, let <span class="math" data-tex="\(\mu:G(\mathbb R)\to\mathbb R^\times\)">\(\mu:G(\mathbb R)\to\mathbb R^\times\)</span> be the common similitude multiplier. Its kernel is
+<span class="math math-display" data-tex="\[
+\ker\mu=U(n-1,1)\times U(n)^{[L^+:\mathbb Q]-1}.
+\tag{3.1}
+\]">\[
+\ker\mu=U(n-1,1)\times U(n)^{[L^+:\mathbb Q]-1}.
+\tag{3.1}
+\]</span>
+The derived real subgroup is instead
+<span class="math math-display" data-tex="\[
+G^{\mathrm{der}}(\mathbb R)
+=SU(n-1,1)\times SU(n)^{[L^+:\mathbb Q]-1}.
+\tag{3.1a}
+\]">\[
+G^{\mathrm{der}}(\mathbb R)
+=SU(n-1,1)\times SU(n)^{[L^+:\mathbb Q]-1}.
+\tag{3.1a}
+\]</span>
+Here is the algebraic distinction. In every unitary factor, <span class="math" data-tex="\(\operatorname{diag}(z,1,\ldots,1)\)">\(\operatorname{diag}(z,1,\ldots,1)\)</span> with <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span> realizes determinant <span class="math" data-tex="\(z\)">\(z\)</span>. Thus (3.1) retains the determinant circles. Complexifying the common-multiplier equations gives <span class="math" data-tex="\(G_{\mathbb C}\simeq\mathbb G_m\times\prod_{j=1}^{[L^+:\mathbb Q]}\mathrm{GL}_n\)">\(G_{\mathbb C}\simeq\mathbb G_m\times\prod_{j=1}^{[L^+:\mathbb Q]}\mathrm{GL}_n\)</span>: the conjugate matrix in each pair is determined by the multiplier and the inverse transpose. Every commutator has determinant one, while elementary transvections, which generate <span class="math" data-tex="\(\mathrm{SL}_n(\mathbb C)\)">\(\mathrm{SL}_n(\mathbb C)\)</span>, are commutators with diagonal matrices having unequal diagonal entries. Hence the derived complex subgroup is <span class="math" data-tex="\(\prod_j\mathrm{SL}_n\)">\(\prod_j\mathrm{SL}_n\)</span>. Its real determinant-one equations give (3.1a); for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> these factors are trivial.</p>
+<p>Only the signature-<span class="math" data-tex="\((n-1,1)\)">\((n-1,1)\)</span> factor contributes a symmetric domain of positive dimension when <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>. Passing from <span class="math" data-tex="\(U(n-1,1)\)">\(U(n-1,1)\)</span> to <span class="math" data-tex="\(SU(n-1,1)\)">\(SU(n-1,1)\)</span> preserves that domain, since the determinant map on the maximal compact subgroup <span class="math" data-tex="\(U(n-1)\times U(1)\)">\(U(n-1)\times U(1)\)</span> is onto <span class="math" data-tex="\(U(1)\)">\(U(1)\)</span>. The real dimension is <span class="math" data-tex="\(n^2-((n-1)^2+1)=2(n-1)\)">\(n^2-((n-1)^2+1)=2(n-1)\)</span>, so the complex dimension remains <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The resulting simple Shimura varieties have this dimension. Their moduli describe abelian varieties with polarization, a <span class="math" data-tex="\(B\)">\(B\)</span>-action and level structure. With sufficiently small level they are smooth and proper over the reflex field.</p>
+<p>At a chosen split finite place <span class="math" data-tex="\(w\)">\(w\)</span>, where <span class="math" data-tex="\(B_w\simeq M_n(L_w)\)">\(B_w\simeq M_n(L_w)\)</span>, the local group contains <span class="math" data-tex="\(\mathrm{GL}_n(L_w)\)">\(\mathrm{GL}_n(L_w)\)</span>. The corresponding factor of the universal <span class="math" data-tex="\(p\)">\(p\)</span>-divisible group is, after applying a matrix idempotent, a one-dimensional Barsotti–Tate <span class="math" data-tex="\(\mathcal O_{L_w}\)">\(\mathcal O_{L_w}\)</span>-module of height <span class="math" data-tex="\(n\)">\(n\)</span>. Barsotti–Tate here means a compatible system of finite flat <span class="math" data-tex="\(p\)">\(p\)</span>-power torsion group schemes.</p>
+<p>On the special fiber, stratify by the height <span class="math" data-tex="\(h\)">\(h\)</span> of its maximal étale quotient:
+<span class="math math-display" data-tex="\[
+0\le h\le n-1,\qquad
+\text{connected height}=n-h,\qquad
+\dim X^{(h)}=h.
+\tag{3.2}
+\]">\[
+0\le h\le n-1,\qquad
+\text{connected height}=n-h,\qquad
+\dim X^{(h)}=h.
+\tag{3.2}
+\]</span>
+The closure of a stratum contains the strata of smaller height. The basic stratum <span class="math" data-tex="\(h=0\)">\(h=0\)</span> has the full connected height <span class="math" data-tex="\(n\)">\(n\)</span>. Its deformation theory is the height-<span class="math" data-tex="\(n\)">\(n\)</span> Lubin–Tate theory used in (1.4).</p>
+<p>Two kinds of Igusa varieties separate two pieces of information. The first trivializes the finite-level étale quotient. The second trivializes connected torsion with a local lifting condition to higher levels. That condition is necessary: an automorphism of a truncated group scheme need not lift to the entire formal module. In the inverse limit, the second covering has group <span class="math" data-tex="\(\mathcal O_{D_{n-h}}^\times\)">\(\mathcal O_{D_{n-h}}^\times\)</span>, where <span class="math" data-tex="\(D_{n-h}\)">\(D_{n-h}\)</span> has invariant <span class="math" data-tex="\(1/(n-h)\)">\(1/(n-h)\)</span>. After this covering the local vanishing-cycle factor becomes the constant factor supplied by the corresponding Lubin–Tate deformation space.</p>
+<p>Thus a stratum calculation separates an Igusa cohomology factor from a local vanishing-cycle factor. Restoring all linear-group translates involves induction from the parabolic with Levi
+<span class="math math-display" data-tex="\[
+\mathrm{GL}_{n-h}(L_w)\times\mathrm{GL}_h(L_w).
+\tag{3.3}
+\]">\[
+\mathrm{GL}_{n-h}(L_w)\times\mathrm{GL}_h(L_w).
+\tag{3.3}
+\]</span>
+For a supercuspidal contribution the proper-parabolic Jacquet modules vanish. This is why the basic stratum isolates the desired height-<span class="math" data-tex="\(n\)">\(n\)</span> factor. The precise identity, including multiplicities, shifts and Jacquet functors, is [Carayol 2000, §7.3, Théorème 4], with the outline of its proof in [Carayol 2000, §8]; the preceding description is its architecture, not a replacement formula.</p>
+<p>The Igusa factor is evaluated by counting fixed points of Hecke correspondences composed with sufficiently large powers of Frobenius. The Lefschetz trace formula turns these fixed points into traces; the classification of the abelian varieties and their extra structures turns the sums into orbital integrals. A trace-formula comparison then identifies them with the automorphic traces occurring in the generic-fiber cohomology. This comparison yields (1.4) and Theorem 2.1. The Frobenius power is part of the fixed-point argument's hypothesis, not an arbitrary Hecke operator.</p>
+<p>Another global bridge is base change from the unitary similitude group to the general linear group over the CM field. Harris and Taylor use the stable base change theorem of Clozel and Labesse, which [Harris 2005, (1.2.6)] states for the groups <span class="math" data-tex="\(G\)">\(G\)</span> above. A cuspidal automorphic representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span> that is cohomological for one of the algebraic representations <span class="math" data-tex="\(\xi\)">\(\xi\)</span> considered there has a base change <span class="math" data-tex="\((\Pi,\psi)\)">\((\Pi,\psi)\)</span>, where <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> is an automorphic representation of <span class="math" data-tex="\(\mathrm{GL}_n(\mathbb A_L)\)">\(\mathrm{GL}_n(\mathbb A_L)\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a Hecke character of <span class="math" data-tex="\(E\)">\(E\)</span>, with local matching at all unramified places and at all places split in <span class="math" data-tex="\(E\)">\(E\)</span>, in particular at almost all inert places. Conversely, let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be cuspidal with <span class="math" data-tex="\(\Pi^\vee\simeq\Pi^c\)">\(\Pi^\vee\simeq\Pi^c\)</span>, with <span class="math" data-tex="\(\Pi_\infty\)">\(\Pi_\infty\)</span> the cohomological representation attached to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and with <span class="math" data-tex="\(\Pi_v\)">\(\Pi_v\)</span> in the discrete series at every place <span class="math" data-tex="\(v\)">\(v\)</span> over which <span class="math" data-tex="\(B\)">\(B\)</span> ramifies, and let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> satisfy the central-character conditions of [Harris 2005, (1.2.6)]. Then <span class="math" data-tex="\((\Pi,\psi)\)">\((\Pi,\psi)\)</span> is the base change of an automorphic representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>, and <span class="math" data-tex="\(\pi_f\)">\(\pi_f\)</span> occurs in the cohomology of the Shimura variety of <span class="math" data-tex="\(G\)">\(G\)</span> with coefficients in the local system attached to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; in particular this cohomology is nonzero. The trace identity behind the theorem is [Clozel–Labesse 1999, Théorème A.3.1]; the remark following that theorem corrects the constant in the earlier form of the identity and notes the gap in its earlier proof. One should use this precise statement rather than assume that restriction along the auxiliary torus covering preserves automorphy of every summand.</p>
+<p>The representation-theoretic bookkeeping consists of normalized induction and normalized Jacquet modules, with their exactness and adjunction [Bernstein–Zelevinsky 1977, §§1.8–1.9 and 2.3], the Grothendieck groups of representations of finite length with the maps these functors induce on them [Zelevinsky 1980, §1.7], and the Grothendieck group of <span class="math" data-tex="\(G(\mathbb A_f)\times W_{L_w}\)">\(G(\mathbb A_f)\times W_{L_w}\)</span>-modules that are admissible for <span class="math" data-tex="\(G(\mathbb A_f)\)">\(G(\mathbb A_f)\)</span> and continuous for the Weil group, with the Weil action recorded up to semisimplification [Harris 2005, §4.2]. The alternating sums in this argument belong to those groups. Replacing them by individual cohomology groups would change the theorem.</p>
+<h2 id="4-what-finite-counting-proves">4. What finite counting proves</h2>
+<p>For a fixed smooth central character <span class="math" data-tex="\(\omega:F^\times\to\mathbb C^\times\)">\(\omega:F^\times\to\mathbb C^\times\)</span> and integer <span class="math" data-tex="\(c\ge0\)">\(c\ge0\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal C_n(\omega,\le c)&amp;=
+\{\pi\in\mathcal C_n(F):\omega_\pi=\omega,\ a(\pi)\le c\},\\
+\mathcal W_n(\omega,\le c)&amp;=
+\{r\in\mathcal W_n(F):\det r=\widehat\omega,\ a(r)\le c\}.
+\end{aligned}
+\tag{4.1}
+\]">\[
+\begin{aligned}
+\mathcal C_n(\omega,\le c)&amp;=
+\{\pi\in\mathcal C_n(F):\omega_\pi=\omega,\ a(\pi)\le c\},\\
+\mathcal W_n(\omega,\le c)&amp;=
+\{r\in\mathcal W_n(F):\det r=\widehat\omega,\ a(r)\le c\}.
+\end{aligned}
+\tag{4.1}
+\]</span>
+The conductor exponents use a conductor-zero additive character. Fixing <span class="math" data-tex="\(\omega\)">\(\omega\)</span> removes the continuous unramified twisting freedom.</p>
+<p>These are finite sets. The relevant finiteness inputs are [Henniart 1988, Proposition 2.3 and §§2.5–2.6]. On the automorphic side there is also a useful explanation using the previous lesson. The division-algebra conductor formula in [Henniart, §2.5] bounds the required unit level, and Jacquet–Langlands preserves conductors. At a bounded level and fixed central character, a representation of <span class="math" data-tex="\(D^\times\)">\(D^\times\)</span> factors through a finite-dimensional algebra: take the finite quotient by that level and central powers of a uniformizer, imposing the prescribed scalar action of those powers. The algebra has a finite basis of coset representatives and hence finitely many simple modules.</p>
+<p><strong>Proposition 4.1 (finite-fiber counting).</strong> Suppose a map <span class="math" data-tex="\(f:\mathcal C_n(F)\to\mathcal W_n(F)\)">\(f:\mathcal C_n(F)\to\mathcal W_n(F)\)</span> preserves central characters as determinants and conductors. Suppose that its restriction to <span class="math" data-tex="\(\mathcal C_n(\omega,\le c)\)">\(\mathcal C_n(\omega,\le c)\)</span> is injective and that
+<span class="math math-display" data-tex="\[
+\#\mathcal C_n(\omega,\le c)=\#\mathcal W_n(\omega,\le c)&lt;\infty.
+\tag{4.2}
+\]">\[
+\#\mathcal C_n(\omega,\le c)=\#\mathcal W_n(\omega,\le c)&lt;\infty.
+\tag{4.2}
+\]</span>
+Then its restriction is onto <span class="math" data-tex="\(\mathcal W_n(\omega,\le c)\)">\(\mathcal W_n(\omega,\le c)\)</span>. If these hypotheses hold for every <span class="math" data-tex="\(\omega,c\)">\(\omega,c\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is a bijection.</p>
+<p><strong>Proof.</strong> Preservation puts the restriction's image inside the target in (4.1). Injectivity makes its image have cardinality <span class="math" data-tex="\(\#\mathcal C_n(\omega,\le c)\)">\(\#\mathcal C_n(\omega,\le c)\)</span>. By (4.2), the complement in the finite target has cardinality zero, so the image is the whole target.</p>
+<p>For a general <span class="math" data-tex="\(r\)">\(r\)</span>, let <span class="math" data-tex="\(\omega=\det r\circ\operatorname{Art}_F\)">\(\omega=\det r\circ\operatorname{Art}_F\)</span> and <span class="math" data-tex="\(c=a(r)\)">\(c=a(r)\)</span>. The preceding conclusion supplies its preimage. If <span class="math" data-tex="\(f(\pi)=f(\pi&#x27;)\)">\(f(\pi)=f(\pi&#x27;)\)</span>, preservation gives the same central character and conductor to both; put them in the same bounded fiber and apply its injectivity. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is both onto and one-to-one. ∎</p>
+<p>The equality (4.2) is an explicit hypothesis of this elementary deduction. Henniart's original numerical theorem has a different formulation; it is not a statement that an arbitrary preliminary bijection preserves every prescribed central character.</p>
+<p><strong>Theorem 4.2 (Henniart's numerical theorem, stated in the direction needed).</strong> For a nonarchimedean local field <span class="math" data-tex="\(F\)">\(F\)</span>, an injection
+<span class="math math-display" data-tex="\[
+b:\mathcal W_n(F)\longrightarrow\mathcal C_n(F)
+\tag{4.3}
+\]">\[
+b:\mathcal W_n(F)\longrightarrow\mathcal C_n(F)
+\tag{4.3}
+\]</span>
+which preserves conductors and commutes with all unramified twists is a bijection. Such injections exist. This is [Henniart 1988, Theorem 1.2]. The finite numerical counts underlying it are modulo unramified twisting; Theorem 1.3 and §2 specify them. The central-character equality is stronger data subsequently obtained from the actual correspondence.</p>
+<p>A count on infinite sets would prove nothing here: an injection of a proper infinite subset can be onto another set of the same cardinality. Theorem 4.2 contains the conductor filtration and unramified twisting requirements which make the numerical argument effective.</p>
+<h2 id="5-exhaustion-of-the-base-change-subset">5. Exhaustion of the base-change subset</h2>
+<p>Let <span class="math" data-tex="\(\mathcal C&#x27;_n(F)\subset\mathcal C_n(F)\)">\(\mathcal C&#x27;_n(F)\subset\mathcal C_n(F)\)</span> consist of the supercuspidals which become unramified after a finite succession of cyclic local base changes. Subsequent base changes need not stay supercuspidal; the final unramified representation is a spherical representation of the same general linear group over the last field.</p>
+<p>The following is the substantive construction input, not an elementary consequence of ramification theory:
+<span class="math math-display" data-tex="\[
+\operatorname{rec}&#x27;_F:\mathcal C&#x27;_n(F)\xrightarrow{\sim}\mathcal W_n(F),
+\tag{5.1}
+\]">\[
+\operatorname{rec}&#x27;_F:\mathcal C&#x27;_n(F)\xrightarrow{\sim}\mathcal W_n(F),
+\tag{5.1}
+\]</span>
+with the desired local factors, determinants, duals and twists. The subset is stable under unramified twists, and (5.1) preserves conductors and commutes with them. [Carayol 2000, §2.3] states this strategy. Its realization uses non-Galois automorphic induction, Brauer induction and factor comparison; see [Carayol 2000, §§3.5 and 7.3].</p>
+<p>Non-Galois induction matters because not every irreducible Weil representation is induced from a character of a single subfield. Brauer's theorem supplies an integral virtual combination of induced characters. The global construction realizes those combinations on the automorphic side. The factor comparison then shows that the relevant virtual combination is a single supercuspidal, rather than leaving an arbitrary virtual difference. In the construction of Harris and Taylor this follows from the factor comparison; a closely related argument with the same positivity conclusion, for Henniart's construction, is in [Carayol 2000, §§4.5–4.6]. We state it, including the positivity conclusion, as part of the construction input.</p>
+<p><strong>Proposition 5.1 (exhaustion).</strong> Given (5.1) with conductor and unramified-twist compatibility, Theorem 4.2 implies
+<span class="math math-display" data-tex="\[
+\mathcal C&#x27;_n(F)=\mathcal C_n(F).
+\tag{5.2}
+\]">\[
+\mathcal C&#x27;_n(F)=\mathcal C_n(F).
+\tag{5.2}
+\]</span>
+Consequently the cohomological map is a bijection onto irreducible Weil parameters on all supercuspidals.</p>
+<p><strong>Proof.</strong> Invert (5.1), and compose its inverse with the inclusion of the subset:
+<span class="math math-display" data-tex="\[
+\mathcal W_n(F)\xrightarrow{(\operatorname{rec}&#x27;_F)^{-1}}
+\mathcal C&#x27;_n(F)\hookrightarrow\mathcal C_n(F).
+\tag{5.3}
+\]">\[
+\mathcal W_n(F)\xrightarrow{(\operatorname{rec}&#x27;_F)^{-1}}
+\mathcal C&#x27;_n(F)\hookrightarrow\mathcal C_n(F).
+\tag{5.3}
+\]</span>
+This is an injection. Its conductor equality follows from that of (5.1). For an unramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, if <span class="math" data-tex="\(\operatorname{rec}&#x27;_F(\pi)=r\)">\(\operatorname{rec}&#x27;_F(\pi)=r\)</span>, its twist property gives <span class="math" data-tex="\(\operatorname{rec}&#x27;_F(\pi\otimes\chi\circ\det)=r\otimes\widehat\chi\)">\(\operatorname{rec}&#x27;_F(\pi\otimes\chi\circ\det)=r\otimes\widehat\chi\)</span>. Stability of the subset and uniqueness of the inverse prove the twist property for (5.3). Theorem 4.2 makes (5.3) onto. Its image is exactly <span class="math" data-tex="\(\mathcal C&#x27;_n(F)\)">\(\mathcal C&#x27;_n(F)\)</span>, so (5.2) follows. The cohomological map agrees with (5.1) there by the construction input, hence now agrees on the whole domain. ∎</p>
+<p>There is a parallel deduction using the finite-fiber hypothesis (4.2), if that stronger counting input is given. The inverse of (5.1) maps <span class="math" data-tex="\(\mathcal W_n(\omega,\le c)\)">\(\mathcal W_n(\omega,\le c)\)</span> injectively into <span class="math" data-tex="\(\mathcal C&#x27;_n(F)\cap\mathcal C_n(\omega,\le c)\)">\(\mathcal C&#x27;_n(F)\cap\mathcal C_n(\omega,\le c)\)</span>. Equal finite cardinalities with <span class="math" data-tex="\(\mathcal C_n(\omega,\le c)\)">\(\mathcal C_n(\omega,\le c)\)</span> force that intersection to be the entire fiber. Every supercuspidal lies in some fiber, giving (5.2). This proves the requested finite-count version without substituting it for the actual statement of Henniart's theorem.</p>
+<p>After exhaustion, the monodromy-block lesson extends the supercuspidal bijections to all of (1.2): a centered segment of length <span class="math" data-tex="\(k\)">\(k\)</span> corresponds to <span class="math" data-tex="\(r\otimes S_k\)">\(r\otimes S_k\)</span>, and a Langlands quotient corresponds to the direct sum of its segment parameters. The five properties persist after this extension [Carayol 2000, §2.4; Wedhorn 2000, (4.2.2)].</p>
+<h2 id="6-height-two-and-independence-of-the-auxiliary-prime">6. Height two and independence of the auxiliary prime</h2>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, a supercuspidal <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has a two-dimensional irreducible parameter <span class="math" data-tex="\(r\)">\(r\)</span>, and its division-algebra type <span class="math" data-tex="\(\rho=\operatorname{JL}^{-1}(\pi)\)">\(\rho=\operatorname{JL}^{-1}(\pi)\)</span> satisfies, in the course's normalization,
+<span class="math math-display" data-tex="\[
+[\Psi(\rho)]=[\pi^\vee\otimes r\otimes\|\cdot\|^{-1/2}].
+\tag{6.1}
+\]">\[
+[\Psi(\rho)]=[\pi^\vee\otimes r\otimes\|\cdot\|^{-1/2}].
+\tag{6.1}
+\]</span>
+For a dihedral example <span class="math" data-tex="\(r=\operatorname{Ind}_{W_E}^{W_F}\theta\)">\(r=\operatorname{Ind}_{W_E}^{W_F}\theta\)</span>, restricting the Weil factor to <span class="math" data-tex="\(W_E\)">\(W_E\)</span> gives
+<span class="math math-display" data-tex="\[
+(\theta\oplus\theta^\sigma)\otimes\|\cdot\|^{-1/2}|_{W_E}.
+\tag{6.2}
+\]">\[
+(\theta\oplus\theta^\sigma)\otimes\|\cdot\|^{-1/2}|_{W_E}.
+\tag{6.2}
+\]</span>
+Thus extracting the local Weil factor and tensoring back by <span class="math" data-tex="\(\|\cdot\|^{1/2}\)">\(\|\cdot\|^{1/2}\)</span> recovers precisely <span class="math" data-tex="\(r\)">\(r\)</span>, not a parameter shifted by a half norm. The same argument retains an irreducible primitive parameter when there is no inducing quadratic character. Compatibility with Kutzko's correspondence follows from the uniqueness theorem: both rank-two correspondences satisfy the factor characterization. This is a compatibility statement, not a new construction of the primitive representations.</p>
+<p>Deligne's 1973 letter, part B, supplies the height-two origin of this approach: vanishing cycles at supersingular points have the commuting Weil, linear-group and quaternionic actions. Harris and Taylor place the same local mechanism inside higher-dimensional unitary Shimura varieties.</p>
+<p>For two auxiliary primes or coefficient identifications, transport both constructions to complex coefficients using the prescribed positive square root of the norm. The factor comparison of [Carayol 2000, §7.3] supplies identical pair factors for both systems; rank one has the same reciprocity normalization. Henniart's uniqueness theorem, as stated in the correspondence-statement lesson, therefore identifies the two systems. The segment extension identifies their monodromy blocks as well. This is the uniqueness of [Carayol 2000, §2.3.1] applied to the two systems. Uniqueness is applied after the required factors have been established; it cannot turn a preliminary semisimple map lacking them into a correspondence.</p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Prove the finite-set counting deduction with fixed central character and conductor bound.</p>
+<p><strong>Solution.</strong> Let the two fibers be <span class="math" data-tex="\(S,T\)">\(S,T\)</span>. Preservation defines <span class="math" data-tex="\(f:S\to T\)">\(f:S\to T\)</span>, and injectivity gives <span class="math" data-tex="\(\#f(S)=\#S\)">\(\#f(S)=\#S\)</span>. Since <span class="math" data-tex="\(\#S=\#T&lt;\infty\)">\(\#S=\#T&lt;\infty\)</span>, one has <span class="math" data-tex="\(\#(T\setminus f(S))=0\)">\(\#(T\setminus f(S))=0\)</span>, so <span class="math" data-tex="\(f(S)=T\)">\(f(S)=T\)</span>. Applying this at <span class="math" data-tex="\(\omega=\det r\circ\operatorname{Art}_F\)">\(\omega=\det r\circ\operatorname{Art}_F\)</span>, <span class="math" data-tex="\(c=a(r)\)">\(c=a(r)\)</span>, supplies a preimage of every parameter. Two preimages of the same parameter lie in that same fiber and are equal. The equality of finite cardinalities is needed; equality of cardinalities of unrestricted infinite sets would not suffice.</p>
+<p><strong>Exercise 7.2 (medium).</strong> Explain the supercuspidal domain of the construction and its extension to arbitrary irreducibles.</p>
+<p><strong>Solution.</strong> The construction theorem (1.4) extracts <span class="math" data-tex="\(r_\ell(\pi)\)">\(r_\ell(\pi)\)</span> when <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is supercuspidal. The vanishing of proper-parabolic Jacquet modules isolates its basic-stratum contribution. The theorem neither supplies <span class="math" data-tex="\(N\)">\(N\)</span> for every nonsupercuspidal nor classifies their parameters directly. After the supercuspidal bijection is established, the representation classification writes an arbitrary irreducible as the Langlands quotient of ordered essentially square-integrable segment representations. Replace a segment of length <span class="math" data-tex="\(k\)">\(k\)</span> built on <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> by <span class="math" data-tex="\(\operatorname{rec}_F(\sigma)\otimes S_k\)">\(\operatorname{rec}_F(\sigma)\otimes S_k\)</span>, keeping its central norm shift, and take the direct sum. The uniqueness of the segment data and the graded Jordan-block classification make this a bijection. In particular a Steinberg segment acquires nonzero <span class="math" data-tex="\(N\)">\(N\)</span>; a determinant character acquires the appropriate sum of one-dimensional blocks, with <span class="math" data-tex="\(N=0\)">\(N=0\)</span>. The previous reduction lesson proves the block classification and explains the factor compatibility inputs.</p>
+<p><strong>Exercise 7.3 (medium).</strong> Identify the local and global roles in properties (1)–(5).</p>
+<p><strong>Solution.</strong> Property (1) comes from local Lubin–Tate/class-field theory at height one. Properties (3), (4) and (5) first appear for the cohomological Weil assignment through globalizing the local representation, comparing global twists, determinants and duals at good places, and using density to identify the global Galois representations; Theorem 2.1 then returns the comparison to the bad place; see [Carayol 2000, §7.2], with the dual and norm conversion in (1.5). Property (2) on supercuspidals uses global compatibility and automorphic induction to compare factors for induced characters, then Brauer induction and local factor properties to extract genuine supercuspidals; see [Carayol 2000, §7.3]. Local numerical counting supplies exhaustion. Finally the local classification, monodromy blocks, dual formulas and multiplicativity extend the properties to arbitrary irreducibles [Carayol 2000, §2.4]. Thus the proof uses local and global steps together; assigning every property exclusively to one side would misdescribe it.</p>
+<p><strong>Exercise 7.4 (hard).</strong> Why does Henniart's uniqueness imply independence of <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and what normalization must be held fixed?</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\ell,\ell&#x27;\ne p\)">\(\ell,\ell&#x27;\ne p\)</span> and coefficient identifications with complex numbers which send the selected half norm to the positive real half norm. Construct the supercuspidal maps and complete the exhaustion for both. Their rank-one maps are <span class="math" data-tex="\(\chi\circ\operatorname{Art}_F^{-1}\)">\(\chi\circ\operatorname{Art}_F^{-1}\)</span>. By the factor comparison of [Carayol 2000, §7.3] they preserve the same complex <span class="math" data-tex="\(L\)">\(L\)</span>- and epsilon factors of every pair, for the same additive character and reciprocity convention. Extend each system by the same segment classification. Both now meet the full uniqueness characterization, so their values agree on every irreducible representation. In particular the induced nilpotent block structures agree, not just the underlying Weil semisimplifications. One cannot compare the raw <span class="math" data-tex="\(r_\ell(\pi)\)">\(r_\ell(\pi)\)</span> directly to rec: its contragredient and half norm in (1.5) must first be applied. Changing the chosen image of a half norm without transporting the convention changes that formula.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The existence and factor theorem, geometric construction, virtual cohomology and global compatibility are stated in [Carayol 2000, §§2, 5 and 7], [Wedhorn 2000, (1.2.2) and (4.4.1)] and [Taylor–Yoshida 2007, Introduction]; [Scholze 2013, Theorem 1.2] gives another proof of the existence and factor theorem. The unitary moduli and stratum identities are outlined in [Carayol 2000, §§6–8]. We stated this geometry rather than prove its deformation theory, point counts or trace formula. Its admissible Grothendieck-group formalism is in [Bernstein–Zelevinsky 1977, §§1–2], [Zelevinsky 1980, §1] and [Harris 2005, §4.2]. The cohomological unitary base change is the theorem of Clozel and Labesse stated in [Harris 2005, (1.2.6)], with its trace identity in [Clozel–Labesse 1999, Théorème A.3.1]; the globalization used above is due to Harris and Taylor and is stated in [Scholze 2013, Theorem 10.7].</p>
+<p>The numerical theorem and bounded-count finiteness are [Henniart 1988, Theorems 1.2–1.3, Proposition 2.3 and §§2.5–2.8]. We proved Proposition 4.1 conditional on the explicit finite-fiber equality. We did not attribute preservation of arbitrary prescribed central characters to the preliminary numerical bijections.</p>
+<p>The bijection on the base-change subset, with factor, twist and conductor compatibility, is the Harris–Taylor construction input outlined in [Carayol 2000, §§2.3, 3.5 and 7.3]. Its non-Galois automorphic induction and Brauer-to-genuine-representation step are stated. Given those inputs, Proposition 5.1 proves the exhaustion. We do not infer it merely from the solvability of local Galois groups.</p>
+<p>The classification, block extension and Henniart uniqueness are earlier course inputs. Their application gives the extension and auxiliary-prime independence explained here. The height-two geometric origin is [Deligne 1973, letter, part B, pp. 3–4]. The compatibility example uses the exact virtual formula already established in the Jacquet–Langlands lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Harris 2005] Michael Harris, <a href="https://www.numdam.org/item/AST_2005__298__17_0/">“The local Langlands correspondence: notes of (half) a course at the IHP Spring 2000”</a>, in <em>Formes automorphes (I)</em>, <em>Astérisque</em> 298 (2005), 17–145, §4.2 and (1.2.6).</li>
+<li>[Clozel–Labesse 1999] Laurent Clozel and Jean-Pierre Labesse, <a href="https://www.numdam.org/item/AST_1999__257__119_0/">“Changement de base pour les représentations cohomologiques de certains groupes unitaires”</a>, Appendix A to Jean-Pierre Labesse, <em>Cohomologie, stabilisation et changement de base</em>, <em>Astérisque</em> 257 (1999), 119–133, Théorème A.3.1.</li>
+<li>[Bernstein–Zelevinsky 1977] I. N. Bernstein and A. V. Zelevinsky, <a href="https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/BZ-induced-1.pdf">“Induced representations of reductive p-adic groups. I”</a>, <em>Annales scientifiques de l'École Normale Supérieure</em> 10 (1977), 441–472, §§1–2.</li>
+<li>[Zelevinsky 1980] A. V. Zelevinsky, <a href="https://www.numdam.org/item/ASENS_1980_4_13_2_165_0/">“Induced representations of reductive p-adic groups. II. On irreducible representations of GL(n)”</a>, <em>Annales scientifiques de l'École Normale Supérieure</em> 13 (1980), 165–210, §1.</li>
+<li>[Henniart 1988] Guy Henniart, <a href="https://www.numdam.org/item/ASENS_1988_4_21_4_497_0/">“La conjecture de Langlands locale numérique pour GL(n)”</a>, <em>Annales scientifiques de l'École Normale Supérieure</em> 21 (1988), 497–544, Theorems 1.2–1.3 and §2.</li>
+<li>[Deligne 1973] Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/deligne73.pdf">letter to I. Piatetski-Shapiro</a>, 25 March 1973, part B, the local construction at supersingular points.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §12.4, especially Theorem 12.4.1.</li>
+<li>[Carayol 2000] Henri Carayol, <a href="https://www.numdam.org/item/SB_1998-1999__41__191_0/">“Preuve de la conjecture de Langlands locale pour GL_n : travaux de Harris–Taylor et Henniart”</a>, Séminaire Bourbaki, exposé 857 (1998–1999), <em>Astérisque</em> 266 (2000), 191–243, §§2–8.</li>
+<li>[Wedhorn 2000] Torsten Wedhorn, <a href="https://arxiv.org/abs/math/0011210v2"><em>The local Langlands correspondence for GL(n) over p-adic fields</em></a>, lectures at the School on Automorphic Forms on GL(n), ICTP Trieste, 2000, (1.2.2), (4.2.2) and (4.4.1).</li>
+<li>[Taylor–Yoshida 2007] Richard Taylor and Teruyoshi Yoshida, <a href="https://math.stanford.edu/~rltaylor/monod2.pdf">“Compatibility of local and global Langlands correspondences”</a>, <em>Journal of the American Mathematical Society</em> 20 (2007), 467–493, Introduction.</li>
+<li>[Scholze 2013] Peter Scholze, <a href="https://arxiv.org/abs/1010.1540v1"><em>The Local Langlands Correspondence for GL_n over p-adic fields</em></a>, <em>Inventiones mathematicae</em> 192 (2013), 663–715, Theorem 1.2, §8, Remark 10.4 and Theorem 10.7.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-10.html">← Jacquet–Langlands: elliptic classes and division-algebra representations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-12.html">Other proofs, functoriality and the formal-degree formula →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-11.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

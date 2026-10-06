@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>p-adic Hodge theory and the Fontaine–Mazur conjecture · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/p-adic-hodge-theory-and-the-fontaine-mazur-conjecture.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="p-adic-hodge-theory-and-the-fontaine-mazur-conjecture">p-adic Hodge theory and the Fontaine–Mazur conjecture</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>At a prime different from the coefficient characteristic, finite inertia and a nilpotent monodromy operator describe the local representation. At the coefficient prime, a second kind of information appears: a filtration recording Hodge–Tate weights. Period rings make this information accessible from the Galois action.</p>
+<p>Throughout, <span class="math" data-tex="\(p\)">\(p\)</span> is the coefficient prime. We use the <strong>positive convention</strong>: <span class="math" data-tex="\(\mathbf Q_p(1)\)">\(\mathbf Q_p(1)\)</span>, with action <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>, has Hodge–Tate weight <span class="math" data-tex="\(+1\)">\(+1\)</span>. Thus the covariant Tate module of an elliptic curve has weights <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, and the representations attached to weight-<span class="math" data-tex="\(k\)">\(k\)</span> newforms have weights <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span>. The convention is explained in <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger's free author manuscript, §II.1.2</a>. The decreasing de Rham filtration has jumps at the <strong>negatives</strong> of these weights.</p>
+<p>The course uses arithmetic Frobenius at good primes away from <span class="math" data-tex="\(p\)">\(p\)</span>; local reciprocity sends a uniformizer to geometric Frobenius, and the Weil–Deligne relation is <span class="math" data-tex="\(r(w)Nr(w)^{-1}=|w|N\)">\(r(w)Nr(w)^{-1}=|w|N\)</span>. The Frobenius <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on a crystalline period module is a different operator: for <span class="math" data-tex="\(\mathbf Q_p(1)\)">\(\mathbf Q_p(1)\)</span> it acts by <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span>. It corresponds to the geometric normalization. We will calculate it rather than identifying it with arithmetic Frobenius.</p>
+<p>We retain the full higher-weight, weight-one, comparison and modularity assertions. Their proof status matters: the preceding higher-weight construction still has unresolved arithmetic-model and comparison inputs, and no earlier lesson supplies the general <span class="math" data-tex="\(p\)">\(p\)</span>-adic comparison theorems. Below we construct the tilt, Witt vectors, <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and the de Rham discrete valuation ring; prove the admissibility algebra; construct unramified period matrices; and calculate the Tate logarithm from divided powers. The deep estimates and comparisons still needed to make every assertion unconditional are identified before use and collected in §6. A freely accessible theorem statement does not close any of those obligations.</p>
+<h2 id="1-weights-and-the-period-rings">1. Weights and the period rings</h2>
+<p>The elementary field and module prerequisites are actual earlier proofs: <em>Profinite groups and ℓ-adic representations</em>, §§0A–0F, proves lattice freeness, finite and infinite Galois theory, primitive elements, finite-extension valuations, Hensel lifting, finite fields and the unramified Frobenius quotient. We use these specific proofs, including the arithmetic normalization on the residue field. The additional wild/tame structure of the monodromy lesson is not needed for the coefficient-prime logarithms below.</p>
+<p>Write <span class="math" data-tex="\(C_p=\widehat{\overline{\mathbf Q}_p}\)">\(C_p=\widehat{\overline{\mathbf Q}_p}\)</span>. The semilinear representation <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span> is the one-dimensional <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-space on which
+<span class="math math-display" data-tex="\[
+g(ae_h)=g(a)\chi_p(g)^h e_h.
+\tag{1}
+\]">\[
+g(ae_h)=g(a)\chi_p(g)^h e_h.
+\tag{1}
+\]</span>
+A representation <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, for a finite extension <span class="math" data-tex="\(K/\mathbf Q_p\)">\(K/\mathbf Q_p\)</span>, is <strong>Hodge–Tate</strong> if there is a semilinear equivariant isomorphism
+<span class="math math-display" data-tex="\[
+C_p\otimes_{\mathbf Q_p}V
+\simeq\bigoplus_{h\in\mathbf Z}C_p(h)^{m_h},
+\qquad \sum_hm_h=\dim_{\mathbf Q_p}V.
+\tag{2}
+\]">\[
+C_p\otimes_{\mathbf Q_p}V
+\simeq\bigoplus_{h\in\mathbf Z}C_p(h)^{m_h},
+\qquad \sum_hm_h=\dim_{\mathbf Q_p}V.
+\tag{2}
+\]</span>
+Its weights are the integers <span class="math" data-tex="\(h\)">\(h\)</span>, with multiplicities <span class="math" data-tex="\(m_h\)">\(m_h\)</span>.</p>
+<p><strong>Tate's invariant theorem (full assertion, proof unclosed).</strong> For every finite <span class="math" data-tex="\(L/\mathbf Q_p\)">\(L/\mathbf Q_p\)</span>,
+<span class="math math-display" data-tex="\[
+C_p^{G_L}=L,\qquad C_p(h)^{G_L}=0\quad(h\ne0).
+\tag{3}
+\]">\[
+C_p^{G_L}=L,\qquad C_p(h)^{G_L}=0\quad(h\ne0).
+\tag{3}
+\]</span>
+The free accounts <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger, §§II.1.1–II.1.2</a> and <a href="https://math.stanford.edu/~conrad/papers/notes.pdf">Brinon–Conrad, Theorem 2.2.7</a> state this result. Its ramification estimates are an <strong>unclosed proof obligation here</strong>. Conditional on (3), nonzero equivariant <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-linear maps between <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span> and <span class="math" data-tex="\(C_p(j)\)">\(C_p(j)\)</span> exist only when <span class="math" data-tex="\(h=j\)">\(h=j\)</span>: their coefficient would be a fixed vector in <span class="math" data-tex="\(C_p(j-h)\)">\(C_p(j-h)\)</span>. Applying <span class="math" data-tex="\(\operatorname{Hom}_{C_p[G_K]}(C_p(h),-)\)">\(\operatorname{Hom}_{C_p[G_K]}(C_p(h),-)\)</span> to (2) shows that <span class="math" data-tex="\(m_h\)">\(m_h\)</span> is uniquely determined. Thus (2) defines weights, rather than just a possible list, once (3) has been established.</p>
+<p>We begin with constructions whose algebra can be given in full. Form
+<span class="math math-display" data-tex="\[
+R=\varprojlim_{x\mapsto x^p}\mathcal O_{C_p}/p,\qquad A_{\inf}=W(R).
+\tag{4}
+\]">\[
+R=\varprojlim_{x\mapsto x^p}\mathcal O_{C_p}/p,\qquad A_{\inf}=W(R).
+\tag{4}
+\]</span>
+<strong>Lemma 1.0 (completion and the tilt).</strong> The field <span class="math" data-tex="\(C_p\)">\(C_p\)</span> is algebraically closed. The ring <span class="math" data-tex="\(R\)">\(R\)</span> in (4) is a perfect, complete valuation domain of characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, with algebraically closed fraction field and value group <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. Every <span class="math" data-tex="\(x=(x_n)\in R\)">\(x=(x_n)\in R\)</span> has a unique lift to an exact root system <span class="math" data-tex="\((x^{(n)})\)">\((x^{(n)})\)</span> in <span class="math" data-tex="\(\mathcal O_{C_p}\)">\(\mathcal O_{C_p}\)</span>, with <span class="math" data-tex="\((x^{(n+1)})^p=x^{(n)}\)">\((x^{(n+1)})^p=x^{(n)}\)</span>. Its valuation is <span class="math" data-tex="\(v_R(x)=v_p(x^{(0)})\)">\(v_R(x)=v_p(x^{(0)})\)</span>, and its residue field is <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span>.</p>
+<p><em>Proof.</em> First let <span class="math" data-tex="\(f\)">\(f\)</span> be a monic polynomial with coefficients in <span class="math" data-tex="\(C_p\)">\(C_p\)</span>. After replacing its variable by a sufficiently large scalar multiple, its coefficients are integral. Approximate them by integral algebraic coefficients to obtain monic <span class="math" data-tex="\(f_n\)">\(f_n\)</span> with coefficient errors of valuation tending to infinity. Each <span class="math" data-tex="\(f_n\)">\(f_n\)</span> splits over <span class="math" data-tex="\(\overline{\mathbf Q}_p\)">\(\overline{\mathbf Q}_p\)</span>, and all its roots are integral: a root of negative valuation would make the leading term uniquely smallest in valuation. Given a root <span class="math" data-tex="\(a_n\)">\(a_n\)</span> of <span class="math" data-tex="\(f_n\)">\(f_n\)</span>, factor <span class="math" data-tex="\(f_{n+1}(a_n)=\prod_j(a_n-b_j)\)">\(f_{n+1}(a_n)=\prod_j(a_n-b_j)\)</span>. The coefficient approximation makes the valuation of this product tend to infinity; one factor has at least that valuation divided by <span class="math" data-tex="\(\deg f\)">\(\deg f\)</span>. Choose that <span class="math" data-tex="\(b_j\)">\(b_j\)</span> as <span class="math" data-tex="\(a_{n+1}\)">\(a_{n+1}\)</span>. The resulting sequence is Cauchy, and its limit is a root of <span class="math" data-tex="\(f\)">\(f\)</span>. Repeating after division by a linear factor proves algebraic closedness. In particular every integral element has an integral <span class="math" data-tex="\(p\)">\(p\)</span>-th root.</p>
+<p>The inverse of Frobenius on <span class="math" data-tex="\(R\)">\(R\)</span> is the shift <span class="math" data-tex="\((x_0,x_1,\ldots)\mapsto(x_1,x_2,\ldots)\)">\((x_0,x_1,\ldots)\mapsto(x_1,x_2,\ldots)\)</span>. Choose arbitrary integral lifts <span class="math" data-tex="\(\widehat x_n\)">\(\widehat x_n\)</span>. The binomial theorem gives
+<span class="math math-display" data-tex="\[
+a\equiv b\pmod p\quad\Longrightarrow\quad
+a^{p^j}\equiv b^{p^j}\pmod {p^{j+1}}.
+\]">\[
+a\equiv b\pmod p\quad\Longrightarrow\quad
+a^{p^j}\equiv b^{p^j}\pmod {p^{j+1}}.
+\]</span>
+Indeed one application of the <span class="math" data-tex="\(p\)">\(p\)</span>-th power raises the congruence exponent by at least one; induction proves the formula. Therefore
+<span class="math math-display" data-tex="\[
+x^{(n)}=\lim_{j\to\infty}\widehat x_{n+j}^{p^j}
+\]">\[
+x^{(n)}=\lim_{j\to\infty}\widehat x_{n+j}^{p^j}
+\]</span>
+exists, is independent of the lifts, and reduces to <span class="math" data-tex="\(x_n\)">\(x_n\)</span>. It has the asserted power compatibility. Conversely an exact root system is recovered by this formula, proving uniqueness. Multiplication of exact systems is coordinatewise, while addition satisfies
+<span class="math math-display" data-tex="\[
+(x+y)^{(n)}=\lim_{j\to\infty}
+ (x^{(n+j)}+y^{(n+j)})^{p^j}.
+\]">\[
+(x+y)^{(n)}=\lim_{j\to\infty}
+ (x^{(n+j)}+y^{(n+j)})^{p^j}.
+\]</span>
+If <span class="math" data-tex="\(x^{(0)}=0\)">\(x^{(0)}=0\)</span>, every coordinate is zero. If <span class="math" data-tex="\(v_R(x)\ge v_R(y)\)">\(v_R(x)\ge v_R(y)\)</span> and <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, the quotients <span class="math" data-tex="\(x^{(n)}/y^{(n)}\)">\(x^{(n)}/y^{(n)}\)</span> are integral and power compatible. They define <span class="math" data-tex="\(z\in R\)">\(z\in R\)</span> with <span class="math" data-tex="\(x=yz\)">\(x=yz\)</span>. Thus <span class="math" data-tex="\(R\)">\(R\)</span> is a valuation domain; the displayed addition formula gives its ultrametric inequality. The kernel of the projection <span class="math" data-tex="\(R\to\mathcal O_{C_p}/p\)">\(R\to\mathcal O_{C_p}/p\)</span>, <span class="math" data-tex="\(x\mapsto x_n\)">\(x\mapsto x_n\)</span>, is exactly <span class="math" data-tex="\(\{v_R(x)\ge p^n\}\)">\(\{v_R(x)\ge p^n\}\)</span>. The valuation topology is consequently the inverse-limit topology of discrete coordinates. A coordinatewise limit of a Cauchy sequence remains power compatible, which proves completeness.</p>
+<p>Reduction of an integral element of <span class="math" data-tex="\(C_p\)">\(C_p\)</span> is already the reduction of an algebraic approximant. Hence its residue field is <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span>. Each residue element has a canonical lift into <span class="math" data-tex="\(\mathcal O_{C_p}/p\)">\(\mathcal O_{C_p}/p\)</span>: choose an algebraic representative and lift it to a root of <span class="math" data-tex="\(T^{p^r}-T\)">\(T^{p^r}-T\)</span>, whose derivative is a unit. Modulo <span class="math" data-tex="\(p\)">\(p\)</span>, these roots are closed under addition and multiplication. Uniqueness with a prescribed residue follows because a difference <span class="math" data-tex="\(d\)">\(d\)</span> of two such roots satisfies <span class="math" data-tex="\(d^{p^r}=d\)">\(d^{p^r}=d\)</span> in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>; a nonzero difference of positive valuation less than one cannot satisfy that equation. The elementary Newton iteration <span class="math" data-tex="\(a\mapsto a-f(a)/f&#x27;(a)\)">\(a\mapsto a-f(a)/f&#x27;(a)\)</span> doubles the error valuation when <span class="math" data-tex="\(f&#x27;(a)\)">\(f&#x27;(a)\)</span> is a unit, so this lifting uses a proved convergence argument. These lifts and their compatible inverse Frobenius images define <span class="math" data-tex="\(\overline{\mathbf F}_p\subset R\)">\(\overline{\mathbf F}_p\subset R\)</span>; their reductions exhaust the residue field. A nonzero limit in <span class="math" data-tex="\(C_p\)">\(C_p\)</span> has the valuation of a sufficiently close algebraic approximant, so its valuation is rational. Compatible roots of <span class="math" data-tex="\(p^{a/b}\)">\(p^{a/b}\)</span> realize every nonnegative rational value in <span class="math" data-tex="\(R\)">\(R\)</span>, proving the value-group assertion.</p>
+<p>To prove algebraic closedness of <span class="math" data-tex="\(\operatorname{Frac}(R)\)">\(\operatorname{Frac}(R)\)</span>, scale a monic polynomial to make all its coefficients integral. It suffices to solve a monic <span class="math" data-tex="\(f\in R[T]\)">\(f\in R[T]\)</span> of degree <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>. Project its coefficients to coordinate <span class="math" data-tex="\(n\)">\(n\)</span>, lift to <span class="math" data-tex="\(\mathcal O_{C_p}\)">\(\mathcal O_{C_p}\)</span>, and factor the lifted polynomial there, with roots <span class="math" data-tex="\(\rho_{i,n}\)">\(\rho_{i,n}\)</span>, <span class="math" data-tex="\(1\le i\le d\)">\(1\le i\le d\)</span>. Its evaluation at <span class="math" data-tex="\(\rho_{i,n+1}^p\)">\(\rho_{i,n+1}^p\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, since modulo <span class="math" data-tex="\(p\)">\(p\)</span> Frobenius carries the polynomial of coordinate <span class="math" data-tex="\(n+1\)">\(n+1\)</span> to that of coordinate <span class="math" data-tex="\(n\)">\(n\)</span>. Factoring that evaluation shows that for some <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math" data-tex="\(v_p(\rho_{i,n+1}^p-\rho_{j,n})\ge1/d\)">\(v_p(\rho_{i,n+1}^p-\rho_{j,n})\ge1/d\)</span>. If a difference has valuation at least <span class="math" data-tex="\(r/d\)">\(r/d\)</span>, <span class="math" data-tex="\(1\le r&lt;d\)">\(1\le r&lt;d\)</span>, its <span class="math" data-tex="\(p\)">\(p\)</span>-th-power difference has valuation at least <span class="math" data-tex="\((r+1)/d\)">\((r+1)/d\)</span>, by the binomial theorem. After <span class="math" data-tex="\(d-1\)">\(d-1\)</span> steps we get
+<span class="math math-display" data-tex="\[
+\rho_{i,n+1}^{p^d}\equiv\rho_{j,n}^{p^{d-1}}\pmod p.
+\]">\[
+\rho_{i,n+1}^{p^d}\equiv\rho_{j,n}^{p^{d-1}}\pmod p.
+\]</span>
+The nonempty finite sets <span class="math" data-tex="\(U_m=\{\rho_{i,m+d-1}^{p^{d-1}}\bmod p:1\le i\le d\}\)">\(U_m=\{\rho_{i,m+d-1}^{p^{d-1}}\bmod p:1\le i\le d\}\)</span> consequently form an inverse system under the <span class="math" data-tex="\(p\)">\(p\)</span>-th-power maps; their elements are roots of the coordinate-<span class="math" data-tex="\(m\)">\(m\)</span> polynomial. There is a compatible sequence: in a finite first set choose an element with arbitrarily long lifts, then do the same at each following level. The resulting element of <span class="math" data-tex="\(R\)">\(R\)</span> is a root of <span class="math" data-tex="\(f\)">\(f\)</span>, as every coordinate of <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> vanishes. Scaling back proves the fraction-field assertion. ∎</p>
+<p><strong>Lemma 1.1 (the Witt algebra used here).</strong> For a perfect <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, the set <span class="math" data-tex="\(A^{\mathbf N}\)">\(A^{\mathbf N}\)</span> has a functorial ring structure <span class="math" data-tex="\(W(A)\)">\(W(A)\)</span>. It is complete and separated for powers of <span class="math" data-tex="\(p\)">\(p\)</span>, multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is injective, and every element has a unique expansion <span class="math" data-tex="\(\sum_{n\ge0}p^n[a_n]\)">\(\sum_{n\ge0}p^n[a_n]\)</span>, where <span class="math" data-tex="\([a]=(a,0,\ldots)\)">\([a]=(a,0,\ldots)\)</span> is multiplicative. Its Frobenius is <span class="math" data-tex="\([a]\mapsto[a^p]\)">\([a]\mapsto[a^p]\)</span>.</p>
+<p><em>Proof.</em> Introduce the ghost polynomials
+<span class="math math-display" data-tex="\[
+w_n(X)=X_0^{p^n}+pX_1^{p^{n-1}}+\cdots+p^nX_n.
+\]">\[
+w_n(X)=X_0^{p^n}+pX_1^{p^{n-1}}+\cdots+p^nX_n.
+\]</span>
+Define the addition and multiplication coordinates recursively by requiring their ghosts to be <span class="math" data-tex="\(w_n(X)+w_n(Y)\)">\(w_n(X)+w_n(Y)\)</span> and <span class="math" data-tex="\(w_n(X)w_n(Y)\)">\(w_n(X)w_n(Y)\)</span>. The coordinate of index <span class="math" data-tex="\(n\)">\(n\)</span> is the difference between this prescribed ghost and the terms already found, divided by <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. We check that this division produces an integer polynomial. In the polynomial ring over <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, let <span class="math" data-tex="\(F\)">\(F\)</span> raise every variable to its <span class="math" data-tex="\(p\)">\(p\)</span>-th power. The prescribed ghost <span class="math" data-tex="\(g_n\)">\(g_n\)</span> satisfies <span class="math" data-tex="\(g_n\equiv F(g_{n-1})\pmod {p^n}\)">\(g_n\equiv F(g_{n-1})\pmod {p^n}\)</span>. Also <span class="math" data-tex="\(F(z)\equiv z^p\pmod p\)">\(F(z)\equiv z^p\pmod p\)</span> for every integer polynomial <span class="math" data-tex="\(z\)">\(z\)</span>. If <span class="math" data-tex="\(a\equiv b\pmod {p^r}\)">\(a\equiv b\pmod {p^r}\)</span>, the binomial theorem gives <span class="math" data-tex="\(a^p\equiv b^p\pmod {p^{r+1}}\)">\(a^p\equiv b^p\pmod {p^{r+1}}\)</span> for <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>. Apply this <span class="math" data-tex="\(n-1-i\)">\(n-1-i\)</span> times to <span class="math" data-tex="\(F(z_i)\)">\(F(z_i)\)</span> and <span class="math" data-tex="\(z_i^p\)">\(z_i^p\)</span>; after multiplication by <span class="math" data-tex="\(p^i\)">\(p^i\)</span>, their contributions differ by a multiple of <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. The recursion is integral by induction.</p>
+<p>Over an integer polynomial ring the ghost map is injective, since its triangular coefficients are <span class="math" data-tex="\(1,p,p^2,\ldots\)">\(1,p,p^2,\ldots\)</span>, all nonzero divisors. All ring identities can therefore be checked on ghosts there. They are integer polynomial identities, so they specialize to every <span class="math" data-tex="\(A\)">\(A\)</span>. The same recursion gives <span class="math" data-tex="\([ab]=[a][b]\)">\([ab]=[a][b]\)</span>, and, in characteristic <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+p(a_0,a_1,\ldots)=(0,a_0^p,a_1^p,\ldots).
+\]">\[
+p(a_0,a_1,\ldots)=(0,a_0^p,a_1^p,\ldots).
+\]</span>
+To justify this identity, work before specialization in <span class="math" data-tex="\(\mathbf Z[X_0,X_1,\ldots]\)">\(\mathbf Z[X_0,X_1,\ldots]\)</span>. Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be the Witt coordinates of <span class="math" data-tex="\(pX\)">\(pX\)</span>, so <span class="math" data-tex="\(w_n(Y)=p w_n(X)\)">\(w_n(Y)=p w_n(X)\)</span>, and set <span class="math" data-tex="\(C=(0,X_0^p,X_1^p,\ldots)\)">\(C=(0,X_0^p,X_1^p,\ldots)\)</span>. Direct substitution gives
+<span class="math math-display" data-tex="\[
+ w_n(C)=p w_n(X)-p^{n+1}X_n.
+\]">\[
+ w_n(C)=p w_n(X)-p^{n+1}X_n.
+\]</span>
+We prove <span class="math" data-tex="\(Y_n-C_n\in p\mathbf Z[X_0,X_1,\ldots]\)">\(Y_n-C_n\in p\mathbf Z[X_0,X_1,\ldots]\)</span> inductively. The assertion for index zero is <span class="math" data-tex="\(Y_0=pX_0\)">\(Y_0=pX_0\)</span>. For <span class="math" data-tex="\(i&lt;n\)">\(i&lt;n\)</span>, the induction hypothesis and the binomial congruence in the preceding paragraph make <span class="math" data-tex="\(Y_i^{p^{n-i}}-C_i^{p^{n-i}}\)">\(Y_i^{p^{n-i}}-C_i^{p^{n-i}}\)</span> divisible by <span class="math" data-tex="\(p^{n-i+1}\)">\(p^{n-i+1}\)</span>; multiplying by <span class="math" data-tex="\(p^i\)">\(p^i\)</span> makes that contribution divisible by <span class="math" data-tex="\(p^{n+1}\)">\(p^{n+1}\)</span>. Comparing the index-<span class="math" data-tex="\(n\)">\(n\)</span> ghosts thus makes <span class="math" data-tex="\(p^n(Y_n-C_n)\)">\(p^n(Y_n-C_n)\)</span> divisible by <span class="math" data-tex="\(p^{n+1}\)">\(p^{n+1}\)</span>. The integer polynomial ring has no <span class="math" data-tex="\(p\)">\(p\)</span>-torsion, so <span class="math" data-tex="\(Y_n-C_n\)">\(Y_n-C_n\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. Specialization to characteristic <span class="math" data-tex="\(p\)">\(p\)</span> proves the displayed identity without using injectivity of characteristic-<span class="math" data-tex="\(p\)">\(p\)</span> ghosts. Perfectness now identifies <span class="math" data-tex="\(p^rW(A)\)">\(p^rW(A)\)</span> with the vectors whose first <span class="math" data-tex="\(r\)">\(r\)</span> coordinates are zero and proves injectivity of multiplication by <span class="math" data-tex="\(p\)">\(p\)</span>. Completeness is precisely completeness of sequences of coordinates. Remove the first coordinate as <span class="math" data-tex="\([a_0]\)">\([a_0]\)</span>, divide the remainder by <span class="math" data-tex="\(p\)">\(p\)</span>, and repeat; this gives the unique expansion. Coordinatewise Frobenius is a ring automorphism by functoriality and perfectness. The integer map into <span class="math" data-tex="\(W(\mathbf F_p)\)">\(W(\mathbf F_p)\)</span> extends to <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span> by completeness. It is injective since multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is injective, and surjective by lifting its residue and dividing the successive remainders by <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(W(\mathbf F_p)=\mathbf Z_p\)">\(W(\mathbf F_p)=\mathbf Z_p\)</span>; its inclusion in <span class="math" data-tex="\(W(R)\)">\(W(R)\)</span> supplies <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span> after inverting <span class="math" data-tex="\(p\)">\(p\)</span>. ∎</p>
+<p><strong>Lemma 1.2 (<span class="math" data-tex="\(\theta\)">\(\theta\)</span>, its kernel, and the de Rham valuation ring).</strong> There is a surjective equivariant ring homomorphism
+<span class="math math-display" data-tex="\[
+\theta\left(\sum_{n\ge0}p^n[a_n]\right)
+   =\sum_{n\ge0}p^n a_n^{(0)}.
+\tag{4a}
+\]">\[
+\theta\left(\sum_{n\ge0}p^n[a_n]\right)
+   =\sum_{n\ge0}p^n a_n^{(0)}.
+\tag{4a}
+\]</span>
+Choose <span class="math" data-tex="\(\widetilde p\in R\)">\(\widetilde p\in R\)</span> with <span class="math" data-tex="\(\widetilde p^{(0)}=p\)">\(\widetilde p^{(0)}=p\)</span>. Then <span class="math" data-tex="\(\ker\theta=(\xi)\)">\(\ker\theta=(\xi)\)</span>, where <span class="math" data-tex="\(\xi=[\widetilde p]-p\)">\(\xi=[\widetilde p]-p\)</span>. The <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic completion of <span class="math" data-tex="\(W(R)[1/p]\)">\(W(R)[1/p]\)</span> is a complete discrete valuation ring <span class="math" data-tex="\(B_{\mathrm{dR}}^+\)">\(B_{\mathrm{dR}}^+\)</span> with residue field <span class="math" data-tex="\(C_p\)">\(C_p\)</span>. It contains the original ring and a canonical equivariant copy of <span class="math" data-tex="\(\overline{\mathbf Q}_p\)">\(\overline{\mathbf Q}_p\)</span>.</p>
+<p><em>Proof.</em> In Witt coordinates <span class="math" data-tex="\((r_0,r_1,\ldots)\)">\((r_0,r_1,\ldots)\)</span>, formula (4a) is <span class="math" data-tex="\(\sum_i p^i r_i^{(i)}\)">\(\sum_i p^i r_i^{(i)}\)</span>. Modulo <span class="math" data-tex="\(p^N\)">\(p^N\)</span>, this equals
+<span class="math math-display" data-tex="\[
+\sum_{i=0}^{N-1}p^i(r_i^{(N)})^{p^{N-i}}.
+\]">\[
+\sum_{i=0}^{N-1}p^i(r_i^{(N)})^{p^{N-i}}.
+\]</span>
+It is the ghost polynomial of index <span class="math" data-tex="\(N\)">\(N\)</span>, with its last term omitted because that term is divisible by <span class="math" data-tex="\(p^N\)">\(p^N\)</span>. This ghost expression only depends on each <span class="math" data-tex="\(r_i^{(N)}\)">\(r_i^{(N)}\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>: replacing a lift by a congruent lift changes its <span class="math" data-tex="\(p^{N-i}\)">\(p^{N-i}\)</span>-th power by a multiple of <span class="math" data-tex="\(p^{N-i+1}\)">\(p^{N-i+1}\)</span>. Projection <span class="math" data-tex="\(R\to\mathcal O_{C_p}/p\)">\(R\to\mathcal O_{C_p}/p\)</span> at coordinate <span class="math" data-tex="\(N\)">\(N\)</span> is a ring map; functoriality of the Witt operations and the ghost addition identity prove additivity of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> modulo <span class="math" data-tex="\(p^N\)">\(p^N\)</span>. This holds for every <span class="math" data-tex="\(N\)">\(N\)</span>. Multiplicativity then follows from additivity, convergent digit expansions, and <span class="math" data-tex="\(\theta([a][b])=(ab)^{(0)}=a^{(0)}b^{(0)}\)">\(\theta([a][b])=(ab)^{(0)}=a^{(0)}b^{(0)}\)</span>. Compatible roots of any integral <span class="math" data-tex="\(z\)">\(z\)</span> give <span class="math" data-tex="\(\theta([\widetilde z])=z\)">\(\theta([\widetilde z])=z\)</span>, proving surjectivity. The construction is equivariant at every stage.</p>
+<p>If <span class="math" data-tex="\(a\in\ker\theta\)">\(a\in\ker\theta\)</span>, its first digit <span class="math" data-tex="\(a_0\)">\(a_0\)</span> has valuation at least one, since <span class="math" data-tex="\(a_0^{(0)}\in p\mathcal O_{C_p}\)">\(a_0^{(0)}\in p\mathcal O_{C_p}\)</span>. As <span class="math" data-tex="\(v_R(\widetilde p)=1\)">\(v_R(\widetilde p)=1\)</span>, write <span class="math" data-tex="\(a_0=\widetilde p b_0\)">\(a_0=\widetilde p b_0\)</span>. Then <span class="math" data-tex="\(a-\xi[b_0]\)">\(a-\xi[b_0]\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>; its quotient again belongs to <span class="math" data-tex="\(\ker\theta\)">\(\ker\theta\)</span>, because <span class="math" data-tex="\(\mathcal O_{C_p}\)">\(\mathcal O_{C_p}\)</span> has no <span class="math" data-tex="\(p\)">\(p\)</span>-torsion. Repetition gives <span class="math" data-tex="\(a=\xi\sum p^i[b_i]\)">\(a=\xi\sum p^i[b_i]\)</span>. Thus the kernel is principal. The Witt ring is a domain: the product of two nonzero elements, after removing their first nonzero powers of <span class="math" data-tex="\(p\)">\(p\)</span>, has a nonzero product of first digits in the domain <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>The same absence of <span class="math" data-tex="\(p\)">\(p\)</span>-torsion proves by induction
+<span class="math math-display" data-tex="\[
+W(R)\cap\xi^jW(R)[1/p]=\xi^jW(R).
+\]">\[
+W(R)\cap\xi^jW(R)[1/p]=\xi^jW(R).
+\]</span>
+An element in every <span class="math" data-tex="\(\xi^jW(R)\)">\(\xi^jW(R)\)</span> has first digit divisible by every <span class="math" data-tex="\(\widetilde p^j\)">\(\widetilde p^j\)</span>, hence zero. It is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, and its quotient has the same property by the intersection identity. Repetition and <span class="math" data-tex="\(p\)">\(p\)</span>-adic separatedness make it zero. Consequently <span class="math" data-tex="\(W(R)[1/p]\)">\(W(R)[1/p]\)</span> embeds into its <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic completion.</p>
+<p>In each quotient modulo <span class="math" data-tex="\(\xi^j\)">\(\xi^j\)</span>, an element with nonzero residue is a unit: lift a residue inverse and use the finite geometric series to correct the product. An element with zero residue is uniquely divisible by <span class="math" data-tex="\(\xi\)">\(\xi\)</span> modulo <span class="math" data-tex="\(\xi^{j-1}\)">\(\xi^{j-1}\)</span>, because <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is not a zero divisor. Compatible quotients show that the completed ring has maximal ideal generated by <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, with <span class="math" data-tex="\(\xi\)">\(\xi\)</span> still a nonzero divisor. Its powers have zero intersection and its residue is <span class="math" data-tex="\(C_p\)">\(C_p\)</span>. Every nonzero element is a power of <span class="math" data-tex="\(\xi\)">\(\xi\)</span> times a unit, proving the discrete valuation assertion.</p>
+<p>Finally any algebraic <span class="math" data-tex="\(a\in C_p\)">\(a\in C_p\)</span> has a separable minimal polynomial over <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>. Lift its residue root by Newton iteration in the complete <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic ring; its derivative has nonzero residue and is a unit. The iteration doubles the <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic error, and its root with prescribed residue is unique. For addition and multiplication, place the finitely many algebraic elements in a common finite extension <span class="math" data-tex="\(F/\mathbf Q_p\)">\(F/\mathbf Q_p\)</span>. The primitive-element proof at the start of lesson 1, Proposition 0E.1, gives <span class="math" data-tex="\(F=\mathbf Q_p[\beta]\)">\(F=\mathbf Q_p[\beta]\)</span>. Lift <span class="math" data-tex="\(\beta\)">\(\beta\)</span> by the Newton procedure just described. Evaluation at that lift defines a homomorphism <span class="math" data-tex="\(\mathbf Q_p[T]/(f_\beta)\to B_{\mathrm{dR}}^+\)">\(\mathbf Q_p[T]/(f_\beta)\to B_{\mathrm{dR}}^+\)</span>: the minimal polynomial vanishes there, and the map from this field is injective because it sends one to one. Every element of <span class="math" data-tex="\(F\)">\(F\)</span> is a polynomial in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Its polynomial value is a root of its own minimal polynomial with the prescribed residue, so uniqueness identifies it with its individual Newton lift. This proves compatibility with addition, multiplication and field inclusions. Applying any Galois element preserves the minimal polynomial and changes the prescribed residue accordingly, so uniqueness proves equivariance. They give the asserted canonical algebraic constants. ∎</p>
+<p>Choose <span class="math" data-tex="\(\epsilon=(1,\zeta_p,\zeta_{p^2},\ldots)\)">\(\epsilon=(1,\zeta_p,\zeta_{p^2},\ldots)\)</span> as an exact root system. The logarithm in the following display converges for the maximal-ideal topology:
+<span class="math math-display" data-tex="\[
+t=\log([\epsilon]),\quad g(t)=\chi_p(g)t,\quad
+B_{\mathrm{dR}}=B_{\mathrm{dR}}^+[1/t],\quad
+\operatorname{Fil}^iB_{\mathrm{dR}}=t^iB_{\mathrm{dR}}^+.
+\tag{5}
+\]">\[
+t=\log([\epsilon]),\quad g(t)=\chi_p(g)t,\quad
+B_{\mathrm{dR}}=B_{\mathrm{dR}}^+[1/t],\quad
+\operatorname{Fil}^iB_{\mathrm{dR}}=t^iB_{\mathrm{dR}}^+.
+\tag{5}
+\]</span>
+Here is the remaining distinction between a proved construction and a period-ring structural theorem.</p>
+<p><strong>Lemma 1.2A (the uniformizer and divided-power logarithms).</strong> The element <span class="math" data-tex="\(t=\log[\epsilon]\)">\(t=\log[\epsilon]\)</span> is a uniformizer of <span class="math" data-tex="\(B_{\mathrm{dR}}^+\)">\(B_{\mathrm{dR}}^+\)</span>. Set
+<span class="math math-display" data-tex="\[
+A_0=W(R)[\xi^n/n!:n\ge1],\qquad
+A_{\mathrm{cris}}=\varprojlim_r A_0/p^rA_0.
+\tag{5a}
+\]">\[
+A_0=W(R)[\xi^n/n!:n\ge1],\qquad
+A_{\mathrm{cris}}=\varprojlim_r A_0/p^rA_0.
+\tag{5a}
+\]</span>
+In this abstract completion, the logarithm of <span class="math" data-tex="\([x]\)">\([x]\)</span> exists after inverting <span class="math" data-tex="\(p\)">\(p\)</span> whenever <span class="math" data-tex="\(x\in1+\mathfrak m_R\)">\(x\in1+\mathfrak m_R\)</span>. It is additive on products, equivariant, and satisfies <span class="math" data-tex="\(\varphi(\log[x])=p\log[x]\)">\(\varphi(\log[x])=p\log[x]\)</span>. These identities include <span class="math" data-tex="\(g(t)=\chi_p(g)t\)">\(g(t)=\chi_p(g)t\)</span> once the natural map from this completion to <span class="math" data-tex="\(B_{\mathrm{dR}}^+\)">\(B_{\mathrm{dR}}^+\)</span> has been established. The existence and injectivity of that natural map remain a structural obligation; they are not inferred from the definition (5a).</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(\epsilon_1=\epsilon^{1/p}\)">\(\epsilon_1=\epsilon^{1/p}\)</span>. The element
+<span class="math math-display" data-tex="\[
+\omega=1+[\epsilon_1]+\cdots+[\epsilon_1]^{p-1}
+\]">\[
+\omega=1+[\epsilon_1]+\cdots+[\epsilon_1]^{p-1}
+\]</span>
+is killed by <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, since its residue is <span class="math" data-tex="\(\sum_{i=0}^{p-1}\zeta_p^i=0\)">\(\sum_{i=0}^{p-1}\zeta_p^i=0\)</span>. Modulo <span class="math" data-tex="\(p\)">\(p\)</span> it is <span class="math" data-tex="\((\epsilon_1-1)^{p-1}\)">\((\epsilon_1-1)^{p-1}\)</span>. To compute its valuation, observe that <span class="math" data-tex="\(\Phi_{p^n}(1+T)\)">\(\Phi_{p^n}(1+T)\)</span> has degree <span class="math" data-tex="\(p^{n-1}(p-1)\)">\(p^{n-1}(p-1)\)</span>, constant coefficient <span class="math" data-tex="\(p\)">\(p\)</span>, and all intermediate coefficients divisible by <span class="math" data-tex="\(p\)">\(p\)</span>: its reduction is that power of <span class="math" data-tex="\(T\)">\(T\)</span>. A primitive <span class="math" data-tex="\(p^n\)">\(p^n\)</span>-th root reduces to one, so <span class="math" data-tex="\(v_p(\zeta_{p^n}-1)&gt;0\)">\(v_p(\zeta_{p^n}-1)&gt;0\)</span>. In its polynomial equation the intermediate terms have valuation greater than one; the constant and leading terms must therefore have equal valuation. This gives
+<span class="math" data-tex="\(v_p(\zeta_{p^n}-1)=1/(p^{n-1}(p-1))\)">\(v_p(\zeta_{p^n}-1)=1/(p^{n-1}(p-1))\)</span>. Taking the exact-system limit gives <span class="math" data-tex="\(v_R(\epsilon_1-1)=1/(p-1)\)">\(v_R(\epsilon_1-1)=1/(p-1)\)</span>. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, subtraction in the tilt is addition; the exact-system formula uses <span class="math" data-tex="\(\zeta_{2^{n+1}}+1=(\zeta_{2^{n+1}}-1)+2\)">\(\zeta_{2^{n+1}}+1=(\zeta_{2^{n+1}}-1)+2\)</span>. For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the first summand has valuation less than one, so the same valuation calculation applies. Thus the argument includes <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Thus <span class="math" data-tex="\(\omega\bmod p\)">\(\omega\bmod p\)</span> has valuation one. Write <span class="math" data-tex="\(\omega=\xi c\)">\(\omega=\xi c\)</span> by Lemma 1.2; its first digit forces the first digit of <span class="math" data-tex="\(c\)">\(c\)</span> to be a unit. Hence <span class="math" data-tex="\(c\)">\(c\)</span> is a Witt unit, and <span class="math" data-tex="\(\omega\)">\(\omega\)</span> generates <span class="math" data-tex="\(\ker\theta\)">\(\ker\theta\)</span>. Since
+<span class="math math-display" data-tex="\[
+[\epsilon]-1=\omega([\epsilon_1]-1),\qquad
+\theta([\epsilon_1]-1)=\zeta_p-1\ne0,
+\]">\[
+[\epsilon]-1=\omega([\epsilon_1]-1),\qquad
+\theta([\epsilon_1]-1)=\zeta_p-1\ne0,
+\]</span>
+the element <span class="math" data-tex="\([\epsilon]-1\)">\([\epsilon]-1\)</span> is a uniformizer in <span class="math" data-tex="\(B_{\mathrm{dR}}^+\)">\(B_{\mathrm{dR}}^+\)</span>. Its logarithm is itself plus terms of maximal-ideal order at least two, so <span class="math" data-tex="\(t\)">\(t\)</span> is a uniformizer.</p>
+<p>The divided powers of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> lie in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. For sums this follows from
+<span class="math" data-tex="\((a+b)^n/n!=\sum_{i+j=n}(a^i/i!)(b^j/j!)\)">\((a+b)^n/n!=\sum_{i+j=n}(a^i/i!)(b^j/j!)\)</span>; for divided powers of a divided power it follows from the integer
+<span class="math" data-tex="\((mn)!/(m!(n!)^m)\)">\((mn)!/(m!(n!)^m)\)</span>, which counts partitions of <span class="math" data-tex="\(mn\)">\(mn\)</span> labelled objects into <span class="math" data-tex="\(m\)">\(m\)</span> unordered blocks of size <span class="math" data-tex="\(n\)">\(n\)</span>. Thus every element of <span class="math" data-tex="\((p,\xi)A_0\)">\((p,\xi)A_0\)</span> has divided powers in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. If <span class="math" data-tex="\(z=[x]-1\)">\(z=[x]-1\)</span> with <span class="math" data-tex="\(x\in1+\mathfrak m_R\)">\(x\in1+\mathfrak m_R\)</span>, then <span class="math" data-tex="\(\theta(z)=x^{(0)}-1\)">\(\theta(z)=x^{(0)}-1\)</span> has positive valuation. For some integer <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\theta(z^M)\in p\mathcal O_{C_p}\)">\(\theta(z^M)\in p\mathcal O_{C_p}\)</span>, so surjectivity of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives <span class="math" data-tex="\(z^M\in(p,\xi)W(R)\)">\(z^M\in(p,\xi)W(R)\)</span>. Writing <span class="math" data-tex="\(n=Mq+r\)">\(n=Mq+r\)</span>, <span class="math" data-tex="\(0\le r&lt;M\)">\(0\le r&lt;M\)</span>, gives
+<span class="math math-display" data-tex="\[
+\frac{z^n}{n}=\frac{q!}{n}\,z^r\frac{(z^M)^q}{q!}.
+\tag{5b}
+\]">\[
+\frac{z^n}{n}=\frac{q!}{n}\,z^r\frac{(z^M)^q}{q!}.
+\tag{5b}
+\]</span>
+The last factor is integral in <span class="math" data-tex="\(A_0\)">\(A_0\)</span>. Also
+<span class="math" data-tex="\(v_p(q!)=\sum_{j\ge1}\lfloor q/p^j\rfloor\)">\(v_p(q!)=\sum_{j\ge1}\lfloor q/p^j\rfloor\)</span>, which grows linearly with <span class="math" data-tex="\(q\)">\(q\)</span>, whereas <span class="math" data-tex="\(v_p(n)\le\log_p n\)">\(v_p(n)\le\log_p n\)</span>. Hence the terms in (5b) eventually lie in <span class="math" data-tex="\(A_0\)">\(A_0\)</span> and tend to zero <span class="math" data-tex="\(p\)">\(p\)</span>-adically. The logarithm converges in <span class="math" data-tex="\(A_{\mathrm{cris}}[1/p]\)">\(A_{\mathrm{cris}}[1/p]\)</span>.</p>
+<p>The identities for logarithms follow from the formal power-series identity
+<span class="math" data-tex="\(\log((1+Z)(1+W))=\log(1+Z)+\log(1+W)\)">\(\log((1+Z)(1+W))=\log(1+Z)+\log(1+W)\)</span>, whose derivatives and value at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> determine it over <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span>. They can be evaluated here: the bound (5b) makes all terms beyond a sufficiently large total degree arbitrarily divisible by <span class="math" data-tex="\(p\)">\(p\)</span>. The corresponding two-variable bound follows by choosing powers of both variables lying in <span class="math" data-tex="\((p,\xi)\)">\((p,\xi)\)</span>, and using the divided powers of their sum; factorial growth dominates the denominators. Consequently the finite-degree identities pass to the completed limit.</p>
+<p>Witt Frobenius preserves <span class="math" data-tex="\(A_0\)">\(A_0\)</span>:
+<span class="math math-display" data-tex="\[
+\varphi(\xi)=(\xi+p)^p-p
+   =\xi^p+pw
+   =p\bigl((p-1)!\xi^p/p!+w\bigr),\qquad w\in W(R),
+\]">\[
+\varphi(\xi)=(\xi+p)^p-p
+   =\xi^p+pw
+   =p\bigl((p-1)!\xi^p/p!+w\bigr),\qquad w\in W(R),
+\]</span>
+and <span class="math" data-tex="\(p^n/n!\in\mathbf Z_p\)">\(p^n/n!\in\mathbf Z_p\)</span>. It extends continuously to the completion. Applying it to the convergent logarithm and using <span class="math" data-tex="\([x^p]=[x]^p\)">\([x^p]=[x]^p\)</span> proves <span class="math" data-tex="\(\varphi(\log[x])=p\log[x]\)">\(\varphi(\log[x])=p\log[x]\)</span>. Its injectivity on the completion has not been proved by this argument.</p>
+<p>For completeness, exponentiation by <span class="math" data-tex="\(a\in\mathbf Z_p\)">\(a\in\mathbf Z_p\)</span> in the logarithm identity is justified here, rather than by the discrete valuation topology, in which <span class="math" data-tex="\(p\)">\(p\)</span> is a unit. We have <span class="math" data-tex="\([\widetilde p]^p=(\xi+p)^p\in pA_0\)">\([\widetilde p]^p=(\xi+p)^p\in pA_0\)</span>. Therefore a Teichmüller digit whose tilt valuation is at least <span class="math" data-tex="\(pr\)">\(pr\)</span> lies in <span class="math" data-tex="\(p^rA_0\)">\(p^rA_0\)</span>. If two tilt elements are sufficiently close, their first <span class="math" data-tex="\(r\)">\(r\)</span> Witt difference coordinates all have sufficiently large valuation: apply functoriality to their equality modulo a sufficiently small ideal of <span class="math" data-tex="\(R\)">\(R\)</span>. The Teichmüller digits are the inverse <span class="math" data-tex="\(p^i\)">\(p^i\)</span>-th powers of those coordinates. Each of these first digits then lies in <span class="math" data-tex="\(p^rA_0\)">\(p^rA_0\)</span>, and the remaining digits already carry <span class="math" data-tex="\(p^r\)">\(p^r\)</span>. This proves continuity <span class="math" data-tex="\(W(R)\to A_{\mathrm{cris}}\)">\(W(R)\to A_{\mathrm{cris}}\)</span> for the product valuation topology on coordinates. The logarithm of <span class="math" data-tex="\([\epsilon^a]\)">\([\epsilon^a]\)</span>, which has residue one, has the uniformly small tails <span class="math" data-tex="\((n-1)!w^n\xi^n/n!\)">\((n-1)!w^n\xi^n/n!\)</span> with <span class="math" data-tex="\(w\in W(R)\)">\(w\in W(R)\)</span>. Approximate <span class="math" data-tex="\(a\)">\(a\)</span> by integers to obtain <span class="math" data-tex="\(\log[\epsilon^a]=a\log[\epsilon]\)">\(\log[\epsilon^a]=a\log[\epsilon]\)</span>. Taking <span class="math" data-tex="\(a=\chi_p(g)\)">\(a=\chi_p(g)\)</span> gives the Galois identity in the abstract completion. Mapping this identity into the de Rham ring requires the structural map expressly retained above. ∎</p>
+<p>Define <span class="math" data-tex="\(B_{\mathrm{cris}}^+=A_{\mathrm{cris}}[1/p]\)">\(B_{\mathrm{cris}}^+=A_{\mathrm{cris}}[1/p]\)</span> and <span class="math" data-tex="\(B_{\mathrm{cris}}=B_{\mathrm{cris}}^+[1/t]\)">\(B_{\mathrm{cris}}=B_{\mathrm{cris}}^+[1/t]\)</span>. In all assertions using these as subrings of <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span>, we require the still unproved injective structural map. Adjoining a logarithmic period <span class="math" data-tex="\(Y\)">\(Y\)</span> gives
+<span class="math math-display" data-tex="\[
+B_{\mathrm{st}}=B_{\mathrm{cris}}[Y],\qquad
+\varphi(Y)=pY,\qquad N=-\frac{d}{dY},\qquad N\varphi=p\varphi N.
+\tag{6}
+\]">\[
+B_{\mathrm{st}}=B_{\mathrm{cris}}[Y],\qquad
+\varphi(Y)=pY,\qquad N=-\frac{d}{dY},\qquad N\varphi=p\varphi N.
+\tag{6}
+\]</span>
+One chooses a branch of the logarithm to embed <span class="math" data-tex="\(B_{\mathrm{st}}\)">\(B_{\mathrm{st}}\)</span> into <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span>; we take <span class="math" data-tex="\(\log_p(p)=0\)">\(\log_p(p)=0\)</span>. This choice affects the displayed filtration, not the property of being semistable. The inclusions are
+<span class="math math-display" data-tex="\[
+B_{\mathrm{cris}}\subset B_{\mathrm{st}}\subset B_{\mathrm{dR}},
+\qquad B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}.
+\tag{7}
+\]">\[
+B_{\mathrm{cris}}\subset B_{\mathrm{st}}\subset B_{\mathrm{dR}},
+\qquad B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}.
+\tag{7}
+\]</span>
+The last equality follows directly from (6): in characteristic zero a polynomial with zero derivative is constant. The abstract polynomial ring and its operators require no transcendence theorem. Its asserted embedding requires proving that the de Rham element <span class="math" data-tex="\(\log([\widetilde p]/p)\)">\(\log([\widetilde p]/p)\)</span> is transcendental over <span class="math" data-tex="\(\operatorname{Frac}(B_{\mathrm{cris}})\)">\(\operatorname{Frac}(B_{\mathrm{cris}})\)</span>; this is a separate <strong>unclosed structural obligation</strong>. On monomials <span class="math" data-tex="\(bY^m\)">\(bY^m\)</span>, both sides of <span class="math" data-tex="\(N\varphi=p\varphi N\)">\(N\varphi=p\varphi N\)</span> equal <span class="math" data-tex="\(-mp^m\varphi(b)Y^{m-1}\)">\(-mp^m\varphi(b)Y^{m-1}\)</span>. Thus that operator relation is already proved in the abstract ring, with precisely the sign convention in (6).</p>
+<p>For a finite <span class="math" data-tex="\(K/\mathbf Q_p\)">\(K/\mathbf Q_p\)</span>, write <span class="math" data-tex="\(K_0\)">\(K_0\)</span> for its maximal unramified subfield. The invariant-ring and admissibility facts we use are
+<span class="math math-display" data-tex="\[
+B_{\mathrm{dR}}^{G_K}=K,\qquad
+B_{\mathrm{cris}}^{G_K}=B_{\mathrm{st}}^{G_K}=K_0.
+\tag{8}
+\]">\[
+B_{\mathrm{dR}}^{G_K}=K,\qquad
+B_{\mathrm{cris}}^{G_K}=B_{\mathrm{st}}^{G_K}=K_0.
+\tag{8}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_{\mathrm{dR}}(V)&amp;=(B_{\mathrm{dR}}\otimes_{\mathbf Q_p}V)^{G_K},\\
+D_{\mathrm{cris}}(V)&amp;=(B_{\mathrm{cris}}\otimes_{\mathbf Q_p}V)^{G_K},\\
+D_{\mathrm{st}}(V)&amp;=(B_{\mathrm{st}}\otimes_{\mathbf Q_p}V)^{G_K}.
+\end{aligned}
+\tag{9}
+\]">\[
+\begin{aligned}
+D_{\mathrm{dR}}(V)&amp;=(B_{\mathrm{dR}}\otimes_{\mathbf Q_p}V)^{G_K},\\
+D_{\mathrm{cris}}(V)&amp;=(B_{\mathrm{cris}}\otimes_{\mathbf Q_p}V)^{G_K},\\
+D_{\mathrm{st}}(V)&amp;=(B_{\mathrm{st}}\otimes_{\mathbf Q_p}V)^{G_K}.
+\end{aligned}
+\tag{9}
+\]</span>
+Their dimensions over <span class="math" data-tex="\(K,K_0,K_0\)">\(K,K_0,K_0\)</span>, respectively, are at most <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>. Equality defines <strong>de Rham</strong>, <strong>crystalline</strong>, and <strong>semistable</strong>, respectively. These dimension criteria are equivalent to the corresponding comparison map being an isomorphism, once the ring regularity in Lemma 1.3 has been proved for the relevant period ring. For instance, in the crystalline case,
+<span class="math math-display" data-tex="\[
+B_{\mathrm{cris}}\otimes_{K_0}D_{\mathrm{cris}}(V)
+\longrightarrow B_{\mathrm{cris}}\otimes_{\mathbf Q_p}V.
+\tag{10}
+\]">\[
+B_{\mathrm{cris}}\otimes_{K_0}D_{\mathrm{cris}}(V)
+\longrightarrow B_{\mathrm{cris}}\otimes_{\mathbf Q_p}V.
+\tag{10}
+\]</span>
+<strong>Lemma 1.3 (the admissibility algebra).</strong> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a field, <span class="math" data-tex="\(B\)">\(B\)</span> an <span class="math" data-tex="\(F\)">\(F\)</span>-algebra domain with a group <span class="math" data-tex="\(G\)">\(G\)</span> acting by <span class="math" data-tex="\(F\)">\(F\)</span>-algebra automorphisms, and <span class="math" data-tex="\(E=B^G\)">\(E=B^G\)</span> a field. Suppose
+<span class="math math-display" data-tex="\[
+\operatorname{Frac}(B)^G=E,
+\qquad 0\ne b\in B,\ Fb\text{ stable under }G
+   \Longrightarrow b\in B^\times.
+\tag{10a}
+\]">\[
+\operatorname{Frac}(B)^G=E,
+\qquad 0\ne b\in B,\ Fb\text{ stable under }G
+   \Longrightarrow b\in B^\times.
+\tag{10a}
+\]</span>
+For every finite-dimensional <span class="math" data-tex="\(F\)">\(F\)</span>-representation <span class="math" data-tex="\(V\)">\(V\)</span>, its invariant vectors are independent over <span class="math" data-tex="\(B\)">\(B\)</span> whenever they are independent over <span class="math" data-tex="\(E\)">\(E\)</span>. The comparison map is injective, its invariant dimension is at most <span class="math" data-tex="\(\dim_F V\)">\(\dim_F V\)</span>, and equality makes that map an isomorphism. Admissible representations are closed under subquotients, tensors and duals, and their invariant functor is exact and commutes with these operations.</p>
+<p><em>Proof.</em> Work first over <span class="math" data-tex="\(C=\operatorname{Frac}(B)\)">\(C=\operatorname{Frac}(B)\)</span>. A dependence among invariant vectors of minimal length can be normalized as <span class="math" data-tex="\(x_r=\sum_{i&lt;r}c_ix_i\)">\(x_r=\sum_{i&lt;r}c_ix_i\)</span>, where the preceding vectors are independent. Apply <span class="math" data-tex="\(g\)">\(g\)</span> and subtract. Independence gives <span class="math" data-tex="\(g(c_i)=c_i\)">\(g(c_i)=c_i\)</span>, hence <span class="math" data-tex="\(c_i\in C^G=E\)">\(c_i\in C^G=E\)</span>, contradicting independence over <span class="math" data-tex="\(E\)">\(E\)</span>. This proves comparison injectivity and the dimension bound. In the equality case its square matrix <span class="math" data-tex="\(M\)">\(M\)</span>, in an invariant <span class="math" data-tex="\(E\)">\(E\)</span>-basis and an <span class="math" data-tex="\(F\)">\(F\)</span>-basis of <span class="math" data-tex="\(V\)">\(V\)</span>, has nonzero determinant. Invariance gives
+<span class="math math-display" data-tex="\[
+g(\det M)=\det(\rho_V(g))^{-1}\det M.
+\]">\[
+g(\det M)=\det(\rho_V(g))^{-1}\det M.
+\]</span>
+Condition (10a) makes this determinant a unit of <span class="math" data-tex="\(B\)">\(B\)</span>, so the comparison matrix is invertible over <span class="math" data-tex="\(B\)">\(B\)</span>, not merely over <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)">\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)</span> has admissible middle term, invariants are left exact. Consequently
+<span class="math math-display" data-tex="\[
+\dim_F V=\dim_E D(V)
+ \le \dim_E D(V&#x27;)+\dim_E D(V&#x27;&#x27;)
+ \le \dim_F V&#x27;+\dim_F V&#x27;&#x27;=\dim_F V.
+\]">\[
+\dim_F V=\dim_E D(V)
+ \le \dim_E D(V&#x27;)+\dim_E D(V&#x27;&#x27;)
+ \le \dim_F V&#x27;+\dim_F V&#x27;&#x27;=\dim_F V.
+\]</span>
+All inequalities are equalities; both outer representations are admissible and the sequence of invariants is exact. Tensoring invariant comparison bases gives an invariant basis for the tensor product. Taking their dual basis gives an invariant basis for the dual: its vectors belong to <span class="math" data-tex="\(B\otimes_F V^\vee\)">\(B\otimes_F V^\vee\)</span> because the comparison matrix is invertible over <span class="math" data-tex="\(B\)">\(B\)</span>. Coefficients of every invariant vector in either basis lie in <span class="math" data-tex="\(B^G=E\)">\(B^G=E\)</span>, proving the claimed identifications and perfect duality. Exterior and symmetric powers are quotients of tensor powers and are treated in exactly this way. Faithfulness follows because a linear map that vanishes after extension to the nonzero <span class="math" data-tex="\(F\)">\(F\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span> already vanishes over <span class="math" data-tex="\(F\)">\(F\)</span>. ∎</p>
+<p>This proof reconstructs the algebra of <a href="https://math.stanford.edu/~conrad/papers/notes.pdf">Brinon–Conrad, Theorem 5.2.1</a>. For the field <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span>, (10a) is automatic once its invariants are known. For <span class="math" data-tex="\(B_{\mathrm{cris}}\)">\(B_{\mathrm{cris}}\)</span> and <span class="math" data-tex="\(B_{\mathrm{st}}\)">\(B_{\mathrm{st}}\)</span>, (10a) is still an obligation: it does not follow merely from their displayed invariant rings (8). In the free notes, Proposition 9.1.6 uses both the stronger Tate–Sen character theorem and the unproved injectivity of <span class="math" data-tex="\(K\otimes_{K_0}B_{\mathrm{cris}}\to B_{\mathrm{dR}}\)">\(K\otimes_{K_0}B_{\mathrm{cris}}\to B_{\mathrm{dR}}\)</span>; Proposition 9.2.11 additionally uses the semistable embedding and the crystalline character classification. Those dependencies remain open here.</p>
+<p>One part of (8) can now be reduced explicitly to (3). Assuming the Galois identity for <span class="math" data-tex="\(t\)">\(t\)</span> in (5), the associated graded of <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span> is <span class="math" data-tex="\(\bigoplus_{i\in\mathbf Z}C_p(i)\)">\(\bigoplus_{i\in\mathbf Z}C_p(i)\)</span>. A nonzero invariant <span class="math" data-tex="\(b\)">\(b\)</span> with exact <span class="math" data-tex="\(t\)">\(t\)</span>-adic order <span class="math" data-tex="\(i\)">\(i\)</span> has a nonzero invariant leading coefficient in <span class="math" data-tex="\(C_p(i)\)">\(C_p(i)\)</span>; (3) forces <span class="math" data-tex="\(i=0\)">\(i=0\)</span>. Its residue lies in <span class="math" data-tex="\(K\)">\(K\)</span>. Subtract the canonical algebraic constant with that residue. A nonzero remainder would be invariant of positive order, which is impossible by the same argument. Thus <span class="math" data-tex="\(B_{\mathrm{dR}}^{G_K}=K\)">\(B_{\mathrm{dR}}^{G_K}=K\)</span>. This is a full proof of this consequence, conditional precisely on (3) and the logarithm compatibility already identified. The two remaining equalities in (8) require the crystalline and semistable embedding theorems.</p>
+<p>The full implication chain is
+<span class="math math-display" data-tex="\[
+\text{crystalline}\Longrightarrow\text{semistable}
+\Longrightarrow\text{de Rham}\Longrightarrow\text{Hodge–Tate}.
+\tag{11}
+\]">\[
+\text{crystalline}\Longrightarrow\text{semistable}
+\Longrightarrow\text{de Rham}\Longrightarrow\text{Hodge–Tate}.
+\tag{11}
+\]</span>
+For a de Rham <span class="math" data-tex="\(V\)">\(V\)</span>, the multiplicity of weight <span class="math" data-tex="\(h\)">\(h\)</span> is
+<span class="math math-display" data-tex="\[
+\dim_K\operatorname{gr}^{-h}D_{\mathrm{dR}}(V).
+\tag{12}
+\]">\[
+\dim_K\operatorname{gr}^{-h}D_{\mathrm{dR}}(V).
+\tag{12}
+\]</span>
+The closure assertions for de Rham, crystalline and semistable representations are proved by Lemma 1.3 subject to the specified ring regularity. The Hodge–Tate closure assertion has its own elementary algebraic proof: regard a semilinear <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-space as a module for the operators consisting of scalar multiplication and Galois action. Each <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span> is simple, since it is one-dimensional over <span class="math" data-tex="\(C_p\)">\(C_p\)</span>. A finite direct sum of simple modules is semisimple. Indeed, given a submodule <span class="math" data-tex="\(W\)">\(W\)</span>, choose a maximal direct sum <span class="math" data-tex="\(C\)">\(C\)</span> of ambient simple summands disjoint from <span class="math" data-tex="\(W\)">\(W\)</span>. If <span class="math" data-tex="\(W+C\)">\(W+C\)</span> were proper, some generating simple summand would not lie in it and would meet it in zero, contradicting maximality. Hence <span class="math" data-tex="\(W\)">\(W\)</span> is a quotient of the ambient sum by <span class="math" data-tex="\(C\)">\(C\)</span>; images of its simple generators are simple or zero, and choosing them successively proves that <span class="math" data-tex="\(W\)">\(W\)</span> is a sum of simple modules. The quotient is treated similarly. All these simple constituents are among the original <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span>; tensors and duals follow from their displayed character formulas. Uniqueness of the weights still uses (3).</p>
+<p><strong>Lemma 1.4 (the filtration comparison).</strong> Subject to (3), the Galois action on <span class="math" data-tex="\(t\)">\(t\)</span>, and the invariant and regularity obligations just stated, (11) and (12) follow from the constructed rings. In particular, they require no additional geometric comparison theorem for an already de Rham representation.</p>
+<p><em>Proof.</em> An invariant comparison basis over <span class="math" data-tex="\(B_{\mathrm{cris}}\)">\(B_{\mathrm{cris}}\)</span> remains a basis over <span class="math" data-tex="\(B_{\mathrm{st}}\)">\(B_{\mathrm{st}}\)</span>, and an invariant basis over <span class="math" data-tex="\(B_{\mathrm{st}}\)">\(B_{\mathrm{st}}\)</span> remains a basis over <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span>. Coefficients of invariant vectors in the extended basis lie in its invariant field. This proves the first two implications.</p>
+<p>Now let <span class="math" data-tex="\(D=D_{\mathrm{dR}}(V)\)">\(D=D_{\mathrm{dR}}(V)\)</span> have dimension <span class="math" data-tex="\(d=\dim V\)">\(d=\dim V\)</span>, with the filtration induced by <span class="math" data-tex="\(B_{\mathrm{dR}}\otimes V\)">\(B_{\mathrm{dR}}\otimes V\)</span>. It is exhaustive and separated: every one of a finite basis of <span class="math" data-tex="\(D\)">\(D\)</span> has a finite lower bound on its coefficient orders, and a descending chain of subspaces of the finite-dimensional <span class="math" data-tex="\(D\)">\(D\)</span> stabilizes, with stable term contained in the zero intersection of all powers of <span class="math" data-tex="\(t\)">\(t\)</span>. Choose a <span class="math" data-tex="\(K\)">\(K\)</span>-basis adapted to this filtration, with <span class="math" data-tex="\(d_{i,j}\)">\(d_{i,j}\)</span> representing a basis of <span class="math" data-tex="\(\operatorname{gr}^iD\)">\(\operatorname{gr}^iD\)</span>. Reduce
+<span class="math math-display" data-tex="\[
+r_{i,j}=\theta(t^{-i}d_{i,j})\in C_p\otimes V.
+\tag{12a}
+\]">\[
+r_{i,j}=\theta(t^{-i}d_{i,j})\in C_p\otimes V.
+\tag{12a}
+\]</span>
+These vectors satisfy <span class="math" data-tex="\(g(r_{i,j})=\chi_p(g)^{-i}r_{i,j}\)">\(g(r_{i,j})=\chi_p(g)^{-i}r_{i,j}\)</span>. For each fixed <span class="math" data-tex="\(i\)">\(i\)</span> they are independent over <span class="math" data-tex="\(K\)">\(K\)</span>: a dependence would say that the corresponding combination of <span class="math" data-tex="\(d_{i,j}\)">\(d_{i,j}\)</span> lies in <span class="math" data-tex="\(\operatorname{Fil}^{i+1}D\)">\(\operatorname{Fil}^{i+1}D\)</span>. They are independent over <span class="math" data-tex="\(C_p\)">\(C_p\)</span> as well. Indeed take a dependence of minimal length, normalize one coefficient to one, apply <span class="math" data-tex="\(g\)">\(g\)</span> and subtract; all character factors are the same, so every remaining coefficient is fixed and belongs to <span class="math" data-tex="\(C_p^{G_K}=K\)">\(C_p^{G_K}=K\)</span>, a contradiction.</p>
+<p>The map from the direct sum of the simple semilinear modules <span class="math" data-tex="\(C_p(-i)\)">\(C_p(-i)\)</span>, one for each <span class="math" data-tex="\(r_{i,j}\)">\(r_{i,j}\)</span>, to <span class="math" data-tex="\(C_p\otimes V\)">\(C_p\otimes V\)</span> is injective. To see this, its kernel is a submodule of a finite semisimple sum, so is a sum of simple constituents by the elementary module argument above. A nonzero constituent is some <span class="math" data-tex="\(C_p(-i)\)">\(C_p(-i)\)</span>. Its projections to the summands with different index vanish, because their equivariant Hom spaces vanish by (3); it therefore lies in the index-<span class="math" data-tex="\(i\)">\(i\)</span> block. Injectivity on that block was just proved. Hence the kernel is zero. There are <span class="math" data-tex="\(d\)">\(d\)</span> such vectors, so they form a <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-basis and give the Hodge–Tate decomposition with weight <span class="math" data-tex="\(-i\)">\(-i\)</span> occurring <span class="math" data-tex="\(\dim_K\operatorname{gr}^iD\)">\(\dim_K\operatorname{gr}^iD\)</span> times. This proves (12) and the final implication of (11).</p>
+<p>It also proves strictness of the filtered period comparison. The vectors <span class="math" data-tex="\(t^{-i}d_{i,j}\)">\(t^{-i}d_{i,j}\)</span> lie in <span class="math" data-tex="\(B_{\mathrm{dR}}^+\otimes V\)">\(B_{\mathrm{dR}}^+\otimes V\)</span> and reduce to the basis (12a). Their determinant has nonzero residue, so they form a basis over this discrete valuation ring. Thus the period comparison carries the tensor-product filtration on <span class="math" data-tex="\(B_{\mathrm{dR}}\otimes_KD\)">\(B_{\mathrm{dR}}\otimes_KD\)</span> exactly to the coefficient filtration on <span class="math" data-tex="\(B_{\mathrm{dR}}\otimes V\)">\(B_{\mathrm{dR}}\otimes V\)</span>. Tensor and dual bases show that the usual sum filtration on tensors and annihilator filtration on duals are compatible. ∎</p>
+<p>Being de Rham and being Hodge–Tate are invariant under restriction to a finite extension; the finite descent proof is given in Lemma 2.2A. Being crystalline can fail to descend through a ramified extension, as Theorem 3.1 will show. A representation is <strong>potentially semistable</strong> if it becomes semistable over some finite extension.</p>
+<p><strong>The <span class="math" data-tex="\(p\)">\(p\)</span>-adic monodromy theorem (full assertion, proof unclosed).</strong> A de Rham representation of <span class="math" data-tex="\(G_K\)">\(G_K\)</span> is potentially semistable. The actual free account <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger, §IV.5.3</a> reduces this to quasi-unipotence of the associated differential equation over the Robba ring. That reduction requires overconvergence of <span class="math" data-tex="\((\varphi,\Gamma)\)">\((\varphi,\Gamma)\)</span>-modules, construction of <span class="math" data-tex="\(N_{\mathrm{dR}}(V)\)">\(N_{\mathrm{dR}}(V)\)</span>, its comparison with semistable periods, and quasi-unipotence for differential equations with Frobenius structure. None of those general results is proved here or in an inspected earlier lesson. The assertion keeps its full finite-extension scope; the Tate calculation in §4 proves one concrete example, not this theorem. This is a theorem at the coefficient prime, distinct from the prime-to-coefficient monodromy theorem proved earlier in the course.</p>
+<h2 id="2-determinants-and-finite-image-representations">2. Determinants and finite-image representations</h2>
+<p>Taking exterior powers of (2) gives an immediate but useful check.</p>
+<p><strong>Proposition 2.1 (determinant weights).</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> has weights <span class="math" data-tex="\(h_1,\ldots,h_d\)">\(h_1,\ldots,h_d\)</span>, then <span class="math" data-tex="\(\det V\)">\(\det V\)</span> is Hodge–Tate of weight <span class="math" data-tex="\(\sum_i h_i\)">\(\sum_i h_i\)</span>. Tensoring by <span class="math" data-tex="\(\mathbf Q_p(n)\)">\(\mathbf Q_p(n)\)</span> adds <span class="math" data-tex="\(n\)">\(n\)</span> to every weight, and dualizing negates every weight.</p>
+<p><strong>Proof.</strong> In the top exterior power of (2), choose one basis vector from each summand. The action on their wedge is the product of their cyclotomic factors:
+<span class="math math-display" data-tex="\[
+\bigwedge^d(C_p\otimes V)\simeq C_p(h_1+\cdots+h_d).
+\tag{13}
+\]">\[
+\bigwedge^d(C_p\otimes V)\simeq C_p(h_1+\cdots+h_d).
+\tag{13}
+\]</span>
+Exterior powers commute with scalar extension. Similarly <span class="math" data-tex="\(C_p(h)\otimes_{C_p}C_p(n)=C_p(h+n)\)">\(C_p(h)\otimes_{C_p}C_p(n)=C_p(h+n)\)</span>, and the dual of <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span> is <span class="math" data-tex="\(C_p(-h)\)">\(C_p(-h)\)</span>. These identities prove all three assertions. ∎</p>
+<p>We will prove finite Galois descent explicitly, so that the finite-image assertions do not conceal a descent theorem.</p>
+<p><strong>Lemma 2.2 (semilinear descent).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois with group <span class="math" data-tex="\(H\)">\(H\)</span>, and let <span class="math" data-tex="\(W\)">\(W\)</span> be a finite-dimensional <span class="math" data-tex="\(L\)">\(L\)</span>-space with semilinear <span class="math" data-tex="\(H\)">\(H\)</span>-action. Then
+<span class="math math-display" data-tex="\[
+L\otimes_KW^H\xrightarrow{\ \sim\ }W,\qquad
+\dim_KW^H=\dim_LW.
+\tag{14}
+\]">\[
+L\otimes_KW^H\xrightarrow{\ \sim\ }W,\qquad
+\dim_KW^H=\dim_LW.
+\tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> Distinct automorphisms of <span class="math" data-tex="\(L\)">\(L\)</span> are linearly independent as functions <span class="math" data-tex="\(L\to L\)">\(L\to L\)</span>. To see this, take a nonzero relation of minimal length <span class="math" data-tex="\(\sum_j a_j\sigma_j(x)=0\)">\(\sum_j a_j\sigma_j(x)=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. A relation of length one is impossible by evaluating at <span class="math" data-tex="\(1\)">\(1\)</span>. For length at least two, choose <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\sigma_1(b)\ne\sigma_2(b)\)">\(\sigma_1(b)\ne\sigma_2(b)\)</span>; subtract <span class="math" data-tex="\(\sigma_1(b)\)">\(\sigma_1(b)\)</span> times the original relation from the relation evaluated at <span class="math" data-tex="\(bx\)">\(bx\)</span>. The first term vanishes and the second does not, contradicting minimality.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the <span class="math" data-tex="\(L\)">\(L\)</span>-span of <span class="math" data-tex="\(W^H\)">\(W^H\)</span>. It is <span class="math" data-tex="\(H\)">\(H\)</span>-stable. For every <span class="math" data-tex="\(a\in L,w\in W\)">\(a\in L,w\in W\)</span>, the sum
+<span class="math math-display" data-tex="\[
+P(aw)=\sum_{g\in H}g(a)g(w)
+\tag{15}
+\]">\[
+P(aw)=\sum_{g\in H}g(a)g(w)
+\tag{15}
+\]</span>
+is invariant and lies in <span class="math" data-tex="\(S\)">\(S\)</span>. If <span class="math" data-tex="\(W/S\ne0\)">\(W/S\ne0\)</span>, choose <span class="math" data-tex="\(0\ne\bar w\in W/S\)">\(0\ne\bar w\in W/S\)</span> and an <span class="math" data-tex="\(L\)">\(L\)</span>-linear functional <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(\bar w)\ne0\)">\(f(\bar w)\ne0\)</span>. Projecting (15) to the quotient and applying <span class="math" data-tex="\(f\)">\(f\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{g\in H}f(g\bar w)g(a)=0\quad\text{for every }a\in L.
+\tag{16}
+\]">\[
+\sum_{g\in H}f(g\bar w)g(a)=0\quad\text{for every }a\in L.
+\tag{16}
+\]</span>
+Independence of the automorphisms contradicts the nonzero coefficient of the identity. Hence invariants span <span class="math" data-tex="\(W\)">\(W\)</span> over <span class="math" data-tex="\(L\)">\(L\)</span>. Choose an <span class="math" data-tex="\(L\)">\(L\)</span>-basis <span class="math" data-tex="\(w_1,\ldots,w_d\)">\(w_1,\ldots,w_d\)</span> among them. If <span class="math" data-tex="\(w=\sum_i a_iw_i\)">\(w=\sum_i a_iw_i\)</span> is invariant, uniqueness of its coefficients gives <span class="math" data-tex="\(g(a_i)=a_i\)">\(g(a_i)=a_i\)</span>, so all <span class="math" data-tex="\(a_i\)">\(a_i\)</span> lie in <span class="math" data-tex="\(K\)">\(K\)</span>. The same basis is therefore a <span class="math" data-tex="\(K\)">\(K\)</span>-basis of <span class="math" data-tex="\(W^H\)">\(W^H\)</span>, proving (14). ∎</p>
+<p><strong>Lemma 2.2A (finite-extension descent).</strong> Subject to (3) and (8), being Hodge–Tate or de Rham is equivalent over <span class="math" data-tex="\(K\)">\(K\)</span> and over any finite extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, with the same weights and with <span class="math" data-tex="\(D_{\mathrm{dR},L}=L\otimes_KD_{\mathrm{dR},K}\)">\(D_{\mathrm{dR},L}=L\otimes_KD_{\mathrm{dR},K}\)</span>.</p>
+<p><em>Proof.</em> Pass to a Galois closure, since restriction of either displayed comparison isomorphism remains an isomorphism. Suppose first that <span class="math" data-tex="\(V|_{G_L}\)">\(V|_{G_L}\)</span> is de Rham. Its invariant module <span class="math" data-tex="\(D_L\)">\(D_L\)</span> carries a semilinear action of <span class="math" data-tex="\(H=\operatorname{Gal}(L/K)\)">\(H=\operatorname{Gal}(L/K)\)</span>, because <span class="math" data-tex="\(G_L\)">\(G_L\)</span> is normal and <span class="math" data-tex="\(B_{\mathrm{dR}}^{G_L}=L\)">\(B_{\mathrm{dR}}^{G_L}=L\)</span>. It has dimension <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>. Lemma 2.2 gives <span class="math" data-tex="\(D_L=L\otimes_KD_L^H\)">\(D_L=L\otimes_KD_L^H\)</span>, with <span class="math" data-tex="\(D_L^H=D_K\)">\(D_L^H=D_K\)</span>. A descended invariant basis is still a period basis, proving de Rham admissibility over <span class="math" data-tex="\(K\)">\(K\)</span>. The filtration is stable under <span class="math" data-tex="\(H\)">\(H\)</span>. Apply the same lemma to each filtered subspace; its descended dimension is unchanged, so every graded dimension is unchanged.</p>
+<p>For the Hodge–Tate assertion put <span class="math" data-tex="\(D_{h,L}=(C_p(-h)\otimes V)^{G_L}\)">\(D_{h,L}=(C_p(-h)\otimes V)^{G_L}\)</span>. Under a decomposition (2), (3) gives <span class="math" data-tex="\(\dim_LD_{h,L}=m_h\)">\(\dim_LD_{h,L}=m_h\)</span>. Each <span class="math" data-tex="\(D_{h,L}\)">\(D_{h,L}\)</span> is stable under <span class="math" data-tex="\(H\)">\(H\)</span>, including its twisted action. Semilinear descent supplies <span class="math" data-tex="\(m_h\)">\(m_h\)</span> invariant vectors over <span class="math" data-tex="\(K\)">\(K\)</span>. Their images after tensoring with <span class="math" data-tex="\(C_p(h)\)">\(C_p(h)\)</span> give the same summands of (2), now with <span class="math" data-tex="\(G_K\)">\(G_K\)</span>-action. The direct sum remains a comparison isomorphism because it is one after extension to <span class="math" data-tex="\(L\)">\(L\)</span>, so the weights and multiplicities are unchanged. ∎</p>
+<p><strong>Theorem 2.3 (finite image).</strong> A finite-image <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>-representation of <span class="math" data-tex="\(G_K\)">\(G_K\)</span> is Hodge–Tate with all weights zero. It is also de Rham with its entire de Rham module in filtration degree zero. The explicit fixed bases in its proof exist by finite descent alone. Identifying <em>all</em> invariant coefficients and uniqueness of weights uses (3) and (8).</p>
+<p><strong>Proof.</strong> Choose a finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span> whose subgroup <span class="math" data-tex="\(G_L\)">\(G_L\)</span> acts trivially on <span class="math" data-tex="\(V\)">\(V\)</span>. Equation (3) gives
+<span class="math math-display" data-tex="\[
+(C_p\otimes V)^{G_K}
+=(L\otimes V)^{\operatorname{Gal}(L/K)}.
+\tag{17}
+\]">\[
+(C_p\otimes V)^{G_K}
+=(L\otimes V)^{\operatorname{Gal}(L/K)}.
+\tag{17}
+\]</span>
+Apply Lemma 2.2 to <span class="math" data-tex="\(L\otimes V\)">\(L\otimes V\)</span>. Its invariant <span class="math" data-tex="\(K\)">\(K\)</span>-basis becomes a <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-basis of <span class="math" data-tex="\(C_p\otimes V\)">\(C_p\otimes V\)</span>, and each basis vector is fixed by <span class="math" data-tex="\(G_K\)">\(G_K\)</span>. This is (2) with <span class="math" data-tex="\(m_0=\dim V\)">\(m_0=\dim V\)</span>. There are no other weights, by the uniqueness following (3).</p>
+<p>Replace <span class="math" data-tex="\(C_p\)">\(C_p\)</span> by <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span> and use (8). The same argument gives
+<span class="math math-display" data-tex="\[
+D_{\mathrm{dR}}(V)=(L\otimes V)^{\operatorname{Gal}(L/K)},
+\qquad \dim_KD_{\mathrm{dR}}(V)=\dim V.
+\tag{18}
+\]">\[
+D_{\mathrm{dR}}(V)=(L\otimes V)^{\operatorname{Gal}(L/K)},
+\qquad \dim_KD_{\mathrm{dR}}(V)=\dim V.
+\tag{18}
+\]</span>
+Algebraic constants <span class="math" data-tex="\(L\subset B_{\mathrm{dR}}^+\)">\(L\subset B_{\mathrm{dR}}^+\)</span> meet <span class="math" data-tex="\(\operatorname{Fil}^1B_{\mathrm{dR}}\)">\(\operatorname{Fil}^1B_{\mathrm{dR}}\)</span> only in zero: the residue map restricts to their embedding in <span class="math" data-tex="\(C_p\)">\(C_p\)</span>. Thus <span class="math" data-tex="\(\operatorname{Fil}^0D=D\)">\(\operatorname{Fil}^0D=D\)</span> and <span class="math" data-tex="\(\operatorname{Fil}^1D=0\)">\(\operatorname{Fil}^1D=0\)</span>. ∎</p>
+<p><strong>Corollary 2.4 (the modular determinant).</strong> For a newform <span class="math" data-tex="\(f\)">\(f\)</span> of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, the stated Hodge–Tate weights <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span> imply that <span class="math" data-tex="\(\det\rho_{f,\lambda}\)">\(\det\rho_{f,\lambda}\)</span> has weight <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. This agrees with
+<span class="math math-display" data-tex="\[
+\det\rho_{f,\lambda}=\varepsilon_G\chi_p^{\,k-1}.
+\tag{19}
+\]">\[
+\det\rho_{f,\lambda}=\varepsilon_G\chi_p^{\,k-1}.
+\tag{19}
+\]</span></p>
+<p><strong>Proof.</strong> Proposition 2.1 gives the sum <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. The finite character <span class="math" data-tex="\(\varepsilon_G\)">\(\varepsilon_G\)</span> has weight zero by Theorem 2.3, and <span class="math" data-tex="\(\chi_p^{k-1}\)">\(\chi_p^{k-1}\)</span> has weight <span class="math" data-tex="\(k-1\)">\(k-1\)</span> by (1). Their product has the same weight. Equation (19) is the higher-weight lesson's determinant conclusion; its full arithmetic-model and primitive-pairing dependencies remain unclosed there. This calculation proves the stated consistency when that construction exists; it does not establish (19), existence of <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span>, or a global character identity by itself. ∎</p>
+<p>For coefficients in a finite extension <span class="math" data-tex="\(E/\mathbf Q_p\)">\(E/\mathbf Q_p\)</span>, first restrict to <span class="math" data-tex="\(G_K\)">\(G_K\)</span> for a finite <span class="math" data-tex="\(K\)">\(K\)</span> containing the images of every embedding of <span class="math" data-tex="\(E\)">\(E\)</span>. The factorization
+<span class="math" data-tex="\(C_p\otimes_{\mathbf Q_p}E=\prod_{\sigma:E\hookrightarrow C_p}C_p\)">\(C_p\otimes_{\mathbf Q_p}E=\prod_{\sigma:E\hookrightarrow C_p}C_p\)</span>
+follows by writing <span class="math" data-tex="\(E=\mathbf Q_p[\alpha]\)">\(E=\mathbf Q_p[\alpha]\)</span> and factoring its separable minimal polynomial into distinct linear factors over the algebraically closed <span class="math" data-tex="\(C_p\)">\(C_p\)</span> of Lemma 1.0; evaluation at the roots and the elementary Chinese remainder identity give the product. Its factors are stable over the chosen <span class="math" data-tex="\(K\)">\(K\)</span>, and the calculations apply in each factor. Lemma 2.2A proves that weights are unchanged under this finite extension, with the same foundational dependence on (3). For the modular representations in (33), the two asserted weights are <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span> in every factor. Restriction of scalars repeats them <span class="math" data-tex="\([E: \mathbf Q_p]\)">\([E: \mathbf Q_p]\)</span> times; the <span class="math" data-tex="\(E\)">\(E\)</span>-linear determinant still has weight <span class="math" data-tex="\(k-1\)">\(k-1\)</span> in each factor.</p>
+<h2 id="3-crystalline-examples-and-the-role-of-inertia">3. Crystalline examples and the role of inertia</h2>
+<p><strong>Theorem 3.1 (finite-image crystalline criterion).</strong> For a finite-image representation <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(G_{\mathbf Q_p}\)">\(G_{\mathbf Q_p}\)</span>,
+<span class="math math-display" data-tex="\[
+\dim_{\mathbf Q_p}D_{\mathrm{cris}}(V)
+=\dim_{\mathbf Q_p}V^{I_p}.
+\tag{20}
+\]">\[
+\dim_{\mathbf Q_p}D_{\mathrm{cris}}(V)
+=\dim_{\mathbf Q_p}V^{I_p}.
+\tag{20}
+\]</span>
+Consequently it is crystalline if and only if it is unramified.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L/\mathbf Q_p\)">\(L/\mathbf Q_p\)</span> be finite Galois killing the action, <span class="math" data-tex="\(H=\operatorname{Gal}(L/\mathbf Q_p)\)">\(H=\operatorname{Gal}(L/\mathbf Q_p)\)</span>, and <span class="math" data-tex="\(J\subset H\)">\(J\subset H\)</span> its inertia subgroup. By (8),
+<span class="math math-display" data-tex="\[
+D_{\mathrm{cris}}(V)=(L_0\otimes_{\mathbf Q_p}V)^H.
+\tag{21}
+\]">\[
+D_{\mathrm{cris}}(V)=(L_0\otimes_{\mathbf Q_p}V)^H.
+\tag{21}
+\]</span>
+The group <span class="math" data-tex="\(J\)">\(J\)</span> fixes <span class="math" data-tex="\(L_0\)">\(L_0\)</span> pointwise, so taking <span class="math" data-tex="\(J\)">\(J\)</span>-invariants gives <span class="math" data-tex="\(L_0\otimes V^J\)">\(L_0\otimes V^J\)</span>. The quotient <span class="math" data-tex="\(H/J\)">\(H/J\)</span> is <span class="math" data-tex="\(\operatorname{Gal}(L_0/\mathbf Q_p)\)">\(\operatorname{Gal}(L_0/\mathbf Q_p)\)</span>; apply Lemma 2.2 to its semilinear action. This proves (20). Finally <span class="math" data-tex="\(V^J=V^{I_p}\)">\(V^J=V^{I_p}\)</span>, and the dimension criterion (9) makes crystallinity equivalent to trivial inertia. ∎</p>
+<p>For finite unramified <span class="math" data-tex="\(V\)">\(V\)</span>, (21) is particularly concrete: <span class="math" data-tex="\(L=L_0\)">\(L=L_0\)</span>, and the invariant basis supplied by descent exhibits all the crystalline periods. The general infinite-image assertion can be proved by constructing its periods, without importing the completed inertial restriction theorem.</p>
+<p><strong>Proposition 3.2 (all unramified period matrices).</strong> Every continuous unramified <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>-representation of <span class="math" data-tex="\(G_{\mathbf Q_p}\)">\(G_{\mathbf Q_p}\)</span> has a fixed basis after extension to <span class="math" data-tex="\(W(\overline{\mathbf F}_p)[1/p]\subset B_{\mathrm{cris}}\)">\(W(\overline{\mathbf F}_p)[1/p]\subset B_{\mathrm{cris}}\)</span>. Consequently it is crystalline, subject only to the crystalline structural embedding and invariant-ring obligations already specified. In that basis the crystalline Frobenius has the characteristic polynomial of the inverse of arithmetic Frobenius on <span class="math" data-tex="\(V\)">\(V\)</span>, so every slope is zero.</p>
+<p><em>Proof.</em> We first justify an integral lattice. A compact subgroup of <span class="math" data-tex="\(\operatorname{GL}_d(\mathbf Q_p)\)">\(\operatorname{GL}_d(\mathbf Q_p)\)</span> and its inverses have bounded matrix entries. If <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> is a lattice, the <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-span of its translates lies between <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> and <span class="math" data-tex="\(p^{-m}\Lambda_0\)">\(p^{-m}\Lambda_0\)</span> for some <span class="math" data-tex="\(m\)">\(m\)</span>. It is finitely generated, free of rank <span class="math" data-tex="\(d\)">\(d\)</span>, and stable. This supplies a basis in which the arithmetic Frobenius generator has matrix <span class="math" data-tex="\(A\in\operatorname{GL}_d(\mathbf Z_p)\)">\(A\in\operatorname{GL}_d(\mathbf Z_p)\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> for Witt Frobenius on <span class="math" data-tex="\(W(\overline{\mathbf F}_p)\)">\(W(\overline{\mathbf F}_p)\)</span>. We construct a unit matrix <span class="math" data-tex="\(X\)">\(X\)</span> satisfying
+<span class="math math-display" data-tex="\[
+A\sigma(X)=X.
+\tag{21a}
+\]">\[
+A\sigma(X)=X.
+\tag{21a}
+\]</span>
+Let <span class="math" data-tex="\(r\)">\(r\)</span> be the order of <span class="math" data-tex="\(\overline A\in\operatorname{GL}_d(\mathbf F_p)\)">\(\overline A\in\operatorname{GL}_d(\mathbf F_p)\)</span>. On <span class="math" data-tex="\(\mathbf F_{p^r}^d\)">\(\mathbf F_{p^r}^d\)</span>, the operator <span class="math" data-tex="\(\overline A\sigma\)">\(\overline A\sigma\)</span> is a semilinear action of the cyclic group of order <span class="math" data-tex="\(r\)">\(r\)</span>: its <span class="math" data-tex="\(r\)">\(r\)</span>-th power is the identity since <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> fixes the entries of <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span>. Lemma 2.2 supplies a basis fixed by this action. Its columns form an invertible solution <span class="math" data-tex="\(X_1\)">\(X_1\)</span> of (21a) modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Inductively suppose that a unit matrix <span class="math" data-tex="\(X_n\)">\(X_n\)</span> solves (21a) modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. In <span class="math" data-tex="\(W(\overline{\mathbf F}_p)\)">\(W(\overline{\mathbf F}_p)\)</span> write
+<span class="math math-display" data-tex="\[
+X_n^{-1}A\sigma(X_n)=1+p^nE_n.
+\]">\[
+X_n^{-1}A\sigma(X_n)=1+p^nE_n.
+\]</span>
+Replace <span class="math" data-tex="\(X_n\)">\(X_n\)</span> by <span class="math" data-tex="\(X_n(1+p^nY_n)\)">\(X_n(1+p^nY_n)\)</span>. Modulo <span class="math" data-tex="\(p^{n+1}\)">\(p^{n+1}\)</span> the left side becomes <span class="math" data-tex="\(1+p^n(E_n-Y_n+\sigma(Y_n))\)">\(1+p^n(E_n-Y_n+\sigma(Y_n))\)</span>. Each equation <span class="math" data-tex="\(y^p-y=-e\)">\(y^p-y=-e\)</span> has a solution in <span class="math" data-tex="\(\overline{\mathbf F}_p\)">\(\overline{\mathbf F}_p\)</span>, so choose the entries of <span class="math" data-tex="\(Y_n\)">\(Y_n\)</span> accordingly. This constructs <span class="math" data-tex="\(X_{n+1}\equiv X_n\pmod {p^n}\)">\(X_{n+1}\equiv X_n\pmod {p^n}\)</span>. Completeness gives an invertible limiting <span class="math" data-tex="\(X\)">\(X\)</span> satisfying (21a). Each finite approximation uses a finite residue field; thus the usual unramified Galois action on its Witt digits is continuous, and agrees with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> at arithmetic Frobenius.</p>
+<p>The residue-field inclusion <span class="math" data-tex="\(\overline{\mathbf F}_p\subset R\)">\(\overline{\mathbf F}_p\subset R\)</span> of Lemma 1.0 gives <span class="math" data-tex="\(W(\overline{\mathbf F}_p)\subset W(R)\subset A_{\mathrm{cris}}\)">\(W(\overline{\mathbf F}_p)\subset W(R)\subset A_{\mathrm{cris}}\)</span>. Its inertia action is trivial. The columns of <span class="math" data-tex="\(X\)">\(X\)</span>, regarded as vectors in <span class="math" data-tex="\(B_{\mathrm{cris}}\otimes V\)">\(B_{\mathrm{cris}}\otimes V\)</span>, are invariant under arithmetic Frobenius by (21a). They are invariant under the whole unramified group, since its integer Frobenius powers are dense and the action on these digits is continuous. They form a period basis because <span class="math" data-tex="\(X\)">\(X\)</span> is a unit matrix. Given <span class="math" data-tex="\(B_{\mathrm{cris}}^{G_{\mathbf Q_p}}=\mathbf Q_p\)">\(B_{\mathrm{cris}}^{G_{\mathbf Q_p}}=\mathbf Q_p\)</span>, all invariant vectors are exactly the rational combinations of these columns, proving the dimension criterion.</p>
+<p>Period Frobenius acts by <span class="math" data-tex="\(X^{-1}\sigma(X)=X^{-1}A^{-1}X\)">\(X^{-1}\sigma(X)=X^{-1}A^{-1}X\)</span> on this basis. Its characteristic polynomial is that of <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span>, establishing the normalization. Every eigenvalue of <span class="math" data-tex="\(A\)">\(A\)</span> and of <span class="math" data-tex="\(A^{-1}\)">\(A^{-1}\)</span> is integral, since each satisfies a monic polynomial over <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>. Their valuations are therefore both nonnegative, so the eigenvalues are units and the slopes are zero. ∎</p>
+<p>The successive-approximation mechanism appears in the scalar calculation <a href="https://math.stanford.edu/~conrad/papers/notes.pdf">Brinon–Conrad, Lemma 9.3.3</a>; the matrix construction and its initial finite descent are written above. It proves the infinite-image assertion with its actual ring dependencies, rather than treating the notes' reference to completed descent as a proof.</p>
+<p>A crystalline representation can be ramified. For <span class="math" data-tex="\(V=\mathbf Q_p(n)\)">\(V=\mathbf Q_p(n)\)</span>, with basis <span class="math" data-tex="\(e_n\)">\(e_n\)</span>, equations (5)–(8) give
+<span class="math math-display" data-tex="\[
+D_{\mathrm{cris}}(V)=\mathbf Q_p(t^{-n}e_n),\qquad
+\varphi(t^{-n}e_n)=p^{-n}t^{-n}e_n.
+\tag{22}
+\]">\[
+D_{\mathrm{cris}}(V)=\mathbf Q_p(t^{-n}e_n),\qquad
+\varphi(t^{-n}e_n)=p^{-n}t^{-n}e_n.
+\tag{22}
+\]</span>
+Indeed <span class="math" data-tex="\(t^{-n}e_n\)">\(t^{-n}e_n\)</span> is invariant; if <span class="math" data-tex="\(be_n\)">\(be_n\)</span> is invariant, then <span class="math" data-tex="\(bt^n\)">\(bt^n\)</span> is invariant and hence belongs to <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>. Its filtration is
+<span class="math math-display" data-tex="\[
+\operatorname{Fil}^iD_{\mathrm{dR}}(\mathbf Q_p(n))
+=\begin{cases}
+D_{\mathrm{dR}}(\mathbf Q_p(n))&amp;i\le -n,\\
+0&amp;i&gt;-n.
+\end{cases}
+\tag{23}
+\]">\[
+\operatorname{Fil}^iD_{\mathrm{dR}}(\mathbf Q_p(n))
+=\begin{cases}
+D_{\mathrm{dR}}(\mathbf Q_p(n))&amp;i\le -n,\\
+0&amp;i&gt;-n.
+\end{cases}
+\tag{23}
+\]</span>
+Thus the Hodge–Tate weight is <span class="math" data-tex="\(n\)">\(n\)</span>, the filtration jump is <span class="math" data-tex="\(-n\)">\(-n\)</span>, and the crystalline Frobenius eigenvalue is <span class="math" data-tex="\(p^{-n}\)">\(p^{-n}\)</span>. These are three consistent quantities. In particular <span class="math" data-tex="\(\mathbf Q_p(1)\)">\(\mathbf Q_p(1)\)</span> is crystalline despite its nontrivial cyclotomic inertia.</p>
+<p><strong>Elliptic comparison statements (full assertions, proofs unclosed).</strong> For an elliptic curve <span class="math" data-tex="\(E/K\)">\(E/K\)</span>, <span class="math" data-tex="\(V_pE\)">\(V_pE\)</span> is de Rham, with weights <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. It is crystalline exactly when <span class="math" data-tex="\(E\)">\(E\)</span> has good reduction, and semistable exactly when <span class="math" data-tex="\(E\)">\(E\)</span> has semistable reduction. The free author account <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger, §§II.3.2, II.5.1</a> states the geometric comparison theorems and the reduction converses. It does not give those proofs. The good-reduction direction requires a comparison between the <span class="math" data-tex="\(p\)">\(p\)</span>-adic Tate module and crystalline cohomology or the Dieudonné module of the integral <span class="math" data-tex="\(p\)">\(p\)</span>-divisible group. Its converse requires recovering a good integral model from the crystalline representation; the semistable converse similarly requires recovering the toric part. None is supplied by the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> finite-étale specialization proof of the Tate-module lesson, since multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> is not étale on its special fibre. We retain both equivalences as obligations, not as consequences of that earlier specialization.</p>
+<p>At a good ordinary prime the two Frobenius slopes on the covariant period module are <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>; at a good supersingular prime both slopes are <span class="math" data-tex="\(-1/2\)">\(-1/2\)</span>. This assertion also needs the crystalline/Dieudonné comparison and the height-two slope classification, neither yet proved here. The signs are consistent with (22). The unramified calculation of Proposition 3.2 has slopes zero and does not prove these elliptic slope assertions.</p>
+<h2 id="4-a-tate-curve-with-its-periods-calculated">4. A Tate curve, with its periods calculated</h2>
+<p>Let <span class="math" data-tex="\(q\in\mathbf Q_p^\times\)">\(q\in\mathbf Q_p^\times\)</span> satisfy <span class="math" data-tex="\(v_p(q)&gt;0\)">\(v_p(q)&gt;0\)</span>, and let <span class="math" data-tex="\(E_q\)">\(E_q\)</span> be the split Tate curve. Lemma 3.0 of the earlier local elliptic-curve lesson actually proves, by the convergent series and their inverse series, the equivariant group isomorphism <span class="math" data-tex="\(E_q(\overline{\mathbf Q}_p)=\overline{\mathbf Q}_p^\times/q^{\mathbf Z}\)">\(E_q(\overline{\mathbf Q}_p)=\overline{\mathbf Q}_p^\times/q^{\mathbf Z}\)</span>. We need its coefficient-prime torsion, so we give that passage explicitly. A class <span class="math" data-tex="\([z]\)">\([z]\)</span> is killed by <span class="math" data-tex="\(p^n\)">\(p^n\)</span> exactly when <span class="math" data-tex="\(z^{p^n}=q^b\)">\(z^{p^n}=q^b\)</span> for an integer <span class="math" data-tex="\(b\)">\(b\)</span>. Sending it to <span class="math" data-tex="\(b\bmod p^n\)">\(b\bmod p^n\)</span> is well defined, since replacing <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(zq^a\)">\(zq^a\)</span> adds <span class="math" data-tex="\(ap^n\)">\(ap^n\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. The kernel is <span class="math" data-tex="\(\mu_{p^n}\)">\(\mu_{p^n}\)</span>, and compatible roots <span class="math" data-tex="\(q_n\)">\(q_n\)</span> with <span class="math" data-tex="\(q_n^{p^n}=q\)">\(q_n^{p^n}=q\)</span> give a compatible preimage of <span class="math" data-tex="\(1\)">\(1\)</span>. Together with compatible primitive <span class="math" data-tex="\(\zeta_{p^n}\)">\(\zeta_{p^n}\)</span>, they give a basis at every level. Multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> carries these bases to the previous level, so the inverse limit, including its surjectivity, gives
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathbf Q_p(1)\longrightarrow V_pE_q
+\longrightarrow\mathbf Q_p\longrightarrow0.
+\tag{24}
+\]">\[
+0\longrightarrow\mathbf Q_p(1)\longrightarrow V_pE_q
+\longrightarrow\mathbf Q_p\longrightarrow0.
+\tag{24}
+\]</span>
+Choose compatible <span class="math" data-tex="\(p\)">\(p\)</span>-power roots of <span class="math" data-tex="\(q\)">\(q\)</span>. With suitable basis vectors <span class="math" data-tex="\(e,f\)">\(e,f\)</span>, the action is
+<span class="math math-display" data-tex="\[
+g(e)=\chi_p(g)e,\qquad g(f)=f+c_q(g)e.
+\tag{25}
+\]">\[
+g(e)=\chi_p(g)e,\qquad g(f)=f+c_q(g)e.
+\tag{25}
+\]</span>
+More explicitly <span class="math" data-tex="\(g(q_n)/q_n=\zeta_{p^n}^{c_q(g)}\)">\(g(q_n)/q_n=\zeta_{p^n}^{c_q(g)}\)</span>; compatibility defines <span class="math" data-tex="\(c_q(g)\in\mathbf Z_p\)">\(c_q(g)\in\mathbf Z_p\)</span> and
+<span class="math" data-tex="\(c_q(gg&#x27;)=c_q(g)+\chi_p(g)c_q(g&#x27;)\)">\(c_q(gg&#x27;)=c_q(g)+\chi_p(g)c_q(g&#x27;)\)</span>. This proves (25) directly also at <span class="math" data-tex="\(\ell=p\)">\(\ell=p\)</span>, without using the earlier prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> assertion that unit roots are unramified.</p>
+<p><strong>Lemma 4.0 (the Tate logarithmic period).</strong> In the abstract semistable period algebra of (6), there is an explicitly constructed <span class="math" data-tex="\(u=\log[\widetilde q]\)">\(u=\log[\widetilde q]\)</span> with
+<span class="math math-display" data-tex="\[
+g(u)=u+c_q(g)t,\quad
+\varphi(u)=pu,\quad
+N(u)=-v_p(q),\quad
+\theta(u)=\log_p(q).
+\tag{26}
+\]">\[
+g(u)=u+c_q(g)t,\quad
+\varphi(u)=pu,\quad
+N(u)=-v_p(q),\quad
+\theta(u)=\log_p(q).
+\tag{26}
+\]</span>
+The last expression uses the proposed embedding in <span class="math" data-tex="\(B_{\mathrm{dR}}\)">\(B_{\mathrm{dR}}\)</span>; its proof below is conditional on that embedding carrying the divided-power sums to their de Rham sums. The other identities already hold in the abstract completed algebra. In particular the logarithmic identities themselves no longer form an independent unexplained input.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(m=v_p(q)\in\mathbf Z_{&gt;0}\)">\(m=v_p(q)\in\mathbf Z_{&gt;0}\)</span> and <span class="math" data-tex="\(a=q/p^m\in\mathbf Z_p^\times\)">\(a=q/p^m\in\mathbf Z_p^\times\)</span>. Choose a root system <span class="math" data-tex="\(\widetilde p\)">\(\widetilde p\)</span>, put <span class="math" data-tex="\(\widetilde a=\widetilde q/\widetilde p^m\in R^\times\)">\(\widetilde a=\widetilde q/\widetilde p^m\in R^\times\)</span>, and take <span class="math" data-tex="\(M=p-1\)">\(M=p-1\)</span> (so <span class="math" data-tex="\(M=1\)">\(M=1\)</span> if <span class="math" data-tex="\(p=2\)">\(p=2\)</span>). The residue of <span class="math" data-tex="\(\widetilde a\)">\(\widetilde a\)</span> belongs to <span class="math" data-tex="\(\mathbf F_p^\times\)">\(\mathbf F_p^\times\)</span>, hence <span class="math" data-tex="\(\widetilde a^M\in1+\mathfrak m_R\)">\(\widetilde a^M\in1+\mathfrak m_R\)</span>. Lemma 1.2A defines
+<span class="math math-display" data-tex="\[
+u_a=\frac1M\log[\widetilde a^M]\in A_{\mathrm{cris}}[1/p].
+\tag{26a}
+\]">\[
+u_a=\frac1M\log[\widetilde a^M]\in A_{\mathrm{cris}}[1/p].
+\tag{26a}
+\]</span>
+It satisfies <span class="math" data-tex="\(\varphi(u_a)=pu_a\)">\(\varphi(u_a)=pu_a\)</span>. Let <span class="math" data-tex="\(c_p\)">\(c_p\)</span> be the cocycle from the chosen roots of <span class="math" data-tex="\(p\)">\(p\)</span>. Define the action on the formal variable by <span class="math" data-tex="\(g(Y)=Y+c_p(g)t\)">\(g(Y)=Y+c_p(g)t\)</span>. The cocycle identity and <span class="math" data-tex="\(g(t)=\chi_p(g)t\)">\(g(t)=\chi_p(g)t\)</span> verify the group law for this action. It commutes with <span class="math" data-tex="\(\varphi(Y)=pY\)">\(\varphi(Y)=pY\)</span> and with <span class="math" data-tex="\(N=-d/dY\)">\(N=-d/dY\)</span>, by substitution. From the exact root systems,
+<span class="math math-display" data-tex="\[
+g(\widetilde a)/\widetilde a
+ =\epsilon^{c_q(g)-mc_p(g)}.
+\]">\[
+g(\widetilde a)/\widetilde a
+ =\epsilon^{c_q(g)-mc_p(g)}.
+\]</span>
+The logarithm product identity and its <span class="math" data-tex="\(\mathbf Z_p\)">\(\mathbf Z_p\)</span>-exponent identity in Lemma 1.2A therefore give
+<span class="math math-display" data-tex="\[
+g(u_a)=u_a+(c_q(g)-mc_p(g))t.
+\]">\[
+g(u_a)=u_a+(c_q(g)-mc_p(g))t.
+\]</span>
+Set <span class="math" data-tex="\(u=mY+u_a\)">\(u=mY+u_a\)</span>. Then <span class="math" data-tex="\(g(u)=u+c_q(g)t\)">\(g(u)=u+c_q(g)t\)</span>, <span class="math" data-tex="\(\varphi(u)=pu\)">\(\varphi(u)=pu\)</span>, and <span class="math" data-tex="\(N(u)=-m\)">\(N(u)=-m\)</span>, proving the first three identities of (26).</p>
+<p>The logarithm branch on <span class="math" data-tex="\(\mathbf Q_p^\times\)">\(\mathbf Q_p^\times\)</span> is itself elementary. On <span class="math" data-tex="\(1+p\mathbf Z_p\)">\(1+p\mathbf Z_p\)</span>, the usual series <span class="math" data-tex="\(\sum_{n\ge1}(-1)^{n+1}(b-1)^n/n\)">\(\sum_{n\ge1}(-1)^{n+1}(b-1)^n/n\)</span> converges because <span class="math" data-tex="\(v_p((b-1)^n/n)\to\infty\)">\(v_p((b-1)^n/n)\to\infty\)</span>, including <span class="math" data-tex="\(p=2\)">\(p=2\)</span>. Its formal product identity passes to this convergent limit. Extend to units by <span class="math" data-tex="\(\log_p(a)=M^{-1}\log_p(a^M)\)">\(\log_p(a)=M^{-1}\log_p(a^M)\)</span>, killing the finite root-of-unity factor, and then to every <span class="math" data-tex="\(p^r a\)">\(p^r a\)</span> by assigning <span class="math" data-tex="\(\log_p(p)=0\)">\(\log_p(p)=0\)</span>. Multiplying by further powers of <span class="math" data-tex="\(M\)">\(M\)</span> or by a positive integer changes neither value nor its additive property.</p>
+<p>For the claimed de Rham image, take
+<span class="math math-display" data-tex="\[
+Y\longmapsto\log_{\mathrm{dR}}([\widetilde p]/p).
+\tag{26b}
+\]">\[
+Y\longmapsto\log_{\mathrm{dR}}([\widetilde p]/p).
+\tag{26b}
+\]</span>
+The ratio has residue one, so this particular logarithm is a well-defined <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic sum even before its transcendence is known. To compare (26a) with that topology, write
+<span class="math math-display" data-tex="\[
+[\widetilde a]^M-1=(a^M-1)+\xi w,
+\qquad a^M-1\in p\mathbf Z_p,\quad w\in W(R).
+\]">\[
+[\widetilde a]^M-1=(a^M-1)+\xi w,
+\qquad a^M-1\in p\mathbf Z_p,\quad w\in W(R).
+\]</span>
+Both terms admit divided powers. The convergent logarithm product identity gives, in the completed divided-power algebra,
+<span class="math math-display" data-tex="\[
+\log[\widetilde a^M]
+ =\log_p(a^M)
+  +\log\bigl([\widetilde a]^M/a^M\bigr).
+\]">\[
+\log[\widetilde a^M]
+ =\log_p(a^M)
+  +\log\bigl([\widetilde a]^M/a^M\bigr).
+\]</span>
+The second logarithm has argument <span class="math" data-tex="\(1+\xi w/a^M\)">\(1+\xi w/a^M\)</span>, with integral denominator <span class="math" data-tex="\(a^M\)">\(a^M\)</span>, and its divided-power series is
+<span class="math" data-tex="\(\sum(-1)^{n+1}(n-1)!(w/a^M)^n\xi^n/n!\)">\(\sum(-1)^{n+1}(n-1)!(w/a^M)^n\xi^n/n!\)</span>. Its prescribed de Rham image is exactly the same <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-adic series. Consequently, under the structural map with that series compatibility,
+<span class="math math-display" data-tex="\[
+u_a=\log_p(a)+\log_{\mathrm{dR}}([\widetilde a]/a),
+\qquad
+u=\log_p(q)+\log_{\mathrm{dR}}([\widetilde q]/q).
+\tag{26c}
+\]">\[
+u_a=\log_p(a)+\log_{\mathrm{dR}}([\widetilde a]/a),
+\qquad
+u=\log_p(q)+\log_{\mathrm{dR}}([\widetilde q]/q).
+\tag{26c}
+\]</span>
+Its residue is <span class="math" data-tex="\(\log_p(q)\)">\(\log_p(q)\)</span>, proving the last identity of (26). This comparison uses the structural-map obligation exactly once, rather than interchanging two different completions without justification. ∎</p>
+<p>The calculation reconstructs the actual free material <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger, §§II.4.2–II.4.4</a> and <a href="https://math.stanford.edu/~conrad/papers/notes.pdf">Brinon–Conrad, Lemmas 9.2.2 and 9.2.7</a>. We use <span class="math" data-tex="\(\varphi(Y)=pY\)">\(\varphi(Y)=pY\)</span>, not <span class="math" data-tex="\(Y^p\)">\(Y^p\)</span>, and the ordinary logarithm power <span class="math" data-tex="\(n\)">\(n\)</span>, not <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. These details are essential to (26)–(29).</p>
+<p>For the rest of this calculation retain explicitly the period embeddings and invariant rings (8). Subject to those specified structural obligations, the following basis, monodromy and filtration proof is complete.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+x=t^{-1}e,\qquad y=f-ut^{-1}e.
+\tag{27}
+\]">\[
+x=t^{-1}e,\qquad y=f-ut^{-1}e.
+\tag{27}
+\]</span>
+Equation (25) and the first identity of (26) show that both vectors are invariant: the two <span class="math" data-tex="\(c_q(g)e\)">\(c_q(g)e\)</span> terms in <span class="math" data-tex="\(g(y)\)">\(g(y)\)</span> cancel. The matrix from <span class="math" data-tex="\(e,f\)">\(e,f\)</span> to <span class="math" data-tex="\(x,y\)">\(x,y\)</span> has invertible determinant <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>. Thus they form a <span class="math" data-tex="\(B_{\mathrm{st}}\)">\(B_{\mathrm{st}}\)</span>-basis after extension of scalars. Any invariant vector expressed in this basis has invariant scalar coefficients; by (8) these lie in <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+D_{\mathrm{st}}(V_pE_q)=\mathbf Q_px\oplus\mathbf Q_py,
+\qquad
+\varphi(x)=p^{-1}x,\quad\varphi(y)=y,
+\qquad N(x)=0,\quad N(y)=v_p(q)x.
+\tag{28}
+\]">\[
+D_{\mathrm{st}}(V_pE_q)=\mathbf Q_px\oplus\mathbf Q_py,
+\qquad
+\varphi(x)=p^{-1}x,\quad\varphi(y)=y,
+\qquad N(x)=0,\quad N(y)=v_p(q)x.
+\tag{28}
+\]</span>
+In particular the representation is semistable and <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>. On <span class="math" data-tex="\(y\)">\(y\)</span>, the relation <span class="math" data-tex="\(N\varphi=p\varphi N\)">\(N\varphi=p\varphi N\)</span> reads
+<span class="math math-display" data-tex="\[
+v_p(q)x=p\varphi(v_p(q)x);
+\tag{29}
+\]">\[
+v_p(q)x=p\varphi(v_p(q)x);
+\tag{29}
+\]</span>
+on <span class="math" data-tex="\(x\)">\(x\)</span>, both sides vanish.</p>
+<p>By (7) and invariance,
+<span class="math math-display" data-tex="\[
+D_{\mathrm{cris}}(V)
+=D_{\mathrm{st}}(V)^{N=0}.
+\tag{30}
+\]">\[
+D_{\mathrm{cris}}(V)
+=D_{\mathrm{st}}(V)^{N=0}.
+\tag{30}
+\]</span>
+For (28), the right side is <span class="math" data-tex="\(\mathbf Q_px\)">\(\mathbf Q_px\)</span>, of dimension one. The crystalline criterion requires dimension two. Therefore <strong>the Tate curve is semistable and not crystalline</strong>.</p>
+<p>Its filtration is also visible. Write <span class="math" data-tex="\(A=\log_p(q)\)">\(A=\log_p(q)\)</span>. A vector <span class="math" data-tex="\(ax+by\)">\(ax+by\)</span> has coefficients <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(t^{-1}(a-bu)\)">\(t^{-1}(a-bu)\)</span> on <span class="math" data-tex="\(e\)">\(e\)</span>. Both belong to <span class="math" data-tex="\(B_{\mathrm{dR}}^+\)">\(B_{\mathrm{dR}}^+\)</span> exactly when <span class="math" data-tex="\(a=bA\)">\(a=bA\)</span>; this uses <span class="math" data-tex="\(\theta(u)=A\)">\(\theta(u)=A\)</span> and that <span class="math" data-tex="\(t\)">\(t\)</span> generates the maximal ideal. All vectors lie in <span class="math" data-tex="\(\operatorname{Fil}^{-1}\)">\(\operatorname{Fil}^{-1}\)</span>, and membership in <span class="math" data-tex="\(\operatorname{Fil}^1\)">\(\operatorname{Fil}^1\)</span> forces first <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, then <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{Fil}^iD_{\mathrm{dR}}(V_pE_q)
+=\begin{cases}
+D_{\mathrm{dR}}(V_pE_q)&amp;i\le-1,\\
+\mathbf Q_p(y+Ax)&amp;i=0,\\
+0&amp;i\ge1.
+\end{cases}
+\tag{31}
+\]">\[
+\operatorname{Fil}^iD_{\mathrm{dR}}(V_pE_q)
+=\begin{cases}
+D_{\mathrm{dR}}(V_pE_q)&amp;i\le-1,\\
+\mathbf Q_p(y+Ax)&amp;i=0,\\
+0&amp;i\ge1.
+\end{cases}
+\tag{31}
+\]</span>
+The associated graded has dimensions one in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>; the proved filtration algebra in Lemma 1.4 gives weights <span class="math" data-tex="\(1,0\)">\(1,0\)</span>, subject to its precise period foundations. There is also a direct check needing no general filtration lemma. Put <span class="math" data-tex="\(b=\theta((u-A)/t)\in C_p\)">\(b=\theta((u-A)/t)\in C_p\)</span>. The quotient is integral because <span class="math" data-tex="\(\theta(u-A)=0\)">\(\theta(u-A)=0\)</span>, and (26) gives <span class="math" data-tex="\(\chi_p(g)g(b)=b+c_q(g)\)">\(\chi_p(g)g(b)=b+c_q(g)\)</span>. Thus <span class="math" data-tex="\(f-be\)">\(f-be\)</span> is fixed in <span class="math" data-tex="\(C_p\otimes V_pE_q\)">\(C_p\otimes V_pE_q\)</span>, whereas <span class="math" data-tex="\(e\)">\(e\)</span> transforms by <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span>. The vectors <span class="math" data-tex="\(e,f-be\)">\(e,f-be\)</span> form a basis and exhibit <span class="math" data-tex="\(C_p(1)\oplus C_p(0)\)">\(C_p(1)\oplus C_p(0)\)</span> directly. For the especially simple choice <span class="math" data-tex="\(q=p\)">\(q=p\)</span>, <span class="math" data-tex="\(u=Y\)">\(u=Y\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, and <span class="math" data-tex="\(N(y)=x\)">\(N(y)=x\)</span>; the filtration line is <span class="math" data-tex="\(\mathbf Q_py\)">\(\mathbf Q_py\)</span>.</p>
+<h2 id="5-geometry-and-modularity">5. Geometry and modularity</h2>
+<p>We call a continuous <span class="math" data-tex="\(E\)">\(E\)</span>-representation of <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>, with <span class="math" data-tex="\(E/\mathbf Q_p\)">\(E/\mathbf Q_p\)</span> finite, <strong>geometric in the Fontaine–Mazur sense</strong> if it is unramified at all but finitely many primes and de Rham at <span class="math" data-tex="\(p\)">\(p\)</span>. The full <span class="math" data-tex="\(p\)">\(p\)</span>-adic monodromy assertion makes the last condition equivalent to potential semistability; this equivalence retains the general monodromy proof obligation in §1. We separately say <strong>arises from geometry</strong> for a subquotient, with coefficient extension allowed, of
+<span class="math math-display" data-tex="\[
+H^i_{\mathrm{\acute et}}(X_{\overline{\mathbf Q}},\mathbf Q_p)(j),
+\qquad X/\mathbf Q\text{ smooth projective}.
+\tag{32}
+\]">\[
+H^i_{\mathrm{\acute et}}(X_{\overline{\mathbf Q}},\mathbf Q_p)(j),
+\qquad X/\mathbf Q\text{ smooth projective}.
+\tag{32}
+\]</span>
+In <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0.pdf">Taylor’s freely accessible original account, §1</a>, the word “geometric” is used for the conclusion (32); our terminology distinguishes the local conditions from their conjectural geometric realization.</p>
+<p>Smooth proper base change and <span class="math" data-tex="\(p\)">\(p\)</span>-adic comparison imply that (32) satisfies the two local conditions. They also imply crystallinity at a prime <span class="math" data-tex="\(p\)">\(p\)</span> where a smooth proper model exists. These are deep inputs, not consequences of the definition of “geometric.”</p>
+<p><strong>Fontaine–Mazur conjecture (stated).</strong> Every irreducible representation satisfying those two local conditions arises from geometry in the sense of (32). See <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0.pdf">Taylor, Conjecture 1.1, printed p.80</a>. Irreducibility belongs in this formulation. In particular, one expects purity of a single weight for such an irreducible representation; merely being locally de Rham does not itself prove purity or a compatible system.</p>
+<p>For a weight-<span class="math" data-tex="\(k\)">\(k\)</span> newform with <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, the geometric construction and comparison give
+<span class="math math-display" data-tex="\[
+\operatorname{HT}(\rho_{f,\lambda}|_{G_{\mathbf Q_p}})=\{0,k-1\},
+\qquad
+\rho_{f,\lambda}|_{G_{\mathbf Q_p}}\text{ crystalline if }p\nmid N.
+\tag{33}
+\]">\[
+\operatorname{HT}(\rho_{f,\lambda}|_{G_{\mathbf Q_p}})=\{0,k-1\},
+\qquad
+\rho_{f,\lambda}|_{G_{\mathbf Q_p}}\text{ crystalline if }p\nmid N.
+\tag{33}
+\]</span>
+The scope in (33) is <strong>every</strong> <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>, including <span class="math" data-tex="\(p&lt;k\)">\(p&lt;k\)</span>. Here is the precise conditional deduction. Suppose that the newform representation is a projector summand, with the required dual and twist, of a smooth projective Kuga–Sato variety having a smooth proper model at <span class="math" data-tex="\(p\)">\(p\)</span>. Smooth proper crystalline comparison would make that full cohomology crystalline; Lemma 1.3 then makes its projector summand crystalline. Geometric Hodge comparison, followed by Lemma 1.4 and the two nonzero Hodge pieces of the newform summand, would give weights <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span>. The missing arithmetic model, projector and higher-dimensional geometric comparisons are still obligations in the higher-weight construction and here. This paragraph supplies the deduction, not those missing proofs.</p>
+<p>The actual free <a href="https://www.dpmms.cam.ac.uk/~ajs1005/preprints/mf.pdf">Scholl author manuscript, Theorem 1.2.4(ii), Remark 1.2.5 and §4.2.3</a> explicitly assumes <span class="math" data-tex="\(p\ge k\)">\(p\ge k\)</span> for the crystalline statement available there, since the variety has dimension <span class="math" data-tex="\(k-1\)">\(k-1\)</span>. Its §4.2.1 asserts the good integral models using an external modular-model theorem. The general smooth proper comparison is stated in <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf">Berger’s free author manuscript, §II.5.1</a>. Neither statement is being relabelled as a local proof or used to shrink (33) to <span class="math" data-tex="\(p\ge k\)">\(p\ge k\)</span>.</p>
+<p>In weight one, once the preceding lesson’s asserted finite-image representation has actually been constructed over a number field, its <span class="math" data-tex="\(p\)">\(p\)</span>-adic realization is de Rham with weights <span class="math" data-tex="\(0,0\)">\(0,0\)</span> by Theorem 2.3. The existence theorem is not proved again here, and no still-unclosed part of that construction is discharged by this local calculation. It is crystalline at <span class="math" data-tex="\(p\)">\(p\)</span> exactly when its local inertia is trivial. Thus the weight-one case is geometric but does not satisfy a hypothesis of <strong>distinct</strong> weights.</p>
+<p>Here are two precise modularity statements. They illustrate how much more is required than the phrase “odd and geometric.” They are historical theorem versions, not assertions that their hypotheses are the weakest now possible. In each, a stable lattice defines the semisimplified residual representation <span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span>, and <span class="math" data-tex="\(\bar\chi_p\)">\(\bar\chi_p\)</span> denotes the mod-<span class="math" data-tex="\(p\)">\(p\)</span> cyclotomic character. Absolute irreducibility in their hypotheses makes the global residual representation irreducible. Its <strong>local restriction</strong> is taken with its extension data; semisimplifying that local restriction would lose the meaning of the stars in (34)–(35).</p>
+<p><strong>Lemma 5.0 (the elementary normalization).</strong> Under either theorem's residual absolute-irreducibility hypothesis, the characteristic-zero representation is irreducible. For <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, residual oddness implies characteristic-zero oddness. Distinct integral Hodge–Tate weights can be normalized by a Tate twist to <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span> for an integer <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>.</p>
+<p><em>Proof.</em> The compact-image lattice argument in Proposition 3.2 works for any profinite Galois group and, with its valuation-ring basis, for finite coefficient fields. If an invariant coefficient-field line existed, intersect it with the lattice and choose a generator with at least one unit coordinate. Its reduction gives a nonzero stable line in the residual two-dimensional space: the intersection is saturated, since a vector in the line divisible by the uniformizer in the ambient lattice has its quotient in that same line. This contradicts residual absolute irreducibility, already implied by irreducibility on the subgroup <span class="math" data-tex="\(G_{\mathbf Q(\zeta_p)}\)">\(G_{\mathbf Q(\zeta_p)}\)</span>. At complex conjugation the determinant has square one. Its reduction is <span class="math" data-tex="\(-1\)">\(-1\)</span>, and for <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span> the two values <span class="math" data-tex="\(+1,-1\)">\(+1,-1\)</span> have distinct reductions; the determinant is therefore <span class="math" data-tex="\(-1\)">\(-1\)</span>. Finally, if the weights are <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, twisting by <span class="math" data-tex="\(\mathbf Q_p(-a)\)">\(\mathbf Q_p(-a)\)</span> gives <span class="math" data-tex="\(0,b-a\)">\(0,b-a\)</span> by Proposition 2.1. Put <span class="math" data-tex="\(k=b-a+1\)">\(k=b-a+1\)</span>. ∎</p>
+<p>This normalization alone proves no modularity lifting theorem.</p>
+<p><strong>Kisin's printed 2009 theorem (stated).</strong> Let <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span> and let
+<span class="math" data-tex="\(\rho:G_{\mathbf Q,S}\to\operatorname{GL}_2(\mathcal O_E)\)">\(\rho:G_{\mathbf Q,S}\to\operatorname{GL}_2(\mathcal O_E)\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> is finite and contains <span class="math" data-tex="\(p,\infty\)">\(p,\infty\)</span>. Suppose:</p>
+<ol>
+<li><span class="math" data-tex="\(\rho|_{G_{\mathbf Q_p}}\)">\(\rho|_{G_{\mathbf Q_p}}\)</span> is potentially semistable with distinct Hodge–Tate weights.</li>
+<li>It becomes semistable over an <strong>abelian</strong> extension of <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>.</li>
+<li><span class="math" data-tex="\(\bar\rho\)">\(\bar\rho\)</span> is odd, and <span class="math" data-tex="\(\bar\rho|_{G_{\mathbf Q(\zeta_p)}}\)">\(\bar\rho|_{G_{\mathbf Q(\zeta_p)}}\)</span> is absolutely irreducible.</li>
+<li>Its local reduction is not, for any character <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, of the form
+<span class="math math-display" data-tex="\[
+\eta\otimes\begin{pmatrix}\bar\chi_p&amp;*\\0&amp;1\end{pmatrix}.
+\tag{34}
+\]">\[
+\eta\otimes\begin{pmatrix}\bar\chi_p&amp;*\\0&amp;1\end{pmatrix}.
+\tag{34}
+\]</span></li>
+</ol>
+<p>Then <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, up to twist, comes from a holomorphic cuspidal eigenform of weight at least two. This is the <a href="https://dash.harvard.edu/entities/publication/73120378-dc24-6bd4-e053-0100007fdf3b">openly deposited printed Kisin 2009 article, introduction, main theorem, pp.641–642</a>. The discussion immediately after it explains how removal of condition 2 depends on compatibility for the <span class="math" data-tex="\(p\)">\(p\)</span>-adic local Langlands correspondence; deleting that condition from the printed theorem without identifying the further input would misstate its scope. The proof remains unclosed here. The actually read introductory proof outline on printed p.643 reduces modularity lifting to equality of local deformation-ring and automorphic multiplicities, and obtains the required local inequality through the <span class="math" data-tex="\(p\)">\(p\)</span>-adic local Langlands correspondence. A complete proof still requires those deformation rings, the multiplicity comparison, patching, residual modularity, and the stated local/classical compatibility. The local period computations above do not provide those global or deformation inputs.</p>
+<p><strong>Emerton's theorem (stated, March 2011 version).</strong> Let <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> be a continuous, irreducible, odd, two-dimensional <span class="math" data-tex="\(E\)">\(E\)</span>-representation of <span class="math" data-tex="\(G_{\mathbf Q}\)">\(G_{\mathbf Q}\)</span>, unramified at all but finitely many primes. Suppose that <span class="math" data-tex="\(\bar V|_{G_{\mathbf Q(\zeta_p)}}\)">\(\bar V|_{G_{\mathbf Q(\zeta_p)}}\)</span> is absolutely irreducible and that <span class="math" data-tex="\(\bar V|_{G_{\mathbf Q_p}}\)">\(\bar V|_{G_{\mathbf Q_p}}\)</span> is neither of the forms
+<span class="math math-display" data-tex="\[
+\eta\otimes\begin{pmatrix}1&amp;*\\0&amp;1\end{pmatrix},
+\qquad
+\eta\otimes\begin{pmatrix}1&amp;*\\0&amp;\bar\chi_p\end{pmatrix}
+\tag{35}
+\]">\[
+\eta\otimes\begin{pmatrix}1&amp;*\\0&amp;1\end{pmatrix},
+\qquad
+\eta\otimes\begin{pmatrix}1&amp;*\\0&amp;\bar\chi_p\end{pmatrix}
+\tag{35}
+\]</span>
+for any residue-field-valued <span class="math" data-tex="\(\eta\)">\(\eta\)</span>; the star may be zero. If <span class="math" data-tex="\(V|_{G_{\mathbf Q_p}}\)">\(V|_{G_{\mathbf Q_p}}\)</span> is de Rham with distinct Hodge–Tate weights, then <span class="math" data-tex="\(V\)">\(V\)</span> is a twist of the representation attached to a classical cuspidal eigenform of weight at least two. See <a href="https://math.uchicago.edu/~emerton/pdffiles/lg.pdf">Emerton's March 2011 author draft, Theorem 1.2.4(2), p.4</a>. Unlike its earlier Corollary 1.2.2, this theorem does not assume promodularity: Theorem 1.2.3 supplies it under the stated residual hypotheses. The exclusion in (35) has the displayed <strong>ordering</strong> of characters; it should not silently be replaced by (34).</p>
+<p>Its exact logical deduction is as follows, with its still-unproved interfaces identified. Theorem 1.2.3 would give promodularity from precisely <span class="math" data-tex="\(p&gt;2\)">\(p&gt;2\)</span>, residual irreducibility on <span class="math" data-tex="\(G_{\mathbf Q(\zeta_p)}\)">\(G_{\mathbf Q(\zeta_p)}\)</span>, oddness, and the two exclusions (35). The first exclusion also prevents a local direct sum of two characters with identical reductions: their reduction would have both diagonal characters equal and would have the first excluded form, for any stable lattice. Thus the additional local condition of Corollary 1.2.2(2) is met. That corollary would then give the classical cuspidal conclusion. This proves the logical passage between these statements, without treating either intermediate theorem as proved here.</p>
+<p>The actual proof on p.94, Theorem 7.1.1, uses the local-global embedding into completed modular-curve cohomology (Theorem 1.2.1), nonzero locally algebraic vectors for a de Rham local representation (Theorem 3.3.21), and identification of those completed-cohomology vectors with classical forms. The promodularity argument on p.96 uses residual modularity and a deformation-ring/Hecke-algebra comparison. These are the missing proof interfaces for this exact conclusion. Replacing them by the words “odd and geometric” would not establish it.</p>
+<p>These theorems combine local <span class="math" data-tex="\(p\)">\(p\)</span>-adic representation theory, deformation theory, residual modularity, and global automorphic methods. The final lesson states the residual modularity theorem used in this circle of arguments.</p>
+<h2 id="6-exact-remaining-proof-obligations">6. Exact remaining proof obligations</h2>
+<p>The full assertions have been retained. The following distinctions prevent a citation from concealing a missing proof.</p>
+<ol>
+<li><strong>Completed algebraic closure invariants.</strong> Equation (3) still requires the Ax–Sen–Tate ramification estimate and the cyclotomic trace bounds. The free Brinon–Conrad notes state the result in Theorem 2.2.7 and reduce its twisted vanishing in Theorem 14.3.4 to their Tate–Sen hypotheses and Lemma 14.1.9. Those bounds have not been reconstructed here. Lemma 1.0 proves algebraic closedness of the completion and of the tilt fraction field; neither implies (3). Uniqueness of weights, the precise invariant fields, and character regularity still depend on this gap.</li>
+<li><strong>Crystalline and semistable structural maps.</strong> Lemmas 1.1–1.2 construct the Witt algebra, <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, its principal kernel and the de Rham discrete valuation ring completely. Lemma 1.2A constructs the completed divided-power logarithms and their formal Galois and Frobenius identities. Still required are the injective map <span class="math" data-tex="\(A_{\mathrm{cris}}\to B_{\mathrm{dR}}^+\)">\(A_{\mathrm{cris}}\to B_{\mathrm{dR}}^+\)</span> with its divided-power-series compatibility, injectivity of Frobenius on the completed ring, injectivity after <span class="math" data-tex="\(K\otimes_{K_0}(-)\)">\(K\otimes_{K_0}(-)\)</span>, and transcendence of (26b) over <span class="math" data-tex="\(\operatorname{Frac}(B_{\mathrm{cris}})\)">\(\operatorname{Frac}(B_{\mathrm{cris}})\)</span>. The actual free notes omit proofs of substantial parts of these statements in §§9.1–9.2. The invariant fields for the crystalline and semistable rings and their regularity (10a) must also be proved. The fact that <span class="math" data-tex="\(B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}\)">\(B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}\)</span> and its operator relation are polynomial calculations already given here; they do not prove the embeddings.</li>
+<li><strong>Consequences with identified dependencies.</strong> Lemma 1.3 proves the entire admissibility algebra under (10a); Lemma 1.4 proves strict filtered comparison, (11) and (12) under the explicitly listed period foundations. Lemma 2.2 proves finite Galois descent without any period theorem, and Lemma 2.2A proves finite-extension descent once the invariant fields are known. Proposition 3.2 constructs period matrices for <strong>all</strong> continuous unramified representations, including infinite image, without completed unramified descent. Thus no additional inertial-restriction theorem is being assumed for that example. Its identification as a crystalline module still depends on the crystalline structural maps and invariants. The finite-image criterion (20) has precisely the same invariant-field dependence.</li>
+<li><strong>The Tate example.</strong> The earlier local elliptic-curve lesson’s Lemma 3.0 supplies its actual all-characteristic uniformization proof. The argument before (24) proves the coefficient-prime torsion passage directly; Lemma 4.0 proves the logarithmic identities and residue formula with precisely the structural-series map specified in item 2. The basis, <span class="math" data-tex="\(N\)">\(N\)</span>, Frobenius, filtration and direct Hodge–Tate splitting in (27)–(31) are then explicit calculations. This is a conditional period-ring calculation with a proved elliptic input, not a proof of all the general structural embeddings or of local monodromy.</li>
+<li><strong>General geometric and local comparison.</strong> We still owe full de Rham and Hodge–Tate comparison for smooth proper varieties, crystalline comparison for smooth proper integral models at every coefficient prime, semistable comparison, both elliptic reduction converses, and the height-two ordinary/supersingular slope classification. The full local monodromy theorem also requires the Robba-ring constructions, overconvergence and Frobenius differential-equation quasi-unipotence identified in §1. Berger’s free author manuscript states or reduces these results; it does not provide a complete proof of them. No earlier <span class="math" data-tex="\(p\)">\(p\)</span>-adic-Hodge programme lesson has been inspected that supplies them.</li>
+<li><strong>Global geometry and modularity.</strong> Formula (33) retains every weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, nebentypus, level and prime <span class="math" data-tex="\(p\nmid N\)">\(p\nmid N\)</span>. Its general integral modular models, Kuga–Sato projector, arithmetic comparison and newform pairing inputs remain unclosed in the higher-weight construction. The finite-image weight-one existence theorem is an earlier construction obligation, whereas its local consequences for any representation actually given follow from §2. The printed Kisin 2009 and March 2011 Emerton conclusions retain every hypothesis in §5. Their proofs require the deformation and completed-cohomology interfaces traced there, not supplied by our determinant normalization or the Tate example.</li>
+</ol>
+<p>Fontaine–Mazur itself is explicitly a conjecture. Its general geometric realization and expected purity are not being claimed as theorems proved by this lesson. The retained theorem obligations in items 1–6 mean that this edition is <strong>not yet a complete proof of every result it uses</strong>. A successful formula render or a freely accessible reference cannot change that status.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises, with complete solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Compute the weights, de Rham filtration, and crystalline Frobenius of <span class="math" data-tex="\(\mathbf Q_p(n)\)">\(\mathbf Q_p(n)\)</span>, for positive, zero, and negative <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Solution.</strong> Equation (1) gives <span class="math" data-tex="\(C_p\otimes\mathbf Q_p(n)=C_p(n)\)">\(C_p\otimes\mathbf Q_p(n)=C_p(n)\)</span>, so its unique weight is <span class="math" data-tex="\(n\)">\(n\)</span>, including when <span class="math" data-tex="\(n&lt;0\)">\(n&lt;0\)</span>. The invariant period is <span class="math" data-tex="\(t^{-n}e_n\)">\(t^{-n}e_n\)</span>, since the cyclotomic factors cancel. Multiplying by <span class="math" data-tex="\(t^n\)">\(t^n\)</span> shows that every invariant period is its <span class="math" data-tex="\(\mathbf Q_p\)">\(\mathbf Q_p\)</span>-multiple. Its <span class="math" data-tex="\(t\)">\(t\)</span>-adic order is <span class="math" data-tex="\(-n\)">\(-n\)</span>, so it belongs to <span class="math" data-tex="\(\operatorname{Fil}^i\)">\(\operatorname{Fil}^i\)</span> precisely when <span class="math" data-tex="\(i\le-n\)">\(i\le-n\)</span>. Finally <span class="math" data-tex="\(\varphi(t)=pt\)">\(\varphi(t)=pt\)</span> gives eigenvalue <span class="math" data-tex="\(p^{-n}\)">\(p^{-n}\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> all three values are respectively <span class="math" data-tex="\(0,0,1\)">\(0,0,1\)</span>; for <span class="math" data-tex="\(n=-1\)">\(n=-1\)</span> they are <span class="math" data-tex="\(-1,1,p\)">\(-1,1,p\)</span>. ∎</p>
+<p><strong>Exercise 7.2 (medium).</strong> Show that a finite-image local representation has all weights zero. Explain why this does not make it crystalline automatically.</p>
+<p><strong>Solution.</strong> Choose finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span> killing its action. The invariant theorem identifies the <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-invariants with <span class="math" data-tex="\((L\otimes V)^{\operatorname{Gal}(L/K)}\)">\((L\otimes V)^{\operatorname{Gal}(L/K)}\)</span>. Lemma 2.2 supplies <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> fixed vectors forming an <span class="math" data-tex="\(L\)">\(L\)</span>-basis, hence a <span class="math" data-tex="\(C_p\)">\(C_p\)</span>-basis. This decomposes <span class="math" data-tex="\(C_p\otimes V\)">\(C_p\otimes V\)</span> into <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> copies of <span class="math" data-tex="\(C_p(0)\)">\(C_p(0)\)</span>, proving the assertion without a choice of eigencharacters. For <span class="math" data-tex="\(K=\mathbf Q_p\)">\(K=\mathbf Q_p\)</span>, Theorem 3.1 gives <span class="math" data-tex="\(\dim D_{\mathrm{cris}}(V)=\dim V^{I_p}\)">\(\dim D_{\mathrm{cris}}(V)=\dim V^{I_p}\)</span>. A nontrivial finite ramified character has no inertia invariants, so its crystalline module is zero even though its sole Hodge–Tate weight is zero. All such finite-image representations are de Rham by (18). ∎</p>
+<p><strong>Exercise 7.3 (medium).</strong> For the Tate curve <span class="math" data-tex="\(E_p/\mathbf Q_p\)">\(E_p/\mathbf Q_p\)</span>, calculate <span class="math" data-tex="\(D_{\mathrm{cris}}\)">\(D_{\mathrm{cris}}\)</span> and prove it is not crystalline.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(u=Y\)">\(u=Y\)</span> and the basis (27). Equation (28) gives a two-dimensional semistable module with <span class="math" data-tex="\(N(x)=0,N(y)=x\)">\(N(x)=0,N(y)=x\)</span>. For <span class="math" data-tex="\(ax+by\)">\(ax+by\)</span>, the image under <span class="math" data-tex="\(N\)">\(N\)</span> is <span class="math" data-tex="\(bx\)">\(bx\)</span>, so its kernel is exactly <span class="math" data-tex="\(\mathbf Q_px\)">\(\mathbf Q_px\)</span>. Since <span class="math" data-tex="\(B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}\)">\(B_{\mathrm{st}}^{N=0}=B_{\mathrm{cris}}\)</span>, invariants in that kernel are precisely the crystalline module, by (30). Its dimension is one, whereas <span class="math" data-tex="\(V_pE_p\)">\(V_pE_p\)</span> has dimension two. This violates the crystalline dimension criterion. Its weights remain <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, as the filtration in (31) shows. ∎</p>
+<p><strong>Exercise 7.4 (hard).</strong> Explain why an irreducible even two-dimensional Artin representation is geometric, yet cannot be the representation of a holomorphic cuspidal eigenform. Give an explicit example and identify its geometric realization.</p>
+<p><strong>Solution.</strong> An Artin representation has finite image. A finite extension ramifies at finitely many primes: choose an integral primitive element, and exclude the finitely many prime divisors of its nonzero polynomial discriminant. At every remaining prime its residue polynomial has distinct roots; those roots lift uniquely in an unramified extension by the unit-derivative Newton iteration. Thus its splitting field is unramified there. Theorem 2.3 shows that every local restriction at <span class="math" data-tex="\(p\)">\(p\)</span> is de Rham with weights <span class="math" data-tex="\(0,0\)">\(0,0\)</span>, with exactly the period-foundation dependencies of that theorem. Thus any <span class="math" data-tex="\(p\)">\(p\)</span>-adic realization over a finite coefficient field is geometric.</p>
+<p>Finite image also has a literal geometric realization: a finite Galois extension <span class="math" data-tex="\(L/\mathbf Q\)">\(L/\mathbf Q\)</span> gives the regular permutation representation in <span class="math" data-tex="\(H^0_{\mathrm{\acute et}}(\operatorname{Spec}L_{\overline{\mathbf Q}},E)\)">\(H^0_{\mathrm{\acute et}}(\operatorname{Spec}L_{\overline{\mathbf Q}},E)\)</span>. It contains every irreducible representation of its Galois group after a suitable coefficient extension. To verify this, for an irreducible <span class="math" data-tex="\(W\)">\(W\)</span> choose <span class="math" data-tex="\(0\ne w\in W\)">\(0\ne w\in W\)</span>; the map from the group algebra sending <span class="math" data-tex="\(\sum a_g g\)">\(\sum a_g g\)</span> to <span class="math" data-tex="\(\sum a_g g(w)\)">\(\sum a_g g(w)\)</span> is surjective by irreducibility. Its kernel has a stable complement: average any linear projection onto the kernel over the finite group and divide by its order, which is invertible in the characteristic-zero coefficient field. The complementary representation is <span class="math" data-tex="\(W\)">\(W\)</span>. This proves the assertion for the regular representation. The variety is smooth, zero-dimensional, and projective: a finite separable field is the zero locus of its separable homogenized minimal polynomial in <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>; the leading coefficient excludes the point at infinity, and the nonzero derivative proves smoothness. Its étale <span class="math" data-tex="\(H^0\)">\(H^0\)</span> consists of functions on its geometric points, giving precisely that permutation action.</p>
+<p>For a concrete rational example, take <span class="math" data-tex="\(P(X)=X^3-4X+1\)">\(P(X)=X^3-4X+1\)</span>. It has no rational root, since neither <span class="math" data-tex="\(1\)">\(1\)</span> nor <span class="math" data-tex="\(-1\)">\(-1\)</span> is a root; the rational-root test proves irreducibility. Its discriminant is <span class="math" data-tex="\(256-27=229\)">\(256-27=229\)</span>, a nonsquare. Its splitting group is therefore the transitive subgroup <span class="math" data-tex="\(S_3\)">\(S_3\)</span>, rather than <span class="math" data-tex="\(A_3\)">\(A_3\)</span>. A cubic with positive discriminant has three distinct real roots: nonreal roots would form one conjugate pair, making the discriminant negative. Hence its splitting field is totally real, and complex conjugation acts trivially. The two-dimensional summand of the three-root permutation representation,
+<span class="math math-display" data-tex="\[
+\{(a,b,c)\in\mathbf Q_p^3:a+b+c=0\},
+\tag{36}
+\]">\[
+\{(a,b,c)\in\mathbf Q_p^3:a+b+c=0\},
+\tag{36}
+\]</span>
+is absolutely irreducible. Indeed a three-cycle has two distinct primitive cube-root eigenlines after scalar extension, and a transposition interchanges them. Neither line is <span class="math" data-tex="\(S_3\)">\(S_3\)</span>-stable. Complex conjugation has determinant <span class="math" data-tex="\(+1\)">\(+1\)</span>, so the representation is even. If <span class="math" data-tex="\(F=\mathbf Q[X]/(P)\)">\(F=\mathbf Q[X]/(P)\)</span>, the permutation representation is <span class="math" data-tex="\(H^0_{\mathrm{\acute et}}(\operatorname{Spec}F_{\overline{\mathbf Q}},\mathbf Q_p)\)">\(H^0_{\mathrm{\acute et}}(\operatorname{Spec}F_{\overline{\mathbf Q}},\mathbf Q_p)\)</span>; its constants split off by the projection <span class="math" data-tex="\((a,b,c)\mapsto(a+b+c)/3\)">\((a,b,c)\mapsto(a+b+c)/3\)</span>. Its complementary summand is (36), realizing this example in geometry for every <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>A holomorphic cuspidal newform of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> has distinct weights <span class="math" data-tex="\(0,k-1\)">\(0,k-1\)</span>, so cannot give this finite-image representation. A weight-one cusp form gives an <strong>odd</strong> representation by Deligne–Serre, so cannot give it either. More generally the determinant formula gives <span class="math" data-tex="\(\det\rho_f(c)=\varepsilon(-1)(-1)^{k-1}=-1\)">\(\det\rho_f(c)=\varepsilon(-1)(-1)^{k-1}=-1\)</span>, because <span class="math" data-tex="\(\varepsilon(-1)=(-1)^k\)">\(\varepsilon(-1)=(-1)^k\)</span>. Twists do not change this parity: a one-dimensional character takes <span class="math" data-tex="\(c\)">\(c\)</span> to <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, whose square is one in the determinant of a two-dimensional twist. This example therefore fits Fontaine–Mazur through <span class="math" data-tex="\(H^0\)">\(H^0\)</span>, while lying outside the holomorphic cuspidal correspondence. ∎</p>
+<h2 id="references">References</h2>
+<p>All references below point to freely accessible primary material. They document the constructions and the exact retained theorem versions; they do not discharge the obligations of §6.</p>
+<ul>
+<li><strong>Berger, free author manuscript:</strong> L. Berger, <a href="https://perso.ens-lyon.fr/laurent.berger/articles/article05.pdf"><em>An introduction to the theory of p-adic representations</em></a>, also <a href="https://arxiv.org/abs/math/0210184">author preprint math/0210184</a>; §§II.1–II.5 and IV.5.3.</li>
+<li><strong>Brinon–Conrad, free author notes:</strong> O. Brinon and B. Conrad, <a href="https://math.stanford.edu/~conrad/papers/notes.pdf"><em>CMI Summer School Notes on p-adic Hodge Theory</em></a>, preliminary version of June 24, 2009; §§4.2–4.4, Theorem 5.2.1, §§9.1–9.3, Theorems 2.2.7 and 14.3.4. Several structural proofs are expressly omitted in this version.</li>
+<li><strong>Taylor, free original article:</strong> R. Taylor, <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0.pdf"><em>Galois representations</em></a>, 2004; §1, Conjecture 1.1, printed p.80.</li>
+<li><strong>Scholl, free author manuscript:</strong> A. J. Scholl, <a href="https://www.dpmms.cam.ac.uk/~ajs1005/preprints/mf.pdf"><em>Motives for modular forms</em></a>; Theorem 1.2.4, Remark 1.2.5, §§4.1–4.2.</li>
+<li><strong>Kisin, openly deposited printed 2009 article:</strong> M. Kisin, <a href="https://dash.harvard.edu/entities/publication/73120378-dc24-6bd4-e053-0100007fdf3b"><em>The Fontaine–Mazur conjecture for GL₂</em></a>, Harvard institutional repository; printed pp.641–690, main theorem pp.641–642. The <a href="https://people.math.harvard.edu/~kisin/dvifiles/fmc.dvi">free author preprint</a> is separately available; the printed hypotheses in §5 were checked against the printed edition.</li>
+<li><strong>Emerton, free author draft:</strong> M. Emerton, <a href="https://math.uchicago.edu/~emerton/pdffiles/lg.pdf"><em>Local-global compatibility in the p-adic Langlands programme for GL₂/Q</em></a>, March 23, 2011; Theorems 1.2.3–1.2.4, Remark 1.2.5, §§7.1 and 7.3.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Weight one: the theorem of Deligne and Serre</span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="residual-representations-and-serre-modularity.html">Residual representations and Serre&#x27;s modularity theorem →</a></span></nav>
+<p class="small source-link"><a href="src/p-adic-hodge-theory-and-the-fontaine-mazur-conjecture.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

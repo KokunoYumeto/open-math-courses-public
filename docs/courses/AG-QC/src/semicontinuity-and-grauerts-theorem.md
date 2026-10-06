@@ -1,0 +1,180 @@
+# Semicontinuity and Grauert's theorem
+
+*Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).*
+
+The dimensions of fiber cohomology can increase at special parameters. A finite complex explains both this increase and the stronger conditions that prevent it. Matrix ranks control semicontinuity; lifting fiber classes controls the comparison map; and a reduced base turns pointwise vanishing of matrix entries into actual vanishing.
+
+We use [Base change and the Grothendieck complex](base-change-and-the-grothendieck-complex.md). First take a proper morphism \(f:X\to S\) with \(S\) Noetherian and \(F\) coherent and flat over \(S\). All conclusions also apply to a proper morphism of finite presentation over an arbitrary scheme, with \(F\) finitely presented and flat over \(S\). The following argument proves the finite complex in this full setting.
+
+**Lemma 0.1 (a finite complex over an arbitrary base).** If \(A\) is any ring, \(X\to\operatorname{Spec}A\) is proper of finite presentation and \(F\) is finitely presented and \(A\)-flat, there is a finite projective complex \(K\), in nonnegative degrees, which computes \(H^q(X_B,F_B)\) after every \(A\)-algebra change \(B\).
+
+**Proof.** Write \(A=\operatorname{colim}A_i\), where the \(A_i\) are its finite-type \(\mathbf Z\)-subalgebras and hence Noetherian. The earlier *Limits and Noetherian approximation*, Theorems 4.1–4.2 and 5.1 descends a finitely presented scheme and its separated diagonal to a separated finite-type \(X_i/A_i\). The sheaf also descends: choose finitely many affine charts, finite presentation matrices on them, and gluing maps on finite affine refinements of overlaps. Matrices, their inverses and the cocycle identities involve finitely many coefficients and finitely many equalities, which hold at a sufficiently late stage. This gives finitely presented \(F_i\) with pullback \(F\).
+
+We justify descent of properness rather than assuming it. Apply the Noetherian Chow theorem of the earlier *Projective morphisms and Chow's lemma*, Theorem 4.1, to \(X_i/A_i\). It gives a proper surjection \(Y_i\to X_i\) with \(Y_i\) quasi-projective over \(A_i\), thus immersed in a finite projective space. After change to \(A\), \(Y\to X\to\operatorname{Spec}A\) is proper. Its immersion into projective space is consequently closed by the graph argument of the Serre lesson. Eventual closed-immersion descent in *Limits*, Theorem 4.2, makes \(Y_j\) projective over \(A_j\) at a later stage. The proper surjection \(Y_j\to X_j\) then makes \(X_j\) universally closed: after any base change, the image in the base of a closed subset \(C\subset X_j\) equals the image of its closed inverse image in \(Y_j\), which is closed by properness. Together with separatedness and finite type, this proves \(X_j/A_j\) proper.
+
+Flatness also descends with these hypotheses. The earlier *Flatness criteria*, Lemma 6.2 proves that flatness at a point of a finitely presented limit module holds at its contracted point at some Noetherian stage. Theorem 5.2 there proves that this is an open condition at that stage. Pull back these flat opens to \(X\). They cover \(X\), which is quasi-compact, so finitely many suffice. Pass to a common stage and take their union there. Subsequent pullbacks of these opens remain flat by ordinary flat base change. The closed complement has empty inverse limit; the finite-cover descent of *Limits*, Lemma 2.1, makes that complement empty at a sufficiently late stage. Hence the entire \(F_j\) is \(A_j\)-flat. This explains exactly how pointwise eventual flatness yields one global stage.
+
+Now \(X_j\) is proper over Noetherian \(A_j\), and \(F_j\) is coherent and \(A_j\)-flat. The Grothendieck-complex construction in the preceding lesson gives a finite projective nonnegative \(K_j\) and its universal comparison to the finite affine-cover complex. Pull back to \(A\) and put \(K=K_j\otimes_{A_j}A\). The cover and every section module pull back termwise, by the affine module/sheaf equivalence; its intersections are affine by separatedness. For every \(A\)-algebra \(B\), the universal comparison for \(K_j\otimes B\) is therefore the comparison to the cover of \(X_B,F_B\). It computes the required cohomology and is canonical at the level of the derived comparison maps. Finite projectivity and the nonnegative degree range survive tensoring. \(\square\)
+
+Locally on an affine base, therefore, such a \(K\) computes all fiber and base-changed cohomology in either setting.
+
+We denote the canonical fiber comparison by
+\[
+\varphi^q(s):(R^qf_*F)\otimes\kappa(s)\longrightarrow H^q(X_s,F_s).
+\]
+On an affine neighborhood it is the cocycle map \(H^q(K)\otimes\kappa(s)\to H^q(K\otimes\kappa(s))\). Comparing these two expressions for cohomology is the purpose of this lesson.
+
+## 1. Semicontinuity from minors
+
+After restricting to an affine open where every projective term is free, write \(r_q=\operatorname{rank}K^q\). Let \(d^q\) be its differential and \(\rho_q(s)\) the rank of the matrix over \(\kappa(s)\). Since \(d^qd^{q-1}=0\), linear algebra gives
+\[
+h^q(s):=\dim_{\kappa(s)}H^q(X_s,F_s)
+=r_q-\rho_{q-1}(s)-\rho_q(s).
+\]
+The rank of a matrix is lower semicontinuous: the locus of rank at least \(r\) is the union of the principal opens where some \(r\times r\) minor is invertible. The sum of the two ranks is the rank of their block diagonal matrix, so it too is lower semicontinuous.
+
+**Theorem 1.1 (semicontinuity).** Under the stated proper flat-sheaf hypotheses, every \(h^q:S\to\mathbf Z_{\geq0}\) is upper semicontinuous. Its level sets are locally constructible, and its values commute with arbitrary base change of parameter schemes.
+
+**Proof.** On each trivializing affine, the displayed formula makes \(\{h^q\geq n\}\) the locus where the block diagonal matrix has rank at most \(r_q-n\). This is closed, defined by the minors of size \(r_q-n+1\), with the usual empty or whole-locus conventions at the extreme bounds. The closed-locus assertion is local, so holds on \(S\). Each equality locus \(\{h^q=n\}\) is the difference of the closed loci \(\{h^q\geq n\}\) and \(\{h^q\geq n+1\}\), hence locally constructible. For a parameter \(s'\) above \(s\), the new geometric cohomology complex is the old fiber complex tensored with \(\kappa(s')\). Extending a field preserves its ranks and cohomology dimensions, proving the final assertion. \(\square\)
+
+Upper semicontinuity allows an increase on a closed locus. It does not say that every special fiber acquires new cohomology or that individual cohomology modules over the parameter ring are locally free. Those require further information about the matrices.
+
+## 2. Remove the invertible blocks
+
+**Lemma 2.1 (a minimal complex near a point).** For a fixed \(s\), after restricting to an affine neighborhood and trivializing the terms, the complex can be replaced by a finite free complex whose differentials are all zero over \(\kappa(s)\). The replacement preserves its cohomology after every base change.
+
+**Proof.** If a differential matrix has an entry invertible at \(s\), shrink so that it is a unit and use elementary row and column operations to make it the sole nonzero entry in its row and column, equal to one. The relation between consecutive differentials forces the incoming differential's component in the corresponding source summand to be zero, and the outgoing differential's component from the corresponding target summand to be zero. Thus the two copies of \(A\), with identity between them, split off as a direct summand complex in consecutive degrees. This summand is contractible, including after every tensor product. Remove it. Each removal reduces the sum of the term ranks by two, so after finitely many removals no entry is invertible at \(s\). All remaining entries lie in the maximal ideal of \(\mathcal O_{S,s}\), which means the residue-field differentials are zero. All operations and splittings occurred on a neighborhood of \(s\), proving the lemma. \(\square\)
+
+Here minimality refers to the chosen point. Other points of the neighborhood may still have nonzero residue-field differentials. At the chosen point,
+\[
+H^q(K\otimes\kappa(s))=K^q\otimes\kappa(s).
+\]
+Surjectivity of a cohomology comparison now says that a basis of this space lifts to actual cocycles.
+
+**Lemma 2.2 (lifting cocycles kills a differential).** For a complex as in Lemma 2.1, \(\varphi^q(s)\) is surjective if and only if \(d^q=0\) in the local ring at \(s\). If it is surjective, \(d^q\) is zero on a smaller neighborhood.
+
+**Proof.** If the map is surjective, choose finitely many actual cocycles in \(K^q\) whose reductions give a basis of \(K^q\otimes\kappa(s)\). The square matrix having these cocycles as columns has determinant invertible in the local ring, so they form a basis of \(K^q\) there. The differential kills every basis vector, hence is zero. Its finitely many entries vanish in the localization and consequently on some smaller neighborhood. Conversely, if \(d^q=0\) locally, every element of \(K^q\) is a cocycle. Its reduction maps onto the fiber cohomology because the incoming differential reduces to zero by minimality. Thus \(\varphi^q(s)\) is surjective. \(\square\)
+
+This proof does not need finite generation of the entire cocycle module over an arbitrary base. Surjectivity selects finitely many cocycles, and an invertible determinant already makes them a basis of the finite free term.
+
+## 3. Cohomology and base change
+
+**Theorem 3.1 (the surjectivity criterion).** Suppose \(\varphi^q(s)\) is surjective. There is an open neighborhood \(U\) of \(s\) on which formation of \(R^qf_*F\) commutes with every base change. In particular the comparison is an isomorphism at every point of \(U\). Under this hypothesis, the following are equivalent:
+
+1. \(\varphi^{q-1}(s)\) is surjective;
+2. \(R^qf_*F\) is locally free on a neighborhood of \(s\).
+
+For \(q=0\), set all negative direct images and fiber cohomology to zero; the first condition is automatic.
+
+**Proof.** Apply Lemmas 2.1–2.2 and shrink so that \(d^q=0\). Then
+\[
+H^q(K)=\operatorname{coker}(d^{q-1}:K^{q-1}\to K^q).
+\]
+Tensor is right exact, so for every \(A\)-algebra \(B\) on this neighborhood,
+\[
+H^q(K)\otimes_A B
+\cong\operatorname{coker}(d^{q-1}\otimes B)
+=H^q(K\otimes_A B).
+\]
+This is exactly the canonical comparison. The identity localizes and glues for arbitrary scheme base changes, proving the first part.
+
+If \(\varphi^{q-1}(s)\) is surjective, Lemma 2.2 kills \(d^{q-1}\) after a further shrinking. Now \(H^q(K)=K^q\), so it is finite free there.
+
+Conversely assume \(H^q(K)\) is free over the local ring \(A_s\). The sequence
+\[
+0\to N:=\operatorname{im}d^{q-1}\to K^q\to H^q(K)\to0
+\]
+splits, since its quotient is free. Thus \(N\) is a finite direct summand of \(K^q\). Minimality gives \(N\subset\mathfrak m_sK^q\), so its inclusion is zero after tensoring with the residue field. But a split inclusion remains injective after tensoring. Hence \(N/\mathfrak m_sN=0\), and Nakayama gives \(N=0\). Therefore \(d^{q-1}=0\) locally and Lemma 2.2 proves surjectivity of \(\varphi^{q-1}(s)\). In degree zero the nonnegative model already has \(K^{-1}=0\), giving the stated convention. \(\square\)
+
+The hypothesis refers to the comparison map, not merely to equality of dimensions of two spaces. Once it holds, right exactness of a cokernel supplies arbitrary base change in that degree. Local freeness adds a condition on the preceding differential. These are two distinct conclusions of the theorem.
+
+## 4. Grauert's theorem and the reduced base
+
+**Theorem 4.1 (Grauert).** Suppose \(S\) is reduced and \(h^q\) is locally constant. Then \(R^qf_*F\) is finite locally free and its formation commutes with every base change.
+
+**Proof.** Fix \(s\) and choose a minimal complex near it. Let \(r=\operatorname{rank}K^q\). The two residue-field differentials at \(s\) vanish, so \(h^q(s)=r\). Restrict to a neighborhood where \(h^q\) is this constant. For every point \(u\) there,
+\[
+r=h^q(u)=r-\rho_{q-1}(u)-\rho_q(u).
+\]
+Both ranks are nonnegative, hence both are zero at every point. Every matrix entry of \(d^{q-1}\) and \(d^q\) therefore belongs to every prime of the affine coordinate ring. Such entries lie in its nilradical. Reducedness makes that nilradical zero, so both differentials actually vanish. Consequently \(H^q(K)=K^q\), and the same is true after every tensor product. This gives finite local freeness and comparison with every base change on a neighborhood of \(s\); these assertions glue on \(S\). \(\square\)
+
+Reducedness is doing precise work: residue fields detect whether an entry is nilpotent, but do not detect whether that nilpotent entry is zero. Over \(A=k[\epsilon]/(\epsilon^2)\), the complex
+\[
+[\,A\xrightarrow{\epsilon}A\,]\quad\text{in degrees }0,1
+\]
+has fiber dimensions one in each degree on the one-point base. Yet its cohomology modules are \((\epsilon)\) and \(A/(\epsilon)\), neither free over \(A\), and its degree-zero comparison is zero. This complex is realized by the flat rank-two extension of \(\mathcal O\) by \(\mathcal O(-2)\) on \(\mathbf P^1_A\) with class \(\epsilon\). Thus the failure occurs for a proper flat family with a vector bundle, not only for an unrelated algebraic complex.
+
+## 5. Vanishing and the structure sheaf
+
+**Corollary 5.1 (vanishing gives local freeness).** If \(R^qf_*F=0\) for every \(q>0\), then \(f_*F\) is finite locally free and commutes with arbitrary base change. Its higher direct images also vanish after every base change.
+
+**Proof.** On an affine neighborhood, use the nonnegative finite projective complex \(K\). It is exact in positive degrees. Begin at the last term: the preceding differential surjects onto a projective module, so splits. Its kernel is a finite projective direct summand of the preceding term. Exactness in the next degree gives another surjection onto this kernel, which again splits. Continue down to degree zero. It follows that \(K\) is the direct sum of contractible projective pairs and its finite projective \(H^0\) in degree zero. All these splittings survive every tensor product. The universal comparison of the Grothendieck complex proves the assertions. \(\square\)
+
+**Theorem 5.2 (constants in a proper flat family).** Let \(f\) be proper, flat and of finite presentation, with nonempty geometrically reduced and geometrically connected fibers. Then the unit is an isomorphism
+\[
+\mathcal O_S\xrightarrow{\sim}f_*\mathcal O_X,
+\]
+and remains an isomorphism after every base change. No reducedness assumption on \(S\) is required.
+
+**Proof.** By the global-functions calculation in the proper-image lesson, a nonempty geometrically reduced and geometrically connected proper scheme over a field has that field as its constants. Thus
+\(H^0(X_s,\mathcal O_{X_s})=\kappa(s)\). The unit section is an actual global section and maps to \(1\) in this fiber space. Therefore \(\varphi^0(s)\) is surjective at every point. Theorem 3.1 applies in degree zero, where the preceding comparison is automatically surjective: \(f_*\mathcal O_X\) is finite locally free, with arbitrary base change. Its fibers all have dimension one. The unit map between these rank-one locally free sheaves is an isomorphism on every residue field; its coefficient is consequently a unit in every local ring, so it is an isomorphism. Its universal comparison identifies the base-changed unit with the same isomorphism over every \(S'\). \(\square\)
+
+The nonempty convention is stated explicitly; the Stacks convention for geometrically connected schemes already includes it [Tag 0362]. Over an imperfect field, geometric reducedness is essential in the constants assertion. The purely inseparable field example in the proper-image lesson shows why ordinary reducedness is insufficient. Universality here includes nilpotent base changes, which would not follow from checking only reduced parameter schemes.
+
+**Corollary 5.3 (vanishing on every fiber).** In either setting at the start of the lesson, assume \(H^q(X_s,F_s)=0\) for every point \(s\) and every \(q>0\). Then \(f_*F\) is finite locally free and commutes with every base change, and all positive higher direct images vanish universally. No reducedness assumption on \(S\) is required.
+
+**Proof.** Fix \(s\) and use the nonnegative finite projective complex which computes every base change. Lemma 2.1 cancels its unit differential entries and gives a finite free complex minimal at \(s\), after shrinking the affine neighborhood. Every differential of its residue-field complex is zero. Thus its degree-\(q\) term has residue-field dimension \(h^q(s)\). For every \(q>0\) this is zero, so the corresponding free term has rank zero and is the zero module. There are finitely many terms, and the complex on this neighborhood is therefore concentrated in degree zero. It is finite free there, with the same property after tensoring with any algebra. Universal comparison identifies its degree-zero cohomology with \(f_*F\) and gives vanishing in all positive degrees. These neighborhoods cover \(S\), and the canonical base-change maps glue the conclusions. \(\square\)
+
+## 6. A line bundle with jumping sections
+
+Let \(E\) be a smooth projective geometrically connected genus-one curve over an algebraically closed field \(k\), and fix \(p\in E(k)\). On \(E\times E\), let \(\Delta\) be the diagonal and consider
+\[
+\mathcal L=\mathcal O_{E\times E}(\{p\}\times E-\Delta).
+\]
+Both divisors are Cartier. For the second projection its fiber at \(q\) is \(L_q=\mathcal O_E(p-q)\), and \(\mathcal L\) is flat over the base: it is invertible on a scheme flat over \(E\).
+
+Here is the needed curve calculation without importing later duality or a nonaffine Zariski Main factorization. Suppose a second independent section of \(\mathcal O_E(p)\) exists. Dividing by its canonical section gives a nonconstant rational function \(f\) with its only pole a simple pole at the rational point \(p\). At every closed point the smooth curve's local ring is a discrete valuation ring, as proved in the earlier *Discrete valuation rings, normal rings and Serre's criterion*. Using \(f\) or \(1/f\), according to its valuation, defines a morphism \(h:E\to\mathbf P^1\). It is proper by its graph.
+
+We first prove its function field is \(k(f)\). A function \(g\) regular on \(E\setminus\{p\}\) has at most a pole of some order \(m\) at \(p\). The leading coefficient of its Laurent expansion there belongs to \(k\), since \(p\) is rational. Subtract a suitable scalar multiple of \(f^m\) to reduce that pole order. Induction leaves a global regular function on \(E\), which is in \(k\) by the constants calculation of the proper-coherence lesson. Thus every such \(g\) belongs to \(k[f]\). For an arbitrary rational function \(u\), its poles away from \(p\) form a finite set: the complement of a nonempty regularity open on a Noetherian integral curve is finite. For each such point \(q\), the residue \(f(q)\) is algebraic over \(k\); a nonzero polynomial \(P_q\in k[T]\) vanishes at it. Consequently \(P_q(f)\) has positive valuation at \(q\). Multiplying \(u\) by sufficiently high powers of these finitely many polynomials removes every pole away from \(p\). The product is in \(k[f]\) by the preceding argument. Hence \(u\in k(f)\), proving \(k(E)=k(f)\).
+
+For a closed \(y\in\mathbf P^1\) and any point \(q\) above it, both local rings are discrete valuation subrings of this same field. Their inclusion is local. If \(\pi\) is a uniformizer of \(\mathcal O_{\mathbf P^1,y}\), its valuation in \(\mathcal O_{E,q}\) is positive, while every unit of the first ring remains a unit. An element of negative first valuation would therefore have negative second valuation and could not belong to \(\mathcal O_{E,q}\). This proves equality of the two local rings. There cannot be two points above \(y\): the resulting two morphisms from the spectrum of this valuation ring to the separated curve agree on its dense generic point, and their closed equalizer is the whole integral spectrum. Properness makes the image of \(h\) closed; nonconstancy makes it contain the generic point, so it is surjective. It is now bijective and closed, hence a homeomorphism, and all its local ring maps, including the generic one, are isomorphisms. It is therefore an isomorphism of schemes. This contradicts \(h^1(\mathcal O_E)=1\), since the projective-line calculation gives zero. Thus \(h^0(\mathcal O_E(p))=1\). In \(0\to\mathcal O_E\to\mathcal O_E(p)\to k(p)\to0\), the first two section spaces are the constants. Its boundary \(k\to H^1(\mathcal O_E)=k\) is an isomorphism, proving \(H^1(\mathcal O_E(p))=0\). The argument persists after every field extension.
+
+An invertible sheaf of degree zero with a nonzero section is trivial: its section has an effective zero divisor of degree zero, hence no zeros, so trivializes the sheaf. If \(L_q\) is trivial, \(\mathcal O_E(p)\cong\mathcal O_E(q)\). Each has its canonical section vanishing at its indicated point. Their section space is one-dimensional, so the isomorphism identifies these sections up to scalar; their zero divisors coincide and \(p=q\). Conversely \(L_p\) is trivial. This argument is preserved after extension of the ground field, so also applies at the generic parameter. Therefore
+\[
+h^0(E,L_q)=\begin{cases}1&q=p,\\0&q\ne p.\end{cases}
+\]
+The Euler characteristic is zero for all \(q\): adding the point \(p\) and subtracting the point \(q\) in the two divisor sequences cancel their length-one Euler contributions. Since the curve has cohomological dimension one, \(h^1(E,L_q)=h^0(E,L_q)\). Both jump at the closed point \(p\), consistently with semicontinuity and Euler constancy.
+
+This family also illustrates the hypothesis in Theorem 3.1. Its degree-zero direct image is zero. Indeed it is torsion-free on the integral base, because multiplication by a nonzero base function is injective on the flat sheaf at every stalk, and taking sections preserves this injection; it has zero generic rank, and it is finite by proper coherence, so it is zero. Thus at \(p\) the comparison is \(0\to k\), which is not surjective. The exceptional fiber section cannot be lifted from a neighborhood.
+
+## 7. Exercises with solutions
+
+**Exercise 7.1 (easy: minors).** Prove upper semicontinuity of the middle cohomology dimension of a three-term complex of finite free modules, and write its jump locus as a determinantal locus.
+
+**Solution.** For ranks \(a,b,c\) and differential ranks \(r_1,r_2\), the dimension is \(b-r_1-r_2\). The sum is the rank of the block diagonal matrix formed by the two differentials. Thus dimension at least \(n\) is defined by all minors of size \(b-n+1\) of that matrix. This is closed. Subtracting the next such closed locus gives a locally closed equality locus.
+
+**Exercise 7.2 (medium: the genus-one family).** Compute \(h^0\), \(h^1\), and the degree-zero comparison at the special point of the family \(\mathcal O_E(p-q)\).
+
+**Solution.** A nonzero section of a degree-zero bundle trivializes it. The one-dimensional section space of \(\mathcal O(p)\), established in Section 6, shows triviality occurs exactly when \(q=p\). Thus both dimensions are one there and zero elsewhere, since their Euler difference is zero. The flat sheaf gives torsion-free direct-image sections on the integral base, and generic vanishing makes that direct image zero. Its comparison at \(p\) is therefore \(0\to k\), not a surjection. This identifies the precise missing hypothesis of the base-change criterion.
+
+**Exercise 7.3 (medium: geometrically integral fibers).** Deduce universal \(f_*\mathcal O_X=\mathcal O_S\) for a proper flat finitely presented morphism with geometrically integral fibers. Explain whether the base must be reduced.
+
+**Solution.** Geometrically integral fibers are nonempty, geometrically reduced and geometrically connected. Theorem 5.2 applies directly and proves the universal equality. The base may have nilpotents. In its proof the unit provides a lift of the fiber's constant section, so degree-zero comparison is surjective without using reducedness or Grauert's theorem.
+
+**Exercise 7.4 (hard: Grauert from a minimal model).** Starting with a finite free complex minimal at \(s\), prove the reduced-base theorem and identify the exact step that fails on a nonreduced base.
+
+**Solution.** Minimality makes the fiber dimension in degree \(q\) equal to the rank of the corresponding term. If this dimension is constant nearby, both adjacent differential ranks must be zero at every point. Their entries vanish in every residue field, hence lie in the nilradical. A reduced coordinate ring has zero nilradical, so both matrices vanish and the cohomology is the free middle term, before and after every tensor product. Without reducedness this only proves that the entries are nilpotent. Multiplication by a nonzero nilpotent need not be a zero differential, so its kernels and cokernels need not be free.
+
+**Exercise 7.5 (hard: a nonreduced counterexample).** Use the extension with class \(\epsilon\) over \(k[\epsilon]/(\epsilon^2)\) to verify failure of Grauert's conclusion despite constant fiber dimensions.
+
+**Solution.** The extension is a vector bundle on \(\mathbf P^1_A\), so is flat over \(A\). Its cohomology model is \([A\xrightarrow{\epsilon}A]\) in degrees zero and one. The sole fiber has zero differential, with both dimensions one. Over \(A\), the kernel is \((\epsilon)\) and the cokernel is \(k\); both have length one, while a nonzero finite free \(A\)-module has length a positive even integer. Hence neither is free. In degree zero the cocycle \(\epsilon\) reduces to zero, so the comparison \((\epsilon)\otimes_A k\to k\) is the zero map. This verifies the geometric counterexample completely.
+
+**Exercise 7.6 (challenging: the adjacent comparison).** For \(K=[A\xrightarrow{t}A]\) in degrees zero and one over \(A=k[t]\), check both parts of Theorem 3.1 at \(t=0\), taking \(q=1\).
+
+**Solution.** The outgoing degree-one differential is zero, so \(H^1(K)=A/(t)\), and its comparison with \(H^1(K\otimes B)=B/tB\) is an isomorphism for every \(B\). In particular \(\varphi^1(0)\) is surjective. The degree-zero comparison is \(0\to k\), since multiplication by \(t\) is injective over \(A\) and becomes zero on that fiber. It is not surjective, consistently with \(A/(t)\) not being locally free near zero. The first comparison criterion gives universal base change in degree one, while the second correctly rejects local freeness there.
+
+## References and hypotheses
+
+- **[Stacks]** The Stacks project authors, *The Stacks project*, in its AI Integrated Stacks Project edition. The finite-presentation extension of the Grothendieck complex is [Tag 0B91](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-flat-proper-perfect-direct-image-general); its full Noetherian-approximation proof is [Tag 0A1H](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-base-change-tensor-perfect). Semicontinuity is [Tag 0BDI](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-jump-loci); vanishing and local freeness [Tag 0D4E](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-vanishing-implies-locally-free); universal constants [Tag 0E0L](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-proper-flat-geom-red-connected). Sections 1–5 provide the matrix proofs and both parts of the surjectivity theorem used here.
+- Section 6 proves the genus-one curve input directly using the earlier discrete-valuation and constants facts; [Tag 0E3B](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-lemma-degree-more-than-2g-2) is supplementary curve-duality reading. The nonempty convention for geometric connectedness is [Tag 0362](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-definition-geometrically-connected). These are explicit routine inputs; the reduced-base Grauert theorem and comparison criterion have complete proofs in this lesson.
+- The open reference treatments retain GNU FDL 1.2. This exposition, proofs, examples and solutions are independently written CC0.  Reducedness is required for the pointwise-rank argument in Grauert's theorem; it is not required for the surjectivity criterion or the universal constants theorem.

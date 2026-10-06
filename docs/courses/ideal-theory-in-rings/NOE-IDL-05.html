@@ -1,0 +1,1143 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resultant forms and elimination · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="index.html">Ideal theory in rings</a><a href="NOE-IDL-04.html">Previous lesson</a><a href="source-course/src/resultant-forms-and-elimination.md">Markdown source</a><a href="downloads/NOE-IDL-05.tex">LaTeX source</a></nav></header>
+
+<article class="math"><h1 id="resultant-forms-and-elimination">Resultant forms and
+elimination</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra reasoning
+effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at
+Ultra. Public domain (CC0).</em></p>
+<p>A determinant can remember every point of a finite polynomial scheme,
+together with its length. A second polynomial, the minimal polynomial,
+measures how those points and nilpotents can be distinguished by one
+generic linear function. Comparing the two leads to Noether’s tests for
+prime and primary ideals. We first build the finite-dimensional
+construction, then retain all dimensional layers when passing to generic
+fibres.</p>
+<p>Let <span class="math inline">\(k\)</span> be a field. Rings are
+commutative with identity. A zero-dimensional ideal is proper, with a
+nonzero quotient of Krull dimension zero. The proved prerequisites are
+<a href="prerequisites/AG-CA/AG-CA-03.html">Noetherian and Artinian
+rings</a>, Theorem 4.2 for Artinian structure and product decomposition;
+<a href="prerequisites/AG-CA/AG-CA-09.html">Krull dimension and Noether
+normalization</a>, Theorem 4.2 for dimension and transcendence degree;
+<a href="prerequisites/AG-CA/AG-CA-04.html">Associated primes and
+primary decomposition</a>, Theorems 1.2, 3.1, 4.2 and 5.3; and the
+preceding <a href="NOE-IDL-02.html">primary-ideal lesson</a> for
+contraction and primary localization. We use <a
+href="prerequisites/AG-CA/AG-CA-06.html">the Nullstellensatz</a>,
+Theorems 1.3 and 2.1–2.2, and <a
+href="prerequisites/AG-CA/AG-CA-02.html">localization</a>, Theorem 4.2
+for Nakayama. Linear algebra and polynomial factorization are elementary
+background. The finite-field and differential bridges needed here are
+proved in Section 5. Our free historical edition contains Hentzelt’s
+work edited by Noether and Noether’s <em>Elimination Theory and General
+Ideal Theory</em>, linked below.</p>
+<h2 id="fixing-the-sign-of-the-resultant">1. Fixing the sign of the
+resultant</h2>
+<p>For <span class="math inline">\(f=a_m z^m+\cdots+a_0\)</span> and
+<span class="math inline">\(g=b_nz^n+\cdots+b_0\)</span>, with <span
+class="math inline">\(m,n\ge1\)</span>, use descending-power bases in
+the map</p>
+<p><span class="math display">\[
+S:k[z]_{&lt;n}\oplus k[z]_{&lt;m}\longrightarrow k[z]_{&lt;m+n},
+\qquad (u,v)\longmapsto uf+vg.
+\]</span></p>
+<p>The first block is the <span class="math inline">\(f\)</span>-block.
+Define <span class="math inline">\(\operatorname{Res}(f,g)=\det
+S\)</span>. This specifies a column version of Sylvester’s matrix and
+its sign once and for all.</p>
+<p><strong>Theorem 1.1.</strong> If <span
+class="math inline">\(a=a_m\ne0\)</span>, <span
+class="math inline">\(b=b_n\ne0\)</span>, and in an algebraic closure
+<span class="math inline">\(f=a\prod_{i=1}^m(z-\alpha_i)\)</span>, <span
+class="math inline">\(g=b\prod_{j=1}^n(z-\beta_j)\)</span>, then</p>
+<p><span class="math display">\[
+\operatorname{Res}(f,g)=a^n b^m\prod_{i,j}(\alpha_i-\beta_j).
+\tag{1}
+\]</span></p>
+<p>In particular it vanishes exactly when the polynomials have a common
+root. Over the universal coefficient ring <span
+class="math inline">\(C=\mathbb
+Z[a_0,\ldots,a_m,b_0,\ldots,b_n]\)</span>, there are <span
+class="math inline">\(u\in C[z]_{&lt;n}\)</span>, <span
+class="math inline">\(v\in C[z]_{&lt;m}\)</span> with</p>
+<p><span class="math display">\[
+uf+vg=\operatorname{Res}(f,g).
+\tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> First take both polynomials monic with
+independent roots. A common root makes evaluation annihilate the image
+of <span class="math inline">\(S\)</span>, so the determinant vanishes
+when any <span class="math inline">\(\alpha_i=\beta_j\)</span>. In the
+polynomial ring over <span class="math inline">\(\mathbb Z\)</span> in
+all roots, each prime element <span
+class="math inline">\(\alpha_i-\beta_j\)</span> therefore divides the
+determinant; their distinctness implies that their product divides it.
+Its degree in a fixed <span class="math inline">\(\alpha_i\)</span> is
+at most <span class="math inline">\(n\)</span>, since there are <span
+class="math inline">\(n\)</span> columns from <span
+class="math inline">\(f\)</span>, each at most linear in that root. Its
+degree in a fixed <span class="math inline">\(\beta_j\)</span> is at
+most <span class="math inline">\(m\)</span>. Thus the quotient by the
+product is a constant integer.</p>
+<p>To find the constant, set <span class="math inline">\(f=z^m\)</span>,
+<span class="math inline">\(g=(z-1)^n\)</span>. The <span
+class="math inline">\(f\)</span>-columns give the leading <span
+class="math inline">\(n\)</span> coordinates as an identity block. The
+remaining block is multiplication by <span
+class="math inline">\(g\)</span> modulo <span
+class="math inline">\(z^m\)</span>, in descending powers, triangular
+with diagonal <span class="math inline">\(g(0)=(-1)^n\)</span>. The
+determinant is <span class="math inline">\((-1)^{mn}\)</span>, exactly
+the value of the product in (1); the constant is one. Scaling the first
+and second blocks by <span class="math inline">\(a,b\)</span> gives
+their powers <span class="math inline">\(a^n,b^m\)</span>. This
+polynomial identity specializes to every field, including repeated roots
+and positive characteristic.</p>
+<p>Finally, <span class="math inline">\(S\operatorname{adj}(S)=(\det
+S)\mathrm{Id}\)</span> over <span class="math inline">\(C\)</span>.
+Apply it to the coordinate vector of the constant polynomial one. The
+two blocks of <span
+class="math inline">\(\operatorname{adj}(S)1\)</span> give <span
+class="math inline">\(u,v\)</span>, proving (2) without dividing by
+either leading coefficient. <span
+class="math inline">\(\square\)</span></p>
+<p>Swapping the two blocks proves <span
+class="math inline">\(\operatorname{Res}(g,f)=(-1)^{mn}\operatorname{Res}(f,g)\)</span>.
+If one polynomial is a nonzero constant, the corresponding convention is
+<span class="math inline">\(\operatorname{Res}(a,g)=a^n\)</span> and
+<span class="math inline">\(\operatorname{Res}(f,b)=b^m\)</span>.
+Formula (2) is a universal identity for positive formal degrees; it does
+not assert that the empty determinant one for two formal degree-zero
+polynomials belongs to their universal ideal.</p>
+<p>For example,</p>
+<p><span class="math display">\[
+\operatorname{Res}(z^2+bz+c,z-a)=a^2+ba+c.
+\]</span></p>
+<p>The discriminant of a degree-<span class="math inline">\(m\)</span>
+polynomial with leading coefficient <span
+class="math inline">\(a\)</span> is <span
+class="math inline">\(a^{2m-2}\prod_{i&lt;j}(\alpha_i-\alpha_j)^2\)</span>.
+Taking <span class="math inline">\(g=f&#39;\)</span> in (1) gives</p>
+<p><span class="math display">\[
+\operatorname{disc}(f)=(-1)^{m(m-1)/2}a^{-1}\operatorname{Res}(f,f&#39;),
+\tag{3}
+\]</span></p>
+<p>where the derivative is placed in its formal degree-<span
+class="math inline">\(m-1\)</span> block. This is a polynomial identity
+after cancellation of <span class="math inline">\(a\)</span>, and
+remains valid when the derivative’s actual degree drops in positive
+characteristic. For <span class="math inline">\(f=Az^2+Bz+C\)</span>,
+its resultant with <span class="math inline">\(2Az+B\)</span> is <span
+class="math inline">\(-A(B^2-4AC)\)</span>, giving the familiar
+discriminant. When a specialized leading coefficient vanishes, the
+formal Sylvester determinant can also detect behaviour at infinity; the
+common-root equivalence in Theorem 1.1 requires the stated actual
+degrees.</p>
+<h2 id="multiplication-sees-values-and-lengths">2. Multiplication sees
+values and lengths</h2>
+<p>Let <span class="math inline">\(I\subset k[x_1,\ldots,x_n]\)</span>
+be zero-dimensional and <span class="math inline">\(A=k[x]/I\)</span>.
+It is finite-dimensional over <span class="math inline">\(k\)</span>: it
+is Noetherian Artinian, its finitely many residue fields are finite over
+<span class="math inline">\(k\)</span> by Zariski’s lemma, and a
+composition series has these fields as factors. Multiplication by <span
+class="math inline">\(f\)</span> is a <span
+class="math inline">\(k\)</span>-linear operator <span
+class="math inline">\(M_f\)</span>.</p>
+<p>Suppose first that <span class="math inline">\(k\)</span> is
+algebraically closed. The Artinian product decomposition gives</p>
+<p><span class="math display">\[
+A=\prod_{\xi\in V(I)}A_\xi,
+\qquad m_\xi=\dim_k A_\xi.
+\]</span></p>
+<p>Here <span class="math inline">\(A_\xi\)</span> is the localization
+at the point’s maximal ideal. Its maximal ideal is nilpotent and its
+residue field is <span class="math inline">\(k\)</span>; <span
+class="math inline">\(m_\xi\)</span> is its length.</p>
+<p><strong>Theorem 2.1 (Stickelberger).</strong></p>
+<p><span class="math display">\[
+\det(T\mathrm{Id}-M_f)=\prod_{\xi\in V(I)}(T-f(\xi))^{m_\xi}.
+\tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> On <span
+class="math inline">\(A_\xi\)</span>, the class of <span
+class="math inline">\(f\)</span> is <span
+class="math inline">\(f(\xi)+h\)</span> with <span
+class="math inline">\(h\)</span> in the nilpotent maximal ideal. Filter
+this factor by powers of that ideal. On every successive vector-space
+quotient multiplication by <span class="math inline">\(h\)</span> is
+zero, so <span class="math inline">\(M_f\)</span> acts as the scalar
+<span class="math inline">\(f(\xi)\)</span>. A basis respecting the
+filtration gives a block triangular matrix with that scalar throughout
+its diagonal. The determinant is <span
+class="math inline">\((T-f(\xi))^{m_\xi}\)</span>. Multiplication
+respects the product factors, so the full determinant is their product.
+<span class="math inline">\(\square\)</span></p>
+<p>The theorem concerns algebraic multiplicity of eigenvalues, not the
+dimension of their eigenspaces. On <span
+class="math inline">\(k[x,y]/(x^2,y)\)</span>, multiplication by <span
+class="math inline">\(x\)</span> is a nonzero nilpotent operator with
+characteristic polynomial <span class="math inline">\(T^2\)</span>,
+while its zero eigenspace has dimension one.</p>
+<p>For arbitrary <span class="math inline">\(k\)</span>, base change to
+<span class="math inline">\(\bar k\)</span>. The matrix entries and
+determinant commute with base change. In (4), use the geometric points
+and the dimensions of the local factors of <span
+class="math inline">\(A\otimes_k\bar k\)</span>. These geometric
+dimensions incorporate inseparability as well as nilpotent
+thickness.</p>
+<h2 id="the-resultant-form">3. The resultant form</h2>
+<p>With independent variables <span
+class="math inline">\(u_0,\ldots,u_n\)</span>, define</p>
+<p><span class="math display">\[
+R_I(u)=\det\left(u_0\mathrm{Id}+\sum_{j=1}^nu_jM_{x_j}\right).
+\tag{5}
+\]</span></p>
+<p>It is homogeneous of degree <span class="math inline">\(\dim_k
+A\)</span>, monic in <span class="math inline">\(u_0\)</span>,
+independent of the chosen basis, and has coefficients in <span
+class="math inline">\(k\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> Over <span class="math inline">\(\bar
+k\)</span>,</p>
+<p><span class="math display">\[
+R_I(u)=\prod_{\xi\in V_{\bar k}(I)}
+\left(u_0+\sum_j u_j\xi_j\right)^{m_\xi}.
+\tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> Apply the maximal-ideal filtration argument
+from Theorem 2.1 to multiplication by the generic linear function <span
+class="math inline">\(\sum u_jx_j\)</span>, over <span
+class="math inline">\(\bar k(u_1,\ldots,u_n)\)</span>, and take <span
+class="math inline">\(T=-u_0\)</span>, with the determinant signs
+cancelling. The resulting identity of polynomials is (6). <span
+class="math inline">\(\square\)</span></p>
+<p>Unique factorization and the normalization of each factor’s <span
+class="math inline">\(u_0\)</span>-coefficient recover the point
+coordinates and their multiplicities. They do not recover the ideal. For
+instance <span class="math inline">\((x^2,y)\)</span> and <span
+class="math inline">\((x,y^2)\)</span> both have form <span
+class="math inline">\(u_0^2\)</span>, despite different nilpotent
+directions.</p>
+<p><strong>Theorem 3.2 (primary criterion).</strong> A zero-dimensional
+ideal is primary exactly when its geometric points form one orbit under
+<span class="math inline">\(\operatorname{Aut}(\bar k/k)\)</span>. In
+that case every linear factor in (6) has the same exponent. If <span
+class="math inline">\(\mathfrak m=\sqrt I\)</span>, <span
+class="math inline">\(L=k[x]/\mathfrak m\)</span>, and <span
+class="math inline">\(\ell\)</span> is the length of <span
+class="math inline">\(A\)</span> as a local ring, then</p>
+<p><span class="math display">\[
+R_I=R_{\mathfrak m}^{\ell}
+=N_{L/k}\left(u_0+\sum_j u_j\bar x_j\right)^{\ell}.
+\tag{7}
+\]</span></p>
+<p>Over an algebraically closed field the criterion says exactly that
+<span class="math inline">\(R_I\)</span> is a power of one linear
+form.</p>
+<p><strong>Proof.</strong> The quotient’s Artinian factors are indexed
+by its maximal ideals. A finite Artinian ring is primary as a zero ideal
+exactly when it is local: in a local factor all nonunits are nilpotent;
+two nonzero product factors supply zero divisors which are not
+nilpotent. The embeddings of a finite residue field <span
+class="math inline">\(L\)</span> into <span class="math inline">\(\bar
+k\)</span> form one orbit, and two different maximal ideals cannot lie
+in the same orbit since their relation ideals over <span
+class="math inline">\(k\)</span> are different. Thus one orbit is
+equivalent to one maximal ideal.</p>
+<p>For a local factor, a composition series has <span
+class="math inline">\(\ell\)</span> copies of <span
+class="math inline">\(L\)</span>. Multiplication preserves it and
+induces the same multiplication operator on each copy, proving (7) by a
+triangular determinant. Write <span
+class="math inline">\([L:k]=sd\)</span>, where <span
+class="math inline">\(s\)</span> is the number of embeddings and <span
+class="math inline">\(d\)</span> its inseparable degree. After base
+change, each embedding contributes a local algebra of dimension <span
+class="math inline">\(d\)</span>; equivalently the norm is the product
+of its <span class="math inline">\(s\)</span> linear forms, each to
+power <span class="math inline">\(d\)</span>. The common exponent in (6)
+is therefore <span class="math inline">\(d\ell\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The squarefree orbit product need not itself have coefficients in
+<span class="math inline">\(k\)</span>. For <span
+class="math inline">\(k=\mathbb F_p(t)\)</span>, <span
+class="math inline">\(I=(x^p-t,y)\)</span> is maximal and has local
+length one, but <span
+class="math inline">\(R_I=(u_0+u_1t^{1/p})^p=u_0^p+t u_1^p\)</span>. Its
+sole geometric point has multiplicity <span
+class="math inline">\(p\)</span>. This distinction corrects an
+unqualified use of “Galois orbit product” over imperfect fields.</p>
+<h2 id="a-finite-scheme-computed-by-matrices">4. A finite scheme
+computed by matrices</h2>
+<p>Take <span class="math inline">\(I=(x^2-y,y^2-y)\)</span>.
+Eliminating <span class="math inline">\(y\)</span> identifies its
+quotient with <span class="math inline">\(k[x]/(x^4-x^2)\)</span>, of
+dimension four in every characteristic. With basis <span
+class="math inline">\(1,x,x^2,x^3\)</span>, columns recording images of
+basis vectors, we obtain</p>
+<p><span class="math display">\[
+M_x=\begin{pmatrix}0&amp;0&amp;0&amp;0\\1&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;1\\0&amp;0&amp;1&amp;0\end{pmatrix},
+\qquad
+M_y=M_x^2=\begin{pmatrix}0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\1&amp;0&amp;1&amp;0\\0&amp;1&amp;0&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Their characteristic polynomials are <span
+class="math inline">\(T^2(T^2-1)\)</span> and <span
+class="math inline">\(T^2(T-1)^2\)</span>. If <span
+class="math inline">\(\operatorname{char}k\ne2\)</span>, the geometric
+points are <span class="math inline">\((0,0),(1,1),(-1,1)\)</span>, with
+lengths <span class="math inline">\(2,1,1\)</span>. Consequently</p>
+<p><span class="math display">\[
+R_I=u_0^2(u_0+u_1+u_2)(u_0-u_1+u_2).
+\tag{8}
+\]</span></p>
+<p>In characteristic two the last two points coincide: <span
+class="math inline">\(x^4-x^2=x^2(x-1)^2\)</span>. The two points have
+length two each, and (8) becomes <span
+class="math inline">\(u_0^2(u_0+u_1+u_2)^2\)</span>. Both the
+multiplication calculation and its characteristic qualification
+matter.</p>
+<h2 id="retaining-every-dimension-in-a-generic-fibre">5. Retaining every
+dimension in a generic fibre</h2>
+<p>Localizing only at parameters of the largest component can discard
+embedded components. We instead make the isolated-component filtration
+from the second lesson explicit. Let <span
+class="math inline">\(P=k[x_1,\ldots,x_n]\)</span>, <span
+class="math inline">\(I\subsetneq P\)</span>. Adjoin an invertible
+generic matrix <span class="math inline">\(U\)</span>, put <span
+class="math inline">\(F=k(U)\)</span>, and set <span
+class="math inline">\(z=Ux\)</span>. Write <span
+class="math inline">\(I_F\)</span> for the transformed ideal in <span
+class="math inline">\(F[z]\)</span>.</p>
+<p>We first record the finite-field calculations used for generic
+parameters. They also justify the field and orbit assertions in Section
+3.</p>
+<p><strong>Finite-field calculation.</strong> An irreducible polynomial
+over a characteristic-zero field is separable: its derivative is nonzero
+of smaller degree, so it is relatively prime to the polynomial. In
+characteristic <span class="math inline">\(p&gt;0\)</span>, every monic
+irreducible polynomial has the form <span
+class="math inline">\(g(T^{p^e})\)</span>, with <span
+class="math inline">\(g\)</span> irreducible and <span
+class="math inline">\(g&#39;\ne0\)</span>. Repeatedly extract powers of
+<span class="math inline">\(T^p\)</span> until the derivative is
+nonzero. Its distinct roots are the <span
+class="math inline">\(p^e\)</span>-th roots of the distinct roots of
+<span class="math inline">\(g\)</span>, and their multiplicities are
+<span class="math inline">\(p^e\)</span>.</p>
+<p>An embedding of a field extends through a finite simple algebraic
+extension by choosing a root of the transported minimal polynomial. For
+a finite tower, the number of embeddings into an algebraic closure is
+therefore the product of the numbers of distinct roots at the successive
+steps. Each is the degree of the step divided by a power of <span
+class="math inline">\(p\)</span>. An extension generated by separable
+elements has as many embeddings as its degree, because at each step the
+minimal polynomial divides a separable polynomial. Every element of that
+extension is separable: restriction to its simple subfield, followed by
+extension through the remaining tower, bounds the number of embeddings
+by the number of embeddings of that subfield times the remaining degree.
+Equality with the full degree forces the simple subfield to have as many
+distinct embeddings as its degree. In particular, sums, products and
+inverses of separable elements are separable.</p>
+<p>In characteristic <span class="math inline">\(p&gt;0\)</span>, if a
+finite extension has only one embedding, each simple subfield has only
+one embedding, since all of its embeddings extend. The preceding
+polynomial calculation then makes each element purely inseparable, and
+the extension has degree <span class="math inline">\(p^g\)</span>. For a
+general finite extension, the ratio of its degree to its number of
+embeddings is also a power of <span class="math inline">\(p\)</span>, by
+the tower calculation. In characteristic zero that ratio is one. Any two
+embeddings of a finite extension of <span
+class="math inline">\(k\)</span> into <span class="math inline">\(\bar
+k\)</span> are conjugate by an automorphism of <span
+class="math inline">\(\bar k/k\)</span>: extend the induced isomorphism
+between their images to an embedding of <span class="math inline">\(\bar
+k\)</span> in itself by a maximal partial extension. A missing algebraic
+element could always be added by choosing a root, so the maximal domain
+is all of <span class="math inline">\(\bar k\)</span>. Its image is
+algebraically closed and <span class="math inline">\(\bar k\)</span> is
+algebraic over it, so the embedding is onto. This proves the orbit
+assertion used in Theorem 3.2. The resulting automorphisms of <span
+class="math inline">\(A\otimes_k\bar k\)</span> carry its local factors
+to one another and preserve their dimensions. Applied to a residue field
+of degree <span class="math inline">\(sd\)</span>, with <span
+class="math inline">\(s\)</span> embeddings, this also gives dimension
+<span class="math inline">\(d\)</span> to each of its <span
+class="math inline">\(s\)</span> geometric factors, as used in (7).</p>
+<p><strong>Differential calculation.</strong> We use only the
+construction, polynomial and localization rules, and the first
+fundamental sequence from <a
+href="prerequisites/AG-CA/AG-CA-16.html">Kähler differentials</a>,
+Theorem 1.1, Theorems 2.2, 3.1 and 5.1. In particular,</p>
+<p><span class="math display">\[
+E\otimes_C\Omega_{C/K}\longrightarrow\Omega_{E/K}
+\longrightarrow\Omega_{E/C}\longrightarrow0
+\]</span></p>
+<p>is exact for a tower <span class="math inline">\(K\subset C\subset
+E\)</span>. We now prove the additional facts we need.</p>
+<p>For a finite extension <span class="math inline">\(E/K\)</span> of
+characteristic <span class="math inline">\(p\)</span>, set <span
+class="math inline">\(C=K E^p\)</span>, the subfield generated by <span
+class="math inline">\(K\)</span> and all <span
+class="math inline">\(p\)</span>-th powers in <span
+class="math inline">\(E\)</span>. Every <span
+class="math inline">\(K\)</span>-derivation kills <span
+class="math inline">\(C\)</span>, so <span
+class="math inline">\(\Omega_{E/K}=\Omega_{E/C}\)</span>. Choose
+generators <span class="math inline">\(b_1,\ldots,b_r\)</span> over
+<span class="math inline">\(C\)</span> successively, omitting a
+generator already in the preceding field. Since <span
+class="math inline">\(b_j^p\in C\)</span>, each remaining step has
+degree <span class="math inline">\(p\)</span>. Indeed <span
+class="math inline">\(T^p-b_j^p\)</span> has only one distinct root; its
+irreducible factor is either linear or has degree <span
+class="math inline">\(p\)</span>, by the preceding polynomial
+calculation. The monomials <span class="math inline">\(b_1^{e_1}\cdots
+b_r^{e_r}\)</span>, <span class="math inline">\(0\le e_j&lt;p\)</span>,
+form a basis over <span class="math inline">\(C\)</span>.
+Consequently</p>
+<p><span class="math display">\[
+E=C[T_1,\ldots,T_r]/(T_j^p-b_j^p:1\le j\le r),
+\qquad \Omega_{E/C}=\bigoplus_{j=1}^r E\,db_j.
+\]</span></p>
+<p>The presentation is an isomorphism because its spanning monomials map
+to that basis. Its relations have zero differential, proving the
+displayed differential formula. Thus <span
+class="math inline">\(\Omega_{E/K}=0\)</span> exactly when <span
+class="math inline">\(E=K E^p\)</span>.</p>
+<p>This vanishing implies separability. Iterating <span
+class="math inline">\(E=K E^p\)</span> gives <span
+class="math inline">\(E=K E^{p^N}\)</span> for every <span
+class="math inline">\(N\)</span>. If <span
+class="math inline">\(\alpha_1,\ldots,\alpha_m\)</span> generate <span
+class="math inline">\(E/K\)</span>, the irreducible-polynomial
+calculation makes a sufficiently high <span
+class="math inline">\(p\)</span>-power of each <span
+class="math inline">\(\alpha_j\)</span> separable over <span
+class="math inline">\(K\)</span>. For one common <span
+class="math inline">\(N\)</span>, therefore, <span
+class="math inline">\(K
+E^{p^N}=K(\alpha_1^{p^N},\ldots,\alpha_m^{p^N})\)</span> is separable,
+by the finite-field calculation. Since it is <span
+class="math inline">\(E\)</span>, the original extension is separable.
+Conversely a separable extension has zero differentials by <a
+href="prerequisites/AG-CA/AG-CA-16.html">Kähler differentials</a>,
+Theorem 6.2, whose derivation-extension proof is already present. We
+have proved the finite criterion</p>
+<p><span class="math display">\[
+E/K\text{ finite is separable}\quad\Longleftrightarrow\quad
+\Omega_{E/K}=0.
+\tag{5a}
+\]</span></p>
+<p>Finally let <span class="math inline">\(L/k\)</span> be finitely
+generated of transcendence degree <span
+class="math inline">\(d\)</span>, with <span
+class="math inline">\(k\)</span> perfect of characteristic <span
+class="math inline">\(p\)</span>. Choose any transcendence basis <span
+class="math inline">\(t\)</span>, and put <span
+class="math inline">\(D=[L:k(t)]\)</span>. Frobenius identifies <span
+class="math inline">\(L\)</span> with <span
+class="math inline">\(L^p\)</span> and <span
+class="math inline">\(k(t)\)</span> with <span
+class="math inline">\(k(t)^p\)</span>, so <span
+class="math inline">\([L^p:k(t)^p]=D\)</span>. The monomials in the
+<span class="math inline">\(t_j\)</span> with exponents less than <span
+class="math inline">\(p\)</span> form a basis of <span
+class="math inline">\(k(t)\)</span> over <span
+class="math inline">\(k(t)^p=k(t_1^p,\ldots,t_d^p)\)</span>.
+Independence follows by clearing denominators and comparing distinct
+exponent classes modulo <span class="math inline">\(p\)</span>; their
+span is a finite-dimensional domain, hence a field, and contains all the
+<span class="math inline">\(t_j\)</span>. Computing <span
+class="math inline">\([L:k(t)^p]\)</span> in two ways now gives</p>
+<p><span class="math display">\[
+D p^d=[L:L^p]D,\qquad [L:L^p]=p^d.
+\]</span></p>
+<p>Because <span class="math inline">\(k\subset L^p\)</span>, the same
+generator and presentation argument over <span
+class="math inline">\(L^p\)</span> supplies precisely <span
+class="math inline">\(d\)</span> differential basis elements. Thus <span
+class="math inline">\(\dim_L\Omega_{L/k}=d\)</span>. In characteristic
+zero this dimension follows from Theorem 6.2 of the differential lesson:
+any transcendence basis leaves a finite algebraic extension, which is
+separable by the first paragraph. These arguments prove the dimension
+assertion without assuming a separating basis exists.</p>
+<p>We can now establish linear normalization and its separability
+qualification.</p>
+<p><strong>Lemma 5.1.</strong> For each of the finitely many associated
+primes <span class="math inline">\(\mathfrak p\)</span> of <span
+class="math inline">\(P/I\)</span>, of dimension <span
+class="math inline">\(d\)</span>, the last <span
+class="math inline">\(d\)</span> generic coordinates are algebraically
+independent modulo <span class="math inline">\(\mathfrak p_F\)</span>,
+and its function field is finite over <span
+class="math inline">\(F(z_{n-d+1},\ldots,z_n)\)</span>. Any list of more
+than <span class="math inline">\(d\)</span> coordinates satisfies a
+nonzero polynomial relation there. If <span
+class="math inline">\(k\)</span> is perfect, the finite extension for
+the generic list of length <span class="math inline">\(d\)</span> is
+separable.</p>
+<p><strong>Proof of normalization.</strong> Fix one prime, let <span
+class="math inline">\(A=P/\mathfrak p\)</span>, and let <span
+class="math inline">\(L\)</span> be its function field. We prove the
+generic assertion directly, including finite coefficient fields. If
+<span class="math inline">\(n&gt;d\)</span>, choose a nonzero relation
+<span class="math inline">\(f(x)=0\)</span>, with highest homogeneous
+part <span class="math inline">\(f_D\)</span>. Introduce independent
+coefficients <span class="math inline">\(c_2,\ldots,c_n\)</span> and put
+<span class="math inline">\(y_j=x_j-c_jx_1\)</span>. After substituting
+<span class="math inline">\(x_j=y_j+c_jx_1\)</span>, the coefficient of
+<span class="math inline">\(x_1^D\)</span> is the nonzero polynomial
+<span class="math inline">\(f_D(1,c_2,\ldots,c_n)\)</span>. It is
+nonzero because homogeneity makes its monomials have distinct exponent
+lists in the <span class="math inline">\(c_j\)</span>. Dividing by this
+coefficient makes <span class="math inline">\(x_1\)</span> integral over
+the algebra generated by <span
+class="math inline">\(y_2,\ldots,y_n\)</span>. All the original
+generators are then integral, so the inclusion is finite. Its smaller
+algebra is a domain of dimension <span class="math inline">\(d\)</span>,
+by equality of dimension under finite integral inclusions, <a
+href="prerequisites/AG-CA/AG-CA-05.html">Integral extensions</a>,
+Theorem 5.1.</p>
+<p>Repeat with fresh independent coefficients whenever the number of
+remaining generators exceeds <span class="math inline">\(d\)</span>.
+After <span class="math inline">\(n-d\)</span> steps the remaining <span
+class="math inline">\(d\)</span> generators are independent, by the
+dimension–transcendence-degree theorem, and the full algebra is finite
+over their polynomial algebra. All these changes are linear and
+triangular. The final retained coordinates have the shape</p>
+<p><span class="math display">\[
+w_j=x_{n-d+j}+\sum_{h=1}^{n-d}a_{jh}x_h\quad(1\le j\le d).
+\]</span></p>
+<p>The <span class="math inline">\(d(n-d)\)</span> coefficients <span
+class="math inline">\(a_{jh}\)</span> are independent variables,
+together with the coefficients used among the first <span
+class="math inline">\(n-d\)</span> eliminated coordinates: at the step
+eliminating the <span class="math inline">\(h\)</span>-th coordinate,
+the new coefficient in each retained coordinate is its fresh coefficient
+with sign minus, plus an expression in later-step coefficients. Starting
+at the last step and solving backwards recovers these fresh coefficients
+from the <span class="math inline">\(a_{jh}\)</span> and the
+coefficients among eliminated coordinates. This is an invertible
+triangular change of the independent coefficient variables. If the
+latter extra coefficients are denoted <span
+class="math inline">\(b\)</span>, we have proved finiteness of the
+function field over <span class="math inline">\(k(a,b)(w)\)</span>.
+Adjoining the independent <span class="math inline">\(b\)</span> cannot
+reduce transcendence degree of <span
+class="math inline">\(L(a)/k(a)(w)\)</span>; thus this finitely
+generated extension already has transcendence degree zero, and is
+finite. When <span class="math inline">\(n=d\)</span>, the original
+generators are independent and there is no elimination step.</p>
+<p>For the last <span class="math inline">\(d\)</span> rows of a
+completely generic matrix <span class="math inline">\(U\)</span>, their
+last <span class="math inline">\(d\)</span> columns form an invertible
+matrix <span class="math inline">\(B\)</span>. Multiplication by <span
+class="math inline">\(B^{-1}\)</span> writes these rows uniquely as
+<span class="math inline">\([a\mid\mathrm{Id}_d]\)</span>; their
+first-block coefficients <span class="math inline">\(a\)</span>, the
+entries of <span class="math inline">\(B\)</span>, and the remaining
+rows give independent rational coordinates on the matrix parameter
+field. The assertion just proved for <span
+class="math inline">\(w\)</span> consequently proves it for the last
+<span class="math inline">\(d\)</span> coordinates of <span
+class="math inline">\(U\)</span>. For <span
+class="math inline">\(d=0\)</span>, the argument says simply that the
+residue field is finite over the coefficient field. The argument works
+for each of the finite list of associated primes with the same
+independent matrix <span class="math inline">\(U\)</span>; no choice of
+a rational matrix over <span class="math inline">\(k\)</span> is needed.
+More than <span class="math inline">\(d\)</span> coordinates must be
+dependent by transcendence degree.</p>
+<p><strong>Proof of separability.</strong> Assume <span
+class="math inline">\(k\)</span> perfect, put <span
+class="math inline">\(M=L(U)\)</span>, <span
+class="math inline">\(F=k(U)\)</span>, and write <span
+class="math inline">\(t\)</span> for the last <span
+class="math inline">\(d\)</span> generic coordinates. The differential
+calculation gives <span
+class="math inline">\(\dim_L\Omega_{L/k}=d\)</span>. The <span
+class="math inline">\(dx_j\)</span> span this space: derivatives of
+their polynomial and rational expressions follow from Leibniz and the
+quotient rule. Some <span class="math inline">\(d\)</span> of them
+therefore form a basis. Polynomial extension and localization, or
+directly the universal property of derivations, give</p>
+<p><span class="math display">\[
+\Omega_{M/k}=(M\otimes_L\Omega_{L/k})
+\oplus\bigoplus_{a,b}M\,dU_{ab}.
+\]</span></p>
+<p>Modulo the second summand, each <span
+class="math inline">\(dt_j\)</span> is the corresponding generic linear
+combination of the <span class="math inline">\(dx_h\)</span>. Their
+determinant in a differential basis is a nonzero polynomial in the
+independent last-row coefficients: specialize those rows to select the
+<span class="math inline">\(d\)</span> basis generators to obtain
+determinant one. Hence the <span class="math inline">\(dt_j\)</span>,
+together with all the <span class="math inline">\(dU_{ab}\)</span>, form
+a basis of <span class="math inline">\(\Omega_{M/k}\)</span>.
+Normalization has already proved that <span
+class="math inline">\(K=F(t)\)</span> is a rational parameter field and
+<span class="math inline">\(M/K\)</span> is finite. The first
+fundamental sequence identifies <span
+class="math inline">\(\Omega_{M/K}\)</span> with the quotient by the
+span of these basis elements, so it is zero. Criterion (5a) proves that
+<span class="math inline">\(M/K\)</span> is separable. In characteristic
+zero the finite-field calculation gives the same conclusion. The
+parameter field <span class="math inline">\(F\)</span> need not be
+perfect. <span class="math inline">\(\square\)</span></p>
+<p>Put <span class="math inline">\(F_i=F(z_{i+1},\ldots,z_n)\)</span>,
+for <span class="math inline">\(0\le i\le n\)</span>, and let</p>
+<p><span class="math display">\[
+G_i=I_F F_i[z_1,\ldots,z_i]\cap F[z].
+\]</span></p>
+<p>These are the saturations by nonzero tail polynomials. A purely
+transcendental field extension preserves primality and primaryness. For
+the latter assertion, inject a primary quotient into its Artinian
+localization at its radical. In the polynomial ring over this local
+algebra, a polynomial with nonzero residue acts injectively: filter
+coefficients by powers of the nilpotent maximal ideal; on the first
+nonzero layer of another polynomial, multiplication is by a nonzero
+polynomial over a field and cannot kill that vector-valued polynomial.
+Polynomials with zero residue are nilpotent. Contraction proves
+primaryness before this localization, and adjoining then localizing the
+independent coefficient variables preserves it. Faithful flatness
+preserves irredundancy. Thus the original primary decomposition and
+associated primes extend faithfully to this generic coefficient field.
+Lemma 5.1 and the primary localization rule show that <span
+class="math inline">\(G_i\)</span> is the intersection of precisely the
+primary components whose radicals have dimension at least <span
+class="math inline">\(n-i\)</span>. This is a downward-closed set in
+prime inclusion, so the contraction is canonical even when embedded
+primary components are not unique. The ideals form <span
+class="math inline">\(G_0\supset G_1\supset\cdots\supset
+G_n=I_F\)</span>. If <span class="math inline">\(I=0\)</span>, then all
+<span class="math inline">\(G_i=0\)</span>; we treat that prime ideal
+separately. For nonzero <span class="math inline">\(I\)</span>, <span
+class="math inline">\(G_0=F[z]\)</span>.</p>
+<p>For <span class="math inline">\(1\le i\le n\)</span>, set</p>
+<p><span class="math display">\[
+H_i=(G_{i-1}/G_i)\otimes_{F[z_{i+1},\ldots,z_n]}F_i.
+\tag{9}
+\]</span></p>
+<p>This is a finite-dimensional <span
+class="math inline">\(F_i\)</span>-vector space, with commuting
+multiplication operators from the <span
+class="math inline">\(z_j\)</span>. Indeed it embeds, by primary
+decomposition, into the sum of the localized quotients for components of
+dimension exactly <span class="math inline">\(n-i\)</span>; each is
+zero-dimensional over <span class="math inline">\(F_i\)</span>, hence
+finite. Components of larger dimension impose <span
+class="math inline">\(G_{i-1}\)</span> and give zero in this injection;
+those of smaller dimension are killed by localization. Every associated
+prime of dimension <span class="math inline">\(n-i\)</span> actually
+appears in <span class="math inline">\(H_i\)</span>: at that prime,
+irredundancy supplies an element of the intersection of all other
+components which is absent from its component; it is in <span
+class="math inline">\(G_{i-1}\)</span> and survives in (9). In
+particular no embedded dimension disappears from this filtration.</p>
+<p>Adjoin further independent variables <span
+class="math inline">\(v_1,\ldots,v_n\)</span>, and on <span
+class="math inline">\(H_i\otimes_{F_i}F_i(v)\)</span> consider
+multiplication by <span class="math inline">\(L_v=\sum_jv_jz_j\)</span>.
+Denote its monic minimal polynomial by <span
+class="math inline">\(E_i(T,v)\)</span> and its characteristic
+polynomial by <span class="math inline">\(R_i(T,v)\)</span>. For a zero
+layer both are one. These are the elementary-divisor and norm
+polynomials in this generic-fibre convention. Primitive numerator forms
+can be obtained by clearing denominators; irreducibility below always
+means over <span class="math inline">\(F_i(v)\)</span>, not an
+accidental factor introduced in a denominator. This convention expresses
+the same generic minimal-polynomial versus determinant mechanism as the
+Hentzelt–Noether forms, while avoiding claims of equality between
+different coordinate normalizations of the historical formulas.</p>
+<h2 id="prime-and-primary-tests-by-the-two-forms">6. Prime and primary
+tests by the two forms</h2>
+<p><strong>Theorem 6.1.</strong> Let <span
+class="math inline">\(I\ne0\)</span> be proper.</p>
+<ol type="1">
+<li>The ideal is primary exactly when one layer is nonzero and its norm
+polynomial is a power of one irreducible polynomial. Equivalently its
+minimal polynomial is a power of one irreducible polynomial in that
+single layer.</li>
+<li>A prime ideal has one layer and irreducible <span
+class="math inline">\(E_i\)</span>. Conversely, one layer with
+irreducible <span class="math inline">\(R_i\)</span> implies that <span
+class="math inline">\(I\)</span> is prime.</li>
+<li>Over a perfect coefficient field, one layer with irreducible <span
+class="math inline">\(E_i\)</span> is also equivalent to primality; for
+a prime ideal <span class="math inline">\(E_i=R_i\)</span>.</li>
+<li>In characteristic <span class="math inline">\(p&gt;0\)</span>, for a
+prime ideal over any field, <span
+class="math inline">\(R_i=E_i^{p^g}\)</span> for some <span
+class="math inline">\(g\ge0\)</span>. Over an imperfect field an
+irreducible <span class="math inline">\(E_i\)</span> can also occur for
+a proper primary ideal.</li>
+</ol>
+<p>The zero ideal is prime and is the separately excluded
+empty-filtration case.</p>
+<p><strong>Proof of the primary test.</strong> Over an algebraic closure
+of <span class="math inline">\(F_i\)</span>, the support points of a
+layer have distinct generic values <span class="math inline">\(\sum
+v_j\xi_j\)</span>: equality as polynomials in independent <span
+class="math inline">\(v_j\)</span> forces equality of all coordinates.
+The determinant proof in Section 2, which applies equally to finite
+modules supported at maximal ideals, makes its characteristic polynomial
+the product of these linear factors with positive multiplicities. Each
+residue field contributes one irreducible factor over <span
+class="math inline">\(F_i(v)\)</span>, possibly with an inseparable
+power. Distinct maximal ideals contribute different factors, because a
+common conjugate generic value would identify their coordinate tuples
+and hence their relation ideals. The minimal polynomial has the same
+distinct irreducible factors as the characteristic polynomial: this
+follows on each local module from scalar-plus-nilpotent multiplication,
+or from the elementary-divisor decomposition of a linear operator.</p>
+<p>By (9), the nonzero layers and their residue-field factors thus
+record every associated prime of <span
+class="math inline">\(P/I\)</span>. One factor in one layer is
+equivalent to one associated prime. A finite module with one associated
+prime is primary: the zero divisors are the union of its associated
+primes, and the radical of its annihilator is that single prime. Applied
+to <span class="math inline">\(P/I\)</span> this proves the first
+assertion, using <a href="prerequisites/AG-CA/AG-CA-04.html">Associated
+primes and primary decomposition</a>, Theorems 1.2 and 4.2.</p>
+<p><strong>Proof of the general prime assertions.</strong> In the
+primary case the only layer is the whole generic quotient <span
+class="math inline">\(B=F_i[z_1,\ldots,z_i]/I_FF_i[z_1,\ldots,z_i]\)</span>,
+a finite local algebra. Its residue field is denoted <span
+class="math inline">\(L\)</span>. If <span
+class="math inline">\(I\)</span> is prime, <span
+class="math inline">\(B=L\)</span> is a field, so the minimal polynomial
+of <span class="math inline">\(L_v\)</span> is irreducible. If the
+characteristic polynomial is irreducible, its minimal polynomial equals
+it. Then <span class="math inline">\(F_i(v)[L_v]\)</span> is a field of
+degree <span class="math inline">\(\dim_{F_i}B\)</span>, and therefore
+is all of <span class="math inline">\(B\otimes F_i(v)\)</span>. This
+algebra is a field, so <span class="math inline">\(B\)</span> is a
+field. A primary ideal contracts from its localization at parameters
+outside its radical; consequently <span
+class="math inline">\(I_F\)</span>, and by faithful field extension
+<span class="math inline">\(I\)</span>, is prime.</p>
+<p><strong>Proof over a perfect field.</strong> Lemma 5.1 makes <span
+class="math inline">\(L/F_i\)</span> separable. Its distinct embeddings
+give distinct values of the generic <span
+class="math inline">\(L_v\)</span>; hence that value is a primitive
+element of <span class="math inline">\(L(v)/F_i(v)\)</span>. If <span
+class="math inline">\(I\)</span> is prime, this proves equality of
+minimal and characteristic polynomials.</p>
+<p>Now suppose the single-layer minimal polynomial <span
+class="math inline">\(h(T,v)\)</span> is irreducible. Reduction modulo
+the nilpotent maximal ideal of <span class="math inline">\(B(v)\)</span>
+gives the same minimal polynomial in its residue field, since that
+polynomial is irreducible and annihilates the residue value. It is
+separable by the preceding paragraph. Therefore <span
+class="math inline">\(h_T(L_v,v)\ne0\)</span> in the subfield <span
+class="math inline">\(F_i(v)[L_v]\subset B(v)\)</span>. Differentiate
+the identity <span class="math inline">\(h(L_v,v)=0\)</span> with
+respect to <span class="math inline">\(v_j\)</span>, keeping every
+element of <span class="math inline">\(B\)</span> fixed:</p>
+<p><span class="math display">\[
+h_T(L_v,v)z_j+h_{v_j}(L_v,v)=0.
+\]</span></p>
+<p>The first coefficient is invertible in that subfield. Hence every
+<span class="math inline">\(z_j\)</span> belongs to it. These elements
+generate <span class="math inline">\(B(v)\)</span> as an algebra, so
+<span class="math inline">\(B(v)\)</span> is the field <span
+class="math inline">\(F_i(v)[L_v]\)</span>. The preceding contraction
+argument proves primality.</p>
+<p><strong>Proof of the inseparable assertion.</strong> For a field
+<span class="math inline">\(L/F_i\)</span>, the characteristic
+polynomial of a field element <span class="math inline">\(a\)</span> is
+its minimal polynomial to power <span
+class="math inline">\([L(v):F_i(v,a)]\)</span>: choose a basis over the
+subfield and repeat its multiplication matrix. With <span
+class="math inline">\(a=L_v\)</span>, distinct embeddings of <span
+class="math inline">\(L\)</span> into an algebraic closure are
+distinguished by the independent <span
+class="math inline">\(v_j\)</span>. Indeed all images of the <span
+class="math inline">\(z_j\)</span> belong to an algebraic closure of
+<span class="math inline">\(F_i\)</span>; an equality of their generic
+linear combinations forces equality of each coordinate. The only
+embedding of <span class="math inline">\(L(v)\)</span> fixing <span
+class="math inline">\(F_i(v,L_v)\)</span> is therefore the identity. The
+finite-field calculation of Section 5 proves that this extension is
+purely inseparable of degree <span class="math inline">\(p^g\)</span>,
+yielding the formula. <span class="math inline">\(\square\)</span></p>
+<p>These are the modern forms of Noether’s Theorems XII–XIV in Section
+6. “Proper primary” there means primary but not prime. The perfect-field
+hypothesis refers to the original coefficient field; the parameter field
+itself may be imperfect. Generic separating parameters, not perfectness
+of that rational function field, justify the proof.</p>
+<p>For a concrete imperfect-field distinction, take <span
+class="math inline">\(k=\mathbb F_2(a,b)\)</span>, with independent
+<span class="math inline">\(a,b\)</span>, and <span
+class="math inline">\(I=(x^2-a,y^2-b)\)</span>. The element <span
+class="math inline">\(a\)</span> is not a square, since its formal
+derivative with respect to <span class="math inline">\(a\)</span> is one
+and the derivative of every square is zero. After adjoining <span
+class="math inline">\(x\)</span>, the field is <span
+class="math inline">\(\mathbb F_2(x,b)\)</span>, with <span
+class="math inline">\(a=x^2\)</span>; differentiating with respect to
+<span class="math inline">\(b\)</span> shows that <span
+class="math inline">\(b\)</span> is still not a square. Thus the
+quotient is a purely inseparable field of degree four. For <span
+class="math inline">\(L_v=v_1x+v_2y\)</span>,</p>
+<p><span class="math display">\[
+E=T^2-v_1^2a-v_2^2b,\qquad R=E^2.
+\]</span></p>
+<p>The quadratic is irreducible since its constant term is not a square
+in <span class="math inline">\(k(v)\)</span>: its derivative with
+respect to <span class="math inline">\(a\)</span> is <span
+class="math inline">\(v_1^2\ne0\)</span>, whereas every square has
+derivative zero. On the other hand, over <span
+class="math inline">\(k=\mathbb F_2(a)\)</span>, the proper primary
+quotient <span class="math inline">\(B=k[x,w]/(x^2-a,w^2)\)</span> has
+the same pattern <span class="math inline">\(E=T^2-v_1^2a\)</span>,
+<span class="math inline">\(R=E^2\)</span>. The nonzero nilpotent <span
+class="math inline">\(w\)</span> proves that the ideal is not prime,
+despite irreducible <span class="math inline">\(E\)</span>. These are
+the two mechanisms distinguished by Noether’s imperfect-field
+examples.</p>
+<p>For a proper primary ideal the norm need not even be a <span
+class="math inline">\(p\)</span>-power of the irreducible minimal
+polynomial. Over <span class="math inline">\(\mathbb F_3(a)\)</span>,
+the quotient by <span class="math inline">\((x^3-a,w^2)\)</span> has
+basis <span class="math inline">\(x^j,x^jw\)</span>, <span
+class="math inline">\(0\le j&lt;3\)</span>, and therefore dimension six
+and length two over its degree-three residue field. A generic value
+<span class="math inline">\(v_1x+v_2w\)</span> has irreducible minimal
+polynomial <span class="math inline">\(T^3-v_1^3a\)</span>: its cube is
+<span class="math inline">\(v_1^3a\)</span>, and differentiation with
+respect to <span class="math inline">\(a\)</span> proves that this
+coefficient is not a cube. The one-root irreducible-polynomial
+calculation of Section 5 makes the degree three. Its characteristic
+polynomial is the square of this polynomial, by the composition-series
+argument. The exponent two is not a power of three. The prime hypothesis
+in Theorem 6.1(4) is essential.</p>
+<h2 id="what-elimination-projects">7. What elimination projects</h2>
+<p>Let <span class="math inline">\(k\)</span> be algebraically closed
+and write variables as <span class="math inline">\(x,y\)</span>. Set
+<span class="math inline">\(J=I\cap k[x]\)</span>. The image of <span
+class="math inline">\(V(I)\)</span> under projection to its <span
+class="math inline">\(x\)</span>-coordinates need not be closed, but its
+Zariski closure is exactly <span
+class="math inline">\(V(J)\)</span>.</p>
+<p><strong>Proof.</strong> A polynomial in <span
+class="math inline">\(k[x]\)</span> vanishes on that image exactly when,
+viewed as a polynomial in all variables, it vanishes on <span
+class="math inline">\(V(I)\)</span>. By the strong Nullstellensatz this
+ideal is <span class="math inline">\(\sqrt I\cap k[x]=\sqrt J\)</span>;
+the equality follows directly by taking powers. The closed set defined
+by the ideal of a set is its closure, proving the assertion. <span
+class="math inline">\(\square\)</span></p>
+<p>For <span class="math inline">\(I=(xy-1)\)</span>, the projection
+omits <span class="math inline">\(x=0\)</span>, yet <span
+class="math inline">\(J=0\)</span> and the closure is the whole line.
+Affine elimination equations determine a closure, not necessarily the
+image itself.</p>
+<p>For projective variables, closedness holds over every base, and
+homogeneous elimination gives the actual image. Here is a full proof,
+including the field and local algebra steps.</p>
+<p><strong>Theorem 7.1 (projective projection and homogeneous
+elimination).</strong> For any scheme <span
+class="math inline">\(Y\)</span>, the projection <span
+class="math inline">\(\mathbb P^r_Y\to Y\)</span> sends closed subsets
+to closed subsets, and this remains true after every change of base. On
+an affine base <span
+class="math inline">\(Y=\operatorname{Spec}A\)</span>, let <span
+class="math inline">\(J\)</span> be a homogeneous ideal of <span
+class="math inline">\(S=A[X_0,\ldots,X_r]\)</span>, and let <span
+class="math inline">\(Z\)</span> be its projective zero set. With <span
+class="math inline">\(S_+=(X_0,\ldots,X_r)\)</span>, its image is</p>
+<p><span class="math display">\[
+\pi(Z)=V_A\bigl((J:S_+^\infty)\cap A\bigr),
+\qquad
+J:S_+^\infty=\bigcup_{N\ge0}(J:S_+^N).
+\tag{10}
+\]</span></p>
+<p>Here <span class="math inline">\(J:S_+^N\)</span> consists of the
+elements whose product with every element of <span
+class="math inline">\(S_+^N\)</span> is in <span
+class="math inline">\(J\)</span>. No Noetherian or finite-generation
+hypothesis on <span class="math inline">\(A\)</span> or <span
+class="math inline">\(J\)</span> is needed.</p>
+<p><strong>Proof of the projective field step.</strong> Over a field
+<span class="math inline">\(K\)</span>, a homogeneous ideal <span
+class="math inline">\(H\subset K[X_0,\ldots,X_r]\)</span> has empty
+projective zero set exactly when its quotient has zero degree-<span
+class="math inline">\(N\)</span> piece for some <span
+class="math inline">\(N\ge0\)</span>. Extend to an algebraic closure
+<span class="math inline">\(\bar K\)</span>. Empty projective zero set
+means that all common affine zeros are contained in the origin.
+Conversely a nonzero affine zero gives a projective point by scaling; if
+the projective scheme has a point, one of its affine charts is a nonzero
+finite-type <span class="math inline">\(K\)</span>-algebra. A maximal
+ideal of that chart has finite residue field by the weak
+Nullstellensatz, and an embedding of that field in <span
+class="math inline">\(\bar K\)</span> supplies a nonzero geometric zero.
+Thus this geometric criterion detects all projective scheme points, not
+just <span class="math inline">\(K\)</span>-rational points.</p>
+<p>The strong Nullstellensatz in <span class="math inline">\(\bar
+K[X]\)</span> now puts each <span class="math inline">\(X_j\)</span> in
+the radical of <span class="math inline">\(H\bar K[X]\)</span>. Choose
+<span class="math inline">\(e_j\ge1\)</span> with <span
+class="math inline">\(X_j^{e_j}\in H\bar K[X]\)</span>. For <span
+class="math inline">\(N=1+\sum_{j=0}^r(e_j-1)\)</span>, every monomial
+of degree <span class="math inline">\(N\)</span> is divisible by at
+least one of those powers. Hence the degree-<span
+class="math inline">\(N\)</span> quotient is zero over <span
+class="math inline">\(\bar K\)</span>, and is already zero over <span
+class="math inline">\(K\)</span>: tensoring a nonzero vector space with
+a field extension cannot make it zero. A zero degree-<span
+class="math inline">\(N\)</span> piece makes every higher piece zero by
+multiplication by the variables, and forces all the <span
+class="math inline">\(X_j\)</span> to be nilpotent in the quotient. It
+therefore leaves no projective prime, since a projective prime must
+avoid at least one <span class="math inline">\(X_j\)</span>. This proves
+both directions. The argument also covers <span
+class="math inline">\(H=(1)\)</span>, where the degree-zero piece is
+already zero.</p>
+<p><strong>Proof near a point of the base.</strong> Put <span
+class="math inline">\(M_N=(S/J)_N\)</span>. This is a finite <span
+class="math inline">\(A\)</span>-module, being a quotient of the free
+module on the finitely many degree-<span
+class="math inline">\(N\)</span> monomials. For a prime <span
+class="math inline">\(\mathfrak p\subset A\)</span>, its fibre is</p>
+<p><span class="math display">\[
+M_N\otimes_A\kappa(\mathfrak p)
+=\bigl(\kappa(\mathfrak p)[X]/J(\mathfrak p)\bigr)_N.
+\]</span></p>
+<p>Indeed taking this quotient and its fixed graded piece commutes with
+tensor product by right exactness. Suppose the projective fibre is
+empty. The field step gives an <span class="math inline">\(N\)</span>
+for which this tensor product is zero. Nakayama, <a
+href="prerequisites/AG-CA/AG-CA-02.html">Localization, local properties
+and support</a>, Theorem 4.2, gives <span
+class="math inline">\((M_N)_{\mathfrak p}=0\)</span>. Choose a finite
+generating list for <span class="math inline">\(M_N\)</span>. Each
+generator is killed by some element outside <span
+class="math inline">\(\mathfrak p\)</span>, by the localization equality
+criterion; their product <span class="math inline">\(f\notin\mathfrak
+p\)</span> kills them all. Consequently <span
+class="math inline">\((M_N)_f=0\)</span>. Multiplication by the
+variables gives <span class="math inline">\((M_m)_f=0\)</span> for every
+<span class="math inline">\(m\ge N\)</span>, so every projective fibre
+over the open neighbourhood <span class="math inline">\(D(f)\)</span> is
+empty. The complement of the image is therefore open.</p>
+<p>For the exact formula, a finite module <span
+class="math inline">\(M\)</span> is zero after localization at <span
+class="math inline">\(\mathfrak p\)</span> exactly when <span
+class="math inline">\(\operatorname{Ann}_A(M)\)</span> contains an
+element outside <span class="math inline">\(\mathfrak p\)</span>: use
+the same finite generating list to prove the nontrivial direction. The
+field step and Nakayama therefore give</p>
+<p><span class="math display">\[
+\pi(Z)=\bigcap_{N\ge0}V_A(\operatorname{Ann}_A M_N)
+=V_A\left(\bigcup_{N\ge0}\operatorname{Ann}_A M_N\right).
+\]</span></p>
+<p>The annihilators are increasing, because degree-<span
+class="math inline">\((N+1)\)</span> monomials are products of variables
+with degree-<span class="math inline">\(N\)</span> monomials. Finally,
+<span class="math inline">\(\operatorname{Ann}_A M_N=(J:S_+^N)\cap
+A\)</span>: both sides say that multiplying every degree-<span
+class="math inline">\(N\)</span> monomial by the coefficient gives an
+element of <span class="math inline">\(J\)</span>, and those monomials
+generate <span class="math inline">\(S_+^N\)</span> as an ideal. This
+proves (10).</p>
+<p><strong>Proof over general bases and under base change.</strong>
+Every closed subset <span class="math inline">\(W\)</span> of <span
+class="math inline">\(\mathbb P^r_A\)</span> is cut out by homogeneous
+equations. To verify this topological assertion, take a point outside
+<span class="math inline">\(W\)</span> in the chart <span
+class="math inline">\(X_i\ne0\)</span>. An equation of <span
+class="math inline">\(W\)</span> on that affine chart is nonzero at the
+point. Homogenize it by clearing powers of <span
+class="math inline">\(X_i\)</span>, then multiply by one further <span
+class="math inline">\(X_i\)</span>. The resulting homogeneous equation
+still does not vanish at that point, vanishes on <span
+class="math inline">\(W\)</span> within the chart, and vanishes on all
+points outside the chart. The collection of these equations cuts out
+exactly <span class="math inline">\(W\)</span>. The affine-base argument
+applies to its homogeneous ideal. For arbitrary <span
+class="math inline">\(Y\)</span>, apply it on every affine open: the
+intersection of the image with that open is the image of the restricted
+closed subset, so it is closed there. Closedness is local on this open
+cover. Finally, after any map <span class="math inline">\(Y&#39;\to
+Y\)</span>, the pulled-back projective space is <span
+class="math inline">\(\mathbb P^r_{Y&#39;}\)</span>, to which the same
+proof applies. This proves universal closedness. <span
+class="math inline">\(\square\)</span></p>
+<p>In the classical case of an algebraically closed coefficient field,
+formula (10) is the homogeneous elimination ideal on each affine chart
+of the base. Saturation removes the irrelevant affine origin of the
+projective coordinates. Thus projective elimination describes an image
+that is already closed, while affine elimination may describe only its
+closure.</p>
+<p>Consider over <span class="math inline">\(\mathbb C\)</span> the
+conics <span class="math inline">\(y^2-x=0\)</span>, <span
+class="math inline">\(y^2+x^2-2=0\)</span>. Their resultant in <span
+class="math inline">\(y\)</span> is</p>
+<p><span class="math display">\[
+(x^2+x-2)^2=(x-1)^2(x+2)^2.
+\]</span></p>
+<p>The points are <span class="math inline">\((1,\pm1)\)</span> and
+<span class="math inline">\((-2,\pm i\sqrt2)\)</span>. The Jacobian
+determinant is <span class="math inline">\(-2y(1+2x)\)</span>, nonzero
+at all four points, so each is simple. The squares in the elimination
+resultant reflect two points above each projected coordinate, rather
+than a double point at every intersection. Here both polynomials are
+monic in the eliminated variable, so no leading-coefficient exception
+interferes.</p>
+<p>Higher-dimensional Chow forms organize incidence with complementary
+linear spaces. They extend the theme of a form recording geometric
+intersections; we make no additional Chow-form theorem a premise of the
+proofs here.</p>
+<h2 id="exercises">8. Exercises</h2>
+<ol type="1">
+<li><strong>Basic.</strong> Compute <span
+class="math inline">\(\operatorname{Res}(x^2+bx+c,x-a)\)</span> and
+explain its vanishing.</li>
+<li><strong>Intermediate.</strong> Compute the multiplication matrices
+for <span class="math inline">\((x^2-y,y^2-y)\)</span>, and check the
+characteristic polynomials in characteristic two as well as
+characteristic zero.</li>
+<li><strong>Intermediate.</strong> Compute the forms for <span
+class="math inline">\((x^2,y)\)</span> and <span
+class="math inline">\((x^2-1,y-x)\)</span>. Identify what changes in
+characteristic two.</li>
+<li><strong>Intermediate.</strong> Eliminate <span
+class="math inline">\(y\)</span> from <span
+class="math inline">\(x^2+y^2=1\)</span>, <span
+class="math inline">\(y=x^2-1\)</span> over <span
+class="math inline">\(\mathbb C\)</span>, finding all points and local
+lengths.</li>
+<li><strong>Advanced.</strong> Prove the universal ideal-membership
+identity for the resultant using the adjugate, including degree bounds
+for its two coefficients. Explain why this proof survives specialization
+of leading coefficients.</li>
+</ol>
+<h2 id="solutions">9. Solutions</h2>
+<p><strong>1.</strong> Formula (1) gives <span
+class="math inline">\(f(a)=a^2+ba+c\)</span>; the two sign changes from
+<span class="math inline">\(\prod(\alpha_i-a)\)</span> cancel. It
+vanishes exactly when <span class="math inline">\(a\)</span> is a root
+of the quadratic.</p>
+<p><strong>2.</strong> The basis and matrices in Section 4 follow from
+<span class="math inline">\(y=x^2\)</span>, <span
+class="math inline">\(x^4=x^2\)</span>. Direct matrix multiplication
+gives <span class="math inline">\(M_y=M_x^2\)</span>. Determinants give
+<span class="math inline">\(T^2(T^2-1)\)</span> and <span
+class="math inline">\(T^2(T-1)^2\)</span> over <span
+class="math inline">\(\mathbb Z\)</span>, so reduction modulo any
+characteristic is valid. In characteristic two both become <span
+class="math inline">\(T^2(T-1)^2\)</span>. The two length-two local
+factors yield these multiplicities, as (4) requires.</p>
+<p><strong>3.</strong> The first quotient has basis <span
+class="math inline">\(1,x\)</span>, with <span
+class="math inline">\(M_x^2=0\)</span>, <span
+class="math inline">\(M_y=0\)</span>, hence form <span
+class="math inline">\(u_0^2\)</span>. The second is <span
+class="math inline">\(k[x]/(x^2-1)\)</span>, with <span
+class="math inline">\(y=x\)</span>, giving <span
+class="math inline">\(R=u_0^2-(u_1+u_2)^2\)</span>. In characteristic
+different from two this factors as <span
+class="math inline">\((u_0+u_1+u_2)(u_0-u_1-u_2)\)</span>, representing
+the simple points <span class="math inline">\((1,1),(-1,-1)\)</span>. In
+characteristic two it is the square of the first linear form,
+representing one point of length two.</p>
+<p><strong>4.</strong> The monic linear relation substitutes directly
+into the circle polynomial. The resultant is <span
+class="math inline">\(x^2+(x^2-1)^2-1=x^2(x^2-1)\)</span>. The quotient
+is <span class="math inline">\(\mathbb C[x]/(x^2(x-1)(x+1))\)</span>, so
+the points are <span class="math inline">\((0,-1),(1,0),(-1,0)\)</span>,
+with lengths <span class="math inline">\(2,1,1\)</span>. The repeated
+root at zero is tangency, now a genuine local multiplicity rather than
+two separate points with the same projection.</p>
+<p><strong>5.</strong> Form the universal matrix <span
+class="math inline">\(S\)</span> over <span
+class="math inline">\(C\)</span>. The vector <span
+class="math inline">\(w=\operatorname{adj}(S)e\)</span>, where <span
+class="math inline">\(e\)</span> represents one, has entries in <span
+class="math inline">\(C\)</span>. Its first <span
+class="math inline">\(n\)</span> entries specify a polynomial of degree
+less than <span class="math inline">\(n\)</span>, the remaining <span
+class="math inline">\(m\)</span> a polynomial of degree less than <span
+class="math inline">\(m\)</span>. The matrix identity <span
+class="math inline">\(Sw=(\det S)e\)</span> is exactly <span
+class="math inline">\(uf+vg=\operatorname{Res}(f,g)\)</span>. Every
+specialization is a ring homomorphism preserving this identity. It uses
+no inverted coefficient; only the interpretation of determinant
+vanishing as an actual common root can fail after degrees drop.</p>
+<h2 id="the-historical-papers">The historical papers</h2>
+<p>Read works 22 and 24 in the freely accessible <a
+href="https://zenodo.org/records/21923146/preview/00_EMMY_NOETHER_EN_COMPLETE_LINKED_READER.pdf?include_deleted=0">complete
+English corpus edition</a>, with its <a
+href="https://raw.githubusercontent.com/KokunoYumeto/emmy-noether-en/main/source/Noether_English_ED0014.tex">editable
+TeX</a>. Work 22, <em>On the Theory of Polynomial Ideals and
+Resultants</em>, Sections 2–6, treats modules, norm and
+elementary-divisor forms. Work 24, <em>Elimination Theory and General
+Ideal Theory</em>, Sections 5–6, places the dimensional pieces in
+primary decomposition and states the prime and proper-primary criteria
+as Theorems XII–XIV. The edition is a machine-assisted working
+translation; its original and third-party materials retain their own
+rights. The independent formulation above explains our generic-fibre
+convention and proves its imperfect-field qualifications; it does not
+identify every modern determinant with every historical
+normalization.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>K. Hentzelt, edited by Emmy Noether, <em>On the Theory of Polynomial
+Ideals and Resultants</em>, original publication in Mathematische
+Annalen <strong>88</strong> (1923), 53–79; work 22, Sections 2–6, in the
+<a
+href="https://zenodo.org/records/21923146/preview/00_EMMY_NOETHER_EN_COMPLETE_LINKED_READER.pdf?include_deleted=0">free
+English corpus edition</a>.</li>
+<li>Emmy Noether, <em>Elimination Theory and General Ideal Theory</em>,
+original publication in Mathematische Annalen <strong>90</strong>
+(1923), 229–261; work 24, Sections 5–6 and Theorems XII–XIV, in the <a
+href="https://zenodo.org/records/21923146/preview/00_EMMY_NOETHER_EN_COMPLETE_LINKED_READER.pdf?include_deleted=0">same
+free edition</a>.</li>
+<li><a href="prerequisites/AG-CA/AG-CA-16.html">Kähler
+differentials</a>, Theorem 1.1, Theorems 2.2, 3.1 and 5.1, and Theorem
+6.2, for the fully proved differential construction and rules. The
+additional finite separability criterion, perfect-field dimension
+calculation and generic separating parameters are proved in Section 5
+here.</li>
+<li><a href="prerequisites/AG-CA/AG-CA-06.html">The Nullstellensatz and
+Jacobson rings</a>, Theorems 1.3 and 2.1–2.2; <a
+href="prerequisites/AG-CA/AG-CA-02.html">Localization, local properties
+and support</a>, Theorem 4.2. Together with the graded-piece argument in
+Theorem 7.1, these supply a complete internal proof of projective
+closedness.</li>
+</ul>
+<h2 id="editable-sources">Editable sources</h2>
+<p><span class="unlinked">Complete source
+archive</span> · <a href="downloads/ideal-theory-in-rings.tex">Complete
+course in LaTeX</a> · <a href="downloads/NOE-IDL-05.tex">This lesson in
+LaTeX</a>. The archive includes all five lesson texts, the figures and
+their reproducible source.</p>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

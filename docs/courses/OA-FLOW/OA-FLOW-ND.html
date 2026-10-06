@@ -1,0 +1,626 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Two crossed products and the surviving action · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L81.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ND.md">Lesson source</a></nav><p class="notice"><strong>Private review draft.</strong> Sources and programme proof dependencies are under review.</p><p class="notice">Programme restoration and original illustration by GPT-6.1 Sol (OpenAI), Ultra; independent full mathematical review by GPT-6 Astra (OpenAI), Ultra, and separate owner mathematical/source/expression review by GPT-6 Astra (OpenAI), Ultra. Human review and formal verification are not asserted.</p><h1 id="two-crossed-products-and-the-surviving-action">Two crossed products and the surviving action</h1>
+<p>Crossing by an abelian action and then by its dual reveals a full algebra of operators on the group Hilbert space. The calculation also leaves an action behind. We identify the algebra and that surviving action in one system of coordinates, and test the answer on finite, uncountable, and trivial actions.</p>
+<p>The proof applies to every locally compact Hausdorff abelian group and every von Neumann algebra. The earlier Haar, scalar Fourier, regular-representation and concrete predual proofs supply its exact foundations. We retain the finite-matrix proof of normal tensor transport and supply the multiplication-algebra argument at the same arbitrary-group scope.</p>
+<p>For the source theorem and its coordinate calculation, see Takesaki, <em>Theory of Operator Algebras II</em>, X.2, Proposition 2.2 and Theorem 2.3(iii)–(iv), printed pp.257–263. The full proof below keeps its own negative-character convention.</p>
+<p><em>Newly written and restored original expression and illustration code in this chapter are dedicated to CC0-1.0. Source publications and programme dependencies retain their own terms.</em></p>
+<p><a id="nd-inputs"></a></p>
+<h2 id="setting-and-prerequisites">Setting and prerequisites</h2>
+<h3 id="groups-actions-and-background-results">Groups, actions, and background results</h3>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is a locally compact Hausdorff abelian group, written additively. It need not be second countable, metrizable, discrete, compact, or sigma compact. A von Neumann algebra <span class="math" data-tex="\(M\)">\(M\)</span> need not have separable predual or a faithful normal state. An action <span class="math" data-tex="\(\alpha:G\to\operatorname{Aut}(M)\)">\(\alpha:G\to\operatorname{Aut}(M)\)</span> consists of normal unital <span class="math" data-tex="\(*\)">\(*\)</span>-automorphisms and is point ultraweakly continuous. Faithful normal representations turn its individual orbits into strong-star continuous operator-valued functions: weak continuity of <span class="math" data-tex="\(\alpha_s(x)\)">\(\alpha_s(x)\)</span>, <span class="math" data-tex="\(\alpha_s(x)^*\alpha_s(x)=\alpha_s(x^*x)\)">\(\alpha_s(x)^*\alpha_s(x)=\alpha_s(x^*x)\)</span>, and their adjoints gives this assertion by expanding squared vector norms.</p>
+<p>The following earlier proofs provide the inputs; each applies at the generality just stated.</p>
+<ul>
+<li><a href="OA-FLOW-L24.html#oa-flow.grp.haarconventions">L24 Sections 2–4</a> fixes the locally determined Haar completion, proves the finite-exponent comparison, compact continuous density, translation continuity and arbitrary-Hilbert Bochner/tensor identification. Its Section 5 gives the compact positive approximate-identity nets. <a href="OA-FLOW-HR.html#hr-05">HR-05</a> supplies Radon-product integration with its sigma-finite-carrier qualification; <a href="OA-FLOW-HR.html#hr-07">HR-07</a> supplies Haar changes of variables. The abstract tensor and compact-cutoff proofs are <a href="OA-FLOW-TOPOLOGY.html#l138-h0">H0</a>.</li>
+<li><a href="OA-FLOW-PLANCHEREL.html#scalar-plancherel-p3">Scalar Plancherel SP3–4</a> proves the onto scalar Fourier unitary and its actual integral domains. <a href="OA-FLOW-HARMONIC-LATE.html#l138-h3">H3–4</a> proves topological biduality and the exact returned Haar measure. <a href="OA-FLOW-HARMONIC.html#l138-h1">H1</a> supplies the dual group's locally compact topology. No scalar Plancherel or biduality theorem is inferred from the duality theorem below.</li>
+<li><a href="OA-FLOW-NR.html#oa-flow.nr.3">NR-3</a> constructs the full faithful normal regular coefficient map, and <a href="OA-FLOW-NR.html#oa-flow.nr.4">NR-4</a> proves normal representation independence by arbitrary amplification and faithful compression, including a normal inverse. These proofs apply separately to the first and second crossed products. <span class="unlinked">ST-2</span> proves that every faithful normal representation has a von Neumann image and a normal inverse. <a href="OA-FLOW-AT.html#oa-flow.at.1">AT1–3</a> proves the action-topology and predual passages used in NR.</li>
+<li><span class="unlinked">CF6–8</span> proves the C* norm, positivity and bounded Hilbert-form facts, <span class="unlinked">CF10</span> the completion facts, and <span class="unlinked">CF1</span> the maximal principle used for arbitrary orthonormal bases. <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4–6</a> supplies the complete concrete vector-series predual, its norm closure and its annihilator separation. <a href="OA-FLOW-BD.html#oa-flow.bd.1">BD1,4,5</a> proves the bicommutant theorem, bounded density and the bounded strong-to-ultraweak passage. Fixed operator multiplication and compression are ultraweakly continuous by sending each summable vector-series test to another such test. <a href="OA-FLOW-NCF.html#ncf-1">NCF1</a> also proves the normal matrix-entry tensor transport; Lemma 2 retains a direct proof here.</li>
+</ul>
+<p>The multiplication algebra required in Lemma 1 is proved locally below. An independent compact-kernel route is available in <a href="OA-FLOW-WY.html#wy-1">WY1–2</a>, and is retained after that lemma. Neither proof presumes a countable group or Hilbert basis. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, both crossed products and the target are zero and all maps have the unique zero-algebra interpretation; in the proof we may therefore take a nonzero faithful representation.</p>
+<p>For the rest of this chapter <span class="math" data-tex="\(L^\infty(G)\)">\(L^\infty(G)\)</span> means the sectionwise completed, locally determined convention of L24 Section 2. An <span class="math" data-tex="\(L^p\)">\(L^p\)</span> vector for <span class="math" data-tex="\(p&lt;\infty\)">\(p&lt;\infty\)</span> has a representative on a sigma compact Borel carrier and has the same norm as for outer-regular Radon Haar. A raw locally null set need not be globally Radon null. Product substitutions are first checked on compact continuous tensors, using the Radon product, and then extended by Hilbert density. No unrestricted product-Borel equality or non-sigma-finite Fubini theorem is asserted.</p>
+<p><a id="nd-statement"></a></p>
+<h2 id="the-duality-statement">The duality statement</h2>
+<h3 id="fourier-and-translation-conventions">Fourier and translation conventions</h3>
+<p>Write <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> multiplicatively: its elements are continuous characters <span class="math" data-tex="\(\chi:G\to\mathbb T\)">\(\chi:G\to\mathbb T\)</span>, with <span class="math" data-tex="\(\chi(s+t)=\chi(s)\chi(t)\)">\(\chi(s+t)=\chi(s)\chi(t)\)</span>. For the Fourier transform from the dual group back to the group we use
+<span class="math math-display" data-tex="\[
+ [\mathcal F_{\widehat G}f](t)
+ =\int_{\widehat G}\overline{\chi(t)}f(\chi)\,d\chi.
+\]">\[
+ [\mathcal F_{\widehat G}f](t)
+ =\int_{\widehat G}\overline{\chi(t)}f(\chi)\,d\chi.
+\]</span>
+This formula initially applies to integrable functions. The symbol also denotes its unitary <span class="math" data-tex="\(L^2\)">\(L^2\)</span> extension. This is a Fourier transform on <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, not the inverse of the same-sign Fourier transform on <span class="math" data-tex="\(G\)">\(G\)</span>. Distinguishing those operations prevents a sign error later.</p>
+<p>On <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, put
+<span class="math math-display" data-tex="\[
+ [L_s f](t)=f(t-s),\qquad
+ [R_s f](t)=f(t+s),\qquad
+ [Q_\chi f](t)=\overline{\chi(t)}f(t).
+\]">\[
+ [L_s f](t)=f(t-s),\qquad
+ [R_s f](t)=f(t+s),\qquad
+ [Q_\chi f](t)=\overline{\chi(t)}f(t).
+\]</span>
+Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian it is unimodular, so these translations are unitary without a modular-function factor. In particular <span class="math" data-tex="\(R_s=L_{-s}\)">\(R_s=L_{-s}\)</span>. The commutation relation is
+<span class="math math-display" data-tex="\[
+ L_sQ_\chi L_s^*=\chi(s)Q_\chi.
+\]">\[
+ L_sQ_\chi L_s^*=\chi(s)Q_\chi.
+\]</span></p>
+<p>Let <span class="math" data-tex="\(N=M\rtimes_\alpha G\)">\(N=M\rtimes_\alpha G\)</span>, with its named inclusions <span class="math" data-tex="\(i:M\to N\)">\(i:M\to N\)</span> and <span class="math" data-tex="\(s\mapsto\lambda_s\in\mathcal U(N)\)">\(s\mapsto\lambda_s\in\mathcal U(N)\)</span>. Thus <span class="math" data-tex="\(\lambda_s i(x)\lambda_s^*=i(\alpha_s(x))\)">\(\lambda_s i(x)\lambda_s^*=i(\alpha_s(x))\)</span>. The dual action is
+<a id="equation-d1"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \theta_\chi(i(x))=i(x),\qquad
+ \theta_\chi(\lambda_s)=\overline{\chi(s)}\lambda_s.
+ \tag{D1}
+\]">\[
+ \theta_\chi(i(x))=i(x),\qquad
+ \theta_\chi(\lambda_s)=\overline{\chi(s)}\lambda_s.
+ \tag{D1}
+\]</span>
+Let <span class="math" data-tex="\(P=N\rtimes_\theta\widehat G\)">\(P=N\rtimes_\theta\widehat G\)</span>. Its named generators are <span class="math" data-tex="\(j(n)\)">\(j(n)\)</span>, <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, and <span class="math" data-tex="\(\ell_\chi\)">\(\ell_\chi\)</span>, <span class="math" data-tex="\(\chi\in\widehat G\)">\(\chi\in\widehat G\)</span>. The bidual action <span class="math" data-tex="\(\delta:G\to\operatorname{Aut}(P)\)">\(\delta:G\to\operatorname{Aut}(P)\)</span>, under the evaluation identification of Pontryagin duality, is
+<a id="equation-d2"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \delta_a(j(n))=j(n),\qquad
+ \delta_a(\ell_\chi)=\overline{\chi(a)}\ell_\chi.
+ \tag{D2}
+\]">\[
+ \delta_a(j(n))=j(n),\qquad
+ \delta_a(\ell_\chi)=\overline{\chi(a)}\ell_\chi.
+ \tag{D2}
+\]</span></p>
+<h3 id="duality-and-the-bidual-action">Duality and the bidual action</h3>
+<p><strong>Theorem (duality, including the bidual action).</strong> There is a unique normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism
+<a id="equation-d3"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Phi:(M\rtimes_\alpha G)\rtimes_\theta\widehat G
+ \longrightarrow M\,\overline\otimes\,B(L^2(G))
+ \tag{D3}
+\]">\[
+ \Phi:(M\rtimes_\alpha G)\rtimes_\theta\widehat G
+ \longrightarrow M\,\overline\otimes\,B(L^2(G))
+ \tag{D3}
+\]</span>
+with the following formulas in any faithful normal representation of <span class="math" data-tex="\(M\)">\(M\)</span>:
+<a id="equation-d4"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}{}
+ [\Phi(j(i(x)))\xi](t)&amp;=\alpha_{-t}(x)\xi(t),\\
+ \Phi(j(\lambda_s))&amp;=1\otimes L_s,\\
+ \Phi(\ell_\chi)&amp;=1\otimes Q_\chi.
+ \end{aligned}
+ \tag{D4}
+\]">\[
+ \begin{aligned}{}
+ [\Phi(j(i(x)))\xi](t)&amp;=\alpha_{-t}(x)\xi(t),\\
+ \Phi(j(\lambda_s))&amp;=1\otimes L_s,\\
+ \Phi(\ell_\chi)&amp;=1\otimes Q_\chi.
+ \end{aligned}
+ \tag{D4}
+\]</span>
+Moreover,
+<a id="equation-d5"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Phi\delta_a\Phi^{-1}
+ =\alpha_a\otimes\operatorname{Ad}R_a
+ \quad(a\in G).
+ \tag{D5}
+\]">\[
+ \Phi\delta_a\Phi^{-1}
+ =\alpha_a\otimes\operatorname{Ad}R_a
+ \quad(a\in G).
+ \tag{D5}
+\]</span>
+The theorem makes no assertion that the embedding of <span class="math" data-tex="\(M\)">\(M\)</span> in (D4) is <span class="math" data-tex="\(x\mapsto x\otimes1\)">\(x\mapsto x\otimes1\)</span>. Usually it is not. It also makes no assertion that <span class="math" data-tex="\(M\rtimes_\alpha G\)">\(M\rtimes_\alpha G\)</span> itself is a tensor product.</p>
+<p>We prove (D3) before (D5). The supporting lemmas isolate the two possible sources of a hidden multiplicity or a hidden countability assumption.</p>
+<p><a id="nd-weyl"></a></p>
+<h2 id="translations-and-characters-on-the-group-hilbert-space">Translations and characters on the group Hilbert space</h2>
+<h3 id="why-the-weyl-pair-generates-all-operators">Why the Weyl pair generates all operators</h3>
+<p><strong>Lemma 1 (the concrete Weyl pair).</strong> For every locally compact Hausdorff abelian group,
+<a id="equation-d6"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \{L_s,Q_\chi:s\in G,\ \chi\in\widehat G\}''=B(L^2(G)).
+ \tag{D6}
+\]">\[
+ \{L_s,Q_\chi:s\in G,\ \chi\in\widehat G\}''=B(L^2(G)).
+ \tag{D6}
+\]</span></p>
+<p><span id="OA-FLOW.ND.MULTIPLICATION"></span><a id="nd-multiplication"></a></p>
+<p><strong>The multiplication and predual details.</strong> Choose L24's open sigma compact subgroup and its clopen cosets <span class="math" data-tex="\(D\)">\(D\)</span>. Then <span class="math" data-tex="\(L^2(G)=\bigoplus_D L^2(D)\)">\(L^2(G)=\bigoplus_D L^2(D)\)</span>: finite coset sums are dense by the finite-exponent carrier proof. On each <span class="math" data-tex="\(D\)">\(D\)</span> choose measurable finite-measure sets <span class="math" data-tex="\(E_n\uparrow D\)">\(E_n\uparrow D\)</span>, for example finite unions of a compact exhaustion. If <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every multiplier, it commutes with the coset projections and is diagonal in this sum. On a coset put <span class="math" data-tex="\(f_n=T1_{E_n}\)">\(f_n=T1_{E_n}\)</span>. For every measurable <span class="math" data-tex="\(F\subset E_n\)">\(F\subset E_n\)</span>, commutation with <span class="math" data-tex="\(1_F\)">\(1_F\)</span> gives <span class="math" data-tex="\(T1_F=f_n1_F\)">\(T1_F=f_n1_F\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \int_F |f_n|^2\leq\|T\|^2\mu(F).
+\]">\[
+ \int_F |f_n|^2\leq\|T\|^2\mu(F).
+\]</span>
+Testing sets on which <span class="math" data-tex="\(|f_n|&gt;\|T\|+\varepsilon\)">\(|f_n|&gt;\|T\|+\varepsilon\)</span> proves <span class="math" data-tex="\(|f_n|\leq\|T\|\)">\(|f_n|\leq\|T\|\)</span> almost everywhere on <span class="math" data-tex="\(E_n\)">\(E_n\)</span>. For <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, restriction of <span class="math" data-tex="\(T1_{E_m}\)">\(T1_{E_m}\)</span> to <span class="math" data-tex="\(E_n\)">\(E_n\)</span> equals <span class="math" data-tex="\(T1_{E_n}\)">\(T1_{E_n}\)</span>; the countable compatible representatives give one bounded measurable <span class="math" data-tex="\(f_D\)">\(f_D\)</span>. Finite-measure simple functions are dense in <span class="math" data-tex="\(L^2(D)\)">\(L^2(D)\)</span> by SC3 and SC7, so <span class="math" data-tex="\(T=M_{f_D}\)">\(T=M_{f_D}\)</span> there. Assemble these sectionwise representatives to <span class="math" data-tex="\(f\in L^\infty(G)\)">\(f\in L^\infty(G)\)</span>, with the same bound. This proves that the multiplier algebra is its own commutant, hence is a von Neumann algebra, without a Radon–Nikodym theorem or a global union of Radon null sets. Conversely all multipliers commute with one another. Faithfulness and the equality <span class="math" data-tex="\(\|M_f\|=\|f\|_\infty\)">\(\|M_f\|=\|f\|_\infty\)</span> follow by testing finite-measure subsets of a coset on which a proposed smaller bound fails.</p>
+<p>Every normal functional on this algebra is, by CP4–6, a restricted vector series. With the inner product linear in its first argument it has the form
+<span class="math math-display" data-tex="\[
+ \omega(M_f)=\sum_n\int_G f(t)\xi_n(t)\overline{\eta_n(t)}\,dt
+             =\int_G f(t)g(t)\,dt,\qquad
+ g=\sum_n\xi_n\overline{\eta_n}\in L^1(G).
+\]">\[
+ \omega(M_f)=\sum_n\int_G f(t)\xi_n(t)\overline{\eta_n(t)}\,dt
+             =\int_G f(t)g(t)\,dt,\qquad
+ g=\sum_n\xi_n\overline{\eta_n}\in L^1(G).
+\]</span>
+Scalar Cauchy–Schwarz and <span class="math" data-tex="\(\sum_n\|\xi_n\|_2\|\eta_n\|_2&lt;\infty\)">\(\sum_n\|\xi_n\|_2\|\eta_n\|_2&lt;\infty\)</span> justify the norm-convergent <span class="math" data-tex="\(L^1\)">\(L^1\)</span> sum and interchange. Conversely any <span class="math" data-tex="\(g\in L^1(G)\)">\(g\in L^1(G)\)</span> is a vector product: take <span class="math" data-tex="\(\xi=\sqrt{|g|}\)">\(\xi=\sqrt{|g|}\)</span>, <span class="math" data-tex="\(\eta=\overline g/\sqrt{|g|}\)">\(\eta=\overline g/\sqrt{|g|}\)</span>, both zero at zeros. Thus the inherited ultraweak topology is exactly <span class="math" data-tex="\(\sigma(L^\infty,L^1)\)">\(\sigma(L^\infty,L^1)\)</span>; the functional norm equals <span class="math" data-tex="\(\|g\|_1\)">\(\|g\|_1\)</span>, by the sectionwise measurable phase test. This establishes the multiplication predual premise rather than postulating it.</p>
+<p><span id="OA-FLOW.ND.WEYL"></span><a id="nd-weyl-proof"></a></p>
+<p><strong>Proof of Lemma 1.</strong> First show that the characters span an ultraweakly dense subspace of this multiplication algebra. If <span class="math" data-tex="\(g\in L^1(G)\)">\(g\in L^1(G)\)</span> annihilates every character, its Fourier transform is zero. Here is the needed Fourier uniqueness argument. For <span class="math" data-tex="\(h\in C_c(G)\subset L^1(G)\cap L^2(G)\)">\(h\in C_c(G)\subset L^1(G)\cap L^2(G)\)</span>, the convolution belongs to both spaces: absolute integration gives <span class="math" data-tex="\(\|g*h\|_1\leq\|g\|_1\|h\|_1\)">\(\|g*h\|_1\leq\|g\|_1\|h\|_1\)</span>, while the Hilbert-space integral inequality gives
+<span class="math math-display" data-tex="\[
+ \|g*h\|_2
+ \leq\int_G|g(s)|\,\|L_sh\|_2\,ds
+ =\|g\|_1\|h\|_2.
+\]">\[
+ \|g*h\|_2
+ \leq\int_G|g(s)|\,\|L_sh\|_2\,ds
+ =\|g\|_1\|h\|_2.
+\]</span>
+The convolution identity, obtained by an absolutely integrable iterated integral, gives
+<span class="math math-display" data-tex="\[
+ \widehat{g*h}=\widehat g\,\widehat h=0.
+\]">\[
+ \widehat{g*h}=\widehat g\,\widehat h=0.
+\]</span>
+The compatibility and injectivity in the Plancherel theorem imply <span class="math" data-tex="\(g*h=0\)">\(g*h=0\)</span>. Choose the approximate identity with <span class="math" data-tex="\(h_i\in C_c(G)\)">\(h_i\in C_c(G)\)</span>, <span class="math" data-tex="\(h_i\geq0\)">\(h_i\geq0\)</span>, <span class="math" data-tex="\(\int h_i=1\)">\(\int h_i=1\)</span>, and supports tending to the identity. Such functions exist by local compactness and continuous compactly supported cutoffs; continuity of translations in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> gives <span class="math" data-tex="\(g*h_i\to g\)">\(g*h_i\to g\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>. Thus <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. The just-proved predual description and CP5 annihilator separation prove the ultraweak density claim. Consequently
+<span class="math math-display" data-tex="\[
+ \{Q_\chi:\chi\in\widehat G\}''
+ =\{M_f:f\in L^\infty(G)\}.
+\]">\[
+ \{Q_\chi:\chi\in\widehat G\}''
+ =\{M_f:f\in L^\infty(G)\}.
+\]</span></p>
+<p>An operator commuting with all <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> is therefore a multiplier <span class="math" data-tex="\(M_f\)">\(M_f\)</span>, because multiplication operators form a maximal abelian von Neumann algebra. It commutes also with every <span class="math" data-tex="\(L_s\)">\(L_s\)</span> exactly when
+<a id="equation-d7"></a></p>
+<p><span class="math math-display" data-tex="\[
+ f(\,\cdot-s)=f
+ \quad\text{in }L^\infty(G)\quad(s\in G).
+ \tag{D7}
+\]">\[
+ f(\,\cdot-s)=f
+ \quad\text{in }L^\infty(G)\quad(s\in G).
+ \tag{D7}
+\]</span>
+It remains to deduce that <span class="math" data-tex="\(f\)">\(f\)</span> is constant without intersecting uncountably many sets of full measure.</p>
+<p>For <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>, define
+<span class="math math-display" data-tex="\[
+ k_h(t)=\int_G f(u)h(t-u)\,du.
+\]">\[
+ k_h(t)=\int_G f(u)h(t-u)\,du.
+\]</span>
+This is a bounded continuous function, because
+<span class="math math-display" data-tex="\[
+ |k_h(t+a)-k_h(t)|
+ \leq\|f\|_\infty\,\|h(\,\cdot+a)-h\|_1.
+\]">\[
+ |k_h(t+a)-k_h(t)|
+ \leq\|f\|_\infty\,\|h(\,\cdot+a)-h\|_1.
+\]</span>
+For each fixed <span class="math" data-tex="\(a\)">\(a\)</span>, the change of variable <span class="math" data-tex="\(u=v+a\)">\(u=v+a\)</span>, followed by (D7) for that one <span class="math" data-tex="\(a\)">\(a\)</span>, gives <span class="math" data-tex="\(k_h(t+a)=k_h(t)\)">\(k_h(t+a)=k_h(t)\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. Thus <span class="math" data-tex="\(k_h\)">\(k_h\)</span> is constant. If <span class="math" data-tex="\(h_i\geq0\)">\(h_i\geq0\)</span>, <span class="math" data-tex="\(\int h_i=1\)">\(\int h_i=1\)</span>, is an approximate identity, then <span class="math" data-tex="\(f*h_i\to f\)">\(f*h_i\to f\)</span> weak*: pairing against <span class="math" data-tex="\(g\in L^1\)">\(g\in L^1\)</span> reduces this assertion to <span class="math" data-tex="\(g*\check h_i\to g\)">\(g*\check h_i\to g\)</span> in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, where <span class="math" data-tex="\(\check h_i(s)=h_i(-s)\)">\(\check h_i(s)=h_i(-s)\)</span>. The constants form a weak* closed one-dimensional subspace. Therefore <span class="math" data-tex="\(f\)">\(f\)</span> is constant.</p>
+<p>The commutant of the operators in (D6) is precisely the scalars. Applying the bicommutant theorem proves (D6). Every approximation above is a net, and the argument used no simultaneous pointwise version of (D7). ∎</p>
+<p><strong>The retained compact-kernel alternative.</strong> Integrating <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> against <span class="math" data-tex="\(g\in L^1(\widehat G)\)">\(g\in L^1(\widehat G)\)</span> gives multiplication by <span class="math" data-tex="\(\widehat g(j(t))\)">\(\widehat g(j(t))\)</span>. H1 identifies the uniform closure of these functions with <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>; integrated multipliers belong to <span class="math" data-tex="\(\{Q_\chi\}''\)">\(\{Q_\chi\}''\)</span> by CP5 separation and the actual L24 integrals. For <span class="math" data-tex="\(p,q\in C_c(G)\)">\(p,q\in C_c(G)\)</span>, set <span class="math" data-tex="\(F_s(t)=p(t)\overline{q(t-s)}\)">\(F_s(t)=p(t)\overline{q(t-s)}\)</span>. This is a compact continuous <span class="math" data-tex="\(C_0(G)\)">\(C_0(G)\)</span>-valued function of <span class="math" data-tex="\(s\)">\(s\)</span>. On each vector <span class="math" data-tex="\(M_{F_s}L_s\)">\(M_{F_s}L_s\)</span> is continuous and has the integrable norm bound <span class="math" data-tex="\(\|F_s\|_\infty\|\xi\|_2\)">\(\|F_s\|_\infty\|\xi\|_2\)</span>; L24's vector Bochner integral therefore defines a bounded operator of norm at most <span class="math" data-tex="\(\int\|F_s\|_\infty\,ds\)">\(\int\|F_s\|_\infty\,ds\)</span>. CP5 separation puts that operator in the generated algebra, since its normal functional pairings are integrals of elements of that algebra. No norm continuity of <span class="math" data-tex="\(s\mapsto L_s\)">\(s\mapsto L_s\)</span> in <span class="math" data-tex="\(B(L^2(G))\)">\(B(L^2(G))\)</span> is assumed. On compact continuous vectors, qualified Fubini and <span class="math" data-tex="\(u=t-s\)">\(u=t-s\)</span> give
+<span class="math math-display" data-tex="\[
+ \int_G[M_{F_s}L_s\xi](t)\,ds
+   =p(t)\int_G\overline{q(u)}\xi(u)\,du
+   =[\theta_{p,q}\xi](t).
+\]">\[
+ \int_G[M_{F_s}L_s\xi](t)\,ds
+   =p(t)\int_G\overline{q(u)}\xi(u)\,du
+   =[\theta_{p,q}\xi](t).
+\]</span>
+The integral bound extends the identity to all <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors. Compact continuous density and <span class="math" data-tex="\(\|\theta_{p,q}\|\leq\|p\|_2\|q\|_2\)">\(\|\theta_{p,q}\|\leq\|p\|_2\|q\|_2\)</span> put every rank-one operator in the algebra. Finite-basis projection nets converge strongly to <span class="math" data-tex="\(1\)">\(1\)</span>; their compressions of any bounded operator are finite rank and converge strongly to that operator. BD gives (D6) again. This is the concrete case of WY2 with reflected translation signs; no multiplicity theorem is needed for this alternative.</p>
+<p><a id="nd-tensor"></a></p>
+<h3 id="OA-FLOW.ND.TENSOR">Tensor commutants and normal multiplicity</h3>
+<p><strong>Lemma 2 (tensor commutants and normal multiplicity).</strong> Let <span class="math" data-tex="\(H,K\ne0\)">\(H,K\ne0\)</span> be arbitrary Hilbert spaces.</p>
+<p>(a) The commutant of <span class="math" data-tex="\(1_H\otimes B(K)\)">\(1_H\otimes B(K)\)</span> on <span class="math" data-tex="\(H\otimes K\)">\(H\otimes K\)</span> is <span class="math" data-tex="\(B(H)\otimes1_K\)">\(B(H)\otimes1_K\)</span>.</p>
+<p>(b) If <span class="math" data-tex="\(A\subset B(H)\)">\(A\subset B(H)\)</span> is a von Neumann algebra, then
+<a id="equation-d8"></a></p>
+<p><span class="math math-display" data-tex="\[
+ (A'\otimes1_K)'=A\,\overline\otimes\,B(K).
+ \tag{D8}
+\]">\[
+ (A'\otimes1_K)'=A\,\overline\otimes\,B(K).
+ \tag{D8}
+\]</span></p>
+<p>(c) Every normal unital representation <span class="math" data-tex="\(\sigma:B(K)\to B(E)\)">\(\sigma:B(K)\to B(E)\)</span> is an amplification: there are a Hilbert space <span class="math" data-tex="\(F\)">\(F\)</span> and a unitary <span class="math" data-tex="\(V:K\otimes F\to E\)">\(V:K\otimes F\to E\)</span> with <span class="math" data-tex="\(V^*\sigma(b)V=b\otimes1_F\)">\(V^*\sigma(b)V=b\otimes1_F\)</span>.</p>
+<p>(d) Every normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism <span class="math" data-tex="\(\gamma:A\to B\)">\(\gamma:A\to B\)</span> of von Neumann algebras has a normal tensor extension <span class="math" data-tex="\(\gamma\otimes\operatorname{id}:A\overline\otimes B(K)\to B\overline\otimes B(K)\)">\(\gamma\otimes\operatorname{id}:A\overline\otimes B(K)\to B\overline\otimes B(K)\)</span>, with its expected value on elementary tensors.</p>
+<p><strong>Proof.</strong> Choose an orthonormal basis <span class="math" data-tex="\((e_i)_{i\in I}\)">\((e_i)_{i\in I}\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>, without a countability assumption, and its matrix units <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span>. For (a), commuting with <span class="math" data-tex="\(1\otimes E_{ii}\)">\(1\otimes E_{ii}\)</span> makes an operator diagonal with blocks <span class="math" data-tex="\(T_i\in B(H)\)">\(T_i\in B(H)\)</span>. Commuting with <span class="math" data-tex="\(1\otimes E_{ij}\)">\(1\otimes E_{ij}\)</span> gives <span class="math" data-tex="\(T_i=T_j\)">\(T_i=T_j\)</span>. Thus the operator is <span class="math" data-tex="\(T\otimes1\)">\(T\otimes1\)</span>.</p>
+<p>For (b), if <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(A'\otimes1\)">\(A'\otimes1\)</span>, each matrix coefficient <span class="math" data-tex="\(T_{ij}\in B(H)\)">\(T_{ij}\in B(H)\)</span> commutes with <span class="math" data-tex="\(A'\)">\(A'\)</span>, so <span class="math" data-tex="\(T_{ij}\in A\)">\(T_{ij}\in A\)</span>. For finite <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span>, put <span class="math" data-tex="\(p_J=\sum_{i\in J}E_{ii}\)">\(p_J=\sum_{i\in J}E_{ii}\)</span>. The compression
+<span class="math math-display" data-tex="\[
+ (1\otimes p_J)T(1\otimes p_J)
+ =\sum_{i,j\in J}T_{ij}\otimes E_{ij}
+\]">\[
+ (1\otimes p_J)T(1\otimes p_J)
+ =\sum_{i,j\in J}T_{ij}\otimes E_{ij}
+\]</span>
+belongs to the algebraic tensor product. As <span class="math" data-tex="\(J\)">\(J\)</span> increases through finite subsets of <span class="math" data-tex="\(I\)">\(I\)</span>, the compressions converge strongly to <span class="math" data-tex="\(T\)">\(T\)</span>. This proves one containment in (D8); the other follows by commutation on elementary tensors.</p>
+<p>For (c), fix <span class="math" data-tex="\(i_0\in I\)">\(i_0\in I\)</span> and put <span class="math" data-tex="\(F=\sigma(E_{i_0i_0})E\)">\(F=\sigma(E_{i_0i_0})E\)</span>. Define
+<span class="math math-display" data-tex="\[
+ V(e_i\otimes\eta)=\sigma(E_{ii_0})\eta\quad(\eta\in F).
+\]">\[
+ V(e_i\otimes\eta)=\sigma(E_{ii_0})\eta\quad(\eta\in F).
+\]</span>
+The matrix-unit relations show that this map preserves inner products on finite sums. Normality gives
+<span class="math math-display" data-tex="\[
+ \sum_{i\in I}\sigma(E_{ii})=1_E
+\]">\[
+ \sum_{i\in I}\sigma(E_{ii})=1_E
+\]</span>
+as the strong limit of finite partial sums, so the isometry is onto. It intertwines every matrix unit. Finite compressions of any <span class="math" data-tex="\(b\in B(K)\)">\(b\in B(K)\)</span> converge strongly and ultraweakly to <span class="math" data-tex="\(b\)">\(b\)</span>; normality, or their matrix coefficients in the preceding decomposition, extends the intertwining identity to all <span class="math" data-tex="\(b\)">\(b\)</span>. This proves <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>For (d), ST-2 first makes <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> normal: apply it to the faithful normal representation <span class="math" data-tex="\(\gamma:A\to B\subset B(H_B)\)">\(\gamma:A\to B\subset B(H_B)\)</span>. Represent <span class="math" data-tex="\(A\subset B(H_A)\)">\(A\subset B(H_A)\)</span> and <span class="math" data-tex="\(B\subset B(H_B)\)">\(B\subset B(H_B)\)</span> faithfully and normally, and retain the arbitrary basis <span class="math" data-tex="\((e_i)_{i\in I}\)">\((e_i)_{i\in I}\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. Write
+<span class="math math-display" data-tex="\[
+ P_J=1_{H_A}\otimes p_J,\qquad Q_J=1_{H_B}\otimes p_J
+\]">\[
+ P_J=1_{H_A}\otimes p_J,\qquad Q_J=1_{H_B}\otimes p_J
+\]</span>
+for finite <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span>. Every <span class="math" data-tex="\(T\in A\overline\otimes B(K)\)">\(T\in A\overline\otimes B(K)\)</span> has coefficients <span class="math" data-tex="\(T_{ij}\in A\)">\(T_{ij}\in A\)</span>, by the same commutant calculation as in (b). Its compression <span class="math" data-tex="\(P_JTP_J\)">\(P_JTP_J\)</span> is the finite matrix <span class="math" data-tex="\([T_{ij}]_{i,j\in J}\)">\([T_{ij}]_{i,j\in J}\)</span>.</p>
+<p><strong>Finite corners and reconstruction.</strong> The entrywise map
+<span class="math math-display" data-tex="\[
+ \gamma_J:M_J(A)\longrightarrow M_J(B),\qquad
+ [a_{ij}]\longmapsto[\gamma(a_{ij})]
+\]">\[
+ \gamma_J:M_J(A)\longrightarrow M_J(B),\qquad
+ [a_{ij}]\longmapsto[\gamma(a_{ij})]
+\]</span>
+is a bijective <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism by finite matrix multiplication and the corresponding properties of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The finite C<span class="math" data-tex="\(*\)">\(*\)</span>-norm fact stated above therefore gives
+<a id="equation-d8a"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \|[\gamma(T_{ij})]_{i,j\in J}\|
+ =\|[T_{ij}]_{i,j\in J}\|
+ =\|P_JTP_J\|\leq\|T\|.
+ \tag{D8a}
+\]">\[
+ \|[\gamma(T_{ij})]_{i,j\in J}\|
+ =\|[T_{ij}]_{i,j\in J}\|
+ =\|P_JTP_J\|\leq\|T\|.
+ \tag{D8a}
+\]</span>
+For vectors <span class="math" data-tex="\(\xi=\sum_j\xi_j\otimes e_j\)">\(\xi=\sum_j\xi_j\otimes e_j\)</span> and <span class="math" data-tex="\(\eta=\sum_i\eta_i\otimes e_i\)">\(\eta=\sum_i\eta_i\otimes e_i\)</span> with finite coordinate supports in <span class="math" data-tex="\(H_B\otimes K\)">\(H_B\otimes K\)</span>, set
+<span class="math math-display" data-tex="\[
+ b_T(\xi,\eta)=\sum_{i,j}\langle\gamma(T_{ij})\xi_j,\eta_i\rangle.
+\]">\[
+ b_T(\xi,\eta)=\sum_{i,j}\langle\gamma(T_{ij})\xi_j,\eta_i\rangle.
+\]</span>
+Choose a finite <span class="math" data-tex="\(J\)">\(J\)</span> containing both supports. Equation (D8a) bounds its absolute value by <span class="math" data-tex="\(\|T\|\|\xi\|\|\eta\|\)">\(\|T\|\|\xi\|\|\eta\|\)</span>. Hence this form extends to all vectors and is represented by a unique bounded operator <span class="math" data-tex="\(\Theta(T)\)">\(\Theta(T)\)</span>, with
+<a id="equation-d8b"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Theta(T)_{ij}=\gamma(T_{ij}),\qquad\|\Theta(T)\|\leq\|T\|.
+ \tag{D8b}
+\]">\[
+ \Theta(T)_{ij}=\gamma(T_{ij}),\qquad\|\Theta(T)\|\leq\|T\|.
+ \tag{D8b}
+\]</span>
+Every finite compression <span class="math" data-tex="\(Q_J\Theta(T)Q_J\)">\(Q_J\Theta(T)Q_J\)</span> lies in <span class="math" data-tex="\(B\otimes B(K)\)">\(B\otimes B(K)\)</span>, and these compressions converge strongly to <span class="math" data-tex="\(\Theta(T)\)">\(\Theta(T)\)</span>. Thus <span class="math" data-tex="\(\Theta(T)\in B\overline\otimes B(K)\)">\(\Theta(T)\in B\overline\otimes B(K)\)</span>. The coefficient formula proves linearity, preservation of adjoints, and <span class="math" data-tex="\(\Theta(1)=1\)">\(\Theta(1)=1\)</span>. Apply the same construction using <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> to obtain a contractive linear map <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> in the reverse direction. The coefficients of <span class="math" data-tex="\(\Psi\Theta(T)\)">\(\Psi\Theta(T)\)</span> are exactly those of <span class="math" data-tex="\(T\)">\(T\)</span>, and likewise for <span class="math" data-tex="\(\Theta\Psi\)">\(\Theta\Psi\)</span>. Since finite-support vectors are dense, coefficients determine operators. Consequently <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is bijective with inverse <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, and both contractive estimates make it isometric.</p>
+<p><strong>Multiplication.</strong> Let <span class="math" data-tex="\(T,U\in A\overline\otimes B(K)\)">\(T,U\in A\overline\otimes B(K)\)</span>. As finite <span class="math" data-tex="\(F\subset I\)">\(F\subset I\)</span> increase, <span class="math" data-tex="\(TP_FU\to TU\)">\(TP_FU\to TU\)</span> strongly, with a uniform norm bound. Therefore its <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> coefficient
+<span class="math math-display" data-tex="\[
+ \sum_{k\in F}T_{ik}U_{kj}
+\]">\[
+ \sum_{k\in F}T_{ik}U_{kj}
+\]</span>
+converges ultraweakly to <span class="math" data-tex="\((TU)_{ij}\)">\((TU)_{ij}\)</span>. Normality of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> permits passage through this limit. Finite multiplicativity gives
+<a id="equation-d8c"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \gamma\!\left(\sum_{k\in F}T_{ik}U_{kj}\right)
+ =\sum_{k\in F}\gamma(T_{ik})\gamma(U_{kj})
+ =[\Theta(T)Q_F\Theta(U)]_{ij}.
+ \tag{D8c}
+\]">\[
+ \gamma\!\left(\sum_{k\in F}T_{ik}U_{kj}\right)
+ =\sum_{k\in F}\gamma(T_{ik})\gamma(U_{kj})
+ =[\Theta(T)Q_F\Theta(U)]_{ij}.
+ \tag{D8c}
+\]</span>
+The operators on the right also converge strongly, with a uniform bound, to <span class="math" data-tex="\(\Theta(T)\Theta(U)\)">\(\Theta(T)\Theta(U)\)</span>. Their coefficients therefore converge ultraweakly to the coefficients of that product. Taking the two limits in (D8c) gives
+<span class="math math-display" data-tex="\[
+ \gamma((TU)_{ij})=[\Theta(T)\Theta(U)]_{ij}
+ \quad(i,j\in I).
+\]">\[
+ \gamma((TU)_{ij})=[\Theta(T)\Theta(U)]_{ij}
+ \quad(i,j\in I).
+\]</span>
+By (D8b), the left side is <span class="math" data-tex="\(\Theta(TU)_{ij}\)">\(\Theta(TU)_{ij}\)</span>. Equality of all coefficients proves <span class="math" data-tex="\(\Theta(TU)=\Theta(T)\Theta(U)\)">\(\Theta(TU)=\Theta(T)\Theta(U)\)</span>. Thus <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism; in particular it and its inverse preserve positivity and order.</p>
+<p><strong>Normality and elementary tensors.</strong> Suppose <span class="math" data-tex="\(0\leq T_\lambda\uparrow T\)">\(0\leq T_\lambda\uparrow T\)</span> is a bounded increasing net. Then <span class="math" data-tex="\(\Theta(T_\lambda)\)">\(\Theta(T_\lambda)\)</span> is positive, increasing, and bounded by <span class="math" data-tex="\(\|T\|\)">\(\|T\|\)</span>; let its supremum be <span class="math" data-tex="\(S\)">\(S\)</span>. Strong and ultraweak monotone convergence, followed by normality of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, give
+<span class="math math-display" data-tex="\[
+ (T_\lambda)_{ij}\longrightarrow T_{ij}\ \text{ultraweakly},
+ \qquad
+ S_{ij}=\lim_\lambda\gamma((T_\lambda)_{ij})=\gamma(T_{ij}).
+\]">\[
+ (T_\lambda)_{ij}\longrightarrow T_{ij}\ \text{ultraweakly},
+ \qquad
+ S_{ij}=\lim_\lambda\gamma((T_\lambda)_{ij})=\gamma(T_{ij}).
+\]</span>
+Thus <span class="math" data-tex="\(S=\Theta(T)\)">\(S=\Theta(T)\)</span>, verifying preservation of these suprema. Full ultraweak normality follows directly, as in NCF1: for finite-coordinate vectors <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, the functional <span class="math" data-tex="\(T\mapsto\langle\Theta(T)\xi,\eta\rangle\)">\(T\mapsto\langle\Theta(T)\xi,\eta\rangle\)</span> is a finite sum of normal coefficient functionals of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. For arbitrary <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, approximate in norm by finite-coordinate vectors. The error on <span class="math" data-tex="\(\|T\|\leq1\)">\(\|T\|\leq1\)</span> is at most <span class="math" data-tex="\(\|\xi-\xi_F\|\|\eta\|+\|\xi_F\|\|\eta-\eta_F\|\)">\(\|\xi-\xi_F\|\|\eta\|+\|\xi_F\|\|\eta-\eta_F\|\)</span>. CP6's norm closure makes the limit functional normal, and CP4's summable vector series makes every target ultraweak functional pull back normally. This proves ultraweak continuity on the entire space, not only on bounded nets. The identical argument for <span class="math" data-tex="\(\gamma^{-1}\)">\(\gamma^{-1}\)</span> proves that <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> is normal. The order-isomorphism argument also preserves all bounded positive suprema in both directions: upper bounds pull back to upper bounds, so least upper bounds are preserved.</p>
+<p>If <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(b\in B(K)\)">\(b\in B(K)\)</span>, the coefficients of <span class="math" data-tex="\(a\otimes b\)">\(a\otimes b\)</span> are <span class="math" data-tex="\(b_{ij}a\)">\(b_{ij}a\)</span>. Formula (D8b) therefore gives
+<span class="math math-display" data-tex="\[
+ \Theta(a\otimes b)=\gamma(a)\otimes b.
+\]">\[
+ \Theta(a\otimes b)=\gamma(a)\otimes b.
+\]</span>
+Finally, any normal extension with these values agrees with <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> on each finite compression <span class="math" data-tex="\(P_JTP_J\)">\(P_JTP_J\)</span>, a finite sum of elementary tensors. Those compressions converge ultraweakly to <span class="math" data-tex="\(T\)">\(T\)</span>, so normality proves equality on every <span class="math" data-tex="\(T\)">\(T\)</span>. This proves uniqueness, independence of the auxiliary basis, and part (d). Every finite-subset limit here is a net; no countable basis, spatial implementer for <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, or previously asserted infinite tensor extension has been used. ∎</p>
+<p>Part (c) explains multiplicity only after normality has been established. It does not by itself prove the full Stone-von Neumann theorem for an arbitrary pair of strongly continuous representations satisfying Weyl commutation. Extending an arbitrary Weyl pair normally from this concrete <span class="math" data-tex="\(B(L^2(G))\)">\(B(L^2(G))\)</span> requires a further theorem, which is not used below.</p>
+<p><a id="nd-orbits"></a></p>
+<h2 id="recognizing-the-tensor-product">Recognizing the tensor product</h2>
+<h3 id="OA-FLOW.ND.ORBITS">Orbit fields and the Weyl pair</h3>
+<p><strong>Lemma 3 (orbit fields plus the Weyl pair).</strong> Represent <span class="math" data-tex="\(M\subset B(H)\)">\(M\subset B(H)\)</span> faithfully and normally, and let
+<span class="math math-display" data-tex="\[
+ [A_x\xi](t)=\alpha_{-t}(x)\xi(t).
+\]">\[
+ [A_x\xi](t)=\alpha_{-t}(x)\xi(t).
+\]</span>
+Then
+<a id="equation-d9"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \{A_x,1\otimes L_s,1\otimes Q_\chi:
+       x\in M,s\in G,\chi\in\widehat G\}''
+ =M\,\overline\otimes\,B(L^2(G)).
+ \tag{D9}
+\]">\[
+ \{A_x,1\otimes L_s,1\otimes Q_\chi:
+       x\in M,s\in G,\chi\in\widehat G\}''
+ =M\,\overline\otimes\,B(L^2(G)).
+ \tag{D9}
+\]</span></p>
+<p><strong>Proof.</strong> Let the left side be <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. Every <span class="math" data-tex="\(A_x\)">\(A_x\)</span> commutes with <span class="math" data-tex="\(M'\otimes1\)">\(M'\otimes1\)</span>; this can be checked on elementary <span class="math" data-tex="\(H\)">\(H\)</span>-valued functions using <span class="math" data-tex="\(\alpha_{-t}(x)\in M\)">\(\alpha_{-t}(x)\in M\)</span>. Lemma 2(b) gives <span class="math" data-tex="\(A_x\in M\overline\otimes B(L^2(G))\)">\(A_x\in M\overline\otimes B(L^2(G))\)</span>, so <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is contained in the right side.</p>
+<p>By Lemma 1, <span class="math" data-tex="\(\mathcal A\supset1\otimes B(L^2(G))\)">\(\mathcal A\supset1\otimes B(L^2(G))\)</span>. Hence every operator in <span class="math" data-tex="\(\mathcal A'\)">\(\mathcal A'\)</span> has the form <span class="math" data-tex="\(T\otimes1\)">\(T\otimes1\)</span>, by Lemma 2(a). Fix <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> and vectors <span class="math" data-tex="\(\eta,\zeta\in H\)">\(\eta,\zeta\in H\)</span>. Commutation with <span class="math" data-tex="\(A_x\)">\(A_x\)</span> implies that the scalar function
+<a id="equation-d10"></a></p>
+<p><span class="math math-display" data-tex="\[
+ t\longmapsto
+ \langle[T,\alpha_{-t}(x)]\eta,\zeta\rangle
+ \tag{D10}
+\]">\[
+ t\longmapsto
+ \langle[T,\alpha_{-t}(x)]\eta,\zeta\rangle
+ \tag{D10}
+\]</span>
+is zero locally almost everywhere: test the operator commutator on vectors <span class="math" data-tex="\(h\otimes\eta\)">\(h\otimes\eta\)</span>, <span class="math" data-tex="\(k\otimes\zeta\)">\(k\otimes\zeta\)</span> with <span class="math" data-tex="\(h,k\in C_c(G)\)">\(h,k\in C_c(G)\)</span>. Products <span class="math" data-tex="\(h\overline k\)">\(h\overline k\)</span> include all compactly supported continuous test functions after choosing a compactly supported cutoff equal to one on their support. A locally integrable scalar function with all these integrals zero is locally zero almost everywhere.</p>
+<p>The function (D10) is continuous by the assumed action continuity, so it vanishes at every <span class="math" data-tex="\(t\)">\(t\)</span>. In particular its value at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is zero. This argument is performed separately for each <span class="math" data-tex="\(x,\eta,\zeta\)">\(x,\eta,\zeta\)</span>; there is no assertion of a common exceptional null set. Since these choices are arbitrary, <span class="math" data-tex="\(T\in M'\)">\(T\in M'\)</span>. Conversely every <span class="math" data-tex="\(T\in M'\)">\(T\in M'\)</span> commutes with every displayed generator. Thus <span class="math" data-tex="\(\mathcal A'=M'\otimes1\)">\(\mathcal A'=M'\otimes1\)</span>, and Lemma 2(b) and the bicommutant theorem yield (D9). ∎</p>
+<p><a id="nd-construction"></a></p>
+<h2 id="OA-FLOW.ND.DUALITY">Proof of duality</h2>
+<h3 id="fourier-transform-shear-and-surviving-action">Fourier transform, shear, and surviving action</h3>
+<p><strong>Proof of the theorem.</strong> We first verify that (D1) defines a continuous action. On the regular space <span class="math" data-tex="\(L^2(G,H_0)\)">\(L^2(G,H_0)\)</span>, multiplication by <span class="math" data-tex="\(\overline{\chi(r)}\)">\(\overline{\chi(r)}\)</span> fixes every <span class="math" data-tex="\(\pi_{\alpha,\rho_0}(x)\)">\(\pi_{\alpha,\rho_0}(x)\)</span>, while a direct computation gives
+<span class="math math-display" data-tex="\[
+ Q_\chi\lambda_sQ_\chi^*
+ =\overline{\chi(s)}\lambda_s.
+\]">\[
+ Q_\chi\lambda_sQ_\chi^*
+ =\overline{\chi(s)}\lambda_s.
+\]</span>
+Thus conjugation preserves the generated von Neumann algebra and has inverse conjugation by <span class="math" data-tex="\(Q_{\chi^{-1}}\)">\(Q_{\chi^{-1}}\)</span>. On compactly supported continuous scalar functions, compact-open convergence of characters implies <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence of their multiplication operators. Density and their uniform norm one extend this to strong continuity on the whole Hilbert space. Their conjugations are consequently point ultraweakly continuous. This proves (D1), and the same construction on the second crossed product gives (D2).</p>
+<p>Choose a faithful normal representation <span class="math" data-tex="\(M\subset B(H)\)">\(M\subset B(H)\)</span>. The regular construction described above lets us compute both crossed products in this representation and identify the coefficient representation produced by the shear below.</p>
+<p>The regular double crossed product acts on
+<span class="math math-display" data-tex="\[
+ \mathcal H=L^2(\widehat G,L^2(G,H)).
+\]">\[
+ \mathcal H=L^2(\widehat G,L^2(G,H)).
+\]</span>
+Use <span class="math" data-tex="\(r\in G\)">\(r\in G\)</span> and <span class="math" data-tex="\(\chi\in\widehat G\)">\(\chi\in\widehat G\)</span> as its variables. The regular definition and (D1) give
+<a id="equation-d12"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}{}
+ [j(i(x))\xi](r,\chi)&amp;=\alpha_{-r}(x)\xi(r,\chi),\\
+ [j(\lambda_s)\xi](r,\chi)&amp;=\chi(s)\xi(r-s,\chi),\\
+ [\ell_\eta\xi](r,\chi)&amp;=\xi(r,\eta^{-1}\chi).
+ \end{aligned}
+ \tag{D12}
+\]">\[
+ \begin{aligned}{}
+ [j(i(x))\xi](r,\chi)&amp;=\alpha_{-r}(x)\xi(r,\chi),\\
+ [j(\lambda_s)\xi](r,\chi)&amp;=\chi(s)\xi(r-s,\chi),\\
+ [\ell_\eta\xi](r,\chi)&amp;=\xi(r,\eta^{-1}\chi).
+ \end{aligned}
+ \tag{D12}
+\]</span>
+The factor <span class="math" data-tex="\(\chi(s)\)">\(\chi(s)\)</span> in the second line is not a typographical reversal of (D1): the regular representation evaluates <span class="math" data-tex="\(\theta_{\chi^{-1}}\)">\(\theta_{\chi^{-1}}\)</span>, which reverses that factor.</p>
+<p>Apply the partial Fourier unitary <span class="math" data-tex="\(F=1_{L^2(G,H)}\otimes\mathcal F_{\widehat G}\)">\(F=1_{L^2(G,H)}\otimes\mathcal F_{\widehat G}\)</span>. On <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span> functions, multiplication by <span class="math" data-tex="\(\chi(s)\)">\(\chi(s)\)</span> becomes translation <span class="math" data-tex="\(t\mapsto t-s\)">\(t\mapsto t-s\)</span>; translation <span class="math" data-tex="\(\chi\mapsto\eta^{-1}\chi\)">\(\chi\mapsto\eta^{-1}\chi\)</span> becomes multiplication by <span class="math" data-tex="\(\overline{\eta(t)}\)">\(\overline{\eta(t)}\)</span>. Checking these identities by substitution in the defining integrals and extending by unitarity gives
+<a id="equation-d13"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}{}
+ [Fj(i(x))F^*\xi](r,t)&amp;=\alpha_{-r}(x)\xi(r,t),\\
+ [Fj(\lambda_s)F^*\xi](r,t)&amp;=\xi(r-s,t-s),\\
+ [F\ell_\eta F^*\xi](r,t)&amp;=\overline{\eta(t)}\xi(r,t).
+ \end{aligned}
+ \tag{D13}
+\]">\[
+ \begin{aligned}{}
+ [Fj(i(x))F^*\xi](r,t)&amp;=\alpha_{-r}(x)\xi(r,t),\\
+ [Fj(\lambda_s)F^*\xi](r,t)&amp;=\xi(r-s,t-s),\\
+ [F\ell_\eta F^*\xi](r,t)&amp;=\overline{\eta(t)}\xi(r,t).
+ \end{aligned}
+ \tag{D13}
+\]</span></p>
+<p>Next separate the coordinate changed by translation from the coordinate left unchanged. Define the shear
+<span class="math math-display" data-tex="\[
+ [S\xi](q,t)=\xi(q+t,t).
+\]">\[
+ [S\xi](q,t)=\xi(q+t,t).
+\]</span>
+It is a unitary with inverse <span class="math" data-tex="\(S^*\zeta(r,t)=\zeta(r-t,t)\)">\(S^*\zeta(r,t)=\zeta(r-t,t)\)</span>. Indeed, integration in <span class="math" data-tex="\(q\)">\(q\)</span> for fixed <span class="math" data-tex="\(t\)">\(t\)</span> is a Haar translation, and the equality of norms on compactly supported continuous functions extends by density. Formula (D13) becomes
+<a id="equation-d14"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}{}
+ [SFj(i(x))F^*S^*\zeta](q,t)&amp;=\alpha_{-(q+t)}(x)\zeta(q,t),\\
+ [SFj(\lambda_s)F^*S^*\zeta](q,t)&amp;=\zeta(q,t-s),\\
+ [SF\ell_\eta F^*S^*\zeta](q,t)&amp;=\overline{\eta(t)}\zeta(q,t).
+ \end{aligned}
+ \tag{D14}
+\]">\[
+ \begin{aligned}{}
+ [SFj(i(x))F^*S^*\zeta](q,t)&amp;=\alpha_{-(q+t)}(x)\zeta(q,t),\\
+ [SFj(\lambda_s)F^*S^*\zeta](q,t)&amp;=\zeta(q,t-s),\\
+ [SF\ell_\eta F^*S^*\zeta](q,t)&amp;=\overline{\eta(t)}\zeta(q,t).
+ \end{aligned}
+ \tag{D14}
+\]</span></p>
+<p>Regroup the Hilbert space as <span class="math" data-tex="\(K\otimes L^2(G)_t\)">\(K\otimes L^2(G)_t\)</span>, where <span class="math" data-tex="\(K=L^2(G_q,H)\)">\(K=L^2(G_q,H)\)</span>, and define
+<a id="equation-d15"></a></p>
+<p><span class="math math-display" data-tex="\[
+ [\sigma(x)\eta](q)=\alpha_{-q}(x)\eta(q).
+ \tag{D15}
+\]">\[
+ [\sigma(x)\eta](q)=\alpha_{-q}(x)\eta(q).
+ \tag{D15}
+\]</span>
+NR-3 makes this a faithful normal representation of <span class="math" data-tex="\(M\)">\(M\)</span>. Its image is a von Neumann algebra and its inverse is normal by the faithful normal image theorem used in NR-4. Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian,
+<span class="math math-display" data-tex="\[
+ \alpha_{-(q+t)}(x)=\alpha_{-q}(\alpha_{-t}(x)).
+\]">\[
+ \alpha_{-(q+t)}(x)=\alpha_{-q}(\alpha_{-t}(x)).
+\]</span>
+Thus the three families in (D14), after regrouping, are
+<a id="equation-d16"></a></p>
+<p><span class="math math-display" data-tex="\[
+ [B_x\zeta](t)=\sigma(\alpha_{-t}(x))\zeta(t),
+ \qquad1_K\otimes L_s,
+ \qquad1_K\otimes Q_\chi.
+ \tag{D16}
+\]">\[
+ [B_x\zeta](t)=\sigma(\alpha_{-t}(x))\zeta(t),
+ \qquad1_K\otimes L_s,
+ \qquad1_K\otimes Q_\chi.
+ \tag{D16}
+\]</span>
+The transferred action <span class="math" data-tex="\(\widetilde\alpha_a(\sigma(x))=\sigma(\alpha_a(x))\)">\(\widetilde\alpha_a(\sigma(x))=\sigma(\alpha_a(x))\)</span> on <span class="math" data-tex="\(\sigma(M)\)">\(\sigma(M)\)</span> is point ultraweakly continuous, since <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is a faithful normal isomorphism onto its range. Apply Lemma 3 to this action. It shows that <span class="math" data-tex="\(SF\)">\(SF\)</span>, followed by tensor regrouping, sends <span class="math" data-tex="\(P\)">\(P\)</span> onto
+<span class="math math-display" data-tex="\[
+ \sigma(M)\overline\otimes B(L^2(G)_t).
+\]">\[
+ \sigma(M)\overline\otimes B(L^2(G)_t).
+\]</span>
+Compose this spatial isomorphism with the faithful normal coefficient identification <span class="math" data-tex="\(\sigma^{-1}\otimes\operatorname{id}\)">\(\sigma^{-1}\otimes\operatorname{id}\)</span>. The tensor identification exists and is normal by Lemma 2(d). To check its value on the orbit field, slice in the <span class="math" data-tex="\(t\)">\(t\)</span>-variable against <span class="math" data-tex="\(h,k\in C_c(G)\)">\(h,k\in C_c(G)\)</span>. The slice is the ultraweak integral of <span class="math" data-tex="\(\overline{h(t)}k(t)\sigma(\alpha_{-t}(x))\)">\(\overline{h(t)}k(t)\sigma(\alpha_{-t}(x))\)</span>. Normality of <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span> carries this integral to the corresponding integral of <span class="math" data-tex="\(\alpha_{-t}(x)\)">\(\alpha_{-t}(x)\)</span>. These slices separate operators, so the coefficient identification has the stated pointwise value. The result is (D3), and (D16) gives exactly (D4). The variable <span class="math" data-tex="\(q\)">\(q\)</span> has become the Hilbert space carrying the coefficient representation. We have not deleted a Hilbert-space variable or presumed that <span class="math" data-tex="\(K\)">\(K\)</span> is separable.</p>
+<p>Uniqueness follows because the three named families generate <span class="math" data-tex="\(P\)">\(P\)</span>, and two normal homomorphisms agreeing on them agree on their ultraweakly dense unital <span class="math" data-tex="\(*\)">\(*\)</span>-algebra and hence everywhere. The same observation shows that the answer, specified by (D4), is independent of the faithful normal representation used in the construction.</p>
+<p>It remains to prove (D5). The map <span class="math" data-tex="\(\beta_a=\alpha_a\otimes\operatorname{Ad}R_a\)">\(\beta_a=\alpha_a\otimes\operatorname{Ad}R_a\)</span> is a normal automorphism by Lemma 2(d) and conjugation by <span class="math" data-tex="\(1\otimes R_a\)">\(1\otimes R_a\)</span>. The same normal-slice argument just used shows that <span class="math" data-tex="\(\alpha_a\otimes\operatorname{id}\)">\(\alpha_a\otimes\operatorname{id}\)</span> applies <span class="math" data-tex="\(\alpha_a\)">\(\alpha_a\)</span> pointwise to the orbit field. Its action on the first generator is
+<span class="math math-display" data-tex="\[
+ [\beta_a(A_x)\xi](t)
+ =\alpha_a(\alpha_{-(t+a)}(x))\xi(t)
+ =\alpha_{-t}(x)\xi(t).
+\]">\[
+ [\beta_a(A_x)\xi](t)
+ =\alpha_a(\alpha_{-(t+a)}(x))\xi(t)
+ =\alpha_{-t}(x)\xi(t).
+\]</span>
+Left and right translations commute, so <span class="math" data-tex="\(\beta_a(1\otimes L_s)=1\otimes L_s\)">\(\beta_a(1\otimes L_s)=1\otimes L_s\)</span>. On the third family,
+<span class="math math-display" data-tex="\[
+ R_aQ_\chi R_a^*
+ =\overline{\chi(a)}Q_\chi.
+\]">\[
+ R_aQ_\chi R_a^*
+ =\overline{\chi(a)}Q_\chi.
+\]</span>
+These are exactly the images under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of (D2). Agreement on the generators proves (D5); it also gives the action continuity after transport from <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. ∎</p>
+<p><a id="nd-models"></a></p>
+<h2 id="OA-FLOW.ND.MODELS">Models that expose the role of the second crossing</h2>
+<p><strong>Model 1: a three-point orbit with an arbitrary coefficient algebra.</strong> Let <span class="math" data-tex="\(G=\mathbb Z/3\mathbb Z\)">\(G=\mathbb Z/3\mathbb Z\)</span>, let <span class="math" data-tex="\(B\)">\(B\)</span> be any von Neumann algebra, and set <span class="math" data-tex="\(M=B\oplus B\oplus B\)">\(M=B\oplus B\oplus B\)</span>, with <span class="math" data-tex="\(\alpha_1(b_0,b_1,b_2)=(b_2,b_0,b_1)\)">\(\alpha_1(b_0,b_1,b_2)=(b_2,b_0,b_1)\)</span>. No assumption on the type of <span class="math" data-tex="\(B\)">\(B\)</span> is needed. For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, (D4) becomes the diagonal matrix
+<span class="math math-display" data-tex="\[
+ A_x=\operatorname{diag}(x,\alpha_{-1}(x),\alpha_{-2}(x))
+ \quad\text{in }M\overline\otimes M_3(\mathbb C).
+\]">\[
+ A_x=\operatorname{diag}(x,\alpha_{-1}(x),\alpha_{-2}(x))
+ \quad\text{in }M\overline\otimes M_3(\mathbb C).
+\]</span>
+The first crossed-product unitaries provide the cyclic shift matrix. The second provide the diagonal character matrices. Their spectral projections are the coordinate projections <span class="math" data-tex="\(p_0,p_1,p_2\)">\(p_0,p_1,p_2\)</span>, and
+<span class="math math-display" data-tex="\[
+ E_{ab}=p_aL_{a-b}p_b
+\]">\[
+ E_{ab}=p_aL_{a-b}p_b
+\]</span>
+are all matrix units. More specifically,
+<span class="math math-display" data-tex="\[
+ (1\otimes E_{a0})A_x(1\otimes E_{0b})=x\otimes E_{ab}.
+\]">\[
+ (1\otimes E_{a0})A_x(1\otimes E_{0b})=x\otimes E_{ab}.
+\]</span>
+Thus the full coefficient algebra can be recovered in each matrix entry. The bidual action permutes the matrix coordinates by right translation while simultaneously acting on every coefficient by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p><strong>Model 2: an uncountable discrete group.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be uncountable and give <span class="math" data-tex="\(G=\bigoplus_{i\in I}\mathbb Z/2\mathbb Z\)">\(G=\bigoplus_{i\in I}\mathbb Z/2\mathbb Z\)</span> the discrete topology. Then <span class="math" data-tex="\(L^2(G)=\ell^2(G)\)">\(L^2(G)=\ell^2(G)\)</span> is nonseparable. Its compact dual is <span class="math" data-tex="\(\prod_{i\in I}\mathbb Z/2\mathbb Z\)">\(\prod_{i\in I}\mathbb Z/2\mathbb Z\)</span>. For each <span class="math" data-tex="\(t\in G\)">\(t\in G\)</span>, Haar integration over the dual gives the coordinate projection
+<span class="math math-display" data-tex="\[
+ p_t=\int_{\widehat G}\chi(t)Q_\chi\,d\chi,
+\]">\[
+ p_t=\int_{\widehat G}\chi(t)Q_\chi\,d\chi,
+\]</span>
+where the integral is taken weakly and the dual Haar measure has mass one. Character orthogonality verifies this equality on the basis of <span class="math" data-tex="\(\ell^2(G)\)">\(\ell^2(G)\)</span>. The projections satisfy
+<span class="math math-display" data-tex="\[
+ \sum_{t\in G}p_t=1
+\]">\[
+ \sum_{t\in G}p_t=1
+\]</span>
+in the strong sense of the net over finite subsets, and their translates again give all matrix units. No sequence of finite subsets exhausts <span class="math" data-tex="\(G\)">\(G\)</span>. This model explains why replacing nets by sequences would change the theorem's scope.</p>
+<p><strong>Model 3: the trivial action.</strong> If <span class="math" data-tex="\(\alpha_s=\operatorname{id}_M\)">\(\alpha_s=\operatorname{id}_M\)</span>, the first crossed product is <span class="math" data-tex="\(M\overline\otimes\operatorname{VN}(G)\)">\(M\overline\otimes\operatorname{VN}(G)\)</span>, directly from the regular generators. The second crossing adds the character multipliers to the translations on <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, and Lemma 1 turns their generated algebra into <span class="math" data-tex="\(B(L^2(G))\)">\(B(L^2(G))\)</span>. The surviving action is <span class="math" data-tex="\(\operatorname{id}_M\otimes\operatorname{Ad}R\)">\(\operatorname{id}_M\otimes\operatorname{Ad}R\)</span>. Even a trivial original action produces a nontrivial bidual action when <span class="math" data-tex="\(G\ne\{0\}\)">\(G\ne\{0\}\)</span>.</p>
+<p><a id="nd-exercises"></a></p>
+<h2 id="OA-FLOW.ND.EXERCISES">Exercises with solutions</h2>
+<p><strong>Exercise 1 (a sign test).</strong> For <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, set <span class="math" data-tex="\(\chi_p(t)=e^{ipt}\)">\(\chi_p(t)=e^{ipt}\)</span>. Compute <span class="math" data-tex="\(Q_pL_sQ_p^*\)">\(Q_pL_sQ_p^*\)</span>, <span class="math" data-tex="\(R_aQ_pR_a^*\)">\(R_aQ_pR_a^*\)</span>, and the image under <span class="math" data-tex="\(\mathcal F_{\widehat G}\)">\(\mathcal F_{\widehat G}\)</span> of multiplication by <span class="math" data-tex="\(e^{ips}\)">\(e^{ips}\)</span>.</p>
+<p><strong>Solution.</strong> Apply each operator to a test function. The first gives <span class="math" data-tex="\(e^{-ips}L_s\)">\(e^{-ips}L_s\)</span>; the second gives <span class="math" data-tex="\(e^{-ipa}Q_p\)">\(e^{-ipa}Q_p\)</span>. In the Fourier integral, <span class="math" data-tex="\(e^{-ipt}e^{ips}=e^{-ip(t-s)}\)">\(e^{-ipt}e^{ips}=e^{-ip(t-s)}\)</span>, so the third is <span class="math" data-tex="\(L_s\)">\(L_s\)</span>. These three identities separately check (D1), (D5), and the middle line of (D13).</p>
+<p><strong>Exercise 2 (recovering a corner).</strong> Choose a unit vector <span class="math" data-tex="\(h\in L^2(G)\)">\(h\in L^2(G)\)</span> and let <span class="math" data-tex="\(e=|h\rangle\langle h|\)">\(e=|h\rangle\langle h|\)</span>. Show that the corner
+<span class="math math-display" data-tex="\[
+ (1\otimes e)(M\overline\otimes B(L^2(G)))(1\otimes e)
+\]">\[
+ (1\otimes e)(M\overline\otimes B(L^2(G)))(1\otimes e)
+\]</span>
+is canonically isomorphic to <span class="math" data-tex="\(M\)">\(M\)</span>. Is this corner necessarily invariant under the bidual action?</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(eB(L^2(G))e=\mathbb Ce\)">\(eB(L^2(G))e=\mathbb Ce\)</span>, compression gives precisely <span class="math" data-tex="\(M\otimes\mathbb Ce\)">\(M\otimes\mathbb Ce\)</span>; the map <span class="math" data-tex="\(x\mapsto x\otimes e\)">\(x\mapsto x\otimes e\)</span> is the required normal isomorphism. Under (D5), <span class="math" data-tex="\(1\otimes e\)">\(1\otimes e\)</span> is sent to <span class="math" data-tex="\(1\otimes|R_ah\rangle\langle R_ah|\)">\(1\otimes|R_ah\rangle\langle R_ah|\)</span>. Thus invariance requires the line <span class="math" data-tex="\(\mathbb Ch\)">\(\mathbb Ch\)</span> to be invariant under all right translations. Such a line need not exist: for <span class="math" data-tex="\(G=\mathbb R\)">\(G=\mathbb R\)</span>, a translation eigenvector in <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span> would have essentially constant modulus and is zero. To see the modulus assertion, apply the translation-invariant-function argument to bounded truncations of <span class="math" data-tex="\(|h|\)">\(|h|\)</span>, or convolve the invariant <span class="math" data-tex="\(|h|^2\in L^1\)">\(|h|^2\in L^1\)</span> with an approximate identity. A nonzero constant cannot be integrable over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Exercise 3 (why the coefficient action remains).</strong> Suppose one proposes <span class="math" data-tex="\(\operatorname{id}_M\otimes\operatorname{Ad}R_a\)">\(\operatorname{id}_M\otimes\operatorname{Ad}R_a\)</span> as the bidual action in (D5). Compute its value on <span class="math" data-tex="\(A_x\)">\(A_x\)</span>, and give the exact condition under which it fixes all <span class="math" data-tex="\(A_x\)">\(A_x\)</span>.</p>
+<p><strong>Solution.</strong> The value at <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(\alpha_{-(t+a)}(x)\)">\(\alpha_{-(t+a)}(x)\)</span>. Equality with <span class="math" data-tex="\(\alpha_{-t}(x)\)">\(\alpha_{-t}(x)\)</span> for every <span class="math" data-tex="\(x,t\)">\(x,t\)</span> is equivalent, by setting <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, to <span class="math" data-tex="\(\alpha_a=\operatorname{id}_M\)">\(\alpha_a=\operatorname{id}_M\)</span>. For all <span class="math" data-tex="\(a\)">\(a\)</span>, the proposed formula is therefore correct exactly when the original action is trivial. The coefficient factor <span class="math" data-tex="\(\alpha_a\)">\(\alpha_a\)</span> cancels the shift of the orbit field in the general theorem.</p>
+<p><strong>Exercise 4 (finite-group coefficients).</strong> For a finite abelian group <span class="math" data-tex="\(G\)">\(G\)</span>, write an explicit finite sum in <span class="math" data-tex="\(j(\lambda_s)\)">\(j(\lambda_s)\)</span> and <span class="math" data-tex="\(\ell_\chi\)">\(\ell_\chi\)</span> whose image under <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is <span class="math" data-tex="\(1\otimes E_{ab}\)">\(1\otimes E_{ab}\)</span>, and then an element whose image is <span class="math" data-tex="\(x\otimes E_{ab}\)">\(x\otimes E_{ab}\)</span>.</p>
+<p><strong>Solution.</strong> Put
+<span class="math math-display" data-tex="\[
+ q_t=\frac1{|G|}\sum_{\chi\in\widehat G}\chi(t)\ell_\chi,
+ \qquad v_{ab}=q_a j(\lambda_{a-b})q_b.
+\]">\[
+ q_t=\frac1{|G|}\sum_{\chi\in\widehat G}\chi(t)\ell_\chi,
+ \qquad v_{ab}=q_a j(\lambda_{a-b})q_b.
+\]</span>
+Character orthogonality gives <span class="math" data-tex="\(\Phi(q_t)=1\otimes p_t\)">\(\Phi(q_t)=1\otimes p_t\)</span>, hence <span class="math" data-tex="\(\Phi(v_{ab})=1\otimes E_{ab}\)">\(\Phi(v_{ab})=1\otimes E_{ab}\)</span>. The element <span class="math" data-tex="\(v_{a0}j(i(x))v_{0b}\)">\(v_{a0}j(i(x))v_{0b}\)</span> maps to <span class="math" data-tex="\(x\otimes E_{ab}\)">\(x\otimes E_{ab}\)</span>. This also verifies surjectivity in finite dimension without any commutant argument.</p>
+<p><a id="nd-inverse"></a></p>
+<h2 id="OA-FLOW.ND.INVERSE">The full inverse and the parts still separate</h2>
+<p>The construction provides an inverse on the whole tensor algebra, not only on its algebraic generators. Let <span class="math" data-tex="\(C\)">\(C\)</span> denote tensor regrouping after the shear, and <span class="math" data-tex="\(U=CSF\)">\(U=CSF\)</span>. Then
+<a id="equation-d17"></a></p>
+<p><span class="math math-display" data-tex="\[
+ \Phi(X)=(\sigma^{-1}\bar\otimes\mathrm{id})(UXU^*),\qquad
+ \Phi^{-1}(Y)=U^*(\sigma\bar\otimes\mathrm{id})(Y)U.
+ \tag{D17}
+\]">\[
+ \Phi(X)=(\sigma^{-1}\bar\otimes\mathrm{id})(UXU^*),\qquad
+ \Phi^{-1}(Y)=U^*(\sigma\bar\otimes\mathrm{id})(Y)U.
+ \tag{D17}
+\]</span>
+Both tensor maps are the full normal inverse maps of Lemma 2(d). Unitary conjugation is ultraweakly continuous by vector-series tests. Consequently both displayed maps are normal on arbitrary nets, are mutual inverses, and have precisely the full domains <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(M\bar\otimes B(L^2(G))\)">\(M\bar\otimes B(L^2(G))\)</span>. Changing the original faithful representation uses NR-4 on both crossings and Lemma 2(d) on the target; the resulting normal identifications intertwine these maps because they agree on all three generating families. In the zero-algebra case (D17) is interpreted as the unique map between zero algebras.</p>
+<p>The two tensor factors in (D5) are indispensable: the right translation changes the orbit field to <span class="math" data-tex="\(\alpha_{-(t+a)}(x)\)">\(\alpha_{-(t+a)}(x)\)</span>, and the coefficient automorphism <span class="math" data-tex="\(\alpha_a\)">\(\alpha_a\)</span> restores <span class="math" data-tex="\(\alpha_{-t}(x)\)">\(\alpha_{-t}(x)\)</span>. The character multiplier acquires exactly the negative phase <span class="math" data-tex="\(\overline{\chi(a)}\)">\(\overline{\chi(a)}\)</span>. No undetermined Haar scalar remains, because H4 proves that the bidual Haar measure is the original one.</p>
+<p>This theorem proves full normal double duality and the exact bidual action at arbitrary LCA scope. Recognition of an arbitrary covariant system from eigenunitaries, its integrability, characterization of invariant weights as dual weights, and the full second-dual weight comparison are distinct assertions. They are not inferred here from an isomorphism of algebras or equality of modular groups. The theorem also does not assert nonabelian duality, type classification, or existence of a periodic weight.</p>
+<h2 id="source">Source</h2>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras II</em> (Springer), Chapter X, Section 2: Proposition 2.2, pp.257–259, and Theorem 2.3(iii)–(iv), statements pp.259–260 and Fourier/shear proof pp.262–263, <a href="https://doi.org/10.1007/978-3-662-10451-4">DOI</a>. The character convention in this chapter is explicitly negative. The book's additional fixed-point, weight-recognition and second-dual weight assertions are not inputs to this proof. The earlier programme proofs linked above and the local multiplier, matrix and orbit-field arguments give every mathematical input used here.</p>
+<p><a id="nd-figure"></a></p>
+<h2 id="OA-FLOW.ND.FIGURE">Fourier, shear and the coefficient cancellation</h2>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact three-point coordinate calculation for normal double duality" src="assets/normal-duality/assets/duality-coordinate-mechanism.png" style="display:block;width:1280px;max-width:none"/></p>
+<p>The image is an exact finite model of the maps in <a href="OA-FLOW-ND.html#equation-d13">(D13)–(D16)</a> and the action in <a href="OA-FLOW-ND.html#equation-d5">(D5)</a>, rather than a reduction of the arbitrary-group theorem. Take <span class="math" data-tex="\(G=\mathbb Z/3\mathbb Z\)">\(G=\mathbb Z/3\mathbb Z\)</span>, <span class="math" data-tex="\(M=\mathbb C^3\)">\(M=\mathbb C^3\)</span>, <span class="math" data-tex="\(x=(2,5,9)\)">\(x=(2,5,9)\)</span>, and <span class="math" data-tex="\(\alpha_1(x)=(x_2,x_0,x_1)\)">\(\alpha_1(x)=(x_2,x_0,x_1)\)</span>. All indices in the image are modulo three. Haar on <span class="math" data-tex="\(G\)">\(G\)</span> is counting measure and the paired dual Haar assigns mass <span class="math" data-tex="\(1/3\)">\(1/3\)</span> to each character. Put <span class="math" data-tex="\(\chi_n(t)=e^{2\pi int/3}\)">\(\chi_n(t)=e^{2\pi int/3}\)</span>.</p>
+<p>The first panel is <strong>after</strong> the partial negative Fourier transform, with coordinates <span class="math" data-tex="\((r,t)\)">\((r,t)\)</span>. It shows component <span class="math" data-tex="\(k=0\)">\(k=0\)</span> of the coefficient <span class="math" data-tex="\(\alpha_{-r}(x)\)">\(\alpha_{-r}(x)\)</span>, whose value is <span class="math" data-tex="\(x_r\)">\(x_r\)</span>. Acting by <span class="math" data-tex="\(j(\lambda_1)\)">\(j(\lambda_1)\)</span> on a vector evaluates it at <span class="math" data-tex="\((r-1,t-1)\)">\((r-1,t-1)\)</span>; both coordinates move, while <span class="math" data-tex="\(q=r-t\)">\(q=r-t\)</span> remains fixed. Blue, green and orange cells in this panel label respectively <span class="math" data-tex="\(q=0,1,2\)">\(q=0,1,2\)</span>.</p>
+<p>The second panel applies the Haar shear <span class="math" data-tex="\(S\xi(q,t)=\xi(q+t,t)\)">\(S\xi(q,t)=\xi(q+t,t)\)</span>. The same component now has value <span class="math" data-tex="\(x_{q+t}\)">\(x_{q+t}\)</span>. The three colours label the rows <span class="math" data-tex="\(q=0,1,2\)">\(q=0,1,2\)</span>. The group unitary evaluates <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> at <span class="math" data-tex="\((q,t-1)\)">\((q,t-1)\)</span>, with <span class="math" data-tex="\(q\)">\(q\)</span> unchanged; the dual unitary multiplies it by <span class="math" data-tex="\(\overline{\chi_n(t)}\)">\(\overline{\chi_n(t)}\)</span>. The invariant coordinate has become the coefficient Hilbert space <span class="math" data-tex="\(K=L^2(G,H)\)">\(K=L^2(G,H)\)</span>, not a discarded variable. For a general group the same shear is the actual Haar unitary proved in <a href="OA-FLOW-ND.html#equation-d14">(D14)</a>.</p>
+<p>The third panel shows <span class="math" data-tex="\(E_{21}=p_2L_1p_1\)">\(E_{21}=p_2L_1p_1\)</span>. In this finite model,
+<span class="math math-display" data-tex="\[
+ p_t=\frac13\sum_{n=0}^{2}\chi_n(t)Q_{\chi_n},
+ \qquad E_{ab}=p_aL_{a-b}p_b.
+\]">\[
+ p_t=\frac13\sum_{n=0}^{2}\chi_n(t)Q_{\chi_n},
+ \qquad E_{ab}=p_aL_{a-b}p_b.
+\]</span>
+Applying the character sum to <span class="math" data-tex="\(\delta_u\)">\(\delta_u\)</span> gives <span class="math" data-tex="\(1\)">\(1\)</span> exactly when <span class="math" data-tex="\(u=t\)">\(u=t\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. Hence these formulas provide every coordinate projection and matrix unit. As shown in <a href="OA-FLOW-ND.html#nd-models">Model 1</a>,
+<span class="math math-display" data-tex="\[
+ (1\otimes E_{a0})A_x(1\otimes E_{0b})=x\otimes E_{ab}.
+\]">\[
+ (1\otimes E_{a0})A_x(1\otimes E_{0b})=x\otimes E_{ab}.
+\]</span>
+The orange entry is an operator matrix entry, not a probability. For arbitrary <span class="math" data-tex="\(G\)">\(G\)</span>, the two full local proofs of <a href="OA-FLOW-ND.html#equation-d6">(D6)</a>, followed by the orbit-field commutant argument, replace this finite matrix calculation.</p>
+<p>The fourth panel displays all three coefficient components <span class="math" data-tex="\(k=0,1,2\)">\(k=0,1,2\)</span>, with columns <span class="math" data-tex="\(t=0,1,2\)">\(t=0,1,2\)</span>:
+<span class="math math-display" data-tex="\[
+ A_x(t)_k=x_{k+t},\qquad
+ [R_1A_xR_1^*](t)_k=x_{k+t+1},\qquad
+ [\alpha_1(A_x(t+1))]_k=x_{k+t}.
+\]">\[
+ A_x(t)_k=x_{k+t},\qquad
+ [R_1A_xR_1^*](t)_k=x_{k+t+1},\qquad
+ [\alpha_1(A_x(t+1))]_k=x_{k+t}.
+\]</span>
+Here the colours track the values <span class="math" data-tex="\(2,5,9\)">\(2,5,9\)</span>, respectively. The right translation changes the field, and the coefficient automorphism restores it. This is why the surviving action is <span class="math" data-tex="\(\alpha_a\bar\otimes\operatorname{Ad}R_a\)">\(\alpha_a\bar\otimes\operatorname{Ad}R_a\)</span>. It fixes the coefficient field and <span class="math" data-tex="\(L_s\)">\(L_s\)</span>, while sending <span class="math" data-tex="\(Q_\chi\)">\(Q_\chi\)</span> to <span class="math" data-tex="\(\overline{\chi(a)}Q_\chi\)">\(\overline{\chi(a)}Q_\chi\)</span>. The negative phase and the coefficient cancellation are separately checked in the <a href="OA-FLOW-ND.html#nd-exercises">four solved exercises</a>.</p>
+<p>The reproduction source uses the whole <span class="math" data-tex="\(27\)">\(27\)</span>-dimensional double-regular Hilbert space for this example, including the faithful three-dimensional coefficient representation. In orthonormal Fourier coordinates its matrix has entries <span class="math" data-tex="\(3^{-1/2}e^{-2\pi int/3}\)">\(3^{-1/2}e^{-2\pi int/3}\)</span>. It verifies the conjugated coefficient and both group generators against <a href="OA-FLOW-ND.html#equation-d14">(D14)</a>. These finite floating-point residuals test the depicted example; they are not the proof of a general-group limit, normality or onto assertion. The full maps and inverse on arbitrary groups and Hilbert spaces are proved in <a href="OA-FLOW-ND.html#equation-d17">(D3)–(D17)</a>, using finite-subset nets when a basis is uncountable.</p>
+<p>The source theorem is Takesaki, <em>Theory of Operator Algebras II</em>, X.2, Theorem 2.3(iii)–(iv), printed pp.259–263, <a href="https://doi.org/10.1007/978-3-662-10451-4">DOI</a>. The arrangement, finite example, numeric tables and reproduction source here are original. The picture asserts neither recognition of arbitrary systems nor integrability or a second-dual weight comparison.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L81.html">Previous lesson</a><span class="unlinked">Next lesson</span><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ND.md">Lesson source</a></nav></main></body></html>

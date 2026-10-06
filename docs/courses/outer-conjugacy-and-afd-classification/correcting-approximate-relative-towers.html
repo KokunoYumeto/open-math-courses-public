@@ -1,0 +1,283 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Correcting approximate relative towers · Open Mathematics Courses</title><meta name="description" content="Correcting approximate relative towers: lesson draft with 8 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>The corner correction, weighted boundary bounds and their conditional conversion to an exact coboundary are proved here. Lemma 1.2 and its proof are an Axler adaptation under CC BY-NC 4.0; other original lesson text is CC0.</p></aside><article class="lesson"><h1 id="correcting-approximate-relative-towers">Correcting approximate relative towers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it (GPT-6.1 Sol) under the stated prerequisites. Original text is public domain (CC0), except for the credited adaptation in Lemma 1.2, which retains CC BY-NC 4.0.</em></p>
+<p><em>Source and prerequisite revision by GPT-6 Astra (OpenAI), Ultra, October 2026. The remaining programme foundations are identified below.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>A finite family of tower projections can almost commute with a cocycle without commuting exactly. Its levels can also have different traces. Summing the labelled cocycle unitaries on those projections need not give a unitary. We correct that sum inside the projection corners and estimate the resulting cocycle error.</p>
+<p>The estimate has five contributions: commutation error, covariance error, the two weighted boundary masses, and uncovered trace. It gives a more flexible condition for the exact cohomology theorem in <a href="from-approximate-cocycles-to-exact-coboundaries.html">From approximate cocycles to exact coboundaries</a>, Theorem 2.1. Constructing the required projections for a general amenable action remains a separate step.</p>
+<p>We use polar decomposition and spectral calculus. The complete central comparison argument is <a href="finite-free-actions-and-coboundaries.html">Finite free actions and exact coboundaries</a>, Section 2.3 (NP2), applied inside the corner; it uses the orthogonal-sum and central-support arguments in Sections 2.1–2.2. Lemma 1.1 below supplies the additional central-cut trace and faithfulness argument, without a factor hypothesis. The inequalities and all eight solutions are written out here. Lemma 1.2 is an explicitly licensed adaptation of [Axler]; [Connes] and [Jones–Takesaki] provide the precise historical context for the central-sequence cohomology application, not substitutes for the local estimates.</p>
+<h2 id="1-completing-a-compressed-unitary">1. Completing a compressed unitary</h2>
+<p>Let <span class="math">\(F\)</span> be a finite von Neumann algebra with faithful normal tracial state <span class="math">\(\tau\)</span>. Throughout this lesson,</p>
+<div class="equation"><div class="math math-display">\[
+ \|x\|_2=\tau(x^*x)^{1/2}.
+ 
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p><strong>Lemma 1.1.</strong> If <span class="math">\(e\in F\)</span> is a projection and <span class="math">\(v\in\mathcal U(F)\)</span>, there is a unitary <span class="math">\(u\)</span> of the corner <span class="math">\(eFe\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+ \|ve-u\|_2\leq\|[v,e]\|_2.
+ 
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Here <span class="math">\(u^*u=uu^*=e\)</span>. The norm uses the original trace, without renormalizing the corner.</p>
+<p><em>Proof.</em> Put <span class="math">\(a=eve\)</span>, and write <span class="math">\(a=w|a|\)</span> in <span class="math">\(eFe\)</span>. Its polar supports are <span class="math">\(p=w^*w\)</span> and <span class="math">\(q=ww^*\)</span>. For every central projection <span class="math">\(z\)</span> of <span class="math">\(eFe\)</span>, traciality gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \tau(zp)&amp;=\tau(zq),\\
+ \tau(z(e-p))&amp;=\tau(z(e-q)).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>Apply central comparison in <span class="math">\(eFe\)</span> to <span class="math">\(e-p\)</span> and <span class="math">\(e-q\)</span>. On a central piece <span class="math">\(z\)</span> where the first is subequivalent to the second, choose <span class="math">\(h_z\in eFe\)</span> with <span class="math">\(h_z^*h_z=z(e-p)\)</span> and <span class="math">\(h_zh_z^*\leq z(e-q)\)</span>. The residual projection <span class="math">\(r=z(e-q)-h_zh_z^*\)</span> has <span class="math">\(\tau(r)=\tau(z(e-q))-\tau(z(e-p))=0\)</span> by (1.3) and traciality, so faithfulness gives <span class="math">\(r=0\)</span>. On the complementary central piece use the reversed subequivalence and take its adjoint. Adding the two partial isometries gives <span class="math">\(h\in eFe\)</span> with <span class="math">\(h^*h=e-p\)</span> and <span class="math">\(hh^*=e-q\)</span>. The initial supports of <span class="math">\(w,h\)</span> are orthogonal, as are their final supports; hence <span class="math">\(u=w+h\)</span> satisfies <span class="math">\(u^*u=uu^*=e\)</span>.</p>
+<p>The orthogonal polar supports give <span class="math">\(u^*a=|a|\)</span>. Since <span class="math">\(a\)</span> is a contraction, functional calculus applied to <span class="math">\((1-t)^2\leq1-t^2\)</span>, for <span class="math">\(0\leq t\leq1\)</span>, gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|a-u\|_2^2
+ &amp;=\tau((e-|a|)^2)\\
+ &amp;\leq\tau(e-|a|^2)\\
+ &amp;=\|(1-e)ve\|_2^2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.4)</span></div>
+<p>The two pieces <span class="math">\(a-u\)</span> and <span class="math">\((1-e)ve\)</span> have orthogonal left supports. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+ \|ve-u\|_2^2
+ \leq2\|(1-e)ve\|_2^2.
+ 
+\]</div><span class="equation-tag">(1.5)</span></div>
+<p>The two off-diagonal blocks of <span class="math">\([v,e]\)</span> are orthogonal for the trace inner product, and their squared norms are equal. Indeed</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|ev(1-e)\|_2^2
+ &amp;=\tau(e)-\tau(evev^*e)\\
+ &amp;=\tau(e)-\tau(ev^*eve)\\
+ &amp;=\|(1-e)ve\|_2^2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.6)</span></div>
+<p>The middle equality is tracial cyclicity applied to the products of <span class="math">\(eve\)</span> and its adjoint. Consequently</p>
+<div class="equation"><div class="math math-display">\[
+ \|[v,e]\|_2^2
+ =2\|(1-e)ve\|_2^2,
+ 
+\]</div><span class="equation-tag">(1.7)</span></div>
+<p>and (1.5) proves (1.2). <span class="math">\(\square\)</span></p>
+<p>The polar supports can have nonzero kernels. Completing the partial isometry on their complements is part of the proof. Equality of a single scalar trace for unrelated projections would not replace (1.3).</p>
+<p><strong>Lemma 1.2.</strong> For <span class="math">\(x,y\in F\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ |\tau(y^*x)|\leq\|x\|_2\|y\|_2.
+ 
+\]</div><span class="equation-tag">(1.8)</span></div>
+<p><em>Adapted from Sheldon Axler, [Axler], Section 8A, results 8.9–8.11, under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>. AI changes specialize the inner product to a trace and change notation and exposition. This lemma and proof retain that licence; see the <a href="notices/Axler-adaptation.md">component notice</a>.</em></p>
+<p><em>Proof.</em> The pairing <span class="math">\(\langle x,y\rangle=\tau(y^*x)\)</span> is an inner product: positivity and faithfulness give definiteness, and the adjoint identity gives conjugate symmetry. If <span class="math">\(y=0\)</span>, the assertion holds. Otherwise put</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ c&amp;=\frac{\langle x,y\rangle}{\|y\|_2^2},\\
+ h&amp;=x-cy.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.9)</span></div>
+<p>Then <span class="math">\(\langle h,y\rangle=0\)</span>. Expanding the squared norm cancels the cross terms:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|x\|_2^2
+ &amp;=|c|^2\|y\|_2^2+\|h\|_2^2\\
+ &amp;\geq\frac{|\langle x,y\rangle|^2}{\|y\|_2^2}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.10)</span></div>
+<p>Multiply by <span class="math">\(\|y\|_2^2\)</span> and take square roots. <span class="math">\(\square\)</span></p>
+<p>Taking <span class="math">\(y=1\)</span> gives <span class="math">\(|\tau(x)|\leq\|x\|_2\)</span>, since <span class="math">\(\tau(1)=1\)</span>. This is the trace estimate used in Lemma 3.2.</p>
+<h2 id="2-correcting-the-assembled-element">2. Correcting the assembled element</h2>
+<p>Let <span class="math">\(Q\)</span> be a countable group, let <span class="math">\(\gamma:Q\to\operatorname{Aut}(F)\)</span> preserve <span class="math">\(\tau\)</span>, and let <span class="math">\(V\)</span> be a unitary cocycle:</p>
+<div class="equation"><div class="math math-display">\[
+ V_{gh}=V_g\gamma_g(V_h),\qquad V_e=1.
+ 
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>Choose finitely many finite nonempty shapes <span class="math">\(S_i\subset Q\)</span>. Suppose <span class="math">\(E_{i,s}\)</span>, for <span class="math">\(s\in S_i\)</span>, are mutually orthogonal projections. Write</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ E_0&amp;=1-\sum_{i,s}E_{i,s},\\
+ W&amp;=\sum_{i,s}V_sE_{i,s}+E_0,\\
+ \kappa^2&amp;=\sum_{i,s}\|[V_s,E_{i,s}]\|_2^2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>We impose no equality of level traces.</p>
+<p><strong>Lemma 2.1.</strong> There is <span class="math">\(Z\in\mathcal U(F)\)</span> with</p>
+<div class="equation"><div class="math math-display">\[
+ \|Z-W\|_2\leq\kappa.
+ 
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p><em>Proof.</em> Apply Lemma 1.1 to each <span class="math">\(V_s,E_{i,s}\)</span>, obtaining a unitary <span class="math">\(U_{i,s}\)</span> in the corner <span class="math">\(E_{i,s}FE_{i,s}\)</span>. Set</p>
+<div class="equation"><div class="math math-display">\[
+ Z=\sum_{i,s}U_{i,s}+E_0.
+ 
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>Its summands have orthogonal initial and final projections, so it is unitary. Each difference <span class="math">\(U_{i,s}-V_sE_{i,s}\)</span> has right support <span class="math">\(E_{i,s}\)</span>. If <span class="math">\(D_s=D_sE_s\)</span>, <span class="math">\(D_t=D_tE_t\)</span>, and <span class="math">\(E_sE_t=0\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \tau(D_s^*D_t)&amp;=\tau(E_sD_s^*D_tE_t)\\
+ &amp;=\tau(E_tE_sD_s^*D_t)=0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>Thus the squared norms of the differences add. Lemma 1.1 bounds their sum by <span class="math">\(\kappa^2\)</span>, proving (2.3). <span class="math">\(\square\)</span></p>
+<p>The raw element <span class="math">\(W\)</span> can have overlapping final supports and need not be unitary. Trace orthogonality of its right supports is sufficient for the norm calculation; the correction makes both families of supports orthogonal.</p>
+<h2 id="3-weighted-boundaries-and-covariance-error">3. Weighted boundaries and covariance error</h2>
+<p>For <span class="math">\(g\in Q\)</span>, define</p>
+<div class="equation"><div class="math math-display">\[
+ \delta=\tau(E_0),
+ 
+\]</div><span class="equation-tag">(3.1)</span></div>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ B_g^{\mathrm L}
+ &amp;=\sum_i\sum_{\substack{s\in S_i\\gs\notin S_i}}
+   \tau(E_{i,s}),\\
+ B_g^{\mathrm R}
+ &amp;=\sum_i\sum_{t\in S_i\setminus gS_i}
+   \tau(E_{i,t}),
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>and</p>
+<div class="equation"><div class="math math-display">\[
+ \eta_g=\sum_i\sum_{\substack{s\in S_i\\gs\in S_i}}
+ \|\gamma_g(E_{i,s})-E_{i,gs}\|_2.
+ 
+\]</div><span class="equation-tag">(3.3)</span></div>
+<p>The left mass counts source labels whose translates leave their shape. The right mass counts target labels without a predecessor in their shape. Their unweighted cardinalities agree, but their trace weights need not agree.</p>
+<p><strong>Theorem 3.1.</strong> The unitary <span class="math">\(Z\)</span> in Lemma 2.1 satisfies</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|V_g-Z\gamma_g(Z^*)\|_2&amp;\\
+ &amp;\leq2\kappa+\eta_g+\sqrt{B_g^{\mathrm L}}\\
+ &amp;\quad+\sqrt{B_g^{\mathrm R}}+2\sqrt{\delta}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(3.4)</span></div>
+<p><em>Proof.</em> Expand <span class="math">\(V_g\gamma_g(W)-W\)</span>. For every <span class="math">\(s,gs\in S_i\)</span>, pair the left term indexed by <span class="math">\(s\)</span> with the right term indexed by <span class="math">\(gs\)</span>. The cocycle law makes their difference</p>
+<div class="equation"><div class="math math-display">\[
+ V_{gs}\bigl(\gamma_g(E_{i,s})-E_{i,gs}\bigr).
+ 
+\]</div><span class="equation-tag">(3.5)</span></div>
+<p>The triangle inequality bounds the total of these differences by <span class="math">\(\eta_g\)</span>.</p>
+<p>The unmatched raw left terms have mutually orthogonal right supports <span class="math">\(\gamma_g(E_{i,s})\)</span>. Equation (2.5) makes their trace inner products zero, even if their final supports overlap. Their total squared norm is the sum of their projection traces, namely <span class="math">\(B_g^{\mathrm L}\)</span>, since <span class="math">\(\gamma_g\)</span> preserves <span class="math">\(\tau\)</span>. The unmatched raw right terms similarly have total norm <span class="math">\(\sqrt{B_g^{\mathrm R}}\)</span>.</p>
+<p>The residual terms <span class="math">\(V_g\gamma_g(E_0)\)</span> and <span class="math">\(E_0\)</span> each have norm <span class="math">\(\sqrt{\delta}\)</span>. We have proved</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|V_g\gamma_g(W)-W\|_2
+ \leq{}&amp;\eta_g+\sqrt{B_g^{\mathrm L}}\\
+ &amp;+\sqrt{B_g^{\mathrm R}}+2\sqrt{\delta}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(3.6)</span></div>
+<p>Replacing both occurrences of <span class="math">\(W\)</span> by <span class="math">\(Z\)</span> costs at most <span class="math">\(2\|Z-W\|_2\leq2\kappa\)</span>. This follows because left multiplication by <span class="math">\(V_g\)</span> and application of <span class="math">\(\gamma_g\)</span> are 2-norm isometries. Finally, right multiplication by the unitary <span class="math">\(\gamma_g(Z^*)\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+ \bigl(V_g\gamma_g(Z)-Z\bigr)\gamma_g(Z^*)
+ =V_g-Z\gamma_g(Z^*),
+ 
+\]</div><span class="equation-tag">(3.7)</span></div>
+<p>and preserves the norm. This proves (3.4). <span class="math">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> The two weighted boundary masses satisfy</p>
+<div class="equation"><div class="math math-display">\[
+ |B_g^{\mathrm L}-B_g^{\mathrm R}|\leq\eta_g.
+ 
+\]</div><span class="equation-tag">(3.8)</span></div>
+<p><em>Proof.</em> Subtract each boundary mass from the same total covered trace. Their difference is a signed sum over interior pairs of <span class="math">\(\tau(E_{i,gs})-\tau(E_{i,s})\)</span>. Trace preservation and Lemma 1.2 give</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ |\tau(E_{i,gs})-\tau(E_{i,s})|
+ &amp;=|\tau(E_{i,gs}-\gamma_g(E_{i,s}))|\\
+ &amp;\leq\|E_{i,gs}-\gamma_g(E_{i,s})\|_2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(3.9)</span></div>
+<p>Sum over those pairs. <span class="math">\(\square\)</span></p>
+<p>Exact interior covariance forces the two weighted masses equal even when traces vary between levels. Approximate covariance allows unequal masses and bounds their discrepancy.</p>
+<p><img src="figures/approximate-corner-and-weighted-boundaries.svg" alt="A rank-one corner rotation and unequal weighted tower boundaries"></p>
+<p><em>Figure 1.</em> Top: in <span class="math">\(M_2(\mathbb C)\)</span> with normalized trace, <span class="math">\(e\)</span> projects onto the first coordinate and <span class="math">\(v\)</span> rotates it by <span class="math">\(\pi/3\)</span>. The corner correction is <span class="math">\(u=e\)</span>; the orthogonal horizontal and vertical errors give <span class="math">\(\|ve-u\|_2^2=1/2\)</span>, while <span class="math">\(\|[v,e]\|_2^2=3/4\)</span>, as in Lemma 1.1. Bottom: for the shape <span class="math">\(S_1=\{0,1\}\)</span> in the three-cycle, take <span class="math">\(E_{1,0}=P_0\)</span>, <span class="math">\(E_{1,1}=P_1+P_2\)</span>, where the <span class="math">\(P_j\)</span> have trace <span class="math">\(1/3\)</span>, and let <span class="math">\(\gamma_1(P_j)=P_{j+1}\)</span>. There is no uncovered corner. The two boundaries have one label each but masses <span class="math">\(B_1^{\mathrm L}=2/3\)</span> and <span class="math">\(B_1^{\mathrm R}=1/3\)</span>. The interior covariance error is <span class="math">\(1/\sqrt3\)</span>, in agreement with Lemma 3.2. The drawing source accompanies the figure.</p>
+<h2 id="4-the-finite-approximation-criterion">4. The finite approximation criterion</h2>
+<p><strong>Corollary 4.1.</strong> Suppose that, for every finite <span class="math">\(D\subset Q\)</span>, every unitary cocycle <span class="math">\(V\)</span> and every <span class="math">\(\epsilon&gt;0\)</span>, there are shapes and projections as above such that</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \kappa&amp;&lt;\epsilon/8,&amp;\eta_g&amp;&lt;\epsilon/4,\\
+ B_g^{\mathrm L},B_g^{\mathrm R}&amp;&lt;\epsilon^2/64,&amp;
+ \delta&amp;&lt;\epsilon^2/64\\
+ &amp;\qquad(g\in D).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p>Then <span class="math">\(V\)</span> has a finite approximate coboundary with error less than <span class="math">\(\epsilon\)</span> on <span class="math">\(D\)</span>. If <span class="math">\(F=M_\omega\)</span>, with <span class="math">\(M\)</span> a separable-predual factor and each <span class="math">\(\gamma_g\)</span> induced by a specified automorphism of <span class="math">\(M\)</span>, then every such cocycle is an exact coboundary.</p>
+<p><em>Proof.</em> The five contributions on the right of (3.4) are strictly less than</p>
+<div class="equation"><div class="math math-display">\[
+ \epsilon/4,\quad\epsilon/4,\quad
+ \epsilon/8,\quad\epsilon/8,\quad\epsilon/4.
+ 
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>Their sum is <span class="math">\(\epsilon\)</span>, so the total error is strictly smaller. This is the finite approximate equation in From approximate cocycles to exact coboundaries, condition (1.4). Its Theorem 2.1 gives one exact solution in <span class="math">\(M_\omega\)</span>. The specified lifts need only induce an action on <span class="math">\(M_\omega\)</span>; they need not multiply as an action on <span class="math">\(M\)</span>. <span class="math">\(\square\)</span></p>
+<p>When <span class="math">\(E_{i,s}\)</span> commutes with <span class="math">\(V_s\)</span> and every level of shape <span class="math">\(S_i\)</span> has trace <span class="math">\(t_i\)</span>, we have</p>
+<div class="equation"><div class="math math-display">\[
+ \kappa=0,\qquad
+ B_g^{\mathrm L}=B_g^{\mathrm R}
+ =\sum_i t_i|S_i\setminus gS_i|.
+ 
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>The equality of the two boundary cardinalities follows from left translation, including for nonabelian groups. Thus (3.4) recovers the earlier approximate-covariance estimate.</p>
+<p>Small unweighted boundaries alone do not imply the weighted inequalities in (4.1). Their projections could carry most of the trace. Nor does a Følner shape supply orthogonal projections or covariance estimates. The required relative projection construction for arbitrary amenable free actions remains to be proved. This criterion identifies exactly which approximate commutation and weighted errors such a construction must control.</p>
+<h2 id="5-exercises-with-complete-solutions">5. Exercises with complete solutions</h2>
+<p><strong>Exercise 5.1. Zero and full corners. Level 1.</strong> Interpret Lemma 1.1 when <span class="math">\(e=0\)</span> or <span class="math">\(e=1\)</span>.</p>
+<p><em>Solution.</em> The zero corner has identity <span class="math">\(0\)</span>, so choose <span class="math">\(u=0\)</span>; both sides of (1.2) vanish. For <span class="math">\(e=1\)</span>, choose <span class="math">\(u=v\)</span>. Then <span class="math">\(ve-u=0\)</span> and <span class="math">\([v,1]=0\)</span>.</p>
+<p><strong>Exercise 5.2. The sharp constant. Level 2.</strong> Show that the coefficient <span class="math">\(1\)</span> in (1.2) cannot be reduced uniformly.</p>
+<p><em>Solution.</em> In <span class="math">\(M_2(\mathbb C)\)</span> with normalized trace, let <span class="math">\(e\)</span> be the first coordinate projection and let <span class="math">\(v\)</span> exchange the two coordinates. Every corner unitary is <span class="math">\(u=\lambda e\)</span>, with <span class="math">\(|\lambda|=1\)</span>. The vectors representing <span class="math">\(ve\)</span> and <span class="math">\(u\)</span> are orthogonal, so</p>
+<div class="equation"><div class="math math-display">\[
+ \|ve-u\|_2^2=1=\|[v,e]\|_2^2.
+ 
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>Every possible correction attains equality.</p>
+<p><strong>Exercise 5.3. A rotated corner. Level 1.</strong> Let <span class="math">\(v\)</span> be the real rotation through <span class="math">\(t\)</span> in <span class="math">\(M_2(\mathbb C)\)</span>, and let <span class="math">\(e\)</span> be its first coordinate projection. Compute the best corner phase and both errors.</p>
+<p><em>Solution.</em> If <span class="math">\(\cos t\ne0\)</span>, choose <span class="math">\(u=(\cos t/|\cos t|)e\)</span>. If <span class="math">\(\cos t=0\)</span>, any corner phase gives the same norm. With normalized trace,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|ve-u\|_2^2&amp;=1-|\cos t|,\\
+ \|[v,e]\|_2^2&amp;=\sin^2t.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>Since <span class="math">\(1-a\leq1-a^2\)</span> for <span class="math">\(0\leq a\leq1\)</span>, Lemma 1.1 holds. At <span class="math">\(t=\pi/3\)</span> the values are <span class="math">\(1/2\)</span> and <span class="math">\(3/4\)</span>, as shown in Figure 1.</p>
+<p><strong>Exercise 5.4. A raw sum that is not unitary. Level 2.</strong> Let <span class="math">\(Q\)</span> be the two-cycle, <span class="math">\(\gamma_1=\operatorname{Ad}(v)\)</span>, where <span class="math">\(v\)</span> exchanges the two coordinates of <span class="math">\(M_2\)</span>, and let <span class="math">\(V_0=1,V_1=v\)</span>. Use rank-one levels <span class="math">\(E_{1,0}=P_0,E_{1,1}=P_1\)</span>, with no residual corner, to compute <span class="math">\(W\)</span> and a correction <span class="math">\(Z\)</span>.</p>
+<p><em>Solution.</em> Since <span class="math">\(v\gamma_1(v)=v^2=1\)</span>, this is a genuine cocycle. The raw sum is</p>
+<div class="equation"><div class="math math-display">\[
+ W=\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix},
+ \qquad
+ W^*W=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}.
+ 
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>It is not unitary. The first compressed corner is its identity, while the second compression is zero. Complete the latter by its corner identity; this gives <span class="math">\(Z=1\)</span>. The normalized norm satisfies <span class="math">\(\|Z-W\|_2=1=\kappa\)</span>, attaining (2.3). The singular compression is essential here.</p>
+<p><strong>Exercise 5.5. Unequal boundary weights. Level 2.</strong> Verify the lower panel of Figure 1, including its covariance error and (3.8).</p>
+<p><em>Solution.</em> For <span class="math">\(S_1=\{0,1\}\)</span> in the three-cycle and <span class="math">\(g=1\)</span>, the left unmatched label is <span class="math">\(1\)</span>, of trace <span class="math">\(2/3\)</span>, and the right unmatched label is <span class="math">\(0\)</span>, of trace <span class="math">\(1/3\)</span>. The only interior pair is <span class="math">\(0\to1\)</span>. Since <span class="math">\(\gamma_1(E_{1,0})=P_1\)</span> and <span class="math">\(E_{1,1}=P_1+P_2\)</span>, their difference is <span class="math">\(-P_2\)</span>, of 2-norm <span class="math">\(1/\sqrt3\)</span>. Thus</p>
+<div class="equation"><div class="math math-display">\[
+ |B_1^{\mathrm L}-B_1^{\mathrm R}|
+ =1/3\leq1/\sqrt3=\eta_1.
+ 
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>The covered trace is one, so the residual trace is zero.</p>
+<p><strong>Exercise 5.6. Cardinality does not control mass. Level 2.</strong> Give shapes with unweighted boundary ratio tending to zero while one weighted boundary stays of mass <span class="math">\(1/2\)</span>.</p>
+<p><em>Solution.</em> Take <span class="math">\(S_1=\{0,\ldots,n-1\}\subset\mathbb Z\)</span>, <span class="math">\(g=1\)</span>, and mutually orthogonal minimal projections in <span class="math">\(\mathbb C^n\)</span>. Give <span class="math">\(E_{1,n-1}\)</span> trace <span class="math">\(1/2\)</span> and each other level trace <span class="math">\(1/(2(n-1))\)</span>, for <span class="math">\(n\geq2\)</span>. These weights define a faithful tracial state. The left unmatched label is <span class="math">\(n-1\)</span>, so <span class="math">\(B_1^{\mathrm L}=1/2\)</span>, while its cardinality ratio is <span class="math">\(1/n\)</span>. One may take the identity action; no exact covariance or freeness is asserted. This example concerns precisely why unweighted shape data alone are insufficient.</p>
+<p><strong>Exercise 5.7. A strict budget. Level 1.</strong> Verify Corollary 4.1 and explain the role of the strict inequalities.</p>
+<p><em>Solution.</em> The commutation contribution is less than <span class="math">\(2\epsilon/8=\epsilon/4\)</span>. The covariance contribution is less than <span class="math">\(\epsilon/4\)</span>. Each boundary contributes less than <span class="math">\(\epsilon/8\)</span>, and the residual contributes less than <span class="math">\(2\epsilon/8=\epsilon/4\)</span>. These upper budgets sum to exactly <span class="math">\(\epsilon\)</span>. Strict hypotheses give error less than <span class="math">\(\epsilon\)</span>; non-strict hypotheses give only error at most <span class="math">\(\epsilon\)</span>.</p>
+<p><strong>Exercise 5.8. Recovering the exact-support estimate. Level 3.</strong> Suppose own-labelled commutation and interior covariance are exact, and levels have constant trace within each shape. Recover the sharper bound from the preceding cocycle lesson.</p>
+<p><em>Solution.</em> Then <span class="math">\(W=Z\)</span> is unitary, <span class="math">\(\kappa=\eta_g=0\)</span>, and both boundary masses equal <span class="math">\(B_g\)</span> in (4.3). The previous lesson's interior projection <span class="math">\(P_g\)</span> has <span class="math">\(\tau(1-P_g)=\delta+B_g\)</span>, and <span class="math">\(D=V_g\gamma_g(Z)-Z\)</span> satisfies <span class="math">\(DP_g=0\)</span>. Since <span class="math">\(D\)</span> is a difference of two unitaries, <span class="math">\(\|D\|\leq2\)</span>. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \|D\|_2^2\leq4(\delta+B_g),\\
+ \|V_g-Z\gamma_g(Z^*)\|_2\leq2\sqrt{\delta+B_g}.
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p>The same operator-norm argument does not apply to a raw sum that has not been corrected to a unitary.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Axler] Sheldon Axler, <em>Measure, Integration &amp; Real Analysis</em>, online edition dated 12 June 2026, Section 8A, results 8.9–8.11, printed pages 217–218 / PDF pages 232–233. <a href="https://measure.axler.net/MIRA.pdf">Author's complete text</a>. Copyright Sheldon Axler 2020; CC BY-NC 4.0. Lemma 1.2 adapts its inner-product argument.</li>
+<li>[Connes] Alain Connes, “Outer conjugacy classes of automorphisms of factors,” <em>Annales scientifiques de l'École Normale Supérieure</em>, série 4, <strong>8</strong> (1975), 383–419. <a href="https://www.numdam.org/item/ASENS_1975_4_8_3_383_0/">Article and original text</a>. Theorem 2.1.3 supplies the classical cyclic cohomology context. The weighted, approximately commuting tower estimate above is proved from its own stated corner data.</li>
+<li>[Jones–Takesaki] Vaughan F. R. Jones and Masamichi Takesaki, “Actions of compact abelian groups on semifinite injective factors,” <em>Acta Mathematica</em> <strong>153</strong> (1984), 213–258. <a href="https://projecteuclid.org/journals/acta-mathematica/volume-153/issue-none/Actions-of-compact-abelian-groups-on-semifinite-injective-factors/10.1007/BF02392378.pdf">Publisher text</a>. Lemma 2.5.6 gives the characteristic-compatible approximation context; its general cohomology input is not silently imported into this conditional conversion theorem.</li>
+</ul>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/correcting-approximate-relative-towers.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

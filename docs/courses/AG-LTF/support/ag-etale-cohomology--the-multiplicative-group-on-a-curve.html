@@ -1,0 +1,452 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The multiplicative group on a curve</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-multiplicative-group-on-a-curve">The multiplicative group on a curve</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Links and citations revised by Claude Opus 5.5 (Anthropic), October 2026. Original text released under CC0.</em></p>
+<p>On a smooth curve, a rational function fails to be a unit at finitely many points, and the failure is measured by an integer at each point. This gives an exact sequence of étale sheaves. Tsen's theorem makes the rational-function sheaf acyclic; the point sheaves are acyclic for a different reason. Together these facts compute the higher cohomology of the multiplicative group and, through Kummer, the cohomology with roots of unity as coefficients.</p>
+<p>Throughout, <span class="math" data-tex="\(k\)">\(k\)</span> is algebraically closed, <span class="math" data-tex="\(X\)">\(X\)</span> is a nonempty connected smooth separated curve of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(K=k(X)\)">\(K=k(X)\)</span>, and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. All cohomology is on the small étale site. Smoothness makes irreducible components disjoint: a regular local ring is a domain, so distinct components cannot meet. Connectedness therefore makes <span class="math" data-tex="\(X\)">\(X\)</span> integral. For a disconnected smooth curve, apply the results component by component; there are finitely many components.</p>
+<p>Write <span class="math" data-tex="\(j:\eta=\operatorname{Spec}K\to X\)">\(j:\eta=\operatorname{Spec}K\to X\)</span> and <span class="math" data-tex="\(i_x:\operatorname{Spec}k\to X\)">\(i_x:\operatorname{Spec}k\to X\)</span> for the inclusion of a closed point. We use <a href="../support/ag-etale-cohomology--pushforward-pullback-and-finite-morphisms.html">Pushforward, pullback and finite morphisms</a>, especially its precise continuity theorem for the strict-local limit, and <a href="../support/ag-etale-cohomology--brauer-groups-and-tsen-s-theorem.html">Brauer groups and Tsen's theorem</a>, Corollary 6.1. The identification <span class="math" data-tex="\(H^1(X,\mathbf G_m)=\operatorname{Pic}(X)\)">\(H^1(X,\mathbf G_m)=\operatorname{Pic}(X)\)</span> and the normalized-line-bundle description of Kummer classes were proved in <a href="../support/ag-etale-cohomology--topologies-on-schemes.html">Topologies on schemes</a> and <a href="../support/ag-etale-cohomology--the-etale-site-and-its-points.html">The étale site and its points</a>. We supply the divisor arguments here.</p>
+<h2 id="1-local-rings-and-rational-sections">1. Local rings and rational sections</h2>
+<p>We use two elementary geometric foundations with precise locators. A local ring at a closed point of a smooth curve is a discrete valuation ring, by <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-lemma-regular-point-on-curve">Stacks, Tag 0B8Y</a> and the regular-local-ring characterization <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-characterize-dvr">Tag 00PD</a>. A smooth curve over a perfect field has a smooth projective completion with finite complement, by <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/varieties.html#varieties-remark-smooth-projective-compactification">Tag 0H1F</a>. The latter follows by taking a projective completion and its normalization: normalization is finite for curves of finite type over a field, the normal one-dimensional local rings are regular, and over a perfect field the resulting regular curve is smooth. These are scheme-theoretic foundations; the étale cohomology results below will be proved.</p>
+<p>A discrete valuation ring <span class="math" data-tex="\(A\)">\(A\)</span> has a uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and every nonzero element of its fraction field is uniquely of the form <span class="math" data-tex="\(u\pi^m\)">\(u\pi^m\)</span>, with <span class="math" data-tex="\(u\in A^\times\)">\(u\in A^\times\)</span> and <span class="math" data-tex="\(m\in\mathbf Z\)">\(m\in\mathbf Z\)</span>. Its valuation is <span class="math" data-tex="\(v(u\pi^m)=m\)">\(v(u\pi^m)=m\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> At a geometric point over a closed point <span class="math" data-tex="\(x\)">\(x\)</span>, the strict henselization <span class="math" data-tex="\(R=\mathcal O_{X,x}^{\mathrm{sh}}\)">\(R=\mathcal O_{X,x}^{\mathrm{sh}}\)</span> is itself a discrete valuation ring. Its fraction field <span class="math" data-tex="\(F\)">\(F\)</span> is algebraic and separable over <span class="math" data-tex="\(K\)">\(K\)</span>, and has transcendence degree one over <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> Compute <span class="math" data-tex="\(R\)">\(R\)</span> as the filtered colimit of pointed local étale neighborhoods <span class="math" data-tex="\(B\)">\(B\)</span> of <span class="math" data-tex="\(A=\mathcal O_{X,x}\)">\(A=\mathcal O_{X,x}\)</span>. Each <span class="math" data-tex="\(B\)">\(B\)</span> is a regular local ring of dimension one and hence a discrete valuation ring. Its residue field is <span class="math" data-tex="\(k\)">\(k\)</span>, since the specified residue field is a finite separable extension of the algebraically closed field <span class="math" data-tex="\(k\)">\(k\)</span>. The étale fiber has maximal ideal zero, so the maximal ideal of <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\pi B\)">\(\pi B\)</span>. Every stage thus has the same uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>Transition maps between these pointed local rings are local and flat. They are faithfully flat and injective; equivalently, a nonzero <span class="math" data-tex="\(\pi^m u\)">\(\pi^m u\)</span> remains nonzero, and its unit remains a unit. Their filtered colimit is a domain. Every nonzero element of it already occurs at one stage, where it is <span class="math" data-tex="\(\pi^m u\)">\(\pi^m u\)</span>. Thus every nonzero ideal of <span class="math" data-tex="\(R\)">\(R\)</span> is generated by an element of least valuation: all its other elements are multiples of that element. The ring <span class="math" data-tex="\(R\)">\(R\)</span> is a discrete valuation ring with uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, including the assertion of Noetherianity. Its fraction field is the union of the fraction fields of the stages. Their generic fibers are étale and of relative dimension zero, so these fields are finite separable extensions of <span class="math" data-tex="\(K\)">\(K\)</span>. The assertions about <span class="math" data-tex="\(F\)">\(F\)</span> follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a quasi-compact étale <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is a finite disjoint union of smooth integral curves, and</p>
+<span class="math math-display" data-tex="\[
+(j_*\mathbf G_{m,\eta})(U)
+=\prod_{a\in\pi_0(U)}k(U_a)^\times.
+\tag{1.1}
+\]">\[
+(j_*\mathbf G_{m,\eta})(U)
+=\prod_{a\in\pi_0(U)}k(U_a)^\times.
+\tag{1.1}
+\]</span>
+<p>This is the group of invertible rational functions on its components. A rational function on a Noetherian curve has only finitely many zeros and poles: on a finite affine cover write it as a quotient of regular functions; the zero loci of the nonzero numerator and denominator are zero-dimensional closed subsets, hence finite. A rational function belongs to the local ring precisely when its valuation is nonnegative, and is a local unit precisely when its valuation is zero.</p>
+<h2 id="2-the-valuation-sequence">2. The valuation sequence</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\mathcal D_X=\bigoplus_{x\in X_{\mathrm{cl}}}i_{x*}\mathbf Z.
+\tag{2.1}
+\]">\[
+\mathcal D_X=\bigoplus_{x\in X_{\mathrm{cl}}}i_{x*}\mathbf Z.
+\tag{2.1}
+\]</span>
+<p>The sum is a sum of sheaves, or equivalently the filtered colimit of its finite partial sums. On a quasi-compact étale <span class="math" data-tex="\(U\)">\(U\)</span>, the summand at <span class="math" data-tex="\(x\)">\(x\)</span> gives one integer on each point of <span class="math" data-tex="\(U\times_Xx\)">\(U\times_Xx\)</span>. Taking the orders of a rational function at all the closed points of <span class="math" data-tex="\(U\)">\(U\)</span> defines a section of <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span>. Its support is finite by the preceding paragraph. Étale restriction preserves these orders because a local étale map of the relevant discrete valuation rings has ramification index one. This constructs a sheaf map <span class="math" data-tex="\(\operatorname{ord}\)">\(\operatorname{ord}\)</span>.</p>
+<p><strong>Theorem 2.1 (fundamental sequence).</strong> There is a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathbf G_{m,X}
+\longrightarrow j_*\mathbf G_{m,\eta}
+\xrightarrow{\operatorname{ord}}\mathcal D_X
+\longrightarrow0.
+\tag{2.2}
+\]">\[
+0\longrightarrow\mathbf G_{m,X}
+\longrightarrow j_*\mathbf G_{m,\eta}
+\xrightarrow{\operatorname{ord}}\mathcal D_X
+\longrightarrow0.
+\tag{2.2}
+\]</span>
+<p>Here the zero notation refers to abelian sheaves; the first two groups are written multiplicatively.</p>
+<p><strong>Proof.</strong> It suffices to check geometric stalks. At a geometric generic point, the first two stalks are both <span class="math" data-tex="\((K^s)^\times\)">\((K^s)^\times\)</span>, and the last is zero. At a geometric point over a closed point <span class="math" data-tex="\(x\)">\(x\)</span>, they are respectively</p>
+<span class="math math-display" data-tex="\[
+R^\times,\qquad F^\times,\qquad\mathbf Z,
+\tag{2.3}
+\]">\[
+R^\times,\qquad F^\times,\qquad\mathbf Z,
+\tag{2.3}
+\]</span>
+<p>where <span class="math" data-tex="\(R,F\)">\(R,F\)</span> are as in Lemma 1.1. The middle identification follows by passing through (1.1) and the pointed-neighborhood colimit; a rational element and its inverse occur at a common stage. Finite-pushforward base change identifies the stalk of <span class="math" data-tex="\(i_{x*}\mathbf Z\)">\(i_{x*}\mathbf Z\)</span> with <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> and all other point summands with zero. Stalks commute with the filtered colimit of finite sums, so there is no additional contribution from infinitely many points. The stalk map is <span class="math" data-tex="\(v:F^\times\to\mathbf Z\)">\(v:F^\times\to\mathbf Z\)</span>. It is surjective because <span class="math" data-tex="\(v(\pi)=1\)">\(v(\pi)=1\)</span>, and its kernel is exactly <span class="math" data-tex="\(R^\times\)">\(R^\times\)</span>. The étale topos has enough geometric points, so the sequence is exact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof is stronger than a calculation on rational functions over <span class="math" data-tex="\(X\)">\(X\)</span>: it verifies local surjectivity in the étale topology, including all the strict-local rings.</p>
+<h2 id="3-why-the-infinite-divisor-sheaf-is-acyclic">3. Why the infinite divisor sheaf is acyclic</h2>
+<p>Passing from the vanishing for a single point to vanishing for an infinite sum requires an argument. We give it using the full hypercover comparison proved in <a href="../support/ag-etale-cohomology--hypercoverings.html">Hypercoverings</a>.</p>
+<p><strong>Lemma 3.1.</strong> On the small étale site of a Noetherian quasi-compact separated scheme <span class="math" data-tex="\(S\)">\(S\)</span>, cohomology commutes with filtered colimits of abelian sheaves:</p>
+<span class="math math-display" data-tex="\[
+\mathop{\mathrm{colim}}_\lambda H^q(S,\mathcal F_\lambda)
+\ \xrightarrow{\sim}\
+H^q\!\left(S,\mathop{\mathrm{colim}}_\lambda\mathcal F_\lambda\right)
+\quad(q\geq0).
+\tag{3.1}
+\]">\[
+\mathop{\mathrm{colim}}_\lambda H^q(S,\mathcal F_\lambda)
+\ \xrightarrow{\sim}\
+H^q\!\left(S,\mathop{\mathrm{colim}}_\lambda\mathcal F_\lambda\right)
+\quad(q\geq0).
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Use the basis of quasi-compact separated étale schemes of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>. It is stable under finite fiber products and finite limits. Every cover of a basis object has a finite subcover after refining its members by basis objects.</p>
+<p>On this basis, a filtered presheaf colimit of sheaves is already a sheaf. Indeed, the matching condition for a finite covering family is the equalizer of two maps between finite products of section groups. Filtered colimits commute with these finite limits. A matching family and its compatibility therefore occur at one sufficiently late stage, where the sheaf axiom gives its unique glue. The finite-cover topology generates the topology on this basis, so this proves the assertion for all covers. Consequently sections on every basis object commute with filtered colimits.</p>
+<p>There is a cofinal system of hypercovers of <span class="math" data-tex="\(S\)">\(S\)</span> having finitely many basis objects in each degree. To see this, refine any hypercover inductively. Having chosen finitely many objects in the lower degrees, their matching object in the next degree is a finite limit of quasi-compact étale objects, and is quasi-compact. Pull back the given hypercover's next covering map to that matching object and choose a finite basis cover. Include the finitely many forced degenerate components. The split-hypercover construction from the previous lesson then extends the simplicial refinement. Induction constructs all the degrees. The same construction refines a common refinement, so this system suffices for the colimit in hypercover comparison, with morphisms taken through simplicial homotopy.</p>
+<p>For a fixed such hypercover <span class="math" data-tex="\(U_\bullet\)">\(U_\bullet\)</span>, degree <span class="math" data-tex="\(p\)">\(p\)</span> of its cochain complex is a finite product of groups <span class="math" data-tex="\(\mathcal F(U_{p,a})\)">\(\mathcal F(U_{p,a})\)</span>. It therefore commutes with filtered coefficient colimits. Filtered colimits of abelian groups are exact, so the cohomology of that complex commutes with them as well. Finally hypercover comparison identifies sheaf cohomology with the colimit of these cohomology groups over refinements. Interchanging the two colimits gives (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> For every closed point <span class="math" data-tex="\(x\)">\(x\)</span>, and every <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^q(X,i_{x*}\mathbf Z)=0,
+\qquad
+H^q(X,\mathcal D_X)=0.
+\tag{3.2}
+\]">\[
+H^q(X,i_{x*}\mathbf Z)=0,
+\qquad
+H^q(X,\mathcal D_X)=0.
+\tag{3.2}
+\]</span>
+<p>Moreover <span class="math" data-tex="\(H^0(X,\mathcal D_X)=\bigoplus_x\mathbf Z\)">\(H^0(X,\mathcal D_X)=\bigoplus_x\mathbf Z\)</span>.</p>
+<p><strong>Proof.</strong> The closed immersion <span class="math" data-tex="\(i_x\)">\(i_x\)</span> is finite. Its étale direct image is exact, and the finite-morphism comparison from the higher-direct-image lesson gives</p>
+<span class="math math-display" data-tex="\[
+H^q(X,i_{x*}\mathbf Z)=H^q(\operatorname{Spec}k,\mathbf Z).
+\]">\[
+H^q(X,i_{x*}\mathbf Z)=H^q(\operatorname{Spec}k,\mathbf Z).
+\]</span>
+<p>The small étale topos of an algebraically closed field is the topos of sets; its abelian global-section functor is the identity, hence exact. This gives the first vanishing and gives <span class="math" data-tex="\(H^0=\mathbf Z\)">\(H^0=\mathbf Z\)</span>. Finite partial sums of the point sheaves have the same vanishing by additivity. Apply Lemma 3.1 to their filtered union to obtain both assertions for <span class="math" data-tex="\(\mathcal D_X\)">\(\mathcal D_X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-higher-direct-images-of-rational-units">4. Higher direct images of rational units</h2>
+<p><strong>Lemma 4.1.</strong> One has <span class="math" data-tex="\(R^qj_*\mathbf G_{m,\eta}=0\)">\(R^qj_*\mathbf G_{m,\eta}=0\)</span> for every <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+H^q(X,j_*\mathbf G_{m,\eta})
+=H^q(\operatorname{Spec}K,\mathbf G_m)=0
+\quad(q\geq1).
+\tag{4.1}
+\]">\[
+H^q(X,j_*\mathbf G_{m,\eta})
+=H^q(\operatorname{Spec}K,\mathbf G_m)=0
+\quad(q\geq1).
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> The generic inclusion is affine: on an affine open <span class="math" data-tex="\(\operatorname{Spec}A\subset X\)">\(\operatorname{Spec}A\subset X\)</span> containing the generic point its inverse image is <span class="math" data-tex="\(\operatorname{Spec}\operatorname{Frac}(A)\)">\(\operatorname{Spec}\operatorname{Frac}(A)\)</span>. In particular it is quasi-compact and quasi-separated. The higher-direct-image stalk formula and the precise strict-local continuity theorem proved earlier apply.</p>
+<p>At a geometric closed point they identify the stalk of <span class="math" data-tex="\(R^qj_*\mathbf G_{m,\eta}\)">\(R^qj_*\mathbf G_{m,\eta}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+H^q(\operatorname{Spec}F,\mathbf G_m),
+\quad F=\operatorname{Frac}\mathcal O_{X,x}^{\mathrm{sh}}.
+\tag{4.2}
+\]">\[
+H^q(\operatorname{Spec}F,\mathbf G_m),
+\quad F=\operatorname{Frac}\mathcal O_{X,x}^{\mathrm{sh}}.
+\tag{4.2}
+\]</span>
+<p>More explicitly the stalk is the colimit of the cohomology of the generic fibers of pointed étale neighborhoods. Their inverse limit has coordinate field <span class="math" data-tex="\(F\)">\(F\)</span>. These generic transition maps are étale; for this inverse system the inverse-image units sheaf is the units sheaf on the limit. Thus the continuity theorem is being used under its actual hypotheses, rather than asserting that the inverse image of a units sheaf agrees with the units sheaf for an arbitrary ring map.</p>
+<p>Lemma 1.1 makes <span class="math" data-tex="\(F/k\)">\(F/k\)</span> an extension of transcendence degree one. Tsen and the all-degree units-cohomology consequence proved in the preceding lesson apply even though <span class="math" data-tex="\(F\)">\(F\)</span> need not be finitely generated. They give zero in (4.2) for all <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>. At a geometric generic point the corresponding field is <span class="math" data-tex="\(K^s\)">\(K^s\)</span>, whose étale topos has no positive units cohomology. All geometric stalks therefore vanish.</p>
+<p>The Leray spectral sequence now has only its row <span class="math" data-tex="\(R^0j_*\)">\(R^0j_*\)</span>, giving the first equality in (4.1). Its final vanishing is the same Tsen consequence for <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2.</strong> For the curve <span class="math" data-tex="\(X\)">\(X\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H^1(X,\mathbf G_m)=\operatorname{Pic}(X),
+\qquad H^q(X,\mathbf G_m)=0\quad(q\geq2).
+\tag{4.3}
+\]">\[
+H^1(X,\mathbf G_m)=\operatorname{Pic}(X),
+\qquad H^q(X,\mathbf G_m)=0\quad(q\geq2).
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> The first equality is the canonical torsor-to-line-bundle identification already proved by descent. For <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>, the long exact sequence of (2.2) has outer groups</p>
+<span class="math math-display" data-tex="\[
+H^{q-1}(X,\mathcal D_X)
+\longrightarrow H^q(X,\mathbf G_m)
+\longrightarrow H^q(X,j_*\mathbf G_{m,\eta}).
+\]">\[
+H^{q-1}(X,\mathcal D_X)
+\longrightarrow H^q(X,\mathbf G_m)
+\longrightarrow H^q(X,j_*\mathbf G_{m,\eta}).
+\]</span>
+<p>Both outer groups vanish by Lemmas 3.2 and 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-divisors-line-bundles-and-the-connecting-sign">5. Divisors, line bundles and the connecting sign</h2>
+<p>A <strong>divisor</strong> on <span class="math" data-tex="\(X\)">\(X\)</span> is a finite sum <span class="math" data-tex="\(D=\sum_xm_x[x]\)">\(D=\sum_xm_x[x]\)</span>, with <span class="math" data-tex="\(m_x\in\mathbf Z\)">\(m_x\in\mathbf Z\)</span>. For <span class="math" data-tex="\(f\in K^\times\)">\(f\in K^\times\)</span>, write <span class="math" data-tex="\(\operatorname{div}(f)=\sum_xv_x(f)[x]\)">\(\operatorname{div}(f)=\sum_xv_x(f)[x]\)</span>. Define <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span> inside the constant rational-function sheaf by</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_X(D)(V)
+=\{f\in K: v_x(f)+m_x\geq0
+\text{ for every closed }x\in V\}.
+\tag{5.1}
+\]">\[
+\mathcal O_X(D)(V)
+=\{f\in K: v_x(f)+m_x\geq0
+\text{ for every closed }x\in V\}.
+\tag{5.1}
+\]</span>
+<p>It is invertible: near a point with coefficient <span class="math" data-tex="\(m\)">\(m\)</span>, a uniformizer gives the frame <span class="math" data-tex="\(\pi^{-m}\)">\(\pi^{-m}\)</span>; shrink the neighborhood to remove the finitely many other zeros and poles involved. Outside the support it is <span class="math" data-tex="\(\mathcal O_X\)">\(\mathcal O_X\)</span>.</p>
+<p><strong>Proposition 5.1.</strong> Every line bundle on <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span> for a divisor <span class="math" data-tex="\(D\)">\(D\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(X)
+\simeq \operatorname{Div}(X)/\operatorname{div}(K^\times).
+\tag{5.2}
+\]">\[
+\operatorname{Pic}(X)
+\simeq \operatorname{Div}(X)/\operatorname{div}(K^\times).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Choose a nonzero vector <span class="math" data-tex="\(s\)">\(s\)</span> in the one-dimensional generic fiber of a line bundle <span class="math" data-tex="\(L\)">\(L\)</span>. In local frames <span class="math" data-tex="\(e_i\)">\(e_i\)</span>, write <span class="math" data-tex="\(s=f_i e_i\)">\(s=f_i e_i\)</span>. The orders of <span class="math" data-tex="\(f_i\)">\(f_i\)</span> agree on overlaps because the transition functions are units. A finite trivializing cover shows that only finitely many orders are nonzero. They define a divisor <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span>. Multiplication <span class="math" data-tex="\(f\mapsto fs\)">\(f\mapsto fs\)</span> gives <span class="math" data-tex="\(\mathcal O_X(D(s))\simeq L\)">\(\mathcal O_X(D(s))\simeq L\)</span>: at a point its frame <span class="math" data-tex="\(\pi^{-v(f_i)}\)">\(\pi^{-v(f_i)}\)</span> maps to a unit times <span class="math" data-tex="\(e_i\)">\(e_i\)</span>.</p>
+<p>Replacing <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(a s\)">\(a s\)</span> replaces <span class="math" data-tex="\(D(s)\)">\(D(s)\)</span> by <span class="math" data-tex="\(D(s)+\operatorname{div}(a)\)">\(D(s)+\operatorname{div}(a)\)</span>. Conversely <span class="math" data-tex="\(\mathcal O_X(\operatorname{div}(a))=a^{-1}\mathcal O_X\)">\(\mathcal O_X(\operatorname{div}(a))=a^{-1}\mathcal O_X\)</span>, so principal divisors give trivial bundles. If <span class="math" data-tex="\(\mathcal O_X(D)\)">\(\mathcal O_X(D)\)</span> is trivial, a rational generator <span class="math" data-tex="\(a\)">\(a\)</span> of this subsheaf must have order <span class="math" data-tex="\(-m_x\)">\(-m_x\)</span> at every point, so <span class="math" data-tex="\(D=-\operatorname{div}(a)\)">\(D=-\operatorname{div}(a)\)</span>. These statements prove both surjectivity and the exact kernel in (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Taking the beginning of the long exact sequence of (2.2) yields</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\Gamma(X,\mathcal O_X)^\times
+\longrightarrow K^\times
+\xrightarrow{\operatorname{div}}\operatorname{Div}(X)
+\xrightarrow{\partial}\operatorname{Pic}(X)
+\longrightarrow0.
+\tag{5.3}
+\]">\[
+0\longrightarrow\Gamma(X,\mathcal O_X)^\times
+\longrightarrow K^\times
+\xrightarrow{\operatorname{div}}\operatorname{Div}(X)
+\xrightarrow{\partial}\operatorname{Pic}(X)
+\longrightarrow0.
+\tag{5.3}
+\]</span>
+<p>There is a sign to remember. Our torsor convention is the one fixed in the earlier lessons: local sections satisfy <span class="math" data-tex="\(t_j=t_i g_{ij}\)">\(t_j=t_i g_{ij}\)</span>, and the associated line frames satisfy <span class="math" data-tex="\(e_j=e_i g_{ij}\)">\(e_j=e_i g_{ij}\)</span>. If local rational lifts <span class="math" data-tex="\(f_i\)">\(f_i\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span> satisfy <span class="math" data-tex="\(\operatorname{div}(f_i)=D\)">\(\operatorname{div}(f_i)=D\)</span>, their cocycle is <span class="math" data-tex="\(f_j/f_i\)">\(f_j/f_i\)</span>. These <span class="math" data-tex="\(f_i\)">\(f_i\)</span> are the frames of <span class="math" data-tex="\(\mathcal O_X(-D)\)">\(\mathcal O_X(-D)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\partial(D)=[\mathcal O_X(-D)].
+\tag{5.4}
+\]">\[
+\partial(D)=[\mathcal O_X(-D)].
+\tag{5.4}
+\]</span>
+<p>The familiar isomorphism (5.2) using <span class="math" data-tex="\(D\mapsto\mathcal O_X(D)\)">\(D\mapsto\mathcal O_X(D)\)</span> is the negative of this connecting map. Exactness and all degree computations are unaffected, but the two conventions must not be silently mixed.</p>
+<h2 id="6-kummer-and-projective-curves">6. Kummer and projective curves</h2>
+<p>For every curve under discussion, Kummer and (4.3) give the complete answer</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H^0(X,\mu_n)&amp;=\mu_n(k),\\
+0\longrightarrow\Gamma(X,\mathcal O_X)^\times/
+\Gamma(X,\mathcal O_X)^{\times n}
+&amp;\longrightarrow H^1(X,\mu_n)
+\longrightarrow\operatorname{Pic}(X)[n]\longrightarrow0,\\
+H^2(X,\mu_n)&amp;=\operatorname{Pic}(X)/n\operatorname{Pic}(X),\\
+H^q(X,\mu_n)&amp;=0\quad(q\geq3).
+\end{aligned}
+\tag{6.1}
+\]">\[
+\begin{aligned}
+H^0(X,\mu_n)&amp;=\mu_n(k),\\
+0\longrightarrow\Gamma(X,\mathcal O_X)^\times/
+\Gamma(X,\mathcal O_X)^{\times n}
+&amp;\longrightarrow H^1(X,\mu_n)
+\longrightarrow\operatorname{Pic}(X)[n]\longrightarrow0,\\
+H^2(X,\mu_n)&amp;=\operatorname{Pic}(X)/n\operatorname{Pic}(X),\\
+H^q(X,\mu_n)&amp;=0\quad(q\geq3).
+\end{aligned}
+\tag{6.1}
+\]</span>
+<p>The first equality follows because a function whose <span class="math" data-tex="\(n\)">\(n\)</span>-th power is one on an integral curve is one of the constant roots of <span class="math" data-tex="\(T^n-1\)">\(T^n-1\)</span>. For the other equalities take the long exact sequence of <span class="math" data-tex="\(0\to\mu_n\to\mathbf G_m\xrightarrow{n}\mathbf G_m\to0\)">\(0\to\mu_n\to\mathbf G_m\xrightarrow{n}\mathbf G_m\to0\)</span>, and use both vanishings adjacent to <span class="math" data-tex="\(H^q(\mu_n)\)">\(H^q(\mu_n)\)</span> in degrees at least three. The middle identification is induced by the Kummer connecting homomorphism</p>
+<span class="math math-display" data-tex="\[
+c_1^{(n)}:\operatorname{Pic}(X)\longrightarrow H^2(X,\mu_n).
+\tag{6.2}
+\]">\[
+c_1^{(n)}:\operatorname{Pic}(X)\longrightarrow H^2(X,\mu_n).
+\tag{6.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\(H^1=\operatorname{Pic}[n]\)">\(H^1=\operatorname{Pic}[n]\)</span> is a projective-curve simplification. It is false for general affine curves, whose global units can contribute.</p>
+<p>Let now <span class="math" data-tex="\(C\)">\(C\)</span> be smooth, connected and projective, of genus <span class="math" data-tex="\(g=\dim_kH^1(C,\mathcal O_C)\)">\(g=\dim_kH^1(C,\mathcal O_C)\)</span>. A global regular function on <span class="math" data-tex="\(C\)">\(C\)</span> is constant. Indeed it gives a morphism to <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span>, and its composite with <span class="math" data-tex="\(\mathbf A^1\subset\mathbf P^1\)">\(\mathbf A^1\subset\mathbf P^1\)</span> has closed image because <span class="math" data-tex="\(C\)">\(C\)</span> is proper. An irreducible closed subset of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> avoiding infinity is a point. Thus <span class="math" data-tex="\(\Gamma(C,\mathcal O_C)^\times=k^\times\)">\(\Gamma(C,\mathcal O_C)^\times=k^\times\)</span>, on which the <span class="math" data-tex="\(n\)">\(n\)</span>-th-power map is surjective.</p>
+<p>We use the following input on Picard varieties without proof:</p>
+<p><strong>Picard input 6.1.</strong> The subgroup <span class="math" data-tex="\(\operatorname{Pic}^0(C)\)">\(\operatorname{Pic}^0(C)\)</span> of degree-zero line bundles is the group of <span class="math" data-tex="\(k\)">\(k\)</span>-points of an abelian variety of dimension <span class="math" data-tex="\(g\)">\(g\)</span>. Multiplication by every positive integer on that group is surjective. If <span class="math" data-tex="\(n\)">\(n\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, its <span class="math" data-tex="\(n\)">\(n\)</span>-torsion is noncanonically <span class="math" data-tex="\((\mathbf Z/n)^{2g}\)">\((\mathbf Z/n)^{2g}\)</span>.</p>
+<p>The locators are <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pic.html#pic-lemma-picard-pieces">Stacks, Tag 0BA0</a> for the Picard scheme of a smooth projective curve and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/groupoids.html#groupoids-proposition-review-abelian-varieties">Tag 03RP</a>, parts (3), (4) and (7), for abelian varieties.</p>
+<p>Degree descends from divisors to line bundles. For completeness, a nonconstant <span class="math" data-tex="\(a\in k(C)\)">\(a\in k(C)\)</span> defines a morphism <span class="math" data-tex="\(C\to\mathbf P^1\)">\(C\to\mathbf P^1\)</span>: at each discrete valuation ring either <span class="math" data-tex="\(a\)">\(a\)</span> or <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> is regular. It is proper and has finite fibers, hence finite. The local length argument in Proposition 8.1 below shows that its zero and pole fibers have the same degree. Thus <span class="math" data-tex="\(\deg\operatorname{div}(a)=0\)">\(\deg\operatorname{div}(a)=0\)</span>; constants give zero as well. Since every closed point has residue field <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(\deg(\sum m_x[x])=\sum m_x\)">\(\deg(\sum m_x[x])=\sum m_x\)</span>. There is a degree-one line bundle <span class="math" data-tex="\(\mathcal O_C(x)\)">\(\mathcal O_C(x)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\operatorname{Pic}^0(C)
+\longrightarrow\operatorname{Pic}(C)
+\xrightarrow{\deg}\mathbf Z\longrightarrow0.
+\tag{6.3}
+\]">\[
+0\longrightarrow\operatorname{Pic}^0(C)
+\longrightarrow\operatorname{Pic}(C)
+\xrightarrow{\deg}\mathbf Z\longrightarrow0.
+\tag{6.3}
+\]</span>
+<p><strong>Theorem 6.2.</strong> The projective-curve cohomology is</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+q&amp;H^q(C,\mu_n)\\ \hline
+0&amp;\mu_n(k)\\
+1&amp;\operatorname{Pic}^0(C)[n]\simeq(\mathbf Z/n)^{2g}\\
+2&amp;\mathbf Z/n\\
+q\geq3&amp;0.
+\end{array}
+\tag{6.4}
+\]">\[
+\begin{array}{c|c}
+q&amp;H^q(C,\mu_n)\\ \hline
+0&amp;\mu_n(k)\\
+1&amp;\operatorname{Pic}^0(C)[n]\simeq(\mathbf Z/n)^{2g}\\
+2&amp;\mathbf Z/n\\
+q\geq3&amp;0.
+\end{array}
+\tag{6.4}
+\]</span>
+<p>The degree-two identification is canonical: it sends <span class="math" data-tex="\(c_1^{(n)}(L)\)">\(c_1^{(n)}(L)\)</span> to <span class="math" data-tex="\(\deg L\bmod n\)">\(\deg L\bmod n\)</span>.</p>
+<p><strong>Proof.</strong> The unit quotient in (6.1) is zero. Torsion line bundles have degree zero by (6.3), giving the stated <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. To compute the quotient in degree two, if <span class="math" data-tex="\(\deg L=na\)">\(\deg L=na\)</span>, choose a bundle <span class="math" data-tex="\(M\)">\(M\)</span> of degree <span class="math" data-tex="\(a\)">\(a\)</span>. The bundle <span class="math" data-tex="\(L\otimes M^{-n}\)">\(L\otimes M^{-n}\)</span> has degree zero, and is an <span class="math" data-tex="\(n\)">\(n\)</span>-th power by Picard input 6.1. Hence <span class="math" data-tex="\(L\)">\(L\)</span> itself is an <span class="math" data-tex="\(n\)">\(n\)</span>-th power. Conversely an <span class="math" data-tex="\(n\)">\(n\)</span>-th power has degree divisible by <span class="math" data-tex="\(n\)">\(n\)</span>, and every degree occurs. This proves <span class="math" data-tex="\(\operatorname{Pic}(C)/n\simeq\mathbf Z/n\)">\(\operatorname{Pic}(C)/n\simeq\mathbf Z/n\)</span> without choosing a splitting of (6.3). The other degrees follow from (6.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only after choosing a primitive root <span class="math" data-tex="\(\zeta\in\mu_n(k)\)">\(\zeta\in\mu_n(k)\)</span> do we identify the constant sheaf <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> with <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> by <span class="math" data-tex="\(a\mapsto\zeta^a\)">\(a\mapsto\zeta^a\)</span>. Thus the identifications</p>
+<span class="math math-display" data-tex="\[
+H^1(C,\mathbf Z/n)\simeq(\mathbf Z/n)^{2g},
+\qquad H^2(C,\mathbf Z/n)\simeq\mathbf Z/n
+\tag{6.5}
+\]">\[
+H^1(C,\mathbf Z/n)\simeq(\mathbf Z/n)^{2g},
+\qquad H^2(C,\mathbf Z/n)\simeq\mathbf Z/n
+\tag{6.5}
+\]</span>
+<p>include a choice of root, and the first also a choice of basis. The canonical degree statement uses <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. This distinction is the Tate twist that becomes essential over non-algebraically-closed fields.</p>
+<h2 id="7-affine-curves-and-their-boundary">7. Affine curves and their boundary</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be affine and let <span class="math" data-tex="\(C\)">\(C\)</span> be its smooth projective completion. Its complement is a nonempty finite set <span class="math" data-tex="\(S=\{s_1,\ldots,s_r\}\)">\(S=\{s_1,\ldots,s_r\}\)</span>. If it were empty, the positive-dimensional affine scheme <span class="math" data-tex="\(X=C\)">\(X=C\)</span> would have only constant global functions, contrary to its affine coordinate ring having transcendence degree one.</p>
+<p><strong>Proposition 7.1.</strong> Restriction gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Pic}(X)
+\simeq \operatorname{Pic}(C)/
+\langle\mathcal O_C(s_1),\ldots,\mathcal O_C(s_r)\rangle.
+\tag{7.1}
+\]">\[
+\operatorname{Pic}(X)
+\simeq \operatorname{Pic}(C)/
+\langle\mathcal O_C(s_1),\ldots,\mathcal O_C(s_r)\rangle.
+\tag{7.1}
+\]</span>
+<p>The group <span class="math" data-tex="\(\operatorname{Pic}(X)\)">\(\operatorname{Pic}(X)\)</span> is divisible, including by the characteristic. In particular <span class="math" data-tex="\(H^q(X,\mu_n)=0\)">\(H^q(X,\mu_n)=0\)</span> for every <span class="math" data-tex="\(q\geq2\)">\(q\geq2\)</span>.</p>
+<p><strong>Proof.</strong> Extend a divisor representing any line bundle on <span class="math" data-tex="\(X\)">\(X\)</span> to the same finite divisor on <span class="math" data-tex="\(C\)">\(C\)</span>. This proves surjectivity. If a bundle on <span class="math" data-tex="\(C\)">\(C\)</span> is trivial on <span class="math" data-tex="\(X\)">\(X\)</span>, choose its rational section given by a trivializing frame there. Its divisor is supported on <span class="math" data-tex="\(S\)">\(S\)</span>, proving the kernel assertion.</p>
+<p>For any bundle <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>, the twist <span class="math" data-tex="\(L(-(\deg L)s_1)\)">\(L(-(\deg L)s_1)\)</span> has degree zero and restricts to the same bundle on <span class="math" data-tex="\(X\)">\(X\)</span>. Thus <span class="math" data-tex="\(\operatorname{Pic}^0(C)\to\operatorname{Pic}(X)\)">\(\operatorname{Pic}^0(C)\to\operatorname{Pic}(X)\)</span> is surjective. A quotient of a divisible group is divisible: lift a class, divide the lift, and project. Apply Picard input 6.1 for every positive integer. The degree-two conclusion follows from (6.1), and the higher degrees already vanish there. The Kummer sequence itself is used only for <span class="math" data-tex="\(n\)">\(n\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is also a useful full description of the degree-one group. Write</p>
+<span class="math math-display" data-tex="\[
+V_S=\ker\!\left((\mathbf Z/n)^r
+\xrightarrow{\sum}\mathbf Z/n\right).
+\]">\[
+V_S=\ker\!\left((\mathbf Z/n)^r
+\xrightarrow{\sum}\mathbf Z/n\right).
+\]</span>
+<p><strong>Proposition 7.2.</strong> There is an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow H^1(C,\mu_n)
+\longrightarrow H^1(X,\mu_n)
+\xrightarrow{\mathrm{res}_S}V_S\longrightarrow0.
+\tag{7.2}
+\]">\[
+0\longrightarrow H^1(C,\mu_n)
+\longrightarrow H^1(X,\mu_n)
+\xrightarrow{\mathrm{res}_S}V_S\longrightarrow0.
+\tag{7.2}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(H^1(X,\mu_n)\simeq(\mathbf Z/n)^{2g+r-1}\)">\(H^1(X,\mu_n)\simeq(\mathbf Z/n)^{2g+r-1}\)</span> noncanonically.</p>
+<p><strong>Proof.</strong> Recall the Kummer description by pairs <span class="math" data-tex="\((L,\alpha:L^{\otimes n}\simeq\mathcal O_X)\)">\((L,\alpha:L^{\otimes n}\simeq\mathcal O_X)\)</span>, with isomorphisms preserving <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Extend <span class="math" data-tex="\(L\)">\(L\)</span> to a degree-zero bundle <span class="math" data-tex="\(\bar L\)">\(\bar L\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>, using a twist at <span class="math" data-tex="\(s_1\)">\(s_1\)</span>. Extend <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> as a rational map. There is a unique divisor <span class="math" data-tex="\(D=\sum a_i[s_i]\)">\(D=\sum a_i[s_i]\)</span> for which this rational map is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\beta:\bar L^{\otimes n}\simeq\mathcal O_C(D).
+\tag{7.3}
+\]">\[
+\beta:\bar L^{\otimes n}\simeq\mathcal O_C(D).
+\tag{7.3}
+\]</span>
+<p>Indeed the target coefficient at each boundary point is the negative of the order of the rational map in local frames. Since <span class="math" data-tex="\(\deg\bar L=0\)">\(\deg\bar L=0\)</span>, one has <span class="math" data-tex="\(\sum a_i=0\)">\(\sum a_i=0\)</span>.</p>
+<p>Two degree-zero extensions of <span class="math" data-tex="\(L\)">\(L\)</span>, with their identification over <span class="math" data-tex="\(X\)">\(X\)</span>, differ by <span class="math" data-tex="\(\mathcal O_C(D&#x27;)\)">\(\mathcal O_C(D&#x27;)\)</span> for a degree-zero divisor <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> supported on <span class="math" data-tex="\(S\)">\(S\)</span>, by the kernel proof of (7.1). Their corresponding <span class="math" data-tex="\(D\)">\(D\)</span>'s differ by <span class="math" data-tex="\(nD&#x27;\)">\(nD&#x27;\)</span>. An isomorphism of the original pairs gives the same comparison. Therefore <span class="math" data-tex="\((a_i\bmod n)\)">\((a_i\bmod n)\)</span> is well defined, lies in <span class="math" data-tex="\(V_S\)">\(V_S\)</span>, and is additive under tensor product. This defines <span class="math" data-tex="\(\mathrm{res}_S\)">\(\mathrm{res}_S\)</span>.</p>
+<p>Restriction from <span class="math" data-tex="\(C\)">\(C\)</span> is injective. If a normalized pair on <span class="math" data-tex="\(C\)">\(C\)</span> becomes trivial on <span class="math" data-tex="\(X\)">\(X\)</span>, it has a rational section <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(\alpha(s^{\otimes n})=1\)">\(\alpha(s^{\otimes n})=1\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, hence in the function field. It follows that <span class="math" data-tex="\(n\operatorname{div}(s)=0\)">\(n\operatorname{div}(s)=0\)</span> on <span class="math" data-tex="\(C\)">\(C\)</span>. Thus <span class="math" data-tex="\(s\)">\(s\)</span> has order zero everywhere and is a global normalized frame; the pair was trivial on <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>If the residue vector is zero, write <span class="math" data-tex="\(D=nD&#x27;\)">\(D=nD&#x27;\)</span> with <span class="math" data-tex="\(D&#x27;\)">\(D&#x27;\)</span> supported on <span class="math" data-tex="\(S\)">\(S\)</span> and of degree zero. Twisting <span class="math" data-tex="\(\bar L\)">\(\bar L\)</span> by <span class="math" data-tex="\(\mathcal O_C(-D&#x27;)\)">\(\mathcal O_C(-D&#x27;)\)</span> turns (7.3) into a global normalization to <span class="math" data-tex="\(\mathcal O_C\)">\(\mathcal O_C\)</span>, so its restriction comes from <span class="math" data-tex="\(H^1(C,\mu_n)\)">\(H^1(C,\mu_n)\)</span>. This proves exactness in the middle.</p>
+<p>Finally lift any vector in <span class="math" data-tex="\(V_S\)">\(V_S\)</span> to integers <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Their sum is divisible by <span class="math" data-tex="\(n\)">\(n\)</span>; adjusting one lift by that multiple of <span class="math" data-tex="\(n\)">\(n\)</span> makes the sum zero. Picard input 6.1 gives an <span class="math" data-tex="\(n\)">\(n\)</span>-th root <span class="math" data-tex="\(\bar L\)">\(\bar L\)</span> of <span class="math" data-tex="\(\mathcal O_C(\sum a_i[s_i])\)">\(\mathcal O_C(\sum a_i[s_i])\)</span> in <span class="math" data-tex="\(\operatorname{Pic}^0(C)\)">\(\operatorname{Pic}^0(C)\)</span>. Choose the isomorphism (7.3), and restrict it to <span class="math" data-tex="\(X\)">\(X\)</span>. This proves surjectivity.</p>
+<p>All groups in (7.2) are <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>-modules. Projection to the first <span class="math" data-tex="\(r-1\)">\(r-1\)</span> coordinates identifies <span class="math" data-tex="\(V_S\)">\(V_S\)</span> with the free module <span class="math" data-tex="\((\mathbf Z/n)^{r-1}\)">\((\mathbf Z/n)^{r-1}\)</span>. Lift its standard basis; the lifts define a module section because the middle group is killed by <span class="math" data-tex="\(n\)">\(n\)</span>. Hence (7.2) splits as modules, though without a preferred splitting. Theorem 6.2 now gives the asserted rank. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The residue construction is compatible with the earlier normalization sign. For a unit <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, its Kummer class is the pair <span class="math" data-tex="\((\mathcal O_X,a^{-1})\)">\((\mathcal O_X,a^{-1})\)</span>. In (7.3) this has <span class="math" data-tex="\(D=\operatorname{div}_C(a)\)">\(D=\operatorname{div}_C(a)\)</span>, so its residues are the orders of <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<h2 id="8-finite-pullback-including-inseparability">8. Finite pullback, including inseparability</h2>
+<p><strong>Proposition 8.1.</strong> Let <span class="math" data-tex="\(f:C\to C&#x27;\)">\(f:C\to C&#x27;\)</span> be a finite morphism between smooth connected projective curves, and let <span class="math" data-tex="\(d=[k(C):k(C&#x27;)]\)">\(d=[k(C):k(C&#x27;)]\)</span>. For every line bundle <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\deg(f^*L)=d\deg L.
+\tag{8.1}
+\]">\[
+\deg(f^*L)=d\deg L.
+\tag{8.1}
+\]</span>
+<p>Under the canonical degree identifications of Theorem 6.2, pullback on <span class="math" data-tex="\(H^2(-,\mu_n)\)">\(H^2(-,\mu_n)\)</span> is multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> A finite morphism between these positive-dimensional integral curves is nonconstant and dominant: a map through a point would make the positive-dimensional source finite over that point. Fix a closed point <span class="math" data-tex="\(y\in C&#x27;\)">\(y\in C&#x27;\)</span>, let <span class="math" data-tex="\(A=\mathcal O_{C&#x27;,y}\)">\(A=\mathcal O_{C&#x27;,y}\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> be the finite semilocal algebra obtained from <span class="math" data-tex="\(f_*\mathcal O_C\)">\(f_*\mathcal O_C\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>. It is torsion free as an <span class="math" data-tex="\(A\)">\(A\)</span>-module, since multiplication by a nonzero element of the target function field is injective in the source field. A finite torsion-free module over a discrete valuation ring is free, and its rank is the generic dimension <span class="math" data-tex="\(d\)">\(d\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\dim_k(B/\pi_yB)=d.
+\tag{8.2}
+\]">\[
+\dim_k(B/\pi_yB)=d.
+\tag{8.2}
+\]</span>
+<p>The Artinian algebra <span class="math" data-tex="\(B/\pi_yB\)">\(B/\pi_yB\)</span> is the product of its local factors at the points <span class="math" data-tex="\(x\)">\(x\)</span> above <span class="math" data-tex="\(y\)">\(y\)</span>. In the discrete valuation ring <span class="math" data-tex="\(\mathcal O_{C,x}\)">\(\mathcal O_{C,x}\)</span> write
+<span class="math" data-tex="\(\pi_y=u_x\pi_x^{e_x}\)">\(\pi_y=u_x\pi_x^{e_x}\)</span>. Its local factor has length <span class="math" data-tex="\(e_x\)">\(e_x\)</span>: the powers of <span class="math" data-tex="\(\pi_x\)">\(\pi_x\)</span> give <span class="math" data-tex="\(e_x\)">\(e_x\)</span> successive quotients, each the residue field <span class="math" data-tex="\(k\)">\(k\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\mid y}e_x=d,
+\qquad f^*[y]=\sum_{x\mid y}e_x[x].
+\tag{8.3}
+\]">\[
+\sum_{x\mid y}e_x=d,
+\qquad f^*[y]=\sum_{x\mid y}e_x[x].
+\tag{8.3}
+\]</span>
+<p>This proves the degree formula for every divisor, including negative coefficients. Proposition 5.1 represents every line bundle by a divisor, and Cartier pullback satisfies <span class="math" data-tex="\(f^*\mathcal O_{C&#x27;}(D)=\mathcal O_C(f^*D)\)">\(f^*\mathcal O_{C&#x27;}(D)=\mathcal O_C(f^*D)\)</span>, giving (8.1).</p>
+<p>Kummer is natural under pullback. In particular
+<span class="math" data-tex="\(f^*c_1^{(n)}(L)=c_1^{(n)}(f^*L)\)">\(f^*c_1^{(n)}(L)=c_1^{(n)}(f^*L)\)</span>. These classes exhaust <span class="math" data-tex="\(H^2(C&#x27;,\mu_n)\)">\(H^2(C&#x27;,\mu_n)\)</span> by (6.1). Their degrees modulo <span class="math" data-tex="\(n\)">\(n\)</span> change by multiplication by <span class="math" data-tex="\(d\)">\(d\)</span>, which proves the cohomological assertion. No separability was used: the fiber lengths include all inseparable multiplicities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example the map <span class="math" data-tex="\(\mathbf P^1\to\mathbf P^1\)">\(\mathbf P^1\to\mathbf P^1\)</span> given by <span class="math" data-tex="\(t\mapsto t^d\)">\(t\mapsto t^d\)</span> acts by <span class="math" data-tex="\(d\bmod n\)">\(d\bmod n\)</span>. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the finite <span class="math" data-tex="\(k\)">\(k\)</span>-morphism <span class="math" data-tex="\(t\mapsto t^p\)">\(t\mapsto t^p\)</span> has degree <span class="math" data-tex="\(p\)">\(p\)</span> and acts by <span class="math" data-tex="\(p\bmod n\)">\(p\bmod n\)</span>, even though it has no separable degree.</p>
+<h2 id="9-three-examples">9. Three examples</h2>
+<p><strong>The projective line.</strong> Every finite point <span class="math" data-tex="\(a\in k\)">\(a\in k\)</span> satisfies
+<span class="math" data-tex="\(\operatorname{div}(t-a)=[a]-[\infty]\)">\(\operatorname{div}(t-a)=[a]-[\infty]\)</span>. Thus every divisor is equivalent to its degree times <span class="math" data-tex="\([\infty]\)">\([\infty]\)</span>. Degree-zero principal divisors and the degree-one bundle <span class="math" data-tex="\(\mathcal O(\infty)\)">\(\mathcal O(\infty)\)</span> give <span class="math" data-tex="\(\operatorname{Pic}(\mathbf P^1)=\mathbf Z\)">\(\operatorname{Pic}(\mathbf P^1)=\mathbf Z\)</span>, and (6.1) gives</p>
+<span class="math math-display" data-tex="\[
+H^q(\mathbf P^1,\mu_n)=
+\begin{cases}
+\mu_n(k)&amp;q=0,\\
+0&amp;q=1,\\
+\mathbf Z/n&amp;q=2,\\
+0&amp;q\geq3.
+\end{cases}
+\tag{9.1}
+\]">\[
+H^q(\mathbf P^1,\mu_n)=
+\begin{cases}
+\mu_n(k)&amp;q=0,\\
+0&amp;q=1,\\
+\mathbf Z/n&amp;q=2,\\
+0&amp;q\geq3.
+\end{cases}
+\tag{9.1}
+\]</span>
+<p><strong>The multiplicative curve.</strong> For <span class="math" data-tex="\(X=\mathbf G_m=\operatorname{Spec}k[t,t^{-1}]\)">\(X=\mathbf G_m=\operatorname{Spec}k[t,t^{-1}]\)</span>,
+every closed-point divisor <span class="math" data-tex="\([a]\)">\([a]\)</span>, <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, is the divisor of <span class="math" data-tex="\(t-a\)">\(t-a\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>. Hence <span class="math" data-tex="\(\operatorname{Pic}(X)=0\)">\(\operatorname{Pic}(X)=0\)</span>. An invertible Laurent polynomial is <span class="math" data-tex="\(ct^m\)">\(ct^m\)</span>: the difference between its largest and smallest exponents is additive under multiplication, so an inverse forces that difference to be zero. Consequently</p>
+<span class="math math-display" data-tex="\[
+\Gamma(X,\mathcal O_X)^\times=k^\times t^{\mathbf Z},
+\qquad H^1(X,\mu_n)=\mathbf Z/n.
+\tag{9.2}
+\]">\[
+\Gamma(X,\mathcal O_X)^\times=k^\times t^{\mathbf Z},
+\qquad H^1(X,\mu_n)=\mathbf Z/n.
+\tag{9.2}
+\]</span>
+<p>The generator is the Kummer class of <span class="math" data-tex="\(t\)">\(t\)</span>, represented by the right <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>-torsor <span class="math" data-tex="\(z^n=t\)">\(z^n=t\)</span>, or the normalized pair <span class="math" data-tex="\((\mathcal O_X,t^{-1})\)">\((\mathcal O_X,t^{-1})\)</span>. Its residue at <span class="math" data-tex="\(0\)">\(0\)</span> in the completion <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, and at infinity is <span class="math" data-tex="\(-1\)">\(-1\)</span>. All its degree-at-least-two cohomology is zero. This example exhibits the unit contribution missing from the abbreviated <span class="math" data-tex="\(H^1=\operatorname{Pic}[n]\)">\(H^1=\operatorname{Pic}[n]\)</span> formula.</p>
+<p><strong>An elliptic curve.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a smooth projective genus-one curve with an origin <span class="math" data-tex="\(o\)">\(o\)</span>. Its usual Abel identification sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(\mathcal O_E(x-o)\)">\(\mathcal O_E(x-o)\)</span> and identifies <span class="math" data-tex="\(E(k)\)">\(E(k)\)</span> with <span class="math" data-tex="\(\operatorname{Pic}^0(E)\)">\(\operatorname{Pic}^0(E)\)</span>; equivalently this is the divisor description of the elliptic group law. To check bijectivity, the classical curve Riemann–Roch and duality formula <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/curves.html#curves-lemma-rr">Stacks, Tag 0BS6</a> says that a degree-one bundle on a genus-one curve has exactly one independent section: its dual tensored with the degree-zero canonical bundle has negative degree and no section. That section has a unique zero of degree one, so the bundle is uniquely <span class="math" data-tex="\(\mathcal O_E(x)\)">\(\mathcal O_E(x)\)</span>. Tensoring by <span class="math" data-tex="\(\mathcal O_E(-o)\)">\(\mathcal O_E(-o)\)</span> proves the claimed identification. Here a negative-degree bundle has no section because the divisor of a nonzero regular section would be effective of negative degree. The elliptic group law is the one transported by this identification. Thus</p>
+<span class="math math-display" data-tex="\[
+H^1(E,\mu_n)=E(k)[n]\simeq(\mathbf Z/n)^2,
+\qquad H^2(E,\mu_n)=\mathbf Z/n.
+\tag{9.3}
+\]">\[
+H^1(E,\mu_n)=E(k)[n]\simeq(\mathbf Z/n)^2,
+\qquad H^2(E,\mu_n)=\mathbf Z/n.
+\tag{9.3}
+\]</span>
+<p>The Riemann–Roch formula is a precise classical geometric prerequisite for this example, not an additional étale-cohomology theorem asserted without proof.</p>
+<h2 id="10-exercises-and-complete-solutions">10. Exercises and complete solutions</h2>
+<ol>
+<li>Compute every <span class="math" data-tex="\(H^q(\mathbf P^1,\mu_n)\)">\(H^q(\mathbf P^1,\mu_n)\)</span> directly from Kummer.</li>
+<li>For <span class="math" data-tex="\(X=\mathbf P^1-\{s_1,\ldots,s_r\}\)">\(X=\mathbf P^1-\{s_1,\ldots,s_r\}\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, compute <span class="math" data-tex="\(H^1(X,\mu_n)\)">\(H^1(X,\mu_n)\)</span> using its units. Relate the generators to boundary orders.</li>
+<li>Prove that <span class="math" data-tex="\(\operatorname{Pic}(X)\)">\(\operatorname{Pic}(X)\)</span> is divisible for every smooth connected affine curve over <span class="math" data-tex="\(k\)">\(k\)</span>, and deduce the degree-two Kummer vanishing. Explain what happens for division by the characteristic.</li>
+<li>Let <span class="math" data-tex="\(A=\mathbf Z/\ell\)">\(A=\mathbf Z/\ell\)</span>, with <span class="math" data-tex="\(\ell\)">\(\ell\)</span> prime. Show <span class="math" data-tex="\(H^1(X,A)=\operatorname{Hom}_{\mathrm{cont}}(\pi_1(X,\bar x),A)\)">\(H^1(X,A)=\operatorname{Hom}_{\mathrm{cont}}(\pi_1(X,\bar x),A)\)</span> for a connected scheme <span class="math" data-tex="\(X\)">\(X\)</span>. For a smooth projective genus-<span class="math" data-tex="\(g\)">\(g\)</span> curve over <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\ell\ne\operatorname{char}k\)">\(\ell\ne\operatorname{char}k\)</span>, deduce that its maximal abelian quotient of exponent <span class="math" data-tex="\(\ell\)">\(\ell\)</span> has order <span class="math" data-tex="\(\ell^{2g}\)">\(\ell^{2g}\)</span>.</li>
+<li>Prove the finite-pullback formula on <span class="math" data-tex="\(H^2(-,\mu_n)\)">\(H^2(-,\mu_n)\)</span>, allowing inseparable maps. Determine when the pullback is an isomorphism.</li>
+</ol>
+<p><strong>Solution 1.</strong> The units of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> are <span class="math" data-tex="\(k^\times\)">\(k^\times\)</span>, which is <span class="math" data-tex="\(n\)">\(n\)</span>-divisible. The divisor computation preceding (9.1) gives <span class="math" data-tex="\(\operatorname{Pic}=\mathbf Z\)">\(\operatorname{Pic}=\mathbf Z\)</span>, with no <span class="math" data-tex="\(n\)">\(n\)</span>-torsion. Thus the first Kummer segment gives <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>, while the second identifies <span class="math" data-tex="\(H^2\)">\(H^2\)</span> with <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>, generated by <span class="math" data-tex="\(c_1^{(n)}(\mathcal O(\infty))\)">\(c_1^{(n)}(\mathcal O(\infty))\)</span>. The degree-zero group is <span class="math" data-tex="\(\mu_n(k)\)">\(\mu_n(k)\)</span>. In each degree <span class="math" data-tex="\(q\geq3\)">\(q\geq3\)</span>, the adjacent groups <span class="math" data-tex="\(H^{q-1}(\mathbf G_m)\)">\(H^{q-1}(\mathbf G_m)\)</span> and <span class="math" data-tex="\(H^q(\mathbf G_m)\)">\(H^q(\mathbf G_m)\)</span> are zero by Theorem 4.2, so <span class="math" data-tex="\(H^q(\mu_n)=0\)">\(H^q(\mu_n)=0\)</span>. This computes all degrees, including <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, when all groups displayed are zero.</p>
+<p><strong>Solution 2.</strong> Change the coordinate by an automorphism of <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> so that <span class="math" data-tex="\(s_r=\infty\)">\(s_r=\infty\)</span>, and write the other points as distinct <span class="math" data-tex="\(a_1,\ldots,a_{r-1}\in k\)">\(a_1,\ldots,a_{r-1}\in k\)</span>. The coordinate ring is</p>
+<span class="math math-display" data-tex="\[
+k[t,(t-a_1)^{-1},\ldots,(t-a_{r-1})^{-1}].
+\tag{10.1}
+\]">\[
+k[t,(t-a_1)^{-1},\ldots,(t-a_{r-1})^{-1}].
+\tag{10.1}
+\]</span>
+<p>Unique factorization in <span class="math" data-tex="\(k[t]\)">\(k[t]\)</span> implies that its units are exactly
+<span class="math" data-tex="\(c\prod_{i=1}^{r-1}(t-a_i)^{m_i}\)">\(c\prod_{i=1}^{r-1}(t-a_i)^{m_i}\)</span>, with <span class="math" data-tex="\(c\in k^\times\)">\(c\in k^\times\)</span> and <span class="math" data-tex="\(m_i\in\mathbf Z\)">\(m_i\in\mathbf Z\)</span>. Indeed both a unit and its inverse can have only the inverted irreducible factors; conversely all these products are invertible. Also <span class="math" data-tex="\(\operatorname{Pic}(X)=0\)">\(\operatorname{Pic}(X)=0\)</span>: every divisor on this open curve is a sum of points <span class="math" data-tex="\(b\)">\(b\)</span> outside the removed set, and each <span class="math" data-tex="\([b]\)">\([b]\)</span> is <span class="math" data-tex="\(\operatorname{div}_X(t-b)\)">\(\operatorname{div}_X(t-b)\)</span>. Kummer therefore identifies <span class="math" data-tex="\(H^1(X,\mu_n)\)">\(H^1(X,\mu_n)\)</span> with
+<span class="math" data-tex="\((\mathbf Z/n)^{r-1}\)">\((\mathbf Z/n)^{r-1}\)</span>, with basis the classes of <span class="math" data-tex="\(t-a_i\)">\(t-a_i\)</span>.</p>
+<p>Their boundary residue vectors are <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(s_i\)">\(s_i\)</span>, <span class="math" data-tex="\(-1\)">\(-1\)</span> at <span class="math" data-tex="\(s_r\)">\(s_r\)</span>, and zero elsewhere. They form a basis of <span class="math" data-tex="\(V_S\)">\(V_S\)</span>. For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, the curve is <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span>, its unit quotient is zero, and the stated rank is zero.</p>
+<p><strong>Solution 3.</strong> Complete <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(C\)">\(C\)</span> and choose a boundary point <span class="math" data-tex="\(s\)">\(s\)</span>. Every line bundle on <span class="math" data-tex="\(X\)">\(X\)</span> extends by Proposition 5.1. Twisting an extension <span class="math" data-tex="\(L\)">\(L\)</span> by <span class="math" data-tex="\(-(\deg L)s\)">\(-(\deg L)s\)</span> gives a degree-zero extension. Thus it lifts to <span class="math" data-tex="\(\operatorname{Pic}^0(C)\)">\(\operatorname{Pic}^0(C)\)</span>. For any positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, surjectivity of multiplication by <span class="math" data-tex="\(m\)">\(m\)</span> on this group gives a bundle <span class="math" data-tex="\(M\)">\(M\)</span> with <span class="math" data-tex="\(M^{\otimes m}\)">\(M^{\otimes m}\)</span> equal to that extension. Its restriction is an <span class="math" data-tex="\(m\)">\(m\)</span>-th root on <span class="math" data-tex="\(X\)">\(X\)</span>. Hence <span class="math" data-tex="\(\operatorname{Pic}(X)\)">\(\operatorname{Pic}(X)\)</span> is divisible.</p>
+<p>If <span class="math" data-tex="\(m\)">\(m\)</span> is divisible by the characteristic, this group-divisibility assertion remains true by Picard input 6.1. The étale Kummer sequence used in this lesson still requires <span class="math" data-tex="\(n\)">\(n\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>; one cannot infer a characteristic-primary étale Kummer sequence from that divisibility. For the allowed <span class="math" data-tex="\(n\)">\(n\)</span>, (6.1) gives <span class="math" data-tex="\(H^2(X,\mu_n)=\operatorname{Pic}(X)/n=0\)">\(H^2(X,\mu_n)=\operatorname{Pic}(X)/n=0\)</span>.</p>
+<p><strong>Solution 4.</strong> We use the precise foundational meaning of the étale fundamental group: with a geometric point <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, the fiber functor identifies finite étale covers of a connected scheme with finite continuous left <span class="math" data-tex="\(\pi_1(X,\bar x)\)">\(\pi_1(X,\bar x)\)</span>-sets. This is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-theorem-fundamental-group">Stacks, Tag 0BND</a>, part (1), proved from the finite-étale Galois category and its equivalence theorem <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/pione.html#pione-proposition-galois">Tag 0BN4</a>. This supplies the definition-and-classification prerequisite for <span class="math" data-tex="\(\pi_1\)">\(\pi_1\)</span>; the following torsor and quotient calculations are the exercise.</p>
+<p>The degree-one torsor classification proved earlier identifies <span class="math" data-tex="\(H^1(X,A)\)">\(H^1(X,A)\)</span> with right torsors under the constant finite group <span class="math" data-tex="\(A\)">\(A\)</span>. Such a sheaf torsor is represented by a finite étale cover: locally it is the disjoint union of <span class="math" data-tex="\(|A|\)">\(|A|\)</span> copies of the base, and effective étale descent for these finite locally free algebras glues it. Its geometric fiber is a right <span class="math" data-tex="\(A\)">\(A\)</span>-torsor. Choose one point of that fiber to identify it with <span class="math" data-tex="\(A\)">\(A\)</span>. The left monodromy action commutes with the right <span class="math" data-tex="\(A\)">\(A\)</span>-action, so it has the form</p>
+<span class="math math-display" data-tex="\[
+g\cdot a=\chi(g)+a
+\tag{10.2}
+\]">\[
+g\cdot a=\chi(g)+a
+\tag{10.2}
+\]</span>
+<p>for a homomorphism <span class="math" data-tex="\(\chi:\pi_1\to A\)">\(\chi:\pi_1\to A\)</span>. It is continuous because the fiber action is continuous. Choosing another fiber point conjugates <span class="math" data-tex="\(\chi\)">\(\chi\)</span>; since <span class="math" data-tex="\(A\)">\(A\)</span> is abelian this does not change it. Conversely a continuous <span class="math" data-tex="\(\chi\)">\(\chi\)</span> gives the finite set <span class="math" data-tex="\(A\)">\(A\)</span> with action (10.2) and commuting regular right <span class="math" data-tex="\(A\)">\(A\)</span>-action. Finite-étale classification produces the corresponding cover and action. The torsor map is an isomorphism on the geometric fiber, hence an isomorphism of finite étale covers. These constructions are inverse, and the contracted product of torsors adds <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, so they give the asserted group isomorphism.</p>
+<p>For the projective curve and invertible <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, choose a primitive <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-th root to compare <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(\mu_\ell\)">\(\mu_\ell\)</span>. Theorem 6.2 makes the character space
+<span class="math" data-tex="\(\operatorname{Hom}_{\mathrm{cont}}(\pi_1,\mathbf F_\ell)\)">\(\operatorname{Hom}_{\mathrm{cont}}(\pi_1,\mathbf F_\ell)\)</span> have dimension <span class="math" data-tex="\(2g\)">\(2g\)</span>. Choose a basis <span class="math" data-tex="\(\chi_1,\ldots,\chi_{2g}\)">\(\chi_1,\ldots,\chi_{2g}\)</span>. The evaluation map
+<span class="math" data-tex="\(\chi:\pi_1\to\mathbf F_\ell^{2g}\)">\(\chi:\pi_1\to\mathbf F_\ell^{2g}\)</span> is surjective: if its image were a proper subspace, a nonzero linear functional annihilating it would give a nontrivial linear relation among the basis characters.</p>
+<p>Its kernel is the intersection of the kernels of all continuous characters. Every finite abelian quotient of exponent <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a vector space over <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>, so its coordinate characters force this kernel into its own kernel. The same holds for a profinite abelian quotient of exponent <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, since its finite quotients separate its points. It therefore factors through the evaluation quotient. This proves that the maximal such quotient is <span class="math" data-tex="\(\mathbf F_\ell^{2g}\)">\(\mathbf F_\ell^{2g}\)</span>, of order <span class="math" data-tex="\(\ell^{2g}\)">\(\ell^{2g}\)</span>. The invertibility assumption is necessary; the argument does not give that order for the characteristic prime.</p>
+<p><strong>Solution 5.</strong> At a point <span class="math" data-tex="\(y\)">\(y\)</span> of the target, the finite torsion-free module <span class="math" data-tex="\(B\)">\(B\)</span> over its local discrete valuation ring is free of rank <span class="math" data-tex="\(d\)">\(d\)</span>. Reduction modulo a uniformizer has dimension <span class="math" data-tex="\(d\)">\(d\)</span> over <span class="math" data-tex="\(k\)">\(k\)</span>. Its local factors at <span class="math" data-tex="\(x\mid y\)">\(x\mid y\)</span> have dimensions <span class="math" data-tex="\(e_x=v_x(\pi_y)\)">\(e_x=v_x(\pi_y)\)</span>, so their sum is <span class="math" data-tex="\(d\)">\(d\)</span>. Thus <span class="math" data-tex="\(f^*[y]=\sum e_x[x]\)">\(f^*[y]=\sum e_x[x]\)</span> has degree <span class="math" data-tex="\(d\)">\(d\)</span>. Additivity gives <span class="math" data-tex="\(\deg f^*D=d\deg D\)">\(\deg f^*D=d\deg D\)</span> for every divisor. Represent a line bundle by a divisor and apply naturality of the Kummer connecting map. Its class in the target <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> becomes <span class="math" data-tex="\(d\)">\(d\)</span> times that class in the source <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>. This is an isomorphism exactly when <span class="math" data-tex="\(d\)">\(d\)</span> is a unit modulo <span class="math" data-tex="\(n\)">\(n\)</span>, equivalently <span class="math" data-tex="\(\gcd(d,n)=1\)">\(\gcd(d,n)=1\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> both groups are zero and the unique map is an isomorphism, in agreement with this criterion.</p>
+<h2 id="11-sources-and-the-arithmetic-continuation">11. Sources and the arithmetic continuation</h2>
+<p>The corresponding results of the Stacks project are <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-cohomology-curves">Stacks, Tag 03R0</a> for the curve-cohomology setup; <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-higher-Gm">Tag 03RH</a> for the valuation sequence and higher units cohomology; and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-section-pic-curves">Tag 03RN</a> for the projective, affine and pullback computations. Lemma 3.1 supplies the filtered-colimit argument needed for the infinite point sum; Proposition 8.1 supplies the local-length proof of the pullback assertion whose details <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/etale-cohomology.html#etale-cohomology-lemma-pullback-on-h2-curve">Tag 0AMB</a> omits. Picard input 6.1, Riemann–Roch for curves and the classification of finite étale covers are used without proof, with references to the Stacks project where they are used.</p>
+<p>Divisors, degree and the Picard group also carry the arithmetic of curves over finite fields, the subject of Weil's proof of the Riemann hypothesis for curves. Over a finite field the arithmetic Frobenius acts on geometric cohomology; keeping <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> distinct from an unchosen constant <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span> is already preparing for that calculation.</p>
+</article></main></body></html>

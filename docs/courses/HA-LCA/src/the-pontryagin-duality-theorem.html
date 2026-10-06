@@ -1,0 +1,452 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="author-source-sha256" content="512aa0190639e6dd873b9f5fd0c36bb2eee2332072455eee0861635e0034880b"><title>The Pontryagin duality theorem</title><link rel="stylesheet" href="../assets/reader.css"><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}}</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><span class="unlinked">Course contents</span> · <a href="the-pontryagin-duality-theorem.md">Editable source</a> · <a href="../LICENCES.html">Licences</a></nav><article><h1 id="the-pontryagin-duality-theorem">The Pontryagin duality theorem</h1>
+<p><strong>Lesson HA-LCA-09.</strong> Self-checked by the writing AI.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a locally compact Hausdorff abelian group. There is no countability assumption. Put <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span> and <span class="math" data-tex="\(D=\widehat\Gamma\)">\(D=\widehat\Gamma\)</span>, both with their compact-open topologies. Characters take values in <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>. We use additive notation in <span class="math" data-tex="\(G\)">\(G\)</span> and multiplicative notation for characters. Haar measure <span class="math" data-tex="\(dx\)">\(dx\)</span> has the complete locally determined domain constructed in the earlier Haar reading. Its dual measure is <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span>, as constructed in <a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1">HA-LCA-07, Theorem 2.1</a>. Our conventions are
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma),
+ \qquad J_G(x)(\gamma)=\gamma(x).
+ \tag{1}
+\]">\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx,
+ \qquad T\mu(x)=\int_\Gamma\gamma(x)\,d\mu(\gamma),
+ \qquad J_G(x)(\gamma)=\gamma(x).
+ \tag{1}
+\]</span>
+The purpose of the lesson is to prove that <span class="math" data-tex="\(J_G\)">\(J_G\)</span> is a topological isomorphism, then use that identification to remove the <span class="math" data-tex="\(B^1\)">\(B^1\)</span> restriction from Fourier inversion.</p>
+<p>The freely accessible source routes are D. H. Fremlin, <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt445.tex"><em>Measure Theory</em>, §§445O and 445U</a>, version of 20 March 2008, and the quotient and subgroup statements in <a href="https://www1.essex.ac.uk/maths/people/fremlin/mt4.2013/mt4a5.tex">Appendix 4A5J, L, M</a>, version of 4 August 2013. The compact-component argument in Exercise 6.5 uses A. Candel, <a href="https://www.csun.edu/~ac53971/research/topology_262.pdf"><em>Three Dimes of Topology</em>, pp. 29–30</a>, Math 262 notes, Winter 1995–96. Every needed assertion from these sources is proved below or at an exact earlier proof locator.</p>
+<p>Adaptation and additional proofs: GPT-6 Astra (OpenAI), Ultra, October 2026. This combined lesson is under the <a href="../assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">Design Science License</a>. Fremlin's copyrights 1998 and 2000 and original notices remain in the <span class="unlinked">unchanged volume 4 source package</span>. Candel's notes are linked, not reproduced.</p>
+<p>We will use these earlier results:</p>
+<ul>
+<li><a href="characters-and-the-dual-group.html#ha-lca-02-proposition-1-4">HA-LCA-02, Proposition 1.4</a> proves joint continuity of the character pairing; <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-5-2">Theorem 5.2</a> proves that the dual is LCA. <a href="raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2">HA-LCA-05, Corollary 4.2</a> proves that characters separate points and that <span class="math" data-tex="\(J_G\)">\(J_G\)</span> is continuous and injective.</li>
+<li><a href="functions-of-positive-type.html#ha-lca-04-proposition-2-2">HA-LCA-04, Proposition 2.2</a> proves positivity and continuity of <span class="math" data-tex="\(u*\widetilde u\)">\(u*\widetilde u\)</span>, where <span class="math" data-tex="\(\widetilde u(x)=\overline{u(-x)}\)">\(\widetilde u(x)=\overline{u(-x)}\)</span>. <a href="bochners-theorem.html#ha-lca-06-theorem-2-1">HA-LCA-06, Theorem 2.1</a> proves Bochner's representation; its <a href="bochners-theorem.html#ha-lca-06-proposition-1-1">Proposition 1.1</a> proves injectivity of <span class="math" data-tex="\(T\)">\(T\)</span> on finite Radon measures on the dual.</li>
+<li><a href="the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1">HA-LCA-07, Theorem 2.1</a> proves pointwise inversion for <span class="math" data-tex="\(B^1(G)=B(G)\cap L^1(G)\)">\(B^1(G)=B(G)\cap L^1(G)\)</span>, where <a href="bochners-theorem.html#ha-lca-06-proposition-4-1">HA-LCA-06, Proposition 4.1</a> identifies <span class="math" data-tex="\(B(G)\)">\(B(G)\)</span> with transforms <span class="math" data-tex="\(T\mu\)">\(T\mu\)</span> of finite complex Radon measures. <a href="the-plancherel-theorem.html#ha-lca-08-theorem-1-1">HA-LCA-08, Theorem 1.1</a> proves Plancherel; its <a href="the-plancherel-theorem.html#ha-lca-08-corollary-3-2">Corollary 3.2</a> gives a nonzero Fourier-algebra function supported inside any nonempty open subset of a dual group.</li>
+<li><a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-3">The Radon reading, Lemma 1.3</a> gives compactly supported continuous cutoffs, and its <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-corollary-4-5">Corollary 4.5</a> gives compact tails for finite Radon measures. <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-3-1">The general Haar reading, Theorems 3.1 and 3.3</a> supplies full support and uniqueness up to scale, and its <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-4-1">Theorem 4.1</a> gives Haar-preserving inversion in an abelian group.</li>
+</ul>
+<h2 id="1-evaluation-and-its-topology">1. Evaluation and its topology</h2>
+<p><a id="ha-lca-09-lemma-1-1"></a>
+<strong>Lemma 1.1 — The pairing.</strong> The map <span class="math" data-tex="\(G\times\Gamma\to\mathbb T\)">\(G\times\Gamma\to\mathbb T\)</span>, <span class="math" data-tex="\((x,\gamma)\mapsto\gamma(x)\)">\((x,\gamma)\mapsto\gamma(x)\)</span>, is continuous.</p>
+<p><strong>Proof.</strong> Here is the compact-neighbourhood argument, also proved in HA-LCA-02, Proposition 1.4. Fix <span class="math" data-tex="\((x_0,\gamma_0)\)">\((x_0,\gamma_0)\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Choose a compact neighbourhood <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. For <span class="math" data-tex="\(x\)">\(x\)</span> in its interior,
+<span class="math math-display" data-tex="\[
+ |\gamma(x)-\gamma_0(x_0)|
+ \le \sup_{y\in K}|\gamma(y)-\gamma_0(y)|
+       +|\gamma_0(x)-\gamma_0(x_0)|.
+\]">\[
+ |\gamma(x)-\gamma_0(x_0)|
+ \le \sup_{y\in K}|\gamma(y)-\gamma_0(y)|
+       +|\gamma_0(x)-\gamma_0(x_0)|.
+\]</span>
+The first term is less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> on a compact-open neighbourhood of <span class="math" data-tex="\(\gamma_0\)">\(\gamma_0\)</span>; continuity of the fixed character makes the second less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> on a neighbourhood of <span class="math" data-tex="\(x_0\)">\(x_0\)</span> inside <span class="math" data-tex="\(K\)">\(K\)</span>. This proves continuity at every pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-lemma-1-2"></a>
+<strong>Lemma 1.2 — Locally compact subgroups are closed.</strong> If a subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of a Hausdorff topological group <span class="math" data-tex="\(P\)">\(P\)</span> is locally compact in the relative topology, then <span class="math" data-tex="\(H\)">\(H\)</span> is closed in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be a compact identity neighbourhood in <span class="math" data-tex="\(H\)">\(H\)</span>, and choose an ambient open identity neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V\cap H\subseteq K\)">\(V\cap H\subseteq K\)</span>. The set <span class="math" data-tex="\(K\)">\(K\)</span> is compact in <span class="math" data-tex="\(P\)">\(P\)</span> and therefore closed there: a point outside a compact set can be separated from each of its points, and finitely many of those separations give an open neighbourhood disjoint from the compact set. If <span class="math" data-tex="\(z\in\overline H\cap V\)">\(z\in\overline H\cap V\)</span>, each neighbourhood of <span class="math" data-tex="\(z\)">\(z\)</span>, after intersection with the open set <span class="math" data-tex="\(V\)">\(V\)</span>, meets <span class="math" data-tex="\(H\cap V\)">\(H\cap V\)</span>. Hence <span class="math" data-tex="\(z\in\overline{H\cap V}\subseteq K\)">\(z\in\overline{H\cap V}\subseteq K\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \overline H\cap V\subseteq H.
+ \tag{2}
+\]">\[
+ \overline H\cap V\subseteq H.
+ \tag{2}
+\]</span>
+Continuity of multiplication and inversion implies that <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> is a subgroup: neighbourhoods of <span class="math" data-tex="\(ab^{-1}\)">\(ab^{-1}\)</span>, for <span class="math" data-tex="\(a,b\in\overline H\)">\(a,b\in\overline H\)</span>, contain products <span class="math" data-tex="\(AB^{-1}\)">\(AB^{-1}\)</span> of neighbourhoods of <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, which meet <span class="math" data-tex="\(H\)">\(H\)</span>. By (2), <span class="math" data-tex="\(H\)">\(H\)</span> contains a relative open identity neighbourhood in <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>, so its translates show that it is open there. Every other coset is open too, making <span class="math" data-tex="\(H\)">\(H\)</span> closed in <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>. Its density then forces <span class="math" data-tex="\(H=\overline H\)">\(H=\overline H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-lemma-1-3"></a>
+<strong>Lemma 1.3 — Evaluation is an embedding.</strong> The map <span class="math" data-tex="\(J_G:G\to D\)">\(J_G:G\to D\)</span> is a homomorphism and a homeomorphism onto its image.</p>
+<p><strong>Proof.</strong> Evaluation is a character on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <span class="math" data-tex="\(J_G(x+y)=J_G(x)J_G(y)\)">\(J_G(x+y)=J_G(x)J_G(y)\)</span>. Continuity and injectivity are already proved in HA-LCA-05, Corollary 4.2. It remains to recover the topology of <span class="math" data-tex="\(G\)">\(G\)</span> from compact convergence on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be any identity neighbourhood in <span class="math" data-tex="\(G\)">\(G\)</span>. Group continuity and local compactness give a relatively compact open identity neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(\overline V-\overline V\subseteq U\)">\(\overline V-\overline V\subseteq U\)</span>. To see the closure control, first choose an open identity neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(W-W\subseteq U\)">\(W-W\subseteq U\)</span>, then use the Radon reading, Lemma 1.3, to choose <span class="math" data-tex="\(V\)">\(V\)</span> with compact closure inside <span class="math" data-tex="\(W\)">\(W\)</span>. The same cutoff lemma gives a nonzero <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span> with support in <span class="math" data-tex="\(V\)">\(V\)</span>. Put <span class="math" data-tex="\(h=u*\widetilde u\)">\(h=u*\widetilde u\)</span>. The general Haar reading, Theorem 6.1, gives its compact support in <span class="math" data-tex="\(\operatorname{supp}u-\operatorname{supp}u\subseteq U\)">\(\operatorname{supp}u-\operatorname{supp}u\subseteq U\)</span>; HA-LCA-04, Proposition 2.2, gives positive type and
+<span class="math math-display" data-tex="\[
+ h(0)=\int_G|u|^2\,dx&gt;0.
+\]">\[
+ h(0)=\int_G|u|^2\,dx&gt;0.
+\]</span>
+Strict positivity uses continuity of <span class="math" data-tex="\(u\)">\(u\)</span> and Haar full support. By Bochner's theorem <span class="math" data-tex="\(h=T\mu\)">\(h=T\mu\)</span> for a positive finite Radon measure with <span class="math" data-tex="\(\mu(\Gamma)=h(0)\)">\(\mu(\Gamma)=h(0)\)</span>. Choose a compact <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span> with <span class="math" data-tex="\(\mu(\Gamma\setminus K)&lt;h(0)/8\)">\(\mu(\Gamma\setminus K)&lt;h(0)/8\)</span>. If
+<span class="math" data-tex="\(\sup_{\gamma\in K}|\gamma(x)-1|&lt;1/4\)">\(\sup_{\gamma\in K}|\gamma(x)-1|&lt;1/4\)</span>, then
+<span class="math math-display" data-tex="\[
+ |h(x)-h(0)|
+ \le \tfrac14\mu(K)+2\mu(\Gamma\setminus K)
+ &lt;\tfrac12 h(0).
+ \tag{3}
+\]">\[
+ |h(x)-h(0)|
+ \le \tfrac14\mu(K)+2\mu(\Gamma\setminus K)
+ &lt;\tfrac12 h(0).
+ \tag{3}
+\]</span>
+Consequently <span class="math" data-tex="\(h(x)\ne0\)">\(h(x)\ne0\)</span>, so <span class="math" data-tex="\(x\in U\)">\(x\in U\)</span>. The displayed condition defines the inverse image under <span class="math" data-tex="\(J_G\)">\(J_G\)</span> of an open identity neighbourhood in <span class="math" data-tex="\(D\)">\(D\)</span>. Thus <span class="math" data-tex="\(J_G^{-1}\)">\(J_G^{-1}\)</span>, on its image, is continuous at the identity and hence everywhere by translation. This neighbourhood argument applies to arbitrary nets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-bidual-contains-no-further-points"><span id="section-2"></span>2. The bidual contains no further points</h2>
+<p><a id="ha-lca-09-theorem-2-1"></a>
+<strong>Theorem 2.1 — Pontryagin duality.</strong> For every LCA group <span class="math" data-tex="\(G\)">\(G\)</span>, evaluation
+<span class="math math-display" data-tex="\[
+ J_G:G\longrightarrow\widehat{\widehat G},
+ \qquad J_G(x)(\gamma)=\gamma(x),
+ \tag{4}
+\]">\[
+ J_G:G\longrightarrow\widehat{\widehat G},
+ \qquad J_G(x)(\gamma)=\gamma(x),
+ \tag{4}
+\]</span>
+is an isomorphism of topological groups.</p>
+<p><strong>Proof.</strong> By Lemma 1.3, <span class="math" data-tex="\(H=J_G(G)\)">\(H=J_G(G)\)</span> is a locally compact subgroup of the Hausdorff group <span class="math" data-tex="\(D\)">\(D\)</span>. Lemma 1.2 makes it closed. Suppose it were proper. Apply HA-LCA-08, Corollary 3.2, with base group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> to the nonempty open subset <span class="math" data-tex="\(D\setminus H\)">\(D\setminus H\)</span>. It gives <span class="math" data-tex="\(g\in L^1(\Gamma)\)">\(g\in L^1(\Gamma)\)</span> whose Fourier transform <span class="math" data-tex="\(v=\widehat g\)">\(v=\widehat g\)</span> is nonzero and has support inside <span class="math" data-tex="\(D\setminus H\)">\(D\setminus H\)</span>. For every <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ 0=v(J_Gx)
+   =\int_\Gamma g(\gamma)\overline{\gamma(x)}\,d\xi(\gamma)
+   =T(g\,d\xi)(-x).
+ \tag{5}
+\]">\[
+ 0=v(J_Gx)
+   =\int_\Gamma g(\gamma)\overline{\gamma(x)}\,d\xi(\gamma)
+   =T(g\,d\xi)(-x).
+ \tag{5}
+\]</span>
+The measure <span class="math" data-tex="\(g\,d\xi\)">\(g\,d\xi\)</span> is finite Radon by <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-4-1">HA-LCA-03, Lemma 4.1</a>. The injectivity of <span class="math" data-tex="\(T\)">\(T\)</span> in HA-LCA-06, Proposition 1.1, is a theorem about measures on <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span> and does not presuppose bidual surjectivity. It gives <span class="math" data-tex="\(g\,d\xi=0\)">\(g\,d\xi=0\)</span>, hence <span class="math" data-tex="\(g=0\)">\(g=0\)</span> almost everywhere by the same density lemma. This contradicts <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. Therefore <span class="math" data-tex="\(H=D\)">\(H=D\)</span>, and Lemma 1.3 proves the topological assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-lemma-2-2"></a>
+<strong>Lemma 2.2 — Bounded evaluation polynomials.</strong> Let <span class="math" data-tex="\(K\subseteq\Gamma\)">\(K\subseteq\Gamma\)</span> be compact, let <span class="math" data-tex="\(q\in C(K)\)">\(q\in C(K)\)</span> satisfy <span class="math" data-tex="\(\|q\|_K\le1\)">\(\|q\|_K\le1\)</span>, and let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. There is a finite sum
+<span class="math math-display" data-tex="\[
+ p(\gamma)=\sum_{j=1}^r c_j\gamma(x_j)
+ \quad\text{such that}\quad
+ \sup_{\gamma\in\Gamma}|p(\gamma)|\le1,
+ \qquad \sup_{\gamma\in K}|p(\gamma)-q(\gamma)|&lt;\varepsilon.
+ \tag{6}
+\]">\[
+ p(\gamma)=\sum_{j=1}^r c_j\gamma(x_j)
+ \quad\text{such that}\quad
+ \sup_{\gamma\in\Gamma}|p(\gamma)|\le1,
+ \qquad \sup_{\gamma\in K}|p(\gamma)-q(\gamma)|&lt;\varepsilon.
+ \tag{6}
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, take <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Otherwise the finite evaluation sums form a unital self-adjoint algebra: products add the <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, conjugation replaces <span class="math" data-tex="\(x_j\)">\(x_j\)</span> by <span class="math" data-tex="\(-x_j\)">\(-x_j\)</span>, and <span class="math" data-tex="\(x=0\)">\(x=0\)</span> gives the constant one. They separate distinct characters by the definition of distinct functions on <span class="math" data-tex="\(G\)">\(G\)</span>. The <a href="../prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-corollary-2-2">uniform approximation reading, Corollary 2.2</a>, therefore gives such a sum <span class="math" data-tex="\(p_0\)">\(p_0\)</span> with <span class="math" data-tex="\(\|p_0-q\|_K&lt;a\)">\(\|p_0-q\|_K&lt;a\)</span>, for a chosen <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>.</p>
+<p>Put <span class="math" data-tex="\(M=\sum_j|c_j|\)">\(M=\sum_j|c_j|\)</span>, so <span class="math" data-tex="\(|p_0|\le M\)">\(|p_0|\le M\)</span> globally. If <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, the choice <span class="math" data-tex="\(p=0\)">\(p=0\)</span> already has error less than <span class="math" data-tex="\(a\)">\(a\)</span>. Assume <span class="math" data-tex="\(M&gt;0\)">\(M&gt;0\)</span>. Define the continuous function
+<span class="math math-display" data-tex="\[
+ c(t)=
+ \begin{cases}1,&amp;0\le t\le1,\\ t^{-1/2},&amp;t\ge1.\end{cases}
+\]">\[
+ c(t)=
+ \begin{cases}1,&amp;0\le t\le1,\\ t^{-1/2},&amp;t\ge1.\end{cases}
+\]</span>
+The function <span class="math" data-tex="\(r(z)=z c(|z|^2)\)">\(r(z)=z c(|z|^2)\)</span> has modulus at most one. For <span class="math" data-tex="\(|w|\le1\)">\(|w|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+ |r(z)-w|\le |r(z)-z|+|z-w|
+       =\max(0,|z|-1)+|z-w|\le2|z-w|.
+\]">\[
+ |r(z)-w|\le |r(z)-z|+|z-w|
+       =\max(0,|z|-1)+|z-w|\le2|z-w|.
+\]</span>
+By <a href="../prerequisites/src/uniform-approximation.html#ha-lca-pre-approx-lemma-1-1">the same reading, Lemma 1.1</a>, choose a real polynomial <span class="math" data-tex="\(R\)">\(R\)</span> with <span class="math" data-tex="\(|R(t)-c(t)|&lt;b\)">\(|R(t)-c(t)|&lt;b\)</span> on <span class="math" data-tex="\([0,M^2]\)">\([0,M^2]\)</span>. The evaluation sum
+<span class="math" data-tex="\(p_1=p_0R(p_0\overline{p_0})\)">\(p_1=p_0R(p_0\overline{p_0})\)</span> satisfies
+<span class="math" data-tex="\(\|p_1-r(p_0)\|_\Gamma\le Mb\)">\(\|p_1-r(p_0)\|_\Gamma\le Mb\)</span>, hence <span class="math" data-tex="\(\|p_1\|_\Gamma\le1+Mb\)">\(\|p_1\|_\Gamma\le1+Mb\)</span>. Set <span class="math" data-tex="\(p=p_1/(1+Mb)\)">\(p=p_1/(1+Mb)\)</span>. Then <span class="math" data-tex="\(\|p\|_\Gamma\le1\)">\(\|p\|_\Gamma\le1\)</span> and <span class="math" data-tex="\(\|p-p_1\|_\Gamma\le Mb\)">\(\|p-p_1\|_\Gamma\le Mb\)</span>, so
+<span class="math math-display" data-tex="\[
+ \|p-q\|_K&lt;2a+2Mb.
+\]">\[
+ \|p-q\|_K&lt;2a+2Mb.
+\]</span>
+Choose <span class="math" data-tex="\(a&lt;\varepsilon/4\)">\(a&lt;\varepsilon/4\)</span>, then <span class="math" data-tex="\(b&lt;\varepsilon/(4M)\)">\(b&lt;\varepsilon/(4M)\)</span>. This proves (6), including its global bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-returning-haar-measure-and-plancherel-to-the-original-group">3. Returning Haar measure and Plancherel to the original group</h2>
+<p><a id="ha-lca-09-proposition-3-1"></a>
+<strong>Proposition 3.1 — Double transformation.</strong> Let <span class="math" data-tex="\(d\nu\)">\(d\nu\)</span> be the Haar measure on <span class="math" data-tex="\(D=\widehat\Gamma\)">\(D=\widehat\Gamma\)</span> dual to <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \nu=(J_G)_*(dx).
+ \tag{7}
+\]">\[
+ \nu=(J_G)_*(dx).
+ \tag{7}
+\]</span>
+With this identification, the two Plancherel transforms satisfy
+<span class="math math-display" data-tex="\[
+ (\mathcal F_\Gamma\mathcal F_G f)(J_Gx)=f(-x)
+ \quad\text{as }L^2\text{ classes}.
+ \tag{8}
+\]">\[
+ (\mathcal F_\Gamma\mathcal F_G f)(J_Gx)=f(-x)
+ \quad\text{as }L^2\text{ classes}.
+ \tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> The homeomorphism <span class="math" data-tex="\(J_G\)">\(J_G\)</span> carries <span class="math" data-tex="\(dx\)">\(dx\)</span>, including its complete locally determined domain, to a Haar measure on <span class="math" data-tex="\(D\)">\(D\)</span>. Indeed translations, compact sets and Borel sets correspond, and the compact-local description of the completion in the general Haar reading, Theorem 3.1, is preserved. Haar uniqueness, Theorem 3.3 of that reading, gives <span class="math" data-tex="\(\nu=c(J_G)_*dx\)">\(\nu=c(J_G)_*dx\)</span> for some <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>.</p>
+<p>Take <span class="math" data-tex="\(f\in B^1(G)\)">\(f\in B^1(G)\)</span>. Its transform is integrable by HA-LCA-07, Theorem 2.1. It is also in <span class="math" data-tex="\(B(\Gamma)\)">\(B(\Gamma)\)</span>: the finite Radon measure
+<span class="math" data-tex="\((J_G\circ(-\mathrm{id}))_*(f\,dx)\)">\((J_G\circ(-\mathrm{id}))_*(f\,dx)\)</span> has <span class="math" data-tex="\(T\)">\(T\)</span>-transform on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> equal to <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span>. The pushforward is finite Radon by <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-proposition-3-1">the product reading, Proposition 3.1</a>. Hence <span class="math" data-tex="\(\widehat f\in B^1(\Gamma)\)">\(\widehat f\in B^1(\Gamma)\)</span>. Inversion on <span class="math" data-tex="\(G\)">\(G\)</span> gives, at every <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat{\widehat f}(J_Gx)
+ =\int_\Gamma\widehat f(\gamma)\overline{\gamma(x)}\,d\xi(\gamma)
+ =f(-x).
+ \tag{9}
+\]">\[
+ \widehat{\widehat f}(J_Gx)
+ =\int_\Gamma\widehat f(\gamma)\overline{\gamma(x)}\,d\xi(\gamma)
+ =f(-x).
+ \tag{9}
+\]</span>
+Apply <span class="math" data-tex="\(B^1\)">\(B^1\)</span> inversion on <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> at its identity character <span class="math" data-tex="\(1\)">\(1\)</span>:
+<span class="math math-display" data-tex="\[
+ \widehat f(1)=\int_D\widehat{\widehat f}(\chi)\,d\nu(\chi)
+             =c\int_G f(-x)\,dx=c\int_G f(x)\,dx.
+\]">\[
+ \widehat f(1)=\int_D\widehat{\widehat f}(\chi)\,d\nu(\chi)
+             =c\int_G f(-x)\,dx=c\int_G f(x)\,dx.
+\]</span>
+The left side is <span class="math" data-tex="\(\int_G f\)">\(\int_G f\)</span>. There exists such an <span class="math" data-tex="\(f\)">\(f\)</span> with nonzero integral: choose a nonzero nonnegative <span class="math" data-tex="\(u\in C_c(G)\)">\(u\in C_c(G)\)</span> and take <span class="math" data-tex="\(f=u*\widetilde u\)">\(f=u*\widetilde u\)</span>. It is in <span class="math" data-tex="\(C_c(G)\cap P(G)\subset B^1(G)\)">\(C_c(G)\cap P(G)\subset B^1(G)\)</span>, and the convolution integral formula gives <span class="math" data-tex="\(\int f=(\int u)^2&gt;0\)">\(\int f=(\int u)^2&gt;0\)</span>. The convolution formula and Fubini here are those already proved in the general Haar reading, Theorem 6.1, by reduction to an open sigma-compact subgroup. It follows that <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, proving (7).</p>
+<p>For <span class="math" data-tex="\(f\in C_c(G)\cap P(G)\)">\(f\in C_c(G)\cap P(G)\)</span>, both <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\widehat f\)">\(\widehat f\)</span> are in the appropriate <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>: <span class="math" data-tex="\(f\)">\(f\)</span> is bounded with compact support, <span class="math" data-tex="\(\widehat f\in L^1\)">\(\widehat f\in L^1\)</span> by inversion and <span class="math" data-tex="\(\widehat f\in L^2\)">\(\widehat f\in L^2\)</span> by Plancherel. Thus (9) agrees with both Plancherel transforms. The linear span of these <span class="math" data-tex="\(f\)">\(f\)</span>'s is dense in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span> by <a href="raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-proposition-3-1">HA-LCA-05, Proposition 3.1</a>. Both transforms are unitary, as is reflection by Haar-preserving inversion. Taking <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limits proves (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-general-inversion-and-uniqueness"><span id="section-4"></span>4. General inversion and uniqueness</h2>
+<p>For a finite complex Radon measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span>, write
+<span class="math" data-tex="\(\widehat\mu(\gamma)=\int_G\overline{\gamma(x)}\,d\mu(x)\)">\(\widehat\mu(\gamma)=\int_G\overline{\gamma(x)}\,d\mu(x)\)</span>.
+We now identify <span class="math" data-tex="\(D\)">\(D\)</span> with <span class="math" data-tex="\(G\)">\(G\)</span> by <span class="math" data-tex="\(J_G\)">\(J_G\)</span> when doing integrals, using (7).</p>
+<p><a id="ha-lca-09-theorem-4-1"></a>
+<strong>Theorem 4.1 — Fourier inversion for integrable transforms.</strong> If <span class="math" data-tex="\(f\in L^1(G)\)">\(f\in L^1(G)\)</span> and <span class="math" data-tex="\(\widehat f\in L^1(\Gamma)\)">\(\widehat f\in L^1(\Gamma)\)</span>, then
+<span class="math math-display" data-tex="\[
+ u(x)=\int_\Gamma \widehat f(\gamma)\gamma(x)\,d\xi(\gamma)
+ \tag{10}
+\]">\[
+ u(x)=\int_\Gamma \widehat f(\gamma)\gamma(x)\,d\xi(\gamma)
+ \tag{10}
+\]</span>
+is in <span class="math" data-tex="\(C_0(G)\cap L^1(G)\)">\(C_0(G)\cap L^1(G)\)</span> and equals <span class="math" data-tex="\(f\)">\(f\)</span> almost everywhere. If <span class="math" data-tex="\(f\)">\(f\)</span> has a continuous representative, (10) equals that representative everywhere.</p>
+<p><strong>Proof.</strong> We first prove the uniqueness fact needed in this argument, for all finite complex Radon measures. Given <span class="math" data-tex="\(\mu\in M(G)\)">\(\mu\in M(G)\)</span>, put
+<span class="math" data-tex="\(\rho=(J_G\circ(-\mathrm{id}))_*\mu\in M(D)\)">\(\rho=(J_G\circ(-\mathrm{id}))_*\mu\in M(D)\)</span>. Then
+<span class="math math-display" data-tex="\[
+ T_\Gamma\rho(\gamma)
+ =\int_G J_G(-x)(\gamma)\,d\mu(x)
+ =\widehat\mu(\gamma).
+ \tag{11}
+\]">\[
+ T_\Gamma\rho(\gamma)
+ =\int_G J_G(-x)(\gamma)\,d\mu(x)
+ =\widehat\mu(\gamma).
+ \tag{11}
+\]</span>
+If <span class="math" data-tex="\(\widehat\mu=0\)">\(\widehat\mu=0\)</span>, injectivity of <span class="math" data-tex="\(T\)">\(T\)</span> applied to the base group <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> gives <span class="math" data-tex="\(\rho=0\)">\(\rho=0\)</span>. The map <span class="math" data-tex="\(J_G\circ(-\mathrm{id})\)">\(J_G\circ(-\mathrm{id})\)</span> is a homeomorphism, so its inverse pushforward gives <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>. Thus the Fourier transform separates finite measures on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(q=\widehat f\)">\(q=\widehat f\)</span>. Formula (11) with <span class="math" data-tex="\(\mu=f\,dx\)">\(\mu=f\,dx\)</span> shows that <span class="math" data-tex="\(q\in B(\Gamma)\)">\(q\in B(\Gamma)\)</span>, and the hypothesis gives <span class="math" data-tex="\(q\in B^1(\Gamma)\)">\(q\in B^1(\Gamma)\)</span>. By HA-LCA-07, Theorem 2.1, its transform <span class="math" data-tex="\(v=\widehat q\)">\(v=\widehat q\)</span> is in <span class="math" data-tex="\(L^1(D)\)">\(L^1(D)\)</span>, and
+<span class="math math-display" data-tex="\[
+ q(\gamma)=\int_D v(\chi)\chi(\gamma)\,d\nu(\chi).
+ \tag{12}
+\]">\[
+ q(\gamma)=\int_D v(\chi)\chi(\gamma)\,d\nu(\chi).
+ \tag{12}
+\]</span>
+The general <span class="math" data-tex="\(L^1\)">\(L^1\)</span> transform theorem <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-corollary-2-2">HA-LCA-03, Corollary 2.2</a> also gives <span class="math" data-tex="\(v\in C_0(D)\)">\(v\in C_0(D)\)</span>. Define <span class="math" data-tex="\(u(x)=v(J_G(-x))\)">\(u(x)=v(J_G(-x))\)</span>. This is exactly (10), and (7) implies <span class="math" data-tex="\(u\in L^1(G)\cap C_0(G)\)">\(u\in L^1(G)\cap C_0(G)\)</span>. In (12) substitute <span class="math" data-tex="\(\chi=J_Gx\)">\(\chi=J_Gx\)</span>, then replace <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(-x\)">\(-x\)</span>. Haar inversion gives
+<span class="math math-display" data-tex="\[
+ q(\gamma)=\int_Gu(-x)\gamma(x)\,dx
+           =\int_Gu(x)\overline{\gamma(x)}\,dx=\widehat u(\gamma).
+\]">\[
+ q(\gamma)=\int_Gu(-x)\gamma(x)\,dx
+           =\int_Gu(x)\overline{\gamma(x)}\,dx=\widehat u(\gamma).
+\]</span>
+Therefore <span class="math" data-tex="\((f-u)\,dx\)">\((f-u)\,dx\)</span> has zero Fourier transform. The uniqueness just proved gives <span class="math" data-tex="\((f-u)\,dx=0\)">\((f-u)\,dx=0\)</span>, and the density/variation identity of HA-LCA-03, Lemma 4.1, gives <span class="math" data-tex="\(f=u\)">\(f=u\)</span> almost everywhere. If a continuous representative differed from <span class="math" data-tex="\(u\)">\(u\)</span> at any point, their continuous difference would have modulus bounded below by a positive constant on a nonempty open set. Haar full support makes that set have positive measure, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-corollary-4-2"></a>
+<strong>Corollary 4.2 — Uniqueness and semisimplicity.</strong> If <span class="math" data-tex="\(\mu\in M(G)\)">\(\mu\in M(G)\)</span> has <span class="math" data-tex="\(\widehat\mu=0\)">\(\widehat\mu=0\)</span>, then <span class="math" data-tex="\(\mu=0\)">\(\mu=0\)</span>. In particular the Fourier transform is injective on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>. Both commutative Banach algebras <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> and <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span> are semisimple.</p>
+<p><strong>Proof.</strong> Theorem 4.1 proved finite-measure uniqueness in (11), without an integrability assumption on <span class="math" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span>. Its application to <span class="math" data-tex="\(f\,dx\)">\(f\,dx\)</span> proves <span class="math" data-tex="\(L^1\)">\(L^1\)</span> uniqueness.</p>
+<p>For completeness, semisimplicity means that the Jacobson radical is zero. For a commutative unital Banach algebra its radical is the intersection of its maximal ideals. The <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-3-3">Banach reading, Theorem 3.3</a>, proves that these ideals are exactly character kernels. For a possibly nonunital algebra <span class="math" data-tex="\(A\)">\(A\)</span>, take the intersection with <span class="math" data-tex="\(A\)">\(A\)</span> of the radical of its unitization. <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-theorem-3-4">Theorem 3.4 of that reading</a> shows that characters of the unitization either extend a character of <span class="math" data-tex="\(A\)">\(A\)</span> or vanish on <span class="math" data-tex="\(A\)">\(A\)</span>. Thus in either case the radical equals the intersection of character kernels on <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The maps <span class="math" data-tex="\(f\mapsto\widehat f(\gamma)\)">\(f\mapsto\widehat f(\gamma)\)</span> are characters on <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, by <a href="the-dual-group-as-the-gelfand-spectrum-of-l1.html#ha-lca-03-lemma-1-2">HA-LCA-03, Lemma 1.2</a>. They separate its elements by uniqueness. For <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span>, the maps <span class="math" data-tex="\(\mu\mapsto\widehat\mu(\gamma)\)">\(\mu\mapsto\widehat\mu(\gamma)\)</span> are linear and multiplicative, since the character identity and the finite Radon product formula give
+<span class="math math-display" data-tex="\[
+ \widehat{\mu*\eta}(\gamma)
+ =\int_{G\times G}\overline{\gamma(x+y)}\,d(\mu\otimes\eta)(x,y)
+ =\widehat\mu(\gamma)\widehat\eta(\gamma).
+\]">\[
+ \widehat{\mu*\eta}(\gamma)
+ =\int_{G\times G}\overline{\gamma(x+y)}\,d(\mu\otimes\eta)(x,y)
+ =\widehat\mu(\gamma)\widehat\eta(\gamma).
+\]</span>
+The product and its full-Borel integration were proved in <a href="../prerequisites/src/finite-radon-products.html#ha-lca-pre-product-theorem-3-3">the product reading, Theorems 2.1 and 3.3</a>. These functionals are nonzero because their value on <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> is one. They too separate points by uniqueness. The intersection of all character kernels, being contained in the intersection of these kernels, is zero. This proves semisimplicity of both algebras; it does not assert that these are all the characters of <span class="math" data-tex="\(M(G)\)">\(M(G)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-corollary-4-3"></a>
+<strong>Corollary 4.3 — An integrable measure transform gives a density.</strong> If <span class="math" data-tex="\(\mu\in M(G)\)">\(\mu\in M(G)\)</span> and <span class="math" data-tex="\(\widehat\mu\in L^1(\Gamma)\)">\(\widehat\mu\in L^1(\Gamma)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \mu=u\,dx,\qquad
+ u(x)=\int_\Gamma\widehat\mu(\gamma)\gamma(x)\,d\xi(\gamma)
+       \in C_0(G)\cap L^1(G).
+ \tag{13}
+\]">\[
+ \mu=u\,dx,\qquad
+ u(x)=\int_\Gamma\widehat\mu(\gamma)\gamma(x)\,d\xi(\gamma)
+       \in C_0(G)\cap L^1(G).
+ \tag{13}
+\]</span></p>
+<p><strong>Proof.</strong> Formula (11) says that <span class="math" data-tex="\(q=\widehat\mu\in B(\Gamma)\)">\(q=\widehat\mu\in B(\Gamma)\)</span>. By hypothesis it is in <span class="math" data-tex="\(B^1(\Gamma)\)">\(B^1(\Gamma)\)</span>. Repeat the inversion step (12): <span class="math" data-tex="\(v=\widehat q\in L^1(D)\cap C_0(D)\)">\(v=\widehat q\in L^1(D)\cap C_0(D)\)</span>, and <span class="math" data-tex="\(u(x)=v(J_G(-x))\)">\(u(x)=v(J_G(-x))\)</span> is in <span class="math" data-tex="\(L^1(G)\cap C_0(G)\)">\(L^1(G)\cap C_0(G)\)</span>, has the formula (13), and satisfies <span class="math" data-tex="\(\widehat u=q\)">\(\widehat u=q\)</span>. The finite measure <span class="math" data-tex="\(\mu-u\,dx\)">\(\mu-u\,dx\)</span> therefore has zero transform. Corollary 4.2 gives <span class="math" data-tex="\(\mu=u\,dx\)">\(\mu=u\,dx\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-corollary-4-4"></a>
+<strong>Corollary 4.4 — Compact and discrete groups.</strong> For every LCA group,
+<span class="math math-display" data-tex="\[
+ G\text{ compact}\ \Longleftrightarrow\ \widehat G\text{ discrete},
+ \qquad
+ G\text{ discrete}\ \Longleftrightarrow\ \widehat G\text{ compact}.
+ \tag{14}
+\]">\[
+ G\text{ compact}\ \Longleftrightarrow\ \widehat G\text{ discrete},
+ \qquad
+ G\text{ discrete}\ \Longleftrightarrow\ \widehat G\text{ compact}.
+ \tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> The forward implications are <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-2-1">HA-LCA-02, Theorem 2.1</a>. If <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is discrete, that theorem makes <span class="math" data-tex="\(D\)">\(D\)</span> compact; if <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is compact, it makes <span class="math" data-tex="\(D\)">\(D\)</span> discrete. Theorem 2.1 identifies <span class="math" data-tex="\(G\)">\(G\)</span> homeomorphically with <span class="math" data-tex="\(D\)">\(D\)</span>, proving both converses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-maps-naturality-and-examples">5. Maps, naturality and examples</h2>
+<p><a id="ha-lca-09-proposition-5-1"></a>
+<strong>Proposition 5.1 — The duality functor.</strong> If <span class="math" data-tex="\(p:G\to H\)">\(p:G\to H\)</span> is a continuous homomorphism of LCA groups, then
+<span class="math math-display" data-tex="\[
+ \widehat p:\widehat H\longrightarrow\widehat G,\qquad
+ \widehat p(\eta)=\eta\circ p
+ \tag{15}
+\]">\[
+ \widehat p:\widehat H\longrightarrow\widehat G,\qquad
+ \widehat p(\eta)=\eta\circ p
+ \tag{15}
+\]</span>
+is a continuous homomorphism. Duality reverses composition and preserves identity maps. Evaluation satisfies
+<span class="math math-display" data-tex="\[
+ \widehat{\widehat p}\circ J_G=J_H\circ p.
+ \tag{16}
+\]">\[
+ \widehat{\widehat p}\circ J_G=J_H\circ p.
+ \tag{16}
+\]</span>
+Consequently duality is a contravariant equivalence of the category of LCA groups with itself.</p>
+<p><strong>Proof.</strong> Composition with <span class="math" data-tex="\(p\)">\(p\)</span> preserves the character identity and continuity. Multiplying characters pointwise shows that <span class="math" data-tex="\(\widehat p\)">\(\widehat p\)</span> is a homomorphism. For each compact <span class="math" data-tex="\(C\subseteq G\)">\(C\subseteq G\)</span>, its image <span class="math" data-tex="\(p(C)\)">\(p(C)\)</span> is compact, and
+<span class="math math-display" data-tex="\[
+ \sup_{x\in C}|(\eta\circ p)(x)-(\zeta\circ p)(x)|
+ =\sup_{y\in p(C)}|\eta(y)-\zeta(y)|.
+\]">\[
+ \sup_{x\in C}|(\eta\circ p)(x)-(\zeta\circ p)(x)|
+ =\sup_{y\in p(C)}|\eta(y)-\zeta(y)|.
+\]</span>
+Thus a compact-open condition on <span class="math" data-tex="\(\widehat p(\eta)\)">\(\widehat p(\eta)\)</span> is a compact-open condition on <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, proving continuity. If <span class="math" data-tex="\(r:H\to K\)">\(r:H\to K\)</span>, direct composition gives
+<span class="math" data-tex="\(\widehat{r\circ p}=\widehat p\circ\widehat r\)">\(\widehat{r\circ p}=\widehat p\circ\widehat r\)</span>; the identity formula is immediate. For <span class="math" data-tex="\(x\in G\)">\(x\in G\)</span> and <span class="math" data-tex="\(\eta\in\widehat H\)">\(\eta\in\widehat H\)</span>,
+<span class="math math-display" data-tex="\[
+ \bigl(\widehat{\widehat p}(J_Gx)\bigr)(\eta)
+ =J_Gx(\widehat p(\eta))
+ =\eta(p(x))=(J_Hp(x))(\eta),
+\]">\[
+ \bigl(\widehat{\widehat p}(J_Gx)\bigr)(\eta)
+ =J_Gx(\widehat p(\eta))
+ =\eta(p(x))=(J_Hp(x))(\eta),
+\]</span>
+which proves (16).</p>
+<p>Here is an explicit verification of equivalence. Given any continuous homomorphism <span class="math" data-tex="\(q:\widehat H\to\widehat G\)">\(q:\widehat H\to\widehat G\)</span>, define
+<span class="math" data-tex="\(p=J_H^{-1}\circ\widehat q\circ J_G:G\to H\)">\(p=J_H^{-1}\circ\widehat q\circ J_G:G\to H\)</span>.
+It is continuous, and for every <span class="math" data-tex="\(x,\eta\)">\(x,\eta\)</span>,
+<span class="math math-display" data-tex="\[
+ (\widehat p(\eta))(x)
+ =J_H(p(x))(\eta)
+ =(\widehat q(J_Gx))(\eta)
+ =(q(\eta))(x).
+\]">\[
+ (\widehat p(\eta))(x)
+ =J_H(p(x))(\eta)
+ =(\widehat q(J_Gx))(\eta)
+ =(q(\eta))(x).
+\]</span>
+Hence <span class="math" data-tex="\(\widehat p=q\)">\(\widehat p=q\)</span>. If two maps have the same dual, all characters of <span class="math" data-tex="\(H\)">\(H\)</span> agree on their values, so character separation gives equality of the maps. Thus duality gives a bijection on each reversed homomorphism set. Finally every <span class="math" data-tex="\(H\)">\(H\)</span> is isomorphic to <span class="math" data-tex="\(\widehat{\widehat H}\)">\(\widehat{\widehat H}\)</span> by Theorem 2.1, so every object is isomorphic to an object in the image of duality. These are precisely full faithfulness and essential surjectivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-example-5-2"></a>
+<strong>Example 5.2 — The familiar double duals.</strong> With characters <span class="math" data-tex="\(x\mapsto e^{2\pi itx}\)">\(x\mapsto e^{2\pi itx}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, evaluation identifies the double dual with the original real coordinate. Evaluation likewise gives the usual double-dual identifications of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> and finite abelian groups.</p>
+<p><strong>Proof.</strong> <a href="characters-and-the-dual-group.html#ha-lca-02-theorem-3-1">HA-LCA-02, Theorem 3.1 and Corollary 3.2</a> prove the topological identifications <span class="math" data-tex="\(\widehat{\mathbb R}=\mathbb R\)">\(\widehat{\mathbb R}=\mathbb R\)</span>, <span class="math" data-tex="\(\widehat{\mathbb Z}=\mathbb T\)">\(\widehat{\mathbb Z}=\mathbb T\)</span>, and <span class="math" data-tex="\(\widehat{\mathbb T}=\mathbb Z\)">\(\widehat{\mathbb T}=\mathbb Z\)</span>. Under the first, <span class="math" data-tex="\(J_{\mathbb R}(x)\)">\(J_{\mathbb R}(x)\)</span> is the character <span class="math" data-tex="\(t\mapsto e^{2\pi itx}\)">\(t\mapsto e^{2\pi itx}\)</span>, whose parameter is <span class="math" data-tex="\(x\)">\(x\)</span>. On <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, the character with parameter <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span> sends <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(z^n\)">\(z^n\)</span>; hence <span class="math" data-tex="\(J_{\mathbb Z}(n)\)">\(J_{\mathbb Z}(n)\)</span> is precisely <span class="math" data-tex="\(z\mapsto z^n\)">\(z\mapsto z^n\)</span>, with integer parameter <span class="math" data-tex="\(n\)">\(n\)</span>. Similarly <span class="math" data-tex="\(J_{\mathbb T}(z)\)">\(J_{\mathbb T}(z)\)</span> sends <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(z^n\)">\(z^n\)</span>, recovering <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p>For finite abelian <span class="math" data-tex="\(F\)">\(F\)</span>, <a href="fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-1-3">HA-LCA-01, Theorem 1.3</a> already proves the evaluation bijection. Both groups are discrete, so it is a homeomorphism. On a cyclic factor <span class="math" data-tex="\(\mathbb Z/N\mathbb Z\)">\(\mathbb Z/N\mathbb Z\)</span>, the formula is <span class="math" data-tex="\(J(a)(k)=e^{2\pi iak/N}\)">\(J(a)(k)=e^{2\pi iak/N}\)</span>; products give the same coordinatewise formula for every finite abelian group. Theorem 2.1 extends these calculations to all LCA groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-example-5-3"></a>
+<strong>Example 5.3 — The dual of the integer inclusion.</strong> For <span class="math" data-tex="\(i:\mathbb Z\hookrightarrow\mathbb R\)">\(i:\mathbb Z\hookrightarrow\mathbb R\)</span>, the dual map, in the preceding coordinates, is
+<span class="math math-display" data-tex="\[
+ \widehat i:\mathbb R\longrightarrow\mathbb T,\qquad t\longmapsto e^{2\pi it}.
+ \tag{17}
+\]">\[
+ \widehat i:\mathbb R\longrightarrow\mathbb T,\qquad t\longmapsto e^{2\pi it}.
+ \tag{17}
+\]</span>
+It is an open surjection with kernel <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Proof.</strong> Restricting <span class="math" data-tex="\(x\mapsto e^{2\pi itx}\)">\(x\mapsto e^{2\pi itx}\)</span> to the integers gives <span class="math" data-tex="\(n\mapsto(e^{2\pi it})^n\)">\(n\mapsto(e^{2\pi it})^n\)</span>, so (17) follows. Surjectivity and the stated kernel are proved in <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-1-3">HA-LCA-02, Lemma 1.3</a>. To check openness directly, fix an open <span class="math" data-tex="\(U\subseteq\mathbb R\)">\(U\subseteq\mathbb R\)</span> and <span class="math" data-tex="\(t\in U\)">\(t\in U\)</span>. Choose <span class="math" data-tex="\(0&lt;a&lt;1/2\)">\(0&lt;a&lt;1/2\)</span> with <span class="math" data-tex="\([t-a,t+a]\subseteq U\)">\([t-a,t+a]\subseteq U\)</span>. The image of the compact interval <span class="math" data-tex="\([t+a,t+1-a]\)">\([t+a,t+1-a]\)</span> is closed in <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> and does not contain <span class="math" data-tex="\(e^{2\pi it}\)">\(e^{2\pi it}\)</span>, by the kernel calculation. Its complement is an open neighbourhood of that point. Every circle point has a representative in <span class="math" data-tex="\([t-a,t+1-a]\)">\([t-a,t+1-a]\)</span>, so this complement is contained in the image of <span class="math" data-tex="\((t-a,t+a)\)">\((t-a,t+a)\)</span>, hence in the image of <span class="math" data-tex="\(U\)">\(U\)</span>. This proves openness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-example-5-4"></a>
+<strong>Example 5.4 — The dual of the discrete rational group.</strong> Give <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> the discrete topology. Its dual is the compact group
+<span class="math math-display" data-tex="\[
+ \Sigma=\{(z_n)_{n\ge1}\in\mathbb T^{\mathbb N}:
+                  z_n=z_{n+1}^{\,n+1}\text{ for every }n\ge1\},
+ \tag{18}
+\]">\[
+ \Sigma=\{(z_n)_{n\ge1}\in\mathbb T^{\mathbb N}:
+                  z_n=z_{n+1}^{\,n+1}\text{ for every }n\ge1\},
+ \tag{18}
+\]</span>
+called the universal solenoid. The identification is
+<span class="math" data-tex="\(\chi\mapsto(\chi(1/n!))_{n\ge1}\)">\(\chi\mapsto(\chi(1/n!))_{n\ge1}\)</span>, and <span class="math" data-tex="\(\widehat\Sigma\cong\mathbb Q_d\)">\(\widehat\Sigma\cong\mathbb Q_d\)</span>.</p>
+<p><strong>Proof.</strong> The displayed coordinates obey (18) because <span class="math" data-tex="\(1/n!=(n+1)/(n+1)!\)">\(1/n!=(n+1)/(n+1)!\)</span>. Conversely, for a compatible family define
+<span class="math math-display" data-tex="\[
+ \chi(k/n!)=z_n^k.
+ \tag{19}
+\]">\[
+ \chi(k/n!)=z_n^k.
+ \tag{19}
+\]</span>
+Every rational has this form. If <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>, compatibility gives <span class="math" data-tex="\(z_n=z_m^{m!/n!}\)">\(z_n=z_m^{m!/n!}\)</span>, so the value in (19) agrees with the denominator <span class="math" data-tex="\(m!\)">\(m!\)</span>. Two representations have a common factorial denominator and therefore give the same value. Addition after passage to such a denominator proves the character identity. Continuity is automatic on <span class="math" data-tex="\(\mathbb Q_d\)">\(\mathbb Q_d\)</span>.</p>
+<p>Compact subsets of a discrete space are finite: the singleton cover of a compact set has a finite subcover. Thus the compact-open topology on <span class="math" data-tex="\(\widehat{\mathbb Q_d}\)">\(\widehat{\mathbb Q_d}\)</span> is the topology of finitely many evaluations. Each coordinate in (18) is an evaluation, and the evaluation at any rational is a power of one coordinate by (19). Consequently the bijection and its inverse are continuous. The dual of a discrete group is compact by HA-LCA-02, Theorem 2.1; equivalently, using the arbitrary product theorem of <a href="../prerequisites/src/banach-spectrum.html#ha-lca-pre-banach-lemma-4-1">the Banach reading, Lemma 4.1</a>, (18) is a closed subgroup of the compact product <span class="math" data-tex="\(\mathbb T^{\mathbb N}\)">\(\mathbb T^{\mathbb N}\)</span>, since its defining equations are closed. Finally Theorem 2.1 and Proposition 5.1 identify its dual with <span class="math" data-tex="\(\mathbb Q_d\)">\(\mathbb Q_d\)</span>. Connectedness will follow from the fully proved criterion in Exercise 6.5. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-quotients-and-exercises">6. Quotients and exercises</h2>
+<p><a id="ha-lca-09-lemma-6-0"></a>
+<strong>Lemma 6.0 — The quotient group needed below.</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is a closed subgroup of an LCA group <span class="math" data-tex="\(H\)">\(H\)</span>, the quotient <span class="math" data-tex="\(H/K\)">\(H/K\)</span>, with its quotient topology, is LCA. The map <span class="math" data-tex="\(q:H\to H/K\)">\(q:H\to H/K\)</span> is open. A continuous character on <span class="math" data-tex="\(H\)">\(H\)</span> trivial on <span class="math" data-tex="\(K\)">\(K\)</span> descends to a unique continuous character on <span class="math" data-tex="\(H/K\)">\(H/K\)</span>.</p>
+<p><strong>Proof.</strong> For every open <span class="math" data-tex="\(U\subseteq H\)">\(U\subseteq H\)</span>,
+<span class="math" data-tex="\(q^{-1}(q(U))=U+K=\bigcup_{k\in K}(U+k)\)">\(q^{-1}(q(U))=U+K=\bigcup_{k\in K}(U+k)\)</span> is open. The quotient-topology definition therefore says that <span class="math" data-tex="\(q(U)\)">\(q(U)\)</span> is open. If <span class="math" data-tex="\(q(a)\ne q(b)\)">\(q(a)\ne q(b)\)</span>, then <span class="math" data-tex="\(a-b\notin K\)">\(a-b\notin K\)</span>. Since <span class="math" data-tex="\(K\)">\(K\)</span> is closed, group continuity gives an identity neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> with
+<span class="math" data-tex="\(a-b+W-W\subseteq H\setminus K\)">\(a-b+W-W\subseteq H\setminus K\)</span>.
+The open sets <span class="math" data-tex="\(q(a+W)\)">\(q(a+W)\)</span> and <span class="math" data-tex="\(q(b+W)\)">\(q(b+W)\)</span> are disjoint, since an intersection would put <span class="math" data-tex="\(a-b+w_1-w_2\)">\(a-b+w_1-w_2\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span>. They separate the two quotient points, proving the Hausdorff property.</p>
+<p>The product map <span class="math" data-tex="\(q\times q\)">\(q\times q\)</span> is an open surjection: images of open rectangles are open rectangles, and every product-open set is a union of rectangles. An open surjection is a quotient map, since if its full inverse image of a set is open, that set is the open image of its inverse image. The quotient addition is continuous because its composite with <span class="math" data-tex="\(q\times q\)">\(q\times q\)</span> is the continuous map <span class="math" data-tex="\((a,b)\mapsto q(a+b)\)">\((a,b)\mapsto q(a+b)\)</span>; the quotient property turns continuity of that composite into continuity of addition. Inversion is continuous by the same argument with <span class="math" data-tex="\(q\)">\(q\)</span>. The group is abelian.</p>
+<p>Choose a compact identity neighbourhood <span class="math" data-tex="\(C\subseteq H\)">\(C\subseteq H\)</span>. Its image <span class="math" data-tex="\(q(C)\)">\(q(C)\)</span> is compact and contains the open identity neighbourhood <span class="math" data-tex="\(q(\operatorname{int}C)\)">\(q(\operatorname{int}C)\)</span>. Translates give local compactness everywhere. Finally a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> trivial on <span class="math" data-tex="\(K\)">\(K\)</span> has the unique factor <span class="math" data-tex="\(\bar\chi(q(h))=\chi(h)\)">\(\bar\chi(q(h))=\chi(h)\)</span>, well-defined by the kernel condition. It is a homomorphism; for open <span class="math" data-tex="\(O\subseteq\mathbb T\)">\(O\subseteq\mathbb T\)</span>, <span class="math" data-tex="\(q^{-1}(\bar\chi^{-1}(O))=\chi^{-1}(O)\)">\(q^{-1}(\bar\chi^{-1}(O))=\chi^{-1}(O)\)</span> is open. The quotient topology proves continuity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-exercise-6-1"></a>
+<strong>Exercise 6.1 — Evaluation and point separation.</strong> Verify directly that <span class="math" data-tex="\(J_G\)">\(J_G\)</span> is a homomorphism and injective. Identify exactly where character separation enters.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+ J_G(x+y)(\gamma)=\gamma(x+y)
+                 =\gamma(x)\gamma(y)
+                 =(J_G(x)J_G(y))(\gamma).
+\]">\[
+ J_G(x+y)(\gamma)=\gamma(x+y)
+                 =\gamma(x)\gamma(y)
+                 =(J_G(x)J_G(y))(\gamma).
+\]</span>
+Thus <span class="math" data-tex="\(J_G(x+y)=J_G(x)J_G(y)\)">\(J_G(x+y)=J_G(x)J_G(y)\)</span>. If <span class="math" data-tex="\(J_G(x)=J_G(y)\)">\(J_G(x)=J_G(y)\)</span>, every character takes value one at <span class="math" data-tex="\(x-y\)">\(x-y\)</span>. <a href="raikovs-theorem-and-the-gelfand-raikov-theorem.html#ha-lca-05-corollary-4-2">HA-LCA-05, Corollary 4.2</a>, proved from Gelfand–Raikov, supplies a character with value different from one at every nonzero element. Therefore <span class="math" data-tex="\(x-y=0\)">\(x-y=0\)</span>. Injectivity uses that theorem; it is not a formal consequence of the definition of the dual. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-exercise-6-2"></a>
+<strong>Exercise 6.2 — A net proof of subgroup closedness.</strong> Prove Lemma 1.2 by considering a net in <span class="math" data-tex="\(H\)">\(H\)</span> that converges in <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(K,V\)">\(K,V\)</span> as in Lemma 1.2. Suppose <span class="math" data-tex="\(h_i\in H\)">\(h_i\in H\)</span> converges in <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. Pick an ambient identity neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(W^{-1}W\subseteq V\)">\(W^{-1}W\subseteq V\)</span>. Eventually all <span class="math" data-tex="\(h_i\)">\(h_i\)</span> lie in <span class="math" data-tex="\(xW\)">\(xW\)</span>. Fix one such index <span class="math" data-tex="\(j\)">\(j\)</span>. For every sufficiently late <span class="math" data-tex="\(i\)">\(i\)</span>,
+<span class="math math-display" data-tex="\[
+ h_j^{-1}h_i\in W^{-1}W\cap H\subseteq V\cap H\subseteq K.
+\]">\[
+ h_j^{-1}h_i\in W^{-1}W\cap H\subseteq V\cap H\subseteq K.
+\]</span>
+The tail of the net therefore lies in <span class="math" data-tex="\(h_jK\)">\(h_jK\)</span>. This set is compact and hence closed in the Hausdorff space <span class="math" data-tex="\(P\)">\(P\)</span>, by the compact-closed argument in Lemma 1.2. Its limit <span class="math" data-tex="\(x\)">\(x\)</span> belongs to <span class="math" data-tex="\(h_jK\subseteq H\)">\(h_jK\subseteq H\)</span>.</p>
+<p>This proves closedness because each point <span class="math" data-tex="\(x\in\overline H\)">\(x\in\overline H\)</span> is the limit of a net in <span class="math" data-tex="\(H\)">\(H\)</span>: direct the neighbourhoods of <span class="math" data-tex="\(x\)">\(x\)</span> by reverse inclusion and choose one point of <span class="math" data-tex="\(H\)">\(H\)</span> in each. The resulting net converges to <span class="math" data-tex="\(x\)">\(x\)</span> by the definition of convergence. No first-countability assumption is involved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-exercise-6-3"></a>
+<strong>Exercise 6.3 — Dense image.</strong> A continuous homomorphism <span class="math" data-tex="\(p:G\to H\)">\(p:G\to H\)</span> has dense image if and only if <span class="math" data-tex="\(\widehat p\)">\(\widehat p\)</span> is injective.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(p(G)\)">\(p(G)\)</span> is dense and <span class="math" data-tex="\(\eta\in\ker\widehat p\)">\(\eta\in\ker\widehat p\)</span>, the continuous character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> equals one on a dense set. The set <span class="math" data-tex="\(\eta^{-1}(\{1\})\)">\(\eta^{-1}(\{1\})\)</span> is closed, so it is all of <span class="math" data-tex="\(H\)">\(H\)</span>. Thus the kernel is trivial, which is equivalent to injectivity for a homomorphism.</p>
+<p>Conversely let <span class="math" data-tex="\(K=\overline{p(G)}\)">\(K=\overline{p(G)}\)</span>. It is a closed subgroup, by the group-continuity argument in Lemma 1.2. If <span class="math" data-tex="\(K\ne H\)">\(K\ne H\)</span>, Lemma 6.0 makes <span class="math" data-tex="\(H/K\)">\(H/K\)</span> a nontrivial LCA group. Choose a nonzero coset <span class="math" data-tex="\(q(h)\)">\(q(h)\)</span>. Character separation, HA-LCA-05, Corollary 4.2, gives a character <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> of <span class="math" data-tex="\(H/K\)">\(H/K\)</span> with <span class="math" data-tex="\(\zeta(q(h))\ne1\)">\(\zeta(q(h))\ne1\)</span>. Then <span class="math" data-tex="\(\eta=\zeta\circ q\)">\(\eta=\zeta\circ q\)</span> is a nontrivial continuous character of <span class="math" data-tex="\(H\)">\(H\)</span> trivial on <span class="math" data-tex="\(K\)">\(K\)</span>, and hence on <span class="math" data-tex="\(p(G)\)">\(p(G)\)</span>. Thus <span class="math" data-tex="\(\widehat p(\eta)=1\)">\(\widehat p(\eta)=1\)</span>, contradicting injectivity. Therefore <span class="math" data-tex="\(K=H\)">\(K=H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-exercise-6-4"></a>
+<strong>Exercise 6.4 — Open surjections.</strong> If <span class="math" data-tex="\(p:G\to H\)">\(p:G\to H\)</span> is a continuous, open, surjective homomorphism, show that its dual is injective and has the closed image
+<span class="math math-display" data-tex="\[
+ \widehat p(\widehat H)
+ =(\ker p)^\perp
+ :=\{\gamma\in\widehat G:\gamma(k)=1\text{ for every }k\in\ker p\}.
+ \tag{20}
+\]">\[
+ \widehat p(\widehat H)
+ =(\ker p)^\perp
+ :=\{\gamma\in\widehat G:\gamma(k)=1\text{ for every }k\in\ker p\}.
+ \tag{20}
+\]</span></p>
+<p><strong>Solution.</strong> Surjectivity implies injectivity of the dual: two characters agreeing after composition with <span class="math" data-tex="\(p\)">\(p\)</span> agree everywhere on <span class="math" data-tex="\(H\)">\(H\)</span>. Every character in its image is trivial on <span class="math" data-tex="\(\ker p\)">\(\ker p\)</span>. Conversely, if <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is trivial on <span class="math" data-tex="\(\ker p\)">\(\ker p\)</span>, the formula <span class="math" data-tex="\(\eta(p(x))=\gamma(x)\)">\(\eta(p(x))=\gamma(x)\)</span> is well-defined and multiplicative. For open <span class="math" data-tex="\(O\subseteq\mathbb T\)">\(O\subseteq\mathbb T\)</span>,
+<span class="math" data-tex="\(\eta^{-1}(O)=p(\gamma^{-1}(O))\)">\(\eta^{-1}(O)=p(\gamma^{-1}(O))\)</span> is open, so <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is continuous. Thus <span class="math" data-tex="\(\gamma=\widehat p(\eta)\)">\(\gamma=\widehat p(\eta)\)</span>.</p>
+<p>For each <span class="math" data-tex="\(k\in G\)">\(k\in G\)</span>, evaluation <span class="math" data-tex="\(\gamma\mapsto\gamma(k)\)">\(\gamma\mapsto\gamma(k)\)</span> is continuous in the compact-open topology, since the singleton <span class="math" data-tex="\(\{k\}\)">\(\{k\}\)</span> is compact. Its inverse image of <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span> is closed. Intersecting these closed sets over all <span class="math" data-tex="\(k\in\ker p\)">\(k\in\ker p\)</span> proves that the image in (20) is closed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-09-exercise-6-5"></a>
+<strong>Exercise 6.5 — Connected compact groups.</strong> Prove that a compact abelian group <span class="math" data-tex="\(G\)">\(G\)</span> is connected if and only if <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is torsion-free. Include a proof that the identity component of <span class="math" data-tex="\(G\)">\(G\)</span> is the intersection of its open subgroups. Deduce that the universal solenoid is connected.</p>
+<p><strong>Solution.</strong> We first supply the compact-space fact used in the group argument. A space is connected if it cannot be written as the union of two disjoint nonempty relatively open sets. A set is clopen if it is both open and closed. For a compact Hausdorff space <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>, let <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> be the intersection of all clopen neighbourhoods of <span class="math" data-tex="\(x\)">\(x\)</span>. It is closed and compact and contains <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>We claim that <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is connected. Otherwise write it as the disjoint union of two nonempty relatively clopen sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, with <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>. Both are compact, hence closed in <span class="math" data-tex="\(X\)">\(X\)</span>. The compact Hausdorff separation theorem proved in <a href="../prerequisites/src/finite-radon-representation.html#ha-lca-pre-radon-lemma-1-1">the Radon reading, Lemma 1.1</a> gives disjoint open <span class="math" data-tex="\(U,V\subseteq X\)">\(U,V\subseteq X\)</span> with <span class="math" data-tex="\(A\subseteq U\)">\(A\subseteq U\)</span>, <span class="math" data-tex="\(B\subseteq V\)">\(B\subseteq V\)</span>. The compact set <span class="math" data-tex="\(F=X\setminus(U\cup V)\)">\(F=X\setminus(U\cup V)\)</span> is disjoint from <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>. For each <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span>, some clopen neighbourhood <span class="math" data-tex="\(C_y\)">\(C_y\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> excludes <span class="math" data-tex="\(y\)">\(y\)</span>, by the definition of <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>. The sets <span class="math" data-tex="\(X\setminus C_y\)">\(X\setminus C_y\)</span> cover <span class="math" data-tex="\(F\)">\(F\)</span>. A finite subcover gives a finite intersection <span class="math" data-tex="\(C\)">\(C\)</span> of the corresponding <span class="math" data-tex="\(C_y\)">\(C_y\)</span>'s with
+<span class="math math-display" data-tex="\[
+ Q_x\subseteq C\subseteq U\cup V.
+\]">\[
+ Q_x\subseteq C\subseteq U\cup V.
+\]</span>
+If <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span>, take <span class="math" data-tex="\(C=X\)">\(C=X\)</span>. The set <span class="math" data-tex="\(C\cap U\)">\(C\cap U\)</span> is open, and its complement is the open set <span class="math" data-tex="\((X\setminus C)\cup(C\cap V)\)">\((X\setminus C)\cup(C\cap V)\)</span>. It is therefore a clopen neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span> excluding <span class="math" data-tex="\(B\)">\(B\)</span>. This contradicts <span class="math" data-tex="\(B\subseteq Q_x\)">\(B\subseteq Q_x\)</span>. Hence <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is connected.</p>
+<p>Every connected subset of <span class="math" data-tex="\(X\)">\(X\)</span> containing <span class="math" data-tex="\(x\)">\(x\)</span> lies in each clopen neighbourhood of <span class="math" data-tex="\(x\)">\(x\)</span>: otherwise that neighbourhood and its complement would separate the subset. Thus every such connected subset lies in <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span>. As <span class="math" data-tex="\(Q_x\)">\(Q_x\)</span> is itself connected, it is exactly the connected component of <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(X=G\)">\(X=G\)</span> be a compact group and let <span class="math" data-tex="\(U\)">\(U\)</span> be a clopen identity neighbourhood. The function <span class="math" data-tex="\(1_U\)">\(1_U\)</span> is continuous with compact support. Uniform translation continuity, proved in <a href="../prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-lemma-1-1">the general Haar reading, Lemma 1.1</a>, gives an identity neighbourhood <span class="math" data-tex="\(V\)">\(V\)</span> on which
+<span class="math math-display" data-tex="\[
+ \|L_v1_U-1_U\|_\infty&lt;1.
+\]">\[
+ \|L_v1_U-1_U\|_\infty&lt;1.
+\]</span>
+Both functions take only the values zero and one, so they are equal. Therefore <span class="math" data-tex="\(vU=U\)">\(vU=U\)</span>. The stabilizer
+<span class="math" data-tex="\(H_U=\{g:gU=U\}\)">\(H_U=\{g:gU=U\}\)</span> is a subgroup: the identity preserves <span class="math" data-tex="\(U\)">\(U\)</span>, compositions of preserving translations preserve it, and the inverse of a preserving translation also preserves it. It contains <span class="math" data-tex="\(V\)">\(V\)</span>, so it is open. Since <span class="math" data-tex="\(0\in U\)">\(0\in U\)</span>, every <span class="math" data-tex="\(g\in H_U\)">\(g\in H_U\)</span> belongs to <span class="math" data-tex="\(gU=U\)">\(gU=U\)</span>, hence <span class="math" data-tex="\(H_U\subseteq U\)">\(H_U\subseteq U\)</span>.</p>
+<p>Every open subgroup is closed, because its other cosets are open. It has finite index in a compact group: its cosets form an open cover, a finite subcover contains every coset, and distinct cosets are disjoint. Let <span class="math" data-tex="\(G_0\)">\(G_0\)</span> be the identity component. The compact-space argument identifies <span class="math" data-tex="\(G_0\)">\(G_0\)</span> with the intersection of all clopen identity neighbourhoods. Every open subgroup is one of these neighbourhoods, and each such neighbourhood contains an open subgroup <span class="math" data-tex="\(H_U\)">\(H_U\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ G_0=\bigcap_{\substack{H\le G\\ H\ \mathrm{open}}}H.
+ \tag{21}
+\]">\[
+ G_0=\bigcap_{\substack{H\le G\\ H\ \mathrm{open}}}H.
+ \tag{21}
+\]</span>
+This also proves, without any separate assumption about components, that <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is a closed subgroup.</p>
+<p>Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is connected and <span class="math" data-tex="\(\gamma^N=1\)">\(\gamma^N=1\)</span> for a character <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span>. Its image lies among the finitely many <span class="math" data-tex="\(N\)">\(N\)</span>-th roots of unity, whose description was proved in <a href="characters-and-the-dual-group.html#ha-lca-02-lemma-1-3">HA-LCA-02, Lemma 1.3</a>. A finite subset of a Hausdorff space is discrete in its relative topology: intersect finitely many separating neighbourhoods to isolate each point. A continuous image of a connected space is connected, since a separation of the image would pull back to a separation of the space. Thus <span class="math" data-tex="\(\gamma(G)\)">\(\gamma(G)\)</span>, being both connected and finite discrete, is a singleton. It contains one, so <span class="math" data-tex="\(\gamma=1\)">\(\gamma=1\)</span>. The dual is torsion-free.</p>
+<p>Conversely suppose <span class="math" data-tex="\(G\)">\(G\)</span> is disconnected. Then <span class="math" data-tex="\(G_0\ne G\)">\(G_0\ne G\)</span>. Formula (21) gives a proper open subgroup <span class="math" data-tex="\(H\)">\(H\)</span>. Since <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, Lemma 6.0 gives the quotient group <span class="math" data-tex="\(G/H\)">\(G/H\)</span>; it is finite by the preceding compact-cover argument and discrete because <span class="math" data-tex="\(H\)">\(H\)</span> is open. By <a href="fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-1-1">HA-LCA-01, Theorem 1.1</a>, its characters separate points. Choose a nontrivial character <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. If <span class="math" data-tex="\(m=|G/H|\)">\(m=|G/H|\)</span>, every quotient element has order dividing <span class="math" data-tex="\(m\)">\(m\)</span>, by the coset-counting proof in <a href="fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-lemma-0-0">HA-LCA-01, Lemma 0.0</a>. Hence <span class="math" data-tex="\(\zeta^m=1\)">\(\zeta^m=1\)</span>. Its pullback to <span class="math" data-tex="\(G\)">\(G\)</span> is a nontrivial finite-order continuous character, so the dual is not torsion-free. This proves the equivalence.</p>
+<p>Finally Example 5.4 gives <span class="math" data-tex="\(\widehat\Sigma\cong\mathbb Q_d\)">\(\widehat\Sigma\cong\mathbb Q_d\)</span>, and the additive rational group is torsion-free: <span class="math" data-tex="\(nq=0\)">\(nq=0\)</span>, for nonzero integer <span class="math" data-tex="\(n\)">\(n\)</span>, forces <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. The compact group <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is therefore connected. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="what-has-been-established">What has been established</h2>
+<p>Evaluation is a topological isomorphism for every LCA group. The bidual Haar measure is the original Haar measure, and two Plancherel transforms give reflection. Integrable transforms have pointwise inverse integrals representing their original <span class="math" data-tex="\(L^1\)">\(L^1\)</span> classes or finite-measure densities. Fourier transforms separate finite measures, and the two convolution algebras considered here are semisimple.</p>
+<p>All five exercises have complete solutions, including the compact-component fact required for the torsion-free criterion. The next lesson develops restriction of characters, annihilators and the full subgroup–quotient duality correspondence.</p>
+</article><footer>Self-checked by the writing AI.</footer></main></body></html>

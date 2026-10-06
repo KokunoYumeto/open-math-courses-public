@@ -1,0 +1,370 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Weyl integration formula</title><link rel="stylesheet" href="../../assets/course.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><header><nav><a href="index.html">Representations of compact groups</a><a href="roots-and-the-weyl-group-of-a-compact-lie-group.html">Previous lesson</a><a href="unitary-groups-characters-dimensions-and-branching.html">Next lesson</a></nav></header><main id="main"><article class="math"><h1 id="the-weyl-integration-formula">The Weyl integration formula</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. No separate AI review of this revision is recorded. Public domain (CC0). Revised and self-checked on 3 October 2026 by GPT-6.1 Sol (OpenAI), Ultra effort.</em></p>
+<p>Integrating over a compact group can be reduced to integrating over its maximal torus. The correction factor measures how rapidly conjugacy classes change: it vanishes when a torus element acquires extra infinitesimal symmetries. For unitary matrices this factor becomes the squared Vandermonde determinant, expressing repulsion between coincident eigenvalues.</p>
+<p>Throughout, <span class="math" data-tex="\(G\)">\(G\)</span> is a compact connected Lie group, <span class="math" data-tex="\(T\)">\(T\)</span> a maximal torus, and <span class="math" data-tex="\(W=N_G(T)/T\)">\(W=N_G(T)/T\)</span>. Haar measures <span class="math" data-tex="\(dg,dt\)">\(dg,dt\)</span> have mass one. We import the roots, multiplicity-one theorem, normalizer action and torus conjugacy from <a href="roots-and-the-weyl-group-of-a-compact-lie-group.html">Roots and the Weyl group</a>. Smooth homogeneous spaces and their local sections are <a href="../DG-FND/invariant-connections-on-homogeneous-bundles.html#section-1"><em>Invariant connections on homogeneous bundles</em>, Theorem 1.1</a>; the inverse function theorem is <a href="../DG-FND/local-tools-for-bundles-and-transport.html#section-1"><em>Local tools for bundles and transport</em>, Theorem 1.1</a>. We use the ordinary multivariable change-of-variables theorem for a smooth diffeomorphism, including nonnegative measurable functions, as a core calculus prerequisite. Covering and measure-zero assertions will be proved here.</p>
+<p>Choose positive roots <span class="math" data-tex="\(\Phi^+\)">\(\Phi^+\)</span> and define the honest function on <span class="math" data-tex="\(T\)">\(T\)</span>
+<span class="math math-display" data-tex="\[
+\Delta(t)=\prod_{\alpha\in\Phi^+}(1-\alpha(t)^{-1}),
+\qquad j(t)=|\Delta(t)|^2. \tag{1.1}
+\]">\[
+\Delta(t)=\prod_{\alpha\in\Phi^+}(1-\alpha(t)^{-1}),
+\qquad j(t)=|\Delta(t)|^2. \tag{1.1}
+\]</span>
+The modulus does not depend on the positive system: each opposite pair has the same modulus. This definition uses only characters of <span class="math" data-tex="\(T\)">\(T\)</span>. A formal factor involving the half-sum <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is unnecessary, and need not itself be a character for a group that is not simply connected.</p>
+<h2 id="measures-and-the-differential-of-conjugation">Measures and the differential of conjugation</h2>
+<p>An invariant positive inner product on <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> gives a bi-invariant metric on <span class="math" data-tex="\(G\)">\(G\)</span>, its induced metric on <span class="math" data-tex="\(T\)">\(T\)</span>, and the quotient metric on <span class="math" data-tex="\(G/T\)">\(G/T\)</span>. Write <span class="math" data-tex="\(\mathfrak m=\mathfrak t^\perp\)">\(\mathfrak m=\mathfrak t^\perp\)</span>; the quotient tangent space at <span class="math" data-tex="\(eT\)">\(eT\)</span> is identified isometrically with <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. The resulting volume measures are invariant.</p>
+<p>The probability measure <span class="math" data-tex="\(d(gT)\)">\(d(gT)\)</span> on <span class="math" data-tex="\(G/T\)">\(G/T\)</span> is also the pushforward of <span class="math" data-tex="\(dg\)">\(dg\)</span>. Here is a useful uniqueness check. If <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is any invariant probability on this transitive space and <span class="math" data-tex="\(F\)">\(F\)</span> is continuous, then
+<span class="math math-display" data-tex="\[
+\int_{G/T}F\,d\nu
+=\int_{G/T}\int_G F(gx)\,dg\,d\nu(x).
+\]">\[
+\int_{G/T}F\,d\nu
+=\int_{G/T}\int_G F(gx)\,dg\,d\nu(x).
+\]</span>
+The inner integral is independent of <span class="math" data-tex="\(x\)">\(x\)</span>, by transitivity and right invariance of <span class="math" data-tex="\(dg\)">\(dg\)</span>, and equals <span class="math" data-tex="\(\int_G F(gT)\,dg\)">\(\int_G F(gT)\,dg\)</span>. This proves uniqueness and identifies normalized quotient volume with the pushforward measure.</p>
+<p>For the unnormalized metric volumes there is the exact identity
+<span class="math math-display" data-tex="\[
+\operatorname{vol}(G)
+=\operatorname{vol}(G/T)\operatorname{vol}(T). \tag{1.2}
+\]">\[
+\operatorname{vol}(G)
+=\operatorname{vol}(G/T)\operatorname{vol}(T). \tag{1.2}
+\]</span>
+Indeed <span class="math" data-tex="\(G\to G/T\)">\(G\to G/T\)</span> has orthogonal horizontal and vertical tangent spaces, its differential is an isometry on the horizontal space, and every fiber is an isometric translate of <span class="math" data-tex="\(T\)">\(T\)</span>. In a local bundle trivialization, the horizontal/vertical change of basis is triangular with diagonal identity. The volume density is therefore the base density times the fiber density. Local integration and a partition of unity prove (1.2). This establishes the normalization before the integration formula is used.</p>
+<p>Consider the smooth map
+<span class="math math-display" data-tex="\[
+\psi:G/T\times T\longrightarrow G,\qquad
+\psi(gT,t)=gtg^{-1}. \tag{1.3}
+\]">\[
+\psi:G/T\times T\longrightarrow G,\qquad
+\psi(gT,t)=gtg^{-1}. \tag{1.3}
+\]</span>
+It is well defined because <span class="math" data-tex="\(T\)">\(T\)</span> is abelian, and is onto by the maximal torus theorem.</p>
+<p id="result-lemma-1-4"><strong>Lemma 1.4 (Jacobian).</strong> For the product metric volume on the domain and the metric volume on the target, the absolute Jacobian of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> at <span class="math" data-tex="\((gT,t)\)">\((gT,t)\)</span> is
+<span class="math math-display" data-tex="\[
+j(t)=\det_{\mathbb R}\bigl(\operatorname{Ad}(t^{-1})-1\mid\mathfrak m\bigr)
+=\prod_{\alpha\in\Phi}(1-\alpha(t))
+=\prod_{\alpha\in\Phi^+}|1-\alpha(t)|^2. \tag{1.5}
+\]">\[
+j(t)=\det_{\mathbb R}\bigl(\operatorname{Ad}(t^{-1})-1\mid\mathfrak m\bigr)
+=\prod_{\alpha\in\Phi}(1-\alpha(t))
+=\prod_{\alpha\in\Phi^+}|1-\alpha(t)|^2. \tag{1.5}
+\]</span></p>
+<p><em>Proof.</em> Conjugating the target by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> and translating the domain quotient by <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> are isometries, so compute at <span class="math" data-tex="\((eT,t)\)">\((eT,t)\)</span>. For <span class="math" data-tex="\(X\in\mathfrak m\)">\(X\in\mathfrak m\)</span> and <span class="math" data-tex="\(H\in\mathfrak t\)">\(H\in\mathfrak t\)</span>, use the curve
+<span class="math math-display" data-tex="\[
+(\exp(sX)T,t\exp(sH)).
+\]">\[
+(\exp(sX)T,t\exp(sH)).
+\]</span>
+Left translating its image tangent by <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+d\psi(X,H)=\bigl(\operatorname{Ad}(t^{-1})-1\bigr)X+H. \tag{1.6}
+\]">\[
+d\psi(X,H)=\bigl(\operatorname{Ad}(t^{-1})-1\bigr)X+H. \tag{1.6}
+\]</span>
+The operator preserves <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and the second summand is the identity on <span class="math" data-tex="\(\mathfrak t\)">\(\mathfrak t\)</span>. Thus its determinant is the determinant displayed in (1.5).</p>
+<p>Each opposite pair of roots is one real two-plane in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, by multiplicity one. On its complexification <span class="math" data-tex="\(\operatorname{Ad}(t^{-1})\)">\(\operatorname{Ad}(t^{-1})\)</span> has eigenvalues <span class="math" data-tex="\(\alpha(t)^{-1},\alpha(t)\)">\(\alpha(t)^{-1},\alpha(t)\)</span>. The determinant on that plane is
+<span class="math math-display" data-tex="\[
+(\alpha(t)^{-1}-1)(\alpha(t)-1)
+=|1-\alpha(t)|^2\geq0.
+\]">\[
+(\alpha(t)^{-1}-1)(\alpha(t)-1)
+=|1-\alpha(t)|^2\geq0.
+\]</span>
+Multiplying these contributions proves the equality and shows that no absolute-value sign changes the resulting determinant. In particular the derivative is invertible precisely when no root takes the value one. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Identity (1.2) means the same Jacobian works for the three normalized measures: the source product volume and target volume are divided by the same total volume. If <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is empty, <span class="math" data-tex="\(\mathfrak m=0\)">\(\mathfrak m=0\)</span>, the empty determinant and product are one, and <span class="math" data-tex="\(G=T\)">\(G=T\)</span>.</p>
+<h2 id="regular-elements-and-the-number-of-sheets">Regular elements and the number of sheets</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+T_{\mathrm{reg}}=\{t\in T:\alpha(t)\neq1\text{ for every }\alpha\in\Phi\},
+\qquad G_{\mathrm{reg}}=\psi(G/T\times T_{\mathrm{reg}}).
+\]">\[
+T_{\mathrm{reg}}=\{t\in T:\alpha(t)\neq1\text{ for every }\alpha\in\Phi\},
+\qquad G_{\mathrm{reg}}=\psi(G/T\times T_{\mathrm{reg}}).
+\]</span>
+This definition of regularity concerns the group element's adjoint action. Its full centralizer is allowed to have more than one component.</p>
+<p id="result-lemma-2-1"><strong>Lemma 2.1.</strong> The set <span class="math" data-tex="\(T_{\mathrm{reg}}\)">\(T_{\mathrm{reg}}\)</span> is open, dense and has full Haar measure. The set <span class="math" data-tex="\(G_{\mathrm{reg}}\)">\(G_{\mathrm{reg}}\)</span> is open and has full Haar measure. The restriction
+<span class="math math-display" data-tex="\[
+\psi:G/T\times T_{\mathrm{reg}}\longrightarrow G_{\mathrm{reg}}
+\]">\[
+\psi:G/T\times T_{\mathrm{reg}}\longrightarrow G_{\mathrm{reg}}
+\]</span>
+is a covering with exactly <span class="math" data-tex="\(|W|\)">\(|W|\)</span> points over every target element.</p>
+<p><em>Proof.</em> A nontrivial root character has nonzero differential because <span class="math" data-tex="\(T\)">\(T\)</span> is connected. Hence <span class="math" data-tex="\(\alpha:T\to S^1\)">\(\alpha:T\to S^1\)</span> is a submersion: its differential is onto at the identity and at every point by translation. Its kernel is a compact smooth submanifold of codimension one, possibly with several components. It has measure zero and empty interior in torus charts. A finite union of these kernels is closed, null and has empty interior. This proves all three assertions about <span class="math" data-tex="\(T_{\mathrm{reg}}\)">\(T_{\mathrm{reg}}\)</span>.</p>
+<p>We give the corresponding image argument, since a null set cannot in general be pushed through an arbitrary smooth map without checking dimensions. Let <span class="math" data-tex="\(d=\dim G\)">\(d=\dim G\)</span>. Each compact manifold
+<span class="math math-display" data-tex="\[
+G/T\times\ker\alpha
+\]">\[
+G/T\times\ker\alpha
+\]</span>
+has dimension <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. A smooth image of such a manifold in a <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional manifold has volume zero. To see this directly, cover the compact source by finitely many coordinate pieces with bounded first derivatives of the map, and work in finitely many target charts. A bounded <span class="math" data-tex="\(k\)">\(k\)</span>-dimensional coordinate piece can be covered by <span class="math" data-tex="\(O(\varepsilon^{-k})\)">\(O(\varepsilon^{-k})\)</span> cubes of side <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Lipschitz continuity puts each image in a ball of radius <span class="math" data-tex="\(C\varepsilon\)">\(C\varepsilon\)</span>, whose target volume is <span class="math" data-tex="\(O(\varepsilon^d)\)">\(O(\varepsilon^d)\)</span>. Thus the outer volume is <span class="math" data-tex="\(O(\varepsilon^{d-k})\)">\(O(\varepsilon^{d-k})\)</span>, tending to zero for <span class="math" data-tex="\(k&lt;d\)">\(k&lt;d\)</span>. Smaller closed chart pieces give the asserted finite cover. Applying this with <span class="math" data-tex="\(k=d-1\)">\(k=d-1\)</span> proves that the finite union of their images is null.</p>
+<p>A singular torus element cannot be conjugate to a regular torus element: the preceding lesson identifies torus conjugacy with a Weyl orbit, and <span class="math" data-tex="\(W\)">\(W\)</span> permutes roots. Surjectivity of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> consequently gives
+<span class="math math-display" data-tex="\[
+G\setminus G_{\mathrm{reg}}
+=\bigcup_{\alpha\in\Phi}\psi(G/T\times\ker\alpha). \tag{2.2}
+\]">\[
+G\setminus G_{\mathrm{reg}}
+=\bigcup_{\alpha\in\Phi}\psi(G/T\times\ker\alpha). \tag{2.2}
+\]</span>
+This is precisely the null set just considered. The inverse function theorem and Lemma 1.4 show that <span class="math" data-tex="\(G_{\mathrm{reg}}\)">\(G_{\mathrm{reg}}\)</span> is open and the restricted map is a local diffeomorphism.</p>
+<p>Next count the fiber over <span class="math" data-tex="\(s\in T_{\mathrm{reg}}\)">\(s\in T_{\mathrm{reg}}\)</span>. Its Lie centralizer is <span class="math" data-tex="\(\mathfrak t\)">\(\mathfrak t\)</span>, by the root decomposition. Hence
+<span class="math math-display" data-tex="\[
+C_G(s)^0=T. \tag{2.3}
+\]">\[
+C_G(s)^0=T. \tag{2.3}
+\]</span>
+This equality does not assert <span class="math" data-tex="\(C_G(s)=T\)">\(C_G(s)=T\)</span>. If <span class="math" data-tex="\(gtg^{-1}=s\)">\(gtg^{-1}=s\)</span> for <span class="math" data-tex="\(t\in T_{\mathrm{reg}}\)">\(t\in T_{\mathrm{reg}}\)</span>, the connected torus <span class="math" data-tex="\(gTg^{-1}\)">\(gTg^{-1}\)</span> lies in <span class="math" data-tex="\(C_G(s)^0=T\)">\(C_G(s)^0=T\)</span>; equal dimensions give <span class="math" data-tex="\(gTg^{-1}=T\)">\(gTg^{-1}=T\)</span>. Thus <span class="math" data-tex="\(g\in N_G(T)\)">\(g\in N_G(T)\)</span>. Every fiber point is therefore uniquely of the form
+<span class="math math-display" data-tex="\[
+(nT,n^{-1}sn),\qquad nT\in N_G(T)/T. \tag{2.4}
+\]">\[
+(nT,n^{-1}sn),\qquad nT\in N_G(T)/T. \tag{2.4}
+\]</span>
+There are exactly <span class="math" data-tex="\(|W|\)">\(|W|\)</span> of them. Distinct cosets give distinct first coordinates even if they happen to give the same second coordinate. Conjugating <span class="math" data-tex="\(s\)">\(s\)</span> proves the count over every point of <span class="math" data-tex="\(G_{\mathrm{reg}}\)">\(G_{\mathrm{reg}}\)</span>.</p>
+<p>The restricted map is proper. If <span class="math" data-tex="\(K\subset G_{\mathrm{reg}}\)">\(K\subset G_{\mathrm{reg}}\)</span> is compact, its preimage under the full map <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a compact subset of <span class="math" data-tex="\(G/T\times T\)">\(G/T\times T\)</span>; by (2.2) it contains no singular torus coordinate. It is therefore the preimage under the restricted map as well.</p>
+<p>Finally a proper local diffeomorphism with these finite fibers is a covering. Around a target point choose disjoint inverse-function neighborhoods of all its preimages, and shrink their target neighborhoods to a common open set. No additional preimages can occur arbitrarily near that point outside these neighborhoods: otherwise a sequence of such preimages has a convergent subsequence by properness, with limit one of the already listed fiber points, a contradiction. Shrinking once more makes this an evenly covered neighborhood. This proves the covering assertion. The empty-root case is the identity map of a torus and satisfies the same statements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example a half-turn in <span class="math" data-tex="\(SO(3)\)">\(SO(3)\)</span> is regular: the root character on its rotation torus takes the value <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its centralizer is the disconnected group <span class="math" data-tex="\(O(2)\)">\(O(2)\)</span> described in the maximal-torus lesson. Both Weyl representatives fix that torus element, but (2.4) still gives two different quotient coordinates and two sheets.</p>
+<h2 id="the-general-integration-formula">The general integration formula</h2>
+<p id="result-theorem-3-1"><strong>Theorem 3.1 (Weyl integration).</strong> For every continuous complex-valued <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span>,
+<span class="math math-display" data-tex="\[
+\int_G f(x)\,dx
+=\frac1{|W|}\int_T |\Delta(t)|^2
+\left(\int_{G/T} f(gtg^{-1})\,d(gT)\right)dt. \tag{3.2}
+\]">\[
+\int_G f(x)\,dx
+=\frac1{|W|}\int_T |\Delta(t)|^2
+\left(\int_{G/T} f(gtg^{-1})\,d(gT)\right)dt. \tag{3.2}
+\]</span>
+For a class function this reduces to
+<span class="math math-display" data-tex="\[
+\int_G f(x)\,dx
+=\frac1{|W|}\int_T f(t)|\Delta(t)|^2\,dt. \tag{3.3}
+\]">\[
+\int_G f(x)\,dx
+=\frac1{|W|}\int_T f(t)|\Delta(t)|^2\,dt. \tag{3.3}
+\]</span></p>
+<p><em>Proof.</em> On an evenly covered open subset of <span class="math" data-tex="\(G_{\mathrm{reg}}\)">\(G_{\mathrm{reg}}\)</span>, apply ordinary change of variables on each inverse sheet. The absolute Jacobian is <span class="math" data-tex="\(j(t)\)">\(j(t)\)</span>, and there are <span class="math" data-tex="\(|W|\)">\(|W|\)</span> sheets. A countable subordinate partition of unity, followed by integration, gives
+<span class="math math-display" data-tex="\[
+\int_{G/T\times T_{\mathrm{reg}}}
+f(\psi(gT,t))j(t)\,d(gT)\,dt
+=|W|\int_{G_{\mathrm{reg}}}f(x)\,dx. \tag{3.4}
+\]">\[
+\int_{G/T\times T_{\mathrm{reg}}}
+f(\psi(gT,t))j(t)\,d(gT)\,dt
+=|W|\int_{G_{\mathrm{reg}}}f(x)\,dx. \tag{3.4}
+\]</span>
+One can first use nonnegative functions and sum by monotone convergence, then apply the result to real and imaginary positive and negative parts. Countable partitions exist because these are finite-dimensional second-countable manifolds. Lemma 2.1 permits replacing <span class="math" data-tex="\(G_{\mathrm{reg}}\)">\(G_{\mathrm{reg}}\)</span> by <span class="math" data-tex="\(G\)">\(G\)</span>. The omitted source set is null; also <span class="math" data-tex="\(j\)">\(j\)</span> is zero there. Replacing <span class="math" data-tex="\(T_{\mathrm{reg}}\)">\(T_{\mathrm{reg}}\)</span> by <span class="math" data-tex="\(T\)">\(T\)</span> is therefore valid. The normalized volume identity (1.2) and Fubini now give (3.2). Conjugation invariance makes its inner integral exactly <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span>, proving (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular
+<span class="math math-display" data-tex="\[
+\int_T|\Delta(t)|^2\,dt=|W|. \tag{3.5}
+\]">\[
+\int_T|\Delta(t)|^2\,dt=|W|. \tag{3.5}
+\]</span>
+This normalization follows from the proved formula with <span class="math" data-tex="\(f=1\)">\(f=1\)</span>; it was not assumed to fix an unknown constant in the proof.</p>
+<p>The character orthogonality from <a href="fourier-analysis-and-class-functions-on-compact-groups.html">Fourier analysis and class functions</a> consequently takes the torus form
+<span class="math math-display" data-tex="\[
+\frac1{|W|}\int_T
+\chi_\pi(t)\overline{\chi_\sigma(t)}|\Delta(t)|^2\,dt
+=\delta_{\pi\sigma}.
+\]">\[
+\frac1{|W|}\int_T
+\chi_\pi(t)\overline{\chi_\sigma(t)}|\Delta(t)|^2\,dt
+=\delta_{\pi\sigma}.
+\]</span>
+Thus the torus's weighted measure computes the same character inner products as Haar measure on <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="three-classical-densities">Three classical densities</h2>
+<p>For <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span>, let <span class="math" data-tex="\(t_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta})\)">\(t_\theta=\operatorname{diag}(e^{i\theta},e^{-i\theta})\)</span>. Its positive root is <span class="math" data-tex="\(e^{2i\theta}\)">\(e^{2i\theta}\)</span>, so <span class="math" data-tex="\(j(t_\theta)=4\sin^2\theta\)">\(j(t_\theta)=4\sin^2\theta\)</span> and <span class="math" data-tex="\(|W|=2\)">\(|W|=2\)</span>. Formula (3.3) gives
+<span class="math math-display" data-tex="\[
+\int_{SU(2)}f(g)\,dg
+=\frac1\pi\int_0^{2\pi}f(t_\theta)\sin^2\theta\,d\theta
+=\frac2\pi\int_0^\pi f(t_\theta)\sin^2\theta\,d\theta. \tag{4.1}
+\]">\[
+\int_{SU(2)}f(g)\,dg
+=\frac1\pi\int_0^{2\pi}f(t_\theta)\sin^2\theta\,d\theta
+=\frac2\pi\int_0^\pi f(t_\theta)\sin^2\theta\,d\theta. \tag{4.1}
+\]</span>
+The last equality uses Weyl symmetry <span class="math" data-tex="\(\theta\mapsto2\pi-\theta\)">\(\theta\mapsto2\pi-\theta\)</span>. This agrees with the independent round-three-sphere calculation in the <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> lesson.</p>
+<p>The trace is <span class="math" data-tex="\(x=2\cos\theta\)">\(x=2\cos\theta\)</span>. Changing variables on <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span> gives its probability density
+<span class="math math-display" data-tex="\[
+\rho(x)=\frac{\sqrt{4-x^2}}{2\pi}\,\mathbf1_{[-2,2]}(x). \tag{4.2}
+\]">\[
+\rho(x)=\frac{\sqrt{4-x^2}}{2\pi}\,\mathbf1_{[-2,2]}(x). \tag{4.2}
+\]</span>
+This is the semicircle distribution on that interval. Its odd moments vanish by symmetry, and its even moments are
+<span class="math math-display" data-tex="\[
+\int x^{2k}\rho(x)\,dx
+=\frac1{k+1}\binom{2k}{k}. \tag{4.3}
+\]">\[
+\int x^{2k}\rho(x)\,dx
+=\frac1{k+1}\binom{2k}{k}. \tag{4.3}
+\]</span>
+For example substituting <span class="math" data-tex="\(x=2u\)">\(x=2u\)</span> expresses the integral as
+<span class="math math-display" data-tex="\[
+\frac{2^{2k+1}}{\pi}
+B\left(k+\tfrac12,\tfrac32\right).
+\]">\[
+\frac{2^{2k+1}}{\pi}
+B\left(k+\tfrac12,\tfrac32\right).
+\]</span>
+The beta integral <span class="math" data-tex="\(B(a,b)=\int_0^1 v^{a-1}(1-v)^{b-1}\,dv\)">\(B(a,b)=\int_0^1 v^{a-1}(1-v)^{b-1}\,dv\)</span>, its integration-by-parts recurrence, and <span class="math" data-tex="\(B(\tfrac12,\tfrac32)=\pi/2\)">\(B(\tfrac12,\tfrac32)=\pi/2\)</span> give (4.3). In particular the second, fourth and sixth moments are <span class="math" data-tex="\(1,2,5\)">\(1,2,5\)</span>. Also, using the characters <span class="math" data-tex="\(\chi_m(t_\theta)=\sin((m+1)\theta)/\sin\theta\)">\(\chi_m(t_\theta)=\sin((m+1)\theta)/\sin\theta\)</span> established earlier, (4.1) reduces their orthogonality directly to
+<span class="math math-display" data-tex="\[
+\frac2\pi\int_0^\pi
+\sin((m+1)\theta)\sin((n+1)\theta)\,d\theta=\delta_{mn}.
+\]">\[
+\frac2\pi\int_0^\pi
+\sin((m+1)\theta)\sin((n+1)\theta)\,d\theta=\delta_{mn}.
+\]</span>
+Endpoint values are taken by continuity.</p>
+<p id="result-corollary-4-4"><strong>Corollary 4.4 (unitary Vandermonde density).</strong> For every continuous class function on <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{U(n)}f(g)\,dg
+=\frac1{n!}\int_{[0,2\pi)^n}
+f(\operatorname{diag}(e^{i\theta_1},\ldots,e^{i\theta_n}))
+\prod_{j&lt;k}|e^{i\theta_j}-e^{i\theta_k}|^2
+\frac{d\theta_1\cdots d\theta_n}{(2\pi)^n}. \tag{4.5}
+\]">\[
+\int_{U(n)}f(g)\,dg
+=\frac1{n!}\int_{[0,2\pi)^n}
+f(\operatorname{diag}(e^{i\theta_1},\ldots,e^{i\theta_n}))
+\prod_{j&lt;k}|e^{i\theta_j}-e^{i\theta_k}|^2
+\frac{d\theta_1\cdots d\theta_n}{(2\pi)^n}. \tag{4.5}
+\]</span></p>
+<p><em>Proof.</em> The positive roots are <span class="math" data-tex="\(z_jz_k^{-1}\)">\(z_jz_k^{-1}\)</span> for <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>, and <span class="math" data-tex="\(W=S_n\)">\(W=S_n\)</span>. Since <span class="math" data-tex="\(|z_j|=|z_k|=1\)">\(|z_j|=|z_k|=1\)</span>, their factors satisfy <span class="math" data-tex="\(|1-z_k/z_j|=|z_j-z_k|\)">\(|1-z_k/z_j|=|z_j-z_k|\)</span>. Substitute into (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the density for labeled eigenangles. On an ordered chamber one multiplies the density by <span class="math" data-tex="\(n!\)">\(n!\)</span>, since each generic unordered spectrum has that many labelings. For <span class="math" data-tex="\(U(2)\)">\(U(2)\)</span>, its density relative to <span class="math" data-tex="\(d\theta_1d\theta_2/(2\pi)^2\)">\(d\theta_1d\theta_2/(2\pi)^2\)</span> is
+<span class="math math-display" data-tex="\[
+\tfrac12|e^{i\theta_1}-e^{i\theta_2}|^2
+=1-\cos(\theta_1-\theta_2).
+\]">\[
+\tfrac12|e^{i\theta_1}-e^{i\theta_2}|^2
+=1-\cos(\theta_1-\theta_2).
+\]</span>
+It integrates to one and vanishes when the eigenvalues coincide.</p>
+<p>Write <span class="math" data-tex="\(Sp(r)=USp(2r)\)">\(Sp(r)=USp(2r)\)</span>, to distinguish quaternionic dimension <span class="math" data-tex="\(r\)">\(r\)</span> from complex matrix size <span class="math" data-tex="\(2r\)">\(2r\)</span>. Its torus eigenvalues are <span class="math" data-tex="\(e^{\pm i\theta_j}\)">\(e^{\pm i\theta_j}\)</span>, and <span class="math" data-tex="\(|W|=2^r r!\)">\(|W|=2^r r!\)</span>. From the positive roots <span class="math" data-tex="\(2\varepsilon_j,\varepsilon_j-\varepsilon_k,\varepsilon_j+\varepsilon_k\)">\(2\varepsilon_j,\varepsilon_j-\varepsilon_k,\varepsilon_j+\varepsilon_k\)</span> we obtain
+<span class="math math-display" data-tex="\[
+j(\theta)=\prod_{j=1}^r4\sin^2\theta_j
+\prod_{j&lt;k}(2\cos\theta_j-2\cos\theta_k)^2.
+\]">\[
+j(\theta)=\prod_{j=1}^r4\sin^2\theta_j
+\prod_{j&lt;k}(2\cos\theta_j-2\cos\theta_k)^2.
+\]</span>
+Indeed the pair of two-index factors is
+<span class="math math-display" data-tex="\[
+|1-e^{-i(\theta_j-\theta_k)}|^2
+|1-e^{-i(\theta_j+\theta_k)}|^2
+=(2\cos\theta_j-2\cos\theta_k)^2.
+\]">\[
+|1-e^{-i(\theta_j-\theta_k)}|^2
+|1-e^{-i(\theta_j+\theta_k)}|^2
+=(2\cos\theta_j-2\cos\theta_k)^2.
+\]</span>
+Folding all sign changes to <span class="math" data-tex="\([0,\pi]^r\)">\([0,\pi]^r\)</span> gives, for a class function <span class="math" data-tex="\(F\)">\(F\)</span>,
+<span class="math math-display" data-tex="\[
+\int_{Sp(r)}F(g)\,dg
+=\frac1{r!}\left(\frac2\pi\right)^r
+\int_{[0,\pi]^r}F(t_\theta)
+\prod_j\sin^2\theta_j
+\prod_{j&lt;k}(2\cos\theta_j-2\cos\theta_k)^2\,d\theta. \tag{4.6}
+\]">\[
+\int_{Sp(r)}F(g)\,dg
+=\frac1{r!}\left(\frac2\pi\right)^r
+\int_{[0,\pi]^r}F(t_\theta)
+\prod_j\sin^2\theta_j
+\prod_{j&lt;k}(2\cos\theta_j-2\cos\theta_k)^2\,d\theta. \tag{4.6}
+\]</span>
+Putting <span class="math" data-tex="\(x_j=2\cos\theta_j\)">\(x_j=2\cos\theta_j\)</span> gives the second form
+<span class="math math-display" data-tex="\[
+\int_{Sp(r)}F(g)\,dg
+=\frac1{r!(2\pi)^r}\int_{[-2,2]^r}
+F(t_{\arccos(x/2)})
+\prod_{j&lt;k}(x_j-x_k)^2
+\prod_j\sqrt{4-x_j^2}\,dx. \tag{4.7}
+\]">\[
+\int_{Sp(r)}F(g)\,dg
+=\frac1{r!(2\pi)^r}\int_{[-2,2]^r}
+F(t_{\arccos(x/2)})
+\prod_{j&lt;k}(x_j-x_k)^2
+\prod_j\sqrt{4-x_j^2}\,dx. \tag{4.7}
+\]</span>
+These are the two symplectic Sato–Tate measures in Lachaud's Theorem 3.1 and Proposition 3.2.</p>
+<p>For <span class="math" data-tex="\(USp(4)\)">\(USp(4)\)</span>, the density on the entire square is therefore
+<span class="math math-display" data-tex="\[
+\lambda_2(x,y)=\frac{(x-y)^2}{8\pi^2}
+\sqrt{(4-x^2)(4-y^2)}
+=\tfrac12(x-y)^2\rho(x)\rho(y). \tag{4.8}
+\]">\[
+\lambda_2(x,y)=\frac{(x-y)^2}{8\pi^2}
+\sqrt{(4-x^2)(4-y^2)}
+=\tfrac12(x-y)^2\rho(x)\rho(y). \tag{4.8}
+\]</span>
+Its mass is <span class="math" data-tex="\(\tfrac12(1+1)=1\)">\(\tfrac12(1+1)=1\)</span>, using the first two semicircle moments. Its trace is <span class="math" data-tex="\(x+y\)">\(x+y\)</span>, with
+<span class="math math-display" data-tex="\[
+\mathbb E(\operatorname{tr}g)^2
+=\tfrac12(2+2-2)=1,\qquad
+\mathbb E(\operatorname{tr}g)^4
+=\tfrac12(5+5-2-2)=3.
+\]">\[
+\mathbb E(\operatorname{tr}g)^2
+=\tfrac12(2+2-2)=1,\qquad
+\mathbb E(\operatorname{tr}g)^4
+=\tfrac12(5+5-2-2)=3.
+\]</span>
+For the second equality expand <span class="math" data-tex="\((x+y)^4(x-y)^2\)">\((x+y)^4(x-y)^2\)</span>: its even part is <span class="math" data-tex="\(x^6+y^6-x^4y^2-x^2y^4\)">\(x^6+y^6-x^4y^2-x^2y^4\)</span>, and odd terms integrate to zero. The ordered region <span class="math" data-tex="\(x&lt;y\)">\(x&lt;y\)</span> has twice the density in (4.8). Lachaud's Examples 3.3 prints <span class="math" data-tex="\(1/(4\pi^2)\)">\(1/(4\pi^2)\)</span> for <span class="math" data-tex="\(\lambda_2\)">\(\lambda_2\)</span>; interpreted on the whole square as defined in Proposition 3.2, that coefficient gives mass two. Formula (4.8) retains the proposition's normalization.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Check Theorem 3.1 for <span class="math" data-tex="\(SU(2)\)">\(SU(2)\)</span> against the round-sphere formula, and derive the trace distribution.</p>
+<p><em>Solution.</em> The torus character lattice has roots <span class="math" data-tex="\(\pm2\)">\(\pm2\)</span>, so the one positive-root factor gives <span class="math" data-tex="\(4\sin^2\theta\)">\(4\sin^2\theta\)</span>. Haar measure on the torus is <span class="math" data-tex="\(d\theta/(2\pi)\)">\(d\theta/(2\pi)\)</span> and the Weyl order is two. Their product is <span class="math" data-tex="\(\sin^2\theta\,d\theta/\pi\)">\(\sin^2\theta\,d\theta/\pi\)</span> on the full circle. The two Weyl-related halves agree for class functions, yielding <span class="math" data-tex="\(2\sin^2\theta\,d\theta/\pi\)">\(2\sin^2\theta\,d\theta/\pi\)</span> on <span class="math" data-tex="\([0,\pi]\)">\([0,\pi]\)</span>. Its mass is one since <span class="math" data-tex="\(\int_0^\pi\sin^2\theta\,d\theta=\pi/2\)">\(\int_0^\pi\sin^2\theta\,d\theta=\pi/2\)</span>. Under <span class="math" data-tex="\(x=2\cos\theta\)">\(x=2\cos\theta\)</span>, <span class="math" data-tex="\(|dx|=2\sin\theta\,d\theta\)">\(|dx|=2\sin\theta\,d\theta\)</span>, so the pushed-forward density is <span class="math" data-tex="\(\sin\theta/\pi=\sqrt{4-x^2}/(2\pi)\)">\(\sin\theta/\pi=\sqrt{4-x^2}/(2\pi)\)</span>. This proves (4.2), including the normalization.</p>
+<p><strong>Exercise 2 (medium).</strong> Derive Corollary 4.4, and independently check its normalization by torus Fourier orthogonality.</p>
+<p><em>Solution.</em> On the diagonal torus of <span class="math" data-tex="\(U(n)\)">\(U(n)\)</span>, conjugating <span class="math" data-tex="\(E_{jk}\)">\(E_{jk}\)</span> multiplies it by <span class="math" data-tex="\(z_j/z_k\)">\(z_j/z_k\)</span>. The positive-root product thus has squared modulus <span class="math" data-tex="\(\prod_{j&lt;k}|z_j-z_k|^2\)">\(\prod_{j&lt;k}|z_j-z_k|^2\)</span>, and the normalizer quotient is the <span class="math" data-tex="\(n!\)">\(n!\)</span> coordinate permutations. This gives (4.5).</p>
+<p>For the independent check, put
+<span class="math math-display" data-tex="\[
+D(z)=\det[z_j^{\,n-i}]_{i,j=1}^n.
+\]">\[
+D(z)=\det[z_j^{\,n-i}]_{i,j=1}^n.
+\]</span>
+Its modulus squared is the same Vandermonde product. Expand the determinant: its <span class="math" data-tex="\(n!\)">\(n!\)</span> monomials have distinct exponent tuples and coefficients <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The monomials <span class="math" data-tex="\(z_1^{a_1}\cdots z_n^{a_n}\)">\(z_1^{a_1}\cdots z_n^{a_n}\)</span> are orthonormal in normalized torus measure, because <span class="math" data-tex="\(\int_{S^1}z^k\,dz=0\)">\(\int_{S^1}z^k\,dz=0\)</span> unless <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, when it is one. Hence <span class="math" data-tex="\(\int_{T^n}|D|^2=n!\)">\(\int_{T^n}|D|^2=n!\)</span>. Dividing by <span class="math" data-tex="\(n!\)">\(n!\)</span> gives mass one, including <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, where the determinant is the constant one.</p>
+<p><strong>Exercise 3 (medium).</strong> Compute
+<span class="math math-display" data-tex="\[
+\int_{U(n)}|\operatorname{tr}g|^2\,dg=1,
+\qquad
+\int_{U(n)}|\operatorname{tr}g|^4\,dg=2\quad(n\geq2).
+\]">\[
+\int_{U(n)}|\operatorname{tr}g|^2\,dg=1,
+\qquad
+\int_{U(n)}|\operatorname{tr}g|^4\,dg=2\quad(n\geq2).
+\]</span></p>
+<p><em>Solution.</em> Write <span class="math" data-tex="\(p(z)=\sum_jz_j\)">\(p(z)=\sum_jz_j\)</span>, and for a strictly decreasing integer tuple <span class="math" data-tex="\(a\)">\(a\)</span> write <span class="math" data-tex="\(D_a(z)=\det[z_j^{a_i}]\)">\(D_a(z)=\det[z_j^{a_i}]\)</span>. Torus orthogonality gives <span class="math" data-tex="\(\|D_a\|^2=n!\)">\(\|D_a\|^2=n!\)</span>; determinants with different unordered exponent sets are orthogonal. Expanding the determinant shows
+<span class="math math-display" data-tex="\[
+pD_a=\sum_{i=1}^n D_{a+e_i}. \tag{5.1}
+\]">\[
+pD_a=\sum_{i=1}^n D_{a+e_i}. \tag{5.1}
+\]</span>
+Here <span class="math" data-tex="\(e_i\)">\(e_i\)</span> raises the <span class="math" data-tex="\(i\)">\(i\)</span>-th row exponent by one, and a term with repeated row exponents is zero. Each monomial multiplied by <span class="math" data-tex="\(z_j\)">\(z_j\)</span> raises the exponent belonging to its unique row assigned to column <span class="math" data-tex="\(j\)">\(j\)</span>, which proves (5.1).</p>
+<p>For <span class="math" data-tex="\(\delta=(n-1,n-2,\ldots,0)\)">\(\delta=(n-1,n-2,\ldots,0)\)</span>, every term except the first has a collision. Thus
+<span class="math math-display" data-tex="\[
+pD_\delta=D_{\delta+e_1}.
+\]">\[
+pD_\delta=D_{\delta+e_1}.
+\]</span>
+Weyl integration now gives <span class="math" data-tex="\(\int|p|^2=\|pD_\delta\|^2/n!=1\)">\(\int|p|^2=\|pD_\delta\|^2/n!=1\)</span>.</p>
+<p>If <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, raising an exponent in <span class="math" data-tex="\(\delta+e_1\)">\(\delta+e_1\)</span> is nonzero only for its first two rows. Hence
+<span class="math math-display" data-tex="\[
+p^2D_\delta=D_{\delta+2e_1}+D_{\delta+e_1+e_2}. \tag{5.2}
+\]">\[
+p^2D_\delta=D_{\delta+2e_1}+D_{\delta+e_1+e_2}. \tag{5.2}
+\]</span>
+Both exponent tuples are strictly decreasing and have different exponent sets. Their determinants are orthogonal and each has norm squared <span class="math" data-tex="\(n!\)">\(n!\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\int_{U(n)}|\operatorname{tr}g|^4\,dg
+=\frac{\|p^2D_\delta\|^2}{n!}=2.
+\]">\[
+\int_{U(n)}|\operatorname{tr}g|^4\,dg
+=\frac{\|p^2D_\delta\|^2}{n!}=2.
+\]</span>
+For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-tex="\(|\operatorname{tr}g|=1\)">\(|\operatorname{tr}g|=1\)</span>, so the fourth moment is one. The dimension restriction is necessary.</p>
+<p><strong>Exercise 4 (hard).</strong> Prove the regular-set and covering assertions, explaining why disconnected centralizers do not change the degree.</p>
+<p><em>Solution.</em> Each root character is a submersion onto the circle. Its kernel is a compact codimension-one submanifold, so the finite union of the kernels is null and nowhere dense. The conjugation map sends <span class="math" data-tex="\(G/T\times\ker\alpha\)">\(G/T\times\ker\alpha\)</span>, of dimension <span class="math" data-tex="\(\dim G-1\)">\(\dim G-1\)</span>, into <span class="math" data-tex="\(G\)">\(G\)</span>. The coordinate cube estimate in Lemma 2.1 proves these images null; root invariance under Weyl conjugacy identifies their union exactly with the singular complement.</p>
+<p>At every remaining domain point, (1.6) is invertible, so the map is a local diffeomorphism onto the open regular image. For <span class="math" data-tex="\(s\in T_{\mathrm{reg}}\)">\(s\in T_{\mathrm{reg}}\)</span>, its identity-component centralizer is <span class="math" data-tex="\(T\)">\(T\)</span>. Every fiber point has <span class="math" data-tex="\(gTg^{-1}\subset C_G(s)^0=T\)">\(gTg^{-1}\subset C_G(s)^0=T\)</span>, forcing <span class="math" data-tex="\(g\)">\(g\)</span> to normalize <span class="math" data-tex="\(T\)">\(T\)</span>. Thus the fiber is exactly (2.4). Even a nontrivial stabilizer of <span class="math" data-tex="\(s\)">\(s\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span> produces distinct first coordinates, so the count remains <span class="math" data-tex="\(|W|\)">\(|W|\)</span>. Preimages of compact subsets of the regular image are compact under the full conjugation map and contain no singular coordinate, proving properness. The inverse-sheet neighborhoods and properness argument in Lemma 2.1 then give an evenly covered neighborhood of each target point. This proves all the assertions without assuming the full element centralizer connected.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Bourgade, <em>On random matrices and L-functions</em>, Chapter 1, Section 3, gives a probabilistic route to the unitary formula; its introductory statement is on PDF page 13. Lachaud, <em>On the distribution of the trace in the unitary symplectic group and the distribution of Frobenius</em>, Theorem 3.1 and Proposition 3.2, supplies the two symplectic forms. The numerical Haar density here is proved by (4.1), and was also proved geometrically in the earlier lesson.</p>
+<p>The proof above establishes the general compact connected formula directly from the root decomposition and local change of variables. It does not import a probabilistic conditioning argument. A root-free torus is included, as are groups with a central torus and groups that are not simply connected. No character formula or highest-weight classification is needed.</p>
+<h2 id="accessible-source-notes">Accessible source notes</h2>
+<p>Pavel Etingof, <a href="https://arxiv.org/abs/2201.09397v5"><em>Lie Groups and Lie Algebras</em>, arXiv:2201.09397v5</a>, 23 May 2026 (accessed 3 October 2026), §27. The Weyl character and dimension formulas provide context for the alternating root products. The integration theorem, its degree and its probability normalization are proved above and do not depend on a source character formula.</p>
+</article></main><footer>Original lesson text and solutions: CC0 1.0. Mathematical sources are credited in each lesson. <a href="../../assets/mathjax/LICENSE">MathJax licence</a> · <a href="../../assets/mathjax/FONT-LICENSES.txt">Font licences</a> · <a href="src/RT-CPT-08.provenance.json">Source and result records</a></footer></body></html>

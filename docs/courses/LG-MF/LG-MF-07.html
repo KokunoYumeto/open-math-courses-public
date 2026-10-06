@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Petersson inner product and Poincaré series · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-07.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-petersson-inner-product-and-poincaré-series">The Petersson inner product and Poincaré series</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Fourier coefficient is a linear functional on the finite-dimensional space of cusp forms. We will construct a cusp form that represents this functional by integration. The construction averages one exponential over the modular group; its convergence, its values at the cusps, and the integral obtained by unfolding will all be proved.</p>
+<p>We assume <a href="LG-MF-06.html">Dimension formulas for congruence subgroups</a>, the slash and cusp conventions of <a href="LG-MF-04.html">Modular forms, lattice functions and Eisenstein series</a>, and basic measure theory, including Tonelli's and Fubini's theorems. The Petersson pairing and the coefficient estimate apply to every finite-index subgroup <span class="math" data-tex="\(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\)">\(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\)</span>. The Poincaré series displayed below are for <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, including level one, and even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>. We will also construct the Eisenstein complement for every finite-index group in those even weights.</p>
+<p>Write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, <span class="math" data-tex="\(d\mu=dx\,dy/y^2\)">\(d\mu=dx\,dy/y^2\)</span>, and
+<span class="math math-display" data-tex="\[
+d_\Gamma=[\mathrm{PSL}_2(\mathbb Z):\bar\Gamma].
+\]">\[
+d_\Gamma=[\mathrm{PSL}_2(\mathbb Z):\bar\Gamma].
+\]</span>
+All scalar products are linear in their first variable.</p>
+<p><strong>Lemma 0.1 (analytic consequences used below and in later lessons).</strong> A bounded holomorphic function on a punctured disk has a removable singularity. A bounded entire function is constant. Every nonconstant complex polynomial has a complex root. If a function has a Laurent series converging uniformly on each compact subannulus about its only isolated singularity, its integral around a positively oriented simple contour enclosing that singularity is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> times the coefficient of <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> We use the circle formula, its coefficient bounds, and contour deformation proved in <a href="LG-MF-01.html">The upper half-plane and the modular group</a>, Lemma 0.2. For the removable assertion translate the puncture to zero and suppose <span class="math" data-tex="\(|f|\le M\)">\(|f|\le M\)</span>. Set <span class="math" data-tex="\(g(z)=z^2f(z)\)">\(g(z)=z^2f(z)\)</span> off zero and <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> is continuous and <span class="math" data-tex="\(g&#x27;(0)=\lim_{z\to0}zf(z)=0\)">\(g&#x27;(0)=\lim_{z\to0}zf(z)=0\)</span>, so it is holomorphic on the disk. Its local power series has zero constant and linear coefficients. Dividing the remaining series by <span class="math" data-tex="\(z^2\)">\(z^2\)</span> extends <span class="math" data-tex="\(f\)">\(f\)</span> holomorphically.</p>
+<p>For a bounded entire function, the circle coefficient bound at any centre <span class="math" data-tex="\(p\)">\(p\)</span> gives <span class="math" data-tex="\(|f&#x27;(p)|\le M/R\)">\(|f&#x27;(p)|\le M/R\)</span> for every <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. Letting <span class="math" data-tex="\(R\)">\(R\)</span> tend to infinity proves <span class="math" data-tex="\(f&#x27;=0\)">\(f&#x27;=0\)</span>, hence constancy by integration along segments. If a nonconstant polynomial <span class="math" data-tex="\(P\)">\(P\)</span> had no root, <span class="math" data-tex="\(1/P\)">\(1/P\)</span> would be entire. Its leading term gives <span class="math" data-tex="\(|P(z)|\to\infty\)">\(|P(z)|\to\infty\)</span>, so the reciprocal is bounded outside a disk, and continuity makes it bounded inside. It is constant by the preceding assertion, contradicting the degree of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>For the last assertion, deform the contour to a small circle in the punctured region using the earlier triangle and homotopy proof. Uniform convergence permits integration of its Laurent series term by term on that circle. The integral of <span class="math" data-tex="\(z^j\)">\(z^j\)</span> is zero except for <span class="math" data-tex="\(j=-1\)">\(j=-1\)</span>, whose integral is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. This argument also applies to the normally convergent product of the exponential series in (8.7); it does not assume that its isolated singularity is a simple pole. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="1-the-pairing-and-its-normalization">1. The pairing and its normalization</h2>
+<p>Define the unnormalized pairing, whenever it converges absolutely, by
+<span class="math math-display" data-tex="\[
+I_\Gamma(f,g)=\int_{\Gamma\backslash\mathfrak H}
+f(z)\overline{g(z)}y^k\,d\mu(z).
+\tag{1.1}
+\]">\[
+I_\Gamma(f,g)=\int_{\Gamma\backslash\mathfrak H}
+f(z)\overline{g(z)}y^k\,d\mu(z).
+\tag{1.1}
+\]</span>
+Our normalized Petersson pairing is
+<span class="math math-display" data-tex="\[
+\langle f,g\rangle_\Gamma=\frac{I_\Gamma(f,g)}{d_\Gamma}.
+\tag{1.2}
+\]">\[
+\langle f,g\rangle_\Gamma=\frac{I_\Gamma(f,g)}{d_\Gamma}.
+\tag{1.2}
+\]</span>
+Neither expression divides by the hyperbolic volume. That volume is
+<span class="math" data-tex="\(d_\Gamma\pi/3\)">\(d_\Gamma\pi/3\)</span>, so a pairing normalized by volume is <span class="math" data-tex="\(3/\pi\)">\(3/\pi\)</span> times (1.2).</p>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="\(f,g\in M_k(\Gamma)\)">\(f,g\in M_k(\Gamma)\)</span> and either is cuspidal, (1.1) converges absolutely and is independent of the fundamental domain. Its restriction to <span class="math" data-tex="\(S_k(\Gamma)\)">\(S_k(\Gamma)\)</span> is a positive definite Hermitian inner product. If both forms are modular for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and <span class="math" data-tex="\(\Gamma&#x27;\subset\Gamma\)">\(\Gamma&#x27;\subset\Gamma\)</span> has finite index, their normalized pairings for the two groups agree.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\Gamma\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\in\Gamma\)</span>,
+<span class="math math-display" data-tex="\[
+f(\gamma z)\overline{g(\gamma z)}
+=|cz+d|^{2k}f(z)\overline{g(z)},\qquad
+\operatorname{Im}(\gamma z)^k=\frac{y^k}{|cz+d|^{2k}}.
+\]">\[
+f(\gamma z)\overline{g(\gamma z)}
+=|cz+d|^{2k}f(z)\overline{g(z)},\qquad
+\operatorname{Im}(\gamma z)^k=\frac{y^k}{|cz+d|^{2k}}.
+\]</span>
+Thus their product with <span class="math" data-tex="\(y^k\)">\(y^k\)</span> is invariant. The derivative
+<span class="math" data-tex="\(\gamma&#x27;(z)=(cz+d)^{-2}\)">\(\gamma&#x27;(z)=(cz+d)^{-2}\)</span> gives the real Jacobian
+<span class="math" data-tex="\(|cz+d|^{-4}\)">\(|cz+d|^{-4}\)</span>; combined with the imaginary-part formula it proves invariance of <span class="math" data-tex="\(d\mu\)">\(d\mu\)</span>. These computations also hold when <span class="math" data-tex="\(k\)">\(k\)</span> is odd and <span class="math" data-tex="\(-I\)">\(-I\)</span> is absent.</p>
+<p>There are finitely many cusp neighborhoods, with a compact remainder. In a cusp coordinate <span class="math" data-tex="\(\alpha z\)">\(\alpha z\)</span>, invariance of the measure and the slash factors replace the integrand by
+<span class="math math-display" data-tex="\[
+(f|_k\alpha)(z)\overline{(g|_k\alpha)(z)}\,y^{k-2}\,dx\,dy.
+\]">\[
+(f|_k\alpha)(z)\overline{(g|_k\alpha)(z)}\,y^{k-2}\,dx\,dy.
+\]</span>
+A modular form is bounded for large <span class="math" data-tex="\(y\)">\(y\)</span>, and a cusp form is <span class="math" data-tex="\(O(e^{-ay})\)">\(O(e^{-ay})\)</span> for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, uniformly over one horizontal period. This follows from its holomorphic cusp expansion and its positive first exponent. The exponent uses the actual width: at a regular cusp it is a positive multiple of <span class="math" data-tex="\(1/h\)">\(1/h\)</span>; at an irregular cusp in odd weight it is a positive odd multiple of <span class="math" data-tex="\(1/(2h)\)">\(1/(2h)\)</span>. Therefore the absolute integral over that neighborhood is bounded by a constant times
+<span class="math" data-tex="\(\int_Y^\infty y^{k-2}e^{-ay}\,dy\)">\(\int_Y^\infty y^{k-2}e^{-ay}\,dy\)</span>, which is finite. On the compact remainder the integrand is continuous. This proves absolute convergence. An invariant integrable function gives the same integral on any measurable fundamental domain, by translating its pieces; boundary overlaps have measure zero.</p>
+<p>Sesquilinearity and Hermitian symmetry follow from the integral. For a cusp form,
+<span class="math math-display" data-tex="\[
+I_\Gamma(f,f)=\int_{\Gamma\backslash\mathfrak H}|f(z)|^2y^k\,d\mu(z)\ge0.
+\]">\[
+I_\Gamma(f,f)=\int_{\Gamma\backslash\mathfrak H}|f(z)|^2y^k\,d\mu(z)\ge0.
+\]</span>
+If <span class="math" data-tex="\(f\ne0\)">\(f\ne0\)</span>, continuity makes the integrand positive on a small open disk, whose image in the quotient has positive measure. Thus the norm is positive.</p>
+<p>Finally put <span class="math" data-tex="\(r=[\bar\Gamma:\bar\Gamma&#x27;]\)">\(r=[\bar\Gamma:\bar\Gamma&#x27;]\)</span>. A domain for <span class="math" data-tex="\(\bar\Gamma&#x27;\)">\(\bar\Gamma&#x27;\)</span> is a union of <span class="math" data-tex="\(r\)">\(r\)</span> translates of a domain for <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>, up to boundaries. The invariant integrand has the same integral on each, so <span class="math" data-tex="\(I_{\Gamma&#x27;}=rI_\Gamma\)">\(I_{\Gamma&#x27;}=rI_\Gamma\)</span>. Also <span class="math" data-tex="\(d_{\Gamma&#x27;}=r d_\Gamma\)">\(d_{\Gamma&#x27;}=r d_\Gamma\)</span>, proving equality in (1.2). These are projective indices; using an index in <span class="math" data-tex="\(\mathrm{SL}_2\)">\(\mathrm{SL}_2\)</span> can introduce an extra factor two if the groups differ in whether they contain <span class="math" data-tex="\(-I\)">\(-I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The pairing is defined on <span class="math" data-tex="\(M_k\times S_k\)">\(M_k\times S_k\)</span> and on <span class="math" data-tex="\(S_k\times M_k\)">\(S_k\times M_k\)</span>. A modular form with a nonzero cusp constant generally has an infinite integral against itself in the weights considered below, so we do not give all of <span class="math" data-tex="\(M_k\)">\(M_k\)</span> a norm by (1.1).</p>
+<h2 id="2-a-coefficient-estimate-from-compactness">2. A coefficient estimate from compactness</h2>
+<p><strong>Theorem 2.1 (Hecke's bound).</strong> For every <span class="math" data-tex="\(f\in S_k(\Gamma)\)">\(f\in S_k(\Gamma)\)</span>, the function
+<span class="math math-display" data-tex="\[
+y^{k/2}|f(z)|
+\tag{2.1}
+\]">\[
+y^{k/2}|f(z)|
+\tag{2.1}
+\]</span>
+is bounded on <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>. In particular, at a regular cusp of width <span class="math" data-tex="\(h\)">\(h\)</span>, the coefficients in
+<span class="math math-display" data-tex="\[
+(f|_k\alpha)(z)=\sum_{n\ge1}a_n e^{2\pi inz/h}
+\]">\[
+(f|_k\alpha)(z)=\sum_{n\ge1}a_n e^{2\pi inz/h}
+\]</span>
+satisfy <span class="math" data-tex="\(a_n=O_f(n^{k/2})\)">\(a_n=O_f(n^{k/2})\)</span>. At an irregular cusp in odd weight the same estimate holds for the odd-index coefficients in the period-<span class="math" data-tex="\(2h\)">\(2h\)</span> expansion.</p>
+<p><strong>Proof.</strong> The transformation law and the imaginary-part identity make (2.1) invariant. At a cusp, its value in a scaling coordinate is <span class="math" data-tex="\(y^{k/2}|f|_k\alpha(z)|\)">\(y^{k/2}|f|_k\alpha(z)|\)</span>, which tends to zero uniformly over a period because exponential decay dominates a power of <span class="math" data-tex="\(y\)">\(y\)</span>. The finitely many cusp neighborhoods and the compact remainder therefore give a global bound <span class="math" data-tex="\(A\)">\(A\)</span>. The slash-transformed form has the same bound, since <span class="math" data-tex="\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)</span> gives
+<span class="math math-display" data-tex="\[
+y^{k/2}|f|_k\alpha(z)|
+=\operatorname{Im}(\alpha z)^{k/2}|f(\alpha z)|.
+\]">\[
+y^{k/2}|f|_k\alpha(z)|
+=\operatorname{Im}(\alpha z)^{k/2}|f(\alpha z)|.
+\]</span></p>
+<p>At a regular cusp, Fourier integration gives, for every <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+a_n=\frac1h\int_0^h
+(f|_k\alpha)(x+iy)e^{-2\pi in(x+iy)/h}\,dx.
+\]">\[
+a_n=\frac1h\int_0^h
+(f|_k\alpha)(x+iy)e^{-2\pi in(x+iy)/h}\,dx.
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+|a_n|\le A y^{-k/2}e^{2\pi ny/h}.
+\tag{2.2}
+\]">\[
+|a_n|\le A y^{-k/2}e^{2\pi ny/h}.
+\tag{2.2}
+\]</span>
+Choose <span class="math" data-tex="\(y=h/n\)">\(y=h/n\)</span> to obtain
+<span class="math" data-tex="\(|a_n|\le A e^{2\pi}h^{-k/2}n^{k/2}\)">\(|a_n|\le A e^{2\pi}h^{-k/2}n^{k/2}\)</span>.
+At an irregular cusp use the period <span class="math" data-tex="\(2h\)">\(2h\)</span> in the same computation. Only odd indices occur, but the bound does not change its exponent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The previous lesson proves that nonpositive weights have no cusp forms, so the substantial cases of this estimate have <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>.</p>
+<h2 id="3-averaging-an-exponential">3. Averaging an exponential</h2>
+<p>In this section <span class="math" data-tex="\(\Gamma=\Gamma_0(N)\)">\(\Gamma=\Gamma_0(N)\)</span>, <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span> is even, and
+<span class="math math-display" data-tex="\[
+\Gamma_\infty=\{\pm T^r:r\in\mathbb Z\},\qquad
+e(t)=e^{2\pi it}.
+\]">\[
+\Gamma_\infty=\{\pm T^r:r\in\mathbb Z\},\qquad
+e(t)=e^{2\pi it}.
+\]</span>
+For an integer <span class="math" data-tex="\(m\ge0\)">\(m\ge0\)</span>, define
+<span class="math math-display" data-tex="\[
+P_m(z)=
+\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}
+(c_\gamma z+d_\gamma)^{-k}e(m\gamma z).
+\tag{3.1}
+\]">\[
+P_m(z)=
+\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}
+(c_\gamma z+d_\gamma)^{-k}e(m\gamma z).
+\tag{3.1}
+\]</span>
+The seed <span class="math" data-tex="\(e(mz)\)">\(e(mz)\)</span> is invariant under weight-<span class="math" data-tex="\(k\)">\(k\)</span> slash by <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span>, so a summand does not depend on the representative. Even weight is needed for the element <span class="math" data-tex="\(-I\)">\(-I\)</span>.</p>
+<p>The cosets in (3.1) correspond to primitive bottom rows <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span>, with <span class="math" data-tex="\(N\mid c\)">\(N\mid c\)</span>, modulo simultaneous change of sign. Indeed every such row can be completed to a determinant-one matrix in <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>. Two completions differ by left multiplication by <span class="math" data-tex="\(T^r\)">\(T^r\)</span>. We may choose <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, together with the one row <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>.</p>
+<p><strong>Lemma 3.1 (a uniform tail estimate).</strong> For real <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, uniformly in <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{c\ge1}\sum_{d\in\mathbb Z}|c(x+iy)+d|^{-k}
+\le C_k\bigl(y^{-k}+y^{1-k}\bigr).
+\tag{3.2}
+\]">\[
+\sum_{c\ge1}\sum_{d\in\mathbb Z}|c(x+iy)+d|^{-k}
+\le C_k\bigl(y^{-k}+y^{1-k}\bigr).
+\tag{3.2}
+\]</span></p>
+<p><strong>Proof.</strong> We give a shift-independent comparison, including a constant. For <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, put <span class="math" data-tex="\(F_A(u)=(u^2+A^2)^{-k/2}\)">\(F_A(u)=(u^2+A^2)^{-k/2}\)</span>, which decreases for <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>. Choose an integer nearest to <span class="math" data-tex="\(-b\)">\(-b\)</span>. Its term is at most <span class="math" data-tex="\(A^{-k}\)">\(A^{-k}\)</span>; the two tails have distances at least <span class="math" data-tex="\(j-1/2\)">\(j-1/2\)</span>, <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>. Since
+<span class="math" data-tex="\(\sum_{j\ge1}F_A(j-1/2)\le F_A(1/2)+\int_{1/2}^\infty F_A(u)du\)">\(\sum_{j\ge1}F_A(j-1/2)\le F_A(1/2)+\int_{1/2}^\infty F_A(u)du\)</span>, we obtain, uniformly in <span class="math" data-tex="\(b\)">\(b\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{d\in\mathbb Z}\bigl((d+b)^2+A^2\bigr)^{-k/2}
+\le3A^{-k}+I_k A^{1-k},\\
+I_k=\int_{\mathbb R}(1+u^2)^{-k/2}du.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{d\in\mathbb Z}\bigl((d+b)^2+A^2\bigr)^{-k/2}
+\le3A^{-k}+I_k A^{1-k},\\
+I_k=\int_{\mathbb R}(1+u^2)^{-k/2}du.
+\end{gathered}
+\]</span>
+Scaling evaluates the comparison integral as <span class="math" data-tex="\(I_kA^{1-k}\)">\(I_kA^{1-k}\)</span>, and splitting it at <span class="math" data-tex="\(|u|=1\)">\(|u|=1\)</span> gives <span class="math" data-tex="\(I_k\le2+2/(k-1)\)">\(I_k\le2+2/(k-1)\)</span> for <span class="math" data-tex="\(k&gt;1\)">\(k&gt;1\)</span>. Set <span class="math" data-tex="\(A=cy\)">\(A=cy\)</span>, <span class="math" data-tex="\(b=cx\)">\(b=cx\)</span>, and sum over <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span>. Explicitly the left side of (3.2) is at most
+<span class="math math-display" data-tex="\[
+3y^{-k}\sum_{c\ge1}c^{-k}
++\left(2+\frac2{k-1}\right)y^{1-k}\sum_{c\ge1}c^{1-k}.
+\]">\[
+3y^{-k}\sum_{c\ge1}c^{-k}
++\left(2+\frac2{k-1}\right)y^{1-k}\sum_{c\ge1}c^{1-k}.
+\]</span>
+Both numerical series converge precisely in the asserted range <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, by the integral comparison for positive decreasing powers. Taking the larger of the two finite coefficients proves (3.2). This estimate is uniform over an entire horizontal strip and tends to zero as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, as required for every cusp calculation below. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2.</strong> The series (3.1) converges absolutely and locally uniformly, is holomorphic and modular of weight <span class="math" data-tex="\(k\)">\(k\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+P_m\in S_k(\Gamma)\quad(m\ge1).
+\]">\[
+P_m\in S_k(\Gamma)\quad(m\ge1).
+\]</span>
+For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, it is a modular form with constant one at the cusp infinity and constant zero at every inequivalent cusp.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\operatorname{Im}(\gamma z)&gt;0\)">\(\operatorname{Im}(\gamma z)&gt;0\)</span>,
+<span class="math" data-tex="\(|e(m\gamma z)|\le1\)">\(|e(m\gamma z)|\le1\)</span>. On a compact subset of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, the real-linear map <span class="math" data-tex="\((c,d)\mapsto cz+d\)">\((c,d)\mapsto cz+d\)</span> is uniformly invertible. Thus <span class="math" data-tex="\(|cz+d|\ge\epsilon\sqrt{c^2+d^2}\)">\(|cz+d|\ge\epsilon\sqrt{c^2+d^2}\)</span> there. The sum of <span class="math" data-tex="\((c^2+d^2)^{-k/2}\)">\((c^2+d^2)^{-k/2}\)</span> over nonzero lattice points converges for <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>: the annulus with radius between <span class="math" data-tex="\(2^j\)">\(2^j\)</span> and <span class="math" data-tex="\(2^{j+1}\)">\(2^{j+1}\)</span> has <span class="math" data-tex="\(O(2^{2j})\)">\(O(2^{2j})\)</span> points and contributes <span class="math" data-tex="\(O(2^{(2-k)j})\)">\(O(2^{(2-k)j})\)</span>. This proves absolute locally uniform convergence and holomorphy. Right multiplication by an element of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> permutes the left cosets, proving <span class="math" data-tex="\(P_m|_k\delta=P_m\)">\(P_m|_k\delta=P_m\)</span>.</p>
+<p>We check every cusp rather than only infinity. For <span class="math" data-tex="\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha\in\mathrm{SL}_2(\mathbb Z)\)</span>, the slash of (3.1) is a sum of seeds attached to the matrices <span class="math" data-tex="\(\gamma\alpha\)">\(\gamma\alpha\)</span>. Their bottom rows are still primitive and distinct modulo sign: equal rows would make the matrices differ by a left translation, hence the original <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>'s lie in the same <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span>-coset. The sum of the absolute values of terms with nonzero lower-left entry is at most (3.2), and tends to zero uniformly in <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>There is a term with lower-left entry zero exactly when <span class="math" data-tex="\(\alpha\infty\)">\(\alpha\infty\)</span> is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-equivalent to infinity, and then there is just one coset of such terms. Its matrix is <span class="math" data-tex="\(\pm T^r\)">\(\pm T^r\)</span>, so for <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> its value is <span class="math" data-tex="\(e(m(z+r))=e(mz)\)">\(e(m(z+r))=e(mz)\)</span>, which also tends to zero. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> its value is one. All other cusps have no such term.</p>
+<p>Consequently <span class="math" data-tex="\(P_m|_k\alpha\)">\(P_m|_k\alpha\)</span> is bounded as <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, with limit zero for <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>; for <span class="math" data-tex="\(m=0\)">\(m=0\)</span> its limit is the stated constant. The function is periodic with the cusp width <span class="math" data-tex="\(h\)">\(h\)</span>, so it defines a holomorphic function of <span class="math" data-tex="\(q_h\)">\(q_h\)</span> on a punctured disk. Boundedness makes the puncture removable. Its value there is the computed limit. This proves holomorphy and the cusp assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If one uses only <span class="math" data-tex="\(\langle T\rangle\)">\(\langle T\rangle\)</span> instead of <span class="math" data-tex="\(\{\pm T^r\}\)">\(\{\pm T^r\}\)</span> in (3.1), every term appears twice. The resulting series and its unfolding constants are twice ours.</p>
+<h2 id="4-unfolding-and-spanning">4. Unfolding and spanning</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+A_{k,m}=\frac{\Gamma(k-1)}{(4\pi m)^{k-1}}
+=\frac{(k-2)!}{(4\pi m)^{k-1}}\qquad(m\ge1).
+\tag{4.1}
+\]">\[
+A_{k,m}=\frac{\Gamma(k-1)}{(4\pi m)^{k-1}}
+=\frac{(k-2)!}{(4\pi m)^{k-1}}\qquad(m\ge1).
+\tag{4.1}
+\]</span>
+The equality follows by repeated integration by parts in the gamma integral.</p>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(f\in S_k(\Gamma_0(N))\)">\(f\in S_k(\Gamma_0(N))\)</span> and <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+I_\Gamma(f,P_m)=A_{k,m}a_m(f),\qquad
+\langle f,P_m\rangle_\Gamma
+=\frac{A_{k,m}}{d_\Gamma}a_m(f).
+\tag{4.2}
+\]">\[
+I_\Gamma(f,P_m)=A_{k,m}a_m(f),\qquad
+\langle f,P_m\rangle_\Gamma
+=\frac{A_{k,m}}{d_\Gamma}a_m(f).
+\tag{4.2}
+\]</span>
+Also <span class="math" data-tex="\(I_\Gamma(f,P_0)=0\)">\(I_\Gamma(f,P_0)=0\)</span>.</p>
+<p><strong>Proof.</strong> First justify exchanging the sum and the integral. After the substitution <span class="math" data-tex="\(w=\gamma z\)">\(w=\gamma z\)</span>, the absolute integral of one summand of
+<span class="math" data-tex="\(f(z)\overline{P_m(z)}y^k d\mu\)">\(f(z)\overline{P_m(z)}y^k d\mu\)</span> is
+<span class="math math-display" data-tex="\[
+\int_{\gamma D}|f(w)|\,e^{-2\pi m\operatorname{Im}w}
+\operatorname{Im}(w)^{k-2}\,d(\operatorname{Re}w)\,d(\operatorname{Im}w),
+\]">\[
+\int_{\gamma D}|f(w)|\,e^{-2\pi m\operatorname{Im}w}
+\operatorname{Im}(w)^{k-2}\,d(\operatorname{Re}w)\,d(\operatorname{Im}w),
+\]</span>
+where <span class="math" data-tex="\(D\)">\(D\)</span> is a fundamental domain for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. To verify cancellation, use
+<span class="math" data-tex="\(f(z)=j(\gamma,z)^{-k}f(w)\)">\(f(z)=j(\gamma,z)^{-k}f(w)\)</span> and
+<span class="math" data-tex="\(y^k=\operatorname{Im}(w)^k|j(\gamma,z)|^{2k}\)">\(y^k=\operatorname{Im}(w)^k|j(\gamma,z)|^{2k}\)</span>.
+The domains <span class="math" data-tex="\(\gamma D\)">\(\gamma D\)</span>, for <span class="math" data-tex="\(\Gamma_\infty\backslash\Gamma\)">\(\Gamma_\infty\backslash\Gamma\)</span>, tile the translation strip <span class="math" data-tex="\(0\le\operatorname{Re}w&lt;1\)">\(0\le\operatorname{Re}w&lt;1\)</span> up to boundaries.</p>
+<p>On that strip near <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, Theorem 2.1 bounds the absolute integrand by <span class="math" data-tex="\(A y^{k/2-2}\)">\(A y^{k/2-2}\)</span>, which is integrable because <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>. Near infinity, <span class="math" data-tex="\(f\)">\(f\)</span> decays exponentially. This works for both <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. Tonelli's theorem now proves that the sum of absolute integrals is finite, so unfolding is legitimate:
+<span class="math math-display" data-tex="\[
+I_\Gamma(f,P_m)=
+\int_0^\infty\int_0^1 f(x+iy)e^{-2\pi im(x-iy)}y^{k-2}\,dx\,dy.
+\tag{4.3}
+\]">\[
+I_\Gamma(f,P_m)=
+\int_0^\infty\int_0^1 f(x+iy)e^{-2\pi im(x-iy)}y^{k-2}\,dx\,dy.
+\tag{4.3}
+\]</span>
+At fixed <span class="math" data-tex="\(y\)">\(y\)</span>, Fourier orthogonality makes the inner integral
+<span class="math" data-tex="\(a_m(f)e^{-4\pi my}\)">\(a_m(f)e^{-4\pi my}\)</span>. Its integral in <span class="math" data-tex="\(y\)">\(y\)</span> is <span class="math" data-tex="\(A_{k,m}a_m(f)\)">\(A_{k,m}a_m(f)\)</span>, after substituting <span class="math" data-tex="\(t=4\pi my\)">\(t=4\pi my\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the inner integral is the cusp constant <span class="math" data-tex="\(a_0(f)=0\)">\(a_0(f)=0\)</span>. Dividing by <span class="math" data-tex="\(d_\Gamma\)">\(d_\Gamma\)</span> proves the normalized identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> The <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, span <span class="math" data-tex="\(S_k(\Gamma_0(N))\)">\(S_k(\Gamma_0(N))\)</span>. Already
+<span class="math math-display" data-tex="\[
+P_1,\ldots,P_B,\qquad B=\lfloor k d_\Gamma/12\rfloor,
+\tag{4.4}
+\]">\[
+P_1,\ldots,P_B,\qquad B=\lfloor k d_\Gamma/12\rfloor,
+\tag{4.4}
+\]</span>
+span it, with possible linear relations.</p>
+<p><strong>Proof.</strong> The space is finite dimensional by the preceding lesson. A form orthogonal to every <span class="math" data-tex="\(P_m\)">\(P_m\)</span> has every positive Fourier coefficient zero by (4.2), and its constant is zero because it is cuspidal. It is therefore zero. A proper subspace in a finite-dimensional positive definite inner-product space has a nonzero orthogonal complement, proving the first assertion. For the finite list, (4.2) and the proved complex coefficient bound make its orthogonal complement zero as well. If <span class="math" data-tex="\(B=0\)">\(B=0\)</span>, that bound says the cusp space itself is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Individual Poincaré series can vanish. The spanning assertion does not assert their linear independence.</p>
+<h2 id="5-the-eisenstein-complement">5. The Eisenstein complement</h2>
+<p>For any weight and finite-index group, define
+<span class="math math-display" data-tex="\[
+E_k(\Gamma)=
+\{f\in M_k(\Gamma):I_\Gamma(f,g)=0
+\text{ for every }g\in S_k(\Gamma)\}.
+\tag{5.1}
+\]">\[
+E_k(\Gamma)=
+\{f\in M_k(\Gamma):I_\Gamma(f,g)=0
+\text{ for every }g\in S_k(\Gamma)\}.
+\tag{5.1}
+\]</span>
+This definition uses only pairings that converge by Theorem 1.1.</p>
+<p><strong>Theorem 5.1.</strong> There is a direct sum
+<span class="math math-display" data-tex="\[
+M_k(\Gamma)=E_k(\Gamma)\oplus S_k(\Gamma).
+\tag{5.2}
+\]">\[
+M_k(\Gamma)=E_k(\Gamma)\oplus S_k(\Gamma).
+\tag{5.2}
+\]</span>
+For even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>, the space <span class="math" data-tex="\(E_k(\Gamma)\)">\(E_k(\Gamma)\)</span> has a basis of holomorphic Eisenstein series, one for each cusp, whose vectors of cusp constants are the coordinate vectors.</p>
+<p><strong>Proof.</strong> First note that every space here is finite dimensional. For even weights this was proved in the preceding lesson. In an odd positive weight, if <span class="math" data-tex="\(M_k\ne0\)">\(M_k\ne0\)</span>, choose a nonzero <span class="math" data-tex="\(f_0\in M_k\)">\(f_0\in M_k\)</span>. Multiplication by <span class="math" data-tex="\(f_0\)">\(f_0\)</span> injects <span class="math" data-tex="\(M_k\)">\(M_k\)</span> into the finite-dimensional even-weight space <span class="math" data-tex="\(M_{2k}\)">\(M_{2k}\)</span>: a product of two holomorphic functions cannot vanish identically unless one factor does. Nonpositive weights were already determined.</p>
+<p>First prove (5.2) using finite-dimensional linear algebra. Choose a basis <span class="math" data-tex="\(g_1,\ldots,g_s\)">\(g_1,\ldots,g_s\)</span> of <span class="math" data-tex="\(S_k\)">\(S_k\)</span>. Its Gram matrix is invertible by positive definiteness. For any <span class="math" data-tex="\(f\in M_k\)">\(f\in M_k\)</span>, there are unique coefficients <span class="math" data-tex="\(b_j\)">\(b_j\)</span> for which
+<span class="math math-display" data-tex="\[
+I_\Gamma\left(f-\sum_j b_jg_j,g_i\right)=0
+\quad(1\le i\le s).
+\]">\[
+I_\Gamma\left(f-\sum_j b_jg_j,g_i\right)=0
+\quad(1\le i\le s).
+\]</span>
+This gives the sum in (5.2). Its intersection is zero because a cusp form orthogonal to itself has zero norm.</p>
+<p>Now suppose <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span> is even. We may replace <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> by
+<span class="math" data-tex="\(\Gamma^+=\langle\Gamma,-I\rangle\)">\(\Gamma^+=\langle\Gamma,-I\rangle\)</span>, since neither the even-weight spaces nor the quotient changes. Choose one scaling matrix <span class="math" data-tex="\(\alpha_P\in\mathrm{SL}_2(\mathbb Z)\)">\(\alpha_P\in\mathrm{SL}_2(\mathbb Z)\)</span> for each cusp <span class="math" data-tex="\(P\)">\(P\)</span>, and let <span class="math" data-tex="\(\Gamma_P\)">\(\Gamma_P\)</span> be its stabilizer in <span class="math" data-tex="\(\Gamma^+\)">\(\Gamma^+\)</span>. If <span class="math" data-tex="\(h_P\)">\(h_P\)</span> is the width, then
+<span class="math math-display" data-tex="\[
+\alpha_P^{-1}\Gamma_P\alpha_P
+=\{\pm T^{h_Pr}:r\in\mathbb Z\}.
+\]">\[
+\alpha_P^{-1}\Gamma_P\alpha_P
+=\{\pm T^{h_Pr}:r\in\mathbb Z\}.
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+E_{P,k}(z)=
+\sum_{\gamma\in\Gamma_P\backslash\Gamma^+}
+(1|_k\alpha_P^{-1}\gamma)(z).
+\tag{5.3}
+\]">\[
+E_{P,k}(z)=
+\sum_{\gamma\in\Gamma_P\backslash\Gamma^+}
+(1|_k\alpha_P^{-1}\gamma)(z).
+\tag{5.3}
+\]</span>
+The constant seed is fixed by the conjugate stabilizer, so this is well-defined.</p>
+<p>The bottom rows of <span class="math" data-tex="\(\alpha_P^{-1}\gamma\)">\(\alpha_P^{-1}\gamma\)</span> are primitive and distinct modulo sign. Equal rows would give a left translation; because both original matrices lie in <span class="math" data-tex="\(\Gamma^+\)">\(\Gamma^+\)</span>, that translation is a multiple of <span class="math" data-tex="\(h_P\)">\(h_P\)</span> after conjugation, and hence represents the same <span class="math" data-tex="\(\Gamma_P\)">\(\Gamma_P\)</span>-coset. The lattice majorant used in Theorem 3.2 proves absolute locally uniform convergence, and reindexing proves modularity.</p>
+<p>At a cusp <span class="math" data-tex="\(Q\)">\(Q\)</span>, slash (5.3) by <span class="math" data-tex="\(\alpha_Q\)">\(\alpha_Q\)</span>. Lemma 3.1 makes the sum of the terms with nonzero lower-left entry tend uniformly to zero. A term with that entry zero exists exactly when some <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> takes <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(P\)">\(P\)</span>. Since our chosen cusps are inequivalent, this happens exactly when <span class="math" data-tex="\(Q=P\)">\(Q=P\)</span>; then there is one such coset, represented by the identity, whose summand is one. Thus the series is holomorphic at every cusp and
+<span class="math math-display" data-tex="\[
+a_0(E_{P,k}|_k\alpha_Q)=\delta_{P,Q}.
+\tag{5.4}
+\]">\[
+a_0(E_{P,k}|_k\alpha_Q)=\delta_{P,Q}.
+\tag{5.4}
+\]</span></p>
+<p>Unfolding <span class="math" data-tex="\(I_\Gamma(f,E_{P,k})\)">\(I_\Gamma(f,E_{P,k})\)</span> for a cusp form <span class="math" data-tex="\(f\)">\(f\)</span> gives
+<span class="math math-display" data-tex="\[
+\int_0^\infty\int_0^{h_P}
+(f|_k\alpha_P)(x+iy)y^{k-2}\,dx\,dy.
+\]">\[
+\int_0^\infty\int_0^{h_P}
+(f|_k\alpha_P)(x+iy)y^{k-2}\,dx\,dy.
+\]</span>
+Absolute convergence follows from the same bound near zero and exponential decay near infinity as in Theorem 4.1. The inner integral is zero because <span class="math" data-tex="\(f\)">\(f\)</span> has zero constant term at <span class="math" data-tex="\(P\)">\(P\)</span>. Consequently every <span class="math" data-tex="\(E_{P,k}\)">\(E_{P,k}\)</span> lies in (5.1).</p>
+<p>Finally, for any <span class="math" data-tex="\(f\in M_k\)">\(f\in M_k\)</span>,
+<span class="math math-display" data-tex="\[
+f-\sum_P a_0(f|_k\alpha_P)E_{P,k}
+\]">\[
+f-\sum_P a_0(f|_k\alpha_P)E_{P,k}
+\]</span>
+vanishes at all cusps, by (5.4), and is a cusp form. Thus the Eisenstein series span the complement in (5.2). Their constant vectors make them linearly independent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, for these even weights,
+<span class="math math-display" data-tex="\[
+\dim E_k(\Gamma)=c,\qquad E_k(\Gamma)\perp S_k(\Gamma),
+\]">\[
+\dim E_k(\Gamma)=c,\qquad E_k(\Gamma)\perp S_k(\Gamma),
+\]</span>
+in agreement with the preceding lesson's dimension formula. For <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, the series attached to infinity is exactly <span class="math" data-tex="\(P_0\)">\(P_0\)</span>.</p>
+<p>The pairing and the linear-algebra decomposition still hold in weight two, but the series (3.1) and (5.3) are not asserted to converge absolutely there. This lesson does not identify the weight-two complement by an absolutely convergent Eisenstein sum. The construction of that sum and the Poincaré spanning argument have the explicit hypothesis <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>.</p>
+<h2 id="6-two-worked-examples">6. Two worked examples</h2>
+<h3 id="6-1-a-poincaré-series-in-the-discriminant-space">6.1. A Poincaré series in the discriminant space</h3>
+<p>At level one, <span class="math" data-tex="\(S_{12}=\mathbb C\Delta\)">\(S_{12}=\mathbb C\Delta\)</span> and <span class="math" data-tex="\(a_1(\Delta)=1\)">\(a_1(\Delta)=1\)</span>, by the ring and dimension results already proved. Therefore <span class="math" data-tex="\(P_1=C\Delta\)">\(P_1=C\Delta\)</span> for some scalar. Formula (4.2) gives
+<span class="math math-display" data-tex="\[
+I(\Delta,P_1)=\frac{\Gamma(11)}{(4\pi)^{11}}.
+\]">\[
+I(\Delta,P_1)=\frac{\Gamma(11)}{(4\pi)^{11}}.
+\]</span>
+Because the pairing is linear in the first variable, the left side is
+<span class="math" data-tex="\(\overline C\,I(\Delta,\Delta)\)">\(\overline C\,I(\Delta,\Delta)\)</span>. The right side and the norm are positive real numbers, so
+<span class="math math-display" data-tex="\[
+P_1=
+\frac{10!}{(4\pi)^{11}I(\Delta,\Delta)}\,\Delta.
+\tag{6.1}
+\]">\[
+P_1=
+\frac{10!}{(4\pi)^{11}I(\Delta,\Delta)}\,\Delta.
+\tag{6.1}
+\]</span>
+Here the projective index is one, so the normalized and unnormalized norms coincide. In particular this Poincaré series is nonzero, despite the possibility of vanishing at other weights.</p>
+<h3 id="6-2-eisenstein-and-cusp-coefficient-growth">6.2. Eisenstein and cusp coefficient growth</h3>
+<p>For an even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>, the normalized level-one series has coefficients
+<span class="math math-display" data-tex="\[
+a_n(E_k)=-\frac{2k}{B_k}\sigma_{k-1}(n)\qquad(n\ge1).
+\]">\[
+a_n(E_k)=-\frac{2k}{B_k}\sigma_{k-1}(n)\qquad(n\ge1).
+\]</span>
+The divisor <span class="math" data-tex="\(n\)">\(n\)</span> itself gives the lower bound, while replacing a divisor by its complementary divisor gives the upper bound:
+<span class="math math-display" data-tex="\[
+n^{k-1}\le\sigma_{k-1}(n)
+=n^{k-1}\sum_{d\mid n}d^{1-k}
+\le\zeta(k-1)n^{k-1}.
+\tag{6.2}
+\]">\[
+n^{k-1}\le\sigma_{k-1}(n)
+=n^{k-1}\sum_{d\mid n}d^{1-k}
+\le\zeta(k-1)n^{k-1}.
+\tag{6.2}
+\]</span>
+Thus the absolute Eisenstein coefficients have two-sided bounds by fixed positive multiples of <span class="math" data-tex="\(n^{k-1}\)">\(n^{k-1}\)</span>. Cusp coefficients have the smaller upper bound <span class="math" data-tex="\(O(n^{k/2})\)">\(O(n^{k/2})\)</span>. For example, the coefficients of <span class="math" data-tex="\(E_{12}\)">\(E_{12}\)</span> grow in this two-sided sense like <span class="math" data-tex="\(n^{11}\)">\(n^{11}\)</span>, whereas <span class="math" data-tex="\(\tau(n)=O(n^6)\)">\(\tau(n)=O(n^6)\)</span> follows for <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> from Theorem 2.1. No optimal cusp exponent is claimed here.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Prove that <span class="math" data-tex="\(y^k|f(z)|^2\)">\(y^k|f(z)|^2\)</span> is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant for <span class="math" data-tex="\(f\in M_k(\Gamma)\)">\(f\in M_k(\Gamma)\)</span>. Check invariance of the measure as well.</li>
+<li><strong>Medium.</strong> Prove Hecke's bound. At a regular cusp of width <span class="math" data-tex="\(h\)">\(h\)</span>, optimize the choice of <span class="math" data-tex="\(y\)">\(y\)</span> in (2.2) for <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>.</li>
+<li><strong>Medium.</strong> Prove that every <span class="math" data-tex="\(P_m\)">\(P_m\)</span>, <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, vanishes at every cusp of <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span>, including cusps not equivalent to infinity.</li>
+<li><strong>Medium.</strong> Show that <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is the Eisenstein series at infinity with constant one there and zero at the other cusps. At level one, determine its exact multiple of the full lattice series <span class="math" data-tex="\(G_k\)">\(G_k\)</span>.</li>
+<li><strong>Hard.</strong> For even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span> and <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, compute all Fourier coefficients of <span class="math" data-tex="\(P_m\)">\(P_m\)</span> on <span class="math" data-tex="\(\Gamma_0(N)\)">\(\Gamma_0(N)\)</span> in terms of Kloosterman sums and <span class="math" data-tex="\(J\)">\(J\)</span>-Bessel functions. Prove the coefficient formula, its sign and its absolute convergence, without using a bound for Kloosterman sums stronger than the trivial one.</li>
+</ol>
+<h2 id="8-full-solutions">8. Full solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The modular law gives
+<span class="math math-display" data-tex="\[
+|f(\gamma z)|^2=|cz+d|^{2k}|f(z)|^2,
+\]">\[
+|f(\gamma z)|^2=|cz+d|^{2k}|f(z)|^2,
+\]</span>
+and the imaginary part gives
+<span class="math" data-tex="\(\operatorname{Im}(\gamma z)^k=y^k|cz+d|^{-2k}\)">\(\operatorname{Im}(\gamma z)^k=y^k|cz+d|^{-2k}\)</span>.
+Their product is <span class="math" data-tex="\(y^k|f(z)|^2\)">\(y^k|f(z)|^2\)</span>. The real Jacobian of a holomorphic change of coordinate is the squared absolute derivative, here <span class="math" data-tex="\(|cz+d|^{-4}\)">\(|cz+d|^{-4}\)</span>. Since the new <span class="math" data-tex="\(y^2\)">\(y^2\)</span> is <span class="math" data-tex="\(y^2|cz+d|^{-4}\)">\(y^2|cz+d|^{-4}\)</span>, division by it cancels the Jacobian. Thus <span class="math" data-tex="\(dx\,dy/y^2\)">\(dx\,dy/y^2\)</span> is invariant too.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>For a cusp form, invariance reduces boundedness of <span class="math" data-tex="\(y^{k/2}|f|\)">\(y^{k/2}|f|\)</span> to a quotient domain. On its compact part this function has a maximum. In each of the finitely many scaled cusp strips, the positive leading Fourier exponent bounds it by a constant times <span class="math" data-tex="\(y^{k/2}e^{-ay}\)">\(y^{k/2}e^{-ay}\)</span>, which tends to zero. This produces a global constant <span class="math" data-tex="\(A\)">\(A\)</span>, and the same constant works for every slash by a scaling matrix.</p>
+<p>Fourier integration over the width <span class="math" data-tex="\(h\)">\(h\)</span> gives (2.2). For <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, minimize
+<span class="math math-display" data-tex="\[
+-\frac k2\log y+\frac{2\pi n}{h}y.
+\]">\[
+-\frac k2\log y+\frac{2\pi n}{h}y.
+\]</span>
+Its derivative vanishes at <span class="math" data-tex="\(y=kh/(4\pi n)\)">\(y=kh/(4\pi n)\)</span>, and the function decreases before that point and increases afterwards. Consequently
+<span class="math math-display" data-tex="\[
+|a_n|\le
+A\left(\frac{4\pi e}{kh}\right)^{k/2}n^{k/2}.
+\]">\[
+|a_n|\le
+A\left(\frac{4\pi e}{kh}\right)^{k/2}n^{k/2}.
+\]</span>
+This is the claimed bound with an explicit constant from <span class="math" data-tex="\(A\)">\(A\)</span>. For an irregular cusp use period <span class="math" data-tex="\(2h\)">\(2h\)</span> and the same optimization; its even-index coefficients are zero.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Choose a scaling matrix <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> for the cusp being tested. In <span class="math" data-tex="\(P_m|_k\alpha\)">\(P_m|_k\alpha\)</span>, the terms are attached to <span class="math" data-tex="\(\gamma\alpha\)">\(\gamma\alpha\)</span>. The primitive bottom rows are distinct modulo sign, and their nonzero lower-left entries contribute at most
+<span class="math" data-tex="\(C_k(y^{-k}+y^{1-k})\)">\(C_k(y^{-k}+y^{1-k})\)</span> by Lemma 3.1. This bound is uniform in the real part and tends to zero.</p>
+<p>If this cusp is inequivalent to infinity, there is no matrix <span class="math" data-tex="\(\gamma\alpha\)">\(\gamma\alpha\)</span> with lower-left entry zero, so this accounts for every term. If it is equivalent to infinity, there is one such coset and its term is <span class="math" data-tex="\(e(mz)\)">\(e(mz)\)</span>, of absolute value <span class="math" data-tex="\(e^{-2\pi my}\)">\(e^{-2\pi my}\)</span>, which also tends to zero. Hence the entire slash tends uniformly to zero in both cases.</p>
+<p>It is periodic with the cusp's width. Its holomorphic function on the punctured <span class="math" data-tex="\(q_h\)">\(q_h\)</span>-disk is bounded, so extends across zero, and the limit we computed makes its value there zero. This is precisely vanishing at that cusp, and the choice of cusp was arbitrary.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>The series <span class="math" data-tex="\(P_0\)">\(P_0\)</span> equals (5.3) for <span class="math" data-tex="\(P=\infty\)">\(P=\infty\)</span> and <span class="math" data-tex="\(\alpha_P=I\)">\(\alpha_P=I\)</span>. The proof of Theorem 5.1 shows that its constant vector is one at infinity and zero elsewhere, and that it is orthogonal to cusp forms. Those conditions characterize it uniquely: a difference would be a cusp form orthogonal to itself.</p>
+<p>More explicitly,
+<span class="math math-display" data-tex="\[
+P_0(z)=\frac12
+\sum_{\substack{(c,d)\in\mathbb Z^2\\\gcd(c,d)=1,\ N\mid c}}
+(cz+d)^{-k}.
+\]">\[
+P_0(z)=\frac12
+\sum_{\substack{(c,d)\in\mathbb Z^2\\\gcd(c,d)=1,\ N\mid c}}
+(cz+d)^{-k}.
+\]</span>
+At level one write every nonzero lattice row uniquely as a positive integer times a primitive row. Absolute convergence permits the grouping, giving
+<span class="math math-display" data-tex="\[
+G_k(z)=\zeta(k)\sum_{\gcd(c,d)=1}(cz+d)^{-k}
+=2\zeta(k)P_0(z).
+\]">\[
+G_k(z)=\zeta(k)\sum_{\gcd(c,d)=1}(cz+d)^{-k}
+=2\zeta(k)P_0(z).
+\]</span>
+Thus <span class="math" data-tex="\(P_0=G_k/(2\zeta(k))=E_k\)">\(P_0=G_k/(2\zeta(k))=E_k\)</span>, in the earlier lesson's constant-one normalization.</p>
+<h3 id="solution-5-the-kloosterman-bessel-formula">Solution 5: the Kloosterman–Bessel formula</h3>
+<p>For positive <span class="math" data-tex="\(m,n,c\)">\(m,n,c\)</span>, define
+<span class="math math-display" data-tex="\[
+S(m,n;c)=
+\sum_{\substack{d\bmod c\\(d,c)=1}}
+e\left(\frac{m\bar d+nd}{c}\right),
+\qquad d\bar d\equiv1\pmod c.
+\tag{8.1}
+\]">\[
+S(m,n;c)=
+\sum_{\substack{d\bmod c\\(d,c)=1}}
+e\left(\frac{m\bar d+nd}{c}\right),
+\qquad d\bar d\equiv1\pmod c.
+\tag{8.1}
+\]</span>
+For <span class="math" data-tex="\(c=1\)">\(c=1\)</span> the sum is one, with the usual unique-residue convention. Define the Bessel function needed here by its convergent entire series
+<span class="math math-display" data-tex="\[
+J_\nu(x)=
+\sum_{r\ge0}
+\frac{(-1)^r(x/2)^{\nu+2r}}{r!(\nu+r)!},
+\qquad \nu\in\mathbb Z_{\ge0}.
+\tag{8.2}
+\]">\[
+J_\nu(x)=
+\sum_{r\ge0}
+\frac{(-1)^r(x/2)^{\nu+2r}}{r!(\nu+r)!},
+\qquad \nu\in\mathbb Z_{\ge0}.
+\tag{8.2}
+\]</span>
+The factorial denominators prove convergence for every <span class="math" data-tex="\(x\)">\(x\)</span>. We claim that
+<span class="math math-display" data-tex="\[
+\boxed{\displaystyle
+a_n(P_m)=\delta_{m,n}
++2\pi i^{-k}\left(\frac nm\right)^{(k-1)/2}
+\sum_{\substack{c&gt;0\\N\mid c}}
+\frac{S(m,n;c)}{c}
+J_{k-1}\left(\frac{4\pi\sqrt{mn}}c\right)}
+\quad(n\ge1).
+\tag{8.3}
+\]">\[
+\boxed{\displaystyle
+a_n(P_m)=\delta_{m,n}
++2\pi i^{-k}\left(\frac nm\right)^{(k-1)/2}
+\sum_{\substack{c&gt;0\\N\mid c}}
+\frac{S(m,n;c)}{c}
+J_{k-1}\left(\frac{4\pi\sqrt{mn}}c\right)}
+\quad(n\ge1).
+\tag{8.3}
+\]</span>
+Since <span class="math" data-tex="\(k\)">\(k\)</span> is even, <span class="math" data-tex="\(i^{-k}=i^k=(-1)^{k/2}\)">\(i^{-k}=i^k=(-1)^{k/2}\)</span>. There is no missing factor two.</p>
+<p>The row <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> in (3.1) contributes <span class="math" data-tex="\(e(mz)\)">\(e(mz)\)</span>, giving <span class="math" data-tex="\(\delta_{m,n}\)">\(\delta_{m,n}\)</span>. For a fixed <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, group the remaining rows as
+<span class="math" data-tex="\(d=d_0+ct\)">\(d=d_0+ct\)</span>, <span class="math" data-tex="\(t\in\mathbb Z\)">\(t\in\mathbb Z\)</span>, with <span class="math" data-tex="\(d_0\)">\(d_0\)</span> a unit modulo <span class="math" data-tex="\(c\)">\(c\)</span>. Choose <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(ad_0\equiv1\pmod c\)">\(ad_0\equiv1\pmod c\)</span>. The determinant-one identity is
+<span class="math math-display" data-tex="\[
+\gamma z=\frac ac-\frac1{c(cz+d)}.
+\]">\[
+\gamma z=\frac ac-\frac1{c(cz+d)}.
+\]</span>
+Therefore the terms for this residue class are
+<span class="math math-display" data-tex="\[
+c^{-k}e(ma/c)
+\sum_{t\in\mathbb Z}
+(z+t+d_0/c)^{-k}
+\exp\left(-\frac{2\pi im}{c^2(z+t+d_0/c)}\right).
+\tag{8.4}
+\]">\[
+c^{-k}e(ma/c)
+\sum_{t\in\mathbb Z}
+(z+t+d_0/c)^{-k}
+\exp\left(-\frac{2\pi im}{c^2(z+t+d_0/c)}\right).
+\tag{8.4}
+\]</span>
+Changing the completion of the row changes <span class="math" data-tex="\(a\)">\(a\)</span> by a multiple of <span class="math" data-tex="\(c\)">\(c\)</span>, and hence leaves (8.4) unchanged.</p>
+<p>Extract the <span class="math" data-tex="\(n\)">\(n\)</span>-th coefficient by integrating against <span class="math" data-tex="\(e(-nz)\)">\(e(-nz)\)</span> along <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>, with <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span> fixed. The integer <span class="math" data-tex="\(t\)">\(t\)</span> concatenates these intervals into a horizontal line. Substituting <span class="math" data-tex="\(w=z+t+d_0/c\)">\(w=z+t+d_0/c\)</span> gives the contribution
+<span class="math math-display" data-tex="\[
+c^{-k}e((ma+nd_0)/c)\,L_{m,n,c},
+\]">\[
+c^{-k}e((ma+nd_0)/c)\,L_{m,n,c},
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+L_{m,n,c}=
+\int_{\mathbb R+iy}
+w^{-k}\exp\left(-2\pi i\left(nw+\frac m{c^2w}\right)\right)\,dw.
+\tag{8.5}
+\]">\[
+L_{m,n,c}=
+\int_{\mathbb R+iy}
+w^{-k}\exp\left(-2\pi i\left(nw+\frac m{c^2w}\right)\right)\,dw.
+\tag{8.5}
+\]</span>
+These exchanges are justified absolutely. In the upper half-plane the second exponential in (8.4) has absolute value at most one. For fixed <span class="math" data-tex="\(y\)">\(y\)</span>, the sum of the absolute coefficient integrals is consequently bounded by
+<span class="math math-display" data-tex="\[
+C_{n,y}\sum_{\substack{c&gt;0\\N\mid c}}
+c^{-k}\varphi(c)
+\int_{\mathbb R}|u+iy|^{-k}\,du
+\le C&#x27;_{n,y,k}\sum_{c\ge1}c^{1-k}&lt;\infty.
+\tag{8.6}
+\]">\[
+C_{n,y}\sum_{\substack{c&gt;0\\N\mid c}}
+c^{-k}\varphi(c)
+\int_{\mathbb R}|u+iy|^{-k}\,du
+\le C&#x27;_{n,y,k}\sum_{c\ge1}c^{1-k}&lt;\infty.
+\tag{8.6}
+\]</span></p>
+<p>We compute (8.5). If <span class="math" data-tex="\(n\le0\)">\(n\le0\)</span>, close the horizontal line by a large semicircle in the upper half-plane. There is no enclosed singularity. Both exponential factors are bounded there, and the arc integral is <span class="math" data-tex="\(O(R^{1-k})\)">\(O(R^{1-k})\)</span>; thus <span class="math" data-tex="\(L_{m,n,c}=0\)">\(L_{m,n,c}=0\)</span>. This also verifies that these terms have neither negative coefficients nor a constant.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, close below the line. The orientation is clockwise and zero is enclosed. On a semicircle of radius <span class="math" data-tex="\(R\)">\(R\)</span> centered at <span class="math" data-tex="\(iy\)">\(iy\)</span>, the factor <span class="math" data-tex="\(e^{-2\pi inw}\)">\(e^{-2\pi inw}\)</span> is bounded by <span class="math" data-tex="\(e^{2\pi ny}\)">\(e^{2\pi ny}\)</span>, the factor involving <span class="math" data-tex="\(1/w\)">\(1/w\)</span> is bounded as <span class="math" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>, and <span class="math" data-tex="\(|w|^{-k}=O(R^{-k})\)">\(|w|^{-k}=O(R^{-k})\)</span>. The arc integral again tends to zero. Hence
+<span class="math math-display" data-tex="\[
+L_{m,n,c}=-2\pi i\,
+\operatorname{Res}_{w=0}
+\left[w^{-k}e^{-2\pi inw}e^{-2\pi im/(c^2w)}\right].
+\tag{8.7}
+\]">\[
+L_{m,n,c}=-2\pi i\,
+\operatorname{Res}_{w=0}
+\left[w^{-k}e^{-2\pi inw}e^{-2\pi im/(c^2w)}\right].
+\tag{8.7}
+\]</span>
+Expand the two exponentials. The coefficient of <span class="math" data-tex="\(w^{-1}\)">\(w^{-1}\)</span> requires the first exponential's power to be <span class="math" data-tex="\(k+r-1\)">\(k+r-1\)</span> when the second's is <span class="math" data-tex="\(-r\)">\(-r\)</span>, so the residue is
+<span class="math math-display" data-tex="\[
+(-2\pi in)^{k-1}
+\sum_{r\ge0}
+\frac{(-4\pi^2mn/c^2)^r}{r!(k+r-1)!}.
+\tag{8.8}
+\]">\[
+(-2\pi in)^{k-1}
+\sum_{r\ge0}
+\frac{(-4\pi^2mn/c^2)^r}{r!(k+r-1)!}.
+\tag{8.8}
+\]</span>
+Comparison with (8.2) gives
+<span class="math math-display" data-tex="\[
+L_{m,n,c}=
+2\pi i^{-k}c^{k-1}
+\left(\frac nm\right)^{(k-1)/2}
+J_{k-1}\left(\frac{4\pi\sqrt{mn}}c\right).
+\tag{8.9}
+\]">\[
+L_{m,n,c}=
+2\pi i^{-k}c^{k-1}
+\left(\frac nm\right)^{(k-1)/2}
+J_{k-1}\left(\frac{4\pi\sqrt{mn}}c\right).
+\tag{8.9}
+\]</span>
+For the sign, the prefactor in (8.7) contributes
+<span class="math" data-tex="\(-i(-i)^{k-1}=(-i)^k=i^{-k}\)">\(-i(-i)^{k-1}=(-i)^k=i^{-k}\)</span>.</p>
+<p>Sum over the units <span class="math" data-tex="\(d_0\bmod c\)">\(d_0\bmod c\)</span>. Their phases give exactly (8.1); multiplying <span class="math" data-tex="\(c^{-k}\)">\(c^{-k}\)</span> by (8.9), then summing over <span class="math" data-tex="\(c\)">\(c\)</span>, proves (8.3).</p>
+<p>Finally <span class="math" data-tex="\(|S(m,n;c)|\le\varphi(c)\le c\)">\(|S(m,n;c)|\le\varphi(c)\le c\)</span>. The series (8.2) gives
+<span class="math" data-tex="\(J_{k-1}(x)=O_k(x^{k-1})\)">\(J_{k-1}(x)=O_k(x^{k-1})\)</span> for <span class="math" data-tex="\(x\)">\(x\)</span> in any fixed bounded interval near zero. With <span class="math" data-tex="\(m,n\)">\(m,n\)</span> fixed, the summands in (8.3) are therefore <span class="math" data-tex="\(O_{k,m,n}(c^{1-k})\)">\(O_{k,m,n}(c^{1-k})\)</span>. The sum is absolutely convergent for <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>, using only the trivial Kloosterman bound. This completes the solution.</p>
+<p>The same residue calculation with <span class="math" data-tex="\(m=0\)">\(m=0\)</span> also yields, for <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+a_n(P_0)=
+\frac{(-2\pi i)^k n^{k-1}}{(k-1)!}
+\sum_{\substack{c&gt;0\\N\mid c}}
+\frac{S(0,n;c)}{c^k},
+\tag{8.10}
+\]">\[
+a_n(P_0)=
+\frac{(-2\pi i)^k n^{k-1}}{(k-1)!}
+\sum_{\substack{c&gt;0\\N\mid c}}
+\frac{S(0,n;c)}{c^k},
+\tag{8.10}
+\]</span>
+where <span class="math" data-tex="\(S(0,n;c)\)">\(S(0,n;c)\)</span> is defined by (8.1) with <span class="math" data-tex="\(m=0\)">\(m=0\)</span>. The residue then has only the power <span class="math" data-tex="\(k-1\)">\(k-1\)</span> of <span class="math" data-tex="\(e^{-2\pi inw}\)">\(e^{-2\pi inw}\)</span>. The same bound (8.6) proves convergence.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The local arguments establish pairing invariance and convergence (Theorem 1.1), Hecke's bound (Theorem 2.1), Poincaré convergence and vanishing at every cusp (Theorem 3.2), unfolding (Theorem 4.1), and spanning and the orthogonal decomposition (Corollary 4.2 and Theorem 5.1), subject to the integration foundations recorded below. Both examples and all five exercises retain their computations and solutions. The Kloosterman–Bessel formula, including its contour integral and convergence, is derived in Solution 5.</p>
+<p>The earlier results used are the imaginary-part and slash identities and holomorphic cusp expansions from <a href="LG-MF-04.html">Modular forms, lattice functions and Eisenstein series</a>, Proposition 1.1 and Sections 1–2; cusp widths and stabilizers from <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, Section 2 and Proposition 2.1, with regularity in Section 4; the coefficient bound from <a href="LG-MF-06.html">Dimension formulas for congruence subgroups</a>, Theorem 6.1; and <span class="math" data-tex="\(S_{12}=\mathbb C\Delta\)">\(S_{12}=\mathbb C\Delta\)</span>, with <span class="math" data-tex="\(a_1(\Delta)=1\)">\(a_1(\Delta)=1\)</span>, from <a href="LG-MF-05.html">The valence formula and the ring of modular forms of level one</a>, Theorems 2.1–2.2. The coefficient bound also proves the finite dimensionality needed here: truncation to its finitely many coefficients is injective, so the space embeds in a finite-dimensional coordinate space. This avoids the unresolved general Riemann–Roch dimension input. The finite cusp neighborhoods and compact remainder come from <a href="LG-MF-03.html">Modular curves and their genus</a>, Proposition 2.2 and Theorem 2.3. The quotient volume uses <a href="LG-MF-01.html">The upper half-plane and the modular group</a>, Proposition 5.1, and the finite-domain union.</p>
+<p>The circle, contour-deformation and locally uniform limit facts are proved in the first lesson, Lemma 0.2; removable singularities and the Laurent-contour calculation are proved in Lemma 0.1 here. Basic integration, including Tonelli and Fubini, remains an unresolved proof dependency: the <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration course</a> is a proposed earlier prerequisite, but its exact proofs have not been verified. Fremlin's freely available author text, Corollaries 252C and 252H, states the precise sigma-finite versions; source availability alone does not satisfy the earlier-proof requirement. Complex integrals follow by taking real and imaginary parts. The gamma integral at the positive integer <span class="math" data-tex="\(k-1\)">\(k-1\)</span> is evaluated by integration by parts, and the Bessel function used here is defined by its series. No special-function contour identity or nontrivial Kloosterman estimate is imported.</p>
+<p>The absolute Poincaré and Eisenstein constructions require <span class="math" data-tex="\(k&gt;2\)">\(k&gt;2\)</span>. Their weight-two regularization is not proved here. The Weil bound for Kloosterman sums and the optimal cusp-coefficient bound are not used or proved.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>Wiese 2018.</strong> G. Wiese, <em>Computational Arithmetic of Modular Forms</em>, §6.1, Petersson scalar product. <a href="https://arxiv.org/abs/1809.04645">Author's notes</a>.</p>
+</li>
+<li>
+<p><strong>Elkies.</strong> N. Elkies, <em>An upper bound on the coefficients of a PSL₂(Z) cusp form</em>, Math 259 notes, pages 1–3, for comparison of the Poincaré and Fourier calculations. The displayed series and integral normalizations used in this lesson are specified in (3.1) and (4.2). <a href="https://people.math.harvard.edu/~elkies/M259.02/poincare.pdf">Author's notes</a>.</p>
+</li>
+<li>
+<p><strong>Lebl.</strong> J. Lebl, <em>Guide to Cultivating Complex Analysis</em>, version 1.9, Theorems 3.3.10–3.3.11, 5.2.2 and 5.3.2, as free background for the analytic facts proved in Lemma 0.1 and the earlier first lesson. <a href="https://www.jirka.org/ca/ca.pdf">Author’s book</a>.</p>
+</li>
+<li>
+<p><strong>Fremlin.</strong> D. H. Fremlin, <em>Measure Theory</em>, Volume 2, Corollaries 252C and 252H, the authoritative original for the measure-and-integration prerequisite. <a href="https://www1.essex.ac.uk/maths/people/fremlin/chap25.pdf">Author’s Chapter 25</a>.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-06.html">← Dimension formulas for congruence subgroups</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-08.html">Hecke operators of level one →</a></span></nav>
+<p class="small source-link"><a href="src/the-petersson-inner-product-and-poincare-series.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

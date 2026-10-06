@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irrational rotation algebras · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 20 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+<p class="small">Some separate prerequisite proof readings are not yet available in this public collection. See the <a href="preparation.html">preparation and proof-dependency notes</a> for this lesson’s exact assumptions.</p></aside>
+<details class="assumed" open><summary>What this lesson assumes (3)</summary><ul><li><span class="unlinked">The Pimsner–Voiculescu exact sequence</span></li><li><a href="traces-on-integer-crossed-products-and-their-k-theory-ranges.html">Traces on integer crossed products and their K-theory ranges</a></li><li><a href="smooth-subalgebras-and-the-density-theorem.html">Smooth subalgebras and the density theorem</a></li></ul></details>
+<article class="lesson">
+<h1 id="irrational-rotation-algebras">Irrational rotation algebras</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Independently authored CC0 lesson; self-checked by the writing AI.</em></p>
+<p>The groups of a rotation algebra do not depend on its angle, but their trace pairing does. For an irrational angle the trace detects every stable projection class. An explicit projection then determines the positive cone, and the normalized trace distinguishes the algebras themselves.</p>
+<p>We use the <span class="unlinked">Pimsner–Voiculescu sequence</span>, the <a href="traces-on-integer-crossed-products-and-their-k-theory-ranges.html">trace range theorem</a>, and <a href="smooth-subalgebras-and-the-density-theorem.html">smooth action algebras</a>. Write <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, <span class="math" data-tex="\(z(t)=e^{2\pi it}\)">\(z(t)=e^{2\pi it}\)</span>, and use unnormalized matrix traces throughout.</p>
+<h2 id="1-covariance-fixes-the-angle">1. Covariance fixes the angle</h2>
+<p>For <span class="math" data-tex="\(\theta\in\mathbb R\)">\(\theta\in\mathbb R\)</span>, define an automorphism of <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_\theta(h)(t)=h(t+\theta),\\
+A_\theta=C(\mathbb T)\rtimes_{\alpha_\theta}\mathbb Z.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\alpha_\theta(h)(t)=h(t+\theta),\\
+A_\theta=C(\mathbb T)\rtimes_{\alpha_\theta}\mathbb Z.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(u\)">\(u\)</span> be the coefficient function <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> the implementing unitary. Thus</p>
+<span class="math math-display" data-tex="\[
+vuv^*=e^{2\pi i\theta}u,\qquad
+vu=e^{2\pi i\theta}uv.
+\tag{1.2}
+\]">\[
+vuv^*=e^{2\pi i\theta}u,\qquad
+vu=e^{2\pi i\theta}uv.
+\tag{1.2}
+\]</span>
+<p>In the inverse-pullback convention for actions on functions, (1.1) is the action of the geometric rotation <span class="math" data-tex="\(t\mapsto t-\theta\)">\(t\mapsto t-\theta\)</span>. Using the geometric rotation by <span class="math" data-tex="\(+\theta\)">\(+\theta\)</span> instead gives <span class="math" data-tex="\(\alpha_{-\theta}\)">\(\alpha_{-\theta}\)</span>. Keeping this distinction explicit prevents an erroneous determinant sign.</p>
+<p><strong>Proposition 1.1 (universal property).</strong> Given unitaries <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in a unital C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span> satisfying <span class="math" data-tex="\(ba=e^{2\pi i\theta}ab\)">\(ba=e^{2\pi i\theta}ab\)</span>, there is a unique unital *-homomorphism <span class="math" data-tex="\(A_\theta\to D\)">\(A_\theta\to D\)</span> sending <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><em>Proof.</em> Continuous functional calculus gives <span class="math" data-tex="\(\pi:C(\mathbb T)\to D\)">\(\pi:C(\mathbb T)\to D\)</span>, <span class="math" data-tex="\(\pi(h)=h(a)\)">\(\pi(h)=h(a)\)</span>. The relation and its adjoint give
+<span class="math" data-tex="\(b\pi(z^k)b^*=\pi(\alpha_\theta(z^k))\)">\(b\pi(z^k)b^*=\pi(\alpha_\theta(z^k))\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>. Density of Laurent polynomials extends covariance to every <span class="math" data-tex="\(h\)">\(h\)</span>. The universal crossed-product property integrates <span class="math" data-tex="\((\pi,b)\)">\((\pi,b)\)</span>. Conversely, the canonical pair satisfies (1.2); it generates the crossed product, since its coefficient algebra and all implementing powers generate the dense finite sums. This also proves uniqueness and identifies the crossed product with the universal algebra of the two unitaries. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The relation is unchanged by adding an integer to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Replacing <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(v^*\)">\(v^*\)</span> changes the parameter to <span class="math" data-tex="\(-\theta\)">\(-\theta\)</span>. Applying these replacements twice gives inverse homomorphisms, so</p>
+<span class="math math-display" data-tex="\[
+A_{\theta+k}\cong A_\theta\cong A_{-\theta}
+\qquad(k\in\mathbb Z).
+\tag{1.3}
+\]">\[
+A_{\theta+k}\cong A_\theta\cong A_{-\theta}
+\qquad(k\in\mathbb Z).
+\tag{1.3}
+\]</span>
+<p><strong>Proposition 1.2.</strong> If <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is irrational, <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> is simple and has a unique tracial state <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. It is faithful, and</p>
+<span class="math math-display" data-tex="\[
+\tau(u^m v^n)=
+\begin{cases}1,&amp;(m,n)=(0,0),\\0,&amp;\text{otherwise}.\end{cases}
+\tag{1.4}
+\]">\[
+\tau(u^m v^n)=
+\begin{cases}1,&amp;(m,n)=(0,0),\\0,&amp;\text{otherwise}.\end{cases}
+\tag{1.4}
+\]</span>
+<p><em>Proof.</em> An irrational rotation is free and minimal: no nonzero power has a fixed point, and its generated subgroup is dense in the circle. The subgroup argument is given in Lesson 19, Exercise 19.5. The simplicity criterion <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/KT-CP-03.html#minimality-removes-the-remaining-ideals">KT-CP-03, Corollary 3.6</a> applies to the reduced crossed product. Full and reduced products agree for <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, by KT-CP-05, Proposition 5.1, so it applies here.</p>
+<p>Haar integration <span class="math" data-tex="\(\tau_0\)">\(\tau_0\)</span> on the coefficient circle is invariant and faithful. The faithful expectation <span class="math" data-tex="\(E\)">\(E\)</span> gives the faithful tracial state <span class="math" data-tex="\(\tau=\tau_0E\)">\(\tau=\tau_0E\)</span>, by KT-CP-03, Theorem 3.1 and Proposition 3.2. This gives (1.4).</p>
+<p>If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is any tracial state, conjugation by <span class="math" data-tex="\(v\)">\(v\)</span> multiplies <span class="math" data-tex="\(u^m v^n\)">\(u^m v^n\)</span> by <span class="math" data-tex="\(e^{2\pi i m\theta}\)">\(e^{2\pi i m\theta}\)</span>, and conjugation by <span class="math" data-tex="\(u\)">\(u\)</span> multiplies it by <span class="math" data-tex="\(e^{-2\pi i n\theta}\)">\(e^{-2\pi i n\theta}\)</span>. Trace invariance under both conjugations forces its value to vanish unless <span class="math" data-tex="\(m=n=0\)">\(m=n=0\)</span>. It equals one there. Density of the finite sums proves <span class="math" data-tex="\(\rho=\tau\)">\(\rho=\tau\)</span>. Thus trace uniqueness has been proved on the crossed product itself. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For every real <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the Haar trace <span class="math" data-tex="\(\tau_0E\)">\(\tau_0E\)</span> still exists and is faithful. Only its uniqueness will require irrationality below.</p>
+<h2 id="2-the-two-k-groups-for-every-angle">2. The two K-groups for every angle</h2>
+<p>The path <span class="math" data-tex="\(s\mapsto\alpha_{s\theta}\)">\(s\mapsto\alpha_{s\theta}\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, is continuous in norm on each coefficient function. Homotopy invariance makes both <span class="math" data-tex="\(\alpha_{\theta,*}\)">\(\alpha_{\theta,*}\)</span> identity maps. Since
+<span class="math" data-tex="\(K_0(C(\mathbb T))=\mathbb Z[1]\)">\(K_0(C(\mathbb T))=\mathbb Z[1]\)</span> and <span class="math" data-tex="\(K_1(C(\mathbb T))=\mathbb Z[z]\)">\(K_1(C(\mathbb T))=\mathbb Z[z]\)</span>, the sequence of Lesson 18 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow\mathbb Z[1]
+\xrightarrow{\iota_*}K_0(A_\theta),\\
+K_0(A_\theta)\xrightarrow{d_0}\mathbb Z[z]\longrightarrow0;\\
+0\longrightarrow\mathbb Z[z]
+\xrightarrow{\iota_*}K_1(A_\theta),\\
+K_1(A_\theta)\xrightarrow{d_1}\mathbb Z[1]\longrightarrow0.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+0\longrightarrow\mathbb Z[1]
+\xrightarrow{\iota_*}K_0(A_\theta),\\
+K_0(A_\theta)\xrightarrow{d_0}\mathbb Z[z]\longrightarrow0;\\
+0\longrightarrow\mathbb Z[z]
+\xrightarrow{\iota_*}K_1(A_\theta),\\
+K_1(A_\theta)\xrightarrow{d_1}\mathbb Z[1]\longrightarrow0.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p><strong>Theorem 2.1.</strong> For every <span class="math" data-tex="\(\theta\in\mathbb R\)">\(\theta\in\mathbb R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(A_\theta)\cong\mathbb Z^2,\\
+K_1(A_\theta)=\mathbb Z[u]\oplus\mathbb Z[v].
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+K_0(A_\theta)\cong\mathbb Z^2,\\
+K_1(A_\theta)=\mathbb Z[u]\oplus\mathbb Z[v].
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p><em>Proof.</em> Each rightmost group in (2.1) is free. Choose a lift of its generator; its integer multiples define a splitting. The resulting direct sums prove the abstract group assertions and show that <span class="math" data-tex="\([1]\)">\([1]\)</span> is primitive in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<p>To identify the second <span class="math" data-tex="\(K_1\)">\(K_1\)</span>-generator, use the equivariant unital inclusion <span class="math" data-tex="\(\mathbb C\to C(\mathbb T)\)">\(\mathbb C\to C(\mathbb T)\)</span>, with the trivial action on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Its crossed-product map <span class="math" data-tex="\(C(\mathbb T)\to A_\theta\)">\(C(\mathbb T)\to A_\theta\)</span> sends the scalar system's implementing circle coordinate to <span class="math" data-tex="\(v\)">\(v\)</span>. In that scalar system the PV boundary is an isomorphism <span class="math" data-tex="\(\mathbb Z[z]\to\mathbb Z[1]\)">\(\mathbb Z[z]\to\mathbb Z[1]\)</span>, hence sends <span class="math" data-tex="\([z]\)">\([z]\)</span> to <span class="math" data-tex="\(\pm[1]\)">\(\pm[1]\)</span>. Naturality therefore gives <span class="math" data-tex="\(d_1[v]=\pm[1]\)">\(d_1[v]=\pm[1]\)</span>. The left injection in (2.1) sends <span class="math" data-tex="\([z]\)">\([z]\)</span> to <span class="math" data-tex="\([u]\)">\([u]\)</span>. A generator of the kernel together with an element mapping to a generator of the quotient is a basis: subtract a multiple of <span class="math" data-tex="\([v]\)">\([v]\)</span> from any class, then use the kernel; applying <span class="math" data-tex="\(d_1\)">\(d_1\)</span> also proves independence. No numerical choice of the boundary's sign is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-trace-determines-the-stable-classes">3. The trace determines the stable classes</h2>
+<p>Use the matrix extension <span class="math" data-tex="\(\tau_r=\tau\circ\operatorname{Tr}_r\)">\(\tau_r=\tau\circ\operatorname{Tr}_r\)</span> to define <span class="math" data-tex="\(\tau_*:K_0(A_\theta)\to\mathbb R\)">\(\tau_*:K_0(A_\theta)\to\mathbb R\)</span>. On <span class="math" data-tex="\(K_0(C(\mathbb T))\)">\(K_0(C(\mathbb T))\)</span> the coefficient trace has range <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The action fixes every circle <span class="math" data-tex="\(K_1\)">\(K_1\)</span>-class. For its generator the relative unitary used in Lesson 19 is</p>
+<span class="math math-display" data-tex="\[
+z\alpha_\theta(z^*)=e^{-2\pi i\theta}1.
+\tag{3.1}
+\]">\[
+z\alpha_\theta(z^*)=e^{-2\pi i\theta}1.
+\tag{3.1}
+\]</span>
+<p>The path <span class="math" data-tex="\(s\mapsto e^{-2\pi i s\theta}1\)">\(s\mapsto e^{-2\pi i s\theta}1\)</span> has trace integral <span class="math" data-tex="\(-\theta\)">\(-\theta\)</span>, so its determinant is <span class="math" data-tex="\(-\theta\)">\(-\theta\)</span> modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. On <span class="math" data-tex="\([z^k]\)">\([z^k]\)</span> it is <span class="math" data-tex="\(-k\theta\)">\(-k\theta\)</span> modulo <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Lesson 19, Theorem 4.1 identifies the full trace range with the inverse image of this determinant subgroup under <span class="math" data-tex="\(\mathbb R\to\mathbb R/\mathbb Z\)">\(\mathbb R\to\mathbb R/\mathbb Z\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\tau_*(K_0(A_\theta))=\mathbb Z+\theta\mathbb Z.
+\tag{3.2}
+\]">\[
+\tau_*(K_0(A_\theta))=\mathbb Z+\theta\mathbb Z.
+\tag{3.2}
+\]</span>
+<p>This holds even for rational angles. Changing the action to <span class="math" data-tex="\(\alpha_{-\theta}\)">\(\alpha_{-\theta}\)</span> changes the displayed determinant to <span class="math" data-tex="\(+\theta\)">\(+\theta\)</span>, while leaving (3.2) unchanged.</p>
+<p><strong>Theorem 3.1.</strong> For irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, the map</p>
+<span class="math math-display" data-tex="\[
+\tau_*:K_0(A_\theta)\longrightarrow
+\mathbb Z+\theta\mathbb Z
+\tag{3.3}
+\]">\[
+\tau_*:K_0(A_\theta)\longrightarrow
+\mathbb Z+\theta\mathbb Z
+\tag{3.3}
+\]</span>
+<p>is an isomorphism of abelian groups and sends <span class="math" data-tex="\([1]\)">\([1]\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>Proof.</em> Irrationality makes <span class="math" data-tex="\(1,\theta\)">\(1,\theta\)</span> an integral basis of the subgroup on the right. The domain is free of rank two by Theorem 2.1, and (3.2) proves surjectivity. A surjective homomorphism between two rank-two free abelian groups has zero kernel: tensoring with <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> gives an isomorphism, so the kernel has rank zero; as a subgroup of a free group it is torsion free and therefore zero. Normalization gives the unit assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This supplies the trace isomorphism used as input in formula (8.3) of <a href="../NCG-CYCLIC/public/reader/connections-and-curvature.html#8-constant-curvature-and-its-normalization">Connections and curvature from symmetries of an algebra</a>. Its frame and curvature proofs are separate from the present computation.</p>
+<h2 id="4-the-same-powers-rieffel-projection">4. The same Powers–Rieffel projection</h2>
+<p>Suppose <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>. The geometry lesson's relation (6.1) is <span class="math" data-tex="\(UV=e^{2\pi i\theta}VU\)">\(UV=e^{2\pi i\theta}VU\)</span>. Identify its generators by</p>
+<span class="math math-display" data-tex="\[
+U=u,\qquad V=v^*.
+\tag{4.1}
+\]">\[
+U=u,\qquad V=v^*.
+\tag{4.1}
+\]</span>
+<p>Then its projection (6.2), <span class="math" data-tex="\(V^*g(U)+f(U)+g(U)V\)">\(V^*g(U)+f(U)+g(U)V\)</span>, is exactly</p>
+<span class="math math-display" data-tex="\[
+e_\theta=g(u)v^*+f(u)+vg(u).
+\tag{4.2}
+\]">\[
+e_\theta=g(u)v^*+f(u)+vg(u).
+\tag{4.2}
+\]</span>
+<p>Thus we use the functions and supports from <a href="../NCG-CYCLIC/public/reader/connections-and-curvature.html#6-the-smooth-rotation-algebra">NCG-CYCLIC, §6 and Proposition 6.2</a>, with the explicit generator identification (4.1).</p>
+<p>Here are the functions needed to verify the projection. Choose
+<span class="math" data-tex="\(0&lt;a&lt;b&lt;a+\theta&lt;b+\theta&lt;1\)">\(0&lt;a&lt;b&lt;a+\theta&lt;b+\theta&lt;1\)</span>. Let <span class="math" data-tex="\(H\)">\(H\)</span> be a smooth increasing step from zero to one on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, flat at its ends, and put <span class="math" data-tex="\(F=\sin^2(\pi H/2)\)">\(F=\sin^2(\pi H/2)\)</span>. Write <span class="math" data-tex="\(I_r=[a,b]\)">\(I_r=[a,b]\)</span>, <span class="math" data-tex="\(I_p=[b,a+\theta]\)">\(I_p=[b,a+\theta]\)</span>, and <span class="math" data-tex="\(I_f=[a+\theta,b+\theta]\)">\(I_f=[a+\theta,b+\theta]\)</span>; on <span class="math" data-tex="\(I_f\)">\(I_f\)</span> write <span class="math" data-tex="\(F_\theta(t)=F(t-\theta)\)">\(F_\theta(t)=F(t-\theta)\)</span>. Define the periodic functions</p>
+<span class="math math-display" data-tex="\[
+f(t)=
+\begin{cases}
+F(t),&amp;t\in I_r,\\
+1,&amp;t\in I_p,\\
+1-F_\theta(t),&amp;t\in I_f,\\
+0,&amp;\text{otherwise},
+\end{cases}
+\tag{4.3}
+\]">\[
+f(t)=
+\begin{cases}
+F(t),&amp;t\in I_r,\\
+1,&amp;t\in I_p,\\
+1-F_\theta(t),&amp;t\in I_f,\\
+0,&amp;\text{otherwise},
+\end{cases}
+\tag{4.3}
+\]</span>
+<p>and <span class="math" data-tex="\(g(t)=\sqrt{f(t)-f(t)^2}\)">\(g(t)=\sqrt{f(t)-f(t)^2}\)</span> on the falling interval <span class="math" data-tex="\([a+\theta,b+\theta]\)">\([a+\theta,b+\theta]\)</span>, zero elsewhere. These are smooth: the square root there is the translate of <span class="math" data-tex="\(\sin(\pi H/2)\cos(\pi H/2)\)">\(\sin(\pi H/2)\cos(\pi H/2)\)</span>, flat at both ends. Such intervals exist by choosing <span class="math" data-tex="\(b-a&lt;\min(\theta,1-\theta)\)">\(b-a&lt;\min(\theta,1-\theta)\)</span> and then a sufficiently small positive <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Proposition 4.1.</strong> The element (4.2) is a smooth orthogonal projection and <span class="math" data-tex="\(\tau(e_\theta)=\theta\)">\(\tau(e_\theta)=\theta\)</span>.</p>
+<p><em>Proof.</em> Set <span class="math" data-tex="\(W=v^*\)">\(W=v^*\)</span>, so <span class="math" data-tex="\(Wh(u)W^*=h(t-\theta)\)">\(Wh(u)W^*=h(t-\theta)\)</span>. Write <span class="math" data-tex="\(g_+(t)=g(t+\theta)\)">\(g_+(t)=g(t+\theta)\)</span>. Formula (4.2) becomes
+<span class="math" data-tex="\(e_\theta=f+gW+g_+W^{-1}\)">\(e_\theta=f+gW+g_+W^{-1}\)</span>, and is self-adjoint. Coefficients multiply by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(hW^j)(kW^\ell)\\
+&amp;\quad=h(t)k(t-j\theta)W^{j+\ell}.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+&amp;(hW^j)(kW^\ell)\\
+&amp;\quad=h(t)k(t-j\theta)W^{j+\ell}.
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>The construction gives the three identities</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f^2+g^2+g_+^2=f,\\
+g(t)\bigl(f(t)+f(t-\theta)\bigr)=g(t),\\
+g(t)g(t-\theta)=0.
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+f^2+g^2+g_+^2=f,\\
+g(t)\bigl(f(t)+f(t-\theta)\bigr)=g(t),\\
+g(t)g(t-\theta)=0.
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>For the first, <span class="math" data-tex="\(g^2\)">\(g^2\)</span> supplies <span class="math" data-tex="\(f-f^2\)">\(f-f^2\)</span> on the falling interval and <span class="math" data-tex="\(g_+^2\)">\(g_+^2\)</span> supplies it on the rising interval; elsewhere <span class="math" data-tex="\(f\)">\(f\)</span> is zero or one. On the falling interval <span class="math" data-tex="\(f(t)+f(t-\theta)=1\)">\(f(t)+f(t-\theta)=1\)</span>, proving the second. The support interval of <span class="math" data-tex="\(g\)">\(g\)</span> and its translate by <span class="math" data-tex="\(\theta\)">\(\theta\)</span> are disjoint on the circle because its length is less than both <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span>, proving the third. Equations (4.4)–(4.5) give the coefficients of <span class="math" data-tex="\(W^0,W^1,W^2\)">\(W^0,W^1,W^2\)</span> in <span class="math" data-tex="\(e_\theta^2=e_\theta\)">\(e_\theta^2=e_\theta\)</span>. The two negative coefficients follow by adjoints. These are all possible coefficients, so the equality is proved.</p>
+<p>The trace deletes the nonzero powers of <span class="math" data-tex="\(W\)">\(W\)</span>, giving <span class="math" data-tex="\(\tau(e_\theta)=\int_0^1 f(t)dt\)">\(\tau(e_\theta)=\int_0^1 f(t)dt\)</span>. The two transition integrals sum to <span class="math" data-tex="\(b-a\)">\(b-a\)</span>, since one is <span class="math" data-tex="\(F\)">\(F\)</span> and the other its translated complement. The plateau has length <span class="math" data-tex="\(\theta-(b-a)\)">\(\theta-(b-a)\)</span>. Their sum is <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Smoothness follows from the smooth functions and the smooth torus action on the generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For irrational <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>, Theorem 3.1 now proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(A_\theta)=\mathbb Z[1]\oplus\mathbb Z[e_\theta],\\
+\tau_*(m[1]+n[e_\theta])=m+n\theta.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+K_0(A_\theta)=\mathbb Z[1]\oplus\mathbb Z[e_\theta],\\
+\tau_*(m[1]+n[e_\theta])=m+n\theta.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>This basis assertion uses trace injectivity, rather than presuming the projection generates before its trace is known. For any irrational parameter, first use its fractional part and the isomorphism (1.3).</p>
+<h3 id="an-alternative-trace-calculation-with-interval-indicators">An alternative trace calculation with interval indicators</h3>
+<p>The trace range can also be obtained by enlarging the coefficient algebra until its degree-one K-group vanishes. This is the discontinuous-function method of Cuntz [1981 II, §2.5, printed p. 107]. We supply the interval algebra, its finite stages and the trace computation explicitly. The resulting theorem is the same trace-range theorem as in §3, but the proof uses PV directly rather than the determinant range theorem.</p>
+<p>Fix an irrational <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>. Retain this lesson's convention
+<span class="math" data-tex="\(\alpha(h)(t)=h(t+\theta)\)">\(\alpha(h)(t)=h(t+\theta)\)</span> on <span class="math" data-tex="\(\mathbb T=\mathbb R/\mathbb Z\)">\(\mathbb T=\mathbb R/\mathbb Z\)</span>, and put
+<span class="math" data-tex="\(f=1_{[0,\theta)}\)">\(f=1_{[0,\theta)}\)</span>. The functions here are actual bounded functions with the supremum norm; they are not classes modulo sets of measure zero. Every circular arc below includes its initial endpoint and excludes its terminal endpoint. Let <span class="math" data-tex="\(D\)">\(D\)</span> be the smallest closed unital *-subalgebra of <span class="math" data-tex="\(\ell^\infty(\mathbb T)\)">\(\ell^\infty(\mathbb T)\)</span> containing <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>, and invariant under both <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\alpha^{-1}\)">\(\alpha^{-1}\)</span>.</p>
+<p><strong>Proposition 4.2 (Cuntz's interval enlargement).</strong> The algebra <span class="math" data-tex="\(D\)">\(D\)</span> is a commutative sequential AF algebra, and <span class="math" data-tex="\(K_1(D)=0\)">\(K_1(D)=0\)</span>. Haar integration extends to an invariant tracial state <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>, with
+<span class="math math-display" data-tex="\[
+\mu_*(K_0(D))=\mathbb Z+\theta\mathbb Z.
+\tag{4.7}
+\]">\[
+\mu_*(K_0(D))=\mathbb Z+\theta\mathbb Z.
+\tag{4.7}
+\]</span>
+If <span class="math" data-tex="\(C=D\rtimes_\alpha\mathbb Z\)">\(C=D\rtimes_\alpha\mathbb Z\)</span>, the natural equivariant coefficient inclusion induces a unital embedding
+<span class="math" data-tex="\(\eta:A_\theta\to C\)">\(\eta:A_\theta\to C\)</span>. With <span class="math" data-tex="\(\widehat\mu=\mu E_D\)">\(\widehat\mu=\mu E_D\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat\mu_*(K_0(C))=\mathbb Z+\theta\mathbb Z,\\
+\widehat\mu\eta=\tau.
+\end{gathered}
+\tag{4.8}
+\]">\[
+\begin{gathered}
+\widehat\mu_*(K_0(C))=\mathbb Z+\theta\mathbb Z,\\
+\widehat\mu\eta=\tau.
+\end{gathered}
+\tag{4.8}
+\]</span>
+Consequently <span class="math" data-tex="\(\tau_*(K_0(A_\theta))\subseteq\mathbb Z+\theta\mathbb Z\)">\(\tau_*(K_0(A_\theta))\subseteq\mathbb Z+\theta\mathbb Z\)</span>. The unit and the projection of Proposition 4.1 give the reverse containment. Thus this proves the irrational trace-range formula independently of Lesson 19, Theorem 4.1.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(\Gamma=\{\{m\theta\}:m\in\mathbb Z\}\subset[0,1)\)">\(\Gamma=\{\{m\theta\}:m\in\mathbb Z\}\subset[0,1)\)</span>, where braces denote fractional part, and let <span class="math" data-tex="\(\rho=\alpha^{-1}\)">\(\rho=\alpha^{-1}\)</span>, so <span class="math" data-tex="\(\rho h(t)=h(t-\theta)\)">\(\rho h(t)=h(t-\theta)\)</span>. For each integer <span class="math" data-tex="\(m\)">\(m\)</span>, define
+<span class="math math-display" data-tex="\[
+S_m=
+\begin{cases}
+\sum_{k=0}^{m-1}\rho^k f,&amp;m&gt;0,\\
+0,&amp;m=0,\\
+-\sum_{k=m}^{-1}\rho^k f,&amp;m&lt;0.
+\end{cases}
+\]">\[
+S_m=
+\begin{cases}
+\sum_{k=0}^{m-1}\rho^k f,&amp;m&gt;0,\\
+0,&amp;m=0,\\
+-\sum_{k=m}^{-1}\rho^k f,&amp;m&lt;0.
+\end{cases}
+\]</span>
+These functions satisfy the exact pointwise identity
+<span class="math math-display" data-tex="\[
+S_m(t)=\lfloor m\theta\rfloor+1_{[0,\{m\theta\})}(t).
+\tag{4.9}
+\]">\[
+S_m(t)=\lfloor m\theta\rfloor+1_{[0,\{m\theta\})}(t).
+\tag{4.9}
+\]</span>
+To check it including endpoints, take the representative <span class="math" data-tex="\(0\le t&lt;1\)">\(0\le t&lt;1\)</span>. For <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, <span class="math" data-tex="\(\rho^kf\)">\(\rho^kf\)</span> indicates the image modulo one of the half-open real interval <span class="math" data-tex="\([k\theta,(k+1)\theta)\)">\([k\theta,(k+1)\theta)\)</span>. These intervals partition <span class="math" data-tex="\([0,m\theta)\)">\([0,m\theta)\)</span> before reduction modulo one. Write <span class="math" data-tex="\(m\theta=l+a\)">\(m\theta=l+a\)</span>, <span class="math" data-tex="\(l=\lfloor m\theta\rfloor\)">\(l=\lfloor m\theta\rfloor\)</span>, <span class="math" data-tex="\(0\le a&lt;1\)">\(0\le a&lt;1\)</span>. The <span class="math" data-tex="\(l\)">\(l\)</span> complete unit intervals cover the circle <span class="math" data-tex="\(l\)">\(l\)</span> times, and the remainder covers <span class="math" data-tex="\([0,a)\)">\([0,a)\)</span> once. For <span class="math" data-tex="\(m&lt;0\)">\(m&lt;0\)</span>, the signed sum counts the interval <span class="math" data-tex="\([m\theta,0)\)">\([m\theta,0)\)</span> negatively. If <span class="math" data-tex="\(m\theta=l+a\)">\(m\theta=l+a\)</span>, the interval contributes <span class="math" data-tex="\(-(-l-1)\)">\(-(-l-1)\)</span> full covers and one negative cover of <span class="math" data-tex="\([a,1)\)">\([a,1)\)</span>, which is <span class="math" data-tex="\(l+1_{[0,a)}\)">\(l+1_{[0,a)}\)</span>. The case <span class="math" data-tex="\(m=0\)">\(m=0\)</span> is immediate. The half-open endpoint rule makes all these identities literal everywhere.</p>
+<p>It follows that <span class="math" data-tex="\(1_{[0,a)}\in D\)">\(1_{[0,a)}\in D\)</span> for every <span class="math" data-tex="\(a\in\Gamma\)">\(a\in\Gamma\)</span>. Translating by <span class="math" data-tex="\(\rho^r\)">\(\rho^r\)</span> gives the indicator of every circular arc starting at <span class="math" data-tex="\(\{r\theta\}\)">\(\{r\theta\}\)</span> and having length <span class="math" data-tex="\(\{m\theta\}\)">\(\{m\theta\}\)</span>. In particular every circular arc with distinct endpoints in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> lies in <span class="math" data-tex="\(D\)">\(D\)</span>, since their difference modulo one has that form.</p>
+<p>Enumerate <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and choose increasing finite endpoint sets <span class="math" data-tex="\(Q_r\)">\(Q_r\)</span> containing both 0 and <span class="math" data-tex="\(\theta\)">\(\theta\)</span> whose union is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Arrange each set in circular order and partition the circle into its successive half-open arcs. Let <span class="math" data-tex="\(F_r\)">\(F_r\)</span> be the functions constant on these arcs. Each <span class="math" data-tex="\(F_r\)">\(F_r\)</span> is a finite-dimensional algebra <span class="math" data-tex="\(\mathbb C^{|Q_r|}\)">\(\mathbb C^{|Q_r|}\)</span>, generated by the arc indicators, and <span class="math" data-tex="\(F_r\subset F_{r+1}\subset D\)">\(F_r\subset F_{r+1}\subset D\)</span>. Irrationality makes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> dense, as proved in Lesson 19, Exercise 19.5. The largest arc length in these partitions tends to zero. Indeed, for a prescribed positive length, a finite subset of the dense endpoint set already divides the circle into shorter arcs, and that subset eventually lies in <span class="math" data-tex="\(Q_r\)">\(Q_r\)</span>.</p>
+<p>Uniform continuity now shows that every <span class="math" data-tex="\(h\in C(\mathbb T)\)">\(h\in C(\mathbb T)\)</span> is a uniform limit of these step functions: on each arc choose a point and use its function value. The maximum error tends to zero with the maximum arc length. The closure <span class="math" data-tex="\(D_0=\overline{\bigcup_rF_r}\)">\(D_0=\overline{\bigcup_rF_r}\)</span> therefore contains <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span>. It is invariant under <span class="math" data-tex="\(\alpha^{\pm1}\)">\(\alpha^{\pm1}\)</span>, because these maps translate arc endpoints within <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Thus minimality of <span class="math" data-tex="\(D\)">\(D\)</span> gives <span class="math" data-tex="\(D\subseteq D_0\)">\(D\subseteq D_0\)</span>; the converse was proved by the indicator construction. This establishes the exact sequential AF presentation <span class="math" data-tex="\(D=D_0\)">\(D=D_0\)</span>.</p>
+<p>The exact sequential AF presentation and <a href="inductive-limits-and-the-k-theory-of-af-and-at-algebras.html#1-af-algebras-and-their-complete-invariant">Lesson 16, Proposition 1.1</a> now give <span class="math" data-tex="\(K_1(D)=0\)">\(K_1(D)=0\)</span>. That proof contracts every finite-stage matrix unitary through its polar and spectral paths and then uses K-theory continuity.</p>
+<p>Integration is well-defined on the actual step functions and their uniform closure: every such function is bounded and Borel measurable, and <span class="math" data-tex="\(|\int h|\le\|h\|_\infty\)">\(|\int h|\le\|h\|_\infty\)</span>. It is positive, has value one at the unit, and is invariant under the circle translations. As <span class="math" data-tex="\(D\)">\(D\)</span> is commutative it is a trace. On <span class="math" data-tex="\(F_r\)">\(F_r\)</span>, the <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-pairing sends the basis class of an arc indicator to the length of that arc. The ordered rank computation for finite sums of scalars and the full continuity theorem in Lesson 5, Theorem 3.3, imply that every class of <span class="math" data-tex="\(K_0(D)\)">\(K_0(D)\)</span> comes from one such stage. Its trace is an integer combination of arc lengths. Each length is <span class="math" data-tex="\(\{m\theta\}=m\theta-\lfloor m\theta\rfloor\)">\(\{m\theta\}=m\theta-\lfloor m\theta\rfloor\)</span> for some integer <span class="math" data-tex="\(m\)">\(m\)</span>, so the range is contained in <span class="math" data-tex="\(\mathbb Z+\theta\mathbb Z\)">\(\mathbb Z+\theta\mathbb Z\)</span>. The projections 1 and <span class="math" data-tex="\(f\)">\(f\)</span> have traces 1 and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>; their classes give the reverse containment. This proves (4.7), for differences of projections as well as projections.</p>
+<p>The equivariant inclusion <span class="math" data-tex="\(C(\mathbb T)\to D\)">\(C(\mathbb T)\to D\)</span> and the implementing unitary <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span> form a covariant representation with the same positive function action as in (1.1). Universality gives <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(\eta(u)=z\in D\)">\(\eta(u)=z\in D\)</span> and <span class="math" data-tex="\(\eta(v)=V\)">\(\eta(v)=V\)</span>. It is injective. One may verify this directly with the gauge averages: <span class="math" data-tex="\(E_D\eta=\eta E_{\mathbb T}\)">\(E_D\eta=\eta E_{\mathbb T}\)</span> on dense Laurent polynomials and hence everywhere, and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is injective on the coefficient algebra. If <span class="math" data-tex="\(\eta(x)=0\)">\(\eta(x)=0\)</span>, these identities force <span class="math" data-tex="\(E_{\mathbb T}(x^*x)=0\)">\(E_{\mathbb T}(x^*x)=0\)</span>, and faithfulness of the source average gives <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The required faithful gauge averages and their coefficient ranges are Lesson 19, §1, including its proof preceding Proposition 1.1. No simplicity assertion about <span class="math" data-tex="\(D\)">\(D\)</span> is required.</p>
+<p>That proposition makes <span class="math" data-tex="\(\widehat\mu=\mu E_D\)">\(\widehat\mu=\mu E_D\)</span> a tracial state on <span class="math" data-tex="\(C\)">\(C\)</span>. The coefficient trace restricts to Haar integration on the circle and the expectation identity shows <span class="math" data-tex="\(\widehat\mu\eta=\tau\)">\(\widehat\mu\eta=\tau\)</span>. Apply Lesson 18, Corollary 3.5, with its actual Toeplitz coefficient inclusion <span class="math" data-tex="\(i:D\to C\)">\(i:D\to C\)</span>. The relevant exact segment is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(D)\xrightarrow{i_*}K_0(C)\\
+\longrightarrow K_1(D)=0.
+\end{gathered}
+\tag{4.10}
+\]">\[
+\begin{gathered}
+K_0(D)\xrightarrow{i_*}K_0(C)\\
+\longrightarrow K_1(D)=0.
+\end{gathered}
+\tag{4.10}
+\]</span>
+Thus <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is onto. Naturality of the bounded trace pairing, Lesson 13, Theorem 1.1, gives
+<span class="math" data-tex="\(\widehat\mu_*i_*=\mu_*\)">\(\widehat\mu_*i_*=\mu_*\)</span>, and hence
+<span class="math" data-tex="\(\widehat\mu_*(K_0(C))=\mu_*(K_0(D))\)">\(\widehat\mu_*(K_0(C))=\mu_*(K_0(D))\)</span>. Naturality again, now for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, proves the claimed containment of the trace range of <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>. This argument uses only surjectivity of a specified coefficient K-map; no sign choice for a PV boundary enters it.</p>
+<p>Finally <span class="math" data-tex="\([1]\)">\([1]\)</span> and the independently verified projection <span class="math" data-tex="\([e_\theta]\)">\([e_\theta]\)</span> of Proposition 4.1 pair to 1 and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Their integer linear combinations lie in <span class="math" data-tex="\(K_0(A_\theta)\)">\(K_0(A_\theta)\)</span>, so the containment is equality. Combined with the abstract rank-two group calculation of Theorem 2.1, the elementary rank argument of Theorem 3.1 also recovers injectivity of the trace map. Proposition 4.1's projection and trace computation do not use Theorem 3.1; its subsequent basis conclusion does. Thus the alternative calculation introduces no dependency cycle. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This enlargement is a commutative AF coefficient algebra followed by an integer crossed product. It does not embed <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> into an AF algebra, and it proves no AF classification theorem. Its use of interval indicators concerns the ambient coefficient algebra; the original rotation algebra retains its continuous circle coefficients.</p>
+<p>[Cuntz 1981 II] Joachim Cuntz, <em>K-theory for certain C*-algebras. II</em>, Journal of Operator Theory 5 (1981), 101–108, §2.5, p.107. <a href="https://www.theta.ro/jot/archive/1981-005-001/1981-005-001-009.pdf">Freely readable original paper</a>. The interval-enlargement method is credited to this paper. The proof above is independently written and supplies the steps abbreviated there as <span class="math" data-tex="\(K_1(D)=0\)">\(K_1(D)=0\)</span> and the immediate coefficient trace-range calculation.</p>
+<h2 id="5-positive-classes-and-cancellation">5. Positive classes and cancellation</h2>
+<p><strong>Theorem 5.1 (order).</strong> Under (3.3),</p>
+<span class="math math-display" data-tex="\[
+K_0(A_\theta)^+=
+(\mathbb Z+\theta\mathbb Z)\cap[0,\infty).
+\tag{5.1}
+\]">\[
+K_0(A_\theta)^+=
+(\mathbb Z+\theta\mathbb Z)\cap[0,\infty).
+\tag{5.1}
+\]</span>
+<p>The unit corresponds to <span class="math" data-tex="\(1\)">\(1\)</span>. The traces of projections in <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> itself are exactly <span class="math" data-tex="\((\mathbb Z+\theta\mathbb Z)\cap[0,1]\)">\((\mathbb Z+\theta\mathbb Z)\cap[0,1]\)</span>.</p>
+<p><em>Proof.</em> A projection in a matrix algebra has nonnegative trace, and faithfulness makes that trace strictly positive unless the projection is zero.</p>
+<p>Conversely let <span class="math" data-tex="\(r=m+n\theta&gt;0\)">\(r=m+n\theta&gt;0\)</span>. If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, use a diagonal matrix of <span class="math" data-tex="\(m\)">\(m\)</span> units. If <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, put <span class="math" data-tex="\(\nu=\{n\theta\}\in(0,1)\)">\(\nu=\{n\theta\}\in(0,1)\)</span>. The unitaries <span class="math" data-tex="\(u^n,v\)">\(u^n,v\)</span> satisfy the relation for parameter <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Proposition 1.1 gives a unital map <span class="math" data-tex="\(A_\nu\to A_\theta\)">\(A_\nu\to A_\theta\)</span>; its source is simple, so it is injective. The restricted normalized trace is the unique trace of <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span>. Therefore the image <span class="math" data-tex="\(p\)">\(p\)</span> of its projection <span class="math" data-tex="\(e_\nu\)">\(e_\nu\)</span> has trace <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Write <span class="math" data-tex="\(r=k+\nu\)">\(r=k+\nu\)</span>, where <span class="math" data-tex="\(k=\lfloor r\rfloor\geq0\)">\(k=\lfloor r\rfloor\geq0\)</span>. The projection with diagonal blocks <span class="math" data-tex="\(k\)">\(k\)</span> units and <span class="math" data-tex="\(p\)">\(p\)</span> has trace <span class="math" data-tex="\(r\)">\(r\)</span>. By injectivity of <span class="math" data-tex="\(\tau_*\)">\(\tau_*\)</span>, its class is the class corresponding to <span class="math" data-tex="\(r\)">\(r\)</span>. Zero is realized by the zero projection. This proves (5.1).</p>
+<p>If <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, this construction has <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> belongs to <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> itself. The endpoints are realized by zero and one. Conversely any projection <span class="math" data-tex="\(p\)">\(p\)</span> in the unital algebra satisfies <span class="math" data-tex="\(0\leq p\leq1\)">\(0\leq p\leq1\)</span>, hence <span class="math" data-tex="\(0\leq\tau(p)\leq1\)">\(0\leq\tau(p)\leq1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.1a (short support and a fixed matrix size).</strong> Let <span class="math" data-tex="\(\theta\)">\(\theta\)</span> be irrational. Every <span class="math" data-tex="\(r\in(\mathbb Z+\theta\mathbb Z)\cap[0,1]\)">\(r\in(\mathbb Z+\theta\mathbb Z)\cap[0,1]\)</span> is the trace of a smooth projection with only the implementing powers <span class="math" data-tex="\(v^{-1},1,v\)">\(v^{-1},1,v\)</span>. More generally, for every integer <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{(\tau\otimes\operatorname{Tr}_N)(p):
+\\ p=p^*=p^2\in M_N(A_\theta)\}
+\\ =(\mathbb Z+\theta\mathbb Z)\cap[0,N].
+\end{gathered}
+\tag{5.1a}
+\]">\[
+\begin{gathered}
+\{(\tau\otimes\operatorname{Tr}_N)(p):
+\\ p=p^*=p^2\in M_N(A_\theta)\}
+\\ =(\mathbb Z+\theta\mathbb Z)\cap[0,N].
+\end{gathered}
+\tag{5.1a}
+\]</span>
+<p>Here <span class="math" data-tex="\(\operatorname{Tr}_N\)">\(\operatorname{Tr}_N\)</span> is the unnormalized matrix trace.</p>
+<p><em>Proof.</em> The endpoints <span class="math" data-tex="\(r=0,1\)">\(r=0,1\)</span> are given by the zero and unit projections. If <span class="math" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span>, write <span class="math" data-tex="\(r=a+b\theta\)">\(r=a+b\theta\)</span> with integers <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Then <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, and <span class="math" data-tex="\(r=\{b\theta\}\)">\(r=\{b\theta\}\)</span>. The unital homomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi_b:A_r\longrightarrow A_\theta,
+\\ \phi_b(u_r)=u^b,\quad \phi_b(v_r)=v.
+\end{gathered}
+\tag{5.1b}
+\]">\[
+\begin{gathered}
+\phi_b:A_r\longrightarrow A_\theta,
+\\ \phi_b(u_r)=u^b,\quad \phi_b(v_r)=v.
+\end{gathered}
+\tag{5.1b}
+\]</span>
+<p>exists by Proposition 1.1 because
+<span class="math" data-tex="\(vu^b=e^{2\pi i b\theta}u^bv=e^{2\pi ir}u^bv\)">\(vu^b=e^{2\pi i b\theta}u^bv=e^{2\pi ir}u^bv\)</span>.
+The pullback <span class="math" data-tex="\(\tau\circ\phi_b\)">\(\tau\circ\phi_b\)</span> is the unique normalized trace of <span class="math" data-tex="\(A_r\)">\(A_r\)</span>, by Proposition 1.2. Thus Proposition 4.1 gives the projection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_r= g_r(u^b)v^*+f_r(u^b)
+\\ {}+vg_r(u^b),
+\\ \tau(p_r)=r.
+\end{gathered}
+\tag{5.1c}
+\]">\[
+\begin{gathered}
+p_r= g_r(u^b)v^*+f_r(u^b)
+\\ {}+vg_r(u^b),
+\\ \tau(p_r)=r.
+\end{gathered}
+\tag{5.1c}
+\]</span>
+<p>Its functions are precisely the smooth functions of (4.3), with parameter <span class="math" data-tex="\(r\)">\(r\)</span>. The map <span class="math" data-tex="\(t\mapsto bt\)">\(t\mapsto bt\)</span> preserves smoothness of these functions, and <span class="math" data-tex="\(u^b,v\)">\(u^b,v\)</span> are smooth for the gauge action. Moving the last coefficient to the left by covariance rewrites <span class="math" data-tex="\(vg_r(u^b)\)">\(vg_r(u^b)\)</span> as a coefficient function times <span class="math" data-tex="\(v\)">\(v\)</span>. Consequently its implementing support is contained in <span class="math" data-tex="\(\{-1,0,1\}\)">\(\{-1,0,1\}\)</span>, for every positive or negative <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(r\in(\mathbb Z+\theta\mathbb Z)\cap[0,N]\)">\(r\in(\mathbb Z+\theta\mathbb Z)\cap[0,N]\)</span>. If <span class="math" data-tex="\(r\)">\(r\)</span> is an integer, take <span class="math" data-tex="\(r\)">\(r\)</span> unit diagonal entries and <span class="math" data-tex="\(N-r\)">\(N-r\)</span> zero entries. Otherwise write <span class="math" data-tex="\(r=k+s\)">\(r=k+s\)</span>, where <span class="math" data-tex="\(k=\lfloor r\rfloor\)">\(k=\lfloor r\rfloor\)</span> and <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>. We have <span class="math" data-tex="\(k\leq N-1\)">\(k\leq N-1\)</span>, and the diagonal projection consisting of <span class="math" data-tex="\(k\)">\(k\)</span> units, <span class="math" data-tex="\(p_s\)">\(p_s\)</span>, and <span class="math" data-tex="\(N-k-1\)">\(N-k-1\)</span> zeros has unnormalized trace <span class="math" data-tex="\(r\)">\(r\)</span>. Conversely, every such projection has its trace in <span class="math" data-tex="\(\mathbb Z+\theta\mathbb Z\)">\(\mathbb Z+\theta\mathbb Z\)</span> by Theorem 3.1, and positivity gives <span class="math" data-tex="\(0\leq(\tau\otimes\operatorname{Tr}_N)(p)\leq N\)">\(0\leq(\tau\otimes\operatorname{Tr}_N)(p)\leq N\)</span>. This proves both inclusions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the implementing-support refinement in Rieffel's Theorem 1.1 [1981, pp. 418–419]. It makes explicit a feature of the construction already used in Theorem 5.1: the coefficient power can grow with the requested dimension, while the implementing support stays in three degrees.</p>
+<p>We now prove the stronger conclusion about individual modules. The mechanism is Rieffel's: combine a finite stable-rank bound with full equivalence modules of arbitrarily small dimension. We include the approximation and cancellation arguments themselves.</p>
+<p><strong>Theorem 5.2 (Rieffel's cancellation theorem).</strong> For irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, finite projective right <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>-modules satisfy cancellation: if <span class="math" data-tex="\(P\oplus Q\cong P&#x27;\oplus Q\)">\(P\oplus Q\cong P&#x27;\oplus Q\)</span>, then <span class="math" data-tex="\(P\cong P&#x27;\)">\(P\cong P&#x27;\)</span>. Consequently trace dimension completely determines their isomorphism class. Projective submodules of <span class="math" data-tex="\(A_\theta^N\)">\(A_\theta^N\)</span> have exactly the dimensions in <span class="math" data-tex="\((\mathbb Z+\theta\mathbb Z)\cap[0,N]\)">\((\mathbb Z+\theta\mathbb Z)\cap[0,N]\)</span>.</p>
+<p>The proof uses the next three lemmas. They supply, respectively, the finite approximation bound, the actual removal of a summand, and the small modules with the needed endomorphism algebras.</p>
+<p><strong>Lemma 5.3 (a finite stable-rank bound).</strong> For every real <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, the pairs <span class="math" data-tex="\((b_1,b_2)\)">\((b_1,b_2)\)</span> in <span class="math" data-tex="\(A_\nu^2\)">\(A_\nu^2\)</span> for which <span class="math" data-tex="\(b_1^*b_1+b_2^*b_2\)">\(b_1^*b_1+b_2^*b_2\)</span> is invertible are dense. In the usual notation, <span class="math" data-tex="\(\operatorname{tsr}(A_\nu)\leq2\)">\(\operatorname{tsr}(A_\nu)\leq2\)</span>.</p>
+<p><em>Proof.</em> First, invertible functions are dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. Uniformly approximate a continuous complex-valued function by a polygonal function on a subdivision of the circle. Its image is a finite union of line segments. A complex number of arbitrarily small absolute value can be chosen outside that union; subtracting it gives a nowhere-zero function, still arbitrarily close to the original one.</p>
+<p>Write <span class="math" data-tex="\(B=C(\mathbb T)\rtimes_{\alpha_\nu}\mathbb Z=A_\nu\)">\(B=C(\mathbb T)\rtimes_{\alpha_\nu}\mathbb Z=A_\nu\)</span>, and denote its implementing unitary by <span class="math" data-tex="\(w\)">\(w\)</span>. The algebra <span class="math" data-tex="\(L\)">\(L\)</span> of finite sums <span class="math" data-tex="\(\sum_k a_kw^k\)">\(\sum_k a_kw^k\)</span>, <span class="math" data-tex="\(a_k\in C(\mathbb T)\)">\(a_k\in C(\mathbb T)\)</span>, is dense in <span class="math" data-tex="\(B\)">\(B\)</span>. Its coefficients are unique: applying the faithful expectation to <span class="math" data-tex="\(pw^{-k}\)">\(pw^{-k}\)</span> recovers <span class="math" data-tex="\(a_k\)">\(a_k\)</span>. For a nonzero polynomial let its length be its largest exponent minus its smallest exponent plus one; give zero length zero. Multiplication on the left by <span class="math" data-tex="\(w^j\)">\(w^j\)</span> translates the exponents and applies <span class="math" data-tex="\(\alpha_\nu^j\)">\(\alpha_\nu^j\)</span> to the coefficients, so preserves length.</p>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be any nonempty open subset of <span class="math" data-tex="\(B^2\)">\(B^2\)</span>. Consider all pairs <span class="math" data-tex="\(ED\)">\(ED\)</span>, where <span class="math" data-tex="\(D\in U\cap L^2\)">\(D\in U\cap L^2\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span> is a product of elementary invertible two-by-two matrices over <span class="math" data-tex="\(L\)">\(L\)</span>. Choose one minimizing the sum of the two lengths. Such a minimum exists among nonnegative integers. Write this chosen pair as <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span>. A sufficiently small polynomial perturbation of it remains in <span class="math" data-tex="\(EU\)">\(EU\)</span>, so its inverse image under the fixed <span class="math" data-tex="\(E\)">\(E\)</span> remains in <span class="math" data-tex="\(U\cap L^2\)">\(U\cap L^2\)</span>.</p>
+<p>Suppose both polynomials are nonzero. By the elementary signed interchange of two coordinates, arrange that <span class="math" data-tex="\(p\)">\(p\)</span>'s length is at most <span class="math" data-tex="\(q\)">\(q\)</span>'s. Multiply <span class="math" data-tex="\(p\)">\(p\)</span> by a power <span class="math" data-tex="\(w^j\)">\(w^j\)</span> which aligns its highest exponent with that of <span class="math" data-tex="\(q\)">\(q\)</span>. Its lowest exponent is then no smaller than <span class="math" data-tex="\(q\)">\(q\)</span>'s. Perturb only the highest coefficient of <span class="math" data-tex="\(p\)">\(p\)</span>, as little as necessary, so that the highest coefficient <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(w^jp\)">\(w^jp\)</span> is invertible in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. The density just proved permits this; the automorphism on coefficients preserves norms and invertibility. Let <span class="math" data-tex="\(b\)">\(b\)</span> be <span class="math" data-tex="\(q\)">\(q\)</span>'s highest coefficient. The elementary row operation</p>
+<span class="math math-display" data-tex="\[
+q\longmapsto q-ba^{-1}w^jp
+\tag{5.2}
+\]">\[
+q\longmapsto q-ba^{-1}w^jp
+\tag{5.2}
+\]</span>
+<p>deletes the highest exponent of <span class="math" data-tex="\(q\)">\(q\)</span>, and introduces no exponent below its original lowest exponent. Thus its length decreases, while <span class="math" data-tex="\(p\)">\(p\)</span>'s length stays the same. This contradicts the chosen minimum, with the small perturbation pulled back through <span class="math" data-tex="\(E\)">\(E\)</span>. Hence the minimizing pair has a zero coordinate.</p>
+<p>Replace that zero coordinate by <span class="math" data-tex="\(\varepsilon1\)">\(\varepsilon1\)</span>, with <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> small enough that the pair stays in <span class="math" data-tex="\(EU\)">\(EU\)</span>. It now generates the unit as a left ideal. Pulling it back through <span class="math" data-tex="\(E^{-1}\)">\(E^{-1}\)</span> gives a left-generating pair in <span class="math" data-tex="\(U\)">\(U\)</span>. For completeness, a pair <span class="math" data-tex="\((c_1,c_2)\)">\((c_1,c_2)\)</span> is left-generating exactly when <span class="math" data-tex="\(S=c_1^*c_1+c_2^*c_2\)">\(S=c_1^*c_1+c_2^*c_2\)</span> is invertible. In one direction <span class="math" data-tex="\(S^{-1}c_j^*\)">\(S^{-1}c_j^*\)</span> are left coefficients summing to the unit. In the other, a left inverse row <span class="math" data-tex="\(d\)">\(d\)</span> for the column <span class="math" data-tex="\(c\)">\(c\)</span> gives
+<span class="math" data-tex="\(1=(dc)^*(dc)\leq\|d\|^2c^*c\)">\(1=(dc)^*(dc)\leq\|d\|^2c^*c\)</span>, so <span class="math" data-tex="\(S\)">\(S\)</span> is bounded below. Invertible changes of rows preserve left generation. This proves the asserted density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the Laurent-polynomial length argument of Rieffel's stable-rank theorem, specialized to the circle coefficients. Sudo's proof of Theorem 2.2, pp. 501–503, is a comparison source for the length reduction; here the implementing operator is unitary, so shifts preserve both endpoints exactly. We use neither a semigroup variant nor density of invertibles in the rotation algebra itself.</p>
+<p><strong>Lemma 5.4 (removing a full-module summand).</strong> Let <span class="math" data-tex="\(Y,Z\)">\(Y,Z\)</span> be finite projective right modules over a unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, and put <span class="math" data-tex="\(D=\operatorname{End}_A(Y)\)">\(D=\operatorname{End}_A(Y)\)</span>. Suppose left-generating pairs are dense in <span class="math" data-tex="\(D^2\)">\(D^2\)</span>. For <span class="math" data-tex="\(N\geq3\)">\(N\geq3\)</span>, every split injection <span class="math" data-tex="\(x:Y\to Z\oplus Y^N\)">\(x:Y\to Z\oplus Y^N\)</span> can be carried by a module automorphism of its target to the standard inclusion into its last copy of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Consequently, if</p>
+<span class="math math-display" data-tex="\[
+P\oplus Y\cong Z\oplus Y^N,
+\tag{5.3}
+\]">\[
+P\oplus Y\cong Z\oplus Y^N,
+\tag{5.3}
+\]</span>
+<p>then <span class="math" data-tex="\(P\cong Z\oplus Y^{N-1}\)">\(P\cong Z\oplus Y^{N-1}\)</span>.</p>
+<p><em>Proof.</em> All module maps between finite projective Hilbert modules are bounded and adjointable: represent them as matrix corners over <span class="math" data-tex="\(A\)">\(A\)</span>. Write
+<span class="math" data-tex="\(x=(z,a_1,\ldots,a_N)\)">\(x=(z,a_1,\ldots,a_N)\)</span>, where <span class="math" data-tex="\(z:Y\to Z\)">\(z:Y\to Z\)</span> and <span class="math" data-tex="\(a_i\in D\)">\(a_i\in D\)</span>. Let <span class="math" data-tex="\(\phi:Z\oplus Y^N\to Y\)">\(\phi:Z\oplus Y^N\to Y\)</span> be a splitting, so <span class="math" data-tex="\(\phi x=1_Y\)">\(\phi x=1_Y\)</span>. Perturb the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> entries, leaving <span class="math" data-tex="\(z,a_N\)">\(z,a_N\)</span> fixed, to obtain entries <span class="math" data-tex="\(a_i&#x27;\)">\(a_i&#x27;\)</span> with a left inverse row <span class="math" data-tex="\((c_i)\)">\((c_i)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^{N-1}c_i a_i&#x27;=1_Y.
+\tag{5.4}
+\]">\[
+\sum_{i=1}^{N-1}c_i a_i&#x27;=1_Y.
+\tag{5.4}
+\]</span>
+<p>It suffices to perturb the first two entries to a left-generating pair; set the other left coefficients zero. Choose the perturbation small enough that
+<span class="math" data-tex="\(T=1+(x&#x27;-x)\phi\)">\(T=1+(x&#x27;-x)\phi\)</span> is invertible by its Neumann series. Then <span class="math" data-tex="\(Tx=x&#x27;\)">\(Tx=x&#x27;\)</span>, so this perturbation is realized by an actual module automorphism.</p>
+<p>Now apply the following shears to the target, in order. Subtract <span class="math" data-tex="\(z\sum c_i y_i\)">\(z\sum c_i y_i\)</span> from its <span class="math" data-tex="\(Z\)">\(Z\)</span> coordinate; subtract <span class="math" data-tex="\(a_N\sum c_i y_i\)">\(a_N\sum c_i y_i\)</span> from its last <span class="math" data-tex="\(Y\)">\(Y\)</span> coordinate. On <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, these make both coordinates zero by (5.4), leaving the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> coordinates unchanged. Add <span class="math" data-tex="\(\sum c_i y_i\)">\(\sum c_i y_i\)</span> to the last coordinate; it becomes identity on the image of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Finally subtract <span class="math" data-tex="\(a_i&#x27; y_N\)">\(a_i&#x27; y_N\)</span> from each earlier <span class="math" data-tex="\(Y\)">\(Y\)</span> coordinate; they become zero. Each operation is an invertible triangular module map, with inverse obtained by reversing the sign, since its source coordinates are not changed by that operation. Their composite sends <span class="math" data-tex="\(x\)">\(x\)</span> to the standard last inclusion.</p>
+<p>For (5.3), apply this to the image of its source summand <span class="math" data-tex="\(Y\)">\(Y\)</span>. The isomorphism followed by the target automorphism maps that summand exactly onto the last target summand. Passing to quotient modules by these two summands gives the asserted isomorphism. This removes an actual summand, rather than only a K-class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.5 (small equivalence modules).</strong> For irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a full finite projective right <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>-module <span class="math" data-tex="\(Y\)">\(Y\)</span> with trace dimension <span class="math" data-tex="\(0&lt;\delta&lt;\varepsilon\)">\(0&lt;\delta&lt;\varepsilon\)</span>, such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{End}_{A_\theta}(Y)\cong A_\nu\\
+\text{for an irrational real }\nu.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+\operatorname{End}_{A_\theta}(Y)\cong A_\nu\\
+\text{for an irrational real }\nu.
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p><em>Proof.</em> We use the exact written <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-98d4187f8fee">Hilbert C*-modules Lesson 15, <em>Morita equivalence of noncommutative tori</em></a>, Theorems 3.2 and 6.1 and the trace normalization (4.4). Its Schwartz-module proof checks both commuting actions, coefficient positivity through the finite frame, the Poisson compatibility identity, the entire compact left algebra and fullness. It constructs an <span class="math" data-tex="\(A_{1/t}\)">\(A_{1/t}\)</span>–<span class="math" data-tex="\(A_t\)">\(A_t\)</span> equivalence for positive irrational <span class="math" data-tex="\(t\)">\(t\)</span>, of right dimension <span class="math" data-tex="\(t\)">\(t\)</span>. Its sign isomorphisms give dimension <span class="math" data-tex="\(|t|\)">\(|t|\)</span> for negative <span class="math" data-tex="\(t\)">\(t\)</span>. Integer shift and negation are isomorphism modules of dimension one. Its Euclidean reduction and tensor transitivity supply the equivalence module for every word in these three transformations.</p>
+<p>We spell out the scale for the word we need. For a generator matrix <span class="math" data-tex="\(M_j=\begin{pmatrix}a_j&amp;b_j\\c_j&amp;d_j\end{pmatrix}\)">\(M_j=\begin{pmatrix}a_j&amp;b_j\\c_j&amp;d_j\end{pmatrix}\)</span> and successive parameter <span class="math" data-tex="\(t_{j-1}\)">\(t_{j-1}\)</span>, the right trace multiplier is <span class="math" data-tex="\(|c_jt_{j-1}+d_j|\)">\(|c_jt_{j-1}+d_j|\)</span>: it is one for shifts and negation, and <span class="math" data-tex="\(|t_{j-1}|\)">\(|t_{j-1}|\)</span> for inversion. The trace transport theorem in that course's Lesson 14, Proposition 7.5, makes these multipliers multiply under tensoring, in the successive domain and codomain order. The identity
+<span class="math" data-tex="\(M_j(t_{j-1},1)^T=(c_jt_{j-1}+d_j)(t_j,1)^T\)">\(M_j(t_{j-1},1)^T=(c_jt_{j-1}+d_j)(t_j,1)^T\)</span>
+shows that their product for the composite matrix <span class="math" data-tex="\(M=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(M=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span> is <span class="math" data-tex="\(|c\theta+d|\)">\(|c\theta+d|\)</span>. Thus its constructed <span class="math" data-tex="\(A_{M\theta}\)">\(A_{M\theta}\)</span>–<span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> module has precisely that right dimension. Every intermediate parameter is irrational and every denominator is nonzero, as proved in that provider.</p>
+<p>Pigeonhole approximation gives relatively prime integers <span class="math" data-tex="\(c,d\)">\(c,d\)</span> with <span class="math" data-tex="\(0&lt;|c\theta+d|&lt;\varepsilon\)">\(0&lt;|c\theta+d|&lt;\varepsilon\)</span>. Indeed, among the <span class="math" data-tex="\(K+1\)">\(K+1\)</span> fractional parts <span class="math" data-tex="\(j\theta\)">\(j\theta\)</span>, <span class="math" data-tex="\(0\leq j\leq K\)">\(0\leq j\leq K\)</span>, two have distance at most <span class="math" data-tex="\(1/K\)">\(1/K\)</span>. Their difference gives <span class="math" data-tex="\(q\geq1,p\in\mathbb Z\)">\(q\geq1,p\in\mathbb Z\)</span> with <span class="math" data-tex="\(0&lt;|q\theta-p|\leq1/K\)">\(0&lt;|q\theta-p|\leq1/K\)</span>. Divide both integers by their gcd and take <span class="math" data-tex="\(K&gt;1/\varepsilon\)">\(K&gt;1/\varepsilon\)</span>. Bezout's identity completes this primitive pair <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> to the bottom row of a unimodular integer matrix <span class="math" data-tex="\(M\)">\(M\)</span>. Use its constructed equivalence module as <span class="math" data-tex="\(Y\)">\(Y\)</span>, with <span class="math" data-tex="\(\nu=M\theta\)">\(\nu=M\theta\)</span> and <span class="math" data-tex="\(\delta=|c\theta+d|\)">\(\delta=|c\theta+d|\)</span>.</p>
+<p>An imprimitivity module between unital algebras is finite projective: its left unit is the compact identity, and the finite-frame criterion proves this conclusion. Its adjointable endomorphism algebra equals its compact algebra, identified with <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span>. Both fullness and (5.5) are therefore actual module properties supplied by the construction; they have not been inferred from equal K-groups or a classification of projective modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The statement-level dependency here is acyclic. The torus provider uses only this lesson's already proved ordered K-group, trace and unit, Theorems 2.1, 3.1 and 5.1. It does not use Theorem 5.2 or this lesson's Morita-context paragraph to construct the equivalences.</p>
+<p><em>Proof of Theorem 5.2.</em> It is enough to show that any two projective modules <span class="math" data-tex="\(P,P&#x27;\)">\(P,P&#x27;\)</span> with equal K-class are isomorphic. Their common trace dimension <span class="math" data-tex="\(r\)">\(r\)</span> is nonnegative; if it is zero, faithfulness of the matrix trace makes both modules zero. Suppose <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Choose <span class="math" data-tex="\(Y\)">\(Y\)</span> as in Lemma 5.5 with <span class="math" data-tex="\(3\delta&lt;r\)">\(3\delta&lt;r\)</span>. The positive-cone proof in Theorem 5.1 supplies a projective module <span class="math" data-tex="\(Z\)">\(Z\)</span> whose K-class has trace <span class="math" data-tex="\(r-3\delta\)">\(r-3\delta\)</span>. Trace injectivity then gives</p>
+<span class="math math-display" data-tex="\[
+[P]=[P&#x27;]=[Z]+3[Y].
+\tag{5.6}
+\]">\[
+[P]=[P&#x27;]=[Z]+3[Y].
+\tag{5.6}
+\]</span>
+<p>No cancellation has been used to obtain this equality.</p>
+<p>We next justify changing a free stabilizer to copies of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Fullness gives finitely many <span class="math" data-tex="\(\xi_i,\eta_i\in Y\)">\(\xi_i,\eta_i\in Y\)</span> with <span class="math" data-tex="\(\sum_i\langle\xi_i,\eta_i\rangle=1_A\)">\(\sum_i\langle\xi_i,\eta_i\rangle=1_A\)</span>. To obtain the exact equality, first choose a finite sum within distance less than one from the unit, and multiply its second vectors on the right by the inverse of that sum. Thus
+<span class="math" data-tex="\(a\mapsto(\eta_i a)_i\)">\(a\mapsto(\eta_i a)_i\)</span> is a split injection <span class="math" data-tex="\(A\to Y^l\)">\(A\to Y^l\)</span>, with left inverse <span class="math" data-tex="\((y_i)\mapsto\sum_i\langle\xi_i,y_i\rangle\)">\((y_i)\mapsto\sum_i\langle\xi_i,y_i\rangle\)</span>. Its complement is finite projective: its splitting defines an idempotent on a finite projective module, whose range is a direct summand. Consequently <span class="math" data-tex="\(A^m\)">\(A^m\)</span> is a direct summand of <span class="math" data-tex="\(Y^k\)">\(Y^k\)</span> for some <span class="math" data-tex="\(k\)">\(k\)</span>, for every finite <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>Equality (5.6) means that <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(Z\oplus Y^3\)">\(Z\oplus Y^3\)</span> become isomorphic after adding a common finite projective module <span class="math" data-tex="\(W\)">\(W\)</span>. Choose a complement for <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(A^m\)">\(A^m\)</span>; adding it gives
+<span class="math" data-tex="\(P\oplus A^m\cong Z\oplus Y^3\oplus A^m\)">\(P\oplus A^m\cong Z\oplus Y^3\oplus A^m\)</span>.
+Choose a complement for <span class="math" data-tex="\(A^m\)">\(A^m\)</span> in <span class="math" data-tex="\(Y^k\)">\(Y^k\)</span> as just proved and add it to this isomorphism. We obtain</p>
+<span class="math math-display" data-tex="\[
+P\oplus Y^k\cong Z\oplus Y^{k+3}.
+\tag{5.7}
+\]">\[
+P\oplus Y^k\cong Z\oplus Y^{k+3}.
+\tag{5.7}
+\]</span>
+<p>By (5.5) and Lemma 5.3, left-generating pairs are dense in <span class="math" data-tex="\(\operatorname{End}(Y)^2\)">\(\operatorname{End}(Y)^2\)</span>. Apply Lemma 5.4 to the last source copy of <span class="math" data-tex="\(Y\)">\(Y\)</span> in (5.7). It removes one copy on both sides; repeat until all <span class="math" data-tex="\(k\)">\(k\)</span> stabilizing copies have been removed. At every step the target has at least four copies, so the hypothesis <span class="math" data-tex="\(N\geq3\)">\(N\geq3\)</span> always holds. This proves <span class="math" data-tex="\(P\cong Z\oplus Y^3\)">\(P\cong Z\oplus Y^3\)</span>. The same reasoning gives <span class="math" data-tex="\(P&#x27;\cong Z\oplus Y^3\)">\(P&#x27;\cong Z\oplus Y^3\)</span>, hence <span class="math" data-tex="\(P\cong P&#x27;\)">\(P\cong P&#x27;\)</span>. In particular a common summand in the theorem's hypothesis cancels.</p>
+<p>Finally equality of trace dimensions gives equality in <span class="math" data-tex="\(K_0\)">\(K_0\)</span> by Theorem 3.1, so the result classifies the individual projective modules by dimension. Every value in <span class="math" data-tex="\((\mathbb Z+\theta\mathbb Z)\cap[0,N]\)">\((\mathbb Z+\theta\mathbb Z)\cap[0,N]\)</span> is realized by the integer units and fractional projection of Theorem 5.1 in an <span class="math" data-tex="\(N\)">\(N\)</span>-by-<span class="math" data-tex="\(N\)">\(N\)</span> matrix; the converse follows from <span class="math" data-tex="\(0\leq p\leq1_N\)">\(0\leq p\leq1_N\)</span>. Exercise 20.5 gives equivalence in that fixed matrix algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The cancellation theorem is due to Rieffel (1983). His 1988 Section 7 explains the small-full-module and finite-rank mechanism in the general torus setting. The present proof writes out the two-generator approximation and all summand removals; it does not import Warfield's cancellation theorem or presuppose stable rank one.</p>
+<h2 id="6-isomorphism-classification-and-examples">6. Isomorphism classification and examples</h2>
+<p><strong>Theorem 6.1.</strong> If <span class="math" data-tex="\(\theta,\theta&#x27;\)">\(\theta,\theta&#x27;\)</span> are irrational, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_\theta\cong A_{\theta&#x27;}\\
+\Longleftrightarrow\quad\theta&#x27;-\theta\in\mathbb Z\\
+\text{or}\quad\theta&#x27;+\theta\in\mathbb Z.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+A_\theta\cong A_{\theta&#x27;}\\
+\Longleftrightarrow\quad\theta&#x27;-\theta\in\mathbb Z\\
+\text{or}\quad\theta&#x27;+\theta\in\mathbb Z.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p><em>Proof.</em> Any C*-algebra isomorphism between these unital algebras preserves the unit. Uniqueness of the normalized trace implies that it preserves trace values on matrix projections and differences. Thus it gives equality of the actual subgroups
+<span class="math" data-tex="\(\mathbb Z+\theta\mathbb Z=\mathbb Z+\theta&#x27;\mathbb Z\)">\(\mathbb Z+\theta\mathbb Z=\mathbb Z+\theta&#x27;\mathbb Z\)</span> inside <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Write, with integers <span class="math" data-tex="\(a,b,c,d\)">\(a,b,c,d\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\theta&#x27;=a+b\theta,\\
+\theta=c+d\theta&#x27;.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\theta&#x27;=a+b\theta,\\
+\theta=c+d\theta&#x27;.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>Substitution gives <span class="math" data-tex="\((1-db)\theta=c+da\)">\((1-db)\theta=c+da\)</span>. Irrationality forces <span class="math" data-tex="\(db=1\)">\(db=1\)</span> and <span class="math" data-tex="\(c+da=0\)">\(c+da=0\)</span>, hence <span class="math" data-tex="\(b=d=1\)">\(b=d=1\)</span> or <span class="math" data-tex="\(b=d=-1\)">\(b=d=-1\)</span>. This proves the necessity. Conversely the explicit isomorphisms of (1.3) prove sufficiency, with inverse maps already checked. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.1a (matrix size and angle).</strong> If <span class="math" data-tex="\(\theta,\theta&#x27;\)">\(\theta,\theta&#x27;\)</span> are irrational and <span class="math" data-tex="\(m,n\geq1\)">\(m,n\geq1\)</span> are integers, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_m(A_\theta)\cong M_n(A_{\theta&#x27;})
+\\ \Longleftrightarrow\quad m=n\ \text{ and }
+\\ \theta&#x27;\equiv\theta\text{ or }-\theta\pmod{\mathbb Z}.
+\end{gathered}
+\tag{6.2a}
+\]">\[
+\begin{gathered}
+M_m(A_\theta)\cong M_n(A_{\theta&#x27;})
+\\ \Longleftrightarrow\quad m=n\ \text{ and }
+\\ \theta&#x27;\equiv\theta\text{ or }-\theta\pmod{\mathbb Z}.
+\end{gathered}
+\tag{6.2a}
+\]</span>
+<p><em>Proof.</em> First identify the tracial state on the matrix algebra. If <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a tracial state on <span class="math" data-tex="\(M_m(A_\theta)\)">\(M_m(A_\theta)\)</span>, matrix units show that all <span class="math" data-tex="\(\rho(e_{ii}\otimes1)\)">\(\rho(e_{ii}\otimes1)\)</span> are equal, so each is <span class="math" data-tex="\(1/m\)">\(1/m\)</span>. The functional <span class="math" data-tex="\(a\mapsto m\rho(e_{11}\otimes a)\)">\(a\mapsto m\rho(e_{11}\otimes a)\)</span> is a tracial state on <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span>; it is <span class="math" data-tex="\(\tau\)">\(\tau\)</span> by Proposition 1.2. Cyclicity gives
+<span class="math" data-tex="\(\rho(e_{ii}\otimes a)=\rho(e_{11}\otimes a)=\tau(a)/m\)">\(\rho(e_{ii}\otimes a)=\rho(e_{11}\otimes a)=\tau(a)/m\)</span>.
+For <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho(e_{ij}\otimes a)
+\\ =\rho\bigl((e_{ii}\otimes1)(e_{ij}\otimes a)\bigr)
+\\ =\rho\bigl((e_{ij}\otimes a)(e_{ii}\otimes1)\bigr)=0.
+\end{gathered}
+\tag{6.2b}
+\]">\[
+\begin{gathered}
+\rho(e_{ij}\otimes a)
+\\ =\rho\bigl((e_{ii}\otimes1)(e_{ij}\otimes a)\bigr)
+\\ =\rho\bigl((e_{ij}\otimes a)(e_{ii}\otimes1)\bigr)=0.
+\end{gathered}
+\tag{6.2b}
+\]</span>
+<p>Therefore the unique tracial state is
+<span class="math" data-tex="\(\tau^{(m)}=(\tau\otimes\operatorname{Tr}_m)/m\)">\(\tau^{(m)}=(\tau\otimes\operatorname{Tr}_m)/m\)</span>.
+Corollary 5.1a gives its projection range as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_m(\theta)
+\\ =\left(\frac1m(\mathbb Z+\theta\mathbb Z)\right)\cap[0,1].
+\end{gathered}
+\tag{6.2c}
+\]">\[
+\begin{gathered}
+R_m(\theta)
+\\ =\left(\frac1m(\mathbb Z+\theta\mathbb Z)\right)\cap[0,1].
+\end{gathered}
+\tag{6.2c}
+\]</span>
+<p>Irrationality implies that <span class="math" data-tex="\((a+b\theta)/m\)">\((a+b\theta)/m\)</span> can be rational only when <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_m(\theta)\cap\mathbb Q
+\\ =\{0,1/m,2/m,\ldots,1\}.
+\end{gathered}
+\tag{6.2d}
+\]">\[
+\begin{gathered}
+R_m(\theta)\cap\mathbb Q
+\\ =\{0,1/m,2/m,\ldots,1\}.
+\end{gathered}
+\tag{6.2d}
+\]</span>
+<p>An isomorphism preserves the identity and pulls the unique normalized trace back to the unique normalized trace. It therefore gives <span class="math" data-tex="\(R_m(\theta)=R_n(\theta&#x27;)\)">\(R_m(\theta)=R_n(\theta&#x27;)\)</span>. Comparing their smallest positive rational elements yields <span class="math" data-tex="\(m=n\)">\(m=n\)</span>.</p>
+<p>The additive group generated by <span class="math" data-tex="\(R_m(\theta)\)">\(R_m(\theta)\)</span> is exactly
+<span class="math" data-tex="\(m^{-1}(\mathbb Z+\theta\mathbb Z)\)">\(m^{-1}(\mathbb Z+\theta\mathbb Z)\)</span>: the range contains <span class="math" data-tex="\(1/m\)">\(1/m\)</span> and <span class="math" data-tex="\(\{\theta\}/m\)">\(\{\theta\}/m\)</span>, which generate this group, and is contained in it. Thus equality of ranges, now with <span class="math" data-tex="\(m=n\)">\(m=n\)</span>, gives
+<span class="math" data-tex="\(\mathbb Z+\theta\mathbb Z=\mathbb Z+\theta&#x27;\mathbb Z\)">\(\mathbb Z+\theta\mathbb Z=\mathbb Z+\theta&#x27;\mathbb Z\)</span>.
+The integer calculation in the proof of Theorem 6.1 then gives
+<span class="math" data-tex="\(\theta&#x27;\equiv\pm\theta\pmod{\mathbb Z}\)">\(\theta&#x27;\equiv\pm\theta\pmod{\mathbb Z}\)</span>.
+Conversely, the explicit shift and sign isomorphisms (1.3), applied to every matrix entry, give the required isomorphism when <span class="math" data-tex="\(m=n\)">\(m=n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Rieffel [1981, Proposition 1.3 and Theorem 3, pp. 416 and 420] proves the same rigidity with both angles reduced to <span class="math" data-tex="\([0,1/2]\)">\([0,1/2]\)</span>. The division by matrix size here concerns the normalized state on the entire matrix algebra; the K-theory trace extension used elsewhere in this lesson remains unnormalized. Matrix stability identifies the abstract K-groups, while the normalized projection range recovers the matrix size.</p>
+<p>Isomorphism here preserves the normalized unit. Strong Morita equivalence permits a different scale: its full irrational-parameter classification is the fractional linear action of <span class="math" data-tex="\(GL_2(\mathbb Z)\)">\(GL_2(\mathbb Z)\)</span>, proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-eca743784c25">Hilbert C*-modules Lesson 15, Theorem 6.1</a>, using the explicit Schwartz equivalence and ordered K-group. Rosenberg's Theorem 4.2 retains its historical source credit. This distinction corrects the <span class="math" data-tex="\(SL_2\)">\(SL_2\)</span>-only formulation in [Blackadar 2006, II.10.4.12(i)]; parameter negation is already an isomorphism. The statement-level prerequisites of that programme proof are the ordered groups proved here before cancellation.</p>
+<p><strong>Example 6.2 (golden ratio).</strong> Let <span class="math" data-tex="\(\theta=(\sqrt5-1)/2\)">\(\theta=(\sqrt5-1)/2\)</span>. Then <span class="math" data-tex="\(K_1\)">\(K_1\)</span> has basis <span class="math" data-tex="\([u],[v]\)">\([u],[v]\)</span>; <span class="math" data-tex="\(K_0\)">\(K_0\)</span> has basis <span class="math" data-tex="\([1],[e_\theta]\)">\([1],[e_\theta]\)</span>, with order
+<span class="math" data-tex="\(m[1]+n[e_\theta]&gt;0\)">\(m[1]+n[e_\theta]&gt;0\)</span> exactly when <span class="math" data-tex="\(m+n\theta&gt;0\)">\(m+n\theta&gt;0\)</span>. There are projections of trace <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span>, and <span class="math" data-tex="\(2\theta-1\)">\(2\theta-1\)</span>, the last by Exercise 20.4. The algebras for <span class="math" data-tex="\(\theta\)">\(\theta\)</span> and <span class="math" data-tex="\(1-\theta\)">\(1-\theta\)</span> are isomorphic.</p>
+<p><strong>Example 6.3 (rational angles).</strong> If <span class="math" data-tex="\(\theta=p/q\)">\(\theta=p/q\)</span> in lowest terms, the two groups in (2.2) remain <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span>, and the Haar trace range is <span class="math" data-tex="\(q^{-1}\mathbb Z\)">\(q^{-1}\mathbb Z\)</span>. Its kernel on <span class="math" data-tex="\(K_0\)">\(K_0\)</span> has rank one, so it is not a classification of stable classes. The algebra is not simple: restriction to any finite rotation orbit gives a nonzero quotient with a nonzero coefficient function in its kernel, as proved in KT-CP-03, Exercise 3. For <span class="math" data-tex="\(\theta=0\)">\(\theta=0\)</span>, the universal commuting pair gives <span class="math" data-tex="\(C(\mathbb T^2)\)">\(C(\mathbb T^2)\)</span>. We have not used a rational-angle bundle description to infer an irrational-angle result. The clock-and-shift matrices below provide a different, quantitative comparison between rational relations and commuting matrices.</p>
+<h3 id="nearly-commuting-matrices-with-a-persistent-obstruction">Nearly commuting matrices with a persistent obstruction</h3>
+<p>The rational relations in Example 6.3 admit concrete finite matrices. They also explain why a small commutator is not enough to approximate a pair by a commuting pair. This is Voiculescu's clock-and-shift example, recalled in [Willett 2019, §3]. We give a finite-dimensional logarithm proof with an explicit distance bound.</p>
+<p>For unitary matrices <span class="math" data-tex="\(U,V\in M_n(\mathbb C)\)">\(U,V\in M_n(\mathbb C)\)</span>, assume
+<span class="math" data-tex="\(\varepsilon=\|UV-VU\|&lt;2\)">\(\varepsilon=\|UV-VU\|&lt;2\)</span>. The unitary commutator <span class="math" data-tex="\(C=VUV^*U^*\)">\(C=VUV^*U^*\)</span> satisfies <span class="math" data-tex="\(\|C-1\|=\varepsilon\)">\(\|C-1\|=\varepsilon\)</span>, so <span class="math" data-tex="\(-1\)">\(-1\)</span> is outside its spectrum. Its principal logarithm, with eigenvalue arguments in <span class="math" data-tex="\((-\pi,\pi)\)">\((-\pi,\pi)\)</span>, defines</p>
+<span class="math math-display" data-tex="\[
+\nu(U,V)=\frac{1}{2\pi i}\operatorname{Tr}\log(VUV^*U^*).
+\tag{6.3}
+\]">\[
+\nu(U,V)=\frac{1}{2\pi i}\operatorname{Tr}\log(VUV^*U^*).
+\tag{6.3}
+\]</span>
+<p>The trace is unnormalized. This integer is the logarithmic obstruction used below; identifying it with other Bott-index representatives is not needed for the proof.</p>
+<p><strong>Lemma 6.4.</strong> The number <span class="math" data-tex="\(\nu(U,V)\)">\(\nu(U,V)\)</span> is an integer, is constant along continuous paths of pairs whose commutator norm is less than two, and is zero for a commuting pair.</p>
+<p><em>Proof.</em> Diagonalize <span class="math" data-tex="\(C\)">\(C\)</span>, with eigenvalues <span class="math" data-tex="\(e^{i\phi_j}\)">\(e^{i\phi_j}\)</span> and <span class="math" data-tex="\(-\pi&lt;\phi_j&lt;\pi\)">\(-\pi&lt;\phi_j&lt;\pi\)</span>. Since <span class="math" data-tex="\(\det C=1\)">\(\det C=1\)</span>, <span class="math" data-tex="\(\exp(i\sum_j\phi_j)=1\)">\(\exp(i\sum_j\phi_j)=1\)</span>, so <span class="math" data-tex="\(\sum_j\phi_j\)">\(\sum_j\phi_j\)</span> is an integer multiple of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. This proves integrality. Along a path avoiding <span class="math" data-tex="\(-1\)">\(-1\)</span>, the logarithm depends continuously on <span class="math" data-tex="\(C\)">\(C\)</span>: locally choose a common contour and use holomorphic functional calculus for the principal branch. The trace is therefore a continuous integer-valued function, and hence is constant. A commuting pair has <span class="math" data-tex="\(C=1\)">\(C=1\)</span> and logarithm zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 6.5 (a quantitative separation).</strong> If <span class="math" data-tex="\(\nu(U,V)\ne0\)">\(\nu(U,V)\ne0\)</span>, every commuting unitary pair <span class="math" data-tex="\(U&#x27;,V&#x27;\)">\(U&#x27;,V&#x27;\)</span> of the same size satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\max\{\|U-U&#x27;\|,\|V-V&#x27;\|\}\\
+\geq\frac{2-\varepsilon}{4}.
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+\max\{\|U-U&#x27;\|,\|V-V&#x27;\|\}\\
+\geq\frac{2-\varepsilon}{4}.
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p><em>Proof.</em> Suppose the maximum <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is smaller than the right side. In particular <span class="math" data-tex="\(\delta&lt;2\)">\(\delta&lt;2\)</span>. The principal logarithms of <span class="math" data-tex="\(U^*U&#x27;\)">\(U^*U&#x27;\)</span> and <span class="math" data-tex="\(V^*V&#x27;\)">\(V^*V&#x27;\)</span> exist and give unitary paths
+<span class="math" data-tex="\(U_t=U\exp(t\log(U^*U&#x27;))\)">\(U_t=U\exp(t\log(U^*U&#x27;))\)</span> and
+<span class="math" data-tex="\(V_t=V\exp(t\log(V^*V&#x27;))\)">\(V_t=V\exp(t\log(V^*V&#x27;))\)</span>.
+For an eigenvalue <span class="math" data-tex="\(e^{i\phi}\)">\(e^{i\phi}\)</span>, <span class="math" data-tex="\(|\phi|&lt;\pi\)">\(|\phi|&lt;\pi\)</span>, the quantity <span class="math" data-tex="\(|e^{it\phi}-1|=2\sin(t|\phi|/2)\)">\(|e^{it\phi}-1|=2\sin(t|\phi|/2)\)</span> is at most <span class="math" data-tex="\(|e^{i\phi}-1|\)">\(|e^{i\phi}-1|\)</span>. Thus both paths stay within <span class="math" data-tex="\(\delta\)">\(\delta\)</span> of their initial matrices. Product differences give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|U_tV_t-V_tU_t\|
+&amp;\leq\varepsilon+2\|U_t-U\|\\
+&amp;\quad+2\|V_t-V\|\\
+&amp;\leq\varepsilon+4\delta&lt;2.
+\end{aligned}
+\tag{6.5}
+\]">\[
+\begin{aligned}
+\|U_tV_t-V_tU_t\|
+&amp;\leq\varepsilon+2\|U_t-U\|\\
+&amp;\quad+2\|V_t-V\|\\
+&amp;\leq\varepsilon+4\delta&lt;2.
+\end{aligned}
+\tag{6.5}
+\]</span>
+<p>Lemma 6.4 makes <span class="math" data-tex="\(\nu\)">\(\nu\)</span> constant along this path, but its terminal pair commutes and has <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>. This contradiction proves (6.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(n\geq3\)">\(n\geq3\)</span>, set <span class="math" data-tex="\(\omega=e^{2\pi i/n}\)">\(\omega=e^{2\pi i/n}\)</span> and, on the cyclically indexed basis <span class="math" data-tex="\(e_0,\ldots,e_{n-1}\)">\(e_0,\ldots,e_{n-1}\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+U_ne_j=\omega^j e_j,
+\qquad V_ne_j=e_{j+1}.
+\tag{6.6}
+\]">\[
+U_ne_j=\omega^j e_j,
+\qquad V_ne_j=e_{j+1}.
+\tag{6.6}
+\]</span>
+<p>Then <span class="math" data-tex="\(U_nV_n=\omega V_nU_n\)">\(U_nV_n=\omega V_nU_n\)</span>, while
+<span class="math" data-tex="\(V_nU_nV_n^*U_n^*=\omega^{-1}1\)">\(V_nU_nV_n^*U_n^*=\omega^{-1}1\)</span>. Let <span class="math" data-tex="\(d_n\)">\(d_n\)</span> be the infimum of <span class="math" data-tex="\(\max\{\|U_n-U&#x27;\|,\|V_n-V&#x27;\|\}\)">\(\max\{\|U_n-U&#x27;\|,\|V_n-V&#x27;\|\}\)</span> over all commuting unitary pairs of size <span class="math" data-tex="\(n\)">\(n\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\varepsilon_n&amp;=2\sin(\pi/n)\longrightarrow0,\\
+\nu(U_n,V_n)&amp;=-1,\\
+d_n&amp;\geq\frac{1-\sin(\pi/n)}{2}.
+\end{aligned}
+\tag{6.7}
+\]">\[
+\begin{aligned}
+\varepsilon_n&amp;=2\sin(\pi/n)\longrightarrow0,\\
+\nu(U_n,V_n)&amp;=-1,\\
+d_n&amp;\geq\frac{1-\sin(\pi/n)}{2}.
+\end{aligned}
+\tag{6.7}
+\]</span>
+<p>The logarithm is <span class="math" data-tex="\((-2\pi i/n)1\)">\((-2\pi i/n)1\)</span>, which gives the exact sign in (6.7); the case <span class="math" data-tex="\(n=2\)">\(n=2\)</span> lies at the excluded branch point. In the convention of §1, the assignments <span class="math" data-tex="\(u\mapsto U_n,v\mapsto V_n\)">\(u\mapsto U_n,v\mapsto V_n\)</span> represent <span class="math" data-tex="\(A_{-1/n}\)">\(A_{-1/n}\)</span>; interchanging the assignments represents <span class="math" data-tex="\(A_{1/n}\)">\(A_{1/n}\)</span>. Although their commutators tend to zero, the distance bound tends to <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Thus their small-angle relations cannot be made commuting by perturbations tending to zero. This does not identify a rational matrix quotient with the whole rotation algebra, and does not contradict the parameter-independent K-groups computed in §2.</p>
+<h2 id="7-the-smooth-algebra">7. The smooth algebra</h2>
+<p>The action <span class="math" data-tex="\(\beta_{s,t}(u)=e^{2\pi is}u\)">\(\beta_{s,t}(u)=e^{2\pi is}u\)</span>, <span class="math" data-tex="\(\beta_{s,t}(v)=e^{2\pi it}v\)">\(\beta_{s,t}(v)=e^{2\pi it}v\)</span> defines the smooth subalgebra</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_\theta^\infty=\{a(c):c\in\mathcal S(\mathbb Z^2)\},\\
+a(c)=\sum_{m,n\in\mathbb Z}c_{m,n}u^m v^n.
+\end{gathered}
+\tag{7.1}
+\]">\[
+\begin{gathered}
+A_\theta^\infty=\{a(c):c\in\mathcal S(\mathbb Z^2)\},\\
+a(c)=\sum_{m,n\in\mathbb Z}c_{m,n}u^m v^n.
+\end{gathered}
+\tag{7.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal S(\mathbb Z^2)\)">\(\mathcal S(\mathbb Z^2)\)</span> denotes the rapidly decreasing sequences: <span class="math" data-tex="\(\sup_{m,n}(1+|m|+|n|)^k|c_{m,n}|&lt;\infty\)">\(\sup_{m,n}(1+|m|+|n|)^k|c_{m,n}|&lt;\infty\)</span> for every nonnegative integer <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Indeed, Fourier projection for the torus action has range <span class="math" data-tex="\(\mathbb C u^m v^n\)">\(\mathbb C u^m v^n\)</span>, first on the dense polynomials and then by continuity on the whole algebra. Repeated integration by parts on a smooth orbit map bounds its coefficients with arbitrary polynomial weights. Conversely rapid decrease makes the series and every differentiated series absolutely convergent in norm, since all monomials are unitaries. Termwise differentiation proves smoothness. Product Fejér convolution of the continuous orbit map converges in norm, so the coefficients uniquely determine the element; no convergence assertion for ordinary Fourier partial sums is needed.</p>
+<p><a href="smooth-subalgebras-and-the-density-theorem.html#4-smooth-actions-and-regular-spectral-triples">Lesson 15, Theorem 4.1</a> proves density, completeness in the derivative seminorms, matrix holomorphic functional calculus and the resulting K-theory isomorphisms. Thus the projection of §4 is smooth and represents the same class in the smooth and completed algebras. Under (4.1), the geometry lesson's ordered second derivation differentiates <span class="math" data-tex="\(v^*\)">\(v^*\)</span> positively, hence differentiates <span class="math" data-tex="\(v\)">\(v\)</span> negatively. Its Chern-number convention is retained by that identification.</p>
+<h2 id="8-exercises-with-solutions">8. Exercises with solutions</h2>
+<p><strong>Exercise 20.1 (basic: parameter changes).</strong> Give explicit inverse isomorphisms for <span class="math" data-tex="\(A_\theta\cong A_{\theta+1}\cong A_{-\theta}\)">\(A_\theta\cong A_{\theta+1}\cong A_{-\theta}\)</span>.</p>
+<p><em>Solution.</em> For the integer shift send each generator to the generator with the same name; the scalar in (1.2) is identical. The reverse map does the same. For negation, if the target generators are <span class="math" data-tex="\(u&#x27;,v&#x27;\)">\(u&#x27;,v&#x27;\)</span>, send <span class="math" data-tex="\(u\mapsto u&#x27;\)">\(u\mapsto u&#x27;\)</span>, <span class="math" data-tex="\(v\mapsto v&#x27;^*\)">\(v\mapsto v&#x27;^*\)</span>. The target relation implies <span class="math" data-tex="\(v&#x27;^*u&#x27;=e^{2\pi i\theta}u&#x27;v&#x27;^*\)">\(v&#x27;^*u&#x27;=e^{2\pi i\theta}u&#x27;v&#x27;^*\)</span>. The reverse map also preserves the first generator and takes the adjoint of the second, so both compositions fix the generators. Universality proves the claims. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 20.2 (intermediate: coefficient equations).</strong> For real continuous <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, derive the exact conditions making (4.2) a projection and verify them for (4.3).</p>
+<p><em>Solution.</em> Use <span class="math" data-tex="\(W=v^*\)">\(W=v^*\)</span> and <span class="math" data-tex="\(g_+(t)=g(t+\theta)\)">\(g_+(t)=g(t+\theta)\)</span>. The expression is automatically self-adjoint. The coefficients of <span class="math" data-tex="\(W^0,W^1,W^2\)">\(W^0,W^1,W^2\)</span> in its square are respectively
+<span class="math" data-tex="\(f^2+g^2+g_+^2\)">\(f^2+g^2+g_+^2\)</span>, <span class="math" data-tex="\(g(f+f(t-\theta))\)">\(g(f+f(t-\theta))\)</span>, and <span class="math" data-tex="\(g(t)g(t-\theta)\)">\(g(t)g(t-\theta)\)</span>. The negative coefficients are adjoints. Coefficient uniqueness from the faithful expectation makes (4.5) necessary and sufficient. The rising and falling intervals give the first identity, their complementary values give the second, and the disjoint translated supports give the third. It is essential to retain both translated square terms in the constant coefficient; the unshifted equation <span class="math" data-tex="\(g^2=f-f^2\)">\(g^2=f-f^2\)</span> alone is not the projection condition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 20.3 (intermediate: determinant sign).</strong> Compute the relative determinant of <span class="math" data-tex="\(z\)">\(z\)</span> for <span class="math" data-tex="\(\alpha_\theta\)">\(\alpha_\theta\)</span>, and compare it with inverse pullback by the geometric rotation <span class="math" data-tex="\(r_\theta(t)=t+\theta\)">\(r_\theta(t)=t+\theta\)</span>.</p>
+<p><em>Solution.</em> For (1.1), <span class="math" data-tex="\(z\alpha_\theta(z^*)=e^{-2\pi i\theta}\)">\(z\alpha_\theta(z^*)=e^{-2\pi i\theta}\)</span>. Along <span class="math" data-tex="\(w(s)=e^{-2\pi i s\theta}\)">\(w(s)=e^{-2\pi i s\theta}\)</span>, the logarithmic derivative is <span class="math" data-tex="\(w&#x27;w^*=-2\pi i\theta\)">\(w&#x27;w^*=-2\pi i\theta\)</span>, so <span class="math" data-tex="\(\Gamma_{\tau_0}(w)=-\theta\)">\(\Gamma_{\tau_0}(w)=-\theta\)</span> and the determinant is <span class="math" data-tex="\(-\theta+\mathbb Z\)">\(-\theta+\mathbb Z\)</span>. For <span class="math" data-tex="\(h\mapsto h\circ r_\theta^{-1}=\alpha_{-\theta}(h)\)">\(h\mapsto h\circ r_\theta^{-1}=\alpha_{-\theta}(h)\)</span>, the relative product is <span class="math" data-tex="\(e^{2\pi i\theta}\)">\(e^{2\pi i\theta}\)</span>, and the increasing exponential path gives <span class="math" data-tex="\(+\theta+\mathbb Z\)">\(+\theta+\mathbb Z\)</span>. Both generate the same subgroup of <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span> and hence the same trace range. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 20.4 (advanced: a small projection).</strong> For irrational <span class="math" data-tex="\(1/2&lt;\theta&lt;1\)">\(1/2&lt;\theta&lt;1\)</span>, construct a projection in <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> of trace <span class="math" data-tex="\(2\theta-1\)">\(2\theta-1\)</span>. Explain the bounds on ordinary projection traces.</p>
+<p><em>Solution.</em> Set <span class="math" data-tex="\(\nu=2\theta-1\in(0,1)\)">\(\nu=2\theta-1\in(0,1)\)</span>. Since <span class="math" data-tex="\(v u^2=e^{2\pi i\nu}u^2v\)">\(v u^2=e^{2\pi i\nu}u^2v\)</span>, the universal map <span class="math" data-tex="\(A_\nu\to A_\theta\)">\(A_\nu\to A_\theta\)</span> sends its generators to <span class="math" data-tex="\(u^2,v\)">\(u^2,v\)</span>. It is injective because <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is irrational and its source is simple. Apply the functions constructed for parameter <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to get
+<span class="math" data-tex="\(p=g_\nu(u^2)v^*+f_\nu(u^2)+vg_\nu(u^2)\)">\(p=g_\nu(u^2)v^*+f_\nu(u^2)+vg_\nu(u^2)\)</span>. Proposition 4.1 proves this is a projection. The pullback of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is the unique normalized trace on <span class="math" data-tex="\(A_\nu\)">\(A_\nu\)</span>, so <span class="math" data-tex="\(\tau(p)=\nu\)">\(\tau(p)=\nu\)</span>. Every projection in <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> satisfies <span class="math" data-tex="\(0\leq p\leq1\)">\(0\leq p\leq1\)</span>; positivity and normalization give its trace in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. In <span class="math" data-tex="\(M_N(A_\theta)\)">\(M_N(A_\theta)\)</span> with the unnormalized matrix trace the bound is <span class="math" data-tex="\([0,N]\)">\([0,N]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 20.5 (advanced: cancelling complements).</strong> Using Theorem 5.2, prove that two projections <span class="math" data-tex="\(p,q\in M_N(A_\theta)\)">\(p,q\in M_N(A_\theta)\)</span> with the same trace are unitarily equivalent in that same matrix algebra.</p>
+<p><em>Solution.</em> Trace injectivity gives <span class="math" data-tex="\([p]=[q]\)">\([p]=[q]\)</span> in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. The definition of group completion supplies a common finite projective stabilizing module. Cancellation gives <span class="math" data-tex="\(pA_\theta^N\cong qA_\theta^N\)">\(pA_\theta^N\cong qA_\theta^N\)</span>. An isomorphism is a rectangular corner operator; its polar normalization gives a partial isometry <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(s^*s=p\)">\(s^*s=p\)</span>, <span class="math" data-tex="\(ss^*=q\)">\(ss^*=q\)</span>. Apply the same argument to the complements, whose classes are <span class="math" data-tex="\([1_N]-[p]\)">\([1_N]-[p]\)</span> and <span class="math" data-tex="\([1_N]-[q]\)">\([1_N]-[q]\)</span>, obtaining <span class="math" data-tex="\(t^*t=1_N-p\)">\(t^*t=1_N-p\)</span>, <span class="math" data-tex="\(tt^*=1_N-q\)">\(tt^*=1_N-q\)</span>. Their initial and final supports are orthogonal, so all cross terms vanish and <span class="math" data-tex="\(w=s+t\)">\(w=s+t\)</span> is unitary. Moreover <span class="math" data-tex="\(wpw^*=q\)">\(wpw^*=q\)</span>. This conclusion uses cancellation, whereas Theorem 5.1's computation of the positive cone did not. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="proof-inputs-and-source-comparison">Proof inputs and source comparison</h2>
+<p>We imported PV exactness and naturality from Lesson 18, the numerical determinant range theorem from Lesson 19, and the smooth-action density theorem from Lesson 15. The coefficient expectation and simplicity criterion are the precise KT-CP-03 results cited above; amenability of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is KT-CP-05. Theorem 5.2 now proves Rieffel's cancellation theorem in full, including the finite stable-rank reduction, small full equivalence modules, and every stabilizer removal. The Morita classification after Theorem 6.1 has the exact written Hilbert C*-modules Lesson 15 proof; its small-module construction is used in Lemma 5.5 with the trace direction specified there. Neither the unit-preserving isomorphism proof nor the ordered-group computation uses cancellation.</p>
+<p>[Blackadar 1998, Exercise 10.11.6(a)–(e)] uses <span class="math" data-tex="\(uv=e^{2\pi i\theta}vu\)">\(uv=e^{2\pi i\theta}vu\)</span>, while (1.2) uses the reverse order. Our determinant calculation and (4.1) account for that difference. The geometry lesson's supports and projection have been retained. [Emerson 2024, Exercise 6.6.4(a)] compresses the projection equations incorrectly: the constant coefficient needs the sum of the two shifted square terms in (4.5). Its short-support construction of a projection in the unital algebra requires an angle in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>; larger positive trace dimensions require matrix projections. Corollary 11.5.14 gives the abstract groups; the irrational generator identifications are proved here rather than left as a verification. In [Rosenberg 2012], basic facts are §4.1, the smooth algebra is §4.2, and cancellation is Theorem 4.6 in §4.3. Connes's Chapter II, §2 explains quotient-space algebras through open covers and the infinite dihedral group; it is background, not a rotation-algebra trace computation.</p>
+<p>Two rational-angle statements in Rosenberg's §4.1 also need care. For coprime <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, the group <span class="math" data-tex="\(\mathbb Z+(p/q)\mathbb Z\)">\(\mathbb Z+(p/q)\mathbb Z\)</span> is <span class="math" data-tex="\(q^{-1}\mathbb Z\)">\(q^{-1}\mathbb Z\)</span>, which need not equal <span class="math" data-tex="\((p/q)\mathbb Z\)">\((p/q)\mathbb Z\)</span>. A line bundle's endomorphism algebra is commutative and therefore cannot describe <span class="math" data-tex="\(A_{p/q}\)">\(A_{p/q}\)</span> when <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>; its matrix-bundle description requires higher-rank fibers. Neither erroneous formulation enters our proof.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p><strong>[Blackadar 1998]</strong> Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Exercise 10.11.6(a)–(e) and its following remarks; §§10.2 and 10.10 for the prerequisite route. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's book</a>.</p>
+</li>
+<li>
+<p><strong>[Blackadar 2006]</strong> Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, II.10.4.12(i).</p>
+</li>
+<li>
+<p><strong>[Rosenberg 2012]</strong> Jonathan Rosenberg, <em>Examples and applications of noncommutative geometry and K-theory</em>, in <em>Topics in Noncommutative Geometry</em>, Clay Mathematics Proceedings 16, 2012, pp. 93–129, §4, especially Theorems 4.1, 4.2 and 4.6. <a href="https://www.claymath.org/wp-content/uploads/2022/03/cmip016c.pdf">Publisher's volume</a>.</p>
+</li>
+<li>
+<p><strong>[Emerson 2024]</strong> Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, §6.6 and Corollary 11.5.14.</p>
+</li>
+<li>
+<p><strong>[Rieffel 1981]</strong> Marc A. Rieffel, <em>C*-algebras associated with irrational rotations</em>, Pacific Journal of Mathematics 93 (1981), 415–429, Theorems 1.1–1.2 and Proposition 1.4. <a href="https://msp.org/pjm/1981/93-2/pjm-v93-n2-p12-s.pdf">Original paper</a>.</p>
+</li>
+<li>
+<p><strong>[Rieffel 1983]</strong> Marc A. Rieffel, <em>The Cancellation Theorem for Projective Modules Over Irrational Rotation C*-Algebras</em>, Proceedings of the London Mathematical Society (3) 47 (1983), 285–302. Theorem 5.2 proves the full cancellation statement reproduced in Rosenberg's Theorem 4.6. The original full proof is not claimed read; the explicit argument uses the finite-rank mechanism compared with Rieffel 1988 and the length reduction compared with Sudo 2005. <a href="https://doi.org/10.1112/plms/s3-47.2.285">Original publication</a>.</p>
+</li>
+<li>
+<p><strong>[Connes 1994]</strong> Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, §2, pp. 90–93. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's book</a>.</p>
+</li>
+<li>
+<p><strong>[Rieffel 1988]</strong> Marc A. Rieffel, <em>Projective modules over higher-dimensional non-commutative tori</em>, Canadian Journal of Mathematics 40 (1988), 257–338, §3, Propositions 3.9–3.10, and §7, Theorems 7.1–7.5 and Lemma 7.6. <a href="https://math.berkeley.edu/~rieffel/papers/projective88.pdf">Author's paper</a>. The small-full-module mechanism is credited; Lemmas 5.3–5.4 supply the approximation and cancellation steps directly in the present two-generator case.</p>
+</li>
+<li>
+<p><strong>[Sudo 2005]</strong> Takahiro Sudo, <em>Stable rank of the semigroup crossed products by natural numbers</em>, Scientiae Mathematicae Japonicae Online e-2005, 499–509, notation and Theorem 2.2, pp. 500–503. <a href="https://www.jams.jp/scm/contents/e-2005-6/2005-58.pdf">Original journal paper</a>. Comparison of Rieffel's elementary length-reduction argument; Lemma 5.3 uses only the unitary, integer-group case.</p>
+</li>
+<li>
+<p><strong>[Hilbert C*-modules Lesson 15]</strong> <em>Morita equivalence of noncommutative tori</em>, GPT-6.1 Sol (OpenAI), Ultra, CC0, §§1–6.1, especially Theorem 3.2, (4.4), Theorems 5.2 and 6.1. <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/preparation.html#dependency-98d4187f8fee">Complete written programme proof</a>. Lemma 5.5 specifies its full required scope, the exact trace multiplier and the result-level dependency on the already proved ordered K-group.</p>
+</li>
+<li>
+<p><strong>[Willett 2019]</strong> R. Willett, <em>Bott periodicity and almost commuting matrices</em>, author version dated 7 January 2019, §3, equation (1) and Theorem 3.1; published in <em>Contemporary Mathematics</em> 749 (2020), 379–388. <a href="https://math.hawaii.edu/~rufus/Bott.pdf#page=4">Freely available author version</a>. Voiculescu's example and Loring's Bott-theoretic explanation are credited there. The logarithmic invariant, its path proof and the explicit bound (6.4) are independently written here; no source expression is adapted.</p>
+</li>
+</ul>
+<p>[Rieffel1981, support and matrix rigidity] M. A. Rieffel, <em>C*-algebras associated with irrational rotations</em>, Pacific Journal of Mathematics93(2)(1981),415–429, complete mathematical body §§0–2, especially Theorem1.1pp418–419, Proposition1.3 and proof of Theorem3p420. <a href="https://msp.org/pjm/1981/93-2/pjm-v93-n2-p12-s.pdf">Freely readable original</a>. Corollary5.1a proves smooth three-degree support and each fixed matrix-size range before cancellation; Theorem6.1a proves normalized matrix trace uniqueness, rational-value detection of matrix size and full angle rigidity. The existing trace-range proof supplies containment, so the original externally cited AF embedding is not a new proof input.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="traces-on-integer-crossed-products-and-their-k-theory-ranges.html">← Traces on integer crossed products and their K-theory ranges</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="commutative-and-noncommutative-tori.html">Commutative and noncommutative tori →</a></span></nav>
+<p class="small source-link"><span class="unlinked">Markdown source of this lesson</span></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

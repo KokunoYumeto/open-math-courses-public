@@ -1,0 +1,339 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quotients by a factorization ideal</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="quotients-by-a-factorization-ideal">Quotients by a factorization ideal</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it; no independent review. Public domain (CC0).</em></p>
+<p>Suppose some objects are to count as zero. In an additive category, every map passing through one of these objects must then count as zero too. Quotienting the groups of maps does exactly this. The resulting objects retain their names, but their isomorphisms can change: two objects become isomorphic when suitable discarded summands make them isomorphic already.</p>
+<p>We assume familiarity with additive categories and finite biproducts. The splitting terminology comes from <a href="retracts-and-stabilization-of-formal-objects.html">Retracts and stabilization of formal objects</a>, Section 1. No formal systems are needed here. Basic references are <a href="https://stacks.math.columbia.edu/tag/09SE">The Stacks Project, Preadditive and additive categories</a> and the Mathlib treatments of <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Quotient.html">category quotients</a> and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Quotient/Preadditive.html">their additive structure</a>.</p>
+<p>Throughout, <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is a locally small additive category and <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> a full additive subcategory. Thus its zero and finite biproducts can be chosen in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Neither category is required to have a small set of objects. Write <span class="math" data-tex="\(gf\)">\(gf\)</span> for first <span class="math" data-tex="\(f\)">\(f\)</span>, then <span class="math" data-tex="\(g\)">\(g\)</span>. Closure under objects will mean closure up to isomorphism unless otherwise stated.</p>
+<h2 id="1-making-the-discarded-objects-zero">1. Making the discarded objects zero</h2>
+<p>For <span class="math" data-tex="\(X,Y\in\mathsf C\)">\(X,Y\in\mathsf C\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal I(X,Y)=\{vu\mid Z\in\mathsf N,\\
+u:X\to Z,\quad v:Z\to Y\}.
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\mathcal I(X,Y)=\{vu\mid Z\in\mathsf N,\\
+u:X\to Z,\quad v:Z\to Y\}.
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>There is no set of all intermediate objects in this formula. The subset <span class="math" data-tex="\(\mathcal I(X,Y)\)">\(\mathcal I(X,Y)\)</span> is nevertheless a set, since it lies in the set <span class="math" data-tex="\(\operatorname{Hom}_{\mathsf C}(X,Y)\)">\(\operatorname{Hom}_{\mathsf C}(X,Y)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Each <span class="math" data-tex="\(\mathcal I(X,Y)\)">\(\mathcal I(X,Y)\)</span> is an additive subgroup. Composing a member on either side with any map in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> gives another member.</p>
+<p><strong>Proof.</strong> The zero map passes through the zero object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. If <span class="math" data-tex="\(vu\)">\(vu\)</span> passes through <span class="math" data-tex="\(Z\)">\(Z\)</span>, its negative is <span class="math" data-tex="\(v(-u)\)">\(v(-u)\)</span>. For factorizations through <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(Z&#x27;\)">\(Z&#x27;\)</span>, the sum factors through their biproduct:</p>
+<span class="math math-display" data-tex="\[
+vu+v&#x27;u&#x27;=
+\begin{pmatrix}v&amp;v&#x27;\end{pmatrix}
+\begin{pmatrix}u\\u&#x27;\end{pmatrix}.
+\tag{1.2}
+\]">\[
+vu+v&#x27;u&#x27;=
+\begin{pmatrix}v&amp;v&#x27;\end{pmatrix}
+\begin{pmatrix}u\\u&#x27;\end{pmatrix}.
+\tag{1.2}
+\]</span>
+<p>Precomposing changes <span class="math" data-tex="\(u\)">\(u\)</span>; postcomposing changes <span class="math" data-tex="\(v\)">\(v\)</span>. Neither changes the intermediate object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Such a system of subgroups is a <em>two-sided additive ideal</em>. More generally, for any such ideal <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span>, the relation <span class="math" data-tex="\(f\sim g\)">\(f\sim g\)</span> defined by <span class="math" data-tex="\(f-g\in\mathcal J\)">\(f-g\in\mathcal J\)</span> is an equivalence relation on each group of maps and respects composition and addition. This is the congruence interface used in Mathlib's quotient construction. For (1.1), Lemma 1.1 verifies that interface directly.</p>
+<p><strong>Proposition 1.2.</strong> There is an additive category <span class="math" data-tex="\(\mathsf C/\mathcal I\)">\(\mathsf C/\mathcal I\)</span> with the objects of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> and groups of maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C/\mathcal I}(X,Y)\\
+=\operatorname{Hom}_{\mathsf C}(X,Y)/\mathcal I(X,Y).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C/\mathcal I}(X,Y)\\
+=\operatorname{Hom}_{\mathsf C}(X,Y)/\mathcal I(X,Y).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The functor <span class="math" data-tex="\(Q:\mathsf C\to\mathsf C/\mathcal I\)">\(Q:\mathsf C\to\mathsf C/\mathcal I\)</span> is the identity on objects and sends <span class="math" data-tex="\(f\)">\(f\)</span> to its class <span class="math" data-tex="\([f]\)">\([f]\)</span>. It is full and additive, preserves finite biproducts, and sends every object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> to a zero object. Exactly the maps in <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> become zero.</p>
+<p><strong>Proof.</strong> Use the group quotients in (1.3), with identity <span class="math" data-tex="\([1_X]\)">\([1_X]\)</span> and composition <span class="math" data-tex="\([g][f]=[gf]\)">\([g][f]=[gf]\)</span>. Changing representatives by <span class="math" data-tex="\(m\in\mathcal I(X,Y)\)">\(m\in\mathcal I(X,Y)\)</span> and <span class="math" data-tex="\(n\in\mathcal I(Y,T)\)">\(n\in\mathcal I(Y,T)\)</span> changes the composite by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(g+n)(f+m)-gf\\
+=gm+nf+nm\in\mathcal I(X,T).
+\end{gathered}
+\tag{1.4}
+\]">\[
+\begin{gathered}
+(g+n)(f+m)-gf\\
+=gm+nf+nm\in\mathcal I(X,T).
+\end{gathered}
+\tag{1.4}
+\]</span>
+<p>Associativity, the identity laws and bilinearity descend from those in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. Every class has a representative, proving fullness. The group quotient maps prove additivity and the final assertion.</p>
+<p>For finite biproducts, retain the biproduct criterion of <a href="https://stacks.math.columbia.edu/tag/0103">Stacks, Remark 12.3.6</a>: inclusion and projection maps with the usual matrix identities specify a biproduct. Their identities survive application of <span class="math" data-tex="\(Q\)">\(Q\)</span>, so the same objects with the classes of those maps are biproducts. The zero object also remains zero, by the identity criterion of <a href="https://stacks.math.columbia.edu/tag/00ZZ">Stacks, Lemma 12.3.2</a>. These two criteria give an additive category.</p>
+<p>For <span class="math" data-tex="\(Z\in\mathsf N\)">\(Z\in\mathsf N\)</span>, <span class="math" data-tex="\(1_Z\)">\(1_Z\)</span> factors through <span class="math" data-tex="\(Z\)">\(Z\)</span>, so <span class="math" data-tex="\([1_Z]=0\)">\([1_Z]=0\)</span>. The same identity criterion makes <span class="math" data-tex="\(QZ\)">\(QZ\)</span> a zero object. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Killing objects by this additive ideal is a different construction from <a href="serre-quotients-and-local-saturation.html">Serre quotients and local saturation</a>. Here there is no assumed abelian structure or closure under subobjects and quotients. Exactness of <span class="math" data-tex="\(Q\)">\(Q\)</span> is not part of Proposition 1.2; Exercise 3 supplies an explicit failure.</p>
+<h2 id="2-the-universal-property-including-transformations">2. The universal property, including transformations</h2>
+<p>An additive functor <em>kills</em> <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> when it sends every object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> to a zero object.</p>
+<p><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(\mathsf A\)">\(\mathsf A\)</span> be an additive category. An additive functor <span class="math" data-tex="\(F:\mathsf C\to\mathsf A\)">\(F:\mathsf C\to\mathsf A\)</span> kills <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> if and only if it has an additive factorization</p>
+<span class="math math-display" data-tex="\[
+F=\overline FQ.
+\tag{2.1}
+\]">\[
+F=\overline FQ.
+\tag{2.1}
+\]</span>
+<p>With the object choices of Proposition 1.2, <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span> is unique. Natural transformations between such functors descend uniquely too. Consequently precomposition with <span class="math" data-tex="\(Q\)">\(Q\)</span> identifies the category of additive functors from <span class="math" data-tex="\(\mathsf C/\mathcal I\)">\(\mathsf C/\mathcal I\)</span> with the full subcategory of additive functors from <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> that kill <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> kills <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>, every factorization (1.1) goes through a zero object after applying <span class="math" data-tex="\(F\)">\(F\)</span>; its image is zero. Since <span class="math" data-tex="\(F\)">\(F\)</span> is additive, <span class="math" data-tex="\(f-g\in\mathcal I\)">\(f-g\in\mathcal I\)</span> implies <span class="math" data-tex="\(Ff=Fg\)">\(Ff=Fg\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\overline F(X)=F(X),\\
+\overline F([f])=F(f).
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\overline F(X)=F(X),\\
+\overline F([f])=F(f).
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>This is well-defined, additive, and respects identities and composition. Conversely, <span class="math" data-tex="\(Q\)">\(Q\)</span> kills <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>, and an additive functor preserves zero objects, so (2.1) implies that <span class="math" data-tex="\(F\)">\(F\)</span> kills <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. The zero preservation used here is <a href="https://stacks.math.columbia.edu/tag/0105">Stacks, Lemma 12.3.7</a>.</p>
+<p>Every object and every map of the quotient comes from <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus (2.1) determines all values of <span class="math" data-tex="\(\overline F\)">\(\overline F\)</span>, proving uniqueness. For a natural transformation <span class="math" data-tex="\(\eta:F\to G\)">\(\eta:F\to G\)</span>, retain the same components <span class="math" data-tex="\(\eta_X\)">\(\eta_X\)</span>. Naturality for <span class="math" data-tex="\([f]\)">\([f]\)</span> is precisely naturality for a representative <span class="math" data-tex="\(f\)">\(f\)</span>, so they give a transformation <span class="math" data-tex="\(\overline F\to\overline G\)">\(\overline F\to\overline G\)</span>. All transformations between the descended functors are determined by these components, and composition and identities are unchanged. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is a universal property with a specified factorization. If equivalent models of the quotient are chosen, the comparison is unique when required to respect that factorization.</p>
+<h2 id="3-splitting-a-projector-that-passes-through-a-discarded-object">3. Splitting a projector that passes through a discarded object</h2>
+<p>Recall that an idempotent <span class="math" data-tex="\(e:Z\to Z\)">\(e:Z\to Z\)</span> <em>splits</em> if there are maps <span class="math" data-tex="\(a:Z_0\to Z\)">\(a:Z_0\to Z\)</span> and <span class="math" data-tex="\(b:Z\to Z_0\)">\(b:Z\to Z_0\)</span> with <span class="math" data-tex="\(ab=e\)">\(ab=e\)</span> and <span class="math" data-tex="\(ba=1_{Z_0}\)">\(ba=1_{Z_0}\)</span>. The subcategory <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is <em>idempotent complete</em> when every one of its idempotents splits in <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p>The following lemma lets us use this assumption without asking for all projectors in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> to split.</p>
+<p><strong>Lemma 3.1.</strong> Suppose <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is idempotent complete. If an idempotent <span class="math" data-tex="\(q:V\to V\)">\(q:V\to V\)</span> belongs to <span class="math" data-tex="\(\mathcal I(V,V)\)">\(\mathcal I(V,V)\)</span>, then it splits through an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(q=vu\)">\(q=vu\)</span> with <span class="math" data-tex="\(u:V\to W\)">\(u:V\to W\)</span>, <span class="math" data-tex="\(v:W\to V\)">\(v:W\to V\)</span>, <span class="math" data-tex="\(W\in\mathsf N\)">\(W\in\mathsf N\)</span>. Put <span class="math" data-tex="\(t=uv\)">\(t=uv\)</span>. The identity <span class="math" data-tex="\(q^2=q\)">\(q^2=q\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+t^3=uqv=uq^2v=t^2.
+\tag{3.1}
+\]">\[
+t^3=uqv=uq^2v=t^2.
+\tag{3.1}
+\]</span>
+<p>Hence <span class="math" data-tex="\(p=t^2\)">\(p=t^2\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+p^2=p,\qquad tp=p=pt.
+\tag{3.2}
+\]">\[
+p^2=p,\qquad tp=p=pt.
+\tag{3.2}
+\]</span>
+<p>Fullness puts this endomorphism of <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Split it as <span class="math" data-tex="\(p=ab\)">\(p=ab\)</span>, <span class="math" data-tex="\(ba=1_{W_0}\)">\(ba=1_{W_0}\)</span>, with <span class="math" data-tex="\(W_0\in\mathsf N\)">\(W_0\in\mathsf N\)</span>. Since <span class="math" data-tex="\(pa=a\)">\(pa=a\)</span> and <span class="math" data-tex="\(bp=b\)">\(bp=b\)</span>, (3.2) gives <span class="math" data-tex="\(ta=a\)">\(ta=a\)</span> and <span class="math" data-tex="\(bt=b\)">\(bt=b\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+j=va:W_0\to V,\\
+r=bu:V\to W_0.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+j=va:W_0\to V,\\
+r=bu:V\to W_0.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+rj=bta=ba=1_{W_0},\\
+jr=vpu=(vu)^3=q.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+rj=bta=ba=1_{W_0},\\
+jr=vpu=(vu)^3=q.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>These are the required splitting identities. They also imply <span class="math" data-tex="\(qj=j\)">\(qj=j\)</span> and <span class="math" data-tex="\(rq=r\)">\(rq=r\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(QV\)">\(QV\)</span> is zero exactly when <span class="math" data-tex="\(1_V\)">\(1_V\)</span> factors through an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Under the hypothesis of Lemma 3.1, this means exactly that <span class="math" data-tex="\(V\)">\(V\)</span> is isomorphic to an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Indeed, the splitting of <span class="math" data-tex="\(1_V\)">\(1_V\)</span> gives inverse maps <span class="math" data-tex="\(V\leftrightarrows W_0\)">\(V\leftrightarrows W_0\)</span>. The reverse implication follows from Proposition 1.2.</p>
+<p>Without idempotent completeness, objects that are retracts of objects of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> still become zero, but they need not belong to <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Exercise 2 exploits this distinction.</p>
+<h2 id="4-an-isomorphism-after-adding-discarded-summands">4. An isomorphism after adding discarded summands</h2>
+<p>Call <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> <em>stably isomorphic relative to <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span></em> when some <span class="math" data-tex="\(Z_1,Z_2\in\mathsf N\)">\(Z_1,Z_2\in\mathsf N\)</span> give an isomorphism</p>
+<span class="math math-display" data-tex="\[
+X\oplus Z_1\simeq Y\oplus Z_2
+\quad\text{in }\mathsf C.
+\tag{4.1}
+\]">\[
+X\oplus Z_1\simeq Y\oplus Z_2
+\quad\text{in }\mathsf C.
+\tag{4.1}
+\]</span>
+<p><strong>Theorem 4.1.</strong> If <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is idempotent complete, then <span class="math" data-tex="\(QX\simeq QY\)">\(QX\simeq QY\)</span> if and only if (4.1) holds. No idempotent completeness of <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> is assumed.</p>
+<p><strong>Proof.</strong> An isomorphism (4.1) gives an isomorphism in the quotient, where both extra summands are zero. This proves one direction.</p>
+<p>For the other, choose representatives <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, <span class="math" data-tex="\(g:Y\to X\)">\(g:Y\to X\)</span> of inverse isomorphisms in the quotient. In particular, write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+gf-1_X=ab,\qquad Z\in\mathsf N,\\
+b:X\to Z,\quad a:Z\to X.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+gf-1_X=ab,\qquad Z\in\mathsf N,\\
+b:X\to Z,\quad a:Z\to X.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>The difference in (4.2) need not be zero. Make it zero by adjoining its intermediate object. On <span class="math" data-tex="\(V=Y\oplus Z\)">\(V=Y\oplus Z\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F=\begin{pmatrix}f\\b\end{pmatrix}:X\to V,\\
+G=\begin{pmatrix}g&amp;-a\end{pmatrix}:V\to X.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+F=\begin{pmatrix}f\\b\end{pmatrix}:X\to V,\\
+G=\begin{pmatrix}g&amp;-a\end{pmatrix}:V\to X.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Now <span class="math" data-tex="\(GF=gf-ab=1_X\)">\(GF=gf-ab=1_X\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q=1_V-FG,\qquad q^2=q,\\
+Gq=0,\quad qF=0.
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+q=1_V-FG,\qquad q^2=q,\\
+Gq=0,\quad qF=0.
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>The quotient identifies <span class="math" data-tex="\(QV\)">\(QV\)</span> with <span class="math" data-tex="\(QY\)">\(QY\)</span>, through the projection and inclusion of the first summand. Under this identification <span class="math" data-tex="\(QF=[f]\)">\(QF=[f]\)</span> and <span class="math" data-tex="\(QG=[g]\)">\(QG=[g]\)</span>, because all maps to or from <span class="math" data-tex="\(QZ\)">\(QZ\)</span> are zero. They are inverse. Therefore <span class="math" data-tex="\(Qq=0\)">\(Qq=0\)</span>, so <span class="math" data-tex="\(q\in\mathcal I(V,V)\)">\(q\in\mathcal I(V,V)\)</span>.</p>
+<p>Lemma 3.1 gives <span class="math" data-tex="\(j:W_0\to V\)">\(j:W_0\to V\)</span>, <span class="math" data-tex="\(r:V\to W_0\)">\(r:V\to W_0\)</span>, <span class="math" data-tex="\(W_0\in\mathsf N\)">\(W_0\in\mathsf N\)</span>, with <span class="math" data-tex="\(jr=q\)">\(jr=q\)</span>, <span class="math" data-tex="\(rj=1_{W_0}\)">\(rj=1_{W_0}\)</span>. Since <span class="math" data-tex="\(qj=j\)">\(qj=j\)</span> and <span class="math" data-tex="\(rq=r\)">\(rq=r\)</span>, (4.4) gives <span class="math" data-tex="\(Gj=0\)">\(Gj=0\)</span> and <span class="math" data-tex="\(rF=0\)">\(rF=0\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}G\\r\end{pmatrix}
+\begin{pmatrix}F&amp;j\end{pmatrix}
+=
+\begin{pmatrix}1_X&amp;0\\0&amp;1_{W_0}\end{pmatrix},
+\tag{4.5}
+\]">\[
+\begin{pmatrix}G\\r\end{pmatrix}
+\begin{pmatrix}F&amp;j\end{pmatrix}
+=
+\begin{pmatrix}1_X&amp;0\\0&amp;1_{W_0}\end{pmatrix},
+\tag{4.5}
+\]</span>
+<p>while the opposite composite is <span class="math" data-tex="\(FG+jr=FG+q=1_V\)">\(FG+jr=FG+q=1_V\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+X\oplus W_0\simeq V=Y\oplus Z,
+\tag{4.6}
+\]">\[
+X\oplus W_0\simeq V=Y\oplus Z,
+\tag{4.6}
+\]</span>
+<p>which is (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The minus sign in <span class="math" data-tex="\(G\)">\(G\)</span> removes the actual error <span class="math" data-tex="\(gf-1_X\)">\(gf-1_X\)</span>. The projector <span class="math" data-tex="\(q\)">\(q\)</span> then measures the remaining summand. It need not split for arbitrary reasons in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>; its factorization through <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is what supplies a splitting.</p>
+<h2 id="5-which-coproducts-survive">5. Which coproducts survive?</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be a small set. Suppose <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has coproducts indexed by <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is closed under those coproducts in <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span>. This section does not require idempotent completeness. We use the usual axiom of choice for small families of representatives and factorizations.</p>
+<p><strong>Theorem 5.1.</strong> The quotient <span class="math" data-tex="\(\mathsf C/\mathcal I\)">\(\mathsf C/\mathcal I\)</span> has coproducts indexed by <span class="math" data-tex="\(I\)">\(I\)</span>, and <span class="math" data-tex="\(Q\)">\(Q\)</span> preserves them.</p>
+<p><strong>Proof.</strong> For a family <span class="math" data-tex="\((X_i)_{i\in I}\)">\((X_i)_{i\in I}\)</span>, write <span class="math" data-tex="\(S=\bigoplus_iX_i\)">\(S=\bigoplus_iX_i\)</span>, with injections <span class="math" data-tex="\(\iota_i\)">\(\iota_i\)</span>. For any <span class="math" data-tex="\(Y\)">\(Y\)</span>, restriction gives a group isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathsf C}(S,Y)
+\simeq\prod_{i\in I}\operatorname{Hom}_{\mathsf C}(X_i,Y).
+\tag{5.1}
+\]">\[
+\operatorname{Hom}_{\mathsf C}(S,Y)
+\simeq\prod_{i\in I}\operatorname{Hom}_{\mathsf C}(X_i,Y).
+\tag{5.1}
+\]</span>
+<p>Under (5.1), the subgroup <span class="math" data-tex="\(\mathcal I(S,Y)\)">\(\mathcal I(S,Y)\)</span> is exactly <span class="math" data-tex="\(\prod_i\mathcal I(X_i,Y)\)">\(\prod_i\mathcal I(X_i,Y)\)</span>. One inclusion follows by restricting a single factorization. For the other, choose factorizations <span class="math" data-tex="\(f_i=v_i u_i\)">\(f_i=v_i u_i\)</span> through <span class="math" data-tex="\(Z_i\in\mathsf N\)">\(Z_i\in\mathsf N\)</span>. Let <span class="math" data-tex="\(Z=\bigoplus_iZ_i\)">\(Z=\bigoplus_iZ_i\)</span>, with injections <span class="math" data-tex="\(\kappa_i\)">\(\kappa_i\)</span>. There are unique maps <span class="math" data-tex="\(u:S\to Z\)">\(u:S\to Z\)</span> and <span class="math" data-tex="\(v:Z\to Y\)">\(v:Z\to Y\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+u\iota_i=\kappa_i u_i,\qquad
+v\kappa_i=v_i.
+\tag{5.2}
+\]">\[
+u\iota_i=\kappa_i u_i,\qquad
+v\kappa_i=v_i.
+\tag{5.2}
+\]</span>
+<p>The map <span class="math" data-tex="\(vu\)">\(vu\)</span> restricts to <span class="math" data-tex="\(f_i\)">\(f_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>; it is the map corresponding to that family in (5.1). Closure puts <span class="math" data-tex="\(Z\)">\(Z\)</span> in <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p>For groups <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and subgroups <span class="math" data-tex="\(B_i\)">\(B_i\)</span>, the componentwise quotient map has kernel <span class="math" data-tex="\(\prod_iB_i\)">\(\prod_iB_i\)</span> and is surjective by choosing representatives. Thus</p>
+<span class="math math-display" data-tex="\[
+(\prod_iA_i)/(\prod_iB_i)\simeq\prod_i(A_i/B_i).
+\tag{5.3}
+\]">\[
+(\prod_iA_i)/(\prod_iB_i)\simeq\prod_i(A_i/B_i).
+\tag{5.3}
+\]</span>
+<p>Applying this to (5.1) gives, naturally in <span class="math" data-tex="\(Y\)">\(Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C/\mathcal I}(QS,QY)\\
+\simeq\prod_i\operatorname{Hom}_{\mathsf C/\mathcal I}(QX_i,QY).
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathsf C/\mathcal I}(QS,QY)\\
+\simeq\prod_i\operatorname{Hom}_{\mathsf C/\mathcal I}(QX_i,QY).
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The isomorphism is restriction along <span class="math" data-tex="\(Q\iota_i\)">\(Q\iota_i\)</span>. Every object of the quotient is a <span class="math" data-tex="\(QY\)">\(QY\)</span>, so (5.4) is the required coproduct universal property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The subgroup equality is the reason for the closure hypothesis. If each component factors through some discarded object, one needs a single discarded object through which their assembled map factors. Exercise 4 shows precisely what can go wrong.</p>
+<h2 id="6-four-exercises-with-complete-solutions">6. Four exercises with complete solutions</h2>
+<p><strong>Exercise 1 (warm-up: torsion that survives).</strong> Take <span class="math" data-tex="\(\mathsf C=\mathsf{Ab}\)">\(\mathsf C=\mathsf{Ab}\)</span> and let <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> be the full subcategory of finitely generated projective abelian groups. Show that <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is additive and idempotent complete. For positive integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, calculate</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_{\mathsf C/\mathcal I}
+(\mathbb Z/n,\mathbb Z/m).
+\tag{6.1}
+\]">\[
+\operatorname{Hom}_{\mathsf C/\mathcal I}
+(\mathbb Z/n,\mathbb Z/m).
+\tag{6.1}
+\]</span>
+<p>Show that <span class="math" data-tex="\(Q(\mathbb Z\oplus\mathbb Z/n)\simeq Q(\mathbb Z/n)\)">\(Q(\mathbb Z\oplus\mathbb Z/n)\simeq Q(\mathbb Z/n)\)</span>, whereas <span class="math" data-tex="\(Q(\mathbb Z/2)\)">\(Q(\mathbb Z/2)\)</span> and <span class="math" data-tex="\(Q(\mathbb Z/4)\)">\(Q(\mathbb Z/4)\)</span> are not isomorphic.</p>
+<p><strong>Solution.</strong> A module <span class="math" data-tex="\(P\)">\(P\)</span> is projective when maps from <span class="math" data-tex="\(P\)">\(P\)</span> lift through surjections. If it is also finitely generated, choose a surjection <span class="math" data-tex="\(\mathbb Z^r\to P\)">\(\mathbb Z^r\to P\)</span>; a lift of <span class="math" data-tex="\(1_P\)">\(1_P\)</span> splits this surjection. Hence <span class="math" data-tex="\(P\)">\(P\)</span> is a retract of a finite free group. Conversely such a retract is finitely generated and projective: projectivity of <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span> follows by lifting its basis, and the inclusion and retraction transfer each lifting problem to it. Finite direct sums have the same properties, including the zero group.</p>
+<p>For an idempotent <span class="math" data-tex="\(e:P\to P\)">\(e:P\to P\)</span>, its image is a retract of <span class="math" data-tex="\(P\)">\(P\)</span>, with inclusion and restriction of <span class="math" data-tex="\(e\)">\(e\)</span> as splitting maps. It is generated by the images of a finite generating set of <span class="math" data-tex="\(P\)">\(P\)</span>, and is projective by the retract argument. The splitting therefore stays inside <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p>Every <span class="math" data-tex="\(P\in\mathsf N\)">\(P\in\mathsf N\)</span> is torsion-free, since its split inclusion into <span class="math" data-tex="\(\mathbb Z^r\)">\(\mathbb Z^r\)</span> is injective. Thus every map <span class="math" data-tex="\(\mathbb Z/n\to P\)">\(\mathbb Z/n\to P\)</span> is zero. The ideal in (6.1) is zero and its group is the original group of maps. A map is determined by the image <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>, with <span class="math" data-tex="\(nx=0\)">\(nx=0\)</span> in <span class="math" data-tex="\(\mathbb Z/m\)">\(\mathbb Z/m\)</span>. Put <span class="math" data-tex="\(d=\gcd(m,n)\)">\(d=\gcd(m,n)\)</span>, <span class="math" data-tex="\(m=dm&#x27;\)">\(m=dm&#x27;\)</span>, <span class="math" data-tex="\(n=dn&#x27;\)">\(n=dn&#x27;\)</span>. The condition <span class="math" data-tex="\(m\mid nx\)">\(m\mid nx\)</span>, together with coprimality of <span class="math" data-tex="\(m&#x27;,n&#x27;\)">\(m&#x27;,n&#x27;\)</span>, is equivalent to <span class="math" data-tex="\(m&#x27;\mid x\)">\(m&#x27;\mid x\)</span>. The <span class="math" data-tex="\(d\)">\(d\)</span> multiples of <span class="math" data-tex="\(m&#x27;\)">\(m&#x27;\)</span> form a cyclic subgroup of order <span class="math" data-tex="\(d\)">\(d\)</span>. Therefore (6.1) is isomorphic to <span class="math" data-tex="\(\mathbb Z/d\)">\(\mathbb Z/d\)</span>.</p>
+<p>The inclusion and projection of the torsion summand in <span class="math" data-tex="\(\mathbb Z\oplus\mathbb Z/n\)">\(\mathbb Z\oplus\mathbb Z/n\)</span> compose one way to its identity; the error in the other composite is the projection onto the <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> summand, which factors through <span class="math" data-tex="\(\mathbb Z\in\mathsf N\)">\(\mathbb Z\in\mathsf N\)</span>. They become inverse under <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Finally every group of maps between finite torsion groups is unchanged by this quotient, by the same torsion-free argument. Inverses between the two cyclic groups would thus be actual inverse group maps. The groups have different cardinalities, so there are none. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 (intermediate: a missing splitting hypothesis).</strong> Let <span class="math" data-tex="\(k\)">\(k\)</span> be a field, <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> the category of finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces, and <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> its full subcategory of even-dimensional spaces. Prove that all quotient groups of maps are zero. Nevertheless show that <span class="math" data-tex="\(k\)">\(k\)</span> and the zero space are not stably isomorphic relative to <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Identify an idempotent of an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> that cannot split in <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p><strong>Solution.</strong> The zero space and finite direct sums of even-dimensional spaces belong to <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>, so it is a full additive subcategory. Every space <span class="math" data-tex="\(V\)">\(V\)</span> is a retract of an even-dimensional space: use <span class="math" data-tex="\(V\)">\(V\)</span> itself when its dimension is even, and <span class="math" data-tex="\(V\oplus k\)">\(V\oplus k\)</span> otherwise. Hence <span class="math" data-tex="\(1_V\)">\(1_V\)</span> factors through an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Any map out of <span class="math" data-tex="\(V\)">\(V\)</span> is its composite with <span class="math" data-tex="\(1_V\)">\(1_V\)</span>, so it too factors through <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. Every quotient Hom group is zero. Its sole map between any two objects is an isomorphism, since each identity is also that sole map.</p>
+<p>A stable isomorphism <span class="math" data-tex="\(k\oplus Z_1\simeq 0\oplus Z_2\)">\(k\oplus Z_1\simeq 0\oplus Z_2\)</span>, <span class="math" data-tex="\(Z_1,Z_2\in\mathsf N\)">\(Z_1,Z_2\in\mathsf N\)</span>, would equate an odd dimension with an even dimension. This is impossible. The rank-one projection on <span class="math" data-tex="\(k^2\)">\(k^2\)</span> exhibits the missing hypothesis. In any splitting <span class="math" data-tex="\(ab=e\)">\(ab=e\)</span>, <span class="math" data-tex="\(ba=1_W\)">\(ba=1_W\)</span>, the injection <span class="math" data-tex="\(a\)">\(a\)</span> identifies <span class="math" data-tex="\(W\)">\(W\)</span> with the image of <span class="math" data-tex="\(e\)">\(e\)</span>, so <span class="math" data-tex="\(\dim W=1\)">\(\dim W=1\)</span>. Such <span class="math" data-tex="\(W\)">\(W\)</span> cannot belong to <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 (hard: square-zero operators and a quotient equivalence).</strong> Let <span class="math" data-tex="\(R=k[\varepsilon]/(\varepsilon^2)\)">\(R=k[\varepsilon]/(\varepsilon^2)\)</span>. Take <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> to be the category of finite-dimensional left <span class="math" data-tex="\(R\)">\(R\)</span>-modules, and <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> its full subcategory of finite free <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Prove that <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is idempotent complete and that</p>
+<span class="math math-display" data-tex="\[
+H(M)=\frac{\ker(\varepsilon:M\to M)}
+{\operatorname{im}(\varepsilon:M\to M)}
+\tag{6.2}
+\]">\[
+H(M)=\frac{\ker(\varepsilon:M\to M)}
+{\operatorname{im}(\varepsilon:M\to M)}
+\tag{6.2}
+\]</span>
+<p>induces an equivalence <span class="math" data-tex="\(\mathsf C/\mathcal I\simeq\mathsf{Vect}^{\mathrm{fd}}_k\)">\(\mathsf C/\mathcal I\simeq\mathsf{Vect}^{\mathrm{fd}}_k\)</span>. Calculate what <span class="math" data-tex="\(H\)">\(H\)</span> does to <span class="math" data-tex="\(0\to k\to R\to k\to0\)">\(0\to k\to R\to k\to0\)</span>, where the first map sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and the second takes residue modulo <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p><strong>Solution.</strong> An <span class="math" data-tex="\(R\)">\(R\)</span>-module here is a finite-dimensional space with an operator <span class="math" data-tex="\(T\)">\(T\)</span>, multiplication by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, satisfying <span class="math" data-tex="\(T^2=0\)">\(T^2=0\)</span>. Choose a basis <span class="math" data-tex="\(u_1,\ldots,u_a\)">\(u_1,\ldots,u_a\)</span> of <span class="math" data-tex="\(\operatorname{im}T\)">\(\operatorname{im}T\)</span>, choose <span class="math" data-tex="\(v_i\)">\(v_i\)</span> with <span class="math" data-tex="\(Tv_i=u_i\)">\(Tv_i=u_i\)</span>, and extend the <span class="math" data-tex="\(u_i\)">\(u_i\)</span> to a basis of <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span> by <span class="math" data-tex="\(w_1,\ldots,w_b\)">\(w_1,\ldots,w_b\)</span>. The vectors <span class="math" data-tex="\(v_i,u_i,w_j\)">\(v_i,u_i,w_j\)</span> form a basis of <span class="math" data-tex="\(M\)">\(M\)</span>. Applying <span class="math" data-tex="\(T\)">\(T\)</span> proves independence of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> modulo the kernel; independence inside the kernel proves the rest. For spanning, subtract the appropriate combination of the <span class="math" data-tex="\(v_i\)">\(v_i\)</span> from any vector to put it in the kernel. Each pair <span class="math" data-tex="\(v_i,u_i\)">\(v_i,u_i\)</span> forms a free rank-one module, and each <span class="math" data-tex="\(w_j\)">\(w_j\)</span> forms a copy of the residue module <span class="math" data-tex="\(k\)">\(k\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+M\simeq R^a\oplus k^b.
+\tag{6.3}
+\]">\[
+M\simeq R^a\oplus k^b.
+\tag{6.3}
+\]</span>
+<p>The residue module <span class="math" data-tex="\(k\)">\(k\)</span> is not projective over <span class="math" data-tex="\(R\)">\(R\)</span>. A section of the surjection <span class="math" data-tex="\(R\to k\)">\(R\to k\)</span> would send <span class="math" data-tex="\(1\)">\(1\)</span> to an element annihilated by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, hence an element of <span class="math" data-tex="\(\varepsilon R\)">\(\varepsilon R\)</span>; its residue is zero, contradicting the section identity. Finite free modules are projective by lifting basis vectors, and their retracts are projective. If such a retract had a <span class="math" data-tex="\(k\)">\(k\)</span> summand in (6.3), that summand would be projective too, a contradiction. Therefore every retract of a finite free module is finite free. Taking the image of an idempotent gives such a retract and splits it inside <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>.</p>
+<p>An <span class="math" data-tex="\(R\)">\(R\)</span>-linear map commutes with <span class="math" data-tex="\(T\)">\(T\)</span>, so it sends its kernel and image to the corresponding kernel and image, and gives a well-defined map on (6.2). This makes <span class="math" data-tex="\(H\)">\(H\)</span> an additive <span class="math" data-tex="\(k\)">\(k\)</span>-linear functor. On <span class="math" data-tex="\(R\)">\(R\)</span>, kernel and image both equal <span class="math" data-tex="\(\varepsilon R\)">\(\varepsilon R\)</span>, so <span class="math" data-tex="\(H(R)=0\)">\(H(R)=0\)</span>. On <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, so <span class="math" data-tex="\(H(k)=k\)">\(H(k)=k\)</span>. Theorem 2.1 therefore gives <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> on the quotient.</p>
+<p>For maps <span class="math" data-tex="\(k^b\to k^c\)">\(k^b\to k^c\)</span>, every factorization through <span class="math" data-tex="\(R^n\)">\(R^n\)</span> is zero. The first map lands in the annihilator of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, namely <span class="math" data-tex="\(\varepsilon R^n\)">\(\varepsilon R^n\)</span>; the second map kills that subspace because <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> acts trivially on <span class="math" data-tex="\(k^c\)">\(k^c\)</span>. Thus their quotient Hom group is exactly the space of <span class="math" data-tex="\(k\)">\(k\)</span>-linear maps <span class="math" data-tex="\(k^b\to k^c\)">\(k^b\to k^c\)</span>. For arbitrary decompositions (6.3) of source and target, every matrix block incident with a free summand factors through a finite free module. Only the block <span class="math" data-tex="\(k^b\to k^c\)">\(k^b\to k^c\)</span> survives, and <span class="math" data-tex="\(H\)">\(H\)</span> induces precisely that block map. It follows that <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> is fully faithful. It is essentially surjective because every finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-space, with <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> acting by zero, has <span class="math" data-tex="\(H\)">\(H\)</span> equal to that space. This proves the equivalence.</p>
+<p>The displayed sequence is short exact as a sequence of <span class="math" data-tex="\(R\)">\(R\)</span>-modules: the residue map has kernel <span class="math" data-tex="\(\varepsilon R\)">\(\varepsilon R\)</span>, and multiplication of <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> identifies <span class="math" data-tex="\(k\)">\(k\)</span> with that kernel. Applying <span class="math" data-tex="\(H\)">\(H\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow k\longrightarrow0
+\longrightarrow k\longrightarrow0.
+\tag{6.4}
+\]">\[
+0\longrightarrow k\longrightarrow0
+\longrightarrow k\longrightarrow0.
+\tag{6.4}
+\]</span>
+<p>Both middle maps are zero. This sequence fails exactness at both nonzero terms. Since <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> is an additive equivalence with an abelian category, it transports the abelian structure to the quotient; equivalences preserve kernel and cokernel universal properties. Therefore <span class="math" data-tex="\(Q\)">\(Q\)</span> itself is not exact in this example. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 (advanced: the converse and an infinite failure).</strong> Assume <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is idempotent complete, and that <span class="math" data-tex="\(\mathsf C\)">\(\mathsf C\)</span> has coproducts indexed by a small set <span class="math" data-tex="\(I\)">\(I\)</span>. Prove that <span class="math" data-tex="\(Q\)">\(Q\)</span> preserves all those coproducts if and only if <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> is closed under them up to isomorphism. Then take <span class="math" data-tex="\(\mathsf C=\mathsf{Ab}\)">\(\mathsf C=\mathsf{Ab}\)</span>, with <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span> as in Exercise 1. Show that <span class="math" data-tex="\(Q\)">\(Q\)</span> fails to preserve the countable coproduct of copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Solution.</strong> Closure implies preservation by Theorem 5.1. Conversely, suppose <span class="math" data-tex="\(Q\)">\(Q\)</span> preserves these coproducts, and choose <span class="math" data-tex="\(Z_i\in\mathsf N\)">\(Z_i\in\mathsf N\)</span>. Each <span class="math" data-tex="\(QZ_i\)">\(QZ_i\)</span> is zero. Their coproduct is zero too: for any target there is exactly one family of maps out of the zero objects, hence exactly one map out of their coproduct. A preadditive initial object is also zero. Preservation implies that <span class="math" data-tex="\(Q(\bigoplus_iZ_i)\)">\(Q(\bigoplus_iZ_i)\)</span> is zero. By the conclusion after Lemma 3.1, <span class="math" data-tex="\(\bigoplus_iZ_i\)">\(\bigoplus_iZ_i\)</span> is isomorphic to an object of <span class="math" data-tex="\(\mathsf N\)">\(\mathsf N\)</span>. This is the required closure.</p>
+<p>For the concrete case, let <span class="math" data-tex="\(S=\bigoplus_{n\geq0}\mathbb Z\)">\(S=\bigoplus_{n\geq0}\mathbb Z\)</span>. If <span class="math" data-tex="\(QS\)">\(QS\)</span> were zero, its identity would factor as <span class="math" data-tex="\(S\to P\to S\)">\(S\to P\to S\)</span> with <span class="math" data-tex="\(P\)">\(P\)</span> finitely generated projective. The image of a finite generating set of <span class="math" data-tex="\(P\)">\(P\)</span> would then generate <span class="math" data-tex="\(S\)">\(S\)</span>, since the composite is its identity. But <span class="math" data-tex="\(S\)">\(S\)</span> is not finitely generated: any finite collection of its vectors is supported on a finite set of coordinates, and cannot generate a basis vector outside that set. Thus <span class="math" data-tex="\(QS\ne0\)">\(QS\ne0\)</span>.</p>
+<p>Every <span class="math" data-tex="\(Q\mathbb Z\)">\(Q\mathbb Z\)</span> is zero, so their countable coproduct in the quotient exists and is zero. It cannot be <span class="math" data-tex="\(QS\)">\(QS\)</span>. The original countable coproduct is therefore not preserved. This argument does not claim that all countable coproducts fail to exist in the quotient. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks Project. <a href="https://stacks.math.columbia.edu/tag/09SE">Preadditive and additive categories</a>, especially the zero-object criterion, biproduct identities, and preservation by additive functors.</li>
+<li>The Mathlib Community. <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Quotient.html">Category quotients by congruences</a> and <a href="https://leanprover-community.github.io/mathlib4_docs/Mathlib/CategoryTheory/Quotient/Preadditive.html">preadditive quotient categories</a>. These provide the general quotient and additive-congruence constructions.</li>
+</ul>
+</main></body></html>

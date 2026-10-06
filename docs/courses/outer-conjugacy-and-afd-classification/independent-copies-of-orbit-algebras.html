@@ -1,0 +1,471 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Independent copies of orbit algebras · Open Mathematics Courses</title><meta name="description" content="Independent copies of orbit algebras: lesson draft with 8 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><article class="lesson"><h1 id="independent-copies-of-orbit-algebras">Independent copies of orbit algebras</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it, under the stated prerequisites. New original text and figures are public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>An orbit algebra records every translated generator and every relation between them. Moving only a projection partition leaves much of that structure uncontrolled. We now copy the whole orbit algebra while keeping a prescribed coefficient algebra fixed.</p>
+<p>The copy preserves all noncommutative word moments and the group action. It commutes with the fixed algebra, and their joint trace factors. We prove that multiplication extends to a normal isomorphism of the spatial von Neumann tensor product. Iteration gives countably many independent copies.</p>
+<p>This is a model-embedding step. The image is the algebra generated by the fixed algebra and the copy; no assertion says that it fills the asymptotic centralizer or absorbs an action on the original factor. The general amenable projection construction and the later classification arguments remain to be proved.</p>
+<p>Centralizer prerequisites are <span class="unlinked">Central sequence algebras and exact lifts</span>: <span class="unlinked">Proposition 2.1</span> gives scalar ultraweak limits, <span class="unlinked">Theorem 3.1</span> gives the faithful normal trace and induced action, and <span class="unlinked">Lemma 4.1</span>, <span class="unlinked">Theorem 5.1</span> with both endpoints equal to 1, and <span class="unlinked">Theorem 6.1</span> give exact projection, unitary and finite-partition lifts. These results apply to arbitrary factors with separable predual and every free ultrafilter. The preceding relative-partition argument is a pedagogical antecedent; Theorem 1.1 below has its own proof in Sections 2–7. Spectral calculus, bounded strong density and the tracial GNS representation retain their recorded foundational scope. Sections 5 and 7 explain the normal extensions used here. The coordinate-selection method has antecedents in [Connes, Proposition 2.1.2, Lemma 2.1.4 and the proof of Theorem 2.2.1]. Sections 2–7 give the full word-moment, equivariance and spatial tensor-product argument needed here. [Ando–Haagerup, Definition 4.34 and Proposition 4.35] supplies the modern centralizer context.</p>
+<h2 id="1-setting-and-theorem">1. Setting and theorem</h2>
+<p>Let <span class="math">\(M\)</span> be a factor with separable predual, let <span class="math">\(\omega\)</span> be a free ultrafilter on
+the positive integers, and let <span class="math">\(F=M_\omega\)</span> be its asymptotic centralizer. We
+use its faithful normal canonical tracial state <span class="math">\(\tau\)</span>, its bounded strongly
+central representatives, the quotient strong-star-null ideal, and the
+coordinate action of automorphisms of <span class="math">\(M\)</span>. The exact scope is recorded in the
+public lesson <span class="unlinked">Central sequence algebras and exact lifts</span>, Proposition 2.1 and Theorem 3.1. Fix a faithful
+normal state <span class="math">\(\varphi\)</span> on <span class="math">\(M\)</span> and a norm-dense sequence <span class="math">\(\psi_i\)</span> in the unit ball of <span class="math">\(M_*\)</span>.</p>
+<p>We also use spectral calculus, normality of fixed multiplication, the
+faithful normal tracial GNS representation, and bounded strong density of a
+unital <span class="math">\(C^*\)</span>-algebra in its von Neumann closure. The finite tracial GNS and
+spatial tensor construction used in Sections 5 and 7 are explained
+below. None of these assertions supplies a general amenable tower theorem.</p>
+<p>Let <span class="math">\(Q\)</span> be a countable group and <span class="math">\(\gamma\)</span> an action of <span class="math">\(Q\)</span> on <span class="math">\(F\)</span>. For each <span class="math">\(g\)</span> choose
+an automorphism <span class="math">\(\beta_g\)</span> of <span class="math">\(M\)</span> inducing <span class="math">\(\gamma_g\)</span>. These chosen lifts are not
+assumed to multiply as an action on <span class="math">\(M\)</span>. Since <span class="math">\(M\)</span> is a factor, <span class="math">\(\gamma\)</span> preserves
+<span class="math">\(\tau\)</span>. Let <span class="math">\(A\)</span> be a countably generated von Neumann subalgebra of <span class="math">\(F\)</span>. Let <span class="math">\(B\)</span> be a
+countably generated <span class="math">\(\gamma\)</span>-invariant von Neumann subalgebra of <span class="math">\(F\)</span>.</p>
+<p><strong>Theorem 1.1.</strong> There exists a unital normal trace-preserving
+*-isomorphism <span class="math">\(T\)</span> from <span class="math">\(B\)</span> onto a <span class="math">\(\gamma\)</span>-invariant von Neumann subalgebra <span class="math">\(B&#39;\)</span> of <span class="math">\(F\)</span>
+such that</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ T\gamma_g|_B&amp;=\gamma_g T\quad(g\in Q),\\
+ B&#39;&amp;\subset A&#39;\cap F.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>and</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \tau(aT(b))=\tau(a)\tau(b)\\
+ (a\in A,\ b\in B).
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Consequently multiplication implements a unital normal trace-preserving
+isomorphism</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ A\overline\otimes B&amp;\longrightarrow W^*(A,B&#39;),\\
+ a\otimes b&amp;\longmapsto aT(b).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>If <span class="math">\(A\)</span> is <span class="math">\(\gamma\)</span>-invariant, this isomorphism intertwines the diagonal action
+<span class="math">\(\gamma|_A\otimes\gamma|_B\)</span> with <span class="math">\(\gamma\)</span> on its image. Invariance of <span class="math">\(A\)</span> is needed
+only for this final equivariance assertion.</p>
+<p>Replacing <span class="math">\(A\)</span> by the algebra generated by all <span class="math">\(\gamma_g(A_s)\)</span> retains countable
+generation and supplies a <span class="math">\(\gamma\)</span>-invariant fixed algebra whenever that is
+desired. The theorem requires neither freeness nor amenability of <span class="math">\(Q\)</span>.</p>
+<h2 id="2-the-scalar-ultraweak-limit-of-a-central-representative">2. The scalar ultraweak limit of a central representative</h2>
+<p>If <span class="math">\((z_k)\)</span> is a bounded strongly central representative of <span class="math">\(Z\)</span> in <span class="math">\(F\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+ z_k\longrightarrow\tau(Z)1
+ \quad\hbox{ultraweakly along }\omega.
+ 
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>Indeed the norm ball is ultraweakly compact, so its ultrafilter limit <span class="math">\(z\)</span>
+exists. For <span class="math">\(x\)</span> in <span class="math">\(M\)</span> and <span class="math">\(\psi\)</span> in <span class="math">\(M_*\)</span>, predual centrality gives <span class="math">\(\psi(xz-zx)=0\)</span>, by taking the
+ultrafilter limit of <span class="math">\(\psi(xz_k-z_kx)\)</span>. Thus <span class="math">\(z\)</span> is central in the factor <span class="math">\(M\)</span>
+and is a scalar. Its scalar value is <span class="math">\(\lim_{k\to\omega}\varphi(z_k)=\tau(Z)\)</span>.</p>
+<p>For a fixed bounded <span class="math">\(c\)</span> in <span class="math">\(M\)</span>, the functional <span class="math">\(x\mapsto\varphi(xc)\)</span> is normal. Hence</p>
+<div class="equation"><div class="math math-display">\[
+ \lim_{k\to\omega}\varphi(z_kc)=\tau(Z)\varphi(c).
+ 
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>Here <span class="math">\(c\)</span> is fixed while <span class="math">\(k\)</span> varies. We will apply this with <span class="math">\(c\)</span> depending on the
+output coordinate <span class="math">\(n\)</span>, after <span class="math">\(n\)</span> has been fixed. It is not an assertion of
+uniform convergence on arbitrary moving coefficients.</p>
+<h2 id="3-labels-remember-compositions-of-the-chosen-lifts">3. Labels remember compositions of the chosen lifts</h2>
+<p>Choose countable generating families <span class="math">\((A_s)\)</span> for <span class="math">\(A\)</span> and <span class="math">\((X_j)\)</span> for <span class="math">\(B\)</span>, with
+bounded strongly central representatives <span class="math">\(a_{s,n}\)</span> and <span class="math">\(x_{j,k}\)</span>. Rescale each
+generator, if necessary, so these representatives are contractions. This
+does not change either generated algebra.</p>
+<p>Let <span class="math">\(\Lambda\)</span> be the countable set of finite words in the letters <span class="math">\(\beta_g\)</span> and
+<span class="math">\(\beta_g^{-1}\)</span>, including the empty word. For <span class="math">\(\lambda\)</span> in <span class="math">\(\Lambda\)</span> write <span class="math">\(\rho_\lambda\)</span>
+for the composed automorphism of <span class="math">\(M\)</span>, and <span class="math">\(\pi(\lambda)\)</span> for the corresponding
+group element. Thus <span class="math">\(\rho_\lambda\)</span> induces <span class="math">\(\gamma_{\pi(\lambda)}\)</span> on <span class="math">\(F\)</span>. Include all
+words, even if different words compose to the same automorphism or induce
+the same group element. Enumerate <span class="math">\(\Lambda\)</span> once, with the empty word first.
+Define</p>
+<div class="equation"><div class="math math-display">\[
+ X_{\lambda,j}=\gamma_{\pi(\lambda)}(X_j),\qquad
+ x_{\lambda,j,k}=\rho_\lambda(x_{j,k}).
+ 
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p>Every coordinate sequence in (3.1) is bounded and strongly central.</p>
+<p>Let <span class="math">\((W_r)\)</span> enumerate every finite word, including 1, in the labeled
+generators <span class="math">\(X_{\lambda,j}\)</span> and their adjoints. Let <span class="math">\(w_{r,k}\)</span> be its coordinate
+word. Let <span class="math">\((V_t)\)</span> enumerate every finite word in the <span class="math">\(A_s\)</span> and their adjoints,
+with <span class="math">\(v_{t,n}\)</span> its coordinate word. Both word families are countable. Their complex linear spans are the
+generated unital *-algebras. Each coordinate word is a
+contraction and is strongly central. By (2.1),</p>
+<div class="equation"><div class="math math-display">\[
+ \lim_{k\to\omega}\varphi(w_{r,k})=\tau(W_r).
+ 
+\]</div><span class="equation-tag">(3.2)</span></div>
+<p>The use of lift words is essential. Knowing only moments of the single
+lifts <span class="math">\(\beta_g\)</span> does not by itself ensure that an arbitrary coordinate
+substitution preserves <span class="math">\(\beta_h\beta_g=\beta_{hg}\)</span> modulo the quotient ideal.
+All such relations appear among the labeled word moments below. No action
+identity on <span class="math">\(M\)</span> is assumed.</p>
+<h2 id="4-one-coordinate-choice-enforces-the-finite-tests">4. One coordinate choice enforces the finite tests</h2>
+<p>For each positive integer <span class="math">\(n\)</span> choose <span class="math">\(k(n)\ge n\)</span> for which all the following hold:</p>
+<div class="equation"><div class="math math-display">\[
+ \|[x_{j,k(n)},\psi_i]\|&lt;1/n\quad(j,i\le n),
+ 
+\]</div><span class="equation-tag">(4.1)</span></div>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \|[\rho_\lambda(x_{j,k(n)}),a_{s,n}]\|_\varphi^\sharp&lt;1/n\\
+ (\lambda,j,s\le n),
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(4.2)</span></div>
+<div class="equation"><div class="math math-display">\[
+ |\varphi(w_{r,k(n)})-\tau(W_r)|&lt;1/n\quad(r\le n),
+ 
+\]</div><span class="equation-tag">(4.3)</span></div>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ |\varphi(w_{r,k(n)}v_{t,n})
+      -\tau(W_r)\varphi(v_{t,n})|&lt;1/n\\
+ (r,t\le n).
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(4.4)</span></div>
+<p>Here <span class="math">\(\lambda\le n\)</span> means its position in the chosen enumeration, and</p>
+<div class="equation"><div class="math math-display">\[
+ \|c\|_\varphi^\sharp
+ =\bigl(\varphi(c^*c)+\varphi(cc^*)\bigr)^{1/2}.
+ 
+\]</div><span class="equation-tag">(4.5)</span></div>
+<p>Every listed individual condition holds on a set in <span class="math">\(\omega\)</span>. For (4.1) use
+predual centrality. For (4.2), <span class="math">\(n\)</span> is fixed, so the finitely many <span class="math">\(a_{s,n}\)</span> are
+fixed elements of <span class="math">\(M\)</span>; strong centrality of <span class="math">\(\rho_\lambda(x_{j,k})\)</span> implies
+strong-star commutation with them. For (4.3) use (3.2). For (4.4) use (2.2)
+with <span class="math">\(c=v_{t,n}\)</span>. The cofinite condition <span class="math">\(k\ge n\)</span> also belongs to <span class="math">\(\omega\)</span>. Their
+finite intersection remains in <span class="math">\(\omega\)</span>, so a common <span class="math">\(k(n)\)</span> exists. Monotonicity
+of <span class="math">\(k(n)\)</span> is unnecessary; no ultrafilter-preserving substitution is asserted.</p>
+<p>Put</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ y_{j,n}&amp;=x_{j,k(n)},&amp;Y_j&amp;=[(y_{j,n})],\\
+ Y_{\lambda,j}&amp;=[(\rho_\lambda(y_{j,n}))].
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(4.6)</span></div>
+<p>First, <span class="math">\(y_j\)</span> is strongly central. For <span class="math">\(\psi\)</span> in the unit ball of <span class="math">\(M_*\)</span> and a fixed
+<span class="math">\(i\)</span>, the contraction bound gives</p>
+<div class="equation"><div class="math math-display">\[
+ \|[y_{j,n},\psi]\|
+ \le\|[y_{j,n},\psi_i]\|+2\|\psi-\psi_i\|.
+ 
+\]</div><span class="equation-tag">(4.7)</span></div>
+<p>For <span class="math">\(n\ge\max(i,j)\)</span> the first term is at most <span class="math">\(1/n\)</span>. Take the limit and then
+approximate <span class="math">\(\psi\)</span> by <span class="math">\(\psi_i\)</span>. Scaling handles arbitrary normal functionals.
+Automorphisms preserve strong centrality, so all <span class="math">\(Y_{\lambda,j}\)</span> are defined.</p>
+<p>Condition (4.2) implies <span class="math">\([Y_{\lambda,j},A_s]=0\)</span>: the commutator is strongly
+central and its sharp seminorm tends to zero. Define <span class="math">\(B&#39;\)</span> as the von Neumann
+algebra generated by all the <span class="math">\(Y_{\lambda,j}\)</span>. The two generated algebras then
+commute, so <span class="math">\(B&#39;\)</span> is contained in <span class="math">\(A&#39;\cap F\)</span>. Composing <span class="math">\(\rho_\lambda\)</span> on the
+left by <span class="math">\(\beta_g\)</span> is again a lift word. Thus <span class="math">\(\gamma_g\)</span> maps the generating family
+into itself. The inverse time does the same, proving <span class="math">\(\gamma\)</span>-invariance of <span class="math">\(B&#39;\)</span>.</p>
+<h2 id="5-moments-preserve-all-relations-and-the-operator-norm">5. Moments preserve all relations and the operator norm</h2>
+<p>If <span class="math">\(W&#39;_r\)</span> is the word <span class="math">\(W_r\)</span> evaluated at the <span class="math">\(Y_{\lambda,j}\)</span>, it is represented
+by <span class="math">\(w_{r,k(n)}\)</span>. By (4.3) and the quotient trace,</p>
+<div class="equation"><div class="math math-display">\[
+ \tau(W&#39;_r)=\tau(W_r)\quad(r\ge1).
+ 
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p>For any finite complex polynomial <span class="math">\(P\)</span> in the labeled generators and their
+adjoints, linearity applied to all words in <span class="math">\(P^*P\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+ \tau(P(Y)^*P(Y))=\tau(P(X)^*P(X)).
+ 
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>If <span class="math">\(P(X)=0\)</span>, faithfulness of <span class="math">\(\tau\)</span> makes <span class="math">\(P(Y)=0\)</span>. Conversely the same identity
+makes <span class="math">\(P(X)=0\)</span> when <span class="math">\(P(Y)=0\)</span>. Evaluation therefore defines a bijective unital
+*-homomorphism <span class="math">\(T_0\)</span> between the generated *-algebras, with <span class="math">\(T_0(X_{\lambda,j})=Y_{\lambda,j}\)</span>, preserving their traces.</p>
+<p>It is also isometric in operator norm. For any element <span class="math">\(z\)</span> of a finite von
+Neumann algebra with faithful normal normalized trace,</p>
+<div class="equation"><div class="math math-display">\[
+ \|z\|=\lim_{m\to\infty}
+          \tau((z^*z)^m)^{1/(2m)}.
+ 
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>The upper bound is at most <span class="math">\(\|z\|\)</span>. If <span class="math">\(0&lt;c&lt;\|z\|\)</span>, the spectral projection
+<span class="math">\(e=1_{(c^2,\infty)}(z^*z)\)</span> is nonzero and has positive trace. Then
+<span class="math">\(\tau((z^*z)^m)\ge c^{2m}\tau(e)\)</span>, whose indicated root tends to at least <span class="math">\(c\)</span>.
+Let <span class="math">\(c\)</span> increase to <span class="math">\(\|z\|\)</span>. This proves (5.3), including <span class="math">\(z=0\)</span> separately.
+Equation (5.1), expanded for <span class="math">\((P^*P)^m\)</span>, therefore gives</p>
+<div class="equation"><div class="math math-display">\[
+ \|T_0(P(X))\|=\|P(X)\|.
+ 
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>Thus <span class="math">\(T_0\)</span> extends to a trace-preserving <span class="math">\(C^*\)</span>-isomorphism of the norm closures.</p>
+<p>Here is the bounded density step used next. Let <span class="math">\(D\)</span> be the unital
+<span class="math">\(C^*\)</span>-algebra generated by the labeled <span class="math">\(X\)</span>'s. Kaplansky density gives,
+for each contraction <span class="math">\(b\in B\)</span>, a net of contractions in <span class="math">\(D\)</span> converging
+strongly to <span class="math">\(b\)</span>. Approximating each of these elements in norm by a
+polynomial, with the norm error tending to zero, gives a uniformly bounded
+polynomial net. In the faithful normal tracial representation its vectors
+converge to <span class="math">\(b\Omega\)</span>. Thus it is the norm-closed generated algebra to
+which bounded density is first applied; no bounded-density assertion for
+an arbitrary unclosed polynomial algebra is being assumed.</p>
+<p>The map <span class="math">\(P(X)\Omega\mapsto P(Y)\Omega\)</span> preserves inner products by (5.2), and its
+range is dense in the tracial GNS space of <span class="math">\(B&#39;\)</span>. Its domain is dense in that
+of <span class="math">\(B\)</span>: bounded strong density and normality of the trace give <span class="math">\(L^2\)</span> density.
+It extends to a unitary <span class="math">\(U\)</span> between the two GNS spaces. For polynomials <span class="math">\(P\)</span>,<span class="math">\(R\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ U\bigl(P(X)R(X)\Omega\bigr)
+   =P(Y)R(Y)\Omega.
+ 
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p>Conjugation by <span class="math">\(U\)</span> therefore identifies the left regular <span class="math">\(C^*\)</span>-algebras and
+their von Neumann closures. Faithful normal tracial GNS representations
+identify those closures with <span class="math">\(B\)</span> and <span class="math">\(B&#39;\)</span>. This supplies the unital normal
+trace-preserving isomorphism <span class="math">\(T\)</span> asserted in Theorem 1.1.</p>
+<p>The representation and closure assertions have exact programme proofs in
+<a href="bounded-topology-and-tracial-representations.html">Bounded topology and tracial representations</a>,
+Theorems 3.1 and 6.1. Its normality construction applies to the restrictions
+of <span class="math">\(\tau\)</span> to <span class="math">\(B\)</span> and <span class="math">\(B&#39;\)</span>, and its compact-ball argument identifies
+their represented von Neumann closures. The elementary Hilbert-space,
+predual, spectral and Kaplansky-density foundations retained in that lesson
+remain prerequisites here; this reference does not declare their transitive
+programme proof coverage complete.</p>
+<p>For each <span class="math">\(g\)</span>, <span class="math">\(\gamma_g(X_{\lambda,j})\)</span> is the labeled generator for <span class="math">\(\beta_g\)</span>
+composed on the left with <span class="math">\(\rho_\lambda\)</span>, and the identical coordinate formula
+holds for <span class="math">\(Y_{\lambda,j}\)</span>. Hence <span class="math">\(T_0\gamma_g=\gamma_gT_0\)</span> on the polynomial
+algebra. Normality extends this equality to <span class="math">\(B\)</span>. In particular all relations
+between different lift words survive. For example, two words inducing the
+same element of <span class="math">\(Q\)</span> give the same original labeled generator; (5.2) makes
+their copied generators equal, even if their compositions on <span class="math">\(M\)</span> differ.</p>
+<h2 id="6-the-copied-algebra-is-trace-independent-of-the-fixed-one">6. The copied algebra is trace-independent of the fixed one</h2>
+<p>Condition (4.4) gives</p>
+<div class="equation"><div class="math math-display">\[
+ \tau(W&#39;_r V_t)=\tau(W_r)\tau(V_t).
+ 
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>Indeed <span class="math">\(v_{t,n}\)</span> is a fixed bounded strongly central representative of <span class="math">\(V_t\)</span>,
+and <span class="math">\(\tau\)</span> of the product is its coordinate <span class="math">\(\varphi\)</span> limit. The error in (4.4)
+tends to zero ordinarily. Linearity proves (1.2) for polynomial <span class="math">\(a,b\)</span>.</p>
+<p>For a fixed polynomial <span class="math">\(T(b)\)</span>, both sides of (1.2) are normal linear
+functionals of <span class="math">\(a\)</span>. Ultraweak density extends their equality to every <span class="math">\(a\in A\)</span>.
+Fix such an <span class="math">\(a\)</span>. Both sides are then normal linear functionals of <span class="math">\(b\)</span>, because
+fixed multiplication and <span class="math">\(T\)</span> are normal. Extend again to all <span class="math">\(b\)</span> in <span class="math">\(B\)</span>. These
+are two separate density arguments; no joint ultraweak continuity of
+multiplication is being assumed.</p>
+<h2 id="7-why-multiplication-extends-to-the-spatial-tensor-product">7. Why multiplication extends to the spatial tensor product</h2>
+<p>The commuting ranges define a unital *-homomorphism on <span class="math">\(A\)</span> algebraically
+tensor <span class="math">\(B\)</span> by <span class="math">\(a\otimes b\mapsto aT(b)\)</span>. Put <span class="math">\(C=W^*(A,B&#39;)\)</span>. For a finite sum <span class="math">\(z\)</span> of such
+simple tensors, (1.2) gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \left\|\sum_i a_iT(b_i)\right\|_2^2
+   &amp;=\sum_{i,j}\tau(a_i^*a_j)\\
+   &amp;\qquad\cdot\tau(b_i^*b_j).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(7.1)</span></div>
+<p>The right side is the squared norm of <span class="math">\(\sum_i a_i\Omega_A\otimes b_i\Omega_B\)</span>
+in <span class="math">\(L^2(A)\otimes L^2(B)\)</span>. Thus</p>
+<div class="equation"><div class="math math-display">\[
+ a\Omega_A\otimes b\Omega_B
+    \longmapsto aT(b)\Omega_C
+ 
+\]</div><span class="equation-tag">(7.2)</span></div>
+<p>extends to an isometry, and it is onto. Finite sums of products are a unital
+*-algebra generating <span class="math">\(C\)</span> because the ranges commute. Bounded strong density
+and the trace again make their GNS vectors dense in <span class="math">\(L^2(C)\)</span>.</p>
+<p>The unitary (7.2) intertwines left multiplication by every simple tensor
+with left multiplication by its product in <span class="math">\(C\)</span>. Taking von Neumann closures
+therefore identifies the spatial tensor algebra <span class="math">\(A\overline\otimes B\)</span> with <span class="math">\(C\)</span>.
+This is (1.3), as a normal isomorphism; it is not merely an algebraic or a
+minimal <span class="math">\(C^*\)</span>-tensor embedding. The vector <span class="math">\(\Omega_A\otimes\Omega_B\)</span> maps to
+<span class="math">\(\Omega_C\)</span>, so product trace is preserved.</p>
+<p>For clarity, the left regular representation used here is faithful and
+normal. Faithfulness follows by testing <span class="math">\(x\Omega\)</span>, whose squared norm is
+<span class="math">\(\tau(x^*x)\)</span>. If a bounded positive net <span class="math">\(x_i\)</span> increases to <span class="math">\(x\)</span>, then for each
+<span class="math">\(a\Omega\)</span> the values <span class="math">\(\tau(a^*(x-x_i)a)\)</span> tend to zero by normality. Positivity and
+boundedness give strong convergence of the represented net to <span class="math">\(x\)</span> on this
+dense set and hence on the whole GNS space. This proves normality.</p>
+<p>In the spatial tensor representation the vector product state is normal
+and faithful. Right multiplications from <span class="math">\(A\)</span> and <span class="math">\(B\)</span> commute with the left
+tensor algebra and their orbit of <span class="math">\(\Omega_A\otimes\Omega_B\)</span> is dense; the
+vector is therefore separating for the left algebra. Its state restricts
+to <span class="math">\(\tau\otimes\tau\)</span> and is tracial on the dense tensor *-algebra, hence on the
+closure. Explicitly, first fix an algebraic tensor <span class="math">\(x\)</span>. The two normal
+functionals <span class="math">\(y\mapsto\langle xy\Omega,\Omega\rangle\)</span> and
+<span class="math">\(y\mapsto\langle yx\Omega,\Omega\rangle\)</span> agree on algebraic tensors, so
+they agree throughout the spatial tensor algebra. Next fix arbitrary
+<span class="math">\(y\)</span> and use normality in <span class="math">\(x\)</span> to extend this equality in the other
+variable. This uses separate normality, not joint ultraweak continuity of
+multiplication. These facts justify the faithful normal tracial tensor GNS model
+in (7.1)-(7.2).</p>
+<p>If <span class="math">\(A\)</span> is <span class="math">\(\gamma\)</span>-invariant, equivariance on simple tensors is</p>
+<div class="equation"><div class="math math-display">\[
+ \gamma_g(aT(b))=\gamma_g(a)T(\gamma_g(b)).
+ 
+\]</div><span class="equation-tag">(7.3)</span></div>
+<p>Normality gives the equivariant tensor statement on the whole image. This
+finishes the proof of Theorem 1.1.</p>
+<h2 id="8-countably-many-independent-equivariant-copies">8. Countably many independent equivariant copies</h2>
+<p><strong>Corollary 8.1.</strong> If <span class="math">\(A\)</span> is <span class="math">\(\gamma\)</span>-invariant and countably generated, <span class="math">\(F\)</span> contains
+a <span class="math">\(\gamma\)</span>-invariant normal copy of</p>
+<div class="equation"><div class="math math-display">\[
+ A\overline\otimes
+       \mathop{\overline{\bigotimes}}_{r=1}^{\infty}(B,\tau|_B),
+ 
+\]</div><span class="equation-tag">(8.1)</span></div>
+<p>with the diagonal action and product trace, whose restriction to <span class="math">\(A\)</span> is the
+original inclusion.</p>
+<p><em>Proof.</em> Apply Theorem 1.1 repeatedly. After <span class="math">\(r\)</span> steps the previously
+generated algebra <span class="math">\(A_r=W^*(A,B_1,\ldots,B_r)\)</span> is still countably generated and
+<span class="math">\(\gamma\)</span>-invariant. The next copy <span class="math">\(B_{r+1}\)</span> commutes with <span class="math">\(A_r\)</span> and is trace
+independent of it. Induction using (7.1) gives the finite product
+identifications, consistent on earlier tensor factors. On the union of
+finite products the product GNS inner product is therefore exactly the
+ambient trace inner product. Complete this union to the infinite product
+GNS space. Its image is dense in <span class="math">\(L^2\)</span> of the von Neumann algebra generated
+by all copies. The same intertwining of left multiplication as in (7.2)
+gives a normal trace-preserving isomorphism of the infinite product onto
+that generated algebra. Each diagonal <span class="math">\(\gamma_g\)</span> preserves the finite
+product inner product and is inverse to <span class="math">\(\gamma_{g^{-1}}\)</span>, so its unitary
+implementation extends to the GNS completion. Its action agrees with the
+ambient <span class="math">\(\gamma\)</span> on every finite product and hence on the closure. This proves
+the corollary. No separability of the predual of <span class="math">\(F\)</span> is assumed.</p>
+<h2 id="9-a-tail-site-example-with-noncommuting-internal-generators">9. A tail-site example with noncommuting internal generators</h2>
+<p>Take <span class="math">\(M\)</span> to be the trace tensor product of <span class="math">\(M_2(\mathbb C)\)</span> over sites in <span class="math">\(\mathbb Z\)</span>, and let <span class="math">\(\beta\)</span>
+shift each site to its successor. This is a separable-predual factor: the
+finite tensor union is dense in <span class="math">\(L^2\)</span>, and a central element commuting with
+every finite tensor algebra equals its scalar trace by the corresponding
+finite-site expectations. Its trace provides <span class="math">\(\varphi\)</span>. Let <span class="math">\(X\)</span> and <span class="math">\(Z\)</span> denote the
+Pauli matrices with <span class="math">\(XZ=-ZX\)</span>, each at one site. Define in <span class="math">\(F\)</span></p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ X_s=[(X\text{ at site }n+s)],\\
+ Z_s=[(Z\text{ at site }n+s)]\\
+ (s\in\mathbb Z).
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(9.1)</span></div>
+<p>These sequences are strongly central. They commute eventually with every
+fixed finite-site element; finite-site <span class="math">\(L^1\)</span> densities are dense in the
+predual and give predual commutation by approximation. They generate a
+<span class="math">\(\gamma\)</span>-invariant countable orbit algebra <span class="math">\(B\)</span> with <span class="math">\(\gamma\)</span>(<span class="math">\(X_s\)</span>)=<span class="math">\(X_{s+1}\)</span> and the
+same formula for <span class="math">\(Z_s\)</span>.</p>
+<p>Keep <span class="math">\(A\)</span>=<span class="math">\(B\)</span> at its original coordinates <span class="math">\(n+s\)</span>. Reindex the copied generators
+to sites <span class="math">\(3n+s\)</span>. For any two fixed finite sets of offsets, the sets <span class="math">\(n+S\)</span> and
+<span class="math">\(3n+T\)</span> are disjoint for all sufficiently large <span class="math">\(n\)</span>. The finite-site tensor
+trace factors exactly between them. The copied and fixed algebras
+therefore commute and are trace-independent, first on finite words and
+then by the separate normal density arguments of Section 6.</p>
+<p>Within each orbit algebra, all word moments are unchanged: a common site
+translation preserves both coincident offset labels and the Pauli product
+order. In particular</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|[X_0,Z_0]\|_2^2&amp;=4,\\
+ \|[T(X_0),T(Z_0)]\|_2^2&amp;=4,\\
+ [T(X_0),Z_0]&amp;=0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(9.2)</span></div>
+<p>The construction copies a noncommutative algebra. It does not turn its
+internal generators into commuting ones. Shift covariance is exact
+because <span class="math">\(\beta\)</span> sends <span class="math">\(3n+s\)</span> to <span class="math">\(3n+s+1\)</span> at the unchanged output coordinate <span class="math">\(n\)</span>.
+Moving both the original and copied families to the same sites would
+retain the commutator 4 and destroy the required independence.</p>
+<p><img src="figures/equivariant-independent-copy.svg" alt="Two commuting orbit copies with their internal Pauli relations retained"></p>
+<p>Figure 1. A finite window of the two orbit algebras in Section 9. At each
+displayed site <span class="math">\(X\)</span> and <span class="math">\(Z\)</span> anticommute; generators at distinct sites commute.
+The upper orbit at <span class="math">\(n+s\)</span> stays fixed, while the lower copy is at <span class="math">\(3n+s\)</span>.
+Horizontal arrows are the actual shift <span class="math">\(\gamma\)</span>; vertical correspondences are
+<span class="math">\(T\)</span> on the indicated generators. The gaps are schematic, not a common
+coordinate scale. The full infinite tensor argument proves separation for
+every fixed finite collection of offsets. Equations (9.1)-(9.2), (1.2) and
+(7.1)-(7.3) are the proof locators. The reproducible original scene is
+<a href="figures/draw_equivariant_independent_copy.py">draw_equivariant_independent_copy.py</a>. Connes's central-sequence framework
+is credited below; the two-tail-site example and diagram are original.</p>
+<h2 id="10-what-this-establishes-and-what-is-still-needed">10. What this establishes, and what is still needed</h2>
+<p>This proof provides an equivariant, trace-independent normal copy of each
+specified countably generated orbit algebra and countably many such copies
+inside <span class="math">\(F\)</span>. It extends the preceding finite-partition transfer by preserving
+all noncommutative word moments, quotient relations between chosen lift
+compositions, operator norms, and the full normal generated algebra.</p>
+<p>It is an embedding theorem. Its image is the specified generated subalgebra
+<span class="math">\(W^*(A,B&#39;)\)</span>; it need not be all of <span class="math">\(F\)</span>. It does not identify an action on <span class="math">\(M\)</span> with a tensor product action on <span class="math">\(M\)</span>
+or prove absorption by a prescribed model.
+It does not construct the general amenable nonrelative weighted projection
+towers, compare arbitrary characteristic-and-trace isotropy, glue outer
+isotropy, or reconstruct the general continuous action. Those remaining classification arguments are still required.</p>
+<p>The centralizer foundations are in <span class="unlinked">Central sequence algebras and exact lifts</span>, Proposition 2.1 and Theorem 3.1. The preceding finite-partition transfer motivates the construction; Sections 2–7 prove the whole orbit-algebra transfer directly. [Connes], Section 2, is background for the central-sequence setting. The proofs here are written out under these exact foundations.</p>
+<h2 id="11-exercises-with-solutions">11. Exercises with solutions</h2>
+<p><strong>Exercise 11.1. (introductory: small trace still detects the norm).</strong> In the normalized trace on <span class="math">\(M_{100}(\mathbb C)\)</span>, let <span class="math">\(p\)</span> be rank one and <span class="math">\(z=2p\)</span>. Compute the roots in (5.3) and their limit. Explain why a small positive trace is sufficient.</p>
+<p><em>Solution.</em> Since <span class="math">\(z^*z=4p\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \tau((z^*z)^m)^{1/(2m)}
+   =2\cdot100^{-1/(2m)}\longrightarrow2.
+ 
+\]</div><span class="equation-tag">(11.1)</span></div>
+<p>For every positive number <span class="math">\(t\)</span>, <span class="math">\(t^{1/(2m)}\)</span> tends to one. The lower spectral bound in (5.3) needs the detecting projection to have positive trace, not a uniform lower bound on that trace. The limit agrees with <span class="math">\(\|z\|=2\)</span>.</p>
+<p><strong>Exercise 11.2. (intermediate: faithfulness is essential).</strong> Put <span class="math">\(D=\mathbb C\oplus\mathbb C\)</span> and <span class="math">\(\sigma(a,b)=a\)</span>. Find an element whose positive moments all vanish while its operator norm is nonzero. Which inference in Section 5 fails?</p>
+<p><em>Solution.</em> Take <span class="math">\(q=(0,1)\)</span>. It is a nonzero projection, and</p>
+<div class="equation"><div class="math math-display">\[
+ \sigma((q^*q)^m)=0\quad(m\ge1),
+ \qquad\|q\|=1.
+ 
+\]</div><span class="equation-tag">(11.2)</span></div>
+<p>The trace is normal and tracial but not faithful. A zero squared trace norm does not imply that an operator is zero. Both the polynomial-relation test (5.2) and the lower spectral bound in (5.3) require faithfulness.</p>
+<p><strong>Exercise 11.3. (advanced: different lift words give the same copy).</strong> Suppose <span class="math">\(\pi(\lambda)=\pi(\mu)\)</span>. Show explicitly how word-moment preservation proves <span class="math">\(Y_{\lambda,j}=Y_{\mu,j}\)</span>, without requiring <span class="math">\(\rho_\lambda=\rho_\mu\)</span> on <span class="math">\(M\)</span>.</p>
+<p><em>Solution.</em> In the original quotient, <span class="math">\(X_{\lambda,j}=X_{\mu,j}\)</span>. Expand the squared difference as four words. Equation (5.1) preserves their traces, so</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|Y_{\lambda,j}-Y_{\mu,j}\|_2^2
+ &amp;=\|X_{\lambda,j}-X_{\mu,j}\|_2^2\\
+ &amp;=0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(11.3)</span></div>
+<p>Faithfulness gives equality of the copied elements. The composed lifts may differ on ordinary elements of <span class="math">\(M\)</span>; the statement preserves their quotient relation because that relation is included in the moment tests. This is the reason Section 3 retains all lift words.</p>
+<p><strong>Exercise 11.4. (advanced: why the original algebra is a factor).</strong> Let <span class="math">\(M=\mathbb C^2\)</span> with its equal-weight trace and the trivial action. All bounded sequences are central. Let <span class="math">\(p=(1,0)\)</span> be constant, and take <span class="math">\(A=B=M\)</span>. Can a unital trace-preserving copy <span class="math">\(T\)</span> satisfy (1.2)? Relate the obstruction to (2.1).</p>
+<p><em>Solution.</em> The quotient of bounded sequences modulo trace-null sequences is again <span class="math">\(\mathbb C^2\)</span>: ultrafilter limits of the two scalar coordinates give this identification. A unital trace-preserving injective copy of <span class="math">\(\mathbb C^2\)</span> into itself maps <span class="math">\(p\)</span> to <span class="math">\(p\)</span> or <span class="math">\(1-p\)</span>. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \tau(pT(p))&amp;\in\{0,1/2\},\\
+ \tau(p)\tau(T(p))&amp;=1/4.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(11.4)</span></div>
+<p>Neither value satisfies independence. The ultraweak limit of the constant central representative <span class="math">\(p\)</span> is <span class="math">\(p\)</span>, not <span class="math">\(\tau(p)1\)</span>. Factorhood gives the scalar limit that makes the mixed tests (4.4) possible.</p>
+<p><strong>Exercise 11.5. (intermediate: product trace alone does not give a tensor map).</strong> In <span class="math">\(M_2(\mathbb C)\)</span> with normalized trace, let <span class="math">\(X,Z\)</span> be the Pauli matrices and put <span class="math">\(A=W^*(X)\)</span>, <span class="math">\(D=W^*(Z)\)</span>. Show that <span class="math">\(\tau(ad)=\tau(a)\tau(d)\)</span> for every <span class="math">\(a\in A,d\in D\)</span>, while multiplication does not define a homomorphism from <span class="math">\(A\otimes D\)</span>.</p>
+<p><em>Solution.</em> Write <span class="math">\(a=\alpha1+\beta X\)</span>, <span class="math">\(d=\eta1+\zeta Z\)</span>. The traces of <span class="math">\(X,Z,XZ\)</span> all vanish, so both sides are <span class="math">\(\alpha\eta\)</span>. Nevertheless</p>
+<div class="equation"><div class="math math-display">\[
+ XZ=-ZX,\qquad\|[X,Z]\|_2^2=4.
+ 
+\]</div><span class="equation-tag">(11.5)</span></div>
+<p>The elements <span class="math">\(X\otimes1\)</span> and <span class="math">\(1\otimes Z\)</span> commute in the tensor algebra; their proposed images do not. Section 7 uses both trace independence and commuting ranges. Independence alone does not provide a tensor-product representation.</p>
+<p><strong>Exercise 11.6. (advanced: the two normal extensions).</strong> Explain why (6.1) extends to all <span class="math">\(a\in A,b\in B\)</span> without any joint ultraweak continuity assertion for multiplication.</p>
+<p><em>Solution.</em> First fix a polynomial <span class="math">\(b\)</span>. The functions <span class="math">\(a\mapsto\tau(aT(b))\)</span> and <span class="math">\(a\mapsto\tau(a)\tau(b)\)</span> are normal linear functionals and agree on an ultraweakly dense unital *-algebra. They agree on all of <span class="math">\(A\)</span>. Next fix an arbitrary <span class="math">\(a\in A\)</span>. Normality of <span class="math">\(T\)</span> and of multiplication by this fixed <span class="math">\(a\)</span> makes both functions of <span class="math">\(b\)</span> normal. Agreement on the polynomial algebra extends to all of <span class="math">\(B\)</span>. Each extension holds one variable fixed. The order is needed because the second extension uses the conclusion of the first.</p>
+<p><strong>Exercise 11.7. (advanced: an embedding need not fill the ambient algebra).</strong> In the bilateral tensor factor from Section 9, now use the trivial group action. Take <span class="math">\(A=\mathbb C1\)</span> and let <span class="math">\(B\)</span> be the matrix algebra generated by the Pauli sequences at site <span class="math">\(n\)</span>. Copy it to site <span class="math">\(3n\)</span>. Prove that the image is a proper subalgebra of <span class="math">\(F\)</span>.</p>
+<p><em>Solution.</em> The copied Pauli relations generate <span class="math">\(C\cong M_2(\mathbb C)\)</span>. Let <span class="math">\(D\)</span> be the class of the Pauli <span class="math">\(X\)</span> at site <span class="math">\(5n\)</span>. These coordinates are disjoint for all positive <span class="math">\(n\)</span>, so</p>
+<div class="equation"><div class="math math-display">\[
+ D^2=1,\qquad\tau(D)=0,\qquad[D,C]=0.
+ 
+\]</div><span class="equation-tag">(11.7)</span></div>
+<p>If <span class="math">\(D\)</span> belonged to <span class="math">\(C\)</span>, it would be in the center of the matrix algebra, hence scalar. Its zero trace would make it zero, contradicting <span class="math">\(D^2=1\)</span>. Thus <span class="math">\(D\in F\setminus C\)</span>. The action is trivial here, so <span class="math">\(B\)</span> is invariant and all theorem hypotheses hold. The theorem gives its stated normal tensor image, not an onto-<span class="math">\(F\)</span> conclusion.</p>
+<p><strong>Exercise 11.8. (advanced: averaging independent copies).</strong> In Corollary 8.1 choose a self-adjoint unitary <span class="math">\(u\in B\)</span> with <span class="math">\(\tau(u)=0\)</span>, and let <span class="math">\(u_r\)</span> be its image in copy <span class="math">\(r\)</span>. Compute the squared trace norm of their average over the first <span class="math">\(m\)</span> copies.</p>
+<p><em>Solution.</em> For <span class="math">\(r\ne s\)</span>, successive product-trace independence gives <span class="math">\(\tau(u_ru_s)=\tau(u_r)\tau(u_s)=0\)</span>. Each diagonal term has trace one. Therefore</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \left\|\frac1m\sum_{r=1}^m u_r\right\|_2^2
+ &amp;=\frac1{m^2}\sum_{r,s=1}^m\tau(u_ru_s)\\
+ &amp;=\frac1m.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(11.8)</span></div>
+<p>The averages have operator norm at most one and trace norm tending to zero. This is a calculation inside the independent-copy image; it does not assert that the image equals <span class="math">\(F\)</span>.</p>
+<h2 id="references">References</h2>
+<p>[Connes] Alain Connes, <em>Outer conjugacy classes of automorphisms of factors</em>, Annales scientifiques de l'Ecole Normale Superieure, serie 4, 8 (1975), 383–419. Proposition 2.1.2, Lemma 2.1.4 and the proof of Theorem 2.2.1 give the central-sequence reindexing antecedents used here. The full equivariant, trace-independent copy is proved in Sections 2–7 of this lesson. <a href="https://numdam.org/articles/10.24033/asens.1295/">Article and original text</a>.</p>
+<p>[Ando–Haagerup] Hiroshi Ando and Uffe Haagerup, <em>Ultraproducts of von Neumann algebras</em>, Journal of Functional Analysis 266 (2014), 6842–6913. Definition 4.34 and Proposition 4.35, pages 38–39 of arXiv version 3, identify the centralizer framework; the whole paper is not a prerequisite claim. <a href="https://arxiv.org/abs/1212.5457v3">Open author version, 22 March 2014</a>.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><a href="src/independent-copies-of-orbit-algebras.md">Editable Markdown</a> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

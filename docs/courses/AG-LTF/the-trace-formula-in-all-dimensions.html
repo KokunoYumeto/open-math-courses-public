@@ -1,0 +1,591 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The trace formula in all dimensions</title><link rel="stylesheet" href="runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-trace-formula-in-all-dimensions">The trace formula in all dimensions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Original explanatory text is public domain (CC0). Human mathematical sources are credited below.</em></p>
+<p>The curve theorem becomes a theorem in every dimension by applying it to the fibres of a map. This requires coefficients that remember the cohomology of those fibres. They are the derived direct image with proper support, <span class="math" data-tex="\(Rf_!K\)">\(Rf_!K\)</span>. Its stalks carry both the fibre cohomology and the correct Frobenius operator.</p>
+<p>We prove the compatibility of these operators, check that <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> preserves the coefficient class needed for induction, and make the induction explicit. We then pass from finite coefficients to integral adic and characteristic-zero coefficients. The passage uses traces of perfect complexes, so it allows torsion in integral cohomology.</p>
+<h2 id="1-coefficients-and-the-compact-support-inputs">1. Coefficients and the compact-support inputs</h2>
+<p>Put <span class="math" data-tex="\(k_0=\mathbf F_q\)">\(k_0=\mathbf F_q\)</span>, <span class="math" data-tex="\(k=\overline{\mathbf F}_q\)">\(k=\overline{\mathbf F}_q\)</span>, and <span class="math" data-tex="\(p=\operatorname{char}k_0\)">\(p=\operatorname{char}k_0\)</span>. A subscript <span class="math" data-tex="\(0\)">\(0\)</span> indicates a scheme or coefficient object over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>; its geometric base change has no subscript. Schemes are separated and of finite type over the indicated field. Our torsion coefficient ring <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is unital and left Noetherian, may be noncommutative, is killed by an integer <span class="math" data-tex="\(n\)">\(n\)</span> prime to <span class="math" data-tex="\(p\)">\(p\)</span>, and acts on the left. This includes every finite ring with <span class="math" data-tex="\(p\nmid\#\Lambda\)">\(p\nmid\#\Lambda\)</span>, but also rings such as <span class="math" data-tex="\(\mathbf F_\ell[t,t^{-1}]\)">\(\mathbf F_\ell[t,t^{-1}]\)</span>. Constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-modules have finitely generated stalk modules on finitely many locally constant strata; their underlying sets need not be finite. Their traces lie in</p>
+<span class="math math-display" data-tex="\[
+\Lambda^\natural=\Lambda/
+\langle ab-ba:a,b\in\Lambda\rangle_{\mathrm{add}}.
+\tag{1.1}
+\]">\[
+\Lambda^\natural=\Lambda/
+\langle ab-ba:a,b\in\Lambda\rangle_{\mathrm{add}}.
+\tag{1.1}
+\]</span>
+<p>As before, <span class="math" data-tex="\(D_{\mathrm{ctf}}\)">\(D_{\mathrm{ctf}}\)</span> means bounded constructible cohomology and finite Tor amplitude. If <span class="math" data-tex="\(K\)">\(K\)</span> has Tor amplitude <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, then for every right <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>, its derived tensor <span class="math" data-tex="\(N\otimes_\Lambda^{\mathbf L}K\)">\(N\otimes_\Lambda^{\mathbf L}K\)</span> has cohomology only in that interval. The equivalent stalk criterion permits right module sheaves as well: derived tensors and their vanishing can be checked on geometric stalks.</p>
+<p>We use the following compact-support foundations:</p>
+<ul>
+<li><a href="support/ag-etale-cohomology--cohomology-with-compact-support.html">Cohomology with compact support</a>, §§6–9, constructs <span class="math" data-tex="\(Rf_!=R\bar f_*j_!\)">\(Rf_!=R\bar f_*j_!\)</span>, independently of the relative compactification, and proves composition and arbitrary base change. Its §§5,10 justify the unbounded-complex comparisons rather than presuming derived tensors are bounded below.</li>
+<li>Its Theorem 12.1 proves the bound <span class="math" data-tex="\(R^uf_!\mathcal F=0\)">\(R^uf_!\mathcal F=0\)</span> for <span class="math" data-tex="\(u&gt;2c\)">\(u&gt;2c\)</span>, if geometric fibres have dimension at most <span class="math" data-tex="\(c\)">\(c\)</span>, for every torsion sheaf, including infinite stalks. The absolute bound is <span class="math" data-tex="\(2\dim X\)">\(2\dim X\)</span>.</li>
+<li>Its §12 expressly inherits general torsion constructibility from <a href="https://stacks.math.columbia.edu/tag/0GL0">Stacks, Tag 0GL0</a>. We use that stated foundation for the central finite ring <span class="math" data-tex="\(A=\mathbf Z/n\)">\(A=\mathbf Z/n\)</span>, with separated finite-presentation morphisms between quasi-compact quasi-separated schemes. All our schemes are Noetherian and finite type over a field, so these hypotheses hold. Lemma 3.1 below proves the extension to the full left-module coefficient scope.</li>
+<li><a href="support/ag-etale-cohomology--the-proper-base-change-theorem.html">The proper base change theorem</a> and <a href="support/ag-etale-cohomology--pushforward-pullback-and-finite-morphisms.html">Pushforward, pullback and finite morphisms</a> provide the geometric stalk and finite-pushforward comparisons. <a href="frobenius-morphisms-and-their-action-on-cohomology.html">Frobenius morphisms and their action on cohomology</a>, §§1–3, proves topological invariance and the relative-Frobenius equivalence used in §2.</li>
+</ul>
+<p>The construction is coefficient-linear. For a noncommutative ring it is performed in left-module sheaves; the adjunction, restrictions of supports and stalk base-change maps still make sense. <a href="traces-of-perfect-complexes-and-lefschetz-numbers.html">Lesson 4</a>, Lemma 4.1a, proves that forgetting coefficients computes the same underlying cohomology through the pointwise flasque resolution. Its Lemma 4.2b supplies finite constructible flat generators and their lifting property for left Noetherian rings. Thus no commutativity, finite underlying set or assumption of finite monodromy is hidden in the relative argument below.</p>
+<p>The coefficient projection formula for <span class="math" data-tex="\(R\Gamma_c\)">\(R\Gamma_c\)</span>, arbitrary-dimensional perfectness with this full torsion-ring scope, and filtered trace additivity are Lesson 4, Theorems 3.1,4.3–4.4. The trace formula in dimension at most one, including these left Noetherian noncommutative coefficients, is <a href="the-trace-formula-for-curves.html">Lesson 6</a>, Theorem 1.1. Smooth trace and duality needed for the examples are proved in <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps</a>, §§10,13–14. The general constructibility premise just identified remains an explicit foundation; reading its source is not a new proof of that premise.</p>
+<h2 id="2-frobenius-and-direct-image-with-proper-support">2. Frobenius and direct image with proper support</h2>
+<p>Let <span class="math" data-tex="\(f_0:X_0\to Y_0\)">\(f_0:X_0\to Y_0\)</span>. Denote the geometric scheme Frobenius maps by <span class="math" data-tex="\(F_X,F_Y\)">\(F_X,F_Y\)</span>, and the descended coefficient isomorphism of <span class="math" data-tex="\(K\)">\(K\)</span> by</p>
+<span class="math math-display" data-tex="\[
+c_X:F_X^{-1}K\xrightarrow{\sim}K.
+\]">\[
+c_X:F_X^{-1}K\xrightarrow{\sim}K.
+\]</span>
+<p>It is the coefficient correspondence of <a href="frobenius-morphisms-and-their-action-on-cohomology.html">Lesson 3</a>, rather than an arbitrary choice of an isomorphism.</p>
+<p><strong>Lemma 2.1 (Frobenius compatibility).</strong> The coefficient correspondence on the geometric pullback of <span class="math" data-tex="\(Rf_{0!}K_0\)">\(Rf_{0!}K_0\)</span> is the map induced by <span class="math" data-tex="\(c_X\)">\(c_X\)</span> under compact-support base change. Consequently</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(Y,Rf_!K)\simeq R\Gamma_c(X,K)
+\tag{2.1}
+\]">\[
+R\Gamma_c(Y,Rf_!K)\simeq R\Gamma_c(X,K)
+\tag{2.1}
+\]</span>
+<p>intertwines Frobenius. At <span class="math" data-tex="\(y\in Y_0(k_0)\)">\(y\in Y_0(k_0)\)</span>, the base-change isomorphism</p>
+<span class="math math-display" data-tex="\[
+(Rf_!K)_{\bar y}\simeq
+R\Gamma_c(X_{\bar y},K|_{X_{\bar y}})
+\tag{2.2}
+\]">\[
+(Rf_!K)_{\bar y}\simeq
+R\Gamma_c(X_{\bar y},K|_{X_{\bar y}})
+\tag{2.2}
+\]</span>
+<p>intertwines local geometric Frobenius with the Frobenius correspondence of the fibre over <span class="math" data-tex="\(y\)">\(y\)</span>. The construction also commutes with proper base change.</p>
+<p><strong>Proof.</strong> The commuting square with horizontal maps <span class="math" data-tex="\(F_X,F_Y\)">\(F_X,F_Y\)</span> is generally not cartesian. Instead form</p>
+<span class="math math-display" data-tex="\[
+X&#x27;=Y\times_{F_Y,Y,f}X,\qquad
+a:X&#x27;\to X,\quad f&#x27;:X&#x27;\to Y,
+\]">\[
+X&#x27;=Y\times_{F_Y,Y,f}X,\qquad
+a:X&#x27;\to X,\quad f&#x27;:X&#x27;\to Y,
+\]</span>
+<p>and the map</p>
+<span class="math math-display" data-tex="\[
+h:X\longrightarrow X&#x27;,\qquad
+ah=F_X,\quad f&#x27;h=f.
+\tag{2.3}
+\]">\[
+h:X\longrightarrow X&#x27;,\qquad
+ah=F_X,\quad f&#x27;h=f.
+\tag{2.3}
+\]</span>
+<p>Before geometric base change, <span class="math" data-tex="\(h\)">\(h\)</span> is the relative <span class="math" data-tex="\(q\)">\(q\)</span>-Frobenius of <span class="math" data-tex="\(f_0\)">\(f_0\)</span>. It is a finite universal homeomorphism. Indeed the relative <span class="math" data-tex="\(p\)">\(p\)</span>-Frobenius is a universal homeomorphism, <a href="https://stacks.math.columbia.edu/tag/0CCB">Stacks, Tag 0CCB</a>; its iterates have the same property. Locally, if <span class="math" data-tex="\(B\)">\(B\)</span> is generated over <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(x_1,\ldots,x_s\)">\(x_1,\ldots,x_s\)</span>, the relative <span class="math" data-tex="\(q\)">\(q\)</span>-Frobenius ring map is</p>
+<span class="math math-display" data-tex="\[
+B\otimes_{A,F_A^r}A\longrightarrow B,\qquad
+b\otimes a\longmapsto b^qa.
+\]">\[
+B\otimes_{A,F_A^r}A\longrightarrow B,\qquad
+b\otimes a\longmapsto b^qa.
+\]</span>
+<p>Every generator <span class="math" data-tex="\(x_i\)">\(x_i\)</span> satisfies a monic equation <span class="math" data-tex="\(T^q-x_i^q=0\)">\(T^q-x_i^q=0\)</span> over the image, so this map is finite. Both properties persist under base change to <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Étale topological invariance makes <span class="math" data-tex="\(h^{-1}\)">\(h^{-1}\)</span> an exact equivalence with inverse <span class="math" data-tex="\(h_*\)">\(h_*\)</span>. Since <span class="math" data-tex="\(h\)">\(h\)</span> is finite, <span class="math" data-tex="\(Rh_!=h_*\)">\(Rh_!=h_*\)</span>. Apply base change to the cartesian square defining <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>, then this equivalence and support composition:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_Y^{-1}Rf_!K
+&amp;\xrightarrow{\sim}Rf&#x27;_!a^{-1}K\\
+&amp;\xrightarrow{\sim}Rf&#x27;_!Rh_!h^{-1}a^{-1}K\\
+&amp;\xrightarrow{\sim}Rf_!F_X^{-1}K.
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+F_Y^{-1}Rf_!K
+&amp;\xrightarrow{\sim}Rf&#x27;_!a^{-1}K\\
+&amp;\xrightarrow{\sim}Rf&#x27;_!Rh_!h^{-1}a^{-1}K\\
+&amp;\xrightarrow{\sim}Rf_!F_X^{-1}K.
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>The middle map is the inverse of the adjunction counit, which is an isomorphism for the equivalence. Composing (2.4) with <span class="math" data-tex="\(Rf_!c_X\)">\(Rf_!c_X\)</span> gives the induced correspondence.</p>
+<p>We check that it is the descended correspondence, including its direction. Compactification and base-change comparisons commute with field automorphisms. This follows directly on the open part from the stalk description of <span class="math" data-tex="\(j_!\)">\(j_!\)</span>, and on the proper part from the natural proper base-change map. That map is built from the pullback/direct-image adjunction; the unit and counit are natural transformations, so their squares with a field automorphism commute. The derived maps retain this naturality on resolutions. Independence of compactification preserves the comparison after a common proper refinement.</p>
+<p>The absolute-Frobenius comparison used in Lesson 3 is natural here as well. On an étale chart <span class="math" data-tex="\(W\)">\(W\)</span> it is restriction along the inverse of the relative-Frobenius isomorphism of <span class="math" data-tex="\(W\)">\(W\)</span>. Its compatibility with compositions and base change is an equality of maps of charts, hence of restrictions. Every sheaf is a colimit of such represented charts, and the resulting inverse-image comparisons are exact. It follows that (2.4), when combined with the arithmetic field map <span class="math" data-tex="\(\sigma:c\mapsto c^q\)">\(\sigma:c\mapsto c^q\)</span>, has precisely the absolute-Frobenius coefficient map. That map is naturally the identity on the étale topos, as proved in Lesson 3. Thus the composite is the identity, and the induced operator is the inverse arithmetic operator <span class="math" data-tex="\(\rho(\sigma)^{-1}\)">\(\rho(\sigma)^{-1}\)</span>, the required geometric Frobenius. This also checks that no inverse was lost in (2.4).</p>
+<p>For (2.1), support composition applied to <span class="math" data-tex="\(X\to Y\to\operatorname{Spec}k\)">\(X\to Y\to\operatorname{Spec}k\)</span> is natural for all the maps in (2.4). Equivalently, compute it as <span class="math" data-tex="\(R\bar f_*j_!\)">\(R\bar f_*j_!\)</span> on a compactification defined over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>; both its open and proper comparisons commute with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and therefore with <span class="math" data-tex="\(\sigma^{-1}\)">\(\sigma^{-1}\)</span>. This proves the Frobenius assertion for the total cohomology.</p>
+<p>For (2.2), base change along <span class="math" data-tex="\(\bar y\to Y\)">\(\bar y\to Y\)</span> gives the asserted fibre complex. When <span class="math" data-tex="\(y\)">\(y\)</span> is rational, its fibre is the base change of <span class="math" data-tex="\(X_{0,y}/k_0\)">\(X_{0,y}/k_0\)</span>. The arithmetic field map fixes <span class="math" data-tex="\(y\)">\(y\)</span>, and the proper base-change and extension-by-zero maps used to construct (2.2) commute with it by the same naturality. Taking inverses identifies its local geometric action with that on the fibre. For a degree-<span class="math" data-tex="\(d\)">\(d\)</span> point the identical argument uses <span class="math" data-tex="\(\sigma^d\)">\(\sigma^d\)</span> and the fibre over <span class="math" data-tex="\(\mathbf F_{q^d}\)">\(\mathbf F_{q^d}\)</span>.</p>
+<p>Finally a further proper base change gives a stacked diagram of cartesian squares. Their base-change maps are obtained by composing the same adjunction transformations; the base-change and support-composition compatibilities identify the two compositions. Both are natural for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Hence (2.4), (2.1) and (2.2) commute with that proper base change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-why-the-induction-keeps-the-right-coefficients">3. Why the induction keeps the right coefficients</h2>
+<p><strong>Lemma 3.1 (constructibility and finite Tor amplitude).</strong> Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be separated and of finite type over <span class="math" data-tex="\(k\)">\(k\)</span>, let <span class="math" data-tex="\(\dim X\leq d\)">\(\dim X\leq d\)</span>, and let <span class="math" data-tex="\(K\in D_{\mathrm{ctf}}(X,\Lambda)\)">\(K\in D_{\mathrm{ctf}}(X,\Lambda)\)</span> have Tor amplitude <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. Then <span class="math" data-tex="\(Rf_!K\in D_{\mathrm{ctf}}(Y,\Lambda)\)">\(Rf_!K\in D_{\mathrm{ctf}}(Y,\Lambda)\)</span>. Its Tor amplitude is contained in <span class="math" data-tex="\([a,b+2d]\)">\([a,b+2d]\)</span>. If all geometric fibres have dimension at most <span class="math" data-tex="\(c\)">\(c\)</span>, use <span class="math" data-tex="\([a,b+2c]\)">\([a,b+2c]\)</span> instead. The assertion holds equally over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>, by checking geometric stalks over their algebraically closed residue fields.</p>
+<p><strong>Proof.</strong> We first prove constructibility for the larger coefficient rings, using only the finite central coefficient foundation in §1. Set <span class="math" data-tex="\(A=\mathbf Z/n\)">\(A=\mathbf Z/n\)</span>. For an affine separated étale map <span class="math" data-tex="\(a:U\to X\)">\(a:U\to X\)</span> of finite presentation put <span class="math" data-tex="\(P_U=a_!\underline\Lambda\)">\(P_U=a_!\underline\Lambda\)</span> and <span class="math" data-tex="\(B_U=R(fa)_!\underline A\)">\(B_U=R(fa)_!\underline A\)</span>. Finite <span class="math" data-tex="\(A\)">\(A\)</span>-coefficient constructibility and the geometric stalk formula give bounded constructible cohomology for <span class="math" data-tex="\(B_U\)">\(B_U\)</span>. At every stalk, Lesson 4's projection formula puts its Tor amplitude in <span class="math" data-tex="\([0,2d]\)">\([0,2d]\)</span>. Thus <span class="math" data-tex="\(B_U\in D_{\mathrm{ctf}}(Y,A)\)">\(B_U\in D_{\mathrm{ctf}}(Y,A)\)</span>.</p>
+<p>By Lesson 4, Lemma 4.2b, represent <span class="math" data-tex="\(B_U\)">\(B_U\)</span> by a bounded constructible flat <span class="math" data-tex="\(A\)">\(A\)</span>-complex. Simultaneously stratify its finitely many terms. On each stratum they are finite locally constant projective <span class="math" data-tex="\(A\)">\(A\)</span>-modules; after a common finite étale trivialization the finitely many differentials are constant too. Tensoring this model with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> therefore has constructible <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-cohomology: kernels and cokernels of maps of finite modules are finite by left Noetherianity. The canonical scalar-extension comparison is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+R f_!P_U=R(fa)_!\underline\Lambda
+\simeq\Lambda\otimes_A^{\mathbf L} B_U.
+\tag{3.1a}
+\]">\[
+R f_!P_U=R(fa)_!\underline\Lambda
+\simeq\Lambda\otimes_A^{\mathbf L} B_U.
+\tag{3.1a}
+\]</span>
+<p>Here the tensor retains the left <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-action. On a geometric stalk it is exactly the absolute projection formula of Lesson 4 for <span class="math" data-tex="\(U_{\bar y}\)">\(U_{\bar y}\)</span>; proper-support base change identifies both stalks, so the comparison is an isomorphism of sheaf complexes. This also proves that it is the natural comparison, rather than a separately chosen model.</p>
+<p>Resolve <span class="math" data-tex="\(K\)">\(K\)</span> by a bounded-above complex <span class="math" data-tex="\(P^v\)">\(P^v\)</span> of finite sums of the <span class="math" data-tex="\(P_U\)">\(P_U\)</span>, as in Lesson 4, Lemma 4.2b. The term spectral sequence is</p>
+<span class="math math-display" data-tex="\[
+E_1^{v,u}=R^u f_!P^v\Longrightarrow
+\mathcal H^{v+u}(Rf_!K),\qquad 0\leq u\leq2d.
+\tag{3.1b}
+\]">\[
+E_1^{v,u}=R^u f_!P^v\Longrightarrow
+\mathcal H^{v+u}(Rf_!K),\qquad 0\leq u\leq2d.
+\tag{3.1b}
+\]</span>
+<p>It converges with a finite filtration in each output degree. To justify this with an unbounded left resolution, retain the terms in degrees <span class="math" data-tex="\(\geq m\)">\(\geq m\)</span>; the omitted quotient lies in degrees <span class="math" data-tex="\(\leq m-1\)">\(\leq m-1\)</span>. The uniform relative bound puts its direct image in degrees <span class="math" data-tex="\(\leq m-1+2d\)">\(\leq m-1+2d\)</span>. For a fixed output degree, the two adjacent groups in the truncation triangle vanish when <span class="math" data-tex="\(m\)">\(m\)</span> is sufficiently negative. The finite spectral sequences therefore stabilize. Only <span class="math" data-tex="\(v=i-2d,\ldots,i\)">\(v=i-2d,\ldots,i\)</span> can contribute to total degree <span class="math" data-tex="\(i\)">\(i\)</span>, and the strip bounds the lengths of its nonzero differentials. All entries are constructible by (3.1a); their subquotients and extensions are constructible over a left Noetherian ring, by Lesson 4, Lemma 4.2b. This proves constructibility without forgetting an infinite <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module to a falsely finite abelian sheaf.</p>
+<p>The stalk formula and the bounded cohomology spectral sequence now show boundedness. To prove the Tor assertion, fix <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span> and an arbitrary right <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module <span class="math" data-tex="\(N\)">\(N\)</span>. Exactness of geometric inverse image, (2.2), and Lesson 4's coefficient projection formula give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl(N\otimes_\Lambda^{\mathbf L}Rf_!K\bigr)_{\bar y}
+&amp;\simeq N\otimes_\Lambda^{\mathbf L}
+R\Gamma_c(X_{\bar y},K_{\bar y})\\
+&amp;\simeq R\Gamma_c
+\bigl(X_{\bar y},N\otimes_\Lambda^{\mathbf L}K_{\bar y}\bigr).
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+\bigl(N\otimes_\Lambda^{\mathbf L}Rf_!K\bigr)_{\bar y}
+&amp;\simeq N\otimes_\Lambda^{\mathbf L}
+R\Gamma_c(X_{\bar y},K_{\bar y})\\
+&amp;\simeq R\Gamma_c
+\bigl(X_{\bar y},N\otimes_\Lambda^{\mathbf L}K_{\bar y}\bigr).
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p>The sheaf cohomology of the coefficient complex on the last line is zero outside <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>. Its hypercohomology spectral sequence has terms</p>
+<span class="math math-display" data-tex="\[
+H_c^u\bigl(X_{\bar y},
+\mathcal H^v(N\otimes_\Lambda^{\mathbf L}K_{\bar y})\bigr),
+\qquad 0\leq u\leq2\dim X_{\bar y},\quad a\leq v\leq b.
+\]">\[
+H_c^u\bigl(X_{\bar y},
+\mathcal H^v(N\otimes_\Lambda^{\mathbf L}K_{\bar y})\bigr),
+\qquad 0\leq u\leq2\dim X_{\bar y},\quad a\leq v\leq b.
+\]</span>
+<p>It is bounded, so its abutment is zero outside <span class="math" data-tex="\([a,b+2\dim X_{\bar y}]\)">\([a,b+2\dim X_{\bar y}]\)</span>. No finiteness assumption on <span class="math" data-tex="\(N\)">\(N\)</span> is used; the torsion dimension bound applies to these sheaves. The same interval <span class="math" data-tex="\([a,b+2d]\)">\([a,b+2d]\)</span>, or <span class="math" data-tex="\([a,b+2c]\)">\([a,b+2c]\)</span>, works for every stalk and <span class="math" data-tex="\(N\)">\(N\)</span>. For a right module sheaf, apply the argument to its stalk <span class="math" data-tex="\(N_{\bar y}\)">\(N_{\bar y}\)</span>. This is exactly finite Tor amplitude of <span class="math" data-tex="\(Rf_!K\)">\(Rf_!K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (a projection with curve fibres).</strong> A nonempty affine <span class="math" data-tex="\(X_0/k_0\)">\(X_0/k_0\)</span> of dimension <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span> admits a separated finite-type map</p>
+<span class="math math-display" data-tex="\[
+f_0:X_0\longrightarrow\mathbf A^{d-1}_{k_0}
+\tag{3.2}
+\]">\[
+f_0:X_0\longrightarrow\mathbf A^{d-1}_{k_0}
+\tag{3.2}
+\]</span>
+<p>whose geometric fibres have dimension at most one.</p>
+<p><strong>Proof.</strong> We give the finite-field normalization argument. Let <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span> be the coordinate algebra, generated by <span class="math" data-tex="\(x_1,\ldots,x_s\)">\(x_1,\ldots,x_s\)</span>. If these generators are algebraically independent, <span class="math" data-tex="\(B\)">\(B\)</span> is a polynomial ring and we are done. Otherwise choose a nonzero polynomial relation <span class="math" data-tex="\(P(x_1,\ldots,x_s)=0\)">\(P(x_1,\ldots,x_s)=0\)</span>. Choose an integer <span class="math" data-tex="\(M\)">\(M\)</span> larger than every exponent in its monomials. Set</p>
+<span class="math math-display" data-tex="\[
+y_i=x_i-x_s^{M^i}\quad(1\leq i&lt;s).
+\tag{3.3}
+\]">\[
+y_i=x_i-x_s^{M^i}\quad(1\leq i&lt;s).
+\tag{3.3}
+\]</span>
+<p>Substitute <span class="math" data-tex="\(X_i=Y_i+T^{M^i}\)">\(X_i=Y_i+T^{M^i}\)</span> and <span class="math" data-tex="\(X_s=T\)">\(X_s=T\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span>. The highest <span class="math" data-tex="\(T\)">\(T\)</span>-degree of a monomial with exponent vector <span class="math" data-tex="\((a_1,\ldots,a_s)\)">\((a_1,\ldots,a_s)\)</span> is <span class="math" data-tex="\(a_s+\sum_{i&lt;s}a_iM^i\)">\(a_s+\sum_{i&lt;s}a_iM^i\)</span>. Base-<span class="math" data-tex="\(M\)">\(M\)</span> uniqueness makes these degrees distinct. The greatest one consequently has a nonzero constant leading coefficient; all other terms in its binomial expansion have smaller degree. Dividing by that field coefficient gives a monic equation for <span class="math" data-tex="\(x_s\)">\(x_s\)</span> over <span class="math" data-tex="\(B&#x27;=k_0[y_1,\ldots,y_{s-1}]\)">\(B&#x27;=k_0[y_1,\ldots,y_{s-1}]\)</span>. Thus <span class="math" data-tex="\(B=B&#x27;[x_s]\)">\(B=B&#x27;[x_s]\)</span> is finite over <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>. Repeat with its smaller generating set. This process terminates at an embedded polynomial algebra <span class="math" data-tex="\(k_0[z_1,\ldots,z_t]\)">\(k_0[z_1,\ldots,z_t]\)</span> over which <span class="math" data-tex="\(B\)">\(B\)</span> is finite. It uses no choice of a generic field-valued linear projection, so works over the finite field and for nilpotents and multiple components.</p>
+<p>For clarity, a finite integral inclusion preserves dimension. Primes lie over primes after localization and taking a maximal ideal of the nonzero integral algebra over the residue field; contractions of those maximal ideals are the residue-field zero prime. The same argument after quotienting by a prime gives going up. Two comparable primes over one prime must coincide: after localization and quotient by the smaller prime, the remaining algebra is integral over a field and has only maximal primes. Chains upstairs and downstairs therefore have the same possible maximal length. Hence <span class="math" data-tex="\(t=\dim B=d\)">\(t=\dim B=d\)</span>, and the inclusion gives the finite map <span class="math" data-tex="\(n_0:X_0\to\mathbf A^d_{k_0}\)">\(n_0:X_0\to\mathbf A^d_{k_0}\)</span>.</p>
+<p>Compose it with projection onto the first <span class="math" data-tex="\(d-1\)">\(d-1\)</span> coordinates. On any geometric fibre its base change is finite over <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span>. Its coordinate algebra is integral over a quotient of the line's coordinate algebra; the same incomparability argument bounds its dimension by one. The composite is separated and of finite type. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It is not necessary that <span class="math" data-tex="\(f_0\)">\(f_0\)</span> be smooth, that every fibre be a curve, or that <span class="math" data-tex="\(X_0\)">\(X_0\)</span> be normal. The curve theorem already allows all its singular and zero-dimensional fibres.</p>
+<h2 id="4-the-finite-coefficient-theorem">4. The finite-coefficient theorem</h2>
+<p><strong>Theorem 4.1 (Grothendieck–Lefschetz, torsion coefficients).</strong> Let <span class="math" data-tex="\(X_0/k_0\)">\(X_0/k_0\)</span> be separated and of finite type, let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> have the full left Noetherian torsion scope of §1, and let <span class="math" data-tex="\(K_0\in D_{\mathrm{ctf}}(X_0,\Lambda)\)">\(K_0\in D_{\mathrm{ctf}}(X_0,\Lambda)\)</span>. Then <span class="math" data-tex="\(R\Gamma_c(X,K)\)">\(R\Gamma_c(X,K)\)</span> is perfect over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_\Lambda(F_X^*;R\Gamma_c(X,K))
+=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_\Lambda(F_x;K_{\bar x})
+\quad\text{in }\Lambda^\natural.
+\tag{4.1}
+\]">\[
+\operatorname{Tr}_\Lambda(F_X^*;R\Gamma_c(X,K))
+=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_\Lambda(F_x;K_{\bar x})
+\quad\text{in }\Lambda^\natural.
+\tag{4.1}
+\]</span>
+<p><strong>Proof.</strong> Perfectness, including noncommutative infinite coefficient rings, was proved in Lesson 4, Theorems 4.3–4.4, in arbitrary dimension. We prove the equality by induction on <span class="math" data-tex="\(d=\dim X_0\)">\(d=\dim X_0\)</span>. The empty scheme has two zero quantities. For <span class="math" data-tex="\(d\leq1\)">\(d\leq1\)</span> use Lesson 6, Theorem 1.1.</p>
+<p>To reduce to affines without assuming a dimension drop, choose a finite affine open cover <span class="math" data-tex="\(U_1,\ldots,U_m\)">\(U_1,\ldots,U_m\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+S_i=U_i\cap\left(X_0-\bigcup_{j&lt;i}U_j\right).
+\tag{4.2}
+\]">\[
+S_i=U_i\cap\left(X_0-\bigcup_{j&lt;i}U_j\right).
+\tag{4.2}
+\]</span>
+<p>Each <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is closed in the affine <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, hence affine. It is open in the closed remainder after removing <span class="math" data-tex="\(U_1,\ldots,U_{i-1}\)">\(U_1,\ldots,U_{i-1}\)</span>. Repeated open–closed additivity of Lesson 6 therefore expresses each side of (4.1) as the sum of its values on the restrictions to the <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. The restriction has finite Tor amplitude and constructible cohomology. This finite stratification covers <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, even if several strata have dimension <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>It remains to prove the formula for an affine stratum of dimension <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. Choose (3.2) and write <span class="math" data-tex="\(Y_0=\mathbf A^{d-1}_{k_0}\)">\(Y_0=\mathbf A^{d-1}_{k_0}\)</span>. By Lemma 3.1,</p>
+<span class="math math-display" data-tex="\[
+L_0=Rf_{0!}K_0\in D_{\mathrm{ctf}}(Y_0,\Lambda).
+\]">\[
+L_0=Rf_{0!}K_0\in D_{\mathrm{ctf}}(Y_0,\Lambda).
+\]</span>
+<p>The induction hypothesis applies to <span class="math" data-tex="\(L_0\)">\(L_0\)</span> on <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>. Lemma 2.1 and that hypothesis give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Tr}_\Lambda(F_X^*;R\Gamma_c(X,K))
+&amp;=\operatorname{Tr}_\Lambda(F_Y^*;R\Gamma_c(Y,L))\\
+&amp;=\sum_{y\in Y_0(k_0)}
+\operatorname{Tr}_\Lambda(F_y;L_{\bar y})\\
+&amp;=\sum_{y\in Y_0(k_0)}
+\operatorname{Tr}_\Lambda
+\bigl(F_{X_y}^*;R\Gamma_c(X_{\bar y},K_{\bar y})\bigr).
+\end{aligned}
+\tag{4.3}
+\]">\[
+\begin{aligned}
+\operatorname{Tr}_\Lambda(F_X^*;R\Gamma_c(X,K))
+&amp;=\operatorname{Tr}_\Lambda(F_Y^*;R\Gamma_c(Y,L))\\
+&amp;=\sum_{y\in Y_0(k_0)}
+\operatorname{Tr}_\Lambda(F_y;L_{\bar y})\\
+&amp;=\sum_{y\in Y_0(k_0)}
+\operatorname{Tr}_\Lambda
+\bigl(F_{X_y}^*;R\Gamma_c(X_{\bar y},K_{\bar y})\bigr).
+\end{aligned}
+\tag{4.3}
+\]</span>
+<p>For every rational <span class="math" data-tex="\(y\)">\(y\)</span>, <span class="math" data-tex="\(X_{0,y}\)">\(X_{0,y}\)</span> is a separated finite-type <span class="math" data-tex="\(k_0\)">\(k_0\)</span>-scheme of dimension at most one; its coefficient restriction is in <span class="math" data-tex="\(D_{\mathrm{ctf}}\)">\(D_{\mathrm{ctf}}\)</span>. The curve theorem changes its term on the last line to</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in X_{0,y}(k_0)}
+\operatorname{Tr}_\Lambda(F_x;K_{\bar x}).
+\]">\[
+\sum_{x\in X_{0,y}(k_0)}
+\operatorname{Tr}_\Lambda(F_x;K_{\bar x}).
+\]</span>
+<p>Every rational point of <span class="math" data-tex="\(X_0\)">\(X_0\)</span> lies over a unique rational point of <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>, so these finite sums together are the right side of (4.1). This completes the affine case and, using (4.2), the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the step abbreviated in <a href="https://stacks.math.columbia.edu/tag/03V3">Stacks, Tag 03V3</a>. The proof needs compact-support base change, the operator compatibility and preservation of finite Tor amplitude, in addition to the known curve case.</p>
+<h2 id="5-from-finite-coefficients-to-adic-coefficients">5. From finite coefficients to adic coefficients</h2>
+<p>Let <span class="math" data-tex="\(O\)">\(O\)</span> be the ring of integers in a finite extension <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span>, let <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> be a uniformizer, and put <span class="math" data-tex="\(O_n=O/\varpi^n\)">\(O_n=O/\varpi^n\)</span>, with <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>. This includes <span class="math" data-tex="\(O=\mathbf Z_\ell\)">\(O=\mathbf Z_\ell\)</span> and <span class="math" data-tex="\(E=\mathbf Q_\ell\)">\(E=\mathbf Q_\ell\)</span>. Adic sheaves and their rationalizations have the meanings of Lesson 1.</p>
+<p><strong>Theorem 5.1 (adic trace formula).</strong> If <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span> is a constructible <span class="math" data-tex="\(E\)">\(E\)</span>-sheaf on <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\dim_EH_c^i(X,\mathcal F)&lt;\infty,\qquad
+H_c^i(X,\mathcal F)=0\quad(i&lt;0\text{ or }i&gt;2\dim X),
+\tag{5.1}
+\]">\[
+\dim_EH_c^i(X,\mathcal F)&lt;\infty,\qquad
+H_c^i(X,\mathcal F)=0\quad(i&lt;0\text{ or }i&gt;2\dim X),
+\tag{5.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_E(F_x;\mathcal F_{\bar x})
+=\sum_i(-1)^i
+\operatorname{Tr}_E(F_X^*;H_c^i(X,\mathcal F)).
+\tag{5.2}
+\]">\[
+\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_E(F_x;\mathcal F_{\bar x})
+=\sum_i(-1)^i
+\operatorname{Tr}_E(F_X^*;H_c^i(X,\mathcal F)).
+\tag{5.2}
+\]</span>
+<p>For a constructible <span class="math" data-tex="\(O\)">\(O\)</span>-sheaf <span class="math" data-tex="\(\mathcal L_0\)">\(\mathcal L_0\)</span>, including one with torsion, <span class="math" data-tex="\(R\Gamma_c(X,\mathcal L)\)">\(R\Gamma_c(X,\mathcal L)\)</span> and its finite stalks are perfect over <span class="math" data-tex="\(O\)">\(O\)</span>, and the same formula holds in <span class="math" data-tex="\(O\)">\(O\)</span>, with perfect-complex traces.</p>
+<p><strong>Proof for a torsion-free lattice.</strong> Choose a constructible adic model of <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span>, and quotient it by its torsion subobject. Lesson 1, Corollary 3.3, proves that this torsion is killed by a uniform power of <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>, and that the quotient is an adic sheaf with torsion-free finite stalks. It still rationalizes to <span class="math" data-tex="\(\mathcal F_0\)">\(\mathcal F_0\)</span>. Denote it by <span class="math" data-tex="\(\mathcal L_0\)">\(\mathcal L_0\)</span>. Its normalized finite levels <span class="math" data-tex="\(\mathcal L_{0,n}\)">\(\mathcal L_{0,n}\)</span> have finite free stalks over <span class="math" data-tex="\(O_n\)">\(O_n\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathcal L_{0,n+1}\otimes_{O_{n+1}}^{\mathbf L}O_n
+\simeq\mathcal L_{0,n}.
+\tag{5.3}
+\]">\[
+\mathcal L_{0,n+1}\otimes_{O_{n+1}}^{\mathbf L}O_n
+\simeq\mathcal L_{0,n}.
+\tag{5.3}
+\]</span>
+<p>Flatness makes this derived reduction the ordinary strict reduction. Put</p>
+<span class="math math-display" data-tex="\[
+C_n=R\Gamma_c(X,\mathcal L_n).
+\]">\[
+C_n=R\Gamma_c(X,\mathcal L_n).
+\]</span>
+<p>Theorem 4.1 and coefficient projection give perfect <span class="math" data-tex="\(O_n\)">\(O_n\)</span>-complexes and isomorphisms</p>
+<span class="math math-display" data-tex="\[
+C_{n+1}\otimes_{O_{n+1}}^{\mathbf L}O_n\simeq C_n
+\tag{5.4}
+\]">\[
+C_{n+1}\otimes_{O_{n+1}}^{\mathbf L}O_n\simeq C_n
+\tag{5.4}
+\]</span>
+<p>compatible with Frobenius. The compatibility follows from naturality of coefficient extension and the operator maps; it does not require a choice of resolutions commuting strictly at the outset.</p>
+<p>Lesson 1, Theorem 6.1, produces a bounded finite free <span class="math" data-tex="\(O\)">\(O\)</span>-complex <span class="math" data-tex="\(C\)">\(C\)</span> and a chain endomorphism <span class="math" data-tex="\(F_C\)">\(F_C\)</span> realizing these reductions and their Frobenius maps. Its proof uses minimal free complexes to force common term ranks and a common finite degree range, then lifts the compatibility homotopies to make the endomorphisms commute under reduction. Replacing <span class="math" data-tex="\(\ell\)">\(\ell\)</span> by <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> gives the identical argument over this complete discrete valuation ring. Finite residue rings give the same Mittag–Leffler argument. Thus</p>
+<span class="math math-display" data-tex="\[
+H^i(C)=\varprojlim_nH^i(C_n)=H_c^i(X,\mathcal L).
+\tag{5.5}
+\]">\[
+H^i(C)=\varprojlim_nH^i(C_n)=H_c^i(X,\mathcal L).
+\tag{5.5}
+\]</span>
+<p>Each finite-level group is zero outside <span class="math" data-tex="\([0,2\dim X]\)">\([0,2\dim X]\)</span>, so (5.5) has the same vanishing. Its cohomology is finite over <span class="math" data-tex="\(O\)">\(O\)</span>, since <span class="math" data-tex="\(C\)">\(C\)</span> has finite free terms. Tensoring with <span class="math" data-tex="\(E\)">\(E\)</span> proves (5.1).</p>
+<p>Write <span class="math" data-tex="\(t=\operatorname{Tr}_O(F_C;C)\)">\(t=\operatorname{Tr}_O(F_C;C)\)</span>. Termwise matrix traces reduce to those of <span class="math" data-tex="\(C_n\)">\(C_n\)</span>. The finite-ring theorem says for every <span class="math" data-tex="\(n\)">\(n\)</span></p>
+<span class="math math-display" data-tex="\[
+t\bmod\varpi^n
+=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_{O_n}
+(F_x;(\mathcal L_n)_{\bar x}).
+\tag{5.6}
+\]">\[
+t\bmod\varpi^n
+=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_{O_n}
+(F_x;(\mathcal L_n)_{\bar x}).
+\tag{5.6}
+\]</span>
+<p>The rational point set is finite. Its stalk operators are reductions of the operators on the finite free <span class="math" data-tex="\(O\)">\(O\)</span>-stalks <span class="math" data-tex="\(\mathcal L_{\bar x}\)">\(\mathcal L_{\bar x}\)</span>, so the right sides of (5.6) are reductions of their integral trace sum. Since <span class="math" data-tex="\(O\)">\(O\)</span> is separated for its <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>-adic topology, equality at every level implies</p>
+<span class="math math-display" data-tex="\[
+t=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_O(F_x;\mathcal L_{\bar x}).
+\tag{5.7}
+\]">\[
+t=\sum_{x\in X_0(k_0)}
+\operatorname{Tr}_O(F_x;\mathcal L_{\bar x}).
+\tag{5.7}
+\]</span>
+<p>Over the field <span class="math" data-tex="\(E\)">\(E\)</span>, the trace of <span class="math" data-tex="\(C\otimes_OE\)">\(C\otimes_OE\)</span> is the alternating trace on its cohomology, by Lesson 4, (2.4). This is the right side of (5.2), proving that formula and the torsion-free integral case.</p>
+<p>The proof also shows lattice independence: two integral models have the same rationalized sheaf, hence the same rationalized cohomology by Lesson 1, Theorem 7.2. All comparisons are natural for Frobenius. One may also place two lattices inside a common lattice after multiplying by a power of <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>; the intervening quotients are uniformly torsion and disappear after tensoring with <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>The integral case with torsion.</strong> For a general <span class="math" data-tex="\(\mathcal L_0\)">\(\mathcal L_0\)</span>, use its exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal T_0
+\longrightarrow\mathcal L_0
+\longrightarrow\mathcal L_{0,\mathrm{free}}
+\longrightarrow0,
+\tag{5.8}
+\]">\[
+0\longrightarrow\mathcal T_0
+\longrightarrow\mathcal L_0
+\longrightarrow\mathcal L_{0,\mathrm{free}}
+\longrightarrow0,
+\tag{5.8}
+\]</span>
+<p>where <span class="math" data-tex="\(\varpi^a\mathcal T_0=0\)">\(\varpi^a\mathcal T_0=0\)</span> for some <span class="math" data-tex="\(a\)">\(a\)</span>, and the quotient has torsion-free stalks. Lesson 1's finite-cohomology and localization arguments show that all three objects have bounded finite <span class="math" data-tex="\(O\)">\(O\)</span>-cohomology with compact support. A finite module over the discrete valuation ring <span class="math" data-tex="\(O\)">\(O\)</span> has a finite free resolution of length at most one. Resolving the finitely many cohomology modules, or applying the perfectness criterion of Lesson 1, Lemma 5.1, shows that their compact-support complexes and stalks are perfect over <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>Every endomorphism of a perfect <span class="math" data-tex="\(O\)">\(O\)</span>-complex with torsion cohomology has trace zero: after tensoring with <span class="math" data-tex="\(E\)">\(E\)</span> the complex is acyclic, so its trace is zero in <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(O\hookrightarrow E\)">\(O\hookrightarrow E\)</span> is injective. This applies to <span class="math" data-tex="\(R\Gamma_c(X,\mathcal T)\)">\(R\Gamma_c(X,\mathcal T)\)</span> and to each <span class="math" data-tex="\(\mathcal T_{\bar x}\)">\(\mathcal T_{\bar x}\)</span>. Sequence (5.8) supplies an actual Frobenius-preserved filtration. Filtered trace additivity shows that both sides for <span class="math" data-tex="\(\mathcal L_0\)">\(\mathcal L_0\)</span> equal those for its torsion-free quotient. Formula (5.7) for that quotient proves the integral assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a torsion model, ordinary finite levels need not be flat over <span class="math" data-tex="\(O_n\)">\(O_n\)</span>. For example <span class="math" data-tex="\(O/\varpi\)">\(O/\varpi\)</span> is not perfect as an <span class="math" data-tex="\(O_n\)">\(O_n\)</span>-module when <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>. One must not apply Theorem 4.1 to those levels without checking <span class="math" data-tex="\(D_{\mathrm{ctf}}\)">\(D_{\mathrm{ctf}}\)</span>. The preceding proof uses the torsion-free quotient and a perfect <span class="math" data-tex="\(O\)">\(O\)</span>-trace for the torsion part. Equivalently, a derived reduction of the perfect complex <span class="math" data-tex="\([O\xrightarrow{\varpi}O]\)">\([O\xrightarrow{\varpi}O]\)</span> uses the two-term free complex <span class="math" data-tex="\([O_n\xrightarrow{\varpi}O_n]\)">\([O_n\xrightarrow{\varpi}O_n]\)</span>; both terms are necessary.</p>
+<p>The same proof applies to bounded constructible adic complexes supplied with compatible perfect finite-level models: use their finite-level complex trace formula and the compatible-perfect-complex theorem. For an ordinary sheaf, the interval (5.1) is <span class="math" data-tex="\([0,2d]\)">\([0,2d]\)</span>; for a complex it shifts according to its coefficient cohomological degrees.</p>
+<h3 id="complete-local-coefficient-rings">Complete local coefficient rings</h3>
+<p>The modern constructible category is larger than classical flat sheaves. We make its trace statement precise. Let <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> be a commutative complete Noetherian local ring with finite residue field <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> of characteristic <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, and put <span class="math" data-tex="\(A_n=A/\mathfrak m^n\)">\(A_n=A/\mathfrak m^n\)</span>. In <a href="the-pro-etale-site-and-l-adic-complexes.html">Lesson 2</a>, §6, <span class="math" data-tex="\(D_{\mathrm{cons}}(X_0,\widehat A)\)">\(D_{\mathrm{cons}}(X_0,\widehat A)\)</span> consists of derived <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-complete pro-étale complexes whose derived residue-field reduction is a bounded constructible finite-Tor étale complex. Its completed pullback to a geometric point is the derived limit of its finite reductions. A finite ordinary stalk need not itself belong to this category when <span class="math" data-tex="\(A\)">\(A\)</span> is singular.</p>
+<p><strong>Theorem 5.2.</strong> For <span class="math" data-tex="\(K_0\)">\(K_0\)</span> in this category, define the completed compact-support complex by</p>
+<span class="math math-display" data-tex="\[
+C=R\varprojlim_n R\Gamma_c(X,K_n),\qquad
+K_n=K\otimes_A^{\mathbf L}A_n.
+\tag{5.9}
+\]">\[
+C=R\varprojlim_n R\Gamma_c(X,K_n),\qquad
+K_n=K\otimes_A^{\mathbf L}A_n.
+\tag{5.9}
+\]</span>
+<p>Then <span class="math" data-tex="\(C\)">\(C\)</span> and each completed geometric stalk <span class="math" data-tex="\(K_{\bar x}\)">\(K_{\bar x}\)</span> are perfect over <span class="math" data-tex="\(A\)">\(A\)</span>. The Frobenius correspondence gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_A(F_X^*;C)
+=\sum_{x\in X_0(k_0)}\operatorname{Tr}_A(F_x;K_{\bar x})
+\quad\text{in }A.
+\tag{5.10}
+\]">\[
+\operatorname{Tr}_A(F_X^*;C)
+=\sum_{x\in X_0(k_0)}\operatorname{Tr}_A(F_x;K_{\bar x})
+\quad\text{in }A.
+\tag{5.10}
+\]</span>
+<p>If the residue-field reduction has Tor amplitude <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, <span class="math" data-tex="\(C\)">\(C\)</span> has Tor amplitude <span class="math" data-tex="\([a,b+2\dim X]\)">\([a,b+2\dim X]\)</span>. No assumption that the rings <span class="math" data-tex="\(A_n\)">\(A_n\)</span> are perfect as <span class="math" data-tex="\(A\)">\(A\)</span>-modules is required. The completed <span class="math" data-tex="\(Rf_!K\)">\(Rf_!K\)</span> preserves this constructible category and commutes with arbitrary completed base change for separated finite-type <span class="math" data-tex="\(f\)">\(f\)</span> between the schemes in §1.</p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(A_n\)">\(A_n\)</span> is finite: its successive <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-power layers are finite-dimensional over the finite field <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, by Noetherianity. Also <span class="math" data-tex="\(\ell^n A_n=0\)">\(\ell^n A_n=0\)</span>. Filtering any <span class="math" data-tex="\(A_n\)">\(A_n\)</span>-module by its <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>-powers and using associativity of derived tensor on the <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-module layers gives the common Tor interval <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> for every <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. The coefficient filtration has finite <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>-module layers; its triangles and the constructible Serre-category property give bounded constructible cohomology for every <span class="math" data-tex="\(K_n\)">\(K_n\)</span>. These are the explicit reduction arguments in Lesson 2, §6.</p>
+<p>Put <span class="math" data-tex="\(C_n=R\Gamma_c(X,K_n)\)">\(C_n=R\Gamma_c(X,K_n)\)</span>. Theorem 4.1 makes <span class="math" data-tex="\(C_n\)">\(C_n\)</span> perfect and gives its trace formula. Scalar extension, with its coefficient-ring action retained, gives</p>
+<span class="math math-display" data-tex="\[
+C_{n+1}\otimes_{A_{n+1}}^{\mathbf L}A_n\simeq C_n.
+\tag{5.11}
+\]">\[
+C_{n+1}\otimes_{A_{n+1}}^{\mathbf L}A_n\simeq C_n.
+\tag{5.11}
+\]</span>
+<p>The maps commute with Frobenius by §2 and the natural projection maps. Lesson 4 gives their common Tor interval <span class="math" data-tex="\([a,b+2\dim X]\)">\([a,b+2\dim X]\)</span>.</p>
+<p>Here is the compatible-perfect-complex argument for these coefficient rings. Over the local Artinian ring <span class="math" data-tex="\(A_n\)">\(A_n\)</span>, choose a bounded finite free model <span class="math" data-tex="\(P_n\)">\(P_n\)</span> for <span class="math" data-tex="\(C_n\)">\(C_n\)</span>. When a differential has a unit entry, elementary row and column operations split off a contractible rank-one pair. Removing such pairs leaves a minimal complex: every differential entry is in <span class="math" data-tex="\(\mathfrak m A_n\)">\(\mathfrak m A_n\)</span>. A homotopy equivalence between minimal complexes is a degreewise isomorphism, because after reduction to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> both differentials and homotopies are zero; its two maps are inverse degreewise there, and a square matrix invertible modulo the maximal ideal is invertible over the local ring. Derived isomorphisms of bounded projective complexes are such homotopy equivalences. Hence (5.11) is represented by a degreewise isomorphism <span class="math" data-tex="\(P_{n+1}/\mathfrak m^n\simeq P_n\)">\(P_{n+1}/\mathfrak m^n\simeq P_n\)</span>. All ranks and the finite degree range are those of <span class="math" data-tex="\(P_1\)">\(P_1\)</span>. Its nonzero degrees lie in the stated Tor interval, since minimal reduction has zero differential.</p>
+<p>Lift compatible bases successively. The transition maps become coordinate reduction, so</p>
+<span class="math math-display" data-tex="\[
+P=\varprojlim_nP_n
+\]">\[
+P=\varprojlim_nP_n
+\]</span>
+<p>is a bounded finite free <span class="math" data-tex="\(A\)">\(A\)</span>-complex, and <span class="math" data-tex="\(P/\mathfrak m^nP=P_n\)">\(P/\mathfrak m^nP=P_n\)</span>. Represent Frobenius by chain maps <span class="math" data-tex="\(u_n\)">\(u_n\)</span>. Having chosen <span class="math" data-tex="\(u_n\)">\(u_n\)</span>, choose any representative <span class="math" data-tex="\(v_{n+1}\)">\(v_{n+1}\)</span> of the next derived operator. Compatibility says</p>
+<span class="math math-display" data-tex="\[
+u_n-(v_{n+1}\bmod\mathfrak m^n)=dh+hd.
+\tag{5.11a}
+\]">\[
+u_n-(v_{n+1}\bmod\mathfrak m^n)=dh+hd.
+\tag{5.11a}
+\]</span>
+<p>Lift every matrix entry of <span class="math" data-tex="\(h\)">\(h\)</span> to level <span class="math" data-tex="\(n+1\)">\(n+1\)</span> and set <span class="math" data-tex="\(u_{n+1}=v_{n+1}+d\widetilde h+\widetilde h d\)">\(u_{n+1}=v_{n+1}+d\widetilde h+\widetilde h d\)</span>. This changes no derived operator and makes the square commute strictly, with precisely the sign in (5.11a). Induction gives a chain map <span class="math" data-tex="\(u:P\to P\)">\(u:P\to P\)</span>.</p>
+<p>The term towers are onto, and their cycles, boundaries and cohomology at each level are finite groups. These towers are Mittag–Leffler. The product description of derived limit, or the finite-system exactness proof of Lesson 1, Theorem 6.1, therefore gives</p>
+<span class="math math-display" data-tex="\[
+R\varprojlim C_n\simeq P,
+\qquad H^i(P)=\varprojlim H^i(C_n).
+\tag{5.12}
+\]">\[
+R\varprojlim C_n\simeq P,
+\qquad H^i(P)=\varprojlim H^i(C_n).
+\tag{5.12}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(1-\mathrm{shift}\)">\(1-\mathrm{shift}\)</span> is onto on the term products by successive lifting; its resulting cohomology sequence has kernel <span class="math" data-tex="\(\varprojlim H^i\)">\(\varprojlim H^i\)</span> and cokernel <span class="math" data-tex="\(\varprojlim{}^1H^{i-1}=0\)">\(\varprojlim{}^1H^{i-1}=0\)</span>. This proves (5.12), perfectness and the Tor bound. The identical argument for the compatible perfect stalk complexes proves stalk perfectness and lifts their operators.</p>
+<p>Termwise matrix trace reduces to the perfect trace of every <span class="math" data-tex="\(C_n\)">\(C_n\)</span> and every stalk reduction. The finite-level trace formula therefore reduces (5.10) to zero modulo every <span class="math" data-tex="\(\mathfrak m^n\)">\(\mathfrak m^n\)</span>. The rational point set is finite, so the local trace sum reduces termwise. Completeness includes separation, <span class="math" data-tex="\(A=\varprojlim A_n\)">\(A=\varprojlim A_n\)</span>, and proves (5.10).</p>
+<p>Finally Lemma 3.1 puts <span class="math" data-tex="\(Rf_!K_n\)">\(Rf_!K_n\)</span> in <span class="math" data-tex="\(D_{\mathrm{ctf}}(Y,A_n)\)">\(D_{\mathrm{ctf}}(Y,A_n)\)</span> with common interval <span class="math" data-tex="\([a,b+2c]\)">\([a,b+2c]\)</span> for a fibre bound <span class="math" data-tex="\(c\)">\(c\)</span>. Scalar extension gives a coherent compatible system. Lesson 2, §6, reconstructs its derived complete constructible object and proves that it is the compactification-defined completed <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span>; its reduction is exactly <span class="math" data-tex="\(Rf_!K_n\)">\(Rf_!K_n\)</span>. Finite-level arbitrary base change from §1 commutes with these scalar maps and all iterated base changes. Taking the coherent derived limit gives the completed base-change map and its isomorphism, with the same Frobenius compatibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example <span class="math" data-tex="\(A=\mathbf Z_\ell[\epsilon]/(\epsilon^2)\)">\(A=\mathbf Z_\ell[\epsilon]/(\epsilon^2)\)</span>, with <span class="math" data-tex="\(\mathfrak m=(\ell,\epsilon)\)">\(\mathfrak m=(\ell,\epsilon)\)</span>, is permitted. Its residue field has infinite projective dimension over <span class="math" data-tex="\(A\)">\(A\)</span>, as shown in Lesson 2, §6. Nevertheless constant <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> has a free coefficient model and satisfies (5.10). On <span class="math" data-tex="\(\mathbf A^2\)">\(\mathbf A^2\)</span>, its compact complex is <span class="math" data-tex="\(A(-2)[-4]\)">\(A(-2)[-4]\)</span>, obtained by the compatible finite-level affine-space calculation, and its trace is <span class="math" data-tex="\(q^2\in A\)">\(q^2\in A\)</span>. This illustrates why the theorem requires derived constructible coefficients rather than perfection of the quotient rings. It also explains why an alternating trace on arbitrary nonprojective <span class="math" data-tex="\(A\)">\(A\)</span>-cohomology modules cannot replace the perfect-complex trace.</p>
+<p><strong>Corollary 5.3 (local rational lattices).</strong> Let <span class="math" data-tex="\(E/\mathbf Q_\ell\)">\(E/\mathbf Q_\ell\)</span> be finite with <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, and let <span class="math" data-tex="\(K_0\)">\(K_0\)</span> be a bounded constructible pro-étale <span class="math" data-tex="\(\widehat E\)">\(\widehat E\)</span>-complex: on finitely many locally closed strata its cohomology sheaves are finite-rank <span class="math" data-tex="\(E\)">\(E\)</span>-local systems in the sense of Lesson 2, §7. Its compact-support cohomology is finite-dimensional, and the trace formula holds with the alternating cohomology trace in <span class="math" data-tex="\(E\)">\(E\)</span>. A global integral lattice on <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is unnecessary.</p>
+<p><strong>Proof.</strong> Refine the finitely many coefficient strata to smooth connected locally closed <span class="math" data-tex="\(k_0\)">\(k_0\)</span>-schemes. Such a finite refinement exists: over the perfect field <span class="math" data-tex="\(k_0\)">\(k_0\)</span>, each reduced irreducible component has a dense smooth open; first remove its intersections with other components, then repeat on the closed complement. Dimension drops at every repetition. Nilpotents do not change the sites.</p>
+<p>Each smooth connected stratum is geometrically unibranch. Lesson 2, Corollary 7.11, identifies its pro-étale local-system representation with a representation of its profinite étale fundamental group and supplies a global integral lattice. Explicitly the continuous image in <span class="math" data-tex="\(\mathrm{GL}_r(E)\)">\(\mathrm{GL}_r(E)\)</span> is compact, so the orbit of a chosen basis lattice is bounded. The sum of its translates lies between that lattice and a fixed multiple <span class="math" data-tex="\(\varpi^{-a}O^r\)">\(\varpi^{-a}O^r\)</span>; it is a finite <span class="math" data-tex="\(O\)">\(O\)</span>-module, is torsion-free, spans <span class="math" data-tex="\(E^r\)">\(E^r\)</span>, and is invariant. This gives the required lattice on the stratum.</p>
+<p>Theorem 5.1 proves the finite-dimensional compact-support and trace assertions for each of these cohomology local systems. Their finite truncation filtration proves the assertion for the restricted complex, with the degree signs. Arrange the strata as successive opens in closed remainders; the preceding dimension induction constructs such an ordering. Repeated compact-support localization gives bounded finite cohomology for <span class="math" data-tex="\(K\)">\(K\)</span> and the global trace as the sum of the stratum traces. The actual support and truncation filtrations are Frobenius-preserved, so their trace additivity also sums the local stalk traces. This is the desired formula. It concerns the usual completed compact-support operation with its localization maps from Lesson 2; it does not identify <span class="math" data-tex="\(\widehat E\)">\(\widehat E\)</span> with the discrete constant <span class="math" data-tex="\(E\)">\(E\)</span>-sheaf. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Lesson 2's nodal example shows that a rational local system may lack a global lattice on a singular scheme. Corollary 5.3 handles it by strata.</p>
+<p><strong>Corollary 5.4 (algebraic rational coefficients).</strong> The conclusion of Corollary 5.3 also holds for an algebraic extension <span class="math" data-tex="\(L/\mathbf Q_\ell\)">\(L/\mathbf Q_\ell\)</span>, including <span class="math" data-tex="\(\overline{\mathbf Q}_\ell\)">\(\overline{\mathbf Q}_\ell\)</span>, with the final coefficient topology of Lesson 2. Constructible means bounded cohomology which, on finitely many locally closed strata, consists of finite-rank local systems over the coefficient sheaf <span class="math" data-tex="\(L_X\)">\(L_X\)</span> of that lesson.</p>
+<p><strong>Proof.</strong> Use the smooth finite stratification of Corollary 5.3. Each stratum is quasi-compact and quasi-separated. Lesson 2, Proposition 7.12, therefore descends each of its finitely many cohomology local systems to a finite subextension of <span class="math" data-tex="\(L\)">\(L\)</span>. Enlarge these finitely many fields to one finite extension <span class="math" data-tex="\(E\subset L\)">\(E\subset L\)</span>. On a stratum each local system is then the scalar extension of an <span class="math" data-tex="\(E\)">\(E\)</span>-local system with a global integral lattice. Theorem 5.1 gives its bounded finite-dimensional compact-support complex.</p>
+<p>The coefficient sheaf <span class="math" data-tex="\(L_X\)">\(L_X\)</span> is the filtered colimit of the finite-extension coefficient sheaves: on a quasi-compact w-contractible object this follows from the finite-stage property for continuous functions on its compact component space, proved in Lesson 2, Lemma 7.6f. Here is the compact-support comparison with this colimit. Choose a proper compactification of the stratum. The qcqs pro-étale basis has finite covering refinements, so filtered colimits of sheaves are evaluated sectionwise on its qcqs objects. Construct an affine w-contractible hypercover of the compactification with finitely many pieces in each degree: every matching object is qcqs, and Lesson 2's affine-cover theorem supplies finitely many such pieces. Its augmented free sheaf chain complex is exact. Indeed a finite chain cycle can be filled locally, degree by degree, by lifting the finitely many matching simplices along the covering maps. Apply Hom into an injective resolution; the first-quadrant double-complex comparison then gives the usual hypercover cohomology spectral sequence. Sections on the w-contractible pieces are exact by Lesson 2, §2, so its positive vertical rows vanish. The hypercover cochains therefore compute derived sections of the extension-by-zero sheaf.</p>
+<p>Filtered colimits commute with those cochains and their cohomology. For any finite extension <span class="math" data-tex="\(E&#x27;/E\)">\(E&#x27;/E\)</span>, tensor with <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span> is a finite direct sum after choosing a basis, so compact-support coefficient extension commutes with it. Pass to the filtered colimit over these <span class="math" data-tex="\(E&#x27;\)">\(E&#x27;\)</span>. Open extension by zero commutes with that extension, as is checked on its open part and its zero boundary stalks. The resulting compact-support complex is the finite <span class="math" data-tex="\(E\)">\(E\)</span>-cohomology complex tensored with <span class="math" data-tex="\(L\)">\(L\)</span>. Its <span class="math" data-tex="\(L\)">\(L\)</span>-cohomology is finite-dimensional, and its alternating trace is the image of its <span class="math" data-tex="\(E\)">\(E\)</span>-trace. The same extension applies to every local stalk operator.</p>
+<p>Apply the finite truncation and support filtrations from Corollary 5.3. Their Frobenius-preserved graded pieces have the trace formula just proved, so additivity proves it for <span class="math" data-tex="\(K\)">\(K\)</span>. This argument does not require the extension maps of the entire complex to descend to <span class="math" data-tex="\(E\)">\(E\)</span>, or a global integral lattice on the singular scheme. The topology is the stated final topology, with its finite-stage compactness; the assertion makes no replacement by a discrete constant coefficient sheaf. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-all-powers-and-two-families-of-examples">6. All powers and two families of examples</h2>
+<p>Apply Theorems 4.1 and 5.1 to <span class="math" data-tex="\(X_0\times_{k_0}\mathbf F_{q^r}\)">\(X_0\times_{k_0}\mathbf F_{q^r}\)</span>. Its geometric space is <span class="math" data-tex="\(X\)">\(X\)</span>, and its Frobenius is <span class="math" data-tex="\(F_X^r\)">\(F_X^r\)</span>, with the iterated coefficient map. Thus</p>
+<span class="math math-display" data-tex="\[
+\sum_{x\in X_0(\mathbf F_{q^r})}
+\operatorname{Tr}(F_X^{r*};K_x)
+=\operatorname{Tr}(F_X^{r*};R\Gamma_c(X,K)).
+\tag{6.1}
+\]">\[
+\sum_{x\in X_0(\mathbf F_{q^r})}
+\operatorname{Tr}(F_X^{r*};K_x)
+=\operatorname{Tr}(F_X^{r*};R\Gamma_c(X,K)).
+\tag{6.1}
+\]</span>
+<p>Use the alternating cohomology trace on the right for <span class="math" data-tex="\(E\)">\(E\)</span>-coefficients. For a closed point of degree <span class="math" data-tex="\(d\mid r\)">\(d\mid r\)</span>, the contribution is <span class="math" data-tex="\(d\operatorname{Tr}(F_x^{r/d};K_{\bar x})\)">\(d\operatorname{Tr}(F_x^{r/d};K_{\bar x})\)</span>. The <span class="math" data-tex="\(d\)">\(d\)</span> geometric points have conjugate operators, as proved in Lesson 3. This explains the exponent and multiplicity in the later Euler product.</p>
+<p><strong>Affine space.</strong> The compact-support Künneth formula and
+<span class="math" data-tex="\(R\Gamma_c(\mathbf A^1,E)=E(-1)[-2]\)">\(R\Gamma_c(\mathbf A^1,E)=E(-1)[-2]\)</span> give</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(\mathbf A^n,E)=E(-n)[-2n].
+\tag{6.2}
+\]">\[
+R\Gamma_c(\mathbf A^n,E)=E(-n)[-2n].
+\tag{6.2}
+\]</span>
+<p>Geometric Frobenius acts on <span class="math" data-tex="\(E(-n)\)">\(E(-n)\)</span> by <span class="math" data-tex="\(q^n\)">\(q^n\)</span>, so (6.1) reads
+<span class="math" data-tex="\(\#\mathbf A^n(\mathbf F_{q^r})=q^{rn}\)">\(\#\mathbf A^n(\mathbf F_{q^r})=q^{rn}\)</span>. This includes <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p><strong>Grassmannians and flag varieties.</strong> Here are the cell geometry and counts. Write <span class="math" data-tex="\(F_j=\langle e_1,\ldots,e_j\rangle\)">\(F_j=\langle e_1,\ldots,e_j\rangle\)</span> in <span class="math" data-tex="\(k_0^n\)">\(k_0^n\)</span>. An <span class="math" data-tex="\(m\)">\(m\)</span>-plane has jump positions <span class="math" data-tex="\(J=(j_1&lt;\cdots&lt;j_m)\)">\(J=(j_1&lt;\cdots&lt;j_m)\)</span> for <span class="math" data-tex="\(\dim(V\cap F_j)\)">\(\dim(V\cap F_j)\)</span>. It has a unique ordered echelon basis</p>
+<span class="math math-display" data-tex="\[
+v_i=e_{j_i}+\sum_{\substack{a&lt;j_i\\ a\notin\{j_1,\ldots,j_m\}}}c_{ia}e_a.
+\tag{6.2a}
+\]">\[
+v_i=e_{j_i}+\sum_{\substack{a&lt;j_i\\ a\notin\{j_1,\ldots,j_m\}}}c_{ia}e_a.
+\tag{6.2a}
+\]</span>
+<p>To obtain it, choose in <span class="math" data-tex="\(V\cap F_{j_i}\)">\(V\cap F_{j_i}\)</span> a vector with coefficient one at <span class="math" data-tex="\(e_{j_i}\)">\(e_{j_i}\)</span>, and subtract the earlier basis vectors to kill their pivot entries. The remaining coefficients are unrestricted; two such normalized bases differ by a triangular combination whose pivot entries force every coefficient to be zero. There are <span class="math" data-tex="\(j_i-i\)">\(j_i-i\)</span> free entries in row <span class="math" data-tex="\(i\)">\(i\)</span>, so these planes form a cell <span class="math" data-tex="\(\mathbf A^{a_J}\)">\(\mathbf A^{a_J}\)</span>, where <span class="math" data-tex="\(a_J=\sum_i(j_i-i)\)">\(a_J=\sum_i(j_i-i)\)</span>. On the Grassmannian pivot chart this construction and its inverse are polynomial: the pivot submatrix is the identity, and the plane is the row span of the displayed matrix. Thus it is an isomorphism of schemes, defined over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>, rather than only a bijection of points.</p>
+<p>The inequalities <span class="math" data-tex="\(\dim(V\cap F_{j_i})\geq i\)">\(\dim(V\cap F_{j_i})\geq i\)</span> are closed determinantal conditions. Their common locus is exactly the union of cells with pivots <span class="math" data-tex="\(t_i\leq j_i\)">\(t_i\leq j_i\)</span>: the echelon basis reads off those dimensions. Any downward-closed set of pivot tuples is a finite union of these closed loci, one for each of its maximal tuples. A linear ordering extending componentwise order consequently gives a closed filtration whose successive open pieces are precisely the cells. Localization and (6.2) now prove that cohomology is zero in odd degrees and that</p>
+<span class="math math-display" data-tex="\[
+\dim_EH^{2i}(\operatorname{Gr}(m,n)_k,E)=b_{2i},
+\quad
+\det(T-F^*;H^{2i})=(T-q^i)^{b_{2i}},
+\tag{6.3}
+\]">\[
+\dim_EH^{2i}(\operatorname{Gr}(m,n)_k,E)=b_{2i},
+\quad
+\det(T-F^*;H^{2i})=(T-q^i)^{b_{2i}},
+\tag{6.3}
+\]</span>
+<p>where <span class="math" data-tex="\(b_{2i}\)">\(b_{2i}\)</span> is the number of cells of dimension <span class="math" data-tex="\(i\)">\(i\)</span>. To see the induction, a cell has compact-support cohomology only in its even degree <span class="math" data-tex="\(2a\)">\(2a\)</span>. In the localization long exact sequence, the odd groups on both sides vanish; the even groups are short exact extensions of the previous groups by this single Tate module. The sequence is Frobenius-equivariant, so characteristic polynomials multiply. Properness identifies compact-support and ordinary cohomology. This argument determines traces without assuming that the extensions split as Frobenius representations; their semisimplifications are <span class="math" data-tex="\(E(-i)^{b_{2i}}\)">\(E(-i)^{b_{2i}}\)</span>.</p>
+<p>Formula (6.1) therefore gives</p>
+<span class="math math-display" data-tex="\[
+\#\operatorname{Gr}(m,n)(\mathbf F_{q^r})
+=\sum_i b_{2i}q^{ri}
+=\binom{n}{m}_{q^r},
+\tag{6.4}
+\]">\[
+\#\operatorname{Gr}(m,n)(\mathbf F_{q^r})
+=\sum_i b_{2i}q^{ri}
+=\binom{n}{m}_{q^r},
+\tag{6.4}
+\]</span>
+<p>where the polynomial is also obtained directly by counting each affine cell. To identify the last notation independently, put <span class="math" data-tex="\(Q=q^r\)">\(Q=q^r\)</span> and <span class="math" data-tex="\(C_{m,n}(Q)=\sum_JQ^{a_J}\)">\(C_{m,n}(Q)=\sum_JQ^{a_J}\)</span>. Splitting pivot tuples according to whether <span class="math" data-tex="\(j_m=n\)">\(j_m=n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+C_{m,n}=C_{m,n-1}+Q^{n-m}C_{m-1,n-1},
+\qquad C_{0,n}=C_{n,n}=1.
+\tag{6.5}
+\]">\[
+C_{m,n}=C_{m,n-1}+Q^{n-m}C_{m-1,n-1},
+\qquad C_{0,n}=C_{n,n}=1.
+\tag{6.5}
+\]</span>
+<p>The product <span class="math" data-tex="\(\prod_{i=1}^m(Q^{n-m+i}-1)/(Q^i-1)\)">\(\prod_{i=1}^m(Q^{n-m+i}-1)/(Q^i-1)\)</span> satisfies the same recurrence: after division by that product the two terms have respective factors <span class="math" data-tex="\((Q^{n-m}-1)/(Q^n-1)\)">\((Q^{n-m}-1)/(Q^n-1)\)</span> and <span class="math" data-tex="\(Q^{n-m}(Q^m-1)/(Q^n-1)\)">\(Q^{n-m}(Q^m-1)/(Q^n-1)\)</span>, whose sum is one. Induction identifies it with <span class="math" data-tex="\(C_{m,n}\)">\(C_{m,n}\)</span>, the Gaussian binomial in (6.4). For <span class="math" data-tex="\(\operatorname{Gr}(2,4)\)">\(\operatorname{Gr}(2,4)\)</span> the cell dimensions are <span class="math" data-tex="\(0,1,2,2,3,4\)">\(0,1,2,2,3,4\)</span>, giving <span class="math" data-tex="\(1+Q+2Q^2+Q^3+Q^4\)">\(1+Q+2Q^2+Q^3+Q^4\)</span>.</p>
+<p>For complete flags project to the first line. The base <span class="math" data-tex="\(\mathbf P^{n-1}\)">\(\mathbf P^{n-1}\)</span> has the closed coordinate filtration with pieces <span class="math" data-tex="\(\mathbf A^i\)">\(\mathbf A^i\)</span>, <span class="math" data-tex="\(0\leq i&lt;n\)">\(0\leq i&lt;n\)</span>. On a line's pivot cell its normalized vector is <span class="math" data-tex="\(e_j+\sum_{a&lt;j}c_ae_a\)">\(e_j+\sum_{a&lt;j}c_ae_a\)</span>; the coordinate vectors other than <span class="math" data-tex="\(e_j\)">\(e_j\)</span> give a basis of the quotient by that line, algebraically in the <span class="math" data-tex="\(c_a\)">\(c_a\)</span>. Thus above this cell the flag projection is the product with the flag variety of an <span class="math" data-tex="\((n-1)\)">\((n-1)\)</span>-dimensional space. Induction gives affine pieces of dimensions <span class="math" data-tex="\(i+a\)">\(i+a\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> ranges through the previous flag cells. They admit a closed filtration: within the preimage of each closed base stage, first retain the preimage of the previous stage, then the successive closed fibre stages over its open cell. The complement of each such union is open in that open cell, hence open in the closed base stage. All constructions are over <span class="math" data-tex="\(k_0\)">\(k_0\)</span>. The flag variety is proper, being the closed incidence locus in the product of the relevant Grassmannians. The same localization proof therefore yields only even cohomology with Tate characteristic polynomials and point-count polynomial</p>
+<span class="math math-display" data-tex="\[
+\prod_{j=1}^n(1+Q+\cdots+Q^{j-1})=[n]_Q!.
+\tag{6.6}
+\]">\[
+\prod_{j=1}^n(1+Q+\cdots+Q^{j-1})=[n]_Q!.
+\tag{6.6}
+\]</span>
+<p>These arguments supply the geometry, counts and cohomological interpretation within this lesson.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 7.1 (easy: affine and projective spaces).</strong> Verify the trace formula for <span class="math" data-tex="\(\mathbf A^n\)">\(\mathbf A^n\)</span> and <span class="math" data-tex="\(\mathbf P^n\)">\(\mathbf P^n\)</span>, with constant <span class="math" data-tex="\(E\)">\(E\)</span>-coefficients and all powers of Frobenius.</p>
+<p><strong>Solution.</strong> For affine space use (6.2), obtained at finite levels from <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps</a>, Proposition 14.1 and its proof, and passed to <span class="math" data-tex="\(E\)">\(E\)</span> by §5. Its only contribution is the even-degree trace <span class="math" data-tex="\(q^{rn}\)">\(q^{rn}\)</span>. The same proposition gives <span class="math" data-tex="\(H^{2i}(\mathbf P^n,E)=E(-i)\)">\(H^{2i}(\mathbf P^n,E)=E(-i)\)</span>, <span class="math" data-tex="\(0\leq i\leq n\)">\(0\leq i\leq n\)</span>, and zero odd cohomology, with the hyperplane powers as generators. Frobenius to the <span class="math" data-tex="\(r\)">\(r\)</span>-th power acts by <span class="math" data-tex="\(q^{ri}\)">\(q^{ri}\)</span>, so its alternating trace is <span class="math" data-tex="\(\sum_{i=0}^nq^{ri}\)">\(\sum_{i=0}^nq^{ri}\)</span>. Independently, projective points over <span class="math" data-tex="\(\mathbf F_Q\)">\(\mathbf F_Q\)</span> are lines in <span class="math" data-tex="\(\mathbf F_Q^{n+1}\)">\(\mathbf F_Q^{n+1}\)</span>: its <span class="math" data-tex="\(Q^{n+1}-1\)">\(Q^{n+1}-1\)</span> nonzero vectors partition into sets of <span class="math" data-tex="\(Q-1\)">\(Q-1\)</span> on each line. Hence the count is <span class="math" data-tex="\((Q^{n+1}-1)/(Q-1)=\sum_{i=0}^nQ^i\)">\((Q^{n+1}-1)/(Q-1)=\sum_{i=0}^nQ^i\)</span>, with <span class="math" data-tex="\(Q=q^r\)">\(Q=q^r\)</span>. Affine space has <span class="math" data-tex="\(Q^n\)">\(Q^n\)</span> points by its coordinate tuples. In both cases the local coefficient trace is <span class="math" data-tex="\(1\)">\(1\)</span> at each rational point.</p>
+<p><strong>Exercise 7.2 (medium: the proper compatibility).</strong> Prove the Frobenius assertion of Lemma 2.1 when <span class="math" data-tex="\(f_0\)">\(f_0\)</span> is proper, explaining which comparison carries the operator.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(Rf_!=Rf_*\)">\(Rf_!=Rf_*\)</span>. Form <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>, <span class="math" data-tex="\(a,f&#x27;,h\)">\(a,f&#x27;,h\)</span> as in (2.3). Proper base change identifies <span class="math" data-tex="\(F_Y^{-1}Rf_*K\)">\(F_Y^{-1}Rf_*K\)</span> with <span class="math" data-tex="\(Rf&#x27;_*a^{-1}K\)">\(Rf&#x27;_*a^{-1}K\)</span>. The finite universal-homeomorphism equivalence identifies the latter with <span class="math" data-tex="\(Rf_*F_X^{-1}K\)">\(Rf_*F_X^{-1}K\)</span>. Composing with <span class="math" data-tex="\(Rf_*c_X\)">\(Rf_*c_X\)</span> gives the operator on the direct image. Its comparison with the descended operator follows either on étale charts and their resolutions, as in the proof, or by observing that these adjunction maps commute with arithmetic <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and using <span class="math" data-tex="\(F^*=\rho(\sigma)^{-1}\)">\(F^*=\rho(\sigma)^{-1}\)</span>. Stalk base change at a rational <span class="math" data-tex="\(y\)">\(y\)</span> commutes with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, so it transports the inverse arithmetic operator to the fibre cohomology. This identifies both the map and its direction.</p>
+<p><strong>Exercise 7.3 (medium: every Frobenius power).</strong> Deduce the formula for <span class="math" data-tex="\(F^r\)">\(F^r\)</span>, and reorganize it by closed points.</p>
+<p><strong>Solution.</strong> Base change to <span class="math" data-tex="\(\mathbf F_{q^r}\)">\(\mathbf F_{q^r}\)</span> in Theorem 4.1 or 5.1; its scheme Frobenius and coefficient map are the <span class="math" data-tex="\(r\)">\(r\)</span>-fold iterates. A degree-<span class="math" data-tex="\(d\)">\(d\)</span> closed point acquires rational geometric points precisely when <span class="math" data-tex="\(d\mid r\)">\(d\mid r\)</span>. It then gives <span class="math" data-tex="\(d\)">\(d\)</span> points and the conjugate local maps <span class="math" data-tex="\(F_x^{r/d}\)">\(F_x^{r/d}\)</span>. Consequently the formula reads</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(F_X^{r*};R\Gamma_c(X,K))
+=\sum_{d\mid r}d
+\sum_{\substack{x\in|X_0|\\\deg x=d}}
+\operatorname{Tr}(F_x^{r/d};K_{\bar x}).
+\tag{7.1}
+\]">\[
+\operatorname{Tr}(F_X^{r*};R\Gamma_c(X,K))
+=\sum_{d\mid r}d
+\sum_{\substack{x\in|X_0|\\\deg x=d}}
+\operatorname{Tr}(F_x^{r/d};K_{\bar x}).
+\tag{7.1}
+\]</span>
+<p>All sums for a fixed <span class="math" data-tex="\(r\)">\(r\)</span> are finite. This is the closed-point trace identity, not an assertion that a degree-<span class="math" data-tex="\(d\)">\(d\)</span> point contributes for every <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p><strong>Exercise 7.4 (medium: top compact-support cohomology).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be nonempty and <span class="math" data-tex="\(\dim X=d\geq0\)">\(\dim X=d\geq0\)</span>. Prove <span class="math" data-tex="\(H_c^i(X,E)=0\)">\(H_c^i(X,E)=0\)</span> for <span class="math" data-tex="\(i&gt;2d\)">\(i&gt;2d\)</span> and
+<span class="math math-display" data-tex="\[
+\dim_EH_c^{2d}(X,E)=
+\#\{\text{irreducible components of }X\text{ of dimension }d\}.
+\tag{7.2}
+\]">\[
+\dim_EH_c^{2d}(X,E)=
+\#\{\text{irreducible components of }X\text{ of dimension }d\}.
+\tag{7.2}
+\]</span>
+Explain why the components are those of the geometric scheme <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Solution.</strong> Vanishing is (5.1). Reduction does not change the étale topos. Remove the intersections of the top-dimensional components, their nonsmooth loci, and all smaller-dimensional components. Over the perfect field <span class="math" data-tex="\(k\)">\(k\)</span>, this leaves a disjoint union <span class="math" data-tex="\(U=\coprod U_j\)">\(U=\coprod U_j\)</span> of smooth connected <span class="math" data-tex="\(d\)">\(d\)</span>-dimensional schemes, one dense open in each top component. The complement <span class="math" data-tex="\(Z\)">\(Z\)</span> has dimension at most <span class="math" data-tex="\(d-1\)">\(d-1\)</span>.</p>
+<p>For <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>, localization has the exact segment
+<span class="math math-display" data-tex="\[
+H_c^{2d-1}(Z,E)\longrightarrow H_c^{2d}(U,E)
+\longrightarrow H_c^{2d}(X,E)
+\longrightarrow H_c^{2d}(Z,E).
+\]">\[
+H_c^{2d-1}(Z,E)\longrightarrow H_c^{2d}(U,E)
+\longrightarrow H_c^{2d}(X,E)
+\longrightarrow H_c^{2d}(Z,E).
+\]</span>
+The outside groups vanish, since their degrees exceed <span class="math" data-tex="\(2(d-1)\)">\(2(d-1)\)</span>. Smooth Poincaré duality with its trace map gives
+<span class="math" data-tex="\(H_c^{2d}(U_j,E)=E(-d)\)">\(H_c^{2d}(U_j,E)=E(-d)\)</span>, dual to <span class="math" data-tex="\(H^0(U_j,E)=E\)">\(H^0(U_j,E)=E\)</span>.
+The finite-level trace isomorphism is proved in <a href="support/AG-LTF--smooth-trace-and-duality.html">Smooth traces, duality and Gysin maps</a>, Corollary 10.2. Its compatible trace maps pass to <span class="math" data-tex="\(O\)">\(O\)</span>, then <span class="math" data-tex="\(E\)">\(E\)</span>, by §5; no properness of <span class="math" data-tex="\(U_j\)">\(U_j\)</span> is required. Taking the direct sum proves (7.2). For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, use the finite geometric-point calculation of Lesson 6 directly.</p>
+<p>For example <span class="math" data-tex="\(X_0=\operatorname{Spec}\mathbf F_{q^2}\times\mathbf A^d\)">\(X_0=\operatorname{Spec}\mathbf F_{q^2}\times\mathbf A^d\)</span> is irreducible over <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, but <span class="math" data-tex="\(X\)">\(X\)</span> has two components and its top cohomology has dimension two. Frobenius interchanges their generators and multiplies by <span class="math" data-tex="\(q^d\)">\(q^d\)</span>, so its first-power top trace is zero. This agrees with the absence of <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-points.</p>
+<p><strong>Exercise 7.5 (hard: a surface with a singular fibre).</strong> Carry out the reduction for
+<span class="math math-display" data-tex="\[
+X_0=\{(x,y,t):xy=t\}\subset\mathbf A^3,\qquad
+f_0:X_0\to\mathbf A^1,\quad(x,y,t)\mapsto t.
+\]">\[
+X_0=\{(x,y,t):xy=t\}\subset\mathbf A^3,\qquad
+f_0:X_0\to\mathbf A^1,\quad(x,y,t)\mapsto t.
+\]</span>
+Use constant <span class="math" data-tex="\(E\)">\(E\)</span>-coefficients and compute every rational fibre contribution.</p>
+<p><strong>Solution.</strong> The surface is isomorphic to <span class="math" data-tex="\(\mathbf A^2\)">\(\mathbf A^2\)</span>, by eliminating <span class="math" data-tex="\(t\)">\(t\)</span>. A nonzero rational fibre is <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, with traces <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> in <span class="math" data-tex="\(H_c^2\)">\(H_c^2\)</span>; its alternating trace is <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. The zero fibre is two affine lines meeting at the origin. Its open part consists of two copies of <span class="math" data-tex="\(\mathbf G_m\)">\(\mathbf G_m\)</span>, and its closed part is that point. Additivity gives
+<span class="math math-display" data-tex="\[
+2(q-1)+1=2q-1.
+\]">\[
+2(q-1)+1=2q-1.
+\]</span>
+More explicitly its <span class="math" data-tex="\(H_c^1\)">\(H_c^1\)</span> is the cokernel of the diagonal <span class="math" data-tex="\(E\to E^2\)">\(E\to E^2\)</span>, with trace <span class="math" data-tex="\(1\)">\(1\)</span>, and its <span class="math" data-tex="\(H_c^2\)">\(H_c^2\)</span> is <span class="math" data-tex="\(E(-1)^2\)">\(E(-1)^2\)</span>, with trace <span class="math" data-tex="\(2q\)">\(2q\)</span>. These give the same answer.</p>
+<p>By (2.2), these are precisely the local traces of <span class="math" data-tex="\(Rf_{0!}E\)">\(Rf_{0!}E\)</span>. There are <span class="math" data-tex="\(q-1\)">\(q-1\)</span> nonzero rational base points and one zero point. The base trace formula and support composition yield
+<span class="math math-display" data-tex="\[
+(q-1)(q-1)+(2q-1)=q^2,
+\]">\[
+(q-1)(q-1)+(2q-1)=q^2,
+\]</span>
+which is the trace of <span class="math" data-tex="\(F^*\)">\(F^*\)</span> on <span class="math" data-tex="\(H_c^4(\mathbf A^2,E)=E(-2)\)">\(H_c^4(\mathbf A^2,E)=E(-2)\)</span>. The singular fibre is handled as a constructible stalk complex; the induction never assumed smooth fibres.</p>
+<p><strong>Exercise 7.6 (hard: torsion and finite levels).</strong> At a point, let <span class="math" data-tex="\(\mathcal T=O/\varpi\)">\(\mathcal T=O/\varpi\)</span>, with the identity operator. Compare its perfect <span class="math" data-tex="\(O\)">\(O\)</span>-trace, the ordinary <span class="math" data-tex="\(O_n\)">\(O_n\)</span>-module reduction, and its derived <span class="math" data-tex="\(O_n\)">\(O_n\)</span>-reduction.</p>
+<p><strong>Solution.</strong> A perfect <span class="math" data-tex="\(O\)">\(O\)</span>-representative is <span class="math" data-tex="\([O\xrightarrow{\varpi}O]\)">\([O\xrightarrow{\varpi}O]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, with identity on both terms. Its trace is <span class="math" data-tex="\(-1+1=0\)">\(-1+1=0\)</span>. The ordinary reduction is the module <span class="math" data-tex="\(O/\varpi\)">\(O/\varpi\)</span>; for <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> this has infinite projective dimension over <span class="math" data-tex="\(O_n\)">\(O_n\)</span>, as its periodic free resolution alternates multiplication by <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> and <span class="math" data-tex="\(\varpi^{n-1}\)">\(\varpi^{n-1}\)</span>. Thus its ordinary-module trace is not the perfect-complex trace used in Theorem 4.1.</p>
+<p>The derived reduction is <span class="math" data-tex="\([O_n\xrightarrow{\varpi}O_n]\)">\([O_n\xrightarrow{\varpi}O_n]\)</span>, with trace zero. For <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span> it has nonzero cohomology in degrees <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>, both isomorphic to the residue field, so dropping the negative-degree contribution would lose the integral trace. After tensoring with <span class="math" data-tex="\(E\)">\(E\)</span>, the original complex is acyclic. This explains the torsion treatment in Theorem 5.1.</p>
+<p><strong>Exercise 7.7 (medium: an infinite noncommutative coefficient ring).</strong> Let <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, <span class="math" data-tex="\(R=\mathbf F_\ell[t,t^{-1}]\)">\(R=\mathbf F_\ell[t,t^{-1}]\)</span>, <span class="math" data-tex="\(\Lambda=M_2(R)\)">\(\Lambda=M_2(R)\)</span>, and <span class="math" data-tex="\(K_0=\underline\Lambda\)">\(K_0=\underline\Lambda\)</span> on <span class="math" data-tex="\(\mathbf A^d_{k_0}\)">\(\mathbf A^d_{k_0}\)</span>. Compute both sides of Theorem 4.1. Explain why forgetting coefficients to finite abelian stalks would not prove this example.</p>
+<p><strong>Solution.</strong> The ring is left Noetherian and killed by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, while its stalk set is infinite. The constant coefficient complex is free of rank one as a left <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module. The central scalar-extension projection formula from <span class="math" data-tex="\(\mathbf F_\ell\)">\(\mathbf F_\ell\)</span>, together with (6.2), gives <span class="math" data-tex="\(R\Gamma_c(\mathbf A^d,K)=\Lambda(-d)[-2d]\)">\(R\Gamma_c(\mathbf A^d,K)=\Lambda(-d)[-2d]\)</span>. Its Frobenius is multiplication by the central scalar <span class="math" data-tex="\(q^d\)">\(q^d\)</span>; the perfect left-module trace is therefore the class <span class="math" data-tex="\([q^d1_\Lambda]\in\Lambda^\natural\)">\([q^d1_\Lambda]\in\Lambda^\natural\)</span>. Each rational stalk has trace <span class="math" data-tex="\([1_\Lambda]\)">\([1_\Lambda]\)</span>, and the <span class="math" data-tex="\(q^d\)">\(q^d\)</span> points sum to the same class. The bracket denotes the additive commutator quotient, so no determinant or multiplication of arbitrary quotient classes is involved. Theorem 3.1's generator and spectral-sequence argument, rather than finite underlying abelian constructibility, provides the coefficient passage. The calculation is valid also if this particular class vanishes in the quotient.</p>
+<p><strong>Exercise 7.8 (hard: singular adic coefficients).</strong> Let <span class="math" data-tex="\(A=\mathbf Z_\ell[\epsilon]/(\epsilon^2)\)">\(A=\mathbf Z_\ell[\epsilon]/(\epsilon^2)\)</span>, with <span class="math" data-tex="\(\mathfrak m=(\ell,\epsilon)\)">\(\mathfrak m=(\ell,\epsilon)\)</span>, and on a rational point take the perfect coefficient complex <span class="math" data-tex="\(P=[A\xrightarrow{\epsilon}A]\)">\(P=[A\xrightarrow{\epsilon}A]\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>. Let Frobenius multiply both terms by <span class="math" data-tex="\(a\in A^\times\)">\(a\in A^\times\)</span>. Compute its trace at every level and over <span class="math" data-tex="\(A\)">\(A\)</span>; explain why its cohomology is not a substitute for the projective model.</p>
+<p><strong>Solution.</strong> The endomorphism commutes with the differential because <span class="math" data-tex="\(A\)">\(A\)</span> is commutative. The perfect trace is <span class="math" data-tex="\(-a+a=0\)">\(-a+a=0\)</span>; reduction to <span class="math" data-tex="\(A_n\)">\(A_n\)</span> gives the same two-term free complex and trace zero. Its degree-minus-one cohomology is <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>, and its degree-zero cohomology is <span class="math" data-tex="\(A/(\epsilon)\)">\(A/(\epsilon)\)</span>. Both have infinite projective dimension over <span class="math" data-tex="\(A\)">\(A\)</span>: the free resolution of <span class="math" data-tex="\(A/(\epsilon)\)">\(A/(\epsilon)\)</span> has differential multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> in every positive step, since the kernel and image of this multiplication both equal <span class="math" data-tex="\((\epsilon)\)">\((\epsilon)\)</span>, and <span class="math" data-tex="\((\epsilon)\simeq A/(\epsilon)\)">\((\epsilon)\simeq A/(\epsilon)\)</span>. Tensoring that resolution with the residue field makes every differential zero. Thus individual cohomology modules have no projective-module trace of the kind used here. The compatible free models recover the perfect complex and its zero trace exactly as in Theorem 5.2. On a point the global and local complexes are the same, so the trace formula holds without discarding either degree.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The geometric inputs are identified in §1. General central finite-coefficient torsion constructibility is an expressly inherited theorem there. We do not claim to prove that finiteness foundation in this lesson. The proof here supplies Frobenius compatibility, relative constructibility for the larger left-module coefficients, finite Tor preservation, finite-field normalization, full dimension induction and the complete-local adic trace passage. Lesson 1 supplies the written compatible-perfect-complex theorem and adic torsion decomposition; Lesson 2 supplies derived completion, the local rational coefficient category and finite scalar descent. Corollaries 5.3–5.4 use these actual local lattices and fields on a finite stratification, covering the full constructible algebraic rational coefficient scope without a global-lattice assumption. The smooth trace and duality proof supplies the affine/projective cohomology and top-degree orientation. Projective-space, Grassmannian and flag counts and cells are written above, using the stated earlier results.</p>
+<p>The trace theorem requires separated finite-type schemes over a finite field and prime-to-characteristic torsion or adic coefficients. The relative constructibility comparison has the Noetherian coefficient and finite-presentation conditions in §1. The complete-local generalization assumes a finite residue field and finite-Tor derived constructibility; it does not assert that every finite module over a singular coefficient ring is perfect. Proper base change in Lesson 2 permits broader bases and characteristic torsion, but that fact alone does not extend the Frobenius trace theorem to them. The Euler-product identity, finite-characteristic determinant difficulties and rationality of general <span class="math" data-tex="\(L\)">\(L\)</span>-functions are treated in the next lesson.</p>
+<h2 id="references-and-source-record">References</h2>
+<p>Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/Number23.pdf"><em>La conjecture de Weil. I</em></a>, §1, especially (1.3), (1.5), (1.9)–(1.15), printed pp. 274–279: finite compact-support cohomology, the trace formula with its iterates, constructible rational coefficients and the geometric/Galois Frobenius dictionary. These are recalled Grothendieck theorems there; the article does not give the missing all-dimensional finite-coefficient induction.</p>
+<p>Deligne, <a href="https://publications.ias.edu/sites/default/files/Number32.pdf"><em>Cohomologie étale</em> (SGA <span class="math" data-tex="\(4\frac12\)">\(4\frac12\)</span>)</a>, [Rapport], Theorems 3.1–3.2, printed p. 86; Theorems 4.9–4.10 and §§4.11–4.13, pp. 95–99; §6, pp. 107–108. The left Noetherian torsion theorem, compatible-perfect-complex passage and filtered fibre reduction occur at these locators. Our relative extension and induction retain its right/left module roles and actual filtered additivity.</p>
+<p>The Stacks project authors, <a href="https://stacks.math.columbia.edu/tag/03UY">Cohomological interpretation, Tag 03UY</a>, contains the finite-ring trace statement <a href="https://stacks.math.columbia.edu/tag/03V3">03V3</a>, its rational adic passage <a href="https://stacks.math.columbia.edu/tag/03V2">03V2</a> and the compatible-complex lemma <a href="https://stacks.math.columbia.edu/tag/03V4">03V4</a>. Its all-dimensional finite-coefficient proof is only a reduction sketch. The corresponding <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/trace.html#trace-section-L-cohomological">AI Integrated Stacks Project, English, The Trace Formula</a> passage and its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/trace.tex#L2180">source</a> retain the explicit omitted-foundation list <a href="https://stacks.math.columbia.edu/tag/03V5">03V5</a>. The chapter credits Johan de Jong's 2009 course and note takers Thibaut Pugin, Zachary Maddock and Min Lee. Upstream Stacks mathematics and the credited AI additions retain their GNU FDL terms. This lesson's explanatory text has the CC0 dedication stated above.</p>
+<p>Bhargav Bhatt and Peter Scholze, <a href="https://arxiv.org/abs/1309.1198"><em>The pro-étale topology for schemes</em></a>, §§6.5–6.8, provide the modern coefficient-category comparison, especially Definitions 6.5.1 and 6.8.6, Lemma 6.7.5, and Proposition 6.8.4. Its exact completion, finite-Tor, proper-base-change, local-lattice and finite scalar-descent proof homes in this course are Lesson 2. Theorem 5.2 proves the trace statement in the specified complete-local scope, Corollary 5.3 explains why local rational lattices suffice, and Corollary 5.4 treats all constructible algebraic rational coefficients with their stated topology.</p>
+<p>Grothendieck, SGA 5, Exposé XV, §2, “Statement of the rationality theorem and reduction to the case of a curve,” gives the original fibre reduction in its <span class="math" data-tex="\(L\)">\(L\)</span>-function form. Milne, <em>The Riemann Hypothesis over Finite Fields: From Weil to the Present Day</em> (2015), subsection “Grothendieck's theorem,” describes the same dévissage. These historical passages motivate the argument; §§2–5 give its proof here.</p>
+</article></main></body></html>

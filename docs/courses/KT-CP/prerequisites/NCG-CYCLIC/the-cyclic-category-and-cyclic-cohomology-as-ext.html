@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="84ECFDA2346C7ADB310EAA65F0E23BFED2EDE0FE744E0F37DDFE2DEDE265331E">
+<title>Cyclic cohomology: traces, differentials and symmetry — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-NCG-CYCLIC/the-cyclic-category-and-cyclic-cohomology-as-ext</span></nav>
+<article id="lesson" class="lesson"><h1 id="cyclic-cohomology-traces-differentials-and-symmetry">Cyclic cohomology: traces, differentials and symmetry</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Not yet reviewed. Public domain (CC0).</em></p>
+<p>A trace ignores where a circular product starts: <span class="math" data-tex="\(\tau(ab)=\tau(ba)\)">\(\tau(ab)=\tau(ba)\)</span>. A higher trace must also remember differentials. Its arguments acquire a sign when their starting point moves. Cyclic cohomology combines these two requirements into a complex. The cyclic category explains why the resulting theory has a derived-functor interpretation and a degree-two periodicity operator.</p>
+<p>We start with traces and a concrete differential, then connect differential forms to cyclic cocycles. After that we describe the category that records circular order. This order of ideas makes the algebra visible before the categorical machinery.</p>
+<p>We assume associative algebras, tensor products and elementary chain complexes. The basic cochain constructions work over a commutative ring <span class="math" data-tex="\(k\)">\(k\)</span>. When averaging over a finite cyclic group is used, we explicitly require <span class="math" data-tex="\(k\)">\(k\)</span> to contain <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Algebraic duals mean all <span class="math" data-tex="\(k\)">\(k\)</span>-linear maps; no continuity is implicit. The examples of smooth functions use complex coefficients and elementary integration. Basic references are [Khalkhali 2007] and [Connes 1983].</p>
+<h2 id="1-what-a-higher-trace-must-satisfy">1. What a higher trace must satisfy</h2>
+<p>For an associative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+C^n(A)=\operatorname{Hom}_k(A^{\otimes_k(n+1)},k),\qquad n\geq0.
+\]">\[
+C^n(A)=\operatorname{Hom}_k(A^{\otimes_k(n+1)},k),\qquad n\geq0.
+\]</span>
+<p>The algebra need not be unital in this section. Define</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+\begin{aligned}
+(b\varphi)(a_0,\ldots,a_{n+1})
+={}&amp;\sum_{i=0}^{n}(-1)^i
+\varphi(a_0,\ldots,a_i a_{i+1},\ldots,a_{n+1})\\
+&amp;+(-1)^{n+1}\varphi(a_{n+1}a_0,a_1,\ldots,a_n),\\
+(\lambda_n\varphi)(a_0,\ldots,a_n)
+={}&amp;(-1)^n\varphi(a_n,a_0,\ldots,a_{n-1}).
+\end{aligned} \tag{1.1}
+\]">\[
+\begin{aligned}
+(b\varphi)(a_0,\ldots,a_{n+1})
+={}&amp;\sum_{i=0}^{n}(-1)^i
+\varphi(a_0,\ldots,a_i a_{i+1},\ldots,a_{n+1})\\
+&amp;+(-1)^{n+1}\varphi(a_{n+1}a_0,a_1,\ldots,a_n),\\
+(\lambda_n\varphi)(a_0,\ldots,a_n)
+={}&amp;(-1)^n\varphi(a_n,a_0,\ldots,a_{n-1}).
+\end{aligned} \tag{1.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> be the sum in the first line, without the final term. A cochain is <strong>cyclic</strong> when <span class="math" data-tex="\(\lambda_n\varphi=\varphi\)">\(\lambda_n\varphi=\varphi\)</span>. Write <span class="math" data-tex="\(C_\lambda^n(A)\)">\(C_\lambda^n(A)\)</span> for these cochains.</p>
+<p><span id="proposition-1-1"></span><strong>Proposition 1.1.</strong> The operators satisfy</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+b^2=0,\qquad (b&#x27;)^2=0,\qquad
+(1-\lambda_{n+1})b=b&#x27;(1-\lambda_n). \tag{1.2}
+\]">\[
+b^2=0,\qquad (b&#x27;)^2=0,\qquad
+(1-\lambda_{n+1})b=b&#x27;(1-\lambda_n). \tag{1.2}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(C_\lambda^\bullet(A)\)">\(C_\lambda^\bullet(A)\)</span> is a cochain complex.</p>
+<p><strong>Proof.</strong> It is useful to work on tensors first. For <span class="math" data-tex="\(0\leq i&lt;n\)">\(0\leq i&lt;n\)</span>, let <span class="math" data-tex="\(d_i\)">\(d_i\)</span> multiply positions <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span>, and let</p>
+<span class="math math-display" data-tex="\[
+d_n(a_0,\ldots,a_n)=(a_na_0,a_1,\ldots,a_{n-1}).
+\]">\[
+d_n(a_0,\ldots,a_n)=(a_na_0,a_1,\ldots,a_{n-1}).
+\]</span>
+<p>For <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>,</p>
+<span id="equation-1-3"></span><span class="math math-display" data-tex="\[
+d_i d_j=d_{j-1}d_i. \tag{1.3}
+\]">\[
+d_i d_j=d_{j-1}d_i. \tag{1.3}
+\]</span>
+<p>For disjoint multiplications this just compares the positions after one position has disappeared. For adjacent multiplications it is associativity. If <span class="math" data-tex="\(j=n\)">\(j=n\)</span>, the same check takes place across the end of the list. For example, the case <span class="math" data-tex="\(i=0,j=n\)">\(i=0,j=n\)</span> compares <span class="math" data-tex="\((a_na_0)a_1\)">\((a_na_0)a_1\)</span> with <span class="math" data-tex="\(a_n(a_0a_1)\)">\(a_n(a_0a_1)\)</span>; the case <span class="math" data-tex="\(i=n-1,j=n\)">\(i=n-1,j=n\)</span> compares <span class="math" data-tex="\(a_{n-1}(a_na_0)\)">\(a_{n-1}(a_na_0)\)</span> with <span class="math" data-tex="\((a_{n-1}a_n)a_0\)">\((a_{n-1}a_n)a_0\)</span>.</p>
+<p>In <span class="math" data-tex="\((\sum(-1)^i d_i)^2\)">\((\sum(-1)^i d_i)^2\)</span>, each term <span class="math" data-tex="\(d_i d_j\)">\(d_i d_j\)</span>, <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, has sign <span class="math" data-tex="\((-1)^{i+j}\)">\((-1)^{i+j}\)</span>. Its partner <span class="math" data-tex="\(d_{j-1}d_i\)">\(d_{j-1}d_i\)</span> has sign <span class="math" data-tex="\((-1)^{i+j-1}\)">\((-1)^{i+j-1}\)</span>. They cancel. The same pairing with only the nonwrapping faces proves the assertion for <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>, after dualizing.</p>
+<p>For the last identity, set <span class="math" data-tex="\(t_n(a_0,\ldots,a_n)=(a_n,a_0,\ldots,a_{n-1})\)">\(t_n(a_0,\ldots,a_n)=(a_n,a_0,\ldots,a_{n-1})\)</span> and <span class="math" data-tex="\(T_n=(-1)^n t_n\)">\(T_n=(-1)^n t_n\)</span>. Direct substitution gives</p>
+<span class="math math-display" data-tex="\[
+d_0t_n=d_n,\qquad d_it_n=t_{n-1}d_{i-1}\quad(1\leq i\leq n).
+\]">\[
+d_0t_n=d_n,\qquad d_it_n=t_{n-1}d_{i-1}\quad(1\leq i\leq n).
+\]</span>
+<p>Let <span class="math" data-tex="\(b_n=\sum_{i=0}^n(-1)^i d_i\)">\(b_n=\sum_{i=0}^n(-1)^i d_i\)</span> and <span class="math" data-tex="\(b&#x27;_n=\sum_{i=0}^{n-1}(-1)^i d_i\)">\(b&#x27;_n=\sum_{i=0}^{n-1}(-1)^i d_i\)</span>. The displayed relations give</p>
+<span class="math math-display" data-tex="\[
+b_nT_n=(-1)^n d_n+T_{n-1}b&#x27;_n.
+\]">\[
+b_nT_n=(-1)^n d_n+T_{n-1}b&#x27;_n.
+\]</span>
+<p>Subtracting from <span class="math" data-tex="\(b_n=b&#x27;_n+(-1)^n d_n\)">\(b_n=b&#x27;_n+(-1)^n d_n\)</span> yields
+<span class="math" data-tex="\(b_n(1-T_n)=(1-T_{n-1})b&#x27;_n\)">\(b_n(1-T_n)=(1-T_{n-1})b&#x27;_n\)</span>. Dualization is exactly the third identity in (1.2). If <span class="math" data-tex="\((1-\lambda_n)\varphi=0\)">\((1-\lambda_n)\varphi=0\)</span>, it follows that <span class="math" data-tex="\((1-\lambda_{n+1})b\varphi=0\)">\((1-\lambda_{n+1})b\varphi=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="definition-1-2"></span><strong>Definition 1.2.</strong> The cohomology of <span class="math" data-tex="\((C_\lambda^\bullet(A),b)\)">\((C_\lambda^\bullet(A),b)\)</span> is denoted <span class="math" data-tex="\(H_\lambda^n(A)\)">\(H_\lambda^n(A)\)</span>. For a <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-algebra this is the cyclic cohomology computed by cyclic cochains. Over other coefficient rings the derived cyclic theory will require the full cyclic resolution; the cyclic-invariant complex alone is not its definition.</p>
+<p>In degree zero,</p>
+<span class="math math-display" data-tex="\[
+(b\tau)(a_0,a_1)=\tau(a_0a_1)-\tau(a_1a_0).
+\]">\[
+(b\tau)(a_0,a_1)=\tau(a_0a_1)-\tau(a_1a_0).
+\]</span>
+<p>Thus <span class="math" data-tex="\(H_\lambda^0(A)\)">\(H_\lambda^0(A)\)</span> is exactly the space of traces. There are no incoming coboundaries in degree zero. This remains true over any coefficient ring.</p>
+<p><span id="example-1-3"></span><strong>Example 1.3.</strong> On <span class="math" data-tex="\(M_r(k)\)">\(M_r(k)\)</span>, every trace is a scalar multiple of the matrix trace. Let <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> denote the matrix units. For <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>,</p>
+<span class="math math-display" data-tex="\[
+E_{ij}=[E_{ii},E_{ij}],\qquad
+E_{ii}-E_{jj}=[E_{ij},E_{ji}].
+\]">\[
+E_{ij}=[E_{ii},E_{ij}],\qquad
+E_{ii}-E_{jj}=[E_{ij},E_{ji}].
+\]</span>
+<p>A trace vanishes on the first expression and has equal values on all diagonal matrix units. Conversely, the matrix trace satisfies the trace identity because <span class="math" data-tex="\(k\)">\(k\)</span> is commutative. This proves the assertion without a hypothesis on the characteristic of <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="2-differential-forms-produce-cyclic-cocycles">2. Differential forms produce cyclic cocycles</h2>
+<p>A differential graded algebra <span class="math" data-tex="\((\Omega,d)\)">\((\Omega,d)\)</span> has an associative graded product and a degree-one map satisfying</p>
+<span class="math math-display" data-tex="\[
+d^2=0,\qquad d(\omega\eta)=d\omega\,\eta+(-1)^{\deg\omega}\omega\,d\eta.
+\]">\[
+d^2=0,\qquad d(\omega\eta)=d\omega\,\eta+(-1)^{\deg\omega}\omega\,d\eta.
+\]</span>
+<p>We do not require the product to be graded commutative. A <strong>closed graded trace of degree <span class="math" data-tex="\(n\)">\(n\)</span></strong> is a linear functional <span class="math" data-tex="\(\int:\Omega^n\to k\)">\(\int:\Omega^n\to k\)</span> such that</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\int d\zeta=0\quad(\zeta\in\Omega^{n-1}),\qquad
+\int\omega\eta=(-1)^{pq}\int\eta\omega
+\quad(\deg\omega=p,\deg\eta=q,p+q=n).
+\tag{2.1}
+\]">\[
+\int d\zeta=0\quad(\zeta\in\Omega^{n-1}),\qquad
+\int\omega\eta=(-1)^{pq}\int\eta\omega
+\quad(\deg\omega=p,\deg\eta=q,p+q=n).
+\tag{2.1}
+\]</span>
+<p>When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, closedness is vacuous. Let <span class="math" data-tex="\(\rho:A\to\Omega^0\)">\(\rho:A\to\Omega^0\)</span> be an algebra homomorphism.</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> The cochain</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+\varphi(a_0,\ldots,a_n)
+=\int \rho(a_0)d\rho(a_1)\cdots d\rho(a_n)
+\tag{2.2}
+\]">\[
+\varphi(a_0,\ldots,a_n)
+=\int \rho(a_0)d\rho(a_1)\cdots d\rho(a_n)
+\tag{2.2}
+\]</span>
+<p>is cyclic and satisfies <span class="math" data-tex="\(b\varphi=0\)">\(b\varphi=0\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(a_j\)">\(a_j\)</span> for <span class="math" data-tex="\(\rho(a_j)\)">\(\rho(a_j)\)</span> in this proof. Closedness applied to <span class="math" data-tex="\(a_n a_0\,da_1\cdots da_{n-1}\)">\(a_n a_0\,da_1\cdots da_{n-1}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+0=\int da_n\,a_0\,da_1\cdots da_{n-1}
++\int a_n\,da_0\cdots da_{n-1}.
+\]">\[
+0=\int da_n\,a_0\,da_1\cdots da_{n-1}
++\int a_n\,da_0\cdots da_{n-1}.
+\]</span>
+<p>The graded-trace rule moves <span class="math" data-tex="\(da_n\)">\(da_n\)</span> past the remaining degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span> expression, with sign <span class="math" data-tex="\((-1)^{n-1}\)">\((-1)^{n-1}\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\int a_n\,da_0\cdots da_{n-1}
+=(-1)^n\int a_0\,da_1\cdots da_n.
+\]">\[
+\int a_n\,da_0\cdots da_{n-1}
+=(-1)^n\int a_0\,da_1\cdots da_n.
+\]</span>
+<p>This is cyclicity. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, cyclicity is automatic and the cocycle assertion is the trace identity.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, expand each <span class="math" data-tex="\(d(a_i a_{i+1})=da_i\,a_{i+1}+a_i\,da_{i+1}\)">\(d(a_i a_{i+1})=da_i\,a_{i+1}+a_i\,da_{i+1}\)</span> in <span class="math" data-tex="\(b\varphi\)">\(b\varphi\)</span>. The term from <span class="math" data-tex="\(i=0\)">\(i=0\)</span> cancels the second part from <span class="math" data-tex="\(i=1\)">\(i=1\)</span>. For <span class="math" data-tex="\(1\leq i&lt;n\)">\(1\leq i&lt;n\)</span>, the first part from <span class="math" data-tex="\(i\)">\(i\)</span> cancels the second part from <span class="math" data-tex="\(i+1\)">\(i+1\)</span>. What remains is</p>
+<span class="math math-display" data-tex="\[
+(-1)^n\int a_0\,da_1\cdots da_n\,a_{n+1}
++(-1)^{n+1}\int a_{n+1}a_0\,da_1\cdots da_n.
+\]">\[
+(-1)^n\int a_0\,da_1\cdots da_n\,a_{n+1}
++(-1)^{n+1}\int a_{n+1}a_0\,da_1\cdots da_n.
+\]</span>
+<p>These cancel by the graded-trace identity with degrees <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span>. No reordering of the individual factors <span class="math" data-tex="\(a_i\)">\(a_i\)</span> has been used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="example-2-2"></span><strong>Example 2.2.</strong> Let <span class="math" data-tex="\(A=\mathbb C[z,z^{-1}]\)">\(A=\mathbb C[z,z^{-1}]\)</span>. Define a derivation <span class="math" data-tex="\(\delta(z^m)=mz^m\)">\(\delta(z^m)=mz^m\)</span> and let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> extract the coefficient of <span class="math" data-tex="\(z^0\)">\(z^0\)</span>. Then</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="\[
+\varphi(a_0,a_1)=\tau(a_0\delta(a_1)),\qquad
+\varphi(z^p,z^q)=q\,\mathbf1_{p+q=0}.
+\tag{2.3}
+\]">\[
+\varphi(a_0,a_1)=\tau(a_0\delta(a_1)),\qquad
+\varphi(z^p,z^q)=q\,\mathbf1_{p+q=0}.
+\tag{2.3}
+\]</span>
+<p>Since <span class="math" data-tex="\(\tau\delta=0\)">\(\tau\delta=0\)</span>, applying <span class="math" data-tex="\(\delta\)">\(\delta\)</span> to <span class="math" data-tex="\(a_0a_1\)">\(a_0a_1\)</span> shows that <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> is antisymmetric. Applying the derivation rule to <span class="math" data-tex="\(a_1a_2\)">\(a_1a_2\)</span> proves <span class="math" data-tex="\(b\varphi=0\)">\(b\varphi=0\)</span>. This cocycle is not a cyclic coboundary: on a commutative algebra <span class="math" data-tex="\(b:C^0\to C^1\)">\(b:C^0\to C^1\)</span> is zero, whereas <span class="math" data-tex="\(\varphi(z^{-1},z)=1\)">\(\varphi(z^{-1},z)=1\)</span>.</p>
+<p>The same construction on smooth functions on the circle uses <span class="math" data-tex="\(\delta=(1/i)\,d/dt\)">\(\delta=(1/i)\,d/dt\)</span> and the normalized integral. Its value on <span class="math" data-tex="\((z^{-1},z)\)">\((z^{-1},z)\)</span> is again <span class="math" data-tex="\(1\)">\(1\)</span>. The algebraic example needs no assertion about the cohomology of all smooth functions.</p>
+<p><span id="example-2-3"></span><strong>Example 2.3.</strong> On the two-dimensional torus, use angles <span class="math" data-tex="\(x,y\)">\(x,y\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, the orientation <span class="math" data-tex="\(dx\wedge dy\)">\(dx\wedge dy\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\psi(f_0,f_1,f_2)=\frac1{(2\pi i)^2}\int f_0\,df_1\wedge df_2.
+\]">\[
+\psi(f_0,f_1,f_2)=\frac1{(2\pi i)^2}\int f_0\,df_1\wedge df_2.
+\]</span>
+<p>Stokes' theorem and graded commutativity verify (2.1), so Theorem 2.1 applies. For <span class="math" data-tex="\(u=e^{ix}\)">\(u=e^{ix}\)</span>, <span class="math" data-tex="\(v=e^{iy}\)">\(v=e^{iy}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\psi((uv)^{-1},u,v)=1,\qquad
+\psi((uv)^{-1},v,u)=-1.
+\]">\[
+\psi((uv)^{-1},u,v)=1,\qquad
+\psi((uv)^{-1},v,u)=-1.
+\]</span>
+<p>Indeed <span class="math" data-tex="\((uv)^{-1}du\wedge dv=-dx\wedge dy\)">\((uv)^{-1}du\wedge dv=-dx\wedge dy\)</span>, and <span class="math" data-tex="\((2\pi i)^2=-4\pi^2\)">\((2\pi i)^2=-4\pi^2\)</span>. The two minus signs give the first value. This calculation fixes both the orientation and the normalization.</p>
+<h2 id="3-averaging-is-a-coefficient-dependent-step">3. Averaging is a coefficient-dependent step</h2>
+<p>The signed rotation satisfies <span class="math" data-tex="\(\lambda_n^{n+1}=1\)">\(\lambda_n^{n+1}=1\)</span>, since <span class="math" data-tex="\(n(n+1)\)">\(n(n+1)\)</span> is even. Put</p>
+<span class="math math-display" data-tex="\[
+N_n=1+\lambda_n+\cdots+\lambda_n^n.
+\]">\[
+N_n=1+\lambda_n+\cdots+\lambda_n^n.
+\]</span>
+<p><span id="lemma-3-1"></span><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a <span class="math" data-tex="\(k\)">\(k\)</span>-module and let <span class="math" data-tex="\(T^{r}=1\)">\(T^{r}=1\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\(r\)">\(r\)</span> is invertible in <span class="math" data-tex="\(k\)">\(k\)</span>, the sequence</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+0\longrightarrow\ker(1-T)\longrightarrow V
+\xrightarrow{1-T}V\xrightarrow{N}V
+\xrightarrow{1-T}V\xrightarrow{N}\cdots,
+\qquad N=\sum_{j=0}^{r-1}T^j,
+\tag{3.1}
+\]">\[
+0\longrightarrow\ker(1-T)\longrightarrow V
+\xrightarrow{1-T}V\xrightarrow{N}V
+\xrightarrow{1-T}V\xrightarrow{N}\cdots,
+\qquad N=\sum_{j=0}^{r-1}T^j,
+\tag{3.1}
+\]</span>
+<p>is exact.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P=N/r\)">\(P=N/r\)</span>. Then <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, <span class="math" data-tex="\(TP=P\)">\(TP=P\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is the identity on the invariant submodule. Thus <span class="math" data-tex="\(\operatorname{im}N=\ker(1-T)\)">\(\operatorname{im}N=\ker(1-T)\)</span>. Also <span class="math" data-tex="\(N(1-T)=0\)">\(N(1-T)=0\)</span>, so <span class="math" data-tex="\(\operatorname{im}(1-T)\subseteq\ker N\)">\(\operatorname{im}(1-T)\subseteq\ker N\)</span>. To prove the reverse inclusion, put</p>
+<span class="math math-display" data-tex="\[
+Q=-\frac1r\sum_{j=0}^{r-1}jT^j.
+\]">\[
+Q=-\frac1r\sum_{j=0}^{r-1}jT^j.
+\]</span>
+<p>Multiplying out gives <span class="math" data-tex="\((1-T)Q=1-P\)">\((1-T)Q=1-P\)</span>. If <span class="math" data-tex="\(Nv=0\)">\(Nv=0\)</span>, then <span class="math" data-tex="\(Pv=0\)">\(Pv=0\)</span> and <span class="math" data-tex="\(v=(1-T)Qv\)">\(v=(1-T)Qv\)</span>. The equalities repeat at every position of (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For all cochain degrees simultaneously, this argument applies when <span class="math" data-tex="\(k\)">\(k\)</span> contains <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. It does not justify deleting the finite-group resolution over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, or in positive characteristic.</p>
+<p><span id="example-3-2"></span><strong>Example 3.2.</strong> Let <span class="math" data-tex="\(V=\mathbb F_p\)">\(V=\mathbb F_p\)</span>, let <span class="math" data-tex="\(T=1\)">\(T=1\)</span>, and take <span class="math" data-tex="\(r=p\)">\(r=p\)</span>. Then <span class="math" data-tex="\(1-T=0\)">\(1-T=0\)</span> and <span class="math" data-tex="\(N=p=0\)">\(N=p=0\)</span>. Every differential in the unaugmented part of (3.1) is zero. Each positive cohomology group is <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. This is a concrete obstruction to the averaging argument, not an assertion that every algebra in characteristic <span class="math" data-tex="\(p\)">\(p\)</span> has this cohomology.</p>
+<h2 id="4-the-category-of-circular-order">4. The category of circular order</h2>
+<p>The category <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> has objects <span class="math" data-tex="\([n]\)">\([n]\)</span>, <span class="math" data-tex="\(n\geq0\)">\(n\geq0\)</span>. A morphism <span class="math" data-tex="\([n]\to[m]\)">\([n]\to[m]\)</span> is an equivalence class of nondecreasing functions <span class="math" data-tex="\(f:\mathbb Z\to\mathbb Z\)">\(f:\mathbb Z\to\mathbb Z\)</span> satisfying</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+f(i+n+1)=f(i)+m+1. \tag{4.1}
+\]">\[
+f(i+n+1)=f(i)+m+1. \tag{4.1}
+\]</span>
+<p>Two functions represent the same morphism if they differ by an integral multiple of <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. Composition is composition of functions. Changing a representative in the inner function changes the composition by a period in the outer one, so composition is well-defined.</p>
+<p>The simplicial category <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> embeds in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>: extend a nondecreasing map <span class="math" data-tex="\(s:\{0,\ldots,n\}\to\{0,\ldots,m\}\)">\(s:\{0,\ldots,n\}\to\{0,\ldots,m\}\)</span> periodically using (4.1). The extension remains nondecreasing across the boundary because <span class="math" data-tex="\(s(n)&lt;s(0)+m+1\)">\(s(n)&lt;s(0)+m+1\)</span>. Let <span class="math" data-tex="\(r_n\)">\(r_n\)</span> be the rotation represented by <span class="math" data-tex="\(i\mapsto i+1\)">\(i\mapsto i+1\)</span>.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> Every morphism <span class="math" data-tex="\([n]\to[m]\)">\([n]\to[m]\)</span> has a unique factorization</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+f=s\,r_n^a,\qquad s\in\operatorname{Hom}_\Delta([n],[m]),
+\quad a\in\mathbb Z/(n+1). \tag{4.2}
+\]">\[
+f=s\,r_n^a,\qquad s\in\operatorname{Hom}_\Delta([n],[m]),
+\quad a\in\mathbb Z/(n+1). \tag{4.2}
+\]</span>
+<p>The automorphism group of <span class="math" data-tex="\([n]\)">\([n]\)</span> is the cyclic group generated by <span class="math" data-tex="\(r_n\)">\(r_n\)</span>.</p>
+<p><strong>Proof.</strong> Fix a lift <span class="math" data-tex="\(f\)">\(f\)</span>. Since (4.1) has a positive output period, <span class="math" data-tex="\(f(i)\)">\(f(i)\)</span> tends to <span class="math" data-tex="\(\pm\infty\)">\(\pm\infty\)</span> as <span class="math" data-tex="\(i\)">\(i\)</span> tends to <span class="math" data-tex="\(\pm\infty\)">\(\pm\infty\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be the first integer such that <span class="math" data-tex="\(f(p)\geq0\)">\(f(p)\geq0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+0\leq f(p)\leq f(p+n)=f(p-1)+m+1\leq m.
+\]">\[
+0\leq f(p)\leq f(p+n)=f(p-1)+m+1\leq m.
+\]</span>
+<p>Thus <span class="math" data-tex="\(s(j)=f(p+j)\)">\(s(j)=f(p+j)\)</span>, <span class="math" data-tex="\(0\leq j\leq n\)">\(0\leq j\leq n\)</span>, is a simplicial map. Its periodic extension is <span class="math" data-tex="\(f\circ r_n^p\)">\(f\circ r_n^p\)</span>, giving <span class="math" data-tex="\(f=s r_n^{-p}\)">\(f=s r_n^{-p}\)</span>. Replacing <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(f+q(m+1)\)">\(f+q(m+1)\)</span> replaces <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(p-q(n+1)\)">\(p-q(n+1)\)</span>; it changes neither <span class="math" data-tex="\(s\)">\(s\)</span> nor <span class="math" data-tex="\(-p\)">\(-p\)</span> modulo <span class="math" data-tex="\(n+1\)">\(n+1\)</span>.</p>
+<p>Conversely, a periodically extended simplicial map has its first nonnegative value at <span class="math" data-tex="\(0\)">\(0\)</span>: <span class="math" data-tex="\(s(0)\geq0\)">\(s(0)\geq0\)</span> and <span class="math" data-tex="\(s(-1)=s(n)-(m+1)&lt;0\)">\(s(-1)=s(n)-(m+1)&lt;0\)</span>. The first nonnegative position of a lift of <span class="math" data-tex="\(s r_n^a\)">\(s r_n^a\)</span> therefore recovers <span class="math" data-tex="\(-a\)">\(-a\)</span> modulo <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and then recovers <span class="math" data-tex="\(s\)">\(s\)</span>. This proves uniqueness.</p>
+<p>If a class is invertible, the composite of lifts for it and its inverse is a translation by a period. Hence its lift is injective and surjective on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. A nondecreasing bijection of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is <span class="math" data-tex="\(i\mapsto i+c\)">\(i\mapsto i+c\)</span>. Formula (4.1) then forces <span class="math" data-tex="\(m=n\)">\(m=n\)</span>; translations modulo <span class="math" data-tex="\(n+1\)">\(n+1\)</span> give exactly the claimed group. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="corollary-4-2"></span><strong>Corollary 4.2.</strong> There are</p>
+<span class="math math-display" data-tex="\[
+\bigl|\operatorname{Hom}_\Lambda([n],[m])\bigr|
+=(n+1)\binom{n+m+1}{n+1}
+\]">\[
+\bigl|\operatorname{Hom}_\Lambda([n],[m])\bigr|
+=(n+1)\binom{n+m+1}{n+1}
+\]</span>
+<p>morphisms. In particular, <span class="math" data-tex="\(\operatorname{Hom}_\Lambda([n],[0])\)">\(\operatorname{Hom}_\Lambda([n],[0])\)</span> has <span class="math" data-tex="\(n+1\)">\(n+1\)</span> elements. The object <span class="math" data-tex="\([0]\)">\([0]\)</span> is not terminal.</p>
+<p><strong>Proof.</strong> A nondecreasing list of length <span class="math" data-tex="\(n+1\)">\(n+1\)</span> with entries in <span class="math" data-tex="\(\{0,\ldots,m\}\)">\(\{0,\ldots,m\}\)</span> is a multiset of that length from <span class="math" data-tex="\(m+1\)">\(m+1\)</span> symbols. Counting multiplicities gives the binomial coefficient. Theorem 4.1 contributes the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> rotations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-4-3"></span><strong>Theorem 4.3.</strong> The category <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is isomorphic to its opposite. On lifts an explicit contravariant operation is</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+D f(j)=\min\{i\in\mathbb Z:f(i)\geq j\}. \tag{4.3}
+\]">\[
+D f(j)=\min\{i\in\mathbb Z:f(i)\geq j\}. \tag{4.3}
+\]</span>
+<p>It satisfies <span class="math" data-tex="\(D(gf)=Df\,Dg\)">\(D(gf)=Df\,Dg\)</span> and</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="\[
+D^2 f(i)=f(i-1)+1.
+\tag{4.4}
+\]">\[
+D^2 f(i)=f(i-1)+1.
+\tag{4.4}
+\]</span>
+<p>Thus its square is naturally isomorphic to the identity, rather than equal to the identity on lifts.</p>
+<p><strong>Proof.</strong> The minimum in (4.3) exists by the limits used in Theorem 4.1. The function <span class="math" data-tex="\(Df\)">\(Df\)</span> is nondecreasing, and</p>
+<span class="math math-display" data-tex="\[
+Df(j+m+1)=Df(j)+n+1.
+\]">\[
+Df(j+m+1)=Df(j)+n+1.
+\]</span>
+<p>Changing <span class="math" data-tex="\(f\)">\(f\)</span> by an output period changes <span class="math" data-tex="\(Df\)">\(Df\)</span> by an input period. It therefore defines a morphism <span class="math" data-tex="\([m]\to[n]\)">\([m]\to[n]\)</span>.</p>
+<p>The defining equivalence is</p>
+<span id="equation-4-5"></span><span class="math math-display" data-tex="\[
+Df(j)\leq i\quad\Longleftrightarrow\quad j\leq f(i).
+\tag{4.5}
+\]">\[
+Df(j)\leq i\quad\Longleftrightarrow\quad j\leq f(i).
+\tag{4.5}
+\]</span>
+<p>Applying it twice shows that
+<span class="math" data-tex="\(D(gf)(j)\leq i\)">\(D(gf)(j)\leq i\)</span> exactly when <span class="math" data-tex="\(Dg(j)\leq f(i)\)">\(Dg(j)\leq f(i)\)</span>, and hence exactly when <span class="math" data-tex="\(Df(Dg(j))\leq i\)">\(Df(Dg(j))\leq i\)</span>. This proves the composition rule. The identity lift has <span class="math" data-tex="\(D(\mathrm{id})=\mathrm{id}\)">\(D(\mathrm{id})=\mathrm{id}\)</span>.</p>
+<p>For (4.4), the assertion <span class="math" data-tex="\(Df(j)\geq i\)">\(Df(j)\geq i\)</span> is equivalent to <span class="math" data-tex="\(j&gt;f(i-1)\)">\(j&gt;f(i-1)\)</span>. Its least integer solution is <span class="math" data-tex="\(f(i-1)+1\)">\(f(i-1)+1\)</span>. Accordingly</p>
+<span class="math math-display" data-tex="\[
+D^2 f=r_m f r_n^{-1}.
+\]">\[
+D^2 f=r_m f r_n^{-1}.
+\]</span>
+<p>Conjugation by the objectwise rotations is an automorphism naturally isomorphic to the identity. Since <span class="math" data-tex="\(D^2\)">\(D^2\)</span> is bijective on every morphism set, <span class="math" data-tex="\(D\)">\(D\)</span> is bijective on every morphism set as well. This proves the isomorphism with the opposite category. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-an-algebra-as-a-functor">5. An algebra as a functor</h2>
+<p>For this section <span class="math" data-tex="\(A\)">\(A\)</span> is unital. We use covariant functors from the circular-order category just defined. Self-duality permits an equivalent contravariant convention, but one must also transform the maps when changing conventions.</p>
+<p>More generally, a <strong>cyclic object in a category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span></strong>, in this convention, is a covariant functor <span class="math" data-tex="\(\Lambda\to\mathcal C\)">\(\Lambda\to\mathcal C\)</span>. Its morphisms are natural transformations. When <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is abelian, this functor category is abelian as well: objectwise kernels and cokernels inherit their maps from the universal properties, and objectwise exactness verifies the abelian axioms. This explains where the abelian category needed for Ext comes from.</p>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+A^\natural([n])=A^{\otimes_k(n+1)}.
+\]">\[
+A^\natural([n])=A^{\otimes_k(n+1)}.
+\]</span>
+<p>For a lift <span class="math" data-tex="\(f:[n]\to[m]\)">\(f:[n]\to[m]\)</span>, and each residue <span class="math" data-tex="\(j\)">\(j\)</span> modulo <span class="math" data-tex="\(m+1\)">\(m+1\)</span>, consider the integer fiber <span class="math" data-tex="\(f^{-1}(j)\)">\(f^{-1}(j)\)</span>. It is either empty or a finite consecutive list. Multiply the factors <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, read modulo <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, in that list's integer order to obtain <span class="math" data-tex="\(y_j\)">\(y_j\)</span>. Use <span class="math" data-tex="\(y_j=1\)">\(y_j=1\)</span> for an empty fiber. Set</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+A^\natural(f)(a_0\otimes\cdots\otimes a_n)
+=y_0\otimes\cdots\otimes y_m.
+\tag{5.1}
+\]">\[
+A^\natural(f)(a_0\otimes\cdots\otimes a_n)
+=y_0\otimes\cdots\otimes y_m.
+\tag{5.1}
+\]</span>
+<p>Every input residue occurs in exactly one such list. A list has at most <span class="math" data-tex="\(n+1\)">\(n+1\)</span> terms, because increasing the input by <span class="math" data-tex="\(n+1\)">\(n+1\)</span> increases the output by <span class="math" data-tex="\(m+1\)">\(m+1\)</span>. Changing the lift by an output period shifts a list by an input period, so (5.1) is independent of the lift.</p>
+<p><span id="proposition-5-1"></span><strong>Proposition 5.1.</strong> Formula (5.1) defines a covariant functor <span class="math" data-tex="\(A^\natural:\Lambda\to k\text{-}\mathrm{Mod}\)">\(A^\natural:\Lambda\to k\text{-}\mathrm{Mod}\)</span>, natural in unital algebra homomorphisms.</p>
+<p><strong>Proof.</strong> The fiber of a composite <span class="math" data-tex="\(gf\)">\(gf\)</span> over an integer <span class="math" data-tex="\(j\)">\(j\)</span> is the ordered concatenation of the fibers of <span class="math" data-tex="\(f\)">\(f\)</span> over the consecutive integers in <span class="math" data-tex="\(g^{-1}(j)\)">\(g^{-1}(j)\)</span>. Multiplying in two stages or in one stage agrees by associativity. Empty intermediate fibers contribute the unit. Thus <span class="math" data-tex="\(A^\natural(gf)=A^\natural(g)A^\natural(f)\)">\(A^\natural(gf)=A^\natural(g)A^\natural(f)\)</span>. The identity has single-element fibers and acts as the identity. A unital homomorphism preserves every product and every empty product, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=k\)">\(A=k\)</span>, all tensor powers canonically identify with <span class="math" data-tex="\(k\)">\(k\)</span>, and every morphism acts as the identity. Denote this constant functor by <span class="math" data-tex="\(k^\natural\)">\(k^\natural\)</span>.</p>
+<p><span id="theorem-5-2"></span><strong>Theorem 5.2.</strong> Natural transformations <span class="math" data-tex="\(A^\natural\to k^\natural\)">\(A^\natural\to k^\natural\)</span> are in bijection with traces on <span class="math" data-tex="\(A\)">\(A\)</span>. The transformation associated to <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+\tau_n(a_0\otimes\cdots\otimes a_n)=\tau(a_0\cdots a_n).
+\tag{5.2}
+\]">\[
+\tau_n(a_0\otimes\cdots\otimes a_n)=\tau(a_0\cdots a_n).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\([n]\to[0]\)">\([n]\to[0]\)</span> represented by the periodic extension of the constant simplicial map multiplies <span class="math" data-tex="\(a_0,\ldots,a_n\)">\(a_0,\ldots,a_n\)</span> in that order. Naturality forces (5.2). For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the other morphism to <span class="math" data-tex="\([0]\)">\([0]\)</span> multiplies <span class="math" data-tex="\(a_1a_0\)">\(a_1a_0\)</span>. Comparing them forces <span class="math" data-tex="\(\tau(a_0a_1)=\tau(a_1a_0)\)">\(\tau(a_0a_1)=\tau(a_1a_0)\)</span>.</p>
+<p>Conversely, grouping a circular list into consecutive blocks preserves its product up to a cyclic change of starting point. A trace is invariant under such a change: move the initial block to the end using <span class="math" data-tex="\(\tau(xy)=\tau(yx)\)">\(\tau(xy)=\tau(yx)\)</span>. Formula (5.2) therefore commutes with every map (5.1). This proves both existence and uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same construction works for a unital ring regarded as a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-algebra. For a nonunital algebra, one first adjoins a unit and uses the relative theory of the augmentation to <span class="math" data-tex="\(k\)">\(k\)</span>. A statement that uses empty fibers cannot silently omit this step.</p>
+<p><span id="proposition-5-3"></span><strong>Proposition 5.3.</strong> For a covariant functor <span class="math" data-tex="\(E:\Lambda\to k\text{-}\mathrm{Mod}\)">\(E:\Lambda\to k\text{-}\mathrm{Mod}\)</span>, a natural transformation to <span class="math" data-tex="\(k^\natural\)">\(k^\natural\)</span> is determined by a linear functional <span class="math" data-tex="\(\ell:E([0])\to k\)">\(\ell:E([0])\to k\)</span> that agrees after the two maps <span class="math" data-tex="\([1]\to[0]\)">\([1]\to[0]\)</span>.</p>
+<p><strong>Proof.</strong> Necessity follows from naturality. For sufficiency, the maps <span class="math" data-tex="\([n]\to[0]\)">\([n]\to[0]\)</span> correspond to the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> possible circular cuts. Two neighboring cuts can be obtained by first mapping <span class="math" data-tex="\([n]\to[1]\)">\([n]\to[1]\)</span>, making the single vertex between the cuts one block and the other vertices the second block, and then applying the two maps <span class="math" data-tex="\([1]\to[0]\)">\([1]\to[0]\)</span>. The assumed equality therefore makes <span class="math" data-tex="\(\ell E(p)\)">\(\ell E(p)\)</span> independent of the chosen <span class="math" data-tex="\(p:[n]\to[0]\)">\(p:[n]\to[0]\)</span>. Use this functional as the degree-<span class="math" data-tex="\(n\)">\(n\)</span> component. For any <span class="math" data-tex="\(f:[n]\to[m]\)">\(f:[n]\to[m]\)</span>, the composite of a chosen map <span class="math" data-tex="\([m]\to[0]\)">\([m]\to[0]\)</span> with <span class="math" data-tex="\(f\)">\(f\)</span> is a map <span class="math" data-tex="\([n]\to[0]\)">\([n]\to[0]\)</span>. Independence of the cut proves naturality. The chosen map <span class="math" data-tex="\([n]\to[0]\)">\([n]\to[0]\)</span> also forces this component in any natural transformation, proving uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-a-projective-resolution-that-keeps-the-integral-information">6. A projective resolution that keeps the integral information</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be a commutative ring. The category of covariant functors <span class="math" data-tex="\(\Lambda\to R\text{-}\mathrm{Mod}\)">\(\Lambda\to R\text{-}\mathrm{Mod}\)</span> is abelian: kernels, images and cokernels are taken at each object. Put</p>
+<span id="equation-6-1"></span><span class="math math-display" data-tex="\[
+P_q([n])=R[\operatorname{Hom}_\Lambda([q],[n])].
+\tag{6.1}
+\]">\[
+P_q([n])=R[\operatorname{Hom}_\Lambda([q],[n])].
+\tag{6.1}
+\]</span>
+<p>Square brackets here mean the free <span class="math" data-tex="\(R\)">\(R\)</span>-module on a set. A morphism acts by postcomposition. Evaluation at the identity gives</p>
+<span id="equation-6-2"></span><span class="math math-display" data-tex="\[
+\operatorname{Hom}_\Lambda(P_q,E)\simeq E([q]).
+\tag{6.2}
+\]">\[
+\operatorname{Hom}_\Lambda(P_q,E)\simeq E([q]).
+\tag{6.2}
+\]</span>
+<p>Indeed the image of a basis vector <span class="math" data-tex="\(f\)">\(f\)</span> must be <span class="math" data-tex="\(E(f)x\)">\(E(f)x\)</span>, where <span class="math" data-tex="\(x\)">\(x\)</span> is the image of the identity. Since evaluation preserves surjections, each <span class="math" data-tex="\(P_q\)">\(P_q\)</span> is projective. Sums of these functors give enough projectives: for each <span class="math" data-tex="\(x\in E([q])\)">\(x\in E([q])\)</span>, use the corresponding map <span class="math" data-tex="\(P_q\to E\)">\(P_q\to E\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\delta_i:[q-1]\to[q]\)">\(\delta_i:[q-1]\to[q]\)</span> be the simplicial injection omitting <span class="math" data-tex="\(i\)">\(i\)</span>. Precomposition defines</p>
+<span class="math math-display" data-tex="\[
+F_i:P_q\to P_{q-1},\qquad F_i(e_f)=e_{f\delta_i}.
+\]">\[
+F_i:P_q\to P_{q-1},\qquad F_i(e_f)=e_{f\delta_i}.
+\]</span>
+<p>On <span class="math" data-tex="\(P_q\)">\(P_q\)</span> let <span class="math" data-tex="\(T_q\)">\(T_q\)</span> be <span class="math" data-tex="\((-1)^q\)">\((-1)^q\)</span> times precomposition by <span class="math" data-tex="\(r_q^{-1}\)">\(r_q^{-1}\)</span>. Set</p>
+<span id="equation-6-3"></span><span class="math math-display" data-tex="\[
+D_q=1-T_q,\quad N_q=\sum_{j=0}^qT_q^j,\quad
+b_q=\sum_{i=0}^q(-1)^iF_i,\quad
+b&#x27;_q=\sum_{i=0}^{q-1}(-1)^iF_i.
+\tag{6.3}
+\]">\[
+D_q=1-T_q,\quad N_q=\sum_{j=0}^qT_q^j,\quad
+b_q=\sum_{i=0}^q(-1)^iF_i,\quad
+b&#x27;_q=\sum_{i=0}^{q-1}(-1)^iF_i.
+\tag{6.3}
+\]</span>
+<p>The formulas involving faces apply in positive degree. Put <span class="math" data-tex="\(b_0=b&#x27;_0=0\)">\(b_0=b&#x27;_0=0\)</span>.</p>
+<p><span id="lemma-6-1"></span><strong>Lemma 6.1.</strong> These operators satisfy</p>
+<span id="equation-6-4"></span><span class="math math-display" data-tex="\[
+bD=Db&#x27;,\qquad b&#x27;N=Nb,\qquad DN=ND=0.
+\tag{6.4}
+\]">\[
+bD=Db&#x27;,\qquad b&#x27;N=Nb,\qquad DN=ND=0.
+\tag{6.4}
+\]</span>
+<p>For each object, the augmented complex alternating <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> is exact over <span class="math" data-tex="\(R\)">\(R\)</span>, with degree-zero quotient <span class="math" data-tex="\(P_q/DP_q\)">\(P_q/DP_q\)</span>.</p>
+<p><strong>Proof.</strong> Precomposing by a rotation and then omitting a position gives the same face-rotation relations used in Proposition 1.1. Thus <span class="math" data-tex="\(bD=Db&#x27;\)">\(bD=Db&#x27;\)</span>. Also <span class="math" data-tex="\(T_q^{q+1}=1\)">\(T_q^{q+1}=1\)</span>, which gives <span class="math" data-tex="\(DN=ND=0\)">\(DN=ND=0\)</span>.</p>
+<p>For the norm identity, write <span class="math" data-tex="\(t_q\)">\(t_q\)</span> for unsigned rotation on any cyclic chain module. Iterating the face-rotation relations gives</p>
+<span id="equation-6-5"></span><span class="math math-display" data-tex="\[
+d_i t_q^j=
+\begin{cases}
+t_{q-1}^j d_{i-j},&amp;i\geq j,\\
+t_{q-1}^{j-1}d_{q+1+i-j},&amp;i&lt;j.
+\end{cases}
+\tag{6.5}
+\]">\[
+d_i t_q^j=
+\begin{cases}
+t_{q-1}^j d_{i-j},&amp;i\geq j,\\
+t_{q-1}^{j-1}d_{q+1+i-j},&amp;i&lt;j.
+\end{cases}
+\tag{6.5}
+\]</span>
+<p>The same formulas hold for the operators <span class="math" data-tex="\(F_i\)">\(F_i\)</span>. In the expansion of <span class="math" data-tex="\(b&#x27;_qN_q\)">\(b&#x27;_qN_q\)</span>, fix <span class="math" data-tex="\(0\leq a\leq q-1\)">\(0\leq a\leq q-1\)</span>, the power of <span class="math" data-tex="\(t_{q-1}\)">\(t_{q-1}\)</span>. The first case of (6.5), with <span class="math" data-tex="\(j=a\)">\(j=a\)</span>, contributes faces indexed <span class="math" data-tex="\(0\leq k\leq q-1-a\)">\(0\leq k\leq q-1-a\)</span>. The second case, with <span class="math" data-tex="\(j=a+1\)">\(j=a+1\)</span>, contributes <span class="math" data-tex="\(q-a\leq k\leq q\)">\(q-a\leq k\leq q\)</span>. Their signs are respectively</p>
+<span class="math math-display" data-tex="\[
+(-1)^{k+(q+1)a}=(-1)^{k+(q-1)a},\qquad
+(-1)^{k+(q+1)a}=(-1)^{k+(q-1)a}.
+\]">\[
+(-1)^{k+(q+1)a}=(-1)^{k+(q-1)a},\qquad
+(-1)^{k+(q+1)a}=(-1)^{k+(q-1)a}.
+\]</span>
+<p>Together they give every face in <span class="math" data-tex="\(T_{q-1}^a b_q\)">\(T_{q-1}^a b_q\)</span> exactly once. Summing over <span class="math" data-tex="\(a\)">\(a\)</span> proves <span class="math" data-tex="\(b&#x27;N=Nb\)">\(b&#x27;N=Nb\)</span>.</p>
+<p>For exactness, Theorem 4.1 says that precomposition by the rotations acts freely on the basis of <span class="math" data-tex="\(P_q([n])\)">\(P_q([n])\)</span>. On an orbit choose the signed basis <span class="math" data-tex="\(v_j=(-1)^{qj}e_{f r_q^{-j}}\)">\(v_j=(-1)^{qj}e_{f r_q^{-j}}\)</span>, <span class="math" data-tex="\(0\leq j\leq q\)">\(0\leq j\leq q\)</span>. The sign is consistent on returning to <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, since <span class="math" data-tex="\(q(q+1)\)">\(q(q+1)\)</span> is even, and <span class="math" data-tex="\(T_qv_j=v_{j+1}\)">\(T_qv_j=v_{j+1}\)</span>.</p>
+<p>In this basis <span class="math" data-tex="\(\ker(1-T_q)\)">\(\ker(1-T_q)\)</span> consists of vectors with equal coefficients, and is the image of <span class="math" data-tex="\(N_q\)">\(N_q\)</span>. The kernel of <span class="math" data-tex="\(N_q\)">\(N_q\)</span> consists of vectors whose coefficients sum to zero, and is generated over <span class="math" data-tex="\(R\)">\(R\)</span> by the differences <span class="math" data-tex="\(v_j-v_{j+1}\)">\(v_j-v_{j+1}\)</span>. These are the image of <span class="math" data-tex="\(1-T_q\)">\(1-T_q\)</span>. This proof divides by no integer. It works on each orbit and hence on their direct sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Form a first-quadrant double complex with <span class="math" data-tex="\(P_{p,q}=P_q\)">\(P_{p,q}=P_q\)</span> for all <span class="math" data-tex="\(p,q\geq0\)">\(p,q\geq0\)</span>. A horizontal boundary lowers <span class="math" data-tex="\(p\)">\(p\)</span>: it is <span class="math" data-tex="\(D_q\)">\(D_q\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(N_q\)">\(N_q\)</span> for positive even <span class="math" data-tex="\(p\)">\(p\)</span>. A vertical boundary lowers <span class="math" data-tex="\(q\)">\(q\)</span>: it is <span class="math" data-tex="\(b_q\)">\(b_q\)</span> for even <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(-b&#x27;_q\)">\(-b&#x27;_q\)</span> for odd <span class="math" data-tex="\(p\)">\(p\)</span>. Its total degree is <span class="math" data-tex="\(p+q\)">\(p+q\)</span>.</p>
+<p><span id="theorem-6-2"></span><strong>Theorem 6.2.</strong> The total complex, augmented to the constant functor <span class="math" data-tex="\(R^\natural\)">\(R^\natural\)</span>, is a projective resolution of <span class="math" data-tex="\(R^\natural\)">\(R^\natural\)</span>.</p>
+<p><strong>Proof.</strong> The squares of both boundaries are zero. The mixed terms cancel by (6.4): at odd <span class="math" data-tex="\(p\)">\(p\)</span> they are <span class="math" data-tex="\(-Db&#x27;+bD\)">\(-Db&#x27;+bD\)</span>; at positive even <span class="math" data-tex="\(p\)">\(p\)</span> they are <span class="math" data-tex="\(Nb-b&#x27;N\)">\(Nb-b&#x27;N\)</span>. Thus the sum of the boundaries squares to zero. Each total term is a finite direct sum of projective functors.</p>
+<p>Calculate first in the horizontal direction at a fixed object <span class="math" data-tex="\([n]\)">\([n]\)</span>. Lemma 6.1 leaves only the column <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, with terms <span class="math" data-tex="\(P_q([n])/DP_q([n])\)">\(P_q([n])/DP_q([n])\)</span>. The unique factorization in Theorem 4.1 identifies a basis for this quotient with the simplicial maps <span class="math" data-tex="\([q]\to[n]\)">\([q]\to[n]\)</span>. The relation is <span class="math" data-tex="\([e_{s r_q^{-j}}]=(-1)^{qj}[e_s]\)">\([e_{s r_q^{-j}}]=(-1)^{qj}[e_s]\)</span>. Since <span class="math" data-tex="\(s\delta_i\)">\(s\delta_i\)</span> is again simplicial, the boundary on these basis elements is the ordinary alternating face boundary.</p>
+<p>This is the unnormalized chain complex of the ordered simplex with vertices <span class="math" data-tex="\(0,\ldots,n\)">\(0,\ldots,n\)</span>. Here is an explicit augmented contraction. To a nondecreasing list <span class="math" data-tex="\((a_0,\ldots,a_q)\)">\((a_0,\ldots,a_q)\)</span> attach the vertex zero at the start:</p>
+<span class="math math-display" data-tex="\[
+h_q(a_0,\ldots,a_q)=(0,a_0,\ldots,a_q),\qquad
+h_{-1}(1)=(0).
+\]">\[
+h_q(a_0,\ldots,a_q)=(0,a_0,\ldots,a_q),\qquad
+h_{-1}(1)=(0).
+\]</span>
+<p>The first face of <span class="math" data-tex="\(h_q\)">\(h_q\)</span> returns the original list. Every other face cancels the corresponding term of <span class="math" data-tex="\(h_{q-1}\partial\)">\(h_{q-1}\partial\)</span>. Thus <span class="math" data-tex="\(\partial h+h\partial=1\)">\(\partial h+h\partial=1\)</span> on the augmented complex. Its homology is <span class="math" data-tex="\(R\)">\(R\)</span> in degree zero and zero above.</p>
+<p>For each total degree there are finitely many positions. Filtering by vertical degree and using the horizontal homology therefore computes total homology by a finite filtration in that degree; no infinite-product or convergence assertion is needed. The result at every object is <span class="math" data-tex="\(R\)">\(R\)</span> in degree zero. The augmentation sends every basis vector of <span class="math" data-tex="\(P_0([n])\)">\(P_0([n])\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, and commutes with postcomposition. Its degree-zero homology is consequently the constant functor. Exactness is objectwise, so this proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This resolution preserves the finite-group information over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. It does not replace its horizontal rows by invariant cochains using an unjustified average.</p>
+<h2 id="7-why-cyclic-cohomology-is-ext">7. Why cyclic cohomology is Ext</h2>
+<p>For functors <span class="math" data-tex="\(E,F\)">\(E,F\)</span>, <span class="math" data-tex="\(\operatorname{Ext}^j_\Lambda(E,F)\)">\(\operatorname{Ext}^j_\Lambda(E,F)\)</span> means the cohomology of <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(P_\bullet,F)\)">\(\operatorname{Hom}_\Lambda(P_\bullet,F)\)</span> for a projective resolution of <span class="math" data-tex="\(E\)">\(E\)</span>, or equivalently of <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(E,I^\bullet)\)">\(\operatorname{Hom}_\Lambda(E,I^\bullet)\)</span> for an injective resolution of <span class="math" data-tex="\(F\)">\(F\)</span>. These are derived functors in the abelian category of functors, not in the category of algebras.</p>
+<p>For the next theorem, <span class="math" data-tex="\(k\)">\(k\)</span> is a field and <span class="math" data-tex="\(A\)">\(A\)</span> is a unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebra. Compose the projective resolution of Theorem 6.2 with <span class="math" data-tex="\(D^{-1}:\Lambda^{\mathrm{op}}\to\Lambda\)">\(D^{-1}:\Lambda^{\mathrm{op}}\to\Lambda\)</span>. It becomes a resolution <span class="math" data-tex="\(Q_\bullet\)">\(Q_\bullet\)</span> of the constant <strong>contravariant</strong> functor. Under the bijection <span class="math" data-tex="\(f\mapsto Df\)">\(f\mapsto Df\)</span>, its degree-<span class="math" data-tex="\(q\)">\(q\)</span> terms identify with right representables</p>
+<span class="math math-display" data-tex="\[
+Q_q([n])\simeq k[\operatorname{Hom}_\Lambda([n],[q])].
+\]">\[
+Q_q([n])\simeq k[\operatorname{Hom}_\Lambda([n],[q])].
+\]</span>
+<p>Dualizing at each object gives an injective resolution of the constant covariant functor. To see injectivity directly, let <span class="math" data-tex="\(Q_q^\vee([n])=\operatorname{Hom}_k(Q_q([n]),k)\)">\(Q_q^\vee([n])=\operatorname{Hom}_k(Q_q([n]),k)\)</span>. The pairing that evaluates on the identity yields</p>
+<span id="equation-7-1"></span><span class="math math-display" data-tex="\[
+\operatorname{Hom}_\Lambda(E,Q_q^\vee)
+\simeq\operatorname{Hom}_k(E([q]),k).
+\tag{7.1}
+\]">\[
+\operatorname{Hom}_\Lambda(E,Q_q^\vee)
+\simeq\operatorname{Hom}_k(E([q]),k).
+\tag{7.1}
+\]</span>
+<p>The right-hand functor is exact because <span class="math" data-tex="\(k\)">\(k\)</span> is a field. This proves injectivity without a finite-dimensional hypothesis on <span class="math" data-tex="\(E\)">\(E\)</span>. Dualizing the objectwise exact resolution is exact for the same reason. There is no use of an isomorphism between a vector space and its bidual.</p>
+<p><span id="theorem-7-1"></span><strong>Theorem 7.1.</strong> If <span class="math" data-tex="\(k\)">\(k\)</span> is a field of characteristic zero, then, naturally in unital <span class="math" data-tex="\(k\)">\(k\)</span>-algebras,</p>
+<span id="equation-7-2"></span><span class="math math-display" data-tex="\[
+H_\lambda^j(A)\simeq
+\operatorname{Ext}^j_\Lambda(A^\natural,k^\natural).
+\tag{7.2}
+\]">\[
+H_\lambda^j(A)\simeq
+\operatorname{Ext}^j_\Lambda(A^\natural,k^\natural).
+\tag{7.2}
+\]</span>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(A^\natural,-)\)">\(\operatorname{Hom}_\Lambda(A^\natural,-)\)</span> to the injective resolution just constructed. By (7.1), the resulting term at <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> is <span class="math" data-tex="\(C^q(A)\)">\(C^q(A)\)</span>. The integer formula (4.3) gives the maps explicitly. For the injection <span class="math" data-tex="\(\delta_i:[q-1]\to[q]\)">\(\delta_i:[q-1]\to[q]\)</span>, <span class="math" data-tex="\(D\delta_i\)">\(D\delta_i\)</span> has its unique two-element fiber at <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span> when <span class="math" data-tex="\(i&lt;q\)">\(i&lt;q\)</span>, and at <span class="math" data-tex="\(q,0\)">\(q,0\)</span> in circular order when <span class="math" data-tex="\(i=q\)">\(i=q\)</span>. Thus the vertical maps are exactly <span class="math" data-tex="\(b\)">\(b\)</span> in even columns and <span class="math" data-tex="\(-b&#x27;\)">\(-b&#x27;\)</span> in odd columns. Since <span class="math" data-tex="\(D(r_q^{-1})=r_q\)">\(D(r_q^{-1})=r_q\)</span>, the horizontal maps are <span class="math" data-tex="\(1-\lambda_q\)">\(1-\lambda_q\)</span> and <span class="math" data-tex="\(N_q\)">\(N_q\)</span>, alternately.</p>
+<p>Lemma 3.1 now computes horizontal cohomology: it vanishes for positive <span class="math" data-tex="\(p\)">\(p\)</span>, and at <span class="math" data-tex="\(p=0\)">\(p=0\)</span> it is <span class="math" data-tex="\(\ker(1-\lambda_q)=C_\lambda^q(A)\)">\(\ker(1-\lambda_q)=C_\lambda^q(A)\)</span>. The remaining vertical differential is <span class="math" data-tex="\(b\)">\(b\)</span>. The same finite-filtration argument as in Theorem 6.2 identifies total cohomology with <span class="math" data-tex="\(H_\lambda^j(A)\)">\(H_\lambda^j(A)\)</span>. All constructions commute with unital algebra homomorphisms, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a unital ring <span class="math" data-tex="\(A\)">\(A\)</span>, the expression
+<span class="math" data-tex="\(\operatorname{Ext}^j_\Lambda(A^\natural,\mathbb Z^\natural)\)">\(\operatorname{Ext}^j_\Lambda(A^\natural,\mathbb Z^\natural)\)</span> still defines a derived theory. The preceding injective-resolution proof uses exact linear duality over a field, and its final comparison uses characteristic zero. Neither step can be asserted for an arbitrary ring by leaving the formulas unchanged.</p>
+<p>The derived viewpoint also gives bivariant groups <span class="math" data-tex="\(\operatorname{Ext}^j_\Lambda(A^\natural,B^\natural)\)">\(\operatorname{Ext}^j_\Lambda(A^\natural,B^\natural)\)</span> and their Yoneda composition. It supplies an algebraic bivariant theory; it does not assert an identification with Kasparov's analytic <span class="math" data-tex="\(KK\)">\(KK\)</span>-groups.</p>
+<h2 id="8-the-universal-degree-two-class">8. The universal degree-two class</h2>
+<p><span id="theorem-8-1"></span><strong>Theorem 8.1.</strong> For every commutative ring <span class="math" data-tex="\(R\)">\(R\)</span>, the Yoneda algebra of the constant functor is</p>
+<span id="equation-8-1"></span><span class="math math-display" data-tex="\[
+\operatorname{Ext}^*_\Lambda(R^\natural,R^\natural)
+\simeq R[\sigma],\qquad |\sigma|=2.
+\tag{8.1}
+\]">\[
+\operatorname{Ext}^*_\Lambda(R^\natural,R^\natural)
+\simeq R[\sigma],\qquad |\sigma|=2.
+\tag{8.1}
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is induced by shifting two columns in the cyclic resolution.</p>
+<p><strong>Proof.</strong> Apply <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(-,R^\natural)\)">\(\operatorname{Hom}_\Lambda(-,R^\natural)\)</span> to Theorem 6.2. Each position is a copy of <span class="math" data-tex="\(R\)">\(R\)</span>. Every unsigned face and rotation acts as the identity. In an even column, the vertical differential from degree <span class="math" data-tex="\(q\)">\(q\)</span> to <span class="math" data-tex="\(q+1\)">\(q+1\)</span> is zero for even <span class="math" data-tex="\(q\)">\(q\)</span>, and the identity for odd <span class="math" data-tex="\(q\)">\(q\)</span>. In an odd column it is minus the identity for even <span class="math" data-tex="\(q\)">\(q\)</span>, and zero for odd <span class="math" data-tex="\(q\)">\(q\)</span>. Odd columns are acyclic. An even column has cohomology <span class="math" data-tex="\(R\)">\(R\)</span> in degree zero only.</p>
+<p>The vertical-first filtration leaves one copy of <span class="math" data-tex="\(R\)">\(R\)</span> at <span class="math" data-tex="\((p,0)\)">\((p,0)\)</span> for each even <span class="math" data-tex="\(p\)">\(p\)</span> and no other positions. No higher differential can connect two remaining positions. Consequently Ext is <span class="math" data-tex="\(R\)">\(R\)</span> in every even degree and zero in every odd degree. The cochain equal to <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\((2j,0)\)">\((2j,0)\)</span> and zero elsewhere represents its degree-<span class="math" data-tex="\(2j\)">\(2j\)</span> generator: its vertical differential and its horizontal <span class="math" data-tex="\(1-T_0\)">\(1-T_0\)</span> differential are both zero.</p>
+<p>To determine the product, let <span class="math" data-tex="\(\pi\)">\(\pi\)</span> be the degree-minus-two chain map on the total projective resolution that sends <span class="math" data-tex="\(P_{p,q}\)">\(P_{p,q}\)</span> identically to <span class="math" data-tex="\(P_{p-2,q}\)">\(P_{p-2,q}\)</span> when <span class="math" data-tex="\(p\geq2\)">\(p\geq2\)</span>, and to zero otherwise. Parity is preserved. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span>, the horizontal boundary lands in a discarded column, exactly as the target has no outgoing horizontal boundary from column zero. Hence <span class="math" data-tex="\(\pi\)">\(\pi\)</span> commutes with the total boundary. Composing <span class="math" data-tex="\(\pi\)">\(\pi\)</span> with the augmentation represents the degree-two class <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<p>The chain-map description of the Yoneda product composes lifts of cocycles to maps between projective resolutions. To recall the direction of the maps, let <span class="math" data-tex="\(P_\bullet\to E\)">\(P_\bullet\to E\)</span> be a resolution and <span class="math" data-tex="\(d\geq1\)">\(d\geq1\)</span>. A cocycle <span class="math" data-tex="\(f:P_d\to F\)">\(f:P_d\to F\)</span> kills <span class="math" data-tex="\(\operatorname{im}d_{d+1}\)">\(\operatorname{im}d_{d+1}\)</span>, so it factors as <span class="math" data-tex="\(\bar f:\Omega^dE\to F\)">\(\bar f:\Omega^dE\to F\)</span>, with <span class="math" data-tex="\(\Omega^dE=\operatorname{im}d_d\subset P_{d-1}\)">\(\Omega^dE=\operatorname{im}d_d\subset P_{d-1}\)</span>. Push out the left end of the exact sequence <span class="math" data-tex="\(0\to\Omega^dE\to P_{d-1}\to\cdots\to P_0\to E\to0\)">\(0\to\Omega^dE\to P_{d-1}\to\cdots\to P_0\to E\to0\)</span> along <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span>. Its new left middle term is <span class="math" data-tex="\((F\oplus P_{d-1})/\{(\bar f(\omega),-\omega):\omega\in\Omega^dE\}\)">\((F\oplus P_{d-1})/\{(\bar f(\omega),-\omega):\omega\in\Omega^dE\}\)</span>; this gives the associated <span class="math" data-tex="\(d\)">\(d\)</span>-extension of <span class="math" data-tex="\(E\)">\(E\)</span> by <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>For a second cocycle <span class="math" data-tex="\(g:Q_e\to G\)">\(g:Q_e\to G\)</span>, where <span class="math" data-tex="\(Q_\bullet\to F\)">\(Q_\bullet\to F\)</span> is projective, lift <span class="math" data-tex="\(f\)">\(f\)</span> successively to maps <span class="math" data-tex="\(\widetilde f_j:P_{d+j}\to Q_j\)">\(\widetilde f_j:P_{d+j}\to Q_j\)</span>. At each step the preceding chain identity puts the required image in the kernel of the next augmentation or differential, and projectivity lifts it through the corresponding surjection. The cochain <span class="math" data-tex="\(g\widetilde f_e:P_{d+e}\to G\)">\(g\widetilde f_e:P_{d+e}\to G\)</span> represents the splice: the lifts supply comparison maps between the truncated resolutions, and pushing out their left ends gives the two extensions joined at <span class="math" data-tex="\(F\)">\(F\)</span>. Applying the same lifting argument to the difference of two lifts produces a chain homotopy; composition with the cocycle <span class="math" data-tex="\(g\)">\(g\)</span> then changes the result by a coboundary. Degree-zero products are ordinary composition. Thus composition of lifts computes the Yoneda product with the stated order.</p>
+<p>Here <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is already such a lift. Its <span class="math" data-tex="\(j\)">\(j\)</span>-fold iterate represents the cochain at <span class="math" data-tex="\((2j,0)\)">\((2j,0)\)</span>. Thus <span class="math" data-tex="\(\sigma^j\)">\(\sigma^j\)</span> is the generator in every even degree, proving the ring assertion. For coefficients <span class="math" data-tex="\(E\)">\(E\)</span>, precomposing cochains with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> shifts them two columns and is Yoneda multiplication by the same class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, the integral statement is <span class="math" data-tex="\(\mathbb Z[\sigma]\)">\(\mathbb Z[\sigma]\)</span>. It is stronger than merely listing the abelian groups in each degree: the proof identifies their multiplication.</p>
+<h2 id="9-hochschild-cohomology-and-the-exact-couple">9. Hochschild cohomology and the exact couple</h2>
+<p>For a covariant functor <span class="math" data-tex="\(E\)">\(E\)</span>, let <span class="math" data-tex="\(K^\bullet(E)\)">\(K^\bullet(E)\)</span> be the total cochain complex obtained by applying <span class="math" data-tex="\(\operatorname{Hom}_\Lambda(-,E)\)">\(\operatorname{Hom}_\Lambda(-,E)\)</span> to Theorem 6.2. The vertical maps in its even columns are <span class="math" data-tex="\(b\)">\(b\)</span>, and in its odd columns are <span class="math" data-tex="\(-b&#x27;\)">\(-b&#x27;\)</span>. Horizontal maps are <span class="math" data-tex="\(D=1-T\)">\(D=1-T\)</span> from even columns and <span class="math" data-tex="\(N\)">\(N\)</span> from odd columns. Here <span class="math" data-tex="\(T_q=(-1)^qE(r_q^{-1})\)">\(T_q=(-1)^qE(r_q^{-1})\)</span>; for the dual resolution associated to an algebra the corresponding rotation is the <span class="math" data-tex="\(\lambda_q\)">\(\lambda_q\)</span> of (1.1).</p>
+<p>The simplicial representables <span class="math" data-tex="\(R[\operatorname{Hom}_\Delta([q],-)]\)">\(R[\operatorname{Hom}_\Delta([q],-)]\)</span>, with their alternating face boundary, resolve the constant <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>-functor: their value at <span class="math" data-tex="\([n]\)">\([n]\)</span> is the ordered simplex contracted in Theorem 6.2. Thus</p>
+<span id="equation-9-1"></span><span class="math math-display" data-tex="\[
+H^j(E([0])\xrightarrow b E([1])\xrightarrow b\cdots)
+\simeq\operatorname{Ext}^j_\Delta(R^\natural,E|_\Delta).
+\tag{9.1}
+\]">\[
+H^j(E([0])\xrightarrow b E([1])\xrightarrow b\cdots)
+\simeq\operatorname{Ext}^j_\Delta(R^\natural,E|_\Delta).
+\tag{9.1}
+\]</span>
+<p><span id="lemma-9-1"></span><strong>Lemma 9.1.</strong> The <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>-complex of a covariant functor is contractible. If <span class="math" data-tex="\(\sigma_{q-1}:[q]\to[q-1]\)">\(\sigma_{q-1}:[q]\to[q-1]\)</span> is the simplicial surjection repeating the last vertex, a contraction is</p>
+<span id="equation-9-2"></span><span class="math math-display" data-tex="\[
+h_q=(-1)^{q-1}E(\sigma_{q-1})\quad(q\geq1),\qquad h_0=0.
+\tag{9.2}
+\]">\[
+h_q=(-1)^{q-1}E(\sigma_{q-1})\quad(q\geq1),\qquad h_0=0.
+\tag{9.2}
+\]</span>
+<p><strong>Proof.</strong> In the projective complex, let <span class="math" data-tex="\(s_q=(-1)^q\)">\(s_q=(-1)^q\)</span> times precomposition by <span class="math" data-tex="\(\sigma_q\)">\(\sigma_q\)</span>. The face-degeneracy relations give</p>
+<span class="math math-display" data-tex="\[
+F_i s_q=-s_{q-1}F_i\quad(0\leq i&lt;q),\qquad
+F_qs_q=(-1)^q\mathrm{id}.
+\]">\[
+F_i s_q=-s_{q-1}F_i\quad(0\leq i&lt;q),\qquad
+F_qs_q=(-1)^q\mathrm{id}.
+\]</span>
+<p>Consequently the terms of <span class="math" data-tex="\(b&#x27;_{q+1}s_q+s_{q-1}b&#x27;_q\)">\(b&#x27;_{q+1}s_q+s_{q-1}b&#x27;_q\)</span> indexed <span class="math" data-tex="\(i&lt;q\)">\(i&lt;q\)</span> cancel, and its last term is the identity. Dualizing by <span class="math" data-tex="\(\operatorname{Hom}(-,E)\)">\(\operatorname{Hom}(-,E)\)</span> gives <span class="math" data-tex="\(b&#x27;h+hb&#x27;=1\)">\(b&#x27;h+hb&#x27;=1\)</span>. The case <span class="math" data-tex="\(q=0\)">\(q=0\)</span> says <span class="math" data-tex="\(E(\sigma_0)E(\delta_0)=1\)">\(E(\sigma_0)E(\delta_0)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-9-2"></span><strong>Theorem 9.2.</strong> For every covariant <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-functor <span class="math" data-tex="\(E\)">\(E\)</span> over <span class="math" data-tex="\(R\)">\(R\)</span>, there is a natural exact sequence</p>
+<span id="equation-9-3"></span><span class="math math-display" data-tex="\[
+\cdots\longrightarrow
+\operatorname{Ext}^{j-2}_\Lambda(R^\natural,E)
+\xrightarrow S\operatorname{Ext}^{j}_\Lambda(R^\natural,E)
+\xrightarrow I\operatorname{Ext}^{j}_\Delta(R^\natural,E|_\Delta)
+\xrightarrow B\operatorname{Ext}^{j-1}_\Lambda(R^\natural,E)
+\xrightarrow S\cdots.
+\tag{9.3}
+\]">\[
+\cdots\longrightarrow
+\operatorname{Ext}^{j-2}_\Lambda(R^\natural,E)
+\xrightarrow S\operatorname{Ext}^{j}_\Lambda(R^\natural,E)
+\xrightarrow I\operatorname{Ext}^{j}_\Delta(R^\natural,E|_\Delta)
+\xrightarrow B\operatorname{Ext}^{j-1}_\Lambda(R^\natural,E)
+\xrightarrow S\cdots.
+\tag{9.3}
+\]</span>
+<p>The map <span class="math" data-tex="\(S\)">\(S\)</span> is multiplication by the class <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of Theorem 8.1; <span class="math" data-tex="\(I\)">\(I\)</span> is restriction. This sequence is the long exact sequence of the associated exact couple.</p>
+<p><strong>Proof.</strong> Shifting two columns embeds <span class="math" data-tex="\(K[-2]\)">\(K[-2]\)</span> into <span class="math" data-tex="\(K\)">\(K\)</span>, where <span class="math" data-tex="\(K[-2]^j=K^{j-2}\)">\(K[-2]^j=K^{j-2}\)</span>. Let <span class="math" data-tex="\(L\)">\(L\)</span> be the quotient consisting of columns zero and one. There is a short exact sequence of cochain complexes</p>
+<span id="equation-9-4"></span><span class="math math-display" data-tex="\[
+0\longrightarrow K[-2]\xrightarrow S K\longrightarrow L\longrightarrow0.
+\tag{9.4}
+\]">\[
+0\longrightarrow K[-2]\xrightarrow S K\longrightarrow L\longrightarrow0.
+\tag{9.4}
+\]</span>
+<p>Projecting <span class="math" data-tex="\(L\)">\(L\)</span> onto its column-zero complex is a cochain map. Its kernel is the column-one <span class="math" data-tex="\(-b&#x27;\)">\(-b&#x27;\)</span>-complex, placed one degree higher, with the contraction of Lemma 9.1. Hence <span class="math" data-tex="\(H^j(L)\)">\(H^j(L)\)</span> identifies with (9.1). The inclusion of simplicial representables into column zero of the cyclic resolution lifts the identity of the constant functor. The resulting map on Hom complexes is projection onto column zero. Thus the map <span class="math" data-tex="\(I\)">\(I\)</span> just obtained is the derived restriction map.</p>
+<p>The long exact sequence of (9.4) is (9.3), and Theorem 8.1 identifies its <span class="math" data-tex="\(S\)">\(S\)</span> with Yoneda multiplication. For completeness, the connecting map is concrete. If <span class="math" data-tex="\(x\in E([j])\)">\(x\in E([j])\)</span> satisfies <span class="math" data-tex="\(bx=0\)">\(bx=0\)</span>, put <span class="math" data-tex="\(y=h_jD_jx\)">\(y=h_jD_jx\)</span>. The relation <span class="math" data-tex="\(b&#x27;D=Db\)">\(b&#x27;D=Db\)</span> and Lemma 9.1 give <span class="math" data-tex="\(b&#x27;y=D_jx\)">\(b&#x27;y=D_jx\)</span>. Thus <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, in columns zero and one, is a cocycle of <span class="math" data-tex="\(L\)">\(L\)</span>. Its differential in the full complex has only a column-two component, <span class="math" data-tex="\(N_{j-1}y\)">\(N_{j-1}y\)</span>. Undoing the shift gives</p>
+<span id="equation-9-5"></span><span class="math math-display" data-tex="\[
+Bx=[N_{j-1}h_jD_jx]\quad(j\geq1).
+\tag{9.5}
+\]">\[
+Bx=[N_{j-1}h_jD_jx]\quad(j\geq1).
+\tag{9.5}
+\]</span>
+<p>It is a cocycle because <span class="math" data-tex="\(DN=0\)">\(DN=0\)</span> and <span class="math" data-tex="\(bN=Nb&#x27;\)">\(bN=Nb&#x27;\)</span>. For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> is zero. Changing a representative or a lift changes this expression by a coboundary, as follows directly by taking the differential of the changed lift in (9.4). This also proves naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a unital algebra over a characteristic-zero field, the algebraic cochain bicomplex in Theorem 7.1 has the same two-column argument. Its column-zero cohomology is Hochschild cohomology with coefficients in <span class="math" data-tex="\(A^*\)">\(A^*\)</span>. Explicitly, identify a multilinear form <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> with the map</p>
+<span class="math math-display" data-tex="\[
+(a_1,\ldots,a_j)\longmapsto
+\bigl(a_0\longmapsto\varphi(a_0,a_1,\ldots,a_j)\bigr).
+\]">\[
+(a_1,\ldots,a_j)\longmapsto
+\bigl(a_0\longmapsto\varphi(a_0,a_1,\ldots,a_j)\bigr).
+\]</span>
+<p>The dual bimodule has action <span class="math" data-tex="\((a\cdot f\cdot c)(x)=f(cxa)\)">\((a\cdot f\cdot c)(x)=f(cxa)\)</span>. The first Hochschild coefficient term becomes multiplication <span class="math" data-tex="\(a_0a_1\)">\(a_0a_1\)</span>, and the last becomes <span class="math" data-tex="\(a_{j+1}a_0\)">\(a_{j+1}a_0\)</span>; the middle terms are the products in (1.1). This checks the identification of differentials, not just of vector spaces. Therefore</p>
+<span id="equation-9-6"></span><span class="math math-display" data-tex="\[
+\cdots\to H_\lambda^{j-2}(A)\xrightarrow S H_\lambda^j(A)
+\xrightarrow I HH^j(A,A^*)\xrightarrow B H_\lambda^{j-1}(A)
+\xrightarrow S H_\lambda^{j+1}(A)\to\cdots.
+\tag{9.6}
+\]">\[
+\cdots\to H_\lambda^{j-2}(A)\xrightarrow S H_\lambda^j(A)
+\xrightarrow I HH^j(A,A^*)\xrightarrow B H_\lambda^{j-1}(A)
+\xrightarrow S H_\lambda^{j+1}(A)\to\cdots.
+\tag{9.6}
+\]</span>
+<p>This is Connes' cyclic–Hochschild exact sequence. The sign in (9.2) is part of our convention for its connecting map.</p>
+<h2 id="10-why-the-classifying-space-is-the-classifying-space-of-the-circle">10. Why the classifying space is the classifying space of the circle</h2>
+<p>The nerve of a category has a <span class="math" data-tex="\(j\)">\(j\)</span>-simplex for each composable string of <span class="math" data-tex="\(j\)">\(j\)</span> arrows. Its geometric realization is its classifying space. We use three facts from algebraic topology: <span class="math" data-tex="\(\mathbb{CP}^\infty\)">\(\mathbb{CP}^\infty\)</span> is <span class="math" data-tex="\(K(\mathbb Z,2)\)">\(K(\mathbb Z,2)\)</span> with cohomology <span class="math" data-tex="\(\mathbb Z[u]\)">\(\mathbb Z[u]\)</span>, <span class="math" data-tex="\(|u|=2\)">\(|u|=2\)</span>; a degree-two integral cohomology class on a CW complex is represented by a map to <span class="math" data-tex="\(K(\mathbb Z,2)\)">\(K(\mathbb Z,2)\)</span>; a homology isomorphism between simply connected CW complexes is a homotopy equivalence. References are [Hatcher 2002, Example 4.50, Theorems 3.19 and 4.57, and Corollary 4.33]. These are the topological background for the following argument.</p>
+<p><span id="lemma-10-1"></span><strong>Lemma 10.1.</strong> For a small category <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>,</p>
+<span id="equation-10-1"></span><span class="math math-display" data-tex="\[
+\operatorname{Ext}^*_{\mathcal C}(\mathbb Z^\natural,\mathbb Z^\natural)
+\simeq H^*(B\mathcal C;\mathbb Z)
+\tag{10.1}
+\]">\[
+\operatorname{Ext}^*_{\mathcal C}(\mathbb Z^\natural,\mathbb Z^\natural)
+\simeq H^*(B\mathcal C;\mathbb Z)
+\tag{10.1}
+\]</span>
+<p>as rings. Its categorical homology with constant coefficients is <span class="math" data-tex="\(H_*(B\mathcal C;\mathbb Z)\)">\(H_*(B\mathcal C;\mathbb Z)\)</span>.</p>
+<p><strong>Proof.</strong> A bar resolution of the constant covariant functor has, in degree <span class="math" data-tex="\(j\)">\(j\)</span>, one representable <span class="math" data-tex="\(\mathbb Z[\operatorname{Hom}_{\mathcal C}(x_j,-)]\)">\(\mathbb Z[\operatorname{Hom}_{\mathcal C}(x_j,-)]\)</span> for each string <span class="math" data-tex="\(x_0\to\cdots\to x_j\)">\(x_0\to\cdots\to x_j\)</span>. The alternating boundary deletes an end vertex or composes the arrows adjacent to an interior vertex. At an object <span class="math" data-tex="\(x\)">\(x\)</span>, its basis is a string followed by an arrow <span class="math" data-tex="\(x_j\to x\)">\(x_j\to x\)</span>. This is the nerve chain complex of the category of objects over <span class="math" data-tex="\(x\)">\(x\)</span>. Its terminal object is <span class="math" data-tex="\(\mathrm{id}_x\)">\(\mathrm{id}_x\)</span>. Appending that object, with sign <span class="math" data-tex="\((-1)^{j+1}\)">\((-1)^{j+1}\)</span>, gives a contraction of the augmented complex: the new last face returns the original string, and the other faces cancel with the contraction of the boundary. The resolution is therefore exact and projective.</p>
+<p>Applying Hom into the constant functor makes a degree-<span class="math" data-tex="\(j\)">\(j\)</span> cochain a function on strings of <span class="math" data-tex="\(j\)">\(j\)</span> arrows. Its differential is the nerve coboundary. Taking the tensor product over the category with the constant contravariant functor instead gives the nerve chain complex. These may be unnormalized nerve complexes; retaining degenerate simplices computes the same simplicial homology.</p>
+<p>The Alexander–Whitney diagonal splits a string at each vertex. On cochains it yields</p>
+<span class="math math-display" data-tex="\[
+(\alpha\smile\beta)(x_0\to\cdots\to x_{p+q})
+=\alpha(x_0\to\cdots\to x_p)
+\beta(x_p\to\cdots\to x_{p+q}).
+\]">\[
+(\alpha\smile\beta)(x_0\to\cdots\to x_{p+q})
+=\alpha(x_0\to\cdots\to x_p)
+\beta(x_p\to\cdots\to x_{p+q}).
+\]</span>
+<p>Evaluating a degree-<span class="math" data-tex="\(q\)">\(q\)</span> cocycle on the last <span class="math" data-tex="\(q\)">\(q\)</span> arrows gives a lift on the bar resolution, retaining the initial string and composing its representable arrow through the remaining arrows. The boundary terms within that initial string commute with the lift; the other terms cancel by the cocycle equation. Composing with a degree-<span class="math" data-tex="\(p\)">\(p\)</span> cocycle gives the displayed cup formula. Hence the projective-resolution description of the Yoneda product agrees with the nerve cup product. Realizing the nerve gives its CW simplicial chain and cochain theory. This proves (10.1), including the product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-10-2"></span><strong>Theorem 10.2.</strong> There is a homotopy equivalence</p>
+<span id="equation-10-2"></span><span class="math math-display" data-tex="\[
+B\Lambda\simeq\mathbb{CP}^\infty=BS^1.
+\tag{10.2}
+\]">\[
+B\Lambda\simeq\mathbb{CP}^\infty=BS^1.
+\tag{10.2}
+\]</span>
+<p>Under it, the class <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of Theorem 8.1 can be taken to be the degree-two generator.</p>
+<p><strong>Proof.</strong> All objects have arrows to and from <span class="math" data-tex="\([0]\)">\([0]\)</span>, so the nerve is connected. It is also simply connected. To verify this, choose arrows <span class="math" data-tex="\(u_n:[0]\to[n]\)">\(u_n:[0]\to[n]\)</span> and <span class="math" data-tex="\(v_n:[n]\to[0]\)">\(v_n:[n]\to[0]\)</span>. The endomorphism set of <span class="math" data-tex="\([0]\)">\([0]\)</span> consists of the identity, so <span class="math" data-tex="\(v_nu_n=1\)">\(v_nu_n=1\)</span>. In the fundamental groupoid of the nerve, the two-simplex of this composite identifies <span class="math" data-tex="\(v_n\)">\(v_n\)</span> with <span class="math" data-tex="\(u_n^{-1}\)">\(u_n^{-1}\)</span>. For any arrow <span class="math" data-tex="\(f:[n]\to[m]\)">\(f:[n]\to[m]\)</span>, the loop represented by <span class="math" data-tex="\(v_m f u_n\)">\(v_m f u_n\)</span> is likewise the identity, because its composite is an endomorphism of <span class="math" data-tex="\([0]\)">\([0]\)</span>. Every edge loop can be expressed in terms of these loops after transporting its vertices to <span class="math" data-tex="\([0]\)">\([0]\)</span> by the <span class="math" data-tex="\(u_n\)">\(u_n\)</span>. Thus every loop is trivial.</p>
+<p>Lemma 10.1 and Theorem 8.1 give <span class="math" data-tex="\(H^*(B\Lambda;\mathbb Z)=\mathbb Z[\sigma]\)">\(H^*(B\Lambda;\mathbb Z)=\mathbb Z[\sigma]\)</span>. We also need its integral homology, rather than inferring it merely from this cohomology assertion. Tensor the projective resolution of Theorem 6.2 over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> with the constant contravariant functor. A representable tensors to <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so every unsigned face and rotation acts as the identity. In each even column the vertical homology is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in degree zero; an odd column is acyclic. The vertical-first filtration gives</p>
+<span class="math math-display" data-tex="\[
+H_{2j}(B\Lambda;\mathbb Z)=\mathbb Z,\qquad
+H_{2j+1}(B\Lambda;\mathbb Z)=0.
+\]">\[
+H_{2j}(B\Lambda;\mathbb Z)=\mathbb Z,\qquad
+H_{2j+1}(B\Lambda;\mathbb Z)=0.
+\]</span>
+<p>All these groups are torsion-free. The integral universal coefficient sequence therefore identifies cohomology with the dual of homology in each degree.</p>
+<p>Choose <span class="math" data-tex="\(f:B\Lambda\to K(\mathbb Z,2)=\mathbb{CP}^\infty\)">\(f:B\Lambda\to K(\mathbb Z,2)=\mathbb{CP}^\infty\)</span> representing <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Then <span class="math" data-tex="\(f^*u=\sigma\)">\(f^*u=\sigma\)</span>, and hence <span class="math" data-tex="\(f^*(u^j)=\sigma^j\)">\(f^*(u^j)=\sigma^j\)</span>. These are generators in every even degree by Theorem 8.1. Both spaces have the homology groups just described, so duality shows that <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is an isomorphism in every degree. Both are simply connected CW complexes. The homological Whitehead theorem now makes <span class="math" data-tex="\(f\)">\(f\)</span> a homotopy equivalence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The tensor calculation also proves</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tor}^{\Lambda}_{2j}(\mathbb Z^\natural,\mathbb Z^\natural)
+=\mathbb Z,\qquad
+\operatorname{Tor}^{\Lambda}_{2j+1}(\mathbb Z^\natural,\mathbb Z^\natural)=0,
+\]">\[
+\operatorname{Tor}^{\Lambda}_{2j}(\mathbb Z^\natural,\mathbb Z^\natural)
+=\mathbb Z,\qquad
+\operatorname{Tor}^{\Lambda}_{2j+1}(\mathbb Z^\natural,\mathbb Z^\natural)=0,
+\]</span>
+<p>where Tor uses a constant right functor and a constant left functor. Specifying their variance is necessary for a tensor product over a category.</p>
+<h2 id="11-exercises-with-solutions">11. Exercises with solutions</h2>
+<p><strong>Exercise 11.1 (first steps).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be any associative algebra. Write out <span class="math" data-tex="\(b\varphi\)">\(b\varphi\)</span> for a one-cochain. Explain why an arbitrary antisymmetric bilinear form on <span class="math" data-tex="\(A\)">\(A\)</span> need not be a cyclic cocycle.</p>
+<p><strong>Solution.</strong></p>
+<span class="math math-display" data-tex="\[
+(b\varphi)(a_0,a_1,a_2)
+=\varphi(a_0a_1,a_2)-\varphi(a_0,a_1a_2)+\varphi(a_2a_0,a_1).
+\]">\[
+(b\varphi)(a_0,a_1,a_2)
+=\varphi(a_0a_1,a_2)-\varphi(a_0,a_1a_2)+\varphi(a_2a_0,a_1).
+\]</span>
+<p>Antisymmetry is precisely cyclicity in degree one, but it imposes no derivation rule on products. For a counterexample use <span class="math" data-tex="\(A=\mathbb C[x]\)">\(A=\mathbb C[x]\)</span>. On the monomial basis set <span class="math" data-tex="\(\varphi(x,x^2)=1\)">\(\varphi(x,x^2)=1\)</span>, <span class="math" data-tex="\(\varphi(x^2,x)=-1\)">\(\varphi(x^2,x)=-1\)</span>, and set all other values to zero. Then
+<span class="math" data-tex="\((b\varphi)(x,x,x)=\varphi(x^2,x)-\varphi(x,x^2)+\varphi(x^2,x)=-3\)">\((b\varphi)(x,x,x)=\varphi(x^2,x)-\varphi(x,x^2)+\varphi(x^2,x)=-3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 11.2 (a trace with a derivation).</strong> Let <span class="math" data-tex="\(\tau\)">\(\tau\)</span> be a trace and <span class="math" data-tex="\(\delta\)">\(\delta\)</span> a derivation with <span class="math" data-tex="\(\tau\delta=0\)">\(\tau\delta=0\)</span>. Prove directly that <span class="math" data-tex="\(\tau(a_0\delta(a_1))\)">\(\tau(a_0\delta(a_1))\)</span> is a cyclic one-cocycle, without assuming <span class="math" data-tex="\(A\)">\(A\)</span> is commutative.</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(0=\tau\delta(a_0a_1)\)">\(0=\tau\delta(a_0a_1)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\tau(a_0\delta(a_1))=-\tau(\delta(a_0)a_1)
+=-\tau(a_1\delta(a_0)).
+\]">\[
+\tau(a_0\delta(a_1))=-\tau(\delta(a_0)a_1)
+=-\tau(a_1\delta(a_0)).
+\]</span>
+<p>Expanding <span class="math" data-tex="\(b\varphi\)">\(b\varphi\)</span> leaves</p>
+<span class="math math-display" data-tex="\[
+-\tau(a_0\delta(a_1)a_2)+\tau(a_2a_0\delta(a_1)),
+\]">\[
+-\tau(a_0\delta(a_1)a_2)+\tau(a_2a_0\delta(a_1)),
+\]</span>
+<p>which is zero by the trace identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 11.3 (a limit of averaging).</strong> For <span class="math" data-tex="\(V=\mathbb Z\)">\(V=\mathbb Z\)</span>, <span class="math" data-tex="\(T=1\)">\(T=1\)</span> and <span class="math" data-tex="\(r=3\)">\(r=3\)</span>, compute the positive cohomology of the complex alternating <span class="math" data-tex="\(1-T\)">\(1-T\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, starting with <span class="math" data-tex="\(V\xrightarrow{1-T}V\xrightarrow{N}V\)">\(V\xrightarrow{1-T}V\xrightarrow{N}V\)</span>.</p>
+<p><strong>Solution.</strong> Its maps are <span class="math" data-tex="\(0,3,0,3,\ldots\)">\(0,3,0,3,\ldots\)</span>. The degree-one group is <span class="math" data-tex="\(\ker(3)/\operatorname{im}(0)=0\)">\(\ker(3)/\operatorname{im}(0)=0\)</span>. The degree-two group is <span class="math" data-tex="\(\ker(0)/\operatorname{im}(3)=\mathbb Z/3\)">\(\ker(0)/\operatorname{im}(3)=\mathbb Z/3\)</span>. Hence the positive odd groups vanish and every positive even group is <span class="math" data-tex="\(\mathbb Z/3\)">\(\mathbb Z/3\)</span>. Dividing by <span class="math" data-tex="\(r\)">\(r\)</span> in Lemma 3.1 would incorrectly erase these groups. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 11.4 (constant vertex maps).</strong> List the morphisms <span class="math" data-tex="\([1]\to[0]\)">\([1]\to[0]\)</span> and compute their action on <span class="math" data-tex="\(A\otimes A\)">\(A\otimes A\)</span>. Explain why the underlying map on the two vertices does not determine a cyclic morphism.</p>
+<p><strong>Solution.</strong> The two lifts can be chosen as <span class="math" data-tex="\(f(i)=\lfloor i/2\rfloor\)">\(f(i)=\lfloor i/2\rfloor\)</span> and <span class="math" data-tex="\(g(i)=\lfloor(i+1)/2\rfloor\)">\(g(i)=\lfloor(i+1)/2\rfloor\)</span>. The fiber over zero is respectively <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span> and <span class="math" data-tex="\(\{-1,0\}\)">\(\{-1,0\}\)</span>. Their actions are <span class="math" data-tex="\(a_0a_1\)">\(a_0a_1\)</span> and <span class="math" data-tex="\(a_1a_0\)">\(a_1a_0\)</span>. Both send both vertex residues to the unique target vertex. Their lifts are not equivalent by an output-period translation, so they are distinct morphisms. This distinction matters when <span class="math" data-tex="\(A\)">\(A\)</span> is noncommutative. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 11.5 (self-duality by calculation).</strong> For the first lift <span class="math" data-tex="\(f\)">\(f\)</span> in Exercise 11.4 compute <span class="math" data-tex="\(Df\)">\(Df\)</span> and <span class="math" data-tex="\(D^2f\)">\(D^2f\)</span>. Check the formula for the square of the duality.</p>
+<p><strong>Solution.</strong> The inequality <span class="math" data-tex="\(\lfloor i/2\rfloor\geq j\)">\(\lfloor i/2\rfloor\geq j\)</span> has least integer solution <span class="math" data-tex="\(i=2j\)">\(i=2j\)</span>, so <span class="math" data-tex="\(Df(j)=2j\)">\(Df(j)=2j\)</span>. Consequently <span class="math" data-tex="\(D^2f(i)=\lceil i/2\rceil\)">\(D^2f(i)=\lceil i/2\rceil\)</span>. This equals <span class="math" data-tex="\(\lfloor(i-1)/2\rfloor+1=f(i-1)+1\)">\(\lfloor(i-1)/2\rfloor+1=f(i-1)+1\)</span>. The difference between the two floor/ceiling lifts also shows why calling this particular duality strictly involutive would lose the rotation in (4.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 11.6 (two-dimensional normalization).</strong> For the cocycle <span class="math" data-tex="\(\psi\)">\(\psi\)</span> of Example 2.3 and integers <span class="math" data-tex="\(r,s,u,v\)">\(r,s,u,v\)</span>, evaluate</p>
+<span class="math math-display" data-tex="\[
+\psi(e^{-i((r+u)x+(s+v)y)},e^{i(rx+sy)},e^{i(ux+vy)}).
+\]">\[
+\psi(e^{-i((r+u)x+(s+v)y)},e^{i(rx+sy)},e^{i(ux+vy)}).
+\]</span>
+<p><strong>Solution.</strong> The product of the exponentials is one. The wedge of the two differentials is <span class="math" data-tex="\(-(rv-su)\,dx\wedge dy\)">\(-(rv-su)\,dx\wedge dy\)</span>. Dividing its integral by <span class="math" data-tex="\((2\pi i)^2\)">\((2\pi i)^2\)</span> gives <span class="math" data-tex="\(rv-su\)">\(rv-su\)</span>. The determinant changes sign on interchanging the last two inputs, in agreement with the wedge product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<p>[Khalkhali 2007] Masoud Khalkhali, <em>Lectures on Noncommutative Geometry</em>, arXiv:math/0702140, version 2 (2007). <a href="https://www.math.uwo.ca/faculty/khalkhali/files/LecturesNCG.pdf">Open lecture notes</a>.</p>
+<p>[Connes 1983] Alain Connes, <em>Cohomologie cyclique et foncteurs <span class="math" data-tex="\(\operatorname{Ext}^n\)">\(\operatorname{Ext}^n\)</span></em>, Comptes Rendus de l'Académie des Sciences, Série I, 296 (1983), 953–958. <a href="https://alainconnes.org/wp-content/uploads/n83.pdf">Author's online text</a>.</p>
+<p>[Hatcher 2002] Allen Hatcher, <em>Algebraic Topology</em>, Cambridge University Press, 2002. <a href="https://pi.math.cornell.edu/~hatcher/AT/ATplain.pdf">Author's open text</a>.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/NCG-CYCLIC/the-cyclic-category-and-cyclic-cohomology-as-ext.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

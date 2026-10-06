@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Completions, the p-adic numbers and complete discretely valued fields · Local fields</title>
+<meta name="description" content="A lesson of the course Local fields. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-LOC/NT-LOC-02.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local fields</a> <span aria-hidden="true">›</span> <span>Lesson 2 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by GPT-6.1 Sol at Ultra. Independent full-lesson AI review of this version is not yet recorded.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<article class="lesson">
+<h1 id="completions-the-p-adic-numbers-and-complete-discretely-valued-fields">Completions, the p-adic numbers and complete discretely valued fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>An absolute value tells us which approximations become accurate. Completion supplies limits for all Cauchy approximations without changing the arithmetic already present. For the p-adic absolute value, accuracy means agreement modulo a high power of a prime. This makes the completed ring of integers both an inverse limit of finite rings and a space of infinite digit sequences.</p>
+<p>We construct completions, develop the arithmetic and topology of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, and extend the digit construction to every complete discretely valued field. We then prove that the complete archimedean fields are precisely <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with powers of their usual absolute values. This identifies all archimedean places of a number field.</p>
+<p>The prerequisites are <em>Absolute values, valuations and Ostrowski's theorem</em> and <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C10"><em>Real Analysis I</em></a>. We assume the absolute-value axioms, the ultrametric inequality, and the elementary real-analysis facts about completeness and compactness. The precise algebraic facts used without proof are collected at the end. The freely available reference is [Milne]. The local arithmetic developed here also underlies the discussion of places in <em>Weil's proof for curves and what is missing over the integers</em>.</p>
+<p>Write <span class="math" data-tex="\(K_v\)">\(K_v\)</span> for completion at a place <span class="math" data-tex="\(v\)">\(v\)</span>, and <span class="math" data-tex="\(\mathbb N=\{0,1,\ldots\}\)">\(\mathbb N=\{0,1,\ldots\}\)</span>. For a nonarchimedean absolute value, its valuation ring and residue field are</p>
+<span class="math math-display" data-tex="\[
+\mathcal O=\{x:|x|\le1\},\qquad
+\mathfrak m=\{x:|x|&lt;1\},\qquad
+\kappa=\mathcal O/\mathfrak m.
+\]">\[
+\mathcal O=\{x:|x|\le1\},\qquad
+\mathfrak m=\{x:|x|&lt;1\},\qquad
+\kappa=\mathcal O/\mathfrak m.
+\]</span>
+<p>An additive discrete valuation is normalized to have image <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and <span class="math" data-tex="\(v(0)=+\infty\)">\(v(0)=+\infty\)</span>. A uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span> has <span class="math" data-tex="\(v(\pi)=1\)">\(v(\pi)=1\)</span>. Thus <span class="math" data-tex="\(|x|=c^{v(x)}\)">\(|x|=c^{v(x)}\)</span> for a fixed <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span>.</p>
+<h2 id="completing-a-field">Completing a field</h2>
+<p>A sequence <span class="math" data-tex="\((a_n)\)">\((a_n)\)</span> is <em>Cauchy</em> if for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, eventually <span class="math" data-tex="\(|a_n-a_m|&lt;\varepsilon\)">\(|a_n-a_m|&lt;\varepsilon\)</span> for all <span class="math" data-tex="\(n,m\)">\(n,m\)</span>. It is <em>null</em> if <span class="math" data-tex="\(|a_n|\to0\)">\(|a_n|\to0\)</span>. Completion identifies two Cauchy sequences when their difference is null.</p>
+<p><strong>Theorem 2.1 (completion).</strong> Every field <span class="math" data-tex="\(K\)">\(K\)</span> with an absolute value admits a complete valued field <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span> containing <span class="math" data-tex="\(K\)">\(K\)</span> isometrically and densely. Every isometric field embedding from <span class="math" data-tex="\(K\)">\(K\)</span> to a complete valued field extends uniquely to an isometric embedding from <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span>. Consequently two completions have a unique isometric field isomorphism that respects their embeddings of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>If the absolute value is nonarchimedean, so is its extension, and</p>
+<span class="math math-display" data-tex="\[
+|\widehat K^{\times}|=|K^{\times}|,
+\qquad \kappa\xrightarrow{\sim}\widehat\kappa.
+\]">\[
+|\widehat K^{\times}|=|K^{\times}|,
+\qquad \kappa\xrightarrow{\sim}\widehat\kappa.
+\]</span>
+<p>Here <span class="math" data-tex="\(\widehat\kappa\)">\(\widehat\kappa\)</span> denotes the residue field of <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span>. There is no discreteness hypothesis in these last assertions.</p>
+<p><strong>Proof.</strong> Every Cauchy sequence is bounded: its tail lies within distance <span class="math" data-tex="\(1\)">\(1\)</span> of a fixed term, and its initial segment is finite. Let <span class="math" data-tex="\(C\)">\(C\)</span> be the ring of Cauchy sequences, with coordinatewise operations. The estimate</p>
+<span class="math math-display" data-tex="\[
+|a_nb_n-a_mb_m|
+\le |a_n|\,|b_n-b_m|+|b_m|\,|a_n-a_m|
+\]">\[
+|a_nb_n-a_mb_m|
+\le |a_n|\,|b_n-b_m|+|b_m|\,|a_n-a_m|
+\]</span>
+<p>shows that products are Cauchy. Boundedness also shows that the null sequences form an ideal <span class="math" data-tex="\(N\)">\(N\)</span>. Set <span class="math" data-tex="\(\widehat K=C/N\)">\(\widehat K=C/N\)</span>.</p>
+<p>The reverse triangle inequality makes <span class="math" data-tex="\((|a_n|)\)">\((|a_n|)\)</span> a Cauchy sequence of real numbers. Define</p>
+<span class="math math-display" data-tex="\[
+|[(a_n)]|=\lim_n|a_n|.
+\]">\[
+|[(a_n)]|=\lim_n|a_n|.
+\]</span>
+<p>This is independent of the representative. It vanishes exactly on <span class="math" data-tex="\(N\)">\(N\)</span>; multiplication and the triangle inequality pass to limits. If the class is nonzero, <span class="math" data-tex="\(|a_n|\)">\(|a_n|\)</span> is eventually bounded below by a positive number. On that tail,</p>
+<span class="math math-display" data-tex="\[
+|a_n^{-1}-a_m^{-1}|=\frac{|a_n-a_m|}{|a_n|\,|a_m|}.
+\]">\[
+|a_n^{-1}-a_m^{-1}|=\frac{|a_n-a_m|}{|a_n|\,|a_m|}.
+\]</span>
+<p>Hence the reciprocal sequence, with arbitrary initial terms, defines an inverse. Thus <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span> is a field. Constant sequences embed <span class="math" data-tex="\(K\)">\(K\)</span> isometrically.</p>
+<p>For <span class="math" data-tex="\(A=[(a_n)]\)">\(A=[(a_n)]\)</span>, the elements <span class="math" data-tex="\(a_n\in K\)">\(a_n\in K\)</span> converge to <span class="math" data-tex="\(A\)">\(A\)</span>: the Cauchy condition bounds <span class="math" data-tex="\(\lim_m|a_m-a_n|\)">\(\lim_m|a_m-a_n|\)</span> by any prescribed positive tolerance for large <span class="math" data-tex="\(n\)">\(n\)</span>. This proves density.</p>
+<p>Now let <span class="math" data-tex="\((A_j)\)">\((A_j)\)</span> be Cauchy in <span class="math" data-tex="\(\widehat K\)">\(\widehat K\)</span>. Choose <span class="math" data-tex="\(b_j\in K\)">\(b_j\in K\)</span> with <span class="math" data-tex="\(|A_j-b_j|&lt;1/j\)">\(|A_j-b_j|&lt;1/j\)</span>. The triangle inequality shows that <span class="math" data-tex="\((b_j)\)">\((b_j)\)</span> is Cauchy in <span class="math" data-tex="\(K\)">\(K\)</span>. Its class <span class="math" data-tex="\(B\)">\(B\)</span> satisfies <span class="math" data-tex="\(b_j\to B\)">\(b_j\to B\)</span>, so <span class="math" data-tex="\(A_j\to B\)">\(A_j\to B\)</span> as well. This proves completeness.</p>
+<p>If <span class="math" data-tex="\(f:K\to L\)">\(f:K\to L\)</span> is isometric and <span class="math" data-tex="\(L\)">\(L\)</span> is complete, send <span class="math" data-tex="\([(a_n)]\)">\([(a_n)]\)</span> to <span class="math" data-tex="\(\lim_n f(a_n)\)">\(\lim_n f(a_n)\)</span>. Equivalent sequences give the same limit; addition, multiplication and absolute values commute with this operation. Density makes this the only isometric extension. Applying the construction in both directions between two completions gives inverse maps.</p>
+<p>In the nonarchimedean case the ultrametric inequality passes to limits. If <span class="math" data-tex="\(x\in\widehat K\)">\(x\in\widehat K\)</span> is nonzero, choose <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> with <span class="math" data-tex="\(|x-a|&lt;|x|\)">\(|x-a|&lt;|x|\)</span>. The strict-dominance rule for an ultrametric gives <span class="math" data-tex="\(|a|=|x|\)">\(|a|=|x|\)</span>, proving equality of value sets. This argument also shows that the valuation ring <span class="math" data-tex="\(\widehat{\mathcal O}\)">\(\widehat{\mathcal O}\)</span> is the closure of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>: approximations sufficiently close to an integral element remain integral, and the valuation ring is closed. To represent the residue of <span class="math" data-tex="\(x\in\widehat{\mathcal O}\)">\(x\in\widehat{\mathcal O}\)</span>, approximate it by <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> with <span class="math" data-tex="\(|x-a|&lt;1\)">\(|x-a|&lt;1\)</span>. Then <span class="math" data-tex="\(a\in\mathcal O\)">\(a\in\mathcal O\)</span> and the residues agree. The kernel of the induced residue map is exactly <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. ∎</p>
+<p>Uniqueness here includes the embedding of the original field. It does not say that the completed field has no other automorphisms. A trivially valued field is already complete, since every Cauchy sequence is eventually constant.</p>
+<h2 id="congruences-as-p-adic-accuracy">Congruences as p-adic accuracy</h2>
+<p>Fix a prime <span class="math" data-tex="\(p\)">\(p\)</span>. The field <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> is the completion of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> for <span class="math" data-tex="\(|x|_p=p^{-v_p(x)}\)">\(|x|_p=p^{-v_p(x)}\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\mathbb Z_p=\{x\in\mathbb Q_p:v_p(x)\ge0\}.
+\]">\[
+\mathbb Z_p=\{x\in\mathbb Q_p:v_p(x)\ge0\}.
+\]</span>
+<p>Theorem 2.1 extends <span class="math" data-tex="\(v_p\)">\(v_p\)</span> with the same integer value group and residue field <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+x\equiv y\pmod{p^n\mathbb Z_p}
+\quad\Longleftrightarrow\quad |x-y|_p\le p^{-n}.
+\]">\[
+x\equiv y\pmod{p^n\mathbb Z_p}
+\quad\Longleftrightarrow\quad |x-y|_p\le p^{-n}.
+\]</span>
+<p>An <em>inverse limit</em> of the rings <span class="math" data-tex="\(\mathbb Z/p^n\mathbb Z\)">\(\mathbb Z/p^n\mathbb Z\)</span> consists of compatible residues:</p>
+<span class="math math-display" data-tex="\[
+\varprojlim_{n\ge1}\mathbb Z/p^n\mathbb Z
+=\{(r_n):r_{n+1}\bmod p^n=r_n\}.
+\]">\[
+\varprojlim_{n\ge1}\mathbb Z/p^n\mathbb Z
+=\{(r_n):r_{n+1}\bmod p^n=r_n\}.
+\]</span>
+<p>Operations are coordinatewise. Each quotient is given the discrete topology, and the limit has the subspace topology from their product. Specifying a residue modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span> specifies an open neighborhood.</p>
+<p><strong>Proposition 2.2.</strong> The closure of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> is <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. Reduction gives an isomorphism of topological rings</p>
+<span class="math math-display" data-tex="\[
+\mathbb Z_p\xrightarrow{\sim}
+\varprojlim_{n\ge1}\mathbb Z/p^n\mathbb Z.
+\]">\[
+\mathbb Z_p\xrightarrow{\sim}
+\varprojlim_{n\ge1}\mathbb Z/p^n\mathbb Z.
+\]</span>
+<p>The ring <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is compact. The field <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> is locally compact and totally disconnected.</p>
+<p><strong>Proof.</strong> By Theorem 2.1, <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is the closure of <span class="math" data-tex="\(\mathbb Z_{(p)}=\{a/b\mid p\nmid b\}\)">\(\mathbb Z_{(p)}=\{a/b\mid p\nmid b\}\)</span>. For every <span class="math" data-tex="\(a/b\in\mathbb Z_{(p)}\)">\(a/b\in\mathbb Z_{(p)}\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, choose an integer <span class="math" data-tex="\(c\)">\(c\)</span> such that <span class="math" data-tex="\(bc\equiv a\pmod{p^n}\)">\(bc\equiv a\pmod{p^n}\)</span>. Then <span class="math" data-tex="\(|a/b-c|_p\le p^{-n}\)">\(|a/b-c|_p\le p^{-n}\)</span>. Thus <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> has the same closure.</p>
+<p>Density shows that every coset modulo <span class="math" data-tex="\(p^n\mathbb Z_p\)">\(p^n\mathbb Z_p\)</span> contains an integer. An integer belongs to this ideal exactly when it is divisible by <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\mathbb Z_p/p^n\mathbb Z_p\simeq\mathbb Z/p^n\mathbb Z.
+\]">\[
+\mathbb Z_p/p^n\mathbb Z_p\simeq\mathbb Z/p^n\mathbb Z.
+\]</span>
+<p>The resulting map to the inverse limit is injective, because a nonzero element has a finite valuation. For a compatible family <span class="math" data-tex="\((r_n)\)">\((r_n)\)</span>, take its integer representatives <span class="math" data-tex="\(0\le c_n&lt;p^n\)">\(0\le c_n&lt;p^n\)</span>. Compatibility gives <span class="math" data-tex="\(|c_m-c_n|_p\le p^{-n}\)">\(|c_m-c_n|_p\le p^{-n}\)</span> when <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>. Their limit lies in <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> and has all the prescribed residues. This proves surjectivity. The fibers of reduction modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span> are the cosets of <span class="math" data-tex="\(p^n\mathbb Z_p\)">\(p^n\mathbb Z_p\)</span>, which form a neighborhood basis. Thus both directions are continuous.</p>
+<p>Compatibility also gives unique digits <span class="math" data-tex="\(a_i\in\{0,\ldots,p-1\}\)">\(a_i\in\{0,\ldots,p-1\}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+c_n=\sum_{i=0}^{n-1}a_ip^i,
+\qquad x=\sum_{i\ge0}a_ip^i.
+\]">\[
+c_n=\sum_{i=0}^{n-1}a_ip^i,
+\qquad x=\sum_{i\ge0}a_ip^i.
+\]</span>
+<p>A cylinder fixing the first <span class="math" data-tex="\(n\)">\(n\)</span> digits is a coset modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>; it has exactly <span class="math" data-tex="\(p\)">\(p\)</span> children fixing one more digit. To prove compactness directly, suppose an open cover has no finite subcover. Starting with the whole space, repeatedly choose a child cylinder with no finite subcover. The chosen compatible digits define a point <span class="math" data-tex="\(x\)">\(x\)</span>. An open member of the cover containing <span class="math" data-tex="\(x\)">\(x\)</span> contains a sufficiently long cylinder in this chain, a contradiction.</p>
+<p>The cosets <span class="math" data-tex="\(a+p^n\mathbb Z_p\)">\(a+p^n\mathbb Z_p\)</span>, for <span class="math" data-tex="\(a\in\mathbb Q_p\)">\(a\in\mathbb Q_p\)</span> and <span class="math" data-tex="\(n\in\mathbb Z\)">\(n\in\mathbb Z\)</span>, are open and closed: small changes preserve membership, and the same holds for their complements. They are also compact, by translation and multiplication by <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. This proves local compactness. Given distinct points, choose such a coset containing one and excluding the other. Its intersection with any connected set separates those points, so every connected subset is a singleton. ∎</p>
+<p>The whole field is not compact: the increasing open cover <span class="math" data-tex="\(\mathbb Q_p=\bigcup_{m\ge0}p^{-m}\mathbb Z_p\)">\(\mathbb Q_p=\bigcup_{m\ge0}p^{-m}\mathbb Z_p\)</span> has no finite subcover. Compactness of the ring and local compactness of the field are different assertions.</p>
+<h2 id="digits-in-any-complete-discrete-valuation">Digits in any complete discrete valuation</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be complete for a normalized discrete valuation <span class="math" data-tex="\(v\)">\(v\)</span>, with ring <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, residue field <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, and uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Choose a set <span class="math" data-tex="\(R\subset\mathcal O\)">\(R\subset\mathcal O\)</span> containing exactly one representative of each residue class, including <span class="math" data-tex="\(0\)">\(0\)</span>. These representatives need not form a subring.</p>
+<p><strong>Proposition 2.3 (expansions and series).</strong> Every nonzero <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> has a unique expansion</p>
+<span class="math math-display" data-tex="\[
+x=\sum_{i\ge m}a_i\pi^i,
+\qquad m=v(x),\quad a_i\in R,\quad a_m\ne0.
+\]">\[
+x=\sum_{i\ge m}a_i\pi^i,
+\qquad m=v(x),\quad a_i\in R,\quad a_m\ne0.
+\]</span>
+<p>Zero has the all-zero expansion. Allowing leading zero digits does not change the element, so the starting index is unique only with the stated normalization. A series <span class="math" data-tex="\(\sum_{n\ge0}x_n\)">\(\sum_{n\ge0}x_n\)</span> in <span class="math" data-tex="\(K\)">\(K\)</span> converges if and only if <span class="math" data-tex="\(x_n\to0\)">\(x_n\to0\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\mathcal O\xrightarrow{\sim}\varprojlim_{n\ge1}\mathcal O/\pi^n\mathcal O
+\]">\[
+\mathcal O\xrightarrow{\sim}\varprojlim_{n\ge1}\mathcal O/\pi^n\mathcal O
+\]</span>
+<p>is an isomorphism of topological rings, with discrete quotients.</p>
+<p><strong>Proof.</strong> Necessity for series follows by subtracting consecutive partial sums. For sufficiency, the ultrametric inequality gives</p>
+<span class="math math-display" data-tex="\[
+\left|\sum_{n=r}^{s}x_n\right|\le\max_{r\le n\le s}|x_n|.
+\]">\[
+\left|\sum_{n=r}^{s}x_n\right|\le\max_{r\le n\le s}|x_n|.
+\]</span>
+<p>If the terms tend to zero, the partial sums are Cauchy and therefore converge. This argument actually works in every complete nonarchimedean field.</p>
+<p>For <span class="math" data-tex="\(y\in\mathcal O\)">\(y\in\mathcal O\)</span>, define <span class="math" data-tex="\(y_0=y\)">\(y_0=y\)</span>. Choose <span class="math" data-tex="\(a_j\in R\)">\(a_j\in R\)</span> representing <span class="math" data-tex="\(y_j\bmod\pi\)">\(y_j\bmod\pi\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+y_{j+1}=\frac{y_j-a_j}{\pi}\in\mathcal O.
+\]">\[
+y_{j+1}=\frac{y_j-a_j}{\pi}\in\mathcal O.
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+y=\sum_{j=0}^{N-1}a_j\pi^j+\pi^Ny_N.
+\]">\[
+y=\sum_{j=0}^{N-1}a_j\pi^j+\pi^Ny_N.
+\]</span>
+<p>The remainder has absolute value at most <span class="math" data-tex="\(c^N\)">\(c^N\)</span>, so it tends to zero. For nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, apply this to <span class="math" data-tex="\(y=\pi^{-v(x)}x\)">\(y=\pi^{-v(x)}x\)</span>, a unit; its first digit is nonzero. Every prescribed digit sequence converges because <span class="math" data-tex="\(|a_i\pi^i|\le c^i\)">\(|a_i\pi^i|\le c^i\)</span>.</p>
+<p>If two expansions first differ at index <span class="math" data-tex="\(j\)">\(j\)</span>, the difference of their digits at <span class="math" data-tex="\(j\)">\(j\)</span> is a unit: distinct representatives have distinct residues. The remaining tail has valuation at least <span class="math" data-tex="\(j+1\)">\(j+1\)</span>. Thus the difference of the expansions has valuation exactly <span class="math" data-tex="\(j\)">\(j\)</span>, proving uniqueness.</p>
+<p>For the inverse limit, the kernel is <span class="math" data-tex="\(\bigcap_n\pi^n\mathcal O=0\)">\(\bigcap_n\pi^n\mathcal O=0\)</span>. Lift a compatible family of residues to elements <span class="math" data-tex="\(b_n\in\mathcal O\)">\(b_n\in\mathcal O\)</span>. Then <span class="math" data-tex="\(b_m-b_n\in\pi^n\mathcal O\)">\(b_m-b_n\in\pi^n\mathcal O\)</span> for <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span>, so they converge. The limit has each prescribed residue, since <span class="math" data-tex="\(\pi^n\mathcal O\)">\(\pi^n\mathcal O\)</span> is closed. The same cosets are basic neighborhoods on both sides, proving the topological assertion. ∎</p>
+<p>The first <span class="math" data-tex="\(N\)">\(N\)</span> digits determine an integral element modulo <span class="math" data-tex="\(\pi^N\)">\(\pi^N\)</span>. This is the useful meaning of truncation. Addition and multiplication may require carrying because <span class="math" data-tex="\(R\)">\(R\)</span> need not respect either operation. In mixed characteristic there is no reason for <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> itself to embed as a coefficient field.</p>
+<p>The ring <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is a DVR: its units have valuation zero, and in a nonzero ideal choose an element with least valuation. That element generates the ideal, since division by it leaves every other element in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Its maximal ideal is <span class="math" data-tex="\(\pi\mathcal O\)">\(\pi\mathcal O\)</span>. If <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is finite, the finite-cylinder argument of Proposition 2.2 proves that <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is compact and <span class="math" data-tex="\(K\)">\(K\)</span> is locally compact.</p>
+<h2 id="three-computations">Three computations</h2>
+<p><strong>Negative one.</strong> For every prime <span class="math" data-tex="\(p\)">\(p\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=0}^{N-1}(p-1)p^i=p^N-1.
+\]">\[
+\sum_{i=0}^{N-1}(p-1)p^i=p^N-1.
+\]</span>
+<p>Since <span class="math" data-tex="\(p^N\to0\)">\(p^N\to0\)</span> p-adically,</p>
+<span class="math math-display" data-tex="\[
+-1=\sum_{i\ge0}(p-1)p^i.
+\]">\[
+-1=\sum_{i\ge0}(p-1)p^i.
+\]</span>
+<p>There is no conflict with the growth of the ordinary integer partial sums: the metric has changed.</p>
+<p><strong>One third in <span class="math" data-tex="\(\mathbb Q_5\)">\(\mathbb Q_5\)</span>.</strong> Successive digit extraction gives</p>
+<table>
+<thead>
+<tr>
+<th>Current remainder <span class="math" data-tex="\(y_j\)">\(y_j\)</span></th>
+<th style="text-align:right">Digit <span class="math" data-tex="\(a_j\)">\(a_j\)</span> modulo <span class="math" data-tex="\(5\)">\(5\)</span></th>
+<th>Next remainder <span class="math" data-tex="\((y_j-a_j)/5\)">\((y_j-a_j)/5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(1/3\)">\(1/3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td><span class="math" data-tex="\(-1/3\)">\(-1/3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-1/3\)">\(-1/3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(-2/3\)">\(-2/3\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(-2/3\)">\(-2/3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td><span class="math" data-tex="\(-1/3\)">\(-1/3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The last two rows repeat. Thus, in increasing order of powers,</p>
+<span class="math math-display" data-tex="\[
+\frac13=2+3\cdot5+5^2+3\cdot5^3+5^4+\cdots
+=2+\sum_{j\ge0}(3\cdot5^{2j+1}+5^{2j+2}).
+\]">\[
+\frac13=2+3\cdot5+5^2+3\cdot5^3+5^4+\cdots
+=2+\sum_{j\ge0}(3\cdot5^{2j+1}+5^{2j+2}).
+\]</span>
+<p>As a check, the repeated block sums to <span class="math" data-tex="\((15+25)/(1-25)=-5/3\)">\((15+25)/(1-25)=-5/3\)</span>, so the total is <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. The geometric series converges because <span class="math" data-tex="\(|25|_5&lt;1\)">\(|25|_5&lt;1\)</span>.</p>
+<p><strong>Laurent series.</strong> For <span class="math" data-tex="\(k=\mathbb F_q\)">\(k=\mathbb F_q\)</span>, let <span class="math" data-tex="\(k((t))\)">\(k((t))\)</span> consist of sums <span class="math" data-tex="\(\sum_{i\ge m}a_it^i\)">\(\sum_{i\ge m}a_it^i\)</span> with <span class="math" data-tex="\(a_i\in k\)">\(a_i\in k\)</span> and only finitely many negative powers. Addition and convolution multiplication are well defined: each coefficient of a product involves finitely many pairs. A nonzero series is <span class="math" data-tex="\(a_mt^m(1+h)\)">\(a_mt^m(1+h)\)</span>, with <span class="math" data-tex="\(h\in tk[[t]]\)">\(h\in tk[[t]]\)</span>, and its inverse is</p>
+<span class="math math-display" data-tex="\[
+a_m^{-1}t^{-m}\sum_{j\ge0}(-h)^j.
+\]">\[
+a_m^{-1}t^{-m}\sum_{j\ge0}(-h)^j.
+\]</span>
+<p>Each coefficient of this expression stabilizes, and multiplication verifies the inverse. Thus these series form a field. Put <span class="math" data-tex="\(v_t(x)=\min\{i:a_i\ne0\}\)">\(v_t(x)=\min\{i:a_i\ne0\}\)</span> and <span class="math" data-tex="\(|x|=q^{-v_t(x)}\)">\(|x|=q^{-v_t(x)}\)</span>.</p>
+<p>A Cauchy sequence has a common lower bound on its exponents after discarding finitely many terms; closeness to a fixed term proves this. At each exponent its coefficient eventually stabilizes. The stabilized coefficients give a Laurent series, and the sequence converges to it because agreement below any fixed exponent is eventually exact. Hence <span class="math" data-tex="\(k((t))\)">\(k((t))\)</span> is complete. Its Laurent-polynomial truncations lie in <span class="math" data-tex="\(k(t)\)">\(k(t)\)</span> and are dense. By Theorem 2.1,</p>
+<span class="math math-display" data-tex="\[
+\widehat{k(t)}_{\,t}=k((t)),\qquad \mathcal O=k[[t]],\qquad\kappa=k.
+\]">\[
+\widehat{k(t)}_{\,t}=k((t)),\qquad \mathcal O=k[[t]],\qquad\kappa=k.
+\]</span>
+<p>Here the representatives really do form a coefficient field, so no carrying is needed.</p>
+<h2 id="completing-a-number-field-at-a-prime">Completing a number field at a prime</h2>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(A=\mathcal O_K\)">\(A=\mathcal O_K\)</span> its ring of algebraic integers, and <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> a nonzero prime ideal. We use the fact that <span class="math" data-tex="\(A\)">\(A\)</span> is Dedekind and <span class="math" data-tex="\(B=A_{\mathfrak p}\)">\(B=A_{\mathfrak p}\)</span> is a DVR [Milne, Theorem 3.29 and Proposition 3.6]. Their fraction field is <span class="math" data-tex="\(K\)">\(K\)</span>: multiplying any element of <span class="math" data-tex="\(K\)">\(K\)</span> by an integer divisible by the denominators of its monic rational polynomial makes it integral. Complete <span class="math" data-tex="\(K\)">\(K\)</span> for the valuation of <span class="math" data-tex="\(B\)">\(B\)</span>, obtaining <span class="math" data-tex="\(K_{\mathfrak p}\)">\(K_{\mathfrak p}\)</span>, and write <span class="math" data-tex="\(\mathcal O_{\mathfrak p}\)">\(\mathcal O_{\mathfrak p}\)</span> for its valuation ring.</p>
+<p>By Theorem 2.1, <span class="math" data-tex="\(B\)">\(B\)</span> is dense in <span class="math" data-tex="\(\mathcal O_{\mathfrak p}\)">\(\mathcal O_{\mathfrak p}\)</span>, with the same uniformizer <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and residue field. For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, approximation modulo <span class="math" data-tex="\(\pi^n\)">\(\pi^n\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+B/\pi^nB\simeq
+\mathcal O_{\mathfrak p}/\pi^n\mathcal O_{\mathfrak p}.
+\]">\[
+B/\pi^nB\simeq
+\mathcal O_{\mathfrak p}/\pi^n\mathcal O_{\mathfrak p}.
+\]</span>
+<p>Injectivity follows from equality of the valuations on <span class="math" data-tex="\(B\)">\(B\)</span>; surjectivity follows from density.</p>
+<p>Also <span class="math" data-tex="\(A/\mathfrak p^n\simeq B/\mathfrak p^nB\)">\(A/\mathfrak p^n\simeq B/\mathfrak p^nB\)</span>. Indeed, the only maximal ideal containing <span class="math" data-tex="\(\mathfrak p^n\)">\(\mathfrak p^n\)</span> is <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Thus every <span class="math" data-tex="\(s\notin\mathfrak p\)">\(s\notin\mathfrak p\)</span> becomes a unit in <span class="math" data-tex="\(A/\mathfrak p^n\)">\(A/\mathfrak p^n\)</span>, and localizing that quotient changes nothing. Since <span class="math" data-tex="\(\mathfrak pB=\pi B\)">\(\mathfrak pB=\pi B\)</span>, Proposition 2.3 yields</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_{\mathfrak p}\simeq
+\varprojlim_{n\ge1}A/\mathfrak p^n,
+\qquad
+K\text{ is dense in }K_{\mathfrak p}.
+\]">\[
+\mathcal O_{\mathfrak p}\simeq
+\varprojlim_{n\ge1}A/\mathfrak p^n,
+\qquad
+K\text{ is dense in }K_{\mathfrak p}.
+\]</span>
+<p>The displayed ring isomorphism is topological when the quotients are discrete. In particular <span class="math" data-tex="\(A\)">\(A\)</span> itself is dense in <span class="math" data-tex="\(\mathcal O_{\mathfrak p}\)">\(\mathcal O_{\mathfrak p}\)</span>, since it represents every finite quotient.</p>
+<p>Localization and completion are separate operations. The ring <span class="math" data-tex="\(B\)">\(B\)</span> is not complete: it is countable, whereas the distinct digit sequences using just two residue representatives already give uncountably many elements in its completion. The general algebraic result [Stacks, Tag 0AP1] says that a Noetherian local ring is a DVR exactly when its maximal-ideal completion is a DVR. It agrees with the direct valuation construction here.</p>
+<h2 id="why-the-archimedean-possibilities-stop-at-two">Why the archimedean possibilities stop at two</h2>
+<p>An absolute value is <em>archimedean</em> when it does not satisfy the ultrametric inequality. The prerequisite result that bounded absolute values of integers force the ultrametric inequality implies that an archimedean field has characteristic zero. Its absolute value on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is <span class="math" data-tex="\(|q|_\infty^s\)">\(|q|_\infty^s\)</span> for <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, by Ostrowski's theorem on absolute values of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Since <span class="math" data-tex="\(|n|\le n\)">\(|n|\le n\)</span>, necessarily <span class="math" data-tex="\(s\le1\)">\(s\le1\)</span>.</p>
+<p>We first justify a polynomial fact used in the proof. A nonconstant complex polynomial <span class="math" data-tex="\(P\)">\(P\)</span> satisfies <span class="math" data-tex="\(|P(z)|_\infty\to\infty\)">\(|P(z)|_\infty\to\infty\)</span> as <span class="math" data-tex="\(|z|_\infty\to\infty\)">\(|z|_\infty\to\infty\)</span>, so its modulus has a minimum at some <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. If <span class="math" data-tex="\(P(z_0)\ne0\)">\(P(z_0)\ne0\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\frac{P(z_0+w)}{P(z_0)}=1+cw^k+O(|w|^{k+1}),\qquad c\ne0.
+\]">\[
+\frac{P(z_0+w)}{P(z_0)}=1+cw^k+O(|w|^{k+1}),\qquad c\ne0.
+\]</span>
+<p>Choose a unit complex number <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(cu^k=-|c|_\infty\)">\(cu^k=-|c|_\infty\)</span>, and put <span class="math" data-tex="\(w=ru\)">\(w=ru\)</span>. For small positive <span class="math" data-tex="\(r\)">\(r\)</span>, the modulus is at most <span class="math" data-tex="\(1-|c|_\infty r^k+Cr^{k+1}&lt;1\)">\(1-|c|_\infty r^k+Cr^{k+1}&lt;1\)</span>, contradicting minimality. Thus <span class="math" data-tex="\(P\)">\(P\)</span> has a root. Division and induction show that every complex polynomial factors into linear factors, counted with multiplicity. This proves the needed form of the fundamental theorem of algebra.</p>
+<p><strong>Theorem 2.4 (Ostrowski's theorem on complete archimedean fields).</strong> If a field <span class="math" data-tex="\(K\)">\(K\)</span> is complete for an archimedean absolute value, there is a field isomorphism <span class="math" data-tex="\(\sigma:K\to\mathbb R\)">\(\sigma:K\to\mathbb R\)</span> or <span class="math" data-tex="\(\sigma:K\to\mathbb C\)">\(\sigma:K\to\mathbb C\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+|x|=|\sigma(x)|_\infty^s\qquad(0&lt;s\le1).
+\]">\[
+|x|=|\sigma(x)|_\infty^s\qquad(0&lt;s\le1).
+\]</span>
+<p>Thus it is an isometry to the indicated field with that powered absolute value, and a topological field isomorphism to the field with its usual absolute value.</p>
+<p><strong>Proof.</strong> Normalize by setting <span class="math" data-tex="\(\|x\|=|x|^{1/s}\)">\(\|x\|=|x|^{1/s}\)</span>. It is necessary to check the triangle inequality after taking this power. The binomial expansion, together with <span class="math" data-tex="\(|n|=n^s\)">\(|n|=n^s\)</span>, gives for positive integers <span class="math" data-tex="\(N\)">\(N\)</span></p>
+<span class="math math-display" data-tex="\[
+|x+y|^N
+\le\sum_{j=0}^{N}\binom Nj^s\|x\|^{sj}\|y\|^{s(N-j)}
+\le(N+1)(\|x\|+\|y\|)^{sN}.
+\]">\[
+|x+y|^N
+\le\sum_{j=0}^{N}\binom Nj^s\|x\|^{sj}\|y\|^{s(N-j)}
+\le(N+1)(\|x\|+\|y\|)^{sN}.
+\]</span>
+<p>Taking <span class="math" data-tex="\(sN\)">\(sN\)</span>-th roots and letting <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span> proves the claim. The normalized absolute value has the same Cauchy sequences and agrees with the usual one on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Its closure in <span class="math" data-tex="\(K\)">\(K\)</span> is complete: a Cauchy sequence there converges in <span class="math" data-tex="\(K\)">\(K\)</span>, and closedness keeps the limit there. Uniqueness of completion therefore embeds <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> isometrically in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>. For <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, where <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is for now only a parameter space, put</p>
+<span class="math math-display" data-tex="\[
+Q_z(T)=T^2-2\operatorname{Re}(z)T+|z|_\infty^2,
+\qquad F(z)=\|Q_z(x)\|.
+\]">\[
+Q_z(T)=T^2-2\operatorname{Re}(z)T+|z|_\infty^2,
+\qquad F(z)=\|Q_z(x)\|.
+\]</span>
+<p>Only real coefficients are evaluated in <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(M=\|x\|\)">\(M=\|x\|\)</span>, the reverse triangle inequality gives</p>
+<span class="math math-display" data-tex="\[
+F(z)\ge |z|_\infty^2-2|z|_\infty M-M^2.
+\]">\[
+F(z)\ge |z|_\infty^2-2|z|_\infty M-M^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(F\)">\(F\)</span> tends to infinity at infinity and attains a minimum <span class="math" data-tex="\(m\)">\(m\)</span>. Among its minimizers choose <span class="math" data-tex="\(z_0\)">\(z_0\)</span> with maximal modulus. Suppose <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;m\)">\(0&lt;\varepsilon&lt;m\)</span>, and put <span class="math" data-tex="\(Q=Q_{z_0}\)">\(Q=Q_{z_0}\)</span>. The roots <span class="math" data-tex="\(z_1,\overline{z_1}\)">\(z_1,\overline{z_1}\)</span> of <span class="math" data-tex="\(Q(T)+\varepsilon\)">\(Q(T)+\varepsilon\)</span> are nonreal conjugates, with</p>
+<span class="math math-display" data-tex="\[
+|z_1|_\infty^2=|z_0|_\infty^2+\varepsilon.
+\]">\[
+|z_1|_\infty^2=|z_0|_\infty^2+\varepsilon.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(F(z_1)&gt;m\)">\(F(z_1)&gt;m\)</span>.</p>
+<p>For each <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, factor the real polynomial</p>
+<span class="math math-display" data-tex="\[
+H_n(T)=Q(T)^n-(-\varepsilon)^n
+=\prod_{j=1}^{2n}(T-\alpha_j),
+\]">\[
+H_n(T)=Q(T)^n-(-\varepsilon)^n
+=\prod_{j=1}^{2n}(T-\alpha_j),
+\]</span>
+<p>listing <span class="math" data-tex="\(\alpha_1=z_1\)">\(\alpha_1=z_1\)</span>. Its conjugate factorization gives the real-polynomial identity</p>
+<span class="math math-display" data-tex="\[
+H_n(T)^2=\prod_{j=1}^{2n}Q_{\alpha_j}(T).
+\]">\[
+H_n(T)^2=\prod_{j=1}^{2n}Q_{\alpha_j}(T).
+\]</span>
+<p>Evaluation in <span class="math" data-tex="\(K\)">\(K\)</span>, multiplicativity, and minimality yield</p>
+<span class="math math-display" data-tex="\[
+F(z_1)m^{2n-1}
+\le\|H_n(x)\|^2
+\le(m^n+\varepsilon^n)^2.
+\]">\[
+F(z_1)m^{2n-1}
+\le\|H_n(x)\|^2
+\le(m^n+\varepsilon^n)^2.
+\]</span>
+<p>Hence <span class="math" data-tex="\(F(z_1)/m\le(1+(\varepsilon/m)^n)^2\)">\(F(z_1)/m\le(1+(\varepsilon/m)^n)^2\)</span>. Letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> contradicts <span class="math" data-tex="\(F(z_1)&gt;m\)">\(F(z_1)&gt;m\)</span>. Therefore <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, and every element of <span class="math" data-tex="\(K\)">\(K\)</span> satisfies a monic real quadratic equation.</p>
+<p>If <span class="math" data-tex="\(K=\mathbb R\)">\(K=\mathbb R\)</span>, we are done. Otherwise choose <span class="math" data-tex="\(x\notin\mathbb R\)">\(x\notin\mathbb R\)</span>. Its quadratic is irreducible over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, since a split quadratic would force <span class="math" data-tex="\(x\)">\(x\)</span> to be one of its real roots. Completing the square gives <span class="math" data-tex="\(j\in K\)">\(j\in K\)</span> with <span class="math" data-tex="\(j^2=-1\)">\(j^2=-1\)</span>, embedding <span class="math" data-tex="\(\mathbb C=\mathbb R(j)\)">\(\mathbb C=\mathbb R(j)\)</span>. Every real quadratic now splits inside this subfield, so every element of <span class="math" data-tex="\(K\)">\(K\)</span> belongs to it. Thus <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>.</p>
+<p>Finally, for <span class="math" data-tex="\(z=a+bj\)">\(z=a+bj\)</span> we have <span class="math" data-tex="\(\|j\|=1\)">\(\|j\|=1\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\|z\|\le |a|_\infty+|b|_\infty\le\sqrt2\,|z|_\infty.
+\]">\[
+\|z\|\le |a|_\infty+|b|_\infty\le\sqrt2\,|z|_\infty.
+\]</span>
+<p>Apply this to <span class="math" data-tex="\(z^n\)">\(z^n\)</span> and take <span class="math" data-tex="\(n\)">\(n\)</span>-th roots to get <span class="math" data-tex="\(\|z\|\le|z|_\infty\)">\(\|z\|\le|z|_\infty\)</span>. Applying it to <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span> proves the reverse inequality. Undoing the normalization proves the theorem. ∎</p>
+<p>This theorem concerns complete fields, whereas the earlier Ostrowski theorem concerns absolute values on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Completeness is essential: <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> with its usual absolute value is archimedean but is neither of the two fields in the conclusion.</p>
+<h2 id="archimedean-places-of-a-number-field">Archimedean places of a number field</h2>
+<p><strong>Corollary 2.5.</strong> For a number field <span class="math" data-tex="\(K\)">\(K\)</span>, the archimedean places correspond bijectively to its real embeddings and its pairs of conjugate nonreal embeddings into <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Their completions are respectively <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. If the counts are <span class="math" data-tex="\(r_1\)">\(r_1\)</span> and <span class="math" data-tex="\(r_2\)">\(r_2\)</span>, there are <span class="math" data-tex="\(r_1+r_2\)">\(r_1+r_2\)</span> archimedean places, and <span class="math" data-tex="\([K:\mathbb Q]=r_1+2r_2\)">\([K:\mathbb Q]=r_1+2r_2\)</span>.</p>
+<p><strong>Proof.</strong> An embedding <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> gives the absolute value <span class="math" data-tex="\(|\sigma(x)|_\infty\)">\(|\sigma(x)|_\infty\)</span>. If its image is real, its closure is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, since it contains <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. If the image contains a nonreal <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, it contains <span class="math" data-tex="\(\mathbb Q+\mathbb Q\alpha\)">\(\mathbb Q+\mathbb Q\alpha\)</span>, dense in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>: the real-linear map <span class="math" data-tex="\((u,v)\mapsto u+v\alpha\)">\((u,v)\mapsto u+v\alpha\)</span> is an isomorphism <span class="math" data-tex="\(\mathbb R^2\to\mathbb C\)">\(\mathbb R^2\to\mathbb C\)</span>. These closures are the completions.</p>
+<p>Conversely, Theorem 2.4 identifies any archimedean completion with one of these fields. Composing <span class="math" data-tex="\(K\)">\(K\)</span> with this identification gives an embedding whose usual absolute value represents the original place.</p>
+<p>Suppose two embeddings give equivalent absolute values. Their restrictions to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> are the same usual absolute value, so the exponent relating them is <span class="math" data-tex="\(1\)">\(1\)</span>, as evaluation at <span class="math" data-tex="\(2\)">\(2\)</span> shows. The correspondence between their images therefore extends to an isometric isomorphism of their completions. Such a map fixes <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, hence <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> by continuity. It cannot identify <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> it sends <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(i\)">\(i\)</span> or <span class="math" data-tex="\(-i\)">\(-i\)</span>, so it is identity or conjugation. This proves the asserted bijection.</p>
+<p>For the degree formula, express <span class="math" data-tex="\(K\)">\(K\)</span> as a finite tower adjoining algebraic generators. An embedding at each stage extends in precisely as many ways as the degree of the next minimal polynomial: its transformed polynomial splits in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with distinct roots in characteristic zero. Multiplying these counts gives <span class="math" data-tex="\([K:\mathbb Q]\)">\([K:\mathbb Q]\)</span> embeddings. Conjugation fixes exactly the real embeddings and pairs the others. ∎</p>
+<p>For example, <span class="math" data-tex="\(\mathbb Q(\sqrt6)\)">\(\mathbb Q(\sqrt6)\)</span> has two real places and two real completions. The two embeddings of <span class="math" data-tex="\(\mathbb Q(\sqrt{-6})\)">\(\mathbb Q(\sqrt{-6})\)</span> form one conjugate pair, giving one complex place and completion. Distinct places can therefore have isomorphic completed fields.</p>
+<h2 id="exercises">Exercises</h2>
+<p>Digits below are always in <span class="math" data-tex="\(\{0,\ldots,p-1\}\)">\(\{0,\ldots,p-1\}\)</span>, listed in increasing order of powers. A sequence is <em>eventually periodic</em> if <span class="math" data-tex="\(a_{i+d}=a_i\)">\(a_{i+d}=a_i\)</span> for some <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and every sufficiently large <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Exercise 1 (easy).</strong> Compute the <span class="math" data-tex="\(7\)">\(7\)</span>-adic expansion of <span class="math" data-tex="\(-1/6\)">\(-1/6\)</span> and prove that it is eventually periodic.</p>
+<p><strong>Solution.</strong> It is purely periodic:</p>
+<span class="math math-display" data-tex="\[
+-\frac16=1+7+7^2+\cdots.
+\]">\[
+-\frac16=1+7+7^2+\cdots.
+\]</span>
+<p>The first <span class="math" data-tex="\(N\)">\(N\)</span> terms sum to <span class="math" data-tex="\((7^N-1)/6\)">\((7^N-1)/6\)</span>, whose difference from <span class="math" data-tex="\(-1/6\)">\(-1/6\)</span> is <span class="math" data-tex="\(7^N/6\)">\(7^N/6\)</span>, of valuation <span class="math" data-tex="\(N\)">\(N\)</span>. The series converges to the claimed value, and uniqueness identifies every digit as <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Exercise 2 (easy).</strong> Prove <span class="math" data-tex="\(\mathbb Z_p^{\times}=\mathbb Z_p\setminus p\mathbb Z_p\)">\(\mathbb Z_p^{\times}=\mathbb Z_p\setminus p\mathbb Z_p\)</span>, and prove that <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is a DVR with uniformizer <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution.</strong> A nonzero <span class="math" data-tex="\(x\in\mathbb Z_p\)">\(x\in\mathbb Z_p\)</span> is invertible there exactly when <span class="math" data-tex="\(v_p(x^{-1})=-v_p(x)\ge0\)">\(v_p(x^{-1})=-v_p(x)\ge0\)</span>, which is equivalent to <span class="math" data-tex="\(v_p(x)=0\)">\(v_p(x)=0\)</span>. The remaining elements, including zero, form <span class="math" data-tex="\(p\mathbb Z_p\)">\(p\mathbb Z_p\)</span>. Thus this is the unique maximal ideal. In a nonzero ideal <span class="math" data-tex="\(I\)">\(I\)</span>, choose <span class="math" data-tex="\(x\)">\(x\)</span> with the least valuation <span class="math" data-tex="\(n\)">\(n\)</span>. Write <span class="math" data-tex="\(x=p^nu\)">\(x=p^nu\)</span>, with <span class="math" data-tex="\(u\)">\(u\)</span> a unit. For every <span class="math" data-tex="\(y\in I\)">\(y\in I\)</span>, <span class="math" data-tex="\(y/p^n\in\mathbb Z_p\)">\(y/p^n\in\mathbb Z_p\)</span>, so <span class="math" data-tex="\(I=p^n\mathbb Z_p\)">\(I=p^n\mathbb Z_p\)</span>. This proves that the ring is a local principal ideal domain, not a field, with uniformizer <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Exercise 3 (medium).</strong> Show that <span class="math" data-tex="\(x\in\mathbb Q_p\)">\(x\in\mathbb Q_p\)</span> belongs to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> exactly when its p-adic expansion is eventually periodic.</p>
+<p><strong>Solution.</strong> Multiplication by a power of <span class="math" data-tex="\(p\)">\(p\)</span> shifts finitely many indices, preserving both rationality and eventual periodicity. We may assume <span class="math" data-tex="\(x\in\mathbb Z_p\)">\(x\in\mathbb Z_p\)</span>.</p>
+<p>If the tail starts at <span class="math" data-tex="\(N\)">\(N\)</span> and has period <span class="math" data-tex="\(d\)">\(d\)</span>, put <span class="math" data-tex="\(B_0=\sum_{j=0}^{d-1}a_{N+j}p^j\)">\(B_0=\sum_{j=0}^{d-1}a_{N+j}p^j\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+x=\sum_{i&lt;N}a_ip^i+\frac{p^NB_0}{1-p^d}\in\mathbb Q,
+\]">\[
+x=\sum_{i&lt;N}a_ip^i+\frac{p^NB_0}{1-p^d}\in\mathbb Q,
+\]</span>
+<p>by the convergent geometric series.</p>
+<p>Conversely write <span class="math" data-tex="\(x=A/B\)">\(x=A/B\)</span>, where <span class="math" data-tex="\(A\in\mathbb Z\)">\(A\in\mathbb Z\)</span>, <span class="math" data-tex="\(B&gt;0\)">\(B&gt;0\)</span>, and <span class="math" data-tex="\(p\nmid B\)">\(p\nmid B\)</span>. Digit extraction has remainders <span class="math" data-tex="\(A_i/B\)">\(A_i/B\)</span>, beginning with <span class="math" data-tex="\(A_0=A\)">\(A_0=A\)</span>. The digit <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is the unique member of <span class="math" data-tex="\(\{0,\ldots,p-1\}\)">\(\{0,\ldots,p-1\}\)</span> congruent to <span class="math" data-tex="\(A_iB^{-1}\pmod p\)">\(A_iB^{-1}\pmod p\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+A_{i+1}=\frac{A_i-Ba_i}{p}\in\mathbb Z.
+\]">\[
+A_{i+1}=\frac{A_i-Ba_i}{p}\in\mathbb Z.
+\]</span>
+<p>For the ordinary absolute value,</p>
+<span class="math math-display" data-tex="\[
+|A_{i+1}|_\infty\le\frac{|A_i|_\infty+B(p-1)}p.
+\]">\[
+|A_{i+1}|_\infty\le\frac{|A_i|_\infty+B(p-1)}p.
+\]</span>
+<p>Thus all <span class="math" data-tex="\(A_i\)">\(A_i\)</span> lie in the finite integer interval <span class="math" data-tex="\([-M,M]\)">\([-M,M]\)</span>, with <span class="math" data-tex="\(M=\max(|A|_\infty,B)\)">\(M=\max(|A|_\infty,B)\)</span>. The next state and digit depend only on the current state. A state eventually repeats, after which the digits repeat. This includes a terminating expansion, whose tail consists of zeros.</p>
+<p><strong>Exercise 4 (medium).</strong> Show that <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is homeomorphic to the middle-thirds Cantor set, for every prime <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution.</strong> Its digit map identifies <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> with <span class="math" data-tex="\(D^{\mathbb N}\)">\(D^{\mathbb N}\)</span>, where <span class="math" data-tex="\(D=\{0,\ldots,p-1\}\)">\(D=\{0,\ldots,p-1\}\)</span> is discrete: agreeing on the first <span class="math" data-tex="\(n\)">\(n\)</span> coordinates means agreement modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. To identify this with binary sequences, use the prefix code</p>
+<span class="math math-display" data-tex="\[
+0,\ 10,\ 110,\ \ldots,\ 1^{p-2}0,\ 1^{p-1}
+\]">\[
+0,\ 10,\ 110,\ \ldots,\ 1^{p-2}0,\ 1^{p-1}
+\]</span>
+<p>for the <span class="math" data-tex="\(p\)">\(p\)</span> symbols, in order. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span> it is just <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Concatenation gives a binary sequence. Decoding is unique: read to the first zero, or stop after <span class="math" data-tex="\(p-1\)">\(p-1\)</span> ones, and repeat. Every infinite binary sequence decodes this way, so the map is bijective. Code lengths are between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(p-1\)">\(p-1\)</span>; hence agreement on <span class="math" data-tex="\(n\)">\(n\)</span> input symbols forces agreement on at least <span class="math" data-tex="\(n\)">\(n\)</span> bits, and agreement on <span class="math" data-tex="\((p-1)n\)">\((p-1)n\)</span> bits forces agreement on <span class="math" data-tex="\(n\)">\(n\)</span> decoded symbols. Both maps are continuous.</p>
+<p>Finally send <span class="math" data-tex="\((b_i)\in\{0,1\}^{\mathbb N}\)">\((b_i)\in\{0,1\}^{\mathbb N}\)</span> to</p>
+<span class="math math-display" data-tex="\[
+\sum_{i\ge0}\frac{2b_i}{3^{i+1}}.
+\]">\[
+\sum_{i\ge0}\frac{2b_i}{3^{i+1}}.
+\]</span>
+<p>The two choices at each stage select the left or right third of the remaining closed interval. Nested intervals have lengths tending to zero, giving exactly all points of the Cantor set. If sequences first differ at <span class="math" data-tex="\(j\)">\(j\)</span>, their values differ by at least <span class="math" data-tex="\(3^{-(j+1)}\)">\(3^{-(j+1)}\)</span>, since the possible later tail cancels at most half the leading difference. Agreement on a long prefix bounds the difference above by the length of its interval. These bounds prove injectivity and continuity in both directions. Composing gives the desired homeomorphism. This concerns topology; the coding does not identify ring operations with ordinary real operations.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove Theorem 2.4 by minimizing</p>
+<span class="math math-display" data-tex="\[
+(t,u)\longmapsto\|x^2-tx+u\|
+\]">\[
+(t,u)\longmapsto\|x^2-tx+u\|
+\]</span>
+<p>over the whole real plane. Supply both the existence of a minimum and the argument forcing it to be zero.</p>
+<p><strong>Solution.</strong> Use the normalization and embedded <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> established at the start of the theorem's proof. If <span class="math" data-tex="\(x\in\mathbb R\)">\(x\in\mathbb R\)</span>, a quadratic vanishing at <span class="math" data-tex="\(x\)">\(x\)</span> is immediate. Suppose <span class="math" data-tex="\(x\notin\mathbb R\)">\(x\notin\mathbb R\)</span>. On the Euclidean unit circle the continuous function <span class="math" data-tex="\((t,u)\mapsto\|tx-u\|\)">\((t,u)\mapsto\|tx-u\|\)</span> is everywhere positive, since <span class="math" data-tex="\(1,x\)">\(1,x\)</span> are real-linearly independent. It has a positive minimum <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. Homogeneity implies</p>
+<span class="math math-display" data-tex="\[
+\|tx-u\|\ge c_0\sqrt{t^2+u^2},
+\qquad
+\|x^2-tx+u\|\ge c_0\sqrt{t^2+u^2}-\|x^2\|.
+\]">\[
+\|tx-u\|\ge c_0\sqrt{t^2+u^2},
+\qquad
+\|x^2-tx+u\|\ge c_0\sqrt{t^2+u^2}-\|x^2\|.
+\]</span>
+<p>Thus the latter function is coercive. Its minimizers form a nonempty compact set. Choose <span class="math" data-tex="\((t_0,u_0)\)">\((t_0,u_0)\)</span> maximizing <span class="math" data-tex="\(u\)">\(u\)</span> among them, and put <span class="math" data-tex="\(Q(T)=T^2-t_0T+u_0\)">\(Q(T)=T^2-t_0T+u_0\)</span>, <span class="math" data-tex="\(m=\|Q(x)\|\)">\(m=\|Q(x)\|\)</span>.</p>
+<p>Assume <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> and choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;m\)">\(0&lt;\varepsilon&lt;m\)</span>. The roots <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> of <span class="math" data-tex="\(Q+\varepsilon\)">\(Q+\varepsilon\)</span> are either real or conjugate. If conjugate, both have squared modulus <span class="math" data-tex="\(u_0+\varepsilon&gt;u_0\)">\(u_0+\varepsilon&gt;u_0\)</span>. If real, at least one has squared modulus at least <span class="math" data-tex="\(|\alpha\beta|=|u_0+\varepsilon|&gt;u_0\)">\(|\alpha\beta|=|u_0+\varepsilon|&gt;u_0\)</span>. Choose such a root <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and define <span class="math" data-tex="\(Q_\alpha(T)=T^2-2\operatorname{Re}(\alpha)T+|\alpha|_\infty^2\)">\(Q_\alpha(T)=T^2-2\operatorname{Re}(\alpha)T+|\alpha|_\infty^2\)</span>. Its constant coefficient is larger than <span class="math" data-tex="\(u_0\)">\(u_0\)</span>, so maximality gives <span class="math" data-tex="\(\|Q_\alpha(x)\|&gt;m\)">\(\|Q_\alpha(x)\|&gt;m\)</span>.</p>
+<p>Factor <span class="math" data-tex="\(H_n=Q^n-(-\varepsilon)^n\)">\(H_n=Q^n-(-\varepsilon)^n\)</span>, with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> among its <span class="math" data-tex="\(2n\)">\(2n\)</span> roots. The identity <span class="math" data-tex="\(H_n^2=\prod_jQ_{\alpha_j}\)">\(H_n^2=\prod_jQ_{\alpha_j}\)</span> is valid because <span class="math" data-tex="\(H_n\)">\(H_n\)</span> has real coefficients. Every factor evaluated at <span class="math" data-tex="\(x\)">\(x\)</span> has norm at least <span class="math" data-tex="\(m\)">\(m\)</span>, since the minimum was taken over all real quadratic coefficients. Hence</p>
+<span class="math math-display" data-tex="\[
+\frac{\|Q_\alpha(x)\|}{m}
+\le\left(1+\left(\frac\varepsilon m\right)^n\right)^2.
+\]">\[
+\frac{\|Q_\alpha(x)\|}{m}
+\le\left(1+\left(\frac\varepsilon m\right)^n\right)^2.
+\]</span>
+<p>Letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> is a contradiction. Thus <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, and every <span class="math" data-tex="\(x\)">\(x\)</span> satisfies a real quadratic. The last two paragraphs of the theorem's proof then identify the field and its absolute value. This argument also explains why merely asserting that a continuous function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> has a minimum would be insufficient: coercivity needs proof.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The prerequisite real-analysis foundations: completeness of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, compactness of closed bounded Euclidean sets, and the extreme-value theorem. These are the facts from <em>Real Analysis I</em> used in the minimization arguments. The polynomial factorization needed here was proved above.</li>
+<li>The criterion that an absolute value is nonarchimedean exactly when its values on integers are bounded, and the consequent characteristic-zero assertion for archimedean fields [Milne, Proposition 7.2 and Corollary 7.3].</li>
+<li>Ostrowski's classification of nontrivial absolute values on <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> [Milne, Theorem 7.12], and the equivalence criterion that two nontrivial absolute values give the same topology exactly when one is a positive power of the other [Milne, Proposition 7.8]. These belong to <em>Absolute values, valuations and Ostrowski's theorem</em>.</li>
+<li>For a Dedekind domain <span class="math" data-tex="\(A\)">\(A\)</span>, its integral closure in a finite separable extension of its fraction field is Dedekind [Milne, Theorem 3.29]; every localization of <span class="math" data-tex="\(A\)">\(A\)</span> at a nonzero prime is a DVR [Milne, Proposition 3.6]. We use the first assertion for <span class="math" data-tex="\(A=\mathbb Z\)">\(A=\mathbb Z\)</span>.</li>
+<li>For a Noetherian local ring <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> is a DVR if and only if its maximal-ideal completion is a DVR [Stacks, Tag 0AP1]. This is a comparison with the more general algebraic theorem; the valued-field and DVR constructions needed in the lesson were proved directly.</li>
+</ul>
+<p>Hensel's lemma and the classification of nonarchimedean local fields are developed in <em>Hensel's lemma, squares and roots of unity in p-adic fields</em> and <em>Local fields: classification and Haar measure</em>.</p>
+<p>The written ring-theoretic providers are <em>Number fields</em>, lesson 3, <strong>Discrete valuation rings and Dedekind domains</strong>, its local characterizations and Proposition 3.1, and lesson 5, <strong>Decomposition of primes in extensions</strong>, Theorem 5.1 for finite integral closure over an arbitrary Dedekind base in a finite separable field extension. The integer-bound criterion, equivalence criterion and rational classification are Proposition 1.1, Proposition 3.1 and Theorem 4.1 of <strong>Absolute values, valuations and Ostrowski's theorem</strong>; the references below credit the classical treatments.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf"><em>Algebraic Number Theory</em></a>, version 3.08, 19 July 2020. Free author notes; the precise results used for comparison are identified above.</li>
+<li><a href="https://stacks.math.columbia.edu/">The Stacks project</a> and the separately identified <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI Integrated Stacks Project English edition</a>. The exact tags and scope of the comparisons are identified in the text.</li>
+</ul>
+
+</article>
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-LOC-01.html">← Absolute values, valuations and Ostrowski's theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-LOC-03.html">Hensel's lemma, squares and roots of unity in p-adic fields →</a></span></nav>
+<p class="small source-link"><a href="src/NT-LOC-02.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><span class="unlinked">GitHub repository</span><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

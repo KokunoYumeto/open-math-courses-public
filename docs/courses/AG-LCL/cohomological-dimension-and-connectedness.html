@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cohomological dimension, vanishing and connectedness · Local cohomology, Lefschetz theorems and purity</title>
+<meta name="description" content="A lesson of the course Local cohomology, Lefschetz theorems and purity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LCL/cohomological-dimension-and-connectedness.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Local cohomology, Lefschetz theorems and purity</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="cohomological-dimension-vanishing-and-connectedness">Cohomological dimension, vanishing and connectedness</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol, the AI that wrote it. Public domain (CC0).</em></p>
+<p>The number of equations defining a closed set gives an upper bound on its local cohomology. A nonzero cohomology group gives a lower bound on how many equations could define it. We first make this comparison precise, then study the top degree of local cohomology. Hartshorne–Lichtenbaum vanishing detects when that top degree disappears; connectedness detects a different obstruction, through extension of idempotent functions.</p>
+<p>We use <a href="local-cohomology.html">Local cohomology</a> for the Čech complex, depth, support and dimension vanishing, and <a href="local-duality-and-finiteness.html">Local duality and finiteness</a> for normalized dualizing complexes and their prime shifts. The quasi-coherent prerequisite supplies Serre's criterion: a quasi-compact separated scheme is affine if every quasi-coherent sheaf has vanishing positive cohomology. Its precise statement and locator are recorded below. Rings are Noetherian unless an assertion explicitly uses only a finitely generated ideal. Connected spaces in this lesson are nonempty as well as having no separation into two nonempty open-and-closed parts.</p>
+<h2 id="1-which-module-measures-cohomological-dimension">1. Which module measures cohomological dimension?</h2>
+<p>Let <span class="math" data-tex="\(I=(f_1,\ldots,f_r)\subset A\)">\(I=(f_1,\ldots,f_r)\subset A\)</span>, and put <span class="math" data-tex="\(U=\operatorname{Spec}A\setminus V(I)\)">\(U=\operatorname{Spec}A\setminus V(I)\)</span>. Define
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,I)=\min\{c\ge-1:H^i_I(N)=0\text{ for every }A\text{-module }N\text{ and every }i&gt;c\}.
+\tag{1.1}
+\]">\[
+\operatorname{cd}(A,I)=\min\{c\ge-1:H^i_I(N)=0\text{ for every }A\text{-module }N\text{ and every }i&gt;c\}.
+\tag{1.1}
+\]</span>
+The extended Čech complex has terms only in degrees zero through <span class="math" data-tex="\(r\)">\(r\)</span>, so the minimum exists and <span class="math" data-tex="\(\operatorname{cd}(A,I)\le r\)">\(\operatorname{cd}(A,I)\le r\)</span>. In particular this invariant depends on the closed set <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span>, not on a chosen list of its equations. The convention gives <span class="math" data-tex="\(\operatorname{cd}(A,A)=-1\)">\(\operatorname{cd}(A,A)=-1\)</span>, whereas <span class="math" data-tex="\(\operatorname{cd}(A,0)=0\)">\(\operatorname{cd}(A,0)=0\)</span> if <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>.</p>
+<p><strong>Proposition 1.1 (test on the ring).</strong> The bound <span class="math" data-tex="\(\operatorname{cd}(A,I)\le c\)">\(\operatorname{cd}(A,I)\le c\)</span> holds if and only if <span class="math" data-tex="\(H^i_I(A)=0\)">\(H^i_I(A)=0\)</span> for every <span class="math" data-tex="\(i&gt;c\)">\(i&gt;c\)</span>. Thus it suffices to calculate local cohomology of one module.</p>
+<p><strong>Proof.</strong> The forward implication takes <span class="math" data-tex="\(N=A\)">\(N=A\)</span>. For the converse, start with the uniform upper bound <span class="math" data-tex="\(r\)">\(r\)</span> supplied by Čech. Descend on <span class="math" data-tex="\(i&gt;c\)">\(i&gt;c\)</span>. Fit an arbitrary module into <span class="math" data-tex="\(0\to K\to F\to N\to0\)">\(0\to K\to F\to N\to0\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> free, possibly of infinite rank. The Čech complex commutes with direct sums, so <span class="math" data-tex="\(H^i_I(F)=0\)">\(H^i_I(F)=0\)</span> by the assumption on <span class="math" data-tex="\(A\)">\(A\)</span>. The long exact sequence injects <span class="math" data-tex="\(H^i_I(N)\)">\(H^i_I(N)\)</span> into <span class="math" data-tex="\(H^{i+1}_I(K)\)">\(H^{i+1}_I(K)\)</span>, which is zero by the preceding descending step. This proves the assertion for every module in every required degree. ∎</p>
+<p><strong>Proposition 1.2 (basic bounds).</strong> If <span class="math" data-tex="\(V(I)=V(g_1,\ldots,g_s)\)">\(V(I)=V(g_1,\ldots,g_s)\)</span>, then <span class="math" data-tex="\(\operatorname{cd}(A,I)\le s\)">\(\operatorname{cd}(A,I)\le s\)</span>. If <span class="math" data-tex="\(U\)">\(U\)</span> is covered by <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span> affine opens, then <span class="math" data-tex="\(\operatorname{cd}(A,I)\le c\)">\(\operatorname{cd}(A,I)\le c\)</span>. Finally
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,I)\le\dim A.
+\tag{1.2}
+\]">\[
+\operatorname{cd}(A,I)\le\dim A.
+\tag{1.2}
+\]</span></p>
+<p><strong>Proof.</strong> Radical independence and the Čech complex prove the equation bound. For the cover bound, <span class="math" data-tex="\(U\)">\(U\)</span> is separated, so finite intersections of the affine opens are affine. Their ordinary Čech complex computes quasi-coherent cohomology and is zero above degree <span class="math" data-tex="\(c-1\)">\(c-1\)</span>. For <span class="math" data-tex="\(i\ge2\)">\(i\ge2\)</span>, the support triangle gives
+<span class="math" data-tex="\(H^i_I(N)=H^{i-1}(U,\widetilde N|_U)\)">\(H^i_I(N)=H^{i-1}(U,\widetilde N|_U)\)</span>. Hence these groups vanish for <span class="math" data-tex="\(i&gt;c\)">\(i&gt;c\)</span>, proving the bound. If <span class="math" data-tex="\(U\)">\(U\)</span> is empty, its empty cover instead gives the bound zero, since its support functor is the identity. Dimension vanishing from Local cohomology, applied to the finite module <span class="math" data-tex="\(A\)">\(A\)</span>, gives (1.2) by Proposition 1.1. ∎</p>
+<p><strong>Proposition 1.3 (locality and change of rings).</strong> For any ring map <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(B,IB)\le\operatorname{cd}(A,I).
+\tag{1.3}
+\]">\[
+\operatorname{cd}(B,IB)\le\operatorname{cd}(A,I).
+\tag{1.3}
+\]</span>
+Equality holds when the map is faithfully flat. Moreover
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,I)=
+\sup_{\mathfrak p\in\operatorname{Spec}A}
+\operatorname{cd}(A_{\mathfrak p},IA_{\mathfrak p}),
+\tag{1.4}
+\]">\[
+\operatorname{cd}(A,I)=
+\sup_{\mathfrak p\in\operatorname{Spec}A}
+\operatorname{cd}(A_{\mathfrak p},IA_{\mathfrak p}),
+\tag{1.4}
+\]</span>
+and maximal ideals suffice in this supremum. The supremum of the empty family is taken to be <span class="math" data-tex="\(-1\)">\(-1\)</span>, covering the zero ring.</p>
+<p><strong>Proof.</strong> The Čech complex for a <span class="math" data-tex="\(B\)">\(B\)</span>-module, regarded as an <span class="math" data-tex="\(A\)">\(A\)</span>-module, computes precisely the same supported cohomology for the image generators: localization and tensor commute. Thus every bound over <span class="math" data-tex="\(A\)">\(A\)</span> applies to every <span class="math" data-tex="\(B\)">\(B\)</span>-module, proving (1.3), including nonflat maps. For a faithfully flat map, <span class="math" data-tex="\(H^i_I(A)\otimes_A B=H^i_{IB}(B)\)">\(H^i_I(A)\otimes_A B=H^i_{IB}(B)\)</span>; faithfulness detects every nonzero group, and Proposition 1.1 gives equality. For locality, the same localization formula says that a group <span class="math" data-tex="\(H^i_I(A)\)">\(H^i_I(A)\)</span> vanishes if and only if all its prime, or all its maximal, localizations vanish. Apply Proposition 1.1 again. ∎</p>
+<p><strong>Proposition 1.4 (sums of supports).</strong> For ideals <span class="math" data-tex="\(I,J\)">\(I,J\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,I+J)\le
+\max\{-1,\operatorname{cd}(A,I)+\operatorname{cd}(A,J)\}
+\tag{1.5}
+\]">\[
+\operatorname{cd}(A,I+J)\le
+\max\{-1,\operatorname{cd}(A,I)+\operatorname{cd}(A,J)\}
+\tag{1.5}
+\]</span>
+For nonnegative cohomological dimensions this is the usual sum bound. If either ideal has empty closed support, so does <span class="math" data-tex="\(I+J\)">\(I+J\)</span>.</p>
+<p><strong>Proof.</strong> Concatenating generators tensors the two extended Čech complexes, so <span class="math" data-tex="\(R\Gamma_{I+J}=R\Gamma_I R\Gamma_J\)">\(R\Gamma_{I+J}=R\Gamma_I R\Gamma_J\)</span>. The associated first-quadrant spectral sequence has terms <span class="math" data-tex="\(H^a_I(H^b_J(N))\)">\(H^a_I(H^b_J(N))\)</span>. By (1.1), they vanish if <span class="math" data-tex="\(a&gt;\operatorname{cd}(A,I)\)">\(a&gt;\operatorname{cd}(A,I)\)</span> or <span class="math" data-tex="\(b&gt;\operatorname{cd}(A,J)\)">\(b&gt;\operatorname{cd}(A,J)\)</span>. Every possibly nonzero total degree is bounded by their sum. If one ideal is the unit ideal, their sum is the unit ideal. ∎</p>
+<p>The maximum accounts for the empty-support convention. If <span class="math" data-tex="\(I=J=A\)">\(I=J=A\)</span>, a sum bound without it would read <span class="math" data-tex="\(-1\le-2\)">\(-1\le-2\)</span>, whereas (1.5) gives the correct value <span class="math" data-tex="\(-1\)">\(-1\)</span>. Compare [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd">Tag 0DX7</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-definition-cd">Tag 0DX8</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-bound-cd">Tag 0DX9</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-change-rings">Tag 0DXA</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-local">Tag 0DXB</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-sum">Tag 0ECP</a>].</p>
+<p><strong>Proposition 1.5 (degree zero).</strong> The inequality <span class="math" data-tex="\(\operatorname{cd}(A,I)\le0\)">\(\operatorname{cd}(A,I)\le0\)</span> holds exactly when <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span> is open and closed. The value is <span class="math" data-tex="\(-1\)">\(-1\)</span> exactly when <span class="math" data-tex="\(I=A\)">\(I=A\)</span>; otherwise it is zero in this open-and-closed case.</p>
+<p><strong>Proof.</strong> If all supported cohomology vanishes, apply degree zero to <span class="math" data-tex="\(A/I\)">\(A/I\)</span>: it equals <span class="math" data-tex="\(A/I\)">\(A/I\)</span>, so <span class="math" data-tex="\(I=A\)">\(I=A\)</span>. Suppose instead only the positive groups vanish. Put <span class="math" data-tex="\(J=\Gamma_I(A)\)">\(J=\Gamma_I(A)\)</span>, a finite ideal killed by some <span class="math" data-tex="\(I^n\)">\(I^n\)</span>. Apply the supported long exact sequence to <span class="math" data-tex="\(0\to I\to A\to A/I\to0\)">\(0\to I\to A\to A/I\to0\)</span>. Since <span class="math" data-tex="\(H^1_I(I)=0\)">\(H^1_I(I)=0\)</span>, the map <span class="math" data-tex="\(J\to A/I\)">\(J\to A/I\)</span> is surjective. Choose <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span>, <span class="math" data-tex="\(e\in J\)">\(e\in J\)</span> with <span class="math" data-tex="\(1=f+e\)">\(1=f+e\)</span>. Then <span class="math" data-tex="\(f^ne=0\)">\(f^ne=0\)</span>, so <span class="math" data-tex="\(f^n=f^{n+1}\)">\(f^n=f^{n+1}\)</span> and <span class="math" data-tex="\(q=f^n\)">\(q=f^n\)</span> is idempotent. Its complement <span class="math" data-tex="\(1-q\)">\(1-q\)</span> lies in <span class="math" data-tex="\(J\)">\(J\)</span>. We have <span class="math" data-tex="\(q\in I\)">\(q\in I\)</span> and <span class="math" data-tex="\(I^n(1-q)=0\)">\(I^n(1-q)=0\)</span>, so <span class="math" data-tex="\(I\)">\(I\)</span> becomes nilpotent in <span class="math" data-tex="\(A/(q)\)">\(A/(q)\)</span>. Hence <span class="math" data-tex="\(\sqrt I=\sqrt{(q)}\)">\(\sqrt I=\sqrt{(q)}\)</span>, and <span class="math" data-tex="\(V(I)=V(q)\)">\(V(I)=V(q)\)</span> is open and closed. Conversely, an open-and-closed support is cut out by an idempotent; its torsion functor is projection onto one summand of the corresponding product decomposition of <span class="math" data-tex="\(A\)">\(A\)</span>. It is exact, giving the required vanishing. ∎</p>
+<h2 id="2-top-cohomology-and-the-open-complement">2. Top cohomology and the open complement</h2>
+<p><strong>Theorem 2.1 (maximal support).</strong> For a nonzero Noetherian local ring <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,\mathfrak m)=\dim A.
+\]">\[
+\operatorname{cd}(A,\mathfrak m)=\dim A.
+\]</span></p>
+<p><strong>Proof.</strong> Dimension vanishing gives the upper bound. The nonzero group <span class="math" data-tex="\(H^{\dim A}_{\mathfrak m}(A)\)">\(H^{\dim A}_{\mathfrak m}(A)\)</span>, proved in Local cohomology, gives the lower bound by Proposition 1.1. This includes dimension zero, when <span class="math" data-tex="\(A\)">\(A\)</span> is maximal-ideal torsion and <span class="math" data-tex="\(H^0_{\mathfrak m}(A)=A\)">\(H^0_{\mathfrak m}(A)=A\)</span>. ∎</p>
+<p><strong>Theorem 2.2 (affineness).</strong> If <span class="math" data-tex="\(\operatorname{cd}(A,I)=1\)">\(\operatorname{cd}(A,I)=1\)</span>, then <span class="math" data-tex="\(U\)">\(U\)</span> is nonempty and affine. More generally <span class="math" data-tex="\(\operatorname{cd}(A,I)\le1\)">\(\operatorname{cd}(A,I)\le1\)</span> implies that <span class="math" data-tex="\(U\)">\(U\)</span> is affine, allowing the empty affine scheme.</p>
+<p><strong>Proof.</strong> For any quasi-coherent <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, its pushforward to <span class="math" data-tex="\(\operatorname{Spec}A\)">\(\operatorname{Spec}A\)</span> is quasi-coherent: the open immersion is quasi-compact, and the ambient affine scheme is separated. Write that pushforward as <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span>. Restriction recovers <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>, and the support comparison gives, for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+H^j(U,\mathcal F)=H^{j+1}_I(N)=0.
+\]">\[
+H^j(U,\mathcal F)=H^{j+1}_I(N)=0.
+\]</span>
+The scheme <span class="math" data-tex="\(U\)">\(U\)</span> is quasi-compact and separated. Serre's criterion proves affineness. If <span class="math" data-tex="\(U\)">\(U\)</span> were empty, the support functor would be the identity and its cohomological dimension would be zero, contradicting the value one. ∎</p>
+<p><strong>Corollary 2.3 (a useful lower bound).</strong> If <span class="math" data-tex="\(I\)">\(I\)</span> is proper in a local ring and <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is a prime with <span class="math" data-tex="\(V(I)\cap V(\mathfrak p)=\{\mathfrak m\}\)">\(V(I)\cap V(\mathfrak p)=\{\mathfrak m\}\)</span>, then
+<span class="math math-display" data-tex="\[
+\dim(A/\mathfrak p)\le\operatorname{cd}(A,I).
+\]">\[
+\dim(A/\mathfrak p)\le\operatorname{cd}(A,I).
+\]</span></p>
+<p><strong>Proof.</strong> Pass to <span class="math" data-tex="\(B=A/\mathfrak p\)">\(B=A/\mathfrak p\)</span> in (1.3). The image of <span class="math" data-tex="\(I\)">\(I\)</span> has radical the maximal ideal of <span class="math" data-tex="\(B\)">\(B\)</span>, so radical independence and Theorem 2.1 give <span class="math" data-tex="\(\operatorname{cd}(B,IB)=\dim B\)">\(\operatorname{cd}(B,IB)=\dim B\)</span>. ∎</p>
+<p>Affineness uses cohomology of every quasi-coherent sheaf, while Proposition 1.1 permits the initial local-cohomology computation to be made on the ring alone. The pushforward in the proof is the bridge between these two formulations. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-is-one">Tag 0DXD</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-maximal">Tag 0DXE</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-bound-dim-local">Tag 0DXF</a>].</p>
+<h2 id="3-three-ways-to-control-the-top-degree">3. Three ways to control the top degree</h2>
+<p>Write <span class="math" data-tex="\(d=\dim A&lt;\infty\)">\(d=\dim A&lt;\infty\)</span>. The functor <span class="math" data-tex="\(H^d_I\)">\(H^d_I\)</span> on finite modules is right exact, because every <span class="math" data-tex="\(H^{d+1}_I\)">\(H^{d+1}_I\)</span> vanishes. This simple consequence of dimension vanishing will be used repeatedly.</p>
+<p><strong>Lemma 3.1 (testing all top components).</strong> Suppose a finite module <span class="math" data-tex="\(M\)">\(M\)</span> has support containing every minimal prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with <span class="math" data-tex="\(\dim(A/\mathfrak p)=d\)">\(\dim(A/\mathfrak p)=d\)</span>. If <span class="math" data-tex="\(H^d_I(M)=0\)">\(H^d_I(M)=0\)</span>, then <span class="math" data-tex="\(H^d_I(A)=0\)">\(H^d_I(A)=0\)</span>.</p>
+<p><strong>Proof.</strong> For such a prime let <span class="math" data-tex="\(B=A/\mathfrak p\)">\(B=A/\mathfrak p\)</span>. The quotient <span class="math" data-tex="\(M/\mathfrak pM\)">\(M/\mathfrak pM\)</span> is generically nonzero over the domain <span class="math" data-tex="\(B\)">\(B\)</span>. Choose a nonzero linear functional on its tensor product with <span class="math" data-tex="\(\operatorname{Frac}B\)">\(\operatorname{Frac}B\)</span>, and clear finitely many denominators to obtain a map into <span class="math" data-tex="\(B\)">\(B\)</span> with nonzero image, an ideal <span class="math" data-tex="\(J\subset B\)">\(J\subset B\)</span>. Both quotient maps <span class="math" data-tex="\(M\to M/\mathfrak pM\to J\)">\(M\to M/\mathfrak pM\to J\)</span> induce surjections in degree <span class="math" data-tex="\(d\)">\(d\)</span>, so <span class="math" data-tex="\(H^d_I(J)=0\)">\(H^d_I(J)=0\)</span>. The quotient <span class="math" data-tex="\(B/J\)">\(B/J\)</span> has support dimension less than <span class="math" data-tex="\(d\)">\(d\)</span>, so its degree-<span class="math" data-tex="\(d\)">\(d\)</span> group vanishes. The sequence <span class="math" data-tex="\(0\to J\to B\to B/J\to0\)">\(0\to J\to B\to B/J\to0\)</span> then gives <span class="math" data-tex="\(H^d_I(B)=0\)">\(H^d_I(B)=0\)</span>.</p>
+<p>Take a prime filtration of <span class="math" data-tex="\(A\)">\(A\)</span>. Its factors at top-dimensional primes have just been dealt with; every other factor has dimension less than <span class="math" data-tex="\(d\)">\(d\)</span> and has zero degree-<span class="math" data-tex="\(d\)">\(d\)</span> group. The long exact sequences of the filtration give <span class="math" data-tex="\(H^d_I(A)=0\)">\(H^d_I(A)=0\)</span>. ∎</p>
+<p><strong>Lemma 3.2 (divisibility).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> avoids all top-dimensional minimal primes, then multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(H^d_I(M)\)">\(H^d_I(M)\)</span> is surjective for every finite <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>Proof.</strong> The module <span class="math" data-tex="\(M/fM\)">\(M/fM\)</span> has support dimension less than <span class="math" data-tex="\(d\)">\(d\)</span>: no top-dimensional prime can remain in that support. The sequence <span class="math" data-tex="\(0\to fM\to M\to M/fM\to0\)">\(0\to fM\to M\to M/fM\to0\)</span> makes <span class="math" data-tex="\(H^d_I(fM)\to H^d_I(M)\)">\(H^d_I(fM)\to H^d_I(M)\)</span> surjective. Right exactness makes the map <span class="math" data-tex="\(H^d_I(M)\to H^d_I(fM)\)">\(H^d_I(M)\to H^d_I(fM)\)</span>, induced by <span class="math" data-tex="\(M\xrightarrow{f}fM\)">\(M\xrightarrow{f}fM\)</span>, surjective too. Their composite is multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>. ∎</p>
+<p><strong>Lemma 3.3 (enlarging an ideal in top degree).</strong> Over a local ring, if <span class="math" data-tex="\(I\subset J\subset\mathfrak m\)">\(I\subset J\subset\mathfrak m\)</span>, then
+<span class="math math-display" data-tex="\[
+H^d_J(A)\longrightarrow H^d_I(A)
+\tag{3.1}
+\]">\[
+H^d_J(A)\longrightarrow H^d_I(A)
+\tag{3.1}
+\]</span>
+is surjective. Thus vanishing for <span class="math" data-tex="\(J\)">\(J\)</span> implies vanishing for <span class="math" data-tex="\(I\)">\(I\)</span> in degree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>Proof.</strong> A useful support bound is
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Supp}H^b_I(A)\le d-b.
+\tag{3.2}
+\]">\[
+\dim\operatorname{Supp}H^b_I(A)\le d-b.
+\tag{3.2}
+\]</span>
+Indeed, at a prime where this group survives, dimension vanishing gives <span class="math" data-tex="\(\dim A_{\mathfrak p}\ge b\)">\(\dim A_{\mathfrak p}\ge b\)</span>. Concatenating chains below and above <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> shows <span class="math" data-tex="\(\dim(A/\mathfrak p)\le d-b\)">\(\dim(A/\mathfrak p)\le d-b\)</span>, proving (3.2). The bound on supported cohomology of a module with support dimension at most <span class="math" data-tex="\(e\)">\(e\)</span> also holds for infinite modules: write the module as a filtered union of finite submodules and use the Čech complex to commute with the union.</p>
+<p>Composition of supports gives the spectral sequence
+<span class="math math-display" data-tex="\[
+H^a_J(H^b_I(A))\Longrightarrow H^{a+b}_J(A),
+\]">\[
+H^a_J(H^b_I(A))\Longrightarrow H^{a+b}_J(A),
+\]</span>
+because <span class="math" data-tex="\(V(J)\subset V(I)\)">\(V(J)\subset V(I)\)</span>. The top module <span class="math" data-tex="\(H^d_I(A)\)">\(H^d_I(A)\)</span> is supported only at the closed point by (3.2), hence is <span class="math" data-tex="\(J\)">\(J\)</span>-power torsion. The term in position <span class="math" data-tex="\((0,d)\)">\((0,d)\)</span> is therefore <span class="math" data-tex="\(H^d_I(A)\)">\(H^d_I(A)\)</span>. It has no incoming differential. Its outgoing differential on page <span class="math" data-tex="\(r\ge2\)">\(r\ge2\)</span> lands in a subquotient of <span class="math" data-tex="\(H^r_J(H^{d-r+1}_I(A))\)">\(H^r_J(H^{d-r+1}_I(A))\)</span>, which is zero by (3.2): the inner module has support dimension at most <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Thus this term survives to the last page and is the edge quotient of the abutment in degree <span class="math" data-tex="\(d\)">\(d\)</span>. This is exactly the surjection (3.1). For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, both support functors on this Artinian local ring are the identity, and the assertion is immediate. ∎</p>
+<p>The special top-degree monotonicity has a local hypothesis and is not a general monotonicity rule for cohomological dimension. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-top-vanishing">Tag 0EB1</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-top-vanishing-some-module">Tag 0EB2</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-top-coh-divisible">Tag 0EB3</a>].</p>
+<h2 id="4-hartshorne-lichtenbaum-vanishing">4. Hartshorne–Lichtenbaum vanishing</h2>
+<p>The theorem concerns the components of the completed ring. These components can differ from those visible before completion.</p>
+<p><strong>Theorem 4.1 (Hartshorne–Lichtenbaum).</strong> Let <span class="math" data-tex="\((A,\mathfrak m)\)">\((A,\mathfrak m)\)</span> be a nonzero Noetherian local ring of dimension <span class="math" data-tex="\(d\)">\(d\)</span>, and let <span class="math" data-tex="\(I\)">\(I\)</span> be proper. Write <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> for its completion. Then the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(H^d_I(A)=0\)">\(H^d_I(A)=0\)</span>, equivalently <span class="math" data-tex="\(\operatorname{cd}(A,I)&lt;d\)">\(\operatorname{cd}(A,I)&lt;d\)</span>.</li>
+<li>For every minimal prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> of <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> with <span class="math" data-tex="\(\dim(\widehat A/\mathfrak p)=d\)">\(\dim(\widehat A/\mathfrak p)=d\)</span>,
+<span class="math math-display" data-tex="\[
+\dim\bigl(\widehat A/(I\widehat A+\mathfrak p)\bigr)\ge1.
+\tag{4.1}
+\]">\[
+\dim\bigl(\widehat A/(I\widehat A+\mathfrak p)\bigr)\ge1.
+\tag{4.1}
+\]</span></li>
+</ol>
+<p>We prove the sufficient implication through two algebraic lemmas. The first converts a dualizing-complex calculation into top-degree vanishing; the second compares powers of a prime cutting out a one-dimensional quotient.</p>
+<p><strong>Lemma 4.2.</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> has a normalized dualizing complex <span class="math" data-tex="\(\omega\)">\(\omega\)</span>. If <span class="math" data-tex="\(H^0(R\Gamma_I\omega)=0\)">\(H^0(R\Gamma_I\omega)=0\)</span>, then <span class="math" data-tex="\(H^d_I(A)=0\)">\(H^d_I(A)=0\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(W=H^{-d}(\omega)\)">\(W=H^{-d}(\omega)\)</span>. By Local duality and finiteness, Theorem 4.2, every <span class="math" data-tex="\(H^{-j}(\omega)\)">\(H^{-j}(\omega)\)</span> for <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span> has support dimension at most <span class="math" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-tex="\(W\)">\(W\)</span> survives at all top-dimensional minimal primes. The annihilator of each of those higher cohomology modules is contained in none of the top-dimensional minimal primes. Prime avoidance consequently chooses <span class="math" data-tex="\(f\)">\(f\)</span> that avoids those primes and kills all the higher cohomology modules.</p>
+<p>Let <span class="math" data-tex="\(T=\tau_{\ge-d+1}\omega\)">\(T=\tau_{\ge-d+1}\omega\)</span>. Multiplication by <span class="math" data-tex="\(f^d\)">\(f^d\)</span> is zero on <span class="math" data-tex="\(T\)">\(T\)</span> as a derived morphism. Here is the truncation argument: if a scalar kills all cohomology of an object in an interval of length <span class="math" data-tex="\(n\)">\(n\)</span>, its morphism factors through the truncation omitting the highest degree, because its composite to that highest cohomology group is zero. Iterating, and commuting scalar multiplication with the truncation inclusions, makes its <span class="math" data-tex="\(n\)">\(n\)</span>-th power zero. The interval for <span class="math" data-tex="\(T\)">\(T\)</span> has length at most <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>In the triangle <span class="math" data-tex="\(W[d]\xrightarrow{u}\omega\to T\)">\(W[d]\xrightarrow{u}\omega\to T\)</span>, the vanishing of <span class="math" data-tex="\(f^d\)">\(f^d\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span> gives a lift <span class="math" data-tex="\(v:\omega\to W[d]\)">\(v:\omega\to W[d]\)</span> with <span class="math" data-tex="\(uv=f^d\operatorname{id}_\omega\)">\(uv=f^d\operatorname{id}_\omega\)</span>. On degree <span class="math" data-tex="\(-d\)">\(-d\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is an isomorphism. Therefore <span class="math" data-tex="\(vu=f^d\operatorname{id}_{W[d]}\)">\(vu=f^d\operatorname{id}_{W[d]}\)</span>, since maps between these single-degree complexes are just module homomorphisms. Apply <span class="math" data-tex="\(H^0R\Gamma_I\)">\(H^0R\Gamma_I\)</span>. The middle group for <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is zero by hypothesis, so <span class="math" data-tex="\(f^d\)">\(f^d\)</span> kills <span class="math" data-tex="\(H^d_I(W)\)">\(H^d_I(W)\)</span>. Lemma 3.2 also makes multiplication by <span class="math" data-tex="\(f^d\)">\(f^d\)</span> surjective; hence <span class="math" data-tex="\(H^d_I(W)=0\)">\(H^d_I(W)=0\)</span>. Lemma 3.1 now gives the required vanishing for <span class="math" data-tex="\(A\)">\(A\)</span>. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(\omega=W\)">\(\omega=W\)</span> and Lemma 3.1 applies directly to the assumed vanishing. ∎</p>
+<p><strong>Lemma 4.3 (cofinal symbolic powers).</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a complete Noetherian local domain, and let <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> be a prime with <span class="math" data-tex="\(\dim(B/\mathfrak p)=1\)">\(\dim(B/\mathfrak p)=1\)</span>. For every <span class="math" data-tex="\(n\)">\(n\)</span> there is <span class="math" data-tex="\(m\ge n\)">\(m\ge n\)</span> such that
+<span class="math math-display" data-tex="\[
+\mathfrak p^{(m)}\subset\mathfrak p^n,
+\quad\text{where}\quad
+\mathfrak p^{(m)}=B\cap\mathfrak p^mB_{\mathfrak p}.
+\tag{4.2}
+\]">\[
+\mathfrak p^{(m)}\subset\mathfrak p^n,
+\quad\text{where}\quad
+\mathfrak p^{(m)}=B\cap\mathfrak p^mB_{\mathfrak p}.
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> The module <span class="math" data-tex="\(L_n=\mathfrak p^{(n)}/\mathfrak p^n\)">\(L_n=\mathfrak p^{(n)}/\mathfrak p^n\)</span>, viewed inside <span class="math" data-tex="\(B/\mathfrak p^n\)">\(B/\mathfrak p^n\)</span>, is finite length. Its support lies in <span class="math" data-tex="\(V(\mathfrak p)\)">\(V(\mathfrak p)\)</span>, which has only the prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> and the maximal ideal, and its localization at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is zero. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, images of later <span class="math" data-tex="\(L_m\)">\(L_m\)</span> in <span class="math" data-tex="\(L_n\)">\(L_n\)</span> form a descending chain and stabilize.</p>
+<p>The ring is also <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>-adically complete. In fact compatible representatives modulo <span class="math" data-tex="\(\mathfrak p^n\)">\(\mathfrak p^n\)</span> form a maximal-ideal-adic Cauchy sequence because <span class="math" data-tex="\(\mathfrak p^n\subset\mathfrak m^n\)">\(\mathfrak p^n\subset\mathfrak m^n\)</span>. Its limit retains every required congruence since ideals in a complete Noetherian local ring are closed. Uniqueness follows from the Krull intersection theorem. Thus <span class="math" data-tex="\(B=\varprojlim B/\mathfrak p^n\)">\(B=\varprojlim B/\mathfrak p^n\)</span>.</p>
+<p>An element of <span class="math" data-tex="\(\varprojlim L_n\)">\(\varprojlim L_n\)</span> is therefore an element of <span class="math" data-tex="\(B\)">\(B\)</span> mapping to zero in the completion of <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span>. Faithful flatness of that completion makes it zero in <span class="math" data-tex="\(B_{\mathfrak p}\)">\(B_{\mathfrak p}\)</span>, and the domain inclusion <span class="math" data-tex="\(B\subset B_{\mathfrak p}\)">\(B\subset B_{\mathfrak p}\)</span> makes it zero in <span class="math" data-tex="\(B\)">\(B\)</span>. Hence <span class="math" data-tex="\(\varprojlim L_n=0\)">\(\varprojlim L_n=0\)</span>.</p>
+<p>For a countable inverse system with stabilized images, its limit surjects onto each stable image: replace each term by that image, obtain surjective transition maps, and choose compatible lifts successively. Zero limit therefore forces every stable image to be zero. Consequently some map <span class="math" data-tex="\(L_m\to L_n\)">\(L_m\to L_n\)</span> is zero. This says precisely <span class="math" data-tex="\(\mathfrak p^{(m)}\subset\mathfrak p^n\)">\(\mathfrak p^{(m)}\subset\mathfrak p^n\)</span>, proving (4.2). ∎</p>
+<p><strong>Proof of Theorem 4.1.</strong> Faithful flatness and the Čech base-change formula let us replace <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>. Its dimension remains <span class="math" data-tex="\(d\)">\(d\)</span>. Suppose (4.1) holds. By a prime filtration, it suffices to prove vanishing over each complete domain <span class="math" data-tex="\(B=A/\mathfrak p\)">\(B=A/\mathfrak p\)</span> of dimension <span class="math" data-tex="\(d\)">\(d\)</span>: the other prime factors have smaller dimension and vanish in degree <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>Over such a domain, <span class="math" data-tex="\(\dim B/IB\ge1\)">\(\dim B/IB\ge1\)</span>. Choose a prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> containing <span class="math" data-tex="\(IB\)">\(IB\)</span>, just below the maximal ideal, with <span class="math" data-tex="\(\dim B/\mathfrak q=1\)">\(\dim B/\mathfrak q=1\)</span>. The finite dimension of the local ring permits refining a prime chain to choose this prime. Lemma 3.3 reduces the desired vanishing to <span class="math" data-tex="\(H^d_{\mathfrak q}(B)=0\)">\(H^d_{\mathfrak q}(B)=0\)</span>.</p>
+<p>The complete ring <span class="math" data-tex="\(B\)">\(B\)</span> has a normalized dualizing complex. Its degree-zero cohomology with support is
+<span class="math math-display" data-tex="\[
+H^0(R\Gamma_{\mathfrak q}\omega_B)
+=\operatorname*{colim}_n
+\operatorname{Ext}^0_B(B/\mathfrak q^n,\omega_B).
+\tag{4.3}
+\]">\[
+H^0(R\Gamma_{\mathfrak q}\omega_B)
+=\operatorname*{colim}_n
+\operatorname{Ext}^0_B(B/\mathfrak q^n,\omega_B).
+\tag{4.3}
+\]</span>
+Lemma 4.3 and the reverse containment <span class="math" data-tex="\(\mathfrak q^n\subset\mathfrak q^{(n)}\)">\(\mathfrak q^n\subset\mathfrak q^{(n)}\)</span> allow replacing ordinary powers in this colimit by symbolic powers. Each symbolic power is <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>-primary, being the contraction of a power of the maximal ideal of <span class="math" data-tex="\(B_{\mathfrak q}\)">\(B_{\mathfrak q}\)</span>. Thus the finite module <span class="math" data-tex="\(B/\mathfrak q^{(n)}\)">\(B/\mathfrak q^{(n)}\)</span> has its sole associated prime <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, rather than the maximal ideal. Its depth is one: it is positive, and its dimension is one. The depth formula for dualizing complexes makes <span class="math" data-tex="\(\operatorname{Ext}^0_B(B/\mathfrak q^{(n)},\omega_B)=0\)">\(\operatorname{Ext}^0_B(B/\mathfrak q^{(n)},\omega_B)=0\)</span>. Hence (4.3) is zero, and Lemma 4.2 proves the vanishing.</p>
+<p>Conversely, if (4.1) fails for a top-dimensional minimal prime, properness of <span class="math" data-tex="\(I\)">\(I\)</span> makes the quotient there nonzero of dimension zero. Thus the image of <span class="math" data-tex="\(I\)">\(I\)</span> in <span class="math" data-tex="\(B=\widehat A/\mathfrak p\)">\(B=\widehat A/\mathfrak p\)</span> is maximal-ideal-primary. Theorem 2.1 gives <span class="math" data-tex="\(H^d_I(B)\ne0\)">\(H^d_I(B)\ne0\)</span>. The quotient <span class="math" data-tex="\(\widehat A\to B\)">\(\widehat A\to B\)</span> induces a surjection <span class="math" data-tex="\(H^d_I(\widehat A)\to H^d_I(B)\)">\(H^d_I(\widehat A)\to H^d_I(B)\)</span>, since degree <span class="math" data-tex="\(d\)">\(d\)</span> is right exact. Therefore the top group for <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>, and by faithful flatness for <span class="math" data-tex="\(A\)">\(A\)</span>, is nonzero. ∎</p>
+<p>For <span class="math" data-tex="\(I=A\)">\(I=A\)</span> vanishing is immediate and <span class="math" data-tex="\(\operatorname{cd}(A,I)=-1\)">\(\operatorname{cd}(A,I)=-1\)</span>. The proper-ideal statement above avoids interpreting the dimension of an empty quotient spectrum in (4.1). In particular, for a complete local domain,
+<span class="math math-display" data-tex="\[
+\operatorname{cd}(A,I)=\dim A
+\quad\Longleftrightarrow\quad I\text{ is maximal-ideal-primary}.
+\tag{4.4}
+\]">\[
+\operatorname{cd}(A,I)=\dim A
+\quad\Longleftrightarrow\quad I\text{ is maximal-ideal-primary}.
+\tag{4.4}
+\]</span>
+Compare [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-cd-bound-dualizing">Tag 0EB4</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-inverse-system-symbolic-powers">Tag 0EB5</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-proposition-Hartshorne-Lichtenbaum-vanishing">Tag 0EB6</a>].</p>
+<p><strong>Corollary 4.4 (excellent normal case).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is excellent and normal local and <span class="math" data-tex="\(\dim A/I\ge1\)">\(\dim A/I\ge1\)</span>, then <span class="math" data-tex="\(\operatorname{cd}(A,I)&lt;\dim A\)">\(\operatorname{cd}(A,I)&lt;\dim A\)</span>. In dimension two, <span class="math" data-tex="\(\operatorname{Spec}A\setminus V(I)\)">\(\operatorname{Spec}A\setminus V(I)\)</span> is affine.</p>
+<p><strong>Proof.</strong> Excellence and normality ensure that <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> is normal, hence a local domain. This completion fact is a prerequisite stated below. There is one minimal prime, and completion of the finite quotient preserves its dimension: <span class="math" data-tex="\(\dim\widehat A/I\widehat A=\dim A/I\ge1\)">\(\dim\widehat A/I\widehat A=\dim A/I\ge1\)</span>. Theorem 4.1 gives the strict bound. If <span class="math" data-tex="\(\dim A=2\)">\(\dim A=2\)</span>, the bound is at most one, so Theorem 2.2 gives affineness. ∎</p>
+<p>For an excellent normal surface singularity, deleting a curve through the closed point therefore leaves an affine open. Deleting just the closed point has the opposite cohomological outcome: Theorem 2.1 gives cohomological dimension two, so its nonzero top supported group becomes nonzero degree-one cohomology on the punctured surface. The punctured surface is not affine. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-affine-complement">Tag 0EB7</a>].</p>
+<h2 id="5-connectedness-from-extension-of-functions">5. Connectedness from extension of functions</h2>
+<p>An open-and-closed decomposition creates an idempotent function: one on one part and zero on the other. A local ring has only the idempotents zero and one. The depth condition lets us compare these two statements.</p>
+<p><strong>Theorem 5.1 (punctured connectedness).</strong> If a Noetherian local ring has depth at least two, its punctured spectrum is connected. The punctured spectra of its henselization and strict henselization are connected as well.</p>
+<p><strong>Proof.</strong> Depth at least two makes <span class="math" data-tex="\(H^0_{\mathfrak m}(A)=H^1_{\mathfrak m}(A)=0\)">\(H^0_{\mathfrak m}(A)=H^1_{\mathfrak m}(A)=0\)</span>. The support exact sequence therefore gives
+<span class="math math-display" data-tex="\[
+A\simeq\Gamma(\operatorname{Spec}A\setminus\{\mathfrak m\},\mathcal O).
+\tag{5.1}
+\]">\[
+A\simeq\Gamma(\operatorname{Spec}A\setminus\{\mathfrak m\},\mathcal O).
+\tag{5.1}
+\]</span>
+The punctured spectrum is nonempty, since depth at least two forces dimension at least two. If it split into two nonempty open-and-closed parts, their zero–one function would yield a nontrivial idempotent in the local ring <span class="math" data-tex="\(A\)">\(A\)</span>, a contradiction.</p>
+<p>Henselization and strict henselization are Noetherian local flat extensions, with extended maximal ideal. A regular sequence of length two in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> remains regular in either extension: tensor its successive injection sequences with the flat extension, and use faithful local flatness to keep the successive quotients nonzero. Both extensions consequently have depth at least two, and the argument just given applies. The structural facts about these extensions are recorded as prerequisites below. ∎</p>
+<p><strong>Theorem 5.2 (connectedness in codimension one).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a nonzero Cohen–Macaulay Noetherian local ring. If a closed subset <span class="math" data-tex="\(Z\subset X=\operatorname{Spec}A\)">\(Z\subset X=\operatorname{Spec}A\)</span> has codimension at least two, then <span class="math" data-tex="\(X\setminus Z\)">\(X\setminus Z\)</span> is connected. Here the codimension hypothesis means <span class="math" data-tex="\(\dim A_{\mathfrak p}\ge2\)">\(\dim A_{\mathfrak p}\ge2\)</span> for every <span class="math" data-tex="\(\mathfrak p\in Z\)">\(\mathfrak p\in Z\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(Z\)">\(Z\)</span> is empty, <span class="math" data-tex="\(X\)">\(X\)</span> is connected because its coordinate ring is local. Otherwise write <span class="math" data-tex="\(Z=V(I)\)">\(Z=V(I)\)</span>. At an associated prime of <span class="math" data-tex="\(A\)">\(A\)</span>, depth of the localization is zero. Localizations of a Cohen–Macaulay ring are Cohen–Macaulay, so these primes have height zero and none lies in <span class="math" data-tex="\(Z\)">\(Z\)</span>. Prime avoidance chooses <span class="math" data-tex="\(f\in I\)">\(f\in I\)</span> outside all associated primes. It is a nonzerodivisor, and is in <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> because <span class="math" data-tex="\(Z\)">\(Z\)</span> is nonempty.</p>
+<p>The quotient <span class="math" data-tex="\(A/fA\)">\(A/fA\)</span> remains Cohen–Macaulay. If <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is one of its associated primes, depth of <span class="math" data-tex="\(A_{\mathfrak p}/fA_{\mathfrak p}\)">\(A_{\mathfrak p}/fA_{\mathfrak p}\)</span> is zero, so depth of <span class="math" data-tex="\(A_{\mathfrak p}\)">\(A_{\mathfrak p}\)</span> is one. Cohen–Macaulayness makes its dimension one. Thus no such prime lies in <span class="math" data-tex="\(Z\)">\(Z\)</span>. A second application of prime avoidance chooses <span class="math" data-tex="\(g\in I\)">\(g\in I\)</span> regular on <span class="math" data-tex="\(A/fA\)">\(A/fA\)</span>. This constructs a regular sequence of length two in <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>The depth theorem for supported cohomology now makes <span class="math" data-tex="\(H^0_I(A)=H^1_I(A)=0\)">\(H^0_I(A)=H^1_I(A)=0\)</span>, and the support exact sequence gives <span class="math" data-tex="\(A=\Gamma(X\setminus Z,\mathcal O)\)">\(A=\Gamma(X\setminus Z,\mathcal O)\)</span>. The complement is nonempty because it contains every minimal prime. A disconnected complement would give a nontrivial idempotent in <span class="math" data-tex="\(A\)">\(A\)</span>, as in Theorem 5.1. ∎</p>
+<p>This proves the stated codimension-one property for all such closed subsets, rather than only for removal of the closed point. The same argument works for an <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> local ring with this codimension convention: <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> forces associated primes to have height zero, and an associated prime of the regular-element quotient has ambient depth one, which <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> permits only in height one. These are the exact depth facts needed in the two prime-avoidance steps.</p>
+<p><strong>Theorem 5.3 (catenary <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> rings).</strong> A catenary Noetherian local ring satisfying <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> is equidimensional.</p>
+<p><strong>Proof.</strong> Suppose its components have different dimensions. Let <span class="math" data-tex="\(X_1\)">\(X_1\)</span> be the union of the components of maximal dimension and <span class="math" data-tex="\(X_2\)">\(X_2\)</span> the union of the smaller components. Both contain the closed point. Choose a generic point <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> of an irreducible component of the nonempty intersection <span class="math" data-tex="\(X_1\cap X_2\)">\(X_1\cap X_2\)</span>. Choose minimal primes <span class="math" data-tex="\(\mathfrak p_1,\mathfrak p_2\subset\mathfrak q\)">\(\mathfrak p_1,\mathfrak p_2\subset\mathfrak q\)</span> from the two families. They are proper generizations of <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>.</p>
+<p>Catenarity in each local domain <span class="math" data-tex="\(A/\mathfrak p_i\)">\(A/\mathfrak p_i\)</span> gives
+<span class="math math-display" data-tex="\[
+\dim(A/\mathfrak p_i)
+=\dim((A/\mathfrak p_i)_{\mathfrak q})+\dim(A/\mathfrak q).
+\tag{5.2}
+\]">\[
+\dim(A/\mathfrak p_i)
+=\dim((A/\mathfrak p_i)_{\mathfrak q})+\dim(A/\mathfrak q).
+\tag{5.2}
+\]</span>
+The left sides differ, so the two interval dimensions differ. Each is at least one, hence one is at least two. The ambient local ring <span class="math" data-tex="\(A_{\mathfrak q}\)">\(A_{\mathfrak q}\)</span> therefore has dimension at least two, and its <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> property gives depth at least two.</p>
+<p>After localizing at <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, the two families of components intersect only at the closed point: a smaller prime in their intersection would contradict the choice of the generic intersection point. Delete this closed point from <span class="math" data-tex="\(\operatorname{Spec}A_{\mathfrak q}\)">\(\operatorname{Spec}A_{\mathfrak q}\)</span>. The two families give disjoint nonempty closed subsets covering that punctured spectrum, hence also open subsets. This contradicts Theorem 5.1.</p>
+<p>The local ring used here is the ambient ring <span class="math" data-tex="\(A_{\mathfrak q}=\mathcal O_{X,\mathfrak q}\)">\(A_{\mathfrak q}=\mathcal O_{X,\mathfrak q}\)</span>. The local ring of the intersection itself at its generic point has dimension zero and cannot be used for the depth-two argument. ∎</p>
+<p>These connectedness arguments use no dualizing-complex existence assumption. See [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-depth-2-connected-punctured-spectrum">Tag 0BLR</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/local-cohomology.html#local-cohomology-lemma-catenary-S2-equidimensional">Tag 0FIW</a>].</p>
+<p>We record one further connectedness theorem as an imported result [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-punctured-still-connected">Tag 0ECR</a>]. Let <span class="math" data-tex="\(A\)">\(A\)</span> be complete local, <span class="math" data-tex="\(I\)">\(I\)</span> proper, <span class="math" data-tex="\(X=\operatorname{Spec}A\)">\(X=\operatorname{Spec}A\)</span>, <span class="math" data-tex="\(Y=V(I)\)">\(Y=V(I)\)</span>, and let <span class="math" data-tex="\(d_0\)">\(d_0\)</span> be the minimum dimension of a component of <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(c\)">\(c\)</span> be the minimum dimension of a closed subset whose removal disconnects <span class="math" data-tex="\(X\)">\(X\)</span>, using the nonempty convention for connectedness. Then, for closed <span class="math" data-tex="\(Z\subset Y\)">\(Z\subset Y\)</span>,
+<span class="math math-display" data-tex="\[
+\dim Z&lt;\min(c,d_0-1)-\operatorname{cd}(A,I)
+\quad\Longrightarrow\quad Y\setminus Z\text{ is connected}.
+\tag{5.3}
+\]">\[
+\dim Z&lt;\min(c,d_0-1)-\operatorname{cd}(A,I)
+\quad\Longrightarrow\quad Y\setminus Z\text{ is connected}.
+\tag{5.3}
+\]</span>
+In particular the punctured spectrum of <span class="math" data-tex="\(A/I\)">\(A/I\)</span> is connected if <span class="math" data-tex="\(\operatorname{cd}(A,I)&lt;\min(c,d_0-1)\)">\(\operatorname{cd}(A,I)&lt;\min(c,d_0-1)\)</span>. This general statement uses formal geometry beyond the idempotent extension arguments proved above.</p>
+<h2 id="6-two-planes-and-a-lower-bound-on-equations">6. Two planes and a lower bound on equations</h2>
+<p><strong>Proposition 6.1 (Mayer–Vietoris).</strong> For ideals <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> and a module <span class="math" data-tex="\(M\)">\(M\)</span>, there is a natural exact sequence
+<span class="math math-display" data-tex="\[
+\cdots\to H^i_{P+Q}(M)\to H^i_P(M)\oplus H^i_Q(M)
+\to H^i_{P\cap Q}(M)\to H^{i+1}_{P+Q}(M)\to\cdots.
+\tag{6.1}
+\]">\[
+\cdots\to H^i_{P+Q}(M)\to H^i_P(M)\oplus H^i_Q(M)
+\to H^i_{P\cap Q}(M)\to H^{i+1}_{P+Q}(M)\to\cdots.
+\tag{6.1}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(U_P=X\setminus V(P)\)">\(U_P=X\setminus V(P)\)</span> and <span class="math" data-tex="\(U_Q=X\setminus V(Q)\)">\(U_Q=X\setminus V(Q)\)</span>. For a flasque sheaf resolution, the degreewise exact sequence of sections for the open cover <span class="math" data-tex="\(U_P\cup U_Q\)">\(U_P\cup U_Q\)</span> is
+<span class="math math-display" data-tex="\[
+0\to\Gamma(U_P\cup U_Q,J)
+\to\Gamma(U_P,J)\oplus\Gamma(U_Q,J)
+\to\Gamma(U_P\cap U_Q,J)\to0.
+\]">\[
+0\to\Gamma(U_P\cup U_Q,J)
+\to\Gamma(U_P,J)\oplus\Gamma(U_Q,J)
+\to\Gamma(U_P\cap U_Q,J)\to0.
+\]</span>
+The last map is the difference of restrictions; flasqueness makes it surjective. Thus it gives the derived Mayer–Vietoris triangle for these opens. Compare it with the support triangles for each of the four opens and <span class="math" data-tex="\(X\)">\(X\)</span>. Since <span class="math" data-tex="\(U_P\cup U_Q=X\setminus V(P+Q)\)">\(U_P\cup U_Q=X\setminus V(P+Q)\)</span> and <span class="math" data-tex="\(U_P\cap U_Q=X\setminus V(P\cap Q)\)">\(U_P\cap U_Q=X\setminus V(P\cap Q)\)</span>, taking the fibers of restriction from <span class="math" data-tex="\(R\Gamma(X,\widetilde M)\)">\(R\Gamma(X,\widetilde M)\)</span> gives the triangle
+<span class="math math-display" data-tex="\[
+R\Gamma_{P+Q}(M)\to R\Gamma_P(M)\oplus R\Gamma_Q(M)
+\to R\Gamma_{P\cap Q}(M)\to.
+\]">\[
+R\Gamma_{P+Q}(M)\to R\Gamma_P(M)\oplus R\Gamma_Q(M)
+\to R\Gamma_{P\cap Q}(M)\to.
+\]</span>
+Its cohomology is (6.1). ∎</p>
+<p><strong>Example 6.2 (two transverse planes).</strong> In <span class="math" data-tex="\(S=k[x,y,z,w]\)">\(S=k[x,y,z,w]\)</span>, put
+<span class="math math-display" data-tex="\[
+P=(x,y),\quad Q=(z,w),\quad
+I=P\cap Q=(xz,xw,yz,yw),\quad\mathfrak m=P+Q.
+\]">\[
+P=(x,y),\quad Q=(z,w),\quad
+I=P\cap Q=(xz,xw,yz,yw),\quad\mathfrak m=P+Q.
+\]</span>
+The closed set <span class="math" data-tex="\(V(I)\)">\(V(I)\)</span> is the union of the two coordinate planes, meeting only at the origin. Each of <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> is generated by two elements, so its groups above degree two vanish. The top maximal-support calculation gives <span class="math" data-tex="\(H^4_{\mathfrak m}(S)\ne0\)">\(H^4_{\mathfrak m}(S)\ne0\)</span>, with inverse monomials <span class="math" data-tex="\(x^{-a}y^{-b}z^{-c}w^{-e}\)">\(x^{-a}y^{-b}z^{-c}w^{-e}\)</span>, all exponents strictly negative. Sequence (6.1) gives
+<span class="math math-display" data-tex="\[
+H^3_I(S)\simeq H^4_{\mathfrak m}(S)\ne0,
+\tag{6.2}
+\]">\[
+H^3_I(S)\simeq H^4_{\mathfrak m}(S)\ne0,
+\tag{6.2}
+\]</span>
+and also <span class="math" data-tex="\(H^i_I(S)=0\)">\(H^i_I(S)=0\)</span> for <span class="math" data-tex="\(i\ge4\)">\(i\ge4\)</span>. Hence <span class="math" data-tex="\(\operatorname{cd}(S,I)=3\)">\(\operatorname{cd}(S,I)=3\)</span>.</p>
+<p>If two equations defined these planes set-theoretically, Proposition 1.2 would give cohomological dimension at most two, contradicting (6.2). Three equations actually suffice:
+<span class="math math-display" data-tex="\[
+xz,\qquad xw+yz,\qquad yw.
+\tag{6.3}
+\]">\[
+xz,\qquad xw+yz,\qquad yw.
+\tag{6.3}
+\]</span>
+For their ideal <span class="math" data-tex="\(J\)">\(J\)</span>, both <span class="math" data-tex="\((xw)^2\)">\((xw)^2\)</span> and <span class="math" data-tex="\((yz)^2\)">\((yz)^2\)</span> lie in <span class="math" data-tex="\(J\)">\(J\)</span>, since
+<span class="math math-display" data-tex="\[
+(xw)^2=xw(xw+yz)-(xz)(yw),\qquad
+(yz)^2=yz(xw+yz)-(xz)(yw).
+\]">\[
+(xw)^2=xw(xw+yz)-(xz)(yw),\qquad
+(yz)^2=yz(xw+yz)-(xz)(yw).
+\]</span>
+Thus all four generators of <span class="math" data-tex="\(I\)">\(I\)</span> lie in <span class="math" data-tex="\(\sqrt J\)">\(\sqrt J\)</span>; conversely <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span>, and <span class="math" data-tex="\(I\)">\(I\)</span> is radical as an intersection of primes. So <span class="math" data-tex="\(\sqrt J=I\)">\(\sqrt J=I\)</span>. The lower bound of three is sharp, in every characteristic.</p>
+<figure><img src="figures/two-planes.png" alt="Incidence diagram of two coordinate planes meeting only at the origin, with the Mayer–Vietoris obstruction" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> The maps shown are the exact coordinate embeddings into <span class="math" data-tex="\(\mathbb A^4_k\)">\(\mathbb A^4_k\)</span>. The diagram records their intersection, rather than projecting the planes into three-dimensional space. Removing the origin separates the two punctured components. Equation (6.2) supplies the cohomological obstruction, and (6.3) attains its equation bound. The proof is Example 6.2.</p>
+<p>Localize <span class="math" data-tex="\(S/I\)">\(S/I\)</span> at the origin. It has dimension two, but deleting its closed point separates the two punctured planes. The deleted point has codimension two. Thus this local scheme is not connected in codimension one, and by Theorem 5.2 it is not Cohen–Macaulay. This is the same geometric obstruction expressed in two different cohomological degrees: maximal-support degree one measures the failure of extension of idempotents on the union, while ambient degree three gives the lower bound on its defining equations.</p>
+<h2 id="7-exercises-and-solutions">7. Exercises and solutions</h2>
+<p><strong>Exercise 7.1 (equations and degrees; introductory).</strong> Prove that <span class="math" data-tex="\(r\)">\(r\)</span> generators of <span class="math" data-tex="\(I\)">\(I\)</span> give <span class="math" data-tex="\(\operatorname{cd}(A,I)\le r\)">\(\operatorname{cd}(A,I)\le r\)</span>. Explain why this is an upper bound and does not by itself prove equality.</p>
+<p><strong>Solution.</strong> Tensor the two-term complexes <span class="math" data-tex="\([A\to A_{f_j}]\)">\([A\to A_{f_j}]\)</span> for a generating list <span class="math" data-tex="\(f_1,\ldots,f_r\)">\(f_1,\ldots,f_r\)</span>. The resulting extended Čech complex computes supported cohomology and has no terms above degree <span class="math" data-tex="\(r\)">\(r\)</span>, even after tensoring with any module. Therefore all <span class="math" data-tex="\(H^i_I(N)\)">\(H^i_I(N)\)</span> with <span class="math" data-tex="\(i&gt;r\)">\(i&gt;r\)</span> vanish. Equality needs a nonzero degree-<span class="math" data-tex="\(r\)">\(r\)</span> group. For instance <span class="math" data-tex="\((t,t^2)\subset k[t]\)">\((t,t^2)\subset k[t]\)</span> has two listed generators but the same radical as <span class="math" data-tex="\((t)\)">\((t)\)</span>, so its cohomological dimension is one, with nonzero <span class="math" data-tex="\(k[t,t^{-1}]/k[t]\)">\(k[t,t^{-1}]/k[t]\)</span> in degree one.</p>
+<p><strong>Exercise 7.2 (two planes; intermediate).</strong> Compute the cohomological dimension of the union of the two coordinate planes in four-dimensional affine space. Prove that two equations cannot define it set-theoretically, and exhibit three that can.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(P=(x,y)\)">\(P=(x,y)\)</span>, <span class="math" data-tex="\(Q=(z,w)\)">\(Q=(z,w)\)</span>, <span class="math" data-tex="\(I=P\cap Q\)">\(I=P\cap Q\)</span> in <span class="math" data-tex="\(S=k[x,y,z,w]\)">\(S=k[x,y,z,w]\)</span>. The groups for <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> vanish above degree two. Mayer–Vietoris in degree three therefore identifies <span class="math" data-tex="\(H^3_I(S)\)">\(H^3_I(S)\)</span> with <span class="math" data-tex="\(H^4_{(x,y,z,w)}(S)\)">\(H^4_{(x,y,z,w)}(S)\)</span>, whose class <span class="math" data-tex="\(1/(xyzw)\)">\(1/(xyzw)\)</span> is nonzero in the inverse-monomial basis. For degrees at least four, the outer terms of the same exact sequence vanish, so <span class="math" data-tex="\(H^i_I(S)=0\)">\(H^i_I(S)=0\)</span>. The ring test gives cohomological dimension three. A radical generated by two equations would give a bound two, a contradiction. The three equations <span class="math" data-tex="\(xz,xw+yz,yw\)">\(xz,xw+yz,yw\)</span> work because the squares of the two missing generators <span class="math" data-tex="\(xw,yz\)">\(xw,yz\)</span> are combinations of these equations as in (6.3). Thus their radical is <span class="math" data-tex="\((xz,xw,yz,yw)=I\)">\((xz,xw,yz,yw)=I\)</span>.</p>
+<p><strong>Exercise 7.3 (affineness; intermediate).</strong> Use Serre's criterion to prove that cohomological dimension one makes the complement nonempty affine. Why must every quasi-coherent sheaf on the complement enter the argument?</p>
+<p><strong>Solution.</strong> For quasi-coherent <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, extend it to <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span> on the ambient affine scheme using finite principal-open descent, or the quasi-coherent pushforward of this quasi-compact open immersion. The support exact sequence gives <span class="math" data-tex="\(H^j(U,\mathcal F)=H^{j+1}_I(N)\)">\(H^j(U,\mathcal F)=H^{j+1}_I(N)\)</span> for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>. All these groups vanish by the definition of cohomological dimension. Serre's criterion applies because <span class="math" data-tex="\(U\)">\(U\)</span> is quasi-compact and separated. If <span class="math" data-tex="\(U\)">\(U\)</span> were empty, support would be the entire affine scheme and the only derived support degree would be zero, contradicting cohomological dimension one. Vanishing only for <span class="math" data-tex="\(\mathcal O_U\)">\(\mathcal O_U\)</span> would not supply Serre's hypotheses; the extension construction provides the required arbitrary sheaf.</p>
+<p><strong>Exercise 7.4 (idempotent obstruction; intermediate).</strong> Prove that depth at least two gives a connected punctured spectrum.</p>
+<p><strong>Solution.</strong> Depth kills the first two maximal-supported groups. Thus the restriction sequence reads <span class="math" data-tex="\(0\to A\to\Gamma(U,\mathcal O_U)\to0\)">\(0\to A\to\Gamma(U,\mathcal O_U)\to0\)</span>. Depth also bounds dimension below by two, ensuring <span class="math" data-tex="\(U\ne\varnothing\)">\(U\ne\varnothing\)</span>. A decomposition of <span class="math" data-tex="\(U\)">\(U\)</span> would give a section equal to zero and one on its two parts. Its square equals itself, and the section is neither zero nor one. Its unique extension would be a nontrivial idempotent in <span class="math" data-tex="\(A\)">\(A\)</span>. In a local ring any idempotent <span class="math" data-tex="\(e\)">\(e\)</span> is zero or one: one of <span class="math" data-tex="\(e,1-e\)">\(e,1-e\)</span> is a unit, and <span class="math" data-tex="\(e(1-e)=0\)">\(e(1-e)=0\)</span>. This contradiction proves connectedness.</p>
+<p><strong>Exercise 7.5 (a complete regular surface; advanced).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be complete regular local of dimension two, and let <span class="math" data-tex="\(\dim A/I=1\)">\(\dim A/I=1\)</span>. Prove <span class="math" data-tex="\(H^2_I(A)=0\)">\(H^2_I(A)=0\)</span>, using duality and the comparison of ordinary and symbolic powers.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(\mathfrak p\supset I\)">\(\mathfrak p\supset I\)</span> with <span class="math" data-tex="\(\dim A/\mathfrak p=1\)">\(\dim A/\mathfrak p=1\)</span>. The normalized dualizing complex is <span class="math" data-tex="\(A[2]\)">\(A[2]\)</span>. Each symbolic-power quotient <span class="math" data-tex="\(A/\mathfrak p^{(n)}\)">\(A/\mathfrak p^{(n)}\)</span> is <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>-primary and has depth one. The depth formula for the dualizing complex gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^2_A(A/\mathfrak p^{(n)},A)
+=\operatorname{Ext}^0_A(A/\mathfrak p^{(n)},A[2])=0.
+\]">\[
+\operatorname{Ext}^2_A(A/\mathfrak p^{(n)},A)
+=\operatorname{Ext}^0_A(A/\mathfrak p^{(n)},A[2])=0.
+\]</span>
+Lemma 4.3 applies because a regular local ring is a domain. It makes symbolic and ordinary powers cofinal, so
+<span class="math math-display" data-tex="\[
+H^2_{\mathfrak p}(A)
+=\operatorname*{colim}_n\operatorname{Ext}^2_A(A/\mathfrak p^n,A)
+=\operatorname*{colim}_n\operatorname{Ext}^2_A(A/\mathfrak p^{(n)},A)=0.
+\]">\[
+H^2_{\mathfrak p}(A)
+=\operatorname*{colim}_n\operatorname{Ext}^2_A(A/\mathfrak p^n,A)
+=\operatorname*{colim}_n\operatorname{Ext}^2_A(A/\mathfrak p^{(n)},A)=0.
+\]</span>
+Finally Lemma 3.3 supplies a surjection <span class="math" data-tex="\(H^2_{\mathfrak p}(A)\to H^2_I(A)\)">\(H^2_{\mathfrak p}(A)\to H^2_I(A)\)</span>, proving the assertion. The argument uses positive depth of symbolic-power quotients; arbitrary ordinary-power quotients need not have that property.</p>
+<h2 id="proof-inputs">Proof inputs</h2>
+<p>Local cohomology supplies the Čech and Ext-colimit computations, the support triangle, depth, restriction of scalars, flat base change and dimension vanishing. Local duality and finiteness supplies dualizing existence for complete local rings, the degree and support bounds for normalized duals, and the prime dimension function. The written algebra lessons linked under Proof inputs in Local cohomology supply prime filtrations, associated primes, regular sequences, catenary chains, closed ideals and quotient completeness in a complete Noetherian local ring, and localization and regular-element quotients of Cohen–Macaulay rings.</p>
+<p>The affineness prerequisite is Serre's criterion [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-quasi-compact-h1-zero-covering">Tag 01XF</a>]: if a scheme is quasi-compact and every quasi-coherent ideal sheaf has zero <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, then it is affine. Our proof of Theorem 2.2 verifies the stronger vanishing for every quasi-coherent sheaf. Noetherian henselizations and strict henselizations, their flat local structure and extended maximal ideals are structural prerequisites [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-henselization-noetherian">Tag 06LJ</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-henselization-depth">Tag 06LL</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-dumb-properties-henselization">Tag 07QM</a>]. We use the normal-completion theorem [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-completion-normal-local-ring">Tag 0C23</a>]: a normal Noetherian local ring whose formal fibres are normal has normal completion; excellence supplies the formal-fibre condition.</p>
+<p>The complete-local connectedness estimate (5.3) has its full linked open proof [Stacks, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebraization.html#algebraization-lemma-punctured-still-connected">Tag 0ECR</a>]. Its exact component-dimension, connectedness-dimension and proper-ideal hypotheses are retained. The linked argument compares formal sections and idempotents to rule out disconnection after deleting a small closed set; slicing reduces the general deletion to a puncture. This is the proof provider for (5.3). All cohomological-dimension bounds, full Hartshorne–Lichtenbaum vanishing and its excellent normal consequence, punctured and codimension-one connectedness, catenary <span class="math" data-tex="\((S_2)\)">\((S_2)\)</span> equidimensionality, Mayer–Vietoris and the two-plane example above are proved here.</p>
+<h2 id="references">References</h2>
+<p>Linked Stacks proofs retain their <a href="https://github.com/stacks/stacks-project/blob/master/COPYING">GNU Free Documentation License</a>. The CC0 dedication covers the independently written exposition here.</p>
+<ul>
+<li>[Stacks] The Stacks Project authors, <em>The Stacks Project</em>, <a href="https://stacks.math.columbia.edu/">official project</a>. Tag links use AI Integrated Stacks Project, an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers. Its <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">English reader</a> retains the upstream tags. Relevant sections are Local Cohomology, “Cohomological dimension,” “Hartshorne–Lichtenbaum vanishing,” and “Connectedness,” and Algebraic and Formal Geometry, “Connectedness.”</li>
+<li>[Grothendieck–Laszlo] A. Grothendieck, <em>Cohomologie locale des faisceaux cohérents et théorèmes de Lefschetz locaux et globaux (SGA 2)</em>, revised edition edited by Y. Laszlo, <a href="https://arxiv.org/abs/math/0511279">arXiv:math/0511279</a>, Exposé III, Section 3, especially the extension, connectedness and codimension statements. The topology and local-cohomology arguments here use independent exposition.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="local-duality-and-finiteness.html">← Local duality and finiteness</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="formal-geometry.html">Formal geometry along a closed subscheme →</a></span></nav>
+<p class="small source-link"><a href="src/cohomological-dimension-and-connectedness.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-LCL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Order, positivity and distributional limits</title><link rel="stylesheet" href="../course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"../assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a> · <a href="complete-distribution-foundations.html">Complete distribution foundations</a></nav><h1 id="order-positivity-and-distributional-limits">Order, positivity and distributional limits</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p>Smooth tests can hide a rapidly growing derivative or a large cancellation between nearby masses. A finite-order estimate specifies which derivatives control the pairing. Positivity changes the situation: it prevents cancellation, gives an estimate using only function values, and lets convergence on smooth tests extend to continuous tests.</p>
+<p>The test-space conventions and completeness used here are those of <a href="distributions-as-kernels.html">Distributions as kernels of continuous operators</a>. The smoothing and finite-net arguments are developed in <a href="when-a-kernel-is-smooth.html">When a kernel is smooth</a>. For background on distributions see [Dyatlov 2026]. Two established results supply the functional-analysis and measure foundations: the complex Hahn–Banach extension theorem in <a href="banach-foundation-bridges.html#hahnbanach-and-scalar-norm-tests">Banach estimates, quotient spaces and compact parameter arguments, “Norm-preserving complex extension and scalar detection”</a>, and the positive Riesz representation theorem in <a href="../../NCG-FOLIATIONS/companions/haar-functional.html">Haar measure on locally compact groups, Theorem 2.2</a>. We state their exact uses below.</p>
+<h2 id="local-estimates-and-the-meaning-of-order">Local estimates and the meaning of order</h2>
+<p>Let <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open. Write <span class="math" data-tex="\(\mathcal D(X)=C_c^\infty(X)\)">\(\mathcal D(X)=C_c^\infty(X)\)</span> and</p>
+<span class="math math-display" data-tex="\[
+p_{K,m}(\phi)=\max_{|\alpha|\le m}\sup_K|\partial^\alpha\phi|,
+\qquad
+\mathcal D_K=\{\phi\in\mathcal D(X):\operatorname{supp}\phi\subset K\},
+\tag{1.1}
+\]">\[
+p_{K,m}(\phi)=\max_{|\alpha|\le m}\sup_K|\partial^\alpha\phi|,
+\qquad
+\mathcal D_K=\{\phi\in\mathcal D(X):\operatorname{supp}\phi\subset K\},
+\tag{1.1}
+\]</span>
+<p>where <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> is compact. A complex-linear form <span class="math" data-tex="\(u\)">\(u\)</span> is a distribution if, for every such <span class="math" data-tex="\(K\)">\(K\)</span>, there are <span class="math" data-tex="\(m_K\ge0\)">\(m_K\ge0\)</span> and <span class="math" data-tex="\(C_K\)">\(C_K\)</span> with</p>
+<span class="math math-display" data-tex="\[
+|u(\phi)|\le C_Kp_{K,m_K}(\phi),\qquad \phi\in\mathcal D_K.
+\tag{1.2}
+\]">\[
+|u(\phi)|\le C_Kp_{K,m_K}(\phi),\qquad \phi\in\mathcal D_K.
+\tag{1.2}
+\]</span>
+<p>This is continuity on the test-function inductive limit. We say <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span> when the same integer <span class="math" data-tex="\(k\)">\(k\)</span> can be used for every compact <span class="math" data-tex="\(K\)">\(K\)</span>, while <span class="math" data-tex="\(C_K\)">\(C_K\)</span> may vary. A local order bound and a single global estimate with a constant independent of support are different assertions.</p>
+<p><strong>Proposition 1.1 (the sequential test).</strong> A linear form on <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> is a distribution if and only if it sends every sequence tending to zero in <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> to a scalar sequence tending to zero.</p>
+<p>Here convergence in <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> means that the supports lie in one compact <span class="math" data-tex="\(K\)">\(K\)</span> and every derivative tends uniformly to zero.</p>
+<p><strong>Proof.</strong> Estimate (1.2) immediately gives the forward implication. Conversely, if no finite estimate holds on some <span class="math" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>, choose <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span> with <span class="math" data-tex="\(|u(\phi_j)|&gt;j p_{K,j}(\phi_j)\)">\(|u(\phi_j)|&gt;j p_{K,j}(\phi_j)\)</span>. Dividing by <span class="math" data-tex="\(u(\phi_j)\)">\(u(\phi_j)\)</span> gives <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> with</p>
+<span class="math math-display" data-tex="\[
+u(\psi_j)=1,\qquad p_{K,j}(\psi_j)&lt;1/j.
+\]">\[
+u(\psi_j)=1,\qquad p_{K,j}(\psi_j)&lt;1/j.
+\]</span>
+<p>For each fixed derivative index, its supremum tends to zero as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>. The supports stay in <span class="math" data-tex="\(K\)">\(K\)</span>. Thus <span class="math" data-tex="\(\psi_j\to0\)">\(\psi_j\to0\)</span> in the test space, while its images remain one, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2 (extension to finitely differentiable tests).</strong> If <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, it has a unique linear extension to <span class="math" data-tex="\(C_c^k(X)\)">\(C_c^k(X)\)</span> that is continuous in the <span class="math" data-tex="\(C^k\)">\(C^k\)</span> norm on each common compact support.</p>
+<p>If (1.2) holds with <span class="math" data-tex="\(m_K=k\)">\(m_K=k\)</span>, the same estimate, with the same constant, holds for <span class="math" data-tex="\(C^k\)">\(C^k\)</span> functions supported in the interior of <span class="math" data-tex="\(K\)">\(K\)</span>. For a function whose support touches the boundary of <span class="math" data-tex="\(K\)">\(K\)</span>, an estimate on a larger compact neighborhood always suffices.</p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(f\in C_c^k(X)\)">\(f\in C_c^k(X)\)</span> by zero to Euclidean space. Since its support lies compactly inside <span class="math" data-tex="\(X\)">\(X\)</span>, this is <span class="math" data-tex="\(C^k\)">\(C^k\)</span>. Convolution with smooth mollifiers produces <span class="math" data-tex="\(f_\varepsilon\in\mathcal D(X)\)">\(f_\varepsilon\in\mathcal D(X)\)</span> for small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, with support in one compact neighborhood <span class="math" data-tex="\(K_1\)">\(K_1\)</span> of <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+p_{K_1,k}(f_\varepsilon-f)\longrightarrow0.
+\tag{1.3}
+\]">\[
+p_{K_1,k}(f_\varepsilon-f)\longrightarrow0.
+\tag{1.3}
+\]</span>
+<p>Indeed differentiation through order <span class="math" data-tex="\(k\)">\(k\)</span> commutes with convolution, and each compactly supported continuous derivative is uniformly continuous. Estimate (1.2) makes <span class="math" data-tex="\(u(f_\varepsilon)\)">\(u(f_\varepsilon)\)</span> Cauchy. Define <span class="math" data-tex="\(u(f)\)">\(u(f)\)</span> to be its limit.</p>
+<p>Two approximating families have their supports in one larger compact and their difference tends to zero in <span class="math" data-tex="\(C^k\)">\(C^k\)</span>, so they give the same limit. The same observation proves linearity and uniqueness. Passing to the limit in the order estimate proves continuity. If the support of <span class="math" data-tex="\(f\)">\(f\)</span> is contained in the interior of <span class="math" data-tex="\(K\)">\(K\)</span>, sufficiently small mollifications remain in <span class="math" data-tex="\(K\)">\(K\)</span>, and that limiting estimate keeps the original <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Without this support margin, those mollifications need not remain in <span class="math" data-tex="\(K\)">\(K\)</span>; the larger-compact formulation avoids that unjustified step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Order zero therefore allows all compactly supported continuous tests. The estimate is local in their support.</p>
+<h2 id="one-weighted-estimate-for-every-support">One weighted estimate for every support</h2>
+<p>The local orders <span class="math" data-tex="\(m_K\)">\(m_K\)</span> can grow as the support moves through <span class="math" data-tex="\(X\)">\(X\)</span>. Continuous weights encode this variation without choosing a new estimate for every test.</p>
+<p><strong>Theorem 2.1 (locally finite derivative weights).</strong> A linear form <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> is a distribution if and only if there exist nonnegative continuous functions <span class="math" data-tex="\(\rho_\alpha\)">\(\rho_\alpha\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, indexed by multi-indices, such that:</p>
+<ol>
+<li>On each compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>, all but finitely many <span class="math" data-tex="\(\rho_\alpha\)">\(\rho_\alpha\)</span> vanish identically.</li>
+<li>Every test satisfies</li>
+</ol>
+<span class="math math-display" data-tex="\[
+|u(\phi)|\le
+\sum_\alpha\|\rho_\alpha\partial^\alpha\phi\|_\infty.
+\tag{2.1}
+\]">\[
+|u(\phi)|\le
+\sum_\alpha\|\rho_\alpha\partial^\alpha\phi\|_\infty.
+\tag{2.1}
+\]</span>
+<p>The sum is finite for each test. The weights may be chosen zero for <span class="math" data-tex="\(|\alpha|&gt;k\)">\(|\alpha|&gt;k\)</span> if and only if <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> If the weights exist, their restrictions to a compact <span class="math" data-tex="\(K\)">\(K\)</span> have finite suprema, and only finitely many indices occur. Thus (2.1) implies (1.2). If they vanish above degree <span class="math" data-tex="\(k\)">\(k\)</span>, it gives the order-<span class="math" data-tex="\(k\)">\(k\)</span> estimate.</p>
+<p>For the converse, choose a countable locally finite smooth partition <span class="math" data-tex="\(1=\sum_{j\ge1}\psi_j\)">\(1=\sum_{j\ge1}\psi_j\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, with each <span class="math" data-tex="\(\psi_j\)">\(\psi_j\)</span> compactly supported in <span class="math" data-tex="\(X\)">\(X\)</span>. Such a partition follows from an exhaustion by compact subsets and ordinary smooth cutoffs. The supports meet each compact in only finitely many places. On <span class="math" data-tex="\(K_j=\operatorname{supp}\psi_j\)">\(K_j=\operatorname{supp}\psi_j\)</span>, choose an estimate</p>
+<span class="math math-display" data-tex="\[
+|u(g)|\le C_jp_{K_j,m_j}(g),\qquad g\in\mathcal D_{K_j}.
+\]">\[
+|u(g)|\le C_jp_{K_j,m_j}(g),\qquad g\in\mathcal D_{K_j}.
+\]</span>
+<p>For <span class="math" data-tex="\(|\beta|\le m_j\)">\(|\beta|\le m_j\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+A_{j,\beta}(x)=
+\sum_{\substack{|\alpha|\le m_j\\\beta\le\alpha}}
+\binom{\alpha}{\beta}
+|\partial^{\alpha-\beta}\psi_j(x)|;
+\tag{2.2}
+\]">\[
+A_{j,\beta}(x)=
+\sum_{\substack{|\alpha|\le m_j\\\beta\le\alpha}}
+\binom{\alpha}{\beta}
+|\partial^{\alpha-\beta}\psi_j(x)|;
+\tag{2.2}
+\]</span>
+<p>otherwise put <span class="math" data-tex="\(A_{j,\beta}=0\)">\(A_{j,\beta}=0\)</span>. Here <span class="math" data-tex="\(\beta\le\alpha\)">\(\beta\le\alpha\)</span> means coordinatewise inequality. These functions are nonnegative and continuous, with support in <span class="math" data-tex="\(K_j\)">\(K_j\)</span>. The product rule at each point, followed by a supremum, gives</p>
+<span class="math math-display" data-tex="\[
+p_{K_j,m_j}(\psi_j\phi)
+\le\sum_\beta\|A_{j,\beta}\partial^\beta\phi\|_\infty.
+\]">\[
+p_{K_j,m_j}(\psi_j\phi)
+\le\sum_\beta\|A_{j,\beta}\partial^\beta\phi\|_\infty.
+\]</span>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\rho_\beta(x)=\sum_{j\ge1}2^j C_j A_{j,\beta}(x).
+\tag{2.3}
+\]">\[
+\rho_\beta(x)=\sum_{j\ge1}2^j C_j A_{j,\beta}(x).
+\tag{2.3}
+\]</span>
+<p>This sum is locally finite, so <span class="math" data-tex="\(\rho_\beta\)">\(\rho_\beta\)</span> is continuous. On a compact set only finitely many <span class="math" data-tex="\(K_j\)">\(K_j\)</span> meet it; their finitely many <span class="math" data-tex="\(m_j\)">\(m_j\)</span> show that only finitely many derivative weights are nonzero there.</p>
+<p>For a test <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the partition expansion has only finitely many nonzero terms. Since <span class="math" data-tex="\(C_jA_{j,\beta}\le2^{-j}\rho_\beta\)">\(C_jA_{j,\beta}\le2^{-j}\rho_\beta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|u(\phi)|
+&amp;\le\sum_j|u(\psi_j\phi)|\\
+&amp;\le\sum_j2^{-j}\sum_\beta
+\|\rho_\beta\partial^\beta\phi\|_\infty\\
+&amp;\le\sum_\beta\|\rho_\beta\partial^\beta\phi\|_\infty.
+\end{aligned}
+\]">\[
+\begin{aligned}
+|u(\phi)|
+&amp;\le\sum_j|u(\psi_j\phi)|\\
+&amp;\le\sum_j2^{-j}\sum_\beta
+\|\rho_\beta\partial^\beta\phi\|_\infty\\
+&amp;\le\sum_\beta\|\rho_\beta\partial^\beta\phi\|_\infty.
+\end{aligned}
+\]</span>
+<p>If <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>, choose every <span class="math" data-tex="\(m_j=k\)">\(m_j=k\)</span>; (2.2) then has no indices above <span class="math" data-tex="\(k\)">\(k\)</span>. This proves both the general result and its finite-order refinement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="distributions-are-locally-finite-derivatives-of-measures">Distributions are locally finite derivatives of measures</h2>
+<p>The weights also give a useful representation. The two cited theorems have these precise forms:</p>
+<ul>
+<li>A bounded complex-linear functional on a subspace of a complex normed space extends to the whole space with the same norm. The subspace need not be closed, and the space need not be complete.</li>
+<li>A positive linear functional on <span class="math" data-tex="\(C_c(Y)\)">\(C_c(Y)\)</span>, for a locally compact Hausdorff space <span class="math" data-tex="\(Y\)">\(Y\)</span>, is integration against a unique positive Radon measure. This measure is finite on compact sets, outer regular on Borel sets and inner regular on open sets.</li>
+</ul>
+<p>An open Euclidean <span class="math" data-tex="\(X\)">\(X\)</span> satisfies those topological hypotheses. It is also a countable union of compact sets, so the cited regularity proposition gives inner regularity on all its Borel sets. No group structure is involved.</p>
+<p>We first need a small passage from positive to complex functionals. Write <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> for continuous functions tending to zero outside compact subsets, with the supremum norm.</p>
+<p><strong>Lemma 3.1 (complex representation on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>).</strong> Every bounded complex-linear functional <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span> is integration against a finite complex Radon measure. One can bound its total variation by <span class="math" data-tex="\(4\|L\|\)">\(4\|L\|\)</span>. This nonoptimal bound is sufficient below.</p>
+<p><strong>Proof.</strong> For a bounded real-linear functional <span class="math" data-tex="\(h\)">\(h\)</span> on real <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>, and <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+h^+(f)=\sup_{0\le g\le f}h(g).
+\tag{3.1}
+\]">\[
+h^+(f)=\sup_{0\le g\le f}h(g).
+\tag{3.1}
+\]</span>
+<p>It lies between zero and <span class="math" data-tex="\(\|h\|\|f\|_\infty\)">\(\|h\|\|f\|_\infty\)</span>. It is positively homogeneous. It is additive on nonnegative functions: the lower inequality follows by adding admissible <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span>; for the upper inequality split any <span class="math" data-tex="\(0\le g\le f_1+f_2\)">\(0\le g\le f_1+f_2\)</span> as</p>
+<span class="math math-display" data-tex="\[
+g_1=\min(g,f_1),\qquad g_2=g-g_1,
+\]">\[
+g_1=\min(g,f_1),\qquad g_2=g-g_1,
+\]</span>
+<p>so <span class="math" data-tex="\(0\le g_i\le f_i\)">\(0\le g_i\le f_i\)</span>. These are continuous functions in <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. Taking suprema gives the reverse inequality.</p>
+<p>Extend <span class="math" data-tex="\(h^+\)">\(h^+\)</span> to all real functions by positive-minus-negative parts. Additivity on the positive cone makes this well-defined and linear: if <span class="math" data-tex="\(f=a-b\)">\(f=a-b\)</span> with <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span>, the equality <span class="math" data-tex="\(a+f^-=b+f^+\)">\(a+f^-=b+f^+\)</span> shows that the assigned difference equals <span class="math" data-tex="\(h^+(f^+)-h^+(f^-)\)">\(h^+(f^+)-h^+(f^-)\)</span>. Put <span class="math" data-tex="\(h^-=h^+-h\)">\(h^-=h^+-h\)</span>. This is positive because <span class="math" data-tex="\(g=f\)">\(g=f\)</span> is admissible in (3.1). On <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> it also satisfies</p>
+<span class="math math-display" data-tex="\[
+h^-(f)=\sup_{0\le g\le f}[-h(g)]
+\le\|h\|\|f\|_\infty,
+\]">\[
+h^-(f)=\sup_{0\le g\le f}[-h(g)]
+\le\|h\|\|f\|_\infty,
+\]</span>
+<p>by replacing <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(f-g\)">\(f-g\)</span> in (3.1). Positivity bounds the absolute value on any real <span class="math" data-tex="\(f\)">\(f\)</span> by the value on <span class="math" data-tex="\(|f|\)">\(|f|\)</span>, so both extensions are bounded.</p>
+<p>Apply the positive Riesz theorem to their restrictions to <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>. It gives two positive Radon measures <span class="math" data-tex="\(\mu^+,\mu^-\)">\(\mu^+,\mu^-\)</span>. Their total masses are at most <span class="math" data-tex="\(\|h\|\)">\(\|h\|\)</span>, because the formula for the measure of the open set <span class="math" data-tex="\(X\)">\(X\)</span> is the supremum of their functional values on compactly supported functions between zero and one. Thus <span class="math" data-tex="\(h\)">\(h\)</span> is represented there by <span class="math" data-tex="\(\mu^+-\mu^-\)">\(\mu^+-\mu^-\)</span>. Compactly supported continuous functions are dense in <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>: multiplying by a cutoff equal to one on a growing compact set gives uniform convergence. The finite mass bounds extend the equality to all <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>.</p>
+<p>Take <span class="math" data-tex="\(h_1=\operatorname{Re}L\)">\(h_1=\operatorname{Re}L\)</span> and <span class="math" data-tex="\(h_2=\operatorname{Im}L\)">\(h_2=\operatorname{Im}L\)</span> on real functions. Their norms are at most <span class="math" data-tex="\(\|L\|\)">\(\|L\|\)</span>. The measure <span class="math" data-tex="\((\mu_1^+-\mu_1^-)+i(\mu_2^+-\mu_2^-)\)">\((\mu_1^+-\mu_1^-)+i(\mu_2^+-\mu_2^-)\)</span> represents <span class="math" data-tex="\(L\)">\(L\)</span>, first on real functions and then on complex functions by complex linearity. Its total variation is bounded by the sum of these four masses, at most <span class="math" data-tex="\(4\|L\|\)">\(4\|L\|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (measure-derivative representation).</strong> For every <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span> there are complex Radon measures <span class="math" data-tex="\(\nu_\alpha\)">\(\nu_\alpha\)</span>, locally finite in both of these senses:</p>
+<ul>
+<li>Each measure has finite total variation on every compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>.</li>
+<li>Each compact subset has a neighborhood meeting the supports of only finitely many <span class="math" data-tex="\(\nu_\alpha\)">\(\nu_\alpha\)</span>.</li>
+</ul>
+<p>They represent <span class="math" data-tex="\(u\)">\(u\)</span> by</p>
+<span class="math math-display" data-tex="\[
+u(\phi)=\sum_\alpha\int_X\partial^\alpha\phi\,d\nu_\alpha,
+\qquad
+u=\sum_\alpha(-1)^{|\alpha|}\partial^\alpha\nu_\alpha.
+\tag{3.2}
+\]">\[
+u(\phi)=\sum_\alpha\int_X\partial^\alpha\phi\,d\nu_\alpha,
+\qquad
+u=\sum_\alpha(-1)^{|\alpha|}\partial^\alpha\nu_\alpha.
+\tag{3.2}
+\]</span>
+<p>Every test sees a finite sum. If <span class="math" data-tex="\(u\)">\(u\)</span> has order at most <span class="math" data-tex="\(k\)">\(k\)</span>, only <span class="math" data-tex="\(|\alpha|\le k\)">\(|\alpha|\le k\)</span> are needed. Conversely, a finite-degree representation by locally finite Radon measures gives a distribution of that order. No uniqueness of the representing measures is asserted.</p>
+<p><strong>Proof.</strong> Choose the weights of Theorem 2.1. In the normed space</p>
+<span class="math math-display" data-tex="\[
+B=\ell^1(\{\alpha\};C_0(X)),\qquad
+\|(g_\alpha)\|_B=\sum_\alpha\|g_\alpha\|_\infty,
+\]">\[
+B=\ell^1(\{\alpha\};C_0(X)),\qquad
+\|(g_\alpha)\|_B=\sum_\alpha\|g_\alpha\|_\infty,
+\]</span>
+<p>define <span class="math" data-tex="\(J\phi=(\rho_\alpha\partial^\alpha\phi)_\alpha\)">\(J\phi=(\rho_\alpha\partial^\alpha\phi)_\alpha\)</span>. Each component is continuous and compactly supported, and only finitely many are nonzero. Inequality (2.1) makes <span class="math" data-tex="\(F(J\phi)=u(\phi)\)">\(F(J\phi)=u(\phi)\)</span> well-defined: if <span class="math" data-tex="\(J\phi=0\)">\(J\phi=0\)</span>, the inequality forces <span class="math" data-tex="\(u(\phi)=0\)">\(u(\phi)=0\)</span>. It also gives <span class="math" data-tex="\(\|F\|\le1\)">\(\|F\|\le1\)</span> on the subspace <span class="math" data-tex="\(J\mathcal D(X)\)">\(J\mathcal D(X)\)</span>.</p>
+<p>The cited complex Hahn–Banach theorem extends <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(L\in B&#x27;\)">\(L\in B&#x27;\)</span> of norm at most one. Restrict <span class="math" data-tex="\(L\)">\(L\)</span> to the <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-th coordinate. Lemma 3.1 gives a finite complex measure <span class="math" data-tex="\(\mu_\alpha\)">\(\mu_\alpha\)</span>, with total variation at most four, representing that restriction. Finite coordinate sums are dense in <span class="math" data-tex="\(B\)">\(B\)</span>, and the same bound makes their integrals absolutely summable. Consequently</p>
+<span class="math math-display" data-tex="\[
+L((g_\alpha))=\sum_\alpha\int g_\alpha\,d\mu_\alpha.
+\]">\[
+L((g_\alpha))=\sum_\alpha\int g_\alpha\,d\mu_\alpha.
+\]</span>
+<p>Set <span class="math" data-tex="\(\nu_\alpha=\rho_\alpha\mu_\alpha\)">\(\nu_\alpha=\rho_\alpha\mu_\alpha\)</span>. A continuous weight is bounded on a compact set, so this measure has locally finite total variation. Its support is contained in <span class="math" data-tex="\(\operatorname{supp}\rho_\alpha\)">\(\operatorname{supp}\rho_\alpha\)</span>. Given a compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span>, choose a larger compact neighborhood <span class="math" data-tex="\(K_1\subset X\)">\(K_1\subset X\)</span>. All but finitely many weights vanish identically on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>, so those supports miss its interior. This proves the stated local finiteness of the family, including its neighborhood formulation.</p>
+<p>Apply the preceding identity to <span class="math" data-tex="\(J\phi\)">\(J\phi\)</span>, giving the first equation in (3.2). The distributional derivative convention is <span class="math" data-tex="\((\partial^\alpha v)(\phi)=(-1)^{|\alpha|}v(\partial^\alpha\phi)\)">\((\partial^\alpha v)(\phi)=(-1)^{|\alpha|}v(\partial^\alpha\phi)\)</span>; this proves the second, with its sign.</p>
+<p>For order at most <span class="math" data-tex="\(k\)">\(k\)</span>, the weights above that degree are zero, so the corresponding measures can be zero. Conversely, on a compact <span class="math" data-tex="\(K\)">\(K\)</span>, a finite-degree representation satisfies</p>
+<span class="math math-display" data-tex="\[
+|u(\phi)|\le
+\sum_{|\alpha|\le k}|\nu_\alpha|(K)
+\sup_K|\partial^\alpha\phi|,
+\qquad \phi\in\mathcal D_K,
+\]">\[
+|u(\phi)|\le
+\sum_{|\alpha|\le k}|\nu_\alpha|(K)
+\sup_K|\partial^\alpha\phi|,
+\qquad \phi\in\mathcal D_K,
+\]</span>
+<p>which is an order-<span class="math" data-tex="\(k\)">\(k\)</span> estimate. The same calculation shows that any locally finite family without a degree bound still gives a distribution, with an order depending on <span class="math" data-tex="\(K\)">\(K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3 (order zero is precisely a measure).</strong> Distributions of order zero on <span class="math" data-tex="\(X\)">\(X\)</span> are exactly the locally finite complex Radon measures, with their pairing extended to <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>. The representing measure is unique.</p>
+<p><strong>Proof.</strong> Take <span class="math" data-tex="\(k=0\)">\(k=0\)</span> in Theorem 3.2 for existence and its converse. If two such measures give the same integrals on smooth tests, uniform mollification and the compact mass bounds give the same integrals on <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>. Positive Riesz uniqueness applied to the real and imaginary differences identifies them locally, hence on <span class="math" data-tex="\(X\)">\(X\)</span>. Here a complex measure can be expressed locally as a combination of four positive measures, so positivity uniqueness applies to the equality between the corresponding sums of positive parts. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="positivity-forces-order-zero">Positivity forces order zero</h2>
+<p>Call a complex-linear form on <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> positive if <span class="math" data-tex="\(u(\phi)\)">\(u(\phi)\)</span> is real and nonnegative whenever <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is real, smooth and nonnegative.</p>
+<p><strong>Theorem 4.1 (positive forms are measures).</strong> Every positive linear form on <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span> is automatically a distribution of order zero. Its unique extension to <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span> is integration against a positive Radon measure.</p>
+<p><strong>Proof.</strong> Fix a compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> and a nonnegative smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with compact support and <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. For a real <span class="math" data-tex="\(\phi\in\mathcal D_K\)">\(\phi\in\mathcal D_K\)</span>, both <span class="math" data-tex="\(\|\phi\|_\infty\chi+\phi\)">\(\|\phi\|_\infty\chi+\phi\)</span> and <span class="math" data-tex="\(\|\phi\|_\infty\chi-\phi\)">\(\|\phi\|_\infty\chi-\phi\)</span> are nonnegative. Positivity makes <span class="math" data-tex="\(u(\phi)\)">\(u(\phi)\)</span> real and gives</p>
+<span class="math math-display" data-tex="\[
+|u(\phi)|\le u(\chi)\|\phi\|_\infty.
+\tag{4.1}
+\]">\[
+|u(\phi)|\le u(\chi)\|\phi\|_\infty.
+\tag{4.1}
+\]</span>
+<p>For complex <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, take a unit scalar <span class="math" data-tex="\(\theta\)">\(\theta\)</span> with <span class="math" data-tex="\(\theta u(\phi)=|u(\phi)|\)">\(\theta u(\phi)=|u(\phi)|\)</span>, unless its value is zero. Reality on real functions and complex linearity give</p>
+<span class="math math-display" data-tex="\[
+|u(\phi)|=u(\operatorname{Re}(\theta\phi))
+\le u(\chi)\|\phi\|_\infty.
+\tag{4.2}
+\]">\[
+|u(\phi)|=u(\operatorname{Re}(\theta\phi))
+\le u(\chi)\|\phi\|_\infty.
+\tag{4.2}
+\]</span>
+<p>Thus the form is a distribution of order zero without any initial continuity assumption. Proposition 1.2 extends it uniquely to <span class="math" data-tex="\(C_c(X)\)">\(C_c(X)\)</span>.</p>
+<p>For <span class="math" data-tex="\(f\ge0\)">\(f\ge0\)</span> continuous with compact support, zero extension followed by convolution with nonnegative mollifiers gives nonnegative smooth approximants in one compact neighborhood. Their images are nonnegative, so the extension is positive. The cited positive Riesz theorem applies and gives the measure, with uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The measure can have infinite mass on all of <span class="math" data-tex="\(X\)">\(X\)</span>; (4.2) controls it on compact regions. A derivative of a point mass does not satisfy positivity: its pairing with a nonnegative function can have either sign depending on that function's slope at the point.</p>
+<h2 id="limits-on-smooth-tests">Limits on smooth tests</h2>
+<p><strong>Theorem 5.1 (weak completeness and uniform local order).</strong> Suppose <span class="math" data-tex="\(u_j\in\mathcal D&#x27;(X)\)">\(u_j\in\mathcal D&#x27;(X)\)</span> and <span class="math" data-tex="\(u_j(\phi)\)">\(u_j(\phi)\)</span> has a scalar limit for every <span class="math" data-tex="\(\phi\in\mathcal D(X)\)">\(\phi\in\mathcal D(X)\)</span>. Then these limits define <span class="math" data-tex="\(u\in\mathcal D&#x27;(X)\)">\(u\in\mathcal D&#x27;(X)\)</span>. On every fixed compact <span class="math" data-tex="\(K\)">\(K\)</span> there are <span class="math" data-tex="\(C_K,m_K\)">\(C_K,m_K\)</span>, independent of <span class="math" data-tex="\(j\)">\(j\)</span>, such that (1.2) holds for all <span class="math" data-tex="\(u_j\)">\(u_j\)</span> and for <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>If <span class="math" data-tex="\(\phi_j\to\phi\)">\(\phi_j\to\phi\)</span> in <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span>, then <span class="math" data-tex="\(u_j(\phi_j)\to u(\phi)\)">\(u_j(\phi_j)\to u(\phi)\)</span>. The sequence also converges uniformly on every bounded subset of <span class="math" data-tex="\(\mathcal D(X)\)">\(\mathcal D(X)\)</span>, which is convergence in its strong dual. This statement about sequences does not identify the weak and strong topologies or make the same assertion for arbitrary nets.</p>
+<p><strong>Proof.</strong> Scalar pointwise limits are linear. Fix <span class="math" data-tex="\(K\)">\(K\)</span>. The space <span class="math" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>, with the increasing seminorms (1.1), is Fréchet: a Cauchy sequence has uniformly convergent derivatives of every order, their limits fit differentiation, and the limit has support in <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>For integers <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, the sets</p>
+<span class="math math-display" data-tex="\[
+A_r=\{\phi\in\mathcal D_K:\sup_j|u_j(\phi)|\le r\}
+\]">\[
+A_r=\{\phi\in\mathcal D_K:\sup_j|u_j(\phi)|\le r\}
+\]</span>
+<p>are closed and cover <span class="math" data-tex="\(\mathcal D_K\)">\(\mathcal D_K\)</span>, since a convergent scalar sequence is bounded. Baire's theorem gives an <span class="math" data-tex="\(A_r\)">\(A_r\)</span> with interior. Differences of two points in a sufficiently small translated neighborhood then give</p>
+<span class="math math-display" data-tex="\[
+\sup_j|u_j(h)|\le2r
+\quad\text{when }p_{K,m}(h)&lt;\varepsilon
+\]">\[
+\sup_j|u_j(h)|\le2r
+\quad\text{when }p_{K,m}(h)&lt;\varepsilon
+\]</span>
+<p>for some <span class="math" data-tex="\(m,\varepsilon&gt;0\)">\(m,\varepsilon&gt;0\)</span>. Scaling proves <span class="math" data-tex="\(\sup_j|u_j(h)|\le C p_{K,m}(h)\)">\(\sup_j|u_j(h)|\le C p_{K,m}(h)\)</span>. The seminorm includes the function itself, so its zero value implies <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, covering that case. Passing to the scalar limit gives the same bound for <span class="math" data-tex="\(u\)">\(u\)</span>. Doing this for every <span class="math" data-tex="\(K\)">\(K\)</span> proves <span class="math" data-tex="\(u\)">\(u\)</span> is a distribution.</p>
+<p>For convergent moving tests, all supports are in one compact set, and</p>
+<span class="math math-display" data-tex="\[
+u_j(\phi_j)-u(\phi)
+=u_j(\phi_j-\phi)+(u_j-u)(\phi).
+\tag{5.1}
+\]">\[
+u_j(\phi_j)-u(\phi)
+=u_j(\phi_j-\phi)+(u_j-u)(\phi).
+\tag{5.1}
+\]</span>
+<p>The first term tends to zero by the common order estimate, and the second by hypothesis.</p>
+<p>Finally a bounded test family has common compact support and uniform bounds on all derivatives. Arzelà–Ascoli applied to derivatives through degree <span class="math" data-tex="\(m\)">\(m\)</span>, using the next derivative for equicontinuity on a compact neighborhood, supplies a finite net in the <span class="math" data-tex="\(p_{K,m}\)">\(p_{K,m}\)</span> seminorm. The net centers can be chosen in the family. Pointwise convergence on the finitely many centers and the uniform bound for <span class="math" data-tex="\(u_j-u\)">\(u_j-u\)</span> give uniform convergence on that family. This is precisely the strong-dual conclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, every weakly Cauchy sequence of distributions has a weak limit: each scalar test pairing is then Cauchy and hence convergent, so the theorem applies.</p>
+<p><strong>Theorem 5.2 (positive convergence reaches continuous tests).</strong> If the <span class="math" data-tex="\(u_j\)">\(u_j\)</span> in Theorem 5.1 are positive, their limit <span class="math" data-tex="\(u\)">\(u\)</span> is positive, and their Radon measures satisfy</p>
+<span class="math math-display" data-tex="\[
+u_j(f)\longrightarrow u(f)
+\quad\text{for every }f\in C_c(X).
+\tag{5.2}
+\]">\[
+u_j(f)\longrightarrow u(f)
+\quad\text{for every }f\in C_c(X).
+\tag{5.2}
+\]</span>
+<p>This is convergence against compactly supported continuous tests. It need not be convergence of total masses or convergence against all bounded continuous functions.</p>
+<p><strong>Proof.</strong> Positivity passes to limits on nonnegative smooth tests. Theorem 4.1 identifies the limit and every <span class="math" data-tex="\(u_j\)">\(u_j\)</span> as measures.</p>
+<p>Fix a compact neighborhood <span class="math" data-tex="\(K_1\)">\(K_1\)</span> of the support of <span class="math" data-tex="\(f\)">\(f\)</span>, contained in <span class="math" data-tex="\(X\)">\(X\)</span>, and a smooth <span class="math" data-tex="\(\chi\ge0\)">\(\chi\ge0\)</span> equal to one on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. The sequence <span class="math" data-tex="\(u_j(\chi)\)">\(u_j(\chi)\)</span> converges, so it is bounded by a common <span class="math" data-tex="\(M\)">\(M\)</span>; enlarge <span class="math" data-tex="\(M\)">\(M\)</span> to include <span class="math" data-tex="\(u(\chi)\)">\(u(\chi)\)</span>. Inequality (4.2), extended by uniform approximation, gives</p>
+<span class="math math-display" data-tex="\[
+|u_j(g)|+|u(g)|\le2M\|g\|_\infty
+\quad\text{if }\operatorname{supp}g\subset K_1.
+\tag{5.3}
+\]">\[
+|u_j(g)|+|u(g)|\le2M\|g\|_\infty
+\quad\text{if }\operatorname{supp}g\subset K_1.
+\tag{5.3}
+\]</span>
+<p>Choose a smooth approximation <span class="math" data-tex="\(g\)">\(g\)</span> to <span class="math" data-tex="\(f\)">\(f\)</span>, still supported in <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|u_j(f)-u(f)|
+\le2M\|f-g\|_\infty+|u_j(g)-u(g)|.
+\]">\[
+|u_j(f)-u(f)|
+\le2M\|f-g\|_\infty+|u_j(g)-u(g)|.
+\]</span>
+<p>First make the approximation error arbitrarily small, then let <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>. This proves (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For contrast, the signed measures</p>
+<span class="math math-display" data-tex="\[
+v_j=j(\delta_{1/j}-\delta_0)
+\tag{5.4}
+\]">\[
+v_j=j(\delta_{1/j}-\delta_0)
+\tag{5.4}
+\]</span>
+<p>on the line converge on smooth tests to <span class="math" data-tex="\(-\delta_0&#x27;\)">\(-\delta_0&#x27;\)</span>, because <span class="math" data-tex="\(j(\phi(1/j)-\phi(0))\to\phi&#x27;(0)\)">\(j(\phi(1/j)-\phi(0))\to\phi&#x27;(0)\)</span>. But for a continuous compactly supported <span class="math" data-tex="\(f\)">\(f\)</span> equal to <span class="math" data-tex="\(\sqrt{|x|}\)">\(\sqrt{|x|}\)</span> near zero, <span class="math" data-tex="\(v_j(f)=\sqrt j\)">\(v_j(f)=\sqrt j\)</span> for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>. Continuous-test convergence fails, and the limit is not a measure. Positivity prevents exactly this uncontrolled local cancellation.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Order and locality — advanced.</strong> On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(w=\sum_{j\ge1}\delta_j^{(j)}\)">\(w=\sum_{j\ge1}\delta_j^{(j)}\)</span>. Prove this is a distribution, and that it has no finite global order. Use tests near one chosen integer to prove the latter assertion; an infinite formal sum alone is not a proof.</li>
+<li><strong>Cancellation — intermediate.</strong> For (5.4), compute its distributional limit, its total variation, and its value on the continuous test in the preceding paragraph. Prove that the limiting derivative of a point mass has order exactly one.</li>
+<li><strong>What convergence does not imply — foundation.</strong> Show that the positive measures <span class="math" data-tex="\(\mu_j=j\delta_j\)">\(\mu_j=j\delta_j\)</span> converge to zero against every compactly supported continuous test, although their total masses tend to infinity. Give a bounded continuous test against which they do not converge to zero.</li>
+<li><strong>Signs and nonuniqueness — intermediate.</strong> In one dimension, write the distributional derivative of a smooth compactly supported function <span class="math" data-tex="\(h\)">\(h\)</span> in the first pairing form of (3.2). Check its sign. Give two different measure families representing the zero distribution, using <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(h&#x27;\)">\(h&#x27;\)</span>.</li>
+<li><strong>Uniform continuous tests — advanced.</strong> Under the hypotheses of Theorem 5.2, let <span class="math" data-tex="\(\mathcal B\subset C_c(X)\)">\(\mathcal B\subset C_c(X)\)</span> have one common compact support, a uniform supremum bound and a common modulus of continuity after zero extension. Prove <span class="math" data-tex="\(\sup_{f\in\mathcal B}|u_j(f)-u(f)|\to0\)">\(\sup_{f\in\mathcal B}|u_j(f)-u(f)|\to0\)</span>. Explain how the finite-net argument differs from trying to approximate every <span class="math" data-tex="\(f\)">\(f\)</span> separately with an error depending on <span class="math" data-tex="\(f\)">\(f\)</span>.</li>
+</ol>
+<h2 id="complete-solutions">Complete solutions</h2>
+<p><strong>Solution 1.</strong> Every compact interval meets only finitely many positive integers. Thus each test has a finite pairing sum, and on a fixed compact <span class="math" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|w(\phi)|\le
+\sum_{j\in K\cap\mathbb N}\sup_K|\phi^{(j)}|.
+\]">\[
+|w(\phi)|\le
+\sum_{j\in K\cap\mathbb N}\sup_K|\phi^{(j)}|.
+\]</span>
+<p>This is a finite-order local bound; when there are no integers the restriction is zero.</p>
+<p>Suppose a global order <span class="math" data-tex="\(k\)">\(k\)</span> existed and choose an integer <span class="math" data-tex="\(j&gt;k\)">\(j&gt;k\)</span>. In a compact interval <span class="math" data-tex="\(K\)">\(K\)</span> around <span class="math" data-tex="\(j\)">\(j\)</span> containing no other positive integer, <span class="math" data-tex="\(w=\delta_j^{(j)}\)">\(w=\delta_j^{(j)}\)</span>. Choose a smooth compactly supported <span class="math" data-tex="\(b\)">\(b\)</span> near zero with <span class="math" data-tex="\(b^{(j)}(0)\ne0\)">\(b^{(j)}(0)\ne0\)</span>, and set <span class="math" data-tex="\(\phi_\varepsilon(x)=\varepsilon^k b((x-j)/\varepsilon)\)">\(\phi_\varepsilon(x)=\varepsilon^k b((x-j)/\varepsilon)\)</span>. For small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, it is supported in <span class="math" data-tex="\(K\)">\(K\)</span>; its derivatives through degree <span class="math" data-tex="\(k\)">\(k\)</span> are bounded independently of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+|w(\phi_\varepsilon)|
+=\varepsilon^{k-j}|b^{(j)}(0)|\longrightarrow\infty.
+\]">\[
+|w(\phi_\varepsilon)|
+=\varepsilon^{k-j}|b^{(j)}(0)|\longrightarrow\infty.
+\]</span>
+<p>This contradicts an order-<span class="math" data-tex="\(k\)">\(k\)</span> estimate on that fixed <span class="math" data-tex="\(K\)">\(K\)</span>. Local finiteness makes the distribution exist while allowing its local orders to grow without bound.</p>
+<p><strong>Solution 2.</strong> Taylor expansion gives <span class="math" data-tex="\(v_j(\phi)=\phi&#x27;(0)+O(j^{-1})\)">\(v_j(\phi)=\phi&#x27;(0)+O(j^{-1})\)</span> for each fixed smooth <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, so its limit is <span class="math" data-tex="\(-\delta&#x27;_0\)">\(-\delta&#x27;_0\)</span>, since <span class="math" data-tex="\(\delta&#x27;_0(\phi)=-\phi&#x27;(0)\)">\(\delta&#x27;_0(\phi)=-\phi&#x27;(0)\)</span>. The two masses are at distinct points and have coefficients <span class="math" data-tex="\(j,-j\)">\(j,-j\)</span>, so <span class="math" data-tex="\(|v_j|(\mathbb R)=2j\)">\(|v_j|(\mathbb R)=2j\)</span>. For the specified continuous test, <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> and <span class="math" data-tex="\(f(1/j)=j^{-1/2}\)">\(f(1/j)=j^{-1/2}\)</span>, giving <span class="math" data-tex="\(\sqrt j\)">\(\sqrt j\)</span>.</p>
+<p>The bound <span class="math" data-tex="\(|\delta&#x27;_0(\phi)|\le\sup|\phi&#x27;|\)">\(|\delta&#x27;_0(\phi)|\le\sup|\phi&#x27;|\)</span> gives order at most one. It cannot have order zero: for a smooth compactly supported <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(b&#x27;(0)\ne0\)">\(b&#x27;(0)\ne0\)</span>, the tests <span class="math" data-tex="\(b(x/\varepsilon)\)">\(b(x/\varepsilon)\)</span> have uniformly bounded values and common compact support, while their derivative at zero has magnitude <span class="math" data-tex="\(\varepsilon^{-1}|b&#x27;(0)|\)">\(\varepsilon^{-1}|b&#x27;(0)|\)</span>. Thus its order is exactly one. Changing its sign does not change that order.</p>
+<p><strong>Solution 3.</strong> For a fixed <span class="math" data-tex="\(f\in C_c(\mathbb R)\)">\(f\in C_c(\mathbb R)\)</span>, the point <span class="math" data-tex="\(j\)">\(j\)</span> lies outside its support for all sufficiently large <span class="math" data-tex="\(j\)">\(j\)</span>. Hence <span class="math" data-tex="\(\mu_j(f)=0\)">\(\mu_j(f)=0\)</span> eventually. But <span class="math" data-tex="\(\mu_j(\mathbb R)=j\)">\(\mu_j(\mathbb R)=j\)</span>. The bounded continuous function <span class="math" data-tex="\(f=1\)">\(f=1\)</span>, which is not compactly supported, gives <span class="math" data-tex="\(\mu_j(f)=j\)">\(\mu_j(f)=j\)</span>, and there is no convergence to zero. The positivity theorem makes no assertion about mass escaping every compact set.</p>
+<p><strong>Solution 4.</strong> Integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+(\partial h)(\phi)=-\int h\phi&#x27;\,dx.
+\]">\[
+(\partial h)(\phi)=-\int h\phi&#x27;\,dx.
+\]</span>
+<p>In the first form of (3.2), take <span class="math" data-tex="\(\nu_1=-h\,dx\)">\(\nu_1=-h\,dx\)</span> and <span class="math" data-tex="\(\nu_0=0\)">\(\nu_0=0\)</span>. In the second form the factor <span class="math" data-tex="\((-1)^1\)">\((-1)^1\)</span> gives <span class="math" data-tex="\(-\partial(-h\,dx)=\partial(h\,dx)\)">\(-\partial(-h\,dx)=\partial(h\,dx)\)</span>, which is the same distribution.</p>
+<p>For a nonzero compactly supported <span class="math" data-tex="\(h\)">\(h\)</span>, let <span class="math" data-tex="\(\nu_0=h&#x27;\,dx\)">\(\nu_0=h&#x27;\,dx\)</span>, <span class="math" data-tex="\(\nu_1=h\,dx\)">\(\nu_1=h\,dx\)</span>, with other measures zero. Then the first form pairs as <span class="math" data-tex="\(\int h&#x27;\phi\,dx+\int h\phi&#x27;\,dx=0\)">\(\int h&#x27;\phi\,dx+\int h\phi&#x27;\,dx=0\)</span>. These measures represent zero, as does the all-zero family. This explicit cancellation proves nonuniqueness; uniqueness of an order-zero measure alone does not give uniqueness after derivative terms are introduced.</p>
+<p><strong>Solution 5.</strong> Put all supports inside a compact neighborhood <span class="math" data-tex="\(K_1\subset X\)">\(K_1\subset X\)</span>. The uniform bound and common modulus of continuity make the family precompact in the supremum norm by Arzelà–Ascoli on <span class="math" data-tex="\(K_1\)">\(K_1\)</span>; its zero extensions have no new boundary discontinuity. Choose a finite <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-net with centers <span class="math" data-tex="\(f_1,\ldots,f_N\)">\(f_1,\ldots,f_N\)</span> from the family. Positivity gives a common bound <span class="math" data-tex="\(M\)">\(M\)</span> as in (5.3), for both the measures and their limit on that neighborhood. For <span class="math" data-tex="\(f\)">\(f\)</span> within <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> of a center,</p>
+<span class="math math-display" data-tex="\[
+|(u_j-u)(f)|
+\le2M\varepsilon+\max_{1\le l\le N}|(u_j-u)(f_l)|.
+\]">\[
+|(u_j-u)(f)|
+\le2M\varepsilon+\max_{1\le l\le N}|(u_j-u)(f_l)|.
+\]</span>
+<p>Each center tends to zero by (5.2). Taking the supremum, then the limit superior, gives at most <span class="math" data-tex="\(2M\varepsilon\)">\(2M\varepsilon\)</span>; let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. A separate approximation chosen for each function would not control the supremum over the whole family. The finite net and common measure bound make the error uniform.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
+<li><em>Banach estimates, quotient spaces and compact parameter arguments</em>, “Norm-preserving complex extension and scalar detection.” <a href="banach-foundation-bridges.html">Course lesson</a>.</li>
+<li><em>Haar measure on locally compact groups</em>, Section 2, Theorem 2.2 and Proposition 2.3. <a href="../../NCG-FOLIATIONS/companions/haar-functional.html">Course lesson</a>.</li>
+</ul>
+<p><a href="src/order-positivity-and-limits.md">Download the complete original CC0 source</a>.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

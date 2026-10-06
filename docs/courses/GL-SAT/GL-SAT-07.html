@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Convolution and rigidity · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-07.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 7</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="convolution-and-rigidity">Convolution and rigidity</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).</em></p>
+<p>Convolution composes two modifications of a bundle. The intermediate bundle is part of the correspondence; forgetting it is a proper map. We construct that correspondence on finite schemes, prove the dimension estimate for every source stratum, and use it to prove that convolution preserves the perverse heart. We then construct duals by reversing framed modifications and prove both duality identities. None of these arguments assumes general IC parity or semisimplicity.</p>
+<p>Work with a connected reductive group <span class="math">\(G/\mathbb C\)</span> and a characteristic-zero coefficient field <span class="math">\(\Lambda\)</span>. Put <span class="math">\(O=\mathbb C[[t]]\)</span>, <span class="math">\(F=\mathbb C((t))\)</span>, <span class="math">\(K=L^+G\)</span>, and <span class="math">\(K_n=\ker(K\to J_nG)\)</span>. All sheaves have finite Schubert support. Write <span class="math">\(O_\lambda=\operatorname{Gr}^{\lambda}\)</span>, <span class="math">\(Z_\lambda=\overline{O_\lambda}_{\mathrm{red}}\)</span>, and <span class="math">\(d_\lambda=\langle2\rho,\lambda\rangle\)</span>.</p>
+<p>The scheme inputs are <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian</a>, Theorem 7.1 and §§2,4; <a href="GL-SAT-03.html">Beauville–Laszlo gluing and the moduli interpretation</a>, §§1–3,7–8; and <a href="GL-SAT-04.html">Orbits and Schubert varieties</a>, §§2–5. We use the dimension and contraction proofs in <a href="GL-SAT-05.html">Semi-infinite orbits and weight functors</a>, §§7–10. The category, finite jets, duality and exact faithful cohomology are proved in <a href="GL-SAT-06.html">The Satake category</a>, §§1–4,6. The classical base-change, projection, trace and duality maps are constructed in <span class="unlinked">Constructible complexes on algebraic varieties</span>, Appendices F–K. Torsor descent in the heart is <a href="../GL-PERV/equivariant-perverse-sheaves-and-perverse-sheaves-on-stacks.html">Equivariant perverse sheaves and perverse sheaves on stacks</a>, Lemma B.2; product acyclicity is its Lemma B.5.</p>
+<h2 id="1-two-endpoints-give-a-bounded-scheme">1. Two endpoints give a bounded scheme</h2>
+<p>Choose the faithful closed representation <span class="math">\(G\hookrightarrow\operatorname{GL}(V)\)</span> of the loop-group lesson. Let <span class="math">\(X_1,X_2\)</span> be finite closed unions of Schubert varieties, with bounds
+<span class="math math-display">\[
+t^{N_i}V_O\subset L_i\subset t^{-N_i}V_O.
+\]</span>
+These inclusions hold over every parameter algebra. A chain of modifications is described locally by
+<span class="math math-display">\[
+[g,y],\qquad gK\in X_1,\quad y\in X_2,
+\qquad (g,y)\sim(gh^{-1},hy)\ (h\in K).
+\]</span>
+Its first and last endpoints are
+<span class="math math-display">\[
+p([g,y])=gK,\qquad m([g,y])=gy.                         \tag{1.1}
+\]</span>
+The relative second lattice satisfies
+<span class="math math-display">\[
+t^{N_2}L_1\subset gL_2\subset t^{-N_2}L_1.
+\]</span>
+Consequently its last endpoint has bound <span class="math">\(M=N_1+N_2\)</span>, including over nonreduced parameter rings.</p>
+<p>Here is a scheme construction of the contraction. Over an étale frame chart <span class="math">\(U\to X_1\)</span>, choose the formal frame <span class="math">\(g_U\)</span> of the universal first disc torsor. Such charts and their formal lifts are proved in the loop-group lesson, Lemma 4.1: first trivialize the smooth torsor modulo <span class="math">\(t\)</span>, then lift through its square-zero thickenings. In the finite product <span class="math">\(U\times X_M\)</span>, impose the closed condition
+<span class="math math-display">\[
+g_U^{-1}z\in X_2.                                      \tag{1.2}
+\]</span>
+The inverse frame sends the target bound into bound <span class="math">\(M+N_1\)</span>, so (1.2) is the inverse image of an actual closed immersion in a finite stage. Replacing the frame multiplies the relative endpoint by an integral element. Since <span class="math">\(X_2\)</span> is <span class="math">\(K\)</span>-stable, the closed ideals agree on overlaps. Faithfully flat ideal descent from the gluing lesson constructs
+<span class="math math-display">\[
+Y=X_1\widetilde\times X_2\hookrightarrow X_1\times X_M.  \tag{1.3}
+\]</span>
+This is a closed immersion on the full parameter functors, not merely an injection on complex points. Thus <span class="math">\(Y\)</span> is projective and <span class="math">\(m\)</span> is proper.</p>
+<p>The endpoint description explains uniqueness. For any two endpoints, choose a formal frame of the first torsor and apply its inverse to the second endpoint. Another frame changes the relative endpoint by precisely the contraction relation above. This gives inverse maps between the full twisted product and the two-endpoint functor. Condition (1.2) cuts out its relative-support subfunctor.</p>
+<p>For finite descent, take <span class="math">\(n\ge\max(1,2N_2)\)</span>. The all-ring calculation of Lesson 6, §1, makes <span class="math">\(K_n\)</span> act trivially on <span class="math">\(X_2\)</span>. Let <span class="math">\(E_n\to X_1\)</span> be the torsor of frames of the universal disc torsor modulo <span class="math">\(t^n\)</span>. Its étale charts are <span class="math">\(U\times J_nG\)</span>, so it is a finite-type smooth torsor. Its dimension over <span class="math">\(X_1\)</span> is
+<span class="math math-display">\[
+e_n=\dim J_nG=n\dim G.
+\]</span>
+Truncated frames lift formally on affine charts, and two lifts differ by <span class="math">\(K_n\)</span>. Therefore
+<span class="math math-display">\[
+Y=E_n\times^{J_nG}X_2,
+\qquad q:E_n\times X_2\longrightarrow Y                 \tag{1.4}
+\]</span>
+is a smooth torsor of relative dimension <span class="math">\(e_n\)</span>. Increasing the frame level gives the same associated scheme: this is the identity in every formal frame chart, hence descends.</p>
+<h2 id="2-the-twisted-external-product-and-its-shifts">2. The twisted external product and its shifts</h2>
+<p>Over a field, <span class="math">\(P\boxtimes Q\)</span> is perverse when <span class="math">\(P,Q\)</span> are perverse. We recall the proof needed here. Tensor product is exact on stalk vector spaces, and
+<span class="math math-display">\[
+\mathcal H^k(P\boxtimes Q)
+ =\bigoplus_{a+b=k}\mathcal H^a(P)\boxtimes\mathcal H^b(Q).
+\]</span>
+The support dimension of each term is at most <span class="math">\(-a-b=-k\)</span>. This proves the upper perverse bound. Proper-support base change and projection formula give compact-support Künneth on product neighbourhoods: first integrate along one projection, then along the other. The finite-dimensional local pairing with the dualizing complexes consequently gives
+<span class="math">\(D(P\boxtimes Q)=DP\boxtimes DQ\)</span>.
+The same upper bound for <span class="math">\(DP,DQ\)</span> proves the lower bound. These are the explicit maps of the constructible-complexes lesson, H.1–H.6 and J.</p>
+<p>Let <span class="math">\(P,Q\)</span> be Satake-heart objects on <span class="math">\(X_1,X_2\)</span>, and let
+<span class="math">\(\pi:E_n\times X_2\to X_1\times X_2\)</span>.
+The complex
+<span class="math math-display">\[
+\pi^*(P\boxtimes Q)[e_n]
+\]</span>
+is perverse. Equivariance of <span class="math">\(Q\)</span> supplies its descent for the contraction action. Torsor descent, Lemma B.2, gives a unique perverse object <span class="math">\(P\widetilde\boxtimes Q\)</span> with
+<span class="math math-display">\[
+q^*(P\widetilde\boxtimes Q)[e_n]
+ \simeq\pi^*(P\boxtimes Q)[e_n].                         \tag{2.1}
+\]</span>
+The two shifts cancel. In a formal frame chart the descended complex is <span class="math">\(P|_U\boxtimes Q\)</span>, with no extra shift. A higher frame level pulls back both sides of (2.1); connected-fibre full faithfulness and the normalized descent identify them canonically. Closed enlargement of either support extends the corresponding twisted sheaf by zero.</p>
+<p>Smooth duality applied to the equally normalized pullbacks in (2.1) gives
+<span class="math math-display">\[
+D(P\widetilde\boxtimes Q)
+ \simeq DP\widetilde\boxtimes DQ.                       \tag{2.2}
+\]</span>
+Define the derived convolution by
+<span class="math math-display">\[
+P*Q=Rm_*(P\widetilde\boxtimes Q).                       \tag{2.3}
+\]</span>
+We next prove that this is in the heart.</p>
+<h2 id="3-the-image-of-each-source-stratum-closure">3. The image of each source-stratum closure</h2>
+<p>The source strata are
+<span class="math math-display">\[
+T_{\alpha,\beta}=O_\alpha\widetilde\times O_\beta.
+\]</span>
+They are smooth and irreducible, of dimension <span class="math">\(d_\alpha+d_\beta\)</span>. Indeed on the finite frame torsor they are products of the two smooth irreducible orbits. Their reduced closures are
+<span class="math math-display">\[
+Y_{\alpha,\beta}=Z_\alpha\widetilde\times Z_\beta.
+\]</span>
+The latter is reduced and irreducible after the same smooth faithfully flat pullback, and its indicated open stratum is dense. The closure contains exactly the strata with <span class="math">\(\gamma\le\alpha\)</span> and <span class="math">\(\eta\le\beta\)</span>. These finitely many closure relations give a closed filtration by any order placing smaller pairs first.</p>
+<p>We prove
+<span class="math math-display">\[
+m(Y_{\alpha,\beta})=Z_{\alpha+\beta}.                   \tag{3.1}
+\]</span>
+Use the actual representations constructed in the orbit lesson's upper-bound proof, equation (3.8). Their largest weights are <span class="math">\(\chi_i=c_i\omega_i\)</span>, with <span class="math">\(c_i&gt;0\)</span>. If <span class="math">\(gK\in Z_\alpha\)</span>, that proof gives
+<span class="math math-display">\[
+\rho_i(g^{-1})V_{i,O}
+ \subset t^{-\langle\chi_i,\alpha\rangle}V_{i,O}.
+\]</span>
+Compose this bound with the one for <span class="math">\(hK\in Z_\beta\)</span>. Since <span class="math">\((gh)^{-1}=h^{-1}g^{-1}\)</span>, an endpoint of dominant type <span class="math">\(\delta\)</span> satisfies
+<span class="math math-display">\[
+\langle\chi_i,\delta\rangle
+ \le\langle\chi_i,\alpha+\beta\rangle\quad\text{for every }i.
+\]</span>
+The orbit lesson, §5, constructs the loop-group homomorphism <span class="math">\(\kappa\)</span>, proves <span class="math">\(\kappa(K)=0\)</span>, and proves additivity by multiplying its torus-kernel lifts. Hence <span class="math">\(\alpha+\beta-\delta\in\mathbb Z\Phi^\vee\)</span>. Write it as <span class="math">\(\sum_i a_i\alpha_i^\vee\)</span>. The displayed inequalities say <span class="math">\(c_i a_i\ge0\)</span>, so all integral <span class="math">\(a_i\ge0\)</span>. Thus <span class="math">\(\delta\le\alpha+\beta\)</span>.</p>
+<p>This proves the upper containment on complex points. Reducedness makes the morphism factor through the reduced closed target: a pulled-back defining function vanishes at every closed point and is zero on a reduced finite-type complex scheme. Conversely <span class="math">\([t^\alpha,t^\beta]\)</span> maps to <span class="math">\(t^{\alpha+\beta}\)</span>. The image of the projective source is closed and <span class="math">\(K\)</span>-stable; it contains that orbit and its closure. This proves (3.1). In particular its image dimension is <span class="math">\(d_\alpha+d_\beta\)</span>.</p>
+<h2 id="4-the-fibre-estimate-on-every-stratum">4. The fibre estimate on every stratum</h2>
+<p>Fix an endpoint in <span class="math">\(O_{\nu^+}\)</span>. Equivariance lets us represent it by <span class="math">\(t^\nu\)</span>, with <span class="math">\(\nu\)</span> antidominant. Then <span class="math">\(d_{\nu^+}=-\langle2\rho,\nu\rangle\)</span>. The closed fibre in <span class="math">\(Y_{\alpha,\beta}\)</span> is
+<span class="math math-display">\[
+F_\nu=m^{-1}(t^\nu)\cap Y_{\alpha,\beta}.
+\]</span>
+The endpoint immersion (1.3) identifies its reduced space with a closed <span class="math">\(T\)</span>-stable subset of <span class="math">\(Z_\alpha\)</span>.</p>
+<p>Partition it by the finitely many semi-infinite strata <span class="math">\(S_\phi\)</span> meeting <span class="math">\(Z_\alpha\)</span>. The explicit dominant-cocharacter contraction of the weight-functor lesson, equation (7.1), implies
+<span class="math math-display">\[
+F_\nu\cap S_\phi\ne\varnothing\quad\Longrightarrow\quad t^\phi\in F_\nu.
+\]</span>
+Closedness and torus stability keep the contraction inside the fibre. At this fixed point the second relative modification is <span class="math">\(t^{\nu-\phi}\in Z_\beta\)</span>. Its semi-infinite dimension is nonnegative, so
+<span class="math math-display">\[
+\langle\rho,\beta+\nu-\phi\rangle\ge0.
+\]</span>
+The proved dimension theorem also gives
+<span class="math math-display">\[
+\dim(F_\nu\cap S_\phi)
+ \le\langle\rho,\alpha+\phi\rangle
+ \le\langle\rho,\alpha+\beta+\nu\rangle.
+\]</span>
+Take the maximum over the finite partition. We obtain
+<span class="math math-display">\[
+2\dim F_\nu
+ \le d_\alpha+d_\beta-d_{\nu^+}.                         \tag{4.1}
+\]</span>
+Every dimension here is the dimension of the reduced fibre. The same inequality bounds its intersection with the open source stratum. It holds for every pair <span class="math">\((\alpha,\beta)\)</span>, including boundary strata; no dual-group interpretation of the indices is used.</p>
+<p>Over each target orbit, the smooth finite-jet orbit map admits étale local sections. Such a section <span class="math">\(\sigma\)</span> identifies the inverse image with the product of the orbit chart and its fibre, by <span class="math">\((x,z)\mapsto\sigma(x)z\)</span>; its inverse uses <span class="math">\(\sigma(x)^{-1}\)</span>. It preserves all source strata. Thus (4.1), together with the proper source-stratum closures and (3.1), is stratified semismallness. If Whitney strata are required, they are the orbit strata themselves: generic Whitney regularity is proved in the constructible-complexes lesson, K.5; its bad set for an incident pair is invariant under the transitive finite-jet action on the lower orbit, so one good point makes every point good. On source frame charts the stratification is a product of these orbit stratifications. Product and analytic étale coordinates preserve the tangent and secant conditions.</p>
+<h2 id="5-convolution-is-perverse-and-exact">5. Convolution is perverse and exact</h2>
+<p>Put <span class="math">\(A=P\widetilde\boxtimes Q\)</span>. On <span class="math">\(T_{\alpha,\beta}\)</span>, local frame charts and the orbit bounds for <span class="math">\(P,Q\)</span> give locally constant cohomology only in degrees
+<span class="math math-display">\[
+b\le-d_\alpha-d_\beta.
+\]</span>
+At <span class="math">\(x\in O_\delta\)</span>, intersect the fibre with each source stratum. Each piece has compact-support cohomological dimension at most twice its dimension, by the proved bound of the constructible-complexes lesson, F.1–F.2. Ordinary truncation triangles therefore put its total compact cohomology in degrees at most
+<span class="math math-display">\[
+2\dim(F_x\cap T_{\alpha,\beta})-d_\alpha-d_\beta
+ \le-d_\delta.                                          \tag{5.1}
+\]</span>
+Use compact cohomology on these pieces, which need not be proper. Intersect the finite closed source filtration with the whole fibre and apply compact-support localization successively. It preserves (5.1). The whole fibre is proper, so only at this last step does compact cohomology equal ordinary cohomology. Proper base change proves the upper perverse bound for <span class="math">\(Rm_*A\)</span>.</p>
+<p>Apply exactly the same argument to <span class="math">\(DP,DQ\)</span>. Equations (2.2) and proper duality give
+<span class="math math-display">\[
+D(P*Q)=DP*DQ.                                           \tag{5.2}
+\]</span>
+Their upper bound is the lower perverse bound for <span class="math">\(P*Q\)</span>. Thus convolution is perverse.</p>
+<p>It is spherical. The left integral action on the first frame commutes with the right contraction action. This construction is finite: a level <span class="math">\(\ell\ge n+2N_1\)</span> acts trivially on the truncated first frame, since conjugating a matrix congruence by its frame loses at most <span class="math">\(2N_1\)</span> powers of <span class="math">\(t\)</span>. Enlarge <span class="math">\(\ell\)</span> to fix the endpoint bound too. The action therefore descends at finite jet level through (2.1), and proper base change gives its normalized action on the pushforward.</p>
+<p>External tensor product over the field, descent, and proper derived image preserve triangles. Since the convolution of every pair of heart objects is in the heart, a short exact sequence in either argument gives a short exact convolution sequence by its heart long exact sequence. Convolution is exact in each variable. Enlarging supports or jet levels gives the canonical same object, as in §2.</p>
+<h2 id="6-unit-associativity-and-the-highest-constituent">6. Unit, associativity, and the highest constituent</h2>
+<p>The unit is <span class="math">\(\mathbf1=IC_0=\delta_K\)</span>, in degree zero. With either relative modification fixed at the base point, the relevant correspondence is the identity correspondence on the other support. Its descended sheaf is that other object, with no added shift. Hence <span class="math">\(\mathbf1*P=P=P*\mathbf1\)</span>, with the natural identifications.</p>
+<p>For associativity take chains of three modifications. The successive lattice bounds are <span class="math">\(N_1,N_1+N_2,N_1+N_2+N_3\)</span>. Impose the relative-position closed conditions by the same frame-chart ideal descent as in (1.2). This is a projective correspondence. Descend the threefold external product on a common finite frame cover. Proper base change and projection formula identify both parenthesizations with its proper image under the last-endpoint map: on a frame chart this is just integration first in one factor and then in the other, and the composition isomorphism identifies it with integration in both. The descent maps agree on overlaps by their normalized uniqueness. The four-modification correspondence proves the pentagon, since both composites pull back to the same external-product associativity map. The identity correspondences likewise prove the unit triangles. We have constructed an exact monoidal heart.</p>
+<p>There is one unconditional multiplicity assertion even while general semisimplicity remains unproved. The simple <span class="math">\(IC_{\alpha+\beta}\)</span> occurs exactly once as a composition factor of <span class="math">\(IC_\alpha*IC_\beta\)</span>. Indeed (4.1) makes its fibre over the largest orbit zero dimensional. It is a finite closed torus-stable set, so every point is fixed and has first endpoint <span class="math">\(t^\phi\)</span>. Its two nonnegative height quantities sum to zero:
+<span class="math math-display">\[
+\rho(\alpha+\phi)+\rho(\beta+\nu-\phi)=0,
+\qquad\nu=w_0(\alpha+\beta).
+\]</span>
+Each is therefore zero. If the dominant representative of <span class="math">\(\phi\)</span> is <span class="math">\(\gamma\le\alpha\)</span>, then
+<span class="math">\(\rho(\alpha+\phi)\ge\rho(\alpha-\gamma)\ge0\)</span>.
+Equality forces <span class="math">\(\gamma=\alpha\)</span> and <span class="math">\(\phi=w_0\alpha\)</span>. For the second assertion, reflect a Weyl-orbit point with positive simple-root pairing: reflection decreases its <span class="math">\(\rho\)</span>-value by that positive pairing. The unique minimum is the antidominant point. The second relative endpoint is similarly <span class="math">\(t^{w_0\beta}\)</span>. The two-endpoint immersion makes this a unique fibre point, and it lies in the open source stratum. Thus the convolution restricts to the constant rank-one system shifted by <span class="math">\(d_{\alpha+\beta}\)</span>. Open restriction is exact on the perverse heart; all lower-support simples restrict to zero. Its rank-one restriction consequently gives exactly one largest simple constituent. This argument alone does not assert a direct-summand splitting.</p>
+<h2 id="7-inversion-on-finite-frames">7. Inversion on finite frames</h2>
+<p>Inversion of a right coset is a left coset. We construct the required operation using frames, where inversion is an actual morphism.</p>
+<p>Let <span class="math">\(X_N\)</span> be an inversion-stable bounded lattice stage, and take <span class="math">\(n&gt;2N+1\)</span>. The inverse of a matrix whose lattice has bound <span class="math">\(N\)</span> has the same bound: apply its inverse to the two lattice inclusions. Let
+<span class="math math-display">\[
+E_n=(LG|_{X_N})/K_n,\qquad p:E_n\to X_N.
+\]</span>
+There is a second map
+<span class="math math-display">\[
+f:E_n\to X_N,\qquad[g]\mapsto g^{-1}K.                  \tag{7.1}
+\]</span>
+If <span class="math">\(g\)</span> is replaced by <span class="math">\(ga\)</span>, <span class="math">\(a\in K_n\)</span>, its inverse endpoint is multiplied on the left by <span class="math">\(a^{-1}\)</span>. This congruence group fixes the whole bounded stage, so (7.1) is well-defined over every parameter algebra. Frame-chart descent makes it a scheme morphism.</p>
+<p>We prove that both <span class="math">\(p,f\)</span> are smooth with connected fibres of dimension <span class="math">\(e_n=n\dim G\)</span>. This is already known for <span class="math">\(p\)</span>. On an étale target frame chart choose <span class="math">\(h\)</span>, set <span class="math">\(\ell=n+2N\)</span>, and write
+<span class="math math-display">\[
+f^{-1}(U)=K/(h^{-1}K_nh)=J_\ell G/H,
+\qquad H=(h^{-1}K_nh)/K_\ell.                            \tag{7.2}
+\]</span>
+Indeed an inverse endpoint <span class="math">\(hK\)</span> has a frame <span class="math">\(a h^{-1}\)</span>, <span class="math">\(a\in K\)</span>, and changing the original right frame is the displayed conjugate subgroup. Matrix bounds give
+<span class="math math-display">\[
+K_\ell\subset h^{-1}K_nh\subset K_1.
+\]</span>
+All formulas here are relative to <span class="math">\(U\)</span>.</p>
+<p>Here is an all-base polynomial exponential calculation. For <span class="math">\(1\le a&lt;r\)</span>, Lemma 1.1 of Lesson 6 makes <span class="math">\(U_{a,r}=K_a/K_r\)</span> smooth and connected, of dimension <span class="math">\((r-a)\dim G\)</span>, with Lie algebra <span class="math">\(t^a\mathfrak g[t]/t^r\mathfrak g[t]\)</span>. Finite matrix exponential and logarithm are inverse polynomial maps on the nilpotent matrix ideal modulo <span class="math">\(t^r\)</span>. For <span class="math">\(u\in U_{a,r}(\mathbb C)\)</span>, the curve <span class="math">\(z\mapsto\exp(z\log u)\)</span> belongs to <span class="math">\(U_{a,r}\)</span>: every defining equation vanishes at every nonnegative integer <span class="math">\(z=m\)</span>, where the value is <span class="math">\(u^m\)</span>, so vanishes identically. Differentiating at zero gives <span class="math">\(\log u\in\operatorname{Lie}U_{a,r}\)</span>. Since <span class="math">\(U_{a,r}\)</span> is reduced, this inclusion holds schematically. Its logarithmic image is closed and reduced and has the full dimension of the irreducible Lie-algebra affine space, so equals that space. This proves a scheme isomorphism and hence inverse coordinates over every complex algebra, including nonreduced and nonnoetherian algebras. Compatible truncations give the formal coordinates. The transported group law is truncated BCH, generally not addition; conjugation commutes with these coordinates.</p>
+<p>In these coordinates <span class="math">\(H\)</span> is the subbundle
+<span class="math math-display">\[
+t^n\operatorname{Ad}(h^{-1})\mathfrak g[[t]]
+ /t^\ell\mathfrak g[[t]].                              \tag{7.3}
+\]</span>
+Write <span class="math">\(M=t^n\operatorname{Ad}(h^{-1})\mathfrak g_{R[[t]]}\)</span>. The matrix bounds give <span class="math">\(t^\ell\mathfrak g_{R[[t]]}\subset M\subset t^{n-2N}\mathfrak g_{R[[t]]}\subset t\mathfrak g_{R[[t]]}\)</span>. Integrality can be checked in the faithful matrix representation: the inclusion of <span class="math">\(\mathfrak g\)</span> into its matrix Lie algebra has a complex-linear complement, which remains a complement over <span class="math">\(R\)</span>. The finite-projective lattice-quotient proof of Lesson 2, Lemma 2.1, after changing the ambient lattice basis, makes both <span class="math">\(M/t^\ell\mathfrak g_{R[[t]]}\)</span> and <span class="math">\(t\mathfrak g_{R[[t]]}/M\)</span> finite projective over <span class="math">\(R\)</span>. Thus (7.3) is a vector subbundle; its split finite sequences commute with arbitrary base change. Moreover <span class="math">\(\det\operatorname{Ad}=1\)</span>: torus roots occur in opposite pairs, and the determinant character on a root group is a unit of <span class="math">\(\mathbb C[x]\)</span>, hence constant and equal to one at the identity. The dense big cell proves the scheme identity on <span class="math">\(G\)</span>. Smith reduction on geometric fibres now gives the rank <span class="math">\((\ell-n)\dim G\)</span>. Formal conjugation and exponential identify (7.3) with <span class="math">\(H\)</span> on all test algebras. In particular <span class="math">\(H\)</span> is a smooth closed subgroup with connected fibres, whose underlying scheme is that vector bundle; its group law need not be commutative.</p>
+<p>No quotient-existence assertion is needed. Map <span class="math">\(q:J_\ell G\times U\to f^{-1}(U)\)</span> by <span class="math">\(j\mapsto[kh^{-1}]\)</span>, using any formal lift <span class="math">\(k\)</span> of <span class="math">\(j\)</span>. The affine smooth-lifting proof of Lesson 3, §7.5, supplies lifts. The inclusion <span class="math">\(K_\ell\subset h^{-1}K_nh\)</span> proves independence. Every frame in the target is locally of this form, and multiplication gives
+<span class="math math-display">\[
+(J_\ell G\times U)\times_{f^{-1}(U)}(J_\ell G\times U)
+ =(J_\ell G\times U)\times_U H.
+\]</span>
+Consequently <span class="math">\(q\)</span> is an <span class="math">\(H\)</span>-torsor. It is smooth and surjective: on its fppf trivializing cover this is the assertion for <span class="math">\(H\)</span>; flatness and finite presentation descend, and the smooth-fibre criterion in <a href="../AG-FSE/smooth-morphisms.html">Smooth morphisms</a>, Theorem 3.1, gives smoothness.</p>
+<p>For completeness, the same criterion proves smoothness of <span class="math">\(f^{-1}(U)\to U\)</span>. Flatness and local finite presentation descend through the faithfully flat locally finitely presented source cover <span class="math">\(q\)</span>, by <span class="unlinked">Flat quotient bootstrap over an arbitrary base</span>, Lemma 5.2. On a geometric fibre, <span class="math">\(q\)</span> is smooth of dimension <span class="math">\((\ell-n)\dim G\)</span>, and its source is smooth. At a closed point above a closed target point, the tangent sequence is surjective and has kernel of that dimension; the smooth chart dimension formula gives the identical difference for local dimensions. Hence target tangent dimension equals target local dimension, and the field Jacobian criterion proves that fibre smooth. Theorem 3.1 now applies over <span class="math">\(U\)</span>. Its relative dimension is <span class="math">\(\ell\dim G-(\ell-n)\dim G=e_n\)</span>. Its geometric fibres are connected, being surjective images of connected jet groups. This proves the claim, including after arbitrary base change. The full stage with the symmetric lattice bound is inverse-stable; for a chosen Schubert union the inverse target is its union of types <span class="math">\(-w_0\lambda\)</span>.</p>
+<p>For <span class="math">\(Q\)</span> in the Satake heart, <span class="math">\(f^*Q[e_n]\)</span> is perverse. Its equivariance gives descent for the right frame action. Torsor descent along <span class="math">\(p\)</span> defines <span class="math">\(I(Q)\)</span> by
+<span class="math math-display">\[
+p^*I(Q)[e_n]=f^*Q[e_n].                                \tag{7.4}
+\]</span>
+Left multiplication of frames leaves <span class="math">\(f\)</span> invariant, so the object has the required spherical action. The action factors through a sufficiently large finite jet group by the same congruence-loss bound used in §5. Its support types are <span class="math">\(\lambda^*=-w_0\lambda\)</span>, preserving dimension and closure order. Higher frame levels give canonical comparisons in (7.4).</p>
+<p>For involutivity choose <span class="math">\(n\ge m+2N\)</span>. The map
+<span class="math math-display">\[
+j_{n,m}:E_n\to E_m,\quad[g]\mapsto[g^{-1}]
+\]</span>
+is well-defined because its conjugated frame error lies in <span class="math">\(K_{n-2N}\subset K_m\)</span>. It satisfies <span class="math">\(p_mj_{n,m}=f_n\)</span>, <span class="math">\(f_mj_{n,m}=p_n\)</span>. Pulling (7.4) through these identities gives <span class="math">\(p_n^*I^2Q=p_n^*Q\)</span>. Connected-fibre full faithfulness descends the canonical isomorphism <span class="math">\(I^2Q=Q\)</span>. Equal-dimensional smooth duality in (7.4) likewise gives <span class="math">\(I(DQ)=D(IQ)\)</span>.</p>
+<p>Finally inversion reverses convolution. Pull the two convolution correspondences back to a sufficiently deep frame <span class="math">\(e=[g_0]\)</span> of the whole endpoint. On the correspondence with endpoint <span class="math">\(g_0^{-1}K\)</span>, reverse the chain and translate every endpoint by <span class="math">\(g_0\)</span>. Its new endpoint is <span class="math">\(g_0K\)</span>. The intermediate endpoint <span class="math">\(x\)</span> becomes <span class="math">\(g_0x\)</span>. A deeper frame error fixes every bounded stage, making the construction independent of its representative. Reverse again to get its inverse. On relative frame charts (7.4) identifies the two twisted sheaves with their factors interchanged. Proper base change and normalized descent give
+<span class="math math-display">\[
+I(P*Q)=IQ*IP.                                          \tag{7.5}
+\]</span>
+Reversing a longer chain commutes with either bracketing, so these identifications satisfy associativity coherence. Reversing twice gives the identity. Define
+<span class="math math-display">\[
+Q^\vee=I(DQ).
+\]</span>
+Equations (5.2), (7.4) and (7.5) give <span class="math">\((P*Q)^\vee=Q^\vee*P^\vee\)</span>, <span class="math">\((Q^\vee)^\vee=Q\)</span>, and <span class="math">\(\mathbf1^\vee=\mathbf1\)</span>.</p>
+<h2 id="8-evaluation-coevaluation-and-both-triangles">8. Evaluation, coevaluation and both triangles</h2>
+<p>The fibre of <span class="math">\(m\)</span> over the unit is its first endpoints whose inverse relative modification lies in the second support. On that fibre (7.4) identifies the twisted sheaf with <span class="math">\(P\otimes IQ\)</span>. Extend by zero to a common finite proper stage. Proper base change, structural duality and tensor–Hom adjunction give natural bijections
+<span class="math math-display">\[
+\begin{aligned}
+\operatorname{Hom}(P*Q,\mathbf1)
+&amp;=\operatorname{Hom}(R\Gamma_c(P\otimes IQ),\Lambda)\\
+&amp;=\operatorname{Hom}(P,D(IQ))
+ =\operatorname{Hom}(P,Q^\vee).
+\end{aligned}\tag{8.1}
+\]</span>
+The first equality is adjunction to the closed unit point and its proper fibre. The second is the defining structural trace pairing, followed by tensor–Hom adjunction, on that actual finite stage. Thus it uses the classical operations already proved, with no equivariant-cohomology assertion.</p>
+<p>Let <span class="math">\(\mathrm{ev}_Q:Q^\vee*Q\to\mathbf1\)</span> correspond to <span class="math">\(1_{Q^\vee}\)</span>. Equation (8.1), associativity and (7.5) yield
+<span class="math math-display">\[
+\begin{aligned}
+\operatorname{Hom}(A*Q,C)
+&amp;=\operatorname{Hom}((A*Q)*C^\vee,\mathbf1)\\
+&amp;=\operatorname{Hom}(A*(Q*C^\vee),\mathbf1)\\
+&amp;=\operatorname{Hom}(A,C*Q^\vee).
+\end{aligned}\tag{8.2}
+\]</span>
+So right convolution by <span class="math">\(Q^\vee\)</span> is right adjoint to right convolution by <span class="math">\(Q\)</span>. Let <span class="math">\(\mathrm{coev}_Q:\mathbf1\to Q*Q^\vee\)</span> be its unit at <span class="math">\(\mathbf1\)</span>.</p>
+<p>We check the tensor compatibility of this adjunction, which is needed for actual duality. Adjoining an unchanged first modification to the fibre correspondence of (8.1) tensors its pairing by the first factor. On a common finite frame cover, this follows from projection formula and the composition-counit identity: integration of <span class="math">\(B\otimes r^*F\)</span> gives <span class="math">\(B\otimes Rr_!F\)</span>, and its trace is <span class="math">\(1_B\)</span> tensored with the original trace. The tensor–Hom evaluation acts on those same two relative factors; the extra factor is unchanged. These identities are the adjunction and trace maps constructed in the constructible-complexes lesson, H.1–H.6. Proper base change identifies their frame pullbacks, and faithful descent makes them equal on the correspondence. Thus the bijection (8.2) commutes with left convolution by any <span class="math">\(B\)</span>.</p>
+<p>Apply that compatibility to the identity maps defining the unit and counit. It proves
+<span class="math math-display">\[
+\eta_A=1_A*\mathrm{coev}_Q,\qquad
+\epsilon_C=1_C*\mathrm{ev}_Q.
+\]</span>
+The adjunction triangles are consequently exactly
+<span class="math math-display">\[
+(1_Q*\mathrm{ev}_Q)(\mathrm{coev}_Q*1_Q)=1_Q,
+\qquad
+(\mathrm{ev}_Q*1_{Q^\vee})(1_{Q^\vee}*\mathrm{coev}_Q)=1_{Q^\vee}.
+                                                               \tag{8.3}
+\]</span>
+This proves a right dual. The same argument with left convolution supplies a left dual with the same underlying object. Every Satake-heart object is therefore dualizable. In particular
+<span class="math math-display">\[
+IC_\lambda^\vee=IC_{-w_0\lambda}.
+\]</span>
+No semisimple decomposition was used.</p>
+<h2 id="9-a-natural-monoidal-structure-on-ordinary-cohomology">9. A natural monoidal structure on ordinary cohomology</h2>
+<p>A local twisted-product spectral sequence alone gives a filtration. To obtain the natural tensor isomorphism, use a bounded moving-point family.</p>
+<p>Let <span class="math">\(B=\mathbb A^2\)</span> with ordered points <span class="math">\(a,b\)</span> of the curve <span class="math">\(\mathbb A^1_t\)</span>. Start with <span class="math">\(X_1\times B\)</span>. The first universal modification, with parameter <span class="math">\(t-a\)</span>, gives a bundle on the curve by the moving gluing theorem of Lesson 3, §8. The parameter is monic and hence a nonzerodivisor over every base ring, as required by that proof. Restrict the bundle to the finite disc <span class="math">\((t-b)^n=0\)</span>, and let <span class="math">\(E_n^B\)</span> be its frame torsor. Smooth lifting through the truncated disc gives its étale frame charts. Form
+<span class="math math-display">\[
+\mathcal Y=E_n^B\times^{J_nG}X_2,\qquad\tau:\mathcal Y\to B.
+\]</span>
+It is proper: the bounded Grassmannian and Plücker constructions give a <span class="math">\(J_nG\)</span>-equivariant closed immersion of <span class="math">\(X_2\)</span> into a finite projective representation. Descend that representation through <span class="math">\(E_n^B\)</span>; the associated support is closed in the resulting projective bundle over the proper <span class="math">\(X_1\times B\)</span>.</p>
+<p>Descend <span class="math">\(P\boxtimes\Lambda_B\boxtimes Q\)</span> to <span class="math">\(\mathcal A\)</span>. On the two frame maps of equal relative dimension <span class="math">\(e_n\)</span>, its formula is
+<span class="math math-display">\[
+q^*\mathcal A[e_n]
+ =\pi^*(P\boxtimes\Lambda_B\boxtimes Q)[e_n].             \tag{9.1}
+\]</span>
+Thus <span class="math">\(\mathcal A[2]\)</span> is perverse on the total family, and its fibre has the original convolution normalization. Off the diagonal, the first modification is canonically trivial at the disc around <span class="math">\(b\)</span>, so
+<span class="math math-display">\[
+(\mathcal Y,\mathcal A)|_{a\ne b}
+ =(X_1\times X_2,P\boxtimes Q)\times\{a\ne b\}.          \tag{9.2}
+\]</span>
+On the diagonal it is the local twisted product with its twisted sheaf.</p>
+<p>The total source strata are pairs of relative orbit indices. Étale frame charts make their stratification a product of the fixed first orbit stratification, the smooth base, and the second orbit stratification. It is Whitney by the product argument of §4, and each stratum is smooth over <span class="math">\(B\)</span>. The actual proper stratified-submersion proof in the constructible-complexes lesson, I.6, gives a local stratum-preserving product over every base ball, including balls meeting the diagonal. The contractible-parameter descent of Lesson 6, equation (2.4), descends the complex as well as its cohomology systems: its proof descends all attaching maps by full faithfulness. Therefore every <span class="math">\(R^k\tau_*\mathcal A\)</span> is a local system on all of <span class="math">\(\mathbb A^2\)</span>.</p>
+<p>This base is simply connected, by straight-line contraction. Parallel transport between its fibres is canonical. Using (9.2), ordinary field Künneth, and the diagonal fibre gives
+<span class="math math-display">\[
+H^k(P*Q)=\bigoplus_{r+s=k}H^r(P)\otimes H^s(Q).          \tag{9.3}
+\]</span>
+Proper composition identifies the diagonal-source cohomology with the convolution cohomology. All the maps are natural in both sheaves. Increasing stages or frame levels restricts the same maps and hence gives the same identification. The analogous three-point proper family over <span class="math">\(\mathbb A^3\)</span> proves associativity compatibility: both binary comparisons are transport of the same threefold Künneth map from the distinct-point locus. Path independence on this contractible base identifies them. The unit family gives unit compatibility. Thus total ordinary cohomology is an exact faithful strong monoidal functor.</p>
+<p>Equation (9.3) retains its ordinary grading. Permuting tensor factors in cohomology carries the usual Koszul signs. An ordinary symmetric-vector-space constraint requires the fusion construction and its parity adjustment; neither is inferred from associativity alone.</p>
+<h2 id="10-minuscule-rank-two-convolutions">10. Minuscule rank-two convolutions</h2>
+<p>Take <span class="math">\(G=\operatorname{GL}_2\)</span>, <span class="math">\(P=IC_{(1,0)}=\Lambda_{\mathbb P^1}[1]\)</span>. Its double correspondence parametrizes
+<span class="math math-display">\[
+O^2=L_0\supset L_1\supset L_2,\qquad
+\operatorname{length}(L_0/L_1)=\operatorname{length}(L_1/L_2)=1,
+\quad tL_i\subset L_{i+1}.
+\]</span>
+The first lattice is determined by a line <span class="math">\(\ell\subset\mathbb C^2\)</span>. Over its projective line let <span class="math">\(S=\mathcal O(-1)\)</span> and <span class="math">\(W=\mathbb C^2/S=\mathcal O(1)\)</span>. Constant and first-order coefficients give the direct decomposition
+<span class="math math-display">\[
+L_1/tL_1=S\oplus tW.
+\]</span>
+Thus the chain surface is <span class="math">\(\mathbb P(S\oplus W)=\mathbb F_2\)</span>. The central endpoint <span class="math">\(L_2=tO^2\)</span> gives the section <span class="math">\(W\)</span>, whose normal bundle is <span class="math">\(\operatorname{Hom}(W,S)=\mathcal O(-2)\)</span>. Every other endpoint has type <span class="math">\((2,0)\)</span>, and its first lattice is uniquely <span class="math">\(L_1=L_2+tO^2\)</span>.</p>
+<p>This is the cone resolution of Lesson 6, §8.1. To see the incidence map in coordinates, choose <span class="math">\(\ell=\langle(u,v)\rangle\)</span> and a complementary vector <span class="math">\(q\)</span> of determinant one. The lattice is generated modulo <span class="math">\(t^2O^2\)</span> by <span class="math">\(t\ell\)</span> and <span class="math">\(b\ell+w tq\)</span>. Expanding their Plücker wedge gives the cone coordinates <span class="math">\([bu^2:buv:bv^2:w]\)</span>. Hence the first line is the resolution's conic direction, the central section is its exceptional curve, and the morphism is exactly the displayed incidence resolution.</p>
+<p>The twisted sheaf on this smooth surface is <span class="math">\(\Lambda[2]\)</span>. Its endpoint fibres and semismall inequalities are:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint type</th>
+<th style="text-align:right">Orbit dimension</th>
+<th>Fibre</th>
+<th style="text-align:right">Twice the fibre dimension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math">\((2,0)\)</span></td>
+<td style="text-align:right">2</td>
+<td>point</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><span class="math">\((1,1)\)</span></td>
+<td style="text-align:right">0</td>
+<td><span class="math">\(\mathbb P^1\)</span></td>
+<td style="text-align:right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Let <span class="math">\(Q\)</span> be its pushforward. The explicit relative disc-bundle pairing of Lesson 6, equation (8.2), gives maps <span class="math">\(u:\delta\to Q\)</span> and <span class="math">\(v:Q\to\delta\)</span> with <span class="math">\(vu=-2\)</span>. Characteristic zero makes <span class="math">\(-2\)</span> invertible, so <span class="math">\((-1/2)v\)</span> retracts <span class="math">\(u\)</span>. Split off this point summand in the perverse heart. The complement has vertex stalk only in degree <span class="math">\(-2\)</span>, vertex costalk only in degree <span class="math">\(2\)</span>, and open restriction <span class="math">\(\Lambda[2]\)</span>. Its strict point bounds identify it as the IC. Therefore
+<span class="math math-display">\[
+IC_{(1,0)}*IC_{(1,0)}=IC_{(2,0)}\oplus IC_{(1,1)}.        \tag{10.1}
+\]</span>
+This decomposition has been constructed directly.</p>
+<p>A central point sheaf acts by translating every lattice, as follows from the identity correspondence with a scalar frame. Translate the second factor by <span class="math">\((-1,-1)\)</span>. Associativity and (10.1) give
+<span class="math math-display">\[
+IC_{(1,0)}*IC_{(0,-1)}=IC_{(1,-1)}\oplus IC_0.           \tag{10.2}
+\]</span>
+Its fibre over <span class="math">\(O^2\)</span> is exactly the projective line of first lattices.</p>
+<p>For <span class="math">\(\operatorname{PGL}_2\)</span>, let <span class="math">\(\omega^\vee\)</span> be the primitive positive coweight. Determinant normalization identifies the two minuscule chains with the same <span class="math">\(\mathbb F_2\)</span> correspondence on complex points. The forward projected-frame morphism is continuous, and the source and target proper chain spaces have those same endpoints and unique normalized lattice representatives. The compact-to-Hausdorff argument of Lesson 6, §7.3, therefore identifies their analytic spaces and strata. The same resolution and pairing prove
+<span class="math math-display">\[
+IC_{\omega^\vee}*IC_{\omega^\vee}=IC_{2\omega^\vee}\oplus IC_0.
+                                                               \tag{10.3}
+\]</span>
+The two factors belong to the odd component and their convolution to the even component. Its cohomology has dimensions <span class="math">\(1,2,1\)</span> in degrees <span class="math">\(-2,0,2\)</span>, from the two generators of the minuscule cohomology in degrees <span class="math">\(-1,1\)</span>. With characteristic-two coefficients the pairing scalar vanishes and these splitting arguments do not apply; the nonsplit object is calculated explicitly in Lesson 6.</p>
+<h2 id="11-exercises-with-solutions">11. Exercises with solutions</h2>
+<p><strong>Exercise 11.1 (easy).</strong> Compute the fibre over the unit in (10.2).</p>
+<p><em>Solution.</em> The last lattice is <span class="math">\(O^2\)</span>. Choosing the first lattice amounts to choosing its one-dimensional quotient direction, equivalently a line <span class="math">\(\ell\subset O^2/tO^2\)</span>. The second relative modification is forced by the two endpoints. Thus the fibre functor is the ordinary line Grassmannian <span class="math">\(\mathbb P^1\)</span>, with its reduced structure; the endpoint embedding rules out any extra choice. Its dimension one makes (4.1) an equality, since both source orbit dimensions are one and the target orbit is a point. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 11.2 (easy).</strong> Check the unit and its normalization directly on a frame chart.</p>
+<p><em>Solution.</em> If the first support is the base point, its frame torsor is <span class="math">\(J_nG\)</span>, and its associated product with the second support is that support. Formula (2.1) has the same shift <span class="math">\([e_n]\)</span> on both sides, so the descended sheaf is <span class="math">\(Q\)</span>. If the second support is the base point, each second relative endpoint is the first endpoint, the correspondence is <span class="math">\(X_1\)</span>, and the descended sheaf is <span class="math">\(P\)</span>. Proper image under each identity map gives the unit isomorphism. Their compositions on a three-modification chart are the identity, proving the unit triangle. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 11.3 (medium).</strong> Prove the fibre estimate for the two minuscule <span class="math">\(\operatorname{GL}_2\)</span> factors without the general theorem.</p>
+<p><em>Solution.</em> A length-two quotient <span class="math">\(O^2/L_2\)</span> has Smith type <span class="math">\((2,0)\)</span> or <span class="math">\((1,1)\)</span>. In the first case it is cyclic of length two and has a unique length-one submodule, so the intermediate lattice is unique. In the second case <span class="math">\(L_2=tO^2\)</span>, and every line of <span class="math">\(O^2/tO^2\)</span> is an intermediate lattice. The fibres have dimensions zero and one. The source has dimension two, while the respective target orbits have dimensions two and zero. Hence twice each fibre dimension equals source dimension minus target-orbit dimension. Translation gives the same calculation for the inverse minuscule second factor. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 11.4 (medium).</strong> Derive the <span class="math">\(\operatorname{PGL}_2\)</span> decomposition from its actual fibres and their local pairing.</p>
+<p><em>Solution.</em> The normalized minuscule chain surface is <span class="math">\(\mathbb F_2\)</span>, with a point fibre over the open type-two orbit and <span class="math">\(\mathbb P^1\)</span> over the unit. Its constant shifted pushforward is perverse by those stalk and relative cochain bounds. The maps from and to the unit have one-dimensional Hom spaces. Their composite is the exceptional normal Euler number <span class="math">\(-2\)</span>, calculated from <span class="math">\(\mathcal O(-2)\)</span>. Scale the second map to obtain a retraction. The remaining summand has open constant rank one and strict point stalk/costalk bounds, hence is <span class="math">\(IC_{2\omega^\vee}\)</span>. The split point summand is <span class="math">\(IC_0\)</span>, proving (10.3). No dimension-only decomposition argument is needed. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 11.5 (hard).</strong> Construct the dual of an arbitrary classical Satake-heart object and verify both triangle identities, keeping inversion off the right-coset space.</p>
+<p><em>Solution.</em> Use the finite frame scheme and its two maps <span class="math">\(p([g])=gK\)</span>, <span class="math">\(f([g])=g^{-1}K\)</span>. Section 7 proves their smooth connected relative dimension <span class="math">\(e_n\)</span>. Descend <span class="math">\(f^*DQ[e_n]\)</span> along <span class="math">\(p\)</span> to obtain <span class="math">\(Q^\vee=I(DQ)\)</span>. Endpoint-framed chain reversal gives the contravariant monoidal involution. The proper unit fibre identifies <span class="math">\(\operatorname{Hom}(P*Q,\mathbf1)\)</span> with <span class="math">\(\operatorname{Hom}(P,Q^\vee)\)</span>, by the explicit structural trace and tensor–Hom adjunction. Its identity defines evaluation; the derived bijection (8.2) defines right-convolution adjunction and coevaluation at the unit. Projection formula with an unchanged first modification gives <span class="math">\(\eta_A=1_A*\mathrm{coev}\)</span> and <span class="math">\(\epsilon_C=1_C*\mathrm{ev}\)</span>, as proved in §8. Substituting these into the two adjunction triangles gives exactly (8.3). Left convolution gives the left dual as well. Every construction lies in a finite scheme or finite frame torsor. <span class="math">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>I. Mirković and K. Vilonen, <a href="https://arxiv.org/abs/math/0401222v5"><em>Geometric Langlands duality and representations of algebraic groups over commutative rings</em></a>, free corrected preprint, §§4–6.</li>
+<li>X. Zhu, <a href="https://arxiv.org/abs/1603.05593v2"><em>An introduction to affine Grassmannians and the geometric Satake equivalence</em></a>, free lecture notes, §5.1.</li>
+<li>L. Fargues and P. Scholze, <a href="https://arxiv.org/abs/2102.13459"><em>Geometrization of the local Langlands correspondence</em></a>, free preprint, Proposition VI.8.2, for comparison with the dualizability statement in its different geometric setting. The classical construction and both triangles are proved above.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-07.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

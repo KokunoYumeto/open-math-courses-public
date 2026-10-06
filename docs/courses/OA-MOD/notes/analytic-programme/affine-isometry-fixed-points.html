@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A written fixed-point proof for affine isometries · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/analytic-programme/affine-isometry-fixed-points.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="a-written-fixed-point-proof-for-affine-isometries">A written fixed-point proof for affine isometries</h1>
+<p><strong>Programme proof selection, CC0-1.0.</strong></p>
+<p>This note retains Sections 1–5 of the earlier programme lesson <em>Weakly compact convex sets and fixed points</em>, with exact local prerequisite links and two explicit topology details. It proves the full group-of-affine-isometries theorem needed by VT10, including uncountable groups and nonseparable Banach spaces.</p>
+<p>The earlier written inputs are <a href="../real-coercivity/predual-prerequisites.html">NP1–NP2: Hahn–Banach, norming, strict separation and equality of convex closures</a>, <a href="../../OA-MOD-AB.html#OA-MOD-AB-02">AB02: completeness of the dual</a>, and <a href="../../OA-MOD-AB.html#OA-MOD-AB-03">AB03: uniform boundedness</a>. Finite products of compact spaces and the needed subnet compactness are proved in <a href="../../OA-MOD-AB.html#OA-MOD-AB-04">AB04</a>. The maximal principle and real-number completeness are foundational assumptions. The category and extreme-point assertions are proved below.</p>
+<p>The free human comparison is Jacob Lurie's <a href="https://www.math.ias.edu/~lurie/261ynotes/lecture26.pdf"><em>Math 261y, Lecture 26</em>, Theorem 1, Proposition 2 and Lemma 3, pages 1–3</a>. The retained proof specifies affine actions, proves its auxiliary compact-face claims, and keeps the coefficient of the large set at least the positive threshold inside the retained subset. This corrects the mismatched inequality in part (ii) on page 3 of the notes. No conclusion below is supplied by a citation alone.</p>
+<h2 id="1-compactness-faces-and-extreme-points">1. Compactness, faces and extreme points</h2>
+<p>A weakly compact subset of a Banach space is norm bounded. Indeed every <span class="math" data-tex="\(f\in X^*\)">\(f\in X^*\)</span> is bounded on that compact set. Apply uniform boundedness to its canonical images in <span class="math" data-tex="\((X^*)^*\)">\((X^*)^*\)</span>; their operator norms are their original norms.</p>
+<p>We will use the category property of a compact Hausdorff space <span class="math" data-tex="\(Z\)">\(Z\)</span>: if <span class="math" data-tex="\(Z\)">\(Z\)</span> is nonempty and is a countable union of closed sets, one of them has nonempty interior. Here is the argument. If closed sets <span class="math" data-tex="\(D_n\)">\(D_n\)</span> all had empty interior, begin with a nonempty open set and successively choose nonempty open sets <span class="math" data-tex="\(V_n\)">\(V_n\)</span> such that
+<span class="math math-display" data-tex="\[
+\overline V_n\subseteq V_{n-1}\setminus D_n.
+\tag{1.1}
+\]">\[
+\overline V_n\subseteq V_{n-1}\setminus D_n.
+\tag{1.1}
+\]</span>
+Regularity of a compact Hausdorff space allows these choices. The nonempty compact sets <span class="math" data-tex="\(\overline V_n\)">\(\overline V_n\)</span> are nested, so their intersection is nonempty. A point in it lies in none of the <span class="math" data-tex="\(D_n\)">\(D_n\)</span>, contradicting the proposed covering.</p>
+<p>The regularity used here has a short compactness proof. If <span class="math" data-tex="\(z\)">\(z\)</span> lies in an open set <span class="math" data-tex="\(O\subseteq Z\)">\(O\subseteq Z\)</span>, separate <span class="math" data-tex="\(z\)">\(z\)</span> from each point of the compact set <span class="math" data-tex="\(Z\setminus O\)">\(Z\setminus O\)</span> by disjoint open neighborhoods. Finitely many of the latter neighborhoods cover that compact set. The intersection <span class="math" data-tex="\(V\)">\(V\)</span> of the corresponding neighborhoods of <span class="math" data-tex="\(z\)">\(z\)</span> has closure disjoint from their union, and hence <span class="math" data-tex="\(\overline V\subseteq O\)">\(\overline V\subseteq O\)</span>. This supplies the choices in (1.1).</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a nonempty compact convex set in a Hausdorff locally convex space. A <strong>face</strong> of <span class="math" data-tex="\(K\)">\(K\)</span> is a convex subset <span class="math" data-tex="\(F\)">\(F\)</span> with the following property: if a point of an open segment between two points of <span class="math" data-tex="\(K\)">\(K\)</span> lies in <span class="math" data-tex="\(F\)">\(F\)</span>, then both endpoints lie in <span class="math" data-tex="\(F\)">\(F\)</span>. A point is <strong>extreme</strong> when its singleton is a face.</p>
+<p><strong>Lemma 1.1.</strong> Every nonempty closed face of <span class="math" data-tex="\(K\)">\(K\)</span> contains an extreme point of <span class="math" data-tex="\(K\)">\(K\)</span>. Moreover <span class="math" data-tex="\(K\)">\(K\)</span> is the closed convex hull of its extreme points.</p>
+<p><strong>Proof.</strong> Among the nonempty closed faces contained in a given one, a descending chain has a nonempty intersection by compactness. The intersection is again a closed face. The maximal principle therefore gives a minimal such face <span class="math" data-tex="\(F\)">\(F\)</span>. If <span class="math" data-tex="\(F\)">\(F\)</span> contained distinct points, a continuous real linear functional would distinguish them. Its maximizing set on <span class="math" data-tex="\(F\)">\(F\)</span> would be a proper nonempty closed face of <span class="math" data-tex="\(F\)">\(F\)</span>, hence a face of <span class="math" data-tex="\(K\)">\(K\)</span>. This contradicts minimality. Thus <span class="math" data-tex="\(F\)">\(F\)</span> is a singleton.</p>
+<p>Write <span class="math" data-tex="\(E=\operatorname{ext}K\)">\(E=\operatorname{ext}K\)</span> and <span class="math" data-tex="\(C=\overline{\operatorname{co}}E\)">\(C=\overline{\operatorname{co}}E\)</span>. The first assertion makes <span class="math" data-tex="\(E\)">\(E\)</span> nonempty. If some point of <span class="math" data-tex="\(K\)">\(K\)</span> were outside <span class="math" data-tex="\(C\)">\(C\)</span>, separation would give a continuous real linear functional <span class="math" data-tex="\(f\)">\(f\)</span> with
+<span class="math math-display" data-tex="\[
+\max_K f&gt;\sup_C f.
+\]">\[
+\max_K f&gt;\sup_C f.
+\]</span>
+The maximizing face of <span class="math" data-tex="\(K\)">\(K\)</span> contains an extreme point by the first assertion. This point also belongs to <span class="math" data-tex="\(C\)">\(C\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The next observation explains why an extreme point cannot be reconstructed entirely from a compact set that omits it.</p>
+<p><strong>Lemma 1.2.</strong> If <span class="math" data-tex="\(A\subseteq K\)">\(A\subseteq K\)</span> is compact and <span class="math" data-tex="\(p\in\operatorname{ext}K\)">\(p\in\operatorname{ext}K\)</span> belongs to <span class="math" data-tex="\(\overline{\operatorname{co}}A\)">\(\overline{\operatorname{co}}A\)</span>, then <span class="math" data-tex="\(p\in A\)">\(p\in A\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(p\notin A\)">\(p\notin A\)</span>. Choose an open balanced convex neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of zero whose closure is disjoint from <span class="math" data-tex="\(A-p\)">\(A-p\)</span>. Such a neighborhood exists by local convexity, compactness of <span class="math" data-tex="\(A\)">\(A\)</span>, and separation of <span class="math" data-tex="\(p\)">\(p\)</span> from each point of <span class="math" data-tex="\(A\)">\(A\)</span>. Cover <span class="math" data-tex="\(A\)">\(A\)</span> by finitely many sets <span class="math" data-tex="\(a_j+V\)">\(a_j+V\)</span>, with <span class="math" data-tex="\(a_j\in A\)">\(a_j\in A\)</span>. Put
+<span class="math math-display" data-tex="\[
+A_j=A\cap(a_j+\overline V),\qquad
+C_j=\overline{\operatorname{co}}A_j.
+\]">\[
+A_j=A\cap(a_j+\overline V),\qquad
+C_j=\overline{\operatorname{co}}A_j.
+\]</span>
+Each <span class="math" data-tex="\(C_j\)">\(C_j\)</span> is a compact convex subset of <span class="math" data-tex="\(K\cap(a_j+\overline V)\)">\(K\cap(a_j+\overline V)\)</span>: it is closed inside the compact set <span class="math" data-tex="\(K\)">\(K\)</span>, and the translated neighborhood closure is closed and convex.</p>
+<p>The convex join of the finitely many <span class="math" data-tex="\(C_j\)">\(C_j\)</span> is compact, being the image of their product with a finite-dimensional probability simplex. It is therefore closed and equals <span class="math" data-tex="\(\overline{\operatorname{co}}A\)">\(\overline{\operatorname{co}}A\)</span>. Express <span class="math" data-tex="\(p\)">\(p\)</span> as a convex combination of points in the <span class="math" data-tex="\(C_j\)">\(C_j\)</span>. Extremality forces every point with a positive coefficient to equal <span class="math" data-tex="\(p\)">\(p\)</span>. Thus <span class="math" data-tex="\(p\in a_j+\overline V\)">\(p\in a_j+\overline V\)</span> for some <span class="math" data-tex="\(j\)">\(j\)</span>. Balancedness gives <span class="math" data-tex="\(a_j\in p+\overline V\)">\(a_j\in p+\overline V\)</span>, contrary to the choice of <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, if <span class="math" data-tex="\(A\)">\(A\)</span> is a compact subset of the weak closure of <span class="math" data-tex="\(\operatorname{ext}K\)">\(\operatorname{ext}K\)</span> and omits one of those extreme points, its closed convex hull omits that point too.</p>
+<h2 id="2-removing-everything-except-a-small-part">2. Removing everything except a small part</h2>
+<p>We now combine the category property with the preceding two lemmas. Separability is needed only in this auxiliary result.</p>
+<p><strong>Lemma 2.1.</strong> Suppose <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span> is weakly compact, convex and norm separable. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{diam}K&gt;\varepsilon,
+\]">\[
+\operatorname{diam}K&gt;\varepsilon,
+\]</span>
+there is a nonempty proper weakly compact convex subset <span class="math" data-tex="\(C\subset K\)">\(C\subset K\)</span> such that
+<span class="math math-display" data-tex="\[
+\operatorname{diam}(K\setminus C)&lt;\varepsilon.
+\tag{2.1}
+\]">\[
+\operatorname{diam}(K\setminus C)&lt;\varepsilon.
+\tag{2.1}
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Z=\overline{\operatorname{ext}K}^{\,w}\)">\(Z=\overline{\operatorname{ext}K}^{\,w}\)</span>. Lemma 1.1 makes <span class="math" data-tex="\(Z\)">\(Z\)</span> nonempty and gives <span class="math" data-tex="\(K=\overline{\operatorname{co}}Z^{\,w}\)">\(K=\overline{\operatorname{co}}Z^{\,w}\)</span>. It is compact Hausdorff. Choose a countable norm-dense set in <span class="math" data-tex="\(K\)">\(K\)</span>. The closed norm balls of radius <span class="math" data-tex="\(\varepsilon/8\)">\(\varepsilon/8\)</span> about those points cover <span class="math" data-tex="\(Z\)">\(Z\)</span>, and each intersection with <span class="math" data-tex="\(Z\)">\(Z\)</span> is weakly closed. Closed norm balls are weakly closed by Hahn–Banach. The category property gives a nonempty relatively weakly open set <span class="math" data-tex="\(U\subseteq Z\)">\(U\subseteq Z\)</span> lying in one of these balls, say <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+A=Z\setminus U,\qquad D=Z\cap B,\qquad
+K_A=\overline{\operatorname{co}}A^{\,w},\qquad
+K_D=\overline{\operatorname{co}}D^{\,w}.
+\tag{2.2}
+\]">\[
+A=Z\setminus U,\qquad D=Z\cap B,\qquad
+K_A=\overline{\operatorname{co}}A^{\,w},\qquad
+K_D=\overline{\operatorname{co}}D^{\,w}.
+\tag{2.2}
+\]</span>
+If <span class="math" data-tex="\(A\)">\(A\)</span> were empty, then <span class="math" data-tex="\(Z\subseteq B\)">\(Z\subseteq B\)</span> and hence <span class="math" data-tex="\(K\subseteq B\)">\(K\subseteq B\)</span>, which would give <span class="math" data-tex="\(\operatorname{diam}K\leq\varepsilon/4\)">\(\operatorname{diam}K\leq\varepsilon/4\)</span>. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is nonempty. Both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> are compact; both convex hull closures in (2.2) are weakly compact because they are closed subsets of <span class="math" data-tex="\(K\)">\(K\)</span>. Also <span class="math" data-tex="\(K_D\subseteq B\)">\(K_D\subseteq B\)</span>, so
+<span class="math math-display" data-tex="\[
+\operatorname{diam}K_D\leq\varepsilon/4.
+\tag{2.3}
+\]">\[
+\operatorname{diam}K_D\leq\varepsilon/4.
+\tag{2.3}
+\]</span></p>
+<p>Because <span class="math" data-tex="\(A\cup D=Z\)">\(A\cup D=Z\)</span>, compactness of the convex join gives
+<span class="math math-display" data-tex="\[
+K=\{t a+(1-t)d:a\in K_A,\ d\in K_D,\ 0\leq t\leq1\}.
+\tag{2.4}
+\]">\[
+K=\{t a+(1-t)d:a\in K_A,\ d\in K_D,\ 0\leq t\leq1\}.
+\tag{2.4}
+\]</span>
+The relatively open set <span class="math" data-tex="\(U\)">\(U\)</span> meets <span class="math" data-tex="\(\operatorname{ext}K\)">\(\operatorname{ext}K\)</span>, since the latter is dense in <span class="math" data-tex="\(Z\)">\(Z\)</span>. Choose an extreme point <span class="math" data-tex="\(p\in U\)">\(p\in U\)</span>. Lemma 1.2 applied to the compact set <span class="math" data-tex="\(A\)">\(A\)</span> gives <span class="math" data-tex="\(p\notin K_A\)">\(p\notin K_A\)</span>.</p>
+<p>Write <span class="math" data-tex="\(R=\operatorname{diam}K\)">\(R=\operatorname{diam}K\)</span>; it is finite and positive. Choose <span class="math" data-tex="\(0&lt;\delta&lt;1\)">\(0&lt;\delta&lt;1\)</span> with <span class="math" data-tex="\(2\delta R&lt;\varepsilon/2\)">\(2\delta R&lt;\varepsilon/2\)</span>, and define
+<span class="math math-display" data-tex="\[
+C=\{t a+(1-t)d:a\in K_A,\ d\in K_D,\ \delta\leq t\leq1\}.
+\tag{2.5}
+\]">\[
+C=\{t a+(1-t)d:a\in K_A,\ d\in K_D,\ \delta\leq t\leq1\}.
+\tag{2.5}
+\]</span>
+This set is nonempty and weakly compact. It is convex: in a convex combination of two displayed expressions, the new coefficient of <span class="math" data-tex="\(K_A\)">\(K_A\)</span> is a convex combination of their coefficients and remains at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>; regroup the <span class="math" data-tex="\(K_A\)">\(K_A\)</span> and <span class="math" data-tex="\(K_D\)">\(K_D\)</span> terms using their convexity. A vanishing coefficient of <span class="math" data-tex="\(K_D\)">\(K_D\)</span> causes no difficulty.</p>
+<p>The point <span class="math" data-tex="\(p\)">\(p\)</span> is outside <span class="math" data-tex="\(C\)">\(C\)</span>. Indeed a representation in (2.5), together with extremality, would force <span class="math" data-tex="\(p=a\in K_A\)">\(p=a\in K_A\)</span> because <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is proper.</p>
+<p>Every <span class="math" data-tex="\(y\in K\setminus C\)">\(y\in K\setminus C\)</span> has a representation in (2.4) with <span class="math" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>; otherwise it would belong to <span class="math" data-tex="\(C\)">\(C\)</span>. Its distance from the corresponding <span class="math" data-tex="\(d\)">\(d\)</span> is at most <span class="math" data-tex="\(tR&lt;\delta R\)">\(tR&lt;\delta R\)</span>. Consequently for <span class="math" data-tex="\(y,y&#x27;\in K\setminus C\)">\(y,y&#x27;\in K\setminus C\)</span>, using (2.3),
+<span class="math math-display" data-tex="\[
+\|y-y&#x27;\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
+\]">\[
+\|y-y&#x27;\|&lt;2\delta R+\varepsilon/4&lt;\varepsilon.
+\]</span>
+This proves (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The conclusion does not say that <span class="math" data-tex="\(C\)">\(C\)</span> is invariant under any action. Its purpose is to make two orbit points outside <span class="math" data-tex="\(C\)">\(C\)</span> necessarily close in norm.</p>
+<h2 id="3-one-affine-map-has-a-fixed-point">3. One affine map has a fixed point</h2>
+<p><strong>Lemma 3.1.</strong> A weakly continuous affine map <span class="math" data-tex="\(T:K\to K\)">\(T:K\to K\)</span> on a nonempty weakly compact convex subset of a Banach space has a fixed point.</p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span> and consider its successive averages
+<span class="math math-display" data-tex="\[
+z_n=\frac1n\sum_{j=0}^{n-1}T^jz\in K.
+\tag{3.1}
+\]">\[
+z_n=\frac1n\sum_{j=0}^{n-1}T^jz\in K.
+\tag{3.1}
+\]</span>
+Affineness gives
+<span class="math math-display" data-tex="\[
+Tz_n-z_n=\frac{T^nz-z}{n}.
+\tag{3.2}
+\]">\[
+Tz_n-z_n=\frac{T^nz-z}{n}.
+\tag{3.2}
+\]</span>
+Since <span class="math" data-tex="\(K\)">\(K\)</span> is norm bounded, the right side tends to zero in norm. A subnet of <span class="math" data-tex="\((z_n)\)">\((z_n)\)</span> converges weakly to some <span class="math" data-tex="\(z_\infty\in K\)">\(z_\infty\in K\)</span>. Weak continuity of <span class="math" data-tex="\(T\)">\(T\)</span> and (3.2) give <span class="math" data-tex="\(Tz_\infty=z_\infty\)">\(Tz_\infty=z_\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No isometry hypothesis was used here. For several maps that do not commute, their average can have a fixed point without an immediate reason for each map to fix it. The next argument supplies that reason when the maps belong to a group of isometries.</p>
+<h2 id="4-an-averaged-fixed-point-is-fixed-by-each-isometry">4. An averaged fixed point is fixed by each isometry</h2>
+<p><strong>Proposition 4.1.</strong> Let a group <span class="math" data-tex="\(G\)">\(G\)</span> act on a nonempty weakly compact convex set <span class="math" data-tex="\(K\subseteq X\)">\(K\subseteq X\)</span> by weakly continuous affine bijections preserving norm distances. For <span class="math" data-tex="\(g_1,\ldots,g_m\in G\)">\(g_1,\ldots,g_m\in G\)</span> and positive numbers <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> summing to one, a point <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span> satisfying
+<span class="math math-display" data-tex="\[
+x=\sum_{i=1}^m\lambda_i g_i x
+\tag{4.1}
+\]">\[
+x=\sum_{i=1}^m\lambda_i g_i x
+\tag{4.1}
+\]</span>
+is fixed by every <span class="math" data-tex="\(g_i\)">\(g_i\)</span>.</p>
+<p><strong>Proof.</strong> Suppose some <span class="math" data-tex="\(g_i\)">\(g_i\)</span> moves <span class="math" data-tex="\(x\)">\(x\)</span>. Remove the indices which fix <span class="math" data-tex="\(x\)">\(x\)</span> from (4.1), subtract their terms, and divide by the sum of the remaining coefficients. This leaves an equation of the same form with positive coefficients, and now every listed map moves <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be the subgroup generated by these finitely many maps. It is countable. Its orbit <span class="math" data-tex="\(Hx\)">\(Hx\)</span> is countable, and
+<span class="math math-display" data-tex="\[
+L=\overline{\operatorname{co}}^{\,w}(Hx)
+\tag{4.2}
+\]">\[
+L=\overline{\operatorname{co}}^{\,w}(Hx)
+\tag{4.2}
+\]</span>
+is a nonempty weakly compact convex subset of <span class="math" data-tex="\(K\)">\(K\)</span>. It is invariant under <span class="math" data-tex="\(H\)">\(H\)</span>, using weak continuity and the inverse of each group element. It is norm separable: weak and norm closures of a convex set agree by NP2, and rational convex combinations of the countable orbit are norm dense in its convex hull closure. To apply NP2, a weakly continuous linear functional is norm continuous because the weak topology is weaker; conversely every norm-continuous linear functional is weakly continuous by definition. In the complex case apply the real-part conversion proved in NP1. Thus the two topologies have the same continuous real dual, as NP2 requires. This uses no separability assumption on <span class="math" data-tex="\(X\)">\(X\)</span> or on the original <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>Choose
+<span class="math math-display" data-tex="\[
+0&lt;\varepsilon&lt;\min_i\|g_i x-x\|.
+\tag{4.3}
+\]">\[
+0&lt;\varepsilon&lt;\min_i\|g_i x-x\|.
+\tag{4.3}
+\]</span>
+The diameter of <span class="math" data-tex="\(L\)">\(L\)</span> exceeds <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Lemma 2.1 gives a proper weakly closed convex subset <span class="math" data-tex="\(C\subset L\)">\(C\subset L\)</span> with <span class="math" data-tex="\(\operatorname{diam}(L\setminus C)&lt;\varepsilon\)">\(\operatorname{diam}(L\setminus C)&lt;\varepsilon\)</span>. Since the closed convex hull of <span class="math" data-tex="\(Hx\)">\(Hx\)</span> is <span class="math" data-tex="\(L\)">\(L\)</span>, the orbit cannot be contained in <span class="math" data-tex="\(C\)">\(C\)</span>. Choose <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span> with <span class="math" data-tex="\(hx\notin C\)">\(hx\notin C\)</span>. Apply this affine map to (4.1):
+<span class="math math-display" data-tex="\[
+hx=\sum_i\lambda_i h g_i x.
+\tag{4.4}
+\]">\[
+hx=\sum_i\lambda_i h g_i x.
+\tag{4.4}
+\]</span>
+At least one <span class="math" data-tex="\(hg_i x\)">\(hg_i x\)</span> is outside <span class="math" data-tex="\(C\)">\(C\)</span>, since otherwise convexity would put <span class="math" data-tex="\(hx\)">\(hx\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Both these points belong to <span class="math" data-tex="\(L\setminus C\)">\(L\setminus C\)</span>. The isometry property therefore gives
+<span class="math math-display" data-tex="\[
+\|g_i x-x\|=\|hg_i x-hx\|&lt;\varepsilon,
+\]">\[
+\|g_i x-x\|=\|hg_i x-hx\|&lt;\varepsilon,
+\]</span>
+contradicting (4.3). Thus no listed map moves <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-common-fixed-point-theorem">5. The common fixed point theorem</h2>
+<p><strong>Theorem 5.1 (Ryll-Nardzewski, group form).</strong> Under the hypotheses of Proposition 4.1, there is a point of <span class="math" data-tex="\(K\)">\(K\)</span> fixed by all of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Given any finite list <span class="math" data-tex="\(g_1,\ldots,g_m\)">\(g_1,\ldots,g_m\)</span>, its average
+<span class="math math-display" data-tex="\[
+T(y)=\frac1m\sum_i g_i y
+\]">\[
+T(y)=\frac1m\sum_i g_i y
+\]</span>
+is a weakly continuous affine map from <span class="math" data-tex="\(K\)">\(K\)</span> into <span class="math" data-tex="\(K\)">\(K\)</span>. Lemma 3.1 supplies a fixed point of <span class="math" data-tex="\(T\)">\(T\)</span>; Proposition 4.1 says this point is fixed by each <span class="math" data-tex="\(g_i\)">\(g_i\)</span>. Each set
+<span class="math math-display" data-tex="\[
+\operatorname{Fix}_K(g)=\{y\in K:gy=y\}
+\]">\[
+\operatorname{Fix}_K(g)=\{y\in K:gy=y\}
+\]</span>
+is weakly closed. They have the finite intersection property, so compactness of <span class="math" data-tex="\(K\)">\(K\)</span> makes their total intersection nonempty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The group may be uncountable. The countable group and separable convex set appeared only inside the proof for a finite list. Bounded affine isometries of a Banach space restrict to actions of the type used here: their linear parts are bounded and hence weakly continuous, and translations are weakly continuous too.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frobenius lifts and abstract reciprocity · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/frobenius-lifts-and-abstract-reciprocity.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (2)</summary><ul><li><a href="profinite-groups-and-infinite-galois-theory.html">Profinite groups and infinite Galois theory</a></li><li><a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a></li></ul></details>
+<article class="lesson">
+<h1 id="frobenius-lifts-and-abstract-reciprocity">Frobenius lifts and abstract reciprocity</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p>The quotient by norms is the arithmetic object we want to understand. For an unramified extension of degree <span class="math" data-tex="\(n\)">\(n\)</span>, valuation already labels its classes by <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>, and Frobenius supplies the matching cyclic generator. A ramified extension asks for something more: how can an automorphism still produce a class when it is not itself a residue-field Frobenius?</p>
+<p>We answer that question by making the automorphism into Frobenius over a different finite field inside an enlarged unramified tower. The proposed class is then the norm of a prime element. The proof has three distinct jobs: calibrate that prescription on unramified extensions, show that choices and products change it only by norms, and establish the two different functorial operations. These jobs determine the order below.</p>
+<p>Only the closed-subgroup correspondence from <a href="profinite-groups-and-infinite-galois-theory.html">Profinite groups and infinite Galois theory</a> and the cyclic Tate calculations from <a href="cohomology-of-cyclic-groups-and-the-herbrand-quotient.html">Cohomology of cyclic groups and the Herbrand quotient</a> are required for the abstract proof. The local arithmetic module is verified in <a href="local-reciprocity-and-norm-groups.html">Local reciprocity and norm groups</a>, sections 1–3; those computations may be read first for motivation. Sections 4–5 of that lesson apply the abstract theorem after it has been proved. This separates the example from the proof it is meant to illustrate.</p>
+<h2 id="1-what-a-reciprocity-class-must-do">1. What a reciprocity class must do</h2>
+<p>Consider a cyclic unramified local extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>. Unit norms are surjective and <span class="math" data-tex="\(v_K(Nb)=n v_L(b)\)">\(v_K(Nb)=n v_L(b)\)</span>. Therefore the valuation map gives
+<span class="math math-display" data-tex="\[
+K^\times/NL^\times\simeq\mathbf Z/n\mathbf Z,
+\qquad [\pi_K]\longmapsto1.
+\]">\[
+K^\times/NL^\times\simeq\mathbf Z/n\mathbf Z,
+\qquad [\pi_K]\longmapsto1.
+\]</span>
+For the kernel assertion, if <span class="math" data-tex="\(v_K(a)=nm\)">\(v_K(a)=nm\)</span>, divide <span class="math" data-tex="\(a\)">\(a\)</span> by the norm of <span class="math" data-tex="\(\pi_K^m\)">\(\pi_K^m\)</span>, viewed in <span class="math" data-tex="\(L\)">\(L\)</span>. The remainder is a unit, hence a unit norm. This calculation uses only the unramified norm theorem, not reciprocity. It suggests the unique map taking arithmetic Frobenius to <span class="math" data-tex="\([\pi_K]\)">\([\pi_K]\)</span>.</p>
+<p>There are two different changes of field to track. Restricting an automorphism should correspond to taking a norm of the arithmetic element. Including an arithmetic element in a larger ground field should correspond to transfer of the automorphism. For example, in an unramified cyclic extension of degree six, the degree-three intermediate field has Frobenius equal to the third power of ground-field Frobenius. Transfer from the order-six group to its order-two subgroup sends a generator to that third power. On multiplicative groups a ground-field uniformizer stays a uniformizer, whereas its norm down a degree-three unramified extension has valuation three. Thus the two operations cannot be interchanged.</p>
+<p>We construct the map from automorphisms to norm classes. The next lesson proves that it is an isomorphism once the class field axiom holds; its inverse is the arithmetic Artin map. Throughout this lesson, neither existence of that inverse nor a reciprocity theorem is an assumption.</p>
+<span id="1-a-degree-map-supplies-the-unramified-direction" aria-hidden="true"></span><h2 id="2-a-degree-map-supplies-the-unramified-direction">2. A degree map supplies the unramified direction</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be profinite and let</p>
+<span class="math math-display" data-tex="\[
+d:G\longrightarrow\widehat{\mathbf Z}
+\]">\[
+d:G\longrightarrow\widehat{\mathbf Z}
+\]</span>
+<p>be a continuous surjection. We use field notation for its subgroup lattice: the ground field <span class="math" data-tex="\(k\)">\(k\)</span> means <span class="math" data-tex="\(G_k=G\)">\(G_k=G\)</span>, a finite extension <span class="math" data-tex="\(K/k\)">\(K/k\)</span> means an open subgroup <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, and <span class="math" data-tex="\(K\subset L\)">\(K\subset L\)</span> means <span class="math" data-tex="\(G_L\subset G_K\)">\(G_L\subset G_K\)</span>. Its degree is <span class="math" data-tex="\([L:K]=[G_K:G_L]\)">\([L:K]=[G_K:G_L]\)</span>. Composita mean intersections of closed subgroups. In applications these will be actual fields and Galois groups; all the arguments here use only the indicated subgroup operations.</p>
+<p>Put <span class="math" data-tex="\(I=\ker d\)">\(I=\ker d\)</span> and let <span class="math" data-tex="\(\widetilde k\)">\(\widetilde k\)</span> denote its fixed object. For finite <span class="math" data-tex="\(K/k\)">\(K/k\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+f_K=[\widehat{\mathbf Z}:d(G_K)],\qquad
+I_K=G_K\cap I,\qquad
+d_K=f_K^{-1}d|_{G_K}.
+\]">\[
+f_K=[\widehat{\mathbf Z}:d(G_K)],\qquad
+I_K=G_K\cap I,\qquad
+d_K=f_K^{-1}d|_{G_K}.
+\]</span>
+<p>The image <span class="math" data-tex="\(d(G_K)\)">\(d(G_K)\)</span> is the open subgroup <span class="math" data-tex="\(f_K\widehat{\mathbf Z}\)">\(f_K\widehat{\mathbf Z}\)</span>. Division by <span class="math" data-tex="\(f_K\)">\(f_K\)</span> therefore defines a continuous surjection onto <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>, with kernel <span class="math" data-tex="\(I_K\)">\(I_K\)</span>. The fixed object of <span class="math" data-tex="\(I_K\)">\(I_K\)</span> is <span class="math" data-tex="\(\widetilde K=K\widetilde k\)">\(\widetilde K=K\widetilde k\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Gal}(\widetilde K/K)\simeq\widehat{\mathbf Z}.
+\]">\[
+\operatorname{Gal}(\widetilde K/K)\simeq\widehat{\mathbf Z}.
+\]</span>
+<p>Its element of degree 1 is the <strong>arithmetic Frobenius</strong> <span class="math" data-tex="\(\varphi_K\)">\(\varphi_K\)</span>.</p>
+<p>For finite <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+f_{L/K}=[d(G_K):d(G_L)],\qquad
+e_{L/K}=[I_K:I_L].
+\]">\[
+f_{L/K}=[d(G_K):d(G_L)],\qquad
+e_{L/K}=[I_K:I_L].
+\]</span>
+<p>Both are multiplicative in towers, and</p>
+<span class="math math-display" data-tex="\[
+[L:K]=e_{L/K}f_{L/K},\qquad
+f_L=f_Kf_{L/K},\qquad
+d_K|_{G_L}=f_{L/K}d_L.
+\tag{1}
+\]">\[
+[L:K]=e_{L/K}f_{L/K},\qquad
+f_L=f_Kf_{L/K},\qquad
+d_K|_{G_L}=f_{L/K}d_L.
+\tag{1}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(I_KG_L\)">\(I_KG_L\)</span> is a subgroup of <span class="math" data-tex="\(G_K\)">\(G_K\)</span>, and its two successive indices are <span class="math" data-tex="\(f_{L/K}\)">\(f_{L/K}\)</span> and <span class="math" data-tex="\(e_{L/K}\)">\(e_{L/K}\)</span>. This proves the first equality without assuming that <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is Galois. The other two follow directly from the images of <span class="math" data-tex="\(d\)">\(d\)</span>. Call <span class="math" data-tex="\(L/K\)">\(L/K\)</span> <strong>unramified</strong> when <span class="math" data-tex="\(e_{L/K}=1\)">\(e_{L/K}=1\)</span>, equivalently <span class="math" data-tex="\(L\subset\widetilde K\)">\(L\subset\widetilde K\)</span>. It is then cyclic and <span class="math" data-tex="\([L:K]=f_{L/K}\)">\([L:K]=f_{L/K}\)</span>. Call it <strong>totally ramified</strong> when <span class="math" data-tex="\(f_{L/K}=1\)">\(f_{L/K}=1\)</span>. The largest unramified subextension of <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is <span class="math" data-tex="\(L\cap\widetilde K\)">\(L\cap\widetilde K\)</span>, of degree <span class="math" data-tex="\(f_{L/K}\)">\(f_{L/K}\)</span>.</p>
+<p>Fix for now a finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\Gamma=\operatorname{Gal}(\widetilde L/K),\qquad
+J=\operatorname{Gal}(\widetilde L/\widetilde K).
+\]">\[
+\Gamma=\operatorname{Gal}(\widetilde L/K),\qquad
+J=\operatorname{Gal}(\widetilde L/\widetilde K).
+\]</span>
+<p>Here <span class="math" data-tex="\(J\)">\(J\)</span> is finite of order <span class="math" data-tex="\(e_{L/K}\)">\(e_{L/K}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+1\longrightarrow J\longrightarrow\Gamma
+\xrightarrow{d_K}\widehat{\mathbf Z}\longrightarrow1.
+\tag{2}
+\]">\[
+1\longrightarrow J\longrightarrow\Gamma
+\xrightarrow{d_K}\widehat{\mathbf Z}\longrightarrow1.
+\tag{2}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\phi\in\Gamma\)">\(\phi\in\Gamma\)</span> of degree 1. The map from <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> to the closure of its powers, sending 1 to <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, is an isomorphism: composing it with <span class="math" data-tex="\(d_K\)">\(d_K\)</span> gives the identity. Consequently every element of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has a unique expression <span class="math" data-tex="\(j\phi^z\)">\(j\phi^z\)</span>, with <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, <span class="math" data-tex="\(z\in\widehat{\mathbf Z}\)">\(z\in\widehat{\mathbf Z}\)</span>. This splitting is a tool for the proof, not an extra datum in the final map.</p>
+<p>A <strong>positive Frobenius lift</strong> is <span class="math" data-tex="\(s\in\Gamma\)">\(s\in\Gamma\)</span> with <span class="math" data-tex="\(d_K(s)=n\)">\(d_K(s)=n\)</span> a positive ordinary integer. Its closed cyclic subgroup <span class="math" data-tex="\(S=\overline{\langle s\rangle}\)">\(S=\overline{\langle s\rangle}\)</span> is a copy of <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>: the degree map on it is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, which is injective. In particular <span class="math" data-tex="\(S\cap J=1\)">\(S\cap J=1\)</span>. If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is its fixed object, then</p>
+<span class="math math-display" data-tex="\[
+[\Sigma:K]=n|J|,\qquad f_{\Sigma/K}=n,
+\qquad\widetilde\Sigma=\widetilde L,
+\qquad s=\varphi_\Sigma.
+\tag{3}
+\]">\[
+[\Sigma:K]=n|J|,\qquad f_{\Sigma/K}=n,
+\qquad\widetilde\Sigma=\widetilde L,
+\qquad s=\varphi_\Sigma.
+\tag{3}
+\]</span>
+<p>For the degree, the cosets of <span class="math" data-tex="\(S\)">\(S\)</span> in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> are represented by <span class="math" data-tex="\(\phi^i j\)">\(\phi^i j\)</span>, <span class="math" data-tex="\(0\leq i&lt;n\)">\(0\leq i&lt;n\)</span>, <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. Their distinctness follows by applying <span class="math" data-tex="\(d_K\)">\(d_K\)</span> and then using <span class="math" data-tex="\(S\cap J=1\)">\(S\cap J=1\)</span>; their number is the index given by (2). Intersecting the stabilizers with <span class="math" data-tex="\(J\)">\(J\)</span> proves the unramified-compositum assertion. Finally <span class="math" data-tex="\(d_\Sigma(s)=d_K(s)/f_{\Sigma/K}=1\)">\(d_\Sigma(s)=d_K(s)/f_{\Sigma/K}=1\)</span>.</p>
+<p>Every <span class="math" data-tex="\(g\in\operatorname{Gal}(L/K)\)">\(g\in\operatorname{Gal}(L/K)\)</span> has a positive Frobenius lift. Choose any lift to <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, of degree <span class="math" data-tex="\(a\in\widehat{\mathbf Z}\)">\(a\in\widehat{\mathbf Z}\)</span>. Its residue modulo <span class="math" data-tex="\(f_{L/K}\)">\(f_{L/K}\)</span> is determined by <span class="math" data-tex="\(g\)">\(g\)</span>'s action on <span class="math" data-tex="\(L\cap\widetilde K\)">\(L\cap\widetilde K\)</span>. Choose a positive integer <span class="math" data-tex="\(n\)">\(n\)</span> with that residue. The kernel of <span class="math" data-tex="\(\Gamma\to\operatorname{Gal}(L/K)\)">\(\Gamma\to\operatorname{Gal}(L/K)\)</span>, namely <span class="math" data-tex="\(\operatorname{Gal}(\widetilde L/L)\)">\(\operatorname{Gal}(\widetilde L/L)\)</span>, has degree image <span class="math" data-tex="\(f_{L/K}\widehat{\mathbf Z}\)">\(f_{L/K}\widehat{\mathbf Z}\)</span>. An element of this kernel of degree <span class="math" data-tex="\(n-a\)">\(n-a\)</span> adjusts the chosen lift to degree <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<span id="2-norms-and-a-valuation-on-a-module" aria-hidden="true"></span><h2 id="3-norms-and-a-valuation-on-a-module">3. Norms and a valuation on a module</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be a discrete abelian group with a continuous <span class="math" data-tex="\(G\)">\(G\)</span>-action. We write it <strong>additively</strong> in this lesson so that the operator calculations are readable. For a multiplicative arithmetic module, read a sum as a product, a difference as a quotient, and zero as 1. Put <span class="math" data-tex="\(A_K=A^{G_K}\)">\(A_K=A^{G_K}\)</span>. For finite <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+N_{L/K}(a)=\sum_{t\in G_K/G_L}t(a).
+\tag{4}
+\]">\[
+N_{L/K}(a)=\sum_{t\in G_K/G_L}t(a).
+\tag{4}
+\]</span>
+<p>Representatives in (4) are for left cosets. Since <span class="math" data-tex="\(a\)">\(a\)</span> is fixed by <span class="math" data-tex="\(G_L\)">\(G_L\)</span>, their choices do not matter. Left multiplication permutes these cosets, so the sum belongs to <span class="math" data-tex="\(A_K\)">\(A_K\)</span>. Decomposing cosets along a tower proves <span class="math" data-tex="\(N_{M/K}=N_{L/K}N_{M/L}\)">\(N_{M/K}=N_{L/K}N_{M/L}\)</span>. Conjugating the cosets proves</p>
+<span class="math math-display" data-tex="\[
+N_{gL/gK}(ga)=gN_{L/K}(a).
+\tag{5}
+\]">\[
+N_{gL/gK}(ga)=gN_{L/K}(a).
+\tag{5}
+\]</span>
+<p>Here <span class="math" data-tex="\(gK\)">\(gK\)</span> has stabilizer <span class="math" data-tex="\(gG_Kg^{-1}\)">\(gG_Kg^{-1}\)</span>. These identities do not require intermediate fields to be Galois. For an infinite field object, <span class="math" data-tex="\(A_E\)">\(A_E\)</span> is the union of the invariants of its finite subobjects: an element has an open stabilizer by continuity.</p>
+<p>Choose a subgroup <span class="math" data-tex="\(V\subset\widehat{\mathbf Z}\)">\(V\subset\widehat{\mathbf Z}\)</span> containing the ordinary integers, such that the inclusion induces</p>
+<span class="math math-display" data-tex="\[
+V/nV\simeq\widehat{\mathbf Z}/n\widehat{\mathbf Z}
+\quad(n\geq1).
+\tag{6}
+\]">\[
+V/nV\simeq\widehat{\mathbf Z}/n\widehat{\mathbf Z}
+\quad(n\geq1).
+\tag{6}
+\]</span>
+<p>A <strong>henselian valuation for the degree map</strong> is a group homomorphism <span class="math" data-tex="\(v:A_k\to\widehat{\mathbf Z}\)">\(v:A_k\to\widehat{\mathbf Z}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+v(A_k)=V,\qquad v(N_{K/k}A_K)=f_KV
+\quad\text{for every finite }K/k.
+\tag{7}
+\]">\[
+v(A_k)=V,\qquad v(N_{K/k}A_K)=f_KV
+\quad\text{for every finite }K/k.
+\tag{7}
+\]</span>
+<p>This is a condition on an arithmetic module and its norms, not a field valuation. Allowing <span class="math" data-tex="\(V\)">\(V\)</span> to be larger than <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span> matters: the local case will use <span class="math" data-tex="\(V=\mathbf Z\)">\(V=\mathbf Z\)</span>, whereas the global number-field construction can use <span class="math" data-tex="\(V=\widehat{\mathbf Z}\)">\(V=\widehat{\mathbf Z}\)</span>. All proofs here cover both. Requiring only integer values would unnecessarily exclude the latter application.</p>
+<p>For finite <span class="math" data-tex="\(K/k\)">\(K/k\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+v_K=f_K^{-1}vN_{K/k}:A_K\longrightarrow V.
+\]">\[
+v_K=f_K^{-1}vN_{K/k}:A_K\longrightarrow V.
+\]</span>
+<p>Condition (7) makes this well defined and onto. Norm transitivity and (1) give</p>
+<span class="math math-display" data-tex="\[
+v_K(N_{L/K}a)=f_{L/K}v_L(a).
+\tag{8}
+\]">\[
+v_K(N_{L/K}a)=f_{L/K}v_L(a).
+\tag{8}
+\]</span>
+<p>For <span class="math" data-tex="\(a\in A_K\)">\(a\in A_K\)</span>, equation (4) gives <span class="math" data-tex="\(N_{L/K}a=[L:K]a\)">\(N_{L/K}a=[L:K]a\)</span>; cancellation in the torsion-free group <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> then yields</p>
+<span class="math math-display" data-tex="\[
+v_L(a)=e_{L/K}v_K(a).
+\tag{9}
+\]">\[
+v_L(a)=e_{L/K}v_K(a).
+\tag{9}
+\]</span>
+<p>Equation (5) also gives <span class="math" data-tex="\(v_{gK}(ga)=v_K(a)\)">\(v_{gK}(ga)=v_K(a)\)</span>, since a norm to <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. A <strong>prime element</strong> is any <span class="math" data-tex="\(\pi_K\in A_K\)">\(\pi_K\in A_K\)</span> with <span class="math" data-tex="\(v_K(\pi_K)=1\)">\(v_K(\pi_K)=1\)</span>; it exists by surjectivity. Let <span class="math" data-tex="\(U_K=\ker v_K\)">\(U_K=\ker v_K\)</span>, the <strong>unit module</strong>. Units remain units under inclusion or norm. A prime element remains prime under unramified inclusion; its norm remains prime under a totally ramified norm.</p>
+<p>Our only cohomological hypothesis in this lesson is the <strong>unramified unit axiom</strong>:</p>
+<span class="math math-display" data-tex="\[
+\widehat H^0(\operatorname{Gal}(E/F),U_E)=0,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(E/F),U_E)=0
+\tag{10}
+\]">\[
+\widehat H^0(\operatorname{Gal}(E/F),U_E)=0,
+\qquad
+\widehat H^{-1}(\operatorname{Gal}(E/F),U_E)=0
+\tag{10}
+\]</span>
+<p>for every finite unramified <span class="math" data-tex="\(E/F\)">\(E/F\)</span>. Thus every unit downstairs is a norm, and every norm-zero unit upstairs is a difference <span class="math" data-tex="\((\tau-1)y\)">\((\tau-1)y\)</span>, where <span class="math" data-tex="\(\tau\)">\(\tau\)</span> generates the cyclic group. The cyclic Tate definitions in lesson 2 make these two meanings explicit. Later lessons verify (10) in the arithmetic applications; it is an explicit hypothesis of the present abstract theorem.</p>
+<span id="5-unramified-extensions-recover-the-initial-prescription" aria-hidden="true"></span><h2 id="4-calibrating-the-unramified-map">4. Calibrating the unramified map</h2>
+<p>Before treating ramification, check what the general hypotheses say about an unramified extension. If its degree is <span class="math" data-tex="\(n\)">\(n\)</span>, the valuation of its norm image is <span class="math" data-tex="\(nV\)">\(nV\)</span>, and the unit axiom removes the remaining kernel. Thus a prime class has to be the Frobenius class. The following proposition gives the precise statement, including the value group <span class="math" data-tex="\(V=\widehat{\mathbf Z}\)">\(V=\widehat{\mathbf Z}\)</span> needed later for number fields.</p>
+<h3 id="proposition-4-3-unramified-reciprocity">Proposition 4.3. Unramified reciprocity</h3>
+<p>If <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is unramified of degree <span class="math" data-tex="\(n\)">\(n\)</span>, define <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> by sending its arithmetic Frobenius generator to a prime class. This is independent of the prime, and</p>
+<span class="math math-display" data-tex="\[
+r_{L/K}(\varphi_{L/K})=\pi_K\pmod{N_{L/K}A_L},
+\]">\[
+r_{L/K}(\varphi_{L/K})=\pi_K\pmod{N_{L/K}A_L},
+\]</span>
+<p>and <span class="math" data-tex="\(r_{L/K}\)">\(r_{L/K}\)</span> is an isomorphism.</p>
+<p><strong>Proof.</strong> Two primes differ by a unit, which is a norm by (10), so they define the same class. Its order divides <span class="math" data-tex="\(n\)">\(n\)</span>, since <span class="math" data-tex="\(n\pi_K=N_{L/K}(\pi_K)\)">\(n\pi_K=N_{L/K}(\pi_K)\)</span>; hence the generator prescription defines a homomorphism.</p>
+<p>The valuation induces a surjection <span class="math" data-tex="\(A_K/N_{L/K}A_L\to V/nV\)">\(A_K/N_{L/K}A_L\to V/nV\)</span>, by (8). It is injective as well. If <span class="math" data-tex="\(v_K(a)=nb\)">\(v_K(a)=nb\)</span>, choose <span class="math" data-tex="\(c\in A_L\)">\(c\in A_L\)</span> with <span class="math" data-tex="\(v_L(c)=b\)">\(v_L(c)=b\)</span>. Then <span class="math" data-tex="\(a-N_{L/K}c\)">\(a-N_{L/K}c\)</span> is a unit in <span class="math" data-tex="\(U_K\)">\(U_K\)</span>, hence a norm from <span class="math" data-tex="\(U_L\)">\(U_L\)</span> by (10); thus <span class="math" data-tex="\(a\)">\(a\)</span> is a norm. By (6), <span class="math" data-tex="\(V/nV\simeq\mathbf Z/n\mathbf Z\)">\(V/nV\simeq\mathbf Z/n\mathbf Z\)</span>, and the image of <span class="math" data-tex="\(\pi_K\)">\(\pi_K\)</span> is its generator 1. The cyclic Galois group is also generated by <span class="math" data-tex="\(\varphi_{L/K}\)">\(\varphi_{L/K}\)</span> and has order <span class="math" data-tex="\(n\)">\(n\)</span>. The map between them sending generator to generator is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The norm-of-prime construction in section 5 specializes to this map: here <span class="math" data-tex="\(\widetilde L=\widetilde K\)">\(\widetilde L=\widetilde K\)</span>, and the degree-one lift <span class="math" data-tex="\(\varphi_K\)">\(\varphi_K\)</span> has fixed field <span class="math" data-tex="\(K\)">\(K\)</span>, so (12) gives <span class="math" data-tex="\(\pi_K\)">\(\pi_K\)</span>.</p>
+<p>This argument does not assume that an arbitrary valuation is an ordinary integer, or that an element has an expression <span class="math" data-tex="\(u+m\pi_K\)">\(u+m\pi_K\)</span> with <span class="math" data-tex="\(m\in\mathbf Z\)">\(m\in\mathbf Z\)</span>. Such an expression need not exist when <span class="math" data-tex="\(V=\widehat{\mathbf Z}\)">\(V=\widehat{\mathbf Z}\)</span>. Lifting the divisible valuation by a norm is the step that treats both value groups uniformly.</p>
+<span id="3-two-calculations-in-the-enlarged-extension" aria-hidden="true"></span><h2 id="5-building-the-candidate-class">5. Building the candidate class</h2>
+<p>Choose a positive lift of the desired finite automorphism. Its fixed field is finite by the degree calculation in section 2. The norm identity below tells us how to compare candidate classes without assuming that their prime elements belong to the same field.</p>
+<p>Every finite subextension of <span class="math" data-tex="\(\widetilde L/L\)">\(\widetilde L/L\)</span> is unramified. Equation (9) therefore defines a consistent valuation <span class="math" data-tex="\(w\)">\(w\)</span> on <span class="math" data-tex="\(A_{\widetilde L}\)">\(A_{\widetilde L}\)</span>, by restricting to a finite subextension containing <span class="math" data-tex="\(L\)">\(L\)</span>. Its kernel is <span class="math" data-tex="\(U_{\widetilde L}\)">\(U_{\widetilde L}\)</span>. The action of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> preserves <span class="math" data-tex="\(w\)">\(w\)</span>, by (5). Each prime <span class="math" data-tex="\(\pi_\Sigma\)">\(\pi_\Sigma\)</span> from (3) has <span class="math" data-tex="\(w(\pi_\Sigma)=1\)">\(w(\pi_\Sigma)=1\)</span>: both <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span> have ramification index <span class="math" data-tex="\(|J|\)">\(|J|\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>, so their compositum is unramified over each.</p>
+<p>Let <span class="math" data-tex="\(N_J=\sum_{j\in J}j\)">\(N_J=\sum_{j\in J}j\)</span>, and put <span class="math" data-tex="\(P_n(\phi)=1+\phi+\cdots+\phi^{n-1}\)">\(P_n(\phi)=1+\phi+\cdots+\phi^{n-1}\)</span>. Normality of <span class="math" data-tex="\(J\)">\(J\)</span> implies that <span class="math" data-tex="\(N_J\)">\(N_J\)</span> commutes with <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. The coset representatives used in (3) prove the <strong>norm identity</strong></p>
+<span class="math math-display" data-tex="\[
+N_{\Sigma/K}(a)=N_JP_n(\phi)a
+\quad(a\in A_\Sigma, d_K(s)=n).
+\tag{11}
+\]">\[
+N_{\Sigma/K}(a)=N_JP_n(\phi)a
+\quad(a\in A_\Sigma, d_K(s)=n).
+\tag{11}
+\]</span>
+<p>For a positive lift <span class="math" data-tex="\(s\)">\(s\)</span>, let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be its fixed field and choose a prime <span class="math" data-tex="\(\pi_\Sigma\)">\(\pi_\Sigma\)</span>. Define provisionally</p>
+<span class="math math-display" data-tex="\[
+R(s)=N_{\Sigma/K}(\pi_\Sigma)\pmod{N_{L/K}A_L}.
+\tag{12}
+\]">\[
+R(s)=N_{\Sigma/K}(\pi_\Sigma)\pmod{N_{L/K}A_L}.
+\tag{12}
+\]</span>
+<p>Changing the prime by <span class="math" data-tex="\(u\in U_\Sigma\)">\(u\in U_\Sigma\)</span> does not change (12). Indeed, <span class="math" data-tex="\(L\Sigma/\Sigma\)">\(L\Sigma/\Sigma\)</span> is unramified, so (10) gives <span class="math" data-tex="\(u=N_{L\Sigma/\Sigma}b\)">\(u=N_{L\Sigma/\Sigma}b\)</span> for a unit <span class="math" data-tex="\(b\)">\(b\)</span>. Thus <span class="math" data-tex="\(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\)">\(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\)</span> is a norm from <span class="math" data-tex="\(L\)">\(L\)</span>. This already handles the first choice.</p>
+<span id="4-composition-before-passage-to-the-finite-group" aria-hidden="true"></span><h2 id="6-the-unit-defect-and-composition">6. The unit defect and composition</h2>
+<p>The unresolved issue is now a calculation about units. Two prime elements in the enlarged tower have equal valuation, so their difference in additive notation is a unit. For a product of lifts, the valuation contributions also cancel. What must be proved is that this residual unit becomes a norm after averaging over inertia. The next lemma is designed for exactly that defect; both halves of the unit axiom are used in its proof.</p>
+<p>We now prove the unit statement that controls composition. Write <span class="math" data-tex="\(I_JU_{\widetilde L}\)">\(I_JU_{\widetilde L}\)</span> for the subgroup generated by <span class="math" data-tex="\((j-1)u\)">\((j-1)u\)</span>, with <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, <span class="math" data-tex="\(u\in U_{\widetilde L}\)">\(u\in U_{\widetilde L}\)</span>.</p>
+<p><strong>Unit descent lemma.</strong> If <span class="math" data-tex="\(u\in U_{\widetilde L}\)">\(u\in U_{\widetilde L}\)</span> and <span class="math" data-tex="\((\phi-1)u\in I_JU_{\widetilde L}\)">\((\phi-1)u\in I_JU_{\widetilde L}\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+N_Ju\in N_{M/K}U_M
+\]">\[
+N_Ju\in N_{M/K}U_M
+\]</span>
+<p>for every finite <span class="math" data-tex="\(M/K\)">\(M/K\)</span> contained in <span class="math" data-tex="\(\widetilde L\)">\(\widetilde L\)</span>.</p>
+<p><strong>Proof.</strong> Express <span class="math" data-tex="\((\phi-1)u=\sum_i(j_i-1)u_i\)">\((\phi-1)u=\sum_i(j_i-1)u_i\)</span>, using finitely many units. Enlarge the given <span class="math" data-tex="\(M\)">\(M\)</span> to a finite Galois extension of <span class="math" data-tex="\(K\)">\(K\)</span> inside <span class="math" data-tex="\(\widetilde L\)">\(\widetilde L\)</span> containing <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span>, and all <span class="math" data-tex="\(u_i\)">\(u_i\)</span>. Norm transitivity will imply the conclusion for the original <span class="math" data-tex="\(M\)">\(M\)</span>, so retain the enlarged name. Put <span class="math" data-tex="\(m=[M:K]\)">\(m=[M:K]\)</span> and <span class="math" data-tex="\(\psi=\phi^m\)">\(\psi=\phi^m\)</span>. This element fixes <span class="math" data-tex="\(M\)">\(M\)</span>. It commutes with <span class="math" data-tex="\(J\)">\(J\)</span>: conjugation by <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is trivial on the restrictions to <span class="math" data-tex="\(L\)">\(L\)</span>, and restriction embeds <span class="math" data-tex="\(J\)">\(J\)</span> in <span class="math" data-tex="\(\operatorname{Gal}(L/K)\)">\(\operatorname{Gal}(L/K)\)</span>. It also commutes with <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, so it is central in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>The closure of the powers of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> maps isomorphically to <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> under <span class="math" data-tex="\(d_K\)">\(d_K\)</span>. To justify this, the map <span class="math" data-tex="\(a\mapsto\phi^a\)">\(a\mapsto\phi^a\)</span> is defined in every finite quotient by compatible integer powers, and their inverse limit defines it on <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. Its composite with <span class="math" data-tex="\(d_K\)">\(d_K\)</span> is the identity. Its image is exactly that closure, since ordinary integers are dense. Thus it intersects <span class="math" data-tex="\(J\)">\(J\)</span> trivially. Every element of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a product <span class="math" data-tex="\(j\phi^a\)">\(j\phi^a\)</span>, by first matching its degree. In particular the closed subgroup generated by <span class="math" data-tex="\(\psi=\phi^m\)">\(\psi=\phi^m\)</span> has index <span class="math" data-tex="\(m|J|\)">\(m|J|\)</span>, and the subgroup generated by <span class="math" data-tex="\(\psi^m\)">\(\psi^m\)</span> has index <span class="math" data-tex="\(m^2|J|\)">\(m^2|J|\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(E_m\)">\(E_m\)</span> be their fixed fields. Centrality makes both closed subgroups normal, so these are finite Galois extensions of <span class="math" data-tex="\(K\)">\(K\)</span>. They contain <span class="math" data-tex="\(M\)">\(M\)</span>, since <span class="math" data-tex="\(\psi\)">\(\psi\)</span> fixes <span class="math" data-tex="\(M\)">\(M\)</span>. Their relative group is <span class="math" data-tex="\(m\widehat{\mathbf Z}/m^2\widehat{\mathbf Z}\)">\(m\widehat{\mathbf Z}/m^2\widehat{\mathbf Z}\)</span>, generated by <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, and its intersection with inertia is trivial. Hence <span class="math" data-tex="\(E_m/E\)">\(E_m/E\)</span> is unramified cyclic of degree <span class="math" data-tex="\(m\)">\(m\)</span>. Axiom (10) gives units <span class="math" data-tex="\(b,b_i\in U_{E_m}\)">\(b,b_i\in U_{E_m}\)</span> with</p>
+<span class="math math-display" data-tex="\[
+P_m(\psi)b=u,\qquad P_m(\psi)b_i=u_i.
+\]">\[
+P_m(\psi)b=u,\qquad P_m(\psi)b_i=u_i.
+\]</span>
+<p>The norm of <span class="math" data-tex="\((\phi-1)b-\sum_i(j_i-1)b_i\)">\((\phi-1)b-\sum_i(j_i-1)b_i\)</span> is zero, since <span class="math" data-tex="\(\psi\)">\(\psi\)</span> commutes with <span class="math" data-tex="\(\phi,J\)">\(\phi,J\)</span>. The second half of (10) therefore supplies <span class="math" data-tex="\(y\in U_{E_m}\)">\(y\in U_{E_m}\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+(\phi-1)b-\sum_i(j_i-1)b_i
+=(\psi-1)y=(\phi-1)P_m(\phi)y.
+\]">\[
+(\phi-1)b-\sum_i(j_i-1)b_i
+=(\psi-1)y=(\phi-1)P_m(\phi)y.
+\]</span>
+<p>Apply <span class="math" data-tex="\(N_J\)">\(N_J\)</span>. It kills the <span class="math" data-tex="\(J\)">\(J\)</span>-differences, giving</p>
+<span class="math math-display" data-tex="\[
+(\phi-1)\bigl(N_Jb-P_m(\phi)N_Jy\bigr)=0.
+\]">\[
+(\phi-1)\bigl(N_Jb-P_m(\phi)N_Jy\bigr)=0.
+\]</span>
+<p>The parenthesized unit is fixed by <span class="math" data-tex="\(J\)">\(J\)</span> and by <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, hence by all of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; call it <span class="math" data-tex="\(z\in U_K\)">\(z\in U_K\)</span>. Apply <span class="math" data-tex="\(P_m(\psi)\)">\(P_m(\psi)\)</span> to <span class="math" data-tex="\(N_Jb=P_m(\phi)N_Jy+z\)">\(N_Jb=P_m(\phi)N_Jy+z\)</span>, and put <span class="math" data-tex="\(y&#x27;=P_m(\psi)y\in U_E\)">\(y&#x27;=P_m(\psi)y\in U_E\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+N_Ju=N_JP_m(\phi)y&#x27;+mz
+=N_{E/K}(y&#x27;)+N_{M/K}(z).
+\]">\[
+N_Ju=N_JP_m(\phi)y&#x27;+mz
+=N_{E/K}(y&#x27;)+N_{M/K}(z).
+\]</span>
+<p>The first equality in the last step uses (11), and the second uses <span class="math" data-tex="\(z\in U_K\)">\(z\in U_K\)</span>. Since <span class="math" data-tex="\(M\subset E\)">\(M\subset E\)</span>, both terms are norms from <span class="math" data-tex="\(U_M\)">\(U_M\)</span>. This proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Both halves of the unit axiom were used: one lifts the units by norms, and the other lifts the relation by a difference. Surjectivity of unit norms alone would not prove this lemma.</p>
+<p><strong>Composition lemma.</strong> For positive lifts <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R(s_1s_2)=R(s_1)+R(s_2).
+\tag{13}
+\]">\[
+R(s_1s_2)=R(s_1)+R(s_2).
+\tag{13}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(s_3=s_1s_2\)">\(s_3=s_1s_2\)</span>, <span class="math" data-tex="\(n_i=d_K(s_i)\)">\(n_i=d_K(s_i)\)</span>, so <span class="math" data-tex="\(n_3=n_1+n_2\)">\(n_3=n_1+n_2\)</span>, and choose corresponding primes <span class="math" data-tex="\(\pi_i\)">\(\pi_i\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+s_4=\phi^{n_1}s_2\phi^{-n_1},\qquad
+\pi_4=\phi^{n_1}\pi_2,\qquad n_4=n_2.
+\]">\[
+s_4=\phi^{n_1}s_2\phi^{-n_1},\qquad
+\pi_4=\phi^{n_1}\pi_2,\qquad n_4=n_2.
+\]</span>
+<p>The norm-conjugation identity (5) gives <span class="math" data-tex="\(R(s_4)=R(s_2)\)">\(R(s_4)=R(s_2)\)</span>, even before taking classes, since the resulting norm belongs to <span class="math" data-tex="\(A_K\)">\(A_K\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+t_i=\phi^{n_i}s_i^{-1}\in J.
+\]">\[
+t_i=\phi^{n_i}s_i^{-1}\in J.
+\]</span>
+<p>A direct multiplication gives <span class="math" data-tex="\(t_3=t_4t_1\)">\(t_3=t_4t_1\)</span>. Also <span class="math" data-tex="\(s_i\pi_i=\pi_i\)">\(s_i\pi_i=\pi_i\)</span>, so <span class="math" data-tex="\((\phi^{n_i}-1)\pi_i=(t_i-1)\pi_i\)">\((\phi^{n_i}-1)\pi_i=(t_i-1)\pi_i\)</span>. Consider</p>
+<span class="math math-display" data-tex="\[
+u=P_{n_3}(\phi)\pi_3-P_{n_1}(\phi)\pi_1
+-P_{n_2}(\phi)\pi_4.
+\]">\[
+u=P_{n_3}(\phi)\pi_3-P_{n_1}(\phi)\pi_1
+-P_{n_2}(\phi)\pi_4.
+\]</span>
+<p>It is a unit because its valuation is <span class="math" data-tex="\(n_3-n_1-n_2=0\)">\(n_3-n_1-n_2=0\)</span>. Let <span class="math" data-tex="\(a=\pi_3-\pi_4\)">\(a=\pi_3-\pi_4\)</span> and <span class="math" data-tex="\(b=\pi_1-\pi_4\)">\(b=\pi_1-\pi_4\)</span>, also units. The identity <span class="math" data-tex="\((\phi-1)P_n(\phi)=\phi^n-1\)">\((\phi-1)P_n(\phi)=\phi^n-1\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(\phi-1)u
+&amp;=(t_3-1)\pi_3-(t_1-1)\pi_1-(t_4-1)\pi_4\\
+&amp;=(t_3-1)a-(t_1-1)b+(t_4-1)(t_1-1)\pi_4.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+(\phi-1)u
+&amp;=(t_3-1)\pi_3-(t_1-1)\pi_1-(t_4-1)\pi_4\\
+&amp;=(t_3-1)a-(t_1-1)b+(t_4-1)(t_1-1)\pi_4.
+\end{aligned}
+\tag{14}
+\]</span>
+<p>The element <span class="math" data-tex="\((t_1-1)\pi_4\)">\((t_1-1)\pi_4\)</span> is a unit since <span class="math" data-tex="\(t_1\)">\(t_1\)</span> preserves valuation. Every term on the last line of (14) thus belongs to <span class="math" data-tex="\(I_JU_{\widetilde L}\)">\(I_JU_{\widetilde L}\)</span>. The unit descent lemma makes <span class="math" data-tex="\(N_Ju\)">\(N_Ju\)</span> a norm from <span class="math" data-tex="\(U_L\)">\(U_L\)</span>. By (11), its class is exactly <span class="math" data-tex="\(R(s_3)-R(s_1)-R(s_4)\)">\(R(s_3)-R(s_1)-R(s_4)\)</span>, proving (13). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-4-1-independence-of-the-choices">Proposition 4.1. Independence of the choices</h3>
+<p>The value (12) depends only on <span class="math" data-tex="\(s|_L\)">\(s|_L\)</span>. It is independent of the positive lift and of its prime element.</p>
+<p><strong>Proof.</strong> Prime independence was proved just before the composition lemma. Suppose <span class="math" data-tex="\(s,s&#x27;\)">\(s,s&#x27;\)</span> have the same restriction to <span class="math" data-tex="\(L\)">\(L\)</span>. If their degrees are equal, they are equal: the actions on <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\widetilde K\)">\(\widetilde K\)</span> determine an action on their compositum <span class="math" data-tex="\(\widetilde L\)">\(\widetilde L\)</span>. If their degrees differ, interchange them if necessary so that <span class="math" data-tex="\(d_K(s&#x27;)&gt;d_K(s)\)">\(d_K(s&#x27;)&gt;d_K(s)\)</span>, and set <span class="math" data-tex="\(h=s^{-1}s&#x27;\)">\(h=s^{-1}s&#x27;\)</span>. This is a positive lift restricting to the identity on <span class="math" data-tex="\(L\)">\(L\)</span>. Its fixed field contains <span class="math" data-tex="\(L\)">\(L\)</span>, so its defining norm belongs to <span class="math" data-tex="\(N_{L/K}A_L\)">\(N_{L/K}A_L\)</span>, and <span class="math" data-tex="\(R(h)=0\)">\(R(h)=0\)</span>. Equation (13) now gives <span class="math" data-tex="\(R(s&#x27;)=R(s)+R(h)=R(s)\)">\(R(s&#x27;)=R(s)+R(h)=R(s)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="proposition-4-2-the-reciprocity-homomorphism">Proposition 4.2. The reciprocity homomorphism</h3>
+<p>The prescription</p>
+<span class="math math-display" data-tex="\[
+r_{L/K}(g)=R(s),\qquad s|_L=g,
+\]">\[
+r_{L/K}(g)=R(s),\qquad s|_L=g,
+\]</span>
+<p>defines a homomorphism</p>
+<span class="math math-display" data-tex="\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\longrightarrow A_K/N_{L/K}A_L.
+\tag{15}
+\]">\[
+r_{L/K}:\operatorname{Gal}(L/K)^{\mathrm{ab}}
+\longrightarrow A_K/N_{L/K}A_L.
+\tag{15}
+\]</span>
+<p>For a multiplicatively written <span class="math" data-tex="\(A\)">\(A\)</span>, equation (13) says exactly that <span class="math" data-tex="\(r\)">\(r\)</span> is multiplicative.</p>
+<p><strong>Proof.</strong> Positive lifts exist by section 2, and Proposition 4.1 makes the prescription independent of them. The product of lifts of <span class="math" data-tex="\(g_1,g_2\)">\(g_1,g_2\)</span> is a positive lift of <span class="math" data-tex="\(g_1g_2\)">\(g_1g_2\)</span>, so (13) proves the homomorphism property. The target is abelian, so the homomorphism kills commutators and factors through the finite group's abelianization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<span id="6-norms-conjugation-and-transfer" aria-hidden="true"></span><h2 id="7-norms-conjugation-and-transfer">7. Norms, conjugation and transfer</h2>
+<h3 id="proposition-4-4-functoriality">Proposition 4.4. Functoriality</h3>
+<p>The maps (15) have the following three compatibilities.</p>
+<ol>
+<li>If <span class="math" data-tex="\(K\subset K&#x27;\)">\(K\subset K&#x27;\)</span>, <span class="math" data-tex="\(L\subset L&#x27;\)">\(L\subset L&#x27;\)</span>, and both <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, <span class="math" data-tex="\(L&#x27;/K&#x27;\)">\(L&#x27;/K&#x27;\)</span> are finite Galois, then
+<span class="math math-display" data-tex="\[
+N_{K&#x27;/K}\,r_{L&#x27;/K&#x27;}(g&#x27;)=r_{L/K}(g&#x27;|_L).
+\tag{16}
+\]">\[
+N_{K&#x27;/K}\,r_{L&#x27;/K&#x27;}(g&#x27;)=r_{L/K}(g&#x27;|_L).
+\tag{16}
+\]</span>
+The norm on the left is taken on the corresponding quotient modules.</li>
+<li>For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>,
+<span class="math math-display" data-tex="\[
+r_{gL/gK}(g\sigma g^{-1})=g\,r_{L/K}(\sigma).
+\tag{17}
+\]">\[
+r_{gL/gK}(g\sigma g^{-1})=g\,r_{L/K}(\sigma).
+\tag{17}
+\]</span></li>
+<li>If <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> is intermediate in a finite Galois <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, the inclusion of modules satisfies
+<span class="math math-display" data-tex="\[
+r_{L/K}(\sigma)\text{ viewed in }A_{K&#x27;}/N_{L/K&#x27;}A_L
+=r_{L/K&#x27;}(\operatorname{Ver}\sigma).
+\tag{18}
+\]">\[
+r_{L/K}(\sigma)\text{ viewed in }A_{K&#x27;}/N_{L/K&#x27;}A_L
+=r_{L/K&#x27;}(\operatorname{Ver}\sigma).
+\tag{18}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Ver}:\operatorname{Gal}(L/K)^{\mathrm{ab}}\to
+\operatorname{Gal}(L/K&#x27;)^{\mathrm{ab}}\)">\(\operatorname{Ver}:\operatorname{Gal}(L/K)^{\mathrm{ab}}\to
+\operatorname{Gal}(L/K&#x27;)^{\mathrm{ab}}\)</span> is transfer.</li>
+</ol>
+<p><strong>Proof of (16).</strong> Lift <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> to a positive <span class="math" data-tex="\(s&#x27;\in\operatorname{Gal}(\widetilde L&#x27;/K&#x27;)\)">\(s&#x27;\in\operatorname{Gal}(\widetilde L&#x27;/K&#x27;)\)</span>, of degree <span class="math" data-tex="\(n&#x27;\)">\(n&#x27;\)</span>. Its restriction <span class="math" data-tex="\(s\)">\(s\)</span> to <span class="math" data-tex="\(\widetilde L\)">\(\widetilde L\)</span> is positive, of degree <span class="math" data-tex="\(f_{K&#x27;/K}n&#x27;\)">\(f_{K&#x27;/K}n&#x27;\)</span>. If <span class="math" data-tex="\(\Sigma&#x27;\)">\(\Sigma&#x27;\)</span> and <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> are their fixed fields, then <span class="math" data-tex="\(\Sigma=\Sigma&#x27;\cap\widetilde L\)">\(\Sigma=\Sigma&#x27;\cap\widetilde L\)</span>. Their absolute residue degrees are both <span class="math" data-tex="\(f_{K&#x27;}n&#x27;\)">\(f_{K&#x27;}n&#x27;\)</span>, so <span class="math" data-tex="\(f_{\Sigma&#x27;/\Sigma}=1\)">\(f_{\Sigma&#x27;/\Sigma}=1\)</span>. For a prime <span class="math" data-tex="\(\pi&#x27;\in A_{\Sigma&#x27;}\)">\(\pi&#x27;\in A_{\Sigma&#x27;}\)</span>, equation (8) makes <span class="math" data-tex="\(\pi=N_{\Sigma&#x27;/\Sigma}\pi&#x27;\)">\(\pi=N_{\Sigma&#x27;/\Sigma}\pi&#x27;\)</span> a prime of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. Norm transitivity gives the exact equality</p>
+<span class="math math-display" data-tex="\[
+N_{\Sigma/K}\pi
+=N_{\Sigma&#x27;/K}\pi&#x27;
+=N_{K&#x27;/K}N_{\Sigma&#x27;/K&#x27;}\pi&#x27;.
+\]">\[
+N_{\Sigma/K}\pi
+=N_{\Sigma&#x27;/K}\pi&#x27;
+=N_{K&#x27;/K}N_{\Sigma&#x27;/K&#x27;}\pi&#x27;.
+\]</span>
+<p>This gives (16). The quotient norm is well defined because <span class="math" data-tex="\(N_{K&#x27;/K}N_{L&#x27;/K&#x27;}A_{L&#x27;}=N_{L&#x27;/K}A_{L&#x27;}\subset N_{L/K}A_L\)">\(N_{K&#x27;/K}N_{L&#x27;/K&#x27;}A_{L&#x27;}=N_{L&#x27;/K}A_{L&#x27;}\subset N_{L/K}A_L\)</span>.</p>
+<p><strong>Proof of (17).</strong> A lift <span class="math" data-tex="\(s\)">\(s\)</span> with fixed field <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> becomes <span class="math" data-tex="\(gsg^{-1}\)">\(gsg^{-1}\)</span> with fixed field <span class="math" data-tex="\(g\Sigma\)">\(g\Sigma\)</span>. Its degree remains the same, since the degree map has abelian target. The element <span class="math" data-tex="\(g\pi_\Sigma\)">\(g\pi_\Sigma\)</span> is prime by the conjugation identity for valuations. Equation (5) gives (17) directly.</p>
+<p>For (18), we first establish the needed group-theoretic formula. Let <span class="math" data-tex="\(T\)">\(T\)</span> be finite and <span class="math" data-tex="\(H\subset T\)">\(H\subset T\)</span>. Choose representatives <span class="math" data-tex="\(R\)">\(R\)</span> for left cosets <span class="math" data-tex="\(T/H\)">\(T/H\)</span>. For <span class="math" data-tex="\(\sigma\in T\)">\(\sigma\in T\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\sigma r=r&#x27; h_r(\sigma),\qquad r&#x27;\in R,\ h_r(\sigma)\in H.
+\]">\[
+\sigma r=r&#x27; h_r(\sigma),\qquad r&#x27;\in R,\ h_r(\sigma)\in H.
+\]</span>
+<p>Then <span class="math" data-tex="\(\operatorname{Ver}(\sigma)=\prod_{r\in R}h_r(\sigma)\)">\(\operatorname{Ver}(\sigma)=\prod_{r\in R}h_r(\sigma)\)</span> in <span class="math" data-tex="\(H^{\mathrm{ab}}\)">\(H^{\mathrm{ab}}\)</span>. Replacing <span class="math" data-tex="\(r\)">\(r\)</span> by <span class="math" data-tex="\(rk_r\)">\(rk_r\)</span> replaces its factor by <span class="math" data-tex="\(k_{r&#x27;}^{-1}h_r(\sigma)k_r\)">\(k_{r&#x27;}^{-1}h_r(\sigma)k_r\)</span>; the <span class="math" data-tex="\(k_r\)">\(k_r\)</span> cancel in the abelian product. Thus transfer does not depend on representatives. The factors for <span class="math" data-tex="\(\sigma\tau\)">\(\sigma\tau\)</span> are those for <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> at the cosets permuted by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, followed by those for <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Their products prove that transfer is a homomorphism, hence factors through <span class="math" data-tex="\(T^{\mathrm{ab}}\)">\(T^{\mathrm{ab}}\)</span>. On an orbit of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> in <span class="math" data-tex="\(T/H\)">\(T/H\)</span>, choose representatives <span class="math" data-tex="\(r,\sigma r,\ldots,\sigma^{a-1}r\)">\(r,\sigma r,\ldots,\sigma^{a-1}r\)</span>. The contribution is <span class="math" data-tex="\(r^{-1}\sigma^a r\)">\(r^{-1}\sigma^a r\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is that orbit's length. Therefore</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ver}(\sigma)=\prod_r r^{-1}\sigma^{a_r}r
+\quad\text{in }H^{\mathrm{ab}},
+\tag{19}
+\]">\[
+\operatorname{Ver}(\sigma)=\prod_r r^{-1}\sigma^{a_r}r
+\quad\text{in }H^{\mathrm{ab}},
+\tag{19}
+\]</span>
+<p>with one representative per orbit.</p>
+<p>Now take <span class="math" data-tex="\(T=\operatorname{Gal}(L/K)\)">\(T=\operatorname{Gal}(L/K)\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(L/K&#x27;)\)">\(H=\operatorname{Gal}(L/K&#x27;)\)</span>. The inclusion in (18) is well defined: decomposing <span class="math" data-tex="\(T\)">\(T\)</span> into right cosets <span class="math" data-tex="\(H t\)">\(H t\)</span> shows that <span class="math" data-tex="\(N_{L/K}a=N_{L/K&#x27;}(\sum_t t a)\)">\(N_{L/K}a=N_{L/K&#x27;}(\sum_t t a)\)</span>, so every norm from <span class="math" data-tex="\(L/K\)">\(L/K\)</span> is a norm from <span class="math" data-tex="\(L/K&#x27;\)">\(L/K&#x27;\)</span>.</p>
+<p>Choose a positive lift <span class="math" data-tex="\(s\in\Gamma\)">\(s\in\Gamma\)</span> of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, with fixed field <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, and write <span class="math" data-tex="\(S=\overline{\langle s\rangle}\)">\(S=\overline{\langle s\rangle}\)</span>, <span class="math" data-tex="\(\Gamma&#x27;=\operatorname{Gal}(\widetilde L/K&#x27;)\)">\(\Gamma&#x27;=\operatorname{Gal}(\widetilde L/K&#x27;)\)</span>. The finite coset spaces <span class="math" data-tex="\(\Gamma/\Gamma&#x27;\)">\(\Gamma/\Gamma&#x27;\)</span> and <span class="math" data-tex="\(T/H\)">\(T/H\)</span> agree. Representatives for the <span class="math" data-tex="\(S\)">\(S\)</span>-orbits may therefore be chosen to lift those in (19). For each, put</p>
+<span class="math math-display" data-tex="\[
+s_r=r^{-1}s^{a_r}r,\qquad
+S_r=\Gamma&#x27;\cap r^{-1}Sr=\overline{\langle s_r\rangle}.
+\]">\[
+s_r=r^{-1}s^{a_r}r,\qquad
+S_r=\Gamma&#x27;\cap r^{-1}Sr=\overline{\langle s_r\rangle}.
+\]</span>
+<p>The equality follows because the open subgroup of the procyclic group <span class="math" data-tex="\(S\)">\(S\)</span> stabilizing that coset has index <span class="math" data-tex="\(a_r\)">\(a_r\)</span>. The element <span class="math" data-tex="\(s_r\)">\(s_r\)</span> is a positive lift over <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>: its degree is <span class="math" data-tex="\(a_r d_K(s)/f_{K&#x27;/K}\)">\(a_r d_K(s)/f_{K&#x27;/K}\)</span>, a positive integer since its restriction belongs to <span class="math" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>. Let <span class="math" data-tex="\(\Sigma_r\)">\(\Sigma_r\)</span> be its fixed field. Then</p>
+<span class="math math-display" data-tex="\[
+\Sigma_r=(r^{-1}\Sigma)K&#x27;,
+\qquad \Sigma_r/(r^{-1}\Sigma)\text{ is unramified of degree }a_r.
+\]">\[
+\Sigma_r=(r^{-1}\Sigma)K&#x27;,
+\qquad \Sigma_r/(r^{-1}\Sigma)\text{ is unramified of degree }a_r.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\pi_r=r^{-1}\pi_\Sigma\)">\(\pi_r=r^{-1}\pi_\Sigma\)</span> is still prime in <span class="math" data-tex="\(\Sigma_r\)">\(\Sigma_r\)</span>. Finally, the double cosets <span class="math" data-tex="\(\Gamma&#x27;\backslash\Gamma/S\)">\(\Gamma&#x27;\backslash\Gamma/S\)</span> partition the cosets used in the norm from <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>. The part represented by <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> has stabilizer <span class="math" data-tex="\(S_r\)">\(S_r\)</span> in <span class="math" data-tex="\(\Gamma&#x27;\)">\(\Gamma&#x27;\)</span>, so summing it gives</p>
+<span class="math math-display" data-tex="\[
+N_{\Sigma/K}\pi_\Sigma
+=\sum_r N_{\Sigma_r/K&#x27;}\pi_r
+\quad\text{in }A_{K&#x27;}.
+\tag{20}
+\]">\[
+N_{\Sigma/K}\pi_\Sigma
+=\sum_r N_{\Sigma_r/K&#x27;}\pi_r
+\quad\text{in }A_{K&#x27;}.
+\tag{20}
+\]</span>
+<p>Each summand represents <span class="math" data-tex="\(r_{L/K&#x27;}(r^{-1}\sigma^{a_r}r)\)">\(r_{L/K&#x27;}(r^{-1}\sigma^{a_r}r)\)</span>. Since reciprocity is a homomorphism, (19) and (20) prove (18). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The arrows have different arithmetic meanings. Restricting a Galois automorphism corresponds to taking a norm. Transfer corresponds to including an arithmetic element in a larger field. Confusing those two operations reverses a reciprocity diagram.</p>
+<span id="7-a-complete-unramified-model" aria-hidden="true"></span><h2 id="8-two-complete-degree-models">8. Two complete degree models</h2>
+<p>The simplest complete model isolates the degree contribution. After checking it, compare it with the local-field application: the degree is still present, but units now carry additional information and the descent lemma controls that information.</p>
+<p>Take <span class="math" data-tex="\(G=\operatorname{Gal}(\overline{\mathbf F}_q/\mathbf F_q)=\widehat{\mathbf Z}\)">\(G=\operatorname{Gal}(\overline{\mathbf F}_q/\mathbf F_q)=\widehat{\mathbf Z}\)</span>, with <span class="math" data-tex="\(d\)">\(d\)</span> the identity. Let <span class="math" data-tex="\(A=\mathbf Z\)">\(A=\mathbf Z\)</span> have trivial action, and let <span class="math" data-tex="\(v\)">\(v\)</span> be the inclusion in <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span>. Every <span class="math" data-tex="\(A_K\)">\(A_K\)</span> is <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>. For <span class="math" data-tex="\(K=\mathbf F_{q^m}\)">\(K=\mathbf F_{q^m}\)</span>, the norm to the ground field is multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>, so (7) holds with <span class="math" data-tex="\(V=\mathbf Z\)">\(V=\mathbf Z\)</span>, and <span class="math" data-tex="\(v_K\)">\(v_K\)</span> is the identity. Every extension is unramified and every unit module is zero, so (10) holds.</p>
+<p>For <span class="math" data-tex="\(L/K\)">\(L/K\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>, the quotient module is <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>, and reciprocity sends arithmetic Frobenius to 1. A positive lift of degree <span class="math" data-tex="\(b\)">\(b\)</span> has fixed field of degree <span class="math" data-tex="\(b\)">\(b\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>; the norm of its prime element 1 is <span class="math" data-tex="\(b\)">\(b\)</span>, as required. This is the degree formation associated with finite fields. It uses <span class="math" data-tex="\(\mathbf Z\)">\(\mathbf Z\)</span>, not the multiplicative group of the finite field, whose norm is surjective and could not give this quotient.</p>
+<p>For local fields the arithmetic module will instead be the multiplicative group of a separable closure, and the degree direction will be the unramified tower. The local reciprocity lesson will verify the valuation and unit hypotheses. The construction above already identifies the map once those hypotheses are verified.</p>
+<p>The same model can be built with <span class="math" data-tex="\(A=\widehat{\mathbf Z}\)">\(A=\widehat{\mathbf Z}\)</span>, still treated as a discrete module with trivial action, and <span class="math" data-tex="\(v\)">\(v\)</span> the identity. A degree-<span class="math" data-tex="\(m\)">\(m\)</span> norm is multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>, so its image is <span class="math" data-tex="\(m\widehat{\mathbf Z}\)">\(m\widehat{\mathbf Z}\)</span>. All normalized valuations are the identity, the unit modules are zero, and the quotient for degree <span class="math" data-tex="\(n\)">\(n\)</span> is again <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>. An element of <span class="math" data-tex="\(\widehat{\mathbf Z}\)">\(\widehat{\mathbf Z}\)</span> need not be an ordinary integral multiple of 1, but its class in this finite quotient is. This explains why the finite-quotient condition on <span class="math" data-tex="\(V\)">\(V\)</span>, rather than an integer-valued hypothesis, is the correct input to the proof.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Work out the degree formation of section 8, including its normalized valuations, norm groups and reciprocity for every <span class="math" data-tex="\(\mathbf F_{q^{mn}}/\mathbf F_{q^m}\)">\(\mathbf F_{q^{mn}}/\mathbf F_{q^m}\)</span>.</li>
+<li><strong>Medium.</strong> Prove that changing the prime of a positive lift's fixed field does not change its reciprocity class. Identify the unramified extension on which the unit axiom is applied.</li>
+<li><strong>Medium.</strong> Prove conjugation compatibility (17) directly from the norm definition, including preservation of prime elements.</li>
+<li><strong>Hard.</strong> Starting with the unit descent lemma, prove the composition formula (13). Check explicitly the identity <span class="math" data-tex="\(t_3=t_4t_1\)">\(t_3=t_4t_1\)</span> and why every term of (14) is a difference of units.</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<ol>
+<li>The subgroup for <span class="math" data-tex="\(\mathbf F_{q^m}\)">\(\mathbf F_{q^m}\)</span> is <span class="math" data-tex="\(m\widehat{\mathbf Z}\)">\(m\widehat{\mathbf Z}\)</span>, so <span class="math" data-tex="\(f_K=m\)">\(f_K=m\)</span>, <span class="math" data-tex="\(d_K=d/m\)">\(d_K=d/m\)</span>, and <span class="math" data-tex="\(I_K=0\)">\(I_K=0\)</span>. Trivial action gives <span class="math" data-tex="\(A_K=\mathbf Z\)">\(A_K=\mathbf Z\)</span>. A norm along a degree-<span class="math" data-tex="\(n\)">\(n\)</span> extension is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, hence its group is <span class="math" data-tex="\(n\mathbf Z\)">\(n\mathbf Z\)</span>. Since <span class="math" data-tex="\(N_{K/k}\)">\(N_{K/k}\)</span> is multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(v_K=m^{-1}vN_{K/k}\)">\(v_K=m^{-1}vN_{K/k}\)</span> is the identity. The only prime element is 1, the unit module is zero, and both Tate groups in the unit axiom vanish. The cyclic Galois group of order <span class="math" data-tex="\(n\)">\(n\)</span> maps isomorphically to <span class="math" data-tex="\(\mathbf Z/n\mathbf Z\)">\(\mathbf Z/n\mathbf Z\)</span>, with Frobenius going to 1 and its <span class="math" data-tex="\(b\)">\(b\)</span>-th power to <span class="math" data-tex="\(b\bmod n\)">\(b\bmod n\)</span>.</li>
+<li>Two primes differ by <span class="math" data-tex="\(u\in U_\Sigma\)">\(u\in U_\Sigma\)</span>. Equation (3) puts <span class="math" data-tex="\(L\Sigma\)">\(L\Sigma\)</span> inside <span class="math" data-tex="\(\widetilde\Sigma\)">\(\widetilde\Sigma\)</span>, so <span class="math" data-tex="\(L\Sigma/\Sigma\)">\(L\Sigma/\Sigma\)</span> is finite unramified cyclic. The norm-surjectivity half of (10) gives <span class="math" data-tex="\(u=N_{L\Sigma/\Sigma}b\)">\(u=N_{L\Sigma/\Sigma}b\)</span>, with <span class="math" data-tex="\(b\)">\(b\)</span> a unit. Taking its norm to <span class="math" data-tex="\(K\)">\(K\)</span> gives <span class="math" data-tex="\(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\)">\(N_{\Sigma/K}u=N_{L/K}N_{L\Sigma/L}b\)</span>, which is zero in the quotient by norms from <span class="math" data-tex="\(L\)">\(L\)</span>. The extension required is <span class="math" data-tex="\(L\Sigma/\Sigma\)">\(L\Sigma/\Sigma\)</span>, not a possibly ramified extension <span class="math" data-tex="\(L/K\)">\(L/K\)</span>.</li>
+<li>Representatives <span class="math" data-tex="\(t\)">\(t\)</span> for <span class="math" data-tex="\(G_K/G_\Sigma\)">\(G_K/G_\Sigma\)</span> become <span class="math" data-tex="\(gtg^{-1}\)">\(gtg^{-1}\)</span> for <span class="math" data-tex="\(G_{gK}/G_{g\Sigma}\)">\(G_{gK}/G_{g\Sigma}\)</span>, so the norm of <span class="math" data-tex="\(ga\)">\(ga\)</span> is <span class="math" data-tex="\(gN_{\Sigma/K}a\)">\(gN_{\Sigma/K}a\)</span>. The same identity for the norm to <span class="math" data-tex="\(k\)">\(k\)</span>, together with unchanged <span class="math" data-tex="\(f_\Sigma\)">\(f_\Sigma\)</span>, yields <span class="math" data-tex="\(v_{g\Sigma}(ga)=v_\Sigma(a)\)">\(v_{g\Sigma}(ga)=v_\Sigma(a)\)</span>. Thus <span class="math" data-tex="\(g\pi_\Sigma\)">\(g\pi_\Sigma\)</span> is prime. A positive lift becomes <span class="math" data-tex="\(gsg^{-1}\)">\(gsg^{-1}\)</span>, of the same degree and with fixed field <span class="math" data-tex="\(g\Sigma\)">\(g\Sigma\)</span>. Applying its defining norm proves (17), and conjugation also carries the denominator norm subgroup to the corresponding denominator.</li>
+<li>Choose <span class="math" data-tex="\(s_4=\phi^{n_1}s_2\phi^{-n_1}\)">\(s_4=\phi^{n_1}s_2\phi^{-n_1}\)</span>, <span class="math" data-tex="\(\pi_4=\phi^{n_1}\pi_2\)">\(\pi_4=\phi^{n_1}\pi_2\)</span>. Then
+<span class="math math-display" data-tex="\[
+t_4t_1
+=\phi^{n_2}\phi^{n_1}s_2^{-1}\phi^{-n_1}
+  \phi^{n_1}s_1^{-1}
+=\phi^{n_1+n_2}(s_1s_2)^{-1}=t_3.
+\]">\[
+t_4t_1
+=\phi^{n_2}\phi^{n_1}s_2^{-1}\phi^{-n_1}
+  \phi^{n_1}s_1^{-1}
+=\phi^{n_1+n_2}(s_1s_2)^{-1}=t_3.
+\]</span>
+Form <span class="math" data-tex="\(u\)">\(u\)</span> as in section 6. Each prime has valuation 1, so <span class="math" data-tex="\(w(u)=0\)">\(w(u)=0\)</span>. Applying <span class="math" data-tex="\(\phi-1\)">\(\phi-1\)</span> replaces <span class="math" data-tex="\(P_{n_i}(\phi)\pi_i\)">\(P_{n_i}(\phi)\pi_i\)</span> by <span class="math" data-tex="\((t_i-1)\pi_i\)">\((t_i-1)\pi_i\)</span>. Substitute <span class="math" data-tex="\(\pi_3=a+\pi_4\)">\(\pi_3=a+\pi_4\)</span>, <span class="math" data-tex="\(\pi_1=b+\pi_4\)">\(\pi_1=b+\pi_4\)</span>. The remaining coefficient of <span class="math" data-tex="\(\pi_4\)">\(\pi_4\)</span> is <span class="math" data-tex="\(t_3-t_1-t_4+1=(t_4-1)(t_1-1)\)">\(t_3-t_1-t_4+1=(t_4-1)(t_1-1)\)</span>, giving (14). Here <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, and <span class="math" data-tex="\((t_1-1)\pi_4\)">\((t_1-1)\pi_4\)</span> all have valuation zero. Thus <span class="math" data-tex="\((\phi-1)u\in I_JU_{\widetilde L}\)">\((\phi-1)u\in I_JU_{\widetilde L}\)</span>. Unit descent makes <span class="math" data-tex="\(N_Ju\)">\(N_Ju\)</span> a norm from <span class="math" data-tex="\(L\)">\(L\)</span>; (11) identifies its class with <span class="math" data-tex="\(R(s_1s_2)-R(s_1)-R(s_4)\)">\(R(s_1s_2)-R(s_1)-R(s_4)\)</span>, and (5) identifies <span class="math" data-tex="\(R(s_4)=R(s_2)\)">\(R(s_4)=R(s_2)\)</span>. This proves composition with the chosen left-action convention.</li>
+</ol>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>Sections 2–3 give the full abstract degree and valuation hypotheses, including the general permitted value group. Sections 5–7 prove unit descent, independence, composition and all three functorialities. The central finite unramified tower used in descent is constructed explicitly.</p>
+<ul>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The abstract hypotheses allow the full value group specified in section 3. The proof does not assume a splitting of that valuation sequence.</p>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="hilberts-theorem-90-and-kummer-theory.html">← Hilbert's Theorem 90 and Kummer theory</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-reciprocity-law-and-the-class-field-correspondence.html">The reciprocity law and the class field correspondence →</a></span></nav>
+<p class="small source-link"><a href="files/frobenius-lifts-and-abstract-reciprocity.md">Markdown source of this lesson</a> · <a download href="files/frobenius-lifts-and-abstract-reciprocity.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

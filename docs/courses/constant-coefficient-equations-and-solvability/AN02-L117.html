@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Logarithmic Fourier graphs construct a cone-supported inverse</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}</style></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="logarithmic-fourier-graphs-construct-a-cone-supported-inverse">Logarithmic Fourier graphs construct a cone-supported inverse</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI and spot-checked in a separate AI session. Original exposition and proof details: CC0. The full course and unrestricted source interface remain incomplete.</em></p>
+<p>We construct a distributional inverse of a compact convolution kernel from bounds on the reciprocal of its entire transform. A logarithmic graph keeps the reciprocal away from its poles while allowing the transform of every compactly supported test to make the integral converge. An explicit compact cutoff then proves that changing the graph does not change the distribution. Raising the graph makes tests beyond a supporting plane disappear.</p>
+<p>The classical completeness target is Hörmander's compact-kernel converse, <em>The Analysis of Linear Partial Differential Operators II</em>, Theorem 16.7.4. The private source is used to compare the statement only. No paid proof is needed to read or check the argument below. Its open-cone convention is recorded separately in Section 10. Here the cone excludes zero explicitly.</p>
+<p>We assume the definition of a distribution as a complex-linear functional on compact smooth tests with a finite derivative bound on every fixed compact support, and the definition of its support. We use ordinary multivariable differentiation, compact integration by parts, Fubini's theorem for absolutely integrable functions, and dominated convergence. Compact-factor convolution is defined and checked below in Section 7. The required Fourier inversion identity and the cutoff form of Stokes' argument are also proved here. No convolution support equality, Paley–Wiener converse, or transform of an unrestricted distribution is a premise.</p>
+<p>Freely readable human sources for the elementary background are Semyon Dyatlov's <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">distribution notes</a>, Definition 2.1 and Section 2.2, Sections 4.1–4.2, Sections 8.1–8.2, and Proposition 11.14/Theorem 11.15; and Gerd Grubb's <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Fourier chapter</a>, the paragraph after Remark 5.18 and equation (5.38). These are credit and comparison references. All analytic statements actually needed for the construction are proved below.</p>
+<h2 id="1-exact-statement-and-conventions">1. Exact statement and conventions</h2>
+<p>The real dimension is an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>. On <span class="math" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, use the Euclidean norm, with <span class="math" data-tex="\(\zeta=\xi+i y\)">\(\zeta=\xi+i y\)</span>, <span class="math" data-tex="\(\xi,y\in\mathbb R^n\)">\(\xi,y\in\mathbb R^n\)</span>. A nonempty <strong>punctured open convex cone</strong> in this chapter is a subset</p>
+<span class="math math-display" data-tex="\[
+\varnothing\ne\Gamma\subset\mathbb R^n\setminus\{0\}
+\tag{1.1}
+\]">\[
+\varnothing\ne\Gamma\subset\mathbb R^n\setminus\{0\}
+\tag{1.1}
+\]</span>
+<p>that is open in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, convex in the ordinary sense, and invariant under every positive dilation. This definition excludes opposite directions. It permits a half-space cone such as <span class="math" data-tex="\(\{y:y_1&gt;0\}\)">\(\{y:y_1&gt;0\}\)</span>; its closure need not be pointed. We do not use the ambiguous word “proper” without this definition. A closed angular subcone means a closed dilation-invariant set <span class="math" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span>. It contains zero unless it is empty, and its nonzero unit directions form a compact subset of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>.</p>
+<p>For a nonempty real set <span class="math" data-tex="\(B\)">\(B\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+H_B(y)=\sup_{x\in B}x\cdot y.
+\tag{1.2}
+\]">\[
+H_B(y)=\sup_{x\in B}x\cdot y.
+\tag{1.2}
+\]</span>
+<p>The transform of a compact distribution <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\widehat\mu(\zeta)=\langle\mu(x),e^{-i x\cdot\zeta}\rangle.
+\tag{1.3}
+\]">\[
+\widehat\mu(\zeta)=\langle\mu(x),e^{-i x\cdot\zeta}\rangle.
+\tag{1.3}
+\]</span>
+<p>A compact smooth cutoff equal to one near <span class="math" data-tex="\(\operatorname{supp}\mu\)">\(\operatorname{supp}\mu\)</span> defines this pairing. The test transform with the opposite argument will be denoted by</p>
+<span class="math math-display" data-tex="\[
+F_\phi(\zeta)=\widehat\phi(-\zeta)
+=\int_{\mathbb R^n}\phi(x)e^{i x\cdot\zeta}\,dx.
+\tag{1.4}
+\]">\[
+F_\phi(\zeta)=\widehat\phi(-\zeta)
+=\int_{\mathbb R^n}\phi(x)e^{i x\cdot\zeta}\,dx.
+\tag{1.4}
+\]</span>
+<p>In particular <span class="math" data-tex="\(|e^{i x\cdot(\xi+i y)}|=e^{-x\cdot y}\)">\(|e^{i x\cdot(\xi+i y)}|=e^{-x\cdot y}\)</span>, so the support exponent in (1.4) is <span class="math" data-tex="\(H_B(-y)\)">\(H_B(-y)\)</span>, not <span class="math" data-tex="\(H_B(y)\)">\(H_B(y)\)</span>.</p>
+<p><strong>Theorem 1.1 (qualified compact-kernel cone converse).</strong> Let <span class="math" data-tex="\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)">\(\mu\in\mathcal E&#x27;(\mathbb R^n)\)</span>, and let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> satisfy (1.1). Suppose that for every closed angular subcone <span class="math" data-tex="\(\Gamma_1\subset\Gamma\cup\{0\}\)">\(\Gamma_1\subset\Gamma\cup\{0\}\)</span> there are numbers <span class="math" data-tex="\(C\ge1\)">\(C\ge1\)</span>, <span class="math" data-tex="\(A\ge0\)">\(A\ge0\)</span>, and an integer <span class="math" data-tex="\(p\ge0\)">\(p\ge0\)</span> for which <span class="math" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span> has no zeros in</p>
+<span class="math math-display" data-tex="\[
+y=\operatorname{Im}\zeta\in\Gamma_1,
+\qquad |y|&gt;C\log(|\zeta|+2),
+\tag{1.5}
+\]">\[
+y=\operatorname{Im}\zeta\in\Gamma_1,
+\qquad |y|&gt;C\log(|\zeta|+2),
+\tag{1.5}
+\]</span>
+<p>and, throughout that region,</p>
+<span class="math math-display" data-tex="\[
+|\widehat\mu(\zeta)^{-1}|
+\le C(1+|\zeta|)^p e^{A|y|}.
+\tag{1.6}
+\]">\[
+|\widehat\mu(\zeta)^{-1}|
+\le C(1+|\zeta|)^p e^{A|y|}.
+\tag{1.6}
+\]</span>
+<p>Then there is <span class="math" data-tex="\(E\in\mathcal D&#x27;(\mathbb R^n)\)">\(E\in\mathcal D&#x27;(\mathbb R^n)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\mu*E=\delta_0.
+\tag{1.7}
+\]">\[
+\mu*E=\delta_0.
+\tag{1.7}
+\]</span>
+<p>For every <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>, its closed support hull <span class="math" data-tex="\(K=\overline{\operatorname{conv}}(\operatorname{supp}E)\)">\(K=\overline{\operatorname{conv}}(\operatorname{supp}E)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+H_K(\theta)&lt;\infty.
+\tag{1.8}
+\]">\[
+H_K(\theta)&lt;\infty.
+\tag{1.8}
+\]</span>
+<p>More precisely, if <span class="math" data-tex="\(A\)">\(A\)</span> is a constant in (1.6) for any closed angular subcone containing the ray of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, then the constructed <span class="math" data-tex="\(E\)">\(E\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}E\subset\{x:x\cdot\theta\le A|\theta|\},
+\qquad H_K(\theta)\le A|\theta|.
+\tag{1.9}
+\]">\[
+\operatorname{supp}E\subset\{x:x\cdot\theta\le A|\theta|\},
+\qquad H_K(\theta)\le A|\theta|.
+\tag{1.9}
+\]</span>
+<p>The constants may depend on the angular subcone. The theorem does not give a uniform bound approaching the boundary of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and it makes no assertion that <span class="math" data-tex="\(E\)">\(E\)</span> is tempered. The same <span class="math" data-tex="\(E\)">\(E\)</span> is used in every direction in (1.9); constructing unrelated directional inverses would not prove the theorem.</p>
+<h2 id="2-entire-transforms-and-the-finite-test-estimate">2. Entire transforms and the finite test estimate</h2>
+<p>Put <span class="math" data-tex="\(S=\operatorname{supp}\mu\)">\(S=\operatorname{supp}\mu\)</span>. Fix a compact cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-tex="\(S\)">\(S\)</span>. The expression <span class="math" data-tex="\(\langle\mu,\chi e^{-ix\cdot\zeta}\rangle\)">\(\langle\mu,\chi e^{-ix\cdot\zeta}\rangle\)</span> does not depend on <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, since the difference of two admissible cutoffs vanishes on a neighborhood of <span class="math" data-tex="\(S\)">\(S\)</span>. It is entire. Indeed, about any fixed <span class="math" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, the exponential power series converges uniformly on <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>, together with every prescribed finite number of <span class="math" data-tex="\(x\)">\(x\)</span>-derivatives, for <span class="math" data-tex="\(\zeta-\zeta_0\)">\(\zeta-\zeta_0\)</span> in a fixed compact set. Factorial denominators dominate the powers of the bounded coordinates and the finitely many factors from differentiating. Finite-order continuity of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> lets us pair this power series term by term. Thus</p>
+<span class="math math-display" data-tex="\[
+\partial_\zeta^\alpha\widehat\mu(\zeta)
+=\langle\mu,(-ix)^\alpha e^{-ix\cdot\zeta}\rangle.
+\tag{2.1}
+\]">\[
+\partial_\zeta^\alpha\widehat\mu(\zeta)
+=\langle\mu,(-ix)^\alpha e^{-ix\cdot\zeta}\rangle.
+\tag{2.1}
+\]</span>
+<p>The same argument, now ordinary integration on the support of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, makes <span class="math" data-tex="\(F_\phi\)">\(F_\phi\)</span> entire. On the open set where <span class="math" data-tex="\(\widehat\mu\ne0\)">\(\widehat\mu\ne0\)</span>, put <span class="math" data-tex="\(q=1/\widehat\mu\)">\(q=1/\widehat\mu\)</span>. It is holomorphic there. Its denominator is never used outside that open set.</p>
+<p>Fix a nonempty compact test support <span class="math" data-tex="\(B\subset\mathbb R^n\)">\(B\subset\mathbb R^n\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\|\phi\|_{B,m}
+=\max_{|\alpha|\le m}\sup_x|\partial^\alpha\phi(x)|,
+\qquad \operatorname{supp}\phi\subset B.
+\tag{2.2}
+\]">\[
+\|\phi\|_{B,m}
+=\max_{|\alpha|\le m}\sup_x|\partial^\alpha\phi(x)|,
+\qquad \operatorname{supp}\phi\subset B.
+\tag{2.2}
+\]</span>
+<p>Derivatives of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> have support in <span class="math" data-tex="\(B\)">\(B\)</span>. Choose a ball containing <span class="math" data-tex="\(B\)">\(B\)</span>, with volume <span class="math" data-tex="\(V_B\)">\(V_B\)</span>. For every integer <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>, compact integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+F_\phi(\xi+i y)
+=(1+|\xi|^2)^{-N}
+\int e^{i x\cdot\xi}(1-\Delta_x)^N
+\bigl(\phi(x)e^{-x\cdot y}\bigr)\,dx.
+\tag{2.3}
+\]">\[
+F_\phi(\xi+i y)
+=(1+|\xi|^2)^{-N}
+\int e^{i x\cdot\xi}(1-\Delta_x)^N
+\bigl(\phi(x)e^{-x\cdot y}\bigr)\,dx.
+\tag{2.3}
+\]</span>
+<p>This follows from <span class="math" data-tex="\((1-\Delta_x)^N e^{i x\cdot\xi}=(1+|\xi|^2)^N e^{i x\cdot\xi}\)">\((1-\Delta_x)^N e^{i x\cdot\xi}=(1+|\xi|^2)^N e^{i x\cdot\xi}\)</span>; the differentiated amplitude has compact support, so there are no integration boundaries. The product rule shows that each of its derivatives of order at most <span class="math" data-tex="\(2N\)">\(2N\)</span> is a finite sum of</p>
+<span class="math math-display" data-tex="\[
+\binom\alpha\beta(\partial^\beta\phi)(x)
+(-y)^{\alpha-\beta}e^{-x\cdot y}.
+\]">\[
+\binom\alpha\beta(\partial^\beta\phi)(x)
+(-y)^{\alpha-\beta}e^{-x\cdot y}.
+\]</span>
+<p>Every summand is bounded by a fixed combinatorial constant times <span class="math" data-tex="\(\|\phi\|_{B,2N}(1+|y|)^{2N}e^{H_B(-y)}\)">\(\|\phi\|_{B,2N}(1+|y|)^{2N}e^{H_B(-y)}\)</span>. Integrating on the containing ball proves the estimate</p>
+<span class="math math-display" data-tex="\[
+|F_\phi(\xi+i y)|
+\le D_{B,N}\|\phi\|_{B,2N}
+(1+|\xi|^2)^{-N}(1+|y|)^{2N}e^{H_B(-y)}.
+\tag{2.4}
+\]">\[
+|F_\phi(\xi+i y)|
+\le D_{B,N}\|\phi\|_{B,2N}
+(1+|\xi|^2)^{-N}(1+|y|)^{2N}e^{H_B(-y)}.
+\tag{2.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_{B,N}\)">\(D_{B,N}\)</span> is finite and independent of <span class="math" data-tex="\(\phi,\xi,y\)">\(\phi,\xi,y\)</span>. One may take <span class="math" data-tex="\(V_B\)">\(V_B\)</span> times the finite sum of the coefficients of the product-rule expansion. There is no hidden choice of a test-dependent order. If the compact support is empty, the only test is zero and every subsequent bound is immediate.</p>
+<h2 id="3-making-an-entire-family-of-graphs-admissible">3. Making an entire family of graphs admissible</h2>
+<p>For <span class="math" data-tex="\(\xi\in\mathbb R^n\)">\(\xi\in\mathbb R^n\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+r=|\xi|,\qquad t=2+r^2,\qquad h(\xi)=\log t.
+\tag{3.1}
+\]">\[
+r=|\xi|,\qquad t=2+r^2,\qquad h(\xi)=\log t.
+\tag{3.1}
+\]</span>
+<p>Then <span class="math" data-tex="\(h\ge\log2\)">\(h\ge\log2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\nabla h=\frac{2\xi}{2+|\xi|^2},
+\qquad |\nabla h|\le\frac1{\sqrt2},
+\qquad h\le\sqrt t.
+\tag{3.2}
+\]">\[
+\nabla h=\frac{2\xi}{2+|\xi|^2},
+\qquad |\nabla h|\le\frac1{\sqrt2},
+\qquad h\le\sqrt t.
+\tag{3.2}
+\]</span>
+<p>The gradient bound maximizes <span class="math" data-tex="\(2r/(2+r^2)\)">\(2r/(2+r^2)\)</span> at <span class="math" data-tex="\(r=\sqrt2\)">\(r=\sqrt2\)</span>. For the last inequality, the maximum of <span class="math" data-tex="\((\log t)/\sqrt t\)">\((\log t)/\sqrt t\)</span> for <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span> is <span class="math" data-tex="\(2/e&lt;1\)">\(2/e&lt;1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\theta(s)\)">\(\theta(s)\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>, be a continuously differentiable direction path whose image is a compact subset of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+m=\min_s|\theta(s)|&gt;0,
+\qquad b=\max_s|\theta(s)|&lt;\infty.
+\tag{3.3}
+\]">\[
+m=\min_s|\theta(s)|&gt;0,
+\qquad b=\max_s|\theta(s)|&lt;\infty.
+\tag{3.3}
+\]</span>
+<p>The generated closed cone</p>
+<span class="math math-display" data-tex="\[
+\Gamma_1=\{\rho\theta(s):\rho\ge0,\ 0\le s\le1\}
+\tag{3.4}
+\]">\[
+\Gamma_1=\{\rho\theta(s):\rho\ge0,\ 0\le s\le1\}
+\tag{3.4}
+\]</span>
+<p>is contained in <span class="math" data-tex="\(\Gamma\cup\{0\}\)">\(\Gamma\cup\{0\}\)</span>. To check closedness, a convergent sequence <span class="math" data-tex="\(\rho_j\theta(s_j)\)">\(\rho_j\theta(s_j)\)</span> is bounded; (3.3) bounds <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span>, and subsequences of <span class="math" data-tex="\(\rho_j,s_j\)">\(\rho_j,s_j\)</span> converge. Their limit has the form in (3.4). Choose the constants <span class="math" data-tex="\(C,A,p\)">\(C,A,p\)</span> from (1.5)–(1.6) for this cone.</p>
+<p>Consider the graph family</p>
+<span class="math math-display" data-tex="\[
+z_{L,s}(\xi)=\xi+iL\theta(s)h(\xi).
+\tag{3.5}
+\]">\[
+z_{L,s}(\xi)=\xi+iL\theta(s)h(\xi).
+\tag{3.5}
+\]</span>
+<p>We give an actual uniform height threshold. First,</p>
+<span class="math math-display" data-tex="\[
+|z_{L,s}|+2\le r+Lb h+2
+\le(r+2)(1+Lb h).
+\]">\[
+|z_{L,s}|+2\le r+Lb h+2
+\le(r+2)(1+Lb h).
+\]</span>
+<p>Since <span class="math" data-tex="\(r+2\le2(2+r^2)=2t\)">\(r+2\le2(2+r^2)=2t\)</span>, <span class="math" data-tex="\(1+Lb h\le(1+Lb)(1+h)\)">\(1+Lb h\le(1+Lb)(1+h)\)</span>, <span class="math" data-tex="\(\log(1+h)\le h\)">\(\log(1+h)\le h\)</span>, and <span class="math" data-tex="\(\log2\le h\)">\(\log2\le h\)</span>, this implies</p>
+<span class="math math-display" data-tex="\[
+\log(|z_{L,s}|+2)
+\le\left(3+\frac{\log(1+Lb)}{\log2}\right)h.
+\tag{3.6}
+\]">\[
+\log(|z_{L,s}|+2)
+\le\left(3+\frac{\log(1+Lb)}{\log2}\right)h.
+\tag{3.6}
+\]</span>
+<p>For <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span>, the elementary integral inequality <span class="math" data-tex="\(\log v\le2\sqrt v\)">\(\log v\le2\sqrt v\)</span>, <span class="math" data-tex="\(v\ge1\)">\(v\ge1\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\log(1+Lb)\le2\sqrt{1+b}\sqrt L.
+\tag{3.7}
+\]">\[
+\log(1+Lb)\le2\sqrt{1+b}\sqrt L.
+\tag{3.7}
+\]</span>
+<p>Thus every <span class="math" data-tex="\(L\ge L_*\)">\(L\ge L_*\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+L_*=1+\max\left\{1,\frac{6C}{m},
+\left(\frac{4C\sqrt{1+b}}{m\log2}\right)^2\right\},
+\tag{3.8}
+\]">\[
+L_*=1+\max\left\{1,\frac{6C}{m},
+\left(\frac{4C\sqrt{1+b}}{m\log2}\right)^2\right\},
+\tag{3.8}
+\]</span>
+<p>satisfies</p>
+<span class="math math-display" data-tex="\[
+Lm&gt;C\left(3+\frac{\log(1+Lb)}{\log2}\right).
+\tag{3.9}
+\]">\[
+Lm&gt;C\left(3+\frac{\log(1+Lb)}{\log2}\right).
+\tag{3.9}
+\]</span>
+<p>Indeed, the two terms on the right after (3.7) are each strictly less than <span class="math" data-tex="\(Lm/2\)">\(Lm/2\)</span>. Equations (3.6)–(3.9) prove</p>
+<span class="math math-display" data-tex="\[
+|\operatorname{Im}z_{L,s}|=L|\theta(s)|h
+&gt;C\log(|z_{L,s}|+2).
+\tag{3.10}
+\]">\[
+|\operatorname{Im}z_{L,s}|=L|\theta(s)|h
+&gt;C\log(|z_{L,s}|+2).
+\tag{3.10}
+\]</span>
+<p>This holds at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> as well as at infinity, for all <span class="math" data-tex="\(s\)">\(s\)</span> and all <span class="math" data-tex="\(L\ge L_*\)">\(L\ge L_*\)</span>. The imaginary directions belong to (3.4). Consequently every such graph and every indicated direction homotopy avoids all zeros of <span class="math" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span>. A finite compact portion of the homotopy has an open zero-free neighborhood, because its continuous image is compact and <span class="math" data-tex="\(\widehat\mu\)">\(\widehat\mu\)</span> is continuous and nonzero there. It is on that neighborhood that the holomorphic forms used below are defined.</p>
+<h2 id="4-the-graph-jacobian-and-distributional-continuity">4. The graph Jacobian and distributional continuity</h2>
+<p>For a fixed real vector <span class="math" data-tex="\(u\)">\(u\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+z_u(\xi)=\xi+i u h(\xi),\qquad
+J_u(\xi)=\det\bigl(I+i u\otimes\nabla h\bigr).
+\tag{4.1}
+\]">\[
+z_u(\xi)=\xi+i u h(\xi),\qquad
+J_u(\xi)=\det\bigl(I+i u\otimes\nabla h\bigr).
+\tag{4.1}
+\]</span>
+<p>Multilinearity of the determinant gives the rank-one identity</p>
+<span class="math math-display" data-tex="\[
+\det(I+a\otimes v)=1+v\cdot a.
+\tag{4.2}
+\]">\[
+\det(I+a\otimes v)=1+v\cdot a.
+\tag{4.2}
+\]</span>
+<p>To see every term, write its <span class="math" data-tex="\(j\)">\(j\)</span>-th column as <span class="math" data-tex="\(e_j+v_j a\)">\(e_j+v_j a\)</span>. The term selecting no added column is one. Selecting only the <span class="math" data-tex="\(j\)">\(j\)</span>-th added column contributes <span class="math" data-tex="\(v_j a_j\)">\(v_j a_j\)</span>. Any term selecting two added columns has proportional columns and vanishes. This argument works over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+J_u=1+i u\cdot\nabla h,
+\qquad |J_u|\le1+\frac{|u|}{\sqrt2}.
+\tag{4.3}
+\]">\[
+J_u=1+i u\cdot\nabla h,
+\qquad |J_u|\le1+\frac{|u|}{\sqrt2}.
+\tag{4.3}
+\]</span>
+<p>The real part is one; there is no singular graph Jacobian. The pullback of <span class="math" data-tex="\(dz_1\wedge\cdots\wedge dz_n\)">\(dz_1\wedge\cdots\wedge dz_n\)</span> under (4.1) is <span class="math" data-tex="\(J_u\,d\xi_1\wedge\cdots\wedge d\xi_n\)">\(J_u\,d\xi_1\wedge\cdots\wedge d\xi_n\)</span>, oriented by the real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-coordinates. It is a complex determinant, not an absolute surface-area factor.</p>
+<p>Fix <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>, choose the constants for its ray, and choose <span class="math" data-tex="\(L\)">\(L\)</span> above the ray version of (3.8). Define</p>
+<span class="math math-display" data-tex="\[
+E_{\theta,L}(\phi)
+=(2\pi)^{-n}\int_{\mathbb R^n}
+q(z_{L\theta}(\xi))F_\phi(z_{L\theta}(\xi))
+J_{L\theta}(\xi)\,d\xi.
+\tag{4.4}
+\]">\[
+E_{\theta,L}(\phi)
+=(2\pi)^{-n}\int_{\mathbb R^n}
+q(z_{L\theta}(\xi))F_\phi(z_{L\theta}(\xi))
+J_{L\theta}(\xi)\,d\xi.
+\tag{4.4}
+\]</span>
+<p>We prove absolute convergence with one finite derivative order on each fixed compact support <span class="math" data-tex="\(B\)">\(B\)</span>. Put <span class="math" data-tex="\(R_B=\max_{x\in B}|x|\)">\(R_B=\max_{x\in B}|x|\)</span> and <span class="math" data-tex="\(U=L|\theta|\)">\(U=L|\theta|\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+H_B(-L\theta h)\le R_B U h,
+\qquad 1+|z_{L\theta}|\le(\sqrt2+U)\sqrt t.
+\tag{4.5}
+\]">\[
+H_B(-L\theta h)\le R_B U h,
+\qquad 1+|z_{L\theta}|\le(\sqrt2+U)\sqrt t.
+\tag{4.5}
+\]</span>
+<p>The second inequality uses <span class="math" data-tex="\(1+r\le\sqrt2\sqrt t\)">\(1+r\le\sqrt2\sqrt t\)</span> and (3.2). Also <span class="math" data-tex="\(1+Uh\le(1/\log2+U)h\)">\(1+Uh\le(1/\log2+U)h\)</span>, because <span class="math" data-tex="\(h\ge\log2\)">\(h\ge\log2\)</span>. Since <span class="math" data-tex="\(t/2\le1+r^2\le t\)">\(t/2\le1+r^2\le t\)</span>, equations (1.6), (2.4), (4.3), and (4.5) bound the absolute integrand in (4.4) by</p>
+<span class="math math-display" data-tex="\[
+D\|\phi\|_{B,2N}
+t^{p/2-N+U(A+R_B)}h^{2N}.
+\tag{4.6}
+\]">\[
+D\|\phi\|_{B,2N}
+t^{p/2-N+U(A+R_B)}h^{2N}.
+\tag{4.6}
+\]</span>
+<p>Here and below a finite constant <span class="math" data-tex="\(D\)">\(D\)</span> may change from line to line; in (4.6) it depends on <span class="math" data-tex="\(B,N,L,\theta,C,A,p,n\)">\(B,N,L,\theta,C,A,p,n\)</span>, but not on <span class="math" data-tex="\(\phi,\xi\)">\(\phi,\xi\)</span>. For an integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, the maximum of <span class="math" data-tex="\((\log t)^k/t\)">\((\log t)^k/t\)</span> over <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> is <span class="math" data-tex="\((k/e)^k\)">\((k/e)^k\)</span>. Our graph values always have <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>, so this gives a valid upper bound. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, one can use <span class="math" data-tex="\(1\le t\)">\(1\le t\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+h^{2N}\le D_N t.
+\tag{4.7}
+\]">\[
+h^{2N}\le D_N t.
+\tag{4.7}
+\]</span>
+<p>Choose an integer</p>
+<span class="math math-display" data-tex="\[
+N&gt;\frac{p+n}{2}+U(A+R_B)+1.
+\tag{4.8}
+\]">\[
+N&gt;\frac{p+n}{2}+U(A+R_B)+1.
+\tag{4.8}
+\]</span>
+<p>The exponent of <span class="math" data-tex="\(t\)">\(t\)</span> after (4.7) is strictly below <span class="math" data-tex="\(-n/2\)">\(-n/2\)</span>. A power <span class="math" data-tex="\((2+|\xi|^2)^{-a}\)">\((2+|\xi|^2)^{-a}\)</span> is integrable when <span class="math" data-tex="\(a&gt;n/2\)">\(a&gt;n/2\)</span>: it is bounded on the unit ball, and polar coordinates reduce the exterior integral to <span class="math" data-tex="\(\int_1^\infty r^{n-1-2a}dr\)">\(\int_1^\infty r^{n-1-2a}dr\)</span>. This proves</p>
+<span class="math math-display" data-tex="\[
+|E_{\theta,L}(\phi)|\le D_B\|\phi\|_{B,2N}.
+\tag{4.9}
+\]">\[
+|E_{\theta,L}(\phi)|\le D_B\|\phi\|_{B,2N}.
+\tag{4.9}
+\]</span>
+<p>The integral is complex-linear, and (4.9) is its required finite-order bound on the fixed test space <span class="math" data-tex="\(\mathcal D_B\)">\(\mathcal D_B\)</span>. Every convergent test sequence has one common compact support and all its derivatives converge uniformly there, so (4.9) gives continuity. Equivalently it satisfies the usual fixed-compact characterization of <span class="math" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>. We have constructed a distribution, with the derivative order depending on <span class="math" data-tex="\(B\)">\(B\)</span>; we have not assigned it a global transform or a uniform order at infinity.</p>
+<h2 id="5-a-cutoff-proof-of-graph-deformation">5. A cutoff proof of graph deformation</h2>
+<p>Here is the full deformation calculation. Let <span class="math" data-tex="\(f\)">\(f\)</span> be holomorphic on an open neighborhood of the image of</p>
+<span class="math math-display" data-tex="\[
+Z(s,\xi)=\xi+i u(s)h(\xi),\qquad 0\le s\le1,
+\tag{5.1}
+\]">\[
+Z(s,\xi)=\xi+i u(s)h(\xi),\qquad 0\le s\le1,
+\tag{5.1}
+\]</span>
+<p>on every compact <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-set, where <span class="math" data-tex="\(u\)">\(u\)</span> is continuously differentiable. Set <span class="math" data-tex="\(\Omega=f(z)\,dz_1\wedge\cdots\wedge dz_n\)">\(\Omega=f(z)\,dz_1\wedge\cdots\wedge dz_n\)</span>. Holomorphicity implies <span class="math" data-tex="\(d\Omega=0\)">\(d\Omega=0\)</span>: each complex derivative term includes a repeated <span class="math" data-tex="\(dz_j\)">\(dz_j\)</span>, and each anti-holomorphic derivative is zero. Pulling back gives</p>
+<span class="math math-display" data-tex="\[
+Z^*\Omega=a(s,\xi)\,d\xi
++ds\wedge\iota_{B(s,\xi)}d\xi,
+\tag{5.2}
+\]">\[
+Z^*\Omega=a(s,\xi)\,d\xi
++ds\wedge\iota_{B(s,\xi)}d\xi,
+\tag{5.2}
+\]</span>
+<p>where <span class="math" data-tex="\(d\xi=d\xi_1\wedge\cdots\wedge d\xi_n\)">\(d\xi=d\xi_1\wedge\cdots\wedge d\xi_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a=f(Z)\det A,\quad
+A=I+i u\otimes v,\quad v=\nabla h,
+\tag{5.3}
+\]">\[
+a=f(Z)\det A,\quad
+A=I+i u\otimes v,\quad v=\nabla h,
+\tag{5.3}
+\]</span>
+<p>and the <span class="math" data-tex="\(j\)">\(j\)</span>-th component <span class="math" data-tex="\(B_j\)">\(B_j\)</span> is <span class="math" data-tex="\(f(Z)\)">\(f(Z)\)</span> times the determinant of <span class="math" data-tex="\(A\)">\(A\)</span> with its <span class="math" data-tex="\(j\)">\(j\)</span>-th column replaced by <span class="math" data-tex="\(c=\partial_sZ=i u&#x27;h\)">\(c=\partial_sZ=i u&#x27;h\)</span>. This follows by evaluating <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> on <span class="math" data-tex="\(\partial_s Z,\partial_{\xi_1}Z,\ldots\)">\(\partial_s Z,\partial_{\xi_1}Z,\ldots\)</span> and moving the replaced column to its position; the sign <span class="math" data-tex="\((-1)^{j-1}\)">\((-1)^{j-1}\)</span> is precisely the sign in <span class="math" data-tex="\(\iota_B d\xi\)">\(\iota_B d\xi\)</span>.</p>
+<p>One can compute these components without any surface shorthand. From (4.2), <span class="math" data-tex="\(\det A=1+i u\cdot v\ne0\)">\(\det A=1+i u\cdot v\ne0\)</span>. Multiplying out verifies</p>
+<span class="math math-display" data-tex="\[
+\operatorname{adj}(A)
+=(1+i u\cdot v)I-i u\otimes v.
+\tag{5.4}
+\]">\[
+\operatorname{adj}(A)
+=(1+i u\cdot v)I-i u\otimes v.
+\tag{5.4}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+B=f(Z)h\bigl(i u&#x27;-(u\cdot v)u&#x27;+u(v\cdot u&#x27;)\bigr),
+\tag{5.5}
+\]">\[
+B=f(Z)h\bigl(i u&#x27;-(u\cdot v)u&#x27;+u(v\cdot u&#x27;)\bigr),
+\tag{5.5}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+|B|\le |f(Z)|h|u&#x27;|(1+2|u||v|)
+\le |f(Z)|h|u&#x27;|(1+\sqrt2|u|).
+\tag{5.6}
+\]">\[
+|B|\le |f(Z)|h|u&#x27;|(1+2|u||v|)
+\le |f(Z)|h|u&#x27;|(1+\sqrt2|u|).
+\tag{5.6}
+\]</span>
+<p>Differentiating (5.2), with <span class="math" data-tex="\(ds\)">\(ds\)</span> placed before <span class="math" data-tex="\(d\xi\)">\(d\xi\)</span>, gives the exact closed-form identity</p>
+<span class="math math-display" data-tex="\[
+\partial_s a=\operatorname{div}_\xi B.
+\tag{5.7}
+\]">\[
+\partial_s a=\operatorname{div}_\xi B.
+\tag{5.7}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(d(a\,d\xi)=ds\wedge(\partial_s a)d\xi\)">\(d(a\,d\xi)=ds\wedge(\partial_s a)d\xi\)</span>, while <span class="math" data-tex="\(d(ds\wedge\iota_Bd\xi)=-ds\wedge(\operatorname{div}B)d\xi\)">\(d(ds\wedge\iota_Bd\xi)=-ds\wedge(\operatorname{div}B)d\xi\)</span>. The pullback commutes with exterior differentiation, which here is just the chain rule on its coefficients. Continuous differentiability of <span class="math" data-tex="\(u\)">\(u\)</span> suffices; the <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-derivatives of <span class="math" data-tex="\(B\)">\(B\)</span> and the <span class="math" data-tex="\(s\)">\(s\)</span>-derivative of <span class="math" data-tex="\(a\)">\(a\)</span> exist continuously.</p>
+<p>Choose a fixed smooth radial cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, equal to one on <span class="math" data-tex="\(|\xi|\le1\)">\(|\xi|\le1\)</span>, zero on <span class="math" data-tex="\(|\xi|\ge2\)">\(|\xi|\ge2\)</span>, and between zero and one. For example, a smooth monotone transition made from <span class="math" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span> gives such a function. Let <span class="math" data-tex="\(\chi_R(\xi)=\chi(\xi/R)\)">\(\chi_R(\xi)=\chi(\xi/R)\)</span>. Its gradient is supported on <span class="math" data-tex="\(R\le|\xi|\le2R\)">\(R\le|\xi|\le2R\)</span>, and <span class="math" data-tex="\(|\nabla\chi_R|\le D_\chi/R\)">\(|\nabla\chi_R|\le D_\chi/R\)</span>. Compact integration by parts in (5.7) and the fundamental theorem of calculus in <span class="math" data-tex="\(s\)">\(s\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\int\chi_R a(1,\xi)d\xi-
+\int\chi_R a(0,\xi)d\xi
+=-\int_0^1\int\nabla\chi_R\cdot B\,d\xi\,ds.
+\tag{5.8}
+\]">\[
+\int\chi_R a(1,\xi)d\xi-
+\int\chi_R a(0,\xi)d\xi
+=-\int_0^1\int\nabla\chi_R\cdot B\,d\xi\,ds.
+\tag{5.8}
+\]</span>
+<p>This is the compact cutoff version of Stokes' formula, with its endpoint orientations and its side term written out. No assertion about contours at infinity is used in deriving it.</p>
+<p>Apply (5.8) with <span class="math" data-tex="\(f=qF_\phi\)">\(f=qF_\phi\)</span>, and <span class="math" data-tex="\(u(s)=L\theta(s)\)">\(u(s)=L\theta(s)\)</span> for the admissible path in Section 3. All images are zero-free by (3.10); no pole is crossed. Write <span class="math" data-tex="\(U=\max_s|u(s)|\)">\(U=\max_s|u(s)|\)</span>, <span class="math" data-tex="\(U&#x27;=\max_s|u&#x27;(s)|\)">\(U&#x27;=\max_s|u&#x27;(s)|\)</span>. The estimates that gave (4.6), now uniform in <span class="math" data-tex="\(s\)">\(s\)</span>, show</p>
+<span class="math math-display" data-tex="\[
+|f(Z(s,\xi))|
+\le D\|\phi\|_{B,2N}
+t^{p/2-N+U(A+R_B)}h^{2N}.
+\tag{5.9}
+\]">\[
+|f(Z(s,\xi))|
+\le D\|\phi\|_{B,2N}
+t^{p/2-N+U(A+R_B)}h^{2N}.
+\tag{5.9}
+\]</span>
+<p>Together with (5.6), the absolute side term in (5.8), for <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, is at most</p>
+<span class="math math-display" data-tex="\[
+D\|\phi\|_{B,2N}
+R^{n-1}(2+R^2)^{p/2-N+U(A+R_B)}
+\bigl(\log(2+4R^2)\bigr)^{2N+1}.
+\tag{5.10}
+\]">\[
+D\|\phi\|_{B,2N}
+R^{n-1}(2+R^2)^{p/2-N+U(A+R_B)}
+\bigl(\log(2+4R^2)\bigr)^{2N+1}.
+\tag{5.10}
+\]</span>
+<p>On the annulus, <span class="math" data-tex="\(t/(2+R^2)\)">\(t/(2+R^2)\)</span> lies between one and four, so comparison of any fixed real power changes only the constant. Its volume is at most <span class="math" data-tex="\(D_n R^n\)">\(D_n R^n\)</span>, the cutoff derivative contributes <span class="math" data-tex="\(R^{-1}\)">\(R^{-1}\)</span>, and (5.6) contributes one power of <span class="math" data-tex="\(h\)">\(h\)</span>; these account for every factor in (5.10). Taking</p>
+<span class="math math-display" data-tex="\[
+N&gt;\frac{p+n}{2}+U(A+R_B)+2
+\tag{5.11}
+\]">\[
+N&gt;\frac{p+n}{2}+U(A+R_B)+2
+\tag{5.11}
+\]</span>
+<p>makes (5.10) tend to zero. For example the logarithmic power is bounded by a constant times <span class="math" data-tex="\(2+R^2\)">\(2+R^2\)</span>, leaving a power of <span class="math" data-tex="\(R\)">\(R\)</span> with strictly negative exponent. Each endpoint integral converges absolutely by the same choice of <span class="math" data-tex="\(N\)">\(N\)</span>, so dominated convergence removes <span class="math" data-tex="\(\chi_R\)">\(\chi_R\)</span> there. Equation (5.8) proves equality of the two entire graph integrals.</p>
+<p>This estimate also applies when <span class="math" data-tex="\(u(s)=\ell(s)\theta\)">\(u(s)=\ell(s)\theta\)</span> and <span class="math" data-tex="\(\ell(s)\)">\(\ell(s)\)</span> ranges over a finite interval entirely above the ray threshold (3.8). The ray's constants work throughout, and the finite maxima <span class="math" data-tex="\(U,U&#x27;\)">\(U,U&#x27;\)</span> appear in the same calculation. Thus <span class="math" data-tex="\(E_{\theta,L}\)">\(E_{\theta,L}\)</span> is independent of all <span class="math" data-tex="\(L\)">\(L\)</span> above that ray threshold.</p>
+<p>For two arbitrary directions <span class="math" data-tex="\(\theta_0,\theta_1\in\Gamma\)">\(\theta_0,\theta_1\in\Gamma\)</span>, the straight path <span class="math" data-tex="\(\theta(s)=(1-s)\theta_0+s\theta_1\)">\(\theta(s)=(1-s)\theta_0+s\theta_1\)</span> lies in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> by convexity. Its norm has a positive minimum: if it were zero, its value at a minimizing <span class="math" data-tex="\(s\)">\(s\)</span> would be zero in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, contrary to (1.1). Use its generated cone (3.4), and choose one <span class="math" data-tex="\(L\)">\(L\)</span> above its uniform threshold and both individual ray thresholds. First raise either endpoint graph to that common scale using its ray calculation; then use the direction deformation. This proves equality of the endpoint distributions with their originally chosen admissible scales. We may therefore write</p>
+<span class="math math-display" data-tex="\[
+E=E_{\theta,L},
+\tag{5.12}
+\]">\[
+E=E_{\theta,L},
+\tag{5.12}
+\]</span>
+<p>independently of <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span> and its sufficiently large scale. This is where excluding zero from the convex cone is indispensable. Connectedness of unrelated angular components would not replace this particular admissible path.</p>
+<h2 id="6-removing-a-graph-for-an-entire-test-transform">6. Removing a graph for an entire test transform</h2>
+<p>After reciprocal cancellation, the relevant coefficient will be <span class="math" data-tex="\(F_\phi\)">\(F_\phi\)</span> itself. To reduce its integral to the real plane, use (5.1) with <span class="math" data-tex="\(u(s)=s u_0\)">\(u(s)=s u_0\)</span> for any fixed <span class="math" data-tex="\(u_0\)">\(u_0\)</span>. The coefficient is now entire everywhere, including at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>; there is no denominator and therefore no zero-free restriction. Estimate (2.4) holds uniformly for <span class="math" data-tex="\(|u(s)|\le|u_0|\)">\(|u(s)|\le|u_0|\)</span>. Its exponential factor is at most <span class="math" data-tex="\(t^{R_B|u_0|}\)">\(t^{R_B|u_0|}\)</span>. The calculation (5.6)–(5.10) consequently applies with <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, and a sufficiently large <span class="math" data-tex="\(N\)">\(N\)</span>. It proves</p>
+<span class="math math-display" data-tex="\[
+\int_{\mathbb R^n}F_\phi(z_{u_0}(\xi))J_{u_0}(\xi)d\xi
+=\int_{\mathbb R^n}F_\phi(\xi)d\xi.
+\tag{6.1}
+\]">\[
+\int_{\mathbb R^n}F_\phi(z_{u_0}(\xi))J_{u_0}(\xi)d\xi
+=\int_{\mathbb R^n}F_\phi(\xi)d\xi.
+\tag{6.1}
+\]</span>
+<p>Both integrals are absolutely convergent. In particular the real integral converges by (2.4) at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>, with <span class="math" data-tex="\(N&gt;n/2\)">\(N&gt;n/2\)</span>.</p>
+<p>We prove exactly the inversion value needed here. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, Fubini's theorem gives</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n}\int e^{-\varepsilon|\xi|^2/2}F_\phi(\xi)d\xi
+=\int\phi(x)(2\pi\varepsilon)^{-n/2}
+e^{-|x|^2/(2\varepsilon)}dx.
+\tag{6.2}
+\]">\[
+(2\pi)^{-n}\int e^{-\varepsilon|\xi|^2/2}F_\phi(\xi)d\xi
+=\int\phi(x)(2\pi\varepsilon)^{-n/2}
+e^{-|x|^2/(2\varepsilon)}dx.
+\tag{6.2}
+\]</span>
+<p>For completeness the Gaussian transform in this calculation follows directly in one dimension. Let <span class="math" data-tex="\(I_\varepsilon(x)=\int e^{-\varepsilon\xi^2/2}e^{i x\xi}d\xi\)">\(I_\varepsilon(x)=\int e^{-\varepsilon\xi^2/2}e^{i x\xi}d\xi\)</span>. Gaussian decay justifies differentiation and integration by parts. Using <span class="math" data-tex="\(\partial_\xi e^{-\varepsilon\xi^2/2}=-\varepsilon\xi e^{-\varepsilon\xi^2/2}\)">\(\partial_\xi e^{-\varepsilon\xi^2/2}=-\varepsilon\xi e^{-\varepsilon\xi^2/2}\)</span> gives <span class="math" data-tex="\(I_\varepsilon&#x27;(x)=-(x/\varepsilon)I_\varepsilon(x)\)">\(I_\varepsilon&#x27;(x)=-(x/\varepsilon)I_\varepsilon(x)\)</span>, whence <span class="math" data-tex="\(I_\varepsilon(x)=I_\varepsilon(0)e^{-x^2/(2\varepsilon)}\)">\(I_\varepsilon(x)=I_\varepsilon(0)e^{-x^2/(2\varepsilon)}\)</span>. The positive Gaussian mass is <span class="math" data-tex="\(I_\varepsilon(0)=\sqrt{2\pi/\varepsilon}\)">\(I_\varepsilon(0)=\sqrt{2\pi/\varepsilon}\)</span>: square its value at <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span>, use Fubini, and polar coordinates give <span class="math" data-tex="\(2\pi\int_0^\infty r e^{-r^2/2}dr=2\pi\)">\(2\pi\int_0^\infty r e^{-r^2/2}dr=2\pi\)</span>. Scaling and taking products prove the factor in (6.2) in all dimensions.</p>
+<p>On the left of (6.2), dominated convergence uses the integrability of <span class="math" data-tex="\(F_\phi\)">\(F_\phi\)</span>. On the right, put <span class="math" data-tex="\(x=\sqrt\varepsilon v\)">\(x=\sqrt\varepsilon v\)</span>; its Gaussian kernel has mass one, and <span class="math" data-tex="\(\phi(\sqrt\varepsilon v)\to\phi(0)\)">\(\phi(\sqrt\varepsilon v)\to\phi(0)\)</span>, bounded by <span class="math" data-tex="\(\|\phi\|_\infty\)">\(\|\phi\|_\infty\)</span>. Dominated convergence with the fixed integrable Gaussian then proves</p>
+<span class="math math-display" data-tex="\[
+(2\pi)^{-n}\int F_\phi(\xi)d\xi=\phi(0).
+\tag{6.3}
+\]">\[
+(2\pi)^{-n}\int F_\phi(\xi)d\xi=\phi(0).
+\tag{6.3}
+\]</span>
+<p>The borrowed classical normalization and inversion background are credited to Dyatlov, Proposition 11.14 and Theorem 11.15. Equations (6.2)–(6.3) give the whole needed argument here with our sign convention.</p>
+<h2 id="7-the-convolution-equation-and-its-reflection-sign">7. The convolution equation and its reflection sign</h2>
+<p>For <span class="math" data-tex="\(\phi\in\mathcal D\)">\(\phi\in\mathcal D\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+g_\phi(x)=\langle\mu(y),\phi(x+y)\rangle.
+\tag{7.1}
+\]">\[
+g_\phi(x)=\langle\mu(y),\phi(x+y)\rangle.
+\tag{7.1}
+\]</span>
+<p>This is a compact smooth test. To verify it, use a fixed compact cutoff in <span class="math" data-tex="\(y\)">\(y\)</span> near <span class="math" data-tex="\(S\)">\(S\)</span> and a finite-order estimate of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on its support. Difference quotients of <span class="math" data-tex="\(\phi(x+y)\)">\(\phi(x+y)\)</span> converge in the required finite <span class="math" data-tex="\(y\)">\(y\)</span>-derivatives on each compact <span class="math" data-tex="\(x\)">\(x\)</span>-set. Hence</p>
+<span class="math math-display" data-tex="\[
+\partial_x^\alpha g_\phi(x)
+=\langle\mu(y),\partial^\alpha\phi(x+y)\rangle.
+\tag{7.2}
+\]">\[
+\partial_x^\alpha g_\phi(x)
+=\langle\mu(y),\partial^\alpha\phi(x+y)\rangle.
+\tag{7.2}
+\]</span>
+<p>If <span class="math" data-tex="\(x\notin B-S\)">\(x\notin B-S\)</span>, then <span class="math" data-tex="\(x+S\)">\(x+S\)</span> is disjoint from <span class="math" data-tex="\(B\)">\(B\)</span>. Their compactness supplies a neighborhood of <span class="math" data-tex="\(S\)">\(S\)</span> on which <span class="math" data-tex="\(\phi(x+\cdot)\)">\(\phi(x+\cdot)\)</span> is zero, so <span class="math" data-tex="\(g_\phi(x)=0\)">\(g_\phi(x)=0\)</span>. The same persists in a neighborhood of <span class="math" data-tex="\(x\)">\(x\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}g_\phi\subset B-S,
+\tag{7.3}
+\]">\[
+\operatorname{supp}g_\phi\subset B-S,
+\tag{7.3}
+\]</span>
+<p>a compact set. If <span class="math" data-tex="\(m_\mu\)">\(m_\mu\)</span> is the fixed cutoff finite order of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, its product-rule estimate also gives, for each <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|g_\phi\|_{B-S,k}
+\le D_k\|\phi\|_{B,k+m_\mu}.
+\tag{7.4}
+\]">\[
+\|g_\phi\|_{B-S,k}
+\le D_k\|\phi\|_{B,k+m_\mu}.
+\tag{7.4}
+\]</span>
+<p>The derivatives of the fixed cutoff contribute only fixed constants. This proves continuity of the map <span class="math" data-tex="\(\mathcal D_B\to\mathcal D_{B-S}\)">\(\mathcal D_B\to\mathcal D_{B-S}\)</span>. Consequently <span class="math" data-tex="\(\phi\mapsto E(g_\phi)\)">\(\phi\mapsto E(g_\phi)\)</span> is a distribution; it defines convolution by the compact factor in the usual tensor formula. Its pairing is</p>
+<span class="math math-display" data-tex="\[
+\langle\mu*E,\phi\rangle=\langle E,g_\phi\rangle.
+\tag{7.5}
+\]">\[
+\langle\mu*E,\phi\rangle=\langle E,g_\phi\rangle.
+\tag{7.5}
+\]</span>
+<p>For compact functions this is exactly Fubini's formula with addition <span class="math" data-tex="\(x+y\)">\(x+y\)</span>; continuity extends the same compact-factor convention to distributions. This agrees with the exact prerequisite <em>Convolution as addition of supports</em>, Theorem 1.1, equations (1.4)–(1.8), but no support theorem from that provider is needed here.</p>
+<p>The transform identity has an important sign:</p>
+<span class="math math-display" data-tex="\[
+F_{g_\phi}(\zeta)=\widehat\mu(\zeta)F_\phi(\zeta).
+\tag{7.6}
+\]">\[
+F_{g_\phi}(\zeta)=\widehat\mu(\zeta)F_\phi(\zeta).
+\tag{7.6}
+\]</span>
+<p>To justify interchanging <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with the integral, retain its fixed cutoff supported in a compact set <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span>. Only <span class="math" data-tex="\(x\in B-S&#x27;\)">\(x\in B-S&#x27;\)</span> can contribute before pairing. On this compact <span class="math" data-tex="\(x,y\)">\(x,y\)</span>-set the integral is a limit of Riemann sums in every prescribed finite <span class="math" data-tex="\(y\)">\(y\)</span>-derivative, because the integrand and its derivatives are continuous uniformly on the compact set. The distribution's finite-order estimate passes it through that limit. For each fixed <span class="math" data-tex="\(y\)">\(y\)</span>, the change of variables <span class="math" data-tex="\(v=x+y\)">\(v=x+y\)</span> then gives</p>
+<span class="math math-display" data-tex="\[
+\int\phi(x+y)e^{i x\cdot\zeta}dx
+=e^{-i y\cdot\zeta}F_\phi(\zeta).
+\tag{7.7}
+\]">\[
+\int\phi(x+y)e^{i x\cdot\zeta}dx
+=e^{-i y\cdot\zeta}F_\phi(\zeta).
+\tag{7.7}
+\]</span>
+<p>Pairing with <span class="math" data-tex="\(\mu(y)\)">\(\mu(y)\)</span> proves (7.6). This reflected test operation multiplies by <span class="math" data-tex="\(\widehat\mu(\zeta)\)">\(\widehat\mu(\zeta)\)</span>, rather than by <span class="math" data-tex="\(\widehat\mu(-\zeta)\)">\(\widehat\mu(-\zeta)\)</span>. It does not take a Fourier transform of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Insert (7.6) into the already convergent formula (4.4) for the compact test <span class="math" data-tex="\(g_\phi\)">\(g_\phi\)</span>. Since the graph is zero-free, <span class="math" data-tex="\(q\widehat\mu=1\)">\(q\widehat\mu=1\)</span> at every point of the graph, and hence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle\mu*E,\phi\rangle
+&amp;=(2\pi)^{-n}\int F_\phi(z_{L\theta}(\xi))J_{L\theta}(\xi)d\xi\\
+&amp;=(2\pi)^{-n}\int F_\phi(\xi)d\xi
+=\phi(0).
+\end{aligned}
+\tag{7.8}
+\]">\[
+\begin{aligned}
+\langle\mu*E,\phi\rangle
+&amp;=(2\pi)^{-n}\int F_\phi(z_{L\theta}(\xi))J_{L\theta}(\xi)d\xi\\
+&amp;=(2\pi)^{-n}\int F_\phi(\xi)d\xi
+=\phi(0).
+\end{aligned}
+\tag{7.8}
+\]</span>
+<p>The middle identity is (6.1), the last is (6.3). Both sides of each integral identity are absolutely convergent by the earlier estimates. We have proved (1.7). In particular <span class="math" data-tex="\(E\ne0\)">\(E\ne0\)</span> and its support is nonempty.</p>
+<h2 id="8-raising-the-graph-proves-the-supporting-plane-bound">8. Raising the graph proves the supporting-plane bound</h2>
+<p>Fix <span class="math" data-tex="\(\theta\in\Gamma\)">\(\theta\in\Gamma\)</span>, and use <span class="math" data-tex="\(C,A,p\)">\(C,A,p\)</span> on its ray. Suppose the compact support of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> lies strictly beyond the plane in (1.9):</p>
+<span class="math math-display" data-tex="\[
+d:=\min_{x\in B}x\cdot\theta-A|\theta|&gt;0.
+\tag{8.1}
+\]">\[
+d:=\min_{x\in B}x\cdot\theta-A|\theta|&gt;0.
+\tag{8.1}
+\]</span>
+<p>With <span class="math" data-tex="\(y=L\theta h\)">\(y=L\theta h\)</span>, the combined exponential in (1.6) and (2.4) is at most</p>
+<span class="math math-display" data-tex="\[
+e^{A L|\theta|h+H_B(-L\theta h)}
+=e^{-dLh}.
+\tag{8.2}
+\]">\[
+e^{A L|\theta|h+H_B(-L\theta h)}
+=e^{-dLh}.
+\tag{8.2}
+\]</span>
+<p>The equality uses <span class="math" data-tex="\(H_B(-\theta)=-\min_{x\in B}x\cdot\theta\)">\(H_B(-\theta)=-\min_{x\in B}x\cdot\theta\)</span>. This is the supporting-plane sign in the theorem.</p>
+<p>We need a majorant uniform as <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>. Write <span class="math" data-tex="\(b=|\theta|\)">\(b=|\theta|\)</span>, and choose a fixed integer <span class="math" data-tex="\(N&gt;(p+n)/2+1\)">\(N&gt;(p+n)/2+1\)</span>. Equations (2.4), (4.3), and (4.5), with the exact exponential (8.2), bound the absolute integrand of (4.4) for all <span class="math" data-tex="\(L\ge L_*\)">\(L\ge L_*\)</span> by</p>
+<span class="math math-display" data-tex="\[
+D\|\phi\|_{B,2N}
+t^{p/2-N}h^{2N}(1+L)^{p+2N+1}e^{-dLh}.
+\tag{8.3}
+\]">\[
+D\|\phi\|_{B,2N}
+t^{p/2-N}h^{2N}(1+L)^{p+2N+1}e^{-dLh}.
+\tag{8.3}
+\]</span>
+<p>All constants here are independent of <span class="math" data-tex="\(L\)">\(L\)</span>. For example <span class="math" data-tex="\(\sqrt2+Lb\le(\sqrt2+b)(1+L)\)">\(\sqrt2+Lb\le(\sqrt2+b)(1+L)\)</span>, <span class="math" data-tex="\(1+Lbh\le(1/\log2+b)(1+L)h\)">\(1+Lbh\le(1/\log2+b)(1+L)h\)</span>, and <span class="math" data-tex="\(1+Lb/\sqrt2\le(1+b/\sqrt2)(1+L)\)">\(1+Lb/\sqrt2\le(1+b/\sqrt2)(1+L)\)</span>, explaining every scale power. Let <span class="math" data-tex="\(k=p+2N+1\)">\(k=p+2N+1\)</span>. Since <span class="math" data-tex="\(h\ge\log2\)">\(h\ge\log2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(1+L)^k e^{-dLh/2}
+\le (1+L)^k e^{-(d\log2)L/2}
+\le D_{k,d}&lt;\infty.
+\tag{8.4}
+\]">\[
+(1+L)^k e^{-dLh/2}
+\le (1+L)^k e^{-(d\log2)L/2}
+\le D_{k,d}&lt;\infty.
+\tag{8.4}
+\]</span>
+<p>The last finite bound follows, for instance, by expanding <span class="math" data-tex="\((1+L)^k\)">\((1+L)^k\)</span> into powers and maximizing <span class="math" data-tex="\(L^j e^{-cL}\)">\(L^j e^{-cL}\)</span> at <span class="math" data-tex="\(j/c\)">\(j/c\)</span> for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>; its value is <span class="math" data-tex="\((j/(ce))^j\)">\((j/(ce))^j\)</span>, and the <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term is at most one. Use one half of the negative exponential for (8.4), and bound the other half by one. Equations (4.7), (8.3) give the single integrable majorant</p>
+<span class="math math-display" data-tex="\[
+D&#x27;\|\phi\|_{B,2N}t^{p/2-N+1}.
+\tag{8.5}
+\]">\[
+D&#x27;\|\phi\|_{B,2N}t^{p/2-N+1}.
+\tag{8.5}
+\]</span>
+<p>Its exponent is below <span class="math" data-tex="\(-n/2\)">\(-n/2\)</span> by our fixed choice of <span class="math" data-tex="\(N\)">\(N\)</span>. For each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the polynomial in <span class="math" data-tex="\(L\)">\(L\)</span> in (8.3) times <span class="math" data-tex="\(e^{-dLh}\)">\(e^{-dLh}\)</span> tends to zero. Dominated convergence therefore gives</p>
+<span class="math math-display" data-tex="\[
+E_{\theta,L}(\phi)\longrightarrow0
+\quad\text{as }L\to\infty.
+\tag{8.6}
+\]">\[
+E_{\theta,L}(\phi)\longrightarrow0
+\quad\text{as }L\to\infty.
+\tag{8.6}
+\]</span>
+<p>All these distributions equal <span class="math" data-tex="\(E\)">\(E\)</span> by Section 5, so <span class="math" data-tex="\(E(\phi)=0\)">\(E(\phi)=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(x_0\cdot\theta&gt;A|\theta|\)">\(x_0\cdot\theta&gt;A|\theta|\)</span>, choose a sufficiently small ball around <span class="math" data-tex="\(x_0\)">\(x_0\)</span> on which that inequality remains strict. Every compact smooth test supported there satisfies (8.1). Hence <span class="math" data-tex="\(E\)">\(E\)</span> vanishes on that ball, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{supp}E\subset\{x:x\cdot\theta\le A|\theta|\}.
+\tag{8.7}
+\]">\[
+\operatorname{supp}E\subset\{x:x\cdot\theta\le A|\theta|\}.
+\tag{8.7}
+\]</span>
+<p>Closed half-spaces are convex, so (8.7) contains the closed convex hull <span class="math" data-tex="\(K\)">\(K\)</span> as well. Its support function is at most <span class="math" data-tex="\(A|\theta|\)">\(A|\theta|\)</span>. It is not <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span>, since <span class="math" data-tex="\(K\)">\(K\)</span> contains some support point of the nonzero <span class="math" data-tex="\(E\)">\(E\)</span>. This proves (1.8)–(1.9) for every direction, completing Theorem 1.1. □</p>
+<p>The proof allows the constants to change between directions because the distribution was already identified across all the graphs. That order matters. A family of unrelated inverses, each with one finite support direction, would leave (1.8) unproved.</p>
+<h2 id="9-exact-examples-and-the-graph-geometry">9. Exact examples and the graph geometry</h2>
+<p><strong>Example 9.1 (a derivative and its chosen side).</strong> In dimension one, let <span class="math" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>. Definition (1.3) gives <span class="math" data-tex="\(\widehat\mu(\zeta)=i\zeta\)">\(\widehat\mu(\zeta)=i\zeta\)</span>. On <span class="math" data-tex="\(\Gamma=(0,\infty)\)">\(\Gamma=(0,\infty)\)</span>, the reciprocal has modulus at most <span class="math" data-tex="\(1/\operatorname{Im}\zeta\)">\(1/\operatorname{Im}\zeta\)</span>. With <span class="math" data-tex="\(C=2\)">\(C=2\)</span>, <span class="math" data-tex="\(p=0\)">\(p=0\)</span>, <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, region (1.5) implies <span class="math" data-tex="\(\operatorname{Im}\zeta&gt;2\log2\)">\(\operatorname{Im}\zeta&gt;2\log2\)</span>, so (1.6) holds. The theorem yields an inverse supported in <span class="math" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span>. A direct inverse is</p>
+<span class="math math-display" data-tex="\[
+E_+(\phi)=-\int_{-\infty}^0\phi(x)dx.
+\tag{9.1}
+\]">\[
+E_+(\phi)=-\int_{-\infty}^0\phi(x)dx.
+\tag{9.1}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\delta&#x27;_0*E_+=E_+&#x27;\)">\(\delta&#x27;_0*E_+=E_+&#x27;\)</span>, and <span class="math" data-tex="\(E_+&#x27;(\phi)=\int_{-\infty}^0\phi&#x27;(x)dx=\phi(0)\)">\(E_+&#x27;(\phi)=\int_{-\infty}^0\phi&#x27;(x)dx=\phi(0)\)</span>. Its support is exactly <span class="math" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span>, since on every negative open interval it is the nonzero constant density <span class="math" data-tex="\(-1\)">\(-1\)</span>. The graph construction selects this inverse: it has support in that half-line; subtracting (9.1) gives a distribution <span class="math" data-tex="\(T\)">\(T\)</span> supported there with <span class="math" data-tex="\(T&#x27;=0\)">\(T&#x27;=0\)</span>. A distribution with zero derivative is constant, as follows by writing any zero-integral compact test as the derivative of its compact primitive. Subtracting a fixed mass-one test then shows <span class="math" data-tex="\(T(\phi)=c\int\phi\)">\(T(\phi)=c\int\phi\)</span>. A nonzero constant has full-line support, so <span class="math" data-tex="\(T=0\)">\(T=0\)</span>.</p>
+<p>The negative cone <span class="math" data-tex="\(( -\infty,0)\)">\(( -\infty,0)\)</span> selects instead <span class="math" data-tex="\(E_-(\phi)=\int_0^\infty\phi(x)dx\)">\(E_-(\phi)=\int_0^\infty\phi(x)dx\)</span>, whose derivative is also <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>. Its support is <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Thus changing to a different, disconnected direction cone can change the inverse; <span class="math" data-tex="\(E_--E_+=1\)">\(E_--E_+=1\)</span>.</p>
+<p><a href="reproduce/L117/figures/logarithmic-cutoff-and-jacobian.png" title="Open full-size figure"><img src="reproduce/L117/figures/logarithmic-cutoff-and-jacobian.png" alt="Logarithmic graph homotopy, compact cutoff annuli, and the exact graph Jacobian." class="course-figure" width="2340" height="1026" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="logarithmic-cutoff-and-jacobian" data-asset-sha256="108980A9AEE95641A978ED1337F703E10AC90EC669E00CC24A556330C636CE6C"></a><br><a href="reproduce/L117/figures/logarithmic-cutoff-and-jacobian.png">Open full-size figure</a></p>
+<p><em>Figure 1. The one-dimensional example has graphs <span class="math" data-tex="\(z=\xi+iL\log(2+\xi^2)\)">\(z=\xi+iL\log(2+\xi^2)\)</span>, with <span class="math" data-tex="\(L=12,16\)">\(L=12,16\)</span>, and an intermediate graph at <span class="math" data-tex="\(L=14\)">\(L=14\)</span>. The pale full-height vertical bands mark the frequency-coordinate region <span class="math" data-tex="\(3\le|\xi|\le6\)">\(3\le|\xi|\le6\)</span> where the derivative of <span class="math" data-tex="\(\chi_R\)">\(\chi_R\)</span>, <span class="math" data-tex="\(R=3\)">\(R=3\)</span>, can be nonzero. Within those bands, the darker regions between the endpoint graphs show the actual swept homotopy strips that contribute to the cutoff side term. Their upper and lower edges are the endpoint graphs, not assumed pole barriers. The only pole of <span class="math" data-tex="\(q=1/(i\zeta)\)">\(q=1/(i\zeta)\)</span> is the origin. Both graphs, and every scale between them, satisfy <span class="math" data-tex="\(\operatorname{Im}z&gt;2\log(|z|+2)\)">\(\operatorname{Im}z&gt;2\log(|z|+2)\)</span>: for <span class="math" data-tex="\(t=2+\xi^2\)">\(t=2+\xi^2\)</span>, <span class="math" data-tex="\(r\le t\)">\(r\le t\)</span> and <span class="math" data-tex="\(\log t\le t\)">\(\log t\le t\)</span>, so <span class="math" data-tex="\(|z|+2\le(L+2)t\)">\(|z|+2\le(L+2)t\)</span>; for <span class="math" data-tex="\(L\ge12\)">\(L\ge12\)</span>, <span class="math" data-tex="\((L/2-1)\log2&gt;\log(L+2)\)">\((L/2-1)\log2&gt;\log(L+2)\)</span>, as at <span class="math" data-tex="\(L=12\)">\(L=12\)</span> and by its positive derivative thereafter. The right panel plots the exact complex graph coefficient <span class="math" data-tex="\(J=1+2iL\xi/(2+\xi^2)\)">\(J=1+2iL\xi/(2+\xi^2)\)</span> at <span class="math" data-tex="\(L=12\)">\(L=12\)</span>. Its real part is one. Every curve is a sample of the displayed exact function; the proof of cutoff decay is (5.8)–(5.11), not the plot.</em></p>
+<p><a href="reproduce/L117/figures/logarithmic-cutoff-and-jacobian.png">Open Figure 1 at full size</a> · <a href="reproduce/L117/figures/logarithmic-cutoff-and-jacobian.svg">Vector version</a>.</p>
+<p><strong>Example 9.2 (a compact delay with exponential inverse growth).</strong> Let <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>, and <span class="math" data-tex="\(\mu=\delta_0-c\delta_v\)">\(\mu=\delta_0-c\delta_v\)</span> on the line. Then</p>
+<span class="math math-display" data-tex="\[
+\widehat\mu(\zeta)=1-ce^{-iv\zeta}.
+\tag{9.2}
+\]">\[
+\widehat\mu(\zeta)=1-ce^{-iv\zeta}.
+\tag{9.2}
+\]</span>
+<p>On the negative cone, if <span class="math" data-tex="\(y&lt;-(\log(2c))/v\)">\(y&lt;-(\log(2c))/v\)</span>, then <span class="math" data-tex="\(|ce^{-iv(\xi+i y)}|=ce^{vy}&lt;1/2\)">\(|ce^{-iv(\xi+i y)}|=ce^{vy}&lt;1/2\)</span>, so <span class="math" data-tex="\(|q|\le2\)">\(|q|\le2\)</span>. Choose <span class="math" data-tex="\(C\ge\max\{2,\log(2c)/(v\log2)\}\)">\(C\ge\max\{2,\log(2c)/(v\log2)\}\)</span> in (1.5). It implies this negative height condition and supplies (1.6) with <span class="math" data-tex="\(A=p=0\)">\(A=p=0\)</span>. The theorem constructs an inverse supported in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Here one can write it directly:</p>
+<span class="math math-display" data-tex="\[
+E=\sum_{j=0}^\infty c^j\delta_{jv}.
+\tag{9.3}
+\]">\[
+E=\sum_{j=0}^\infty c^j\delta_{jv}.
+\tag{9.3}
+\]</span>
+<p>The sum is locally finite. For a compact test, only finitely many atoms occur, so (9.3) is a distribution. Applying the two delays gives a telescoping cancellation, <span class="math" data-tex="\((\delta_0-c\delta_v)*E=\delta_0\)">\((\delta_0-c\delta_v)*E=\delta_0\)</span>. The support hull is <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, with support function zero in every negative direction. Nonetheless <span class="math" data-tex="\(E\)">\(E\)</span> is not tempered: compact bumps translated to <span class="math" data-tex="\(jv\)">\(jv\)</span>, equal to one there and meeting no other atom, pair to <span class="math" data-tex="\(c^j\)">\(c^j\)</span>, whereas every fixed Schwartz seminorm of those bumps grows only polynomially in <span class="math" data-tex="\(j\)">\(j\)</span>. This example explains why the theorem constructs <span class="math" data-tex="\(E\)">\(E\)</span> as a functional on compact tests.</p>
+<p>The zeros in (9.2) occur at <span class="math" data-tex="\(\operatorname{Im}\zeta=-(\log c)/v\)">\(\operatorname{Im}\zeta=-(\log c)/v\)</span>, <span class="math" data-tex="\(\operatorname{Re}\zeta=2\pi k/v\)">\(\operatorname{Re}\zeta=2\pi k/v\)</span>. These poles prevent a reciprocal deformation to the real plane. Section 6 deforms to the real plane only after cancellation, when its coefficient is entire.</p>
+<p><strong>Example 9.3 (a two-variable graph and its projection).</strong> With direction <span class="math" data-tex="\(\theta=(1,1/2)\)">\(\theta=(1,1/2)\)</span>, <span class="math" data-tex="\(L=4\)">\(L=4\)</span>, the exact map is</p>
+<span class="math math-display" data-tex="\[
+(\xi_1,\xi_2)\longmapsto
+(\xi_1+4i\log(2+\xi_1^2+\xi_2^2),
+\xi_2+2i\log(2+\xi_1^2+\xi_2^2)).
+\tag{9.4}
+\]">\[
+(\xi_1,\xi_2)\longmapsto
+(\xi_1+4i\log(2+\xi_1^2+\xi_2^2),
+\xi_2+2i\log(2+\xi_1^2+\xi_2^2)).
+\tag{9.4}
+\]</span>
+<p>Its imaginary coordinates satisfy <span class="math" data-tex="\(\operatorname{Im}z_2=\operatorname{Im}z_1/2\)">\(\operatorname{Im}z_2=\operatorname{Im}z_1/2\)</span>, so plotting <span class="math" data-tex="\((\xi_1,\xi_2,\lambda)\)">\((\xi_1,\xi_2,\lambda)\)</span> with <span class="math" data-tex="\(\lambda=4\log(2+|\xi|^2)\)">\(\lambda=4\log(2+|\xi|^2)\)</span> gives an exact three-dimensional representation of this particular two-dimensional surface in <span class="math" data-tex="\(\mathbb C^2\cong\mathbb R^4\)">\(\mathbb C^2\cong\mathbb R^4\)</span>. No fourth coordinate is discarded ambiguously: it is recovered from <span class="math" data-tex="\(\lambda/2\)">\(\lambda/2\)</span>. Its complex Jacobian is</p>
+<span class="math math-display" data-tex="\[
+J=1+i\frac{8\xi_1+4\xi_2}{2+\xi_1^2+\xi_2^2}.
+\tag{9.5}
+\]">\[
+J=1+i\frac{8\xi_1+4\xi_2}{2+\xi_1^2+\xi_2^2}.
+\tag{9.5}
+\]</span>
+<p><a href="reproduce/L117/figures/two-variable-graph-and-directions.png" title="Open full-size figure"><img src="reproduce/L117/figures/two-variable-graph-and-directions.png" alt="A two-variable logarithmic graph and the exact direction path inside a punctured cone." class="course-figure" width="2376" height="1080" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="two-variable-graph-and-directions" data-asset-sha256="57A21A7399984F839DA726AB79469BA7878892C9DB00114F63001B2AFABB5FC0"></a><br><a href="reproduce/L117/figures/two-variable-graph-and-directions.png">Open full-size figure</a></p>
+<p><em>Figure 2. Left: samples of the exact surface (9.4) over the square [-3,3]², using the representation specified there. The plotted height is <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and the color records the imaginary part of the exact Jacobian (9.5), not a surface area or an asserted reciprocal bound. Right: <span class="math" data-tex="\(\Gamma=\{(\theta_1,\theta_2):\theta_1&gt;|\theta_2|\}\)">\(\Gamma=\{(\theta_1,\theta_2):\theta_1&gt;|\theta_2|\}\)</span>; the segment <span class="math" data-tex="\(\theta(s)=(1,s/2)\)">\(\theta(s)=(1,s/2)\)</span> joins <span class="math" data-tex="\((1,0)\)">\((1,0)\)</span> to <span class="math" data-tex="\((1,1/2)\)">\((1,1/2)\)</span>. Its norm is at least one, so its ray cone has compact interior unit directions. The complete homotopy proof is Section 5. The figure fixes a graph map and an angular geometry; it does not assert that <span class="math" data-tex="\(L=4\)">\(L=4\)</span> meets an unspecified kernel's logarithmic threshold.</em></p>
+<p><a href="reproduce/L117/figures/two-variable-graph-and-directions.png">Open Figure 2 at full size</a> · <a href="reproduce/L117/figures/two-variable-graph-and-directions.svg">Vector version</a>.</p>
+<p><a href="reproduce/L117/figures/support-plane-and-uniform-decay.png" title="Open full-size figure"><img src="reproduce/L117/figures/support-plane-and-uniform-decay.png" alt="The exact supporting half-space, a compact test beyond it, and a scale-uniform decay envelope." class="course-figure" width="2340" height="1026" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="support-plane-and-uniform-decay" data-asset-sha256="B4C6D1145F69192F6D9EB33C8F1387225E96FC49F25B6F6E94213C24A34FF478"></a><br><a href="reproduce/L117/figures/support-plane-and-uniform-decay.png">Open full-size figure</a></p>
+<p><em>Figure 3. Use the exact model <span class="math" data-tex="\(\mu=\partial_{x_1}\delta_0\)">\(\mu=\partial_{x_1}\delta_0\)</span> in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, <span class="math" data-tex="\(\theta=(1,0)\)">\(\theta=(1,0)\)</span>, <span class="math" data-tex="\(A=p=0\)">\(A=p=0\)</span>, whose inverse is <span class="math" data-tex="\(-H(-x_1)\otimes\delta_0(x_2)\)">\(-H(-x_1)\otimes\delta_0(x_2)\)</span>; its negative-axis support is proved in learner Problem 9. The supporting half-space is <span class="math" data-tex="\(x_1\le0\)">\(x_1\le0\)</span>. The compact disk <span class="math" data-tex="\(B=\{|x-(2,0)|\le1/2\}\)">\(B=\{|x-(2,0)|\le1/2\}\)</span> has <span class="math" data-tex="\(\min_B x\cdot\theta=3/2\)">\(\min_B x\cdot\theta=3/2\)</span>, so <span class="math" data-tex="\(d=3/2\)">\(d=3/2\)</span>. A nonzero smooth bump <span class="math" data-tex="\(\phi(x)=e^{-1/(1/4-|x-(2,0)|^2)}\)">\(\phi(x)=e^{-1/(1/4-|x-(2,0)|^2)}\)</span> inside that disk, extended by zero, has support exactly <span class="math" data-tex="\(B\)">\(B\)</span>. Right: at <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(N=3\)">\(N=3\)</span>, the absolute graph integrand is bounded by a fixed constant times <span class="math" data-tex="\(\|\phi\|_{B,6}g_L(r)\)">\(\|\phi\|_{B,6}g_L(r)\)</span>, where <span class="math" data-tex="\(g_L=t^{-3}(\log t)^6(1+L)^7e^{-3L\log(t)/2}\)">\(g_L=t^{-3}(\log t)^6(1+L)^7e^{-3L\log(t)/2}\)</span>, <span class="math" data-tex="\(t=2+r^2\)">\(t=2+r^2\)</span>. The plotted quantities are these exact upper-bound functions divided by <span class="math" data-tex="\(K\)">\(K\)</span>; they are not measurements of the integrand or its oscillation. With <span class="math" data-tex="\(c=3\log2/4\)">\(c=3\log2/4\)</span>, put <span class="math" data-tex="\(K_0=(7/c)^7e^{-7+c}\)">\(K_0=(7/c)^7e^{-7+c}\)</span>, <span class="math" data-tex="\(K=K_0(6/e)^6\)">\(K=K_0(6/e)^6\)</span>. Maximizing <span class="math" data-tex="\((1+L)^7e^{-cL}\)">\((1+L)^7e^{-cL}\)</span> and <span class="math" data-tex="\((\log t)^6/t\)">\((\log t)^6/t\)</span>, as in (8.4) and (4.7), proves <span class="math" data-tex="\(g_L/K\le t^{-2}\)">\(g_L/K\le t^{-2}\)</span> for every <span class="math" data-tex="\(L\ge0\)">\(L\ge0\)</span>. The retained envelope <span class="math" data-tex="\(t^{-2}\)">\(t^{-2}\)</span> is integrable on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, and the plotted safe scales <span class="math" data-tex="\(L=12,16,20\)">\(L=12,16,20\)</span> tend pointwise toward zero when increased. Sections 3 and 8, and learner Problems 2, 6, and 9, give the exact threshold, sign, and limit arguments.</em></p>
+<p><a href="reproduce/L117/figures/support-plane-and-uniform-decay.png">Open Figure 3 at full size</a> · <a href="reproduce/L117/figures/support-plane-and-uniform-decay.svg">Vector version</a>.</p>
+<h2 id="10-the-original-source-convention-remains-a-separate-audit">10. The original source convention remains a separate audit</h2>
+<p>The private H2 source statement on PDF page 365 says “open convex cone” without giving a definition on that page. The preceding Section 16.7 context on PDF pages 362–364 discusses support contained in a proper convex cone and hyperbolicity relative to a nonzero direction, but does not supply an explicit all-space exclusion for this converse. A different H1 use, Theorem 3.1.15, PDF page 74/printed page 66, explicitly allows the proof to assume that zero is outside the cone because that theorem is trivial otherwise. The latter is evidence that one must not infer a universal punctured convention from terminology alone. It does not determine the H2 converse's intended scope.</p>
+<p>The unresolved abbreviated interface cannot be claimed literally with <span class="math" data-tex="\(\Gamma=\mathbb R\)">\(\Gamma=\mathbb R\)</span>. For <span class="math" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>, the reciprocal <span class="math" data-tex="\(1/(i\zeta)\)">\(1/(i\zeta)\)</span> satisfies bounds of form (1.6) beyond logarithmic height in either direction. But an inverse with finite support function at both <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> would have bounded support, hence compact support. Such an inverse is impossible: choose a compact smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near its support and at zero. Then <span class="math" data-tex="\(\langle E&#x27;,\chi\rangle=-\langle E,\chi&#x27;\rangle=0\)">\(\langle E&#x27;,\chi\rangle=-\langle E,\chi&#x27;\rangle=0\)</span>, whereas <span class="math" data-tex="\(\delta_0(\chi)=1\)">\(\delta_0(\chi)=1\)</span>.</p>
+<p>The two one-sided inverses in Example 9.1 differ by one. A direction homotopy connecting them must cross zero, where the logarithmic region is unavailable, so Section 5 correctly proves no such equality. This calculation identifies an actual convention-sensitive boundary of our result; it is not a claim of an error in the source under its intended convention. The precise qualified Theorem 1.1 is fully written here. The broader original convention remains unresolved, and this candidate does not certify a full unqualified equivalence or recursive prerequisite closure.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="1-a-complex-determinant-is-not-a-surface-area-factor">1. A complex determinant is not a surface-area factor</h3>
+<p><strong>Problem.</strong> Let <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(u=(4,2)\)">\(u=(4,2)\)</span>, and <span class="math" data-tex="\(h(\xi)=\log(2+\xi_1^2+\xi_2^2)\)">\(h(\xi)=\log(2+\xi_1^2+\xi_2^2)\)</span>. Write the complete derivative matrix of <span class="math" data-tex="\(z(\xi)=\xi+iuh(\xi)\)">\(z(\xi)=\xi+iuh(\xi)\)</span>, expand its determinant, and explain what multiplies <span class="math" data-tex="\(d\xi_1\wedge d\xi_2\)">\(d\xi_1\wedge d\xi_2\)</span> in the graph integral.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(t=2+\xi_1^2+\xi_2^2\)">\(t=2+\xi_1^2+\xi_2^2\)</span>. The matrix is</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}
+1+8i\xi_1/t&amp;8i\xi_2/t\\
+4i\xi_1/t&amp;1+4i\xi_2/t
+\end{pmatrix}.
+\]">\[
+A=\begin{pmatrix}
+1+8i\xi_1/t&amp;8i\xi_2/t\\
+4i\xi_1/t&amp;1+4i\xi_2/t
+\end{pmatrix}.
+\]</span>
+<p>Its determinant is</p>
+<span class="math math-display" data-tex="\[
+(1+8i\xi_1/t)(1+4i\xi_2/t)
+-(8i\xi_2/t)(4i\xi_1/t)
+=1+i(8\xi_1+4\xi_2)/t.
+\]">\[
+(1+8i\xi_1/t)(1+4i\xi_2/t)
+-(8i\xi_2/t)(4i\xi_1/t)
+=1+i(8\xi_1+4\xi_2)/t.
+\]</span>
+<p>The quadratic terms cancel exactly. Thus <span class="math" data-tex="\(z^*(dz_1\wedge dz_2)=\det(A)d\xi_1\wedge d\xi_2\)">\(z^*(dz_1\wedge dz_2)=\det(A)d\xi_1\wedge d\xi_2\)</span>. The factor is the displayed complex number, including its imaginary part; replacing it by <span class="math" data-tex="\(|\det A|\)">\(|\det A|\)</span> would change the differential form and destroy the closed-form calculation in Section 5. Its real part equals one, so it is never zero.</p>
+<h3 id="2-a-logarithmic-height-must-dominate-its-own-contribution-to-frequency">2. A logarithmic height must dominate its own contribution to frequency</h3>
+<p><strong>Problem.</strong> For <span class="math" data-tex="\(\mu=\delta&#x27;_0\)">\(\mu=\delta&#x27;_0\)</span>, <span class="math" data-tex="\(C=2\)">\(C=2\)</span>, and <span class="math" data-tex="\(\Gamma=(0,\infty)\)">\(\Gamma=(0,\infty)\)</span>, prove that every graph <span class="math" data-tex="\(z_L(\xi)=\xi+iL\log(2+\xi^2)\)">\(z_L(\xi)=\xi+iL\log(2+\xi^2)\)</span>, <span class="math" data-tex="\(L\ge12\)">\(L\ge12\)</span>, lies in <span class="math" data-tex="\(\operatorname{Im}z&gt;2\log(|z|+2)\)">\(\operatorname{Im}z&gt;2\log(|z|+2)\)</span>. Also verify the reciprocal bound with <span class="math" data-tex="\(p=A=0\)">\(p=A=0\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>, <span class="math" data-tex="\(t=2+r^2\)">\(t=2+r^2\)</span>, <span class="math" data-tex="\(h=\log t\)">\(h=\log t\)</span>. We have <span class="math" data-tex="\(r\le t\)">\(r\le t\)</span>, <span class="math" data-tex="\(2\le t\)">\(2\le t\)</span>, and <span class="math" data-tex="\(h\le t\)">\(h\le t\)</span>, hence <span class="math" data-tex="\(|z_L|+2\le r+Lh+2\le(L+2)t\)">\(|z_L|+2\le r+Lh+2\le(L+2)t\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+2\log(|z_L|+2)\le2\log(L+2)+2h.
+\]">\[
+2\log(|z_L|+2)\le2\log(L+2)+2h.
+\]</span>
+<p>It is enough to have <span class="math" data-tex="\((L/2-1)\log2&gt;\log(L+2)\)">\((L/2-1)\log2&gt;\log(L+2)\)</span>. At <span class="math" data-tex="\(L=12\)">\(L=12\)</span>, its left side is <span class="math" data-tex="\(5\log2=\log32&gt;\log14\)">\(5\log2=\log32&gt;\log14\)</span>. The difference has derivative <span class="math" data-tex="\(\tfrac12\log2-1/(L+2)&gt;0\)">\(\tfrac12\log2-1/(L+2)&gt;0\)</span> for <span class="math" data-tex="\(L\ge12\)">\(L\ge12\)</span>, so the inequality continues to hold. This proves the threshold, including at <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Moreover <span class="math" data-tex="\(\widehat\mu(z)=iz\)">\(\widehat\mu(z)=iz\)</span>, whose only zero is zero. On the stated region, <span class="math" data-tex="\(|1/(iz)|\le1/\operatorname{Im}z&lt;1/(2\log2)&lt;2\)">\(|1/(iz)|\le1/\operatorname{Im}z&lt;1/(2\log2)&lt;2\)</span>, proving (1.6) with the same <span class="math" data-tex="\(C=2\)">\(C=2\)</span>. The contribution <span class="math" data-tex="\(Lh\)">\(Lh\)</span> to <span class="math" data-tex="\(|z|\)">\(|z|\)</span> has been included in the argument.</p>
+<h3 id="3-a-finite-test-order-can-be-large-and-still-prove-continuity">3. A finite test order can be large and still prove continuity</h3>
+<p><strong>Problem.</strong> Suppose a graph in dimension two has already been validated, and on it <span class="math" data-tex="\(p=3\)">\(p=3\)</span>, <span class="math" data-tex="\(U=L|\theta|=6\)">\(U=L|\theta|=6\)</span>, <span class="math" data-tex="\(A=1\)">\(A=1\)</span>. Test supports lie in a compact set with <span class="math" data-tex="\(R_B=2\)">\(R_B=2\)</span>. Use (4.8) to find a valid test derivative order for absolute convergence. Use (5.11) to find one that also proves the cutoff side term tends to zero. Does this establish a global finite order for <span class="math" data-tex="\(E\)">\(E\)</span>?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\((p+n)/2=5/2\)">\((p+n)/2=5/2\)</span>, and <span class="math" data-tex="\(U(A+R_B)=18\)">\(U(A+R_B)=18\)</span>. Condition (4.8) is <span class="math" data-tex="\(N&gt;21.5\)">\(N&gt;21.5\)</span>, so <span class="math" data-tex="\(N=22\)">\(N=22\)</span> gives a bound through order <span class="math" data-tex="\(2N=44\)">\(2N=44\)</span> on this fixed compact support. For the side term, (5.11) requires <span class="math" data-tex="\(N&gt;22.5\)">\(N&gt;22.5\)</span>; choose <span class="math" data-tex="\(N=23\)">\(N=23\)</span>, hence order 46. The choice is conservative and no optimality is claimed. It assumes the graph's zero-free threshold has been checked separately; the numbers in this problem do not certify that threshold. As <span class="math" data-tex="\(B\)">\(B\)</span> changes, <span class="math" data-tex="\(R_B\)">\(R_B\)</span>, and consequently the required order, may change. This is precisely enough for a distribution in <span class="math" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>, and is not a claim of one global finite order or temperedness.</p>
+<h3 id="4-compute-a-moving-graph-side-coefficient">4. Compute a moving-graph side coefficient</h3>
+<p><strong>Problem.</strong> In dimension two, let <span class="math" data-tex="\(u(s)=(1,s)\)">\(u(s)=(1,s)\)</span>, <span class="math" data-tex="\(0\le s\le1\)">\(0\le s\le1\)</span>, and <span class="math" data-tex="\(v=\nabla h\)">\(v=\nabla h\)</span>. For a holomorphic coefficient <span class="math" data-tex="\(f\)">\(f\)</span>, compute the vector <span class="math" data-tex="\(B\)">\(B\)</span> in (5.5). Suppose along this homotopy <span class="math" data-tex="\(|f(Z(s,\xi))|\le D(1+|\xi|^2)^{-4}h^6\)">\(|f(Z(s,\xi))|\le D(1+|\xi|^2)^{-4}h^6\)</span>. Prove that the side term for <span class="math" data-tex="\(\chi_R\)">\(\chi_R\)</span> tends to zero.</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(u&#x27;=(0,1)\)">\(u&#x27;=(0,1)\)</span>, <span class="math" data-tex="\(u\cdot v=v_1+sv_2\)">\(u\cdot v=v_1+sv_2\)</span>, and <span class="math" data-tex="\(v\cdot u&#x27;=v_2\)">\(v\cdot u&#x27;=v_2\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+B=f(Z)h\left((0,i)-(0,v_1+sv_2)+(v_2,sv_2)\right)
+=f(Z)h(v_2,i-v_1).
+\]">\[
+B=f(Z)h\left((0,i)-(0,v_1+sv_2)+(v_2,sv_2)\right)
+=f(Z)h(v_2,i-v_1).
+\]</span>
+<p>The bound <span class="math" data-tex="\(|v|\le1/\sqrt2\)">\(|v|\le1/\sqrt2\)</span> gives <span class="math" data-tex="\(|B|\le D&#x27;|f(Z)|h\)">\(|B|\le D&#x27;|f(Z)|h\)</span>. For <span class="math" data-tex="\(R\ge1\)">\(R\ge1\)</span>, the annulus <span class="math" data-tex="\(R\le|\xi|\le2R\)">\(R\le|\xi|\le2R\)</span> has area at most <span class="math" data-tex="\(D&#x27;&#x27;R^2\)">\(D&#x27;&#x27;R^2\)</span>, and <span class="math" data-tex="\(|\nabla\chi_R|\le D_\chi/R\)">\(|\nabla\chi_R|\le D_\chi/R\)</span>. The absolute right side of (5.8) is consequently bounded by</p>
+<span class="math math-display" data-tex="\[
+D&#x27;&#x27;&#x27; R(1+R^2)^{-4}\bigl(\log(2+4R^2)\bigr)^7
+=O\bigl(R^{-7}(\log R)^7\bigr),
+\]">\[
+D&#x27;&#x27;&#x27; R(1+R^2)^{-4}\bigl(\log(2+4R^2)\bigr)^7
+=O\bigl(R^{-7}(\log R)^7\bigr),
+\]</span>
+<p>which tends to zero. This is a compact cutoff estimate, not an appeal to an unspecified contour at infinity. Its holomorphicity assumption must hold on a neighborhood of the entire truncated homotopy; if <span class="math" data-tex="\(f=qF_\phi\)">\(f=qF_\phi\)</span>, that requires the explicit no-zero check.</p>
+<h3 id="5-find-the-convolution-reflection-sign-with-a-translated-point-mass">5. Find the convolution reflection sign with a translated point mass</h3>
+<p><strong>Problem.</strong> Let <span class="math" data-tex="\(\mu=\delta_a\)">\(\mu=\delta_a\)</span> in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Calculate <span class="math" data-tex="\(g_\phi\)">\(g_\phi\)</span>, <span class="math" data-tex="\(F_{g_\phi}\)">\(F_{g_\phi}\)</span>, and the inverse obtained by the graph formula. Compare its support function with the bound obtained by taking <span class="math" data-tex="\(A=|a|\)">\(A=|a|\)</span>.</p>
+<p><strong>Solution.</strong> The reflected test is <span class="math" data-tex="\(g_\phi(x)=\phi(x+a)\)">\(g_\phi(x)=\phi(x+a)\)</span>. With <span class="math" data-tex="\(v=x+a\)">\(v=x+a\)</span>,</p>
+<span class="math math-display" data-tex="\[
+F_{g_\phi}(\zeta)=e^{-ia\cdot\zeta}F_\phi(\zeta)
+=\widehat\mu(\zeta)F_\phi(\zeta).
+\]">\[
+F_{g_\phi}(\zeta)=e^{-ia\cdot\zeta}F_\phi(\zeta)
+=\widehat\mu(\zeta)F_\phi(\zeta).
+\]</span>
+<p>Here <span class="math" data-tex="\(\widehat\mu=e^{-ia\cdot\zeta}\)">\(\widehat\mu=e^{-ia\cdot\zeta}\)</span> has no zeros, and <span class="math" data-tex="\(q=e^{ia\cdot\zeta}\)">\(q=e^{ia\cdot\zeta}\)</span>. The graph formula has coefficient</p>
+<span class="math math-display" data-tex="\[
+e^{ia\cdot\zeta}F_\phi(\zeta)
+=\int\phi(x)e^{i(x+a)\cdot\zeta}dx.
+\]">\[
+e^{ia\cdot\zeta}F_\phi(\zeta)
+=\int\phi(x)e^{i(x+a)\cdot\zeta}dx.
+\]</span>
+<p>This is the entire transform factor associated with the test <span class="math" data-tex="\(\psi(v)=\phi(v-a)\)">\(\psi(v)=\phi(v-a)\)</span>. Equations (6.1)–(6.3) deform it to the real plane and give <span class="math" data-tex="\(E(\phi)=\psi(0)=\phi(-a)\)">\(E(\phi)=\psi(0)=\phi(-a)\)</span>. Thus <span class="math" data-tex="\(E=\delta_{-a}\)">\(E=\delta_{-a}\)</span>, and <span class="math" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. Its exact support function is <span class="math" data-tex="\(H_K(\theta)=-a\cdot\theta\)">\(H_K(\theta)=-a\cdot\theta\)</span>. Since <span class="math" data-tex="\(|q(\xi+iy)|=e^{-a\cdot y}\le e^{|a||y|}\)">\(|q(\xi+iy)|=e^{-a\cdot y}\le e^{|a||y|}\)</span>, the general theorem with <span class="math" data-tex="\(A=|a|\)">\(A=|a|\)</span> gives the valid, possibly nonsharp estimate <span class="math" data-tex="\(-a\cdot\theta\le|a||\theta|\)">\(-a\cdot\theta\le|a||\theta|\)</span>. The transform multiplier has the sign in (7.6); changing it would yield the wrong point mass.</p>
+<h3 id="6-strictly-beyond-the-supporting-plane">6. Strictly beyond the supporting plane</h3>
+<p><strong>Problem.</strong> In (8.1), why is the condition <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> used rather than <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span>? Exhibit an inverse for which the distribution does not vanish on the bounding plane. Prove the uniform scale absorption (8.4) without assuming that each scale integral separately converges.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, the factor <span class="math" data-tex="\(e^{-dLh}\)">\(e^{-dLh}\)</span> defeats every fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>, uniformly after one half of its decay is used to make a majorant. If <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, that decay disappears and the same proof fails. The equation <span class="math" data-tex="\(\delta_0*\delta_0=\delta_0\)">\(\delta_0*\delta_0=\delta_0\)</span>, with <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, has inverse <span class="math" data-tex="\(E=\delta_0\)">\(E=\delta_0\)</span> supported on the plane <span class="math" data-tex="\(x\cdot\theta=0\)">\(x\cdot\theta=0\)</span>. A test nonzero at zero has nonzero pairing, so the conclusion must concern the open half-space <span class="math" data-tex="\(x\cdot\theta&gt;0\)">\(x\cdot\theta&gt;0\)</span>, not the closed one.</p>
+<p>For the absorption, set <span class="math" data-tex="\(c=d\log2/2&gt;0\)">\(c=d\log2/2&gt;0\)</span>. Since <span class="math" data-tex="\(h\ge\log2\)">\(h\ge\log2\)</span>, <span class="math" data-tex="\((1+L)^k e^{-dLh/2}\le(1+L)^k e^{-cL}\)">\((1+L)^k e^{-dLh/2}\le(1+L)^k e^{-cL}\)</span>. Expand <span class="math" data-tex="\((1+L)^k=\sum_{j=0}^k\binom kj L^j\)">\((1+L)^k=\sum_{j=0}^k\binom kj L^j\)</span>. The <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term is at most one; for <span class="math" data-tex="\(j&gt;0\)">\(j&gt;0\)</span>, differentiating <span class="math" data-tex="\(L^j e^{-cL}\)">\(L^j e^{-cL}\)</span> gives its maximum <span class="math" data-tex="\((j/(ce))^j\)">\((j/(ce))^j\)</span>. Their finite sum gives a constant independent of <span class="math" data-tex="\(L\)">\(L\)</span>. The remaining half of the exponential is at most one, leaving the integrable majorant (8.5). That one bound, followed by pointwise decay, is what permits dominated convergence.</p>
+<h3 id="7-opposite-directions-do-not-select-the-same-derivative-inverse">7. Opposite directions do not select the same derivative inverse</h3>
+<p><strong>Problem.</strong> Prove that <span class="math" data-tex="\(E_+=-H(-x)\)">\(E_+=-H(-x)\)</span> and <span class="math" data-tex="\(E_-=H(x)\)">\(E_-=H(x)\)</span> both satisfy <span class="math" data-tex="\(E&#x27;=\delta_0\)">\(E&#x27;=\delta_0\)</span>. Compute their supports and difference. Prove that no compactly supported inverse exists. Explain exactly which hypothesis of Theorem 1.1 prevents identifying them by a direction deformation.</p>
+<p><strong>Solution.</strong> For a compact smooth test,</p>
+<span class="math math-display" data-tex="\[
+E_+&#x27;(\phi)=\int_{-\infty}^0\phi&#x27;(x)dx=\phi(0),
+\qquad E_-&#x27;(\phi)=-\int_0^\infty\phi&#x27;(x)dx=\phi(0).
+\]">\[
+E_+&#x27;(\phi)=\int_{-\infty}^0\phi&#x27;(x)dx=\phi(0),
+\qquad E_-&#x27;(\phi)=-\int_0^\infty\phi&#x27;(x)dx=\phi(0).
+\]</span>
+<p>The densities are nonzero on every open interval strictly within their respective half-lines, and vanish on the opposite open half-lines. Their supports are therefore exactly <span class="math" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span> and <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Their difference pairs as <span class="math" data-tex="\(\int_0^\infty\phi+\int_{-\infty}^0\phi=\int_\mathbb R\phi\)">\(\int_0^\infty\phi+\int_{-\infty}^0\phi=\int_\mathbb R\phi\)</span>, the constant distribution one. The first has finite support function in positive directions; the second has finite support function in negative directions.</p>
+<p>If <span class="math" data-tex="\(E\)">\(E\)</span> had compact support and <span class="math" data-tex="\(E&#x27;=\delta_0\)">\(E&#x27;=\delta_0\)</span>, choose a compact smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near <span class="math" data-tex="\(\operatorname{supp}E\cup\{0\}\)">\(\operatorname{supp}E\cup\{0\}\)</span>. Then <span class="math" data-tex="\(\chi&#x27;=0\)">\(\chi&#x27;=0\)</span> near that support, and <span class="math" data-tex="\(E&#x27;(\chi)=-E(\chi&#x27;)=0\)">\(E&#x27;(\chi)=-E(\chi&#x27;)=0\)</span>; but <span class="math" data-tex="\(\delta_0(\chi)=1\)">\(\delta_0(\chi)=1\)</span>. This contradiction proves the obstruction. Ordinary convexity of a cone containing <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> would put their midpoint zero in it. The punctured cone in Theorem 1.1 excludes zero; hence it cannot contain both directions. In dimension one the punctured union of the two rays is also disconnected and not ordinarily convex. No permitted homotopy connects the two graphs through the required zero-free logarithmic region.</p>
+<h3 id="8-a-delay-inverse-is-unique-on-its-support-side-but-can-grow-exponentially">8. A delay inverse is unique on its support side, but can grow exponentially</h3>
+<p><strong>Problem.</strong> For <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>, prove every assertion in Example 9.2 and show that the inverse supported in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> is unique among distributions with that support. Explain why that uniqueness does not require Fourier transforming the inverse.</p>
+<p><strong>Solution.</strong> The atoms at <span class="math" data-tex="\(jv\)">\(jv\)</span> meet a compact set only finitely often, so <span class="math" data-tex="\(E(\phi)=\sum_{j\ge0}c^j\phi(jv)\)">\(E(\phi)=\sum_{j\ge0}c^j\phi(jv)\)</span> is locally a finite sum of order-zero distributions. It therefore satisfies a finite local test bound. The shift by <span class="math" data-tex="\(v\)">\(v\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+c\delta_v*E=\sum_{j\ge0}c^{j+1}\delta_{(j+1)v}
+=\sum_{j\ge1}c^j\delta_{jv}.
+\]">\[
+c\delta_v*E=\sum_{j\ge0}c^{j+1}\delta_{(j+1)v}
+=\sum_{j\ge1}c^j\delta_{jv}.
+\]</span>
+<p>Subtracting from <span class="math" data-tex="\(E\)">\(E\)</span> leaves <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span>, exactly in <span class="math" data-tex="\(\mathcal D&#x27;\)">\(\mathcal D&#x27;\)</span>. Every coefficient is nonzero at a distinct atom, so the support is the discrete set <span class="math" data-tex="\(v\mathbb N_0\)">\(v\mathbb N_0\)</span>, and its closed convex hull is <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>. Its supporting value is zero at negative directions.</p>
+<p>The compact transform is <span class="math" data-tex="\(1-ce^{-iv\zeta}\)">\(1-ce^{-iv\zeta}\)</span>. A zero must satisfy <span class="math" data-tex="\(ce^{vy}=1\)">\(ce^{vy}=1\)</span> and <span class="math" data-tex="\(e^{-iv\xi}=1\)">\(e^{-iv\xi}=1\)</span>, giving <span class="math" data-tex="\(y=-(\log c)/v\)">\(y=-(\log c)/v\)</span>, <span class="math" data-tex="\(\xi=2\pi k/v\)">\(\xi=2\pi k/v\)</span>. When <span class="math" data-tex="\(y&lt;-(\log(2c))/v\)">\(y&lt;-(\log(2c))/v\)</span>, the second term has modulus below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so the reciprocal has modulus at most two. Choosing <span class="math" data-tex="\(C\ge\max\{2,\log(2c)/(v\log2)\}\)">\(C\ge\max\{2,\log(2c)/(v\log2)\}\)</span> makes the theorem's negative logarithmic-height region lie there.</p>
+<p>For non-temperedness, choose a fixed compact bump <span class="math" data-tex="\(\rho\)">\(\rho\)</span> supported in <span class="math" data-tex="\((-v/3,v/3)\)">\((-v/3,v/3)\)</span>, with <span class="math" data-tex="\(\rho(0)=1\)">\(\rho(0)=1\)</span>, and set <span class="math" data-tex="\(\rho_j(x)=\rho(x-jv)\)">\(\rho_j(x)=\rho(x-jv)\)</span>. Then <span class="math" data-tex="\(E(\rho_j)=c^j\)">\(E(\rho_j)=c^j\)</span>. Every fixed Schwartz seminorm of <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span> is at most a constant times a power of <span class="math" data-tex="\(1+j\)">\(1+j\)</span>, since the derivatives are fixed translates and their support lies within <span class="math" data-tex="\(v/3\)">\(v/3\)</span> of <span class="math" data-tex="\(jv\)">\(jv\)</span>. A continuous tempered functional has a bound by finitely many of those seminorms, contradicting <span class="math" data-tex="\(c^j\)">\(c^j\)</span>'s exponential growth.</p>
+<p>For uniqueness, subtract two supported inverses to obtain <span class="math" data-tex="\(T\)">\(T\)</span> supported in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> with <span class="math" data-tex="\(T=c\delta_v*T\)">\(T=c\delta_v*T\)</span>. Iterating the distributional equality gives <span class="math" data-tex="\(T=c^m\delta_{mv}*T\)">\(T=c^m\delta_{mv}*T\)</span>, whose support lies in <span class="math" data-tex="\([mv,\infty)\)">\([mv,\infty)\)</span>. For a fixed compact test choose <span class="math" data-tex="\(m\)">\(m\)</span> so large that its support lies below <span class="math" data-tex="\(mv\)">\(mv\)</span>; its pairing with <span class="math" data-tex="\(T\)">\(T\)</span> is zero. Every test vanishes this way, so <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. The argument uses only shifts and support. In particular it identifies the graph-constructed inverse with the explicit sum without introducing a transform of that non-tempered sum.</p>
+<h3 id="9-a-half-space-cone-in-several-dimensions">9. A half-space cone in several dimensions</h3>
+<p><strong>Problem.</strong> In <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, take <span class="math" data-tex="\(\mu=\partial_{x_1}\delta_0\)">\(\mu=\partial_{x_1}\delta_0\)</span>, <span class="math" data-tex="\(\Gamma=\{\theta:\theta_1&gt;0\}\)">\(\Gamma=\{\theta:\theta_1&gt;0\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+E(\phi)=-\int_{-\infty}^0\phi(s,0,\ldots,0)ds.
+\]">\[
+E(\phi)=-\int_{-\infty}^0\phi(s,0,\ldots,0)ds.
+\]</span>
+<p>Prove the convolution equation, the exact support, and the reciprocal condition on every closed angular subcone. Does <span class="math" data-tex="\(\overline\Gamma\)">\(\overline\Gamma\)</span> have to be pointed?</p>
+<p><strong>Solution.</strong> Integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\partial_{x_1}E(\phi)
+=\int_{-\infty}^0\partial_{x_1}\phi(s,0,\ldots,0)ds
+=\phi(0).
+\]">\[
+\partial_{x_1}E(\phi)
+=\int_{-\infty}^0\partial_{x_1}\phi(s,0,\ldots,0)ds
+=\phi(0).
+\]</span>
+<p>Thus <span class="math" data-tex="\(\mu*E=\delta_0\)">\(\mu*E=\delta_0\)</span>. The distribution vanishes off the closed negative first-coordinate ray, and every neighborhood of a point on that ray contains a test whose restriction to the ray has a nonzero integral. Its support and closed convex hull are that ray. Consequently <span class="math" data-tex="\(H_K(\theta)=0\)">\(H_K(\theta)=0\)</span> when <span class="math" data-tex="\(\theta_1\ge0\)">\(\theta_1\ge0\)</span>, and <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> when <span class="math" data-tex="\(\theta_1&lt;0\)">\(\theta_1&lt;0\)</span>.</p>
+<p>For a closed angular subcone with a nonzero direction, compactness of its unit directions inside <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> gives <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with <span class="math" data-tex="\(y_1\ge\varepsilon|y|\)">\(y_1\ge\varepsilon|y|\)</span> there. The compact transform is <span class="math" data-tex="\(i\zeta_1\)">\(i\zeta_1\)</span>, so it is nonzero when <span class="math" data-tex="\(y_1&gt;0\)">\(y_1&gt;0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+|1/(i\zeta_1)|\le1/y_1\le1/(\varepsilon|y|).
+\]">\[
+|1/(i\zeta_1)|\le1/y_1\le1/(\varepsilon|y|).
+\]</span>
+<p>Choosing <span class="math" data-tex="\(C\ge\max\{1,1/(\varepsilon\log2)\}\)">\(C\ge\max\{1,1/(\varepsilon\log2)\}\)</span>, the logarithmic region has <span class="math" data-tex="\(|y|&gt;C\log2\)">\(|y|&gt;C\log2\)</span>, and the last quantity is at most <span class="math" data-tex="\(C\)">\(C\)</span>. This proves the hypothesis with <span class="math" data-tex="\(A=p=0\)">\(A=p=0\)</span>. A cone containing only zero has an empty height region and needs no estimate. For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(\overline\Gamma=\{\theta_1\ge0\}\)">\(\overline\Gamma=\{\theta_1\ge0\}\)</span> contains every line in the hyperplane <span class="math" data-tex="\(\theta_1=0\)">\(\theta_1=0\)</span>. Our open cone excludes zero and opposite interior directions, but its closure need not be pointed. That distinction is why the chapter states its convention explicitly.</p>
+<h3 id="10-why-one-common-distribution-is-necessary">10. Why one common distribution is necessary</h3>
+<p><strong>Problem.</strong> Suppose <span class="math" data-tex="\(\theta_0,\theta_1\)">\(\theta_0,\theta_1\)</span> belong to a cone satisfying (1.1). Prove that the straight segment stays a positive distance from zero, that its generated ray cone is closed, and that graph equality really identifies the original ray constructions even when their reciprocal constants differ.</p>
+<p><strong>Solution.</strong> Convexity puts every segment point in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; none equals zero. Its norm is continuous on a compact interval, so its minimum <span class="math" data-tex="\(m\)">\(m\)</span> is attained and positive. If <span class="math" data-tex="\(\rho_j\theta(s_j)\)">\(\rho_j\theta(s_j)\)</span> converges, its boundedness and <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span> bound <span class="math" data-tex="\(\rho_j\)">\(\rho_j\)</span>. Subsequence compactness yields a limit <span class="math" data-tex="\(\rho\theta(s)\)">\(\rho\theta(s)\)</span>, proving that the generated ray cone is closed. It is contained in <span class="math" data-tex="\(\Gamma\cup\{0\}\)">\(\Gamma\cup\{0\}\)</span> by dilation invariance.</p>
+<p>Use that cone's constants to choose one common scale <span class="math" data-tex="\(L\)">\(L\)</span> large enough for (3.8); also make it at least the two individual ray thresholds. The original ray graph at <span class="math" data-tex="\(\theta_0\)">\(\theta_0\)</span> can first be raised to <span class="math" data-tex="\(L\)">\(L\)</span> using its own ray estimate; Section 5 proves equality on that finite safe scale interval. Do the same for <span class="math" data-tex="\(\theta_1\)">\(\theta_1\)</span>. The segment deformation at the common scale is uniformly zero-free by the generated cone's estimate, and its cutoff side term vanishes by (5.10). Thus the original constructions agree. Repeating with arbitrary pairs gives one <span class="math" data-tex="\(E\)">\(E\)</span>, so each directional half-space bound applies to its same support. Different constants are allowed; different unidentified inverses would not prove simultaneous support control.</p>
+<p>The background credit and exact proof dependencies remain those of the main manuscript. The solved examples use only its proved graph construction, compact-factor convolution, finite test continuity, and the stated support definition. They do not require the unresolved unrestricted source convention or a paid proof.</p>
+<h2 id="references-and-proof-dependencies">References and proof dependencies</h2>
+<ul>
+<li>Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, October 2, 2026, <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">author-hosted notes</a>. Definition 2.1/Section 2.2: fixed-compact distribution bounds; Sections 4.1–4.2: support and compact cutoffs; Sections 8.1–8.2, especially Proposition 8.6 and Definition 8.9, printed pages 90–91: compact-factor convolution; Proposition 11.14 and Theorem 11.15, printed pages 123–124: Gaussian normalization and Fourier inversion. Exact local source bindings and reading receipts are in the companion source-credit ledger.</li>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, Chapter 5, <a href="https://web.math.ku.dk/~grubb/dist5.pdf">author-hosted Fourier chapter</a>. Paragraph after Remark 5.18.14–5.15, especially equation (5.38): compact distribution transform and its entire extension. The finite estimate (2.4) and all graph arguments are proved in this chapter.</li>
+<li><em>Convolution as addition of supports</em>, Theorem 1.1, equations (1.4)–(1.8), exact complete local provider bound in the dependency ledger. Section 7 reproduces the reflected-test construction and continuity actually used.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Theorem 16.7.4, printed page 359: private statement/completeness target only. Neither its prose nor its scan is included in the learner payload. The cone audit in Section 10 remains explicit.</li>
+</ul>
+<p>This manuscript contains the complete analytic construction for the stated punctured-cone theorem.</p>
+<p><a href="reproduce-AN02-L117.html">Reproduction guide, complete original sources, credits and licence</a> · <a href="src/logarithmic-fourier-graphs-construct-a-cone-supported-inverse.md">Download the complete current lesson source</a>.</p>
+<p>Complete included comparison reading: <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorem 1.1, equations (1.4)–(1.8). Section 7 gives the complete reflected-test construction and continuity used here.</p>
+</main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

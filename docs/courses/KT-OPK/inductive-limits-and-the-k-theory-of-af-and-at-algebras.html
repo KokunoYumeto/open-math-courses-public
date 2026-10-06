@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inductive limits and the K-theory of AF and AT algebras · K-theory of C*-algebras</title>
+<meta name="description" content="A lesson of the course K-theory of C*-algebras. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../index.html">Courses</a>
+<a href="sources.html">Licensing</a>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">K-theory of C*-algebras</a> <span aria-hidden="true">›</span> <span>Lesson 16 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). Self-checked by the writing AI.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (5)</summary><ul><li><a href="matrix-stability-stability-and-continuity-of-k0.html">Matrix stability, stability and continuity of <span class="math" data-tex="\(K_0\)">\(K_0\)</span></a></li><li><a href="invertibles-unitaries-and-k1.html">Invertibles, unitaries and <span class="math" data-tex="\(K_1\)">\(K_1\)</span></a></li><li><a href="topological-k-theory-of-spaces-pairs-and-vector-bundles.html">Topological K-theory of spaces, pairs and vector bundles</a></li><li><a href="vector-bundles-and-finitely-generated-projective-modules.html">Vector bundles and finitely generated projective modules</a></li><li><span class="unlinked">Traces, states and the pairing with K-theory</span></li></ul></details>
+<article class="lesson">
+<h1 id="inductive-limits-and-the-k-theory-of-af-and-at-algebras">Inductive limits and the K-theory of AF and AT algebras</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Independently authored CC0 lesson; self-checked by the writing AI.</em></p>
+<p>Finite matrix algebras contribute ranks to K_0 and nothing to K_1. Matrix algebras over a circle contribute both ranks and winding numbers. Passing to an inductive limit preserves these computations, but it is essential to compute the actual connecting maps: multiplicity counts ranks, whereas winding counts the total degree of a matrix determinant.</p>
+<p>We will compute the Bunce–Deddens groups directly from their circle-algebra system, prove uniqueness of their trace, and distinguish them from a superficially similar doubled pullback system. We also prove the dimension-group converse and the simple AF range theorem with a prescribed trace simplex. The full AF classification proof is the preceding programme prerequisite.</p>
+<p>The continuity results are <a href="matrix-stability-stability-and-continuity-of-k0.html#3-group-completion-and-scalar-kernels-commute-with-the-limit">Matrix stability, stability and continuity of K_0, Theorem 3.3</a> and <a href="invertibles-unitaries-and-k1.html#4-realizing-an-invertible-path-at-a-late-stage">Invertibles, unitaries and K_1, Theorem 4.1</a>. They allow arbitrary sequential C*-connecting homomorphisms, including maps with kernels. Circle groups and generators are <a href="invertibles-unitaries-and-k1.html#5-components-detected-by-spectra-winding-and-index">Lesson 6, Theorem 5.2</a> and <a href="topological-k-theory-of-spaces-pairs-and-vector-bundles.html#5-adding-circles-with-arbitrary-coefficients">Topological K-theory, Theorem 5.1</a>.</p>
+<h2 id="1-af-algebras-and-their-complete-invariant">1. AF-algebras and their complete invariant</h2>
+<p>An <strong>AF-algebra</strong> here is a sequential inductive limit of finite-dimensional C*-algebras. Write its stages as</p>
+<span class="math math-display" data-tex="\[
+F_k=\bigoplus_{j=1}^{r_k}M_{n_{k,j}}(\mathbb C).
+\tag{1.1}
+\]">\[
+F_k=\bigoplus_{j=1}^{r_k}M_{n_{k,j}}(\mathbb C).
+\tag{1.1}
+\]</span>
+<p><strong>Proposition 1.1.</strong> Every AF-algebra <span class="math" data-tex="\(A\)">\(A\)</span> has <span class="math" data-tex="\(K_1(A)=0\)">\(K_1(A)=0\)</span>.</p>
+<p><em>Proof.</em> An invertible matrix over a finite-dimensional C*-algebra is homotopic to its polar unitary. Each finite-dimensional unitary is unitarily diagonalizable, with eigenvalues <span class="math" data-tex="\(e^{i\theta_j}\)">\(e^{i\theta_j}\)</span>; replacing them by <span class="math" data-tex="\(e^{it\theta_j}\)">\(e^{it\theta_j}\)</span> gives a path from the identity to that unitary. Direct sums of these paths show <span class="math" data-tex="\(K_1(F_k)=0\)">\(K_1(F_k)=0\)</span>, at every matrix size. Continuity now gives</p>
+<span class="math math-display" data-tex="\[
+K_1(A)=\varinjlim_k K_1(F_k)=0.
+\tag{1.2}
+\]">\[
+K_1(A)=\varinjlim_k K_1(F_k)=0.
+\tag{1.2}
+\]</span>
+<p>The same argument covers nonunital AF limits because continuity uses the external unitizations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, use the class of a minimal projection as the generator of each summand, so <span class="math" data-tex="\([1_{M_n}]=n\)">\([1_{M_n}]=n\)</span>, not <span class="math" data-tex="\(1\)">\(1\)</span>. The stage groups are <span class="math" data-tex="\(\mathbb Z^{r_k}\)">\(\mathbb Z^{r_k}\)</span>, their positive cones are <span class="math" data-tex="\(\mathbb Z_+^{r_k}\)">\(\mathbb Z_+^{r_k}\)</span>, and the connecting maps are nonnegative multiplicity matrices <span class="math" data-tex="\(R_k\)">\(R_k\)</span>. The scale consists of classes of projections in the algebra itself, rather than all matrix projections.</p>
+<p>The identification</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(K_0(A),K_0(A)^+,\Sigma(A))\\
+\cong\varinjlim_k
+(\mathbb Z^{r_k},\mathbb Z_+^{r_k},\Sigma(F_k))
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+(K_0(A),K_0(A)^+,\Sigma(A))\\
+\cong\varinjlim_k
+(\mathbb Z^{r_k},\mathbb Z_+^{r_k},\Sigma(F_k))
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>is the actual <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-06">AF-algebras, Theorem 7.5</a>. That theorem identifies the positive limit monoid with projection classes and proves cancellation. We use it rather than reprove the dimension-group identification.</p>
+<p>For unital AF-algebras, the scale is determined by the order unit <span class="math" data-tex="\(u=[1_A]\)">\(u=[1_A]\)</span>: it is <span class="math" data-tex="\(\{g:0\leq g\leq u\}\)">\(\{g:0\leq g\leq u\}\)</span>. The following stronger results are imported from <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/af-algebras.html#OA-FND-AF-07">AF-algebras, §8</a>.</p>
+<p><strong>Classification and lifting.</strong> Every isomorphism of scaled ordered <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-groups of AF-algebras is induced by an algebra isomorphism (Theorem 8.3). Every automorphism of the scaled group lifts to an automorphism of the AF-algebra (Corollary 8.4). Stable isomorphism is equivalent to isomorphism of the ordered groups without their scales (Theorem 8.5).</p>
+<p>The scale therefore cannot be omitted from a unital classification statement. Also the lifting statement prescribes the induced group map; it does not prescribe the order of the lifted automorphism. These are useful inputs for later crossed-product calculations.</p>
+<p>For a UHF system <span class="math" data-tex="\(M_{n_k}\)">\(M_{n_k}\)</span>, with <span class="math" data-tex="\(n_k\mid n_{k+1}\)">\(n_k\mid n_{k+1}\)</span> and unital diagonal multiplicity <span class="math" data-tex="\(m_k=n_{k+1}/n_k\)">\(m_k=n_{k+1}/n_k\)</span>, the coordinate <span class="math" data-tex="\(r/n_k\)">\(r/n_k\)</span> identifies the limit group with</p>
+<span class="math math-display" data-tex="\[
+\mathbb Z(q)=\bigcup_k n_k^{-1}\mathbb Z.
+\tag{1.4}
+\]">\[
+\mathbb Z(q)=\bigcup_k n_k^{-1}\mathbb Z.
+\tag{1.4}
+\]</span>
+<p>Here the supernatural number <span class="math" data-tex="\(q\)">\(q\)</span> records the limiting prime exponents of the <span class="math" data-tex="\(n_k\)">\(n_k\)</span>. The positive cone has the usual rational order, the unit is <span class="math" data-tex="\(1\)">\(1\)</span>, and the scale is <span class="math" data-tex="\(\mathbb Z(q)\cap[0,1]\)">\(\mathbb Z(q)\cap[0,1]\)</span>. This normalization was proved in Lesson 5, §5; Proposition 1.1 adds <span class="math" data-tex="\(K_1=0\)">\(K_1=0\)</span>.</p>
+<p><strong>Theorem 1.2 (The kernel of the AF K-theory action).</strong> Give <span class="math" data-tex="\(\operatorname{Aut}(A)\)">\(\operatorname{Aut}(A)\)</span> the topology of pointwise norm convergence, for an AF-algebra <span class="math" data-tex="\(A\)">\(A\)</span>. The following coincide: the closure of inner automorphisms implemented by unitaries in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>, the closure of those implemented by unitaries in <span class="math" data-tex="\(M(A)\)">\(M(A)\)</span>, the connected component of the identity, the path component of the identity, and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Id}(A)=\{\alpha:\alpha_*=1\text{ on }K_0(A)\}.
+\tag{1.5}
+\]">\[
+\operatorname{Id}(A)=\{\alpha:\alpha_*=1\text{ on }K_0(A)\}.
+\tag{1.5}
+\]</span>
+<p>These are the approximately inner automorphisms. For each one there is a norm-continuous path <span class="math" data-tex="\(u_t\in U(A^+)\)">\(u_t\in U(A^+)\)</span>, <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, starting at <span class="math" data-tex="\(1\)">\(1\)</span>, with <span class="math" data-tex="\(\operatorname{Ad}u_t\to\alpha\)">\(\operatorname{Ad}u_t\to\alpha\)</span> pointwise in norm.</p>
+<p><em>Proof.</em> The zero algebra is immediate. This topology makes the automorphisms a topological group: contractivity gives continuity of composition, and
+<span class="math" data-tex="\(\|\beta^{-1}(a)-\alpha^{-1}(a)\|=\|a-\beta(\alpha^{-1}(a))\|\)">\(\|\beta^{-1}(a)-\alpha^{-1}(a)\|=\|a-\beta(\alpha^{-1}(a))\|\)</span>
+gives continuity of inversion at <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. We can choose increasing finite-dimensional subalgebras <span class="math" data-tex="\(A_n\)">\(A_n\)</span> with dense union: use the canonical finite-dimensional images in the sequential AF limit. Put <span class="math" data-tex="\(H_n=A_n+\mathbb C1\subset A^+\)">\(H_n=A_n+\mathbb C1\subset A^+\)</span>, with the external unit. Each <span class="math" data-tex="\(H_n\)">\(H_n\)</span> is finite-dimensional and unital, includes its scalar complementary summand, and their union is dense in <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. An automorphism extends by fixing the external scalar. If it acts trivially on <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>, it acts trivially on <span class="math" data-tex="\(K_0(A^+)\)">\(K_0(A^+)\)</span> by the scalar split summand.</p>
+<p>Fix <span class="math" data-tex="\(n\)">\(n\)</span>, choose matrix units <span class="math" data-tex="\(e^{(j)}_{kl}\)">\(e^{(j)}_{kl}\)</span> for every summand of <span class="math" data-tex="\(H_n\)">\(H_n\)</span>, and put <span class="math" data-tex="\(f^{(j)}_{kl}=\alpha(e^{(j)}_{kl})\)">\(f^{(j)}_{kl}=\alpha(e^{(j)}_{kl})\)</span>. AF cancellation, in the exact projection-monoid theorem cited above, supplies actual partial isometries <span class="math" data-tex="\(w_j\in A^+\)">\(w_j\in A^+\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_j^*w_j=e^{(j)}_{11},\\
+w_jw_j^*=f^{(j)}_{11}.
+\end{gathered}
+\tag{1.6}
+\]">\[
+\begin{gathered}
+w_j^*w_j=e^{(j)}_{11},\\
+w_jw_j^*=f^{(j)}_{11}.
+\end{gathered}
+\tag{1.6}
+\]</span>
+<p>Indeed equality of their <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-classes is equality in the cancellative projection monoid; this is unstabilized equivalence of these projections. Define</p>
+<span class="math math-display" data-tex="\[
+u_n=\sum_j\sum_i f^{(j)}_{i1}w_j e^{(j)}_{1i}.
+\tag{1.7}
+\]">\[
+u_n=\sum_j\sum_i f^{(j)}_{i1}w_j e^{(j)}_{1i}.
+\tag{1.7}
+\]</span>
+<p>The supports of <span class="math" data-tex="\(w_j\)">\(w_j\)</span> and matrix-unit products give <span class="math" data-tex="\(u_n^*u_n=\sum_{j,i}e^{(j)}_{ii}=1\)">\(u_n^*u_n=\sum_{j,i}e^{(j)}_{ii}=1\)</span>, <span class="math" data-tex="\(u_nu_n^*=\sum_{j,i}f^{(j)}_{ii}=1\)">\(u_nu_n^*=\sum_{j,i}f^{(j)}_{ii}=1\)</span>, and <span class="math" data-tex="\(u_ne^{(j)}_{kl}u_n^*=f^{(j)}_{kl}\)">\(u_ne^{(j)}_{kl}u_n^*=f^{(j)}_{kl}\)</span>. Thus <span class="math" data-tex="\(\operatorname{Ad}u_n\)">\(\operatorname{Ad}u_n\)</span> agrees exactly with <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(H_n\)">\(H_n\)</span>.</p>
+<p>The relative commutant <span class="math" data-tex="\(C_n=H_n&#x27;\cap A^+\)">\(C_n=H_n&#x27;\cap A^+\)</span> is AF. To see this directly, if summand <span class="math" data-tex="\(j\)">\(j\)</span> has size <span class="math" data-tex="\(d_j\)">\(d_j\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\mathcal E_n(x)=\sum_j\frac1{d_j}
+\sum_{k,l}e^{(j)}_{kl}x e^{(j)}_{lk}.
+\tag{1.8}
+\]">\[
+\mathcal E_n(x)=\sum_j\frac1{d_j}
+\sum_{k,l}e^{(j)}_{kl}x e^{(j)}_{lk}.
+\tag{1.8}
+\]</span>
+<p>Multiplication by a matrix unit on either side gives the same expression, so this bounded linear map takes values in <span class="math" data-tex="\(C_n\)">\(C_n\)</span>. If <span class="math" data-tex="\(x\in C_n\)">\(x\in C_n\)</span>, it equals <span class="math" data-tex="\(x\)">\(x\)</span>: use <span class="math" data-tex="\(\sum_{k,l}e_{kl}^{(j)}e_{lk}^{(j)}=d_j\sum_ke_{kk}^{(j)}\)">\(\sum_{k,l}e_{kl}^{(j)}e_{lk}^{(j)}=d_j\sum_ke_{kk}^{(j)}\)</span>. For <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>, the map preserves <span class="math" data-tex="\(H_m\)">\(H_m\)</span>. Approximate an element of <span class="math" data-tex="\(C_n\)">\(C_n\)</span> by elements of <span class="math" data-tex="\(H_m\)">\(H_m\)</span> and apply <span class="math" data-tex="\(\mathcal E_n\)">\(\mathcal E_n\)</span>. This shows that <span class="math" data-tex="\(C_n\)">\(C_n\)</span> is the closure of the increasing finite-dimensional unital algebras <span class="math" data-tex="\(C_n\cap H_m\)">\(C_n\cap H_m\)</span>.</p>
+<p>Every unitary in a unital AF-algebra has a norm-continuous path to the identity. Approximate it sufficiently closely in a unital finite stage, polar-correct there, and use the finite-dimensional spectral logarithm to join that stage unitary to <span class="math" data-tex="\(1\)">\(1\)</span>. Its close ratio with the original unitary has a continuous logarithm, giving the remaining path. These are the polar, spectral and close-unitary paths of Proposition 1.1 and <a href="invertibles-unitaries-and-k1.html">Lesson 6</a>.</p>
+<p>Now <span class="math" data-tex="\(u_n^*u_{n+1}\)">\(u_n^*u_{n+1}\)</span> commutes with <span class="math" data-tex="\(H_n\)">\(H_n\)</span>, since both conjugations equal <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> there. Choose <span class="math" data-tex="\(v_n:[0,1]\to U(C_n)\)">\(v_n:[0,1]\to U(C_n)\)</span> joining <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(u_n^*u_{n+1}\)">\(u_n^*u_{n+1}\)</span>, and set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_t=u_n v_n(t-n),\\
+n\leq t\leq n+1.
+\end{gathered}
+\tag{1.9}
+\]">\[
+\begin{gathered}
+u_t=u_n v_n(t-n),\\
+n\leq t\leq n+1.
+\end{gathered}
+\tag{1.9}
+\]</span>
+<p>Join <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(u_1\)">\(u_1\)</span> on the initial interval. The paths fit at all integer endpoints. For every <span class="math" data-tex="\(t\geq n\)">\(t\geq n\)</span>, conjugation by <span class="math" data-tex="\(u_t\)">\(u_t\)</span> equals <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> on <span class="math" data-tex="\(H_n\)">\(H_n\)</span>. Contractivity and density give pointwise norm convergence on <span class="math" data-tex="\(A\)">\(A\)</span>, uniformly for sufficiently late <span class="math" data-tex="\(t\)">\(t\)</span>. Reparameterize by <span class="math" data-tex="\(t=s/(1-s)\)">\(t=s/(1-s)\)</span>, and assign <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. This is a pointwise norm continuous path of automorphisms from the identity to <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The K-theory kernel therefore lies in both the path component and the closure of <span class="math" data-tex="\(A^+\)">\(A^+\)</span>-inner automorphisms.</p>
+<p>Conversely a multiplier unitary fixes every projection class: for a matrix projection <span class="math" data-tex="\(p\)">\(p\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>, the product <span class="math" data-tex="\(up\)">\(up\)</span> belongs to that matrix algebra and gives a partial-isometry equivalence from <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(upu^*\)">\(upu^*\)</span>. Actual projection classes generate <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>, by finite-stage ranks and continuity. For each fixed projection, its image class is locally constant as a function of the automorphism, by the close-projection lemma; pointwise norm convergence controls the finitely many entries of a matrix projection. Hence the closure of multiplier-inner automorphisms acts trivially on <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, as does every connected set of automorphisms containing the identity. The <span class="math" data-tex="\(A^+\)">\(A^+\)</span>-inner closure lies in the multiplier-inner closure, and the identity path component lies in the connected component. Combining these inclusions with the preceding paragraph proves all five equalities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the theorem and the asymptotic unitary-path conclusion of [Blackadar 1998, Exercise 7.7.5, printed pp. 57–58]. Its cancellation input is precisely the AF projection-monoid theorem already imported above; general AT classification is not used.</p>
+<h2 id="2-circle-blocks-multiplicity-and-total-degree">2. Circle blocks: multiplicity and total degree</h2>
+<p>An <strong>AT-algebra</strong> is a sequential inductive limit of finite sums of matrix algebras over <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>. At a stage</p>
+<span class="math math-display" data-tex="\[
+E_k=\bigoplus_{j=1}^{r_k}M_{n_{k,j}}(C(\mathbb T)),
+\]">\[
+E_k=\bigoplus_{j=1}^{r_k}M_{n_{k,j}}(C(\mathbb T)),
+\]</span>
+<p>the two groups are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(E_k)=\mathbb Z^{r_k},\\
+K_1(E_k)=\mathbb Z^{r_k}.
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+K_0(E_k)=\mathbb Z^{r_k},\\
+K_1(E_k)=\mathbb Z^{r_k}.
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>For K_0 use minimal constant projections. For K_1 the generator of a circle summand is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_n(z)=ze_{11}+(1-e_{11}),\\
+\operatorname{wind}(\det g_n)=1.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+g_n(z)=ze_{11}+(1-e_{11}),\\
+\operatorname{wind}(\det g_n)=1.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Matrix stability, the circle computation and its counterclockwise winding convention prove these assertions. By <a href="vector-bundles-and-finitely-generated-projective-modules.html#5-gluing-around-a-circle-and-across-a-sphere">Lesson 2, Proposition 5.1</a>, all complex circle vector bundles are trivial, so the positive cone in K_0 is <span class="math" data-tex="\(\mathbb Z_+^{r_k}\)">\(\mathbb Z_+^{r_k}\)</span>; its unit vector has coordinates <span class="math" data-tex="\(n_{k,j}\)">\(n_{k,j}\)</span>.</p>
+<p>For a homomorphism <span class="math" data-tex="\(\phi:E_k\to E_{k+1}\)">\(\phi:E_k\to E_{k+1}\)</span>, define <span class="math" data-tex="\(R_{ij}\)">\(R_{ij}\)</span> as the rank of the image of the <span class="math" data-tex="\(j\)">\(j\)</span>-th minimal constant projection in target summand <span class="math" data-tex="\(i\)">\(i\)</span>. Rank is constant on the target circle because a continuous projection has locally constant rank. Define <span class="math" data-tex="\(D_{ij}\)">\(D_{ij}\)</span> as the winding number of the determinant of the image of the <span class="math" data-tex="\(j\)">\(j\)</span>-th generator (2.2) in that summand. For a nonunital map use</p>
+<span class="math math-display" data-tex="\[
+\phi(g)+1-\phi(1)
+\tag{2.3}
+\]">\[
+\phi(g)+1-\phi(1)
+\tag{2.3}
+\]</span>
+<p>as its target unitary; this is the usual unitized image. The generator calculations show exactly that</p>
+<span class="math math-display" data-tex="\[
+\phi_{*0}=R,\qquad \phi_{*1}=D.
+\tag{2.4}
+\]">\[
+\phi_{*0}=R,\qquad \phi_{*1}=D.
+\tag{2.4}
+\]</span>
+<p>Indeed K_0 is generated by the stated projection classes and K_1 by the stated unitary classes, so these images determine both homomorphisms. Continuity gives the general computation, for simple AT-algebras as well:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(\varinjlim E_k)=\varinjlim(\mathbb Z^{r_k},R_k),\\
+K_1(\varinjlim E_k)=\varinjlim(\mathbb Z^{r_k},D_k).
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+K_0(\varinjlim E_k)=\varinjlim(\mathbb Z^{r_k},R_k),\\
+K_1(\varinjlim E_k)=\varinjlim(\mathbb Z^{r_k},D_k).
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>The K_0 cone is the union of the images of the stage cones; the scale is the union of the images of the stage rank intervals. These follow from the projection and relation continuity in Lesson 5. In a unital system <span class="math" data-tex="\(R_k\mathbf n_k=\mathbf n_{k+1}\)">\(R_k\mathbf n_k=\mathbf n_{k+1}\)</span>, giving the distinguished unit class.</p>
+<p><strong>Example 2.1.</strong> A diagonal map with eigenvalue functions <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_m:\mathbb T\to\mathbb T\)">\(\lambda_1,\ldots,\lambda_m:\mathbb T\to\mathbb T\)</span> sends <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(\operatorname{diag}(f(\lambda_1),\ldots,f(\lambda_m))\)">\(\operatorname{diag}(f(\lambda_1),\ldots,f(\lambda_m))\)</span>. Its K_0 map is multiplication by <span class="math" data-tex="\(m\)">\(m\)</span>. Its K_1 map is multiplication by</p>
+<span class="math math-display" data-tex="\[
+D=\sum_{j=1}^m\deg(\lambda_j).
+\tag{2.6}
+\]">\[
+D=\sum_{j=1}^m\deg(\lambda_j).
+\tag{2.6}
+\]</span>
+<p>This follows by taking the determinant of the image of (2.2). In particular <span class="math" data-tex="\(m\)">\(m\)</span> repeated copies of <span class="math" data-tex="\(f(z^d)\)">\(f(z^d)\)</span> give maps <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(md\)">\(md\)</span>. If the symbol “degree” denotes the total determinant degree <span class="math" data-tex="\(D\)">\(D\)</span>, one must not multiply it by <span class="math" data-tex="\(m\)">\(m\)</span> again.</p>
+<h2 id="3-the-correct-bunce-deddens-connecting-maps">3. The correct Bunce–Deddens connecting maps</h2>
+<p>For <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span>, let <span class="math" data-tex="\(C_m(z)\)">\(C_m(z)\)</span> be the unitary cyclic matrix on basis <span class="math" data-tex="\(e_0,\ldots,e_{m-1}\)">\(e_0,\ldots,e_{m-1}\)</span> defined by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_m(z)e_j&amp;=e_{j+1},\\
+&amp;\quad0\leq j&lt;m-1,\\
+C_m(z)e_{m-1}&amp;=ze_0.
+\end{aligned}
+\tag{3.1}
+\]">\[
+\begin{aligned}
+C_m(z)e_j&amp;=e_{j+1},\\
+&amp;\quad0\leq j&lt;m-1,\\
+C_m(z)e_{m-1}&amp;=ze_0.
+\end{aligned}
+\tag{3.1}
+\]</span>
+<p>Its powers and determinant satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_m(z)^m=zI_m,\\
+\det C_m(z)=(-1)^{m-1}z.
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+C_m(z)^m=zI_m,\\
+\det C_m(z)=(-1)^{m-1}z.
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The first identity follows by going once around the cycle. In the determinant expansion the single nonzero permutation is that cycle, with sign <span class="math" data-tex="\((-1)^{m-1}\)">\((-1)^{m-1}\)</span>, proving the second.</p>
+<p>Define the unital homomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_{n,m}:M_n(C(\mathbb T))\\
+\longrightarrow M_{nm}(C(\mathbb T)),\\
+\Phi_{n,m}(e_{ij}z^r)=e_{ij}\otimes C_m(z)^r.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\Phi_{n,m}:M_n(C(\mathbb T))\\
+\longrightarrow M_{nm}(C(\mathbb T)),\\
+\Phi_{n,m}(e_{ij}z^r)=e_{ij}\otimes C_m(z)^r.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>Continuous functional calculus for the unitary <span class="math" data-tex="\(C_m\)">\(C_m\)</span>, tensored with the matrix units, defines this map for all continuous functions. It is injective: as <span class="math" data-tex="\(z\)">\(z\)</span> ranges over the circle, the eigenvalues of <span class="math" data-tex="\(C_m(z)\)">\(C_m(z)\)</span> range over the entire circle, and evaluation of an image at those eigenvalues recovers the values of the original matrix function.</p>
+<p><strong>Lemma 3.1.</strong> This is a standard <span class="math" data-tex="\(m\)">\(m\)</span>-times-around embedding. Its induced maps are</p>
+<span class="math math-display" data-tex="\[
+(\Phi_{n,m})_{*0}=m,\qquad
+(\Phi_{n,m})_{*1}=1.
+\tag{3.4}
+\]">\[
+(\Phi_{n,m})_{*0}=m,\qquad
+(\Phi_{n,m})_{*1}=1.
+\tag{3.4}
+\]</span>
+<p><em>Proof.</em> To compare with the standard root presentation, put <span class="math" data-tex="\(z=e^{2\pi it}\)">\(z=e^{2\pi it}\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\lambda_j(t)=e^{2\pi i(t+j)/m},
+\qquad 0\leq j&lt;m.
+\]">\[
+\lambda_j(t)=e^{2\pi i(t+j)/m},
+\qquad 0\leq j&lt;m.
+\]</span>
+<p>Let <span class="math" data-tex="\(P\)">\(P\)</span> be the cyclic permutation sending <span class="math" data-tex="\(e_j\)">\(e_j\)</span> to <span class="math" data-tex="\(e_{j+1}\)">\(e_{j+1}\)</span>, with wraparound, and choose a continuous unitary path <span class="math" data-tex="\(R(t)\)">\(R(t)\)</span> from <span class="math" data-tex="\(I_m\)">\(I_m\)</span> to <span class="math" data-tex="\(P\)">\(P\)</span>. Such a path exists by diagonalizing <span class="math" data-tex="\(P\)">\(P\)</span> and choosing angles for its eigenvalues. The root map is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Psi(f)(t)=R(t)F(t)R(t)^*,\\
+F(t)=\operatorname{diag}_{0\leq j&lt;m}f(\lambda_j(t)).
+\end{gathered}
+\tag{3.5}
+\]">\[
+\begin{gathered}
+\Psi(f)(t)=R(t)F(t)R(t)^*,\\
+F(t)=\operatorname{diag}_{0\leq j&lt;m}f(\lambda_j(t)).
+\end{gathered}
+\tag{3.5}
+\]</span>
+<p>The endpoint values agree: at <span class="math" data-tex="\(t=1\)">\(t=1\)</span> the roots shift one place, and conjugation by <span class="math" data-tex="\(P\)">\(P\)</span> restores their original positions. Thus (3.5) is a matrix function on the circle. Tensor with <span class="math" data-tex="\(M_n\)">\(M_n\)</span> for a matrix-valued <span class="math" data-tex="\(f\)">\(f\)</span>.</p>
+<p>Let <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span> have <span class="math" data-tex="\(j\)">\(j\)</span>-th column</p>
+<span class="math math-display" data-tex="\[
+m^{-1/2}
+(1,\lambda_j^{-1},\ldots,\lambda_j^{-(m-1)})^{\mathsf T}.
+\tag{3.6}
+\]">\[
+m^{-1/2}
+(1,\lambda_j^{-1},\ldots,\lambda_j^{-(m-1)})^{\mathsf T}.
+\tag{3.6}
+\]</span>
+<p>The columns are orthonormal by the finite geometric sum, and the action in (3.1) shows they are eigenvectors with eigenvalues <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>. Also <span class="math" data-tex="\(V(1)=V(0)P\)">\(V(1)=V(0)P\)</span>. Therefore <span class="math" data-tex="\(W(t)=V(t)R(t)^*\)">\(W(t)=V(t)R(t)^*\)</span> has <span class="math" data-tex="\(W(1)=W(0)\)">\(W(1)=W(0)\)</span>, and conjugation by this circle unitary takes <span class="math" data-tex="\(\Psi(f)\)">\(\Psi(f)\)</span> to <span class="math" data-tex="\(f(C_m(z))\)">\(f(C_m(z))\)</span>. This proves the asserted equivalence with the standard root embedding. For <span class="math" data-tex="\(m=2\)">\(m=2\)</span> it is the twice-around map of Blackadar, Exercise 10.11.4(a).</p>
+<p>The image of a minimal constant projection has rank <span class="math" data-tex="\(m\)">\(m\)</span>, giving the first map in (3.4). The image of (2.2) is <span class="math" data-tex="\(C_m\)">\(C_m\)</span> on its <span class="math" data-tex="\(m\)">\(m\)</span>-dimensional corner and the identity on the complement. Equation (3.2) gives determinant winding <span class="math" data-tex="\(1\)">\(1\)</span>, proving the second map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(n_1\mid n_2\mid\cdots\)">\(n_1\mid n_2\mid\cdots\)</span> be unbounded, omitting repeated terms, and write <span class="math" data-tex="\(m_k=n_{k+1}/n_k\)">\(m_k=n_{k+1}/n_k\)</span>. The <strong>Bunce–Deddens algebra of type <span class="math" data-tex="\(q\)">\(q\)</span></strong> is the limit <span class="math" data-tex="\(B_q\)">\(B_q\)</span> of these standard embeddings, where <span class="math" data-tex="\(q\)">\(q\)</span> is the supernatural number recorded by the <span class="math" data-tex="\(n_k\)">\(n_k\)</span>.</p>
+<p><strong>Theorem 3.2.</strong> With their indicated order and unit,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(B_q)=\mathbb Z(q),\qquad [1]=1,\\
+K_0(B_q)^+=\mathbb Z(q)\cap[0,\infty),\\
+K_1(B_q)=\mathbb Z.
+\end{gathered}
+\tag{3.7}
+\]">\[
+\begin{gathered}
+K_0(B_q)=\mathbb Z(q),\qquad [1]=1,\\
+K_0(B_q)^+=\mathbb Z(q)\cap[0,\infty),\\
+K_1(B_q)=\mathbb Z.
+\end{gathered}
+\tag{3.7}
+\]</span>
+<p><em>Proof.</em> The K_0 system is <span class="math" data-tex="\(\mathbb Z\xrightarrow{m_k}\mathbb Z\)">\(\mathbb Z\xrightarrow{m_k}\mathbb Z\)</span>, and <span class="math" data-tex="\(r\mapsto r/n_k\)">\(r\mapsto r/n_k\)</span> gives coherent injections into <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Their union is <span class="math" data-tex="\(\mathbb Z(q)\)">\(\mathbb Z(q)\)</span>: a positive denominator divides some <span class="math" data-tex="\(n_k\)">\(n_k\)</span> exactly when all its prime exponents are bounded by those of <span class="math" data-tex="\(q\)">\(q\)</span>. The finite list of primes in a denominator permits choosing one common stage. Stage positive ranks give the stated cone and stage units give <span class="math" data-tex="\(1\)">\(1\)</span>. The K_1 connecting maps are all the identity by Lemma 3.1, so their limit is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(q=2^\infty\)">\(q=2^\infty\)</span>, this yields <span class="math" data-tex="\(K_0(B_q)=\mathbb Z[1/2]\)">\(K_0(B_q)=\mathbb Z[1/2]\)</span> and <span class="math" data-tex="\(K_1(B_q)=\mathbb Z\)">\(K_1(B_q)=\mathbb Z\)</span>. Unboundedness matters: a stationary finite circle-matrix algebra has many traces and is not the simple infinite Bunce–Deddens algebra.</p>
+<p>The doubled pullback <span class="math" data-tex="\(f(z)\mapsto\operatorname{diag}(f(z^2),f(z^2))\)">\(f(z)\mapsto\operatorname{diag}(f(z^2),f(z^2))\)</span>, appearing under this name in Emerson, Example 1.7.11, is a different system. Its maps are <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span>, so both group limits are <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span>. A nonconstant scalar matrix function becomes <span class="math" data-tex="\(f(z^{2^l})I\)">\(f(z^{2^l})I\)</span> at later stages; injectivity preserves it, and it remains central in the limit. Thus that system has a nontrivial center and cannot be the simple <span class="math" data-tex="\(B_{2^\infty}\)">\(B_{2^\infty}\)</span> computed here.</p>
+<h2 id="4-simplicity-the-unique-trace-and-three-trace-ranges">4. Simplicity, the unique trace and three trace ranges</h2>
+<p><strong>Proposition 4.1.</strong> <span class="math" data-tex="\(B_q\)">\(B_q\)</span> is simple, unital and stably finite, and has exactly one tracial state.</p>
+<p><em>Proof of simplicity.</em> A composition of the root embeddings from size <span class="math" data-tex="\(n_k\)">\(n_k\)</span> to size <span class="math" data-tex="\(n_l\)">\(n_l\)</span>, with <span class="math" data-tex="\(M=n_l/n_k\)">\(M=n_l/n_k\)</span>, is fiberwise unitarily equivalent to the direct sum of evaluations at all <span class="math" data-tex="\(M\)">\(M\)</span>-th roots of <span class="math" data-tex="\(z\)">\(z\)</span>. This follows by repeatedly taking the roots in (3.5); taking an <span class="math" data-tex="\(m\)">\(m\)</span>-th root and then an <span class="math" data-tex="\(r\)">\(r\)</span>-th root enumerates each <span class="math" data-tex="\(mr\)">\(mr\)</span>-th root once.</p>
+<p>If <span class="math" data-tex="\(b\)">\(b\)</span> is a nonzero positive matrix function at stage <span class="math" data-tex="\(k\)">\(k\)</span>, there is an open arc on which <span class="math" data-tex="\(b(w)\neq0\)">\(b(w)\neq0\)</span>. For large enough <span class="math" data-tex="\(M\)">\(M\)</span>, every set of <span class="math" data-tex="\(M\)">\(M\)</span>-th roots of any <span class="math" data-tex="\(z\)">\(z\)</span> meets that arc: their angular spacing is <span class="math" data-tex="\(2\pi/M\)">\(2\pi/M\)</span>. The later image <span class="math" data-tex="\(c(z)\)">\(c(z)\)</span> is consequently nonzero at every fiber.</p>
+<p>Such a positive <span class="math" data-tex="\(c\in M_N(C(\mathbb T))\)">\(c\in M_N(C(\mathbb T))\)</span> is full. With constant matrix units,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i,j}e_{ij}c\,e_{ji}
+=\operatorname{Tr}(c)\,I_N.
+\tag{4.1}
+\]">\[
+\sum_{i,j}e_{ij}c\,e_{ji}
+=\operatorname{Tr}(c)\,I_N.
+\tag{4.1}
+\]</span>
+<p>The scalar continuous function <span class="math" data-tex="\(\operatorname{Tr}(c)\)">\(\operatorname{Tr}(c)\)</span> is strictly positive everywhere, hence invertible. Thus the ideal generated by <span class="math" data-tex="\(c\)">\(c\)</span> contains the identity.</p>
+<p>To apply this to an arbitrary nonzero ideal <span class="math" data-tex="\(J\subset B_q\)">\(J\subset B_q\)</span>, choose <span class="math" data-tex="\(a\in J_+\)">\(a\in J_+\)</span> of norm one and a positive stage element <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\|a-b\|&lt;\varepsilon&lt;1/4\)">\(\|a-b\|&lt;\varepsilon&lt;1/4\)</span>. Such positive approximations follow by approximating <span class="math" data-tex="\(a^{1/2}\)">\(a^{1/2}\)</span> by a stage element and taking its square modulus. In the quotient by <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> has norm less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Therefore <span class="math" data-tex="\(d=(b-\varepsilon)_+\)">\(d=(b-\varepsilon)_+\)</span> lies in <span class="math" data-tex="\(J\)">\(J\)</span>, by quotient functional calculus, and is nonzero because <span class="math" data-tex="\(\|b\|&gt;1-\varepsilon&gt;\varepsilon\)">\(\|b\|&gt;1-\varepsilon&gt;\varepsilon\)</span>. It is a stage element. Its image is full at a later stage by the previous paragraphs, so <span class="math" data-tex="\(1\in J\)">\(1\in J\)</span>. This proves simplicity. Unitality follows from the unital connecting maps.</p>
+<p><em>Proof of the trace assertion.</em> A tracial state on <span class="math" data-tex="\(M_n(C(\mathbb T))\)">\(M_n(C(\mathbb T))\)</span> has the form</p>
+<span class="math math-display" data-tex="\[
+\tau_n(f)=\frac1n\int_{\mathbb T}
+\operatorname{Tr}(f(w))\,d\mu_n(w)
+\tag{4.2}
+\]">\[
+\tau_n(f)=\frac1n\int_{\mathbb T}
+\operatorname{Tr}(f(w))\,d\mu_n(w)
+\tag{4.2}
+\]</span>
+<p>for a probability measure <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. To prove this, matrix-unit cyclicity annihilates off-diagonal entries and gives equal functionals on each diagonal entry. Their sum is the restriction to the scalar center, a state on <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>, hence integration against <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. The factor <span class="math" data-tex="\(1/n\)">\(1/n\)</span> is forced by <span class="math" data-tex="\(\tau_n(1)=1\)">\(\tau_n(1)=1\)</span>.</p>
+<p>For the embedding of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, normalized matrix trace over its eigenvalue blocks averages over all <span class="math" data-tex="\(m\)">\(m\)</span>-th roots. Define</p>
+<span class="math math-display" data-tex="\[
+(L_m h)(z)=\frac1m\sum_{w^m=z}h(w).
+\tag{4.3}
+\]">\[
+(L_m h)(z)=\frac1m\sum_{w^m=z}h(w).
+\tag{4.3}
+\]</span>
+<p>Compatibility of stage traces says <span class="math" data-tex="\(\int h\,d\mu_k=\int L_{m_k}h\,d\mu_{k+1}\)">\(\int h\,d\mu_k=\int L_{m_k}h\,d\mu_{k+1}\)</span>. On a Fourier monomial,</p>
+<span class="math math-display" data-tex="\[
+L_m(w^r)=
+\begin{cases}
+0,&amp;m\nmid r,\\
+z^{r/m},&amp;m\mid r.
+\end{cases}
+\tag{4.4}
+\]">\[
+L_m(w^r)=
+\begin{cases}
+0,&amp;m\nmid r,\\
+z^{r/m},&amp;m\mid r.
+\end{cases}
+\tag{4.4}
+\]</span>
+<p>The finite root-of-unity sum proves this for every integer <span class="math" data-tex="\(r\)">\(r\)</span>, positive or negative. For a composition replace <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(M=n_l/n_k\)">\(M=n_l/n_k\)</span>. Given nonzero <span class="math" data-tex="\(r\)">\(r\)</span>, choose <span class="math" data-tex="\(l\)">\(l\)</span> with <span class="math" data-tex="\(M&gt;|r|\)">\(M&gt;|r|\)</span>. Then <span class="math" data-tex="\(M\nmid r\)">\(M\nmid r\)</span>, so compatibility forces <span class="math" data-tex="\(\int w^r\,d\mu_k=0\)">\(\int w^r\,d\mu_k=0\)</span>. Fejér density of Laurent polynomials implies that every <span class="math" data-tex="\(\mu_k\)">\(\mu_k\)</span> is Haar probability measure. Conversely Haar measures satisfy (4.3)'s compatibility, by integration of the same monomials and density. Thus their stage traces define a bounded positive trace on the dense union and extend uniquely to <span class="math" data-tex="\(B_q\)">\(B_q\)</span>. Every tracial state has these restrictions, proving uniqueness.</p>
+<p>Finally this trace is faithful. Its null space <span class="math" data-tex="\(\{x:\tau(x^*x)=0\}\)">\(\{x:\tau(x^*x)=0\}\)</span> is a closed two-sided ideal: the trace identity and the C*-norm bound give stability under multiplication on either side. Simplicity and <span class="math" data-tex="\(\tau(1)=1\)">\(\tau(1)=1\)</span> make it zero. Its unnormalized matrix extension is faithful as well, since <span class="math" data-tex="\(\tau_N(x^*x)\)">\(\tau_N(x^*x)\)</span> is the sum of the positive values <span class="math" data-tex="\(\tau(x_{ij}^*x_{ij})\)">\(\tau(x_{ij}^*x_{ij})\)</span>. If <span class="math" data-tex="\(v^*v=1\)">\(v^*v=1\)</span> in any matrix algebra, cyclicity gives <span class="math" data-tex="\(\tau_N(1-vv^*)=0\)">\(\tau_N(1-vv^*)=0\)</span>; faithfulness implies <span class="math" data-tex="\(vv^*=1\)">\(vv^*=1\)</span>. Hence <span class="math" data-tex="\(B_q\)">\(B_q\)</span> is stably finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The pairing of this trace is</p>
+<span class="math math-display" data-tex="\[
+\tau_*:\mathbb Z(q)\longrightarrow\mathbb R,
+\qquad \tau_*(x)=x,
+\tag{4.5}
+\]">\[
+\tau_*:\mathbb Z(q)\longrightarrow\mathbb R,
+\qquad \tau_*(x)=x,
+\tag{4.5}
+\]</span>
+<p>because a rank <span class="math" data-tex="\(r\)">\(r\)</span> constant projection at stage <span class="math" data-tex="\(k\)">\(k\)</span> has trace <span class="math" data-tex="\(r/n_k\)">\(r/n_k\)</span>. There are three distinct ranges:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\tau(\operatorname{Proj}(B_q))
+=\mathbb Z(q)\cap[0,1],\\
+\tau_\infty(\operatorname{Proj}(M_\infty(B_q)))\\
+=\mathbb Z(q)\cap[0,\infty),\\
+\tau_*(K_0(B_q))=\mathbb Z(q).
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+\tau(\operatorname{Proj}(B_q))
+=\mathbb Z(q)\cap[0,1],\\
+\tau_\infty(\operatorname{Proj}(M_\infty(B_q)))\\
+=\mathbb Z(q)\cap[0,\infty),\\
+\tau_*(K_0(B_q))=\mathbb Z(q).
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>Every value in the first two sets is realized by an appropriate constant stage projection, with matrix enlargement if necessary. Conversely any projection gives a positive K_0 class, and an ordinary projection also has trace at most one. Negative values arise only from differences in K_0. The ordinary projection range is also the scale, because its classes are identified with their rational values by (4.5).</p>
+<h2 id="5-which-ordered-groups-occur">5. Which ordered groups occur?</h2>
+<p>An ordered abelian group here has a proper positive cone and is <strong>directed</strong>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G^+\cap(-G^+)=\{0\},\\
+G^+-G^+=G.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+G^+\cap(-G^+)=\{0\},\\
+G^+-G^+=G.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>This is the convention of Blackadar, Definition 6.2.1. It is <strong>unperforated</strong> if <span class="math" data-tex="\(ng\geq0\)">\(ng\geq0\)</span>, for a positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, implies <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span>. It has <strong>Riesz interpolation</strong> if <span class="math" data-tex="\(a_1,a_2\leq b_1,b_2\)">\(a_1,a_2\leq b_1,b_2\)</span> implies the existence of <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(a_1,a_2\leq c\leq b_1,b_2\)">\(a_1,a_2\leq c\leq b_1,b_2\)</span>.</p>
+<p>A dimension group is an ordered inductive limit of simplicial groups <span class="math" data-tex="\((\mathbb Z^{r_k},\mathbb Z_+^{r_k})\)">\((\mathbb Z^{r_k},\mathbb Z_+^{r_k})\)</span> and positive maps; the maps need not be injective.</p>
+<p><strong>Proposition 5.1 (the easy direction).</strong> Every sequential dimension group is countable, directed, unperforated and has interpolation.</p>
+<p><em>Proof.</em> It is a countable union of images of countable groups. Every stage vector is a difference of two positive coordinate vectors, so the limit is directed.</p>
+<p>The positive cone is proper. If <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(-g\)">\(-g\)</span> both have positive representatives, move those representatives to one stage and then farther until their sum, which is zero in the limit, is zero at the stage. The sum of two nonnegative integer vectors is zero only if both are zero. Thus <span class="math" data-tex="\(g=0\)">\(g=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(ng\geq0\)">\(ng\geq0\)</span>, represent <span class="math" data-tex="\(g\)">\(g\)</span> at one stage and a positive representative of <span class="math" data-tex="\(ng\)">\(ng\)</span> at a later stage. Their equality in the limit holds at some still later stage. There <span class="math" data-tex="\(n\)">\(n\)</span> times the vector representing <span class="math" data-tex="\(g\)">\(g\)</span> is nonnegative, so that vector is nonnegative. Its limit class is <span class="math" data-tex="\(g\)">\(g\)</span>, proving unperforation.</p>
+<p>For interpolation, represent all four elements at a common stage. Each of the four positive differences <span class="math" data-tex="\(b_j-a_i\)">\(b_j-a_i\)</span> has a positive representative later. Moving farther makes its equality with the difference of the chosen representatives hold. One common stage works for the finitely many inequalities. There define <span class="math" data-tex="\(c\)">\(c\)</span> coordinatewise as <span class="math" data-tex="\(\max(a_1,a_2)\)">\(\max(a_1,a_2)\)</span>. Each coordinate is at most both upper coordinates, so <span class="math" data-tex="\(a_i\leq c\leq b_j\)">\(a_i\leq c\leq b_j\)</span>. Passing to the limit completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Directedness is already part of Blackadar's meaning of “ordered group.” Without it, the zero cone on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> would satisfy unperforation and interpolation but could not be a simplicial limit with the generating positive cone (5.1).</p>
+<p>For irrational <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, take</p>
+<span class="math math-display" data-tex="\[
+G_\theta=\mathbb Z+\theta\mathbb Z\subset\mathbb R
+\tag{5.2}
+\]">\[
+G_\theta=\mathbb Z+\theta\mathbb Z\subset\mathbb R
+\tag{5.2}
+\]</span>
+<p>with the inherited order and unit <span class="math" data-tex="\(1\)">\(1\)</span>. This group is countable and directed. It is unperforated because the real order is, and interpolation is obtained by taking the maximum of the two lower bounds. Every positive element is an order unit, so the group is simple.</p>
+<p>It is dense in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Among <span class="math" data-tex="\(N+1\)">\(N+1\)</span> fractional parts of multiples of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, two are within <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. Their difference gives a nonzero element of <span class="math" data-tex="\(G_\theta\)">\(G_\theta\)</span> of absolute value less than <span class="math" data-tex="\(1/N\)">\(1/N\)</span>. Integer multiples of arbitrarily small positive such elements approximate every real number. Theorem 5.7 below, applied to the one-point trace simplex and this dense inclusion, constructs a simple unital AF-algebra with ordered K_0 equal to <span class="math" data-tex="\(G_\theta\)">\(G_\theta\)</span> and order unit <span class="math" data-tex="\(1\)">\(1\)</span>. It identifies an AF-algebra; it does not identify the irrational rotation algebra, whose K_1 will be computed later.</p>
+<h3 id="refining-a-positive-relation">Refining a positive relation</h3>
+<p>The converse of Proposition 5.1 needs a construction, rather than an appeal to classification. The following refinement argument is the positive-kernel method behind the Effros–Handelman–Shen theorem.</p>
+<p><strong>Lemma 5.2 (Riesz decomposition).</strong> In an interpolation group, if <span class="math" data-tex="\(0\leq x\leq y_1+\cdots+y_m\)">\(0\leq x\leq y_1+\cdots+y_m\)</span>, with every <span class="math" data-tex="\(y_j\geq0\)">\(y_j\geq0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=x_1+\cdots+x_m,\\
+0\leq x_j\leq y_j.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+x=x_1+\cdots+x_m,\\
+0\leq x_j\leq y_j.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p><em>Proof.</em> For two summands, interpolate between the lower bounds <span class="math" data-tex="\(0,x-y_2\)">\(0,x-y_2\)</span> and upper bounds <span class="math" data-tex="\(x,y_1\)">\(x,y_1\)</span>. All four inequalities hold. The interpolant <span class="math" data-tex="\(x_1\)">\(x_1\)</span> satisfies <span class="math" data-tex="\(0\leq x_1\leq y_1\)">\(0\leq x_1\leq y_1\)</span>, while <span class="math" data-tex="\(x_2=x-x_1\)">\(x_2=x-x_1\)</span> satisfies <span class="math" data-tex="\(0\leq x_2\leq y_2\)">\(0\leq x_2\leq y_2\)</span>. Induction on the number of summands proves (5.3). In particular, an equality of two finite sums of positive elements has a positive rectangular refinement: split the first element against the second sum, subtract its pieces, and repeat. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3 (positive factorization).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be an unperforated interpolation group. For a positive homomorphism <span class="math" data-tex="\(\phi:\mathbb Z^r\to G\)">\(\phi:\mathbb Z^r\to G\)</span> and <span class="math" data-tex="\(z\in\ker\phi\)">\(z\in\ker\phi\)</span>, there are a simplicial group <span class="math" data-tex="\(\mathbb Z^s\)">\(\mathbb Z^s\)</span> and positive homomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb Z^r\xrightarrow{R}\mathbb Z^s
+\xrightarrow{\psi}G,\\
+\phi=\psi R,\qquad Rz=0.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+\mathbb Z^r\xrightarrow{R}\mathbb Z^s
+\xrightarrow{\psi}G,\\
+\phi=\psi R,\qquad Rz=0.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The matrix <span class="math" data-tex="\(R\)">\(R\)</span> has nonnegative integer entries. A single such factorization can kill any finite set of elements of <span class="math" data-tex="\(\ker\phi\)">\(\ker\phi\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(z=0\)">\(z=0\)</span>, take the identity factorization. Unperforation implies torsion-freeness: if <span class="math" data-tex="\(ng=0\)">\(ng=0\)</span>, apply it to <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(-g\)">\(-g\)</span>, and use properness of the cone. Write <span class="math" data-tex="\(z=\sum c_i e_i\)">\(z=\sum c_i e_i\)</span> and <span class="math" data-tex="\(g_i=\phi(e_i)\geq0\)">\(g_i=\phi(e_i)\geq0\)</span>. We induct on the pair consisting of the largest absolute value <span class="math" data-tex="\(N\)">\(N\)</span> of a nonzero coefficient and the number of coefficients having absolute value <span class="math" data-tex="\(N\)">\(N\)</span>, ordered lexicographically.</p>
+<p>If all nonzero coefficients have the same sign, the positive relation forces <span class="math" data-tex="\(|c_i|g_i=0\)">\(|c_i|g_i=0\)</span> term by term. Hence those <span class="math" data-tex="\(g_i\)">\(g_i\)</span> vanish. Delete their coordinates and retain the zero-coefficient coordinates; this is the required positive factorization. The zero relation needs no deletion.</p>
+<p>Otherwise, replace <span class="math" data-tex="\(z\)">\(z\)</span> by <span class="math" data-tex="\(-z\)">\(-z\)</span> if necessary so that one coefficient is <span class="math" data-tex="\(c_k=N&gt;0\)">\(c_k=N&gt;0\)</span>. Index the negative coefficients as <span class="math" data-tex="\(-q_j\)">\(-q_j\)</span>, and put <span class="math" data-tex="\(h_j=\phi(e_j)\)">\(h_j=\phi(e_j)\)</span> for their corresponding generators. Every <span class="math" data-tex="\(q_j\)">\(q_j\)</span> lies between 1 and <span class="math" data-tex="\(N\)">\(N\)</span>. The relation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Ng_k&amp;\leq\sum_j q_jh_j\\
+&amp;\leq N\sum_j h_j.
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+Ng_k&amp;\leq\sum_j q_jh_j\\
+&amp;\leq N\sum_j h_j.
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>Unperforation applied to <span class="math" data-tex="\(N(\sum h_j-g_k)\)">\(N(\sum h_j-g_k)\)</span> gives <span class="math" data-tex="\(g_k\leq\sum h_j\)">\(g_k\leq\sum h_j\)</span>. Lemma 5.2 supplies <span class="math" data-tex="\(x_j\)">\(x_j\)</span> with</p>
+<span class="math math-display" data-tex="\[
+g_k=\sum_jx_j,\qquad 0\leq x_j\leq h_j.
+\tag{5.6}
+\]">\[
+g_k=\sum_jx_j,\qquad 0\leq x_j\leq h_j.
+\tag{5.6}
+\]</span>
+<p>Introduce free positive generators mapped to <span class="math" data-tex="\(x_j\)">\(x_j\)</span> and <span class="math" data-tex="\(h_j-x_j\)">\(h_j-x_j\)</span>, and retain generators for every original coordinate other than <span class="math" data-tex="\(k\)">\(k\)</span> and the negative coordinates. Define a positive integer matrix <span class="math" data-tex="\(R_0\)">\(R_0\)</span> by sending <span class="math" data-tex="\(e_k\)">\(e_k\)</span> to the sum of the <span class="math" data-tex="\(x_j\)">\(x_j\)</span>-coordinates, each negative-coordinate <span class="math" data-tex="\(e_j\)">\(e_j\)</span> to its two new coordinates, and every retained <span class="math" data-tex="\(e_i\)">\(e_i\)</span> to its own coordinate. The resulting positive map <span class="math" data-tex="\(\psi_0\)">\(\psi_0\)</span> satisfies <span class="math" data-tex="\(\phi=\psi_0R_0\)">\(\phi=\psi_0R_0\)</span>.</p>
+<p>In <span class="math" data-tex="\(R_0z\)">\(R_0z\)</span>, the coefficient of the <span class="math" data-tex="\(x_j\)">\(x_j\)</span>-coordinate is <span class="math" data-tex="\(N-q_j\)">\(N-q_j\)</span>; the coefficient of the <span class="math" data-tex="\(h_j-x_j\)">\(h_j-x_j\)</span>-coordinate is <span class="math" data-tex="\(-q_j\)">\(-q_j\)</span>. The other coefficients are unchanged. Thus no absolute value exceeds <span class="math" data-tex="\(N\)">\(N\)</span>, no new coefficient of absolute value <span class="math" data-tex="\(N\)">\(N\)</span> is introduced in place of a smaller one, and the chosen coefficient <span class="math" data-tex="\(N\)">\(N\)</span> has disappeared. The induction pair strictly decreases. Applying the induction hypothesis to <span class="math" data-tex="\(\psi_0,R_0z\)">\(\psi_0,R_0z\)</span> and composing its matrix with <span class="math" data-tex="\(R_0\)">\(R_0\)</span> proves (5.4). Both positive and negative coefficients, including a tie for the largest absolute value, are covered by this decrease.</p>
+<p>For finitely many kernel elements, kill the first, apply the same construction to the image of the second, and continue. Composition preserves every relation already killed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="constructing-the-simplicial-system">Constructing the simplicial system</h3>
+<p><strong>Theorem 5.4 (Effros–Handelman–Shen).</strong> A countable directed ordered abelian group is a sequential dimension group if and only if it is unperforated and has Riesz interpolation.</p>
+<p><em>Proof of the converse.</em> Enumerate <span class="math" data-tex="\(G^+\)">\(G^+\)</span> as <span class="math" data-tex="\(g_1,g_2,\ldots\)">\(g_1,g_2,\ldots\)</span>, allowing repetitions. Starting with a finite-rank free positive map <span class="math" data-tex="\(\phi_k:F_k\to G\)">\(\phi_k:F_k\to G\)</span>, append one free generator with image <span class="math" data-tex="\(g_k\)">\(g_k\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\phi&#x27;_k:F_k\oplus\mathbb Z\longrightarrow G,\\
+\phi&#x27;_k(x,m)=\phi_k(x)+mg_k.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+\phi&#x27;_k:F_k\oplus\mathbb Z\longrightarrow G,\\
+\phi&#x27;_k(x,m)=\phi_k(x)+mg_k.
+\end{gathered}
+\tag{5.7}
+\]</span>
+<p>Its kernel is finitely generated. Indeed, every subgroup of <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span> is finitely generated: induct on <span class="math" data-tex="\(n\)">\(n\)</span>, choose an element generating its nonzero first-coordinate image <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>, and subtract multiples of it to reduce to a subgroup of <span class="math" data-tex="\(\mathbb Z^{n-1}\)">\(\mathbb Z^{n-1}\)</span>. If that image is zero, reduce immediately.</p>
+<p>Apply Lemma 5.3 to a finite generating set of <span class="math" data-tex="\(\ker\phi&#x27;_k\)">\(\ker\phi&#x27;_k\)</span>. It factors <span class="math" data-tex="\(\phi&#x27;_k=\phi_{k+1}R&#x27;_k\)">\(\phi&#x27;_k=\phi_{k+1}R&#x27;_k\)</span> through a simplicial <span class="math" data-tex="\(F_{k+1}\)">\(F_{k+1}\)</span>, with <span class="math" data-tex="\(R&#x27;_k(\ker\phi&#x27;_k)=0\)">\(R&#x27;_k(\ker\phi&#x27;_k)=0\)</span>. Restrict <span class="math" data-tex="\(R&#x27;_k\)">\(R&#x27;_k\)</span> to <span class="math" data-tex="\(F_k\)">\(F_k\)</span> to obtain the connecting matrix <span class="math" data-tex="\(R_k\)">\(R_k\)</span>. Start with <span class="math" data-tex="\(F_1=\mathbb Z\)">\(F_1=\mathbb Z\)</span>, mapped positively to <span class="math" data-tex="\(g_1\)">\(g_1\)</span>; the zero group can instead use zero stages.</p>
+<p>The compatible maps induce a positive homomorphism</p>
+<span class="math math-display" data-tex="\[
+\Phi:\varinjlim(F_k,R_k)\longrightarrow G.
+\tag{5.8}
+\]">\[
+\Phi:\varinjlim(F_k,R_k)\longrightarrow G.
+\tag{5.8}
+\]</span>
+<p>Each enumerated <span class="math" data-tex="\(g_k\)">\(g_k\)</span> has a positive preimage, namely the image of the appended generator under <span class="math" data-tex="\(R&#x27;_k\)">\(R&#x27;_k\)</span>. Directedness makes <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> surjective. If a class represented by <span class="math" data-tex="\(x\in F_k\)">\(x\in F_k\)</span> maps to zero, then <span class="math" data-tex="\((x,0)\in\ker\phi&#x27;_k\)">\((x,0)\in\ker\phi&#x27;_k\)</span>, so <span class="math" data-tex="\(R_kx=0\)">\(R_kx=0\)</span> already at the next stage. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is injective. Finally, every element of <span class="math" data-tex="\(G^+\)">\(G^+\)</span> has a positive preimage, so the inverse also preserves order. This proves the converse; Proposition 5.1 proved the other direction. No connecting map is required to be injective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.5 (AF realization with an order unit).</strong> Every group of Theorem 5.4 is the ordered <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-group of a separable AF-algebra. If <span class="math" data-tex="\(u\neq0\)">\(u\neq0\)</span> is an order unit, the realization can be unital with <span class="math" data-tex="\([1]=u\)">\([1]=u\)</span>. If every nonzero positive element is an order unit, this unital realization is simple.</p>
+<p><em>Proof.</em> A nonnegative integer matrix <span class="math" data-tex="\(R_k\)">\(R_k\)</span> is realized by a homomorphism between finite sums of matrix algebras: repeat source block <span class="math" data-tex="\(j\)">\(j\)</span> exactly <span class="math" data-tex="\((R_k)_{ij}\)">\((R_k)_{ij}\)</span> times in target block <span class="math" data-tex="\(i\)">\(i\)</span>. Choose the target matrix sizes at least as large as the sum of those source sizes with multiplicities, and fill unused dimensions with a zero corner. The resulting sequential AF limit has the ordered group (5.8), by (1.3) and the finite-stage positive-representative continuity of Lesson 5. Maps with kernels cause no problem: their finite-dimensional images in the limit form an increasing generating sequence, while Lesson 5 computes the group from the original stages.</p>
+<p>For the unital assertion, a group order unit must be preserved by the matrices themselves. The interval <span class="math" data-tex="\([0,u]\)">\([0,u]\)</span> generates <span class="math" data-tex="\(G^+\)">\(G^+\)</span>: if <span class="math" data-tex="\(0\leq g\leq Nu\)">\(0\leq g\leq Nu\)</span>, Lemma 5.2 splits <span class="math" data-tex="\(g\)">\(g\)</span> into <span class="math" data-tex="\(N\)">\(N\)</span> pieces in that interval. Enumerate the interval. Start with <span class="math" data-tex="\(F_1=\mathbb Z\)">\(F_1=\mathbb Z\)</span>, <span class="math" data-tex="\(d_1=1\)">\(d_1=1\)</span>, and <span class="math" data-tex="\(\phi_1(1)=u\)">\(\phi_1(1)=u\)</span>. Suppose <span class="math" data-tex="\(F_k=\mathbb Z^{r_k}\)">\(F_k=\mathbb Z^{r_k}\)</span> has a distinguished vector <span class="math" data-tex="\(d_k\)">\(d_k\)</span> whose coordinates are strictly positive integers and <span class="math" data-tex="\(\phi_k(d_k)=u\)">\(\phi_k(d_k)=u\)</span>.</p>
+<p>Append two generators with images <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(u-a\)">\(u-a\)</span>, where <span class="math" data-tex="\(a\)">\(a\)</span> is the next interval element. Kill the entire kernel of this enlarged map by Lemma 5.3. Its factorization <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span> in particular kills the relation</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R&#x27;(d_k,0,0)&amp;=R&#x27;(0,1,0)\\
+&amp;\quad+R&#x27;(0,0,1).
+\end{aligned}
+\tag{5.9}
+\]">\[
+\begin{aligned}
+R&#x27;(d_k,0,0)&amp;=R&#x27;(0,1,0)\\
+&amp;\quad+R&#x27;(0,0,1).
+\end{aligned}
+\tag{5.9}
+\]</span>
+<p>Set <span class="math" data-tex="\(d_{k+1}=R&#x27;(d_k,0,0)\)">\(d_{k+1}=R&#x27;(d_k,0,0)\)</span>. Discard coordinates in which this vector is zero. All images of the old positive basis vectors vanish in those coordinates because every coordinate of <span class="math" data-tex="\(d_k\)">\(d_k\)</span> is positive. The two appended basis vectors also vanish there by (5.9) and nonnegativity. Thus restriction to the remaining coordinates preserves the factorization, all killed relations, and the positive representatives of both appended elements. The vector <span class="math" data-tex="\(d_{k+1}\)">\(d_{k+1}\)</span> has strictly positive coordinates, maps to <span class="math" data-tex="\(u\)">\(u\)</span>, and satisfies <span class="math" data-tex="\(R_kd_k=d_{k+1}\)">\(R_kd_k=d_{k+1}\)</span>.</p>
+<p>The injectivity and positive-surjectivity proof of Theorem 5.4 still applies, since the enumerated interval generates the positive cone. Use block sizes <span class="math" data-tex="\((d_k)_j\)">\((d_k)_j\)</span>. The equality <span class="math" data-tex="\(R_kd_k=d_{k+1}\)">\(R_kd_k=d_{k+1}\)</span> says precisely that the repeated source blocks fill each target block. The algebra homomorphisms are therefore unital, with limit unit representing <span class="math" data-tex="\(u\)">\(u\)</span>. This proves the unital assertion and its scale <span class="math" data-tex="\([0,u]\)">\([0,u]\)</span>.</p>
+<p>For simplicity, a nonzero ideal of a unital AF-algebra contains a nonzero projection. To see this directly, approximate a norm-one positive ideal element by a positive element <span class="math" data-tex="\(b\)">\(b\)</span> of a finite-dimensional stage image within <span class="math" data-tex="\(\varepsilon&lt;1/4\)">\(\varepsilon&lt;1/4\)</span>. Quotient functional calculus puts the nonzero <span class="math" data-tex="\((b-\varepsilon)_+\)">\((b-\varepsilon)_+\)</span> in the ideal. Its finite spectrum gives a nonzero spectral projection in the same ideal.</p>
+<p>Let that projection be <span class="math" data-tex="\(p\)">\(p\)</span>. The AF cancellation and positive-monoid identification in (1.3) show that <span class="math" data-tex="\([p]\neq0\)">\([p]\neq0\)</span>. Since <span class="math" data-tex="\([p]\)">\([p]\)</span> is an order unit, <span class="math" data-tex="\([1]\leq N[p]\)">\([1]\leq N[p]\)</span> for some <span class="math" data-tex="\(N\)">\(N\)</span>. Represent <span class="math" data-tex="\(N[p]-[1]\)">\(N[p]-[1]\)</span> by a matrix projection <span class="math" data-tex="\(q\)">\(q\)</span>. Injectivity of the AF projection monoid into its Grothendieck group gives stable Murray–von Neumann equivalence between <span class="math" data-tex="\(1\oplus q\)">\(1\oplus q\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> copies of <span class="math" data-tex="\(p\)">\(p\)</span>. The latter belongs to a matrix algebra over the ideal, so equivalence puts <span class="math" data-tex="\(1\oplus q\)">\(1\oplus q\)</span>, and hence <span class="math" data-tex="\(1\)">\(1\)</span>, in that ideal. It is the whole algebra. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="prescribing-the-trace-simplex">Prescribing the trace simplex</h3>
+<p>The range construction also permits infinitesimal group elements and an arbitrary metrizable Choquet simplex. Here is the full analytic ingredient needed for that assertion.</p>
+<p>For a nonempty compact convex set <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> in a locally convex Hausdorff real vector space, put <span class="math" data-tex="\(V=\operatorname{Aff}(\Delta)\)">\(V=\operatorname{Aff}(\Delta)\)</span>, the real Banach space of continuous affine functions with its uniform norm. Use the ordered-cone definition of a <strong>Choquet simplex</strong>: the dual positive cone makes <span class="math" data-tex="\(V^*\)">\(V^*\)</span> a lattice-ordered real vector space. This is the standard cone definition described in Blackadar's <em>Classification of C*-Algebras</em>, I.3.3.50–I.3.3.52; it imposes no closedness assumption on the extreme boundary. We verify below that the normalized positive dual base is exactly <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>.</p>
+<p><strong>Lemma 5.6 (approximate affine interpolation).</strong> If <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is a Choquet simplex and <span class="math" data-tex="\(a_1,a_2,b_1,b_2\in V\)">\(a_1,a_2,b_1,b_2\in V\)</span> satisfy <span class="math" data-tex="\(a_i\leq b_j\)">\(a_i\leq b_j\)</span> pointwise, then for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(f\in V\)">\(f\in V\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_i-\varepsilon1&lt;f&lt;b_j+\varepsilon1,\\
+i,j=1,2.
+\end{gathered}
+\tag{5.10}
+\]">\[
+\begin{gathered}
+a_i-\varepsilon1&lt;f&lt;b_j+\varepsilon1,\\
+i,j=1,2.
+\end{gathered}
+\tag{5.10}
+\]</span>
+<p><em>Proof.</em> We first give the separation argument being used. In a real Banach space, let <span class="math" data-tex="\(P\)">\(P\)</span> be a convex cone with nonempty interior, <span class="math" data-tex="\(L\)">\(L\)</span> a linear subspace, and <span class="math" data-tex="\(d\)">\(d\)</span> a vector. If <span class="math" data-tex="\((L-d)\cap\operatorname{int}P\)">\((L-d)\cap\operatorname{int}P\)</span> is empty, there is a nonzero continuous functional <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, nonnegative on <span class="math" data-tex="\(P\)">\(P\)</span>, annihilating <span class="math" data-tex="\(L\)">\(L\)</span>, with <span class="math" data-tex="\(\Lambda(d)\geq0\)">\(\Lambda(d)\geq0\)</span>.</p>
+<p>For completeness, the open convex set <span class="math" data-tex="\(U=\operatorname{int}P-L+d\)">\(U=\operatorname{int}P-L+d\)</span> does not contain zero. Choose <span class="math" data-tex="\(v\in U\)">\(v\in U\)</span>; the open convex neighborhood <span class="math" data-tex="\(C=U-v\)">\(C=U-v\)</span> has a continuous sublinear Minkowski functional <span class="math" data-tex="\(p\)">\(p\)</span>, with <span class="math" data-tex="\(C=\{x:p(x)&lt;1\}\)">\(C=\{x:p(x)&lt;1\}\)</span> and <span class="math" data-tex="\(p(-v)\geq1\)">\(p(-v)\geq1\)</span>. The linear functional taking <span class="math" data-tex="\(-v\)">\(-v\)</span> to 1 on its one-dimensional span is dominated by <span class="math" data-tex="\(p\)">\(p\)</span>. Its dominated extension to the entire space follows by the real Hahn–Banach argument: to adjoin a vector <span class="math" data-tex="\(z\)">\(z\)</span> to a current subspace <span class="math" data-tex="\(M\)">\(M\)</span>, choose its value between</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{m\in M}\{\ell(m)-p(m-z)\},\\
+\inf_{m\in M}\{p(m+z)-\ell(m)\}.
+\end{gathered}
+\tag{5.11}
+\]">\[
+\begin{gathered}
+\sup_{m\in M}\{\ell(m)-p(m-z)\},\\
+\inf_{m\in M}\{p(m+z)-\ell(m)\}.
+\end{gathered}
+\tag{5.11}
+\]</span>
+<p>The lower bound is at most the upper bound because <span class="math" data-tex="\(\ell(m+n)\leq p(m+n)\leq p(m-z)+p(n+z)\)">\(\ell(m+n)\leq p(m+n)\leq p(m-z)+p(n+z)\)</span>. Both bounds are finite, using <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and these inequalities. The chosen value defines a dominated extension, for positive and negative scalar multiples of <span class="math" data-tex="\(z\)">\(z\)</span>; a maximal extension by Zorn's lemma has the whole space as domain. Domination in both directions gives continuity. This extension is strictly negative on <span class="math" data-tex="\(U\)">\(U\)</span>, since it takes <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(-1\)">\(-1\)</span> and values less than 1 on <span class="math" data-tex="\(C\)">\(C\)</span>. Negate it to obtain <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Translating arbitrarily along <span class="math" data-tex="\(L\)">\(L\)</span> shows <span class="math" data-tex="\(\Lambda L=0\)">\(\Lambda L=0\)</span>; scaling a fixed interior cone vector to infinity gives positivity, and scaling it to zero gives <span class="math" data-tex="\(\Lambda d\geq0\)">\(\Lambda d\geq0\)</span>. Positivity extends from the interior to all of <span class="math" data-tex="\(P\)">\(P\)</span> by adding a vanishing interior vector. This proves the separation assertion.</p>
+<p>Apply it in <span class="math" data-tex="\(V^4\)">\(V^4\)</span>, with its pointwise positive cone,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=\{(f,f,-f,-f):f\in V\},\\
+d=\begin{pmatrix}
+a_1-\varepsilon1\\
+a_2-\varepsilon1\\
+-b_1-\varepsilon1\\
+-b_2-\varepsilon1
+\end{pmatrix}.
+\end{gathered}
+\tag{5.12}
+\]">\[
+\begin{gathered}
+L=\{(f,f,-f,-f):f\in V\},\\
+d=\begin{pmatrix}
+a_1-\varepsilon1\\
+a_2-\varepsilon1\\
+-b_1-\varepsilon1\\
+-b_2-\varepsilon1
+\end{pmatrix}.
+\end{gathered}
+\tag{5.12}
+\]</span>
+<p>If (5.10) failed, separation would give positive functionals <span class="math" data-tex="\(\lambda_1,\lambda_2,\mu_1,\mu_2\)">\(\lambda_1,\lambda_2,\mu_1,\mu_2\)</span> with <span class="math" data-tex="\(\lambda_1+\lambda_2=\mu_1+\mu_2\)">\(\lambda_1+\lambda_2=\mu_1+\mu_2\)</span>. Since <span class="math" data-tex="\(V^*\)">\(V^*\)</span> is a lattice, it has interpolation, so Lemma 5.2 refines this equality as <span class="math" data-tex="\(\lambda_i=\sum_j\nu_{ij}\)">\(\lambda_i=\sum_j\nu_{ij}\)</span>, <span class="math" data-tex="\(\mu_j=\sum_i\nu_{ij}\)">\(\mu_j=\sum_i\nu_{ij}\)</span>, with every <span class="math" data-tex="\(\nu_{ij}\geq0\)">\(\nu_{ij}\geq0\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda d
+&amp;=\sum_{i,j}\nu_{ij}(a_i-b_j)\\
+&amp;\quad-\varepsilon\sum_i\lambda_i(1)\\
+&amp;\quad-\varepsilon\sum_j\mu_j(1)&lt;0.
+\end{aligned}
+\tag{5.13}
+\]">\[
+\begin{aligned}
+\Lambda d
+&amp;=\sum_{i,j}\nu_{ij}(a_i-b_j)\\
+&amp;\quad-\varepsilon\sum_i\lambda_i(1)\\
+&amp;\quad-\varepsilon\sum_j\mu_j(1)&lt;0.
+\end{aligned}
+\tag{5.13}
+\]</span>
+<p>The first sum is nonpositive. The second is strictly negative: a nonzero positive functional on <span class="math" data-tex="\(V\)">\(V\)</span> has positive value on 1, because <span class="math" data-tex="\(|\ell(f)|\leq\|f\|\ell(1)\)">\(|\ell(f)|\leq\|f\|\ell(1)\)</span>. This contradicts <span class="math" data-tex="\(\Lambda d\geq0\)">\(\Lambda d\geq0\)</span>, proving the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.7 (simple AF and trace-simplex range).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a countable torsion-free abelian group, <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> a metrizable Choquet simplex, and <span class="math" data-tex="\(\rho:G\to\operatorname{Aff}(\Delta)\)">\(\rho:G\to\operatorname{Aff}(\Delta)\)</span> a homomorphism with uniformly dense range. Give <span class="math" data-tex="\(G\)">\(G\)</span> the strict cone, where <span class="math" data-tex="\(\rho(g)&gt;0\)">\(\rho(g)&gt;0\)</span> means positivity at every point of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span></p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G^+=\{0\}\cup P_\rho,\\
+P_\rho=\{g\in G:\rho(g)&gt;0\}.
+\end{gathered}
+\tag{5.14}
+\]">\[
+\begin{gathered}
+G^+=\{0\}\cup P_\rho,\\
+P_\rho=\{g\in G:\rho(g)&gt;0\}.
+\end{gathered}
+\tag{5.14}
+\]</span>
+<p>Then <span class="math" data-tex="\(G\)">\(G\)</span> is a simple dimension group. If <span class="math" data-tex="\(\rho(u)=1\)">\(\rho(u)=1\)</span>, it is the scaled ordered <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-group of a simple unital AF-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, unique up to isomorphism, with <span class="math" data-tex="\(T(A)\)">\(T(A)\)</span> affinely homeomorphic to <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Under this homeomorphism, the trace pairing of <span class="math" data-tex="\(g\)">\(g\)</span> is precisely <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span>.</p>
+<p><em>Proof.</em> The cone is closed under addition and is proper. It is unperforated: if <span class="math" data-tex="\(ng\)">\(ng\)</span> is nonzero positive, divide the strictly positive function <span class="math" data-tex="\(\rho(ng)\)">\(\rho(ng)\)</span> by <span class="math" data-tex="\(n\)">\(n\)</span>; if <span class="math" data-tex="\(ng=0\)">\(ng=0\)</span>, torsion-freeness gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. It is directed even without a specified <span class="math" data-tex="\(u\)">\(u\)</span>: density supplies a <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(\rho(v)&gt;0\)">\(\rho(v)&gt;0\)</span> everywhere, and sufficiently large multiples of <span class="math" data-tex="\(v\)">\(v\)</span> dominate any given <span class="math" data-tex="\(\rho(g)\)">\(\rho(g)\)</span>. Every nonzero positive <span class="math" data-tex="\(v\)">\(v\)</span> is an order unit by the same uniform lower-bound argument.</p>
+<p>For interpolation, suppose <span class="math" data-tex="\(a_i\leq b_j\)">\(a_i\leq b_j\)</span> in <span class="math" data-tex="\(G\)">\(G\)</span>. If one lower bound equals one upper bound, that element interpolates all four. Otherwise every <span class="math" data-tex="\(\rho(b_j-a_i)\)">\(\rho(b_j-a_i)\)</span> is strictly positive. Compactness gives a common lower bound <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> for these four functions. Apply Lemma 5.6 to the shifted lower functions <span class="math" data-tex="\(\rho(a_i)+\delta/3\)">\(\rho(a_i)+\delta/3\)</span> and upper functions <span class="math" data-tex="\(\rho(b_j)-\delta/3\)">\(\rho(b_j)-\delta/3\)</span>, with error <span class="math" data-tex="\(\delta/12\)">\(\delta/12\)</span>. The resulting affine <span class="math" data-tex="\(f\)">\(f\)</span> is separated from the original bounds by more than <span class="math" data-tex="\(\delta/4\)">\(\delta/4\)</span>. Choose <span class="math" data-tex="\(c\in G\)">\(c\in G\)</span> with <span class="math" data-tex="\(\|\rho(c)-f\|&lt;\delta/8\)">\(\|\rho(c)-f\|&lt;\delta/8\)</span>. Then both <span class="math" data-tex="\(\rho(c-a_i)\)">\(\rho(c-a_i)\)</span> and <span class="math" data-tex="\(\rho(b_j-c)\)">\(\rho(b_j-c)\)</span> are strictly positive, giving the required interpolant. Theorem 5.4 now applies.</p>
+<p>When <span class="math" data-tex="\(\rho(u)=1\)">\(\rho(u)=1\)</span>, Theorem 5.5 constructs the simple unital AF-algebra. Uniqueness uses the already proved scaled AF classification in §1. It remains to prove the trace simplex and the precise pairing, rather than infer them from existence.</p>
+<p>For a group state <span class="math" data-tex="\(s:G\to\mathbb R\)">\(s:G\to\mathbb R\)</span>, take positive integers <span class="math" data-tex="\(M,N\)">\(M,N\)</span> with <span class="math" data-tex="\(M/N&gt;\|\rho(g)\|\)">\(M/N&gt;\|\rho(g)\|\)</span>. Both <span class="math" data-tex="\(Mu+Ng\)">\(Mu+Ng\)</span> and <span class="math" data-tex="\(Mu-Ng\)">\(Mu-Ng\)</span> are positive, so <span class="math" data-tex="\(|s(g)|\leq M/N\)">\(|s(g)|\leq M/N\)</span>. Letting this rational bound decrease gives</p>
+<span class="math math-display" data-tex="\[
+|s(g)|\leq\|\rho(g)\|.
+\tag{5.15}
+\]">\[
+|s(g)|\leq\|\rho(g)\|.
+\tag{5.15}
+\]</span>
+<p>Thus <span class="math" data-tex="\(s\)">\(s\)</span> annihilates <span class="math" data-tex="\(\ker\rho\)">\(\ker\rho\)</span> and defines a bounded additive functional on <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span>. Extend it continuously to the dense real Banach space <span class="math" data-tex="\(V\)">\(V\)</span>. The extension <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is additive and continuous, hence real-linear, with <span class="math" data-tex="\(\ell(1)=1\)">\(\ell(1)=1\)</span>. It is positive: approximate a strictly positive function by elements of <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span>, then obtain positivity on any nonnegative function by adding a positive constant and taking a limit.</p>
+<p>Every such <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is evaluation at a point of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Indeed, for finitely many <span class="math" data-tex="\(f_1,\ldots,f_m\in V\)">\(f_1,\ldots,f_m\in V\)</span>, the vector <span class="math" data-tex="\((\ell(f_1),\ldots,\ell(f_m))\)">\((\ell(f_1),\ldots,\ell(f_m))\)</span> lies in their compact convex joint range on <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Otherwise finite-dimensional separation gives a nonnegative affine function on <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> with negative <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-value. That separation can be seen by choosing a nearest point of the compact convex joint range: the vector from that point to the proposed vector strictly separates them. Compactness and the finite-intersection property therefore give one <span class="math" data-tex="\(x\in\Delta\)">\(x\in\Delta\)</span> with <span class="math" data-tex="\(\ell(f)=f(x)\)">\(\ell(f)=f(x)\)</span> for every <span class="math" data-tex="\(f\in V\)">\(f\in V\)</span>. Continuous affine functions separate points, so <span class="math" data-tex="\(x\)">\(x\)</span> is unique. Conversely evaluation at any <span class="math" data-tex="\(x\)">\(x\)</span> gives a group state. Density makes the evaluation map <span class="math" data-tex="\(\Delta\to S(G,u)\)">\(\Delta\to S(G,u)\)</span> injective; it is continuous and onto, and hence an affine homeomorphism from compact <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to its Hausdorff image.</p>
+<p>Finally, the group-state/trace correspondence for the unital AF system is explicit. At a stage <span class="math" data-tex="\(\bigoplus_jM_{d_j}\)">\(\bigoplus_jM_{d_j}\)</span>, set the trace weight of a minimal projection in block <span class="math" data-tex="\(j\)">\(j\)</span> equal to the state value of its <span class="math" data-tex="\(K_0\)">\(K_0\)</span>-class, and use that weight times the unnormalized matrix trace on the block. Positivity and <span class="math" data-tex="\(\sum_jd_js([e_j])=1\)">\(\sum_jd_js([e_j])=1\)</span> give a tracial state. Connecting multiplicities make these stage traces compatible. Their uniformly bounded functionals extend to the AF limit. Conversely every tracial state has these weights by matrix-unit cyclicity, so the correspondence is bijective. Pointwise convergence of group states gives convergence on every finite stage and then on the entire algebra by norm density; convergence of traces gives convergence on projection classes. This proves the affine homeomorphism and identifies the trace pairing with <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, every metrizable Choquet simplex occurs as <span class="math" data-tex="\(T(A)\)">\(T(A)\)</span> for a simple unital AF-algebra. To see the required separability explicitly, fix a countable dense set in the compact metric space <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Finite minima of functions <span class="math" data-tex="\(r+Ld(x,x_j)\)">\(r+Ld(x,x_j)\)</span>, with rational <span class="math" data-tex="\(r\)">\(r\)</span>, positive rational <span class="math" data-tex="\(L\)">\(L\)</span>, and points <span class="math" data-tex="\(x_j\)">\(x_j\)</span> from that set, form a countable dense family in real <span class="math" data-tex="\(C(\Delta)\)">\(C(\Delta)\)</span>: first approximate a uniformly continuous function by its infimum <span class="math" data-tex="\(\inf_y(f(y)+Ld(x,y))\)">\(\inf_y(f(y)+Ld(x,y))\)</span> for large <span class="math" data-tex="\(L\)">\(L\)</span>, then approximate that infimum using a finite sufficiently fine net and rational values. The infimum converges uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>, since near points use uniform continuity and distant points cannot lower it when <span class="math" data-tex="\(L\)">\(L\)</span> is large. A subspace of a separable metric space is separable by choosing a point from each nonempty intersection with a countable base. Thus <span class="math" data-tex="\(\operatorname{Aff}(\Delta)\)">\(\operatorname{Aff}(\Delta)\)</span> has a countable dense family. Take its rational linear span together with 1. This countable torsion-free group, its inclusion map and its unit satisfy Theorem 5.7. Infinitesimals are also permitted by that theorem: <span class="math" data-tex="\(\rho\)">\(\rho\)</span> need not be injective.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 16.1.</strong> Compute K_1 of a UHF algebra and give its normalized ordered K_0.</p>
+<p><em>Solution.</em> Each finite matrix stage has K_1 zero by its eigenangle contraction, so continuity gives K_1 zero. A minimal projection at size <span class="math" data-tex="\(n_k\)">\(n_k\)</span> has class <span class="math" data-tex="\(1\)">\(1\)</span> in the integer stage coordinate, and an embedding of multiplicity <span class="math" data-tex="\(m_k\)">\(m_k\)</span> sends it to <span class="math" data-tex="\(m_k\)">\(m_k\)</span>. The coherent rational coordinate is <span class="math" data-tex="\(r/n_k\)">\(r/n_k\)</span>, giving <span class="math" data-tex="\(\mathbb Z(q)\)">\(\mathbb Z(q)\)</span>. Nonnegative ranks give its ordinary positive cone, stage units give <span class="math" data-tex="\(1\)">\(1\)</span>, and ranks between <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(n_k\)">\(n_k\)</span> give <span class="math" data-tex="\(\mathbb Z(q)\cap[0,1]\)">\(\mathbb Z(q)\cap[0,1]\)</span> as scale. This also covers a finite supernatural number, when the UHF algebra is a single finite matrix algebra.</p>
+<p><strong>Exercise 16.2.</strong> Compute the two groups of the Bunce–Deddens algebra of type <span class="math" data-tex="\(2^\infty\)">\(2^\infty\)</span>, checking both connecting maps.</p>
+<p><em>Solution.</em> In its correct embedding a minimal projection maps to a rank-two projection, so K_0 multiplies by <span class="math" data-tex="\(2\)">\(2\)</span>. Its stable K_1 generator maps to</p>
+<span class="math math-display" data-tex="\[
+C_2(z)=\begin{pmatrix}0&amp;z\\1&amp;0\end{pmatrix}
+\]">\[
+C_2(z)=\begin{pmatrix}0&amp;z\\1&amp;0\end{pmatrix}
+\]</span>
+<p>on a two-dimensional corner, with identity elsewhere. Its determinant is <span class="math" data-tex="\(-z\)">\(-z\)</span>, of winding one, so K_1 multiplies by <span class="math" data-tex="\(1\)">\(1\)</span>. Therefore the limits are <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span> and <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The normalized unit is <span class="math" data-tex="\(1\)">\(1\)</span>, and its positive cone is the nonnegative dyadic rationals. In the root presentation the two eigenvalues are <span class="math" data-tex="\(e^{\pi it}\)">\(e^{\pi it}\)</span> and <span class="math" data-tex="\(-e^{\pi it}\)">\(-e^{\pi it}\)</span>, whose product is <span class="math" data-tex="\(-e^{2\pi it}\)">\(-e^{2\pi it}\)</span>; this independently verifies the degree and its sign.</p>
+<p><strong>Exercise 16.3.</strong> Prove unperforation and interpolation for a dimension group with possibly noninjective connecting maps.</p>
+<p><em>Solution.</em> Equality of finitely many classes in an algebraic inductive limit is equality at some common later stage. If <span class="math" data-tex="\(ng\)">\(ng\)</span> is positive, carry a representative of <span class="math" data-tex="\(g\)">\(g\)</span> and a positive representative of <span class="math" data-tex="\(ng\)">\(ng\)</span> there; the equation <span class="math" data-tex="\(n x=y\geq0\)">\(n x=y\geq0\)</span> in integer coordinates forces <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span>. For four interpolation inequalities, carry the four representatives and the four positive differences to one stage where all defining equations hold. The coordinate maximum of the lower representatives lies below both upper ones. Its image is the required interpolant. The same finite-stage argument with two positive representatives of <span class="math" data-tex="\(g,-g\)">\(g,-g\)</span> proves properness, and positive/negative coordinate decomposition proves directedness. No map is assumed injective.</p>
+<p><strong>Exercise 16.4.</strong> Prove uniqueness of the dyadic Bunce–Deddens trace and determine its projection ranges.</p>
+<p><em>Solution.</em> Restrict any tracial state to a stage; matrix-unit cyclicity puts it in form (4.2). Pulling back from a stage <span class="math" data-tex="\(l\)">\(l\)</span> to a stage <span class="math" data-tex="\(k\)">\(k\)</span> averages over all <span class="math" data-tex="\(2^{l-k}\)">\(2^{l-k}\)</span>-th roots. For every nonzero Fourier exponent <span class="math" data-tex="\(r\)">\(r\)</span>, choose <span class="math" data-tex="\(2^{l-k}&gt;|r|\)">\(2^{l-k}&gt;|r|\)</span>; formula (4.4) makes that coefficient zero. Laurent density forces Haar measure at every stage. Haar traces are compatible and extend continuously, so existence and uniqueness both hold. A rank <span class="math" data-tex="\(s\)">\(s\)</span> stage projection has trace <span class="math" data-tex="\(s/2^k\)">\(s/2^k\)</span>. Every dyadic number in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is realized this way, and no ordinary projection has trace outside that interval. Matrix enlargements realize every nonnegative dyadic number. Differences of these projection classes realize all of <span class="math" data-tex="\(\mathbb Z[1/2]\)">\(\mathbb Z[1/2]\)</span> on K_0. These are exactly the three ranges (4.6).</p>
+<p><strong>Exercise 16.5.</strong> Compare the doubled square-pullback system with the true twice-around system.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(\Gamma(f)(z)=\operatorname{diag}(f(z^2),f(z^2))\)">\(\Gamma(f)(z)=\operatorname{diag}(f(z^2),f(z^2))\)</span>, the minimal projection has doubled rank. The determinant of the image of its stable circle generator is <span class="math" data-tex="\(z^4\)">\(z^4\)</span>, so its K_1 map is multiplication by <span class="math" data-tex="\(4\)">\(4\)</span>. The two limits are <span class="math" data-tex="\(\varinjlim(\mathbb Z,\times2)=\mathbb Z[1/2]\)">\(\varinjlim(\mathbb Z,\times2)=\mathbb Z[1/2]\)</span> and <span class="math" data-tex="\(\varinjlim(\mathbb Z,\times4)=\mathbb Z[1/4]=\mathbb Z[1/2]\)">\(\varinjlim(\mathbb Z,\times4)=\mathbb Z[1/4]=\mathbb Z[1/2]\)</span>. The nonconstant central function <span class="math" data-tex="\(zI\)">\(zI\)</span> remains central and nonconstant after every embedding, which is injective. Thus it gives a non-scalar central element of the limit, proving that limit is not simple. For the actual cyclic embedding the determinant is <span class="math" data-tex="\(-z\)">\(-z\)</span>, so K_1 is instead <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and the root-sampling proof of Proposition 4.1 gives simplicity. Rank agreement alone did not identify the two systems.</p>
+<h2 id="what-this-lesson-imports-and-does-not-prove">What this lesson imports and does not prove</h2>
+<p>Continuity, stabilization and the circle groups are imported at the exact lesson locators given above. The dimension-group identification, scaled AF classification, automorphism lifting and stable classification are the actual AF-algebras Theorem 7.5 and Theorem 8.3, Corollary 8.4 and Theorem 8.5. Theorems 5.4–5.7 prove the full dimension-group converse, unital and simple AF realization, and the prescribed trace-simplex range. Lemma 5.6 proves the needed affine interpolation directly from the ordered-cone definition of a Choquet simplex, including its separation argument. The measure representation of states on <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span> and the bounded K_0 trace pairing are the imports used in <span class="unlinked">Traces, states and the pairing with K_0</span>. Fejér approximation is the proof in Lesson 10, §5. We prove the AT connecting-map computations, Bunce–Deddens simplicity and unique trace here; no Pimsner–Voiculescu sequence or classification of general AT-algebras is assumed.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, 1998, Exercise 7.7.5, printed pp. 57–58. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author corrected edition</a>. Theorem 1.2 supplies a complete proof, including the continuous asymptotic unitary path, with the exact AF cancellation prerequisite.</p>
+</li>
+<li>
+<p>B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, 1998, Definition 6.2.1; complete §§7.1–7.6, especially Theorems 7.3.2, 7.4.1 and 7.4.3; Exercise 10.11.4(a)–(c). <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>. Theorems 7.4.1 and 7.4.3 supply the freely accessible range statements; the complete constructive proofs used here are given in §5.</p>
+</li>
+<li>
+<p>B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, V.2 overview and V.2.4, for ordered K_0 and traces.</p>
+</li>
+<li>
+<p>H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, 2024, §1.7. The doubled square-pullback of Example 1.7.11 is distinguished from Blackadar's standard twice-around embedding by its actual K_1 map.</p>
+</li>
+<li>
+<p>E. G. Effros, D. E. Handelman and C.-L. Shen, <em>Dimension groups and their affine representations</em>, American Journal of Mathematics 102 (1980), 385–407, <a href="https://doi.org/10.2307/2374244">historical article</a>. Historical attribution, also recorded in Blackadar’s freely accessible edition, §7.4. The complete integer-kernel refinement and AF/trace-simplex arguments used here are written out in Theorems 5.4–5.7.</p>
+</li>
+<li>
+<p>B. Blackadar, <em>Classification of C*-Algebras</em>, incomplete preliminary edition, 4 June 2025, I.3.3.50–I.3.3.52 and I.3.3.56–I.3.3.58, <a href="https://www.bruceblackadar.com/Mathematics/Class.pdf">author’s edition</a>. These passages supply the Choquet cone definition and strict-order range statements. Section 5 proves the affine interpolation, AF realization and trace correspondence used here directly from that definition.</p>
+</li>
+<li>
+<p>David E. Handelman, <em>Real dimension groups</em>, arXiv:1102.2964v1, Lemmas 3–4 and their proofs, pp. 2–3. <a href="https://arxiv.org/pdf/1102.2964v1#page=2">Freely readable versioned paper</a>. Its ordered-vector-space factorization is a comparison: scaling and division there do not replace the integral refinement proof of Lemma 5.3 here.</p>
+</li>
+</ul>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="smooth-subalgebras-and-the-density-theorem.html">← Smooth subalgebras and the density theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-mapping-torus.html">The mapping torus →</a></span></nav>
+<p class="small source-link"><a href="src/KT-OPK-16.md">Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer"><p>This course’s original exposition and solutions use CC0 1.0. Human mathematical sources are credited in each lesson. See <a href="sources.html">sources, authorship and component terms</a>.</p><p><a href="../../index.html">Open Mathematics Courses</a> · <a href="preparation.html">Preparation</a></p></footer>
+</body>
+</html>

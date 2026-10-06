@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forced C*-unitization · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-UZ.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 99 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="a-unitization-that-keeps-its-scalar-quotient">A unitization that keeps its scalar quotient</h1>
+<p><em>GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.</em></p>
+<p>Even when a <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra already has an identity, it can be useful to adjoin a <em>new</em> one. The resulting forced unitization always has a quotient onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> whose kernel is the original algebra. That quotient detects when a continuous function of an element of <span class="math" data-tex="\(A\)">\(A\)</span> returns to <span class="math" data-tex="\(A\)">\(A\)</span>, as needed for approximate identities. We use the programme's existing forced-unitization construction and give an alternative proof of its maximum norm for the C*-weight route. The required abstract self-adjoint calculus and positive-cone theorem are proved in <a href="notes/analytic-programme/abstract-cstar-order.html">AC1–4</a>. The free comparison is <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">Blackadar, corrected author edition, II.1.2.1, printed page 54</a>. We keep the scalar coordinate in the norm so that the same construction also works for already-unital and zero algebras.</p>
+<p>The earlier programme Banach-algebra lesson owns the forced-unitization statement. Equations (UZ.3)–(UZ.12) below give its complete local alternative proof; (UZ.2) and (UZ.14)–(UZ.15) prove the quotient-calculus and inherited-cone applications. The construction through UZ05 uses no functional calculus. Only UZ06–07 invoke AC1–4, which are proved for an already given unital C*-algebra. Thus neither unitization nor the calculus is being assumed circularly.</p>
+<p>The programme provider is originally by Claude Opus 5.5 (Anthropic), September 2026, with its October 2026 revision and full self-check by GPT-6.1 Sol (OpenAI), Ultra, CC0. The new ownership bridges here are by GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0; the earlier local prose retains the credit above. The current free-source reconstruction, analytic prerequisite proof and domain checks are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0.</p>
+<p>For every complex <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, including <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, we construct a unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra <span class="math" data-tex="\(\widetilde A=A\oplus\mathbb C\)">\(\widetilde A=A\oplus\mathbb C\)</span>, an isometric *-homomorphism <span class="math" data-tex="\(j\)">\(j\)</span>, and a unital contractive *-homomorphism <span class="math" data-tex="\(q\)">\(q\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+j(a)=(a,0),\qquad q(a,\lambda)=\lambda,\qquad
+\ker q=j(A).
+\tag{UZ.1}
+\]">\[
+j(a)=(a,0),\qquad q(a,\lambda)=\lambda,\qquad
+\ker q=j(A).
+\tag{UZ.1}
+\]</span>
+<p>The image <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span> will be a closed two-sided ideal, <span class="math" data-tex="\(\widetilde A/j(A)\cong\mathbb C\)">\(\widetilde A/j(A)\cong\mathbb C\)</span> isometrically, and <span class="math" data-tex="\(j(A_+)=j(A)\cap\widetilde A_+\)">\(j(A_+)=j(A)\cap\widetilde A_+\)</span>. In particular, for self-adjoint <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and any continuous <span class="math" data-tex="\(f\)">\(f\)</span> on an interval containing the spectrum of <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q(f(j(a)))=f(0).
+\tag{UZ.2}
+\]">\[
+q(f(j(a)))=f(0).
+\tag{UZ.2}
+\]</span>
+<p>Thus <span class="math" data-tex="\(f(j(a))\in j(A)\)">\(f(j(a))\in j(A)\)</span> whenever <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>. The zero is in the spectrum of <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span>, since its image under the unital map <span class="math" data-tex="\(q\)">\(q\)</span> is zero.</p>
+<h2 id="the-algebraic-extension-and-its-left-action">The algebraic extension and its left action</h2>
+<p>The following algebraic construction and norm calculation prove the programme contract in the scalar-quotient notation needed for weights.</p>
+<p>Give <span class="math" data-tex="\(A\oplus\mathbb C\)">\(A\oplus\mathbb C\)</span> its vector-space operations and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(a,\lambda)(b,\mu)&amp;=(ab+\lambda b+\mu a,\lambda\mu),\\
+(a,\lambda)^\star&amp;=(a^*,\overline\lambda).
+\end{aligned}
+\tag{UZ.3}
+\]">\[
+\begin{aligned}
+(a,\lambda)(b,\mu)&amp;=(ab+\lambda b+\mu a,\lambda\mu),\\
+(a,\lambda)^\star&amp;=(a^*,\overline\lambda).
+\end{aligned}
+\tag{UZ.3}
+\]</span>
+<p>These operations have identity <span class="math" data-tex="\({\bf1}=(0,1)\)">\({\bf1}=(0,1)\)</span>. Associativity can be checked without assuming a norm: both bracketings of a triple product have first coordinate</p>
+<span class="math math-display" data-tex="\[
+abc+\lambda bc+\mu ac+\nu ab
++\lambda\mu c+\lambda\nu b+\mu\nu a
+\]">\[
+abc+\lambda bc+\mu ac+\nu ab
++\lambda\mu c+\lambda\nu b+\mu\nu a
+\]</span>
+<p>and second coordinate <span class="math" data-tex="\(\lambda\mu\nu\)">\(\lambda\mu\nu\)</span>. The involution reverses products by the same expansion. Formula (UZ.3) also shows that <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span> is a two-sided ideal and that <span class="math" data-tex="\(j,q\)">\(j,q\)</span> preserve products and involutions.</p>
+<p>Let <span class="math" data-tex="\(\mathcal L(A)\)">\(\mathcal L(A)\)</span> be the bounded linear operators on the Banach space <span class="math" data-tex="\(A\)">\(A\)</span>. The left action and its seminorm are</p>
+<span class="math math-display" data-tex="\[
+T_{(a,\lambda)}b=ab+\lambda b,\qquad
+p(a,\lambda)=\|T_{(a,\lambda)}\|_{\mathcal L(A)}.
+\tag{UZ.4}
+\]">\[
+T_{(a,\lambda)}b=ab+\lambda b,\qquad
+p(a,\lambda)=\|T_{(a,\lambda)}\|_{\mathcal L(A)}.
+\tag{UZ.4}
+\]</span>
+<p>The estimate <span class="math" data-tex="\(\|T_{(a,\lambda)}b\|\leq(\|a\|+|\lambda|)\|b\|\)">\(\|T_{(a,\lambda)}b\|\leq(\|a\|+|\lambda|)\|b\|\)</span> proves boundedness. Expanding products gives <span class="math" data-tex="\(T_{uv}=T_uT_v\)">\(T_{uv}=T_uT_v\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> is submultiplicative. No Hilbert-space adjoint is involved in <span class="math" data-tex="\(T_{u^\star}\)">\(T_{u^\star}\)</span>; it is simply the left action of another algebra element.</p>
+<p>For <span class="math" data-tex="\(L_a=T_{j(a)}\)">\(L_a=T_{j(a)}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|L_a\|=\|a\|.
+\tag{UZ.5}
+\]">\[
+\|L_a\|=\|a\|.
+\tag{UZ.5}
+\]</span>
+<p>Submultiplicativity gives the upper bound. If <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, test <span class="math" data-tex="\(L_a\)">\(L_a\)</span> on <span class="math" data-tex="\(a^*/\|a\|\)">\(a^*/\|a\|\)</span>; the <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-identity and isometry of involution give <span class="math" data-tex="\(\|aa^*\|/\|a\|=\|a\|\)">\(\|aa^*\|/\|a\|=\|a\|\)</span>. The latter isometry follows from <span class="math" data-tex="\(\|a\|^2\leq\|a^*\|\|a\|\)">\(\|a\|^2\leq\|a^*\|\|a\|\)</span> and the same inequality with <span class="math" data-tex="\(a^*\)">\(a^*\)</span>, treating zero separately. The zero algebra satisfies (UZ.5) as well.</p>
+<h2 id="checking-the-c--seminorm">Checking the C*-seminorm</h2>
+<p>The next calculation proves the C*-seminorm identity directly from the C*-identity of the original algebra. The left action is on a Banach space; its involution is inherited algebraically and is not an operator adjoint on that space.</p>
+<p>Write <span class="math" data-tex="\(ub=T_ub\)">\(ub=T_ub\)</span> for <span class="math" data-tex="\(u\in A\oplus\mathbb C\)">\(u\in A\oplus\mathbb C\)</span> and <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>. The algebraic equality <span class="math" data-tex="\((ub)^*(ub)=b^*(u^\star u)b\)">\((ub)^*(ub)=b^*(u^\star u)b\)</span> occurs entirely in <span class="math" data-tex="\(A\)">\(A\)</span>. Its <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-identity gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|T_ub\|^2
+&amp;=\|b^*T_{u^\star u}b\|\\
+&amp;\leq\|b\|\|T_{u^\star u}b\|
+\leq p(u^\star u)\|b\|^2.
+\end{aligned}
+\tag{UZ.6}
+\]">\[
+\begin{aligned}
+\|T_ub\|^2
+&amp;=\|b^*T_{u^\star u}b\|\\
+&amp;\leq\|b\|\|T_{u^\star u}b\|
+\leq p(u^\star u)\|b\|^2.
+\end{aligned}
+\tag{UZ.6}
+\]</span>
+<p>Taking a supremum over unit-ball <span class="math" data-tex="\(b\)">\(b\)</span>, then using <span class="math" data-tex="\(T_{u^\star u}=T_{u^\star}T_u\)">\(T_{u^\star u}=T_{u^\star}T_u\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+p(u)^2\leq p(u^\star u)\leq p(u^\star)p(u).
+\tag{UZ.7}
+\]">\[
+p(u)^2\leq p(u^\star u)\leq p(u^\star)p(u).
+\tag{UZ.7}
+\]</span>
+<p>Apply this also to <span class="math" data-tex="\(u^\star\)">\(u^\star\)</span>. If one of <span class="math" data-tex="\(p(u),p(u^\star)\)">\(p(u),p(u^\star)\)</span> is zero, both are zero; otherwise divide to obtain <span class="math" data-tex="\(p(u)\leq p(u^\star)\)">\(p(u)\leq p(u^\star)\)</span> and its reverse. The two bounds in (UZ.7) then coincide:</p>
+<span class="math math-display" data-tex="\[
+p(u^\star)=p(u),\qquad p(u^\star u)=p(u)^2.
+\tag{UZ.8}
+\]">\[
+p(u^\star)=p(u),\qquad p(u^\star u)=p(u)^2.
+\tag{UZ.8}
+\]</span>
+<p>This argument uses neither a representation theorem nor an approximate identity.</p>
+<h2 id="why-the-scalar-coordinate-matters">Why the scalar coordinate matters</h2>
+<p>The scalar coordinate will remove the possible kernel of the left action, including when the original algebra already has an identity.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+N(a,\lambda)=\max\bigl(\|L_a+\lambda I_A\|,|\lambda|\bigr)
+=\max\bigl(p(a,\lambda),|q(a,\lambda)|\bigr).
+\tag{UZ.9}
+\]">\[
+N(a,\lambda)=\max\bigl(\|L_a+\lambda I_A\|,|\lambda|\bigr)
+=\max\bigl(p(a,\lambda),|q(a,\lambda)|\bigr).
+\tag{UZ.9}
+\]</span>
+<p>It is a seminorm by the triangle inequality. If it vanishes, <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> and (UZ.5) forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, so it is a norm. Both terms are submultiplicative; (UZ.8) gives <span class="math" data-tex="\(N(u^\star)=N(u)\)">\(N(u^\star)=N(u)\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N(u^\star u)
+&amp;=\max\bigl(p(u^\star u),|q(u^\star u)|\bigr)\\
+&amp;=\max\bigl(p(u)^2,|q(u)|^2\bigr)=N(u)^2.
+\end{aligned}
+\tag{UZ.10}
+\]">\[
+\begin{aligned}
+N(u^\star u)
+&amp;=\max\bigl(p(u^\star u),|q(u^\star u)|\bigr)\\
+&amp;=\max\bigl(p(u)^2,|q(u)|^2\bigr)=N(u)^2.
+\end{aligned}
+\tag{UZ.10}
+\]</span>
+<p>Also <span class="math" data-tex="\(N({\bf1})=\max(\|I_A\|,1)=1\)">\(N({\bf1})=\max(\|I_A\|,1)=1\)</span>, including <span class="math" data-tex="\(A=0\)">\(A=0\)</span>.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> already has a unit, the formal element <span class="math" data-tex="\((-1_A,1)\)">\((-1_A,1)\)</span> is nonzero and acts as zero on <span class="math" data-tex="\(A\)">\(A\)</span>. Its left-action seminorm is therefore zero, while <span class="math" data-tex="\(N(-1_A,1)=1\)">\(N(-1_A,1)=1\)</span>. For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, the map <span class="math" data-tex="\((a,\lambda)\mapsto(a+\lambda,\lambda)\)">\((a,\lambda)\mapsto(a+\lambda,\lambda)\)</span> identifies the forced unitization with <span class="math" data-tex="\(\mathbb C\oplus\mathbb C\)">\(\mathbb C\oplus\mathbb C\)</span> and gives <span class="math" data-tex="\(N(a,\lambda)=\max(|a+\lambda|,|\lambda|)\)">\(N(a,\lambda)=\max(|a+\lambda|,|\lambda|)\)</span>. The extra scalar coordinate is visible even in this smallest example.</p>
+<h2 id="completeness-ideal-and-quotient-norm">Completeness, ideal and quotient norm</h2>
+<p>From the definition of <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+N(a,\lambda)\leq\|a\|+|\lambda|.
+\tag{UZ.11}
+\]">\[
+N(a,\lambda)\leq\|a\|+|\lambda|.
+\tag{UZ.11}
+\]</span>
+<p>Conversely, <span class="math" data-tex="\(|\lambda|\leq N(a,\lambda)\)">\(|\lambda|\leq N(a,\lambda)\)</span>, and (UZ.5) gives
+<span class="math" data-tex="\(\|a\|=\|L_a\|\leq p(a,\lambda)+|\lambda|\|I_A\|\leq2N(a,\lambda)\)">\(\|a\|=\|L_a\|\leq p(a,\lambda)+|\lambda|\|I_A\|\leq2N(a,\lambda)\)</span>.
+Hence</p>
+<span class="math math-display" data-tex="\[
+\|a\|+|\lambda|\leq3N(a,\lambda).
+\tag{UZ.12}
+\]">\[
+\|a\|+|\lambda|\leq3N(a,\lambda).
+\tag{UZ.12}
+\]</span>
+<p>The sum norm on <span class="math" data-tex="\(A\oplus\mathbb C\)">\(A\oplus\mathbb C\)</span> is complete because both coordinates are complete. The two inequalities show that an <span class="math" data-tex="\(N\)">\(N\)</span>-Cauchy sequence converges in the sum norm and hence in <span class="math" data-tex="\(N\)">\(N\)</span>. Therefore <span class="math" data-tex="\((A\oplus\mathbb C,N)\)">\((A\oplus\mathbb C,N)\)</span> is a unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra.</p>
+<p>Equation (UZ.5) makes <span class="math" data-tex="\(j\)">\(j\)</span> isometric. Its image is closed by completeness and is the ideal already identified algebraically. The inequality <span class="math" data-tex="\(|q(u)|\leq N(u)\)">\(|q(u)|\leq N(u)\)</span>, with equality at <span class="math" data-tex="\({\bf1}\)">\({\bf1}\)</span>, makes <span class="math" data-tex="\(q\)">\(q\)</span> contractive of norm one. Every element with scalar coordinate <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> has norm at least <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span>; the representative <span class="math" data-tex="\((0,\lambda)\)">\((0,\lambda)\)</span> has norm exactly <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span>. Thus the quotient norm of its coset is <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span>, proving the asserted isometric quotient.</p>
+<h2 id="continuous-functions-and-the-quotient">Continuous functions and the quotient</h2>
+<p>We now apply the self-adjoint continuous calculus proved in <a href="notes/analytic-programme/abstract-cstar-order.html">AC1–4</a> to the constructed unital <span class="math" data-tex="\(C^*\)">\(C^*\)</span>-algebra. If <span class="math" data-tex="\(h=h^\star\)">\(h=h^\star\)</span>, then <span class="math" data-tex="\(q(h)\)">\(q(h)\)</span> is real and lies in <span class="math" data-tex="\(\sigma_{\widetilde A}(h)\)">\(\sigma_{\widetilde A}(h)\)</span>: otherwise an inverse for <span class="math" data-tex="\(h-q(h){\bf1}\)">\(h-q(h){\bf1}\)</span> would map under <span class="math" data-tex="\(q\)">\(q\)</span> to an inverse for zero.</p>
+<p>Take a compact real interval <span class="math" data-tex="\(J\)">\(J\)</span> containing the spectrum and a continuous <span class="math" data-tex="\(f:J\to\mathbb C\)">\(f:J\to\mathbb C\)</span>. Polynomial approximation on <span class="math" data-tex="\(J\)">\(J\)</span> can be seen directly from Bernstein polynomials. After rescaling to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, for real continuous <span class="math" data-tex="\(g\)">\(g\)</span> put</p>
+<span class="math math-display" data-tex="\[
+B_ng(t)=\sum_{k=0}^n g(k/n){n\choose k}t^k(1-t)^{n-k}.
+\]">\[
+B_ng(t)=\sum_{k=0}^n g(k/n){n\choose k}t^k(1-t)^{n-k}.
+\]</span>
+<p>The binomial weights sum to one, have weighted mean <span class="math" data-tex="\(k/n=t\)">\(k/n=t\)</span>, and variance <span class="math" data-tex="\(t(1-t)/n\)">\(t(1-t)/n\)</span>. Their mass outside <span class="math" data-tex="\(|k/n-t|&lt;\delta\)">\(|k/n-t|&lt;\delta\)</span> is at most <span class="math" data-tex="\(1/(4n\delta^2)\)">\(1/(4n\delta^2)\)</span>. Uniform continuity then gives, whenever <span class="math" data-tex="\(|g(s)-g(t)|&lt;\eta\)">\(|g(s)-g(t)|&lt;\eta\)</span> for <span class="math" data-tex="\(|s-t|&lt;\delta\)">\(|s-t|&lt;\delta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sup_t|B_ng(t)-g(t)|
+\leq\eta+\frac{\|g\|_\infty}{2n\delta^2}.
+\tag{UZ.13}
+\]">\[
+\sup_t|B_ng(t)-g(t)|
+\leq\eta+\frac{\|g\|_\infty}{2n\delta^2}.
+\tag{UZ.13}
+\]</span>
+<p>Send <span class="math" data-tex="\(n\)">\(n\)</span> to infinity and then <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to zero; approximate the real and imaginary parts separately. A singleton interval uses only a constant polynomial.</p>
+<p>Choose resulting polynomials <span class="math" data-tex="\(P_n\to f\)">\(P_n\to f\)</span> uniformly on <span class="math" data-tex="\(J\)">\(J\)</span>. Since <span class="math" data-tex="\(q\)">\(q\)</span> is unital and multiplicative,
+<span class="math" data-tex="\(q(P_n(h))=P_n(q(h))\)">\(q(P_n(h))=P_n(q(h))\)</span>.
+Continuity of <span class="math" data-tex="\(q\)">\(q\)</span> and isometry of functional calculus pass to the limit, giving</p>
+<span class="math math-display" data-tex="\[
+q(f(h))=f(q(h)).
+\tag{UZ.14}
+\]">\[
+q(f(h))=f(q(h)).
+\tag{UZ.14}
+\]</span>
+<p>For <span class="math" data-tex="\(h=j(a)\)">\(h=j(a)\)</span> with <span class="math" data-tex="\(a=a^*\)">\(a=a^*\)</span>, this is (UZ.2). If <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span>, the result lies in <span class="math" data-tex="\(\ker q=j(A)\)">\(\ker q=j(A)\)</span>. For positive <span class="math" data-tex="\(j(a)\)">\(j(a)\)</span>, the functions <span class="math" data-tex="\(t/(t+\varepsilon)\)">\(t/(t+\varepsilon)\)</span>, <span class="math" data-tex="\(\sqrt{t/(t+\varepsilon)}\)">\(\sqrt{t/(t+\varepsilon)}\)</span>, and <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span> therefore return elements of <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span>. The inverse <span class="math" data-tex="\((j(a)+\varepsilon{\bf1})^{-1}\)">\((j(a)+\varepsilon{\bf1})^{-1}\)</span> need not itself lie there.</p>
+<h2 id="the-inherited-positive-cone">The inherited positive cone</h2>
+<p>Use <span class="math" data-tex="\(A_+=\{b^*b:b\in A\}\)">\(A_+=\{b^*b:b\in A\}\)</span>. If <span class="math" data-tex="\(a=b^*b\)">\(a=b^*b\)</span>, then <span class="math" data-tex="\(j(a)=j(b)^\star j(b)\geq0\)">\(j(a)=j(b)^\star j(b)\geq0\)</span> in <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span>. Conversely, suppose <span class="math" data-tex="\(j(a)\geq0\)">\(j(a)\geq0\)</span> there. Its positive square root <span class="math" data-tex="\(c\)">\(c\)</span> exists by the unital functional calculus. Formula (UZ.14) gives <span class="math" data-tex="\(q(c)=\sqrt{q(j(a))}=0\)">\(q(c)=\sqrt{q(j(a))}=0\)</span>, so <span class="math" data-tex="\(c=j(b)\)">\(c=j(b)\)</span> for some <span class="math" data-tex="\(b\in A\)">\(b\in A\)</span>. Now
+<span class="math" data-tex="\(j(a)=c^\star c=j(b^*b)\)">\(j(a)=c^\star c=j(b^*b)\)</span>, and injectivity of <span class="math" data-tex="\(j\)">\(j\)</span> yields <span class="math" data-tex="\(a=b^*b\)">\(a=b^*b\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+j(A_+)=j(A)\cap\widetilde A_+.
+\tag{UZ.15}
+\]">\[
+j(A_+)=j(A)\cap\widetilde A_+.
+\tag{UZ.15}
+\]</span>
+<p>Order comparisons among self-adjoint elements of <span class="math" data-tex="\(A\)">\(A\)</span> agree with those in <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span>, and their norms agree by (UZ.5). The approximate-identity calculation can therefore use the forced unitization without changing either the original order or the original norm.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Bruce Blackadar, <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf"><em>Operator Algebras</em>, corrected author edition of 8 February 2017</a>, II.1.2.1 (unitization), II.2.3.1–2 and II.3.1.1–5 (calculus and order), printed pages 54 and 63–66. The local proofs above and AC1–4 supply the arguments; the reference does not replace them.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-RC.html">← Norm continuity of relative modular time</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CS.html">Finite weight domains and GNS →</a></span></nav>
+<p class="small source-link"><a href="src/cstar-forced-unitization.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Bott suspension and Weyl traces: title and component notices
+
+This selection presents *The Bott operator, suspension, and reduction of the index to Euclidean space* and *Weyl kernels, operator traces, and a finite trace-class test*, from *Elliptic Operators & Boundary Problems*. Complete supporting collections supply the earlier proofs used by these lessons. The moving-scale operator lesson is also included in full.
+
+The Bott lesson preserves the original dedication by Claude Opus 5.5 (Anthropic), September 2026, and the separately identified Codex editorial contributions. The Weyl trace lesson is written and dedicated by Codex. These two lessons and their new additions are CC0 to the extent rights exist. The retained source notices describe the historical checking scope. Current source and reader checking and this publication preparation use OpenAI Codex, GPT-6.1 Sol, Ultra effort; independent mathematical review is not claimed.
+
+Historical supporting components retain GFDL 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. Copyright © 2026 AN-03 course project contributors. Principal author entity: AN-03 course-writing task. Entities responsible for the 2026 modifications: AN-03 course-writing task and OpenAI Codex. Publisher: AN-03 local course project. The source and notices of each supporting collection are retained together. New contributions do not relicense inherited expression.
+
+The complete [GFDL 1.2](COPYING), [CC0 legal text](LICENSE-CC0.txt), [course title page](TITLE_PAGE.md), [course history](HISTORY.md) and [course rights](RIGHTS.md) accompany the selection. Every standalone document download has its own companion notice. External human sources are scholarly references; their archives and expression are not redistributed.

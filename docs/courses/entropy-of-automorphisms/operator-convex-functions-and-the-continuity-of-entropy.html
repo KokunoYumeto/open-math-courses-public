@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Operator convex functions and the continuity of entropy · Open Mathematics Courses</title>
+<meta name="description" content="Operator convexity, Jensen's operator inequality and the sharp continuity bound for entropy, with complete proofs and three solved exercises.">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/entropy-of-automorphisms/operator-convex-functions-and-the-continuity-of-entropy.html">
+<link rel="stylesheet" href="assets/site.css">
+<style>.lesson{max-width:76rem}.math-display{display:block;max-width:100%;overflow-x:auto;margin:1rem 0}mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden}pre{overflow:auto}a{overflow-wrap:anywhere}.course-note{max-width:76rem;margin:1rem auto}.toc{columns:2;column-gap:2rem}.toc li{break-inside:avoid;margin:.5rem 0}@media(max-width:650px){.toc{columns:1}}</style>
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="https://kokunoyumeto.github.io/open-math-courses-public/">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Course"><a href="index.html">Course</a><a href="LICENSING.html">Attribution and terms</a><span class="unlinked">Download reader and sources</span></nav></div></header>
+<main id="main"><article class="lesson"><h1 id="operator-convex-functions-and-the-continuity-of-entropy">Operator convex functions and the continuity of entropy</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>The entropy lessons of this course rest on two analytic tools. The first is the operator concavity of
+<span class="math" data-tex="\(\eta(t)=-t\log t\)">\(\eta(t)=-t\log t\)</span>, together with Jensen's inequality for unital positive maps: <span class="math" data-tex="\(\eta(\Phi(a))\ge\Phi(\eta(a))\)">\(\eta(\Phi(a))\ge\Phi(\eta(a))\)</span>.
+The lesson "Entropy of finite-dimensional subalgebras" applies it to conditional expectations. The second is the
+continuity of the von Neumann entropy <span class="math" data-tex="\(S(\rho)=\operatorname{Tr}\eta(\rho)\)">\(S(\rho)=\operatorname{Tr}\eta(\rho)\)</span> in the trace norm, which the lesson
+"Entropy of lattice translations in quantum spin chains" uses in its sharp form, the Fannes–Audenaert inequality</p>
+<span class="math math-display" data-tex="\[
+|S(\rho)-S(\sigma)|\le T\log(d-1)+\mathrm h(T),\qquad T=\tfrac12\|\rho-\sigma\|_1,\quad
+\mathrm h(T)=\eta(T)+\eta(1-T),
+\]">\[
+|S(\rho)-S(\sigma)|\le T\log(d-1)+\mathrm h(T),\qquad T=\tfrac12\|\rho-\sigma\|_1,\quad
+\mathrm h(T)=\eta(T)+\eta(1-T),
+\]</span>
+<p>for density matrices <span class="math" data-tex="\(\rho,\sigma\)">\(\rho,\sigma\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>.</p>
+<p>This lesson proves both in full generality. Sections 1–3 develop operator convex functions: the inverse and the
+square (Proposition 1.3), the functions <span class="math" data-tex="\(t\log t\)">\(t\log t\)</span> and <span class="math" data-tex="\(\log t\)">\(\log t\)</span> (Theorem 2.2), and the theorem of Hansen and Pedersen
+that operator convexity is equivalent to Jensen's operator inequality for isometries, for unital columns of operators
+and for unital positive maps between C*-algebras (Theorem 3.1). Section 4 proves the elementary inequalities for
+Shannon entropy that the course uses. Section 5 proves the sharp continuity bound for Shannon entropy by a coupling
+argument (Theorem 5.2). Section 6 proves the eigenvalue inequalities of Courant–Fischer, Ky Fan and Mirsky, and Section
+7 deduces the Fannes–Audenaert inequality for every value of <span class="math" data-tex="\(T\)">\(T\)</span> and every dimension, with equality cases (Theorem 7.1).</p>
+<p>Logarithms are natural. We put <span class="math" data-tex="\(\eta(t)=-t\log t\)">\(\eta(t)=-t\log t\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>, and
+<span class="math" data-tex="\(\mathrm h(t)=\eta(t)+\eta(1-t)\)">\(\mathrm h(t)=\eta(t)+\eta(1-t)\)</span> for <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>. Both are continuous and concave, since
+<span class="math" data-tex="\(\eta''(t)=-1/t&lt;0\)">\(\eta''(t)=-1/t&lt;0\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<h2 id="results-used-from-other-lessons">Results used from other lessons</h2>
+<p><strong>(R1) Continuous functional calculus.</strong> For a self-adjoint element <span class="math" data-tex="\(x\)">\(x\)</span> of a unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> and a
+continuous real function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\sigma(x)\)">\(\sigma(x)\)</span>, <span class="math" data-tex="\(f\mapsto f(x)\)">\(f\mapsto f(x)\)</span> is an isometric <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism of
+<span class="math" data-tex="\(C(\sigma(x))\)">\(C(\sigma(x))\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span>, with <span class="math" data-tex="\(f(x)=x\)">\(f(x)=x\)</span> for <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span>, <span class="math" data-tex="\(\sigma(f(x))=f(\sigma(x))\)">\(\sigma(f(x))=f(\sigma(x))\)</span>, and
+<span class="math" data-tex="\(\|f(x)\|=\sup_{\sigma(x)}|f|\)">\(\|f(x)\|=\sup_{\sigma(x)}|f|\)</span>. A <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(\pi\)">\(\pi\)</span> satisfies <span class="math" data-tex="\(\pi(f(x))=f(\pi(x))\)">\(\pi(f(x))=f(\pi(x))\)</span>; in particular
+<span class="math" data-tex="\(f(W^*xW)=W^*f(x)W\)">\(f(W^*xW)=W^*f(x)W\)</span> for unitaries <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(f(x_1\oplus x_2)=f(x_1)\oplus f(x_2)\)">\(f(x_1\oplus x_2)=f(x_1)\oplus f(x_2)\)</span>. The spectrum of <span class="math" data-tex="\(x\)">\(x\)</span> is the
+same in <span class="math" data-tex="\(A\)">\(A\)</span> and in every C*-subalgebra containing <span class="math" data-tex="\(x\)">\(x\)</span> and the unit. A self-adjoint <span class="math" data-tex="\(x\)">\(x\)</span> satisfies
+<span class="math" data-tex="\(\alpha\le x\le\beta\)">\(\alpha\le x\le\beta\)</span> exactly when <span class="math" data-tex="\(\sigma(x)\subseteq[\alpha,\beta]\)">\(\sigma(x)\subseteq[\alpha,\beta]\)</span>; the positive elements form a closed convex
+cone, and <span class="math" data-tex="\(y\le z\)">\(y\le z\)</span> implies <span class="math" data-tex="\(c^*yc\le c^*zc\)">\(c^*yc\le c^*zc\)</span>. These are <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-07">C*-algebras: continuous functional calculus, Theorem 5.1
+and Corollary 5.4</a>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-06">Theorem
+3.2</a> (spectral permanence),
+and <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html#OA-FND-CF-15">Theorem 8.2 and Proposition 8.5</a>
+there.</p>
+<p><strong>(R2) Hermitian matrices.</strong> A self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> has an orthonormal basis of
+eigenvectors; we write <span class="math" data-tex="\(\lambda_1(A)\ge\dots\ge\lambda_d(A)\)">\(\lambda_1(A)\ge\dots\ge\lambda_d(A)\)</span> for its eigenvalues, repeated by multiplicity. This is
+the finite-dimensional case of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/the-spectral-theorem-for-bounded-self-adjoint-operators.html#OA-FND-ST-04">The spectral theorem for bounded self-adjoint operators, Section
+4</a>: the spectral measure is carried by the
+finitely many eigenvalues, and its values there are the projections onto the eigenspaces.</p>
+<p><strong>(R3) Positive maps on abelian algebras.</strong> A positive linear map from an abelian C*-algebra into a C*-algebra is
+completely positive: <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-08">Completely positive maps, Theorem 5.4(2)</a>.</p>
+<p><strong>(R4) Stinespring's theorem.</strong> If <span class="math" data-tex="\(\varphi:A\to B(H)\)">\(\varphi:A\to B(H)\)</span> is completely positive and <span class="math" data-tex="\(A\)">\(A\)</span> is unital, then
+<span class="math" data-tex="\(\varphi=V^*\pi(\cdot)V\)">\(\varphi=V^*\pi(\cdot)V\)</span> for a representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> on a Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(V\in B(H,K)\)">\(V\in B(H,K)\)</span> with
+<span class="math" data-tex="\(V^*V=\varphi(1)\)">\(V^*V=\varphi(1)\)</span>: <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/completely-positive-maps.html#OA-FND-CM-05">Completely positive maps, Theorem 6.1</a>.</p>
+<p><strong>(R5) Faithful representations.</strong> Every C*-algebra has a faithful representation on a Hilbert space:
+<a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html#OA-FND-GN-07">Representations and positive functionals, Section
+7</a> (the Gelfand–Naimark
+theorem).</p>
+<h2 id="section-1"><span id="1-operator-convex-functions"></span>1. Operator convex functions</h2>
+<p><strong>Definition 1.1.</strong> Let <span class="math" data-tex="\(I\subseteq\mathbb R\)">\(I\subseteq\mathbb R\)</span> be an interval and <span class="math" data-tex="\(f:I\to\mathbb R\)">\(f:I\to\mathbb R\)</span> continuous. Then <span class="math" data-tex="\(f\)">\(f\)</span> is
+<em>operator convex</em> on <span class="math" data-tex="\(I\)">\(I\)</span> if</p>
+<span class="math math-display" data-tex="\[
+f(\lambda a+(1-\lambda)b)\le\lambda f(a)+(1-\lambda)f(b)
+\tag{1.1}
+\]">\[
+f(\lambda a+(1-\lambda)b)\le\lambda f(a)+(1-\lambda)f(b)
+\tag{1.1}
+\]</span>
+<p>for every Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, all self-adjoint <span class="math" data-tex="\(a,b\in B(H)\)">\(a,b\in B(H)\)</span> with spectra in <span class="math" data-tex="\(I\)">\(I\)</span>, and all <span class="math" data-tex="\(\lambda\in[0,1]\)">\(\lambda\in[0,1]\)</span>.
+It is <em>operator concave</em> if <span class="math" data-tex="\(-f\)">\(-f\)</span> is operator convex.</p>
+<p>Here <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> is the continuous functional calculus (R1). The left side of (1.1) is defined: if
+<span class="math" data-tex="\(\sigma(a),\sigma(b)\subseteq[\alpha,\beta]\subseteq I\)">\(\sigma(a),\sigma(b)\subseteq[\alpha,\beta]\subseteq I\)</span>, then <span class="math" data-tex="\(\alpha\le a,b\le\beta\)">\(\alpha\le a,b\le\beta\)</span>, so
+<span class="math" data-tex="\(\alpha\le\lambda a+(1-\lambda)b\le\beta\)">\(\alpha\le\lambda a+(1-\lambda)b\le\beta\)</span> (R1). For <span class="math" data-tex="\(H=\mathbb C\)">\(H=\mathbb C\)</span>, (1.1) is ordinary convexity, so an operator
+convex function is convex. Positive combinations of operator convex functions are operator convex. If <span class="math" data-tex="\(f_m\)">\(f_m\)</span> are
+operator convex on <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(f_m\to f\)">\(f_m\to f\)</span> uniformly on each compact subinterval of <span class="math" data-tex="\(I\)">\(I\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is operator convex:
+for <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\sigma(x)\subseteq[\alpha,\beta]\subseteq I\)">\(\sigma(x)\subseteq[\alpha,\beta]\subseteq I\)</span>, <span class="math" data-tex="\(\|f_m(x)-f(x)\|\le\sup_{[\alpha,\beta]}|f_m-f|\to0\)">\(\|f_m(x)-f(x)\|\le\sup_{[\alpha,\beta]}|f_m-f|\to0\)</span>
+(R1), and the positive cone is closed.</p>
+<p><strong>Lemma 1.2</strong> (Schur complement). Let <span class="math" data-tex="\(c,d,x\in B(H)\)">\(c,d,x\in B(H)\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> positive and invertible and <span class="math" data-tex="\(d\)">\(d\)</span> self-adjoint. If
+the operator <span class="math" data-tex="\(\begin{pmatrix}c&amp;x\\x^*&amp;d\end{pmatrix}\)">\(\begin{pmatrix}c&amp;x\\x^*&amp;d\end{pmatrix}\)</span> on <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span> is positive, then <span class="math" data-tex="\(d\ge x^*c^{-1}x\)">\(d\ge x^*c^{-1}x\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\zeta\in H\)">\(\zeta\in H\)</span> put <span class="math" data-tex="\(\xi=-c^{-1}x\zeta\)">\(\xi=-c^{-1}x\zeta\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+0\le\langle c\xi,\xi\rangle+2\operatorname{Re}\langle x\zeta,\xi\rangle+\langle d\zeta,\zeta\rangle
+=\langle c^{-1}x\zeta,x\zeta\rangle-2\langle c^{-1}x\zeta,x\zeta\rangle+\langle d\zeta,\zeta\rangle
+=\langle(d-x^*c^{-1}x)\zeta,\zeta\rangle .\qquad\square
+\]">\[
+0\le\langle c\xi,\xi\rangle+2\operatorname{Re}\langle x\zeta,\xi\rangle+\langle d\zeta,\zeta\rangle
+=\langle c^{-1}x\zeta,x\zeta\rangle-2\langle c^{-1}x\zeta,x\zeta\rangle+\langle d\zeta,\zeta\rangle
+=\langle(d-x^*c^{-1}x)\zeta,\zeta\rangle .\qquad\square
+\]</span>
+<p><strong>Proposition 1.3.</strong> (1) The function <span class="math" data-tex="\(t\mapsto t^{-1}\)">\(t\mapsto t^{-1}\)</span> is operator convex on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.
+(2) For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, <span class="math" data-tex="\(t\mapsto(t+s)^{-1}\)">\(t\mapsto(t+s)^{-1}\)</span> is operator convex on <span class="math" data-tex="\((-s,\infty)\)">\((-s,\infty)\)</span>.
+(3) The function <span class="math" data-tex="\(t\mapsto t^2\)">\(t\mapsto t^2\)</span> is operator convex on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>.</p>
+<p><strong>Proof.</strong> (1) Let <span class="math" data-tex="\(a\in B(H)\)">\(a\in B(H)\)</span> be positive and invertible. For <span class="math" data-tex="\(\xi,\zeta\in H\)">\(\xi,\zeta\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\Bigl\langle\begin{pmatrix}a&amp;1\\1&amp;a^{-1}\end{pmatrix}\begin{pmatrix}\xi\\\zeta\end{pmatrix},
+\begin{pmatrix}\xi\\\zeta\end{pmatrix}\Bigr\rangle=\|a^{1/2}\xi+a^{-1/2}\zeta\|^2\ge0 .
+\]">\[
+\Bigl\langle\begin{pmatrix}a&amp;1\\1&amp;a^{-1}\end{pmatrix}\begin{pmatrix}\xi\\\zeta\end{pmatrix},
+\begin{pmatrix}\xi\\\zeta\end{pmatrix}\Bigr\rangle=\|a^{1/2}\xi+a^{-1/2}\zeta\|^2\ge0 .
+\]</span>
+<p>Let <span class="math" data-tex="\(b\)">\(b\)</span> be another positive invertible operator and <span class="math" data-tex="\(\lambda\in[0,1]\)">\(\lambda\in[0,1]\)</span>. Adding <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> times the matrix for
+<span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(1-\lambda\)">\(1-\lambda\)</span> times that for <span class="math" data-tex="\(b\)">\(b\)</span> gives a positive operator
+<span class="math" data-tex="\(\begin{pmatrix}c&amp;1\\1&amp;d\end{pmatrix}\)">\(\begin{pmatrix}c&amp;1\\1&amp;d\end{pmatrix}\)</span> with <span class="math" data-tex="\(c=\lambda a+(1-\lambda)b\)">\(c=\lambda a+(1-\lambda)b\)</span> and
+<span class="math" data-tex="\(d=\lambda a^{-1}+(1-\lambda)b^{-1}\)">\(d=\lambda a^{-1}+(1-\lambda)b^{-1}\)</span>. If <span class="math" data-tex="\(a,b\ge\varepsilon&gt;0\)">\(a,b\ge\varepsilon&gt;0\)</span>, then <span class="math" data-tex="\(c\ge\varepsilon\)">\(c\ge\varepsilon\)</span>, so <span class="math" data-tex="\(c\)">\(c\)</span> is invertible.
+Lemma 1.2 gives <span class="math" data-tex="\(d\ge c^{-1}\)">\(d\ge c^{-1}\)</span>, which is (1.1).</p>
+<p>(2) If <span class="math" data-tex="\(\sigma(a),\sigma(b)\subseteq(-s,\infty)\)">\(\sigma(a),\sigma(b)\subseteq(-s,\infty)\)</span>, then <span class="math" data-tex="\(a+s\)">\(a+s\)</span> and <span class="math" data-tex="\(b+s\)">\(b+s\)</span> are positive and invertible, and
+<span class="math" data-tex="\(\lambda(a+s)+(1-\lambda)(b+s)=\lambda a+(1-\lambda)b+s\)">\(\lambda(a+s)+(1-\lambda)(b+s)=\lambda a+(1-\lambda)b+s\)</span>. Apply (1).</p>
+<p>(3) <span class="math" data-tex="\(\lambda a^2+(1-\lambda)b^2-(\lambda a+(1-\lambda)b)^2=\lambda(1-\lambda)(a-b)^2\ge0\)">\(\lambda a^2+(1-\lambda)b^2-(\lambda a+(1-\lambda)b)^2=\lambda(1-\lambda)(a-b)^2\ge0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Not every convex function is operator convex: <span class="math" data-tex="\(t\mapsto t^3\)">\(t\mapsto t^3\)</span> is not operator convex on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> (Exercise 8.1).</p>
+<h2 id="section-2"><span id="2-the-functions-t-log-t-and-log-t"></span>2. The functions <span class="math" data-tex="\(t\log t\)">\(t\log t\)</span> and <span class="math" data-tex="\(\log t\)">\(\log t\)</span></h2>
+<p>For <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> put</p>
+<span class="math math-display" data-tex="\[
+g_s(t)=\frac t{1+s}-\frac t{t+s}=\frac t{1+s}-1+\frac s{t+s}\quad(t\ge0),\qquad
+k_s(t)=\frac1{1+s}-\frac1{t+s}\quad(t&gt;0).
+\]">\[
+g_s(t)=\frac t{1+s}-\frac t{t+s}=\frac t{1+s}-1+\frac s{t+s}\quad(t\ge0),\qquad
+k_s(t)=\frac1{1+s}-\frac1{t+s}\quad(t&gt;0).
+\]</span>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(0&lt;r\le R\)">\(0&lt;r\le R\)</span>. As <span class="math" data-tex="\(\varepsilon\to0\)">\(\varepsilon\to0\)</span> and <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>,
+<span class="math" data-tex="\(\int_\varepsilon^Ng_s(t)\,ds\to t\log t\)">\(\int_\varepsilon^Ng_s(t)\,ds\to t\log t\)</span> uniformly for <span class="math" data-tex="\(t\in[0,R]\)">\(t\in[0,R]\)</span> (with <span class="math" data-tex="\(0\log0=0\)">\(0\log0=0\)</span>), and
+<span class="math" data-tex="\(\int_\varepsilon^Nk_s(t)\,ds\to\log t\)">\(\int_\varepsilon^Nk_s(t)\,ds\to\log t\)</span> uniformly for <span class="math" data-tex="\(t\in[r,R]\)">\(t\in[r,R]\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, an antiderivative of <span class="math" data-tex="\(k_s(t)\)">\(k_s(t)\)</span> in <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(\log(1+s)-\log(t+s)\)">\(\log(1+s)-\log(t+s)\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as
+<span class="math" data-tex="\(s\to\infty\)">\(s\to\infty\)</span> and equals <span class="math" data-tex="\(-\log t\)">\(-\log t\)</span> at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. So <span class="math" data-tex="\(\int_0^\infty k_s(t)\,ds=\log t\)">\(\int_0^\infty k_s(t)\,ds=\log t\)</span>, and
+<span class="math" data-tex="\(\int_0^\infty g_s(t)\,ds=t\int_0^\infty k_s(t)\,ds=t\log t\)">\(\int_0^\infty g_s(t)\,ds=t\int_0^\infty k_s(t)\,ds=t\log t\)</span>, because <span class="math" data-tex="\(g_s(t)=tk_s(t)\)">\(g_s(t)=tk_s(t)\)</span>. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> every
+<span class="math" data-tex="\(g_s(0)=0\)">\(g_s(0)=0\)</span>. For uniformity write <span class="math" data-tex="\(g_s(t)=\frac t{t+s}\cdot\frac{t-1}{1+s}\)">\(g_s(t)=\frac t{t+s}\cdot\frac{t-1}{1+s}\)</span>. For <span class="math" data-tex="\(t\in[0,R]\)">\(t\in[0,R]\)</span>,
+<span class="math" data-tex="\(|g_s(t)|\le R+1\)">\(|g_s(t)|\le R+1\)</span> for all <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, and <span class="math" data-tex="\(|g_s(t)|\le R(R+1)s^{-2}\)">\(|g_s(t)|\le R(R+1)s^{-2}\)</span> for <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>. Hence
+<span class="math" data-tex="\(|\int_0^\varepsilon g_s(t)\,ds|\le(R+1)\varepsilon\)">\(|\int_0^\varepsilon g_s(t)\,ds|\le(R+1)\varepsilon\)</span> and <span class="math" data-tex="\(|\int_N^\infty g_s(t)\,ds|\le R(R+1)/N\)">\(|\int_N^\infty g_s(t)\,ds|\le R(R+1)/N\)</span>. Likewise
+<span class="math" data-tex="\(k_s(t)=\frac{t-1}{(1+s)(t+s)}\)">\(k_s(t)=\frac{t-1}{(1+s)(t+s)}\)</span> satisfies <span class="math" data-tex="\(|k_s(t)|\le(R+1)/r\)">\(|k_s(t)|\le(R+1)/r\)</span> and, for <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, <span class="math" data-tex="\(|k_s(t)|\le(R+1)s^{-2}\)">\(|k_s(t)|\le(R+1)s^{-2}\)</span>, for
+<span class="math" data-tex="\(t\in[r,R]\)">\(t\in[r,R]\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> (1) The function <span class="math" data-tex="\(t\mapsto t\log t\)">\(t\mapsto t\log t\)</span>, with value <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>, is operator convex on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>.
+Equivalently, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is operator concave on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>: for positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span> and <span class="math" data-tex="\(\lambda\in[0,1]\)">\(\lambda\in[0,1]\)</span>,
+<span class="math" data-tex="\(\eta(\lambda a+(1-\lambda)b)\ge\lambda\eta(a)+(1-\lambda)\eta(b)\)">\(\eta(\lambda a+(1-\lambda)b)\ge\lambda\eta(a)+(1-\lambda)\eta(b)\)</span>.
+(2) The function <span class="math" data-tex="\(\log\)">\(\log\)</span> is operator concave on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>.</p>
+<p><strong>Proof.</strong> (1) Fix <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span> and <span class="math" data-tex="\(0&lt;\varepsilon&lt;N\)">\(0&lt;\varepsilon&lt;N\)</span>. The function <span class="math" data-tex="\((s,t)\mapsto g_s(t)\)">\((s,t)\mapsto g_s(t)\)</span> is continuous on the compact
+set <span class="math" data-tex="\([\varepsilon,N]\times[0,R]\)">\([\varepsilon,N]\times[0,R]\)</span>, hence uniformly continuous. So the Riemann sums
+<span class="math" data-tex="\(\sum_k(s_k-s_{k-1})g_{s_k}(t)\)">\(\sum_k(s_k-s_{k-1})g_{s_k}(t)\)</span> of a sequence of partitions of <span class="math" data-tex="\([\varepsilon,N]\)">\([\varepsilon,N]\)</span> with mesh tending to <span class="math" data-tex="\(0\)">\(0\)</span>
+converge to <span class="math" data-tex="\(\int_\varepsilon^Ng_s(t)\,ds\)">\(\int_\varepsilon^Ng_s(t)\,ds\)</span> uniformly in <span class="math" data-tex="\(t\in[0,R]\)">\(t\in[0,R]\)</span>. Each <span class="math" data-tex="\(g_s\)">\(g_s\)</span> is a linear function plus
+<span class="math" data-tex="\(s(t+s)^{-1}\)">\(s(t+s)^{-1}\)</span>, so it is operator convex on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> by Proposition 1.3(2); hence every Riemann sum is operator
+convex there. By the closure property after Definition 1.1, applied on <span class="math" data-tex="\([0,R]\)">\([0,R]\)</span> for every <span class="math" data-tex="\(R\)">\(R\)</span>, first
+<span class="math" data-tex="\(t\mapsto\int_\varepsilon^Ng_s(t)\,ds\)">\(t\mapsto\int_\varepsilon^Ng_s(t)\,ds\)</span> and then, by Lemma 2.1, <span class="math" data-tex="\(t\mapsto t\log t\)">\(t\mapsto t\log t\)</span> are operator convex on
+<span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>.</p>
+<p>(2) The same argument applies to <span class="math" data-tex="\(k_s=(1+s)^{-1}-(t+s)^{-1}\)">\(k_s=(1+s)^{-1}-(t+s)^{-1}\)</span>, which is operator concave on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span> by
+Proposition 1.3(2), on the intervals <span class="math" data-tex="\([r,R]\)">\([r,R]\)</span> with <span class="math" data-tex="\(0&lt;r\le R\)">\(0&lt;r\le R\)</span>, using the second half of Lemma 2.1. Every pair of
+positive invertible operators has spectra in such an interval. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-3"><span id="3-jensen-s-operator-inequality"></span>3. Jensen's operator inequality</h2>
+<p><strong>Theorem 3.1</strong> (Jensen's operator inequality). Let <span class="math" data-tex="\(f\)">\(f\)</span> be a continuous function on an interval <span class="math" data-tex="\(I\)">\(I\)</span>. The
+following are equivalent.</p>
+<p>(a) <span class="math" data-tex="\(f\)">\(f\)</span> is operator convex on <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>(b) <span class="math" data-tex="\(f(V^*XV)\le V^*f(X)V\)">\(f(V^*XV)\le V^*f(X)V\)</span> for all Hilbert spaces <span class="math" data-tex="\(H,K\)">\(H,K\)</span>, every isometry <span class="math" data-tex="\(V\in B(H,K)\)">\(V\in B(H,K)\)</span> and every self-adjoint
+<span class="math" data-tex="\(X\in B(K)\)">\(X\in B(K)\)</span> with <span class="math" data-tex="\(\sigma(X)\subseteq I\)">\(\sigma(X)\subseteq I\)</span>.</p>
+<p>(c) <span class="math" data-tex="\(f\bigl(\sum_{i=1}^na_i^*x_ia_i\bigr)\le\sum_{i=1}^na_i^*f(x_i)a_i\)">\(f\bigl(\sum_{i=1}^na_i^*x_ia_i\bigr)\le\sum_{i=1}^na_i^*f(x_i)a_i\)</span> for every Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, every
+<span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, all <span class="math" data-tex="\(a_1,\dots,a_n\in B(H)\)">\(a_1,\dots,a_n\in B(H)\)</span> with <span class="math" data-tex="\(\sum_ia_i^*a_i=1\)">\(\sum_ia_i^*a_i=1\)</span> and all self-adjoint <span class="math" data-tex="\(x_1,\dots,x_n\in B(H)\)">\(x_1,\dots,x_n\in B(H)\)</span> with
+spectra in <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>(d) <span class="math" data-tex="\(f(\Phi(x))\le\Phi(f(x))\)">\(f(\Phi(x))\le\Phi(f(x))\)</span> for every unital positive linear map <span class="math" data-tex="\(\Phi:A\to B\)">\(\Phi:A\to B\)</span> between unital C*-algebras and
+every self-adjoint <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span> with <span class="math" data-tex="\(\sigma(x)\subseteq I\)">\(\sigma(x)\subseteq I\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\in I\)">\(0\in I\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is operator convex with <span class="math" data-tex="\(f(0)\le0\)">\(f(0)\le0\)</span> exactly when</p>
+<p>(e) <span class="math" data-tex="\(f(C^*XC)\le C^*f(X)C\)">\(f(C^*XC)\le C^*f(X)C\)</span> for all Hilbert spaces <span class="math" data-tex="\(H,K\)">\(H,K\)</span>, every contraction <span class="math" data-tex="\(C\in B(H,K)\)">\(C\in B(H,K)\)</span> and every self-adjoint
+<span class="math" data-tex="\(X\in B(K)\)">\(X\in B(K)\)</span> with <span class="math" data-tex="\(\sigma(X)\subseteq I\)">\(\sigma(X)\subseteq I\)</span>.</p>
+<p>For operator concave <span class="math" data-tex="\(f\)">\(f\)</span> all these inequalities hold reversed, and (e) holds reversed when <span class="math" data-tex="\(f(0)\ge0\)">\(f(0)\ge0\)</span>.</p>
+<p>In (b)–(e) the left sides are defined. If <span class="math" data-tex="\(\alpha\le X\le\beta\)">\(\alpha\le X\le\beta\)</span>, then <span class="math" data-tex="\(\alpha=\alpha V^*V\le V^*XV\le\beta\)">\(\alpha=\alpha V^*V\le V^*XV\le\beta\)</span>, and
+likewise in (c); in (d), <span class="math" data-tex="\(\alpha\le x\le\beta\)">\(\alpha\le x\le\beta\)</span> gives <span class="math" data-tex="\(\alpha\le\Phi(x)\le\beta\)">\(\alpha\le\Phi(x)\le\beta\)</span> because <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is positive and
+unital. In (e), <span class="math" data-tex="\(C^*XC\)">\(C^*XC\)</span> lies between <span class="math" data-tex="\(\min(\alpha,0)\)">\(\min(\alpha,0)\)</span> and <span class="math" data-tex="\(\max(\beta,0)\)">\(\max(\beta,0)\)</span>, since <span class="math" data-tex="\(0\le C^*C\le1\)">\(0\le C^*C\le1\)</span>.</p>
+<p><strong>Proof.</strong> (a)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(b). Put <span class="math" data-tex="\(P=1_K-VV^*\)">\(P=1_K-VV^*\)</span>, a projection with <span class="math" data-tex="\(PV=0\)">\(PV=0\)</span>. On <span class="math" data-tex="\(K\oplus H\)">\(K\oplus H\)</span> let</p>
+<span class="math math-display" data-tex="\[
+U=\begin{pmatrix}P&amp;V\\V^*&amp;0\end{pmatrix},\qquad D=\begin{pmatrix}1_K&amp;0\\0&amp;-1_H\end{pmatrix},\qquad
+T=\begin{pmatrix}X&amp;0\\0&amp;c\,1_H\end{pmatrix},
+\]">\[
+U=\begin{pmatrix}P&amp;V\\V^*&amp;0\end{pmatrix},\qquad D=\begin{pmatrix}1_K&amp;0\\0&amp;-1_H\end{pmatrix},\qquad
+T=\begin{pmatrix}X&amp;0\\0&amp;c\,1_H\end{pmatrix},
+\]</span>
+<p>with a fixed <span class="math" data-tex="\(c\in I\)">\(c\in I\)</span>. Then <span class="math" data-tex="\(U^*=U\)">\(U^*=U\)</span> and <span class="math" data-tex="\(U^2=\begin{pmatrix}P+VV^*&amp;PV\\V^*P&amp;V^*V\end{pmatrix}=1\)">\(U^2=\begin{pmatrix}P+VV^*&amp;PV\\V^*P&amp;V^*V\end{pmatrix}=1\)</span>, so <span class="math" data-tex="\(U\)">\(U\)</span> and
+<span class="math" data-tex="\(DU\)">\(DU\)</span> are unitaries. A direct computation gives</p>
+<span class="math math-display" data-tex="\[
+UTU=\begin{pmatrix}PXP+cVV^*&amp;PXV\\V^*XP&amp;V^*XV\end{pmatrix},
+\]">\[
+UTU=\begin{pmatrix}PXP+cVV^*&amp;PXV\\V^*XP&amp;V^*XV\end{pmatrix},
+\]</span>
+<p>and <span class="math" data-tex="\(D(UTU)D\)">\(D(UTU)D\)</span> is the same matrix with the off-diagonal entries negated. Their average is
+<span class="math" data-tex="\(S=(PXP+cVV^*)\oplus V^*XV\)">\(S=(PXP+cVV^*)\oplus V^*XV\)</span>. The operators <span class="math" data-tex="\(UTU\)">\(UTU\)</span> and <span class="math" data-tex="\(D(UTU)D\)">\(D(UTU)D\)</span> are unitarily equivalent to <span class="math" data-tex="\(T\)">\(T\)</span>, so their
+spectra lie in <span class="math" data-tex="\(\sigma(T)\subseteq I\)">\(\sigma(T)\subseteq I\)</span>. By (1.1) with <span class="math" data-tex="\(\lambda=\frac12\)">\(\lambda=\frac12\)</span> and (R1),</p>
+<span class="math math-display" data-tex="\[
+f(PXP+cVV^*)\oplus f(V^*XV)=f(S)\le\tfrac12\bigl(Uf(T)U+DUf(T)UD\bigr).
+\]">\[
+f(PXP+cVV^*)\oplus f(V^*XV)=f(S)\le\tfrac12\bigl(Uf(T)U+DUf(T)UD\bigr).
+\]</span>
+<p>Since <span class="math" data-tex="\(f(T)=f(X)\oplus f(c)1_H\)">\(f(T)=f(X)\oplus f(c)1_H\)</span>, the computation above with <span class="math" data-tex="\(f(X)\)">\(f(X)\)</span> and <span class="math" data-tex="\(f(c)\)">\(f(c)\)</span> in place of <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> shows
+that the second diagonal entry of the right side is <span class="math" data-tex="\(V^*f(X)V\)">\(V^*f(X)V\)</span>. Compressing to the summand <span class="math" data-tex="\(H\)">\(H\)</span>, which preserves
+order (R1), gives <span class="math" data-tex="\(f(V^*XV)\le V^*f(X)V\)">\(f(V^*XV)\le V^*f(X)V\)</span>.</p>
+<p>(b)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(c). The map <span class="math" data-tex="\(V:H\to H^n\)">\(V:H\to H^n\)</span>, <span class="math" data-tex="\(V\xi=(a_1\xi,\dots,a_n\xi)\)">\(V\xi=(a_1\xi,\dots,a_n\xi)\)</span>, is an isometry, since
+<span class="math" data-tex="\(V^*V=\sum_ia_i^*a_i=1\)">\(V^*V=\sum_ia_i^*a_i=1\)</span>. With <span class="math" data-tex="\(X=x_1\oplus\dots\oplus x_n\)">\(X=x_1\oplus\dots\oplus x_n\)</span>, <span class="math" data-tex="\(V^*XV=\sum_ia_i^*x_ia_i\)">\(V^*XV=\sum_ia_i^*x_ia_i\)</span> and
+<span class="math" data-tex="\(V^*f(X)V=\sum_ia_i^*f(x_i)a_i\)">\(V^*f(X)V=\sum_ia_i^*f(x_i)a_i\)</span>.</p>
+<p>(c)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(a). Take <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-tex="\(a_1=\lambda^{1/2}1\)">\(a_1=\lambda^{1/2}1\)</span>, <span class="math" data-tex="\(a_2=(1-\lambda)^{1/2}1\)">\(a_2=(1-\lambda)^{1/2}1\)</span>, <span class="math" data-tex="\(x_1=a\)">\(x_1=a\)</span>, <span class="math" data-tex="\(x_2=b\)">\(x_2=b\)</span>.</p>
+<p>(b)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(d). Let <span class="math" data-tex="\(C_x\)">\(C_x\)</span> be the C*-subalgebra of <span class="math" data-tex="\(A\)">\(A\)</span> generated by <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>. It is abelian, so the
+restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(C_x\)">\(C_x\)</span> is completely positive (R3). Represent <span class="math" data-tex="\(B\)">\(B\)</span> faithfully on a Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>
+(R5); spectra and order in <span class="math" data-tex="\(B\)">\(B\)</span> are those in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> (R1). By (R4), <span class="math" data-tex="\(\Phi(y)=V^*\pi(y)V\)">\(\Phi(y)=V^*\pi(y)V\)</span> for <span class="math" data-tex="\(y\in C_x\)">\(y\in C_x\)</span>, with a
+representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(C_x\)">\(C_x\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(V^*V=\Phi(1)=1\)">\(V^*V=\Phi(1)=1\)</span>. The element <span class="math" data-tex="\(\pi(x)\)">\(\pi(x)\)</span> is self-adjoint with
+<span class="math" data-tex="\(\sigma(\pi(x))\subseteq\sigma(x)\subseteq I\)">\(\sigma(\pi(x))\subseteq\sigma(x)\subseteq I\)</span>, and <span class="math" data-tex="\(f(x)\in C_x\)">\(f(x)\in C_x\)</span> with <span class="math" data-tex="\(\pi(f(x))=f(\pi(x))\)">\(\pi(f(x))=f(\pi(x))\)</span> (R1). By (b),</p>
+<span class="math math-display" data-tex="\[
+f(\Phi(x))=f(V^*\pi(x)V)\le V^*f(\pi(x))V=V^*\pi(f(x))V=\Phi(f(x)).
+\]">\[
+f(\Phi(x))=f(V^*\pi(x)V)\le V^*f(\pi(x))V=V^*\pi(f(x))V=\Phi(f(x)).
+\]</span>
+<p>(d)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(a). Take <span class="math" data-tex="\(A=B(H)\oplus B(H)\)">\(A=B(H)\oplus B(H)\)</span>, <span class="math" data-tex="\(B=B(H)\)">\(B=B(H)\)</span>, <span class="math" data-tex="\(\Phi(y\oplus z)=\lambda y+(1-\lambda)z\)">\(\Phi(y\oplus z)=\lambda y+(1-\lambda)z\)</span> and
+<span class="math" data-tex="\(x=a\oplus b\)">\(x=a\oplus b\)</span>; then <span class="math" data-tex="\(f(x)=f(a)\oplus f(b)\)">\(f(x)=f(a)\oplus f(b)\)</span>.</p>
+<p>(e). Let <span class="math" data-tex="\(f\)">\(f\)</span> be operator convex with <span class="math" data-tex="\(f(0)\le0\)">\(f(0)\le0\)</span>, let <span class="math" data-tex="\(C\)">\(C\)</span> be a contraction and <span class="math" data-tex="\(X\)">\(X\)</span> as in (e). The map
+<span class="math" data-tex="\(V:H\to K\oplus H\)">\(V:H\to K\oplus H\)</span>, <span class="math" data-tex="\(V\xi=(C\xi,(1-C^*C)^{1/2}\xi)\)">\(V\xi=(C\xi,(1-C^*C)^{1/2}\xi)\)</span>, is an isometry. Put <span class="math" data-tex="\(X'=X\oplus0_H\)">\(X'=X\oplus0_H\)</span>, whose spectrum lies in
+<span class="math" data-tex="\(\sigma(X)\cup\{0\}\subseteq I\)">\(\sigma(X)\cup\{0\}\subseteq I\)</span>. Then <span class="math" data-tex="\(V^*X'V=C^*XC\)">\(V^*X'V=C^*XC\)</span> and</p>
+<span class="math math-display" data-tex="\[
+V^*f(X')V=C^*f(X)C+f(0)(1-C^*C)\le C^*f(X)C .
+\]">\[
+V^*f(X')V=C^*f(X)C+f(0)(1-C^*C)\le C^*f(X)C .
+\]</span>
+<p>By (b), <span class="math" data-tex="\(f(C^*XC)\le V^*f(X')V\le C^*f(X)C\)">\(f(C^*XC)\le V^*f(X')V\le C^*f(X)C\)</span>. Conversely, if (e) holds, then <span class="math" data-tex="\(C=0\)">\(C=0\)</span> gives <span class="math" data-tex="\(f(0)\le0\)">\(f(0)\le0\)</span>, and since
+isometries are contractions, (b) and hence (a) hold. The statements for operator concave <span class="math" data-tex="\(f\)">\(f\)</span> follow by applying the
+above to <span class="math" data-tex="\(-f\)">\(-f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> the equivalence of (a), (b) and (c), and the contractive form (e), are [Hansen–Pedersen 2003, Theorem 2.1
+and Corollary 2.3]; their proof of (a)<span class="math" data-tex="\(\Rightarrow\)">\(\Rightarrow\)</span>(c) averages over roots of unity, while the proof above uses one
+self-adjoint unitary. Form (e) goes back to Hansen and Pedersen, and (d) for unital positive maps to [Davis 1957]
+and [Choi 1974].</p>
+<p><strong>Corollary 3.2.</strong> Let <span class="math" data-tex="\(\Phi:A\to B\)">\(\Phi:A\to B\)</span> be a unital positive linear map between unital C*-algebras. For every positive
+<span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(\eta(\Phi(a))\ge\Phi(\eta(a))\)">\(\eta(\Phi(a))\ge\Phi(\eta(a))\)</span>, and <span class="math" data-tex="\(\log\Phi(a)\ge\Phi(\log a)\)">\(\log\Phi(a)\ge\Phi(\log a)\)</span> when <span class="math" data-tex="\(a\)">\(a\)</span> is invertible. For every
+contraction <span class="math" data-tex="\(C\)">\(C\)</span> and positive <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(\eta(C^*XC)\ge C^*\eta(X)C\)">\(\eta(C^*XC)\ge C^*\eta(X)C\)</span>.</p>
+<p><strong>Proof.</strong> Theorem 2.2 and Theorem 3.1(d) for <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span> and for <span class="math" data-tex="\(\log\)">\(\log\)</span> on <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>; the last
+statement is Theorem 3.1(e) for the operator concave <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, with <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-4"><span id="4-shannon-entropy"></span>4. Shannon entropy</h2>
+<p>Let <span class="math" data-tex="\((\Omega,P)\)">\((\Omega,P)\)</span> be a finite probability space. For a random variable <span class="math" data-tex="\(U\)">\(U\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with finitely many values,
+put <span class="math" data-tex="\(H(U)=\sum_u\eta(P(U=u))\)">\(H(U)=\sum_u\eta(P(U=u))\)</span>; for a probability vector <span class="math" data-tex="\(p=(p_1,\dots,p_m)\)">\(p=(p_1,\dots,p_m)\)</span>, <span class="math" data-tex="\(H(p)=\sum_i\eta(p_i)\)">\(H(p)=\sum_i\eta(p_i)\)</span>. A pair
+<span class="math" data-tex="\((U,V)\)">\((U,V)\)</span> is a random variable with values in pairs, and <span class="math" data-tex="\(H(U\mid V)=H(U,V)-H(V)\)">\(H(U\mid V)=H(U,V)-H(V)\)</span>. When <span class="math" data-tex="\(P(V=v)&gt;0\)">\(P(V=v)&gt;0\)</span>,
+<span class="math" data-tex="\(H(U\mid V=v)\)">\(H(U\mid V=v)\)</span> is the entropy of the conditional distribution <span class="math" data-tex="\(u\mapsto P(U=u\mid V=v)\)">\(u\mapsto P(U=u\mid V=v)\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (Shannon's inequalities). Let <span class="math" data-tex="\(U,V,W,U_1,\dots,U_n\)">\(U,V,W,U_1,\dots,U_n\)</span> be random variables with finitely many
+values on <span class="math" data-tex="\((\Omega,P)\)">\((\Omega,P)\)</span>.</p>
+<ol>
+<li><span class="math" data-tex="\(0\le H(U)\le\log m\)">\(0\le H(U)\le\log m\)</span> if <span class="math" data-tex="\(U\)">\(U\)</span> takes <span class="math" data-tex="\(m\)">\(m\)</span> values with positive probability.</li>
+<li><span class="math" data-tex="\(H(U\mid V)=\sum_{v}P(V=v)\,H(U\mid V=v)\ge0\)">\(H(U\mid V)=\sum_{v}P(V=v)\,H(U\mid V=v)\ge0\)</span>, the sum over the <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(P(V=v)&gt;0\)">\(P(V=v)&gt;0\)</span>. In particular
+<span class="math" data-tex="\(H(U)\le H(U,V)\)">\(H(U)\le H(U,V)\)</span>.</li>
+<li><span class="math" data-tex="\(H(U,V)\le H(U)+H(V)\)">\(H(U,V)\le H(U)+H(V)\)</span>; equivalently <span class="math" data-tex="\(H(U\mid V)\le H(U)\)">\(H(U\mid V)\le H(U)\)</span>.</li>
+<li><span class="math" data-tex="\(H(U\mid V,W)\le H(U\mid V)\)">\(H(U\mid V,W)\le H(U\mid V)\)</span>.</li>
+<li><span class="math" data-tex="\(H(U_1,\dots,U_n\mid V)\le\sum_jH(U_j\mid V)\)">\(H(U_1,\dots,U_n\mid V)\le\sum_jH(U_j\mid V)\)</span>.</li>
+<li>For probability vectors <span class="math" data-tex="\(p_1,p_2\)">\(p_1,p_2\)</span> and <span class="math" data-tex="\(\lambda\in[0,1]\)">\(\lambda\in[0,1]\)</span>,
+<span class="math" data-tex="\(\lambda H(p_1)+(1-\lambda)H(p_2)\le H(\lambda p_1+(1-\lambda)p_2)\le\lambda H(p_1)+(1-\lambda)H(p_2)+\mathrm h(\lambda)\)">\(\lambda H(p_1)+(1-\lambda)H(p_2)\le H(\lambda p_1+(1-\lambda)p_2)\le\lambda H(p_1)+(1-\lambda)H(p_2)+\mathrm h(\lambda)\)</span>.</li>
+<li>(Grouping.) If <span class="math" data-tex="\(r\)">\(r\)</span> is a probability vector on <span class="math" data-tex="\(\{1,\dots,m\}\)">\(\{1,\dots,m\}\)</span>, <span class="math" data-tex="\(j\le m\)">\(j\le m\)</span> and <span class="math" data-tex="\(e=1-r_j&gt;0\)">\(e=1-r_j&gt;0\)</span>, then
+<span class="math" data-tex="\(H(r)=\mathrm h(e)+e\,H(r')\)">\(H(r)=\mathrm h(e)+e\,H(r')\)</span>, where <span class="math" data-tex="\(r'=(r_i/e)_{i\ne j}\)">\(r'=(r_i/e)_{i\ne j}\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\pi_{uv}=P(U=u,V=v)\)">\(\pi_{uv}=P(U=u,V=v)\)</span>, <span class="math" data-tex="\(p_u=P(U=u)\)">\(p_u=P(U=u)\)</span> and <span class="math" data-tex="\(q_v=P(V=v)\)">\(q_v=P(V=v)\)</span>. Terms with zero probability contribute
+nothing below, since <span class="math" data-tex="\(\eta(0)=0\)">\(\eta(0)=0\)</span>.</p>
+<p>(1) <span class="math" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. By concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(\frac1m\sum_i\eta(p_i)\le\eta(\frac1m)\)">\(\frac1m\sum_i\eta(p_i)\le\eta(\frac1m)\)</span> for the <span class="math" data-tex="\(m\)">\(m\)</span>
+positive probabilities, and <span class="math" data-tex="\(m\eta(\frac1m)=\log m\)">\(m\eta(\frac1m)=\log m\)</span>.</p>
+<p>(2) For <span class="math" data-tex="\(q_v&gt;0\)">\(q_v&gt;0\)</span> put <span class="math" data-tex="\(r_u=\pi_{uv}/q_v\)">\(r_u=\pi_{uv}/q_v\)</span>. Then <span class="math" data-tex="\(\sum_u\eta(\pi_{uv})=\sum_u\eta(q_vr_u)=\eta(q_v)+q_vH(r)\)">\(\sum_u\eta(\pi_{uv})=\sum_u\eta(q_vr_u)=\eta(q_v)+q_vH(r)\)</span>, because
+<span class="math" data-tex="\(\sum_ur_u=1\)">\(\sum_ur_u=1\)</span>. Summing over <span class="math" data-tex="\(v\)">\(v\)</span> gives <span class="math" data-tex="\(H(U,V)=H(V)+\sum_vq_vH(U\mid V=v)\)">\(H(U,V)=H(V)+\sum_vq_vH(U\mid V=v)\)</span>. Exchanging the roles of <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span>
+gives <span class="math" data-tex="\(H(U,V)\ge H(U)\)">\(H(U,V)\ge H(U)\)</span>.</p>
+<p>(3) Using <span class="math" data-tex="\(\log x\ge1-1/x\)">\(\log x\ge1-1/x\)</span> for <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+H(U)+H(V)-H(U,V)=\sum_{\pi_{uv}&gt;0}\pi_{uv}\log\frac{\pi_{uv}}{p_uq_v}\ge\sum_{\pi_{uv}&gt;0}\bigl(\pi_{uv}-p_uq_v\bigr)\ge0 .
+\]">\[
+H(U)+H(V)-H(U,V)=\sum_{\pi_{uv}&gt;0}\pi_{uv}\log\frac{\pi_{uv}}{p_uq_v}\ge\sum_{\pi_{uv}&gt;0}\bigl(\pi_{uv}-p_uq_v\bigr)\ge0 .
+\]</span>
+<p>(4) By (2) for the pair <span class="math" data-tex="\((U,W)\)">\((U,W)\)</span> given <span class="math" data-tex="\(V\)">\(V\)</span>, then (3) for the conditional distributions given <span class="math" data-tex="\(V=v\)">\(V=v\)</span>, then (2) again,</p>
+<span class="math math-display" data-tex="\[
+H(U,W\mid V)=\sum_vq_vH(U,W\mid V=v)\le\sum_vq_v\bigl(H(U\mid V=v)+H(W\mid V=v)\bigr)=H(U\mid V)+H(W\mid V).
+\]">\[
+H(U,W\mid V)=\sum_vq_vH(U,W\mid V=v)\le\sum_vq_v\bigl(H(U\mid V=v)+H(W\mid V=v)\bigr)=H(U\mid V)+H(W\mid V).
+\]</span>
+<p>By the definitions this reads <span class="math" data-tex="\(H(U,V,W)-H(V)\le H(U,V)-H(V)+H(V,W)-H(V)\)">\(H(U,V,W)-H(V)\le H(U,V)-H(V)+H(V,W)-H(V)\)</span>, that is,
+<span class="math" data-tex="\(H(U,V,W)-H(V,W)\le H(U,V)-H(V)\)">\(H(U,V,W)-H(V,W)\le H(U,V)-H(V)\)</span>.</p>
+<p>(5) Directly from the definitions, <span class="math" data-tex="\(H(U_1,\dots,U_n\mid V)=H(U_1\mid V)+H(U_2,\dots,U_n\mid V,U_1)\)">\(H(U_1,\dots,U_n\mid V)=H(U_1\mid V)+H(U_2,\dots,U_n\mid V,U_1)\)</span>, and
+<span class="math" data-tex="\(H(U_2,\dots,U_n\mid V,U_1)\le H(U_2,\dots,U_n\mid V)\)">\(H(U_2,\dots,U_n\mid V,U_1)\le H(U_2,\dots,U_n\mid V)\)</span> by (4). Induction on <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>(6) The left inequality is concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> in each coordinate. For the right one, let <span class="math" data-tex="\(Z\)">\(Z\)</span> take the value <span class="math" data-tex="\(1\)">\(1\)</span>
+with probability <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span> with probability <span class="math" data-tex="\(1-\lambda\)">\(1-\lambda\)</span>, and let <span class="math" data-tex="\(X\)">\(X\)</span> have conditional distribution
+<span class="math" data-tex="\(p_z\)">\(p_z\)</span> given <span class="math" data-tex="\(Z=z\)">\(Z=z\)</span>; on the finite set of pairs <span class="math" data-tex="\((x,z)\)">\((x,z)\)</span> this defines a probability, and <span class="math" data-tex="\(X\)">\(X\)</span> has distribution
+<span class="math" data-tex="\(\lambda p_1+(1-\lambda)p_2\)">\(\lambda p_1+(1-\lambda)p_2\)</span>. By (2), <span class="math" data-tex="\(H(X)\le H(X,Z)=H(Z)+H(X\mid Z)=\mathrm h(\lambda)+\lambda H(p_1)+(1-\lambda)H(p_2)\)">\(H(X)\le H(X,Z)=H(Z)+H(X\mid Z)=\mathrm h(\lambda)+\lambda H(p_1)+(1-\lambda)H(p_2)\)</span>.</p>
+<p>(7) <span class="math" data-tex="\(\sum_{i\ne j}\eta(er'_i)=\eta(e)+eH(r')\)">\(\sum_{i\ne j}\eta(er'_i)=\eta(e)+eH(r')\)</span> because <span class="math" data-tex="\(\sum_{i\ne j}r'_i=1\)">\(\sum_{i\ne j}r'_i=1\)</span>, and <span class="math" data-tex="\(\eta(r_j)=\eta(1-e)\)">\(\eta(r_j)=\eta(1-e)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-5"><span id="5-the-sharp-continuity-bound-for-shannon-entropy"></span>5. The sharp continuity bound for Shannon entropy</h2>
+<p>For probability vectors <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on <span class="math" data-tex="\(\{1,\dots,d\}\)">\(\{1,\dots,d\}\)</span> put <span class="math" data-tex="\(t(p,q)=\frac12\sum_i|p_i-q_i|\in[0,1]\)">\(t(p,q)=\frac12\sum_i|p_i-q_i|\in[0,1]\)</span>.</p>
+<p><strong>Lemma 5.1</strong> (Maximal coupling). There is a matrix <span class="math" data-tex="\((\pi_{ij})\)">\((\pi_{ij})\)</span> with nonnegative entries, row sums <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, column
+sums <span class="math" data-tex="\(q_j\)">\(q_j\)</span>, and <span class="math" data-tex="\(\sum_i\pi_{ii}=1-t(p,q)\)">\(\sum_i\pi_{ii}=1-t(p,q)\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(m_i=\min(p_i,q_i)\)">\(m_i=\min(p_i,q_i)\)</span>, <span class="math" data-tex="\(a_i=p_i-m_i\ge0\)">\(a_i=p_i-m_i\ge0\)</span> and <span class="math" data-tex="\(b_j=q_j-m_j\ge0\)">\(b_j=q_j-m_j\ge0\)</span>. Then
+<span class="math" data-tex="\(\sum_ia_i=\sum_jb_j=1-\sum_im_i=t\)">\(\sum_ia_i=\sum_jb_j=1-\sum_im_i=t\)</span>, where <span class="math" data-tex="\(t=t(p,q)\)">\(t=t(p,q)\)</span>, because <span class="math" data-tex="\(|p_i-q_i|=a_i+b_i\)">\(|p_i-q_i|=a_i+b_i\)</span> and <span class="math" data-tex="\(\sum_i(a_i+b_i)=2t\)">\(\sum_i(a_i+b_i)=2t\)</span>.
+For every <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(a_ib_i=0\)">\(a_ib_i=0\)</span>. If <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, take <span class="math" data-tex="\(\pi_{ij}=m_i\delta_{ij}\)">\(\pi_{ij}=m_i\delta_{ij}\)</span>. Otherwise put
+<span class="math" data-tex="\(\pi_{ij}=m_i\delta_{ij}+a_ib_j/t\)">\(\pi_{ij}=m_i\delta_{ij}+a_ib_j/t\)</span>. Its row sums are <span class="math" data-tex="\(m_i+a_i=p_i\)">\(m_i+a_i=p_i\)</span>, its column sums <span class="math" data-tex="\(m_j+b_j=q_j\)">\(m_j+b_j=q_j\)</span>, and its diagonal
+is <span class="math" data-tex="\(\pi_{ii}=m_i\)">\(\pi_{ii}=m_i\)</span>, so <span class="math" data-tex="\(\sum_i\pi_{ii}=1-t\)">\(\sum_i\pi_{ii}=1-t\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.2.</strong> Let <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, and let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be probability vectors on <span class="math" data-tex="\(\{1,\dots,d\}\)">\(\{1,\dots,d\}\)</span> with <span class="math" data-tex="\(t=t(p,q)\)">\(t=t(p,q)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+|H(p)-H(q)|\le t\log(d-1)+\mathrm h(t).
+\tag{5.1}
+\]">\[
+|H(p)-H(q)|\le t\log(d-1)+\mathrm h(t).
+\tag{5.1}
+\]</span>
+<p>For each <span class="math" data-tex="\(t\in[0,1]\)">\(t\in[0,1]\)</span>, equality holds for <span class="math" data-tex="\(q=(1,0,\dots,0)\)">\(q=(1,0,\dots,0)\)</span> and <span class="math" data-tex="\(p=(1-t,\frac t{d-1},\dots,\frac t{d-1})\)">\(p=(1-t,\frac t{d-1},\dots,\frac t{d-1})\)</span>.</p>
+<p><strong>Proof.</strong> By symmetry it suffices to bound <span class="math" data-tex="\(H(p)-H(q)\)">\(H(p)-H(q)\)</span>. Take <span class="math" data-tex="\(\pi\)">\(\pi\)</span> from Lemma 5.1 and view it as the distribution
+of a pair <span class="math" data-tex="\((X,Y)\)">\((X,Y)\)</span> on <span class="math" data-tex="\(\{1,\dots,d\}^2\)">\(\{1,\dots,d\}^2\)</span>, so that <span class="math" data-tex="\(X\)">\(X\)</span> has distribution <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(Y\)">\(Y\)</span> has distribution <span class="math" data-tex="\(q\)">\(q\)</span>, and
+<span class="math" data-tex="\(P(X\ne Y)=t\)">\(P(X\ne Y)=t\)</span>. By Proposition 4.1(2), <span class="math" data-tex="\(H(p)=H(X)\le H(X,Y)=H(q)+\sum_jq_jH(X\mid Y=j)\)">\(H(p)=H(X)\le H(X,Y)=H(q)+\sum_jq_jH(X\mid Y=j)\)</span>, the sum over <span class="math" data-tex="\(q_j&gt;0\)">\(q_j&gt;0\)</span>.
+For such <span class="math" data-tex="\(j\)">\(j\)</span>, the conditional distribution <span class="math" data-tex="\(r^{(j)}\)">\(r^{(j)}\)</span> of <span class="math" data-tex="\(X\)">\(X\)</span> given <span class="math" data-tex="\(Y=j\)">\(Y=j\)</span> has <span class="math" data-tex="\(r^{(j)}_j=\pi_{jj}/q_j\)">\(r^{(j)}_j=\pi_{jj}/q_j\)</span>; put
+<span class="math" data-tex="\(e_j=1-r^{(j)}_j\)">\(e_j=1-r^{(j)}_j\)</span>. By grouping (Proposition 4.1(7)) and Proposition 4.1(1) on <span class="math" data-tex="\(d-1\)">\(d-1\)</span> points,
+<span class="math" data-tex="\(H(r^{(j)})\le\mathrm h(e_j)+e_j\log(d-1)\)">\(H(r^{(j)})\le\mathrm h(e_j)+e_j\log(d-1)\)</span>; this also holds when <span class="math" data-tex="\(e_j=0\)">\(e_j=0\)</span>, since then <span class="math" data-tex="\(H(r^{(j)})=0\)">\(H(r^{(j)})=0\)</span>. By concavity of
+<span class="math" data-tex="\(\mathrm h\)">\(\mathrm h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_jq_jH(X\mid Y=j)\le\mathrm h\Bigl(\sum_jq_je_j\Bigr)+\log(d-1)\sum_jq_je_j ,
+\]">\[
+\sum_jq_jH(X\mid Y=j)\le\mathrm h\Bigl(\sum_jq_je_j\Bigr)+\log(d-1)\sum_jq_je_j ,
+\]</span>
+<p>and <span class="math" data-tex="\(\sum_jq_je_j=\sum_j(q_j-\pi_{jj})=t\)">\(\sum_jq_je_j=\sum_j(q_j-\pi_{jj})=t\)</span>. This proves (5.1). In the example, <span class="math" data-tex="\(t(p,q)=t\)">\(t(p,q)=t\)</span>, <span class="math" data-tex="\(H(q)=0\)">\(H(q)=0\)</span>, and
+<span class="math" data-tex="\(H(p)=\eta(1-t)+(d-1)\eta\bigl(\frac t{d-1}\bigr)=\eta(1-t)+\eta(t)+t\log(d-1)\)">\(H(p)=\eta(1-t)+(d-1)\eta\bigl(\frac t{d-1}\bigr)=\eta(1-t)+\eta(t)+t\log(d-1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The inequality <span class="math" data-tex="\(H(X\mid Y)\le\mathrm h(P(X\ne Y))+P(X\ne Y)\log(d-1)\)">\(H(X\mid Y)\le\mathrm h(P(X\ne Y))+P(X\ne Y)\log(d-1)\)</span> proved here is Fano's inequality.</p>
+<h2 id="section-6"><span id="6-eigenvalue-inequalities"></span>6. Eigenvalue inequalities</h2>
+<p>In this section <span class="math" data-tex="\(A,B,W\)">\(A,B,W\)</span> are self-adjoint operators on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, with eigenvalues ordered as in (R2), and
+<span class="math" data-tex="\(\|C\|_1=\operatorname{Tr}|C|\)">\(\|C\|_1=\operatorname{Tr}|C|\)</span>.</p>
+<p><strong>Lemma 6.1</strong> (Courant–Fischer). <span class="math" data-tex="\(\lambda_i(A)=\max_V\min\{\langle Ax,x\rangle:x\in V,\ \|x\|=1\}\)">\(\lambda_i(A)=\max_V\min\{\langle Ax,x\rangle:x\in V,\ \|x\|=1\}\)</span>, the maximum over
+the subspaces <span class="math" data-tex="\(V\)">\(V\)</span> of dimension <span class="math" data-tex="\(i\)">\(i\)</span>. Consequently, <span class="math" data-tex="\(A\le B\)">\(A\le B\)</span> implies <span class="math" data-tex="\(\lambda_i(A)\le\lambda_i(B)\)">\(\lambda_i(A)\le\lambda_i(B)\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(f_1,\dots,f_d\)">\(f_1,\dots,f_d\)</span> be orthonormal eigenvectors with <span class="math" data-tex="\(Af_l=\lambda_l(A)f_l\)">\(Af_l=\lambda_l(A)f_l\)</span>. On
+<span class="math" data-tex="\(V=\operatorname{span}(f_1,\dots,f_i)\)">\(V=\operatorname{span}(f_1,\dots,f_i)\)</span> every unit vector has <span class="math" data-tex="\(\langle Ax,x\rangle\ge\lambda_i(A)\)">\(\langle Ax,x\rangle\ge\lambda_i(A)\)</span>. Conversely, every
+subspace <span class="math" data-tex="\(V\)">\(V\)</span> of dimension <span class="math" data-tex="\(i\)">\(i\)</span> meets <span class="math" data-tex="\(\operatorname{span}(f_i,\dots,f_d)\)">\(\operatorname{span}(f_i,\dots,f_d)\)</span>, which has dimension <span class="math" data-tex="\(d-i+1\)">\(d-i+1\)</span>, in a
+unit vector <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(\langle Ax,x\rangle\le\lambda_i(A)\)">\(\langle Ax,x\rangle\le\lambda_i(A)\)</span>. If <span class="math" data-tex="\(A\le B\)">\(A\le B\)</span>, then <span class="math" data-tex="\(\langle Ax,x\rangle\le\langle
+Bx,x\rangle\)">\(\langle Ax,x\rangle\le\langle
+Bx,x\rangle\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, and the formula gives <span class="math" data-tex="\(\lambda_i(A)\le\lambda_i(B)\)">\(\lambda_i(A)\le\lambda_i(B)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.2</strong> (Ky Fan). (1) For orthonormal vectors <span class="math" data-tex="\(e_1,\dots,e_k\)">\(e_1,\dots,e_k\)</span>,
+<span class="math" data-tex="\(\sum_{i\le k}\langle Ae_i,e_i\rangle\le\sum_{i\le k}\lambda_i(A)\)">\(\sum_{i\le k}\langle Ae_i,e_i\rangle\le\sum_{i\le k}\lambda_i(A)\)</span>.
+(2) <span class="math" data-tex="\(\operatorname{Tr}(AW)\le\sum_{i=1}^d\lambda_i(A)\lambda_i(W)\)">\(\operatorname{Tr}(AW)\le\sum_{i=1}^d\lambda_i(A)\lambda_i(W)\)</span>.</p>
+<p><strong>Proof.</strong> (1) With <span class="math" data-tex="\(f_l\)">\(f_l\)</span> as above, <span class="math" data-tex="\(\sum_{i\le k}\langle Ae_i,e_i\rangle=\sum_l\lambda_l(A)c_l\)">\(\sum_{i\le k}\langle Ae_i,e_i\rangle=\sum_l\lambda_l(A)c_l\)</span>, where
+<span class="math" data-tex="\(c_l=\sum_{i\le k}|\langle e_i,f_l\rangle|^2\)">\(c_l=\sum_{i\le k}|\langle e_i,f_l\rangle|^2\)</span>. By Bessel's inequality <span class="math" data-tex="\(0\le c_l\le1\)">\(0\le c_l\le1\)</span>, and
+<span class="math" data-tex="\(\sum_lc_l=\sum_{i\le k}\|e_i\|^2=k\)">\(\sum_lc_l=\sum_{i\le k}\|e_i\|^2=k\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sum_l\lambda_l(A)c_l-\sum_{l\le k}\lambda_l(A)=\sum_{l\le k}\lambda_l(A)(c_l-1)+\sum_{l&gt;k}\lambda_l(A)c_l
+\le\lambda_k(A)\Bigl(\sum_{l\le k}(c_l-1)+\sum_{l&gt;k}c_l\Bigr)=0 .
+\]">\[
+\sum_l\lambda_l(A)c_l-\sum_{l\le k}\lambda_l(A)=\sum_{l\le k}\lambda_l(A)(c_l-1)+\sum_{l&gt;k}\lambda_l(A)c_l
+\le\lambda_k(A)\Bigl(\sum_{l\le k}(c_l-1)+\sum_{l&gt;k}c_l\Bigr)=0 .
+\]</span>
+<p>(2) Let <span class="math" data-tex="\(g_1,\dots,g_d\)">\(g_1,\dots,g_d\)</span> be orthonormal eigenvectors of <span class="math" data-tex="\(W\)">\(W\)</span> with <span class="math" data-tex="\(Wg_j=w_jg_j\)">\(Wg_j=w_jg_j\)</span>, <span class="math" data-tex="\(w_j=\lambda_j(W)\)">\(w_j=\lambda_j(W)\)</span>. Put
+<span class="math" data-tex="\(s_k=\sum_{j\le k}\langle Ag_j,g_j\rangle\)">\(s_k=\sum_{j\le k}\langle Ag_j,g_j\rangle\)</span> and <span class="math" data-tex="\(\Lambda_k=\sum_{j\le k}\lambda_j(A)\)">\(\Lambda_k=\sum_{j\le k}\lambda_j(A)\)</span>, so <span class="math" data-tex="\(s_k\le\Lambda_k\)">\(s_k\le\Lambda_k\)</span> by (1)
+and <span class="math" data-tex="\(s_d=\operatorname{Tr}A=\Lambda_d\)">\(s_d=\operatorname{Tr}A=\Lambda_d\)</span>. Summation by parts and <span class="math" data-tex="\(w_k-w_{k+1}\ge0\)">\(w_k-w_{k+1}\ge0\)</span> give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(AW)=\sum_jw_j\langle Ag_j,g_j\rangle=\sum_{k&lt;d}(w_k-w_{k+1})s_k+w_ds_d
+\le\sum_{k&lt;d}(w_k-w_{k+1})\Lambda_k+w_d\Lambda_d=\sum_jw_j\lambda_j(A).\qquad\square
+\]">\[
+\operatorname{Tr}(AW)=\sum_jw_j\langle Ag_j,g_j\rangle=\sum_{k&lt;d}(w_k-w_{k+1})s_k+w_ds_d
+\le\sum_{k&lt;d}(w_k-w_{k+1})\Lambda_k+w_d\Lambda_d=\sum_jw_j\lambda_j(A).\qquad\square
+\]</span>
+<p><strong>Proposition 6.3</strong> (Mirsky's inequalities for the trace norm).</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^d|\lambda_i(A)-\lambda_i(B)|\le\|A-B\|_1\le\sum_{i=1}^d|\lambda_i(A)-\lambda_{d+1-i}(B)| .
+\tag{6.1}
+\]">\[
+\sum_{i=1}^d|\lambda_i(A)-\lambda_i(B)|\le\|A-B\|_1\le\sum_{i=1}^d|\lambda_i(A)-\lambda_{d+1-i}(B)| .
+\tag{6.1}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(A-B=C_+-C_-\)">\(A-B=C_+-C_-\)</span> with <span class="math" data-tex="\(C_\pm\ge0\)">\(C_\pm\ge0\)</span> and <span class="math" data-tex="\(C_+C_-=0\)">\(C_+C_-=0\)</span> (R1), so <span class="math" data-tex="\(\|A-B\|_1=\operatorname{Tr}C_++\operatorname{Tr}C_-\)">\(\|A-B\|_1=\operatorname{Tr}C_++\operatorname{Tr}C_-\)</span>.
+The operator <span class="math" data-tex="\(E=A+C_-=B+C_+\)">\(E=A+C_-=B+C_+\)</span> satisfies <span class="math" data-tex="\(E\ge A\)">\(E\ge A\)</span> and <span class="math" data-tex="\(E\ge B\)">\(E\ge B\)</span>, so <span class="math" data-tex="\(\lambda_i(E)\ge\lambda_i(A),\lambda_i(B)\)">\(\lambda_i(E)\ge\lambda_i(A),\lambda_i(B)\)</span> by
+Lemma 6.1. For numbers <span class="math" data-tex="\(x,y\le z\)">\(x,y\le z\)</span>, <span class="math" data-tex="\(|x-y|\le(z-x)+(z-y)\)">\(|x-y|\le(z-x)+(z-y)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sum_i|\lambda_i(A)-\lambda_i(B)|\le\sum_i\bigl(2\lambda_i(E)-\lambda_i(A)-\lambda_i(B)\bigr)
+=\operatorname{Tr}(E-A)+\operatorname{Tr}(E-B)=\operatorname{Tr}C_-+\operatorname{Tr}C_+ .
+\]">\[
+\sum_i|\lambda_i(A)-\lambda_i(B)|\le\sum_i\bigl(2\lambda_i(E)-\lambda_i(A)-\lambda_i(B)\bigr)
+=\operatorname{Tr}(E-A)+\operatorname{Tr}(E-B)=\operatorname{Tr}C_-+\operatorname{Tr}C_+ .
+\]</span>
+<p>For the second inequality let <span class="math" data-tex="\(W=1_{(0,\infty)}(A-B)-1_{(-\infty,0]}(A-B)\)">\(W=1_{(0,\infty)}(A-B)-1_{(-\infty,0]}(A-B)\)</span>, a self-adjoint operator with eigenvalues
+<span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> and <span class="math" data-tex="\(\operatorname{Tr}((A-B)W)=\|A-B\|_1\)">\(\operatorname{Tr}((A-B)W)=\|A-B\|_1\)</span>. By Lemma 6.2(2) for <span class="math" data-tex="\(A,W\)">\(A,W\)</span> and for <span class="math" data-tex="\(B,-W\)">\(B,-W\)</span>, and
+<span class="math" data-tex="\(\lambda_i(-W)=-\lambda_{d+1-i}(W)\)">\(\lambda_i(-W)=-\lambda_{d+1-i}(W)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|A-B\|_1=\operatorname{Tr}(AW)+\operatorname{Tr}(B(-W))\le\sum_i\lambda_i(A)\lambda_i(W)-\sum_i\lambda_i(B)\lambda_{d+1-i}(W)
+=\sum_j\lambda_j(W)\bigl(\lambda_j(A)-\lambda_{d+1-j}(B)\bigr),
+\]">\[
+\|A-B\|_1=\operatorname{Tr}(AW)+\operatorname{Tr}(B(-W))\le\sum_i\lambda_i(A)\lambda_i(W)-\sum_i\lambda_i(B)\lambda_{d+1-i}(W)
+=\sum_j\lambda_j(W)\bigl(\lambda_j(A)-\lambda_{d+1-j}(B)\bigr),
+\]</span>
+<p>and <span class="math" data-tex="\(|\lambda_j(W)|\le1\)">\(|\lambda_j(W)|\le1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> both inequalities hold for every unitarily invariant norm; the left one is due to Mirsky. Lemma 6.2(1) is [Ky Fan 1949].</p>
+<h2 id="section-7"><span id="7-the-fannes-audenaert-inequality"></span>7. The Fannes–Audenaert inequality</h2>
+<p>A <em>density matrix</em> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> is a positive operator <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\(\operatorname{Tr}\rho=1\)">\(\operatorname{Tr}\rho=1\)</span>; its entropy is
+<span class="math" data-tex="\(S(\rho)=\operatorname{Tr}\eta(\rho)=H(\lambda(\rho))\)">\(S(\rho)=\operatorname{Tr}\eta(\rho)=H(\lambda(\rho))\)</span>, where <span class="math" data-tex="\(\lambda(\rho)=(\lambda_1(\rho),\dots,\lambda_d(\rho))\)">\(\lambda(\rho)=(\lambda_1(\rho),\dots,\lambda_d(\rho))\)</span>.</p>
+<p><strong>Theorem 7.1</strong> (Fannes–Audenaert inequality). Let <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span>, let <span class="math" data-tex="\(\rho,\sigma\)">\(\rho,\sigma\)</span> be density matrices on
+<span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>, and let <span class="math" data-tex="\(T=\frac12\|\rho-\sigma\|_1\)">\(T=\frac12\|\rho-\sigma\|_1\)</span>. Then <span class="math" data-tex="\(T\in[0,1]\)">\(T\in[0,1]\)</span> and</p>
+<span class="math math-display" data-tex="\[
+|S(\rho)-S(\sigma)|\le T\log(d-1)+\mathrm h(T).
+\tag{7.1}
+\]">\[
+|S(\rho)-S(\sigma)|\le T\log(d-1)+\mathrm h(T).
+\tag{7.1}
+\]</span>
+<p>For each <span class="math" data-tex="\(T\in[0,1]\)">\(T\in[0,1]\)</span>, equality holds for <span class="math" data-tex="\(\sigma=\operatorname{diag}(1,0,\dots,0)\)">\(\sigma=\operatorname{diag}(1,0,\dots,0)\)</span> and
+<span class="math" data-tex="\(\rho=\operatorname{diag}(1-T,\frac T{d-1},\dots,\frac T{d-1})\)">\(\rho=\operatorname{diag}(1-T,\frac T{d-1},\dots,\frac T{d-1})\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(p=\lambda(\rho)\)">\(p=\lambda(\rho)\)</span>, <span class="math" data-tex="\(q=\lambda(\sigma)\)">\(q=\lambda(\sigma)\)</span>, and let <span class="math" data-tex="\(q'\)">\(q'\)</span> be <span class="math" data-tex="\(q\)">\(q\)</span> in increasing order,
+<span class="math" data-tex="\(q'_i=\lambda_{d+1-i}(\sigma)\)">\(q'_i=\lambda_{d+1-i}(\sigma)\)</span>. These are probability vectors, <span class="math" data-tex="\(H(q')=H(q)=S(\sigma)\)">\(H(q')=H(q)=S(\sigma)\)</span> and <span class="math" data-tex="\(H(p)=S(\rho)\)">\(H(p)=S(\rho)\)</span>. By
+Proposition 6.3,</p>
+<span class="math math-display" data-tex="\[
+T_0:=t(p,q)\le T\le t(p,q')=:T_1\le\tfrac12\Bigl(\sum_ip_i+\sum_iq'_i\Bigr)=1 .
+\]">\[
+T_0:=t(p,q)\le T\le t(p,q')=:T_1\le\tfrac12\Bigl(\sum_ip_i+\sum_iq'_i\Bigr)=1 .
+\]</span>
+<p>Put <span class="math" data-tex="\(F(t)=t\log(d-1)+\mathrm h(t)\)">\(F(t)=t\log(d-1)+\mathrm h(t)\)</span>, a concave function on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Theorem 5.2 applied to <span class="math" data-tex="\((p,q)\)">\((p,q)\)</span> and to
+<span class="math" data-tex="\((p,q')\)">\((p,q')\)</span> gives <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le F(T_0)\)">\(|S(\rho)-S(\sigma)|\le F(T_0)\)</span> and <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le F(T_1)\)">\(|S(\rho)-S(\sigma)|\le F(T_1)\)</span>. Since <span class="math" data-tex="\(T\in[T_0,T_1]\)">\(T\in[T_0,T_1]\)</span>, concavity
+gives <span class="math" data-tex="\(F(T)\ge\min(F(T_0),F(T_1))\)">\(F(T)\ge\min(F(T_0),F(T_1))\)</span>, which proves (7.1). The equality case is the one of Theorem 5.2, since the two
+matrices are diagonal. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> (7.1) is [Audenaert 2007], who reduces it to the commuting case through Mirsky's inequalities in the same
+way and then proves the classical case by an optimization; the coupling proof of Theorem 5.2 replaces that
+optimization. Fannes' original bound [Fannes 1973] was <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le2T\log d+\eta(2T)\)">\(|S(\rho)-S(\sigma)|\le2T\log d+\eta(2T)\)</span> for
+<span class="math" data-tex="\(2T\le1/e\)">\(2T\le1/e\)</span>.</p>
+<p>The bound <span class="math" data-tex="\(F(T)\)">\(F(T)\)</span> increases on <span class="math" data-tex="\([0,1-\frac1d]\)">\([0,1-\frac1d]\)</span>, where it reaches its maximum <span class="math" data-tex="\(F(1-\frac1d)=\log d\)">\(F(1-\frac1d)=\log d\)</span>, and decreases
+afterwards. So (7.1) also gives the uniform estimate <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le F(\min(T,1-\frac1d))\)">\(|S(\rho)-S(\sigma)|\le F(\min(T,1-\frac1d))\)</span>, which is
+nondecreasing in <span class="math" data-tex="\(T\)">\(T\)</span>, and <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\to0\)">\(|S(\rho)-S(\sigma)|\to0\)</span> as <span class="math" data-tex="\(T\to0\)">\(T\to0\)</span>, uniformly in the dimension-<span class="math" data-tex="\(d\)">\(d\)</span> states.</p>
+<h2 id="section-8"><span id="8-exercises"></span>8. Exercises</h2>
+<p><strong>Exercise 8.1.</strong> Show that <span class="math" data-tex="\(t\mapsto t^3\)">\(t\mapsto t^3\)</span> is not operator convex on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>: take
+<span class="math" data-tex="\(a=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)">\(a=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span> and <span class="math" data-tex="\(b=\begin{pmatrix}3&amp;1\\1&amp;1\end{pmatrix}\)">\(b=\begin{pmatrix}3&amp;1\\1&amp;1\end{pmatrix}\)</span> and <span class="math" data-tex="\(\lambda=\frac12\)">\(\lambda=\frac12\)</span>.</p>
+<p><em>Solution.</em> Both matrices are positive: <span class="math" data-tex="\(a\)">\(a\)</span> has eigenvalues <span class="math" data-tex="\(0,2\)">\(0,2\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> has trace <span class="math" data-tex="\(4\)">\(4\)</span> and determinant <span class="math" data-tex="\(2\)">\(2\)</span>.
+Here <span class="math" data-tex="\(a^3=\begin{pmatrix}4&amp;4\\4&amp;4\end{pmatrix}\)">\(a^3=\begin{pmatrix}4&amp;4\\4&amp;4\end{pmatrix}\)</span>, <span class="math" data-tex="\(b^2=\begin{pmatrix}10&amp;4\\4&amp;2\end{pmatrix}\)">\(b^2=\begin{pmatrix}10&amp;4\\4&amp;2\end{pmatrix}\)</span> and
+<span class="math" data-tex="\(b^3=\begin{pmatrix}34&amp;14\\14&amp;6\end{pmatrix}\)">\(b^3=\begin{pmatrix}34&amp;14\\14&amp;6\end{pmatrix}\)</span>, so <span class="math" data-tex="\(\frac12(a^3+b^3)=\begin{pmatrix}19&amp;9\\9&amp;5\end{pmatrix}\)">\(\frac12(a^3+b^3)=\begin{pmatrix}19&amp;9\\9&amp;5\end{pmatrix}\)</span>. With
+<span class="math" data-tex="\(c=\frac12(a+b)=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}\)">\(c=\frac12(a+b)=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}\)</span>, <span class="math" data-tex="\(c^2=\begin{pmatrix}5&amp;3\\3&amp;2\end{pmatrix}\)">\(c^2=\begin{pmatrix}5&amp;3\\3&amp;2\end{pmatrix}\)</span> and
+<span class="math" data-tex="\(c^3=\begin{pmatrix}13&amp;8\\8&amp;5\end{pmatrix}\)">\(c^3=\begin{pmatrix}13&amp;8\\8&amp;5\end{pmatrix}\)</span>. The difference <span class="math" data-tex="\(\frac12(a^3+b^3)-c^3=\begin{pmatrix}6&amp;1\\1&amp;0\end{pmatrix}\)">\(\frac12(a^3+b^3)-c^3=\begin{pmatrix}6&amp;1\\1&amp;0\end{pmatrix}\)</span>
+has determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it has a negative eigenvalue, and (1.1) fails.</p>
+<p><strong>Exercise 8.2.</strong> Let <span class="math" data-tex="\(d=2\)">\(d=2\)</span>. Show that (7.1) reads <span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le\mathrm h(T)\)">\(|S(\rho)-S(\sigma)|\le\mathrm h(T)\)</span>, and that for qubit states
+<span class="math" data-tex="\(|S(\rho)-S(\sigma)|\le\log2\)">\(|S(\rho)-S(\sigma)|\le\log2\)</span> with equality only if one state is pure and the other is <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>.</p>
+<p><em>Solution.</em> <span class="math" data-tex="\(\log(d-1)=0\)">\(\log(d-1)=0\)</span>. Every density matrix on <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> has <span class="math" data-tex="\(0\le S\le\log2\)">\(0\le S\le\log2\)</span> by Proposition 4.1(1), with
+<span class="math" data-tex="\(S=0\)">\(S=0\)</span> exactly for pure states (eigenvalues <span class="math" data-tex="\(1,0\)">\(1,0\)</span>) and <span class="math" data-tex="\(S=\log2\)">\(S=\log2\)</span> exactly for <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> (eigenvalues
+<span class="math" data-tex="\(\frac12,\frac12\)">\(\frac12,\frac12\)</span>, by strict concavity of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>). So the difference is at most <span class="math" data-tex="\(\log2\)">\(\log2\)</span>, and equality forces one
+state pure and the other <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>. For such a pair <span class="math" data-tex="\(T=\frac12\)">\(T=\frac12\)</span>, and <span class="math" data-tex="\(\mathrm h(\frac12)=\log2\)">\(\mathrm h(\frac12)=\log2\)</span>, so (7.1) is an
+equality.</p>
+<p><strong>Exercise 8.3.</strong> Let <span class="math" data-tex="\(\Phi:A\to B\)">\(\Phi:A\to B\)</span> be a unital positive map between unital C*-algebras and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a state of
+<span class="math" data-tex="\(B\)">\(B\)</span>. Show that <span class="math" data-tex="\(\varphi(\eta(\Phi(a)))\ge(\varphi\circ\Phi)(\eta(a))\)">\(\varphi(\eta(\Phi(a)))\ge(\varphi\circ\Phi)(\eta(a))\)</span> for positive <span class="math" data-tex="\(a\)">\(a\)</span>, and that for a density
+matrix <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span> and a unital positive trace-preserving map <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of <span class="math" data-tex="\(M_d(\mathbb C)\)">\(M_d(\mathbb C)\)</span>,
+<span class="math" data-tex="\(S(\Phi(\rho))\ge S(\rho)\)">\(S(\Phi(\rho))\ge S(\rho)\)</span>.</p>
+<p><em>Solution.</em> By Corollary 3.2, <span class="math" data-tex="\(\eta(\Phi(a))-\Phi(\eta(a))\ge0\)">\(\eta(\Phi(a))-\Phi(\eta(a))\ge0\)</span>, and a state is positive. For the second statement
+take <span class="math" data-tex="\(\varphi=\operatorname{Tr}\)">\(\varphi=\operatorname{Tr}\)</span> (a positive functional) and <span class="math" data-tex="\(a=\rho\)">\(a=\rho\)</span>: <span class="math" data-tex="\(\operatorname{Tr}\eta(\Phi(\rho))\ge
+\operatorname{Tr}\Phi(\eta(\rho))=\operatorname{Tr}\eta(\rho)\)">\(\operatorname{Tr}\eta(\Phi(\rho))\ge
+\operatorname{Tr}\Phi(\eta(\rho))=\operatorname{Tr}\eta(\rho)\)</span>, and <span class="math" data-tex="\(\Phi(\rho)\)">\(\Phi(\rho)\)</span> is again a density matrix.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Audenaert 2007] K. M. R. Audenaert, A sharp continuity estimate for the von Neumann entropy, <em>Journal of Physics A:
+Mathematical and Theoretical</em> 40 (2007), 8127–8136. Free version: https://arxiv.org/abs/quant-ph/0610146</li>
+<li>[Choi 1974] M.-D. Choi, A Schwarz inequality for positive linear maps on C*-algebras, <em>Illinois Journal of
+Mathematics</em> 18 (1974), 565–574. https://doi.org/10.1215/ijm/1256051007</li>
+<li>[Davis 1957] C. Davis, A Schwarz inequality for convex operator functions, <em>Proceedings of the American
+Mathematical Society</em> 8 (1957), 42–44. https://doi.org/10.1090/S0002-9939-1957-0084120-4. Free at https://www.ams.org/journals/proc/1957-008-01/S0002-9939-1957-0084120-4/</li>
+<li>[Fannes 1973] M. Fannes, A continuity property of the entropy density for spin lattice systems, <em>Communications in
+Mathematical Physics</em> 31 (1973), 291–294. https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-31/issue-4</li>
+<li>[Hansen–Pedersen 2003] F. Hansen and G. K. Pedersen, Jensen's operator inequality, <em>Bulletin of the London
+Mathematical Society</em> 35 (2003), 553–564. Free version: https://arxiv.org/abs/math/0204049</li>
+<li>[Ky Fan 1949] K. Fan, On a theorem of Weyl concerning eigenvalues of linear transformations I, <em>Proceedings of the
+National Academy of Sciences of the USA</em> 35 (1949), 652–655. https://doi.org/10.1073/pnas.35.11.652</li>
+</ul>
+</article><p class="course-note"><a href="src/operator-convex-functions-and-the-continuity-of-entropy.md">Editable Markdown source</a></p></main><footer class="course-note"><a href="index.html">Entropy of automorphisms</a> · <span class="unlinked">Sources and authorship</span> · <a href="dependencies.json">Exact prerequisites</a></footer></body></html>

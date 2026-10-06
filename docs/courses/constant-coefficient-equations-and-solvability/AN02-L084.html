@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compatible smooth mixed data and the data that determine a solution</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="compatible-smooth-mixed-data-and-the-data-that-determine-a-solution">Compatible smooth mixed data and the data that determine a solution</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Boundary kernels solve the part of a mixed problem left over after a whole-space Cauchy solution. Compatibility at the corner says exactly that this residual boundary datum is flat at initial time. We prove smooth existence and uniqueness for all compatible data, with no spatial growth assumption. We also identify the precise backward sets of data germs that determine a value. When a cone is lower dimensional, values on its footprint alone can lose needed derivatives; that distinction is explicit.</p>
+<p>Read <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>, <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Fourier convention and Gaussian formula; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies scalar calculus and cutoffs. <a href="prerequisites/stable-prerequisite-bridges.html">Polynomial and contour interfaces for stable boundary models</a> supplies finite scalar and polynomial algebra. <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a> supplies compact parameter and tensor operations. <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supplies proper convolution.</p>
+<p>Existence uses the two planned cone and analytic zero-order theorems stated in <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a>. Uniqueness also uses the three planned local Holmgren, analytic support-normal and analytic convolution-ellipticity theorems stated in <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>. These uses remain conditional on the specified proofs.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The linked lessons supply the prerequisite proofs used below.</p>
+<h2 id="the-smooth-problem-and-compatibility">The smooth problem and compatibility</h2>
+<p>Use coordinates <span class="math" data-tex="\(x=(a,z,t)\)">\(x=(a,z,t)\)</span>, with <span class="math" data-tex="\(a,t\ge0\)">\(a,t\ge0\)</span> in the quarter-space Q. Write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)=P_m(N)D_t^m\\
++\sum_{j&lt;m}Q_j(D_a,D_z)D_t^j,
+        \\
+\qquad P_m(N)\ne0,\\
+\qquad m\ge1 .
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+P(D)=P_m(N)D_t^m\\
++\sum_{j&lt;m}Q_j(D_a,D_z)D_t^j,
+        \\
+\qquad P_m(N)\ne0,\\
+\qquad m\ge1 .
+\end{gathered}
+\tag{1}
+\]</span>
+The time and boundary covectors are independent. The balanced mixed system is hyperbolic in the sense defined in <a href="AN02-L080.html">A necessary time strip for smooth mixed solvability</a>: its h boundary conditions have nonzero principal value at time and the full lower-time zero-free strip. Let C and <span class="math" data-tex="\(C_\partial\)">\(C_\partial\)</span> be <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s interior and embedded boundary polar cones, and <span class="math" data-tex="\(S=C+C_\partial\)">\(S=C+C_\partial\)</span>, a closed cone with a proper positive time bound.</p>
+<p>The forcing f is jointly right-smooth on Q, the initial data <span class="math" data-tex="\(\phi_j(a,z)\)">\(\phi_j(a,z)\)</span>, <span class="math" data-tex="\(0\le j&lt;m\)">\(0\le j&lt;m\)</span>, are right-smooth for <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>, and the boundary data <span class="math" data-tex="\(g_k(z,t)\)">\(g_k(z,t)\)</span>, <span class="math" data-tex="\(1\le k\le h\)">\(1\le k\le h\)</span>, are right-smooth for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>. At every corner point <span class="math" data-tex="\((0,z_0,0)\)">\((0,z_0,0)\)</span>, call these data compatible when there is a formal power series in <span class="math" data-tex="\(a,z-z_0,t\)">\(a,z-z_0,t\)</span> whose equation and initial/boundary series agree with the Taylor series of the given data. The series is formal; no convergence or analyticity of the data is assumed.</p>
+<p>An equivalent initial-data formulation uses <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> as a smooth reference function near Q and sets <span class="math" data-tex="\(\phi_j=D_t^j\varphi|_{t=0}\)">\(\phi_j=D_t^j\varphi|_{t=0}\)</span>. The conditions <span class="math" data-tex="\(D^\alpha(u-\varphi)|_{t=0}=0\)">\(D^\alpha(u-\varphi)|_{t=0}=0\)</span>, <span class="math" data-tex="\(|\alpha|&lt;m\)">\(|\alpha|&lt;m\)</span>, imply these normal conditions. Conversely, differentiating the normal trace identities in every spatial direction gives all those full-jet identities, including right spatial derivatives at a=0. There is no loss of initial data. Arbitrary smooth normal jets can be encoded by a reference function using 3. Point values of the normal-jet functions on an initial footprint and point values of a reference function on the entire backward set are different determination claims.</p>
+<p><strong>Theorem.</strong> Every such compatible smooth datum has a unique jointly right-smooth solution on Q of
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)u=f\\
+\quad(a&gt;0,t&gt;0),\\
+\qquad
+ D_t^ju|_{t=0}=\phi_j\ (0\le j&lt;m),\\
+\qquad
+ B_k(D)u|_{a=0}=g_k .
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+P(D)u=f\\
+\quad(a&gt;0,t&gt;0),\\
+\qquad
+ D_t^ju|_{t=0}=\phi_j\ (0\le j&lt;m),\\
+\qquad
+ B_k(D)u|_{a=0}=g_k .
+\end{gathered}
+\tag{2}
+\]</span>
+Uniqueness is among existing right-smooth solutions with arbitrary spatial growth. Compatibility is necessary as well: the Taylor series of any solution is a formal solution at each corner. The prerequisites of the existence and uniqueness clauses are distinguished below.</p>
+<h2 id="a-smooth-jet-construction-with-parameters">A smooth jet construction with parameters</h2>
+<p>We first supply the extension needed for f and the initial data. Let <span class="math" data-tex="\(b_k(y)\)">\(b_k(y)\)</span>, <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, be arbitrary smooth functions of parameters y, which may include right-smooth half-space coordinates. Choose a smooth compact cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero and supported in <span class="math" data-tex="\([-1,1]\)">\([-1,1]\)</span>. There exist <span class="math" data-tex="\(\epsilon_k&gt;0\)">\(\epsilon_k&gt;0\)</span> for which
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J(r,y)=\sum_{k=0}^\infty
+        \chi(r/\epsilon_k)\frac{r^k}{k!}b_k(y),
+       \\
+\qquad \partial_r^kJ(0,y)=b_k(y).
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+J(r,y)=\sum_{k=0}^\infty
+        \chi(r/\epsilon_k)\frac{r^k}{k!}b_k(y),
+       \\
+\qquad \partial_r^kJ(0,y)=b_k(y).
+\end{gathered}
+\tag{3}
+\]</span>
+Here r ranges over the whole real line. We prove convergence with every derivative, rather than assume a parameter Borel theorem.</p>
+<p>Exhaust the parameter domain by nested boxes, using <span class="math" data-tex="\(|y_i|\le k\)">\(|y_i|\le k\)</span> on whole coordinates and <span class="math" data-tex="\(0\le y_i\le k\)">\(0\le y_i\le k\)</span> on right coordinates. On the k-th box the derivatives of <span class="math" data-tex="\(b_k\)">\(b_k\)</span> through order <span class="math" data-tex="\(\lfloor k/2\rfloor\)">\(\lfloor k/2\rfloor\)</span> have finite suprema. For <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, the derivatives of its summand with <span class="math" data-tex="\(j\)">\(j\)</span> r-derivatives and total parameter order at most <span class="math" data-tex="\(\lfloor k/2\rfloor-j\)">\(\lfloor k/2\rfloor-j\)</span> have supremum at most
+<span class="math" data-tex="\(A_k\epsilon_k^{k-j}\)">\(A_k\epsilon_k^{k-j}\)</span>, <span class="math" data-tex="\(0\le j\le\lfloor k/2\rfloor\)">\(0\le j\le\lfloor k/2\rfloor\)</span>, by the finite Leibniz formula on <span class="math" data-tex="\(|r|\le\epsilon_k\)">\(|r|\le\epsilon_k\)</span>. The constants <span class="math" data-tex="\(A_k\)">\(A_k\)</span> include the finitely many cutoff derivatives and factorial factors. Choose <span class="math" data-tex="\(0&lt;\epsilon_k\le\min(1,1/k)\)">\(0&lt;\epsilon_k\le\min(1,1/k)\)</span> so small that
+<span class="math math-display" data-tex="\[
+ A_k\epsilon_k^{k-\lfloor k/2\rfloor}\le2^{-k}.
+ \tag{4}
+\]">\[
+ A_k\epsilon_k^{k-\lfloor k/2\rfloor}\le2^{-k}.
+ \tag{4}
+\]</span>
+For k=0 choose any fixed positive scale. Because <span class="math" data-tex="\(\epsilon_k\le1\)">\(\epsilon_k\le1\)</span>, this also bounds all the smaller j derivative estimates by <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. Every compact parameter set lies in all sufficiently large boxes. For each fixed total derivative order, all sufficiently late summands are uniformly bounded there by the summable sequence <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>. The series and every derivative thus converge uniformly on compact parameter boxes, including their right boundaries.</p>
+<p>Coordinate fundamental-theorem identities pass to those uniform limits and identify them as the actual successive derivatives, just as in <a href="AN02-L080.html">A necessary time strip for smooth mixed solvability</a>'s completeness check. This proves smoothness, including right parameter derivatives. At r=0, each cutoff is constant near zero; the j-th r-derivative of its summand is zero unless k=j, in which case it is <span class="math" data-tex="\(b_j\)">\(b_j\)</span>. Interchange with the uniformly convergent derivative series proves the jet identity in 3. No bound on the growth of the sequence of jets was required.</p>
+<p>For a right-smooth function <span class="math" data-tex="\(F(r,y)\)">\(F(r,y)\)</span>, <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span>, apply 3 to its right jets <span class="math" data-tex="\(b_k(y)=\partial_r^kF(0,y)\)">\(b_k(y)=\partial_r^kF(0,y)\)</span>. Define the extension to be F for <span class="math" data-tex="\(r\ge0\)">\(r\ge0\)</span> and J for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. Every mixed derivative agrees across r=0. Coordinate integral identities then give a smooth extension across that boundary, still right-smooth in any remaining right parameters. In particular f extends across a=0 while remaining right-smooth for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, and each <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span> extends across a=0 on the initial plane.</p>
+<p>We will also need extensions that vanish near a specified compact set K. If the original data vanish on a relative neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span> intersected with their closed data domain, their relative closed support A is disjoint from K. Compactness gives positive separation from A. A smooth multiplier can therefore be chosen zero near K and one near A: finitely many small balls around K disjoint from A, with cutoffs supported in those balls, give <span class="math" data-tex="\(1-\chi_K\)">\(1-\chi_K\)</span>. Multiplying any just-constructed extension by this multiplier preserves its value on the entire original data domain and makes it vanish near K, including the part of K outside that domain. This proves the needed support-preserving extension claim locally, without a global extension theorem.</p>
+<h2 id="a-whole-space-smooth-cauchy-solution">A whole-space smooth Cauchy solution</h2>
+<p>Let F on <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, with all spatial <span class="math" data-tex="\(a,z\)">\(a,z\)</span> unrestricted, and <span class="math" data-tex="\(\Phi_j\)">\(\Phi_j\)</span> on its initial plane be the extensions just constructed. We prove the complete smooth Cauchy fact used here directly. Define successive time D-jets by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_{m+r}=\\
+P_m(N)^{-1}\left[\begin{gathered}
+      (D_t^rF)|_{t=0}
+          \\
+-\sum_{j&lt;m}Q_j(D_a,D_z)\Phi_{j+r}\end{gathered}\right],
+                                      \\
+\qquad r\ge0 .
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+\Phi_{m+r}=\\
+P_m(N)^{-1}\left[\begin{gathered}
+      (D_t^rF)|_{t=0}
+          \\
+-\sum_{j&lt;m}Q_j(D_a,D_z)\Phi_{j+r}\end{gathered}\right],
+                                      \\
+\qquad r\ge0 .
+\end{gathered}
+\tag{5}
+\]</span>
+Every index on the right is smaller than <span class="math" data-tex="\(m+r\)">\(m+r\)</span>, so this defines all jets smoothly. Apply 3 in time to their ordinary jets <span class="math" data-tex="\(i^j\Phi_j\)">\(i^j\Phi_j\)</span>. It gives a global smooth v whose D-time jets are exactly <span class="math" data-tex="\(\Phi_j\)">\(\Phi_j\)</span>. The residual <span class="math" data-tex="\(F-P(D)v\)">\(F-P(D)v\)</span> on <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span> is flat in time by 5. Its zero extension h to <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span> is globally smooth: each mixed derivative has equal zero traces on the two sides, and the coordinate integral argument proves the joined derivatives are classical ones.</p>
+<p>For clarity, construct the required causal inverse without using the finite-regularity jet theorem of the earlier Cauchy lesson. Choose <span class="math" data-tex="\(\sigma&lt;\min(\tau_0-1,-1)\)">\(\sigma&lt;\min(\tau_0-1,-1)\)</span>. <a href="AN02-L072.html">Incoming normal roots at a flat boundary</a> excludes zeros on the full affine tube <span class="math" data-tex="\(\operatorname{Im}\zeta\in\sigma N-\Gamma\)">\(\operatorname{Im}\zeta\in\sigma N-\Gamma\)</span>, and its time-line root factorization gives <span class="math" data-tex="\(|P(\zeta)|\ge|P_m(N)|\)">\(|P(\zeta)|\ge|P_m(N)|\)</span> there, exactly as in <a href="AN02-L083.html">equation 18 in Boundary fundamental kernels and their propagation support</a>. The affine <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> inverse of <span class="math" data-tex="\(1/P\)">\(1/P\)</span> gives a distribution E with
+<span class="math math-display" data-tex="\[
+ P(D)E=\delta_0,\qquad \operatorname{supp}E\subset C .
+ \tag{6}
+\]">\[
+ P(D)E=\delta_0,\qquad \operatorname{supp}E\subset C .
+ \tag{6}
+\]</span>
+Polynomial division of its transform verifies the equation, using inverse uniqueness.</p>
+<p>Addition is proper on <span class="math" data-tex="\(C\times\{t\ge0\}\)">\(C\times\{t\ge0\}\)</span>. If <span class="math" data-tex="\(c+y\)">\(c+y\)</span> lies in a fixed compact set, <span class="math" data-tex="\(c_t\ge b|c|\)">\(c_t\ge b|c|\)</span> and <span class="math" data-tex="\(y_t\ge0\)">\(y_t\ge0\)</span> bound <span class="math" data-tex="\(c_t\)">\(c_t\)</span>, hence c and y. <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a>, Theorem 1.1 therefore applies even to distributions of arbitrary growth. It gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)(E*T)=T,\\
+\qquad E*(P(D)T)=T
+                       \\
+\quad(\operatorname{supp}T\subset\{t\ge0\}).
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+P(D)(E*T)=T,\\
+\qquad E*(P(D)T)=T
+                       \\
+\quad(\operatorname{supp}T\subset\{t\ge0\}).
+\end{gathered}
+\tag{7}
+\]</span>
+For the second identity differentiate the E factor, obtaining <span class="math" data-tex="\((P(D)E)*T=\delta_0*T\)">\((P(D)E)*T=\delta_0*T\)</span>. All addition pairings are proper by the preceding bound; no transform of T is required.</p>
+<p>For the smooth causal h, <span class="math" data-tex="\(w=E*h\)">\(w=E*h\)</span> is globally smooth. On each compact output neighborhood, one compact cutoff in the E variable equals one on all relevant support pairs; the pairing is with <span class="math" data-tex="\(h(x-c)\)">\(h(x-c)\)</span>. Its fixed compact support and every derivative depend smoothly on x, so <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>, Lemma 1.1 proves this assertion. All derivatives retain causal support and consequently vanish at t=0. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_0=v+E*h\\
+\quad(t\ge0),\\
+\qquad
+ P(D)u_0=F,\\
+\qquad D_t^ju_0|_0=\Phi_j .
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+u_0=v+E*h\\
+\quad(t\ge0),\\
+\qquad
+ P(D)u_0=F,\\
+\qquad D_t^ju_0|_0=\Phi_j .
+\end{gathered}
+\tag{8}
+\]</span>
+This is a smooth Cauchy solution up to the initial plane, with no finite-regularity or growth loss.</p>
+<p>Its causal zero extension <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, as a distribution, obeys
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)U_0=F_++\mathcal B_\Phi,\\
+\qquad
+ \mathcal B_\Phi=
+     \sum_{\ell=1}^m\sum_{r=0}^{\ell-1}(-i)^{r+1}
+       \\
+\delta^{(r)}(t)\otimes Q_\ell(D_a,D_z)\Phi_{\ell-1-r},
+ \\
+\quad Q_m=P_m(N),
+ \\
+\qquad U_0=E*(F_++\mathcal B_\Phi).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+P(D)U_0=F_++\mathcal B_\Phi,\\
+\qquad
+ \mathcal B_\Phi=
+     \sum_{\ell=1}^m\sum_{r=0}^{\ell-1}(-i)^{r+1}
+       \\
+\delta^{(r)}(t)\otimes Q_\ell(D_a,D_z)\Phi_{\ell-1-r},
+ \\
+\quad Q_m=P_m(N),
+ \\
+\qquad U_0=E*(F_++\mathcal B_\Phi).
+\end{gathered}
+\tag{9}
+\]</span>
+This is the full initial boundary-source formula, derived by ordinary integration by parts as in <a href="AN02-L083.html">equation 13 in Boundary fundamental kernels and their propagation support</a>. The last identity follows from 7. It proves whole-space Cauchy uniqueness and dependence on data germs at the compact past cone, retaining any spatial derivatives appearing in this finite source.</p>
+<h2 id="compatibility-is-residual-flatness">Compatibility is residual flatness</h2>
+<p>On the boundary a=0, <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi_k(z,t)\\
+=g_k(z,t)-B_k(D)u_0(0,z,t).
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+\psi_k(z,t)\\
+=g_k(z,t)-B_k(D)u_0(0,z,t).
+\end{gathered}
+\tag{10}
+\]</span>
+The data are compatible exactly when each <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> is flat at t=0. To prove the forward implication, subtract the Taylor series of <span class="math" data-tex="\(u_0\)">\(u_0\)</span> at a corner point from a compatible formal solution. Its equation has zero right side and its first m time-jet series are zero. The formal recurrence 1, whose highest time coefficient is a nonzero scalar, makes every further time coefficient zero by induction, as a formal series in <span class="math" data-tex="\(a,z-z_0\)">\(a,z-z_0\)</span>. The full difference series is therefore zero. Applying each polynomial boundary operator shows that the Taylor series of <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> in <span class="math" data-tex="\(z-z_0,t\)">\(z-z_0,t\)</span> is zero. This holds at every <span class="math" data-tex="\(z_0\)">\(z_0\)</span>, so all time jets at zero vanish as smooth functions of z.</p>
+<p>Conversely, if those time jets vanish, all their spatial derivatives vanish. The Taylor series of <span class="math" data-tex="\(u_0\)">\(u_0\)</span> itself solves the original formal problem at every corner, including every boundary datum, because its difference from <span class="math" data-tex="\(g_k\)">\(g_k\)</span> has zero Taylor series. Thus it witnesses compatibility. This proves both implications, without an analytic continuation claim for smooth flat functions.</p>
+<p>Extend <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> by zero to <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>. Flatness and coordinate integral identities make this a globally smooth causal function on the boundary. Use <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s kernels and define tangential convolution
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v(a,x&#x27;)=\sum_{k=1}^h e_k(a,\cdot)*\psi_k(x&#x27;),\\
+\qquad
+                         u=u_0+v\\
+\quad\hbox{on Q}.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+v(a,x&#x27;)=\sum_{k=1}^h e_k(a,\cdot)*\psi_k(x&#x27;),\\
+\qquad
+                         u=u_0+v\\
+\quad\hbox{on Q}.
+\end{gathered}
+\tag{11}
+\]</span>
+For every compact output set with a in a fixed compact right interval, <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s support in S and S's positive time bound give a common compact set of all relevant tangential input variables. The convolution is therefore proper and can use one fixed compact cutoff there. <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s smooth distribution-valued family and <a href="prerequisites/tensor-products-and-parameters.html">Tensor products and parameter-dependent distributions</a>, Lemma 1.1 show that v is jointly smooth with every right derivative at a=0. Tangential differentiation, normal differentiation and taking boundary traces commute with this pairing.</p>
+<p>Consequently <span class="math" data-tex="\(P(D)v=0\)">\(P(D)v=0\)</span> in a&gt;0 and <span class="math" data-tex="\(B_j(D)v|_0=\psi_j\)">\(B_j(D)v|_0=\psi_j\)</span>, by <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s identity traces. Its causal support makes all initial time jets zero, including at the corner. Equation 8 and restriction of the extensions to the original data domain show that u has every equation and datum in 2. This proves full compatible smooth-data existence, including h=0, when the correction sum is empty.</p>
+<p>For uniqueness, the difference of two solutions has zero forcing, all first m initial jets and every boundary datum. The recurrence 1 annihilates all higher initial jets, including at the normal corner by right continuity; its zero extension to the past is jointly right-smooth and causal. <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>'s arbitrary-growth mixed uniqueness theorem then makes it zero. This last clause retains <a href="AN02-L079.html">Uniqueness from the principal boundary symbol</a>'s five exact planned inputs. Only its two cone/order inputs enter the existence construction above; its other three enter solely the uniqueness clause.</p>
+<h2 id="the-exact-backward-determination-sets">The exact backward determination sets</h2>
+<p>For <span class="math" data-tex="\(x\in Q\)">\(x\in Q\)</span>, define the compact sets
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_x=\{a=0,t\ge0\}\cap(x-S),\\
+\qquad
+ D_x=(\{x\}\cup R_x)-C\\
+\quad\hbox{intersected with }\{t\ge0\}.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+R_x=\{a=0,t\ge0\}\cap(x-S),\\
+\qquad
+ D_x=(\{x\}\cup R_x)-C\\
+\quad\hbox{intersected with }\{t\ge0\}.
+\end{gathered}
+\tag{12}
+\]</span>
+The boundary cone S has a positive time bound, so <span class="math" data-tex="\(R_x\)">\(R_x\)</span> is compact, with time between zero and <span class="math" data-tex="\(x_t\)">\(x_t\)</span>. The same interior cone bound makes <span class="math" data-tex="\(D_x\)">\(D_x\)</span> compact. Its portions in the original data domains are the forcing set <span class="math" data-tex="\(D_x\cap Q\)">\(D_x\cap Q\)</span>, the initial set <span class="math" data-tex="\(D_x\cap\{t=0,a\ge0\}\)">\(D_x\cap\{t=0,a\ge0\}\)</span>, and the boundary set <span class="math" data-tex="\(R_x\cap\{t\ge0\}\)">\(R_x\cap\{t\ge0\}\)</span>.</p>
+<p>If the differences of two compatible data sets vanish on relative neighborhoods of these respective sets, then their solution difference vanishes on a neighborhood of x in Q. Here is the full extension argument. Apply the support-preserving extension after 4 to make the extended forcing zero near the whole compact <span class="math" data-tex="\(D_x\)">\(D_x\)</span>, including its negative-a part, and each extended initial jet zero near its whole t=0 section. 9 and proper addition make <span class="math" data-tex="\(u_0\)">\(u_0\)</span> zero near x and near the whole <span class="math" data-tex="\(R_x\)">\(R_x\)</span>, because every relevant Cauchy backward set of those points lies in <span class="math" data-tex="\(D_x\)">\(D_x\)</span>. Compactness permits one neighborhood for their union. Its boundary residual in 10 is zero near <span class="math" data-tex="\(R_x\)">\(R_x\)</span> on nonnegative time; its zero past extension is zero near the entire <span class="math" data-tex="\(R_x\)">\(R_x\)</span>, including t=0, since the original residual is flat there.</p>
+<p>The boundary correction at x has only input points in <span class="math" data-tex="\(R_x\)">\(R_x\)</span>: the kernel's displacement from a boundary input lies in S. With the residual zero near that compact input set, proper convolution makes the correction zero near x. Thus <span class="math" data-tex="\(u=u_0+v=0\)">\(u=u_0+v=0\)</span> there. Uniqueness permits application to the data difference independently of how the extensions were selected. This proves the determination assertion at the germ level on exactly these backward sets.</p>
+<p>The datum includes the tangential derivatives that occur in 9 and the boundary operators. It is not generally enough to give only its point values on a lower-dimensional footprint. The earlier Cauchy lesson recorded the distinction for normal initial jets. Exercise3 instead gives a boundary-data counterexample with the full initial reference function identically zero. Thus that example addresses the unrestricted value-only mixed determination claim itself, rather than confusing the full initial-data convention with the normal-jet convention.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 (entry: a prescribed incoming wave).</strong> For <span class="math" data-tex="\(P(w,s)=(s-i)^2-w^2\)">\(P(w,s)=(s-i)^2-w^2\)</span> with Dirichlet boundary operator 1, take zero forcing and initial data. For a smooth causal boundary datum g, construct the solution and identify its determining boundary point.</p>
+<p><strong>Solution.</strong> Compatibility is exactly flatness of g at t=0. <a href="AN02-L083.html">Boundary fundamental kernels and their propagation support</a>'s Dirichlet kernel gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(a,t)=e^{-a}g(t-a),\\
+\qquad
+ u(0,t)=g(t),\\
+\qquad
+                     \operatorname{supp}u\subset\{t\ge a\}.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+u(a,t)=e^{-a}g(t-a),\\
+\qquad
+ u(0,t)=g(t),\\
+\qquad
+                     \operatorname{supp}u\subset\{t\ge a\}.
+\end{gathered}
+\tag{13}
+\]</span>
+Writing u as <span class="math" data-tex="\(e^{-t}\)">\(e^{-t}\)</span> times the smooth function <span class="math" data-tex="\(e^{t-a}g(t-a)\)">\(e^{t-a}g(t-a)\)</span> of t-a verifies the interior equation. Its initial jets vanish because g is zero in the past and flat at zero. The value at <span class="math" data-tex="\((a,t)\)">\((a,t)\)</span> uses just <span class="math" data-tex="\(g(t-a)\)">\(g(t-a)\)</span>, when <span class="math" data-tex="\(t\ge a\)">\(t\ge a\)</span>; if t&lt;a it is zero. In this scalar example the kernel is a translated point mass, so a boundary point value really is sufficient. This special fact does not replace the general germ/jet assertion.</p>
+<p><strong>Exercise 2 (intermediate: the infinite corner conditions).</strong> For the ordinary wave equation <span class="math" data-tex="\(u_{tt}-u_{aa}=f\)">\(u_{tt}-u_{aa}=f\)</span> on <span class="math" data-tex="\(a,t\ge0\)">\(a,t\ge0\)</span>, prescribe <span class="math" data-tex="\(u(a,0)=p(a)\)">\(u(a,0)=p(a)\)</span>, <span class="math" data-tex="\(u_t(a,0)=q(a)\)">\(u_t(a,0)=q(a)\)</span>, and <span class="math" data-tex="\(u(0,t)=g(t)\)">\(u(0,t)=g(t)\)</span>. Write the exact compatibility recurrence and its first four conditions. Explain why four conditions alone are insufficient for smooth solvability.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(v_j(a)=\partial_t^ju(a,0)\)">\(v_j(a)=\partial_t^ju(a,0)\)</span>. Its formal time recurrence is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_0=p,\\
+\quad v_1=q,\\
+\qquad
+ v_{j+2}=v_j&#x27;&#x27;+\partial_t^jf(a,0),\\
+\qquad
+                 g^{(j)}(0)=v_j(0)\\
+\quad(j\ge0).
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+v_0=p,\\
+\quad v_1=q,\\
+\qquad
+ v_{j+2}=v_j&#x27;&#x27;+\partial_t^jf(a,0),\\
+\qquad
+                 g^{(j)}(0)=v_j(0)\\
+\quad(j\ge0).
+\end{gathered}
+\tag{14}
+\]</span>
+It determines all jets and gives all corner conditions. The first four are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(0)=p(0),\\
+\quad g&#x27;(0)=q(0),\\
+\quad
+ g&#x27;&#x27;(0)=p&#x27;&#x27;(0)+f(0,0),\\
+\quad
+ g&#x27;&#x27;&#x27;(0)=q&#x27;&#x27;(0)+f_t(0,0).
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+g(0)=p(0),\\
+\quad g&#x27;(0)=q(0),\\
+\quad
+ g&#x27;&#x27;(0)=p&#x27;&#x27;(0)+f(0,0),\\
+\quad
+ g&#x27;&#x27;&#x27;(0)=q&#x27;&#x27;(0)+f_t(0,0).
+\end{gathered}
+\tag{15}
+\]</span>
+All further conditions in 14 are needed. For example p=q=f=0 and <span class="math" data-tex="\(g(t)=t^4\)">\(g(t)=t^4\)</span> satisfy the four displayed conditions but fail the condition <span class="math" data-tex="\(g^{(4)}(0)=0\)">\(g^{(4)}(0)=0\)</span>. No smooth solution can have those data. For zero f, 14 reduces to <span class="math" data-tex="\(g^{(2r)}(0)=p^{(2r)}(0)\)">\(g^{(2r)}(0)=p^{(2r)}(0)\)</span> and <span class="math" data-tex="\(g^{(2r+1)}(0)=q^{(2r)}(0)\)">\(g^{(2r+1)}(0)=q^{(2r)}(0)\)</span> for every r. A smooth boundary correction flat at zero changes no one of these conditions.</p>
+<p><strong>Exercise 3 (advanced: a boundary derivative is invisible on the footprint).</strong> In <span class="math" data-tex="\((a,z,t)\)">\((a,z,t)\)</span>, use
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(w,y,s)=(s^2-w^2)^2,\\
+\qquad
+ B_1=1,\\
+\quad B_2=D_a+D_z,\\
+\qquad
+ x=(1,0,2).
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+P(w,y,s)=(s^2-w^2)^2,\\
+\qquad
+ B_1=1,\\
+\quad B_2=D_a+D_z,\\
+\qquad
+ x=(1,0,2).
+\end{gathered}
+\tag{16}
+\]</span>
+Prescribe zero forcing and zero full initial reference function. Put <span class="math" data-tex="\(g_1(z,t)=z\,g(t)\)">\(g_1(z,t)=z\,g(t)\)</span>, <span class="math" data-tex="\(g_2=0\)">\(g_2=0\)</span>, where <span class="math" data-tex="\(g(t)=e^{-1/t}\)">\(g(t)=e^{-1/t}\)</span> for t&gt;0 and g=0 for t≤0. Verify hyperbolicity and compatibility, compute the determining footprint, and compare this solution with the zero solution.</p>
+<p><strong>Solution.</strong> The real-frequency time roots are the double roots s=±w, independently of y. Thus m=4, the barrier is zero, and the time principal value is one. When <span class="math" data-tex="\(\operatorname{Im}s&lt;0\)">\(\operatorname{Im}s&lt;0\)</span>, the upper normal factor is <span class="math" data-tex="\((w-\lambda)^2\)">\((w-\lambda)^2\)</span>, with <span class="math" data-tex="\(\lambda=-s\)">\(\lambda=-s\)</span>. The two residue rows for <span class="math" data-tex="\(1,w+y\)">\(1,w+y\)</span> are <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> and <span class="math" data-tex="\((1,2\lambda+y)\)">\((1,2\lambda+y)\)</span>. Their determinant and the cones are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\begin{pmatrix}0&amp;1\\1&amp;2\lambda+y\end{pmatrix},
+ \\
+\quad L=L_0=-1,\\
+\quad \Sigma=\mathbb R^2,\\
+\quad
+ \Gamma=\{(w,y,s):s&gt;|w|\},\\
+\quad
+ C=\{(a,0,t):t\ge|a|\},\\
+\quad S=C .
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+M=\begin{pmatrix}0&amp;1\\1&amp;2\lambda+y\end{pmatrix},
+ \\
+\quad L=L_0=-1,\\
+\quad \Sigma=\mathbb R^2,\\
+\quad
+ \Gamma=\{(w,y,s):s&gt;|w|\},\\
+\quad
+ C=\{(a,0,t):t\ge|a|\},\\
+\quad S=C .
+\end{gathered}
+\tag{17}
+\]</span>
+The determinant is zero-free and its principal value at time is nonzero, so this is a balanced hyperbolic mixed system. The entire boundary principal component has polar <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, hence S=C. Arbitrary y forces z=0 in the interior polar; the remaining two-dimensional light cone gives the stated inequality.</p>
+<p>The function g is smooth and flat at zero. Indeed every derivative for t&gt;0 is <span class="math" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span> times a polynomial in <span class="math" data-tex="\(1/t\)">\(1/t\)</span>; each tends to zero at zero, since <span class="math" data-tex="\(e^{-r}r^k\to0\)">\(e^{-r}r^k\to0\)</span> as r→∞, as follows from the exponential series with any larger integer power. Induction and coordinate integral identities give the smooth zero extension. All boundary jets at the corner consequently vanish. The zero formal series witnesses compatibility with zero forcing and zero full initial reference function.</p>
+<p>The inverse residue columns give <span class="math" data-tex="\(H_1=w-2\lambda-y\)">\(H_1=w-2\lambda-y\)</span>, <span class="math" data-tex="\(H_2=1\)">\(H_2=1\)</span>. The corresponding transformed kernels are <span class="math" data-tex="\(e^{-ias}(1+ias-iay)\)">\(e^{-ias}(1+ias-iay)\)</span> and <span class="math" data-tex="\(ia\,e^{-ias}\)">\(ia\,e^{-ias}\)</span>. Inverting them, or directly checking the following formula, gives with r=t-a
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u(a,z,t)\\
+=z\{g(r)+a g&#x27;(r)\}-a g(r),\\
+\qquad
+ u|_{a=0}=z g(t),\\
+\qquad
+ (D_a+D_z)u|_{a=0}=0,\\
+\qquad
+ u(1,0,2)=-e^{-1}\ne0 .
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+u(a,z,t)\\
+=z\{g(r)+a g&#x27;(r)\}-a g(r),\\
+\qquad
+ u|_{a=0}=z g(t),\\
+\qquad
+ (D_a+D_z)u|_{a=0}=0,\\
+\qquad
+ u(1,0,2)=-e^{-1}\ne0 .
+\end{gathered}
+\tag{18}
+\]</span>
+For the boundary derivative, <span class="math" data-tex="\(\partial_a u|_0=-g(t)\)">\(\partial_a u|_0=-g(t)\)</span> and <span class="math" data-tex="\(\partial_z u|_0=g(t)\)">\(\partial_z u|_0=g(t)\)</span>, which cancel. The ordinary wave operator annihilates every function of r and sends <span class="math" data-tex="\(aF(r)\)">\(aF(r)\)</span> to <span class="math" data-tex="\(2F&#x27;(r)\)">\(2F&#x27;(r)\)</span>; applying it twice therefore annihilates every term displayed in u. Its squared operator has the same zero set as <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span>. At t=0, g and all its derivatives vanish for r≤0, so every initial derivative, including all derivatives of order below four, is zero throughout a≥0.</p>
+<p>For the selected x the effective boundary footprint is <span class="math" data-tex="\(R_x=\{(0,0,t):0\le t\le1\}\)">\(R_x=\{(0,0,t):0\le t\le1\}\)</span>. Both boundary data vanish pointwise throughout that set. Forcing and the full initial reference function vanish identically, hence also on the entire set <span class="math" data-tex="\(D_x\)">\(D_x\)</span>. All three data restrictions agree pointwise with those of the zero solution, but 18 gives a different solution value. The missing boundary datum is the transverse derivative <span class="math" data-tex="\(\partial_zg_1=g(t)\)">\(\partial_zg_1=g(t)\)</span>. The germ theorem retains it. Thus point-value determination fails in this allowed lower-dimensional case even with the full initial-jet convention. This does not question compatible smooth existence or germ dependence, proved above.</p>
+<h2 id="a-transverse-derivative-in-the-backward-footprint">A transverse derivative in the backward footprint</h2>
+<p><img src="assets/AN02-L084/mixed-determination-transverse-derivative-CCCB31F6CAB49AB6409A8E8C1C0583302B8FFDBEA5507A21298F4E720E3FC552.png" alt="A transverse derivative in the backward footprint" class="course-figure" width="2080" height="1088" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="mixed-determination-transverse-derivative" data-asset-sha256="CCCB31F6CAB49AB6409A8E8C1C0583302B8FFDBEA5507A21298F4E720E3FC552"></p>
+<p>The left section has z=0: the backward sets include the boundary segment a=0, 0≤t≤1. Both boundary values vanish on that segment, while the transverse derivative remains 1/e at t=1 and the solution value is −1/e. The right panel displays the actual transverse boundary graph. Exercise 3 proves every equation and datum in this figure.</p>
+<p>The original figure, editable SVG and reproducible Python source are included with this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Open lecture notes</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

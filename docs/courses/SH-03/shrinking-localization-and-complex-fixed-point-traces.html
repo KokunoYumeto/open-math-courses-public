@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shrinking localization and complex fixed-point traces · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/shrinking-localization-and-complex-fixed-point-traces.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Shrinking localization and complex fixed-point traces</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="shrinking-localization-and-complex-fixed-point-traces">Shrinking localization and complex fixed-point traces</h1>
+<p>An expanding space computes a local contribution by compact cohomology. A shrinking space computes it by sections with support in that space. The two complexes can have different degrees even when their traces agree. We prove the supported formula, including singular maps on the shrinking space, then use complex scalar transport to compute holomorphic fixed-point traces. Constant real coefficients recover the determinant sign.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<p>Learn first <a href="expanding-subspaces-and-hyperbolic-lefschetz-cutoffs.html">Expanding subspaces and hyperbolic Lefschetz cutoffs</a>, <a href="homotopies-and-local-cutoffs-for-lefschetz-contributions.html#the-supported-cutoff-reverses-the-two-conditions">Homotopies and local cutoffs for Lefschetz contributions</a>, <a href="../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html#the-evaluation-map-is-biduality">Constructible costalks and Verdier duality</a>, and <a href="specializing-lefschetz-contributions-to-the-tangent-space.html">Specializing Lefschetz contributions to the tangent space</a>. The complex application also uses the written <a href="../nearby-cycles-monodromy-and-specialization/complex-nearby-cycles-as-normal-and-conormal-sections.html#complex-constructibility-survives-specialization">complex constructibility of specialization</a> and <a href="../sheaf-proof-readings/SH03-holomorphic-operations-and-complex-fourier-symmetries.html#the-two-complex-fourier-actions">complex Euler equation</a>. The normalized support adjunctions, <a href="../sheaf-proof-readings/SH02-microsupport-operations.html">conic Euler and submersion descent</a>, and <a href="../SH-02/microsupport-applications.html">complex-orbit descent</a> are current SH-02 prerequisites. Their transitive foundations and independent review remain open.</p>
+<p>Throughout the linear proof, <span class="math" data-tex="\(V\)">\(V\)</span> is a finite-dimensional real vector space, <span class="math" data-tex="\(k\)">\(k\)</span> a characteristic-zero field, and <span class="math" data-tex="\(F\in D^b_{\mathbb R\text{-c}}(k_V)\)">\(F\in D^b_{\mathbb R\text{-c}}(k_V)\)</span> is positively conic with perfect stalks. Fix
+<span class="math math-display" data-tex="\[
+ u:V\longrightarrow V,\qquad \phi:u^{-1}F\longrightarrow F,
+ \qquad 1\notin\operatorname{Ev}(u).
+ \qquad\text{(1)}
+\]">\[
+ u:V\longrightarrow V,\qquad \phi:u^{-1}F\longrightarrow F,
+ \qquad 1\notin\operatorname{Ev}(u).
+ \qquad\text{(1)}
+\]</span>
+All supports are supports in the ambient space, with the locally closed convention <span class="math" data-tex="\(R\Gamma_LF=R\mathcal Hom(k_L,F)\)">\(R\Gamma_LF=R\mathcal Hom(k_L,F)\)</span>. A trace is the alternating trace of the actual induced endomorphism, denoted <span class="math" data-tex="\(\operatorname{str}\)">\(\operatorname{str}\)</span>.</p>
+<h2 id="the-supported-action-needs-an-inverse-image-of-the-support">The supported action needs an inverse image of the support</h2>
+<p>Let <span class="math" data-tex="\(S\subset V\)">\(S\subset V\)</span> be a shrinking space: it is invariant, <span class="math" data-tex="\(u|_S\)">\(u|_S\)</span> has no real eigenvalue greater than one, and <span class="math" data-tex="\(u\)">\(u\)</span> on <span class="math" data-tex="\(V/S\)">\(V/S\)</span> has no real eigenvalue in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. The spectral proof in the preceding lesson gives
+<span class="math math-display" data-tex="\[
+ u^{-1}S=S.
+ \qquad\text{(2)}
+\]">\[
+ u^{-1}S=S.
+ \qquad\text{(2)}
+\]</span>
+It does not require <span class="math" data-tex="\(u|_S\)">\(u|_S\)</span> to be invertible. Put <span class="math" data-tex="\(C_S=R\Gamma_S(V;F)\)">\(C_S=R\Gamma_S(V;F)\)</span>. Its action <span class="math" data-tex="\(U_S\)">\(U_S\)</span> is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ C_S&amp;\xrightarrow{u^*}
+ R\Gamma_{u^{-1}S}(V;u^{-1}F)
+ \xrightarrow{\phi}R\Gamma_{u^{-1}S}(V;F)
+ =C_S.
+ \end{aligned}
+ \qquad\text{(3)}
+\]">\[
+ \begin{aligned}
+ C_S&amp;\xrightarrow{u^*}
+ R\Gamma_{u^{-1}S}(V;u^{-1}F)
+ \xrightarrow{\phi}R\Gamma_{u^{-1}S}(V;F)
+ =C_S.
+ \end{aligned}
+ \qquad\text{(3)}
+\]</span>
+The first arrow is the supported ordinary pullback defined by the ordinary unit and the closed-support adjunction. No compact-support pullback by a singular map is being asserted.</p>
+<p>For the closed inclusion <span class="math" data-tex="\(i:S\hookrightarrow V\)">\(i:S\hookrightarrow V\)</span>, put <span class="math" data-tex="\(H=i^!F\)">\(H=i^!F\)</span>. Constructible exceptional inverse image makes <span class="math" data-tex="\(H\)">\(H\)</span> perfect constructible, and equivariant exceptional inverse image makes it conic. Closed adjunction identifies <span class="math" data-tex="\(C_S=R\Gamma(S;H)\)">\(C_S=R\Gamma(S;H)\)</span>; ordinary conic contraction identifies this complex with <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. It is therefore perfect.</p>
+<p>The theorem to prove is
+<span class="math math-display" data-tex="\[
+ \boxed{C_0(\phi)=\operatorname{str}(U_S)
+ \quad\text{for every shrinking space }S.}
+ \qquad\text{(4)}
+\]">\[
+ \boxed{C_0(\phi)=\operatorname{str}(U_S)
+ \quad\text{for every shrinking space }S.}
+ \qquad\text{(4)}
+\]</span></p>
+<h2 id="the-supported-hyperbolic-box-reverses-both-boundaries">The supported hyperbolic box reverses both boundaries</h2>
+<p>First assume that no eigenvalue of <span class="math" data-tex="\(u\)">\(u\)</span> has modulus one. Retain the invariant splitting <span class="math" data-tex="\(V=V_+\oplus V_-\)">\(V=V_+\oplus V_-\)</span> and adapted metric from the preceding lesson:
+<span class="math math-display" data-tex="\[
+ |u_+a|\ge c_2|a|,\qquad |u_-b|\le c_1|b|,
+ \qquad 0&lt;c_1&lt;1&lt;c_2.
+ \qquad\text{(5)}
+\]">\[
+ |u_+a|\ge c_2|a|,\qquad |u_-b|\le c_1|b|,
+ \qquad 0&lt;c_1&lt;1&lt;c_2.
+ \qquad\text{(5)}
+\]</span>
+The supported cutoff is now
+<span class="math math-display" data-tex="\[
+ Q_{a,b}=\overline B_a^+\times B_b^-.
+ \qquad\text{(6)}
+\]">\[
+ Q_{a,b}=\overline B_a^+\times B_b^-.
+ \qquad\text{(6)}
+\]</span>
+The plus ball is closed, and the minus ball open. Its intersection with its inverse image is
+<span class="math math-display" data-tex="\[
+ u^{-1}Q_{a,b}\cap Q_{a,b}
+ =u_+^{-1}\overline B_a^+\times B_b^-.
+ \qquad\text{(7)}
+\]">\[
+ u^{-1}Q_{a,b}\cap Q_{a,b}
+ =u_+^{-1}\overline B_a^+\times B_b^-.
+ \qquad\text{(7)}
+\]</span>
+It is closed in <span class="math" data-tex="\(Q_{a,b}\)">\(Q_{a,b}\)</span> and open in <span class="math" data-tex="\(u^{-1}Q_{a,b}\)">\(u^{-1}Q_{a,b}\)</span>. Closedness follows from the closed plus inverse ball; openness follows from the open minus ball inside its preimage. The adapted inequalities give the two containments required for this product identity.</p>
+<p>Its compact closure has no fixed point other than zero. The supported cutoff theorem gives
+<span class="math math-display" data-tex="\[
+ C_0(\phi)=\operatorname{str}(U_{Q_{a,b}})
+ \quad\text{on }C_{Q_{a,b}}=R\Gamma_{Q_{a,b}}(V;F).
+ \qquad\text{(8)}
+\]">\[
+ C_0(\phi)=\operatorname{str}(U_{Q_{a,b}})
+ \quad\text{on }C_{Q_{a,b}}=R\Gamma_{Q_{a,b}}(V;F).
+ \qquad\text{(8)}
+\]</span>
+The operator is supported pullback to <span class="math" data-tex="\(u^{-1}Q_{a,b}\)">\(u^{-1}Q_{a,b}\)</span>, the coefficient map, open restriction to (7), then enlargement of its closed plus support to <span class="math" data-tex="\(\overline B_a^+\)">\(\overline B_a^+\)</span>.</p>
+<p>We compare this complex with <span class="math" data-tex="\(C_{V_-}\)">\(C_{V_-}\)</span>. Restrict to the open minus ball, then enlarge the zero plus support to the closed plus ball. These specified maps give
+<span class="math math-display" data-tex="\[
+ \beta_{a,b}:C_{V_-}\longrightarrow C_{Q_{a,b}}.
+ \qquad\text{(9)}
+\]">\[
+ \beta_{a,b}:C_{V_-}\longrightarrow C_{Q_{a,b}}.
+ \qquad\text{(9)}
+\]</span>
+Here <span class="math" data-tex="\(C_{Q_{a,b}}\)">\(C_{Q_{a,b}}\)</span> can be calculated as
+<span class="math" data-tex="\(R\Gamma(V_+\times B_b^-;R\Gamma_{\overline B_a^+\times B_b^-}F)\)">\(R\Gamma(V_+\times B_b^-;R\Gamma_{\overline B_a^+\times B_b^-}F)\)</span>.
+This is open restriction followed by closed support, with ordinary sections on the open ambient set.</p>
+<h2 id="duality-proves-stabilization-of-that-support-map">Duality proves stabilization of that support map</h2>
+<p>For each fixed <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, (9) is an isomorphism when <span class="math" data-tex="\(b\)">\(b\)</span> is sufficiently large. We prove this for the actual map.</p>
+<p>For a locally closed inclusion <span class="math" data-tex="\(\ell:L\hookrightarrow V\)">\(\ell:L\hookrightarrow V\)</span>, duality and its adjunction maps give
+<span class="math math-display" data-tex="\[
+ D_V(R\ell_*\ell^!F)=\ell_!\ell^{-1}D_VF.
+ \qquad\text{(10)}
+\]">\[
+ D_V(R\ell_*\ell^!F)=\ell_!\ell^{-1}D_VF.
+ \qquad\text{(10)}
+\]</span>
+For a closed inclusion this is exceptional inverse-image duality; for an open inclusion it is ordinary/open-extension duality. Factoring a locally closed inclusion proves the stated formula, with no dimension inserted into <span class="math" data-tex="\(D_VF\)">\(D_VF\)</span>. These are the normalized Verdier duality maps.</p>
+<p>Both the supported and compact complexes below are perfect. For a relatively compact locally closed set this follows from constructible operations with compact ambient closed support. For <span class="math" data-tex="\(V_-\)">\(V_-\)</span>, ordinary contraction proves perfection of <span class="math" data-tex="\(C_{V_-}\)">\(C_{V_-}\)</span>, and proper-support contraction proves perfection of <span class="math" data-tex="\(R\Gamma_c(V_-;D_VF|_{V_-})\)">\(R\Gamma_c(V_-;D_VF|_{V_-})\)</span>. Thus the general ordinary/proper duality identity and constructible biduality may be reversed to give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ C_{Q_{a,b}}^\vee&amp;\simeq R\Gamma_c(Q_{a,b};D_VF),\\
+ C_{V_-}^\vee&amp;\simeq R\Gamma_c(V_-;D_VF|_{V_-}).
+ \end{aligned}
+ \qquad\text{(11)}
+\]">\[
+ \begin{aligned}
+ C_{Q_{a,b}}^\vee&amp;\simeq R\Gamma_c(Q_{a,b};D_VF),\\
+ C_{V_-}^\vee&amp;\simeq R\Gamma_c(V_-;D_VF|_{V_-}).
+ \end{aligned}
+ \qquad\text{(11)}
+\]</span>
+In particular, we established the finite coefficient condition before inverting a duality map for nonproper ordinary sections.</p>
+<p>Apply the forward stabilization theorem of the preceding lesson to <span class="math" data-tex="\(D_VF\)">\(D_VF\)</span>, using <span class="math" data-tex="\(V_-\)">\(V_-\)</span> as its open expanding coordinate and <span class="math" data-tex="\(V_+\)">\(V_+\)</span> as its closed coordinate. That theorem concerns a conic coefficient and a box; its proof requires no linear dynamics in those coordinates. For fixed <span class="math" data-tex="\(a\)">\(a\)</span>, it gives
+<span class="math math-display" data-tex="\[
+ R\Gamma_c(Q_{a,b};D_VF)
+ \xrightarrow{\mathrm{open\ extension}}
+ R\Gamma_c(\overline B_a^+\times V_-;D_VF)
+ \quad(b\gg1).
+ \qquad\text{(12)}
+\]">\[
+ R\Gamma_c(Q_{a,b};D_VF)
+ \xrightarrow{\mathrm{open\ extension}}
+ R\Gamma_c(\overline B_a^+\times V_-;D_VF)
+ \quad(b\gg1).
+ \qquad\text{(12)}
+\]</span>
+Let <span class="math" data-tex="\(q:V\to V_+\)">\(q:V\to V_+\)</span> project along <span class="math" data-tex="\(V_-\)">\(V_-\)</span>, and put <span class="math" data-tex="\(G=Rq_!D_VF\)">\(G=Rq_!D_VF\)</span>. The conic projection theorem makes <span class="math" data-tex="\(G\)">\(G\)</span> perfect constructible. Fibre base change and closed-ball contraction give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ R\Gamma_c(\overline B_a^+\times V_-;D_VF)
+ &amp;\simeq R\Gamma(\overline B_a^+;G)\\
+ &amp;\xrightarrow{\mathrm{restriction}}G_0
+ \simeq R\Gamma_c(V_-;D_VF|_{V_-}).
+ \end{aligned}
+ \qquad\text{(13)}
+\]">\[
+ \begin{aligned}
+ R\Gamma_c(\overline B_a^+\times V_-;D_VF)
+ &amp;\simeq R\Gamma(\overline B_a^+;G)\\
+ &amp;\xrightarrow{\mathrm{restriction}}G_0
+ \simeq R\Gamma_c(V_-;D_VF|_{V_-}).
+ \end{aligned}
+ \qquad\text{(13)}
+\]</span>
+The composite of (12) and (13) is the dual of (9). To check this, dualize its two defining steps. Ordinary restriction to the open minus ball becomes open extension in that coordinate. Enlargement of the zero plus support becomes restriction to the zero plus fibre. Those two maps commute: their inclusions concern different factors, and their interchange is the open/closed base-change identity. After integrating the minus coordinate, closed plus restriction is exactly the counit giving <span class="math" data-tex="\(G|_0\)">\(G|_0\)</span> in (13). Thus the dual of (9) is this composite, not an unspecified isomorphism between its terms.</p>
+<p>Equations (12) and (13) make the dual map invertible. Perfect biduality then makes <span class="math" data-tex="\(\beta_{a,b}\)">\(\beta_{a,b}\)</span> invertible. This proves the support stabilization.</p>
+<h2 id="the-original-shrinking-operator-commutes-with-stabilization">The original shrinking operator commutes with stabilization</h2>
+<p>Since <span class="math" data-tex="\(u^{-1}V_-=V_-\)">\(u^{-1}V_-=V_-\)</span>, (3) gives <span class="math" data-tex="\(U_{V_-}\)">\(U_{V_-}\)</span>. We have an equality of actual maps
+<span class="math math-display" data-tex="\[
+ \beta_{a,b}U_{V_-}=U_{Q_{a,b}}\beta_{a,b}.
+ \qquad\text{(14)}
+\]">\[
+ \beta_{a,b}U_{V_-}=U_{Q_{a,b}}\beta_{a,b}.
+ \qquad\text{(14)}
+\]</span>
+Indeed, the zero plus support is contained in <span class="math" data-tex="\(u_+^{-1}\overline B_a^+\)">\(u_+^{-1}\overline B_a^+\)</span>. Pullback therefore sends its enlargement into the support enlargement used in the cutoff. In the minus coordinate, pulling back the open restriction produces restriction to <span class="math" data-tex="\(u_-^{-1}B_b^-\)">\(u_-^{-1}B_b^-\)</span>; the cutoff then restricts to <span class="math" data-tex="\(B_b^-\)">\(B_b^-\)</span>. The containment <span class="math" data-tex="\(u_-B_b^-\subset B_b^-\)">\(u_-B_b^-\subset B_b^-\)</span> makes this the same restriction as taking (3) and restricting its result to <span class="math" data-tex="\(B_b^-\)">\(B_b^-\)</span>. The coefficient map commutes with each restriction. Naturality and transitivity of the closed-support counits identify both plus enlargements with enlargement of zero support to <span class="math" data-tex="\(\overline B_a^+\)">\(\overline B_a^+\)</span>. These facts prove (14) before either map is an isomorphism.</p>
+<p>For sufficiently large <span class="math" data-tex="\(b\)">\(b\)</span>, (9) is invertible. Equations (8) and (14) prove (4) for <span class="math" data-tex="\(S=V_-\)">\(S=V_-\)</span> in the hyperbolic case. Singular <span class="math" data-tex="\(u_-\)">\(u_-\)</span> causes no difficulty: the proof uses ordinary supported pullback, and duality was used to check <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, not to replace <span class="math" data-tex="\(u_-\)">\(u_-\)</span> by an inverse.</p>
+<h2 id="a-minimal-shrinking-space-compares-all-choices">A minimal shrinking space compares all choices</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+ P=\left(\bigoplus_{\lambda\in[0,1)}V^\mathbb C_\lambda\right)\cap V.
+ \qquad\text{(15)}
+\]">\[
+ P=\left(\bigoplus_{\lambda\in[0,1)}V^\mathbb C_\lambda\right)\cap V.
+ \qquad\text{(15)}
+\]</span>
+Every shrinking space contains <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(P\)">\(P\)</span> is itself shrinking. For a shrinking <span class="math" data-tex="\(S\)">\(S\)</span>, retain <span class="math" data-tex="\(H=i^!F\)">\(H=i^!F\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. The inverse support comparison for <span class="math" data-tex="\(u^{-1}S=S\)">\(u^{-1}S=S\)</span>, followed by <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, defines
+<span class="math math-display" data-tex="\[
+ \chi:u_S^{-1}H\longrightarrow H.
+ \qquad\text{(16)}
+\]">\[
+ \chi:u_S^{-1}H\longrightarrow H.
+ \qquad\text{(16)}
+\]</span>
+This is obtained by restricting the map
+<span class="math" data-tex="\(u^{-1}R\Gamma_SF\to R\Gamma_S(u^{-1}F)\to R\Gamma_SF\)">\(u^{-1}R\Gamma_SF\to R\Gamma_S(u^{-1}F)\to R\Gamma_SF\)</span>
+to <span class="math" data-tex="\(S\)">\(S\)</span>; closed proper base change identifies its source with <span class="math" data-tex="\(u_S^{-1}H\)">\(u_S^{-1}H\)</span>. Its ordinary section operator is (3).</p>
+<p>Put <span class="math" data-tex="\(L=S/P\)">\(L=S/P\)</span>, <span class="math" data-tex="\(A=u_{S/P}\)">\(A=u_{S/P}\)</span>, <span class="math" data-tex="\(p:S\to L\)">\(p:S\to L\)</span>, and <span class="math" data-tex="\(G=Rp_*H\)">\(G=Rp_*H\)</span>. The induced <span class="math" data-tex="\(A\)">\(A\)</span> has no real eigenvalue in <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>: the full primary blocks in <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> have been removed, blocks greater than one were excluded from <span class="math" data-tex="\(S\)">\(S\)</span>, and one is absent. In particular <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. The conic projection theorem makes <span class="math" data-tex="\(G\)">\(G\)</span> perfect constructible.</p>
+<p>The coefficient map on <span class="math" data-tex="\(G\)">\(G\)</span> is the ordinary comparison followed by <span class="math" data-tex="\(Rp_*\chi\)">\(Rp_*\chi\)</span>:
+<span class="math math-display" data-tex="\[
+ \psi:A^{-1}Rp_*H
+ \longrightarrow Rp_*u_S^{-1}H
+ \xrightarrow{Rp_*\chi}Rp_*H.
+ \qquad\text{(17)}
+\]">\[
+ \psi:A^{-1}Rp_*H
+ \longrightarrow Rp_*u_S^{-1}H
+ \xrightarrow{Rp_*\chi}Rp_*H.
+ \qquad\text{(17)}
+\]</span>
+The first arrow is defined by adjunction from the ordinary counit
+<span class="math math-display" data-tex="\[
+ p^{-1}A^{-1}Rp_*H
+ =u_S^{-1}p^{-1}Rp_*H
+ \longrightarrow u_S^{-1}H.
+ \qquad\text{(18)}
+\]">\[
+ p^{-1}A^{-1}Rp_*H
+ =u_S^{-1}p^{-1}Rp_*H
+ \longrightarrow u_S^{-1}H.
+ \qquad\text{(18)}
+\]</span>
+We do not declare this comparison invertible. The square need not be Cartesian when <span class="math" data-tex="\(u|_P\)">\(u|_P\)</span> is singular, and no such assertion is needed.</p>
+<p>Ordinary composition gives <span class="math" data-tex="\(R\Gamma(L;G)=R\Gamma(S;H)=C_S\)">\(R\Gamma(L;G)=R\Gamma(S;H)=C_S\)</span>, with its operator (3). At zero, the closed-support adjunction gives
+<span class="math math-display" data-tex="\[
+ R\Gamma_{\{0\}}(L;Rp_*H)
+ \simeq R\Gamma_P(S;H)
+ \simeq R\Gamma_P(V;F)=C_P.
+ \qquad\text{(19)}
+\]">\[
+ R\Gamma_{\{0\}}(L;Rp_*H)
+ \simeq R\Gamma_P(S;H)
+ \simeq R\Gamma_P(V;F)=C_P.
+ \qquad\text{(19)}
+\]</span>
+Here is the nonproper adjunction check. For the point inclusion <span class="math" data-tex="\(e:0\hookrightarrow L\)">\(e:0\hookrightarrow L\)</span>, the inclusion <span class="math" data-tex="\(j:P\hookrightarrow S\)">\(j:P\hookrightarrow S\)</span>, and <span class="math" data-tex="\(p_0:P\to0\)">\(p_0:P\to0\)</span>, closed proper base change gives <span class="math" data-tex="\(p^{-1}e_*Q=j_*p_0^{-1}Q\)">\(p^{-1}e_*Q=j_*p_0^{-1}Q\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \operatorname{Hom}(Q,e^!Rp_*H)
+ &amp;\simeq\operatorname{Hom}(p^{-1}e_*Q,H)\\
+ &amp;\simeq\operatorname{Hom}(p_0^{-1}Q,j^!H)
+ \simeq\operatorname{Hom}(Q,Rp_{0*}j^!H).
+ \end{aligned}
+ \qquad\text{(20)}
+\]">\[
+ \begin{aligned}
+ \operatorname{Hom}(Q,e^!Rp_*H)
+ &amp;\simeq\operatorname{Hom}(p^{-1}e_*Q,H)\\
+ &amp;\simeq\operatorname{Hom}(p_0^{-1}Q,j^!H)
+ \simeq\operatorname{Hom}(Q,Rp_{0*}j^!H).
+ \end{aligned}
+ \qquad\text{(20)}
+\]</span>
+This proves the first map of (19) by Yoneda. The second is exceptional composition for the two closed inclusions. Transposing (18) through these same adjunctions gives the supported <span class="math" data-tex="\(u_S\)">\(u_S\)</span>-pullback on <span class="math" data-tex="\(P\)">\(P\)</span>, followed by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Indeed <span class="math" data-tex="\(u_S^{-1}P=P\)">\(u_S^{-1}P=P\)</span>, since <span class="math" data-tex="\(A^{-1}(0)=0\)">\(A^{-1}(0)=0\)</span>. Exceptional composition and the support comparison in (16) identify it with <span class="math" data-tex="\(U_P\)">\(U_P\)</span>. Consequently (19) intertwines the actual operators.</p>
+<p>The positive-ray lemma from the preceding lesson says that the punctured ordinary trace on <span class="math" data-tex="\(L\setminus0\)">\(L\setminus0\)</span> is zero. Its proof applies to the given <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, whether or not that coefficient map is invertible. Localization at zero, together with (19), therefore gives
+<span class="math math-display" data-tex="\[
+ \operatorname{str}(U_S)=\operatorname{str}(U_P).
+ \qquad\text{(21)}
+\]">\[
+ \operatorname{str}(U_S)=\operatorname{str}(U_P).
+ \qquad\text{(21)}
+\]</span>
+For <span class="math" data-tex="\(L=0\)">\(L=0\)</span> this is the identity. In the hyperbolic case <span class="math" data-tex="\(V_-\)">\(V_-\)</span> is shrinking, so (21) compares any <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(V_-\)">\(V_-\)</span> through <span class="math" data-tex="\(P\)">\(P\)</span>. The already proved case <span class="math" data-tex="\(S=V_-\)">\(S=V_-\)</span> proves (4) for every shrinking space in that case.</p>
+<h2 id="scalar-deformation-also-preserves-the-supported-operator">Scalar deformation also preserves the supported operator</h2>
+<p>Choose positive <span class="math" data-tex="\(t\)">\(t\)</span> near one with <span class="math" data-tex="\(tu\)">\(tu\)</span> never having eigenvalue one. A fixed shrinking space <span class="math" data-tex="\(S\)">\(S\)</span> remains shrinking: its finitely many positive eigenvalues remain on their original side of one, and zero remains inside <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>. Normalized positive conic transport gives one family <span class="math" data-tex="\(\phi_t:(tu)^{-1}F\to F\)">\(\phi_t:(tu)^{-1}F\to F\)</span>.</p>
+<p>The linear-family class theorem gives constant <span class="math" data-tex="\(C_0(\phi_t)\)">\(C_0(\phi_t)\)</span>. The operators <span class="math" data-tex="\(U_{S,t}\)">\(U_{S,t}\)</span> have constant trace too. To prove this without assuming that <span class="math" data-tex="\(u_S\)">\(u_S\)</span> is proper or invertible, use the support <span class="math" data-tex="\(S\times I\)">\(S\times I\)</span> on <span class="math" data-tex="\(V\times I\)">\(V\times I\)</span>. Its inverse image under <span class="math" data-tex="\((v,t)\mapsto(tuv,t)\)">\((v,t)\mapsto(tuv,t)\)</span> is itself, because the quotient map is invertible for every <span class="math" data-tex="\(t\)">\(t\)</span>. The ordinary unit, support comparison and family coefficient map consequently define its supported section operator over <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>On every open parameter interval <span class="math" data-tex="\(J\)">\(J\)</span>, closed-support adjunction and ordinary interval descent identify
+<span class="math math-display" data-tex="\[
+ R\Gamma_{S\times J}(V\times J;\mathrm{pr}_V^{-1}F)
+ \simeq C_S.
+ \qquad\text{(22)}
+\]">\[
+ R\Gamma_{S\times J}(V\times J;\mathrm{pr}_V^{-1}F)
+ \simeq C_S.
+ \qquad\text{(22)}
+\]</span>
+The restriction maps are the identity under this identification: both are inverse slice restrictions after ordinary pullback. Hence the parameter direct image is the constant perfect complex <span class="math" data-tex="\(C_S\)">\(C_S\)</span>. Its induced family endomorphism has identical slice maps by interval descent. This proves trace constancy for the supported operators.</p>
+<p>Choose <span class="math" data-tex="\(t\)">\(t\)</span> avoiding the finitely many values <span class="math" data-tex="\(1/|\lambda|\)">\(1/|\lambda|\)</span> for nonzero eigenvalues. The hyperbolic theorem applies to <span class="math" data-tex="\(tu\)">\(tu\)</span>. Constancy of both sides now proves (4) for the original <span class="math" data-tex="\(u\)">\(u\)</span>. The shrinking-space theorem is complete.</p>
+<h2 id="complex-constructibility-supplies-local-scalar-transport">Complex constructibility supplies local scalar transport</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> now be a complex analytic manifold, <span class="math" data-tex="\(F\in D^b_{\mathbb C\text{-c}}(k_X)\)">\(F\in D^b_{\mathbb C\text{-c}}(k_X)\)</span> have perfect stalks, and let
+<span class="math math-display" data-tex="\[
+ f:X\longrightarrow X\text{ be holomorphic},\qquad
+ f(x)=x,\qquad \phi:f^{-1}F\longrightarrow F,
+ \qquad \det_{\mathbb C}(1-df_x)\ne0.
+ \qquad\text{(23)}
+\]">\[
+ f:X\longrightarrow X\text{ be holomorphic},\qquad
+ f(x)=x,\qquad \phi:f^{-1}F\longrightarrow F,
+ \qquad \det_{\mathbb C}(1-df_x)\ne0.
+ \qquad\text{(23)}
+\]</span>
+The tangent-specialization theorem replaces this local number by the number for <span class="math" data-tex="\(V=T_xX\)">\(V=T_xX\)</span>, <span class="math" data-tex="\(u=df_x\)">\(u=df_x\)</span>, and the actual induced coefficient map on <span class="math" data-tex="\(K=\nu_xF\)">\(K=\nu_xF\)</span>. It also gives <span class="math" data-tex="\(K_0\simeq F_x\)">\(K_0\simeq F_x\)</span> and the normalized point-costalk comparison. Complex constructibility of specialization makes <span class="math" data-tex="\(K\)">\(K\)</span> complex constructible; specialization also makes it positively conic.</p>
+<p>We need transport by a small complex scalar, not a globally trivial action of <span class="math" data-tex="\(\mathbb C^*\)">\(\mathbb C^*\)</span>. Write a cotangent covector as the real part of a complex covector <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The conic Euler criterion gives <span class="math" data-tex="\(\operatorname{Re}\langle v,\xi\rangle=0\)">\(\operatorname{Re}\langle v,\xi\rangle=0\)</span> on <span class="math" data-tex="\(\operatorname{SS}(K)\)">\(\operatorname{SS}(K)\)</span>. Complex cotangent conicity also puts <span class="math" data-tex="\(i\xi\)">\(i\xi\)</span> in that set; its Euler equation gives the imaginary part zero. Thus
+<span class="math math-display" data-tex="\[
+ \langle v,\xi\rangle=0
+ \quad\text{on }\operatorname{SS}(K).
+ \qquad\text{(24)}
+\]">\[
+ \langle v,\xi\rangle=0
+ \quad\text{on }\operatorname{SS}(K).
+ \qquad\text{(24)}
+\]</span>
+The factor two in the alternative real-covector convention does not change this annihilator.</p>
+<p>Let <span class="math" data-tex="\(D\subset\mathbb C^*\)">\(D\subset\mathbb C^*\)</span> be a sufficiently small contractible disk about one and <span class="math" data-tex="\(a(v,\lambda)=\lambda v\)">\(a(v,\lambda)=\lambda v\)</span>, <span class="math" data-tex="\(p(v,\lambda)=v\)">\(p(v,\lambda)=v\)</span>. Since <span class="math" data-tex="\(a\)">\(a\)</span> is a submersion, exact submersion pullback computes its microsupport. By (24), the parameter component of every pulled-back covector vanishes: differentiation in the two real parameter directions gives the real and imaginary parts of <span class="math" data-tex="\(\langle v,\xi\rangle\)">\(\langle v,\xi\rangle\)</span>. The horizontal microsupport criterion therefore makes <span class="math" data-tex="\(a^{-1}K\)">\(a^{-1}K\)</span> locally constant along the <span class="math" data-tex="\(D\)">\(D\)</span>-fibres of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Whole-complex descent over this contractible two-dimensional parameter gives an isomorphism
+<span class="math math-display" data-tex="\[
+ a^{-1}K\simeq p^{-1}K
+ \quad\text{normalized to the identity at }\lambda=1.
+ \qquad\text{(25)}
+\]">\[
+ a^{-1}K\simeq p^{-1}K
+ \quad\text{normalized to the identity at }\lambda=1.
+ \qquad\text{(25)}
+\]</span>
+One may use a rectangular coordinate disk and apply contractible-parameter descent twice; restriction to the smaller disk gives the same normalized map by uniqueness. This retains the extension data of the bounded complex. Nontrivial monodromy around a complete punctured orbit is allowed.</p>
+<p>Shrink <span class="math" data-tex="\(D\)">\(D\)</span> so that <span class="math" data-tex="\(\lambda u\)">\(\lambda u\)</span> has no eigenvalue one throughout it. The induced coefficient morphism and (25) give one family for <span class="math" data-tex="\(\lambda u\)">\(\lambda u\)</span>. Choose <span class="math" data-tex="\(\lambda\in D\)">\(\lambda\in D\)</span> such that each nonzero complex eigenvalue of <span class="math" data-tex="\(\lambda u\)">\(\lambda u\)</span> is nonreal. Only finitely many real lines in the scalar plane are forbidden, so such a choice exists arbitrarily close to one. A path in <span class="math" data-tex="\(D\)">\(D\)</span> joins it to one, and the linear-family theorem preserves the local contribution.</p>
+<h2 id="stalk-trace-and-costalk-trace-for-a-local-isomorphism">Stalk trace, and costalk trace for a local isomorphism</h2>
+<p>For the rotated <span class="math" data-tex="\(\lambda u\)">\(\lambda u\)</span>, the zero subspace is expanding: its restriction has no eigenvalues, and the quotient has no positive real eigenvalue greater than one. Its compact complex is <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. The expanding theorem yields
+<span class="math math-display" data-tex="\[
+ \boxed{C_x(\phi)=\operatorname{str}(\phi_x).}
+ \qquad\text{(26)}
+\]">\[
+ \boxed{C_x(\phi)=\operatorname{str}(\phi_x).}
+ \qquad\text{(26)}
+\]</span>
+The point coefficient map in the parameter family is the original one: restriction of (25) to the fixed zero orbit is the identity, and a morphism of constant complexes on the connected disk has one slice map. The specialization zero-section comparison intertwines that map with <span class="math" data-tex="\(\phi_x\)">\(\phi_x\)</span>.</p>
+<p>If <span class="math" data-tex="\(0\notin\operatorname{Ev}(df_x)\)">\(0\notin\operatorname{Ev}(df_x)\)</span>, the inverse function theorem makes <span class="math" data-tex="\(f\)">\(f\)</span> a local isomorphism at <span class="math" data-tex="\(x\)">\(x\)</span>. Its point-support operator <span class="math" data-tex="\(U_{\{x\}}\)">\(U_{\{x\}}\)</span> is therefore defined by supported pullback near <span class="math" data-tex="\(x\)">\(x\)</span>, followed by <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. The normal map <span class="math" data-tex="\(u\)">\(u\)</span> is invertible. After the same scalar rotation, the zero subspace is also shrinking, because every quotient eigenvalue is nonreal and zero is absent. The shrinking theorem gives
+<span class="math math-display" data-tex="\[
+ \boxed{C_x(\phi)
+ =\operatorname{str}\bigl(U_{\{x\}}:
+ R\Gamma_{\{x\}}(X;F)\longrightarrow R\Gamma_{\{x\}}(X;F)\bigr).}
+ \qquad\text{(27)}
+\]">\[
+ \boxed{C_x(\phi)
+ =\operatorname{str}\bigl(U_{\{x\}}:
+ R\Gamma_{\{x\}}(X;F)\longrightarrow R\Gamma_{\{x\}}(X;F)\bigr).}
+ \qquad\text{(27)}
+\]</span>
+To identify the action, the family inverse image of zero is zero at every parameter. Apply the supported parameter argument (22) with <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, using the transport (25). Its point-support operators are identical under the normalized slice maps. The tangent-specialization point-support comparison is built from the same closed counit and boundary connecting map; naturality for <span class="math" data-tex="\(f^{-1}(x)=\{x\}\)">\(f^{-1}(x)=\{x\}\)</span> near <span class="math" data-tex="\(x\)">\(x\)</span> intertwines the original and normal operators. Hence (27) concerns the original point-support action, without an extra parameter or orientation sign.</p>
+<p>The additional invertibility condition has content. A branched holomorphic map can have a defined point-support action whose trace differs from the local contribution, as the fourth exercise shows.</p>
+<h2 id="constant-real-coefficients-give-the-determinant-sign">Constant real coefficients give the determinant sign</h2>
+<p>Return to a real analytic manifold, constant <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, canonical coefficient map, and a transverse fixed point <span class="math" data-tex="\(x\)">\(x\)</span>. Transversality is <span class="math" data-tex="\(\det_{\mathbb R}(1-u)\ne0\)">\(\det_{\mathbb R}(1-u)\ne0\)</span>, where <span class="math" data-tex="\(u=df_x\)">\(u=df_x\)</span>. Tangent specialization gives <span class="math" data-tex="\(k_V\)">\(k_V\)</span> with its canonical map. Choose the minimal expanding space <span class="math" data-tex="\(W\)">\(W\)</span>, the sum of the real generalized eigenspaces with eigenvalue greater than one, and set <span class="math" data-tex="\(d=\dim_{\mathbb R}W\)">\(d=\dim_{\mathbb R}W\)</span>.</p>
+<p>Compact cohomology of <span class="math" data-tex="\(W\)">\(W\)</span> is its orientation line in degree <span class="math" data-tex="\(d\)">\(d\)</span>, written <span class="math" data-tex="\(k[-d]\)">\(k[-d]\)</span> after an orientation is chosen. All eigenvalues of <span class="math" data-tex="\(u|_W\)">\(u|_W\)</span> are positive, so <span class="math" data-tex="\(\det(u|_W)&gt;0\)">\(\det(u|_W)&gt;0\)</span>. Its proper pullback preserves the compact orientation generator. The expanding theorem gives <span class="math" data-tex="\(C_x(\phi)=(-1)^d\)">\(C_x(\phi)=(-1)^d\)</span>.</p>
+<p>This equals the determinant sign. A real eigenvalue greater than one contributes a negative factor to <span class="math" data-tex="\(\det(1-u)\)">\(\det(1-u)\)</span>, with its algebraic multiplicity. Every other real eigenvalue contributes a positive factor, since one is excluded. Each nonreal conjugate pair contributes
+<span class="math math-display" data-tex="\[
+ (1-\lambda)(1-\overline\lambda)=|1-\lambda|^2&gt;0.
+ \qquad\text{(28)}
+\]">\[
+ (1-\lambda)(1-\overline\lambda)=|1-\lambda|^2&gt;0.
+ \qquad\text{(28)}
+\]</span>
+The Jordan off-diagonal entries do not change a determinant. Consequently
+<span class="math math-display" data-tex="\[
+ \boxed{C_x(\phi)=\operatorname{sgn}\det_{\mathbb R}(1-df_x).}
+ \qquad\text{(29)}
+\]">\[
+ \boxed{C_x(\phi)=\operatorname{sgn}\det_{\mathbb R}(1-df_x).}
+ \qquad\text{(29)}
+\]</span>
+More generally a locally constant perfect coefficient complex <span class="math" data-tex="\(P\)">\(P\)</span>, with constant coefficient endomorphism <span class="math" data-tex="\(b\)">\(b\)</span>, gives
+<span class="math math-display" data-tex="\[
+ C_x(\phi)=\operatorname{sgn}\det_{\mathbb R}(1-df_x)\,
+ \operatorname{str}(b).
+ \qquad\text{(30)}
+\]">\[
+ C_x(\phi)=\operatorname{sgn}\det_{\mathbb R}(1-df_x)\,
+ \operatorname{str}(b).
+ \qquad\text{(30)}
+\]</span>
+Indeed its compact expanding complex is <span class="math" data-tex="\(P[-d]\)">\(P[-d]\)</span>, with identity on the orientation factor and <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span>. Rank <span class="math" data-tex="\(m\)">\(m\)</span> in shift <span class="math" data-tex="\([r]\)">\([r]\)</span> gives <span class="math" data-tex="\(m(-1)^r\)">\(m(-1)^r\)</span> times (29).</p>
+<p>For a complex-linear derivative,
+<span class="math math-display" data-tex="\[
+ \det_{\mathbb R}(1-u)=|\det_{\mathbb C}(1-u)|^2&gt;0.
+ \qquad\text{(31)}
+\]">\[
+ \det_{\mathbb R}(1-u)=|\det_{\mathbb C}(1-u)|^2&gt;0.
+ \qquad\text{(31)}
+\]</span>
+This explains the positive constant-coefficient holomorphic contribution. The real orientation computation uses the real dimension; a complex expanding line has dimension two.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="equal-traces-can-come-from-different-degrees">Equal traces can come from different degrees</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(u=-\mathrm{id}\)">\(u=-\mathrm{id}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, with constant coefficient and its canonical map. Compare the expanding space zero and the shrinking space zero.</p>
+<p><strong>Solution.</strong> Both spaces satisfy their spectral conditions because the quotient eigenvalue is <span class="math" data-tex="\(-1\)">\(-1\)</span>. The expanding complex is the stalk <span class="math" data-tex="\(k\)">\(k\)</span>, with identity and trace one. The shrinking complex is the zero costalk <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. Reflection acts by <span class="math" data-tex="\(-1\)">\(-1\)</span> on its degree-one orientation generator, so its alternating trace is also one. The complexes have nonzero cohomology in different degrees. Both compute <span class="math" data-tex="\(C_0=1\)">\(C_0=1\)</span>.</p>
+<h3 id="a-shrinking-map-can-collapse-a-direction">A shrinking map can collapse a direction</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Take <span class="math" data-tex="\(u=\operatorname{diag}(2,0,\tfrac12)\)">\(u=\operatorname{diag}(2,0,\tfrac12)\)</span> on <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, <span class="math" data-tex="\(F=k_{\mathbb R^3}\)">\(F=k_{\mathbb R^3}\)</span>, and <span class="math" data-tex="\(S=\{x_1=0\}\)">\(S=\{x_1=0\}\)</span>. Calculate (3), including its degree.</p>
+<p><strong>Solution.</strong> The restriction to <span class="math" data-tex="\(S\)">\(S\)</span> has eigenvalues zero and <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, and its quotient has eigenvalue two, so <span class="math" data-tex="\(S\)">\(S\)</span> is shrinking and <span class="math" data-tex="\(u^{-1}S=S\)">\(u^{-1}S=S\)</span>. Exceptional restriction to the codimension-one plane is the normal orientation line shifted by <span class="math" data-tex="\(-1\)">\(-1\)</span>; its ordinary sections on <span class="math" data-tex="\(S\)">\(S\)</span> are <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. The normal map <span class="math" data-tex="\(x_1\mapsto2x_1\)">\(x_1\mapsto2x_1\)</span> preserves the generator. Pullback on the constant ordinary sections on <span class="math" data-tex="\(S\)">\(S\)</span>, even though it collapses the zero-eigenvalue coordinate, is the identity. Thus <span class="math" data-tex="\(U_S\)">\(U_S\)</span> has degree-one action <span class="math" data-tex="\(+1\)">\(+1\)</span> and trace <span class="math" data-tex="\(-1\)">\(-1\)</span>. The shrinking theorem gives <span class="math" data-tex="\(C_0=-1\)">\(C_0=-1\)</span>, agreeing with <span class="math" data-tex="\(\det(1-u)=(-1)(1)(1/2)&lt;0\)">\(\det(1-u)=(-1)(1)(1/2)&lt;0\)</span>.</p>
+<h3 id="the-closed-plus-open-minus-box-has-one-supported-degree">The closed-plus open-minus box has one supported degree</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>For <span class="math" data-tex="\(u(x,y)=(2x,y/2)\)">\(u(x,y)=(2x,y/2)\)</span> and constant coefficients, compute <span class="math" data-tex="\(R\Gamma_{[-a,a]\times(-b,b)}(\mathbb R^2;k)\)">\(R\Gamma_{[-a,a]\times(-b,b)}(\mathbb R^2;k)\)</span> and its cutoff trace.</p>
+<p><strong>Solution.</strong> Localize the constant sheaf on the plus line into the closed interval and its two complementary rays. Ordinary sections give the diagonal map <span class="math" data-tex="\(k\to k^2\)">\(k\to k^2\)</span>. Its fibre has one copy of <span class="math" data-tex="\(k\)">\(k\)</span> in degree one, so the plus support complex is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. The open minus factor contributes ordinary sections <span class="math" data-tex="\(R\Gamma((-b,b);k)=k\)">\(R\Gamma((-b,b);k)=k\)</span>; it contributes no compact-support degree. The product gives <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. Positive dilation in the plus normal direction preserves the supported generator, and contraction in the minus direction preserves the constant section. The cutoff trace is therefore <span class="math" data-tex="\(-1\)">\(-1\)</span>, equal to the shrinking-plane trace and <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<h3 id="branching-separates-local-and-point-support-traces">Branching separates local and point-support traces</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>For <span class="math" data-tex="\(f(z)=z^2\)">\(f(z)=z^2\)</span> near zero in <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with constant coefficient and canonical map, calculate the stalk, local and point-support traces. Explain the extra hypothesis in (27).</p>
+<p><strong>Solution.</strong> The derivative at zero is zero, so one is absent. The stalk map is the identity on <span class="math" data-tex="\(k\)">\(k\)</span>, and (26) gives local contribution one. The point preimage is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, so a point-support operator is defined, although <span class="math" data-tex="\(f\)">\(f\)</span> is branched. Localization identifies <span class="math" data-tex="\(H^2_{\{0\}}(\mathbb C;k)\)">\(H^2_{\{0\}}(\mathbb C;k)\)</span> with <span class="math" data-tex="\(H^1(\mathbb C^*;k)\)">\(H^1(\mathbb C^*;k)\)</span> near zero. On a small circle, <span class="math" data-tex="\(z\mapsto z^2\)">\(z\mapsto z^2\)</span> has degree two, so pullback multiplies the degree-one circle class, and hence the degree-two support generator, by two. The costalk is <span class="math" data-tex="\(k[-2]\)">\(k[-2]\)</span> and its trace is two. Thus the costalk trace need not equal the local contribution when <span class="math" data-tex="\(df_x\)">\(df_x\)</span> has a zero eigenvalue. The local-isomorphism condition in (27) excludes this branching.</p>
+<h3 id="puncture-monodromy-survives-scalar-transport">Puncture monodromy survives scalar transport</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(j:\mathbb C^*\hookrightarrow\mathbb C\)">\(j:\mathbb C^*\hookrightarrow\mathbb C\)</span>, let <span class="math" data-tex="\(L\)">\(L\)</span> have finite-dimensional fibre <span class="math" data-tex="\(M\)">\(M\)</span> and monodromy <span class="math" data-tex="\(T\)">\(T\)</span>, and put <span class="math" data-tex="\(F=j_!L\)">\(F=j_!L\)</span>. For <span class="math" data-tex="\(f(z)=az\)">\(f(z)=az\)</span>, <span class="math" data-tex="\(a\ne0,1\)">\(a\ne0,1\)</span>, choose a scalar-path lift and a coefficient morphism inducing an endomorphism <span class="math" data-tex="\(B\)">\(B\)</span> commuting with <span class="math" data-tex="\(T\)">\(T\)</span>. Determine the local trace and check it using compact cohomology.</p>
+<p><strong>Solution.</strong> The zero stalk of <span class="math" data-tex="\(j_!L\)">\(j_!L\)</span> is zero, so (26) gives contribution zero. A path lift identifies the scalar rotation with its continued coefficient action; different lifts can change that action by powers of <span class="math" data-tex="\(T\)">\(T\)</span>, but do not remove the monodromy. Polar coordinates give
+<span class="math math-display" data-tex="\[
+ R\Gamma_c(\mathbb C^*;L)
+ \simeq R\Gamma(S^1;L)[-1].
+ \qquad\text{(32)}
+\]">\[
+ R\Gamma_c(\mathbb C^*;L)
+ \simeq R\Gamma(S^1;L)[-1].
+ \qquad\text{(32)}
+\]</span>
+The circle complex is <span class="math" data-tex="\([M\xrightarrow{T-1}M]\)">\([M\xrightarrow{T-1}M]\)</span> in degrees zero and one. Under the chosen continuation its action is represented, up to the corresponding homotopy, by <span class="math" data-tex="\(B\)">\(B\)</span> on both terms. The shifted compact complex has degrees one and two; its trace is <span class="math" data-tex="\(-\operatorname{tr}B+\operatorname{tr}B=0\)">\(-\operatorname{tr}B+\operatorname{tr}B=0\)</span>. Equivalently, the traces on <span class="math" data-tex="\(\ker(T-1)\)">\(\ker(T-1)\)</span> and <span class="math" data-tex="\(\operatorname{coker}(T-1)\)">\(\operatorname{coker}(T-1)\)</span> agree by the invariant kernel/image exact sequences. The same cancellation holds after replacing <span class="math" data-tex="\(B\)">\(B\)</span> by <span class="math" data-tex="\(BT^q\)">\(BT^q\)</span>. This calculation allows nontrivial <span class="math" data-tex="\(T\)">\(T\)</span>; no global trivialization of complex scaling was used.</p>
+<h3 id="graded-point-coefficients-need-their-alternating-trace">Graded point coefficients need their alternating trace</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, take a coefficient supported at zero with two copies of <span class="math" data-tex="\(k\)">\(k\)</span> in degree zero and three in degree one. Let the coefficient map act by two and three on these respective summands. For <span class="math" data-tex="\(f(z)=2z\)">\(f(z)=2z\)</span>, calculate the local trace and the point-support trace.</p>
+<p><strong>Solution.</strong> The stalk trace is <span class="math" data-tex="\(2\cdot2-3\cdot3=-5\)">\(2\cdot2-3\cdot3=-5\)</span>. Formula (26) gives local contribution <span class="math" data-tex="\(-5\)">\(-5\)</span>. Since <span class="math" data-tex="\(df_0=2\)">\(df_0=2\)</span> is invertible, (27) gives the same point-support trace. A sheaf complex already supported at a point has the same point costalk and stalk; no ambient real-dimensional shift is added to those coefficients. Thus the supported operator also has alternating trace <span class="math" data-tex="\(-5\)">\(-5\)</span>.</p>
+<h3 id="jordan-blocks-count-with-their-multiplicity">Jordan blocks count with their multiplicity</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(u=\operatorname{diag}(3,J_2(2),-3,R_{\pi/2},0)\)">\(u=\operatorname{diag}(3,J_2(2),-3,R_{\pi/2},0)\)</span> on <span class="math" data-tex="\(\mathbb R^7\)">\(\mathbb R^7\)</span>, where <span class="math" data-tex="\(J_2(2)\)">\(J_2(2)\)</span> is one two-dimensional Jordan block and <span class="math" data-tex="\(R_{\pi/2}\)">\(R_{\pi/2}\)</span> is plane rotation. For rank <span class="math" data-tex="\(m\)">\(m\)</span> constant coefficients in shift <span class="math" data-tex="\([r]\)">\([r]\)</span>, compute the determinant and local contribution.</p>
+<p><strong>Solution.</strong> The positive real eigenvalues greater than one occupy three real dimensions: the eigenvalue three and the full two-dimensional block at two. Thus <span class="math" data-tex="\(d=3\)">\(d=3\)</span>. Direct multiplication gives <span class="math" data-tex="\(\det(1-u)=(-2)\cdot1\cdot4\cdot2\cdot1=-16\)">\(\det(1-u)=(-2)\cdot1\cdot4\cdot2\cdot1=-16\)</span>. The expanding orientation map has determinant <span class="math" data-tex="\(3\cdot4=12&gt;0\)">\(3\cdot4=12&gt;0\)</span>, so it acts by <span class="math" data-tex="\(+1\)">\(+1\)</span>. The compact complex is <span class="math" data-tex="\(k^m[r-3]\)">\(k^m[r-3]\)</span>, with alternating trace <span class="math" data-tex="\(-m(-1)^r\)">\(-m(-1)^r\)</span>. This is (30). The Jordan off-diagonal entry affects neither determinant.</p>
+<h3 id="a-complex-line-has-an-even-real-orientation-degree">A complex line has an even real orientation degree</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>For <span class="math" data-tex="\(f(z)=2z\)">\(f(z)=2z\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, compute the local contribution of <span class="math" data-tex="\(k_{\mathbb C}[r]\)">\(k_{\mathbb C}[r]\)</span> using the real expanding space <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and using the stalk formula.</p>
+<p><strong>Solution.</strong> The real expanding space has dimension two. Its compact complex is <span class="math" data-tex="\(k[r-2]\)">\(k[r-2]\)</span>, and the positive complex dilation acts by <span class="math" data-tex="\(+1\)">\(+1\)</span> on the real orientation generator. Its trace is <span class="math" data-tex="\((-1)^{r-2}=(-1)^r\)">\((-1)^{r-2}=(-1)^r\)</span>. The stalk formula gives the identity on <span class="math" data-tex="\(k[r]\)">\(k[r]\)</span>, with the same trace. Using complex dimension one as a compact cohomological degree would insert an erroneous minus sign.</p>
+<h3 id="the-endpoint-coefficient-changes-the-shrinking-answer">The endpoint coefficient changes the shrinking answer</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(F=k_{[0,\infty)}\)">\(F=k_{[0,\infty)}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> with its canonical positive-dilation map. Compute the local contribution for <span class="math" data-tex="\(u(t)=2t\)">\(u(t)=2t\)</span> and <span class="math" data-tex="\(u(t)=t/2\)">\(u(t)=t/2\)</span> using shrinking spaces.</p>
+<p><strong>Solution.</strong> For expansion, zero is shrinking. Its supported complex vanishes: localization maps <span class="math" data-tex="\(R\Gamma(\mathbb R;F)=k\)">\(R\Gamma(\mathbb R;F)=k\)</span> isomorphically to <span class="math" data-tex="\(R\Gamma(\mathbb R\setminus0;F)=k\)">\(R\Gamma(\mathbb R\setminus0;F)=k\)</span>, so its fibre is zero. The local contribution is zero. For contraction, the entire line is shrinking, and its ordinary supported complex is <span class="math" data-tex="\(R\Gamma(\mathbb R;F)=k\)">\(R\Gamma(\mathbb R;F)=k\)</span> with identity action; the contribution is one. Both match the preceding endpoint theorem. The coefficient support, rather than only the derivative, changes the answer from the constant-sheaf determinant sign.</p>
+<h2 id="source-context-and-the-next-chapter">Source context and the next chapter</h2>
+<p>These results are the shrinking case and the complex fixed-point traces in Kashiwara's microlocal Lefschetz fixed-point formula for constructible sheaves. The supported proof above supplies the stabilization map, the singular shrinking comparison, the scalar-family action and the complex parameter descent.</p>
+<p>Yuichi Ike, <a href="https://arxiv.org/abs/1602.04651v3">Hyperbolic localization via shrinking subbundles</a>, develops the shrinking construction for higher-dimensional fixed components. Its setting supplies useful further context; the point theorem and all coefficient maps used here have been proved in this course.</p>
+<p>These three selected point targets are now taught relative to the stated written prerequisites. The course continues with constructible functions and Lagrangian cycles in §9.7, then the assigned perverse-sheaf and differential-system chapters. Full finer atomization, lower geometric proofs, existing-lesson reconciliation.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/shrinking-localization-and-complex-fixed-point-traces.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

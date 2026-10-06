@@ -1,0 +1,50 @@
+"""Exact multiplier comparison for the two frequency regions; CC0."""
+from pathlib import Path
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+plt.rcParams.update({'font.family':'DejaVu Sans','mathtext.fontset':'dejavusans','font.size':11})
+fig=plt.figure(figsize=(14,10),dpi=150,facecolor='#fffdfa')
+ink='#193249';muted='#4b5867';blue='#4389b7';purple='#865987';green='#497a64'
+fig.text(.045,.955,'Two frequency regions recover the weak transverse norm',fontsize=20,weight='bold',color=ink)
+fig.text(.045,.915,r'$r=(1+|\eta|^2)^{1/2},\quad r_\tau=(\tau^2+|\eta|^2)^{1/2},\quad R_\tau^2=\sigma^2+|\eta|^2+\tau^2$',fontsize=14,color=ink)
+fig.text(.045,.876,'Exact multiplier inequalities, valid for every real time frequency σ. Numerical plots below use τ = 8.',fontsize=11.5,color=muted)
+regions=fig.add_axes([.07,.40,.38,.37],facecolor='#fffdfa')
+regions.axhspan(0,8,color='#f1e8f2');regions.axhspan(8,20,color='#e4f1f8')
+regions.axhline(8,color=ink,lw=1.7)
+regions.set_xlim(-16,16);regions.set_ylim(0,20)
+regions.set_xlabel(r'Time frequency $\sigma$')
+regions.set_ylabel(r'Transverse frequency magnitude $|\eta|$')
+regions.set_title('Frequency split: no restriction on σ',fontsize=13,weight='bold',pad=17)
+regions.text(0,14,r'$|\eta|\geq\tau:\quad R_\tau^2/r\leq\sqrt{2}\,R_\tau^2/r_\tau$',ha='center',fontsize=12,color=ink)
+regions.text(0,11.5,'Transverse inverse + elliptic control',ha='center',fontsize=11,color=blue)
+regions.text(0,4.7,r'$|\eta|<\tau:\quad R_\tau^2/r\leq2(\sigma^2+\tau^2)/r$',ha='center',fontsize=11.5,color=ink)
+regions.text(0,2.6,'Time-only estimate + elliptic control',ha='center',fontsize=10.5,color=purple)
+regions.text(-15.2,8.55,r'$|\eta|=\tau=8$',fontsize=10.5,color=ink)
+regions.grid(alpha=.16)
+curve=fig.add_axes([.59,.40,.35,.37],facecolor='#fffdfa')
+eta=np.linspace(0,20,801);sigma=12;tau=8
+r=np.sqrt(1+eta*eta);rt=np.sqrt(tau*tau+eta*eta);R2=sigma*sigma+eta*eta+tau*tau
+curve.axvspan(0,8,color='#f1e8f2',alpha=.6);curve.axvspan(8,20,color='#e4f1f8',alpha=.6)
+curve.plot(eta,R2/r,color=ink,lw=2.5,label=r'Needed: $R_\tau^2/r$')
+curve.plot(eta,2*(sigma*sigma+tau*tau)/r,color=purple,lw=1.8,ls='--',label=r'Low bound: $2(\sigma^2+\tau^2)/r$')
+curve.plot(eta,np.sqrt(2)*R2/rt,color=blue,lw=2,ls='-.',label=r'High bound: $\sqrt{2}R_\tau^2/r_\tau$')
+curve.axvline(8,color=ink,lw=1.3)
+curve.set_yscale('log');curve.set_xlim(0,20);curve.set_ylim(15,500)
+curve.set_xlabel(r'Transverse magnitude $|\eta|$')
+curve.set_ylabel('Multiplier value (logarithmic scale)')
+curve.set_title(r'Exact slice $\sigma=12,\ \tau=8$',fontsize=13,weight='bold',pad=17)
+curve.legend(loc='upper right',frameon=False,fontsize=9)
+curve.grid(alpha=.2,which='both')
+for ax in [regions,curve]:
+ for spine in ax.spines.values():spine.set_color('#bdc7ce')
+fig.text(.07,.312,'The displayed high bound is used only in the blue region.',fontsize=11,color=blue)
+fig.text(.07,.274,'The displayed low bound is used only in the purple region.',fontsize=11,color=purple)
+fig.text(.59,.312,r'At $\eta=0$: $(R_\tau^2/r)/(R_\tau^2/r_\tau)=\tau$.',fontsize=11.5,color=ink)
+fig.text(.59,.274,'A transverse elliptic bound alone loses this factor.',fontsize=10.5,color=muted)
+fig.text(.5,.192,r'Combined: $\|R_\tau(D)^2r(D_x)^{-1}v\|_2\leq C(\|r(D_x)^{-1}P_\tau v\|_2+\tau\|v\|_2)$',ha='center',fontsize=14,color=green)
+fig.text(.045,.126,'Every derivative power in (1.5) is bounded by this multiplier. Sharp region comparisons: (4.6);assembly: (4.7).',fontsize=10.5,color=muted)
+fig.text(.045,.088,'The plots sample exact scalar multiplier formulas. Operator errors and domains are proved in Lemmas2.1,3.1 and Section4.',fontsize=10,color=muted)
+fig.text(.045,.045,'Hörmander IV,Lemma28.1.5,pp225–226. Original diagram and reproducible Python source;CC0.',fontsize=10,color=muted)
+fig.savefig(Path(__file__).with_name('two-frequency-regions.png'),dpi=150)

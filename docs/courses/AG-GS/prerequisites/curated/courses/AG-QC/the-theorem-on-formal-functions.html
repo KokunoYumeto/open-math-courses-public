@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The theorem on formal functions · Cohomology of quasi-coherent sheaves</title><link rel="stylesheet" href="assets/reader.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../../../assets/mathjax/tex-chtml-full.js"></script></head><body><header><nav>Open Mathematics CoursesCohomology of quasi-coherent sheavesPrerequisites and proofs</nav></header><main><nav>Previous<a href="src/the-theorem-on-formal-functions.md">Markdown</a><a href="files/the-theorem-on-formal-functions.tex">LaTeX</a>Next</nav><span id="AG-QC-10"></span><h1 id="the-theorem-on-formal-functions">The theorem on formal functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).</em></p>
+<p>A fiber remembers a family at one parameter. Its successive infinitesimal neighborhoods remember powers of that parameter's maximal ideal. Formal functions identifies the inverse limit of their cohomology with the completion of a finite cohomology module. The individual comparison maps can fail to be isomorphisms; what makes the theorem work is a uniform bound on how long their errors persist.</p>
+<p>We use <a href="../../../AG-QC/proper-morphisms-and-coherent-direct-images.html">proper coherent direct images</a>, <a href="affine-cohomology-and-serres-criterion.html">affine cohomology and Serre's criterion</a>, and <a href="base-change-and-the-grothendieck-complex.html">flat base change</a>. <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-19.html#3-noetherian-exactness-tensoring-and-flatness">Completion, Theorems 3.1–3.3</a> supplies exact completion of finite modules over Noetherian rings and faithful flatness when the completion ideal lies in the Jacobson radical, including maximal-ideal completion of a Noetherian local ring. The dimension consequences in Section 5 use <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html#7-the-bound-for-all-finite-type-schemes">Cohomological dimension and the Künneth formula, Lemma 7.1</a>, the full Noetherian topological vanishing proof for arbitrary abelian sheaves. No flatness assumption on the coherent sheaf is imposed in this lesson.</p>
+<h2 id="1-the-completion-map">1. The completion map</h2>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be Noetherian, <span class="math" data-tex="\(I\subset A\)">\(I\subset A\)</span> an ideal, <span class="math" data-tex="\(f:X\to\operatorname{Spec}A\)">\(f:X\to\operatorname{Spec}A\)</span> proper, and <span class="math" data-tex="\(F\)">\(F\)</span> coherent. For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, put
+<span class="math math-display" data-tex="\[
+X_n=X\times_A\operatorname{Spec}(A/I^n),\qquad F_n=F|_{X_n}.
+\]">\[
+X_n=X\times_A\operatorname{Spec}(A/I^n),\qquad F_n=F|_{X_n}.
+\]</span>
+The closed immersion <span class="math" data-tex="\(i_n:X_n\hookrightarrow X\)">\(i_n:X_n\hookrightarrow X\)</span> has
+<span class="math" data-tex="\(i_{n*}F_n=F/I^nF\)">\(i_{n*}F_n=F/I^nF\)</span>. Since closed immersion pushforward is exact and has no positive direct images, we may compute
+<span class="math math-display" data-tex="\[
+H^q(X_n,F_n)=H^q(X,F/I^nF).
+\]">\[
+H^q(X_n,F_n)=H^q(X,F/I^nF).
+\]</span>
+Set <span class="math" data-tex="\(M^q=H^q(X,F)\)">\(M^q=H^q(X,F)\)</span>, a finite <span class="math" data-tex="\(A\)">\(A\)</span>-module by proper finiteness. The quotient map on sheaves induces
+<span class="math math-display" data-tex="\[
+M^q/I^nM^q\longrightarrow H^q(X_n,F_n),
+\]">\[
+M^q/I^nM^q\longrightarrow H^q(X_n,F_n),
+\]</span>
+because <span class="math" data-tex="\(I^n\)">\(I^n\)</span> annihilates the target. These maps are compatible with reduction from <span class="math" data-tex="\(n+1\)">\(n+1\)</span> to <span class="math" data-tex="\(n\)">\(n\)</span>. We seek an isomorphism from
+<span class="math math-display" data-tex="\[
+\widehat{M^q}=\varprojlim_n M^q/I^nM^q
+\]">\[
+\widehat{M^q}=\varprojlim_n M^q/I^nM^q
+\]</span>
+to the inverse limit of the right-hand terms. Completion here is with respect to <span class="math" data-tex="\(I\)">\(I\)</span>; neither <span class="math" data-tex="\(A\)">\(A\)</span> nor <span class="math" data-tex="\(M^q\)">\(M^q\)</span> is assumed complete in advance.</p>
+<p>The theorem is not a claim that every finite-level map is an isomorphism. For example, the extension bundle on <span class="math" data-tex="\(\mathbf P^1_{k[t]}\)">\(\mathbf P^1_{k[t]}\)</span> with class <span class="math" data-tex="\(t\)">\(t\)</span> has <span class="math" data-tex="\(H^0(X,E)=0\)">\(H^0(X,E)=0\)</span>, but has a nonzero section on the fiber <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. We will return to its infinitesimal neighborhoods in Exercise 7.6.</p>
+<h2 id="2-all-powers-at-once">2. All powers at once</h2>
+<p>The <strong>Rees algebra</strong> is
+<span class="math math-display" data-tex="\[
+R=\bigoplus_{n\geq0}I^nT^n\subset A[T],\qquad R_0=A.
+\]">\[
+R=\bigoplus_{n\geq0}I^nT^n\subset A[T],\qquad R_0=A.
+\]</span>
+If <span class="math" data-tex="\(I=(a_1,\ldots,a_r)\)">\(I=(a_1,\ldots,a_r)\)</span>, then <span class="math" data-tex="\(R\)">\(R\)</span> is generated by the degree-one elements <span class="math" data-tex="\(a_iT\)">\(a_iT\)</span>, hence is a quotient of a polynomial algebra in finitely many variables over <span class="math" data-tex="\(A\)">\(A\)</span>. It is Noetherian. The symbol <span class="math" data-tex="\(T\)">\(T\)</span> records degree; it need not itself belong to <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Lemma 2.1 (graded cohomological finiteness).</strong> For each <span class="math" data-tex="\(q\geq0\)">\(q\geq0\)</span>, the graded module
+<span class="math math-display" data-tex="\[
+Q^q=\bigoplus_{n\geq0}H^q(X,I^nF)T^n
+\]">\[
+Q^q=\bigoplus_{n\geq0}H^q(X,I^nF)T^n
+\]</span>
+is finite over <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Form <span class="math" data-tex="\(X_R=X\times_A\operatorname{Spec}R\)">\(X_R=X\times_A\operatorname{Spec}R\)</span>, with affine projection <span class="math" data-tex="\(\pi:X_R\to X\)">\(\pi:X_R\to X\)</span>. On <span class="math" data-tex="\(X\)">\(X\)</span>, the graded sheaf <span class="math" data-tex="\(\bigoplus I^nF\)">\(\bigoplus I^nF\)</span> is a module over <span class="math" data-tex="\(\mathcal O_X\otimes_A R\)">\(\mathcal O_X\otimes_A R\)</span>: a degree-<span class="math" data-tex="\(d\)">\(d\)</span> element acts by multiplication into the degree shifted by <span class="math" data-tex="\(d\)">\(d\)</span>. It is a quotient of <span class="math" data-tex="\(F\otimes_A R\)">\(F\otimes_A R\)</span>, by the degreewise maps <span class="math" data-tex="\(F\otimes_A I^n\to I^nF\)">\(F\otimes_A I^n\to I^nF\)</span>. The affine module/sheaf correspondence gives a coherent sheaf <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(X_R\)">\(X_R\)</span> with
+<span class="math math-display" data-tex="\[
+\pi_*G=\bigoplus_{n\geq0}I^nF.
+\]">\[
+\pi_*G=\bigoplus_{n\geq0}I^nF.
+\]</span>
+Coherence follows because <span class="math" data-tex="\(X_R\)">\(X_R\)</span> is Noetherian and this sheaf is locally a finite module, generated by a finite set of degree-zero generators of <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>The map <span class="math" data-tex="\(X_R\to\operatorname{Spec}R\)">\(X_R\to\operatorname{Spec}R\)</span> is proper by base change. Proper cohomology finiteness makes <span class="math" data-tex="\(H^q(X_R,G)\)">\(H^q(X_R,G)\)</span> finite over <span class="math" data-tex="\(R\)">\(R\)</span>. Affine pushforward and Leray identify it with <span class="math" data-tex="\(H^q(X,\pi_*G)\)">\(H^q(X,\pi_*G)\)</span>. Finally cohomology of quasi-coherent sheaves on the quasi-compact, quasi-separated scheme <span class="math" data-tex="\(X\)">\(X\)</span> commutes with filtered colimits, by the third lesson. A direct sum is the filtered colimit of finite partial sums, so
+<span class="math math-display" data-tex="\[
+H^q(X,\pi_*G)=\bigoplus_{n\geq0}H^q(X,I^nF).
+\]">\[
+H^q(X,\pi_*G)=\bigoplus_{n\geq0}H^q(X,I^nF).
+\]</span>
+The identifications preserve multiplication and grading. This is the asserted finite graded module. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We next extract two consequences. Write
+<span class="math math-display" data-tex="\[
+J_n^q=\operatorname{im}\bigl(H^q(X,I^nF)\to M^q\bigr),
+\qquad K_n^q=\ker\bigl(H^q(X,I^nF)\to M^q\bigr).
+\]">\[
+J_n^q=\operatorname{im}\bigl(H^q(X,I^nF)\to M^q\bigr),
+\qquad K_n^q=\ker\bigl(H^q(X,I^nF)\to M^q\bigr).
+\]</span>
+Both collections respect graded multiplication. Indeed inclusion of ideal powers commutes with multiplying a section or cohomology class by an element of <span class="math" data-tex="\(I^d\)">\(I^d\)</span>. Thus <span class="math" data-tex="\(\bigoplus J_n^qT^n\)">\(\bigoplus J_n^qT^n\)</span> is a finite graded image module of <span class="math" data-tex="\(Q^q\)">\(Q^q\)</span>, and <span class="math" data-tex="\(\bigoplus K_n^qT^n\)">\(\bigoplus K_n^qT^n\)</span> is a finite graded submodule, using Noetherianness of <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p><strong>Lemma 2.2 (bounds on the image and kernel).</strong> There are integers <span class="math" data-tex="\(c_J,c_K\geq0\)">\(c_J,c_K\geq0\)</span> such that
+<span class="math math-display" data-tex="\[
+I^nM^q\subset J_n^q\subset I^{n-c_J}M^q\quad(n\geq c_J),
+\]">\[
+I^nM^q\subset J_n^q\subset I^{n-c_J}M^q\quad(n\geq c_J),
+\]</span>
+and the transition map <span class="math" data-tex="\(K_m^q\to K_n^q\)">\(K_m^q\to K_n^q\)</span> is zero whenever <span class="math" data-tex="\(m\geq n+c_K\)">\(m\geq n+c_K\)</span>.</p>
+<p><strong>Proof.</strong> Multiplication by an element of <span class="math" data-tex="\(I^n\)">\(I^n\)</span> factors as <span class="math" data-tex="\(F\to I^nF\to F\)">\(F\to I^nF\to F\)</span>, proving the first inclusion. Choose finitely many homogeneous generators of the image module, all in degrees at most <span class="math" data-tex="\(c_J\)">\(c_J\)</span>. The degree-<span class="math" data-tex="\(n\)">\(n\)</span> part is a sum of <span class="math" data-tex="\(I^{n-d}J_d^q\)">\(I^{n-d}J_d^q\)</span> over generator degrees <span class="math" data-tex="\(d\leq c_J\)">\(d\leq c_J\)</span>. Each is contained in <span class="math" data-tex="\(I^{n-c_J}M^q\)">\(I^{n-c_J}M^q\)</span>, proving the second inclusion. This is the cohomological analogue of an Artin–Rees bound.</p>
+<p>Choose homogeneous kernel generators <span class="math" data-tex="\(k_\ell\in K_{d_\ell}^q\)">\(k_\ell\in K_{d_\ell}^q\)</span> with <span class="math" data-tex="\(d_\ell\leq c_K\)">\(d_\ell\leq c_K\)</span>. An element of <span class="math" data-tex="\(K_m^q\)">\(K_m^q\)</span> is a sum of products <span class="math" data-tex="\(a_\ell k_\ell\)">\(a_\ell k_\ell\)</span>, with <span class="math" data-tex="\(a_\ell\in I^{m-d_\ell}\)">\(a_\ell\in I^{m-d_\ell}\)</span>. If <span class="math" data-tex="\(m\geq n+c_K\)">\(m\geq n+c_K\)</span>, each such coefficient is a sum of products <span class="math" data-tex="\(ba&#x27;\)">\(ba&#x27;\)</span>, where <span class="math" data-tex="\(b\in I^n\)">\(b\in I^n\)</span> and <span class="math" data-tex="\(a&#x27;\in I^{m-d_\ell-n}\)">\(a&#x27;\in I^{m-d_\ell-n}\)</span>. Under transition to <span class="math" data-tex="\(H^q(X,I^nF)\)">\(H^q(X,I^nF)\)</span>, its product with <span class="math" data-tex="\(k_\ell\)">\(k_\ell\)</span> is computed by first including <span class="math" data-tex="\(I^{d_\ell}F\)">\(I^{d_\ell}F\)</span> into <span class="math" data-tex="\(F\)">\(F\)</span>, then multiplying by <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, then by <span class="math" data-tex="\(b\)">\(b\)</span> into <span class="math" data-tex="\(I^nF\)">\(I^nF\)</span>. The initial inclusion sends <span class="math" data-tex="\(k_\ell\)">\(k_\ell\)</span> to zero, by definition of the kernel. Hence every product maps to zero. This proves the uniform transition bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A system whose sufficiently distant transition maps to each fixed term are zero is called <strong>pro-zero</strong>. Its individual terms may be nonzero; its inverse limit is zero because each coordinate of a compatible family is the image of a distant, necessarily zero, transition. Lemma 2.2 supplies this stronger, bounded form of disappearance for the kernel system.</p>
+<h2 id="3-stabilization-of-the-thickened-cohomology">3. Stabilization of the thickened cohomology</h2>
+<p>The short exact sequence <span class="math" data-tex="\(0\to I^nF\to F\to F/I^nF\to0\)">\(0\to I^nF\to F\to F/I^nF\to0\)</span> gives the exact sequence
+<span class="math math-display" data-tex="\[
+0\to M^q/J_n^q\longrightarrow H^q(X_n,F_n)\longrightarrow K_n^{q+1}\to0.
+\tag{1}
+\]">\[
+0\to M^q/J_n^q\longrightarrow H^q(X_n,F_n)\longrightarrow K_n^{q+1}\to0.
+\tag{1}
+\]</span>
+It is a sequence of inverse systems. The left transitions are surjective because <span class="math" data-tex="\(J_m^q\subset J_n^q\)">\(J_m^q\subset J_n^q\)</span> for <span class="math" data-tex="\(m\geq n\)">\(m\geq n\)</span>. The right system is pro-zero by Lemma 2.2 in degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span>.</p>
+<p><strong>Proposition 3.1 (the Mittag–Leffler bound).</strong> For fixed <span class="math" data-tex="\(q\)">\(q\)</span>, choose <span class="math" data-tex="\(c\)">\(c\)</span> as the kernel bound in degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. Then for <span class="math" data-tex="\(m\geq n+c\)">\(m\geq n+c\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{im}\bigl(H^q(X_m,F_m)\to H^q(X_n,F_n)\bigr)
+=\operatorname{im}\bigl(M^q\to H^q(X_n,F_n)\bigr).
+\]">\[
+\operatorname{im}\bigl(H^q(X_m,F_m)\to H^q(X_n,F_n)\bigr)
+=\operatorname{im}\bigl(M^q\to H^q(X_n,F_n)\bigr).
+\]</span>
+Consequently the thickened-cohomology system is Mittag–Leffler.</p>
+<p><strong>Proof.</strong> In diagram (1) for indices <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, the right transition is zero. Therefore the middle transition lands in the left submodule <span class="math" data-tex="\(M^q/J_n^q\)">\(M^q/J_n^q\)</span>. It contains all of that submodule: the left transition <span class="math" data-tex="\(M^q/J_m^q\to M^q/J_n^q\)">\(M^q/J_m^q\to M^q/J_n^q\)</span> is onto, and these left modules inject into the respective middle terms. Thus its image is exactly the claimed submodule. The image is independent of all sufficiently large <span class="math" data-tex="\(m\)">\(m\)</span>, which is the Mittag–Leffler condition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We can now take the limit without an unexplained exchange of limits and cohomology. If <span class="math" data-tex="\((u_n)\)">\((u_n)\)</span> is a compatible family of middle classes in (1), its images in <span class="math" data-tex="\(K_n^{q+1}\)">\(K_n^{q+1}\)</span> form a compatible family in a pro-zero system, so are all zero. Thus each <span class="math" data-tex="\(u_n\)">\(u_n\)</span> lies in the injective left term, with a unique preimage. These preimages are automatically compatible. We obtain the canonical identification
+<span class="math math-display" data-tex="\[
+\varprojlim_n H^q(X_n,F_n)=\varprojlim_n M^q/J_n^q.
+\tag{2}
+\]">\[
+\varprojlim_n H^q(X_n,F_n)=\varprojlim_n M^q/J_n^q.
+\tag{2}
+\]</span>
+This also proves why a transient class on a small thickening need not define a class in the inverse limit. Compatibility with every higher thickening is a real constraint.</p>
+<h2 id="4-global-and-stalk-forms-of-formal-functions">4. Global and stalk forms of formal functions</h2>
+<span id="AG-QC-10-formal-functions"></span><p><strong>Theorem 4.1 (formal functions).</strong> Under the hypotheses of Section 1, the canonical maps give an isomorphism
+<span class="math math-display" data-tex="\[
+\widehat{H^q(X,F)}\xrightarrow{\sim}\varprojlim_n H^q(X_n,F_n).
+\]">\[
+\widehat{H^q(X,F)}\xrightarrow{\sim}\varprojlim_n H^q(X_n,F_n).
+\]</span>
+It is an isomorphism of <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-modules and a homeomorphism for their inverse-limit topologies.</p>
+<p><strong>Proof.</strong> Combine (2) with the inclusions from Lemma 2.2:
+<span class="math math-display" data-tex="\[
+I^nM^q\subset J_n^q,\qquad J_{n+c_J}^q\subset I^nM^q.
+\]">\[
+I^nM^q\subset J_n^q,\qquad J_{n+c_J}^q\subset I^nM^q.
+\]</span>
+They say that the two descending filtrations <span class="math" data-tex="\((I^nM^q)\)">\((I^nM^q)\)</span> and <span class="math" data-tex="\((J_n^q)\)">\((J_n^q)\)</span> are cofinal. The identification (2) also preserves the limit topologies: each left term is a discrete submodule of the corresponding middle term, and its unique coordinate preimage is continuous on that submodule. The first inclusions give the canonical continuous map between the inverse limits of the corresponding quotients. The second give its inverse by taking the cofinal shifted indices <span class="math" data-tex="\(n+c_J\)">\(n+c_J\)</span>. The two composites are the usual transitions and hence induce the identity on limits. Both maps are continuous for the quotient limit topologies, proving the homeomorphism. The maps arise from <span class="math" data-tex="\(A\)">\(A\)</span>-linear maps at all levels, where <span class="math" data-tex="\(I^n\)">\(I^n\)</span> annihilates the cohomology of <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, and so preserve the induced <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span>-action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (the stalk form).</strong> Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> be proper, <span class="math" data-tex="\(S\)">\(S\)</span> locally Noetherian, <span class="math" data-tex="\(F\)">\(F\)</span> coherent, and <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. Put <span class="math" data-tex="\(A_s=\mathcal O_{S,s}\)">\(A_s=\mathcal O_{S,s}\)</span>, with maximal ideal <span class="math" data-tex="\(\mathfrak m_s\)">\(\mathfrak m_s\)</span>, and
+<span class="math math-display" data-tex="\[
+X_n=X\times_S\operatorname{Spec}(A_s/\mathfrak m_s^n),\qquad F_n=F|_{X_n}.
+\]">\[
+X_n=X\times_S\operatorname{Spec}(A_s/\mathfrak m_s^n),\qquad F_n=F|_{X_n}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\widehat{(R^qf_*F)_s}\cong\varprojlim_n H^q(X_n,F_n)
+\]">\[
+\widehat{(R^qf_*F)_s}\cong\varprojlim_n H^q(X_n,F_n)
+\]</span>
+as <span class="math" data-tex="\(\widehat{A_s}\)">\(\widehat{A_s}\)</span>-modules.</p>
+<p><strong>Proof.</strong> The canonical map <span class="math" data-tex="\(\operatorname{Spec}A_s\to S\)">\(\operatorname{Spec}A_s\to S\)</span> is flat: on an affine neighborhood it is localization. Flat base change and the affine description of quasi-coherent direct images identify the stalk with <span class="math" data-tex="\(H^q(X\times_S\operatorname{Spec}A_s,F|_{X\times_S\operatorname{Spec}A_s})\)">\(H^q(X\times_S\operatorname{Spec}A_s,F|_{X\times_S\operatorname{Spec}A_s})\)</span>. The local ring is Noetherian, the changed morphism proper, and the changed sheaf coherent. Apply Theorem 4.1 with ideal <span class="math" data-tex="\(\mathfrak m_s\)">\(\mathfrak m_s\)</span>. Its thickenings are precisely the displayed <span class="math" data-tex="\(X_n\)">\(X_n\)</span>, since their parameter maps factor through <span class="math" data-tex="\(\operatorname{Spec}A_s\)">\(\operatorname{Spec}A_s\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-dimension-and-finiteness-consequences">5. Dimension and finiteness consequences</h2>
+<p><strong>Theorem 5.1 (vanishing above a fiber's dimension).</strong> For the morphism of Corollary 4.2,
+<span class="math math-display" data-tex="\[
+(R^qf_*F)_s=0\quad\text{if }q&gt;\dim X_s.
+\]">\[
+(R^qf_*F)_s=0\quad\text{if }q&gt;\dim X_s.
+\]</span></p>
+<p><strong>Proof.</strong> Each <span class="math" data-tex="\(X_n\)">\(X_n\)</span> has the same underlying topological space as <span class="math" data-tex="\(X_s\)">\(X_s\)</span>: the extra ideal is nilpotent and therefore belongs to every prime. That space is Noetherian, of finite dimension <span class="math" data-tex="\(d\)">\(d\)</span>, because <span class="math" data-tex="\(X_s\)">\(X_s\)</span> is of finite type over a field. The Noetherian topological vanishing theorem, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula.html#7-the-bound-for-all-finite-type-schemes">Cohomological dimension and the Künneth formula, Lemma 7.1</a>, gives <span class="math" data-tex="\(H^q(X_n,F_n)=0\)">\(H^q(X_n,F_n)=0\)</span> for <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>. Formal functions makes the completed stalk zero. The uncompleted stalk is finite by proper coherence. For a finite module over a Noetherian local ring, completion preserves the residue-field quotient; zero completion implies <span class="math" data-tex="\(M/\mathfrak mM=0\)">\(M/\mathfrak mM=0\)</span>, and Nakayama implies <span class="math" data-tex="\(M=0\)">\(M=0\)</span>. This proves the assertion. An empty fiber gives empty thickenings and the same conclusion in every degree. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The vanishing is a statement about the whole stalk, stronger than a statement about its tensor with the residue field. In particular, if all fiber dimensions are at most <span class="math" data-tex="\(d\)">\(d\)</span>, then <span class="math" data-tex="\(R^qf_*F=0\)">\(R^qf_*F=0\)</span> for <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>, without a flatness assumption.</p>
+<p><strong>Theorem 5.2 (proper with finite fibers is finite).</strong> A proper morphism over a locally Noetherian base whose fibers have finitely many points is finite.</p>
+<p><strong>Proof.</strong> Its fibers are finite type over fields. Such schemes with finitely many points are zero-dimensional by Noether normalization. Indeed an affine chart admits a finite integral surjection onto affine space of its dimension; a positive-dimensional affine space over any field has infinitely many points, so a finite-point chart cannot have positive dimension. Their zero-dimensional coordinate rings are finite-dimensional by Noether normalization. Thus Theorem 5.1 makes <span class="math" data-tex="\(R^1f_*G=0\)">\(R^1f_*G=0\)</span> for every coherent <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p>Work over an affine Noetherian neighborhood <span class="math" data-tex="\(S=\operatorname{Spec}A\)">\(S=\operatorname{Spec}A\)</span>. Its inverse image <span class="math" data-tex="\(X\)">\(X\)</span> is Noetherian, separated and quasi-compact. Any finite type ideal <span class="math" data-tex="\(J\subset\mathcal O_X\)">\(J\subset\mathcal O_X\)</span> is coherent, and Leray over the affine base gives
+<span class="math math-display" data-tex="\[
+H^1(X,J)=\Gamma(S,R^1f_*J)=0.
+\]">\[
+H^1(X,J)=\Gamma(S,R^1f_*J)=0.
+\]</span>
+Here affine vanishing eliminates the other Leray terms, since the direct images are quasi-coherent. The finite-ideal version of Serre's affine criterion from the third lesson now implies that <span class="math" data-tex="\(X\)">\(X\)</span> is affine. Its function ring <span class="math" data-tex="\(H^0(X,\mathcal O_X)\)">\(H^0(X,\mathcal O_X)\)</span> is a finite <span class="math" data-tex="\(A\)">\(A\)</span>-module by proper cohomology finiteness. Hence <span class="math" data-tex="\(X\to\operatorname{Spec}A\)">\(X\to\operatorname{Spec}A\)</span> is finite. This is local on the base and proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A quasi-finite proper morphism over a locally Noetherian base is therefore finite. The planned <em>Zariski's Main Theorem</em> lesson in <em>Morphisms of schemes</em> gives another route; the present route uses formal functions and the cohomological affine criterion.</p>
+<h2 id="6-the-blow-up-of-a-plane-point">6. The blow-up of a plane point</h2>
+<p>Let <span class="math" data-tex="\(b:X\to\mathbf A^2_k\)">\(b:X\to\mathbf A^2_k\)</span> be the blow-up of the origin and <span class="math" data-tex="\(E\cong\mathbf P^1_k\)">\(E\cong\mathbf P^1_k\)</span> its exceptional curve. Its two charts are
+<span class="math math-display" data-tex="\[
+U=\operatorname{Spec}k[x,v],\quad y=xv,
+\qquad V=\operatorname{Spec}k[u,y],\quad x=uy.
+\]">\[
+U=\operatorname{Spec}k[x,v],\quad y=xv,
+\qquad V=\operatorname{Spec}k[u,y],\quad x=uy.
+\]</span>
+They identify the blow-up with the closed incidence scheme in <span class="math" data-tex="\(\mathbf A^2\times\mathbf P^1\)">\(\mathbf A^2\times\mathbf P^1\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> is projective and proper. Off the origin it is an isomorphism. The pulled-back origin ideal <span class="math" data-tex="\(\mathfrak m=(x,y)\)">\(\mathfrak m=(x,y)\)</span> is generated by <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> and by <span class="math" data-tex="\(y\)">\(y\)</span> on <span class="math" data-tex="\(V\)">\(V\)</span>, and is the invertible ideal <span class="math" data-tex="\(J=\mathcal O_X(-E)\)">\(J=\mathcal O_X(-E)\)</span>. On the overlap <span class="math" data-tex="\(y=vx\)">\(y=vx\)</span>, so its conormal restriction is <span class="math" data-tex="\(\mathcal O_E(1)\)">\(\mathcal O_E(1)\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+J^j/J^{j+1}\cong\mathcal O_E(j)\quad(j\geq0).
+\]">\[
+J^j/J^{j+1}\cong\mathcal O_E(j)\quad(j\geq0).
+\]</span>
+The positive sign is essential: the normal bundle of <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(\mathcal O_E(-1)\)">\(\mathcal O_E(-1)\)</span>, whereas the successive ideal layers use its dual.</p>
+<p>The thickened fiber <span class="math" data-tex="\(X_n\)">\(X_n\)</span> is defined by <span class="math" data-tex="\(J^n\)">\(J^n\)</span>. For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>,
+<span class="math math-display" data-tex="\[
+0\to\mathcal O_E(n-1)\to\mathcal O_{X_n}\to\mathcal O_{X_{n-1}}\to0.
+\]">\[
+0\to\mathcal O_E(n-1)\to\mathcal O_{X_n}\to\mathcal O_{X_{n-1}}\to0.
+\]</span>
+Projective-line cohomology gives <span class="math" data-tex="\(H^1(E,\mathcal O_E(j))=0\)">\(H^1(E,\mathcal O_E(j))=0\)</span> for every <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>. The long exact sequences, starting with <span class="math" data-tex="\(X_1=E\)">\(X_1=E\)</span>, give <span class="math" data-tex="\(H^1(X_n,\mathcal O_{X_n})=0\)">\(H^1(X_n,\mathcal O_{X_n})=0\)</span> for all <span class="math" data-tex="\(n\)">\(n\)</span>. By formal functions and Nakayama, <span class="math" data-tex="\((R^1b_*\mathcal O_X)_0=0\)">\((R^1b_*\mathcal O_X)_0=0\)</span>. Away from zero the morphism is an isomorphism, so
+<span class="math math-display" data-tex="\[
+R^1b_*\mathcal O_X=0.
+\]">\[
+R^1b_*\mathcal O_X=0.
+\]</span>
+All still higher direct images vanish by the fiber-dimension bound, because the largest fiber dimension is one.</p>
+<p>We can also see the completed degree-zero comparison explicitly. The canonical polynomial map
+<span class="math math-display" data-tex="\[
+k[x,y]/(x,y)^n\longrightarrow H^0(X_n,\mathcal O_{X_n})
+\]">\[
+k[x,y]/(x,y)^n\longrightarrow H^0(X_n,\mathcal O_{X_n})
+\]</span>
+is an isomorphism. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span> both sides are <span class="math" data-tex="\(k\)">\(k\)</span>. At the induction step, its map on the leftmost ideal layers is
+<span class="math math-display" data-tex="\[
+(x,y)^{n-1}/(x,y)^n\xrightarrow{\sim}H^0(E,\mathcal O_E(n-1)),
+\]">\[
+(x,y)^{n-1}/(x,y)^n\xrightarrow{\sim}H^0(E,\mathcal O_E(n-1)),
+\]</span>
+the monomial basis identification from projective-space cohomology. Both the polynomial quotient sequence and the section sequence are short exact, the latter because the layer has zero <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Induction proves the isomorphism. Their limits give <span class="math" data-tex="\(k[[x,y]]\)">\(k[[x,y]]\)</span>. The unit map from the base local ring to <span class="math" data-tex="\((b_*\mathcal O_X)_0\)">\((b_*\mathcal O_X)_0\)</span> becomes an isomorphism after completion. Exactness and faithful flatness of completion for finite modules make it an isomorphism before completion; off the origin the same holds directly. Thus <span class="math" data-tex="\(b_*\mathcal O_X=\mathcal O_{\mathbf A^2}\)">\(b_*\mathcal O_X=\mathcal O_{\mathbf A^2}\)</span>, as well as higher vanishing.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (easy: completed constants).</strong> State and prove the completed-stalk formula for <span class="math" data-tex="\(f_*\mathcal O_X\)">\(f_*\mathcal O_X\)</span> at a point of a locally Noetherian base.</p>
+<p><strong>Solution.</strong> For proper <span class="math" data-tex="\(f\)">\(f\)</span>, Corollary 4.2 in degree zero gives
+<span class="math" data-tex="\(\widehat{(f_*\mathcal O_X)_s}=\varprojlim_n H^0(X_n,\mathcal O_{X_n})\)">\(\widehat{(f_*\mathcal O_X)_s}=\varprojlim_n H^0(X_n,\mathcal O_{X_n})\)</span>, with <span class="math" data-tex="\(X_n\)">\(X_n\)</span> defined over <span class="math" data-tex="\(\mathcal O_{S,s}/\mathfrak m_s^n\)">\(\mathcal O_{S,s}/\mathfrak m_s^n\)</span>. Localization is flat, so identifies the stalk with degree-zero cohomology over the local ring; global formal functions for that ring and ideal gives the formula. All maps preserve multiplication, since they are restriction maps of structure sheaves. Hence it is an isomorphism of complete algebras, not only of modules.</p>
+<p><strong>Exercise 7.2 (medium: the exceptional layers).</strong> Compute the ideal layers of the exceptional curve in the plane blow-up and deduce <span class="math" data-tex="\(R^1b_*\mathcal O_X=0\)">\(R^1b_*\mathcal O_X=0\)</span>.</p>
+<p><strong>Solution.</strong> The local ideal frames are <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>, related by <span class="math" data-tex="\(y=vx\)">\(y=vx\)</span>; their restriction has the transition of <span class="math" data-tex="\(\mathcal O_{\mathbf P^1}(1)\)">\(\mathcal O_{\mathbf P^1}(1)\)</span>. Since the ideal is invertible, its <span class="math" data-tex="\(j\)">\(j\)</span>-th layer is its restricted <span class="math" data-tex="\(j\)">\(j\)</span>-th tensor power, <span class="math" data-tex="\(\mathcal O_{\mathbf P^1}(j)\)">\(\mathcal O_{\mathbf P^1}(j)\)</span>. Their <span class="math" data-tex="\(H^1\)">\(H^1\)</span> groups vanish for <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span>, so induction on the exact thickening sequences gives zero <span class="math" data-tex="\(H^1\)">\(H^1\)</span> on every <span class="math" data-tex="\(X_n\)">\(X_n\)</span>. Formal functions gives zero completed stalk at the origin, and finite-module Nakayama gives zero stalk. Off the origin the map is an isomorphism, proving the global assertion.</p>
+<p><strong>Exercise 7.3 (medium: finite fibers).</strong> Derive finiteness of a proper morphism with finite fibers using only formal functions, affine cohomology and Serre's criterion.</p>
+<p><strong>Solution.</strong> Every fiber and thickening has dimension zero, so its positive cohomology is zero. Formal functions and Nakayama annihilate <span class="math" data-tex="\(R^1f_*J\)">\(R^1f_*J\)</span> for every coherent ideal. Over an affine Noetherian base, Leray and affine vanishing give <span class="math" data-tex="\(H^1(X,J)=0\)">\(H^1(X,J)=0\)</span>. The finite-ideal affine criterion makes <span class="math" data-tex="\(X\)">\(X\)</span> affine. Proper finiteness makes its coordinate algebra finite over the base algebra, which is exactly finiteness of the morphism. This also covers empty fibers.</p>
+<p><strong>Exercise 7.4 (medium: a uniform dimension bound).</strong> If <span class="math" data-tex="\(\dim X_s\leq d\)">\(\dim X_s\leq d\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, prove <span class="math" data-tex="\(R^qf_*F=0\)">\(R^qf_*F=0\)</span> for <span class="math" data-tex="\(q&gt;d\)">\(q&gt;d\)</span>. Can <span class="math" data-tex="\(\dim X\)">\(\dim X\)</span> replace the fiber calculation in the proof without further assumptions?</p>
+<p><strong>Solution.</strong> Theorem 5.1 kills every stalk in the stated degrees, hence kills the sheaf. The proof works on the Noetherian topology of each thickened fiber and does not require a dimension bound on the total space. A locally Noetherian base can have unbounded or infinite Krull dimension, so a total-space bound might be unavailable and would in any event miss the sharper relative assertion.</p>
+<p><strong>Exercise 7.5 (hard: the inverse-limit step).</strong> Prove the stabilization and limit claims from (1), without assuming the middle transitions are surjective.</p>
+<p><strong>Solution.</strong> The right transition <span class="math" data-tex="\(K_m^{q+1}\to K_n^{q+1}\)">\(K_m^{q+1}\to K_n^{q+1}\)</span> is zero for <span class="math" data-tex="\(m\geq n+c\)">\(m\geq n+c\)</span>, so the middle image lies in <span class="math" data-tex="\(M^q/J_n^q\)">\(M^q/J_n^q\)</span>. The left transition is onto, so the middle image contains this entire submodule. Equality proves Mittag–Leffler stabilization. A compatible family in the middle maps to a compatible family in the pro-zero right system. Each of its right coordinates is the image of a sufficiently distant zero transition, so is zero. Each middle coordinate therefore has a unique preimage in the injective left term, and uniqueness forces compatibility of those preimages. Thus the two limits agree. Finally <span class="math" data-tex="\(I^nM^q\subset J_n^q\)">\(I^nM^q\subset J_n^q\)</span> and <span class="math" data-tex="\(J_{n+c_J}^q\subset I^nM^q\)">\(J_{n+c_J}^q\subset I^nM^q\)</span> identify the left limit continuously with the adic completion. Every assertion is justified without finite-level surjectivity of the middle system.</p>
+<p><strong>Exercise 7.6 (challenging: transient infinitesimal sections).</strong> For the extension with class <span class="math" data-tex="\(t\)">\(t\)</span> on <span class="math" data-tex="\(\mathbf P^1_{k[t]}\)">\(\mathbf P^1_{k[t]}\)</span>, compute <span class="math" data-tex="\(H^0\)">\(H^0\)</span> on every thickening <span class="math" data-tex="\(B_n=k[t]/(t^n)\)">\(B_n=k[t]/(t^n)\)</span>, its transition maps, and its inverse limit.</p>
+<p><strong>Solution.</strong> Its Grothendieck complex is <span class="math" data-tex="\([A\xrightarrow{t}A]\)">\([A\xrightarrow{t}A]\)</span> in degrees zero and one. Over <span class="math" data-tex="\(B_n\)">\(B_n\)</span>, the kernel of multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(k\,t^{n-1}\)">\(k\,t^{n-1}\)</span>, including <span class="math" data-tex="\(k\)">\(k\)</span> when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. Reduction <span class="math" data-tex="\(B_{n+1}\to B_n\)">\(B_{n+1}\to B_n\)</span> sends its kernel generator <span class="math" data-tex="\(t^n\)">\(t^n\)</span> to zero. Thus all adjacent transitions on degree-zero cohomology are zero, and its inverse limit is zero. This agrees with the completion of <span class="math" data-tex="\(H^0(X,E)=0\)">\(H^0(X,E)=0\)</span>, although every finite thickening has a nonzero section. In degree one, the cokernel is <span class="math" data-tex="\(k\)">\(k\)</span> at every level and the transitions are identities; its limit agrees with the completion of <span class="math" data-tex="\(A/(t)\)">\(A/(t)\)</span>. This exhibits both the transient error and the persistent cohomology in one family.</p>
+<h2 id="8-ampleness-near-a-fiber">8. Ampleness near a fiber</h2>
+<p>One additional geometric consequence is useful later. If <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> is proper with <span class="math" data-tex="\(S\)">\(S\)</span> locally Noetherian and an invertible <span class="math" data-tex="\(L\)">\(L\)</span> is ample on <span class="math" data-tex="\(X_s\)">\(X_s\)</span>, then it is relatively ample over some open neighborhood of <span class="math" data-tex="\(s\)">\(s\)</span>. We import the precise open proof [Stacks, Tags 0D2M and 0D2N]. It first uses the graded ideal layers and Serre vanishing on the fiber to lift sufficiently positive sections. A finite collection giving a fiber embedding then generates on a neighborhood, by properness; the induced projective-space map is finite near that fiber, and its pulled-back hyperplane bundle is ample there. The lifting and neighborhood argument is supplied by those exact proof locators, rather than by a flatness assumption on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Stacks]</strong> The Stacks project authors, <em>The Stacks project</em>, in its AI Integrated Stacks Project edition: graded powers <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-cohomology-powers-ideal-times-F">Tag 02O8</a>; filtration consequences <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-cohomology-powers-ideal-application">Tag 02OA</a>; Mittag–Leffler <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-ML-cohomology-powers-ideal">Tag 02OB</a>; formal functions <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-theorem-formal-functions">Tag 02OC</a>; stalk form <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-formal-functions-stalk">Tag 02OD</a>.</li>
+<li>Dimension bound <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-higher-direct-images-zero-above-dimension-fibre">Tag 02V7</a>, using the open topological theorem <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-proposition-vanishing-Noetherian">Tag 02UZ</a>; finiteness <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-characterize-finite">Tag 02OG</a>. The additional ampleness proof is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-ample-on-fibre">Tag 0D2M</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-ample-in-neighbourhood">Tag 0D2N</a>.</li>
+<li>These open reference treatments retain GNU FDL 1.2. The present exposition, proofs, examples and solutions are independently written CC0.  Sections 2–5 prove the assigned formal-functions, vanishing and finiteness results; the completion algebra belongs to the named prerequisite, and Section 8 names its additional open proof provider.</li>
+</ul>
+</main><footer><nav>Human sources<a href="licensing.html">Authorship and component terms</a>Editable source archive</nav><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Codex, Ultra, October 2026. English edition.</p></footer></body></html>

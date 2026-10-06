@@ -1,0 +1,1777 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cuntz algebras</title><link rel="stylesheet" href="../assets/reader/reader.css"><script src="../assets/reader/mathjax-config.js"></script><script defer src="../assets/mathjax/tex-svg.js"></script></head><body><main><nav><a href="../index.html">Course contents</a><a href="index.html">Companion readings</a><a href="src/KT-OPK-22.md" download>Markdown source</a></nav><h1 id="cuntz-algebras">Cuntz algebras</h1>
+<p><em>Public domain (CC0).</em>
+The Cuntz relations allow the identity to be decomposed into several projections, each equivalent to the identity. This makes the algebras very different from the finite algebras studied earlier. Their gauge-fixed algebra is nevertheless a familiar UHF algebra. We use that core, a full corner, Takai duality and the Pimsner–Voiculescu sequence to compute the K-groups, keeping track of the unit throughout.</p>
+<p>We use the <span class="unlinked">PV sequence</span>, the <a href="../../KT-OPK/inductive-limits-and-the-k-theory-of-af-and-at-algebras.html">UHF calculation</a>, and the precise crossed-product inputs listed below. Write <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> for the compact operators on a separable infinite-dimensional Hilbert space. Haar measure on <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span> has mass one.</p>
+<h2 id="section-1"><span id="1-the-universal-relations"></span>1. The universal relations</h2>
+<p>For an integer <span class="math" data-tex="\(2\leq n&lt;\infty\)">\(2\leq n&lt;\infty\)</span>, the unital C*-algebra <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> is universal for isometries satisfying</p>
+<span class="math math-display" data-tex="\[
+s_i^*s_i=1,\qquad
+\sum_{i=1}^n s_i s_i^*=1.
+\tag{1.1}
+\]">\[
+s_i^*s_i=1,\qquad
+\sum_{i=1}^n s_i s_i^*=1.
+\tag{1.1}
+\]</span>
+<p>These relations imply orthogonality. Put <span class="math" data-tex="\(q_i=s_i s_i^*\)">\(q_i=s_i s_i^*\)</span>. Multiplying their sum by <span class="math" data-tex="\(q_i\)">\(q_i\)</span> on both sides gives
+<span class="math" data-tex="\(\sum_{j\ne i}q_iq_jq_i=0\)">\(\sum_{j\ne i}q_iq_jq_i=0\)</span>. Every summand is positive, so <span class="math" data-tex="\(q_jq_i=0\)">\(q_jq_i=0\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+s_i^*s_j=\delta_{ij}1.
+\tag{1.2}
+\]">\[
+s_i^*s_j=\delta_{ij}1.
+\tag{1.2}
+\]</span>
+<p>There is a nonzero model: on the Hilbert space with orthonormal basis indexed by infinite words in <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span>, let <span class="math" data-tex="\(S_i\)">\(S_i\)</span> prepend the letter <span class="math" data-tex="\(i\)">\(i\)</span>. Its range consists of words beginning with <span class="math" data-tex="\(i\)">\(i\)</span>; those ranges partition the basis. Thus (1.1) holds. The universal construction is legitimate: each generator has norm one in every representation, so the norm of any fixed *-polynomial is bounded by the sum of the absolute values of its coefficients. The supremum representation seminorm, quotient by its null space, and completion give the universal C*-algebra. The model shows its identity is nonzero.</p>
+<p>For a finite word <span class="math" data-tex="\(\mu=(\mu_1,\ldots,\mu_r)\)">\(\mu=(\mu_1,\ldots,\mu_r)\)</span>, write <span class="math" data-tex="\(s_\mu=s_{\mu_1}\cdots s_{\mu_r}\)">\(s_\mu=s_{\mu_1}\cdots s_{\mu_r}\)</span>, and set <span class="math" data-tex="\(s_\varnothing=1\)">\(s_\varnothing=1\)</span>. Repeated use of (1.2) cancels the common initial letters in <span class="math" data-tex="\(s_\mu^*s_\nu\)">\(s_\mu^*s_\nu\)</span>. The product is zero unless one word extends the other; otherwise it is the remaining word or its adjoint. Hence</p>
+<span class="math math-display" data-tex="\[
+\overline{\operatorname{span}}
+\{s_\mu s_\nu^*: \mu,\nu\text{ finite}\}
+=\mathcal O_n.
+\tag{1.3}
+\]">\[
+\overline{\operatorname{span}}
+\{s_\mu s_\nu^*: \mu,\nu\text{ finite}\}
+=\mathcal O_n.
+\tag{1.3}
+\]</span>
+<p><strong>Finite simplicity and uniqueness.</strong> Theorem 2.2 below proves Cuntz’s simplicity theorem and the resulting uniqueness of every nonzero family satisfying (1.1). The proof uses the finite-word compression in Lemma 2.1 and the gauge core, without an additional representation hypothesis.</p>
+<p>The algebra <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> is universal for countably many isometries satisfying (1.2). Every finite sum of their range projections is at most one. There is no relation asserting that an infinite sum equals one in norm. Existence follows by left creation operators on the Hilbert space of finite words over a countable alphabet, including the empty word. We compute its K-theory separately in §6.</p>
+<h2 id="section-2"><span id="2-the-gauge-action-and-its-uhf-core"></span>2. The gauge action and its UHF core</h2>
+<p>Universality gives automorphisms</p>
+<span class="math math-display" data-tex="\[
+\gamma_z(s_i)=zs_i,\qquad z\in\mathbb T.
+\tag{2.1}
+\]">\[
+\gamma_z(s_i)=zs_i,\qquad z\in\mathbb T.
+\tag{2.1}
+\]</span>
+<p>The inverse is <span class="math" data-tex="\(\gamma_{\bar z}\)">\(\gamma_{\bar z}\)</span>. The action is norm continuous on each normal word, hence on polynomials; isometry and norm approximation give point-norm continuity on the completion. The same proof applies to <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>.</p>
+<p>Let <span class="math" data-tex="\(F_n=\mathcal O_n^\gamma\)">\(F_n=\mathcal O_n^\gamma\)</span>. Averaging defines a conditional expectation</p>
+<span class="math math-display" data-tex="\[
+E(a)=\int_{\mathbb T}\gamma_z(a)\,dz.
+\tag{2.2}
+\]">\[
+E(a)=\int_{\mathbb T}\gamma_z(a)\,dz.
+\tag{2.2}
+\]</span>
+<p>It is positive, contractive, unital, and fixes the fixed algebra. Its bimodule property follows by moving fixed coefficients outside the integral. It is faithful: if <span class="math" data-tex="\(E(a^*a)=0\)">\(E(a^*a)=0\)</span>, every positive functional gives a zero integral of a nonnegative continuous function. Such a function vanishes everywhere because Haar measure has full support. Its value at the identity is zero for all positive functionals, so <span class="math" data-tex="\(a^*a=0\)">\(a^*a=0\)</span>.</p>
+<p>Averaging (1.3) keeps exactly the terms with <span class="math" data-tex="\(|\mu|=|\nu|\)">\(|\mu|=|\nu|\)</span>. At length <span class="math" data-tex="\(r\)">\(r\)</span>, these terms form matrix units:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e_{\mu\nu}=s_\mu s_\nu^*,\qquad
+e_{\mu\nu}e_{\kappa\lambda}
+=\delta_{\nu\kappa}e_{\mu\lambda},\\
+e_{\mu\nu}^*=e_{\nu\mu},\qquad
+\sum_{|\mu|=r}e_{\mu\mu}=1.
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+e_{\mu\nu}=s_\mu s_\nu^*,\qquad
+e_{\mu\nu}e_{\kappa\lambda}
+=\delta_{\nu\kappa}e_{\mu\lambda},\\
+e_{\mu\nu}^*=e_{\nu\mu},\qquad
+\sum_{|\mu|=r}e_{\mu\mu}=1.
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p>Each diagonal entry is nonzero since <span class="math" data-tex="\(s_\mu\)">\(s_\mu\)</span> is an isometry. Thus the resulting unital map from <span class="math" data-tex="\(M_{n^r}(\mathbb C)\)">\(M_{n^r}(\mathbb C)\)</span> is injective. Inserting (1.1) between a word and an adjoint gives the inclusion</p>
+<span class="math math-display" data-tex="\[
+s_\mu s_\nu^*
+=\sum_{i=1}^n s_{\mu i}s_{\nu i}^*.
+\tag{2.4}
+\]">\[
+s_\mu s_\nu^*
+=\sum_{i=1}^n s_{\mu i}s_{\nu i}^*.
+\tag{2.4}
+\]</span>
+<p>With the lexicographic ordering of the appended letter, this is <span class="math" data-tex="\(x\mapsto x\otimes1_n\)">\(x\mapsto x\otimes1_n\)</span>. The closure of these increasing matrix algebras is all of <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, by the averaged normal-word density. We have proved</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_n\cong\operatorname*{lim}_{r\to\infty}M_{n^r}(\mathbb C),\\
+K_0(F_n)=\mathbb Z[1/n],\\
+[1_{F_n}]=1,\qquad K_1(F_n)=0.
+\end{gathered}
+\tag{2.5}
+\]">\[
+\begin{gathered}
+F_n\cong\operatorname*{lim}_{r\to\infty}M_{n^r}(\mathbb C),\\
+K_0(F_n)=\mathbb Z[1/n],\\
+[1_{F_n}]=1,\qquad K_1(F_n)=0.
+\end{gathered}
+\tag{2.5}
+\]</span>
+<p>The group assertion uses Lesson 16: rank-one generators are multiplied by <span class="math" data-tex="\(n\)">\(n\)</span> under (2.4), and normalized rank at stage <span class="math" data-tex="\(r\)">\(r\)</span> is divided by <span class="math" data-tex="\(n^r\)">\(n^r\)</span>.</p>
+<h3 id="finite-word-compression-proves-simplicity">Finite-word compression proves simplicity</h3>
+<p><strong>Lemma 2.1 (removing nonzero degrees).</strong> Given finitely many normal words <span class="math" data-tex="\(s_\alpha s_\beta^*\)">\(s_\alpha s_\beta^*\)</span> with <span class="math" data-tex="\(|\alpha|\ne|\beta|\)">\(|\alpha|\ne|\beta|\)</span>, there is a word <span class="math" data-tex="\(\nu\)">\(\nu\)</span> for which</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_\nu^*s_\alpha s_\beta^*s_\nu=0\\
+\text{for every listed pair}.
+\end{gathered}
+\tag{2.6}
+\]">\[
+\begin{gathered}
+s_\nu^*s_\alpha s_\beta^*s_\nu=0\\
+\text{for every listed pair}.
+\end{gathered}
+\tag{2.6}
+\]</span>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(L\geq1\)">\(L\geq1\)</span> at least the length of every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and take</p>
+<span class="math math-display" data-tex="\[
+\nu=\underbrace{1\cdots1}_{L}\,2\,
+\underbrace{1\cdots1}_{L}.
+\tag{2.7}
+\]">\[
+\nu=\underbrace{1\cdots1}_{L}\,2\,
+\underbrace{1\cdots1}_{L}.
+\tag{2.7}
+\]</span>
+<p>The letter 2 is available because <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. If either <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> or <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is not a prefix of <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, cancellation makes (2.6) zero. Otherwise put <span class="math" data-tex="\(r=|\alpha|\)">\(r=|\alpha|\)</span>, <span class="math" data-tex="\(t=|\beta|\)">\(t=|\beta|\)</span>; the compressed product is the adjoint of the tail of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> after <span class="math" data-tex="\(r\)">\(r\)</span> letters times the tail after <span class="math" data-tex="\(t\)">\(t\)</span> letters. Suppose <span class="math" data-tex="\(r&lt;t\)">\(r&lt;t\)</span>; the reverse case follows by adjoint. In these two tails the unique letter 2 occurs at positions <span class="math" data-tex="\(L+1-r\)">\(L+1-r\)</span> and <span class="math" data-tex="\(L+1-t\)">\(L+1-t\)</span>. At the earlier of those positions the letters differ, and that position lies within both tails, since <span class="math" data-tex="\(0\leq r&lt;t\leq L\)">\(0\leq r&lt;t\leq L\)</span>. Neither tail is a prefix of the other. Their product is therefore zero by (1.2). This also covers empty words. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (Cuntz simplicity and uniqueness).</strong> For <span class="math" data-tex="\(2\leq n&lt;\infty\)">\(2\leq n&lt;\infty\)</span>, every nonzero positive <span class="math" data-tex="\(a\in\mathcal O_n\)">\(a\in\mathcal O_n\)</span> admits <span class="math" data-tex="\(y\in\mathcal O_n\)">\(y\in\mathcal O_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+y^*ay=1.
+\tag{2.8}
+\]">\[
+y^*ay=1.
+\tag{2.8}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> is simple, and any family satisfying (1.1) in a nonzero unital C*-algebra generates a copy of <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span>, without an additional gauge-equivariance assumption.</p>
+<p><em>Proof.</em> The faithful expectation gives <span class="math" data-tex="\(E(a)\ne0\)">\(E(a)\ne0\)</span>. Set <span class="math" data-tex="\(t=\|E(a)\|&gt;0\)">\(t=\|E(a)\|&gt;0\)</span>, and choose <span class="math" data-tex="\(0&lt;\varepsilon&lt;t/3\)">\(0&lt;\varepsilon&lt;t/3\)</span>. Normal-word density gives a self-adjoint polynomial <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(\|a-b\|&lt;\varepsilon\)">\(\|a-b\|&lt;\varepsilon\)</span>: first approximate <span class="math" data-tex="\(a\)">\(a\)</span>, then take the self-adjoint part. Its constant-degree part <span class="math" data-tex="\(E(b)\)">\(E(b)\)</span> lies in some matrix stage <span class="math" data-tex="\(F_r\cong M_{n^r}(\mathbb C)\)">\(F_r\cong M_{n^r}(\mathbb C)\)</span>, since any equal-length word can be expanded to a common length by (2.4). Its largest eigenvalue <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is at least <span class="math" data-tex="\(t-\varepsilon\)">\(t-\varepsilon\)</span>. Indeed, <span class="math" data-tex="\(\|E(a)-E(b)\|&lt;\varepsilon\)">\(\|E(a)-E(b)\|&lt;\varepsilon\)</span> implies
+<span class="math" data-tex="\(E(a)\leq E(b)+\varepsilon1\leq(\lambda+\varepsilon)1\)">\(E(a)\leq E(b)+\varepsilon1\leq(\lambda+\varepsilon)1\)</span>, and taking the norm of the positive <span class="math" data-tex="\(E(a)\)">\(E(a)\)</span> proves the bound.</p>
+<p>Choose a word <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of length <span class="math" data-tex="\(r\)">\(r\)</span>. Finite-dimensional diagonalization supplies a unitary <span class="math" data-tex="\(w\in F_r\)">\(w\in F_r\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+s_\mu^*w^*E(b)ws_\mu=\lambda1.
+\tag{2.9}
+\]">\[
+s_\mu^*w^*E(b)ws_\mu=\lambda1.
+\tag{2.9}
+\]</span>
+<p>To see the scalar assertion, the corner of <span class="math" data-tex="\(F_r\)">\(F_r\)</span> at <span class="math" data-tex="\(s_\mu s_\mu^*\)">\(s_\mu s_\mu^*\)</span> is one-dimensional; choose <span class="math" data-tex="\(w\)">\(w\)</span> to carry its coordinate vector to a <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-eigenvector. Compression by <span class="math" data-tex="\(s_\mu\)">\(s_\mu\)</span> then identifies that corner with scalars.</p>
+<p>The element <span class="math" data-tex="\(c=s_\mu^*w^*bws_\mu\)">\(c=s_\mu^*w^*bws_\mu\)</span> is another finite normal-word polynomial. Because <span class="math" data-tex="\(w\)">\(w\)</span> has degree zero and <span class="math" data-tex="\(s_\mu\)">\(s_\mu\)</span> has degree <span class="math" data-tex="\(r\)">\(r\)</span>, averaging gives <span class="math" data-tex="\(E(c)=\lambda1\)">\(E(c)=\lambda1\)</span>. Thus <span class="math" data-tex="\(c-\lambda1\)">\(c-\lambda1\)</span> is a finite sum of normal words of nonzero degree. Lemma 2.1 supplies <span class="math" data-tex="\(\nu\)">\(\nu\)</span> killing all those words, so the isometry <span class="math" data-tex="\(v=ws_\mu s_\nu\)">\(v=ws_\mu s_\nu\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v^*bv=\lambda1,\\
+\|v^*av-\lambda1\|&lt;\varepsilon.
+\end{gathered}
+\tag{2.10}
+\]">\[
+\begin{gathered}
+v^*bv=\lambda1,\\
+\|v^*av-\lambda1\|&lt;\varepsilon.
+\end{gathered}
+\tag{2.10}
+\]</span>
+<p>Here <span class="math" data-tex="\(\lambda\geq t-\varepsilon&gt;\varepsilon\)">\(\lambda\geq t-\varepsilon&gt;\varepsilon\)</span>. Therefore <span class="math" data-tex="\(v^*av\)">\(v^*av\)</span> is positive and invertible, with lower bound <span class="math" data-tex="\((\lambda-\varepsilon)1\)">\((\lambda-\varepsilon)1\)</span>. Put <span class="math" data-tex="\(y=v(v^*av)^{-1/2}\)">\(y=v(v^*av)^{-1/2}\)</span>. Continuous functional calculus proves (2.8).</p>
+<p>If <span class="math" data-tex="\(J\)">\(J\)</span> is a nonzero closed two-sided ideal, choose <span class="math" data-tex="\(z\in J\setminus\{0\}\)">\(z\in J\setminus\{0\}\)</span>; then <span class="math" data-tex="\(a=z^*z\)">\(a=z^*z\)</span> is nonzero, positive and in <span class="math" data-tex="\(J\)">\(J\)</span>. Equation (2.8) places <span class="math" data-tex="\(1\)">\(1\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>, so <span class="math" data-tex="\(J=\mathcal O_n\)">\(J=\mathcal O_n\)</span>. Finally universality sends <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> onto the algebra generated by any given nonzero Cuntz family. The map is unital, so its kernel is proper; simplicity makes it zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proves the finite simplicity and uniqueness theorem credited to Cuntz, using only the relations, the explicitly computed matrix core and faithful gauge averaging. The word in (2.7) explains why finite Fourier degrees can be eliminated while the positive constant-degree compression survives.</p>
+<h2 id="section-3"><span id="3-a-full-corner-and-the-actual-dual-action"></span>3. A full corner and the actual dual action</h2>
+<p>Set <span class="math" data-tex="\(D=\mathcal O_n\rtimes_\gamma\mathbb T\)">\(D=\mathcal O_n\rtimes_\gamma\mathbb T\)</span>, using the full crossed product. Denote its canonical group multipliers by <span class="math" data-tex="\(\lambda_z\)">\(\lambda_z\)</span>, and suppress the coefficient multiplier map in products. Define</p>
+<span class="math math-display" data-tex="\[
+p_k=\int_{\mathbb T}z^{-k}\lambda_z\,dz,
+\qquad k\in\mathbb Z.
+\tag{3.1}
+\]">\[
+p_k=\int_{\mathbb T}z^{-k}\lambda_z\,dz,
+\qquad k\in\mathbb Z.
+\tag{3.1}
+\]</span>
+<p>These are mutually orthogonal projections in <span class="math" data-tex="\(D\)">\(D\)</span>. This follows either from the integrated group multiplication or Fourier orthogonality. The compact-group corner theorem [KT-CP, Lesson 9, Theorem 9.6] identifies</p>
+<span class="math math-display" data-tex="\[
+F_n\longrightarrow p_0Dp_0,
+\qquad a\longmapsto ap_0
+\tag{3.2}
+\]">\[
+F_n\longrightarrow p_0Dp_0,
+\qquad a\longmapsto ap_0
+\tag{3.2}
+\]</span>
+<p>as an isomorphism. This theorem does not assert fullness for arbitrary compact actions; we now prove it here.</p>
+<p>Covariance <span class="math" data-tex="\(\lambda_zs_i\lambda_z^*=zs_i\)">\(\lambda_zs_i\lambda_z^*=zs_i\)</span> gives
+<span class="math" data-tex="\(p_ks_i=s_ip_{k-1}\)">\(p_ks_i=s_ip_{k-1}\)</span>. For a word of length <span class="math" data-tex="\(r\)">\(r\)</span>, it follows that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_\mu^*p_0s_\mu=p_{-r},\\
+\sum_{|\mu|=r}s_\mu p_0s_\mu^*=p_r.
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+s_\mu^*p_0s_\mu=p_{-r},\\
+\sum_{|\mu|=r}s_\mu p_0s_\mu^*=p_r.
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>For the second identity, <span class="math" data-tex="\(s_\mu p_0=p_rs_\mu\)">\(s_\mu p_0=p_rs_\mu\)</span>, and the range projections of all length-<span class="math" data-tex="\(r\)">\(r\)</span> words sum to one. The ideal <span class="math" data-tex="\(I=\overline{Dp_0D}\)">\(I=\overline{Dp_0D}\)</span> is preserved by multiplier multiplication. Hence (3.3) puts every <span class="math" data-tex="\(p_k\)">\(p_k\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>. Finite sums of scalar characters are uniformly dense in <span class="math" data-tex="\(C(\mathbb T)\)">\(C(\mathbb T)\)</span>; finite sums of scalar functions times coefficients approximate every continuous coefficient-valued function uniformly. The integrated norm is bounded by its <span class="math" data-tex="\(L^1\)">\(L^1\)</span>-norm. Thus the span of <span class="math" data-tex="\(ap_k\)">\(ap_k\)</span> is dense in <span class="math" data-tex="\(D\)">\(D\)</span>, and every such product belongs to <span class="math" data-tex="\(I\)">\(I\)</span>. Therefore <span class="math" data-tex="\(I=D\)">\(I=D\)</span>.</p>
+<p>Full-corner Morita invariance, with the corner inclusion as the induced K-map, now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(D)=\mathbb Z[1/n],\\
+[p_0]=1,\qquad K_1(D)=0.
+\end{gathered}
+\tag{3.4}
+\]">\[
+\begin{gathered}
+K_0(D)=\mathbb Z[1/n],\\
+[p_0]=1,\qquad K_1(D)=0.
+\end{gathered}
+\tag{3.4}
+\]</span>
+<p>Here the algebras are separable, so the Morita prerequisite in [KT-CP, Lesson 9, “K-theory and two free actions”] applies.</p>
+<p>Our dual convention is positive: the generator <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> of the dual <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-action fixes coefficients and satisfies</p>
+<span class="math math-display" data-tex="\[
+\sigma(\lambda_z)=z\lambda_z,
+\qquad \sigma(p_k)=p_{k-1}.
+\tag{3.5}
+\]">\[
+\sigma(\lambda_z)=z\lambda_z,
+\qquad \sigma(p_k)=p_{k-1}.
+\tag{3.5}
+\]</span>
+<p>The partial isometries <span class="math" data-tex="\(s_ip_k\)">\(s_ip_k\)</span> have initial projection <span class="math" data-tex="\(p_k\)">\(p_k\)</span>, mutually orthogonal final projections, and the sum of their final projections is <span class="math" data-tex="\(p_{k+1}\)">\(p_{k+1}\)</span>. They belong to <span class="math" data-tex="\(D\)">\(D\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+[p_{k+1}]=n[p_k],\qquad [p_k]=n^k[p_0].
+\tag{3.6}
+\]">\[
+[p_{k+1}]=n[p_k],\qquad [p_k]=n^k[p_0].
+\tag{3.6}
+\]</span>
+<p>In particular <span class="math" data-tex="\(\sigma_*[p_0]=[p_{-1}]=1/n\)">\(\sigma_*[p_0]=[p_{-1}]=1/n\)</span>. An additive endomorphism of <span class="math" data-tex="\(\mathbb Z[1/n]\)">\(\mathbb Z[1/n]\)</span> is determined by its value on one: the equation <span class="math" data-tex="\(n^r x=1\)">\(n^r x=1\)</span> has a unique solution in this torsion-free group. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sigma_*(x)=x/n.
+\tag{3.7}
+\]">\[
+\sigma_*(x)=x/n.
+\tag{3.7}
+\]</span>
+<p>Using the inverse dual generator gives multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>. These two conventions give the same kernel and quotient calculation, but we retain (3.7) for the maps just constructed.</p>
+<h2 id="section-4"><span id="4-the-pv-calculation-including-the-unit"></span>4. The PV calculation, including the unit</h2>
+<p>Takai duality [KT-CP, Lesson 8, Theorem 8.3] gives</p>
+<span class="math math-display" data-tex="\[
+D\rtimes_\sigma\mathbb Z
+\cong\mathcal O_n\otimes\mathcal K(L^2(\mathbb T)).
+\tag{4.1}
+\]">\[
+D\rtimes_\sigma\mathbb Z
+\cong\mathcal O_n\otimes\mathcal K(L^2(\mathbb T)).
+\tag{4.1}
+\]</span>
+<p>Its actual generator formula [there, Proposition 8.4, (8.15)] sends <span class="math" data-tex="\(\lambda_z\)">\(\lambda_z\)</span> to right translation <span class="math" data-tex="\(\xi(x)\mapsto\xi(xz)\)">\(\xi(x)\mapsto\xi(xz)\)</span>. Averaging these translations is the rank-one projection <span class="math" data-tex="\(e\)">\(e\)</span> onto constant functions. Therefore the coefficient inclusion <span class="math" data-tex="\(\iota:D\to D\rtimes\mathbb Z\)">\(\iota:D\to D\rtimes\mathbb Z\)</span>, followed by (4.1), sends</p>
+<span class="math math-display" data-tex="\[
+\iota(p_0)\longmapsto1_{\mathcal O_n}\otimes e.
+\tag{4.2}
+\]">\[
+\iota(p_0)\longmapsto1_{\mathcal O_n}\otimes e.
+\tag{4.2}
+\]</span>
+<p>This is why the normalized class one in (3.4) becomes the unit class of <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> after stability. An abstract group isomorphism alone would not establish that identification.</p>
+<p>Since <span class="math" data-tex="\(K_1(D)=0\)">\(K_1(D)=0\)</span>, the PV sequence reduces to</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_1(\mathcal O_n)\cong\ker(1-\sigma_*),\\
+K_0(\mathcal O_n)\cong\operatorname{coker}(1-\sigma_*).
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+K_1(\mathcal O_n)\cong\ker(1-\sigma_*),\\
+K_0(\mathcal O_n)\cong\operatorname{coker}(1-\sigma_*).
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>On <span class="math" data-tex="\(\mathbb Z[1/n]\)">\(\mathbb Z[1/n]\)</span>, the map <span class="math" data-tex="\(1-\sigma_*\)">\(1-\sigma_*\)</span> is multiplication by <span class="math" data-tex="\((n-1)/n\)">\((n-1)/n\)</span>. It is injective, and its image is <span class="math" data-tex="\((n-1)\mathbb Z[1/n]\)">\((n-1)\mathbb Z[1/n]\)</span>, because multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> is invertible. The quotient map is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb Z[1/n]&amp;\longrightarrow\mathbb Z/(n-1)\mathbb Z,\\
+a/n^r&amp;\longmapsto a\pmod{n-1}.
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+\mathbb Z[1/n]&amp;\longrightarrow\mathbb Z/(n-1)\mathbb Z,\\
+a/n^r&amp;\longmapsto a\pmod{n-1}.
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>It is well defined: equal fractions give equal integers after cross multiplication, and <span class="math" data-tex="\(n\equiv1\)">\(n\equiv1\)</span> modulo <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. It is onto and its kernel consists exactly of fractions whose numerator is divisible by <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Combining (4.2)–(4.4) proves the result with its distinguished class.</p>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(2\leq n&lt;\infty\)">\(2\leq n&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(\mathcal O_n)\cong\mathbb Z/(n-1)\mathbb Z,\\
+[1]\longmapsto1,\qquad K_1(\mathcal O_n)=0.
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+K_0(\mathcal O_n)\cong\mathbb Z/(n-1)\mathbb Z,\\
+[1]\longmapsto1,\qquad K_1(\mathcal O_n)=0.
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span> the cyclic group is zero: the identity is a nonzero projection whose K-class is zero. A tracial state cannot exist on any <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span>, since (1.1) and traciality would give <span class="math" data-tex="\(1=n\)">\(1=n\)</span>. This also illustrates why the trace methods for rotation algebras cannot be transferred unchanged.</p>
+<h3 id="tensoring-with-a-finite-cuntz-algebra-the-torsion-term">Tensoring with a finite Cuntz algebra: the torsion term</h3>
+<p>The scalar groups in Theorem 4.1 do not determine a tensor product merely by multiplying group ranks. Here is a coefficient calculation that also detects torsion; compare [Cuntz 1981 II, §2.1–2.2]. All tensor products in this subsection are minimal.</p>
+<p><strong>Theorem 4.2 (finite Cuntz coefficients).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be any C*-algebra and <span class="math" data-tex="\(2\leq n&lt;\infty\)">\(2\leq n&lt;\infty\)</span>. Put <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span>, <span class="math" data-tex="\(G_i=K_i(A)\)">\(G_i=K_i(A)\)</span>, and <span class="math" data-tex="\(C_n=A\otimes\mathcal O_n\)">\(C_n=A\otimes\mathcal O_n\)</span>. The map <span class="math" data-tex="\(j:A\to C_n\)">\(j:A\to C_n\)</span>, <span class="math" data-tex="\(a\mapsto a\otimes1\)">\(a\mapsto a\otimes1\)</span>, fits into the natural cyclic exact sequence whose consecutive arrows are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_i\xrightarrow{\ d\ }G_i\\
+\xrightarrow{\ j_*\ }K_i(C_n)\\
+\xrightarrow{\ \partial_i\ }G_{i-1}\\
+\xrightarrow{\ d\ }G_{i-1},\qquad i\pmod2.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+G_i\xrightarrow{\ d\ }G_i\\
+\xrightarrow{\ j_*\ }K_i(C_n)\\
+\xrightarrow{\ \partial_i\ }G_{i-1}\\
+\xrightarrow{\ d\ }G_{i-1},\qquad i\pmod2.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>Equivalently, with <span class="math" data-tex="\(G[d]=\{g\in G:dg=0\}\)">\(G[d]=\{g\in G:dg=0\}\)</span>, there is a natural short exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow G_i/dG_i\\
+\xrightarrow{\ \overline{j_*}\ }K_i(C_n)\\
+\xrightarrow{\ \partial_i\ }G_{i-1}[d]\\
+\longrightarrow0.
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+0\longrightarrow G_i/dG_i\\
+\xrightarrow{\ \overline{j_*}\ }K_i(C_n)\\
+\xrightarrow{\ \partial_i\ }G_{i-1}[d]\\
+\longrightarrow0.
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>No unitality, separability, nuclearity or torsion-freeness assumption on <span class="math" data-tex="\(A\)">\(A\)</span> is required. A splitting of (4.7) is not asserted.</p>
+<p><em>Proof.</em> Give <span class="math" data-tex="\(C_n\)">\(C_n\)</span> the action <span class="math" data-tex="\(\operatorname{id}_A\otimes\gamma\)">\(\operatorname{id}_A\otimes\gamma\)</span>. Averaging elementary tensors and using their norm density identifies its fixed algebra as <span class="math" data-tex="\(A\otimes F_n\)">\(A\otimes F_n\)</span>: the average is <span class="math" data-tex="\(\operatorname{id}_A\otimes E\)">\(\operatorname{id}_A\otimes E\)</span>, fixes this closed subalgebra and sends a dense algebraic tensor subspace into it. Let</p>
+<span class="math math-display" data-tex="\[
+D_A=C_n\rtimes\mathbb T.
+\tag{4.8}
+\]">\[
+D_A=C_n\rtimes\mathbb T.
+\tag{4.8}
+\]</span>
+<p>The averaging-corner theorem of KT-CP, Lesson 9, Theorem 9.6, identifies <span class="math" data-tex="\(p_0D_Ap_0\)">\(p_0D_Ap_0\)</span> with <span class="math" data-tex="\(A\otimes F_n\)">\(A\otimes F_n\)</span>, also for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>. Now <span class="math" data-tex="\(p_k\)">\(p_k\)</span> and <span class="math" data-tex="\(1\otimes s_\mu\)">\(1\otimes s_\mu\)</span> may be multipliers, so fullness needs a coefficient argument. The algebra <span class="math" data-tex="\(D_A\)">\(D_A\)</span> has dense span of <span class="math" data-tex="\(cp_k\)">\(cp_k\)</span>, <span class="math" data-tex="\(c\in C_n\)">\(c\in C_n\)</span>, by the character approximation used in §3. Here is the coefficient argument explicitly. Suppress <span class="math" data-tex="\(1\otimes\)">\(1\otimes\)</span> in word multipliers and write <span class="math" data-tex="\(a\)">\(a\)</span> for <span class="math" data-tex="\(a\otimes1\)">\(a\otimes1\)</span>. If <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> is an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(|\mu|=r\)">\(|\mu|=r\)</span>, the two factors in each of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(a s_\mu^*p_0)(e_\lambda p_0s_\mu)
+=a e_\lambda p_{-r},\\
+\sum_{|\mu|=r}(a s_\mu p_0)(e_\lambda p_0s_\mu^*)
+=a e_\lambda p_r
+\end{gathered}
+\]">\[
+\begin{gathered}
+(a s_\mu^*p_0)(e_\lambda p_0s_\mu)
+=a e_\lambda p_{-r},\\
+\sum_{|\mu|=r}(a s_\mu p_0)(e_\lambda p_0s_\mu^*)
+=a e_\lambda p_r
+\end{gathered}
+\]</span>
+<p>belong to <span class="math" data-tex="\(D_A\)">\(D_A\)</span>, since a coefficient times a word is in <span class="math" data-tex="\(C_n\)">\(C_n\)</span> and multiplying it by a Fourier projection gives an element of <span class="math" data-tex="\(D_A\)">\(D_A\)</span>. The products lie in the ideal <span class="math" data-tex="\(I=\overline{D_Ap_0D_A}\)">\(I=\overline{D_Ap_0D_A}\)</span>, since each first factor ends in <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. Their limits put <span class="math" data-tex="\(ap_{-r}\)">\(ap_{-r}\)</span> and <span class="math" data-tex="\(ap_r\)">\(ap_r\)</span> in <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, <span class="math" data-tex="\((ap_0)(e_\lambda p_0)\to ap_0\)">\((ap_0)(e_\lambda p_0)\to ap_0\)</span> proves the same assertion. Multiplication by the word multipliers and density of normal words put every <span class="math" data-tex="\(cp_k\)">\(cp_k\)</span> in the same ideal. Thus <span class="math" data-tex="\(p_0\)">\(p_0\)</span> is full. The arbitrary full-multiplier-corner K-theorem [Hilbert C*-modules, Lesson 14, Theorem 2.4], already used in §6 below, gives the corner inclusion isomorphisms in both degrees.</p>
+<p>The finite stages of the core are <span class="math" data-tex="\(M_{n^r}(A)\)">\(M_{n^r}(A)\)</span>, with connecting map consisting of <span class="math" data-tex="\(n\)">\(n\)</span> identical blocks. Matrix stability and continuity therefore identify</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_i(D_A)\cong H_i,\\
+H_i=\operatorname*{lim}\bigl(G_i\xrightarrow{\ n\ }G_i\\
+\xrightarrow{\ n\ }G_i\longrightarrow\cdots\bigr).
+\end{gathered}
+\tag{4.9}
+\]">\[
+\begin{gathered}
+K_i(D_A)\cong H_i,\\
+H_i=\operatorname*{lim}\bigl(G_i\xrightarrow{\ n\ }G_i\\
+\xrightarrow{\ n\ }G_i\longrightarrow\cdots\bigr).
+\end{gathered}
+\tag{4.9}
+\]</span>
+<p>Write a stage class as <span class="math" data-tex="\(g/n^r\)">\(g/n^r\)</span>, and write <span class="math" data-tex="\(\lambda_i:G_i\to H_i\)">\(\lambda_i:G_i\to H_i\)</span>, <span class="math" data-tex="\(g\mapsto g/1\)">\(g\mapsto g/1\)</span>. These are algebraic localization symbols: <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> can have a kernel when <span class="math" data-tex="\(G_i\)">\(G_i\)</span> has <span class="math" data-tex="\(n\)">\(n\)</span>-power torsion. In particular no injection into a rational vector space is assumed. Multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> on <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is invertible.</p>
+<p>With the dual convention (3.5), the induced map on <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is multiplication by <span class="math" data-tex="\(1/n\)">\(1/n\)</span>, in both degrees. To verify this beyond scalar ranks, conjugate the <span class="math" data-tex="\(p_{-1}\)">\(p_{-1}\)</span> corner into <span class="math" data-tex="\(p_0\)">\(p_0\)</span> by <span class="math" data-tex="\(1\otimes s_1\)">\(1\otimes s_1\)</span>. On the core this is the corner embedding <span class="math" data-tex="\(b\mapsto(1\otimes s_1)b(1\otimes s_1^*)\)">\(b\mapsto(1\otimes s_1)b(1\otimes s_1^*)\)</span>. It sends a matrix class at stage <span class="math" data-tex="\(r\)">\(r\)</span> to the <em>same</em> class at stage <span class="math" data-tex="\(r+1\)">\(r+1\)</span>, while the connecting core embedding sends it to <span class="math" data-tex="\(n\)">\(n\)</span> times that class. Hence it sends <span class="math" data-tex="\(g/n^r\)">\(g/n^r\)</span> to <span class="math" data-tex="\(g/n^{r+1}\)">\(g/n^{r+1}\)</span>. Supported partial-isometry equivalence and matrix stability identify this corner conjugation with the induced dual map for both <span class="math" data-tex="\(K_0\)">\(K_0\)</span> and <span class="math" data-tex="\(K_1\)">\(K_1\)</span>; normalized unitary representatives have identity on the complementary corner, as in Lesson 6. This proves the stated map without restricting coefficient groups to their ranks.</p>
+<p>Takai duality, with its exact generator formulas, identifies <span class="math" data-tex="\(D_A\rtimes_\sigma\mathbb Z\)">\(D_A\rtimes_\sigma\mathbb Z\)</span> with <span class="math" data-tex="\(C_n\otimes\mathcal K(L^2(\mathbb T))\)">\(C_n\otimes\mathcal K(L^2(\mathbb T))\)</span>. Formula (4.2) now reads <span class="math" data-tex="\(ap_0\mapsto j(a)\otimes e\)">\(ap_0\mapsto j(a)\otimes e\)</span>. Thus the PV coefficient inclusion, under stability, is the map induced by <span class="math" data-tex="\(j\)">\(j\)</span> after <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span>. The PV sequence of Lesson 18 has consecutive maps</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_i\xrightarrow{\ d/n\ }H_i\\
+\xrightarrow{\ \iota_*\ }K_i(C_n)\\
+\xrightarrow{\ \delta_i\ }H_{i-1}\\
+\xrightarrow{\ d/n\ }H_{i-1},\\
+\iota_*\lambda_i=j_*.
+\end{gathered}
+\tag{4.10}
+\]">\[
+\begin{gathered}
+H_i\xrightarrow{\ d/n\ }H_i\\
+\xrightarrow{\ \iota_*\ }K_i(C_n)\\
+\xrightarrow{\ \delta_i\ }H_{i-1}\\
+\xrightarrow{\ d/n\ }H_{i-1},\\
+\iota_*\lambda_i=j_*.
+\end{gathered}
+\tag{4.10}
+\]</span>
+<p>We finish the required algebraic comparison explicitly. For any abelian group <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(H=\operatorname{lim}(G,\times n)\)">\(H=\operatorname{lim}(G,\times n)\)</span>, the stage map induces isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G/dG\cong H/dH,\\
+G[d]\cong H[d].
+\end{gathered}
+\tag{4.11}
+\]">\[
+\begin{gathered}
+G/dG\cong H/dH,\\
+G[d]\cong H[d].
+\end{gathered}
+\tag{4.11}
+\]</span>
+<p>For the first, send <span class="math" data-tex="\(g/n^r\)">\(g/n^r\)</span> modulo <span class="math" data-tex="\(dH\)">\(dH\)</span> to <span class="math" data-tex="\(g\)">\(g\)</span> modulo <span class="math" data-tex="\(dG\)">\(dG\)</span>. A direct-limit equality says that after a further power of <span class="math" data-tex="\(n\)">\(n\)</span>, the two cross-multiplied numerators agree. Since <span class="math" data-tex="\(n\equiv1\pmod d\)">\(n\equiv1\pmod d\)</span>, their residues agree. This defines an inverse to the stage map: in <span class="math" data-tex="\(H/dH\)">\(H/dH\)</span>, multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, and hence by <span class="math" data-tex="\(n^{-1}\)">\(n^{-1}\)</span>, is identity. For the second, if <span class="math" data-tex="\(a\in G[d]\)">\(a\in G[d]\)</span>, then <span class="math" data-tex="\(na=a\)">\(na=a\)</span>. If its stage image is zero, some <span class="math" data-tex="\(n^sa\)">\(n^sa\)</span> is zero, so <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Conversely, <span class="math" data-tex="\(h=g/n^r\in H[d]\)">\(h=g/n^r\in H[d]\)</span> means some <span class="math" data-tex="\(n^s dg=0\)">\(n^s dg=0\)</span>. Set <span class="math" data-tex="\(a=n^sg\)">\(a=n^sg\)</span>; then <span class="math" data-tex="\(da=0\)">\(da=0\)</span> and <span class="math" data-tex="\(h=a/n^{r+s}=\lambda(a)\)">\(h=a/n^{r+s}=\lambda(a)\)</span>, since <span class="math" data-tex="\(n\)">\(n\)</span> acts identically on elements killed by <span class="math" data-tex="\(d\)">\(d\)</span>. This proves both assertions even with arbitrary torsion.</p>
+<p>Because <span class="math" data-tex="\(n\)">\(n\)</span> is invertible on <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, multiplication by <span class="math" data-tex="\(d/n\)">\(d/n\)</span> has image <span class="math" data-tex="\(dH_i\)">\(dH_i\)</span> and kernel <span class="math" data-tex="\(H_i[d]\)">\(H_i[d]\)</span>. Define <span class="math" data-tex="\(\partial_i\)">\(\partial_i\)</span> by applying <span class="math" data-tex="\(\delta_i\)">\(\delta_i\)</span> and then the inverse of the second map in (4.11). PV exactness, the first map in (4.11), and <span class="math" data-tex="\(\iota_*\lambda_i=j_*\)">\(\iota_*\lambda_i=j_*\)</span> now give (4.7), hence all six exact positions in (4.6). All corner, stage and boundary constructions commute with coefficient homomorphisms. The two algebraic comparison maps do too, proving naturality. No tensoring of an arbitrary short exact sequence, nor a general Künneth theorem, was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.3 (a torsion tensor product).</strong> For <span class="math" data-tex="\(m,n\geq2\)">\(m,n\geq2\)</span>, put <span class="math" data-tex="\(h=\gcd(m-1,n-1)\)">\(h=\gcd(m-1,n-1)\)</span>. Apply Theorem 4.2 to <span class="math" data-tex="\(A=\mathcal O_m\)">\(A=\mathcal O_m\)</span>. Its coefficient groups are <span class="math" data-tex="\(G_0=\mathbb Z/(m-1)\)">\(G_0=\mathbb Z/(m-1)\)</span> and <span class="math" data-tex="\(G_1=0\)">\(G_1=0\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(\mathcal O_m\otimes\mathcal O_n)\cong\mathbb Z/h,\\
+K_1(\mathcal O_m\otimes\mathcal O_n)\cong\mathbb Z/h.
+\end{gathered}
+\tag{4.12}
+\]">\[
+\begin{gathered}
+K_0(\mathcal O_m\otimes\mathcal O_n)\cong\mathbb Z/h,\\
+K_1(\mathcal O_m\otimes\mathcal O_n)\cong\mathbb Z/h.
+\end{gathered}
+\tag{4.12}
+\]</span>
+<p>The degree-zero unit maps to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(h\)">\(h\)</span>. In degree one, the boundary is an isomorphism onto the subgroup of <span class="math" data-tex="\(\mathbb Z/(m-1)\)">\(\mathbb Z/(m-1)\)</span> killed by <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, generated by <span class="math" data-tex="\((m-1)/h\)">\((m-1)/h\)</span>; it specifies a generator of the degree-one group. For <span class="math" data-tex="\(h=1\)">\(h=1\)</span>, both groups are zero. For <span class="math" data-tex="\(m=n=3\)">\(m=n=3\)</span>, both are <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>, even though each individual factor has zero <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. Thus omitting the torsion kernel would give a wrong answer. Formula (4.7) also shows <span class="math" data-tex="\(K_*(A\otimes\mathcal O_2)=0\)">\(K_*(A\otimes\mathcal O_2)=0\)</span> for <em>every</em> <span class="math" data-tex="\(A\)">\(A\)</span>, since <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. These are proved special tensor formulas, rather than an assertion of a general Künneth theorem.</p>
+<h2 id="section-5"><span id="5-isomorphisms-and-matrix-size"></span>5. Isomorphisms and matrix size</h2>
+<p>If <span class="math" data-tex="\(\mathcal O_n\cong\mathcal O_m\)">\(\mathcal O_n\cong\mathcal O_m\)</span>, the finite K-zero groups have the same cardinality, so <span class="math" data-tex="\(n-1=m-1\)">\(n-1=m-1\)</span>. In fact <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> cannot be isomorphic to <span class="math" data-tex="\(M_k(\mathcal O_m)\)">\(M_k(\mathcal O_m)\)</span> when <span class="math" data-tex="\(n\ne m\)">\(n\ne m\)</span>, since stability leaves that group cardinality unchanged.</p>
+<p>For a fixed <span class="math" data-tex="\(n\)">\(n\)</span>, stability identifies the unit of <span class="math" data-tex="\(M_k(\mathcal O_n)\)">\(M_k(\mathcal O_n)\)</span> with <span class="math" data-tex="\(k[1]\)">\(k[1]\)</span>. A unital isomorphism from <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> must send its generating unit class to that class. In the cyclic group of order <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, the residue <span class="math" data-tex="\(k\)">\(k\)</span> generates exactly when</p>
+<span class="math math-display" data-tex="\[
+\gcd(k,n-1)=1.
+\tag{5.1}
+\]">\[
+\gcd(k,n-1)=1.
+\tag{5.1}
+\]</span>
+<p>Thus (5.1) is necessary. Theorem 5.1 below proves its sufficiency by explicit generators, following Abrams, Ánh and Pardo. We use the assertion for these particular Cuntz algebras. In Blackadar’s definition (§6.11.4), “purely infinite” already entails simplicity; his surrounding broader classification statement also assumes separability, nuclearity and the bootstrap condition.</p>
+<p>There is an elementary construction when <span class="math" data-tex="\(k=1+r(n-1)\)">\(k=1+r(n-1)\)</span>, <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>. Start with the single isometry <span class="math" data-tex="\(1\)">\(1\)</span>. Replacing one member <span class="math" data-tex="\(t\)">\(t\)</span> of an orthogonal family by <span class="math" data-tex="\(ts_1,\ldots,ts_n\)">\(ts_1,\ldots,ts_n\)</span> preserves its total range projection and increases its size by <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. After <span class="math" data-tex="\(r\)">\(r\)</span> replacements we have <span class="math" data-tex="\(k\)">\(k\)</span> isometries <span class="math" data-tex="\(t_1,\ldots,t_k\)">\(t_1,\ldots,t_k\)</span> with orthogonal ranges summing to one. The row <span class="math" data-tex="\(T=(t_1,\ldots,t_k)\)">\(T=(t_1,\ldots,t_k)\)</span> satisfies <span class="math" data-tex="\(T^*T=1_k\)">\(T^*T=1_k\)</span> and <span class="math" data-tex="\(TT^*=1\)">\(TT^*=1\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_k(\mathcal O_n)\longrightarrow\mathcal O_n,\\
+X\longmapsto TXT^*
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+M_k(\mathcal O_n)\longrightarrow\mathcal O_n,\\
+X\longmapsto TXT^*
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>is an isomorphism with inverse <span class="math" data-tex="\(a\mapsto T^*aT\)">\(a\mapsto T^*aT\)</span>. This proves that congruence case without the general classification theorem.</p>
+<h3 id="the-coprime-construction">The coprime construction</h3>
+<p><strong>Theorem 5.1.</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> and <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_k(\mathcal O_n)\cong\mathcal O_n\\
+\Longleftrightarrow\quad\gcd(k,n-1)=1.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+M_k(\mathcal O_n)\cong\mathcal O_n\\
+\Longleftrightarrow\quad\gcd(k,n-1)=1.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p><em>Proof.</em> Necessity was proved by the unit class in (5.1). We give the constructive sufficiency argument of Abrams, Ánh and Pardo, with all generator and surjectivity checks in the C*-algebra itself.</p>
+<p>First, the Cuntz row <span class="math" data-tex="\((s_1,\ldots,s_n)\)">\((s_1,\ldots,s_n)\)</span>, together with <span class="math" data-tex="\(j-1\)">\(j-1\)</span> identity rows on disjoint coordinates, is a rectangular unitary from <span class="math" data-tex="\(j+n-1\)">\(j+n-1\)</span> coordinates to <span class="math" data-tex="\(j\)">\(j\)</span> coordinates. Conjugation by it identifies <span class="math" data-tex="\(M_{j+n-1}(\mathcal O_n)\)">\(M_{j+n-1}(\mathcal O_n)\)</span> with <span class="math" data-tex="\(M_j(\mathcal O_n)\)">\(M_j(\mathcal O_n)\)</span>: its two products are the respective matrix identities, so conjugation by its adjoint is the inverse. Iteration reduces <span class="math" data-tex="\(k\)">\(k\)</span> to its representative <span class="math" data-tex="\(d\in\{1,\ldots,n-1\}\)">\(d\in\{1,\ldots,n-1\}\)</span> modulo <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, preserving the gcd. The case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> is immediate. Suppose henceforth <span class="math" data-tex="\(2\leq d&lt;n\)">\(2\leq d&lt;n\)</span>, and write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n=qd+r,\quad 2\leq r\leq d,\quad q\geq1,\\
+h=d-r+1,\qquad \gcd(h,d)=1.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+n=qd+r,\quad 2\leq r\leq d,\quad q\geq1,\\
+h=d-r+1,\qquad \gcd(h,d)=1.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>We use remainder <span class="math" data-tex="\(d\)">\(d\)</span> rather than 0 when <span class="math" data-tex="\(d\mid n\)">\(d\mid n\)</span>. A remainder 1 would contradict the gcd hypothesis for <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span>. Put <span class="math" data-tex="\(x_i=s_i^*\)">\(x_i=s_i^*\)</span>, <span class="math" data-tex="\(y_i=s_i\)">\(y_i=s_i\)</span>; thus <span class="math" data-tex="\(x_i y_j=\delta_{ij}1\)">\(x_i y_j=\delta_{ij}1\)</span> and <span class="math" data-tex="\(\sum_i y_i x_i=1\)">\(\sum_i y_i x_i=1\)</span>. Let <span class="math" data-tex="\(e_{ab}\)">\(e_{ab}\)</span> be the scalar matrix units of <span class="math" data-tex="\(M_d(\mathcal O_n)\)">\(M_d(\mathcal O_n)\)</span>, <span class="math" data-tex="\(e_a=e_{aa}\)">\(e_a=e_{aa}\)</span>, and <span class="math" data-tex="\(P_a=\sum_{j=1}^a e_j\)">\(P_a=\sum_{j=1}^a e_j\)</span>.</p>
+<p>We will construct coisometries <span class="math" data-tex="\(X_1,\ldots,X_n\)">\(X_1,\ldots,X_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_iX_j^*=\delta_{ij}I_d,\\
+\sum_iX_i^*X_i=I_d.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+X_iX_j^*=\delta_{ij}I_d,\\
+\sum_iX_i^*X_i=I_d.
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>For <span class="math" data-tex="\(1\leq i\leq q\)">\(1\leq i\leq q\)</span>, and for the next two matrices, specify</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_i&amp;=\sum_{j=1}^d x_{(i-1)d+j}e_{j1},\\
+R&amp;:=X_{q+1}\\
+&amp;=\sum_{j=1}^r x_{qd+j}e_{j1}\\
+&amp;\qquad+\sum_{j=1}^{d-r}e_{r+j,j+1},\\
+T&amp;:=X_{q+2}\\
+&amp;=\sum_{j=1}^{r-2}e_{j,j+h}\\
+&amp;\qquad+\sum_{j=r-1}^d a_{q+2,j}e_{jd}.
+\end{aligned}
+\tag{5.6}
+\]">\[
+\begin{aligned}
+X_i&amp;=\sum_{j=1}^d x_{(i-1)d+j}e_{j1},\\
+R&amp;:=X_{q+1}\\
+&amp;=\sum_{j=1}^r x_{qd+j}e_{j1}\\
+&amp;\qquad+\sum_{j=1}^{d-r}e_{r+j,j+1},\\
+T&amp;:=X_{q+2}\\
+&amp;=\sum_{j=1}^{r-2}e_{j,j+h}\\
+&amp;\qquad+\sum_{j=r-1}^d a_{q+2,j}e_{jd}.
+\end{aligned}
+\tag{5.6}
+\]</span>
+<p>For <span class="math" data-tex="\(q+3\leq i\leq n\)">\(q+3\leq i\leq n\)</span>, put <span class="math" data-tex="\(X_i=\sum_{j=1}^d a_{ij}e_{jd}\)">\(X_i=\sum_{j=1}^d a_{ij}e_{jd}\)</span>. Empty sums are zero. The entries <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span> fill the last-column positions in <span class="math" data-tex="\(T\)">\(T\)</span> and these remaining matrices. We take them, each exactly once, from the finite collection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal L=\{x_1^{d-1}\}\\
+\quad\cup\{x_jx_1^l:\substack{2\leq j\leq n,\\0\leq l\leq d-2}\}.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+\mathcal L=\{x_1^{d-1}\}\\
+\quad\cup\{x_jx_1^l:\substack{2\leq j\leq n,\\0\leq l\leq d-2}\}.
+\end{gathered}
+\tag{5.7}
+\]</span>
+<p>The adjoints of these elements are the Cuntz family obtained by repeatedly expanding the first member of <span class="math" data-tex="\((s_1,\ldots,s_n)\)">\((s_1,\ldots,s_n)\)</span>, until that branch has length <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. Explicitly the words are <span class="math" data-tex="\(s_1^{d-1}\)">\(s_1^{d-1}\)</span> and <span class="math" data-tex="\(s_1^l s_j\)">\(s_1^l s_j\)</span>. Distinct words differ at the first non-1 letter, or one is the terminal all-1 word; cancellation proves their orthogonality. Repeated insertion of <span class="math" data-tex="\(\sum_j s_js_j^*=1\)">\(\sum_j s_js_j^*=1\)</span> proves that their range projections sum to 1. Thus, for <span class="math" data-tex="\(a,b\in\mathcal L\)">\(a,b\in\mathcal L\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ab^*=\delta_{ab}1,
+\qquad \sum_{a\in\mathcal L}a^*a=1.
+\tag{5.8}
+\]">\[
+ab^*=\delta_{ab}1,
+\qquad \sum_{a\in\mathcal L}a^*a=1.
+\tag{5.8}
+\]</span>
+<p>There are <span class="math" data-tex="\((n-1)(d-1)+1\)">\((n-1)(d-1)+1\)</span> such entries. The number of empty positions is
+<span class="math" data-tex="\((d-r+2)+d(n-q-2)=(n-1)(d-1)+1\)">\((d-r+2)+d(n-q-2)=(n-1)(d-1)+1\)</span>.
+We must place the entries with one additional condition, needed for surjectivity.</p>
+<p>Consider the permutation of <span class="math" data-tex="\(\{1,\ldots,d\}\)">\(\{1,\ldots,d\}\)</span> given by addition of <span class="math" data-tex="\(h\)">\(h\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span>, always using representatives in that set. Its orbit beginning at 1 lists every index once, because <span class="math" data-tex="\(\gcd(h,d)=1\)">\(\gcd(h,d)=1\)</span>; its last index is <span class="math" data-tex="\(r\)">\(r\)</span>, since <span class="math" data-tex="\(1-h\equiv r\pmod d\)">\(1-h\equiv r\pmod d\)</span>. Split this list immediately after <span class="math" data-tex="\(r-1\)">\(r-1\)</span> into sets <span class="math" data-tex="\(I_1,I_2\)">\(I_1,I_2\)</span>. Then <span class="math" data-tex="\(1,r-1\in I_1\)">\(1,r-1\in I_1\)</span>, and the first index of <span class="math" data-tex="\(I_2\)">\(I_2\)</span> is <span class="math" data-tex="\(d\)">\(d\)</span>, while its last is <span class="math" data-tex="\(r\)">\(r\)</span>. Along either part, an index <span class="math" data-tex="\(w&lt;r-1\)">\(w&lt;r-1\)</span> goes to <span class="math" data-tex="\(w+h\)">\(w+h\)</span>, and an index <span class="math" data-tex="\(w&gt;r\)">\(w&gt;r\)</span> goes to <span class="math" data-tex="\(w-r+1\)">\(w-r+1\)</span>. Extend these two colors to generator indices by coloring <span class="math" data-tex="\(j\)">\(j\)</span> according to the representative <span class="math" data-tex="\(\widehat j\in\{1,\ldots,d\}\)">\(\widehat j\in\{1,\ldots,d\}\)</span> of <span class="math" data-tex="\(j\pmod d\)">\(j\pmod d\)</span>.</p>
+<p>Place <span class="math" data-tex="\(x_jx_1^l\)">\(x_jx_1^l\)</span> only in rows with the color of <span class="math" data-tex="\(\widehat j\)">\(\widehat j\)</span>, and place <span class="math" data-tex="\(x_1^{d-1}\)">\(x_1^{d-1}\)</span> in a row of <span class="math" data-tex="\(I_1\)">\(I_1\)</span>. Here is a proof that enough positions of each color exist. Write</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=|I_1|,\\
+f=|I_1\cap\{1,\ldots,r\}|,\\
+e=|I_1\cap\{r-1,\ldots,d\}|,\\
+e+f=a+1.
+\end{gathered}
+\tag{5.9}
+\]">\[
+\begin{gathered}
+a=|I_1|,\\
+f=|I_1\cap\{1,\ldots,r\}|,\\
+e=|I_1\cap\{r-1,\ldots,d\}|,\\
+e+f=a+1.
+\end{gathered}
+\tag{5.9}
+\]</span>
+<p>The path from 1 to <span class="math" data-tex="\(r-1\)">\(r-1\)</span> has <span class="math" data-tex="\(f-1\)">\(f-1\)</span> forward steps of size <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(e-1\)">\(e-1\)</span> backward steps of size <span class="math" data-tex="\(r-1\)">\(r-1\)</span>. Its total displacement gives
+<span class="math" data-tex="\(r-2=(f-1)h-(e-1)(r-1)\)">\(r-2=(f-1)h-(e-1)(r-1)\)</span>.
+Substitute <span class="math" data-tex="\(e=a+1-f\)">\(e=a+1-f\)</span> and <span class="math" data-tex="\(h=d-r+1\)">\(h=d-r+1\)</span> to obtain
+<span class="math" data-tex="\(a(r-1)=df-d+1\)">\(a(r-1)=df-d+1\)</span>.
+The last-column positions of color 1 number <span class="math" data-tex="\(a(n-q-2)+e\)">\(a(n-q-2)+e\)</span>. The entries of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> of color 1 number <span class="math" data-tex="\((d-1)(qa+f-1)+1\)">\((d-1)(qa+f-1)+1\)</span>: among generator indices 1 through <span class="math" data-tex="\(n\)">\(n\)</span>, there are <span class="math" data-tex="\(qa+f\)">\(qa+f\)</span> of that color; exclude 1 from each of the <span class="math" data-tex="\(d-1\)">\(d-1\)</span> rows of monomials, then add the special all-1 entry. The two counts are equal, since</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;a(n-q-2)+e\\
+&amp;\quad=aq(d-1)+a(r-1)\\
+&amp;\qquad-a+e\\
+&amp;\quad=aq(d-1)+df-d\\
+&amp;\qquad+1-a+e\\
+&amp;\quad=(d-1)(qa+f-1)+1.
+\end{aligned}
+\tag{5.10}
+\]">\[
+\begin{aligned}
+&amp;a(n-q-2)+e\\
+&amp;\quad=aq(d-1)+a(r-1)\\
+&amp;\qquad-a+e\\
+&amp;\quad=aq(d-1)+df-d\\
+&amp;\qquad+1-a+e\\
+&amp;\quad=(d-1)(qa+f-1)+1.
+\end{aligned}
+\tag{5.10}
+\]</span>
+<p>Their total counts also agree, so color 2 has exactly enough positions. Arbitrary bijections within the two colors give the required placement.</p>
+<p>We now verify (5.5). In <span class="math" data-tex="\(X_1,\ldots,X_q,R\)">\(X_1,\ldots,X_q,R\)</span>, the first-column entries are all the original <span class="math" data-tex="\(x_j\)">\(x_j\)</span>, each once. Their products with adjoint first-column entries are Kronecker deltas. The other entries of <span class="math" data-tex="\(R\)">\(R\)</span> are scalar 1 on distinct rows and columns; they fill its remaining diagonal products. Their occupied columns are 2 through <span class="math" data-tex="\(h\)">\(h\)</span>. The scalar entries of <span class="math" data-tex="\(T\)">\(T\)</span> occupy columns <span class="math" data-tex="\(h+1\)">\(h+1\)</span> through <span class="math" data-tex="\(d-1\)">\(d-1\)</span>, and all the new entries occupy column <span class="math" data-tex="\(d\)">\(d\)</span>. These column sets are disjoint from those of the earlier matrices. Within the new last-column entries, (5.8) gives precisely the needed Kronecker products. Thus each <span class="math" data-tex="\(X_iX_i^*=I_d\)">\(X_iX_i^*=I_d\)</span>, and <span class="math" data-tex="\(X_iX_j^*=0\)">\(X_iX_j^*=0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. For the other product sum, the original first column contributes <span class="math" data-tex="\(\sum_j y_jx_j=1\)">\(\sum_j y_jx_j=1\)</span> at coordinate 1; the scalar shifts contribute 1 at coordinates 2 through <span class="math" data-tex="\(d-1\)">\(d-1\)</span>; and (5.8) contributes 1 at coordinate <span class="math" data-tex="\(d\)">\(d\)</span>. This proves (5.5), and also</p>
+<span class="math math-display" data-tex="\[
+\sum_{i=1}^{q+1}X_i^*X_i=P_h.
+\tag{5.11}
+\]">\[
+\sum_{i=1}^{q+1}X_i^*X_i=P_h.
+\tag{5.11}
+\]</span>
+<p>It remains to prove that the matrices generate all of <span class="math" data-tex="\(M_d(\mathcal O_n)\)">\(M_d(\mathcal O_n)\)</span>. Let <span class="math" data-tex="\(\mathcal C=C^*(X_1,\ldots,X_n)\)">\(\mathcal C=C^*(X_1,\ldots,X_n)\)</span>, a unital algebra by (5.5). First every scalar diagonal projection belongs to <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. To see this, list <span class="math" data-tex="\(u_i=ih\pmod d\)">\(u_i=ih\pmod d\)</span>, <span class="math" data-tex="\(1\leq i\leq d\)">\(1\leq i\leq d\)</span>. This is a permutation, with <span class="math" data-tex="\(u_{d-1}=r-1\)">\(u_{d-1}=r-1\)</span>, <span class="math" data-tex="\(u_d=d\)">\(u_d=d\)</span>. Start with <span class="math" data-tex="\(P_{u_1}=P_h\)">\(P_{u_1}=P_h\)</span> from (5.11). For <span class="math" data-tex="\(i\leq d-2\)">\(i\leq d-2\)</span>, the index <span class="math" data-tex="\(u_i\)">\(u_i\)</span> is not <span class="math" data-tex="\(r-1\)">\(r-1\)</span>, and the scalar shifts in (5.6) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_{u_i+h}&amp;=P_h+T^*P_{u_i}T\\
+&amp;\qquad(u_i\leq r-2),\\
+P_{u_i-r+1}&amp;=P_h\\
+&amp;\quad-R^*(I_d-P_{u_i})R\\
+&amp;\qquad(u_i\geq r).
+\end{aligned}
+\tag{5.12}
+\]">\[
+\begin{aligned}
+P_{u_i+h}&amp;=P_h+T^*P_{u_i}T\\
+&amp;\qquad(u_i\leq r-2),\\
+P_{u_i-r+1}&amp;=P_h\\
+&amp;\quad-R^*(I_d-P_{u_i})R\\
+&amp;\qquad(u_i\geq r).
+\end{aligned}
+\tag{5.12}
+\]</span>
+<p>In the first identity only rows below <span class="math" data-tex="\(r-1\)">\(r-1\)</span> are used, so <span class="math" data-tex="\(T\)">\(T\)</span>'s unspecified entries contribute nothing. In the second identity only rows strictly above <span class="math" data-tex="\(u_i\geq r\)">\(u_i\geq r\)</span> are used, so <span class="math" data-tex="\(R\)">\(R\)</span>'s first-column entries contribute nothing. Induction therefore puts all <span class="math" data-tex="\(P_j\)">\(P_j\)</span> in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, the final one being <span class="math" data-tex="\(I_d\)">\(I_d\)</span>. Differences give all <span class="math" data-tex="\(e_j\)">\(e_j\)</span>. This also covers <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, when only the second recurrence is used, and <span class="math" data-tex="\(r=d\)">\(r=d\)</span>, when only the first is used.</p>
+<p>Now each scalar shift in (5.6) can be extracted by its two diagonal projections. We obtain <span class="math" data-tex="\(e_{w,w+h}\)">\(e_{w,w+h}\)</span> for <span class="math" data-tex="\(w&lt;r-1\)">\(w&lt;r-1\)</span>, and <span class="math" data-tex="\(e_{w,w-r+1}\)">\(e_{w,w-r+1}\)</span> for <span class="math" data-tex="\(w&gt;r\)">\(w&gt;r\)</span>. These are exactly the consecutive edges within the two parts of the orbit list defining <span class="math" data-tex="\(I_1,I_2\)">\(I_1,I_2\)</span>. Products along a path, and adjoints along its reverse, give every <span class="math" data-tex="\(e_{ab}\)">\(e_{ab}\)</span> with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in the same part. A part with just one index already has its diagonal projection.</p>
+<p>The color condition supplies the missing bridge between the two parts. Extracting the entry <span class="math" data-tex="\(x_1^{d-1}\)">\(x_1^{d-1}\)</span>, and moving its row within <span class="math" data-tex="\(I_1\)">\(I_1\)</span>, gives <span class="math" data-tex="\(x_1^{d-1}e_{1d}\in\mathcal C\)">\(x_1^{d-1}e_{1d}\in\mathcal C\)</span>. The first-column matrices also give
+<span class="math" data-tex="\(x_je_{\widehat j,1}\)">\(x_je_{\widehat j,1}\)</span> and <span class="math" data-tex="\(y_je_{1,\widehat j}\)">\(y_je_{1,\widehat j}\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. Suppose <span class="math" data-tex="\(x_1^{l+1}e_{1d}\in\mathcal C\)">\(x_1^{l+1}e_{1d}\in\mathcal C\)</span>, where <span class="math" data-tex="\(0\leq l\leq d-2\)">\(0\leq l\leq d-2\)</span>. Multiplication by <span class="math" data-tex="\(y_1e_{11}\)">\(y_1e_{11}\)</span> gives <span class="math" data-tex="\(y_1x_1x_1^l e_{1d}\)">\(y_1x_1x_1^l e_{1d}\)</span>. For <span class="math" data-tex="\(j\geq2\)">\(j\geq2\)</span>, the entry <span class="math" data-tex="\(x_jx_1^l\)">\(x_jx_1^l\)</span> appears in a row of the same color as <span class="math" data-tex="\(\widehat j\)">\(\widehat j\)</span>; the matrix units already obtained in that part move it to row <span class="math" data-tex="\(\widehat j\)">\(\widehat j\)</span>. Multiplication by <span class="math" data-tex="\(y_je_{1,\widehat j}\)">\(y_je_{1,\widehat j}\)</span> gives <span class="math" data-tex="\(y_jx_jx_1^le_{1d}\)">\(y_jx_jx_1^le_{1d}\)</span>. Summing over every <span class="math" data-tex="\(1\leq j\leq n\)">\(1\leq j\leq n\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^n y_jx_jx_1^le_{1d}
+=x_1^le_{1d}\in\mathcal C.
+\tag{5.13}
+\]">\[
+\sum_{j=1}^n y_jx_jx_1^le_{1d}
+=x_1^le_{1d}\in\mathcal C.
+\tag{5.13}
+\]</span>
+<p>Descending from <span class="math" data-tex="\(l=d-2\)">\(l=d-2\)</span> to 0 proves <span class="math" data-tex="\(e_{1d}\in\mathcal C\)">\(e_{1d}\in\mathcal C\)</span>. Its adjoint is also present. Combining this bridge with the two sets of matrix units gives every scalar <span class="math" data-tex="\(e_{ab}\)">\(e_{ab}\)</span>. The original first-column entries now give <span class="math" data-tex="\(x_je_{ab}\)">\(x_je_{ab}\)</span> for every <span class="math" data-tex="\(j,a,b\)">\(j,a,b\)</span>, by multiplication on the left and right by those matrix units; adjoints give <span class="math" data-tex="\(y_je_{ab}\)">\(y_je_{ab}\)</span>. Hence <span class="math" data-tex="\(\mathcal C=M_d(\mathcal O_n)\)">\(\mathcal C=M_d(\mathcal O_n)\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(S_i=X_i^*\)">\(S_i=X_i^*\)</span> satisfy the Cuntz relations by (5.5). Universality gives a unital map from <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span> onto their generated algebra, now proved to be <span class="math" data-tex="\(M_d(\mathcal O_n)\)">\(M_d(\mathcal O_n)\)</span>. Theorem 2.2 makes it injective. The initial rectangular unitaries transfer this isomorphism to the original size <span class="math" data-tex="\(k\)">\(k\)</span>. This proves sufficiency for every <span class="math" data-tex="\(k\)">\(k\)</span>, including <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="projection-representatives-and-scale">Projection representatives and scale</h3>
+<p><strong>Proposition 5.2.</strong> If a unital C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> contains two isometries with orthogonal ranges, every class of <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> is represented by a projection in <span class="math" data-tex="\(A\)">\(A\)</span> itself. In particular <span class="math" data-tex="\(K_0(A)^+=K_0(A)\)">\(K_0(A)^+=K_0(A)\)</span>, and the scale <span class="math" data-tex="\(\{[p]:p\text{ a projection in }A\}\)">\(\{[p]:p\text{ a projection in }A\}\)</span> is all of <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>.</p>
+<p><em>Proof.</em> From two orthogonal isometries we can form arbitrarily large finite orthogonal families by repeatedly replacing one member <span class="math" data-tex="\(v\)">\(v\)</span> by the two isometries obtained by appending the original pair. Their total range is at most 1. For a projection <span class="math" data-tex="\(p\in M_l(A)\)">\(p\in M_l(A)\)</span>, choose such a family of size <span class="math" data-tex="\(l\)">\(l\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be its row. Then <span class="math" data-tex="\(V^*V=I_l\)">\(V^*V=I_l\)</span>, while <span class="math" data-tex="\(VV^*\leq1\)">\(VV^*\leq1\)</span>; the projection <span class="math" data-tex="\(p&#x27;=VpV^*\in A\)">\(p&#x27;=VpV^*\in A\)</span> is Murray–von Neumann equivalent to <span class="math" data-tex="\(p\)">\(p\)</span>, implemented by the rectangular partial isometry <span class="math" data-tex="\(Vp\)">\(Vp\)</span>.</p>
+<p>Write any group class as <span class="math" data-tex="\([p]-[q]\)">\([p]-[q]\)</span>, and replace both matrix projections by projections <span class="math" data-tex="\(p&#x27;,q&#x27;\in A\)">\(p&#x27;,q&#x27;\in A\)</span> as just described. Let <span class="math" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span> be two orthogonal isometries. The element</p>
+<span class="math math-display" data-tex="\[
+r=1-v_1v_1^*-v_2q&#x27;v_2^*
+\tag{5.14}
+\]">\[
+r=1-v_1v_1^*-v_2q&#x27;v_2^*
+\tag{5.14}
+\]</span>
+<p>is a projection, since the two subtracted projections are orthogonal and their sum is at most 1. Additivity and equivalence give <span class="math" data-tex="\([r]=[1]-[1]-[q&#x27;]=-[q]\)">\([r]=[1]-[1]-[q&#x27;]=-[q]\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+p&#x27;&#x27;=v_1p&#x27;v_1^*+v_2rv_2^*
+\tag{5.15}
+\]">\[
+p&#x27;&#x27;=v_1p&#x27;v_1^*+v_2rv_2^*
+\tag{5.15}
+\]</span>
+<p>is a projection in <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\([p&#x27;&#x27;]=[p]-[q]\)">\([p&#x27;&#x27;]=[p]-[q]\)</span>. This proves both assertions, without a cancellation assumption. Applied to <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span>, use <span class="math" data-tex="\(s_1,s_2\)">\(s_1,s_2\)</span>. A zero K-class still need not be a zero projection. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="section-6"><span id="6-the-toeplitz-model-and-mathcal-o_-infty"></span>6. The Toeplitz model and <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span></h2>
+<p>Let <span class="math" data-tex="\(E_n\)">\(E_n\)</span> be universal for <span class="math" data-tex="\(n\)">\(n\)</span> orthogonal isometries <span class="math" data-tex="\(S_i\)">\(S_i\)</span>, with no relation requiring their ranges to exhaust the identity. Put</p>
+<span class="math math-display" data-tex="\[
+q=1-\sum_{i=1}^nS_iS_i^*.
+\tag{6.1}
+\]">\[
+q=1-\sum_{i=1}^nS_iS_i^*.
+\tag{6.1}
+\]</span>
+<p>The left creation operators on finite words over <span class="math" data-tex="\(n\)">\(n\)</span> letters give its Fock representation; <span class="math" data-tex="\(q\)">\(q\)</span> is the projection onto the empty word. We first justify that this concrete model is faithful, so that the extension and the later embeddings are genuine algebra statements.</p>
+<p><strong>Lemma 6.1.</strong> A unital, gauge-equivariant representation of <span class="math" data-tex="\(E_n\)">\(E_n\)</span> with nonzero image of <span class="math" data-tex="\(q\)">\(q\)</span> is injective.</p>
+<p><em>Proof.</em> The fixed core is the closure of the increasing finite-dimensional algebras generated by equal-length normal words of length at most <span class="math" data-tex="\(l\)">\(l\)</span>. Their matrix blocks are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_\mu q S_\nu^*,\quad |\mu|=|\nu|=r&lt;l,\\
+S_\mu S_\nu^*,\quad |\mu|=|\nu|=l.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+S_\mu q S_\nu^*,\quad |\mu|=|\nu|=r&lt;l,\\
+S_\mu S_\nu^*,\quad |\mu|=|\nu|=l.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The first blocks at distinct lengths annihilate one another: after cancellation, <span class="math" data-tex="\(qS_i=0=S_i^*q\)">\(qS_i=0=S_i^*q\)</span>. They also annihilate the last block. Their diagonal sums, together with the last block's diagonal sum, equal one by iterating (6.1). Inserting <span class="math" data-tex="\(1=q+\sum_iS_iS_i^*\)">\(1=q+\sum_iS_iS_i^*\)</span> repeatedly expresses every shorter normal word as a sum in these blocks. The algebra is therefore</p>
+<span class="math math-display" data-tex="\[
+\left(\bigoplus_{r=0}^{l-1}M_{n^r}(\mathbb C)\right)
+\oplus M_{n^l}(\mathbb C).
+\tag{6.3}
+\]">\[
+\left(\bigoplus_{r=0}^{l-1}M_{n^r}(\mathbb C)\right)
+\oplus M_{n^l}(\mathbb C).
+\tag{6.3}
+\]</span>
+<p>Each defect diagonal is equivalent to <span class="math" data-tex="\(q\)">\(q\)</span>, and each terminal diagonal to one. All are nonzero in the universal algebra by the Fock model. A representation with nonzero defect keeps all these blocks nonzero, hence is injective on each block and their orthogonal sum. It is isometric on the entire fixed core. Both algebras admit gauge averaging, and equivariance intertwines it. If <span class="math" data-tex="\(a\)">\(a\)</span> maps to zero, its positive average <span class="math" data-tex="\(E(a^*a)\)">\(E(a^*a)\)</span> maps to zero and hence vanishes in the fixed core. Faithfulness of the universal average proves <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The Fock representation has a gauge action implemented by multiplying length-<span class="math" data-tex="\(r\)">\(r\)</span> basis vectors by <span class="math" data-tex="\(z^r\)">\(z^r\)</span>, so the lemma applies. In this model the operators <span class="math" data-tex="\(S_\mu qS_\nu^*\)">\(S_\mu qS_\nu^*\)</span>, with arbitrary finite words, are precisely the rank-one matrix units between word vectors. Their closed span is <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>, the ideal generated by <span class="math" data-tex="\(q\)">\(q\)</span>. The quotient imposes exactly the missing Cuntz relation; the two universal maps on generators are inverse. Thus</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal K
+\longrightarrow E_n
+\longrightarrow\mathcal O_n
+\longrightarrow0.
+\tag{6.4}
+\]">\[
+0\longrightarrow\mathcal K
+\longrightarrow E_n
+\longrightarrow\mathcal O_n
+\longrightarrow0.
+\tag{6.4}
+\]</span>
+<p>The scalar inclusion <span class="math" data-tex="\(\mathbb C\to E_n\)">\(\mathbb C\to E_n\)</span> induces isomorphisms on both K-groups. Proposition 6.2 below proves this from the Fock extension and the independently established finite Cuntz calculation; Theorem 6.3 also proves the full correspondence coefficient theorem. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(E_n)=\mathbb Z[1_{E_n}],\\
+K_1(E_n)=0.
+\end{gathered}
+\tag{6.5}
+\]">\[
+\begin{gathered}
+K_0(E_n)=\mathbb Z[1_{E_n}],\\
+K_1(E_n)=0.
+\end{gathered}
+\tag{6.5}
+\]</span>
+<p>For the infinite algebra, let <span class="math" data-tex="\(A_n=C^*(1,s_1,\ldots,s_n)\)">\(A_n=C^*(1,s_1,\ldots,s_n)\)</span> inside <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>. Its defect is nonzero, since it dominates <span class="math" data-tex="\(s_{n+1}s_{n+1}^*\)">\(s_{n+1}s_{n+1}^*\)</span>. The natural map <span class="math" data-tex="\(E_n\to A_n\)">\(E_n\to A_n\)</span> intertwines gauge actions, so Lemma 6.1 makes it an isomorphism. The union of the <span class="math" data-tex="\(A_n\)">\(A_n\)</span> is dense by the definition of the infinite universal algebra. Its unital connecting maps preserve the generators of (6.5), and hence induce the identity on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Continuity from Lesson 16 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_0(\mathcal O_\infty)=\mathbb Z,
+\qquad [1]=1,\\
+K_1(\mathcal O_\infty)=0.
+\end{gathered}
+\tag{6.6}
+\]">\[
+\begin{gathered}
+K_0(\mathcal O_\infty)=\mathbb Z,
+\qquad [1]=1,\\
+K_1(\mathcal O_\infty)=0.
+\end{gathered}
+\tag{6.6}
+\]</span>
+<p>This uses a direct limit of Toeplitz algebras. It does not impose finite Cuntz sums inside <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>, or infer an infinite-algebra group from the finite extension alone.</p>
+<p><strong>Proposition 6.2 (the scalar Toeplitz K-isomorphism).</strong> The unital coefficient map <span class="math" data-tex="\(\mathbb C\to E_n\)">\(\mathbb C\to E_n\)</span> induces both K-isomorphisms; explicitly,</p>
+<p>These are the groups and distinguished generator in (6.5).</p>
+<p><em>Proof.</em> Theorem 4.1 computed <span class="math" data-tex="\(K_0(\mathcal O_n)=\mathbb Z/(n-1)\)">\(K_0(\mathcal O_n)=\mathbb Z/(n-1)\)</span>, with its unit the displayed generator, and <span class="math" data-tex="\(K_1(\mathcal O_n)=0\)">\(K_1(\mathcal O_n)=0\)</span>, by the core, full corner, Takai duality and PV sequence. That computation used no Toeplitz K-isomorphism. Applying the six-term sequence to the already proved Fock extension (6.4), and using compact stability, therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_1(E_n)=0,\\
+\begin{aligned}
+0\longrightarrow\mathbb Z[q]
+&amp;\xrightarrow{\ j_*\ }K_0(E_n)\\
+&amp;\xrightarrow{\ \pi_*\ }\mathbb Z/(n-1)\\
+&amp;\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{6.7}
+\]">\[
+\begin{gathered}
+K_1(E_n)=0,\\
+\begin{aligned}
+0\longrightarrow\mathbb Z[q]
+&amp;\xrightarrow{\ j_*\ }K_0(E_n)\\
+&amp;\xrightarrow{\ \pi_*\ }\mathbb Z/(n-1)\\
+&amp;\longrightarrow0.
+\end{aligned}
+\end{gathered}
+\tag{6.7}
+\]</span>
+<p>The first arrow is injective because the preceding group <span class="math" data-tex="\(K_1(\mathcal O_n)\)">\(K_1(\mathcal O_n)\)</span> is zero. The vacuum rank-one projection <span class="math" data-tex="\(q\)">\(q\)</span> generates <span class="math" data-tex="\(K_0(\mathcal K)\)">\(K_0(\mathcal K)\)</span>. Orthogonality and the isometries give the relation inside <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, before taking any quotient,</p>
+<span class="math math-display" data-tex="\[
+j_*[q]=(1-n)[1_{E_n}].
+\tag{6.8}
+\]">\[
+j_*[q]=(1-n)[1_{E_n}].
+\tag{6.8}
+\]</span>
+<p>Write <span class="math" data-tex="\(g=[1_{E_n}]\)">\(g=[1_{E_n}]\)</span>. Since the quotient map is unital, <span class="math" data-tex="\(\pi_*(g)\)">\(\pi_*(g)\)</span> generates <span class="math" data-tex="\(\mathbb Z/(n-1)\)">\(\mathbb Z/(n-1)\)</span>. For any <span class="math" data-tex="\(h\in K_0(E_n)\)">\(h\in K_0(E_n)\)</span>, choose an integer <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(\pi_*(h)=\pi_*(mg)\)">\(\pi_*(h)=\pi_*(mg)\)</span>. Exactness gives <span class="math" data-tex="\(h-mg=l j_*[q]\)">\(h-mg=l j_*[q]\)</span> for some integer <span class="math" data-tex="\(l\)">\(l\)</span>. Equation (6.8) shows that <span class="math" data-tex="\(h\)">\(h\)</span> is an integral multiple of <span class="math" data-tex="\(g\)">\(g\)</span>. This reasoning includes <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, when the quotient is zero and one may take <span class="math" data-tex="\(m=0\)">\(m=0\)</span>.</p>
+<p>The element <span class="math" data-tex="\(g\)">\(g\)</span> has infinite order. If <span class="math" data-tex="\(kg=0\)">\(kg=0\)</span>, then (6.8) gives <span class="math" data-tex="\(j_*(k[q])=(1-n)kg=0\)">\(j_*(k[q])=(1-n)kg=0\)</span>; injectivity in (6.7) forces <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Thus <span class="math" data-tex="\(K_0(E_n)\)">\(K_0(E_n)\)</span> is the infinite cyclic group generated by the unit, proving the degree-zero assertion and its normalization. Both <span class="math" data-tex="\(K_1(\mathbb C)\)">\(K_1(\mathbb C)\)</span> and <span class="math" data-tex="\(K_1(E_n)\)">\(K_1(E_n)\)</span> vanish, which proves the degree-one assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="the-general-coefficient-theorem">The general coefficient theorem</h3>
+<p>We now prove the full correspondence theorem behind the scalar calculation, following Pimsner's Fock rotation and Katsura's elementary K-theory version. The proof retains arbitrary coefficient algebras and Hilbert modules, including nonseparable ones and degenerate left actions.</p>
+<p>A C*-correspondence over <span class="math" data-tex="\(A\)">\(A\)</span> is a right Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(X\)">\(X\)</span> with an adjointable left action <span class="math" data-tex="\(\varphi:A\to\mathcal L(X)\)">\(\varphi:A\to\mathcal L(X)\)</span>. Its Toeplitz algebra <span class="math" data-tex="\(\mathcal T_X\)">\(\mathcal T_X\)</span> is universal for a homomorphism <span class="math" data-tex="\(\pi:A\to\mathcal T_X\)">\(\pi:A\to\mathcal T_X\)</span> and a linear map <span class="math" data-tex="\(t:X\to\mathcal T_X\)">\(t:X\to\mathcal T_X\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+t(\xi)^*t(\eta)&amp;=\pi(\langle\xi,\eta\rangle),\\
+\pi(a)t(\xi)&amp;=t(\varphi(a)\xi),\\
+t(\xi)\pi(a)&amp;=t(\xi a).
+\end{aligned}
+\tag{6.9}
+\]">\[
+\begin{aligned}
+t(\xi)^*t(\eta)&amp;=\pi(\langle\xi,\eta\rangle),\\
+\pi(a)t(\xi)&amp;=t(\varphi(a)\xi),\\
+t(\xi)\pi(a)&amp;=t(\xi a).
+\end{aligned}
+\tag{6.9}
+\]</span>
+<p>The third identity follows from the first by expanding the positive square of their difference. The first also gives <span class="math" data-tex="\(\|t(\xi)\|\leq\|\xi\|\)">\(\|t(\xi)\|\leq\|\xi\|\)</span>. Universal existence follows by taking the supremum of representation norms on the algebra generated by these symbols; each polynomial is bounded by the coefficient norms and these bounds on <span class="math" data-tex="\(t\)">\(t\)</span>. The Fock representation below shows that <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is injective. The interior tensor products and direct sums of Hilbert modules used here are the constructions in the Hilbert C*-modules course; the displayed inner-product checks specify the maps we need.</p>
+<p><strong>Theorem 6.3 (Toeplitz coefficient theorem).</strong> For every C*-correspondence <span class="math" data-tex="\(X\)">\(X\)</span> over every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi_*:K_i(A)\longrightarrow K_i(\mathcal T_X)\\
+\text{is an isomorphism},\quad i=0,1.
+\end{gathered}
+\tag{6.10}
+\]">\[
+\begin{gathered}
+\pi_*:K_i(A)\longrightarrow K_i(\mathcal T_X)\\
+\text{is an isomorphism},\quad i=0,1.
+\end{gathered}
+\tag{6.10}
+\]</span>
+<p><em>Proof.</em> We first construct an elementary difference map for two representations. If <span class="math" data-tex="\(I\)">\(I\)</span> is an ideal of a C*-algebra <span class="math" data-tex="\(C\)">\(C\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal D(I,C)=\\
+\{f\in C_0((-1,1),C):\\
+f(s)-f(-s)\in I\\
+\text{for every }s\}.
+\end{gathered}
+\tag{6.11}
+\]">\[
+\begin{gathered}
+\mathcal D(I,C)=\\
+\{f\in C_0((-1,1),C):\\
+f(s)-f(-s)\in I\\
+\text{for every }s\}.
+\end{gathered}
+\tag{6.11}
+\]</span>
+<p>The positive-half inclusion <span class="math" data-tex="\(j:SI\to\mathcal D(I,C)\)">\(j:SI\to\mathcal D(I,C)\)</span> extends a function by zero on <span class="math" data-tex="\((-1,0]\)">\((-1,0]\)</span>. Restriction to the negative half gives the exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow SI&amp;\xrightarrow{j}\mathcal D(I,C)\\
+&amp;\longrightarrow C_0((-1,0],C)\\
+&amp;\longrightarrow0.
+\end{aligned}
+\tag{6.12}
+\]">\[
+\begin{aligned}
+0\longrightarrow SI&amp;\xrightarrow{j}\mathcal D(I,C)\\
+&amp;\longrightarrow C_0((-1,0],C)\\
+&amp;\longrightarrow0.
+\end{aligned}
+\tag{6.12}
+\]</span>
+<p>Restriction is onto: reflect any negative-half function evenly to the positive half. The kernel is exactly <span class="math" data-tex="\(SI\)">\(SI\)</span>, by (6.11) and continuity at 0. The quotient is a cone and has zero K-groups. Explicitly, after its identification with <span class="math" data-tex="\(C_0([0,1),C)\)">\(C_0([0,1),C)\)</span>, the homotopy <span class="math" data-tex="\(f(s)\mapsto f(v+(1-v)s)\)">\(f(s)\mapsto f(v+(1-v)s)\)</span>, <span class="math" data-tex="\(0\leq v\leq1\)">\(0\leq v\leq1\)</span>, contracts it, taking the value 0 at <span class="math" data-tex="\(v=1\)">\(v=1\)</span>. Uniform vanishing at 1 makes the homotopy norm continuous. The six-term sequence therefore makes <span class="math" data-tex="\(j_*\)">\(j_*\)</span> an isomorphism in both degrees.</p>
+<p>Given homomorphisms <span class="math" data-tex="\(\rho_+,\rho_-:B\to C\)">\(\rho_+,\rho_-:B\to C\)</span> whose difference lies in <span class="math" data-tex="\(I\)">\(I\)</span>, the formula</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(f)(s)\\
+=\begin{cases}
+\rho_+(f(s)),&amp;s\geq0,\\
+\rho_-(f(-s)),&amp;s\leq0
+\end{cases}
+\end{gathered}
+\tag{6.13}
+\]">\[
+\begin{gathered}
+R(f)(s)\\
+=\begin{cases}
+\rho_+(f(s)),&amp;s\geq0,\\
+\rho_-(f(-s)),&amp;s\leq0
+\end{cases}
+\end{gathered}
+\tag{6.13}
+\]</span>
+<p>defines a homomorphism <span class="math" data-tex="\(R:SB\to\mathcal D(I,C)\)">\(R:SB\to\mathcal D(I,C)\)</span>; <span class="math" data-tex="\(f(0)=0\)">\(f(0)=0\)</span> checks the common endpoint. If <span class="math" data-tex="\(\rho_+=\rho_-\)">\(\rho_+=\rho_-\)</span>, this map factors through the even cone <span class="math" data-tex="\(C_0([0,1),C)\)">\(C_0([0,1),C)\)</span>, so its K-map is zero. If <span class="math" data-tex="\(\rho_+=\sigma+\rho_-\)">\(\rho_+=\sigma+\rho_-\)</span>, where <span class="math" data-tex="\(\sigma:B\to I\)">\(\sigma:B\to I\)</span> and the two summands have orthogonal ranges, additivity gives <span class="math" data-tex="\(R_*=(jS\sigma)_*\)">\(R_*=(jS\sigma)_*\)</span>. Here additivity is the ordinary block-sum rule: orthogonal projection images add in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>; for normalized unitaries the two orthogonal nonconstant parts multiply, and a scalar two-by-two rotation identifies their product with their stabilized block sum. This also applies to relative classes in forced unitizations. These difference maps are natural under homomorphisms of <span class="math" data-tex="\((I,C)\)">\((I,C)\)</span> and invariant under point-norm homotopies of the two representations. All these assertions follow directly from (6.11)–(6.13) and K-theory homotopy invariance.</p>
+<p>Assume first that the left action on <span class="math" data-tex="\(X\)">\(X\)</span> is nondegenerate, meaning <span class="math" data-tex="\(\overline{\varphi(A)X}=X\)">\(\overline{\varphi(A)X}=X\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal F=\bigoplus_{m\geq0}X^{\otimes m},
+\qquad X^{\otimes0}=A.
+\tag{6.14}
+\]">\[
+\mathcal F=\bigoplus_{m\geq0}X^{\otimes m},
+\qquad X^{\otimes0}=A.
+\tag{6.14}
+\]</span>
+<p>The tensor products are over <span class="math" data-tex="\(A\)">\(A\)</span>. On grade zero let <span class="math" data-tex="\(\varphi_0(a)\)">\(\varphi_0(a)\)</span> be left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>; on higher grades let <span class="math" data-tex="\(\varphi_m(a)\)">\(\varphi_m(a)\)</span> act on the first tensor factor. Write <span class="math" data-tex="\(\varphi_\infty(a)=\bigoplus_m\varphi_m(a)\)">\(\varphi_\infty(a)=\bigoplus_m\varphi_m(a)\)</span>. Creation by <span class="math" data-tex="\(\xi\)">\(\xi\)</span> sends <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> to <span class="math" data-tex="\(\xi a\)">\(\xi a\)</span>, and <span class="math" data-tex="\(\eta\in X^{\otimes m}\)">\(\eta\in X^{\otimes m}\)</span>, <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, to <span class="math" data-tex="\(\xi\otimes\eta\)">\(\xi\otimes\eta\)</span>. Its adjoint on an elementary tensor is
+<span class="math" data-tex="\(\xi&#x27;\otimes\eta\mapsto\varphi_m(\langle\xi,\xi&#x27;\rangle)\eta\)">\(\xi&#x27;\otimes\eta\mapsto\varphi_m(\langle\xi,\xi&#x27;\rangle)\eta\)</span>, with left multiplication on grade zero. The tensor inner product gives
+<span class="math" data-tex="\(T(\xi)^*T(\eta)=\varphi_\infty(\langle\xi,\eta\rangle)\)">\(T(\xi)^*T(\eta)=\varphi_\infty(\langle\xi,\eta\rangle)\)</span>, and the left-action identity in (6.9) holds grade by grade. Thus this is a Toeplitz representation, inducing <span class="math" data-tex="\(\rho_+:\mathcal T_X\to\mathcal L(\mathcal F)\)">\(\rho_+:\mathcal T_X\to\mathcal L(\mathcal F)\)</span>. Its coefficient map is faithful on the vacuum copy of <span class="math" data-tex="\(A\)">\(A\)</span>, proving injectivity of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>.</p>
+<p>There is a second representation <span class="math" data-tex="\(\rho_-\)">\(\rho_-\)</span>, zero on the vacuum and equal to the coefficient and creation operators on the positive grades. In particular creation from grade zero is now zero. The same calculation checks (6.9): both its coefficient and creation inner-product operators are zero on grade zero and have the preceding formulas on the other grades. For generators the differences are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_+(\pi(a))-\rho_-(\pi(a))&amp;=\varphi_0(a),\\
+\rho_+(t(\xi))-\rho_-(t(\xi))&amp;=T_0(\xi),
+\end{aligned}
+\tag{6.15}
+\]">\[
+\begin{aligned}
+\rho_+(\pi(a))-\rho_-(\pi(a))&amp;=\varphi_0(a),\\
+\rho_+(t(\xi))-\rho_-(t(\xi))&amp;=T_0(\xi),
+\end{aligned}
+\tag{6.15}
+\]</span>
+<p>where the first operator is supported on the vacuum and the second maps the vacuum to grade one. Both are compact Hilbert-module operators. For the second assertion, if <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> is an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, the rank-one maps <span class="math" data-tex="\(\theta_{\xi,e_\lambda}:A\to X\)">\(\theta_{\xi,e_\lambda}:A\to X\)</span> converge to <span class="math" data-tex="\(a\mapsto\xi a\)">\(a\mapsto\xi a\)</span>, since <span class="math" data-tex="\(\|\xi-\xi e_\lambda\|\to0\)">\(\|\xi-\xi e_\lambda\|\to0\)</span>. Also <span class="math" data-tex="\(\mathcal K(A)=A\)">\(\mathcal K(A)=A\)</span> by <span class="math" data-tex="\(\theta_{a,b}(c)=ab^*c\)">\(\theta_{a,b}(c)=ab^*c\)</span>. The compact operators are an ideal in <span class="math" data-tex="\(\mathcal L(\mathcal F)\)">\(\mathcal L(\mathcal F)\)</span>, so the difference of the two representations is compact on every element: for products expand it as a sum with one difference factor, and then use polynomial density.</p>
+<p>Write
+<span class="math" data-tex="\(D_{\mathcal F}=\mathcal D(\mathcal K(\mathcal F),\mathcal L(\mathcal F))\)">\(D_{\mathcal F}=\mathcal D(\mathcal K(\mathcal F),\mathcal L(\mathcal F))\)</span>.
+The pair <span class="math" data-tex="\((\rho_+,\rho_-)\)">\((\rho_+,\rho_-)\)</span> gives <span class="math" data-tex="\(R:S\mathcal T_X\to D_{\mathcal F}\)">\(R:S\mathcal T_X\to D_{\mathcal F}\)</span> by (6.13). Let <span class="math" data-tex="\(k_A:SA\to D_{\mathcal F}\)">\(k_A:SA\to D_{\mathcal F}\)</span> be the positive-half vacuum inclusion <span class="math" data-tex="\(jS\varphi_0\)">\(jS\varphi_0\)</span>. This induces an isomorphism. Indeed the vacuum projection is a full multiplier projection of <span class="math" data-tex="\(\mathcal K(\mathcal F)\)">\(\mathcal K(\mathcal F)\)</span>, and its corner is <span class="math" data-tex="\(A\)">\(A\)</span>. For fullness, every rank-one <span class="math" data-tex="\(\theta_{\xi,\eta}\)">\(\theta_{\xi,\eta}\)</span> is a norm limit of vacuum factorizations: creation maps <span class="math" data-tex="\(A\to\mathcal F\)">\(A\to\mathcal F\)</span>, <span class="math" data-tex="\(a\mapsto\xi a\)">\(a\mapsto\xi a\)</span>, are compact by the same approximate-identity argument, and inserting vacuum multiplication by <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span> gives <span class="math" data-tex="\(\theta_{\xi e_\lambda,\eta}\to\theta_{\xi,\eta}\)">\(\theta_{\xi e_\lambda,\eta}\to\theta_{\xi,\eta}\)</span>. Thus the ideal generated by the vacuum corner contains all compacts. The <a href="../../KT-CP/prerequisites/hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html#2-full-multiplier-corners">arbitrary full-multiplier-corner theorem, Hilbert C*-modules Lesson 14, Theorem 2.4</a> makes <span class="math" data-tex="\((\varphi_0)_*\)">\((\varphi_0)_*\)</span> an isomorphism, without countability assumptions; (6.12) then proves the assertion about <span class="math" data-tex="\(k_A\)">\(k_A\)</span>.</p>
+<p>On coefficient elements, the pair in (6.15) is the orthogonal sum of the vacuum representation and its common positive-grade representation. The even-cone cancellation after (6.13) consequently gives</p>
+<span class="math math-display" data-tex="\[
+R_*(S\pi)_*=(k_A)_*.
+\tag{6.16}
+\]">\[
+R_*(S\pi)_*=(k_A)_*.
+\tag{6.16}
+\]</span>
+<p>Thus <span class="math" data-tex="\(L=(k_A)_*^{-1}R_*\)">\(L=(k_A)_*^{-1}R_*\)</span> is a left inverse to <span class="math" data-tex="\((S\pi)_*\)">\((S\pi)_*\)</span>. We prove that it is also a right inverse, keeping the actual coefficient map throughout.</p>
+<p>Let <span class="math" data-tex="\(T=\mathcal T_X\)">\(T=\mathcal T_X\)</span>, and extend scalars to form the Hilbert <span class="math" data-tex="\(T\)">\(T\)</span>-module
+<span class="math" data-tex="\(Y=\mathcal F\otimes_\pi T=\bigoplus_{m\geq0}Y_m\)">\(Y=\mathcal F\otimes_\pi T=\bigoplus_{m\geq0}Y_m\)</span>.
+Here <span class="math" data-tex="\(Y_m=X^{\otimes m}\otimes_\pi T\)">\(Y_m=X^{\otimes m}\otimes_\pi T\)</span> is identified isometrically with <span class="math" data-tex="\(\overline{t^m(X^{\otimes m})T}\)">\(\overline{t^m(X^{\otimes m})T}\)</span> by <span class="math" data-tex="\(\xi\otimes b\mapsto t^m(\xi)b\)">\(\xi\otimes b\mapsto t^m(\xi)b\)</span>: its inner products agree by (6.9), and the indicated span gives surjectivity. These are separate summands of <span class="math" data-tex="\(Y\)">\(Y\)</span>, even when their images as subspaces of <span class="math" data-tex="\(T\)">\(T\)</span> overlap. Nondegeneracy gives <span class="math" data-tex="\(Y_0=T\)">\(Y_0=T\)</span>. For clarity, an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> acts on both sides of each generator of <span class="math" data-tex="\(T\)">\(T\)</span>: on the left use <span class="math" data-tex="\(\varphi(e_\lambda)\xi\to\xi\)">\(\varphi(e_\lambda)\xi\to\xi\)</span>, and on the right use <span class="math" data-tex="\(\xi e_\lambda\to\xi\)">\(\xi e_\lambda\to\xi\)</span>. Polynomial approximation therefore makes <span class="math" data-tex="\(\pi(e_\lambda)\)">\(\pi(e_\lambda)\)</span> an approximate identity of <span class="math" data-tex="\(T\)">\(T\)</span>, proving the vacuum identification.</p>
+<p>Every adjointable operator <span class="math" data-tex="\(Q\)">\(Q\)</span> on <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> extends to <span class="math" data-tex="\(\Phi(Q)=Q\otimes1\)">\(\Phi(Q)=Q\otimes1\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, a homomorphism of adjointable-operator algebras. It sends compacts to compacts. Define <span class="math" data-tex="\(J\xi\in Y\)">\(J\xi\in Y\)</span> on grade <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(t^m(\xi_m)\)">\(t^m(\xi_m)\)</span>; then
+<span class="math" data-tex="\(\langle J\xi,J\eta\rangle=\pi(\langle\xi,\eta\rangle)\)">\(\langle J\xi,J\eta\rangle=\pi(\langle\xi,\eta\rangle)\)</span>, and <span class="math" data-tex="\(JT\)">\(JT\)</span> spans <span class="math" data-tex="\(Y\)">\(Y\)</span>. On these dense vectors a direct check gives</p>
+<span class="math math-display" data-tex="\[
+\Phi(\theta_{\xi,\eta})=\theta_{J\xi,J\eta}.
+\tag{6.17}
+\]">\[
+\Phi(\theta_{\xi,\eta})=\theta_{J\xi,J\eta}.
+\tag{6.17}
+\]</span>
+<p>No identity in a nonunital coefficient algebra is used in defining <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> induces a homomorphism <span class="math" data-tex="\(D\Phi:D_{\mathcal F}\to D_Y\)">\(D\Phi:D_{\mathcal F}\to D_Y\)</span>, where <span class="math" data-tex="\(D_Y=\mathcal D(\mathcal K(Y),\mathcal L(Y))\)">\(D_Y=\mathcal D(\mathcal K(Y),\mathcal L(Y))\)</span>. Vacuum multiplication defines <span class="math" data-tex="\(\widetilde\varphi_0:T\to\mathcal K(Y)\)">\(\widetilde\varphi_0:T\to\mathcal K(Y)\)</span>; its corner is full by the same vacuum factorization. Hence the positive-half map <span class="math" data-tex="\(k_T=jS\widetilde\varphi_0:ST\to D_Y\)">\(k_T=jS\widetilde\varphi_0:ST\to D_Y\)</span> induces an isomorphism. Vacuum extension of scalars gives the actual equality</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi\varphi_0(a)=\widetilde\varphi_0(\pi(a)),\\
+D\Phi\,k_A=k_T S\pi.
+\end{gathered}
+\tag{6.18}
+\]">\[
+\begin{gathered}
+\Phi\varphi_0(a)=\widetilde\varphi_0(\pi(a)),\\
+D\Phi\,k_A=k_T S\pi.
+\end{gathered}
+\tag{6.18}
+\]</span>
+<p>Here is the rotation proving the other inverse identity. Let <span class="math" data-tex="\(\Pi=\Phi\varphi_\infty\)">\(\Pi=\Phi\varphi_\infty\)</span>. For <span class="math" data-tex="\(\xi\in X\)">\(\xi\in X\)</span>, let <span class="math" data-tex="\(A_\xi\)">\(A_\xi\)</span> be multiplication by <span class="math" data-tex="\(t(\xi)\)">\(t(\xi)\)</span> on <span class="math" data-tex="\(Y_0=T\)">\(Y_0=T\)</span>, zero elsewhere; let <span class="math" data-tex="\(B_\xi=\Phi(T_0(\xi))\)">\(B_\xi=\Phi(T_0(\xi))\)</span>, taking <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> to <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span>; and let <span class="math" data-tex="\(C_\xi\)">\(C_\xi\)</span> be the positive-grade truncated creation operator <span class="math" data-tex="\(\Phi(\rho_-(t(\xi)))\)">\(\Phi(\rho_-(t(\xi)))\)</span>. For <span class="math" data-tex="\(0\leq v\leq1\)">\(0\leq v\leq1\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+t_v(\xi)&amp;=v A_\xi+\sqrt{1-v^2}\,B_\xi\\
+&amp;\qquad+C_\xi.
+\end{aligned}
+\tag{6.19}
+\]">\[
+\begin{aligned}
+t_v(\xi)&amp;=v A_\xi+\sqrt{1-v^2}\,B_\xi\\
+&amp;\qquad+C_\xi.
+\end{aligned}
+\tag{6.19}
+\]</span>
+<p>We verify the representation identities rather than assuming that this sum is a representation. The first two operators have domain <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> and ranges in the orthogonal summands <span class="math" data-tex="\(Y_0,Y_1\)">\(Y_0,Y_1\)</span>; the third has domain in the positive grades and range in grades at least two. Hence every mixed product in <span class="math" data-tex="\(t_v(\xi)^*t_v(\eta)\)">\(t_v(\xi)^*t_v(\eta)\)</span> is zero. The products <span class="math" data-tex="\(A_\xi^*A_\eta\)">\(A_\xi^*A_\eta\)</span> and <span class="math" data-tex="\(B_\xi^*B_\eta\)">\(B_\xi^*B_\eta\)</span> both equal vacuum multiplication by <span class="math" data-tex="\(\pi(\langle\xi,\eta\rangle)\)">\(\pi(\langle\xi,\eta\rangle)\)</span>. The third product equals <span class="math" data-tex="\(\Pi(\langle\xi,\eta\rangle)\)">\(\Pi(\langle\xi,\eta\rangle)\)</span> on the positive grades. Since <span class="math" data-tex="\(v^2+(1-v^2)=1\)">\(v^2+(1-v^2)=1\)</span>, their sum is exactly <span class="math" data-tex="\(\Pi(\langle\xi,\eta\rangle)\)">\(\Pi(\langle\xi,\eta\rangle)\)</span>. On each of the three summands, the left-action equation follows from <span class="math" data-tex="\(\pi(a)t(\xi)=t(\varphi(a)\xi)\)">\(\pi(a)t(\xi)=t(\varphi(a)\xi)\)</span> or the Fock left-action formula. Thus <span class="math" data-tex="\((\Pi,t_v)\)">\((\Pi,t_v)\)</span> satisfies (6.9), inducing a homomorphism <span class="math" data-tex="\(\rho_v:T\to\mathcal L(Y)\)">\(\rho_v:T\to\mathcal L(Y)\)</span>.</p>
+<p>These homomorphisms vary continuously in point-norm: the generators do by (6.19), finite polynomials do by multiplication, and uniform contractivity extends continuity to all of <span class="math" data-tex="\(T\)">\(T\)</span>. Their difference from <span class="math" data-tex="\(\Phi\rho_-\)">\(\Phi\rho_-\)</span> is compact. On coefficient generators it is vacuum multiplication; on creation generators it is <span class="math" data-tex="\(vA_\xi+\sqrt{1-v^2}B_\xi\)">\(vA_\xi+\sqrt{1-v^2}B_\xi\)</span>, whose two operators are compact by (6.17) and <span class="math" data-tex="\(\mathcal K(T)=T\)">\(\mathcal K(T)=T\)</span> on the vacuum. The ideal and approximation argument after (6.15) proves the assertion for every element.</p>
+<p>At <span class="math" data-tex="\(v=0\)">\(v=0\)</span> we have <span class="math" data-tex="\(\rho_0=\Phi\rho_+\)">\(\rho_0=\Phi\rho_+\)</span>. At <span class="math" data-tex="\(v=1\)">\(v=1\)</span>, coefficient and creation operators both split into the vacuum representation of <span class="math" data-tex="\(T\)">\(T\)</span> and the truncated representation on the other grades, so
+<span class="math" data-tex="\(\rho_1=\widetilde\varphi_0+\Phi\rho_-\)">\(\rho_1=\widetilde\varphi_0+\Phi\rho_-\)</span>, an orthogonal sum. Applying (6.13) to these pairs gives a homotopy from <span class="math" data-tex="\(D\Phi\,R\)">\(D\Phi\,R\)</span> to the difference map of <span class="math" data-tex="\((\widetilde\varphi_0+\Phi\rho_-,\Phi\rho_-)\)">\((\widetilde\varphi_0+\Phi\rho_-,\Phi\rho_-)\)</span>. Its common summand cancels through the even cone. Therefore</p>
+<span class="math math-display" data-tex="\[
+(D\Phi)_*R_*=(k_T)_*.
+\tag{6.20}
+\]">\[
+(D\Phi)_*R_*=(k_T)_*.
+\tag{6.20}
+\]</span>
+<p>Equations (6.18) and (6.20) give
+<span class="math" data-tex="\((k_T)_*(S\pi)_*L=(D\Phi)_*R_*=(k_T)_*\)">\((k_T)_*(S\pi)_*L=(D\Phi)_*R_*=(k_T)_*\)</span>.
+Cancel the isomorphism <span class="math" data-tex="\((k_T)_*\)">\((k_T)_*\)</span> to obtain <span class="math" data-tex="\((S\pi)_*L=1\)">\((S\pi)_*L=1\)</span>. Together with (6.16), this proves that <span class="math" data-tex="\((S\pi)_*\)">\((S\pi)_*\)</span> is an isomorphism. The natural suspension identifications of Lessons 8 and 10 transfer the result to <span class="math" data-tex="\(\pi_*\)">\(\pi_*\)</span> in both degrees.</p>
+<p>Finally remove nondegeneracy without restricting the correspondence. Let <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span> be the forced unitization, even if <span class="math" data-tex="\(A\)">\(A\)</span> is unital. Regard the same <span class="math" data-tex="\(X\)">\(X\)</span> as a Hilbert <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span>-module, with its inner product still in <span class="math" data-tex="\(A\)">\(A\)</span>, right action <span class="math" data-tex="\(\xi(a+\lambda1)=\xi a+\lambda\xi\)">\(\xi(a+\lambda1)=\xi a+\lambda\xi\)</span>, and left action <span class="math" data-tex="\(\varphi^\dagger(a+\lambda1)=\varphi(a)+\lambda I_X\)">\(\varphi^\dagger(a+\lambda1)=\varphi(a)+\lambda I_X\)</span>. The unit acts identically, so this correspondence is nondegenerate. Its universal Toeplitz algebra is precisely <span class="math" data-tex="\(T^\dagger\)">\(T^\dagger\)</span>, the forced unitization of <span class="math" data-tex="\(T=\mathcal T_X\)">\(T=\mathcal T_X\)</span>. To check this assertion, <span class="math" data-tex="\((\pi^\dagger,t)\)">\((\pi^\dagger,t)\)</span> in <span class="math" data-tex="\(T^\dagger\)">\(T^\dagger\)</span> satisfies (6.9) for the enlarged correspondence, giving one universal map. Conversely, the original generators give a map from <span class="math" data-tex="\(T\)">\(T\)</span> to the enlarged Toeplitz algebra, whose coefficient unit acts identically on all its generators; extend that map as a unital homomorphism to <span class="math" data-tex="\(T^\dagger\)">\(T^\dagger\)</span>. Both composites fix the coefficient elements, creation elements and adjoined unit, hence are identity. This is an algebra isomorphism, not a K-theory assumption.</p>
+<p>The nondegenerate case makes <span class="math" data-tex="\((\pi^\dagger)_*:K_i(A^\dagger)\to K_i(T^\dagger)\)">\((\pi^\dagger)_*:K_i(A^\dagger)\to K_i(T^\dagger)\)</span> an isomorphism. It commutes with the two augmentations onto <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and is identity on the adjoined scalar summands. Restricting to their split K-theory kernels, which are exactly <span class="math" data-tex="\(K_i(A)\)">\(K_i(A)\)</span> and <span class="math" data-tex="\(K_i(T)\)">\(K_i(T)\)</span>, gives the claimed isomorphism for the original, possibly degenerate, correspondence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, <span class="math" data-tex="\(X=\mathbb C^n\)">\(X=\mathbb C^n\)</span>, the standard orthonormal basis maps to <span class="math" data-tex="\(n\)">\(n\)</span> orthogonal isometries and the coefficient unit is the unit of the generated algebra. Conversely those isometries define (6.9) by linearity. The two universal maps on these generators are inverse, so <span class="math" data-tex="\(\mathcal T_X=E_n\)">\(\mathcal T_X=E_n\)</span> with its actual scalar coefficient map. Theorem 6.3 therefore supplies a second proof of Proposition 6.2, and agrees with its vacuum projection and unit normalization. The first proof used only the finite Cuntz computation and the Fock extension; the general proof used full-corner K-theory and the rotation, so neither proof assumes the other.</p>
+<h3 id="coefficients-in-the-infinite-cuntz-algebra">Coefficients in the infinite Cuntz algebra</h3>
+<p>The scalar computation (6.6) has a stronger coefficient form; compare [Cuntz 1981 II, §2.4]. Before passing to the infinite limit, we prove the tensor identification needed to apply Theorem 6.3. All tensor products without a subscript below are minimal.</p>
+<p><strong>Proposition 6.4 (Toeplitz tensor coefficients).</strong> For every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, the coefficient inclusion induces isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_i(A)\xrightarrow{\ \cong\ }K_i(A\otimes E_n),\\
+a\longmapsto a\otimes1,\qquad i=0,1.
+\end{gathered}
+\tag{6.21}
+\]">\[
+\begin{gathered}
+K_i(A)\xrightarrow{\ \cong\ }K_i(A\otimes E_n),\\
+a\longmapsto a\otimes1,\qquad i=0,1.
+\end{gathered}
+\tag{6.21}
+\]</span>
+<p><em>Proof.</em> Suppose first that <span class="math" data-tex="\(A\)">\(A\)</span> is unital. For the correspondence <span class="math" data-tex="\(X=A^n\)">\(X=A^n\)</span> with coordinatewise left multiplication, its standard basis gives orthogonal isometries <span class="math" data-tex="\(t_1,\ldots,t_n\)">\(t_1,\ldots,t_n\)</span>. They commute with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>, since <span class="math" data-tex="\(a e_j=e_j a\)">\(a e_j=e_j a\)</span>. Conversely, a commuting representation of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(E_n\)">\(E_n\)</span> gives (6.9) by <span class="math" data-tex="\(t((a_j))=\sum_j t_j\pi(a_j)\)">\(t((a_j))=\sum_j t_j\pi(a_j)\)</span>. These two constructions are inverse on all generators. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathcal T_{A^n}=A\otimes_{\max}E_n
+\tag{6.22}
+\]">\[
+\mathcal T_{A^n}=A\otimes_{\max}E_n
+\tag{6.22}
+\]</span>
+<p>with its actual coefficient map.</p>
+<p>We verify that the maximum and minimum tensor norms coincide here, rather than assume nuclearity of the coefficient algebra. The gauge action on the second factor is norm continuous in both completions, and the canonical quotient between them is equivariant. Its fixed algebra is the closure of <span class="math" data-tex="\(A\)">\(A\)</span> tensored with the finite cores (6.3): averaging a dense polynomial in the isometries keeps just its equal-length normal words.</p>
+<p>For a finite sum of matrix algebras <span class="math" data-tex="\(F\)">\(F\)</span>, the norms on <span class="math" data-tex="\(A\odot F\)">\(A\odot F\)</span> coincide. To see this directly, a representation of a full system of matrix units decomposes its Hilbert space as <span class="math" data-tex="\(\mathbb C^d\otimes H_0\)">\(\mathbb C^d\otimes H_0\)</span> on each block. An operator commuting with those units is <span class="math" data-tex="\(1_d\otimes T\)">\(1_d\otimes T\)</span>. Thus every commuting representation has exactly a matrix norm over a representation of <span class="math" data-tex="\(A\)">\(A\)</span>, bounded by the C*-matrix norm on <span class="math" data-tex="\(M_d(A)\)">\(M_d(A)\)</span>; a faithful representation attains that norm. Central block projections give the maximum of the finitely many block norms. Applied to (6.3), this proves injectivity of the quotient on each fixed finite core and then on their closure.</p>
+<p>Compact gauge averaging is faithful in the maximum completion as well. Indeed, if <span class="math" data-tex="\(x\geq0\)">\(x\geq0\)</span> is nonzero, a positive functional with positive value on <span class="math" data-tex="\(x\)">\(x\)</span> remains positive on a neighborhood of identity along its norm-continuous orbit; its Haar integral is positive. If an element lies in the quotient kernel, its positive square has average in that kernel, so injectivity on the fixed algebra makes the average zero. Faithfulness then makes the element zero. Consequently (6.22) is also <span class="math" data-tex="\(A\otimes E_n\)">\(A\otimes E_n\)</span>. Theorem 6.3 now proves (6.21) for unital <span class="math" data-tex="\(A\)">\(A\)</span>, without any countability assumption.</p>
+<p>For arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>, use its forced unitization <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span> and the augmentation <span class="math" data-tex="\(\varepsilon:A^\dagger\to\mathbb C\)">\(\varepsilon:A^\dagger\to\mathbb C\)</span>. Tensoring this particular split extension gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow A\otimes E_n\\
+\longrightarrow A^\dagger\otimes E_n\\
+\xrightarrow{\ \varepsilon\otimes1\ }E_n
+\longrightarrow0.
+\end{gathered}
+\tag{6.23}
+\]">\[
+\begin{gathered}
+0\longrightarrow A\otimes E_n\\
+\longrightarrow A^\dagger\otimes E_n\\
+\xrightarrow{\ \varepsilon\otimes1\ }E_n
+\longrightarrow0.
+\end{gathered}
+\tag{6.23}
+\]</span>
+<p>Here exactness does not require a general tensor exactness theorem. The quotient has the homomorphic section <span class="math" data-tex="\(b\mapsto1\otimes b\)">\(b\mapsto1\otimes b\)</span>. Subtracting its composite with the quotient is a bounded map into the closure of <span class="math" data-tex="\(A\odot E_n\)">\(A\odot E_n\)</span>: this follows on algebraic tensors by writing each coefficient as <span class="math" data-tex="\(a+\lambda1\)">\(a+\lambda1\)</span>, and then by norm approximation. It is identity on the quotient kernel, proving the stated kernel. The minimum tensor inclusion of the ideal is faithful by spatial representations.</p>
+<p>Apply the unital case to <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span> and to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The two K-isomorphisms commute with the augmentations and their sections. The split exact K-sequences identify their kernels with <span class="math" data-tex="\(K_i(A)\)">\(K_i(A)\)</span> and <span class="math" data-tex="\(K_i(A\otimes E_n)\)">\(K_i(A\otimes E_n)\)</span>, respectively. Restriction of the isomorphism therefore proves (6.21). Every construction commutes with coefficient homomorphisms, so the result is natural. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.5 (infinite Cuntz coefficients).</strong> For every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, inclusion <span class="math" data-tex="\(a\mapsto a\otimes1\)">\(a\mapsto a\otimes1\)</span> induces natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_i(A)\cong K_i(A\otimes\mathcal O_\infty),\\
+i=0,1.
+\end{gathered}
+\tag{6.24}
+\]">\[
+\begin{gathered}
+K_i(A)\cong K_i(A\otimes\mathcal O_\infty),\\
+i=0,1.
+\end{gathered}
+\tag{6.24}
+\]</span>
+<p><em>Proof.</em> The faithful copies <span class="math" data-tex="\(A_n\cong E_n\)">\(A_n\cong E_n\)</span> constructed before Proposition 6.2 form an increasing dense union in <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>. Spatial tensoring preserves these inclusions. The union of <span class="math" data-tex="\(A\otimes A_n\)">\(A\otimes A_n\)</span> is dense in <span class="math" data-tex="\(A\otimes\mathcal O_\infty\)">\(A\otimes\mathcal O_\infty\)</span>: approximate the finitely many second factors of an algebraic tensor sum in one common stage, using <span class="math" data-tex="\(\|a\otimes b\|=\|a\|\|b\|\)">\(\|a\otimes b\|=\|a\|\|b\|\)</span>. Each stage has both K-groups naturally identified with <span class="math" data-tex="\(K_i(A)\)">\(K_i(A)\)</span> by Proposition 6.4. The stage embeddings preserve <span class="math" data-tex="\(a\otimes1\)">\(a\otimes1\)</span>, so their induced maps, under these identifications, are the identity. Continuity of both K-functors from Lessons 5 and 6 now proves (6.24), with the specified map and its naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is unital, (6.24) sends <span class="math" data-tex="\([1_A]\)">\([1_A]\)</span> to <span class="math" data-tex="\([1_A\otimes1]\)">\([1_A\otimes1]\)</span>. In particular <span class="math" data-tex="\(\mathcal O_\infty\otimes\mathcal O_\infty\)">\(\mathcal O_\infty\otimes\mathcal O_\infty\)</span> has degree-zero group <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with unit one, and zero degree-one group. This is a K-theory calculation with its distinguished unit; it is not an algebra classification conclusion. The finite formula (4.7) and (6.24) also explain their different coefficient behavior: tensoring with <span class="math" data-tex="\(\mathcal O_2\)">\(\mathcal O_2\)</span> kills both groups, whereas tensoring with <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> preserves them.</p>
+<p>The scalar and untwisted computations have a finite twisted extension. We now prove Cuntz’s inverse-automorphism sequence, the nonunital reduction, a quotient homotopy identity, and the countably infinite coefficient theorem. The Toeplitz coefficient isomorphism is the already proved Theorem 6.3; its specified map determines the signs below.</p>
+<h3 id="twisted-cuntz-products">Twisted Cuntz products</h3>
+<p>Let <span class="math" data-tex="\(A\subset B(H)\)">\(A\subset B(H)\)</span> be a faithfully represented C*-algebra and let <span class="math" data-tex="\(U_1,\ldots,U_n\)">\(U_1,\ldots,U_n\)</span> be pairwise commuting unitaries normalizing <span class="math" data-tex="\(A\)">\(A\)</span>. Put <span class="math" data-tex="\(\alpha_i=\operatorname{Ad}U_i|_A\)">\(\alpha_i=\operatorname{Ad}U_i|_A\)</span>. These are commuting automorphisms. In the unital case take the representation unital: if necessary restrict to <span class="math" data-tex="\(1_AH\)">\(1_AH\)</span>, an invariant subspace because each <span class="math" data-tex="\(U_i\)">\(U_i\)</span> fixes the projection <span class="math" data-tex="\(1_A\)">\(1_A\)</span>. This is Cuntz’s hypothesis; the implementers may lie outside <span class="math" data-tex="\(A\)">\(A\)</span>, so the automorphisms need not be inner in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For unital <span class="math" data-tex="\(A\)">\(A\)</span>, define <span class="math" data-tex="\(B_\alpha\)">\(B_\alpha\)</span> as the universal unital C*-algebra generated by a unital coefficient copy <span class="math" data-tex="\(j(A)\)">\(j(A)\)</span> and a Cuntz family <span class="math" data-tex="\(s_1,\ldots,s_n\)">\(s_1,\ldots,s_n\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+s_i^*s_k=\delta_{ik}1,\qquad\sum_i s_is_i^*=1,\\
+s_i j(a)=j(\alpha_i(a))s_i.
+\end{gathered}
+\tag{6.25}
+\]">\[
+\begin{gathered}
+s_i^*s_k=\delta_{ik}1,\qquad\sum_i s_is_i^*=1,\\
+s_i j(a)=j(\alpha_i(a))s_i.
+\end{gathered}
+\tag{6.25}
+\]</span>
+<p>Here <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>; for <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the Cuntz generator is a unitary and <span class="math" data-tex="\(\mathcal O_1=C(\mathbb T)\)">\(\mathcal O_1=C(\mathbb T)\)</span>. A faithful coefficient model is obtained inside <span class="math" data-tex="\(B(H)\otimes\mathcal O_n\)">\(B(H)\otimes\mathcal O_n\)</span>, with <span class="math" data-tex="\(j(a)=a\otimes1\)">\(j(a)=a\otimes1\)</span> and <span class="math" data-tex="\(s_i=U_i\otimes S_i\)">\(s_i=U_i\otimes S_i\)</span>. The tensor product is spatial. For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, use the closed ideal generated by its coefficients in the corresponding universal algebra for the forced unitization. The proof below identifies both definitions with Cuntz’s concrete twisted product [Cuntz 1981 II, Theorem 1.5 and §§2.2–2.4].</p>
+<p>One can equivalently start with commuting abstract automorphisms. A faithful representation <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> gives a commuting implementation on <span class="math" data-tex="\(\ell^2(\mathbb Z^n)\otimes H_\pi\)">\(\ell^2(\mathbb Z^n)\otimes H_\pi\)</span>: at coordinate <span class="math" data-tex="\(g\)">\(g\)</span>, represent <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(\pi(\alpha_{-g}(a))\)">\(\pi(\alpha_{-g}(a))\)</span>, and let <span class="math" data-tex="\(U_i\)">\(U_i\)</span> translate by the positive coordinate vector. Direct calculation gives <span class="math" data-tex="\(U_i\rho(a)U_i^*=\rho(\alpha_i(a))\)">\(U_i\rho(a)U_i^*=\rho(\alpha_i(a))\)</span>. Thus the operator implementation assumption is available without requiring the automorphisms to be inner in the coefficient algebra.</p>
+<p><strong>Theorem 6.6 (finite twisted Cuntz coefficients).</strong> Write <span class="math" data-tex="\(G_i=K_i(A)\)">\(G_i=K_i(A)\)</span>, with indices modulo two, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Theta_i:G_i\longrightarrow G_i,\\
+\Theta_i=1-\sum_{r=1}^n(\alpha_r^{-1})_*.
+\end{gathered}
+\tag{6.26}
+\]">\[
+\begin{gathered}
+\Theta_i:G_i\longrightarrow G_i,\\
+\Theta_i=1-\sum_{r=1}^n(\alpha_r^{-1})_*.
+\end{gathered}
+\tag{6.26}
+\]</span>
+<p>There is a natural cyclic exact sequence with consecutive arrows</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_i\xrightarrow{\Theta_i}G_i\xrightarrow{j_*}K_i(B_\alpha),\\
+K_i(B_\alpha)\xrightarrow{\partial_i}G_{i-1}
+\xrightarrow{\Theta_{i-1}}G_{i-1}.
+\end{gathered}
+\tag{6.27}
+\]">\[
+\begin{gathered}
+G_i\xrightarrow{\Theta_i}G_i\xrightarrow{j_*}K_i(B_\alpha),\\
+K_i(B_\alpha)\xrightarrow{\partial_i}G_{i-1}
+\xrightarrow{\Theta_{i-1}}G_{i-1}.
+\end{gathered}
+\tag{6.27}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to\operatorname{coker}\Theta_i
+\xrightarrow{\overline{j_*}}K_i(B_\alpha),\\
+K_i(B_\alpha)\xrightarrow{\partial_i}\ker\Theta_{i-1}\to0.
+\end{gathered}
+\tag{6.28}
+\]">\[
+\begin{gathered}
+0\to\operatorname{coker}\Theta_i
+\xrightarrow{\overline{j_*}}K_i(B_\alpha),\\
+K_i(B_\alpha)\xrightarrow{\partial_i}\ker\Theta_{i-1}\to0.
+\end{gathered}
+\tag{6.28}
+\]</span>
+<p>No splitting is asserted, and no nuclearity, separability or torsion hypothesis on <span class="math" data-tex="\(A\)">\(A\)</span> is used. The boundaries are the actual exponential and index boundaries of the extension constructed below, transported by its vacuum corner. They are not unspecified arrows selected just to make the group sequence exact.</p>
+<p>For unital coefficients the distinguished class is</p>
+<span class="math math-display" data-tex="\[
+[1_{B_\alpha}]=\overline{j_*}\bigl([1_A]+\Theta_0G_0\bigr).
+\tag{6.29}
+\]">\[
+[1_{B_\alpha}]=\overline{j_*}\bigl([1_A]+\Theta_0G_0\bigr).
+\tag{6.29}
+\]</span>
+<p>Each automorphism fixes the coefficient unit, so <span class="math" data-tex="\(\Theta_0[1_A]=(1-n)[1_A]\)">\(\Theta_0[1_A]=(1-n)[1_A]\)</span>. Equivalently the Cuntz ranges give <span class="math" data-tex="\((n-1)[1_{B_\alpha}]=0\)">\((n-1)[1_{B_\alpha}]=0\)</span>. Its exact order is the order of <span class="math" data-tex="\([1_A]\)">\([1_A]\)</span> in the displayed cokernel; it need not be <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. The unit lifts to the unit of the Toeplitz algebra, and hence its exponential boundary is zero.</p>
+<h4 id="the-vacuum-ideal-and-faithful-core">The vacuum ideal and faithful core</h4>
+<p>Assume first that <span class="math" data-tex="\(A\)">\(A\)</span> is unital. Let <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span> be universal for a unital coefficient map <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and orthogonal isometries <span class="math" data-tex="\(t_i\)">\(t_i\)</span>, with the same covariance relation but without requiring the range sum to be one. Put</p>
+<span class="math math-display" data-tex="\[
+q=1-\sum_i t_it_i^*,\qquad r_i=t_it_i^*.
+\tag{6.30}
+\]">\[
+q=1-\sum_i t_it_i^*,\qquad r_i=t_it_i^*.
+\tag{6.30}
+\]</span>
+<p>Each <span class="math" data-tex="\(r_i\)">\(r_i\)</span>, and hence <span class="math" data-tex="\(q\)">\(q\)</span>, commutes with <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span>: covariance also reads <span class="math" data-tex="\(\pi(a)t_i=t_i\pi(\alpha_i^{-1}(a))\)">\(\pi(a)t_i=t_i\pi(\alpha_i^{-1}(a))\)</span>. The algebra exists and its coefficient and vacuum coefficient maps are faithful. For example, the operators <span class="math" data-tex="\(U_i\otimes L_i\)">\(U_i\otimes L_i\)</span> on <span class="math" data-tex="\(H\otimes\ell^2(W)\)">\(H\otimes\ell^2(W)\)</span>, where <span class="math" data-tex="\(W\)">\(W\)</span> is the set of finite words and <span class="math" data-tex="\(L_i\)">\(L_i\)</span> prepends <span class="math" data-tex="\(i\)">\(i\)</span>, give a representation with vacuum projection <span class="math" data-tex="\(1\otimes e_\varnothing\)">\(1\otimes e_\varnothing\)</span>. Thus <span class="math" data-tex="\(a\mapsto q\pi(a)\)">\(a\mapsto q\pi(a)\)</span> is injective in the universal algebra.</p>
+<p>For a word <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, write <span class="math" data-tex="\(t_\mu\)">\(t_\mu\)</span> for its product, with <span class="math" data-tex="\(t_\varnothing=1\)">\(t_\varnothing=1\)</span>. Cancellation and the covariance relation give normal-word density:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+T_\alpha=\overline{\operatorname{span}}
+\{t_\mu\pi(a)t_\nu^*:\\
+a\in A,\ \mu,\nu\in W\}.
+\end{gathered}
+\tag{6.31}
+\]">\[
+\begin{gathered}
+T_\alpha=\overline{\operatorname{span}}
+\{t_\mu\pi(a)t_\nu^*:\\
+a\in A,\ \mu,\nu\in W\}.
+\end{gathered}
+\tag{6.31}
+\]</span>
+<p>The closed span</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J=\overline{\operatorname{span}}
+\{t_\mu q\pi(a)t_\nu^*:\\
+a\in A,\ \mu,\nu\in W\}.
+\end{gathered}
+\tag{6.32}
+\]">\[
+\begin{gathered}
+J=\overline{\operatorname{span}}
+\{t_\mu q\pi(a)t_\nu^*:\\
+a\in A,\ \mu,\nu\in W\}.
+\end{gathered}
+\tag{6.32}
+\]</span>
+<p>is exactly the ideal generated by <span class="math" data-tex="\(q\)">\(q\)</span>. Indeed <span class="math" data-tex="\(qt_i=t_i^*q=0\)">\(qt_i=t_i^*q=0\)</span>. Multiplication by a creation operator prepends a letter; its adjoint either removes that letter or gives zero. Multiplication by <span class="math" data-tex="\(\pi(b)\)">\(\pi(b)\)</span> changes the coefficient by the appropriate inverse word automorphism. For example, with <span class="math" data-tex="\(\alpha_\mu=\alpha_{\mu_1}\cdots\alpha_{\mu_l}\)">\(\alpha_\mu=\alpha_{\mu_1}\cdots\alpha_{\mu_l}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\pi(b)t_\mu q\pi(a)t_\nu^*\\
+&amp;\quad=t_\mu q\pi(\alpha_\mu^{-1}(b)a)t_\nu^*.
+\end{aligned}
+\tag{6.33}
+\]">\[
+\begin{aligned}
+&amp;\pi(b)t_\mu q\pi(a)t_\nu^*\\
+&amp;\quad=t_\mu q\pi(\alpha_\mu^{-1}(b)a)t_\nu^*.
+\end{aligned}
+\tag{6.33}
+\]</span>
+<p>These operations preserve the displayed span and its adjoints. It is therefore an ideal containing <span class="math" data-tex="\(q\)">\(q\)</span>, and every one of its generators lies in the ideal generated by <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>Word cancellation with the two vacuum factors gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(t_\mu q\pi(a)t_\nu^*)(t_\kappa q\pi(b)t_\lambda^*)\\
+&amp;\quad=\delta_{\nu\kappa}\,t_\mu q\pi(ab)t_\lambda^*.
+\end{aligned}
+\tag{6.34}
+\]">\[
+\begin{aligned}
+&amp;(t_\mu q\pi(a)t_\nu^*)(t_\kappa q\pi(b)t_\lambda^*)\\
+&amp;\quad=\delta_{\nu\kappa}\,t_\mu q\pi(ab)t_\lambda^*.
+\end{aligned}
+\tag{6.34}
+\]</span>
+<p>The involution also agrees with coefficient matrix adjoint. On every finite word set these formulas define an injective map from a matrix algebra over <span class="math" data-tex="\(A\)">\(A\)</span>: multiplication by <span class="math" data-tex="\(q t_\mu^*\)">\(q t_\mu^*\)</span> on the left and by <span class="math" data-tex="\(t_\nu q\)">\(t_\nu q\)</span> on the right recovers the faithful corner <span class="math" data-tex="\(q\pi(a)\)">\(q\pi(a)\)</span>. Passing through the increasing finite matrix corners proves</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J\cong\mathcal K(\ell^2(W))\otimes A,\\
+e_{\mu\nu}\otimes a\longmapsto t_\mu q\pi(a)t_\nu^*.
+\end{gathered}
+\tag{6.35}
+\]">\[
+\begin{gathered}
+J\cong\mathcal K(\ell^2(W))\otimes A,\\
+e_{\mu\nu}\otimes a\longmapsto t_\mu q\pi(a)t_\nu^*.
+\end{gathered}
+\tag{6.35}
+\]</span>
+<p>In particular the vacuum corner map <span class="math" data-tex="\(v:A\to J\)">\(v:A\to J\)</span>, <span class="math" data-tex="\(v(a)=q\pi(a)\)">\(v(a)=q\pi(a)\)</span>, is the actual rank-one stability map under this isomorphism, so <span class="math" data-tex="\(v_*\)">\(v_*\)</span> is an isomorphism in both degrees. The quotient imposes exactly the missing relation <span class="math" data-tex="\(q=0\)">\(q=0\)</span>. Its universal property gives</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow J\xrightarrow{\iota}T_\alpha
+\xrightarrow{Q}B_\alpha\longrightarrow0.
+\tag{6.36}
+\]">\[
+0\longrightarrow J\xrightarrow{\iota}T_\alpha
+\xrightarrow{Q}B_\alpha\longrightarrow0.
+\tag{6.36}
+\]</span>
+<p>To identify these universal algebras with the source's concrete models, we also verify faithfulness. There is a gauge action multiplying each creation generator by <span class="math" data-tex="\(z\)">\(z\)</span> and fixing coefficients. Its average is faithful: a nonzero positive element has a positive functional whose value remains positive on a neighborhood of the identity along its norm-continuous orbit; its Haar integral is positive.</p>
+<p>For the Toeplitz algebra, the fixed core up to length <span class="math" data-tex="\(l\)">\(l\)</span> is an orthogonal direct sum</p>
+<span class="math math-display" data-tex="\[
+\left(\bigoplus_{r=0}^{l-1}M_{n^r}(A)\right)\oplus M_{n^l}(A).
+\tag{6.37}
+\]">\[
+\left(\bigoplus_{r=0}^{l-1}M_{n^r}(A)\right)\oplus M_{n^l}(A).
+\tag{6.37}
+\]</span>
+<p>The defect blocks are <span class="math" data-tex="\(t_\mu q\pi(a)t_\nu^*\)">\(t_\mu q\pi(a)t_\nu^*\)</span> at a common length <span class="math" data-tex="\(r&lt;l\)">\(r&lt;l\)</span>; the final block is <span class="math" data-tex="\(t_\mu\pi(a)t_\nu^*\)">\(t_\mu\pi(a)t_\nu^*\)</span> at length <span class="math" data-tex="\(l\)">\(l\)</span>. Multiplication and orthogonality follow from cancellation and <span class="math" data-tex="\(qt_i=t_i^*q=0\)">\(qt_i=t_i^*q=0\)</span>. Their units sum to one by iterating <span class="math" data-tex="\(1=q+\sum_i r_i\)">\(1=q+\sum_i r_i\)</span>. Expanding a shorter normal word inserts this identity and replaces its coefficients on each longer branch by <span class="math" data-tex="\(\alpha_i^{-1}(a)\)">\(\alpha_i^{-1}(a)\)</span>, so these blocks contain every fixed normal word of length at most <span class="math" data-tex="\(l\)">\(l\)</span>. Both coefficient maps are faithful on each block, by compression. Consequently any gauge-equivariant representation faithful on <span class="math" data-tex="\(\pi(A)\)">\(\pi(A)\)</span> and <span class="math" data-tex="\(q\pi(A)\)">\(q\pi(A)\)</span> is faithful on the entire fixed core and then, by faithful averaging, on <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span>.</p>
+<p>Apply this to the model in <span class="math" data-tex="\(B(H)\otimes\mathcal O_{n+1}\)">\(B(H)\otimes\mathcal O_{n+1}\)</span> using the first <span class="math" data-tex="\(n\)">\(n\)</span> canonical isometries. Its defect is <span class="math" data-tex="\(1\otimes S_{n+1}S_{n+1}^*\)">\(1\otimes S_{n+1}S_{n+1}^*\)</span>, so the vacuum coefficient corner is faithful. It is exactly the concrete Toeplitz algebra in the original paper.</p>
+<p>In the Cuntz quotient there are only the length-<span class="math" data-tex="\(l\)">\(l\)</span> matrix blocks <span class="math" data-tex="\(M_{n^l}(A)\)">\(M_{n^l}(A)\)</span>. They expand to successive lengths by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;s_\mu j(a)s_\nu^*\\
+&amp;\quad=\sum_i s_{\mu i}j(\alpha_i^{-1}(a))s_{\nu i}^*.
+\end{aligned}
+\tag{6.38}
+\]">\[
+\begin{aligned}
+&amp;s_\mu j(a)s_\nu^*\\
+&amp;\quad=\sum_i s_{\mu i}j(\alpha_i^{-1}(a))s_{\nu i}^*.
+\end{aligned}
+\tag{6.38}
+\]</span>
+<p>The concrete model inside <span class="math" data-tex="\(B(H)\otimes\mathcal O_n\)">\(B(H)\otimes\mathcal O_n\)</span> is faithful on coefficients and therefore on each such block. Equivariance and faithful averaging make the universal map to that model injective. This proves the identification and also independence from the particular faithful commuting implementation.</p>
+<h4 id="the-actual-coefficient-k-isomorphism">The actual coefficient K-isomorphism</h4>
+<p>Take the right Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(X=A^n\)">\(X=A^n\)</span> with its standard inner product and left action</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\varphi(a):A^n\longrightarrow A^n,\\
+(\varphi(a)b)_r=\alpha_r^{-1}(a)b_r.
+\end{gathered}
+\tag{6.39}
+\]">\[
+\begin{gathered}
+\varphi(a):A^n\longrightarrow A^n,\\
+(\varphi(a)b)_r=\alpha_r^{-1}(a)b_r.
+\end{gathered}
+\tag{6.39}
+\]</span>
+<p>Its standard basis vectors give <span class="math" data-tex="\(t(e_i)^*t(e_k)=\delta_{ik}\pi(1)\)">\(t(e_i)^*t(e_k)=\delta_{ik}\pi(1)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\pi(a)t(e_i)=t(e_i)\pi(\alpha_i^{-1}(a)).
+\tag{6.40}
+\]">\[
+\pi(a)t(e_i)=t(e_i)\pi(\alpha_i^{-1}(a)).
+\tag{6.40}
+\]</span>
+<p>Conversely, the generators of <span class="math" data-tex="\(T_\alpha\)">\(T_\alpha\)</span> define the correspondence representation by <span class="math" data-tex="\(t((b_i))=\sum_i t_i\pi(b_i)\)">\(t((b_i))=\sum_i t_i\pi(b_i)\)</span>. The inner product and the left and right action identities follow directly from the orthogonal isometries and covariance. The two universal maps fix all generators, hence are inverses. Thus <span class="math" data-tex="\(T_\alpha=\mathcal T_X\)">\(T_\alpha=\mathcal T_X\)</span> with its actual coefficient map.</p>
+<p>KT-OPK-22, Theorem 6.3, now gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi_*:K_i(A)\xrightarrow{\cong}K_i(T_\alpha),\\
+i=0,1.
+\end{gathered}
+\tag{6.41}
+\]">\[
+\begin{gathered}
+\pi_*:K_i(A)\xrightarrow{\cong}K_i(T_\alpha),\\
+i=0,1.
+\end{gathered}
+\tag{6.41}
+\]</span>
+<p>The inverse automorphisms in the left action are forced by the specified covariance. Replacing them by <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> would construct a different covariance convention and would not prove the stated map.</p>
+<h4 id="the-inverse-automorphism-map-and-its-boundaries">The inverse-automorphism map and its boundaries</h4>
+<p>We prove</p>
+<span class="math math-display" data-tex="\[
+\pi_*^{-1}\iota_*v_*=1-\sum_i(\alpha_i^{-1})_*.
+\tag{6.42}
+\]">\[
+\pi_*^{-1}\iota_*v_*=1-\sum_i(\alpha_i^{-1})_*.
+\tag{6.42}
+\]</span>
+<p>For a projection <span class="math" data-tex="\(e\in M_p(A)\)">\(e\in M_p(A)\)</span>, use the diagonal copies of <span class="math" data-tex="\(q,r_i,t_i\)">\(q,r_i,t_i\)</span> in <span class="math" data-tex="\(M_p(T_\alpha)\)">\(M_p(T_\alpha)\)</span>. Since these projections commute with <span class="math" data-tex="\(\pi_p(e)\)">\(\pi_p(e)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\pi_p(e)=q\pi_p(e)+\sum_i r_i\pi_p(e)
+\tag{6.43}
+\]">\[
+\pi_p(e)=q\pi_p(e)+\sum_i r_i\pi_p(e)
+\tag{6.43}
+\]</span>
+<p>is an orthogonal decomposition of projections. Each <span class="math" data-tex="\(r_i\pi_p(e)=t_i\pi_p(\alpha_i^{-1}(e))t_i^*\)">\(r_i\pi_p(e)=t_i\pi_p(\alpha_i^{-1}(e))t_i^*\)</span> is Murray–von Neumann equivalent to <span class="math" data-tex="\(\pi_p(\alpha_i^{-1}(e))\)">\(\pi_p(\alpha_i^{-1}(e))\)</span>, through <span class="math" data-tex="\(t_i\pi_p(\alpha_i^{-1}(e))\)">\(t_i\pi_p(\alpha_i^{-1}(e))\)</span>. Additivity therefore gives the required formula on <span class="math" data-tex="\([e]\)">\([e]\)</span>, and then on all differences of projections.</p>
+<p>For a unitary <span class="math" data-tex="\(u\in U_p(A)\)">\(u\in U_p(A)\)</span>, the vacuum corner map represents its image by</p>
+<span class="math math-display" data-tex="\[
+w_0=q\pi_p(u)+(1-q)I_p.
+\tag{6.44}
+\]">\[
+w_0=q\pi_p(u)+(1-q)I_p.
+\tag{6.44}
+\]</span>
+<p>Let <span class="math" data-tex="\(w_i=r_i\pi_p(u)+(1-r_i)I_p\)">\(w_i=r_i\pi_p(u)+(1-r_i)I_p\)</span>. These unitaries act on orthogonal corners, so <span class="math" data-tex="\(\pi_p(u)=w_0w_1\cdots w_n\)">\(\pi_p(u)=w_0w_1\cdots w_n\)</span>. Stable K-one multiplication is addition, by KT-OPK-06, Theorem 2.2. To identify each <span class="math" data-tex="\([w_i]\)">\([w_i]\)</span>, for any isometry <span class="math" data-tex="\(t\)">\(t\)</span> with range projection <span class="math" data-tex="\(r\)">\(r\)</span> observe that</p>
+<span class="math math-display" data-tex="\[
+W=\begin{pmatrix}t&amp;1-r\\0&amp;t^*\end{pmatrix}
+\tag{6.45}
+\]">\[
+W=\begin{pmatrix}t&amp;1-r\\0&amp;t^*\end{pmatrix}
+\tag{6.45}
+\]</span>
+<p>is a unitary and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W\operatorname{diag}(z,1)W^*\\
+=\operatorname{diag}(tzt^*+1-r,1).
+\end{gathered}
+\tag{6.46}
+\]">\[
+\begin{gathered}
+W\operatorname{diag}(z,1)W^*\\
+=\operatorname{diag}(tzt^*+1-r,1).
+\end{gathered}
+\tag{6.46}
+\]</span>
+<p>These identities are verified by multiplication, using <span class="math" data-tex="\(t^*t=1\)">\(t^*t=1\)</span> and <span class="math" data-tex="\((1-r)t=0\)">\((1-r)t=0\)</span>. Apply them at matrix size <span class="math" data-tex="\(p\)">\(p\)</span>, with <span class="math" data-tex="\(t=t_i\)">\(t=t_i\)</span> and <span class="math" data-tex="\(z=\pi_p(\alpha_i^{-1}(u))\)">\(z=\pi_p(\alpha_i^{-1}(u))\)</span>. Conjugation does not change a stable K-one class, since that group is abelian. Thus <span class="math" data-tex="\([w_i]=\pi_*[\alpha_i^{-1}(u)]\)">\([w_i]=\pi_*[\alpha_i^{-1}(u)]\)</span>, and subtracting these classes from <span class="math" data-tex="\([\pi_p(u)]\)">\([\pi_p(u)]\)</span> yields the same inverse-automorphism formula in degree one. Identity padding is included throughout; no unstabilized component assertion is used.</p>
+<p>Transport the six-term sequence of the displayed extension by <span class="math" data-tex="\(\pi_*\)">\(\pi_*\)</span> on the middle algebra and by <span class="math" data-tex="\(v_*\)">\(v_*\)</span> on its ideal. The quotient composite <span class="math" data-tex="\(Q\pi=j\)">\(Q\pi=j\)</span> supplies the actual coefficient arrow. Set</p>
+<span class="math math-display" data-tex="\[
+\partial_0=v_{*,1}^{-1}\varepsilon_E,
+\qquad\partial_1=v_{*,0}^{-1}\delta_E,
+\tag{6.47}
+\]">\[
+\partial_0=v_{*,1}^{-1}\varepsilon_E,
+\qquad\partial_1=v_{*,0}^{-1}\delta_E,
+\tag{6.47}
+\]</span>
+<p>where <span class="math" data-tex="\(\varepsilon_E\)">\(\varepsilon_E\)</span> is the positive exponential boundary and <span class="math" data-tex="\(\delta_E\)">\(\delta_E\)</span> the index boundary of KT-OPK-11. Exactness and naturality of that six-term sequence now prove every position of the theorem for unital coefficients.</p>
+<p>There is a useful direct sign test at <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. The quotient generator <span class="math" data-tex="\(s_1\)">\(s_1\)</span> is a unitary lifted by the isometry <span class="math" data-tex="\(t_1\)">\(t_1\)</span>. The index defect formula in the stated convention gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\delta_E[s_1]&amp;=[1-t_1^*t_1]\\
+&amp;\quad-[1-t_1t_1^*]=-[q],\\
+\partial_1[s_1]&amp;=-[1_A].
+\end{aligned}
+\tag{6.48}
+\]">\[
+\begin{aligned}
+\delta_E[s_1]&amp;=[1-t_1^*t_1]\\
+&amp;\quad-[1-t_1t_1^*]=-[q],\\
+\partial_1[s_1]&amp;=-[1_A].
+\end{aligned}
+\tag{6.48}
+\]</span>
+<p>This tests the boundary with an actual lift rather than an abstract kernel computation.</p>
+<h4 id="nonunital-coefficients-torsion-and-scalar-coordinates">Nonunital coefficients, torsion and scalar coordinates</h4>
+<p>Let <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span> be the forced unitization, even if <span class="math" data-tex="\(A\)">\(A\)</span> already has a unit, and extend every automorphism by fixing its new unit. In the unital twisted algebra <span class="math" data-tex="\(B_{\alpha^\dagger}\)">\(B_{\alpha^\dagger}\)</span>, the closed span of normal words with their coefficient in <span class="math" data-tex="\(A\)">\(A\)</span> is an ideal. Covariance preserves it because the automorphisms preserve <span class="math" data-tex="\(A\)">\(A\)</span>. Augmentation of coefficients gives a quotient onto <span class="math" data-tex="\(\mathcal O_n\)">\(\mathcal O_n\)</span>, and the canonical Cuntz generators give a homomorphic section. Its kernel is exactly that span: subtract the section composed with augmentation on every normal word, then use norm density and boundedness. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow B_\alpha(A)
+&amp;\longrightarrow B_{\alpha^\dagger}(A^\dagger)\\
+&amp;\longrightarrow\mathcal O_n\longrightarrow0
+\end{aligned}
+\tag{6.49}
+\]">\[
+\begin{aligned}
+0\longrightarrow B_\alpha(A)
+&amp;\longrightarrow B_{\alpha^\dagger}(A^\dagger)\\
+&amp;\longrightarrow\mathcal O_n\longrightarrow0
+\end{aligned}
+\tag{6.49}
+\]</span>
+<p>is split exact.</p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> was already unital, <span class="math" data-tex="\(p=j(1_A)\)">\(p=j(1_A)\)</span> in this enlarged algebra commutes with its isometries, because each extended automorphism fixes <span class="math" data-tex="\(1_A\)">\(1_A\)</span>. The coefficient ideal has unit <span class="math" data-tex="\(p\)">\(p\)</span>, and its generators <span class="math" data-tex="\(p s_i\)">\(p s_i\)</span> satisfy the original unital definition relative to that unit. The universal maps fixing those generators identify this ideal with the previously defined unital <span class="math" data-tex="\(B_\alpha\)">\(B_\alpha\)</span>. Thus the forced-unitization construction is consistent with that definition.</p>
+<p>The source's generators are precisely the coefficient multiples <span class="math" data-tex="\(a s_i\)">\(a s_i\)</span>. They generate all coefficients, since <span class="math" data-tex="\((a s_i)^*(b s_i)=j(\alpha_i^{-1}(a^*b))\)">\((a s_i)^*(b s_i)=j(\alpha_i^{-1}(a^*b))\)</span> and the linear span of <span class="math" data-tex="\(a^*b\)">\(a^*b\)</span> is dense in <span class="math" data-tex="\(A\)">\(A\)</span>. They then generate every coefficient normal word. Indeed <span class="math" data-tex="\(s_i j(a)=j(\alpha_i(a))s_i\)">\(s_i j(a)=j(\alpha_i(a))s_i\)</span> gives the one-letter case. If <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is a word and <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> is an approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(s_i j(e_\lambda))(s_\eta j(a))\\
+&amp;\quad=s_i s_\eta j(\alpha_\eta^{-1}(e_\lambda)a)\\
+&amp;\quad\longrightarrow s_{i\eta}j(a).
+\end{aligned}
+\tag{6.50}
+\]">\[
+\begin{aligned}
+&amp;(s_i j(e_\lambda))(s_\eta j(a))\\
+&amp;\quad=s_i s_\eta j(\alpha_\eta^{-1}(e_\lambda)a)\\
+&amp;\quad\longrightarrow s_{i\eta}j(a).
+\end{aligned}
+\tag{6.50}
+\]</span>
+<p>Induction gives every <span class="math" data-tex="\(s_\mu j(a)\)">\(s_\mu j(a)\)</span>. Approximate a middle coefficient by finite sums <span class="math" data-tex="\(bc\)">\(bc\)</span>, and write <span class="math" data-tex="\(s_\mu j(bc)s_\nu^*=(s_\mu j(b))(s_\nu j(c^*))^*\)">\(s_\mu j(bc)s_\nu^*=(s_\mu j(b))(s_\nu j(c^*))^*\)</span>, to obtain every two-sided normal word. Thus the concrete algebra generated in source §2.2 equals the coefficient ideal just described.</p>
+<p>The Toeplitz construction admits the same augmentation and section, with scalar quotient <span class="math" data-tex="\(E_n\)">\(E_n\)</span>. Let <span class="math" data-tex="\(T_\alpha(A)\)">\(T_\alpha(A)\)</span> be its coefficient ideal and <span class="math" data-tex="\(J(A)=\mathcal K(\ell^2(W))\otimes A\)">\(J(A)=\mathcal K(\ell^2(W))\otimes A\)</span> its vacuum ideal. Under the proved word-matrix identification, scalar augmentation on the enlarged vacuum ideal is <span class="math" data-tex="\(e_{\mu\nu}\otimes(a+\lambda1)\mapsto\lambda e_{\mu\nu}\)">\(e_{\mu\nu}\otimes(a+\lambda1)\mapsto\lambda e_{\mu\nu}\)</span>, with the scalar vacuum matrix units as section. Its kernel is <span class="math" data-tex="\(J(A)\)">\(J(A)\)</span>: subtract the section composed with augmentation on finite word matrices and then pass to norm limits. The quotient map sends <span class="math" data-tex="\(T_\alpha(A)\)">\(T_\alpha(A)\)</span> onto <span class="math" data-tex="\(B_\alpha(A)\)">\(B_\alpha(A)\)</span>, and its kernel there is the intersection with the enlarged vacuum ideal, namely <span class="math" data-tex="\(J(A)\)">\(J(A)\)</span>. We therefore have the actual extension</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0\longrightarrow J(A)&amp;\longrightarrow T_\alpha(A)\\
+&amp;\longrightarrow B_\alpha(A)\longrightarrow0.
+\end{aligned}
+\tag{6.51}
+\]">\[
+\begin{aligned}
+0\longrightarrow J(A)&amp;\longrightarrow T_\alpha(A)\\
+&amp;\longrightarrow B_\alpha(A)\longrightarrow0.
+\end{aligned}
+\tag{6.51}
+\]</span>
+<p>The scalar augmentations and their sections commute with all arrows of the enlarged Toeplitz extension, so they are morphisms of extensions. Naturality of the proved six-term sequence and of <span class="math" data-tex="\(\pi_*,v_*\)">\(\pi_*,v_*\)</span> decomposes the unitalized cycle into its scalar cycle and the cycle on the kernels. The latter is exactly the claimed sequence for <span class="math" data-tex="\(A\)">\(A\)</span>. In particular the coefficient and vacuum K-isomorphisms restrict to these kernels in both degrees. This proves the nonunital case without tensoring an arbitrary extension or identifying the enlarged twisted algebra with an ordinary unitization of the smaller one. The same argument gives naturality for every equivariant coefficient homomorphism by extending it to the forced unitizations and restricting to the coefficient ideals.</p>
+<p>The scalar component of the transported first map is <strong><span class="math" data-tex="\(1-n\)">\(1-n\)</span></strong> on <span class="math" data-tex="\(K_0(\mathbb C)=\mathbb Z\)">\(K_0(\mathbb C)=\mathbb Z\)</span>. Indeed every extended automorphism acts identically on that summand. A positive <span class="math" data-tex="\(n-1\)">\(n-1\)</span> display is another exact-sequence convention; to make it the actual transported ideal map, replace the vacuum K-group identification by its negative and simultaneously negate the boundary into that ideal group. This is a change of K-group coordinates. The printed scalar decomposition in original §2.2 uses <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; with the stated <span class="math" data-tex="\(1-\sum\alpha_i^{-1}\)">\(1-\sum\alpha_i^{-1}\)</span> identification its literal algebraic scalar component is <span class="math" data-tex="\(1-n\)">\(1-n\)</span>. This sign should not be copied silently.</p>
+<p>If all automorphisms are identity, the map is <span class="math" data-tex="\(1-n\)">\(1-n\)</span>. The kernel and cokernel agree with the untwisted groups in existing Theorem 4.2, which displays <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Its boundary is constructed through the gauge crossed product and the PV sequence, whereas the boundary here is the vacuum-transported Toeplitz boundary. No equality, or equality up to sign, between those two previously constructed boundary maps is asserted here; an additional comparison of the two extensions would be needed. Equality of their resulting abstract kernels and cokernels alone does not establish that comparison.</p>
+<p>In particular, for <span class="math" data-tex="\(d=n-1\)">\(d=n-1\)</span> and identity twists, this theorem gives the complete coefficient formula</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to G_i/dG_i\to K_i(A\otimes\mathcal O_n),\\
+K_i(A\otimes\mathcal O_n)\to G_{i-1}[d]\to0,\\
+G[d]=\{g:dg=0\}.
+\end{gathered}
+\tag{6.52}
+\]">\[
+\begin{gathered}
+0\to G_i/dG_i\to K_i(A\otimes\mathcal O_n),\\
+K_i(A\otimes\mathcal O_n)\to G_{i-1}[d]\to0,\\
+G[d]=\{g:dg=0\}.
+\end{gathered}
+\tag{6.52}
+\]</span>
+<p>For <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, if <span class="math" data-tex="\(G_{i-1}\)">\(G_{i-1}\)</span> has no nonzero element annihilated by <span class="math" data-tex="\(d\)">\(d\)</span>, the coefficient arrow identifies the middle group with <span class="math" data-tex="\(G_i/dG_i\)">\(G_i/dG_i\)</span>. Cuntz’s tensor quotient formula in both degrees follows when both coefficient groups are torsion-free. Without that hypothesis the kernel term must be retained; no general Künneth splitting is supplied or assumed. At <span class="math" data-tex="\(n=1\)">\(n=1\)</span> the first map for identity twists is zero, so the same short exact sequence reads <span class="math" data-tex="\(0\to G_i\to K_i(A\otimes C(\mathbb T))\to G_{i-1}\to0\)">\(0\to G_i\to K_i(A\otimes C(\mathbb T))\to G_{i-1}\to0\)</span>.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the result has <span class="math" data-tex="\(1-\alpha_*^{-1}\)">\(1-\alpha_*^{-1}\)</span>. A convention with <span class="math" data-tex="\(1-\alpha_*\)">\(1-\alpha_*\)</span> is obtained by changing the ideal identification by <span class="math" data-tex="\(-\alpha_*\)">\(-\alpha_*\)</span>; the transported boundary then changes by <span class="math" data-tex="\(-\alpha_*^{-1}\)">\(-\alpha_*^{-1}\)</span>. This explicitly reconciles the inverse map without changing the coefficient inclusion.</p>
+<h3 id="the-sum-of-inverse-twists-on-the-whole-quotient">The sum of inverse twists on the whole quotient</h3>
+<p><strong>Proposition 6.7 (the quotient inverse-sum identity).</strong> For commuting automorphisms, each <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> extends to an automorphism <span class="math" data-tex="\(\widetilde\alpha_i\)">\(\widetilde\alpha_i\)</span> of <span class="math" data-tex="\(B_\alpha\)">\(B_\alpha\)</span>, acting as <span class="math" data-tex="\(\alpha_i\)">\(\alpha_i\)</span> on coefficients and fixing every <span class="math" data-tex="\(s_j\)">\(s_j\)</span>. The covariance relations are preserved because the automorphisms commute. Define</p>
+<span class="math math-display" data-tex="\[
+\psi(b)=\sum_i s_i\widetilde\alpha_i^{-1}(b)s_i^*.
+\tag{6.53}
+\]">\[
+\psi(b)=\sum_i s_i\widetilde\alpha_i^{-1}(b)s_i^*.
+\tag{6.53}
+\]</span>
+<p>The summands are homomorphisms with orthogonal ranges. On coefficients <span class="math" data-tex="\(\psi(j(a))=j(a)\)">\(\psi(j(a))=j(a)\)</span>, and on generators <span class="math" data-tex="\(\psi(s_j)=\sum_i s_i s_j s_i^*\)">\(\psi(s_j)=\sum_i s_i s_j s_i^*\)</span>.</p>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+F=\sum_{i,j}s_i s_j s_i^*s_j^*.
+\tag{6.54}
+\]">\[
+F=\sum_{i,j}s_i s_j s_i^*s_j^*.
+\tag{6.54}
+\]</span>
+<p>The length-two matrix-unit relations show that <span class="math" data-tex="\(F\)">\(F\)</span> is the unitary that interchanges the two letters, so <span class="math" data-tex="\(F=F^*\)">\(F=F^*\)</span> and <span class="math" data-tex="\(F^2=1\)">\(F^2=1\)</span>. It commutes with coefficients: the word automorphism <span class="math" data-tex="\(\alpha_i\alpha_j\)">\(\alpha_i\alpha_j\)</span> equals <span class="math" data-tex="\(\alpha_j\alpha_i\)">\(\alpha_j\alpha_i\)</span>. Also <span class="math" data-tex="\(Fs_j=\sum_i s_i s_j s_i^*\)">\(Fs_j=\sum_i s_i s_j s_i^*\)</span>. The path</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_t=\frac{1+F}{2}+e^{\pi it}\frac{1-F}{2},\\
+0\le t\le1.
+\end{gathered}
+\tag{6.55}
+\]">\[
+\begin{gathered}
+F_t=\frac{1+F}{2}+e^{\pi it}\frac{1-F}{2},\\
+0\le t\le1.
+\end{gathered}
+\tag{6.55}
+\]</span>
+<p>consists of unitaries commuting with coefficients. Sending <span class="math" data-tex="\(s_j\)">\(s_j\)</span> to <span class="math" data-tex="\(F_ts_j\)">\(F_ts_j\)</span> and fixing coefficients therefore gives a point-norm homotopy of homomorphisms from identity to <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The same supported-isometry computation used above gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\psi_*=\sum_i(\widetilde\alpha_i^{-1})_*=1\\
+\text{on }K_*(B_\alpha).
+\end{gathered}
+\tag{6.56}
+\]">\[
+\begin{gathered}
+\psi_*=\sum_i(\widetilde\alpha_i^{-1})_*=1\\
+\text{on }K_*(B_\alpha).
+\end{gathered}
+\tag{6.56}
+\]</span>
+<p>This proves the source's identity on the whole quotient K-group, not merely on the coefficient image. For nonunital coefficients, apply the construction in the forced-unitization twisted algebra. Its homotopy and automorphisms preserve the coefficient ideal, and restrict to it, proving the same conclusion.</p>
+<h3 id="countably-many-twisted-generators">Countably many twisted generators</h3>
+<p><strong>Theorem 6.8 (twisted infinite coefficients).</strong> Suppose there is a countable commuting family of implemented automorphisms. For unital <span class="math" data-tex="\(A\)">\(A\)</span>, define <span class="math" data-tex="\(B_{\alpha,\infty}\)">\(B_{\alpha,\infty}\)</span> by a unital coefficient copy and countably many orthogonal isometries satisfying <span class="math" data-tex="\(s_i j(a)=j(\alpha_i(a))s_i\)">\(s_i j(a)=j(\alpha_i(a))s_i\)</span>, with no infinite norm-sum relation. For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, take the coefficient ideal in this construction for <span class="math" data-tex="\(A^\dagger\)">\(A^\dagger\)</span>. In the unital case, the algebra generated by <span class="math" data-tex="\(A\)">\(A\)</span> and the first <span class="math" data-tex="\(m\)">\(m\)</span> isometries is a faithful copy of the finite Toeplitz algebra for <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_m\)">\(\alpha_1,\ldots,\alpha_m\)</span>. To prove faithfulness, use the coefficient Toeplitz-core argument above in the concrete model <span class="math" data-tex="\(s_i=U_i\otimes S_i\)">\(s_i=U_i\otimes S_i\)</span>: its defect is <span class="math" data-tex="\(1\otimes(1-\sum_{i\le m}S_iS_i^*)\)">\(1\otimes(1-\sum_{i\le m}S_iS_i^*)\)</span>, which is nonzero and has faithful coefficient corner, because it dominates the next range projection. The gauge action is retained. The universal model has the same faithful finite-stage cores, so it identifies with this concrete model as well.</p>
+<p>These finite Toeplitz algebras form an increasing dense union. Their coefficient K-maps are isomorphisms by Theorem 6.3; the connecting maps preserve the actual coefficient map and hence act as identity under these identifications. Continuity of both K-functors therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+j_*:K_i(A)\xrightarrow{\cong}K_i(B_{\alpha,\infty}),\\
+i=0,1.
+\end{gathered}
+\tag{6.57}
+\]">\[
+\begin{gathered}
+j_*:K_i(A)\xrightarrow{\cong}K_i(B_{\alpha,\infty}),\\
+i=0,1.
+\end{gathered}
+\tag{6.57}
+\]</span>
+<p>For nonunital coefficients, the split augmentation onto <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> and its section reduce the assertion to the kernels exactly as above. This independently proves the twisted version of source §2.4; the existing Lesson 22 result covers its untwisted tensor special case.</p>
+<p>For unital <span class="math" data-tex="\(A\)">\(A\)</span> the infinite coefficient isomorphism sends <span class="math" data-tex="\([1_A]\)">\([1_A]\)</span> to <span class="math" data-tex="\([1_{B_{\alpha,\infty}}]\)">\([1_{B_{\alpha,\infty}}]\)</span>. No algebra classification or additional simplicity conclusion is inferred from this K-theory isomorphism.</p>
+<h3 id="simplicity-and-pure-infiniteness-of-infinite-cuntz-coefficients">Simplicity and pure infiniteness of infinite Cuntz coefficients</h3>
+<p>All tensor products in the proof are minimal. An infinite projection is a nonzero projection equivalent to a proper subprojection of itself. A properly infinite projection admits two orthogonal subprojections each equivalent to itself. The hereditary subalgebra generated by a positive element <span class="math" data-tex="\(h\)">\(h\)</span> is <span class="math" data-tex="\(\operatorname{Her}(h)=\overline{hCh}=\overline{h^{1/2}Ch^{1/2}}\)">\(\operatorname{Her}(h)=\overline{hCh}=\overline{h^{1/2}Ch^{1/2}}\)</span>.</p>
+<p><strong>Lemma 6.9a (an exact positive cutoff).</strong> In any C*-algebra, if <span class="math" data-tex="\(a,b\geq0\)">\(a,b\geq0\)</span> and <span class="math" data-tex="\(\varepsilon&gt;\|a-b\|\)">\(\varepsilon&gt;\|a-b\|\)</span>, there is a contraction <span class="math" data-tex="\(d\)">\(d\)</span> in the algebra with</p>
+<span class="math math-display" data-tex="\[
+d^*bd=(a-\varepsilon)_+.
+\tag{6.S1}
+\]">\[
+d^*bd=(a-\varepsilon)_+.
+\tag{6.S1}
+\]</span>
+<p><em>Proof.</em> We give the norm-convergence details of the elementary cutoff argument [Kirchberg–Rørdam 2002, Lemma 2.2]. Write <span class="math" data-tex="\(c=(a-\varepsilon)_+\)">\(c=(a-\varepsilon)_+\)</span>. For <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, the function <span class="math" data-tex="\(q_r(t)=\min(t,t^r)\)">\(q_r(t)=\min(t,t^r)\)</span> converges uniformly to <span class="math" data-tex="\(t\)">\(t\)</span> on the compact interval containing the spectrum of <span class="math" data-tex="\(b\)">\(b\)</span>, as <span class="math" data-tex="\(r\downarrow1\)">\(r\downarrow1\)</span>. Choose <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> with <span class="math" data-tex="\(\delta=\|a-q_r(b)\|&lt;\varepsilon\)">\(\delta=\|a-q_r(b)\|&lt;\varepsilon\)</span>, and put <span class="math" data-tex="\(b_0=q_r(b)\)">\(b_0=q_r(b)\)</span>. Thus <span class="math" data-tex="\(b_0\leq b,b^r\)">\(b_0\leq b,b^r\)</span> and <span class="math" data-tex="\(a-\delta1\leq b_0\)">\(a-\delta1\leq b_0\)</span>.</p>
+<p>Choose a continuous function <span class="math" data-tex="\(e(t)\)">\(e(t)\)</span> which is zero for <span class="math" data-tex="\(t\leq\delta\)">\(t\leq\delta\)</span>, takes values in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, and is one for <span class="math" data-tex="\(t\geq\varepsilon\)">\(t\geq\varepsilon\)</span>. Then <span class="math" data-tex="\(e(a)c=c\)">\(e(a)c=c\)</span> and scalar functional calculus gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c\leq e(a)(a-\delta1)e(a)\\
+\leq e(a)b_0e(a).
+\end{gathered}
+\tag{6.S2}
+\]">\[
+\begin{gathered}
+c\leq e(a)(a-\delta1)e(a)\\
+\leq e(a)b_0e(a).
+\end{gathered}
+\tag{6.S2}
+\]</span>
+<p>Put <span class="math" data-tex="\(x=b_0^{1/2}e(a)\)">\(x=b_0^{1/2}e(a)\)</span>, and use its polar decomposition <span class="math" data-tex="\(x=v|x|\)">\(x=v|x|\)</span> in the bidual. The element <span class="math" data-tex="\(y=vc^{1/2}\)">\(y=vc^{1/2}\)</span> belongs to the original algebra. Indeed <span class="math" data-tex="\(x(|x|^2+t)^{-1/2}c^{1/2}\to vc^{1/2}\)">\(x(|x|^2+t)^{-1/2}c^{1/2}\to vc^{1/2}\)</span> in norm: its squared error is bounded by</p>
+<span class="math math-display" data-tex="\[
+\sup_{s\geq0}s\left(1-\sqrt{s/(s+t)}\right)^2\leq t,
+\tag{6.S3}
+\]">\[
+\sup_{s\geq0}s\left(1-\sqrt{s/(s+t)}\right)^2\leq t,
+\tag{6.S3}
+\]</span>
+<p>using <span class="math" data-tex="\(c\leq|x|^2\)">\(c\leq|x|^2\)</span>. Hence <span class="math" data-tex="\(y^*y=c\)">\(y^*y=c\)</span> and <span class="math" data-tex="\(yy^*\leq xx^*\leq b_0\leq b,b^r\)">\(yy^*\leq xx^*\leq b_0\leq b,b^r\)</span>.</p>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> set <span class="math" data-tex="\(z_t=y^*(b^r+t)^{-1/2}b^{(r-1)/2}\)">\(z_t=y^*(b^r+t)^{-1/2}b^{(r-1)/2}\)</span>, an element of the original algebra. The family <span class="math" data-tex="\(z_t\)">\(z_t\)</span>, as <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>, is norm Cauchy. Its squared difference is at most</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{s\in\operatorname{sp}(b)}s^{r-1}|F_t(s)-F_u(s)|^2,\\
+F_t(s)=s^{r/2}(s^r+t)^{-1/2}.
+\end{gathered}
+\tag{6.S4}
+\]">\[
+\begin{gathered}
+\sup_{s\in\operatorname{sp}(b)}s^{r-1}|F_t(s)-F_u(s)|^2,\\
+F_t(s)=s^{r/2}(s^r+t)^{-1/2}.
+\end{gathered}
+\tag{6.S4}
+\]</span>
+<p>To verify convergence, split the supremum at <span class="math" data-tex="\(s=\alpha&gt;0\)">\(s=\alpha&gt;0\)</span>. On <span class="math" data-tex="\(s\leq\alpha\)">\(s\leq\alpha\)</span>, the bound is at most <span class="math" data-tex="\(\alpha^{r-1}\)">\(\alpha^{r-1}\)</span>; on <span class="math" data-tex="\(s\geq\alpha\)">\(s\geq\alpha\)</span>, the displayed functions converge uniformly. First let <span class="math" data-tex="\(t,u\downarrow0\)">\(t,u\downarrow0\)</span>, and then <span class="math" data-tex="\(\alpha\downarrow0\)">\(\alpha\downarrow0\)</span>. The strict inequality <span class="math" data-tex="\(r&gt;1\)">\(r&gt;1\)</span> is used here.</p>
+<p>Also <span class="math" data-tex="\(z_tb^{1/2}=y^*(b^r+t)^{-1/2}b^{r/2}\to y^*\)">\(z_tb^{1/2}=y^*(b^r+t)^{-1/2}b^{r/2}\to y^*\)</span> in norm, by <span class="math" data-tex="\(yy^*\leq b^r\)">\(yy^*\leq b^r\)</span> and the scalar bound <span class="math" data-tex="\(\sup_{s\geq0}s^r(1-\sqrt{s^r/(s^r+t)})^2\leq t\)">\(\sup_{s\geq0}s^r(1-\sqrt{s^r/(s^r+t)})^2\leq t\)</span>. Finally</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z_t^*z_t\leq b^r(b^r+t)^{-1}\\
+\leq1.
+\end{gathered}
+\tag{6.S5}
+\]">\[
+\begin{gathered}
+z_t^*z_t\leq b^r(b^r+t)^{-1}\\
+\leq1.
+\end{gathered}
+\tag{6.S5}
+\]</span>
+<p>Let <span class="math" data-tex="\(z=\lim_{t\downarrow0}z_t\)">\(z=\lim_{t\downarrow0}z_t\)</span>. It is a contraction and <span class="math" data-tex="\(zbz^*=y^*y=c\)">\(zbz^*=y^*y=c\)</span>. Taking <span class="math" data-tex="\(d=z^*\)">\(d=z^*\)</span> proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.9b (finite positive fullness).</strong> If a positive element <span class="math" data-tex="\(a\)">\(a\)</span> generates a C*-algebra <span class="math" data-tex="\(C\)">\(C\)</span> as a closed two-sided ideal, every element of <span class="math" data-tex="\(C_+\)">\(C_+\)</span> is a norm limit of finite sums <span class="math" data-tex="\(\sum_j x_j^*ax_j\)">\(\sum_j x_j^*ax_j\)</span>, with <span class="math" data-tex="\(x_j\in C\)">\(x_j\in C\)</span>.</p>
+<p><em>Proof.</em> The span of <span class="math" data-tex="\(CaC\)">\(CaC\)</span> is dense in <span class="math" data-tex="\(C\)">\(C\)</span>; approximate a given <span class="math" data-tex="\(b^{1/2}\)">\(b^{1/2}\)</span> by <span class="math" data-tex="\(y=\sum_{j=1}^m r_jas_j\)">\(y=\sum_{j=1}^m r_jas_j\)</span>. Put <span class="math" data-tex="\(R=[r_1,\ldots,r_m]\)">\(R=[r_1,\ldots,r_m]\)</span>, <span class="math" data-tex="\(S=[s_1,\ldots,s_m]^T\)">\(S=[s_1,\ldots,s_m]^T\)</span>, and <span class="math" data-tex="\(D=\operatorname{diag}(a,\ldots,a)\)">\(D=\operatorname{diag}(a,\ldots,a)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y^*y=S^*DR^*RDS\\
+\leq\|R\|^2S^*D^2S\\
+\leq\|R\|^2\|a\|\sum_j s_j^*as_j=:c.
+\end{gathered}
+\tag{6.S6}
+\]">\[
+\begin{gathered}
+y^*y=S^*DR^*RDS\\
+\leq\|R\|^2S^*D^2S\\
+\leq\|R\|^2\|a\|\sum_j s_j^*as_j=:c.
+\end{gathered}
+\tag{6.S6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(c\)">\(c\)</span> is such a finite sum (absorb its scalar factor into the <span class="math" data-tex="\(s_j\)">\(s_j\)</span>). Write <span class="math" data-tex="\(b&#x27;=y^*y\leq c\)">\(b&#x27;=y^*y\leq c\)</span>. For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(w_t=(c+t1)^{-1/2}(b&#x27;)^{1/2}\in C\)">\(w_t=(c+t1)^{-1/2}(b&#x27;)^{1/2}\in C\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|b^{\prime}-w_t^*cw_t\|\\
+=t\|(c+t1)^{-1/2}(b^{\prime})^{1/2}\|^2\\
+\leq t.
+\end{gathered}
+\tag{6.S7}
+\]">\[
+\begin{gathered}
+\|b^{\prime}-w_t^*cw_t\|\\
+=t\|(c+t1)^{-1/2}(b^{\prime})^{1/2}\|^2\\
+\leq t.
+\end{gathered}
+\tag{6.S7}
+\]</span>
+<p>The bound follows by swapping the two factors in this positive product and using <span class="math" data-tex="\(b&#x27;\leq c\)">\(b&#x27;\leq c\)</span>. Each <span class="math" data-tex="\(w_t^*cw_t\)">\(w_t^*cw_t\)</span> is again a finite sum of the required form. Let the approximation to <span class="math" data-tex="\(b^{1/2}\)">\(b^{1/2}\)</span> improve and then let <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 6.9c (compression with an unused letter).</strong> Let <span class="math" data-tex="\(W\)">\(W\)</span> be all finite words on the countable alphabet, including the empty word, and let <span class="math" data-tex="\(L_i\delta_w=\delta_{iw}\)">\(L_i\delta_w=\delta_{iw}\)</span> be the Fock representation of <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>. This representation is faithful. For its vector state <span class="math" data-tex="\(\omega_w\)">\(\omega_w\)</span> and any finite normal-word polynomial <span class="math" data-tex="\(p\)">\(p\)</span> with coefficients in a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, choose a letter <span class="math" data-tex="\(N\)">\(N\)</span> absent from <span class="math" data-tex="\(w\)">\(w\)</span> and all its normal words. With <span class="math" data-tex="\(t=s_ws_N\)">\(t=s_ws_N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(1\otimes t)^*p(1\otimes t)\\
+=\bigl((\operatorname{id}_A\otimes\omega_w)(p)\bigr)\otimes1.
+\end{gathered}
+\tag{6.S8}
+\]">\[
+\begin{gathered}
+(1\otimes t)^*p(1\otimes t)\\
+=\bigl((\operatorname{id}_A\otimes\omega_w)(p)\bigr)\otimes1.
+\end{gathered}
+\tag{6.S8}
+\]</span>
+<p><em>Proof.</em> The restriction of the Fock representation to the first <span class="math" data-tex="\(n\)">\(n\)</span> generators is gauge equivariant and has nonzero defect, since that defect fixes the empty word. Lemma 6.1 makes it faithful on their copy of <span class="math" data-tex="\(E_n\)">\(E_n\)</span>. The increasing union of those copies is dense in <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span>, so the whole representation is faithful.</p>
+<p>It suffices to compress <span class="math" data-tex="\(s_\mu s_\nu^*\)">\(s_\mu s_\nu^*\)</span>. If either <span class="math" data-tex="\(\mu\)">\(\mu\)</span> or <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is not a prefix of <span class="math" data-tex="\(wN\)">\(wN\)</span>, the compressed product is zero. Because <span class="math" data-tex="\(N\)">\(N\)</span> occurs in neither normal word, being such a prefix is equivalent to being a prefix of <span class="math" data-tex="\(w\)">\(w\)</span>. When both are prefixes, cancellation leaves the two tails of <span class="math" data-tex="\(wN\)">\(wN\)</span>. If their lengths differ, the unique final occurrence of <span class="math" data-tex="\(N\)">\(N\)</span> is at different positions, and the tails fail the prefix test. The product is again zero. If the lengths agree, the prefixes are equal and the product is one. These are exactly the diagonal matrix coefficients of <span class="math" data-tex="\(L_\mu L_\nu^*\)">\(L_\mu L_\nu^*\)</span> at <span class="math" data-tex="\(\delta_w\)">\(\delta_w\)</span>. Linearity proves the formula, including empty words. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 6.9 (simplicity and pure infiniteness).</strong> Let <span class="math" data-tex="\(A\neq0\)">\(A\neq0\)</span> be a simple C*-algebra. Then</p>
+<span class="math math-display" data-tex="\[
+C=A\otimes_{\min}\mathcal O_\infty
+\tag{6.S9}
+\]">\[
+C=A\otimes_{\min}\mathcal O_\infty
+\tag{6.S9}
+\]</span>
+<p>is simple, and every nonzero hereditary C*-subalgebra of <span class="math" data-tex="\(C\)">\(C\)</span> contains a properly infinite projection. No unitality, separability or nuclearity assumption on <span class="math" data-tex="\(A\)">\(A\)</span> is needed. More precisely, for every <span class="math" data-tex="\(0\neq h\in C_+\)">\(0\neq h\in C_+\)</span>, every <span class="math" data-tex="\(b\in C_+\)">\(b\in C_+\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there exists <span class="math" data-tex="\(x\in C\)">\(x\in C\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\|x^*hx-b\|&lt;\varepsilon.
+\tag{6.S10}
+\]">\[
+\|x^*hx-b\|&lt;\varepsilon.
+\tag{6.S10}
+\]</span>
+<p><em>Proof.</em> Represent <span class="math" data-tex="\(A\)">\(A\)</span> faithfully and nondegenerately, and represent <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> by the faithful Fock representation of Lemma 6.9c. Their spatial tensor representation is faithful. For <span class="math" data-tex="\(h\neq0\)">\(h\neq0\)</span> positive, some slice <span class="math" data-tex="\(a=(\operatorname{id}_A\otimes\omega_w)(h)\in A_+\)">\(a=(\operatorname{id}_A\otimes\omega_w)(h)\in A_+\)</span> is nonzero. Otherwise every diagonal compression to <span class="math" data-tex="\(H_A\otimes\delta_w\)">\(H_A\otimes\delta_w\)</span> vanishes; positivity makes <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> vanish on each such subspace and hence on their dense span, a contradiction.</p>
+<p>The element <span class="math" data-tex="\(c=a\otimes1\)">\(c=a\otimes1\)</span> is full in <span class="math" data-tex="\(C\)">\(C\)</span>: the ideal it generates contains every <span class="math" data-tex="\(ras\otimes d=(r\otimes d)c(s\otimes1)\)">\(ras\otimes d=(r\otimes d)c(s\otimes1)\)</span>, and <span class="math" data-tex="\(\overline{AaA}=A\)">\(\overline{AaA}=A\)</span> by simplicity. Apply Lemma 6.9b to approximate the given <span class="math" data-tex="\(b\)">\(b\)</span> by a finite sum <span class="math" data-tex="\(\sum_{i=1}^m y_i^*cy_i\)">\(\sum_{i=1}^m y_i^*cy_i\)</span>. The multiplier isometries <span class="math" data-tex="\(T_i=1\otimes s_i\)">\(T_i=1\otimes s_i\)</span> commute with <span class="math" data-tex="\(c\)">\(c\)</span> and satisfy <span class="math" data-tex="\(T_i^*T_j=\delta_{ij}1\)">\(T_i^*T_j=\delta_{ij}1\)</span>. Thus <span class="math" data-tex="\(y=\sum_i T_i y_i\in C\)">\(y=\sum_i T_i y_i\in C\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+y^*cy=\sum_i y_i^*cy_i.
+\tag{6.S11}
+\]">\[
+y^*cy=\sum_i y_i^*cy_i.
+\tag{6.S11}
+\]</span>
+<p>Keep this <span class="math" data-tex="\(y\)">\(y\)</span> fixed. Approximate <span class="math" data-tex="\(h\)">\(h\)</span> by a finite normal-word polynomial <span class="math" data-tex="\(p\)">\(p\)</span>, and use the unused-letter isometry <span class="math" data-tex="\(v=1\otimes s_ws_N\in M(C)\)">\(v=1\otimes s_ws_N\in M(C)\)</span> from Lemma 6.9c. Contractivity of compression and of the slice map gives</p>
+<span class="math math-display" data-tex="\[
+\|v^*hv-c\|\leq2\|h-p\|.
+\tag{6.S12}
+\]">\[
+\|v^*hv-c\|\leq2\|h-p\|.
+\tag{6.S12}
+\]</span>
+<p>Choose the polynomial approximation after <span class="math" data-tex="\(y\)">\(y\)</span> has been fixed, so that <span class="math" data-tex="\(2\|y\|^2\|h-p\|\)">\(2\|y\|^2\|h-p\|\)</span> is smaller than the remaining error allowance. Then <span class="math" data-tex="\(x=vy\in C\)">\(x=vy\in C\)</span> proves the asserted comparison. All multiplier expressions used here land in <span class="math" data-tex="\(C\)">\(C\)</span>; no identity in a nonunital <span class="math" data-tex="\(A\)">\(A\)</span> is inserted.</p>
+<p>If a nonzero ideal contains <span class="math" data-tex="\(h\neq0\)">\(h\neq0\)</span> positive, it contains every <span class="math" data-tex="\(x^*hx\)">\(x^*hx\)</span> and therefore, by the comparison just proved, every positive element of <span class="math" data-tex="\(C\)">\(C\)</span>. It equals <span class="math" data-tex="\(C\)">\(C\)</span>, proving simplicity.</p>
+<p>Let <span class="math" data-tex="\(E\subset C\)">\(E\subset C\)</span> be a nonzero hereditary subalgebra. Choose <span class="math" data-tex="\(e\in E_+\)">\(e\in E_+\)</span> with <span class="math" data-tex="\(\|e\|=1\)">\(\|e\|=1\)</span>. Define, by scalar continuous functional calculus,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a_0&amp;=(4e-3)_+,\\
+b_0&amp;=\min\bigl(8(e-1/4)_+,1\bigr),\\
+g&amp;=\min\bigl(4(e-1/2)_+,1\bigr).
+\end{aligned}
+\tag{6.S13}
+\]">\[
+\begin{aligned}
+a_0&amp;=(4e-3)_+,\\
+b_0&amp;=\min\bigl(8(e-1/4)_+,1\bigr),\\
+g&amp;=\min\bigl(4(e-1/2)_+,1\bigr).
+\end{aligned}
+\tag{6.S13}
+\]</span>
+<p>These have norm one, vanish at zero, belong to <span class="math" data-tex="\(E\)">\(E\)</span>, and satisfy <span class="math" data-tex="\(ga_0=a_0\)">\(ga_0=a_0\)</span> and <span class="math" data-tex="\(b_0g=g\)">\(b_0g=g\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> is a projection, we already have a nonzero projection in <span class="math" data-tex="\(E\)">\(E\)</span>. Otherwise <span class="math" data-tex="\(r=g-g^2\neq0\)">\(r=g-g^2\neq0\)</span>.</p>
+<p>The comparison assertion gives <span class="math" data-tex="\(z\in C\)">\(z\in C\)</span> with <span class="math" data-tex="\(\|z^*a_0^2z-b_0\|&lt;1/2\)">\(\|z^*a_0^2z-b_0\|&lt;1/2\)</span>. Lemma 6.9a supplies a contraction <span class="math" data-tex="\(d\in C\)">\(d\in C\)</span> with</p>
+<span class="math math-display" data-tex="\[
+d^*z^*a_0^2zd=(b_0-1/2)_+.
+\tag{6.S14}
+\]">\[
+d^*z^*a_0^2zd=(b_0-1/2)_+.
+\tag{6.S14}
+\]</span>
+<p>Put <span class="math" data-tex="\(k=\min(8e,1)\in E\)">\(k=\min(8e,1)\in E\)</span>. Because <span class="math" data-tex="\(k=1\)">\(k=1\)</span> wherever <span class="math" data-tex="\(b_0\neq0\)">\(b_0\neq0\)</span>, <span class="math" data-tex="\(k(b_0-1/2)_+=(b_0-1/2)_+\)">\(k(b_0-1/2)_+=(b_0-1/2)_+\)</span>. The element <span class="math" data-tex="\(q=\sqrt2\,a_0zdk\)">\(q=\sqrt2\,a_0zdk\)</span> belongs to <span class="math" data-tex="\(E\)">\(E\)</span>: it lies in <span class="math" data-tex="\(ECE\subset E\)">\(ECE\subset E\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q^*q=2(b_0-1/2)_+\leq1,\\
+gq=q,\qquad q^*qg=g.
+\end{gathered}
+\tag{6.S15}
+\]">\[
+\begin{gathered}
+q^*q=2(b_0-1/2)_+\leq1,\\
+gq=q,\qquad q^*qg=g.
+\end{gathered}
+\tag{6.S15}
+\]</span>
+<p>The last identity uses <span class="math" data-tex="\(b_0g=g\)">\(b_0g=g\)</span>, so functional calculus gives <span class="math" data-tex="\((b_0-1/2)_+g=g/2\)">\((b_0-1/2)_+g=g/2\)</span>. Consequently <span class="math" data-tex="\(q^*qq=q\)">\(q^*qq=q\)</span>, <span class="math" data-tex="\(rq=0\)">\(rq=0\)</span>, and <span class="math" data-tex="\(r(1-q^*q)^{1/2}=0\)">\(r(1-q^*q)^{1/2}=0\)</span>. Also <span class="math" data-tex="\((1-q^*q)^{1/2}q=0\)">\((1-q^*q)^{1/2}q=0\)</span>, from <span class="math" data-tex="\(q^*qq=q\)">\(q^*qq=q\)</span>. In the forced unitization of <span class="math" data-tex="\(E\)">\(E\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+u=q+(1-q^*q)^{1/2}.
+\tag{6.S16}
+\]">\[
+u=q+(1-q^*q)^{1/2}.
+\tag{6.S16}
+\]</span>
+<p>The mixed terms vanish, so <span class="math" data-tex="\(u^*u=1\)">\(u^*u=1\)</span>, while <span class="math" data-tex="\(ru=0\)">\(ru=0\)</span>. Since <span class="math" data-tex="\(r\neq0\)">\(r\neq0\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> is not unitary. Thus <span class="math" data-tex="\(p=1-uu^*\)">\(p=1-uu^*\)</span> is a nonzero projection. It belongs to <span class="math" data-tex="\(E\)">\(E\)</span>, because the scalar quotient sends <span class="math" data-tex="\(u\)">\(u\)</span> to one. This proves existence of a nonzero projection in every such <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Finally every nonzero projection <span class="math" data-tex="\(p\in C\)">\(p\in C\)</span> is properly infinite. The projections <span class="math" data-tex="\(p_i=T_i pT_i^*\)">\(p_i=T_i pT_i^*\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, are orthogonal and equivalent to <span class="math" data-tex="\(p\)">\(p\)</span>, and their sum <span class="math" data-tex="\(P=p_1+p_2\in C\)">\(P=p_1+p_2\in C\)</span> is a projection. Comparison gives <span class="math" data-tex="\(z\in C\)">\(z\in C\)</span> with <span class="math" data-tex="\(\|z^*pz-P\|&lt;1/2\)">\(\|z^*pz-P\|&lt;1/2\)</span>. The positive element <span class="math" data-tex="\(H=Pz^*pzP\)">\(H=Pz^*pzP\)</span> is invertible in <span class="math" data-tex="\(PCP\)">\(PCP\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w=pzP H^{-1/2}\in C,\\
+w^*w=P,\qquad ww^*\leq p.
+\end{gathered}
+\tag{6.S17}
+\]">\[
+\begin{gathered}
+w=pzP H^{-1/2}\in C,\\
+w^*w=P,\qquad ww^*\leq p.
+\end{gathered}
+\tag{6.S17}
+\]</span>
+<p>The elements <span class="math" data-tex="\(wT_i p\in C\)">\(wT_i p\in C\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, have initial projection <span class="math" data-tex="\(p\)">\(p\)</span>, orthogonal final projections, and total final projection at most <span class="math" data-tex="\(p\)">\(p\)</span>. Hence <span class="math" data-tex="\(p\)">\(p\)</span> is properly infinite. Apply this to the projection just obtained in <span class="math" data-tex="\(E\)">\(E\)</span>. Its implementing partial isometries also belong to <span class="math" data-tex="\(E\)">\(E\)</span>, since they are in <span class="math" data-tex="\(pCp\subset E\)">\(pCp\subset E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(A\)">\(A\)</span> is unital, one gets the stronger exact normalization <span class="math" data-tex="\(x^*hx=1_C\)">\(x^*hx=1_C\)</span> for every <span class="math" data-tex="\(h\neq0\)">\(h\neq0\)</span> positive. Approximate <span class="math" data-tex="\(1_C\)">\(1_C\)</span> within <span class="math" data-tex="\(1/2\)">\(1/2\)</span> by the comparison assertion, obtaining <span class="math" data-tex="\(y^*hy\)">\(y^*hy\)</span> positive invertible, and put <span class="math" data-tex="\(x=y(y^*hy)^{-1/2}\)">\(x=y(y^*hy)^{-1/2}\)</span>. The projection <span class="math" data-tex="\(h^{1/2}xx^*h^{1/2}\in\operatorname{Her}(h)\)">\(h^{1/2}xx^*h^{1/2}\in\operatorname{Her}(h)\)</span> is then equivalent to <span class="math" data-tex="\(1_C\)">\(1_C\)</span>.</p>
+<p>The tensor norm in this statement is the spatial norm used in Cuntz's II §2.4. The same algebra is obtained with the maximum norm: for unital <span class="math" data-tex="\(A\)">\(A\)</span>, finite normal-word sums lie in <span class="math" data-tex="\(A\odot E_n\)">\(A\odot E_n\)</span>, where Proposition 6.4 proves equality of the two norms; their images in the maximum completion have norm at most that finite-stage norm, and the canonical minimum quotient gives the reverse inequality. Density proves equality on <span class="math" data-tex="\(A\odot\mathcal O_\infty\)">\(A\odot\mathcal O_\infty\)</span>. For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, every commuting representation of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> extends to the forced unitization of <span class="math" data-tex="\(A\)">\(A\)</span> by <span class="math" data-tex="\(a+\lambda1\mapsto\pi(a)+\lambda I\)">\(a+\lambda1\mapsto\pi(a)+\lambda I\)</span>; applying the unital norm bound proves the same equality.</p>
+<p>Source credit: <a href="https://www.theta.ro/jot/archive/1981-005-001/1981-005-001-009.pdf">Cuntz II (1981)</a>, §2.4, printed p. 107, states the tensor structural conclusion. Lemma 6.9a develops the elementary exact-cutoff argument of <a href="https://web.math.ku.dk/~rordam/manus/pi23.pdf">Kirchberg–Rørdam (2002)</a>, Lemma 2.2, p. 5, including its polar-membership and norm-limit details. The hereditary projection construction uses the scaling mechanism in <a href="https://www.uni-muenster.de/imperia/md/content/MathematicsMuenster/ekneu1.pdf">Kirchberg's 2022 manuscript</a>, Proposition 2.2.1(ii)⇒(i), printed pp. 150–151, with the plateau functions and multiplication order explicitly checked above. For comparison, <a href="https://web.math.ku.dk/~rordam/manus/pi1.pdf">Kirchberg–Rørdam (2000)</a>, Proposition 4.5, manuscript pp. 16–17, gives an alternative tensor proof using absorption results. The direct Fock-compression proof here establishes the stated structural properties separately from the coefficient K-isomorphisms and algebra classification.</p>
+<h2 id="section-7"><span id="7-exercises-with-solutions"></span>7. Exercises with solutions</h2>
+<p><strong>Exercise 22.1 (basic: orthogonality and the unit).</strong> Starting only with (1.1), prove (1.2) and <span class="math" data-tex="\([1]=n[1]\)">\([1]=n[1]\)</span> in K-zero.</p>
+<p><em>Solution.</em> The positive-compression argument of §1 gives <span class="math" data-tex="\(q_iq_j=0\)">\(q_iq_j=0\)</span> for distinct indices. Since <span class="math" data-tex="\(s_i^*=s_i^*q_i\)">\(s_i^*=s_i^*q_i\)</span> and <span class="math" data-tex="\(s_j=q_js_j\)">\(s_j=q_js_j\)</span>, their cross product is zero. The diagonal product is one by isometry. Each <span class="math" data-tex="\(q_i\)">\(q_i\)</span> is equivalent to one through <span class="math" data-tex="\(s_i\)">\(s_i\)</span>. Additivity on orthogonal projections gives <span class="math" data-tex="\([1]=\sum_i[q_i]=n[1]\)">\([1]=\sum_i[q_i]=n[1]\)</span>. This proves that the unit class is annihilated by <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; its exact order requires Theorem 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 22.2 (intermediate: the connecting map).</strong> Identify the core using the word matrix units, including its normalized K-zero classes.</p>
+<p><em>Solution.</em> At length <span class="math" data-tex="\(r\)">\(r\)</span>, (1.2) gives a complete set of <span class="math" data-tex="\(n^r\)">\(n^r\)</span>-by-<span class="math" data-tex="\(n^r\)">\(n^r\)</span> matrix units. Their total diagonal projection is one by induction on the Cuntz sum, and each diagonal is nonzero. Equation (2.4) appends the same new letter to both indices, giving <span class="math" data-tex="\(x\otimes1_n\)">\(x\otimes1_n\)</span>. Its rank-one projection becomes a sum of <span class="math" data-tex="\(n\)">\(n\)</span> rank-one projections. Thus the stage K-map is multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>; the coordinate of rank <span class="math" data-tex="\(a\)">\(a\)</span> at stage <span class="math" data-tex="\(r\)">\(r\)</span> is <span class="math" data-tex="\(a/n^r\)">\(a/n^r\)</span>. The union of those coordinates is <span class="math" data-tex="\(\mathbb Z[1/n]\)">\(\mathbb Z[1/n]\)</span>, and the stage unit has coordinate one. Gauge averaging proves density of the matrix union in the full fixed algebra, so no other core summands occur. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 22.3 (intermediate: fullness).</strong> Prove that the projection <span class="math" data-tex="\(p_0\)">\(p_0\)</span> in (3.1) is full, and determine the positive dual action on its class.</p>
+<p><em>Solution.</em> For every <span class="math" data-tex="\(r\geq0\)">\(r\geq0\)</span>, conjugating by a length-<span class="math" data-tex="\(r\)">\(r\)</span> word gives <span class="math" data-tex="\(p_{-r}=s_\mu^*p_0s_\mu\)">\(p_{-r}=s_\mu^*p_0s_\mu\)</span>. Summing the opposite conjugations over all such words gives <span class="math" data-tex="\(p_r\)">\(p_r\)</span>, using their total range one. Multiplier stability of the ideal generated by <span class="math" data-tex="\(p_0\)">\(p_0\)</span> puts all these projections in it. Coefficient-character approximation puts a dense span <span class="math" data-tex="\(ap_k\)">\(ap_k\)</span> in the same ideal, proving fullness. Finally <span class="math" data-tex="\(s_ip_k\)">\(s_ip_k\)</span> identifies <span class="math" data-tex="\(p_k\)">\(p_k\)</span> with each of <span class="math" data-tex="\(n\)">\(n\)</span> orthogonal pieces of <span class="math" data-tex="\(p_{k+1}\)">\(p_{k+1}\)</span>, so <span class="math" data-tex="\([p_{-1}]=[p_0]/n\)">\([p_{-1}]=[p_0]/n\)</span>. Positive duality sends <span class="math" data-tex="\(p_0\)">\(p_0\)</span> to <span class="math" data-tex="\(p_{-1}\)">\(p_{-1}\)</span>, not to <span class="math" data-tex="\(p_1\)">\(p_1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 22.4 (advanced: the extension calculation).</strong> Assuming the scalar K-isomorphism (6.5), compute the K-groups from (6.4) and compare the unit generator with Theorem 4.1.</p>
+<p><em>Solution.</em> The vacuum projection <span class="math" data-tex="\(q\)">\(q\)</span> generates <span class="math" data-tex="\(K_0(\mathcal K)=\mathbb Z\)">\(K_0(\mathcal K)=\mathbb Z\)</span>. In <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, each <span class="math" data-tex="\(S_iS_i^*\)">\(S_iS_i^*\)</span> is equivalent to one, so</p>
+<span class="math math-display" data-tex="\[
+[q]=(1-n)[1_{E_n}].
+\tag{7.1}
+\]">\[
+[q]=(1-n)[1_{E_n}].
+\tag{7.1}
+\]</span>
+<p>Thus the ideal-inclusion K-map is multiplication by <span class="math" data-tex="\(1-n\)">\(1-n\)</span>, with its actual sign. Since <span class="math" data-tex="\(K_1(\mathcal K)=K_1(E_n)=0\)">\(K_1(\mathcal K)=K_1(E_n)=0\)</span>, the six-term sequence becomes</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\longrightarrow K_1(\mathcal O_n)
+\longrightarrow\mathbb Z,\\
+\mathbb Z\xrightarrow{\ 1-n\ }\mathbb Z
+\longrightarrow K_0(\mathcal O_n)
+\longrightarrow0,
+\end{gathered}
+\tag{7.2}
+\]">\[
+\begin{gathered}
+0\longrightarrow K_1(\mathcal O_n)
+\longrightarrow\mathbb Z,\\
+\mathbb Z\xrightarrow{\ 1-n\ }\mathbb Z
+\longrightarrow K_0(\mathcal O_n)
+\longrightarrow0,
+\end{gathered}
+\tag{7.2}
+\]</span>
+<p>where exactness at the first copy of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> makes <span class="math" data-tex="\(K_1\)">\(K_1\)</span> the kernel of <span class="math" data-tex="\(1-n\)">\(1-n\)</span>. That kernel is zero, and the cokernel is <span class="math" data-tex="\(\mathbb Z/(n-1)\)">\(\mathbb Z/(n-1)\)</span>. The quotient is unital, so one maps to <span class="math" data-tex="\([1_{\mathcal O_n}]\)">\([1_{\mathcal O_n}]\)</span>. This is the same distinguished generator as the corner–Takai computation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 22.5 (advanced: matrix amplification).</strong> Decide what K-theory says about <span class="math" data-tex="\(M_2(\mathcal O_3)\)">\(M_2(\mathcal O_3)\)</span>, <span class="math" data-tex="\(M_3(\mathcal O_3)\)">\(M_3(\mathcal O_3)\)</span>, and <span class="math" data-tex="\(M_2(\mathcal O_4)\)">\(M_2(\mathcal O_4)\)</span>. Prove every isomorphism you can obtain by (5.2), and specify the extra input for the remaining positive answer.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(\mathcal O_3\)">\(\mathcal O_3\)</span>, K-zero has order two and the unit is its nonzero class. The unit of <span class="math" data-tex="\(M_2(\mathcal O_3)\)">\(M_2(\mathcal O_3)\)</span> has class zero, so an isomorphism is impossible. For size three, <span class="math" data-tex="\(3=1+(3-1)\)">\(3=1+(3-1)\)</span>; the family <span class="math" data-tex="\(s_1,s_2,s_3\)">\(s_1,s_2,s_3\)</span> supplies the row in (5.2), proving <span class="math" data-tex="\(M_3(\mathcal O_3)\cong\mathcal O_3\)">\(M_3(\mathcal O_3)\cong\mathcal O_3\)</span>. For <span class="math" data-tex="\(\mathcal O_4\)">\(\mathcal O_4\)</span>, size two is coprime to three, so it passes the necessary test. Theorem 5.1 proves its isomorphism. Concretely, writing <span class="math" data-tex="\(x_j=s_j^*\)">\(x_j=s_j^*\)</span>, use the four coisometries</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+X_1&amp;=\begin{pmatrix}x_1&amp;0\\x_2&amp;0\end{pmatrix},\\
+X_2&amp;=\begin{pmatrix}x_3&amp;0\\x_4&amp;0\end{pmatrix},\\
+X_3&amp;=\begin{pmatrix}0&amp;x_1\\0&amp;x_2\end{pmatrix},\\
+X_4&amp;=\begin{pmatrix}0&amp;x_3\\0&amp;x_4\end{pmatrix}.
+\end{aligned}
+\tag{7.3}
+\]">\[
+\begin{aligned}
+X_1&amp;=\begin{pmatrix}x_1&amp;0\\x_2&amp;0\end{pmatrix},\\
+X_2&amp;=\begin{pmatrix}x_3&amp;0\\x_4&amp;0\end{pmatrix},\\
+X_3&amp;=\begin{pmatrix}0&amp;x_1\\0&amp;x_2\end{pmatrix},\\
+X_4&amp;=\begin{pmatrix}0&amp;x_3\\0&amp;x_4\end{pmatrix}.
+\end{aligned}
+\tag{7.3}
+\]</span>
+<p>Their adjoints form a Cuntz family. The sum <span class="math" data-tex="\(X_1^*X_1+X_2^*X_2=e_{11}\)">\(X_1^*X_1+X_2^*X_2=e_{11}\)</span> extracts the two diagonal projections. The first-column matrices give <span class="math" data-tex="\(y_je_{1,\widehat j}\)">\(y_je_{1,\widehat j}\)</span>, and the last-column matrices give <span class="math" data-tex="\(x_je_{\widehat j,2}\)">\(x_je_{\widehat j,2}\)</span>, where <span class="math" data-tex="\(\widehat j=1\)">\(\widehat j=1\)</span> for odd <span class="math" data-tex="\(j\)">\(j\)</span> and 2 for even <span class="math" data-tex="\(j\)">\(j\)</span>. Multiplying each pair and summing gives <span class="math" data-tex="\(\sum_{j=1}^4y_jx_je_{12}=e_{12}\)">\(\sum_{j=1}^4y_jx_je_{12}=e_{12}\)</span>. Its adjoint and the diagonal projections give every scalar matrix unit; extraction of the original entries then gives every <span class="math" data-tex="\(s_je_{ab}\)">\(s_je_{ab}\)</span> and <span class="math" data-tex="\(s_j^*e_{ab}\)">\(s_j^*e_{ab}\)</span>. Hence they generate <span class="math" data-tex="\(M_2(\mathcal O_4)\)">\(M_2(\mathcal O_4)\)</span>, and Theorem 2.2 makes the universal surjection an isomorphism. The positive answer is established by actual generators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="proof-inputs-and-source-comparison"><span id="prerequisites-and-further-reading"></span>Prerequisites and further reading</h2>
+<p>This lesson proves the core, gauge fullness, dual K-map, finite K-groups with their unit, necessary classification restrictions, the congruence-size construction, the Toeplitz Fock and extension models, and the infinite direct-limit calculation. The main finite computation agrees with [Blackadar 1998, Exercise 10.11.8(a)–(e)], using the inverse shift convention. The unit check is supplied explicitly by (4.2). Theorems 2.2 and 5.1 prove finite simplicity, uniqueness and all coprime matrix-size isomorphisms. Proposition 5.2 proves the full properly infinite projection-representation and scale assertion. Propositions 6.2 and Theorem 6.3 prove the scalar and general Toeplitz coefficient K-isomorphisms, respectively.</p>
+<p><strong>Exact programme prerequisites.</strong> We use Lesson 18’s proved PV theorem, Lesson 16’s continuity and UHF computation, the full-corner Morita K-isomorphism, the compact fixed-point corner theorem, and Takai duality from the cited prerequisites. The arbitrary full-multiplier-corner proof used in Theorem 6.3 is Hilbert C*-modules Lesson 14, Theorem 2.4; the tensor construction and adjointable extension are that course’s Lesson 7, Theorems 1.2 and 2.1. The additional finite simplicity, coprime sufficiency, projection scale and full Toeplitz coefficient theorem are proved in this lesson, with their source credits retained below.</p>
+<p>[Blackadar 1998] B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, §6.11, especially Corollary 6.11.8, pp. 45–48; Exercise 10.11.8(a)–(f) and its following <span class="math" data-tex="\(\mathcal O_\infty\)">\(\mathcal O_\infty\)</span> paragraph, pp. 88–89. <a href="https://bruceblackadar.com/Mathematics/book6.pdf">Author's electronic edition</a>.</p>
+<p>[Blackadar 2006] B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, II.10.4.17–II.10.4.19, especially Theorem II.10.4.18, pp. 224–225 in the revised author's version. The corner is Morita equivalent to its generated ideal; fullness is a separate condition. <a href="https://bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition</a>.</p>
+<p>[Cuntz 1977] J. Cuntz, <em>Simple C*-algebra generated by isometries</em>, Communications in Mathematical Physics 57 (1977), 173–185; Theorem 2.2 supplies a full proof of the finite simplicity and uniqueness statement credited there. <a href="https://projecteuclid.org/journals/communications-in-mathematical-physics/volume-57/issue-2/Simple-C-algebras-generated-by-isometries/cmp/1103901288.pdf">Original article</a>.</p>
+<p>[Cuntz 1981] J. Cuntz developed the K-theory of properly infinite C*-algebras and computed the K-groups of the Cuntz algebras in 1981. Both are presented in B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, §6.11 and Exercise 10.11.8, the latter through the Pimsner–Voiculescu sequence. <a href="https://bruceblackadar.com/Mathematics/book6.pdf">Author's electronic edition</a>. The additional Toeplitz input used here is formulated in [Katsura 2003].</p>
+<p>[Katsura 2003] T. Katsura, <em>On C*-algebras associated with C*-correspondences</em>, arXiv:math/0309088v3, Definitions 2.1 and 3.1, pp. 4–5, and Proposition 8.2, p. 17. <a href="https://arxiv.org/pdf/math/0309088v3">Author's preprint</a>. The complete required proof in Appendix C, pp. 24–28, is the comparison source for Theorem 6.3. That theorem writes out the difference-map construction, vacuum corners, rotation identities and both inverses, and treats degenerate left actions by forced unitization. Proposition 6.2 gives an independent scalar proof from the actual Fock extension.</p>
+<p>[KT-CP] <a href="../../KT-CP/KT-CP-08.html#the-surviving-action-and-the-generator-formulas">Takai duality, Lesson 8</a>, Theorem 8.3 and Proposition 8.4; <a href="../../KT-CP/KT-CP-09.html#averaging-corners-for-compact-groups">Proper actions, free actions and the orbit space, Lesson 9</a>, Theorem 9.6 and its K-theory prerequisites. The latter uses <a href="../../KT-CP/prerequisites/hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html">Hilbert C*-modules and Morita equivalence, Lesson 14</a>, Corollary 2.2 and Theorem 5.1.</p>
+<p>[Abrams–Ánh–Pardo 2008] G. Abrams, P. N. Ánh and E. Pardo, <em>Isomorphisms between Leavitt algebras and their matrix rings</em>, Journal für die reine und angewandte Mathematik 624 (2008), 103–132, <a href="https://arxiv.org/abs/math/0612552v2">author preprint, 22 February 2008, v2</a>, §§1, 3–4 and Theorem 5.1. Theorem 5.1 above gives the full constructive C*-algebra argument; the orbit colors, entry counts, matrix-unit bridge and generator-surjectivity proof are all included.
+[Pimsner 1997] M. V. Pimsner proved in 1997, by KK-theory and under hypotheses that include separability, that the coefficient inclusion into the Toeplitz algebra of a C*-correspondence induces an isomorphism of K-groups; the Fock rotation is the classical mechanism. The same isomorphism is proved by K-theory alone, without separability, in T. Katsura, <em>On C*-algebras associated with C*-correspondences</em>, Proposition 8.2 and Appendix C. <a href="https://arxiv.org/pdf/math/0309088v3">Author's preprint</a>. Theorem 6.3 follows this route and imposes no separability assumption.</p>
+<p>[Cuntz 1981 II] J. Cuntz, <em>K-theory for certain C*-algebras. II</em>, Journal of Operator Theory 5 (1981), 101–108, Theorem 1.5 and §§2.1–2.2. <a href="https://www.theta.ro/jot/archive/1981-005-001/1981-005-001-009.pdf">Freely readable original paper</a>. Theorem 4.2 independently derives the untwisted coefficient result from the gauge core, its full averaging corner, Takai duality and the proved PV sequence, with complete torsion comparison. Theorems 6.6 and 6.8 and Proposition 6.7 now prove the finite twisted sequence, nonunital reduction, actual inverse-action map and boundaries, whole-quotient identity, and twisted infinite coefficients. Their vacuum coordinates have scalar map 1−n. No identity with the separately constructed gauge/PV boundary in Theorem 4.2 is asserted.</p>
+<p>[Cuntz 1981 II, infinite coefficients] J. Cuntz, <em>K-theory for certain C*-algebras. II</em>, Journal of Operator Theory 5 (1981), 101–108, §2.4. <a href="https://www.theta.ro/jot/archive/1981-005-001/1981-005-001-009.pdf">Freely readable original paper</a>. Propositions 6.4 and Theorem 6.5 provide the complete coefficient tensor identification, both natural K-isomorphisms and the direct-limit proof.</p>
+<footer>CC0-1.0. Source credits and component terms are retained. <a href="index.html">Companion readings and terms</a>.</footer></main></body></html>

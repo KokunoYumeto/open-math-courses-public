@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>A derivative scale for signed one-dimensional equations</title><link rel="stylesheet" href="style.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,tags:'ams'},chtml:{fontURL:'assets/mathjax/output/chtml/fonts/woff-v2'},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><header><a href="index.html">Subellipticity and unique continuation</a> · Self-checked by the writing AI</header><main><h1 id="a-derivative-scale-for-signed-one-dimensional-equations">A derivative scale for signed one-dimensional equations</h1>
+<p>An equation can control a function even where its coefficient vanishes. The useful scale is then determined by the first coefficient derivative that is large. This lesson proves a uniform estimate with the complete derivative scale, rather than choosing one derivative in advance. The direction of a sign change is essential: the coefficient may go from negative to positive, but a change in the opposite direction creates a decaying null solution.</p>
+<p>The prerequisites are elementary real analysis, Taylor's formula, Lagrange interpolation, and the kernel and sign conventions of <a href="finite-type-and-the-sign-of-the-symbol.html">Finite type and the sign of the symbol</a>. <a href="full-sign-conditions-for-mixed-weighted-polynomials.html">Full sign conditions for mixed weighted polynomials</a> explains why the favorable estimate uses the conjugate sign condition. All estimates used here are proved below. Basic references are Lerner [L], Evans–Zworski [EZ] and Hörmander [H].</p>
+<p>We first state the derivative-scale estimate. Its proof combines a polynomial small-set bound, a one-sided integral kernel and a partition into intervals whose lengths adapt to the coefficient. This also gives sharp estimates from the derivatives at a single point and handles intervals cut by the domain boundary.</p>
+<h2 id="1-the-scale-that-the-equation-controls">1. The scale that the equation controls</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be an open interval, let <span class="math" data-tex="\(G\)">\(G\)</span> be real and smooth on <span class="math" data-tex="\(I\)">\(I\)</span>, and use</p>
+<span class="math math-display" data-tex="\[
+D=-i\frac d{dt},\qquad L_G=D+iG.
+\tag{1.1}
+\]">\[
+D=-i\frac d{dt},\qquad L_G=D+iG.
+\tag{1.1}
+\]</span>
+<p>Fix an integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>. Assume</p>
+<span class="math math-display" data-tex="\[
+|G^{(k+1)}(t)|\leq1\quad(t\in I),
+\tag{1.2}
+\]">\[
+|G^{(k+1)}(t)|\leq1\quad(t\in I),
+\tag{1.2}
+\]</span>
+<p>and the favorable orientation</p>
+<span class="math math-display" data-tex="\[
+u&lt;v,\quad G(u)&gt;0\quad\Longrightarrow\quad G(v)\geq0.
+\tag{1.3}
+\]">\[
+u&lt;v,\quad G(u)&gt;0\quad\Longrightarrow\quad G(v)\geq0.
+\tag{1.3}
+\]</span>
+<p>Thus zeros and zero intervals are allowed. Define the continuous scale</p>
+<span class="math math-display" data-tex="\[
+M(t)=\max_{0\leq j\leq k}
+|G^{(j)}(t)|^{1/(j+1)}.
+\tag{1.4}
+\]">\[
+M(t)=\max_{0\leq j\leq k}
+|G^{(j)}(t)|^{1/(j+1)}.
+\tag{1.4}
+\]</span>
+<p><strong>Theorem 1.1.</strong> There are constants <span class="math" data-tex="\(M_k,C_k&gt;0\)">\(M_k,C_k&gt;0\)</span>, depending only on <span class="math" data-tex="\(k\)">\(k\)</span>, such that if <span class="math" data-tex="\(M(t)\geq M_k\)">\(M(t)\geq M_k\)</span> everywhere on <span class="math" data-tex="\(I\)">\(I\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|Mu\|_{L^2(I)}
+\leq C_k\|L_Gu\|_{L^2(I)}
+\qquad(u\in C_c^\infty(I)).
+\tag{1.5}
+\]">\[
+\|Mu\|_{L^2(I)}
+\leq C_k\|L_Gu\|_{L^2(I)}
+\qquad(u\in C_c^\infty(I)).
+\tag{1.5}
+\]</span>
+<p>The constants are independent of <span class="math" data-tex="\(G\)">\(G\)</span>, the interval and the location of the support. In particular the statement applies to intervals of length at least one, and also to shorter intervals. We prove it in Section 5 without extending <span class="math" data-tex="\(G\)">\(G\)</span> beyond <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>The <span class="math" data-tex="\(j=0\)">\(j=0\)</span> term is <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. At a zero where <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> is large, the next term is <span class="math" data-tex="\(|G&#x27;|^{1/2}\)">\(|G&#x27;|^{1/2}\)</span>. A <span class="math" data-tex="\(k\)">\(k\)</span>-th derivative instead supplies the scale <span class="math" data-tex="\(|G^{(k)}|^{1/(k+1)}\)">\(|G^{(k)}|^{1/(k+1)}\)</span>. The maximum combines these possibilities and can change its determining derivative as <span class="math" data-tex="\(t\)">\(t\)</span> moves.</p>
+<h2 id="2-a-polynomial-cannot-be-small-on-too-much-of-an-interval">2. A polynomial cannot be small on too much of an interval</h2>
+<p>All measures below are ordinary lengths. For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, let <span class="math" data-tex="\(P\)">\(P\)</span> be a real polynomial of degree at most <span class="math" data-tex="\(k\)">\(k\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+N(P)=\max_{0\leq j\leq k}|P^{(j)}(0)|.
+\tag{2.1}
+\]">\[
+N(P)=\max_{0\leq j\leq k}|P^{(j)}(0)|.
+\tag{2.1}
+\]</span>
+<p><strong>Lemma 2.1.</strong> For a constant <span class="math" data-tex="\(A_k\)">\(A_k\)</span> depending only on <span class="math" data-tex="\(k\)">\(k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\left|\{t\in(-1,1):|P(t)|\leq a\}\right|
+\leq A_k\left(\frac a{N(P)}\right)^{1/k}
+\tag{2.2}
+\]">\[
+\left|\{t\in(-1,1):|P(t)|\leq a\}\right|
+\leq A_k\left(\frac a{N(P)}\right)^{1/k}
+\tag{2.2}
+\]</span>
+<p>when <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> and <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. No assumption on its individual roots is needed.</p>
+<p><strong>Proof.</strong> First fix the nodes <span class="math" data-tex="\(x_j=-1+2j/k\)">\(x_j=-1+2j/k\)</span>, <span class="math" data-tex="\(0\leq j\leq k\)">\(0\leq j\leq k\)</span>, and their Lagrange polynomials <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span>. Interpolation and its derivatives give</p>
+<span class="math math-display" data-tex="\[
+N(P)\leq B_k\|P\|_{L^\infty([-1,1])},
+\qquad
+B_k=\max_{0\leq d\leq k}
+\sum_{j=0}^k|\ell_j^{(d)}(0)|&lt;\infty.
+\tag{2.3}
+\]">\[
+N(P)\leq B_k\|P\|_{L^\infty([-1,1])},
+\qquad
+B_k=\max_{0\leq d\leq k}
+\sum_{j=0}^k|\ell_j^{(d)}(0)|&lt;\infty.
+\tag{2.3}
+\]</span>
+<p>Now let <span class="math" data-tex="\(E=\{|P|\leq a\}\cap(-1,1)\)">\(E=\{|P|\leq a\}\cap(-1,1)\)</span> have measure <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. We can choose <span class="math" data-tex="\(k+1\)">\(k+1\)</span> points <span class="math" data-tex="\(t_0,\ldots,t_k\)">\(t_0,\ldots,t_k\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span> with mutual distances greater than <span class="math" data-tex="\(m/(2(k+1))\)">\(m/(2(k+1))\)</span>. Choose them successively: after at most <span class="math" data-tex="\(k\)">\(k\)</span> choices, removing the intervals of that radius about the chosen points removes length at most <span class="math" data-tex="\(km/(k+1)&lt;m\)">\(km/(k+1)&lt;m\)</span>. A point of <span class="math" data-tex="\(E\)">\(E\)</span> still remains.</p>
+<p>Interpolate again, now at those points. For <span class="math" data-tex="\(|t|\leq1\)">\(|t|\leq1\)</span>, each numerator factor has size at most two, and each denominator factor has size greater than <span class="math" data-tex="\(m/(2(k+1))\)">\(m/(2(k+1))\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\|P\|_\infty
+\leq(k+1)a
+\left(\frac{4(k+1)}m\right)^k.
+\tag{2.4}
+\]">\[
+\|P\|_\infty
+\leq(k+1)a
+\left(\frac{4(k+1)}m\right)^k.
+\tag{2.4}
+\]</span>
+<p>Combine this with (2.3) and solve for <span class="math" data-tex="\(m\)">\(m\)</span>. For example,</p>
+<span class="math math-display" data-tex="\[
+A_k=4(k+1)\big((k+1)B_k\big)^{1/k}
+\]">\[
+A_k=4(k+1)\big((k+1)B_k\big)^{1/k}
+\]</span>
+<p>works. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, the assertion is immediate. This proof includes coalescing roots and polynomials of lower degree. ∎</p>
+<p><strong>Lemma 2.2.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be any open interval containing zero and contained in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is real and smooth on <span class="math" data-tex="\(J\)">\(J\)</span>, satisfies (1.2), and</p>
+<span class="math math-display" data-tex="\[
+\rho=\max_{0\leq j\leq k}|G^{(j)}(0)|\geq2.
+\tag{2.5}
+\]">\[
+\rho=\max_{0\leq j\leq k}|G^{(j)}(0)|\geq2.
+\tag{2.5}
+\]</span>
+<p>For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, set <span class="math" data-tex="\(R=\rho^{1/(k+1)}\)">\(R=\rho^{1/(k+1)}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+E=\{t\in J:|G(t)|\leq R\}
+\quad\hbox{satisfies}\quad
+|E|\leq A&#x27;_k/R.
+\tag{2.6}
+\]">\[
+E=\{t\in J:|G(t)|\leq R\}
+\quad\hbox{satisfies}\quad
+|E|\leq A&#x27;_k/R.
+\tag{2.6}
+\]</span>
+<p>The constant is independent of <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(P\)">\(P\)</span> be the degree-<span class="math" data-tex="\(k\)">\(k\)</span> Taylor polynomial of <span class="math" data-tex="\(G/\rho\)">\(G/\rho\)</span> at zero. Its derivative norm (2.1) is one. Taylor's integral remainder, on the segment from zero to each <span class="math" data-tex="\(t\in J\)">\(t\in J\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+|G(t)-\rho P(t)|
+\leq\frac{|t|^{k+1}}{(k+1)!}\leq1.
+\tag{2.7}
+\]">\[
+|G(t)-\rho P(t)|
+\leq\frac{|t|^{k+1}}{(k+1)!}\leq1.
+\tag{2.7}
+\]</span>
+<p>Hence <span class="math" data-tex="\(E\)">\(E\)</span> is contained in the set where <span class="math" data-tex="\(|P|\leq(R+1)/\rho\leq2R/\rho\)">\(|P|\leq(R+1)/\rho\leq2R/\rho\)</span>. Lemma 2.1 applies to that polynomial on the full interval <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, even though <span class="math" data-tex="\(G\)">\(G\)</span> is defined only on <span class="math" data-tex="\(J\)">\(J\)</span>. Its bound is</p>
+<span class="math math-display" data-tex="\[
+A_k(2R/\rho)^{1/k}=2^{1/k}A_k/R.
+\tag{2.8}
+\]">\[
+A_k(2R/\rho)^{1/k}=2^{1/k}A_k/R.
+\tag{2.8}
+\]</span>
+<p>This proves the claim. Neither the Taylor remainder nor the coefficient is evaluated outside <span class="math" data-tex="\(J\)">\(J\)</span>. ∎</p>
+<p>If <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, the same role is played by the simpler bound</p>
+<span class="math math-display" data-tex="\[
+|G(t)|&gt;\rho-1\geq\rho/2,
+\quad t\in J,
+\tag{2.9}
+\]">\[
+|G(t)|&gt;\rho-1\geq\rho/2,
+\quad t\in J,
+\tag{2.9}
+\]</span>
+<p>since <span class="math" data-tex="\(|G&#x27;|\leq1\)">\(|G&#x27;|\leq1\)</span>. We will use <span class="math" data-tex="\(R=\rho/2\)">\(R=\rho/2\)</span> and an empty small set in that case.</p>
+<h2 id="3-a-sharp-central-estimate-without-a-sign-assumption">3. A sharp central estimate without a sign assumption</h2>
+<p>The small set where the coefficient fails to be large cannot contain much of a function unless that function has a large derivative.</p>
+<p><strong>Lemma 3.1.</strong> Suppose <span class="math" data-tex="\(E=\{|G|\leq R\}\subset J\)">\(E=\{|G|\leq R\}\subset J\)</span> has measure at most <span class="math" data-tex="\(A/R\)">\(A/R\)</span>. Then every <span class="math" data-tex="\(u\in C_c^\infty(J)\)">\(u\in C_c^\infty(J)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+R^2\|u\|_2^2
+\leq2\|Gu\|_2^2+4A^2\|u&#x27;\|_2^2.
+\tag{3.1}
+\]">\[
+R^2\|u\|_2^2
+\leq2\|Gu\|_2^2+4A^2\|u&#x27;\|_2^2.
+\tag{3.1}
+\]</span>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(u\)">\(u\)</span> by zero to the real line. It is still smooth. The fundamental theorem of calculus and Cauchy–Schwarz give</p>
+<span class="math math-display" data-tex="\[
+\|u\|_\infty^2\leq2\|u\|_2\|u&#x27;\|_2.
+\tag{3.2}
+\]">\[
+\|u\|_\infty^2\leq2\|u\|_2\|u&#x27;\|_2.
+\tag{3.2}
+\]</span>
+<p>Split its squared norm between <span class="math" data-tex="\(E\)">\(E\)</span> and its complement:</p>
+<span class="math math-display" data-tex="\[
+\|u\|_2^2
+\leq R^{-2}\|Gu\|_2^2
++\frac{2A}{R}\|u\|_2\|u&#x27;\|_2.
+\]">\[
+\|u\|_2^2
+\leq R^{-2}\|Gu\|_2^2
++\frac{2A}{R}\|u\|_2\|u&#x27;\|_2.
+\]</span>
+<p>After multiplication by <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, bound the last term by
+<span class="math" data-tex="\(\tfrac12R^2\|u\|_2^2+2A^2\|u&#x27;\|_2^2\)">\(\tfrac12R^2\|u\|_2^2+2A^2\|u&#x27;\|_2^2\)</span>, and move the first part to the left. ∎</p>
+<p><strong>Theorem 3.2.</strong> Under the hypotheses of Lemma 2.2, including its arbitrary truncated interval <span class="math" data-tex="\(J\)">\(J\)</span>, but without any sign assumption,</p>
+<span class="math math-display" data-tex="\[
+\rho^{1/(k+1)}\|u\|_2
+\leq C_k\big(\|Du\|_2+\|Gu\|_2\big),
+\qquad u\in C_c^\infty(J).
+\tag{3.3}
+\]">\[
+\rho^{1/(k+1)}\|u\|_2
+\leq C_k\big(\|Du\|_2+\|Gu\|_2\big),
+\qquad u\in C_c^\infty(J).
+\tag{3.3}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, apply Lemmas 2.2 and 3.1 and take square roots. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, use (2.9) directly. ∎</p>
+<p>The sharp power is larger than or equal to <span class="math" data-tex="\(2^{-k}\)">\(2^{-k}\)</span>, since <span class="math" data-tex="\(2^k\geq k+1\)">\(2^k\geq k+1\)</span>, as follows by induction. Thus for <span class="math" data-tex="\(\rho\geq2\)">\(\rho\geq2\)</span> the theorem also proves the estimate with <span class="math" data-tex="\(\rho^{2^{-k}}\)">\(\rho^{2^{-k}}\)</span> on the left. The distinction between the two powers matters when seeking the best scale.</p>
+<p>This estimate has two separate norms on the right. Replacing them by <span class="math" data-tex="\(\|(D+iG)u\|_2\)">\(\|(D+iG)u\|_2\)</span> requires the sign hypothesis. Cancellation between the derivative and the potential can otherwise defeat every positive gain.</p>
+<h2 id="4-the-favorable-sign-gives-a-one-sided-inverse">4. The favorable sign gives a one-sided inverse</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be real on an interval <span class="math" data-tex="\(J\)">\(J\)</span>, satisfy (1.3), and let <span class="math" data-tex="\(E=\{|G|\leq R\}\)">\(E=\{|G|\leq R\}\)</span> have measure <span class="math" data-tex="\(m\)">\(m\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|u\|_2\leq(m+R^{-1})\|L_Gu\|_2
+\qquad(u\in C_c^\infty(J)).
+\tag{4.1}
+\]">\[
+\|u\|_2\leq(m+R^{-1})\|L_Gu\|_2
+\qquad(u\in C_c^\infty(J)).
+\tag{4.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, and no derivative hypothesis is needed.</p>
+<p><strong>Proof.</strong> The negative values of <span class="math" data-tex="\(G\)">\(G\)</span> all precede its positive values. Hence there is a dividing point <span class="math" data-tex="\(b\)">\(b\)</span>, possibly an endpoint, such that <span class="math" data-tex="\(G\leq0\)">\(G\leq0\)</span> to its left and <span class="math" data-tex="\(G\geq0\)">\(G\geq0\)</span> to its right. If both signs occur, choose <span class="math" data-tex="\(b\)">\(b\)</span> between the supremum of the negative set and the infimum of the positive set; these are in the stated order by (1.3). If one sign is absent, use the appropriate endpoint. A zero interval between the signs causes no difficulty.</p>
+<p>Write <span class="math" data-tex="\(f=u&#x27;-Gu=iL_Gu\)">\(f=u&#x27;-Gu=iL_Gu\)</span>. Since <span class="math" data-tex="\(u\)">\(u\)</span> is zero near the endpoints of <span class="math" data-tex="\(J=(\alpha,\beta)\)">\(J=(\alpha,\beta)\)</span>, integration of the equation gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u(t)&amp;=\int_\alpha^t
+\exp\left(\int_s^tG(r)\,dr\right)f(s)\,ds,
+&amp;&amp;t\leq b,\\
+u(t)&amp;=-\int_t^\beta
+\exp\left(-\int_t^sG(r)\,dr\right)f(s)\,ds,
+&amp;&amp;t\geq b.
+\end{aligned}
+\tag{4.2}
+\]">\[
+\begin{aligned}
+u(t)&amp;=\int_\alpha^t
+\exp\left(\int_s^tG(r)\,dr\right)f(s)\,ds,
+&amp;&amp;t\leq b,\\
+u(t)&amp;=-\int_t^\beta
+\exp\left(-\int_t^sG(r)\,dr\right)f(s)\,ds,
+&amp;&amp;t\geq b.
+\end{aligned}
+\tag{4.2}
+\]</span>
+<p>At an infinite endpoint the formula starts beyond the compact support. Each integral uses only the corresponding sign side. On both sides the nonnegative absolute kernel is</p>
+<span class="math math-display" data-tex="\[
+K(t,s)=\exp\left(-\int_{\min(t,s)}^{\max(t,s)}
+|G(r)|\,dr\right)
+\tag{4.3}
+\]">\[
+K(t,s)=\exp\left(-\int_{\min(t,s)}^{\max(t,s)}
+|G(r)|\,dr\right)
+\tag{4.3}
+\]</span>
+<p>with the respective ordering and same-side indicators. On any such segment of length <span class="math" data-tex="\(h\)">\(h\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int|G|\geq R(h-m)_+,\qquad
+K(t,s)\leq e^{-R(h-m)_+}.
+\tag{4.4}
+\]">\[
+\int|G|\geq R(h-m)_+,\qquad
+K(t,s)\leq e^{-R(h-m)_+}.
+\tag{4.4}
+\]</span>
+<p>Its row and column integrals are consequently at most</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty e^{-R(h-m)_+}\,dh=m+R^{-1}.
+\tag{4.5}
+\]">\[
+\int_0^\infty e^{-R(h-m)_+}\,dh=m+R^{-1}.
+\tag{4.5}
+\]</span>
+<p>The two sign blocks are disjoint, so these bounds hold for the whole kernel. For clarity, if both bounds are <span class="math" data-tex="\(B\)">\(B\)</span>, Cauchy–Schwarz in the measure <span class="math" data-tex="\(K(t,s)\,ds\)">\(K(t,s)\,ds\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\left(\int K(t,s)|f(s)|\,ds\right)^2
+\leq B\int K(t,s)|f(s)|^2\,ds.
+\]">\[
+\left(\int K(t,s)|f(s)|\,ds\right)^2
+\leq B\int K(t,s)|f(s)|^2\,ds.
+\]</span>
+<p>Integration in <span class="math" data-tex="\(t\)">\(t\)</span> gives an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> operator bound <span class="math" data-tex="\(B\)">\(B\)</span>. Apply it to (4.2), and use <span class="math" data-tex="\(\|f\|_2=\|L_Gu\|_2\)">\(\|f\|_2=\|L_Gu\|_2\)</span>. ∎</p>
+<p><strong>Theorem 4.2.</strong> Under Lemma 2.2 and the favorable sign condition,</p>
+<span class="math math-display" data-tex="\[
+\rho^{1/(k+1)}\|u\|_2
+\leq C_k\|L_Gu\|_2,
+\qquad u\in C_c^\infty(J).
+\tag{4.6}
+\]">\[
+\rho^{1/(k+1)}\|u\|_2
+\leq C_k\|L_Gu\|_2,
+\qquad u\in C_c^\infty(J).
+\tag{4.6}
+\]</span>
+<p>The constant is uniform over all such <span class="math" data-tex="\(J,G\)">\(J,G\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>, (2.6) and (4.1) give the bound with <span class="math" data-tex="\(R=\rho^{1/(k+1)}\)">\(R=\rho^{1/(k+1)}\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, (2.9) makes <span class="math" data-tex="\(E\)">\(E\)</span> empty with <span class="math" data-tex="\(R=\rho/2\)">\(R=\rho/2\)</span>, and (4.1) applies again. ∎</p>
+<p><strong>Corollary 4.3 (no boundary condition on the function).</strong> If <span class="math" data-tex="\(J=(-1,1)\)">\(J=(-1,1)\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> is any smooth function there, then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho^{1/(k+1)}
+\|v\|_{L^2(-1/2,1/2)}
+\\
+\leq C_k\|L_Gv\|_{L^2(-1,1)}
+\\
++C_k\|v\|_{L^2(-1,1)}.
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+\rho^{1/(k+1)}
+\|v\|_{L^2(-1/2,1/2)}
+\\
+\leq C_k\|L_Gv\|_{L^2(-1,1)}
+\\
++C_k\|v\|_{L^2(-1,1)}.
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>If a norm on the right is infinite, the inequality is understood in that sense. In particular, with <span class="math" data-tex="\(\varepsilon=2^{-k}\)">\(\varepsilon=2^{-k}\)</span> and <span class="math" data-tex="\(\rho\geq2\)">\(\rho\geq2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho^{2\varepsilon}\int_{-1/2}^{1/2}|v|^2
+\\
+\leq C_k\rho^2\int_{-1}^1|L_Gv|^2
+\\
++C_k\int_{-1}^1|v|^2.
+\end{gathered}
+\tag{4.8}
+\]">\[
+\begin{gathered}
+\rho^{2\varepsilon}\int_{-1/2}^{1/2}|v|^2
+\\
+\leq C_k\rho^2\int_{-1}^1|L_Gv|^2
+\\
++C_k\int_{-1}^1|v|^2.
+\end{gathered}
+\tag{4.8}
+\]</span>
+<p><strong>Proof.</strong> Choose a fixed smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, supported in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and equal to one on <span class="math" data-tex="\([-1/2,1/2]\)">\([-1/2,1/2]\)</span>. Apply (4.6) to <span class="math" data-tex="\(\chi v\)">\(\chi v\)</span> and use</p>
+<span class="math math-display" data-tex="\[
+L_G(\chi v)=\chi L_Gv-i\chi&#x27;v.
+\tag{4.9}
+\]">\[
+L_G(\chi v)=\chi L_Gv-i\chi&#x27;v.
+\tag{4.9}
+\]</span>
+<p>This proves (4.7). Since <span class="math" data-tex="\(\varepsilon\leq1/(k+1)\)">\(\varepsilon\leq1/(k+1)\)</span> and <span class="math" data-tex="\(\rho\geq1\)">\(\rho\geq1\)</span>, its square implies (4.8), even with the extra factor <span class="math" data-tex="\(\rho^2\)">\(\rho^2\)</span> only on the equation term. No compact support or endpoint value of <span class="math" data-tex="\(v\)">\(v\)</span> has been assumed. ∎</p>
+<h2 id="5-localize-at-the-complete-derivative-scale">5. Localize at the complete derivative scale</h2>
+<p>We now prove Theorem 1.1. Use a large fixed number <span class="math" data-tex="\(\sigma\geq2\)">\(\sigma\geq2\)</span>, to be chosen solely in terms of <span class="math" data-tex="\(k\)">\(k\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+m(t)=\max_{0\leq j\leq k}
+\left(\frac{|G^{(j)}(t)|}{\sigma}\right)^{1/(j+1)},
+\qquad \ell(t)=1/m(t).
+\tag{5.1}
+\]">\[
+m(t)=\max_{0\leq j\leq k}
+\left(\frac{|G^{(j)}(t)|}{\sigma}\right)^{1/(j+1)},
+\qquad \ell(t)=1/m(t).
+\tag{5.1}
+\]</span>
+<p>The original weight satisfies</p>
+<span class="math math-display" data-tex="\[
+m(t)\leq M(t)\leq\sigma m(t).
+\tag{5.2}
+\]">\[
+m(t)\leq M(t)\leq\sigma m(t).
+\tag{5.2}
+\]</span>
+<p>If <span class="math" data-tex="\(M(t)\geq\sigma\)">\(M(t)\geq\sigma\)</span>, then <span class="math" data-tex="\(m(t)\geq1\)">\(m(t)\geq1\)</span>.</p>
+<h3 id="the-reciprocal-length-is-lipschitz">The reciprocal length is Lipschitz</h3>
+<p>On a branch determining the maximum in (5.1), <span class="math" data-tex="\(|G^{(j)}|=\sigma m^{j+1}&gt;0\)">\(|G^{(j)}|=\sigma m^{j+1}&gt;0\)</span>. Branches near zero lie below the positive maximum and can be ignored locally. Thus <span class="math" data-tex="\(m\)">\(m\)</span> is locally Lipschitz and its derivative almost everywhere is the derivative of an active branch. If <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|m&#x27;|
+\leq
+\frac{|G^{(j+1)}|}
+{(j+1)\sigma m^j}
+\leq\frac{m^2}{j+1}.
+\tag{5.3}
+\]">\[
+|m&#x27;|
+\leq
+\frac{|G^{(j+1)}|}
+{(j+1)\sigma m^j}
+\leq\frac{m^2}{j+1}.
+\tag{5.3}
+\]</span>
+<p>If <span class="math" data-tex="\(j=k\)">\(j=k\)</span>, (1.2) instead gives</p>
+<span class="math math-display" data-tex="\[
+|m&#x27;|\leq\frac1{(k+1)\sigma m^k}\leq m^2.
+\tag{5.4}
+\]">\[
+|m&#x27;|\leq\frac1{(k+1)\sigma m^k}\leq m^2.
+\tag{5.4}
+\]</span>
+<p>The last inequality uses <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> and <span class="math" data-tex="\(\sigma\geq1\)">\(\sigma\geq1\)</span>. Therefore <span class="math" data-tex="\(|\ell&#x27;|\leq1\)">\(|\ell&#x27;|\leq1\)</span> almost everywhere. Absolute continuity on compact subintervals gives</p>
+<span class="math math-display" data-tex="\[
+|\ell(t)-\ell(s)|\leq|t-s|.
+\tag{5.5}
+\]">\[
+|\ell(t)-\ell(s)|\leq|t-s|.
+\tag{5.5}
+\]</span>
+<p>This estimate includes points where the active derivative changes.</p>
+<h3 id="build-a-partition-with-a-uniformly-bounded-derivative-cost">Build a partition with a uniformly bounded derivative cost</h3>
+<p>Fix <span class="math" data-tex="\(\delta=1/32\)">\(\delta=1/32\)</span>. Enumerate a countable dense set of centers in <span class="math" data-tex="\(I\)">\(I\)</span>, retaining a center whenever its small interval of radius <span class="math" data-tex="\(\delta\ell(t)/5\)">\(\delta\ell(t)/5\)</span> is disjoint from all previously retained intervals. Write the retained centers as <span class="math" data-tex="\(t_j\)">\(t_j\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+r_j=\delta\ell(t_j),\qquad
+B_j=(t_j-r_j,t_j+r_j),\qquad
+m_j=m(t_j).
+\tag{5.6}
+\]">\[
+r_j=\delta\ell(t_j),\qquad
+B_j=(t_j-r_j,t_j+r_j),\qquad
+m_j=m(t_j).
+\tag{5.6}
+\]</span>
+<p>These intervals may extend beyond <span class="math" data-tex="\(I\)">\(I\)</span>; all functions below are evaluated only on their intersections with <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>Here are the covering details. If a candidate small interval meets a selected one, (5.5) gives</p>
+<span class="math math-display" data-tex="\[
+|\ell(t)-\ell(t_j)|
+\leq\frac{\delta}{5}\big(\ell(t)+\ell(t_j)\big).
+\tag{5.7}
+\]">\[
+|\ell(t)-\ell(t_j)|
+\leq\frac{\delta}{5}\big(\ell(t)+\ell(t_j)\big).
+\tag{5.7}
+\]</span>
+<p>Their lengths are therefore comparable with ratio less than two. The candidate center lies within <span class="math" data-tex="\(3r_j/5\)">\(3r_j/5\)</span> of the selected center. Hence the inner intervals of radii <span class="math" data-tex="\(3r_j/4\)">\(3r_j/4\)</span> cover the dense set. They cover all of <span class="math" data-tex="\(I\)">\(I\)</span>: near any remaining center its positive continuous <span class="math" data-tex="\(\ell\)">\(\ell\)</span> bounds the meeting selected radii below; only finitely many disjoint small intervals of that minimum length fit nearby. Taking a sequence of dense centers then retains the inner covering inequality for at least one of these finitely many intervals.</p>
+<p>The same argument proves local finiteness on compact subsets of <span class="math" data-tex="\(I\)">\(I\)</span>. If two <span class="math" data-tex="\(B_j\)">\(B_j\)</span> meet, their radii have ratio at most <span class="math" data-tex="\((1+\delta)/(1-\delta)&lt;2\)">\((1+\delta)/(1-\delta)&lt;2\)</span>. At any point, let <span class="math" data-tex="\(r_*\)">\(r_*\)</span> be the supremum of the meeting radii; it is finite because <span class="math" data-tex="\(r_j\leq\delta\)">\(r_j\leq\delta\)</span>. All meeting centers lie within <span class="math" data-tex="\(r_*\)">\(r_*\)</span>, and their disjoint small intervals lie within an interval of length <span class="math" data-tex="\(12r_*/5\)">\(12r_*/5\)</span>. Each small interval has length greater than <span class="math" data-tex="\(r_*/5\)">\(r_*/5\)</span>. Thus at most sixteen <span class="math" data-tex="\(B_j\)">\(B_j\)</span> meet any point; this deliberately loose bound is uniform.</p>
+<p>Choose a fixed smooth bump <span class="math" data-tex="\(0\leq\beta\leq1\)">\(0\leq\beta\leq1\)</span>, supported in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and equal to one on <span class="math" data-tex="\([-3/4,3/4]\)">\([-3/4,3/4]\)</span>. Set</p>
+<span class="math math-display" data-tex="\[
+\beta_j(t)=\beta((t-t_j)/r_j),\qquad
+W(t)=\left(\sum_j\beta_j(t)^2\right)^{1/2},
+\qquad \theta_j(t)=\beta_j(t)/W(t).
+\tag{5.8}
+\]">\[
+\beta_j(t)=\beta((t-t_j)/r_j),\qquad
+W(t)=\left(\sum_j\beta_j(t)^2\right)^{1/2},
+\qquad \theta_j(t)=\beta_j(t)/W(t).
+\tag{5.8}
+\]</span>
+<p>On <span class="math" data-tex="\(I\)">\(I\)</span>, the sums are locally finite and <span class="math" data-tex="\(1\leq W\leq4\)">\(1\leq W\leq4\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sum_j\theta_j^2=1.
+\tag{5.9}
+\]">\[
+\sum_j\theta_j^2=1.
+\tag{5.9}
+\]</span>
+<p>For <span class="math" data-tex="\(t\in B_j\cap I\)">\(t\in B_j\cap I\)</span>, (5.5) gives</p>
+<span class="math math-display" data-tex="\[
+(1-\delta)m(t)\leq m_j\leq(1+\delta)m(t).
+\tag{5.10}
+\]">\[
+(1-\delta)m(t)\leq m_j\leq(1+\delta)m(t).
+\tag{5.10}
+\]</span>
+<p>The vector <span class="math" data-tex="\((\theta_j)\)">\((\theta_j)\)</span> is the normalization of <span class="math" data-tex="\((\beta_j)\)">\((\beta_j)\)</span>. Its derivative is the orthogonal projection of <span class="math" data-tex="\((\beta_j&#x27;)/W\)">\((\beta_j&#x27;)/W\)</span> onto the perpendicular space of that unit vector. Consequently</p>
+<span class="math math-display" data-tex="\[
+\sum_j|\theta_j&#x27;(t)|^2
+\leq\sum_j|\beta_j&#x27;(t)|^2
+\leq C_{\mathrm{cov}}m(t)^2.
+\tag{5.11}
+\]">\[
+\sum_j|\theta_j&#x27;(t)|^2
+\leq\sum_j|\beta_j&#x27;(t)|^2
+\leq C_{\mathrm{cov}}m(t)^2.
+\tag{5.11}
+\]</span>
+<p>The last bound uses the overlap bound, <span class="math" data-tex="\(r_j=\delta/m_j\)">\(r_j=\delta/m_j\)</span> and (5.10). Its constant depends only on the fixed bump and <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. It does not depend on <span class="math" data-tex="\(\sigma,G\)">\(\sigma,G\)</span> or <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<h3 id="apply-the-normalized-estimate-on-each-actual-interval">Apply the normalized estimate on each actual interval</h3>
+<p>For each selected center use</p>
+<span class="math math-display" data-tex="\[
+y=m_j(t-t_j),\qquad
+G_j(y)=G(t_j+y/m_j)/m_j.
+\tag{5.12}
+\]">\[
+y=m_j(t-t_j),\qquad
+G_j(y)=G(t_j+y/m_j)/m_j.
+\tag{5.12}
+\]</span>
+<p>The domain <span class="math" data-tex="\(J_j=(-1,1)\cap m_j(I-t_j)\)">\(J_j=(-1,1)\cap m_j(I-t_j)\)</span> is an open interval containing zero. It may be truncated at the original boundary. The normalized coefficient has</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\max_{0\leq d\leq k}|G_j^{(d)}(0)|=\sigma,
+\\
+|G_j^{(k+1)}|\leq m_j^{-(k+2)}\leq1.
+\end{gathered}
+\tag{5.13}
+\]">\[
+\begin{gathered}
+\max_{0\leq d\leq k}|G_j^{(d)}(0)|=\sigma,
+\\
+|G_j^{(k+1)}|\leq m_j^{-(k+2)}\leq1.
+\end{gathered}
+\tag{5.13}
+\]</span>
+<p>Positive rescaling preserves the favorable sign. Moreover
+<span class="math" data-tex="\((\theta_j u)(t_j+y/m_j)\)">\((\theta_j u)(t_j+y/m_j)\)</span> is compactly supported in <span class="math" data-tex="\(J_j\)">\(J_j\)</span>: its interval cutoff vanishes for <span class="math" data-tex="\(|y|\geq\delta\)">\(|y|\geq\delta\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> vanishes near the original endpoints. Theorem 4.2 therefore applies without any exterior coefficient.</p>
+<p>Changing variables back gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma^{2/(k+1)}m_j^2\|\theta_j u\|_2^2\\
+\leq C_k^2\|L_G(\theta_j u)\|_2^2.
+\end{gathered}
+\tag{5.14}
+\]">\[
+\begin{gathered}
+\sigma^{2/(k+1)}m_j^2\|\theta_j u\|_2^2\\
+\leq C_k^2\|L_G(\theta_j u)\|_2^2.
+\end{gathered}
+\tag{5.14}
+\]</span>
+<p>For example, the squared norm on the rescaled function is multiplied by <span class="math" data-tex="\(m_j\)">\(m_j\)</span>, while that on its normalized equation is multiplied by <span class="math" data-tex="\(m_j^{-1}\)">\(m_j^{-1}\)</span>; this is the origin of <span class="math" data-tex="\(m_j^2\)">\(m_j^2\)</span>.</p>
+<p>Sum (5.14), use (5.9)–(5.11), and expand
+<span class="math" data-tex="\(L_G(\theta_j u)=\theta_jL_Gu-i\theta_j&#x27;u\)">\(L_G(\theta_j u)=\theta_jL_Gu-i\theta_j&#x27;u\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma^{2/(k+1)}(1-\delta)^2\|mu\|_2^2\\
+\leq2C_k^2\|L_Gu\|_2^2\\
++2C_k^2 C_{\mathrm{cov}}\|mu\|_2^2.
+\end{gathered}
+\tag{5.15}
+\]">\[
+\begin{gathered}
+\sigma^{2/(k+1)}(1-\delta)^2\|mu\|_2^2\\
+\leq2C_k^2\|L_Gu\|_2^2\\
++2C_k^2 C_{\mathrm{cov}}\|mu\|_2^2.
+\end{gathered}
+\tag{5.15}
+\]</span>
+<p>Choose <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> large enough that the coefficient on the left is at least four times <span class="math" data-tex="\(C_k^2C_{\mathrm{cov}}\)">\(C_k^2C_{\mathrm{cov}}\)</span>. All constants on the right are independent of that choice. Absorb the weight term, and use <span class="math" data-tex="\(M\leq\sigma m\)">\(M\leq\sigma m\)</span> from (5.2). This proves (1.5) when <span class="math" data-tex="\(M\geq M_k=\sigma\)">\(M\geq M_k=\sigma\)</span>, with a constant depending only on <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p>Only finitely many selected intervals meet the compact support of <span class="math" data-tex="\(u\)">\(u\)</span>, so each summed identity on that support is an ordinary finite identity. The construction works for every interval length. This completes the proof of Theorem 1.1. ∎</p>
+<h2 id="6-a-uniform-estimate-with-parameters">6. A uniform estimate with parameters</h2>
+<p>The derivative-scale theorem also treats coefficients whose highest derivative grows with a large parameter.</p>
+<p><strong>Corollary 6.1.</strong> Let <span class="math" data-tex="\(q(t,\vartheta)\)">\(q(t,\vartheta)\)</span> be real and smooth in <span class="math" data-tex="\(t\)">\(t\)</span>, on an open interval that may depend on the parameter <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>. Let <span class="math" data-tex="\(\Lambda\geq1\)">\(\Lambda\geq1\)</span> be a parameter size. Suppose, uniformly in all parameters and all <span class="math" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\partial_t^{k+1}q|\leq C_0\Lambda,\qquad
+\sum_{j=0}^k|\partial_t^j q|\geq c_0\Lambda,
+\tag{6.1}
+\]">\[
+|\partial_t^{k+1}q|\leq C_0\Lambda,\qquad
+\sum_{j=0}^k|\partial_t^j q|\geq c_0\Lambda,
+\tag{6.1}
+\]</span>
+<p>and <span class="math" data-tex="\(q\)">\(q\)</span> has the favorable sign orientation. For sufficiently large <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, depending only on <span class="math" data-tex="\(k,C_0,c_0\)">\(k,C_0,c_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|qv\|_2+\Lambda^{1/(k+1)}\|v\|_2
+\\
+\leq C\|(D+iq)v\|_2,
+\qquad v\in C_c^\infty(I).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\|qv\|_2+\Lambda^{1/(k+1)}\|v\|_2
+\\
+\leq C\|(D+iq)v\|_2,
+\qquad v\in C_c^\infty(I).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The constant is independent of the interval and the parameters. Nonnegative <span class="math" data-tex="\(q\)">\(q\)</span> satisfies the required sign condition.</p>
+<p><strong>Proof.</strong> Define</p>
+<span class="math math-display" data-tex="\[
+a=((1+C_0)\Lambda)^{-1/(k+2)},\qquad
+t=as,\qquad H(s)=a q(as,\vartheta).
+\tag{6.3}
+\]">\[
+a=((1+C_0)\Lambda)^{-1/(k+2)},\qquad
+t=as,\qquad H(s)=a q(as,\vartheta).
+\tag{6.3}
+\]</span>
+<p>Its highest derivative is bounded by one. Its derivative scale is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M_H(s)=a M_q(as),\\
+M_q(t)=\max_{0\leq j\leq k}
+|\partial_t^j q(t,\vartheta)|^{1/(j+1)}.
+\end{gathered}
+\tag{6.4}
+\]">\[
+\begin{gathered}
+M_H(s)=a M_q(as),\\
+M_q(t)=\max_{0\leq j\leq k}
+|\partial_t^j q(t,\vartheta)|^{1/(j+1)}.
+\end{gathered}
+\tag{6.4}
+\]</span>
+<p>When <span class="math" data-tex="\(c_0\Lambda/(k+1)\geq1\)">\(c_0\Lambda/(k+1)\geq1\)</span>, at least one term of the sum in (6.1) has that size, so</p>
+<span class="math math-display" data-tex="\[
+M_q(t)\geq
+\left(\frac{c_0\Lambda}{k+1}\right)^{1/(k+1)}.
+\tag{6.5}
+\]">\[
+M_q(t)\geq
+\left(\frac{c_0\Lambda}{k+1}\right)^{1/(k+1)}.
+\tag{6.5}
+\]</span>
+<p>It follows that <span class="math" data-tex="\(M_H\)">\(M_H\)</span> is bounded below by a positive fixed constant times</p>
+<span class="math math-display" data-tex="\[
+\Lambda^{\,1/(k+1)-1/(k+2)}
+=\Lambda^{\,1/((k+1)(k+2))}.
+\tag{6.6}
+\]">\[
+\Lambda^{\,1/(k+1)-1/(k+2)}
+=\Lambda^{\,1/((k+1)(k+2))}.
+\tag{6.6}
+\]</span>
+<p>This tends to infinity. Theorem 1.1 applies on the rescaled interval for large enough <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. Both the weight and the equation acquire the same factor <span class="math" data-tex="\(a\)">\(a\)</span>, and the same change of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> measure, so its conclusion is exactly
+<span class="math" data-tex="\(\|M_qv\|_2\leq C_k\|(D+iq)v\|_2\)">\(\|M_qv\|_2\leq C_k\|(D+iq)v\|_2\)</span>.
+Now <span class="math" data-tex="\(M_q\geq|q|\)">\(M_q\geq|q|\)</span> and (6.5) give (6.2). ∎</p>
+<p>In a symbol <span class="math" data-tex="\(q(t,x&#x27;,\xi&#x27;)\)">\(q(t,x&#x27;,\xi&#x27;)\)</span>, this corollary applies with the transverse phase variables frozen as parameters and <span class="math" data-tex="\(\Lambda=|\xi&#x27;|\)">\(\Lambda=|\xi&#x27;|\)</span>, provided the displayed bounds hold uniformly. It proves the full scalar estimate at each parameter value. Passing to the operator <span class="math" data-tex="\(q(t,x&#x27;,D&#x27;)\)">\(q(t,x&#x27;,D&#x27;)\)</span> requires phase-space localization and quantization estimates; integration over independent scalar parameters alone does not perform that step.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — a coefficient with a positive floor, 8 points.</strong> Let <span class="math" data-tex="\(G(t)=\lambda(t^4+2t^2+3)\)">\(G(t)=\lambda(t^4+2t^2+3)\)</span> on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, with <span class="math" data-tex="\(\lambda\geq1\)">\(\lambda\geq1\)</span>, and take <span class="math" data-tex="\(k=4\)">\(k=4\)</span>. Compute <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. Compare the general central power with the stronger estimate coming from the positive floor.</p>
+<p><strong>Solution.</strong> At zero the derivatives through order four are <span class="math" data-tex="\(3\lambda,0,4\lambda,0,24\lambda\)">\(3\lambda,0,4\lambda,0,24\lambda\)</span>, so <span class="math" data-tex="\(\rho=24\lambda\)">\(\rho=24\lambda\)</span>; the fifth derivative is zero. Theorem 3.2 gives the power <span class="math" data-tex="\((24\lambda)^{1/5}\)">\((24\lambda)^{1/5}\)</span>. However <span class="math" data-tex="\(G\geq3\lambda\)">\(G\geq3\lambda\)</span> everywhere and satisfies the favorable orientation. In Lemma 4.1 take <span class="math" data-tex="\(R=3\lambda\)">\(R=3\lambda\)</span> and an empty small set, disregarding equality on the single point if necessary. The kernel bound is <span class="math" data-tex="\(1/(3\lambda)\)">\(1/(3\lambda)\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+3\lambda\|u\|_2\leq\|L_Gu\|_2.
+\]">\[
+3\lambda\|u\|_2\leq\|L_Gu\|_2.
+\]</span>
+<p>The first conclusion is uniform for all coefficients with the same finite-derivative information; it does not claim that each particular coefficient has exactly that weakest scale.</p>
+<p><strong>Exercise 2 — coalescing roots and a forbidden orientation, 12 points.</strong> For <span class="math" data-tex="\(0\leq d\leq1\)">\(0\leq d\leq1\)</span>, consider <span class="math" data-tex="\(P_d(t)=t^3-dt\)">\(P_d(t)=t^3-dt\)</span>. Explain why its small-set bound is uniform in <span class="math" data-tex="\(d\)">\(d\)</span>, and why the exponent <span class="math" data-tex="\(1/3\)">\(1/3\)</span> cannot be improved uniformly. For fixed <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, show that <span class="math" data-tex="\(G=\lambda P_d\)">\(G=\lambda P_d\)</span> can fail every positive equation gain despite its large third derivative.</p>
+<p><strong>Solution.</strong> The third derivative of <span class="math" data-tex="\(P_d\)">\(P_d\)</span> is six, independent of <span class="math" data-tex="\(d\)">\(d\)</span>, so Lemma 2.1 gives a uniform bound <span class="math" data-tex="\(C a^{1/3}\)">\(C a^{1/3}\)</span>. At <span class="math" data-tex="\(d=0\)">\(d=0\)</span> the set where <span class="math" data-tex="\(|P_0|\leq a\)">\(|P_0|\leq a\)</span>, for <span class="math" data-tex="\(0&lt;a&lt;1\)">\(0&lt;a&lt;1\)</span>, has length exactly <span class="math" data-tex="\(2a^{1/3}\)">\(2a^{1/3}\)</span>. A larger power of <span class="math" data-tex="\(a\)">\(a\)</span> would fail as <span class="math" data-tex="\(a\to0\)">\(a\to0\)</span>.</p>
+<p>For <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, the zero at zero is a decreasing crossing, with <span class="math" data-tex="\(G&#x27;(0)=-\lambda d&lt;0\)">\(G&#x27;(0)=-\lambda d&lt;0\)</span>. Choose <span class="math" data-tex="\(0&lt;r&lt;R&lt;\sqrt d\)">\(0&lt;r&lt;R&lt;\sqrt d\)</span> and a smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> supported in <span class="math" data-tex="\((-R,R)\)">\((-R,R)\)</span>, equal to one on <span class="math" data-tex="\([-r,r]\)">\([-r,r]\)</span>. The exact uncut solution is</p>
+<span class="math math-display" data-tex="\[
+h_\lambda(t)=
+\exp\left(\lambda(t^4/4-dt^2/2)\right),
+\qquad h_\lambda&#x27;-G h_\lambda=0.
+\]">\[
+h_\lambda(t)=
+\exp\left(\lambda(t^4/4-dt^2/2)\right),
+\qquad h_\lambda&#x27;-G h_\lambda=0.
+\]</span>
+<p>On the support of <span class="math" data-tex="\(\chi&#x27;\)">\(\chi&#x27;\)</span>, its exponent is at most <span class="math" data-tex="\(-c\lambda\)">\(-c\lambda\)</span>, while
+<span class="math" data-tex="\(\|\chi h_\lambda\|_2\asymp\lambda^{-1/4}\)">\(\|\chi h_\lambda\|_2\asymp\lambda^{-1/4}\)</span>. Thus the normalized compact function <span class="math" data-tex="\(u_\lambda=\chi h_\lambda/\|\chi h_\lambda\|_2\)">\(u_\lambda=\chi h_\lambda/\|\chi h_\lambda\|_2\)</span> has norm one and</p>
+<span class="math math-display" data-tex="\[
+\|L_Gu_\lambda\|_2
+\leq C\lambda^{1/4}e^{-c\lambda}.
+\]">\[
+\|L_Gu_\lambda\|_2
+\leq C\lambda^{1/4}e^{-c\lambda}.
+\]</span>
+<p>No positive power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> can be bounded by this equation norm. Yet <span class="math" data-tex="\(\rho=6\lambda\)">\(\rho=6\lambda\)</span>, and the sign-free estimate (3.3) remains valid for the separate derivative and potential norms. This is cancellation, not a failure of the polynomial small-set bound.</p>
+<p><strong>Exercise 3 — why unrestricted functions need the error term, 6 points.</strong> For <span class="math" data-tex="\(G=\lambda\)">\(G=\lambda\)</span> on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, exhibit a nonzero smooth function with <span class="math" data-tex="\(L_Gv=0\)">\(L_Gv=0\)</span>. Explain why Corollary 4.3 cannot discard its full-interval norm of <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Solution.</strong> The function <span class="math" data-tex="\(v(t)=e^{\lambda t}\)">\(v(t)=e^{\lambda t}\)</span> obeys <span class="math" data-tex="\(v&#x27;-\lambda v=0\)">\(v&#x27;-\lambda v=0\)</span>, hence <span class="math" data-tex="\(L_Gv=0\)">\(L_Gv=0\)</span>. Its norm on <span class="math" data-tex="\((-1/2,1/2)\)">\((-1/2,1/2)\)</span> is positive. A bound for that norm by the equation norm alone is therefore impossible for arbitrary smooth <span class="math" data-tex="\(v\)">\(v\)</span>. The cutoff term in (4.9) accounts for this boundary information. Compact test functions instead have the endpoint vanishing used by the one-sided inverse.</p>
+<p><strong>Exercise 4 — sharpness of the whole weight, 10 points.</strong> Take <span class="math" data-tex="\(G_\lambda(t)=\lambda t^5/120\)">\(G_\lambda(t)=\lambda t^5/120\)</span>, <span class="math" data-tex="\(k=5\)">\(k=5\)</span>, and let <span class="math" data-tex="\(a=1/6\)">\(a=1/6\)</span>. Compute <span class="math" data-tex="\(M\)">\(M\)</span> at <span class="math" data-tex="\(t=\lambda^{-a}y\)">\(t=\lambda^{-a}y\)</span>. Show that no uniform version of (1.5) can replace <span class="math" data-tex="\(M\)">\(M\)</span> by <span class="math" data-tex="\(M^\theta\)">\(M^\theta\)</span> with <span class="math" data-tex="\(\theta&gt;1\)">\(\theta&gt;1\)</span>.</p>
+<p><strong>Solution.</strong> The derivatives are <span class="math" data-tex="\(\lambda t^{5-j}/(5-j)!\)">\(\lambda t^{5-j}/(5-j)!\)</span>, <span class="math" data-tex="\(0\leq j\leq5\)">\(0\leq j\leq5\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+M(\lambda^{-a}y)=\lambda^a
+\max_{0\leq j\leq5}
+\left(\frac{|y|^{5-j}}{(5-j)!}\right)^{1/(j+1)}.
+\]">\[
+M(\lambda^{-a}y)=\lambda^a
+\max_{0\leq j\leq5}
+\left(\frac{|y|^{5-j}}{(5-j)!}\right)^{1/(j+1)}.
+\]</span>
+<p>The maximum is at least one because of <span class="math" data-tex="\(j=5\)">\(j=5\)</span>. The coefficient has the favorable orientation and its sixth derivative is zero. For nonzero <span class="math" data-tex="\(f\in C_c^\infty(\mathbb R)\)">\(f\in C_c^\infty(\mathbb R)\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+u_\lambda(t)=\lambda^{a/2}f(\lambda^a t).
+\]">\[
+u_\lambda(t)=\lambda^{a/2}f(\lambda^a t).
+\]</span>
+<p>For large <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> its support lies in <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. Its equation norm is exactly</p>
+<span class="math math-display" data-tex="\[
+\lambda^a\|(D_y+i y^5/120)f\|_2,
+\]">\[
+\lambda^a\|(D_y+i y^5/120)f\|_2,
+\]</span>
+<p>whereas <span class="math" data-tex="\(\|M^\theta u_\lambda\|_2\)">\(\|M^\theta u_\lambda\|_2\)</span> is a fixed positive constant times <span class="math" data-tex="\(\lambda^{a\theta}\)">\(\lambda^{a\theta}\)</span>. If <span class="math" data-tex="\(\theta&gt;1\)">\(\theta&gt;1\)</span>, the proposed estimate is impossible. This also gives sharpness of the central exponent <span class="math" data-tex="\(1/(k+1)\)">\(1/(k+1)\)</span>; the same scaling works with <span class="math" data-tex="\(\lambda t^k/k!\)">\(\lambda t^k/k!\)</span>, including <span class="math" data-tex="\(k=0\)">\(k=0\)</span>.</p>
+<p><strong>Exercise 5 — a lower derivative gives a better scale, 10 points.</strong> Let <span class="math" data-tex="\(G_\lambda(t)=\lambda(t^3+2t)\)">\(G_\lambda(t)=\lambda(t^3+2t)\)</span>, with <span class="math" data-tex="\(k=3\)">\(k=3\)</span> and <span class="math" data-tex="\(\lambda\geq2\)">\(\lambda\geq2\)</span>. Compare the central estimate based on <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with the derivative-scale estimate. Prove that the better power is sharp uniformly in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p><strong>Solution.</strong> The fourth derivative is zero. At zero the derivative maximum is <span class="math" data-tex="\(\rho=6\lambda\)">\(\rho=6\lambda\)</span>, so the general central power is <span class="math" data-tex="\((6\lambda)^{1/4}\)">\((6\lambda)^{1/4}\)</span>. But</p>
+<span class="math math-display" data-tex="\[
+G_\lambda&#x27;(t)=\lambda(3t^2+2)\geq2\lambda,
+\]">\[
+G_\lambda&#x27;(t)=\lambda(3t^2+2)\geq2\lambda,
+\]</span>
+<p>and <span class="math" data-tex="\(G_\lambda\)">\(G_\lambda\)</span> is increasing through zero. Thus <span class="math" data-tex="\(M(t)\geq\sqrt{2\lambda}\)">\(M(t)\geq\sqrt{2\lambda}\)</span> everywhere. Theorem 1.1 gives
+<span class="math" data-tex="\(\sqrt{\lambda}\|u\|_2\leq C\|L_Gu\|_2\)">\(\sqrt{\lambda}\|u\|_2\leq C\|L_Gu\|_2\)</span> for large <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>.</p>
+<p>With <span class="math" data-tex="\(u_\lambda(t)=\lambda^{1/4}f(\sqrt\lambda t)\)">\(u_\lambda(t)=\lambda^{1/4}f(\sqrt\lambda t)\)</span>, its norm is fixed and the conjugated equation is</p>
+<span class="math math-display" data-tex="\[
+\sqrt\lambda(D_y+2iy)f
++i\lambda^{-1/2}y^3f.
+\]">\[
+\sqrt\lambda(D_y+2iy)f
++i\lambda^{-1/2}y^3f.
+\]</span>
+<p>Its norm is <span class="math" data-tex="\(O(\sqrt\lambda)\)">\(O(\sqrt\lambda)\)</span>. Consequently no larger power of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> can hold uniformly. The maximum in (1.4) detects this first-derivative scale even though we allowed a third-order zero in the general hypothesis.</p>
+<p><strong>Exercise 6 — a truncated domain is not an exterior coefficient, 8 points.</strong> Let <span class="math" data-tex="\(J=(-h,2h)\subset(-1,1)\)">\(J=(-h,2h)\subset(-1,1)\)</span>, with <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span> possibly much smaller than <span class="math" data-tex="\(\rho^{-1/(k+1)}\)">\(\rho^{-1/(k+1)}\)</span>. Explain why Theorems 3.2 and 4.2 retain their constants. For a boundary interval in Section 5, derive the factor <span class="math" data-tex="\(m_j^2\)">\(m_j^2\)</span> in (5.14) and identify exactly where endpoint vanishing is used.</p>
+<p><strong>Solution.</strong> The Taylor polynomial is defined on all of <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, but its remainder is evaluated only on segments from zero to points of <span class="math" data-tex="\(J\)">\(J\)</span>. The small set in <span class="math" data-tex="\(J\)">\(J\)</span> is a subset of the polynomial small set on <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>, so its bound does not depend on <span class="math" data-tex="\(h\)">\(h\)</span>. A compact test function can be extended by zero for the derivative estimate. The signed kernel integrates only inside <span class="math" data-tex="\(J\)">\(J\)</span>; no value of <span class="math" data-tex="\(G\)">\(G\)</span> outside <span class="math" data-tex="\(J\)">\(J\)</span> enters.</p>
+<p>For <span class="math" data-tex="\(v_j(y)=(\theta_j u)(t_j+y/m_j)\)">\(v_j(y)=(\theta_j u)(t_j+y/m_j)\)</span>, the change of variables gives</p>
+<span class="math math-display" data-tex="\[
+\|v_j\|_2^2=m_j\|\theta_j u\|_2^2,\qquad
+\|(D_y+iG_j)v_j\|_2^2
+=m_j^{-1}\|L_G(\theta_j u)\|_2^2.
+\]">\[
+\|v_j\|_2^2=m_j\|\theta_j u\|_2^2,\qquad
+\|(D_y+iG_j)v_j\|_2^2
+=m_j^{-1}\|L_G(\theta_j u)\|_2^2.
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(m_j\)">\(m_j\)</span> in the normalized inequality gives (5.14). Compact support of <span class="math" data-tex="\(u\)">\(u\)</span> makes <span class="math" data-tex="\(v_j\)">\(v_j\)</span> zero near the original endpoint of <span class="math" data-tex="\(J_j\)">\(J_j\)</span>; the interval cutoff makes it zero near the other cutoff endpoints. These are precisely the endpoint values required in (4.2). A short interval can only make the derivative cost more severe; it does not weaken the uniform estimate.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[L]</strong> Nicolas Lerner, <em>Metrics on the Phase Space and Non-Selfadjoint Pseudodifferential Operators</em>, Birkhäuser, 2010. <a href="https://webusers.imj-prg.fr/~nicolas.lerner/booklerner.pdf">Author's 2009 manuscript</a>. Sign geometry and estimates for equations with real parameter-dependent coefficients.</li>
+<li><strong>[EZ]</strong> Lawrence C. Evans and Maciej Zworski, <em>Lectures on Semiclassical Analysis</em>, version 0.2. <a href="https://math.mit.edu/classes/18.157/S2012/semiclassicalEvansZworski.pdf">MIT-hosted lecture notes</a>. Rescaling, localization and semiclassical norm estimates.</li>
+<li><strong>[H]</strong> Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators</em>, Springer, 2009 reprint. <a href="https://link.springer.com/book/10.1007/978-3-642-00136-9">Publisher's record</a>. Finite-type differential estimates and their role in subelliptic analysis.</li>
+</ul>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+</main><footer>Original lessons: CC0. Mathematics rendered with MathJax 3.2.2, Apache License 2.0; <a href="assets/mathjax/LICENSE">license</a>.</footer></body></html>

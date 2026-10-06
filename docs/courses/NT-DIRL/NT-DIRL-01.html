@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dirichlet characters · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="dirichlet-characters">Dirichlet characters</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Public domain (CC0).</em></p>
+<p>An arithmetic progression is easy to recognize under addition, whereas prime factorization is multiplicative. Dirichlet characters connect these two structures. They express the indicator of a reduced residue class as a finite sum of multiplicative functions. Their conductors then tell us which modulus actually carries the information.</p>
+<p>We assume the elementary language of groups and fields and the Chinese remainder theorem. The finite group, primitive-root and quadratic-reciprocity arguments needed here are proved below. Basic references are Koukoulopoulos's <em>The Distribution of Prime Numbers</em> and Sutherland's lectures on Dirichlet characters.</p>
+<h2 id="1-detecting-a-residue-class">1. Detecting a residue class</h2>
+<p>A character of a finite abelian group <span class="math" data-tex="\(G\)">\(G\)</span> is a homomorphism <span class="math" data-tex="\(G\to\mathbb C^\times\)">\(G\to\mathbb C^\times\)</span>. Its values are roots of unity, because <span class="math" data-tex="\(\chi(g)^{|G|}=1\)">\(\chi(g)^{|G|}=1\)</span>. In particular, <span class="math" data-tex="\(\overline{\chi(g)}=\chi(g)^{-1}\)">\(\overline{\chi(g)}=\chi(g)^{-1}\)</span>. The characters form a group <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> under pointwise multiplication.</p>
+<p><strong>Lemma 1.1 (extension).</strong> A character of a subgroup <span class="math" data-tex="\(H\subset G\)">\(H\subset G\)</span> extends to a character of <span class="math" data-tex="\(G\)">\(G\)</span>. There are exactly <span class="math" data-tex="\([G:H]\)">\([G:H]\)</span> extensions.</p>
+<p><strong>Proof.</strong> Suppose first that we adjoin one element <span class="math" data-tex="\(g\)">\(g\)</span>. Let <span class="math" data-tex="\(m\)">\(m\)</span> be the least positive integer for which <span class="math" data-tex="\(g^m\in H\)">\(g^m\in H\)</span>. Choose a root <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(z^m=\chi(g^m)\)">\(z^m=\chi(g^m)\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\widetilde\chi(hg^j)=\chi(h)z^j.
+\]">\[
+\widetilde\chi(hg^j)=\chi(h)z^j.
+\]</span>
+<p>If <span class="math" data-tex="\(hg^j=h&#x27;g^{j&#x27;}\)">\(hg^j=h&#x27;g^{j&#x27;}\)</span>, then <span class="math" data-tex="\(j-j&#x27;=km\)">\(j-j&#x27;=km\)</span> and <span class="math" data-tex="\(h&#x27;=hg^{km}\)">\(h&#x27;=hg^{km}\)</span>. The displayed value is therefore independent of the representation. It is multiplicative, extends <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, and has value <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(g\)">\(g\)</span>. Conversely every extension has one of the <span class="math" data-tex="\(m\)">\(m\)</span> possible values of <span class="math" data-tex="\(z\)">\(z\)</span>. Since <span class="math" data-tex="\([\langle H,g\rangle:H]=m\)">\([\langle H,g\rangle:H]=m\)</span>, adjoining finitely many elements gives the assertion, with the extension counts multiplying. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Starting with the trivial subgroup shows that <span class="math" data-tex="\(|\widehat G|=|G|\)">\(|\widehat G|=|G|\)</span>. Moreover, characters separate points: for <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>, choose on <span class="math" data-tex="\(\langle g\rangle\)">\(\langle g\rangle\)</span> the character taking <span class="math" data-tex="\(g\)">\(g\)</span> to a primitive root of order <span class="math" data-tex="\(\operatorname{ord}(g)\)">\(\operatorname{ord}(g)\)</span>, and extend it.</p>
+<p><strong>Theorem 1.2 (orthogonality).</strong> For <span class="math" data-tex="\(\chi\in\widehat G\)">\(\chi\in\widehat G\)</span> and <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{h\in G}\chi(h)=|G|\,1_{\chi=1},
+\qquad
+\sum_{\chi\in\widehat G}\chi(g)=|G|\,1_{g=1}.
+\]">\[
+\sum_{h\in G}\chi(h)=|G|\,1_{\chi=1},
+\qquad
+\sum_{\chi\in\widehat G}\chi(g)=|G|\,1_{g=1}.
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span>, choose <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span>. Multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> permutes <span class="math" data-tex="\(G\)">\(G\)</span>, so the first sum equals <span class="math" data-tex="\(\chi(u)\)">\(\chi(u)\)</span> times itself and must vanish. For <span class="math" data-tex="\(g\ne1\)">\(g\ne1\)</span>, choose <span class="math" data-tex="\(\psi\)">\(\psi\)</span> with <span class="math" data-tex="\(\psi(g)\ne1\)">\(\psi(g)\ne1\)</span>. Multiplication by <span class="math" data-tex="\(\psi\)">\(\psi\)</span> permutes <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>, giving the same argument for the second sum. In the two remaining cases every summand is 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>Dirichlet character modulo <span class="math" data-tex="\(q\)">\(q\)</span></strong> is a character of</p>
+<span class="math math-display" data-tex="\[
+U_q=(\mathbb Z/q\mathbb Z)^\times
+\]">\[
+U_q=(\mathbb Z/q\mathbb Z)^\times
+\]</span>
+<p>extended to all integers by setting <span class="math" data-tex="\(\chi(n)=0\)">\(\chi(n)=0\)</span> when <span class="math" data-tex="\((n,q)&gt;1\)">\((n,q)&gt;1\)</span>. Thus it is periodic and completely multiplicative. The principal character <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> is 1 on the units and 0 elsewhere. For <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the unique character is the constant 1, including at 0.</p>
+<p>If <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, orthogonality gives the progression detector</p>
+<span class="math math-display" data-tex="\[
+1_{n\equiv b\pmod q}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\chi(n).
+\tag{1.1}
+\]">\[
+1_{n\equiv b\pmod q}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\chi(n).
+\tag{1.1}
+\]</span>
+<p>For a unit <span class="math" data-tex="\(n\)">\(n\)</span>, apply Theorem 1.2 to <span class="math" data-tex="\(nb^{-1}\)">\(nb^{-1}\)</span>. For a nonunit, both sides are zero. The condition on <span class="math" data-tex="\(b\)">\(b\)</span> is essential: characters vanish on nonunits and cannot detect their individual classes.</p>
+<p>For any finite sequence <span class="math" data-tex="\(a_n\)">\(a_n\)</span>, multiplying (1.1) by <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and summing yields</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\equiv b\pmod q}a_n
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\sum_n a_n\chi(n).
+\]">\[
+\sum_{n\equiv b\pmod q}a_n
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}\overline{\chi(b)}\sum_n a_n\chi(n).
+\]</span>
+<p>The principal character measures the average; the other characters measure departures from that average. This identity will be used with <span class="math" data-tex="\(a_n=\Lambda(n)\)">\(a_n=\Lambda(n)\)</span> in the lessons on primes in progressions.</p>
+<h2 id="2-constructing-the-characters-locally">2. Constructing the characters locally</h2>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, choose a primitive root <span class="math" data-tex="\(g\)">\(g\)</span> modulo <span class="math" data-tex="\(p^k\)">\(p^k\)</span>. Put <span class="math" data-tex="\(h=\varphi(p^k)\)">\(h=\varphi(p^k)\)</span>. Every character is uniquely of the form</p>
+<span class="math math-display" data-tex="\[
+\chi_j(g^r)=\exp(2\pi i jr/h),\qquad 0\le j&lt;h.
+\]">\[
+\chi_j(g^r)=\exp(2\pi i jr/h),\qquad 0\le j&lt;h.
+\]</span>
+<p>Here is the existence argument needed for this construction. A finite subgroup of the multiplicative group of a field is cyclic. Indeed, let <span class="math" data-tex="\(m\)">\(m\)</span> be the least common multiple of its element orders. For each prime dividing <span class="math" data-tex="\(m\)">\(m\)</span>, take an element whose order contains the maximal power of that prime, and raise it to remove the other prime factors. Multiplying the resulting elements gives an element of order <span class="math" data-tex="\(m\)">\(m\)</span>, because their orders are coprime. Every group element is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>, so the polynomial root bound gives <span class="math" data-tex="\(|G|\le m\)">\(|G|\le m\)</span>. Lagrange's theorem gives <span class="math" data-tex="\(m\mid|G|\)">\(m\mid|G|\)</span>, hence equality. Applied to <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>, this supplies a generator <span class="math" data-tex="\(g\)">\(g\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>Choose its integer lift so that <span class="math" data-tex="\(g^{p-1}\not\equiv1\pmod {p^2}\)">\(g^{p-1}\not\equiv1\pmod {p^2}\)</span>. Such a lift exists among <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(g+p\)">\(g+p\)</span>: their <span class="math" data-tex="\((p-1)\)">\((p-1)\)</span>-st powers differ modulo <span class="math" data-tex="\(p^2\)">\(p^2\)</span> by <span class="math" data-tex="\((p-1)g^{p-2}p\)">\((p-1)g^{p-2}p\)</span>, a nonzero multiple of <span class="math" data-tex="\(p\)">\(p\)</span>. For odd <span class="math" data-tex="\(p\)">\(p\)</span>, the binomial theorem shows</p>
+<span class="math math-display" data-tex="\[
+v_p\bigl((1+p^rc)^p-1\bigr)=r+1
+\quad(r\ge1,\ p\nmid c).
+\]">\[
+v_p\bigl((1+p^rc)^p-1\bigr)=r+1
+\quad(r\ge1,\ p\nmid c).
+\]</span>
+<p>The first term has valuation <span class="math" data-tex="\(r+1\)">\(r+1\)</span>, while every later term has larger valuation. Iteration gives <span class="math" data-tex="\(v_p(g^{(p-1)p^j}-1)=j+1\)">\(v_p(g^{(p-1)p^j}-1)=j+1\)</span>. The order of <span class="math" data-tex="\(g\)">\(g\)</span> modulo <span class="math" data-tex="\(p^k\)">\(p^k\)</span> is a multiple of <span class="math" data-tex="\(p-1\)">\(p-1\)</span> and divides <span class="math" data-tex="\((p-1)p^{k-1}\)">\((p-1)p^{k-1}\)</span>; the valuation formula forces it to equal the latter. This proves the primitive-root assertion for every odd prime power.</p>
+<p>For powers of 2, <span class="math" data-tex="\(U_2\)">\(U_2\)</span> is trivial and <span class="math" data-tex="\(U_4=\{1,-1\}\)">\(U_4=\{1,-1\}\)</span>. If <span class="math" data-tex="\(k\ge3\)">\(k\ge3\)</span>, every odd residue is uniquely</p>
+<span class="math math-display" data-tex="\[
+(-1)^\epsilon5^r\pmod {2^k},\qquad
+\epsilon\in\{0,1\},\quad r\in\mathbb Z/2^{k-2}\mathbb Z.
+\]">\[
+(-1)^\epsilon5^r\pmod {2^k},\qquad
+\epsilon\in\{0,1\},\quad r\in\mathbb Z/2^{k-2}\mathbb Z.
+\]</span>
+<p>Consequently the characters have independent parameters</p>
+<span class="math math-display" data-tex="\[
+\chi((-1)^\epsilon5^r)
+=(-1)^{a\epsilon}\exp(2\pi i jr/2^{k-2}),
+\quad a\in\{0,1\},\quad 0\le j&lt;2^{k-2}.
+\]">\[
+\chi((-1)^\epsilon5^r)
+=(-1)^{a\epsilon}\exp(2\pi i jr/2^{k-2}),
+\quad a\in\{0,1\},\quad 0\le j&lt;2^{k-2}.
+\]</span>
+<p>Here is a short verification of the group description at 2. Induction by squaring gives</p>
+<span class="math math-display" data-tex="\[
+v_2(5^{2^r}-1)=r+2\qquad(r\ge0).
+\]">\[
+v_2(5^{2^r}-1)=r+2\qquad(r\ge0).
+\]</span>
+<p>For the induction step, <span class="math" data-tex="\(5^{2^r}+1\)">\(5^{2^r}+1\)</span> has valuation 1, so factoring the next difference raises the valuation by 1. Hence 5 has order <span class="math" data-tex="\(2^{k-2}\)">\(2^{k-2}\)</span> modulo <span class="math" data-tex="\(2^k\)">\(2^k\)</span>. Its powers are all 1 modulo 4, and their number equals the number of such units. Their negatives give exactly the remaining odd residues.</p>
+<p>The Chinese remainder theorem gives</p>
+<span class="math math-display" data-tex="\[
+U_q\simeq\prod_{p^k\parallel q}U_{p^k}.
+\]">\[
+U_q\simeq\prod_{p^k\parallel q}U_{p^k}.
+\]</span>
+<p>A character of a product restricts to a character on each factor, and its value on a tuple is the product of those restrictions. Conversely that product defines a character. Thus the local constructions list every character modulo every <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Example 2.1 (modulo 5).</strong> In the order <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span>, the four rows are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rrrr|c}
+j&amp;1&amp;2&amp;3&amp;4&amp;\text{conductor}\\\hline
+0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+1&amp;1&amp;i&amp;-i&amp;-1&amp;5\\
+2&amp;1&amp;-1&amp;-1&amp;1&amp;5\\
+3&amp;1&amp;-i&amp;i&amp;-1&amp;5
+\end{array}
+\]">\[
+\begin{array}{c|rrrr|c}
+j&amp;1&amp;2&amp;3&amp;4&amp;\text{conductor}\\\hline
+0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+1&amp;1&amp;i&amp;-i&amp;-1&amp;5\\
+2&amp;1&amp;-1&amp;-1&amp;1&amp;5\\
+3&amp;1&amp;-i&amp;i&amp;-1&amp;5
+\end{array}
+\]</span>
+<p>The entries use <span class="math" data-tex="\(2^0,2^1,2^3,2^2\)">\(2^0,2^1,2^3,2^2\)</span> for the four columns. At <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, the four character values sum to 0; at <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, they sum to 4. This is the detector (1.1) with <span class="math" data-tex="\(b=1\)">\(b=1\)</span>.</p>
+<figure><img src="assets/orthogonality.png" alt="Two complex-plane diagrams: all four characters modulo 5 have value 1 at n equals 1, while their values at n equals 2 are 1, i, minus 1 and minus i, which cancel." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. The exact character values in Example 2.1. Dividing the sum by 4 detects the class 1 modulo 5. The coincident point in the left panel represents four values. The arrows in the right panel show their cancellation in Theorem 1.2.</em></p>
+<h2 id="3-the-smallest-modulus-that-carries-a-character">3. The smallest modulus that carries a character</h2>
+<p>If <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span>, the reduction map <span class="math" data-tex="\(U_q\to U_d\)">\(U_q\to U_d\)</span> is onto. This follows locally for prime powers, and then from the Chinese remainder theorem. A character <span class="math" data-tex="\(\psi\)">\(\psi\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span> <strong>induces</strong> the character modulo <span class="math" data-tex="\(q\)">\(q\)</span> defined by</p>
+<span class="math math-display" data-tex="\[
+\chi(n)=\begin{cases}\psi(n),&amp;(n,q)=1,\\0,&amp;(n,q)&gt;1.\end{cases}
+\]">\[
+\chi(n)=\begin{cases}\psi(n),&amp;(n,q)=1,\\0,&amp;(n,q)&gt;1.\end{cases}
+\]</span>
+<p>This formula does not assert equality on every integer: the extra prime divisors of <span class="math" data-tex="\(q\)">\(q\)</span> introduce extra zeros.</p>
+<p><strong>Theorem 3.1 (conductor).</strong> Every character modulo <span class="math" data-tex="\(q\)">\(q\)</span> is induced by a unique primitive character modulo a divisor <span class="math" data-tex="\(q^*\)">\(q^*\)</span> of <span class="math" data-tex="\(q\)">\(q\)</span>. It is primitive precisely when, for every proper divisor <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span>, some unit <span class="math" data-tex="\(u\equiv1\pmod d\)">\(u\equiv1\pmod d\)</span> satisfies <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span>.</p>
+<p><strong>Proof.</strong> A character descends to <span class="math" data-tex="\(U_d\)">\(U_d\)</span> exactly when it is trivial on the kernel of <span class="math" data-tex="\(U_q\to U_d\)">\(U_q\to U_d\)</span>. Surjectivity then makes the descended character unique. Write <span class="math" data-tex="\(q=\prod p^{k_p}\)">\(q=\prod p^{k_p}\)</span> and decompose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> into local characters. For each <span class="math" data-tex="\(p\)">\(p\)</span>, the kernels of reduction to <span class="math" data-tex="\(U_{p^c}\)">\(U_{p^c}\)</span>, <span class="math" data-tex="\(0\le c\le k_p\)">\(0\le c\le k_p\)</span>, are nested. Let <span class="math" data-tex="\(c_p\)">\(c_p\)</span> be the least exponent through which the local character factors; <span class="math" data-tex="\(c_p=0\)">\(c_p=0\)</span> means the local character is trivial. The character factors through <span class="math" data-tex="\(d=\prod p^{e_p}\)">\(d=\prod p^{e_p}\)</span> if and only if <span class="math" data-tex="\(e_p\ge c_p\)">\(e_p\ge c_p\)</span> for every <span class="math" data-tex="\(p\)">\(p\)</span>. Therefore its unique least inducing modulus is <span class="math" data-tex="\(q^*=\prod p^{c_p}\)">\(q^*=\prod p^{c_p}\)</span>, and the descended character cannot descend further. The kernel criterion gives exactly the stated test for primitivity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sign at <span class="math" data-tex="\(-1\)">\(-1\)</span> is unchanged by induction. We write <span class="math" data-tex="\(a(\chi)\in\{0,1\}\)">\(a(\chi)\in\{0,1\}\)</span> for the parity determined by <span class="math" data-tex="\(\chi(-1)=(-1)^{a(\chi)}\)">\(\chi(-1)=(-1)^{a(\chi)}\)</span>.</p>
+<p>The principal character has conductor 1, and is primitive only at modulus 1. This includes it in the conductor classification.</p>
+<p>For <span class="math" data-tex="\(\Re s&gt;1\)">\(\Re s&gt;1\)</span>, absolute convergence and complete multiplicativity give an Euler product. Removing the primes newly excluded by <span class="math" data-tex="\(q\)">\(q\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q}\bigl(1-\chi^*(p)p^{-s}\bigr).
+\tag{3.1}
+\]">\[
+L(s,\chi)=L(s,\chi^*)
+\prod_{p\mid q}\bigl(1-\chi^*(p)p^{-s}\bigr).
+\tag{3.1}
+\]</span>
+<p>Primes dividing <span class="math" data-tex="\(q^*\)">\(q^*\)</span> contribute the factor 1. The full analytic justification is developed in <a href="NT-DIRL-02.html">Dirichlet's theorem on primes in arithmetic progressions</a>.</p>
+<p><strong>Example 3.2 (an extra zero).</strong> The nonprincipal character modulo 3 has values 1 and <span class="math" data-tex="\(-1\)">\(-1\)</span> on 1 and 2. Its lift modulo 6 has conductor 3 and vanishes also on the even integers. Since <span class="math" data-tex="\(\chi_{-3}(2)=-1\)">\(\chi_{-3}(2)=-1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+L(s,\chi\bmod6)=(1+2^{-s})L(s,\chi_{-3}).
+\]">\[
+L(s,\chi\bmod6)=(1+2^{-s})L(s,\chi_{-3}).
+\]</span>
+<h3 id="counting-primitive-characters">Counting primitive characters</h3>
+<p>Let <span class="math" data-tex="\(\varphi^*(q)\)">\(\varphi^*(q)\)</span> denote the number of primitive characters modulo <span class="math" data-tex="\(q\)">\(q\)</span>. Theorem 3.1 partitions all characters by conductor, so</p>
+<span class="math math-display" data-tex="\[
+\varphi(q)=\sum_{d\mid q}\varphi^*(d).
+\]">\[
+\varphi(q)=\sum_{d\mid q}\varphi^*(d).
+\]</span>
+<p>Möbius inversion, or multiplication by <span class="math" data-tex="\(\mu\)">\(\mu\)</span> in this divisor sum, gives</p>
+<span class="math math-display" data-tex="\[
+\boxed{\varphi^*(q)=\sum_{d\mid q}\mu(q/d)\varphi(d).}
+\tag{3.2}
+\]">\[
+\boxed{\varphi^*(q)=\sum_{d\mid q}\mu(q/d)\varphi(d).}
+\tag{3.2}
+\]</span>
+<p>Both <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> are multiplicative, so their convolution is multiplicative. Its local values are</p>
+<span class="math math-display" data-tex="\[
+\varphi^*(1)=1,\qquad
+\varphi^*(p)=p-2,\qquad
+\varphi^*(p^k)=p^{k-2}(p-1)^2\quad(k\ge2).
+\]">\[
+\varphi^*(1)=1,\qquad
+\varphi^*(p)=p-2,\qquad
+\varphi^*(p^k)=p^{k-2}(p-1)^2\quad(k\ge2).
+\]</span>
+<p>Every factor is positive except <span class="math" data-tex="\(\varphi^*(2)=0\)">\(\varphi^*(2)=0\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\varphi^*(q)=0\quad\Longleftrightarrow\quad q\equiv2\pmod4.
+\]">\[
+\varphi^*(q)=0\quad\Longleftrightarrow\quad q\equiv2\pmod4.
+\]</span>
+<h2 id="4-real-characters-and-quadratic-discriminants">4. Real characters and quadratic discriminants</h2>
+<p>A real character takes values <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span> on units. Equivalently it has square equal to the principal character. We first classify it locally, then identify the resulting characters with quadratic symbols.</p>
+<h3 id="quadratic-signs-and-reciprocity">Quadratic signs and reciprocity</h3>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, the Legendre symbol <span class="math" data-tex="\((a/p)\)">\((a/p)\)</span> is 0 when <span class="math" data-tex="\(p\mid a\)">\(p\mid a\)</span>, 1 for a nonzero square modulo <span class="math" data-tex="\(p\)">\(p\)</span>, and <span class="math" data-tex="\(-1\)">\(-1\)</span> otherwise. The cyclic group construction in Section 2 shows it is multiplicative, and gives Euler's criterion <span class="math" data-tex="\((a/p)\equiv a^{(p-1)/2}\pmod p\)">\((a/p)\equiv a^{(p-1)/2}\pmod p\)</span>.</p>
+<p>Put <span class="math" data-tex="\(m=(p-1)/2\)">\(m=(p-1)/2\)</span>. For <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, reduce <span class="math" data-tex="\(a,2a,\ldots,ma\)">\(a,2a,\ldots,ma\)</span> to their unique signed representatives in <span class="math" data-tex="\([-m,m]\)">\([-m,m]\)</span>, and let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> count the negative ones. The absolute values of these representatives are a permutation of <span class="math" data-tex="\(1,\ldots,m\)">\(1,\ldots,m\)</span>: an equality of absolute values would give <span class="math" data-tex="\(aj\equiv\pm ak\pmod p\)">\(aj\equiv\pm ak\pmod p\)</span>, which forces <span class="math" data-tex="\(j=k\)">\(j=k\)</span> in this range. Taking their product and cancelling <span class="math" data-tex="\(m!\)">\(m!\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+a^m\equiv(-1)^\nu\pmod p,
+\qquad \left(\frac ap\right)=(-1)^\nu.
+\tag{4.1}
+\]">\[
+a^m\equiv(-1)^\nu\pmod p,
+\qquad \left(\frac ap\right)=(-1)^\nu.
+\tag{4.1}
+\]</span>
+<p>This is Gauss's lemma. At <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>, all <span class="math" data-tex="\(m\)">\(m\)</span> representatives are negative, so <span class="math" data-tex="\((-1/p)=(-1)^m\)">\((-1/p)=(-1)^m\)</span>. At <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, exactly <span class="math" data-tex="\(m-\lfloor p/4\rfloor\)">\(m-\lfloor p/4\rfloor\)</span> are negative. Checking <span class="math" data-tex="\(p\equiv1,3,5,7\pmod8\)">\(p\equiv1,3,5,7\pmod8\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\left(\frac2p\right)=(-1)^{(p^2-1)/8}.
+\]">\[
+\left(\frac2p\right)=(-1)^{(p^2-1)/8}.
+\]</span>
+<p>To obtain reciprocity, let <span class="math" data-tex="\(r\)">\(r\)</span> be a distinct odd prime. If <span class="math" data-tex="\(t_j\)">\(t_j\)</span> is the least positive residue of <span class="math" data-tex="\(rj\)">\(rj\)</span>, then <span class="math" data-tex="\(t_j=rj-p\lfloor rj/p\rfloor\)">\(t_j=rj-p\lfloor rj/p\rfloor\)</span>. Replacing a residue above <span class="math" data-tex="\(p/2\)">\(p/2\)</span> by its absolute signed representative <span class="math" data-tex="\(p-t_j\)">\(p-t_j\)</span> changes its parity. The sum of all absolute representatives equals <span class="math" data-tex="\(1+\cdots+m\)">\(1+\cdots+m\)</span>. Since <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span> are odd, comparison of these sums modulo 2 shows</p>
+<span class="math math-display" data-tex="\[
+\nu\equiv\sum_{j=1}^m\left\lfloor\frac{rj}{p}\right\rfloor\pmod2.
+\]">\[
+\nu\equiv\sum_{j=1}^m\left\lfloor\frac{rj}{p}\right\rfloor\pmod2.
+\]</span>
+<p>Now count the integer pairs <span class="math" data-tex="\((j,k)\)">\((j,k)\)</span> in the rectangle <span class="math" data-tex="\(1\le j\le(p-1)/2\)">\(1\le j\le(p-1)/2\)</span>, <span class="math" data-tex="\(1\le k\le(r-1)/2\)">\(1\le k\le(r-1)/2\)</span>. The line <span class="math" data-tex="\(rj=pk\)">\(rj=pk\)</span> contains no such pair. The number below it is <span class="math" data-tex="\(\sum_j\lfloor rj/p\rfloor\)">\(\sum_j\lfloor rj/p\rfloor\)</span>; the number above it is <span class="math" data-tex="\(\sum_k\lfloor pk/r\rfloor\)">\(\sum_k\lfloor pk/r\rfloor\)</span>. Their sum is the size of the rectangle. Applying Gauss's lemma to both primes therefore proves</p>
+<span class="math math-display" data-tex="\[
+\left(\frac rp\right)\left(\frac pr\right)
+=(-1)^{(p-1)(r-1)/4}.
+\tag{4.2}
+\]">\[
+\left(\frac rp\right)\left(\frac pr\right)
+=(-1)^{(p-1)(r-1)/4}.
+\tag{4.2}
+\]</span>
+<p>These three sign laws supply exactly the reciprocity input for the character classification that follows.</p>
+<h3 id="local-real-characters">Local real characters</h3>
+<p>At an odd prime power <span class="math" data-tex="\(p^k\)">\(p^k\)</span>, the cyclic group has exactly two real characters. The nontrivial one takes a primitive root to <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its kernel is the squares, and its value is <span class="math" data-tex="\((n/p)\)">\((n/p)\)</span>, the Legendre symbol. Reduction modulo <span class="math" data-tex="\(p\)">\(p\)</span> preserves whether a unit is a square, so this character has conductor <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>At 2 the complete nontrivial possibilities have conductors 4 or 8. On odd integers they are</p>
+<span class="math math-display" data-tex="\[
+\chi_{-4}(n)=(-1)^{(n-1)/2},\qquad
+\chi_8(n)=(-1)^{(n^2-1)/8},\qquad
+\chi_{-8}(n)=\chi_{-4}(n)\chi_8(n).
+\tag{4.3}
+\]">\[
+\chi_{-4}(n)=(-1)^{(n-1)/2},\qquad
+\chi_8(n)=(-1)^{(n^2-1)/8},\qquad
+\chi_{-8}(n)=\chi_{-4}(n)\chi_8(n).
+\tag{4.3}
+\]</span>
+<p>Indeed, a real character in the description of <span class="math" data-tex="\(U_{2^k}\)">\(U_{2^k}\)</span> is determined by its two signs at <span class="math" data-tex="\(-1\)">\(-1\)</span> and 5. It is trivial on <span class="math" data-tex="\(\langle5^2\rangle\)">\(\langle5^2\rangle\)</span>, hence factors through 8 when <span class="math" data-tex="\(k\ge3\)">\(k\ge3\)</span>. The four sign choices are exactly the principal character and (4.3); their least moduli follow from their values on residues.</p>
+<p>Define a <strong>fundamental discriminant</strong> to be either a squarefree integer <span class="math" data-tex="\(d\equiv1\pmod4\)">\(d\equiv1\pmod4\)</span>, or <span class="math" data-tex="\(d=4m\)">\(d=4m\)</span> with squarefree <span class="math" data-tex="\(m\equiv2,3\pmod4\)">\(m\equiv2,3\pmod4\)</span>. We include <span class="math" data-tex="\(d=1\)">\(d=1\)</span> for the trivial character. For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, put <span class="math" data-tex="\(p^*=(-1)^{(p-1)/2}p\)">\(p^*=(-1)^{(p-1)/2}p\)</span>. Every such <span class="math" data-tex="\(d\)">\(d\)</span> has a unique expression</p>
+<span class="math math-display" data-tex="\[
+d=d_2\prod_{p\in S}p^*,\qquad
+d_2\in\{1,-4,8,-8\},
+\tag{4.4}
+\]">\[
+d=d_2\prod_{p\in S}p^*,\qquad
+d_2\in\{1,-4,8,-8\},
+\tag{4.4}
+\]</span>
+<p>where <span class="math" data-tex="\(S\)">\(S\)</span> is a finite set of odd primes. To check existence directly, set <span class="math" data-tex="\(P=\prod_{p\mid d,\ p\text{ odd}}p^*\)">\(P=\prod_{p\mid d,\ p\text{ odd}}p^*\)</span>. Then <span class="math" data-tex="\(P\equiv1\pmod4\)">\(P\equiv1\pmod4\)</span>, <span class="math" data-tex="\(|P|\)">\(|P|\)</span> is the odd squarefree part of <span class="math" data-tex="\(d\)">\(d\)</span>, and the defining congruence for a discriminant forces <span class="math" data-tex="\(d/P\)">\(d/P\)</span> to be exactly the indicated factor. The same argument proves uniqueness.</p>
+<p>For completeness, the <strong>Kronecker symbol</strong> <span class="math" data-tex="\((d/n)\)">\((d/n)\)</span> is multiplicative in the denominator. On odd positive primes it is the Legendre symbol, with value zero at divisors of <span class="math" data-tex="\(d\)">\(d\)</span>; at <span class="math" data-tex="\(-1\)">\(-1\)</span> it is <span class="math" data-tex="\(\operatorname{sgn}(d)\)">\(\operatorname{sgn}(d)\)</span>; at 2 it is zero for even <span class="math" data-tex="\(d\)">\(d\)</span>, and for odd <span class="math" data-tex="\(d\)">\(d\)</span> it equals <span class="math" data-tex="\((-1)^{(d^2-1)/8}\)">\((-1)^{(d^2-1)/8}\)</span>. Put <span class="math" data-tex="\((d/1)=1\)">\((d/1)=1\)</span> and <span class="math" data-tex="\((d/0)=1\)">\((d/0)=1\)</span> for <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, zero for the other fundamental discriminants. Prime factorization then defines it on every integer.</p>
+<p><strong>Theorem 4.1.</strong> The real primitive Dirichlet characters are exactly</p>
+<span class="math math-display" data-tex="\[
+\chi_d(n)=\left(\frac d n\right),
+\]">\[
+\chi_d(n)=\left(\frac d n\right),
+\]</span>
+<p>for fundamental discriminants <span class="math" data-tex="\(d\)">\(d\)</span>. Their conductor is <span class="math" data-tex="\(|d|\)">\(|d|\)</span>, and <span class="math" data-tex="\(\chi_d(-1)=\operatorname{sgn}(d)\)">\(\chi_d(-1)=\operatorname{sgn}(d)\)</span>.</p>
+<p><strong>Proof.</strong> Quadratic reciprocity and its supplementary laws give</p>
+<span class="math math-display" data-tex="\[
+\left(\frac{p^*}{n}\right)=\left(\frac n p\right)
+\]">\[
+\left(\frac{p^*}{n}\right)=\left(\frac n p\right)
+\]</span>
+<p>for every integer <span class="math" data-tex="\(n\)">\(n\)</span>, with zero values included. For positive odd primes in the denominator this is quadratic reciprocity with the sign absorbed into <span class="math" data-tex="\(p^*\)">\(p^*\)</span>. For the denominator 2 it is the law for <span class="math" data-tex="\((2/p)\)">\((2/p)\)</span>; for <span class="math" data-tex="\(-1\)">\(-1\)</span> both sides equal <span class="math" data-tex="\((-1)^{(p-1)/2}\)">\((-1)^{(p-1)/2}\)</span>. Multiplicativity gives the assertion for general denominators. Likewise the symbols for <span class="math" data-tex="\(-4,8,-8\)">\(-4,8,-8\)</span> have exactly the values in (4.3), by the two supplementary laws.</p>
+<p>It follows that the symbol for (4.4) is the product of the local characters just classified. Each nontrivial odd component has conductor <span class="math" data-tex="\(p\)">\(p\)</span>, and the 2-component has conductor <span class="math" data-tex="\(|d_2|\)">\(|d_2|\)</span>. Since these moduli are coprime, Theorem 3.1 gives conductor <span class="math" data-tex="\(|d|\)">\(|d|\)</span>. Conversely, a real primitive character has precisely these local possibilities and hence gives a unique expression (4.4). The sign at <span class="math" data-tex="\(-1\)">\(-1\)</span> is the defining Kronecker value. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 4.2 (modulo 8).</strong> All four characters vanish on even integers. On the odd classes they are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rrrr|c}
+&amp;1&amp;3&amp;5&amp;7&amp;\text{conductor}\\\hline
+\chi_0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\chi_{-4}&amp;1&amp;-1&amp;1&amp;-1&amp;4\\
+\chi_8&amp;1&amp;-1&amp;-1&amp;1&amp;8\\
+\chi_{-8}&amp;1&amp;1&amp;-1&amp;-1&amp;8
+\end{array}
+\]">\[
+\begin{array}{c|rrrr|c}
+&amp;1&amp;3&amp;5&amp;7&amp;\text{conductor}\\\hline
+\chi_0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\chi_{-4}&amp;1&amp;-1&amp;1&amp;-1&amp;4\\
+\chi_8&amp;1&amp;-1&amp;-1&amp;1&amp;8\\
+\chi_{-8}&amp;1&amp;1&amp;-1&amp;-1&amp;8
+\end{array}
+\]</span>
+<p>Thus the primitive characters <em>modulo 8</em> are <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span> and <span class="math" data-tex="\(\chi_{-8}\)">\(\chi_{-8}\)</span>. The character labelled <span class="math" data-tex="\(\chi_{-4}\)">\(\chi_{-4}\)</span> in this table is its lift from modulus 4. Notice that <span class="math" data-tex="\(\chi_8\)">\(\chi_8\)</span> is even and <span class="math" data-tex="\(\chi_{-8}\)">\(\chi_{-8}\)</span> is odd.</p>
+<p><strong>Example 4.3 (modulo 12).</strong> On <span class="math" data-tex="\(1,5,7,11\)">\(1,5,7,11\)</span>, the rows are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|rrrr|c}
+&amp;1&amp;5&amp;7&amp;11&amp;\text{conductor}\\\hline
+\chi_0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\chi_{-3}&amp;1&amp;-1&amp;1&amp;-1&amp;3\\
+\chi_{-4}&amp;1&amp;1&amp;-1&amp;-1&amp;4\\
+\chi_{12}&amp;1&amp;-1&amp;-1&amp;1&amp;12
+\end{array}
+\]">\[
+\begin{array}{c|rrrr|c}
+&amp;1&amp;5&amp;7&amp;11&amp;\text{conductor}\\\hline
+\chi_0&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\chi_{-3}&amp;1&amp;-1&amp;1&amp;-1&amp;3\\
+\chi_{-4}&amp;1&amp;1&amp;-1&amp;-1&amp;4\\
+\chi_{12}&amp;1&amp;-1&amp;-1&amp;1&amp;12
+\end{array}
+\]</span>
+<p>Only the last character is primitive modulo 12. Here <span class="math" data-tex="\(\chi_{12}=\chi_{-3}\chi_{-4}\)">\(\chi_{12}=\chi_{-3}\chi_{-4}\)</span> on the units. Products can lose conductor: the square of any real primitive character is principal and has conductor 1, despite being represented at the original modulus.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1 (easy).</strong> Reconstruct the character table modulo 8 from the independent choices of values at <span class="math" data-tex="\(-1\)">\(-1\)</span> and 5. Determine the conductor and parity of each row.</p>
+<p><strong>Exercise 5.2 (medium).</strong> Give a group-theoretic reason that no character modulo <span class="math" data-tex="\(2m\)">\(2m\)</span>, with <span class="math" data-tex="\(m\)">\(m\)</span> odd, is primitive. Do not use formula (3.2).</p>
+<p><strong>Exercise 5.3 (medium).</strong> Verify that 2 and 44 generate <span class="math" data-tex="\(U_{45}\)">\(U_{45}\)</span> as <span class="math" data-tex="\(C_{12}\times C_2\)">\(C_{12}\times C_2\)</span>. Define <span class="math" data-tex="\(\chi(2)=i\)">\(\chi(2)=i\)</span> and <span class="math" data-tex="\(\chi(44)=1\)">\(\chi(44)=1\)</span>. Determine its conductor and the primitive character inducing it.</p>
+<p><strong>Exercise 5.4 (medium).</strong> Derive (3.2) from the partition by conductor, then compute the numbers of primitive characters modulo 9, 15, 16 and 18.</p>
+<p><strong>Exercise 5.5 (hard).</strong> Starting from a real primitive character, reconstruct its discriminant from its local factors. Explain why no squared odd prime divides its conductor and why the exponent of 2 is 0, 2 or 3.</p>
+<h3 id="solutions">Solutions</h3>
+<p><strong>5.1.</strong> Write each unit as <span class="math" data-tex="\((-1)^\epsilon5^r\)">\((-1)^\epsilon5^r\)</span>, with <span class="math" data-tex="\(\epsilon,r\in\{0,1\}\)">\(\epsilon,r\in\{0,1\}\)</span>. The residues <span class="math" data-tex="\(1,3,5,7\)">\(1,3,5,7\)</span> have pairs <span class="math" data-tex="\((0,0),(1,1),(0,1),(1,0)\)">\((0,0),(1,1),(0,1),(1,0)\)</span>. If the chosen values at <span class="math" data-tex="\(-1\)">\(-1\)</span> and 5 are <span class="math" data-tex="\(u,v\)">\(u,v\)</span>, their row is <span class="math" data-tex="\((1,uv,v,u)\)">\((1,uv,v,u)\)</span>. The choices <span class="math" data-tex="\((1,1),(-1,1),(1,-1),(-1,-1)\)">\((1,1),(-1,1),(1,-1),(-1,-1)\)</span> give the four rows of Example 4.2. Their conductors are 1, 4, 8, 8. The first and third are even; the second and fourth are odd. The row of conductor 4 is induced, so it is not primitive modulo 8.</p>
+<p><strong>5.2.</strong> Reduction <span class="math" data-tex="\(U_{2m}\to U_m\)">\(U_{2m}\to U_m\)</span> is an isomorphism: every unit modulo <span class="math" data-tex="\(m\)">\(m\)</span> has exactly one odd lift modulo <span class="math" data-tex="\(2m\)">\(2m\)</span>. Every character therefore descends to <span class="math" data-tex="\(m\)">\(m\)</span>, a proper divisor. This also covers <span class="math" data-tex="\(m=1\)">\(m=1\)</span>.</p>
+<p><strong>5.3.</strong> Modulo 9, 2 has order 6; modulo 5 it has order 4. It therefore has order 12 modulo 45. An exponent giving <span class="math" data-tex="\(-1\)">\(-1\)</span> modulo 9 must be 3 modulo 6, whereas one giving <span class="math" data-tex="\(-1\)">\(-1\)</span> modulo 5 must be 2 modulo 4; these parity conditions are incompatible. Thus 44, which is <span class="math" data-tex="\(-1\)">\(-1\)</span>, is not in <span class="math" data-tex="\(\langle2\rangle\)">\(\langle2\rangle\)</span>. Since <span class="math" data-tex="\(|U_{45}|=24\)">\(|U_{45}|=24\)</span>, the two cyclic subgroups give the whole group and have trivial intersection. The prescribed values respect their orders, so they define a character.</p>
+<p>Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span> be its local values at 2 modulo 9 and modulo 5. Then <span class="math" data-tex="\(\alpha^6=\beta^4=1\)">\(\alpha^6=\beta^4=1\)</span>, <span class="math" data-tex="\(\alpha\beta=i\)">\(\alpha\beta=i\)</span>, and <span class="math" data-tex="\(\alpha^3\beta^2=1\)">\(\alpha^3\beta^2=1\)</span>. The first two conditions force <span class="math" data-tex="\(\alpha\in\{1,-1\}\)">\(\alpha\in\{1,-1\}\)</span>; the last excludes <span class="math" data-tex="\(\alpha=1,\beta=i\)">\(\alpha=1,\beta=i\)</span> and gives <span class="math" data-tex="\(\alpha=-1,\beta=-i\)">\(\alpha=-1,\beta=-i\)</span>. The modulo 9 factor is the lift of <span class="math" data-tex="\((n/3)\)">\((n/3)\)</span>, of conductor 3. The modulo 5 factor <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, defined by <span class="math" data-tex="\(\psi(2)=-i\)">\(\psi(2)=-i\)</span>, has conductor 5. Hence <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has conductor 15 and is induced by <span class="math" data-tex="\((n/3)\psi(n)\)">\((n/3)\psi(n)\)</span> modulo 15. Its parity is even, as prescribed.</p>
+<p><strong>5.4.</strong> If <span class="math" data-tex="\(F(q)=\sum_{d\mid q}f(d)\)">\(F(q)=\sum_{d\mid q}f(d)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\sum_{d\mid q}\mu(q/d)F(d)
+=\sum_{e\mid q}f(e)\sum_{e\mid d\mid q}\mu(q/d)=f(q),
+\]">\[
+\sum_{d\mid q}\mu(q/d)F(d)
+=\sum_{e\mid q}f(e)\sum_{e\mid d\mid q}\mu(q/d)=f(q),
+\]</span>
+<p>because the inner sum is 1 for <span class="math" data-tex="\(e=q\)">\(e=q\)</span> and 0 otherwise. Apply this with <span class="math" data-tex="\(F=\varphi\)">\(F=\varphi\)</span> and <span class="math" data-tex="\(f=\varphi^*\)">\(f=\varphi^*\)</span>. The local formulas give <span class="math" data-tex="\(\varphi^*(9)=4\)">\(\varphi^*(9)=4\)</span>, <span class="math" data-tex="\(\varphi^*(15)=(3-2)(5-2)=3\)">\(\varphi^*(15)=(3-2)(5-2)=3\)</span>, <span class="math" data-tex="\(\varphi^*(16)=4\)">\(\varphi^*(16)=4\)</span>, and <span class="math" data-tex="\(\varphi^*(18)=\varphi^*(2)\varphi^*(9)=0\)">\(\varphi^*(18)=\varphi^*(2)\varphi^*(9)=0\)</span>.</p>
+<p><strong>5.5.</strong> On an odd prime-power factor a real nontrivial character sends a primitive root to <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it is the Legendre character and descends to that prime. Primitivity excludes every higher odd exponent and every trivial local factor. At 2 a real character kills <span class="math" data-tex="\(5^2\)">\(5^2\)</span>, so it descends to 8; the nontrivial possibilities are exactly (4.3). Modulus 2 adds no information. Choose <span class="math" data-tex="\(d_2\)">\(d_2\)</span> from their labels, or 1 if the 2-component is absent, and set <span class="math" data-tex="\(d=d_2\prod p^*\)">\(d=d_2\prod p^*\)</span> over the odd components. The verification following (4.4) shows this is fundamental. Reciprocity identifies its Kronecker character with the given character, and the local conductor product proves <span class="math" data-tex="\(|d|\)">\(|d|\)</span> is the conductor. The uniqueness of the local factors proves uniqueness of <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The elementary group and field language and the Chinese remainder theorem are prerequisites. For pairwise coprime moduli, the latter follows from Bézout's identity by choosing coefficients that are 1 at one modulus and 0 at the others; their weighted sum gives every tuple of residues, and divisibility by the product gives uniqueness. All character extension, orthogonality, primitive-root, reciprocity, conductor, counting and real-character classification arguments needed here have been proved above.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Dimitris Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, Graduate Studies in Mathematics 203, American Mathematical Society, 2019; Chapters 9 and 10.</li>
+<li>Andrew V. Sutherland, <a href="https://math.mit.edu/classes/18.785/2019fa/LectureNotes18.pdf"><em>Dirichlet L-functions, primes in arithmetic progressions</em></a>, MIT 18.785, 2019; the sections on characters and conductors.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-02.html">Dirichlet&#x27;s theorem on primes in arithmetic progressions →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ordinary Hilbert C*-module foundations</title><link rel="stylesheet" href="../../assets/site.css"><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><p><a href="../../">Kasparov’s KK-theory</a> · <a href="hilbert-module-foundations.md">Exact structured source</a></p><article class="lesson">
+<h1 id="ordinary-hilbert-c--module-foundations">Ordinary Hilbert C*-module foundations</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Independently written exposition; Self-checked by the writing AI. Public domain (CC0). The separately linked source retains its author's copyright and terms.</em></p>
+<p>This receiving companion proves the ordinary module facts needed before the compact-operator and interior tensor constructions. Coefficient algebras may be nonunital, nonseparable and not sigma-unital; modules need not be full or countably generated. Inner products are linear in the second variable. Grading and coefficient semilinearity are added in the graded lesson after these ordinary constructions.</p>
+<span id="mf-001"></span>
+<h2 id="mf-1-exact-coefficient-inputs-and-a-state-test">MF.1. Exact coefficient inputs and a state test</h2>
+<p>The earlier programme lesson <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras: continuous functional calculus, automatic continuity, positive cones and quotients</a> proves the following inputs: spectral permanence in Theorem 3.2; contractivity and faithful isometry of homomorphisms in Theorems 4.2 and 4.4; continuous functional calculus, including the nonunital calculus, in Theorems 5.1 and 5.3; and the closed positive cone, conjugation of order, order bounds and positive square roots in Theorem 8.2 and Proposition 8.5. The earlier <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/hahn-banach-baire-and-the-basic-theorems-on-banach-spaces.html">Hahn–Banach lesson</a>, Theorem 2.2 and Theorem 5.3, proves complex norm-preserving extension and the closed graph theorem. These are coefficient-algebra and Banach-space inputs, with no Hilbert-module result among them. The same C*-algebra lesson, Theorem 11.4 and Corollary 11.5(1), proves a positive contractive approximate identity for every coefficient algebra. This is the approximate identity used in MF.3 and MF.6. The first KT–KK lesson independently constructs it in Lemma 2.0; that later construction is not needed to establish this companion.</p>
+<p>Here is the state argument needed below, so no representation or module-localization theorem is an additional input. In a nonzero unital C*-algebra <span class="math" data-tex="\(D\)">\(D\)</span>, a complex-linear functional <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(\|f\|=f(1)=1\)">\(\|f\|=f(1)=1\)</span> is positive. For <span class="math" data-tex="\(h=h^*\)">\(h=h^*\)</span>, the unitary <span class="math" data-tex="\(\exp(ith)\)">\(\exp(ith)\)</span> has norm one. The norm-convergent exponential series gives
+<span class="math math-display" data-tex="\[
+ f(\exp(ith))=1+itf(h)+O(t^2).
+\]">\[
+ f(\exp(ith))=1+itf(h)+O(t^2).
+\]</span>
+The inequality <span class="math" data-tex="\(|f(\exp(ith))|^2\leq1\)">\(|f(\exp(ith))|^2\leq1\)</span>, for both signs of real <span class="math" data-tex="\(t\)">\(t\)</span>, forces <span class="math" data-tex="\(\operatorname{Im} f(h)=0\)">\(\operatorname{Im} f(h)=0\)</span>. If <span class="math" data-tex="\(0\leq a\leq1\)">\(0\leq a\leq1\)</span>, then <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span> is real and
+<span class="math math-display" data-tex="\[
+ |1-f(a)|=|f(1-a)|\leq\|1-a\|\leq1;
+\]">\[
+ |1-f(a)|=|f(1-a)|\leq\|1-a\|\leq1;
+\]</span>
+hence <span class="math" data-tex="\(f(a)\geq0\)">\(f(a)\geq0\)</span>. Scaling proves positivity for every <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span>. In particular such a functional is a state and <span class="math" data-tex="\(f(d^*)=\overline{f(d)}\)">\(f(d^*)=\overline{f(d)}\)</span>, by decomposing <span class="math" data-tex="\(d\)">\(d\)</span> into real and imaginary self-adjoint parts.</p>
+<p>For any <span class="math" data-tex="\(h=h^*\in D\)">\(h=h^*\in D\)</span> and <span class="math" data-tex="\(\lambda\in\sigma_D(h)\)">\(\lambda\in\sigma_D(h)\)</span>, evaluation at <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on the unital algebra <span class="math" data-tex="\(C^*(1,h)\)">\(C^*(1,h)\)</span>, through continuous functional calculus, is a functional of norm one taking <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Hahn–Banach extends it with the same norm to <span class="math" data-tex="\(D\)">\(D\)</span>; the preceding argument makes the extension positive. Consequently states detect positivity of self-adjoint elements: if <span class="math" data-tex="\(h\)">\(h\)</span> has a negative spectral value, this extension takes a negative value on <span class="math" data-tex="\(h\)">\(h\)</span>. They also recover the norm of a positive element by evaluation at its maximum spectral value. For arbitrary <span class="math" data-tex="\(d\)">\(d\)</span>, if every state vanishes on <span class="math" data-tex="\(d\)">\(d\)</span>, its real and imaginary self-adjoint parts vanish by the same norm-attaining argument, so <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p>For a nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, apply this argument in its forced unitization <span class="math" data-tex="\(D=\widetilde A\)">\(D=\widetilde A\)</span>, restricting the states to <span class="math" data-tex="\(A\)">\(A\)</span>. Restrictions may have norm smaller than one; only positivity and separation are required. Thus, including <span class="math" data-tex="\(A=\{0\}\)">\(A=\{0\}\)</span>,
+<span class="math math-display" data-tex="\[
+ h=h^*\in A,\qquad
+ \bigl[f(h)\geq0\text{ for every state }f\text{ of }\widetilde A\bigr]
+ \quad\Longleftrightarrow\quad h\geq0.                 \tag{MF.1}
+\]">\[
+ h=h^*\in A,\qquad
+ \bigl[f(h)\geq0\text{ for every state }f\text{ of }\widetilde A\bigr]
+ \quad\Longleftrightarrow\quad h\geq0.                 \tag{MF.1}
+\]</span>
+Positivity in <span class="math" data-tex="\(A\)">\(A\)</span> and its unitization agrees by spectral permanence. No pure-state or Krein–Milman assertion is needed here.</p>
+<span id="mf-002"></span>
+<h2 id="mf-2-a-coefficient-valued-inner-product-and-cauchy-schwarz">MF.2. A coefficient-valued inner product and Cauchy–Schwarz</h2>
+<p>Let <span class="math" data-tex="\(E_0\)">\(E_0\)</span> be a complex vector space with a complex-bilinear right action of a C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>. Suppose that a map <span class="math" data-tex="\(\langle\ ,\ \rangle:E_0\times E_0\to A\)">\(\langle\ ,\ \rangle:E_0\times E_0\to A\)</span> is additive and complex-linear in its second argument, satisfies
+<span class="math math-display" data-tex="\[
+ \langle x,ya\rangle=\langle x,y\rangle a,\qquad
+ \langle y,x\rangle=\langle x,y\rangle^*,\qquad
+ \langle x,x\rangle\geq0.                            \tag{MF.2}
+\]">\[
+ \langle x,ya\rangle=\langle x,y\rangle a,\qquad
+ \langle y,x\rangle=\langle x,y\rangle^*,\qquad
+ \langle x,x\rangle\geq0.                            \tag{MF.2}
+\]</span>
+It follows that it is conjugate-linear in its first argument and that
+<span class="math" data-tex="\(\langle xa,yb\rangle=a^*\langle x,y\rangle b\)">\(\langle xa,yb\rangle=a^*\langle x,y\rangle b\)</span>.
+Definiteness is not required yet. Put
+<span class="math" data-tex="\(\|x\|=\|\langle x,x\rangle\|^{1/2}\)">\(\|x\|=\|\langle x,x\rangle\|^{1/2}\)</span>.</p>
+<p>We first prove the scalar inequality used in the coefficient argument. For any positive semidefinite complex sesquilinear form <span class="math" data-tex="\(b\)">\(b\)</span>, linear in its second argument, set <span class="math" data-tex="\(u=b(v,v)\)">\(u=b(v,v)\)</span>, <span class="math" data-tex="\(w=b(z,z)\)">\(w=b(z,z)\)</span>, and <span class="math" data-tex="\(c=b(v,z)\)">\(c=b(v,z)\)</span>. If <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>, positivity at <span class="math" data-tex="\(z-vc/u\)">\(z-vc/u\)</span> gives <span class="math" data-tex="\(w-|c|^2/u\geq0\)">\(w-|c|^2/u\geq0\)</span>. If <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, positivity at <span class="math" data-tex="\(z+tv\)">\(z+tv\)</span>, for every complex <span class="math" data-tex="\(t\)">\(t\)</span>, forces <span class="math" data-tex="\(c=0\)">\(c=0\)</span>: otherwise a suitable phase and an arbitrarily large magnitude make <span class="math" data-tex="\(w+t\overline c+\overline t c\)">\(w+t\overline c+\overline t c\)</span> negative. Thus
+<span class="math math-display" data-tex="\[
+ |b(v,z)|^2\leq b(v,v)b(z,z).                        \tag{MF.3}
+\]">\[
+ |b(v,z)|^2\leq b(v,v)b(z,z).                        \tag{MF.3}
+\]</span></p>
+<p>We now prove the stronger coefficient-order inequality
+<span class="math math-display" data-tex="\[
+ \langle x,y\rangle^*\langle x,y\rangle
+       \leq \|x\|^2\langle y,y\rangle.              \tag{MF.4}
+\]">\[
+ \langle x,y\rangle^*\langle x,y\rangle
+       \leq \|x\|^2\langle y,y\rangle.              \tag{MF.4}
+\]</span>
+Write <span class="math" data-tex="\(c=\langle x,y\rangle\)">\(c=\langle x,y\rangle\)</span> and <span class="math" data-tex="\(a=\langle x,x\rangle\)">\(a=\langle x,x\rangle\)</span>. For a state <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span>, the form <span class="math" data-tex="\(b_f(v,z)=f(\langle v,z\rangle)\)">\(b_f(v,z)=f(\langle v,z\rangle)\)</span> meets the hypotheses just proved. Put <span class="math" data-tex="\(q=f(c^*c)\geq0\)">\(q=f(c^*c)\geq0\)</span> and <span class="math" data-tex="\(v=xc\)">\(v=xc\)</span>. Then
+<span class="math math-display" data-tex="\[
+ b_f(v,y)=q,\qquad
+ b_f(v,v)=f(c^*ac)\leq\|x\|^2q,
+\]">\[
+ b_f(v,y)=q,\qquad
+ b_f(v,v)=f(c^*ac)\leq\|x\|^2q,
+\]</span>
+since <span class="math" data-tex="\(0\leq a\leq\|x\|^2 1\)">\(0\leq a\leq\|x\|^2 1\)</span> and conjugation preserves order in the coefficient algebra. Equation (MF.3) therefore gives
+<span class="math" data-tex="\(q^2\leq\|x\|^2q\, f(\langle y,y\rangle)\)">\(q^2\leq\|x\|^2q\, f(\langle y,y\rangle)\)</span>.
+When <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span>, divide by <span class="math" data-tex="\(q\)">\(q\)</span>; when <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the desired inequality is automatic. This holds for every <span class="math" data-tex="\(f\)">\(f\)</span>, so (MF.1) proves (MF.4). In particular
+<span class="math math-display" data-tex="\[
+ \|\langle x,y\rangle\|\leq\|x\|\|y\|.             \tag{MF.5}
+\]">\[
+ \|\langle x,y\rangle\|\leq\|x\|\|y\|.             \tag{MF.5}
+\]</span>
+This proof uses scalar positive forms and coefficient states before constructing any adjointable-operator algebra or matrix Gram cone.</p>
+<p>The triangle inequality follows by expanding <span class="math" data-tex="\(\langle x+y,x+y\rangle\)">\(\langle x+y,x+y\rangle\)</span>, taking its norm and using (MF.5):
+<span class="math math-display" data-tex="\[
+ \|x+y\|^2\leq \|x\|^2+2\|x\|\|y\|+\|y\|^2.
+\]">\[
+ \|x+y\|^2\leq \|x\|^2+2\|x\|\|y\|+\|y\|^2.
+\]</span>
+Complex homogeneity follows directly from (MF.2). Moreover
+<span class="math math-display" data-tex="\[
+ \|xa\|^2=\|a^*\langle x,x\rangle a\|
+       \leq\|a\|^2\|x\|^2.                         \tag{MF.6}
+\]">\[
+ \|xa\|^2=\|a^*\langle x,x\rangle a\|
+       \leq\|a\|^2\|x\|^2.                         \tag{MF.6}
+\]</span>
+Thus this is a seminorm; it is a norm if <span class="math" data-tex="\(\langle x,x\rangle=0\)">\(\langle x,x\rangle=0\)</span> implies <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Its null vectors are orthogonal to every vector by (MF.5).</p>
+<span id="mf-003"></span>
+<h2 id="mf-3-quotient-completion-direct-sums-and-coefficient-action">MF.3. Quotient, completion, direct sums and coefficient action</h2>
+<p>The set <span class="math" data-tex="\(N=\{x:\|x\|=0\}\)">\(N=\{x:\|x\|=0\}\)</span> is a vector subspace by the seminorm inequalities, and a right submodule by (MF.6). Since <span class="math" data-tex="\(\langle n,y\rangle=\langle y,n\rangle=0\)">\(\langle n,y\rangle=\langle y,n\rangle=0\)</span> for <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>, the inner product on <span class="math" data-tex="\(E_0/N\)">\(E_0/N\)</span> is independent of representatives and is definite. Its norm is exactly the quotient's inherited seminorm.</p>
+<p>Take the metric completion <span class="math" data-tex="\(E\)">\(E\)</span> of <span class="math" data-tex="\(E_0/N\)">\(E_0/N\)</span>. The construction can be made with Cauchy sequences, identifying two sequences whose difference tends to zero. Give a sequence class the norm <span class="math" data-tex="\(\lim_n\|x_n\|\)">\(\lim_n\|x_n\|\)</span>, which is independent of its representative by the triangle inequality. Constant sequences embed the original space isometrically and densely: a sufficiently late term of a Cauchy sequence is close to its class. To see completeness, for any Cauchy sequence of classes <span class="math" data-tex="\(z_m\)">\(z_m\)</span>, choose original vectors <span class="math" data-tex="\(u_m\)">\(u_m\)</span> with <span class="math" data-tex="\(\|z_m-u_m\|&lt;1/m\)">\(\|z_m-u_m\|&lt;1/m\)</span>. Then <span class="math" data-tex="\((u_m)\)">\((u_m)\)</span> is Cauchy, its sequence class <span class="math" data-tex="\(u\)">\(u\)</span> satisfies <span class="math" data-tex="\(\|u_m-u\|\to0\)">\(\|u_m-u\|\to0\)</span>, and the triangle inequality gives <span class="math" data-tex="\(z_m\to u\)">\(z_m\to u\)</span>. Cauchy sequences <span class="math" data-tex="\(x_n,y_n\)">\(x_n,y_n\)</span> are bounded and satisfy
+<span class="math math-display" data-tex="\[
+ \|\langle x_n,y_n\rangle-\langle x_m,y_m\rangle\|
+ \leq\|x_n-x_m\|\|y_n\|+\|x_m\|\|y_n-y_m\|.
+\]">\[
+ \|\langle x_n,y_n\rangle-\langle x_m,y_m\rangle\|
+ \leq\|x_n-x_m\|\|y_n\|+\|x_m\|\|y_n-y_m\|.
+\]</span>
+Their inner products therefore converge in <span class="math" data-tex="\(A\)">\(A\)</span>. This estimate also shows that changing either representative sequence does not change the limit. Define the inner product of their completed vectors to be this limit. Addition, scalar multiplication, conjugate symmetry and right linearity pass to the limit. Positivity passes to the limit because <span class="math" data-tex="\(A_+\)">\(A_+\)</span> is closed. The norm identity passes to the limit because the norm on <span class="math" data-tex="\(A\)">\(A\)</span> is continuous; it gives definiteness in the completed metric space.</p>
+<p>For each <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, (MF.6) extends <span class="math" data-tex="\(x\mapsto xa\)">\(x\mapsto xa\)</span> continuously to <span class="math" data-tex="\(E\)">\(E\)</span>. Bilinearity and associativity follow on the dense original space and hence on <span class="math" data-tex="\(E\)">\(E\)</span>, and (MF.6) still holds. The limiting inner-product identities show that <span class="math" data-tex="\(E\)">\(E\)</span> is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module. This proves both the semidefinite quotient and its completion, without a unit or any countability condition.</p>
+<p>For a family of Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-modules <span class="math" data-tex="\((E_i)_{i\in I}\)">\((E_i)_{i\in I}\)</span>, first give the algebraic finite-support sum the form
+<span class="math math-display" data-tex="\[
+ \langle x,y\rangle=\sum_{i\in I}\langle x_i,y_i\rangle.
+                                                               \tag{MF.7}
+\]">\[
+ \langle x,y\rangle=\sum_{i\in I}\langle x_i,y_i\rangle.
+                                                               \tag{MF.7}
+\]</span>
+It is definite: each positive summand of a zero diagonal sum must vanish. Complete as above. This is the Hilbert-module direct sum <span class="math" data-tex="\(\bigoplus_{i\in I}E_i\)">\(\bigoplus_{i\in I}E_i\)</span>. Its coordinate maps and finite-coordinate projections have norm at most one because their diagonal sums are dominated by the full positive diagonal sum. A coordinate inclusion is isometric; its adjoint is its coordinate projection, as follows directly from (MF.7).</p>
+<p>Equivalently, the direct sum consists of families <span class="math" data-tex="\(x_i\in E_i\)">\(x_i\in E_i\)</span> for which the net
+<span class="math math-display" data-tex="\[
+ \sum_{i\in J}\langle x_i,x_i\rangle
+ \quad(J\subset I\text{ finite, ordered by inclusion})
+                                                               \tag{MF.8}
+\]">\[
+ \sum_{i\in J}\langle x_i,x_i\rangle
+ \quad(J\subset I\text{ finite, ordered by inclusion})
+                                                               \tag{MF.8}
+\]</span>
+converges in norm. Indeed their finite-support vectors are Cauchy precisely when the positive finite-tail sums tend to zero in norm: the squared norm of a difference of two such vectors is the norm of the sum over their symmetric difference. Norm convergence in (MF.8) makes these tails uniformly small. Conversely, for an element of the completion, coordinates exist by continuity. If a finite-support vector <span class="math" data-tex="\(z\)">\(z\)</span> is close to <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(J\)">\(J\)</span> contains its support, then
+<span class="math math-display" data-tex="\[
+ \|x-P_Jx\|=\|(1-P_J)(x-z)\|\leq\|x-z\|.
+\]">\[
+ \|x-P_Jx\|=\|(1-P_J)(x-z)\|\leq\|x-z\|.
+\]</span>
+Here the same positive-sum estimate proves that <span class="math" data-tex="\(1-P_J\)">\(1-P_J\)</span> is a contraction. Thus finite truncations converge to <span class="math" data-tex="\(x\)">\(x\)</span>, giving (MF.8). For two such families, the net of cross sums in (MF.7) converges as well: on any finite tail, (MF.5) bounds its norm by the product of the two tail norms. This is the completed inner product.</p>
+<p>In particular <span class="math" data-tex="\(A\)">\(A\)</span>, with <span class="math" data-tex="\(\langle a,b\rangle=a^*b\)">\(\langle a,b\rangle=a^*b\)</span>, is a Hilbert module, and <span class="math" data-tex="\(A^n\)">\(A^n\)</span> has norm
+<span class="math math-display" data-tex="\[
+ \|(a_i)\|=\left\|\sum_i a_i^*a_i\right\|^{1/2}.
+\]">\[
+ \|(a_i)\|=\left\|\sum_i a_i^*a_i\right\|^{1/2}.
+\]</span>
+The standard module <span class="math" data-tex="\(H_A=\bigoplus_{n\in\mathbb N}A\)">\(H_A=\bigoplus_{n\in\mathbb N}A\)</span> is defined by norm convergence of <span class="math" data-tex="\(\sum a_n^*a_n\)">\(\sum a_n^*a_n\)</span>. It does not require <span class="math" data-tex="\(\sum\|a_n\|^2&lt;\infty\)">\(\sum\|a_n\|^2&lt;\infty\)</span>. Nor does an arbitrary <span class="math" data-tex="\(A\)">\(A\)</span> make <span class="math" data-tex="\(H_A\)">\(H_A\)</span> countably generated.</p>
+<p>The scalar unitization acts on every module by
+<span class="math" data-tex="\(x(a+\lambda1)=xa+\lambda x\)">\(x(a+\lambda1)=xa+\lambda x\)</span>. Expanding products verifies associativity, and expanding the inner product gives
+<span class="math math-display" data-tex="\[
+ \langle x(a+\lambda1),y(b+\mu1)\rangle
+ =(a+\lambda1)^*\langle x,y\rangle(b+\mu1).
+\]">\[
+ \langle x(a+\lambda1),y(b+\mu1)\rangle
+ =(a+\lambda1)^*\langle x,y\rangle(b+\mu1).
+\]</span>
+The coefficient C*-norm inequality therefore gives
+<span class="math" data-tex="\(\|x(a+\lambda1)\|\leq\|x\|\|a+\lambda1\|\)">\(\|x(a+\lambda1)\|\leq\|x\|\|a+\lambda1\|\)</span>.
+This justifies the unitized inverses used in later compact-operator proofs, including when the coefficients do not have an identity.</p>
+<p>Let <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> be a positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, from the earlier C*-algebra lesson, Corollary 11.5(1). For any <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, put <span class="math" data-tex="\(a=\langle x,x\rangle\)">\(a=\langle x,x\rangle\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \langle x-xe_\lambda,x-xe_\lambda\rangle
+ =a-ae_\lambda-e_\lambda a+e_\lambda a e_\lambda
+ \longrightarrow0
+\]">\[
+ \langle x-xe_\lambda,x-xe_\lambda\rangle
+ =a-ae_\lambda-e_\lambda a+e_\lambda a e_\lambda
+ \longrightarrow0
+\]</span>
+in norm. The first two approximate-identity limits are coefficient-algebra limits; the last follows from contractivity and
+<span class="math" data-tex="\(e_\lambda a e_\lambda-a=e_\lambda(ae_\lambda-a)+(e_\lambda a-a)\)">\(e_\lambda a e_\lambda-a=e_\lambda(ae_\lambda-a)+(e_\lambda a-a)\)</span>.
+Hence <span class="math" data-tex="\(xe_\lambda\to x\)">\(xe_\lambda\to x\)</span>, and the linear span of <span class="math" data-tex="\(EA\)">\(EA\)</span> is dense in <span class="math" data-tex="\(E\)">\(E\)</span>. We use precisely this density, without asserting an additional exact single-product factorization theorem.</p>
+<span id="mf-004"></span>
+<h2 id="mf-4-adjointability-implies-linearity-and-boundedness">MF.4. Adjointability implies linearity and boundedness</h2>
+<p>For Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-modules <span class="math" data-tex="\(E,F\)">\(E,F\)</span>, suppose that maps <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> and <span class="math" data-tex="\(S:F\to E\)">\(S:F\to E\)</span> satisfy
+<span class="math math-display" data-tex="\[
+ \langle Tx,y\rangle_F=\langle x,Sy\rangle_E
+ \qquad(x\in E,\ y\in F).                            \tag{MF.9}
+\]">\[
+ \langle Tx,y\rangle_F=\langle x,Sy\rangle_E
+ \qquad(x\in E,\ y\in F).                            \tag{MF.9}
+\]</span>
+Neither map is assumed linear or bounded. If two maps work as <span class="math" data-tex="\(S\)">\(S\)</span>, subtract their values at <span class="math" data-tex="\(y\)">\(y\)</span>, pair against all <span class="math" data-tex="\(x\)">\(x\)</span>, and then take <span class="math" data-tex="\(x\)">\(x\)</span> equal to that difference. Definiteness proves uniqueness; write <span class="math" data-tex="\(S=T^*\)">\(S=T^*\)</span>. Taking adjoints of coefficient values in (MF.9) shows that <span class="math" data-tex="\(T\)">\(T\)</span> is the adjoint of <span class="math" data-tex="\(T^*\)">\(T^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(x,z\in E\)">\(x,z\in E\)</span>, the difference <span class="math" data-tex="\(T(x+z)-Tx-Tz\)">\(T(x+z)-Tx-Tz\)</span> pairs to zero against every <span class="math" data-tex="\(y\)">\(y\)</span>, by additivity of the right-hand side of (MF.9). Pairing against that difference proves additivity of <span class="math" data-tex="\(T\)">\(T\)</span>. The same argument with a complex scalar proves complex homogeneity. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, both <span class="math" data-tex="\(T(xa)\)">\(T(xa)\)</span> and <span class="math" data-tex="\((Tx)a\)">\((Tx)a\)</span> pair against <span class="math" data-tex="\(y\)">\(y\)</span> to give
+<span class="math" data-tex="\(a^*\langle x,T^*y\rangle\)">\(a^*\langle x,T^*y\rangle\)</span>, proving right <span class="math" data-tex="\(A\)">\(A\)</span>-linearity. Applying the same reasoning to <span class="math" data-tex="\(T^*\)">\(T^*\)</span> gives its linearity.</p>
+<p>To check the graph of <span class="math" data-tex="\(T\)">\(T\)</span>, suppose <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> and <span class="math" data-tex="\(Tx_n\to z\)">\(Tx_n\to z\)</span>. For fixed <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span>, (MF.5) gives
+<span class="math math-display" data-tex="\[
+ \langle z,y\rangle
+ =\lim_n\langle Tx_n,y\rangle
+ =\lim_n\langle x_n,T^*y\rangle
+ =\langle Tx,y\rangle .
+\]">\[
+ \langle z,y\rangle
+ =\lim_n\langle Tx_n,y\rangle
+ =\lim_n\langle x_n,T^*y\rangle
+ =\langle Tx,y\rangle .
+\]</span>
+Thus <span class="math" data-tex="\(z=Tx\)">\(z=Tx\)</span>. The earlier closed graph theorem (MF.1, Theorem 5.3 of the Banach-space lesson) makes <span class="math" data-tex="\(T\)">\(T\)</span> bounded; apply it again to <span class="math" data-tex="\(T^*\)">\(T^*\)</span>. This use of the theorem assumes only the two module spaces' completeness, proved in MF.3, and uses no presumed continuity of the other map.</p>
+<p>Write <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span> for these maps, with the bounded-map operator norm. Substitution into (MF.9) proves
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+ (RT)^*=T^*R^*,\qquad (T+U)^*=T^*+U^*,\\
+ (\alpha T)^*=\overline\alpha T^*,\qquad (T^*)^*=T.
+\end{gathered}\tag{MF.10}
+\]">\[
+\begin{gathered}
+ (RT)^*=T^*R^*,\qquad (T+U)^*=T^*+U^*,\\
+ (\alpha T)^*=\overline\alpha T^*,\qquad (T^*)^*=T.
+\end{gathered}\tag{MF.10}
+\]</span>
+Domains in a composition must agree. The identity of <span class="math" data-tex="\(E\)">\(E\)</span> has itself as adjoint.</p>
+<p>A surjective inner-product-preserving map <span class="math" data-tex="\(U:E\to F\)">\(U:E\to F\)</span> is a unitary. It is injective: if <span class="math" data-tex="\(Ux=Uz\)">\(Ux=Uz\)</span>, preservation of all four inner products of <span class="math" data-tex="\(x,z\)">\(x,z\)</span> gives <span class="math" data-tex="\(\langle x-z,x-z\rangle=0\)">\(\langle x-z,x-z\rangle=0\)</span>. Thus it has an inverse, and
+<span class="math math-display" data-tex="\[
+ \langle Ux,y\rangle
+   =\langle Ux,U(U^{-1}y)\rangle
+   =\langle x,U^{-1}y\rangle .
+\]">\[
+ \langle Ux,y\rangle
+   =\langle Ux,U(U^{-1}y)\rangle
+   =\langle x,U^{-1}y\rangle .
+\]</span>
+MF.4 supplies linearity, module linearity and boundedness from this adjoint relation, and identifies <span class="math" data-tex="\(U^*=U^{-1}\)">\(U^*=U^{-1}\)</span>. Conversely, an adjointable map with <span class="math" data-tex="\(U^*U=1_E\)">\(U^*U=1_E\)</span> and <span class="math" data-tex="\(UU^*=1_F\)">\(UU^*=1_F\)</span> is surjective and preserves inner products by (MF.9). This is the unitary criterion used when completing inner-product-preserving dense constructions.</p>
+<span id="mf-005"></span>
+<h2 id="mf-5-the-operator-c--algebra-and-its-positive-order">MF.5. The operator C*-algebra and its positive order</h2>
+<p>For <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span>, (MF.5) gives
+<span class="math math-display" data-tex="\[
+ \|Tx\|^2
+ =\|\langle x,T^*Tx\rangle\|
+ \leq\|x\|\|T^*Tx\|.
+\]">\[
+ \|Tx\|^2
+ =\|\langle x,T^*Tx\rangle\|
+ \leq\|x\|\|T^*Tx\|.
+\]</span>
+Consequently
+<span class="math math-display" data-tex="\[
+ \|T\|^2\leq\|T^*T\|\leq\|T^*\|\|T\|.
+\]">\[
+ \|T\|^2\leq\|T^*T\|\leq\|T^*\|\|T\|.
+\]</span>
+If <span class="math" data-tex="\(T\ne0\)">\(T\ne0\)</span>, division gives <span class="math" data-tex="\(\|T\|\leq\|T^*\|\)">\(\|T\|\leq\|T^*\|\)</span>; if <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, uniqueness makes <span class="math" data-tex="\(T^*=0\)">\(T^*=0\)</span>. Applying the same argument to <span class="math" data-tex="\(T^*\)">\(T^*\)</span> gives the reverse inequality. Therefore
+<span class="math math-display" data-tex="\[
+ \|T^*\|=\|T\|,\qquad
+ \|T^*T\|=\|T\|^2,\qquad
+ \|TT^*\|=\|T\|^2.                                  \tag{MF.11}
+\]">\[
+ \|T^*\|=\|T\|,\qquad
+ \|T^*T\|=\|T\|^2,\qquad
+ \|TT^*\|=\|T\|^2.                                  \tag{MF.11}
+\]</span></p>
+<p>The space of bounded linear maps between Banach spaces is complete: for an operator-norm Cauchy sequence, take its pointwise limits in the complete codomain; the uniform Cauchy estimate passes to the limits, proving boundedness and convergence in operator norm. If <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is Cauchy in <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span>, (MF.11) makes <span class="math" data-tex="\(T_n^*\)">\(T_n^*\)</span> Cauchy too. Let their bounded-map limits be <span class="math" data-tex="\(T,S\)">\(T,S\)</span>. Passing to the limit in (MF.9), using (MF.5), proves <span class="math" data-tex="\(S=T^*\)">\(S=T^*\)</span>. Thus <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span> is complete. Together with (MF.10), submultiplicativity of the operator norm and (MF.11), this proves that <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> is a C*-algebra. For <span class="math" data-tex="\(E\ne0\)">\(E\ne0\)</span> it is unital with identity <span class="math" data-tex="\(1_E\)">\(1_E\)</span>; for <span class="math" data-tex="\(E=0\)">\(E=0\)</span> it is the zero algebra, and all subsequent assertions have their zero interpretation.</p>
+<p>We also need <span class="math" data-tex="\(T^*T\geq0\)">\(T^*T\geq0\)</span> when <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> has different source and target. On <span class="math" data-tex="\(E\oplus F\)">\(E\oplus F\)</span>, put
+<span class="math" data-tex="\(Q(x,y)=(0,Tx)\)">\(Q(x,y)=(0,Tx)\)</span>; its adjoint is <span class="math" data-tex="\(Q^*(x,y)=(T^*y,0)\)">\(Q^*(x,y)=(T^*y,0)\)</span>, by (MF.7) and (MF.9). Then <span class="math" data-tex="\(Q^*Q=\operatorname{diag}(T^*T,0)\geq0\)">\(Q^*Q=\operatorname{diag}(T^*T,0)\geq0\)</span> in <span class="math" data-tex="\(\mathcal L(E\oplus F)\)">\(\mathcal L(E\oplus F)\)</span>. The map
+<span class="math" data-tex="\(R\mapsto\operatorname{diag}(R,0)\)">\(R\mapsto\operatorname{diag}(R,0)\)</span> embeds <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> as a closed C*-subalgebra: it is an injective homomorphism, isometric by its action on the first summand. Coefficient spectral permanence in MF.1 therefore reflects positivity, giving <span class="math" data-tex="\(T^*T\geq0\)">\(T^*T\geq0\)</span> in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>.</p>
+<p>All the coefficient C*-algebra calculus of MF.1 now applies to <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. In particular every <span class="math" data-tex="\(P\geq0\)">\(P\geq0\)</span> has a positive square root and
+<span class="math math-display" data-tex="\[
+ \|P^{1/2}\|^2=\|P\|,\qquad
+ 0\leq T^*T\leq\|T\|^2 1_E.                         \tag{MF.12}
+\]">\[
+ \|P^{1/2}\|^2=\|P\|,\qquad
+ 0\leq T^*T\leq\|T\|^2 1_E.                         \tag{MF.12}
+\]</span>
+The first is the C*-identity for <span class="math" data-tex="\(P^{1/2}\)">\(P^{1/2}\)</span>; the second is the positive spectral norm bound. If <span class="math" data-tex="\(R=(\|T\|^2 1_E-T^*T)^{1/2}\)">\(R=(\|T\|^2 1_E-T^*T)^{1/2}\)</span>, expansion gives the coefficient-order estimate
+<span class="math math-display" data-tex="\[
+ \|T\|^2\langle x,x\rangle-\langle Tx,Tx\rangle
+       =\langle Rx,Rx\rangle\geq0.                  \tag{MF.13}
+\]">\[
+ \|T\|^2\langle x,x\rangle-\langle Tx,Tx\rangle
+       =\langle Rx,Rx\rangle\geq0.                  \tag{MF.13}
+\]</span>
+It holds for every adjointable <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span>, including different modules.</p>
+<p>For later positivity tests, we prove the converse as well:
+<span class="math math-display" data-tex="\[
+ P\in\mathcal L(E),\qquad
+ P\geq0\quad\Longleftrightarrow\quad
+ \langle x,Px\rangle\geq0\text{ for every }x\in E.  \tag{MF.14}
+\]">\[
+ P\in\mathcal L(E),\qquad
+ P\geq0\quad\Longleftrightarrow\quad
+ \langle x,Px\rangle\geq0\text{ for every }x\in E.  \tag{MF.14}
+\]</span>
+If <span class="math" data-tex="\(P\geq0\)">\(P\geq0\)</span>, then <span class="math" data-tex="\(\langle x,Px\rangle=\langle P^{1/2}x,P^{1/2}x\rangle\)">\(\langle x,Px\rangle=\langle P^{1/2}x,P^{1/2}x\rangle\)</span>.
+Conversely, the assumed diagonal values are self-adjoint, so the diagonals of
+<span class="math" data-tex="\(b(x,y)=\langle x,(P-P^*)y\rangle\)">\(b(x,y)=\langle x,(P-P^*)y\rangle\)</span> vanish. A sesquilinear form linear in its second variable satisfies
+<span class="math math-display" data-tex="\[
+ 4b(x,y)=\sum_{k=0}^3 i^{-k}b(x+i^ky,x+i^ky);
+\]">\[
+ 4b(x,y)=\sum_{k=0}^3 i^{-k}b(x+i^ky,x+i^ky);
+\]</span>
+this follows by expanding the four terms. Hence <span class="math" data-tex="\(b=0\)">\(b=0\)</span>, and pairing <span class="math" data-tex="\((P-P^*)y\)">\((P-P^*)y\)</span> with itself shows <span class="math" data-tex="\(P=P^*\)">\(P=P^*\)</span>.</p>
+<p>If a negative spectral value of this self-adjoint operator exists, choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and a real continuous function <span class="math" data-tex="\(f\)">\(f\)</span> on its spectrum that is nonzero there and vanishes off <span class="math" data-tex="\(t\leq-\delta\)">\(t\leq-\delta\)</span>. Functional calculus gives <span class="math" data-tex="\(f(P)\ne0\)">\(f(P)\ne0\)</span>, so choose <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(x=f(P)y\ne0\)">\(x=f(P)y\ne0\)</span>. The function
+<span class="math" data-tex="\(g(t)=(-\delta-t)f(t)^2\)">\(g(t)=(-\delta-t)f(t)^2\)</span> is nonnegative. Thus <span class="math" data-tex="\(g(P)=g(P)^{1/2*}g(P)^{1/2}\)">\(g(P)=g(P)^{1/2*}g(P)^{1/2}\)</span>, and the already proved forward implication in (MF.14) gives
+<span class="math math-display" data-tex="\[
+ \langle x,Px\rangle
+ \leq-\delta\langle x,x\rangle.
+\]">\[
+ \langle x,Px\rangle
+ \leq-\delta\langle x,x\rangle.
+\]</span>
+The hypothesis makes the left side positive. Since the positive cone of <span class="math" data-tex="\(A\)">\(A\)</span> is proper, this forces <span class="math" data-tex="\(\langle x,x\rangle=0\)">\(\langle x,x\rangle=0\)</span>, a contradiction. Thus the spectrum is nonnegative and <span class="math" data-tex="\(P\geq0\)">\(P\geq0\)</span>. This proof uses only continuous functional calculus in the newly constructed C*-algebra, with no spectral measure theorem.</p>
+<p>Finally the vector norm can be tested by inner products:
+<span class="math math-display" data-tex="\[
+ \|z\|=\sup_{\|y\|\leq1}\|\langle y,z\rangle\|.      \tag{MF.15}
+\]">\[
+ \|z\|=\sup_{\|y\|\leq1}\|\langle y,z\rangle\|.      \tag{MF.15}
+\]</span>
+The upper bound is (MF.5); for <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>, take <span class="math" data-tex="\(y=z/\|z\|\)">\(y=z/\|z\|\)</span>; for <span class="math" data-tex="\(z=0\)">\(z=0\)</span> both sides vanish. This formula remains valid for every Hilbert module, including nonfull modules.</p>
+<span id="mf-006"></span>
+<h2 id="mf-6-matrices-finite-gram-positivity-and-amplification">MF.6. Matrices, finite Gram positivity and amplification</h2>
+<p>We first construct the coefficient matrix C*-algebra without assuming a unit or using a matrix positivity assertion as a premise. For <span class="math" data-tex="\(m=(m_{ij})\)">\(m=(m_{ij})\)</span> with entries in <span class="math" data-tex="\(A\)">\(A\)</span>, define
+<span class="math math-display" data-tex="\[
+ (\lambda_n(m)a)_i=\sum_{j=1}^n m_{ij}a_j
+ \quad\text{on }A^n.
+\]">\[
+ (\lambda_n(m)a)_i=\sum_{j=1}^n m_{ij}a_j
+ \quad\text{on }A^n.
+\]</span>
+Coordinate norms satisfy <span class="math" data-tex="\(\|a_j\|\leq\|a\|\)">\(\|a_j\|\leq\|a\|\)</span>, so
+<span class="math math-display" data-tex="\[
+ \|\lambda_n(m)a\|\leq n^{3/2}\max_{i,j}\|m_{ij}\|\|a\|.
+\]">\[
+ \|\lambda_n(m)a\|\leq n^{3/2}\max_{i,j}\|m_{ij}\|\|a\|.
+\]</span>
+Indeed every output coordinate is at most <span class="math" data-tex="\(n\max\|m_{ij}\|\|a\|\)">\(n\max\|m_{ij}\|\|a\|\)</span>, and the norm of a column is at most the square root of the sum of its coordinate norm squares. Expanding its inner product proves that its adjoint is <span class="math" data-tex="\(\lambda_n(m^*)\)">\(\lambda_n(m^*)\)</span>. Matrix multiplication and adjoints therefore agree with operator composition and adjoints.</p>
+<p>Using a coordinate column containing <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span>, the positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span>, proves
+<span class="math math-display" data-tex="\[
+ \max_{i,j}\|m_{ij}\|\leq\|\lambda_n(m)\|.
+                                                               \tag{MF.16}
+\]">\[
+ \max_{i,j}\|m_{ij}\|\leq\|\lambda_n(m)\|.
+                                                               \tag{MF.16}
+\]</span>
+Indeed <span class="math" data-tex="\(\|m_{ij}e_\lambda\|\leq\|\lambda_n(m)\|\)">\(\|m_{ij}e_\lambda\|\leq\|\lambda_n(m)\|\)</span>, and <span class="math" data-tex="\(m_{ij}e_\lambda\to m_{ij}\)">\(m_{ij}e_\lambda\to m_{ij}\)</span>. In particular the map is faithful. If a sequence of these matrix operators is Cauchy in operator norm, (MF.16) makes every entry Cauchy in <span class="math" data-tex="\(A\)">\(A\)</span>. The upper bound just proved makes their entrywise limit the operator-norm limit. Thus the image is a closed C*-subalgebra of <span class="math" data-tex="\(\mathcal L(A^n)\)">\(\mathcal L(A^n)\)</span>. With this norm it is <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>. The C*-norm is unique: the identity between any two complete C*-norms on the same algebra is a bijective homomorphism, so contractivity in both directions gives equality. Spectral permanence shows that positivity in this matrix algebra is exactly positivity of its image in <span class="math" data-tex="\(\mathcal L(A^n)\)">\(\mathcal L(A^n)\)</span>. This conclusion also holds when <span class="math" data-tex="\(A=0\)">\(A=0\)</span>, with the zero interpretation. Combining it with (MF.14) gives the full finite matrix test, with no self-adjointness assumption on <span class="math" data-tex="\(m\)">\(m\)</span>:
+<span class="math math-display" data-tex="\[
+ m\in M_n(A)_+
+ \quad\Longleftrightarrow\quad
+ \sum_{i,j}a_i^*m_{ij}a_j\geq0
+       \text{ for every }(a_1,\ldots,a_n)\in A^n.
+                                                               \tag{MF.16a}
+\]">\[
+ m\in M_n(A)_+
+ \quad\Longleftrightarrow\quad
+ \sum_{i,j}a_i^*m_{ij}a_j\geq0
+       \text{ for every }(a_1,\ldots,a_n)\in A^n.
+                                                               \tag{MF.16a}
+\]</span></p>
+<p>More generally, on a finite direct sum <span class="math" data-tex="\(E^n\)">\(E^n\)</span>, a matrix <span class="math" data-tex="\((S_{ij})\)">\((S_{ij})\)</span> of adjointable maps <span class="math" data-tex="\(E\to E\)">\(E\to E\)</span> acts by the same finite formula and has adjoint the transposed adjoint matrix. The finite bounds just used give boundedness. Conversely, any <span class="math" data-tex="\(S\in\mathcal L(E^n)\)">\(S\in\mathcal L(E^n)\)</span> has entries
+<span class="math" data-tex="\(S_{ij}=p_i S j_j\)">\(S_{ij}=p_i S j_j\)</span>, where <span class="math" data-tex="\(p_i,j_j\)">\(p_i,j_j\)</span> are the adjointable coordinate projection and inclusion from MF.3. On each finite column, this reconstructs <span class="math" data-tex="\(S\)">\(S\)</span>. The resulting algebraic bijection respects products and adjoints, so it identifies
+<span class="math math-display" data-tex="\[
+ M_n(\mathcal L(E))=\mathcal L(E^n)               \tag{MF.17}
+\]">\[
+ M_n(\mathcal L(E))=\mathcal L(E^n)               \tag{MF.17}
+\]</span>
+isometrically, by faithful isometry. This does not assert
+<span class="math" data-tex="\(\mathcal L(A^n)=M_n(A)\)">\(\mathcal L(A^n)=M_n(A)\)</span> for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>: the latter is the closed subalgebra just constructed.</p>
+<p>For <span class="math" data-tex="\(x_1,\ldots,x_n\in E\)">\(x_1,\ldots,x_n\in E\)</span>, define the row
+<span class="math math-display" data-tex="\[
+ V:A^n\longrightarrow E,\qquad
+ V(a)=\sum_{j=1}^n x_j a_j.
+\]">\[
+ V:A^n\longrightarrow E,\qquad
+ V(a)=\sum_{j=1}^n x_j a_j.
+\]</span>
+The bound <span class="math" data-tex="\(\|V(a)\|\leq\sum_j\|x_j\|\|a\|\)">\(\|V(a)\|\leq\sum_j\|x_j\|\|a\|\)</span> makes it bounded. Its proposed adjoint is
+<span class="math math-display" data-tex="\[
+ V^*z=(\langle x_j,z\rangle)_{j=1}^n;
+\]">\[
+ V^*z=(\langle x_j,z\rangle)_{j=1}^n;
+\]</span>
+(MF.5) makes this column bounded, with norm at most
+<span class="math" data-tex="\((\sum_j\|x_j\|^2)^{1/2}\|z\|\)">\((\sum_j\|x_j\|^2)^{1/2}\|z\|\)</span>. Expanding the inner product verifies (MF.9). The operator <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> is positive by MF.5, and its coefficient matrix is
+<span class="math math-display" data-tex="\[
+ G(x_1,\ldots,x_n)=[\langle x_i,x_j\rangle]_{i,j}
+                  \in M_n(A)_+.                   \tag{MF.18}
+\]">\[
+ G(x_1,\ldots,x_n)=[\langle x_i,x_j\rangle]_{i,j}
+                  \in M_n(A)_+.                   \tag{MF.18}
+\]</span>
+Positivity reflects from <span class="math" data-tex="\(\mathcal L(A^n)\)">\(\mathcal L(A^n)\)</span> to its matrix C*-subalgebra, as established above. If the original inner product was merely semidefinite, pass first to the quotient and completion in MF.3; its Gram entries are the original entries. Thus (MF.18) holds in that case too.</p>
+<p>There is also a useful finite-row norm identity. Let <span class="math" data-tex="\(R_X:A^n\to E\)">\(R_X:A^n\to E\)</span> and <span class="math" data-tex="\(R_Y:A^n\to F\)">\(R_Y:A^n\to F\)</span> be the rows associated with finite families <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, and put <span class="math" data-tex="\(G_X=R_X^*R_X\)">\(G_X=R_X^*R_X\)</span>, <span class="math" data-tex="\(G_Y=R_Y^*R_Y\)">\(G_Y=R_Y^*R_Y\)</span>. Applying (MF.11) first to <span class="math" data-tex="\(K=R_XR_Y^*\)">\(K=R_XR_Y^*\)</span>, then to <span class="math" data-tex="\(S=G_X^{1/2}R_Y^*\)">\(S=G_X^{1/2}R_Y^*\)</span>, gives
+<span class="math math-display" data-tex="\[
+ \|K\|^2
+ =\|R_YG_XR_Y^*\|
+ =\|S^*S\|
+ =\|SS^*\|
+ =\|G_X^{1/2}G_YG_X^{1/2}\|.                       \tag{MF.18a}
+\]">\[
+ \|K\|^2
+ =\|R_YG_XR_Y^*\|
+ =\|S^*S\|
+ =\|SS^*\|
+ =\|G_X^{1/2}G_YG_X^{1/2}\|.                       \tag{MF.18a}
+\]</span>
+The last norm is the norm in <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>, since its inclusion into <span class="math" data-tex="\(\mathcal L(A^n)\)">\(\mathcal L(A^n)\)</span> is isometric. Applying the same argument to <span class="math" data-tex="\(K^*\)">\(K^*\)</span> also gives <span class="math" data-tex="\(\|K\|^2=\|G_Y^{1/2}G_XG_Y^{1/2}\|\)">\(\|K\|^2=\|G_Y^{1/2}G_XG_Y^{1/2}\|\)</span>. Thus either finite Gram norm expression used for continuous fields of compact operators follows from the preceding proofs.</p>
+<p>If <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span>, conjugating the positive operator
+<span class="math" data-tex="\(\|T\|^2 1_E-T^*T\)">\(\|T\|^2 1_E-T^*T\)</span> by <span class="math" data-tex="\(V\)">\(V\)</span> gives
+<span class="math math-display" data-tex="\[
+ [\langle Tx_i,Tx_j\rangle]
+       \leq\|T\|^2[\langle x_i,x_j\rangle]
+       \quad\text{in }M_n(A).                      \tag{MF.19}
+\]">\[
+ [\langle Tx_i,Tx_j\rangle]
+       \leq\|T\|^2[\langle x_i,x_j\rangle]
+       \quad\text{in }M_n(A).                      \tag{MF.19}
+\]</span>
+The conjugation is positive because
+<span class="math" data-tex="\(V^*RV=(R^{1/2}V)^*(R^{1/2}V)\)">\(V^*RV=(R^{1/2}V)^*(R^{1/2}V)\)</span> for <span class="math" data-tex="\(R\geq0\)">\(R\geq0\)</span>, and the difference's entries lie in the matrix subalgebra. This proves the finite matrix estimate needed for tensoring an operator, including nonunital <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>For a possibly degenerate homomorphism <span class="math" data-tex="\(\phi:A\to\mathcal L(F)\)">\(\phi:A\to\mathcal L(F)\)</span>, entrywise application followed by (MF.17) defines
+<span class="math math-display" data-tex="\[
+ \phi_n:M_n(A)\longrightarrow\mathcal L(F^n).
+\]">\[
+ \phi_n:M_n(A)\longrightarrow\mathcal L(F^n).
+\]</span>
+Finite matrix expansion verifies its multiplication and adjoint identities. It is contractive by the coefficient C*-algebra homomorphism theorem in MF.1, and it preserves positivity by positive square roots:
+<span class="math" data-tex="\(\phi_n(G)=\phi_n(G^{1/2})^*\phi_n(G^{1/2})\)">\(\phi_n(G)=\phi_n(G^{1/2})^*\phi_n(G^{1/2})\)</span>.
+Evaluating this positive operator on a column <span class="math" data-tex="\(y\in F^n\)">\(y\in F^n\)</span>, using (MF.14), gives
+<span class="math math-display" data-tex="\[
+ \sum_{i,j}\langle y_i,\phi(\langle x_i,x_j\rangle)y_j\rangle
+ \geq0.                                            \tag{MF.20}
+\]">\[
+ \sum_{i,j}\langle y_i,\phi(\langle x_i,x_j\rangle)y_j\rangle
+ \geq0.                                            \tag{MF.20}
+\]</span>
+Neither nondegeneracy, fullness, unitality nor countability occurs in this reasoning.</p>
+<p>For use with two finite tensor sums, even a semidefinite module form gives a positive two-by-two Gram matrix by (MF.18). Its off-diagonal estimate is therefore also available directly: if
+<span class="math math-display" data-tex="\[
+ \begin{pmatrix}a&amp;b\\b^*&amp;d\end{pmatrix}\geq0
+       \quad\text{in }M_2(A),
+\]">\[
+ \begin{pmatrix}a&amp;b\\b^*&amp;d\end{pmatrix}\geq0
+       \quad\text{in }M_2(A),
+\]</span>
+work in the unitization, add <span class="math" data-tex="\(\varepsilon1\)">\(\varepsilon1\)</span> to the first corner and compress by the column
+<span class="math" data-tex="\((-(a+\varepsilon1)^{-1}b,1)^{\mathsf T}\)">\((-(a+\varepsilon1)^{-1}b,1)^{\mathsf T}\)</span>. Matrix multiplication gives
+<span class="math" data-tex="\(d-b^*(a+\varepsilon1)^{-1}b\geq0\)">\(d-b^*(a+\varepsilon1)^{-1}b\geq0\)</span>.
+Functional calculus gives
+<span class="math" data-tex="\((a+\varepsilon1)^{-1}\geq(\|a\|+\varepsilon)^{-1}1\)">\((a+\varepsilon1)^{-1}\geq(\|a\|+\varepsilon)^{-1}1\)</span>.
+Hence
+<span class="math math-display" data-tex="\[
+ b^*b\leq(\|a\|+\varepsilon)d,
+ \quad\text{and so}\quad b^*b\leq\|a\|d            \tag{MF.21}
+\]">\[
+ b^*b\leq(\|a\|+\varepsilon)d,
+ \quad\text{and so}\quad b^*b\leq\|a\|d            \tag{MF.21}
+\]</span>
+by closedness of the positive cone. The coefficient-valued Cauchy–Schwarz of MF.2 was proved before this matrix argument; there is no dependency cycle.</p>
+<span id="mf-007"></span>
+<h2 id="mf-7-rank-one-operators">MF.7. Rank-one operators</h2>
+<p>For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> and <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span>, put
+<span class="math math-display" data-tex="\[
+ \theta_{x,y}:F\to E,\qquad
+ \theta_{x,y}z=x\langle y,z\rangle .
+\]">\[
+ \theta_{x,y}:F\to E,\qquad
+ \theta_{x,y}z=x\langle y,z\rangle .
+\]</span>
+Equations (MF.5) and (MF.6) give
+<span class="math math-display" data-tex="\[
+ \|\theta_{x,y}\|\leq\|x\|\|y\|.                    \tag{MF.22}
+\]">\[
+ \|\theta_{x,y}\|\leq\|x\|\|y\|.                    \tag{MF.22}
+\]</span>
+The coefficient inner-product identities verify
+<span class="math" data-tex="\(\theta_{x,y}^*=\theta_{y,x}\)">\(\theta_{x,y}^*=\theta_{y,x}\)</span>. For compatible module vectors, finite substitution gives
+<span class="math math-display" data-tex="\[
+ \theta_{x,y}\theta_{u,v}
+       =\theta_{x\langle y,u\rangle,v},\qquad
+ T\theta_{x,y}=\theta_{Tx,y},\qquad
+ \theta_{x,y}S=\theta_{x,S^*y}.                     \tag{MF.23}
+\]">\[
+ \theta_{x,y}\theta_{u,v}
+       =\theta_{x\langle y,u\rangle,v},\qquad
+ T\theta_{x,y}=\theta_{Tx,y},\qquad
+ \theta_{x,y}S=\theta_{x,S^*y}.                     \tag{MF.23}
+\]</span>
+Every identity has matching source and target modules over the same <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The map <span class="math" data-tex="\(R_x:A\to E\)">\(R_x:A\to E\)</span>, <span class="math" data-tex="\(R_x(a)=xa\)">\(R_x(a)=xa\)</span>, is adjointable, with
+<span class="math" data-tex="\(R_x^*(z)=\langle x,z\rangle\)">\(R_x^*(z)=\langle x,z\rangle\)</span>. The upper bound <span class="math" data-tex="\(\|R_x\|\leq\|x\|\)">\(\|R_x\|\leq\|x\|\)</span> follows from (MF.6), while <span class="math" data-tex="\(xe_\lambda\to x\)">\(xe_\lambda\to x\)</span> and <span class="math" data-tex="\(\|e_\lambda\|\leq1\)">\(\|e_\lambda\|\leq1\)</span> from MF.3 give the reverse bound. Therefore
+<span class="math math-display" data-tex="\[
+ \theta_{x,x}=R_xR_x^*\geq0,\qquad
+ \|\theta_{x,x}\|=\|R_xR_x^*\|=\|x\|^2.             \tag{MF.24}
+\]">\[
+ \theta_{x,x}=R_xR_x^*\geq0,\qquad
+ \|\theta_{x,x}\|=\|R_xR_x^*\|=\|x\|^2.             \tag{MF.24}
+\]</span>
+Positivity of <span class="math" data-tex="\(R_xR_x^*\)">\(R_xR_x^*\)</span> and its norm identity are the rectangular cases already proved in MF.5. These statements establish the rank-one foundation. The compact ideal, its multipliers, countability criteria and strict topology are the next constructions, proved in the graded lesson, Lemma 2.0; they are not assumptions used anywhere above.</p>
+<span id="mf-008"></span>
+<h2 id="mf-8-use-before-the-existing-compact-and-tensor-proofs">MF.8. Use before the existing compact and tensor proofs</h2>
+<p>The compact-module proof in the graded lesson, Lemma 2.0, can now take (MF.22)–(MF.24), the density of coefficient action in MF.3, and the C*-algebra and positive calculus of MF.5 as earlier proved inputs. Its proofs of the compact ideal, multiplier identification, strict topology and countability remain its own. The general double-centralizer theorem remains the first KT–KK lesson's Lemma 2.0.</p>
+<p>The ordinary interior tensor proof in the graded lesson, Lemma 6.0a, can take (MF.18)–(MF.20) for positivity, MF.3 for the null quotient and completion, (MF.19) for tensoring adjointable operators, and (MF.21) for its two-by-two estimate. That lesson proves balancing, adjoint formulas on tensors and associativity itself. This companion is required reading before those constructions; neither construction is used in proving this companion.</p>
+<p>The assertions here concern ordinary Hilbert modules and their bounded adjointable operators. They do not supply the closed-range or polar-decomposition theorems for general module maps, unbounded regular-operator calculus, module stabilization, exact factorization of a vector as a single coefficient product, or Morita equivalence. Any use of those results requires its separately written programme proof.</p>
+<h2 id="freely-readable-primary-source-and-attribution">Freely readable primary source and attribution</h2>
+<p>The mathematical source used for this independently written exposition is Bruce Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">Operator Algebras: Theory of C*-Algebras and von Neumann Algebras, corrected author edition dated 8 February 2017</a>: II.6.3.1, II.6.3.3 and II.6.3.5 for states; II.7.1.1–II.7.1.7 for module inner products, the state proof of Cauchy–Schwarz and completion; and II.7.2.1–II.7.2.7 for adjoints, the operator C*-algebra, module order, rank-one operators and finite amplification. The source abbreviates completion and the operator-algebra proof; MF.3–MF.6 give the full arguments needed here. Its references to other books are not inputs to these proofs.</p>
+<p>The PDF is freely readable on the author's site. The <a href="https://www.bruceblackadar.com/mathpubs.html">author's publication page</a> identifies the edition as revised and corrected, retains author copyright and permits use with attribution under Creative Commons rules. It does not identify a particular licence variant or version. The linked source is not relicensed by this companion's CC0 notice, and its PDF is not redistributed here.</p>
+</article></main></body></html>

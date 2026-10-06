@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recovering operators from energy forms · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-QF.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 16 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="recovering-operators-from-energy-forms">Recovering operators from energy forms</h1>
+<p><strong>Closed forms, exact domains, and directed limits.</strong></p>
+<p>A weight construction often first assigns an energy to vectors. The operator is a later consequence, and its domain must be recovered from that energy. This unit gives the precise analytic machinery: representation of a closed positive form, increasing limits of forms, and convergence of the resulting resolvents and modular powers. The Hilbert space is arbitrary. No separability assumption, countable basis, or faithful-state reduction occurs.</p>
+<p>The form-space construction is treated by Barry Simon in <a href="https://math.caltech.edu/SimonPapers/81.pdf"><em>A canonical decomposition for quadratic forms with applications to monotone convergence theorems</em> (author copy, 1978)</a>. Zoltán Sebestyén and Zsigmond Tarcsay give a complementary treatment in <a href="https://arxiv.org/pdf/2505.09588v1"><em>Basic representation theorems of forms</em> (arXiv:2505.09588v1, 2025)</a>. Their operator-domain criterion helps distinguish finite energy from an operator value. Here the representation proof proceeds through a bounded energy resolvent and a common form core; the increasing-limit proof works for directed nets, including nondense forms.</p>
+<h2 id="prerequisite-contracts-and-conventions"><span id="oa-mod-qf-01"></span><span id="OA-MOD-QF-01"></span>Prerequisite contracts and conventions</h2>
+<p>Inner products are linear in the first variable. A positive operator means a nonnegative operator; injectivity is an additional hypothesis. The zero Hilbert space is allowed.</p>
+<p>The earlier written proofs used in this unit are as follows.</p>
+<ul>
+<li><strong>QF-DEP-HILBERT:</strong> <a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary</a> proves Hilbert completion, orthogonal projection, real-to-complex Riesz representation, bounded sesquilinear representation, rectangular adjoints and the identity <span class="math" data-tex="\(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\)">\(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\)</span>. Its Cauchy-net argument applies without a countable cofinal set. These facts apply to arbitrary Hilbert spaces, including the zero space.</li>
+<li><strong>QF-DEP-SPECTRAL:</strong> <a href="OA-MOD-SK.html#oa-mod-sk-04">Bounded Borel functions and the spectral measure–Changes of variable, powers, and actual ranges</a> construct bounded Borel calculus, unbounded spectral integrals, spectral resolution of self-adjoint operators, square roots and inverses. For a real Borel function <span class="math" data-tex="\(f\)">\(f\)</span>, the actual domain of <span class="math" data-tex="\(f(E)\)">\(f(E)\)</span> is <span class="math" data-tex="\(\{x:\int |f|^2\,d\langle Ex,x\rangle&lt;\infty\}\)">\(\{x:\int |f|^2\,d\langle Ex,x\rangle&lt;\infty\}\)</span>. Closedness, adjoints, multiplication, inverse domains and form pairings are proved there. <a href="OA-MOD-SK.html#oa-mod-sk-08">Transport, reduction, and membership in an algebra</a> proves unitary transport with equality of domains. The representation proof below uses these results for a bounded positive contraction; it establishes self-adjointness of <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> later, in Problem 1.</li>
+<li><strong>QF-DEP-APPROXIMATION:</strong> <a href="notes/real-coercivity/bounded-right-multiplier.html#gp0-the-bounded-calculus-used-in-the-proof">GP0</a> proves Bernstein approximation, and <a href="OA-MOD-SK.html#oa-mod-sk-09">Convergence and cutoffs</a> proves its consequence for uniformly bounded strongly convergent nets. <a href="notes/analytic-programme/scalar-integration-programme.html">Scalar integration, Sections 0–2</a> proves nonnegative integration, monotone convergence and dominated convergence. These integration theorems concern sequences of functions; the directed form and resolvent limits below are proved by energy estimates. The elementary exponential and logarithm facts needed for imaginary powers are proved in QF-08.</li>
+</ul>
+<p>The affiliation application in QF-04 also uses <strong>QF-DEP-VN</strong>: <a href="OA-MOD-BK.html#oa-mod-bk-02">Finite-vector approximation and the bicommutant</a> proves the bicommutant theorem, <a href="OA-MOD-BK.html#oa-mod-bk-08">Testing commutation on unitaries</a> proves the span by unitaries, and <a href="OA-MOD-SK.html#oa-mod-sk-08">Transport, reduction, and membership in an algebra</a> proves bounded Borel calculus inside a von Neumann algebra. The form representation and convergence theorems need no operator algebra.</p>
+<p>For an operator <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> and <span class="math" data-tex="\(\operatorname{ran}T\)">\(\operatorname{ran}T\)</span> denote its actual domain and range, without closure. All strong operator limits below mean norm convergence after application to each fixed vector. Strong resolvent convergence of self-adjoint operators means strong convergence of their resolvents at every <span class="math" data-tex="\(z\in\mathbb C\setminus\mathbb R\)">\(z\in\mathbb C\setminus\mathbb R\)</span>.</p>
+<h2 id="a-form-includes-its-domain"><span id="oa-mod-qf-02"></span><span id="OA-MOD-QF-02"></span>A form includes its domain</h2>
+<p>A nonnegative sesquilinear form on <span class="math" data-tex="\(H\)">\(H\)</span> consists of a linear subspace <span class="math" data-tex="\(D(q)\subseteq H\)">\(D(q)\subseteq H\)</span> and a sesquilinear map <span class="math" data-tex="\(q:D(q)\times D(q)\to\mathbb C\)">\(q:D(q)\times D(q)\to\mathbb C\)</span>, linear in the first variable, with <span class="math" data-tex="\(q[x]:=q(x,x)\geq0\)">\(q[x]:=q(x,x)\geq0\)</span>. The reality of <span class="math" data-tex="\(q[x+y]\)">\(q[x+y]\)</span> and <span class="math" data-tex="\(q[x+iy]\)">\(q[x+iy]\)</span>, after expansion, gives <span class="math" data-tex="\(q(y,x)=\overline{q(x,y)}\)">\(q(y,x)=\overline{q(x,y)}\)</span>. Positivity then gives</p>
+<span class="math math-display" data-tex="\[
+|q(x,y)|^2\leq q[x]q[y].
+\]">\[
+|q(x,y)|^2\leq q[x]q[y].
+\]</span>
+<p>Indeed, apply positivity to <span class="math" data-tex="\(q[x+t y]\)">\(q[x+t y]\)</span>; when <span class="math" data-tex="\(q[y]&gt;0\)">\(q[y]&gt;0\)</span>, minimizing over <span class="math" data-tex="\(t\in\mathbb C\)">\(t\in\mathbb C\)</span> proves the inequality, and when <span class="math" data-tex="\(q[y]=0\)">\(q[y]=0\)</span>, an arbitrarily large scalar with a suitable phase forces the cross term to vanish. The same expansion determines the form from its diagonal by</p>
+<span class="math math-display" data-tex="\[
+q(x,y)=\frac14\sum_{k=0}^3 i^k q[x+i^k y].
+\]">\[
+q(x,y)=\frac14\sum_{k=0}^3 i^k q[x+i^k y].
+\]</span>
+<p>Conversely, the diagonal axioms already contain the whole sesquilinear form. Let
+<span class="math" data-tex="\(D\)">\(D\)</span> be a complex vector space and suppose that <span class="math" data-tex="\(Q:D\to[0,\infty)\)">\(Q:D\to[0,\infty)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+Q(\lambda x)=|\lambda|^2Q(x),\qquad
+Q(x+y)+Q(x-y)=2Q(x)+2Q(y).
+\tag{QF.1}
+\]">\[
+Q(\lambda x)=|\lambda|^2Q(x),\qquad
+Q(x+y)+Q(x-y)=2Q(x)+2Q(y).
+\tag{QF.1}
+\]</span>
+<p>Define first the real polarization</p>
+<span class="math math-display" data-tex="\[
+B(x,y)=\frac14\bigl(Q(x+y)-Q(x-y)\bigr).
+\tag{QF.2}
+\]">\[
+B(x,y)=\frac14\bigl(Q(x+y)-Q(x-y)\bigr).
+\tag{QF.2}
+\]</span>
+<p>This map is symmetric. Two uses of the parallelogram identity give</p>
+<span class="math math-display" data-tex="\[
+B(x+z,y)+B(x-z,y)=2B(x,y),
+\qquad B(2x,y)=2B(x,y).
+\]">\[
+B(x+z,y)+B(x-z,y)=2B(x,y),
+\qquad B(2x,y)=2B(x,y).
+\]</span>
+<p>Putting <span class="math" data-tex="\(u=x+z\)">\(u=x+z\)</span>, <span class="math" data-tex="\(v=x-z\)">\(v=x-z\)</span> in the first identity and using the second shows
+<span class="math" data-tex="\(B(u+v,y)=B(u,y)+B(v,y)\)">\(B(u+v,y)=B(u,y)+B(v,y)\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is additive in each variable. For rational
+<span class="math" data-tex="\(r\)">\(r\)</span>, it follows that <span class="math" data-tex="\(B(rx,y)=rB(x,y)\)">\(B(rx,y)=rB(x,y)\)</span>. Positivity of</p>
+<span class="math math-display" data-tex="\[
+Q(x+r y)=Q(x)+2rB(x,y)+r^2Q(y)
+\]">\[
+Q(x+r y)=Q(x)+2rB(x,y)+r^2Q(y)
+\]</span>
+<p>for rational <span class="math" data-tex="\(r\)">\(r\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+|B(x,y)|^2\leq Q(x)Q(y).
+\tag{QF.3}
+\]">\[
+|B(x,y)|^2\leq Q(x)Q(y).
+\tag{QF.3}
+\]</span>
+<p>If <span class="math" data-tex="\(r_n\in\mathbb Q\)">\(r_n\in\mathbb Q\)</span> tends to a real number <span class="math" data-tex="\(t\)">\(t\)</span>, additivity, (QF.3), and the
+first identity in (QF.1) give</p>
+<span class="math math-display" data-tex="\[
+|B(tx,y)-r_nB(x,y)|
+=|B((t-r_n)x,y)|
+\leq |t-r_n|Q(x)^{1/2}Q(y)^{1/2}.
+\]">\[
+|B(tx,y)-r_nB(x,y)|
+=|B((t-r_n)x,y)|
+\leq |t-r_n|Q(x)^{1/2}Q(y)^{1/2}.
+\]</span>
+<p>Hence <span class="math" data-tex="\(B(tx,y)=tB(x,y)\)">\(B(tx,y)=tB(x,y)\)</span>, so <span class="math" data-tex="\(B\)">\(B\)</span> is real bilinear. The invariance
+<span class="math" data-tex="\(Q(ix)=Q(x)\)">\(Q(ix)=Q(x)\)</span> implies</p>
+<span class="math math-display" data-tex="\[
+B(ix,iy)=B(x,y),\qquad B(ix,y)=-B(x,iy).
+\]">\[
+B(ix,iy)=B(x,y),\qquad B(ix,y)=-B(x,iy).
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="\[
+s(x,y)=B(x,y)-iB(ix,y)
+=\frac14\sum_{k=0}^3 i^kQ(x+i^ky)
+\tag{QF.4}
+\]">\[
+s(x,y)=B(x,y)-iB(ix,y)
+=\frac14\sum_{k=0}^3 i^kQ(x+i^ky)
+\tag{QF.4}
+\]</span>
+<p>is complex linear in its first variable, conjugate linear in its second, and
+Hermitian. Moreover <span class="math" data-tex="\(B(ix,x)=0\)">\(B(ix,x)=0\)</span>, so <span class="math" data-tex="\(s(x,x)=Q(x)\)">\(s(x,x)=Q(x)\)</span>. Thus <span class="math" data-tex="\(s\)">\(s\)</span> is the unique
+positive sesquilinear form with diagonal <span class="math" data-tex="\(Q\)">\(Q\)</span>. The argument is algebraic: no
+topology or density assumption on <span class="math" data-tex="\(D\)">\(D\)</span> is hidden in the polarization step.</p>
+<p>The same statement covers an extended-valued diagonal on a larger vector space.
+If <span class="math" data-tex="\(Q:V\to[0,\infty]\)">\(Q:V\to[0,\infty]\)</span> satisfies (QF.1), with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+D(Q)=\{x\in V:Q(x)&lt;\infty\}
+\]">\[
+D(Q)=\{x\in V:Q(x)&lt;\infty\}
+\]</span>
+<p>is a complex subspace. Indeed, homogeneity handles scalar multiples, while the
+parallelogram identity shows that <span class="math" data-tex="\(Q(x+y)&lt;\infty\)">\(Q(x+y)&lt;\infty\)</span> whenever <span class="math" data-tex="\(Q(x)\)">\(Q(x)\)</span> and <span class="math" data-tex="\(Q(y)\)">\(Q(y)\)</span>
+are finite. Formula (QF.4) then gives the associated sesquilinear form on this
+exact finite-value domain.</p>
+<p>The form norm and its inner product are</p>
+<span class="math math-display" data-tex="\[
+\|x\|_q^2=\|x\|^2+q[x],\qquad
+\langle x,y\rangle_q=\langle x,y\rangle+q(x,y).
+\]">\[
+\|x\|_q^2=\|x\|^2+q[x],\qquad
+\langle x,y\rangle_q=\langle x,y\rangle+q(x,y).
+\]</span>
+<p>The form is <strong>closed</strong> if <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span> is complete for this norm. It is <strong>densely defined</strong> if <span class="math" data-tex="\(\overline{D(q)}=H\)">\(\overline{D(q)}=H\)</span>. These conditions are independent.</p>
+<p>It is useful to extend the diagonal by</p>
+<span class="math math-display" data-tex="\[
+\widetilde q[x]=
+\begin{cases}q[x],&amp;x\in D(q),\\+\infty,&amp;x\notin D(q).\end{cases}
+\]">\[
+\widetilde q[x]=
+\begin{cases}q[x],&amp;x\in D(q),\\+\infty,&amp;x\notin D(q).\end{cases}
+\]</span>
+<p>For two forms, <span class="math" data-tex="\(q_1\leq q_2\)">\(q_1\leq q_2\)</span> means <span class="math" data-tex="\(\widetilde q_1[x]\leq\widetilde q_2[x]\)">\(\widetilde q_1[x]\leq\widetilde q_2[x]\)</span> for every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>. Equivalently,</p>
+<span class="math math-display" data-tex="\[
+D(q_2)\subseteq D(q_1),\qquad q_1[x]\leq q_2[x]\quad(x\in D(q_2)).
+\]">\[
+D(q_2)\subseteq D(q_1),\qquad q_1[x]\leq q_2[x]\quad(x\in D(q_2)).
+\]</span>
+<p>Thus an increasing family of forms can have decreasing domains. Statements about this order never mean only an inequality on an unspecified common core.</p>
+<h2 id="representation-with-the-exact-square-root-domain"><span id="OA-MOD-QF-03"></span><span id="oa-mod-qf-03"></span>Representation with the exact square-root domain</h2>
+<p><strong>Theorem.</strong> For each densely defined closed nonnegative form <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, there is a unique nonnegative self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+D(q)=D(A^{1/2}),\qquad
+q(x,y)=\langle A^{1/2}x,A^{1/2}y\rangle.
+\]">\[
+D(q)=D(A^{1/2}),\qquad
+q(x,y)=\langle A^{1/2}x,A^{1/2}y\rangle.
+\]</span>
+<p>Moreover,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(A)=\{x\in D(q):{}&amp;\text{there exists }y\in H\text{ with }\\
+&amp;q(x,v)=\langle y,v\rangle\text{ for every }v\in D(q)\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(A)=\{x\in D(q):{}&amp;\text{there exists }y\in H\text{ with }\\
+&amp;q(x,v)=\langle y,v\rangle\text{ for every }v\in D(q)\},
+\end{aligned}
+\]</span>
+<p>and the vector <span class="math" data-tex="\(y\)">\(y\)</span> in this formula equals <span class="math" data-tex="\(Ax\)">\(Ax\)</span>. Conversely, every nonnegative self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> gives a densely defined closed form by these formulas.</p>
+<p><strong>Proof.</strong> Equip <span class="math" data-tex="\(V=D(q)\)">\(V=D(q)\)</span> with the energy inner product</p>
+<span class="math math-display" data-tex="\[
+\langle x,v\rangle_V=\langle x,v\rangle_H+q(x,v).
+\]">\[
+\langle x,v\rangle_V=\langle x,v\rangle_H+q(x,v).
+\]</span>
+<p>Closedness makes <span class="math" data-tex="\(V\)">\(V\)</span> a Hilbert space. The inclusion <span class="math" data-tex="\(j:V\to H\)">\(j:V\to H\)</span> is an injective contraction with dense range. Its bounded adjoint exists by BK-01. Set <span class="math" data-tex="\(B=jj^*\)">\(B=jj^*\)</span>. For <span class="math" data-tex="\(f\in H\)">\(f\in H\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq\langle Bf,f\rangle_H=\|j^*f\|_V^2\leq\|f\|^2.
+\tag{QF.R1}
+\]">\[
+0\leq\langle Bf,f\rangle_H=\|j^*f\|_V^2\leq\|f\|^2.
+\tag{QF.R1}
+\]</span>
+<p>If <span class="math" data-tex="\(Bf=0\)">\(Bf=0\)</span>, this identity gives <span class="math" data-tex="\(j^*f=0\)">\(j^*f=0\)</span>; density of <span class="math" data-tex="\(jV\)">\(jV\)</span> then gives <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Thus <span class="math" data-tex="\(B\)">\(B\)</span> is an injective positive contraction. In particular its spectral projection at zero is zero, even if zero belongs to its spectrum.</p>
+<p>For <span class="math" data-tex="\(u=Bf\)">\(u=Bf\)</span>, its preimage in <span class="math" data-tex="\(V\)">\(V\)</span> is <span class="math" data-tex="\(j^*f\)">\(j^*f\)</span>. The adjoint identity gives, for every <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle u,v\rangle_H+q(u,v)=\langle f,v\rangle_H.
+\tag{QF.R2}
+\]">\[
+\langle u,v\rangle_H+q(u,v)=\langle f,v\rangle_H.
+\tag{QF.R2}
+\]</span>
+<p>The spectral calculus of <span class="math" data-tex="\(B\)">\(B\)</span> defines</p>
+<span class="math math-display" data-tex="\[
+A=B^{-1}-I,\qquad a(t)=t^{-1}-1\quad(0&lt;t\leq1).
+\tag{QF.R3}
+\]">\[
+A=B^{-1}-I,\qquad a(t)=t^{-1}-1\quad(0&lt;t\leq1).
+\tag{QF.R3}
+\]</span>
+<p>This is a nonnegative self-adjoint operator. Its domain is exactly <span class="math" data-tex="\(\operatorname{ran}B\)">\(\operatorname{ran}B\)</span>: the inverse-domain assertion is proved in SK-07, and the inequalities</p>
+<span class="math math-display" data-tex="\[
+(t^{-1}-1)^2\leq t^{-2}\leq 2(t^{-1}-1)^2+2
+\]">\[
+(t^{-1}-1)^2\leq t^{-2}\leq 2(t^{-1}-1)^2+2
+\]</span>
+<p>show that the two square-integrability conditions coincide. Equation (QF.R2) already proves <span class="math" data-tex="\(q(u,v)=\langle Au,v\rangle\)">\(q(u,v)=\langle Au,v\rangle\)</span> for <span class="math" data-tex="\(u\in D(A)\)">\(u\in D(A)\)</span>, <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>.</p>
+<p>We now recover the entire form domain. Put <span class="math" data-tex="\(W=D(B^{-1/2})\)">\(W=D(B^{-1/2})\)</span>, with norm <span class="math" data-tex="\(\|x\|_W=\|B^{-1/2}x\|\)">\(\|x\|_W=\|B^{-1/2}x\|\)</span>. It dominates the Hilbert norm because <span class="math" data-tex="\(0&lt;B\leq I\)">\(0&lt;B\leq I\)</span>. It is complete: if <span class="math" data-tex="\(x_n\)">\(x_n\)</span> is Cauchy in this norm, then <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(B^{-1/2}x_n\to y\)">\(B^{-1/2}x_n\to y\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>; closedness of the spectral operator gives <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span> and <span class="math" data-tex="\(B^{-1/2}x=y\)">\(B^{-1/2}x=y\)</span>.</p>
+<p>The common subspace <span class="math" data-tex="\(D(A)=\operatorname{ran}B\)">\(D(A)=\operatorname{ran}B\)</span> is dense in each of <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span>, with the same norm on that subspace. Indeed, <span class="math" data-tex="\(\operatorname{ran}j^*\)">\(\operatorname{ran}j^*\)</span> is dense in <span class="math" data-tex="\(V\)">\(V\)</span>, since its orthogonal complement is <span class="math" data-tex="\(\ker j=0\)">\(\ker j=0\)</span>. Its image under <span class="math" data-tex="\(j\)">\(j\)</span> is <span class="math" data-tex="\(\operatorname{ran}B\)">\(\operatorname{ran}B\)</span>, and for <span class="math" data-tex="\(x=Bf\)">\(x=Bf\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|x\|_V^2=\|j^*f\|_V^2
+=\langle Bf,f\rangle
+=\|B^{1/2}f\|^2
+=\|B^{-1/2}x\|^2=\|x\|_W^2.
+\tag{QF.R4}
+\]">\[
+\|x\|_V^2=\|j^*f\|_V^2
+=\langle Bf,f\rangle
+=\|B^{1/2}f\|^2
+=\|B^{-1/2}x\|^2=\|x\|_W^2.
+\tag{QF.R4}
+\]</span>
+<p>For density in <span class="math" data-tex="\(W\)">\(W\)</span>, take <span class="math" data-tex="\(P_n=E_B([1/n,1])\)">\(P_n=E_B([1/n,1])\)</span>. If <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span>, then <span class="math" data-tex="\(x_n=P_nx\in\operatorname{ran}B\)">\(x_n=P_nx\in\operatorname{ran}B\)</span>, because <span class="math" data-tex="\(t^{-1}\mathbf1_{[1/n,1]}(t)\)">\(t^{-1}\mathbf1_{[1/n,1]}(t)\)</span> is bounded. Moreover</p>
+<span class="math math-display" data-tex="\[
+\|x-x_n\|_W^2
+=\int_{(0,1/n)}t^{-1}\,d\langle E_B(t)x,x\rangle\longrightarrow0.
+\tag{QF.R5}
+\]">\[
+\|x-x_n\|_W^2
+=\int_{(0,1/n)}t^{-1}\,d\langle E_B(t)x,x\rangle\longrightarrow0.
+\tag{QF.R5}
+\]</span>
+<p>This is dominated convergence for the finite integral defining <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>For clarity, density and equal norms here give equality of actual subsets of <span class="math" data-tex="\(H\)">\(H\)</span>. Approximate any <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> by a sequence in <span class="math" data-tex="\(\operatorname{ran}B\)">\(\operatorname{ran}B\)</span> in its <span class="math" data-tex="\(V\)">\(V\)</span>-norm. The sequence is Cauchy in <span class="math" data-tex="\(W\)">\(W\)</span>, hence has a limit there, and both limits equal <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Thus <span class="math" data-tex="\(V\subseteq W\)">\(V\subseteq W\)</span>. Conversely the spectral approximants in (QF.R5) are Cauchy in <span class="math" data-tex="\(V\)">\(V\)</span>; completeness and their Hilbert-space limit put <span class="math" data-tex="\(x\in W\)">\(x\in W\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>. Their limiting norms agree. No countable basis or cofinal subset of a later directed set is involved.</p>
+<p>Consequently,</p>
+<span class="math math-display" data-tex="\[
+D(q)=D(B^{-1/2}),\qquad
+\|x\|^2+q[x]=\int_{(0,1]}t^{-1}\,d\langle E_B(t)x,x\rangle.
+\tag{QF.R6}
+\]">\[
+D(q)=D(B^{-1/2}),\qquad
+\|x\|^2+q[x]=\int_{(0,1]}t^{-1}\,d\langle E_B(t)x,x\rangle.
+\tag{QF.R6}
+\]</span>
+<p>Since the scalar spectral measure is finite, subtracting <span class="math" data-tex="\(\|x\|^2\)">\(\|x\|^2\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+D(q)=D(A^{1/2}),\qquad q[x]=\|A^{1/2}x\|^2.
+\tag{QF.R7}
+\]">\[
+D(q)=D(A^{1/2}),\qquad q[x]=\|A^{1/2}x\|^2.
+\tag{QF.R7}
+\]</span>
+<p>Polarization proves the sesquilinear identity in the theorem.</p>
+<p>For the converse graph criterion, suppose <span class="math" data-tex="\(x\in V\)">\(x\in V\)</span> and <span class="math" data-tex="\(q(x,v)=\langle y,v\rangle\)">\(q(x,v)=\langle y,v\rangle\)</span> for all <span class="math" data-tex="\(v\in V\)">\(v\in V\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\langle x,v\rangle_V=\langle x+y,jv\rangle_H
+=\langle j^*(x+y),v\rangle_V.
+\]">\[
+\langle x,v\rangle_V=\langle x+y,jv\rangle_H
+=\langle j^*(x+y),v\rangle_V.
+\]</span>
+<p>Riesz uniqueness in <span class="math" data-tex="\(V\)">\(V\)</span> gives <span class="math" data-tex="\(x=j^*(x+y)\)">\(x=j^*(x+y)\)</span> there. Applying <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(x=B(x+y)\)">\(x=B(x+y)\)</span>, so <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> and <span class="math" data-tex="\(Ax=y\)">\(Ax=y\)</span>. Density makes <span class="math" data-tex="\(y\)">\(y\)</span> unique. This proves the exact graph formula in both directions.</p>
+<p>If a nonnegative self-adjoint <span class="math" data-tex="\(C\)">\(C\)</span> represents the same form, the spectral form-pairing identity in SK-07 gives <span class="math" data-tex="\(q(x,v)=\langle Cx,v\rangle\)">\(q(x,v)=\langle Cx,v\rangle\)</span> for <span class="math" data-tex="\(x\in D(C)\)">\(x\in D(C)\)</span>, <span class="math" data-tex="\(v\in D(q)\)">\(v\in D(q)\)</span>. The graph criterion therefore gives <span class="math" data-tex="\(C\subseteq A\)">\(C\subseteq A\)</span>. Adjoints reverse this inclusion: if <span class="math" data-tex="\(z\in D(A^*)\)">\(z\in D(A^*)\)</span>, then the identity <span class="math" data-tex="\(\langle Ax,z\rangle=\langle x,A^*z\rangle\)">\(\langle Ax,z\rangle=\langle x,A^*z\rangle\)</span> restricts to <span class="math" data-tex="\(D(C)\)">\(D(C)\)</span>, so <span class="math" data-tex="\(z\in D(C^*)\)">\(z\in D(C^*)\)</span> with the same value. Hence <span class="math" data-tex="\(A=A^*\subseteq C^*=C\)">\(A=A^*\subseteq C^*=C\)</span>, and <span class="math" data-tex="\(A=C\)">\(A=C\)</span>.</p>
+<p>Finally, a nonnegative self-adjoint <span class="math" data-tex="\(A\)">\(A\)</span> has a closed densely defined square root by SK-05–SK-07. The graph map <span class="math" data-tex="\(x\mapsto(x,A^{1/2}x)\)">\(x\mapsto(x,A^{1/2}x)\)</span> identifies the form norm with the norm on its closed graph in <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, which is complete. This gives the converse form and finishes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The operator domain requires a Hilbert-space vector representing the form functional; the square-root domain requires only finite energy. Equation (QF.R4) also proves that the operator domain is dense in the form norm.</p>
+<h2 id="nondense-forms-lower-semicontinuity-and-symmetry">Nondense forms, lower semicontinuity, and symmetry</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> be a closed nonnegative form with no density assumption, and put <span class="math" data-tex="\(K=\overline{D(q)}\)">\(K=\overline{D(q)}\)</span>. There is a unique nonnegative self-adjoint operator <span class="math" data-tex="\(A_K\)">\(A_K\)</span> on the Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span> representing <span class="math" data-tex="\(q\)">\(q\)</span>. Its extended diagonal is lower semicontinuous for the norm topology and also for the weak topology of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> The form norm is unchanged on restricting the ambient space to <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span> is dense in <span class="math" data-tex="\(K\)">\(K\)</span>. Apply OA-MOD-QF-03 there. For each positive integer <span class="math" data-tex="\(m\)">\(m\)</span>, the bounded positive operator <span class="math" data-tex="\(C_m=\min(A_K,m)\)">\(C_m=\min(A_K,m)\)</span> has</p>
+<span class="math math-display" data-tex="\[
+\widetilde q[x]=\sup_m\langle C_mx,x\rangle\quad(x\in K),
+\]">\[
+\widetilde q[x]=\sup_m\langle C_mx,x\rangle\quad(x\in K),
+\]</span>
+<p>where the right side is infinite when <span class="math" data-tex="\(x\notin D(q)\)">\(x\notin D(q)\)</span>. The functions <span class="math" data-tex="\(x\mapsto\|C_m^{1/2}x\|^2\)">\(x\mapsto\|C_m^{1/2}x\|^2\)</span> are weakly lower semicontinuous: a bounded linear map preserves weak convergence, and a Hilbert norm is weakly lower semicontinuous since it is the supremum of the absolute values of its scalar inner products with vectors of norm at most one. A supremum of lower semicontinuous functions is lower semicontinuous. Finally, <span class="math" data-tex="\(K\)">\(K\)</span> is weakly closed because</p>
+<span class="math math-display" data-tex="\[
+K=\bigcap_{y\in K^\perp}\{x:\langle x,y\rangle=0\}.
+\]">\[
+K=\bigcap_{y\in K^\perp}\{x:\langle x,y\rangle=0\}.
+\]</span>
+<p>Extending by infinity off <span class="math" data-tex="\(K\)">\(K\)</span> therefore preserves lower semicontinuity on <span class="math" data-tex="\(H\)">\(H\)</span>. The weak assertion implies the norm assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is representation on <span class="math" data-tex="\(K\)">\(K\)</span>, not a densely defined self-adjoint operator on all of <span class="math" data-tex="\(H\)">\(H\)</span> with domain in a proper closed subspace.</p>
+<p><strong>Symmetry corollary.</strong> Suppose <span class="math" data-tex="\(q\)">\(q\)</span> is densely defined and closed, and <span class="math" data-tex="\(W\)">\(W\)</span> is a unitary on <span class="math" data-tex="\(H\)">\(H\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+WD(q)=D(q),\qquad q[Wx]=q[x]\quad(x\in D(q)).
+\]">\[
+WD(q)=D(q),\qquad q[Wx]=q[x]\quad(x\in D(q)).
+\]</span>
+<p>Its representing operator satisfies <span class="math" data-tex="\(WA W^*=A\)">\(WA W^*=A\)</span>, including equality of domains, and <span class="math" data-tex="\(W\)">\(W\)</span> commutes with all spectral projections of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Proof.</strong> The operator <span class="math" data-tex="\(WA W^*\)">\(WA W^*\)</span> has square-root domain <span class="math" data-tex="\(WD(q)\)">\(WD(q)\)</span>, and its form at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(q[W^*x]\)">\(q[W^*x]\)</span>. The hypotheses and uniqueness in OA-MOD-QF-03 identify it with <span class="math" data-tex="\(A\)">\(A\)</span>. Equivalently, <span class="math" data-tex="\(W\)">\(W\)</span> commutes with <span class="math" data-tex="\((I+A)^{-1}\)">\((I+A)^{-1}\)</span>. The spectral calculus of this bounded operator then shows commutation with the spectral projections of <span class="math" data-tex="\(A\)">\(A\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If these hypotheses hold for every unitary of the commutant <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> of a von Neumann algebra <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span>, then <span class="math" data-tex="\(A\)">\(A\)</span> is affiliated with <span class="math" data-tex="\(M\)">\(M\)</span>: its spectral projections belong to <span class="math" data-tex="\(M\)">\(M\)</span>. Indeed <span class="math" data-tex="\((I+A)^{-1}\)">\((I+A)^{-1}\)</span> commutes with every such unitary, hence with <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span>, and lies in <span class="math" data-tex="\(M&#x27;&#x27;=M\)">\(M&#x27;&#x27;=M\)</span>. Every element of a unital C*-algebra is a linear combination of unitaries; for a self-adjoint contraction <span class="math" data-tex="\(b\)">\(b\)</span>, use the unitary <span class="math" data-tex="\(b+i(1-b^2)^{1/2}\)">\(b+i(1-b^2)^{1/2}\)</span>. Bounded Borel calculus in <span class="math" data-tex="\(M\)">\(M\)</span> completes the claim. This is a conditional symmetry test, not a claim that every form constructed from weights is invariant under a specified commutant.</p>
+<h2 id="resolvents-as-energy-minimizers"><span id="oa-mod-qf-05"></span><span id="OA-MOD-QF-05"></span>Resolvents as energy minimizers</h2>
+<p><strong>Proposition.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> be densely defined and closed, with representing operator <span class="math" data-tex="\(A\)">\(A\)</span>. For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> and <span class="math" data-tex="\(f\in H\)">\(f\in H\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+F_{q,\lambda,f}(v)=q[v]+\lambda\|v\|^2-2\operatorname{Re}\langle f,v\rangle
+\quad(v\in D(q)).
+\]">\[
+F_{q,\lambda,f}(v)=q[v]+\lambda\|v\|^2-2\operatorname{Re}\langle f,v\rangle
+\quad(v\in D(q)).
+\]</span>
+<p>This functional has the unique minimizer <span class="math" data-tex="\(u=(A+\lambda I)^{-1}f\)">\(u=(A+\lambda I)^{-1}f\)</span>. More precisely,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q(u,v)+\lambda\langle u,v\rangle=\langle f,v\rangle\quad(v\in D(q)),\\
+F_{q,\lambda,f}(v)=q[v-u]+\lambda\|v-u\|^2-\langle f,u\rangle,\\
+\langle f,u\rangle=q[u]+\lambda\|u\|^2\in[0,\infty).
+\end{gathered}
+\]">\[
+\begin{gathered}
+q(u,v)+\lambda\langle u,v\rangle=\langle f,v\rangle\quad(v\in D(q)),\\
+F_{q,\lambda,f}(v)=q[v-u]+\lambda\|v-u\|^2-\langle f,u\rangle,\\
+\langle f,u\rangle=q[u]+\lambda\|u\|^2\in[0,\infty).
+\end{gathered}
+\]</span>
+<p>Consequently,</p>
+<span class="math math-display" data-tex="\[
+\langle (A+\lambda I)^{-1}f,f\rangle
+=\sup_{v\in D(q)}\bigl(2\operatorname{Re}\langle f,v\rangle-q[v]-\lambda\|v\|^2\bigr).
+\]">\[
+\langle (A+\lambda I)^{-1}f,f\rangle
+=\sup_{v\in D(q)}\bigl(2\operatorname{Re}\langle f,v\rangle-q[v]-\lambda\|v\|^2\bigr).
+\]</span>
+<p><strong>Proof.</strong> The inner product <span class="math" data-tex="\(q(x,y)+\lambda\langle x,y\rangle\)">\(q(x,y)+\lambda\langle x,y\rangle\)</span> makes <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span> complete because its norm is equivalent to <span class="math" data-tex="\(\|\cdot\|_q\)">\(\|\cdot\|_q\)</span>. The functional <span class="math" data-tex="\(v\mapsto\langle f,v\rangle\)">\(v\mapsto\langle f,v\rangle\)</span> is continuous for it, with bound <span class="math" data-tex="\(\lambda^{-1/2}\|f\|\)">\(\lambda^{-1/2}\|f\|\)</span>. Riesz representation gives a unique <span class="math" data-tex="\(u\in D(q)\)">\(u\in D(q)\)</span> satisfying the first equation. OA-MOD-QF-03 identifies <span class="math" data-tex="\(u\in D(A)\)">\(u\in D(A)\)</span> and <span class="math" data-tex="\(Au=f-\lambda u\)">\(Au=f-\lambda u\)</span>. Substitution of <span class="math" data-tex="\(v=u\)">\(v=u\)</span> proves the real energy identity. Expanding the square in the displayed expression for <span class="math" data-tex="\(F\)">\(F\)</span> proves that identity and uniqueness of the minimizer; it also proves the supremum formula. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof for a form with <span class="math" data-tex="\(K=\overline{D(q)}\)">\(K=\overline{D(q)}\)</span> gives the unique minimizer</p>
+<span class="math math-display" data-tex="\[
+u=(A_K+\lambda I_K)^{-1}P_Kf.
+\]">\[
+u=(A_K+\lambda I_K)^{-1}P_Kf.
+\]</span>
+<p><strong>Order consequence.</strong> If <span class="math" data-tex="\(q_1\leq q_2\)">\(q_1\leq q_2\)</span> are densely defined closed forms with operators <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+0\leq(A_2+\lambda I)^{-1}\leq(A_1+\lambda I)^{-1}\leq\lambda^{-1}I.
+\]">\[
+0\leq(A_2+\lambda I)^{-1}\leq(A_1+\lambda I)^{-1}\leq\lambda^{-1}I.
+\]</span>
+<p>The supremum for <span class="math" data-tex="\(q_2\)">\(q_2\)</span> is taken over a smaller domain with a no-smaller energy penalty. The scalar inequality for every <span class="math" data-tex="\(f\)">\(f\)</span> is exactly the asserted bounded-operator order. The same conclusion holds without density: define <span class="math" data-tex="\(K_j=\overline{D(q_j)}\)">\(K_j=\overline{D(q_j)}\)</span> and <span class="math" data-tex="\(R_j(\lambda)=(A_{K_j}+\lambda I_{K_j})^{-1}P_{K_j}\)">\(R_j(\lambda)=(A_{K_j}+\lambda I_{K_j})^{-1}P_{K_j}\)</span>. The nondense minimizer has the identical supremum formula, so <span class="math" data-tex="\(0\leq R_2(\lambda)\leq R_1(\lambda)\leq\lambda^{-1}I\)">\(0\leq R_2(\lambda)\leq R_1(\lambda)\leq\lambda^{-1}I\)</span>. No commutation of <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and <span class="math" data-tex="\(A_2\)">\(A_2\)</span> is assumed.</p>
+<h2 id="the-domain-of-an-increasing-limit">The domain of an increasing limit</h2>
+<p><strong>Theorem.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be a nonempty directed set, and let <span class="math" data-tex="\((q_i)_{i\in I}\)">\((q_i)_{i\in I}\)</span> be closed nonnegative forms on <span class="math" data-tex="\(H\)">\(H\)</span> such that <span class="math" data-tex="\(q_i\leq q_j\)">\(q_i\leq q_j\)</span> whenever <span class="math" data-tex="\(i\leq j\)">\(i\leq j\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_\infty
+&amp;=\{x\in H:\sup_{i\in I}\widetilde q_i[x]&lt;\infty\}\\
+&amp;=\left\{x\in\bigcap_{i\in I}D(q_i):\sup_{i\in I}q_i[x]&lt;\infty\right\},\\
+q_\infty[x]&amp;=\sup_{i\in I}q_i[x]\qquad(x\in D_\infty).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_\infty
+&amp;=\{x\in H:\sup_{i\in I}\widetilde q_i[x]&lt;\infty\}\\
+&amp;=\left\{x\in\bigcap_{i\in I}D(q_i):\sup_{i\in I}q_i[x]&lt;\infty\right\},\\
+q_\infty[x]&amp;=\sup_{i\in I}q_i[x]\qquad(x\in D_\infty).
+\end{aligned}
+\]</span>
+<p>Then <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> is a linear subspace, <span class="math" data-tex="\(q_\infty\)">\(q_\infty\)</span> is the diagonal of a closed nonnegative sesquilinear form on it, and</p>
+<span class="math math-display" data-tex="\[
+q_\infty(x,y)=\lim_{i\in I}q_i(x,y)\quad(x,y\in D_\infty).
+\]">\[
+q_\infty(x,y)=\lim_{i\in I}q_i(x,y)\quad(x,y\in D_\infty).
+\]</span>
+<p>No density assertion is automatic. If <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> is dense, its representing nonnegative self-adjoint operator <span class="math" data-tex="\(A\)">\(A\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+D(A^{1/2})=D_\infty,\qquad
+\|A^{1/2}x\|^2=\sup_i q_i[x]\quad(x\in D_\infty).
+\]">\[
+D(A^{1/2})=D_\infty,\qquad
+\|A^{1/2}x\|^2=\sup_i q_i[x]\quad(x\in D_\infty).
+\]</span>
+<p>Without density, these conclusions hold for a self-adjoint operator <span class="math" data-tex="\(A_K\)">\(A_K\)</span> on <span class="math" data-tex="\(K=\overline{D_\infty}\)">\(K=\overline{D_\infty}\)</span>.</p>
+<p><strong>Proof.</strong> The inequalities</p>
+<span class="math math-display" data-tex="\[
+q_i[x+y]\leq2q_i[x]+2q_i[y],\qquad q_i[tx]=|t|^2q_i[x]
+\]">\[
+q_i[x+y]\leq2q_i[x]+2q_i[y],\qquad q_i[tx]=|t|^2q_i[x]
+\]</span>
+<p>show that <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> is linear. For <span class="math" data-tex="\(x,y\in D_\infty\)">\(x,y\in D_\infty\)</span>, each of the four diagonals in the polarization formula has a finite increasing limit. Thus <span class="math" data-tex="\(q_i(x,y)\)">\(q_i(x,y)\)</span> converges. Passing to the limit in sesquilinearity, Hermitian symmetry, and positivity proves that these limits form a nonnegative sesquilinear form with diagonal <span class="math" data-tex="\(q_\infty\)">\(q_\infty\)</span>.</p>
+<p>To prove completeness, let <span class="math" data-tex="\((x_m)_{m\geq1}\)">\((x_m)_{m\geq1}\)</span> be Cauchy for <span class="math" data-tex="\(\|\cdot\|_{q_\infty}\)">\(\|\cdot\|_{q_\infty}\)</span>. It converges in <span class="math" data-tex="\(H\)">\(H\)</span> to some <span class="math" data-tex="\(x\)">\(x\)</span>. For each fixed <span class="math" data-tex="\(i\)">\(i\)</span>, it is Cauchy in <span class="math" data-tex="\(\|\cdot\|_{q_i}\)">\(\|\cdot\|_{q_i}\)</span>, so closedness gives <span class="math" data-tex="\(x\in D(q_i)\)">\(x\in D(q_i)\)</span> and convergence to <span class="math" data-tex="\(x\)">\(x\)</span> in that norm. Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, and choose <span class="math" data-tex="\(m_0\)">\(m_0\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+q_\infty[x_m-x_l]\leq\varepsilon^2\quad(m,l\geq m_0).
+\]">\[
+q_\infty[x_m-x_l]\leq\varepsilon^2\quad(m,l\geq m_0).
+\]</span>
+<p>For fixed <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(m\geq m_0\)">\(m\geq m_0\)</span>, take <span class="math" data-tex="\(l\to\infty\)">\(l\to\infty\)</span> in the <span class="math" data-tex="\(q_i\)">\(q_i\)</span>-norm to obtain</p>
+<span class="math math-display" data-tex="\[
+q_i[x_m-x]\leq\varepsilon^2.
+\]">\[
+q_i[x_m-x]\leq\varepsilon^2.
+\]</span>
+<p>The estimate holds for every <span class="math" data-tex="\(i\)">\(i\)</span>, so the difference <span class="math" data-tex="\(x_m-x\)">\(x_m-x\)</span> has finite supremum energy. Since <span class="math" data-tex="\(x_m\in D_\infty\)">\(x_m\in D_\infty\)</span>, linearity now gives <span class="math" data-tex="\(x\in D_\infty\)">\(x\in D_\infty\)</span>, and taking the supremum gives <span class="math" data-tex="\(q_\infty[x_m-x]\leq\varepsilon^2\)">\(q_\infty[x_m-x]\leq\varepsilon^2\)</span>. Together with Hilbert-norm convergence, this proves completeness. A sequence suffices here because a form norm defines a metric, regardless of the directed indexing set or the Hilbert space's density character. Representation follows from OA-MOD-QF-03 and OA-MOD-QF-04. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Essential counterexample.</strong> On any nonzero <span class="math" data-tex="\(H\)">\(H\)</span>, take <span class="math" data-tex="\(A_n=nI\)">\(A_n=nI\)</span> and <span class="math" data-tex="\(q_n[x]=n\|x\|^2\)">\(q_n[x]=n\|x\|^2\)</span>. Every square-root domain is <span class="math" data-tex="\(H\)">\(H\)</span>, so their intersection is dense and equals <span class="math" data-tex="\(H\)">\(H\)</span>. Nevertheless,</p>
+<span class="math math-display" data-tex="\[
+D_\infty=\{0\},\qquad\sup_n q_n[x]=+\infty\quad(x\ne0).
+\]">\[
+D_\infty=\{0\},\qquad\sup_n q_n[x]=+\infty\quad(x\ne0).
+\]</span>
+<p>Thus even bounded, everywhere-defined operators can have an increasing limit with no nonzero finite-energy vector. The assertion with only a dense intersection of domains is false.</p>
+<h2 id="strong-convergence-of-resolvents-including-nets">Strong convergence of resolvents, including nets</h2>
+<p><strong>Theorem.</strong> In OA-MOD-QF-06, put <span class="math" data-tex="\(K_i=\overline{D(q_i)}\)">\(K_i=\overline{D(q_i)}\)</span>, let <span class="math" data-tex="\(A_i\)">\(A_i\)</span> represent <span class="math" data-tex="\(q_i\)">\(q_i\)</span> on <span class="math" data-tex="\(K_i\)">\(K_i\)</span>, and write <span class="math" data-tex="\(P_i=P_{K_i}\)">\(P_i=P_{K_i}\)</span>. No density assumption on the individual forms is needed. Set <span class="math" data-tex="\(K=\overline{D_\infty}\)">\(K=\overline{D_\infty}\)</span> and let <span class="math" data-tex="\(A_K\)">\(A_K\)</span> represent <span class="math" data-tex="\(q_\infty\)">\(q_\infty\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. For every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_i+\lambda I_{K_i})^{-1}P_i\ \longrightarrow\ (A_K+\lambda I_K)^{-1}P_K
+\]">\[
+(A_i+\lambda I_{K_i})^{-1}P_i\ \longrightarrow\ (A_K+\lambda I_K)^{-1}P_K
+\]</span>
+<p>strongly on <span class="math" data-tex="\(H\)">\(H\)</span>. More generally, for every <span class="math" data-tex="\(z\in\mathbb C\setminus[0,\infty)\)">\(z\in\mathbb C\setminus[0,\infty)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_i-zI_{K_i})^{-1}P_i\ \longrightarrow\ (A_K-zI_K)^{-1}P_K
+\]">\[
+(A_i-zI_{K_i})^{-1}P_i\ \longrightarrow\ (A_K-zI_K)^{-1}P_K
+\]</span>
+<p>strongly. If <span class="math" data-tex="\(K=H\)">\(K=H\)</span>, all <span class="math" data-tex="\(K_i=H\)">\(K_i=H\)</span>, because <span class="math" data-tex="\(D_\infty\subseteq D(q_i)\)">\(D_\infty\subseteq D(q_i)\)</span>; this is strong resolvent convergence to <span class="math" data-tex="\(A=A_H\)">\(A=A_H\)</span>. If <span class="math" data-tex="\(K\ne H\)">\(K\ne H\)</span>, the displayed operators are generalized resolvents on <span class="math" data-tex="\(H\)">\(H\)</span>; they are not the resolvents of a densely defined self-adjoint operator on <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof of existence of the strong limit.</strong> Fix <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span> and write <span class="math" data-tex="\(R_i=(A_i+\lambda I_{K_i})^{-1}P_i\)">\(R_i=(A_i+\lambda I_{K_i})^{-1}P_i\)</span>. By OA-MOD-QF-05 these are a decreasing net of positive operators bounded above by <span class="math" data-tex="\(\lambda^{-1}I\)">\(\lambda^{-1}I\)</span>. For fixed <span class="math" data-tex="\(f\in H\)">\(f\in H\)</span>, the real net <span class="math" data-tex="\(s_i=\langle R_i f,f\rangle\)">\(s_i=\langle R_i f,f\rangle\)</span> decreases to its infimum. If <span class="math" data-tex="\(j\geq i\)">\(j\geq i\)</span>, then <span class="math" data-tex="\(C=R_i-R_j\)">\(C=R_i-R_j\)</span> satisfies <span class="math" data-tex="\(0\leq C\leq\lambda^{-1}I\)">\(0\leq C\leq\lambda^{-1}I\)</span>, so the bounded spectral calculus gives <span class="math" data-tex="\(C^2\leq\lambda^{-1}C\)">\(C^2\leq\lambda^{-1}C\)</span> and</p>
+<span class="math math-display" data-tex="\[
+\|(R_i-R_j)f\|^2\leq\lambda^{-1}(s_i-s_j).
+\]">\[
+\|(R_i-R_j)f\|^2\leq\lambda^{-1}(s_i-s_j).
+\]</span>
+<p>Given a tail on which the scalar differences are small, any two indices in that tail have a common upper index. Applying the inequality twice and the triangle inequality proves that <span class="math" data-tex="\((R_i f)\)">\((R_i f)\)</span> is a norm-Cauchy net. Its limit defines a bounded positive operator <span class="math" data-tex="\(R\)">\(R\)</span>, with <span class="math" data-tex="\(0\leq R\leq\lambda^{-1}I\)">\(0\leq R\leq\lambda^{-1}I\)</span>. This proves strong convergence without selecting a countable cofinal set.</p>
+<p><strong>Identification of the limit.</strong> Fix <span class="math" data-tex="\(f\)">\(f\)</span> and put <span class="math" data-tex="\(u_i=R_if\)">\(u_i=R_if\)</span>, <span class="math" data-tex="\(u=Rf\)">\(u=Rf\)</span>. From the variational identities,</p>
+<span class="math math-display" data-tex="\[
+e_i:=q_i[u_i]+\lambda\|u_i\|^2=\langle f,u_i\rangle
+\leq\lambda^{-1}\|f\|^2.
+\]">\[
+e_i:=q_i[u_i]+\lambda\|u_i\|^2=\langle f,u_i\rangle
+\leq\lambda^{-1}\|f\|^2.
+\]</span>
+<p>The numbers <span class="math" data-tex="\(e_i\)">\(e_i\)</span> are real, and strong convergence gives <span class="math" data-tex="\(e_i\to e:=\langle f,u\rangle\)">\(e_i\to e:=\langle f,u\rangle\)</span>. For a fixed <span class="math" data-tex="\(j\)">\(j\)</span>, all sufficiently late indices satisfy <span class="math" data-tex="\(i\geq j\)">\(i\geq j\)</span>, hence <span class="math" data-tex="\(u_i\in D(q_j)\)">\(u_i\in D(q_j)\)</span> and <span class="math" data-tex="\(q_j[u_i]\leq q_i[u_i]\)">\(q_j[u_i]\leq q_i[u_i]\)</span>. Lower semicontinuity from OA-MOD-QF-04 gives</p>
+<span class="math math-display" data-tex="\[
+\widetilde q_j[u]+\lambda\|u\|^2
+\leq\liminf_i\bigl(q_j[u_i]+\lambda\|u_i\|^2\bigr)
+\leq e.
+\]">\[
+\widetilde q_j[u]+\lambda\|u\|^2
+\leq\liminf_i\bigl(q_j[u_i]+\lambda\|u_i\|^2\bigr)
+\leq e.
+\]</span>
+<p>Taking the supremum over <span class="math" data-tex="\(j\)">\(j\)</span> proves <span class="math" data-tex="\(u\in D_\infty\)">\(u\in D_\infty\)</span> and <span class="math" data-tex="\(q_\infty[u]+\lambda\|u\|^2\leq e\)">\(q_\infty[u]+\lambda\|u\|^2\leq e\)</span>.</p>
+<p>For any <span class="math" data-tex="\(v\in D_\infty\)">\(v\in D_\infty\)</span>, minimality of <span class="math" data-tex="\(u_i\)">\(u_i\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+-e_i=F_{q_i,\lambda,f}(u_i)\leq F_{q_i,\lambda,f}(v).
+\]">\[
+-e_i=F_{q_i,\lambda,f}(u_i)\leq F_{q_i,\lambda,f}(v).
+\]</span>
+<p>The right side tends to <span class="math" data-tex="\(F_{q_\infty,\lambda,f}(v)\)">\(F_{q_\infty,\lambda,f}(v)\)</span>, so <span class="math" data-tex="\(-e\leq F_{q_\infty,\lambda,f}(v)\)">\(-e\leq F_{q_\infty,\lambda,f}(v)\)</span>. The preceding energy bound also gives <span class="math" data-tex="\(F_{q_\infty,\lambda,f}(u)\leq-e\)">\(F_{q_\infty,\lambda,f}(u)\leq-e\)</span>. Thus <span class="math" data-tex="\(u\)">\(u\)</span> minimizes the limiting functional, and taking <span class="math" data-tex="\(v=u\)">\(v=u\)</span> proves equality. The nondense version of OA-MOD-QF-05 identifies</p>
+<span class="math math-display" data-tex="\[
+u=(A_K+\lambda I_K)^{-1}P_K f.
+\]">\[
+u=(A_K+\lambda I_K)^{-1}P_K f.
+\]</span>
+<p><strong>Other resolvent parameters.</strong> Take <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span> and write <span class="math" data-tex="\(B_i=(I_{K_i}+A_i)^{-1}P_i\)">\(B_i=(I_{K_i}+A_i)^{-1}P_i\)</span>, <span class="math" data-tex="\(B=(I_K+A_K)^{-1}P_K\)">\(B=(I_K+A_K)^{-1}P_K\)</span>. These are self-adjoint contractions and <span class="math" data-tex="\(B_i\to B\)">\(B_i\to B\)</span> strongly. Their powers, hence their polynomials, converge strongly by boundedness and induction. Uniform polynomial approximation shows that <span class="math" data-tex="\(h(B_i)\to h(B)\)">\(h(B_i)\to h(B)\)</span> strongly for every <span class="math" data-tex="\(h\in C([0,1])\)">\(h\in C([0,1])\)</span>.</p>
+<p>For <span class="math" data-tex="\(z\in\mathbb C\setminus[0,\infty)\)">\(z\in\mathbb C\setminus[0,\infty)\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+g_z(s)=\frac{s}{1-(1+z)s}\quad(0\leq s\leq1)
+\]">\[
+g_z(s)=\frac{s}{1-(1+z)s}\quad(0\leq s\leq1)
+\]</span>
+<p>is continuous and satisfies <span class="math" data-tex="\(g_z(0)=0\)">\(g_z(0)=0\)</span>. On <span class="math" data-tex="\(K_i\)">\(K_i\)</span> it transforms the ordinary resolvent; on <span class="math" data-tex="\(K_i^\perp\)">\(K_i^\perp\)</span>, both sides below are zero. The spectral calculus therefore gives</p>
+<span class="math math-display" data-tex="\[
+g_z(B_i)=(A_i-zI_{K_i})^{-1}P_i,\qquad
+g_z(B)=(A_K-zI_K)^{-1}P_K.
+\]">\[
+g_z(B_i)=(A_i-zI_{K_i})^{-1}P_i,\qquad
+g_z(B)=(A_K-zI_K)^{-1}P_K.
+\]</span>
+<p>This proves the second limit and the strong resolvent statement when <span class="math" data-tex="\(K=H\)">\(K=H\)</span>. If <span class="math" data-tex="\(K\ne H\)">\(K\ne H\)</span>, the limit annihilates <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span>, whereas a resolvent of a densely defined self-adjoint operator is injective. This proves the final distinction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof also gives convergence of the minimizing energies:</p>
+<span class="math math-display" data-tex="\[
+q_i[(A_i+\lambda I_{K_i})^{-1}P_if]
+\longrightarrow q_\infty[(A_K+\lambda I_K)^{-1}P_Kf].
+\]">\[
+q_i[(A_i+\lambda I_{K_i})^{-1}P_if]
+\longrightarrow q_\infty[(A_K+\lambda I_K)^{-1}P_Kf].
+\]</span>
+<p>Indeed the energy identities converge and the Hilbert norms converge. It does not assert that <span class="math" data-tex="\(A_i^{1/2}x\)">\(A_i^{1/2}x\)</span> converges as a vector for every <span class="math" data-tex="\(x\in D_\infty\)">\(x\in D_\infty\)</span>; the theorem first controls the scalar energies and the resolvents.</p>
+<h2 id="logarithms-and-imaginary-powers"><span id="oa-mod-qf-08"></span><span id="OA-MOD-QF-08"></span>Logarithms and imaginary powers</h2>
+<p><strong>Scalar facts used below.</strong> Define <span class="math" data-tex="\(\exp z=\sum_{n\geq0}z^n/n!\)">\(\exp z=\sum_{n\geq0}z^n/n!\)</span>. On <span class="math" data-tex="\(|z|\leq M\)">\(|z|\leq M\)</span>, once <span class="math" data-tex="\(n+1\geq2M\)">\(n+1\geq2M\)</span>, successive absolute terms decrease by a factor at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; this proves absolute and uniform convergence on every bounded disk. Finite polynomial sums are continuous, and a uniform limit is continuous by the triangle inequality. Expanding the product of two absolutely convergent series and collecting terms of total degree gives</p>
+<span class="math math-display" data-tex="\[
+\exp(z+w)=\exp z\exp w,\quad
+\overline{\exp z}=\exp\overline z,\quad
+\exp z\exp(-z)=1.
+\tag{QF.E1}
+\]">\[
+\exp(z+w)=\exp z\exp w,\quad
+\overline{\exp z}=\exp\overline z,\quad
+\exp z\exp(-z)=1.
+\tag{QF.E1}
+\]</span>
+<p>Here regrouping is justified directly: the sum of absolute values is at most <span class="math" data-tex="\(\exp|z|\exp|w|\)">\(\exp|z|\exp|w|\)</span>, and the discarded tails tend to zero. For each degree the binomial identity gives the coefficient <span class="math" data-tex="\((z+w)^n/n!\)">\((z+w)^n/n!\)</span>. That identity follows by multiplying finite polynomials, or by induction using Pascal's recurrence.</p>
+<p>For real <span class="math" data-tex="\(t\)">\(t\)</span>, the series is real and <span class="math" data-tex="\(\exp t=(\exp(t/2))^2&gt;0\)">\(\exp t=(\exp(t/2))^2&gt;0\)</span>, where nonvanishing follows from (QF.E1). For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the positive-term series gives <span class="math" data-tex="\(\exp t\geq1+t&gt;1\)">\(\exp t\geq1+t&gt;1\)</span>. Thus real <span class="math" data-tex="\(\exp\)">\(\exp\)</span> is strictly increasing, tends to infinity at <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>, and tends to zero at <span class="math" data-tex="\(-\infty\)">\(-\infty\)</span> by its reciprocal identity. Its range is all of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>: for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, choose <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span> with <span class="math" data-tex="\(\exp r&lt;a&lt;\exp s\)">\(\exp r&lt;a&lt;\exp s\)</span>, take the supremum of <span class="math" data-tex="\(\{t\in[r,s]:\exp t\leq a\}\)">\(\{t\in[r,s]:\exp t\leq a\}\)</span>, and use continuity from either side to obtain a point with value <span class="math" data-tex="\(a\)">\(a\)</span>. Its inverse <span class="math" data-tex="\(\log\)">\(\log\)</span> is continuous. Indeed, for <span class="math" data-tex="\(a=\exp t\)">\(a=\exp t\)</span>, the interval <span class="math" data-tex="\((\exp(t-\varepsilon),\exp(t+\varepsilon))\)">\((\exp(t-\varepsilon),\exp(t+\varepsilon))\)</span> is carried into <span class="math" data-tex="\((t-\varepsilon,t+\varepsilon)\)">\((t-\varepsilon,t+\varepsilon)\)</span>. This also gives <span class="math" data-tex="\(\log a\to-\infty\)">\(\log a\to-\infty\)</span> as <span class="math" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span> and <span class="math" data-tex="\(\log a\to+\infty\)">\(\log a\to+\infty\)</span> as <span class="math" data-tex="\(a\to\infty\)">\(a\to\infty\)</span>.</p>
+<p>For real <span class="math" data-tex="\(u\)">\(u\)</span>, (QF.E1) gives <span class="math" data-tex="\(|\exp(iu)|=1\)">\(|\exp(iu)|=1\)</span>. The series gives <span class="math" data-tex="\(|\exp(ih)-1|\leq |h|\exp|h|\)">\(|\exp(ih)-1|\leq |h|\exp|h|\)</span>. Subdivide an increment <span class="math" data-tex="\(u-v\)">\(u-v\)</span> into <span class="math" data-tex="\(n\)">\(n\)</span> equal parts, telescope using (QF.E1), and use the modulus-one identity to obtain</p>
+<span class="math math-display" data-tex="\[
+|\exp(iu)-\exp(iv)|
+\leq |u-v|\exp(|u-v|/n).
+\]">\[
+|\exp(iu)-\exp(iv)|
+\leq |u-v|\exp(|u-v|/n).
+\]</span>
+<p>Letting <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span> proves the exact bound <span class="math" data-tex="\(|\exp(iu)-\exp(iv)|\leq |u-v|\)">\(|\exp(iu)-\exp(iv)|\leq |u-v|\)</span>. These elementary arguments supply continuity, endpoint behaviour and the uniform estimate used below.</p>
+<p><strong>Corollary.</strong> Under OA-MOD-QF-07, assume <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span>, and assume that <span class="math" data-tex="\(A_{i_0}\)">\(A_{i_0}\)</span> is injective for one index <span class="math" data-tex="\(i_0\)">\(i_0\)</span>. The limit <span class="math" data-tex="\(A\)">\(A\)</span> and every <span class="math" data-tex="\(A_i\)">\(A_i\)</span> with <span class="math" data-tex="\(i\geq i_0\)">\(i\geq i_0\)</span> are injective. On that tail,</p>
+<span class="math math-display" data-tex="\[
+\log A_i\longrightarrow\log A
+\]">\[
+\log A_i\longrightarrow\log A
+\]</span>
+<p>in the strong resolvent sense. For every <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> and <span class="math" data-tex="\(0\leq T&lt;\infty\)">\(0\leq T&lt;\infty\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\leq T}\|A_i^{it}x-A^{it}x\|\longrightarrow0.
+\]">\[
+\sup_{|t|\leq T}\|A_i^{it}x-A^{it}x\|\longrightarrow0.
+\]</span>
+<p>The powers are defined by <span class="math" data-tex="\(A^{it}=e^{it\log A}\)">\(A^{it}=e^{it\log A}\)</span>; they are unitaries. Injectivity means zero spectral projection at zero, not a positive lower bound. The operators may be unbounded above and have spectrum accumulating at zero.</p>
+<p><strong>Proof of injectivity and logarithm convergence.</strong> If <span class="math" data-tex="\(Ax=0\)">\(Ax=0\)</span>, then <span class="math" data-tex="\(x\in D(A^{1/2})=D_\infty\)">\(x\in D(A^{1/2})=D_\infty\)</span>, and <span class="math" data-tex="\(0\leq q_{i_0}[x]\leq q_\infty[x]=0\)">\(0\leq q_{i_0}[x]\leq q_\infty[x]=0\)</span>. Hence <span class="math" data-tex="\(A_{i_0}^{1/2}x=0\)">\(A_{i_0}^{1/2}x=0\)</span>, so <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. The same argument using <span class="math" data-tex="\(q_{i_0}\leq q_i\)">\(q_{i_0}\leq q_i\)</span> proves injectivity for <span class="math" data-tex="\(i\geq i_0\)">\(i\geq i_0\)</span>. The logarithms are therefore densely defined self-adjoint operators, with</p>
+<span class="math math-display" data-tex="\[
+D(\log A)=\left\{x:\int_{(0,\infty)}|\log a|^2\,d\langle E_A(a)x,x\rangle&lt;\infty\right\},
+\]">\[
+D(\log A)=\left\{x:\int_{(0,\infty)}|\log a|^2\,d\langle E_A(a)x,x\rangle&lt;\infty\right\},
+\]</span>
+<p>and the analogous domains for <span class="math" data-tex="\(A_i\)">\(A_i\)</span>.</p>
+<p>Put <span class="math" data-tex="\(B_i=(I+A_i)^{-1}\)">\(B_i=(I+A_i)^{-1}\)</span>, <span class="math" data-tex="\(B=(I+A)^{-1}\)">\(B=(I+A)^{-1}\)</span>. For nonreal <span class="math" data-tex="\(z\)">\(z\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+h_z(s)=\left(\log\frac{1-s}{s}-z\right)^{-1}\quad(0&lt;s&lt;1),
+\qquad h_z(0)=h_z(1)=0.
+\]">\[
+h_z(s)=\left(\log\frac{1-s}{s}-z\right)^{-1}\quad(0&lt;s&lt;1),
+\qquad h_z(0)=h_z(1)=0.
+\]</span>
+<p>This is continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, since the real logarithm tends to opposite infinities at the two endpoints. The strong continuous-calculus convergence proved in OA-MOD-QF-07 gives <span class="math" data-tex="\(h_z(B_i)\to h_z(B)\)">\(h_z(B_i)\to h_z(B)\)</span>. There are no endpoint spectral atoms: <span class="math" data-tex="\(B_i,B\)">\(B_i,B\)</span> are injective, and their spectral projections at one are the kernel projections of <span class="math" data-tex="\(A_i,A\)">\(A_i,A\)</span>. Thus these operators are exactly <span class="math" data-tex="\((\log A_i-z)^{-1}\)">\((\log A_i-z)^{-1}\)</span> and <span class="math" data-tex="\((\log A-z)^{-1}\)">\((\log A-z)^{-1}\)</span>.</p>
+<p><strong>Proof of locally uniform power convergence.</strong> For <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, write</p>
+<span class="math math-display" data-tex="\[
+\ell(s)=\log\frac{1-s}{s},\qquad F_t(s)=e^{it\ell(s)}.
+\]">\[
+\ell(s)=\log\frac{1-s}{s},\qquad F_t(s)=e^{it\ell(s)}.
+\]</span>
+<p>Fix <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Because the spectral measure of <span class="math" data-tex="\(B\)">\(B\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> has no mass at zero or one, choose a continuous <span class="math" data-tex="\(\chi:[0,1]\to[0,1]\)">\(\chi:[0,1]\to[0,1]\)</span> supported in a compact subinterval of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\|(I-\chi(B))x\|&lt;\varepsilon.
+\]">\[
+\|(I-\chi(B))x\|&lt;\varepsilon.
+\]</span>
+<p>For example, take cutoff functions equal to one on successively larger compact subintervals; dominated convergence makes this norm tend to zero. Continuous-calculus convergence also gives <span class="math" data-tex="\(\|(I-\chi(B_i))x\|&lt;2\varepsilon\)">\(\|(I-\chi(B_i))x\|&lt;2\varepsilon\)</span> for all sufficiently late <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>The functions <span class="math" data-tex="\(\chi F_t\)">\(\chi F_t\)</span>, extended by zero at the endpoints, are continuous on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. On the support of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, <span class="math" data-tex="\(|\ell|\)">\(|\ell|\)</span> is bounded by a finite constant <span class="math" data-tex="\(L\)">\(L\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\|\chi F_t-\chi F_s\|_\infty\leq L|t-s|.
+\]">\[
+\|\chi F_t-\chi F_s\|_\infty\leq L|t-s|.
+\]</span>
+<p>A finite mesh in <span class="math" data-tex="\([-T,T]\)">\([-T,T]\)</span>, strong continuous-calculus convergence at its finitely many mesh points, and this estimate imply</p>
+<span class="math math-display" data-tex="\[
+\sup_{|t|\leq T}\|(\chi F_t)(B_i)x-(\chi F_t)(B)x\|\longrightarrow0.
+\]">\[
+\sup_{|t|\leq T}\|(\chi F_t)(B_i)x-(\chi F_t)(B)x\|\longrightarrow0.
+\]</span>
+<p>Finally split each power into its cutoff part and its remainder. Unitarity bounds the remainder by <span class="math" data-tex="\(\|(I-\chi(B_i))x\|\)">\(\|(I-\chi(B_i))x\|\)</span> or <span class="math" data-tex="\(\|(I-\chi(B))x\|\)">\(\|(I-\chi(B))x\|\)</span>, respectively. The total error has eventual limsup at most <span class="math" data-tex="\(3\varepsilon\)">\(3\varepsilon\)</span>, uniformly in <span class="math" data-tex="\(|t|\leq T\)">\(|t|\leq T\)</span>. Let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The density assumption cannot be dropped from the conclusion of unitary convergence on all of <span class="math" data-tex="\(H\)">\(H\)</span>. For <span class="math" data-tex="\(A_n=nI\)">\(A_n=nI\)</span>, every <span class="math" data-tex="\(A_n\)">\(A_n\)</span> is injective, but <span class="math" data-tex="\(D_\infty=\{0\}\)">\(D_\infty=\{0\}\)</span>, and <span class="math" data-tex="\(n^{it}I\)">\(n^{it}I\)</span> has no such locally uniform strong limit. Indeed, for <span class="math" data-tex="\(n&gt;1\)">\(n&gt;1\)</span>, the times <span class="math" data-tex="\(t_n=1/\log n\)">\(t_n=1/\log n\)</span> tend to zero while <span class="math" data-tex="\(n^{it_n}=\exp(i)\ne1\)">\(n^{it_n}=\exp(i)\ne1\)</span>. To see the inequality from the series alone, group the terms of its imaginary part as <span class="math" data-tex="\(1-1/3!+(1/5!-1/7!)+(1/9!-1/11!)+\cdots\)">\(1-1/3!+(1/5!-1/7!)+(1/9!-1/11!)+\cdots\)</span>, which is at least <span class="math" data-tex="\(5/6&gt;0\)">\(5/6&gt;0\)</span>. Uniform convergence near zero to a continuous vector-valued limit would contradict <span class="math" data-tex="\(n^{i0}=1\)">\(n^{i0}=1\)</span>.</p>
+<h2 id="worked-models">Worked models</h2>
+<p><strong>A form domain larger than the operator domain.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+(Ax)_k=k^2x_k,\quad
+D(A)=\left\{x:\sum_{k\geq1}k^4|x_k|^2&lt;\infty\right\}.
+\]">\[
+(Ax)_k=k^2x_k,\quad
+D(A)=\left\{x:\sum_{k\geq1}k^4|x_k|^2&lt;\infty\right\}.
+\]</span>
+<p>The spectral theorem here is coordinatewise, and its form has</p>
+<span class="math math-display" data-tex="\[
+D(q)=\left\{x:\sum_{k\geq1}k^2|x_k|^2&lt;\infty\right\},\qquad
+q[x]=\sum_{k\geq1}k^2|x_k|^2.
+\]">\[
+D(q)=\left\{x:\sum_{k\geq1}k^2|x_k|^2&lt;\infty\right\},\qquad
+q[x]=\sum_{k\geq1}k^2|x_k|^2.
+\]</span>
+<p>The vector <span class="math" data-tex="\(x_k=k^{-2}\)">\(x_k=k^{-2}\)</span> lies in <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>, since its energy is <span class="math" data-tex="\(\sum k^{-2}&lt;\infty\)">\(\sum k^{-2}&lt;\infty\)</span>: for <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span>, use <span class="math" data-tex="\(k^{-2}\leq(k-1)^{-1}-k^{-1}\)">\(k^{-2}\leq(k-1)^{-1}-k^{-1}\)</span> and telescope. It does not lie in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, since <span class="math" data-tex="\(Ax\)">\(Ax\)</span> would be the constant sequence one. Its finite energy therefore does not justify applying <span class="math" data-tex="\(A\)">\(A\)</span> to it as a Hilbert-space vector.</p>
+<p><strong>An arbitrary index set.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be any set, and choose finite real numbers <span class="math" data-tex="\(w_j\geq0\)">\(w_j\geq0\)</span> for <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>. On <span class="math" data-tex="\(H=\ell^2(J)\)">\(H=\ell^2(J)\)</span>, define bounded operators</p>
+<span class="math math-display" data-tex="\[
+(A_nx)_j=\min(w_j,n)x_j.
+\]">\[
+(A_nx)_j=\min(w_j,n)x_j.
+\]</span>
+<p>For nonnegative families, sums over <span class="math" data-tex="\(J\)">\(J\)</span> mean suprema of finite subsums. Their increasing form limit is</p>
+<span class="math math-display" data-tex="\[
+D_\infty=\left\{x:\sum_{j\in J}w_j|x_j|^2&lt;\infty\right\},\qquad
+q_\infty[x]=\sum_{j\in J}w_j|x_j|^2.
+\]">\[
+D_\infty=\left\{x:\sum_{j\in J}w_j|x_j|^2&lt;\infty\right\},\qquad
+q_\infty[x]=\sum_{j\in J}w_j|x_j|^2.
+\]</span>
+<p>To check the equality of the supremum and the sum, the left side is at most the right side termwise; on each finite subset the truncated terms converge to the original terms, giving the reverse inequality after taking the supremum over finite subsets. Finite-support vectors belong to <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>, so it is dense even when <span class="math" data-tex="\(J\)">\(J\)</span> is uncountable. The representing operator is coordinate multiplication by <span class="math" data-tex="\(w_j\)">\(w_j\)</span>, with domain <span class="math" data-tex="\(\{x:\sum_j w_j^2|x_j|^2&lt;\infty\}\)">\(\{x:\sum_j w_j^2|x_j|^2&lt;\infty\}\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+((A_n+\lambda I)^{-1}x)_j=\frac{x_j}{\min(w_j,n)+\lambda}
+\longrightarrow\frac{x_j}{w_j+\lambda}.
+\]">\[
+((A_n+\lambda I)^{-1}x)_j=\frac{x_j}{\min(w_j,n)+\lambda}
+\longrightarrow\frac{x_j}{w_j+\lambda}.
+\]</span>
+<p>This is a direct nonseparable model of the theorem. No countability of the index set is inferred from the sequence of truncations.</p>
+<p><strong>A proper finite-energy subspace.</strong> Let <span class="math" data-tex="\(H=H_0\oplus H_1\)">\(H=H_0\oplus H_1\)</span> with <span class="math" data-tex="\(H_1\ne0\)">\(H_1\ne0\)</span>, and let <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span> be any densely defined self-adjoint operator on <span class="math" data-tex="\(H_0\)">\(H_0\)</span>. Put <span class="math" data-tex="\(A_n=C\oplus nI_{H_1}\)">\(A_n=C\oplus nI_{H_1}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+q_n[(x,y)]=\|C^{1/2}x\|^2+n\|y\|^2,
+\qquad D(q_n)=D(C^{1/2})\oplus H_1.
+\]">\[
+q_n[(x,y)]=\|C^{1/2}x\|^2+n\|y\|^2,
+\qquad D(q_n)=D(C^{1/2})\oplus H_1.
+\]</span>
+<p>All these domains are equal and dense, yet</p>
+<span class="math math-display" data-tex="\[
+D_\infty=D(C^{1/2})\oplus\{0\},\quad
+K=H_0\oplus\{0\},\quad
+(A_n+\lambda I)^{-1}\longrightarrow(C+\lambda I)^{-1}\oplus0.
+\]">\[
+D_\infty=D(C^{1/2})\oplus\{0\},\quad
+K=H_0\oplus\{0\},\quad
+(A_n+\lambda I)^{-1}\longrightarrow(C+\lambda I)^{-1}\oplus0.
+\]</span>
+<p>The limiting form represents <span class="math" data-tex="\(C\)">\(C\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. This explains exactly what is lost when an entire orthogonal subspace acquires infinite energy.</p>
+<figure><img src="assets/form-limit-energy.png" alt="Unit-energy sets for q_n and their resolvent minimizers" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> On the real coordinate slice of <span class="math" data-tex="\(H=\mathbb C^2\)">\(H=\mathbb C^2\)</span>, take <span class="math" data-tex="\(q_n[(x,y)]=|x|^2+n|y|^2\)">\(q_n[(x,y)]=|x|^2+n|y|^2\)</span>. The left panel shows the exact unit-energy boundaries for <span class="math" data-tex="\(n=1,4,16\)">\(n=1,4,16\)</span>. As <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>, the closed unit-energy sets decrease to the segment <span class="math" data-tex="\(\{(x,0):|x|\leq1\}\)">\(\{(x,0):|x|\leq1\}\)</span>; the entire finite-energy domain is the complex line <span class="math" data-tex="\(K=\mathbb C\oplus0\)">\(K=\mathbb C\oplus0\)</span>. The right panel shows the minimizers for <span class="math" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, <span class="math" data-tex="\(f=(1,1)\)">\(f=(1,1)\)</span>: <span class="math" data-tex="\(u_n=(1/2,1/(n+1))\to(1/2,0)\)">\(u_n=(1/2,1/(n+1))\to(1/2,0)\)</span>. Thus an ordinary resolvent can converge strongly to a map that vanishes on <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span>, as proved in QF-07. Simon's author copy treats this nondense interpretation; the displayed coordinate example follows directly by substitution.</p>
+<h2 id="problems-with-solutions"><span id="oa-mod-qf-10"></span><span id="OA-MOD-QF-10"></span>Problems with solutions</h2>
+<p><strong>Problem 1: a closed operator supplies a closed form.</strong> Let <span class="math" data-tex="\(T:D(T)\subseteq H\to L\)">\(T:D(T)\subseteq H\to L\)</span> be a densely defined closed linear operator between arbitrary Hilbert spaces. Prove that <span class="math" data-tex="\(q_T(x,y)=\langle Tx,Ty\rangle\)">\(q_T(x,y)=\langle Tx,Ty\rangle\)</span> on <span class="math" data-tex="\(D(T)\)">\(D(T)\)</span> is a densely defined closed nonnegative form. Determine the domain criterion for its representing operator without assuming that <span class="math" data-tex="\(T\)">\(T\)</span> is bounded.</p>
+<p><strong>Solution.</strong> The form norm is the graph norm of <span class="math" data-tex="\(T\)">\(T\)</span>, so completeness is precisely closedness of its graph. By OA-MOD-QF-03 its representing operator has domain consisting of <span class="math" data-tex="\(x\in D(T)\)">\(x\in D(T)\)</span> for which some <span class="math" data-tex="\(y\in H\)">\(y\in H\)</span> satisfies <span class="math" data-tex="\(\langle Tx,Tv\rangle=\langle y,v\rangle\)">\(\langle Tx,Tv\rangle=\langle y,v\rangle\)</span> for all <span class="math" data-tex="\(v\in D(T)\)">\(v\in D(T)\)</span>. Taking conjugates gives <span class="math" data-tex="\(\langle Tv,Tx\rangle=\langle v,y\rangle\)">\(\langle Tv,Tx\rangle=\langle v,y\rangle\)</span>, exactly the definition of <span class="math" data-tex="\(Tx\in D(T^*)\)">\(Tx\in D(T^*)\)</span> with <span class="math" data-tex="\(T^*Tx=y\)">\(T^*Tx=y\)</span>. Thus the representing operator is <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> on <span class="math" data-tex="\(\{x\in D(T):Tx\in D(T^*)\}\)">\(\{x\in D(T):Tx\in D(T^*)\}\)</span>. This argument also proves that <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> is nonnegative self-adjoint through the form theorem; no independent theorem about self-adjointness of <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> has been assumed. The adjoint of a densely defined operator is understood through this displayed defining identity.</p>
+<p><strong>Problem 2: strong is not norm resolvent convergence.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(P_n\)">\(P_n\)</span> project onto the first <span class="math" data-tex="\(n\)">\(n\)</span> coordinates. Apply the increasing-form theorem to <span class="math" data-tex="\(A_n=P_n\)">\(A_n=P_n\)</span>. Compute the norm difference of the resolvents at <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><strong>Solution.</strong> The forms are <span class="math" data-tex="\(q_n[x]=\sum_{k\leq n}|x_k|^2\)">\(q_n[x]=\sum_{k\leq n}|x_k|^2\)</span>, with common domain <span class="math" data-tex="\(H\)">\(H\)</span>. Their limit is <span class="math" data-tex="\(q[x]=\|x\|^2\)">\(q[x]=\|x\|^2\)</span>, represented by <span class="math" data-tex="\(A=I\)">\(A=I\)</span>. Since <span class="math" data-tex="\((I+P_n)^{-1}=I-\tfrac12P_n\)">\((I+P_n)^{-1}=I-\tfrac12P_n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(I+P_n)^{-1}-\tfrac12I=\tfrac12(I-P_n).
+\]">\[
+(I+P_n)^{-1}-\tfrac12I=\tfrac12(I-P_n).
+\]</span>
+<p>This tends strongly to zero because tails of an <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> vector have norm tending to zero, but its operator norm is <span class="math" data-tex="\(1/2\)">\(1/2\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. The theorem therefore cannot promise norm resolvent convergence, even for uniformly bounded operators on a common domain.</p>
+<p><strong>Problem 3: recover the extended energy from resolvents.</strong> Let <span class="math" data-tex="\(q\)">\(q\)</span> be a closed nonnegative form, <span class="math" data-tex="\(K=\overline{D(q)}\)">\(K=\overline{D(q)}\)</span>, and <span class="math" data-tex="\(A_K\)">\(A_K\)</span> its operator. Define <span class="math" data-tex="\(R_r=(A_K+rI_K)^{-1}P_K\)">\(R_r=(A_K+rI_K)^{-1}P_K\)</span> for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. Prove the formula, including its infinite values,</p>
+<span class="math math-display" data-tex="\[
+\widetilde q[x]=\sup_{r&gt;0}\left(r\|x\|^2-r^2\langle R_rx,x\rangle\right).
+\]">\[
+\widetilde q[x]=\sup_{r&gt;0}\left(r\|x\|^2-r^2\langle R_rx,x\rangle\right).
+\]</span>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(x=x_K+x_\perp\)">\(x=x_K+x_\perp\)</span>. The expression equals</p>
+<span class="math math-display" data-tex="\[
+r\|x_\perp\|^2+
+\int_{[0,\infty)}\frac{ra}{a+r}\,d\langle E_{A_K}(a)x_K,x_K\rangle.
+\]">\[
+r\|x_\perp\|^2+
+\int_{[0,\infty)}\frac{ra}{a+r}\,d\langle E_{A_K}(a)x_K,x_K\rangle.
+\]</span>
+<p>Both terms increase with <span class="math" data-tex="\(r\)">\(r\)</span>. If <span class="math" data-tex="\(x_\perp\ne0\)">\(x_\perp\ne0\)</span>, their supremum is infinity. If <span class="math" data-tex="\(x_\perp=0\)">\(x_\perp=0\)</span>, monotone convergence gives the integral of <span class="math" data-tex="\(a\)">\(a\)</span>, which is <span class="math" data-tex="\(q[x]\)">\(q[x]\)</span> for <span class="math" data-tex="\(x\in D(q)=D(A_K^{1/2})\)">\(x\in D(q)=D(A_K^{1/2})\)</span> and infinity otherwise. This proves the formula and shows that the generalized resolvents retain both the finite energies and the exact domain.</p>
+<p><strong>Problem 4: a sufficient density test.</strong> In OA-MOD-QF-06, suppose there is a dense linear subspace <span class="math" data-tex="\(D_0\subseteq\bigcap_iD(q_i)\)">\(D_0\subseteq\bigcap_iD(q_i)\)</span> such that <span class="math" data-tex="\(\sup_iq_i[x]&lt;\infty\)">\(\sup_iq_i[x]&lt;\infty\)</span> for each <span class="math" data-tex="\(x\in D_0\)">\(x\in D_0\)</span>. Prove that <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> is dense. Explain why no uniform constant in <span class="math" data-tex="\(x\)">\(x\)</span> is required, and compare this with the family <span class="math" data-tex="\(nI\)">\(nI\)</span>.</p>
+<p><strong>Solution.</strong> The pointwise energy hypothesis gives <span class="math" data-tex="\(D_0\subseteq D_\infty\)">\(D_0\subseteq D_\infty\)</span>, and taking Hilbert-space closures proves density. No bound of the form <span class="math" data-tex="\(q_i[x]\leq C\|x\|^2\)">\(q_i[x]\leq C\|x\|^2\)</span> has been used; the eventual operator can be unbounded. For <span class="math" data-tex="\(nI\)">\(nI\)</span>, every nonzero vector has infinite supremum energy, so no dense <span class="math" data-tex="\(D_0\)">\(D_0\)</span> can satisfy the hypothesis on a nonzero Hilbert space. Merely choosing a common algebraic domain does not repair the missing bound.</p>
+<p><strong>Problem 5: finite sums need a domain check.</strong> Let <span class="math" data-tex="\(q_1,\ldots,q_m\)">\(q_1,\ldots,q_m\)</span> be closed nonnegative forms. Prove that their sum is closed on <span class="math" data-tex="\(\bigcap_{k=1}^mD(q_k)\)">\(\bigcap_{k=1}^mD(q_k)\)</span>. State the extra condition needed to represent it by a self-adjoint operator on the whole ambient space.</p>
+<p><strong>Solution.</strong> A sequence Cauchy for <span class="math" data-tex="\(\|x\|^2+\sum_kq_k[x]\)">\(\|x\|^2+\sum_kq_k[x]\)</span> is Cauchy in every individual form norm and converges in <span class="math" data-tex="\(H\)">\(H\)</span> to one vector <span class="math" data-tex="\(x\)">\(x\)</span>. Closedness of each form puts <span class="math" data-tex="\(x\)">\(x\)</span> in every domain and gives convergence in each form norm. There are finitely many terms, so their sum tends to zero as well. Thus the sum is closed. Representation on all of <span class="math" data-tex="\(H\)">\(H\)</span> additionally requires the intersection to be dense. Without it, OA-MOD-QF-04 gives the operator on the closure of the intersection. Density of each individual domain alone is not a premise that permits one to omit this check.</p>
+<h2 id="what-this-unit-exports">What this unit exports</h2>
+<p>The core exports are the exact domain and graph formulas in OA-MOD-QF-03; the finite-energy limit in OA-MOD-QF-06; the directed strong-resolvent theorem in OA-MOD-QF-07; and the injective logarithm and locally uniform imaginary-power convergence in OA-MOD-QF-08. They may be used on GNS Hilbert spaces without any separability or sigma-finiteness assumption, once the proposed forms have actually been proved closed or expressed as increasing limits of closed forms.</p>
+<p>Representation applies once a proposed form is proved closed. The convergence theorem uses its exact finite-energy domain; a common algebraic domain alone is insufficient. Closability for a general form, spatial derivatives and modular identities require their own arguments. For the further closed-form tests, see <a href="OA-MOD-FC.html">Closability and lower semicontinuity on the given domain and One resolvent inequality recovers the whole form order</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><span class="unlinked">← Banach holomorphy, generators, and resolvent limits</span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-FC.html">Closing energy domains and comparing resolvents →</a></span></nav>
+<p class="small source-link"><a href="src/closed-positive-forms.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

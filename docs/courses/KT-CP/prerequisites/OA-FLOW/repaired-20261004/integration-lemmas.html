@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="C02AFBA0618E3FF46DC785359D9BACEDF7CCA079EDDDECE453DF1993ED3D3486">
+<title>Bounded forms and finite-dimensional separation — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-OA-FLOW/repaired-20261004/integration-lemmas</span></nav>
+<article id="lesson" class="lesson"><h1 id="bounded-forms-and-finite-dimensional-separation">Bounded forms and finite-dimensional separation</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition: CC0 1.0.</em></p>
+<p>These two earlier-input corollaries make explicit the Hilbert bounded-form step in Lemma 8.2 and the finite-dimensional separation step in Lemma 7.1 of <a href="covariance-and-crossed-products.html">Covariance and crossed products with nonunital coefficients</a>. Inner products are linear in the first variable. The inputs are the complete <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.8">Hilbert projection, Riesz and adjoint proofs in CF Section 8</a>, and the <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.1">scalar compactness</a> and <a href="continuous-calculus-and-hilbert-spaces.html#oa-flow.cf.4">product compactness</a> proofs. No separability is assumed.</p>
+<p><span id="KTCP-INTEGRATION-FORM-001"></span></p>
+<h2 id="1-a-bounded-sesquilinear-form-determines-its-operator">1. A bounded sesquilinear form determines its operator</h2>
+<p><span id="theorem-1-1"></span><strong>Theorem 1.1.</strong> Let <span class="math" data-tex="\(H,K\)">\(H,K\)</span> be complex Hilbert spaces, and let <span class="math" data-tex="\(B:H\times K\to\mathbb C\)">\(B:H\times K\to\mathbb C\)</span> be linear in its first variable and conjugate linear in its second. If</p>
+<span class="math math-display" data-tex="\[
+|B(u,v)|\leq M\|u\|\|v\|\qquad(u\in H,v\in K),
+\]">\[
+|B(u,v)|\leq M\|u\|\|v\|\qquad(u\in H,v\in K),
+\]</span>
+<p>for a finite <span class="math" data-tex="\(M\geq0\)">\(M\geq0\)</span>, there is a unique bounded linear <span class="math" data-tex="\(T:H\to K\)">\(T:H\to K\)</span> such that</p>
+<span id="equation-b1"></span><span class="math math-display" data-tex="\[
+B(u,v)=\langle Tu,v\rangle,\qquad \|T\|\leq M.
+\tag{B1}
+\]">\[
+B(u,v)=\langle Tu,v\rangle,\qquad \|T\|\leq M.
+\tag{B1}
+\]</span>
+<p>The same conclusion applies to a form initially defined on dense linear subspaces and satisfying that bound. If <span class="math" data-tex="\(H=K\)">\(H=K\)</span> and <span class="math" data-tex="\(0\leq B(u,u)\leq C\|u\|^2\)">\(0\leq B(u,u)\leq C\|u\|^2\)</span>, then <span class="math" data-tex="\(T\)">\(T\)</span> is self-adjoint and <span class="math" data-tex="\(0\leq T\leq CI\)">\(0\leq T\leq CI\)</span>. In the dense-subspace version, this last assertion uses the same dense subspace in both variables.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="\(u\)">\(u\)</span>, the function <span class="math" data-tex="\(v\mapsto\overline{B(u,v)}\)">\(v\mapsto\overline{B(u,v)}\)</span> is a bounded linear functional on <span class="math" data-tex="\(K\)">\(K\)</span>. CF Section 8 gives a unique <span class="math" data-tex="\(Tu\)">\(Tu\)</span> with this functional equal to <span class="math" data-tex="\(\langle v,Tu\rangle\)">\(\langle v,Tu\rangle\)</span>, and <span class="math" data-tex="\(\|Tu\|\leq M\|u\|\)">\(\|Tu\|\leq M\|u\|\)</span>. Conjugating yields (B1). Uniqueness of its representing vector, applied to addition and scalar multiplication in the first variable, proves linearity of <span class="math" data-tex="\(T\)">\(T\)</span>. If two operators satisfy (B1), their difference at <span class="math" data-tex="\(u\)">\(u\)</span> is perpendicular to every <span class="math" data-tex="\(v\)">\(v\)</span>, hence zero.</p>
+<p>For the dense-subspace version, choose sequences <span class="math" data-tex="\(u_n\to u\)">\(u_n\to u\)</span>, <span class="math" data-tex="\(v_n\to v\)">\(v_n\to v\)</span> in those subspaces. Boundedness of convergent sequences and the estimate</p>
+<span class="math math-display" data-tex="\[
+|B(u_n,v_n)-B(u_m,v_m)|
+\leq M\|u_n-u_m\|\|v_n\|+M\|u_m\|\|v_n-v_m\|
+\]">\[
+|B(u_n,v_n)-B(u_m,v_m)|
+\leq M\|u_n-u_m\|\|v_n\|+M\|u_m\|\|v_n-v_m\|
+\]</span>
+<p>give a Cauchy sequence of values and independence of the choices. Its limit is a sesquilinear form on <span class="math" data-tex="\(H\times K\)">\(H\times K\)</span> with the same bound; apply the first part. This uses sequences approximating individual vectors, and imposes no countable density assumption.</p>
+<p>In the last assertion, real diagonal values imply <span class="math" data-tex="\(B(u,v)=\overline{B(v,u)}\)">\(B(u,v)=\overline{B(v,u)}\)</span>. Indeed, for any sesquilinear form <span class="math" data-tex="\(S\)">\(S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+S(u,v)=\frac14\sum_{j=0}^3 i^j S(u+i^jv,u+i^jv).
+\]">\[
+S(u,v)=\frac14\sum_{j=0}^3 i^j S(u+i^jv,u+i^jv).
+\]</span>
+<p>Apply this identity to <span class="math" data-tex="\(S(u,v)=B(u,v)-\overline{B(v,u)}\)">\(S(u,v)=B(u,v)-\overline{B(v,u)}\)</span>, whose diagonal is zero. The adjoint theorem in CF Section 8 now gives <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span>. The inequalities on the diagonal are exactly the quadratic-form inequalities <span class="math" data-tex="\(0\leq T\leq CI\)">\(0\leq T\leq CI\)</span>. They pass from a dense subspace to its closure by continuity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="KTCP-INTEGRATION-SEPARATION-001"></span></p>
+<h2 id="2-a-closest-point-supplies-strict-separation">2. A closest point supplies strict separation</h2>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> Let <span class="math" data-tex="\(C\subseteq\mathbb R^n\)">\(C\subseteq\mathbb R^n\)</span> be nonempty, closed and convex, with its Euclidean inner product. Every <span class="math" data-tex="\(x\in\mathbb R^n\)">\(x\in\mathbb R^n\)</span> has a unique nearest point <span class="math" data-tex="\(p\in C\)">\(p\in C\)</span>. For all <span class="math" data-tex="\(y\in C\)">\(y\in C\)</span>,</p>
+<span id="equation-b2"></span><span class="math math-display" data-tex="\[
+\langle x-p,y-p\rangle\leq0.
+\tag{B2}
+\]">\[
+\langle x-p,y-p\rangle\leq0.
+\tag{B2}
+\]</span>
+<p>If <span class="math" data-tex="\(x\notin C\)">\(x\notin C\)</span>, the nonzero vector <span class="math" data-tex="\(r=x-p\)">\(r=x-p\)</span> strictly separates <span class="math" data-tex="\(x\)">\(x\)</span> from <span class="math" data-tex="\(C\)">\(C\)</span>:</p>
+<span id="equation-b3"></span><span class="math math-display" data-tex="\[
+\langle r,y\rangle\leq\langle r,p\rangle
+&lt;\langle r,x\rangle,
+\qquad
+\langle r,x\rangle-\langle r,p\rangle=\|r\|^2&gt;0.
+\tag{B3}
+\]">\[
+\langle r,y\rangle\leq\langle r,p\rangle
+&lt;\langle r,x\rangle,
+\qquad
+\langle r,x\rangle-\langle r,p\rangle=\|r\|^2&gt;0.
+\tag{B3}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(y_0\in C\)">\(y_0\in C\)</span> and <span class="math" data-tex="\(R&gt;\|x-y_0\|\)">\(R&gt;\|x-y_0\|\)</span>. The nonempty set
+<span class="math" data-tex="\(C\cap\{y:\|y-x\|\leq R\}\)">\(C\cap\{y:\|y-x\|\leq R\}\)</span> is compact. To see this with the stated inputs, put its closed ball in the product of the <span class="math" data-tex="\(n\)">\(n\)</span> closed coordinate intervals of radius <span class="math" data-tex="\(R\)">\(R\)</span> about <span class="math" data-tex="\(x\)">\(x\)</span>. Those intervals are compact by CF Section 1; their finite product is compact by CF Section 4. The ball and <span class="math" data-tex="\(C\)">\(C\)</span> are closed, so their intersection is a closed subset of that compact product. The continuous function <span class="math" data-tex="\(y\mapsto\|x-y\|\)">\(y\mapsto\|x-y\|\)</span> attains a minimum there: its image is a nonempty compact subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, hence contains its infimum. That minimum is no larger than <span class="math" data-tex="\(\|x-y_0\|&lt;R\)">\(\|x-y_0\|&lt;R\)</span>; points outside the ball have distance greater than <span class="math" data-tex="\(R\)">\(R\)</span>. Thus its minimizer <span class="math" data-tex="\(p\)">\(p\)</span> is a global nearest point in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> were two distinct minimizers with distance <span class="math" data-tex="\(d\)">\(d\)</span>, their midpoint would lie in <span class="math" data-tex="\(C\)">\(C\)</span>, while expanding the Euclidean squares gives</p>
+<span class="math math-display" data-tex="\[
+\left\|x-\frac{p+q}{2}\right\|^2
+=d^2-\frac14\|p-q\|^2&lt;d^2,
+\]">\[
+\left\|x-\frac{p+q}{2}\right\|^2
+=d^2-\frac14\|p-q\|^2&lt;d^2,
+\]</span>
+<p>a contradiction. For <span class="math" data-tex="\(y\in C\)">\(y\in C\)</span> and <span class="math" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>, convexity places <span class="math" data-tex="\(p+t(y-p)\)">\(p+t(y-p)\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>. Minimality and expansion give</p>
+<span class="math math-display" data-tex="\[
+0\leq -2t\langle x-p,y-p\rangle+t^2\|y-p\|^2.
+\]">\[
+0\leq -2t\langle x-p,y-p\rangle+t^2\|y-p\|^2.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(t\)">\(t\)</span> and let <span class="math" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span> to obtain (B2). If <span class="math" data-tex="\(x\notin C\)">\(x\notin C\)</span>, <span class="math" data-tex="\(r\neq0\)">\(r\neq0\)</span>, and (B2) gives the weak inequality in (B3). Its strict gap is <span class="math" data-tex="\(\langle r,x-p\rangle=\|r\|^2\)">\(\langle r,x-p\rangle=\|r\|^2\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the unique nonempty subset is the single point and there is no outside <span class="math" data-tex="\(x\)">\(x\)</span>; the nearest-point conclusion is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../../index.html">Course contents</a> <a href="../../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../../src/OA-FLOW/repaired-20261004/integration-lemmas.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Nullstellensatz and Jacobson rings · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/the-nullstellensatz-and-jacobson-rings.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="the-nullstellensatz-and-jacobson-rings">The Nullstellensatz and
+Jacobson rings</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Prime ideals turn equations into points, but a prime need not be a
+closed point. The Nullstellensatz says that over a field, finite algebra
+generation forces closed points to have finite residue fields. It also
+says that closed points suffice to detect radical ideals. Jacobson rings
+isolate this second property and let us carry it from fields to
+arithmetic bases such as <span class="math inline">\(\mathbb
+Z\)</span>.</p>
+<p>Rings are commutative with identity, and a field is nonzero. A finite
+extension of fields has finite vector-space dimension; it need not have
+finitely many elements. We use the Noetherian module and Hilbert basis
+theorems from <a href="AG-CA-03.html"><em>Noetherian and Artinian
+rings</em></a>, and the field criterion and integral-element tests from
+<a href="AG-CA-05.html"><em>Integral extensions: lying over, going up
+and going down</em></a>. The spectrum conventions and radical-ideal
+correspondence are those of <a href="AG-CA-01.html"><em>Spectra of
+rings</em></a>. Only the Artin–Tate theorem below assumes a Noetherian
+base; the Jacobson permanence theorem does not.</p>
+<h2 id="why-an-algebra-generated-field-is-finite">1. Why an algebra
+generated field is finite</h2>
+<p>The obstacle to finite algebra generation of a rational function
+field is the supply of new denominators. A finite extension can conceal
+these denominators, so we first prove a theorem that recovers finite
+generation of an intermediate algebra.</p>
+<p><strong>Theorem 1.1 (Artin–Tate).</strong> Let <span
+class="math inline">\(R\)</span> be Noetherian, <span
+class="math inline">\(S\)</span> an <span
+class="math inline">\(R\)</span>-algebra of finite type, and <span
+class="math inline">\(T\subset S\)</span> an <span
+class="math inline">\(R\)</span>-subalgebra. If <span
+class="math inline">\(S\)</span> is finite as a <span
+class="math inline">\(T\)</span>-module, then <span
+class="math inline">\(T\)</span> is of finite type over <span
+class="math inline">\(R\)</span>.</p>
+<p><strong>Proof.</strong> Choose algebra generators <span
+class="math inline">\(s_1,\ldots,s_n\)</span> for <span
+class="math inline">\(S\)</span> over <span
+class="math inline">\(R\)</span>, and module generators <span
+class="math inline">\(b_1,\ldots,b_e\)</span> for <span
+class="math inline">\(S\)</span> over <span
+class="math inline">\(T\)</span>, including <span
+class="math inline">\(1\)</span> among the latter. Choose coefficients
+in <span class="math inline">\(T\)</span> expressing each <span
+class="math inline">\(s_i\)</span> as a linear combination of the <span
+class="math inline">\(b_j\)</span>, and each product <span
+class="math inline">\(b_i b_j\)</span> as a linear combination of the
+<span class="math inline">\(b_l\)</span>. Let <span
+class="math inline">\(T_0\subset T\)</span> be generated over <span
+class="math inline">\(R\)</span> by this finite list of coefficients.
+Hilbert’s basis theorem makes <span class="math inline">\(T_0\)</span>
+Noetherian.</p>
+<p>The module <span class="math inline">\(U=\sum_j T_0b_j\subset
+S\)</span> contains <span class="math inline">\(1\)</span> and every
+<span class="math inline">\(s_i\)</span>. The chosen product
+coefficients show it is closed under multiplication. It is therefore an
+<span class="math inline">\(R\)</span>-subalgebra containing all the
+algebra generators of <span class="math inline">\(S\)</span>, so <span
+class="math inline">\(U=S\)</span>. Thus <span
+class="math inline">\(S\)</span> is finite over <span
+class="math inline">\(T_0\)</span>. The submodule <span
+class="math inline">\(T\subset S\)</span> is finite over the Noetherian
+ring <span class="math inline">\(T_0\)</span>, by the finite-module
+submodule theorem. Adjoining its module generators to the algebra
+generators of <span class="math inline">\(T_0\)</span> gives a finite
+set of <span class="math inline">\(R\)</span>-algebra generators for
+<span class="math inline">\(T\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Including the identity in the module generators ensures that their
+smaller coefficient span is a unital algebra. No injectivity assumption
+on the structure map from <span class="math inline">\(R\)</span> is
+needed.</p>
+<p><strong>Lemma 1.2 (rational functions need infinitely many
+denominators).</strong> If <span class="math inline">\(r\geq1\)</span>,
+the field <span class="math inline">\(k(X_1,\ldots,X_r)\)</span> is not
+of finite type as a <span class="math inline">\(k\)</span>-algebra.</p>
+<p><strong>Proof.</strong> Suppose finitely many fractions generate it.
+If <span class="math inline">\(g\)</span> is the product of their
+nonzero polynomial denominators, all expressions in these generators lie
+in</p>
+<p><span class="math display">\[
+k[X_1,\ldots,X_r][1/g].
+\]</span></p>
+<p>There are infinitely many monic irreducibles in <span
+class="math inline">\(k[X_1]\)</span>. Otherwise, the product of their
+finite list, plus <span class="math inline">\(1\)</span>, would be a
+nonconstant polynomial with an irreducible factor absent from the list.
+This argument works over finite fields as well.</p>
+<p>Expand <span class="math inline">\(g\)</span> in <span
+class="math inline">\(X_2,\ldots,X_r\)</span>, with coefficients in
+<span class="math inline">\(k[X_1]\)</span>. One coefficient is nonzero,
+and has only finitely many irreducible factors. Choose a monic
+irreducible <span class="math inline">\(h(X_1)\)</span> not dividing
+this coefficient, hence not dividing <span
+class="math inline">\(g\)</span>. The ideal <span
+class="math inline">\((h)\)</span> in the multivariable polynomial ring
+is prime, since its quotient is the polynomial ring in <span
+class="math inline">\(X_2,\ldots,X_r\)</span> over the field <span
+class="math inline">\(k[X_1]/(h)\)</span>. If <span
+class="math inline">\(1/h\)</span> belonged to the displayed
+localization, we could write <span
+class="math inline">\(1/h=a/g^N\)</span>, giving <span
+class="math inline">\(g^N=ah\)</span>. Primality would force <span
+class="math inline">\(h\mid g\)</span>, a contradiction. But <span
+class="math inline">\(1/h\)</span> belongs to the rational function
+field. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 1.3 (Zariski’s lemma).</strong> If a field <span
+class="math inline">\(L\)</span> is of finite type as a <span
+class="math inline">\(k\)</span>-algebra, then <span
+class="math inline">\(L/k\)</span> is a finite field extension.</p>
+<p><strong>Proof.</strong> Write <span
+class="math inline">\(L=k[a_1,\ldots,a_n]\)</span>. Reorder a maximal
+algebraically independent subset of these generators as <span
+class="math inline">\(a_1,\ldots,a_r\)</span>. Every remaining generator
+is algebraic over <span
+class="math inline">\(F=k(a_1,\ldots,a_r)\)</span>. Indeed, adjoining it
+to the chosen subset gives a polynomial relation, whose nonzero
+coefficients in <span class="math inline">\(k[a_1,\ldots,a_r]\)</span>
+remain nonzero in <span class="math inline">\(F\)</span>. Since <span
+class="math inline">\(L\)</span> is a field, it contains <span
+class="math inline">\(F\)</span>, and</p>
+<p><span class="math display">\[
+L=F[a_{r+1},\ldots,a_n].
+\]</span></p>
+<p>The finite list of algebraic generators makes <span
+class="math inline">\(L\)</span> finite over <span
+class="math inline">\(F\)</span>, either by multiplying the finite power
+spans or by Theorem 1.2 of the integral-extensions lesson. Apply
+Artin–Tate to <span class="math inline">\(k\subset F\subset L\)</span>:
+it makes <span class="math inline">\(F\)</span> a finite-type <span
+class="math inline">\(k\)</span>-algebra. If <span
+class="math inline">\(r&gt;0\)</span>, algebraic independence identifies
+<span class="math inline">\(F\)</span> with the rational function field
+of Lemma 1.2, giving a contradiction. Therefore <span
+class="math inline">\(r=0\)</span>, and <span
+class="math inline">\(L\)</span> is generated by finitely many elements
+algebraic over <span class="math inline">\(k\)</span>, so is finite over
+<span class="math inline">\(k\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>This proof supplies Zariski’s lemma before dimension theory. Noether
+normalization will give another route in <em>Krull dimension and Noether
+normalization</em>.</p>
+<h2 id="closed-points-detect-radical-equations">2. Closed points detect
+radical equations</h2>
+<p><strong>Theorem 2.1 (weak Nullstellensatz).</strong> For any maximal
+ideal <span class="math inline">\(\mathfrak m\)</span> of a finite-type
+<span class="math inline">\(k\)</span>-algebra <span
+class="math inline">\(A\)</span>, the residue field <span
+class="math inline">\(\kappa(\mathfrak m)=A/\mathfrak m\)</span> is
+finite over <span class="math inline">\(k\)</span>. If <span
+class="math inline">\(k\)</span> is algebraically closed, the maximal
+ideals of <span class="math inline">\(k[X_1,\ldots,X_n]\)</span> are
+exactly</p>
+<p><span class="math display">\[
+\mathfrak m_a=(X_1-a_1,\ldots,X_n-a_n),
+\qquad a=(a_1,\ldots,a_n)\in k^n.
+\]</span></p>
+<p><strong>Proof.</strong> The quotient <span
+class="math inline">\(A/\mathfrak m\)</span> is a field and a
+finite-type <span class="math inline">\(k\)</span>-algebra, so Theorem
+1.3 applies. When <span class="math inline">\(k\)</span> is
+algebraically closed, every element of a finite extension has a minimal
+polynomial of degree one, and the extension equals <span
+class="math inline">\(k\)</span>. In the polynomial case the images of
+the variables are then elements <span class="math inline">\(a_i\in
+k\)</span>. The ideal <span class="math inline">\(\mathfrak m_a\)</span>
+lies in <span class="math inline">\(\mathfrak m\)</span>, and its
+quotient is <span class="math inline">\(k\)</span>, by evaluation at
+<span class="math inline">\(a\)</span>. It is maximal, so equals <span
+class="math inline">\(\mathfrak m\)</span>. Conversely this same
+quotient proves that every <span class="math inline">\(\mathfrak
+m_a\)</span> is maximal. <span
+class="math inline">\(\square\)</span></p>
+<p>For an ideal <span class="math inline">\(I\subset
+k[X_1,\ldots,X_n]\)</span>, let <span
+class="math inline">\(Z_k(I)\subset k^n\)</span> be its common zero set.
+For <span class="math inline">\(Y\subset k^n\)</span>, write <span
+class="math inline">\(I_k(Y)\)</span> for the ideal of polynomials
+vanishing on <span class="math inline">\(Y\)</span>. These concern <span
+class="math inline">\(k\)</span>-valued points, while <span
+class="math inline">\(V_A(I)\)</span> denotes a closed subset of the
+full prime spectrum.</p>
+<p><strong>Theorem 2.2 (strong Nullstellensatz).</strong> For any
+finite-type <span class="math inline">\(k\)</span>-algebra <span
+class="math inline">\(A\)</span> and ideal <span
+class="math inline">\(I\subset A\)</span>,</p>
+<p><span class="math display">\[
+\sqrt I=\bigcap_{\substack{\mathfrak m\text{ maximal in
+}A\\I\subset\mathfrak m}}\mathfrak m.
+\tag{1}
+\]</span></p>
+<p>If <span class="math inline">\(k\)</span> is algebraically closed and
+<span class="math inline">\(A=k[X_1,\ldots,X_n]\)</span>, then</p>
+<p><span class="math display">\[
+I_k(Z_k(I))=\sqrt I.
+\tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> Every maximal ideal containing <span
+class="math inline">\(I\)</span> contains <span
+class="math inline">\(\sqrt I\)</span>. To prove the reverse inclusion
+in (1), take <span class="math inline">\(f\notin\sqrt I\)</span>. The
+algebra <span class="math inline">\(B=(A/I)[1/\bar f]\)</span> is
+nonzero: if <span class="math inline">\(1=0\)</span> in it, the
+localization equality criterion would put some power of <span
+class="math inline">\(f\)</span> in <span
+class="math inline">\(I\)</span>. It is of finite type over <span
+class="math inline">\(k\)</span>, since adjoining the inverse adds only
+one algebra generator. Choose a maximal ideal <span
+class="math inline">\(\mathfrak n\subset B\)</span>. Theorem 2.1 makes
+<span class="math inline">\(L=B/\mathfrak n\)</span> finite over <span
+class="math inline">\(k\)</span>.</p>
+<p>Let <span class="math inline">\(\mathfrak m\)</span> be the kernel of
+<span class="math inline">\(A\to L\)</span>. The domain <span
+class="math inline">\(A/\mathfrak m\subset L\)</span> contains <span
+class="math inline">\(k\)</span>, and every one of its elements is
+algebraic, hence integral, over <span class="math inline">\(k\)</span>.
+The integral field criterion makes <span
+class="math inline">\(A/\mathfrak m\)</span> a field, so <span
+class="math inline">\(\mathfrak m\)</span> is maximal. It contains <span
+class="math inline">\(I\)</span>, and avoids <span
+class="math inline">\(f\)</span>, since the image of <span
+class="math inline">\(f\)</span> is a unit in <span
+class="math inline">\(B\)</span> and remains nonzero in <span
+class="math inline">\(L\)</span>. This separates every element outside
+<span class="math inline">\(\sqrt I\)</span> from the intersection,
+proving (1).</p>
+<p>For (2), Theorem 2.1 identifies the maximal ideals containing <span
+class="math inline">\(I\)</span> with points <span
+class="math inline">\(a\in Z_k(I)\)</span>. A polynomial belongs to
+<span class="math inline">\(\mathfrak m_a\)</span> exactly when it
+vanishes at <span class="math inline">\(a\)</span>, so their
+intersection is <span class="math inline">\(I_k(Z_k(I))\)</span>. Now
+apply (1). Empty intersections are interpreted as the whole ring,
+including the case <span class="math inline">\(I=A\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>The geometric form also has a useful certificate, called the
+<strong>Rabinowitsch trick</strong>. If <span
+class="math inline">\(k\)</span> is algebraically closed and <span
+class="math inline">\(f\)</span> vanishes on <span
+class="math inline">\(Z_k(I)\)</span>, then</p>
+<p><span class="math display">\[
+1\in I\,k[X_1,\ldots,X_n,T]+(1-Tf).
+\tag{3}
+\]</span></p>
+<p>Indeed, a maximal ideal containing this ideal, if it were proper,
+would correspond to a point <span class="math inline">\((a,b)\in
+k^{n+1}\)</span> with <span class="math inline">\(a\in Z_k(I)\)</span>
+and <span class="math inline">\(1-bf(a)=0\)</span>. But <span
+class="math inline">\(f(a)=0\)</span>, giving a contradiction. Thus (3)
+yields a polynomial identity</p>
+<p><span class="math display">\[
+1=\sum_{j=1}^s H_j(X,T)g_j(X)+H(X,T)(1-Tf(X)),
+\qquad g_j\in I.
+\]</span></p>
+<p>If <span class="math inline">\(f\ne0\)</span>, substitute <span
+class="math inline">\(T=1/f\)</span> in the localization of the
+polynomial domain and clear denominators to obtain <span
+class="math inline">\(f^N\in I\)</span> for some <span
+class="math inline">\(N\)</span>. If <span
+class="math inline">\(f=0\)</span>, membership in <span
+class="math inline">\(\sqrt I\)</span> is immediate. This proves (2) by
+a second route and turns pointwise vanishing into an explicit
+ideal-membership certificate. The full identity and the denominator step
+are worked out in Solution 7.5.</p>
+<h2 id="the-jacobson-property">3. The Jacobson property</h2>
+<p>A ring <span class="math inline">\(R\)</span> is
+<strong>Jacobson</strong> if every prime <span
+class="math inline">\(\mathfrak p\)</span> is the intersection of the
+maximal ideals containing <span class="math inline">\(\mathfrak
+p\)</span>. This is different from the <strong>Jacobson
+radical</strong>, which is just the intersection of all maximal ideals
+of a ring; the property requires the analogous equality over every
+prime.</p>
+<p><strong>Proposition 3.1 (three descriptions).</strong> The following
+are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(R\)</span> is Jacobson.</li>
+<li>Every radical ideal is the intersection of the maximal ideals
+containing it.</li>
+<li>The closed points are dense in every closed subset of <span
+class="math inline">\(\operatorname{Spec}R\)</span>.</li>
+</ol>
+<p>Every quotient of a Jacobson ring is Jacobson.</p>
+<p><strong>Proof.</strong> Condition (2) implies (1), since a prime is
+radical. Conversely, take a radical ideal <span
+class="math inline">\(I\)</span> and <span class="math inline">\(f\notin
+I\)</span>. The intersection-of-primes theorem supplies <span
+class="math inline">\(\mathfrak p\supset I\)</span> with <span
+class="math inline">\(f\notin\mathfrak p\)</span>. Condition (1) gives a
+maximal ideal <span class="math inline">\(\mathfrak m\supset\mathfrak
+p\)</span> avoiding <span class="math inline">\(f\)</span>. Thus <span
+class="math inline">\(f\)</span> is absent from the intersection in (2),
+proving equality.</p>
+<p>The closed points of <span class="math inline">\(V(I)\)</span> are
+the maximal ideals containing <span class="math inline">\(I\)</span>. If
+their intersection is <span class="math inline">\(J\)</span>, their
+closure is <span class="math inline">\(V(J)\)</span>: these are exactly
+the equations shared by those points. The ideal <span
+class="math inline">\(J\)</span> is radical. Consequently density in
+<span class="math inline">\(V(I)\)</span> is equivalent to <span
+class="math inline">\(J=\sqrt I\)</span>, by the radical-ideal
+correspondence of Proposition 2.2 of <em>Spectra of rings</em>. This
+proves (2) equivalent to (3). Finally, primes and maximal ideals of
+<span class="math inline">\(R/K\)</span> correspond to the respective
+ideals of <span class="math inline">\(R\)</span> containing <span
+class="math inline">\(K\)</span>; passing the defining intersection
+equality to the quotient proves the last assertion. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (basic examples).</strong> Fields and
+principal ideal domains with infinitely many maximal ideals are
+Jacobson. In particular <span class="math inline">\(\mathbb Z\)</span>
+is Jacobson. A local ring of positive dimension is not Jacobson, even
+without a Noetherian hypothesis.</p>
+<p><strong>Proof.</strong> In a field the only prime is zero and is
+maximal. In a principal ideal domain every nonzero prime is maximal,
+since its generator is irreducible and Bezout’s identity makes the
+quotient a field. It remains to express zero as the intersection of
+maximal ideals. A nonzero element has only finitely many irreducible
+factors, so belongs to only finitely many maximal ideals. If there are
+infinitely many maximal ideals, one avoids that element. Their
+intersection is therefore zero. The integer primes are infinite by
+Euclid’s argument, giving the assertion for <span
+class="math inline">\(\mathbb Z\)</span>.</p>
+<p>In a local ring <span class="math inline">\((R,\mathfrak m)\)</span>,
+the intersection of the maximal ideals containing any prime is just
+<span class="math inline">\(\mathfrak m\)</span>. Hence such a ring is
+Jacobson exactly when every prime equals <span
+class="math inline">\(\mathfrak m\)</span>. Positive dimension supplies
+a prime strictly below <span class="math inline">\(\mathfrak m\)</span>,
+so the property fails. <span class="math inline">\(\square\)</span></p>
+<p>In particular, density of closed points in the whole spectrum is
+insufficient unless it also holds in every closed subset. The definition
+places this demand on every prime quotient, including quotients
+representing individual irreducible closed sets.</p>
+<h2 id="finite-type-over-a-jacobson-base">4. Finite type over a Jacobson
+base</h2>
+<p>The next lemma is the algebraic step that replaces the base by a
+field on a suitable open subset.</p>
+<p><strong>Lemma 4.1 (a finite-type field over a domain).</strong>
+Suppose <span class="math inline">\(A\subset L\)</span>, where <span
+class="math inline">\(L\)</span> is a field of finite type over <span
+class="math inline">\(A\)</span>. There is a nonzero <span
+class="math inline">\(f\in A\)</span> such that <span
+class="math inline">\(A_f\)</span> is a field and <span
+class="math inline">\(L/A_f\)</span> is finite. If <span
+class="math inline">\(A\)</span> is Jacobson, <span
+class="math inline">\(A\)</span> itself is a field and <span
+class="math inline">\(L/A\)</span> is finite.</p>
+<p><strong>Proof.</strong> The subring <span
+class="math inline">\(A\)</span> is a domain; let <span
+class="math inline">\(K=\operatorname{Frac}(A)\)</span>. Writing <span
+class="math inline">\(L=A[b_1,\ldots,b_r]\)</span>, we also have <span
+class="math inline">\(L=K[b_1,\ldots,b_r]\)</span>, because <span
+class="math inline">\(L\)</span> contains <span
+class="math inline">\(K\)</span>. Zariski’s lemma makes <span
+class="math inline">\(L/K\)</span> finite. Choose monic equations for
+the <span class="math inline">\(b_i\)</span> over <span
+class="math inline">\(K\)</span>, and let <span
+class="math inline">\(f\ne0\)</span> be the product of their coefficient
+denominators in <span class="math inline">\(A\)</span>. Every <span
+class="math inline">\(b_i\)</span> is integral over <span
+class="math inline">\(A_f\)</span>, and <span
+class="math inline">\(L=A_f[b_1,\ldots,b_r]\)</span>, since <span
+class="math inline">\(L\)</span> is already a field. Thus <span
+class="math inline">\(L\)</span> is finite and integral over <span
+class="math inline">\(A_f\)</span>. The integral field criterion makes
+<span class="math inline">\(A_f\)</span> a field, and finiteness gives
+the first assertion.</p>
+<p>If <span class="math inline">\(A\)</span> is Jacobson, the
+intersection of its maximal ideals is zero, since zero is prime. Some
+maximal ideal <span class="math inline">\(\mathfrak m\)</span> avoids
+the nonzero <span class="math inline">\(f\)</span>. Its extension to the
+field <span class="math inline">\(A_f\)</span> is a prime, hence zero,
+whose contraction is zero by the domain property. Prime correspondence
+gives <span class="math inline">\(\mathfrak m=0\)</span>, so <span
+class="math inline">\(A\)</span> is a field. Then <span
+class="math inline">\(A_f=A\)</span>, and the first assertion gives
+finiteness. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (general Nullstellensatz and Jacobson
+permanence).</strong> If <span class="math inline">\(R\)</span> is
+Jacobson and <span class="math inline">\(R\to S\)</span> is of finite
+type, then <span class="math inline">\(S\)</span> is Jacobson. Every
+maximal ideal <span class="math inline">\(\mathfrak n\subset S\)</span>
+contracts to a maximal ideal <span class="math inline">\(\mathfrak
+m\subset R\)</span>, and</p>
+<p><span class="math display">\[
+\kappa(\mathfrak n)/\kappa(\mathfrak m)
+\quad\text{is a finite field extension}.
+\]</span></p>
+<p><strong>Proof.</strong> First take a maximal <span
+class="math inline">\(\mathfrak n\)</span> and its contraction <span
+class="math inline">\(\mathfrak p\)</span>. The quotient <span
+class="math inline">\(A=R/\mathfrak p\)</span> is a Jacobson domain by
+Proposition 3.1 and embeds in the field <span
+class="math inline">\(L=S/\mathfrak n\)</span>, which is of finite type
+over <span class="math inline">\(A\)</span>. Lemma 4.1 makes <span
+class="math inline">\(A\)</span> a field and <span
+class="math inline">\(L/A\)</span> finite. Thus <span
+class="math inline">\(\mathfrak p\)</span> is maximal and the stated
+residue extension is finite.</p>
+<p>To prove <span class="math inline">\(S\)</span> Jacobson, fix a prime
+<span class="math inline">\(\mathfrak q\subset S\)</span> and <span
+class="math inline">\(s\notin\mathfrak q\)</span>. The nonzero algebra
+<span class="math inline">\(B=(S/\mathfrak q)[1/\bar s]\)</span> is of
+finite type over <span class="math inline">\(R\)</span>. Choose a
+maximal ideal <span class="math inline">\(M\subset B\)</span>. The part
+just proved makes its contraction <span class="math inline">\(\mathfrak
+m\subset R\)</span> maximal and <span
+class="math inline">\(L=B/M\)</span> finite over <span
+class="math inline">\(k=R/\mathfrak m\)</span>. Let <span
+class="math inline">\(N\)</span> be the kernel of <span
+class="math inline">\(S\to L\)</span>. It contains <span
+class="math inline">\(\mathfrak q\)</span> and avoids <span
+class="math inline">\(s\)</span>, whose image is invertible.
+Moreover</p>
+<p><span class="math display">\[
+k\subset S/N\subset L.
+\]</span></p>
+<p>Every element of the intermediate domain is algebraic over <span
+class="math inline">\(k\)</span>, hence integral. The integral field
+criterion makes <span class="math inline">\(S/N\)</span> a field.
+Therefore <span class="math inline">\(N\)</span> is a maximal ideal
+containing <span class="math inline">\(\mathfrak q\)</span> and avoiding
+<span class="math inline">\(s\)</span>. Every element outside <span
+class="math inline">\(\mathfrak q\)</span> can be separated this way, so
+<span class="math inline">\(\mathfrak q\)</span> is the intersection of
+the maximal ideals containing it. <span
+class="math inline">\(\square\)</span></p>
+<p>In particular, inverting one element preserves the Jacobson property:
+<span class="math inline">\(R_f\)</span> is of finite type over <span
+class="math inline">\(R\)</span>. Its maximal ideals correspond to
+maximal ideals of <span class="math inline">\(R\)</span> avoiding <span
+class="math inline">\(f\)</span>, since contraction is maximal and
+localization preserves the quotient field. Arbitrary localizations need
+not have this property, as the next examples show.</p>
+<h2 id="equations-residue-fields-and-arithmetic-points">5. Equations,
+residue fields and arithmetic points</h2>
+<p><strong>Lemma 5.1 (the fundamental theorem of algebra).</strong>
+Every nonconstant complex polynomial has a complex root.</p>
+<p><strong>Proof.</strong> We use only the usual real-analysis facts
+that a continuous function attains its minimum on a compact disk and
+that complex numbers have polar form. For a polynomial <span
+class="math inline">\(f\)</span> of positive degree, its leading term
+implies <span class="math inline">\(|f(z)|\to\infty\)</span> as <span
+class="math inline">\(|z|\to\infty\)</span>: outside a sufficiently
+large disk the leading term is larger than the sum of the absolute
+values of all lower terms. Thus <span class="math inline">\(|f|\)</span>
+attains a global minimum, at <span class="math inline">\(z_0\)</span>.
+If <span class="math inline">\(f(z_0)\ne0\)</span>, write <span
+class="math display">\[
+\frac{f(z_0+w)}{f(z_0)}=1+aw^r+w^{r+1}g(w),
+\qquad a\ne0,
+\]</span> where <span class="math inline">\(r\ge1\)</span> is the least
+nonzero positive-degree coefficient. Choose a unit complex number <span
+class="math inline">\(u\)</span> with <span
+class="math inline">\(au^r=-|a|\)</span>, using its polar angle divided
+by <span class="math inline">\(r\)</span>. For <span
+class="math inline">\(w=tu\)</span>, <span
+class="math inline">\(t&gt;0\)</span> small, <span
+class="math inline">\(g\)</span> is bounded by some <span
+class="math inline">\(C\)</span> on the unit disk, and <span
+class="math display">\[
+\left|\frac{f(z_0+tu)}{f(z_0)}\right|
+\le1-|a|t^r+Ct^{r+1}&lt;1
+\]</span> as soon as <span class="math inline">\(|a|t^r&lt;1\)</span>
+and <span class="math inline">\(Ct&lt;|a|\)</span>. This contradicts
+minimality. Hence <span class="math inline">\(f(z_0)=0\)</span>.
+Dividing by the corresponding linear factor and inducting on degree
+shows that every complex polynomial splits into linear factors. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>The real line and the complex plane.</strong> The maximal
+ideals of <span class="math inline">\(\mathbb R[X]\)</span> are
+generated by monic irreducible polynomials. They are precisely</p>
+<p><span class="math display">\[
+(X-a),\qquad a\in\mathbb R,
+\quad\text{and}\quad
+(X^2-2aX+a^2+b^2),\qquad a\in\mathbb R,\ b&gt;0.
+\]</span></p>
+<p>Here we use the algebraic closedness of <span
+class="math inline">\(\mathbb C\)</span>, the fundamental theorem of
+algebra. To obtain the list, a nonconstant real polynomial has a complex
+root. A real root gives a linear factor. A nonreal root <span
+class="math inline">\(a+bi\)</span> occurs with its conjugate, and
+division by their product gives a real quadratic factor: polynomial
+division by this real monic quadratic has real remainder of degree at
+most one, and vanishing at both distinct roots forces that remainder to
+be zero. The displayed quadratic has no real root because it is <span
+class="math inline">\((X-a)^2+b^2\)</span>, so is irreducible. These
+observations leave only degrees one and two for a real irreducible. The
+quadratic quotient is <span class="math inline">\(\mathbb C\)</span>, by
+evaluation at <span class="math inline">\(a+bi\)</span>; the image
+contains <span class="math inline">\(i=(a+bi-a)/b\)</span>. Thus the
+real affine line has closed points with residue fields <span
+class="math inline">\(\mathbb R\)</span> and <span
+class="math inline">\(\mathbb C\)</span>. Real-valued points alone miss
+the second kind: <span class="math inline">\(X^2+1\)</span> has no real
+zero, but generates a proper radical ideal. The strong geometric
+Nullstellensatz requires an algebraically closed field.</p>
+<p>In <span class="math inline">\(\mathbb C[X,Y]\)</span>, Theorem 2.1
+instead gives every maximal ideal as <span
+class="math inline">\((X-a,Y-b)\)</span>, with <span
+class="math inline">\((a,b)\in\mathbb C^2\)</span>. The prime <span
+class="math inline">\((Y)\)</span> is the generic point of the
+horizontal line, while its closed points are <span
+class="math inline">\((X-a,Y)\)</span>. Their intersection is <span
+class="math inline">\((Y)\)</span>, as follows either from Theorem 2.2
+or by evaluating the restriction of a polynomial at every <span
+class="math inline">\(a\in\mathbb C\)</span>. A nonzero one-variable
+polynomial cannot vanish at infinitely many distinct values, by
+successive division by its linear factors.</p>
+<p><strong>Localization can leave only one closed point.</strong> For an
+integer prime <span class="math inline">\(p\)</span>, the ring <span
+class="math inline">\(\mathbb Z_{(p)}\)</span> has primes <span
+class="math inline">\((0)\)</span> and <span
+class="math inline">\((p)\)</span>, by prime correspondence. The sole
+maximal ideal <span class="math inline">\((p)\)</span> has nonzero
+intersection with itself, whereas the zero prime must be the
+intersection of the maximal ideals containing it for the ring to be
+Jacobson. Thus this localization of the Jacobson ring <span
+class="math inline">\(\mathbb Z\)</span> is not Jacobson. It inverts all
+integers outside <span class="math inline">\((p)\)</span>, rather than
+just one chosen element.</p>
+<p>Similarly, <span class="math inline">\(k[[X]]\)</span> is a local
+domain whose nonzero series is <span class="math inline">\(X^n
+u\)</span>, where <span class="math inline">\(u\)</span> has nonzero
+constant term. Such a series <span class="math inline">\(u\)</span> is a
+unit: its inverse coefficients are obtained recursively from the
+equation <span class="math inline">\(uv=1\)</span>. Every nonzero prime
+therefore contains <span class="math inline">\(X\)</span>, and <span
+class="math inline">\((X)\)</span> is maximal with quotient <span
+class="math inline">\(k\)</span>. Its only primes are <span
+class="math inline">\((0)\)</span> and <span
+class="math inline">\((X)\)</span>, so it has dimension one and is not
+Jacobson. Both examples show that a useful local ring need not share the
+Jacobson property of a global polynomial ring.</p>
+<p><strong>Closed points over the integers.</strong> Every maximal ideal
+of <span class="math inline">\(\mathbb Z[X]\)</span> has the form</p>
+<p><span class="math display">\[
+(p,G(X)),
+\tag{4}
+\]</span></p>
+<p>where <span class="math inline">\(p\)</span> is an integer prime and
+the reduction <span class="math inline">\(g\in\mathbb F_p[X]\)</span> of
+<span class="math inline">\(G\)</span> is monic irreducible of positive
+degree. Indeed, Theorem 4.2 contracts a maximal ideal to <span
+class="math inline">\((p)\subset\mathbb Z\)</span>. Its image in <span
+class="math inline">\(\mathbb F_p[X]\)</span> is maximal, hence
+generated by a monic irreducible <span class="math inline">\(g\)</span>.
+Lifting <span class="math inline">\(g\)</span> proves (4). Conversely,
+the quotient by (4) is the field <span class="math inline">\(\mathbb
+F_p[X]/(g)\)</span>, so the ideal is maximal. If <span
+class="math inline">\(\deg g=d\)</span>, this field has <span
+class="math inline">\(p^d\)</span> elements, since the classes of <span
+class="math inline">\(1,X,\ldots,X^{d-1}\)</span> form an <span
+class="math inline">\(\mathbb F_p\)</span>-basis. For example, <span
+class="math inline">\((2,X^2+X+1)\)</span> has residue field with four
+elements, while <span class="math inline">\((2,X)\)</span> has residue
+field with two. These closed points include polynomial information as
+well as the characteristic of the residue field; no maximal ideal lies
+over the zero prime of <span class="math inline">\(\mathbb
+Z\)</span>.</p>
+<p><strong>The parabola meets its tangent with a nilpotent
+direction.</strong> In <span class="math inline">\(k[X,Y]\)</span>, over
+any field, put</p>
+<p><span class="math display">\[
+I=(Y-X^2,Y)=(Y,X^2).
+\]</span></p>
+<p>The equality follows by subtracting the two original generators. The
+quotient is <span class="math inline">\(k[X]/(X^2)\)</span>. In it, the
+class of <span class="math inline">\(X\)</span> is nonzero and has
+square zero: nonmembership of <span class="math inline">\(X\)</span> in
+<span class="math inline">\((X^2)\)</span> follows from degrees.
+Hence</p>
+<p><span class="math display">\[
+\sqrt I=(X,Y),
+\qquad k[X,Y]/\sqrt I\simeq k.
+\tag{5}
+\]</span></p>
+<p>One can verify the radical equality by noting that every prime
+containing <span class="math inline">\(X^2\)</span> contains <span
+class="math inline">\(X\)</span>, or directly by describing nilpotents
+in the quotient. The common zero set consists of the origin. It records
+the radical (5); the original quotient also records the nonzero
+nilpotent <span class="math inline">\(X\)</span>. This is how the ideal
+distinguishes a tangent intersection from its underlying set of points.
+In this example the equality <span
+class="math inline">\(I_k(Z_k(I))=(X,Y)\)</span> holds even when <span
+class="math inline">\(k\)</span> is not algebraically closed, because
+the only zero is explicitly the origin. It does not imply the general
+geometric theorem over that field.</p>
+<h2 id="an-optional-uncountable-field-extension">6. An optional
+uncountable-field extension</h2>
+<p>Finite generation in Zariski’s lemma cannot usually be replaced by
+countable generation. Over an uncountable base, however, a useful part
+of its conclusion survives.</p>
+<p><strong>Theorem 6.1.</strong> Let <span
+class="math inline">\(k\)</span> be uncountable and let a field <span
+class="math inline">\(L\)</span> be generated by at most countably many
+elements as a <span class="math inline">\(k\)</span>-algebra. Then <span
+class="math inline">\(L/k\)</span> is algebraic. If <span
+class="math inline">\(k\)</span> is also algebraically closed, <span
+class="math inline">\(L=k\)</span>.</p>
+<p><strong>Proof.</strong> Monomials of finite degree in a countable
+list of generators form a countable family: their finite index lists and
+exponent lists form a countable union of countable sets. They span <span
+class="math inline">\(L\)</span> as a <span
+class="math inline">\(k\)</span>-vector space. Enumerate this spanning
+family, and let <span class="math inline">\(V_n\)</span> be the span of
+its first <span class="math inline">\(n\)</span> members. A linearly
+independent family has at most <span class="math inline">\(n\)</span>
+members in <span class="math inline">\(V_n\)</span>. Since every vector
+is in some <span class="math inline">\(V_n\)</span>, every linearly
+independent family in <span class="math inline">\(L\)</span> is at most
+countable.</p>
+<p>Suppose <span class="math inline">\(t\in L\)</span> is transcendental
+over <span class="math inline">\(k\)</span>. The elements</p>
+<p><span class="math display">\[
+\frac{1}{t-a},\qquad a\in k,
+\]</span></p>
+<p>are linearly independent over <span class="math inline">\(k\)</span>.
+For a finite relation with distinct <span
+class="math inline">\(a_1,\ldots,a_e\)</span>, multiply by <span
+class="math inline">\(\prod_j(t-a_j)\)</span> to obtain</p>
+<p><span class="math display">\[
+\sum_{i=1}^e c_i\prod_{j\ne i}(t-a_j)=0.
+\]</span></p>
+<p>Transcendence makes the corresponding polynomial in an indeterminate
+zero. Evaluating at <span class="math inline">\(a_i\)</span> gives <span
+class="math inline">\(c_i\prod_{j\ne i}(a_i-a_j)=0\)</span>, so every
+<span class="math inline">\(c_i=0\)</span>. This is an uncountable
+independent family, contradicting the preceding paragraph. Thus every
+element of <span class="math inline">\(L\)</span> is algebraic over
+<span class="math inline">\(k\)</span>. For algebraically closed <span
+class="math inline">\(k\)</span>, each of their minimal polynomials has
+degree one, and <span class="math inline">\(L=k\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>This theorem asserts algebraicity, without a finite-degree
+conclusion. For a countable field <span
+class="math inline">\(k\)</span>, the rational function field <span
+class="math inline">\(k(t)\)</span> is a counterexample to algebraicity
+under countable algebra generation: adjoining <span
+class="math inline">\(t\)</span> and the inverses of all nonzero
+polynomials in <span class="math inline">\(k[t]\)</span> generates the
+whole field. There are countably many such polynomials, but <span
+class="math inline">\(t\)</span> remains transcendental.</p>
+<h2 id="exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy: denominators over the integers).</strong>
+Prove that <span class="math inline">\(\mathbb Q\)</span> is not of
+finite type as a <span class="math inline">\(\mathbb Z\)</span>-algebra.
+Make the obstruction explicit for any proposed finite list of rational
+generators.</p>
+<p><strong>Exercise 7.2 (easy: the radical of a tangent
+intersection).</strong> In <span class="math inline">\(k[X,Y]\)</span>,
+compute the radical of <span class="math inline">\(I=(Y-X^2,Y)\)</span>.
+Determine the common zeros, the quotient ring, and a nonzero nilpotent
+in that quotient. Explain which information is lost on replacing <span
+class="math inline">\(I\)</span> by its radical.</p>
+<p><strong>Exercise 7.3 (medium: a field over the integers).</strong>
+Let a field <span class="math inline">\(L\)</span> be of finite type as
+a <span class="math inline">\(\mathbb Z\)</span>-algebra. Prove that
+<span class="math inline">\(L\)</span> is a finite set. Distinguish this
+assertion from finiteness of a field extension, and determine the
+possible characteristics.</p>
+<p><strong>Exercise 7.4 (medium: a local obstruction).</strong> Prove
+that a Noetherian local ring of positive dimension is not Jacobson.
+Determine whether the Noetherian hypothesis is needed. Give two explicit
+rings to which the conclusion applies.</p>
+<p><strong>Exercise 7.5 (medium: the Rabinowitsch certificate).</strong>
+Let <span class="math inline">\(k\)</span> be algebraically closed,
+<span class="math inline">\(I\subset k[X_1,\ldots,X_n]\)</span>, and let
+<span class="math inline">\(f\)</span> vanish on <span
+class="math inline">\(Z_k(I)\)</span>. Prove that the ideal</p>
+<p><span class="math display">\[
+I\,k[X_1,\ldots,X_n,T]+(1-Tf)
+\]</span></p>
+<p>is the whole polynomial ring. Write an identity expressing <span
+class="math inline">\(1\)</span> in that ideal and use substitution and
+denominator clearing to prove <span class="math inline">\(f^N\in
+I\)</span> for some positive integer <span
+class="math inline">\(N\)</span>. Include <span
+class="math inline">\(f=0\)</span>.</p>
+<p><strong>Exercise 7.6 (hard: detecting and mapping closed
+points).</strong> For a finite-type <span
+class="math inline">\(k\)</span>-algebra <span
+class="math inline">\(A\)</span>, prove that <span
+class="math inline">\(\mathfrak p\in\operatorname{Spec}A\)</span> is
+closed if and only if <span class="math inline">\(\kappa(\mathfrak
+p)/k\)</span> is finite. For a homomorphism <span
+class="math inline">\(A\to B\)</span> of finite-type <span
+class="math inline">\(k\)</span>-algebras, prove that the induced map
+<span
+class="math inline">\(\operatorname{Spec}B\to\operatorname{Spec}A\)</span>
+sends closed points to closed points. Does this require either algebra
+to be finite as a module over the other?</p>
+<h2 id="solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> For generators <span
+class="math inline">\(q_i=a_i/b_i\)</span>, with <span
+class="math inline">\(b_i\ne0\)</span>, put <span
+class="math inline">\(d=\prod_i b_i\)</span>; for an empty list take
+<span class="math inline">\(d=1\)</span>. Every polynomial expression in
+the <span class="math inline">\(q_i\)</span> with integer coefficients
+belongs to <span class="math inline">\(\mathbb Z[1/d]\)</span>. There is
+a prime <span class="math inline">\(p\)</span> not dividing <span
+class="math inline">\(d\)</span>, by the infinitude of integer primes.
+If <span class="math inline">\(1/p=c/d^n\)</span>, then <span
+class="math inline">\(d^n=pc\)</span>, forcing <span
+class="math inline">\(p\mid d\)</span>, a contradiction. Thus the
+proposed algebra omits <span class="math inline">\(1/p\)</span>, and
+cannot equal <span class="math inline">\(\mathbb Q\)</span>. If <span
+class="math inline">\(d\)</span> is a unit, the argument still applies
+with any prime. Inverting every nonzero integer gives the field, but no
+finite list of denominators does so.</p>
+<p><strong>Solution 7.2.</strong> Subtraction of <span
+class="math inline">\(Y-X^2\)</span> from <span
+class="math inline">\(Y\)</span> gives <span
+class="math inline">\(X^2\)</span>; conversely <span
+class="math inline">\(Y-X^2\)</span> belongs to <span
+class="math inline">\((Y,X^2)\)</span>. Hence <span
+class="math inline">\(I=(Y,X^2)\)</span> and the quotient is <span
+class="math inline">\(k[X]/(X^2)\)</span>. Its elements have unique
+representatives <span class="math inline">\(a+bX\)</span>. If such an
+element is nilpotent, its constant term <span
+class="math inline">\(a\)</span> is nilpotent in the field <span
+class="math inline">\(k\)</span>, so <span
+class="math inline">\(a=0\)</span>. Conversely every <span
+class="math inline">\(bX\)</span> has square zero. The nilradical of the
+quotient is therefore generated by the nonzero class of <span
+class="math inline">\(X\)</span>, and its inverse image is <span
+class="math inline">\(\sqrt I=(X,Y)\)</span>. The equation <span
+class="math inline">\(Y=0\)</span> followed by <span
+class="math inline">\(X^2=0\)</span> forces every field-valued zero to
+be the origin. Its vanishing ideal is <span
+class="math inline">\((X,Y)\)</span>, as the constant term test shows.
+Replacing <span class="math inline">\(I\)</span> by its radical gives
+the field <span class="math inline">\(k\)</span> and removes the
+nilpotent direction. The original quotient has basis <span
+class="math inline">\(1,X\)</span> as a <span
+class="math inline">\(k\)</span>-vector space; the radical quotient has
+basis <span class="math inline">\(1\)</span>.</p>
+<p><strong>Solution 7.3.</strong> The ring <span
+class="math inline">\(\mathbb Z\)</span> is Jacobson by Proposition 3.2.
+Apply Theorem 4.2 to <span class="math inline">\(\mathbb Z\to L\)</span>
+and the maximal ideal <span class="math inline">\((0)\subset L\)</span>.
+Its contraction to <span class="math inline">\(\mathbb Z\)</span> must
+be a maximal ideal <span class="math inline">\((p)\)</span>, and <span
+class="math inline">\(L/\mathbb F_p\)</span> is a finite extension.
+Write its degree as <span class="math inline">\(d\geq1\)</span>. A
+vector-space basis identifies its underlying set with <span
+class="math inline">\(\mathbb F_p^d\)</span>, so it has exactly <span
+class="math inline">\(p^d\)</span> elements. Thus characteristic zero
+cannot occur. Every finite field is of finite type as a <span
+class="math inline">\(\mathbb Z\)</span>-algebra, since a finite basis
+over its prime field supplies finitely many algebra generators. A finite
+extension of an infinite field still has infinitely many elements; here
+finiteness as a set follows from the finite prime field together with
+the finite extension degree.</p>
+<p><strong>Solution 7.4.</strong> Let <span
+class="math inline">\((R,\mathfrak m)\)</span> be local. All its primes
+are contained in <span class="math inline">\(\mathfrak m\)</span>, since
+every proper ideal lies in a maximal ideal and there is only one.
+Positive dimension provides a strict chain of primes, so in particular
+there is a prime <span class="math inline">\(\mathfrak
+p\subsetneq\mathfrak m\)</span>. The intersection of maximal ideals
+containing <span class="math inline">\(\mathfrak p\)</span> is <span
+class="math inline">\(\mathfrak m\)</span>, which is not <span
+class="math inline">\(\mathfrak p\)</span>. This violates the Jacobson
+definition. Neither the existence of the chain nor the intersection
+argument uses Noetherianity. Section 5 supplies <span
+class="math inline">\(\mathbb Z_{(p)}\)</span> and <span
+class="math inline">\(k[[X]]\)</span>, each with exactly the two primes
+zero and its nonzero maximal ideal. They are also Noetherian: the first
+is a localization of <span class="math inline">\(\mathbb Z\)</span>; in
+the second, any nonzero ideal has an element of least order <span
+class="math inline">\(n\)</span>, which is <span
+class="math inline">\(X^n\)</span> times a unit, and all other elements
+are divisible by <span class="math inline">\(X^n\)</span>. That ideal is
+<span class="math inline">\((X^n)\)</span>, so every ideal is finitely
+generated.</p>
+<p><strong>Solution 7.5.</strong> Set <span
+class="math inline">\(P=k[X_1,\ldots,X_n]\)</span> and <span
+class="math inline">\(J=I P[T]+(1-Tf)\)</span>. If <span
+class="math inline">\(J\)</span> were proper, a maximal ideal containing
+it would, by the weak Nullstellensatz in <span
+class="math inline">\(n+1\)</span> variables, be the evaluation ideal at
+some <span class="math inline">\((a,b)\in k^{n+1}\)</span>. Every
+element of <span class="math inline">\(I\)</span> would vanish at <span
+class="math inline">\(a\)</span>, so <span class="math inline">\(a\in
+Z_k(I)\)</span>, and then <span class="math inline">\(f(a)=0\)</span>.
+But <span class="math inline">\(1-Tf\)</span> would evaluate to <span
+class="math inline">\(1-bf(a)=1\)</span>, contradicting its membership
+in that maximal ideal. Thus <span class="math inline">\(J=P[T]\)</span>.
+Ideal membership uses a finite sum, even if we have not chosen
+generators for <span class="math inline">\(I\)</span>, so there are
+<span class="math inline">\(g_1,\ldots,g_s\in I\)</span> and <span
+class="math inline">\(H_j,H\in P[T]\)</span> with</p>
+<p><span class="math display">\[
+1=\sum_{j=1}^s H_j(X,T)g_j(X)+H(X,T)(1-Tf(X)).
+\]</span></p>
+<p>For <span class="math inline">\(f\ne0\)</span>, the substitution map
+<span class="math inline">\(P[T]\to P[1/f]\)</span>, sending <span
+class="math inline">\(T\)</span> to <span
+class="math inline">\(1/f\)</span>, gives <span
+class="math inline">\(1=\sum_j H_j(X,1/f)g_j\)</span>. Choose a positive
+integer <span class="math inline">\(N\)</span> at least as large as
+every <span class="math inline">\(T\)</span>-degree of a nonzero <span
+class="math inline">\(H_j\)</span>. Multiplication by <span
+class="math inline">\(f^N\)</span> gives</p>
+<p><span class="math display">\[
+f^N=\sum_{j=1}^s \bigl(f^N H_j(X,1/f)\bigr)g_j,
+\]</span></p>
+<p>and each coefficient in parentheses is in <span
+class="math inline">\(P\)</span>. The equality initially holds in the
+localization; since <span class="math inline">\(P\)</span> is a domain
+and <span class="math inline">\(f\ne0\)</span>, its localization map is
+injective, so the equality holds in <span
+class="math inline">\(P\)</span> itself. The right side lies in <span
+class="math inline">\(I\)</span>, proving <span
+class="math inline">\(f^N\in I\)</span>. If <span
+class="math inline">\(f=0\)</span>, the generator <span
+class="math inline">\(1-Tf\)</span> is already <span
+class="math inline">\(1\)</span>, and <span
+class="math inline">\(f^1=0\in I\)</span>, so both conclusions are
+immediate. This proof covers the empty zero set as well as a nonempty
+one.</p>
+<p><strong>Solution 7.6.</strong> A prime is closed in the spectrum
+exactly when it is maximal, by the specialization relation. If <span
+class="math inline">\(\mathfrak p\)</span> is maximal, the weak
+Nullstellensatz makes <span class="math inline">\(A/\mathfrak
+p=\kappa(\mathfrak p)\)</span> finite over <span
+class="math inline">\(k\)</span>. Conversely, suppose the field <span
+class="math inline">\(\kappa(\mathfrak
+p)=\operatorname{Frac}(A/\mathfrak p)\)</span> is finite over <span
+class="math inline">\(k\)</span>. Every element of its subdomain <span
+class="math inline">\(A/\mathfrak p\)</span> is algebraic over <span
+class="math inline">\(k\)</span>, so this domain is integral over the
+field <span class="math inline">\(k\)</span>. The integral field
+criterion says that it is a field. Thus <span
+class="math inline">\(\mathfrak p\)</span> is maximal and is closed.</p>
+<p>Now take a closed point <span class="math inline">\(\mathfrak
+n\)</span> of <span class="math inline">\(\operatorname{Spec}B\)</span>,
+and let <span class="math inline">\(\mathfrak p\)</span> be its
+contraction to <span class="math inline">\(A\)</span>. The map embeds
+<span class="math inline">\(A/\mathfrak p\)</span> in <span
+class="math inline">\(B/\mathfrak n\)</span>, a finite extension of
+<span class="math inline">\(k\)</span>. The same integral-field argument
+makes <span class="math inline">\(A/\mathfrak p\)</span> a field, so
+<span class="math inline">\(\mathfrak p\)</span> is closed. No module
+finiteness of <span class="math inline">\(B\)</span> over <span
+class="math inline">\(A\)</span> is required. For example, the inclusion
+<span class="math inline">\(k\subset k[T]\)</span> has this closed-point
+property although <span class="math inline">\(k[T]\)</span> has
+infinitely many linearly independent powers of <span
+class="math inline">\(T\)</span> over <span
+class="math inline">\(k\)</span> and is not a finite <span
+class="math inline">\(k\)</span>-module. The direction of the spectral
+map is from the target ring’s spectrum to the source ring’s
+spectrum.</p>
+<h2 id="proof-dependencies">Proof dependencies</h2>
+<p>Lemma 5.1 proves the fundamental theorem of algebra used in the real
+and complex examples, from compactness and polar form in elementary real
+analysis. The Stacks Fields chapter gives a different algebraic route at
+<a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-C-algebraically-closed">Tag
+09I5</a>. Artin–Tate, Zariski’s lemma, both Nullstellensatz forms, the
+Jacobson characterizations and permanence theorem, and the
+uncountable-field result have full proofs here.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Artin-Tate">Tag
+00IS</a> for Artin–Tate; <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-nullstellensatz">Tag
+00FV</a> for the Nullstellensatz; <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-field-finite-type-over-domain">Tag
+00FY</a> for the finite-type field lemma; <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-theorem-uncountable-nullstellensatz">Tag
+00FU</a> for the optional uncountable-field variant.</li>
+<li>The same work, Jacobson rings: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-ring-jacobson">Tag
+00G0</a> for the definition, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-jacobson">Tag
+00G3</a> for the topological characterization, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-pid-jacobson">Tag
+00G4</a> for the integer and one-dimensional examples, and <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Jacobson-mod-ideal">Tag
+00G9</a> for quotients. Finite-type permanence and maximal-ideal
+contraction are in <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-Jacobson-permanence">Tag
+00GB</a>; the algebraic residue-field criterion is in <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-residue-extension-closed">Tag
+00GA</a>. The links use the AI Integrated Stacks Project English reader
+described in the course introduction.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 3.2, especially
+3.2.4 on real and complex points and 3.2.5–6 on the Nullstellensatz.
+These passages give the point dictionary and theorem statements, with
+proof routes elsewhere in the book. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+<li>Timothy J. Ford, <em>Commutative Algebra</em>, version of 23
+September 2026, Chapter 5, Section 2: the Artin–Tate lemma for a tower
+of rings, Zariski’s lemma and both forms of Hilbert’s Nullstellensatz.
+<a
+href="https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf">Author’s
+version</a>.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

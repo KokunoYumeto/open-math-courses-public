@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The spectral side: local systems, singular support and IndCoh_Nilp · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-08.html">Previous lesson</a> · <a href="GL-GLC-10.html">Next lesson</a></nav><aside class="notice">Draft. Self-checked by the writing AI.</aside><article class="lesson"><h1>The spectral side: local systems, singular support and IndCoh_Nilp</h1>
+<p><em>Draft. Self-checked by the writing AI. Original mathematical exposition: CC0 1.0.</em></p>
+<p>The automorphic side attaches differential equations to bundles. The spectral side organizes local systems into a moduli stack and asks which category of sheaves on that stack should correspond to the automorphic category. Derived directions matter: a coherent object can have support in an obstruction direction even when its ordinary support is a single point.</p>
+<p>We calculate those directions, their shifts and their nilpotent condition. An explicit derived intersection shows why a coherent skyscraper can fail to be perfect. Its polynomial cohomological operators give a complete one-generator model of the zero-support category. The earlier <a href="GL-GLC-06.html" title="The GL_1 case as an equivalence of categories">The GL_1 case as an equivalence of categories</a>, §§5.1.1–5.1.8, proves the full torus comparison from its explicit arbitrary-rank exterior, smooth and automorphism factors, with the stated geometric and categorical foundations. The general reductive zero-support, compact-generation and Eisenstein theorems remain required.</p>
+<p>Write <span class="math-inline">\(H=\check G\)</span> for the Langlands dual group. A de Rham <span class="math-inline">\(H\)</span>-local system is a principal <span class="math-inline">\(H\)</span>-bundle with an everywhere regular flat connection. On a curve the curvature two-form vanishes, and flatness is compatible with the usual connection descent. The derived moduli notation <span class="math-inline">\(\operatorname{LocSys}_H\)</span> includes infinitesimal automorphisms and obstruction directions. Its representability and family cotangent construction are the explicit foundation F-DAG below.</p>
+<p>Once the global singular-support theory is constructed, its intended nilpotent subcategory is</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}_{\mathrm{Nilp}_{glob}}\!\left(\operatorname{LocSys}_H\right),
+\qquad
+\mathrm{Nilp}_{glob}=\{(\sigma,A):A\text{ horizontal and nilpotent}\}.
+\tag{A9.1}
+\]</span></p>
+<p>The full assignment requires this global category, its functoriality, its relation to QCoh and its compatibility with Eisenstein series and Whittaker normalization. We keep those requirements alongside the computations. In particular, an allowable nonzero direction is not itself an object with that support; §10 constructs such an object in an explicit local model and states the additional global work needed.</p>
+<p>Let <span class="math-inline">\(X/k\)</span> be a smooth projective connected curve over an algebraically closed field of characteristic zero, and let <span class="math-inline">\(g=\dim_kH^1(X,\mathcal O_X)\)</span>. Here <span class="math-inline">\(g\)</span> may be zero or one. Let <span class="math-inline">\(H\)</span> be any connected reductive group, with Lie algebra <span class="math-inline">\(\mathfrak h\)</span>; in the course <span class="math-inline">\(H=\check G\)</span>. Write <span class="math-inline">\(\sigma\)</span> for an everywhere regular de Rham <span class="math-inline">\(H\)</span>-local system and <span class="math-inline">\(E=\mathfrak h_\sigma\)</span> for its adjoint bundle with connection. All complexes are cohomological:</p>
+<p><span class="math-display">\[
+(M[1])^i=M^{i+1},\qquad H^i(M[1])=H^{i+1}(M).
+\tag{S0.1}
+\]</span></p>
+<h2>1. Exact foundations and scope (S0)</h2>
+<p>The earlier curve proof in <a href="GL-GLC-06.html" title="The GL_1 case as an equivalence of categories">The GL_1 case as an equivalence of categories</a>, §1.1.12, (R7.3), proves differential Serre duality</p>
+<p><span class="math-display">\[
+H^1(X,F)^\vee=\operatorname{Hom}_X(F,\omega),\qquad\omega=\Omega^1_X,
+\tag{S0.2}
+\]</span></p>
+<p>for coherent <span class="math-inline">\(F\)</span>, using its constructed trace. Its §1.1.13, (R8.10), proves the principal-part trace formula
+<span class="math-inline">\(\operatorname{tr}(\partial\beta)=-\sum_p\operatorname{Res}_p\beta_p\)</span>,
+and §1.1.14, (R9.6), proves that the Atiyah class of a line has trace equal to its degree. Its two-affine constructions compute curve coherent cohomology, show vanishing above degree one, and §1.1.16 proves fixed-curve tensor compatibility. Its local argument in §1.1.8 proves the needed DVR and completed-derivative facts. These results retain their recursive scheme, local-algebra and coherent-cohomology foundations.</p>
+<p>The line Euler-characteristic calculation in <a href="GL-GLC-08.html" title="Opers, critical level and the Beilinson–Drinfeld construction">Opers, critical level and the Beilinson-Drinfeld construction</a>, §2.1 (O0), has the hypothesis <span class="math-inline">\(g\geq2\)</span>. The argument below gives the all-genus formula needed here. No theta characteristic is needed.</p>
+<p>For statements involving <span class="math-inline">\(\operatorname{LocSys}_H\)</span> as a derived Artin stack, the existence of that derived moduli object, its cotangent universal property and the identification of linearized derived descent with the tangent functor are explicit DAG foundations. S2 supplies the actual linear deformation complex and its shifts, rather than using a citation to suppress that calculation. A tangent calculation alone does not prove algebraicity, perfectness on every parameter or existence of a quasi-smooth atlas. Those global steps remain separate foundations unless their exact complete proof is supplied.</p>
+<h2>2. Euler characteristic in the full reductive scope (S1)</h2>
+<p>First prove the line formula for every genus. A rational frame identifies a line <span class="math-inline">\(M\)</span> with <span class="math-inline">\(\mathcal O_X(D)\)</span> for its finite divisor <span class="math-inline">\(D\)</span>. At a closed point <span class="math-inline">\(p\)</span>, a DVR parameter gives the exact sequence</p>
+<p><span class="math-display">\[
+0\to\mathcal O_X(D-p)\to\mathcal O_X(D)\to k_p\to0.
+\tag{S1.1}
+\]</span></p>
+<p>Finite coherent cohomology and its long exact sequence show that adding <span class="math-inline">\(p\)</span> adds one to the Euler characteristic. Applying this repeatedly to positive and negative coefficients of <span class="math-inline">\(D\)</span> gives</p>
+<p><span class="math-display">\[
+\chi(M)=\deg M+1-g.
+\tag{S1.2}
+\]</span></p>
+<p>The definition of degree is independent of the rational frame: the earlier global residue theorem applied to <span class="math-inline">\(d\log f\)</span> makes the sum of the orders of a principal divisor zero. The earlier proof gives <span class="math-inline">\(H^0(X,\mathcal O_X)=k\)</span>. By (S0.2), <span class="math-inline">\(h^0(\omega)=g\)</span> and <span class="math-inline">\(h^1(\omega)=1\)</span>; comparing (S1.2) for <span class="math-inline">\(\omega\)</span> gives <span class="math-inline">\(\deg\omega=2g-2\)</span>, for all genera.</p>
+<p>Here is the vector version needed for an arbitrary reductive group. A rank-<span class="math-inline">\(r\)</span> bundle <span class="math-inline">\(F\)</span> has a filtration by line subbundles with locally free successive quotients. To construct its first step, choose a one-dimensional subspace of its rational fibre and intersect that subspace with <span class="math-inline">\(F\)</span>. At a DVR stalk, write a spanning rational vector as a power of a parameter times a primitive vector; the saturated intersection is generated by that primitive vector. A primitive vector extends to a basis by elementary row operations, so the quotient is free. The local intersections glue to a coherent line subbundle: on a finite affine cover, clearing the denominators of a rational spanning vector gives the same finite rank-one saturated submodule. Repeating on the locally free quotient supplies the filtration. Determinants and Euler characteristics are additive in each of its short exact sequences. Thus (S1.2) gives</p>
+<p><span class="math-display">\[
+\chi(F)=\deg(\det F)+r(1-g),
+\quad
+\deg(\det(F\otimes\omega))=\deg(\det F)+r(2g-2).
+\tag{S1.3}
+\]</span></p>
+<p>If <span class="math-inline">\(F\)</span> has a regular connection, its determinant has the trace connection. The local determinant connection forms trivialize the Atiyah cocycle <span class="math-inline">\(d\log\det g_{ij}\)</span>. Its class is therefore zero, and the exact earlier degree formula gives <span class="math-inline">\(\deg(\det F)=0\)</span>. This uses characteristic zero, so an integer degree vanishing in <span class="math-inline">\(k\)</span> is the zero integer.</p>
+<p>The two-term de Rham complex is</p>
+<p><span class="math-display">\[
+C_F=R\Gamma\bigl(X,[F\xrightarrow{\nabla}F\otimes\omega]\bigr),
+\tag{S1.4}
+\]</span></p>
+<p>with sheaf degrees <span class="math-inline">\(0,1\)</span>. This is a complex of <span class="math-inline">\(k\)</span>-vector spaces; <span class="math-inline">\(\nabla\)</span> need not be <span class="math-inline">\(\mathcal O_X\)</span>-linear. The finite two-affine double complex gives cohomology in degrees <span class="math-inline">\(0,1,2\)</span>. Filtering it by its two sheaf degrees gives the Euler identity
+<span class="math-inline">\(\chi(C_F)=\chi(F)-\chi(F\omega)\)</span>: every differential removes equal dimensions in adjacent total degrees, so it does not change the alternating sum. Equations (S1.3) consequently yield</p>
+<p><span class="math-display">\[
+\chi(C_F)=(2-2g)r.
+\tag{S1.5}
+\]</span></p>
+<p>For <span class="math-inline">\(F=E=\mathfrak h_\sigma\)</span>, its rank is <span class="math-inline">\(\dim H\)</span>. The tangent shift proved in S2 then gives</p>
+<p><span class="math-display">\[
+\boxed{\ \chi(T_\sigma\operatorname{LocSys}_H)
+=(2g-2)\dim H\ }.
+\tag{S1.6}
+\]</span></p>
+<p>This is the virtual dimension at every local system once the indicated tangent perfect complex is part of the derived moduli foundation. It is not a claim that a stabilizer dimension or the dimension of the classical coarse space equals that number. It is also not a proof of global quasi-smooth representability.</p>
+<h2>3. Linear deformation complex and Artin-stack amplitude (S2)</h2>
+<p>On a finite affine trivializing cover, let <span class="math-inline">\(u_{ij}\)</span> describe a first-order change of transition functions and let <span class="math-inline">\(a_i\)</span> describe a first-order connection change. Choose the conventions in which the change of transitions is <span class="math-inline">\(1+\varepsilon u_{ij}\)</span> and the changed local connection is <span class="math-inline">\(\nabla-\varepsilon a_i\)</span>. Conjugating this connection by <span class="math-inline">\(1+\varepsilon u_{ij}\)</span>, and using <span class="math-inline">\(\varepsilon^2=0\)</span>, gives</p>
+<p><span class="math-display">\[
+\delta u=0,
+\qquad\delta a=\nabla u.
+\tag{S2.1}
+\]</span></p>
+<p>Changing the local identification by <span class="math-inline">\(1+\varepsilon v_i\)</span> changes <span class="math-inline">\((u,a)\)</span> to
+<span class="math-inline">\((u+\delta v,a+\nabla v)\)</span>. The deformation and arrow equations are therefore exactly the cocycle and boundary equations of the total Čech complex of (S1.4), with differential <span class="math-inline">\(\delta+(-1)^p\nabla\)</span> on Čech degree <span class="math-inline">\(p\)</span>. Its degree-zero cohomology is infinitesimal automorphisms, degree one is first-order deformation classes, and degree two is the obstruction group for the transition/connection gluing equations. This calculation applies to a principal <span class="math-inline">\(H\)</span>-bundle because the kernel of reduction of a first-order group element is its adjoint Lie algebra, and conjugation is the adjoint action.</p>
+<p>With a square-zero coefficient complex <span class="math-inline">\(M\)</span>, linearizing these same descent and arrow equations tensors that total complex with <span class="math-inline">\(M\)</span>. Within the explicitly retained derived tangent/linearization foundation, this identifies the tangent and cotangent complexes at <span class="math-inline">\(\sigma\)</span> as</p>
+<p><span class="math-display">\[
+T_\sigma\operatorname{LocSys}_H=C_E[1],
+\qquad
+L_\sigma\operatorname{LocSys}_H=(C_E[1])^\vee=C_E^\vee[-1].
+\tag{S2.2}
+\]</span></p>
+<p>The shift is forced by the automorphisms: <span class="math-inline">\(H^0(C_E)\)</span> must sit in tangent degree <span class="math-inline">\(-1\)</span>. Since <span class="math-inline">\(C_E\)</span> has degrees <span class="math-inline">\(0,1,2\)</span>, the resulting groups are</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Degree</th>
+<th>Tangent cohomology</th>
+<th>Cotangent cohomology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(-1\)</span></td>
+<td><span class="math-inline">\(H^0_{\mathrm{dR}}(X,E)\)</span></td>
+<td><span class="math-inline">\(H^2_{\mathrm{dR}}(X,E)^\vee\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(0\)</span></td>
+<td><span class="math-inline">\(H^1_{\mathrm{dR}}(X,E)\)</span></td>
+<td><span class="math-inline">\(H^1_{\mathrm{dR}}(X,E)^\vee\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(1\)</span></td>
+<td><span class="math-inline">\(H^2_{\mathrm{dR}}(X,E)\)</span></td>
+<td><span class="math-inline">\(H^0_{\mathrm{dR}}(X,E)^\vee\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>In particular the cotangent complex of this Artin stack is not blindly of amplitude <span class="math-inline">\([-1,0]\)</span>. Degree <span class="math-inline">\(1\)</span> remembers stabilizers. A quasi-smooth <em>scheme</em> has cotangent amplitude <span class="math-inline">\([-1,0]\)</span>; a one-Artin stack such as this one can have cotangent amplitude <span class="math-inline">\([-1,1]\)</span>, and its quasi-smoothness is checked on a smooth derived-scheme atlas.</p>
+<p>Framing the bundle at a fixed <span class="math-inline">\(x\in X(k)\)</span> removes those infinitesimal stabilizers. Evaluation of a horizontal section is injective. Indeed, in a local coordinate its equation is a linear system <span class="math-inline">\(s&#x27;+A(t)s=0\)</span>; if <span class="math-inline">\(s(0)=0\)</span>, coefficient comparison recursively gives every formal coefficient zero. The DVR embedding into its completion then makes the algebraic section zero on a nonempty open, hence zero everywhere on the integral curve. The tangent of the framed moduli is the fibre of
+<span class="math-inline">\(C_E[1]\to E_x[1]\)</span>. Its degree <span class="math-inline">\(-1\)</span> is the kernel of this evaluation, so it vanishes, and its remaining degrees are <span class="math-inline">\(0,1\)</span>. Thus a represented framed derived atlas would have cotangent amplitude <span class="math-inline">\([-1,0]\)</span>. Establishing that atlas and its smooth forgetful morphism is the missing global representability step; its existence is not inferred solely from the calculated degrees.</p>
+<p>The sketch assertion that the classical truncation is singular at reducible local systems also needs qualification. For a torus, all adjoint local systems are trivial, and <span class="math-inline">\(H^2_{\mathrm{dR}}\)</span> gives derived directions while the earlier ordinary connection-torsor description is classically smooth once its Picard representability and smoothness foundations are supplied. A nonzero obstruction <em>space</em> need not impose a nonzero classical obstruction equation. S2 therefore makes no blanket assertion that every reducible classical local system is a singular classical point.</p>
+<h2>4. The top de Rham group and horizontal covectors (S3)</h2>
+<p>We need the precise duality identification used by the singular fibre. First prove that</p>
+<p><span class="math-display">\[
+d:H^1(X,\mathcal O_X)\longrightarrow H^1(X,\omega)
+\quad\text{is zero}.
+\tag{S3.1}
+\]</span></p>
+<p>The rational-function principal-parts sequence is proved just as the earlier rational-differential sequence: rational functions and finite-support polar parts are flasque, and its kernel is <span class="math-inline">\(\mathcal O_X\)</span>, as a DVR calculation shows. Its connecting map is onto <span class="math-inline">\(H^1(X,\mathcal O_X)\)</span>. Differentiation maps it to the differential principal-parts sequence. The derivative of a Laurent series has no <span class="math-inline">\(t^{-1}dt\)</span> coefficient, so every polar derivative has residue zero. The proved trace formula makes the trace of the resulting <span class="math-inline">\(H^1(\omega)\)</span>-class zero. That trace is an isomorphism onto <span class="math-inline">\(k\)</span>, hence the class is zero. This proves (S3.1), including the arbitrary-genus case.</p>
+<p>For a flat vector bundle <span class="math-inline">\(F\)</span>, the two sheaf-degree filtration of (S1.4) gives</p>
+<p><span class="math-display">\[
+H^2(C_F)=\operatorname{coker}
+\bigl(H^1(F)\xrightarrow{\nabla}H^1(F\omega)\bigr).
+\tag{S3.2}
+\]</span></p>
+<p>By differential Serre duality, the dual of this map goes from <span class="math-inline">\(H^0(F^*)\)</span> to <span class="math-inline">\(H^0(F^*\omega)\)</span>. It is minus the dual connection <span class="math-inline">\(\nabla^*\)</span>. To check the sign and the identification, use local evaluation:</p>
+<p><span class="math-display">\[
+d\langle v,s\rangle=
+\langle\nabla^*v,s\rangle+
+\langle v,\nabla s\rangle.
+\tag{S3.3}
+\]</span></p>
+<p>For a Čech degree-one section <span class="math-inline">\(s\)</span> and a global section <span class="math-inline">\(v\)</span>, the same equality holds on every overlap. Taking its trace in <span class="math-inline">\(H^1(\omega)\)</span>, the derivative term is zero by (S3.1). The two terms therefore differ by a minus sign under the actual Serre pairing. Thus dualizing the cokernel in (S3.2) gives the canonical identification</p>
+<p><span class="math-display">\[
+H^2_{\mathrm{dR}}(X,F)^\vee
+\simeq\ker\bigl(H^0(F^*)\xrightarrow{\nabla^*}H^0(F^*\omega)\bigr)
+=H^0_{\mathrm{dR}}(X,F^*).
+\tag{S3.4}
+\]</span></p>
+<p>This is the exact portion of de Rham duality needed here. It does not silently import a full higher-dimensional Poincaré duality theorem.</p>
+<p>For a quasi-smooth derived Artin stack <span class="math-inline">\(Y\)</span>, the singular-vector fibre at a point is
+<span class="math-inline">\((H^1(T_yY))^*=H^{-1}(L_yY)\)</span>; the corresponding classical cone is built from <span class="math-inline">\(\operatorname{Sym}H^1(T_Y)\)</span>. Applying (S2.2) and (S3.4), its fibre at <span class="math-inline">\(\sigma\)</span> is</p>
+<p><span class="math-display">\[
+H^{-1}(L_\sigma\operatorname{LocSys}_H)
+=H^0_{\mathrm{dR}}(X,\mathfrak h_\sigma^*).
+\tag{S3.5}
+\]</span></p>
+<p>This supplies the actual horizontal-covector calculation. The global stack identification <span class="math-inline">\(\operatorname{Sing}(\operatorname{LocSys}_H)\simeq\operatorname{Arth}_H\)</span> additionally needs the global cotangent and relative-cone construction on all families; its global derived foundations are not certified by (S3.5) alone.</p>
+<h2>5. Nilpotence at one point (S4)</h2>
+<p>Use the invariant-quotient definition of the coadjoint nilpotent cone:</p>
+<p><span class="math-display">\[
+\mathcal N_{\mathfrak h^*}
+=V\bigl(k[\mathfrak h^*]^H_{&gt;0}\bigr)\subset\mathfrak h^*.
+\tag{S4.1}
+\]</span></p>
+<p>Here the ideal in <span class="math-inline">\(k[\mathfrak h^*]\)</span> is generated by homogeneous invariant polynomials of positive degree. This defines a closed <span class="math-inline">\(H\)</span>-stable cone; the polynomial ring is Noetherian, so its ideal has a finite generating subset. No assertion about a polynomial presentation of the invariant ring is needed for the lemma. For a reductive group this is the usual zero-fibre definition of its nilpotent cone. Relating it to other Lie-theoretic definitions, if those are used elsewhere, retains that separate Lie-theory foundation. In S5 we verify its matrix meaning directly for <span class="math-inline">\(SL_2\)</span>, and in S7 we verify the torus case directly.</p>
+<p>Let <span class="math-inline">\(A\)</span> be a horizontal global section of <span class="math-inline">\(\mathfrak h_\sigma^*\)</span>. For any invariant polynomial <span class="math-inline">\(f\)</span>, the local functions <span class="math-inline">\(f(A)\)</span> agree on overlaps, because transition functions act by the coadjoint action and <span class="math-inline">\(f\)</span> is invariant. Thus <span class="math-inline">\(f(A)\)</span> is a global regular function on <span class="math-inline">\(X\)</span>, and is constant since <span class="math-inline">\(H^0(X,\mathcal O_X)=k\)</span>. Consequently</p>
+<p><span class="math-display">\[
+f(A)=0\ \text{on }X
+\quad\Longleftrightarrow\quad f(A(x))=0
+\quad\text{for one }x\in X(k).
+\tag{S4.2}
+\]</span></p>
+<p>Applying this to all positive-degree homogeneous invariants proves</p>
+<p><span class="math-display">\[
+\boxed{\ A\text{ is nilpotent everywhere }
+\Longleftrightarrow A(x)\text{ is nilpotent at one point.}\ }
+\tag{S4.3}
+\]</span></p>
+<p>In this projective-curve setting the invariant-function argument actually works for any global section of the untwisted coadjoint bundle; horizontality is required by the definition of a singular vector, but adds no further step to this particular proof. On a nonproper curve, horizontality instead gives <span class="math-inline">\(d(f(A))=0\)</span>: the chain rule and infinitesimal invariance give
+<span class="math-inline">\(d f_A(a\cdot A)=0\)</span>, which cancels the connection term. That variant is not needed for (S4.3).</p>
+<p>The same proof retains ordinary nonreduced parameters. For <span class="math-inline">\(S=\operatorname{Spec}R\)</span>, the fixed-curve tensor calculation gives
+<span class="math-inline">\(\Gamma(X_S,\mathcal O_{X_S})=R\)</span>.
+Every <span class="math-inline">\(f(A)\)</span> is pulled back from its evaluation along <span class="math-inline">\(x\times S\)</span>, so vanishing along that section is equivalent to vanishing on <span class="math-inline">\(X_S\)</span>, as an equality of functions with nilpotents retained. The criterion (S4.1) then gives equality of these ordinary nilpotent-subfunctors. This is stronger than checking only geometric points. No analogous derived-subfunctor equality is claimed without the separate global derived-cone foundation.</p>
+<h2>6. The trivial <span class="math-inline">\(SL_2\)</span> local system (S5)</h2>
+<p>For the trivial connection, the cohomology of
+<span class="math-inline">\(C_0=R\Gamma(X,[\mathcal O_X\xrightarrow d\omega])\)</span>
+can be computed without invoking degeneration of a general Hodge spectral sequence. Global functions are constants, so <span class="math-inline">\(H^0(C_0)=k\)</span>. Equation (S3.1) and the two-column exact sequence give</p>
+<p><span class="math-display">\[
+0\to H^0(\omega)\to H^1(C_0)\to H^1(\mathcal O_X)\to0,
+\qquad H^2(C_0)=H^1(\omega)\xrightarrow{\operatorname{tr}}k.
+\tag{S5.1}
+\]</span></p>
+<p>Thus <span class="math-inline">\(\dim H^1(C_0)=2g\)</span>, while <span class="math-inline">\(H^0(C_0)=H^2(C_0)=k\)</span>. The middle sequence is not being given a canonical splitting.</p>
+<p>At the trivial <span class="math-inline">\(SL_2\)</span> local system, <span class="math-inline">\(C_E=\mathfrak{sl}_2\otimes C_0\)</span>. The shift/dual calculation gives</p>
+<p><span class="math-display">\[
+H^{-1}(L_\sigma)=\mathfrak{sl}_2^*,\quad
+H^0(L_\sigma)=\mathfrak{sl}_2^*\otimes H^1(C_0)^\vee,\quad
+H^1(L_\sigma)=\mathfrak{sl}_2^*.
+\tag{S5.2}
+\]</span></p>
+<p>In particular the requested <span class="math-inline">\(H^{-1}\)</span> is a three-dimensional covector space; it is not <span class="math-inline">\(H^1_{\mathrm{dR}}\)</span>, which would have dimension <span class="math-inline">\(6g\)</span> after tensoring with <span class="math-inline">\(\mathfrak{sl}_2\)</span>. The fibre of <span class="math-inline">\(\operatorname{Sing}\)</span> is therefore <span class="math-inline">\(\mathfrak{sl}_2^*\)</span>, in the quasi-smooth derived-moduli setting specified above.</p>
+<p>The pairing <span class="math-inline">\(B(U,V)=\operatorname{tr}(UV)\)</span> identifies <span class="math-inline">\(\mathfrak{sl}_2^*\)</span> with <span class="math-inline">\(\mathfrak{sl}_2\)</span>. It is invariant by cyclicity of trace and nondegenerate: for</p>
+<p><span class="math-display">\[
+U=\begin{pmatrix}a&amp;b\\c&amp;-a\end{pmatrix},
+\qquad
+V=\begin{pmatrix}a&#x27;&amp;b&#x27;\\c&#x27;&amp;-a&#x27;\end{pmatrix},
+\quad B(U,V)=2aa&#x27;+bc&#x27;+cb&#x27;.
+\tag{S5.3}
+\]</span></p>
+<p>Its matrix has determinant <span class="math-inline">\(-2\)</span>, which is invertible in characteristic zero. Direct multiplication gives</p>
+<p><span class="math-display">\[
+U^2=(a^2+bc)I,
+\qquad q(U)=a^2+bc=-\det U=\tfrac12\operatorname{tr}(U^2).
+\tag{S5.4}
+\]</span></p>
+<p>If <span class="math-inline">\(q=0\)</span>, then <span class="math-inline">\(U^2=0\)</span>, so <span class="math-inline">\(U\)</span> is nilpotent. If <span class="math-inline">\(q\ne0\)</span>, then <span class="math-inline">\(U\)</span> is invertible and cannot be nilpotent. The cone is consequently</p>
+<p><span class="math-display">\[
+\mathcal N_{\mathfrak{sl}_2^*}
+\simeq\{(a,b,c)\in\mathbb A^3:a^2+bc=0\}.
+\tag{S5.5}
+\]</span></p>
+<p>This agrees scheme-theoretically with (S4.1), without a Chevalley theorem citation. If <span class="math-inline">\(f\)</span> is an invariant polynomial, its restriction to diagonal matrices <span class="math-inline">\(\operatorname{diag}(a,-a)\)</span> is invariant under <span class="math-inline">\(a\mapsto-a\)</span>, realized by <span class="math-inline">\(\left(\begin{smallmatrix}0&amp;-1\\1&amp;0\end{smallmatrix}\right)\in SL_2\)</span>. That restriction is therefore <span class="math-inline">\(P(a^2)\)</span> for a polynomial <span class="math-inline">\(P\)</span>. Every matrix with <span class="math-inline">\(q\ne0\)</span> has two distinct eigenvalues <span class="math-inline">\(\lambda,-\lambda\)</span> and is conjugate to their diagonal matrix. A conjugating basis can be rescaled to determinant one, since the field is algebraically closed. On this dense open set, invariance gives <span class="math-inline">\(f(U)=P(q(U))\)</span>. Two polynomials agreeing on a dense open subset of <span class="math-inline">\(\mathbb A^3\)</span> agree everywhere. Thus</p>
+<p><span class="math-display">\[
+k[\mathfrak{sl}_2]^{SL_2}=k[q].
+\tag{S5.6}
+\]</span></p>
+<p>The ideal generated by all positive-degree homogeneous invariants is consequently exactly <span class="math-inline">\((q)\)</span>, proving the scheme-theoretic claim. In addition, every nonzero matrix with <span class="math-inline">\(U^2=0\)</span> has one-dimensional image equal to its kernel; choosing an image vector and a preimage gives its conjugacy to <span class="math-inline">\(E_{12}\)</span> under <span class="math-inline">\(SL_2\)</span> after determinant normalization. The gradient of <span class="math-inline">\(q\)</span> is <span class="math-inline">\((2a,c,b)\)</span>, so the cone is smooth away from the origin and singular at the origin.</p>
+<h2>7. The exterior-algebra derived intersection (S6)</h2>
+<p>Let</p>
+<p><span class="math-display">\[
+Z=\operatorname{Spec}k\times^{\mathbf R}_{\mathbb A^1}
+\operatorname{Spec}k,
+\]</span></p>
+<p>with both maps at zero. Put <span class="math-inline">\(R=k[t]\)</span>. Its Koszul resolution of <span class="math-inline">\(k\)</span> is <span class="math-inline">\(R[\varepsilon]\)</span>, <span class="math-inline">\(|\varepsilon|=-1\)</span>, <span class="math-inline">\(d\varepsilon=t\)</span>. Tensoring it with <span class="math-inline">\(k\)</span> gives</p>
+<p><span class="math-display">\[
+\mathcal O(Z)=A=k[\varepsilon],\qquad
+|\varepsilon|=-1,\quad d=0,\quad\varepsilon^2=0.
+\tag{S6.1}
+\]</span></p>
+<p>The square vanishes by graded commutativity in characteristic zero. Thus <span class="math-inline">\(H^0(A)=k\)</span>, <span class="math-inline">\(H^{-1}(A)=k\varepsilon\)</span>, and there is no other cohomology. The cotangent module is free on <span class="math-inline">\(d\varepsilon\)</span>, in degree <span class="math-inline">\(-1\)</span>, because <span class="math-inline">\(A\)</span> is free as a graded-commutative algebra on that generator. At its unique classical point, <span class="math-inline">\(H^{-1}(L_Z)=k\)</span> and <span class="math-inline">\(H^1(T_Z)=k\)</span>. Hence <span class="math-inline">\(\operatorname{Sing}(Z)=\mathbb A^1\)</span>. Denote its cohomological support coordinate by <span class="math-inline">\(u\)</span>, of degree <span class="math-inline">\(2\)</span>; the underlying classical cone coordinate has the corresponding dilation weight.</p>
+<p>To compute its action, resolve the augmentation module <span class="math-inline">\(k\)</span> by</p>
+<p><span class="math-display">\[
+P=\bigoplus_{j\geq0}Ae_j,
+\quad|e_j|=-2j,
+\quad de_0=0,
+\quad de_j=\varepsilon e_{j-1}\ (j\geq1),
+\quad e_0\mapsto1.
+\tag{S6.2}
+\]</span></p>
+<p>This is semifree. As a <span class="math-inline">\(k\)</span>-complex its nonzero negative-degree basis elements are paired by
+<span class="math-inline">\(e_j\mapsto\varepsilon e_{j-1}\)</span>, so its augmentation has cohomology <span class="math-inline">\(k\)</span> in degree zero only. Applying <span class="math-inline">\(\operatorname{Hom}_A(-,k)\)</span> kills the differential, with one generator in each degree <span class="math-inline">\(2j\)</span>. The degree-two chain map
+<span class="math-inline">\(e_j\mapsto e_{j-1}\)</span> for <span class="math-inline">\(j\geq1\)</span>, <span class="math-inline">\(e_0\mapsto0\)</span>, represents the first class. Its powers represent every subsequent class and are nonzero on <span class="math-inline">\(e_j\)</span>. Therefore its Yoneda algebra is</p>
+<p><span class="math-display">\[
+\operatorname{Ext}_A^*(k,k)=k[u],\qquad |u|=2.
+\tag{S6.3}
+\]</span></p>
+<p>This operator is the intrinsic cohomological singular-support operator, not just an arbitrary generator of the Ext vector space. Indeed, put
+<span class="math-inline">\(A^e=A\otimes A=\Lambda(\varepsilon_1,\varepsilon_2)\)</span>
+and <span class="math-inline">\(\delta=\varepsilon_1-\varepsilon_2\)</span>. A diagonal bimodule resolution is</p>
+<p><span class="math-display">\[
+Q=\bigoplus_{j\geq0}A^ee_j,
+\quad de_j=\delta e_{j-1},\quad |e_j|=-2j.
+\tag{S6.4}
+\]</span></p>
+<p>Changing generators to <span class="math-inline">\(\delta\)</span> and <span class="math-inline">\(z=(\varepsilon_1+\varepsilon_2)/2\)</span> identifies this with (S6.2) on the <span class="math-inline">\(\delta\)</span>-factor tensored with <span class="math-inline">\(\Lambda(z)\)</span>. It therefore resolves the diagonal copy of <span class="math-inline">\(A\)</span>. Its degree-two shift map gives a Hochschild class. Tensoring this bimodule map with an <span class="math-inline">\(A\)</span>-module gives the natural central action; on <span class="math-inline">\(k\)</span>, the resolution becomes (S6.2) and the operator is exactly (S6.3). It is associated to the dual of the single odd cotangent generator, with the extra Hochschild cohomological shift, hence to the coordinate <span class="math-inline">\(u\)</span> of the singular fibre. This is the explicit complete-intersection cohomological-operator definition of support used here.</p>
+<p>On the structure module <span class="math-inline">\(A\)</span>, the degree-two map is zero in the derived category, because
+<span class="math-inline">\(\operatorname{Ext}_A^2(A,A)=H^2(A)=0\)</span>.
+On <span class="math-inline">\(k\)</span>, the same action is multiplication by <span class="math-inline">\(u\)</span> in the polynomial algebra (S6.3), with no nonzero annihilating polynomial. Thus the two support calculations are</p>
+<p><span class="math-display">\[
+\operatorname{SS}(\mathcal O_Z)=\{0\},
+\qquad
+\operatorname{SS}(k)=\mathbb A^1.
+\tag{S6.5}
+\]</span></p>
+<p>Equivalently, the pointwise Ext test has module <span class="math-inline">\(\operatorname{Ext}_A^*(A,k)=k\)</span> annihilated by <span class="math-inline">\(u\)</span>, and module <span class="math-inline">\(\operatorname{Ext}_A^*(k,k)=k[u]\)</span> of full support. The finite model makes the same central operator visible in both descriptions; extending these descriptions to arbitrary quasi-smooth stacks requires the separate singular-support theory.</p>
+<p>The skyscraper <span class="math-inline">\(k\)</span> is coherent: its only cohomology is the one-dimensional <span class="math-inline">\(H^0(A)\)</span>-module <span class="math-inline">\(k\)</span>. It is not perfect. A finite cell <span class="math-inline">\(A\)</span>-module, or its retract, has bounded <span class="math-inline">\(\operatorname{RHom}_A(-,k)\)</span>, since this is true for each shifted free cell and is preserved by finitely many cones and retracts. The nonzero classes in every degree <span class="math-inline">\(2j\)</span> in (S6.3) contradict that condition for <span class="math-inline">\(k\)</span>. This proves coherence, nonperfectness and the whole singular fibre support by actual computations.</p>
+<h2>8. Zero singular support on the full torus stack (S7)</h2>
+<p>For a torus <span class="math-inline">\(T\)</span>, the coadjoint action on <span class="math-inline">\(\mathfrak t^*\)</span> is trivial. All linear coordinate functions are invariant and of positive degree, so (S4.1) gives</p>
+<p><span class="math-display">\[
+\mathcal N_{\mathfrak t^*}=\{0\}.
+\tag{S7.1}
+\]</span></p>
+<p>Equations (S3.5) and (S4.3) then say that the global nilpotent cone is the zero section of the singular-vector cone, within the global derived-cone foundation. This is the elementary part of the torus exercise. The categorical identity</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}_{\mathrm{Nilp}}(\operatorname{LocSys}_T)
+\simeq\operatorname{QCoh}(\operatorname{LocSys}_T)
+\tag{S7.2}
+\]</span></p>
+<p>is proved in <a href="GL-GLC-06.html" title="The GL_1 case as an equivalence of categories">The GL_1 case as an equivalence of categories</a>, §§5.1.1–5.1.8. Here is its application to this stack. Its derived product is <span class="math-inline">\(Y\times Z_r\times BT\)</span>, with <span class="math-inline">\(Y=(J_X^\natural)^r\)</span> smooth and <span class="math-inline">\(Z_r\)</span> the exterior derived point on <span class="math-inline">\(r\)</span> generators of degree <span class="math-inline">\(-1\)</span>. Over every smooth affine chart <span class="math-inline">\(\operatorname{Spec}R\)</span> of <span class="math-inline">\(Y\)</span>, the polynomial operators give <span class="math-inline">\(\operatorname{IndCoh}\simeq R[u_1,\ldots,u_r]\text{-}\operatorname{Mod}\)</span>. Zero support is the localizing subcategory generated by its augmentation <span class="math-inline">\(R\)</span>; the structure algebra transforms to <span class="math-inline">\(\det(V)[r]\)</span>, so the continuous perfect-object comparison has exactly that image. The dualizing twist makes this comparison compatible with <span class="math-inline">\(!\)</span>-pullbacks on the full torus nerve. Taking its limit proves (S7.2) for every genus and rank, all unbounded objects and all weights. The geometric product and the regular-ring, coherent-duality, DG-category and affine/smooth-descent constructions remain its explicit foundations. A pointwise nilpotent-zero calculation alone would not prove this categorical assertion.</p>
+<p>The comparison compatible with the <span class="math-inline">\(!\)</span>-chart diagram is <span class="math-inline">\(\Upsilon\)</span>. On this Gorenstein torus model the scheme-normalized comparison is <span class="math-inline">\(\Xi(F)=\Upsilon(F\otimes\omega^{-1})\)</span>, and both have the same zero-support image. The shifted dualizing line includes <span class="math-inline">\(\det(\mathfrak t)[-r]\)</span> from <span class="math-inline">\(BT\)</span>; it cannot be omitted when comparing chart functors. For a general eventually coconnective quasi-smooth derived Artin stack <span class="math-inline">\(W\)</span>, retain <strong>F-ZS</strong>: the fully faithful comparison <span class="math-inline">\(\Xi_W:\operatorname{QCoh}(W)\to\operatorname{IndCoh}(W)\)</span> has image <span class="math-inline">\(\operatorname{IndCoh}_{\{0\}}(W)\)</span>. That general theorem is still unproved here. The explicit torus proof does not assume it.</p>
+<p>The general theorem is stated in Arinkin–Gaitsgory, <a href="https://arxiv.org/abs/1201.6343v4"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em>, Theorem 4.2.6 and Corollary 8.2.8</a>. The complete-intersection argument in §5.7 has the following mathematical inputs. A local complete-intersection chart reduces the comparison to conservativeness of the right adjoint <span class="math-inline">\(\Psi\)</span> on zero support. A Koszul-generation adjunction gives generators from zero-supported objects of the point self-intersection. Product support and Koszul duality identify them with dualizing pullbacks from the point. Base change identifies the resulting composite with <span class="math-inline">\(\iota^!\iota_*\)</span> for the immersion into a smooth ambient scheme. The ambient dualizing sheaf generates under the QCoh action; its pullback is the complete intersection's dualizing sheaf, an invertible line up to shift. Thus these generators lie in the image of <span class="math-inline">\(\Xi\)</span>. Extending this argument to stacks requires smooth descent. Complete-intersection charts, Koszul generation, product support, IndCoh base change, Gorenstein duality and descent remain unproved in this generality. The explicit exterior models have the direct algebra proof below and the arbitrary-rank smooth-base proof in the earlier lesson.</p>
+<h2>9. Explicit zero-support category for the one-generator model (S8)</h2>
+<p>This section works in the usual stable DG module categories, with exact triangles, derived tensor–Hom and their free-bar construction. These categorical foundations are explicit prerequisites; no claim about arbitrary prestack IndCoh functoriality is made.</p>
+<p>For the finite algebra <span class="math-inline">\(A\)</span> of S6, let <span class="math-inline">\(\operatorname{Coh}(A)\)</span> be the bounded modules with finite-dimensional cohomology. Its ordinary cohomological truncations give a finite Postnikov filtration of each such module. Each cohomology layer is a finite sum of shifts of the augmentation module <span class="math-inline">\(k\)</span>, since the heart is finite-dimensional modules over <span class="math-inline">\(H^0(A)=k\)</span>. Thus</p>
+<p><span class="math-display">\[
+\operatorname{Coh}(A)=\operatorname{thick}(k),
+\qquad
+\operatorname{IndCoh}(Z)=\operatorname{Ind}(\operatorname{thick}(k)).
+\tag{S8.1}
+\]</span></p>
+<p>Here “thick” allows finite cones and retracts. In its Ind-completion <span class="math-inline">\(k\)</span> is a compact generator. Its endomorphism DG algebra is quasi-isomorphic to <span class="math-inline">\(E=k[u]\)</span>, <span class="math-inline">\(|u|=2\)</span>, with zero differential. In addition to the cohomology computation (S6.3), the chain shift map there gives a DG algebra map <span class="math-inline">\(k[u]\to\operatorname{End}_A(P)\)</span>, and it is an isomorphism on all cohomology by the same calculation; this proves the required DG algebra assertion rather than assuming formality from dimensions.</p>
+<p>Compact-generator Morita gives</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}(Z)\simeq E\text{-}\operatorname{Mod}.
+\tag{S8.2}
+\]</span></p>
+<p>In this instance its proof can be described directly. The functor is the mapping complex <span class="math-inline">\(\operatorname{Maps}_{\operatorname{IndCoh}(Z)}(k,-)\)</span>, and its inverse tensors a module with the compact generator <span class="math-inline">\(k\)</span> over its endomorphism algebra. On coherent objects this mapping complex agrees with the ordinary derived <span class="math-inline">\(A\)</span>-module Hom. On arbitrary Ind-objects it means the IndCoh mapping functor: the augmentation module is not compact in <span class="math-inline">\(\operatorname{QCoh}(Z)\)</span>, so its ordinary QCoh Hom cannot be substituted for this functor. The composites agree on the free generator. Resolve any module by the split free bar; applying either composite to that augmented bar gives the original module. Compactness in IndCoh makes its mapping functor commute with sums, and exactness makes it commute with the bar realizations. Since the generator detects the zero object, these unit and counit equivalences prove (S8.2) on the whole Ind-category, not only on finite objects.</p>
+<p>Under (S8.2), the object <span class="math-inline">\(k\)</span> is <span class="math-inline">\(E\)</span>, of full support. The structure object <span class="math-inline">\(A\)</span> is <span class="math-inline">\(\operatorname{RHom}_A(k,A)\)</span>. In <span class="math-inline">\(\operatorname{Hom}_A(P,A)\)</span>, the functional <span class="math-inline">\(e_j\mapsto1\)</span> in degree <span class="math-inline">\(2j\)</span> maps, up to its differential sign, to the functional <span class="math-inline">\(e_{j+1}\mapsto\varepsilon\)</span> in degree <span class="math-inline">\(2j+1\)</span>. These pairs are acyclic; the sole unpaired functional is <span class="math-inline">\(e_0\mapsto\varepsilon\)</span>, in degree <span class="math-inline">\(-1\)</span>. Hence</p>
+<p><span class="math-display">\[
+A\longmapsto k[1]\quad\text{as an }E\text{-module},
+\qquad u\text{ acts by zero}.
+\tag{S8.3}
+\]</span></p>
+<p>As a check on the endomorphism algebra in this description, a semifree <span class="math-inline">\(E\)</span>-resolution of <span class="math-inline">\(k\)</span> is <span class="math-inline">\(E\oplus Et\)</span>, with <span class="math-inline">\(|t|=1\)</span> and <span class="math-inline">\(dt=u\)</span>. Applying <span class="math-inline">\(\operatorname{Hom}_E(-,k)\)</span> gives one class in degree zero and one in degree <span class="math-inline">\(-1\)</span>. The degree-<span class="math-inline">\(-1\)</span> endomorphism sending <span class="math-inline">\(t\)</span> to <span class="math-inline">\(1\)</span> and <span class="math-inline">\(1\)</span> to <span class="math-inline">\(0\)</span> is a DG cycle and squares to zero. It therefore defines a DG algebra map <span class="math-inline">\(k[\varepsilon]\to\operatorname{End}_E(E\oplus Et)\)</span>, with <span class="math-inline">\(|\varepsilon|=-1\)</span>, inducing those two cohomology classes. This map is a quasi-isomorphism, so <span class="math-inline">\(\operatorname{REnd}_E(k[1])\simeq A\)</span>. No completion of <span class="math-inline">\(k[u]\)</span> occurs: each fixed degree in the resolutions has only finitely many basis elements.</p>
+<p>The subcategory supported at the origin of <span class="math-inline">\(\operatorname{Spec}k[u]\)</span> consists of modules whose localization at <span class="math-inline">\(u\)</span> is zero, or equivalently whose cohomology elements are each killed by some power of <span class="math-inline">\(u\)</span>. It is the localizing subcategory generated by <span class="math-inline">\(k\)</span>. One proof uses the localization telescope <span class="math-inline">\(M\to M[2]\to M[4]\to\cdots\)</span> given by multiplication by <span class="math-inline">\(u\)</span>. Its colimit is <span class="math-inline">\(M[u^{-1}]\)</span>. The fibre of the map to this colimit is built from the fibres of the maps <span class="math-inline">\(u^m:M\to M[2m]\)</span>. Their cofibres are shifts of <span class="math-inline">\(E/(u^m)\otimes_E^LM\)</span>; <span class="math-inline">\(E/(u^m)\)</span> has a finite filtration with layers shifted copies of <span class="math-inline">\(k\)</span>. Each <span class="math-inline">\(k\otimes_E^LM\)</span> is a complex of <span class="math-inline">\(k\)</span>-vector spaces and so lies in the localizing subcategory of <span class="math-inline">\(k\)</span>. If the localization is zero, this construction builds <span class="math-inline">\(M\)</span> in that subcategory. Conversely all its generators localize to zero.</p>
+<p>Finally, <span class="math-inline">\(\operatorname{QCoh}(Z)=A\text{-}\operatorname{Mod}\)</span> is the Ind-completion of finite perfect <span class="math-inline">\(A\)</span>-modules. A proof uses free-cell resolutions and the split free bar: shifted free cells generate every module under sums and realizations, and the compact objects they generate are precisely finite cells and retracts. The inclusion of finite perfect modules into <span class="math-inline">\(\operatorname{Coh}(A)\)</span> is fully faithful and exact, and extends to a fully faithful functor of Ind-categories because both mapping computations out of its compact generators agree. Its image is the localizing subcategory generated by <span class="math-inline">\(A\)</span>. Under (S8.2), that is exactly the localizing subcategory of <span class="math-inline">\(k[1]\)</span>, which is the origin-support subcategory just computed. Therefore</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}_{\{0\}}(Z)\simeq\operatorname{QCoh}(Z)
+\tag{S8.4}
+\]</span></p>
+<p>in this explicit model, with the central cohomological support convention of S6. This calculation demonstrates why coherent and quasicoherent categories differ before the zero-support restriction: the coherent skyscraper corresponds to a free <span class="math-inline">\(k[u]\)</span>-module and has nonzero support, while the structure module corresponds to a torsion <span class="math-inline">\(k[u]\)</span>-module. The arbitrary-rank exterior calculation over smooth affine bases, and its compatible torus descent, are proved in the earlier The GL_1 case as an equivalence of categories, §§5.1.1–5.1.8. Together with the actual derived product, they give (S7.2) at the explicit foundations described in §8. The general F-ZS theorem remains a separate obligation.</p>
+<h2>10. Eisenstein compatibility and the rank-one candidate (S9)</h2>
+<p>This section states the global Eisenstein premises, proves their formal minimality consequence, and calculates the rank-one singular correspondence. It also constructs a coherent object with nilpotent nonzero support in an exterior-algebra model. The global functoriality, generation and strictness statements retain the proof obligations listed below.</p>
+<p>For a parabolic <span class="math-inline">\(P\subset G\)</span> with Levi quotient <span class="math-inline">\(M\)</span>, write <span class="math-inline">\(H=\check G\)</span>, <span class="math-inline">\(P_H=\check P\)</span>, and <span class="math-inline">\(M_H=\check M\)</span>. The spectral correspondence and its proposed functor are</p>
+<p><span class="math-display">\[
+\operatorname{LocSys}_H
+\xleftarrow{\ p\ }\operatorname{LocSys}_{P_H}
+\xrightarrow{\ q\ }\operatorname{LocSys}_{M_H},
+\qquad
+\operatorname{Eis}_{\mathrm{spec}}^P=p_*^{\operatorname{IndCoh}}q^!.
+\tag{S9.1}
+\]</span></p>
+<p>The needed global functoriality is <strong>F-EIS</strong>: <span class="math-inline">\(q\)</span> is quasi-smooth, <span class="math-inline">\(p\)</span> is schematic proper, and the constructed <span class="math-inline">\(!\)</span>-pullback and proper IndCoh pushforward satisfy the singular-codifferential support bounds that make (S9.1) preserve nilpotent support. These statements require representability, the relative cotangent calculation, properness and the general reductive Lie-algebra support assertion; their full proofs remain required here. They are formulated in Arinkin–Gaitsgory, <a href="https://arxiv.org/abs/1201.6343v4"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em>, §13.2</a>. The rank-one Lie-algebra assertion has the following direct computation.</p>
+<p>Let <span class="math-inline">\(H=SL_2\)</span>, let <span class="math-inline">\(B\)</span> be its upper-triangular Borel, and use the trace identification (S5.3). The covector represented by
+<span class="math-inline">\(U=\left(\begin{smallmatrix}a&amp;b\\c&amp;-a\end{smallmatrix}\right)\)</span>
+restricts on <span class="math-inline">\(\mathfrak b\)</span>, with basis
+<span class="math-inline">\(h=\operatorname{diag}(1,-1)\)</span>, <span class="math-inline">\(e=E_{12}\)</span>, to the two coordinates</p>
+<p><span class="math-display">\[
+\langle U,h\rangle=2a,\qquad
+\langle U,e\rangle=c.
+\tag{S9.2}
+\]</span></p>
+<p>Since the Levi is a torus, its nilpotent cone is zero. The inverse image of its zero covector under the restriction <span class="math-inline">\(\mathfrak{sl}_2^*\to\mathfrak b^*\)</span> is therefore exactly</p>
+<p><span class="math-display">\[
+a=c=0,\qquad U=bE_{12}.
+\tag{S9.3}
+\]</span></p>
+<p>Every such matrix is nilpotent, including nonzero values of <span class="math-inline">\(b\)</span>. Varying the Borel varies its preserved line. A nonzero nilpotent matrix has one unique kernel/image line, so the union of (S9.3) over all Borels is the entire cone (S5.5). This explains the nonzero nilpotent directions appearing in the singular correspondence. It is a calculation of directions; a pushforward support <em>bound</em> by itself does not prove that a particular pushforward attains every permitted direction.</p>
+<p>The horizontal version also has a direct rank-one proof. A nonzero horizontal nilpotent endomorphism <span class="math-inline">\(U\)</span> of a rank-two flat bundle is nowhere zero, by the evaluation injectivity proved in S2. Its square is zero and its rank is one everywhere. A locally invertible entry makes its image a line subbundle, and its image equals its kernel at every fibre and at the bundle level. The identity <span class="math-inline">\(\nabla U=U\nabla\)</span> makes that line horizontal. It gives a horizontal Borel reduction containing <span class="math-inline">\(U\)</span> in its nilradical. Thus a local system with a nonzero horizontal nilpotent section is reducible, and an irreducible rank-two local system has only the zero nilpotent section. The same kernel-line construction glues in projective rank-two charts for <span class="math-inline">\(PGL_2\)</span>: conjugation transports the line and scalar changes of a lift do not change it. This avoids inferring this particular rank-one geometric statement from a general fixed-point theorem.</p>
+<p>The global generation premise is <strong>F-GEN</strong>: QCoh on <span class="math-inline">\(\operatorname{LocSys}_H\)</span>, together with the images of Levi QCoh under all proper-parabolic spectral Eisenstein functors, generates <span class="math-inline">\(\operatorname{IndCoh}_{\mathrm{Nilp}}(\operatorname{LocSys}_H)\)</span>. “Generates” means the smallest full stable subcategory closed under all colimits. Its construction needs generation by <span class="math-inline">\(q^!\)</span>, using the quasi-smooth pullback tensor-product theorem and conservative QCoh pushforward for a unipotent affine quotient; generation by proper <span class="math-inline">\(p_*\)</span>, using the support-sensitive proper-pushforward theorem; and horizontal parabolic reductions containing prescribed nilpotent covectors. One method for the final step integrates a horizontal nilpotent element to a <span class="math-inline">\(\mathbb G_a\)</span>-action on the proper scheme of horizontal reductions and takes a fixed point. The complete global categorical, integration and fixed-point arguments remain unproved here. Equations (S9.2)–(S9.3) and the horizontal kernel-line argument prove the rank-one Lie and reduction steps. The full generation statements are in Arinkin–Gaitsgory, <a href="https://arxiv.org/abs/1201.6343v4"><em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em>, §13.3</a>.</p>
+<p>Generation on the reducible locus uses proper-parabolic images of <strong>Levi IndCoh with nilpotent support</strong>. The assertion with <strong>Levi QCoh</strong>, together with QCoh on the full local-system stack, additionally needs zero support on the irreducible locus, categorical localization, transitivity of Eisenstein functors and induction on semisimple rank. Each of these is an explicit unproved premise of F-GEN, alongside the <span class="math-inline">\(q^!\)</span> and <span class="math-inline">\(p_*\)</span> generation statements. The torus comparison of §8 supplies torus Levi zero support; it does not prove these general reductive steps.</p>
+<p>Here is the precise compatibility premise for minimality. Put <span class="math-inline">\(I_H=\operatorname{IndCoh}(\operatorname{LocSys}_H)\)</span>, and let <span class="math-inline">\(j_H:\mathcal C_H\hookrightarrow I_H\)</span> be a full stable inclusion with colimit-closed image. Supply an equivalence <span class="math-inline">\(\Phi_H:\mathcal C_H\simeq\mathcal A_G\)</span> to the chosen automorphic category. For each proper parabolic, also supply a Levi functor
+<span class="math-display">\[
+\Phi_M^0:\operatorname{QCoh}(\operatorname{LocSys}_{M_H})\longrightarrow\mathcal A_M,
+\]</span>
+the normalized automorphic Eisenstein functor <span class="math-inline">\(\operatorname{Eis}_{aut}^P:\mathcal A_M\to\mathcal A_G\)</span>, and a natural isomorphism of functors into <span class="math-inline">\(I_H\)</span>:
+<span class="math-display">\[
+j_H\Phi_H^{-1}\operatorname{Eis}_{aut}^P\Phi_M^0
+\simeq
+\operatorname{Eis}_{spec}^P\,\Xi_{M_H}(-\otimes\mathcal L_M).
+\tag{C9.1}
+\]</span>
+Here <span class="math-inline">\(\Xi_{M_H}\)</span> is the supplied QCoh-to-IndCoh comparison and <span class="math-inline">\(\mathcal L_M\)</span> is the permissible Levi line-bundle twist. The automorphic half twists and shifts are part of the stipulated normalization; (C9.1) is an assumed compatibility, not a theorem inferred from <span class="math-inline">\(\Phi_H\)</span> alone. The left side lands in <span class="math-inline">\(j_H\mathcal C_H\)</span>. Tensoring by <span class="math-inline">\(\mathcal L_M\)</span> is an autoequivalence of Levi QCoh, so its right-side images run through all the untwisted Levi-QCoh Eisenstein images. If <span class="math-inline">\(\mathcal C_H\)</span> also contains <span class="math-inline">\(\Xi_H\operatorname{QCoh}(\operatorname{LocSys}_H)\)</span>, it therefore contains every generator in the F-GEN corollary. By F-GEN, taking the stable colimit closure of those images gives</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}_{\mathrm{Nilp}}(\operatorname{LocSys}_H)
+\subset\mathcal C_H.
+\tag{S9.4}
+\]</span></p>
+<p>This proves the minimality deduction from (C9.1) and F-GEN. By F-ZS, any object in the nilpotent category with nonzero singular support is outside the image of QCoh, and the deduction forces every such object into <span class="math-inline">\(\mathcal C_H\)</span>. To establish that the nilpotent category is strictly larger in a specified global example requires an actual such global object or a proved strictness theorem. Allowed directions alone do not establish strictness.</p>
+<p>For clarity, an actual object with this support can be computed in the following <em>local model</em>. Let <span class="math-inline">\(Z_3=\operatorname{pt}\times^{\mathbf R}_{\mathbb A^3}\operatorname{pt}\)</span>, with algebra <span class="math-inline">\(A_3=\Lambda(\varepsilon_a,\varepsilon_b,\varepsilon_c)\)</span>, each generator of degree <span class="math-inline">\(-1\)</span>. Tensor the three resolutions (S6.2), with the ordinary Koszul differential signs. Every fixed degree has finitely many basis elements. The tensor Künneth argument over the field and the three commuting even shift maps give</p>
+<p><span class="math-display">\[
+\operatorname{REnd}_{A_3}(k)\simeq
+E_3=k[u_a,u_b,u_c],\qquad |u_a|=|u_b|=|u_c|=2.
+\tag{S9.5}
+\]</span></p>
+<p>As in S8, finite Postnikov filtrations prove <span class="math-inline">\(\operatorname{Coh}(A_3)=\operatorname{thick}(k)\)</span>, so the compact mapping functor identifies its Ind-category with <span class="math-inline">\(E_3\)</span>-modules. Identify the three singular coordinates with <span class="math-inline">\(a,b,c\)</span> in (S5.3). Define the coherent object</p>
+<p><span class="math-display">\[
+F=\operatorname{cofib}\bigl(
+u_a^2+u_bu_c:k\longrightarrow k[4]\bigr)
+\quad\text{in }\operatorname{Coh}(A_3).
+\tag{S9.6}
+\]</span></p>
+<p>The displayed map is the quadratic central cohomological operator; it exists through the diagonal resolutions used in S6. Under the compact-generator functor it is multiplication by <span class="math-inline">\(q=u_a^2+u_bu_c\)</span>, from <span class="math-inline">\(E_3\)</span> to <span class="math-inline">\(E_3[4]\)</span>. Since <span class="math-inline">\(q\)</span> is a nonzero divisor in the polynomial domain, <span class="math-inline">\(F\)</span> corresponds to <span class="math-inline">\((E_3/(q))[4]\)</span>. Its annihilator is exactly <span class="math-inline">\((q)\)</span>, and therefore</p>
+<p><span class="math-display">\[
+\operatorname{SS}(F)=V(q)=\mathcal N_{\mathfrak{sl}_2^*}.
+\tag{S9.7}
+\]</span></p>
+<p>In particular this support is nilpotent and contains the nonzero point <span class="math-inline">\((a,b,c)=(0,1,0)\)</span>. Every perfect <span class="math-inline">\(A_3\)</span>-module has zero support: the operator acts trivially on the free module in the derived category because <span class="math-inline">\(H^{&gt;0}(A_3)=0\)</span>, and zero support is preserved by finite cones and retracts. Thus <span class="math-inline">\(F\)</span> is coherent and nonperfect. This is an actual object calculation, not just an allowable-support picture. Identifying a neighbourhood in a global local-system stack with this model, descending a suitable equivariant object and extending it globally are separate foundations and are not asserted here.</p>
+<p><img src="src/figures/GL-GLC-09-singular-support.svg" alt="The quadratic cofiber and a real slice of its complex nilpotent support" /></p>
+<p>The exact complex support is <span class="math-inline">\(V(a^2+bc)\)</span>, proved in (S9.5)–(S9.7). The plotted surface is only its real slice, in coordinates <span class="math-inline">\(x=a\)</span>, <span class="math-inline">\(y=(b+c)/2\)</span>, <span class="math-inline">\(z=(b-c)/2\)</span>; then <span class="math-inline">\(a^2+bc=x^2+y^2-z^2\)</span>. The red point is the nonzero nilpotent <span class="math-inline">\((a,b,c)=(0,1,0)\)</span>, and the origin is the structure object's support. The picture represents the explicit derived-intersection model; global local-system descent remains F-STRICT.</p>
+<p>Finally the candidate actually discussed by AG for automorphic <span class="math-inline">\(G=SL_2\)</span> is</p>
+<p><span class="math-display">\[
+\operatorname{IndCoh}_{\mathrm{Nilp}_{glob}}
+\bigl(\operatorname{LocSys}_{PGL_2}\bigr).
+\tag{S9.8}
+\]</span></p>
+<p>Here <span class="math-inline">\(PGL_2=\check{SL_2}\)</span>, under the course's dual-root-datum convention. Its allowed horizontal covectors, after trace identification locally, satisfy <span class="math-inline">\(a^2+bc=0\)</span>. A <span class="math-inline">\(\mathfrak{pgl}_2\)</span> element has a unique trace-zero representative: subtract <span class="math-inline">\(\tfrac12\operatorname{tr}(V)I\)</span> from any matrix lift <span class="math-inline">\(V\)</span>. Adding a scalar matrix to the lift preserves that representative; projective conjugation preserves its nilpotence and transports its kernel line. If the <em>spectral</em> group is instead <span class="math-inline">\(SL_2\)</span>, as in Exercise 9.3, the category is <span class="math-inline">\(\operatorname{IndCoh}_{\mathrm{Nilp}}(\operatorname{LocSys}_{SL_2})\)</span>, for automorphic dual group <span class="math-inline">\(PGL_2\)</span>. Establishing strictness of the global category (S9.8) remains F-STRICT. The local object (S9.6) proves strictness in its exterior model, whose identification, descent and extension in a global local-system stack still need proof.</p>
+<h2>11. Exercises with solutions</h2>
+<p><strong>Exercise 9.1.</strong> Compute the virtual dimension of <span class="math-inline">\(\operatorname{LocSys}_H\)</span>.</p>
+<p><strong>Solution 9.1.</strong> For <span class="math-inline">\(E=\mathfrak h_\sigma\)</span>, the coherent Euler formula in §2 gives
+<span class="math-display">\[
+\chi(C_E)=\chi(E)-\chi(E\omega)=(2-2g)\dim H.
+\]</span>
+The tangent complex is <span class="math-inline">\(C_E[1]\)</span>, with the automorphisms in degree <span class="math-inline">\(-1\)</span>. Shifting changes the sign of the Euler characteristic, so
+<span class="math-display">\[
+\chi(T_\sigma)=(2g-2)\dim H.
+\]</span>
+This calculation includes <span class="math-inline">\(g=0,1\)</span> and every connected reductive <span class="math-inline">\(H\)</span>. Identifying it with a global derived-stack virtual dimension still consumes F-DAG; it is not a coarse-space dimension formula.</p>
+<p><strong>Exercise 9.2.</strong> Show that <span class="math-inline">\(\operatorname{IndCoh}_{\mathrm{Nilp}}(\operatorname{LocSys}_T)=\operatorname{QCoh}(\operatorname{LocSys}_T)\)</span> for a torus <span class="math-inline">\(T\)</span>.</p>
+<p><strong>Solution 9.2.</strong> The coadjoint action is trivial, so every linear coordinate is an invariant polynomial of positive degree. Their zero scheme is the origin. Thus the nilpotent condition is zero singular support. The family-and-arrow construction in <a href="GL-GLC-06.html" title="The GL_1 case as an equivalence of categories">The GL_1 case as an equivalence of categories</a>, §1, gives the full stack <span class="math-inline">\((J_X^\natural)^r\times Z_r\times BT\)</span>, with all its geometric premises retained. On an affine smooth chart <span class="math-inline">\(R\)</span>, let <span class="math-inline">\(B=R[\varepsilon_1,\ldots,\varepsilon_r]\)</span>, <span class="math-inline">\(|\varepsilon_i|=-1\)</span>. Sections 5.1.1–5.1.4 of that lesson prove <span class="math-inline">\(\operatorname{IndCoh}(B)\simeq S\text{-}\operatorname{Mod}\)</span>, where <span class="math-inline">\(S=R[u_1,\ldots,u_r]\)</span>, <span class="math-inline">\(|u_i|=2\)</span>. Vanishing of all the operator localizations is exactly the localizing subcategory generated by the augmentation <span class="math-inline">\(R\)</span>. The structure object <span class="math-inline">\(B\)</span> transforms to <span class="math-inline">\(\det(V)[r]\)</span>, so the continuous extension of the inclusion of perfect <span class="math-inline">\(B\)</span>-modules is fully faithful with exactly this image. Tensoring by the computed dualizing line gives <span class="math-inline">\(\Upsilon\)</span>; §§5.1.5–5.1.7 prove its natural compatibility with every map in the affine cover and torus nerve. The compatible inverse comparisons give an equivalence on the limit. This proves the stated comparison for all ranks, genera, unbounded objects and character weights, subject to the actual product and the explicitly retained regular-ring, coherent-duality, DG-category and affine/smooth-descent constructions. Section 5.1.8 also checks the generator-frame changes and the distinction between a coherent augmentation and the continuous comparison's image of its QCoh version. The argument does not use general reductive F-ZS.</p>
+<p><strong>Exercise 9.3.</strong> Compute <span class="math-inline">\(H^{-1}\)</span> of the cotangent complex of <span class="math-inline">\(\operatorname{LocSys}_{SL_2}\)</span> at the trivial local system.</p>
+<p><strong>Solution 9.3.</strong> The top de Rham group of the trivial line is <span class="math-inline">\(k\)</span>, by the proved zero derivative on <span class="math-inline">\(H^1(\mathcal O_X)\)</span> and the differential trace. Therefore
+<span class="math-display">\[
+H^{-1}(L_\sigma)=H^2_{\mathrm{dR}}(X,\mathfrak{sl}_2)^\vee=\mathfrak{sl}_2^*.
+\]</span>
+It has dimension three for every genus. The trace pairing identifies it with matrices <span class="math-inline">\(\left(\begin{smallmatrix}a&amp;b\\c&amp;-a\end{smallmatrix}\right)\)</span>; their nilpotent cone is <span class="math-inline">\(a^2+bc=0\)</span>. The middle group instead has dimension <span class="math-inline">\(6g\)</span>. A stabilizer contributes to cotangent degree <span class="math-inline">\(1\)</span>, so the scheme amplitude convention cannot be imposed directly on the Artin stack.</p>
+<p><strong>Exercise 9.4.</strong> Prove that a horizontal covector is nilpotent everywhere if and only if it is nilpotent at one point.</p>
+<p><strong>Solution 9.4.</strong> For each positive-degree homogeneous invariant polynomial <span class="math-inline">\(f\)</span>, the function <span class="math-inline">\(f(A)\)</span> glues across every coadjoint transition and is a global regular function on the projective connected curve. It is constant. Hence it vanishes identically exactly when its value at the chosen point is zero. The invariant-zero-fibre ideal defines the nilpotent cone, so the equivalence holds simultaneously for all its generators. On an ordinary affine parameter <span class="math-inline">\(S=\operatorname{Spec}R\)</span>, the same argument uses <span class="math-inline">\(\Gamma(X_S,\mathcal O)=R\)</span>, and retains nilpotent coefficients in <span class="math-inline">\(R\)</span>. This proves the ordinary family assertion; the separate derived-cone identification remains F-DAG.</p>
+<p><strong>Exercise 9.5.</strong> Explain why Eisenstein compatibility forces nilpotent nonzero support objects, and describe the candidate for automorphic <span class="math-inline">\(SL_2\)</span>.</p>
+<p><strong>Solution 9.5.</strong> Assume the supplied Levi QCoh functors and the natural compatibility (C9.1), as well as F-EIS, F-GEN and F-ZS. Under F-EIS the spectral functor is <span class="math-inline">\(p_*^{\operatorname{IndCoh}}q^!\)</span>, for <span class="math-inline">\(\operatorname{LocSys}_{\check G}\leftarrow\operatorname{LocSys}_{\check P}\to\operatorname{LocSys}_{\check M}\)</span>. F-GEN says that Levi QCoh images under these functors, together with QCoh on <span class="math-inline">\(\operatorname{LocSys}_{\check G}\)</span>, generate the nilpotent category under stable colimits. Consequently a stable colimit-closed proposed spectral category containing QCoh and respecting these Eisenstein functors contains the entire nilpotent category. A permissible Levi line-bundle twist preserves its collection of QCoh objects and does not alter this deduction. By F-ZS any object in that category with nonzero singular support lies outside QCoh.</p>
+<p>The direct rank-one calculation gives the nonzero nilpotent directions <span class="math-inline">\(bE_{12}\)</span>, and the horizontal kernel line supplies their Borel reductions. An actual local object is
+<span class="math-display">\[
+F=\operatorname{cofib}\!\left(u_a^2+u_bu_c:k\longrightarrow k[4]\right)
+\]</span>
+in the three-generator exterior model. Its polynomial endomorphism module is <span class="math-inline">\((k[u_a,u_b,u_c]/(u_a^2+u_bu_c))[4]\)</span>, so its support is the whole nilcone, including <span class="math-inline">\((0,1,0)\)</span>; it is coherent and nonperfect. Promoting this object to a global local-system object requires F-STRICT. Without that global input, the general forcing deduction is conditional on the existence of the nonzero-support objects and the indicated global theorems.</p>
+<p>For automorphic <span class="math-inline">\(G=SL_2\)</span>, the dual is <span class="math-inline">\(H=PGL_2\)</span>, and the candidate is <span class="math-inline">\(\operatorname{IndCoh}_{\mathrm{Nilp}_{glob}}(\operatorname{LocSys}_{PGL_2})\)</span>. Exercise 9.3 instead fixes the <em>spectral</em> group <span class="math-inline">\(SL_2\)</span>, whose automorphic dual is <span class="math-inline">\(PGL_2\)</span>. The distinction preserves the original exercise and avoids changing its group silently.</p>
+<h2>12. Full theorem targets and remaining proofs</h2>
+<p>The written arguments supply the all-genus Euler calculation, linear deformation equations and shifts, top de Rham duality, ordinary family nilpotence test, the <span class="math-inline">\(SL_2\)</span> invariant ring and cone, diagonal cohomological operators, coherent nonperfect support examples, and the explicit one-generator zero-support comparison. Section 8 and Solution 9.2 apply the earlier arbitrary-rank affine and full torus descent proof to obtain the torus comparison at its stated foundations. The Eisenstein minimality argument is a complete deduction from its stated global premises.</p>
+<p>The remaining global theorem statements are:</p>
+<ul>
+<li><strong>F-DAG:</strong> derived representability of <span class="math-inline">\(\operatorname{LocSys}_H\)</span>, perfect relative cotangent complexes, smooth quasi-smooth atlases and the all-family identification of its singular cone with horizontal covectors.</li>
+<li><strong>F-ZS:</strong> the general zero-singular-support theorem for the relevant quasi-smooth derived Artin stacks beyond the explicit torus model, with complete-intersection charts, product support, Koszul generation, Gorenstein duality, IndCoh base change and smooth descent. The torus comparison is proved in the earlier The GL_1 case as an equivalence of categories, §§5.1.1–5.1.8; its regular-ring, coherent-duality, DG-category and affine/smooth-descent foundations remain required.</li>
+<li><strong>F-EIS:</strong> construction of <span class="math-inline">\(p_*^{\operatorname{IndCoh}}q^!\)</span>, schematic properness of <span class="math-inline">\(p\)</span>, quasi-smoothness of <span class="math-inline">\(q\)</span>, general reductive singular-codifferential support bounds and compatibility with the automorphic functors and Whittaker normalization.</li>
+<li><strong>F-GEN:</strong> the global generation theorem by QCoh and proper-parabolic Eisenstein images, including the reducible-locus theorem for Levi IndCoh with nilpotent support, irreducible-locus zero support, categorical localization, Eisenstein transitivity, induction on semisimple rank, the support-sensitive proper-pushforward theorem, horizontal reductions, integration and fixed-point inputs.</li>
+<li><strong>F-STRICT:</strong> a genuine global object with nilpotent nonzero support in the requested rank-one example, including any model identification, equivariant descent and global extension it uses. The explicit exterior-model object is retained separately.</li>
+<li><strong>F-COMPGEN:</strong> compact generation of the global nilpotent category, as formulated in Arinkin–Gaitsgory, §11.1. Its recursive global proof remains required.</li>
+<li><strong>F-LIE:</strong> any general reductive comparison between the invariant-zero-fibre definition and another nilpotence convention used downstream. The <span class="math-inline">\(SL_2\)</span> and torus comparisons are proved here.</li>
+</ul>
+<p>The ordinary fixed-curve cohomology, local algebra, connection-stack and stable DG-category constructions retain their earlier recursive foundations. Section 3 proves two necessary distinctions: the <span class="math-inline">\([-1,0]\)</span> cotangent convention belongs to quasi-smooth scheme atlases, while the unframed Artin stack can have degree <span class="math-inline">\(1\)</span>; and a nonzero obstruction space alone does not prove that every reducible classical point is singular.</p>
+<p>Further reading: <a href="https://arxiv.org/abs/1201.6343v4">Arinkin–Gaitsgory, <em>Singular support of coherent sheaves, and the geometric Langlands conjecture</em>, arXiv:1201.6343v4, §§2–5, 8, 10–11 and 13</a>, and <a href="https://arxiv.org/abs/1105.4857v7">Gaitsgory, <em>Ind-coherent sheaves</em>, arXiv:1105.4857v7, §§1, 5.7, 10.3 and 11.7</a>.</p>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

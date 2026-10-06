@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The symmetric groups III: characters and symmetric functions · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/characters-of-symmetric-groups-and-symmetric-functions.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="branching-jucys-murphy-elements-and-youngs-seminormal-form.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-15.md" download>Editable source</a><a href="schur-weyl-duality.html">Next lesson →</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#proposition-1-1">Proposition 1.1</a></li><li><a href="#lemma-1-2">Lemma 1.2</a></li><li><a href="#theorem-2-1">Theorem 2.1</a></li><li><a href="#lemma-2-2">Lemma 2.2</a></li><li><a href="#theorem-2-3">Theorem 2.3</a></li><li><a href="#theorem-3-1">Theorem 3.1</a></li><li><a href="#theorem-3-2">Theorem 3.2</a></li><li><a href="#corollary-4-1">Corollary 4.1</a></li><li><a href="#lemma-4-2">Lemma 4.2</a></li><li><a href="#theorem-4-3">Theorem 4.3</a></li><li><a href="#lemma-6-1">Lemma 6.1</a></li><li><a href="#proposition-6-2">Proposition 6.2</a></li><li><a href="#theorem-6-3">Theorem 6.3</a></li></ul></details><h1 id="the-symmetric-groups-iii-characters-and-symmetric-functions">The symmetric groups III: characters and symmetric functions</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026. Self-checked by the AI that wrote it. Independent AI review is not yet recorded. Independently authored text is public domain (CC0); the explicitly credited kernel-expansion proof paragraph in Lemma 1.2 is adapted under CC BY 4.0.</em></p>
+<p>A cycle of length <span class="math" data-tex="\(r\)">\(r\)</span> will become the power sum <span class="math" data-tex="\(p_r\)">\(p_r\)</span>. Disjoint cycles become products. Under this translation, inducing representations of two symmetric groups becomes multiplying symmetric functions, and the irreducible <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> becomes the Schur function <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span>. The translation gives both a character algorithm and a way to decompose permutation representations.</p>
+<p>We use <a href="young-tableaux-and-young-symmetrizers.html">Young tableaux and Young symmetrizers</a>, Lemma 2.2 and Theorem 4.3, with the convention <span class="math" data-tex="\(V_\lambda=\mathbb C[S_n]a_tb_t\)">\(V_\lambda=\mathbb C[S_n]a_tb_t\)</span>, and the standard-tableau dimensions in <a href="branching-jucys-murphy-elements-and-youngs-seminormal-form.html">Branching, Jucys–Murphy elements and Young's seminormal form</a>, Corollary 4.3 and Theorem 6.3. Character orthogonality comes from <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>, and the induction formula and Frobenius reciprocity from <a href="induced-representations-and-frobenius-reciprocity.html">Induced representations and Frobenius reciprocity</a>, Proposition 2.1 and Theorem 3.1. We prove the symmetric-function tools and the Littlewood–Richardson rule here. Basic comparisons are [Grinberg–Reiner] and [Stembridge].</p>
+<h2 id="1-a-ring-that-retains-every-number-of-variables">1. A ring that retains every number of variables</h2>
+<p>Let <span class="math" data-tex="\(\Lambda_{\mathbb Z}^{n}\)">\(\Lambda_{\mathbb Z}^{n}\)</span> consist of compatible homogeneous symmetric polynomials of degree <span class="math" data-tex="\(n\)">\(n\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> variables, for <span class="math" data-tex="\(L=0,1,2,\ldots\)">\(L=0,1,2,\ldots\)</span>. Compatibility means that setting the last variable to zero gives the preceding polynomial. Put</p>
+<span class="math math-display" data-tex="\[
+\Lambda_{\mathbb Z}=\bigoplus_{n\geq0}\Lambda_{\mathbb Z}^{n},
+\qquad \Lambda_K=K\otimes_{\mathbb Z}\Lambda_{\mathbb Z}
+\quad(K=\mathbb Q,\mathbb C).
+\tag{1}
+\]">\[
+\Lambda_{\mathbb Z}=\bigoplus_{n\geq0}\Lambda_{\mathbb Z}^{n},
+\qquad \Lambda_K=K\otimes_{\mathbb Z}\Lambda_{\mathbb Z}
+\quad(K=\mathbb Q,\mathbb C).
+\tag{1}
+\]</span>
+<p>This is the graded inverse limit: we take the inverse limit separately in each degree, then a direct sum. Its elements have bounded degree. An unrestricted inverse limit would also admit incompatible degree bounds, such as the compatible sequence <span class="math" data-tex="\(\prod_{i=1}^L(1+x_i)\)">\(\prod_{i=1}^L(1+x_i)\)</span>; that larger completion is not the ring in (1).</p>
+<p>For a partition <span class="math" data-tex="\(\lambda\vdash n\)">\(\lambda\vdash n\)</span>, <span class="math" data-tex="\(m_\lambda\)">\(m_\lambda\)</span> is the sum of the distinct monomials obtained by permuting its parts and padded zeros. These sums form a basis in <span class="math" data-tex="\(L\)">\(L\)</span> variables for <span class="math" data-tex="\(\ell(\lambda)\leq L\)">\(\ell(\lambda)\leq L\)</span>. The coefficient of each such sum stabilizes, and all partitions of <span class="math" data-tex="\(n\)">\(n\)</span> occur once <span class="math" data-tex="\(L\geq n\)">\(L\geq n\)</span>. Thus the <span class="math" data-tex="\(m_\lambda\)">\(m_\lambda\)</span>, <span class="math" data-tex="\(\lambda\vdash n\)">\(\lambda\vdash n\)</span>, form a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-basis of <span class="math" data-tex="\(\Lambda_{\mathbb Z}^{n}\)">\(\Lambda_{\mathbb Z}^{n}\)</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+e_r=\sum_{i_1&lt;\cdots&lt;i_r}x_{i_1}\cdots x_{i_r},
+\qquad h_r=\sum_{i_1\leq\cdots\leq i_r}x_{i_1}\cdots x_{i_r},
+\qquad p_r=\sum_i x_i^r \quad(r\geq1).
+\tag{2}
+\]">\[
+e_r=\sum_{i_1&lt;\cdots&lt;i_r}x_{i_1}\cdots x_{i_r},
+\qquad h_r=\sum_{i_1\leq\cdots\leq i_r}x_{i_1}\cdots x_{i_r},
+\qquad p_r=\sum_i x_i^r \quad(r\geq1).
+\tag{2}
+\]</span>
+<p>Set <span class="math" data-tex="\(e_0=h_0=1\)">\(e_0=h_0=1\)</span>, and <span class="math" data-tex="\(h_r=0\)">\(h_r=0\)</span> for <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>. For any of these letters, a partition subscript means a product over its parts, for example <span class="math" data-tex="\(h_\lambda=\prod_i h_{\lambda_i}\)">\(h_\lambda=\prod_i h_{\lambda_i}\)</span>. The empty product is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p id="proposition-1-1" class="result-link"><strong>Proposition 1.1 (the elementary bases).</strong> The families <span class="math" data-tex="\(m_\lambda,e_\lambda,h_\lambda\)">\(m_\lambda,e_\lambda,h_\lambda\)</span> are integral bases degree by degree. The <span class="math" data-tex="\(p_\lambda\)">\(p_\lambda\)</span> are a rational basis, and</p>
+<span class="math math-display" data-tex="\[
+\Lambda_{\mathbb Z}=\mathbb Z[e_1,e_2,\ldots]
+=\mathbb Z[h_1,h_2,\ldots],
+\qquad \Lambda_{\mathbb Q}=\mathbb Q[p_1,p_2,\ldots].
+\tag{3}
+\]">\[
+\Lambda_{\mathbb Z}=\mathbb Z[e_1,e_2,\ldots]
+=\mathbb Z[h_1,h_2,\ldots],
+\qquad \Lambda_{\mathbb Q}=\mathbb Q[p_1,p_2,\ldots].
+\tag{3}
+\]</span>
+<p><strong>Proof.</strong> First work in <span class="math" data-tex="\(L\)">\(L\)</span> variables, ordered lexicographically with <span class="math" data-tex="\(x_1\)">\(x_1\)</span> first. The leading monomial of a symmetric homogeneous polynomial has exponent sequence <span class="math" data-tex="\(\alpha_1\geq\cdots\geq\alpha_L\)">\(\alpha_1\geq\cdots\geq\alpha_L\)</span>: swapping an increasing pair would produce a larger monomial. The product</p>
+<span class="math math-display" data-tex="\[
+e_1^{\alpha_1-\alpha_2}e_2^{\alpha_2-\alpha_3}\cdots e_L^{\alpha_L}
+\tag{4}
+\]">\[
+e_1^{\alpha_1-\alpha_2}e_2^{\alpha_2-\alpha_3}\cdots e_L^{\alpha_L}
+\tag{4}
+\]</span>
+<p>has leading monomial <span class="math" data-tex="\(x^\alpha\)">\(x^\alpha\)</span>, with coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. Subtract a suitable integer multiple of (4). Repetition terminates because there are only finitely many monomials of the fixed degree. Distinct products (4) have distinct leading monomials, so they are independent. This proves generation and algebraic independence of <span class="math" data-tex="\(e_1,\ldots,e_L\)">\(e_1,\ldots,e_L\)</span>. In degree <span class="math" data-tex="\(n\)">\(n\)</span> no <span class="math" data-tex="\(e_r\)">\(e_r\)</span> with <span class="math" data-tex="\(r&gt;n\)">\(r&gt;n\)</span> is needed. The expansions therefore stabilize and give the first equality in (3) and the <span class="math" data-tex="\(e\)">\(e\)</span>-basis assertion.</p>
+<p>Choosing or repeating variables in (2) gives, coefficient by coefficient,</p>
+<span class="math math-display" data-tex="\[
+E(t)=\sum_{r\geq0}e_rt^r=\prod_i(1+x_it),
+\qquad H(t)=\sum_{r\geq0}h_rt^r=\prod_i(1-x_it)^{-1}.
+\tag{5}
+\]">\[
+E(t)=\sum_{r\geq0}e_rt^r=\prod_i(1+x_it),
+\qquad H(t)=\sum_{r\geq0}h_rt^r=\prod_i(1-x_it)^{-1}.
+\tag{5}
+\]</span>
+<p>Hence <span class="math" data-tex="\(E(-t)H(t)=1\)">\(E(-t)H(t)=1\)</span>. Its degree-<span class="math" data-tex="\(r\)">\(r\)</span> coefficient expresses <span class="math" data-tex="\(h_r\)">\(h_r\)</span> as <span class="math" data-tex="\((-1)^{r-1}e_r\)">\((-1)^{r-1}e_r\)</span> plus an integral polynomial in the earlier <span class="math" data-tex="\(e_i\)">\(e_i\)</span>; solving in the other direction does the same for <span class="math" data-tex="\(e_r\)">\(e_r\)</span>. These mutually inverse triangular substitutions prove the <span class="math" data-tex="\(h\)">\(h\)</span>-basis assertion over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, logarithmic differentiation of (5) gives</p>
+<span class="math math-display" data-tex="\[
+H(t)=\exp\!\left(\sum_{r\geq1}\frac{p_r t^r}{r}\right),
+\qquad n h_n=\sum_{r=1}^n p_r h_{n-r}.
+\tag{6}
+\]">\[
+H(t)=\exp\!\left(\sum_{r\geq1}\frac{p_r t^r}{r}\right),
+\qquad n h_n=\sum_{r=1}^n p_r h_{n-r}.
+\tag{6}
+\]</span>
+<p>Thus <span class="math" data-tex="\(p_n=n h_n\)">\(p_n=n h_n\)</span> plus a polynomial in earlier <span class="math" data-tex="\(h_i\)">\(h_i\)</span>, and conversely <span class="math" data-tex="\(h_n=p_n/n\)">\(h_n=p_n/n\)</span> plus a polynomial in earlier <span class="math" data-tex="\(p_i\)">\(p_i\)</span>. The invertible rational substitution proves the last assertion. All series operations are formal: each coefficient involves finitely many terms. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The word “rational” matters. For example <span class="math" data-tex="\(p_2=m_2\)">\(p_2=m_2\)</span> and <span class="math" data-tex="\(p_1^2=m_2+2m_{(1,1)}\)">\(p_1^2=m_2+2m_{(1,1)}\)</span>, so these two power-sum products do not form an integral basis in degree two.</p>
+<p>Write <span class="math" data-tex="\(m_r(\mu)\)">\(m_r(\mu)\)</span> for the number of parts of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> equal to <span class="math" data-tex="\(r\)">\(r\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+z_\mu=\prod_{r\geq1}r^{m_r(\mu)}m_r(\mu)!.
+\tag{7}
+\]">\[
+z_\mu=\prod_{r\geq1}r^{m_r(\mu)}m_r(\mu)!.
+\tag{7}
+\]</span>
+<p>Define the Hall form over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> by <span class="math" data-tex="\(\langle p_\lambda,p_\mu\rangle=z_\lambda\delta_{\lambda\mu}\)">\(\langle p_\lambda,p_\mu\rangle=z_\lambda\delta_{\lambda\mu}\)</span>, with different degrees orthogonal. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> we use its Hermitian extension, linear in the first argument. It is positive definite because every <span class="math" data-tex="\(z_\lambda\)">\(z_\lambda\)</span> is positive.</p>
+<p id="lemma-1-2" class="result-link"><strong>Lemma 1.2 (the kernel and duality).</strong> As a formal series of equal degrees in two alphabets,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal K(x,y)&amp;=\prod_{i,j}(1-x_i y_j)^{-1}\\
+&amp;=\sum_\mu h_\mu(x)m_\mu(y)
+=\sum_\mu \frac{p_\mu(x)p_\mu(y)}{z_\mu}.
+\end{aligned}
+\tag{8}
+\]">\[
+\begin{aligned}
+\mathcal K(x,y)&amp;=\prod_{i,j}(1-x_i y_j)^{-1}\\
+&amp;=\sum_\mu h_\mu(x)m_\mu(y)
+=\sum_\mu \frac{p_\mu(x)p_\mu(y)}{z_\mu}.
+\end{aligned}
+\tag{8}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\langle h_\lambda,m_\mu\rangle=\delta_{\lambda\mu}\)">\(\langle h_\lambda,m_\mu\rangle=\delta_{\lambda\mu}\)</span>.</p>
+<p><strong>Proof.</strong> First take finite alphabets. In <span class="math" data-tex="\(\prod_j H_x(y_j)\)">\(\prod_j H_x(y_j)\)</span>, the coefficient of <span class="math" data-tex="\(y^\alpha\)">\(y^\alpha\)</span> is <span class="math" data-tex="\(\prod_j h_{\alpha_j}(x)\)">\(\prod_j h_{\alpha_j}(x)\)</span>; collecting equal sorted exponent sequences yields <span class="math" data-tex="\(\sum_\mu h_\mu(x)m_\mu(y)\)">\(\sum_\mu h_\mu(x)m_\mu(y)\)</span>. For the power-sum expansion, formal logarithms turn the product into the exponential of <span class="math" data-tex="\(\sum_{r\geq1}p_r(x)p_r(y)/r\)">\(\sum_{r\geq1}p_r(x)p_r(y)/r\)</span>. Its factor indexed by <span class="math" data-tex="\(r\)">\(r\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\sum_{a\geq0}\frac{p_r(x)^a p_r(y)^a}{r^a a!}.
+\]">\[
+\sum_{a\geq0}\frac{p_r(x)^a p_r(y)^a}{r^a a!}.
+\]</span>
+<p>Choosing each multiplicity <span class="math" data-tex="\(a=m_r(\mu)\)">\(a=m_r(\mu)\)</span> gives coefficient <span class="math" data-tex="\(\prod_r(r^{m_r(\mu)}m_r(\mu)!)^{-1}=z_\mu^{-1}\)">\(\prod_r(r^{m_r(\mu)}m_r(\mu)!)^{-1}=z_\mu^{-1}\)</span>. Each fixed degree has finitely many choices, and specialization is compatible with setting variables to zero. The finite-alphabet identities therefore give (8) in the degreewise completion.</p>
+<p><em>Credit for the preceding kernel-expansion paragraph and displayed series:</em> adapted by GPT-6.1 Sol from Darij Grinberg and Victor Reiner, <a href="https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf"><em>Hopf Algebras in Combinatorics</em></a>, Proposition 2.5.15 and its proof, pp. 64–66, July 27, 2020 text with minor corrections dated September 6, 2026; <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The AI adaptation uses finite alphabets first, this lesson's notation, and an explicit degreewise specialization argument. The following duality argument is independently authored.</p>
+<p>For rational <span class="math" data-tex="\(f\)">\(f\)</span>, the second sum satisfies <span class="math" data-tex="\(\langle f(x),\mathcal K(x,y)\rangle=f(y)\)">\(\langle f(x),\mathcal K(x,y)\rangle=f(y)\)</span>, as one checks on the <span class="math" data-tex="\(p\)">\(p\)</span>-basis. Substitute <span class="math" data-tex="\(f=m_\lambda\)">\(f=m_\lambda\)</span> into the first sum and compare coefficients in the <span class="math" data-tex="\(m(y)\)">\(m(y)\)</span>-basis. This gives <span class="math" data-tex="\(\langle m_\lambda,h_\mu\rangle=\delta_{\lambda\mu}\)">\(\langle m_\lambda,h_\mu\rangle=\delta_{\lambda\mu}\)</span>. Symmetry over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and then Hermitian extension, gives the displayed duality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Comparison:</em> [Grinberg–Reiner, Proposition 2.5.15 and Corollary 2.5.17]. The complete generating function <span class="math" data-tex="\(H(t)\)">\(H(t)\)</span> is infinite even in finitely many variables: for one variable, <span class="math" data-tex="\(H(t)=(1-xt)^{-1}=\sum_{r\geq0}x^rt^r\)">\(H(t)=(1-xt)^{-1}=\sum_{r\geq0}x^rt^r\)</span>, and every degree can be nonzero. A finite alphabet therefore permits degreewise specialization, not truncation at its size. The component credit in Lemma 1.2 describes the exact adapted part.</p>
+<h2 id="2-determinants-tableaux-and-orthogonality">2. Determinants, tableaux and orthogonality</h2>
+<p>For <span class="math" data-tex="\(L\geq\ell(\lambda)\)">\(L\geq\ell(\lambda)\)</span>, pad <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> by zeros and set</p>
+<span class="math math-display" data-tex="\[
+\delta=(L-1,L-2,\ldots,0),\qquad
+a_\alpha(x)=\det[x_i^{\alpha_j}]_{i,j=1}^L,
+\qquad \Delta(x)=a_\delta(x)=\prod_{i&lt;j}(x_i-x_j).
+\tag{9}
+\]">\[
+\delta=(L-1,L-2,\ldots,0),\qquad
+a_\alpha(x)=\det[x_i^{\alpha_j}]_{i,j=1}^L,
+\qquad \Delta(x)=a_\delta(x)=\prod_{i&lt;j}(x_i-x_j).
+\tag{9}
+\]</span>
+<p>Define the Schur polynomial by</p>
+<span class="math math-display" data-tex="\[
+s_\lambda(x_1,\ldots,x_L)=\frac{a_{\lambda+\delta}(x)}{\Delta(x)}.
+\tag{10}
+\]">\[
+s_\lambda(x_1,\ldots,x_L)=\frac{a_{\lambda+\delta}(x)}{\Delta(x)}.
+\tag{10}
+\]</span>
+<p>The numerator vanishes when <span class="math" data-tex="\(x_i=x_j\)">\(x_i=x_j\)</span>, so each prime factor <span class="math" data-tex="\(x_i-x_j\)">\(x_i-x_j\)</span> divides it in <span class="math" data-tex="\(\mathbb Z[x_1,\ldots,x_L]\)">\(\mathbb Z[x_1,\ldots,x_L]\)</span>. Distinct such factors are nonassociate primes, and their product divides it. The quotient is integral, symmetric and of degree <span class="math" data-tex="\(|\lambda|\)">\(|\lambda|\)</span>. Setting <span class="math" data-tex="\(x_L=0\)">\(x_L=0\)</span>, determinant expansion gives the <span class="math" data-tex="\(L-1\)">\(L-1\)</span>-variable quotient if <span class="math" data-tex="\(\lambda_L=0\)">\(\lambda_L=0\)</span>: each remaining numerator and denominator row has a common factor <span class="math" data-tex="\(x_i\)">\(x_i\)</span>, which cancels. If <span class="math" data-tex="\(\lambda_L&gt;0\)">\(\lambda_L&gt;0\)</span>, the numerator specializes to zero while the specialized denominator is nonzero as a polynomial, so the quotient specializes to zero. Thus (10) gives a compatible symmetric function, whose specialization is zero when there are too few variables.</p>
+<p id="theorem-2-1" class="result-link"><strong>Theorem 2.1 (Jacobi–Trudi and tableaux).</strong> With the conventions following (2),</p>
+<span class="math math-display" data-tex="\[
+s_\lambda=\det[h_{\lambda_i-i+j}]_{i,j=1}^L
+=\sum_T x^T,
+\tag{11}
+\]">\[
+s_\lambda=\det[h_{\lambda_i-i+j}]_{i,j=1}^L
+=\sum_T x^T,
+\tag{11}
+\]</span>
+<p>where <span class="math" data-tex="\(T\)">\(T\)</span> ranges over semistandard tableaux of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>: entries are positive integers, weakly increasing along rows and strictly increasing down columns. Here <span class="math" data-tex="\(x^T=\prod_{(i,j)\in\lambda}x_{T(i,j)}\)">\(x^T=\prod_{(i,j)\in\lambda}x_{T(i,j)}\)</span>.</p>
+<p><strong>Proof of the determinant identity.</strong> Work first in the rational function field of distinct variables. Put <span class="math" data-tex="\(D_a=\prod_{b\ne a}(x_a-x_b)\)">\(D_a=\prod_{b\ne a}(x_a-x_b)\)</span>. Partial fractions of <span class="math" data-tex="\(H(t)=\prod_a(1-x_a t)^{-1}\)">\(H(t)=\prod_a(1-x_a t)^{-1}\)</span> give</p>
+<span class="math math-display" data-tex="\[
+h_k=\sum_{a=1}^L\frac{x_a^{k+L-1}}{D_a}\quad(k\geq0).
+\tag{12}
+\]">\[
+h_k=\sum_{a=1}^L\frac{x_a^{k+L-1}}{D_a}\quad(k\geq0).
+\tag{12}
+\]</span>
+<p>Indeed, the coefficient of <span class="math" data-tex="\((1-x_a t)^{-1}\)">\((1-x_a t)^{-1}\)</span> is <span class="math" data-tex="\(x_a^{L-1}/D_a\)">\(x_a^{L-1}/D_a\)</span>, by multiplying by <span class="math" data-tex="\(1-x_a t\)">\(1-x_a t\)</span> and setting <span class="math" data-tex="\(t=1/x_a\)">\(t=1/x_a\)</span>. Formula (12) remains valid for <span class="math" data-tex="\(1-L\leq k&lt;0\)">\(1-L\leq k&lt;0\)</span>, when its right side is zero: interpolate the polynomial <span class="math" data-tex="\(z^{k+L-1}\)">\(z^{k+L-1}\)</span> at the <span class="math" data-tex="\(x_a\)">\(x_a\)</span> and compare coefficients of <span class="math" data-tex="\(z^{L-1}\)">\(z^{L-1}\)</span>. For degree <span class="math" data-tex="\(L-1\)">\(L-1\)</span> that comparison also gives the value <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(k=0\)">\(k=0\)</span>.</p>
+<p>Every index <span class="math" data-tex="\(\lambda_i-i+j\)">\(\lambda_i-i+j\)</span> is at least <span class="math" data-tex="\(1-L\)">\(1-L\)</span>. Thus the matrix in (11) factors as</p>
+<span class="math math-display" data-tex="\[
+[h_{\lambda_i-i+j}]_{i,j}
+=[x_a^{\lambda_i+L-i}]_{i,a}
+[x_a^{j-1}/D_a]_{a,j}.
+\tag{13}
+\]">\[
+[h_{\lambda_i-i+j}]_{i,j}
+=[x_a^{\lambda_i+L-i}]_{i,a}
+[x_a^{j-1}/D_a]_{a,j}.
+\tag{13}
+\]</span>
+<p>The first determinant is <span class="math" data-tex="\(a_{\lambda+\delta}\)">\(a_{\lambda+\delta}\)</span>, by transposition. The second is <span class="math" data-tex="\(1/\Delta\)">\(1/\Delta\)</span>, since its numerator is <span class="math" data-tex="\((-1)^{\binom L2}\Delta\)">\((-1)^{\binom L2}\Delta\)</span> and <span class="math" data-tex="\(\prod_aD_a=(-1)^{\binom L2}\Delta^2\)">\(\prod_aD_a=(-1)^{\binom L2}\Delta^2\)</span>. This proves (11) in the rational function field and hence as a polynomial identity. Stability gives the identity in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>Proof of the tableau identity.</strong> Use <span class="math" data-tex="\(N\)">\(N\)</span> variables and a finite directed grid with east and north steps. An east step at height <span class="math" data-tex="\(a\in\{1,\ldots,N\}\)">\(a\in\{1,\ldots,N\}\)</span> has weight <span class="math" data-tex="\(x_a\)">\(x_a\)</span>; a north step has weight <span class="math" data-tex="\(1\)">\(1\)</span>. The generating function of paths from</p>
+<span class="math math-display" data-tex="\[
+A_j=(-j,1)\quad\text{to}\quad B_i=(\lambda_i-i,N)
+\tag{14}
+\]">\[
+A_j=(-j,1)\quad\text{to}\quad B_i=(\lambda_i-i,N)
+\tag{14}
+\]</span>
+<p>is <span class="math" data-tex="\(h_{\lambda_i-i+j}(x_1,\ldots,x_N)\)">\(h_{\lambda_i-i+j}(x_1,\ldots,x_N)\)</span>: the heights of the required east steps form exactly a weakly increasing sequence. Negative numbers of east steps give no paths. Paths with zero east steps have weight <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Expand the determinant as signed families of paths joining the sources to a permutation of the endpoints. Cancel all families with a common vertex as follows. Order grid vertices first by <span class="math" data-tex="\(x+y\)">\(x+y\)</span>, then by <span class="math" data-tex="\(x\)">\(x\)</span>; at the first common vertex choose the lexicographically first pair of source labels meeting there. Exchange the two tails starting at this vertex. The product of weights is unchanged and the endpoint permutation changes by a transposition. Every tail proceeds to larger <span class="math" data-tex="\(x+y\)">\(x+y\)</span>, so no earlier common vertex is affected; the chosen pair at the chosen vertex is unchanged. The exchange is therefore an involution, with opposite signs.</p>
+<p>The surviving families have no common vertices. Their sources and endpoints must have the same left-to-right order. To see this directly, at each integer height each path occupies an interval of horizontal positions. Disjoint paths have disjoint intervals, and their vertical connecting steps prevent two intervals from reversing order between consecutive heights. Since both the <span class="math" data-tex="\(A_j\)">\(A_j\)</span> and the <span class="math" data-tex="\(B_i\)">\(B_i\)</span> are strictly ordered in decreasing index, the endpoint permutation is the identity.</p>
+<p>Record the east-step heights of path <span class="math" data-tex="\(i\)">\(i\)</span> as row <span class="math" data-tex="\(i\)">\(i\)</span> of a tableau. Rows are weakly increasing. Compare the paths for adjacent rows at the vertical line <span class="math" data-tex="\(x=j-i-1\)">\(x=j-i-1\)</span>: it lies just before the <span class="math" data-tex="\(j\)">\(j\)</span>-th east step of row <span class="math" data-tex="\(i\)">\(i\)</span>, and just after the <span class="math" data-tex="\(j\)">\(j\)</span>-th east step of row <span class="math" data-tex="\(i+1\)">\(i+1\)</span>. The paths avoid a common vertex precisely when</p>
+<span class="math math-display" data-tex="\[
+T(i,j)&lt;T(i+1,j)\qquad(j\leq\lambda_{i+1}).
+\tag{15}
+\]">\[
+T(i,j)&lt;T(i+1,j)\qquad(j\leq\lambda_{i+1}).
+\tag{15}
+\]</span>
+<p>Here is the converse check as well. If (15) first fails at column <span class="math" data-tex="\(j\)">\(j\)</span>, the upper path's vertical interval at this line ends at <span class="math" data-tex="\(T(i,j)\)">\(T(i,j)\)</span> and starts at its preceding height (or <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(j=1\)">\(j=1\)</span>). The lower interval starts at <span class="math" data-tex="\(T(i+1,j)\)">\(T(i+1,j)\)</span> and ends at its next height (or <span class="math" data-tex="\(N\)">\(N\)</span>). The preceding strict inequality and weak row increase make these intervals overlap. If all inequalities hold, the upper interval ends below the lower one's start at every common vertical line; neither their vertical nor horizontal steps meet. Adjacent paths are separated, and hence all paths are disjoint. This proves a weight-preserving bijection between the surviving families and semistandard tableaux, in both directions. Every survivor has positive determinant sign, proving the second identity in (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(K_{\lambda\mu}\)">\(K_{\lambda\mu}\)</span> count semistandard tableaux of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> with exactly <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span> entries equal to <span class="math" data-tex="\(i\)">\(i\)</span>. Symmetry of (11) shows that the count is unchanged by permuting the content, and</p>
+<span class="math math-display" data-tex="\[
+s_\lambda=\sum_{\mu\vdash n}K_{\lambda\mu}m_\mu.
+\tag{16}
+\]">\[
+s_\lambda=\sum_{\mu\vdash n}K_{\lambda\mu}m_\mu.
+\tag{16}
+\]</span>
+<p id="lemma-2-2" class="result-link"><strong>Lemma 2.2 (triangularity).</strong> For partitions of the same integer,</p>
+<span class="math math-display" data-tex="\[
+K_{\lambda\mu}=0\ \text{unless }\lambda\unrhd\mu,
+\qquad K_{\lambda\lambda}=1.
+\tag{17}
+\]">\[
+K_{\lambda\mu}=0\ \text{unless }\lambda\unrhd\mu,
+\qquad K_{\lambda\lambda}=1.
+\tag{17}
+\]</span>
+<p>In particular, the Schur functions form an integral basis.</p>
+<p><strong>Proof.</strong> An entry in row <span class="math" data-tex="\(i\)">\(i\)</span> is at least <span class="math" data-tex="\(i\)">\(i\)</span>, by strict increase from the top of its column. Thus every entry at most <span class="math" data-tex="\(k\)">\(k\)</span> belongs to the first <span class="math" data-tex="\(k\)">\(k\)</span> rows. Counting these entries gives <span class="math" data-tex="\(\sum_{i\leq k}\mu_i\leq\sum_{i\leq k}\lambda_i\)">\(\sum_{i\leq k}\mu_i\leq\sum_{i\leq k}\lambda_i\)</span>. If <span class="math" data-tex="\(\mu=\lambda\)">\(\mu=\lambda\)</span>, all <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span> ones fill the first row. Inductively all <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> copies of <span class="math" data-tex="\(i\)">\(i\)</span> fill row <span class="math" data-tex="\(i\)">\(i\)</span>, so there is exactly one tableau. In any linear extension of dominance order the matrix in (16) is triangular with diagonal <span class="math" data-tex="\(1\)">\(1\)</span>. Its inverse is integral, proving the basis assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example,</p>
+<span class="math math-display" data-tex="\[
+s_{(2,1)}=m_{(2,1)}+2m_{(1,1,1)}.
+\tag{18}
+\]">\[
+s_{(2,1)}=m_{(2,1)}+2m_{(1,1,1)}.
+\tag{18}
+\]</span>
+<p>The coefficient <span class="math" data-tex="\(2\)">\(2\)</span> is visible in the two fillings with one of each of <span class="math" data-tex="\(1,2,3\)">\(1,2,3\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array}
+\qquad
+\begin{array}{cc}\boxed{1}&amp;\boxed{3}\\\boxed{2}&amp;\end{array}.
+\tag{19}
+\]">\[
+\begin{array}{cc}\boxed{1}&amp;\boxed{2}\\\boxed{3}&amp;\end{array}
+\qquad
+\begin{array}{cc}\boxed{1}&amp;\boxed{3}\\\boxed{2}&amp;\end{array}.
+\tag{19}
+\]</span>
+<p id="theorem-2-3" class="result-link"><strong>Theorem 2.3 (Cauchy identity and orthonormality).</strong></p>
+<span class="math math-display" data-tex="\[
+\mathcal K(x,y)=\sum_\lambda s_\lambda(x)s_\lambda(y),
+\qquad \langle s_\lambda,s_\mu\rangle=\delta_{\lambda\mu}.
+\tag{20}
+\]">\[
+\mathcal K(x,y)=\sum_\lambda s_\lambda(x)s_\lambda(y),
+\qquad \langle s_\lambda,s_\mu\rangle=\delta_{\lambda\mu}.
+\tag{20}
+\]</span>
+<p><strong>Proof.</strong> In two alphabets of length <span class="math" data-tex="\(L\)">\(L\)</span>, the Cauchy determinant identity is</p>
+<span class="math math-display" data-tex="\[
+\det\!\left[\frac1{1-x_i y_j}\right]
+=\frac{\Delta(x)\Delta(y)}{\prod_{i,j}(1-x_i y_j)}.
+\tag{21}
+\]">\[
+\det\!\left[\frac1{1-x_i y_j}\right]
+=\frac{\Delta(x)\Delta(y)}{\prod_{i,j}(1-x_i y_j)}.
+\tag{21}
+\]</span>
+<p>For completeness, multiply the left side by the denominator. The resulting polynomial is alternating in each alphabet and has degree at most <span class="math" data-tex="\(L-1\)">\(L-1\)</span> in each individual variable. It is consequently a constant times <span class="math" data-tex="\(\Delta(x)\Delta(y)\)">\(\Delta(x)\Delta(y)\)</span>. To find the constant, expand the determinant as a series in <span class="math" data-tex="\(x\)">\(x\)</span>. It has no terms of total <span class="math" data-tex="\(x\)">\(x\)</span>-degree below <span class="math" data-tex="\(\binom L2\)">\(\binom L2\)</span>, because it is alternating. The coefficient of <span class="math" data-tex="\(x^\delta\)">\(x^\delta\)</span> is <span class="math" data-tex="\(\det[y_j^{L-i}]=\Delta(y)\)">\(\det[y_j^{L-i}]=\Delta(y)\)</span>. Multiplication by the denominator, whose constant term in <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, does not change this lowest-degree coefficient. Thus the constant is <span class="math" data-tex="\(1\)">\(1\)</span>, proving (21).</p>
+<p>Expand <span class="math" data-tex="\((1-x_i y_j)^{-1}=\sum_{k\geq0}x_i^k y_j^k\)">\((1-x_i y_j)^{-1}=\sum_{k\geq0}x_i^k y_j^k\)</span>. The determinant-of-a-product expansion gives</p>
+<span class="math math-display" data-tex="\[
+\det[(1-x_i y_j)^{-1}]
+=\sum_{k_1&gt;\cdots&gt;k_L\geq0}
+\det[x_i^{k_j}]\det[y_i^{k_j}].
+\tag{22}
+\]">\[
+\det[(1-x_i y_j)^{-1}]
+=\sum_{k_1&gt;\cdots&gt;k_L\geq0}
+\det[x_i^{k_j}]\det[y_i^{k_j}].
+\tag{22}
+\]</span>
+<p>This expansion requires no infinite linear-algebra assumption: truncate the sum of powers at <span class="math" data-tex="\(M\)">\(M\)</span>, expand the two finite determinants, group terms by their selected indices, and observe that repeated indices have zero determinant. The resulting identity stabilizes coefficient by coefficient as <span class="math" data-tex="\(M\)">\(M\)</span> increases. The two reversals needed to put indices in decreasing order have cancelling signs.</p>
+<p>Write <span class="math" data-tex="\(k_j=\lambda_j+L-j\)">\(k_j=\lambda_j+L-j\)</span>, divide (22) by the Vandermonde products, and use (21). This proves (20) in <span class="math" data-tex="\(L\)">\(L\)</span> variables. Taking <span class="math" data-tex="\(L\)">\(L\)</span> larger than the degree under consideration proves the stable identity. The kernel reproduces the Hall form by Lemma 1.2. Substitute a Schur basis vector into this identity and compare coefficients in the other Schur basis; orthonormality follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining (16), Hall duality and (20) also gives</p>
+<span class="math math-display" data-tex="\[
+h_\mu=\sum_\lambda K_{\lambda\mu}s_\lambda.
+\tag{23}
+\]">\[
+h_\mu=\sum_\lambda K_{\lambda\mu}s_\lambda.
+\tag{23}
+\]</span>
+<p>Indeed, its coefficient of <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> is <span class="math" data-tex="\(\langle h_\mu,s_\lambda\rangle=K_{\lambda\mu}\)">\(\langle h_\mu,s_\lambda\rangle=K_{\lambda\mu}\)</span>. This is an identity of symmetric functions, established before any assertion about character labels.</p>
+<p><em>Comparison:</em> [Grinberg–Reiner, Proposition 2.6.4 and Corollary 2.6.7], for alternants and the tableau formula. The partial-fraction determinant, intersecting-path involution and determinant expansion above supply the Jacobi–Trudi and Cauchy proofs in this lesson. An unproved tableau formula in another treatment is not a premise here.</p>
+<h2 id="3-translating-induction-and-fixing-the-labels">3. Translating induction and fixing the labels</h2>
+<p>A permutation's conjugacy class is determined by its cycle type <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Its centralizer has order <span class="math" data-tex="\(z_\mu\)">\(z_\mu\)</span>: a commuting permutation may rotate each <span class="math" data-tex="\(r\)">\(r\)</span>-cycle in <span class="math" data-tex="\(r\)">\(r\)</span> ways and permute the <span class="math" data-tex="\(m_r\)">\(m_r\)</span> cycles of that length, with no other choices. Its class therefore has size <span class="math" data-tex="\(n!/z_\mu\)">\(n!/z_\mu\)</span>. Corollary 4.4 of <em>Young tableaux and Young symmetrizers</em> gives rational models, so the irreducible characters here are real-valued. We retain the Hermitian convention for general complex class functions.</p>
+<p>For a complex class function on <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(f)=\sum_{\mu\vdash n}\frac{f(\mu)}{z_\mu}p_\mu
+=\frac1{n!}\sum_{g\in S_n}f(g)p_{\operatorname{type}(g)}.
+\tag{24}
+\]">\[
+\operatorname{ch}(f)=\sum_{\mu\vdash n}\frac{f(\mu)}{z_\mu}p_\mu
+=\frac1{n!}\sum_{g\in S_n}f(g)p_{\operatorname{type}(g)}.
+\tag{24}
+\]</span>
+<p>Let <span class="math" data-tex="\(R(S_n)\)">\(R(S_n)\)</span> be the integral group of virtual complex characters, with irreducible characters as its <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-basis. For <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(S_m\)">\(S_m\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(S_n\)">\(S_n\)</span>, their induction product is</p>
+<span class="math math-display" data-tex="\[
+f\star g=\operatorname{Ind}_{S_m\times S_n}^{S_{m+n}}(f\boxtimes g),
+\qquad (f\boxtimes g)(u,v)=f(u)g(v).
+\tag{25}
+\]">\[
+f\star g=\operatorname{Ind}_{S_m\times S_n}^{S_{m+n}}(f\boxtimes g),
+\qquad (f\boxtimes g)(u,v)=f(u)g(v).
+\tag{25}
+\]</span>
+<p>The factor groups act on disjoint consecutive blocks. Include <span class="math" data-tex="\(S_0\)">\(S_0\)</span>, with its unique character <span class="math" data-tex="\(1\)">\(1\)</span>, as degree zero.</p>
+<p id="theorem-3-1" class="result-link"><strong>Theorem 3.1 (Frobenius characteristic).</strong> The map (24) is an isometric isomorphism from complex class functions on <span class="math" data-tex="\(S_n\)">\(S_n\)</span> onto <span class="math" data-tex="\(\Lambda_{\mathbb C}^{n}\)">\(\Lambda_{\mathbb C}^{n}\)</span>. It takes the product (25) to ordinary multiplication and induces an integral graded-ring isomorphism</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{n\geq0}R(S_n)\ \xrightarrow{\ \operatorname{ch}\ }\ \Lambda_{\mathbb Z}.
+\tag{26}
+\]">\[
+\bigoplus_{n\geq0}R(S_n)\ \xrightarrow{\ \operatorname{ch}\ }\ \Lambda_{\mathbb Z}.
+\tag{26}
+\]</span>
+<p>For a composition <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span>, let <span class="math" data-tex="\(S_\mu=\prod_i S_{\mu_i}\)">\(S_\mu=\prod_i S_{\mu_i}\)</span>, and let <span class="math" data-tex="\(M^\mu=\operatorname{Ind}_{S_\mu}^{S_n}1\)">\(M^\mu=\operatorname{Ind}_{S_\mu}^{S_n}1\)</span>. With the irreducibles defined by Young symmetrizers,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(M^\mu)=h_\mu,
+\qquad \operatorname{ch}(\chi^\lambda)=s_\lambda.
+\tag{27}
+\]">\[
+\operatorname{ch}(M^\mu)=h_\mu,
+\qquad \operatorname{ch}(\chi^\lambda)=s_\lambda.
+\tag{27}
+\]</span>
+<p><strong>Proof: class functions and products.</strong> The class indicator functions map to <span class="math" data-tex="\(p_\mu/z_\mu\)">\(p_\mu/z_\mu\)</span>, so (24) is bijective. Using class sizes and Hall norms,</p>
+<span class="math math-display" data-tex="\[
+\langle\operatorname{ch}(f),\operatorname{ch}(g)\rangle
+=\sum_\mu\frac{f(\mu)\overline{g(\mu)}}{z_\mu}
+=\frac1{n!}\sum_{w\in S_n}f(w)\overline{g(w)}.
+\tag{28}
+\]">\[
+\langle\operatorname{ch}(f),\operatorname{ch}(g)\rangle
+=\sum_\mu\frac{f(\mu)\overline{g(\mu)}}{z_\mu}
+=\frac1{n!}\sum_{w\in S_n}f(w)\overline{g(w)}.
+\tag{28}
+\]</span>
+<p>This proves the Hermitian isometry even for arbitrary complex class functions.</p>
+<p>If <span class="math" data-tex="\(H\subset G=S_N\)">\(H\subset G=S_N\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> is a class function on <span class="math" data-tex="\(H\)">\(H\)</span>, the induced-character formula gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{|G|}\sum_{w\in G}(\operatorname{Ind}_H^G F)(w)p_{\operatorname{type}(w)}
+=\frac1{|H|}\sum_{u\in H}F(u)p_{\operatorname{type}(u)}.
+\tag{29}
+\]">\[
+\frac1{|G|}\sum_{w\in G}(\operatorname{Ind}_H^G F)(w)p_{\operatorname{type}(w)}
+=\frac1{|H|}\sum_{u\in H}F(u)p_{\operatorname{type}(u)}.
+\tag{29}
+\]</span>
+<p>To verify this, substitute <span class="math" data-tex="\(|H|^{-1}\sum_{x:x^{-1}wx\in H}F(x^{-1}wx)\)">\(|H|^{-1}\sum_{x:x^{-1}wx\in H}F(x^{-1}wx)\)</span> for the induced function. Reindex by <span class="math" data-tex="\((x,u)\in G\times H\)">\((x,u)\in G\times H\)</span>; conjugation does not change cycle type, and the factor <span class="math" data-tex="\(|G|\)">\(|G|\)</span> cancels. For <span class="math" data-tex="\(H=S_m\times S_n\)">\(H=S_m\times S_n\)</span>, the power sum attached to <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> is the product of the two cycle-type power sums. Thus the right side of (29) factors into <span class="math" data-tex="\(\operatorname{ch}(f)\operatorname{ch}(g)\)">\(\operatorname{ch}(f)\operatorname{ch}(g)\)</span>.</p>
+<p>Expanding (6) gives <span class="math" data-tex="\(h_n=\sum_{\mu\vdash n}p_\mu/z_\mu\)">\(h_n=\sum_{\mu\vdash n}p_\mu/z_\mu\)</span>, so <span class="math" data-tex="\(\operatorname{ch}(1_{S_n})=h_n\)">\(\operatorname{ch}(1_{S_n})=h_n\)</span>. Transitivity of induction and the product identity give <span class="math" data-tex="\(\operatorname{ch}(M^\mu)=h_\mu\)">\(\operatorname{ch}(M^\mu)=h_\mu\)</span>. Associativity, commutativity and the unit for (25) now also follow from bijectivity and the corresponding properties in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><strong>Proof: integrality and positive irreducibles.</strong> Jacobi–Trudi expresses <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> as an integer signed sum of products of <span class="math" data-tex="\(h_r\)">\(h_r\)</span>. Each nonzero product is the characteristic of an actual induced character; its factors have total degree <span class="math" data-tex="\(n\)">\(n\)</span>. Hence <span class="math" data-tex="\(\psi_\lambda=\operatorname{ch}^{-1}(s_\lambda)\)">\(\psi_\lambda=\operatorname{ch}^{-1}(s_\lambda)\)</span> is an integral virtual character. Its norm is <span class="math" data-tex="\(1\)">\(1\)</span> by (20) and (28). In an expansion in irreducible characters, integral coefficients of squared sum <span class="math" data-tex="\(1\)">\(1\)</span> have exactly one nonzero entry, equal to <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Distinct <span class="math" data-tex="\(\psi_\lambda\)">\(\psi_\lambda\)</span> give distinct irreducibles up to sign.</p>
+<p>The sign is positive. Formula (24) and the Hall norm show</p>
+<span class="math math-display" data-tex="\[
+\psi_\lambda(1)=\langle s_\lambda,p_1^n\rangle
+=\langle s_\lambda,h_{(1^n)}\rangle
+=K_{\lambda,(1^n)}=f^\lambda&gt;0.
+\tag{30}
+\]">\[
+\psi_\lambda(1)=\langle s_\lambda,p_1^n\rangle
+=\langle s_\lambda,h_{(1^n)}\rangle
+=K_{\lambda,(1^n)}=f^\lambda&gt;0.
+\tag{30}
+\]</span>
+<p>The last equality counts standard tableaux; one exists by filling successive rows. Thus the <span class="math" data-tex="\(\psi_\lambda\)">\(\psi_\lambda\)</span> are the irreducible characters, in some order. Since the Schur functions are an integral basis, this already proves that (26) is an integral ring isomorphism. It remains essential to identify that order.</p>
+<p><strong>Proof: agreement with the Young-ideal labels.</strong> Write <span class="math" data-tex="\(A=\mathbb C[S_n]\)">\(A=\mathbb C[S_n]\)</span>. The averaging idempotent <span class="math" data-tex="\(a_t/|S_\mu|\)">\(a_t/|S_\mu|\)</span> projects any representation onto its <span class="math" data-tex="\(S_\mu\)">\(S_\mu\)</span>-invariant vectors when <span class="math" data-tex="\(t\)">\(t\)</span> has shape <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. If <span class="math" data-tex="\(V_\nu=Aa_ub_u\)">\(V_\nu=Aa_ub_u\)</span> occurs in <span class="math" data-tex="\(M^\mu\)">\(M^\mu\)</span>, Frobenius reciprocity says <span class="math" data-tex="\(a_tV_\nu\ne0\)">\(a_tV_\nu\ne0\)</span>. Lemma 2.2 of <em>Young tableaux and Young symmetrizers</em> gives</p>
+<span class="math math-display" data-tex="\[
+a_t A b_u=0\quad\text{unless }\mu\unlhd\nu.
+\tag{31}
+\]">\[
+a_t A b_u=0\quad\text{unless }\mu\unlhd\nu.
+\tag{31}
+\]</span>
+<p>As <span class="math" data-tex="\(a_tAa_ub_u\subset a_tAb_u\)">\(a_tAa_ub_u\subset a_tAb_u\)</span>, occurrence forces <span class="math" data-tex="\(\nu\unrhd\mu\)">\(\nu\unrhd\mu\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be the bijection defined by <span class="math" data-tex="\(\psi_\lambda=\chi^{\phi(\lambda)}\)">\(\psi_\lambda=\chi^{\phi(\lambda)}\)</span>. Equations (23), (27)'s already proved first identity, and <span class="math" data-tex="\(K_{\lambda\lambda}=1\)">\(K_{\lambda\lambda}=1\)</span> show that <span class="math" data-tex="\(\psi_\lambda\)">\(\psi_\lambda\)</span> occurs in <span class="math" data-tex="\(M^\lambda\)">\(M^\lambda\)</span>. Therefore <span class="math" data-tex="\(\phi(\lambda)\unrhd\lambda\)">\(\phi(\lambda)\unrhd\lambda\)</span> by (31). Follow a cycle of the finite permutation <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. The resulting dominance inequalities return to the starting partition; antisymmetry forces equality at every step. Every cycle is trivial, so <span class="math" data-tex="\(\phi(\lambda)=\lambda\)">\(\phi(\lambda)=\lambda\)</span>. This proves the second identity in (27), with the required preceding labels. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-3-2" class="result-link"><strong>Theorem 3.2 (Young's rule).</strong> For a partition or composition <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+M^\mu\cong\bigoplus_{\lambda\vdash n}K_{\lambda\mu}V_\lambda.
+\tag{32}
+\]">\[
+M^\mu\cong\bigoplus_{\lambda\vdash n}K_{\lambda\mu}V_\lambda.
+\tag{32}
+\]</span>
+<p><strong>Proof.</strong> Under (27), the multiplicity is <span class="math" data-tex="\(\langle h_\mu,s_\lambda\rangle\)">\(\langle h_\mu,s_\lambda\rangle\)</span>. By (16) and Hall duality this is exactly the semistandard count <span class="math" data-tex="\(K_{\lambda\mu}\)">\(K_{\lambda\mu}\)</span>. Complete reducibility turns the character equality into (32). For a composition, the same coefficient calculation applies to the monomial <span class="math" data-tex="\(x^\mu\)">\(x^\mu\)</span>; sorting its parts changes neither <span class="math" data-tex="\(h_\mu\)">\(h_\mu\)</span> nor the tableau count, by symmetry. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument above explicitly identifies the Schur labels with the earlier Young symmetrizers: Lemma 2.2 of the Young-symmetrizer lesson supplies the dominance vanishing, while positive degree selects the sign of the norm-one virtual character. These are the internal proof steps needed for the labelled characteristic isomorphism.</p>
+<h2 id="4-coefficients-and-border-strips">4. Coefficients and border strips</h2>
+<p id="corollary-4-1" class="result-link"><strong>Corollary 4.1 (Frobenius's formula).</strong> If <span class="math" data-tex="\(\lambda,\mu\vdash n\)">\(\lambda,\mu\vdash n\)</span> and <span class="math" data-tex="\(L\geq\ell(\lambda)\)">\(L\geq\ell(\lambda)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\chi^\lambda(\mu)
+=[x_1^{\lambda_1+L-1}x_2^{\lambda_2+L-2}\cdots x_L^{\lambda_L}]
+\,\Delta(x)p_\mu(x_1,\ldots,x_L).
+\tag{33}
+\]">\[
+\chi^\lambda(\mu)
+=[x_1^{\lambda_1+L-1}x_2^{\lambda_2+L-2}\cdots x_L^{\lambda_L}]
+\,\Delta(x)p_\mu(x_1,\ldots,x_L).
+\tag{33}
+\]</span>
+<p>The degree-zero case uses empty products and has value <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof.</strong> By (24), (27) and orthonormality,</p>
+<span class="math math-display" data-tex="\[
+p_\mu=\sum_{\nu\vdash n}\chi^\nu(\mu)s_\nu.
+\tag{34}
+\]">\[
+p_\mu=\sum_{\nu\vdash n}\chi^\nu(\mu)s_\nu.
+\tag{34}
+\]</span>
+<p>After specializing to <span class="math" data-tex="\(L\)">\(L\)</span> variables, terms of length greater than <span class="math" data-tex="\(L\)">\(L\)</span> vanish by the tableau formula. Multiply by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to obtain alternants <span class="math" data-tex="\(a_{\nu+\delta}\)">\(a_{\nu+\delta}\)</span>. Their exponent lists are strictly decreasing; therefore <span class="math" data-tex="\(x^{\lambda+\delta}\)">\(x^{\lambda+\delta}\)</span> occurs in exactly one of them, namely <span class="math" data-tex="\(a_{\lambda+\delta}\)">\(a_{\lambda+\delta}\)</span>, with coefficient <span class="math" data-tex="\(1\)">\(1\)</span>. Taking that coefficient proves (33). This works even when <span class="math" data-tex="\(L&lt;n\)">\(L&lt;n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>border strip</strong> <span class="math" data-tex="\(\lambda/\eta\)">\(\lambda/\eta\)</span> is a nonempty skew diagram connected by shared edges and containing no <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block. Its height is its number of occupied rows minus one. A diagonal touching does not give edge connectivity.</p>
+<p id="lemma-4-2" class="result-link"><strong>Lemma 4.2 (the border-strip product).</strong> For <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+p_r s_\eta=\sum_{\lambda:\,\lambda/\eta\text{ border strip of size }r}
+(-1)^{\operatorname{ht}(\lambda/\eta)}s_\lambda.
+\tag{35}
+\]">\[
+p_r s_\eta=\sum_{\lambda:\,\lambda/\eta\text{ border strip of size }r}
+(-1)^{\operatorname{ht}(\lambda/\eta)}s_\lambda.
+\tag{35}
+\]</span>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(L\geq|\eta|+r\)">\(L\geq|\eta|+r\)</span>, so every relevant shape fits, and put <span class="math" data-tex="\(\beta_i=\eta_i+L-i\)">\(\beta_i=\eta_i+L-i\)</span>. Alternating a monomial and multiplying by the symmetric function <span class="math" data-tex="\(p_r\)">\(p_r\)</span> commute. Thus</p>
+<span class="math math-display" data-tex="\[
+p_r a_\beta=\sum_{i=1}^L a_{\beta+r\varepsilon_i},
+\tag{36}
+\]">\[
+p_r a_\beta=\sum_{i=1}^L a_{\beta+r\varepsilon_i},
+\tag{36}
+\]</span>
+<p>where <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> raises only exponent <span class="math" data-tex="\(i\)">\(i\)</span>. The original <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> are strictly decreasing. If the raised exponent equals another exponent, that summand is zero. Otherwise it moves from position <span class="math" data-tex="\(i\)">\(i\)</span> to a unique position <span class="math" data-tex="\(j\leq i\)">\(j\leq i\)</span> in decreasing order, making <span class="math" data-tex="\(i-j\)">\(i-j\)</span> transpositions. The sorted list is <span class="math" data-tex="\(\lambda+\delta\)">\(\lambda+\delta\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\lambda_j=\eta_i+r-(i-j),\qquad
+\lambda_k=\eta_{k-1}+1\ (j&lt;k\leq i),\qquad
+\lambda_k=\eta_k\ (k&lt;j\text{ or }k&gt;i).
+\tag{37}
+\]">\[
+\lambda_j=\eta_i+r-(i-j),\qquad
+\lambda_k=\eta_{k-1}+1\ (j&lt;k\leq i),\qquad
+\lambda_k=\eta_k\ (k&lt;j\text{ or }k&gt;i).
+\tag{37}
+\]</span>
+<p>Distinct decreasing nonnegative exponents ensure that this is a partition. The raised exponent being above <span class="math" data-tex="\(\beta_j\)">\(\beta_j\)</span> ensures <span class="math" data-tex="\(\lambda_j&gt;\eta_j\)">\(\lambda_j&gt;\eta_j\)</span>; every other indicated row also grows. The added boxes occupy the consecutive rows <span class="math" data-tex="\(j,\ldots,i\)">\(j,\ldots,i\)</span>. In two consecutive such rows <span class="math" data-tex="\(k-1,k\)">\(k-1,k\)</span>, the upper added row starts at column <span class="math" data-tex="\(\eta_{k-1}+1\)">\(\eta_{k-1}+1\)</span>, and the lower added row ends at that same column, by (37). They overlap in exactly one column. Hence the skew diagram is connected and has no <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block. It has size <span class="math" data-tex="\(r\)">\(r\)</span>, by summing (37), and height <span class="math" data-tex="\(i-j\)">\(i-j\)</span>, exactly the determinant sign.</p>
+<p>Conversely, let <span class="math" data-tex="\(\lambda/\eta\)">\(\lambda/\eta\)</span> be a border strip. Its nonempty rows are consecutive, say <span class="math" data-tex="\(j,\ldots,i\)">\(j,\ldots,i\)</span>. For adjacent occupied rows, their added intervals overlap; the absence of a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block forces that overlap to have length one. Since <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> are partitions, this forces <span class="math" data-tex="\(\lambda_k=\eta_{k-1}+1\)">\(\lambda_k=\eta_{k-1}+1\)</span> for <span class="math" data-tex="\(j&lt;k\leq i\)">\(j&lt;k\leq i\)</span>. Summing the added row lengths, of total <span class="math" data-tex="\(r\)">\(r\)</span>, gives the first formula in (37). Thus the strip comes from raising exactly <span class="math" data-tex="\(\beta_i\)">\(\beta_i\)</span> by <span class="math" data-tex="\(r\)">\(r\)</span> and sorting. The sorted list has distinct entries, so this summand was not discarded. The correspondence is bijective and preserves the sign. Divide (36) by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and use (10). Stability proves (35) in <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-4-3" class="result-link"><strong>Theorem 4.3 (Murnaghan–Nakayama).</strong> For an ordered list of the positive parts <span class="math" data-tex="\(\mu_1,\ldots,\mu_k\)">\(\mu_1,\ldots,\mu_k\)</span> of a cycle type,</p>
+<span class="math math-display" data-tex="\[
+\chi^\lambda(\mu)
+=\sum_{\varnothing=\lambda^{(0)}\subset\lambda^{(1)}\subset\cdots\subset\lambda^{(k)}=\lambda}
+\prod_{i=1}^k(-1)^{\operatorname{ht}(\lambda^{(i)}/\lambda^{(i-1)})},
+\tag{38}
+\]">\[
+\chi^\lambda(\mu)
+=\sum_{\varnothing=\lambda^{(0)}\subset\lambda^{(1)}\subset\cdots\subset\lambda^{(k)}=\lambda}
+\prod_{i=1}^k(-1)^{\operatorname{ht}(\lambda^{(i)}/\lambda^{(i-1)})},
+\tag{38}
+\]</span>
+<p>where the <span class="math" data-tex="\(i\)">\(i\)</span>-th difference must be a border strip of size <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span>. Such a chain is a border-strip tableau of type <span class="math" data-tex="\(\mu\)">\(\mu\)</span>.</p>
+<p><strong>Proof.</strong> Start with <span class="math" data-tex="\(s_\varnothing=1\)">\(s_\varnothing=1\)</span> and apply (35) successively with <span class="math" data-tex="\(r=\mu_1,\ldots,\mu_k\)">\(r=\mu_1,\ldots,\mu_k\)</span>. Each multiplication adds one permitted strip and multiplies its sign into the preceding coefficient. The coefficient of <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> in the result <span class="math" data-tex="\(p_\mu\)">\(p_\mu\)</span> is therefore the sum in (38). By (34) it is <span class="math" data-tex="\(\chi^\lambda(\mu)\)">\(\chi^\lambda(\mu)\)</span>. Commutativity of the power sums also proves that this signed count is independent of the chosen order of the parts. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For calculation one may remove the strips in reverse order:</p>
+<span class="math math-display" data-tex="\[
+\chi^\lambda((r)\cup\nu)
+=\sum_{\eta\subset\lambda:\,\lambda/\eta\text{ border strip of size }r}
+(-1)^{\operatorname{ht}(\lambda/\eta)}\chi^\eta(\nu).
+\tag{39}
+\]">\[
+\chi^\lambda((r)\cup\nu)
+=\sum_{\eta\subset\lambda:\,\lambda/\eta\text{ border strip of size }r}
+(-1)^{\operatorname{ht}(\lambda/\eta)}\chi^\eta(\nu).
+\tag{39}
+\]</span>
+<p>Use <span class="math" data-tex="\(\chi^\varnothing(\varnothing)=1\)">\(\chi^\varnothing(\varnothing)=1\)</span>. If <span class="math" data-tex="\(\nu\)">\(\nu\)</span> consists only of ones, the value is <span class="math" data-tex="\(f^\eta\)">\(f^\eta\)</span>, computed by the hook formula or the branching recursion in <em>Branching, Jucys–Murphy elements and Young's seminormal form</em>, Theorems 6.3 and 4.2. Invalid removals contribute nothing.</p>
+<p>The determinant exponent calculation proves the strip identity (35), including its sign; repeated multiplication and (34) give the character rule. Both Vandermonde and selected exponent orders use the descending convention (9).</p>
+<h2 id="5-two-full-character-tables-and-all-degree-four-permutation-modules">5. Two full character tables and all degree-four permutation modules</h2>
+<p>Here is the full <span class="math" data-tex="\(S_4\)">\(S_4\)</span> table. Row labels are shapes and column labels are cycle types. The second row gives class sizes.</p>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th style="text-align:right"><span class="math" data-tex="\(1^4\)">\(1^4\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2\,1^2\)">\(2\,1^2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^2\)">\(2^2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\,1\)">\(3\,1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class size</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">6</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((4)\)">\((4)\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,1)\)">\((3,1)\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">−1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,2)\)">\((2,2)\)</span></td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,1,1)\)">\((2,1,1)\)</span></td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((1^4)\)">\((1^4)\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+</tr>
+</tbody>
+</table>
+<p>All entries follow from the removal recursion (39). For <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, the two possible two-box removals leave <span class="math" data-tex="\((2)\)">\((2)\)</span> and <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, with heights <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\chi^{(2,2)}(2,1,1)=1-1=0,\qquad
+\chi^{(2,2)}(2,2)=1-(-1)=2.
+\tag{40}
+\]">\[
+\chi^{(2,2)}(2,1,1)=1-1=0,\qquad
+\chi^{(2,2)}(2,2)=1-(-1)=2.
+\tag{40}
+\]</span>
+<p>A three-box removal leaves <span class="math" data-tex="\((1)\)">\((1)\)</span>, with height <span class="math" data-tex="\(1\)">\(1\)</span>, giving <span class="math" data-tex="\(-1\)">\(-1\)</span>. The whole <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span> diagram is not a border strip, so the four-cycle value is zero. For any full <span class="math" data-tex="\(n\)">\(n\)</span>-cycle, the value is zero unless the entire shape is a hook <span class="math" data-tex="\((n-a,1^a)\)">\((n-a,1^a)\)</span>, in which case it is <span class="math" data-tex="\((-1)^a\)">\((-1)^a\)</span>. This explains the last column for every shape in both tables.</p>
+<p>The full <span class="math" data-tex="\(S_5\)">\(S_5\)</span> table is:</p>
+<table>
+<thead>
+<tr>
+<th>Shape</th>
+<th style="text-align:right"><span class="math" data-tex="\(1^5\)">\(1^5\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2\,1^3\)">\(2\,1^3\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(2^2\,1\)">\(2^2\,1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\,1^2\)">\(3\,1^2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(3\,2\)">\(3\,2\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(4\,1\)">\(4\,1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(5\)">\(5\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class size</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">30</td>
+<td style="text-align:right">24</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((5)\)">\((5)\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((4,1)\)">\((4,1)\)</span></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">−1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,2)\)">\((3,2)\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((3,1,1)\)">\((3,1,1)\)</span></td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,2,1)\)">\((2,2,1)\)</span></td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((2,1,1,1)\)">\((2,1,1,1)\)</span></td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">−2</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">−1</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\((1^5)\)">\((1^5)\)</span></td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">−1</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+<p>For the shape <span class="math" data-tex="\((3,2)\)">\((3,2)\)</span>, the only two-box border-strip removal leaves <span class="math" data-tex="\((3)\)">\((3)\)</span>, with positive sign. This gives both values <span class="math" data-tex="\(1\)">\(1\)</span> in the two columns beginning with <span class="math" data-tex="\(2\)">\(2\)</span>. Its only three-box border-strip removal leaves <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>, with height <span class="math" data-tex="\(1\)">\(1\)</span>. The removed boxes, in their original coordinates, are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+&amp;\boxed{\ast}&amp;\boxed{\ast}\\
+&amp;\boxed{\ast}&amp;
+\end{array}.
+\tag{41}
+\]">\[
+\begin{array}{ccc}
+&amp;\boxed{\ast}&amp;\boxed{\ast}\\
+&amp;\boxed{\ast}&amp;
+\end{array}.
+\tag{41}
+\]</span>
+<p>Therefore its values at <span class="math" data-tex="\((3,1,1)\)">\((3,1,1)\)</span> and <span class="math" data-tex="\((3,2)\)">\((3,2)\)</span> are respectively <span class="math" data-tex="\(-1\)">\(-1\)</span> and <span class="math" data-tex="\(-\chi^{(1,1)}(2)=1\)">\(-\chi^{(1,1)}(2)=1\)</span>. Its four-box removal leaves <span class="math" data-tex="\((1)\)">\((1)\)</span>, with height <span class="math" data-tex="\(1\)">\(1\)</span>, giving <span class="math" data-tex="\(-1\)">\(-1\)</span>; its whole diagram contains a square, giving zero at <span class="math" data-tex="\((5)\)">\((5)\)</span>. Finally <span class="math" data-tex="\(f^{(3,2)}=5\)">\(f^{(3,2)}=5\)</span>. This derives the entire row. For <span class="math" data-tex="\((3,1,1)\)">\((3,1,1)\)</span>, the two-box removals leave <span class="math" data-tex="\((1,1,1)\)">\((1,1,1)\)</span> with sign <span class="math" data-tex="\(+1\)">\(+1\)</span> and <span class="math" data-tex="\((3)\)">\((3)\)</span> with sign <span class="math" data-tex="\(-1\)">\(-1\)</span>, giving <span class="math" data-tex="\(-2\)">\(-2\)</span> at <span class="math" data-tex="\((2,2,1)\)">\((2,2,1)\)</span>.</p>
+<p>For all rows, apply the same recursion to the indicated cycle lengths; the identity column uses the corner recursion. As independent arithmetic checks, the displayed class sizes sum to <span class="math" data-tex="\(24\)">\(24\)</span> and <span class="math" data-tex="\(120\)">\(120\)</span>, and the squared row dimensions sum to those same orders. The weighted inner products of distinct rows are zero and of each row with itself are one. These checks verify the resulting tables; they do not replace the general proof of the rule.</p>
+<p>Now order the partitions of four as <span class="math" data-tex="\((4),(3,1),(2,2),(2,1,1),(1^4)\)">\((4),(3,1),(2,2),(2,1,1),(1^4)\)</span>. The complete Kostka matrix, with shape rows and content columns in that order, is</p>
+<span class="math math-display" data-tex="\[
+K=\begin{pmatrix}
+1&amp;1&amp;1&amp;1&amp;1\\
+0&amp;1&amp;1&amp;2&amp;3\\
+0&amp;0&amp;1&amp;1&amp;2\\
+0&amp;0&amp;0&amp;1&amp;3\\
+0&amp;0&amp;0&amp;0&amp;1
+\end{pmatrix}.
+\tag{42}
+\]">\[
+K=\begin{pmatrix}
+1&amp;1&amp;1&amp;1&amp;1\\
+0&amp;1&amp;1&amp;2&amp;3\\
+0&amp;0&amp;1&amp;1&amp;2\\
+0&amp;0&amp;0&amp;1&amp;3\\
+0&amp;0&amp;0&amp;0&amp;1
+\end{pmatrix}.
+\tag{42}
+\]</span>
+<p>For instance, content <span class="math" data-tex="\((2,1,1)\)">\((2,1,1)\)</span> means two ones, one two and one three. In shape <span class="math" data-tex="\((3,1)\)">\((3,1)\)</span>, the bottom entry is either two or three, and the top row is then forced; hence the entry <span class="math" data-tex="\(2\)">\(2\)</span>. In shape <span class="math" data-tex="\((2,2)\)">\((2,2)\)</span>, the top row must be the two ones and the bottom row is two, three, giving <span class="math" data-tex="\(1\)">\(1\)</span>. In shape <span class="math" data-tex="\((2,1,1)\)">\((2,1,1)\)</span>, the first column is one, two, three and the remaining top box is one, again giving <span class="math" data-tex="\(1\)">\(1\)</span>. The last column counts standard tableaux and is <span class="math" data-tex="\((1,3,2,3,1)^t\)">\((1,3,2,3,1)^t\)</span>.</p>
+<p>By (32), every Young permutation module of <span class="math" data-tex="\(S_4\)">\(S_4\)</span> is now specified:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M^{(4)}&amp;=V_{(4)},\\
+M^{(3,1)}&amp;=V_{(4)}\oplus V_{(3,1)},\\
+M^{(2,2)}&amp;=V_{(4)}\oplus V_{(3,1)}\oplus V_{(2,2)},\\
+M^{(2,1,1)}&amp;=V_{(4)}\oplus2V_{(3,1)}\oplus V_{(2,2)}\oplus V_{(2,1,1)},\\
+M^{(1^4)}&amp;=V_{(4)}\oplus3V_{(3,1)}\oplus2V_{(2,2)}
+\oplus3V_{(2,1,1)}\oplus V_{(1^4)}.
+\end{aligned}
+\tag{43}
+\]">\[
+\begin{aligned}
+M^{(4)}&amp;=V_{(4)},\\
+M^{(3,1)}&amp;=V_{(4)}\oplus V_{(3,1)},\\
+M^{(2,2)}&amp;=V_{(4)}\oplus V_{(3,1)}\oplus V_{(2,2)},\\
+M^{(2,1,1)}&amp;=V_{(4)}\oplus2V_{(3,1)}\oplus V_{(2,2)}\oplus V_{(2,1,1)},\\
+M^{(1^4)}&amp;=V_{(4)}\oplus3V_{(3,1)}\oplus2V_{(2,2)}
+\oplus3V_{(2,1,1)}\oplus V_{(1^4)}.
+\end{aligned}
+\tag{43}
+\]</span>
+<p>Here equality means isomorphism of representations, and a coefficient means that many direct-sum copies. Their dimensions are respectively <span class="math" data-tex="\(1,4,6,12,24\)">\(1,4,6,12,24\)</span>, agreeing with <span class="math" data-tex="\(4!/\prod_i\mu_i!\)">\(4!/\prod_i\mu_i!\)</span>. Rearranging the parts of a composition conjugates its Young subgroup, so this list covers all compositions as well as partitions.</p>
+<h2 id="6-littlewood-richardson-counting-induction-multiplicities">6. Littlewood–Richardson: counting induction multiplicities</h2>
+<p>Let <span class="math" data-tex="\(\alpha\vdash m\)">\(\alpha\vdash m\)</span>, <span class="math" data-tex="\(\beta\vdash n\)">\(\beta\vdash n\)</span>, and <span class="math" data-tex="\(\lambda\vdash m+n\)">\(\lambda\vdash m+n\)</span>. Define <span class="math" data-tex="\(c^\lambda_{\alpha\beta}\)">\(c^\lambda_{\alpha\beta}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+s_\alpha s_\beta=\sum_\lambda c^\lambda_{\alpha\beta}s_\lambda.
+\tag{44}
+\]">\[
+s_\alpha s_\beta=\sum_\lambda c^\lambda_{\alpha\beta}s_\lambda.
+\tag{44}
+\]</span>
+<p>The already proved characteristic theorem gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_{S_m\times S_n}^{S_{m+n}}(V_\alpha\boxtimes V_\beta)
+\cong\bigoplus_\lambda c^\lambda_{\alpha\beta}V_\lambda.
+\tag{45}
+\]">\[
+\operatorname{Ind}_{S_m\times S_n}^{S_{m+n}}(V_\alpha\boxtimes V_\beta)
+\cong\bigoplus_\lambda c^\lambda_{\alpha\beta}V_\lambda.
+\tag{45}
+\]</span>
+<p>Thus these coefficients are nonnegative integers. We now describe which tableaux count them. Define <span class="math" data-tex="\(s_{\lambda/\alpha}\)">\(s_{\lambda/\alpha}\)</span> as the weight sum of semistandard fillings of the skew diagram; set it to zero if <span class="math" data-tex="\(\alpha\not\subset\lambda\)">\(\alpha\not\subset\lambda\)</span>. The same weak-row and strict-column inequalities apply wherever two neighboring boxes belong to the diagram.</p>
+<p id="lemma-6-1" class="result-link"><strong>Lemma 6.1 (interchanging two adjacent labels).</strong> Skew tableau weight sums are symmetric. More precisely, there is an involution interchanging the total numbers of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k+1\)">\(k+1\)</span>, for each <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> Keep fixed every <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(k+1\)">\(k+1\)</span> lying together in one column. Call the remaining occurrences free. In each row the fixed <span class="math" data-tex="\(k\)">\(k\)</span>'s form a left segment of its <span class="math" data-tex="\(k\)">\(k\)</span>-block, and the fixed <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s form a right segment of its <span class="math" data-tex="\(k+1\)">\(k+1\)</span>-block. Here is a direct way to check the assertion. Let <span class="math" data-tex="\(a_r,b_r,c_r\)">\(a_r,b_r,c_r\)</span> be the last column of row <span class="math" data-tex="\(r\)">\(r\)</span> occupied by the inner diagram or by an entry respectively smaller than <span class="math" data-tex="\(k\)">\(k\)</span>, at most <span class="math" data-tex="\(k\)">\(k\)</span>, and at most <span class="math" data-tex="\(k+1\)">\(k+1\)</span>. These are three partitions, with</p>
+<span class="math math-display" data-tex="\[
+b_{r+1}\leq a_r,\qquad c_{r+1}\leq b_r.
+\]">\[
+b_{r+1}\leq a_r,\qquad c_{r+1}\leq b_r.
+\]</span>
+<p>The inequalities hold because equal entries cannot share a column. The <span class="math" data-tex="\(k\)">\(k\)</span>-block is <span class="math" data-tex="\((a_r,b_r]\)">\((a_r,b_r]\)</span>, and the <span class="math" data-tex="\(k+1\)">\(k+1\)</span>-block is <span class="math" data-tex="\((b_r,c_r]\)">\((b_r,c_r]\)</span>. Intersect the first with the lower row's <span class="math" data-tex="\(k+1\)">\(k+1\)</span>-block: its left endpoint is at most <span class="math" data-tex="\(a_r\)">\(a_r\)</span>, so its fixed positions are a left segment. Intersect the second with the upper row's <span class="math" data-tex="\(k\)">\(k\)</span>-block: its right endpoint is at least <span class="math" data-tex="\(c_r\)">\(c_r\)</span>, so its fixed positions are a right segment. Thus all free positions in a row form one interval, filled by some <span class="math" data-tex="\(k\)">\(k\)</span>'s followed by some <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s.</p>
+<p>Replace <span class="math" data-tex="\(u\)">\(u\)</span> free <span class="math" data-tex="\(k\)">\(k\)</span>'s followed by <span class="math" data-tex="\(v\)">\(v\)</span> free <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s by <span class="math" data-tex="\(v\)">\(v\)</span> free <span class="math" data-tex="\(k\)">\(k\)</span>'s followed by <span class="math" data-tex="\(u\)">\(u\)</span> free <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s. Rows remain weakly increasing. A free position has no opposite label in its column, so its other column entries are smaller than <span class="math" data-tex="\(k\)">\(k\)</span> above and larger than <span class="math" data-tex="\(k+1\)">\(k+1\)</span> below; either new label is permitted. At most one free position is changed in any column. The fixed pairs stay fixed and the free positions stay free. Applying the operation twice returns the tableau. Each fixed pair contributes one of each label, and the free totals are interchanged, proving the assertion. This is the Bender–Knuth involution. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="proposition-6-2" class="result-link"><strong>Proposition 6.2 (skew coefficients and products).</strong></p>
+<span class="math math-display" data-tex="\[
+s_{\lambda/\alpha}=\sum_\beta c^\lambda_{\alpha\beta}s_\beta.
+\]">\[
+s_{\lambda/\alpha}=\sum_\beta c^\lambda_{\alpha\beta}s_\beta.
+\]</span>
+<p><strong>Proof.</strong> Put every letter of an alphabet <span class="math" data-tex="\(x\)">\(x\)</span> before every letter of an alphabet <span class="math" data-tex="\(y\)">\(y\)</span>. In a tableau of shape <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, the boxes with <span class="math" data-tex="\(x\)">\(x\)</span>-letters form a partition <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, and the remaining boxes form <span class="math" data-tex="\(\lambda/\alpha\)">\(\lambda/\alpha\)</span>. Conversely two such tableaux combine uniquely; the inequalities across their boundary hold because all <span class="math" data-tex="\(x\)">\(x\)</span>-letters precede all <span class="math" data-tex="\(y\)">\(y\)</span>-letters. Consequently</p>
+<span class="math math-display" data-tex="\[
+s_\lambda(x,y)=\sum_{\alpha\subset\lambda}s_\alpha(x)s_{\lambda/\alpha}(y).
+\]">\[
+s_\lambda(x,y)=\sum_{\alpha\subset\lambda}s_\alpha(x)s_{\lambda/\alpha}(y).
+\]</span>
+<p>The kernel satisfies <span class="math" data-tex="\(\mathcal K(x\cup y,z)=\mathcal K(x,z)\mathcal K(y,z)\)">\(\mathcal K(x\cup y,z)=\mathcal K(x,z)\mathcal K(y,z)\)</span>, directly from its product. Expand both sides using (20), and expand <span class="math" data-tex="\(s_\alpha(z)s_\beta(z)\)">\(s_\alpha(z)s_\beta(z)\)</span> using (44). Comparing Schur coefficients in <span class="math" data-tex="\(z\)">\(z\)</span>, and then in <span class="math" data-tex="\(x\)">\(x\)</span>, gives the asserted identity. Every comparison can be made in a fixed degree and enough variables, so it involves finite sums. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p id="theorem-6-3" class="result-link"><strong>Theorem 6.3 (Littlewood–Richardson).</strong> The coefficient <span class="math" data-tex="\(c^\lambda_{\alpha\beta}\)">\(c^\lambda_{\alpha\beta}\)</span> is the number of semistandard tableaux of shape <span class="math" data-tex="\(\lambda/\alpha\)">\(\lambda/\alpha\)</span> and content <span class="math" data-tex="\(\beta\)">\(\beta\)</span> whose word, read right to left across each row from the top row down, has at least as many <span class="math" data-tex="\(k\)">\(k\)</span>'s as <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s in every prefix, for every <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>. The coefficient is zero if <span class="math" data-tex="\(\alpha\not\subset\lambda\)">\(\alpha\not\subset\lambda\)</span>.</p>
+<p><strong>Proof: cancellation.</strong> Use <span class="math" data-tex="\(L\)">\(L\)</span> labels, with <span class="math" data-tex="\(L\)">\(L\)</span> at least the number of skew boxes, and write <span class="math" data-tex="\(w(T)\)">\(w(T)\)</span> for the content vector. Since Lemma 6.1 makes the skew weight sum symmetric, alternating <span class="math" data-tex="\(x^\delta s_{\lambda/\alpha}\)">\(x^\delta s_{\lambda/\alpha}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\Delta s_{\lambda/\alpha}=\sum_T a_{w(T)+\delta}.
+\]">\[
+\Delta s_{\lambda/\alpha}=\sum_T a_{w(T)+\delta}.
+\]</span>
+<p>For a column <span class="math" data-tex="\(j\)">\(j\)</span>, let <span class="math" data-tex="\(T_{\geq j}\)">\(T_{\geq j}\)</span> contain all boxes in columns at least <span class="math" data-tex="\(j\)">\(j\)</span>. Call a tableau admissible when <span class="math" data-tex="\(w(T_{\geq j})\)">\(w(T_{\geq j})\)</span> is a partition for every <span class="math" data-tex="\(j\)">\(j\)</span>. In an inadmissible tableau choose the largest failing <span class="math" data-tex="\(j\)">\(j\)</span>, then the smallest failing adjacent pair <span class="math" data-tex="\(k,k+1\)">\(k,k+1\)</span>. Columns contain each label at most once, and the columns to its right satisfy all the inequalities. Therefore column <span class="math" data-tex="\(j\)">\(j\)</span> contains <span class="math" data-tex="\(k+1\)">\(k+1\)</span> and no <span class="math" data-tex="\(k\)">\(k\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+w_k(T_{\geq j})+1=w_{k+1}(T_{\geq j}).
+\]">\[
+w_k(T_{\geq j})+1=w_{k+1}(T_{\geq j}).
+\]</span>
+<p>Apply Lemma 6.1 to the tableau strictly left of column <span class="math" data-tex="\(j\)">\(j\)</span>. That region is itself a skew diagram, obtained by clipping both boundary partitions at <span class="math" data-tex="\(j-1\)">\(j-1\)</span>. The boundary row inequalities remain valid: column <span class="math" data-tex="\(j\)">\(j\)</span> has no <span class="math" data-tex="\(k\)">\(k\)</span>, so increasing a left-hand <span class="math" data-tex="\(k\)">\(k\)</span> cannot put it above the boundary value; decreasing a <span class="math" data-tex="\(k+1\)">\(k+1\)</span> also causes no boundary problem. Call the result <span class="math" data-tex="\(T^*\)">\(T^*\)</span>. The unchanged right-hand region selects the same <span class="math" data-tex="\(j,k\)">\(j,k\)</span> on the second application. Thus this operation is an involution. The displayed equality and <span class="math" data-tex="\(\delta_k-\delta_{k+1}=1\)">\(\delta_k-\delta_{k+1}=1\)</span> show that</p>
+<span class="math math-display" data-tex="\[
+w(T^*)+\delta=s_k\bigl(w(T)+\delta\bigr),
+\qquad a_{w(T^*)+\delta}=-a_{w(T)+\delta},
+\]">\[
+w(T^*)+\delta=s_k\bigl(w(T)+\delta\bigr),
+\qquad a_{w(T^*)+\delta}=-a_{w(T)+\delta},
+\]</span>
+<p>where <span class="math" data-tex="\(s_k\)">\(s_k\)</span> interchanges coordinates <span class="math" data-tex="\(k,k+1\)">\(k,k+1\)</span>. Paired terms cancel. If the involution fixes a tableau, the corresponding exponent vector has equal adjacent coordinates and its alternant is zero. For an admissible tableau, <span class="math" data-tex="\(w(T)\)">\(w(T)\)</span> is a partition and its term is <span class="math" data-tex="\(\Delta s_{w(T)}\)">\(\Delta s_{w(T)}\)</span>. Dividing by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and applying Proposition 6.2 proves that the coefficient counts admissible tableaux of content <span class="math" data-tex="\(\beta\)">\(\beta\)</span>.</p>
+<p><strong>Proof: the reading condition.</strong> Fix <span class="math" data-tex="\(k\)">\(k\)</span>, and use the boundary partitions <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span> from Lemma 6.1. Set <span class="math" data-tex="\(A_r=b_r-a_r\)">\(A_r=b_r-a_r\)</span> and <span class="math" data-tex="\(B_r=c_r-b_r\)">\(B_r=c_r-b_r\)</span>. In the row word, the <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s of a row occur before its <span class="math" data-tex="\(k\)">\(k\)</span>'s. Hence the smallest balance during row <span class="math" data-tex="\(r\)">\(r\)</span> is</p>
+<span class="math math-display" data-tex="\[
+R_r=\sum_{s&lt;r}A_s-\sum_{s\leq r}B_s.
+\]">\[
+R_r=\sum_{s&lt;r}A_s-\sum_{s\leq r}B_s.
+\]</span>
+<p>The row word has the required inequality exactly when every <span class="math" data-tex="\(R_r\geq0\)">\(R_r\geq0\)</span>. Let <span class="math" data-tex="\(C(j)\)">\(C(j)\)</span> be the number of <span class="math" data-tex="\(k\)">\(k\)</span>'s minus <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s in columns at least <span class="math" data-tex="\(j\)">\(j\)</span>. At <span class="math" data-tex="\(j=b_r+1\)">\(j=b_r+1\)</span>, all the <span class="math" data-tex="\(k\)">\(k\)</span>'s in earlier rows and all the <span class="math" data-tex="\(k+1\)">\(k+1\)</span>'s in rows through <span class="math" data-tex="\(r\)">\(r\)</span> lie to the right of this cut; later rows contribute neither. The strip inequalities <span class="math" data-tex="\(b_{r+1}\leq a_r\)">\(b_{r+1}\leq a_r\)</span> and <span class="math" data-tex="\(c_{r+1}\leq b_r\)">\(c_{r+1}\leq b_r\)</span> give exactly <span class="math" data-tex="\(C(b_r+1)=R_r\)">\(C(b_r+1)=R_r\)</span>. Thus nonnegative column balances imply nonnegative row balances.</p>
+<p>For the converse, a column can lower the balance when added from right to left only if it contains <span class="math" data-tex="\(k+1\)">\(k+1\)</span> without <span class="math" data-tex="\(k\)">\(k\)</span>. Suppose that <span class="math" data-tex="\(k+1\)">\(k+1\)</span> lies in row <span class="math" data-tex="\(r\)">\(r\)</span>, so <span class="math" data-tex="\(b_r&lt;j\leq c_r\)">\(b_r&lt;j\leq c_r\)</span>. Counting the intervals <span class="math" data-tex="\((a_s,b_s]\)">\((a_s,b_s]\)</span> and <span class="math" data-tex="\((b_s,c_s]\)">\((b_s,c_s]\)</span>, using the same strip inequalities, gives</p>
+<span class="math math-display" data-tex="\[
+C(j)=R_r+\min\{j-1,a_{r-1}\}-b_r\ \geq R_r;
+\]">\[
+C(j)=R_r+\min\{j-1,a_{r-1}\}-b_r\ \geq R_r;
+\]</span>
+<p>for <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, interpret <span class="math" data-tex="\(a_0=+\infty\)">\(a_0=+\infty\)</span>. To check the count, rows above <span class="math" data-tex="\(r-1\)">\(r-1\)</span> contribute their full <span class="math" data-tex="\(k\)">\(k\)</span>-blocks, row <span class="math" data-tex="\(r-1\)">\(r-1\)</span> contributes <span class="math" data-tex="\(b_{r-1}-\max\{a_{r-1},j-1\}\)">\(b_{r-1}-\max\{a_{r-1},j-1\}\)</span>, and rows below contribute no <span class="math" data-tex="\(k\)">\(k\)</span>. The <span class="math" data-tex="\(k+1\)">\(k+1\)</span>-blocks above row <span class="math" data-tex="\(r\)">\(r\)</span> contribute fully, and row <span class="math" data-tex="\(r\)">\(r\)</span> contributes <span class="math" data-tex="\(c_r-j+1\)">\(c_r-j+1\)</span>. Their difference is the displayed expression. Its last term is nonnegative because <span class="math" data-tex="\(a_{r-1}\geq b_r\)">\(a_{r-1}\geq b_r\)</span> and <span class="math" data-tex="\(j-1\geq b_r\)">\(j-1\geq b_r\)</span>. If all <span class="math" data-tex="\(R_r\)">\(R_r\)</span> are nonnegative, every possible lowering column therefore leaves a nonnegative balance; other columns cannot lower it. All <span class="math" data-tex="\(C(j)\)">\(C(j)\)</span> are nonnegative. This proves equivalence of the two conditions for each <span class="math" data-tex="\(k\)">\(k\)</span>, completing the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, <span class="math" data-tex="\(c^{(3,2,1)}_{(2,1),(2,1)}=2\)">\(c^{(3,2,1)}_{(2,1),(2,1)}=2\)</span>. The skew diagram has one box in each row, in columns three, two and one. The two permitted fillings, with their original positions retained, are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}&amp;&amp;\boxed{1}\\&amp;\boxed{1}&amp;\\\boxed{2}&amp;&amp;\end{array}
+\qquad
+\begin{array}{ccc}&amp;&amp;\boxed{1}\\&amp;\boxed{2}&amp;\\\boxed{1}&amp;&amp;\end{array}.
+\]">\[
+\begin{array}{ccc}&amp;&amp;\boxed{1}\\&amp;\boxed{1}&amp;\\\boxed{2}&amp;&amp;\end{array}
+\qquad
+\begin{array}{ccc}&amp;&amp;\boxed{1}\\&amp;\boxed{2}&amp;\\\boxed{1}&amp;&amp;\end{array}.
+\]</span>
+<p>Their row words are <span class="math" data-tex="\(112\)">\(112\)</span> and <span class="math" data-tex="\(121\)">\(121\)</span>, both satisfying the prefix inequalities. The third arrangement, with word <span class="math" data-tex="\(211\)">\(211\)</span>, fails at its first letter. Equation (45) therefore gives multiplicity two for <span class="math" data-tex="\(V_{(3,2,1)}\)">\(V_{(3,2,1)}\)</span> in <span class="math" data-tex="\(\operatorname{Ind}_{S_3\times S_3}^{S_6}(V_{(2,1)}\boxtimes V_{(2,1)})\)">\(\operatorname{Ind}_{S_3\times S_3}^{S_6}(V_{(2,1)}\boxtimes V_{(2,1)})\)</span>.</p>
+<p><em>Comparison:</em> [Stembridge, theorem and skew-Schur corollary], for the column cancellation. The proof above supplies the boundary cases and proves the equivalence with the row-reading condition, so no tableau insertion theorem is imported.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-1-easy-the-regular-representation">Exercise 1 (easy). The regular representation</h3>
+<p>Compute the characteristic of the regular character of <span class="math" data-tex="\(S_n\)">\(S_n\)</span>. Explain why the answer agrees with its irreducible decomposition.</p>
+<p><strong>Solution.</strong> The regular character is <span class="math" data-tex="\(n!\)">\(n!\)</span> at the identity and zero elsewhere. As <span class="math" data-tex="\(z_{(1^n)}=n!\)">\(z_{(1^n)}=n!\)</span>, (24) gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(\chi_{\mathrm{reg}})=p_1^n=h_1^n.
+\tag{46}
+\]">\[
+\operatorname{ch}(\chi_{\mathrm{reg}})=p_1^n=h_1^n.
+\tag{46}
+\]</span>
+<p>By (23), <span class="math" data-tex="\(h_{(1^n)}=\sum_\lambda K_{\lambda,(1^n)}s_\lambda=\sum_\lambda f^\lambda s_\lambda\)">\(h_{(1^n)}=\sum_\lambda K_{\lambda,(1^n)}s_\lambda=\sum_\lambda f^\lambda s_\lambda\)</span>. The characteristic theorem and Corollary 4.3 of <em>Branching, Jucys–Murphy elements and Young's seminormal form</em> therefore give <span class="math" data-tex="\(\mathbb C[S_n]\cong\bigoplus_\lambda(\dim V_\lambda)V_\lambda\)">\(\mathbb C[S_n]\cong\bigoplus_\lambda(\dim V_\lambda)V_\lambda\)</span>, as the finite-group regular decomposition requires. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, both sides of (46) are <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<h3 id="exercise-2-medium-count-the-fixed-points-using-frobenius-s-formula">Exercise 2 (medium). Count the fixed points using Frobenius's formula</h3>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, derive</p>
+<span class="math math-display" data-tex="\[
+\chi^{(n-1,1)}(\sigma)=m_1(\operatorname{type}(\sigma))-1
+\tag{47}
+\]">\[
+\chi^{(n-1,1)}(\sigma)=m_1(\operatorname{type}(\sigma))-1
+\tag{47}
+\]</span>
+<p>directly from (33).</p>
+<p><strong>Solution.</strong> Use two variables, so <span class="math" data-tex="\(\delta=(1,0)\)">\(\delta=(1,0)\)</span>, <span class="math" data-tex="\(\Delta=x_1-x_2\)">\(\Delta=x_1-x_2\)</span>, and <span class="math" data-tex="\(\lambda+\delta=(n,1)\)">\(\lambda+\delta=(n,1)\)</span>. Write <span class="math" data-tex="\(\mu=(\mu_1,\ldots,\mu_k)\)">\(\mu=(\mu_1,\ldots,\mu_k)\)</span> for the cycle lengths. Formula (33) is the coefficient of <span class="math" data-tex="\(x_1^n x_2\)">\(x_1^n x_2\)</span> in</p>
+<span class="math math-display" data-tex="\[
+(x_1-x_2)\prod_{j=1}^k(x_1^{\mu_j}+x_2^{\mu_j}).
+\tag{48}
+\]">\[
+(x_1-x_2)\prod_{j=1}^k(x_1^{\mu_j}+x_2^{\mu_j}).
+\tag{48}
+\]</span>
+<p>The <span class="math" data-tex="\(x_1\)">\(x_1\)</span> term requires coefficient <span class="math" data-tex="\(x_1^{n-1}x_2\)">\(x_1^{n-1}x_2\)</span> in the product. Choose exactly one length-one cycle to contribute <span class="math" data-tex="\(x_2\)">\(x_2\)</span>, with all other cycles contributing powers of <span class="math" data-tex="\(x_1\)">\(x_1\)</span>. There are <span class="math" data-tex="\(m_1(\mu)\)">\(m_1(\mu)\)</span> choices. The <span class="math" data-tex="\(-x_2\)">\(-x_2\)</span> term requires coefficient <span class="math" data-tex="\(x_1^n\)">\(x_1^n\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span>. This gives (47). At the identity it gives dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; at an <span class="math" data-tex="\(n\)">\(n\)</span>-cycle it gives <span class="math" data-tex="\(-1\)">\(-1\)</span>, consistent with the height-one hook. In particular, the natural action on <span class="math" data-tex="\(n\)">\(n\)</span> points has character <span class="math" data-tex="\(1+\chi^{(n-1,1)}\)">\(1+\chi^{(n-1,1)}\)</span>.</p>
+<h3 id="exercise-3-medium-young-s-rule-without-a-label-ambiguity">Exercise 3 (medium). Young's rule without a label ambiguity</h3>
+<p>Derive the decomposition of <span class="math" data-tex="\(M^\mu\)">\(M^\mu\)</span> from Theorem 3.1 and the tableau formula. Specify the content convention and recover <span class="math" data-tex="\(M^{(2,1,1)}\)">\(M^{(2,1,1)}\)</span> for <span class="math" data-tex="\(S_4\)">\(S_4\)</span>.</p>
+<p><strong>Solution.</strong> A tableau of content <span class="math" data-tex="\(\mu=(\mu_1,\ldots,\mu_k)\)">\(\mu=(\mu_1,\ldots,\mu_k)\)</span> contains <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span> copies of the integer <span class="math" data-tex="\(i\)">\(i\)</span>. By complete reducibility, the multiplicity of the previously defined <span class="math" data-tex="\(V_\lambda\)">\(V_\lambda\)</span> in <span class="math" data-tex="\(M^\mu\)">\(M^\mu\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\langle\chi_{M^\mu},\chi^\lambda\rangle
+=\langle h_\mu,s_\lambda\rangle
+=K_{\lambda\mu}.
+\tag{49}
+\]">\[
+\langle\chi_{M^\mu},\chi^\lambda\rangle
+=\langle h_\mu,s_\lambda\rangle
+=K_{\lambda\mu}.
+\tag{49}
+\]</span>
+<p>The first equality is character orthogonality, the second uses the isometry and the exact labels in (27), and the third expands (16) and uses <span class="math" data-tex="\(h/m\)">\(h/m\)</span> duality. This proves the full decomposition, for any composition. For <span class="math" data-tex="\(\mu=(2,1,1)\)">\(\mu=(2,1,1)\)</span>, the five counts are <span class="math" data-tex="\(1,2,1,1,0\)">\(1,2,1,1,0\)</span>, as counted after (42). Hence <span class="math" data-tex="\(M^\mu=V_{(4)}\oplus2V_{(3,1)}\oplus V_{(2,2)}\oplus V_{(2,1,1)}\)">\(M^\mu=V_{(4)}\oplus2V_{(3,1)}\oplus V_{(2,2)}\oplus V_{(2,1,1)}\)</span>. Its dimension is <span class="math" data-tex="\(1+2\cdot3+2+3=12=4!/(2!1!1!)\)">\(1+2\cdot3+2+3=12=4!/(2!1!1!)\)</span>. Omitting the label proof in Theorem 3.1 would leave the identification in this answer unjustified.</p>
+<h3 id="exercise-4-hard-from-one-border-strip-to-all-character-values">Exercise 4 (hard). From one border strip to all character values</h3>
+<p>Starting with the product identity (35), prove the full rule (38), including independence of part order. Calculate <span class="math" data-tex="\(\chi^{(3,2)}(3,2)\)">\(\chi^{(3,2)}(3,2)\)</span>, distinguishing an actual strip from a disconnected attempted removal.</p>
+<p><strong>Solution.</strong> Prove by induction on <span class="math" data-tex="\(k\)">\(k\)</span> that the coefficient of <span class="math" data-tex="\(s_\lambda\)">\(s_\lambda\)</span> in <span class="math" data-tex="\(p_{\mu_1}\cdots p_{\mu_k}\)">\(p_{\mu_1}\cdots p_{\mu_k}\)</span> is the signed sum over the chains in (38). For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the only coefficient is that of the empty shape and equals <span class="math" data-tex="\(1\)">\(1\)</span>. In the inductive step, multiply the preceding Schur expansion by <span class="math" data-tex="\(p_{\mu_k}\)">\(p_{\mu_k}\)</span>. Identity (35) extends each chain by exactly every possible last strip and multiplies its contribution by <span class="math" data-tex="\((-1)^{\operatorname{ht}}\)">\((-1)^{\operatorname{ht}}\)</span>. Conversely every chain with <span class="math" data-tex="\(k\)">\(k\)</span> steps has a unique preceding chain and last strip, so neither terms nor multiplicities are lost. Equation (34) identifies the final coefficient with the character value. The product of the <span class="math" data-tex="\(p_{\mu_i}\)">\(p_{\mu_i}\)</span> is invariant under rearrangement, proving order independence of the entire signed sum.</p>
+<p>For <span class="math" data-tex="\((3,2)\)">\((3,2)\)</span>, remove a strip of length three. The possible remaining partitions of size two contained in the shape are <span class="math" data-tex="\((2)\)">\((2)\)</span> and <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. The attempted remainder <span class="math" data-tex="\((2)\)">\((2)\)</span> leaves a top box in column three and two lower boxes in columns one and two; the top box touches none of them along an edge, so it is inadmissible. The remainder <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> leaves the connected strip in (41), of height one. Therefore</p>
+<span class="math math-display" data-tex="\[
+\chi^{(3,2)}(3,2)=(-1)\chi^{(1,1)}(2)=(-1)(-1)=1.
+\tag{50}
+\]">\[
+\chi^{(3,2)}(3,2)=(-1)\chi^{(1,1)}(2)=(-1)(-1)=1.
+\tag{50}
+\]</span>
+<p>The final <span class="math" data-tex="\(-1\)">\(-1\)</span> comes from the height-one vertical two-box strip of <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>. Thus the sign at each stage has a specified geometric source.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Grinberg–Reiner] Darij Grinberg and Victor Reiner, <a href="https://www.cip.ifi.lmu.de/~grinberg/algebra/HopfComb.pdf"><em>Hopf Algebras in Combinatorics</em></a>, July 27, 2020, minor corrections September 6, 2026, Proposition 2.5.15, pp. 64–66, Corollary 2.5.17, Proposition 2.6.4 and Corollary 2.6.7. CC BY 4.0. Only the component explicitly credited in Lemma 1.2 is adapted from this work.</li>
+<li>[Stembridge] John R. Stembridge, “A Concise Proof of the Littlewood–Richardson Rule,” <em>Electronic Journal of Combinatorics</em> 9 (2002), N5, theorem and skew-Schur corollary. <a href="https://www.combinatorics.org/ojs/index.php/eljc/article/view/v9i1n5">Journal article</a>.</li>
+</ul>
+<p>The next lesson uses Schur functions to describe the two commuting actions in Schur–Weyl duality.</p>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

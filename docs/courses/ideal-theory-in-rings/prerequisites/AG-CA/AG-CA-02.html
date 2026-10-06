@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Localization, local properties and support · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/localization-local-properties-and-support.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1 id="localization-local-properties-and-support">Localization, local
+properties and support</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>To examine an equation near a point, we should allow division by
+functions that do not vanish there. Localization does exactly this. The
+same operation works for modules, so it lets us examine a relation, a
+kernel or a system of generators near each prime. The surprise is how
+much global information these examinations retain: localization is
+exact, and the examinations at all maximal ideals detect exactness.</p>
+<p>We use <a href="AG-CA-01.html"><em>Spectra of rings</em></a>,
+together with elementary module theory, tensor products, determinants,
+the Chinese remainder theorem and Gauss’s lemma for polynomials over a
+unique factorization domain. A finite module means a finitely generated
+module. A local ring has exactly one maximal ideal; it need not be
+Noetherian. Throughout, rings are commutative with identity, and a
+multiplicative set contains <span class="math inline">\(1\)</span> and
+is closed under multiplication. We allow <span
+class="math inline">\(0\)</span> in that set.</p>
+<p>Basic references are the Stacks project, Timothy Ford’s <em>Rings and
+Modules</em>, and Ravi Vakil’s <em>The Rising Sea</em>. Our route starts
+with the algebra of division, passes through the geometry of fibres, and
+then uses finite generation to control local data.</p>
+<h2 id="division-without-cancellation">1. Division without
+cancellation</h2>
+<p>Fix a ring <span class="math inline">\(R\)</span>, a multiplicative
+set <span class="math inline">\(S\)</span>, and an <span
+class="math inline">\(R\)</span>-module <span
+class="math inline">\(M\)</span>. A fraction is a pair <span
+class="math inline">\((m,s)\in M\times S\)</span>. Define</p>
+<p><span class="math display">\[
+(m,s)\sim(n,t)\quad\Longleftrightarrow\quad
+u(tm-sn)=0\text{ for some }u\in S.
+\]</span></p>
+<p>The extra factor <span class="math inline">\(u\)</span> is essential
+when multiplication by a denominator has a kernel.</p>
+<p><strong>Construction 1.1.</strong> The equivalence classes, denoted
+<span class="math inline">\(m/s\)</span>, form an <span
+class="math inline">\(S^{-1}R\)</span>-module <span
+class="math inline">\(S^{-1}M\)</span>, with operations</p>
+<p><span class="math display">\[
+\frac m s+\frac n t=\frac{tm+sn}{st},
+\qquad \frac a u\frac m s=\frac{am}{us}.
+\]</span></p>
+<p>For <span class="math inline">\(M=R\)</span>, this is a ring with
+product <span class="math inline">\((a/s)(b/t)=ab/(st)\)</span> and
+identity <span class="math inline">\(1/1\)</span>.</p>
+<p><strong>Verification.</strong> Reflexivity and symmetry are
+immediate. For transitivity, if <span
+class="math inline">\(u(tm-sn)=0\)</span> and <span
+class="math inline">\(v(wn-t\ell)=0\)</span>, multiply the first
+equality by <span class="math inline">\(vw\)</span>, the second by <span
+class="math inline">\(us\)</span>, and add. The result is <span
+class="math inline">\(uvt(wm-s\ell)=0\)</span>, with <span
+class="math inline">\(uvt\in S\)</span>. Thus the relation is
+transitive.</p>
+<p>To check addition, suppose <span
+class="math inline">\(u(s&#39;m-sm&#39;)=0\)</span> and <span
+class="math inline">\(v(t&#39;n-tn&#39;)=0\)</span>. The difference
+between the cross-multiplied proposed sums is</p>
+<p><span class="math display">\[
+tt&#39;(s&#39;m-sm&#39;)+ss&#39;(t&#39;n-tn&#39;),
+\]</span></p>
+<p>which <span class="math inline">\(uv\)</span> kills. The scalar
+action is checked by the same cross-multiplication: replacing a
+numerator fraction changes a product by a multiple of its killed
+cross-difference. The module axioms follow by bringing finitely many
+fractions to a common denominator; the ring axioms follow likewise. This
+proves that the construction is well defined. Its most useful elementary
+test is</p>
+<p><span class="math display">\[
+\frac m s=0\quad\Longleftrightarrow\quad um=0\text{ for some }u\in S.
+\tag{1.1}
+\]</span></p>
+<p>In particular, <span class="math inline">\(S^{-1}R=0\)</span> exactly
+when <span class="math inline">\(0\in S\)</span>: if <span
+class="math inline">\(1/1=0\)</span>, equation (1.1) gives an element
+<span class="math inline">\(u=0\)</span> of <span
+class="math inline">\(S\)</span>.</p>
+<p><strong>Proposition 1.2 (universal properties).</strong> A ring map
+<span class="math inline">\(R\to A\)</span> sending every element of
+<span class="math inline">\(S\)</span> to a unit extends uniquely to
+<span class="math inline">\(S^{-1}R\to A\)</span>. If every <span
+class="math inline">\(s\in S\)</span> acts invertibly on an <span
+class="math inline">\(R\)</span>-module <span
+class="math inline">\(N\)</span>, every <span
+class="math inline">\(R\)</span>-linear map <span
+class="math inline">\(M\to N\)</span> extends uniquely to <span
+class="math inline">\(S^{-1}M\to N\)</span>.</p>
+<p><strong>Proof.</strong> The only possible ring map is <span
+class="math inline">\(a/s\mapsto\varphi(a)\varphi(s)^{-1}\)</span>. A
+cross-difference killed by <span class="math inline">\(u\in S\)</span>
+maps to zero because <span class="math inline">\(\varphi(u)\)</span> is
+a unit, so the map is well defined. The fraction rules prove it is a
+ring map. For modules the only possible extension is <span
+class="math inline">\(m/s\mapsto s_N^{-1}\alpha(m)\)</span>, where <span
+class="math inline">\(s_N\)</span> denotes multiplication by <span
+class="math inline">\(s\)</span> on <span
+class="math inline">\(N\)</span>. The same killed cross-difference
+proves well-definedness. Additivity and linearity follow from the
+fraction rules. <span class="math inline">\(\square\)</span></p>
+<p>The modules on which <span class="math inline">\(S\)</span> acts
+invertibly are exactly the <span
+class="math inline">\(S^{-1}R\)</span>-modules, with their underlying
+<span class="math inline">\(R\)</span>-module structures. To recover the
+extended action, let <span class="math inline">\(a/s\)</span> act by
+<span class="math inline">\(a_Ns_N^{-1}\)</span>. This respects the
+fraction relation, and the two constructions are inverse, on maps as
+well as on modules.</p>
+<p><strong>Proposition 1.3 (tensor description).</strong> There is a
+natural isomorphism</p>
+<p><span class="math display">\[
+S^{-1}R\otimes_R M\cong S^{-1}M.
+\]</span></p>
+<p><strong>Proof.</strong> Send <span class="math inline">\((a/s)\otimes
+m\)</span> to <span class="math inline">\(am/s\)</span>. This is
+balanced and additive. Conversely send <span
+class="math inline">\(m/s\)</span> to <span
+class="math inline">\((1/s)\otimes m\)</span>. If <span
+class="math inline">\(u(tm-sn)=0\)</span>, the difference of these
+proposed tensor values equals</p>
+<p><span class="math display">\[
+\frac1{st}\otimes(tm-sn)
+=\frac1{ust}\otimes u(tm-sn)=0.
+\]</span></p>
+<p>Thus the inverse is well defined. The two maps are inverse on the
+displayed generators. <span class="math inline">\(\square\)</span></p>
+<p>We write <span class="math inline">\(M_f\)</span> when <span
+class="math inline">\(S=\{1,f,f^2,\ldots\}\)</span>, and <span
+class="math inline">\(M_{\mathfrak p}\)</span> when <span
+class="math inline">\(S=R\setminus\mathfrak p\)</span>. The ring <span
+class="math inline">\(R_f\)</span> agrees with <span
+class="math inline">\(R[t]/(ft-1)\)</span> from the preceding lesson,
+because they have the same universal property. For a domain, inverting
+all nonzero elements gives its fraction field. In an arbitrary nonzero
+ring, inverting all nonzerodivisors gives the total ring of fractions;
+the map into it is injective by (1.1).</p>
+<h2 id="relations-survive-localization">2. Relations survive
+localization</h2>
+<p>Localization sends a map <span class="math inline">\(\alpha:M\to
+N\)</span> to <span
+class="math inline">\(m/s\mapsto\alpha(m)/s\)</span>. These maps
+preserve compositions and identities.</p>
+<p><strong>Theorem 2.1 (exactness).</strong> If <span
+class="math inline">\(L\xrightarrow\alpha M\xrightarrow\beta N\)</span>
+is exact, so is its localization at any multiplicative set.</p>
+<p><strong>Proof.</strong> The localized composite is zero. If <span
+class="math inline">\(m/s\)</span> maps to zero, there is <span
+class="math inline">\(u\in S\)</span> with <span
+class="math inline">\(\beta(um)=0\)</span>. Exactness gives <span
+class="math inline">\(\ell\in L\)</span> with <span
+class="math inline">\(\alpha(\ell)=um\)</span>. Then <span
+class="math inline">\(\ell/(us)\)</span> maps to <span
+class="math inline">\(m/s\)</span>. This proves equality of image and
+kernel. It also includes preservation of injections by taking <span
+class="math inline">\(L=0\)</span>, and preservation of surjections by
+taking <span class="math inline">\(N=0\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p>Consequently submodules localize as submodules, and</p>
+<p><span class="math display">\[
+S^{-1}(M/L)\cong S^{-1}M/S^{-1}L.
+\]</span></p>
+<p>Localization commutes with arbitrary sums of submodules: every
+element of a sum already uses finitely many summands. It commutes with
+finite intersections: apply exactness to the kernel of <span
+class="math inline">\(L\oplus K\to M\)</span>, <span
+class="math inline">\((\ell,k)\mapsto\ell-k\)</span>. This gives <span
+class="math inline">\(S^{-1}(L\cap K)=S^{-1}L\cap S^{-1}K\)</span>.
+Infinite intersections require separate hypotheses and are not asserted
+here. Localization also commutes with direct sums, by the fraction
+construction and finite support of each tuple.</p>
+<p><strong>Theorem 2.2 (localizing Hom).</strong> If <span
+class="math inline">\(M\)</span> is finitely presented, the natural
+map</p>
+<p><span class="math display">\[
+S^{-1}\operatorname{Hom}_R(M,N)
+\longrightarrow
+\operatorname{Hom}_{S^{-1}R}(S^{-1}M,S^{-1}N)
+\]</span></p>
+<p>is an isomorphism for every <span
+class="math inline">\(N\)</span>.</p>
+<p><strong>Proof.</strong> Choose a finite presentation <span
+class="math inline">\(R^b\xrightarrow A R^a\to M\to0\)</span>. A map
+from <span class="math inline">\(M\)</span> to <span
+class="math inline">\(N\)</span> is a tuple in <span
+class="math inline">\(N^a\)</span> satisfying the finitely many
+relations, so</p>
+<p><span class="math display">\[
+\operatorname{Hom}_R(M,N)=\ker(N^a\xrightarrow{A^*}N^b).
+\]</span></p>
+<p>Exactness and commutation with finite direct sums identify the
+localization of this kernel with the kernel of <span
+class="math inline">\((S^{-1}N)^a\to(S^{-1}N)^b\)</span>. The localized
+presentation identifies that kernel with the Hom module on the right.
+These identifications are precisely the natural map. <span
+class="math inline">\(\square\)</span></p>
+<p>Finiteness of the presentation has a real role: it lets one
+denominator clear finitely many relations. If <span
+class="math inline">\(M\)</span> is only finite, the natural map is
+still injective. Indeed, if a fraction <span
+class="math inline">\(\alpha/s\)</span> becomes zero, finitely many
+generators of <span class="math inline">\(M\)</span> allow a product of
+finitely many elements of <span class="math inline">\(S\)</span> to kill
+every value of <span class="math inline">\(\alpha\)</span>. Surjectivity
+can fail.</p>
+<p>For a concrete failure with a cyclic source, set</p>
+<p><span class="math display">\[
+R=k[t,x_1,x_2,\ldots]/(t^i x_i:i\geq1),
+\quad I=(x_1,x_2,\ldots),\quad M=R/I,
+\quad S=\{t^n:n\geq0\}.
+\]</span></p>
+<p>Every <span class="math inline">\(x_i\)</span> vanishes after
+localization, so <span class="math inline">\(M_t=R_t\)</span>. The
+identity of <span class="math inline">\(R_t\)</span> cannot come from
+<span
+class="math inline">\(\operatorname{Hom}_R(M,R)_t=(\operatorname{Ann}_R
+I)_t\)</span>. If it were represented by <span
+class="math inline">\(a/t^n\)</span>, equality with one would give <span
+class="math inline">\(t^j(a-t^n)=0\)</span>, hence <span
+class="math inline">\(t^{j+n}\in\operatorname{Ann}I\)</span>. But no
+power <span class="math inline">\(t^d\)</span> kills <span
+class="math inline">\(I\)</span>: choose <span
+class="math inline">\(i&gt;d\)</span>, and map <span
+class="math inline">\(R\)</span> to <span
+class="math inline">\(k[t,x]/(t^i x)\)</span> by retaining <span
+class="math inline">\(x_i=x\)</span> and killing the other <span
+class="math inline">\(x_j\)</span>. The monomial <span
+class="math inline">\(t^d x\)</span> is nonzero there. This proves the
+failure. Even finite generation is absent in the example <span
+class="math inline">\(\operatorname{Hom}_{\mathbb Z}(\mathbb Q,\mathbb
+Z)=0\)</span>, whereas after rational localization the corresponding Hom
+is <span class="math inline">\(\mathbb Q\)</span>. The first equality
+holds because an integer divisible by every positive integer is
+zero.</p>
+<h2 id="points-left-after-division-and-fibres">3. Points left after
+division, and fibres</h2>
+<p><strong>Theorem 3.1 (prime and ideal correspondence).</strong> Every
+ideal of <span class="math inline">\(S^{-1}R\)</span> is extended from
+<span class="math inline">\(R\)</span>. Contraction induces a
+homeomorphism</p>
+<p><span class="math display">\[
+\operatorname{Spec}(S^{-1}R)\cong
+\{\mathfrak p\in\operatorname{Spec}R:\mathfrak p\cap S=\varnothing\},
+\]</span></p>
+<p>with the subspace topology on the right. Its inverse is <span
+class="math inline">\(\mathfrak p\mapsto S^{-1}\mathfrak p\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(J\)</span> is
+an ideal upstairs, <span class="math inline">\(a/s\in J\)</span> exactly
+when <span class="math inline">\(a/1\in J\)</span>, because <span
+class="math inline">\(s/1\)</span> is a unit. Thus <span
+class="math inline">\(J\)</span> is the extension of its contraction. A
+prime upstairs contracts to a prime disjoint from <span
+class="math inline">\(S\)</span>. Conversely, for a prime <span
+class="math inline">\(\mathfrak p\)</span> disjoint from <span
+class="math inline">\(S\)</span>, the ring</p>
+<p><span class="math display">\[
+(S^{-1}R)/(S^{-1}\mathfrak p)\cong
+\overline S^{-1}(R/\mathfrak p)
+\]</span></p>
+<p>is a nonzero domain. This proves primality of the extension; the
+injection of <span class="math inline">\(R/\mathfrak p\)</span> into
+this domain proves the required contraction equality. Finally <span
+class="math inline">\(D(a/s)\)</span> upstairs corresponds to <span
+class="math inline">\(D(a)\)</span> intersected with the displayed
+subspace. These bases prove the topological assertion. <span
+class="math inline">\(\square\)</span></p>
+<p>The subset in this theorem is not generally open. For <span
+class="math inline">\(R_{\mathfrak p}\)</span>, it is the primes
+contained in <span class="math inline">\(\mathfrak p\)</span>, not the
+primes containing it. This reverses the apparent direction of the closed
+locus <span class="math inline">\(V(\mathfrak p)\)</span>.</p>
+<p>The ring <span class="math inline">\(R_{\mathfrak p}\)</span> is
+local, with maximal ideal <span class="math inline">\(\mathfrak
+pR_{\mathfrak p}\)</span>. A fraction whose numerator is outside <span
+class="math inline">\(\mathfrak p\)</span> has the reversed fraction as
+an inverse. A fraction with numerator in <span
+class="math inline">\(\mathfrak p\)</span> cannot be a unit, by the
+prime correspondence. Its residue field is</p>
+<p><span class="math display">\[
+\kappa(\mathfrak p)=R_{\mathfrak p}/\mathfrak pR_{\mathfrak p}
+\cong\operatorname{Frac}(R/\mathfrak p).
+\]</span></p>
+<p><strong>Theorem 3.2 (fibres).</strong> For <span
+class="math inline">\(\varphi:R\to A\)</span> and <span
+class="math inline">\(\mathfrak p\in\operatorname{Spec}R\)</span>, the
+fibre over <span class="math inline">\(\mathfrak p\)</span> is naturally
+homeomorphic to</p>
+<p><span class="math display">\[
+\operatorname{Spec}(A\otimes_R\kappa(\mathfrak p)).
+\]</span></p>
+<p>It is nonempty exactly when this tensor product is a nonzero
+ring.</p>
+<p><strong>Proof.</strong> First invert <span
+class="math inline">\(S=R\setminus\mathfrak p\)</span> in <span
+class="math inline">\(A\)</span>, and then quotient by the extended
+ideal <span class="math inline">\(\mathfrak p\)</span>. The resulting
+ring is</p>
+<p><span class="math display">\[
+S^{-1}A/\mathfrak p S^{-1}A\cong A\otimes_R\kappa(\mathfrak p),
+\]</span></p>
+<p>by Proposition 1.3 and the quotient property of tensor products. Its
+primes correspond exactly to primes <span
+class="math inline">\(Q\)</span> of <span
+class="math inline">\(A\)</span> containing <span
+class="math inline">\(\varphi(\mathfrak p)\)</span> and avoiding <span
+class="math inline">\(\varphi(S)\)</span>. These conditions say <span
+class="math inline">\(\varphi^{-1}(Q)=\mathfrak p\)</span>. The
+homeomorphisms for localization and quotient identify the induced
+subspace topologies at each step. Finally a ring has a prime exactly
+when it is nonzero, as proved in the preceding lesson. <span
+class="math inline">\(\square\)</span></p>
+<p>For <span class="math inline">\(\mathbb Z_{(p)}\)</span>, the
+surviving primes are <span class="math inline">\((0),(p)\)</span>. For
+<span class="math inline">\(\mathbb Z[1/p]\)</span>, every prime except
+<span class="math inline">\((p)\)</span> survives. In <span
+class="math inline">\(k[x,y]_{(x,y)}\)</span>, the surviving primes are
+all those contained in <span class="math inline">\((x,y)\)</span>,
+whereas in <span class="math inline">\(k[x,y]_x\)</span> they are all
+those avoiding <span class="math inline">\(x\)</span>. For example <span
+class="math inline">\((x)\)</span> survives the first operation but not
+the second; <span class="math inline">\((x-1,y)\)</span> survives the
+second but not the first.</p>
+<h2 id="finite-generators-near-a-point">4. Finite generators near a
+point</h2>
+<p>A nonzero ring is local exactly when its nonunits form an ideal. If
+it has a unique maximal ideal <span class="math inline">\(\mathfrak
+m\)</span>, every nonunit lies in some maximal ideal and therefore in
+<span class="math inline">\(\mathfrak m\)</span>, and no element of
+<span class="math inline">\(\mathfrak m\)</span> is a unit. Conversely
+an ideal consisting of all nonunits contains every proper ideal; it is
+the unique maximal ideal. Equivalently, a nonzero ring is local if for
+every <span class="math inline">\(a\)</span>, at least one of <span
+class="math inline">\(a,1-a\)</span> is a unit. In a local ring this
+follows because their sum is one. If two different maximal ideals
+existed, the Chinese remainder theorem would provide <span
+class="math inline">\(a\)</span> congruent to zero in one and one in the
+other, making both <span class="math inline">\(a\)</span> and <span
+class="math inline">\(1-a\)</span> nonunits.</p>
+<p>The Jacobson radical <span
+class="math inline">\(\operatorname{Jac}(R)\)</span> is the intersection
+of maximal ideals. An element <span class="math inline">\(a\)</span>
+lies in it exactly when <span class="math inline">\(1-ra\)</span> is a
+unit for every <span class="math inline">\(r\in R\)</span>. For the
+forward direction, a maximal ideal containing <span
+class="math inline">\(1-ra\)</span> would also contain <span
+class="math inline">\(ra\)</span>, a contradiction. For the reverse
+direction, if <span class="math inline">\(a\)</span> survives in <span
+class="math inline">\(R/\mathfrak m\)</span>, choose <span
+class="math inline">\(r\)</span> lifting its inverse in that field; then
+<span class="math inline">\(1-ra\)</span> is in <span
+class="math inline">\(\mathfrak m\)</span> and is not a unit.</p>
+<p><strong>Lemma 4.1 (determinant trick).</strong> If <span
+class="math inline">\(M\)</span> is finite, <span
+class="math inline">\(I\subset R\)</span> is an ideal, and an
+endomorphism <span class="math inline">\(\psi\)</span> satisfies <span
+class="math inline">\(\psi(M)\subset IM\)</span>, then</p>
+<p><span class="math display">\[
+\psi^n+c_1\psi^{n-1}+\cdots+c_n=0,
+\qquad c_j\in I^j,
+\]</span></p>
+<p>for some <span class="math inline">\(n\)</span>. If <span
+class="math inline">\(IM=M\)</span>, some <span
+class="math inline">\(1+i\)</span>, <span class="math inline">\(i\in
+I\)</span>, annihilates <span class="math inline">\(M\)</span>.</p>
+<p><strong>Proof.</strong> Choose generators <span
+class="math inline">\(m_1,\ldots,m_n\)</span> and coefficients <span
+class="math inline">\(a_{ij}\in I\)</span> with <span
+class="math inline">\(\psi(m_i)=\sum_j a_{ij}m_j\)</span>. In the column
+of generators, <span class="math inline">\((\psi\,1_n-A)m=0\)</span>.
+Its entries are commuting endomorphisms, so multiplication by its
+adjugate gives <span
+class="math inline">\(\det(\psi\,1_n-A)m=0\)</span>. The determinant is
+a monic polynomial in <span class="math inline">\(\psi\)</span>; a
+coefficient of degree <span class="math inline">\(n-j\)</span> uses
+<span class="math inline">\(j\)</span> entries of <span
+class="math inline">\(A\)</span>, hence lies in <span
+class="math inline">\(I^j\)</span>. It kills every generator and
+therefore <span class="math inline">\(M\)</span>. Taking <span
+class="math inline">\(\psi=1_M\)</span> when <span
+class="math inline">\(IM=M\)</span> gives an annihilator congruent to
+one modulo <span class="math inline">\(I\)</span>. For <span
+class="math inline">\(M=0\)</span> the last assertion holds with
+annihilator one. <span class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (Nakayama).</strong> If <span
+class="math inline">\(M\)</span> is finite, <span
+class="math inline">\(I\subset\operatorname{Jac}(R)\)</span>, and <span
+class="math inline">\(IM=M\)</span>, then <span
+class="math inline">\(M=0\)</span>. More generally, elements of a finite
+module over <span class="math inline">\((R,\mathfrak m)\)</span>
+generate it exactly when their residues span <span
+class="math inline">\(M/\mathfrak mM\)</span>.</p>
+<p><strong>Proof.</strong> The annihilator <span
+class="math inline">\(1+i\)</span> in Lemma 4.1 is a unit, so <span
+class="math inline">\(M=0\)</span>. For the generator assertion, let
+<span class="math inline">\(N\)</span> be the submodule spanned by the
+proposed elements. Their residues span precisely when <span
+class="math inline">\(M=N+\mathfrak mM\)</span>. The finite quotient
+<span class="math inline">\(M/N\)</span> is then equal to <span
+class="math inline">\(\mathfrak m(M/N)\)</span>, so vanishes. The
+reverse implication is immediate. <span
+class="math inline">\(\square\)</span></p>
+<p>Thus the least number of generators of a finite local module is</p>
+<p><span class="math display">\[
+\dim_{R/\mathfrak m}M/\mathfrak mM.
+\]</span></p>
+<p>Lifting a vector-space basis proves attainability. Every generating
+family must span that vector space, proving minimality. An irredundant
+finite generating family has linearly independent residues: a residue
+dependence with a coefficient not in <span
+class="math inline">\(\mathfrak m\)</span> lets one express a generator
+in the others and <span class="math inline">\(\mathfrak mM\)</span>;
+Nakayama then removes that generator. Finite generation cannot be
+omitted. The nonzero <span class="math inline">\(\mathbb
+Z_{(p)}\)</span>-module <span class="math inline">\(\mathbb Q\)</span>
+satisfies <span class="math inline">\(p\mathbb Q=\mathbb Q\)</span>.</p>
+<h2 id="recovering-global-information">5. Recovering global
+information</h2>
+<p><strong>Theorem 5.1 (local detection).</strong> An element, module,
+kernel, cokernel or homology module is zero exactly when its
+localizations at every maximal ideal are zero. In particular,
+injectivity, surjectivity and exactness can be checked at all maximal
+ideals, or at all prime ideals.</p>
+<p><strong>Proof.</strong> If <span class="math inline">\(x\in
+M\)</span> is nonzero, its annihilator is a proper ideal and lies in a
+maximal ideal <span class="math inline">\(\mathfrak m\)</span>. Equation
+(1.1) then says <span class="math inline">\(x/1\neq0\)</span> in <span
+class="math inline">\(M_{\mathfrak m}\)</span>: a denominator killing
+<span class="math inline">\(x\)</span> would belong both to its
+annihilator and to <span class="math inline">\(R\setminus\mathfrak
+m\)</span>. This proves the element assertion and hence the module
+assertion. Exactness of localization identifies localized kernels,
+cokernels and homology with the corresponding constructions on localized
+maps. Apply the module assertion to each of them. Maximal ideals are
+prime, so the version using all primes follows as well. <span
+class="math inline">\(\square\)</span></p>
+<p>There is also a useful version for an open cover. If <span
+class="math inline">\(D(f_1),\ldots,D(f_r)\)</span> cover the spectrum,
+vanishing can be checked on these finitely many localizations. Every
+maximal ideal belongs to some <span
+class="math inline">\(D(f_i)\)</span>, and localizing further at that
+maximal ideal proves the claim. Exactness and isomorphisms can therefore
+also be checked on this cover.</p>
+<p>Finite generation glues on such a cover. If each <span
+class="math inline">\(M_{f_i}\)</span> is finite, choose numerators of
+finitely many generators on each member and let <span
+class="math inline">\(N\subset M\)</span> be generated by all those
+numerators. Then <span class="math inline">\((M/N)_{f_i}=0\)</span> for
+all <span class="math inline">\(i\)</span>, so <span
+class="math inline">\(M=N\)</span>.</p>
+<p>Finite presentation glues too. We spell out the small algebraic point
+involved. If a module <span class="math inline">\(L\)</span> is finitely
+presented, the kernel of any finite-free surjection <span
+class="math inline">\(F\to L\)</span> is finite. Choose another
+finite-free surjection <span class="math inline">\(G\to L\)</span> with
+finite kernel <span class="math inline">\(K\)</span>. The pullback of
+<span class="math inline">\(F\to L\leftarrow G\)</span> is both <span
+class="math inline">\(K\oplus F\)</span> and <span
+class="math inline">\(K&#39;\oplus G\)</span>, where <span
+class="math inline">\(K&#39;=\ker(F\to L)\)</span>; these splittings
+exist because <span class="math inline">\(F,G\)</span> are free. Hence
+<span class="math inline">\(K&#39;\)</span> is finite as a direct
+summand of the finite module <span class="math inline">\(K\oplus
+F\)</span>. Now, if each <span class="math inline">\(M_{f_i}\)</span> is
+finitely presented, the preceding paragraph makes <span
+class="math inline">\(M\)</span> finite. Choose <span
+class="math inline">\(R^a\to M\)</span> onto, with kernel <span
+class="math inline">\(K\)</span>. Each <span
+class="math inline">\(K_{f_i}\)</span> is finite by the kernel
+observation. Gluing finite generation makes <span
+class="math inline">\(K\)</span> finite, proving finite presentation of
+<span class="math inline">\(M\)</span>.</p>
+<h2 id="where-a-module-is-visible">6. Where a module is visible</h2>
+<p>The support is</p>
+<p><span class="math display">\[
+\operatorname{Supp}_R M=\{\mathfrak p:M_{\mathfrak p}\neq0\}.
+\]</span></p>
+<p><strong>Proposition 6.1 (support calculus).</strong> In a short exact
+sequence <span class="math inline">\(0\to L\to M\to N\to0\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Supp}M=\operatorname{Supp}L\cup\operatorname{Supp}N.
+\]</span></p>
+<p>If <span class="math inline">\(M\)</span> is finite, then</p>
+<p><span class="math display">\[
+\operatorname{Supp}M=V(\operatorname{Ann}_R M).
+\]</span></p>
+<p>For any ideal <span class="math inline">\(I\)</span>, <span
+class="math inline">\(\operatorname{Supp}(R/I)=V(I)\)</span>.</p>
+<p><strong>Proof.</strong> The first assertion follows from localized
+exactness: the middle module vanishes exactly when the two outer modules
+vanish. If an annihilator of <span class="math inline">\(M\)</span> is
+outside <span class="math inline">\(\mathfrak p\)</span>, it becomes a
+unit and kills <span class="math inline">\(M_{\mathfrak p}\)</span>, so
+that module vanishes. Conversely, if <span
+class="math inline">\(M_{\mathfrak p}=0\)</span>, choose finite
+generators <span class="math inline">\(m_i\)</span> and denominators
+<span class="math inline">\(s_i\notin\mathfrak p\)</span> killing them.
+Their product annihilates all of <span class="math inline">\(M\)</span>
+and is outside <span class="math inline">\(\mathfrak p\)</span>. This
+proves the second assertion. Apply it to the cyclic module <span
+class="math inline">\(R/I\)</span>, whose annihilator is <span
+class="math inline">\(I\)</span>, to obtain the last assertion. <span
+class="math inline">\(\square\)</span></p>
+<p>For finite modules <span class="math inline">\(M,N\)</span>,</p>
+<p><span class="math display">\[
+\operatorname{Supp}(M\otimes_R N)
+=\operatorname{Supp}M\cap\operatorname{Supp}N.
+\tag{6.1}
+\]</span></p>
+<p>Indeed, localization and tensor products commute by the universal
+properties. If either localized factor vanishes, so does the tensor
+product. If both are nonzero, Nakayama makes their quotients by the
+local maximal ideal nonzero. Their tensor product over <span
+class="math inline">\(\kappa(\mathfrak p)\)</span> is nonzero: choose a
+nonzero vector in each and linear functionals taking them to one. This
+vector-space tensor product is a quotient of the localized tensor
+product, which therefore cannot vanish. The same argument gives <span
+class="math inline">\(\operatorname{Supp}(M/IM)=\operatorname{Supp}M\cap
+V(I)\)</span> for finite <span class="math inline">\(M\)</span>.</p>
+<p>Over <span class="math inline">\(\mathbb Z\)</span>, <span
+class="math inline">\(\operatorname{Supp}(\mathbb Z/n)\)</span> is the
+set of <span class="math inline">\((p)\)</span> with <span
+class="math inline">\(p\mid n\)</span>, for <span
+class="math inline">\(n\neq0\)</span>. On the other hand every
+localization of <span class="math inline">\(\mathbb Q\)</span> is <span
+class="math inline">\(\mathbb Q\)</span>, so its support is the whole
+spectrum. Equality with its annihilator locus happens even though it is
+not finite. To see why finiteness matters, take <span
+class="math inline">\(E=\bigoplus_p\mathbb Z/p\)</span>. Its support is
+all closed points and excludes <span class="math inline">\((0)\)</span>.
+That set is not closed. Its annihilator is zero, because no nonzero
+integer is divisible by all positive primes. Thus its support differs
+from <span class="math inline">\(V(\operatorname{Ann}E)\)</span>.</p>
+<p>Another instructive module over <span
+class="math inline">\(C=\prod_{n\geq1}\mathbb F_2\)</span> is <span
+class="math inline">\(C/J\)</span>, where <span
+class="math inline">\(J\)</span> is the finite-support ideal. At a
+coordinate prime it localizes to zero; at a non-coordinate prime, each
+finite-support idempotent vanishes locally, so <span
+class="math inline">\(J\)</span> localizes to zero and <span
+class="math inline">\((C/J)_{\mathfrak p}=C_{\mathfrak p}\)</span>.
+Every localization is therefore free, of rank zero or one. Nevertheless
+<span class="math inline">\(C/J\)</span> is not projective. If it were,
+the surjection <span class="math inline">\(C\to C/J\)</span> would split
+and its kernel would be generated by an idempotent <span
+class="math inline">\(e\)</span>: the corresponding projection of <span
+class="math inline">\(C\)</span> is multiplication by its value <span
+class="math inline">\(e\)</span> at one. Since <span
+class="math inline">\(e\in J\)</span> has finite support, <span
+class="math inline">\(eC\)</span> cannot contain all coordinate
+idempotents, although <span class="math inline">\(J\)</span> does. This
+contradiction shows why a pointwise freeness test needs a finiteness
+condition on relations.</p>
+<h2 id="the-arithmetic-line-now-proved">7. The arithmetic line, now
+proved</h2>
+<p>For <span class="math inline">\(\mathbb Z\to\mathbb Z[x]\)</span>,
+Theorem 3.2 identifies the fibres over <span
+class="math inline">\((0)\)</span> and <span
+class="math inline">\((p)\)</span> with <span
+class="math inline">\(\operatorname{Spec}\mathbb Q[x]\)</span> and <span
+class="math inline">\(\operatorname{Spec}\mathbb F_p[x]\)</span>. These
+are polynomial rings over fields, hence principal ideal domains. In the
+fibre over <span class="math inline">\((p)\)</span>, the primes are
+therefore <span class="math inline">\((p)\)</span> and <span
+class="math inline">\((p,g)\)</span>, where <span
+class="math inline">\(\bar g\)</span> is monic irreducible in <span
+class="math inline">\(\mathbb F_p[x]\)</span>. The latter ideals are
+maximal because their quotients are fields.</p>
+<p>In the generic fibre, the zero prime contracts to zero. A nonzero
+prime is generated by an irreducible polynomial in <span
+class="math inline">\(\mathbb Q[x]\)</span>. Clearing denominators and
+dividing the coefficients by their greatest common divisor gives a
+primitive polynomial <span class="math inline">\(f\in\mathbb
+Z[x]\)</span>, irreducible over <span class="math inline">\(\mathbb
+Q\)</span>, unique up to sign. We need the following form of Gauss’s
+lemma. A polynomial is primitive when no prime divides all its
+coefficients. The product of two primitive integer polynomials is
+primitive: reducing modulo any prime gives two nonzero polynomials over
+a field and therefore a nonzero product. Write a nonzero rational
+polynomial as <span class="math inline">\((a/b)h\)</span>, with <span
+class="math inline">\(h\)</span> primitive integral and <span
+class="math inline">\(a,b\)</span> coprime integers, <span
+class="math inline">\(b&gt;0\)</span>. If <span
+class="math inline">\(g=f(a/b)h\)</span> is integral, every coefficient
+of <span class="math inline">\(afh\)</span> is divisible by <span
+class="math inline">\(b\)</span>. Since <span
+class="math inline">\(fh\)</span> is primitive and <span
+class="math inline">\(a,b\)</span> are coprime, this forces <span
+class="math inline">\(b=1\)</span>. Thus divisibility of an integer
+polynomial by <span class="math inline">\(f\)</span> over <span
+class="math inline">\(\mathbb Q[x]\)</span> is already divisibility in
+<span class="math inline">\(\mathbb Z[x]\)</span>, and the contraction
+is exactly <span class="math inline">\((f)\)</span>. Also <span
+class="math inline">\(f\)</span> is irreducible in <span
+class="math inline">\(\mathbb Z[x]\)</span>: a nontrivial
+positive-degree factorization would persist over <span
+class="math inline">\(\mathbb Q\)</span>, while a nonunit constant
+factor would contradict primitivity.</p>
+<p>Every prime contracts to a prime of <span
+class="math inline">\(\mathbb Z\)</span>, so we have exhausted all
+possibilities:</p>
+<p><span class="math display">\[
+(0),\quad(p),\quad(f),\quad(p,g).
+\]</span></p>
+<p>The symbols <span class="math inline">\(f\)</span> and <span
+class="math inline">\(g\)</span> have the conditions just stated. We
+have proved the classification of primes. To conclude that only <span
+class="math inline">\((p,g)\)</span> are maximal also requires excluding
+maximal ideals in the generic fibre; <em>The Nullstellensatz and
+Jacobson rings</em> will give that conclusion. For a particular example,
+<span class="math inline">\((x)\)</span> is already seen to be
+nonmaximal because its quotient is <span class="math inline">\(\mathbb
+Z\)</span>. It specializes to <span class="math inline">\((p,x)\)</span>
+for every prime <span class="math inline">\(p\)</span>, exactly as the
+figure in <em>Spectra of rings</em> depicts.</p>
+<h2 id="exercises">8. Exercises</h2>
+<p><strong>Exercise 8.1 (first steps).</strong> Let <span
+class="math inline">\(T=\{r\in R:ar\in S\text{ for some }a\in
+R\}\)</span>, the saturation of <span class="math inline">\(S\)</span>.
+Show that <span class="math inline">\(T\)</span> is the inverse image of
+the units of <span class="math inline">\(S^{-1}R\)</span>, and that
+<span class="math inline">\(T^{-1}R\cong S^{-1}R\)</span>. Include the
+case <span class="math inline">\(0\in S\)</span>.</p>
+<p><strong>Exercise 8.2 (first steps).</strong> Compute the support of
+<span class="math inline">\(\mathbb Z/8\oplus\mathbb Q\)</span>. Compute
+also the support and annihilator of <span
+class="math inline">\(\bigoplus_p\mathbb Z/p\)</span>, and explain the
+different behavior of these two modules.</p>
+<p><strong>Exercise 8.3 (structural).</strong> Prove that a surjective
+endomorphism of a finite module over any commutative ring is invertible.
+No Noetherian hypothesis is allowed.</p>
+<p><strong>Exercise 8.4 (structural).</strong> Prove the tensor-product
+support identity for finite modules. Show explicitly why it fails for
+<span class="math inline">\(\mathbb Q\)</span> and <span
+class="math inline">\(\mathbb Z/5\)</span> over <span
+class="math inline">\(\mathbb Z\)</span>.</p>
+<p><strong>Exercise 8.5 (arithmetic).</strong> Determine the points of
+<span class="math inline">\(\operatorname{Spec}\mathbb Z[i]\)</span>
+above each point of <span
+class="math inline">\(\operatorname{Spec}\mathbb Z\)</span>, including
+the generic point. Give the residue fields in the closed fibres.</p>
+<p><strong>Exercise 8.6 (synthesis).</strong> Prove that a finite
+projective module over a local ring is free, and identify its rank with
+its minimal number of generators.</p>
+<h2 id="solutions">9. Solutions</h2>
+<p><strong>Solution 8.1.</strong> If <span class="math inline">\(ar=s\in
+S\)</span>, the element <span class="math inline">\(r/1\)</span> has
+inverse <span class="math inline">\(a/s\)</span>. Conversely, if <span
+class="math inline">\((r/1)(a/s)=1\)</span>, then <span
+class="math inline">\(u(ra-s)=0\)</span> for some <span
+class="math inline">\(u\in S\)</span>. Hence <span
+class="math inline">\((ua)r=us\in S\)</span>, so <span
+class="math inline">\(r\in T\)</span>. It follows that <span
+class="math inline">\(T\)</span> is multiplicative and contains <span
+class="math inline">\(S\)</span>, since the preimage of the group of
+units is multiplicative. The maps between the two localizations given by
+their universal properties are inverse: their composites fix <span
+class="math inline">\(R\)</span>, so uniqueness makes them identities.
+If <span class="math inline">\(0\in S\)</span>, then <span
+class="math inline">\(T=R\)</span> and both rings are zero. This
+includes the convention that the sole element of the zero ring is its
+identity and is a unit.</p>
+<p><strong>Solution 8.2.</strong> The torsion summand has support <span
+class="math inline">\(\{(2)\}\)</span>, and <span
+class="math inline">\(\mathbb Q\)</span> has support all of <span
+class="math inline">\(\operatorname{Spec}\mathbb Z\)</span>. The
+direct-sum support is their union, hence the whole spectrum, a closed
+set. For <span class="math inline">\(E=\bigoplus_p\mathbb Z/p\)</span>,
+localization at <span class="math inline">\((q)\)</span> leaves exactly
+its <span class="math inline">\(q\)</span>-summand: every other summand
+is killed by a denominator <span
+class="math inline">\(p\notin(q)\)</span>. At <span
+class="math inline">\((0)\)</span>, each element uses finitely many
+summands and is killed by a nonzero integer, so its localization is
+zero. Thus the support is all closed points. Its annihilator is <span
+class="math inline">\(\bigcap_p p\mathbb Z=0\)</span>, whose vanishing
+locus also contains <span class="math inline">\((0)\)</span>. There is
+no single nonzero integer killing all generators. This is the step where
+the finite-module proof of Proposition 6.1 fails.</p>
+<p><strong>Solution 8.3.</strong> Give <span
+class="math inline">\(M\)</span> an <span
+class="math inline">\(R[t]\)</span>-module structure with <span
+class="math inline">\(t\)</span> acting by the endomorphism <span
+class="math inline">\(\psi\)</span>. It is finite over <span
+class="math inline">\(R[t]\)</span>, since its original generators still
+generate it. Surjectivity means <span
+class="math inline">\(tM=M\)</span>. Lemma 4.1 supplies an annihilator
+<span class="math inline">\(1+tq(t)\)</span> for some <span
+class="math inline">\(q(t)\in R[t]\)</span>. Translating the action
+gives <span class="math inline">\(1_M+\psi q(\psi)=0\)</span>. Hence
+<span class="math inline">\(-q(\psi)\)</span> is a two-sided inverse to
+<span class="math inline">\(\psi\)</span>; polynomial expressions in
+<span class="math inline">\(\psi\)</span> commute with <span
+class="math inline">\(\psi\)</span>. The radical form of Nakayama is not
+needed, because <span class="math inline">\((t)\)</span> need not be in
+the Jacobson radical of <span class="math inline">\(R[t]\)</span>.</p>
+<p><strong>Solution 8.4.</strong> At a prime, a zero localized factor
+gives a zero tensor product. If both finite localized factors are
+nonzero, Nakayama makes their residue vector spaces nonzero. Tensoring
+those vector spaces gives a nonzero quotient of <span
+class="math inline">\((M\otimes N)_{\mathfrak p}\)</span>, proving the
+reverse inclusion. For the proposed infinite example, multiplication by
+<span class="math inline">\(5\)</span> is invertible on <span
+class="math inline">\(\mathbb Q\)</span> and zero on <span
+class="math inline">\(\mathbb Z/5\)</span>. Thus for a pure tensor <span
+class="math inline">\(q\otimes\bar a\)</span>, writing <span
+class="math inline">\(q=5(q/5)\)</span> gives <span
+class="math inline">\(q\otimes\bar a=(q/5)\otimes5\bar a=0\)</span>. But
+the intersection of the two supports contains <span
+class="math inline">\((5)\)</span>. The identity therefore fails without
+the stated finiteness hypothesis.</p>
+<p><strong>Solution 8.5.</strong> Present <span
+class="math inline">\(\mathbb Z[i]=\mathbb Z[T]/(T^2+1)\)</span>. The
+generic fibre is <span class="math inline">\(\mathbb
+Q[T]/(T^2+1)=\mathbb Q(i)\)</span>, a field, so there is exactly one
+point over <span class="math inline">\((0)\)</span>, namely <span
+class="math inline">\((0)\)</span>. The fibre over <span
+class="math inline">\((p)\)</span> is <span
+class="math inline">\(\mathbb F_p[T]/(T^2+1)\)</span>. If <span
+class="math inline">\(p=2\)</span>, the polynomial is <span
+class="math inline">\((T+1)^2\)</span>, giving one point <span
+class="math inline">\((2,i+1)=(1+i)\)</span> with residue field <span
+class="math inline">\(\mathbb F_2\)</span>; the equality follows from
+<span class="math inline">\(2=-i(1+i)^2\)</span> and <span
+class="math inline">\(i+1=1+i\)</span>, together with the quotient of
+order two.</p>
+<p>For an odd prime, <span class="math inline">\(\mathbb
+F_p^\times\)</span> is cyclic of order <span
+class="math inline">\(p-1\)</span>. Here is a proof of the needed fact.
+In any finite subgroup <span class="math inline">\(G\)</span> of a
+field’s multiplicative group, let <span class="math inline">\(e\)</span>
+be the least common multiple of the element orders. For each prime power
+exactly dividing <span class="math inline">\(e\)</span>, choose an
+element whose order contains that power, and raise it to obtain an
+element of exactly that prime-power order. The product of these elements
+has order <span class="math inline">\(e\)</span>, because they commute
+and have pairwise coprime orders. Every element of <span
+class="math inline">\(G\)</span> is a root of <span
+class="math inline">\(T^e-1\)</span>, so <span
+class="math inline">\(|G|\leq e\)</span> by the polynomial root bound.
+The element of order <span class="math inline">\(e\)</span> also gives
+<span class="math inline">\(e\leq|G|\)</span>. Thus <span
+class="math inline">\(G\)</span> is cyclic.</p>
+<p>A square root of <span class="math inline">\(-1\)</span> exists
+exactly when <span class="math inline">\(4\mid p-1\)</span>: in a cyclic
+group, the unique order-two element is a square exactly when the group
+order is divisible by four. If <span
+class="math inline">\(p\equiv1\pmod4\)</span>, choose a root <span
+class="math inline">\(a\)</span>; there are two distinct primes <span
+class="math inline">\((p,i-a)\)</span> and <span
+class="math inline">\((p,i+a)\)</span>, both with residue field <span
+class="math inline">\(\mathbb F_p\)</span>. If <span
+class="math inline">\(p\equiv3\pmod4\)</span>, the polynomial is
+irreducible, giving one prime <span class="math inline">\((p)\)</span>
+with residue field <span class="math inline">\(\mathbb F_{p^2}\)</span>.
+These possibilities exhaust the points by Theorem 3.2.</p>
+<p><strong>Solution 8.6.</strong> Put <span
+class="math inline">\(r=\dim_\kappa P/\mathfrak mP\)</span>, lift a
+basis, and use Nakayama to obtain a surjection <span
+class="math inline">\(R^r\to P\)</span>. Projectivity splits it, so
+<span class="math inline">\(R^r=K\oplus P\)</span> with <span
+class="math inline">\(K\)</span> finite: a direct summand of a finite
+module is generated by the projections of its generators. Modulo <span
+class="math inline">\(\mathfrak m\)</span>, the induced map <span
+class="math inline">\(\kappa^r\to P/\mathfrak mP\)</span> is an
+isomorphism, so the splitting gives <span
+class="math inline">\(K/\mathfrak mK=0\)</span>. Nakayama gives <span
+class="math inline">\(K=0\)</span>. Therefore <span
+class="math inline">\(P\cong R^r\)</span>. The number <span
+class="math inline">\(r\)</span> is simultaneously its free rank and its
+minimal number of generators, by Section 4. The zero module is included
+with <span class="math inline">\(r=0\)</span>.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not
+prove</h2>
+<p>All localization, local detection, Nakayama and support assertions
+taught above have been proved, as have the two elementary polynomial and
+finite-field facts needed for the arithmetic examples. We do not yet
+prove that every maximal ideal of <span class="math inline">\(\mathbb
+Z[x]\)</span> contracts to a nonzero prime of <span
+class="math inline">\(\mathbb Z\)</span>; that result belongs to <em>The
+Nullstellensatz and Jacobson rings</em>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The Stacks project authors, <em>The Stacks project</em>, Commutative
+Algebra: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-universal-property-localization">Tag
+00CP</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-localization-exact">Tag
+00CS</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-hom-from-finitely-presented">Tag
+0583</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-spec-localization">Tag
+00E3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-NAK">Tag
+00DV</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-support-closed">Tag
+00L2</a>.</li>
+<li>Timothy J. Ford, <em>Commutative Algebra</em>, version of 23 September 2026, Chapter 1, Section 5 on Nakayama's Lemma; Chapter 3, Section 1 on localization and its local-to-global lemmas, and Section 3 on the prime spectrum; Chapter 7, Section 2 on the support of a module. <a href="https://tim4datfau.github.io/Timothy-Ford-at-FAU/preprints/CA.pdf">Author's version</a>.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, Section 8.2. <a
+href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Author’s
+public draft</a>.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

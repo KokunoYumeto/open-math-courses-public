@@ -1,0 +1,1457 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="94A62C4BE0F39475DB008E15C10467B9755161371BF418B7B09A55263C5A5DD6">
+<title>Polynomial and contour interfaces for stable boundary models — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-AN-03/stable-prerequisite-bridges</span></nav>
+<article id="lesson" class="lesson"><h1 id="polynomial-and-contour-interfaces-for-stable-boundary-models">Polynomial and contour interfaces for stable boundary models</h1>
+<p>Stable modes of a boundary model require polynomial projections and contour moments at every nilpotent pole order. This lesson establishes those tools; <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a> applies them.</p>
+<p>Section 13 of <a href="metric-foundation-bridges.html#original-scalar-calculus-and-its-finite-coordinate-receivers">Metric and topological foundations</a> proves the full original scalar and finite-coordinate calculus. Its Section 13.12 gives the exact Gaussian, Rayleigh, logarithmic-contour, matrix and half-line receiving maps, retaining every original factor, endpoint and norm.</p>
+<p>The complete original real-number, compactness, extrema and finite-norm proofs are in Section 12 of <a href="metric-foundation-bridges.html#real-numbers-and-finite-dimensional-topology">Metric and topological foundations</a>. Its Section 12.10 gives the exact receiving minimum and spectral-contour maps; the original coordinates, norms and constants are retained.</p>
+<p>The route has three steps: scalar polynomial division and Bézout give finite algebraic projections; triangularization gives Cayley–Hamilton without using those projections; and directly integrated power series give the contour moments needed for every nilpotent pole order. This last step concerns globally convergent power-series numerators. It does not assert a Cauchy theorem for arbitrary holomorphic functions on arbitrary domains.</p>
+<h2 id="AN03-SPR-001"><span id="an03-spr-001"></span><span id="an03-spr-001-the-finite-entry-base"></span><span id="1-facts-used-from-earlier-lessons"></span><span id="facts-used-from-earlier-lessons"></span>1. Facts used from earlier lessons</h2>
+<p>We use the entry facts from <a href="prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a>, including real multivariable calculus, Taylor's formula, smooth compact cutoffs, absolutely integrable change of variables and Fubini, dominated convergence and differentiation, Cauchy–Schwarz, real completeness, finite-dimensional compactness, and the stated Schwartz-space and continuous-dual conventions. This companion needs only the following finite algebra and calculus part of that base, with elementary conventions made explicit.</p>
+<p>Sections 10.1--10.9 prove the following finite algebra facts at the stated real/complex scalar base: field arithmetic over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>; finite polynomial arithmetic and induction on degree; basis extension, rank-nullity and direct sums in finite dimension; matrix multiplication, inverses, adjoints and operator norms; determinant multiplicativity, triangular and block-triangular determinants, elementary row operations, the characteristic-polynomial eigenvalue criterion and invariance under change of basis; continuity of determinants and matrix inversion; and trace and rank for projections. Sections 9.1--9.4 prove complex-root existence and full finite factorization with the original leading coefficient and all multiplicities. Sections 9.6--9.7 prove determinant identities, the actual root-to-kernel map and both invariant quotient constructions used below. Section 10.10 proves their exact receiving maps for the earlier spectral and metric arguments. No Jordan decomposition is assumed.</p>
+<p>The calculus requirements are the real chain rule and fundamental theorem of calculus on compact intervals, the elementary derivatives of the real logarithm and arctangent, the scalar exponential series, locally uniform power-series calculus, and differentiation or integration of series when the differentiated series converge uniformly on the compact set in question. Ordinary piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path integration is defined below by real parametrization. Sections 11.1--11.4 prove matrix-entry dominated differentiation, its original operator-norm comparison and its exact piecewise path integral; Section 11.5 gives the full ordered resolvent and time-derivative receivers. These are the elementary facts used in the arguments below. In particular, the rule allowing termwise differentiation does not include an unstated theorem that every holomorphic function has a global power series.</p>
+<h2 id="AN03-SPR-002"><span id="an03-spr-002"></span><span id="an03-spr-002-the-scalar-polynomial-reading-contract"></span><span id="2-scalar-polynomial-division-and-bezout"></span>2. Scalar polynomial division and Bézout</h2>
+<p>For a field <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(f,g\in F[z]\)">\(f,g\in F[z]\)</span> and <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span>, the division interface supplies unique polynomials <span class="math" data-tex="\(q,r\)">\(q,r\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+f=gq+r,\qquad r=0\quad\hbox{or}\quad\deg r&lt;\deg g.
+\]">\[
+f=gq+r,\qquad r=0\quad\hbox{or}\quad\deg r&lt;\deg g.
+\]</span>
+<p>For <span class="math" data-tex="\(p,q\in F[z]\)">\(p,q\in F[z]\)</span> not both zero, the Bézout interface supplies a unique monic greatest common divisor <span class="math" data-tex="\(d\)">\(d\)</span> and polynomials <span class="math" data-tex="\(a,b\)">\(a,b\)</span> with</p>
+<span class="math math-display" data-tex="\[
+d=ap+bq.
+\]">\[
+d=ap+bq.
+\]</span>
+<p>Here <span class="math" data-tex="\(d\)">\(d\)</span> divides both <span class="math" data-tex="\(p,q\)">\(p,q\)</span>, and every common divisor divides <span class="math" data-tex="\(d\)">\(d\)</span>. In particular, relatively prime polynomials have a combination equal to <span class="math" data-tex="\(1\)">\(1\)</span>. We use these assertions with <span class="math" data-tex="\(F=\mathbb C\)">\(F=\mathbb C\)</span>.</p>
+<p><strong>Proof of division.</strong> Let <span class="math" data-tex="\(e=\deg g\)">\(e=\deg g\)</span> and let <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span> be its leading coefficient. If <span class="math" data-tex="\(f=0\)">\(f=0\)</span> or <span class="math" data-tex="\(\deg f&lt;e\)">\(\deg f&lt;e\)</span>, take <span class="math" data-tex="\(q=0\)">\(q=0\)</span> and <span class="math" data-tex="\(r=f\)">\(r=f\)</span>. Otherwise let <span class="math" data-tex="\(d=\deg f\)">\(d=\deg f\)</span>, with leading coefficient <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, and subtract <span class="math" data-tex="\((a/b)z^{d-e}g\)">\((a/b)z^{d-e}g\)</span> from <span class="math" data-tex="\(f\)">\(f\)</span>. The leading terms cancel, so the difference is zero or has degree strictly below <span class="math" data-tex="\(d\)">\(d\)</span>. Repeating this step terminates because the degree of a nonzero remainder decreases at every step. The sum of the subtracted monomials is <span class="math" data-tex="\(q\)">\(q\)</span>, and the final difference is the required <span class="math" data-tex="\(r\)">\(r\)</span>. This includes a constant divisor and the zero dividend. If <span class="math" data-tex="\(f=gq+r=gq&#x27;+r&#x27;\)">\(f=gq+r=gq&#x27;+r&#x27;\)</span> with both remainders zero or of degree below <span class="math" data-tex="\(e\)">\(e\)</span>, then <span class="math" data-tex="\(g(q-q&#x27;)=r&#x27;-r\)">\(g(q-q&#x27;)=r&#x27;-r\)</span>. A nonzero left side has degree at least <span class="math" data-tex="\(e\)">\(e\)</span>, whereas the right side is zero or has degree below <span class="math" data-tex="\(e\)">\(e\)</span>. Therefore <span class="math" data-tex="\(q=q&#x27;\)">\(q=q&#x27;\)</span> and <span class="math" data-tex="\(r=r&#x27;\)">\(r=r&#x27;\)</span>.</p>
+<p><strong>Proof of Bézout and the gcd claim.</strong> The set of combinations <span class="math" data-tex="\(ap+bq\)">\(ap+bq\)</span>, with <span class="math" data-tex="\(a,b\in F[z]\)">\(a,b\in F[z]\)</span>, contains a nonzero polynomial because <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are not both zero. Keep a least-degree nonzero combination <span class="math" data-tex="\(\delta=a^{(0)}p+b^{(0)}q\)">\(\delta=a^{(0)}p+b^{(0)}q\)</span> with its original leading coefficient <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>. Divide each original polynomial by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, using the full pivot coefficient <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> in the division step proved above. The remainder is still a combination and has smaller degree; it must therefore be zero. Thus <span class="math" data-tex="\(\delta\)">\(\delta\)</span> divides both polynomials and every common divisor divides <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Define the comparison name <span class="math" data-tex="\(d=\kappa^{-1}\delta\)">\(d=\kappa^{-1}\delta\)</span>, retaining the identity <span class="math" data-tex="\(\delta=\kappa d\)">\(\delta=\kappa d\)</span> and the full Bézout coefficients <span class="math" data-tex="\(\kappa^{-1}a^{(0)},\kappa^{-1}b^{(0)}\)">\(\kappa^{-1}a^{(0)},\kappa^{-1}b^{(0)}\)</span>. Formula (CR13) proves this exact scalar-unit map and its inverse. Consequently <span class="math" data-tex="\(d\)">\(d\)</span> has the same ideal and divisibility properties. For example dividing <span class="math" data-tex="\(p\)">\(p\)</span> by <span class="math" data-tex="\(d\)">\(d\)</span> has zero remainder: both <span class="math" data-tex="\(p,q\)">\(p,q\)</span> belong to the original combination ideal and the divisor <span class="math" data-tex="\(d\)">\(d\)</span> is its displayed nonzero unit comparison. The same map proves that <span class="math" data-tex="\(d\)">\(d\)</span> divides <span class="math" data-tex="\(q\)">\(q\)</span>. Every common divisor of <span class="math" data-tex="\(p,q\)">\(p,q\)</span> divides the original combination and hence divides <span class="math" data-tex="\(d\)">\(d\)</span>. The chosen representation of <span class="math" data-tex="\(d\)">\(d\)</span> is the Bézout identity. If another monic polynomial has the same gcd property, each divides the other; both quotients have degree zero and monicity makes them <span class="math" data-tex="\(1\)">\(1\)</span>. This proves uniqueness, including when exactly one of <span class="math" data-tex="\(p,q\)">\(p,q\)</span> is zero. The excluded pair <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> has no monic greatest common divisor under this convention.</p>
+<p>Thomas W. Judson, <a href="https://github.com/twjudson/aata/blob/3069910e3ded72ff5e18837a97a0e810c92790e2/src/poly.xml#L307-L390"><em>Abstract Algebra: Theory and Applications</em>, polynomial division</a>, proves scalar division; the same chapter's <a href="https://github.com/twjudson/aata/blob/3069910e3ded72ff5e18837a97a0e810c92790e2/src/poly.xml#L590-L676">gcd proposition</a> proves Bézout. The two details below specify the cases used here.</p>
+<p>Two details in the division and gcd proofs matter here. The original nonzero element of the linear-combination ideal remains the working divisor. Its monic comparison retains the full leading coefficient and inverse in (CR14). Uniqueness of the monic gcd follows from mutual divisibility: the quotient is constant by degree, and monicity makes it <span class="math" data-tex="\(1\)">\(1\)</span>. Monicity and equality of degrees alone would not prove equality. The pair <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span> is excluded from this monic-gcd contract. The division assertion includes the zero dividend and a nonzero constant divisor, and does not assign a degree to the zero remainder.</p>
+<p>This is scalar division. The typed division <span class="math" data-tex="\(B=Qp+R\)">\(B=Qp+R\)</span> for a monic <span class="math" data-tex="\(\operatorname{End}(E)\)">\(\operatorname{End}(E)\)</span>-valued polynomial <span class="math" data-tex="\(p\)">\(p\)</span> and a <span class="math" data-tex="\(\operatorname{Hom}(E,G)\)">\(\operatorname{Hom}(E,G)\)</span>-valued polynomial <span class="math" data-tex="\(B\)">\(B\)</span> is proved separately in <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a>, Problem 3. That argument keeps <span class="math" data-tex="\(Q\)">\(Q\)</span> on the left and preserves every coefficient order; it is not an application of the scalar reading to a noncommutative coefficient ring.</p>
+<h2 id="AN03-SPR-003"><span id="an03-spr-003"></span><span id="an03-spr-003-from-coprime-factors-to-projections"></span><span id="3-from-coprime-factors-to-projections"></span><span id="from-coprime-factors-to-projections"></span>3. From coprime factors to projections</h2>
+<p>Let <span class="math" data-tex="\(h_1,\ldots,h_r\in\mathbb C[z]\)">\(h_1,\ldots,h_r\in\mathbb C[z]\)</span> be pairwise relatively prime nonconstant polynomials, with <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+H=\prod_{j=1}^r h_j,\qquad H_j=\prod_{k\ne j}h_k.
+\]">\[
+H=\prod_{j=1}^r h_j,\qquad H_j=\prod_{k\ne j}h_k.
+\]</span>
+<p>There are polynomials <span class="math" data-tex="\(e_j\)">\(e_j\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+e_j\equiv1\pmod {h_j},\qquad e_j\equiv0\pmod {h_k}\quad(k\ne j),
+\]">\[
+e_j\equiv1\pmod {h_j},\qquad e_j\equiv0\pmod {h_k}\quad(k\ne j),
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\sum_j e_j\equiv1\pmod H,\qquad
+e_j^2\equiv e_j\pmod H,\qquad e_je_k\equiv0\pmod H\quad(j\ne k).
+\]">\[
+\sum_j e_j\equiv1\pmod H,\qquad
+e_j^2\equiv e_j\pmod H,\qquad e_je_k\equiv0\pmod H\quad(j\ne k).
+\]</span>
+<p>If <span class="math" data-tex="\(A\in\operatorname{End}(V)\)">\(A\in\operatorname{End}(V)\)</span> satisfies <span class="math" data-tex="\(H(A)=0\)">\(H(A)=0\)</span>, the maps <span class="math" data-tex="\(E_j=e_j(A)\)">\(E_j=e_j(A)\)</span> are commuting projections whose pairwise products are zero and whose sum is <span class="math" data-tex="\(I_V\)">\(I_V\)</span>. They give the direct sum</p>
+<span class="math math-display" data-tex="\[
+V=\bigoplus_{j=1}^r\ker h_j(A),\qquad
+\operatorname{im}E_j=\ker h_j(A).
+\]">\[
+V=\bigoplus_{j=1}^r\ker h_j(A),\qquad
+\operatorname{im}E_j=\ker h_j(A).
+\]</span>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(h_j\)">\(h_j\)</span> and <span class="math" data-tex="\(H_j\)">\(H_j\)</span> are relatively prime. For each <span class="math" data-tex="\(k\ne j\)">\(k\ne j\)</span>, choose <span class="math" data-tex="\(u_kh_j+v_kh_k=1\)">\(u_kh_j+v_kh_k=1\)</span> by Bézout. Multiply these finitely many identities. The term using every <span class="math" data-tex="\(v_kh_k\)">\(v_kh_k\)</span> is <span class="math" data-tex="\((\prod_{k\ne j}v_k)H_j\)">\((\prod_{k\ne j}v_k)H_j\)</span>; every other term has a factor <span class="math" data-tex="\(h_j\)">\(h_j\)</span>. Grouping those terms gives an identity</p>
+<span class="math math-display" data-tex="\[
+a_jh_j+b_jH_j=1.
+\]">\[
+a_jh_j+b_jH_j=1.
+\]</span>
+<p>For <span class="math" data-tex="\(r=1\)">\(r=1\)</span>, this is simply <span class="math" data-tex="\(0h_1+1\cdot1=1\)">\(0h_1+1\cdot1=1\)</span>. Set <span class="math" data-tex="\(e_j=b_jH_j\)">\(e_j=b_jH_j\)</span>. Its stated individual congruences follow immediately.</p>
+<p>We also need divisibility by the whole product. If <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are coprime, <span class="math" data-tex="\(u\mid vw\)">\(u\mid vw\)</span> implies <span class="math" data-tex="\(u\mid w\)">\(u\mid w\)</span>: multiply <span class="math" data-tex="\(au+bv=1\)">\(au+bv=1\)</span> by <span class="math" data-tex="\(w\)">\(w\)</span>. Consequently, if both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> divide <span class="math" data-tex="\(f=uw\)">\(f=uw\)</span>, then <span class="math" data-tex="\(v\mid w\)">\(v\mid w\)</span> and <span class="math" data-tex="\(uv\mid f\)">\(uv\mid f\)</span>. Multiplying Bézout identities as above shows that any subproduct of the <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is coprime to the next factor. Induction now proves that divisibility by each <span class="math" data-tex="\(h_j\)">\(h_j\)</span> implies divisibility by <span class="math" data-tex="\(H\)">\(H\)</span>. Apply this to <span class="math" data-tex="\(\sum_j e_j-1\)">\(\sum_j e_j-1\)</span>, <span class="math" data-tex="\(e_j^2-e_j\)">\(e_j^2-e_j\)</span> and <span class="math" data-tex="\(e_je_k\)">\(e_je_k\)</span>, whose remainders modulo every factor vanish.</p>
+<p>Evaluation of scalar polynomials at one operator preserves sums and products: expansion of a product gives the same finite coefficient sum because powers of <span class="math" data-tex="\(A\)">\(A\)</span> commute. Multiples of <span class="math" data-tex="\(H\)">\(H\)</span> therefore evaluate to zero. This proves the projection identities. Further, <span class="math" data-tex="\(h_je_j=b_jH\)">\(h_je_j=b_jH\)</span>, so <span class="math" data-tex="\(h_j(A)E_j=0\)">\(h_j(A)E_j=0\)</span> and <span class="math" data-tex="\(\operatorname{im}E_j\subseteq\ker h_j(A)\)">\(\operatorname{im}E_j\subseteq\ker h_j(A)\)</span>. If <span class="math" data-tex="\(h_j(A)v=0\)">\(h_j(A)v=0\)</span>, evaluating <span class="math" data-tex="\(1-e_j=a_jh_j\)">\(1-e_j=a_jh_j\)</span> on <span class="math" data-tex="\(v\)">\(v\)</span> gives <span class="math" data-tex="\(v=E_jv\)">\(v=E_jv\)</span>, proving the reverse inclusion. The sum identity represents every vector as a sum from the images. If <span class="math" data-tex="\(\sum_jv_j=0\)">\(\sum_jv_j=0\)</span> with <span class="math" data-tex="\(v_j\in\operatorname{im}E_j\)">\(v_j\in\operatorname{im}E_j\)</span>, applying <span class="math" data-tex="\(E_k\)">\(E_k\)</span> gives <span class="math" data-tex="\(v_k=0\)">\(v_k=0\)</span>; the sum is direct. This proves every assertion.</p>
+<p>The empty list is relevant only with <span class="math" data-tex="\(H=1\)">\(H=1\)</span>. The hypothesis <span class="math" data-tex="\(H(A)=0\)">\(H(A)=0\)</span> then says <span class="math" data-tex="\(I_V=0\)">\(I_V=0\)</span>, so <span class="math" data-tex="\(V=0\)">\(V=0\)</span>; the empty direct sum and empty sum of projections give exactly that zero space. Powers of distinct linear factors are pairwise coprime: otherwise a nonconstant common divisor has a complex root, which would have to be both distinct roots. No square-free or simple-root assumption has been made.</p>
+<h2 id="AN03-SPR-004"><span id="an03-spr-004"></span><span id="an03-spr-004-cayleyhamilton-from-an-invariant-flag"></span><span id="4-cayleyhamilton-from-an-invariant-flag"></span><span id="cayleyhamilton-from-an-invariant-flag"></span><span id="4-cayley-hamilton-from-an-invariant-flag"></span>4. Cayley–Hamilton from an invariant flag</h2>
+<p>Every endomorphism of a finite-dimensional complex vector space has an upper-triangular matrix in some basis; see <a href="https://github.com/rbeezer/fcla/blob/347f27fe909b54b26970bcc0fcbf69c7e853c766/src/section-OD.xml#L108-L201">Robert A. Beezer, <em>A First Course in Linear Algebra</em>, Theorem UTMR</a>. The zero-dimensional case is the empty basis. Section 9.7 proves both exact routes from the original eigenvalue: the invariant range of <span class="math" data-tex="\(A-\lambda I\)">\(A-\lambda I\)</span> and the eigenline quotient used in the proof below. Both retain their full coordinate changes and block determinants. The induction uses rank-nullity and basis extension and does not depend on Cayley–Hamilton or a primary decomposition.</p>
+<p><strong>Proof of triangularization.</strong> Induct on <span class="math" data-tex="\(n=\dim V\)">\(n=\dim V\)</span>. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the empty basis works. For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the complete proof in Sections 9.1--9.4 gives a root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(\det(zI-A)\)">\(\det(zI-A)\)</span>, so the exact free-coordinate kernel map (CR19) gives a nonzero eigenvector of <span class="math" data-tex="\(A\)">\(A\)</span>, which we denote by <span class="math" data-tex="\(v_1\)">\(v_1\)</span>. Its span is invariant. The induced operator on the quotient by this line acts on a space of dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>; by induction choose an upper-triangular quotient basis and lift its vectors in order to <span class="math" data-tex="\(v_2,\ldots,v_n\)">\(v_2,\ldots,v_n\)</span>. For each <span class="math" data-tex="\(j&gt;1\)">\(j&gt;1\)</span>, upper triangularity in the quotient says that <span class="math" data-tex="\(Av_j\)">\(Av_j\)</span> is a linear combination of <span class="math" data-tex="\(v_1,\ldots,v_j\)">\(v_1,\ldots,v_j\)</span>. The same is true for <span class="math" data-tex="\(Av_1=\lambda v_1\)">\(Av_1=\lambda v_1\)</span>. Thus the lifted basis makes <span class="math" data-tex="\(A\)">\(A\)</span> upper triangular. The induction uses neither Cayley–Hamilton nor a primary decomposition.</p>
+<p>For every finite-dimensional complex vector space <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(A\in\operatorname{End}(V)\)">\(A\in\operatorname{End}(V)\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\chi_A(z)=\det(zI_V-A).
+\]">\[
+\chi_A(z)=\det(zI_V-A).
+\]</span>
+<p>Then <span class="math" data-tex="\(\chi_A(A)=0\)">\(\chi_A(A)=0\)</span>, with no restriction on eigenvalue multiplicities, diagonalizability or invertibility.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(n=\dim V&gt;0\)">\(n=\dim V&gt;0\)</span>, choose the triangular basis <span class="math" data-tex="\(v_1,\ldots,v_n\)">\(v_1,\ldots,v_n\)</span>, and let its diagonal entries be <span class="math" data-tex="\(\lambda_1,\ldots,\lambda_n\)">\(\lambda_1,\ldots,\lambda_n\)</span>. Put <span class="math" data-tex="\(V_j=\operatorname{span}(v_1,\ldots,v_j)\)">\(V_j=\operatorname{span}(v_1,\ldots,v_j)\)</span>, including <span class="math" data-tex="\(V_0=0\)">\(V_0=0\)</span>. Upper triangularity says <span class="math" data-tex="\(AV_j\subseteq V_j\)">\(AV_j\subseteq V_j\)</span>. More precisely,</p>
+<span class="math math-display" data-tex="\[
+(A-\lambda_j I)V_j\subseteq V_{j-1}.
+\]">\[
+(A-\lambda_j I)V_j\subseteq V_{j-1}.
+\]</span>
+<p>Indeed, on <span class="math" data-tex="\(v_j\)">\(v_j\)</span> subtracting <span class="math" data-tex="\(\lambda_jv_j\)">\(\lambda_jv_j\)</span> removes the last possible coordinate; on each earlier basis vector both terms already lie in <span class="math" data-tex="\(V_{j-1}\)">\(V_{j-1}\)</span>.</p>
+<p>For <span class="math" data-tex="\(v\in V_n\)">\(v\in V_n\)</span>, apply the factor <span class="math" data-tex="\(A-\lambda_n I\)">\(A-\lambda_n I\)</span> first, then <span class="math" data-tex="\(A-\lambda_{n-1}I\)">\(A-\lambda_{n-1}I\)</span>, and continue downward. The intermediate vectors lie successively in <span class="math" data-tex="\(V_{n-1},V_{n-2},\ldots,V_0\)">\(V_{n-1},V_{n-2},\ldots,V_0\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+(A-\lambda_1I)\cdots(A-\lambda_nI)v=0.
+\]">\[
+(A-\lambda_1I)\cdots(A-\lambda_nI)v=0.
+\]</span>
+<p>All factors are polynomials in <span class="math" data-tex="\(A\)">\(A\)</span> and hence commute. The triangular determinant identity gives</p>
+<span class="math math-display" data-tex="\[
+\chi_A(z)=\prod_{j=1}^n(z-\lambda_j),
+\]">\[
+\chi_A(z)=\prod_{j=1}^n(z-\lambda_j),
+\]</span>
+<p>so the vanishing product is exactly <span class="math" data-tex="\(\chi_A(A)\)">\(\chi_A(A)\)</span>. Both determinant and polynomial evaluation commute with change of basis, and the result holds for the original operator. If <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the determinant is <span class="math" data-tex="\(1\)">\(1\)</span>; evaluation gives <span class="math" data-tex="\(I_V\)">\(I_V\)</span>, which is the zero endomorphism of the zero space. This proves that case as well. The characteristic polynomial is the actual <span class="math" data-tex="\(\det(zI-A)\)">\(\det(zI-A)\)</span>. Its leading coefficient is computed from every original permutation term in (CR17); the full sign comparison with <span class="math" data-tex="\(\det(A-zI)\)">\(\det(A-zI)\)</span> is (CR18).</p>
+<p>For completeness, this gives the exact minimal-polynomial interface used next in <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a>. There is a nonzero annihilating polynomial, namely <span class="math" data-tex="\(\chi_A\)">\(\chi_A\)</span>. Keep an original least-degree nonzero annihilator <span class="math" data-tex="\(m\)">\(m\)</span> and its original leading coefficient <span class="math" data-tex="\(c_m\ne0\)">\(c_m\ne0\)</span>. Formula (CR15) records its exact comparison with the named monic polynomial <span class="math" data-tex="\(\mu_A\)">\(\mu_A\)</span>: <span class="math" data-tex="\(m=c_m\mu_A\)">\(m=c_m\mu_A\)</span>. For any annihilator <span class="math" data-tex="\(f\)">\(f\)</span>, divide by the original <span class="math" data-tex="\(m\)">\(m\)</span>, with its full leading coefficient, rather than using <span class="math" data-tex="\(\mu_A\)">\(\mu_A\)</span> as a replacement. The remainder also annihilates <span class="math" data-tex="\(A\)">\(A\)</span>, so it is zero by minimality. Consequently the original annihilator divides every other one. The exact inverse scalar-unit map in (CR13)--(CR15) proves the corresponding divisibility and uniqueness assertion for <span class="math" data-tex="\(\mu_A\)">\(\mu_A\)</span>. In the zero space it is <span class="math" data-tex="\(1\)">\(1\)</span>. In positive dimension it is nonconstant, since a nonzero constant evaluates to a nonzero scalar identity. Sections 9.1--9.4 factor the original <span class="math" data-tex="\(m=c_mH\)">\(m=c_mH\)</span> into distinct linear powers with every multiplicity retained. Formula (CR16) applies Section 3 through the actual quotient <span class="math" data-tex="\(M_j=m/h_j=c_mH_j\)">\(M_j=m/h_j=c_mH_j\)</span>; each projection keeps both <span class="math" data-tex="\(c_m\)">\(c_m\)</span> and its inverse in its full evaluation. The order of these steps avoids using primary decomposition to prove the Cayley–Hamilton prerequisite for that same decomposition.</p>
+<h2 id="AN03-SPR-005"><span id="an03-spr-005"></span><span id="an03-spr-005-the-exact-entire-series-contour-moments"></span><span id="5-contour-moments-from-entire-series"></span><span id="contour-moments-from-entire-series"></span>5. Contour moments from entire series</h2>
+<p>A piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path is a continuous map <span class="math" data-tex="\(\gamma:[a,b]\to\mathbb C\)">\(\gamma:[a,b]\to\mathbb C\)</span> that is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> on each of finitely many subintervals, with the usual one-sided endpoint derivatives. For a continuous function along it, define</p>
+<span class="math math-display" data-tex="\[
+\int_\gamma f(z)\,dz=\sum_{\text{pieces}}\int f(\gamma(s))\gamma&#x27;(s)\,ds.
+\]">\[
+\int_\gamma f(z)\,dz=\sum_{\text{pieces}}\int f(\gamma(s))\gamma&#x27;(s)\,ds.
+\]</span>
+<p>A cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> here is a finite integer linear combination of such closed paths. Its integrals are the corresponding finite linear combinations. If <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> avoids their union, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ind}_\Gamma(\zeta)
+=\frac{1}{2\pi i}\int_\Gamma\frac{dz}{z-\zeta}.
+\]">\[
+\operatorname{ind}_\Gamma(\zeta)
+=\frac{1}{2\pi i}\int_\Gamma\frac{dz}{z-\zeta}.
+\]</span>
+<p>No general winding-number or homology theorem is needed to make this definition. The indices for the contours we construct will be computed below.</p>
+<p>We first record the primitive rule in the form needed here. If a single-valued function <span class="math" data-tex="\(F\)">\(F\)</span> along a path's neighborhood has a derivative satisfying
+<span class="math" data-tex="\(\frac{d}{ds}F(\gamma(s))=f(\gamma(s))\gamma&#x27;(s)\)">\(\frac{d}{ds}F(\gamma(s))=f(\gamma(s))\gamma&#x27;(s)\)</span>
+on every piece, real integration of its real and imaginary parts gives</p>
+<span class="math math-display" data-tex="\[
+\int_\gamma f(z)\,dz=F(\gamma(b))-F(\gamma(a)).
+\]">\[
+\int_\gamma f(z)\,dz=F(\gamma(b))-F(\gamma(a)).
+\]</span>
+<p>The intermediate endpoints cancel because both <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> are continuous. Every closed-path integral of such a derivative vanishes. In particular, for any integer <span class="math" data-tex="\(\ell\ne-1\)">\(\ell\ne-1\)</span>, the function <span class="math" data-tex="\((z-\zeta)^{\ell+1}/(\ell+1)\)">\((z-\zeta)^{\ell+1}/(\ell+1)\)</span> is a single-valued primitive of <span class="math" data-tex="\((z-\zeta)^\ell\)">\((z-\zeta)^\ell\)</span> on <span class="math" data-tex="\(\mathbb C\setminus\{\zeta\}\)">\(\mathbb C\setminus\{\zeta\}\)</span>. This uses ordinary integer powers and the real chain rule, including negative powers.</p>
+<p>Suppose explicitly that</p>
+<span class="math math-display" data-tex="\[
+\phi(z)=\sum_{r=0}^\infty c_r(z-\zeta)^r
+\]">\[
+\phi(z)=\sum_{r=0}^\infty c_r(z-\zeta)^r
+\]</span>
+<p>is a power series converging on all of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, locally uniformly. Then for every integer <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span> and every cycle avoiding <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{1}{2\pi i}\int_\Gamma
+\frac{\phi(z)}{(z-\zeta)^{k+1}}\,dz
+=\operatorname{ind}_\Gamma(\zeta)\frac{\phi^{(k)}(\zeta)}{k!}.
+\]">\[
+\frac{1}{2\pi i}\int_\Gamma
+\frac{\phi(z)}{(z-\zeta)^{k+1}}\,dz
+=\operatorname{ind}_\Gamma(\zeta)\frac{\phi^{(k)}(\zeta)}{k!}.
+\]</span>
+<p><strong>Proof.</strong> The paths have compact union and finite total length after weighting by the absolute values of the integer coefficients. Their distance from <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is positive. Dividing the locally uniform series by <span class="math" data-tex="\((z-\zeta)^{k+1}\)">\((z-\zeta)^{k+1}\)</span> therefore preserves uniform convergence on that union. For any continuous <span class="math" data-tex="\(g\)">\(g\)</span>, the absolute value of its integral is at most this weighted length times <span class="math" data-tex="\(\sup|g|\)">\(\sup|g|\)</span>, so the series may be integrated term by term. The primitive rule kills every term except <span class="math" data-tex="\(r=k\)">\(r=k\)</span>. That remaining term is <span class="math" data-tex="\(c_k\operatorname{ind}_\Gamma(\zeta)\)">\(c_k\operatorname{ind}_\Gamma(\zeta)\)</span>.</p>
+<p>Here is the coefficient-derivative justification, independent of a holomorphic Cauchy theorem. Choose <span class="math" data-tex="\(0&lt;R&lt;R&#x27;\)">\(0&lt;R&lt;R&#x27;\)</span>. Convergence at <span class="math" data-tex="\(z-\zeta=R&#x27;\)">\(z-\zeta=R&#x27;\)</span> bounds the sequence <span class="math" data-tex="\(|c_r|(R&#x27;)^r\)">\(|c_r|(R&#x27;)^r\)</span> by a finite constant. For every fixed derivative order <span class="math" data-tex="\(j\)">\(j\)</span>, the terms of the formally differentiated series on <span class="math" data-tex="\(|z-\zeta|\leq R\)">\(|z-\zeta|\leq R\)</span> are consequently bounded by a constant times <span class="math" data-tex="\(r^j(R/R&#x27;)^r\)">\(r^j(R/R&#x27;)^r\)</span>. This numerical series converges: the ratio of successive terms tends to <span class="math" data-tex="\(R/R&#x27;&lt;1\)">\(R/R&#x27;&lt;1\)</span>. Hence the derivative series converges uniformly there, and the entry-base termwise differentiation rule applies, repeatedly. Evaluation at <span class="math" data-tex="\(z=\zeta\)">\(z=\zeta\)</span> gives <span class="math" data-tex="\(\phi^{(k)}(\zeta)=k!c_k\)">\(\phi^{(k)}(\zeta)=k!c_k\)</span>, completing the proof.</p>
+<p>For any <span class="math" data-tex="\(a\in\mathbb C\)">\(a\in\mathbb C\)</span>, the exponential series gives</p>
+<span class="math math-display" data-tex="\[
+\frac{1}{2\pi i}\int_\Gamma
+\frac{e^{az}}{(z-\zeta)^{k+1}}\,dz
+=\operatorname{ind}_\Gamma(\zeta)e^{a\zeta}\frac{a^k}{k!}.
+\]">\[
+\frac{1}{2\pi i}\int_\Gamma
+\frac{e^{az}}{(z-\zeta)^{k+1}}\,dz
+=\operatorname{ind}_\Gamma(\zeta)e^{a\zeta}\frac{a^k}{k!}.
+\]</span>
+<p>Indeed <span class="math" data-tex="\(e^{az}=e^{a\zeta}\sum_{r\geq0}a^r(z-\zeta)^r/r!\)">\(e^{az}=e^{a\zeta}\sum_{r\geq0}a^r(z-\zeta)^r/r!\)</span>; the exponential addition identity follows by the absolutely convergent product of its two series and the binomial formula. Constants and finite polynomials times exponentials also have the required series about every <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. This includes <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(e^{itz}\)">\(e^{itz}\)</span> and <span class="math" data-tex="\(z^j e^{itz}\)">\(z^j e^{itz}\)</span> for every <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> and every real <span class="math" data-tex="\(t\)">\(t\)</span>. Matrix-valued finite sums are handled entrywise. In <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a> the resolvent is explicitly decomposed into finitely many nilpotent principal parts, so all pole orders are covered by the formula above; a general residue theorem adds nothing to that calculation.</p>
+<p>The phrase “encloses a spectral point once” means precisely index <span class="math" data-tex="\(1\)">\(1\)</span> at that point; “excludes” means index <span class="math" data-tex="\(0\)">\(0\)</span>. These conditions, rather than an implicit picture of a contour, govern the matrix projection formula. This theorem says nothing about a merely holomorphic numerator lacking the asserted global series. A later need for a more general Cauchy theorem remains a separate prerequisite.</p>
+<p>Jiří Lebl, <a href="https://github.com/jirilebl/ca/blob/adfaaf8b13287185c22db079f16f39183628f482/ca.tex"><em>Guide to Cultivating Complex Analysis</em>, version 1.9</a>, gives a related treatment of line integrals and winding numbers. The primitive rule and exact contour moments required here have been proved above; the stronger disk and general-cycle theorems are not used.</p>
+<h2 id="AN03-SPR-006"><span id="an03-spr-006"></span><span id="an03-spr-006-indices-of-rectangles-and-circles"></span><span id="6-indices-of-rectangles-and-circles"></span><span id="indices-of-rectangles-and-circles"></span>6. Indices of rectangles and circles</h2>
+<p>Let <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, <span class="math" data-tex="\(c&lt;d\)">\(c&lt;d\)</span>, and let <span class="math" data-tex="\(\partial R\)">\(\partial R\)</span> be the positively oriented boundary of the closed rectangle</p>
+<span class="math math-display" data-tex="\[
+R=\{x+iy:a\leq x\leq b,\ c\leq y\leq d\}.
+\]">\[
+R=\{x+iy:a\leq x\leq b,\ c\leq y\leq d\}.
+\]</span>
+<p>For every <span class="math" data-tex="\(\zeta\notin\partial R\)">\(\zeta\notin\partial R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ind}_{\partial R}(\zeta)=
+\begin{cases}
+1,&amp;\zeta\in\operatorname{int}R,\\
+0,&amp;\zeta\notin R.
+\end{cases}
+\]">\[
+\operatorname{ind}_{\partial R}(\zeta)=
+\begin{cases}
+1,&amp;\zeta\in\operatorname{int}R,\\
+0,&amp;\zeta\notin R.
+\end{cases}
+\]</span>
+<p><strong>Proof for an interior point.</strong> Translate <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to zero. Write the positive distances to the left, right, bottom and top sides as <span class="math" data-tex="\(A,B,C,D\)">\(A,B,C,D\)</span>, respectively. The translated rectangle is <span class="math" data-tex="\([-A,B]\times[-C,D]\)">\([-A,B]\times[-C,D]\)</span>. For each angle <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, take the applicable positive numbers in the following list:</p>
+<span class="math math-display" data-tex="\[
+\frac{B}{\cos\theta}\ (\cos\theta&gt;0),\qquad
+\frac{A}{-\cos\theta}\ (\cos\theta&lt;0),\qquad
+\frac{D}{\sin\theta}\ (\sin\theta&gt;0),\qquad
+\frac{C}{-\sin\theta}\ (\sin\theta&lt;0).
+\]">\[
+\frac{B}{\cos\theta}\ (\cos\theta&gt;0),\qquad
+\frac{A}{-\cos\theta}\ (\cos\theta&lt;0),\qquad
+\frac{D}{\sin\theta}\ (\sin\theta&gt;0),\qquad
+\frac{C}{-\sin\theta}\ (\sin\theta&lt;0).
+\]</span>
+<p>Let <span class="math" data-tex="\(r(\theta)\)">\(r(\theta)\)</span> be their minimum. At least one number is applicable. The inequalities defining the rectangle say exactly that its intersection with this ray is the segment of radii <span class="math" data-tex="\(0\leq\rho\leq r(\theta)\)">\(0\leq\rho\leq r(\theta)\)</span>. Thus <span class="math" data-tex="\(r(\theta)e^{i\theta}\)">\(r(\theta)e^{i\theta}\)</span> is its unique boundary point on the ray.</p>
+<p>The active side changes only at the four corner directions. On an interval between corner directions, the relevant displayed quotient is smooth with a nonzero denominator. Near an axis, a quotient with denominator tending to zero cannot be the minimum because the other applicable quotient stays bounded. At a corner the two active quotients have the same positive value. These facts prove that <span class="math" data-tex="\(r\)">\(r\)</span> is positive, continuous, <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>-periodic and piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span>. They also give a finite partition on which its parametrization is smooth.</p>
+<p>As <span class="math" data-tex="\(\theta\)">\(\theta\)</span> increases by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, these boundary points traverse each of the four sides once in positive order. To check the orientation directly, on the right side the height is <span class="math" data-tex="\(B\tan\theta\)">\(B\tan\theta\)</span> and increases; on the top side the horizontal coordinate is <span class="math" data-tex="\(D\cot\theta\)">\(D\cot\theta\)</span> and decreases; on the left side the height is <span class="math" data-tex="\(-A\tan\theta\)">\(-A\tan\theta\)</span> and decreases; on the bottom side the horizontal coordinate is <span class="math" data-tex="\(-C\cot\theta\)">\(-C\cot\theta\)</span> and increases. On each relevant angular interval these are monotone parametrizations of the corresponding full side or its part split at the starting ray. The real change-of-variable rule therefore identifies this radial integral with the usual positively oriented rectangle integral.</p>
+<p>On every smooth piece, with <span class="math" data-tex="\(\gamma(\theta)=r(\theta)e^{i\theta}\)">\(\gamma(\theta)=r(\theta)e^{i\theta}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\frac{\gamma&#x27;(\theta)}{\gamma(\theta)}
+=\frac{r&#x27;(\theta)}{r(\theta)}+i.
+\]">\[
+\frac{\gamma&#x27;(\theta)}{\gamma(\theta)}
+=\frac{r&#x27;(\theta)}{r(\theta)}+i.
+\]</span>
+<p>The integrals of <span class="math" data-tex="\(r&#x27;/r\)">\(r&#x27;/r\)</span> are real logarithm differences. They telescope across the finitely many endpoints and total zero because <span class="math" data-tex="\(r(2\pi)=r(0)\)">\(r(2\pi)=r(0)\)</span>. The integral of <span class="math" data-tex="\(i\)">\(i\)</span> is <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. Division by <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span> proves the index is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proof for an exterior point.</strong> If <span class="math" data-tex="\(\zeta\notin R\)">\(\zeta\notin R\)</span>, at least one real coordinate lies strictly outside the corresponding closed interval. Translate by <span class="math" data-tex="\(-\zeta\)">\(-\zeta\)</span>, then multiply by some <span class="math" data-tex="\(\alpha\in\{1,-1,i,-i\}\)">\(\alpha\in\{1,-1,i,-i\}\)</span> so that the entire translated rectangle lies in the open right half-plane. For <span class="math" data-tex="\(w=x+iy\)">\(w=x+iy\)</span> with <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>, define the single-valued function</p>
+<span class="math math-display" data-tex="\[
+L(w)=\tfrac12\log(x^2+y^2)+i\arctan(y/x).
+\]">\[
+L(w)=\tfrac12\log(x^2+y^2)+i\arctan(y/x).
+\]</span>
+<p>Real differentiation gives <span class="math" data-tex="\(L_x=1/w\)">\(L_x=1/w\)</span> and <span class="math" data-tex="\(L_y=i/w\)">\(L_y=i/w\)</span>. Hence along any piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span> path <span class="math" data-tex="\(w(s)\)">\(w(s)\)</span> in that half-plane, <span class="math" data-tex="\(\frac{d}{ds}L(w(s))=w&#x27;(s)/w(s)\)">\(\frac{d}{ds}L(w(s))=w&#x27;(s)/w(s)\)</span>. With <span class="math" data-tex="\(w(s)=\alpha(\gamma(s)-\zeta)\)">\(w(s)=\alpha(\gamma(s)-\zeta)\)</span>, this is <span class="math" data-tex="\(\gamma&#x27;(s)/(\gamma(s)-\zeta)\)">\(\gamma&#x27;(s)/(\gamma(s)-\zeta)\)</span>. The primitive rule gives zero around the closed rectangle. This proves the exterior case. Points on its boundary were excluded because the integrand would be singular there.</p>
+<p>For clarity, a positively oriented circle of center <span class="math" data-tex="\(c_0\)">\(c_0\)</span> and radius <span class="math" data-tex="\(R_0&gt;0\)">\(R_0&gt;0\)</span> has the same inside/outside index rule. Put <span class="math" data-tex="\(w=\zeta-c_0\)">\(w=\zeta-c_0\)</span> and parametrize by <span class="math" data-tex="\(c_0+R_0e^{i\theta}\)">\(c_0+R_0e^{i\theta}\)</span>. If <span class="math" data-tex="\(|w|&lt;R_0\)">\(|w|&lt;R_0\)</span>, the integrand with its parameter differential is</p>
+<span class="math math-display" data-tex="\[
+\frac{i}{1-(w/R_0)e^{-i\theta}}\,d\theta
+=i\sum_{n\geq0}(w/R_0)^n e^{-in\theta}\,d\theta.
+\]">\[
+\frac{i}{1-(w/R_0)e^{-i\theta}}\,d\theta
+=i\sum_{n\geq0}(w/R_0)^n e^{-in\theta}\,d\theta.
+\]</span>
+<p>Uniform geometric convergence permits integration; only the constant term remains, giving <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>. If <span class="math" data-tex="\(|w|&gt;R_0\)">\(|w|&gt;R_0\)</span>, write it instead as</p>
+<span class="math math-display" data-tex="\[
+-i\sum_{n\geq1}(R_0/w)^n e^{in\theta}\,d\theta;
+\]">\[
+-i\sum_{n\geq1}(R_0/w)^n e^{in\theta}\,d\theta;
+\]</span>
+<p>every term integrates to zero. The elementary exponential integrals follow from their explicit primitives. Boundary points are again excluded. Reversing any contour's orientation negates the index, and taking integer sums adds indices, directly from the definition.</p>
+<h2 id="AN03-SPR-007"><span id="an03-spr-007"></span><span id="an03-spr-007-differentiation-along-a-fixed-contour"></span><span id="7-differentiation-along-a-fixed-contour"></span><span id="differentiation-along-a-fixed-contour"></span>7. Differentiation along a fixed contour</h2>
+<p>Let <span class="math" data-tex="\(Y\subseteq\mathbb R^d\)">\(Y\subseteq\mathbb R^d\)</span> be open, let <span class="math" data-tex="\(A:Y\to\operatorname{End}(V)\)">\(A:Y\to\operatorname{End}(V)\)</span> be <span class="math" data-tex="\(C^r\)">\(C^r\)</span>, where <span class="math" data-tex="\(r\)">\(r\)</span> is a nonnegative integer or <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, and let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be a fixed finite cycle with <span class="math" data-tex="\(zI-A(y)\)">\(zI-A(y)\)</span> invertible for all its points and all <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+R(y,z)=(zI-A(y))^{-1}
+\]">\[
+R(y,z)=(zI-A(y))^{-1}
+\]</span>
+<p>is continuous on <span class="math" data-tex="\(Y\)">\(Y\)</span> times the contour and is <span class="math" data-tex="\(C^r\)">\(C^r\)</span> in <span class="math" data-tex="\(y\)">\(y\)</span>. Integration over <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> commutes with these parameter derivatives. In particular,</p>
+<span class="math math-display" data-tex="\[
+\partial_{y_j}R=R(\partial_{y_j}A)R,
+\]">\[
+\partial_{y_j}R=R(\partial_{y_j}A)R,
+\]</span>
+<p>with the order of the three factors as displayed. For a nonzero multi-index <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of order at most <span class="math" data-tex="\(r\)">\(r\)</span>, repeated differentiation gives the useful recursive identity</p>
+<span class="math math-display" data-tex="\[
+\partial^\beta R
+=\sum_{0&lt;\eta\leq\beta}\binom\beta\eta
+R(\partial^\eta A)(\partial^{\beta-\eta}R).
+\]">\[
+\partial^\beta R
+=\sum_{0&lt;\eta\leq\beta}\binom\beta\eta
+R(\partial^\eta A)(\partial^{\beta-\eta}R).
+\]</span>
+<p><strong>Proof.</strong> Continuity follows from continuity of inversion. On any compact parameter box inside <span class="math" data-tex="\(Y\)">\(Y\)</span>, its product with the finite contour is compact, so the inverses have a common bound. The inverse is differentiable wherever the matrix is invertible, as follows either by the adjugate divided by the nonzero determinant or by the inverse difference identity. Differentiating <span class="math" data-tex="\((zI-A)R=I\)">\((zI-A)R=I\)</span> once and multiplying on the left by <span class="math" data-tex="\(R\)">\(R\)</span> gives the first formula. Applying the multi-index product rule and isolating the term with no derivative on <span class="math" data-tex="\(zI-A\)">\(zI-A\)</span> gives the recursive formula. Induction shows all derivatives exist, are continuous and are bounded on the compact product. After parametrizing every path piece, these bounds times <span class="math" data-tex="\(|\gamma&#x27;|\)">\(|\gamma&#x27;|\)</span> are integrable majorants. The complete matrix-entry dominated-differentiation theorem in Section 11.2, applied by the exact path comparison in Section 11.4, proves this interchange coordinate by coordinate and at every derivative order. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, uniform continuity on compact products gives continuity of the integral directly. For <span class="math" data-tex="\(r=\infty\)">\(r=\infty\)</span>, use every finite order in turn.</p>
+<p>The same reasoning applies to multiplication by <span class="math" data-tex="\(e^{itz}\)">\(e^{itz}\)</span>, for <span class="math" data-tex="\(t\)">\(t\)</span> in a compact real interval, and to all of its time derivatives <span class="math" data-tex="\((iz)^j e^{itz}\)">\((iz)^j e^{itz}\)</span>. On a fixed compact contour they are bounded uniformly for bounded <span class="math" data-tex="\(t\)">\(t\)</span>. On an upper contour with <span class="math" data-tex="\(\operatorname{Im}z\geq\delta&gt;0\)">\(\operatorname{Im}z\geq\delta&gt;0\)</span>, their absolute values for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> are at most <span class="math" data-tex="\(|z|^j e^{-\delta t}\)">\(|z|^j e^{-\delta t}\)</span>. Ordered products of parameter derivatives of the resolvent require this integration estimate, not an additional evaluation theorem for holomorphic matrix functions.</p>
+<p>Here is the exact contour-existence boundary used in <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a>. Let <span class="math" data-tex="\(K\)">\(K\)</span> be a compact parameter set, let <span class="math" data-tex="\(A\)">\(A\)</span> be continuous on it, and suppose no <span class="math" data-tex="\(A(y)\)">\(A(y)\)</span> has a real eigenvalue. If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, any rectangle lying strictly above the real axis satisfies the contour requirements on <span class="math" data-tex="\(K\)">\(K\)</span> vacuously, and the empty neighborhood suffices for the neighborhood assertion below. Assume now <span class="math" data-tex="\(K\ne\varnothing\)">\(K\ne\varnothing\)</span>, and let <span class="math" data-tex="\(M=\max_K\|A(y)\|\)">\(M=\max_K\|A(y)\|\)</span>. Every eigenvalue satisfies <span class="math" data-tex="\(|\lambda|\leq M\)">\(|\lambda|\leq M\)</span>, by applying the norm inequality to an eigenvector. There is also a uniform positive distance <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> from all those eigenvalues to the real axis. Otherwise a sequence of parameters and eigenvalues has, by compactness and the bound <span class="math" data-tex="\(M\)">\(M\)</span>, a subsequence tending to <span class="math" data-tex="\(y_*\in K\)">\(y_*\in K\)</span> and a real <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span>; continuity of <span class="math" data-tex="\(\det(\lambda I-A(y))\)">\(\det(\lambda I-A(y))\)</span> would make <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span> a real eigenvalue of <span class="math" data-tex="\(A(y_*)\)">\(A(y_*)\)</span>, a contradiction.</p>
+<p>Choose <span class="math" data-tex="\(R&gt;M+1\)">\(R&gt;M+1\)</span> and <span class="math" data-tex="\(0&lt;\delta&lt;\min(\varepsilon,R)\)">\(0&lt;\delta&lt;\min(\varepsilon,R)\)</span>. The positively oriented rectangle with real sides <span class="math" data-tex="\(-R,R\)">\(-R,R\)</span> and imaginary sides <span class="math" data-tex="\(\delta,R\)">\(\delta,R\)</span> has index <span class="math" data-tex="\(1\)">\(1\)</span> on every upper eigenvalue and <span class="math" data-tex="\(0\)">\(0\)</span> on every lower eigenvalue, by Section 6. It meets no spectrum and can be kept fixed over <span class="math" data-tex="\(K\)">\(K\)</span>. If the family is defined on an open parameter set containing <span class="math" data-tex="\(K\)">\(K\)</span>, compactness and determinant continuity preserve invertibility on this contour in some neighborhood of <span class="math" data-tex="\(K\)">\(K\)</span>, allowing the preceding differentiation result there. For <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, all invertibility and contour assertions have their unique empty-dimensional meaning and any positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> may be used. This is a compact-parameter statement. It does not claim a uniform gap on a noncompact parameter space, choose eigenvalue branches, impose semisimplicity or assert global triviality of a stable bundle.</p>
+<h2 id="AN03-SPR-008"><span id="an03-spr-008"></span><span id="an03-spr-008-a-repeated-pole-and-a-scope-diagnostic"></span><span id="8-a-repeated-pole-and-why-the-hypothesis-matters"></span><span id="a-repeated-pole-and-why-the-hypothesis-matters"></span>8. A repeated pole and why the hypothesis matters</h2>
+<p>Consider the operator</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}2i&amp;1&amp;0\\0&amp;2i&amp;0\\0&amp;0&amp;-i\end{pmatrix}
+\]">\[
+A=\begin{pmatrix}2i&amp;1&amp;0\\0&amp;2i&amp;0\\0&amp;0&amp;-i\end{pmatrix}
+\]</span>
+<p>and the positive rectangle with real sides <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span> and imaginary sides <span class="math" data-tex="\(1,3\)">\(1,3\)</span>. On the first two coordinates write <span class="math" data-tex="\(A=2iI+N\)">\(A=2iI+N\)</span>, where <span class="math" data-tex="\(N^2=0\)">\(N^2=0\)</span> and <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>. Direct multiplication gives</p>
+<span class="math math-display" data-tex="\[
+(zI-A)^{-1}=
+\begin{pmatrix}
+(z-2i)^{-1}&amp;(z-2i)^{-2}&amp;0\\
+0&amp;(z-2i)^{-1}&amp;0\\
+0&amp;0&amp;(z+i)^{-1}
+\end{pmatrix}.
+\]">\[
+(zI-A)^{-1}=
+\begin{pmatrix}
+(z-2i)^{-1}&amp;(z-2i)^{-2}&amp;0\\
+0&amp;(z-2i)^{-1}&amp;0\\
+0&amp;0&amp;(z+i)^{-1}
+\end{pmatrix}.
+\]</span>
+<p>The rectangle has indices <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(2i\)">\(2i\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(-i\)">\(-i\)</span>. Its normalized resolvent integral is therefore</p>
+<span class="math math-display" data-tex="\[
+q=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix}.
+\]">\[
+q=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix}.
+\]</span>
+<p>The double pole contributes zero to this constant-numerator integral. With numerator <span class="math" data-tex="\(e^{itz}\)">\(e^{itz}\)</span>, however, the <span class="math" data-tex="\(k=1\)">\(k=1\)</span> moment gives</p>
+<span class="math math-display" data-tex="\[
+\frac{1}{2\pi i}\int_\Gamma e^{itz}(zI-A)^{-1}\,dz
+=\begin{pmatrix}e^{-2t}&amp;it\,e^{-2t}&amp;0\\0&amp;e^{-2t}&amp;0\\0&amp;0&amp;0\end{pmatrix}
+=e^{itA}q.
+\]">\[
+\frac{1}{2\pi i}\int_\Gamma e^{itz}(zI-A)^{-1}\,dz
+=\begin{pmatrix}e^{-2t}&amp;it\,e^{-2t}&amp;0\\0&amp;e^{-2t}&amp;0\\0&amp;0&amp;0\end{pmatrix}
+=e^{itA}q.
+\]</span>
+<p>The last equality can also be checked from <span class="math" data-tex="\(e^{itN}=I+itN\)">\(e^{itN}=I+itN\)</span>, obtained by terminating the exponential series. Dropping the double-pole term would accidentally compute the projection correctly but would give the wrong evolution of the second coordinate vector. Thus a projection calculation alone does not check the treatment of Jordan multiplicities in an evolution formula.</p>
+<p><strong>Exercise.</strong> Let <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> be the positive rectangle with real sides <span class="math" data-tex="\(-1,4\)">\(-1,4\)</span> and imaginary sides <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span>. The function <span class="math" data-tex="\(\phi(z)=1/(z-3)\)">\(\phi(z)=1/(z-3)\)</span> is holomorphic on neighborhoods of the contour and of <span class="math" data-tex="\(0\)">\(0\)</span>. Compute</p>
+<span class="math math-display" data-tex="\[
+J=\frac{1}{2\pi i}\int_\Gamma\frac{\phi(z)}z\,dz.
+\]">\[
+J=\frac{1}{2\pi i}\int_\Gamma\frac{\phi(z)}z\,dz.
+\]</span>
+<p>Compare it with <span class="math" data-tex="\(\phi(0)\)">\(\phi(0)\)</span>, identify the failed hypothesis of Section 5, and explain why there is no contradiction with that result. Do the computation using only the rectangle indices proved here.</p>
+<p><strong>Solution.</strong> Partial fractions give</p>
+<span class="math math-display" data-tex="\[
+\frac{1}{z(z-3)}=-\frac{1}{3z}+\frac{1}{3(z-3)}.
+\]">\[
+\frac{1}{z(z-3)}=-\frac{1}{3z}+\frac{1}{3(z-3)}.
+\]</span>
+<p>Both <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> lie inside this rectangle, so both indices are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(J=-1/3+1/3=0\)">\(J=-1/3+1/3=0\)</span>. On the other hand <span class="math" data-tex="\(\phi(0)=-1/3\)">\(\phi(0)=-1/3\)</span>. The moment theorem required a globally convergent power series about <span class="math" data-tex="\(0\)">\(0\)</span>, which this function does not have: its geometric expansion there has radius <span class="math" data-tex="\(3\)">\(3\)</span>, and it has a pole at <span class="math" data-tex="\(3\)">\(3\)</span> inside the contour. Holomorphicity near the contour and evaluation point does not supply the missing hypothesis. No step of the computation uses a general residue theorem, and the result illustrates why the restricted prerequisite must not be advertised as an unrestricted Cauchy theorem.</p>
+<h2 id="complex-roots-with-all-original-coefficients-retained"><span id="9-complex-roots-with-all-original-coefficients-retained"></span>9. Complex roots with all original coefficients retained</h2>
+<p>We now prove the complex-root fact used in Sections 1, 3, 4 and 7. The proof keeps the original polynomial and each coefficient, including its leading factor and every translated remainder. We then prove its exact maps to Bézout combinations, original annihilators, spectral projections and finite matrix kernels.</p>
+<p>The scalar entry bases are real completeness, field arithmetic, finite polynomial arithmetic and degree induction, real differentiation and integration on compact intervals, and the finite-dimensional definitions in Section 1. Absolute convergence and the required exponential differentiation are justified directly below. No root theorem, primary decomposition or general Cauchy integral theorem is used to prove its own prerequisite.</p>
+<h3 id="AN03-SPR-ROOT-001"><span id="an03-spr-root-001"></span><span id="the-actual-exponential-and-a-direction-with-any-prescribed-integer-power"></span><span id="9-1-the-actual-exponential-and-a-direction-with-any-prescribed-integer-power"></span>9.1. The actual exponential and a direction with any prescribed integer power</h3>
+<p>Define <span class="math" data-tex="\(E(t)=\sum_{k=0}^{\infty}(it)^k/k!\)">\(E(t)=\sum_{k=0}^{\infty}(it)^k/k!\)</span> for real <span class="math" data-tex="\(t\)">\(t\)</span>. On <span class="math" data-tex="\(|t|\leq T\)">\(|t|\leq T\)</span> the absolute series and its first derivative are uniformly convergent: once <span class="math" data-tex="\(k+1&gt;2T\)">\(k+1&gt;2T\)</span>, the ratio of successive absolute majorants is less than <span class="math" data-tex="\(1/2\)">\(1/2\)</span>; finitely many earlier terms and the resulting geometric tail are included. To justify the derivative rule directly, finite partial sums obey their integral derivative formula. Uniform limits of the functions and derivatives let that formula pass to the limit on every compact interval, proving <span class="math" data-tex="\(E&#x27;=iE\)">\(E&#x27;=iE\)</span>. Absolute convergence, finite binomial expansion and regrouping of the double series give</p>
+<span id="equation-cr1"></span><span class="math math-display" data-tex="\[
+E(s)E(t)=\sum_{m\geq0}i^m
+\sum_{k=0}^m\frac{s^kt^{m-k}}{k!(m-k)!}
+=\sum_{m\geq0}\frac{i^m(s+t)^m}{m!}=E(s+t).              \tag{CR1}
+\]">\[
+E(s)E(t)=\sum_{m\geq0}i^m
+\sum_{k=0}^m\frac{s^kt^{m-k}}{k!(m-k)!}
+=\sum_{m\geq0}\frac{i^m(s+t)^m}{m!}=E(s+t).              \tag{CR1}
+\]</span>
+<p>Conjugation of the actual series gives <span class="math" data-tex="\(\overline{E(t)}=E(-t)\)">\(\overline{E(t)}=E(-t)\)</span>; hence <span class="math" data-tex="\(E(t)\overline{E(t)}=E(0)=1\)">\(E(t)\overline{E(t)}=E(0)=1\)</span>. Put <span class="math" data-tex="\(C(t)=\operatorname{Re}E(t)\)">\(C(t)=\operatorname{Re}E(t)\)</span>, <span class="math" data-tex="\(S(t)=\operatorname{Im}E(t)\)">\(S(t)=\operatorname{Im}E(t)\)</span>. Thus</p>
+<span id="equation-cr2"></span><span class="math math-display" data-tex="\[
+C&#x27;=-S,\quad S&#x27;=C,\quad C(0)=1,\quad S(0)=0,\quad
+C(t)^2+S(t)^2=1.                    \tag{CR2}
+\]">\[
+C&#x27;=-S,\quad S&#x27;=C,\quad C(0)=1,\quad S(0)=0,\quad
+C(t)^2+S(t)^2=1.                    \tag{CR2}
+\]</span>
+<p>There is a first positive zero <span class="math" data-tex="\(t_0\)">\(t_0\)</span> of <span class="math" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-tex="\(0&lt;t_0&lt;2\)">\(0&lt;t_0&lt;2\)</span>. For existence, its actual series gives
+<span class="math" data-tex="\(C(2)=1-2+2/3+\sum_{k\geq3}(-1)^k2^{2k}/(2k)!\leq-1/3&lt;0\)">\(C(2)=1-2+2/3+\sum_{k\geq3}(-1)^k2^{2k}/(2k)!\leq-1/3&lt;0\)</span>:
+the remaining terms are decreasing in absolute value, and each consecutive negative/positive pair has nonpositive sum. Continuity and the intermediate value property supply a zero in <span class="math" data-tex="\((0,2)\)">\((0,2)\)</span>. The intermediate value property follows directly from real completeness. For a continuous real function <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(a)&gt;0&gt;f(b)\)">\(f(a)&gt;0&gt;f(b)\)</span>, let <span class="math" data-tex="\(c=\sup\{x\in[a,b]:f(x)&gt;0\}\)">\(c=\sup\{x\in[a,b]:f(x)&gt;0\}\)</span>. Positivity near <span class="math" data-tex="\(a\)">\(a\)</span> and negativity near <span class="math" data-tex="\(b\)">\(b\)</span> give <span class="math" data-tex="\(a&lt;c&lt;b\)">\(a&lt;c&lt;b\)</span>. Points of that set approach <span class="math" data-tex="\(c\)">\(c\)</span>, so continuity gives <span class="math" data-tex="\(f(c)\geq0\)">\(f(c)\geq0\)</span>. If <span class="math" data-tex="\(f(c)&gt;0\)">\(f(c)&gt;0\)</span>, continuity supplies a point of the set strictly to its right, a contradiction. Thus <span class="math" data-tex="\(f(c)=0\)">\(f(c)=0\)</span>. Reversing the signs covers the other case, and subtracting a requested intermediate value covers arbitrary endpoint values. Since <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> near zero, the closed nonempty zero set in a compact subinterval has a positive infimum that belongs to it by continuity. This gives <span class="math" data-tex="\(t_0\)">\(t_0\)</span>; another change of sign before it would have supplied an earlier zero. Therefore <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> on <span class="math" data-tex="\([0,t_0)\)">\([0,t_0)\)</span>.</p>
+<p>The integral <span class="math" data-tex="\(S(t)=\int_0^t C(s)\,ds\)">\(S(t)=\int_0^t C(s)\,ds\)</span> is strictly positive for <span class="math" data-tex="\(0&lt;t\leq t_0\)">\(0&lt;t\leq t_0\)</span>. Formula (CR2) gives <span class="math" data-tex="\(S(t_0)=1\)">\(S(t_0)=1\)</span>. Also <span class="math" data-tex="\(C\)">\(C\)</span> decreases from one to zero there, because <span class="math" data-tex="\(C&#x27;=-S&lt;0\)">\(C&#x27;=-S&lt;0\)</span> on the interior. For any unit complex number <span class="math" data-tex="\(a+ib\)">\(a+ib\)</span> in the first quadrant, the intermediate value property supplies <span class="math" data-tex="\(t\in[0,t_0]\)">\(t\in[0,t_0]\)</span> with <span class="math" data-tex="\(C(t)=a\)">\(C(t)=a\)</span>, and positivity plus (CR2) gives <span class="math" data-tex="\(S(t)=b\)">\(S(t)=b\)</span>. Any unit complex number can be multiplied by one of <span class="math" data-tex="\(1,-i,-1,i\)">\(1,-i,-1,i\)</span> to lie in that quadrant. Since <span class="math" data-tex="\(E(t_0)=i\)">\(E(t_0)=i\)</span>, (CR1) then shows that it is <span class="math" data-tex="\(E(t+j t_0)\)">\(E(t+j t_0)\)</span> for some <span class="math" data-tex="\(j\in\{0,1,2,3\}\)">\(j\in\{0,1,2,3\}\)</span>. Thus every prescribed unit number <span class="math" data-tex="\(d\)">\(d\)</span> is <span class="math" data-tex="\(E(\theta)\)">\(E(\theta)\)</span> for a real <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. For any positive integer <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span id="equation-cr3"></span><span class="math math-display" data-tex="\[
+c=E(\theta/q),\qquad |c|=1,\qquad c^q=d.           \tag{CR3}
+\]">\[
+c=E(\theta/q),\qquad |c|=1,\qquad c^q=d.           \tag{CR3}
+\]</span>
+<p>This proves the needed direction without assuming a root theorem for an arbitrary complex polynomial. The parameter <span class="math" data-tex="\(t_0\)">\(t_0\)</span> serves only this proof; no original circle, contour or Fourier constant is being changed.</p>
+<p>For any positive real <span class="math" data-tex="\(r\)">\(r\)</span>, there is a unique positive <span class="math" data-tex="\(q\)">\(q\)</span>-th root of <span class="math" data-tex="\(r\)">\(r\)</span>. The continuous function <span class="math" data-tex="\(x\mapsto x^q\)">\(x\mapsto x^q\)</span> increases strictly on <span class="math" data-tex="\([0,\infty)\)">\([0,\infty)\)</span>, since for <span class="math" data-tex="\(y&gt;x\geq0\)">\(y&gt;x\geq0\)</span> its difference is
+<span class="math" data-tex="\((y-x)\sum_{j=0}^{q-1}y^{q-1-j}x^j&gt;0\)">\((y-x)\sum_{j=0}^{q-1}y^{q-1-j}x^j&gt;0\)</span>.
+It is zero at zero and exceeds <span class="math" data-tex="\(r\)">\(r\)</span> at <span class="math" data-tex="\(r+1\)">\(r+1\)</span>. The same intermediate value argument gives existence and the strict inequality gives uniqueness. These are the real roots used in the bounds below.</p>
+<h3 id="AN03-SPR-ROOT-002"><span id="an03-spr-root-002"></span><span id="a-minimum-of-the-original-polynomial-modulus"></span><span id="9-2-a-minimum-of-the-original-polynomial-modulus"></span>9.2. A minimum of the original polynomial modulus</h3>
+<p>Let the original nonconstant polynomial be</p>
+<span id="equation-cr4"></span><span class="math math-display" data-tex="\[
+p(z)=\sum_{k=0}^N a_k z^k,\qquad
+N\geq1,\quad a_N\ne0,\quad
+A_0=\sum_{k=0}^{N-1}|a_k| .                            \tag{CR4}
+\]">\[
+p(z)=\sum_{k=0}^N a_k z^k,\qquad
+N\geq1,\quad a_N\ne0,\quad
+A_0=\sum_{k=0}^{N-1}|a_k| .                            \tag{CR4}
+\]</span>
+<p>Its actual leading coefficient remains <span class="math" data-tex="\(a_N\)">\(a_N\)</span>. For <span class="math" data-tex="\(r=|z|\geq1\)">\(r=|z|\geq1\)</span>, the full reverse triangle inequality gives</p>
+<span id="equation-cr5"></span><span class="math math-display" data-tex="\[
+|p(z)|\geq |a_N|r^N-\sum_{k=0}^{N-1}|a_k|r^k
+\geq r^{N-1}(|a_N|r-A_0).                         \tag{CR5}
+\]">\[
+|p(z)|\geq |a_N|r^N-\sum_{k=0}^{N-1}|a_k|r^k
+\geq r^{N-1}(|a_N|r-A_0).                         \tag{CR5}
+\]</span>
+<p>Choose</p>
+<span id="equation-cr6"></span><span class="math math-display" data-tex="\[
+R=1+\frac{2A_0}{|a_N|}
++\left(\frac{2(|a_0|+1)}{|a_N|}\right)^{1/N}.
+\tag{CR6}
+\]">\[
+R=1+\frac{2A_0}{|a_N|}
++\left(\frac{2(|a_0|+1)}{|a_N|}\right)^{1/N}.
+\tag{CR6}
+\]</span>
+<p>For <span class="math" data-tex="\(r\geq R\)">\(r\geq R\)</span>, (CR5) is at least <span class="math" data-tex="\(|a_N|r^N/2\)">\(|a_N|r^N/2\)</span> and exceeds <span class="math" data-tex="\(|a_0|+1\)">\(|a_0|+1\)</span>. Thus the global infimum is attained inside the original disk <span class="math" data-tex="\(|z|\leq R\)">\(|z|\leq R\)</span>.</p>
+<p>Here is the existence argument for the attained minimum. The nonempty set of values on that disk is bounded below by zero; real completeness defines its infimum <span class="math" data-tex="\(b\)">\(b\)</span>. Choose original points <span class="math" data-tex="\(z_j\)">\(z_j\)</span> in the disk with <span class="math" data-tex="\(|p(z_j)|&lt;b+1/j\)">\(|p(z_j)|&lt;b+1/j\)</span>. A bounded sequence in a closed complex square has a convergent subsequence: repeatedly divide the square into four closed subsquares, retain one with infinitely many original points, and choose increasing original indices in the nested squares. Their diameters tend to zero, so completeness in each real coordinate gives a common limit. The disk is closed, hence its subsequence limit <span class="math" data-tex="\(z_0\)">\(z_0\)</span> belongs to it. Polynomial continuity follows directly from the full identity</p>
+<span id="equation-cr7"></span><span class="math math-display" data-tex="\[
+p(z)-p(w)=(z-w)\sum_{k=1}^N a_k
+\sum_{j=0}^{k-1}z^{k-1-j}w^j .             \tag{CR7}
+\]">\[
+p(z)-p(w)=(z-w)\sum_{k=1}^N a_k
+\sum_{j=0}^{k-1}z^{k-1-j}w^j .             \tag{CR7}
+\]</span>
+<p>On any fixed disk its finite sum is bounded; thus the difference tends to zero with <span class="math" data-tex="\(z-w\)">\(z-w\)</span>. Consequently <span class="math" data-tex="\(|p(z_0)|=b\)">\(|p(z_0)|=b\)</span>. By the strict outside bound and the available value <span class="math" data-tex="\(|p(0)|=|a_0|\)">\(|p(0)|=|a_0|\)</span>, this is a global minimum.</p>
+<h3 id="AN03-SPR-ROOT-003"><span id="an03-spr-root-003"></span><span id="the-exact-translated-coefficients-force-a-zero"></span><span id="9-3-the-exact-translated-coefficients-force-a-zero"></span>9.3. The exact translated coefficients force a zero</h3>
+<p>Suppose <span class="math" data-tex="\(b_0=p(z_0)\ne0\)">\(b_0=p(z_0)\ne0\)</span>. The complete finite binomial formula is</p>
+<span id="equation-cr8"></span><span class="math math-display" data-tex="\[
+p(z_0+w)=\sum_{r=0}^N b_r w^r,\qquad
+b_r=\sum_{k=r}^N a_k\binom{k}{r}z_0^{\,k-r},\qquad b_N=a_N.
+\tag{CR8}
+\]">\[
+p(z_0+w)=\sum_{r=0}^N b_r w^r,\qquad
+b_r=\sum_{k=r}^N a_k\binom{k}{r}z_0^{\,k-r},\qquad b_N=a_N.
+\tag{CR8}
+\]</span>
+<p>Let <span class="math" data-tex="\(q\)">\(q\)</span> be the smallest positive index with <span class="math" data-tex="\(b_q\ne0\)">\(b_q\ne0\)</span>. It exists because <span class="math" data-tex="\(b_N\ne0\)">\(b_N\ne0\)</span>; every intervening coefficient is exactly zero. Define the unit direction</p>
+<span id="equation-cr9"></span><span class="math math-display" data-tex="\[
+d=-\frac{|b_q|b_0}{|b_0|b_q},\qquad
+c^q=d,\quad |c|=1,\qquad H=\sum_{r=q+1}^N|b_r|.                \tag{CR9}
+\]">\[
+d=-\frac{|b_q|b_0}{|b_0|b_q},\qquad
+c^q=d,\quad |c|=1,\qquad H=\sum_{r=q+1}^N|b_r|.                \tag{CR9}
+\]</span>
+<p>Existence of <span class="math" data-tex="\(c\)">\(c\)</span> is (CR3), with all original factors in <span class="math" data-tex="\(d\)">\(d\)</span>. Put <span class="math" data-tex="\(w=tc\)">\(w=tc\)</span>. Choose <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(t&lt;1\)">\(t&lt;1\)</span>, with
+<span class="math" data-tex="\(|b_q|t^q&lt;|b_0|\)">\(|b_q|t^q&lt;|b_0|\)</span> and, if <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>, <span class="math" data-tex="\(tH&lt;|b_q|/2\)">\(tH&lt;|b_q|/2\)</span>.
+Such a choice follows from the proved positive real roots; for example take half of the minimum of <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\((|b_0|/|b_q|)^{1/q}\)">\((|b_0|/|b_q|)^{1/q}\)</span> and <span class="math" data-tex="\(|b_q|/(2H)\)">\(|b_q|/(2H)\)</span>, omitting only the last bound when its actual denominator <span class="math" data-tex="\(H\)">\(H\)</span> is zero. Then</p>
+<span id="equation-cr10"></span><span class="math math-display" data-tex="\[
+\begin{split}
+|p(z_0+tc)|
+&amp;\leq |b_0+b_qt^qc^q|+\sum_{r=q+1}^N|b_r|t^r\\
+&amp;= |b_0|-|b_q|t^q+\sum_{r=q+1}^N|b_r|t^r\\
+&amp;\leq |b_0|-|b_q|t^q+Ht^{q+1}&lt;|b_0| .                       
+\end{split} \tag{CR10}
+\]">\[
+\begin{split}
+|p(z_0+tc)|
+&amp;\leq |b_0+b_qt^qc^q|+\sum_{r=q+1}^N|b_r|t^r\\
+&amp;= |b_0|-|b_q|t^q+\sum_{r=q+1}^N|b_r|t^r\\
+&amp;\leq |b_0|-|b_q|t^q+Ht^{q+1}&lt;|b_0| .                       
+\end{split} \tag{CR10}
+\]</span>
+<p>The middle equality uses <span class="math" data-tex="\(b_qc^q=-|b_q|b_0/|b_0|\)">\(b_qc^q=-|b_q|b_0/|b_0|\)</span> and the strict bound on <span class="math" data-tex="\(t^q\)">\(t^q\)</span>. The last inequality also holds when <span class="math" data-tex="\(H=0\)">\(H=0\)</span>, since the full higher sum is then zero. This contradicts the global minimum. Hence <span class="math" data-tex="\(p(z_0)=0\)">\(p(z_0)=0\)</span>. Every nonconstant original complex polynomial has a root, with all its original coefficients and full translated remainder retained. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="AN03-SPR-ROOT-004"><span id="an03-spr-root-004"></span><span id="full-factorization-leading-coefficient-and-multiplicities"></span><span id="9-4-full-factorization-leading-coefficient-and-multiplicities"></span>9.4. Full factorization, leading coefficient and multiplicities</h3>
+<p>For an arbitrary <span class="math" data-tex="\(\alpha\in\mathbb C\)">\(\alpha\in\mathbb C\)</span>, the full division identity is</p>
+<span id="equation-cr11"></span><span class="math math-display" data-tex="\[
+p(z)=p(\alpha)+(z-\alpha)q_\alpha(z),\qquad
+q_\alpha(z)=\sum_{k=1}^N a_k
+\sum_{j=0}^{k-1}z^{k-1-j}\alpha^j .         \tag{CR11}
+\]">\[
+p(z)=p(\alpha)+(z-\alpha)q_\alpha(z),\qquad
+q_\alpha(z)=\sum_{k=1}^N a_k
+\sum_{j=0}^{k-1}z^{k-1-j}\alpha^j .         \tag{CR11}
+\]</span>
+<p>It follows from (CR7) with <span class="math" data-tex="\(w=\alpha\)">\(w=\alpha\)</span>. When <span class="math" data-tex="\(p(\alpha)=0\)">\(p(\alpha)=0\)</span>, the quotient has degree <span class="math" data-tex="\(N-1\)">\(N-1\)</span> and exactly the same leading coefficient <span class="math" data-tex="\(a_N\)">\(a_N\)</span>; its original finite coefficient sums are shown in (CR11). Applying the proved root theorem to each successive nonconstant quotient, and retaining every zero remainder, yields</p>
+<span id="equation-cr12"></span><span class="math math-display" data-tex="\[
+p(z)=a_N\prod_{\ell=1}^N(z-\alpha_\ell)
+=a_N\prod_{\lambda\in Z(p)}(z-\lambda)^{m_\lambda},
+\qquad \sum_{\lambda\in Z(p)}m_\lambda=N .                    \tag{CR12}
+\]">\[
+p(z)=a_N\prod_{\ell=1}^N(z-\alpha_\ell)
+=a_N\prod_{\lambda\in Z(p)}(z-\lambda)^{m_\lambda},
+\qquad \sum_{\lambda\in Z(p)}m_\lambda=N .                    \tag{CR12}
+\]</span>
+<p>Here <span class="math" data-tex="\(Z(p)\)">\(Z(p)\)</span> is the finite set of distinct roots of the original polynomial, and <span class="math" data-tex="\(m_\lambda\)">\(m_\lambda\)</span> counts its occurrences in the list, including repetitions. These multiplicities are intrinsic: in (CR8) centered at a root, the least index <span class="math" data-tex="\(r\)">\(r\)</span> with nonzero coefficient is exactly the largest power of <span class="math" data-tex="\(z-\lambda\)">\(z-\lambda\)</span> dividing <span class="math" data-tex="\(p\)">\(p\)</span>, since division at that power leaves a quotient with nonzero value at the root. The derivative identity <span class="math" data-tex="\(p^{(r)}(\lambda)=r!b_r\)">\(p^{(r)}(\lambda)=r!b_r\)</span>, obtained by differentiating every finite term, gives the same characterization with its full factorial. Thus distinct factorizations have the same root set and multiplicities. A nonzero constant has no roots and is its original leading constant times the empty product. The zero polynomial has every complex number as a root and no finite multiplicity at any point; it is excluded from the degree-<span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(a_N\ne0\)">\(a_N\ne0\)</span> theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="AN03-SPR-ROOT-005"><span id="an03-spr-root-005"></span>9.5. Scalar units and the exact Bézout and annihilator receiving maps</h3>
+<p>For every original nonzero scalar <span class="math" data-tex="\(c\)">\(c\)</span>, multiplication</p>
+<span id="equation-cr13"></span><span class="math math-display" data-tex="\[
+U_c:\mathbb C[z]\longrightarrow\mathbb C[z],\quad f\longmapsto cf,
+\qquad U_{c^{-1}}U_c=U_cU_{c^{-1}}=I                         \tag{CR13}
+\]">\[
+U_c:\mathbb C[z]\longrightarrow\mathbb C[z],\quad f\longmapsto cf,
+\qquad U_{c^{-1}}U_c=U_cU_{c^{-1}}=I                         \tag{CR13}
+\]</span>
+<p>is a complex-linear and <span class="math" data-tex="\(\mathbb C[z]\)">\(\mathbb C[z]\)</span>-module automorphism. It is not asserted to be a unital algebra homomorphism unless <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Both identities are pointwise scalar multiplication. The full evaluation relation is
+<span class="math" data-tex="\((U_cf)(A)=c f(A)\)">\((U_cf)(A)=c f(A)\)</span>.
+Thus its exact inverse preserves roots, multiplicities, divisibility, principal ideals and annihilation; these assertions follow respectively from multiplication by the nonzero number at every scalar point, from (CR12), from <span class="math" data-tex="\(cf=cgq\)">\(cf=cgq\)</span> and its inverse, from the two ideal inclusions, and from <span class="math" data-tex="\(cf(A)=0\)">\(cf(A)=0\)</span> precisely when <span class="math" data-tex="\(f(A)=0\)">\(f(A)=0\)</span>.</p>
+<p>Keep the original least-degree nonzero Bézout combination
+<span class="math" data-tex="\(\delta=a^{(0)}p+b^{(0)}q\)">\(\delta=a^{(0)}p+b^{(0)}q\)</span> from Section 2, with original leading coefficient <span class="math" data-tex="\(\kappa\ne0\)">\(\kappa\ne0\)</span>. Division by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, using its actual <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, shows directly that <span class="math" data-tex="\(\delta\)">\(\delta\)</span> divides both <span class="math" data-tex="\(p,q\)">\(p,q\)</span>; otherwise a nonzero lower-degree remainder would still be an original combination. Every common divisor divides <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. The monic gcd named there is compared by</p>
+<span id="equation-cr14"></span><span class="math math-display" data-tex="\[
+\delta=\kappa d,\qquad
+d=\kappa^{-1}\delta
+=(\kappa^{-1}a^{(0)})p+(\kappa^{-1}b^{(0)})q .                \tag{CR14}
+\]">\[
+\delta=\kappa d,\qquad
+d=\kappa^{-1}\delta
+=(\kappa^{-1}a^{(0)})p+(\kappa^{-1}b^{(0)})q .                \tag{CR14}
+\]</span>
+<p>Every multiplier and inverse factor is retained. The original <span class="math" data-tex="\(\delta\)">\(\delta\)</span> and its combination remain in the calculation; (CR13) proves the exact comparison. If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are relatively prime, <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is an actual nonzero constant and its inverse gives the full identity one needed for the projection. The pair <span class="math" data-tex="\((p,q)=(0,0)\)">\((p,q)=(0,0)\)</span> has no such nonzero combination.</p>
+<p>Existence of the original annihilator is supplied by the invariant-flag Cayley--Hamilton proof in Section 4, after the root and triangularization interfaces are proved in Sections 9.3 and 9.6--9.7. Its nonempty set of nonzero annihilators contains the original characteristic polynomial, so the set of degrees has a least integer. For an original least-degree nonzero annihilator <span class="math" data-tex="\(m\)">\(m\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span>, with leading coefficient <span class="math" data-tex="\(c_m\)">\(c_m\)</span>, the comparison with the source's named monic minimal polynomial is</p>
+<span id="equation-cr15"></span><span class="math math-display" data-tex="\[
+m=c_m\mu_A,\qquad m(A)=c_m\mu_A(A)=0.                         \tag{CR15}
+\]">\[
+m=c_m\mu_A,\qquad m(A)=c_m\mu_A(A)=0.                         \tag{CR15}
+\]</span>
+<p>Divide every other annihilator by the original <span class="math" data-tex="\(m\)">\(m\)</span>, retaining its leading coefficient in the division steps. Its remainder still annihilates <span class="math" data-tex="\(A\)">\(A\)</span> and has smaller degree, so is zero. Hence the original <span class="math" data-tex="\(m\)">\(m\)</span> divides every annihilator. This also proves uniqueness up to its exact nonzero scalar unit, and (CR13) proves the comparison with the named <span class="math" data-tex="\(\mu_A\)">\(\mu_A\)</span>.</p>
+<p>In positive dimension (CR12) applied to the original <span class="math" data-tex="\(m\)">\(m\)</span> gives
+<span class="math" data-tex="\(m=c_m H\)">\(m=c_m H\)</span>, <span class="math" data-tex="\(H=\prod_j h_j\)">\(H=\prod_j h_j\)</span>, with <span class="math" data-tex="\(h_j=(z-\lambda_j)^{\nu_j}\)">\(h_j=(z-\lambda_j)^{\nu_j}\)</span>, every multiplicity retained. Put <span class="math" data-tex="\(H_j=\prod_{k\ne j}h_k\)">\(H_j=\prod_{k\ne j}h_k\)</span> and <span class="math" data-tex="\(M_j=m/h_j=c_m H_j\)">\(M_j=m/h_j=c_m H_j\)</span>. Distinct linear powers are coprime: a nonconstant common divisor would, by Section 9.3, have a root equal to both distinct <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span>'s. Section 3 of this lesson proves <span class="math" data-tex="\(a_jh_j+b_jH_j=1\)">\(a_jh_j+b_jH_j=1\)</span>. In the original <span class="math" data-tex="\(M_j\)">\(M_j\)</span> calculation this is exactly</p>
+<span id="equation-cr16"></span><span class="math math-display" data-tex="\[
+a_jh_j+(c_m^{-1}b_j)M_j=1,\qquad
+E_j=(c_m^{-1}b_j)(A)M_j(A)
+=c_m^{-1}b_j(A)c_m H_j(A).                                \tag{CR16}
+\]">\[
+a_jh_j+(c_m^{-1}b_j)M_j=1,\qquad
+E_j=(c_m^{-1}b_j)(A)M_j(A)
+=c_m^{-1}b_j(A)c_m H_j(A).                                \tag{CR16}
+\]</span>
+<p>Evaluation retains every unit factor. The full original annihilation
+<span class="math" data-tex="\(m(A)=c_mH(A)=0\)">\(m(A)=c_mH(A)=0\)</span> implies <span class="math" data-tex="\(H(A)=0\)">\(H(A)=0\)</span> by that displayed inverse, so the existing proof of all projection identities and their kernel/image maps applies. Thus the projection is the same original operator with every coefficient recovered; no leading unit is lost from the calculation. On the zero vector space every scalar identity evaluates to the zero endomorphism; a least-degree annihilator can be any original nonzero constant <span class="math" data-tex="\(c_m\)">\(c_m\)</span>, and the comparison polynomial is <span class="math" data-tex="\(1\)">\(1\)</span>, with <span class="math" data-tex="\(m=c_m\)">\(m=c_m\)</span> and the empty root list. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="AN03-SPR-ROOT-006"><span id="an03-spr-root-006"></span><span id="original-characteristic-polynomial-and-explicit-root-to-kernel-map"></span><span id="9-6-original-characteristic-polynomial-and-explicit-root-to-kernel-map"></span>9.6. Original characteristic polynomial and explicit root-to-kernel map</h3>
+<p>In any fixed original coordinate basis for <span class="math" data-tex="\(V\)">\(V\)</span>, with <span class="math" data-tex="\(n=\dim V\)">\(n=\dim V\)</span>, retain the original matrix entries <span class="math" data-tex="\(a_{jk}\)">\(a_{jk}\)</span>. Its characteristic polynomial is the full determinant</p>
+<span id="equation-cr17"></span><span class="math math-display" data-tex="\[
+\chi_A(z)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{j=1}^n(z\delta_{j,\sigma(j)}-a_{j,\sigma(j)})
+=\sum_{\sigma\in S_n}\sum_{S\subseteq\{1,\ldots,n\}}
+\operatorname{sgn}(\sigma)z^{|S|}
+\prod_{j\in S}\delta_{j,\sigma(j)}
+\prod_{j\notin S}(-a_{j,\sigma(j)}).                         \tag{CR17}
+\]">\[
+\chi_A(z)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{j=1}^n(z\delta_{j,\sigma(j)}-a_{j,\sigma(j)})
+=\sum_{\sigma\in S_n}\sum_{S\subseteq\{1,\ldots,n\}}
+\operatorname{sgn}(\sigma)z^{|S|}
+\prod_{j\in S}\delta_{j,\sigma(j)}
+\prod_{j\notin S}(-a_{j,\sigma(j)}).                         \tag{CR17}
+\]</span>
+<p>All zero terms, signs and products are accounted for. When <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the leading term comes from the full <span class="math" data-tex="\(S\)">\(S\)</span> and identity permutation and is <span class="math" data-tex="\(z^n\)">\(z^n\)</span>; the lower coefficients are the remaining full displayed sums. This leading coefficient one is an exact determinant calculation. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the single empty permutation and empty subset give the empty product one, so there are no characteristic roots. The other sign convention has the exact relation</p>
+<span id="equation-cr18"></span><span class="math math-display" data-tex="\[
+\det(A-zI)=(-1)^n\chi_A(z).                \tag{CR18}
+\]">\[
+\det(A-zI)=(-1)^n\chi_A(z).                \tag{CR18}
+\]</span>
+<p>It follows by taking a minus sign from each of the original <span class="math" data-tex="\(n\)">\(n\)</span> rows; the zero-dimensional sign is one. Every root and multiplicity agrees through this nonzero constant map.</p>
+<p>The determinant identities used below follow from the full coordinate formula rather than an assumed eigenvalue theorem. For arbitrary original matrices <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, expanding every product gives</p>
+<span id="equation-cr18a"></span><span class="math math-display" data-tex="\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+\left(\prod_i x_{i,k_i}\right)
+\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_i y_{k_i,\sigma(i)} .           \tag{CR18a}
+\]">\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+\left(\prod_i x_{i,k_i}\right)
+\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_i y_{k_i,\sigma(i)} .           \tag{CR18a}
+\]</span>
+<p>If two <span class="math" data-tex="\(k_i\)">\(k_i\)</span>'s agree, exchanging their assigned columns is a fixed-point-free pairing of the inner permutations with equal products and opposite signs, so the entire inner sum is exactly zero. Every remaining tuple is <span class="math" data-tex="\(k_i=\tau(i)\)">\(k_i=\tau(i)\)</span> for a permutation <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Relabeling its original rows by <span class="math" data-tex="\(j=\tau(i)\)">\(j=\tau(i)\)</span> makes the inner sum <span class="math" data-tex="\(\operatorname{sgn}(\tau)\det Y\)">\(\operatorname{sgn}(\tau)\det Y\)</span>, since the new column permutation is <span class="math" data-tex="\(\sigma\circ\tau^{-1}\)">\(\sigma\circ\tau^{-1}\)</span>. Summing these surviving tuples is exactly <span class="math" data-tex="\(\det X\det Y\)">\(\det X\det Y\)</span>. This proves determinant multiplicativity with every original summand accounted for. It also proves <span class="math" data-tex="\(\det S\,\det S^{-1}=1\)">\(\det S\,\det S^{-1}=1\)</span> for an invertible <span class="math" data-tex="\(S\)">\(S\)</span>, because their product is the actual identity matrix, whose permutation sum is one. Row multilinearity follows by expanding the changed row in the same sum; interchange of two rows changes its sign by relabeling. A matrix with repeated rows has zero determinant by that same sign pairing. Consequently an elementary row addition has its unchanged original determinant, while a row exchange has the full factor minus one.</p>
+<p>For the original block matrix of sizes <span class="math" data-tex="\(r,d\)">\(r,d\)</span>,</p>
+<span id="equation-cr18b"></span><span class="math math-display" data-tex="\[
+\det\begin{pmatrix}X&amp;C\\0&amp;Y\end{pmatrix}
+=\sum_{\sigma\in S_{r+d}}\operatorname{sgn}(\sigma)
+\prod_{j=1}^{r+d}b_{j,\sigma(j)}
+=\det X\,\det Y .                                           \tag{CR18b}
+\]">\[
+\det\begin{pmatrix}X&amp;C\\0&amp;Y\end{pmatrix}
+=\sum_{\sigma\in S_{r+d}}\operatorname{sgn}(\sigma)
+\prod_{j=1}^{r+d}b_{j,\sigma(j)}
+=\det X\,\det Y .                                           \tag{CR18b}
+\]</span>
+<p>Every permutation sending a lower row to an upper column has an actual zero factor. All remaining permutations send the <span class="math" data-tex="\(d\)">\(d\)</span> lower rows bijectively onto the <span class="math" data-tex="\(d\)">\(d\)</span> lower columns, hence send the upper rows onto upper columns. Their signs and products factor into those of the two original blocks, yielding the displayed product. Thus every term containing an upper-right entry of <span class="math" data-tex="\(C\)">\(C\)</span> has a corresponding lower-left zero factor; <span class="math" data-tex="\(C\)">\(C\)</span> remains in the operator and every such determinant term has been explicitly accounted for. The upper triangular case follows by the same argument one block at a time. Each formula includes zero block sizes by its empty-product convention.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, Sections 9.2--9.4 give a root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of the actual <span class="math" data-tex="\(\chi_A\)">\(\chi_A\)</span>. To construct its entire eigenspace, apply elimination to <span class="math" data-tex="\(B=\lambda I-A\)">\(B=\lambda I-A\)</span>, retaining every actual pivot. Scan columns in their original order, exchange rows when needed, and eliminate below a pivot <span class="math" data-tex="\(d_j\ne0\)">\(d_j\ne0\)</span> by subtracting the full multiple <span class="math" data-tex="\(b_{ik}/d_j\)">\(b_{ik}/d_j\)</span> of the pivot row. Do not replace the pivot by one. Each row exchange is an invertible permutation matrix. Each row addition is <span class="math" data-tex="\(I-tE_{ij}\)">\(I-tE_{ij}\)</span>, with inverse <span class="math" data-tex="\(I+tE_{ij}\)">\(I+tE_{ij}\)</span>, since <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> and <span class="math" data-tex="\(E_{ij}^2=0\)">\(E_{ij}^2=0\)</span>. Their ordered product <span class="math" data-tex="\(T\)">\(T\)</span> is invertible; its inverse is the reversed product of these exact inverses. Write <span class="math" data-tex="\(E=TB\)">\(E=TB\)</span>. Its nonzero rows have pivot columns <span class="math" data-tex="\(c_1&lt;\cdots&lt;c_r\)">\(c_1&lt;\cdots&lt;c_r\)</span>, with entries <span class="math" data-tex="\(d_1,\ldots,d_r\)">\(d_1,\ldots,d_r\)</span>; the remaining rows are zero.</p>
+<p>The determinant changes sign at each row exchange and is unchanged by a row addition, by the multilinear alternating determinant formula in (CR17). If <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, the resulting triangular determinant is the full nonzero product of its pivots, so
+<span class="math" data-tex="\(\det B=(-1)^s\prod_{j=1}^n d_j\ne0\)">\(\det B=(-1)^s\prod_{j=1}^n d_j\ne0\)</span>, where <span class="math" data-tex="\(s\)">\(s\)</span> is the number of exchanges. Since <span class="math" data-tex="\(\chi_A(\lambda)=0\)">\(\chi_A(\lambda)=0\)</span>, this is impossible; hence <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>.</p>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be the original nonpivot column set. For arbitrary <span class="math" data-tex="\(t=(t_k)_{k\in J}\in\mathbb C^J\)">\(t=(t_k)_{k\in J}\in\mathbb C^J\)</span>, prescribe <span class="math" data-tex="\(v_k=t_k\)">\(v_k=t_k\)</span> on those columns and define the pivot coordinates in reverse order by</p>
+<span id="equation-cr19"></span><span class="math math-display" data-tex="\[
+v_{c_j}
+=-d_j^{-1}\sum_{k&gt;c_j}E_{jk}v_k,
+\qquad j=r,r-1,\ldots,1.                \tag{CR19}
+\]">\[
+v_{c_j}
+=-d_j^{-1}\sum_{k&gt;c_j}E_{jk}v_k,
+\qquad j=r,r-1,\ldots,1.                \tag{CR19}
+\]</span>
+<p>Every full row is then zero, and <span class="math" data-tex="\(Ev=0\)">\(Ev=0\)</span> implies <span class="math" data-tex="\(Bv=0\)">\(Bv=0\)</span> through the actual <span class="math" data-tex="\(T^{-1}\)">\(T^{-1}\)</span>. Conversely any kernel vector has precisely these original free coordinates and is recovered by the same formula. Thus (CR19) is a linear bijection
+<span class="math" data-tex="\(\mathbb C^J\to\ker(\lambda I-A)\)">\(\mathbb C^J\to\ker(\lambda I-A)\)</span>, inverse to the actual free-coordinate projection. Since <span class="math" data-tex="\(J\ne\varnothing\)">\(J\ne\varnothing\)</span>, any nonzero free vector gives a nonzero eigenvector <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span>. This proves the exact root-to-kernel map and all its fibre dimensions; it is not just a determinant nonidentity. Invertibility away from the roots follows by the same full-pivot elimination and its actual inverse matrices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="AN03-SPR-ROOT-007"><span id="an03-spr-root-007"></span><span id="eigenline-invariant-range-and-both-receiving-quotient-maps"></span><span id="9-7-eigenline-invariant-range-and-both-receiving-quotient-maps"></span>9.7. Eigenline, invariant range and both receiving quotient maps</h3>
+<p>For a root <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and an actual nonzero vector obtained from (CR19), let <span class="math" data-tex="\(L\)">\(L\)</span> be its eigenline and let <span class="math" data-tex="\(W=\operatorname{im}(A-\lambda I)\)">\(W=\operatorname{im}(A-\lambda I)\)</span>. The exact sequences</p>
+<span id="equation-cr20"></span><span class="math math-display" data-tex="\[
+0\longrightarrow\ker(A-\lambda I)\longrightarrow V
+\xrightarrow{A-\lambda I}W\longrightarrow0,\qquad
+0\longrightarrow W\longrightarrow V
+\longrightarrow V/W\longrightarrow0                    \tag{CR20}
+\]">\[
+0\longrightarrow\ker(A-\lambda I)\longrightarrow V
+\xrightarrow{A-\lambda I}W\longrightarrow0,\qquad
+0\longrightarrow W\longrightarrow V
+\longrightarrow V/W\longrightarrow0                    \tag{CR20}
+\]</span>
+<p>have their original inclusion, full matrix and quotient maps. Their kernels and images are immediate from the displayed definitions. The equality
+<span class="math" data-tex="\(A(A-\lambda I)=(A-\lambda I)A\)">\(A(A-\lambda I)=(A-\lambda I)A\)</span> shows invariance of <span class="math" data-tex="\(W\)">\(W\)</span>; it also shows that every map in the first sequence intertwines the actual restricted operators. The second induced operator is exactly <span class="math" data-tex="\(\lambda I_{V/W}\)">\(\lambda I_{V/W}\)</span>, because the original <span class="math" data-tex="\(A-\lambda I\)">\(A-\lambda I\)</span> sends every vector into <span class="math" data-tex="\(W\)">\(W\)</span>. Rank-nullity gives
+<span class="math" data-tex="\(d=\dim(V/W)=\dim\ker(A-\lambda I)\)">\(d=\dim(V/W)=\dim\ker(A-\lambda I)\)</span>.</p>
+<p>Choose a basis of <span class="math" data-tex="\(W\)">\(W\)</span> and extend it to <span class="math" data-tex="\(V\)">\(V\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> is its full coordinate change, the actual block operator is
+<span class="math" data-tex="\(S^{-1}AS=\begin{pmatrix}A_W&amp;C\\0&amp;\lambda I_d\end{pmatrix}\)">\(S^{-1}AS=\begin{pmatrix}A_W&amp;C\\0&amp;\lambda I_d\end{pmatrix}\)</span>.
+The upper block <span class="math" data-tex="\(C\)">\(C\)</span> is retained. Block triangular determinant and the exact original conjugation give</p>
+<span id="equation-cr21"></span><span class="math math-display" data-tex="\[
+\begin{split}
+\chi_A(z)
+&amp;=\det(S)\det\begin{pmatrix}zI_W-A_W&amp;-C\\0&amp;(z-\lambda)I_d\end{pmatrix}
+\det(S^{-1})\\
+&amp;=\det(S)\,\chi_{A_W}(z)(z-\lambda)^d\,\det(S^{-1}),\qquad
+\det(S)\det(S^{-1})=1 .                  
+\end{split} \tag{CR21}
+\]">\[
+\begin{split}
+\chi_A(z)
+&amp;=\det(S)\det\begin{pmatrix}zI_W-A_W&amp;-C\\0&amp;(z-\lambda)I_d\end{pmatrix}
+\det(S^{-1})\\
+&amp;=\det(S)\,\chi_{A_W}(z)(z-\lambda)^d\,\det(S^{-1}),\qquad
+\det(S)\det(S^{-1})=1 .                  
+\end{split} \tag{CR21}
+\]</span>
+<p>Thus its original root multiplicity is at least <span class="math" data-tex="\(d\)">\(d\)</span>, with every coordinate and unit factor shown.</p>
+<p>The eigenline construction instead uses the exact sequence
+<span class="math" data-tex="\(0\to L\to V\to V/L\to0\)">\(0\to L\to V\to V/L\to0\)</span>, with induced operator <span class="math" data-tex="\(\overline A\)">\(\overline A\)</span> on <span class="math" data-tex="\(V/L\)">\(V/L\)</span>. In a basis beginning with the actual eigenvector, its full block form gives</p>
+<span id="equation-cr22"></span><span class="math math-display" data-tex="\[
+\chi_A(z)=\det(S_L)(z-\lambda)
+\chi_{\overline A}(z)\det(S_L^{-1}),
+\qquad \det(S_L)\det(S_L^{-1})=1.                             \tag{CR22}
+\]">\[
+\chi_A(z)=\det(S_L)(z-\lambda)
+\chi_{\overline A}(z)\det(S_L^{-1}),
+\qquad \det(S_L)\det(S_L^{-1})=1.                             \tag{CR22}
+\]</span>
+<p>The quotient has dimension <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, while <span class="math" data-tex="\(W\)">\(W\)</span> has dimension <span class="math" data-tex="\(n-d\)">\(n-d\)</span>. Both constructions are exact invariant-operator maps from the same original <span class="math" data-tex="\(A\)">\(A\)</span>, with their original determinant identities. Formula (CR22) supplies the eigenline induction actually written in Section 4. Formula (CR21) supplies the invariant-range route mentioned there. Inducting on the original dimension, lifting the ordered quotient basis and retaining each lifted vector proves triangularization, including the empty basis at dimension zero. The existing invariant-flag argument then gives Cayley--Hamilton for that same original operator, without using projections to obtain its own prerequisite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="AN03-SPR-ROOT-008"><span id="an03-spr-root-008"></span><span id="the-original-spectral-bound-and-contour-receiver"></span><span id="9-8-the-original-spectral-bound-and-contour-receiver"></span>9.8. The original spectral bound and contour receiver</h3>
+<p>For an actual eigenvector <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, the unchanged operator norm gives</p>
+<span id="equation-cr23"></span><span class="math math-display" data-tex="\[
+|\lambda|\|v\|=\|Av\|\leq\|A\|\|v\|,
+\qquad |\lambda|\leq\|A\| .               \tag{CR23}
+\]">\[
+|\lambda|\|v\|=\|Av\|\leq\|A\|\|v\|,
+\qquad |\lambda|\leq\|A\| .               \tag{CR23}
+\]</span>
+<p>No change to the original length of <span class="math" data-tex="\(v\)">\(v\)</span> is needed. Together with the actual polynomial determinant (CR17) and its continuity as a finite sum, this supplies the root bound and eigenvalue criterion in Section 7's compact-parameter contour construction. Every repeated root remains included; absence of real roots means absence of real eigenvalues through (CR19), in both original determinant conventions (CR18).</p>
+<p>The original polynomial, its Bézout combination, its least-degree annihilator and its matrix have now been carried through the root, scalar-unit, projection, kernel and quotient maps. Sections 2--4 and 7 use these exact maps, with all leading factors and repeated roots retained. These are finite polynomial and spectral results; each further boundary-operator assertion retains its separate hypotheses and proof.</p>
+<h2 id="full-finite-linear-algebra-foundations"><span id="10-full-finite-linear-algebra-foundations"></span>10. Full finite linear-algebra foundations</h2>
+<p>Here are the finite algebra proofs used by the preceding spectral and polynomial arguments. It works over the original field <span class="math" data-tex="\(F=\mathbb R\)">\(F=\mathbb R\)</span> or <span class="math" data-tex="\(F=\mathbb C\)">\(F=\mathbb C\)</span>. Conjugation is the identity in the real case. The scalar entry is the real field with completeness, the complex field formed from it, finite induction and finite sums/products. No spectral decomposition, root theorem, basis-extension theorem, rank-nullity theorem or inner-product representation theorem is assumed below. The complex-root theorem already proved in Polynomial and contour interfaces for stable boundary models is used only when root existence is separately requested in Section 10.10. These are standard foundational results; no novelty is claimed.</p>
+<p>All vectors, coefficient matrices, pivots, signs and inner products in a calculation keep their original values. A new basis gives an explicit coordinate comparison, with both directions and every metric factor retained. In particular, the original Gram residuals and their lengths stay in the calculation when a separately constructed orthonormal comparison basis is given.</p>
+<h3 id="AN03-SPR-LINALG-001"><span id="an03-spr-linalg-001"></span><span id="finite-spanning-sets-exchange-and-basis-extension"></span><span id="10-1-finite-spanning-sets-exchange-and-basis-extension"></span>10.1. Finite spanning sets, exchange and basis extension</h3>
+<p>The scalar arithmetic used here is explicit. Real arithmetic is the given ordered-field arithmetic. For complex numbers keep their original pairs and define</p>
+<span id="equation-fa0a"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(a,b)+(c,d)=(a+c,b+d), \\ 
+(a,b)(c,d)=(ac-bd,ad+bc), \\ 1=(1,0),\quad 0=(0,0),\quad i=(0,1).
+\end{gathered}
+\tag{FA0a}
+\]">\[
+\begin{gathered}
+(a,b)+(c,d)=(a+c,b+d), \\ 
+(a,b)(c,d)=(ac-bd,ad+bc), \\ 1=(1,0),\quad 0=(0,0),\quad i=(0,1).
+\end{gathered}
+\tag{FA0a}
+\]</span>
+<p>Addition is an abelian group coordinatewise. Multiplication is commutative by the real commutative field laws. Expanding either association of three factors gives the same full pair</p>
+<span id="equation-fa0b"></span><span class="math math-display" data-tex="\[
+((a,b)(c,d))(e,f)=(a,b)((c,d)(e,f))
+=(ace-adf-bcf-bde,acf+ade+bce-bdf).
+\tag{FA0b}
+\]">\[
+((a,b)(c,d))(e,f)=(a,b)((c,d)(e,f))
+=(ace-adf-bcf-bde,acf+ade+bce-bdf).
+\tag{FA0b}
+\]</span>
+<p>All four summands in each coordinate are retained; distributivity follows by the same two-coordinate expansion. The displayed zero and one are the additive and multiplicative identities, and the additive inverse is the pair of the two original negatives. For a nonzero pair, the original real number <span class="math" data-tex="\(a^2+b^2\)">\(a^2+b^2\)</span> is positive. Direct multiplication in either order proves</p>
+<span id="equation-fa0c"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(a,b)^{-1}=\left(\frac{a}{a^2+b^2},-\frac{b}{a^2+b^2}\right), \\  (a,b)(a,b)^{-1}=(a,b)^{-1}(a,b)=(1,0), \\ i^2=(-1,0).
+\end{gathered}
+\tag{FA0c}
+\]">\[
+\begin{gathered}
+(a,b)^{-1}=\left(\frac{a}{a^2+b^2},-\frac{b}{a^2+b^2}\right), \\  (a,b)(a,b)^{-1}=(a,b)^{-1}(a,b)=(1,0), \\ i^2=(-1,0).
+\end{gathered}
+\tag{FA0c}
+\]</span>
+<p>Thus these pairs form a field. The real inclusion <span class="math" data-tex="\(a\mapsto(a,0)\)">\(a\mapsto(a,0)\)</span> preserves both operations, is injective and gives the original real subfield. Conjugation is the actual map <span class="math" data-tex="\((a,b)\mapsto(a,-b)\)">\((a,b)\mapsto(a,-b)\)</span>; the two-coordinate multiplication shows that it preserves products, conjugates sums, and has square the identity. Keeping the original squared modulus <span class="math" data-tex="\(N(a,b)=a^2+b^2\)">\(N(a,b)=a^2+b^2\)</span>, expansion gives</p>
+<span id="equation-fa0d"></span><span class="math math-display" data-tex="\[
+N((a,b)(c,d))=(ac-bd)^2+(ad+bc)^2
+=a^2c^2-2acbd+b^2d^2+a^2d^2+2adbc+b^2c^2
+=(a^2+b^2)(c^2+d^2).
+\tag{FA0d}
+\]">\[
+N((a,b)(c,d))=(ac-bd)^2+(ad+bc)^2
+=a^2c^2-2acbd+b^2d^2+a^2d^2+2adbc+b^2c^2
+=(a^2+b^2)(c^2+d^2).
+\tag{FA0d}
+\]</span>
+<p>The middle two mixed terms are opposite by the scalar real field laws; no matrix product is being commuted. This supplies the actual complex arithmetic and conjugation used below from the stated real base.</p>
+<p>Finite polynomial arithmetic is equally explicit. For original coefficients <span class="math" data-tex="\(p(z)=\sum_j a_jz^j\)">\(p(z)=\sum_j a_jz^j\)</span>, <span class="math" data-tex="\(q(z)=\sum_k b_kz^k\)">\(q(z)=\sum_k b_kz^k\)</span>, with coefficients zero outside their finite lists, addition has coefficients <span class="math" data-tex="\(a_l+b_l\)">\(a_l+b_l\)</span>, and multiplication has coefficients <span class="math" data-tex="\(\sum_{j+k=l}a_jb_k\)">\(\sum_{j+k=l}a_jb_k\)</span>. Distributivity and associativity follow by retaining the same finite ordered sums: the coefficient of a triple product at <span class="math" data-tex="\(l\)">\(l\)</span> is <span class="math" data-tex="\(\sum_{j+k+t=l}a_jb_kc_t\)">\(\sum_{j+k+t=l}a_jb_kc_t\)</span> under either association. The constant polynomial one is the multiplicative identity, and zero is the additive identity. For nonzero original polynomials of degrees <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, the highest coefficient of their product is the original nonzero product <span class="math" data-tex="\(a_mb_n\)">\(a_mb_n\)</span>, so its degree is <span class="math" data-tex="\(m+n\)">\(m+n\)</span>. These assertions include constant polynomials and the zero polynomial without assigning a degree to zero. Finite induction on the resulting nonnegative degree is the original finite-induction principle. Section 2 uses precisely this arithmetic for division and Bézout.</p>
+<p>A vector space over <span class="math" data-tex="\(F\)">\(F\)</span> has the usual addition and scalar multiplication. The span of a finite list is the set of all of its finite linear combinations, including the empty combination zero. A list is independent when its only zero linear combination has every coefficient zero. A finite-dimensional space means one admitting a finite spanning list; a basis is an independent spanning list. The zero space has the empty basis.</p>
+<p>Let <span class="math" data-tex="\(u_1,\ldots,u_r\)">\(u_1,\ldots,u_r\)</span> be independent and let the original list <span class="math" data-tex="\(b_1,\ldots,b_N\)">\(b_1,\ldots,b_N\)</span> span <span class="math" data-tex="\(V\)">\(V\)</span>. We prove <span class="math" data-tex="\(r\leq N\)">\(r\leq N\)</span> and replace selected original list positions by the actual <span class="math" data-tex="\(u_j\)">\(u_j\)</span> while keeping a spanning list. Suppose a spanning list already has <span class="math" data-tex="\(u_1,\ldots,u_{j-1}\)">\(u_1,\ldots,u_{j-1}\)</span> and <span class="math" data-tex="\(N-j+1\)">\(N-j+1\)</span> remaining original vectors. Write</p>
+<span id="equation-fa1"></span><span class="math math-display" data-tex="\[
+u_j=\sum_{k&lt;j}a_k u_k+\sum_{b\in L}c_b b.
+\tag{FA1}
+\]">\[
+u_j=\sum_{k&lt;j}a_k u_k+\sum_{b\in L}c_b b.
+\tag{FA1}
+\]</span>
+<p>At least one <span class="math" data-tex="\(c_b\ne0\)">\(c_b\ne0\)</span>, because otherwise <span class="math" data-tex="\(u_j\)">\(u_j\)</span> belongs to the span of its independent predecessors. Choose such an actual original <span class="math" data-tex="\(b\)">\(b\)</span>. Solving (FA1) gives</p>
+<span id="equation-fa2"></span><span class="math math-display" data-tex="\[
+b=c_b^{-1}u_j-\sum_{k&lt;j}c_b^{-1}a_k u_k
+-\sum_{b&#x27;\in L\setminus\{b\}}c_b^{-1}c_{b&#x27;}b&#x27;.
+\tag{FA2}
+\]">\[
+b=c_b^{-1}u_j-\sum_{k&lt;j}c_b^{-1}a_k u_k
+-\sum_{b&#x27;\in L\setminus\{b\}}c_b^{-1}c_{b&#x27;}b&#x27;.
+\tag{FA2}
+\]</span>
+<p>Both expressions retain their original nonzero coefficient and its inverse. Replacing this <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(u_j\)">\(u_j\)</span> preserves the span in both directions. The operation needs a remaining vector at each step; after <span class="math" data-tex="\(N\)">\(N\)</span> steps there is none, so an independent list cannot have a further member. This proves the bound and the asserted exchange construction without first assuming existence of a basis.</p>
+<p>Now start with any independent list and scan the original finite spanning list in its original order. Append a vector exactly when it is outside the current span. An appended vector preserves independence: a zero combination with nonzero coefficient on the new vector would put it in the preceding span. At the end every original spanning vector is in the resulting span. Thus the list extends to a basis. Starting with the empty list gives existence of a basis. Applying the exchange bound in both directions to two bases proves that they have the same number of vectors. This number is <span class="math" data-tex="\(\dim_F V\)">\(\dim_F V\)</span>.</p>
+<p>Every subspace <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span> has a finite basis. Choose a vector outside the current span in <span class="math" data-tex="\(W\)">\(W\)</span> whenever one exists. An independent list in <span class="math" data-tex="\(W\)">\(W\)</span> is also independent in <span class="math" data-tex="\(V\)">\(V\)</span>, so it can never exceed the finite dimension of <span class="math" data-tex="\(V\)">\(V\)</span>. By that bound the construction terminates after at most <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> choices and then spans <span class="math" data-tex="\(W\)">\(W\)</span>. This is only a finite selection. Its actual selected vectors can be extended to a basis of <span class="math" data-tex="\(V\)">\(V\)</span> by the preceding construction.</p>
+<h3 id="AN03-SPR-LINALG-002"><span id="an03-spr-linalg-002"></span><span id="coordinates-matrix-products-and-basis-comparisons"></span><span id="10-2-coordinates-matrix-products-and-basis-comparisons"></span>10.2. Coordinates, matrix products and basis comparisons</h3>
+<p>For an ordered original basis <span class="math" data-tex="\(b=(b_1,\ldots,b_n)\)">\(b=(b_1,\ldots,b_n)\)</span>, the map</p>
+<span id="equation-fa3"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+J_b:F^n\longrightarrow V, \\ J_b x=\sum_{j=1}^n x_j b_j
+\end{gathered}
+\tag{FA3}
+\]">\[
+\begin{gathered}
+J_b:F^n\longrightarrow V, \\ J_b x=\sum_{j=1}^n x_j b_j
+\end{gathered}
+\tag{FA3}
+\]</span>
+<p>is linear, surjective by span and injective by independence. Its inverse gives the unique original coordinates. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this is the unique map between zero spaces and is a bijection.</p>
+<p>Let <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> be linear, with ordered basis <span class="math" data-tex="\(c=(c_1,\ldots,c_q)\)">\(c=(c_1,\ldots,c_q)\)</span> in <span class="math" data-tex="\(W\)">\(W\)</span>. Define <span class="math" data-tex="\(A_{ij}\)">\(A_{ij}\)</span> by the unique expression <span class="math" data-tex="\(Tb_j=\sum_i A_{ij}c_i\)">\(Tb_j=\sum_i A_{ij}c_i\)</span>. Then</p>
+<span id="equation-fa4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+T=J_c A J_b^{-1}, \\ (Ax)_i=\sum_{j=1}^n A_{ij}x_j.
+\end{gathered}
+\tag{FA4}
+\]">\[
+\begin{gathered}
+T=J_c A J_b^{-1}, \\ (Ax)_i=\sum_{j=1}^n A_{ij}x_j.
+\end{gathered}
+\tag{FA4}
+\]</span>
+<p>This constructs the matrix rather than assuming it. Every matrix conversely defines this linear map. Addition and scalar multiplication of maps are entrywise addition and multiplication of their matrices. If <span class="math" data-tex="\(U:W\to Z\)">\(U:W\to Z\)</span> has matrix <span class="math" data-tex="\(B\)">\(B\)</span> in the actual target basis, finite expansion gives</p>
+<span id="equation-fa5"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(BA)_{kj}=\sum_{i=1}^q B_{ki}A_{ij}, \\ UT=J_d BA J_b^{-1}.
+\end{gathered}
+\tag{FA5}
+\]">\[
+\begin{gathered}
+(BA)_{kj}=\sum_{i=1}^q B_{ki}A_{ij}, \\ UT=J_d BA J_b^{-1}.
+\end{gathered}
+\tag{FA5}
+\]</span>
+<p>The order is <span class="math" data-tex="\(BA\)">\(BA\)</span>. Expanding each finite triple sum and keeping the same ordered summands proves associativity. The coordinate matrix of the identity is <span class="math" data-tex="\(I_n\)">\(I_n\)</span>, with entries <span class="math" data-tex="\(\delta_{ij}\)">\(\delta_{ij}\)</span>. Every empty sum and zero dimension in (FA4)--(FA5) has its literal value; no nonzero-dimensional hypothesis has entered.</p>
+<p>For new bases <span class="math" data-tex="\(b&#x27;_j=\sum_k S_{kj}b_k\)">\(b&#x27;_j=\sum_k S_{kj}b_k\)</span> and <span class="math" data-tex="\(c&#x27;_i=\sum_l R_{li}c_l\)">\(c&#x27;_i=\sum_l R_{li}c_l\)</span>, (FA3) gives <span class="math" data-tex="\(J_{b&#x27;}=J_b S\)">\(J_{b&#x27;}=J_b S\)</span> and <span class="math" data-tex="\(J_{c&#x27;}=J_c R\)">\(J_{c&#x27;}=J_c R\)</span>. Both <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(R\)">\(R\)</span> are invertible because the two coordinate maps are bijective. The inverse of a linear bijection is linear: apply the bijection to the two sides of its desired addition and scalar identities, and use injectivity. Matrix multiplication in (FA5) therefore proves</p>
+<span id="equation-fa6"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+x=Sx&#x27;, \\  x&#x27;=S^{-1}x, \\  A&#x27;=R^{-1}AS, \\ J_{c&#x27;}A&#x27;J_{b&#x27;}^{-1}=J_cAJ_b^{-1}.
+\end{gathered}
+\tag{FA6}
+\]">\[
+\begin{gathered}
+x=Sx&#x27;, \\  x&#x27;=S^{-1}x, \\  A&#x27;=R^{-1}AS, \\ J_{c&#x27;}A&#x27;J_{b&#x27;}^{-1}=J_cAJ_b^{-1}.
+\end{gathered}
+\tag{FA6}
+\]</span>
+<p>These equalities are the actual coordinate morphisms for the unchanged original map <span class="math" data-tex="\(T\)">\(T\)</span>; they are not replacements of that map. For two inverse linear maps their matrix products in both orders are the corresponding identity matrices. For a square matrix possessing a two-sided matrix inverse, (FA4) conversely gives a linear bijection and its inverse.</p>
+<h3 id="AN03-SPR-LINALG-003"><span id="an03-spr-linalg-003"></span><span id="rank-nullity-quotients-and-direct-sums"></span><span id="10-3-rank-nullity-quotients-and-direct-sums"></span>10.3. Rank-nullity, quotients and direct sums</h3>
+<p>Let <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span> be any original linear map, and choose the actual basis <span class="math" data-tex="\(k_1,\ldots,k_a\)">\(k_1,\ldots,k_a\)</span> of its kernel. Extend it to <span class="math" data-tex="\(k_1,\ldots,k_a,v_1,\ldots,v_r\)">\(k_1,\ldots,k_a,v_1,\ldots,v_r\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span> by Section 10.1. The vectors <span class="math" data-tex="\(Tv_1,\ldots,Tv_r\)">\(Tv_1,\ldots,Tv_r\)</span> are independent: if <span class="math" data-tex="\(T\sum_j t_jv_j=0\)">\(T\sum_j t_jv_j=0\)</span>, that sum is in the span of the <span class="math" data-tex="\(k_i\)">\(k_i\)</span>, and independence of the extended basis forces every <span class="math" data-tex="\(t_j=0\)">\(t_j=0\)</span>. They span <span class="math" data-tex="\(\operatorname{im}T\)">\(\operatorname{im}T\)</span>, because applying <span class="math" data-tex="\(T\)">\(T\)</span> to any original basis expansion discards precisely the kernel summands. Hence</p>
+<span id="equation-fa7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\dim V=a+r, \\  \dim\ker T=a, \\ \dim\operatorname{im}T=r.
+\end{gathered}
+\tag{FA7}
+\]">\[
+\begin{gathered}
+\dim V=a+r, \\  \dim\ker T=a, \\ \dim\operatorname{im}T=r.
+\end{gathered}
+\tag{FA7}
+\]</span>
+<p>The exact quotient map is <span class="math" data-tex="\(v\mapsto v+\ker T\)">\(v\mapsto v+\ker T\)</span>; the induced map <span class="math" data-tex="\(V/\ker T\to\operatorname{im}T\)">\(V/\ker T\to\operatorname{im}T\)</span>, <span class="math" data-tex="\(v+\ker T\mapsto Tv\)">\(v+\ker T\mapsto Tv\)</span>, is well defined because two representatives differ by a kernel vector. It is injective by the definition of the kernel and surjective by that of the image. Its inverse in the displayed basis is <span class="math" data-tex="\(\sum_j t_jTv_j\mapsto\sum_j t_jv_j+\ker T\)">\(\sum_j t_jTv_j\mapsto\sum_j t_jv_j+\ker T\)</span>, with all original coefficients retained.</p>
+<p>For any subspace <span class="math" data-tex="\(K\subset V\)">\(K\subset V\)</span>, choose a basis of <span class="math" data-tex="\(K\)">\(K\)</span> and extend it to <span class="math" data-tex="\(V\)">\(V\)</span>. The cosets of the added basis vectors form a basis of <span class="math" data-tex="\(V/K\)">\(V/K\)</span>: span follows from the original expansion and independence follows by subtracting an element of <span class="math" data-tex="\(K\)">\(K\)</span>. Therefore <span class="math" data-tex="\(\dim(V/K)=\dim V-\dim K\)">\(\dim(V/K)=\dim V-\dim K\)</span>. The span <span class="math" data-tex="\(L\)">\(L\)</span> of the added vectors has <span class="math" data-tex="\(K\cap L=\{0\}\)">\(K\cap L=\{0\}\)</span>, and every vector has a unique expansion as a sum from <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>. The addition map <span class="math" data-tex="\(K\oplus L\to V\)">\(K\oplus L\to V\)</span> is a bijection with inverse the actual two coordinate projections. In general, the addition map <span class="math" data-tex="\(U\oplus W\to U+W\)">\(U\oplus W\to U+W\)</span> is surjective and has kernel exactly <span class="math" data-tex="\(\{(v,-v):v\in U\cap W\}\)">\(\{(v,-v):v\in U\cap W\}\)</span>. Using (FA7) proves</p>
+<span id="equation-fa8"></span><span class="math math-display" data-tex="\[
+\dim(U+W)=\dim U+\dim W-\dim(U\cap W).
+\tag{FA8}
+\]">\[
+\dim(U+W)=\dim U+\dim W-\dim(U\cap W).
+\tag{FA8}
+\]</span>
+<p>The same coordinate argument iterated proves the finite direct-sum statement: addition from <span class="math" data-tex="\(\bigoplus_j V_j\)">\(\bigoplus_j V_j\)</span> is a bijection precisely when every zero sum from the subspaces has all terms zero and their sum is the target space. Concatenating their actual bases then gives its basis and dimension <span class="math" data-tex="\(\sum_j\dim V_j\)">\(\sum_j\dim V_j\)</span>. This supplies the direct-sum dimensions used by the stable primary decomposition.</p>
+<p>A square map <span class="math" data-tex="\(V\to V\)">\(V\to V\)</span> is injective if and only if it is surjective, by (FA7) and equality of its two original dimensions. A bijection is exactly an invertible matrix under Section 10.2. These assertions include dimension zero.</p>
+<h3 id="AN03-SPR-LINALG-004"><span id="an03-spr-linalg-004"></span><span id="determinants-and-the-full-ordered-elimination-maps"></span><span id="10-4-determinants-and-the-full-ordered-elimination-maps"></span>10.4. Determinants and the full ordered elimination maps</h3>
+<p>For an original square matrix <span class="math" data-tex="\(M=(m_{ij})\)">\(M=(m_{ij})\)</span> of size <span class="math" data-tex="\(n\)">\(n\)</span>, define its determinant by the finite full sum</p>
+<span id="equation-fa9"></span><span class="math math-display" data-tex="\[
+\det M=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n m_{i,\sigma(i)}.
+\tag{FA9}
+\]">\[
+\det M=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n m_{i,\sigma(i)}.
+\tag{FA9}
+\]</span>
+<p>The sign is <span class="math" data-tex="\((-1)\)">\((-1)\)</span> to the number of inversions. Interchanging two indices changes that parity: for adjacent indices it changes one inversion and interchanging arbitrary indices is an odd number of adjacent exchanges. Thus exchanging two rows, or two columns, changes the sign of (FA9) by relabeling permutations. Identical rows or columns give zero by pairing equal products with opposite signs. Multilinearity in each row and column follows by expanding its single factor in every product. Adding a multiple of another row leaves the determinant unchanged because its additional summand has two identical rows. The identity matrix has determinant one, since every nonidentity permutation has a literal zero factor. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the single empty permutation has the empty product one.</p>
+<p>For arbitrary original square matrices <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, expand every entry of the product before making any comparison:</p>
+<span id="equation-fa10"></span><span class="math math-display" data-tex="\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+\left(\prod_{i=1}^n X_{i,k_i}\right)
+\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n Y_{k_i,\sigma(i)}.
+\tag{FA10}
+\]">\[
+\det(XY)=\sum_{k_1,\ldots,k_n=1}^n
+\left(\prod_{i=1}^n X_{i,k_i}\right)
+\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n Y_{k_i,\sigma(i)}.
+\tag{FA10}
+\]</span>
+<p>If two <span class="math" data-tex="\(k_i\)">\(k_i\)</span>'s agree, exchanging the columns assigned to their two positions pairs the inner permutations without a fixed point, with equal products and opposite signs. The whole inner sum is exactly zero. Every remaining list is <span class="math" data-tex="\(k_i=\tau(i)\)">\(k_i=\tau(i)\)</span> for a permutation <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Reordering its rows gives inner sum <span class="math" data-tex="\(\operatorname{sgn}(\tau)\det Y\)">\(\operatorname{sgn}(\tau)\det Y\)</span>. Indeed the relabeled column permutation is <span class="math" data-tex="\(\sigma\circ\tau^{-1}\)">\(\sigma\circ\tau^{-1}\)</span>, whose sign is <span class="math" data-tex="\(\operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)\)">\(\operatorname{sgn}(\sigma)\operatorname{sgn}(\tau)\)</span>; this follows from the adjacent-exchange sign calculation above. The surviving full sum in (FA10) is therefore <span class="math" data-tex="\(\det X\det Y\)">\(\det X\det Y\)</span>. No summand is discarded without this exact zero calculation. In particular <span class="math" data-tex="\(\det S\det S^{-1}=1\)">\(\det S\det S^{-1}=1\)</span> whenever both inverse products are the identity.</p>
+<p>Here is the exact elimination construction for an original rectangular <span class="math" data-tex="\(q\)">\(q\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> matrix. Scan columns in their original order; for the next pivot choose a nonzero entry in the remaining rows, exchange its row with the next pivot row if necessary, and subtract the full pivot multiple from every lower row. Do not divide the pivot row or replace its pivot by one. Each exchange has an actual permutation matrix with its inverse the same exchange. Each subtraction has matrix <span class="math" data-tex="\(I-cE_{ij}\)">\(I-cE_{ij}\)</span>, where <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, and inverse <span class="math" data-tex="\(I+cE_{ij}\)">\(I+cE_{ij}\)</span>, since <span class="math" data-tex="\(E_{ij}^2=0\)">\(E_{ij}^2=0\)</span>. If <span class="math" data-tex="\(E=E_\ell\cdots E_1\)">\(E=E_\ell\cdots E_1\)</span> is the full ordered product, the echelon matrix is <span class="math" data-tex="\(R=EM\)">\(R=EM\)</span> and <span class="math" data-tex="\(M=E_1^{-1}\cdots E_\ell^{-1}R\)">\(M=E_1^{-1}\cdots E_\ell^{-1}R\)</span>. There are at most <span class="math" data-tex="\(\min(q,n)\)">\(\min(q,n)\)</span> pivots; scan and row count are finite, so the procedure terminates. Every remaining row is zero, since otherwise its first nonzero entry would have supplied a pivot when its column was scanned.</p>
+<p>Write the actual pivot columns as <span class="math" data-tex="\(c_1&lt;\cdots&lt;c_r\)">\(c_1&lt;\cdots&lt;c_r\)</span>, their nonzero original resulting pivots as <span class="math" data-tex="\(d_j=R_{j,c_j}\)">\(d_j=R_{j,c_j}\)</span>, and let <span class="math" data-tex="\(J\)">\(J\)</span> be the nonpivot columns. For arbitrary prescribed original free coordinates <span class="math" data-tex="\(x_k=t_k\)">\(x_k=t_k\)</span>, <span class="math" data-tex="\(k\in J\)">\(k\in J\)</span>, solve backwards by</p>
+<span id="equation-fa11"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+x_{c_j}=-d_j^{-1}\sum_{k&gt;c_j}R_{jk}x_k, \\ j=r,r-1,\ldots,1.
+\end{gathered}
+\tag{FA11}
+\]">\[
+\begin{gathered}
+x_{c_j}=-d_j^{-1}\sum_{k&gt;c_j}R_{jk}x_k, \\ j=r,r-1,\ldots,1.
+\end{gathered}
+\tag{FA11}
+\]</span>
+<p>Each later pivot coordinate has already been computed, and earlier coefficients in that row are zero by echelon construction. Every zero row imposes no equation. Hence (FA11) is a linear bijection <span class="math" data-tex="\(F^J\to\ker M\)">\(F^J\to\ker M\)</span>, inverse to the actual free-coordinate projection, because <span class="math" data-tex="\(E\)">\(E\)</span> is invertible. The coordinate vectors of <span class="math" data-tex="\(F^J\)">\(F^J\)</span> give the full kernel basis, with original pivot denominators retained. Thus <span class="math" data-tex="\(\dim\ker M=n-r\)">\(\dim\ker M=n-r\)</span> and <span class="math" data-tex="\(\operatorname{rank}M=r\)">\(\operatorname{rank}M=r\)</span> by (FA7). In particular, the number of pivots is independent of the choices of exchange rows even though the displayed coordinate map can depend on them.</p>
+<p>If <span class="math" data-tex="\(q=n\)">\(q=n\)</span>, there are two cases. For <span class="math" data-tex="\(r&lt;n\)">\(r&lt;n\)</span>, echelon form has a zero row and determinant zero. Each exchange contributes <span class="math" data-tex="\(-1\)">\(-1\)</span>, and each subtraction contributes one, by (FA9); hence <span class="math" data-tex="\(\det M=0\)">\(\det M=0\)</span> as well, and (FA11) gives a nonzero kernel vector. For <span class="math" data-tex="\(r=n\)">\(r=n\)</span>, all columns are pivot columns, <span class="math" data-tex="\(R\)">\(R\)</span> is upper triangular and its full permutation sum gives <span class="math" data-tex="\(\det R=\prod_j d_j\)">\(\det R=\prod_j d_j\)</span>: every other permutation has a lower-triangular zero factor, proved successively from the last row upwards. If <span class="math" data-tex="\(s\)">\(s\)</span> row exchanges occurred, this gives</p>
+<span id="equation-fa12"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\det E=(-1)^s, \\ \det M=(-1)^s\prod_{j=1}^n d_j\ne0.
+\end{gathered}
+\tag{FA12}
+\]">\[
+\begin{gathered}
+\det E=(-1)^s, \\ \det M=(-1)^s\prod_{j=1}^n d_j\ne0.
+\end{gathered}
+\tag{FA12}
+\]</span>
+<p>For an arbitrary right side <span class="math" data-tex="\(y\)">\(y\)</span>, the exact inverse is found from <span class="math" data-tex="\(z=Ey\)">\(z=Ey\)</span> and</p>
+<span id="equation-fa13"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+x_j=d_j^{-1}\left(z_j-\sum_{k&gt;j}R_{jk}x_k\right), \\  j=n,n-1,\ldots,1, \\ M^{-1}=R^{-1}E.
+\end{gathered}
+\tag{FA13}
+\]">\[
+\begin{gathered}
+x_j=d_j^{-1}\left(z_j-\sum_{k&gt;j}R_{jk}x_k\right), \\  j=n,n-1,\ldots,1, \\ M^{-1}=R^{-1}E.
+\end{gathered}
+\tag{FA13}
+\]</span>
+<p>Backward substitution gives a solution and makes it unique. Applying the two compositions to arbitrary vectors proves both inverse identities. Thus a square original matrix is invertible exactly when its original determinant is nonzero, over either field. No eigenvalue-existence theorem enters this proof.</p>
+<p>For later continuity uses, define the cofactor <span class="math" data-tex="\(C_{ij}=(-1)^{i+j}\det M^{(i|j)}\)">\(C_{ij}=(-1)^{i+j}\det M^{(i|j)}\)</span> with the indicated row and column deleted, and <span class="math" data-tex="\(\operatorname{adj}(M)_{ji}=C_{ij}\)">\(\operatorname{adj}(M)_{ji}=C_{ij}\)</span>. In (FA9), group the permutations by the column used by row <span class="math" data-tex="\(i\)">\(i\)</span>. Moving that row/column to their first positions produces the sign <span class="math" data-tex="\((-1)^{i+j}\)">\((-1)^{i+j}\)</span>, giving <span class="math" data-tex="\(\sum_j m_{ij}C_{ij}=\det M\)">\(\sum_j m_{ij}C_{ij}=\det M\)</span>. Replacing this row by a distinct row gives the off-diagonal sum zero by the repeated-row determinant. The column version gives the other product. Consequently</p>
+<span id="equation-fa14"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I_n, \\ M^{-1}=(\det M)^{-1}\operatorname{adj}(M)
+\quad(\det M\ne0).
+\end{gathered}
+\tag{FA14}
+\]">\[
+\begin{gathered}
+M\operatorname{adj}(M)=\operatorname{adj}(M)M=(\det M)I_n, \\ M^{-1}=(\det M)^{-1}\operatorname{adj}(M)
+\quad(\det M\ne0).
+\end{gathered}
+\tag{FA14}
+\]</span>
+<p>This retains the exact original determinant denominator and every cofactor sign. When <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the minor is the zero-dimensional determinant one. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the adjugate is the unique empty matrix and both product identities are identities of empty matrices. All determinants and cofactors are finite polynomial expressions, so the inverse is continuous on the actual nonzero-determinant domain by the scalar quotient rule.</p>
+<h3 id="AN03-SPR-LINALG-005"><span id="an03-spr-linalg-005"></span><span id="the-original-inner-product-and-the-full-gram-residuals"></span><span id="10-5-the-original-inner-product-and-the-full-gram-residuals"></span>10.5. The original inner product and the full Gram residuals</h3>
+<p>An inner product <span class="math" data-tex="\(h\)">\(h\)</span> is linear in its first variable, conjugate-linear in its second, has <span class="math" data-tex="\(h(v,w)=\overline{h(w,v)}\)">\(h(v,w)=\overline{h(w,v)}\)</span>, and satisfies <span class="math" data-tex="\(h(v,v)&gt;0\)">\(h(v,v)&gt;0\)</span> for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. These are its definition, not a consequence assumed for a different matrix. Let <span class="math" data-tex="\(\|v\|_h=\sqrt{h(v,v)}\)">\(\|v\|_h=\sqrt{h(v,v)}\)</span>. The positive real square root exists from real completeness: the nonempty bounded set <span class="math" data-tex="\(\{t\ge0:t^2\le a\}\)">\(\{t\ge0:t^2\le a\}\)</span> has a supremum for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and continuity of the square shows its square can be neither below nor above <span class="math" data-tex="\(a\)">\(a\)</span>, by a sufficiently small positive increment or decrement. Its strict monotonicity on nonnegative reals proves uniqueness. Zero has square root zero.</p>
+<p>For any chosen original basis <span class="math" data-tex="\(b\)">\(b\)</span>, keep the full matrix</p>
+<span id="equation-fa15"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{jk}=h(b_k,b_j), \\ 
+h(J_bx,J_by)=y^\dagger Hx
+=\sum_{j,k}\overline{y_j}H_{jk}x_k, \\ H^\dagger=H.
+\end{gathered}
+\tag{FA15}
+\]">\[
+\begin{gathered}
+H_{jk}=h(b_k,b_j), \\ 
+h(J_bx,J_by)=y^\dagger Hx
+=\sum_{j,k}\overline{y_j}H_{jk}x_k, \\ H^\dagger=H.
+\end{gathered}
+\tag{FA15}
+\]</span>
+<p>Here <span class="math" data-tex="\(\dagger\)">\(\dagger\)</span> is conjugate transpose, with entry <span class="math" data-tex="\((M^\dagger)_{jk}=\overline{M_{kj}}\)">\((M^\dagger)_{jk}=\overline{M_{kj}}\)</span>. Formula (FA15) follows by finite expansion and fixes the linear-first convention exactly. If <span class="math" data-tex="\(Hx=0\)">\(Hx=0\)</span>, then <span class="math" data-tex="\(x^\dagger Hx=0\)">\(x^\dagger Hx=0\)</span>, so positivity and the coordinate bijection give <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Therefore <span class="math" data-tex="\(H\)">\(H\)</span> is invertible by Sections 10.3--4. Conversely, any Hermitian matrix with <span class="math" data-tex="\(x^\dagger Hx&gt;0\)">\(x^\dagger Hx&gt;0\)</span> for <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> gives an inner product by (FA15), since the linearity, Hermitian identity and positivity follow entrywise. An inner product exists on any finite vector space by taking the explicitly constructed coordinate formula <span class="math" data-tex="\(h_0(J_bx,J_by)=\sum_j x_j\overline{y_j}\)">\(h_0(J_bx,J_by)=\sum_j x_j\overline{y_j}\)</span>. This existence construction does not replace an already given <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>For a basis <span class="math" data-tex="\(b_1,\ldots,b_n\)">\(b_1,\ldots,b_n\)</span>, define its actual residuals inductively, keeping every length and projection factor:</p>
+<span id="equation-fa16"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+r_1=b_1, \\  d_k=h(r_k,r_k), \\ r_j=b_j-\sum_{k&lt;j}\frac{h(b_j,r_k)}{d_k}r_k.
+\end{gathered}
+\tag{FA16}
+\]">\[
+\begin{gathered}
+r_1=b_1, \\  d_k=h(r_k,r_k), \\ r_j=b_j-\sum_{k&lt;j}\frac{h(b_j,r_k)}{d_k}r_k.
+\end{gathered}
+\tag{FA16}
+\]</span>
+<p>Assume the earlier residuals are nonzero and mutually orthogonal. Then the displayed formula has defined nonzero denominators. Direct pairing with <span class="math" data-tex="\(r_l\)">\(r_l\)</span>, <span class="math" data-tex="\(l&lt;j\)">\(l&lt;j\)</span>, gives <span class="math" data-tex="\(h(r_j,r_l)=h(b_j,r_l)-h(b_j,r_l)d_l/d_l=0\)">\(h(r_j,r_l)=h(b_j,r_l)-h(b_j,r_l)d_l/d_l=0\)</span>, with all other summands zero by the earlier orthogonality. If <span class="math" data-tex="\(r_j=0\)">\(r_j=0\)</span>, the formula puts <span class="math" data-tex="\(b_j\)">\(b_j\)</span> in the earlier residual span. Each earlier residual lies in the corresponding original initial span, so this contradicts the independence of <span class="math" data-tex="\(b\)">\(b\)</span>. Hence <span class="math" data-tex="\(r_j\ne0\)">\(r_j\ne0\)</span>, <span class="math" data-tex="\(d_j&gt;0\)">\(d_j&gt;0\)</span>, and induction proves all assertions. The converse expressions in (FA16) show equality of the original and residual initial spans at every stage; in particular the residuals are a basis.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the matrix with these actual residual coordinates, <span class="math" data-tex="\(r_j=J_bS e_j\)">\(r_j=J_bS e_j\)</span>. It is upper triangular with diagonal one by (FA16), and <span class="math" data-tex="\(D=\operatorname{diag}(d_1,\ldots,d_n)\)">\(D=\operatorname{diag}(d_1,\ldots,d_n)\)</span>. The exact Gram and determinant comparisons are</p>
+<span id="equation-fa17"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+S^\dagger HS=D, \\  H=(S^{-1})^\dagger DS^{-1}, \\ \det H=\prod_{j=1}^n d_j&gt;0\quad(n&gt;0).
+\end{gathered}
+\tag{FA17}
+\]">\[
+\begin{gathered}
+S^\dagger HS=D, \\  H=(S^{-1})^\dagger DS^{-1}, \\ \det H=\prod_{j=1}^n d_j&gt;0\quad(n&gt;0).
+\end{gathered}
+\tag{FA17}
+\]</span>
+<p>The first equality is the full pairing of the actual residuals; the second multiplies by the actual inverses in the stated order. The determinant identity uses multiplicativity, <span class="math" data-tex="\(\det S=1\)">\(\det S=1\)</span>, and <span class="math" data-tex="\(\det S^\dagger=\overline{\det S}\)">\(\det S^\dagger=\overline{\det S}\)</span>. The last conjugate identity follows by conjugating (FA9) and transposing permutations; the inverse permutation has the same sign. In dimension zero the product and <span class="math" data-tex="\(\det H\)">\(\det H\)</span> are both one, and the zero space is its own orthogonal basis.</p>
+<p>The requested orthonormal Gram--Schmidt comparison consists of the explicitly defined vectors <span class="math" data-tex="\(e&#x27;_j=d_j^{-1/2}r_j\)">\(e&#x27;_j=d_j^{-1/2}r_j\)</span>, not a change to any earlier residual. Set <span class="math" data-tex="\(U=S D^{-1/2}\)">\(U=S D^{-1/2}\)</span>. The two coordinate maps and every metric factor are</p>
+<span id="equation-fa18"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{e&#x27;}=J_b U, \\  x=Uz, \\ 
+z=D^{1/2}S^{-1}x, \\ 
+U^\dagger HU=D^{-1/2}S^\dagger HS D^{-1/2}=I_n, \\ \det U=\prod_j d_j^{-1/2}.
+\end{gathered}
+\tag{FA18}
+\]">\[
+\begin{gathered}
+J_{e&#x27;}=J_b U, \\  x=Uz, \\ 
+z=D^{1/2}S^{-1}x, \\ 
+U^\dagger HU=D^{-1/2}S^\dagger HS D^{-1/2}=I_n, \\ \det U=\prod_j d_j^{-1/2}.
+\end{gathered}
+\tag{FA18}
+\]</span>
+<p>Thus <span class="math" data-tex="\(e&#x27;\)">\(e&#x27;\)</span> is an orthonormal basis for the original <span class="math" data-tex="\(h\)">\(h\)</span>, while the original <span class="math" data-tex="\(H\)">\(H\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-tex="\(d_j\)">\(d_j\)</span> remain explicit in (FA15)--(FA18). Over the real field all <span class="math" data-tex="\(d_j^{-1/2}\)">\(d_j^{-1/2}\)</span> are positive, so the comparison orientation has the sign of <span class="math" data-tex="\(\det S=1\)">\(\det S=1\)</span>. No arbitrary sign is inserted. The complex determinant is the displayed positive real factor in these original coordinates.</p>
+<p>For an independent list which is not yet a basis, the same induction gives its nonzero orthogonal residuals; extending the original list to a basis by Section 10.1 extends that orthogonal construction. For a subspace with these residuals <span class="math" data-tex="\(r_1,\ldots,r_a\)">\(r_1,\ldots,r_a\)</span>, the exact original projection and its complement are</p>
+<span id="equation-fa19"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+Pv=\sum_{k=1}^a\frac{h(v,r_k)}{d_k}r_k, \\  h(v-Pv,r_k)=0, \\ V=W\oplus W^\perp.
+\end{gathered}
+\tag{FA19}
+\]">\[
+\begin{gathered}
+Pv=\sum_{k=1}^a\frac{h(v,r_k)}{d_k}r_k, \\  h(v-Pv,r_k)=0, \\ V=W\oplus W^\perp.
+\end{gathered}
+\tag{FA19}
+\]</span>
+<p>Indeed the residuals span <span class="math" data-tex="\(W\)">\(W\)</span>; the difference is orthogonal to their span by conjugate-linearity, and an element in <span class="math" data-tex="\(W\cap W^\perp\)">\(W\cap W^\perp\)</span> has zero self-pairing and is zero. Pairing gives <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span> and <span class="math" data-tex="\(h(Pv,w)=h(v,Pw)\)">\(h(Pv,w)=h(v,Pw)\)</span>, because each side is the same sum <span class="math" data-tex="\(\sum_k h(v,r_k)h(r_k,w)/d_k\)">\(\sum_k h(v,r_k)h(r_k,w)/d_k\)</span>. These statements also hold for the empty subspace, whose projection is zero.</p>
+<h3 id="AN03-SPR-LINALG-006"><span id="an03-spr-linalg-006"></span><span id="exact-finite-inner-product-bounds-and-the-unchanged-original-norm"></span><span id="10-6-exact-finite-inner-product-bounds-and-the-unchanged-original-norm"></span>10.6. Exact finite inner-product bounds and the unchanged original norm</h3>
+<p>For <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, the original residual <span class="math" data-tex="\(v-h(v,w)h(w,w)^{-1}w\)">\(v-h(v,w)h(w,w)^{-1}w\)</span> has squared norm</p>
+<span id="equation-fa20"></span><span class="math math-display" data-tex="\[
+\left\|v-\frac{h(v,w)}{h(w,w)}w\right\|_h^2
+=\|v\|_h^2-\frac{|h(v,w)|^2}{\|w\|_h^2}\ge0.
+\tag{FA20}
+\]">\[
+\left\|v-\frac{h(v,w)}{h(w,w)}w\right\|_h^2
+=\|v\|_h^2-\frac{|h(v,w)|^2}{\|w\|_h^2}\ge0.
+\tag{FA20}
+\]</span>
+<p>Expand its two cross terms using the specified linear-first convention; each is <span class="math" data-tex="\(-|h(v,w)|^2/h(w,w)\)">\(-|h(v,w)|^2/h(w,w)\)</span>, and the last term adds one copy. This proves Cauchy--Schwarz with its actual denominator. If <span class="math" data-tex="\(w=0\)">\(w=0\)</span>, the pairing is zero by linearity and the same inequality without division is immediate. The equality case for nonzero <span class="math" data-tex="\(w\)">\(w\)</span> holds exactly when this actual residual is zero, hence when <span class="math" data-tex="\(v\)">\(v\)</span> is a scalar multiple of the actual <span class="math" data-tex="\(w\)">\(w\)</span>. The norm obeys <span class="math" data-tex="\(\|av\|_h=|a|\|v\|_h\)">\(\|av\|_h=|a|\|v\|_h\)</span>, positivity, and the triangle inequality: expand <span class="math" data-tex="\(\|v+w\|_h^2\)">\(\|v+w\|_h^2\)</span>, bound the two real cross terms by <span class="math" data-tex="\(2\|v\|_h\|w\|_h\)">\(2\|v\|_h\|w\|_h\)</span>, and take the nonnegative square root.</p>
+<p>For the full residual basis, orthogonality gives the exact identities</p>
+<span id="equation-fa21"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+v=\sum_{j=1}^n\frac{h(v,r_j)}{d_j}r_j, \\  \|v\|_h^2=\sum_{j=1}^n\frac{|h(v,r_j)|^2}{d_j}, \\ \left\|v-\sum_{j=1}^a\frac{h(v,r_j)}{d_j}r_j\right\|_h^2
+=\|v\|_h^2-\sum_{j=1}^a\frac{|h(v,r_j)|^2}{d_j}.
+\end{gathered}
+\tag{FA21}
+\]">\[
+\begin{gathered}
+v=\sum_{j=1}^n\frac{h(v,r_j)}{d_j}r_j, \\  \|v\|_h^2=\sum_{j=1}^n\frac{|h(v,r_j)|^2}{d_j}, \\ \left\|v-\sum_{j=1}^a\frac{h(v,r_j)}{d_j}r_j\right\|_h^2
+=\|v\|_h^2-\sum_{j=1}^a\frac{|h(v,r_j)|^2}{d_j}.
+\end{gathered}
+\tag{FA21}
+\]</span>
+<p>The first equality follows by pairing the difference with every residual in the basis, and positivity. The other two follow by expansion with every original <span class="math" data-tex="\(d_j\)">\(d_j\)</span> retained. These are finite sums; they assume no infinite-dimensional orthonormal expansion.</p>
+<p>For <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, set <span class="math" data-tex="\(d_{\min}=\min_jd_j&gt;0\)">\(d_{\min}=\min_jd_j&gt;0\)</span>, <span class="math" data-tex="\(F_S=(\sum_{j,k}|S_{jk}|^2)^{1/2}&gt;0\)">\(F_S=(\sum_{j,k}|S_{jk}|^2)^{1/2}&gt;0\)</span>, and <span class="math" data-tex="\(M_b=(\sum_j\|b_j\|_h^2)^{1/2}&gt;0\)">\(M_b=(\sum_j\|b_j\|_h^2)^{1/2}&gt;0\)</span>. With <span class="math" data-tex="\(x=S a\)">\(x=S a\)</span>, (FA17), finite scalar Cauchy--Schwarz in every row of <span class="math" data-tex="\(S\)">\(S\)</span>, and the original basis triangle inequality give</p>
+<span id="equation-fa22"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\sqrt{d_{\min}}}{F_S}|x|_2
+\le \|J_bx\|_h
+\le M_b|x|_2, \\ |x|_2^2=\sum_j|x_j|^2.
+\end{gathered}
+\tag{FA22}
+\]">\[
+\begin{gathered}
+\frac{\sqrt{d_{\min}}}{F_S}|x|_2
+\le \|J_bx\|_h
+\le M_b|x|_2, \\ |x|_2^2=\sum_j|x_j|^2.
+\end{gathered}
+\tag{FA22}
+\]</span>
+<p>For the lower bound, <span class="math" data-tex="\(\|J_bx\|_h^2=\sum_jd_j|a_j|^2\ge d_{\min}|a|_2^2\)">\(\|J_bx\|_h^2=\sum_jd_j|a_j|^2\ge d_{\min}|a|_2^2\)</span>, while <span class="math" data-tex="\(|S a|_2\le F_S|a|_2\)">\(|S a|_2\le F_S|a|_2\)</span>. For the upper bound, <span class="math" data-tex="\(\|\sum_jx_jb_j\|_h\le\sum_j|x_j|\|b_j\|_h\le M_b|x|_2\)">\(\|\sum_jx_jb_j\|_h\le\sum_j|x_j|\|b_j\|_h\le M_b|x|_2\)</span>. Thus both inequalities are for the original <span class="math" data-tex="\(h\)">\(h\)</span>, basis and coordinates; their exact comparison constants are preserved. In dimension zero every vector and norm is zero, so no division by <span class="math" data-tex="\(F_S\)">\(F_S\)</span> is needed. Completeness of the finite original inner-product space follows: (FA22) makes the coordinates of a Cauchy sequence Cauchy in <span class="math" data-tex="\(F\)">\(F\)</span>; their scalar limits give a vector, and the upper inequality proves convergence in the unchanged original norm.</p>
+<p>For <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span>, with <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, the same expansion gives the concrete bound</p>
+<span id="equation-fa23"></span><span class="math math-display" data-tex="\[
+\|Tv\|_{h_W}\le
+\frac{F_S}{\sqrt{d_{\min}}}
+\left(\sum_{j=1}^n\|Tb_j\|_{h_W}^2\right)^{1/2}
+\|v\|_{h_V}.
+\tag{FA23}
+\]">\[
+\|Tv\|_{h_W}\le
+\frac{F_S}{\sqrt{d_{\min}}}
+\left(\sum_{j=1}^n\|Tb_j\|_{h_W}^2\right)^{1/2}
+\|v\|_{h_V}.
+\tag{FA23}
+\]</span>
+<p>Every original image <span class="math" data-tex="\(Tb_j\)">\(Tb_j\)</span> occurs in this constant. The bound proves that every finite linear map is continuous. Define its operator norm by <span class="math" data-tex="\(\|T\|=\sup_{v\ne0}\|Tv\|/\|v\|\)">\(\|T\|=\sup_{v\ne0}\|Tv\|/\|v\|\)</span>, with value zero if its domain is zero. This is finite by (FA23). Applying the definition twice to the actual vectors gives <span class="math" data-tex="\(\|UT\|\le\|U\|\|T\|\)">\(\|UT\|\le\|U\|\|T\|\)</span>; the zero-vector cases require no division. Addition and scalar norm identities follow from the original vector norm inequalities, and <span class="math" data-tex="\(\|I_V\|=1\)">\(\|I_V\|=1\)</span> for <span class="math" data-tex="\(V\ne0\)">\(V\ne0\)</span>, zero for <span class="math" data-tex="\(V=0\)">\(V=0\)</span>. In particular all fixed finite coordinate maps and projections in the spectral receiving calculation are bounded on the original spaces, without replacing their norms by coordinate norms.</p>
+<h3 id="AN03-SPR-LINALG-007"><span id="an03-spr-linalg-007"></span><span id="full-adjoints-in-the-original-gram-matrices"></span><span id="10-7-full-adjoints-in-the-original-gram-matrices"></span>10.7. Full adjoints in the original Gram matrices</h3>
+<p>For an original map <span class="math" data-tex="\(T:V\to W\)">\(T:V\to W\)</span>, with matrix <span class="math" data-tex="\(A\)">\(A\)</span>, let <span class="math" data-tex="\(H_V,H_W\)">\(H_V,H_W\)</span> be its two original Gram matrices from (FA15). Define a map <span class="math" data-tex="\(T^*:W\to V\)">\(T^*:W\to V\)</span> by its exact matrix</p>
+<span id="equation-fa24"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+A^*=H_V^{-1}A^\dagger H_W, \\ h_W(Tv,w)=h_V(v,T^*w).
+\end{gathered}
+\tag{FA24}
+\]">\[
+\begin{gathered}
+A^*=H_V^{-1}A^\dagger H_W, \\ h_W(Tv,w)=h_V(v,T^*w).
+\end{gathered}
+\tag{FA24}
+\]</span>
+<p>The identity follows directly: writing the original coordinates as <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, its left side is <span class="math" data-tex="\(y^\dagger H_WAx\)">\(y^\dagger H_WAx\)</span>; its right side is <span class="math" data-tex="\((A^*y)^\dagger H_Vx=y^\dagger H_W A H_V^{-1}H_Vx\)">\((A^*y)^\dagger H_Vx=y^\dagger H_W A H_V^{-1}H_Vx\)</span>, because <span class="math" data-tex="\(H_V^\dagger=H_V\)">\(H_V^\dagger=H_V\)</span>, <span class="math" data-tex="\((H_V^{-1})^\dagger=H_V^{-1}\)">\((H_V^{-1})^\dagger=H_V^{-1}\)</span>, and <span class="math" data-tex="\(H_W^\dagger=H_W\)">\(H_W^\dagger=H_W\)</span>. The inverse-adjoint identity here follows by transposing/conjugating both original inverse products, whose entry expansions reverse their order. Uniqueness follows by choosing <span class="math" data-tex="\(v\)">\(v\)</span> equal to the difference of two candidate adjoint values: positivity forces that difference to be zero. This proves existence and uniqueness without invoking any Hilbert-space representation theorem. If either space is zero, the unique zero map gives the same identity.</p>
+<p>For actual composable maps, the defining identity and uniqueness, or the full ordered matrices, prove</p>
+<span id="equation-fa25"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(UT)^*=T^*U^*, \\  (T^*)^*=T, \\ 
+(T+Q)^*=T^*+Q^*, \\  (aT)^*=\overline a T^*, \\ (T^{-1})^*=(T^*)^{-1}\quad(T\text{ bijective}).
+\end{gathered}
+\tag{FA25}
+\]">\[
+\begin{gathered}
+(UT)^*=T^*U^*, \\  (T^*)^*=T, \\ 
+(T+Q)^*=T^*+Q^*, \\  (aT)^*=\overline a T^*, \\ (T^{-1})^*=(T^*)^{-1}\quad(T\text{ bijective}).
+\end{gathered}
+\tag{FA25}
+\]</span>
+<p>For example, with an actual third Gram matrix <span class="math" data-tex="\(H_Z\)">\(H_Z\)</span>, the product matrix is
+<span class="math" data-tex="\(H_V^{-1}A^\dagger B^\dagger H_Z=(H_V^{-1}A^\dagger H_W)(H_W^{-1}B^\dagger H_Z)\)">\(H_V^{-1}A^\dagger B^\dagger H_Z=(H_V^{-1}A^\dagger H_W)(H_W^{-1}B^\dagger H_Z)\)</span>, with the two middle inverse factors and their order explicit. Taking the adjoint of both inverse products proves both inverse identities in the last assertion. None of these formulas identifies conjugate transpose with an adjoint in an arbitrary original basis: the two Gram factors in (FA24) are essential.</p>
+<p>Under the exact original basis changes <span class="math" data-tex="\(S,R\)">\(S,R\)</span> of (FA6), the new Gram matrices are <span class="math" data-tex="\(H&#x27;_V=S^\dagger H_VS\)">\(H&#x27;_V=S^\dagger H_VS\)</span>, <span class="math" data-tex="\(H&#x27;_W=R^\dagger H_WR\)">\(H&#x27;_W=R^\dagger H_WR\)</span>. The adjoint matrix in those coordinates is</p>
+<span id="equation-fa26"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+(A&#x27;)^*=(S^\dagger H_VS)^{-1}(R^{-1}AS)^\dagger
+(R^\dagger H_WR) \\  =S^{-1}H_V^{-1}A^\dagger H_WR=S^{-1}A^*R.
+\end{gathered}
+\tag{FA26}
+\]">\[
+\begin{gathered}
+(A&#x27;)^*=(S^\dagger H_VS)^{-1}(R^{-1}AS)^\dagger
+(R^\dagger H_WR) \\  =S^{-1}H_V^{-1}A^\dagger H_WR=S^{-1}A^*R.
+\end{gathered}
+\tag{FA26}
+\]</span>
+<p>Expand the inverse as <span class="math" data-tex="\(S^{-1}H_V^{-1}(S^\dagger)^{-1}\)">\(S^{-1}H_V^{-1}(S^\dagger)^{-1}\)</span>, the middle dagger as <span class="math" data-tex="\(S^\dagger A^\dagger(R^\dagger)^{-1}\)">\(S^\dagger A^\dagger(R^\dagger)^{-1}\)</span>, and cancel only the adjacent actual inverse products. This proves that the unchanged abstract adjoint has exactly the coordinate morphism required by (FA6), retaining every original metric factor in the comparison.</p>
+<p>For <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>, Cauchy--Schwarz and the test vector <span class="math" data-tex="\(u\)">\(u\)</span> itself show <span class="math" data-tex="\(\|u\|=\sup_{w\ne0}|h(u,w)|/\|w\|\)">\(\|u\|=\sup_{w\ne0}|h(u,w)|/\|w\|\)</span>, with value zero for <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. Therefore, if both spaces are nonzero,</p>
+<span id="equation-fa27"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\|T\|=\sup_{v\ne0,\,w\ne0}
+\frac{|h_W(Tv,w)|}{\|v\|\|w\|} \\ =\sup_{v\ne0,\,w\ne0}
+\frac{|h_V(v,T^*w)|}{\|v\|\|w\|} \\ =\|T^*\|.
+\end{gathered}
+\tag{FA27}
+\]">\[
+\begin{gathered}
+\|T\|=\sup_{v\ne0,\,w\ne0}
+\frac{|h_W(Tv,w)|}{\|v\|\|w\|} \\ =\sup_{v\ne0,\,w\ne0}
+\frac{|h_V(v,T^*w)|}{\|v\|\|w\|} \\ =\|T^*\|.
+\end{gathered}
+\tag{FA27}
+\]</span>
+<p>For the final equality use conjugate symmetry and the same actual-vector dual-norm formula, interchanging the two suprema over the same bounded collection of nonnegative values. If a space is zero both operator norms are zero. Thus the norm equality holds with the original inner products and no unproved normalization or separability hypothesis.</p>
+<h3 id="AN03-SPR-LINALG-008"><span id="an03-spr-linalg-008"></span><span id="trace-projection-rank-and-positivity-in-the-receiving-coordinates"></span><span id="10-8-trace-projection-rank-and-positivity-in-the-receiving-coordinates"></span>10.8. Trace, projection rank and positivity in the receiving coordinates</h3>
+<p>For square original matrices, define <span class="math" data-tex="\(\operatorname{tr}A=\sum_jA_{jj}\)">\(\operatorname{tr}A=\sum_jA_{jj}\)</span>. For a rectangular <span class="math" data-tex="\(q\)">\(q\)</span>-by-<span class="math" data-tex="\(n\)">\(n\)</span> matrix <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span>-by-<span class="math" data-tex="\(q\)">\(q\)</span> matrix <span class="math" data-tex="\(B\)">\(B\)</span>, finite expansion gives <span class="math" data-tex="\(\operatorname{tr}(BA)=\sum_{j,i}B_{ji}A_{ij}=\sum_{i,j}A_{ij}B_{ji}=\operatorname{tr}(AB)\)">\(\operatorname{tr}(BA)=\sum_{j,i}B_{ji}A_{ij}=\sum_{i,j}A_{ij}B_{ji}=\operatorname{tr}(AB)\)</span>. Only scalars commute here. Consequently <span class="math" data-tex="\(\operatorname{tr}(S^{-1}AS)=\operatorname{tr}(ASS^{-1})=\operatorname{tr}A\)">\(\operatorname{tr}(S^{-1}AS)=\operatorname{tr}(ASS^{-1})=\operatorname{tr}A\)</span>, retaining both comparison factors before their actual identity product.</p>
+<p>For a projection <span class="math" data-tex="\(P^2=P\)">\(P^2=P\)</span>, each vector is <span class="math" data-tex="\(Pv+(v-Pv)\)">\(Pv+(v-Pv)\)</span>, with first term in its image and second in its kernel. Their intersection is zero because <span class="math" data-tex="\(Pv=v\)">\(Pv=v\)</span> on the image and <span class="math" data-tex="\(Pv=0\)">\(Pv=0\)</span> on the kernel. Concatenating their actual bases gives matrix <span class="math" data-tex="\(\operatorname{diag}(I_r,0)\)">\(\operatorname{diag}(I_r,0)\)</span> in those coordinates, where <span class="math" data-tex="\(r=\dim\operatorname{im}P\)">\(r=\dim\operatorname{im}P\)</span>. The exact basis-change identity and trace equality prove <span class="math" data-tex="\(\operatorname{tr}P=r\)">\(\operatorname{tr}P=r\)</span>. Thus the projection trace is its original rank even when <span class="math" data-tex="\(P\)">\(P\)</span> is not orthogonal for the original inner product. A continuous family of such projections has continuous traces, since trace is a finite sum of continuous original entries; their integer ranks are locally constant, because a change smaller than one in absolute trace cannot change the integer value. This supplies the finite bundle rank assertion used by the stable projection families; it does not assert global triviality.</p>
+<p>A map is self-adjoint exactly when <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span>, equivalently <span class="math" data-tex="\(H_VA=A^\dagger H_V\)">\(H_VA=A^\dagger H_V\)</span> by (FA24). It is positive exactly when its original quadratic pairing <span class="math" data-tex="\(h(Tv,v)=x^\dagger H_VAx\)">\(h(Tv,v)=x^\dagger H_VAx\)</span> is nonnegative real for every original vector. These are definitions on the actual original inner product, with no altered density or metric. For example <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> is self-adjoint by (FA25), and</p>
+<span id="equation-fa28"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+h_V(T^*Tv,v)=h_W(Tv,Tv)=\|Tv\|_{h_W}^2\ge0, \\ \ker(T^*T)=\ker T.
+\end{gathered}
+\tag{FA28}
+\]">\[
+\begin{gathered}
+h_V(T^*Tv,v)=h_W(Tv,Tv)=\|Tv\|_{h_W}^2\ge0, \\ \ker(T^*T)=\ker T.
+\end{gathered}
+\tag{FA28}
+\]</span>
+<p>The pairing identity follows from (FA24) and conjugate symmetry, and the kernel equivalence follows from positivity. For an eigenvector <span class="math" data-tex="\(Av=\lambda v\ne0\)">\(Av=\lambda v\ne0\)</span> of a self-adjoint map over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, self-adjointness and conjugate symmetry give <span class="math" data-tex="\(\lambda\|v\|^2=\overline\lambda\|v\|^2\)">\(\lambda\|v\|^2=\overline\lambda\|v\|^2\)</span>, so <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is real. If the map is positive its same original pairing gives <span class="math" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>. This conclusion uses neither root existence nor a spectral decomposition; those are separate later arguments.</p>
+<h3 id="AN03-SPR-LINALG-009"><span id="an03-spr-linalg-009"></span><span id="the-full-original-characteristic-criterion-and-invariant-blocks"></span><span id="10-9-the-full-original-characteristic-criterion-and-invariant-blocks"></span>10.9. The full original characteristic criterion and invariant blocks</h3>
+<p>For <span class="math" data-tex="\(A\in\operatorname{End}_F(V)\)">\(A\in\operatorname{End}_F(V)\)</span> in the actual ordered coordinates and <span class="math" data-tex="\(n=\dim V\)">\(n=\dim V\)</span>, let <span class="math" data-tex="\(\chi_A(z)=\det(zI_n-A)\)">\(\chi_A(z)=\det(zI_n-A)\)</span>. Keep the whole entry formula and its exact expansion:</p>
+<span id="equation-fa29"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_A(z)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{j=1}^n(z\delta_{j,\sigma(j)}-A_{j,\sigma(j)}) \\ =\sum_{\sigma\in S_n}\sum_{S\subset\{1,\ldots,n\}}
+\operatorname{sgn}(\sigma)z^{|S|}
+\prod_{j\in S}\delta_{j,\sigma(j)}
+\prod_{j\notin S}(-A_{j,\sigma(j)}), \\ \det(A-zI_n)=(-1)^n\chi_A(z).
+\end{gathered}
+\tag{FA29}
+\]">\[
+\begin{gathered}
+\chi_A(z)=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{j=1}^n(z\delta_{j,\sigma(j)}-A_{j,\sigma(j)}) \\ =\sum_{\sigma\in S_n}\sum_{S\subset\{1,\ldots,n\}}
+\operatorname{sgn}(\sigma)z^{|S|}
+\prod_{j\in S}\delta_{j,\sigma(j)}
+\prod_{j\notin S}(-A_{j,\sigma(j)}), \\ \det(A-zI_n)=(-1)^n\chi_A(z).
+\end{gathered}
+\tag{FA29}
+\]</span>
+<p>Every original zero term, coefficient and sign remains in these sums. The leading term for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span> is <span class="math" data-tex="\(z^n\)">\(z^n\)</span>, coming from the full subset and identity permutation; all other highest-subset terms have a Kronecker zero. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, the empty terms give <span class="math" data-tex="\(\chi_A=1\)">\(\chi_A=1\)</span>, with no roots or eigenvectors. The second determinant identity takes a factor <span class="math" data-tex="\(-1\)">\(-1\)</span> from each of the <span class="math" data-tex="\(n\)">\(n\)</span> original rows, so its sign is also correct in dimension zero.</p>
+<p>For any <span class="math" data-tex="\(\lambda\in F\)">\(\lambda\in F\)</span>, Section 10.4 applied to the unchanged original matrix <span class="math" data-tex="\(\lambda I_n-A\)">\(\lambda I_n-A\)</span> proves</p>
+<span id="equation-fa30"></span><span class="math math-display" data-tex="\[
+\chi_A(\lambda)=0\quad\Longleftrightarrow\quad
+\ker(\lambda I_n-A)\ne\{0\}\quad\Longleftrightarrow\quad
+\exists v\ne0:\ Av=\lambda v.
+\tag{FA30}
+\]">\[
+\chi_A(\lambda)=0\quad\Longleftrightarrow\quad
+\ker(\lambda I_n-A)\ne\{0\}\quad\Longleftrightarrow\quad
+\exists v\ne0:\ Av=\lambda v.
+\tag{FA30}
+\]</span>
+<p>The forward map is the actual free-coordinate construction (FA11), with the full original pivots of that matrix; the inverse assertion evaluates its actual nonzero vector in the kernel. This is the full determinant-characteristic-polynomial eigenvalue criterion over each original field. It does not assert that a real polynomial always has a real root. Away from roots, (FA13)--(FA14) give the actual two-sided inverse with all ordered row factors and original determinant denominator. The equality of eigenspace dimension and the number of free columns follows from the same bijection, including multiple roots and defective matrices.</p>
+<p>An actual change of basis <span class="math" data-tex="\(S\)">\(S\)</span> gives</p>
+<span id="equation-fa31"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_{S^{-1}AS}(z)=\det(S^{-1})\chi_A(z)\det S, \\ \det(S^{-1})\det S=1.
+\end{gathered}
+\tag{FA31}
+\]">\[
+\begin{gathered}
+\chi_{S^{-1}AS}(z)=\det(S^{-1})\chi_A(z)\det S, \\ \det(S^{-1})\det S=1.
+\end{gathered}
+\tag{FA31}
+\]</span>
+<p>This is proved from <span class="math" data-tex="\(zI-S^{-1}AS=S^{-1}(zI-A)S\)">\(zI-S^{-1}AS=S^{-1}(zI-A)S\)</span> and full determinant multiplicativity. The two comparison factors are explicit; all roots and multiplicities agree because the product is the original unit one. Eigenvectors correspond exactly by <span class="math" data-tex="\(v=S v&#x27;\)">\(v=S v&#x27;\)</span> and its inverse; generalized kernels of any power correspond by the same full ordered product identity, which is proved by induction on that power.</p>
+<p>For an original invariant subspace <span class="math" data-tex="\(W\subset V\)">\(W\subset V\)</span>, extend its actual basis to <span class="math" data-tex="\(V\)">\(V\)</span>. The operator in that basis is <span class="math" data-tex="\(\begin{pmatrix} A_W&amp;C\\0&amp;A_{V/W}\end{pmatrix}\)">\(\begin{pmatrix} A_W&amp;C\\0&amp;A_{V/W}\end{pmatrix}\)</span>, with the actual off-diagonal block <span class="math" data-tex="\(C\)">\(C\)</span> retained. In the full permutation sum for its determinant, any term sending a lower row into an upper column has a literal zero factor. The remaining terms must send all lower rows to lower columns and all upper rows to upper columns; their signs and products factor into the two original block determinant sums. Thus</p>
+<span id="equation-fa32"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_A(z)=\det S\,
+\det\begin{pmatrix}zI_W-A_W&amp;-C\\0&amp;zI_{V/W}-A_{V/W}\end{pmatrix}
+\det S^{-1} \\ =\det S\,\chi_{A_W}(z)\chi_{A_{V/W}}(z)\det S^{-1}.
+\end{gathered}
+\tag{FA32}
+\]">\[
+\begin{gathered}
+\chi_A(z)=\det S\,
+\det\begin{pmatrix}zI_W-A_W&amp;-C\\0&amp;zI_{V/W}-A_{V/W}\end{pmatrix}
+\det S^{-1} \\ =\det S\,\chi_{A_W}(z)\chi_{A_{V/W}}(z)\det S^{-1}.
+\end{gathered}
+\tag{FA32}
+\]</span>
+<p>The original block <span class="math" data-tex="\(C\)">\(C\)</span> is still part of the operator; each term containing it is accounted for by its paired lower-left zero factor. The formulas include either zero block size by the empty-product determinant. This is the exact invariant quotient comparison, not a claim that the original operator is a block-diagonal direct sum.</p>
+<h3 id="AN03-SPR-LINALG-010"><span id="an03-spr-linalg-010"></span><span id="actual-receiving-maps-for-the-existing-spectral-and-metric-lessons"></span><span id="10-10-actual-receiving-maps-for-the-existing-spectral-and-metric-lessons"></span>10.10. Actual receiving maps for the existing spectral and metric lessons</h3>
+<p>This lesson, Sections 9.1--9.4, already prove the original complex-root theorem with its complete leading coefficient and multiplicities. For a nonzero complex vector space, apply that proved theorem to the actual <span class="math" data-tex="\(\chi_A\)">\(\chi_A\)</span> in (FA29); (FA30) gives a nonzero eigenvector through the original pivot construction. Its line is invariant. Sections 10.1--10.3 provide the exact quotient basis and its lifts; (FA32) keeps every original block and change-of-basis factor. Induction on the original dimension now gives an upper triangular matrix for the same original complex operator. The induction starts with the empty matrix, and each lift is kept as an actual vector. This supplies the basis-extension and rank-nullity steps previously used without their full base proofs in the earlier Sections 4 and 9.6--9.7. It does not use primary spectral projections to prove the prerequisites for those projections.</p>
+<p>For the primary spaces and nilpotent flag in <a href="stable-boundary-models.html">Stable modes and the algebra of boundary data</a>, Sections 16.1--16.3, Sections 10.1--10.3 now justify extending every successive kernel basis and concatenating the actual direct-sum bases. Formula (FA32) justifies the full triangular characteristic calculation with its original comparison determinants; (FA30) justifies its spectrum/eigenvalue criterion. The exact norms in Section 10.6 give boundedness of all its original coordinate and projection maps; no length of a vector in that calculation is changed. The original scalar polynomial growth and compact-contour bounds keep their separate scalar and compactness proofs.</p>
+<p>For <a href="metric-foundation-bridges.html">Metric and topological foundations</a>, Section 1, its actual positive real quadratic form has the original bilinear Gram matrix <span class="math" data-tex="\(G\)">\(G\)</span>. Take <span class="math" data-tex="\(F=\mathbb R\)">\(F=\mathbb R\)</span>, <span class="math" data-tex="\(H=G\)">\(H=G\)</span>, and apply (FA16)--(FA18). The original residual matrix <span class="math" data-tex="\(S\)">\(S\)</span>, lengths <span class="math" data-tex="\(d_j\)">\(d_j\)</span>, full coordinate transformation <span class="math" data-tex="\(U=S D^{-1/2}\)">\(U=S D^{-1/2}\)</span>, inverse <span class="math" data-tex="\(D^{1/2}S^{-1}\)">\(D^{1/2}S^{-1}\)</span>, determinant <span class="math" data-tex="\(\prod_jd_j^{-1/2}\)">\(\prod_jd_j^{-1/2}\)</span>, and original metric <span class="math" data-tex="\(G\)">\(G\)</span> are explicit. This supplies the earlier Gram construction and its volume-change factor without replacing <span class="math" data-tex="\(G\)">\(G\)</span> by an identity as the working metric. The tensor coefficients in the existing lesson's orthonormal comparison basis are received through this exact map; its tensor norm is still the original <span class="math" data-tex="\(Q\)">\(Q\)</span>-norm. <a href="prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> likewise receives the basis construction for its original real spectral induction from these formulas. Its independent compact-sphere maximization proof remains the proof of spectral decomposition.</p>
+<p>Finally the original basis and metric adjoints used by every finite-dimensional matrix interface receive (FA24)--(FA27); an arbitrary conjugate transpose becomes an adjoint only with the actual Gram factors supplied. Projection rank and trace receive Section 10.8 with their literal original matrices. The full finite algebra used by these receiving arguments is thereby proved at the stated scalar base. The separate compactness and infinite-dimensional analytic steps retain their own hypotheses and proofs.</p>
+<h2 id="AN03-SPR-DOMINATED-000"><span id="an03-spr-dominated-000"></span><span id="matrix-entry-differentiation-under-the-integral"></span><span id="11-matrix-entry-differentiation-under-the-integral"></span>11. Matrix-entry differentiation under the integral</h2>
+<p>The measure construction and dominated-convergence proof in <a href="banach-foundation-bridges.html">Banach and Hilbert foundations</a>, Sections 15.0--15.1, and the complete scalar and coordinate calculus in <a href="metric-foundation-bridges.html">Metric and topological foundations</a>, Section 13, supply the independent entries used here. Every original matrix coordinate, operator norm, derivative order, path coefficient and endpoint is retained.</p>
+<h3 id="AN03-SPR-DOMINATED-001"><span id="an03-spr-dominated-001"></span><span id="the-exact-entry-map-and-its-original-operator-norm"></span><span id="11-1-the-exact-entry-map-and-its-original-operator-norm"></span>11.1. The exact entry map and its original operator norm</h3>
+<p>Let <span class="math" data-tex="\(V,W\)">\(V,W\)</span> be finite-dimensional real or complex normed spaces with their original norms and fixed original bases <span class="math" data-tex="\((v_b)_{b=1}^n\)">\((v_b)_{b=1}^n\)</span>, <span class="math" data-tex="\((w_a)_{a=1}^m\)">\((w_a)_{a=1}^m\)</span>. Let <span class="math" data-tex="\(\lambda_b:V\to\mathbb F\)">\(\lambda_b:V\to\mathbb F\)</span> be the actual coordinate functional, so <span class="math" data-tex="\(\lambda_b(v_c)=\delta_{bc}\)">\(\lambda_b(v_c)=\delta_{bc}\)</span>. No basis vector, norm or coordinate is replaced. Define <span class="math" data-tex="\(B_{ab}:V\to W\)">\(B_{ab}:V\to W\)</span> by <span class="math" data-tex="\(B_{ab}v=\lambda_b(v)w_a\)">\(B_{ab}v=\lambda_b(v)w_a\)</span>. For the original arbitrary norms, use <a href="metric-foundation-bridges.html">Metric and topological foundations</a>, Section 12.9, (RT32)--(RT36). For a positive real dimension its actual constant <span class="math" data-tex="\(c_v&gt;0\)">\(c_v&gt;0\)</span> gives <span class="math" data-tex="\(c_v|x|_2\le\|\sum_bx_bv_b\|\)">\(c_v|x|_2\le\|\sum_bx_bv_b\|\)</span>. Therefore <span class="math" data-tex="\(|\lambda_b(\sum_cx_cv_c)|=|x_b|\le|x|_2\le c_v^{-1}\|\sum_cx_cv_c\|\)">\(|\lambda_b(\sum_cx_cv_c)|=|x_b|\le|x|_2\le c_v^{-1}\|\sum_cx_cv_c\|\)</span>, so <span class="math" data-tex="\(\|\lambda_b\|\le c_v^{-1}\)">\(\|\lambda_b\|\le c_v^{-1}\)</span>. For a complex basis retain the entire real basis <span class="math" data-tex="\(v_1,iv_1,\ldots,v_n,iv_n\)">\(v_1,iv_1,\ldots,v_n,iv_n\)</span>: <span class="math" data-tex="\(|x_b|=((\operatorname{Re}x_b)^2+(\operatorname{Im}x_b)^2)^{1/2}\le|x|_2\)">\(|x_b|=((\operatorname{Re}x_b)^2+(\operatorname{Im}x_b)^2)^{1/2}\le|x|_2\)</span>, with <span class="math" data-tex="\(c_v\)">\(c_v\)</span> the constant of that actual real basis. The same original-norm comparison for <span class="math" data-tex="\(W\)">\(W\)</span> gives <span class="math" data-tex="\(\|\omega_a\|\le c_w^{-1}\)">\(\|\omega_a\|\le c_w^{-1}\)</span>. These proofs retain both original norms; Section 10's Gram bounds apply separately when the given norms arise from inner products. Empty dimensions have empty functional lists and require no positive sphere constant. Thus the actual coordinate-functional norms <span class="math" data-tex="\(\|\lambda_b\|\)">\(\|\lambda_b\|\)</span> are finite and</p>
+<span id="equation-md1"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+B_{ab}v=\lambda_b(v)w_a,\qquad \|B_{ab}\|=\|\lambda_b\|\,\|w_a\|,\\
+H=\sum_{a=1}^m\sum_{b=1}^n H_{ab}B_{ab},\\
+\|H\|\leq\sum_{a=1}^m\sum_{b=1}^n |H_{ab}|\,\|\lambda_b\|\,\|w_a\|.
+\end{gathered}
+\tag{MD1}
+\]">\[
+\begin{gathered}
+B_{ab}v=\lambda_b(v)w_a,\qquad \|B_{ab}\|=\|\lambda_b\|\,\|w_a\|,\\
+H=\sum_{a=1}^m\sum_{b=1}^n H_{ab}B_{ab},\\
+\|H\|\leq\sum_{a=1}^m\sum_{b=1}^n |H_{ab}|\,\|\lambda_b\|\,\|w_a\|.
+\end{gathered}
+\tag{MD1}
+\]</span>
+<p>For the equality of norms, the upper bound follows directly on each vector; the supremum defining <span class="math" data-tex="\(\|\lambda_b\|\)">\(\|\lambda_b\|\)</span> gives the reverse bound after multiplication by the unchanged <span class="math" data-tex="\(\|w_a\|\)">\(\|w_a\|\)</span>. For continuity of a coordinate in the reverse direction, write <span class="math" data-tex="\(\omega_a:W\to\mathbb F\)">\(\omega_a:W\to\mathbb F\)</span> for the corresponding coordinate functional. Then</p>
+<span id="equation-md2"></span><span class="math math-display" data-tex="\[
+H_{ab}=\omega_a(Hv_b),\qquad
+|H_{ab}|\leq\|\omega_a\|\,\|v_b\|\,\|H\|.
+\tag{MD2}
+\]">\[
+H_{ab}=\omega_a(Hv_b),\qquad
+|H_{ab}|\leq\|\omega_a\|\,\|v_b\|\,\|H\|.
+\tag{MD2}
+\]</span>
+<p>Consequently convergence of all entries is equivalent to operator-norm convergence, with every original coordinate functional and basis length retained. If either dimension is zero the unique linear map is zero, both entry sums are empty and all assertions have that exact meaning.</p>
+<p>Let <span class="math" data-tex="\((X,\mathcal M,\mu)\)">\((X,\mathcal M,\mu)\)</span> be a complete measure space. The proof below uses only the stated dominated-convergence and absolutely integrable linearity properties, so it also applies to a measure space after completion, without a finiteness assumption on <span class="math" data-tex="\(\mu(X)\)">\(\mu(X)\)</span>. If every entry of <span class="math" data-tex="\(H:X\to\operatorname{Hom}(V,W)\)">\(H:X\to\operatorname{Hom}(V,W)\)</span> is measurable and absolutely integrable, define its integral by its actual entries:</p>
+<span id="equation-md3"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\left(\int_X H\,d\mu\right)v=\sum_{a=1}^m\sum_{b=1}^n
+\left(\int_X H_{ab}\,d\mu\right)\lambda_b(v)w_a,\\
+\left\|\int_X H\,d\mu\right\|\leq\sum_{a=1}^m\sum_{b=1}^n
+\|\lambda_b\|\,\|w_a\|\int_X|H_{ab}|\,d\mu .
+\end{gathered}
+\tag{MD3}
+\]">\[
+\begin{gathered}
+\left(\int_X H\,d\mu\right)v=\sum_{a=1}^m\sum_{b=1}^n
+\left(\int_X H_{ab}\,d\mu\right)\lambda_b(v)w_a,\\
+\left\|\int_X H\,d\mu\right\|\leq\sum_{a=1}^m\sum_{b=1}^n
+\|\lambda_b\|\,\|w_a\|\int_X|H_{ab}|\,d\mu .
+\end{gathered}
+\tag{MD3}
+\]</span>
+<p>The inequality follows from (MD1) and the scalar integral bound. Under a change of either original basis, every new entry is a finite linear combination of old entries, with the actual inverse basis matrices retained. Integral linearity commutes with each such finite combination. Thus both coordinate constructions give the same map <span class="math" data-tex="\(V\to W\)">\(V\to W\)</span>; the original map and norm in (MD3) remain the working objects.</p>
+<h3 id="AN03-SPR-DOMINATED-002"><span id="an03-spr-dominated-002"></span><span id="every-parameter-derivative-and-its-full-integral-map"></span><span id="11-2-every-parameter-derivative-and-its-full-integral-map"></span>11.2. Every parameter derivative and its full integral map</h3>
+<p>Let <span class="math" data-tex="\(Y\subset\mathbb R^d\)">\(Y\subset\mathbb R^d\)</span> be open. Let <span class="math" data-tex="\(r\)">\(r\)</span> be a nonnegative integer or <span class="math" data-tex="\(\infty\)">\(\infty\)</span>. Suppose <span class="math" data-tex="\(H:Y\times X\to\operatorname{Hom}(V,W)\)">\(H:Y\times X\to\operatorname{Hom}(V,W)\)</span> has the following properties. There is one measurable null set <span class="math" data-tex="\(N\subset X\)">\(N\subset X\)</span> outside which <span class="math" data-tex="\(y\mapsto H_{ab}(y,x)\)">\(y\mapsto H_{ab}(y,x)\)</span> is <span class="math" data-tex="\(C^r\)">\(C^r\)</span>. For every <span class="math" data-tex="\(y\)">\(y\)</span>, every entry of each derivative <span class="math" data-tex="\(\partial^\alpha H(y,\cdot)\)">\(\partial^\alpha H(y,\cdot)\)</span>, <span class="math" data-tex="\(|\alpha|\leq r\)">\(|\alpha|\leq r\)</span>, is measurable. For each closed coordinate box <span class="math" data-tex="\(Q\)">\(Q\)</span> contained in <span class="math" data-tex="\(Y\)">\(Y\)</span>, each such multi-index and each entry, there is a nonnegative integrable <span class="math" data-tex="\(g_{\alpha,ab,Q}\)">\(g_{\alpha,ab,Q}\)</span> such that</p>
+<span id="equation-md4"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+|\partial^\alpha H_{ab}(y,x)|\leq g_{\alpha,ab,Q}(x)
+\quad(y\in Q,\ x\notin N),\\
+\int_Xg_{\alpha,ab,Q}\,d\mu&lt;\infty .
+\end{gathered}
+\tag{MD4}
+\]">\[
+\begin{gathered}
+|\partial^\alpha H_{ab}(y,x)|\leq g_{\alpha,ab,Q}(x)
+\quad(y\in Q,\ x\notin N),\\
+\int_Xg_{\alpha,ab,Q}\,d\mu&lt;\infty .
+\end{gathered}
+\tag{MD4}
+\]</span>
+<p>It is enough to require these boxes in a neighborhood of every parameter point. For <span class="math" data-tex="\(r=\infty\)">\(r=\infty\)</span>, the hypothesis means every finite derivative order; it imposes no single bound on all orders at once. Values on <span class="math" data-tex="\(N\)">\(N\)</span> may be set to zero in the integral construction, leaving every map and almost-everywhere class unchanged.</p>
+<p>Then</p>
+<span id="equation-md5"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+F(y)=\int_X H(y,x)\,d\mu(x)\quad\hbox{is }C^r,\\
+\partial^\alpha F(y)=\int_X\partial^\alpha H(y,x)\,d\mu(x)
+\quad(|\alpha|\leq r).
+\end{gathered}
+\tag{MD5}
+\]">\[
+\begin{gathered}
+F(y)=\int_X H(y,x)\,d\mu(x)\quad\hbox{is }C^r,\\
+\partial^\alpha F(y)=\int_X\partial^\alpha H(y,x)\,d\mu(x)
+\quad(|\alpha|\leq r).
+\end{gathered}
+\tag{MD5}
+\]</span>
+<p>This is an equality in the original <span class="math" data-tex="\(\operatorname{Hom}(V,W)\)">\(\operatorname{Hom}(V,W)\)</span>, not just an equality of scalar representatives.</p>
+<p>Here is the proof at every order. Each integral exists by (MD4). Fix <span class="math" data-tex="\(y_0\in Y\)">\(y_0\in Y\)</span> and a box <span class="math" data-tex="\(Q\)">\(Q\)</span> whose interior contains <span class="math" data-tex="\(y_0\)">\(y_0\)</span>. For any sequence <span class="math" data-tex="\(y_k\to y_0\)">\(y_k\to y_0\)</span>, eventually <span class="math" data-tex="\(y_k\in Q\)">\(y_k\in Q\)</span>. Outside <span class="math" data-tex="\(N\)">\(N\)</span>, continuity gives <span class="math" data-tex="\(\partial^\alpha H_{ab}(y_k,x)\to\partial^\alpha H_{ab}(y_0,x)\)">\(\partial^\alpha H_{ab}(y_k,x)\to\partial^\alpha H_{ab}(y_0,x)\)</span>. Dominated convergence with the full <span class="math" data-tex="\(g_{\alpha,ab,Q}\)">\(g_{\alpha,ab,Q}\)</span> proves</p>
+<span id="equation-md6"></span><span class="math math-display" data-tex="\[
+\int_X\left|
+\partial^\alpha H_{ab}(y_k,x)
+-\partial^\alpha H_{ab}(y_0,x)\right|\,d\mu(x)
+\longrightarrow0 .
+\tag{MD6}
+\]">\[
+\int_X\left|
+\partial^\alpha H_{ab}(y_k,x)
+-\partial^\alpha H_{ab}(y_0,x)\right|\,d\mu(x)
+\longrightarrow0 .
+\tag{MD6}
+\]</span>
+<p>Equations (MD1) and (MD3), with their finite sums and original norm factors, therefore give continuity of each integral in operator norm. The sequential criterion for continuity follows from the metric definition: a failure at <span class="math" data-tex="\(y_0\)">\(y_0\)</span> would choose, for every positive integer <span class="math" data-tex="\(k\)">\(k\)</span>, a point within <span class="math" data-tex="\(1/k\)">\(1/k\)</span> where the required fixed positive error persists, contradicting (MD6).</p>
+<p>For <span class="math" data-tex="\(|\alpha|&lt;r\)">\(|\alpha|&lt;r\)</span>, a coordinate <span class="math" data-tex="\(j\)">\(j\)</span>, and a nonzero real <span class="math" data-tex="\(h\)">\(h\)</span> with the segment from <span class="math" data-tex="\(y_0\)">\(y_0\)</span> to <span class="math" data-tex="\(y_0+he_j\)">\(y_0+he_j\)</span> inside <span class="math" data-tex="\(Q\)">\(Q\)</span>, the scalar coordinate fundamental theorem gives, for <span class="math" data-tex="\(x\notin N\)">\(x\notin N\)</span>,</p>
+<span id="equation-md7"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\partial^\alpha H_{ab}(y_0+he_j,x)-\partial^\alpha H_{ab}(y_0,x)}{h}
+=\int_0^1\partial^{\alpha+e_j}H_{ab}(y_0+\theta he_j,x)\,d\theta ,\\
+\left|\frac{\partial^\alpha H_{ab}(y_0+he_j,x)-\partial^\alpha H_{ab}(y_0,x)}{h}\right|
+\leq g_{\alpha+e_j,ab,Q}(x).
+\end{gathered}
+\tag{MD7}
+\]">\[
+\begin{gathered}
+\frac{\partial^\alpha H_{ab}(y_0+he_j,x)-\partial^\alpha H_{ab}(y_0,x)}{h}
+=\int_0^1\partial^{\alpha+e_j}H_{ab}(y_0+\theta he_j,x)\,d\theta ,\\
+\left|\frac{\partial^\alpha H_{ab}(y_0+he_j,x)-\partial^\alpha H_{ab}(y_0,x)}{h}\right|
+\leq g_{\alpha+e_j,ab,Q}(x).
+\end{gathered}
+\tag{MD7}
+\]</span>
+<p>The integral in this equality is the oriented coordinate formula with its substitution already performed; negative <span class="math" data-tex="\(h\)">\(h\)</span> satisfies the same equality. No product-measure interchange is used to establish its bound. Outside <span class="math" data-tex="\(N\)">\(N\)</span>, the quotient tends to the indicated derivative. Dominated convergence therefore passes each sequence of nonzero <span class="math" data-tex="\(h\)">\(h\)</span>'s tending to zero through the <span class="math" data-tex="\(X\)">\(X\)</span>-integral. Linearity identifies the integral of the quotient with the difference quotient of the two original integrals. If the full limit failed, the metric definition would select a sequence of increments with persistent error. Thus the full derivative exists, and</p>
+<span id="equation-md8"></span><span class="math math-display" data-tex="\[
+\partial_j\left(\int_X\partial^\alpha H(y,x)\,d\mu(x)\right)
+=\int_X\partial^{\alpha+e_j}H(y,x)\,d\mu(x).
+\tag{MD8}
+\]">\[
+\partial_j\left(\int_X\partial^\alpha H(y,x)\,d\mu(x)\right)
+=\int_X\partial^{\alpha+e_j}H(y,x)\,d\mu(x).
+\tag{MD8}
+\]</span>
+<p>Continuity was proved in (MD6). Induction on <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> proves (MD5), including all multi-indices, with mixed derivatives equal because the source functions are <span class="math" data-tex="\(C^r\)">\(C^r\)</span> outside the one common null set. The continuous-partials criterion in the scalar-calculus lesson supplies the full derivative tensors:</p>
+<span id="equation-md9"></span><span class="math math-display" data-tex="\[
+D^kF(y)[h_1,\ldots,h_k]
+=\sum_{j_1=1}^d\cdots\sum_{j_k=1}^d
+\left(\int_X
+\partial_{j_1}\cdots\partial_{j_k}H(y,x)\,d\mu(x)\right)
+(h_1)_{j_1}\cdots(h_k)_{j_k}.
+\tag{MD9}
+\]">\[
+D^kF(y)[h_1,\ldots,h_k]
+=\sum_{j_1=1}^d\cdots\sum_{j_k=1}^d
+\left(\int_X
+\partial_{j_1}\cdots\partial_{j_k}H(y,x)\,d\mu(x)\right)
+(h_1)_{j_1}\cdots(h_k)_{j_k}.
+\tag{MD9}
+\]</span>
+<p>Every coordinate and every ordered source derivative remains in this finite sum. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> it is (MD5); for <span class="math" data-tex="\(d=0\)">\(d=0\)</span> no positive-order direction exists. For empty <span class="math" data-tex="\(Y\)">\(Y\)</span> the assertion is vacuous, and for a zero measure space all integrals are zero. No arbitrary pointwise limit or undominated derivative has been interchanged.</p>
+<h3 id="AN03-SPR-DOMINATED-003"><span id="an03-spr-dominated-003"></span><span id="an-integrable-anchor-supplies-the-missing-zeroth-order-bound"></span><span id="11-3-an-integrable-anchor-supplies-the-missing-zeroth-order-bound"></span>11.3. An integrable anchor supplies the missing zeroth-order bound</h3>
+<p>When <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, the zeroth-order domination need not be separately assumed on a box. Fix <span class="math" data-tex="\(y_*\in Q=\prod_{j=1}^d[a_j,b_j]\)">\(y_*\in Q=\prod_{j=1}^d[a_j,b_j]\)</span>. Suppose each <span class="math" data-tex="\(H_{ab}(y_*,\cdot)\)">\(H_{ab}(y_*,\cdot)\)</span> is absolutely integrable, and the bounds (MD4) hold for all derivatives of positive order through <span class="math" data-tex="\(r\)">\(r\)</span>. Join <span class="math" data-tex="\(y_*\)">\(y_*\)</span> to <span class="math" data-tex="\(y\in Q\)">\(y\in Q\)</span> by the original ordered coordinate segments, replacing coordinates <span class="math" data-tex="\(1,\ldots,d\)">\(1,\ldots,d\)</span> in that order. Apply the coordinate fundamental theorem to each segment and add its actual increment. This gives</p>
+<span id="equation-md10"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+|H_{ab}(y,x)|\leq |H_{ab}(y_*,x)|
++\sum_{j=1}^d(b_j-a_j)g_{e_j,ab,Q}(x)
+=:g_{0,ab,Q}(x),\qquad x\notin N .
+\end{gathered}
+\tag{MD10}
+\]">\[
+\begin{gathered}
+|H_{ab}(y,x)|\leq |H_{ab}(y_*,x)|
++\sum_{j=1}^d(b_j-a_j)g_{e_j,ab,Q}(x)
+=:g_{0,ab,Q}(x),\qquad x\notin N .
+\end{gathered}
+\tag{MD10}
+\]</span>
+<p>Its integral is finite: retain the anchor's full integral, every original side length, and all <span class="math" data-tex="\(d\)">\(d\)</span> derivative integrals. Thus (MD4) at order zero follows, and the preceding proof applies. For <span class="math" data-tex="\(d=0\)">\(d=0\)</span> the sum is empty and the anchor is the only point. This weakens a sufficient hypothesis without changing the original function or requiring the ambient measure to be finite. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, integrability at one parameter alone does not provide domination in a neighborhood, so the continuity proof retains its stated order-zero bound.</p>
+<h3 id="AN03-SPR-DOMINATED-004"><span id="an03-spr-dominated-004"></span><span id="the-riemann-integral-each-path-piece-and-every-cycle-coefficient"></span><span id="11-4-the-riemann-integral-each-path-piece-and-every-cycle-coefficient"></span>11.4. The Riemann integral, each path piece and every cycle coefficient</h3>
+<p>For a continuous scalar function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, the original oriented Riemann integral from the scalar-calculus lesson equals its Lebesgue integral. To prove this comparison when <span class="math" data-tex="\(a&lt;b\)">\(a&lt;b\)</span>, choose any partition. The lower and upper step functions bound <span class="math" data-tex="\(f\)">\(f\)</span> on each open subinterval, using its original infimum and supremum there. The finitely many endpoints form a Lebesgue null set, by the constructed coordinate-box measure. Their step integrals are exactly the lower and upper Darboux sums, since every interval has its unchanged length. Continuous <span class="math" data-tex="\(f\)">\(f\)</span> is Borel measurable and bounded; hence it is integrable on this finite interval. Its Lebesgue integral lies between these two sums. Uniform continuity makes their difference tend to zero along partitions with mesh tending to zero, by the full interval length times the original oscillation bound. The common limit is exactly the Riemann integral proved in Section 13.3. Apply this argument to real and imaginary parts and then to all matrix entries. For <span class="math" data-tex="\(a=b\)">\(a=b\)</span> both integrals are zero; for a reversed interval retain the minus sign in the oriented formula.</p>
+<p>For the remaining contour assertions in Sections 11.4--11.5, take <span class="math" data-tex="\(V,W\)">\(V,W\)</span> to be complex normed spaces and the operators to be complex linear. Sections 11.1--11.3 retain their original real-or-complex scope. This target hypothesis is required for multiplication by the actual complex path derivative. For example, with real <span class="math" data-tex="\(V=W=\mathbb R\)">\(V=W=\mathbb R\)</span>, <span class="math" data-tex="\(G(z)=\operatorname{Re}(z)I\)">\(G(z)=\operatorname{Re}(z)I\)</span>, and the positively oriented unit circle <span class="math" data-tex="\(\gamma(\theta)=e^{i\theta}\)">\(\gamma(\theta)=e^{i\theta}\)</span>, the coordinate integral in the complex target is</p>
+<span id="equation-md11a"></span><span class="math math-display" data-tex="\[
+\int_0^{2\pi}\cos\theta(-\sin\theta+i\cos\theta)\,d\theta
+=-\left[\frac{\sin^2\theta}{2}\right]_0^{2\pi}
++i\int_0^{2\pi}\frac{1+\cos(2\theta)}2\,d\theta
+=i\pi.
+\tag{MD11a}
+\]">\[
+\int_0^{2\pi}\cos\theta(-\sin\theta+i\cos\theta)\,d\theta
+=-\left[\frac{\sin^2\theta}{2}\right]_0^{2\pi}
++i\int_0^{2\pi}\frac{1+\cos(2\theta)}2\,d\theta
+=i\pi.
+\tag{MD11a}
+\]</span>
+<p>The real fundamental theorem and the actual trigonometric identities prove every displayed term. The result is outside the real endomorphism space, so no real-target contour assertion is inferred. The actual resolvent applications already have complex targets.</p>
+<p>Write a finite cycle in its actual form</p>
+<span id="equation-md11"></span><span class="math math-display" data-tex="\[
+\Gamma=\sum_{\ell=1}^L m_\ell\gamma_\ell,\qquad
+m_\ell\in\mathbb Z,\qquad
+\gamma_\ell:[a_\ell,b_\ell]\to\mathbb C .
+\tag{MD11}
+\]">\[
+\Gamma=\sum_{\ell=1}^L m_\ell\gamma_\ell,\qquad
+m_\ell\in\mathbb Z,\qquad
+\gamma_\ell:[a_\ell,b_\ell]\to\mathbb C .
+\tag{MD11}
+\]</span>
+<p>Each path is closed and piecewise <span class="math" data-tex="\(C^1\)">\(C^1\)</span>, with its finite partition retained; <span class="math" data-tex="\(a_\ell&lt;b_\ell\)">\(a_\ell&lt;b_\ell\)</span>. Split it at those partition endpoints without changing the sum or orientation. The path derivative is continuous on each closed smooth piece, with one-sided endpoint values sufficient for its integral. Define</p>
+<span id="equation-md12"></span><span class="math math-display" data-tex="\[
+\int_\Gamma G(y,z)\,dz
+=\sum_{\ell=1}^L m_\ell
+\int_{a_\ell}^{b_\ell}
+G(y,\gamma_\ell(s))\,\gamma_\ell&#x27;(s)\,ds .
+\tag{MD12}
+\]">\[
+\int_\Gamma G(y,z)\,dz
+=\sum_{\ell=1}^L m_\ell
+\int_{a_\ell}^{b_\ell}
+G(y,\gamma_\ell(s))\,\gamma_\ell&#x27;(s)\,ds .
+\tag{MD12}
+\]</span>
+<p>By the preceding comparison, both integral conventions give this same map. The signed <span class="math" data-tex="\(m_\ell\)">\(m_\ell\)</span> remain in the equality; their absolute values enter only the estimate</p>
+<span id="equation-md13"></span><span class="math math-display" data-tex="\[
+\left\|\int_\Gamma G(y,z)\,dz\right\|
+\leq\sum_{\ell=1}^L |m_\ell|
+\int_{a_\ell}^{b_\ell}
+\|G(y,\gamma_\ell(s))\|\,|\gamma_\ell&#x27;(s)|\,ds .
+\tag{MD13}
+\]">\[
+\left\|\int_\Gamma G(y,z)\,dz\right\|
+\leq\sum_{\ell=1}^L |m_\ell|
+\int_{a_\ell}^{b_\ell}
+\|G(y,\gamma_\ell(s))\|\,|\gamma_\ell&#x27;(s)|\,ds .
+\tag{MD13}
+\]</span>
+<p>This bound can also be proved directly from tagged matrix Riemann sums and the triangle inequality in the unchanged operator norm, followed by their limits. It retains the actual speed and every piece's interval; zero coefficients contribute zero.</p>
+<p>If <span class="math" data-tex="\(G\)">\(G\)</span> and each parameter derivative through order <span class="math" data-tex="\(r\)">\(r\)</span> are continuous jointly on a neighborhood of the product of a compact parameter box and all path images, (MD4) follows entry by entry from their actual compact maximum times <span class="math" data-tex="\(|m_\ell|\,|\gamma_\ell&#x27;(s)|\)">\(|m_\ell|\,|\gamma_\ell&#x27;(s)|\)</span>. Its integral is finite because each piece is <span class="math" data-tex="\(C^1\)">\(C^1\)</span> on a compact interval. Apply (MD5) on the finite disjoint union of these intervals, with the original signed coefficients in the integrands, to obtain</p>
+<span id="equation-md14"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial^\alpha\int_\Gamma G(y,z)\,dz
+=\sum_{\ell=1}^L m_\ell\int_{a_\ell}^{b_\ell}
+\partial^\alpha G(y,\gamma_\ell(s))\gamma_\ell&#x27;(s)\,ds\\
+=\int_\Gamma\partial^\alpha G(y,z)\,dz .
+\end{gathered}
+\tag{MD14}
+\]">\[
+\begin{gathered}
+\partial^\alpha\int_\Gamma G(y,z)\,dz
+=\sum_{\ell=1}^L m_\ell\int_{a_\ell}^{b_\ell}
+\partial^\alpha G(y,\gamma_\ell(s))\gamma_\ell&#x27;(s)\,ds\\
+=\int_\Gamma\partial^\alpha G(y,z)\,dz .
+\end{gathered}
+\tag{MD14}
+\]</span>
+<p>The finitely many path-piece endpoints may be taken as the common null exceptional set. No eigenvalue branch, contour deformation or holomorphic integral theorem is needed for this parameter interchange.</p>
+<h3 id="AN03-SPR-DOMINATED-005"><span id="an03-spr-dominated-005"></span><span id="the-actual-ordered-resolvent-time-derivatives-and-upper-contour-bound"></span><span id="11-5-the-actual-ordered-resolvent-time-derivatives-and-upper-contour-bound"></span>11.5. The actual ordered resolvent, time derivatives and upper-contour bound</h3>
+<p>Use the original open parameter set <span class="math" data-tex="\(Y\)">\(Y\)</span>, operator family <span class="math" data-tex="\(A:Y\to\operatorname{End}(V)\)">\(A:Y\to\operatorname{End}(V)\)</span>, fixed finite cycle <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, and <span class="math" data-tex="\(C^r\)">\(C^r\)</span> hypotheses of the polynomial and contour lesson, Section 7. For every contour point and parameter, <span class="math" data-tex="\(zI-A(y)\)">\(zI-A(y)\)</span> is invertible. The full finite algebra proves</p>
+<span id="equation-md15"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+R(y,z)=(zI-A(y))^{-1}
+=\frac{\operatorname{adj}(zI-A(y))}{\det(zI-A(y))},\\
+\partial_jR=R(\partial_jA)R 
+\end{gathered}
+\tag{MD15}
+\]">\[
+\begin{gathered}
+R(y,z)=(zI-A(y))^{-1}
+=\frac{\operatorname{adj}(zI-A(y))}{\det(zI-A(y))},\\
+\partial_jR=R(\partial_jA)R 
+\end{gathered}
+\tag{MD15}
+\]</span>
+<p>with the original determinant, adjugate signs and matrix order. Joint continuity and compactness bound the denominator away from zero and bound every actual numerator derivative on each parameter box times the fixed contour. The original multi-index product calculation gives, for <span class="math" data-tex="\(0&lt;|\beta|\leq r\)">\(0&lt;|\beta|\leq r\)</span>,</p>
+<span id="equation-md16"></span><span class="math math-display" data-tex="\[
+\partial^\beta R
+=\sum_{0&lt;\eta\leq\beta}
+\binom{\beta}{\eta}
+R(\partial^\eta A)(\partial^{\beta-\eta}R).
+\tag{MD16}
+\]">\[
+\partial^\beta R
+=\sum_{0&lt;\eta\leq\beta}
+\binom{\beta}{\eta}
+R(\partial^\eta A)(\partial^{\beta-\eta}R).
+\tag{MD16}
+\]</span>
+<p>Indeed differentiate <span class="math" data-tex="\((zI-A)R=I\)">\((zI-A)R=I\)</span>, keep every Leibniz term, isolate the term <span class="math" data-tex="\((zI-A)\partial^\beta R\)">\((zI-A)\partial^\beta R\)</span>, and multiply on its left by <span class="math" data-tex="\(R\)">\(R\)</span>. All other derivatives of <span class="math" data-tex="\(zI-A\)">\(zI-A\)</span> are <span class="math" data-tex="\(-\partial^\eta A\)">\(-\partial^\eta A\)</span>, so the two signs give the displayed positive terms. Induction establishes existence, continuity and compact bounds at every permitted order. Thus (MD14) proves the exact interchange asserted in the existing Section 7, instead of leaving dominated differentiation as an unproved entry.</p>
+<p>For the original real time parameter, define</p>
+<span id="equation-md17"></span><span class="math math-display" data-tex="\[
+T_j(t,y)=\frac{1}{2\pi i}\int_\Gamma
+(iz)^j e^{itz}R(y,z)\,dz,\qquad j\geq0 .
+\tag{MD17}
+\]">\[
+T_j(t,y)=\frac{1}{2\pi i}\int_\Gamma
+(iz)^j e^{itz}R(y,z)\,dz,\qquad j\geq0 .
+\tag{MD17}
+\]</span>
+<p>The original exponential series and derivative prove <span class="math" data-tex="\(\partial_t^j e^{itz}=(iz)^j e^{itz}\)">\(\partial_t^j e^{itz}=(iz)^j e^{itz}\)</span>. On every compact <span class="math" data-tex="\(t\)">\(t\)</span>-interval and parameter box, all time and allowed parameter derivatives have the integrable majorants established above. For each fixed <span class="math" data-tex="\(j\)">\(j\)</span>, apply (MD5) in the original <span class="math" data-tex="\(y\)">\(y\)</span> coordinates through order <span class="math" data-tex="\(r\)">\(r\)</span> to the integrand <span class="math" data-tex="\((iz)^j e^{itz}R(y,z)\)">\((iz)^j e^{itz}R(y,z)\)</span>. Its dependence on <span class="math" data-tex="\(t\)">\(t\)</span> has derivatives of every finite order independently of the allowed <span class="math" data-tex="\(y\)">\(y\)</span> order. For each <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, successive one-variable dominated difference quotients in <span class="math" data-tex="\(t\)">\(t\)</span>, with the full compact bounds already proved, then give the time derivatives. The same compact bounds give joint continuity of every such mixed derivative. Thus no joint <span class="math" data-tex="\(C^{r+j}\)">\(C^{r+j}\)</span> regularity of <span class="math" data-tex="\(A\)">\(A\)</span> is assumed. For every <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(|\beta|\leq r\)">\(|\beta|\leq r\)</span>, these separate actual passages give</p>
+<span id="equation-md18"></span><span class="math math-display" data-tex="\[
+\begin{gathered}
+\partial_t^j\partial_y^\beta T_0(t,y)=\partial_y^\beta T_j(t,y)\\
+=\frac{1}{2\pi i}\int_\Gamma (iz)^j e^{itz}
+\partial_y^\beta R(y,z)\,dz .
+\end{gathered}
+\tag{MD18}
+\]">\[
+\begin{gathered}
+\partial_t^j\partial_y^\beta T_0(t,y)=\partial_y^\beta T_j(t,y)\\
+=\frac{1}{2\pi i}\int_\Gamma (iz)^j e^{itz}
+\partial_y^\beta R(y,z)\,dz .
+\end{gathered}
+\tag{MD18}
+\]</span>
+<p>Every power of <span class="math" data-tex="\(i\)">\(i\)</span>, every <span class="math" data-tex="\(z\)">\(z\)</span>, the exact <span class="math" data-tex="\(1/(2\pi i)\)">\(1/(2\pi i)\)</span>, and the original ordered products from (MD16) remain. If all path points have <span class="math" data-tex="\(\operatorname{Im}z\geq\delta&gt;0\)">\(\operatorname{Im}z\geq\delta&gt;0\)</span>, the scalar series identity gives <span class="math" data-tex="\(|e^{itz}|=e^{-t\operatorname{Im}z}\leq e^{-\delta t}\)">\(|e^{itz}|=e^{-t\operatorname{Im}z}\leq e^{-\delta t}\)</span> for <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. Equation (MD13) then gives the complete estimate</p>
+<span id="equation-md19"></span><span class="math math-display" data-tex="\[
+\|\partial_y^\beta T_j(t,y)\|
+\leq\frac{e^{-\delta t}}{2\pi}
+\sum_{\ell=1}^L |m_\ell|
+\int_{a_\ell}^{b_\ell}
+|\gamma_\ell(s)|^j
+\|\partial_y^\beta R(y,\gamma_\ell(s))\|
+|\gamma_\ell&#x27;(s)|\,ds .
+\tag{MD19}
+\]">\[
+\|\partial_y^\beta T_j(t,y)\|
+\leq\frac{e^{-\delta t}}{2\pi}
+\sum_{\ell=1}^L |m_\ell|
+\int_{a_\ell}^{b_\ell}
+|\gamma_\ell(s)|^j
+\|\partial_y^\beta R(y,\gamma_\ell(s))\|
+|\gamma_\ell&#x27;(s)|\,ds .
+\tag{MD19}
+\]</span>
+<p>The right side retains the full contour, original norm, every cycle coefficient, derivative product, speed, endpoint and spectral gap. Supremizing its displayed coefficient over a compact parameter box is finite by the previously proved bounds. Dimension zero gives the zero operator and zero integrals. The construction proves the existing fixed-contour derivative and decay receiving maps; it supplies no general trace theorem or new boundary calculus.</p>
+<h2 id="references">References</h2>
+<p>Thomas W. Judson, <a href="https://github.com/twjudson/aata/blob/3069910e3ded72ff5e18837a97a0e810c92790e2/src/poly.xml"><em>Abstract Algebra: Theory and Applications</em>, polynomial chapter</a>, gives the scalar division and Bézout proofs used in Section 2.</p>
+<p>Robert A. Beezer, <a href="https://github.com/rbeezer/fcla/blob/347f27fe909b54b26970bcc0fcbf69c7e853c766/src/section-OD.xml"><em>A First Course in Linear Algebra</em>, Section OD</a>, gives the upper-triangularization result used in Section 4.</p>
+<p>Jiří Lebl, <a href="https://github.com/jirilebl/ca/blob/adfaaf8b13287185c22db079f16f39183628f482/ca.tex"><em>Guide to Cultivating Complex Analysis</em>, version 1.9</a>, treats line integrals and winding numbers. Section 5 proves the exact contour moments needed here.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/AN-03/stable-prerequisite-bridges.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

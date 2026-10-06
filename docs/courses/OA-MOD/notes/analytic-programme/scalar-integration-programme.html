@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scalar measure and integration: programme proofs · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/analytic-programme/scalar-integration-programme.html">
+<link rel="stylesheet" href="../../../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="../../reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../../">All courses</a> <span aria-hidden="true">›</span> <a href="../../">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Proof note</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="scalar-measure-and-integration-programme-proofs">Scalar measure and integration: programme proofs</h1>
+<p><em>Sections 1, 2 and 6 were written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Their original exposition is CC0. The selection, preliminary clarifications and companion proofs were prepared and self-checked by GPT-6 Astra (OpenAI), Ultra reasoning effort, 4 October 2026.</em></p>
+<p>This is the complete mathematical text of Sections 1, 2 and 6 of the programme lesson <em>Measure and Hilbert space tools for Haar integration</em>. The numbering is retained for exact references. The unused Hilbert-space material and the surrounding course introduction are omitted. Read these proofs before <a href="scalar-product-integration.html">Products, scalar Fubini and the polar integral</a>, which constructs product measures and supplies the additional arguments needed by the modular kernel.</p>
+<p>The starting conventions are elementary set theory and the complete ordered real field, with its usual complexification. No measure-theoretic convergence theorem is assumed. The following elementary details make explicit the compactness and measurability steps used in the selected text.</p>
+<h2 id="0-preliminary-details">0. Preliminary details</h2>
+<p><strong>Compact intervals.</strong> Every open cover of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> has a finite subcover. Let <span class="math" data-tex="\(c\)">\(c\)</span> be the supremum of the points <span class="math" data-tex="\(x\)">\(x\)</span> for which <span class="math" data-tex="\([a,x]\)">\([a,x]\)</span> has a finite subcover. A cover member containing <span class="math" data-tex="\(a\)">\(a\)</span> first makes this set nonempty. A cover member containing <span class="math" data-tex="\(c\)">\(c\)</span>, together with a covered point sufficiently close to <span class="math" data-tex="\(c\)">\(c\)</span> from the left, extends a finite cover to a neighbourhood of <span class="math" data-tex="\(c\)">\(c\)</span>. If <span class="math" data-tex="\(c&lt;b\)">\(c&lt;b\)</span>, this contradicts the supremum property; when <span class="math" data-tex="\(c=b\)">\(c=b\)</span>, the same argument covers the endpoint. The case <span class="math" data-tex="\(a=b\)">\(a=b\)</span> is immediate.</p>
+<p>A continuous scalar function on a compact interval is bounded: finitely many neighbourhoods on which its value differs from the central value by less than one cover the interval. It is uniformly continuous: for a given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose at each <span class="math" data-tex="\(x\)">\(x\)</span> a radius <span class="math" data-tex="\(r_x&gt;0\)">\(r_x&gt;0\)</span> so that values within <span class="math" data-tex="\(r_x\)">\(r_x\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> differ from its value by less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Finitely many half-radius neighbourhoods cover the interval. If <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is the minimum of those half-radii, any two points of distance less than <span class="math" data-tex="\(\delta\)">\(\delta\)</span> lie within the full radius of the same centre; their values differ by less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>For the extremum assertion in Section 6, every sequence in <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> has a convergent subsequence. Repeatedly bisect the interval, retain a closed half containing infinitely many terms, and select terms with strictly increasing indices. The nested endpoints have a common limit by completeness, and the selected terms tend to it. A sequence of function values approaching the supremum therefore has a subsequence whose arguments converge; continuity gives a point attaining that supremum. The infimum follows by negation. This proves the real extremum facts used in Rolle's theorem. Complex integral identities in Section 6 are obtained by applying the real argument to real and imaginary parts.</p>
+<p><strong>Measurability and null sets.</strong> A pair of measurable real functions is measurable as a map to <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>: inverse images of rational open boxes are measurable, and every open set is a countable union of such boxes. Composing with continuous scalar maps proves measurability of sums, products, absolute values and positive and negative parts. The same reasoning applies to any finite tuple. A measurable nonnegative function supported on a measurable null set has integral zero directly from the definition by simple minorants. Consequently measurable functions equal off a measurable null set have the same nonnegative or integrable scalar integral. This justifies discarding the exceptional sets in Section 2. On a noncomplete space, a nonmeasurable modification on a null set is always interpreted by its measurable representative; it is not asserted to be literally measurable.</p>
+<h2 id="1-from-an-outer-measure-to-a-measure">1. From an outer measure to a measure</h2>
+<p>A sigma-algebra on a set <span class="math" data-tex="\(X\)">\(X\)</span> is a family containing <span class="math" data-tex="\(X\)">\(X\)</span> and closed under complements and countable unions. A measure on it is a function into <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span> taking the empty set to zero and countably additive on disjoint sets. An outer measure <span class="math" data-tex="\(m^*\)">\(m^*\)</span> is defined on every subset of <span class="math" data-tex="\(X\)">\(X\)</span>, is zero at the empty set, is monotone, and satisfies
+<span class="math math-display" data-tex="\[
+m^*\left(\bigcup_n A_n\right)\leq\sum_n m^*(A_n).
+\]">\[
+m^*\left(\bigcup_n A_n\right)\leq\sum_n m^*(A_n).
+\]</span></p>
+<p><strong>Theorem 1.1 (Carathéodory).</strong> The sets <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span> satisfying
+<span class="math math-display" data-tex="\[
+m^*(A)=m^*(A\cap E)+m^*(A\setminus E)\qquad(A\subseteq X)
+\tag{1.1}
+\]">\[
+m^*(A)=m^*(A\cap E)+m^*(A\setminus E)\qquad(A\subseteq X)
+\tag{1.1}
+\]</span>
+form a sigma-algebra. The restriction of <span class="math" data-tex="\(m^*\)">\(m^*\)</span> to it is a complete measure. To verify (1.1) it suffices to prove its greater-than-or-equal inequality for <span class="math" data-tex="\(A\)">\(A\)</span> with finite outer measure.</p>
+<p><em>Proof.</em> The other inequality is subadditivity; when <span class="math" data-tex="\(m^*(A)=\infty\)">\(m^*(A)=\infty\)</span>, the greater-than-or-equal inequality is automatic. Complements preserve the condition. If <span class="math" data-tex="\(E,F\)">\(E,F\)</span> satisfy it, split <span class="math" data-tex="\(A\)">\(A\)</span> first by <span class="math" data-tex="\(E\)">\(E\)</span>, and then split <span class="math" data-tex="\(A\setminus E\)">\(A\setminus E\)</span> by <span class="math" data-tex="\(F\)">\(F\)</span>. The sum of the first two resulting terms is at least <span class="math" data-tex="\(m^*(A\cap(E\cup F))\)">\(m^*(A\cap(E\cup F))\)</span>, by subadditivity. This proves the condition for <span class="math" data-tex="\(E\cup F\)">\(E\cup F\)</span>; differences and finite intersections follow.</p>
+<p>Let <span class="math" data-tex="\(E_n\)">\(E_n\)</span> be disjoint sets satisfying the condition, and put <span class="math" data-tex="\(E=\bigcup_nE_n\)">\(E=\bigcup_nE_n\)</span>. Repeated finite splitting gives
+<span class="math math-display" data-tex="\[
+m^*(A)=\sum_{n=1}^N m^*(A\cap E_n)+m^*\left(A\setminus\bigcup_{n=1}^N E_n\right)
+\geq\sum_{n=1}^N m^*(A\cap E_n)+m^*(A\setminus E).
+\]">\[
+m^*(A)=\sum_{n=1}^N m^*(A\cap E_n)+m^*\left(A\setminus\bigcup_{n=1}^N E_n\right)
+\geq\sum_{n=1}^N m^*(A\cap E_n)+m^*(A\setminus E).
+\]</span>
+Let <span class="math" data-tex="\(N\)">\(N\)</span> increase. Subadditivity gives <span class="math" data-tex="\(\sum_n m^*(A\cap E_n)\geq m^*(A\cap E)\)">\(\sum_n m^*(A\cap E_n)\geq m^*(A\cap E)\)</span>, so <span class="math" data-tex="\(E\)">\(E\)</span> satisfies the condition. An arbitrary countable union is reduced to this case by replacing <span class="math" data-tex="\(E_n\)">\(E_n\)</span> with <span class="math" data-tex="\(E_n\setminus\bigcup_{j&lt;n}E_j\)">\(E_n\setminus\bigcup_{j&lt;n}E_j\)</span>. Thus the family is a sigma-algebra. Taking <span class="math" data-tex="\(A=E\)">\(A=E\)</span> in the finite-splitting inequality proves countable additivity on the disjoint <span class="math" data-tex="\(E_n\)">\(E_n\)</span>, together with subadditivity. If <span class="math" data-tex="\(N\)">\(N\)</span> has outer measure zero, every subset of <span class="math" data-tex="\(N\)">\(N\)</span> satisfies (1.1): monotonicity makes the first term zero, while monotonicity and subadditivity force the second term to equal <span class="math" data-tex="\(m^*(A)\)">\(m^*(A)\)</span>. This also proves completeness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example.</strong> Assign to a subset of the real line the infimum of the sums of lengths of countable open interval covers. This is an outer measure: combine covers with errors <span class="math" data-tex="\(\varepsilon2^{-n}\)">\(\varepsilon2^{-n}\)</span> to prove subadditivity. Splitting every covering interval at a fixed point splits its total length between the two half-lines; enlarge the split intervals by errors whose sum is arbitrarily small. This gives the reverse Carathéodory inequality for each half-line. Half-lines generate the Borel sigma-algebra, so Theorem 1.1 makes every Borel set measurable.</p>
+<p>The measure of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> is <span class="math" data-tex="\(b-a\)">\(b-a\)</span>. An enlarged interval gives the upper bound. For any countable open cover of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, compactness selects a finite subcover. The sum of its interval lengths is at least <span class="math" data-tex="\(b-a\)">\(b-a\)</span>: arrange its endpoints in order, and each successive subinterval of <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span> is covered by at least one member. Summing lengths proves the lower bound. Singletons have measure zero, so the same length formula holds for open and half-open bounded intervals. Translating or dilating interval covers shows directly that <span class="math" data-tex="\(m^*(E+t)=m^*(E)\)">\(m^*(E+t)=m^*(E)\)</span> and <span class="math" data-tex="\(m^*(aE)=|a|m^*(E)\)">\(m^*(aE)=|a|m^*(E)\)</span> for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>, using the inverse operation for the reverse inequalities. The resulting Borel Lebesgue measure, or its completion, is therefore translation invariant. The next lesson instead constructs an outer measure using continuous functions on an arbitrary LCH space.</p>
+<h2 id="2-integration-and-convergence-without-countability-assumptions">2. Integration and convergence without countability assumptions</h2>
+<p>Fix a measure space <span class="math" data-tex="\((X,\Sigma,\mu)\)">\((X,\Sigma,\mu)\)</span>. A measurable real function is one for which <span class="math" data-tex="\(\{f&gt;t\}\in\Sigma\)">\(\{f&gt;t\}\in\Sigma\)</span> for every real <span class="math" data-tex="\(t\)">\(t\)</span>. Countable suprema and infima are measurable: use <span class="math" data-tex="\(\{\sup_n f_n&gt;t\}=\bigcup_n\{f_n&gt;t\}\)">\(\{\sup_n f_n&gt;t\}=\bigcup_n\{f_n&gt;t\}\)</span>, and negate for infima. Limits are measurable because <span class="math" data-tex="\(\liminf f_n=\sup_N\inf_{n\geq N}f_n\)">\(\liminf f_n=\sup_N\inf_{n\geq N}f_n\)</span>. Complex functions are measurable when their real and imaginary parts are.</p>
+<p>For a nonnegative simple function <span class="math" data-tex="\(s=\sum_{j=1}^r a_j1_{E_j}\)">\(s=\sum_{j=1}^r a_j1_{E_j}\)</span>, with disjoint measurable <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and <span class="math" data-tex="\(a_j\geq0\)">\(a_j\geq0\)</span>, define <span class="math" data-tex="\(\int s=\sum_j a_j\mu(E_j)\)">\(\int s=\sum_j a_j\mu(E_j)\)</span>, with <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span>. Refining two partitions proves independence of the presentation, monotonicity, and additivity for simple functions. For measurable <span class="math" data-tex="\(f\geq0\)">\(f\geq0\)</span>, define
+<span class="math math-display" data-tex="\[
+\int f=\sup\{\int s:0\leq s\leq f,\ s\text{ simple}\}.
+\]">\[
+\int f=\sup\{\int s:0\leq s\leq f,\ s\text{ simple}\}.
+\]</span>
+There are increasing simple <span class="math" data-tex="\(s_n\to f\)">\(s_n\to f\)</span>: truncate <span class="math" data-tex="\(f\)">\(f\)</span> at <span class="math" data-tex="\(n\)">\(n\)</span> and round down to multiples of <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. The truncation bounds and the refining dyadic grids ensure monotonicity.</p>
+<p>Countable additivity implies continuity from below: if <span class="math" data-tex="\(E_n\uparrow E\)">\(E_n\uparrow E\)</span>, write <span class="math" data-tex="\(E\)">\(E\)</span> as the disjoint union of <span class="math" data-tex="\(E_1,E_2\setminus E_1,\ldots\)">\(E_1,E_2\setminus E_1,\ldots\)</span>. Then <span class="math" data-tex="\(\mu(E_n)\uparrow\mu(E)\)">\(\mu(E_n)\uparrow\mu(E)\)</span>. If <span class="math" data-tex="\(\mu(E_1)&lt;\infty\)">\(\mu(E_1)&lt;\infty\)</span> and <span class="math" data-tex="\(E_n\downarrow E\)">\(E_n\downarrow E\)</span>, apply this to <span class="math" data-tex="\(E_1\setminus E_n\)">\(E_1\setminus E_n\)</span> to obtain continuity from above.</p>
+<p><strong>Theorem 2.1 (Monotone convergence).</strong> If <span class="math" data-tex="\(0\leq f_n\uparrow f\)">\(0\leq f_n\uparrow f\)</span> almost everywhere, then <span class="math" data-tex="\(\int f_n\uparrow\int f\)">\(\int f_n\uparrow\int f\)</span>.</p>
+<p><em>Proof.</em> Discard one measurable null set to obtain pointwise inequalities; changing values there changes none of the integrals. Monotonicity gives <span class="math" data-tex="\(\lim\int f_n\leq\int f\)">\(\lim\int f_n\leq\int f\)</span>. For simple <span class="math" data-tex="\(s\leq f\)">\(s\leq f\)</span> and <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the sets <span class="math" data-tex="\(A_n=\{f_n\geq ts\}\)">\(A_n=\{f_n\geq ts\}\)</span> increase and cover <span class="math" data-tex="\(\{s&gt;0\}\)">\(\{s&gt;0\}\)</span>. Consequently continuity from below on the finitely many level sets of <span class="math" data-tex="\(s\)">\(s\)</span> gives <span class="math" data-tex="\(\int s1_{A_n}\uparrow\int s\)">\(\int s1_{A_n}\uparrow\int s\)</span>. Since <span class="math" data-tex="\(f_n\geq ts1_{A_n}\)">\(f_n\geq ts1_{A_n}\)</span>, the limit of their integrals is at least <span class="math" data-tex="\(t\int s\)">\(t\int s\)</span>. Let <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span> and then take the supremum over <span class="math" data-tex="\(s\)">\(s\)</span>. The same argument works when <span class="math" data-tex="\(\int s=\infty\)">\(\int s=\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applying this to increasing simple approximations of <span class="math" data-tex="\(f,g\geq0\)">\(f,g\geq0\)</span> proves <span class="math" data-tex="\(\int(f+g)=\int f+\int g\)">\(\int(f+g)=\int f+\int g\)</span>. Applying it to partial sums proves
+<span class="math math-display" data-tex="\[
+\int\sum_n f_n=\sum_n\int f_n\qquad(f_n\geq0).
+\tag{2.1}
+\]">\[
+\int\sum_n f_n=\sum_n\int f_n\qquad(f_n\geq0).
+\tag{2.1}
+\]</span>
+These identities justify defining the integral of an integrable real function as <span class="math" data-tex="\(\int f^+-\int f^-\)">\(\int f^+-\int f^-\)</span>, and then treating complex functions by real and imaginary parts. Here integrable means <span class="math" data-tex="\(\int|f|&lt;\infty\)">\(\int|f|&lt;\infty\)</span>. Linearity follows from nonnegative additivity by moving all negative parts to the opposite side of the desired equality. Choosing a phase so that <span class="math" data-tex="\(e^{i\theta}\int f\)">\(e^{i\theta}\int f\)</span> is nonnegative real gives <span class="math" data-tex="\(|\int f|\leq\int|f|\)">\(|\int f|\leq\int|f|\)</span>.</p>
+<p><strong>Theorem 2.2 (Fatou and dominated convergence).</strong> For measurable <span class="math" data-tex="\(f_n\geq0\)">\(f_n\geq0\)</span>,
+<span class="math math-display" data-tex="\[
+\int\liminf_n f_n\leq\liminf_n\int f_n.
+\]">\[
+\int\liminf_n f_n\leq\liminf_n\int f_n.
+\]</span>
+If complex measurable <span class="math" data-tex="\(u_n\to u\)">\(u_n\to u\)</span> almost everywhere and <span class="math" data-tex="\(|u_n|\leq g\)">\(|u_n|\leq g\)</span> almost everywhere for one integrable <span class="math" data-tex="\(g\geq0\)">\(g\geq0\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> is integrable and <span class="math" data-tex="\(\int|u_n-u|\to0\)">\(\int|u_n-u|\to0\)</span>. In particular <span class="math" data-tex="\(\int u_n\to\int u\)">\(\int u_n\to\int u\)</span>.</p>
+<p><em>Proof.</em> The functions <span class="math" data-tex="\(v_N=\inf_{n\geq N}f_n\)">\(v_N=\inf_{n\geq N}f_n\)</span> increase to the liminf, and <span class="math" data-tex="\(\int v_N\leq\inf_{n\geq N}\int f_n\)">\(\int v_N\leq\inf_{n\geq N}\int f_n\)</span>. Monotone convergence proves Fatou. For the second assertion, <span class="math" data-tex="\(|u|\leq g\)">\(|u|\leq g\)</span> almost everywhere. Fatou applied to the nonnegative functions <span class="math" data-tex="\(2g-|u_n-u|\)">\(2g-|u_n-u|\)</span>, whose limit is <span class="math" data-tex="\(2g\)">\(2g\)</span>, gives
+<span class="math math-display" data-tex="\[
+2\int g\leq2\int g-\limsup_n\int|u_n-u|.
+\]">\[
+2\int g\leq2\int g-\limsup_n\int|u_n-u|.
+\]</span>
+All integrals here are finite, so the limsup is zero. The integral inequality proved above gives the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example.</strong> On an uncountable set with counting measure, an integrable function has countable support: for each positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, only finitely many points can have <span class="math" data-tex="\(|f|&gt;1/n\)">\(|f|&gt;1/n\)</span>. Nevertheless the whole space is not sigma-finite. Theorems 2.1 and 2.2 remain valid. A later interchange of integrals will need a separate theorem; convergence alone does not supply it.</p>
+<h2 id="6-one-variable-integral-identities">6. One-variable integral identities</h2>
+<p>The explicit Haar and arithmetic examples use elementary calculus. Here are the integral identities needed, with their proofs, so no general multidimensional change-of-variables theorem is implicit.</p>
+<p><strong>Lemma 6.1.</strong> If <span class="math" data-tex="\(h\)">\(h\)</span> is continuous on a compact interval, its Lebesgue integral equals its Riemann integral. For <span class="math" data-tex="\(H\in C^1([a,b])\)">\(H\in C^1([a,b])\)</span>,
+<span class="math" data-tex="\(\int_a^b H&#x27;(t)\,dt=H(b)-H(a)\)">\(\int_a^b H&#x27;(t)\,dt=H(b)-H(a)\)</span>.
+If <span class="math" data-tex="\(\phi\in C^1([a,b])\)">\(\phi\in C^1([a,b])\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> is continuous on an interval containing its image, then
+<span class="math math-display" data-tex="\[
+ \int_{\phi(a)}^{\phi(b)}h(u)\,du
+ =\int_a^b h(\phi(t))\phi&#x27;(t)\,dt.
+ \tag{6.1}
+\]">\[
+ \int_{\phi(a)}^{\phi(b)}h(u)\,du
+ =\int_a^b h(\phi(t))\phi&#x27;(t)\,dt.
+ \tag{6.1}
+\]</span>
+In particular, the integral of a compactly supported continuous derivative on the real line is zero. Differentiating a parameter integral is valid when its difference quotients converge pointwise and have a common integrable bound.</p>
+<p><em>Proof.</em> Recall the elementary differential facts involved. A continuous function on a compact interval attains its extrema. If its endpoints agree, either it is constant or one extremum occurs in the interior, where its derivative is zero: the left and right difference quotients have opposite weak signs. This is Rolle's theorem. Subtract the line joining the endpoint values to obtain the mean value theorem. The chain rule follows by substituting <span class="math" data-tex="\(\phi(t+h)-\phi(t)=\phi&#x27;(t)h+o(h)\)">\(\phi(t+h)-\phi(t)=\phi&#x27;(t)h+o(h)\)</span> into the corresponding first-order expansion of the outer function; differentiability makes the inner increment <span class="math" data-tex="\(O(h)\)">\(O(h)\)</span>.</p>
+<p>Uniform continuity makes the difference between the upper and lower step functions on a sufficiently fine partition arbitrarily small in integral; both bound <span class="math" data-tex="\(h\)">\(h\)</span>. Their Lebesgue integrals are the same interval-length sums that define the Riemann integral. For <span class="math" data-tex="\(H\)">\(H\)</span>, the mean value theorem on each partition interval expresses its increment as <span class="math" data-tex="\(H&#x27;(\xi)\)">\(H&#x27;(\xi)\)</span> times the interval length. Summing telescopes to <span class="math" data-tex="\(H(b)-H(a)\)">\(H(b)-H(a)\)</span>; uniform continuity of <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span> makes the sums converge to its integral.</p>
+<p>Define <span class="math" data-tex="\(A(v)=\int_{v_0}^v h(u)\,du\)">\(A(v)=\int_{v_0}^v h(u)\,du\)</span>, with oriented integrals. The difference quotient of <span class="math" data-tex="\(A\)">\(A\)</span> is an interval average of <span class="math" data-tex="\(h\)">\(h\)</span>, tending to <span class="math" data-tex="\(h(v)\)">\(h(v)\)</span> by continuity. Thus <span class="math" data-tex="\((A\circ\phi)&#x27;=(h\circ\phi)\phi&#x27;\)">\((A\circ\phi)&#x27;=(h\circ\phi)\phi&#x27;\)</span>. Apply the preceding identity to <span class="math" data-tex="\(A\circ\phi\)">\(A\circ\phi\)</span> to obtain (6.1). The zero-integral assertion follows by choosing endpoints outside the support. Finally apply dominated convergence, Theorem 2.2, to the difference quotients to justify the parameter derivative. ∎</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="../../">Course contents</a><span></span></nav>
+<p class="small source-link"></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

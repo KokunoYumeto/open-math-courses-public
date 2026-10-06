@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variational symmetries and Noether&#x27;s first theorem · Symmetries and conservation laws</title>
+<meta name="description" content="A lesson of the course Symmetries and conservation laws. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-SYM/NOE-SYM-01.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Symmetries and conservation laws</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 3</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="variational-symmetries-and-noether-s-first-theorem">Variational symmetries and Noether's first theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Public domain (CC0).</em></p>
+<p>Why should a symmetry produce a conserved quantity? A variation of an action has two parts: the equations of motion, multiplied by the variation, and a boundary term. If a symmetry changes the action only through its boundary, those two boundary terms differ by a current whose divergence vanishes on solutions. The useful statement is an identity before any equations are imposed.</p>
+<p>We assume <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B50">Multivariable Calculus</a>, including differentiation and integration by parts. The fundamental lemma is proved in §2. Basic references are Emmy Noether's <em>Invariant variational problems</em>, Halder, Paliathanasis and Leach's <em>Noether's theorem and symmetry</em>, and Compère's <em>Symmetries and conservation laws in Lagrangian gauge theories</em>. The geometric prolongation formula is available in <a href="../LIE-TG/LIE-TG-09.html#2-the-prolongation-formula">Prolongation, differential invariants and the projective group</a>. We use its characteristic form, including differential functions that depend on derivatives.</p>
+<h2 id="1-the-boundary-term-that-makes-the-theorem-work">1. The boundary term that makes the theorem work</h2>
+<p>Let <span class="math" data-tex="$x=(x^1,\ldots,x^n)$">$x=(x^1,\ldots,x^n)$</span> range over an open set, and let <span class="math" data-tex="$u=(u^1,\ldots,u^q)$">$u=(u^1,\ldots,u^q)$</span>. A differential function is a smooth function of <span class="math" data-tex="$x$">$x$</span> and finitely many derivatives <span class="math" data-tex="$u^\alpha_J$">$u^\alpha_J$</span>. Here <span class="math" data-tex="$J$">$J$</span> is a symmetric multi-index, each multi-index occurs once, and <span class="math" data-tex="$u^\alpha_\varnothing=u^\alpha$">$u^\alpha_\varnothing=u^\alpha$</span>. Work on an open jet domain large enough for each expression below. Put</p>
+<span class="math math-display" data-tex="$$
+D_i=\frac{\partial}{\partial x^i}+\sum_{\alpha,J}u^\alpha_{J+i}\frac{\partial}{\partial u^\alpha_J},
+\qquad D_J=D_1^{J_1}\cdots D_n^{J_n}.
+$$">$$
+D_i=\frac{\partial}{\partial x^i}+\sum_{\alpha,J}u^\alpha_{J+i}\frac{\partial}{\partial u^\alpha_J},
+\qquad D_J=D_1^{J_1}\cdots D_n^{J_n}.
+$$</span>
+<p>Only finitely many terms act on a particular function. These derivatives commute. On the jet of a smooth graph they are its ordinary derivatives. Every finite jet is realized by a polynomial, so identities checked for all graphs are identities of differential functions.</p>
+<p>The evolutionary variation with characteristic <span class="math" data-tex="$Q=(Q^1,\ldots,Q^q)$">$Q=(Q^1,\ldots,Q^q)$</span> acts by</p>
+<span class="math math-display" data-tex="$$
+\operatorname{pr}v_Q(F)=\sum_{\alpha,J}D_JQ^\alpha\frac{\partial F}{\partial u^\alpha_J}.
+\tag{1.1}
+$$">$$
+\operatorname{pr}v_Q(F)=\sum_{\alpha,J}D_JQ^\alpha\frac{\partial F}{\partial u^\alpha_J}.
+\tag{1.1}
+$$</span>
+<p>This defines an infinitesimal derivation, even when <span class="math" data-tex="$Q$">$Q$</span> depends on jets. We do not assume its flow is a point transformation or that it integrates to a finite-order local group.</p>
+<p>For a Lagrangian density <span class="math" data-tex="$L\,d^nx$">$L\,d^nx$</span>, set</p>
+<span class="math math-display" data-tex="$$
+E_\alpha(L)=\sum_J(-1)^{|J|}D_J\frac{\partial L}{\partial u^\alpha_J},
+\qquad \operatorname{Div}P=D_iP^i.
+\tag{1.2}
+$$">$$
+E_\alpha(L)=\sum_J(-1)^{|J|}D_J\frac{\partial L}{\partial u^\alpha_J},
+\qquad \operatorname{Div}P=D_iP^i.
+\tag{1.2}
+$$</span>
+<p><strong>Theorem 1.1 (first variation, with every boundary term).</strong> For every finite-order <span class="math" data-tex="$L,Q$">$L,Q$</span>,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{pr}v_Q(L)=Q^\alpha E_\alpha(L)+D_iP^i(Q,L).
+\tag{1.3}
+$$">$$
+\operatorname{pr}v_Q(L)=Q^\alpha E_\alpha(L)+D_iP^i(Q,L).
+\tag{1.3}
+$$</span>
+<p>An explicit choice of <span class="math" data-tex="$P$">$P$</span> is as follows. For each nonempty multi-index <span class="math" data-tex="$J$">$J$</span>, choose the nondecreasing word <span class="math" data-tex="$(i_1,\ldots,i_r)$">$(i_1,\ldots,i_r)$</span> containing <span class="math" data-tex="$J_i$">$J_i$</span> copies of <span class="math" data-tex="$i$">$i$</span>. With <span class="math" data-tex="$a_{\alpha J}=\partial L/\partial u^\alpha_J$">$a_{\alpha J}=\partial L/\partial u^\alpha_J$</span>, put</p>
+<span class="math math-display" data-tex="$$
+P^i=\sum_{\alpha,J\ne\varnothing}\sum_{s=1}^{r}
+\delta^i_{i_s}(-1)^{s-1}
+(D_{i_1}\cdots D_{i_{s-1}}a_{\alpha J})
+(D_{i_{s+1}}\cdots D_{i_r}Q^\alpha).
+\tag{1.4}
+$$">$$
+P^i=\sum_{\alpha,J\ne\varnothing}\sum_{s=1}^{r}
+\delta^i_{i_s}(-1)^{s-1}
+(D_{i_1}\cdots D_{i_{s-1}}a_{\alpha J})
+(D_{i_{s+1}}\cdots D_{i_r}Q^\alpha).
+\tag{1.4}
+$$</span>
+<p>An empty string of derivatives is the identity. The order of the word selects a boundary term; it does not change the Euler expression.</p>
+<p><em>Proof.</em> For any commuting derivatives and any <span class="math" data-tex="$a,Q$">$a,Q$</span>, the product rule telescopes to</p>
+<span class="math math-display" data-tex="$$
+aD_{i_1}\cdots D_{i_r}Q-(-1)^rQD_{i_r}\cdots D_{i_1}a
+=\sum_{s=1}^rD_{i_s}\left[(-1)^{s-1}(D_{i_1}\cdots D_{i_{s-1}}a)(D_{i_{s+1}}\cdots D_{i_r}Q)\right].
+$$">$$
+aD_{i_1}\cdots D_{i_r}Q-(-1)^rQD_{i_r}\cdots D_{i_1}a
+=\sum_{s=1}^rD_{i_s}\left[(-1)^{s-1}(D_{i_1}\cdots D_{i_{s-1}}a)(D_{i_{s+1}}\cdots D_{i_r}Q)\right].
+$$</span>
+<p>The derivative falling on the first factor of one summand cancels the derivative falling on the second factor of the next. Only the two displayed end terms survive. Apply this to each term of (1.1), and include the term <span class="math" data-tex="$J=\varnothing$">$J=\varnothing$</span> directly. This gives (1.2)--(1.4). Every sum is finite. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$L(x,u,u_i)$">$L(x,u,u_i)$</span>, the formula is just <span class="math" data-tex="$P^i=L_{u^\alpha_i}Q^\alpha$">$P^i=L_{u^\alpha_i}Q^\alpha$</span>. For <span class="math" data-tex="$L=\tfrac12u_{xx}^2$">$L=\tfrac12u_{xx}^2$</span> it gives</p>
+<span class="math math-display" data-tex="$$
+E(L)=u_{xxxx},\qquad P=u_{xx}D_xQ-u_{xxx}Q.
+$$">$$
+E(L)=u_{xxxx},\qquad P=u_{xx}D_xQ-u_{xxx}Q.
+$$</span>
+<p>Indeed <span class="math" data-tex="$u_{xx}D_x^2Q=Qu_{xxxx}+D_x(u_{xx}D_xQ-u_{xxx}Q)$">$u_{xx}D_x^2Q=Qu_{xxxx}+D_x(u_{xx}D_xQ-u_{xxx}Q)$</span>. A boundary condition for a second-order action must control the variation and its first derivative if this boundary term is to vanish.</p>
+<h2 id="2-equations-of-motion-and-divergences">2. Equations of motion and divergences</h2>
+<p><strong>Lemma 2.1 (fundamental lemma).</strong> If a continuous real function <span class="math" data-tex="$f$">$f$</span> on an open set satisfies <span class="math" data-tex="$\int f h\,d^nx=0$">$\int f h\,d^nx=0$</span> for every compactly supported smooth <span class="math" data-tex="$h$">$h$</span>, then <span class="math" data-tex="$f=0$">$f=0$</span>. Indeed, if <span class="math" data-tex="$f(x_0)&gt;0$">$f(x_0)&gt;0$</span>, continuity gives a ball on which <span class="math" data-tex="$f&gt;0$">$f&gt;0$</span>; choose a nonzero nonnegative smooth bump supported in that ball, obtaining a strictly positive integral. Such a bump is, after translation and scaling, <span class="math" data-tex="$h(x)=\exp(-1/(1-|x|^2))$">$h(x)=\exp(-1/(1-|x|^2))$</span> for <span class="math" data-tex="$|x|&lt;1$">$|x|&lt;1$</span> and zero otherwise. Its derivatives tend to zero at the boundary, so it is smooth. The case <span class="math" data-tex="$f(x_0)&lt;0$">$f(x_0)&lt;0$</span> is identical with the sign reversed. Apply this argument to each component, and to real and imaginary parts for complex fields. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For a smooth graph on a relatively compact domain <span class="math" data-tex="$\Omega$">$\Omega$</span>, vary <span class="math" data-tex="$u$">$u$</span> by <span class="math" data-tex="$u+\varepsilon h$">$u+\varepsilon h$</span> with <span class="math" data-tex="$h$">$h$</span> compactly supported. Equation (1.3), now with <span class="math" data-tex="$Q=h(x)$">$Q=h(x)$</span>, gives</p>
+<span class="math math-display" data-tex="$$
+\left.\frac{d}{d\varepsilon}\right|_0\int_\Omega L(j^ku+\varepsilon j^kh)\,d^nx
+=\int_\Omega h^\alpha E_\alpha(L)(j^{2k}u)\,d^nx.
+$$">$$
+\left.\frac{d}{d\varepsilon}\right|_0\int_\Omega L(j^ku+\varepsilon j^kh)\,d^nx
+=\int_\Omega h^\alpha E_\alpha(L)(j^{2k}u)\,d^nx.
+$$</span>
+<p>Thus stationarity for all compactly supported variations is equivalent to <span class="math" data-tex="$E_\alpha(L)=0$">$E_\alpha(L)=0$</span>. This equivalence uses the fundamental lemma componentwise. It gives local equations without fixing a boundary-value problem.</p>
+<p><strong>Proposition 2.1.</strong> <span class="math" data-tex="$E_\alpha(D_iF)=0$">$E_\alpha(D_iF)=0$</span> for every finite-order differential function <span class="math" data-tex="$F$">$F$</span>.</p>
+<p><em>Proof.</em> The integral of <span class="math" data-tex="$D_iF$">$D_iF$</span> is a boundary integral on every graph. Its first variation under a compactly supported <span class="math" data-tex="$h$">$h$</span> is zero, since all derivatives of <span class="math" data-tex="$h$">$h$</span> vanish near the boundary. The preceding calculation gives <span class="math" data-tex="$\int h^\alpha E_\alpha(D_iF)=0$">$\int h^\alpha E_\alpha(D_iF)=0$</span> for every <span class="math" data-tex="$h$">$h$</span>, hence the Euler expression vanishes on every graph. Polynomial realization of each sufficiently high finite jet proves that it vanishes identically. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This also proves <span class="math" data-tex="$E_\alpha(\operatorname{Div}F)=0$">$E_\alpha(\operatorname{Div}F)=0$</span>. The converse is local and will be proved in the later lesson <em>The formal calculus of variations and differential invariants</em>.</p>
+<h2 id="3-moving-the-graph-and-moving-its-coordinates">3. Moving the graph and moving its coordinates</h2>
+<p>Write a generator as <span class="math" data-tex="$v=\xi^i\partial_{x^i}+\phi^\alpha\partial_{u^\alpha}$">$v=\xi^i\partial_{x^i}+\phi^\alpha\partial_{u^\alpha}$</span> and set</p>
+<span class="math math-display" data-tex="$$
+Q^\alpha=\phi^\alpha-\xi^iu_i^\alpha.
+$$">$$
+Q^\alpha=\phi^\alpha-\xi^iu_i^\alpha.
+$$</span>
+<p>The prolongation formula says that its coefficient at <span class="math" data-tex="$u_J^\alpha$">$u_J^\alpha$</span> is <span class="math" data-tex="$D_JQ^\alpha+\xi^iu^\alpha_{J+i}$">$D_JQ^\alpha+\xi^iu^\alpha_{J+i}$</span>. Consequently, as derivations on differential functions,</p>
+<span class="math math-display" data-tex="$$
+\operatorname{pr}v=\operatorname{pr}v_Q+\xi^iD_i.
+$$">$$
+\operatorname{pr}v=\operatorname{pr}v_Q+\xi^iD_i.
+$$</span>
+<p>For point transformations this is the infinitesimal action on jets. The same formula defines a generalized infinitesimal action for differential <span class="math" data-tex="$\xi,\phi$">$\xi,\phi$</span>. Multiplying by the volume density adds <span class="math" data-tex="$LD_i\xi^i$">$LD_i\xi^i$</span>, so</p>
+<span class="math math-display" data-tex="$$
+\operatorname{pr}v(L)+LD_i\xi^i
+=\operatorname{pr}v_Q(L)+D_i(L\xi^i).
+\tag{3.1}
+$$">$$
+\operatorname{pr}v(L)+LD_i\xi^i
+=\operatorname{pr}v_Q(L)+D_i(L\xi^i).
+\tag{3.1}
+$$</span>
+<p>A <strong>divergence symmetry</strong> satisfies the left side <span class="math" data-tex="$=D_iB^i$">$=D_iB^i$</span> identically, with <span class="math" data-tex="$B$">$B$</span> a finite-order differential function. Strict variational invariance is the special case <span class="math" data-tex="$B=0$">$B=0$</span>. Strict invariance depends on the chosen density representative; adding a divergence preserves the action equations and the class of divergence symmetries.</p>
+<p><strong>Theorem 3.1 (Noether's first theorem and its identity-level converse).</strong> A divergence symmetry has current</p>
+<span class="math math-display" data-tex="$$
+C^i=P^i(Q,L)+L\xi^i-B^i,
+\qquad D_iC^i=-Q^\alpha E_\alpha(L).
+\tag{3.2}
+$$">$$
+C^i=P^i(Q,L)+L\xi^i-B^i,
+\qquad D_iC^i=-Q^\alpha E_\alpha(L).
+\tag{3.2}
+$$</span>
+<p>In particular <span class="math" data-tex="$D_iC^i=0$">$D_iC^i=0$</span> on every smooth solution. Conversely, if <span class="math" data-tex="$Q^\alpha E_\alpha(L)=D_iR^i$">$Q^\alpha E_\alpha(L)=D_iR^i$</span> identically, then <span class="math" data-tex="$v_Q$">$v_Q$</span> is a divergence symmetry, with <span class="math" data-tex="$B=R+P$">$B=R+P$</span>.</p>
+<p><em>Proof.</em> Substitute (1.3) into (3.1) and rearrange. For the converse, (1.3) becomes <span class="math" data-tex="$\operatorname{pr}v_Q(L)=\operatorname{Div}(R+P)$">$\operatorname{pr}v_Q(L)=\operatorname{Div}(R+P)$</span>. No equations have been imposed in either step. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Our current sign is fixed by (3.2). Its negative is equally conserved, but every example below identifies the sign it uses. Derivative-dependent <span class="math" data-tex="$Q$">$Q$</span> and nonzero <span class="math" data-tex="$B$">$B$</span> are essential, rather than optional extensions of the identity.</p>
+<h2 id="4-mechanics-four-familiar-integrals-and-one-hidden-symmetry">4. Mechanics: four familiar integrals and one hidden symmetry</h2>
+<p>Let <span class="math" data-tex="$q(t)\in\mathbb R^d$">$q(t)\in\mathbb R^d$</span>, <span class="math" data-tex="$v=\dot q$">$v=\dot q$</span>, and</p>
+<span class="math math-display" data-tex="$$
+L=\frac m2|v|^2-V(q),\qquad p=mv,\qquad E(L)=-\nabla V-m\dot v.
+$$">$$
+L=\frac m2|v|^2-V(q),\qquad p=mv,\qquad E(L)=-\nabla V-m\dot v.
+$$</span>
+<p>Here the letter <span class="math" data-tex="$E(L)$">$E(L)$</span> denotes the Euler expression; mechanical energy will be denoted <span class="math" data-tex="$H$">$H$</span>. For a first-order mechanical Lagrangian, <span class="math" data-tex="$P=p\cdot Q$">$P=p\cdot Q$</span>.</p>
+<p><strong>Time translation.</strong> Use <span class="math" data-tex="$\xi=-1,\phi=0$">$\xi=-1,\phi=0$</span>, so <span class="math" data-tex="$Q=v$">$Q=v$</span> and <span class="math" data-tex="$B=0$">$B=0$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+C=p\cdot v-L=H=\frac m2|v|^2+V(q),\qquad D_tH=-v\cdot E(L).
+$$">$$
+C=p\cdot v-L=H=\frac m2|v|^2+V(q),\qquad D_tH=-v\cdot E(L).
+$$</span>
+<p>Direct differentiation gives <span class="math" data-tex="$D_tH=v\cdot(m\dot v+\nabla V)$">$D_tH=v\cdot(m\dot v+\nabla V)$</span>, confirming the same sign. For a general <span class="math" data-tex="$L(t,q,v)$">$L(t,q,v)$</span>, <span class="math" data-tex="$H=v\cdot L_v-L$">$H=v\cdot L_v-L$</span> instead satisfies</p>
+<span class="math math-display" data-tex="$$
+D_tH=-v\cdot E(L)-L_t,
+\qquad D_tH=-L_t\quad\text{on solutions}.
+\tag{4.1}
+$$">$$
+D_tH=-v\cdot E(L)-L_t,
+\qquad D_tH=-L_t\quad\text{on solutions}.
+\tag{4.1}
+$$</span>
+<p>The derivative <span class="math" data-tex="$L_t$">$L_t$</span> here is the explicit partial derivative, not a total derivative along the trajectory.</p>
+<p><strong>Spatial translation.</strong> For a constant vector <span class="math" data-tex="$b$">$b$</span>, use <span class="math" data-tex="$\xi=0,\phi=b$">$\xi=0,\phi=b$</span>. It is a symmetry if <span class="math" data-tex="$b\cdot\nabla V=0$">$b\cdot\nabla V=0$</span>, and <span class="math" data-tex="$C=b\cdot p$">$C=b\cdot p$</span>. The direct check is <span class="math" data-tex="$D_t(b\cdot p)=-b\cdot\nabla V=0$">$D_t(b\cdot p)=-b\cdot\nabla V=0$</span> on solutions. A translation need only hold in the specified direction.</p>
+<p><strong>Rotation.</strong> In three dimensions take <span class="math" data-tex="$\phi=b\times q$">$\phi=b\times q$</span>, with <span class="math" data-tex="$V(q)=W(|q|)$">$V(q)=W(|q|)$</span>. Both the kinetic and potential variations vanish: <span class="math" data-tex="$v\cdot(b\times v)=0$">$v\cdot(b\times v)=0$</span> and <span class="math" data-tex="$q\cdot(b\times q)=0$">$q\cdot(b\times q)=0$</span>. Thus <span class="math" data-tex="$B=0$">$B=0$</span> and</p>
+<span class="math math-display" data-tex="$$
+C=p\cdot(b\times q)=b\cdot(q\times p).
+$$">$$
+C=p\cdot(b\times q)=b\cdot(q\times p).
+$$</span>
+<p>On solutions <span class="math" data-tex="$D_t(q\times p)=v\times mv+q\times(-W&#x27;(r)q/r)=0$">$D_t(q\times p)=v\times mv+q\times(-W&#x27;(r)q/r)=0$</span>. In dimension <span class="math" data-tex="$d$">$d$</span>, each skew matrix <span class="math" data-tex="$A$">$A$</span> gives <span class="math" data-tex="$p\cdot Aq$">$p\cdot Aq$</span>; these are the components <span class="math" data-tex="$q_ip_j-q_jp_i$">$q_ip_j-q_jp_i$</span> of angular momentum.</p>
+<p><strong>Galilean boost.</strong> For the free particle use <span class="math" data-tex="$\phi=-tb$">$\phi=-tb$</span>, <span class="math" data-tex="$\xi=0$">$\xi=0$</span>. Then <span class="math" data-tex="$\delta L=-m b\cdot v=D_t(-m b\cdot q)$">$\delta L=-m b\cdot v=D_t(-m b\cdot q)$</span>, so <span class="math" data-tex="$B=-m b\cdot q$">$B=-m b\cdot q$</span>. The current is</p>
+<span class="math math-display" data-tex="$$
+C=b\cdot(mq-tp).
+\tag{4.2}
+$$">$$
+C=b\cdot(mq-tp).
+\tag{4.2}
+$$</span>
+<p>It is a divergence symmetry, but is not strictly invariant as a differential function when <span class="math" data-tex="$b\ne0$">$b\ne0$</span>. The identity is <span class="math" data-tex="$D_tC=tm b\cdot\dot v$">$D_tC=tm b\cdot\dot v$</span>; it vanishes for <span class="math" data-tex="$\dot v=0$">$\dot v=0$</span>. For particles of masses <span class="math" data-tex="$m_a$">$m_a$</span>, summing (4.2) yields <span class="math" data-tex="$M q_{\rm cm}-tP$">$M q_{\rm cm}-tP$</span> for any translation-invariant interacting system that is invariant under simultaneous boosts. Internal relative-position potentials have that invariance, and their total internal force vanishes.</p>
+<p><strong>Kepler's hidden symmetry.</strong> Take <span class="math" data-tex="$m=1$">$m=1$</span>, <span class="math" data-tex="$k&gt;0$">$k&gt;0$</span>, <span class="math" data-tex="$q\ne0$">$q\ne0$</span>, and</p>
+<span class="math math-display" data-tex="$$
+L=\frac12|v|^2+\frac{k}{r},\qquad r=|q|,\qquad E(L)=-a-\frac{kq}{r^3},\quad a=\dot v.
+$$">$$
+L=\frac12|v|^2+\frac{k}{r},\qquad r=|q|,\qquad E(L)=-a-\frac{kq}{r^3},\quad a=\dot v.
+$$</span>
+<p>Define <span class="math" data-tex="$\ell=q\times v$">$\ell=q\times v$</span> and the Runge--Lenz vector</p>
+<span class="math math-display" data-tex="$$
+A=v\times\ell-\frac{kq}{r}
+=|v|^2q-(q\cdot v)v-\frac{kq}{r}.
+\tag{4.3}
+$$">$$
+A=v\times\ell-\frac{kq}{r}
+=|v|^2q-(q\cdot v)v-\frac{kq}{r}.
+\tag{4.3}
+$$</span>
+<p>For each constant <span class="math" data-tex="$b$">$b$</span>, put</p>
+<span class="math math-display" data-tex="$$
+Q_b=2(b\cdot q)v-(q\cdot v)b-(b\cdot v)q,
+\qquad B_b=(b\cdot q)|v|^2-(q\cdot v)(b\cdot v)+\frac{k\,b\cdot q}{r}.
+\tag{4.4}
+$$">$$
+Q_b=2(b\cdot q)v-(q\cdot v)b-(b\cdot v)q,
+\qquad B_b=(b\cdot q)|v|^2-(q\cdot v)(b\cdot v)+\frac{k\,b\cdot q}{r}.
+\tag{4.4}
+$$</span>
+<p>This is a derivative-dependent characteristic. Its current is exactly <span class="math" data-tex="$b\cdot A$">$b\cdot A$</span>, since</p>
+<span class="math math-display" data-tex="$$
+v\cdot Q_b-B_b=b\cdot A.
+$$">$$
+v\cdot Q_b-B_b=b\cdot A.
+$$</span>
+<p>To prove the symmetry without assuming the equations, differentiate (4.3):</p>
+<span class="math math-display" data-tex="$$
+D_tA=2(v\cdot a)q-(q\cdot a)v-(q\cdot v)a
+-\frac{kv}{r}+\frac{kq(q\cdot v)}{r^3}.
+$$">$$
+D_tA=2(v\cdot a)q-(q\cdot a)v-(q\cdot v)a
+-\frac{kv}{r}+\frac{kq(q\cdot v)}{r^3}.
+$$</span>
+<p>Contracting with <span class="math" data-tex="$b$">$b$</span> gives</p>
+<span class="math math-display" data-tex="$$
+D_t(b\cdot A)=Q_b\cdot\left(a+\frac{kq}{r^3}\right)=-Q_b\cdot E(L).
+\tag{4.5}
+$$">$$
+D_t(b\cdot A)=Q_b\cdot\left(a+\frac{kq}{r^3}\right)=-Q_b\cdot E(L).
+\tag{4.5}
+$$</span>
+<p>Equation (1.3) then yields <span class="math" data-tex="$\operatorname{pr}v_{Q_b}(L)=D_tB_b$">$\operatorname{pr}v_{Q_b}(L)=D_tB_b$</span> identically. Thus (4.4) is an explicit generalized divergence symmetry. Substitution of <span class="math" data-tex="$a=-kq/r^3$">$a=-kq/r^3$</span> into the displayed derivative proves conservation directly. The collision point is excluded from both statements.</p>
+<p>For a nonradial orbit <span class="math" data-tex="$A\cdot q=|\ell|^2-kr$">$A\cdot q=|\ell|^2-kr$</span>. With the polar angle <span class="math" data-tex="$\theta$">$\theta$</span> measured from <span class="math" data-tex="$A$">$A$</span>, this becomes</p>
+<span class="math math-display" data-tex="$$
+r=\frac{|\ell|^2/k}{1+(|A|/k)\cos\theta}.
+\tag{4.6}
+$$">$$
+r=\frac{|\ell|^2/k}{1+(|A|/k)\cos\theta}.
+\tag{4.6}
+$$</span>
+<figure><img src="figures/kepler-direction.png" alt="A computed Kepler ellipse with its force centre at the focus and the Runge-Lenz vector pointing toward periapsis." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 4.1. A numerical example of (4.6), with k = 1, squared angular momentum 0.64 and eccentricity 0.6. The arrow gives the direction of A; its drawn length is schematic. Editable vector figure.</em></p>
+<p>The vector fixes the direction of periapsis as well as the eccentricity. There are relations <span class="math" data-tex="$A\cdot\ell=0$">$A\cdot\ell=0$</span> and <span class="math" data-tex="$|A|^2=k^2+2H|\ell|^2$">$|A|^2=k^2+2H|\ell|^2$</span>; conserved components need not be functionally independent. The zero-angular-momentum case is radial and is not described by polar conic coordinates.</p>
+<h2 id="5-fields-energy-transport-and-phase-charge">5. Fields: energy transport and phase charge</h2>
+<p>For the real wave Lagrangian on <span class="math" data-tex="$(t,x)$">$(t,x)$</span>,</p>
+<span class="math math-display" data-tex="$$
+L=\frac12(u_t^2-u_x^2),\qquad E(L)=-u_{tt}+u_{xx},
+$$">$$
+L=\frac12(u_t^2-u_x^2),\qquad E(L)=-u_{tt}+u_{xx},
+$$</span>
+<p>time translation with <span class="math" data-tex="$\xi^t=-1$">$\xi^t=-1$</span> gives <span class="math" data-tex="$Q=u_t$">$Q=u_t$</span> and</p>
+<span class="math math-display" data-tex="$$
+C^t=u_t^2-L=\frac12(u_t^2+u_x^2),\qquad C^x=-u_xu_t.
+\tag{5.1}
+$$">$$
+C^t=u_t^2-L=\frac12(u_t^2+u_x^2),\qquad C^x=-u_xu_t.
+\tag{5.1}
+$$</span>
+<p>Direct differentiation gives <span class="math" data-tex="$D_tC^t+D_xC^x=u_t(u_{tt}-u_{xx})=-QE(L)$">$D_tC^t+D_xC^x=u_t(u_{tt}-u_{xx})=-QE(L)$</span>. Thus energy crosses the boundary at flux <span class="math" data-tex="$-u_tu_x$">$-u_tu_x$</span>. On an interval <span class="math" data-tex="$[a,b]$">$[a,b]$</span>,</p>
+<span class="math math-display" data-tex="$$
+\frac{d}{dt}\int_a^bC^t\,dx=C^x(t,a)-C^x(t,b).
+$$">$$
+\frac{d}{dt}\int_a^bC^t\,dx=C^x(t,a)-C^x(t,b).
+$$</span>
+<p>Energy is constant only when the net flux vanishes, for example for periodic data, a stationary Dirichlet boundary, or sufficient decay on the whole line.</p>
+<p>For <span class="math" data-tex="$n$">$n$</span> independent variables and a translation-invariant first-order <span class="math" data-tex="$L$">$L$</span>, the generator <span class="math" data-tex="$-\partial_{x^j}$">$-\partial_{x^j}$</span> has <span class="math" data-tex="$Q=u_j$">$Q=u_j$</span>. Its current is</p>
+<span class="math math-display" data-tex="$$
+T^i{}_j=L_{u_i^\alpha}u_j^\alpha-\delta^i_jL,
+\qquad D_iT^i{}_j=-u_j^\alpha E_\alpha(L).
+\tag{5.2}
+$$">$$
+T^i{}_j=L_{u_i^\alpha}u_j^\alpha-\delta^i_jL,
+\qquad D_iT^i{}_j=-u_j^\alpha E_\alpha(L).
+\tag{5.2}
+$$</span>
+<p>This is the canonical energy-momentum tensor in our sign convention. If <span class="math" data-tex="$L$">$L$</span> depends explicitly on <span class="math" data-tex="$x$">$x$</span>, its divergence instead includes <span class="math" data-tex="$-\partial L/\partial x^j$">$-\partial L/\partial x^j$</span>. For the wave equation the spatial-translation current is <span class="math" data-tex="$C^t=u_tu_x$">$C^t=u_tu_x$</span>, <span class="math" data-tex="$C^x=-\tfrac12(u_t^2+u_x^2)$">$C^x=-\tfrac12(u_t^2+u_x^2)$</span>; its divergence is <span class="math" data-tex="$u_x(u_{tt}-u_{xx})$">$u_x(u_{tt}-u_{xx})$</span>.</p>
+<p>Now use Minkowski signature <span class="math" data-tex="$(-,+,\ldots,+)$">$(-,+,\ldots,+)$</span> and a complex scalar <span class="math" data-tex="$\psi$">$\psi$</span>, treating its real and imaginary parts as independent fields. Equivalently, use <span class="math" data-tex="$\psi,\bar\psi$">$\psi,\bar\psi$</span> for complexified variation, and impose conjugacy afterwards. For</p>
+<span class="math math-display" data-tex="$$
+L=-\partial_\mu\bar\psi\,\partial^\mu\psi-M^2\bar\psi\psi,
+$$">$$
+L=-\partial_\mu\bar\psi\,\partial^\mu\psi-M^2\bar\psi\psi,
+$$</span>
+<p>the infinitesimal phase rotation has <span class="math" data-tex="$Q^\psi=i\psi$">$Q^\psi=i\psi$</span>, <span class="math" data-tex="$Q^{\bar\psi}=-i\bar\psi$">$Q^{\bar\psi}=-i\bar\psi$</span> and <span class="math" data-tex="$B=0$">$B=0$</span>. The current is</p>
+<span class="math math-display" data-tex="$$
+j^\mu=i(\bar\psi\,\partial^\mu\psi-\psi\,\partial^\mu\bar\psi).
+\tag{5.3}
+$$">$$
+j^\mu=i(\bar\psi\,\partial^\mu\psi-\psi\,\partial^\mu\bar\psi).
+\tag{5.3}
+$$</span>
+<p>The Euler expressions are <span class="math" data-tex="$E_\psi=(\Box-M^2)\bar\psi$">$E_\psi=(\Box-M^2)\bar\psi$</span>, <span class="math" data-tex="$E_{\bar\psi}=(\Box-M^2)\psi$">$E_{\bar\psi}=(\Box-M^2)\psi$</span>. Hence</p>
+<span class="math math-display" data-tex="$$
+\partial_\mu j^\mu=i(\bar\psi\Box\psi-\psi\Box\bar\psi)
+=-i\psi E_\psi+i\bar\psi E_{\bar\psi}.
+$$">$$
+\partial_\mu j^\mu=i(\bar\psi\Box\psi-\psi\Box\bar\psi)
+=-i\psi E_\psi+i\bar\psi E_{\bar\psi}.
+$$</span>
+<p>It vanishes on solutions. With the chosen orientation the charge is <span class="math" data-tex="$\int j^0\,d^{n-1}x$">$\int j^0\,d^{n-1}x$</span>, subject again to boundary flux conditions. A different normalization of the phase generator multiplies the current by the same constant.</p>
+<h2 id="6-from-currents-back-to-symmetries">6. From currents back to symmetries</h2>
+<p>A local current is conserved when its horizontal divergence vanishes on the prolonged equation manifold. Two currents are equivalent if their difference is a current vanishing there, plus an identically divergence-free current. In one dimension the latter includes constants; removing them excludes constant first integrals. In higher dimensions their local superpotential representation is proved in the next lesson.</p>
+<p>Theorems 1.1 and 3.1 do not require regularity. To recover all current classes and get uniqueness of symmetry classes, we now specify the regularity used. A <strong>normal, totally nondegenerate local system</strong> here means that its prolonged equations <span class="math" data-tex="$D_JE_\alpha=0$">$D_JE_\alpha=0$</span> are independent local coordinates at every finite order where they occur, the prolongations are formally integrable, and each equation jet is locally realizable by solution jets. Equivalently, in a local coordinate chart write the transverse coordinates as <span class="math" data-tex="$z_{\alpha J}=D_JE_\alpha$">$z_{\alpha J}=D_JE_\alpha$</span>, with the remaining coordinates <span class="math" data-tex="$y$">$y$</span> unconstrained. We work near the equation manifold <span class="math" data-tex="$z=0$">$z=0$</span> in a neighbourhood star-shaped in these transverse coordinates. The realization condition is needed if conservation was initially defined using actual solutions rather than the equation manifold.</p>
+<p>This hypothesis excludes nontrivial differential Noether identities. Gauge theories are treated separately in the next lesson. A <strong>trivial variational characteristic</strong> for a normal system is</p>
+<span class="math math-display" data-tex="$$
+Q^\alpha=M^{\alpha\beta}(E_\beta),\qquad M^*=-M,
+\tag{6.1}
+$$">$$
+Q^\alpha=M^{\alpha\beta}(E_\beta),\qquad M^*=-M,
+\tag{6.1}
+$$</span>
+<p>where <span class="math" data-tex="$M$">$M$</span> is a finite-order differential operator with differential-function coefficients and the adjoint includes differentiation of those coefficients. Such a characteristic vanishes on solutions. We prove that these are precisely the kernel of the current correspondence. The regularity and quotient formulation is motivated by Barnich, Brandt and Henneaux, §6.1; the proof below supplies the local normal case.</p>
+<h3 id="turning-a-vanishing-function-into-equation-factors">Turning a vanishing function into equation factors</h3>
+<p>If a smooth function <span class="math" data-tex="$f(y,z)$">$f(y,z)$</span> vanishes at <span class="math" data-tex="$z=0$">$z=0$</span>, then</p>
+<span class="math math-display" data-tex="$$
+f(y,z)=\sum_a z_a\int_0^1\frac{\partial f}{\partial z_a}(y,tz)\,dt.
+\tag{6.2}
+$$">$$
+f(y,z)=\sum_a z_a\int_0^1\frac{\partial f}{\partial z_a}(y,tz)\,dt.
+\tag{6.2}
+$$</span>
+<p>The formula is the fundamental theorem of calculus along the transverse segment; the index <span class="math" data-tex="$a$">$a$</span> ranges over the finitely many equation coordinates needed for <span class="math" data-tex="$f$">$f$</span>. This is the smooth division fact that fails without regular coordinates.</p>
+<p><strong>Theorem 6.1 (regular inverse correspondence).</strong> For a normal, totally nondegenerate Euler--Lagrange system as just defined, conservation laws modulo trivial currents correspond bijectively to generalized divergence variational symmetries modulo (6.1). A conserved current has a representative satisfying (3.2).</p>
+<p><em>Proof of existence.</em> Factor the function <span class="math" data-tex="$D_iC^i$">$D_iC^i$</span>, which vanishes at <span class="math" data-tex="$z=0$">$z=0$</span>, using (6.2):</p>
+<span class="math math-display" data-tex="$$
+D_iC^i=-\sum_{\alpha,J}f^{\alpha J}D_JE_\alpha.
+$$">$$
+D_iC^i=-\sum_{\alpha,J}f^{\alpha J}D_JE_\alpha.
+$$</span>
+<p>Repeated integration by parts, with the explicit product-rule identity of Theorem 1.1, gives</p>
+<span class="math math-display" data-tex="$$
+-\sum f^{\alpha J}D_JE_\alpha=-Q^\alpha E_\alpha+D_iK^i,
+\qquad
+Q^\alpha=\sum_J(-D)_Jf^{\alpha J}.
+$$">$$
+-\sum f^{\alpha J}D_JE_\alpha=-Q^\alpha E_\alpha+D_iK^i,
+\qquad
+Q^\alpha=\sum_J(-D)_Jf^{\alpha J}.
+$$</span>
+<p>Every term of <span class="math" data-tex="$K$">$K$</span> contains an Euler expression or its derivative, so <span class="math" data-tex="$K$">$K$</span> vanishes on solutions. The equivalent current <span class="math" data-tex="$\widetilde C=C-K$">$\widetilde C=C-K$</span> has <span class="math" data-tex="$D_i\widetilde C^i=-Q^\alpha E_\alpha$">$D_i\widetilde C^i=-Q^\alpha E_\alpha$</span>. The converse in Theorem 3.1 constructs its divergence symmetry. This proves surjectivity without guessing a characteristic.</p>
+<h3 id="why-the-kernel-is-exactly-skew-adjoint-equation-terms">Why the kernel is exactly skew-adjoint equation terms</h3>
+<p>For completeness we give the finite algebra that proves uniqueness. Introduce formal odd symbols <span class="math" data-tex="$\theta_{\alpha J}$">$\theta_{\alpha J}$</span>, one for each equation coordinate <span class="math" data-tex="$z_{\alpha J}$">$z_{\alpha J}$</span>, with <span class="math" data-tex="$\theta_a\theta_b=-\theta_b\theta_a$">$\theta_a\theta_b=-\theta_b\theta_a$</span>. Their coefficients are smooth differential functions. Assign <span class="math" data-tex="$\theta$">$\theta$</span> degree one, and define</p>
+<span class="math math-display" data-tex="$$
+\delta\theta_{\alpha J}=z_{\alpha J},\qquad
+\delta f(x,u^{(k)})=0.
+$$">$$
+\delta\theta_{\alpha J}=z_{\alpha J},\qquad
+\delta f(x,u^{(k)})=0.
+$$</span>
+<p>Extend <span class="math" data-tex="$\delta$">$\delta$</span> by the odd product rule. Then <span class="math" data-tex="$\delta^2=0$">$\delta^2=0$</span>. A coefficient expression with positive <span class="math" data-tex="$\theta$">$\theta$</span> degree has no cohomology under <span class="math" data-tex="$\delta$">$\delta$</span>: every <span class="math" data-tex="$\delta$">$\delta$</span>-closed expression of positive degree is <span class="math" data-tex="$\delta$">$\delta$</span>-exact. Here is a proof, rather than an assumption of this assertion. In the <span class="math" data-tex="$(y,z)$">$(y,z)$</span> coordinates put <span class="math" data-tex="$h=\sum_a\theta_a\partial_{z_a}$">$h=\sum_a\theta_a\partial_{z_a}$</span> and <span class="math" data-tex="$N=\sum_a(z_a\partial_{z_a}+\theta_a\partial_{\theta_a})$">$N=\sum_a(z_a\partial_{z_a}+\theta_a\partial_{\theta_a})$</span>. Directly on generators and then products,</p>
+<span class="math math-display" data-tex="$$
+\delta h+h\delta=N.
+$$">$$
+\delta h+h\delta=N.
+$$</span>
+<p>Scaling <span class="math" data-tex="$z,\theta$">$z,\theta$</span> together and integrating <span class="math" data-tex="$h/t$">$h/t$</span> gives</p>
+<span class="math math-display" data-tex="$$
+Hf=\int_0^1\frac1t\,h\bigl[f(y,tz,t\theta)\bigr]\,dt,\qquad
+\delta Hf+H\delta f=f-f(y,0,0).
+\tag{6.3}
+$$">$$
+Hf=\int_0^1\frac1t\,h\bigl[f(y,tz,t\theta)\bigr]\,dt,\qquad
+\delta Hf+H\delta f=f-f(y,0,0).
+\tag{6.3}
+$$</span>
+<p>The integral converges for positive odd degree, and <span class="math" data-tex="$f(y,0,0)=0$">$f(y,0,0)=0$</span> there. Thus <span class="math" data-tex="$\delta f=0$">$\delta f=0$</span> implies <span class="math" data-tex="$f=\delta Hf$">$f=\delta Hf$</span>. Only finitely many symbols occur in each expression; smooth coefficients and the star-shaped chart suffice.</p>
+<p>We also use horizontal differential forms, with <span class="math" data-tex="$d=dx^iD_i$">$d=dx^iD_i$</span>. Set <span class="math" data-tex="$D_i\theta_{\alpha J}=\theta_{\alpha,J+i}$">$D_i\theta_{\alpha J}=\theta_{\alpha,J+i}$</span>, and make <span class="math" data-tex="$dx^i$">$dx^i$</span> anticommute with odd symbols. With the resulting total odd product rule, <span class="math" data-tex="$\delta d+d\delta=0$">$\delta d+d\delta=0$</span>. This follows from <span class="math" data-tex="$D_iz_{\alpha J}=z_{\alpha,J+i}$">$D_iz_{\alpha J}=z_{\alpha,J+i}$</span>; on coefficient functions it is immediate. Write a current as the <span class="math" data-tex="$(n-1)$">$(n-1)$</span>-form <span class="math" data-tex="$\mathbf C=C^i i_{\partial_i}(d^nx)$">$\mathbf C=C^i i_{\partial_i}(d^nx)$</span>, so <span class="math" data-tex="$d\mathbf C=(D_iC^i)d^nx$">$d\mathbf C=(D_iC^i)d^nx$</span>. The characteristic form</p>
+<span class="math math-display" data-tex="$$
+a=Q^\alpha\theta_{\alpha\varnothing}\,d^nx
+$$">$$
+a=Q^\alpha\theta_{\alpha\varnothing}\,d^nx
+$$</span>
+<p>satisfies <span class="math" data-tex="$\delta a+d\mathbf C=0$">$\delta a+d\mathbf C=0$</span>.</p>
+<p>Suppose now that the current is trivial. Write <span class="math" data-tex="$\mathbf C=\mathbf H+\delta b$">$\mathbf C=\mathbf H+\delta b$</span>, where <span class="math" data-tex="$d\mathbf H=0$">$d\mathbf H=0$</span> and <span class="math" data-tex="$b$">$b$</span> has odd degree one and horizontal degree <span class="math" data-tex="$n-1$">$n-1$</span>. Such a <span class="math" data-tex="$b$">$b$</span> exists by (6.2) applied to each coefficient of its equation-vanishing part. We obtain <span class="math" data-tex="$\delta(a-db)=0$">$\delta(a-db)=0$</span>. Equation (6.3) gives <span class="math" data-tex="$a=db+\delta c$">$a=db+\delta c$</span>, with <span class="math" data-tex="$c$">$c$</span> of odd degree two and horizontal degree <span class="math" data-tex="$n$">$n$</span>.</p>
+<p>To extract its meaning, write <span class="math" data-tex="$c$">$c$</span> in the form <span class="math" data-tex="$\tfrac12\sum_{a,b}C^{ab}\theta_a\theta_b\,d^nx$">$\tfrac12\sum_{a,b}C^{ab}\theta_a\theta_b\,d^nx$</span>, with <span class="math" data-tex="$C^{ab}=-C^{ba}$">$C^{ab}=-C^{ba}$</span>. Its <span class="math" data-tex="$\delta$">$\delta$</span> is a sum of <span class="math" data-tex="$C^{ab}z_a\theta_b\,d^nx$">$C^{ab}z_a\theta_b\,d^nx$</span>. Move derivatives on each <span class="math" data-tex="$\theta_{\beta K}$">$\theta_{\beta K}$</span> to its coefficient by integration by parts; total divergences, including <span class="math" data-tex="$db$">$db$</span>, disappear under this operation. The coefficient of <span class="math" data-tex="$\theta_{\beta\varnothing}$">$\theta_{\beta\varnothing}$</span> in the resulting expression is</p>
+<span class="math math-display" data-tex="$$
+Q^\beta=\sum_{\alpha,J,K}(-D)_K
+\bigl(C^{\alpha J,\beta K}D_JE_\alpha\bigr).
+\tag{6.4}
+$$">$$
+Q^\beta=\sum_{\alpha,J,K}(-D)_K
+\bigl(C^{\alpha J,\beta K}D_JE_\alpha\bigr).
+\tag{6.4}
+$$</span>
+<p>The differential operator on <span class="math" data-tex="$E$">$E$</span> in (6.4) is formally skew-adjoint: taking its adjoint interchanges <span class="math" data-tex="$(\alpha,J)$">$(\alpha,J)$</span> and <span class="math" data-tex="$(\beta,K)$">$(\beta,K)$</span>, and the skew coefficient <span class="math" data-tex="$C$">$C$</span> changes the sign. This is exactly (6.1). The integration-by-parts extraction is unique: its coefficient is the Euler derivative with respect to the formal field <span class="math" data-tex="$\theta_\beta$">$\theta_\beta$</span>, which annihilates a horizontal divergence just as Proposition 2.1 does. Hence no coefficient is lost by the normalization.</p>
+<p>Conversely, for a skew-adjoint operator <span class="math" data-tex="$M$">$M$</span>, the product-rule identity gives</p>
+<span class="math math-display" data-tex="$$
+E\cdot M(E)-(M^*E)\cdot E=\operatorname{Div}K(E,E).
+$$">$$
+E\cdot M(E)-(M^*E)\cdot E=\operatorname{Div}K(E,E).
+$$</span>
+<p>Since <span class="math" data-tex="$M^*=-M$">$M^*=-M$</span>, <span class="math" data-tex="$Q\cdot E=\tfrac12\operatorname{Div}K(E,E)$">$Q\cdot E=\tfrac12\operatorname{Div}K(E,E)$</span>. Every boundary summand contains Euler expressions or their derivatives. Choosing the corresponding Noether current as <span class="math" data-tex="$-\tfrac12K(E,E)$">$-\tfrac12K(E,E)$</span> makes it vanish on solutions. Thus (6.1) maps to the zero current class.</p>
+<p>Finally, two currents associated with the same characteristic differ by an identically divergence-free current, by (3.2). The existence and kernel arguments therefore give a well-defined bijection of the stated quotient spaces. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Linear independence of characteristic functions alone does not guarantee distinct nontrivial current classes. The degenerate density <span class="math" data-tex="$L=0$">$L=0$</span> has every characteristic as a symmetry while (1.4) gives zero current. Even a regular mechanical system can have functional relations among its first integrals, as (4.3) shows. The unconditional assertion is the identity (3.2); Theorem 6.1 adds a bijection only with its regularity and quotient hypotheses.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 7.1 (easy).</strong> For <span class="math" data-tex="$L=\tfrac12(u_t^2-c^2u_x^2)$">$L=\tfrac12(u_t^2-c^2u_x^2)$</span> with <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, derive the energy current from time translation and give a sufficient boundary condition for conservation of its spatial integral.</p>
+<p><strong>Exercise 7.2 (medium).</strong> For <span class="math" data-tex="$L(t,q,v)$">$L(t,q,v)$</span>, derive (4.1). Apply it to <span class="math" data-tex="$L=\tfrac12m(t)|v|^2-V(t,q)$">$L=\tfrac12m(t)|v|^2-V(t,q)$</span> with <span class="math" data-tex="$m(t)&gt;0$">$m(t)&gt;0$</span>.</p>
+<p><strong>Exercise 7.3 (medium).</strong> For <span class="math" data-tex="$L=\tfrac12m|v|^2$">$L=\tfrac12m|v|^2$</span>, use <span class="math" data-tex="$\delta q=tb$">$\delta q=tb$</span> and find the boundary term and current. Explain the sign relative to (4.2), and derive uniform motion of the centre of mass for particles interacting through relative-position potentials.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Prove (3.1) directly when <span class="math" data-tex="$n=q=1$">$n=q=1$</span> and <span class="math" data-tex="$L=L(x,u,u_x)$">$L=L(x,u,u_x)$</span>, allowing <span class="math" data-tex="$\xi,\phi$">$\xi,\phi$</span> to be differential functions.</p>
+<p><strong>Exercise 7.5 (hard).</strong> Set <span class="math" data-tex="$k=1$">$k=1$</span> in the Kepler problem. Starting with (4.3), derive its characteristic and boundary term rather than guessing them. Check its conservation and the two relations with angular momentum and energy.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 7.1.</strong> For <span class="math" data-tex="$\xi^t=-1$">$\xi^t=-1$</span>, <span class="math" data-tex="$Q=u_t$">$Q=u_t$</span>, <span class="math" data-tex="$B=0$">$B=0$</span>, the first-order boundary term is <span class="math" data-tex="$P=(u_t^2,-c^2u_xu_t)$">$P=(u_t^2,-c^2u_xu_t)$</span>. Adding <span class="math" data-tex="$L\xi$">$L\xi$</span> gives <span class="math" data-tex="$C=(\tfrac12(u_t^2+c^2u_x^2),-c^2u_xu_t)$">$C=(\tfrac12(u_t^2+c^2u_x^2),-c^2u_xu_t)$</span>. Its divergence is <span class="math" data-tex="$u_t(u_{tt}-c^2u_{xx})$">$u_t(u_{tt}-c^2u_{xx})$</span>. On <span class="math" data-tex="$[a,b]$">$[a,b]$</span>, periodic endpoint jets imply equal fluxes. Alternatively <span class="math" data-tex="$u_t=0$">$u_t=0$</span> at both endpoints makes both fluxes vanish. On <span class="math" data-tex="$\mathbb R$">$\mathbb R$</span>, impose enough decay for integrability and zero limiting flux; the PDE alone does not imply that decay.</p>
+<p><strong>Solution 7.2.</strong> Let <span class="math" data-tex="$p=L_v$">$p=L_v$</span>. Then <span class="math" data-tex="$D_t(v\cdot p-L)=a\cdot p+v\cdot D_tp-L_t-L_q\cdot v-L_v\cdot a=-v\cdot(L_q-D_tp)-L_t$">$D_t(v\cdot p-L)=a\cdot p+v\cdot D_tp-L_t-L_q\cdot v-L_v\cdot a=-v\cdot(L_q-D_tp)-L_t$</span>. Thus <span class="math" data-tex="$D_tH=-L_t$">$D_tH=-L_t$</span> on solutions. In the specified example <span class="math" data-tex="$H=\tfrac12m(t)|v|^2+V(t,q)$">$H=\tfrac12m(t)|v|^2+V(t,q)$</span> and <span class="math" data-tex="$D_tH=-\tfrac12m&#x27;(t)|v|^2+V_t$">$D_tH=-\tfrac12m&#x27;(t)|v|^2+V_t$</span>. Indeed the equation is <span class="math" data-tex="$m a+m&#x27;v=-\nabla_qV$">$m a+m&#x27;v=-\nabla_qV$</span>, which gives the same derivative directly.</p>
+<p><strong>Solution 7.3.</strong> Here <span class="math" data-tex="$Q=tb$">$Q=tb$</span>, <span class="math" data-tex="$\delta L=mv\cdot b=D_t(mq\cdot b)$">$\delta L=mv\cdot b=D_t(mq\cdot b)$</span>, so <span class="math" data-tex="$B=mq\cdot b$">$B=mq\cdot b$</span> and <span class="math" data-tex="$C=b\cdot(tp-mq)$">$C=b\cdot(tp-mq)$</span>. This is the negative of (4.2) because the generator has the opposite sign. It is not a strict symmetry since <span class="math" data-tex="$mv\cdot b$">$mv\cdot b$</span> is not the zero jet function for <span class="math" data-tex="$b\ne0$">$b\ne0$</span>. For <span class="math" data-tex="$V=V(q_a-q_b)$">$V=V(q_a-q_b)$</span>, simultaneous translation makes <span class="math" data-tex="$\sum_a\nabla_{q_a}V=0$">$\sum_a\nabla_{q_a}V=0$</span>. Hence <span class="math" data-tex="$P=\sum_am_av_a$">$P=\sum_am_av_a$</span> is constant and <span class="math" data-tex="$M\dot q_{\rm cm}=P$">$M\dot q_{\rm cm}=P$</span>. Simultaneous boosts have boundary term <span class="math" data-tex="$b\cdot\sum_am_aq_a$">$b\cdot\sum_am_aq_a$</span> and constant <span class="math" data-tex="$b\cdot(tP-Mq_{\rm cm})$">$b\cdot(tP-Mq_{\rm cm})$</span>; this yields <span class="math" data-tex="$q_{\rm cm}(t)=q_{\rm cm}(0)+tP/M$">$q_{\rm cm}(t)=q_{\rm cm}(0)+tP/M$</span>.</p>
+<p><strong>Solution 7.4.</strong> Put <span class="math" data-tex="$w=u_x$">$w=u_x$</span>, <span class="math" data-tex="$Q=\phi-\xi w$">$Q=\phi-\xi w$</span>. The first prolonged coefficient is <span class="math" data-tex="$\phi_x^{\rm pr}=D_x\phi-wD_x\xi=D_xQ+\xi u_{xx}$">$\phi_x^{\rm pr}=D_x\phi-wD_x\xi=D_xQ+\xi u_{xx}$</span>. Thus <span class="math" data-tex="$\operatorname{pr}v(L)=\xi L_x+\phi L_u+(D_xQ+\xi u_{xx})L_w$">$\operatorname{pr}v(L)=\xi L_x+\phi L_u+(D_xQ+\xi u_{xx})L_w$</span>. Substituting <span class="math" data-tex="$\phi=Q+\xi w$">$\phi=Q+\xi w$</span> gives <span class="math" data-tex="$\operatorname{pr}v(L)=Q L_u+(D_xQ)L_w+\xi D_xL=\operatorname{pr}v_Q(L)+\xi D_xL$">$\operatorname{pr}v(L)=Q L_u+(D_xQ)L_w+\xi D_xL=\operatorname{pr}v_Q(L)+\xi D_xL$</span>. Add <span class="math" data-tex="$L D_x\xi$">$L D_x\xi$</span> and use the product rule. This calculation uses total derivatives, so it remains valid with derivative-dependent coefficients.</p>
+<p><strong>Solution 7.5.</strong> For <span class="math" data-tex="$A_b=b\cdot A$">$A_b=b\cdot A$</span>, its velocity gradient is <span class="math" data-tex="$Q_b=2(b\cdot q)v-(q\cdot v)b-(b\cdot v)q$">$Q_b=2(b\cdot q)v-(q\cdot v)b-(b\cdot v)q$</span>. Differentiating <span class="math" data-tex="$A_b$">$A_b$</span> and collecting coefficients of <span class="math" data-tex="$a$">$a$</span> produces <span class="math" data-tex="$D_tA_b=Q_b\cdot(a+q/r^3)$">$D_tA_b=Q_b\cdot(a+q/r^3)$</span>. Therefore <span class="math" data-tex="$Q_bE(L)=-D_tA_b$">$Q_bE(L)=-D_tA_b$</span> and the first variation gives <span class="math" data-tex="$B_b=v\cdot Q_b-A_b=(b\cdot q)|v|^2-(q\cdot v)(b\cdot v)+b\cdot q/r$">$B_b=v\cdot Q_b-A_b=(b\cdot q)|v|^2-(q\cdot v)(b\cdot v)+b\cdot q/r$</span>. Conservation follows upon imposing <span class="math" data-tex="$a=-q/r^3$">$a=-q/r^3$</span>. Since <span class="math" data-tex="$v\times\ell$">$v\times\ell$</span> and <span class="math" data-tex="$q$">$q$</span> are perpendicular to <span class="math" data-tex="$\ell$">$\ell$</span>, <span class="math" data-tex="$A\cdot\ell=0$">$A\cdot\ell=0$</span>. Also <span class="math" data-tex="$|v\times\ell|^2=|v|^2|\ell|^2$">$|v\times\ell|^2=|v|^2|\ell|^2$</span> and <span class="math" data-tex="$(v\times\ell)\cdot q=|\ell|^2$">$(v\times\ell)\cdot q=|\ell|^2$</span>, so <span class="math" data-tex="$|A|^2=|v|^2|\ell|^2-2|\ell|^2/r+1=1+2H|\ell|^2$">$|A|^2=|v|^2|\ell|^2-2|\ell|^2/r+1=1+2H|\ell|^2$</span>. All these computations require <span class="math" data-tex="$r&gt;0$">$r&gt;0$</span>.</p>
+<h2 id="proof-dependencies-and-scope">Proof dependencies and scope</h2>
+<p>The point-prolongation theorem is supplied by <a href="../LIE-TG/LIE-TG-09.html#2-the-prolongation-formula">Prolongation, differential invariants and the projective group</a>. The fundamental lemma for smooth compactly supported variations is proved in §2. The regular current-symmetry correspondence is proved in §6 for the precisely stated normal local systems; gauge identities require the separate treatment in the next lesson. We neither assume that every generalized derivation integrates to a finite-order transformation group nor identify linearly independent generators with independent first integrals.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Emmy Noether, <em>Invariante Variationsprobleme</em>, Nachrichten der Gesellschaft der Wissenschaften zu Göttingen, mathematisch-physikalische Klasse (1918), 235--257, §§1--3. <a href="https://kokunoyumeto.github.io/emmy-noether-en/">English edition</a>; <a href="https://eudml.org/doc/59024">original paper record</a>.</li>
+<li>Amlan K. Halder, Andronikos Paliathanasis and Peter G. L. Leach, <em>Noether's theorem and symmetry</em>, Symmetry <strong>10</strong> (2018), 744, §§2--4. <a href="https://doi.org/10.3390/sym10120744">Article</a>.</li>
+<li>Geoffrey Compère, <em>Symmetries and conservation laws in Lagrangian gauge theories with applications to the mechanics of black holes and to gravity in three dimensions</em> (2007), Preamble §1; Part I, Chapter 1, §1; Appendix B. <a href="https://arxiv.org/abs/0708.3153">Thesis</a>.</li>
+<li>Glenn Barnich, Friedemann Brandt and Marc Henneaux, <em>Local BRST cohomology in gauge theories</em>, Physics Reports <strong>338</strong> (2000), 439--569, §6.1 and Theorem 6.1. <a href="https://arxiv.org/abs/hep-th/0002245">Article</a>.</li>
+<li>Joël Merker, <em>Four explicit formulas for the prolongations of an infinitesimal Lie symmetry and multivariate Faà di Bruno formulas</em> (2004), §1. <a href="https://arxiv.org/abs/math/0411650">Article</a>.</li>
+<li>Jana Musilová, Pavla Musilová and Olga Rossi, <em>Calculus of Variations on Fibred Manifolds and Variational Physics: A Geometrical Approach to Variational Problems in Physics</em>, Lecture Notes in Physics <strong>1033</strong>, Springer (2025), §§8.3--8.4. <a href="https://doi.org/10.1007/978-3-031-77408-9">Book record</a>. A complementary account consulted for geometric first variation and divergence symmetries.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-SYM-02.html">Infinite symmetry groups and Noether&#x27;s second theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-SYM-01.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-SYM">Repository</a></nav>
+</footer>
+</body>
+</html>

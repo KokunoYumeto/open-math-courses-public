@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lefschetz traces of constructible correspondences · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/lefschetz-traces-of-constructible-correspondences.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Lefschetz traces of constructible correspondences</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="lefschetz-traces-of-constructible-correspondences">Lefschetz traces of constructible correspondences</h1>
+<p>A correspondence can move information from one point to another before taking a trace. Its local class lives where the two maps coincide. Compactness of their common support makes the trace finite even when the original sheaf has noncompact support and infinite-dimensional global cohomology.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<p>Learn first <a href="../analytic-boundaries-and-constructible-traces/constructible-traces-and-local-euler-indices.html#the-identity-and-the-evaluated-tensor">Constructible traces and local Euler indices</a>, <a href="closed-supports-and-evaluated-proper-transport.html#the-evaluated-proper-hom-map-has-a-prescribed-tensor-order">Closed supports and evaluated proper transport</a>, and <a href="proper-characteristic-classes-and-the-compact-index.html#evaluation-completes-the-trace-diagram">Proper characteristic classes and the compact index</a>. We use their actual diagonal comparison, graded evaluation, exceptional counit and compatibility of supported evaluation with the proper trace. <a href="../sheaf-proof-readings/SH03-perfect-operations-and-finite-microlocal-coefficients.html#compact-and-relatively-compact-cohomology">Perfect operations and finite microlocal coefficients</a> proves the compact supported-cohomology finiteness needed here. The <a href="intersections-of-supported-subanalytic-cycles.html#the-actual-cup-product-retains-both-supports">supported cycle intersection</a> supplies the graph interpretation. These are written programme proofs relative to their stated foundations; transitive prerequisite closure remains open.</p>
+<h2 id="the-two-maps-determine-three-supports">The two maps determine three supports</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a characteristic-zero field. Manifolds are real analytic, Hausdorff and countable at infinity, with the standing finite uniform dimension bounds. Let <span class="math" data-tex="\(f,g\)">\(f,g\)</span> be real analytic maps and take</p>
+<span class="math math-display" data-tex="\[
+f,g:Y\longrightarrow X,\qquad
+F\in D^b_{\mathbb R\text{-c}}(k_X),\qquad
+\phi:f^{-1}F\longrightarrow g^!F.
+\qquad\text{(1)}
+\]">\[
+f,g:Y\longrightarrow X,\qquad
+F\in D^b_{\mathbb R\text{-c}}(k_X),\qquad
+\phi:f^{-1}F\longrightarrow g^!F.
+\qquad\text{(1)}
+\]</span>
+<p>Constructibility includes perfect stalks. Set</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S&amp;=\operatorname{supp}(F),\\
+T&amp;=f^{-1}S\cap g^{-1}S,\\
+W&amp;=\{y:f(y)=g(y)\},\qquad Z=T\cap W.
+\end{aligned}
+\qquad\text{(2)}
+\]">\[
+\begin{aligned}
+S&amp;=\operatorname{supp}(F),\\
+T&amp;=f^{-1}S\cap g^{-1}S,\\
+W&amp;=\{y:f(y)=g(y)\},\qquad Z=T\cap W.
+\end{aligned}
+\qquad\text{(2)}
+\]</span>
+<p>Support means <strong>closed support</strong>: the complement of the largest open set where the complex vanishes. Thus <span class="math" data-tex="\(S,T,Z\)">\(S,T,Z\)</span> are closed subanalytic sets. The equality set <span class="math" data-tex="\(W\)">\(W\)</span> is the inverse image of the closed diagonal under <span class="math" data-tex="\(h=(f,g)\)">\(h=(f,g)\)</span>.</p>
+<p>Put <span class="math" data-tex="\(A=f^{-1}F\)">\(A=f^{-1}F\)</span> and <span class="math" data-tex="\(B=g^!F\)">\(B=g^!F\)</span>. The perfect-operation theorem makes both constructible. Their supports lie in <span class="math" data-tex="\(f^{-1}S\)">\(f^{-1}S\)</span> and <span class="math" data-tex="\(g^{-1}S\)">\(g^{-1}S\)</span>, respectively. Since the source <span class="math" data-tex="\(A\)">\(A\)</span> is supported on <span class="math" data-tex="\(f^{-1}S\)">\(f^{-1}S\)</span>, supported adjunction gives a unique lift</p>
+<span class="math math-display" data-tex="\[
+\widehat\phi:A\longrightarrow R\Gamma_TB
+\longrightarrow B
+\qquad\text{(3)}
+\]">\[
+\widehat\phi:A\longrightarrow R\Gamma_TB
+\longrightarrow B
+\qquad\text{(3)}
+\]</span>
+<p>of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Indeed <span class="math" data-tex="\(R\Gamma_{f^{-1}S}A=A\)">\(R\Gamma_{f^{-1}S}A=A\)</span>, and
+<span class="math" data-tex="\(R\Gamma_{f^{-1}S}B=R\Gamma_TB\)">\(R\Gamma_{f^{-1}S}B=R\Gamma_TB\)</span>: <span class="math" data-tex="\(B\)">\(B\)</span> already vanishes outside <span class="math" data-tex="\(g^{-1}S\)">\(g^{-1}S\)</span>. The equality uses the composition law for closed support functors. The lift comes from a supported <strong>source</strong>, rather than from an arbitrary map whose restriction happens to vanish.</p>
+<p>Assume for the trace theorem that</p>
+<span class="math math-display" data-tex="\[
+T\text{ is compact}.
+\qquad\text{(4)}
+\]">\[
+T\text{ is compact}.
+\qquad\text{(4)}
+\]</span>
+<p>Then</p>
+<span class="math math-display" data-tex="\[
+C=R\Gamma(X;F),\qquad P=R\Gamma_T(Y;B)
+\qquad\text{(5)}
+\]">\[
+C=R\Gamma(X;F),\qquad P=R\Gamma_T(Y;B)
+\qquad\text{(5)}
+\]</span>
+<p>have different roles. The complex <span class="math" data-tex="\(P\)">\(P\)</span> is perfect by compact supported-cohomology finiteness. The cohomology of <span class="math" data-tex="\(C\)">\(C\)</span> need not be finite-dimensional.</p>
+<p>Ordinary pullback followed by (3) gives <span class="math" data-tex="\(a:C\to P\)">\(a:C\to P\)</span>. For the return map use</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b:P&amp;=R\Gamma_c(Y;R\Gamma_TB)
+\longrightarrow R\Gamma_c(Y;g^!F)\\
+&amp;\longrightarrow R\Gamma_c(X;F)
+\longrightarrow R\Gamma(X;F)=C.
+\end{aligned}
+\qquad\text{(6)}
+\]">\[
+\begin{aligned}
+b:P&amp;=R\Gamma_c(Y;R\Gamma_TB)
+\longrightarrow R\Gamma_c(Y;g^!F)\\
+&amp;\longrightarrow R\Gamma_c(X;F)
+\longrightarrow R\Gamma(X;F)=C.
+\end{aligned}
+\qquad\text{(6)}
+\]</span>
+<p>The middle arrow is the exceptional counit <span class="math" data-tex="\(Rg_!g^!F\to F\)">\(Rg_!g^!F\to F\)</span>; the last forgets compact support. The first equality follows from compactness of <span class="math" data-tex="\(T\)">\(T\)</span>. This constructs the correspondence endomorphism</p>
+<span class="math math-display" data-tex="\[
+U_\phi=ba:C\longrightarrow C.
+\qquad\text{(7)}
+\]">\[
+U_\phi=ba:C\longrightarrow C.
+\qquad\text{(7)}
+\]</span>
+<p>No ordinary direct-image counit <span class="math" data-tex="\(Rg_*g^!F\to F\)">\(Rg_*g^!F\to F\)</span> has been inserted. It would not be supplied by the adjunction being used when <span class="math" data-tex="\(g\)">\(g\)</span> is nonproper.</p>
+<h2 id="a-finite-rank-trace-does-not-require-a-finite-vector-space">A finite-rank trace does not require a finite vector space</h2>
+<p>For a finite-rank endomorphism <span class="math" data-tex="\(u:V\to V\)">\(u:V\to V\)</span>, choose a finite-dimensional subspace <span class="math" data-tex="\(E\)">\(E\)</span> containing its image. It is invariant under <span class="math" data-tex="\(u\)">\(u\)</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_{\mathrm{fin}}(u)=\operatorname{tr}(u|_E).
+\qquad\text{(8)}
+\]">\[
+\operatorname{tr}_{\mathrm{fin}}(u)=\operatorname{tr}(u|_E).
+\qquad\text{(8)}
+\]</span>
+<p><strong>Lemma.</strong> This definition is independent of <span class="math" data-tex="\(E\)">\(E\)</span>. If <span class="math" data-tex="\(p:V\to Q\)">\(p:V\to Q\)</span> and <span class="math" data-tex="\(q:Q\to V\)">\(q:Q\to V\)</span>, with <span class="math" data-tex="\(Q\)">\(Q\)</span> finite-dimensional, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_{\mathrm{fin}}(qp)=\operatorname{tr}(pq).
+\qquad\text{(9)}
+\]">\[
+\operatorname{tr}_{\mathrm{fin}}(qp)=\operatorname{tr}(pq).
+\qquad\text{(9)}
+\]</span>
+<p><strong>Proof.</strong> For two choices <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span>, work in <span class="math" data-tex="\(E_1+E_2\)">\(E_1+E_2\)</span>. Its quotient by either <span class="math" data-tex="\(E_i\)">\(E_i\)</span> has zero induced endomorphism because the full image lies in <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. A basis adapted to an invariant subspace gives a block triangular matrix, so the trace on the sum equals the trace on either <span class="math" data-tex="\(E_i\)">\(E_i\)</span>.</p>
+<p>For (9), take <span class="math" data-tex="\(E=\operatorname{im}q\)">\(E=\operatorname{im}q\)</span>. Regard <span class="math" data-tex="\(q\)">\(q\)</span> as a map <span class="math" data-tex="\(Q\to E\)">\(Q\to E\)</span> and restrict <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(E\)">\(E\)</span>. In finite bases the two traces are both the sum <span class="math" data-tex="\(\sum_{i,j}q_{ij}p_{ji}\)">\(\sum_{i,j}q_{ij}p_{ji}\)</span>. This proves (9), including nonsurjective <span class="math" data-tex="\(q\)">\(q\)</span> and noninjective <span class="math" data-tex="\(p\)">\(p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Each <span class="math" data-tex="\(H^j(U_\phi)\)">\(H^j(U_\phi)\)</span> factors through the finite-dimensional <span class="math" data-tex="\(H^j(P)\)">\(H^j(P)\)</span>. It has finite rank, and it is zero whenever <span class="math" data-tex="\(H^j(P)=0\)">\(H^j(P)=0\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+L(\phi)=\sum_j(-1)^j
+\operatorname{tr}_{\mathrm{fin}}H^j(U_\phi)
+=\operatorname{str}(ab:P\to P)
+\qquad\text{(10)}
+\]">\[
+L(\phi)=\sum_j(-1)^j
+\operatorname{tr}_{\mathrm{fin}}H^j(U_\phi)
+=\operatorname{str}(ab:P\to P)
+\qquad\text{(10)}
+\]</span>
+<p>is a finite sum. The point trace proof in the first prerequisite identifies the supertrace of a perfect complex endomorphism with this alternating cohomology trace. Formula (9) proves the equality in (10) degree by degree.</p>
+<p>This is a trace in <span class="math" data-tex="\(k\)">\(k\)</span>. It need not be an integer: the correspondence may act by arbitrary coefficient endomorphisms. If <span class="math" data-tex="\(F\)">\(F\)</span> has compact closed support, <span class="math" data-tex="\(C\)">\(C\)</span> is perfect, and (10) is its usual supertrace.</p>
+<h2 id="pull-the-diagonal-identity-to-the-coincidence-set">Pull the diagonal identity to the coincidence set</h2>
+<p>Write <span class="math" data-tex="\(D_XF=R\mathcal Hom(F,\omega_X)\)">\(D_XF=R\mathcal Hom(F,\omega_X)\)</span> and <span class="math" data-tex="\(K=F\boxtimes D_XF\)">\(K=F\boxtimes D_XF\)</span>. The normalized diagonal comparison from the trace prerequisite is</p>
+<span class="math math-display" data-tex="\[
+R\mathcal Hom(F,F)\simeq\delta^!K,\qquad
+\delta:X\hookrightarrow X\times X.
+\qquad\text{(11)}
+\]">\[
+R\mathcal Hom(F,F)\simeq\delta^!K,\qquad
+\delta:X\hookrightarrow X\times X.
+\qquad\text{(11)}
+\]</span>
+<p>Under global adjunction, the identity of <span class="math" data-tex="\(F\)">\(F\)</span> gives a supported diagonal class</p>
+<span class="math math-display" data-tex="\[
+e_\Delta(F)\in H^0_\Delta(X\times X;K).
+\qquad\text{(12)}
+\]">\[
+e_\Delta(F)\in H^0_\Delta(X\times X;K).
+\qquad\text{(12)}
+\]</span>
+<p>Its underlying construction is the actual exceptional diagonal restriction, with the product evaluation and its graded tensor order.</p>
+<p>For any map <span class="math" data-tex="\(h\)">\(h\)</span>, the ordinary unit <span class="math" data-tex="\(K\to Rh_*h^{-1}K\)">\(K\to Rh_*h^{-1}K\)</span>, followed by supported sections, supplies</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_\Delta(X\times X;K)
+\longrightarrow R\Gamma_{h^{-1}\Delta}(Y;h^{-1}K).
+\qquad\text{(13)}
+\]">\[
+R\Gamma_\Delta(X\times X;K)
+\longrightarrow R\Gamma_{h^{-1}\Delta}(Y;h^{-1}K).
+\qquad\text{(13)}
+\]</span>
+<p>Here is the derived adjunction check of the support comparison. Let <span class="math" data-tex="\(i:W=h^{-1}\Delta\hookrightarrow Y\)">\(i:W=h^{-1}\Delta\hookrightarrow Y\)</span> and let <span class="math" data-tex="\(v:W\to X\)">\(v:W\to X\)</span> be the map to the diagonal. Closed proper base change gives <span class="math" data-tex="\(h^{-1}\delta_*Q=i_*v^{-1}Q\)">\(h^{-1}\delta_*Q=i_*v^{-1}Q\)</span>. For a bounded test object <span class="math" data-tex="\(Q\)">\(Q\)</span>, the adjunctions consequently give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \operatorname{Hom}(Q,\delta^!Rh_*H)
+ &amp;\simeq\operatorname{Hom}(\delta_*Q,Rh_*H)\\
+ &amp;\simeq\operatorname{Hom}(h^{-1}\delta_*Q,H)\\
+ &amp;\simeq\operatorname{Hom}(v^{-1}Q,i^!H)
+ \simeq\operatorname{Hom}(Q,Rv_*i^!H).
+ \end{aligned}
+ \qquad\text{(13a)}
+\]">\[
+ \begin{aligned}
+ \operatorname{Hom}(Q,\delta^!Rh_*H)
+ &amp;\simeq\operatorname{Hom}(\delta_*Q,Rh_*H)\\
+ &amp;\simeq\operatorname{Hom}(h^{-1}\delta_*Q,H)\\
+ &amp;\simeq\operatorname{Hom}(v^{-1}Q,i^!H)
+ \simeq\operatorname{Hom}(Q,Rv_*i^!H).
+ \end{aligned}
+ \qquad\text{(13a)}
+\]</span>
+Thus <span class="math" data-tex="\(\delta^!Rh_*H\simeq Rv_*i^!H\)">\(\delta^!Rh_*H\simeq Rv_*i^!H\)</span>, with the isomorphism fixed by these adjunctions. Apply it to the ordinary unit <span class="math" data-tex="\(K\to Rh_*h^{-1}K\)">\(K\to Rh_*h^{-1}K\)</span>, then take global sections. The result is (13), since <span class="math" data-tex="\(R\Gamma(W;i^!h^{-1}K)=R\Gamma_W(Y;h^{-1}K)\)">\(R\Gamma(W;i^!h^{-1}K)=R\Gamma_W(Y;h^{-1}K)\)</span>. This proves its map and support, without imposing properness on <span class="math" data-tex="\(h\)">\(h\)</span> or choosing a pullback of dualizing complexes.</p>
+<p>For <span class="math" data-tex="\(h=(f,g)\)">\(h=(f,g)\)</span>, constructible duality gives the evaluated comparison</p>
+<span class="math math-display" data-tex="\[
+h^{-1}K
+=f^{-1}F\otimes g^{-1}D_XF
+\simeq A\otimes D_YB.
+\qquad\text{(14)}
+\]">\[
+h^{-1}K
+=f^{-1}F\otimes g^{-1}D_XF
+\simeq A\otimes D_YB.
+\qquad\text{(14)}
+\]</span>
+<p>Here <span class="math" data-tex="\(D_Y(g^!F)\simeq g^{-1}D_XF\)">\(D_Y(g^!F)\simeq g^{-1}D_XF\)</span>, by exceptional-Hom duality and biduality. Both sides are supported on <span class="math" data-tex="\(T\)">\(T\)</span>; therefore the class pulled back in (13) refines from support <span class="math" data-tex="\(W\)">\(W\)</span> to <span class="math" data-tex="\(Z=W\cap T\)">\(Z=W\cap T\)</span>.</p>
+<p>Apply <span class="math" data-tex="\(\phi\)">\(\phi\)</span> to the first factor and then the ordered contraction
+<span class="math" data-tex="\(B\otimes D_YB\to\omega_Y\)">\(B\otimes D_YB\to\omega_Y\)</span>. This defines</p>
+<span class="math math-display" data-tex="\[
+C(\phi)\in H^0_Z(Y;\omega_Y).
+\qquad\text{(15)}
+\]">\[
+C(\phi)\in H^0_Z(Y;\omega_Y).
+\qquad\text{(15)}
+\]</span>
+<p>Construction (11)–(15) does <strong>not</strong> require (4). Only integrating it and using the finite intermediate trace will require compactness. The contraction is symmetry followed by dual-first evaluation, so its point value is the supertrace with signs <span class="math" data-tex="\((-1)^j\)">\((-1)^j\)</span>.</p>
+<p>The class is linear in <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, invariant under an isomorphism of the coefficient complex compatible with <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and compatible with open restriction. These follow from the actual units, counits, support comparison and evaluation: conjugating the coefficient object conjugates the identity in (12), and evaluation cancels the two conjugate factors.</p>
+<h2 id="the-compact-support-trace-square">The compact-support trace square</h2>
+<p><strong>Theorem.</strong> Under (1) and (4), with the finite-rank meaning (10),</p>
+<span class="math math-display" data-tex="\[
+L(\phi)=\int_Y C(\phi).
+\qquad\text{(16)}
+\]">\[
+L(\phi)=\int_Y C(\phi).
+\qquad\text{(16)}
+\]</span>
+<p>The integral is the map from support <span class="math" data-tex="\(Z\)">\(Z\)</span> to compact support, followed by the proper point trace <span class="math" data-tex="\(R\Gamma_c(Y;\omega_Y)\to k\)">\(R\Gamma_c(Y;\omega_Y)\to k\)</span>.</p>
+<p>First suppose that <span class="math" data-tex="\(S\)">\(S\)</span> is compact. Then <span class="math" data-tex="\(C\)">\(C\)</span> is perfect, and proper duality for <span class="math" data-tex="\(X\to\mathrm{pt}\)">\(X\to\mathrm{pt}\)</span> identifies
+<span class="math" data-tex="\(R\Gamma(X;D_XF)\)">\(R\Gamma(X;D_XF)\)</span> with <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>. The product and diagonal maps in the proper characteristic-class proof, <strong>before contraction</strong>, identify (12) with the tensor representing <span class="math" data-tex="\(\mathrm{id}_C\)">\(\mathrm{id}_C\)</span>. This uses its Hom comparison and evaluation square, not only its final identity index formula.</p>
+<p>The ordinary <span class="math" data-tex="\(f\)">\(f\)</span>-pullback and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> send the first tensor factor to <span class="math" data-tex="\(P\)">\(P\)</span> by <span class="math" data-tex="\(a\)">\(a\)</span>. Perfect duality and the compact support cutoff identify <span class="math" data-tex="\(P^\vee\)">\(P^\vee\)</span> with <span class="math" data-tex="\(R\Gamma(T;(D_YB)|_T)\)">\(R\Gamma(T;(D_YB)|_T)\)</span>: the internal-Hom formula gives <span class="math" data-tex="\(D_Y(R\Gamma_TB)=k_T\otimes D_YB\)">\(D_Y(R\Gamma_TB)=k_T\otimes D_YB\)</span>, and properly supported global duality gives the stated pairing. The second factor therefore goes by ordinary <span class="math" data-tex="\(g\)">\(g\)</span>-pullback to sections of <span class="math" data-tex="\(D_YB\)">\(D_YB\)</span> and then to its restriction on <span class="math" data-tex="\(T\)">\(T\)</span>. This is exactly the dual <span class="math" data-tex="\(b^\vee:C^\vee\to P^\vee\)">\(b^\vee:C^\vee\to P^\vee\)</span>.</p>
+<p>To verify the last assertion, pair a section of <span class="math" data-tex="\(R\Gamma_TB\)">\(R\Gamma_TB\)</span> with the pulled-back dual section. The evaluated internal-adjunction formula in the closed-support prerequisite says that integrating their contraction equals pairing the original dual section with (6): projection, the ordinary counit, evaluation, then the exceptional counit give the same ordered pairing. Compactness of <span class="math" data-tex="\(T\)">\(T\)</span> supplies the proper support throughout. Currying this equality determines <span class="math" data-tex="\(b^\vee\)">\(b^\vee\)</span>.</p>
+<p>The resulting trace square can be written</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+k&amp;\xrightarrow{\mathrm{coev}_C}&amp;C\otimes C^\vee\\
+&amp;&amp;\downarrow\,a\otimes b^\vee\\
+&amp;&amp;P\otimes P^\vee\xrightarrow{\mathrm{contr}_P}k.
+\end{array}
+\qquad\text{(17)}
+\]">\[
+\begin{array}{ccc}
+k&amp;\xrightarrow{\mathrm{coev}_C}&amp;C\otimes C^\vee\\
+&amp;&amp;\downarrow\,a\otimes b^\vee\\
+&amp;&amp;P\otimes P^\vee\xrightarrow{\mathrm{contr}_P}k.
+\end{array}
+\qquad\text{(17)}
+\]</span>
+<p>For a homogeneous basis <span class="math" data-tex="\(e_{j,r}\)">\(e_{j,r}\)</span> of a finite representative of <span class="math" data-tex="\(C\)">\(C\)</span>, its value is
+<span class="math" data-tex="\(\sum_{j,r}(-1)^j e^*_{j,r}(ba(e_{j,r}))\)">\(\sum_{j,r}(-1)^j e^*_{j,r}(ba(e_{j,r}))\)</span>. Boundary traces cancel by the point trace proof, leaving <span class="math" data-tex="\(\operatorname{str}(ba)\)">\(\operatorname{str}(ba)\)</span>.</p>
+<p>On the sheaf side, the same path is (13)–(15) followed by integration: it pulls both factors to <span class="math" data-tex="\(Y\)">\(Y\)</span>, retains the coincidence support, applies <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, and evaluates. Enlarging <span class="math" data-tex="\(Z\)">\(Z\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span> for this pairing uses the natural inclusion of support conditions; it does not change the final properly supported trace. The evaluated identity above verifies the bottom cell of this comparison, and the proper diagonal/Hom comparison verifies its top cell. Thus (17) is the full trace diagram with its maps specified. It proves (16) for compact <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<h2 id="a-compact-cutoff-removes-the-extra-support-assumption">A compact cutoff removes the extra support assumption</h2>
+<p>Keep compact <span class="math" data-tex="\(T\)">\(T\)</span>, but allow <span class="math" data-tex="\(S\)">\(S\)</span> to be noncompact. Choose a compact subanalytic <span class="math" data-tex="\(K_0\subset X\)">\(K_0\subset X\)</span> whose interior contains <span class="math" data-tex="\(f(T)\cup g(T)\)">\(f(T)\cup g(T)\)</span>. Such a set is obtained from finitely many closed coordinate balls covering this compact image, with closures inside their charts.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+G=R\Gamma_{K_0}F,\qquad c:G\longrightarrow F.
+\qquad\text{(18)}
+\]">\[
+G=R\Gamma_{K_0}F,\qquad c:G\longrightarrow F.
+\qquad\text{(18)}
+\]</span>
+<p>The perfect-operation theorem makes <span class="math" data-tex="\(G\)">\(G\)</span> constructible; its support is contained in <span class="math" data-tex="\(S\cap K_0\)">\(S\cap K_0\)</span>, hence compact. On the interior of <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, <span class="math" data-tex="\(c\)">\(c\)</span> is the identity comparison. It therefore induces an isomorphism</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_T(g^!G)\xrightarrow{\sim}R\Gamma_T(g^!F).
+\qquad\text{(19)}
+\]">\[
+R\Gamma_T(g^!G)\xrightarrow{\sim}R\Gamma_T(g^!F).
+\qquad\text{(19)}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(g^!c\)">\(g^!c\)</span> is an isomorphism on the open neighbourhood <span class="math" data-tex="\(g^{-1}(\operatorname{int}K_0)\)">\(g^{-1}(\operatorname{int}K_0)\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>; supported excision proves (19).</p>
+<p>Define the cutoff correspondence by</p>
+<span class="math math-display" data-tex="\[
+f^{-1}G\longrightarrow f^{-1}F
+\xrightarrow{\widehat\phi}R\Gamma_Tg^!F
+\xrightarrow{(19)^{-1}}R\Gamma_Tg^!G
+\longrightarrow g^!G.
+\qquad\text{(20)}
+\]">\[
+f^{-1}G\longrightarrow f^{-1}F
+\xrightarrow{\widehat\phi}R\Gamma_Tg^!F
+\xrightarrow{(19)^{-1}}R\Gamma_Tg^!G
+\longrightarrow g^!G.
+\qquad\text{(20)}
+\]</span>
+<p>Its common closed support <span class="math" data-tex="\(T_G\)">\(T_G\)</span> equals <span class="math" data-tex="\(T\)">\(T\)</span>. Support containment gives <span class="math" data-tex="\(T_G\subset T\)">\(T_G\subset T\)</span>, while at every <span class="math" data-tex="\(y\in T\)">\(y\in T\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span> agrees with <span class="math" data-tex="\(F\)">\(F\)</span> near both <span class="math" data-tex="\(f(y)\)">\(f(y)\)</span> and <span class="math" data-tex="\(g(y)\)">\(g(y)\)</span>, proving the reverse inclusion. On a neighbourhood of <span class="math" data-tex="\(T\)">\(T\)</span>, the maps and objects in (20) identify with those of <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. In particular <span class="math" data-tex="\(Z_G=Z\)">\(Z_G=Z\)</span>. Excision and the naturality of (11)–(15) consequently give</p>
+<span class="math math-display" data-tex="\[
+C(\phi_G)=C(\phi)\quad\text{in }H_Z^0(Y;\omega_Y).
+\qquad\text{(21)}
+\]">\[
+C(\phi_G)=C(\phi)\quad\text{in }H_Z^0(Y;\omega_Y).
+\qquad\text{(21)}
+\]</span>
+<p>For the traces, identify the intermediate supported complex by (19). Put <span class="math" data-tex="\(C_G=R\Gamma(X;G)\)">\(C_G=R\Gamma(X;G)\)</span>, and let <span class="math" data-tex="\(c_C:C_G\to C\)">\(c_C:C_G\to C\)</span> be induced by <span class="math" data-tex="\(c\)">\(c\)</span>. Naturality of ordinary pullback and of the exceptional counit gives</p>
+<span class="math math-display" data-tex="\[
+a_G=a\,c_C,\qquad b=c_C\,b_G.
+\qquad\text{(22)}
+\]">\[
+a_G=a\,c_C,\qquad b=c_C\,b_G.
+\qquad\text{(22)}
+\]</span>
+<p>Therefore <span class="math" data-tex="\(U_\phi=c_Cb_Ga\)">\(U_\phi=c_Cb_Ga\)</span> and <span class="math" data-tex="\(U_{\phi_G}=b_Gac_C\)">\(U_{\phi_G}=b_Gac_C\)</span>. Each degree factors through finite-dimensional <span class="math" data-tex="\(H^j(C_G)\)">\(H^j(C_G)\)</span>, so (9) proves equality of their alternating traces. Applying the compact-<span class="math" data-tex="\(S\)">\(S\)</span> theorem to <span class="math" data-tex="\(G\)">\(G\)</span> and using (21) proves (16) in full.</p>
+<p>This proves the noncompact-support extension in Exercise IX.9. The cutoff is a proof device: independence of its choice follows because its trace is the intrinsic finite-rank trace of (7), and its class is the intrinsic supported class (15).</p>
+<h2 id="local-contributions-keep-their-own-trace">Local contributions keep their own trace</h2>
+<p>For an isolated <span class="math" data-tex="\(y\in Z\)">\(y\in Z\)</span>, support excision separates <span class="math" data-tex="\(y\)">\(y\)</span> from <span class="math" data-tex="\(Z\setminus\{y\}\)">\(Z\setminus\{y\}\)</span>. Project (15) to
+<span class="math" data-tex="\(H^0_{\{y\}}(Y;\omega_Y)=k\)">\(H^0_{\{y\}}(Y;\omega_Y)=k\)</span>, using the normalized point trace, and call the result <span class="math" data-tex="\(C_y(\phi)\)">\(C_y(\phi)\)</span>. If <span class="math" data-tex="\(Z\)">\(Z\)</span> is finite, disjoint neighbourhoods give the direct sum of its point-supported complexes. Proper trace additivity and (16) then yield</p>
+<span class="math math-display" data-tex="\[
+L(\phi)=\sum_{y\in Z}C_y(\phi).
+\qquad\text{(23)}
+\]">\[
+L(\phi)=\sum_{y\in Z}C_y(\phi).
+\qquad\text{(23)}
+\]</span>
+<p>The point identification retains the orientation line and dimension shift in
+<span class="math" data-tex="\(i_y^!\omega_Y=k\)">\(i_y^!\omega_Y=k\)</span>; it introduces no additional ambient sign.</p>
+<p>Now specialize to <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span>, <span class="math" data-tex="\(g=\mathrm{id}\)">\(g=\mathrm{id}\)</span>, and <span class="math" data-tex="\(\phi:f^{-1}F\to F\)">\(\phi:f^{-1}F\to F\)</span>. At a fixed point <span class="math" data-tex="\(x\)">\(x\)</span>, ordinary restriction gives a stalk endomorphism <span class="math" data-tex="\(\phi_x\)">\(\phi_x\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is also isolated in <span class="math" data-tex="\(f^{-1}(x)\cap T\)">\(f^{-1}(x)\cap T\)</span>, there is a point-support action on the complexes of sections</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma_{\{x\}}(X;F)
+&amp;\longrightarrow R\Gamma_{f^{-1}(x)}(X;f^{-1}F)\\
+&amp;\longrightarrow R\Gamma_{f^{-1}(x)}(X;F)
+\longrightarrow R\Gamma_{\{x\}}(X;F).
+\end{aligned}
+\qquad\text{(24)}
+\]">\[
+\begin{aligned}
+R\Gamma_{\{x\}}(X;F)
+&amp;\longrightarrow R\Gamma_{f^{-1}(x)}(X;f^{-1}F)\\
+&amp;\longrightarrow R\Gamma_{f^{-1}(x)}(X;F)
+\longrightarrow R\Gamma_{\{x\}}(X;F).
+\end{aligned}
+\qquad\text{(24)}
+\]</span>
+<p>The last arrow projects the isolated component of the support, after intersecting it with <span class="math" data-tex="\(T\)">\(T\)</span>. It is not an ordinary stalk restriction. The induced traces of <span class="math" data-tex="\(\phi_x\)">\(\phi_x\)</span>, of (24), and the number <span class="math" data-tex="\(C_x(\phi)\)">\(C_x(\phi)\)</span> can differ.</p>
+<p>The local number depends only on the germ of the pair: if <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> are isomorphic on a neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> of an isolated fixed point, and the isomorphism intertwines their morphisms on <span class="math" data-tex="\(U\cap f^{-1}U\)">\(U\cap f^{-1}U\)</span>, then
+<span class="math math-display" data-tex="\[
+ C_x(\phi)=C_x(\phi&#x27;).
+ \qquad\text{(25)}
+\]">\[
+ C_x(\phi)=C_x(\phi&#x27;).
+ \qquad\text{(25)}
+\]</span>
+To prove this, choose a smaller neighbourhood whose image under <span class="math" data-tex="\(f\)">\(f\)</span> remains in <span class="math" data-tex="\(U\)">\(U\)</span>. Open restriction of (11)–(15) identifies the two classes there; excision and the same normalized point trace identify their local numbers. No global isomorphism is needed.</p>
+<h2 id="the-constant-sheaf-gives-a-graph-intersection">The constant sheaf gives a graph intersection</h2>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact, <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, and <span class="math" data-tex="\(\phi:f^{-1}k_X\to k_X\)">\(\phi:f^{-1}k_X\to k_X\)</span> the canonical map. Write <span class="math" data-tex="\(\Gamma_f=\{(f(x),x)\}\)">\(\Gamma_f=\{(f(x),x)\}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+C(\phi)=[\Gamma_f]\cap[\Delta_X],\qquad
+\sum_j(-1)^j\operatorname{tr}H^j(f^*)
+=\#([\Gamma_f]\cap[\Delta_X]).
+\qquad\text{(26)}
+\]">\[
+C(\phi)=[\Gamma_f]\cap[\Delta_X],\qquad
+\sum_j(-1)^j\operatorname{tr}H^j(f^*)
+=\#([\Gamma_f]\cap[\Delta_X]).
+\qquad\text{(26)}
+\]</span>
+<p>The class on the right is supported on the fixed locus, with its graph parameter identified with <span class="math" data-tex="\(X\)">\(X\)</span>. Both fundamental classes use the orientation coefficient inherited from the second projection, as in the normalized diagonal construction; no global orientation of <span class="math" data-tex="\(X\)">\(X\)</span> is chosen.</p>
+<p>On the coincidence set the first and second projections agree. Their orientation lines are therefore canonically identified there, and the integral orientation-square pairing supplies the output dualizing coefficient. This is the coefficient pairing in (26); it does not assert a global trivialization of the orientation line on <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span>. With an excess fixed locus, the intersection remains a supported cohomology class, as in the intersection prerequisite, rather than a literal zero-dimensional cycle.</p>
+<p><strong>Proof.</strong> Here <span class="math" data-tex="\(K=k_X\boxtimes\omega_X\)">\(K=k_X\boxtimes\omega_X\)</span>. The product evaluation identifies the diagonal identity (12) with the normalized diagonal fundamental class: in a coordinate ball, exceptional diagonal restriction cancels the normal orientation and dimension shift, and its point trace sends the positive generator to one. These are exactly the normal Thom and fundamental-cycle maps in the supported intersection prerequisite.</p>
+<p>Restriction to <span class="math" data-tex="\(h=(f,\mathrm{id})\)">\(h=(f,\mathrm{id})\)</span> pulls that diagonal class to the graph. The fundamental-class projection formula for a closed graph identifies this pullback, with its retained support, with the intersection of the graph fundamental class and the diagonal class. This is the actual supported cup/intersection construction: it is defined by the same restriction, normal counit and coefficient pairing, also at nontransverse intersections. In (14) the first factor is <span class="math" data-tex="\(k_X\)">\(k_X\)</span>, and the last contraction is <span class="math" data-tex="\(k_X\otimes\omega_X\to\omega_X\)">\(k_X\otimes\omega_X\to\omega_X\)</span>, the identity. Thus (15) is precisely that supported intersection class. Integrating and applying (16) proves (26). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When there are no coincidences, (15) lies in the zero support group, so the correspondence trace is zero. A positive-dimensional fixed locus still has the supported class and global integral; the finite point sum (23) is used only for a finite locus. Computing general isolated contributions from specialization and expanding or shrinking spaces is the next treatment.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="an-infinite-global-space-with-a-three-point-correspondence">An infinite global space with a three-point correspondence</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Take <span class="math" data-tex="\(X=\mathbb N\)">\(X=\mathbb N\)</span> with its discrete zero-dimensional analytic structure, <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, and <span class="math" data-tex="\(Y=\{a,b,c\}\)">\(Y=\{a,b,c\}\)</span>. Let
+<span class="math math-display" data-tex="\[
+ (f(a),g(a))=(1,2),\quad
+ (f(b),g(b))=(2,1),\quad
+ (f(c),g(c))=(3,3),
+\]">\[
+ (f(a),g(a))=(1,2),\quad
+ (f(b),g(b))=(2,1),\quad
+ (f(c),g(c))=(3,3),
+\]</span>
+and let the three coefficient maps be multiplication by <span class="math" data-tex="\(4,5,7\)">\(4,5,7\)</span>. Compute <span class="math" data-tex="\(T,Z,P,U_\phi\)">\(T,Z,P,U_\phi\)</span>, and both sides of (16). Repeat for <span class="math" data-tex="\(F[1]\)">\(F[1]\)</span>.</p>
+<p><strong>Solution.</strong> All points are in <span class="math" data-tex="\(S\)">\(S\)</span>, so <span class="math" data-tex="\(T=Y\)">\(T=Y\)</span> is compact and <span class="math" data-tex="\(Z=\{c\}\)">\(Z=\{c\}\)</span>. Global sections are the infinite-dimensional product <span class="math" data-tex="\(C=\prod_{n\ge1}k\)">\(C=\prod_{n\ge1}k\)</span> in degree zero, whereas <span class="math" data-tex="\(P=k^3\)">\(P=k^3\)</span>. Ordinary pullback followed by the coefficient maps gives
+<span class="math" data-tex="\(a(v)=(4v_1,5v_2,7v_3)\)">\(a(v)=(4v_1,5v_2,7v_3)\)</span>. The properly supported <span class="math" data-tex="\(g\)">\(g\)</span>-trace sends these three values to coordinates <span class="math" data-tex="\(2,1,3\)">\(2,1,3\)</span>, respectively. Hence
+<span class="math math-display" data-tex="\[
+ U_\phi(v)=(5v_2,4v_1,7v_3,0,\ldots).
+\]">\[
+ U_\phi(v)=(5v_2,4v_1,7v_3,0,\ldots).
+\]</span>
+Its image lies in the first three coordinates, and its finite-rank trace is <span class="math" data-tex="\(7\)">\(7\)</span>. Equivalently <span class="math" data-tex="\(ab\)">\(ab\)</span> on <span class="math" data-tex="\(P\)">\(P\)</span> has a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> off-diagonal block and diagonal entry <span class="math" data-tex="\(7\)">\(7\)</span>; its trace is <span class="math" data-tex="\(7\)">\(7\)</span>.</p>
+<p>Only <span class="math" data-tex="\(c\)">\(c\)</span> is a coincidence. At a zero-dimensional point the dualizing trace is ordinary coefficient evaluation, so <span class="math" data-tex="\(C_c(\phi)=7\)">\(C_c(\phi)=7\)</span>, and its integral is <span class="math" data-tex="\(7\)">\(7\)</span>. The two off-diagonal arrows contribute no local class. Shifting the input by <span class="math" data-tex="\([1]\)">\([1]\)</span> places both intermediate and global cohomology in degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, giving trace and local contribution <span class="math" data-tex="\(-7\)">\(-7\)</span>. Infinite-dimensional global sections have not been assigned an identity trace.</p>
+<h3 id="two-graded-loops-must-cancel-the-boundary-terms">Two graded loops must cancel the boundary terms</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be a point, <span class="math" data-tex="\(Y\)">\(Y\)</span> two points, and both maps constant. Let <span class="math" data-tex="\(F\)">\(F\)</span> be the complex <span class="math" data-tex="\(k^2\to k^3\)">\(k^2\to k^3\)</span> in degrees zero and one, with <span class="math" data-tex="\(d(x,y)=(x,0,0)\)">\(d(x,y)=(x,0,0)\)</span>. At the first point use the chain map with matrices
+<span class="math" data-tex="\(\operatorname{diag}(2,3)\)">\(\operatorname{diag}(2,3)\)</span> and <span class="math" data-tex="\(\operatorname{diag}(2,5,7)\)">\(\operatorname{diag}(2,5,7)\)</span>; at the second use <span class="math" data-tex="\(4\,\mathrm{id}_F\)">\(4\,\mathrm{id}_F\)</span>. Compute the local contributions and the global trace.</p>
+<p><strong>Solution.</strong> The first map commutes with <span class="math" data-tex="\(d\)">\(d\)</span>, since both composites send <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> to <span class="math" data-tex="\((2x,0,0)\)">\((2x,0,0)\)</span>. Its cohomology action is multiplication by <span class="math" data-tex="\(3\)">\(3\)</span> on <span class="math" data-tex="\(H^0=k\)">\(H^0=k\)</span>, and by <span class="math" data-tex="\(5,7\)">\(5,7\)</span> on <span class="math" data-tex="\(H^1=k^2\)">\(H^1=k^2\)</span>. Its local supertrace is <span class="math" data-tex="\(3-5-7=-9\)">\(3-5-7=-9\)</span>. On terms it is <span class="math" data-tex="\((2+3)-(2+5+7)=-9\)">\((2+3)-(2+5+7)=-9\)</span>; the boundary entry <span class="math" data-tex="\(2\)">\(2\)</span> cancels.</p>
+<p>The second local contribution is <span class="math" data-tex="\(4(1-2)=-4\)">\(4(1-2)=-4\)</span>. The exceptional trace from two points adds the maps, so the global endomorphism is their sum and its supertrace is <span class="math" data-tex="\(-13\)">\(-13\)</span>. Both points are coincidences, and the integral of the two point classes is <span class="math" data-tex="\(-9-4=-13\)">\(-9-4=-13\)</span>. Ignoring the degree-one coefficient or summing ungraded matrix traces would give a different number.</p>
+<h3 id="two-endpoint-stalks-cannot-be-the-two-local-contributions">Two endpoint stalks cannot be the two local contributions</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>On <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, put
+<span class="math math-display" data-tex="\[
+ f(t)=t+\tfrac1{10}t(1-t)e^{-t^2},\qquad F=k_{[0,1]}.
+\]">\[
+ f(t)=t+\tfrac1{10}t(1-t)e^{-t^2},\qquad F=k_{[0,1]}.
+\]</span>
+Verify that <span class="math" data-tex="\(f\)">\(f\)</span> is an analytic diffeomorphism with exactly two fixed points and that it preserves the interval. For the canonical coefficient isomorphism, compare the global trace, the two stalk traces, and the two point-support traces. What follows about the local contributions without yet computing each separately?</p>
+<p><strong>Solution.</strong> The derivative of <span class="math" data-tex="\(t(1-t)e^{-t^2}\)">\(t(1-t)e^{-t^2}\)</span> is
+<span class="math" data-tex="\((1-2t-2t^2+2t^3)e^{-t^2}\)">\((1-2t-2t^2+2t^3)e^{-t^2}\)</span>. Each of
+<span class="math" data-tex="\(|t|e^{-t^2},t^2e^{-t^2},|t|^3e^{-t^2}\)">\(|t|e^{-t^2},t^2e^{-t^2},|t|^3e^{-t^2}\)</span> is at most one, so its absolute value is at most seven. Thus <span class="math" data-tex="\(f&#x27;(t)\ge3/10&gt;0\)">\(f&#x27;(t)\ge3/10&gt;0\)</span>. Also <span class="math" data-tex="\(f(t)-t\to0\)">\(f(t)-t\to0\)</span> at both infinities. The map is bijective, and its nonzero derivative makes its inverse analytic. Its displacement vanishes exactly at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>; monotonicity makes it a homeomorphism of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>Here <span class="math" data-tex="\(T=[0,1]\)">\(T=[0,1]\)</span>, <span class="math" data-tex="\(Z=\{0,1\}\)">\(Z=\{0,1\}\)</span>, and <span class="math" data-tex="\(R\Gamma(\mathbb R;F)=k\)">\(R\Gamma(\mathbb R;F)=k\)</span>. Pullback of a constant interval section is the same section, so <span class="math" data-tex="\(L(\phi)=1\)">\(L(\phi)=1\)</span>. Both endpoint stalk actions are the identity on <span class="math" data-tex="\(k\)">\(k\)</span>, with trace one.</p>
+<p>Both endpoint costalks of the closed-interval sheaf are zero. At either endpoint, a small neighbourhood restricts <span class="math" data-tex="\(F\)">\(F\)</span> to a closed half-interval; deleting the endpoint leaves a contractible half-interval, and restriction of constant sections is an isomorphism. The localization triangle therefore has zero point-support term. The actions (24) have trace zero.</p>
+<p>Nevertheless <span class="math" data-tex="\(C_0(\phi)+C_1(\phi)=1\)">\(C_0(\phi)+C_1(\phi)=1\)</span> by (23). They cannot both equal their stalk traces, whose sum is two, nor both equal their point-support traces, whose sum is zero. Their individual values require the later local localization calculation; the discrepancy already follows from this complete global calculation.</p>
+<h3 id="a-reflection-changes-the-costalk-action">A reflection changes the costalk action</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(f(t)=1-t\)">\(f(t)=1-t\)</span>, <span class="math" data-tex="\(F=k_{[0,1]}[r]\)">\(F=k_{[0,1]}[r]\)</span>, and take the canonical coefficient map. Find the local contribution at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, the stalk trace, and the trace of (24). Explain the orientation sign in the last calculation.</p>
+<p><strong>Solution.</strong> The global section complex is <span class="math" data-tex="\(k[r]\)">\(k[r]\)</span>, and reflection fixes its constant section. Thus <span class="math" data-tex="\(L(\phi)=(-1)^r\)">\(L(\phi)=(-1)^r\)</span>. The only fixed point in the support is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, so its local contribution is the same number by (23). Its stalk is <span class="math" data-tex="\(k[r]\)">\(k[r]\)</span> with identity action, giving the same trace.</p>
+<p>Its point costalk is <span class="math" data-tex="\(\operatorname{or}_{\mathbb R,1/2}\otimes k[r-1]\)">\(\operatorname{or}_{\mathbb R,1/2}\otimes k[r-1]\)</span>. Reflection reverses the local orientation and acts by <span class="math" data-tex="\(-1\)">\(-1\)</span> on the point-support generator. One can compute this from the localization cokernel: deletion gives two components, and the quotient of <span class="math" data-tex="\(k^2\)">\(k^2\)</span> by the diagonal <span class="math" data-tex="\(k\)">\(k\)</span> is the support cohomology in degree one; exchanging the two components acts by <span class="math" data-tex="\(-1\)">\(-1\)</span>. The action (24) consequently has supertrace
+<span class="math" data-tex="\((-1)^{r-1}(-1)=(-1)^r\)">\((-1)^{r-1}(-1)=(-1)^r\)</span>. Using only the costalk Euler number and ignoring its induced map would give the opposite sign.</p>
+<h3 id="a-circle-map-has-a-negative-local-contribution">A circle map has a negative local contribution</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>Let <span class="math" data-tex="\(X=S^1\)">\(X=S^1\)</span>, <span class="math" data-tex="\(f(e^{2\pi it})=e^{4\pi it}\)">\(f(e^{2\pi it})=e^{4\pi it}\)</span>, <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, and take the canonical coefficient map. Compute the global trace and the local contribution at its fixed point. Compare with the stalk action, and with (26).</p>
+<p><strong>Solution.</strong> The map has exactly one fixed point: <span class="math" data-tex="\(2t=t\)">\(2t=t\)</span> modulo integers forces <span class="math" data-tex="\(t=0\)">\(t=0\)</span> modulo integers. The circle has <span class="math" data-tex="\(H^0=k,H^1=k\)">\(H^0=k,H^1=k\)</span>. The action on <span class="math" data-tex="\(H^0\)">\(H^0\)</span> is one. The action on <span class="math" data-tex="\(H^1\)">\(H^1\)</span> is multiplication by two: subdivide a positively oriented loop at the two preimages of a chosen point. Each of the two arcs maps once around the target loop, so evaluation of a pulled-back Čech or cellular degree-one cocycle on the loop is twice the original evaluation. This computes the induced cohomology map, rather than merely its stalk map.</p>
+<p>The global supertrace is <span class="math" data-tex="\(1-2=-1\)">\(1-2=-1\)</span>. Since the fixed locus is one point, (23) gives local contribution <span class="math" data-tex="\(-1\)">\(-1\)</span>. Its stalk map is the identity on <span class="math" data-tex="\(k\)">\(k\)</span>, with trace <span class="math" data-tex="\(+1\)">\(+1\)</span>. The supported graph-diagonal intersection in (26) therefore has number <span class="math" data-tex="\(-1\)">\(-1\)</span>, agreeing with the global trace. No transversality-based formula was needed to infer this particular number.</p>
+<h3 id="compactness-of-the-common-support-is-a-substantive-hypothesis">Compactness of the common support is a substantive hypothesis</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>On the same infinite discrete <span class="math" data-tex="\(X=\mathbb N\)">\(X=\mathbb N\)</span>, take <span class="math" data-tex="\(Y=X\)">\(Y=X\)</span>, <span class="math" data-tex="\(f=g=\mathrm{id}\)">\(f=g=\mathrm{id}\)</span>, <span class="math" data-tex="\(F=k_X\)">\(F=k_X\)</span>, and <span class="math" data-tex="\(\phi=\mathrm{id}\)">\(\phi=\mathrm{id}\)</span>. Explain exactly which construction remains valid and which trace argument fails. Does replacing <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by zero make compactness a logically necessary condition for every trace?</p>
+<p><strong>Solution.</strong> The supported class (15) is still defined, with <span class="math" data-tex="\(S=T=Z=X\)">\(S=T=Z=X\)</span>. At every point it is the coefficient identity class. But <span class="math" data-tex="\(P=C=\prod_{n\ge1}k\)">\(P=C=\prod_{n\ge1}k\)</span> is not perfect, and the identity has infinite-dimensional image. No finite-dimensional invariant subspace can contain it, so (8) does not define its trace. The infinitely many local contributions cannot be summed by the finite support argument (23), and there is no proper point trace for this noncompactly supported class.</p>
+<p>For the zero correspondence the induced endomorphism has rank zero, so its finite-rank trace is zero even though <span class="math" data-tex="\(T\)">\(T\)</span> is still noncompact. Thus (4) is a sufficient geometric hypothesis for the theorem, not a claim that every individually traceable map must have compact <span class="math" data-tex="\(T\)">\(T\)</span>. The counterexample concerns the identity and the failure of the theorem's general finiteness and proper integration guarantees.</p>
+<h2 id="references-and-further-reading">References and further reading</h2>
+<p>Lefschetz traces of constructible correspondences go back to Kashiwara's microlocal Lefschetz fixed-point formula for constructible sheaves. The compact cutoff argument above supplies the extension, with finite-rank trace understood explicitly.</p>
+<p>Y. Matsui and K. Takeuchi, <a href="https://arxiv.org/abs/0812.4480v1"><em>Microlocal study of Lefschetz fixed point formulas for higher-dimensional fixed point sets</em>, arXiv0812.4480v1, 24 December 2008</a>, §2, describes the self-map characteristic class and local contributions with complex coefficients and compact sheaf support. Its later sections study smooth fixed components and Lefschetz cycles under additional hypotheses. Those component-localization results are separate from the general correspondence trace proved here.</p>
+<p>Y. Ike, <a href="https://arxiv.org/abs/1504.05439v3"><em>Microlocal Lefschetz classes of graph trace kernels</em>, arXiv1504.05439v3, 15 February 2016</a>, §3.2, packages a self-map identity and evaluation into a graph trace kernel. Lemma3.7 constructs its two maps by diagonal and graph adjunction; equations(3.15)–(3.16) recover the graded trace over a point. The paper uses the graph <span class="math" data-tex="\((x,f(x))\)">\((x,f(x))\)</span> and dual-first factors. Comparing with our <span class="math" data-tex="\((f(x),x)\)">\((f(x),x)\)</span> requires the graded exchange of both factors. Its microlocal composition theorem is further reading.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/lefschetz-traces-of-constructible-correspondences.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

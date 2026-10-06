@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Chebotarev density theorem · Class field theory</title>
+<meta name="description" content="A lesson of the course Class field theory. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/the-chebotarev-density-theorem.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Class field theory</a> <span aria-hidden="true">›</span> <span>Lesson 22 of 24</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), in Codex, at the Ultra setting (maximum reasoning effort). The writing AI checked the arguments and all exercise solutions. No independent review or formal verification is claimed.</p>
+<p class="small">English only for now · CC0 1.0</p>
+</aside>
+<details class="assumed" open><summary>What this lesson assumes (6)</summary><ul><li><a href="global-existence-and-the-idelic-class-field-correspondence.html">Global existence and the idèlic class field correspondence</a></li><li><a href="ray-class-fields-conductors-and-ideal-reciprocity.html">Ray class fields, conductors and ideal reciprocity</a></li><li><a href="artin-l-functions-conductors-and-discriminants.html">Artin L-functions, conductors and discriminants</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a></li><li><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-16">The Dedekind zeta function and the analytic class number formula</a></li><li><a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse's norm theorem</a></li></ul></details>
+<article class="lesson">
+<h1 id="the-chebotarev-density-theorem">The Chebotarev density theorem</h1>
+<p><em>Written by OpenAI GPT-6.1 Sol in Codex, Ultra effort, October 2026. Self-checked by the writing AI; no independent review is claimed. Public domain (CC0).</em></p>
+<p><strong>Lesson 22.</strong> Every conjugacy class of a finite Galois group occurs at infinitely many unramified primes. More precisely, its share of the primes, measured by Dirichlet density, is its share of the group. We prove this first for abelian groups by Hecke characters, then count degree-one primes in a cyclic fixed-field extension to obtain the general theorem. Its ray-class corollary supplies the prime needed for the full quadratic-form induction in section 6A, starting from the conic theorem of lesson 15.</p>
+<p>The arithmetic Frobenius and Artin L-function conventions are those of <a href="artin-l-functions-conductors-and-discriminants.html">Artin L-functions, conductors and discriminants</a>. The analytic number-field inputs are the written Theorem 10.1 of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ADL-10">Hecke L-functions and the Dedekind zeta function</a>, which makes a nontrivial finite-order Hecke L-function holomorphic at 1, and Theorem 16.2 of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#NT-ANT-16">The Dedekind zeta function and the analytic class number formula</a>, which gives the positive simple zeta pole there. Neither input uses Chebotarev. The function-field versions needed here follow directly from section 6 of the preceding lesson, as checked below. We use the written existence and ray correspondence of lessons 17–18.</p>
+<p><strong>Prerequisite proof availability.</strong> The named results below identify specific programme lessons. The <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/proof-dependencies.html#lesson-22">prerequisite record</a> distinguishes published proofs, supplied owner texts awaiting publication, and missing full proofs. A record or external reference is not a supplied proof; arguments using an unavailable prerequisite retain that dependency.</p>
+<h2 id="1-which-density-is-being-computed">1. Which density is being computed?</h2>
+<p>For a global field <span class="math" data-tex="\(K\)">\(K\)</span>, let <span class="math" data-tex="\(\mathcal P_K\)">\(\mathcal P_K\)</span> denote its finite places and write <span class="math" data-tex="\(N\mathfrak p\)">\(N\mathfrak p\)</span> for the residue cardinality. For <span class="math" data-tex="\(S\subseteq\mathcal P_K\)">\(S\subseteq\mathcal P_K\)</span>, define its <strong>Dirichlet density</strong>, when the limit exists, by
+<span class="math math-display" data-tex="\[
+\delta_K(S)=\lim_{s\downarrow1}
+\frac{\sum_{\mathfrak p\in S}(N\mathfrak p)^{-s}}
+     {\log(1/(s-1))}.
+\tag{1}
+\]">\[
+\delta_K(S)=\lim_{s\downarrow1}
+\frac{\sum_{\mathfrak p\in S}(N\mathfrak p)^{-s}}
+     {\log(1/(s-1))}.
+\tag{1}
+\]</span>
+Here <span class="math" data-tex="\(s\)">\(s\)</span> is real and tends to 1 from above. Its <strong>natural density</strong>, when it exists, is
+<span class="math math-display" data-tex="\[
+\lim_{X\to\infty}
+\frac{\#\{\mathfrak p\in S:N\mathfrak p\leq X\}}
+     {\#\{\mathfrak p\in\mathcal P_K:N\mathfrak p\leq X\}}.
+\tag{2}
+\]">\[
+\lim_{X\to\infty}
+\frac{\#\{\mathfrak p\in S:N\mathfrak p\leq X\}}
+     {\#\{\mathfrak p\in\mathcal P_K:N\mathfrak p\leq X\}}.
+\tag{2}
+\]</span>
+The two are different definitions. Our Chebotarev theorem asserts (1).</p>
+<p><strong>Proposition 22.1.</strong> The full set of primes has Dirichlet density 1. Densities lie in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, are monotone, are unchanged by finite modifications, and are finitely additive on disjoint sets whose densities exist. Complements have density <span class="math" data-tex="\(1-\delta\)">\(1-\delta\)</span>. More generally a set whose prime sum remains bounded as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span> has density zero. Whenever the natural density (2) exists, its Dirichlet density exists and equals it.</p>
+<p><strong>Proof.</strong> The zeta Euler product gives
+<span class="math math-display" data-tex="\[
+\log\zeta_K(s)=\sum_{\mathfrak p}(N\mathfrak p)^{-s}
+ +\sum_{\mathfrak p}\sum_{m\geq2}\frac{(N\mathfrak p)^{-ms}}m.
+\tag{3}
+\]">\[
+\log\zeta_K(s)=\sum_{\mathfrak p}(N\mathfrak p)^{-s}
+ +\sum_{\mathfrak p}\sum_{m\geq2}\frac{(N\mathfrak p)^{-ms}}m.
+\tag{3}
+\]</span>
+For <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>, the last sum is at most <span class="math" data-tex="\(2\sum_{\mathfrak p}(N\mathfrak p)^{-2}\)">\(2\sum_{\mathfrak p}(N\mathfrak p)^{-2}\)</span>, a convergent subseries of <span class="math" data-tex="\(\zeta_K(2)\)">\(\zeta_K(2)\)</span>. The positive simple pole at 1 gives
+<span class="math math-display" data-tex="\[
+\sum_{\mathfrak p}(N\mathfrak p)^{-s}
+=\log\frac1{s-1}+O_K(1).
+\tag{4}
+\]">\[
+\sum_{\mathfrak p}(N\mathfrak p)^{-s}
+=\log\frac1{s-1}+O_K(1).
+\tag{4}
+\]</span>
+For number fields the zeta input is the exact written theorem identified above. For function fields, use the test <span class="math" data-tex="\(f=\prod_v\mathbf1_{\mathcal O_v}\)">\(f=\prod_v\mathbf1_{\mathcal O_v}\)</span> and the trivial character in (29)–(30) of the preceding lesson. Its zeta integral is <span class="math" data-tex="\(\zeta_K(s)\)">\(\zeta_K(s)\)</span>. The positive-level parts are finite Laurent polynomials. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span> the first correction has a simple pole with residue <span class="math" data-tex="\(\kappa\widehat f(0)/\log R&gt;0\)">\(\kappa\widehat f(0)/\log R&gt;0\)</span>; the second correction is regular. Indeed <span class="math" data-tex="\(\widehat f(0)=\operatorname{vol}(\prod_v\mathcal O_v)&gt;0\)">\(\widehat f(0)=\operatorname{vol}(\prod_v\mathcal O_v)&gt;0\)</span>, with only finitely many local volumes different from 1. Thus the pole is simple and positive, proving (4) here too.</p>
+<p>Replacing the denominator of (1) by the full prime sum consequently gives the same limit. All assertions about bounds, inclusion, disjoint sums, complements and bounded contributions now follow from nonnegative summands and elementary limit laws. Finite contributions are bounded. Countable additivity is not asserted: a countable union of individual zero-density primes is the full prime set.</p>
+<p>For the last assertion, write <span class="math" data-tex="\(A_S(t),A_K(t)\)">\(A_S(t),A_K(t)\)</span> for the two prime counts and suppose <span class="math" data-tex="\(A_S(t)/A_K(t)\to d\)">\(A_S(t)/A_K(t)\to d\)</span>. Partial summation gives
+<span class="math math-display" data-tex="\[
+\sum_{\mathfrak p\in S}(N\mathfrak p)^{-s}
+=s\int_1^\infty A_S(t)t^{-s-1}\,dt
+\qquad(s&gt;1).
+\tag{5}
+\]">\[
+\sum_{\mathfrak p\in S}(N\mathfrak p)^{-s}
+=s\int_1^\infty A_S(t)t^{-s-1}\,dt
+\qquad(s&gt;1).
+\tag{5}
+\]</span>
+The endpoint at infinity vanishes: choose <span class="math" data-tex="\(1&lt;\sigma&lt;s\)">\(1&lt;\sigma&lt;s\)</span>; convergence of the prime sum at <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> bounds <span class="math" data-tex="\(A_K(t)=O(t^\sigma)\)">\(A_K(t)=O(t^\sigma)\)</span>. For any <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, choose <span class="math" data-tex="\(T\)">\(T\)</span> beyond which <span class="math" data-tex="\(|A_S(t)-dA_K(t)|\leq\epsilon A_K(t)\)">\(|A_S(t)-dA_K(t)|\leq\epsilon A_K(t)\)</span>. The integral of the difference on <span class="math" data-tex="\([1,T]\)">\([1,T]\)</span> stays bounded as <span class="math" data-tex="\(s\downarrow1\)">\(s\downarrow1\)</span>; the tail is at most <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> times the full prime sum. Divide by that diverging sum in (4) and let <span class="math" data-tex="\(\epsilon\to0\)">\(\epsilon\to0\)</span>. This proves the equality of densities. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A useful relative version of a zero-density observation will be used in the proof. If <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is finite and <span class="math" data-tex="\(u\)">\(u\)</span> is a prime of <span class="math" data-tex="\(E\)">\(E\)</span> of residue degree <span class="math" data-tex="\(f(u/v)&gt;1\)">\(f(u/v)&gt;1\)</span> over <span class="math" data-tex="\(K\)">\(K\)</span>, then <span class="math" data-tex="\(Nu=(Nv)^{f(u/v)}\)">\(Nu=(Nv)^{f(u/v)}\)</span>. There are at most <span class="math" data-tex="\([E:K]\)">\([E:K]\)</span> primes over <span class="math" data-tex="\(v\)">\(v\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+\sum_{\substack{u\in\mathcal P_E\\f(u/v)&gt;1}}(Nu)^{-s}
+\leq[E:K]\sum_{v\in\mathcal P_K}(Nv)^{-2s}=O_{E/K}(1)
+\quad(s\downarrow1).
+\tag{6}
+\]">\[
+\sum_{\substack{u\in\mathcal P_E\\f(u/v)&gt;1}}(Nu)^{-s}
+\leq[E:K]\sum_{v\in\mathcal P_K}(Nv)^{-2s}=O_{E/K}(1)
+\quad(s\downarrow1).
+\tag{6}
+\]</span>
+Thus these relative degree-greater-than-one primes contribute no Dirichlet density. In particular this argument does not discard degree-one primes merely because their degree over the prime field is larger than one.</p>
+<h2 id="2-finite-order-hecke-characters-do-not-vanish-at-1">2. Finite-order Hecke characters do not vanish at 1</h2>
+<p><strong>Proposition 22.2.</strong> If <span class="math" data-tex="\(\omega:C_K\to\mathbf C^\times\)">\(\omega:C_K\to\mathbf C^\times\)</span> is a nontrivial finite-order continuous Hecke character, then its primitive L-function is holomorphic and nonzero at 1.</p>
+<p><strong>Proof.</strong> The kernel is open of finite index. Global existence gives its finite abelian class field <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, and reciprocity identifies <span class="math" data-tex="\(\omega\)">\(\omega\)</span> with a nontrivial character of <span class="math" data-tex="\(G=\operatorname{Gal}(L/K)\)">\(G=\operatorname{Gal}(L/K)\)</span>. For every nontrivial character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>, Theorem 21.2 identifies its Artin L-function with its primitive finite-order Hecke L-function. For number fields the Hecke theorem makes it holomorphic at 1: a nontrivial finite-order character cannot be a pure imaginary norm twist, since the norm direction is connected and its finite image must be trivial.</p>
+<p>For function fields the same holomorphy follows from the explicit corrections in the preceding lesson. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial on <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>, its correction is zero and its zeta integral is a finite Laurent polynomial. If it is trivial there, it has <span class="math" data-tex="\(\chi(c)=\lambda\ne1\)">\(\chi(c)=\lambda\ne1\)</span>, because <span class="math" data-tex="\(c\)">\(c\)</span> generates the norm quotient and the global character is nontrivial. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, both denominators <span class="math" data-tex="\(1-\lambda^{-1}\)">\(1-\lambda^{-1}\)</span> and <span class="math" data-tex="\(1-\lambda^{-1}R^{-1}\)">\(1-\lambda^{-1}R^{-1}\)</span> are nonzero. Thus its integral and primitive L-function are holomorphic there. This checks explicitly the possible constant-field characters.</p>
+<p>Because <span class="math" data-tex="\(G\)">\(G\)</span> is abelian, all irreducible characters have dimension one. Proposition 21.1 gives
+<span class="math math-display" data-tex="\[
+\zeta_L(s)=\zeta_K(s)\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L_K(s,\chi).
+\tag{7}
+\]">\[
+\zeta_L(s)=\zeta_K(s)\prod_{\substack{\chi\in\widehat G\\\chi\ne1}}L_K(s,\chi).
+\tag{7}
+\]</span>
+Both zeta functions have simple poles with positive residues at 1. Their quotient is holomorphic and has nonzero value equal to the quotient of those residues. Every factor on the right of the quotient identity is holomorphic at 1, so none can vanish there. In particular <span class="math" data-tex="\(L_K(1,\omega)\ne0\)">\(L_K(1,\omega)\ne0\)</span>. This uses no density theorem or assumption about primes in a ray class. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If extra primes are omitted to describe an imprimitive character modulo a larger ray modulus, its L-function is multiplied by finitely many factors <span class="math" data-tex="\(1-\chi(\operatorname{Frob}_v)(Nv)^{-s}\)">\(1-\chi(\operatorname{Frob}_v)(Nv)^{-s}\)</span>. At 1 these are nonzero, because <span class="math" data-tex="\(|\chi(\operatorname{Frob}_v)|=1&lt;Nv\)">\(|\chi(\operatorname{Frob}_v)|=1&lt;Nv\)</span>. The same nonvanishing statement holds for that imprimitive product, but the primitive identity (7) keeps its Euler factors explicit.</p>
+<h2 id="3-the-abelian-density-theorem">3. The abelian density theorem</h2>
+<p><strong>Theorem 22.3.</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be a finite abelian extension with group <span class="math" data-tex="\(G\)">\(G\)</span>. For each <span class="math" data-tex="\(\sigma\in G\)">\(\sigma\in G\)</span>, the unramified primes with arithmetic Frobenius <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> have Dirichlet density <span class="math" data-tex="\(1/|G|\)">\(1/|G|\)</span>.</p>
+<p><strong>Proof.</strong> Remove the finitely many ramified primes, and for <span class="math" data-tex="\(\chi\in\widehat G\)">\(\chi\in\widehat G\)</span> put
+<span class="math math-display" data-tex="\[
+S_\chi(s)=\sum_{v\text{ unramified}}\chi(\operatorname{Frob}_v)(Nv)^{-s}.
+\tag{8}
+\]">\[
+S_\chi(s)=\sum_{v\text{ unramified}}\chi(\operatorname{Frob}_v)(Nv)^{-s}.
+\tag{8}
+\]</span>
+The logarithmic Euler expansion differs from this first-power sum by a uniformly bounded sum near 1: the terms of power at least two are bounded exactly as in (3), and the removed finite places contribute bounded logarithmic factors. For <span class="math" data-tex="\(\chi\ne1\)">\(\chi\ne1\)</span>, Proposition 22.2 permits a holomorphic logarithm of <span class="math" data-tex="\(L_K(s,\chi)\)">\(L_K(s,\chi)\)</span> in a disk about 1. On the real segment <span class="math" data-tex="\(1&lt;s&lt;1+\epsilon\)">\(1&lt;s&lt;1+\epsilon\)</span>, this logarithm differs from the absolutely convergent Euler logarithm by a constant multiple of <span class="math" data-tex="\(2\pi i\)">\(2\pi i\)</span>, since both are continuous logarithms of the same nonzero function. It follows that
+<span class="math math-display" data-tex="\[
+S_\chi(s)=O(1)\quad(\chi\ne1),\qquad
+S_1(s)=\log\frac1{s-1}+O(1).
+\tag{9}
+\]">\[
+S_\chi(s)=O(1)\quad(\chi\ne1),\qquad
+S_1(s)=\log\frac1{s-1}+O(1).
+\tag{9}
+\]</span>
+Finite abelian character orthogonality gives
+<span class="math math-display" data-tex="\[
+\mathbf1_{g=\sigma}=\frac1{|G|}\sum_{\chi\in\widehat G}
+\overline{\chi(\sigma)}\chi(g).
+\tag{10}
+\]">\[
+\mathbf1_{g=\sigma}=\frac1{|G|}\sum_{\chi\in\widehat G}
+\overline{\chi(\sigma)}\chi(g).
+\tag{10}
+\]</span>
+For clarity, if <span class="math" data-tex="\(g\sigma^{-1}\ne1\)">\(g\sigma^{-1}\ne1\)</span>, choose a character nontrivial on it; multiplying the character sum by that value both permutes its terms and changes its value, forcing it to be zero. If <span class="math" data-tex="\(g=\sigma\)">\(g=\sigma\)</span>, all terms are 1. Characters separate elements by the written finite duality theorem used in lessons 3 and 18. Multiply (10) by <span class="math" data-tex="\((Nv)^{-s}\)">\((Nv)^{-s}\)</span>, sum over primes, and insert (9). Only the trivial character contributes the logarithmic main term. Hence the desired prime sum is
+<span class="math" data-tex="\(|G|^{-1}\log(1/(s-1))+O(1)\)">\(|G|^{-1}\log(1/(s-1))+O(1)\)</span>, which proves the density. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-degree-one-count-in-a-cyclic-fixed-field">4. The degree-one count in a cyclic fixed field</h2>
+<p><strong>Theorem 22.4 (Chebotarev).</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite Galois, with group <span class="math" data-tex="\(G\)">\(G\)</span>, and let <span class="math" data-tex="\(C\)">\(C\)</span> be a conjugacy class in <span class="math" data-tex="\(G\)">\(G\)</span>. The unramified primes of <span class="math" data-tex="\(K\)">\(K\)</span> whose arithmetic Frobenius conjugacy class is <span class="math" data-tex="\(C\)">\(C\)</span> have Dirichlet density
+<span class="math math-display" data-tex="\[
+\delta_K(\mathcal P_C)=\frac{|C|}{|G|}.
+\tag{11}
+\]">\[
+\delta_K(\mathcal P_C)=\frac{|C|}{|G|}.
+\tag{11}
+\]</span></p>
+<p><strong>Proof.</strong> Choose <span class="math" data-tex="\(\sigma\in C\)">\(\sigma\in C\)</span>, put <span class="math" data-tex="\(H=\langle\sigma\rangle\)">\(H=\langle\sigma\rangle\)</span>, <span class="math" data-tex="\(M=L^H\)">\(M=L^H\)</span>, and <span class="math" data-tex="\(Z=Z_G(\sigma)\)">\(Z=Z_G(\sigma)\)</span>. The extension <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is cyclic with group <span class="math" data-tex="\(H\)">\(H\)</span>. Theorem 22.3 says that the primes <span class="math" data-tex="\(u\)">\(u\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> with Frobenius exactly <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> have density <span class="math" data-tex="\(1/|H|\)">\(1/|H|\)</span>. Omit the primes over the finite ramification set of <span class="math" data-tex="\(L/K\)">\(L/K\)</span>, and also the relative degree-greater-than-one primes. Formula (6) shows that the latter omission changes the weighted prime sum by <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. For the remaining primes, <span class="math" data-tex="\(Nu=Nv\)">\(Nu=Nv\)</span> for <span class="math" data-tex="\(v=u\cap K\)">\(v=u\cap K\)</span>.</p>
+<p>We count how many such <span class="math" data-tex="\(u\)">\(u\)</span> lie over a given unramified <span class="math" data-tex="\(v\)">\(v\)</span>. Choose a Frobenius <span class="math" data-tex="\(\tau\in G\)">\(\tau\in G\)</span> at <span class="math" data-tex="\(v\)">\(v\)</span>. Its action on the embeddings of <span class="math" data-tex="\(M\)">\(M\)</span>, identified with <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, has cycles of lengths equal to the residue degrees of primes over <span class="math" data-tex="\(v\)">\(v\)</span>. One can see this directly by completing: the orbits of the decomposition group <span class="math" data-tex="\(\langle\tau\rangle\)">\(\langle\tau\rangle\)</span> correspond to the completions of <span class="math" data-tex="\(M\)">\(M\)</span>, and the orbit length is their unramified residue degree. A degree-one prime is a fixed coset <span class="math" data-tex="\(gH\)">\(gH\)</span>, equivalent to <span class="math" data-tex="\(g^{-1}\tau g\in H\)">\(g^{-1}\tau g\in H\)</span>. Its Frobenius in <span class="math" data-tex="\(L/M\)">\(L/M\)</span> is this element of <span class="math" data-tex="\(H\)">\(H\)</span>; it is independent of the coset representative because <span class="math" data-tex="\(H\)">\(H\)</span> is cyclic.</p>
+<p>Consequently a degree-one prime contributes to the cyclic set with Frobenius <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> precisely when
+<span class="math math-display" data-tex="\[
+g^{-1}\tau g=\sigma.
+\tag{12}
+\]">\[
+g^{-1}\tau g=\sigma.
+\tag{12}
+\]</span>
+If <span class="math" data-tex="\(\tau\notin C\)">\(\tau\notin C\)</span>, there are none. If <span class="math" data-tex="\(\tau\in C\)">\(\tau\in C\)</span>, the set of solutions <span class="math" data-tex="\(g\)">\(g\)</span> has cardinality <span class="math" data-tex="\(|Z|\)">\(|Z|\)</span>: after choosing one solution <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, all others are <span class="math" data-tex="\(g_0z\)">\(g_0z\)</span>, <span class="math" data-tex="\(z\in Z\)">\(z\in Z\)</span>. Each right coset of <span class="math" data-tex="\(H\)">\(H\)</span> accounts for exactly <span class="math" data-tex="\(|H|\)">\(|H|\)</span> of these solutions, since <span class="math" data-tex="\(H\subseteq Z\)">\(H\subseteq Z\)</span>. Thus there are exactly <span class="math" data-tex="\(|Z|/|H|\)">\(|Z|/|H|\)</span> contributing primes of <span class="math" data-tex="\(M\)">\(M\)</span> over every <span class="math" data-tex="\(v\in\mathcal P_C\)">\(v\in\mathcal P_C\)</span>.</p>
+<p>Taking weighted sums gives
+<span class="math math-display" data-tex="\[
+\sum_{\substack{u\in\mathcal P_M\\\operatorname{Frob}_u(L/M)=\sigma}}(Nu)^{-s}
+=\frac{|Z|}{|H|}\sum_{v\in\mathcal P_C}(Nv)^{-s}+O(1).
+\tag{13}
+\]">\[
+\sum_{\substack{u\in\mathcal P_M\\\operatorname{Frob}_u(L/M)=\sigma}}(Nu)^{-s}
+=\frac{|Z|}{|H|}\sum_{v\in\mathcal P_C}(Nv)^{-s}+O(1).
+\tag{13}
+\]</span>
+Divide by <span class="math" data-tex="\(\log(1/(s-1))\)">\(\log(1/(s-1))\)</span>. The left side has limit <span class="math" data-tex="\(1/|H|\)">\(1/|H|\)</span>, so the sum on the right has limit <span class="math" data-tex="\(1/|Z|\)">\(1/|Z|\)</span>. The conjugation orbit formula says <span class="math" data-tex="\(|C|=|G|/|Z|\)">\(|C|=|G|/|Z|\)</span>, proving (11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is Deuring's cyclic fixed-field reduction. Counting all primes of <span class="math" data-tex="\(M\)">\(M\)</span> as if they had norm <span class="math" data-tex="\(Nv\)">\(Nv\)</span> would lose the residue-degree condition and invalidate (13). Formula (6) is exactly what permits their removal. The argument works over function fields as well as number fields; constant extensions may restrict the allowed degrees, but the stated Dirichlet density remains (11).</p>
+<p>For a union of conjugacy classes, finite additivity gives the density equal to the size of the union divided by <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. In particular every nonempty such set of primes is infinite: a finite set has density zero, whereas the computed density is positive.</p>
+<h2 id="5-fields-and-ray-classes-determined-by-primes">5. Fields and ray classes determined by primes</h2>
+<p><strong>Corollary 22.5 (Bauer).</strong> Two finite Galois extensions of <span class="math" data-tex="\(K\)">\(K\)</span> inside a common separable closure are equal if their sets of completely split primes agree outside a finite set. More generally, if <span class="math" data-tex="\(E/K\)">\(E/K\)</span> is Galois and <span class="math" data-tex="\(M/K\)">\(M/K\)</span> is any finite separable extension, then
+<span class="math math-display" data-tex="\[
+E\subseteq M
+\quad\Longleftrightarrow\quad
+\text{almost every prime admitting a degree-one prime in }M
+\text{ splits completely in }E.
+\tag{14}
+\]">\[
+E\subseteq M
+\quad\Longleftrightarrow\quad
+\text{almost every prime admitting a degree-one prime in }M
+\text{ splits completely in }E.
+\tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> Take a finite Galois <span class="math" data-tex="\(N/K\)">\(N/K\)</span> containing <span class="math" data-tex="\(E,M\)">\(E,M\)</span>, with group <span class="math" data-tex="\(G\)">\(G\)</span>, and put <span class="math" data-tex="\(H_E=\operatorname{Gal}(N/E)\)">\(H_E=\operatorname{Gal}(N/E)\)</span>, <span class="math" data-tex="\(H_M=\operatorname{Gal}(N/M)\)">\(H_M=\operatorname{Gal}(N/M)\)</span>. The first is normal. Outside the finite ramification set, a prime splits completely in <span class="math" data-tex="\(E\)">\(E\)</span> exactly when its Frobenius lies in <span class="math" data-tex="\(H_E\)">\(H_E\)</span>. It admits a degree-one prime in <span class="math" data-tex="\(M\)">\(M\)</span> exactly when the Frobenius fixes a coset of <span class="math" data-tex="\(G/H_M\)">\(G/H_M\)</span>, equivalently when its conjugacy class meets <span class="math" data-tex="\(H_M\)">\(H_M\)</span>.</p>
+<p>If <span class="math" data-tex="\(E\subseteq M\)">\(E\subseteq M\)</span>, then <span class="math" data-tex="\(H_M\subseteq H_E\)">\(H_M\subseteq H_E\)</span>; every class meeting <span class="math" data-tex="\(H_M\)">\(H_M\)</span> lies entirely in <span class="math" data-tex="\(H_E\)">\(H_E\)</span>, proving the forward implication. Conversely, if some <span class="math" data-tex="\(\tau\in H_M\setminus H_E\)">\(\tau\in H_M\setminus H_E\)</span> exists, its class meets <span class="math" data-tex="\(H_M\)">\(H_M\)</span> and is disjoint from <span class="math" data-tex="\(H_E\)">\(H_E\)</span>, by normality. Chebotarev supplies infinitely many primes of this class, contradicting the asserted almost-everywhere inclusion. Thus <span class="math" data-tex="\(H_M\subseteq H_E\)">\(H_M\subseteq H_E\)</span>, so <span class="math" data-tex="\(E\subseteq M\)">\(E\subseteq M\)</span>. Applying this with the two Galois fields in both directions proves the equality assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 22.6 (primes in ray classes).</strong> For a number field <span class="math" data-tex="\(K\)">\(K\)</span> and a modulus <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, every ideal ray class contains infinitely many primes outside any prescribed finite set. More precisely its prime set has Dirichlet density <span class="math" data-tex="\(1/|\operatorname{Cl}_{\mathfrak m}(K)|\)">\(1/|\operatorname{Cl}_{\mathfrak m}(K)|\)</span>. Every element of the group of any finite abelian extension of a global field similarly occurs at infinitely many primes outside a prescribed finite set.</p>
+<p><strong>Proof.</strong> The written ray-class theorem identifies <span class="math" data-tex="\(\operatorname{Cl}_{\mathfrak m}(K)\)">\(\operatorname{Cl}_{\mathfrak m}(K)\)</span> with the Galois group of its ray field and sends a prime away from <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> to its arithmetic Frobenius. Theorem 22.3 computes its density. Adding any finite exceptional set changes no density by Proposition 22.1, so infinitely many remain. The final assertion is Theorem 22.3 applied to the specified finite abelian extension, with the same finite-omission argument. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\mathbf Q\)">\(\mathbf Q\)</span> with modulus <span class="math" data-tex="\(m\infty\)">\(m\infty\)</span>, the ray group is <span class="math" data-tex="\((\mathbf Z/m\mathbf Z)^\times\)">\((\mathbf Z/m\mathbf Z)^\times\)</span>, and a prime's Artin image is its residue class. Thus every progression <span class="math" data-tex="\(a\bmod m\)">\(a\bmod m\)</span>, <span class="math" data-tex="\((a,m)=1\)">\((a,m)=1\)</span>, has prime Dirichlet density <span class="math" data-tex="\(1/\varphi(m)\)">\(1/\varphi(m)\)</span> and contains infinitely many primes. This is Dirichlet's theorem, with the density specified.</p>
+<p>Corollary 22.6 lets us choose a prime outside a bad set with Frobenius equal to the inverse of a prescribed idèle class. Section 6A uses this to prove Hasse–Minkowski. The quadratic-form argument does not enter the analytic or character proofs above.</p>
+<h2 id="6-cubic-examples">6. Cubic examples</h2>
+<p>For <span class="math" data-tex="\(L=\mathbf Q(\sqrt[3]2,\zeta_3)\)">\(L=\mathbf Q(\sqrt[3]2,\zeta_3)\)</span>, the preceding lesson proved <span class="math" data-tex="\(G=S_3\)">\(G=S_3\)</span>. Outside 2 and 3, reduction of <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> has distinct roots in the splitting residue field. Arithmetic Frobenius permutes them, and the length of each orbit equals the degree of the corresponding irreducible factor over <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>: a root of degree <span class="math" data-tex="\(d\)">\(d\)</span> is fixed by the <span class="math" data-tex="\(d\)">\(d\)</span>-th Frobenius power and by no smaller positive power. Thus Chebotarev gives:</p>
+<table>
+<thead>
+<tr>
+<th>Frobenius class</th>
+<th style="text-align:right">Number of elements</th>
+<th>Factor degrees of <span class="math" data-tex="\(X^3-2\bmod p\)">\(X^3-2\bmod p\)</span></th>
+<th style="text-align:right">Dirichlet density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Identity</td>
+<td style="text-align:right">1</td>
+<td><span class="math" data-tex="\(1+1+1\)">\(1+1+1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/6\)">\(1/6\)</span></td>
+</tr>
+<tr>
+<td>Transpositions</td>
+<td style="text-align:right">3</td>
+<td><span class="math" data-tex="\(1+2\)">\(1+2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/2\)">\(1/2\)</span></td>
+</tr>
+<tr>
+<td>Three-cycles</td>
+<td style="text-align:right">2</td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1/3\)">\(1/3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>In the first row the prime splits completely in the splitting field. In the third row the cubic is irreducible modulo <span class="math" data-tex="\(p\)">\(p\)</span>. The finite exceptional primes affect none of these densities.</p>
+<h2 id="6a-general-quadratic-forms">6A. General quadratic forms</h2>
+<p><strong>Theorem 22.7 (Hasse–Minkowski).</strong> A nondegenerate quadratic form over a number field is isotropic over that field if and only if it is isotropic over every completion.</p>
+<p><strong>Proof.</strong> The inputs are now available: Hasse's norm theorem and the conic principle in lesson 15; global reciprocity with local compatibility in lesson 16; existence in lesson 17; ray fields in lesson 18; and Corollary 22.6 above. The latter lets us prescribe a Frobenius element outside any finite set. Their proofs do not use the quadratic-form theorem.</p>
+<p>Dimension <span class="math" data-tex="\(1\)">\(1\)</span> is immediate. In dimension <span class="math" data-tex="\(2\)">\(2\)</span>, local isotropy says a fixed element is a square everywhere. Its quadratic extension would split completely at every prime, contradicting Corollary 14.4 unless the extension is trivial. Dimension <span class="math" data-tex="\(3\)">\(3\)</span> is Corollary 15.4 of <a href="the-norm-index-bound-and-hasses-norm-theorem.html">The norm index bound and Hasse’s norm theorem</a>.</p>
+<p>Suppose <span class="math" data-tex="\(n\geq4\)">\(n\geq4\)</span>, diagonalize, and write <span class="math" data-tex="\(q=q_1+q_2\)">\(q=q_1+q_2\)</span>, with <span class="math" data-tex="\(q_1\)">\(q_1\)</span> binary and <span class="math" data-tex="\(q_2\)">\(q_2\)</span> of dimension <span class="math" data-tex="\(n-2\geq2\)">\(n-2\geq2\)</span>. At every place, choose a nonzero <span class="math" data-tex="\(t_v\)">\(t_v\)</span> represented by both <span class="math" data-tex="\(q_1\)">\(q_1\)</span> and <span class="math" data-tex="\(-q_2\)">\(-q_2\)</span>. Local isotropy supplies such a value unless its two part-values are zero. In that case at least one part is isotropic and contains a hyperbolic plane, hence represents every scalar; choose a nonzero value of the other part.</p>
+<p>The simultaneous value set contains a neighborhood of <span class="math" data-tex="\(t_v\)">\(t_v\)</span>. At a representation of a nonzero value, some coordinate <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span>. Changing just that coordinate changes the value by <span class="math" data-tex="\(2czh+ch^2\)">\(2czh+ch^2\)</span>, which maps a sufficiently small ball onto a neighborhood by contraction at finite places, and the usual one-variable inverse function argument at archimedean places. At a real place all multiples by positive scalars are represented, by scaling coordinates; at a complex place every nonzero scalar is represented.</p>
+<p>Choose <span class="math" data-tex="\(S\)">\(S\)</span> containing the archimedean and dyadic places, all nonunit diagonal coefficients, and the ramified places of the binary norm fields. If <span class="math" data-tex="\(q_1=aX^2+bY^2\)">\(q_1=aX^2+bY^2\)</span>, its field is <span class="math" data-tex="\(M_1=K(\sqrt{-b/a})\)">\(M_1=K(\sqrt{-b/a})\)</span>, omitting it if already split. If <span class="math" data-tex="\(q_2\)">\(q_2\)</span> is binary, also take the field for <span class="math" data-tex="\(-q_2\)">\(-q_2\)</span>, with leading coefficient <span class="math" data-tex="\(a_2\)">\(a_2\)</span>. Outside <span class="math" data-tex="\(S\)">\(S\)</span>, a binary unit form represents every unit: over the odd residue field it is either split or a scalar times the quadratic norm, which is surjective; a nonsingular residue representation lifts. A unit form of dimension at least <span class="math" data-tex="\(3\)">\(3\)</span> is isotropic locally. To see this, in three variables the two sets of values <span class="math" data-tex="\(c_1x^2\)">\(c_1x^2\)</span> and <span class="math" data-tex="\(-c_3-c_2y^2\)">\(-c_3-c_2y^2\)</span>, each of size <span class="math" data-tex="\((q_v+1)/2\)">\((q_v+1)/2\)</span>, intersect; the solution with third coordinate <span class="math" data-tex="\(1\)">\(1\)</span> lifts. An isotropic nondegenerate form contains a hyperbolic plane and represents all scalars.</p>
+<p>Let <span class="math" data-tex="\(x\)">\(x\)</span> be the idèle with components <span class="math" data-tex="\(t_v\)">\(t_v\)</span> in <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> elsewhere. For each binary norm field <span class="math" data-tex="\(M_i\)">\(M_i\)</span>, representation says <span class="math" data-tex="\(t_v/a_i\)">\(t_v/a_i\)</span> is a local norm at <span class="math" data-tex="\(S\)">\(S\)</span>. Global reciprocity for the principal element <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, whose other local symbols are trivial since it is a unit at unramified places, gives
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_{M_i/K}(x)
+=\prod_{v\in S}\operatorname{rec}_{M_i/K,v}(t_v)
+=\prod_{v\in S}\operatorname{rec}_{M_i/K,v}(a_i)=1.
+\tag{34}
+\]">\[
+\operatorname{rec}_{M_i/K}(x)
+=\prod_{v\in S}\operatorname{rec}_{M_i/K,v}(t_v)
+=\prod_{v\in S}\operatorname{rec}_{M_i/K,v}(a_i)=1.
+\tag{34}
+\]</span>
+Choose a product subgroup <span class="math" data-tex="\(U\subset J_K\)">\(U\subset J_K\)</span>, consisting of sufficiently deep principal units at the finite places in <span class="math" data-tex="\(S\)">\(S\)</span>, positive reals at real places, full complex groups, and units outside <span class="math" data-tex="\(S\)">\(S\)</span>. Require that <span class="math" data-tex="\(t_vU_v\)">\(t_vU_v\)</span> lies in both local value sets and <span class="math" data-tex="\(U_v\)">\(U_v\)</span> lies in each binary local norm group. Its image <span class="math" data-tex="\(H\subset C_K\)">\(H\subset C_K\)</span> is open of finite index: it has full content image and its remaining quotient comes from compact <span class="math" data-tex="\(C_K^1\)">\(C_K^1\)</span>. The ray class correspondence gives its abelian class field <span class="math" data-tex="\(A/K\)">\(A/K\)</span>, containing the <span class="math" data-tex="\(M_i\)">\(M_i\)</span>.</p>
+<p>The ray-prime theorem chooses a prime <span class="math" data-tex="\(\mathfrak p\notin S\)">\(\mathfrak p\notin S\)</span> with
+<span class="math math-display" data-tex="\[
+\operatorname{Frob}_{\mathfrak p}(A/K)
+=\operatorname{rec}_{A/K}(x)^{-1}.
+\]">\[
+\operatorname{Frob}_{\mathfrak p}(A/K)
+=\operatorname{rec}_{A/K}(x)^{-1}.
+\]</span>
+By (34) it splits in every <span class="math" data-tex="\(M_i\)">\(M_i\)</span>. If <span class="math" data-tex="\(\pi_{\mathfrak p}\)">\(\pi_{\mathfrak p}\)</span> is its idèle uniformizer, then <span class="math" data-tex="\(x\pi_{\mathfrak p}=t u\)">\(x\pi_{\mathfrak p}=t u\)</span> for some <span class="math" data-tex="\(t\in K^\times\)">\(t\in K^\times\)</span> and <span class="math" data-tex="\(u\in U\)">\(u\in U\)</span>. Thus <span class="math" data-tex="\(t\)">\(t\)</span> is in the chosen simultaneous value neighborhood at <span class="math" data-tex="\(S\)">\(S\)</span>, is a unit outside <span class="math" data-tex="\(S\cup\{\mathfrak p\}\)">\(S\cup\{\mathfrak p\}\)</span>, and has valuation <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. At this last prime every binary part is split, and every larger part is isotropic. Consequently <span class="math" data-tex="\(t\)">\(t\)</span> is represented by <span class="math" data-tex="\(q_1\)">\(q_1\)</span> and by <span class="math" data-tex="\(-q_2\)">\(-q_2\)</span> at every place.</p>
+<p>Apply induction to <span class="math" data-tex="\(q_1-tZ^2\)">\(q_1-tZ^2\)</span> and <span class="math" data-tex="\(q_2+tZ^2\)">\(q_2+tZ^2\)</span>, of dimensions <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. Each is globally isotropic. If its <span class="math" data-tex="\(Z\)">\(Z\)</span>-coordinate is nonzero, division produces the required global representation. If that coordinate is zero, its original part is isotropic and represents every scalar via a hyperbolic plane, so again it represents the required value. Combining the representations gives a nonzero global isotropic vector of <span class="math" data-tex="\(q\)">\(q\)</span>. This completes the induction.</p>
+<p>The hyperbolic-plane assertion used here is elementary: given an isotropic <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>, choose <span class="math" data-tex="\(f\)">\(f\)</span> with the symmetric bilinear form <span class="math" data-tex="\(B(x,y)=(q(x+y)-q(x)-q(y))/2\)">\(B(x,y)=(q(x+y)-q(x)-q(y))/2\)</span> and <span class="math" data-tex="\(B(e,f)=1\)">\(B(e,f)=1\)</span>, and replace <span class="math" data-tex="\(f\)">\(f\)</span> by <span class="math" data-tex="\(f-q(f)e/2\)">\(f-q(f)e/2\)</span>. Their plane has form <span class="math" data-tex="\(2XY\)">\(2XY\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises-and-complete-solutions">7. Exercises and complete solutions</h2>
+<h3 id="exercise-1-complete-splitting-in-the-cubic-splitting-field-easy">Exercise 1 — Complete splitting in the cubic splitting field (easy)</h3>
+<p>Compute the density of primes splitting completely in <span class="math" data-tex="\(\mathbf Q(\sqrt[3]2,\zeta_3)\)">\(\mathbf Q(\sqrt[3]2,\zeta_3)\)</span>.</p>
+<p><strong>Solution.</strong> Eisenstein irreducibility and discriminant <span class="math" data-tex="\(-108\)">\(-108\)</span>, a nonsquare, give splitting group <span class="math" data-tex="\(S_3\)">\(S_3\)</span> of order six. At an unramified prime complete splitting means trivial decomposition group, equivalently identity Frobenius. The identity class has one element, so Theorem 22.4 gives density <span class="math" data-tex="\(1/6\)">\(1/6\)</span>. Removing the ramified primes 2 and 3 makes no difference to the limit.</p>
+<h3 id="exercise-2-irreducible-cubic-reductions-medium">Exercise 2 — Irreducible cubic reductions (medium)</h3>
+<p>Compute the density of rational primes at which <span class="math" data-tex="\(X^3-2\)">\(X^3-2\)</span> is irreducible modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(p\ne2,3\)">\(p\ne2,3\)</span>, the polynomial is separable modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Its factor degrees are the lengths of Frobenius orbits on its three roots, by the finite-field orbit argument in section 6. It is irreducible exactly when Frobenius is a three-cycle. The two three-cycles form one conjugacy class in <span class="math" data-tex="\(S_3\)">\(S_3\)</span>; hence its density is <span class="math" data-tex="\(2/6=1/3\)">\(2/6=1/3\)</span>. At 2 the reduction is <span class="math" data-tex="\(X^3\)">\(X^3\)</span>, and at 3 it is <span class="math" data-tex="\((X+1)^3\)">\((X+1)^3\)</span>, so neither is irreducible, and their exclusion in any event contributes zero density.</p>
+<h3 id="exercise-3-recovering-a-galois-field-from-split-primes-medium">Exercise 3 — Recovering a Galois field from split primes (medium)</h3>
+<p>Prove the equality assertion in Bauer's theorem directly from Chebotarev.</p>
+<p><strong>Solution.</strong> Put the two Galois fields <span class="math" data-tex="\(E,F\)">\(E,F\)</span> in their Galois compositum <span class="math" data-tex="\(N\)">\(N\)</span>. Let <span class="math" data-tex="\(H_E,H_F\)">\(H_E,H_F\)</span> be the kernels of restriction from <span class="math" data-tex="\(G=\operatorname{Gal}(N/K)\)">\(G=\operatorname{Gal}(N/K)\)</span>. If the fields are distinct, the kernels are distinct, so some element belongs to one and not the other. Both kernels are normal, so its entire conjugacy class belongs to that same difference. Chebotarev gives that class positive density and therefore infinitely many unramified primes. Every one splits completely in the first field and fails to split completely in the second. This contradicts agreement of the splitting sets outside a finite set. Thus the kernels and their fixed fields are equal. This argument also explains why a mere finite list of matching split primes cannot determine the field.</p>
+<h3 id="exercise-4-the-pole-argument-without-a-hidden-zero-hard">Exercise 4 — The pole argument without a hidden zero (hard)</h3>
+<p>Prove Proposition 22.2 in detail, explaining why the zeta factorization forbids a zero of any nontrivial character and why extra omitted Euler factors do not cause an exception.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be the class field of <span class="math" data-tex="\(\ker\omega\)">\(\ker\omega\)</span>. Its group is finite abelian, and the primitive Artin–Hecke comparison identifies every group character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> with its finite-order Hecke L-function. The analytic input gives holomorphy at 1 for every nontrivial character. Over number fields this is the finite-order case of the written Hecke theorem. Over function fields it follows from the finite-polynomial and correction formulas: a character nontrivial on norm-one classes has no correction, and a nontrivial norm character has <span class="math" data-tex="\(\lambda\ne1\)">\(\lambda\ne1\)</span>, so its denominators are nonzero at 1. The trivial character is precisely <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>, which has a simple pole with positive residue <span class="math" data-tex="\(c_K\)">\(c_K\)</span>. The same zeta argument for <span class="math" data-tex="\(L\)">\(L\)</span> gives a positive simple pole with residue <span class="math" data-tex="\(c_L\)">\(c_L\)</span>.</p>
+<p>In a punctured neighborhood of 1, divide (7) by <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span>. The quotient extends holomorphically with value <span class="math" data-tex="\(c_L/c_K\ne0\)">\(c_L/c_K\ne0\)</span>. Thus the finite product of the nontrivial holomorphic character L-functions has a nonzero value. If any one factor vanished, the product would vanish; other factors cannot cancel it by poles because they have no poles at 1. Equivalently, the total order at 1 in (7) is <span class="math" data-tex="\(-1=-1+\sum_{\chi\ne1}\operatorname{ord}_1L(s,\chi)\)">\(-1=-1+\sum_{\chi\ne1}\operatorname{ord}_1L(s,\chi)\)</span>, with every summand nonnegative, so all are zero. This proves nonvanishing for each character, including <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>A larger ray modulus deletes finitely many primitive factors, multiplying by <span class="math" data-tex="\(1-\chi(\operatorname{Frob}_v)(Nv)^{-s}\)">\(1-\chi(\operatorname{Frob}_v)(Nv)^{-s}\)</span> at character-unramified omitted primes. Each has absolute-value input <span class="math" data-tex="\((Nv)^{-1}&lt;1\)">\((Nv)^{-1}&lt;1\)</span> at 1 and cannot be zero there. Character-ramified primes already have primitive factor 1. Consequently neither holomorphy nor nonvanishing at 1 is altered by these extra omissions. No prime-density or ray-prime existence assertion was used in this argument.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The number-field Hecke continuation and positive zeta-pole theorems have the exact written internal providers identified at the beginning; the necessary function-field consequences were checked explicitly from the preceding lesson's proof. The global class-field and ray-field constructions were proved in lessons 17–18. The present lesson proves nonvanishing by their zeta factorization and supplies the character sums, cyclic fixed-field count, densities and applications in full.</p>
+<p>The theorem proved here is Dirichlet-density Chebotarev. We make no assertion of natural density or an effective error term. Those require additional prime-counting analysis. Proposition 22.1 proves only that an existing natural density must agree with the Dirichlet density; it supplies no converse.</p>
+<h2 id="editable-edition">Editable edition</h2>
+<p>The reading edition provides the complete LaTeX source of this lesson, the cumulative course LaTeX and the editable source ZIP. The archive contains all twenty-four Markdown lessons, complete LaTeX bodies, original diagrams, metadata and reproduction instructions.</p>
+<h2 id="references">References</h2>
+<p>The lesson proves nonvanishing at 1, abelian character density and the cyclic fixed-field coset count, then Bauer and primes in ray classes. It proves Dirichlet density over both sorts of global field; no natural-density or effective assertion is substituted.</p>
+<ul>
+<li><a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">J. S. Milne, Class Field Theory, version 4.03</a>.</li>
+<li><a href="https://math.mit.edu/~poonen/786/notes.pdf">Bjorn Poonen, Tate’s Thesis, MIT 18.786 lecture notes (2015)</a>.</li>
+<li><a href="https://kskedlaya.org/cft/sec_abstractcft1.html">Kiran S. Kedlaya, Notes on class field theory, author-hosted HTML edition</a>.</li>
+</ul>
+<p>The <a href="free-proofs.html">proof guide</a> gives the lesson sequence and the exact prerequisite record. External references accompany the written arguments.</p>
+
+</article>
+
+
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="artin-l-functions-conductors-and-discriminants.html">← Artin L-functions, conductors and discriminants</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="power-residue-symbols-and-reciprocity-laws.html">Power residue symbols and reciprocity laws →</a></span></nav>
+<p class="small source-link"><a href="files/the-chebotarev-density-theorem.md">Markdown source of this lesson</a> · <a download href="files/the-chebotarev-density-theorem.tex">Complete LaTeX source</a> · <span class="unlinked">Editable source ZIP</span></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site: course text, lessons, HTML and code. It is dedicated under <span class="unlinked">CC0 1.0</span>. Material built on other people’s licensed work keeps its licence, noted on each course.</p>
+<nav aria-label="Elsewhere">Results found in making these courses<a href="https://github.com/KokunoYumeto/open-math-courses-public-public">GitHub repository</a><a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Program Matematika Indonesia</a><a href="https://kokunoyumeto.github.io/OpenLogic-translations/">Open Logic translations</a></nav>
+</footer>
+</body>
+</html>

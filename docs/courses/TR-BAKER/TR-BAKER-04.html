@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effective lower bounds I: Baker&#x27;s theorem and its arithmetic tools · Linear forms in logarithms and their applications</title>
+<meta name="description" content="A lesson of the course Linear forms in logarithms and their applications.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/TR-BAKER-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Linear forms in logarithms and their applications</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 10</span></nav>
+<p class="lesson-status">Draft lesson.</p>
+<article class="lesson">
+<h1 id="effective-lower-bounds-i-baker-s-theorem-and-its-arithmetic-tools">Effective lower bounds I: Baker's theorem and its arithmetic tools</h1>
+<p><em>Draft. Public domain (CC0).</em></p>
+<p>An effective logarithm estimate combines a rank argument with a comparison of arithmetic and analytic size. We begin with the rank test: how many exact zeros would force an exponential polynomial to be zero? We then choose polynomial bases that preserve its coefficients, prove the denominator bounds needed to clear its derivatives, and account for the height cost of normalizing the logarithmic form.</p>
+<p>Theorem 4.1 states the target, including the algebraic constant and arbitrary fixed logarithm branches. The next lesson, <a href="TR-BAKER-05.html"><em>Effective lower bounds II: proof of Baker's theorem</em></a>, gives its induction and parameter choices. The tools proved here include a degree-adapted polynomial family with a derivative denominator independent of the evaluation point; this supplies an alternative to the interval denominator in the classical construction.</p>
+<p>We use the qualitative theorem from <a href="TR-BAKER-03.html"><em>Baker's theorem II: extrapolation and the end of the proof</em></a>, elementary polynomial algebra and integer factorization. The algebraic-integer criterion is proved in <a href="../NT-ANT/algebraic-integers-and-rings-of-integers.html"><em>Algebraic integers and rings of integers</em></a>, Proposition 1.1. The freely accessible [Waldschmidt 2000] supplies the effective logarithm estimates and Matveev polynomial method discussed here. The logarithm methods of Baker, Feldman and Matveev are credited in the references. All the arithmetic arguments used below are supplied in full.</p>
+<h2 id="1-the-theorem-with-its-quantifiers">1. The theorem, with its quantifiers</h2>
+<p>For an algebraic number <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, let <span class="math" data-tex="\(H(\gamma)\)">\(H(\gamma)\)</span> be the maximum absolute coefficient of its primitive irreducible polynomial in <span class="math" data-tex="\(\mathbb Z[X]\)">\(\mathbb Z[X]\)</span>, with positive leading coefficient. This is the <strong>naive height</strong>. Thus
+<span class="math math-display" data-tex="\[
+H(p/q)=\max(|p|,q)\quad(\gcd(p,q)=1,\ q&gt;0),\qquad
+H(0)=H(1)=H(i)=1.
+\]">\[
+H(p/q)=\max(|p|,q)\quad(\gcd(p,q)=1,\ q&gt;0),\qquad
+H(0)=H(1)=H(i)=1.
+\]</span>
+It differs from the logarithmic absolute Weil height used in the first lesson.</p>
+<p><strong>Theorem 4.1 (target: Baker's effective lower bound).</strong> Fix an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, an integer <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, nonzero algebraic numbers <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_n\)">\(\alpha_1,\ldots,\alpha_n\)</span> of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> and naive height at most <span class="math" data-tex="\(A\)">\(A\)</span>, where <span class="math" data-tex="\(A\ge2\)">\(A\ge2\)</span>, and a determination <span class="math" data-tex="\(\ell_j\)">\(\ell_j\)</span> of each logarithm:
+<span class="math math-display" data-tex="\[
+e^{\ell_j}=\alpha_j.
+\]">\[
+e^{\ell_j}=\alpha_j.
+\]</span>
+There is an effectively computable <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, depending on <span class="math" data-tex="\(n,d,A\)">\(n,d,A\)</span> and these determinations, with the following property. For every <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span> and every tuple of algebraic numbers <span class="math" data-tex="\(\beta_0,\ldots,\beta_n\)">\(\beta_0,\ldots,\beta_n\)</span>, each of degree at most <span class="math" data-tex="\(d\)">\(d\)</span> and naive height at most <span class="math" data-tex="\(B\)">\(B\)</span>, the form
+<span class="math math-display" data-tex="\[
+\Lambda=\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n
+\]">\[
+\Lambda=\beta_0+\beta_1\ell_1+\cdots+\beta_n\ell_n
+\]</span>
+satisfies
+<span class="math math-display" data-tex="\[
+\Lambda=0\quad\hbox{or}\quad |\Lambda|&gt;B^{-C}. \tag{4.1}
+\]">\[
+\Lambda=0\quad\hbox{or}\quad |\Lambda|&gt;B^{-C}. \tag{4.1}
+\]</span>
+The constant is uniform in <span class="math" data-tex="\(B\)">\(B\)</span> and in all the allowed coefficients. No rational independence assumption on the logarithms is required.</p>
+<p>“Effective” means that the proof gives a terminating procedure for choosing <span class="math" data-tex="\(C\)">\(C\)</span> from the fixed algebraic data and the logarithm branches. It does not promise that the resulting number is small. Increasing <span class="math" data-tex="\(C\)">\(C\)</span> preserves (4.1), which is useful for absorbing fixed numerical factors.</p>
+<p>The separation into zero and nonzero cases matters. For example, <span class="math" data-tex="\(2\log2-\log4=0\)">\(2\log2-\log4=0\)</span> on the real branches. A lower-bound theorem cannot exclude that relation. The proof will either find a bounded integer relation and reduce the number of logarithms, or force the proposed very small form to be zero.</p>
+<p>For principal logarithms, or a specified bounded family of branches, the proof gives a power of <span class="math" data-tex="\(\log A\)">\(\log A\)</span>:
+<span class="math math-display" data-tex="\[
+C=C&#x27;(n,d)(\log A)^{\kappa(n)} \tag{4.2}
+\]">\[
+C=C&#x27;(n,d)(\log A)^{\kappa(n)} \tag{4.2}
+\]</span>
+in the principal case, after increasing the effective constant if necessary. The next lesson establishes this dependence. For arbitrary branches the leading constant also depends on their branch integers. This qualification is necessary; it is not removable by an adjustment depending only on <span class="math" data-tex="\(n,d\)">\(n,d\)</span>.</p>
+<p>To see why, set both bases equal to <span class="math" data-tex="\(1\)">\(1\)</span>, take <span class="math" data-tex="\(A=B=2\)">\(A=B=2\)</span>, and use the coefficients <span class="math" data-tex="\(\sqrt2,-1\)">\(\sqrt2,-1\)</span>. Write
+<span class="math math-display" data-tex="\[
+(1+\sqrt2)^r=p_r+q_r\sqrt2,\qquad p_r,q_r\in\mathbb Z.
+\]">\[
+(1+\sqrt2)^r=p_r+q_r\sqrt2,\qquad p_r,q_r\in\mathbb Z.
+\]</span>
+Choose logarithms <span class="math" data-tex="\(2\pi iq_r\)">\(2\pi iq_r\)</span> and <span class="math" data-tex="\(2\pi ip_r\)">\(2\pi ip_r\)</span> of the two bases. The nonzero form becomes
+<span class="math math-display" data-tex="\[
+2\pi i(q_r\sqrt2-p_r)=-2\pi i(1-\sqrt2)^r,
+\]">\[
+2\pi i(q_r\sqrt2-p_r)=-2\pi i(1-\sqrt2)^r,
+\]</span>
+whose absolute value tends to zero while the degrees and naive heights stay fixed. Hence a common <span class="math" data-tex="\(C\)">\(C\)</span> over all branch choices is impossible. The fixed-branch quantifier in Theorem 4.1 avoids this problem.</p>
+<h2 id="2-what-the-estimate-gives">2. What the estimate gives</h2>
+<p>The effective theorem is the target of the construction below; its proof is completed in the next lesson. The resulting transcendence measures for logarithms and the fixed-base multiplicative bound are proved after that argument, in <a href="TR-BAKER-05.html#10-consequences-and-later-refinements"><em>Effective lower bounds II: proof of Baker’s theorem</em></a>, Section 10.</p>
+<p>Later applications need sharper height dependence than a single power of <span class="math" data-tex="\(\log A\)">\(\log A\)</span>. The individual-height product <span class="math" data-tex="\(\prod_j\log A_j\)">\(\prod_j\log A_j\)</span>, and the different coefficient and branch hypotheses of the modern estimates, are treated in [Waldschmidt 2000] and [Waldschmidt 2003]. The later lesson <a href="TR-BAKER-08.html"><em>Linear forms in many logarithms: the modern estimates and how to use them</em></a> gives the precise modern estimates and their proofs. The present theorem first establishes the decisive polynomial dependence on the coefficient height.</p>
+<h2 id="3-plan-the-final-rank-test">3. Plan the final rank test</h2>
+<p>Before estimating an auxiliary function, decide what enough zeros would imply. Suppose its values have the form
+<span class="math math-display" data-tex="\[
+F(i)=\sum_{s=0}^{l-1}P_s(i)w_s^i,\qquad \deg P_s&lt;k.
+\]">\[
+F(i)=\sum_{s=0}^{l-1}P_s(i)w_s^i,\qquad \deg P_s&lt;k.
+\]</span>
+There are <span class="math" data-tex="\(kl\)">\(kl\)</span> polynomial coefficients. Evaluation at <span class="math" data-tex="\(i=0,\ldots,kl-1\)">\(i=0,\ldots,kl-1\)</span> is a square linear map from those coefficients to the values of <span class="math" data-tex="\(F\)">\(F\)</span>. If its matrix is invertible, vanishing of all those values forces every coefficient to vanish. In a construction with a nonzero coefficient vector, that is the contradiction we want.</p>
+<p>The two possible failures have different meanings. Coincident nodes combine frequency blocks, so the values can no longer distinguish their coefficients. When <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, a zero node destroys the polynomially weighted columns. The next formula identifies both failures exactly. It also gives the complete rank test when each frequency carries several polynomial coefficients.</p>
+<p><strong>Lemma 4.6.</strong> Let <span class="math" data-tex="\(k,l\ge1\)">\(k,l\ge1\)</span>, and let <span class="math" data-tex="\(w_0,\ldots,w_{l-1}\)">\(w_0,\ldots,w_{l-1}\)</span> be distinct nonzero complex numbers. Order the columns by pairs <span class="math" data-tex="\((s,r)\)">\((s,r)\)</span>, first <span class="math" data-tex="\(s=0,\ldots,l-1\)">\(s=0,\ldots,l-1\)</span>, then <span class="math" data-tex="\(r=0,\ldots,k-1\)">\(r=0,\ldots,k-1\)</span>. The matrix with rows <span class="math" data-tex="\(i=0,\ldots,kl-1\)">\(i=0,\ldots,kl-1\)</span> and entries
+<span class="math math-display" data-tex="\[
+A_{i,(s,r)}=i^r w_s^i,\qquad 0^0=1,
+\]">\[
+A_{i,(s,r)}=i^r w_s^i,\qquad 0^0=1,
+\]</span>
+has determinant
+<span class="math math-display" data-tex="\[
+\det A=
+\left(\prod_{s=0}^{l-1}w_s^{k(k-1)/2}\right)
+\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{0\le s&lt;t&lt;l}(w_t-w_s)^{k^2}. \tag{4.15}
+\]">\[
+\det A=
+\left(\prod_{s=0}^{l-1}w_s^{k(k-1)/2}\right)
+\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{0\le s&lt;t&lt;l}(w_t-w_s)^{k^2}. \tag{4.15}
+\]</span>
+In particular, it is nonzero.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(N=kl\)">\(N=kl\)</span> and <span class="math" data-tex="\(K_0=k(k-1)/2\)">\(K_0=k(k-1)/2\)</span>. The ordinary Vandermonde determinant at nodes <span class="math" data-tex="\(z_0,\ldots,z_{N-1}\)">\(z_0,\ldots,z_{N-1}\)</span> is <span class="math" data-tex="\(\prod_{a&lt;b}(z_b-z_a)\)">\(\prod_{a&lt;b}(z_b-z_a)\)</span>. Indeed, its polynomial determinant changes sign under exchanging nodes, is divisible by each difference, and has the same total degree as that product; the coefficient obtained by choosing the successive highest powers is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Apply this identity to the nodes
+<span class="math math-display" data-tex="\[
+z_{s,r}=w_s+r\varepsilon\quad(0\le s&lt;l,\ 0\le r&lt;k)
+\]">\[
+z_{s,r}=w_s+r\varepsilon\quad(0\le s&lt;l,\ 0\le r&lt;k)
+\]</span>
+in our column order, and compare the coefficient of the lowest nonzero power <span class="math" data-tex="\(\varepsilon^{lK_0}\)">\(\varepsilon^{lK_0}\)</span>. Taylor expansion of the columns shows that in each block the derivative orders must be distinct, since equal orders give repeated columns. The smallest total order is <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, attained exactly by <span class="math" data-tex="\(0,\ldots,k-1\)">\(0,\ldots,k-1\)</span>. Its coefficient within that block is
+<span class="math math-display" data-tex="\[
+\det\left(\frac{r^t}{t!}\right)_{0\le t,r&lt;k}
+=\frac{\prod_{a&lt;b}(b-a)}{\prod_{t=0}^{k-1}t!}=1.
+\]">\[
+\det\left(\frac{r^t}{t!}\right)_{0\le t,r&lt;k}
+=\frac{\prod_{a&lt;b}(b-a)}{\prod_{t=0}^{k-1}t!}=1.
+\]</span>
+Thus the coefficient on the determinant side is the determinant of the confluent matrix
+<span class="math math-display" data-tex="\[
+F_{i,(s,r)}=(i)_r w_s^{i-r},\qquad
+(i)_r=i(i-1)\cdots(i-r+1),
+\]">\[
+F_{i,(s,r)}=(i)_r w_s^{i-r},\qquad
+(i)_r=i(i-1)\cdots(i-r+1),
+\]</span>
+with <span class="math" data-tex="\((i)_0=1\)">\((i)_0=1\)</span>. On the product side, the within-block differences contribute
+<span class="math" data-tex="\(\left(\prod_{r=0}^{k-1}r!\right)^l\varepsilon^{lK_0}\)">\(\left(\prod_{r=0}^{k-1}r!\right)^l\varepsilon^{lK_0}\)</span>; each pair of different blocks contributes <span class="math" data-tex="\((w_t-w_s)^{k^2}\)">\((w_t-w_s)^{k^2}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+\det F=\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{s&lt;t}(w_t-w_s)^{k^2}. \tag{4.16}
+\]">\[
+\det F=\left(\prod_{r=0}^{k-1}r!\right)^l
+\prod_{s&lt;t}(w_t-w_s)^{k^2}. \tag{4.16}
+\]</span></p>
+<p>The falling factorials <span class="math" data-tex="\((i)_0,\ldots,(i)_r\)">\((i)_0,\ldots,(i)_r\)</span> form a triangular monic basis for polynomials in <span class="math" data-tex="\(i\)">\(i\)</span> of degree at most <span class="math" data-tex="\(r\)">\(r\)</span>. Write
+<span class="math math-display" data-tex="\[
+i^r=\sum_{t=0}^r S(r,t)(i)_t,\qquad S(r,r)=1.
+\]">\[
+i^r=\sum_{t=0}^r S(r,t)(i)_t,\qquad S(r,r)=1.
+\]</span>
+Then the <span class="math" data-tex="\(r\)">\(r\)</span>-th column of the <span class="math" data-tex="\(s\)">\(s\)</span>-block of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\(\sum_{t\le r}S(r,t)w_s^t F_{(s,t)}\)">\(\sum_{t\le r}S(r,t)w_s^t F_{(s,t)}\)</span>. This triangular column change has determinant <span class="math" data-tex="\(\prod_{r=0}^{k-1}w_s^r=w_s^{K_0}\)">\(\prod_{r=0}^{k-1}w_s^r=w_s^{K_0}\)</span> for each block. Multiplying (4.16) by these factors proves (4.15). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(k=l=2\)">\(k=l=2\)</span>, the exact formula is
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}
+1&amp;0&amp;1&amp;0\\
+w_0&amp;w_0&amp;w_1&amp;w_1\\
+w_0^2&amp;2w_0^2&amp;w_1^2&amp;2w_1^2\\
+w_0^3&amp;3w_0^3&amp;w_1^3&amp;3w_1^3
+\end{pmatrix}
+=w_0w_1(w_1-w_0)^4. \tag{4.17}
+\]">\[
+\det\begin{pmatrix}
+1&amp;0&amp;1&amp;0\\
+w_0&amp;w_0&amp;w_1&amp;w_1\\
+w_0^2&amp;2w_0^2&amp;w_1^2&amp;2w_1^2\\
+w_0^3&amp;3w_0^3&amp;w_1^3&amp;3w_1^3
+\end{pmatrix}
+=w_0w_1(w_1-w_0)^4. \tag{4.17}
+\]</span>
+At <span class="math" data-tex="\(w_0=2,w_1=3\)">\(w_0=2,w_1=3\)</span>, the determinant is <span class="math" data-tex="\(6\)">\(6\)</span>. Nonzero nodes are needed: when <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, a node <span class="math" data-tex="\(w_s=0\)">\(w_s=0\)</span> makes the column with <span class="math" data-tex="\(r=1\)">\(r=1\)</span> identically zero.</p>
+<h3 id="recover-four-coefficients-from-four-values">Recover four coefficients from four values</h3>
+<p>Take
+<span class="math math-display" data-tex="\[
+F(i)=(a+bi)2^i+(c+di)3^i,\qquad y_j=F(j).
+\]">\[
+F(i)=(a+bi)2^i+(c+di)3^i,\qquad y_j=F(j).
+\]</span>
+The determinant <span class="math" data-tex="\(6\)">\(6\)</span> calculated above proves uniqueness. Solving the same system gives the more informative identities
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a&amp;=-27y_0+36y_1-15y_2+2y_3,\\
+b&amp;=-9y_0+\tfrac{21}{2}y_1-4y_2+\tfrac12y_3,\\
+c&amp;=28y_0-36y_1+15y_2-2y_3,\\
+d&amp;=-4y_0+\tfrac{16}{3}y_1-\tfrac73y_2+\tfrac13y_3.
+\end{aligned}
+\]">\[
+\begin{aligned}
+a&amp;=-27y_0+36y_1-15y_2+2y_3,\\
+b&amp;=-9y_0+\tfrac{21}{2}y_1-4y_2+\tfrac12y_3,\\
+c&amp;=28y_0-36y_1+15y_2-2y_3,\\
+d&amp;=-4y_0+\tfrac{16}{3}y_1-\tfrac73y_2+\tfrac13y_3.
+\end{aligned}
+\]</span>
+For example, <span class="math" data-tex="\((y_0,y_1,y_2,y_3)=(3,9,32,119)\)">\((y_0,y_1,y_2,y_3)=(3,9,32,119)\)</span> recovers <span class="math" data-tex="\((a,b,c,d)=(1,-1,2,1)\)">\((a,b,c,d)=(1,-1,2,1)\)</span>. These identities can be verified by inserting the four rows in (4.17); they give an explicit inverse, rather than a numerical rank calculation.</p>
+<p>The count of values is essential. With only <span class="math" data-tex="\(y_0=y_1=y_2=0\)">\(y_0=y_1=y_2=0\)</span>, the nonzero choice <span class="math" data-tex="\((a,b,c,d)=(6,\tfrac32,-6,1)\)">\((a,b,c,d)=(6,\tfrac32,-6,1)\)</span> is possible and gives <span class="math" data-tex="\(y_3=3\)">\(y_3=3\)</span>. Thus three zeros do not yet force the four coefficients to vanish. In the effective proof, extrapolation must reach the number of rows required by the rank test. A small analytic estimate before that point would not finish the argument.</p>
+<p>The polynomial coefficient blocks need not initially be written in monomials. We next construct a basis that retains the same coefficient count while accommodating the integer-valued polynomials used for denominator control.</p>
+<h2 id="4-preserve-the-polynomial-coefficients">4. Preserve the polynomial coefficients</h2>
+<p><strong>Lemma 4.5.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be a field of characteristic zero, <span class="math" data-tex="\(P\in K[X]\)">\(P\in K[X]\)</span> a polynomial of degree <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, and <span class="math" data-tex="\(0\le m\le n\)">\(0\le m\le n\)</span>. The <span class="math" data-tex="\(n+1\)">\(n+1\)</span> polynomials
+<span class="math math-display" data-tex="\[
+P(X),P(X+1),\ldots,P(X+m),\quad
+1,X,\ldots,X^{n-m-1} \tag{4.14}
+\]">\[
+P(X),P(X+1),\ldots,P(X+m),\quad
+1,X,\ldots,X^{n-m-1} \tag{4.14}
+\]</span>
+are linearly independent over <span class="math" data-tex="\(K\)">\(K\)</span>. If <span class="math" data-tex="\(m=n\)">\(m=n\)</span>, the second list is empty. They consequently form a basis of <span class="math" data-tex="\(K[X]_{\le n}\)">\(K[X]_{\le n}\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\sum_{j=0}^m A_jP(X+j)\)">\(\sum_{j=0}^m A_jP(X+j)\)</span> has degree at most <span class="math" data-tex="\(n-m-1\)">\(n-m-1\)</span>. For <span class="math" data-tex="\(0\le t\le m\)">\(0\le t\le m\)</span>, the coefficient of <span class="math" data-tex="\(X^{n-t}\)">\(X^{n-t}\)</span> in <span class="math" data-tex="\(P(X+j)\)">\(P(X+j)\)</span>, as a polynomial <span class="math" data-tex="\(q_t(j)\)">\(q_t(j)\)</span>, has degree <span class="math" data-tex="\(t\)">\(t\)</span> and leading coefficient <span class="math" data-tex="\(a_n\binom nt\ne0\)">\(a_n\binom nt\ne0\)</span>. Therefore <span class="math" data-tex="\(q_0,\ldots,q_m\)">\(q_0,\ldots,q_m\)</span> form a basis of the polynomials of degree at most <span class="math" data-tex="\(m\)">\(m\)</span> in <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Vanishing of those highest <span class="math" data-tex="\(m+1\)">\(m+1\)</span> coefficients gives <span class="math" data-tex="\(\sum_j A_jq_t(j)=0\)">\(\sum_j A_jq_t(j)=0\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. By the basis assertion it gives <span class="math" data-tex="\(\sum_j A_jj^t=0\)">\(\sum_j A_jj^t=0\)</span> for <span class="math" data-tex="\(t=0,\ldots,m\)">\(t=0,\ldots,m\)</span>. The Vandermonde matrix at the distinct elements <span class="math" data-tex="\(0,\ldots,m\)">\(0,\ldots,m\)</span> is invertible, so every <span class="math" data-tex="\(A_j=0\)">\(A_j=0\)</span>. The remaining monomials are independent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(P(X)=X^2,\ m=1\)">\(P(X)=X^2,\ m=1\)</span>, the basis is <span class="math" data-tex="\(X^2,(X+1)^2,1\)">\(X^2,(X+1)^2,1\)</span>. Subtracting the first and third elements from the second produces <span class="math" data-tex="\(2X\)">\(2X\)</span>; characteristic zero permits division by <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p>The characteristic assumption is essential. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(P(X)=X^p-X\)">\(P(X)=X^p-X\)</span> satisfies <span class="math" data-tex="\(P(X+1)=P(X)\)">\(P(X+1)=P(X)\)</span>, so even two of the proposed translates coincide. All coefficient fields in the effective proof are subfields of <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, where Lemma 4.5 applies. Exercise 3 gives the complete induction proof by finite differences.</p>
+<h3 id="read-the-basis-as-a-finite-difference-calculation">Read the basis as a finite-difference calculation</h3>
+<p>For <span class="math" data-tex="\(P(X)=X^3\)">\(P(X)=X^3\)</span> and <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, the proposed basis is
+<span class="math math-display" data-tex="\[
+X^3,\quad (X+1)^3,\quad (X+2)^3,\quad 1.
+\]">\[
+X^3,\quad (X+1)^3,\quad (X+2)^3,\quad 1.
+\]</span>
+Its first difference is <span class="math" data-tex="\((X+1)^3-X^3=3X^2+3X+1\)">\((X+1)^3-X^3=3X^2+3X+1\)</span>. Its second difference is
+<span class="math math-display" data-tex="\[
+(X+2)^3-2(X+1)^3+X^3=6X+6.
+\]">\[
+(X+2)^3-2(X+1)^3+X^3=6X+6.
+\]</span>
+Together with <span class="math" data-tex="\(1\)">\(1\)</span>, these recover <span class="math" data-tex="\(X\)">\(X\)</span>, then <span class="math" data-tex="\(X^2\)">\(X^2\)</span>, and finally <span class="math" data-tex="\(X^3\)">\(X^3\)</span>. Each difference removes one highest degree. Lemma 4.5 formalizes that mechanism for any polynomial with nonzero leading coefficient; Solution 3 gives the induction in full.</p>
+<p>This explains a practical division of labour. The translate basis preserves all polynomial coefficients needed by the rank test. The choice of its underlying polynomial controls the arithmetic size of those coefficients and their derivatives. We now choose that polynomial.</p>
+<h2 id="5-form-normalized-derivatives">5. Form normalized derivatives</h2>
+<p>For the auxiliary construction, derivatives must satisfy two requirements at once: their values must be small enough analytically, and their rational denominators must be cheap enough to clear. The normalization by <span class="math" data-tex="\(m!\)">\(m!\)</span> makes the first requirement a coefficient estimate. A product of consecutive factors makes the second requirement accessible to divisibility arguments.</p>
+<p>After Lemma 4.3, Section 6 will give a stronger common denominator independent of the integer evaluation point. We first prove the direct interval bound because its positive coefficient expansion shows exactly how the normalized derivative is formed, and because the effective argument can use it without changing its original parameter choices.</p>
+<p>For the classical construction, use
+<span class="math math-display" data-tex="\[
+\Delta(x;k)=\frac{(x+1)\cdots(x+k)}{k!},\qquad
+\Delta(x;k,l,m)=\frac1{m!}\frac{d^m}{dx^m}\Delta(x;k)^l, \tag{4.7}
+\]">\[
+\Delta(x;k)=\frac{(x+1)\cdots(x+k)}{k!},\qquad
+\Delta(x;k,l,m)=\frac1{m!}\frac{d^m}{dx^m}\Delta(x;k)^l, \tag{4.7}
+\]</span>
+where <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> and <span class="math" data-tex="\(l,m\ge0\)">\(l,m\ge0\)</span> are integers. For a nonnegative integer <span class="math" data-tex="\(x\)">\(x\)</span>, set
+<span class="math math-display" data-tex="\[
+\nu(x;k)=\operatorname{lcm}(x+1,\ldots,x+k).
+\]">\[
+\nu(x;k)=\operatorname{lcm}(x+1,\ldots,x+k).
+\]</span>
+The normalized derivative is exactly the coefficient of <span class="math" data-tex="\(t^m\)">\(t^m\)</span> in <span class="math" data-tex="\(\Delta(x+t;k)^l\)">\(\Delta(x+t;k)^l\)</span>.</p>
+<p><strong>Lemma 4.3.</strong> For every integer <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\nu(x;k)^m\Delta(x;k,l,m)\in\mathbb Z_{\ge0},\qquad
+0\le\Delta(x;k,l,m)\le4^{l(x+k)}. \tag{4.8}
+\]">\[
+\nu(x;k)^m\Delta(x;k,l,m)\in\mathbb Z_{\ge0},\qquad
+0\le\Delta(x;k,l,m)\le4^{l(x+k)}. \tag{4.8}
+\]</span>
+The integer is positive when <span class="math" data-tex="\(0\le m\le kl\)">\(0\le m\le kl\)</span>, and is zero when <span class="math" data-tex="\(m&gt;kl\)">\(m&gt;kl\)</span>.</p>
+<p><strong>Proof.</strong> First <span class="math" data-tex="\(\Delta(x;k)=\binom{x+k}{k}\)">\(\Delta(x;k)=\binom{x+k}{k}\)</span> is a positive integer. Regard the list <span class="math" data-tex="\(x+1,\ldots,x+k\)">\(x+1,\ldots,x+k\)</span> as repeated <span class="math" data-tex="\(l\)">\(l\)</span> times. Expanding
+<span class="math math-display" data-tex="\[
+\Delta(x+t;k)^l
+=\Delta(x;k)^l\prod_{j=1}^k\left(1+\frac{t}{x+j}\right)^l
+\]">\[
+\Delta(x+t;k)^l
+=\Delta(x;k)^l\prod_{j=1}^k\left(1+\frac{t}{x+j}\right)^l
+\]</span>
+gives
+<span class="math math-display" data-tex="\[
+\Delta(x;k,l,m)=\Delta(x;k)^l
+\sum_{\substack{\text{choices of }m\\\text{positions in the repeated list}}}
+\frac1{(x+j_1)\cdots(x+j_m)}. \tag{4.9}
+\]">\[
+\Delta(x;k,l,m)=\Delta(x;k)^l
+\sum_{\substack{\text{choices of }m\\\text{positions in the repeated list}}}
+\frac1{(x+j_1)\cdots(x+j_m)}. \tag{4.9}
+\]</span>
+There are <span class="math" data-tex="\(\binom{kl}{m}\)">\(\binom{kl}{m}\)</span> choices, with the sum read as zero when <span class="math" data-tex="\(m&gt;kl\)">\(m&gt;kl\)</span>. Multiplication by <span class="math" data-tex="\(\nu(x;k)^m\)">\(\nu(x;k)^m\)</span> clears every denominator, proving integrality and the positivity assertion. For <span class="math" data-tex="\(l=0\)">\(l=0\)</span>, the only nonzero derivative is <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, with value <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Since <span class="math" data-tex="\(x+j\ge1\)">\(x+j\ge1\)</span>, each reciprocal product is at most <span class="math" data-tex="\(1\)">\(1\)</span>. The inequalities <span class="math" data-tex="\(\binom{x+k}{k}\le2^{x+k}\)">\(\binom{x+k}{k}\le2^{x+k}\)</span> and <span class="math" data-tex="\(\binom{kl}{m}\le2^{kl}\)">\(\binom{kl}{m}\le2^{kl}\)</span> therefore give
+<span class="math math-display" data-tex="\[
+\Delta(x;k,l,m)\le2^{l(x+k)+kl}\le4^{l(x+k)}.
+\]">\[
+\Delta(x;k,l,m)\le2^{l(x+k)+kl}\le4^{l(x+k)}.
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, at <span class="math" data-tex="\(k=l=2\)">\(k=l=2\)</span>,
+<span class="math math-display" data-tex="\[
+\Delta(x;2)^2=\frac{x^4+6x^3+13x^2+12x+4}{4}.
+\]">\[
+\Delta(x;2)^2=\frac{x^4+6x^3+13x^2+12x+4}{4}.
+\]</span>
+At <span class="math" data-tex="\(x=1\)">\(x=1\)</span>, its normalized derivatives for <span class="math" data-tex="\(m=0,\ldots,5\)">\(m=0,\ldots,5\)</span> are
+<span class="math math-display" data-tex="\[
+9,\quad15,\quad\frac{37}{4},\quad\frac52,\quad\frac14,\quad0.
+\]">\[
+9,\quad15,\quad\frac{37}{4},\quad\frac52,\quad\frac14,\quad0.
+\]</span>
+Here <span class="math" data-tex="\(\nu(1;2)=6\)">\(\nu(1;2)=6\)</span>, so multiplying the <span class="math" data-tex="\(m\)">\(m\)</span>-th entry by <span class="math" data-tex="\(6^m\)">\(6^m\)</span> gives an integer. The final zero illustrates why an assertion of positivity for <em>all</em> orders would be false.</p>
+<h2 id="6-compare-denominator-costs">6. Compare denominator costs</h2>
+<p><strong>Lemma 4.4.</strong> For all integers <span class="math" data-tex="\(x\ge0,\ k\ge1\)">\(x\ge0,\ k\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\nu(x;k)\le\left(\frac{16(x+k)}k\right)^{2k}. \tag{4.10}
+\]">\[
+\nu(x;k)\le\left(\frac{16(x+k)}k\right)^{2k}. \tag{4.10}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(V(N)=\operatorname{lcm}(1,\ldots,N)\)">\(V(N)=\operatorname{lcm}(1,\ldots,N)\)</span>. We first prove
+<span class="math math-display" data-tex="\[
+V(N)\le8^N\quad(N\ge1). \tag{4.11}
+\]">\[
+V(N)\le8^N\quad(N\ge1). \tag{4.11}
+\]</span>
+For a prime power <span class="math" data-tex="\(p^a\)">\(p^a\)</span>, the factorial valuation formula is
+<span class="math math-display" data-tex="\[
+v_p(N!)=\sum_{j\ge1}\left\lfloor\frac{N}{p^j}\right\rfloor,
+\]">\[
+v_p(N!)=\sum_{j\ge1}\left\lfloor\frac{N}{p^j}\right\rfloor,
+\]</span>
+because multiples of <span class="math" data-tex="\(p^j\)">\(p^j\)</span> contribute one extra factor of <span class="math" data-tex="\(p\)">\(p\)</span>. Put <span class="math" data-tex="\(u=\lfloor N/2\rfloor,\ v=\lceil N/2\rceil\)">\(u=\lfloor N/2\rfloor,\ v=\lceil N/2\rceil\)</span>. If the highest power <span class="math" data-tex="\(p^a\le N\)">\(p^a\le N\)</span> is at most <span class="math" data-tex="\(v\)">\(v\)</span>, its full contribution to <span class="math" data-tex="\(V(N)\)">\(V(N)\)</span> already divides <span class="math" data-tex="\(V(v)\)">\(V(v)\)</span>. Otherwise <span class="math" data-tex="\(p^a&gt;v\)">\(p^a&gt;v\)</span>, but <span class="math" data-tex="\(p^{a-1}\le N/2\le v\)">\(p^{a-1}\le N/2\le v\)</span>. The term <span class="math" data-tex="\(j=a\)">\(j=a\)</span> in <span class="math" data-tex="\(v_p\binom Nu\)">\(v_p\binom Nu\)</span> is <span class="math" data-tex="\(1-0-0=1\)">\(1-0-0=1\)</span>, and every other floor difference is nonnegative. Hence
+<span class="math math-display" data-tex="\[
+V(N)\mid \binom Nu V(v).
+\]">\[
+V(N)\mid \binom Nu V(v).
+\]</span>
+Using <span class="math" data-tex="\(\binom Nu\le2^N\)">\(\binom Nu\le2^N\)</span>, induction gives
+<span class="math math-display" data-tex="\[
+V(N)\le2^N8^{\lceil N/2\rceil}\le8^N;
+\]">\[
+V(N)\le2^N8^{\lceil N/2\rceil}\le8^N;
+\]</span>
+the exponent inequality <span class="math" data-tex="\(N+3\lceil N/2\rceil\le3N\)">\(N+3\lceil N/2\rceil\le3N\)</span> holds for <span class="math" data-tex="\(N\ge2\)">\(N\ge2\)</span>, including <span class="math" data-tex="\(N=3\)">\(N=3\)</span>. The base <span class="math" data-tex="\(N=1\)">\(N=1\)</span> is immediate.</p>
+<p>Now set <span class="math" data-tex="\(N=x+k\)">\(N=x+k\)</span> and split <span class="math" data-tex="\(\nu(x;k)=\nu&#x27;\nu&#x27;&#x27;\)">\(\nu(x;k)=\nu&#x27;\nu&#x27;&#x27;\)</span>, according as the prime divisor is at most <span class="math" data-tex="\(k\)">\(k\)</span> or greater than <span class="math" data-tex="\(k\)">\(k\)</span>. For <span class="math" data-tex="\(p\le k\)">\(p\le k\)</span>, let <span class="math" data-tex="\(a_0=\lfloor\log_p k\rfloor\)">\(a_0=\lfloor\log_p k\rfloor\)</span>. Every interval of <span class="math" data-tex="\(k\)">\(k\)</span> consecutive integers contains a multiple of <span class="math" data-tex="\(p^{a_0}\)">\(p^{a_0}\)</span>, so <span class="math" data-tex="\(V(k)\mid\nu&#x27;\)">\(V(k)\mid\nu&#x27;\)</span>. If <span class="math" data-tex="\(p^a\)">\(p^a\)</span> is the highest power of <span class="math" data-tex="\(p\)">\(p\)</span> dividing an integer in our interval, then <span class="math" data-tex="\(p^a\le N\)">\(p^a\le N\)</span> and <span class="math" data-tex="\(p^{a_0}&gt;k/p\)">\(p^{a_0}&gt;k/p\)</span>. Thus
+<span class="math math-display" data-tex="\[
+p^{a-a_0}&lt;\frac{pN}{k}
+\]">\[
+p^{a-a_0}&lt;\frac{pN}{k}
+\]</span>
+whenever an extra power occurs; the weak inequality with this upper bound also covers <span class="math" data-tex="\(a=a_0\)">\(a=a_0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\nu&#x27;\le V(k)\prod_{p\le k}p\,(N/k)^{\pi(k)}
+\le64^k(N/k)^k, \tag{4.12}
+\]">\[
+\nu&#x27;\le V(k)\prod_{p\le k}p\,(N/k)^{\pi(k)}
+\le64^k(N/k)^k, \tag{4.12}
+\]</span>
+where <span class="math" data-tex="\(\prod_{p\le k}p\mid V(k)\)">\(\prod_{p\le k}p\mid V(k)\)</span>, <span class="math" data-tex="\(\pi(k)\le k\)">\(\pi(k)\le k\)</span>, <span class="math" data-tex="\(N/k\ge1\)">\(N/k\ge1\)</span>, and (4.11) were used.</p>
+<p>A prime <span class="math" data-tex="\(p&gt;k\)">\(p&gt;k\)</span> divides at most one of the consecutive integers <span class="math" data-tex="\(x+1,\ldots,x+k\)">\(x+1,\ldots,x+k\)</span>. Its valuation in their product is consequently its valuation in <span class="math" data-tex="\(\nu&#x27;&#x27;\)">\(\nu&#x27;&#x27;\)</span>, while <span class="math" data-tex="\(v_p(k!)=0\)">\(v_p(k!)=0\)</span>. Hence <span class="math" data-tex="\(\nu&#x27;&#x27;\mid\binom Nk\)">\(\nu&#x27;&#x27;\mid\binom Nk\)</span>. Finally
+<span class="math math-display" data-tex="\[
+\binom Nk\le\frac{N^k}{k!}\le(eN/k)^k. \tag{4.13}
+\]">\[
+\binom Nk\le\frac{N^k}{k!}\le(eN/k)^k. \tag{4.13}
+\]</span>
+For the last inequality, <span class="math" data-tex="\(\sum_{j=1}^k\log j\ge\int_1^k\log t\,dt=k\log k-k+1\)">\(\sum_{j=1}^k\log j\ge\int_1^k\log t\,dt=k\log k-k+1\)</span> suffices, also at <span class="math" data-tex="\(k=1\)">\(k=1\)</span>. Combining (4.12)–(4.13) gives
+<span class="math math-display" data-tex="\[
+\nu(x;k)\le(64e)^k(N/k)^{2k}
+\le(16N/k)^{2k},
+\]">\[
+\nu(x;k)\le(64e)^k(N/k)^{2k}
+\le(16N/k)^{2k},
+\]</span>
+since <span class="math" data-tex="\(e&lt;4\)">\(e&lt;4\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The point of (4.10) is its dependence on the ratio <span class="math" data-tex="\(x/k\)">\(x/k\)</span>. If <span class="math" data-tex="\(x\)">\(x\)</span> is comparable with <span class="math" data-tex="\(k\)">\(k\)</span>, then <span class="math" data-tex="\(\log\nu(x;k)=O(k)\)">\(\log\nu(x;k)=O(k)\)</span>. A crude factorial denominator would have logarithm <span class="math" data-tex="\(O(k\log k)\)">\(O(k\log k)\)</span>; losing that extra factor would spoil the effective auxiliary-function count.</p>
+<p>Here are three different parameter regimes in the original bound, keeping their dependence visible:</p>
+<table>
+<thead>
+<tr>
+<th>Evaluation point</th>
+<th>Consequence of (4.10)</th>
+<th>Dependence on <span class="math" data-tex="\(k\)">\(k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(x=0\)">\(x=0\)</span></td>
+<td><span class="math" data-tex="\(\log\nu\le2k\log16\)">\(\log\nu\le2k\log16\)</span>, sharpened by (4.11) to <span class="math" data-tex="\(k\log8\)">\(k\log8\)</span></td>
+<td>linear</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(x=k\)">\(x=k\)</span></td>
+<td><span class="math" data-tex="\(\log\nu\le2k\log32\)">\(\log\nu\le2k\log32\)</span></td>
+<td>linear</td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(x=k^2\)">\(x=k^2\)</span></td>
+<td><span class="math" data-tex="\(\log\nu\le2k\log(16(k+1))\)">\(\log\nu\le2k\log(16(k+1))\)</span></td>
+<td><span class="math" data-tex="\(O(k\log k)\)">\(O(k\log k)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The last row prevents a mistaken uniform <span class="math" data-tex="\(O(k)\)">\(O(k)\)</span> assertion when the evaluation interval moves far from zero. Lemma 4.7 below supplies a uniform denominator for normalized derivatives even in that regime; it does not assert that the interval LCM itself becomes small.</p>
+<h3 id="a-denominator-independent-of-the-evaluation-point">A denominator independent of the evaluation point</h3>
+<p>The preceding interval estimate grows with <span class="math" data-tex="\(x/k\)">\(x/k\)</span>. A different divisibility argument removes this dependence from the derivative denominator. It also accommodates arbitrary polynomial degrees. This is the polynomial family introduced by Matveev and treated in [Waldschmidt 2000].</p>
+<p>For integers <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> and <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span>, write <span class="math" data-tex="\(a=bq+r\)">\(a=bq+r\)</span>, with <span class="math" data-tex="\(0\le r&lt;b\)">\(0\le r&lt;b\)</span>, and define
+<span class="math math-display" data-tex="\[
+D_b(Z;a)=
+\left(\frac{Z(Z+1)\cdots(Z+b-1)}{b!}\right)^q
+\frac{Z(Z+1)\cdots(Z+r-1)}{r!}.
+\]">\[
+D_b(Z;a)=
+\left(\frac{Z(Z+1)\cdots(Z+b-1)}{b!}\right)^q
+\frac{Z(Z+1)\cdots(Z+r-1)}{r!}.
+\]</span>
+An empty product is <span class="math" data-tex="\(1\)">\(1\)</span>. This polynomial has degree exactly <span class="math" data-tex="\(a\)">\(a\)</span>. In particular, for fixed <span class="math" data-tex="\(b\)">\(b\)</span>, the polynomials <span class="math" data-tex="\(D_b(Z;0),\ldots,D_b(Z;A)\)">\(D_b(Z;0),\ldots,D_b(Z;A)\)</span> form a basis of <span class="math" data-tex="\(\mathbb Q[Z]_{\le A}\)">\(\mathbb Q[Z]_{\le A}\)</span>: their distinct degrees and nonzero leading coefficients make the coefficient matrix triangular and invertible.</p>
+<p><strong>Lemma 4.7 (uniform derivative denominators and analytic size).</strong> Let <span class="math" data-tex="\(a,C\ge0\)">\(a,C\ge0\)</span>, <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span> be integers, and put <span class="math" data-tex="\(V(b)=\operatorname{lcm}(1,\ldots,b)\)">\(V(b)=\operatorname{lcm}(1,\ldots,b)\)</span>. For every integer <span class="math" data-tex="\(u\)">\(u\)</span>, including negative integers, and every <span class="math" data-tex="\(0\le c\le C\)">\(0\le c\le C\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{V(b)^C}{c!}D_b^{(c)}(u;a)\in\mathbb Z.
+\]">\[
+\frac{V(b)^C}{c!}D_b^{(c)}(u;a)\in\mathbb Z.
+\]</span>
+For every <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{c=0}^{C}\binom Cc\left|D_b^{(c)}(z;a)\right|
+\le C!e^{a+b}\left(1+\frac{|z|}{b}\right)^a.
+\]">\[
+\sum_{c=0}^{C}\binom Cc\left|D_b^{(c)}(z;a)\right|
+\le C!e^{a+b}\left(1+\frac{|z|}{b}\right)^a.
+\]</span>
+Derivatives of order greater than <span class="math" data-tex="\(a\)">\(a\)</span> are zero.</p>
+<p><strong>Proof.</strong> Each consecutive-factor quotient is integer-valued on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. For <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span> it is <span class="math" data-tex="\(\binom{u+t-1}{t}\)">\(\binom{u+t-1}{t}\)</span>, and for <span class="math" data-tex="\(u\le0\)">\(u\le0\)</span> it is <span class="math" data-tex="\((-1)^t\binom{-u}{t}\)">\((-1)^t\binom{-u}{t}\)</span>, for a block of length <span class="math" data-tex="\(t\)">\(t\)</span>. These formulas include its zeros.</p>
+<p>To prove the sharper derivative assertion, expand the coefficient of <span class="math" data-tex="\(T^c\)">\(T^c\)</span> in <span class="math" data-tex="\(D_b(u+T;a)\)">\(D_b(u+T;a)\)</span>. Every term is obtained by deleting <span class="math" data-tex="\(c\)">\(c\)</span> factors from the numerator's <span class="math" data-tex="\(a\)">\(a\)</span> linear factors, then dividing the surviving product by <span class="math" data-tex="\((b!)^qr!\)">\((b!)^qr!\)</span>. No extra combinatorial denominator appears, since that coefficient is <span class="math" data-tex="\(D_b^{(c)}(u;a)/c!\)">\(D_b^{(c)}(u;a)/c!\)</span>.</p>
+<p>Fix a prime <span class="math" data-tex="\(p\)">\(p\)</span>, and let <span class="math" data-tex="\(L=\lfloor\log_p b\rfloor\)">\(L=\lfloor\log_p b\rfloor\)</span>. For <span class="math" data-tex="\(1\le j\le L\)">\(1\le j\le L\)</span>, each block of <span class="math" data-tex="\(b\)">\(b\)</span> consecutive integers contains at least <span class="math" data-tex="\(\lfloor b/p^j\rfloor\)">\(\lfloor b/p^j\rfloor\)</span> multiples of <span class="math" data-tex="\(p^j\)">\(p^j\)</span>, and the shorter block contains at least <span class="math" data-tex="\(\lfloor r/p^j\rfloor\)">\(\lfloor r/p^j\rfloor\)</span>. Set
+<span class="math math-display" data-tex="\[
+t_j=q\lfloor b/p^j\rfloor+\lfloor r/p^j\rfloor.
+\]">\[
+t_j=q\lfloor b/p^j\rfloor+\lfloor r/p^j\rfloor.
+\]</span>
+Deleting <span class="math" data-tex="\(c\)">\(c\)</span> factors leaves at least <span class="math" data-tex="\(\max(t_j-c,0)\)">\(\max(t_j-c,0)\)</span> such multiples. A surviving product that is zero contributes the integer zero. Every nonzero surviving product has <span class="math" data-tex="\(p\)">\(p\)</span>-valuation at least <span class="math" data-tex="\(\sum_{j=1}^{L}\max(t_j-c,0)\)">\(\sum_{j=1}^{L}\max(t_j-c,0)\)</span>. The denominator has valuation <span class="math" data-tex="\(\sum_{j=1}^{L}t_j\)">\(\sum_{j=1}^{L}t_j\)</span>, while <span class="math" data-tex="\(V(b)^C\)">\(V(b)^C\)</span> has valuation <span class="math" data-tex="\(CL\)">\(CL\)</span>. Therefore its cleared term has valuation at least
+<span class="math math-display" data-tex="\[
+\sum_{j=1}^{L}\bigl(C+\max(t_j-c,0)-t_j\bigr)\ge0,
+\]">\[
+\sum_{j=1}^{L}\bigl(C+\max(t_j-c,0)-t_j\bigr)\ge0,
+\]</span>
+because <span class="math" data-tex="\(c\le C\)">\(c\le C\)</span>. For <span class="math" data-tex="\(p&gt;b\)">\(p&gt;b\)</span>, the denominator has valuation zero. Every term is consequently an integer after multiplication by <span class="math" data-tex="\(V(b)^C\)">\(V(b)^C\)</span>, and so is their sum. This proof uses intervals of integers and remains valid when <span class="math" data-tex="\(u\)">\(u\)</span> is negative.</p>
+<p>For the analytic bound, set <span class="math" data-tex="\(W=|z|+b-1\)">\(W=|z|+b-1\)</span>. Expanding the differentiated product gives
+<span class="math math-display" data-tex="\[
+|D_b^{(c)}(z;a)|\le
+\frac{c!\binom ac W^{a-c}}{(b!)^qr!}\quad(0\le c\le a).
+\]">\[
+|D_b^{(c)}(z;a)|\le
+\frac{c!\binom ac W^{a-c}}{(b!)^qr!}\quad(0\le c\le a).
+\]</span>
+If <span class="math" data-tex="\(W=0\)">\(W=0\)</span>, the expression is interpreted by the underlying polynomial: a term with exponent zero has value <span class="math" data-tex="\(1\)">\(1\)</span>, including at zero. Since <span class="math" data-tex="\(\binom Cc c!=C!/(C-c)!\le C!\)">\(\binom Cc c!=C!/(C-c)!\le C!\)</span>, summing and then completing the binomial sum gives
+<span class="math math-display" data-tex="\[
+\sum_{c=0}^{C}\binom Cc|D_b^{(c)}(z;a)|
+\le \frac{C!(W+1)^a}{(b!)^qr!}.
+\]">\[
+\sum_{c=0}^{C}\binom Cc|D_b^{(c)}(z;a)|
+\le \frac{C!(W+1)^a}{(b!)^qr!}.
+\]</span>
+The elementary factorial inequality <span class="math" data-tex="\(t!\ge(t/e)^t\)">\(t!\ge(t/e)^t\)</span>, proved in (4.13), yields
+<span class="math math-display" data-tex="\[
+\frac1{(b!)^qr!}\le
+\frac{e^a}{b^a}\left(\frac br\right)^r
+\le \frac{e^{a+b}}{b^a}.
+\]">\[
+\frac1{(b!)^qr!}\le
+\frac{e^a}{b^a}\left(\frac br\right)^r
+\le \frac{e^{a+b}}{b^a}.
+\]</span>
+At <span class="math" data-tex="\(r=0\)">\(r=0\)</span> the middle factor is read as <span class="math" data-tex="\(1\)">\(1\)</span>. Otherwise <span class="math" data-tex="\(r\log(b/r)\le b/e&lt;b\)">\(r\log(b/r)\le b/e&lt;b\)</span>, by maximizing <span class="math" data-tex="\(t\log(1/t)\)">\(t\log(1/t)\)</span> on <span class="math" data-tex="\(0&lt;t\le1\)">\(0&lt;t\le1\)</span>. Substitution of <span class="math" data-tex="\(W+1=|z|+b\)">\(W+1=|z|+b\)</span> proves the stated bound. The degree gives the final zero assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the original polynomial, <span class="math" data-tex="\(D_k(x+1;kl)=\Delta(x;k)^l\)">\(D_k(x+1;kl)=\Delta(x;k)^l\)</span>. Taking <span class="math" data-tex="\(C=m\)">\(C=m\)</span> gives the useful specialization
+<span class="math math-display" data-tex="\[
+V(k)^m\Delta(x;k,l,m)\in\mathbb Z\qquad(x\in\mathbb Z).
+\]">\[
+V(k)^m\Delta(x;k,l,m)\in\mathbb Z\qquad(x\in\mathbb Z).
+\]</span>
+At <span class="math" data-tex="\(k=l=2,x=1\)">\(k=l=2,x=1\)</span>, multiplication of the five nonzero normalized derivatives by <span class="math" data-tex="\(2^m\)">\(2^m\)</span> gives
+<span class="math math-display" data-tex="\[
+9,\quad30,\quad37,\quad20,\quad4.
+\]">\[
+9,\quad30,\quad37,\quad20,\quad4.
+\]</span>
+The interval denominator in Lemma 4.3 used <span class="math" data-tex="\(6^m\)">\(6^m\)</span> at this point. At <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span>, the normalized derivatives instead are
+<span class="math math-display" data-tex="\[
+0,\quad0,\quad\tfrac14,\quad\tfrac12,\quad\tfrac14;
+\]">\[
+0,\quad0,\quad\tfrac14,\quad\tfrac12,\quad\tfrac14;
+\]</span>
+the same <span class="math" data-tex="\(2^m\)">\(2^m\)</span> still clears them. Positivity from Lemma 4.3 is confined to its nonnegative evaluation points; the integer-valued assertion in Lemma 4.7 has no such restriction.</p>
+<p>Together with (4.11), this gives a uniform logarithmic denominator cost at most <span class="math" data-tex="\(km\log8\)">\(km\log8\)</span>. The general family lets us keep the polynomial degree <span class="math" data-tex="\(a\)">\(a\)</span> and the block size <span class="math" data-tex="\(b\)">\(b\)</span> as separate parameters. A large degree need not force a factorial-size derivative denominator. The analytic bound records the corresponding size cost explicitly; it is this pair of bounds that makes the alternative basis useful.</p>
+<h2 id="7-budget-the-coefficient-heights">7. Budget the coefficient heights</h2>
+<p>The rank and denominator arguments leave one bookkeeping question: how much does division by an algebraic coefficient change the degree and height? We first prove the elementary sum and product estimate, then compute its effect on a lower-bound exponent.</p>
+<p><strong>Lemma 4.2.</strong> If <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> have degree at most <span class="math" data-tex="\(d\)">\(d\)</span> and naive height at most <span class="math" data-tex="\(H\)">\(H\)</span>, where <span class="math" data-tex="\(H\ge2\)">\(H\ge2\)</span>, then each of <span class="math" data-tex="\(\alpha+\beta,\alpha\beta\)">\(\alpha+\beta,\alpha\beta\)</span> has degree at most <span class="math" data-tex="\(d^2\)">\(d^2\)</span>, and
+<span class="math math-display" data-tex="\[
+H(\alpha+\beta),\,H(\alpha\beta)
+\le (1+d^2)^{d^2}H^{4d^2}. \tag{4.6}
+\]">\[
+H(\alpha+\beta),\,H(\alpha\beta)
+\le (1+d^2)^{d^2}H^{4d^2}. \tag{4.6}
+\]</span>
+In particular, <span class="math" data-tex="\(\log H(\alpha+\beta)\)">\(\log H(\alpha+\beta)\)</span> and <span class="math" data-tex="\(\log H(\alpha\beta)\)">\(\log H(\alpha\beta)\)</span> are at most <span class="math" data-tex="\(c(d)\log H\)">\(c(d)\log H\)</span>, with
+<span class="math math-display" data-tex="\[
+c(d)=d^2\left(4+\frac{\log(1+d^2)}{\log2}\right).
+\]">\[
+c(d)=d^2\left(4+\frac{\log(1+d^2)}{\log2}\right).
+\]</span>
+For <span class="math" data-tex="\(H\ge1\)">\(H\ge1\)</span>, the same logarithmic conclusion holds with <span class="math" data-tex="\(\log(2H)\)">\(\log(2H)\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(aX^s+\cdots+a_s\)">\(aX^s+\cdots+a_s\)</span> is the primitive minimal polynomial of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Here <span class="math" data-tex="\(1\le a\le H\)">\(1\le a\le H\)</span> and <span class="math" data-tex="\(s\le d\)">\(s\le d\)</span>. If <span class="math" data-tex="\(|\alpha|\ge1\)">\(|\alpha|\ge1\)</span>, its defining equation gives
+<span class="math math-display" data-tex="\[
+a|\alpha|^s\le H\sum_{j=0}^{s-1}|\alpha|^j\le sH|\alpha|^{s-1}.
+\]">\[
+a|\alpha|^s\le H\sum_{j=0}^{s-1}|\alpha|^j\le sH|\alpha|^{s-1}.
+\]</span>
+Thus every conjugate of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has size at most <span class="math" data-tex="\(dH\)">\(dH\)</span>; the same holds for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Also <span class="math" data-tex="\(a\alpha\)">\(a\alpha\)</span> is an algebraic integer: substituting <span class="math" data-tex="\(X/a\)">\(X/a\)</span> into the defining polynomial and multiplying by <span class="math" data-tex="\(a^{s-1}\)">\(a^{s-1}\)</span> gives a monic integral polynomial in <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Let <span class="math" data-tex="\(b\le H\)">\(b\le H\)</span> be the leading coefficient for <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, and set <span class="math" data-tex="\(q=ab\)">\(q=ab\)</span>. Both
+<span class="math math-display" data-tex="\[
+q\alpha\beta=(a\alpha)(b\beta),\qquad
+q(\alpha+\beta)=b(a\alpha)+a(b\beta)
+\]">\[
+q\alpha\beta=(a\alpha)(b\beta),\qquad
+q(\alpha+\beta)=b(a\alpha)+a(b\beta)
+\]</span>
+are algebraic integers. The compositum <span class="math" data-tex="\(\mathbb Q(\alpha,\beta)\)">\(\mathbb Q(\alpha,\beta)\)</span> is spanned by the products of powers <span class="math" data-tex="\(1,\alpha,\ldots,\alpha^{s-1}\)">\(1,\alpha,\ldots,\alpha^{s-1}\)</span> and <span class="math" data-tex="\(1,\beta,\ldots,\beta^{t-1}\)">\(1,\beta,\ldots,\beta^{t-1}\)</span>; consequently either new number <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> has degree <span class="math" data-tex="\(D\le st\le d^2\)">\(D\le st\le d^2\)</span>.</p>
+<p>The monic minimal polynomial of <span class="math" data-tex="\(q\gamma\)">\(q\gamma\)</span> has integral coefficients. Evaluating it at <span class="math" data-tex="\(qX\)">\(qX\)</span> gives an integral polynomial with root <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and leading coefficient <span class="math" data-tex="\(q^D\)">\(q^D\)</span>. By Gauss's lemma, the positive leading coefficient <span class="math" data-tex="\(c\)">\(c\)</span> of the primitive minimal polynomial of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> divides <span class="math" data-tex="\(q^D\)">\(q^D\)</span>. Hence <span class="math" data-tex="\(c\le H^{2D}\)">\(c\le H^{2D}\)</span>.</p>
+<p>Every conjugate of <span class="math" data-tex="\(\gamma=\alpha\beta\)">\(\gamma=\alpha\beta\)</span> has size at most <span class="math" data-tex="\(d^2H^2\)">\(d^2H^2\)</span>. A conjugate of <span class="math" data-tex="\(\alpha+\beta\)">\(\alpha+\beta\)</span> has size at most <span class="math" data-tex="\(2dH\le d^2H^2\)">\(2dH\le d^2H^2\)</span>, since <span class="math" data-tex="\(H\ge2\)">\(H\ge2\)</span>. Expanding
+<span class="math math-display" data-tex="\[
+c\prod_{j=1}^D(X-\gamma^{(j)})
+\]">\[
+c\prod_{j=1}^D(X-\gamma^{(j)})
+\]</span>
+shows that each coefficient is at most
+<span class="math math-display" data-tex="\[
+c\prod_j(1+|\gamma^{(j)}|)
+\le H^{2D}(1+d^2H^2)^D
+\le (1+d^2)^{d^2}H^{4d^2}.
+\]">\[
+c\prod_j(1+|\gamma^{(j)}|)
+\le H^{2D}(1+d^2H^2)^D
+\le (1+d^2)^{d^2}H^{4d^2}.
+\]</span>
+This proves (4.6). Taking logarithms and using <span class="math" data-tex="\(\log H\ge\log2\)">\(\log H\ge\log2\)</span> gives the displayed <span class="math" data-tex="\(c(d)\)">\(c(d)\)</span>. For <span class="math" data-tex="\(1\le H&lt;2\)">\(1\le H&lt;2\)</span>, apply the result with <span class="math" data-tex="\(2H\)">\(2H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The restriction or padding at height one is real: <span class="math" data-tex="\(H(1)=1\)">\(H(1)=1\)</span>, but <span class="math" data-tex="\(H(1+1)=2\)">\(H(1+1)=2\)</span>. A statement <span class="math" data-tex="\(\log H&#x27;\le c(d)\log H\)">\(\log H&#x27;\le c(d)\log H\)</span> without padding cannot hold at <span class="math" data-tex="\(H=1\)">\(H=1\)</span>. Inversion is particularly simple: reversing the minimal polynomial gives <span class="math" data-tex="\(H(\alpha^{-1})=H(\alpha)\)">\(H(\alpha^{-1})=H(\alpha)\)</span> for <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>, with unchanged degree. Combining this fact with Lemma 4.2 handles every finite sum, product and quotient appearing in the later induction.</p>
+<h3 id="account-for-the-constant-when-dividing-by-a-coefficient">Account for the constant when dividing by a coefficient</h3>
+<p>The effective proof normalizes a nonzero logarithm coefficient to <span class="math" data-tex="\(-1\)">\(-1\)</span>. A degree or height estimate alone does not finish that step: after obtaining a lower bound for the normalized form, we must multiply back by the coefficient and absorb every fixed factor into an exponent of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>Lemma 4.8 (normalization budget).</strong> Suppose <span class="math" data-tex="\(\beta_0,\ldots,\beta_n\)">\(\beta_0,\ldots,\beta_n\)</span> have degree at most <span class="math" data-tex="\(d\)">\(d\)</span>, naive height at most <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span>, and <span class="math" data-tex="\(\beta_n\ne0\)">\(\beta_n\ne0\)</span>. Put
+<span class="math math-display" data-tex="\[
+r=4d^2,\qquad K_d=(1+d^2)^{d^2},\qquad
+\gamma_j=-\beta_j/\beta_n\quad(0\le j&lt;n).
+\]">\[
+r=4d^2,\qquad K_d=(1+d^2)^{d^2},\qquad
+\gamma_j=-\beta_j/\beta_n\quad(0\le j&lt;n).
+\]</span>
+Each <span class="math" data-tex="\(\gamma_j\)">\(\gamma_j\)</span> has degree at most <span class="math" data-tex="\(d^2\)">\(d^2\)</span> and height at most <span class="math" data-tex="\(K_dB^r\)">\(K_dB^r\)</span>. For fixed logarithms define
+<span class="math math-display" data-tex="\[
+\Lambda_* =\gamma_0+\sum_{j=1}^{n-1}\gamma_j\ell_j-\ell_n
+=-\Lambda/\beta_n.
+\]">\[
+\Lambda_* =\gamma_0+\sum_{j=1}^{n-1}\gamma_j\ell_j-\ell_n
+=-\Lambda/\beta_n.
+\]</span>
+If <span class="math" data-tex="\(|\Lambda_*|&gt;(K_dB^r)^{-C_*}\)">\(|\Lambda_*|&gt;(K_dB^r)^{-C_*}\)</span>, with <span class="math" data-tex="\(C_*&gt;0\)">\(C_*&gt;0\)</span>, then
+<span class="math math-display" data-tex="\[
+|\Lambda|&gt;B^{-C},\qquad
+C=1+rC_*+\frac{\log d+C_*\log K_d}{\log2}.
+\]">\[
+|\Lambda|&gt;B^{-C},\qquad
+C=1+rC_*+\frac{\log d+C_*\log K_d}{\log2}.
+\]</span></p>
+<p><strong>Proof.</strong> Inversion preserves naive height and degree, and changing sign preserves them too. Apply Lemma 4.2 to <span class="math" data-tex="\(-\beta_j\)">\(-\beta_j\)</span> and <span class="math" data-tex="\(\beta_n^{-1}\)">\(\beta_n^{-1}\)</span>. This proves the asserted degree and height bounds, including zero coefficients.</p>
+<p>The root bound proved in Lemma 4.2, now applied to <span class="math" data-tex="\(\beta_n^{-1}\)">\(\beta_n^{-1}\)</span>, gives <span class="math" data-tex="\(|\beta_n^{-1}|\le dB\)">\(|\beta_n^{-1}|\le dB\)</span>, hence <span class="math" data-tex="\(|\beta_n|\ge(dB)^{-1}\)">\(|\beta_n|\ge(dB)^{-1}\)</span>. Consequently
+[
+|\Lambda|=|\beta_n||\Lambda_*|</p>
+<blockquote>
+<p>d^{-1}K_d^{-C_<em>}B^{-(1+rC_</em>)}.
+]
+For a fixed <span class="math" data-tex="\(M=dK_d^{C_*}\ge1\)">\(M=dK_d^{C_*}\ge1\)</span> and <span class="math" data-tex="\(B\ge2\)">\(B\ge2\)</span>, we have <span class="math" data-tex="\(M\le B^{\log M/\log2}\)">\(M\le B^{\log M/\log2}\)</span>. Absorbing precisely this factor gives the displayed exponent. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</blockquote>
+<p>If every logarithm coefficient is zero, the form is simply <span class="math" data-tex="\(\beta_0\)">\(\beta_0\)</span>. It is either zero, or the same inverse root bound gives
+<span class="math math-display" data-tex="\[
+|\beta_0|\ge(dB)^{-1}\ge B^{-1-\log d/\log2}.
+\]">\[
+|\beta_0|\ge(dB)^{-1}\ge B^{-1-\log d/\log2}.
+\]</span>
+Increasing the exponent slightly makes the final inequality strict, as in Theorem 4.1. This also covers the constant-only case without dividing by a nonexistent logarithm coefficient.</p>
+<p>The normalization budget keeps the coefficient-height variable separate from the fixed bases and branches. The theorem's exponent may deteriorate when we normalize or eliminate a coefficient, but it remains independent of <span class="math" data-tex="\(B\)">\(B\)</span>. In the next lesson the analytic gain must exceed all the denominator and height costs proved here.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Prove directly that <span class="math" data-tex="\(\Delta(x;k)=\binom{x+k}{k}\)">\(\Delta(x;k)=\binom{x+k}{k}\)</span> is an integer for <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>. Explain the cases <span class="math" data-tex="\(x=0\)">\(x=0\)</span> and <span class="math" data-tex="\(k=1\)">\(k=1\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove (4.10) with an explicit absolute constant, without the prime number theorem. State where you use that the interval contains exactly <span class="math" data-tex="\(k\)">\(k\)</span> consecutive integers.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove Lemma 4.5 by induction on <span class="math" data-tex="\(\deg P\)">\(\deg P\)</span>, using <span class="math" data-tex="\(Q(X)=P(X)-P(X+1)\)">\(Q(X)=P(X)-P(X+1)\)</span>. Treat <span class="math" data-tex="\(m=0\)">\(m=0\)</span> and <span class="math" data-tex="\(m=n\)">\(m=n\)</span> explicitly.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Compute (4.17) by column operations. Explain separately the factors <span class="math" data-tex="\(w_0w_1\)">\(w_0w_1\)</span> and <span class="math" data-tex="\((w_1-w_0)^4\)">\((w_1-w_0)^4\)</span>, and verify the numerical case <span class="math" data-tex="\(w_0=2,w_1=3\)">\(w_0=2,w_1=3\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> At <span class="math" data-tex="\(k=l=2\)">\(k=l=2\)</span>, compare the interval and uniform denominators for the normalized derivatives at <span class="math" data-tex="\(x=1\)">\(x=1\)</span>. Compute the derivatives at <span class="math" data-tex="\(x=-1\)">\(x=-1\)</span>, and explain why the uniform integer-valued assertion survives although positivity no longer holds at every order.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Suppose all coefficients in Lemma 4.8 are rational of naive height at most <span class="math" data-tex="\(B\)">\(B\)</span>. Prove that each normalized coefficient has height at most <span class="math" data-tex="\(B^2\)">\(B^2\)</span>, and show that a bound <span class="math" data-tex="\(|\Lambda_*|&gt;(B^2)^{-C_*}\)">\(|\Lambda_*|&gt;(B^2)^{-C_*}\)</span> gives <span class="math" data-tex="\(|\Lambda|&gt;B^{-(1+2C_*)}\)">\(|\Lambda|&gt;B^{-(1+2C_*)}\)</span>. Compare this exponent with the general bound at <span class="math" data-tex="\(d=1\)">\(d=1\)</span>.</p>
+</li>
+</ol>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>Solution 1.</strong> The product in (4.7) is <span class="math" data-tex="\((x+k)!/x!\)">\((x+k)!/x!\)</span>; dividing by <span class="math" data-tex="\(k!\)">\(k!\)</span> gives the binomial coefficient counting the <span class="math" data-tex="\(k\)">\(k\)</span>-element subsets of a set of size <span class="math" data-tex="\(x+k\)">\(x+k\)</span>. Hence it is integral. At <span class="math" data-tex="\(x=0\)">\(x=0\)</span> it equals <span class="math" data-tex="\(1\)">\(1\)</span>, and at <span class="math" data-tex="\(k=1\)">\(k=1\)</span> it equals <span class="math" data-tex="\(x+1\)">\(x+1\)</span>. This also proves its positivity.</p>
+<p><strong>Solution 2.</strong> The factorial valuation argument in Section 6 proves <span class="math" data-tex="\(V(N)\mid\binom N{\lfloor N/2\rfloor}V(\lceil N/2\rceil)\)">\(V(N)\mid\binom N{\lfloor N/2\rfloor}V(\lceil N/2\rceil)\)</span>, hence <span class="math" data-tex="\(V(N)\le8^N\)">\(V(N)\le8^N\)</span>. Split the interval LCM into primes <span class="math" data-tex="\(p\le k\)">\(p\le k\)</span> and <span class="math" data-tex="\(p&gt;k\)">\(p&gt;k\)</span>. An interval of length <span class="math" data-tex="\(k\)">\(k\)</span> contains a multiple of every prime power at most <span class="math" data-tex="\(k\)">\(k\)</span>, so <span class="math" data-tex="\(V(k)\)">\(V(k)\)</span> divides its small-prime part. Any extra power is at most <span class="math" data-tex="\(pN/k\)">\(pN/k\)</span>, where <span class="math" data-tex="\(N=x+k\)">\(N=x+k\)</span>; thus that part is at most <span class="math" data-tex="\(64^k(N/k)^k\)">\(64^k(N/k)^k\)</span>. A prime <span class="math" data-tex="\(p&gt;k\)">\(p&gt;k\)</span> has at most one multiple in the interval, so the large-prime part divides the product of the interval divided by <span class="math" data-tex="\(k!\)">\(k!\)</span>, namely <span class="math" data-tex="\(\binom Nk\le(eN/k)^k\)">\(\binom Nk\le(eN/k)^k\)</span>. Multiplication gives <span class="math" data-tex="\((64e)^k(N/k)^{2k}\le(16N/k)^{2k}\)">\((64e)^k(N/k)^{2k}\le(16N/k)^{2k}\)</span>. Both uses of the interval length are essential. This proves the assigned bound with <span class="math" data-tex="\(c=16\)">\(c=16\)</span>, including <span class="math" data-tex="\(k=1\)">\(k=1\)</span>.</p>
+<p><strong>Solution 3.</strong> For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> and the lower-degree monomials are independent by their leading coefficients. For degree <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(m=1\)">\(m=1\)</span>, the difference <span class="math" data-tex="\(P(X)-P(X+1)\)">\(P(X)-P(X+1)\)</span> is a nonzero constant, so the two translates are independent.</p>
+<p>Assume the result for degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span>, and take <span class="math" data-tex="\(1\le m\le n\)">\(1\le m\le n\)</span>. Suppose
+<span class="math math-display" data-tex="\[
+R(X)=\sum_{j=0}^m A_jP(X+j)
+\]">\[
+R(X)=\sum_{j=0}^m A_jP(X+j)
+\]</span>
+has degree at most <span class="math" data-tex="\(n-m-1\)">\(n-m-1\)</span>, where a bound of <span class="math" data-tex="\(-1\)">\(-1\)</span> means the zero polynomial. Its leading coefficient gives <span class="math" data-tex="\(\sum_jA_j=0\)">\(\sum_jA_j=0\)</span>. Put <span class="math" data-tex="\(C_j=A_0+\cdots+A_j\)">\(C_j=A_0+\cdots+A_j\)</span>. Telescoping gives the exact identity
+<span class="math math-display" data-tex="\[
+R(X)=\left(\sum_{j=0}^mA_j\right)P(X+m)
++\sum_{j=0}^{m-1}C_j\bigl(P(X+j)-P(X+j+1)\bigr).
+\]">\[
+R(X)=\left(\sum_{j=0}^mA_j\right)P(X+m)
++\sum_{j=0}^{m-1}C_j\bigl(P(X+j)-P(X+j+1)\bigr).
+\]</span>
+Since <span class="math" data-tex="\(Q(X)=P(X)-P(X+1)\)">\(Q(X)=P(X)-P(X+1)\)</span> has degree <span class="math" data-tex="\(n-1\)">\(n-1\)</span> in characteristic zero, the induction hypothesis with parameter <span class="math" data-tex="\(m-1\)">\(m-1\)</span> says that its <span class="math" data-tex="\(m\)">\(m\)</span> translates, together with the monomials up to degree <span class="math" data-tex="\(n-m-1\)">\(n-m-1\)</span>, are independent. Therefore every <span class="math" data-tex="\(C_j=0\)">\(C_j=0\)</span>. Successive differences give <span class="math" data-tex="\(A_0=\cdots=A_{m-1}=0\)">\(A_0=\cdots=A_{m-1}=0\)</span>, and the vanishing total gives <span class="math" data-tex="\(A_m=0\)">\(A_m=0\)</span>. When <span class="math" data-tex="\(m=n\)">\(m=n\)</span>, the induction uses no lower-degree monomials and the same argument works.</p>
+<p><strong>Solution 4.</strong> Write <span class="math" data-tex="\(a=w_0,\ b=w_1\)">\(a=w_0,\ b=w_1\)</span>, and factor <span class="math" data-tex="\(a\)">\(a\)</span> from column 2 and <span class="math" data-tex="\(b\)">\(b\)</span> from column 4. The remaining matrix has columns
+<span class="math math-display" data-tex="\[
+C(a),\ C&#x27;(a),\ C(b),\ C&#x27;(b),\qquad
+C(z)=(1,z,z^2,z^3)^{\mathsf T}.
+\]">\[
+C(a),\ C&#x27;(a),\ C(b),\ C&#x27;(b),\qquad
+C(z)=(1,z,z^2,z^3)^{\mathsf T}.
+\]</span>
+Set <span class="math" data-tex="\(\delta=b-a\)">\(\delta=b-a\)</span>, and use
+<span class="math math-display" data-tex="\[
+C(b)=C(a)+\delta C&#x27;(a)+\frac{\delta^2}{2}C&#x27;&#x27;(a)
++\frac{\delta^3}{6}C&#x27;&#x27;&#x27;(a),
+\]">\[
+C(b)=C(a)+\delta C&#x27;(a)+\frac{\delta^2}{2}C&#x27;&#x27;(a)
++\frac{\delta^3}{6}C&#x27;&#x27;&#x27;(a),
+\]</span>
+<span class="math math-display" data-tex="\[
+C&#x27;(b)=C&#x27;(a)+\delta C&#x27;&#x27;(a)+\frac{\delta^2}{2}C&#x27;&#x27;&#x27;(a).
+\]">\[
+C&#x27;(b)=C&#x27;(a)+\delta C&#x27;&#x27;(a)+\frac{\delta^2}{2}C&#x27;&#x27;&#x27;(a).
+\]</span>
+Subtract <span class="math" data-tex="\(C(a)+\delta C&#x27;(a)\)">\(C(a)+\delta C&#x27;(a)\)</span> from the third column and <span class="math" data-tex="\(C&#x27;(a)\)">\(C&#x27;(a)\)</span> from the fourth. In the last two columns, the coefficient determinant relative to <span class="math" data-tex="\(C&#x27;&#x27;(a),C&#x27;&#x27;&#x27;(a)\)">\(C&#x27;&#x27;(a),C&#x27;&#x27;&#x27;(a)\)</span> is
+<span class="math math-display" data-tex="\[
+\det\begin{pmatrix}\delta^2/2&amp;\delta\\
+\delta^3/6&amp;\delta^2/2\end{pmatrix}
+=\delta^4/12.
+\]">\[
+\det\begin{pmatrix}\delta^2/2&amp;\delta\\
+\delta^3/6&amp;\delta^2/2\end{pmatrix}
+=\delta^4/12.
+\]</span>
+Meanwhile <span class="math" data-tex="\(\det[C(a),C&#x27;(a),C&#x27;&#x27;(a),C&#x27;&#x27;&#x27;(a)]=1\cdot1\cdot2\cdot6=12\)">\(\det[C(a),C&#x27;(a),C&#x27;&#x27;(a),C&#x27;&#x27;&#x27;(a)]=1\cdot1\cdot2\cdot6=12\)</span>, since its matrix is triangular. The remaining determinant is <span class="math" data-tex="\(\delta^4\)">\(\delta^4\)</span>, and restoring the factors gives <span class="math" data-tex="\(ab(b-a)^4\)">\(ab(b-a)^4\)</span>. For <span class="math" data-tex="\(a=2,b=3\)">\(a=2,b=3\)</span>, the original rows are
+<span class="math math-display" data-tex="\[
+(1,0,1,0),\ (2,2,3,3),\ (4,8,9,18),\ (8,24,27,81),
+\]">\[
+(1,0,1,0),\ (2,2,3,3),\ (4,8,9,18),\ (8,24,27,81),
+\]</span>
+and the formula gives <span class="math" data-tex="\(6\)">\(6\)</span>.</p>
+<p><strong>Solution 5.</strong> At <span class="math" data-tex="\(x=1\)">\(x=1\)</span> the normalized derivatives are <span class="math" data-tex="\(9,15,37/4,5/2,1/4\)">\(9,15,37/4,5/2,1/4\)</span>, followed by zeros. The interval LCM is <span class="math" data-tex="\(6\)">\(6\)</span>; its cleared values are integers by Lemma 4.3. The uniform LCM is <span class="math" data-tex="\(V(2)=2\)">\(V(2)=2\)</span>, and the cleared values are <span class="math" data-tex="\(9,30,37,20,4\)">\(9,30,37,20,4\)</span>. Thus the same derivatives admit the smaller denominator <span class="math" data-tex="\(2^m\)">\(2^m\)</span>. Write <span class="math" data-tex="\(x=-1+t\)">\(x=-1+t\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Delta(-1+t;2)^2=\tfrac14t^2(1+t)^2
+=\tfrac14t^2+\tfrac12t^3+\tfrac14t^4.
+\]">\[
+\Delta(-1+t;2)^2=\tfrac14t^2(1+t)^2
+=\tfrac14t^2+\tfrac12t^3+\tfrac14t^4.
+\]</span>
+Its normalized derivatives at <span class="math" data-tex="\(-1\)">\(-1\)</span> are the coefficients <span class="math" data-tex="\(0,0,1/4,1/2,1/4\)">\(0,0,1/4,1/2,1/4\)</span>, so multiplication by <span class="math" data-tex="\(2^m\)">\(2^m\)</span> gives <span class="math" data-tex="\(0,0,1,4,4\)">\(0,0,1,4,4\)</span>. The first two entries vanish even though their orders are at most the polynomial degree. Lemma 4.3 did not assert positivity at negative points; Lemma 4.7 proves integer-valued cleared derivatives there directly by prime valuations.</p>
+<p><strong>Solution 6.</strong> Write <span class="math" data-tex="\(\beta_j=p_j/q_j\)">\(\beta_j=p_j/q_j\)</span> and <span class="math" data-tex="\(\beta_n=p_n/q_n\)">\(\beta_n=p_n/q_n\)</span> in lowest terms, with positive denominators and <span class="math" data-tex="\(p_n\ne0\)">\(p_n\ne0\)</span>. All numerator and denominator absolute values are at most <span class="math" data-tex="\(B\)">\(B\)</span>. The unreduced fraction for <span class="math" data-tex="\(-\beta_j/\beta_n\)">\(-\beta_j/\beta_n\)</span> has numerator <span class="math" data-tex="\(-p_jq_n\)">\(-p_jq_n\)</span> and denominator <span class="math" data-tex="\(q_jp_n\)">\(q_jp_n\)</span>, each of absolute value at most <span class="math" data-tex="\(B^2\)">\(B^2\)</span>. Reduction cannot increase either, proving the height bound. Also <span class="math" data-tex="\(|\beta_n|=|p_n|/q_n\ge1/B\)">\(|\beta_n|=|p_n|/q_n\ge1/B\)</span>. Therefore
+[
+|\Lambda|=|\beta_n||\Lambda_*|</p>
+<blockquote>
+<p>B^{-1}(B^2)^{-C_<em>}=B^{-(1+2C_</em>)}.
+]
+At <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, Lemma 4.8 has <span class="math" data-tex="\(r=4\)">\(r=4\)</span>, <span class="math" data-tex="\(K_d=2\)">\(K_d=2\)</span>, and exponent <span class="math" data-tex="\(1+5C_*\)">\(1+5C_*\)</span>. The sharper rational calculation avoids the deliberately coarse general compositum and conjugate bounds. Both estimates are uniform in the same variable <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+</blockquote>
+<h2 id="prerequisites-and-continuation">Prerequisites and continuation</h2>
+<p>Theorem 4.1 is stated here and fully proved in <a href="TR-BAKER-05.html"><em>Effective lower bounds II: proof of Baker's theorem</em></a>. Every arithmetic tool used to prepare that proof has been proved above. The existing <em>Number fields</em> lesson supplies the elementary algebraic-integer criterion at exactly the required generality. The later many-logarithm lesson owns the modern quantitative refinements; the brief historical discussion above supplies neither a substitute proof nor an additional prerequisite for the next lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Waldschmidt 2000] Michel Waldschmidt, <em>Diophantine Approximation on Linear Algebraic Groups</em>, Springer, 2000. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/dalag.pdf">Author's full text</a>. Effective homogeneous and nonhomogeneous estimates, integer-valued polynomial bases and Matveev's derivative-denominator method.</li>
+<li>[Waldschmidt 2003] Michel Waldschmidt, “Linear Independence Measures for Logarithms of Algebraic Numbers,” in <em>Diophantine Approximation</em>, Lecture Notes in Mathematics 1819, Springer, 2003, 249–344. <a href="https://webusers.imj-prg.fr/~michel.waldschmidt/articles/pdf/SpringerLN1819-2003.pdf">Author's full text</a>. Baker's auxiliary-function method, normalized derivations and quantitative extrapolation.</li>
+</ul>
+<h2 id="editable-sources"><span id="editable-source"></span>Editable source</h2>
+<p><a href="src/TR-BAKER-04.md">Markdown source</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><a rel="prev" href="TR-BAKER-03.html">← Baker&#x27;s theorem II: extrapolation and the end of the proof</a><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="TR-BAKER-05.html">Effective lower bounds II: proof of Baker&#x27;s theorem →</a></span></nav>
+<p class="small source-link"><a href="sources/TR-BAKER-04.tex" download>Editable LaTeX source of this lesson</a> · <a href="src/TR-BAKER-04.md" download>Markdown source</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0 for original text, exposition and figures; font glyphs retain their licences.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/TR-BAKER">Repository</a></nav>
+</footer>
+</body>
+</html>

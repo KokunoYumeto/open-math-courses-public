@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Euler numbers and vector-field indices · Constructible and perverse sheaves</title>
+<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/euler-numbers-and-vector-field-indices.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Euler numbers and vector-field indices</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="euler-numbers-and-vector-field-indices">Euler numbers and vector-field indices</h1>
+<p>The Euler characteristic of a compact manifold can be computed from finite cells, from duality, or from intersections of a section with the zero section. These calculations explain both the vanishing in odd dimension and the Hopf index formula. Orientation lines let the same argument work on nonorientable manifolds.</p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Author self-check recorded; not independently reviewed. New original text is public domain (CC0).</em></p>
+<p>Learn first <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html#proper-direct-image-with-perfect-stalks">Perfect coefficients on compact fibres</a> for finite compact cohomology, and <a href="../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html#the-evaluation-map-is-biduality">Constructible costalks and Verdier duality</a> for the dualizing orientation complex and actual duality. <a href="continuous-sections-and-supported-cycle-intersections.html#the-complete-supported-section-intersection-comparison">Continuous sections and supported cycle intersections</a> proves the section class and its complete supported comparison. <a href="differential-sections-and-proper-below-euler-indices.html#recovering-the-base-class-from-the-microlocal-trace">Differential sections and proper-below Euler indices</a> proves the compact index for every continuous section. <a href="orientations-of-conormal-cycles-and-transverse-intersections.html#ordered-transverse-forms-give-the-local-number">Orientations of conormal cycles and transverse intersections</a> fixes the integral normal-first coefficient and ordered transverse sign. These are written programme proofs relative to their stated foundations; compatible triangulation and other lower foundational obligations remain open.</p>
+<p>Throughout, manifolds have no boundary. They are real analytic, Hausdorff and countable at infinity, with the standing finite dimension bounds. The compact manifold in the main theorems has dimension <span class="math" data-tex="\(n\)">\(n\)</span>. The vector-field proof accepts smooth fields, and therefore includes every analytic field in the assigned exercise.</p>
+<h2 id="finite-cells-give-an-integer-independent-of-the-field">Finite cells give an integer independent of the field</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be any field and <span class="math" data-tex="\(X\)">\(X\)</span> compact. Compact constructible finiteness makes the following sum finite:</p>
+<span class="math math-display" data-tex="\[
+\chi_k(X)=\sum_j(-1)^j\dim_k H^j(X;k_X).
+\qquad\text{(1)}
+\]">\[
+\chi_k(X)=\sum_j(-1)^j\dim_k H^j(X;k_X).
+\qquad\text{(1)}
+\]</span>
+<p>For a finite-dimensional local system <span class="math" data-tex="\(L\)">\(L\)</span> of constant rank <span class="math" data-tex="\(r\)">\(r\)</span> on a connected <span class="math" data-tex="\(X\)">\(X\)</span>, we claim</p>
+<span class="math math-display" data-tex="\[
+\chi(X;L)=r\sum_{\sigma}(-1)^{\dim\sigma}
+=r\,\chi_k(X).
+\qquad\text{(2)}
+\]">\[
+\chi(X;L)=r\sum_{\sigma}(-1)^{\dim\sigma}
+=r\,\chi_k(X).
+\qquad\text{(2)}
+\]</span>
+<p><strong>Proof.</strong> Choose a finite compatible triangulation of the compact manifold and filter it by its closed skeleta. The difference between successive skeleta is a finite disjoint union of open simplices. The local system on each such simplex is constant of rank <span class="math" data-tex="\(r\)">\(r\)</span>; compact sections are <span class="math" data-tex="\(k^r[-\dim\sigma]\)">\(k^r[-\dim\sigma]\)</span>. The closed/open localization triangles and their finite compact-section long exact sequences make Euler characteristic additive.</p>
+<p>Adding the open-simplex contributions gives the first equality in (2). Applying the same argument to <span class="math" data-tex="\(k_X\)">\(k_X\)</span> gives the second. Euler additivity is an integer identity: for a finite cochain complex, the dimensions of the image of each differential occur once in each adjacent degree and cancel. No reduction of integers into <span class="math" data-tex="\(k\)">\(k\)</span> is involved.</p>
+<p>In particular <span class="math" data-tex="\(\chi_k(X)\)">\(\chi_k(X)\)</span> is the same integer for every field <span class="math" data-tex="\(k\)">\(k\)</span>. For a disconnected compact manifold, apply the formula on each component. There are finitely many components: components are open, and compactness gives a finite subcover of their cover of <span class="math" data-tex="\(X\)">\(X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Rank controls the Euler characteristic of a local system; its monodromy can still change the individual cohomology groups.</p>
+<h2 id="duality-forces-vanishing-in-odd-dimension">Duality forces vanishing in odd dimension</h2>
+<p>Write <span class="math" data-tex="\(\operatorname{or}_{X,k}\)">\(\operatorname{or}_{X,k}\)</span> for the orientation local system. It has rank one, whether or not it is globally trivial. The manifold dualizing complex and compact dual-sections comparison give</p>
+<span class="math math-display" data-tex="\[
+D_Xk_X=\operatorname{or}_{X,k}[n],\qquad
+R\Gamma(X;D_Xk_X)
+\simeq R\operatorname{Hom}_k(R\Gamma(X;k_X),k).
+\qquad\text{(3)}
+\]">\[
+D_Xk_X=\operatorname{or}_{X,k}[n],\qquad
+R\Gamma(X;D_Xk_X)
+\simeq R\operatorname{Hom}_k(R\Gamma(X;k_X),k).
+\qquad\text{(3)}
+\]</span>
+<p>The second comparison uses compactness of the coefficient support; ordinary and compact sections agree here. Both complexes are perfect.</p>
+<p>Coefficient duality reverses the finite cohomology degrees without changing the Euler characteristic. A shift by <span class="math" data-tex="\(n\)">\(n\)</span> multiplies it by <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. Formula (2) gives the remaining equality:</p>
+<span class="math math-display" data-tex="\[
+\chi_k(X)
+=(-1)^n\chi(X;\operatorname{or}_{X,k})
+=(-1)^n\chi_k(X).
+\qquad\text{(4)}
+\]">\[
+\chi_k(X)
+=(-1)^n\chi(X;\operatorname{or}_{X,k})
+=(-1)^n\chi_k(X).
+\qquad\text{(4)}
+\]</span>
+<p><strong>Theorem.</strong> A compact odd-dimensional manifold without boundary satisfies</p>
+<span class="math math-display" data-tex="\[
+\chi_k(X)=0\qquad\text{for every field }k.
+\qquad\text{(5)}
+\]">\[
+\chi_k(X)=0\qquad\text{for every field }k.
+\qquad\text{(5)}
+\]</span>
+<p><strong>Proof.</strong> For odd <span class="math" data-tex="\(n\)">\(n\)</span>, equation (4) says <span class="math" data-tex="\(2\chi_k(X)=0\)">\(2\chi_k(X)=0\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, so <span class="math" data-tex="\(\chi_k(X)=0\)">\(\chi_k(X)=0\)</span>. The orientation local system was retained throughout. The calculation is valid also in characteristic two because the dimensions and their alternating sum are integers. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Equivalently, the compact constructible-function duality theorem gives
+<span class="math" data-tex="\(\int_XD_X1_X\,d\chi=\int_X1_X\,d\chi\)">\(\int_XD_X1_X\,d\chi=\int_X1_X\,d\chi\)</span>, while
+<span class="math" data-tex="\(D_X1_X=(-1)^n1_X\)">\(D_X1_X=(-1)^n1_X\)</span>. The finite-dimensional argument above explains why this is an integer equality over every field.</p>
+<h2 id="turn-a-vector-field-into-an-admissible-section">Turn a vector field into an admissible section</h2>
+<p>Let <span class="math" data-tex="\(v\)">\(v\)</span> be a smooth vector field on <span class="math" data-tex="\(X\)">\(X\)</span>. Choose a smooth positive definite metric <span class="math" data-tex="\(g\)">\(g\)</span>, and lower its tangent index:</p>
+<span class="math math-display" data-tex="\[
+\sigma=g^\flat(v):X\longrightarrow T^*X,\qquad
+\sigma(x)(w)=g_x(v(x),w).
+\qquad\text{(6)}
+\]">\[
+\sigma=g^\flat(v):X\longrightarrow T^*X,\qquad
+\sigma(x)(w)=g_x(v(x),w).
+\qquad\text{(6)}
+\]</span>
+<p>Here is an explicit existence argument for <span class="math" data-tex="\(g\)">\(g\)</span>. Choose finitely many coordinate neighborhoods and smaller neighborhoods covering <span class="math" data-tex="\(X\)">\(X\)</span>, with closures inside the larger charts. In each chart choose a nonnegative smooth bump supported in the larger neighborhood and positive on the smaller one. Divide these bumps by their everywhere-positive sum to obtain a finite smooth partition of unity. The weighted sum of the pulled-back Euclidean metrics is smooth and positive definite. Each weighted term extends by zero outside its chart. Thus no global analytic metric is needed.</p>
+<p>The supported-section theorem accepts continuous sections, so the smooth section (6) lies in its actual domain. Positive definiteness gives <span class="math" data-tex="\(\sigma(x)=0\)">\(\sigma(x)=0\)</span> exactly when <span class="math" data-tex="\(v(x)=0\)">\(v(x)=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(0_X\subset T^*X\)">\(0_X\subset T^*X\)</span> denote the zero section. Its normalized integral cycle is denoted <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>. In base coordinates <span class="math" data-tex="\(x\)">\(x\)</span> and cotangent coordinates <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, its coefficient is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sgn}(dx_1\wedge\cdots\wedge dx_n)
+\otimes
+\operatorname{sgn}(d\xi_1\wedge\cdots\wedge d\xi_n).
+\qquad\text{(7)}
+\]">\[
+\operatorname{sgn}(dx_1\wedge\cdots\wedge dx_n)
+\otimes
+\operatorname{sgn}(d\xi_1\wedge\cdots\wedge d\xi_n).
+\qquad\text{(7)}
+\]</span>
+<p>This is the codimension-zero case of the normalized conormal formula. The two orientation signs change together under a chart reversal, so (7) is intrinsic even on a nonorientable <span class="math" data-tex="\(X\)">\(X\)</span>. Extending this integral generator to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> gives
+<span class="math" data-tex="\(\operatorname{CC}(\mathbb Q_X)\)">\(\operatorname{CC}(\mathbb Q_X)\)</span>, with the preceding characteristic-cycle normalization.</p>
+<p>For integral coefficients put <span class="math" data-tex="\(M=T^*X\)">\(M=T^*X\)</span> and <span class="math" data-tex="\(\pi:M\to X\)">\(\pi:M\to X\)</span>. The actual section unit and the ordered cup have types</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[\sigma]&amp;\in H^0_{\sigma(X)}(M;\pi^!\mathbb Z_X),\\
+\lambda_0&amp;\in H^0_{0_X}(M;\pi^{-1}\omega_{X,\mathbb Z}),\\
+[\sigma]\cap\lambda_0
+&amp;\in H^0_{\sigma(X)\cap0_X}(M;\omega_{M,\mathbb Z}).
+\end{aligned}
+\qquad\text{(8)}
+\]">\[
+\begin{aligned}
+[\sigma]&amp;\in H^0_{\sigma(X)}(M;\pi^!\mathbb Z_X),\\
+\lambda_0&amp;\in H^0_{0_X}(M;\pi^{-1}\omega_{X,\mathbb Z}),\\
+[\sigma]\cap\lambda_0
+&amp;\in H^0_{\sigma(X)\cap0_X}(M;\omega_{M,\mathbb Z}).
+\end{aligned}
+\qquad\text{(8)}
+\]</span>
+<p>The first unit is normalized by <span class="math" data-tex="\(\sigma^!\pi^!\mathbb Z_X=\mathbb Z_X\)">\(\sigma^!\pi^!\mathbb Z_X=\mathbb Z_X\)</span> and the closed-embedding counit. The cup uses
+<span class="math" data-tex="\(\pi^!\mathbb Z_X\otimes^L\pi^{-1}\omega_{X,\mathbb Z}\to\omega_{M,\mathbb Z}\)">\(\pi^!\mathbb Z_X\otimes^L\pi^{-1}\omega_{X,\mathbb Z}\to\omega_{M,\mathbb Z}\)</span> in this order.</p>
+<h2 id="isolated-zeros-carry-integer-local-numbers">Isolated zeros carry integer local numbers</h2>
+<p>Assume that the zero set <span class="math" data-tex="\(Z(v)\)">\(Z(v)\)</span> is finite. For a zero <span class="math" data-tex="\(a\)">\(a\)</span>, restrict the class in (8) to a neighborhood meeting its support only at <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>. The normalized point trace defines</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ind}_a(v)
+=\#([\sigma]\cap\lambda_0)_{(a,0)}
+\in\mathbb Z.
+\qquad\text{(9)}
+\]">\[
+\operatorname{ind}_a(v)
+=\#([\sigma]\cap\lambda_0)_{(a,0)}
+\in\mathbb Z.
+\qquad\text{(9)}
+\]</span>
+<p>Open-extension composition proves independence of the chosen small neighborhood, exactly as in the supported-section lesson.</p>
+<p><strong>Theorem.</strong> For every smooth vector field on a compact <span class="math" data-tex="\(X\)">\(X\)</span> with finitely many isolated zeros,</p>
+<span class="math math-display" data-tex="\[
+\chi_k(X)=\sum_{a\in Z(v)}\operatorname{ind}_a(v)
+\qquad\text{for every field }k.
+\qquad\text{(10)}
+\]">\[
+\chi_k(X)=\sum_{a\in Z(v)}\operatorname{ind}_a(v)
+\qquad\text{for every field }k.
+\qquad\text{(10)}
+\]</span>
+<p><strong>Proof.</strong> The intersection support in (8) is the finite set
+<span class="math" data-tex="\(\{(a,0):a\in Z(v)\}\)">\(\{(a,0):a\in Z(v)\}\)</span>. Supported excision into disjoint small neighborhoods splits the class into its finitely many point-supported classes. Composition of traces makes its total integral the sum in (10).</p>
+<p>Extend the normalized local orientation generators to <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Each point trace then sends its integral local number to the same number in <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. There is no assertion here that an unrestricted ordinary direct image under a nonproper projection commutes with scalar extension: the comparison is on the finite point supports and their normalized traces.</p>
+<p>The rational zero cycle is <span class="math" data-tex="\(\operatorname{CC}(\mathbb Q_X)\)">\(\operatorname{CC}(\mathbb Q_X)\)</span>. The already proved compact continuous-section index therefore identifies this rational total with <span class="math" data-tex="\(\chi_{\mathbb Q}(X)\)">\(\chi_{\mathbb Q}(X)\)</span>. Both sides are integers, and <span class="math" data-tex="\(\mathbb Z\to\mathbb Q\)">\(\mathbb Z\to\mathbb Q\)</span> is injective, so their equality is an integer equality. Formula (2) gives <span class="math" data-tex="\(\chi_k(X)=\chi_{\mathbb Q}(X)\)">\(\chi_k(X)=\chi_{\mathbb Q}(X)\)</span> for any field <span class="math" data-tex="\(k\)">\(k\)</span>, proving (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An empty zero set is permitted. Its supported class and its finite sum are zero, so a nowhere-zero field forces <span class="math" data-tex="\(\chi_k(X)=0\)">\(\chi_k(X)=0\)</span>.</p>
+<h2 id="the-local-determinant-has-no-extra-orientation-sign">The local determinant has no extra orientation sign</h2>
+<p>Suppose that <span class="math" data-tex="\(a\)">\(a\)</span> is a nondegenerate zero. Choose a chart centered at <span class="math" data-tex="\(a\)">\(a\)</span>, and write
+<span class="math" data-tex="\(v(x)=Ax+O(|x|^2)\)">\(v(x)=Ax+O(|x|^2)\)</span>, with <span class="math" data-tex="\(A\)">\(A\)</span> invertible, for an analytic field. For a smooth field the differentiability remainder <span class="math" data-tex="\(o(|x|)\)">\(o(|x|)\)</span> suffices.</p>
+<p>The coordinate description of the smooth graph unit has the same orientation as the analytic graph calculation. Indeed the fibre translation
+<span class="math" data-tex="\(\eta=\xi-\sigma(x)\)">\(\eta=\xi-\sigma(x)\)</span> has determinant one and</p>
+<span class="math math-display" data-tex="\[
+d\eta_1\wedge\cdots\wedge d\eta_n\wedge dx
+=d\xi_1\wedge\cdots\wedge d\xi_n\wedge dx
+=\Omega.
+\qquad\text{(11)}
+\]">\[
+d\eta_1\wedge\cdots\wedge d\eta_n\wedge dx
+=d\xi_1\wedge\cdots\wedge d\xi_n\wedge dx
+=\Omega.
+\qquad\text{(11)}
+\]</span>
+<p>Every other term has an additional base differential and vanishes in the full wedge. The graph unit has its base tangent orientation tensored with the fibre orientation. This calculation needs neither symmetry of <span class="math" data-tex="\(D\sigma\)">\(D\sigma\)</span> nor an isotropic graph.</p>
+<p>Let <span class="math" data-tex="\(G=g(a)\)">\(G=g(a)\)</span> be the positive definite metric matrix and <span class="math" data-tex="\(B=D\sigma(a)\)">\(B=D\sigma(a)\)</span>. Differentiating <span class="math" data-tex="\(g(x)v(x)\)">\(g(x)v(x)\)</span> gives <span class="math" data-tex="\(B=GA\)">\(B=GA\)</span>, since the term involving <span class="math" data-tex="\(Dg\)">\(Dg\)</span> is multiplied by <span class="math" data-tex="\(v(a)=0\)">\(v(a)=0\)</span>. In row order <span class="math" data-tex="\((\xi,x)\)">\((\xi,x)\)</span>, the tangent columns for the graph followed by the zero section give</p>
+<span class="math math-display" data-tex="\[
+B=GA,\qquad
+[\,V_{\mathrm{graph}}\ V_{\mathrm{zero}}\,]
+=\begin{pmatrix}B&amp;0\\ I&amp;I\end{pmatrix},
+\qquad
+\det\begin{pmatrix}B&amp;0\\ I&amp;I\end{pmatrix}=\det B.
+\qquad\text{(12)}
+\]">\[
+B=GA,\qquad
+[\,V_{\mathrm{graph}}\ V_{\mathrm{zero}}\,]
+=\begin{pmatrix}B&amp;0\\ I&amp;I\end{pmatrix},
+\qquad
+\det\begin{pmatrix}B&amp;0\\ I&amp;I\end{pmatrix}=\det B.
+\qquad\text{(12)}
+\]</span>
+<p>The two submanifolds are transverse exactly when <span class="math" data-tex="\(B\)">\(B\)</span> is invertible. Their integral fibre coefficients pair to one. The ordered transverse formula with
+<span class="math" data-tex="\(\Omega=d\xi\wedge dx\)">\(\Omega=d\xi\wedge dx\)</span> consequently gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ind}_a(v)
+=\operatorname{sgn}\det B
+=\operatorname{sgn}\det A,
+\qquad\text{(13)}
+\]">\[
+\operatorname{ind}_a(v)
+=\operatorname{sgn}\det B
+=\operatorname{sgn}\det A,
+\qquad\text{(13)}
+\]</span>
+<p>because a positive definite <span class="math" data-tex="\(G\)">\(G\)</span> has positive determinant. This uses the graph as the first input. Reversing the two inputs would contribute <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>; replacing <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> by the symplectic orientation would require the factor already computed in the orientation lesson.</p>
+<p>The formula also verifies coordinate independence directly. For a coordinate change with Jacobian <span class="math" data-tex="\(J\)">\(J\)</span> at the zero,</p>
+<span class="math math-display" data-tex="\[
+A&#x27;=JAJ^{-1},\qquad
+B&#x27;=J^{-t}BJ^{-1}.
+\qquad\text{(14)}
+\]">\[
+A&#x27;=JAJ^{-1},\qquad
+B&#x27;=J^{-t}BJ^{-1}.
+\qquad\text{(14)}
+\]</span>
+<p>The derivative of <span class="math" data-tex="\(J\)">\(J\)</span> contributes nothing because <span class="math" data-tex="\(v(a)=0\)">\(v(a)=0\)</span>, and the base derivative of the cotangent transition contributes nothing because <span class="math" data-tex="\(\sigma(a)=0\)">\(\sigma(a)=0\)</span>. Thus <span class="math" data-tex="\(\det A&#x27;=\det A\)">\(\det A&#x27;=\det A\)</span>, and <span class="math" data-tex="\(\det B&#x27;=(\det J)^{-2}\det B\)">\(\det B&#x27;=(\det J)^{-2}\det B\)</span>. Both signs are unchanged, including for a reversed chart. This agrees with the two simultaneous orientation changes in (7).</p>
+<p><strong>Hopf index theorem.</strong> If every zero of <span class="math" data-tex="\(v\)">\(v\)</span> is nondegenerate, then</p>
+<span class="math math-display" data-tex="\[
+\chi_k(X)=\sum_{a\in Z(v)}\operatorname{sgn}\det Dv(a).
+\qquad\text{(15)}
+\]">\[
+\chi_k(X)=\sum_{a\in Z(v)}\operatorname{sgn}\det Dv(a).
+\qquad\text{(15)}
+\]</span>
+<p>This follows from (10) and (13). In particular it proves the assigned rational-coefficient theorem on compact analytic manifolds, and gives its integer equality over every field. For a zero-dimensional compact manifold, the empty determinant is one; every point is a zero and contributes one.</p>
+<h2 id="a-degenerate-zero-is-read-by-its-thom-pullback">A degenerate zero is read by its Thom pullback</h2>
+<p>The definition (9) remains valid when the derivative is singular. Its local computation can be made directly from the normalized zero-section Thom class. On a coordinate neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> containing only one zero, the supported section comparison identifies the local number with the image of that class under</p>
+<span class="math math-display" data-tex="\[
+\sigma^*:H^n_{0_U}(T^*U;\pi^{-1}\operatorname{or}_{U,\mathbb Z})
+\longrightarrow H^n_{\{a\}}(U;\operatorname{or}_{U,\mathbb Z})
+\simeq\mathbb Z.
+\qquad\text{(16)}
+\]">\[
+\sigma^*:H^n_{0_U}(T^*U;\pi^{-1}\operatorname{or}_{U,\mathbb Z})
+\longrightarrow H^n_{\{a\}}(U;\operatorname{or}_{U,\mathbb Z})
+\simeq\mathbb Z.
+\qquad\text{(16)}
+\]</span>
+<p>The class in the first group is its normalized fibre Thom unit. The support pulls back to <span class="math" data-tex="\(\{a\}\)">\(\{a\}\)</span>; the final isomorphism is the point trace of
+<span class="math" data-tex="\(\omega_{U,\mathbb Z}=\operatorname{or}_{U,\mathbb Z}[n]\)">\(\omega_{U,\mathbb Z}=\operatorname{or}_{U,\mathbb Z}[n]\)</span>.
+The full section-intersection theorem supplies this actual pullback comparison. Thus (16) is the local degree with the paired orientation coefficient, rather than a new scalar convention.</p>
+<p>In dimension one, the local relative group is explicitly</p>
+<span class="math math-display" data-tex="\[
+H^1(I,I\setminus\{0\};\mathbb Z)
+=\mathbb Z^2/\mathbb Z(1,1).
+\qquad\text{(17)}
+\]">\[
+H^1(I,I\setminus\{0\};\mathbb Z)
+=\mathbb Z^2/\mathbb Z(1,1).
+\qquad\text{(17)}
+\]</span>
+<p>The two coordinates refer to the left and right punctured intervals. An increasing local coordinate pulls the positive Thom generator to itself. If a function defining the section is positive on both punctured intervals, the induced pullback sends a pair <span class="math" data-tex="\((c_-,c_+)\)">\((c_-,c_+)\)</span> to
+<span class="math" data-tex="\((c_+,c_+)\)">\((c_+,c_+)\)</span>, which is zero in this quotient. Such a zero has index zero.</p>
+<p>This description also proves independence of the chosen positive metric at an isolated zero. A convex interpolation of two positive metric matrices remains positive. The corresponding sections are nonzero away from the zero, so they give a homotopy of the same relative pair maps in (16). Relative cohomology pullback is unchanged: the usual prism homotopy for the interval gives a cochain homotopy between the two maps, and preserves the punctured subspace. Hence their local numbers agree. Global metric interpolation has exactly the same zero set.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<h3 id="monodromy-changes-cohomology-without-changing-euler-characteristic">Monodromy changes cohomology without changing Euler characteristic</h3>
+<p><em>Difficulty: Introductory.</em></p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be a rank-<span class="math" data-tex="\(r\)">\(r\)</span> local system on <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, with invertible monodromy matrix <span class="math" data-tex="\(T\)">\(T\)</span> over any field. Compute its Euler characteristic without assuming that <span class="math" data-tex="\(T=I\)">\(T=I\)</span>.</p>
+<p><strong>Solution.</strong> Cutting at one vertex gives the two-term cochain complex
+<span class="math" data-tex="\(k^r\xrightarrow{T-I}k^r\)">\(k^r\xrightarrow{T-I}k^r\)</span>, in degrees zero and one. Thus
+<span class="math" data-tex="\(H^0=\ker(T-I)\)">\(H^0=\ker(T-I)\)</span> and <span class="math" data-tex="\(H^1=\operatorname{coker}(T-I)\)">\(H^1=\operatorname{coker}(T-I)\)</span>. Rank-nullity gives equal dimensions for these two spaces, and their alternating sum is zero. If <span class="math" data-tex="\(T-I\)">\(T-I\)</span> is invertible, both vanish; if <span class="math" data-tex="\(T=I\)">\(T=I\)</span>, both have dimension <span class="math" data-tex="\(r\)">\(r\)</span>. Both cases have the same Euler characteristic, agreeing with <span class="math" data-tex="\(r\chi(S^1)=0\)">\(r\chi(S^1)=0\)</span>.</p>
+<h3 id="characteristic-two-on-a-nonorientable-three-manifold">Characteristic two on a nonorientable three-manifold</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Let <span class="math" data-tex="\(X=S^1\times\mathbb{RP}^2\)">\(X=S^1\times\mathbb{RP}^2\)</span>. Over a field of characteristic two, use the usual one-cell-per-dimension cell structure on <span class="math" data-tex="\(\mathbb{RP}^2\)">\(\mathbb{RP}^2\)</span> to compute the cohomology dimensions of <span class="math" data-tex="\(X\)">\(X\)</span>. Explain why the odd-dimensional vanishing is still an integer assertion.</p>
+<p><strong>Solution.</strong> The cellular differential on <span class="math" data-tex="\(\mathbb{RP}^2\)">\(\mathbb{RP}^2\)</span> has the integer boundary multiplication by two in the top cell and zero in the other positive degree. Over a characteristic-two field both differentials vanish, so the dimensions in degrees zero, one and two are <span class="math" data-tex="\(1,1,1\)">\(1,1,1\)</span>. The circle has one-dimensional cohomology in degrees zero and one. Finite Künneth gives dimensions
+<span class="math" data-tex="\(1,2,2,1\)">\(1,2,2,1\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, and Euler characteristic
+<span class="math" data-tex="\(1-2+2-1=0\)">\(1-2+2-1=0\)</span> in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.
+The product is nonorientable: the circle's orientation line is trivial, while that of <span class="math" data-tex="\(\mathbb{RP}^2\)">\(\mathbb{RP}^2\)</span> is nontrivial integrally. Its sign representation becomes trivial in characteristic two. Neither change affects its rank-one Euler formula. A scalar equation <span class="math" data-tex="\(2z=0\)">\(2z=0\)</span> in this field alone would give no vanishing conclusion; (4) is instead an equality of integer alternating dimensions.</p>
+<h3 id="a-rotating-field-has-a-positive-index">A rotating field has a positive index</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Near the origin of <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take
+<span class="math" data-tex="\(v(x,y)=(-y,x)\)">\(v(x,y)=(-y,x)\)</span> and the Euclidean metric. Compute its local index and check whether the associated one-form is a differential.</p>
+<p><strong>Solution.</strong> The linearization is
+<span class="math" data-tex="\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)">\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>, with determinant one, so (13) gives index <span class="math" data-tex="\(+1\)">\(+1\)</span>. The lowered one-form is
+<span class="math" data-tex="\(-y\,dx+x\,dy\)">\(-y\,dx+x\,dy\)</span>, whose exterior derivative is
+<span class="math" data-tex="\(2\,dx\wedge dy\)">\(2\,dx\wedge dy\)</span>, not zero. It is therefore not locally a differential. The graph need not be Lagrangian, yet its supported section unit and ordered intersection are valid. Restricting the Hopf proof to gradient fields would miss this example.</p>
+<h3 id="a-chart-reversal-and-a-positive-metric">A chart reversal and a positive metric</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>At a planar saddle take
+<span class="math" data-tex="\(A=\operatorname{diag}(-1,1)\)">\(A=\operatorname{diag}(-1,1)\)</span>, metric matrix
+<span class="math" data-tex="\(G=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)">\(G=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>, and coordinate reversal
+<span class="math" data-tex="\(J=\operatorname{diag}(-1,1)\)">\(J=\operatorname{diag}(-1,1)\)</span>. Compute the signs before and after the reversal.</p>
+<p><strong>Solution.</strong> The metric is positive definite: its eigenvalues are one and three. Its determinant is three. Hence
+<span class="math" data-tex="\(B=GA=\begin{pmatrix}-2&amp;1\\-1&amp;2\end{pmatrix}\)">\(B=GA=\begin{pmatrix}-2&amp;1\\-1&amp;2\end{pmatrix}\)</span> has determinant <span class="math" data-tex="\(-3\)">\(-3\)</span>, and the index is <span class="math" data-tex="\(-1\)">\(-1\)</span>.
+The new tangent matrix is <span class="math" data-tex="\(A&#x27;=JAJ^{-1}=A\)">\(A&#x27;=JAJ^{-1}=A\)</span>. The new cotangent derivative is
+<span class="math" data-tex="\(B&#x27;=J^{-t}BJ^{-1}=\begin{pmatrix}-2&amp;-1\\1&amp;2\end{pmatrix}\)">\(B&#x27;=J^{-t}BJ^{-1}=\begin{pmatrix}-2&amp;-1\\1&amp;2\end{pmatrix}\)</span>, again with determinant <span class="math" data-tex="\(-3\)">\(-3\)</span>. The base and fibre orientation generators both reverse; their tensor coefficient is unchanged. A local maximum with <span class="math" data-tex="\(A=-I\)">\(A=-I\)</span> in this same two-dimensional setting would instead have determinant <span class="math" data-tex="\(+1\)">\(+1\)</span> and index <span class="math" data-tex="\(+1\)">\(+1\)</span>.</p>
+<h3 id="the-two-zeros-of-a-height-gradient">The two zeros of a height gradient</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>On the unit sphere <span class="math" data-tex="\(S^2\subset\mathbb R^3\)">\(S^2\subset\mathbb R^3\)</span>, take the round-metric gradient of the height function <span class="math" data-tex="\(h(p)=p_3\)">\(h(p)=p_3\)</span>. Find its zeros and local indices.</p>
+<p><strong>Solution.</strong> The tangent gradient is
+<span class="math" data-tex="\(v(p)=e_3-p_3p\)">\(v(p)=e_3-p_3p\)</span>. Its only zeros are the north and south poles. For a tangent displacement <span class="math" data-tex="\(w\)">\(w\)</span> at either pole, <span class="math" data-tex="\(dp_3(w)=0\)">\(dp_3(w)=0\)</span>, so
+<span class="math" data-tex="\(Dv(w)=-p_3w\)">\(Dv(w)=-p_3w\)</span>. At the north pole the matrix on the two-dimensional tangent plane is <span class="math" data-tex="\(-I\)">\(-I\)</span>; at the south pole it is <span class="math" data-tex="\(I\)">\(I\)</span>. Both determinants are positive, so the sum of local indices is two. The sphere's zero- and two-dimensional cell structure gives <span class="math" data-tex="\(\chi(S^2)=2\)">\(\chi(S^2)=2\)</span>, as required. Reversing the vector field exchanges its maximum and minimum behavior but leaves both two-dimensional determinant signs positive.</p>
+<h3 id="three-projective-critical-points-on-a-nonorientable-surface">Three projective critical points on a nonorientable surface</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>For real numbers <span class="math" data-tex="\(a_1&lt;a_2&lt;a_3\)">\(a_1&lt;a_2&lt;a_3\)</span>, let
+<span class="math" data-tex="\(h([x])=(a_1x_1^2+a_2x_2^2+a_3x_3^2)/(x_1^2+x_2^2+x_3^2)\)">\(h([x])=(a_1x_1^2+a_2x_2^2+a_3x_3^2)/(x_1^2+x_2^2+x_3^2)\)</span>
+on <span class="math" data-tex="\(\mathbb{RP}^2\)">\(\mathbb{RP}^2\)</span>. Using its descended round metric, compute the indices of its gradient.</p>
+<p><strong>Solution.</strong> On the unit sphere the gradient is
+<span class="math" data-tex="\(2(\operatorname{diag}(a_1,a_2,a_3)x-h(x)x)\)">\(2(\operatorname{diag}(a_1,a_2,a_3)x-h(x)x)\)</span>. It is antipodally equivariant and descends to the projective surface. Since the eigenvalues are distinct, its zeros are exactly the three coordinate axes. In an affine projective chart near the <span class="math" data-tex="\(i\)">\(i\)</span>-th axis, the Hessian at that critical point has diagonal entries
+<span class="math" data-tex="\(2(a_j-a_i)\)">\(2(a_j-a_i)\)</span> for <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>. Lowering or raising indices by the positive metric preserves the determinant sign. The three signs are respectively <span class="math" data-tex="\(+1,-1,+1\)">\(+1,-1,+1\)</span>. Their sum is one, equal to the cell Euler characteristic <span class="math" data-tex="\(1-1+1\)">\(1-1+1\)</span> of <span class="math" data-tex="\(\mathbb{RP}^2\)">\(\mathbb{RP}^2\)</span>. No orientation of this nonorientable surface was used to assign the local integers.</p>
+<h3 id="a-nowhere-zero-field-and-a-boundary-counterexample">A nowhere-zero field and a boundary counterexample</h3>
+<p><em>Difficulty: Intermediate.</em></p>
+<p>Compare the constant nonzero field on the flat two-torus with the field <span class="math" data-tex="\(\partial_t\)">\(\partial_t\)</span> on the closed interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Explain which Euler conclusion the theorem permits.</p>
+<p><strong>Solution.</strong> The torus has no vector-field zeros, so (10) gives Euler characteristic zero. Its cell counts <span class="math" data-tex="\(1,2,1\)">\(1,2,1\)</span> confirm this. On the interval the constant field also has no zeros, but the interval is contractible and has Euler characteristic one. It has boundary and is outside the theorem's hypotheses. Thus the interval is not a counterexample to (10); it shows why a theorem allowing boundary would need boundary data and contributions. No such extension is being assumed here.</p>
+<h3 id="a-degenerate-circle-zero-has-index-zero">A degenerate circle zero has index zero</h3>
+<p><em>Difficulty: Advanced.</em></p>
+<p>On <span class="math" data-tex="\(S^1\)">\(S^1\)</span>, in the standard periodic coordinate, take
+<span class="math" data-tex="\(v(t)=(1-\cos t)\partial_t\)">\(v(t)=(1-\cos t)\partial_t\)</span>. Compute the local index of its unique zero and compare with the Euler characteristic.</p>
+<p><strong>Solution.</strong> The only zero is <span class="math" data-tex="\(t=0\)">\(t=0\)</span> modulo <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>. Its derivative vanishes, so the determinant formula for nondegenerate zeros does not apply. In a small punctured interval on both sides of zero the coefficient <span class="math" data-tex="\(1-\cos t\)">\(1-\cos t\)</span> is positive. For the flat metric the lowered section has the same positive coefficient. Its Thom pullback in (17) sends every pair to a diagonal pair, so the local index is zero. The general isolated-zero formula (10) therefore gives <span class="math" data-tex="\(\chi(S^1)=0\)">\(\chi(S^1)=0\)</span>. This agrees with its two-term cellular calculation. A zero derivative alone would not determine this local index; the signs on the two punctured sides do.</p>
+<h2 id="references">References</h2>
+<p>The vanishing of the Euler characteristic of a compact odd-dimensional manifold and the Hopf index formula for a nondegenerate vector field are classical; their sheaf-theoretic proofs here use the index theorem of M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985). The proof retains orientation local systems, supplies the integer finite-cell comparison for all fields, and applies the supported-section and compact characteristic-cycle index diagrams of the preceding lessons. The local block determinant fixes the sign for arbitrary vector fields; the Thom pullback also explains the degenerate isolated-zero example.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/euler-numbers-and-vector-field-indices.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-03">Repository</a></nav>
+</footer>
+</body>
+</html>

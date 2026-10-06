@@ -1,0 +1,242 @@
+# Cohomology of sheaves on ringed spaces
+
+*Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).*
+
+A sheaf lets us recognize a section by looking locally. It does not promise that a section of a quotient sheaf lifts globally. Sheaf cohomology measures this failure and its higher analogues. This lesson develops two ways to use it: compare sections on overlapping open sets, or first collect information along a map and then take cohomology on the target. Both methods work on arbitrary ringed spaces.
+
+We assume the definitions of sheaves of modules, exact sequences, injective objects and resolutions. The lesson Injective modules and bounded-below derived functors supplies enough injectives, restriction of injectives to open subsets, and the construction of right derived functors. The exact-couple construction and convergence needed for Leray are proved in Derived pullback and pushforward, Exercise 3. No separatedness, local compactness or paracompactness is assumed here.
+
+Basic references are [Stacks] and [Derived sheaves]. Our order of argument starts with lifting sections, because that is the mechanism behind the vanishing and gluing theorems. Complexes have cohomological indexing: a differential raises degree by one. Write \(\mathcal O\) for the sheaf of rings of a ringed space \(X\), and \(\mathcal F(U)\) for sections on an open subset \(U\).
+
+## 1. The obstruction that cohomology records
+
+For an exact sequence of sheaves of modules
+\[
+0\longrightarrow\mathcal A\longrightarrow\mathcal B
+\longrightarrow\mathcal C\longrightarrow0,
+\]
+the sequence of sections on \(U\) is exact at its first two terms. Surjectivity at the last term need not hold. A section of \(\mathcal C(U)\) has lifts on an open cover of \(U\), since surjectivity of a sheaf map means surjectivity on stalks. Differences of lifts lie in \(\mathcal A\). Changing the lifts changes those differences by differences of sections of \(\mathcal A\). This is the first obstruction to a global lift.
+
+Choose an injective resolution
+\[
+0\longrightarrow\mathcal F\longrightarrow\mathcal I^0
+\xrightarrow{d^0}\mathcal I^1\xrightarrow{d^1}\cdots.
+\]
+Define
+\[
+H^q(U,\mathcal F)
+=H^q\bigl(\Gamma(U,\mathcal I^\bullet)\bigr)
+\qquad(q\geq0).
+\]
+The derived-functor construction shows that this is independent of the resolution, naturally in \(\mathcal F\). In degree zero it is \(\mathcal F(U)\). Negative cohomology groups of a sheaf are zero. A short exact sequence gives a natural long exact sequence
+\[
+0\to\mathcal A(U)\to\mathcal B(U)\to\mathcal C(U)
+\xrightarrow{\partial}H^1(U,\mathcal A)
+\to H^1(U,\mathcal B)\to\cdots.
+\]
+Thus \(\partial(c)=0\) exactly when \(c\) has a lift on \(U\). The construction also gives restriction maps for inclusions of open sets and their compatibility with connecting maps. These are the universal right derived functors of \(\Gamma(U,-)\): the positive-degree functors can be effaced by embedding a sheaf into an injective sheaf.
+
+**Proposition 1.1 (restriction).** If \(U\subset X\) is open, then
+\[
+H^q(U,\mathcal F)=H^q(U,\mathcal F|_U).
+\]
+On the left, the resolution is taken in modules on \(X\); on the right, it is taken in modules on \(U\).
+
+**Proof.** Restriction is exact, and the restriction of an injective sheaf of modules is injective by Injective restrictions, Lemma 1.1. Therefore \(\mathcal I^\bullet|_U\) is an injective resolution of \(\mathcal F|_U\). The two complexes of sections in the assertion are literally the same complex. This also proves compatibility with further restriction. \(\square\)
+
+The proposition is useful even when \(\mathcal F|_U\) is simpler than \(\mathcal F\). Cohomology on \(U\) depends only on the restriction, not on how the sheaf extends to the rest of the space. It does not say that restriction induces an isomorphism \(H^q(X,\mathcal F)\to H^q(U,\mathcal F)\).
+
+## 2. Extending sections removes the obstruction
+
+A sheaf is **flasque**, also called **flabby**, if every restriction
+\[
+\mathcal F(V)\longrightarrow\mathcal F(U),\qquad U\subset V,
+\]
+is surjective. Equivalently, it suffices to test restrictions from \(X\) to all opens: a section extended to \(X\) can then be restricted to \(V\). A restriction of a flasque sheaf to an open subset is flasque. The adjective concerns the underlying sheaf; it does not require any property of the ring of coefficients.
+
+**Lemma 2.1 (lifting with an extensible kernel).** In a short exact sequence \(0\to\mathcal A\to\mathcal B\to\mathcal C\to0\), if \(\mathcal A\) is flasque, then
+\(\mathcal B(U)\to\mathcal C(U)\) is surjective for every open \(U\).
+
+**Proof.** Fix \(c\in\mathcal C(U)\). Choose local lifts \(b_\lambda\in\mathcal B(W_\lambda)\) on an open cover of \(U\), and well order the cover. We construct a compatible lift on the union of the sets already considered. At a successor step let \(V\) be this union with its lift \(b\), and let \(W\) be the next open set with a local lift \(b_W\). On \(V\cap W\), the difference \(b-b_W\) is the image of a unique section \(a\in\mathcal A(V\cap W)\), because kernels of sheaf maps are computed on sections. Extend \(a\) to \(\widetilde a\in\mathcal A(W)\). Replace \(b_W\) by \(b_W+\widetilde a\); the two lifts now agree, so they glue on \(V\cup W\). At a limit step all previous lifts agree, and the sheaf axiom glues them on their union. Starting with the empty open set and proceeding through the well-ordered cover produces a lift on all of \(U\). This uses the usual axiom of choice, with no countability assumption on the cover. \(\square\)
+
+**Corollary 2.2.** If both \(\mathcal A\) and \(\mathcal B\) in Lemma 2.1 are flasque, then \(\mathcal C\) is flasque.
+
+**Proof.** Lift a section of \(\mathcal C(U)\) to \(\mathcal B(U)\), extend it to \(\mathcal B(V)\), and take its image in \(\mathcal C(V)\). \(\square\)
+
+**Theorem 2.3 (flasque acyclicity).** For a flasque sheaf of modules \(\mathcal F\),
+\[
+H^q(U,\mathcal F)=0\qquad(q>0)
+\]
+on every open \(U\subset X\).
+
+**Proof.** Injective sheaves of modules are flasque by Injective restrictions, Lemma 1.1. Embed \(\mathcal F\) into an injective \(\mathcal I^0\), and let \(\mathcal Q^0\) be the quotient. Corollary 2.2 makes \(\mathcal Q^0\) flasque. Repeat: embed \(\mathcal Q^0\) into an injective \(\mathcal I^1\), form its flasque quotient \(\mathcal Q^1\), and continue. This constructs an injective resolution, with short exact sequences
+\[
+0\to\mathcal Q^{r-1}\to\mathcal I^r\to\mathcal Q^r\to0,
+\qquad\mathcal Q^{-1}=\mathcal F.
+\]
+Lemma 2.1 makes every one of these sequences exact after taking sections on \(U\). Consequently the complex of sections of the injective resolution is exact in every positive degree. Its cohomology computes the groups in question. \(\square\)
+
+*Reference:* [Stacks, Tag 09SY]. The argument applies without change to sheaves of abelian groups, by using the constant sheaf \(\mathbf Z\) as the ring of coefficients.
+
+**Corollary 2.4 (flasque resolutions).** An exact resolution \(0\to\mathcal F\to\mathcal L^0\to\mathcal L^1\to\cdots\) with all \(\mathcal L^r\) flasque computes cohomology on every open by taking sections.
+
+**Proof.** Theorem 2.3 makes its terms acyclic for \(\Gamma(U,-)\). The acyclic-resolution theorem for right derived functors, Bounded-below derived functors, Theorem 4.1, applies. Concretely, the short exact sequences formed with the successive kernels give dimension-shifting isomorphisms, which identify the cohomology of this complex with that of an injective resolution. \(\square\)
+
+Flasqueness is sufficient for acyclicity, but acyclicity on one space is a weaker condition. A sheaf with zero higher cohomology on \(X\) need not allow extension between every pair of opens. This distinction matters when constructing resolutions: flasque terms simultaneously work on every open set.
+
+## 3. Coefficients and higher direct images
+
+The underlying abelian sheaf remembers the addition law of a module. Does forgetting the module structure alter cohomology? It does not, although forgetting need not turn an injective module sheaf into an injective abelian sheaf.
+
+**Theorem 3.1 (independence of the coefficient category).** The underlying groups of \(H^q(U,\mathcal F)\), computed in modules over \(\mathcal O_X\), are naturally the cohomology groups of the underlying abelian sheaf.
+
+**Proof.** Take an injective resolution in modules. Forgetting the module structure is exact: this follows on stalks from exactness of forgetting modules to abelian groups. Every term of this resolution is flasque, and remains flasque after forgetting. By Theorem 2.3 for abelian sheaves, the forgotten resolution is acyclic for sections. It therefore computes abelian-sheaf cohomology by Corollary 2.4. The complexes of sections in the two categories have the same underlying abelian groups and differentials. Comparison maps are natural because both are derived from the identity on sections. \(\square\)
+
+Now let \(f:(X,\mathcal O_X)\to(Y,\mathcal O_Y)\) be a morphism of ringed spaces. The sheaf \(f_*\mathcal F\) is given by
+\((f_*\mathcal F)(V)=\mathcal F(f^{-1}V)\); its \(\mathcal O_Y\)-action comes from \(f^\sharp\). Define \(Rf_*\mathcal F\) using an injective resolution and
+\[
+R^qf_*\mathcal F=\mathcal H^q(f_*\mathcal I^\bullet).
+\]
+Degree zero is the ordinary direct image. Higher direct images form natural long exact sequences of sheaves.
+
+**Theorem 3.2 (local description).** The sheaf \(R^qf_*\mathcal F\) is the sheaf associated to the presheaf
+\[
+V\longmapsto H^q(f^{-1}V,\mathcal F).
+\]
+In particular,
+\[
+(R^qf_*\mathcal F)_y
+=\mathop{\mathrm{colim}}_{y\in V}H^q(f^{-1}V,\mathcal F).
+\]
+
+**Proof.** Evaluate the complex \(f_*\mathcal I^\bullet\) on \(V\). It becomes \(\Gamma(f^{-1}V,\mathcal I^\bullet)\), whose cohomology is the displayed group. For any complex of sheaves, its cohomology sheaf is the sheafification of the cohomology presheaf: kernels are computed on sections and cokernels are sheafified. Equivalently, at a stalk both constructions give the cohomology of the stalk complex, since filtered colimits of modules are exact. This proves the assertion, including the formula for stalks. \(\square\)
+
+*Reference:* [Stacks, Tag 01E4]. Sheafification in this statement is essential. There is no general assertion that sections of \(R^qf_*\mathcal F\) on \(V\) equal \(H^q(f^{-1}V,\mathcal F)\).
+
+**Corollary 3.3.** Higher direct images commute with restricting the target to an open subset. They also agree, as underlying abelian sheaves, with higher direct images computed in abelian sheaves.
+
+**Proof.** If \(V\subset Y\) is open, the inverse images of its open subsets are the same whether one works with \(f\) or with \(f^{-1}V\to V\). Proposition 1.1 and Theorem 3.2 identify the corresponding presheaves and their sheafifications. For the second assertion apply Theorem 3.1 to each inverse image open, then sheafify. \(\square\)
+
+**Corollary 3.4.** A direct image of a flasque sheaf is flasque. A flasque sheaf is \(f_*\)-acyclic: \(R^qf_*\mathcal F=0\) for \(q>0\).
+
+**Proof.** Restrictions for \(f_*\mathcal F\) are restrictions between inverse image opens, so are surjective. The presheaf in Theorem 3.2 is zero in positive degrees by Theorem 2.3. \(\square\)
+
+For the map from \(X\) to a point, higher direct images are just cohomology groups, viewed as sheaves on a point. For other maps, the stalk formula measures cohomology over arbitrarily small neighbourhoods of the target point. It is not in general the cohomology of the fibre; comparison with fibre cohomology requires additional conditions, treated later in the course.
+
+## 4. Collecting information along a map
+
+Taking sections on \(X\) is the composite of direct image to \(Y\) and sections on \(Y\). The cohomology of this composite has two possible sources: cohomology along \(f\), and cohomology of the resulting sheaves on \(Y\).
+
+**Theorem 4.1 (Leray spectral sequence).** For any morphism of ringed spaces and any sheaf of modules \(\mathcal F\), there is a natural first-quadrant spectral sequence
+\[
+E_2^{p,q}=H^p(Y,R^qf_*\mathcal F)
+\quad\Longrightarrow\quad H^{p+q}(X,\mathcal F).
+\]
+The groups on the right are regarded as \(\mathcal O_Y(Y)\)-modules through the map on global rings.
+
+**Proof.** Choose an injective resolution \(\mathcal F\to\mathcal I^\bullet\) starting in degree zero and put \(K=f_*\mathcal I^\bullet\). Then \(K\) represents \(Rf_*\mathcal F\) and \(\mathcal H^qK=R^qf_*\mathcal F\). Apply the full exact-couple construction in Derived pullback and pushforward, Exercise 3 to the triangles obtained from the good upper truncations \(\tau_{\le q}K\). It constructs the pages \(E_r\), proves \(E_{r+1}=H(E_r,d_r)\), and identifies the limiting terms with the successive quotients of the finite filtration of \(H^n(R\Gamma(Y,K))\). Its hypotheses are exactly a module sheaf in degree zero and a morphism of ringed spaces; no bound on the dimensions is needed. Proposition 3.1 of the same lesson proves \(R\Gamma(Y,Rf_*\mathcal F)\cong R\Gamma(X,\mathcal F)\), with scalars restricted along the map of global rings. These two internal proofs establish the terms, convergence and abutment asserted here. Truncation triangles and their induced exact couples are natural in \(\mathcal F\), giving naturality of the spectral sequence. \(\square\)
+
+The differential on page \(r\) has bidegree \((r,1-r)\). For each total degree the first-quadrant spectral sequence gives a finite filtration whose successive quotients are the terms \(E_\infty^{p,q}\) in that total degree. It gives a filtration, not a canonical direct-sum decomposition.
+
+If \(R^qf_*\mathcal F=0\) for \(q>0\), only the bottom row survives. Hence there are natural isomorphisms
+\[
+H^p(X,\mathcal F)\cong H^p(Y,f_*\mathcal F).
+\]
+More generally, the first terms produce
+\[
+0\to H^1(Y,f_*\mathcal F)\to H^1(X,\mathcal F)
+\to H^0(Y,R^1f_*\mathcal F)\to H^2(Y,f_*\mathcal F)
+\to H^2(X,\mathcal F).
+\]
+The middle map records a global cohomology class locally along \(f\). The next map is the obstruction to such local classes coming from a global class.
+
+**Example 4.2 (closed embeddings).** Let \(i:Z\hookrightarrow X\) be a closed embedding of ringed spaces. For a sheaf \(\mathcal G\) on \(Z\), the stalk of \(i_*\mathcal G\) at a point of \(Z\) is the corresponding stalk of \(\mathcal G\), and at a point outside \(Z\) it is zero. For the first assertion, opens of \(Z\) are intersections with opens of \(X\); for the second, use the open complement of \(Z\). Thus \(i_*\) is exact, by the stalk criterion for exactness. It follows that
+\[
+R^qi_*\mathcal G=0\ (q>0),\qquad
+H^p(X,i_*\mathcal G)\cong H^p(Z,\mathcal G).
+\]
+The last identity is the single-row case of Leray. A closed embedding therefore transports cohomology without adding any higher direct images.
+
+## 5. Two open sets and the connecting map
+
+**Theorem 5.1 (Mayer–Vietoris).** If \(X=U\cup V\) is an open cover, there is a natural exact sequence
+\[
+\begin{aligned}
+0&\to H^0(X,\mathcal F)
+\to H^0(U,\mathcal F)\oplus H^0(V,\mathcal F)
+\to H^0(U\cap V,\mathcal F)\\
+&\to H^1(X,\mathcal F)
+\to H^1(U,\mathcal F)\oplus H^1(V,\mathcal F)
+\to H^1(U\cap V,\mathcal F)\to\cdots.
+\end{aligned}
+\]
+The map from the two opens to their intersection is restriction from \(U\) minus restriction from \(V\).
+
+**Proof.** Use a flasque resolution \(\mathcal L^\bullet\) of \(\mathcal F\), for example an injective resolution. In every degree the sheaf axiom identifies the kernel of the difference map with sections on \(X\). The difference map is onto, since any section on \(U\cap V\) extends to \(U\) by flasqueness. We obtain a short exact sequence of complexes
+\[
+0\to\Gamma(X,\mathcal L^\bullet)
+\to\Gamma(U,\mathcal L^\bullet)\oplus\Gamma(V,\mathcal L^\bullet)
+\to\Gamma(U\cap V,\mathcal L^\bullet)\to0.
+\]
+Its long exact cohomology sequence is the asserted sequence by Corollary 2.4 and Proposition 1.1. Comparison maps between resolutions make this construction natural in \(\mathcal F\); homotopic comparison maps induce the same maps on cohomology. \(\square\)
+
+To see the connecting map explicitly, represent a class on \(U\cap V\) by a cocycle \(c\in\mathcal L^q(U\cap V)\). Choose \(a\in\mathcal L^q(U)\) and \(b\in\mathcal L^q(V)\) with \(a-b=c\) on the overlap. Since \(dc=0\), the sections \(da\) and \(db\) agree there. They glue to a section \(h\in\mathcal L^{q+1}(X)\), and \(dh=0\). The class of \(h\) is the connecting image. Another choice of lifts differs by a global section in degree \(q\), so changes \(h\) by a coboundary. Changing \(c\) by a coboundary likewise leaves the resulting class unchanged. This explains the sign and makes the obstruction concrete.
+
+If the positive cohomology on all three opens vanishes, the sequence reduces to a two-term calculation. It says that \(H^1(X,\mathcal F)\) is the cokernel of the difference map on sections and that \(H^q(X,\mathcal F)=0\) for \(q\geq2\). The acyclicity conditions must be checked; an arbitrary open cover does not automatically compute cohomology from sections alone. The next lesson extends this calculation to Čech complexes.
+
+## 6. Simple vanishing tests and a dimension bound
+
+**Example 6.1 (one-point support).** For a point \(x\in X\) and an abelian group \(A\), the skyscraper sheaf \(i_{x*}A\) has value \(A\) on opens containing \(x\), and zero on other opens. Every restriction is an identity or a map onto zero. Thus the sheaf is flasque and has no positive cohomology on any open. This does not require \(x\) to be closed. The same example works for a module over \(\mathcal O_{X,x}\), with the induced action on sections.
+
+**Example 6.2 (irreducibility).** Let \(X\) be irreducible and \(A_X\) the constant abelian sheaf. A section is a locally constant function to \(A\) with its discrete topology. Every nonempty open in an irreducible space is irreducible and hence connected. Such a function is constant. Thus \(A_X(U)=A\) for nonempty \(U\), with identity restrictions, and \(A_X(\varnothing)=0\). The sheaf is flasque. Consequently constant coefficients have zero positive sheaf cohomology on an irreducible space. Connectedness alone does not give this extension property: a connected space may have disconnected opens.
+
+The sheaves in these examples are acyclic for a direct reason, independently of dimension. A different theorem controls all sheaves at once. **Grothendieck's vanishing theorem**, proved in Cohomological dimension and the Künneth formula, Lemma 7.1, states that if the underlying space \(X\) is Noetherian of finite Krull dimension \(d\), then
+\[
+H^q(X,\mathcal F)=0\qquad(q>d)
+\]
+for every abelian sheaf, and hence every sheaf of modules. Here dimension is the supremum of lengths of chains of irreducible closed subsets, not a manifold dimension. The precise reference is [Stacks, Tag 02UZ]. It gives no vanishing assertion in degree \(d\).
+
+For an explicit small-space example, the restriction-map description of flabby sheaves on the Sierpiński space is worked out in [Derived sheaves, Example 6 and Exercise 3]. It supplies a useful distinction between a condition on a restriction map and a condition on an individual stalk.
+
+## 7. Exercises with solutions
+
+**Exercise 7.1 (easy: two point supports).** Let \(x,y\in X\), possibly equal, and let \(A,B\) be abelian groups. Compute the positive cohomology of \(i_{x*}A\oplus i_{y*}B\) on every open. Give its degree-zero sections.
+
+**Solution.** On an open \(W\) the sections are the sum of \(A\) if \(x\in W\) and \(B\) if \(y\in W\), with each missing summand replaced by zero. Finite sums of flasque sheaves are flasque, because each component of a section can be extended separately. The positive groups are therefore zero by Theorem 2.3. Even when \(x=y\), the degree-zero value is \(A\oplus B\) on opens containing that point.
+
+**Exercise 7.2 (easy: closed support).** For a closed embedding \(i:Z\hookrightarrow X\) and an exact sequence of module sheaves on \(Z\), prove exactness after applying \(i_*\). Deduce the higher-direct-image and cohomology statements of Example 4.2.
+
+**Solution.** At a point of \(Z\) the pushed-forward sequence is the original stalk sequence; outside \(Z\) it is the zero sequence. Thus it is exact at every stalk. An exact functor has zero positive right derived functors, giving \(R^qi_*=0\). Leray has only its \(q=0\) row and gives \(H^p(X,i_*\mathcal G)=H^p(Z,\mathcal G)\).
+
+**Exercise 7.3 (medium: constant sheaves).** Prove the assertion about irreducible spaces in Example 6.2, and explain precisely why the proof does not apply to an arbitrary connected space.
+
+**Solution.** Nonempty opens of an irreducible space intersect. Any two nonempty opens in a nonempty open subset therefore intersect too, so that subset is irreducible. A nonconstant locally constant function partitions it into two disjoint nonempty opens, a contradiction. Every section is consequently a constant element of \(A\), which extends as the same constant to any larger open. On a connected space an open subset can have two components; a function taking different values on them cannot extend to a locally constant function on the whole connected space. The proof requires irreducibility of every nonempty open.
+
+**Exercise 7.4 (medium: a gluing obstruction).** Assume \(X=U\cup V\) and, for all \(q>0\),
+\[
+H^q(U,\mathcal F)=H^q(V,\mathcal F)=H^q(U\cap V,\mathcal F)=0.
+\]
+Prove the two-term calculation after Theorem 5.1, and describe what vanishing of the class represented by an overlap section means.
+
+**Solution.** The long exact sequence gives
+\[
+H^1(X,\mathcal F)=\frac{\mathcal F(U\cap V)}{\mathcal F(U)|_{U\cap V}-\mathcal F(V)|_{U\cap V}}.
+\]
+Its later terms give zero in degrees at least two. The class of \(c\) is zero exactly when \(c=a|_{U\cap V}-b|_{U\cap V}\). These sections correct the mismatch of local data. The short exact sequence of complexes in the proof establishes the calculation without assuming that the sections functor is exact on \(\mathcal F\).
+
+**Exercise 7.5 (medium: an acyclic direct-image test).** Suppose every inverse image of an open subset of \(Y\) has zero positive cohomology with coefficients in \(\mathcal F\). Show that \(H^p(X,\mathcal F)=H^p(Y,f_*\mathcal F)\). Apply this to a closed embedding.
+
+**Solution.** The presheaves describing \(R^qf_*\mathcal F\) are zero for \(q>0\), so their sheafifications are zero. Leray gives the isomorphisms. For a closed embedding the restricted embedding into any target open is still closed and its direct image is exact by Exercise 7.2. In this application one uses exactness to establish vanishing of higher direct images directly; one need not assume that arbitrary opens of \(Z\) are acyclic. This distinction is essential: the sufficient hypothesis in the first sentence is stronger than the conclusion \(R^qf_*\mathcal F=0\).
+
+**Exercise 7.6 (challenging: changing rings).** Let \(\mathcal R\to\mathcal S\) be a morphism of sheaves of rings on the same space and \(\mathcal F\) an \(\mathcal S\)-module. Prove that its cohomology computed as an \(\mathcal R\)-module is the restriction of scalars of its cohomology as an \(\mathcal S\)-module.
+
+**Solution.** Forgetting from \(\mathcal S\)-modules to \(\mathcal R\)-modules is exact on stalks. An injective resolution over \(\mathcal S\) becomes an exact flasque resolution over \(\mathcal R\). Theorem 2.3 and the acyclic-resolution theorem show that this resolution computes \(\mathcal R\)-module cohomology. Its section complex is the restriction of scalars of the original section complex; restriction of scalars is exact. This proves the assertion and its naturality. No flatness of \(\mathcal S\) over \(\mathcal R\) is needed.
+
+## Foundational cohomology results
+
+The internal foundations are Injective modules and bounded-below derived functors, Theorem 2.3, Lemma 1.1, Proposition 1.3 and Theorem 4.1: enough injectives, flasqueness and open restriction of injectives, and the existence and acyclic-resolution properties of right derived functors. Leray uses the full internal proof in Derived pullback and pushforward, Proposition 3.1 and Exercise 3. The Noetherian dimension bound uses Cohomological dimension and the Künneth formula, Lemma 7.1; this particular lemma concerns arbitrary abelian sheaves on the underlying Noetherian topological space and has no étale torsion hypothesis. The lifting, flasque acyclicity, coefficient comparison, local description of higher direct images, and the applications to Leray and Mayer–Vietoris have been proved above.
+
+## References
+
+- **[Stacks]** The Stacks project authors, *The Stacks project*, Cohomology of Sheaves: Tags [01E1](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-cohomology-of-open), [01E4](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-describe-higher-direct-images), [09SY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-flasque-acyclic), [09T0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-flasque-acyclic-pushforward), [01F1](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-modules-abelian), [01F2](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-Leray), [01EB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-mayer-vietoris), and [02UZ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-proposition-vanishing-Noetherian); Derived Categories, Tag [015N](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-grothendieck-spectral-sequence). The reference edition is the AI Integrated Stacks Project.
+- **[Derived sheaves]** *Derived categories of sheaves*, Open Mathematics Courses: Injective modules and bounded-below derived functors and Derived pullback and pushforward.

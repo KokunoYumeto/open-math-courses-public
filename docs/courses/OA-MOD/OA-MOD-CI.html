@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compatible pairs and complex interpolation · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-CI.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 18 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="compatible-pairs-and-complex-interpolation">Compatible pairs and complex interpolation</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>Interpolation arguments in modular theory act on two endpoint spaces at once. The
+endpoints need not be nested, reflexive, separable, or dense in one another. What
+is needed is a common Hausdorff ambient space, a precise sum norm, and an analytic
+strip class whose boundary values decay in the endpoint norms.</p>
+<p>This unit constructs that framework from the ground up. It proves completeness of
+the intersection, sum, strip, and interpolation spaces and proves the exact
+geometric-mean bound for a linear map bounded at both endpoints. The mathematical
+antecedent is Takesaki, <em>Theory of Operator Algebras II</em>, Appendix A.12. The
+organization, proofs, checks, and exercises here are independently written.</p>
+<h2 id="compatible-pairs-intersections-and-sums"><span id="oa-mod-ci-01"></span><span id="OA-MOD-CI-01"></span>Compatible pairs, intersections, and sums</h2>
+<p>A <strong>compatible pair</strong> is a pair <span class="math" data-tex="\(\mathbf X=(X_0,X_1)\)">\(\mathbf X=(X_0,X_1)\)</span> of complex Banach spaces
+with continuous injective linear maps into one Hausdorff topological vector space
+<span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. We identify each endpoint with its image. This identification
+matters: it gives a definite meaning to equality between an element of <span class="math" data-tex="\(X_0\)">\(X_0\)</span>
+and an element of <span class="math" data-tex="\(X_1\)">\(X_1\)</span>.</p>
+<p>Set</p>
+<span class="math math-display" data-tex="\[
+\Delta(\mathbf X)=X_0\cap X_1,\qquad
+\Sigma(\mathbf X)=X_0+X_1
+\]">\[
+\Delta(\mathbf X)=X_0\cap X_1,\qquad
+\Sigma(\mathbf X)=X_0+X_1
+\]</span>
+<p>inside <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\|x\|_{\Delta}
+=\max\{\|x\|_{X_0},\|x\|_{X_1}\},
+\tag{CI.1}
+\]">\[
+\|x\|_{\Delta}
+=\max\{\|x\|_{X_0},\|x\|_{X_1}\},
+\tag{CI.1}
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\|x\|_{\Sigma}
+=\inf_{x=x_0+x_1}
+\bigl(\|x_0\|_{X_0}+\|x_1\|_{X_1}\bigr).
+\tag{CI.2}
+\]">\[
+\|x\|_{\Sigma}
+=\inf_{x=x_0+x_1}
+\bigl(\|x_0\|_{X_0}+\|x_1\|_{X_1}\bigr).
+\tag{CI.2}
+\]</span>
+<p>The infimum runs over <span class="math" data-tex="\(x_j\in X_j\)">\(x_j\in X_j\)</span>. In particular, the canonical maps
+<span class="math" data-tex="\(X_j\to\Sigma(\mathbf X)\)">\(X_j\to\Sigma(\mathbf X)\)</span> are contractions.</p>
+<p><strong>Proposition.</strong> Both <span class="math" data-tex="\(\Delta(\mathbf X)\)">\(\Delta(\mathbf X)\)</span> and <span class="math" data-tex="\(\Sigma(\mathbf X)\)">\(\Sigma(\mathbf X)\)</span> are Banach
+spaces.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\((x_n)\)">\((x_n)\)</span> be Cauchy in <span class="math" data-tex="\(\Delta(\mathbf X)\)">\(\Delta(\mathbf X)\)</span>. It converges to some
+<span class="math" data-tex="\(x_j\)">\(x_j\)</span> in <span class="math" data-tex="\(X_j\)">\(X_j\)</span> for <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span>. Continuity of the two ambient embeddings makes
+the same sequence converge to <span class="math" data-tex="\(x_0\)">\(x_0\)</span> and <span class="math" data-tex="\(x_1\)">\(x_1\)</span> in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. Since
+<span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is Hausdorff, <span class="math" data-tex="\(x_0=x_1\)">\(x_0=x_1\)</span>. The common vector lies in the
+intersection, and convergence holds in the maximum norm.</p>
+<p>For the sum, give <span class="math" data-tex="\(X_0\oplus X_1\)">\(X_0\oplus X_1\)</span> the norm</p>
+<span class="math math-display" data-tex="\[
+\|(x_0,x_1)\|_{\oplus}=\|x_0\|_{X_0}+\|x_1\|_{X_1}.
+\]">\[
+\|(x_0,x_1)\|_{\oplus}=\|x_0\|_{X_0}+\|x_1\|_{X_1}.
+\]</span>
+<p>This is a Banach space. The addition map</p>
+<span class="math math-display" data-tex="\[
+A:X_0\oplus X_1\longrightarrow\mathcal V,\qquad
+A(x_0,x_1)=x_0+x_1,
+\]">\[
+A:X_0\oplus X_1\longrightarrow\mathcal V,\qquad
+A(x_0,x_1)=x_0+x_1,
+\]</span>
+<p>is continuous. Its kernel is closed because <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is Hausdorff. Hence
+<span class="math" data-tex="\((X_0\oplus X_1)/\ker A\)">\((X_0\oplus X_1)/\ker A\)</span> is Banach. The induced bijection from this quotient to
+<span class="math" data-tex="\(\Sigma(\mathbf X)\)">\(\Sigma(\mathbf X)\)</span> has quotient norm exactly (CI.2), so it is an isometric
+isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No norm on the ambient space is used. Different compatible realizations can
+therefore lead to different intersections and sums even when the abstract
+endpoint Banach spaces are isomorphic.</p>
+<h2 id="the-bounded-strip-estimate"><span id="oa-mod-ci-02"></span><span id="OA-MOD-CI-02"></span>The bounded-strip estimate</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb S
+&amp;=\{z\in\mathbb C:0\leq\operatorname{Re}z\leq1\},\\
+\mathbb S^\circ
+&amp;=\{z\in\mathbb C:0&lt;\operatorname{Re}z&lt;1\}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb S
+&amp;=\{z\in\mathbb C:0\leq\operatorname{Re}z\leq1\},\\
+\mathbb S^\circ
+&amp;=\{z\in\mathbb C:0&lt;\operatorname{Re}z&lt;1\}.
+\end{aligned}
+\]</span>
+<p>We use the following form of the three-lines argument.</p>
+<p><strong>Lemma.</strong> Let <span class="math" data-tex="\(h:\mathbb S\to\mathbb C\)">\(h:\mathbb S\to\mathbb C\)</span> be bounded and continuous, and
+holomorphic on <span class="math" data-tex="\(\mathbb S^\circ\)">\(\mathbb S^\circ\)</span>. If</p>
+<span class="math math-display" data-tex="\[
+|h(it)|\leq a_0,\qquad |h(1+it)|\leq a_1
+\quad(t\in\mathbb R),
+\]">\[
+|h(it)|\leq a_0,\qquad |h(1+it)|\leq a_1
+\quad(t\in\mathbb R),
+\]</span>
+<p>then, for <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|h(s+it)|\leq a_0^{\,1-s}a_1^{\,s}
+\quad(t\in\mathbb R).
+\tag{CI.3}
+\]">\[
+|h(s+it)|\leq a_0^{\,1-s}a_1^{\,s}
+\quad(t\in\mathbb R).
+\tag{CI.3}
+\]</span>
+<p>At an interior point, the right side is interpreted as zero when one endpoint
+bound is zero.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(a_0a_1&gt;0\)">\(a_0a_1&gt;0\)</span>. Fix <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and use the real
+logarithms of <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span> to define</p>
+<span class="math math-display" data-tex="\[
+H_\varepsilon(z)
+=h(z)a_0^{z-1}a_1^{-z}
+\exp\bigl(\varepsilon(z^2-z)\bigr).
+\]">\[
+H_\varepsilon(z)
+=h(z)a_0^{z-1}a_1^{-z}
+\exp\bigl(\varepsilon(z^2-z)\bigr).
+\]</span>
+<p>On either vertical boundary, its modulus is at most
+<span class="math" data-tex="\(\exp(-\varepsilon t^2)\)">\(\exp(-\varepsilon t^2)\)</span>. If <span class="math" data-tex="\(|h|\leq C\)">\(|h|\leq C\)</span> on the strip, then on either
+horizontal edge <span class="math" data-tex="\(z=s\pm iR\)">\(z=s\pm iR\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|H_\varepsilon(z)|
+\leq
+C\max(a_0^{-1},a_1^{-1})e^{-\varepsilon R^2},
+\]">\[
+|H_\varepsilon(z)|
+\leq
+C\max(a_0^{-1},a_1^{-1})e^{-\varepsilon R^2},
+\]</span>
+<p>because <span class="math" data-tex="\(s^2-s\leq0\)">\(s^2-s\leq0\)</span>. For sufficiently large <span class="math" data-tex="\(R\)">\(R\)</span>, the boundary maximum
+principle on the rectangle with vertices <span class="math" data-tex="\(\pm iR\)">\(\pm iR\)</span> and <span class="math" data-tex="\(1\pm iR\)">\(1\pm iR\)</span> gives
+<span class="math" data-tex="\(|H_\varepsilon|\leq1\)">\(|H_\varepsilon|\leq1\)</span> throughout that rectangle. Evaluating at <span class="math" data-tex="\(s+it\)">\(s+it\)</span>,
+then letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>, proves (CI.3). Replacing <span class="math" data-tex="\(a_j\)">\(a_j\)</span> by
+<span class="math" data-tex="\(a_j+\delta\)">\(a_j+\delta\)</span> and sending <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> handles a zero endpoint bound.
+The endpoint cases follow directly from the hypotheses. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses boundedness on the full strip. Without a growth condition, the
+two boundary lines alone do not control a holomorphic function on an unbounded
+strip.</p>
+<h2 id="the-strip-space-is-complete">The strip space is complete</h2>
+<p>For a compatible pair <span class="math" data-tex="\(\mathbf X=(X_0,X_1)\)">\(\mathbf X=(X_0,X_1)\)</span>, let
+<span class="math" data-tex="\(\mathcal F(\mathbf X)\)">\(\mathcal F(\mathbf X)\)</span> consist of functions</p>
+<span class="math math-display" data-tex="\[
+f:\mathbb S\longrightarrow\Sigma(\mathbf X)
+\]">\[
+f:\mathbb S\longrightarrow\Sigma(\mathbf X)
+\]</span>
+<p>with all of the following properties:</p>
+<ol>
+<li><span class="math" data-tex="\(f\)">\(f\)</span> is bounded and continuous in the sum norm on <span class="math" data-tex="\(\mathbb S\)">\(\mathbb S\)</span>;</li>
+<li><span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic in the sum norm on <span class="math" data-tex="\(\mathbb S^\circ\)">\(\mathbb S^\circ\)</span>;</li>
+<li><span class="math" data-tex="\(f(j+it)\in X_j\)">\(f(j+it)\in X_j\)</span> for <span class="math" data-tex="\(j=0,1\)">\(j=0,1\)</span> and every real <span class="math" data-tex="\(t\)">\(t\)</span>;</li>
+<li>each boundary map <span class="math" data-tex="\(t\mapsto f(j+it)\)">\(t\mapsto f(j+it)\)</span> is continuous as an <span class="math" data-tex="\(X_j\)">\(X_j\)</span>-valued
+map and tends to zero in <span class="math" data-tex="\(X_j\)">\(X_j\)</span> as <span class="math" data-tex="\(|t|\to\infty\)">\(|t|\to\infty\)</span>.</li>
+</ol>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\|f\|_{\mathcal F}
+=\max_{j=0,1}\sup_{t\in\mathbb R}\|f(j+it)\|_{X_j}.
+\tag{CI.4}
+\]">\[
+\|f\|_{\mathcal F}
+=\max_{j=0,1}\sup_{t\in\mathbb R}\|f(j+it)\|_{X_j}.
+\tag{CI.4}
+\]</span>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+A_j(f)=\sup_t\|f(j+it)\|_{X_j}.
+\]">\[
+A_j(f)=\sup_t\|f(j+it)\|_{X_j}.
+\]</span>
+<p>For every <span class="math" data-tex="\(z=s+it\in\mathbb S\)">\(z=s+it\in\mathbb S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|f(z)\|_{\Sigma}
+\leq A_0(f)^{\,1-s}A_1(f)^{\,s}
+\leq\|f\|_{\mathcal F}.
+\tag{CI.5}
+\]">\[
+\|f(z)\|_{\Sigma}
+\leq A_0(f)^{\,1-s}A_1(f)^{\,s}
+\leq\|f\|_{\mathcal F}.
+\tag{CI.5}
+\]</span>
+<p>Indeed, if <span class="math" data-tex="\(\ell\in\Sigma(\mathbf X)^*\)">\(\ell\in\Sigma(\mathbf X)^*\)</span> has norm at most one, then
+<span class="math" data-tex="\(\ell\circ f\)">\(\ell\circ f\)</span> satisfies OA-MOD-CI-02, since</p>
+<span class="math math-display" data-tex="\[
+|\ell(f(j+it))|
+\leq\|f(j+it)\|_{\Sigma}
+\leq\|f(j+it)\|_{X_j}.
+\]">\[
+|\ell(f(j+it))|
+\leq\|f(j+it)\|_{\Sigma}
+\leq\|f(j+it)\|_{X_j}.
+\]</span>
+<p>The complex Hahn–Banach theorem identifies the norm of <span class="math" data-tex="\(f(z)\)">\(f(z)\)</span> with the
+supremum over these functionals and gives (CI.5).</p>
+<p><strong>Theorem.</strong> The normed space <span class="math" data-tex="\(\mathcal F(\mathbf X)\)">\(\mathcal F(\mathbf X)\)</span> is complete.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\((f_n)\)">\((f_n)\)</span> be Cauchy for (CI.4). On each boundary it is uniformly
+Cauchy in <span class="math" data-tex="\(X_j\)">\(X_j\)</span>. Completeness of <span class="math" data-tex="\(X_j\)">\(X_j\)</span> gives a uniform limit</p>
+<span class="math math-display" data-tex="\[
+g_j\in C_0(\mathbb R;X_j).
+\]">\[
+g_j\in C_0(\mathbb R;X_j).
+\]</span>
+<p>Applying (CI.5) to <span class="math" data-tex="\(f_n-f_m\)">\(f_n-f_m\)</span> shows that <span class="math" data-tex="\((f_n)\)">\((f_n)\)</span> is uniformly Cauchy on the
+whole strip in <span class="math" data-tex="\(\Sigma(\mathbf X)\)">\(\Sigma(\mathbf X)\)</span>. Let <span class="math" data-tex="\(f\)">\(f\)</span> be its uniform sum-norm limit.
+It is bounded and continuous. Since the endpoint inclusions into the sum space
+are contractive, its boundary values agree with <span class="math" data-tex="\(g_j\)">\(g_j\)</span>, so conditions 3 and 4
+hold.</p>
+<p>It remains to justify holomorphy without silently replacing weak convergence by
+norm convergence. Choose a closed disk contained in <span class="math" data-tex="\(\mathbb S^\circ\)">\(\mathbb S^\circ\)</span>. For
+each <span class="math" data-tex="\(n\)">\(n\)</span>, the Banach-valued Cauchy formula on its boundary follows from the
+scalar formula: apply any <span class="math" data-tex="\(\ell\in\Sigma(\mathbf X)^*\)">\(\ell\in\Sigma(\mathbf X)^*\)</span>, and then use
+Hahn–Banach to recover equality of the vectors. The boundary integral exists as
+a Banach-valued Riemann integral because continuous curves are uniformly
+approximable by step functions. Uniform convergence permits passage to the
+limit in that formula. Expanding the Cauchy kernel on every smaller concentric
+disk gives a norm-convergent power series for <span class="math" data-tex="\(f\)">\(f\)</span>. Thus <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic.</p>
+<p>Finally, <span class="math" data-tex="\(f_n\to f\)">\(f_n\to f\)</span> uniformly in <span class="math" data-tex="\(X_j\)">\(X_j\)</span> on each boundary, so
+<span class="math" data-tex="\(\|f_n-f\|_{\mathcal F}\to0\)">\(\|f_n-f\|_{\mathcal F}\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof also explains why the topology in the definition cannot be left
+implicit: interior convergence takes place in <span class="math" data-tex="\(\Sigma(\mathbf X)\)">\(\Sigma(\mathbf X)\)</span>, while the
+stronger endpoint norms control the boundary.</p>
+<h2 id="evaluation-spaces-and-quotient-completeness">Evaluation spaces and quotient completeness</h2>
+<p>Fix <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+[X_0,X_1]_\theta
+=\{f(\theta):f\in\mathcal F(\mathbf X)\}
+\subseteq\Sigma(\mathbf X)
+\]">\[
+[X_0,X_1]_\theta
+=\{f(\theta):f\in\mathcal F(\mathbf X)\}
+\subseteq\Sigma(\mathbf X)
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\|x\|_\theta
+=\inf\{\|f\|_{\mathcal F}:f\in\mathcal F(\mathbf X),\
+f(\theta)=x\}.
+\tag{CI.6}
+\]">\[
+\|x\|_\theta
+=\inf\{\|f\|_{\mathcal F}:f\in\mathcal F(\mathbf X),\
+f(\theta)=x\}.
+\tag{CI.6}
+\]</span>
+<p>The evaluation map</p>
+<span class="math math-display" data-tex="\[
+E_\theta:\mathcal F(\mathbf X)\longrightarrow\Sigma(\mathbf X),
+\qquad E_\theta f=f(\theta),
+\]">\[
+E_\theta:\mathcal F(\mathbf X)\longrightarrow\Sigma(\mathbf X),
+\qquad E_\theta f=f(\theta),
+\]</span>
+<p>has norm at most one by (CI.5). Hence</p>
+<span class="math math-display" data-tex="\[
+K_\theta=\ker E_\theta
+\]">\[
+K_\theta=\ker E_\theta
+\]</span>
+<p>is closed. The induced map</p>
+<span class="math math-display" data-tex="\[
+\mathcal F(\mathbf X)/K_\theta
+\longrightarrow [X_0,X_1]_\theta
+\]">\[
+\mathcal F(\mathbf X)/K_\theta
+\longrightarrow [X_0,X_1]_\theta
+\]</span>
+<p>is an isometric bijection when the range is given (CI.6). Consequently
+<span class="math" data-tex="\([X_0,X_1]_\theta\)">\([X_0,X_1]_\theta\)</span> is a Banach space. In particular, (CI.6) is a norm rather
+than only a seminorm, and</p>
+<span class="math math-display" data-tex="\[
+\|x\|_{\Sigma}\leq\|x\|_\theta.
+\tag{CI.7}
+\]">\[
+\|x\|_{\Sigma}\leq\|x\|_\theta.
+\tag{CI.7}
+\]</span>
+<p>The intersection embeds in every interpolation space. More precisely, if
+<span class="math" data-tex="\(x\in X_0\cap X_1\)">\(x\in X_0\cap X_1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|x\|_\theta
+\leq
+\|x\|_{X_0}^{\,1-\theta}\|x\|_{X_1}^{\,\theta}.
+\tag{CI.8}
+\]">\[
+\|x\|_\theta
+\leq
+\|x\|_{X_0}^{\,1-\theta}\|x\|_{X_1}^{\,\theta}.
+\tag{CI.8}
+\]</span>
+<p>For nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, put <span class="math" data-tex="\(a=\|x\|_{X_0}\)">\(a=\|x\|_{X_0}\)</span>, <span class="math" data-tex="\(b=\|x\|_{X_1}\)">\(b=\|x\|_{X_1}\)</span>. For
+<span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+f_\varepsilon(z)
+=e^{\varepsilon(z-\theta)^2}
+a^{z-\theta}b^{\theta-z}x
+\]">\[
+f_\varepsilon(z)
+=e^{\varepsilon(z-\theta)^2}
+a^{z-\theta}b^{\theta-z}x
+\]</span>
+<p>belongs to <span class="math" data-tex="\(\mathcal F(\mathbf X)\)">\(\mathcal F(\mathbf X)\)</span>, takes the value <span class="math" data-tex="\(x\)">\(x\)</span> at <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and
+has boundary norm at most</p>
+<span class="math math-display" data-tex="\[
+a^{1-\theta}b^\theta
+\max\{e^{\varepsilon\theta^2},
+e^{\varepsilon(1-\theta)^2}\}.
+\]">\[
+a^{1-\theta}b^\theta
+\max\{e^{\varepsilon\theta^2},
+e^{\varepsilon(1-\theta)^2}\}.
+\]</span>
+<p>Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives (CI.8). The Gaussian factor is needed:
+the constant analytic representative does not decay along the boundary and
+therefore does not belong to this version of <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span>.</p>
+<h2 id="interpolating-a-bounded-linear-map">Interpolating a bounded linear map</h2>
+<p>Let <span class="math" data-tex="\(\mathbf X=(X_0,X_1)\)">\(\mathbf X=(X_0,X_1)\)</span> and <span class="math" data-tex="\(\mathbf Y=(Y_0,Y_1)\)">\(\mathbf Y=(Y_0,Y_1)\)</span> be compatible pairs.
+Suppose</p>
+<span class="math math-display" data-tex="\[
+T:\Sigma(\mathbf X)\longrightarrow\Sigma(\mathbf Y)
+\]">\[
+T:\Sigma(\mathbf X)\longrightarrow\Sigma(\mathbf Y)
+\]</span>
+<p>is linear and</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|_{Y_j}\leq M_j\|x\|_{X_j}
+\quad(x\in X_j,\ j=0,1)
+\tag{CI.9}
+\]">\[
+\|Tx\|_{Y_j}\leq M_j\|x\|_{X_j}
+\quad(x\in X_j,\ j=0,1)
+\tag{CI.9}
+\]</span>
+<p>for positive constants <span class="math" data-tex="\(M_0,M_1\)">\(M_0,M_1\)</span>.</p>
+<p>First, <span class="math" data-tex="\(T\)">\(T\)</span> is bounded between the sum spaces. If <span class="math" data-tex="\(x=x_0+x_1\)">\(x=x_0+x_1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|_{\Sigma(\mathbf Y)}
+\leq M_0\|x_0\|_{X_0}+M_1\|x_1\|_{X_1}
+\leq\max(M_0,M_1)
+\bigl(\|x_0\|_{X_0}+\|x_1\|_{X_1}\bigr).
+\]">\[
+\|Tx\|_{\Sigma(\mathbf Y)}
+\leq M_0\|x_0\|_{X_0}+M_1\|x_1\|_{X_1}
+\leq\max(M_0,M_1)
+\bigl(\|x_0\|_{X_0}+\|x_1\|_{X_1}\bigr).
+\]</span>
+<p>Taking the infimum proves the assertion. Therefore <span class="math" data-tex="\(Tf\in\mathcal F(\mathbf Y)\)">\(Tf\in\mathcal F(\mathbf Y)\)</span>
+whenever <span class="math" data-tex="\(f\in\mathcal F(\mathbf X)\)">\(f\in\mathcal F(\mathbf X)\)</span>.</p>
+<p><strong>Interpolation theorem.</strong> For every <span class="math" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+T[X_0,X_1]_\theta\subseteq[Y_0,Y_1]_\theta
+\]">\[
+T[X_0,X_1]_\theta\subseteq[Y_0,Y_1]_\theta
+\]</span>
+<p>and</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|_{[Y_0,Y_1]_\theta}
+\leq M_0^{\,1-\theta}M_1^{\,\theta}
+\|x\|_{[X_0,X_1]_\theta}.
+\tag{CI.10}
+\]">\[
+\|Tx\|_{[Y_0,Y_1]_\theta}
+\leq M_0^{\,1-\theta}M_1^{\,\theta}
+\|x\|_{[X_0,X_1]_\theta}.
+\tag{CI.10}
+\]</span>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(f\in\mathcal F(\mathbf X)\)">\(f\in\mathcal F(\mathbf X)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+g(z)=M_0^{z-1}M_1^{-z}Tf(z).
+\tag{CI.11}
+\]">\[
+g(z)=M_0^{z-1}M_1^{-z}Tf(z).
+\tag{CI.11}
+\]</span>
+<p>The scalar factor is bounded on the strip. On the left boundary its modulus is
+<span class="math" data-tex="\(M_0^{-1}\)">\(M_0^{-1}\)</span>, and on the right boundary it is <span class="math" data-tex="\(M_1^{-1}\)">\(M_1^{-1}\)</span>. Thus (CI.9) gives</p>
+<span class="math math-display" data-tex="\[
+\|g\|_{\mathcal F(\mathbf Y)}
+\leq\|f\|_{\mathcal F(\mathbf X)}.
+\]">\[
+\|g\|_{\mathcal F(\mathbf Y)}
+\leq\|f\|_{\mathcal F(\mathbf X)}.
+\]</span>
+<p>If <span class="math" data-tex="\(f(\theta)=x\)">\(f(\theta)=x\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+g(\theta)=M_0^{\theta-1}M_1^{-\theta}Tx.
+\]">\[
+g(\theta)=M_0^{\theta-1}M_1^{-\theta}Tx.
+\]</span>
+<p>Definition (CI.6) therefore yields</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|_{[Y_0,Y_1]_\theta}
+\leq M_0^{1-\theta}M_1^\theta\|f\|_{\mathcal F(\mathbf X)}.
+\]">\[
+\|Tx\|_{[Y_0,Y_1]_\theta}
+\leq M_0^{1-\theta}M_1^\theta\|f\|_{\mathcal F(\mathbf X)}.
+\]</span>
+<p>Take the infimum over all representatives <span class="math" data-tex="\(f\)">\(f\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If an endpoint bound is zero, apply (CI.10) with <span class="math" data-tex="\(M_j+\delta\)">\(M_j+\delta\)</span> and let
+<span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. No density of <span class="math" data-tex="\(X_0\cap X_1\)">\(X_0\cap X_1\)</span>, reflexivity, or
+separability enters the proof.</p>
+<h2 id="checks-and-solved-exercises">Checks and solved exercises</h2>
+<p><strong>Check 1: identical endpoints.</strong> Suppose <span class="math" data-tex="\(X_0=X_1=X\)">\(X_0=X_1=X\)</span>, with the same norm and
+the same ambient embedding. Then</p>
+<span class="math math-display" data-tex="\[
+[X,X]_\theta=X
+\quad\text{isometrically}.
+\]">\[
+[X,X]_\theta=X
+\quad\text{isometrically}.
+\]</span>
+<p>Inequality (CI.7) gives <span class="math" data-tex="\(\|x\|_X\leq\|x\|_\theta\)">\(\|x\|_X\leq\|x\|_\theta\)</span>, while (CI.8) gives the
+reverse inequality. This also checks that the boundary-decay convention has not
+changed the expected constant-endpoint space.</p>
+<p><strong>Check 2: a one-dimensional weighted pair.</strong> Let both endpoints be
+<span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> in the usual ambient line, with</p>
+<span class="math math-display" data-tex="\[
+\|z\|_{X_0}=a|z|,\qquad
+\|z\|_{X_1}=b|z|,
+\]">\[
+\|z\|_{X_0}=a|z|,\qquad
+\|z\|_{X_1}=b|z|,
+\]</span>
+<p>where <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|z\|_\theta=a^{1-\theta}b^\theta|z|.
+\]">\[
+\|z\|_\theta=a^{1-\theta}b^\theta|z|.
+\]</span>
+<p>The upper bound is (CI.8). For the lower bound, apply (CI.3) to any
+representative <span class="math" data-tex="\(f\)">\(f\)</span> after multiplying its endpoint bounds by <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>:</p>
+<span class="math math-display" data-tex="\[
+a^{1-\theta}b^\theta|f(\theta)|
+\leq\|f\|_{\mathcal F}.
+\]">\[
+a^{1-\theta}b^\theta|f(\theta)|
+\leq\|f\|_{\mathcal F}.
+\]</span>
+<p>Taking the infimum gives equality. This model verifies both exponents and the
+direction of the scaling in (CI.11).</p>
+<p><strong>Exercise 1.</strong> Let the bounded scalar function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be continuous
+on the whole closed strip and holomorphic in its interior. Prove directly
+that multiplication by this function acts boundedly on <span class="math" data-tex="\(\mathcal F(\mathbf X)\)">\(\mathcal F(\mathbf X)\)</span>,
+with norm at most <span class="math" data-tex="\(\max_{j=0,1}\sup_{t\in\mathbb R}|\varphi(j+it)|\)">\(\max_{j=0,1}\sup_{t\in\mathbb R}|\varphi(j+it)|\)</span>.</p>
+<p><strong>Solution.</strong> Continuity of both factors gives product continuity on the
+whole closed strip, and the product rule gives holomorphy in its interior.
+The sum-space product is bounded by the bounds of its two factors. Its
+<span class="math" data-tex="\(j\)">\(j\)</span>-th boundary norm is at most</p>
+<span class="math math-display" data-tex="\[
+\sup_t|\varphi(j+it)|
+\sup_t\|f(j+it)\|_{X_j}.
+\]">\[
+\sup_t|\varphi(j+it)|
+\sup_t\|f(j+it)\|_{X_j}.
+\]</span>
+<p>Boundary decay follows from boundedness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and decay of <span class="math" data-tex="\(f\)">\(f\)</span>.
+Taking the maximum over the two boundary lines proves the bound; the
+supremum in the real parameter need not be attained.</p>
+<p><strong>Exercise 2.</strong> Let <span class="math" data-tex="\(S:\Sigma(\mathbf X)\to\Sigma(\mathbf Y)\)">\(S:\Sigma(\mathbf X)\to\Sigma(\mathbf Y)\)</span> and
+<span class="math" data-tex="\(T:\Sigma(\mathbf Y)\to\Sigma(\mathbf Z)\)">\(T:\Sigma(\mathbf Y)\to\Sigma(\mathbf Z)\)</span> satisfy endpoint bounds
+<span class="math" data-tex="\((A_0,A_1)\)">\((A_0,A_1)\)</span> and <span class="math" data-tex="\((B_0,B_1)\)">\((B_0,B_1)\)</span>. Show that the interpolated bound for <span class="math" data-tex="\(TS\)">\(TS\)</span>
+obtained in one step agrees with the product of the two separate interpolated
+bounds.</p>
+<p><strong>Solution.</strong> The endpoint bounds for the composition are
+<span class="math" data-tex="\((B_0A_0,B_1A_1)\)">\((B_0A_0,B_1A_1)\)</span>. Formula (CI.10) gives</p>
+<span class="math math-display" data-tex="\[
+(B_0A_0)^{1-\theta}(B_1A_1)^\theta
+=
+\bigl(B_0^{1-\theta}B_1^\theta\bigr)
+\bigl(A_0^{1-\theta}A_1^\theta\bigr).
+\]">\[
+(B_0A_0)^{1-\theta}(B_1A_1)^\theta
+=
+\bigl(B_0^{1-\theta}B_1^\theta\bigr)
+\bigl(A_0^{1-\theta}A_1^\theta\bigr).
+\]</span>
+<p>This is exactly the product of the separate operator-norm estimates.</p>
+<p>The unit supplies the compatible-pair interpolation machinery only. Applications
+to noncommutative <span class="math" data-tex="\(L^p\)">\(L^p\)</span>-spaces must still prove that the proposed endpoints
+form compatible pairs and that the operator acts consistently on their sum.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-FC.html">← Closing energy domains and comparing resolvents</a></span><a href="./">Course contents</a><span class="pager-next"><span class="unlinked">Closing an involution and recovering its modular data →</span></span></nav>
+<p class="small source-link"><a href="src/complex-interpolation.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

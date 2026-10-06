@@ -1,0 +1,438 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Coherent integer actions from commuting equivalences</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="coherent-integer-actions-from-commuting-equivalences">Coherent integer actions from commuting equivalences</h1>
+<p>An autoequivalence supplies inverse functors, but a group action also needs coherent comparison maps between all composites. For several generators, the given commutation maps must survive the construction. Sorting positive words addresses one problem; extending the action to every signed integer vector addresses the other.</p>
+<p>We use the tensor structure on endofunctors from <a href="free-tensor-words-and-ordered-algebra-encoding.html">Free tensor words and ordered algebra encoding</a>. Composition of functors is strictly associative. Natural transformations are composed from right to left; juxtaposing a functor with a transformation means whiskering. All categories and Hom sets lie in suitable fixed universes.</p>
+<h2 id="1-the-prescribed-action-problem">1. The prescribed action problem</h2>
+<p>A normalized action of an additive group <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> consists of functors <span class="math" data-tex="\(\Psi_g\)">\(\Psi_g\)</span>, with <span class="math" data-tex="\(\Psi_0=1_{\mathcal C}\)">\(\Psi_0=1_{\mathcal C}\)</span>, and natural isomorphisms
+<span class="math math-display" data-tex="\[
+\mu_{g,h}:\Psi_g\Psi_h\longrightarrow\Psi_{g+h}.
+\]">\[
+\mu_{g,h}:\Psi_g\Psi_h\longrightarrow\Psi_{g+h}.
+\]</span>
+The unit comparisons are identities, and associativity requires
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mu_{g+h,k}(\mu_{g,h}\Psi_k)\\
+&amp;\qquad=\mu_{g,h+k}(\Psi_g\mu_{h,k}).
+\end{aligned}\tag{1.1}
+\]">\[
+\begin{aligned}
+&amp;\mu_{g+h,k}(\mu_{g,h}\Psi_k)\\
+&amp;\qquad=\mu_{g,h+k}(\Psi_g\mu_{h,k}).
+\end{aligned}\tag{1.1}
+\]</span>
+Each <span class="math" data-tex="\(\Psi_g\)">\(\Psi_g\)</span> is automatically an equivalence: <span class="math" data-tex="\(\Psi_{-g}\)">\(\Psi_{-g}\)</span> is a two-sided inverse up to the comparisons to <span class="math" data-tex="\(\Psi_0\)">\(\Psi_0\)</span>. This is the canonical monoidal-functor definition of a group action in <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf">EGNO, Definition 2.7.1</a>, with its comparison <span class="math" data-tex="\(J=\mu\)">\(J=\mu\)</span>. The co-tensor comparison used in the preceding lessons is <span class="math" data-tex="\(\xi=\mu^{-1}\)">\(\xi=\mu^{-1}\)</span>.</p>
+<p>Fix a nonnegative integer <span class="math" data-tex="\(n\)">\(n\)</span>, autoequivalences <span class="math" data-tex="\(T_1,\ldots,T_n\)">\(T_1,\ldots,T_n\)</span> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and natural isomorphisms
+<span class="math math-display" data-tex="\[
+\varphi_{ij}:T_iT_j\longrightarrow T_jT_i
+\qquad(1\leq i&lt;j\leq n).
+\]">\[
+\varphi_{ij}:T_iT_j\longrightarrow T_jT_i
+\qquad(1\leq i&lt;j\leq n).
+\]</span>
+For each <span class="math" data-tex="\(i&lt;j&lt;k\)">\(i&lt;j&lt;k\)</span>, assume the two maps <span class="math" data-tex="\(T_iT_jT_k\to T_kT_jT_i\)">\(T_iT_jT_k\to T_kT_jT_i\)</span> agree:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\varphi_{jk}T_i)(T_j\varphi_{ik})
+(\varphi_{ij}T_k)\\
+{}=(T_k\varphi_{ij})(\varphi_{ik}T_j)
+(T_i\varphi_{jk}).
+\end{gathered}\tag{1.2}
+\]">\[
+\begin{gathered}
+(\varphi_{jk}T_i)(T_j\varphi_{ik})
+(\varphi_{ij}T_k)\\
+{}=(T_k\varphi_{ij})(\varphi_{ik}T_j)
+(T_i\varphi_{jk}).
+\end{gathered}\tag{1.2}
+\]</span></p>
+<p><strong>Theorem 1.1.</strong> There is a normalized action of <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span> on <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> such that, for every standard basis vector <span class="math" data-tex="\(e_i\)">\(e_i\)</span>,
+<span class="math math-display" data-tex="\[
+\Psi_{e_i}=T_i
+\]">\[
+\Psi_{e_i}=T_i
+\]</span>
+as the actual given functor, and its induced exchange is the prescribed map:
+<span class="math math-display" data-tex="\[
+\mu_{e_j,e_i}^{-1}\mu_{e_i,e_j}
+=\varphi_{ij}.\tag{1.3}
+\]">\[
+\mu_{e_j,e_i}^{-1}\mu_{e_i,e_j}
+=\varphi_{ij}.\tag{1.3}
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, this means the identity action of the trivial group. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, an arbitrary autoequivalence gives an integer action. For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, any given <span class="math" data-tex="\(\varphi_{12}\)">\(\varphi_{12}\)</span> works; there is no triple condition to check.</p>
+<p>Deligne's <a href="https://publications.ias.edu/sites/default/files/Number74.pdf?download=1">Proposition 1.9</a> extends an action of an Ore monoid by autoequivalences to its group of fractions; its Theorem 1.5 gives the positive coherence construction. Here the monoid is <span class="math" data-tex="\(\mathbb N^n\)">\(\mathbb N^n\)</span>: it is cancellative, any two vectors have common upper bound <span class="math" data-tex="\(p+q\)">\(p+q\)</span>, and its fraction group is <span class="math" data-tex="\(\mathbb Z^n\)">\(\mathbb Z^n\)</span>. We give the complete construction for this commuting case in §§2–4, from the given pairwise comparisons through every signed vector. Arbitrary transformations between positive actions need not extend to the group, as Exercise 4 shows.</p>
+<h2 id="2-positive-words-and-the-triple-equation">2. Positive words and the triple equation</h2>
+<p>For <span class="math" data-tex="\(p=(p_1,\ldots,p_n)\in\mathbb N^n\)">\(p=(p_1,\ldots,p_n)\in\mathbb N^n\)</span>, choose the ordered product
+<span class="math math-display" data-tex="\[
+F_p=T_1^{p_1}\cdots T_n^{p_n},
+\qquad F_0=1_{\mathcal C}.
+\]">\[
+F_p=T_1^{p_1}\cdots T_n^{p_n},
+\qquad F_0=1_{\mathcal C}.
+\]</span>
+These are autoequivalences. In a word of generator indices, replace an adjacent inversion <span class="math" data-tex="\(ji\)">\(ji\)</span>, with <span class="math" data-tex="\(j&gt;i\)">\(j&gt;i\)</span>, by <span class="math" data-tex="\(ij\)">\(ij\)</span>, using <span class="math" data-tex="\(\varphi_{ij}^{-1}\)">\(\varphi_{ij}^{-1}\)</span> at that position. Each replacement reduces the inversion number by one, so every sorting sequence terminates at the same ordered word.</p>
+<p>The resulting natural isomorphism to the ordered word is independent of the sorting sequence. Here is the full local check. Two disjoint replacements commute by the interchange law for natural transformations. Two replacements sharing a position can occur only in a strictly descending triple <span class="math" data-tex="\(kji\)">\(kji\)</span>, with <span class="math" data-tex="\(k&gt;j&gt;i\)">\(k&gt;j&gt;i\)</span>. The two three-step sorts of that triple agree by the inverse of (1.2). Equal adjacent indices are never replaced, so supply no further overlap.</p>
+<p>Induct on the inversion number to pass from these local checks to any two sorting sequences. If their first replacements agree, apply induction to the resulting word. Otherwise the local square or triple diagram gives a common word after two or three replacements, with equal composites from the original word. Each intermediate word has smaller inversion number. Induction identifies each remaining sorting path with a path through that common word and then to the ordered word. Consequently both original composites agree. This proves independence as an equality of natural transformations, rather than only an equality of final words.</p>
+<p>Sort the concatenation of the ordered words for <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. Denote the resulting comparison by
+<span class="math math-display" data-tex="\[
+\alpha_{p,q}:F_pF_q\longrightarrow F_{p+q}.
+\tag{2.1}
+\]">\[
+\alpha_{p,q}:F_pF_q\longrightarrow F_{p+q}.
+\tag{2.1}
+\]</span>
+Empty concatenations give <span class="math" data-tex="\(\alpha_{0,p}=\alpha_{p,0}=1\)">\(\alpha_{0,p}=\alpha_{p,0}=1\)</span>. The two sides of
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\alpha_{p+q,r}(\alpha_{p,q}F_r)\\
+&amp;\qquad=\alpha_{p,q+r}(F_p\alpha_{q,r})
+\end{aligned}\tag{2.2}
+\]">\[
+\begin{aligned}
+&amp;\alpha_{p+q,r}(\alpha_{p,q}F_r)\\
+&amp;\qquad=\alpha_{p,q+r}(F_p\alpha_{q,r})
+\end{aligned}\tag{2.2}
+\]</span>
+are sorting sequences of the same three concatenated words. The independence just proved makes them equal. Thus <span class="math" data-tex="\(F,\alpha\)">\(F,\alpha\)</span> is a normalized positive action. For <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> its generator comparisons are
+<span class="math math-display" data-tex="\[
+\alpha_{e_i,e_j}=1,\qquad
+\alpha_{e_j,e_i}=\varphi_{ij}^{-1}.
+\tag{2.3}
+\]">\[
+\alpha_{e_i,e_j}=1,\qquad
+\alpha_{e_j,e_i}=\varphi_{ij}^{-1}.
+\tag{2.3}
+\]</span></p>
+<p>The triple equation is also necessary when a group action induces the specified exchanges. For any three generator indices <span class="math" data-tex="\(a,b,c\)">\(a,b,c\)</span>, collapse their product using
+<span class="math math-display" data-tex="\[
+v_{abc}
+=\mu_{e_a+e_b,e_c}
+(\mu_{e_a,e_b}\Psi_{e_c}).
+\]">\[
+v_{abc}
+=\mu_{e_a+e_b,e_c}
+(\mu_{e_a,e_b}\Psi_{e_c}).
+\]</span>
+Equation (1.1) gives the same collapse using the last two factors first. Following an adjacent prescribed exchange and then collapsing the new word equals <span class="math" data-tex="\(v_{abc}\)">\(v_{abc}\)</span>: use (1.3) to cancel the two generator comparisons, and use (1.1) when exchanging the last two factors. All six words collapse to the same <span class="math" data-tex="\(\Psi_{e_i+e_j+e_k}\)">\(\Psi_{e_i+e_j+e_k}\)</span>. Therefore each exchange is the inverse of the new collapse followed by the old collapse. These factors telescope along either three-step route from <span class="math" data-tex="\(ijk\)">\(ijk\)</span> to <span class="math" data-tex="\(kji\)">\(kji\)</span>, leaving the same map <span class="math" data-tex="\(v_{kji}^{-1}v_{ijk}\)">\(v_{kji}^{-1}v_{ijk}\)</span>. This proves (1.2).</p>
+<h2 id="3-checking-the-ore-extension-on-an-integer-lattice">3. Checking the Ore extension on an integer lattice</h2>
+<p>We now use only the normalized positive action <span class="math" data-tex="\(F,\alpha\)">\(F,\alpha\)</span> just constructed. The following explicit category supplies the negative powers, without choosing separate commutation maps for every pair of signed powers.</p>
+<p>Let <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> have objects <span class="math" data-tex="\((u,X)\)">\((u,X)\)</span>, with <span class="math" data-tex="\(u\in\mathbb Z^n\)">\(u\in\mathbb Z^n\)</span> and <span class="math" data-tex="\(X\in\mathcal C\)">\(X\in\mathcal C\)</span>. Order integer vectors componentwise. For two objects put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal D}
+((u,X),(v,Y))\\
+=\mathop{\operatorname{colim}}_{w\geq u,v}
+\operatorname{Hom}_{\mathcal C}
+(F_{w-u}X,F_{w-v}Y).
+\end{gathered}\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}_{\mathcal D}
+((u,X),(v,Y))\\
+=\mathop{\operatorname{colim}}_{w\geq u,v}
+\operatorname{Hom}_{\mathcal C}
+(F_{w-u}X,F_{w-v}Y).
+\end{gathered}\tag{3.1}
+\]</span>
+The indices form a nonempty directed poset: coordinatewise maxima give common upper bounds. In particular all the differences used in <span class="math" data-tex="\(F\)">\(F\)</span> are nonnegative.</p>
+<p>For <span class="math" data-tex="\(w&#x27;=w+s\)">\(w&#x27;=w+s\)</span>, transport a representative <span class="math" data-tex="\(f\)">\(f\)</span> at <span class="math" data-tex="\(w\)">\(w\)</span> to the representative
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_s(f)=
+\alpha_{s,w-v}\,F_s(f)\,
+\alpha_{s,w-u}^{-1}.
+\end{gathered}\tag{3.2}
+\]">\[
+\begin{gathered}
+K_s(f)=
+\alpha_{s,w-v}\,F_s(f)\,
+\alpha_{s,w-u}^{-1}.
+\end{gathered}\tag{3.2}
+\]</span>
+This has source <span class="math" data-tex="\(F_{w&#x27;-u}X\)">\(F_{w&#x27;-u}X\)</span> and target <span class="math" data-tex="\(F_{w&#x27;-v}Y\)">\(F_{w&#x27;-v}Y\)</span>. The identity transport is the identity. To check two successive transports, substitute (3.2) twice; equation (2.2) combines the two left comparisons and the two right comparisons, while naturality of <span class="math" data-tex="\(\alpha_{t,s}\)">\(\alpha_{t,s}\)</span> moves it past <span class="math" data-tex="\(F_tF_s(f)\)">\(F_tF_s(f)\)</span>. The intermediate comparisons cancel. The result is <span class="math" data-tex="\(K_tK_s(f)=K_{t+s}(f)\)">\(K_tK_s(f)=K_{t+s}(f)\)</span>, with the current stage understood at each step. Thus (3.1) is an ordinary diagram of sets, not a diagram whose transition compositions hold only up to isomorphism.</p>
+<p>Every transition is a bijection: <span class="math" data-tex="\(F_s\)">\(F_s\)</span> is fully faithful and the two surrounding comparisons are isomorphisms. Compose two morphisms by representing both at a common upper stage and composing there in <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>. Transports preserve composition and identities by functoriality of <span class="math" data-tex="\(F_s\)">\(F_s\)</span> and cancellation of the intermediate comparison. Replacing representatives gives the same composite after a further common transport. Associativity follows by representing three arrows at one common stage. Identity morphisms are represented by identities at any stage. This proves that <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is a category. Its Hom sets are small under the stated universe convention.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+j:\mathcal C\longrightarrow\mathcal D,
+\qquad j(X)=(0,X).
+\]">\[
+j:\mathcal C\longrightarrow\mathcal D,
+\qquad j(X)=(0,X).
+\]</span>
+Represent <span class="math" data-tex="\(j(f)\)">\(j(f)\)</span> at stage <span class="math" data-tex="\(0\)">\(0\)</span> by <span class="math" data-tex="\(f\)">\(f\)</span>. In its Hom system, every other stage is <span class="math" data-tex="\(w\geq0\)">\(w\geq0\)</span>; transport from <span class="math" data-tex="\(0\)">\(0\)</span> is <span class="math" data-tex="\(f\mapsto F_w(f)\)">\(f\mapsto F_w(f)\)</span>, a bijection by full faithfulness. Hence <span class="math" data-tex="\(j\)">\(j\)</span> is fully faithful.</p>
+<p>It is essentially surjective too. Given <span class="math" data-tex="\((u,X)\)">\((u,X)\)</span>, choose <span class="math" data-tex="\(w\geq u,0\)">\(w\geq u,0\)</span>. Since <span class="math" data-tex="\(F_w\)">\(F_w\)</span> is an equivalence, choose <span class="math" data-tex="\(Y\)">\(Y\)</span> and an isomorphism
+<span class="math math-display" data-tex="\[
+F_wY\simeq F_{w-u}X.
+\]">\[
+F_wY\simeq F_{w-u}X.
+\]</span>
+At stage <span class="math" data-tex="\(w\)">\(w\)</span> this represents an isomorphism <span class="math" data-tex="\(j(Y)\to(u,X)\)">\(j(Y)\to(u,X)\)</span>; its inverse represents the inverse in <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Thus <span class="math" data-tex="\(j\)">\(j\)</span> is an equivalence.</p>
+<p>For <span class="math" data-tex="\(g\in\mathbb Z^n\)">\(g\in\mathbb Z^n\)</span>, define a translation
+<span class="math math-display" data-tex="\[
+\sigma_g(u,X)=(u-g,X).
+\]">\[
+\sigma_g(u,X)=(u-g,X).
+\]</span>
+On a morphism represented by <span class="math" data-tex="\(f\)">\(f\)</span> at stage <span class="math" data-tex="\(w\)">\(w\)</span>, keep <span class="math" data-tex="\(f\)">\(f\)</span> and replace its stage by <span class="math" data-tex="\(w-g\)">\(w-g\)</span>. All stage differences are unchanged, so this is well-defined and respects (3.2) and composition. These translations give a strict group action:
+<span class="math math-display" data-tex="\[
+\sigma_g\sigma_h=\sigma_{g+h},
+\qquad \sigma_0=1_{\mathcal D}.
+\tag{3.3}
+\]">\[
+\sigma_g\sigma_h=\sigma_{g+h},
+\qquad \sigma_0=1_{\mathcal D}.
+\tag{3.3}
+\]</span>
+Their inverses are literally <span class="math" data-tex="\(\sigma_{-g}\)">\(\sigma_{-g}\)</span>.</p>
+<p>The sign is chosen to match the positive generators. For <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, there is a natural isomorphism
+<span class="math math-display" data-tex="\[
+\kappa_p:\sigma_pj\longrightarrow jF_p.
+\tag{3.4}
+\]">\[
+\kappa_p:\sigma_pj\longrightarrow jF_p.
+\tag{3.4}
+\]</span>
+At <span class="math" data-tex="\(X\)">\(X\)</span>, its source is <span class="math" data-tex="\((-p,X)\)">\((-p,X)\)</span>, its target is <span class="math" data-tex="\((0,F_pX)\)">\((0,F_pX)\)</span>, and it is represented at stage <span class="math" data-tex="\(0\)">\(0\)</span> by <span class="math" data-tex="\(1_{F_pX}\)">\(1_{F_pX}\)</span>. Its inverse is represented by the same identity with source and target interchanged. Naturality follows by transporting <span class="math" data-tex="\(j(f)\)">\(j(f)\)</span> to stage <span class="math" data-tex="\(0\)">\(0\)</span>, which gives <span class="math" data-tex="\(F_p(f)\)">\(F_p(f)\)</span>.</p>
+<p>These identifications preserve the positive comparisons:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\kappa_{p+q}
+=(j\alpha_{p,q})
+(\kappa_pF_q)(\sigma_p\kappa_q).
+\end{gathered}\tag{3.5}
+\]">\[
+\begin{gathered}
+\kappa_{p+q}
+=(j\alpha_{p,q})
+(\kappa_pF_q)(\sigma_p\kappa_q).
+\end{gathered}\tag{3.5}
+\]</span>
+Indeed <span class="math" data-tex="\(\sigma_p\kappa_q\)">\(\sigma_p\kappa_q\)</span> is initially represented at stage <span class="math" data-tex="\(-p\)">\(-p\)</span> by the identity of <span class="math" data-tex="\(F_qX\)">\(F_qX\)</span>. Transporting it to <span class="math" data-tex="\(0\)">\(0\)</span> gives <span class="math" data-tex="\(\alpha_{p,q}^{-1}\)">\(\alpha_{p,q}^{-1}\)</span>, by (3.2). At <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(\kappa_pF_q\)">\(\kappa_pF_q\)</span> is the identity and <span class="math" data-tex="\(j\alpha_{p,q}\)">\(j\alpha_{p,q}\)</span> is <span class="math" data-tex="\(\alpha_{p,q}\)">\(\alpha_{p,q}\)</span>. Their composite is the identity of <span class="math" data-tex="\(F_{p+q}X\)">\(F_{p+q}X\)</span>, exactly the representative of <span class="math" data-tex="\(\kappa_{p+q}\)">\(\kappa_{p+q}\)</span>. This checks the positive comparisons before transporting the group action back.</p>
+<h2 id="4-returning-to-the-given-category-and-the-given-functors">4. Returning to the given category and the given functors</h2>
+<p>Choose a quasi-inverse <span class="math" data-tex="\(Q:\mathcal D\to\mathcal C\)">\(Q:\mathcal D\to\mathcal C\)</span> normalized so that
+<span class="math math-display" data-tex="\[
+Qj=1_{\mathcal C}.
+\]">\[
+Qj=1_{\mathcal C}.
+\]</span>
+This normalization can be made literally. For each <span class="math" data-tex="\(d\in\mathcal D\)">\(d\in\mathcal D\)</span>, choose <span class="math" data-tex="\(Qd\)">\(Qd\)</span> and an isomorphism <span class="math" data-tex="\(\epsilon_d:jQd\to d\)">\(\epsilon_d:jQd\to d\)</span>. At <span class="math" data-tex="\(d=jX\)">\(d=jX\)</span>, choose <span class="math" data-tex="\(Qd=X\)">\(Qd=X\)</span> and <span class="math" data-tex="\(\epsilon_d=1\)">\(\epsilon_d=1\)</span>. For an arrow <span class="math" data-tex="\(f:d\to d&#x27;\)">\(f:d\to d&#x27;\)</span>, define <span class="math" data-tex="\(Q(f)\)">\(Q(f)\)</span> as the unique arrow satisfying
+<span class="math math-display" data-tex="\[
+jQ(f)=\epsilon_{d&#x27;}^{-1}f\epsilon_d.
+\]">\[
+jQ(f)=\epsilon_{d&#x27;}^{-1}f\epsilon_d.
+\]</span>
+Existence and uniqueness use full faithfulness of <span class="math" data-tex="\(j\)">\(j\)</span>; cancellation proves identities and composition. These choices give a natural isomorphism <span class="math" data-tex="\(\epsilon:jQ\to1_{\mathcal D}\)">\(\epsilon:jQ\to1_{\mathcal D}\)</span> with
+<span class="math math-display" data-tex="\[
+\epsilon j=1,\qquad Q\epsilon=1.
+\tag{4.1}
+\]">\[
+\epsilon j=1,\qquad Q\epsilon=1.
+\tag{4.1}
+\]</span>
+The second identity follows by applying the definition of <span class="math" data-tex="\(Q\)">\(Q\)</span> to <span class="math" data-tex="\(\epsilon_d\)">\(\epsilon_d\)</span>: both conjugating factors cancel.</p>
+<p>Put
+<span class="math math-display" data-tex="\[
+G_g=Q\sigma_gj.
+\]">\[
+G_g=Q\sigma_gj.
+\]</span>
+For arbitrary signed <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_{g,h}=Q\sigma_g(\epsilon_{\sigma_hj}),\\
+G_gG_h\longrightarrow G_{g+h}.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+b_{g,h}=Q\sigma_g(\epsilon_{\sigma_hj}),\\
+G_gG_h\longrightarrow G_{g+h}.
+\end{gathered}
+\tag{4.2}
+\]</span>
+These are natural isomorphisms; every <span class="math" data-tex="\(G_g\)">\(G_g\)</span> is an equivalence. Equation (4.1) gives <span class="math" data-tex="\(G_0=1\)">\(G_0=1\)</span> and both unit comparisons equal to the identity.</p>
+<p>Here is the complete associativity check. Fix <span class="math" data-tex="\(X\)">\(X\)</span> and set <span class="math" data-tex="\(d=\sigma_kjX\)">\(d=\sigma_kjX\)</span>. Before applying <span class="math" data-tex="\(Q\sigma_g\)">\(Q\sigma_g\)</span>, the left and right routes in the action equation are the two sides of
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\sigma_h\epsilon_d)\,
+\epsilon_{\sigma_hjQd}\\
+{}=\epsilon_{\sigma_hd}\,
+jQ(\sigma_h\epsilon_d).
+\end{gathered}\tag{4.3}
+\]">\[
+\begin{gathered}
+(\sigma_h\epsilon_d)\,
+\epsilon_{\sigma_hjQd}\\
+{}=\epsilon_{\sigma_hd}\,
+jQ(\sigma_h\epsilon_d).
+\end{gathered}\tag{4.3}
+\]</span>
+This is naturality of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> for the arrow
+<span class="math" data-tex="\(\sigma_h\epsilon_d:\sigma_hjQd\to\sigma_hd\)">\(\sigma_h\epsilon_d:\sigma_hjQd\to\sigma_hd\)</span>.
+After applying <span class="math" data-tex="\(Q\sigma_g\)">\(Q\sigma_g\)</span>, the left side is
+<span class="math" data-tex="\(b_{g+h,k}(b_{g,h}G_k)\)">\(b_{g+h,k}(b_{g,h}G_k)\)</span>, and the right side is
+<span class="math" data-tex="\(b_{g,h+k}(G_gb_{h,k})\)">\(b_{g,h+k}(G_gb_{h,k})\)</span>. Thus (1.1) holds for all integer vectors, including mixed signs.</p>
+<p>For <span class="math" data-tex="\(p\geq0\)">\(p\geq0\)</span>, let
+<span class="math math-display" data-tex="\[
+\gamma_p=Q\kappa_p:G_p\longrightarrow F_p.
+\]">\[
+\gamma_p=Q\kappa_p:G_p\longrightarrow F_p.
+\]</span>
+These isomorphisms compare the positive actions:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\gamma_{p+q}b_{p,q}\\
+{}=\alpha_{p,q}(\gamma_pF_q)(G_p\gamma_q).
+\end{gathered}\tag{4.4}
+\]">\[
+\begin{gathered}
+\gamma_{p+q}b_{p,q}\\
+{}=\alpha_{p,q}(\gamma_pF_q)(G_p\gamma_q).
+\end{gathered}\tag{4.4}
+\]</span>
+To verify it, apply <span class="math" data-tex="\(Q\)">\(Q\)</span> to (3.5) and compose with <span class="math" data-tex="\(Q\sigma_p\epsilon_{\sigma_qj}\)">\(Q\sigma_p\epsilon_{\sigma_qj}\)</span>. Naturality of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> for <span class="math" data-tex="\(\kappa_q\)">\(\kappa_q\)</span>, together with <span class="math" data-tex="\(\epsilon_{jF_q}=1\)">\(\epsilon_{jF_q}=1\)</span>, says
+<span class="math math-display" data-tex="\[
+\kappa_q\,\epsilon_{\sigma_qj}=j\gamma_q.
+\]">\[
+\kappa_q\,\epsilon_{\sigma_qj}=j\gamma_q.
+\]</span>
+The resulting equality is exactly (4.4).</p>
+<p>We can now retain the original positive functors, rather than only naturally isomorphic replacements. Define
+<span class="math math-display" data-tex="\[
+\Psi_g=
+\begin{cases}
+F_g,&amp;g\in\mathbb N^n,\\
+G_g,&amp;g\notin\mathbb N^n.
+\end{cases}
+\]">\[
+\Psi_g=
+\begin{cases}
+F_g,&amp;g\in\mathbb N^n,\\
+G_g,&amp;g\notin\mathbb N^n.
+\end{cases}
+\]</span>
+Choose <span class="math" data-tex="\(\theta_g:\Psi_g\to G_g\)">\(\theta_g:\Psi_g\to G_g\)</span> to be <span class="math" data-tex="\(\gamma_g^{-1}\)">\(\gamma_g^{-1}\)</span> in the first case and the identity in the second. In particular <span class="math" data-tex="\(\theta_0=1\)">\(\theta_0=1\)</span>. Transport the comparisons:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mu_{g,h}
+=\theta_{g+h}^{-1}\,b_{g,h}\,
+(\theta_g*\theta_h).
+\end{gathered}\tag{4.5}
+\]">\[
+\begin{gathered}
+\mu_{g,h}
+=\theta_{g+h}^{-1}\,b_{g,h}\,
+(\theta_g*\theta_h).
+\end{gathered}\tag{4.5}
+\]</span>
+Here <span class="math" data-tex="\(*\)">\(*\)</span> is horizontal composition of transformations. Its source is <span class="math" data-tex="\(\Psi_g\Psi_h\)">\(\Psi_g\Psi_h\)</span> and target <span class="math" data-tex="\(G_gG_h\)">\(G_gG_h\)</span>. Naturality and the interchange law cancel the intermediate <span class="math" data-tex="\(\theta\)">\(\theta\)</span>'s in the two three-factor routes; associativity of <span class="math" data-tex="\(b\)">\(b\)</span> therefore gives (1.1), and its unit identities remain identities.</p>
+<p>For positive <span class="math" data-tex="\(g,h\)">\(g,h\)</span>, (4.4) gives <span class="math" data-tex="\(\mu_{g,h}=\alpha_{g,h}\)">\(\mu_{g,h}=\alpha_{g,h}\)</span>. Consequently <span class="math" data-tex="\(\Psi_{e_i}=F_{e_i}=T_i\)">\(\Psi_{e_i}=F_{e_i}=T_i\)</span> literally, and (2.3) gives
+<span class="math math-display" data-tex="\[
+\mu_{e_j,e_i}^{-1}\mu_{e_i,e_j}
+=(\varphi_{ij}^{-1})^{-1}=\varphi_{ij}.
+\]">\[
+\mu_{e_j,e_i}^{-1}\mu_{e_i,e_j}
+=(\varphi_{ij}^{-1})^{-1}=\varphi_{ij}.
+\]</span>
+This proves Theorem 1.1 with every prescribed comparison intact. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, all words and lattice vectors are empty, and the construction is simply the identity action. No additional negative-power condition is required.</p>
+<h2 id="5-graded-exercises-with-complete-solutions">5. Graded exercises with complete solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be a group and <span class="math" data-tex="\(\tau\in\operatorname{Aut}(H)\)">\(\tau\in\operatorname{Aut}(H)\)</span>. Regard <span class="math" data-tex="\(H\)">\(H\)</span> as a one-object category <span class="math" data-tex="\(BH\)">\(BH\)</span>, with composition <span class="math" data-tex="\(b\circ a=ba\)">\(b\circ a=ba\)</span>. Construct its strict integer action induced by <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Describe all equivariant objects and the equation for a morphism between two of them.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\Psi_r\)">\(\Psi_r\)</span> act on arrows by <span class="math" data-tex="\(\tau^r\)">\(\tau^r\)</span>, for every signed integer <span class="math" data-tex="\(r\)">\(r\)</span>. The equality <span class="math" data-tex="\(\tau^r\tau^s=\tau^{r+s}\)">\(\tau^r\tau^s=\tau^{r+s}\)</span> makes every comparison the identity. An equivariant object is the unique underlying object together with invertible arrows <span class="math" data-tex="\(u_r\in H\)">\(u_r\in H\)</span> satisfying
+<span class="math math-display" data-tex="\[
+u_{r+s}=u_r\,\tau^r(u_s),\qquad u_0=1.
+\]">\[
+u_{r+s}=u_r\,\tau^r(u_s),\qquad u_0=1.
+\]</span>
+It is determined by <span class="math" data-tex="\(u=u_1\)">\(u=u_1\)</span>. For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_r=u\,\tau(u)\cdots\tau^{r-1}(u),\\
+u_{-r}=\tau^{-r}(u_r^{-1}).
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_r=u\,\tau(u)\cdots\tau^{r-1}(u),\\
+u_{-r}=\tau^{-r}(u_r^{-1}).
+\end{gathered}
+\]</span>
+These formulas satisfy the equation for all signs: they are the first coordinates of <span class="math" data-tex="\((u,1)^r\)">\((u,1)^r\)</span> in the group with multiplication
+<span class="math" data-tex="\((a,r)(b,s)=(a\tau^r(b),r+s)\)">\((a,r)(b,s)=(a\tau^r(b),r+s)\)</span>.
+Associativity follows from <span class="math" data-tex="\(\tau^{r+s}=\tau^r\tau^s\)">\(\tau^{r+s}=\tau^r\tau^s\)</span>, and the inverse is <span class="math" data-tex="\((\tau^{-r}(a^{-1}),-r)\)">\((\tau^{-r}(a^{-1}),-r)\)</span>. Conversely the equivariance equation successively forces these positive and negative formulas, so every <span class="math" data-tex="\(u\in H\)">\(u\in H\)</span> gives exactly one equivariant object. A morphism <span class="math" data-tex="\(h:u\to v\)">\(h:u\to v\)</span> satisfies
+<span class="math math-display" data-tex="\[
+h\,u=v\,\tau(h).
+\]">\[
+h\,u=v\,\tau(h).
+\]</span>
+Induction gives the corresponding equation for positive powers. Taking the inverse-power formulas gives it for negative powers; the equation at zero is automatic. Thus the generator equation is the complete morphism condition.</p>
+<p><strong>Exercise 2 (moderate).</strong> In <span class="math" data-tex="\(\operatorname{Mod}(k)\)">\(\operatorname{Mod}(k)\)</span>, for a commutative ring <span class="math" data-tex="\(k\)">\(k\)</span>, take <span class="math" data-tex="\(T_1=T_2=1\)">\(T_1=T_2=1\)</span> and prescribe <span class="math" data-tex="\(\varphi_{12}=q\,1\)">\(\varphi_{12}=q\,1\)</span>, with <span class="math" data-tex="\(q\in k^\times\)">\(q\in k^\times\)</span>. Give an explicit action on every signed pair <span class="math" data-tex="\((a,b)\in\mathbb Z^2\)">\((a,b)\in\mathbb Z^2\)</span> realizing this exchange.</p>
+<p><strong>Solution.</strong> Let every <span class="math" data-tex="\(\Psi_{(a,b)}\)">\(\Psi_{(a,b)}\)</span> be the identity functor and put
+<span class="math math-display" data-tex="\[
+\mu_{(a,b),(c,d)}=q^{-bc}\,1.
+\]">\[
+\mu_{(a,b),(c,d)}=q^{-bc}\,1.
+\]</span>
+Negative exponents are defined because <span class="math" data-tex="\(q\)">\(q\)</span> is a unit. These are natural isomorphisms. A zero vector makes the exponent zero, so the unit comparisons are identities. For a third vector <span class="math" data-tex="\((e,f)\)">\((e,f)\)</span>, the two action composites have exponents
+<span class="math math-display" data-tex="\[
+-bc-(b+d)e=-de-b(c+e),
+\]">\[
+-bc-(b+d)e=-de-b(c+e),
+\]</span>
+proving associativity over the entire integer lattice. The forward generator comparison is <span class="math" data-tex="\(1\)">\(1\)</span>; the reverse one is <span class="math" data-tex="\(q^{-1}\)">\(q^{-1}\)</span>. Their exchange is therefore <span class="math" data-tex="\(q\)">\(q\)</span>, as required. Replacing every comparison by the identity would give exchange <span class="math" data-tex="\(1\)">\(1\)</span>, so would lose the prescribed data unless <span class="math" data-tex="\(q=1\)">\(q=1\)</span>. This example shows that even identity generator functors can carry nontrivial comparison data.</p>
+<p><strong>Exercise 3 (hard).</strong> Show that pairwise commutation isomorphisms alone do not suffice for three generators. Use the one-object category <span class="math" data-tex="\(B\mathbb Z\)">\(B\mathbb Z\)</span>, with additive composition, the functors <span class="math" data-tex="\(T_1(a)=-a\)">\(T_1(a)=-a\)</span>, <span class="math" data-tex="\(T_2(a)=T_3(a)=a\)">\(T_2(a)=T_3(a)=a\)</span>, and components
+<span class="math math-display" data-tex="\[
+\varphi_{12}=0,\qquad
+\varphi_{13}=0,\qquad
+\varphi_{23}=1.
+\]">\[
+\varphi_{12}=0,\qquad
+\varphi_{13}=0,\qquad
+\varphi_{23}=1.
+\]</span></p>
+<p><strong>Solution.</strong> All three functors are automorphisms and commute strictly. Since <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is abelian, any integer is the component of a natural automorphism between each equal composite functor: the naturality equation is equality after adding that integer on either side. Its inverse component is its negative. Thus the three prescribed maps are valid pairwise isomorphisms; zero denotes an identity arrow, whereas <span class="math" data-tex="\(1\)">\(1\)</span> is a nontrivial arrow.</p>
+<p>Right whiskering keeps the component; left whiskering by <span class="math" data-tex="\(T_1\)">\(T_1\)</span> negates it. The first route in (1.2) has component
+<span class="math math-display" data-tex="\[
+0+T_2(0)+1=1.
+\]">\[
+0+T_2(0)+1=1.
+\]</span>
+The second has component
+<span class="math math-display" data-tex="\[
+T_1(1)+0+T_3(0)=-1.
+\]">\[
+T_1(1)+0+T_3(0)=-1.
+\]</span>
+They are different arrows. The necessity proof in §2 therefore rules out any <span class="math" data-tex="\(\mathbb Z^3\)">\(\mathbb Z^3\)</span>-action with these exact generator functors and these prescribed exchanges. Passing only to isomorphism classes of functors would miss the obstruction.</p>
+<p><strong>Exercise 4 (expert).</strong> Identify the roles of invertibility in the extension.
+(a) Suppose the normalized positive action in §3 has fully faithful <span class="math" data-tex="\(F_p\)">\(F_p\)</span>, without assuming essential surjectivity. Prove that <span class="math" data-tex="\(j\)">\(j\)</span> is fully faithful and is an equivalence exactly when every <span class="math" data-tex="\(T_i=F_{e_i}\)">\(T_i=F_{e_i}\)</span> is essentially surjective. Compute <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> for the shift <span class="math" data-tex="\(T(k)=k+1\)">\(T(k)=k+1\)</span> on the discrete category <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>.
+(b) For the positive identity action on <span class="math" data-tex="\(\operatorname{Mod}(\mathbb Z)\)">\(\operatorname{Mod}(\mathbb Z)\)</span>, classify its unit-preserving tensor endomorphisms and decide which extend to the identity action of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p><strong>Solution.</strong> (a) Full faithfulness alone makes all Hom transitions bijections, so the construction of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> and full faithfulness of <span class="math" data-tex="\(j\)">\(j\)</span> still work. If every <span class="math" data-tex="\(T_i\)">\(T_i\)</span> is essentially surjective, they are equivalences and so are all <span class="math" data-tex="\(F_p\)">\(F_p\)</span>; the essential-surjectivity proof in §3 applies.</p>
+<p>Conversely suppose <span class="math" data-tex="\(j\)">\(j\)</span> is essentially surjective. For any <span class="math" data-tex="\(X\)">\(X\)</span>, the object <span class="math" data-tex="\((e_i,X)\)">\((e_i,X)\)</span> is isomorphic to some <span class="math" data-tex="\(jY\)">\(jY\)</span>. Represent the isomorphism and its inverse at a common stage. Equality of their composites to the identities holds there because the Hom transitions are injective. Thus at some <span class="math" data-tex="\(w\geq e_i,0\)">\(w\geq e_i,0\)</span> there is an actual isomorphism
+<span class="math math-display" data-tex="\[
+F_{w-e_i}X\simeq F_wY.
+\]">\[
+F_{w-e_i}X\simeq F_wY.
+\]</span>
+The comparison <span class="math" data-tex="\(\alpha_{w-e_i,e_i}\)">\(\alpha_{w-e_i,e_i}\)</span> identifies the right side with <span class="math" data-tex="\(F_{w-e_i}T_iY\)">\(F_{w-e_i}T_iY\)</span>. A fully faithful functor reflects isomorphisms: lift the inverse by fullness and check the two inverse equations by faithfulness. Hence <span class="math" data-tex="\(X\simeq T_iY\)">\(X\simeq T_iY\)</span>. Every <span class="math" data-tex="\(T_i\)">\(T_i\)</span> is essentially surjective.</p>
+<p>For the discrete shift, objects of <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> are <span class="math" data-tex="\((u,k)\)">\((u,k)\)</span>, with <span class="math" data-tex="\(u\in\mathbb Z\)">\(u\in\mathbb Z\)</span> and <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>. At a common stage <span class="math" data-tex="\(w\)">\(w\)</span>, a morphism exists exactly when
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k+w-u=\ell+w-v,\\
+\text{or equivalently}\quad k-u=\ell-v.
+\end{gathered}
+\]">\[
+\begin{gathered}
+k+w-u=\ell+w-v,\\
+\text{or equivalently}\quad k-u=\ell-v.
+\end{gathered}
+\]</span>
+Then there is exactly one morphism, and it is invertible. Thus <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> is equivalent to the discrete category <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, via <span class="math" data-tex="\((u,k)\mapsto k-u\)">\((u,k)\mapsto k-u\)</span>. The image of <span class="math" data-tex="\(j\)">\(j\)</span> is the nonnegative integers and is not essentially surjective. Translation <span class="math" data-tex="\(\sigma_r\)">\(\sigma_r\)</span> adds <span class="math" data-tex="\(r\)">\(r\)</span> to this integer label. It extends the shift on the enlarged category, but cannot yield an integer action on the original category with generator <span class="math" data-tex="\(T\)">\(T\)</span>, since a group-action generator must be an equivalence and this shift misses <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p>(b) Every natural endomorphism of the identity on <span class="math" data-tex="\(\operatorname{Mod}(\mathbb Z)\)">\(\operatorname{Mod}(\mathbb Z)\)</span> is multiplication by one integer. Indeed its value on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is multiplication by <span class="math" data-tex="\(t\)">\(t\)</span>; naturality for the map <span class="math" data-tex="\(\mathbb Z\to M\)">\(\mathbb Z\to M\)</span> sending <span class="math" data-tex="\(1\)">\(1\)</span> to any <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> forces the value on <span class="math" data-tex="\(x\)">\(x\)</span> to be <span class="math" data-tex="\(tx\)">\(tx\)</span>. Conversely scalar multiplication is natural.</p>
+<p>A unit-preserving positive-action endomorphism therefore has scalars <span class="math" data-tex="\(t_m\)">\(t_m\)</span>, with
+<span class="math math-display" data-tex="\[
+t_0=1,\qquad t_{r+s}=t_rt_s.
+\]">\[
+t_0=1,\qquad t_{r+s}=t_rt_s.
+\]</span>
+It is precisely <span class="math" data-tex="\(t_m=t^m\)">\(t_m=t^m\)</span> for one arbitrary <span class="math" data-tex="\(t\in\mathbb Z\)">\(t\in\mathbb Z\)</span>. It extends to all signed integers exactly when <span class="math" data-tex="\(t\)">\(t\)</span> is a unit, hence <span class="math" data-tex="\(t=1\)">\(t=1\)</span> or <span class="math" data-tex="\(t=-1\)">\(t=-1\)</span>. Necessity follows from <span class="math" data-tex="\(t_1t_{-1}=t_0=1\)">\(t_1t_{-1}=t_0=1\)</span>; sufficiency follows by using integer powers of the unit. In particular <span class="math" data-tex="\(2^m\)">\(2^m\)</span> gives a valid positive transformation between actions whose functors are all equivalences, and cannot extend to a group transformation. The object-level existence theorem proved in §§2–4 remains valid; an equivalence of action categories cannot include all such noninvertible transformations.</p>
+<p>Original exposition and solutions are dedicated to CC0 1.0. The cited canonical interfaces are retained without reproducing their text. Self-checked; no independent review has occurred.</p>
+</main></body></html>

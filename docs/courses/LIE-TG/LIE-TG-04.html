@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complete systems and invariants · Lie&#x27;s theory of transformation groups</title>
+<meta name="description" content="A lesson of the course Lie&#x27;s theory of transformation groups. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LIE-TG/LIE-TG-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Lie&#x27;s theory of transformation groups</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="complete-systems-and-invariants">Complete systems and invariants</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), in Codex at Ultra. Public domain (CC0).</em></p>
+<p>An invariant is a function constant along the motions of a group. Infinitesimally this is a system of first-order equations. The number of independent equations is the dimension of a moving orbit, rather than the number of group parameters. We first solve the general regular system, then apply it to group invariants, invariant submanifolds, symmetries of complete systems, and integration of an ordinary differential equation.</p>
+<p>We assume the analytic inverse-function theorem and use the flow and straightening results of <a href="LIE-TG-03.html">One-parameter groups</a>. We prove the regular Frobenius theorem in the form needed here. Basic references are [Kunzinger], [Lie–Engel I], and [Merker]. All assertions are local near a point where the indicated ranks are constant.</p>
+<h2 id="1-why-brackets-create-new-equations">1. Why brackets create new equations</h2>
+<p>Let <span class="math" data-tex="$X_1,\ldots,X_q$">$X_1,\ldots,X_q$</span> be analytic vector fields with pointwise independent values on a neighbourhood in <span class="math" data-tex="$\mathbb K^n$">$\mathbb K^n$</span>. Write <span class="math" data-tex="$D$">$D$</span> for their pointwise span. The system</p>
+<span class="math math-display" data-tex="$$
+X_1f=\cdots=X_qf=0
+\tag{1.1}
+$$">$$
+X_1f=\cdots=X_qf=0
+\tag{1.1}
+$$</span>
+<p>is <strong>complete</strong> if</p>
+<span class="math math-display" data-tex="$$
+[X_i,X_j]=\sum_k c_{ij}^k(x)X_k
+\tag{1.2}
+$$">$$
+[X_i,X_j]=\sum_k c_{ij}^k(x)X_k
+\tag{1.2}
+$$</span>
+<p>with analytic function coefficients. This is involutivity of the rank-<span class="math" data-tex="$q$">$q$</span> distribution <span class="math" data-tex="$D$">$D$</span>. The coefficients in (1.2) need not be constant.</p>
+<p>If <span class="math" data-tex="$f$">$f$</span> solves (1.1), then <span class="math" data-tex="$[X_i,X_j]f=0$">$[X_i,X_j]f=0$</span> too. Thus any bracket outside <span class="math" data-tex="$D$">$D$</span> adds a necessary equation.</p>
+<p><strong>Example 1.1.</strong> In three variables take <span class="math" data-tex="$X=\partial_x+y\partial_z$">$X=\partial_x+y\partial_z$</span>, <span class="math" data-tex="$Y=\partial_y$">$Y=\partial_y$</span>. Their bracket is <span class="math" data-tex="$[X,Y]=-\partial_z$">$[X,Y]=-\partial_z$</span>. A common solution must therefore satisfy <span class="math" data-tex="$f_z=0$">$f_z=0$</span>, then <span class="math" data-tex="$f_y=0$">$f_y=0$</span> and <span class="math" data-tex="$f_x=0$">$f_x=0$</span>. Only constants remain. Counting three variables minus the two originally displayed equations would have given the wrong answer.</p>
+<p>More generally, complete a finite system as follows. On a regular neighbourhood choose a basis for its pointwise span. If a bracket of basis fields increases the generic rank, adjoin it and restrict to a neighbourhood where the increased rank is constant. Repeat. The rank increases at most to <span class="math" data-tex="$n$">$n$</span>, so this process terminates after finitely many increases. At termination every bracket lies in the span; solving through a nonvanishing basis minor gives analytic coefficients in (1.2). At each stage the solution set is unchanged because the adjoined brackets kill every previous solution. This procedure concerns a regular neighbourhood; it makes no claim of one uniform basis across singular points.</p>
+<h2 id="2-straightening-a-complete-system">2. Straightening a complete system</h2>
+<p><strong>Theorem 2.1 (Clebsch–Jacobi).</strong> A complete rank-<span class="math" data-tex="$q$">$q$</span> system in <span class="math" data-tex="$n$">$n$</span> variables has <span class="math" data-tex="$n-q$">$n-q$</span> independent analytic solutions <span class="math" data-tex="$z_1,\ldots,z_{n-q}$">$z_1,\ldots,z_{n-q}$</span> near each regular point. Every analytic solution is locally a function of these. There are coordinates <span class="math" data-tex="$(t_1,\ldots,t_q,z_1,\ldots,z_{n-q})$">$(t_1,\ldots,t_q,z_1,\ldots,z_{n-q})$</span> in which <span class="math" data-tex="$D$">$D$</span> is spanned by <span class="math" data-tex="$\partial_{t_1},\ldots,\partial_{t_q}$">$\partial_{t_1},\ldots,\partial_{t_q}$</span>.</p>
+<p><strong>Proof.</strong> We induct on <span class="math" data-tex="$q$">$q$</span>. For <span class="math" data-tex="$q=0$">$q=0$</span> the coordinates themselves suffice. For <span class="math" data-tex="$q\ge1$">$q\ge1$</span>, straighten a nonvanishing basis field to <span class="math" data-tex="$\partial_t$">$\partial_t$</span> by the preceding lesson. Replace the remaining basis fields by subtracting their <span class="math" data-tex="$\partial_t$">$\partial_t$</span> components. Call the resulting independent fields <span class="math" data-tex="$Y_2,\ldots,Y_q$">$Y_2,\ldots,Y_q$</span>. They have only transverse <span class="math" data-tex="$z$">$z$</span> components.</p>
+<p>Involutivity and absence of a <span class="math" data-tex="$\partial_t$">$\partial_t$</span> component give</p>
+<span class="math math-display" data-tex="$$
+\partial_tY_a=\sum_{b=2}^q C_{ab}(t,z)Y_b.
+$$">$$
+\partial_tY_a=\sum_{b=2}^q C_{ab}(t,z)Y_b.
+$$</span>
+<p>The coefficients are analytic, obtained by solving through a nonvanishing transverse basis minor. Regard <span class="math" data-tex="$Y$">$Y$</span> as a column of fields and solve the analytic matrix equation</p>
+<span class="math math-display" data-tex="$$
+\partial_tP=-PC,\qquad P(0,z)=I.
+$$">$$
+\partial_tP=-PC,\qquad P(0,z)=I.
+$$</span>
+<p>Analytic parameter dependence of ordinary differential equations gives <span class="math" data-tex="$P(t,z)$">$P(t,z)$</span>; its determinant stays nonzero after shrinking. The fields <span class="math" data-tex="$Z=PY$">$Z=PY$</span> satisfy <span class="math" data-tex="$\partial_tZ=0$">$\partial_tZ=0$</span>, so they depend only on transverse coordinates. They span the same transverse subspace as the <span class="math" data-tex="$Y_a$">$Y_a$</span>.</p>
+<p>Their brackets belong to <span class="math" data-tex="$D$">$D$</span> by involutivity and have no <span class="math" data-tex="$\partial_t$">$\partial_t$</span> component. Consequently their restrictions to the slice <span class="math" data-tex="$t=0$">$t=0$</span> form a complete rank-<span class="math" data-tex="$(q-1)$">$(q-1)$</span> distribution in <span class="math" data-tex="$n-1$">$n-1$</span> variables. By induction, choose coordinates on this slice that straighten its distribution. Use those same coordinate functions on all <span class="math" data-tex="$t$">$t$</span>-slices. Together with <span class="math" data-tex="$t$">$t$</span> they give the desired chart.</p>
+<p>In this chart (1.1) is equivalent to <span class="math" data-tex="$\partial_{t_i}f=0$">$\partial_{t_i}f=0$</span> for all <span class="math" data-tex="$i$">$i$</span>. On a product neighbourhood every such function is <span class="math" data-tex="$F(z_1,\ldots,z_{n-q})$">$F(z_1,\ldots,z_{n-q})$</span>. The <span class="math" data-tex="$z_j$">$z_j$</span> have independent differentials and give the stated solutions. If additional independent solutions existed, their differentials would have to fit into the <span class="math" data-tex="$(n-q)$">$(n-q)$</span>-dimensional annihilator of <span class="math" data-tex="$D$">$D$</span>, which is impossible. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Proposition 2.2 (the dual equations).</strong> Suppose the coefficient rows of <span class="math" data-tex="$X_1,\ldots,X_q$">$X_1,\ldots,X_q$</span> form a rank-<span class="math" data-tex="$q$">$q$</span> matrix <span class="math" data-tex="$\Xi$">$\Xi$</span>. A tangent vector <span class="math" data-tex="$v$">$v$</span> belongs to <span class="math" data-tex="$D$">$D$</span> exactly when all <span class="math" data-tex="$(q+1)$">$(q+1)$</span>-row minors of the matrix obtained by adjoining <span class="math" data-tex="$v$">$v$</span> to <span class="math" data-tex="$\Xi$">$\Xi$</span> vanish. Equivalently, every one-form annihilating <span class="math" data-tex="$D$">$D$</span> vanishes on <span class="math" data-tex="$v$">$v$</span>.</p>
+<p><strong>Proof.</strong> The minors vanish exactly when adjoining <span class="math" data-tex="$v$">$v$</span> does not increase the row rank, which is exactly membership in the row span. Solving through a nonzero <span class="math" data-tex="$q$">$q$</span>-minor gives a normalized frame, after reordering coordinates,</p>
+<span class="math math-display" data-tex="$$
+Y_k=\partial_{x_{n-q+k}}+\sum_{i=1}^{n-q}\eta_{ki}(x)\partial_{x_i},
+\qquad 1\le k\le q.
+$$">$$
+Y_k=\partial_{x_{n-q+k}}+\sum_{i=1}^{n-q}\eta_{ki}(x)\partial_{x_i},
+\qquad 1\le k\le q.
+$$</span>
+<p>The remaining <span class="math" data-tex="$n-q$">$n-q$</span> equations for <span class="math" data-tex="$v$">$v$</span> are</p>
+<span class="math math-display" data-tex="$$
+v_i-\sum_{k=1}^q\eta_{ki}v_{n-q+k}=0.
+$$">$$
+v_i-\sum_{k=1}^q\eta_{ki}v_{n-q+k}=0.
+$$</span>
+<p>Thus the forms <span class="math" data-tex="$\theta_i=dx_i-\sum_k\eta_{ki}dx_{n-q+k}$">$\theta_i=dx_i-\sum_k\eta_{ki}dx_{n-q+k}$</span> annihilate the frame and are independent, so they form a basis of its annihilator. This proves the equivalence. For <span class="math" data-tex="$q=0$">$q=0$</span> the equations are <span class="math" data-tex="$v=0$">$v=0$</span>; for <span class="math" data-tex="$q=n$">$q=n$</span> the annihilator has dimension zero. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is pointwise linear algebra and does not require involutivity. Theorem 2.1 supplies the additional integrability statement: in its product chart the integral leaves are <span class="math" data-tex="$z=c$">$z=c$</span>, and every analytic field in <span class="math" data-tex="$D$">$D$</span> has a flow that keeps <span class="math" data-tex="$z$">$z$</span> fixed. Any connected submanifold tangent to <span class="math" data-tex="$D$">$D$</span> has constant <span class="math" data-tex="$z$">$z$</span>; if its dimension is <span class="math" data-tex="$q$">$q$</span>, it is locally an open part of one such leaf. The zero field has stationary point trajectories.</p>
+<h2 id="3-invariants-of-a-local-group">3. Invariants of a local group</h2>
+<p>Let a local group have generators <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span>. Define <span class="math" data-tex="$\rho$">$\rho$</span> as their pointwise rank near a regular point. The distribution <span class="math" data-tex="$D=\operatorname{span}\{X_j(x)\}$">$D=\operatorname{span}\{X_j(x)\}$</span> has rank <span class="math" data-tex="$\rho$">$\rho$</span>, which may be less than <span class="math" data-tex="$r$">$r$</span>.</p>
+<p><strong>Lemma 3.1.</strong> The group preserves <span class="math" data-tex="$D$">$D$</span>, and <span class="math" data-tex="$D$">$D$</span> is involutive on its regular neighbourhood.</p>
+<p><strong>Proof.</strong> Conjugating a small transformation by <span class="math" data-tex="$T_a$">$T_a$</span> gives another small transformation: under the right-action convention,</p>
+<span class="math math-display" data-tex="$$
+T_a\circ T_b\circ T_a^{-1}
+=T_{m(m(\iota(a),b),a)}.
+$$">$$
+T_a\circ T_b\circ T_a^{-1}
+=T_{m(m(\iota(a),b),a)}.
+$$</span>
+<p>Differentiating in <span class="math" data-tex="$b$">$b$</span> at the identity shows that <span class="math" data-tex="$(T_a)_*X_j$">$(T_a)_*X_j$</span> is a constant linear combination of the generators. Conjugation is invertible, so it preserves their pointwise spans.</p>
+<p>Each generator's flow belongs to the group by the preceding lesson. At a fixed point, transporting <span class="math" data-tex="$X_j$">$X_j$</span> by the negative flow of <span class="math" data-tex="$X_i$">$X_i$</span> gives a curve of vectors in the fixed subspace <span class="math" data-tex="$D(x)$">$D(x)$</span>. Its derivative at time zero is <span class="math" data-tex="$[X_i,X_j](x)$">$[X_i,X_j](x)$</span>, as follows by differentiating the pushforward or by the coefficient formula for brackets. Hence this bracket lies in <span class="math" data-tex="$D(x)$">$D(x)$</span>. A regular basis minor gives analytic coefficients, proving involutivity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2.</strong> An analytic function <span class="math" data-tex="$f$">$f$</span> is locally invariant under the group if and only if <span class="math" data-tex="$X_jf=0$">$X_jf=0$</span> for all generators. There are <span class="math" data-tex="$n-\rho$">$n-\rho$</span> independent invariants near a regular point, and every invariant is a function of them.</p>
+<p><strong>Proof.</strong> Differentiate invariance along each one-parameter subgroup to obtain <span class="math" data-tex="$X_jf=0$">$X_jf=0$</span>. Conversely, along the flow of <span class="math" data-tex="$X_j$">$X_j$</span>, the derivative of <span class="math" data-tex="$f$">$f$</span> is <span class="math" data-tex="$X_jf$">$X_jf$</span>, so <span class="math" data-tex="$f$">$f$</span> stays constant. Canonical product coordinates express every nearby group transformation as a finite product of these flows. Thus <span class="math" data-tex="$f$">$f$</span> is group-invariant. Lemma 3.1 and Theorem 2.1 give the count and the functional-dependence assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 3.3 (rotations).</strong> Away from the origin, the rotation fields on <span class="math" data-tex="$\mathbb R^3$">$\mathbb R^3$</span> span the plane perpendicular to <span class="math" data-tex="$x$">$x$</span>. Their rank is two. The function <span class="math" data-tex="$r^2=x^2+y^2+z^2$">$r^2=x^2+y^2+z^2$</span> is invariant and has nonzero differential there, so every local invariant is a function of <span class="math" data-tex="$r^2$">$r^2$</span>. The origin is a singular orbit; the regular-rank assertion is not applied there.</p>
+<p><strong>Example 3.4 (dilation and axial rotation).</strong> Take</p>
+<span class="math math-display" data-tex="$$
+A=x\partial_x+y\partial_y+z\partial_z,\qquad
+B=y\partial_z-z\partial_y.
+$$">$$
+A=x\partial_x+y\partial_y+z\partial_z,\qquad
+B=y\partial_z-z\partial_y.
+$$</span>
+<p>Their bracket is zero. On <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, <span class="math" data-tex="$(y,z)\ne(0,0)$">$(y,z)\ne(0,0)$</span> they have rank two, and</p>
+<span class="math math-display" data-tex="$$
+I=\frac{y^2+z^2}{x^2}
+$$">$$
+I=\frac{y^2+z^2}{x^2}
+$$</span>
+<p>is invariant with nonzero differential. Thus all local invariants on that region are functions of <span class="math" data-tex="$I$">$I$</span>. This statement also holds over <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> when <span class="math" data-tex="$y^2+z^2=0$">$y^2+z^2=0$</span> but <span class="math" data-tex="$(y,z)\ne(0,0)$">$(y,z)\ne(0,0)$</span>: the differential remains nonzero. An invariant's value need not be nonzero for it to be an independent coordinate.</p>
+<h2 id="4-invariant-equations-need-regularity">4. Invariant equations need regularity</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="$$
+S=\{x:\Omega_1(x)=\cdots=\Omega_m(x)=0\},
+$$">$$
+S=\{x:\Omega_1(x)=\cdots=\Omega_m(x)=0\},
+$$</span>
+<p>and assume the differentials <span class="math" data-tex="$d\Omega_1,\ldots,d\Omega_m$">$d\Omega_1,\ldots,d\Omega_m$</span> are independent on <span class="math" data-tex="$S$">$S$</span>. Then <span class="math" data-tex="$S$">$S$</span> is a regular analytic submanifold and</p>
+<span class="math math-display" data-tex="$$
+T_xS=\bigcap_i\ker d\Omega_i(x).
+$$">$$
+T_xS=\bigcap_i\ker d\Omega_i(x).
+$$</span>
+<p><strong>Theorem 4.1.</strong> The regular submanifold <span class="math" data-tex="$S$">$S$</span> is locally invariant under the identity neighbourhood of the group if and only if</p>
+<span class="math math-display" data-tex="$$
+X_j\Omega_i=0\quad\text{on }S
+\quad\text{for all }i,j.
+\tag{4.1}
+$$">$$
+X_j\Omega_i=0\quad\text{on }S
+\quad\text{for all }i,j.
+\tag{4.1}
+$$</span>
+<p><strong>Proof.</strong> Invariance makes each generator curve through a point of <span class="math" data-tex="$S$">$S$</span> stay in <span class="math" data-tex="$S$">$S$</span>. Differentiating its defining equations proves necessity. Conversely, (4.1) makes each <span class="math" data-tex="$X_j$">$X_j$</span> tangent to <span class="math" data-tex="$S$">$S$</span>. Restricting a tangent analytic field to submanifold coordinates gives a flow in <span class="math" data-tex="$S$">$S$</span>. Viewed in the ambient manifold, it solves the same initial-value equation as the ambient flow, so uniqueness makes them agree. Each generator flow therefore preserves <span class="math" data-tex="$S$">$S$</span> locally. Their finite products give all nearby group transformations, proving sufficiency. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>If regularity is omitted, necessity remains true but sufficiency can fail. For <span class="math" data-tex="$S=\{x:x^2=0\}$">$S=\{x:x^2=0\}$</span> in a real or complex line, <span class="math" data-tex="$X=\partial_x$">$X=\partial_x$</span> satisfies <span class="math" data-tex="$X(x^2)=2x=0$">$X(x^2)=2x=0$</span> on <span class="math" data-tex="$S$">$S$</span>, but its flow moves zero to <span class="math" data-tex="$t$">$t$</span>. The issue is the singular defining equation, not the set's underlying shape. Replacing it by the regular equation <span class="math" data-tex="$x=0$">$x=0$</span> correctly detects failure of tangency.</p>
+<p>For the unit sphere, <span class="math" data-tex="$\Omega=x^2+y^2+z^2-1$">$\Omega=x^2+y^2+z^2-1$</span> has nonzero differential on <span class="math" data-tex="$S$">$S$</span> and every rotation field kills <span class="math" data-tex="$\Omega$">$\Omega$</span>. The theorem verifies its invariance without solving the finite rotation equations.</p>
+<h3 id="tangency-saturation-and-restriction">Tangency, saturation, and restriction</h3>
+<p><strong>Lemma 4.2 (the vanishing ideal).</strong> For a regular analytic submanifold <span class="math" data-tex="$S$">$S$</span>, an analytic field <span class="math" data-tex="$X$">$X$</span> is tangent to <span class="math" data-tex="$S$">$S$</span> if and only if <span class="math" data-tex="$XF$">$XF$</span> vanishes on <span class="math" data-tex="$S$">$S$</span> for every analytic function <span class="math" data-tex="$F$">$F$</span> vanishing there. Tangent fields are closed under analytic function combinations and brackets.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$X$">$X$</span> is tangent, its derivative of a function along <span class="math" data-tex="$S$">$S$</span> is the derivative of that function's restriction. The restriction of <span class="math" data-tex="$F$">$F$</span> is zero, so <span class="math" data-tex="$XF$">$XF$</span> vanishes on <span class="math" data-tex="$S$">$S$</span>. Conversely, applying the condition to regular local defining functions for <span class="math" data-tex="$S$">$S$</span> gives tangency. For tangent <span class="math" data-tex="$X,Y$">$X,Y$</span> and <span class="math" data-tex="$F$">$F$</span> vanishing on <span class="math" data-tex="$S$">$S$</span>, both <span class="math" data-tex="$YF$">$YF$</span> and <span class="math" data-tex="$XF$">$XF$</span> vanish there, so</p>
+<span class="math math-display" data-tex="$$
+[X,Y]F=X(YF)-Y(XF)=0\quad\text{on }S.
+$$">$$
+[X,Y]F=X(YF)-Y(XF)=0\quad\text{on }S.
+$$</span>
+<p>The same property holds for <span class="math" data-tex="$aX+bY$">$aX+bY$</span>, proving closure. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The regular defining equations also explain the coefficient condition often used in the historical argument. Choose coordinates <span class="math" data-tex="$(u,v)$">$(u,v)$</span> with <span class="math" data-tex="$S=\{u=0\}$">$S=\{u=0\}$</span>. Every analytic function <span class="math" data-tex="$G$">$G$</span> vanishing on <span class="math" data-tex="$S$">$S$</span> can be written</p>
+<span class="math math-display" data-tex="$$
+G(u,v)=\sum_i u_i R_i(u,v),\qquad
+R_i(u,v)=\int_0^1\partial_{u_i}G(\tau u,v)\,d\tau.
+$$">$$
+G(u,v)=\sum_i u_i R_i(u,v),\qquad
+R_i(u,v)=\int_0^1\partial_{u_i}G(\tau u,v)\,d\tau.
+$$</span>
+<p>The <span class="math" data-tex="$R_i$">$R_i$</span> are analytic, as follows by locally convergent power-series integration. Hence a tangent field satisfies <span class="math" data-tex="$Xu=R(u,v)u$">$Xu=R(u,v)u$</span> with coefficients regular near <span class="math" data-tex="$S$">$S$</span>. Along its flow the defining functions solve a homogeneous linear ODE and remain zero by uniqueness. Coefficients with poles on <span class="math" data-tex="$S$">$S$</span> would not supply this argument.</p>
+<p><strong>Theorem 4.3 (relations among first integrals).</strong> Let <span class="math" data-tex="$D$">$D$</span> be complete of constant rank <span class="math" data-tex="$q$">$q$</span> near <span class="math" data-tex="$p$">$p$</span>, and let <span class="math" data-tex="$S$">$S$</span> be a regular analytic submanifold of dimension <span class="math" data-tex="$m$">$m$</span> through <span class="math" data-tex="$p$">$p$</span>. Every field in <span class="math" data-tex="$D$">$D$</span> is tangent to <span class="math" data-tex="$S$">$S$</span> if and only if, in a sufficiently small Frobenius chart <span class="math" data-tex="$(t,z)$">$(t,z)$</span>,</p>
+<span class="math math-display" data-tex="$$
+S=T\times N=\{(t,z):g_1(z)=\cdots=g_{n-m}(z)=0\},
+$$">$$
+S=T\times N=\{(t,z):g_1(z)=\cdots=g_{n-m}(z)=0\},
+$$</span>
+<p>where <span class="math" data-tex="$N$">$N$</span> is a regular analytic submanifold of the transverse coordinate space and the differentials <span class="math" data-tex="$dg_i$">$dg_i$</span> are independent on <span class="math" data-tex="$N$">$N$</span>. In particular <span class="math" data-tex="$m\ge q$">$m\ge q$</span>. Thus regular invariant submanifolds are locally relations among first integrals.</p>
+<p><strong>Proof.</strong> Tangency gives <span class="math" data-tex="$D_p\subset T_pS$">$D_p\subset T_pS$</span>, so <span class="math" data-tex="$q\le m$">$q\le m$</span>. Translate the <span class="math" data-tex="$t$">$t$</span> coordinates so that <span class="math" data-tex="$t(p)=0$">$t(p)=0$</span>. Since <span class="math" data-tex="$D$">$D$</span> is spanned by the <span class="math" data-tex="$t$">$t$</span> coordinate fields, <span class="math" data-tex="$S$">$S$</span> is transverse to the slice <span class="math" data-tex="$t=0$">$t=0$</span>: its tangent space together with the slice tangent space spans the ambient tangent space. The inverse-function theorem therefore makes <span class="math" data-tex="$N=S\cap\{t=0\}$">$N=S\cap\{t=0\}$</span> a regular submanifold of that slice, of dimension <span class="math" data-tex="$m-q$">$m-q$</span>.</p>
+<p>Each <span class="math" data-tex="$\partial_{t_i}$">$\partial_{t_i}$</span> is tangent to <span class="math" data-tex="$S$">$S$</span>. Its local flow is coordinate translation and preserves <span class="math" data-tex="$S$">$S$</span> by the restriction-and-uniqueness argument of Theorem 4.1. After shrinking the chart, compositions of these translations carry a point of <span class="math" data-tex="$S$">$S$</span> to the slice and carry slice points through a small product box. Consequently <span class="math" data-tex="$S=T\times N$">$S=T\times N$</span> locally. One may see the uniform shrinking directly by expressing <span class="math" data-tex="$S$">$S$</span> as a graph over <span class="math" data-tex="$t$">$t$</span> and <span class="math" data-tex="$m-q$">$m-q$</span> transverse coordinates using a nonzero graph minor at <span class="math" data-tex="$p$">$p$</span>; tangency forces that graph to be independent of <span class="math" data-tex="$t$">$t$</span>. The inverse-function theorem gives the independent local equations <span class="math" data-tex="$g_i$">$g_i$</span> for <span class="math" data-tex="$N$">$N$</span>.</p>
+<p>Conversely, the equations <span class="math" data-tex="$g_i(z)$">$g_i(z)$</span> have zero derivative under every field in <span class="math" data-tex="$D$">$D$</span>. Their regular zero set is therefore tangent to <span class="math" data-tex="$D$">$D$</span> and preserved by its local flows. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 4.4 (restriction through a rank drop).</strong> Let <span class="math" data-tex="$S$">$S$</span> be a regular invariant analytic submanifold of dimension <span class="math" data-tex="$m$">$m$</span>. Suppose analytic ambient fields <span class="math" data-tex="$X_1,\ldots,X_r$">$X_1,\ldots,X_r$</span> are tangent to <span class="math" data-tex="$S$">$S$</span> and satisfy</p>
+<span class="math math-display" data-tex="$$
+[X_i,X_j]=\sum_k c_{ij}^kX_k
+$$">$$
+[X_i,X_j]=\sum_k c_{ij}^kX_k
+$$</span>
+<p>with coefficients analytic near <span class="math" data-tex="$S$">$S$</span>. Their restricted fields <span class="math" data-tex="$\overline X_i$">$\overline X_i$</span> preserve brackets. On a neighbourhood in <span class="math" data-tex="$S$">$S$</span> where their span has constant rank <span class="math" data-tex="$h$">$h$</span>, they form a complete rank-<span class="math" data-tex="$h$">$h$</span> system. There are <span class="math" data-tex="$m-h$">$m-h$</span> independent local first integrals on <span class="math" data-tex="$S$">$S$</span>, and its regular invariant submanifolds are relations among these. Necessarily <span class="math" data-tex="$h\le m$">$h\le m$</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$i:S\hookrightarrow M$">$i:S\hookrightarrow M$</span> for inclusion. Tangency defines <span class="math" data-tex="$\overline X$">$\overline X$</span> intrinsically, and for every ambient analytic <span class="math" data-tex="$F$">$F$</span>,</p>
+<span class="math math-display" data-tex="$$
+\overline X(i^*F)=i^*(XF).
+$$">$$
+\overline X(i^*F)=i^*(XF).
+$$</span>
+<p>Every local analytic function on <span class="math" data-tex="$S$">$S$</span> extends to the ambient graph coordinates. Applying the displayed identity twice and subtracting proves</p>
+<span class="math math-display" data-tex="$$
+[\overline X_i,\overline X_j]
+=\overline{[X_i,X_j]}
+=\sum_k(i^*c_{ij}^k)\overline X_k.
+$$">$$
+[\overline X_i,\overline X_j]
+=\overline{[X_i,X_j]}
+=\sum_k(i^*c_{ij}^k)\overline X_k.
+$$</span>
+<p>Choose <span class="math" data-tex="$h$">$h$</span> restricted fields with a nonzero basis minor. Constant rank and solving through that minor express every remaining field as an analytic combination of this frame. Its brackets lie in the span by the displayed identity and the product rule. Theorem 2.1 applied in coordinates on <span class="math" data-tex="$S$">$S$</span> gives the <span class="math" data-tex="$m-h$">$m-h$</span> first integrals; Theorem 4.3 applied within <span class="math" data-tex="$S$">$S$</span> gives the invariant-submanifold assertion. The dimension bound follows from their values lying in <span class="math" data-tex="$T S$">$T S$</span>. If <span class="math" data-tex="$h=0$">$h=0$</span>, every restricted field vanishes: its flow fixes each point of <span class="math" data-tex="$S$">$S$</span>, and every local analytic function on <span class="math" data-tex="$S$">$S$</span> is a first integral. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 4.5.</strong> On the plane take <span class="math" data-tex="$X=\partial_x$">$X=\partial_x$</span> and <span class="math" data-tex="$Y=x\partial_y$">$Y=x\partial_y$</span>. The rank is two off <span class="math" data-tex="$x=0$">$x=0$</span> and one on <span class="math" data-tex="$x=0$">$x=0$</span>. Although <span class="math" data-tex="$[X,Y]=(1/x)Y$">$[X,Y]=(1/x)Y$</span> on <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, the coefficient has a pole at the rank-drop set. That set is not invariant, since the flow of <span class="math" data-tex="$X$">$X$</span> moves it. Rank determinants locate rank drops; they do not by themselves prove invariance. To use Theorem 4.4 one first verifies a regular invariant submanifold, regular bracket coefficients there, and a constant restricted rank. A mixture of fixed and moving points need not admit one uniform chart.</p>
+<h2 id="5-symmetries-of-a-complete-system">5. Symmetries of a complete system</h2>
+<p>A local diffeomorphism <span class="math" data-tex="$T$">$T$</span> <strong>preserves a distribution</strong> if <span class="math" data-tex="$dT_x(D_x)=D_{T(x)}$">$dT_x(D_x)=D_{T(x)}$</span> wherever it is defined. This condition does not require preservation of a chosen frame. In the regular complete case, it says that <span class="math" data-tex="$T$">$T$</span> takes leaves to leaves.</p>
+<p><strong>Lemma 5.1.</strong> A local diffeomorphism preserves a complete regular distribution <span class="math" data-tex="$D$">$D$</span> if and only if the pullback of every local first integral is a first integral. In compatible Frobenius charts its form is</p>
+<span class="math math-display" data-tex="$$
+T(t,z)=(A(t,z),B(z)).
+$$">$$
+T(t,z)=(A(t,z),B(z)).
+$$</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="$T$">$T$</span> preserves <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$df$">$df$</span> annihilates <span class="math" data-tex="$D$">$D$</span>, the chain rule shows that <span class="math" data-tex="$d(f\circ T)$">$d(f\circ T)$</span> annihilates <span class="math" data-tex="$D$">$D$</span>. Conversely, it suffices to apply the pullback condition to the target chart's first-integral coordinates. It gives <span class="math" data-tex="$\partial_{t_i}(z\circ T)=0$">$\partial_{t_i}(z\circ T)=0$</span>, hence the displayed form on a product neighbourhood. The derivative of <span class="math" data-tex="$T$">$T$</span> then sends the <span class="math" data-tex="$t$">$t$</span> subspace into the target <span class="math" data-tex="$t$">$t$</span> subspace. These subspaces have equal dimension, and <span class="math" data-tex="$dT$">$dT$</span> is invertible, so the inclusion is equality. The block triangular derivative also shows that <span class="math" data-tex="$B$">$B$</span> is a local diffeomorphism of the transverse coordinates. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 5.2 (the infinitesimal symmetry criterion).</strong> Let <span class="math" data-tex="$X_1,\ldots,X_q$">$X_1,\ldots,X_q$</span> be a frame for a complete regular distribution <span class="math" data-tex="$D$">$D$</span>, and let <span class="math" data-tex="$Y$">$Y$</span> be analytic. The following are equivalent:</p>
+<ol>
+<li>The local flow of <span class="math" data-tex="$Y$">$Y$</span> preserves <span class="math" data-tex="$D$">$D$</span>.</li>
+<li><span class="math" data-tex="$[Y,X_i]$">$[Y,X_i]$</span> belongs to <span class="math" data-tex="$D$">$D$</span> for every <span class="math" data-tex="$i$">$i$</span>.</li>
+<li>In a Frobenius chart,
+<span class="math math-display" data-tex="$$
+Y=\sum_i a_i(t,z)\partial_{t_i}+\sum_j b_j(z)\partial_{z_j}.
+$$">$$
+Y=\sum_i a_i(t,z)\partial_{t_i}+\sum_j b_j(z)\partial_{z_j}.
+$$</span></li>
+</ol>
+<p>The induced motion of the first-integral coordinates is the convergent local ODE <span class="math" data-tex="$\dot z=b(z)$">$\dot z=b(z)$</span>. The flow fixes each local leaf if and only if <span class="math" data-tex="$b=0$">$b=0$</span>, equivalently <span class="math" data-tex="$Y$">$Y$</span> belongs to <span class="math" data-tex="$D$">$D$</span>.</p>
+<p><strong>Proof.</strong> The bracket condition for a frame is equivalent to <span class="math" data-tex="$[Y,W]\in D$">$[Y,W]\in D$</span> for every analytic section <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$D$">$D$</span>, since <span class="math" data-tex="$[Y,cW]=(Yc)W+c[Y,W]$">$[Y,cW]=(Yc)W+c[Y,W]$</span>. In a Frobenius chart write <span class="math" data-tex="$Y=a(t,z)\partial_t+b(t,z)\partial_z$">$Y=a(t,z)\partial_t+b(t,z)\partial_z$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+[Y,\partial_{t_i}]
+=-\sum_k\partial_{t_i}a_k\,\partial_{t_k}
+-\sum_j\partial_{t_i}b_j\,\partial_{z_j}.
+$$">$$
+[Y,\partial_{t_i}]
+=-\sum_k\partial_{t_i}a_k\,\partial_{t_k}
+-\sum_j\partial_{t_i}b_j\,\partial_{z_j}.
+$$</span>
+<p>Membership in <span class="math" data-tex="$D$">$D$</span> is exactly <span class="math" data-tex="$\partial_{t_i}b_j=0$">$\partial_{t_i}b_j=0$</span>. This proves the equivalence of 2 and 3.</p>
+<p>Under 3, analytic ODE existence and uniqueness give a transverse flow <span class="math" data-tex="$z(s)=\psi_s(z_0)$">$z(s)=\psi_s(z_0)$</span> independent of <span class="math" data-tex="$t_0$">$t_0$</span>. The full flow therefore has the form <span class="math" data-tex="$(t,z)\mapsto(A_s(t,z),\psi_s(z))$">$(t,z)\mapsto(A_s(t,z),\psi_s(z))$</span> and preserves <span class="math" data-tex="$D$">$D$</span> by Lemma 5.1. The inverse flow supplies equality on compatible local domains. Conversely, if the full flow preserves <span class="math" data-tex="$D$">$D$</span>, its transverse coordinates are independent of <span class="math" data-tex="$t$">$t$</span> by Lemma 5.1. Differentiating at <span class="math" data-tex="$s=0$">$s=0$</span> gives 3. Finally, all leaf labels stay fixed exactly when <span class="math" data-tex="$\psi_s(z)=z$">$\psi_s(z)=z$</span> for all sufficiently small <span class="math" data-tex="$s$">$s$</span>, which is equivalent to <span class="math" data-tex="$b=0$">$b=0$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example, with <span class="math" data-tex="$D=\operatorname{span}\{\partial_t\}$">$D=\operatorname{span}\{\partial_t\}$</span>, the field <span class="math" data-tex="$Y=z\partial_z$">$Y=z\partial_z$</span> is a symmetry. It sends the leaf <span class="math" data-tex="$z=c$">$z=c$</span> to <span class="math" data-tex="$z=e^sc$">$z=e^sc$</span>; it preserves the family without fixing every member. Fields in <span class="math" data-tex="$D$">$D$</span>, including fields with variable coefficients, fix all first-integral coordinates.</p>
+<p><strong>Proposition 5.3 (brackets of symmetries).</strong> The analytic fields normalizing <span class="math" data-tex="$D$">$D$</span>, meaning <span class="math" data-tex="$[Y,W]\in D$">$[Y,W]\in D$</span> for every section <span class="math" data-tex="$W$">$W$</span> of <span class="math" data-tex="$D$">$D$</span>, are closed under brackets. The sections of <span class="math" data-tex="$D$">$D$</span> are themselves normalizers and form an ideal within this algebra of fields.</p>
+<p><strong>Proof.</strong> Involutivity proves that sections of <span class="math" data-tex="$D$">$D$</span> normalize it. If <span class="math" data-tex="$Y,Z$">$Y,Z$</span> normalize it, then for <span class="math" data-tex="$W\in D$">$W\in D$</span> the Jacobi identity gives</p>
+<span class="math math-display" data-tex="$$
+[[Y,Z],W]=[Y,[Z,W]]-[Z,[Y,W]]\in D.
+$$">$$
+[[Y,Z],W]=[Y,[Z,W]]-[Z,[Y,W]]\in D.
+$$</span>
+<p>The identity follows by expanding the brackets as commutators of derivations: the six triple compositions cancel in pairs. This proves bracket closure. The ideal assertion is precisely the defining relation <span class="math" data-tex="$[Y,W]\in D$">$[Y,W]\in D$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Proposition 5.4 (common distributions).</strong> Let <span class="math" data-tex="$D,E$">$D,E$</span> be analytic complete distributions of constant rank, and let <span class="math" data-tex="$Y$">$Y$</span> normalize both.</p>
+<p>If <span class="math" data-tex="$D\cap E$">$D\cap E$</span> has constant rank on the chosen neighbourhood, it is complete and <span class="math" data-tex="$Y$">$Y$</span> normalizes it. Its local leaves are the regular intersections of a <span class="math" data-tex="$D$">$D$</span>-leaf and an <span class="math" data-tex="$E$">$E$</span>-leaf. If the involutive completion <span class="math" data-tex="$C$">$C$</span> of <span class="math" data-tex="$D+E$">$D+E$</span> has constant rank on a regular neighbourhood as in Section 1, <span class="math" data-tex="$Y$">$Y$</span> normalizes <span class="math" data-tex="$C$">$C$</span>. The first integrals of <span class="math" data-tex="$C$">$C$</span> are exactly the functions that are first integrals of both <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$E$">$E$</span>.</p>
+<p><strong>Proof.</strong> Constant intersection rank gives an analytic frame for <span class="math" data-tex="$D\cap E$">$D\cap E$</span>: use a nonzero matrix minor to solve the linear equations equating combinations of frames for <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$E$">$E$</span>. For sections <span class="math" data-tex="$U,V$">$U,V$</span> of the intersection, <span class="math" data-tex="$[U,V]$">$[U,V]$</span> belongs to both distributions by their involutivity; likewise <span class="math" data-tex="$[Y,U]$">$[Y,U]$</span> belongs to both. This proves completeness and normalization. If <span class="math" data-tex="$z,w$">$z,w$</span> are first-integral coordinates for <span class="math" data-tex="$D,E$">$D,E$</span>, then the kernel of <span class="math" data-tex="$d(z,w)$">$d(z,w)$</span> is <span class="math" data-tex="$D\cap E$">$D\cap E$</span>. Its rank is constant, so the inverse-function theorem makes its local level sets regular submanifolds with that tangent space. These level sets are exactly the local intersections of the two leaves.</p>
+<p>For the completed sum, generate fields by the original frames, brackets and analytic combinations. Normalization of the original frames starts an induction. The product rule and</p>
+<span class="math math-display" data-tex="$$
+[Y,[U,V]]=[[Y,U],V]+[U,[Y,V]]
+$$">$$
+[Y,[U,V]]=[[Y,U],V]+[U,[Y,V]]
+$$</span>
+<p>show that <span class="math" data-tex="$[Y,\cdot]$">$[Y,\cdot]$</span> preserves the resulting module. A nonzero regular basis minor expresses its fields with analytic coefficients, so <span class="math" data-tex="$Y$">$Y$</span> normalizes <span class="math" data-tex="$C$">$C$</span>. A function killed by <span class="math" data-tex="$D$">$D$</span> and <span class="math" data-tex="$E$">$E$</span> is killed by all their combinations and brackets; conversely <span class="math" data-tex="$D,E\subset C$">$D,E\subset C$</span>. This proves the assertion about first integrals. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>These results use regular neighbourhoods for the intersection and completion. An arbitrary singular intersection or rank-drop set is not assigned a regular leaf space by this argument.</p>
+<h2 id="6-an-integrating-factor-from-a-symmetry">6. An integrating factor from a symmetry</h2>
+<p>Consider</p>
+<span class="math math-display" data-tex="$$
+\frac{dy}{dx}=F(x,y),\qquad
+V=\partial_x+F\partial_y,\qquad \alpha=dy-Fdx.
+$$">$$
+\frac{dy}{dx}=F(x,y),\qquad
+V=\partial_x+F\partial_y,\qquad \alpha=dy-Fdx.
+$$</span>
+<p>A vector field <span class="math" data-tex="$X=\xi\partial_x+\eta\partial_y$">$X=\xi\partial_x+\eta\partial_y$</span> is a local symmetry of the equation's direction field if <span class="math" data-tex="$[X,V]=hV$">$[X,V]=hV$</span> for an analytic function <span class="math" data-tex="$h$">$h$</span>. Computing components gives the equivalent condition</p>
+<span class="math math-display" data-tex="$$
+V\eta-FV\xi-XF=0,
+\qquad h=-V\xi.
+\tag{6.1}
+$$">$$
+V\eta-FV\xi-XF=0,
+\qquad h=-V\xi.
+\tag{6.1}
+$$</span>
+<p><strong>Theorem 6.1 (Lie's integrating factor).</strong> If (6.1) holds and <span class="math" data-tex="$A=\xi F-\eta\ne0$">$A=\xi F-\eta\ne0$</span>, then</p>
+<span class="math math-display" data-tex="$$
+\beta=\frac{dy-Fdx}{\xi F-\eta}
+\tag{6.2}
+$$">$$
+\beta=\frac{dy-Fdx}{\xi F-\eta}
+\tag{6.2}
+$$</span>
+<p>is closed and locally exact. Its potential is a first integral of the differential equation.</p>
+<p><strong>Proof.</strong> The fields <span class="math" data-tex="$X,V$">$X,V$</span> are independent because their determinant is <span class="math" data-tex="$A$">$A$</span>. The form <span class="math" data-tex="$\beta$">$\beta$</span> satisfies <span class="math" data-tex="$\beta(V)=0$">$\beta(V)=0$</span> and <span class="math" data-tex="$\beta(X)=-1$">$\beta(X)=-1$</span>. By the formula for the exterior derivative,</p>
+<span class="math math-display" data-tex="$$
+d\beta(X,V)=X(\beta(V))-V(\beta(X))-\beta([X,V])=0.
+$$">$$
+d\beta(X,V)=X(\beta(V))-V(\beta(X))-\beta([X,V])=0.
+$$</span>
+<p>An alternating two-form in two dimensions is determined by its value on an independent pair, so <span class="math" data-tex="$d\beta=0$">$d\beta=0$</span>. To see local exactness explicitly, write <span class="math" data-tex="$\beta=Pdx+Qdy$">$\beta=Pdx+Qdy$</span> on a small rectangle. The condition is <span class="math" data-tex="$Q_x=P_y$">$Q_x=P_y$</span>. Then</p>
+<span class="math math-display" data-tex="$$
+H(x,y)=\int_{x_0}^xP(s,y_0)\,ds+\int_{y_0}^yQ(x,u)\,du
+$$">$$
+H(x,y)=\int_{x_0}^xP(s,y_0)\,ds+\int_{y_0}^yQ(x,u)\,du
+$$</span>
+<p>satisfies <span class="math" data-tex="$H_y=Q$">$H_y=Q$</span> and <span class="math" data-tex="$H_x=P(x,y_0)+\int_{y_0}^yQ_x(x,u)du=P(x,y)$">$H_x=P(x,y_0)+\int_{y_0}^yQ_x(x,u)du=P(x,y)$</span>. Hence <span class="math" data-tex="$dH=\beta$">$dH=\beta$</span> and <span class="math" data-tex="$VH=0$">$VH=0$</span>. Complex integrals on a small product disc give the same analytic construction. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The opposite sign also gives an integrating factor, with potential <span class="math" data-tex="$-H$">$-H$</span>. Formula (6.2) fixes the sign used here. The condition <span class="math" data-tex="$A\ne0$">$A\ne0$</span> means that the symmetry is transverse to the equation's trajectories. A symmetry tangent to them does not yield this particular factor.</p>
+<p><strong>Example 6.2.</strong> On <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, consider <span class="math" data-tex="$y&#x27;=y/x+x$">$y&#x27;=y/x+x$</span>. Its weighted dilation symmetry is <span class="math" data-tex="$X=x\partial_x+2y\partial_y$">$X=x\partial_x+2y\partial_y$</span>. Equation (6.1) holds: <span class="math" data-tex="$V\eta=2F$">$V\eta=2F$</span>, <span class="math" data-tex="$V\xi=1$">$V\xi=1$</span>, and <span class="math" data-tex="$XF=F$">$XF=F$</span>. Here <span class="math" data-tex="$A=x^2-y$">$A=x^2-y$</span>. Setting <span class="math" data-tex="$I=y/x-x$">$I=y/x-x$</span> gives <span class="math" data-tex="$dI=\alpha/x$">$dI=\alpha/x$</span>, hence on <span class="math" data-tex="$I\ne0$">$I\ne0$</span></p>
+<span class="math math-display" data-tex="$$
+\beta=-\frac{dI}{I}.
+$$">$$
+\beta=-\frac{dI}{I}.
+$$</span>
+<p>A local logarithm gives <span class="math" data-tex="$H=-\log I$">$H=-\log I$</span>; over a real region use <span class="math" data-tex="$-\log|I|$">$-\log|I|$</span>. The solution family is <span class="math" data-tex="$y=x^2+Cx$">$y=x^2+Cx$</span>. The solution <span class="math" data-tex="$C=0$">$C=0$</span> lies on the excluded set <span class="math" data-tex="$A=0$">$A=0$</span> and is recovered directly from the original equation.</p>
+<p><strong>Theorem 6.3 (reduction to a quadrature).</strong> Suppose a nonvanishing analytic direction field <span class="math" data-tex="$V$">$V$</span> in two variables has a symmetry <span class="math" data-tex="$X$">$X$</span> with <span class="math" data-tex="$[X,V]\in\operatorname{span}\{V\}$">$[X,V]\in\operatorname{span}\{V\}$</span>, and <span class="math" data-tex="$X,V$">$X,V$</span> are independent at the point considered. There are local analytic coordinates <span class="math" data-tex="$(s,r)$">$(s,r)$</span> in which its solution curves satisfy</p>
+<span class="math math-display" data-tex="$$
+\frac{ds}{dr}=g(r),\qquad
+s-\int_{r_0}^{r}g(u)\,du=C.
+$$">$$
+\frac{ds}{dr}=g(r),\qquad
+s-\int_{r_0}^{r}g(u)\,du=C.
+$$</span>
+<p><strong>Proof.</strong> Straighten <span class="math" data-tex="$X$">$X$</span> to <span class="math" data-tex="$\partial_s$">$\partial_s$</span> by Lesson 3, with <span class="math" data-tex="$r$">$r$</span> its transverse coordinate. Independence gives <span class="math" data-tex="$a=Vr\ne0$">$a=Vr\ne0$</span>, so normalize the direction field to</p>
+<span class="math math-display" data-tex="$$
+W=a^{-1}V=\partial_r+g(s,r)\partial_s.
+$$">$$
+W=a^{-1}V=\partial_r+g(s,r)\partial_s.
+$$</span>
+<p>The product rule and the symmetry hypothesis make <span class="math" data-tex="$[\partial_s,W]$">$[\partial_s,W]$</span> a multiple of <span class="math" data-tex="$W$">$W$</span>. Its <span class="math" data-tex="$r$">$r$</span> component is zero, so that multiple is zero. Its remaining component is <span class="math" data-tex="$\partial_sg$">$\partial_sg$</span>, proving that <span class="math" data-tex="$g$">$g$</span> depends only on <span class="math" data-tex="$r$">$r$</span>. Along a solution curve <span class="math" data-tex="$r$">$r$</span> is a valid local parameter because <span class="math" data-tex="$Vr\ne0$">$Vr\ne0$</span>. The displayed primitive then follows by integration, and its differential has <span class="math" data-tex="$s$">$s$</span> component one, so it is an independent first integral. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The coordinate construction and the quadrature are local. This proves a first-order reduction on the transverse region; tangent symmetries and singular points require separate treatment. The integrating factor above constructs a first integral directly in the original coordinates on the same transverse region.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>Exercise 1 (introductory).</strong> Find all local invariants of <span class="math" data-tex="$x\partial_x+y\partial_y$">$x\partial_x+y\partial_y$</span> on a chart with <span class="math" data-tex="$x\ne0$">$x\ne0$</span>. Explain the change of chart needed when <span class="math" data-tex="$x=0$">$x=0$</span>, <span class="math" data-tex="$y\ne0$">$y\ne0$</span>.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Complete the system in Example 1.1 and determine every analytic common solution.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Apply Theorem 4.1 to the unit sphere and to the singular defining equation <span class="math" data-tex="$(x^2+y^2+z^2-1)^2=0$">$(x^2+y^2+z^2-1)^2=0$</span>. Explain what the singular equation can and cannot establish for a general field.</p>
+<p><strong>Exercise 4 (intermediate).</strong> Integrate a homogeneous equation <span class="math" data-tex="$y&#x27;=F(y/x)$">$y&#x27;=F(y/x)$</span> by the dilation symmetry. Include the straight-line solutions excluded by the integrating factor.</p>
+<p><strong>Exercise 5 (advanced).</strong> In the induction proof of Theorem 2.1, verify both the invertibility of <span class="math" data-tex="$P$">$P$</span> and the involutivity of the transverse fields <span class="math" data-tex="$Z_a$">$Z_a$</span>. Explain why the coefficients in (1.2) may depend on position.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> On <span class="math" data-tex="$x\ne0$">$x\ne0$</span>, <span class="math" data-tex="$v=y/x$">$v=y/x$</span> is invariant and <span class="math" data-tex="$dv\ne0$">$dv\ne0$</span>. The field has rank one, so Theorem 3.2 says every local invariant is <span class="math" data-tex="$H(v)$">$H(v)$</span>. Near <span class="math" data-tex="$x=0$">$x=0$</span>, <span class="math" data-tex="$y\ne0$">$y\ne0$</span>, use <span class="math" data-tex="$u=x/y$">$u=x/y$</span> instead. These are local coordinate assertions, not a single global quotient coordinate on the punctured plane.</p>
+<p><strong>Solution 2.</strong> Adjoin <span class="math" data-tex="$[X,Y]=-\partial_z$">$[X,Y]=-\partial_z$</span>. The three fields span all tangent directions: <span class="math" data-tex="$\partial_z$">$\partial_z$</span> is present, <span class="math" data-tex="$\partial_y=Y$">$\partial_y=Y$</span>, and <span class="math" data-tex="$\partial_x=X-y\partial_z$">$\partial_x=X-y\partial_z$</span>. The completed system has rank three, hence zero independent nonconstant solutions. Directly, <span class="math" data-tex="$f_z=f_y=f_x=0$">$f_z=f_y=f_x=0$</span> makes <span class="math" data-tex="$f$">$f$</span> constant on a connected neighbourhood.</p>
+<p><strong>Solution 3.</strong> Each rotation field kills <span class="math" data-tex="$\Omega=x^2+y^2+z^2-1$">$\Omega=x^2+y^2+z^2-1$</span>, and <span class="math" data-tex="$d\Omega$">$d\Omega$</span> has rank one on the sphere, proving invariance. For <span class="math" data-tex="$\Omega^2$">$\Omega^2$</span>, every field <span class="math" data-tex="$X$">$X$</span> satisfies <span class="math" data-tex="$X(\Omega^2)=2\Omega X\Omega=0$">$X(\Omega^2)=2\Omega X\Omega=0$</span> on the sphere, even a radial field that moves it. Thus the singular defining equation supplies a necessary condition that is not sufficient. The underlying sphere still has a regular equation, and that equation must be used for the equivalence.</p>
+<p><strong>Solution 4.</strong> The symmetry is <span class="math" data-tex="$X=x\partial_x+y\partial_y$">$X=x\partial_x+y\partial_y$</span>. Set <span class="math" data-tex="$v=y/x$">$v=y/x$</span> on <span class="math" data-tex="$x\ne0$">$x\ne0$</span>. Then <span class="math" data-tex="$\alpha=x\,dv+(v-F(v))dx$">$\alpha=x\,dv+(v-F(v))dx$</span> and <span class="math" data-tex="$A=x(F(v)-v)$">$A=x(F(v)-v)$</span>. Where <span class="math" data-tex="$F(v)\ne v$">$F(v)\ne v$</span>,</p>
+<span class="math math-display" data-tex="$$
+\beta=\frac{dv}{F(v)-v}-\frac{dx}{x},\qquad
+H=\int^v\frac{ds}{F(s)-s}-\log x.
+$$">$$
+\beta=\frac{dv}{F(v)-v}-\frac{dx}{x},\qquad
+H=\int^v\frac{ds}{F(s)-s}-\log x.
+$$</span>
+<p>Choose a local complex logarithm, or <span class="math" data-tex="$\log|x|$">$\log|x|$</span> over a real chart. The level sets of <span class="math" data-tex="$H$">$H$</span> are solutions. For every root <span class="math" data-tex="$v_0$">$v_0$</span> of <span class="math" data-tex="$F(v_0)=v_0$">$F(v_0)=v_0$</span>, the line <span class="math" data-tex="$y=v_0x$">$y=v_0x$</span> satisfies the original equation and must be added separately. If <span class="math" data-tex="$F(v)=v$">$F(v)=v$</span> identically on an interval, every such line is a solution and the integrating factor has no transverse region there; direct substitution handles this case.</p>
+<p><strong>Solution 5.</strong> The determinant starts at one, so continuity keeps <span class="math" data-tex="$P$">$P$</span> invertible near the initial slice; alternatively its derivative is <span class="math" data-tex="$-(\operatorname{tr}C)\det P$">$-(\operatorname{tr}C)\det P$</span>. Since <span class="math" data-tex="$Z=PY$">$Z=PY$</span> with analytic coefficients, the product rule expresses <span class="math" data-tex="$[Z_a,Z_b]$">$[Z_a,Z_b]$</span> as combinations of the <span class="math" data-tex="$Y_c$">$Y_c$</span> and their brackets. All lie in <span class="math" data-tex="$D$">$D$</span>. As <span class="math" data-tex="$Z_a$">$Z_a$</span> have no <span class="math" data-tex="$\partial_t$">$\partial_t$</span> component, neither does their bracket, so it lies in the transverse span of <span class="math" data-tex="$Z_2,\ldots,Z_q$">$Z_2,\ldots,Z_q$</span>. Also <span class="math" data-tex="$\partial_tZ=0$">$\partial_tZ=0$</span>, so this is an involutive distribution on the slice. Position-dependent coefficients are necessary: changing a distribution's frame by a nonconstant invertible matrix introduces derivatives of that matrix into its brackets, even when a previous frame commuted.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>The analytic inverse-function theorem is assumed. Analytic flow existence and straightening were proved in the preceding lesson. The regular complete-system theorem, dual equations, invariant count, invariant-submanifold criterion and saturation, restriction through a rank drop, complete-system symmetry criterion, closure of symmetries, regular common distributions, integrating factor, and transverse reduction to quadrature are proved here. The constant-rank and graph consequences used above follow from the assumed analytic inverse-function theorem by solving through the indicated nonzero minors. Singular distributions, singular quotient spaces, and global first-integral coordinates are outside these local regular statements.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Michael Kunzinger, <em>Lie Transformation Groups: An Introduction to Symmetry Group Analysis of Differential Equations</em>, 2015, corrected December 2024, Sections 3.2, 3.3, and 3.13. <a href="https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf">Author's text</a>.</li>
+<li>Sophus Lie, with Friedrich Engel, <em>Theorie der Transformationsgruppen</em>, Volume I, 1888, Chapters 5–8.</li>
+<li>Joël Merker, <em>Theory of Transformation Groups, by S. Lie and F. Engel (Vol. I, 1888): Modern Presentation and English Translation</em>, 2010, complete corresponding Chapters 5–8, on complete systems, invariants, invariant equations, and symmetries of complete systems. Consulted for source comparison; the proofs and historical English translations here are independently written. <a href="https://arxiv.org/abs/1003.3202">Author's preprint</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LIE-TG-03.html">← One-parameter groups</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LIE-TG-05.html">The second fundamental theorem and the group of parameters →</a></span></nav>
+<p class="small source-link"><a href="src/LIE-TG-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LIE-TG">Repository</a></nav>
+</footer>
+</body>
+</html>

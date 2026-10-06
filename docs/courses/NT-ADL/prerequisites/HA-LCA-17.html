@@ -1,0 +1,462 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Totally disconnected groups, the p-adic numbers and the adèles</title><link rel="stylesheet" href="../assets/site.css"><link rel="stylesheet" href="../assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">Course contents</a></nav><aside class="notice"><p>Pinned prerequisite snapshot for this author-self-checked course draft. Independent programme review of NT-ADL is pending. The importing lesson identifies the required proof loci; recursive prerequisite coverage is not claimed.</p><p>NT-ADL course licences: Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="HA-LCA-02.md">HA-LCA-02</a>, <a href="HA-LCA-03.md">HA-LCA-03</a>, <a href="HA-LCA-09.md">HA-LCA-09</a>, <a href="HA-LCA-10.md">HA-LCA-10</a>, <a href="HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="totally-disconnected-groups-the-p-adic-numbers-and-the-adèles">Totally disconnected groups, the p-adic numbers and the adèles</h1>
+<p><strong>Lesson HA-LCA-17.</strong> Self-checked by the writing AI.</p>
+<p>For a suitable totally disconnected group, each compactly supported locally constant function belongs to a finite Fourier problem. Compact open subgroups supply both the finite quotient and its exact Haar constants. We develop this reduction, prove how duality treats unions and limits, and identify the rational solenoid, including its path components.</p>
+<p>All groups are Hausdorff. Unless otherwise specified, <span class="math" data-tex="\(G\)">\(G\)</span> is an arbitrary LCA group and <span class="math" data-tex="\(\Gamma=\widehat G\)">\(\Gamma=\widehat G\)</span>. Our Fourier convention is
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx.       \tag{1}
+\]">\[
+ \widehat f(\gamma)=\int_G f(x)\overline{\gamma(x)}\,dx.       \tag{1}
+\]</span>
+Write <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}=\varprojlim_n\mathbb Z/n\mathbb Z\)">\(\mathbb Z_{\mathrm{prof}}=\varprojlim_n\mathbb Z/n\mathbb Z\)</span>, with indices ordered by divisibility. This notation distinguishes the profinite completion from the Pontryagin dual <span class="math" data-tex="\(\widehat{\mathbb Z}=\mathbb T\)">\(\widehat{\mathbb Z}=\mathbb T\)</span>.</p>
+<p>The free readings are Igusa's <a href="https://mathweb.tifr.res.in/Documents/Publications/Lectures/tifr59.pdf">TIFR lecture notes, <em>Lectures on Forms of Higher Degree</em>, Chapter II, §1.2</a>; Bell's <a href="https://jordanbell.info/LaTeX/mathematics/profinite/profinite.pdf"><em>The profinite completion of the integers, the p-adic integers, and Prüfer p-groups</em></a>; Dikranjan's <a href="https://users.dimi.uniud.it/~dikran.dikranjan/ITG.pdf"><em>Introduction to Topological Groups</em>, §§3.8 and 7.4</a>; and Burgos–Verjovsky's <a href="https://arxiv.org/pdf/1603.05676v1"><em>Adelic Ahlfors-Bers theory</em>, §2.1, exact arXiv:1603.05676v1</a>. Every assertion used from these readings is proved here or in an exact earlier programme proof. In particular, all arithmetic inputs below have already been proved in HA-LCA-10–12.</p>
+<p>Written and checked by GPT-6 Astra (OpenAI), Ultra, October 2026. The new exposition is released under CC0. Separately linked prerequisite readings and their source packages retain their licences.</p>
+<h2 id="1-small-and-large-compact-open-subgroups">1. Small and large compact open subgroups</h2>
+<p>An LCA group is totally disconnected when its only connected subsets are singletons. Such a group has a neighbourhood base of compact open subgroups by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-proposition-1-2">HA-LCA-12, Proposition 1.2</a>. The condition on its dual has a different meaning.</p>
+<p><a id="ha-lca-17-theorem-1-1"></a>
+<strong>Theorem 1.1 — Large compact open subgroups.</strong> The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is totally disconnected.</li>
+<li>Every compact subset of <span class="math" data-tex="\(G\)">\(G\)</span> lies in a compact open subgroup.</li>
+</ol>
+<p>Consequently the class
+<span class="math math-display" data-tex="\[
+ \mathcal T=\{G:G\text{ and }\widehat G
+                    \text{ are totally disconnected}\}    \tag{2}
+\]">\[
+ \mathcal T=\{G:G\text{ and }\widehat G
+                    \text{ are totally disconnected}\}    \tag{2}
+\]</span>
+is closed under Pontryagin duality. A group in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> has both arbitrarily small and arbitrarily large compact open subgroups.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is totally disconnected. Choose a compact open subgroup <span class="math" data-tex="\(U\subset\Gamma\)">\(U\subset\Gamma\)</span>, and set <span class="math" data-tex="\(K=U^\perp\subset G\)">\(K=U^\perp\subset G\)</span>. It is compact open by <a href="HA-LCA-10.html#ha-lca-10-corollary-2-2">HA-LCA-10, Corollary 2.2</a>. Closed-subgroup duality <a href="HA-LCA-10.html#ha-lca-10-theorem-2-1">HA-LCA-10, Theorem 2.1</a> identifies <span class="math" data-tex="\(G/K\)">\(G/K\)</span> with <span class="math" data-tex="\(\widehat U\)">\(\widehat U\)</span>. Since <span class="math" data-tex="\(U\)">\(U\)</span> is compact totally disconnected, <span class="math" data-tex="\(\widehat U\)">\(\widehat U\)</span> is a discrete torsion group by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-theorem-5-1">HA-LCA-12, Theorem 5.1</a>.</p>
+<p>A compact set <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span> has finite image in the discrete quotient <span class="math" data-tex="\(G/K\)">\(G/K\)</span>. The subgroup generated by finitely many torsion elements of an abelian group is finite: if their orders are <span class="math" data-tex="\(n_1,\ldots,n_r\)">\(n_1,\ldots,n_r\)</span>, every combination can be represented with the <span class="math" data-tex="\(j\)">\(j\)</span>-th coefficient between zero and <span class="math" data-tex="\(n_j-1\)">\(n_j-1\)</span>. The inverse image of this finite subgroup is a finite union of <span class="math" data-tex="\(K\)">\(K\)</span>-cosets, hence compact and open, and contains <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p>Conversely, a basic identity neighbourhood in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> imposes finitely many uniform bounds on compact subsets of <span class="math" data-tex="\(G\)">\(G\)</span>. Their finite union is contained in some compact open <span class="math" data-tex="\(K\)">\(K\)</span>. The compact open annihilator <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span> lies in that neighbourhood, since all its characters are exactly one on <span class="math" data-tex="\(K\)">\(K\)</span>. Thus compact open subgroups form an identity-neighbourhood base in <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Their cosets are clopen, and they separate any two distinct points because <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is Hausdorff. A connected subset cannot meet both a clopen coset and its complement, so it has at most one point.</p>
+<p>The assertion about <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> follows from <a href="HA-LCA-09.html#ha-lca-09-theorem-2-1">Pontryagin duality, HA-LCA-09, Theorem 2.1</a>; applying duality twice recovers <span class="math" data-tex="\(G\)">\(G\)</span>. Small compact open subgroups come from total disconnectedness of <span class="math" data-tex="\(G\)">\(G\)</span>, and large ones from what we have just proved for its dual. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-fourier-transforms-of-cosets">2. Fourier transforms of cosets</h2>
+<p>Use the dual Haar measure fixed by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.html#ha-lca-07-theorem-2-1">HA-LCA-07, Theorem 2.1</a>.</p>
+<p><a id="ha-lca-17-proposition-2-1"></a>
+<strong>Proposition 2.1 — Coset formulas and volumes.</strong> For a compact open subgroup <span class="math" data-tex="\(K\subset G\)">\(K\subset G\)</span> and <span class="math" data-tex="\(a\in G\)">\(a\in G\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat{1_{a+K}}(\gamma)
+   =\mu(K)\overline{\gamma(a)}\,1_{K^\perp}(\gamma),\qquad
+ \widehat\mu(K^\perp)=\mu(K)^{-1}.                          \tag{3}
+\]">\[
+ \widehat{1_{a+K}}(\gamma)
+   =\mu(K)\overline{\gamma(a)}\,1_{K^\perp}(\gamma),\qquad
+ \widehat\mu(K^\perp)=\mu(K)^{-1}.                          \tag{3}
+\]</span>
+If <span class="math" data-tex="\(K\subset K&#x27;\)">\(K\subset K&#x27;\)</span> are compact open, then both indices below are finite and
+<span class="math math-display" data-tex="\[
+ [K&#x27;:K]=[K^\perp:K&#x27;^\perp].                               \tag{4}
+\]">\[
+ [K&#x27;:K]=[K^\perp:K&#x27;^\perp].                               \tag{4}
+\]</span></p>
+<p><strong>Proof.</strong> Translation gives the phase in (3). The integral of <span class="math" data-tex="\(\overline\gamma\)">\(\overline\gamma\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> equals <span class="math" data-tex="\(\mu(K)\)">\(\mu(K)\)</span> if <span class="math" data-tex="\(\gamma|_K=1\)">\(\gamma|_K=1\)</span>. Otherwise choose <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span> with <span class="math" data-tex="\(\gamma(k)\ne1\)">\(\gamma(k)\ne1\)</span>. Translation by <span class="math" data-tex="\(k\)">\(k\)</span> preserves the integral and also multiplies it by <span class="math" data-tex="\(\overline{\gamma(k)}\)">\(\overline{\gamma(k)}\)</span>, forcing it to be zero. This proves the transform formula.</p>
+<p>The indicator lies in <span class="math" data-tex="\(L^1\cap L^2\)">\(L^1\cap L^2\)</span>. The earlier Plancherel theorem <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-plancherel-theorem.html#ha-lca-08-theorem-1-1">HA-LCA-08, Theorem 1.1</a> gives
+<span class="math math-display" data-tex="\[
+ \mu(K)=\|1_K\|_2^2
+       =\mu(K)^2\widehat\mu(K^\perp),
+\]">\[
+ \mu(K)=\|1_K\|_2^2
+       =\mu(K)^2\widehat\mu(K^\perp),
+\]</span>
+proving the reciprocal volume. These volumes are finite and positive since the subgroups are compact and open. The quotients in (4) are discrete compact spaces and hence finite. If their cardinalities are <span class="math" data-tex="\(N,M\)">\(N,M\)</span>, respectively, Haar invariance gives
+<span class="math math-display" data-tex="\[
+ \mu(K&#x27;)=N\mu(K),\qquad
+ \widehat\mu(K^\perp)=M\widehat\mu(K&#x27;^\perp).
+\]">\[
+ \mu(K&#x27;)=N\mu(K),\qquad
+ \widehat\mu(K^\perp)=M\widehat\mu(K&#x27;^\perp).
+\]</span>
+Substitute the reciprocal volumes to obtain <span class="math" data-tex="\(N=M\)">\(N=M\)</span>. Thus the normalization at different compact open stages agrees. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-every-test-function-belongs-to-a-finite-fourier-problem">3. Every test function belongs to a finite Fourier problem</h2>
+<p>For <span class="math" data-tex="\(G\in\mathcal T\)">\(G\in\mathcal T\)</span>, let <span class="math" data-tex="\(\mathcal S(G)\)">\(\mathcal S(G)\)</span> be the complex-valued locally constant functions of compact support. These are the Schwartz–Bruhat functions in this setting.</p>
+<p><a id="ha-lca-17-lemma-3-1"></a>
+<strong>Lemma 3.1 — Finite stages.</strong> Every <span class="math" data-tex="\(f\in\mathcal S(G)\)">\(f\in\mathcal S(G)\)</span> is invariant under translation by some compact open subgroup <span class="math" data-tex="\(K\)">\(K\)</span>. It is a finite linear combination of indicators of <span class="math" data-tex="\(K\)">\(K\)</span>-cosets, and its support lies in a compact open subgroup <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> containing <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> The nonzero set of a locally constant function is both open and closed: the function is constant on a neighbourhood of every point, including each zero. Hence that set equals its support. At every point of its compact support choose a compact open coset on which <span class="math" data-tex="\(f\)">\(f\)</span> is constant. Finitely many, say <span class="math" data-tex="\(x_j+K_j\)">\(x_j+K_j\)</span>, cover the support. Put <span class="math" data-tex="\(K=\bigcap_jK_j\)">\(K=\bigcap_jK_j\)</span>, which is compact open. The support is invariant under <span class="math" data-tex="\(K\)">\(K\)</span>, and so is <span class="math" data-tex="\(f\)">\(f\)</span> on it. Its complement is also <span class="math" data-tex="\(K\)">\(K\)</span>-invariant, where <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Each <span class="math" data-tex="\(K_j/K\)">\(K_j/K\)</span> is finite by compactness, so the finite covering cosets split into finitely many <span class="math" data-tex="\(K\)">\(K\)</span>-cosets. This proves the asserted finite sum. Theorem 1.1 puts the compact set <span class="math" data-tex="\(\operatorname{supp}f\cup K\)">\(\operatorname{supp}f\cup K\)</span> in a compact open <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. For <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, choose any compact open <span class="math" data-tex="\(K\)">\(K\)</span> and take <span class="math" data-tex="\(K&#x27;=K\)">\(K&#x27;=K\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-theorem-3-2"></a>
+<strong>Theorem 3.2 — Finite-stage inversion and Plancherel.</strong> For compact open <span class="math" data-tex="\(K\subset K&#x27;\)">\(K\subset K&#x27;\)</span>, the Fourier transform maps the <span class="math" data-tex="\(K\)">\(K\)</span>-invariant functions supported in <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> bijectively onto the <span class="math" data-tex="\(K&#x27;^\perp\)">\(K&#x27;^\perp\)</span>-invariant functions supported in <span class="math" data-tex="\(K^\perp\)">\(K^\perp\)</span>. It is the finite Fourier transform on <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span>, with the constants given below. Consequently
+<span class="math math-display" data-tex="\[
+ \mathcal F:\mathcal S(G)\longrightarrow\mathcal S(\Gamma)
+ \text{ is bijective},\qquad
+ f(x)=\int_\Gamma\widehat f(\gamma)\gamma(x)\,d\gamma,\qquad
+ \|\widehat f\|_2=\|f\|_2.                                 \tag{5}
+\]">\[
+ \mathcal F:\mathcal S(G)\longrightarrow\mathcal S(\Gamma)
+ \text{ is bijective},\qquad
+ f(x)=\int_\Gamma\widehat f(\gamma)\gamma(x)\,d\gamma,\qquad
+ \|\widehat f\|_2=\|f\|_2.                                 \tag{5}
+\]</span>
+Moreover <span class="math" data-tex="\(\mathcal S(G)\)">\(\mathcal S(G)\)</span> is dense in both <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span> and <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(H=K&#x27;/K\)">\(H=K&#x27;/K\)</span>, <span class="math" data-tex="\(N=|H|\)">\(N=|H|\)</span>, and <span class="math" data-tex="\(c=\mu(K)\)">\(c=\mu(K)\)</span>. Closed-subgroup duality identifies
+<span class="math" data-tex="\(\widehat H=K^\perp/K&#x27;^\perp\)">\(\widehat H=K^\perp/K&#x27;^\perp\)</span>. Specifically, restrict a character of <span class="math" data-tex="\(G\)">\(G\)</span> trivial on <span class="math" data-tex="\(K\)">\(K\)</span> to <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>; its kernel as a restriction map is <span class="math" data-tex="\(K&#x27;^\perp\)">\(K&#x27;^\perp\)</span>, and all characters of <span class="math" data-tex="\(K&#x27;/K\)">\(K&#x27;/K\)</span> extend by HA-LCA-10, Theorem 2.1. A <span class="math" data-tex="\(K\)">\(K\)</span>-invariant function supported in <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span> is a function <span class="math" data-tex="\(F:H\to\mathbb C\)">\(F:H\to\mathbb C\)</span>. Proposition 2.1 gives
+<span class="math math-display" data-tex="\[
+ \widehat f(\gamma)=
+ \begin{cases}
+  c\displaystyle\sum_{u\in H}F(u)\overline{\gamma(u)},
+                                      &amp;\gamma\in K^\perp,\\
+  0,                                  &amp;\gamma\notin K^\perp .
+ \end{cases}                                                   \tag{6}
+\]">\[
+ \widehat f(\gamma)=
+ \begin{cases}
+  c\displaystyle\sum_{u\in H}F(u)\overline{\gamma(u)},
+                                      &amp;\gamma\in K^\perp,\\
+  0,                                  &amp;\gamma\notin K^\perp .
+ \end{cases}                                                   \tag{6}
+\]</span>
+For <span class="math" data-tex="\(\gamma\in K^\perp\)">\(\gamma\in K^\perp\)</span> the value depends only on its class in <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span>. Conversely every function on the finite <span class="math" data-tex="\(\widehat H\)">\(\widehat H\)</span> occurs, since finite Fourier inversion <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-2-2">HA-LCA-01, Theorem 2.2</a> inverts the matrix in (6).</p>
+<p>For <span class="math" data-tex="\(x\in K&#x27;\)">\(x\in K&#x27;\)</span>, the inverse integral in (5) equals
+<span class="math math-display" data-tex="\[
+ \frac1{Nc}\sum_{\chi\in\widehat H}
+       c\sum_{u\in H}F(u)\overline{\chi(u)}\chi(x)
+ =F(x+K),                                                     \tag{7}
+\]">\[
+ \frac1{Nc}\sum_{\chi\in\widehat H}
+       c\sum_{u\in H}F(u)\overline{\chi(u)}\chi(x)
+ =F(x+K),                                                     \tag{7}
+\]</span>
+because each coset of <span class="math" data-tex="\(K&#x27;^\perp\)">\(K&#x27;^\perp\)</span> has dual Haar mass <span class="math" data-tex="\(1/\mu(K&#x27;)=1/(Nc)\)">\(1/\mu(K&#x27;)=1/(Nc)\)</span>, and finite character orthogonality gives the last equality. For <span class="math" data-tex="\(x\notin K&#x27;\)">\(x\notin K&#x27;\)</span>, the character <span class="math" data-tex="\(\gamma\mapsto\gamma(x)\)">\(\gamma\mapsto\gamma(x)\)</span> is nontrivial on <span class="math" data-tex="\(K&#x27;^\perp\)">\(K&#x27;^\perp\)</span>, by double annihilation. Its integral on that compact subgroup is zero by the translation argument in Proposition 2.1. Integrating separately on the finitely many cosets in (6) therefore gives zero, which equals <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>. This proves inversion at every point directly from the finite problem.</p>
+<p>The finite Parseval identity <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/fourier-analysis-on-finite-abelian-groups.html#ha-lca-01-theorem-2-1">HA-LCA-01, Theorem 2.1</a> gives
+<span class="math math-display" data-tex="\[
+ \|\widehat f\|_2^2
+ =\frac{c^2}{Nc}\sum_{\chi\in\widehat H}
+       \left|\sum_{u\in H}F(u)\overline{\chi(u)}\right|^2
+ =c\sum_{u\in H}|F(u)|^2
+ =\|f\|_2^2.                                                 \tag{8}
+\]">\[
+ \|\widehat f\|_2^2
+ =\frac{c^2}{Nc}\sum_{\chi\in\widehat H}
+       \left|\sum_{u\in H}F(u)\overline{\chi(u)}\right|^2
+ =c\sum_{u\in H}|F(u)|^2
+ =\|f\|_2^2.                                                 \tag{8}
+\]</span>
+Lemma 3.1 puts every test function in a stage. Apply that lemma also on <span class="math" data-tex="\(\Gamma\in\mathcal T\)">\(\Gamma\in\mathcal T\)</span>. A dual stage <span class="math" data-tex="\(A\subset B\)">\(A\subset B\)</span> has the form
+<span class="math" data-tex="\(A=K&#x27;^\perp,\ B=K^\perp\)">\(A=K&#x27;^\perp,\ B=K^\perp\)</span> by taking <span class="math" data-tex="\(K=B^\perp,\ K&#x27;=A^\perp\)">\(K=B^\perp,\ K&#x27;=A^\perp\)</span> and using double annihilation. Finite-stage surjectivity then proves surjectivity on the whole test space.</p>
+<p>For density, let <span class="math" data-tex="\(h\in C_c(G)\)">\(h\in C_c(G)\)</span>. Theorem 1.1 puts its support in a compact open <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. Such an <span class="math" data-tex="\(h\)">\(h\)</span> is uniformly continuous by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/haar-measure.html#ha-lca-pre-haar-lemma-1-1">PRE-HAAR, Lemma 1.1</a>. Choose a compact open <span class="math" data-tex="\(K\subset K&#x27;\)">\(K\subset K&#x27;\)</span> so small that
+<span class="math" data-tex="\(|h(x+k)-h(x)|&lt;\varepsilon\)">\(|h(x+k)-h(x)|&lt;\varepsilon\)</span> for every <span class="math" data-tex="\(x\in G,k\in K\)">\(x\in G,k\in K\)</span>. Set
+<span class="math math-display" data-tex="\[
+ h_K(x)=\mu(K)^{-1}\int_K h(x+k)\,dk.
+\]">\[
+ h_K(x)=\mu(K)^{-1}\int_K h(x+k)\,dk.
+\]</span>
+Haar invariance makes this <span class="math" data-tex="\(K\)">\(K\)</span>-invariant; hence it is locally constant. It vanishes outside <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>, and its uniform distance from <span class="math" data-tex="\(h\)">\(h\)</span> is at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. For <span class="math" data-tex="\(r=1,2\)">\(r=1,2\)</span>,
+<span class="math" data-tex="\(\|h_K-h\|_r\le\varepsilon\mu(K&#x27;)^{1/r}\)">\(\|h_K-h\|_r\le\varepsilon\mu(K&#x27;)^{1/r}\)</span>.
+The density of <span class="math" data-tex="\(C_c(G)\)">\(C_c(G)\)</span> in <span class="math" data-tex="\(L^1(G)\)">\(L^1(G)\)</span>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/integration-and-l1.html#ha-lca-pre-integral-theorem-3-1">PRE-INTEGRAL, Theorem 3.1</a>, and in <span class="math" data-tex="\(L^2(G)\)">\(L^2(G)\)</span>, <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/hilbert-spaces-and-unitary-representations.html#ha-lca-pre-hilbert-proposition-6-2">PRE-HILBERT, Proposition 6.2</a>, proves the claim, for the full Haar spaces without a sigma-finiteness restriction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-duality-for-unions-and-inverse-limits">4. Duality for unions and inverse limits</h2>
+<p>An inverse limit is the subgroup of a product consisting of compatible tuples, with its subspace topology.</p>
+<p><a id="ha-lca-17-proposition-4-1"></a>
+<strong>Proposition 4.1 — Open unions.</strong> Suppose <span class="math" data-tex="\(G=\bigcup_iG_i\)">\(G=\bigcup_iG_i\)</span>, where the open subgroups <span class="math" data-tex="\(G_i\)">\(G_i\)</span> form an upward-directed family and have their subspace topologies. Restriction is a topological isomorphism
+<span class="math math-display" data-tex="\[
+ \widehat G\ \cong\ \varprojlim_i\widehat{G_i}.               \tag{9}
+\]">\[
+ \widehat G\ \cong\ \varprojlim_i\widehat{G_i}.               \tag{9}
+\]</span></p>
+<p><strong>Proof.</strong> A compatible family of characters defines one character on the union: two definitions agree in any subgroup containing their two domains. It is continuous on each open <span class="math" data-tex="\(G_i\)">\(G_i\)</span>, hence continuous on <span class="math" data-tex="\(G\)">\(G\)</span>. This constructs the inverse of restriction.</p>
+<p>Every compact <span class="math" data-tex="\(C\subset G\)">\(C\subset G\)</span> lies in one <span class="math" data-tex="\(G_i\)">\(G_i\)</span>: the open cover by the <span class="math" data-tex="\(G_i\)">\(G_i\)</span> has a finite subcover, and directedness puts its finitely many groups in a common group. The set <span class="math" data-tex="\(C\)">\(C\)</span> remains compact in that group's subspace topology. Therefore a uniform bound on <span class="math" data-tex="\(C\)">\(C\)</span> in <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is exactly a bound in one inverse-limit coordinate. In the other direction a compact set in any <span class="math" data-tex="\(G_i\)">\(G_i\)</span> is compact in <span class="math" data-tex="\(G\)">\(G\)</span>, so restriction is continuous in the compact-open topologies. Basic neighbourhoods in the product topology involve only finitely many coordinates; their inverse images are the corresponding finite intersections of these compact-open conditions. This proves continuity in both directions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-proposition-4-2"></a>
+<strong>Proposition 4.2 — Compact inverse limits.</strong> Let <span class="math" data-tex="\((G_i,p_{ij})\)">\((G_i,p_{ij})\)</span> be an inverse system of compact abelian groups over a directed set, with surjective transition maps <span class="math" data-tex="\(p_{ij}:G_j\to G_i\)">\(p_{ij}:G_j\to G_i\)</span> for <span class="math" data-tex="\(i\le j\)">\(i\le j\)</span>. Its inverse limit <span class="math" data-tex="\(G\)">\(G\)</span> is compact, and every projection <span class="math" data-tex="\(q_i:G\to G_i\)">\(q_i:G\to G_i\)</span> is onto. Put <span class="math" data-tex="\(H_i=\ker q_i\)">\(H_i=\ker q_i\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \widehat G=\bigcup_i H_i^\perp
+            \ \cong\ \varinjlim_i\widehat{G_i}              \tag{10}
+\]">\[
+ \widehat G=\bigcup_i H_i^\perp
+            \ \cong\ \varinjlim_i\widehat{G_i}              \tag{10}
+\]</span>
+as discrete groups, the direct maps being the injective character pullbacks.</p>
+<p><strong>Proof.</strong> The product of the <span class="math" data-tex="\(G_i\)">\(G_i\)</span> is compact by <a href="HA-LCA-PRE-BANACH.html#ha-lca-pre-banach-lemma-4-1">PRE-BANACH, Lemma 4.1</a>. Each compatibility condition <span class="math" data-tex="\(p_{ij}(x_j)=x_i\)">\(p_{ij}(x_j)=x_i\)</span> is closed because <span class="math" data-tex="\(G_i\)">\(G_i\)</span> is Hausdorff. Thus their intersection <span class="math" data-tex="\(G\)">\(G\)</span> is compact.</p>
+<p>Fix <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(a\in G_i\)">\(a\in G_i\)</span>, and add the closed constraint <span class="math" data-tex="\(x_i=a\)">\(x_i=a\)</span>. Any finite list of compatibility constraints, together with this one, is satisfiable. Choose an index <span class="math" data-tex="\(k\)">\(k\)</span> dominating all their indices and <span class="math" data-tex="\(i\)">\(i\)</span>; choose <span class="math" data-tex="\(b\in G_k\)">\(b\in G_k\)</span> with <span class="math" data-tex="\(p_{ik}(b)=a\)">\(p_{ik}(b)=a\)</span>, using surjectivity; set each coordinate occurring in the constraints to its image of <span class="math" data-tex="\(b\)">\(b\)</span>. Fill other coordinates arbitrarily. The compatibility laws give all the required equalities. The finite intersection property in the compact product therefore supplies a compatible tuple with <span class="math" data-tex="\(i\)">\(i\)</span>-coordinate <span class="math" data-tex="\(a\)">\(a\)</span>. This proves surjectivity, including for uncountable directed systems.</p>
+<p>Every identity neighbourhood in <span class="math" data-tex="\(G\)">\(G\)</span> contains some <span class="math" data-tex="\(H_k\)">\(H_k\)</span>: choose a contained basic neighbourhood involving finitely many coordinates and take <span class="math" data-tex="\(k\)">\(k\)</span> dominating them. A character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is close to one on some such neighbourhood, and hence on <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. The small-arc lemma <a href="HA-LCA-02.html#ha-lca-02-lemma-1-2">HA-LCA-02, Lemma 1.2</a> makes <span class="math" data-tex="\(\chi\)">\(\chi\)</span> exactly one on <span class="math" data-tex="\(H_k\)">\(H_k\)</span>. It therefore factors algebraically through <span class="math" data-tex="\(q_k\)">\(q_k\)</span>. The factor is continuous because <span class="math" data-tex="\(q_k\)">\(q_k\)</span>, a compact-to-Hausdorff surjection, is a closed quotient map. This proves the union in (10). Pullback is injective by surjectivity of <span class="math" data-tex="\(q_i\)">\(q_i\)</span>; common refinements identify the union with the algebraic direct limit, since compatible homomorphisms on its stages glue uniquely on the union. All the duals in (10) are discrete by <a href="HA-LCA-02.html#ha-lca-02-theorem-2-1">HA-LCA-02, Theorem 2.1</a>. Hence this is also the asserted topological identification. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-proposition-4-3"></a>
+<strong>Proposition 4.3 — Residue limits and torsion duals.</strong> For every prime <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+ \widehat{\mathbb Z_p}\cong
+ \mathbb Z(p^\infty):=\mathbb Z[1/p]/\mathbb Z
+ \cong\mathbb Q_p/\mathbb Z_p,\qquad
+ \widehat{\mathbb Z(p^\infty)}\cong\mathbb Z_p.              \tag{11}
+\]">\[
+ \widehat{\mathbb Z_p}\cong
+ \mathbb Z(p^\infty):=\mathbb Z[1/p]/\mathbb Z
+ \cong\mathbb Q_p/\mathbb Z_p,\qquad
+ \widehat{\mathbb Z(p^\infty)}\cong\mathbb Z_p.              \tag{11}
+\]</span>
+The torsion groups in (11) have the discrete topology. Also
+<span class="math math-display" data-tex="\[
+ \mathbb Z_{\mathrm{prof}}\cong\prod_p\mathbb Z_p,\qquad
+ \widehat{\mathbb Z_{\mathrm{prof}}}\cong\mathbb Q/\mathbb Z. \tag{12}
+\]">\[
+ \mathbb Z_{\mathrm{prof}}\cong\prod_p\mathbb Z_p,\qquad
+ \widehat{\mathbb Z_{\mathrm{prof}}}\cong\mathbb Q/\mathbb Z. \tag{12}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(\mathbb Z/p^n\mathbb Z\)">\(\mathbb Z/p^n\mathbb Z\)</span>, characters are
+<span class="math" data-tex="\(x\mapsto e^{2\pi iax/p^n}\)">\(x\mapsto e^{2\pi iax/p^n}\)</span>, by finite cyclic duality <a href="HA-LCA-02.html#ha-lca-02-corollary-3-2">HA-LCA-02, Corollary 3.2</a>. Pullback along reduction from level <span class="math" data-tex="\(n+1\)">\(n+1\)</span> sends <span class="math" data-tex="\(a\bmod p^n\)">\(a\bmod p^n\)</span> to <span class="math" data-tex="\(pa\bmod p^{n+1}\)">\(pa\bmod p^{n+1}\)</span>. Sending <span class="math" data-tex="\(a\bmod p^n\)">\(a\bmod p^n\)</span> to <span class="math" data-tex="\(a/p^n+\mathbb Z\)">\(a/p^n+\mathbb Z\)</span> identifies these injective maps with inclusion of the corresponding subgroups of <span class="math" data-tex="\(\mathbb Z[1/p]/\mathbb Z\)">\(\mathbb Z[1/p]/\mathbb Z\)</span>. Proposition 4.2 proves the first dual identification. The union of those finite subgroups has the discrete topology, so Proposition 4.1, or Pontryagin duality, proves the reverse identification.</p>
+<p>The construction of <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>, its integral subgroup and fractional parts is given in full in <a href="HA-LCA-10.html#ha-lca-10-example-6-4">HA-LCA-10, Example 6.4</a>. Each coset modulo <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> has a representative in <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span>, and <span class="math" data-tex="\(\mathbb Z[1/p]\cap\mathbb Z_p=\mathbb Z\)">\(\mathbb Z[1/p]\cap\mathbb Z_p=\mathbb Z\)</span>; this gives the other isomorphism in (11). Its quotient topology is discrete because <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> is open.</p>
+<p>Both assertions of (12), including the finite Chinese remainder calculation, compatibility of all residues, continuity of the product maps, and the direct-sum decomposition of <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>, were proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-example-7-2">HA-LCA-12, Example 7.2</a>. Alternatively, Proposition 4.2 applied to all <span class="math" data-tex="\(\mathbb Z/n\mathbb Z\)">\(\mathbb Z/n\mathbb Z\)</span> identifies the dual directly with <span class="math" data-tex="\(\bigcup_n n^{-1}\mathbb Z/\mathbb Z=\mathbb Q/\mathbb Z\)">\(\bigcup_n n^{-1}\mathbb Z/\mathbb Z=\mathbb Q/\mathbb Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-rational-solenoid-and-its-leaves">5. The rational solenoid and its leaves</h2>
+<p><a id="ha-lca-17-lemma-5-0"></a>
+<strong>Lemma 5.0 — The profinite transversal.</strong> The group <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> is compact, totally disconnected, metrizable, and homeomorphic to the Cantor space <span class="math" data-tex="\(\{0,1\}^{\mathbb N}\)">\(\{0,1\}^{\mathbb N}\)</span>. The integers embed densely in it, and it has no isolated points. For every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span> is onto with kernel <span class="math" data-tex="\(n\mathbb Z_{\mathrm{prof}}\)">\(n\mathbb Z_{\mathrm{prof}}\)</span>, an open subgroup also homeomorphic to Cantor space.</p>
+<p><strong>Proof.</strong> The compactness, total disconnectedness and countable-product metrizability follow from its finite residue construction, as in HA-LCA-12, Example 7.2 and Theorem 5.1. Integers inject because an integer divisible by every positive integer is zero. For density, a basic nonempty open cylinder specifies finitely many compatible residues. Take a common multiple <span class="math" data-tex="\(N\)">\(N\)</span> of their moduli and an integer representing the tuple's residue modulo <span class="math" data-tex="\(N\)">\(N\)</span>. That integer belongs to the cylinder.</p>
+<p>Here is an explicit Cantor model. Restriction to the cofinal moduli <span class="math" data-tex="\(n!\)">\(n!\)</span> identifies <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> with their residue inverse limit. Conversely a compatible family modulo <span class="math" data-tex="\(n!\)">\(n!\)</span> defines the residue modulo any integer by reducing at a factorial divisible by it, independently of the choice; both maps are continuous by finite-coordinate dependence. If <span class="math" data-tex="\(r_n\)">\(r_n\)</span> is the representative in <span class="math" data-tex="\(\{0,\ldots,n!-1\}\)">\(\{0,\ldots,n!-1\}\)</span>, compatibility gives uniquely
+<span class="math math-display" data-tex="\[
+ r_{n+1}=r_n+a_n n!,\qquad a_n\in\{0,\ldots,n\}.             \tag{13}
+\]">\[
+ r_{n+1}=r_n+a_n n!,\qquad a_n\in\{0,\ldots,n\}.             \tag{13}
+\]</span>
+Thus <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> is homeomorphic to
+<span class="math" data-tex="\(\prod_{n\ge1}\{0,\ldots,n\}\)">\(\prod_{n\ge1}\{0,\ldots,n\}\)</span>.</p>
+<p>To identify this product with binary Cantor space without a classification theorem, code an alphabet of size <span class="math" data-tex="\(m\ge2\)">\(m\ge2\)</span> by the prefix words
+<span class="math math-display" data-tex="\[
+ 0,\ 10,\ 110,\ \ldots,\ 1^{m-2}0,\ 1^{m-1}.
+\]">\[
+ 0,\ 10,\ 110,\ \ldots,\ 1^{m-2}0,\ 1^{m-1}.
+\]</span>
+Every infinite binary string starts with exactly one of these words. Code the <span class="math" data-tex="\(n\)">\(n\)</span>-th digit in (13) using the alphabet size <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, and concatenate. Conversely parse successively using those sizes. Every word has positive finite length, so this defines inverse maps on infinite sequences. Finite output prefixes depend on finitely many input digits, and conversely any fixed number of parsed digits depends on a finite binary prefix. The maps are continuous and inverse. If one uses the usual ternary Cantor set, the further map
+<span class="math" data-tex="\((b_n)\mapsto\sum_{n\ge1}2b_n3^{-n}\)">\((b_n)\mapsto\sum_{n\ge1}2b_n3^{-n}\)</span> is continuous and injective: a first differing digit at <span class="math" data-tex="\(n\)">\(n\)</span> contributes <span class="math" data-tex="\(2\cdot3^{-n}\)">\(2\cdot3^{-n}\)</span>, while the later tail is at most <span class="math" data-tex="\(3^{-n}\)">\(3^{-n}\)</span>. It is a homeomorphism onto that set by compactness.</p>
+<p>Every basic product cylinder leaves some digit unrestricted with at least two choices. Hence there are no isolated points; binary diagonalization also proves uncountability. Under the product isomorphism (12), the kernel of reduction modulo <span class="math" data-tex="\(n\)">\(n\)</span> is
+<span class="math" data-tex="\(\prod_p p^{v_p(n)}\mathbb Z_p\)">\(\prod_p p^{v_p(n)}\mathbb Z_p\)</span>. Multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> has exactly this image and is injective, since the <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> are fields of characteristic zero; its local factors away from <span class="math" data-tex="\(p\)">\(p\)</span> are units. These local facts are part of HA-LCA-10, Example 6.4. Therefore this kernel is <span class="math" data-tex="\(n\mathbb Z_{\mathrm{prof}}\)">\(n\mathbb Z_{\mathrm{prof}}\)</span>. Reduction is onto already on integers, and its kernel is open. Multiplication by <span class="math" data-tex="\(n\)">\(n\)</span>, a continuous bijection from compact to Hausdorff onto this kernel, is a homeomorphism, proving the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-theorem-5-1"></a>
+<strong>Theorem 5.1 — The rational solenoid.</strong> There are topological group isomorphisms
+<span class="math math-display" data-tex="\[
+ \widehat{\mathbb Q_d}\ \cong\
+ \varprojlim_{n\mid m}\mathbb R/n\mathbb Z
+ \ \cong\
+ \Sigma=(\mathbb R\times\mathbb Z_{\mathrm{prof}})
+               /\{(k,k):k\in\mathbb Z\}.                  \tag{14}
+\]">\[
+ \widehat{\mathbb Q_d}\ \cong\
+ \varprojlim_{n\mid m}\mathbb R/n\mathbb Z
+ \ \cong\
+ \Sigma=(\mathbb R\times\mathbb Z_{\mathrm{prof}})
+               /\{(k,k):k\in\mathbb Z\}.                  \tag{14}
+\]</span>
+The transition maps in the inverse limit are reduction modulo the smaller modulus. The quotient map <span class="math" data-tex="\(q:\mathbb R\times\mathbb Z_{\mathrm{prof}}\to\Sigma\)">\(q:\mathbb R\times\mathbb Z_{\mathrm{prof}}\to\Sigma\)</span> gives the coordinate formula
+<span class="math math-display" data-tex="\[
+ q(t,z)\longmapsto(t-z_n+n\mathbb Z)_n,                    \tag{15}
+\]">\[
+ q(t,z)\longmapsto(t-z_n+n\mathbb Z)_n,                    \tag{15}
+\]</span>
+where <span class="math" data-tex="\(z_n\)">\(z_n\)</span> is any integer representative of <span class="math" data-tex="\(z\bmod n\)">\(z\bmod n\)</span>.</p>
+<p>The group <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is compact, connected, and not locally connected. For <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>,
+<span class="math math-display" data-tex="\[
+ q\bigl((-\varepsilon,\varepsilon)
+                    \times n\mathbb Z_{\mathrm{prof}}\bigr)
+\]">\[
+ q\bigl((-\varepsilon,\varepsilon)
+                    \times n\mathbb Z_{\mathrm{prof}}\bigr)
+\]</span>
+is an open neighbourhood homeomorphic to an interval times Cantor space. Its path components are the cosets of the dense subgroup <span class="math" data-tex="\(q(\mathbb R\times\{0\})\)">\(q(\mathbb R\times\{0\})\)</span>, and their group is the uncountable abstract quotient <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}/\mathbb Z\)">\(\mathbb Z_{\mathrm{prof}}/\mathbb Z\)</span>. The injective map <span class="math" data-tex="\(\mathbb R\to\Sigma\)">\(\mathbb R\to\Sigma\)</span> defining this subgroup is not a topological embedding; each path component carries a real-line leaf topology distinct from its subspace topology.</p>
+<p><strong>Proof.</strong> The discrete group <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is the directed union of the open subgroups <span class="math" data-tex="\(n^{-1}\mathbb Z\)">\(n^{-1}\mathbb Z\)</span>. A character of <span class="math" data-tex="\(n^{-1}\mathbb Z\)">\(n^{-1}\mathbb Z\)</span> is uniquely of the form
+<span class="math math-display" data-tex="\[
+ k/n\longmapsto e^{2\pi i kt/n},\qquad t\in\mathbb R/n\mathbb Z,
+\]">\[
+ k/n\longmapsto e^{2\pi i kt/n},\qquad t\in\mathbb R/n\mathbb Z,
+\]</span>
+by the dual of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. This parametrization is a homeomorphism: it is a continuous bijection of a compact circle onto the Hausdorff dual. Restriction from <span class="math" data-tex="\(m^{-1}\mathbb Z\)">\(m^{-1}\mathbb Z\)</span> to <span class="math" data-tex="\(n^{-1}\mathbb Z\)">\(n^{-1}\mathbb Z\)</span>, for <span class="math" data-tex="\(n\mid m\)">\(n\mid m\)</span>, reduces <span class="math" data-tex="\(t\bmod m\)">\(t\bmod m\)</span> to <span class="math" data-tex="\(t\bmod n\)">\(t\bmod n\)</span>. Proposition 4.1 proves the first isomorphism.</p>
+<p>The diagonal integer subgroup in (14) is discrete, since
+<span class="math" data-tex="\((-1/2,1/2)\times\mathbb Z_{\mathrm{prof}}\)">\((-1/2,1/2)\times\mathbb Z_{\mathrm{prof}}\)</span> meets it only at zero. It is closed by <a href="HA-LCA-09.html#ha-lca-09-lemma-1-2">HA-LCA-09, Lemma 1.2</a>. The quotient is Hausdorff and its quotient map is open by <a href="HA-LCA-09.html#ha-lca-09-lemma-6-0">HA-LCA-09, Lemma 6.0</a>. The compact set <span class="math" data-tex="\([0,1]\times\mathbb Z_{\mathrm{prof}}\)">\([0,1]\times\mathbb Z_{\mathrm{prof}}\)</span> maps onto it: subtract a diagonal integer to bring the real coordinate into <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Hence <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is compact.</p>
+<p>Formula (15) is continuous, additive, independent of the representatives, compatible under reduction, and invariant under adding <span class="math" data-tex="\((k,k)\)">\((k,k)\)</span>. To compute its kernel before quotienting, the <span class="math" data-tex="\(n=1\)">\(n=1\)</span> coordinate forces <span class="math" data-tex="\(t=k\in\mathbb Z\)">\(t=k\in\mathbb Z\)</span>, and all other coordinates then force <span class="math" data-tex="\(z=k\)">\(z=k\)</span> in the profinite group. Thus its kernel is exactly the diagonal integers. It is onto: for a compatible family <span class="math" data-tex="\((w_n+n\mathbb Z)\)">\((w_n+n\mathbb Z)\)</span>, choose <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span> representing its coordinate modulo one. Each <span class="math" data-tex="\(t-w_n\)">\(t-w_n\)</span> is then an integer modulo <span class="math" data-tex="\(n\)">\(n\)</span>, and those integer residues are compatible, defining <span class="math" data-tex="\(z\)">\(z\)</span>. Formula (15) produces the family. The induced continuous bijection from compact <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> to the Hausdorff inverse limit is a homeomorphism.</p>
+<p>The group <span class="math" data-tex="\(\mathbb Q_d\)">\(\mathbb Q_d\)</span> is torsion-free. Its compact dual is connected by <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/the-structure-of-locally-compact-abelian-groups.html#ha-lca-12-theorem-5-1">HA-LCA-12, Theorem 5.1</a>, proving connectedness. For an interval <span class="math" data-tex="\(I\)">\(I\)</span> of length less than one, the map <span class="math" data-tex="\(q\)">\(q\)</span> is injective on <span class="math" data-tex="\(I\times\mathbb Z_{\mathrm{prof}}\)">\(I\times\mathbb Z_{\mathrm{prof}}\)</span>: two representatives differing by a diagonal integer have real difference of absolute value less than one, so that integer is zero. Its restriction to any open subset of this product is open, since <span class="math" data-tex="\(q\)">\(q\)</span> is open on the full group. This proves the asserted product charts, using Lemma 5.0.</p>
+<p>A connected subset of such a chart projects to a singleton in its totally disconnected profinite coordinate. It cannot be an open neighbourhood, because that coordinate has no isolated points. If <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> were locally connected, a connected open neighbourhood could be chosen inside this chart, a contradiction. Thus it is not locally connected.</p>
+<p>We prove the path assertion explicitly. Given a continuous path <span class="math" data-tex="\(c:[0,1]\to\Sigma\)">\(c:[0,1]\to\Sigma\)</span> beginning at zero, cover its image by the above interval-product charts. Their inverse images form an open cover of <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. The finite-net and Lebesgue-number argument <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/src/almost-periodic-functions-and-the-bohr-compactification.html#ha-lca-16-lemma-3-0">HA-LCA-16, Lemma 3.0</a> gives a finite subdivision so that the image of each subinterval lies in one chart. Invert the chart there to lift that segment to <span class="math" data-tex="\(\mathbb R\times\mathbb Z_{\mathrm{prof}}\)">\(\mathbb R\times\mathbb Z_{\mathrm{prof}}\)</span>. Its profinite coordinate is constant, since an interval is connected and the profinite group is totally disconnected. The first lift starts at a diagonal integer pair, which can be subtracted to start at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. At each subsequent junction, two representatives of the same point differ by a diagonal integer; adjust the whole next lift by that integer to match the preceding endpoint. Its constant profinite coordinate then remains zero. The finitely many continuous segments agree at their endpoints, so they glue to a continuous lift in <span class="math" data-tex="\(\mathbb R\times\{0\}\)">\(\mathbb R\times\{0\}\)</span>. Thus <span class="math" data-tex="\(c(1)\in q(\mathbb R\times\{0\})\)">\(c(1)\in q(\mathbb R\times\{0\})\)</span>. Conversely <span class="math" data-tex="\(s\mapsto q(st,0)\)">\(s\mapsto q(st,0)\)</span> joins zero to <span class="math" data-tex="\(q(t,0)\)">\(q(t,0)\)</span>. Translation proves the claim for every component.</p>
+<p>The real map is injective since <span class="math" data-tex="\((t,0)=(k,k)\)">\((t,0)=(k,k)\)</span> forces <span class="math" data-tex="\(k=t=0\)">\(k=t=0\)</span>. It is dense: integers <span class="math" data-tex="\(k\)">\(k\)</span> can approximate any <span class="math" data-tex="\(z\in\mathbb Z_{\mathrm{prof}}\)">\(z\in\mathbb Z_{\mathrm{prof}}\)</span> by Lemma 5.0, and
+<span class="math" data-tex="\(q(t-k,0)=q(t,k)\to q(t,z)\)">\(q(t-k,0)=q(t,k)\to q(t,z)\)</span>.
+Two points <span class="math" data-tex="\(q(t,z),q(t&#x27;,z&#x27;)\)">\(q(t,z),q(t&#x27;,z&#x27;)\)</span> differ by an element of the real image exactly when <span class="math" data-tex="\(z-z&#x27;\in\mathbb Z\)">\(z-z&#x27;\in\mathbb Z\)</span>, as follows directly from the diagonal equivalence relation. This identifies the component group with <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}/\mathbb Z\)">\(\mathbb Z_{\mathrm{prof}}/\mathbb Z\)</span>. It is uncountable: <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> is uncountable by Lemma 5.0, whereas a countable union of its countable integer cosets would be countable. In particular the real image is proper. A topological embedding of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> would make that image locally compact in the subspace topology and therefore closed by HA-LCA-09, Lemma 1.2, contradicting proper density.</p>
+<p>For the suspension description, use representatives <span class="math" data-tex="\(q(t,-z)\)">\(q(t,-z)\)</span> with <span class="math" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>. Their endpoints obey
+<span class="math math-display" data-tex="\[
+ q(1,-z)=q(0,-z-1),
+\]">\[
+ q(1,-z)=q(0,-z-1),
+\]</span>
+so <span class="math" data-tex="\((1,z)\)">\((1,z)\)</span> is identified with <span class="math" data-tex="\((0,z+1)\)">\((0,z+1)\)</span>. These are exactly the endpoint identifications, with no identifications for <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, by the same integer-difference calculation. The compact quotient of <span class="math" data-tex="\([0,1]\times\mathbb Z_{\mathrm{prof}}\)">\([0,1]\times\mathbb Z_{\mathrm{prof}}\)</span> by this relation maps bijectively and continuously to Hausdorff <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, hence homeomorphically. This is the suspension of translation <span class="math" data-tex="\(z\mapsto z+1\)">\(z\mapsto z+1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-local-fields-and-the-rational-adèles">6. Local fields and the rational adèles</h2>
+<p>The earlier programme already supplies the arithmetic needed here. In particular, <a href="HA-LCA-10.html#ha-lca-10-example-6-4">HA-LCA-10, Example 6.4</a> constructs the field <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> from residue limits, its compact open integer ring, its valuations and fractional parts, and proves its topological self-duality and Haar normalization. Thus none of the following identifications is an unproved preview.</p>
+<p><a id="ha-lca-17-proposition-6-1"></a>
+<strong>Proposition 6.1 — The <span class="math" data-tex="\(p\)">\(p\)</span>-adic balls.</strong> Put
+<span class="math" data-tex="\(\psi_p(x)=e^{2\pi i\{x\}_p}\)">\(\psi_p(x)=e^{2\pi i\{x\}_p}\)</span>, and identify <span class="math" data-tex="\(y\in\mathbb Q_p\)">\(y\in\mathbb Q_p\)</span> with the character <span class="math" data-tex="\(x\mapsto\psi_p(xy)\)">\(x\mapsto\psi_p(xy)\)</span>. Then <span class="math" data-tex="\(\mathbb Q_p\in\mathcal T\)">\(\mathbb Q_p\in\mathcal T\)</span>, and for the self-dual Haar measure with <span class="math" data-tex="\(\mu(\mathbb Z_p)=1\)">\(\mu(\mathbb Z_p)=1\)</span>,
+<span class="math math-display" data-tex="\[
+ (p^k\mathbb Z_p)^\perp=p^{-k}\mathbb Z_p,\qquad
+ \widehat{1_{a+p^k\mathbb Z_p}}(y)
+ =p^{-k}\psi_p(-ay)1_{p^{-k}\mathbb Z_p}(y).                \tag{16}
+\]">\[
+ (p^k\mathbb Z_p)^\perp=p^{-k}\mathbb Z_p,\qquad
+ \widehat{1_{a+p^k\mathbb Z_p}}(y)
+ =p^{-k}\psi_p(-ay)1_{p^{-k}\mathbb Z_p}(y).                \tag{16}
+\]</span>
+In particular <span class="math" data-tex="\(\widehat{1_{\mathbb Z_p}}=1_{\mathbb Z_p}\)">\(\widehat{1_{\mathbb Z_p}}=1_{\mathbb Z_p}\)</span>.</p>
+<p><strong>Proof.</strong> The exact earlier result cited above gives the self-duality, the compact open base <span class="math" data-tex="\(p^k\mathbb Z_p\)">\(p^k\mathbb Z_p\)</span>, and <span class="math" data-tex="\(\mathbb Z_p^\perp=\mathbb Z_p\)">\(\mathbb Z_p^\perp=\mathbb Z_p\)</span>. Clopen cosets from this base separate points, so <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span> is totally disconnected; self-duality puts it in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Multiplication in the pairing gives
+<span class="math math-display" data-tex="\[
+ y\in(p^k\mathbb Z_p)^\perp
+ \ \Longleftrightarrow\ p^ky\in\mathbb Z_p^\perp
+ \ \Longleftrightarrow\ y\in p^{-k}\mathbb Z_p.
+\]">\[
+ y\in(p^k\mathbb Z_p)^\perp
+ \ \Longleftrightarrow\ p^ky\in\mathbb Z_p^\perp
+ \ \Longleftrightarrow\ y\in p^{-k}\mathbb Z_p.
+\]</span>
+The quotient <span class="math" data-tex="\(\mathbb Z_p/p\mathbb Z_p\)">\(\mathbb Z_p/p\mathbb Z_p\)</span> has <span class="math" data-tex="\(p\)">\(p\)</span> elements. Its translated cosets have equal measure, so iterating gives <span class="math" data-tex="\(\mu(p^k\mathbb Z_p)=p^{-k}\)">\(\mu(p^k\mathbb Z_p)=p^{-k}\)</span> for positive <span class="math" data-tex="\(k\)">\(k\)</span>; the same finite-coset identity gives it for negative <span class="math" data-tex="\(k\)">\(k\)</span>. Proposition 2.1 now gives (16) and the final assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-proposition-6-2"></a>
+<strong>Proposition 6.2 — Finite adèles, the solenoid, and Poisson summation.</strong> Let
+<span class="math math-display" data-tex="\[
+ \mathbb A_f=\prod_p&#x27;(\mathbb Q_p;\mathbb Z_p),\qquad
+ \mathbb A=\mathbb R\times\mathbb A_f,\qquad
+ K_f=\prod_p\mathbb Z_p.
+\]">\[
+ \mathbb A_f=\prod_p&#x27;(\mathbb Q_p;\mathbb Z_p),\qquad
+ \mathbb A=\mathbb R\times\mathbb A_f,\qquad
+ K_f=\prod_p\mathbb Z_p.
+\]</span>
+The group <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> belongs to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. The diagonal <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> is closed, discrete and cocompact in <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>, and
+<span class="math math-display" data-tex="\[
+ \mathbb A/\mathbb Q\cong\Sigma.                            \tag{17}
+\]">\[
+ \mathbb A/\mathbb Q\cong\Sigma.                            \tag{17}
+\]</span>
+Take <span class="math" data-tex="\(dx=dx_\infty\,dx_f\)">\(dx=dx_\infty\,dx_f\)</span>, with <span class="math" data-tex="\(dx_\infty\)">\(dx_\infty\)</span> Lebesgue measure and <span class="math" data-tex="\(dx_f(K_f)=1\)">\(dx_f(K_f)=1\)</span>. The pairing
+<span class="math math-display" data-tex="\[
+ \Psi(x,y)=e^{-2\pi i x_\infty y_\infty}
+                  \prod_p\psi_p(x_py_p)                   \tag{18}
+\]">\[
+ \Psi(x,y)=e^{-2\pi i x_\infty y_\infty}
+                  \prod_p\psi_p(x_py_p)                   \tag{18}
+\]</span>
+is a self-duality of <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>, with self-dual measure <span class="math" data-tex="\(dx\)">\(dx\)</span>, and <span class="math" data-tex="\(\mathbb Q^\perp=\mathbb Q\)">\(\mathbb Q^\perp=\mathbb Q\)</span>. For
+<span class="math math-display" data-tex="\[
+ \mathcal S(\mathbb A)
+ =\operatorname{span}\{g\otimes v:g\in\mathcal S(\mathbb R),
+                                      \ v\in\mathcal S(\mathbb A_f)\},
+\]">\[
+ \mathcal S(\mathbb A)
+ =\operatorname{span}\{g\otimes v:g\in\mathcal S(\mathbb R),
+                                      \ v\in\mathcal S(\mathbb A_f)\},
+\]</span>
+where <span class="math" data-tex="\(\mathcal S(\mathbb R)\)">\(\mathcal S(\mathbb R)\)</span> denotes smooth functions rapidly decreasing with all derivatives, one has
+<span class="math math-display" data-tex="\[
+ \sum_{r\in\mathbb Q} f(x+r)
+   =\sum_{r\in\mathbb Q}\widehat f(r)\Psi(x,r).              \tag{19}
+\]">\[
+ \sum_{r\in\mathbb Q} f(x+r)
+   =\sum_{r\in\mathbb Q}\widehat f(r)\Psi(x,r).              \tag{19}
+\]</span>
+Both sums converge absolutely; the left sum converges uniformly on compact sets and the right sum uniformly everywhere.</p>
+<p><strong>Proof.</strong> The restricted-product construction, its local compactness, the compact open <span class="math" data-tex="\(K_f\)">\(K_f\)</span>, the full Haar normalization, and the rational lattice with fundamental set
+<span class="math" data-tex="\([0,1)\times K_f\)">\([0,1)\times K_f\)</span> are proved in <a href="HA-LCA-11.html#ha-lca-11-lemma-4-2">HA-LCA-11, Lemma 4.2</a>. Its proof also gives the compact open neighbourhood base formed by restricting finitely many coordinates to <span class="math" data-tex="\(p^{j_p}\mathbb Z_p\)">\(p^{j_p}\mathbb Z_p\)</span> and leaving the others integral. These clopen subgroups separate points, so <span class="math" data-tex="\(\mathbb A_f\)">\(\mathbb A_f\)</span> is totally disconnected.</p>
+<p>The finite-place pairing and its self-duality, and the full adelic pairing
+<span class="math math-display" data-tex="\[
+ B(x,y)=e^{2\pi i x_\infty y_\infty}
+                         \prod_p\overline{\psi_p(x_py_p)}
+\]">\[
+ B(x,y)=e^{2\pi i x_\infty y_\infty}
+                         \prod_p\overline{\psi_p(x_py_p)}
+\]</span>
+with <span class="math" data-tex="\(K_f^\perp=K_f\)">\(K_f^\perp=K_f\)</span>, self-dual measure, and <span class="math" data-tex="\(\mathbb Q^\perp=\mathbb Q\)">\(\mathbb Q^\perp=\mathbb Q\)</span>, are proved in <a href="HA-LCA-11.html#ha-lca-11-lemma-4-3">HA-LCA-11, Lemma 4.3</a>. Thus <span class="math" data-tex="\(\mathbb A_f\in\mathcal T\)">\(\mathbb A_f\in\mathcal T\)</span>. Formula (18) is <span class="math" data-tex="\(B(x,-y)\)">\(B(x,-y)\)</span>. Reflection <span class="math" data-tex="\(y\mapsto-y\)">\(y\mapsto-y\)</span> is a continuous automorphism preserving Haar measure, as proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/HA-LCA/prerequisites/src/nonabelian-haar-integration.html#ha-lca-pre-nonabelian-haar-theorem-4-1">PRE-NONABELIAN-HAAR, Theorem 4.1</a> in the abelian case. Consequently the conjugate pairing is also a topological self-duality with the same self-dual measure, and has the same annihilator of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>.</p>
+<p>For (17), identify <span class="math" data-tex="\(K_f\)">\(K_f\)</span> with <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> by (12). Inclusion of <span class="math" data-tex="\(\mathbb R\times K_f\)">\(\mathbb R\times K_f\)</span> into <span class="math" data-tex="\(\mathbb A\)">\(\mathbb A\)</span>, followed by quotienting by <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, is onto because the fundamental set lies in this subgroup. Its kernel consists precisely of diagonal integers: the identity <span class="math" data-tex="\(\mathbb Q\cap K_f=\mathbb Z\)">\(\mathbb Q\cap K_f=\mathbb Z\)</span> is proved in HA-LCA-11, Lemma 4.2. It thus induces a continuous bijection <span class="math" data-tex="\(\Sigma\to\mathbb A/\mathbb Q\)">\(\Sigma\to\mathbb A/\mathbb Q\)</span>. Compactness and the Hausdorff quotient topology make it a homeomorphism.</p>
+<p>The test space here is exactly the one in <a href="HA-LCA-11.html#ha-lca-11-lemma-4-4">HA-LCA-11, Lemma 4.4</a>; Theorem 3.2 identifies its finite-place space with <span class="math" data-tex="\(\mathcal S(\mathbb A_f)\)">\(\mathcal S(\mathbb A_f)\)</span>. That earlier lemma proves Fourier stability and all the absolute and uniform convergence assertions. <a href="HA-LCA-11.html#ha-lca-11-proposition-4-5">HA-LCA-11, Proposition 4.5</a> proves (19) for <span class="math" data-tex="\(B\)">\(B\)</span>. Since <span class="math" data-tex="\(\widehat f_{\Psi}(y)=\widehat f_B(-y)\)">\(\widehat f_{\Psi}(y)=\widehat f_B(-y)\)</span>, reindexing its absolutely convergent dual sum by <span class="math" data-tex="\(r\mapsto-r\)">\(r\mapsto-r\)</span> gives exactly (19) for <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>. This proves all assertions with complete earlier arithmetic proofs and no external theorem in their place. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The sign conventions can be compared without changing the forward-transform rule (1):</p>
+<table>
+<thead>
+<tr>
+<th>Pairing</th>
+<th>Real basic character</th>
+<th>Finite basic character at <span class="math" data-tex="\(p\)">\(p\)</span></th>
+<th>Forward kernel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(B\)">\(B\)</span>, as in HA-LCA-11</td>
+<td><span class="math" data-tex="\(e^{2\pi it}\)">\(e^{2\pi it}\)</span></td>
+<td><span class="math" data-tex="\(e^{-2\pi i\{x\}_p}\)">\(e^{-2\pi i\{x\}_p}\)</span></td>
+<td><span class="math" data-tex="\(\overline{B(x,y)}\)">\(\overline{B(x,y)}\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\Psi=\overline B\)">\(\Psi=\overline B\)</span>, as in (18)</td>
+<td><span class="math" data-tex="\(e^{-2\pi it}\)">\(e^{-2\pi it}\)</span></td>
+<td><span class="math" data-tex="\(e^{2\pi i\{x\}_p}\)">\(e^{2\pi i\{x\}_p}\)</span></td>
+<td><span class="math" data-tex="\(B(x,y)\)">\(B(x,y)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Both global basic characters are trivial on the diagonal rationals. Their transforms differ by reflection of the frequency variable. On the single local field in (16) we use the explicitly stated positive <span class="math" data-tex="\(\psi_p\)">\(\psi_p\)</span>.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<p><a id="ha-lca-17-exercise-7-1"></a>
+<strong>Exercise 7.1 — Membership.</strong> Decide which of
+<span class="math" data-tex="\(\mathbb Z,\mathbb R,\mathbb T,\mathbb Q/\mathbb Z,\mathbb Z_p,
+\mathbb Q_p\times\mathbb Z,(\mathbb Z/2)^{\mathbb N}\)">\(\mathbb Z,\mathbb R,\mathbb T,\mathbb Q/\mathbb Z,\mathbb Z_p,
+\mathbb Q_p\times\mathbb Z,(\mathbb Z/2)^{\mathbb N}\)</span>, and
+<span class="math" data-tex="\(\bigoplus_{\mathbb N}\mathbb Z/2\)">\(\bigoplus_{\mathbb N}\mathbb Z/2\)</span> belong to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</p>
+<p><strong>Solution.</strong> The answer, in that order, is
+<span class="math math-display" data-tex="\[
+ \text{no},\ \text{no},\ \text{no},\ \text{yes},\
+ \text{yes},\ \text{no},\ \text{yes},\ \text{yes}.
+\]">\[
+ \text{no},\ \text{no},\ \text{no},\ \text{yes},\
+ \text{yes},\ \text{no},\ \text{yes},\ \text{yes}.
+\]</span>
+The discrete <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> has no finite subgroup containing <span class="math" data-tex="\(1\)">\(1\)</span>; its compact subsets are finite, so Theorem 1.1 fails for <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. The real line and the circle are nontrivial connected groups; the connectedness of intervals follows from the intermediate value property <a href="HA-LCA-PRE-BANACH.html#ha-lca-pre-banach-lemma-1-1">PRE-BANACH, Lemma 1.1</a>, and the circle is a continuous image of an interval. Thus neither is totally disconnected.</p>
+<p>Every discrete torsion abelian group belongs to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>: each compact subset is finite and generates a finite subgroup by the coefficient bound in Theorem 1.1. This proves the claims for <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span> and the direct sum of copies of <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>. Every profinite abelian group is compact totally disconnected, with discrete torsion dual by HA-LCA-12, Theorem 5.1 and Corollary 5.2, so it too belongs to <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. This covers <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> and the indicated product of two-point groups, and also all finite abelian groups. Finally a compact subgroup of <span class="math" data-tex="\(\mathbb Q_p\times\mathbb Z\)">\(\mathbb Q_p\times\mathbb Z\)</span> has finite subgroup image in <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, hence zero image. It cannot contain <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, so Theorem 1.1 excludes that product. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-exercise-7-2"></a>
+<strong>Exercise 7.2 — Stability.</strong> Prove that <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is closed under closed subgroups, Hausdorff quotients, and finite products.</p>
+<p><strong>Solution.</strong> First a closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of a totally disconnected LCA group inherits a compact open base <span class="math" data-tex="\(H\cap K\)">\(H\cap K\)</span>. It is locally compact, since those intersections are compact neighbourhoods, and is totally disconnected since connected subsets remain connected in the ambient group.</p>
+<p>A quotient <span class="math" data-tex="\(G/H\)">\(G/H\)</span> by a closed subgroup has compact open subgroups <span class="math" data-tex="\(q(K)\)">\(q(K)\)</span>, where <span class="math" data-tex="\(K\)">\(K\)</span> runs over the compact open subgroups of <span class="math" data-tex="\(G\)">\(G\)</span>. They are compact by continuity and open because the quotient map is open. They form a base: given an identity neighbourhood <span class="math" data-tex="\(U\)">\(U\)</span> in the quotient, choose <span class="math" data-tex="\(K\subset q^{-1}(U)\)">\(K\subset q^{-1}(U)\)</span>. Their clopen cosets separate points in the Hausdorff quotient, proving total disconnectedness there too. Local compactness and the quotient topology are the facts in HA-LCA-09, Lemma 6.0.</p>
+<p>Now if <span class="math" data-tex="\(G\in\mathcal T\)">\(G\in\mathcal T\)</span>, the duals satisfy
+<span class="math" data-tex="\(\widehat H\cong\widehat G/H^\perp\)">\(\widehat H\cong\widehat G/H^\perp\)</span> and
+<span class="math" data-tex="\(\widehat{G/H}\cong H^\perp\)">\(\widehat{G/H}\cong H^\perp\)</span>, by HA-LCA-10, Theorem 2.1. The preceding subgroup and quotient arguments apply also to the totally disconnected <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span>. Thus both <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, and their duals, are totally disconnected. For a finite product, products of compact open subgroups give a compact open base. The finite product dual is the product of the duals by <a href="HA-LCA-02.html#ha-lca-02-proposition-4-1">HA-LCA-02, Proposition 4.1</a>, so the same reasoning proves membership in <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-exercise-7-3"></a>
+<strong>Exercise 7.3 — A ball and its norm.</strong> Compute the transform of <span class="math" data-tex="\(1_{a+p^k\mathbb Z_p}\)">\(1_{a+p^k\mathbb Z_p}\)</span> for the pairing in (16), and verify Plancherel directly.</p>
+<p><strong>Solution.</strong> Translation by <span class="math" data-tex="\(a\)">\(a\)</span> contributes <span class="math" data-tex="\(\psi_p(-ay)\)">\(\psi_p(-ay)\)</span>. The character integral over <span class="math" data-tex="\(p^k\mathbb Z_p\)">\(p^k\mathbb Z_p\)</span> is <span class="math" data-tex="\(p^{-k}\)">\(p^{-k}\)</span> if <span class="math" data-tex="\(y\in p^{-k}\mathbb Z_p\)">\(y\in p^{-k}\mathbb Z_p\)</span> and zero otherwise, giving exactly (16). The squared norm of the original indicator is <span class="math" data-tex="\(p^{-k}\)">\(p^{-k}\)</span>. The squared norm of its transform is
+<span class="math math-display" data-tex="\[
+ p^{-2k}\,\mu(p^{-k}\mathbb Z_p)
+       =p^{-2k}p^k=p^{-k},
+\]">\[
+ p^{-2k}\,\mu(p^{-k}\mathbb Z_p)
+       =p^{-2k}p^k=p^{-k},
+\]</span>
+as required for every integer <span class="math" data-tex="\(k\)">\(k\)</span>. At <span class="math" data-tex="\(a=0,k=0\)">\(a=0,k=0\)</span> the same formula gives the self-transform of <span class="math" data-tex="\(1_{\mathbb Z_p}\)">\(1_{\mathbb Z_p}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-exercise-7-4"></a>
+<strong>Exercise 7.4 — The <span class="math" data-tex="\(p\)">\(p\)</span>-adic solenoid.</strong> Identify the dual of the discrete group <span class="math" data-tex="\(\mathbb Z[1/p]\)">\(\mathbb Z[1/p]\)</span>.</p>
+<p><strong>Solution.</strong> The open union <span class="math" data-tex="\(\mathbb Z[1/p]=\bigcup_{n\ge0}p^{-n}\mathbb Z\)">\(\mathbb Z[1/p]=\bigcup_{n\ge0}p^{-n}\mathbb Z\)</span> and Proposition 4.1 give
+<span class="math math-display" data-tex="\[
+ \widehat{\mathbb Z[1/p]_d}
+   \cong\varprojlim_{n\ge0}\mathbb R/p^n\mathbb Z
+   \cong(\mathbb R\times\mathbb Z_p)/\{(k,k):k\in\mathbb Z\}.
+                                                               \tag{20}
+\]">\[
+ \widehat{\mathbb Z[1/p]_d}
+   \cong\varprojlim_{n\ge0}\mathbb R/p^n\mathbb Z
+   \cong(\mathbb R\times\mathbb Z_p)/\{(k,k):k\in\mathbb Z\}.
+                                                               \tag{20}
+\]</span>
+For completeness, the second map sends <span class="math" data-tex="\((t,z)\)">\((t,z)\)</span> to
+<span class="math" data-tex="\((t-z\bmod p^n)_n\)">\((t-z\bmod p^n)_n\)</span>, using the residue of <span class="math" data-tex="\(z\)">\(z\)</span> at each level. It is continuous and compatible; its kernel is the diagonal integers, because level <span class="math" data-tex="\(n=0\)">\(n=0\)</span> forces <span class="math" data-tex="\(t\)">\(t\)</span> integral and all the other levels then force <span class="math" data-tex="\(z=t\)">\(z=t\)</span>. To prove surjectivity, choose <span class="math" data-tex="\(t\)">\(t\)</span> representing the level-zero circle coordinate. Subtracting the other coordinates from <span class="math" data-tex="\(t\)">\(t\)</span> gives a compatible family of integer residues modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, hence <span class="math" data-tex="\(z\in\mathbb Z_p\)">\(z\in\mathbb Z_p\)</span>. The diagonal is closed and discrete by its real coordinate, and the quotient is compact since <span class="math" data-tex="\([0,1]\times\mathbb Z_p\)">\([0,1]\times\mathbb Z_p\)</span> maps onto it. The resulting continuous bijection onto the Hausdorff inverse limit is a homeomorphism. This proves both the group and topology in (20). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-exercise-7-5"></a>
+<strong>Exercise 7.5 — A noncompact inverse limit.</strong> Put <span class="math" data-tex="\(D=\mathbb Q_p/\mathbb Z_p\)">\(D=\mathbb Q_p/\mathbb Z_p\)</span>, with the discrete topology. Prove
+<span class="math math-display" data-tex="\[
+ \theta:\mathbb Q_p\longrightarrow\varprojlim(D,\times p),
+ \qquad \theta(x)_n=p^{-n}x+\mathbb Z_p\quad(n\ge0)          \tag{21}
+\]">\[
+ \theta:\mathbb Q_p\longrightarrow\varprojlim(D,\times p),
+ \qquad \theta(x)_n=p^{-n}x+\mathbb Z_p\quad(n\ge0)          \tag{21}
+\]</span>
+is a topological isomorphism. Deduce existence of a topological isomorphism
+<span class="math" data-tex="\(\mathbb Q_p\cong\widehat{\mathbb Q_p}\)">\(\mathbb Q_p\cong\widehat{\mathbb Q_p}\)</span> without choosing a basic additive character on <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>.</p>
+<p><strong>Solution.</strong> The coordinates in (21) are continuous homomorphisms and satisfy <span class="math" data-tex="\(p\theta(x)_{n+1}=\theta(x)_n\)">\(p\theta(x)_{n+1}=\theta(x)_n\)</span>. If all coordinates vanish, <span class="math" data-tex="\(x\in\bigcap_np^n\mathbb Z_p=\{0\}\)">\(x\in\bigcap_np^n\mathbb Z_p=\{0\}\)</span>, so <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is injective.</p>
+<p>Given a compatible tuple <span class="math" data-tex="\((d_n)\)">\((d_n)\)</span>, choose representatives <span class="math" data-tex="\(r_n\in\mathbb Q_p\)">\(r_n\in\mathbb Q_p\)</span>. Compatibility says <span class="math" data-tex="\(pr_{n+1}-r_n\in\mathbb Z_p\)">\(pr_{n+1}-r_n\in\mathbb Z_p\)</span>. The compact cosets
+<span class="math math-display" data-tex="\[
+ C_n=p^nr_n+p^n\mathbb Z_p
+\]">\[
+ C_n=p^nr_n+p^n\mathbb Z_p
+\]</span>
+are nonempty and nested, since <span class="math" data-tex="\(p^{n+1}r_{n+1}-p^nr_n\in p^n\mathbb Z_p\)">\(p^{n+1}r_{n+1}-p^nr_n\in p^n\mathbb Z_p\)</span>. They all lie in the compact <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, so their intersection is nonempty by the finite intersection property. It has at most one point, because the difference of two such points lies in every <span class="math" data-tex="\(p^n\mathbb Z_p\)">\(p^n\mathbb Z_p\)</span>. Its unique point <span class="math" data-tex="\(x\)">\(x\)</span> satisfies <span class="math" data-tex="\(\theta(x)_n=d_n\)">\(\theta(x)_n=d_n\)</span>, proving surjectivity.</p>
+<p>Continuity of all coordinates proves continuity into the inverse limit. Conversely the preimage of the condition that coordinate <span class="math" data-tex="\(n\)">\(n\)</span> be zero is <span class="math" data-tex="\(p^n\mathbb Z_p\)">\(p^n\mathbb Z_p\)</span>. These conditions form an identity-neighbourhood base in the inverse limit: a basic neighbourhood requires finitely many discrete coordinates to vanish, and vanishing of the largest one forces vanishing of all the earlier ones. Their preimages form an identity-neighbourhood base in <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Thus the inverse of <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is continuous.</p>
+<p>To compute the dual independently of a basic character on the whole field, write
+<span class="math" data-tex="\(\mathbb Q_p=\bigcup_{n\ge0}p^{-n}\mathbb Z_p\)">\(\mathbb Q_p=\bigcup_{n\ge0}p^{-n}\mathbb Z_p\)</span>.
+Identify each stage with <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span> by multiplication by <span class="math" data-tex="\(p^n\)">\(p^n\)</span>. The inclusion of stage <span class="math" data-tex="\(n\)">\(n\)</span> in stage <span class="math" data-tex="\(n+1\)">\(n+1\)</span> then becomes multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(\mathbb Z_p\)">\(\mathbb Z_p\)</span>. Under the finite-residue dual identification
+<span class="math" data-tex="\(\widehat{\mathbb Z_p}\cong\mathbb Z[1/p]/\mathbb Z\cong D\)">\(\widehat{\mathbb Z_p}\cong\mathbb Z[1/p]/\mathbb Z\cong D\)</span>
+of Proposition 4.3, pullback by this map is multiplication by <span class="math" data-tex="\(p\)">\(p\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>. Proposition 4.1 gives
+<span class="math" data-tex="\(\widehat{\mathbb Q_p}\cong\varprojlim(D,\times p)\)">\(\widehat{\mathbb Q_p}\cong\varprojlim(D,\times p)\)</span>.
+Combining with (21) gives the required topological isomorphism. Proposition 4.2 was not applied to the noncompact discrete stages <span class="math" data-tex="\(D\)">\(D\)</span>; their inverse-limit topology was proved directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="ha-lca-17-exercise-7-6"></a>
+<strong>Exercise 7.6 — Path components.</strong> Prove that the neutral path component of <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is the image of <span class="math" data-tex="\(\mathbb R\times\{0\}\)">\(\mathbb R\times\{0\}\)</span>, and that there are uncountably many components.</p>
+<p><strong>Solution.</strong> Any path from zero is covered by finitely many of the interval-times-profinite charts of Theorem 5.1. Subdivide its parameter interval so each segment lies in one chart, using the Lebesgue-number argument. Lift the first segment to start at <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. Its profinite coordinate is constant because the interval is connected and <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> is totally disconnected. At a junction, the next chart lift differs from the previous endpoint by a diagonal integer; translating the next lift by that integer makes the endpoints agree and keeps the constant profinite coordinate zero. Continuing over the finite subdivision proves that the endpoint lies in the real image. Conversely the path <span class="math" data-tex="\(s\mapsto q(st,0)\)">\(s\mapsto q(st,0)\)</span> reaches every point in that image.</p>
+<p>Translation identifies all other components with its cosets. The map taking the component of <span class="math" data-tex="\(q(t,z)\)">\(q(t,z)\)</span> to <span class="math" data-tex="\(z+\mathbb Z\)">\(z+\mathbb Z\)</span> is well-defined and bijective, since two representatives differ by the real image exactly when their profinite coordinates differ by an integer. Lemma 5.0 identifies <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> with uncountable binary Cantor space. Each integer coset is countable, so countably many components would make <span class="math" data-tex="\(\mathbb Z_{\mathrm{prof}}\)">\(\mathbb Z_{\mathrm{prof}}\)</span> countable. Thus the component group is uncountable. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+</article><p><a href="HA-LCA-17.md">Exact Markdown source</a></p></main></body></html>

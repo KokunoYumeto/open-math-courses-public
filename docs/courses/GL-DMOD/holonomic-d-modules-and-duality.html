@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holonomic D-modules and duality · D-modules</title>
+<meta name="description" content="A lesson of the course D-modules. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-DMOD/holonomic-d-modules-and-duality.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">D-modules</a> <span aria-hidden="true">›</span> <span>Holonomic D-modules and duality</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="holonomic-d-modules-and-duality">Holonomic D-modules and duality</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A holonomic module can contain both a connection on an open set and a contribution supported on its boundary. Duality reverses how those pieces are attached. On the affine line, the Laurent-polynomial module contains the polynomial connection and has a point module as quotient. Its dual has the point module as submodule and the polynomial connection as quotient. Computing this reversal requires a derived Hom, a dimension shift, and a change from right modules to left modules.</p>
+<p>Let <span class="math" data-tex="$k$">$k$</span> be an algebraically closed field of characteristic zero, and let <span class="math" data-tex="$X$">$X$</span> be a smooth separated variety of finite type, of pure dimension <span class="math" data-tex="$d$">$d$</span>. Write <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span> for differential operators, <span class="math" data-tex="$\omega_X=\bigwedge^d\Omega_X^1$">$\omega_X=\bigwedge^d\Omega_X^1$</span>, and <span class="math" data-tex="$\pi:T^*X\to X$">$\pi:T^*X\to X$</span>. Modules are left modules and are quasi-coherent over <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>. The Weyl-algebra calculations below hold over any characteristic-zero field. Analytic comparisons use <span class="math" data-tex="$k=\mathbb C$">$k=\mathbb C$</span>.</p>
+<p>Prerequisites are <a href="good-filtrations-and-the-characteristic-variety.html">characteristic varieties and cycles</a>, <a href="the-bernstein-filtration-and-holonomic-modules.html">Bernstein growth and finite length</a>, and <a href="bernstein-sato-polynomials.html">holonomic localization</a>. We use cohomological complexes: <span class="math" data-tex="$K[d]^i=K^{i+d}$">$K[d]^i=K^{i+d}$</span>, so an Ext group originally in degree <span class="math" data-tex="$d$">$d$</span> moves to degree zero after <span class="math" data-tex="$[d]$">$[d]$</span>.</p>
+<h2 id="1-the-holonomic-category-on-a-variety">1. The holonomic category on a variety</h2>
+<p>A coherent <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-module <span class="math" data-tex="$M$">$M$</span> is <strong>holonomic</strong> if</p>
+<span class="math math-display" data-tex="\[
+\dim\operatorname{Ch}(M)\leq d.
+\tag{1.1}
+\]">\[
+\dim\operatorname{Ch}(M)\leq d.
+\tag{1.1}
+\]</span>
+<p>The zero module is included. For nonzero <span class="math" data-tex="$M$">$M$</span>, the dimension bound from involutivity proved in the characteristic-variety chapter says that every irreducible component of <span class="math" data-tex="$\operatorname{Ch}(M)$">$\operatorname{Ch}(M)$</span> has dimension at least <span class="math" data-tex="$d$">$d$</span>. Thus a nonzero holonomic module has pure characteristic dimension <span class="math" data-tex="$d$">$d$</span>. At a smooth point of a component, involutivity says that its tangent space is coisotropic in the <span class="math" data-tex="$2d$">$2d$</span>-dimensional symplectic tangent space. Its dimension is <span class="math" data-tex="$d$">$d$</span>, so it is also isotropic: the component is Lagrangian. These are conic algebraic Lagrangians; no regular-singularity condition is part of holonomicity.</p>
+<p>For a short exact sequence of coherent modules,</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow M&#x27;\longrightarrow M\longrightarrow M&#x27;&#x27;\longrightarrow0,
+\]">\[
+0\longrightarrow M&#x27;\longrightarrow M\longrightarrow M&#x27;&#x27;\longrightarrow0,
+\]</span>
+<p>the earlier exact-filtration argument gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ch}(M)=\operatorname{Ch}(M&#x27;)\cup\operatorname{Ch}(M&#x27;&#x27;).
+\tag{1.2}
+\]">\[
+\operatorname{Ch}(M)=\operatorname{Ch}(M&#x27;)\cup\operatorname{Ch}(M&#x27;&#x27;).
+\tag{1.2}
+\]</span>
+<p>Consequently holonomic modules form a Serre subcategory <span class="math" data-tex="$\operatorname{Hol}(\mathcal D_X)$">$\operatorname{Hol}(\mathcal D_X)$</span>: submodules, quotients, and extensions remain holonomic. Coherence of submodules is local Noetherianity of <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+D_h^b(\mathcal D_X)=
+\{K\in D^b(\mathcal D_X\text{-}\mathrm{Mod}_{\mathrm{qc}}):
+H^i(K)\text{ is holonomic for every }i\}.
+\tag{1.3}
+\]">\[
+D_h^b(\mathcal D_X)=
+\{K\in D^b(\mathcal D_X\text{-}\mathrm{Mod}_{\mathrm{qc}}):
+H^i(K)\text{ is holonomic for every }i\}.
+\tag{1.3}
+\]</span>
+<p>Here the ambient category consists of quasi-coherent left modules. The Serre property shows that cones, shifts, and standard truncations preserve (1.3). Its standard heart is <span class="math" data-tex="$\operatorname{Hol}(\mathcal D_X)$">$\operatorname{Hol}(\mathcal D_X)$</span>. The definition does not require an additional assertion identifying (1.3) with the abstract bounded derived category of that heart.</p>
+<p>On <span class="math" data-tex="$X=\mathbb A^n$">$X=\mathbb A^n$</span>, a coherent module corresponds to a finite <span class="math" data-tex="$A_n(k)$">$A_n(k)$</span>-module. The order–Bernstein comparison proved in the preceding chapters identifies <span class="math" data-tex="$\dim\operatorname{Ch}(M)$">$\dim\operatorname{Ch}(M)$</span> with its Bernstein growth dimension. Definition (1.1) therefore agrees with the Weyl-algebra definition.</p>
+<h2 id="2-a-connection-on-a-dense-open-set">2. A connection on a dense open set</h2>
+<h3 id="theorem-2-1-generic-connection-structure">Theorem 2.1. Generic connection structure</h3>
+<p>For every holonomic <span class="math" data-tex="$M$">$M$</span>, there is a dense open subset <span class="math" data-tex="$U\subseteq X$">$U\subseteq X$</span> such that <span class="math" data-tex="$M|_U$">$M|_U$</span> is locally free of finite rank over <span class="math" data-tex="$\mathcal O_U$">$\mathcal O_U$</span>, with its integrable connection. The rank can be zero on a component of <span class="math" data-tex="$U$">$U$</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="$C=\operatorname{Ch}(M)$">$C=\operatorname{Ch}(M)$</span>. For <span class="math" data-tex="$d&gt;0$">$d&gt;0$</span>, form the projectivization of its nonzero covectors,</p>
+<span class="math math-display" data-tex="\[
+\mathbf P C=(C\setminus X)/\mathbb G_m
+\subseteq \mathbf P(T^*X).
+\tag{2.1}
+\]">\[
+\mathbf P C=(C\setminus X)/\mathbb G_m
+\subseteq \mathbf P(T^*X).
+\tag{2.1}
+\]</span>
+<p>The copy of <span class="math" data-tex="$X$">$X$</span> removed here is the zero section. In a cotangent trivialization, <span class="math" data-tex="$C$">$C$</span> is defined by homogeneous equations in the fiber coordinates, and those equations define the closed subset <span class="math" data-tex="$\mathbf P C$">$\mathbf P C$</span> of the projective bundle. Each nonempty projectivized component has dimension one less than its corresponding conic component: on a projective coordinate chart, normalizing one nonzero fiber coordinate identifies the inverse image with that chart times <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\dim\mathbf P C\leq d-1.
+\tag{2.2}
+\]">\[
+\dim\mathbf P C\leq d-1.
+\tag{2.2}
+\]</span>
+<p>The projective-bundle map to <span class="math" data-tex="$X$">$X$</span> is proper, so</p>
+<span class="math math-display" data-tex="\[
+Z=\pi_{\mathbf P}(\mathbf P C)
+\tag{2.3}
+\]">\[
+Z=\pi_{\mathbf P}(\mathbf P C)
+\tag{2.3}
+\]</span>
+<p>is closed and has dimension at most <span class="math" data-tex="$d-1$">$d-1$</span>. Properness here is the usual scheme-theoretic fact that a locally projective morphism is proper; see <a href="https://stacks.math.columbia.edu/tag/01WC">Stacks, Tag 01WC</a>. Since <span class="math" data-tex="$X$">$X$</span> is pure of dimension <span class="math" data-tex="$d$">$d$</span>, <span class="math" data-tex="$U=X\setminus Z$">$U=X\setminus Z$</span> meets every irreducible component densely. On <span class="math" data-tex="$U$">$U$</span>, there are no nonzero characteristic covectors.</p>
+<p>We recall why this last assertion gives <span class="math" data-tex="$\mathcal O_U$">$\mathcal O_U$</span>-coherence, without replacing the graded module by its reduced support. Work on an affine cotangent trivialization. Its symbol ring is <span class="math" data-tex="$S=\mathcal O(U)[\xi_1,\ldots,\xi_d]$">$S=\mathcal O(U)[\xi_1,\ldots,\xi_d]$</span>. A finite graded module <span class="math" data-tex="$G=\operatorname{gr}M$">$G=\operatorname{gr}M$</span> supported in the zero section is killed by a power of <span class="math" data-tex="$J=(\xi_1,\ldots,\xi_d)$">$J=(\xi_1,\ldots,\xi_d)$</span>: every <span class="math" data-tex="$\xi_i$">$\xi_i$</span> lies in the radical of its annihilator, and finitely many powers give a common bound. Therefore <span class="math" data-tex="$G$">$G$</span> is finite over <span class="math" data-tex="$S/J^N$">$S/J^N$</span>, which is finite over <span class="math" data-tex="$\mathcal O(U)$">$\mathcal O(U)$</span>. Choose finitely many homogeneous <span class="math" data-tex="$\mathcal O(U)$">$\mathcal O(U)$</span>-generators of <span class="math" data-tex="$G$">$G$</span> and lift them to <span class="math" data-tex="$M$">$M$</span>. Subtraction lowers the filtration degree; its lower bound makes this induction terminate. The lifts generate <span class="math" data-tex="$M$">$M$</span> over <span class="math" data-tex="$\mathcal O(U)$">$\mathcal O(U)$</span>.</p>
+<p>Thus <span class="math" data-tex="$M|_U$">$M|_U$</span> is <span class="math" data-tex="$\mathcal O_U$">$\mathcal O_U$</span>-coherent. Its <span class="math" data-tex="$\mathcal D_U$">$\mathcal D_U$</span>-action supplies an integrable connection, and the local-freeness theorem proved in the connection chapter applies in characteristic zero. If <span class="math" data-tex="$d=0$">$d=0$</span>, <span class="math" data-tex="$\mathcal D_X=\mathcal O_X$">$\mathcal D_X=\mathcal O_X$</span> and the result holds on all of <span class="math" data-tex="$X$">$X$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>A point module can be zero on this dense open set. For instance <span class="math" data-tex="$\delta_0$">$\delta_0$</span> on the affine line has characteristic fiber over zero, so the construction gives <span class="math" data-tex="$U=\mathbb G_m$">$U=\mathbb G_m$</span> and <span class="math" data-tex="$M|_U=0$">$M|_U=0$</span>. The theorem says nothing about extending the connection across the exceptional set.</p>
+<h3 id="theorem-2-2-finite-length">Theorem 2.2. Finite length</h3>
+<p>Every holonomic <span class="math" data-tex="$\mathcal D_X$">$\mathcal D_X$</span>-module has finite length.</p>
+<p><strong>Proof.</strong> Write the characteristic cycle using generic local lengths,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(M)=\sum_{\Lambda}m_\Lambda[\Lambda],
+\qquad
+\mu(M)=\sum_\Lambda m_\Lambda.
+\tag{2.4}
+\]">\[
+\operatorname{CC}(M)=\sum_{\Lambda}m_\Lambda[\Lambda],
+\qquad
+\mu(M)=\sum_\Lambda m_\Lambda.
+\tag{2.4}
+\]</span>
+<p>There are finitely many components, since <span class="math" data-tex="$X$">$X$</span> is a variety of finite type and the characteristic support is closed and Noetherian. For nonzero holonomic <span class="math" data-tex="$M$">$M$</span>, every <span class="math" data-tex="$m_\Lambda$">$m_\Lambda$</span> is a positive integer, so <span class="math" data-tex="$\mu(M)&gt;0$">$\mu(M)&gt;0$</span>.</p>
+<p>In a short exact sequence of holonomic modules, all nonzero characteristic components have the common dimension <span class="math" data-tex="$d$">$d$</span>. The exact-filtration and generic-length theorem therefore gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{CC}(M)=\operatorname{CC}(M&#x27;)+\operatorname{CC}(M&#x27;&#x27;),
+\qquad
+\mu(M)=\mu(M&#x27;)+\mu(M&#x27;&#x27;).
+\tag{2.5}
+\]">\[
+\operatorname{CC}(M)=\operatorname{CC}(M&#x27;)+\operatorname{CC}(M&#x27;&#x27;),
+\qquad
+\mu(M)=\mu(M&#x27;)+\mu(M&#x27;&#x27;).
+\tag{2.5}
+\]</span>
+<p>Every nonzero strict subquotient consumes at least one unit of <span class="math" data-tex="$\mu$">$\mu$</span>. An ascending or descending strict chain in <span class="math" data-tex="$M$">$M$</span> has at most <span class="math" data-tex="$\mu(M)$">$\mu(M)$</span> nonzero successive quotients.</p>
+<p>For completeness, a composition series follows by induction on <span class="math" data-tex="$\mu(M)$">$\mu(M)$</span>. If <span class="math" data-tex="$M$">$M$</span> is simple, use its one-step series. Otherwise choose a nonzero proper coherent submodule <span class="math" data-tex="$N$">$N$</span>. Both <span class="math" data-tex="$N$">$N$</span> and <span class="math" data-tex="$M/N$">$M/N$</span> are holonomic, and (2.5) makes both multiplicities smaller. By induction each has a finite composition series. Insert the series of <span class="math" data-tex="$N$">$N$</span> into the inverse images of the series of <span class="math" data-tex="$M/N$">$M/N$</span>. This gives a series of <span class="math" data-tex="$M$">$M$</span>, with at most <span class="math" data-tex="$\mu(M)$">$\mu(M)$</span> simple factors. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This is a global cycle argument. It requires neither a global map from <span class="math" data-tex="$X$">$X$</span> to affine space nor an assertion that every étale chart is itself affine space.</p>
+<h2 id="3-constructing-the-dual">3. Constructing the dual</h2>
+<p>For a left module <span class="math" data-tex="$M$">$M$</span>, the sheaf <span class="math" data-tex="$\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)$">$\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)$</span> is naturally a <strong>right</strong> module: multiply the output on the right. Higher derived Hom has the same right action. Let</p>
+<span class="math math-display" data-tex="\[
+\operatorname{SC}(N)=N\otimes_{\mathcal O_X}\omega_X^{-1}
+\tag{3.1}
+\]">\[
+\operatorname{SC}(N)=N\otimes_{\mathcal O_X}\omega_X^{-1}
+\tag{3.1}
+\]</span>
+<p>denote the inverse of the side-changing equivalence from the connection chapter. This is a left module when <span class="math" data-tex="$N$">$N$</span> is a right module.</p>
+<p>Locally choose a nowhere-zero volume form <span class="math" data-tex="$\eta$">$\eta$</span>. The corresponding formal transpose is</p>
+<span class="math math-display" data-tex="\[
+t_\eta(a)=a\quad(a\in\mathcal O_X),\qquad
+t_\eta(\xi)=-\xi-\operatorname{div}_\eta(\xi),
+\quad
+t_\eta(PQ)=t_\eta(Q)t_\eta(P).
+\tag{3.2}
+\]">\[
+t_\eta(a)=a\quad(a\in\mathcal O_X),\qquad
+t_\eta(\xi)=-\xi-\operatorname{div}_\eta(\xi),
+\quad
+t_\eta(PQ)=t_\eta(Q)t_\eta(P).
+\tag{3.2}
+\]</span>
+<p>The left action in (3.1), in this trivialization, is <span class="math" data-tex="$P\cdot(n\otimes\eta^{-1})=(n\,t_\eta(P))\otimes\eta^{-1}$">$P\cdot(n\otimes\eta^{-1})=(n\,t_\eta(P))\otimes\eta^{-1}$</span>. Changing <span class="math" data-tex="$\eta$">$\eta$</span> gives the same intrinsic action; the inverse canonical bundle is precisely what accounts for the change of volume.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\mathbb D_X(M)=
+\operatorname{SC}\!\left(
+R\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)
+\right)[d].
+\tag{3.3}
+\]">\[
+\mathbb D_X(M)=
+\operatorname{SC}\!\left(
+R\mathcal Hom_{\mathcal D_X}(M,\mathcal D_X)
+\right)[d].
+\tag{3.3}
+\]</span>
+<p>The tensor with the line bundle is exact. The Hom in (3.3) is internal sheaf Hom, not a derived global-sections vector space.</p>
+<p>Coherent differential-operator modules locally admit finite resolutions by finite projective modules. One standard construction starts with a good filtration: the symbol algebra on a smooth chart is a regular ring of dimension <span class="math" data-tex="$2d$">$2d$</span>, so its finite graded module has a finite projective resolution. Locally in the base, graded projective terms become free: reduce modulo the positive-degree ideal, choose homogeneous bases of the resulting finite projective <span class="math" data-tex="$\mathcal O_X$">$\mathcal O_X$</span>-modules, and lift them by graded Nakayama. Lift the generators and relations to the filtered module successively; strictness follows by the same lower-degree induction used for good filtrations. A final free graded syzygy lifts to a free syzygy. This supplies the finite local resolutions needed to compute (3.3). In the analytic setting Kashiwara–Schapira, Proposition 11.2.6, gives the stronger local length bound <span class="math" data-tex="$d$">$d$</span>; that proposition is not itself a statement of holonomic duality.</p>
+<p>On finite projectives, evaluation is an isomorphism to the double module dual. Applying it term by term to a bounded projective resolution proves derived biduality. The evaluation has the usual complex signs and is natural in maps of complexes. Side change converts the two right/left Hom constructions into (3.3); the two shifts cancel because Hom reverses shifts. Thus</p>
+<span class="math math-display" data-tex="\[
+\mathbb D_X\mathbb D_X(K)\simeq K
+\tag{3.4}
+\]">\[
+\mathbb D_X\mathbb D_X(K)\simeq K
+\tag{3.4}
+\]</span>
+<p>for coherent bounded complexes. These local evaluation maps glue because their construction is intrinsic.</p>
+<h3 id="theorem-3-1-holonomic-ext-concentration-stated">Theorem 3.1. Holonomic Ext concentration — stated</h3>
+<p>For holonomic <span class="math" data-tex="$M$">$M$</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathcal Ext_{\mathcal D_X}^{\,i}(M,\mathcal D_X)=0
+\quad(i\ne d),
+\tag{3.5}
+\]">\[
+\mathcal Ext_{\mathcal D_X}^{\,i}(M,\mathcal D_X)=0
+\quad(i\ne d),
+\tag{3.5}
+\]</span>
+<p>and the right module <span class="math" data-tex="$\mathcal Ext^d(M,\mathcal D_X)$">$\mathcal Ext^d(M,\mathcal D_X)$</span> is holonomic. Hence <span class="math" data-tex="$\mathbb D_X(M)$">$\mathbb D_X(M)$</span> is a holonomic module in degree zero. The filtered Ext-support estimates needed for (3.5) are not proved here. An algebraic reference is C. Schnell, <a href="https://www.math.stonybrook.edu/~cschnell/pdf/notes/d-modules.pdf"><em>D-modules</em>, Lecture 8</a>, Corollary 8.4 and Lemma 8.5, with the sheaf formulation on smooth algebraic varieties in Lecture 12, page 59. Ginzburg, Section 4.3, Corollary 4.3.4, states the same result.</p>
+<p>The one-variable cyclic case will be proved completely in Section 4.</p>
+<h3 id="corollary-3-2-exact-contravariant-equivalence">Corollary 3.2. Exact contravariant equivalence</h3>
+<p>Duality gives an exact anti-equivalence of <span class="math" data-tex="$\operatorname{Hol}(\mathcal D_X)$">$\operatorname{Hol}(\mathcal D_X)$</span>, preserves simple modules, and preserves length. It also preserves <span class="math" data-tex="$D_h^b(\mathcal D_X)$">$D_h^b(\mathcal D_X)$</span>.</p>
+<p><strong>Proof.</strong> Apply the long exact Ext sequence to a short exact sequence of holonomic modules. By (3.5), its only surviving part is</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal Ext^d(M&#x27;&#x27;,\mathcal D_X)
+\longrightarrow\mathcal Ext^d(M,\mathcal D_X)
+\longrightarrow\mathcal Ext^d(M&#x27;,\mathcal D_X)
+\longrightarrow0.
+\tag{3.6}
+\]">\[
+0\longrightarrow\mathcal Ext^d(M&#x27;&#x27;,\mathcal D_X)
+\longrightarrow\mathcal Ext^d(M,\mathcal D_X)
+\longrightarrow\mathcal Ext^d(M&#x27;,\mathcal D_X)
+\longrightarrow0.
+\tag{3.6}
+\]</span>
+<p>Side change is exact, so this is the dual short exact sequence. Biduality (3.4) supplies the inverse functor.</p>
+<p>If the dual of a simple nonzero module had a nonzero proper submodule, dualizing the resulting short exact sequence would give a nonzero proper quotient of the original simple module. This is impossible. Reversing and dualizing a composition series therefore gives a composition series of the same length.</p>
+<p>Finally a bounded complex is assembled from its cohomology modules by finitely many standard truncation triangles. Duality reverses triangles, and the duals of its holonomic cohomology modules are holonomic. The Serre property then keeps every intermediate cohomology holonomic. This proves preservation of (1.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="4-cyclic-modules-on-the-line-a-complete-ext-calculation">4. Cyclic modules on the line: a complete Ext calculation</h2>
+<p>Put <span class="math" data-tex="$A=A_1(k)$">$A=A_1(k)$</span> and use the volume form <span class="math" data-tex="$dx$">$dx$</span>. Its transpose is the anti-involution</p>
+<span class="math math-display" data-tex="\[
+x^*=x,\qquad \partial^*=-\partial,\qquad
+(PQ)^*=Q^*P^*.
+\tag{4.1}
+\]">\[
+x^*=x,\qquad \partial^*=-\partial,\qquad
+(PQ)^*=Q^*P^*.
+\tag{4.1}
+\]</span>
+<p>It respects the Weyl relation, since <span class="math" data-tex="$(\partial x-x\partial)^*=(-x\partial)-(-\partial x)=1$">$(\partial x-x\partial)^*=(-x\partial)-(-\partial x)=1$</span>. It squares to the identity.</p>
+<h3 id="proposition-4-1-dual-of-a-cyclic-equation">Proposition 4.1. Dual of a cyclic equation</h3>
+<p>For <span class="math" data-tex="$0\ne P\in A$">$0\ne P\in A$</span> and <span class="math" data-tex="$M_P=A/AP$">$M_P=A/AP$</span>,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}_A^i(M_P,A)=0\quad(i\ne1),
+\qquad
+\operatorname{Ext}_A^1(M_P,A)=A/PA
+\tag{4.2}
+\]">\[
+\operatorname{Ext}_A^i(M_P,A)=0\quad(i\ne1),
+\qquad
+\operatorname{Ext}_A^1(M_P,A)=A/PA
+\tag{4.2}
+\]</span>
+<p>as a right module, and</p>
+<span class="math math-display" data-tex="\[
+\mathbb D_{\mathbb A^1}(M_P)\simeq A/AP^*.
+\tag{4.3}
+\]">\[
+\mathbb D_{\mathbb A^1}(M_P)\simeq A/AP^*.
+\tag{4.3}
+\]</span>
+<p>For a nonzero scalar <span class="math" data-tex="$P$">$P$</span>, both sides are zero.</p>
+<p><strong>Proof.</strong> The Weyl algebra is a domain by its PBW symbol filtration. Consequently right multiplication by <span class="math" data-tex="$P$">$P$</span> is injective and gives the left-module resolution</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow A
+\xrightarrow{\;\cdot P\;}A
+\longrightarrow M_P\longrightarrow0.
+\tag{4.4}
+\]">\[
+0\longrightarrow A
+\xrightarrow{\;\cdot P\;}A
+\longrightarrow M_P\longrightarrow0.
+\tag{4.4}
+\]</span>
+<p>A left-linear map <span class="math" data-tex="$A\to A$">$A\to A$</span> has the form <span class="math" data-tex="$a\mapsto aq$">$a\mapsto aq$</span>, where <span class="math" data-tex="$q$">$q$</span> is its value at <span class="math" data-tex="$1$">$1$</span>. Precomposing with the arrow in (4.4) sends <span class="math" data-tex="$q$">$q$</span> to <span class="math" data-tex="$Pq$">$Pq$</span>. Thus derived Hom is the complex of right modules</p>
+<span class="math math-display" data-tex="\[
+A\xrightarrow{\;P\cdot\;}A
+\quad\text{in degrees }0,1.
+\tag{4.5}
+\]">\[
+A\xrightarrow{\;P\cdot\;}A
+\quad\text{in degrees }0,1.
+\tag{4.5}
+\]</span>
+<p>Its kernel is zero by the domain property, and its cokernel is <span class="math" data-tex="$A/PA$">$A/PA$</span>. There are no higher terms. This proves (4.2), without using Theorem 3.1.</p>
+<p>The shift <span class="math" data-tex="$[1]$">$[1]$</span> places the cokernel in degree zero. Side change sends the right module <span class="math" data-tex="$A/PA$">$A/PA$</span> to the left module <span class="math" data-tex="$A/AP^*$">$A/AP^*$</span> by</p>
+<span class="math math-display" data-tex="\[
+[q]\longmapsto[q^*].
+\tag{4.6}
+\]">\[
+[q]\longmapsto[q^*].
+\tag{4.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="$(Pq)^*=q^*P^*$">$(Pq)^*=q^*P^*$</span>, so the right ideal becomes the indicated left ideal. For the changed left action, <span class="math" data-tex="$a\cdot[q]=[qa^*]$">$a\cdot[q]=[qa^*]$</span>, and <span class="math" data-tex="$(qa^*)^*=a q^*$">$(qa^*)^*=a q^*$</span>, so (4.6) is left-linear. It is bijective because transpose is an involution. This proves (4.3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example, <span class="math" data-tex="$\mathcal O_{\mathbb A^1}=A/A\partial$">$\mathcal O_{\mathbb A^1}=A/A\partial$</span> is self-dual. The point module <span class="math" data-tex="$\delta_0=A/Ax$">$\delta_0=A/Ax$</span> is also self-dual. For the Euler module <span class="math" data-tex="$Q_\lambda=A/A(x\partial-\lambda)$">$Q_\lambda=A/A(x\partial-\lambda)$</span>, the parameter transforms as</p>
+<span class="math math-display" data-tex="\[
+(x\partial-\lambda)^*=-(x\partial+\lambda+1),
+\qquad
+\mathbb D(Q_\lambda)=Q_{-\lambda-1}.
+\tag{4.7}
+\]">\[
+(x\partial-\lambda)^*=-(x\partial+\lambda+1),
+\qquad
+\mathbb D(Q_\lambda)=Q_{-\lambda-1}.
+\tag{4.7}
+\]</span>
+<p>The additional <span class="math" data-tex="$1$">$1$</span> comes from moving <span class="math" data-tex="$\partial$">$\partial$</span> past <span class="math" data-tex="$x$">$x$</span>.</p>
+<h2 id="5-connections-and-opposite-extensions">5. Connections and opposite extensions</h2>
+<h3 id="proposition-5-1-dual-of-a-finite-connection">Proposition 5.1. Dual of a finite connection</h3>
+<p>If <span class="math" data-tex="$E$">$E$</span> is a finite locally free module with integrable connection, then</p>
+<span class="math math-display" data-tex="\[
+\mathbb D_X(E)\simeq E^\vee
+\tag{5.1}
+\]">\[
+\mathbb D_X(E)\simeq E^\vee
+\tag{5.1}
+\]</span>
+<p>with the dual connection characterized by</p>
+<span class="math math-display" data-tex="\[
+\xi\langle\phi,e\rangle
+=\langle\nabla^\vee_\xi\phi,e\rangle
++\langle\phi,\nabla_\xi e\rangle.
+\tag{5.2}
+\]">\[
+\xi\langle\phi,e\rangle
+=\langle\nabla^\vee_\xi\phi,e\rangle
++\langle\phi,\nabla_\xi e\rangle.
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Work in commuting étale coordinate fields <span class="math" data-tex="$\partial_1,\ldots,\partial_d$">$\partial_1,\ldots,\partial_d$</span>. The Spencer resolution has terms</p>
+<span class="math math-display" data-tex="\[
+S_p=\mathcal D_X\otimes_{\mathcal O_X}
+(\textstyle\bigwedge^p T_X\otimes_{\mathcal O_X}E),
+\quad 0\leq p\leq d,
+\tag{5.3}
+\]">\[
+S_p=\mathcal D_X\otimes_{\mathcal O_X}
+(\textstyle\bigwedge^p T_X\otimes_{\mathcal O_X}E),
+\quad 0\leq p\leq d,
+\tag{5.3}
+\]</span>
+<p>placed in degree <span class="math" data-tex="$-p$">$-p$</span>. For a wedge of coordinate fields its differential is the alternating sum of</p>
+<span class="math math-display" data-tex="\[
+P\otimes(\partial_{i_1}\wedge\cdots\wedge\partial_{i_p})\otimes e
+\longmapsto
+(-1)^{a-1}
+\bigl(P\partial_{i_a}\otimes\widehat{\partial_{i_a}}\otimes e
+-P\otimes\widehat{\partial_{i_a}}\otimes\nabla_{i_a}e\bigr).
+\tag{5.4}
+\]">\[
+P\otimes(\partial_{i_1}\wedge\cdots\wedge\partial_{i_p})\otimes e
+\longmapsto
+(-1)^{a-1}
+\bigl(P\partial_{i_a}\otimes\widehat{\partial_{i_a}}\otimes e
+-P\otimes\widehat{\partial_{i_a}}\otimes\nabla_{i_a}e\bigr).
+\tag{5.4}
+\]</span>
+<p>The hat denotes the remaining wedge in its original order. Flatness and commutation of the coordinate fields make the differential square to zero; pairs of two-derivative terms cancel, with the remaining connection terms giving the curvature. The augmentation is <span class="math" data-tex="$P\otimes e\mapsto Pe$">$P\otimes e\mapsto Pe$</span>.</p>
+<p>For arbitrary vector fields <span class="math" data-tex="$\xi_1,\ldots,\xi_p$">$\xi_1,\ldots,\xi_p$</span>, the intrinsic formula also contains</p>
+<span class="math math-display" data-tex="\[
+\sum_{a&lt;b}(-1)^{a+b}P\otimes
+\bigl([\xi_a,\xi_b]\wedge
+\xi_1\wedge\cdots\widehat{\xi_a}\cdots
+\widehat{\xi_b}\cdots\wedge\xi_p\bigr)\otimes e.
+\]">\[
+\sum_{a&lt;b}(-1)^{a+b}P\otimes
+\bigl([\xi_a,\xi_b]\wedge
+\xi_1\wedge\cdots\widehat{\xi_a}\cdots
+\widehat{\xi_b}\cdots\wedge\xi_p\bigr)\otimes e.
+\]</span>
+<p>The product rule and the connection's Leibniz rule make this formula compatible with moving functions across the tensor products. Thus it is independent of the coordinate frame; its bracket term vanishes in the commuting frame used in (5.4).</p>
+<p>Give <span class="math" data-tex="$S_p$">$S_p$</span> the order filtration shifted by <span class="math" data-tex="$p$">$p$</span>. Its associated graded complex is the Koszul complex of <span class="math" data-tex="$\xi_1,\ldots,\xi_d$">$\xi_1,\ldots,\xi_d$</span> on <span class="math" data-tex="$S\otimes E$">$S\otimes E$</span>, resolving <span class="math" data-tex="$E$">$E$</span> on the zero section. These variables form a regular sequence, so it is exact except at the augmentation. Lifting a graded preimage and subtracting lowers order; the bounded lower limit proves exactness of (5.3) itself.</p>
+<p>Apply <span class="math" data-tex="$\mathcal Hom_{\mathcal D_X}(-,\mathcal D_X)$">$\mathcal Hom_{\mathcal D_X}(-,\mathcal D_X)$</span>. The associated graded dual Koszul complex is exact below degree <span class="math" data-tex="$d$">$d$</span>, with top quotient <span class="math" data-tex="$\omega_X\otimes E^\vee$">$\omega_X\otimes E^\vee$</span>. The same lowering argument proves vanishing of the lower cohomology of the filtered dual complex. In the top quotient, the relations supplied by (5.4) move a derivative from an output operator onto the dual coefficient, with a minus sign. They reduce every normal-form operator to its coefficient of order zero. The action on that coefficient is</p>
+<span class="math math-display" data-tex="\[
+(\eta\otimes\phi)\xi
+=-\mathcal L_\xi\eta\otimes\phi
+-\eta\otimes\nabla^\vee_\xi\phi.
+\tag{5.5}
+\]">\[
+(\eta\otimes\phi)\xi
+=-\mathcal L_\xi\eta\otimes\phi
+-\eta\otimes\nabla^\vee_\xi\phi.
+\tag{5.5}
+\]</span>
+<p>The pairing identity (5.2) verifies the relation for each coordinate derivative and for multiplication by functions. It also shows that the zero-order representative is unique: the candidate module <span class="math" data-tex="$\omega_X\otimes E^\vee$">$\omega_X\otimes E^\vee$</span> with action (5.5) satisfies all the relations and receives the identity map on those representatives. Thus <span class="math" data-tex="$\mathcal Ext^d(E,\mathcal D_X)$">$\mathcal Ext^d(E,\mathcal D_X)$</span> is that right module. The intrinsic Spencer construction and pairing make the local identifications compatible with changes of coordinates and frame. Side change and <span class="math" data-tex="$[d]$">$[d]$</span> give (5.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>In particular <span class="math" data-tex="$\mathbb D_X(\mathcal O_X)=\mathcal O_X$">$\mathbb D_X(\mathcal O_X)=\mathcal O_X$</span>. For the exponential connection <span class="math" data-tex="$\mathcal O_Xe^f$">$\mathcal O_Xe^f$</span>, defined by <span class="math" data-tex="$\partial_i e^f=(\partial_i f)e^f$">$\partial_i e^f=(\partial_i f)e^f$</span>, equation (5.2) gives <span class="math" data-tex="$\mathcal O_Xe^{-f}$">$\mathcal O_Xe^{-f}$</span>. On <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, the connection <span class="math" data-tex="$\mathcal O x^\lambda$">$\mathcal O x^\lambda$</span> has dual <span class="math" data-tex="$\mathcal O x^{-\lambda}$">$\mathcal O x^{-\lambda}$</span>.</p>
+<p>This agrees with (4.7). After restricting <span class="math" data-tex="$Q_{-\lambda-1}$">$Q_{-\lambda-1}$</span> to <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, if <span class="math" data-tex="$w$">$w$</span> is its cyclic generator, then <span class="math" data-tex="$xw$">$xw$</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+x\partial(xw)=-\lambda(xw).
+\tag{5.6}
+\]">\[
+x\partial(xw)=-\lambda(xw).
+\tag{5.6}
+\]</span>
+<p>The invertible change of generator removes the extra integer in the affine-line presentation.</p>
+<h3 id="laurent-polynomials-the--extension">Laurent polynomials: the *-extension</h3>
+<p>Let <span class="math" data-tex="$j:\mathbb G_m\hookrightarrow\mathbb A^1$">$j:\mathbb G_m\hookrightarrow\mathbb A^1$</span>. The module denoted here by <span class="math" data-tex="$j_*\mathcal O_{\mathbb G_m}$">$j_*\mathcal O_{\mathbb G_m}$</span> is</p>
+<span class="math math-display" data-tex="\[
+L=k[x,x^{-1}]\simeq A/A(\partial x).
+\tag{5.7}
+\]">\[
+L=k[x,x^{-1}]\simeq A/A(\partial x).
+\tag{5.7}
+\]</span>
+<p>To verify the presentation, send its cyclic generator <span class="math" data-tex="$v$">$v$</span> to <span class="math" data-tex="$x^{-1}$">$x^{-1}$</span>. The relation <span class="math" data-tex="$\partial x\,v=0$">$\partial x\,v=0$</span> holds, and differentiation and coordinate multiplication generate all Laurent monomials. The quotient is spanned by</p>
+<span class="math math-display" data-tex="\[
+x^a v\ (a\geq0),\qquad \partial^b v\ (b\geq1),
+\tag{5.8}
+\]">\[
+x^a v\ (a\geq0),\qquad \partial^b v\ (b\geq1),
+\tag{5.8}
+\]</span>
+<p>since <span class="math" data-tex="$x\partial^b v=-b\partial^{b-1}v$">$x\partial^b v=-b\partial^{b-1}v$</span> reduces every mixed monomial. Their images are <span class="math" data-tex="$x^{a-1}$">$x^{a-1}$</span> and <span class="math" data-tex="$(-1)^b b!x^{-b-1}$">$(-1)^b b!x^{-b-1}$</span>, respectively. They have distinct Laurent exponents and nonzero coefficients, so they are independent. This proves (5.7).</p>
+<p>There is an exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O_{\mathbb A^1}
+\longrightarrow L\longrightarrow\delta_0\longrightarrow0.
+\tag{5.9}
+\]">\[
+0\longrightarrow\mathcal O_{\mathbb A^1}
+\longrightarrow L\longrightarrow\delta_0\longrightarrow0.
+\tag{5.9}
+\]</span>
+<p>For a direct check of the quotient, the class of <span class="math" data-tex="$x^{-1}$">$x^{-1}$</span> is killed by <span class="math" data-tex="$x$">$x$</span>, and its successive derivatives give a basis of the negative powers modulo polynomials, exactly the basis of <span class="math" data-tex="$\delta_0$">$\delta_0$</span>. The extension cannot split: a map <span class="math" data-tex="$\delta_0\to L$">$\delta_0\to L$</span> would send its generator to a Laurent polynomial killed by <span class="math" data-tex="$x$">$x$</span>, and no nonzero such element exists. Both end modules are simple, so <span class="math" data-tex="$L$">$L$</span> has length two.</p>
+<h3 id="the--extension-and-its-simple-submodule">The !-extension and its simple submodule</h3>
+<p>Define <span class="math" data-tex="$j_!\mathcal O_{\mathbb G_m}$">$j_!\mathcal O_{\mathbb G_m}$</span> by duality of (5.7). Since <span class="math" data-tex="$(\partial x)^*=-x\partial$">$(\partial x)^*=-x\partial$</span>, Proposition 4.1 gives</p>
+<span class="math math-display" data-tex="\[
+J:=j_!\mathcal O_{\mathbb G_m}\simeq A/A(x\partial).
+\tag{5.10}
+\]">\[
+J:=j_!\mathcal O_{\mathbb G_m}\simeq A/A(x\partial).
+\tag{5.10}
+\]</span>
+<p>Dualizing (5.9), or calculating directly, gives the opposite nonsplit extension</p>
+<span class="math math-display" data-tex="\[
+0\longrightarrow\delta_0
+\longrightarrow J\longrightarrow\mathcal O_{\mathbb A^1}
+\longrightarrow0.
+\tag{5.11}
+\]">\[
+0\longrightarrow\delta_0
+\longrightarrow J\longrightarrow\mathcal O_{\mathbb A^1}
+\longrightarrow0.
+\tag{5.11}
+\]</span>
+<p>Here the point submodule is generated by <span class="math" data-tex="$w=\partial v$">$w=\partial v$</span>: <span class="math" data-tex="$xw=0$">$xw=0$</span>. To verify it completely, the quotient has basis <span class="math" data-tex="$x^a v$">$x^a v$</span>, <span class="math" data-tex="$a\geq0$">$a\geq0$</span>, and <span class="math" data-tex="$\partial^b v$">$\partial^b v$</span>, <span class="math" data-tex="$b\geq1$">$b\geq1$</span>. Spanning follows from <span class="math" data-tex="$x\partial^b v=-(b-1)\partial^{b-1}v$">$x\partial^b v=-(b-1)\partial^{b-1}v$</span>. For independence, take a vector space with basis <span class="math" data-tex="$u_a$">$u_a$</span> for <span class="math" data-tex="$a\geq0$">$a\geq0$</span> and <span class="math" data-tex="$w_b$">$w_b$</span> for <span class="math" data-tex="$b\geq1$">$b\geq1$</span>, and define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+xu_a&amp;=u_{a+1},&amp;
+\partial u_0&amp;=w_1,\\
+\partial u_a&amp;=a u_{a-1}\quad(a\geq1),\\
+\partial w_b&amp;=w_{b+1},&amp;
+xw_b&amp;=-(b-1)w_{b-1}\quad(b\geq1),
+\end{aligned}
+\tag{5.12}
+\]">\[
+\begin{aligned}
+xu_a&amp;=u_{a+1},&amp;
+\partial u_0&amp;=w_1,\\
+\partial u_a&amp;=a u_{a-1}\quad(a\geq1),\\
+\partial w_b&amp;=w_{b+1},&amp;
+xw_b&amp;=-(b-1)w_{b-1}\quad(b\geq1),
+\end{aligned}
+\tag{5.12}
+\]</span>
+<p>where the last expression is zero for <span class="math" data-tex="$b=1$">$b=1$</span>. These actions satisfy <span class="math" data-tex="$[\partial,x]=1$">$[\partial,x]=1$</span>, including at <span class="math" data-tex="$u_0$">$u_0$</span> and <span class="math" data-tex="$w_1$">$w_1$</span>. The module is generated by <span class="math" data-tex="$u_0$">$u_0$</span> with <span class="math" data-tex="$x\partial u_0=0$">$x\partial u_0=0$</span>, and the map <span class="math" data-tex="$v\mapsto u_0$">$v\mapsto u_0$</span> sends the proposed spanning vectors to its distinct basis vectors. This proves independence. Its derivative branch is <span class="math" data-tex="$\delta_0$">$\delta_0$</span>, and quotienting by that branch leaves the polynomial connection, proving (5.11).</p>
+<p>A section of the last map would lift <span class="math" data-tex="$1$">$1$</span> to <span class="math" data-tex="$v+u$">$v+u$</span>, where <span class="math" data-tex="$u$">$u$</span> is a finite linear combination of <span class="math" data-tex="$\partial^b v$">$\partial^b v$</span> for <span class="math" data-tex="$b\geq1$">$b\geq1$</span>, and would require <span class="math" data-tex="$\partial(v+u)=0$">$\partial(v+u)=0$</span>. In that derivative, the coefficient of <span class="math" data-tex="$\partial v$">$\partial v$</span> is one; the derivative of <span class="math" data-tex="$u$">$u$</span> has only higher powers. Thus no section exists.</p>
+<p>Finally <span class="math" data-tex="$\delta_0$">$\delta_0$</span> is the unique simple submodule of <span class="math" data-tex="$J$">$J$</span>. Any simple submodule other than this one would have zero intersection with it and would map isomorphically onto the simple quotient <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>, splitting (5.11). This is impossible. Both <span class="math" data-tex="$L$">$L$</span> and <span class="math" data-tex="$J$">$J$</span> restrict to the same connection on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>; their boundary attachments distinguish them.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<h3 id="exercise-6-1-easy-the-point-dual">Exercise 6.1 — easy: the point dual</h3>
+<p>Compute the dual of <span class="math" data-tex="$\delta_0$">$\delta_0$</span> on the affine line, including its Ext degree and side.</p>
+<p><strong>Solution.</strong> Use (4.4) with <span class="math" data-tex="$P=x$">$P=x$</span>. The right-module Hom complex is <span class="math" data-tex="$A\xrightarrow{x\cdot}A$">$A\xrightarrow{x\cdot}A$</span> in degrees zero and one. Its kernel is zero and its cokernel is the right module <span class="math" data-tex="$A/xA$">$A/xA$</span>. After <span class="math" data-tex="$[1]$">$[1]$</span>, only degree zero remains. Since <span class="math" data-tex="$x^*=x$">$x^*=x$</span>, side change identifies that module with <span class="math" data-tex="$A/Ax=\delta_0$">$A/Ax=\delta_0$</span>.</p>
+<h3 id="exercise-6-2-easy-an-adjoint-with-a-variable-coefficient">Exercise 6.2 — easy: an adjoint with a variable coefficient</h3>
+<p>Compute <span class="math" data-tex="$(x^2\partial-1)^*$">$(x^2\partial-1)^*$</span> and the dual of <span class="math" data-tex="$A/A(x^2\partial-1)$">$A/A(x^2\partial-1)$</span>. Identify its connection on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>.</p>
+<p><strong>Solution.</strong> Reverse the product and commute:</p>
+<span class="math math-display" data-tex="\[
+(x^2\partial-1)^*=-\partial x^2-1
+=-x^2\partial-2x-1.
+\]">\[
+(x^2\partial-1)^*=-\partial x^2-1
+=-x^2\partial-2x-1.
+\]</span>
+<p>Thus the dual is <span class="math" data-tex="$A/A(x^2\partial+2x+1)$">$A/A(x^2\partial+2x+1)$</span>, since multiplying an operator by <span class="math" data-tex="$-1$">$-1$</span> does not change its left ideal. On <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, its generator <span class="math" data-tex="$w$">$w$</span> satisfies <span class="math" data-tex="$\partial w=-(2/x+1/x^2)w$">$\partial w=-(2/x+1/x^2)w$</span>. Set <span class="math" data-tex="$z=x^2w$">$z=x^2w$</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\partial z=2xw+x^2\partial w=-w=-x^{-2}z.
+\]">\[
+\partial z=2xw+x^2\partial w=-w=-x^{-2}z.
+\]</span>
+<p>The original localized module is the exponential connection <span class="math" data-tex="$e^{-1/x}$">$e^{-1/x}$</span>, whose logarithmic derivative is <span class="math" data-tex="$x^{-2}$">$x^{-2}$</span>. The new generator exhibits its dual as <span class="math" data-tex="$e^{1/x}$">$e^{1/x}$</span>. The extra <span class="math" data-tex="$2x$">$2x$</span> in the adjoint is accounted for by this invertible generator change.</p>
+<h3 id="exercise-6-3-medium-length-and-a-nonsplit-extension">Exercise 6.3 — medium: length and a nonsplit extension</h3>
+<p>Prove that <span class="math" data-tex="$L=k[x,x^{-1}]$">$L=k[x,x^{-1}]$</span> has length two and that (5.9) does not split.</p>
+<p><strong>Solution.</strong> The polynomials are a nonzero submodule. Their quotient is generated by <span class="math" data-tex="$[x^{-1}]$">$[x^{-1}]$</span>, killed by <span class="math" data-tex="$x$">$x$</span>, and <span class="math" data-tex="$\partial^r[x^{-1}]=(-1)^r r![x^{-r-1}]$">$\partial^r[x^{-1}]=(-1)^r r![x^{-r-1}]$</span> gives its independent basis. Hence the quotient is <span class="math" data-tex="$\delta_0$">$\delta_0$</span>. The polynomial connection is simple: differentiating a nonzero polynomial enough times produces a nonzero constant, and multiplication then produces every polynomial. The point module is simple: for a nonzero polynomial in <span class="math" data-tex="$\partial$">$\partial$</span> applied to its generator, enough applications of <span class="math" data-tex="$x$">$x$</span> lower its degree to a nonzero constant multiple of the generator. Thus the sequence is a composition series with two factors.</p>
+<p>If a splitting existed, the image of the point generator would be a nonzero element <span class="math" data-tex="$u\in L$">$u\in L$</span> with <span class="math" data-tex="$xu=0$">$xu=0$</span>. Multiplication by <span class="math" data-tex="$x$">$x$</span> is invertible in <span class="math" data-tex="$L$">$L$</span>, so this is impossible.</p>
+<h3 id="exercise-6-4-medium-euler-ext-and-the-parameter">Exercise 6.4 — medium: Euler Ext and the parameter</h3>
+<p>Compute <span class="math" data-tex="$\operatorname{Ext}^1_A(Q_\lambda,A)$">$\operatorname{Ext}^1_A(Q_\lambda,A)$</span> as a right module and its associated left module. Reconcile the result with duality of a rank-one connection on <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>.</p>
+<p><strong>Solution.</strong> Resolution (4.4) gives the right module</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^1_A(Q_\lambda,A)
+=A/(x\partial-\lambda)A.
+\]">\[
+\operatorname{Ext}^1_A(Q_\lambda,A)
+=A/(x\partial-\lambda)A.
+\]</span>
+<p>There is no degree-zero or higher Ext. Transpose gives the left module <span class="math" data-tex="$A/A(x\partial+\lambda+1)=Q_{-\lambda-1}$">$A/A(x\partial+\lambda+1)=Q_{-\lambda-1}$</span>. On <span class="math" data-tex="$\mathbb G_m$">$\mathbb G_m$</span>, its generator <span class="math" data-tex="$w$">$w$</span> has Euler eigenvalue <span class="math" data-tex="$-\lambda-1$">$-\lambda-1$</span>. The generator <span class="math" data-tex="$z=xw$">$z=xw$</span> has eigenvalue <span class="math" data-tex="$-\lambda$">$-\lambda$</span>, since <span class="math" data-tex="$x\partial(xw)=xw+x(x\partial w)$">$x\partial(xw)=xw+x(x\partial w)$</span>. Therefore the localized connection is the dual <span class="math" data-tex="$\mathcal O x^{-\lambda}$">$\mathcal O x^{-\lambda}$</span>.</p>
+<h3 id="exercise-6-5-hard-the-unique-simple-submodule-of-the--extension">Exercise 6.5 — hard: the unique simple submodule of the !-extension</h3>
+<p>Prove the presentation (5.10), describe its unique simple submodule, and show why it is not an <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span>-module extension by zero.</p>
+<p><strong>Solution.</strong> The complete cyclic Ext calculation applied to <span class="math" data-tex="$P=\partial x$">$P=\partial x$</span> gives <span class="math" data-tex="$J=A/A(x\partial)$">$J=A/A(x\partial)$</span>, because <span class="math" data-tex="$(\partial x)^*=-x\partial$">$(\partial x)^*=-x\partial$</span>. Its vector <span class="math" data-tex="$w=\partial v$">$w=\partial v$</span> is killed by <span class="math" data-tex="$x$">$x$</span>, and the independent derivative branch in (5.12) identifies <span class="math" data-tex="$Aw$">$Aw$</span> with <span class="math" data-tex="$\delta_0$">$\delta_0$</span>. Quotienting by this branch gives <span class="math" data-tex="$A/A\partial=\mathcal O$">$A/A\partial=\mathcal O$</span>. The coefficient of <span class="math" data-tex="$\partial v$">$\partial v$</span> prevents any horizontal lift of <span class="math" data-tex="$1$">$1$</span>, proving nonsplitting exactly as in Section 5.</p>
+<p>If another simple submodule existed, its intersection with <span class="math" data-tex="$Aw$">$Aw$</span> would be zero by simplicity, and its nonzero image in the simple quotient <span class="math" data-tex="$\mathcal O$">$\mathcal O$</span> would be an isomorphism. That would yield a section and contradict nonsplitting. So <span class="math" data-tex="$Aw$">$Aw$</span> is unique. It is nonzero and supported at the omitted point. The underlying sheaf and derivative action in (5.12) have a point contribution and a nontrivial boundary extension; the construction is the holonomic dual of <span class="math" data-tex="$j_*\mathcal O$">$j_*\mathcal O$</span>, not the operation of assigning zero stalks outside the open subset.</p>
+<h3 id="exercise-6-6-hard-the-exceptional-set-and-the-dimension-hypothesis">Exercise 6.6 — hard: the exceptional set and the dimension hypothesis</h3>
+<p>Compute the generic-connection open set for <span class="math" data-tex="$M=\mathcal O_{\mathbb A^1}\oplus\delta_0$">$M=\mathcal O_{\mathbb A^1}\oplus\delta_0$</span>, and explain why the same argument does not produce a dense connection open set for the regular module <span class="math" data-tex="$A_1$">$A_1$</span>.</p>
+<p><strong>Solution.</strong> The first module has characteristic variety equal to the zero section together with the cotangent fiber over zero. Projectivizing removes the zero-section component and turns the nonzero fiber into a single point mapping to zero. Thus <span class="math" data-tex="$Z=\{0\}$">$Z=\{0\}$</span> and <span class="math" data-tex="$U=\mathbb G_m$">$U=\mathbb G_m$</span>; the point summand disappears and the remaining connection has rank one.</p>
+<p>For the regular module, the characteristic variety is all of <span class="math" data-tex="$T^*\mathbb A^1$">$T^*\mathbb A^1$</span>, of dimension two. Its projectivization is <span class="math" data-tex="$\mathbb A^1\times\mathbf P^0$">$\mathbb A^1\times\mathbf P^0$</span>, whose image is all of <span class="math" data-tex="$\mathbb A^1$">$\mathbb A^1$</span>. Inequality (2.2) fails: the projectivized characteristic set has dimension one, not at most zero. Accordingly there is no dense open set supplied by this argument. In fact the regular module has infinitely many independent derivative directions over the coordinate ring on every nonempty open set, so it cannot be a finite connection there.</p>
+<h2 id="references-and-proof-boundary">References and proof boundary</h2>
+<p>Generic connection structure and finite length are proved in Section 2 from the characteristic-support and cycle results of the earlier lessons. The duality construction, bidual evaluation, exactness consequences, cyclic Ext calculation, connection dual, the two opposite boundary extensions and all six exercises are worked out here. The general holonomic Ext-concentration theorem and its filtered support estimates are stated external inputs; Section 4 proves the assigned cyclic case independently.</p>
+<p>V. Ginzburg, <a href="https://math.berkeley.edu/~nadler/ginzburg.dmodules.pdf"><em>Lectures on D-modules</em></a>, Section 4.3, especially Definition 4.3.1 and Corollary 4.3.4, discusses algebraic holonomic duality. The shift and right/left sides are fixed explicitly in (3.3)–(4.6).</p>
+<p>E. Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172"><em>Lectures on the Langlands program and conformal field theory</em></a>, Section 3.6, explains the relation with regular holonomic modules and the operations on their analytic solutions. Bhatt, Blickle, Lyubeznik, Singh and Zhang, <a href="https://arxiv.org/abs/2308.03155"><em>Applications of perverse sheaves in commutative algebra</em></a>, Section 2, theorem on the Riemann–Hilbert correspondence, part (1), records compatibility with duality for <strong>regular</strong> holonomic modules. That analytic correspondence is outside this chapter's proofs and does not restrict the algebraic duality used here to regular modules.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/holonomic-d-modules-and-duality.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-DMOD">Repository</a></nav>
+</footer>
+</body>
+</html>

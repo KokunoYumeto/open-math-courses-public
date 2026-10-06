@@ -1,0 +1,491 @@
+# Extensions of complete valued fields
+
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Original text: CC0. The explicitly delimited Milne adaptation below: CC BY-NC-SA 4.0.*
+
+A polynomial equation enlarges a field. Over a complete valued field, it also determines the distance on that enlargement: there is no choice of absolute value left to make. This rigidity has two useful consequences. Conjugate roots have equal absolute value, and a sufficiently small change of a separable defining equation preserves the field it defines.
+
+We begin with the coefficient constraint behind the extension theorem, then establish completeness and integral bases. We use these results to compare nearby roots before turning to Newton polygons and finiteness of extensions.
+
+The prerequisites are the lessons **Hensel's lemma, squares and roots of unity in p-adic fields** and **Decomposition of primes in extensions**. We use the earlier completion, approximation and Hensel results. The algebraic background consists of minimal polynomials, field norms, integral elements and finite Galois theory. Specific imports are listed at the end.
+
+Throughout, an absolute value satisfies the ordinary triangle inequality. A nonarchimedean absolute value satisfies the stronger inequality. Its valuation ring is
+
+\[
+O_K=\{x\in K\mid |x|\leq1\},\qquad
+\mathfrak m_K=\{x\in K\mid |x|<1\}.
+\]
+
+When the valuation is discrete and nontrivial, \(v_K(K^\times)=\mathbf Z\) and \(v_K(\pi_K)=1\). On an algebraic extension, \(v_K\) will mean the extension that still has this normalization on \(K\). We write \(v_L\) for the integer-valued normalization on \(L\).
+
+## 0. Algebraic generators
+
+**Begin component licensed CC BY-NC-SA 4.0.** Adapted and expanded from J. S. Milne, *Fields and Galois Theory*, version 5.00, June 2021, Theorem 5.1 and Remark 5.2, pp. 59–60, with the elementary splitting-field construction of Proposition 2.4, p. 29, and greatest-common-divisor invariance of Proposition 2.10, pp. 30–31. Native source: [FT500.zip](https://www.jmilne.org/math/CourseNotes/FT500.zip), FT.tex (version 5.00); readable edition: [FT500.pdf](https://www.jmilne.org/math/CourseNotes/FT500.pdf). Copyright ©1996–2021 J.S. Milne. Licence: https://creativecommons.org/licenses/by-nc-sa/4.0/. The source and this adaptation are offered under that licence, including its disclaimer of warranties. GPT-6.1 Sol (OpenAI), Ultra, changed notation, made the nonzero choice of the coefficient explicit, included the finite-field case and the polynomial auxiliary arguments, and added the distinction between field and integral-ring generators on 2026-10-04. This is an AI adaptation and self-check; no author endorsement or independent human review is asserted.
+
+**Proposition 0.1 (one generator of a finite separable field extension).** Every finite separable extension \(E/F\) has the form \(E=F(\theta)\). More generally, the same conclusion holds if \(E=F(\alpha_1,\ldots,\alpha_r)\) is finite and \(\alpha_2,\ldots,\alpha_r\) are separable over \(F\), with no separability assumption on \(\alpha_1\).
+
+**Proof.** If \(F\) is finite, [Lemma 4.0 of the preceding Hensel lesson](NT-LOC-03.md) proves the conclusion. Suppose now that \(F\) is infinite. A finite extension has finitely many field generators: for example, a finite vector-space basis generates the field. It suffices to combine two generators at a time.
+
+Let \(E=F(\alpha,\beta)\), where \(\beta\) is separable over \(F\), and let \(f,g\in F[X]\) be the respective monic minimal polynomials. Work in a finite extension \(L/E\) splitting \(fg\). Such an extension is constructed by adjoining a root of an irreducible factor of the polynomial still unsplit, using the field quotient by that factor, and repeating; its remaining degree drops at every step.
+
+List the distinct roots of \(f\) as \(\alpha=\alpha_1,\ldots,\alpha_s\), and the roots of \(g\) as \(\beta=\beta_1,\ldots,\beta_t\). The latter are distinct by separability. There are only finitely many numbers
+
+\[
+\frac{\alpha_i-\alpha}{\beta-\beta_j}\qquad(1\le i\le s,\ 2\le j\le t)
+\]
+
+in \(L\). Choose a nonzero \(c\in F\) unequal to each of these numbers. This is possible because \(F\) is infinite. Put \(\theta=\alpha+c\beta\).
+
+The polynomials \(g(X)\) and \(f(\theta-cX)\) belong to \(F(\theta)[X]\) and both vanish at \(\beta\). If another root \(\beta_j\) of \(g\) were a root of \(f(\theta-cX)\), then \(\theta-c\beta_j=\alpha_i\) for some \(i\). When \(j\ne1\), this contradicts the choice of \(c\); when \(j=1\), the equality forces \(\alpha_i=\alpha\). Thus \(\beta\) is their only common root. Its multiplicity in \(g\) is one, so their monic greatest common divisor in \(L[X]\) is \(X-\beta\).
+
+The monic greatest common divisor does not change upon extending a field. To verify this here, compute it by the Euclidean algorithm in \(F(\theta)[X]\), obtaining a monic divisor \(D\) and a Bézout identity \(D=ug+vf(\theta-cX)\). In \(L[X]\), \(D\) still divides both polynomials; conversely every common divisor divides the displayed identity. Hence the same monic \(D\) is the greatest common divisor over \(L\). Therefore \(X-\beta\in F(\theta)[X]\), and \(\beta\in F(\theta)\). The equation \(\alpha=\theta-c\beta\) then gives \(\alpha\in F(\theta)\), so \(E=F(\theta)\).
+
+Apply the two-generator argument repeatedly to \(\alpha_1,\ldots,\alpha_r\). At each step the next generator remains separable over the original base field \(F\), so the argument applies even if the combined first generator is inseparable. In the finite separable case all chosen generators are separable, proving the first statement as well. ∎
+
+This proposition gives a **field** generator. It does not assert \(\mathcal O_E=\mathcal O_F[\theta]\) for an extension of valued fields. The residue-basis and uniformizer argument in NT-LOC-07, Corollary 6.2, establishes that separate integral-ring statement.
+
+**End component NT-LOC-MILNE500-PRIMITIVE.**
+
+## 1. A distance forced by a polynomial
+
+**Lemma 1.1.** Let \(K\) be complete and nonarchimedean. If
+
+\[
+P(X)=a_0+a_1X+\cdots+a_dX^d\in K[X]
+\]
+
+is irreducible and \(a_0a_d\ne0\), then
+
+\[
+\max_i|a_i|=\max(|a_0|,|a_d|).
+\]
+
+In particular, a monic irreducible polynomial whose constant coefficient is integral has every coefficient integral.
+
+**Proof.** Divide \(P\) by a coefficient of largest absolute value. Its coefficients now belong to \(O_K\), and at least one has nonzero reduction. If both endpoints reduce to zero, its reduction has the form
+
+\[
+\overline P=X^r H,\qquad 0<r<d,\qquad H(0)\ne0.
+\]
+
+The two displayed factors are coprime. Factor Hensel lifting, including the case where the degree drops upon reduction, produces a factor of \(P\) of degree \(r\). Both factors have positive degree, contradicting irreducibility. Thus an endpoint has maximal absolute value. For a monic polynomial with integral constant coefficient, that maximum is \(1\). ∎
+
+**Theorem 1.2 (extension of the absolute value).** Let \(K\) be a complete valued field and \(L/K\) a finite extension of degree \(n\). There is exactly one absolute value on \(L\) restricting to the given one on \(K\). It is
+
+\[
+|x|_L=|N_{L/K}(x)|_K^{1/n}.
+\]
+
+The field \(L\) is complete. If the absolute value is nonarchimedean, \(O_L\) is the integral closure of \(O_K\) in \(L\). The absolute value also extends uniquely to every algebraic extension of \(K\), although an infinite extension need not be complete.
+
+**Proof of existence in the nonarchimedean case.** Put \(A=O_K\), and let \(B\) be its integral closure in \(L\). For \(x\ne0\), let its monic minimal polynomial have degree \(d\) and constant coefficient \(c\). The determinant definition of the field norm gives
+
+\[
+N_{L/K}(x)=\bigl((-1)^dc\bigr)^{n/d}.
+\]
+
+If \(x\in B\), its minimal polynomial has coefficients in \(A\), since \(A\) is integrally closed. Conversely, if \(N_{L/K}(x)\in A\), then \(|c|\leq1\), and Lemma 1.1 makes that minimal polynomial integral. Hence
+
+\[
+x\in B\quad\Longleftrightarrow\quad |N_{L/K}(x)|\leq1.
+\tag{1}
+\]
+
+The assertion also holds for \(x=0\). Define \(|x|_L\) by the norm formula. It is positive on nonzero elements, multiplicative, and restricts to \(|\cdot|_K\), because \(N_{L/K}(a)=a^n\) for \(a\in K\). To prove the strong triangle inequality, suppose \(|x|_L\leq|y|_L\) and \(y\ne0\). Then \(x/y\in B\). Integral elements form a ring, so \(1+x/y\in B\). Equation (1) gives
+
+\[
+|x+y|_L\leq|y|_L.
+\]
+
+Thus the formula is an absolute value and its valuation ring is \(B\).
+
+**Uniqueness.** First suppose the absolute value on \(K\) is nontrivial and nonarchimedean. Every extension is nonarchimedean: the integer-bound criterion from the first lesson applies equally in \(L\). If \(|\cdot|'\) is another extension, every integral element has \(|x|'\leq1\). Indeed, if \(|x|'>1\), the leading term of a monic integral equation has strictly larger absolute value than every other term, which prevents their sum from being zero. Therefore
+
+\[
+|x|_L\leq1\quad\Longrightarrow\quad |x|'\leq1.
+\]
+
+Were these two absolute values inequivalent, weak approximation on \(L\) would produce \(x\) with \(|x|_L<1\) and \(|x|'>1\), a contradiction. Equivalent nontrivial absolute values differ by a positive power. Agreement on \(K\), at an element whose absolute value differs from \(1\), forces that power to be \(1\).
+
+If the base absolute value is trivial, any algebraic \(x\ne0\) has absolute value \(1\) in an extension. A monic equation rules out \(|x|'>1\), and the same argument applied to \(x^{-1}\) rules out \(|x|'<1\). The trivial extension is complete.
+
+For an archimedean base, the complete-field classification in the second lesson identifies \(K\) with \(\mathbf R\) or \(\mathbf C\), carrying the usual absolute value to a power \(0<\gamma\leq1\). The only possible proper finite extension is \(\mathbf C/\mathbf R\). There the norm is \(z\overline z\), so the formula gives \(|z|_{\mathrm{usual}}^\gamma\). For uniqueness, apply the same classification to the completion of any proposed extension. Agreement at \(2\) forces the exponent to be \(\gamma\), and continuity and density of \(\mathbf Q\) force the embedding of \(\mathbf R\) to be the usual one. Its extension to \(\mathbf C\) is one of the two conjugate embeddings, which give the same modulus. For a finite extension of \(\mathbf C\), there is nothing to extend.
+
+Completeness in the nontrivial nonarchimedean case follows from Proposition 2.1 below, applied to \(L\) as a normed \(K\)-vector space. Finally, finite subextensions of an algebraic extension have compatible absolute values by uniqueness, so their union has exactly one extension. ∎
+
+One immediate consequence will be used repeatedly: every \(K\)-embedding between algebraic extensions inside a fixed algebraic closure is an isometry. Pulling back the absolute value gives another extension of the one on \(K\).
+
+## 2. Coordinates control convergence
+
+A norm \(N\) on a \(K\)-vector space means a real-valued function with \(N(x)=0\) exactly at zero, \(N(ax)=|a|N(x)\), and \(N(x+y)\leq N(x)+N(y)\). The stronger triangle inequality is allowed but is not needed here.
+
+**Proposition 2.1 (finite-dimensional norms).** If \(K\) is complete and \(V\) is finite-dimensional, any norm on \(V\) is equivalent to the coordinate norm for any basis. More precisely, for a basis \(e_1,\ldots,e_n\) there are \(c,C>0\) such that
+
+\[
+c\max_i|a_i|\leq N\left(\sum_i a_ie_i\right)
+\leq C\max_i|a_i|.
+\]
+
+Consequently all norms on \(V\) are equivalent, every such norm is complete, and a coordinate map \(K^n\to V\) is a homeomorphism.
+
+**Proof.** The upper bound holds with \(C=\sum_iN(e_i)\). For the lower bound, use induction on \(n\). Dimension zero is immediate and dimension one follows from homogeneity. Put \(W=\sum_{i<n}Ke_i\) and \(v=e_n\). By induction \(W\) is complete for \(N\), hence closed in \(V\). Because \(v\notin W\), some \(\delta>0\) satisfies \(N(v-w)\geq\delta\) for every \(w\in W\).
+
+Write \(x=w+av\). If \(a\ne0\), homogeneity gives \(N(x)\geq\delta|a|\); the inequality holds also for \(a=0\). The triangle inequality then gives
+
+\[
+N(w)\leq N(x)+|a|N(v)
+\leq \left(1+\frac{N(v)}\delta\right)N(x).
+\]
+
+The induction bound controls every coordinate of \(w\) by this expression, and the bound on \(|a|\) controls the final coordinate. This proves the lower bound. Coordinate Cauchy sequences converge coordinate by coordinate in \(K\); the two bounds transfer this statement to \(N\). ∎
+
+In particular, finite subextensions of an algebraic extension of a complete field are closed in that algebraic extension. This does not assert that their infinite union is closed or complete.
+
+## 3. An integral basis from residue digits
+
+Let \(K\) now be complete with a nontrivial discrete valuation, \(A=O_K\), and \(L/K\) finite of degree \(n\). The norm formula implies
+
+\[
+v_K(L^\times)\subseteq\frac1n\mathbf Z.
+\]
+
+This group contains \(\mathbf Z\), so it equals \(\frac1e\mathbf Z\) for a positive integer \(e\). Thus \(L\) is discretely valued. Choose \(\pi_L\) with \(v_K(\pi_L)=1/e\) and put \(v_L=e v_K\). Then
+
+\[
+v_L|_K=e v_K,\qquad \pi_K=u\pi_L^e
+\]
+
+for a unit \(u\in O_L^\times\). Let \(k=A/\mathfrak m_K\) and \(\ell=O_L/\mathfrak m_L\).
+
+**Theorem 3.1 (degree and integral basis).** The residue extension \(\ell/k\) is finite. If its degree is \(f\), and \(u_1,\ldots,u_f\in O_L\) lift a \(k\)-basis of \(\ell\), then
+
+\[
+\{\pi_L^i u_j\mid 0\leq i<e,\ 1\leq j\leq f\}
+\]
+
+is an \(A\)-basis of \(O_L\) and a \(K\)-basis of \(L\). In particular,
+
+\[
+[L:K]=ef,\qquad O_L\cong A^{[L:K]}.
+\]
+
+This holds for every finite extension, including inseparable extensions and imperfect residue fields.
+
+**Proof.** First, any \(k\)-linearly independent residue classes have \(K\)-linearly independent lifts. In a proposed \(K\)-relation, divide by a coefficient of largest absolute value. All coefficients are now integral and one is a unit; reduction would give a nontrivial relation between the residue classes. Thus \(f\leq n\).
+
+Next consider a nonzero sum
+
+\[
+z=\sum_{i=0}^{e-1}\sum_{j=1}^f a_{ij}\pi_L^iu_j,
+\qquad a_{ij}\in K.
+\]
+
+The least valuation among its terms has the form \(em+i\), with \(m\in\mathbf Z\) and exactly one index \(i\in\{0,\ldots,e-1\}\). Divide by \(\pi_K^m\pi_L^i\). Terms of larger valuation vanish upon reduction. The remaining terms reduce to a nonzero combination of the independent classes of the \(u_j\). Hence the sum cannot vanish. This proves independence of the displayed \(ef\) elements.
+
+To prove spanning over \(A\), take \(x\in O_L\). Unless \(x=0\), write its valuation as \(em+i\), with \(m\geq0\) and \(0\leq i<e\). The residue of \(x/(\pi_K^m\pi_L^i)\) is a combination of the classes of \(u_j\). Lift its coefficients to \(A\), and subtract the corresponding combination of \(\pi_K^m\pi_L^iu_j\) from \(x\). The remainder has strictly greater integer valuation.
+
+Repeat with the remainder. Either this process terminates or its valuations tend to infinity. In the latter case, the powers \(m\) appearing in the successive corrections tend to infinity. For each fixed \((i,j)\), the accumulated coefficient is therefore a convergent series in \(A\). Completeness of \(K\) supplies its limit. The remainders tend to zero, so the limits express \(x\) as an \(A\)-linear combination of the displayed elements. Independence makes this expression unique. Finally every element of \(L\) becomes integral after multiplication by a sufficiently large power of \(\pi_K\). Thus the same elements span \(L\) over \(K\), and \(n=ef\). ∎
+
+We call \(e\) the **ramification index** and \(f\) the **residue degree**. An extension is **totally ramified** when \(f=1\). It is **unramified** when \(e=1\) and the residue extension is separable; this last condition matters for imperfect residue fields.
+
+For example, in characteristic \(p\) take \(K=\mathbf F_p(s)((t))\) and \(L=\mathbf F_p(u)((t))\), with \(u^p=s\). The residue degree is \(p\) and \(e=1\). The elements \(1,u,\ldots,u^{p-1}\) form an integral basis, and \([L:K]=p\), even though the extension is inseparable. It is not unramified, because its residue extension is inseparable.
+
+The two absolute-value normalizations should be kept distinct. If \(k\) has \(q\) elements, the absolute value restricting exactly to \(q^{-v_K}\) on \(K\) is \(q^{-v_L/e}\). The frequently used local normalization on \(L\) is
+
+\[
+\|x\|_L=(q^f)^{-v_L(x)}
+=\|N_{L/K}(x)\|_K.
+\]
+
+It restricts to \(\|a\|_K^n\) on \(a\in K\), whereas Theorem 1.2 uses its \(n\)-th root. Their topologies agree.
+
+## 4. When proximity forces containment
+
+**Theorem 4.1 (Krasner's lemma).** Let \(K\) be complete and nonarchimedean. In a fixed algebraic closure, let \(\alpha\) be separable over \(K\) and \(\beta\) algebraic over \(K\). If
+
+\[
+|\beta-\alpha|<|\alpha-\alpha'|
+\quad\text{for every conjugate }\alpha'\ne\alpha,
+\]
+
+then \(K(\alpha)\subseteq K(\beta)\).
+
+**Proof.** Set \(F=K(\beta)\). The element \(\alpha\) is separable over \(F\), because its minimal polynomial over \(F\) divides its separable minimal polynomial over \(K\). Let \(M/F\) be a finite Galois extension containing \(\alpha\). For \(\sigma\in\operatorname{Gal}(M/F)\), uniqueness of the extended absolute value makes \(\sigma\) an isometry. Since it fixes \(\beta\),
+
+\[
+|\sigma\alpha-\alpha|
+\leq\max(|\sigma\alpha-\beta|,|\beta-\alpha|)
+=|\beta-\alpha|.
+\]
+
+But \(\sigma\alpha\) is a \(K\)-conjugate of \(\alpha\). The strict hypothesis forces \(\sigma\alpha=\alpha\). Thus all of \(\operatorname{Gal}(M/F)\) fixes \(\alpha\), and the fixed-field theorem gives \(\alpha\in F\). ∎
+
+Separability cannot be discarded. In characteristic \(p\), take \(K=\mathbf F_p((t))\), \(\alpha^p=t\), and \(\beta=0\). There is no distinct conjugate of \(\alpha\), so the displayed condition is vacuous, yet \(\alpha\notin K\), since its valuation is \(1/p\).
+
+**Corollary 4.2 (stability of a defining equation).** Let \(f\in K[X]\) be monic, irreducible and separable of degree \(n\). There is a coefficient neighborhood of \(f\) in the space of monic degree-\(n\) polynomials such that every \(g\) in that neighborhood is irreducible and separable. Its roots can be matched to the roots of \(f\) so that corresponding roots \(\alpha,\beta\) satisfy
+
+\[
+K(\alpha)=K(\beta).
+\]
+
+The matching can be made inside any fixed sufficiently small disjoint balls around the roots of \(f\).
+
+**Proof.** In degree one, write \(f=X-a\) and \(g=X-b\); the roots lie in \(K\), and their distance is the distance between the constant coefficients. This proves the assertion in that case. If the base absolute value is trivial, a coefficient neighborhood of radius less than \(1\) contains only \(f\). Otherwise choose a root \(\alpha\), put \(L=K(\alpha)\), and choose \(r>0\) smaller than every distance between distinct roots of \(f\).
+
+Choose \(\lambda\in K^\times\) sufficiently small that \(a=\lambda\alpha\in O_L\) and
+
+\[
+F(T)=\lambda^n f(T/\lambda)\in O_K[T].
+\]
+
+Here \(D=|F'(a)|>0\). For a sufficiently close monic polynomial \(g\), its corresponding polynomial \(G(T)=\lambda^n g(T/\lambda)\) belongs to \(O_K[T]\) and satisfies
+
+\[
+|G'(a)-F'(a)|<D,\qquad
+|G(a)|<\min(D^2,D|\lambda|r).
+\]
+
+These conditions follow because evaluation and differentiation at the fixed \(a\) are continuous functions of the finitely many coefficients. The first inequality makes \(|G'(a)|=D\). Newton lifting in the complete field \(L\) gives a root \(b\in L\) with \(|b-a|\leq|G(a)|/D<|\lambda|r\). Consequently \(\beta=b/\lambda\in L\) is a root of \(g\), and \(|\beta-\alpha|<r\). Krasner gives \(K(\alpha)\subseteq K(\beta)\); the reverse inclusion follows from \(\beta\in L\). Since this field has degree \(n\), the degree-\(n\) monic polynomial \(g\) is its minimal polynomial. It is separable because \(L/K\) is separable.
+
+Apply the same construction at all roots of \(f\) and intersect the finitely many coefficient neighborhoods. The resulting roots of \(g\) lie in disjoint balls, so are distinct and exhaust its \(n\) roots. ∎
+
+The conclusion concerns algebraic fields inside a chosen algebraic closure, not just their degrees or residue data. Polynomials with the same Newton polygon can still define different extensions.
+
+## 5. Root valuations in the coefficients
+
+For a nonarchimedean additive valuation \(v\), put \(v(0)=+\infty\). If
+
+\[
+f(X)=a_0+a_1X+\cdots+a_nX^n,\qquad a_0a_n\ne0,
+\]
+
+its **Newton polygon** is the lower convex boundary of the coefficient points \((i,v(a_i))\). Zero coefficients contribute no finite point. Our convention uses increasing powers of \(X\), so a slope \(-m\) corresponds to root valuation \(m\).
+
+**Theorem 5.1 (Newton polygon).** Let \(K\) be complete and nonarchimedean, and let \(f\) be as above. A segment of slope \(-m\) and horizontal length \(r\) accounts for exactly \(r\) roots of valuation \(m\), counted with algebraic multiplicity. Moreover,
+
+\[
+f(X)=a_n\prod_m f_m(X),\qquad
+f_m(X)=\prod_{v(\alpha)=m}(X-\alpha)\in K[X],
+\]
+
+where each distinct root occurs with its multiplicity. This assertion holds in every characteristic, without a separability assumption. Discreteness is needed only for the integral-denominator arguments that follow.
+
+**Proof of the polygon assertion.** Divide by \(a_n\); this translates all heights by the same amount and preserves slopes. List the roots of the monic polynomial in a splitting field, with multiplicity, so that
+
+\[
+t_1=v(\alpha_1)\leq t_2\leq\cdots\leq t_n,\qquad
+S_j=t_1+\cdots+t_j,\qquad S_0=0.
+\]
+
+The coefficient \(a_{n-j}\) is, up to sign, a sum of products of \(j\) roots. Each such product has valuation at least \(S_j\), so
+
+\[
+v(a_{n-j})\geq S_j.
+\]
+
+If \(j=n\), or if \(t_j<t_{j+1}\), exactly one subset of \(j\) indices attains this minimum: it consists of all the roots in the first \(j\) positions. Therefore equality holds at these indices. It holds also for \(j=0\), since the leading coefficient is \(1\).
+
+Between consecutive such indices, all the newly included \(t_i\) are equal, so the points \((n-j,S_j)\) lie on a line of slope minus that common value. Reading from left to right, these slopes increase, making a convex polygon. Every coefficient point lies on or above it, and each endpoint of one of its segments is an actual coefficient point. It is therefore exactly the lower convex boundary. The lengths count the roots in the corresponding equal-valuation groups.
+
+**Proof of the factorization assertion.** Every conjugate of an algebraic element has the same valuation, by Theorem 1.2. Factor \(f\) over \(K\) into monic irreducible factors with their polynomial multiplicities. All roots of each irreducible factor have a single valuation, even when that factor is inseparable. Group the entire irreducible factors by this value. Their products are exactly the \(f_m\), so belong to \(K[X]\). ∎
+
+**Corollary 5.2 (Eisenstein).** Let \(K\) be complete and discretely valued. If
+
+\[
+f=X^n+a_{n-1}X^{n-1}+\cdots+a_0,\qquad
+v_K(a_i)\geq1\ (i<n),\qquad v_K(a_0)=1,
+\]
+
+then \(f\) is irreducible. For a root \(\alpha\), the extension \(K(\alpha)/K\) has degree and ramification index \(n\), residue degree \(1\), and \(\alpha\) is a uniformizer.
+
+**Proof.** The polygon is the single segment from \((0,1)\) to \((n,0)\). All roots have valuation \(1/n\). If a root has minimal polynomial of degree \(d\), all its conjugates have this valuation, and the constant coefficient of its minimal polynomial has valuation \(d/n\). This is an integer, so \(n\mid d\). Since \(d\leq n\), we have \(d=n\). The value group of \(K(\alpha)\) contains \(1/n\), giving \(e\geq n\); Theorem 3.1 gives \(ef=n\). Hence \(e=n\), \(f=1\), and \(v_{K(\alpha)}(\alpha)=1\). ∎
+
+More generally, a degree-\(n\) polynomial whose polygon is a single segment of slope \(-a/n\), with \(\gcd(a,n)=1\), is irreducible by the same denominator argument. A single segment with a smaller denominator need not imply irreducibility.
+
+**Example 5.3.** Over \(\mathbf Q_p\), the coefficient points of \(X^2+X+p\) are
+
+\[
+(0,1),\quad(1,0),\quad(2,0).
+\]
+
+The slopes are \(-1\) and \(0\), each of length one. The polynomial therefore has one root of valuation \(1\) and one of valuation \(0\). Each slope factor has degree one, so both roots belong to \(\mathbf Q_p\). Hensel lifting also sees them in the distinct residue classes \(0\) and \(-1\).
+
+For \(X^3+3X^2+9\) over \(\mathbf Q_3\), the finite points are
+
+\[
+(0,2),\quad(2,1),\quad(3,0).
+\]
+
+At abscissa \(2\), the line joining the endpoints has height \(2/3<1\). Thus the middle point is above the hull. The unique slope is \(-2/3\), and all three roots have valuation \(2/3\). The denominator is \(3\), so the polynomial is irreducible. Its root generates a totally ramified cubic extension. That root itself has integer-normalized valuation \(2\), rather than \(1\).
+
+## 6. Three quadratic tests and a cyclotomic comparison
+
+The invariants \(e\) and \(f\) measure different changes to a field: its group of values and its residue field.
+
+For \(\mathbf Q_3(\sqrt3)\), the polynomial \(X^2-3\) is Eisenstein. Thus \(e=2\), \(f=1\), and \(\sqrt3\) is a uniformizer.
+
+For \(\mathbf Q_3(\sqrt2)\), the polynomial \(X^2-2\) has irreducible reduction over \(\mathbf F_3\). Its root is integral, and its residue generates a degree-two extension. Theorem 3.1 then forces \(f=2\) and \(e=1\).
+
+Put \(U=\mathbf Q_5(\sqrt2)\). The same argument, now using the nonsquare \(2\) in \(\mathbf F_5\), gives \(e(U/\mathbf Q_5)=1\) and residue field \(\mathbf F_{25}\). In \(U\), the element \(5\) remains a uniformizer. Therefore \(X^2-5\) is Eisenstein over \(U\), and
+
+\[
+L=\mathbf Q_5(\sqrt2,\sqrt5)
+\]
+
+has degree \(4\), residue field \(\mathbf F_{25}\), and value group \(\tfrac12\mathbf Z\) for the extended \(v_5\). Hence \(e(L/\mathbf Q_5)=f(L/\mathbf Q_5)=2\).
+
+Here is a comparison where proximity gives an equality of fields.
+
+**Proposition 6.1.** For a primitive \(p\)-th root of unity \(\zeta_p\) and any root \(\beta\) of \(X^{p-1}+p\) in a fixed algebraic closure,
+
+\[
+\mathbf Q_p(\zeta_p)=\mathbf Q_p(\beta).
+\]
+
+**Proof.** For \(p=2\), both fields are \(\mathbf Q_2\). Suppose \(p>2\), and put \(\alpha=\zeta_p-1\). Its equation is
+
+\[
+F(X)=\frac{(1+X)^p-1}{X}
+=X^{p-1}+pU(X),\qquad
+U(X)=1+\sum_{i=1}^{p-2}\frac{\binom p{i+1}}p X^i.
+\]
+
+All coefficients of \(U\) are integral. The polynomial \(F\) is Eisenstein, so \(E=\mathbf Q_p(\alpha)\) has degree \(p-1\), and \(\alpha\) is a uniformizer. In particular \(U(\alpha)\equiv1\pmod{\mathfrak m_E}\), and
+
+\[
+\alpha^{p-1}=-pU(\alpha).
+\]
+
+Hensel lifting applied in \(E\) to \(T^{p-1}-U(\alpha)^{-1}\) at the residue root \(1\) gives \(t\equiv1\pmod{\mathfrak m_E}\). The derivative \(p-1\) is a unit. Set \(\beta_0=\alpha t\). Then
+
+\[
+\beta_0^{p-1}=-p,\qquad |\beta_0-\alpha|<|\alpha|.
+\]
+
+The distinct conjugates of \(\alpha\) are \(\zeta_p^i-1\), \(1\leq i<p\). For \(i\ne1\), their distance from \(\alpha\) is \(|\alpha|\): the quotient
+
+\[
+\frac{\zeta_p^{\,i-1}-1}{\zeta_p-1}
+=1+\zeta_p+\cdots+\zeta_p^{\,i-2}
+\]
+
+reduces to the nonzero element \(i-1\) of \(\mathbf F_p\). Krasner's lemma therefore gives \(E\subseteq\mathbf Q_p(\beta_0)\). Both have degree \(p-1\), since \(X^{p-1}+p\) is Eisenstein, so they are equal. Every other root is \(\beta_0\) times a \((p-1)\)-st root of unity. Those roots of unity already lie in \(\mathbf Q_p\), by the preceding lesson, so every choice of \(\beta\) gives the same field. ∎
+
+## 7. Compact families of defining equations
+
+We will prove the finiteness statement without assuming the later classification of unramified extensions.
+
+**Lemma 7.1.** Let \(K\) be a finite extension of \(\mathbf Q_p\), with residue field \(k=\mathbf F_q\).
+
+1. Inside a fixed algebraic closure there is a unique unramified extension \(U_f/K\) of each positive degree \(f\).
+2. If \(L/K\) has residue degree \(f\), then \(U_f\subseteq L\), the residue fields of \(U_f\) and \(L\) coincide, and \(L/U_f\) is totally ramified.
+3. Every finite totally ramified extension \(L/M\) of such fields is generated by a uniformizer of \(L\), whose minimal polynomial over \(M\) is Eisenstein.
+
+**Proof.** Choose a monic irreducible polynomial \(\bar h\in k[X]\) of degree \(f\), and a monic lift \(h\in O_K[X]\). The polynomial \(h\) is irreducible over \(K\). Indeed, its roots are integral, so any monic factor over \(K\) has integral coefficients; reducing a proper monic factorization would contradict irreducibility of \(\bar h\).
+
+For a root \(a\), the residue field of \(K(a)\) contains \(k[X]/(\bar h)\), of degree \(f\). Since \([K(a):K]=f\), Theorem 3.1 forces residue degree \(f\) and ramification index \(1\). Its residue field is consequently \(\mathbf F_{q^f}\). All roots of \(\bar h\) lie there and are simple. Hensel lifting in the complete field \(K(a)\) lifts them all to roots of \(h\). Thus \(K(a)\) is the splitting field of \(h\); it is a single subfield \(U_f\) of the fixed algebraic closure.
+
+Now let \(L/K\) have residue degree \(f\). Its residue field is \(\mathbf F_{q^f}\), so the same lifting argument supplies all roots of \(h\) in \(L\). Hence \(U_f\subseteq L\). Its residue field has the same degree and equals that of \(L\), proving total ramification over \(U_f\). In particular, if \(L/K\) itself is unramified of degree \(f\), it equals \(U_f\), proving uniqueness.
+
+Finally, suppose \(L/M\) is totally ramified of degree \(e\), and let \(\rho\) be a uniformizer of \(L\). The extended integer-normalized valuation of \(M\) takes the value \(1/e\) at \(\rho\). Therefore the ramification index, and hence the degree, of \(M(\rho)/M\) is at least \(e\). Since \(M(\rho)\subseteq L\), it equals \(L\). All conjugates of \(\rho\) have valuation \(1/e\). The nonleading coefficients of its degree-\(e\) minimal polynomial are elementary symmetric sums, so have positive integral valuation. Its constant coefficient has valuation exactly \(1\). The polynomial is Eisenstein. ∎
+
+**Theorem 7.2 (finiteness and number-field models).**
+
+1. A finite extension \(K/\mathbf Q_p\) has only finitely many degree-\(n\) extensions inside a fixed algebraic closure, for each positive integer \(n\).
+2. Every finite extension \(L/\mathbf Q_p\) is the completion of a number field \(F\) with \([F : \mathbf Q]=[L : \mathbf Q_p]\). More precisely, one can choose \(F\subseteq L\) with \(F\mathbf Q_p=L\).
+
+**Proof of finiteness.** First note that \(O_K\) is compact. Proposition 2.1 identifies \(K\) topologically with a finite-dimensional \(\mathbf Q_p\)-vector space. The closed subset \(O_K\) has all coordinates bounded by that proposition, so it is a closed subset of a product of finitely many compact sets \(p^{-m}\mathbf Z_p\). The same applies to every finite extension of \(K\).
+
+A degree-\(n\) extension \(L/K\) has \(ef=n\). There are only finitely many possible \(f\), and Lemma 7.1 places \(L\) over the single field \(U_f\) as a totally ramified extension of degree \(e=n/f\). Fix such \(f\) and \(e\), write \(M=U_f\), and choose a uniformizer \(\pi_M\). Its monic Eisenstein polynomials of degree \(e\) form the coefficient space
+
+\[
+\mathcal E_e=(\pi_M O_M)^{e-1}\times\pi_M O_M^\times,
+\]
+
+where the last coordinate is the constant coefficient. This space is compact: the first factor is compact, and \(O_M^\times=O_M\setminus\pi_M O_M\) is closed in \(O_M\), because \(\pi_M O_M\) is open.
+
+Each polynomial in \(\mathcal E_e\) is irreducible, separable, and defines a totally ramified extension. By Corollary 4.2, it has a coefficient neighborhood in which all such polynomials define the same extension up to \(M\)-isomorphism. These neighborhoods cover \(\mathcal E_e\). A finite subcover gives only finitely many isomorphism classes. Lemma 7.1 shows that every totally ramified degree-\(e\) extension occurs in this family.
+
+An isomorphism class of a finite separable extension of \(M\) of degree \(e\) yields at most \(e\) subfields of the fixed algebraic closure: each is the image of an \(M\)-embedding, and there are exactly \(e\) such embeddings. Thus there are finitely many actual subfields over each \(U_f\), and then finitely many over \(K\).
+
+**Proof of the number-field model.** Write \(L=\mathbf Q_p(\alpha)\), and let \(f\in\mathbf Q_p[X]\) be its monic minimal polynomial, of degree \(n\). It is separable. Approximate its coefficients by rational numbers sufficiently closely for Corollary 4.2. This gives a monic \(g\in\mathbf Q[X]\) with a root \(\beta\in L\) satisfying
+
+\[
+L=\mathbf Q_p(\beta),\qquad \deg g=n.
+\]
+
+The polynomial \(g\) is irreducible over \(\mathbf Q_p\), so also over \(\mathbf Q\). Thus \(F=\mathbf Q(\beta)\subseteq L\) has degree \(n\) over \(\mathbf Q\). The restriction of the absolute value of \(L\) defines a place of \(F\) above \(p\). Every element of \(L\) has a unique expression \(\sum_{i=0}^{n-1}a_i\beta^i\), with \(a_i\in\mathbf Q_p\). Approximating the finitely many \(a_i\) by rational numbers shows that \(F\) is dense in \(L\). Since \(L\) is complete, it is exactly the completion of \(F\) at that place. ∎
+
+The characteristic-zero hypothesis in the finiteness argument ensures that all the Eisenstein equations are separable. A statement for equal characteristic cannot be obtained merely by repeating this compactness argument with possibly inseparable equations.
+
+## 8. Exercises
+
+1. **Quadratic invariants.** Compute the ramification index and residue degree of \(\mathbf Q_3(\sqrt3)\), \(\mathbf Q_3(\sqrt2)\), and \(\mathbf Q_5(\sqrt2,\sqrt5)\). In the last case, explain why the two quadratic adjunctions have different effects.
+
+2. **Cyclotomic and radical generators.** Prove
+   \(\mathbf Q_p(\zeta_p)=\mathbf Q_p((-p)^{1/(p-1)})\).
+   Exhibit a radical root close enough to \(\zeta_p-1\) for Krasner's lemma, and explain why the choice of radical root does not change the field.
+
+3. **Two polygons.** Prove that \(X^3+3X^2+9\) is irreducible over \(\mathbf Q_3\). Determine all root valuations of \(X^4+pX+p^2\) over \(\mathbf Q_p\), with multiplicities, and determine the degrees of its slope factors.
+
+4. **Finiteness and descent to \(\mathbf Q\).** Reconstruct both assertions of Theorem 7.2 using polynomial stability, the residue-lifting lemma, and compactness of the integers. Account for actual subfields of an algebraic closure, rather than only isomorphism classes. Deduce countability of the set of finite subfields of \(\overline{\mathbf Q}_p\).
+
+5. **Completeness fails in the algebraic closure.** Show that \(\overline{\mathbf Q}_p\), with its extended absolute value, is not complete. Use the preceding countability statement and the Baire category argument; include the reason finite subextensions have empty interior.
+
+## 9. Complete solutions
+
+**Solution 1.** The equation \(X^2-3\) is Eisenstein, giving degree \(2\), ramification index \(2\), and residue degree \(1\). For \(X^2-2\) over \(\mathbf Q_3\), the reduction is irreducible because \(2\) is a nonsquare in \(\mathbf F_3\). A root is integral and its residue generates \(\mathbf F_9\). Since the field degree is at most \(2\), residue degree \(2\) forces field degree \(2\) and ramification index \(1\).
+
+Over \(\mathbf Q_5\), the squares among nonzero residues are \(1,4\); hence \(2\) is a nonsquare. The field \(U=\mathbf Q_5(\sqrt2)\) therefore has degree and residue degree \(2\), and ramification index \(1\). Its uniformizer remains \(5\). The equation \(X^2-5\) is Eisenstein over \(U\), so adjoining \(\sqrt5\) has degree \(2\), changes the value group by index \(2\), and preserves the residue field \(\mathbf F_{25}\). The full field has degree \(4\), extended value group \(\tfrac12\mathbf Z\), and residue degree \(2\). Its invariants over \(\mathbf Q_5\) are \(e=f=2\).
+
+**Solution 2.** The case \(p=2\) is immediate. For odd \(p\), put \(\alpha=\zeta_p-1\). Expanding \(((1+X)^p-1)/X\) gives an Eisenstein polynomial of degree \(p-1\), so \(E=\mathbf Q_p(\alpha)\) has that degree and \(\alpha\) is a uniformizer. Its equation has the form \(\alpha^{p-1}=-pU\), where \(U\in1+\mathfrak m_E\).
+
+The polynomial \(T^{p-1}-U^{-1}\) has simple residue root \(1\). Its Hensel lift \(t\in1+\mathfrak m_E\) makes \(\beta=\alpha t\) a root of \(X^{p-1}+p\) with \(|\beta-\alpha|<|\alpha|\). For every other conjugate \(\zeta_p^i-1\), division of \(\zeta_p^{i-1}-1\) by \(\zeta_p-1\) reduces to \(i-1\ne0\), so its distance from \(\alpha\) is exactly \(|\alpha|\). Krasner forces \(E\subseteq\mathbf Q_p(\beta)\). The Eisenstein degree of the latter field is \(p-1\), proving equality. Every other radical root differs by a \((p-1)\)-st root of unity in \(\mathbf Q_p\), so has the same generated field.
+
+**Solution 3.** For the cubic, the points \((0,2),(2,1),(3,0)\) lie on or above the line from \((0,2)\) to \((3,0)\), with the middle one strictly above. All roots have valuation \(2/3\). A minimal polynomial for any root has degree \(d\leq3\), and its constant coefficient has valuation \(2d/3\in\mathbf Z\). Hence \(3\mid d\), proving irreducibility.
+
+For the quartic, the finite points are
+
+\[
+(0,2),\qquad(1,1),\qquad(4,0).
+\]
+
+Their successive slopes are \(-1\) and \(-1/3\), in increasing order. The polygon therefore has one root of valuation \(1\) and three roots of valuation \(1/3\). The slope factors over \(\mathbf Q_p\) have degrees \(1\) and \(3\). The cubic factor is irreducible: any root of valuation \(1/3\) has a minimal polynomial of degree divisible by \(3\), and that degree is at most \(3\). This computation works also at \(p=2\) and \(p=3\). As a check on the degree-one factor, evaluating the original polynomial at \(-p\) gives \(p^4\), while its derivative there has valuation \(1\). Newton lifting gives its root in \(\mathbf Q_p\), with distance from \(-p\) of absolute value at most \(p^{-3}\).
+
+**Solution 4.** Fix a finite extension \(K/\mathbf Q_p\) and an integer \(n>0\). A degree-\(n\) extension has \(ef=n\). For every divisor \(f\) of \(n\), choose one irreducible degree-\(f\) residue polynomial and lift it monically. Its roots generate the unique field \(U_f\), because Hensel lifting in the generated field supplies all roots of the lifted polynomial. In any extension with residue degree \(f\), the same roots lift, so that extension contains this very \(U_f\). Its remaining degree \(e=n/f\) is totally ramified.
+
+A uniformizer generates the remaining extension: its value \(1/e\) already forces its generated field to have degree at least \(e\). Its minimal polynomial is Eisenstein, by the equal valuations of its conjugates. Thus all the remaining extensions are represented by the compact space
+\((\pi O_{U_f})^{e-1}\times\pi O_{U_f}^\times\).
+Polynomial stability gives an open neighborhood at each point on which the isomorphism class is constant. A finite subcover leaves only finitely many classes. Each degree-\(e\) class has at most \(e\) embedded images over \(U_f\). Summing over the finitely many divisors \(f\) proves finiteness of actual subfields.
+
+For a finite extension \(L/\mathbf Q_p\), choose a primitive element and its separable monic minimal polynomial. Approximate its coefficients by rationals in a stability neighborhood. A corresponding root \(\beta\in L\) of the resulting \(g\in\mathbf Q[X]\) generates \(L\) over \(\mathbf Q_p\). Irreducibility over \(\mathbf Q_p\) forces irreducibility over \(\mathbf Q\), so \(\mathbf Q(\beta)\) has the same degree over \(\mathbf Q\). Rational coefficient combinations of \(1,\beta,\ldots,\beta^{n-1}\) are dense in their \(\mathbf Q_p\)-span. The induced completion is therefore \(L\).
+
+Apply finiteness with \(K=\mathbf Q_p\) for each degree \(n\). A countable union of these finite collections is countable. Every algebraic element belongs to its finite generated field, so these finite subfields cover \(\overline{\mathbf Q}_p\).
+
+**Solution 5.** Write \(E=\overline{\mathbf Q}_p=\bigcup_{j\geq1}L_j\), where the \(L_j\) enumerate all its finite subextensions. Each \(L_j\) is complete by Theorem 1.2, and hence closed in \(E\).
+
+Each has empty interior. If an open ball contained in \(L_j\) existed, subtracting its center would give a ball around zero contained in \(L_j\). For any \(x\in E\), multiplying by a sufficiently high power of \(p\) puts \(p^m x\) in that ball. As \(p^{-m}\in L_j\), it would follow that \(x\in L_j\), hence \(E=L_j\). This is impossible: the Eisenstein equations \(X^r-p\), for arbitrarily large \(r\), supply subextensions of unbounded degree.
+
+For completeness, the Baire argument needed here can be proved directly. If \(E\) were complete, choose a nonempty closed ball \(B_1\) of positive radius disjoint from \(L_1\). This is possible since \(L_1\) is closed with empty interior. Inductively, choose a nonempty closed ball \(B_{j+1}\) inside \(B_j\), disjoint from \(L_{j+1}\), with radius at most \(2^{-j}\). A positive-radius closed ball in an ultrametric field contains an open neighborhood of each of its points. Its open interior cannot be contained in \(L_{j+1}\); choosing a point outside that closed set and then a sufficiently small ball gives the required step.
+
+The centers of these nested balls form a Cauchy sequence. Completeness would give a limit belonging to every \(B_j\), since they are closed. That limit belongs to none of the \(L_j\), contradicting their union being \(E\). Hence \(E\) is not complete.
+
+## 10. What this lesson does not prove
+
+The imported statements are the following.
+
+- From **Absolute values, valuations and Ostrowski's theorem**, Proposition 1.1, Proposition 3.1 and Theorem 5.2: the integer-bound criterion for being nonarchimedean, the positive-power characterization of equivalent nontrivial absolute values, and weak approximation for finitely many inequivalent nontrivial absolute values.
+- From **Completions, the p-adic numbers and complete discretely valued fields**, Theorem 2.1, Proposition 2.2 and Theorem 2.4: completion and its embedding property, compactness of \(\mathbf Z_p\), and the complete archimedean-field classification. The classification says that a complete archimedean field is \(\mathbf R\) or \(\mathbf C\) with the usual modulus to a power \(0<\gamma\leq1\).
+- From **Hensel's lemma, squares and roots of unity in p-adic fields**, Theorem 1.1, Corollary 1.2 and Theorem 3.2: Newton lifting with \(|f(a)|<|f'(a)|^2\) and its distance bound, simple residue-root lifting, and coprime factor lifting for primitive polynomials, including degree drop. Proposition 4.1 of that lesson supplies the \((p-1)\)-st roots of unity in \(\mathbf Q_p\).
+- The field norm is the determinant of multiplication, is multiplicative, and has the tower property. For \(x\in L\) with monic minimal polynomial of degree \(d\) and constant coefficient \(c\), it is \(((-1)^dc)^{[L:K]/d}\). These are the linear-algebraic norm facts recalled in **Decomposition of primes in extensions**; see also Milne, *Algebraic Number Theory*, Chapter 2, “Review of norms and traces,” Proposition 2.19.
+- Integral elements form a ring; a valuation ring is integrally closed; and the minimal polynomial over its fraction field of an integral algebraic element has integral coefficients. These are the usual integrality facts from **Integers and integral bases** and **Dedekind domains**, respectively. The ring assertions are [Stacks, Tag 00GO](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-integral-closure-is-ring) and [Stacks, Tag 00IC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-valuation-ring-normal); the minimal-polynomial criterion is Milne, *Algebraic Number Theory*, Proposition 2.11.
+- Proposition 0.1 above proves the finite separable primitive-element theorem, including its stated broader version. The remaining background is that finite Galois extensions have the stated fixed fields; and \(\mathbf F_q\) has a unique degree-\(f\) extension inside its algebraic closure, the splitting field of \(X^{q^f}-X\). These are the finite-field and Galois-theory background from graduate algebra; see Milne, [*Fields and Galois Theory*](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10, Theorems 3.10 and 3.17, Proposition 4.23 and Theorem 5.1.
+
+All the extension, integral-basis, polygon, proximity and finiteness results asserted in this lesson are proved here. The Baire argument used in Solution 5 is included there. The full equivalence of unramified extensions with separable residue-field extensions is developed in **Unramified and totally ramified extensions**.
+
+For the algebraic imports, the general finite-extension norm formula and tower rule have accessible open proofs at [Stacks, Tag 0BIH](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-trace-and-norm-from-minimal-polynomial) and [Tag 0BIJ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-trace-and-norm-tower), including inseparable extensions. Their supporting linear-algebra proofs are Tags 0BIG and 0BII in the same chapter. Proposition 0.1 supplies the primitive-element proof within this lesson; [Stacks, Tag 030N](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/fields.html#fields-lemma-primitive-element) is an additional comparison. The ring-of-integral-elements and normal-valuation-ring results are the tagged open proofs above. The minimal-polynomial assertion also follows directly: every conjugate root of an integral element is integral, so its elementary symmetric coefficients are integral; these coefficients lie in the base field and therefore in the integrally closed base ring. This argument allows repeated conjugate roots in the inseparable case. For the global ideal background, the written provider is *Number fields*, lesson 5, **Decomposition of primes in extensions**, Theorem 5.1. The elementary finite-Galois background is part of **Graduate Algebra**.
+
+## References
+
+- J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), version 3.08, 19 July 2020. Free author notes; the precise results used for comparison are identified above.
+- J. S. Milne, [*Fields and Galois Theory*](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10, for the field-theory comparisons identified above. The explicitly marked adaptation uses [version 5.00, June 2021](https://www.jmilne.org/math/CourseNotes/FT500.pdf), with its retained CC BY-NC-SA 4.0 attribution and change notice.
+- [The Stacks project](https://stacks.math.columbia.edu/) and the separately identified [AI Integrated Stacks Project English edition](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/). The exact tags and scope of the comparisons are identified in the text.

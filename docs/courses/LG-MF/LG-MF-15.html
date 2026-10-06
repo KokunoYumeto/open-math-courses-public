@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Group cohomology of Γ and the Eichler–Shimura isomorphism · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-15.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="group-cohomology-of-gamma-and-the-eichler-shimura-isomorphism">Group cohomology of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and the Eichler–Shimura isomorphism</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A cusp form has periods along paths on a modular curve. In higher weight these periods take values in a polynomial space, and the modular transformation law controls how the values change when a path moves. We will prove that the holomorphic and antiholomorphic cusp forms together account for every parabolic cohomology class.</p>
+<p>We use the quotient and cusp charts from <a href="LG-MF-03.html">Modular curves and their genus</a>, the dimensions from <a href="LG-MF-06.html">Dimension formulas for congruence subgroups</a>, and the positive Petersson pairing from <a href="LG-MF-07.html">The Petersson inner product and Poincaré series</a>. The description by cocycles below suffices; higher derived functors are background rather than an ingredient in the proofs.</p>
+<p>Throughout, <span class="math" data-tex="\(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\)">\(\Gamma\subset\mathrm{SL}_2(\mathbb Z)\)</span> has finite index, <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, and <span class="math" data-tex="\(m=k-2\)">\(m=k-2\)</span>. Our isomorphism is proved under the hypothesis
+<span class="math math-display" data-tex="\[
+k\text{ is even}\quad\text{or}\quad -I\in\Gamma.
+\tag{0.1}
+\]">\[
+k\text{ is even}\quad\text{or}\quad -I\in\Gamma.
+\tag{0.1}
+\]</span>
+This includes the zero spaces in odd weight when <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span>. Odd weights for groups without <span class="math" data-tex="\(-I\)">\(-I\)</span>, with their irregular cusps, require additional conventions and are outside (0.1).</p>
+<h2 id="1-coefficients-cocycles-and-cusp-restrictions">1. Coefficients, cocycles and cusp restrictions</h2>
+<p>For a field <span class="math" data-tex="\(K\)">\(K\)</span> of characteristic zero, put
+<span class="math math-display" data-tex="\[
+V_m(K)=K[X,Y]_m,\qquad
+\rho(\gamma)P(X,Y)=P(dX-bY,-cX+aY),
+\quad
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\tag{1.1}
+\]">\[
+V_m(K)=K[X,Y]_m,\qquad
+\rho(\gamma)P(X,Y)=P(dX-bY,-cX+aY),
+\quad
+\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}.
+\tag{1.1}
+\]</span>
+Here <span class="math" data-tex="\(K[X,Y]_m\)">\(K[X,Y]_m\)</span> consists of homogeneous polynomials of degree <span class="math" data-tex="\(m\)">\(m\)</span>. With column vectors <span class="math" data-tex="\(v\)">\(v\)</span>, this is <span class="math" data-tex="\(P(\gamma^{-1}v)\)">\(P(\gamma^{-1}v)\)</span>; hence
+<span class="math" data-tex="\(\rho(\gamma)\rho(\delta)=\rho(\gamma\delta)\)">\(\rho(\gamma)\rho(\delta)=\rho(\gamma\delta)\)</span>. In particular it is a left action.</p>
+<p>A <strong>one-cocycle</strong> is a map <span class="math" data-tex="\(c:\Gamma\to V_m(K)\)">\(c:\Gamma\to V_m(K)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+c(\gamma\delta)=c(\gamma)+\rho(\gamma)c(\delta).
+\tag{1.2}
+\]">\[
+c(\gamma\delta)=c(\gamma)+\rho(\gamma)c(\delta).
+\tag{1.2}
+\]</span>
+A <strong>coboundary</strong> has the form <span class="math" data-tex="\(c(\gamma)=(\rho(\gamma)-1)v\)">\(c(\gamma)=(\rho(\gamma)-1)v\)</span>. Their quotient is <span class="math" data-tex="\(H^1(\Gamma,V_m(K))\)">\(H^1(\Gamma,V_m(K))\)</span>. The cocycle identity gives <span class="math" data-tex="\(c(1)=0\)">\(c(1)=0\)</span> and
+<span class="math" data-tex="\(c(\gamma^{-1})=-\rho(\gamma^{-1})c(\gamma)\)">\(c(\gamma^{-1})=-\rho(\gamma^{-1})c(\gamma)\)</span>.</p>
+<h1 id="if-p-in-mathbb-p-1-mathbb-q-let-gamma_p-be-its-stabilizer-define-h-1_-mathrm-par-gamma-v_m-k">If <span class="math" data-tex="\(P\in\mathbb P^1(\mathbb Q)\)">\(P\in\mathbb P^1(\mathbb Q)\)</span>, let <span class="math" data-tex="\(\Gamma_P\)">\(\Gamma_P\)</span> be its stabilizer. Define
+[
+H^1_{\mathrm{par}}(\Gamma,V_m(K))</h1>
+<p>\ker\left(
+H^1(\Gamma,V_m(K))
+\longrightarrow
+\prod_{P\in\Gamma\backslash\mathbb P^1(\mathbb Q)}
+H^1(\Gamma_P,V_m(K))
+\right).
+\tag{1.3}
+]
+Thus parabolicity means that at each cusp there is a possibly different vector <span class="math" data-tex="\(v_P\)">\(v_P\)</span> with
+<span class="math" data-tex="\(c(\gamma)=(\rho(\gamma)-1)v_P\)">\(c(\gamma)=(\rho(\gamma)-1)v_P\)</span> for <span class="math" data-tex="\(\gamma\in\Gamma_P\)">\(\gamma\in\Gamma_P\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For an infinite cyclic group generated by <span class="math" data-tex="\(A\)">\(A\)</span>, evaluation at <span class="math" data-tex="\(A\)">\(A\)</span> identifies
+<span class="math math-display" data-tex="\[
+H^1(\langle A\rangle,V)=V/(A-1)V.
+\tag{1.4}
+\]">\[
+H^1(\langle A\rangle,V)=V/(A-1)V.
+\tag{1.4}
+\]</span>
+For a finite cyclic group of order <span class="math" data-tex="\(r\)">\(r\)</span>, over characteristic zero, every one-cocycle is a coboundary.</p>
+<p><strong>Proof.</strong> An arbitrary value <span class="math" data-tex="\(u=c(A)\)">\(u=c(A)\)</span> extends uniquely by
+<span class="math" data-tex="\(c(A^n)=\sum_{j=0}^{n-1}A^ju\)">\(c(A^n)=\sum_{j=0}^{n-1}A^ju\)</span> for <span class="math" data-tex="\(n&gt;0\)">\(n&gt;0\)</span>, with negative values given by the inverse identity. Coboundaries evaluate to <span class="math" data-tex="\((A-1)V\)">\((A-1)V\)</span>, proving (1.4).</p>
+<p>In the finite case the necessary and sufficient condition is
+<span class="math" data-tex="\(N_Au=0\)">\(N_Au=0\)</span>, where <span class="math" data-tex="\(N_A=1+A+\cdots+A^{r-1}\)">\(N_A=1+A+\cdots+A^{r-1}\)</span>. The operator <span class="math" data-tex="\(E=N_A/r\)">\(E=N_A/r\)</span> projects onto the invariants. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+(A-1)\frac1r\sum_{j=0}^{r-1}jA^j=1-E.
+\]">\[
+(A-1)\frac1r\sum_{j=0}^{r-1}jA^j=1-E.
+\]</span>
+Consequently <span class="math" data-tex="\(\ker N_A=(A-1)V\)">\(\ker N_A=(A-1)V\)</span>, as required. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We shall also need a coefficient pairing. Write <span class="math" data-tex="\(e_r=X^{m-r}Y^r\)">\(e_r=X^{m-r}Y^r\)</span>, and define
+<span class="math math-display" data-tex="\[
+B(e_r,e_s)=
+\begin{cases}
+(-1)^r\binom mr^{-1},&amp;r+s=m,\\
+0,&amp;r+s\ne m.
+\end{cases}
+\tag{1.5}
+\]">\[
+B(e_r,e_s)=
+\begin{cases}
+(-1)^r\binom mr^{-1},&amp;r+s=m,\\
+0,&amp;r+s\ne m.
+\end{cases}
+\tag{1.5}
+\]</span>
+This is nondegenerate, since its matrix has nonzero antidiagonal entries. Expansion by the binomial theorem gives
+<span class="math math-display" data-tex="\[
+B\bigl((aX+bY)^m,(cX+dY)^m\bigr)=(ad-bc)^m.
+\tag{1.6}
+\]">\[
+B\bigl((aX+bY)^m,(cX+dY)^m\bigr)=(ad-bc)^m.
+\tag{1.6}
+\]</span>
+The determinant on the right is unchanged by the substitutions in (1.1). Pure powers span <span class="math" data-tex="\(V_m\)">\(V_m\)</span>: use <span class="math" data-tex="\((X-tY)^m\)">\((X-tY)^m\)</span> at <span class="math" data-tex="\(m+1\)">\(m+1\)</span> distinct values of <span class="math" data-tex="\(t\)">\(t\)</span> and the nonsingular Vandermonde matrix. Thus (1.6) proves that <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant. It identifies <span class="math" data-tex="\(V_m\)">\(V_m\)</span> with its dual as a module. In particular,
+<span class="math math-display" data-tex="\[
+B\bigl((X-zY)^m,(X-wY)^m\bigr)=(z-w)^m.
+\tag{1.7}
+\]">\[
+B\bigl((X-zY)^m,(X-wY)^m\bigr)=(z-w)^m.
+\tag{1.7}
+\]</span></p>
+<h3 id="the-central-sign">The central sign</h3>
+<p>Since <span class="math" data-tex="\(\rho(-I)=(-1)^m\)">\(\rho(-I)=(-1)^m\)</span>, even weights descend to the projective group <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>. If <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span> in even weight, a cocycle has <span class="math" data-tex="\(c(-I)=0\)">\(c(-I)=0\)</span>, by the order-two relation, so every cocycle factors through <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>. If <span class="math" data-tex="\(-I\notin\Gamma\)">\(-I\notin\Gamma\)</span>, the projection <span class="math" data-tex="\(\Gamma\to\bar\Gamma\)">\(\Gamma\to\bar\Gamma\)</span> is an isomorphism. The cusp restrictions factor in the same way.</p>
+<p>If <span class="math" data-tex="\(k\)">\(k\)</span> is odd and <span class="math" data-tex="\(Z=-I\in\Gamma\)">\(Z=-I\in\Gamma\)</span>, modularity gives <span class="math" data-tex="\(f=-f\)">\(f=-f\)</span>, so <span class="math" data-tex="\(S_k(\Gamma)=0\)">\(S_k(\Gamma)=0\)</span>. Comparing <span class="math" data-tex="\(c(Z\gamma)\)">\(c(Z\gamma)\)</span> with <span class="math" data-tex="\(c(\gamma Z)\)">\(c(\gamma Z)\)</span> gives
+<span class="math math-display" data-tex="\[
+c(Z)-c(\gamma)=c(\gamma)+\rho(\gamma)c(Z).
+\]">\[
+c(Z)-c(\gamma)=c(\gamma)+\rho(\gamma)c(Z).
+\]</span>
+Therefore
+<span class="math math-display" data-tex="\[
+c(\gamma)=(\rho(\gamma)-1)\bigl(-c(Z)/2\bigr).
+\tag{1.8}
+\]">\[
+c(\gamma)=(\rho(\gamma)-1)\bigl(-c(Z)/2\bigr).
+\tag{1.8}
+\]</span>
+Both full and parabolic cohomology are zero. From now until the final theorem we may work in even weight on <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>.</p>
+<h2 id="2-mayer-vietoris-without-a-resolution">2. Mayer–Vietoris without a resolution</h2>
+<p>Set
+<span class="math math-display" data-tex="\[
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\qquad T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad U=ST.
+\]">\[
+S=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\qquad T=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix},
+\qquad U=ST.
+\]</span>
+Their projective orders are <span class="math" data-tex="\(2,\infty,3\)">\(2,\infty,3\)</span>, respectively.</p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb Z)=\langle S\rangle*\langle U\rangle\)">\(\mathrm{PSL}_2(\mathbb Z)=\langle S\rangle*\langle U\rangle\)</span>.</p>
+<p><strong>Proof.</strong> The generation by <span class="math" data-tex="\(S,T\)">\(S,T\)</span> was proved in the first lesson, so <span class="math" data-tex="\(S,U\)">\(S,U\)</span> generate as well. We check that there are no additional relations.</p>
+<p>On the real line let <span class="math" data-tex="\(A=(0,\infty)\)">\(A=(0,\infty)\)</span>, <span class="math" data-tex="\(D=(-\infty,0)\)">\(D=(-\infty,0)\)</span>. Then
+<span class="math math-display" data-tex="\[
+S(D)=A,\qquad U(A)=(-1,0),\qquad U^2(A)=(-\infty,-1).
+\]">\[
+S(D)=A,\qquad U(A)=(-1,0),\qquad U^2(A)=(-\infty,-1).
+\]</span>
+A reduced word in the two finite cyclic factors can be conjugated either to a single nonidentity syllable or to an alternating word beginning with <span class="math" data-tex="\(S\)">\(S\)</span> and ending with <span class="math" data-tex="\(U\)">\(U\)</span> or <span class="math" data-tex="\(U^2\)">\(U^2\)</span>. Indeed, cancel first and last syllables in the same factor by conjugating until the word is cyclically reduced, then cyclically rotate it. A single syllable is nonidentity. An alternating word maps <span class="math" data-tex="\(A\)">\(A\)</span> into <span class="math" data-tex="\(A\)">\(A\)</span>, and its outermost pair <span class="math" data-tex="\(SU\)">\(SU\)</span> or <span class="math" data-tex="\(SU^2\)">\(SU^2\)</span> puts its entire image in <span class="math" data-tex="\((1,\infty)\)">\((1,\infty)\)</span> or <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>. Its image is a proper subset of <span class="math" data-tex="\(A\)">\(A\)</span>, so it cannot be the identity. This proves the free-product assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2 (Mayer–Vietoris in degree one).</strong> For any <span class="math" data-tex="\(\mathbb Q[\mathrm{PSL}_2(\mathbb Z)]\)">\(\mathbb Q[\mathrm{PSL}_2(\mathbb Z)]\)</span>-module <span class="math" data-tex="\(V\)">\(V\)</span>, there is an exact sequence
+<span class="math math-display" data-tex="\[
+0\longrightarrow V^G
+\longrightarrow V^S\oplus V^U
+\xrightarrow{(a,b)\mapsto a-b}V
+\longrightarrow H^1(G,V)\longrightarrow0,
+\quad G=\mathrm{PSL}_2(\mathbb Z).
+\tag{2.1}
+\]">\[
+0\longrightarrow V^G
+\longrightarrow V^S\oplus V^U
+\xrightarrow{(a,b)\mapsto a-b}V
+\longrightarrow H^1(G,V)\longrightarrow0,
+\quad G=\mathrm{PSL}_2(\mathbb Z).
+\tag{2.1}
+\]</span>
+Consequently <span class="math" data-tex="\(H^1(G,V)\simeq V/(V^S+V^U)\)">\(H^1(G,V)\simeq V/(V^S+V^U)\)</span>. If <span class="math" data-tex="\(V\)">\(V\)</span> is finite dimensional,
+<span class="math math-display" data-tex="\[
+\dim H^1(G,V)=\dim V-\dim V^S-\dim V^U+\dim V^G.
+\tag{2.2}
+\]">\[
+\dim H^1(G,V)=\dim V-\dim V^S-\dim V^U+\dim V^G.
+\tag{2.2}
+\]</span></p>
+<p><strong>Proof.</strong> Lemma 1.1 allows us to write the restriction of any cocycle as
+<span class="math math-display" data-tex="\[
+c(S)=(S-1)a,\qquad c(U)=(U-1)b.
+\]">\[
+c(S)=(S-1)a,\qquad c(U)=(U-1)b.
+\]</span>
+Conversely these values extend to a unique cocycle on the free product. On a reduced word, use (1.2) to sum the successive syllable values with their preceding actions. Cancellation within either factor respects this rule because its restriction is already a cocycle there. Thus the construction is well defined.</p>
+<p>Changing primitives adds an element of <span class="math" data-tex="\(V^S\)">\(V^S\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> and of <span class="math" data-tex="\(V^U\)">\(V^U\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. Adding a global coboundary adds the same vector to <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. Hence the class determines <span class="math" data-tex="\(a-b\)">\(a-b\)</span> modulo <span class="math" data-tex="\(V^S+V^U\)">\(V^S+V^U\)</span>. Conversely, if <span class="math" data-tex="\(a-b\in V^S+V^U\)">\(a-b\in V^S+V^U\)</span>, alter the two primitives by invariant vectors so they become equal. The cocycle is then a global coboundary. Every difference is obtained by taking <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. This proves the quotient description and exactness. The kernel of the difference map is the diagonal copy of <span class="math" data-tex="\(V^S\cap V^U=V^G\)">\(V^S\cap V^U=V^G\)</span>, giving the first arrow and (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-eichler-integrals">3. The Eichler integrals</h2>
+<p>Write <span class="math" data-tex="\(v_z=(X-zY)^m\)">\(v_z=(X-zY)^m\)</span>. The determinant-one identity gives
+<span class="math math-display" data-tex="\[
+\rho(\gamma)v_z=(cz+d)^m v_{\gamma z}.
+\tag{3.1}
+\]">\[
+\rho(\gamma)v_z=(cz+d)^m v_{\gamma z}.
+\tag{3.1}
+\]</span>
+For <span class="math" data-tex="\(f,g\in S_k(\Gamma)\)">\(f,g\in S_k(\Gamma)\)</span>, define coefficient-valued one-forms
+<span class="math math-display" data-tex="\[
+\omega_f=f(z)v_z\,dz,\qquad
+\bar\omega_g=\overline{g(z)}v_{\bar z}\,d\bar z.
+\tag{3.2}
+\]">\[
+\omega_f=f(z)v_z\,dz,\qquad
+\bar\omega_g=\overline{g(z)}v_{\bar z}\,d\bar z.
+\tag{3.2}
+\]</span>
+The transformation law for <span class="math" data-tex="\(f\)">\(f\)</span>, (3.1), and <span class="math" data-tex="\(d(\gamma z)=(cz+d)^{-2}dz\)">\(d(\gamma z)=(cz+d)^{-2}dz\)</span> show
+<span class="math math-display" data-tex="\[
+\gamma^*\omega_f=\rho(\gamma)\omega_f,\qquad
+\gamma^*\bar\omega_g=\rho(\gamma)\bar\omega_g.
+\tag{3.3}
+\]">\[
+\gamma^*\omega_f=\rho(\gamma)\omega_f,\qquad
+\gamma^*\bar\omega_g=\rho(\gamma)\bar\omega_g.
+\tag{3.3}
+\]</span>
+All coefficients of <span class="math" data-tex="\(\omega_f\)">\(\omega_f\)</span> are holomorphic and all those of <span class="math" data-tex="\(\bar\omega_g\)">\(\bar\omega_g\)</span> are antiholomorphic, so these forms are closed. Their integrals in the simply connected half-plane depend only on endpoints.</p>
+<p>For completeness, a closed coefficient one-form <span class="math" data-tex="\(P\,dx+Q\,dy\)">\(P\,dx+Q\,dy\)</span> on the half-plane has the primitive
+<span class="math math-display" data-tex="\[
+F(x,y)=\int_{x_0}^xP(t,y_0)\,dt+\int_{y_0}^yQ(x,t)\,dt.
+\]">\[
+F(x,y)=\int_{x_0}^xP(t,y_0)\,dt+\int_{y_0}^yQ(x,t)\,dt.
+\]</span>
+Closedness means <span class="math" data-tex="\(\partial_yP=\partial_xQ\)">\(\partial_yP=\partial_xQ\)</span>. Differentiating the two integrals gives <span class="math" data-tex="\(\partial_yF=Q\)">\(\partial_yF=Q\)</span> and <span class="math" data-tex="\(\partial_xF=P(x,y_0)+\int_{y_0}^y\partial_yP(x,t)\,dt=P(x,y)\)">\(\partial_xF=P(x,y_0)+\int_{y_0}^y\partial_yP(x,t)\,dt=P(x,y)\)</span>. Thus integrals along any piecewise smooth path are endpoint differences. This elementary construction also applies to the smooth closed forms used below.</p>
+<p><strong>Theorem 3.1.</strong> For <span class="math" data-tex="\(z_0\in\mathfrak H\)">\(z_0\in\mathfrak H\)</span>,
+<span class="math math-display" data-tex="\[
+c_f(\gamma)=\int_{z_0}^{\gamma z_0}\omega_f,\qquad
+c_{\bar g}(\gamma)=\int_{z_0}^{\gamma z_0}\bar\omega_g
+\tag{3.4}
+\]">\[
+c_f(\gamma)=\int_{z_0}^{\gamma z_0}\omega_f,\qquad
+c_{\bar g}(\gamma)=\int_{z_0}^{\gamma z_0}\bar\omega_g
+\tag{3.4}
+\]</span>
+are parabolic cocycles. Their classes are independent of <span class="math" data-tex="\(z_0\)">\(z_0\)</span>.</p>
+<p><strong>Proof.</strong> Splitting the path at <span class="math" data-tex="\(\gamma z_0\)">\(\gamma z_0\)</span> and applying (3.3) to the second part yields
+<span class="math" data-tex="\(c_f(\gamma\delta)=c_f(\gamma)+\rho(\gamma)c_f(\delta)\)">\(c_f(\gamma\delta)=c_f(\gamma)+\rho(\gamma)c_f(\delta)\)</span>.
+The same computation works for the antiholomorphic form.</p>
+<p>For a new point <span class="math" data-tex="\(z_1\)">\(z_1\)</span>, let <span class="math" data-tex="\(b=\int_{z_0}^{z_1}\omega_f\)">\(b=\int_{z_0}^{z_1}\omega_f\)</span>. Concatenating the paths <span class="math" data-tex="\(z_1\to z_0\to\gamma z_0\to\gamma z_1\)">\(z_1\to z_0\to\gamma z_0\to\gamma z_1\)</span> gives
+<span class="math math-display" data-tex="\[
+c_{f,z_1}(\gamma)-c_{f,z_0}(\gamma)
+=(\rho(\gamma)-1)b.
+\tag{3.5}
+\]">\[
+c_{f,z_1}(\gamma)-c_{f,z_0}(\gamma)
+=(\rho(\gamma)-1)b.
+\tag{3.5}
+\]</span>
+Again this holds for the other form.</p>
+<p>It remains to justify moving an endpoint to a cusp. Choose a scaling matrix <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> with <span class="math" data-tex="\(\sigma\infty=P\)">\(\sigma\infty=P\)</span>, and use <span class="math" data-tex="\(w=x+iy\)">\(w=x+iy\)</span> in its high cusp strip. By the cusp expansion, <span class="math" data-tex="\(f|_k\sigma(w)=O(e^{-ay})\)">\(f|_k\sigma(w)=O(e^{-ay})\)</span>, for some <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, uniformly over a width. Formula (3.3), with the slash transformation, reduces the coefficient estimates to a polynomial of degree at most <span class="math" data-tex="\(m\)">\(m\)</span> in <span class="math" data-tex="\(w\)">\(w\)</span> times this exponential. The integral along a vertical ray converges absolutely. Horizontal segments at height <span class="math" data-tex="\(y\)">\(y\)</span> have integrals tending to zero, so the cusp endpoint is well defined.</p>
+<p>Put <span class="math" data-tex="\(b_P=\int_{z_0}^{P}\omega_f\)">\(b_P=\int_{z_0}^{P}\omega_f\)</span>. If <span class="math" data-tex="\(\gamma\in\Gamma_P\)">\(\gamma\in\Gamma_P\)</span>, concatenating through <span class="math" data-tex="\(P=\gamma P\)">\(P=\gamma P\)</span> gives
+<span class="math math-display" data-tex="\[
+c_f(\gamma)=b_P-\rho(\gamma)b_P
+=(\rho(\gamma)-1)(-b_P).
+\tag{3.6}
+\]">\[
+c_f(\gamma)=b_P-\rho(\gamma)b_P
+=(\rho(\gamma)-1)(-b_P).
+\tag{3.6}
+\]</span>
+This is precisely the required cusp coboundary. Conjugation gives the corresponding convergence and identity for <span class="math" data-tex="\(\bar\omega_g\)">\(\bar\omega_g\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The resulting complex-linear map is
+<span class="math math-display" data-tex="\[
+\mathcal E:
+S_k(\Gamma)\oplus\overline{S_k(\Gamma)}
+\longrightarrow H^1_{\mathrm{par}}(\Gamma,V_m(\mathbb C)),
+\qquad
+(f,\bar g)\longmapsto[c_f+c_{\bar g}].
+\tag{3.7}
+\]">\[
+\mathcal E:
+S_k(\Gamma)\oplus\overline{S_k(\Gamma)}
+\longrightarrow H^1_{\mathrm{par}}(\Gamma,V_m(\mathbb C)),
+\qquad
+(f,\bar g)\longmapsto[c_f+c_{\bar g}].
+\tag{3.7}
+\]</span>
+The second summand has the conjugate complex-vector-space structure, so conjugating a cusp form produces a complex-linear map from that summand.</p>
+<h2 id="4-the-dimension-of-parabolic-cohomology">4. The dimension of parabolic cohomology</h2>
+<p>We supply the dimension computation for groups with elliptic points as well. Let <span class="math" data-tex="\(g\)">\(g\)</span> be the genus of <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span>, <span class="math" data-tex="\(c\)">\(c\)</span> its number of cusps, and <span class="math" data-tex="\(e_2,e_3\)">\(e_2,e_3\)</span> its numbers of elliptic points of the indicated orders. There is at least one cusp.</p>
+<p>The following presentation is proved in Appendix A from the earlier handle models and quotient charts. Peripheral generators are clockwise in positive local coordinates, while the handle basis uses the positively oriented square:
+<span class="math math-display" data-tex="\[
+\bar\Gamma=
+\left\langle
+A_i,B_i,E_j,P_t\ \middle|\
+\prod_{i=1}^g[A_i,B_i]\prod_jE_j\prod_{t=1}^cP_t=1,\
+E_j^{\nu_j}=1
+\right\rangle,
+\quad \nu_j\in\{2,3\}.
+\tag{4.1}
+\]">\[
+\bar\Gamma=
+\left\langle
+A_i,B_i,E_j,P_t\ \middle|\
+\prod_{i=1}^g[A_i,B_i]\prod_jE_j\prod_{t=1}^cP_t=1,\
+E_j^{\nu_j}=1
+\right\rangle,
+\quad \nu_j\in\{2,3\}.
+\tag{4.1}
+\]</span>
+Here the <span class="math" data-tex="\(P_t\)">\(P_t\)</span> generate cusp stabilizers, up to conjugacy.</p>
+<p>For clarity, its justification is as follows. Remove the cusps and elliptic points from <span class="math" data-tex="\(X(\Gamma)\)">\(X(\Gamma)\)</span>. Cutting a genus-<span class="math" data-tex="\(g\)">\(g\)</span> surface along its handle curves and paths to the removed points gives the boundary word in (4.1), with no finite-order relations yet. Appendix A.2–A.4 gives the exact ordered cuts, labelled peripheral loops and cap argument that prove this cell presentation. The action on the half-plane with all elliptic lifts removed is free, so path lifting maps this punctured-surface group onto <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>. Its kernel consists of loops in that covering space. Appendix A.5 puts each closed upstairs loop in a compact rectangle containing only finitely many removed lifts and applies the explicit puncture-cut proof there. Thus these loops are generated by conjugates of the small peripheral circles; no transversality of an arbitrary contraction is assumed. At an elliptic point the chart is <span class="math" data-tex="\(w\mapsto w^{\nu_j}\)">\(w\mapsto w^{\nu_j}\)</span>; a small circle upstairs projects to <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> circuits downstairs. Thus the kernel imposes exactly <span class="math" data-tex="\(E_j^{\nu_j}=1\)">\(E_j^{\nu_j}=1\)</span>. Cusps have no lifts in the half-plane and impose no further relation. This proves (4.1).</p>
+<p><strong>Proposition 4.1.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a finite-dimensional self-dual characteristic-zero module for the group in (4.1). Put
+<span class="math math-display" data-tex="\[
+d=\dim V,\quad h=\dim V^{\bar\Gamma},\quad
+a_j=\dim V^{E_j},\quad q_t=\dim V^{P_t}.
+\]">\[
+d=\dim V,\quad h=\dim V^{\bar\Gamma},\quad
+a_j=\dim V^{E_j},\quad q_t=\dim V^{P_t}.
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\dim H^1_{\mathrm{par}}(\bar\Gamma,V)
+=(2g+c+e_2+e_3-2)d-\sum_j a_j-\sum_t q_t+2h.
+\tag{4.2}
+\]">\[
+\dim H^1_{\mathrm{par}}(\bar\Gamma,V)
+=(2g+c+e_2+e_3-2)d-\sum_j a_j-\sum_t q_t+2h.
+\tag{4.2}
+\]</span></p>
+<p><strong>Proof.</strong> A cocycle is specified by its generator values. Its values on <span class="math" data-tex="\(A_i,B_i\)">\(A_i,B_i\)</span> are arbitrary. The relation <span class="math" data-tex="\(E_j^{\nu_j}=1\)">\(E_j^{\nu_j}=1\)</span> requires the elliptic value to lie in the kernel of its norm, which is <span class="math" data-tex="\((E_j-1)V\)">\((E_j-1)V\)</span> by Lemma 1.1. Parabolicity similarly requires the value on <span class="math" data-tex="\(P_t\)">\(P_t\)</span> to lie in <span class="math" data-tex="\((P_t-1)V\)">\((P_t-1)V\)</span>. Before imposing the long relation, the parameter space therefore has dimension
+<span class="math math-display" data-tex="\[
+2gd+\sum_j(d-a_j)+\sum_t(d-q_t).
+\tag{4.3}
+\]">\[
+2gd+\sum_j(d-a_j)+\sum_t(d-q_t).
+\tag{4.3}
+\]</span>
+The cocycle value on the long relation is a linear map <span class="math" data-tex="\(L\)">\(L\)</span> from this space to <span class="math" data-tex="\(V\)">\(V\)</span>. Its vanishing is sufficient: a cocycle first exists on the free generators, and descends through a relator precisely when its value there is zero. The cocycle identity then also makes it zero on every conjugate of that relator and on the normal subgroup they generate.</p>
+<p>We prove <span class="math" data-tex="\(\operatorname{rank}L=d-h\)">\(\operatorname{rank}L=d-h\)</span>. A covector <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> annihilates <span class="math" data-tex="\(L\)">\(L\)</span> exactly when it annihilates the coefficient of every free parameter. Carry it through the prefixes of the relation by writing <span class="math" data-tex="\(\lambda_Q=\lambda\rho(Q)\)">\(\lambda_Q=\lambda\rho(Q)\)</span>. For a commutator let <span class="math" data-tex="\(A,B\)">\(A,B\)</span> also denote their actions, <span class="math" data-tex="\(C=ABA^{-1}\)">\(C=ABA^{-1}\)</span>, <span class="math" data-tex="\(K=ABA^{-1}B^{-1}\)">\(K=ABA^{-1}B^{-1}\)</span>. Its contribution is
+<span class="math math-display" data-tex="\[
+(1-C)c(A)+(A-K)c(B).
+\tag{4.4}
+\]">\[
+(1-C)c(A)+(A-K)c(B).
+\tag{4.4}
+\]</span>
+Thus the covector entering that factor satisfies
+<span class="math" data-tex="\(\lambda_QC=\lambda_Q\)">\(\lambda_QC=\lambda_Q\)</span> and <span class="math" data-tex="\(\lambda_QA=\lambda_QK\)">\(\lambda_QA=\lambda_QK\)</span>.
+Since <span class="math" data-tex="\(K=CB^{-1}\)">\(K=CB^{-1}\)</span>, the latter gives
+<span class="math" data-tex="\(\lambda_QA=\lambda_QB^{-1}\)">\(\lambda_QA=\lambda_QB^{-1}\)</span>, hence <span class="math" data-tex="\(\lambda_QAB=\lambda_Q\)">\(\lambda_QAB=\lambda_Q\)</span>.
+Now <span class="math" data-tex="\(\lambda_QC=\lambda_QABA^{-1}=\lambda_QA^{-1}\)">\(\lambda_QC=\lambda_QABA^{-1}=\lambda_QA^{-1}\)</span>, so it also fixes <span class="math" data-tex="\(A\)">\(A\)</span>, and then <span class="math" data-tex="\(B\)">\(B\)</span>. It fixes <span class="math" data-tex="\(K\)">\(K\)</span>, and leaves the entering covector unchanged.</p>
+<p>For an elliptic or cusp generator <span class="math" data-tex="\(D\)">\(D\)</span>, its allowed values fill <span class="math" data-tex="\((D-1)V\)">\((D-1)V\)</span>. Annihilating those values says <span class="math" data-tex="\(\lambda_QD=\lambda_Q\)">\(\lambda_QD=\lambda_Q\)</span>, so again the prefix leaves the covector unchanged. Proceeding through the relation shows that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> fixes every generator. Conversely, such an invariant covector annihilates every contribution. The annihilator of <span class="math" data-tex="\(\operatorname{im}L\)">\(\operatorname{im}L\)</span> is therefore <span class="math" data-tex="\((V^*)^{\bar\Gamma}\)">\((V^*)^{\bar\Gamma}\)</span>, of dimension <span class="math" data-tex="\(h\)">\(h\)</span> by self-duality.</p>
+<p>Subtract <span class="math" data-tex="\(d-h\)">\(d-h\)</span> from (4.3) to obtain the cocycle dimension. The coboundaries have dimension <span class="math" data-tex="\(d-h\)">\(d-h\)</span>, since their kernel is <span class="math" data-tex="\(V^{\bar\Gamma}\)">\(V^{\bar\Gamma}\)</span>. Subtracting this once more proves (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this to <span class="math" data-tex="\(V_m(\mathbb C)\)">\(V_m(\mathbb C)\)</span> in even weight. A cusp generator acts by a conjugate of an upper translation, so <span class="math" data-tex="\(q_t=1\)">\(q_t=1\)</span>. Indeed, under our action an upper translation fixes exactly <span class="math" data-tex="\(Y^m\)">\(Y^m\)</span>: a polynomial in <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span> fixed by a nonzero translation must be constant. A finite-index subgroup contains a nonzero power of both the upper and lower translations, because its intersections with these infinite cyclic groups have finite index. The lower translation fixes exactly <span class="math" data-tex="\(X^m\)">\(X^m\)</span>. Their intersection is zero for <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. Thus <span class="math" data-tex="\(h=0\)">\(h=0\)</span> for <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>; in weight two, <span class="math" data-tex="\(V_0=\mathbb C\)">\(V_0=\mathbb C\)</span> and <span class="math" data-tex="\(h=1\)">\(h=1\)</span>.</p>
+<p>An elliptic lift of order two has eigenvalues <span class="math" data-tex="\(i,-i\)">\(i,-i\)</span> on the two-dimensional representation. An order-three projective lift has eigenvalues <span class="math" data-tex="\(\zeta_6,\zeta_6^{-1}\)">\(\zeta_6,\zeta_6^{-1}\)</span>, up to a central sign that does not affect even <span class="math" data-tex="\(m\)">\(m\)</span>. The eigenvalues on <span class="math" data-tex="\(V_m\)">\(V_m\)</span> are respectively <span class="math" data-tex="\(i^{m-2r}\)">\(i^{m-2r}\)</span> and <span class="math" data-tex="\(\zeta_6^{m-2r}\)">\(\zeta_6^{m-2r}\)</span>, <span class="math" data-tex="\(0\le r\le m\)">\(0\le r\le m\)</span>. Counting the exponents divisible by four or six gives
+<span class="math math-display" data-tex="\[
+a_2=k-1-2\lfloor k/4\rfloor,\qquad
+a_3=k-1-2\lfloor k/3\rfloor.
+\tag{4.5}
+\]">\[
+a_2=k-1-2\lfloor k/4\rfloor,\qquad
+a_3=k-1-2\lfloor k/3\rfloor.
+\tag{4.5}
+\]</span>
+These counts can also be obtained by listing <span class="math" data-tex="\(r\equiv(k/2-1)\)">\(r\equiv(k/2-1)\)</span> modulo two or three.</p>
+<p>Substitution in (4.2), followed by the even-weight dimension formula of the sixth lesson, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\dim H^1_{\mathrm{par}}(\Gamma,V_{k-2}(\mathbb C))
+&amp;=2\left((k-1)(g-1)+(k/2-1)c
++e_2\lfloor k/4\rfloor+e_3\lfloor k/3\rfloor\right)\\
+&amp;=2\dim S_k(\Gamma),\qquad k\ge4\text{ even}.
+\end{aligned}
+\tag{4.6}
+\]">\[
+\begin{aligned}
+\dim H^1_{\mathrm{par}}(\Gamma,V_{k-2}(\mathbb C))
+&amp;=2\left((k-1)(g-1)+(k/2-1)c
++e_2\lfloor k/4\rfloor+e_3\lfloor k/3\rfloor\right)\\
+&amp;=2\dim S_k(\Gamma),\qquad k\ge4\text{ even}.
+\end{aligned}
+\tag{4.6}
+\]</span>
+In weight two, (4.2) instead gives <span class="math" data-tex="\(2g=2\dim S_2(\Gamma)\)">\(2g=2\dim S_2(\Gamma)\)</span>. This separate calculation is essential.</p>
+<h2 id="5-cup-pairing-petersson-product-and-the-isomorphism">5. Cup pairing, Petersson product and the isomorphism</h2>
+<p>Let <span class="math" data-tex="\(\mu=[\mathrm{PSL}_2(\mathbb Z):\bar\Gamma]\)">\(\mu=[\mathrm{PSL}_2(\mathbb Z):\bar\Gamma]\)</span>. Our Petersson product is
+<span class="math math-display" data-tex="\[
+\langle f,g\rangle_\Gamma
+=\frac1\mu\int_{\bar\Gamma\backslash\mathfrak H}
+f(z)\overline{g(z)}y^{k-2}\,dx\,dy.
+\tag{5.1}
+\]">\[
+\langle f,g\rangle_\Gamma
+=\frac1\mu\int_{\bar\Gamma\backslash\mathfrak H}
+f(z)\overline{g(z)}y^{k-2}\,dx\,dy.
+\tag{5.1}
+\]</span>
+The quotient has its complex orientation <span class="math" data-tex="\(dx\wedge dy\)">\(dx\wedge dy\)</span>.</p>
+<p>We first define the geometric cup pairing on the period classes of the forms (3.2), allowing finite sums of those forms. The compact-support construction is part of the definition: the quotient is not compact before its cusps are added.</p>
+<p><strong>Lemma 5.1 (cutoffs and class dependence).</strong> A closed form <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of this kind can be replaced by a closed covariant form <span class="math" data-tex="\(\omega^c\)">\(\omega^c\)</span> with compact support on the quotient, without changing its period class. For two such forms the number
+<span class="math math-display" data-tex="\[
+\mathscr C([\omega],[\eta])
+=\frac1\mu\int_{\bar\Gamma\backslash\mathfrak H}
+B(\omega^c\wedge\eta^c)
+\tag{5.2}
+\]">\[
+\mathscr C([\omega],[\eta])
+=\frac1\mu\int_{\bar\Gamma\backslash\mathfrak H}
+B(\omega^c\wedge\eta^c)
+\tag{5.2}
+\]</span>
+is independent of the choices and depends only on their group-cohomology classes. It equals the integral with the original forms <span class="math" data-tex="\(\omega,\eta\)">\(\omega,\eta\)</span>.</p>
+<p><strong>Proof.</strong> In each scaled cusp strip take the primitive
+<span class="math" data-tex="\(F_P(z)=\int_P^z\omega\)">\(F_P(z)=\int_P^z\omega\)</span>, with limiting value zero at the cusp. The estimates in Theorem 3.1 give
+<span class="math" data-tex="\(F_P=O((1+y)^m e^{-ay})\)">\(F_P=O((1+y)^m e^{-ay})\)</span> in that coefficient frame. The primitive is covariant under the cusp stabilizer: both its endpoints transform, and its constant at the cusp is zero. Choose a smooth height cutoff <span class="math" data-tex="\(\psi_P\)">\(\psi_P\)</span>, zero below one high horocycle and one above a higher one. The finitely many cusp neighborhoods can be chosen disjoint. Extend <span class="math" data-tex="\(\psi_PF_P\)">\(\psi_PF_P\)</span> equivariantly and by zero, and put
+<span class="math math-display" data-tex="\[
+\omega^c=\omega-d\sum_P\psi_PF_P.
+\tag{5.3}
+\]">\[
+\omega^c=\omega-d\sum_P\psi_PF_P.
+\tag{5.3}
+\]</span>
+It is closed, covariant and zero sufficiently far into each cusp. Subtracting a differential of a covariant function changes its period cocycle by a coboundary. Thus it has the same class.</p>
+<p>If two closed covariant forms have the same period class, their difference is exact with a covariant primitive. To see this directly, let <span class="math" data-tex="\(F(z)=\int_{z_0}^z(\omega-\omega&#x27;)\)">\(F(z)=\int_{z_0}^z(\omega-\omega&#x27;)\)</span>. Its transformation is
+<span class="math" data-tex="\(F(\gamma z)=\rho(\gamma)F(z)+c(\gamma)\)">\(F(\gamma z)=\rho(\gamma)F(z)+c(\gamma)\)</span>.
+If <span class="math" data-tex="\(c(\gamma)=(\rho(\gamma)-1)v\)">\(c(\gamma)=(\rho(\gamma)-1)v\)</span>, the function <span class="math" data-tex="\(F+v\)">\(F+v\)</span> is covariant. This also applies to the compact representatives. Pairing their difference <span class="math" data-tex="\(d(F+v)\)">\(d(F+v)\)</span> with a compactly supported closed <span class="math" data-tex="\(\eta^c\)">\(\eta^c\)</span> gives the differential of the compactly supported scalar one-form <span class="math" data-tex="\(B(F+v,\eta^c)\)">\(B(F+v,\eta^c)\)</span>. Its integral is zero. This proves class dependence in the first argument, and the same calculation proves it in the second.</p>
+<p>Here the integral identity being used is the elementary Green–Stokes formula. On rectangles it is the fundamental theorem of calculus applied to <span class="math" data-tex="\(\partial_xQ-\partial_yP\)">\(\partial_xQ-\partial_yP\)</span>; subdivision and change of coordinates give it on the smooth pieces of a truncated quotient domain. Paired edges cancel because <span class="math" data-tex="\(B\)">\(B\)</span> is invariant. At an elliptic point one may remove a small circle upstairs, divide by the stabilizer order and let its radius tend to zero. Smoothness upstairs bounds its boundary integral by a constant times that radius. Thus elliptic points introduce no extra boundary term.</p>
+<p>Finally changing (5.3) back to <span class="math" data-tex="\(\omega\)">\(\omega\)</span> or <span class="math" data-tex="\(\eta\)">\(\eta\)</span> changes the wedge integral by such an exact differential. The boundary integrals at height <span class="math" data-tex="\(y\)">\(y\)</span> tend to zero by the polynomial-exponential estimates; the terms involving both cutoffs have the same decay. Therefore (5.2) equals the original wedge integral. These arguments also prove independence of heights and cutoffs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the compact-support cup pairing: take a compact representative, wedge the coefficient-valued forms using <span class="math" data-tex="\(B\)">\(B\)</span>, and integrate against the oriented surface. The lemma establishes all the class dependence needed here without assuming the Eichler–Shimura isomorphism. After that isomorphism is proved, these representatives give the pairing on every parabolic class.</p>
+<p><strong>Proposition 5.2 (the cup–Petersson identity).</strong> With these signs and this normalization,
+<span class="math math-display" data-tex="\[
+\mathscr C([c_f],[c_{\bar g}])
+=-(2i)^{k-1}\langle f,g\rangle_\Gamma.
+\tag{5.4}
+\]">\[
+\mathscr C([c_f],[c_{\bar g}])
+=-(2i)^{k-1}\langle f,g\rangle_\Gamma.
+\tag{5.4}
+\]</span>
+Pairings of two holomorphic classes, or two antiholomorphic classes, are zero.</p>
+<p><strong>Proof.</strong> Formula (1.7) and <span class="math" data-tex="\(z-\bar z=2iy\)">\(z-\bar z=2iy\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B(\omega_f\wedge\bar\omega_g)
+&amp;=f(z)\overline{g(z)}(2iy)^m\,dz\wedge d\bar z\\
+&amp;=-(2i)^{m+1}f(z)\overline{g(z)}y^m\,dx\wedge dy,
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+B(\omega_f\wedge\bar\omega_g)
+&amp;=f(z)\overline{g(z)}(2iy)^m\,dz\wedge d\bar z\\
+&amp;=-(2i)^{m+1}f(z)\overline{g(z)}y^m\,dx\wedge dy,
+\end{aligned}
+\tag{5.5}
+\]</span>
+because <span class="math" data-tex="\(dz\wedge d\bar z=-2i\,dx\wedge dy\)">\(dz\wedge d\bar z=-2i\,dx\wedge dy\)</span>. Divide by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, integrate, and use Lemma 5.1 to obtain (5.4). For two holomorphic forms the wedge includes <span class="math" data-tex="\(dz\wedge dz=0\)">\(dz\wedge dz=0\)</span>; for two antiholomorphic forms it includes <span class="math" data-tex="\(d\bar z\wedge d\bar z=0\)">\(d\bar z\wedge d\bar z=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 5.3 (Eichler–Shimura).</strong> Under (0.1), the map (3.7) is an isomorphism.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(k\)">\(k\)</span> is even. If
+<span class="math" data-tex="\([c_f+c_{\bar g}]=0\)">\([c_f+c_{\bar g}]=0\)</span>, pair this class with <span class="math" data-tex="\([c_{\bar f}]\)">\([c_{\bar f}]\)</span>. The antiholomorphic–antiholomorphic term vanishes, so (5.4) gives
+<span class="math math-display" data-tex="\[
+0=-(2i)^{k-1}\langle f,f\rangle_\Gamma.
+\]">\[
+0=-(2i)^{k-1}\langle f,f\rangle_\Gamma.
+\]</span>
+Positivity of the Petersson product implies <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Pair the remaining class with <span class="math" data-tex="\([c_g]\)">\([c_g]\)</span>, placing this holomorphic class in the first argument, to obtain <span class="math" data-tex="\(\langle g,g\rangle_\Gamma=0\)">\(\langle g,g\rangle_\Gamma=0\)</span>, so <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. This proves injectivity. Formula (4.6), including its weight-two case, shows that domain and codomain have the same finite dimension. Hence the map is surjective.</p>
+<p>If <span class="math" data-tex="\(k\)">\(k\)</span> is odd and <span class="math" data-tex="\(-I\in\Gamma\)">\(-I\in\Gamma\)</span>, both sides vanish by (1.8). The map is again an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two summands have different analytic types. Group cohomology itself is defined over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, while its complex parabolic part separates into the holomorphic and antiholomorphic spaces. This is the feature used in the next lesson to study rational structures and Hecke eigenvalues.</p>
+<h2 id="6-period-polynomials-at-level-one">6. Period polynomials at level one</h2>
+<p>Assume <span class="math" data-tex="\(\Gamma=\mathrm{SL}_2(\mathbb Z)\)">\(\Gamma=\mathrm{SL}_2(\mathbb Z)\)</span> and even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>. For <span class="math" data-tex="\(f\in S_k\)">\(f\in S_k\)</span>, let
+<span class="math math-display" data-tex="\[
+R_f(X,Y)=\int_0^{i\infty}f(z)(X-zY)^m\,dz,
+\qquad r_f(X)=R_f(X,1).
+\tag{6.1}
+\]">\[
+R_f(X,Y)=\int_0^{i\infty}f(z)(X-zY)^m\,dz,
+\qquad r_f(X)=R_f(X,1).
+\tag{6.1}
+\]</span>
+Convergence at both endpoints follows by the two cusp scalings in Theorem 3.1.</p>
+<p>For period polynomials use the right action
+<span class="math math-display" data-tex="\[
+P|\gamma=\rho(\gamma^{-1})P=P(aX+bY,cX+dY).
+\tag{6.2}
+\]">\[
+P|\gamma=\rho(\gamma^{-1})P=P(aX+bY,cX+dY).
+\tag{6.2}
+\]</span>
+After setting <span class="math" data-tex="\(Y=1\)">\(Y=1\)</span>, this reads
+<span class="math" data-tex="\(r|\gamma=(cX+d)^m r((aX+b)/(cX+d))\)">\(r|\gamma=(cX+d)^m r((aX+b)/(cX+d))\)</span>, with its polynomial interpretation when a denominator vanishes.</p>
+<p><strong>Theorem 6.1 (period relations).</strong>
+<span class="math math-display" data-tex="\[
+R_f|(1+S)=0,\qquad R_f|(1+U+U^2)=0.
+\tag{6.3}
+\]">\[
+R_f|(1+S)=0,\qquad R_f|(1+U+U^2)=0.
+\tag{6.3}
+\]</span></p>
+<p><strong>Proof.</strong> Move the base point of the cusp-form cocycle to infinity. The resulting cocycle is
+<span class="math" data-tex="\(c^\infty_f(\gamma)=\int_\infty^{\gamma\infty}\omega_f\)">\(c^\infty_f(\gamma)=\int_\infty^{\gamma\infty}\omega_f\)</span>, and Theorem 3.1 gives the same cohomology class. Its values are
+<span class="math math-display" data-tex="\[
+c^\infty_f(T)=0,\quad c^\infty_f(S)=-R_f,\quad
+c^\infty_f(U)=c^\infty_f(ST)=-R_f.
+\]">\[
+c^\infty_f(T)=0,\quad c^\infty_f(S)=-R_f,\quad
+c^\infty_f(U)=c^\infty_f(ST)=-R_f.
+\]</span>
+The order-two and order-three relations therefore give
+<span class="math" data-tex="\((1+\rho(S))R_f=0\)">\((1+\rho(S))R_f=0\)</span> and
+<span class="math" data-tex="\((1+\rho(U)+\rho(U)^2)R_f=0\)">\((1+\rho(U)+\rho(U)^2)R_f=0\)</span>.
+For even <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(\rho(S^{-1})=\rho(S)\)">\(\rho(S^{-1})=\rho(S)\)</span>; replacing <span class="math" data-tex="\(U\)">\(U\)</span> by its inverse merely permutes the two nonidentity terms in its norm. These are exactly (6.3) for the right action. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Put
+<span class="math math-display" data-tex="\[
+\Lambda(f,s)=(2\pi)^{-s}\Gamma(s)L(f,s).
+\]">\[
+\Lambda(f,s)=(2\pi)^{-s}\Gamma(s)L(f,s).
+\]</span>
+The Mellin identity proved in <a href="LG-MF-11.html">The L-function of a cusp form</a> gives, for <span class="math" data-tex="\(0\le j\le m\)">\(0\le j\le m\)</span>,
+<span class="math" data-tex="\(\int_0^{i\infty}f(z)z^j\,dz=i^{j+1}\Lambda(f,j+1)\)">\(\int_0^{i\infty}f(z)z^j\,dz=i^{j+1}\Lambda(f,j+1)\)</span>. Expanding (6.1) consequently gives every coefficient:
+<span class="math math-display" data-tex="\[
+R_f(X,Y)
+=\sum_{j=0}^m(-1)^j i^{j+1}\binom mj
+\Lambda(f,j+1)X^{m-j}Y^j.
+\tag{6.4}
+\]">\[
+R_f(X,Y)
+=\sum_{j=0}^m(-1)^j i^{j+1}\binom mj
+\Lambda(f,j+1)X^{m-j}Y^j.
+\tag{6.4}
+\]</span>
+Thus the critical values <span class="math" data-tex="\(1,\ldots,k-1\)">\(1,\ldots,k-1\)</span> are the period coefficients with explicit gamma and phase factors.</p>
+<h2 id="7-two-complete-examples">7. Two complete examples</h2>
+<h3 id="7-1-weight-two-on-gamma_0-11">7.1. Weight two on <span class="math" data-tex="\(\Gamma_0(11)\)">\(\Gamma_0(11)\)</span></h3>
+<p>The genus calculation gives
+<span class="math math-display" data-tex="\[
+\mu=12,\quad c=2,\quad e_2=e_3=0,\quad g=1.
+\]">\[
+\mu=12,\quad c=2,\quad e_2=e_3=0,\quad g=1.
+\]</span>
+For example, the elliptic counts vanish because <span class="math" data-tex="\(-1\)">\(-1\)</span> and the primitive cube roots give no corresponding solutions modulo <span class="math" data-tex="\(11\)">\(11\)</span>; the two cusp representatives are <span class="math" data-tex="\(0,\infty\)">\(0,\infty\)</span>. Thus <span class="math" data-tex="\(g=1+12/12-2/2=1\)">\(g=1+12/12-2/2=1\)</span>.</p>
+<p>In weight two <span class="math" data-tex="\(V_0=\mathbb C\)">\(V_0=\mathbb C\)</span> is trivial, so cocycles are additive homomorphisms and coboundaries are zero. Presentation (4.1) becomes
+<span class="math math-display" data-tex="\[
+\langle A,B,P_1,P_2\mid[A,B]P_1P_2=1\rangle.
+\]">\[
+\langle A,B,P_1,P_2\mid[A,B]P_1P_2=1\rangle.
+\]</span>
+The only constraint on a homomorphism is <span class="math" data-tex="\(c(P_1)+c(P_2)=0\)">\(c(P_1)+c(P_2)=0\)</span>. Hence <span class="math" data-tex="\(H^1\)">\(H^1\)</span> has three coordinates, <span class="math" data-tex="\(c(A),c(B),c(P_1)\)">\(c(A),c(B),c(P_1)\)</span>. Parabolicity sets <span class="math" data-tex="\(c(P_1)=c(P_2)=0\)">\(c(P_1)=c(P_2)=0\)</span>, leaving
+<span class="math math-display" data-tex="\[
+H^1_{\mathrm{par}}(\Gamma_0(11),\mathbb C)\simeq\mathbb C^2,
+\qquad[c]\longmapsto(c(A),c(B)).
+\tag{7.1}
+\]">\[
+H^1_{\mathrm{par}}(\Gamma_0(11),\mathbb C)\simeq\mathbb C^2,
+\qquad[c]\longmapsto(c(A),c(B)).
+\tag{7.1}
+\]</span>
+The dimension formula gives <span class="math" data-tex="\(\dim S_2=g=1\)">\(\dim S_2=g=1\)</span>. A nonzero cusp form has order exactly one at infinity by the degree formula, so there is a unique normalized generator <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(a_1(f)=1\)">\(a_1(f)=1\)</span>.</p>
+<p>Write <span class="math" data-tex="\(a=\int_Af(z)\,dz\)">\(a=\int_Af(z)\,dz\)</span>, <span class="math" data-tex="\(b=\int_Bf(z)\,dz\)">\(b=\int_Bf(z)\,dz\)</span>, using oriented handle loops. In the coordinates (7.1), the isomorphism has matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}a&amp;\bar a\\b&amp;\bar b\end{pmatrix}
+\tag{7.2}
+\]">\[
+\begin{pmatrix}a&amp;\bar a\\b&amp;\bar b\end{pmatrix}
+\tag{7.2}
+\]</span>
+on the basis <span class="math" data-tex="\(f,\bar f\)">\(f,\bar f\)</span>. Its determinant is explicitly
+<span class="math math-display" data-tex="\[
+a\bar b-b\bar a=-24i\,\langle f,f\rangle_{\Gamma_0(11)}\ne0.
+\tag{7.3}
+\]">\[
+a\bar b-b\bar a=-24i\,\langle f,f\rangle_{\Gamma_0(11)}\ne0.
+\tag{7.3}
+\]</span>
+To check the equality directly, cut the compact genus-one surface into its oriented handle polygon. A primitive <span class="math" data-tex="\(F=\int f\,dz\)">\(F=\int f\,dz\)</span> increases by <span class="math" data-tex="\(a,b\)">\(a,b\)</span> on the respective pairs of edges. Green–Stokes applied to <span class="math" data-tex="\(d(F\,\overline{f(z)}\,d\bar z)\)">\(d(F\,\overline{f(z)}\,d\bar z)\)</span> pairs opposite edges and gives <span class="math" data-tex="\(a\bar b-b\bar a\)">\(a\bar b-b\bar a\)</span>. The cusp circles contribute zero by the cusp estimates. Formula (5.5) in weight two is <span class="math" data-tex="\(-2i\)">\(-2i\)</span> times the unnormalized Petersson integral; that integral is <span class="math" data-tex="\(12\langle f,f\rangle\)">\(12\langle f,f\rangle\)</span>. This proves (7.3), as well as the full two-dimensional comparison.</p>
+<h3 id="7-2-the-periods-of-delta">7.2. The periods of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span></h3>
+<p>Let <span class="math" data-tex="\(\lambda_n=\Lambda(\Delta,n)\)">\(\lambda_n=\Lambda(\Delta,n)\)</span>. The functional equation from the eleventh lesson gives
+<span class="math" data-tex="\(\lambda_n=\lambda_{12-n}\)">\(\lambda_n=\lambda_{12-n}\)</span>. Formula (6.4) lists all eleven critical values:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_\Delta(X)={}&amp;i\lambda_1(X^{10}-1)
+-45i\lambda_3(X^8-X^2)
++210i\lambda_5(X^6-X^4)\\
+&amp;+10\lambda_2(X^9+X)
+-120\lambda_4(X^7+X^3)
++252\lambda_6X^5.
+\end{aligned}
+\tag{7.4}
+\]">\[
+\begin{aligned}
+r_\Delta(X)={}&amp;i\lambda_1(X^{10}-1)
+-45i\lambda_3(X^8-X^2)
++210i\lambda_5(X^6-X^4)\\
+&amp;+10\lambda_2(X^9+X)
+-120\lambda_4(X^7+X^3)
++252\lambda_6X^5.
+\end{aligned}
+\tag{7.4}
+\]</span>
+For example, the coefficient of <span class="math" data-tex="\(X^9\)">\(X^9\)</span> is <span class="math" data-tex="\(10\lambda_2\)">\(10\lambda_2\)</span>, and the coefficient of <span class="math" data-tex="\(X^8\)">\(X^8\)</span> is <span class="math" data-tex="\(-45i\lambda_3\)">\(-45i\lambda_3\)</span>; these signs include the factors in (6.4).</p>
+<p>We compute the additional relations rather than leave the <span class="math" data-tex="\(U\)">\(U\)</span>-condition implicit. For any polynomial <span class="math" data-tex="\(r\)">\(r\)</span> of degree at most ten its norm is
+<span class="math math-display" data-tex="\[
+Nr=r(X)+(X+1)^{10}r\!\left(-\frac1{X+1}\right)
++X^{10}r\!\left(-\frac{X+1}{X}\right).
+\tag{7.5}
+\]">\[
+Nr=r(X)+(X+1)^{10}r\!\left(-\frac1{X+1}\right)
++X^{10}r\!\left(-\frac{X+1}{X}\right).
+\tag{7.5}
+\]</span>
+The even and odd parts separately satisfy the period relations. Here is an explicit check. On homogeneous polynomials let <span class="math" data-tex="\(\varepsilon=\operatorname{diag}(-1,1)\)">\(\varepsilon=\operatorname{diag}(-1,1)\)</span>, so <span class="math" data-tex="\(R|\varepsilon\)">\(R|\varepsilon\)</span> dehomogenizes to <span class="math" data-tex="\(r(-X)\)">\(r(-X)\)</span>. The matrix identities are
+<span class="math math-display" data-tex="\[
+\varepsilon S\varepsilon^{-1}=-S,\qquad
+\varepsilon U\varepsilon^{-1}=SU^{-1}S^{-1}.
+\]">\[
+\varepsilon S\varepsilon^{-1}=-S,\qquad
+\varepsilon U\varepsilon^{-1}=SU^{-1}S^{-1}.
+\]</span>
+Since <span class="math" data-tex="\(m=10\)">\(m=10\)</span> is even, <span class="math" data-tex="\(-S\)">\(-S\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> act identically, and <span class="math" data-tex="\(N_{U^{-1}}=N_U\)">\(N_{U^{-1}}=N_U\)</span>, where <span class="math" data-tex="\(N_U=1+U+U^2\)">\(N_U=1+U+U^2\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+(R|\varepsilon)|S=-R|\varepsilon,\qquad
+(R|\varepsilon)|N_U
+=R|SN_US^{-1}\varepsilon=0,
+\]">\[
+(R|\varepsilon)|S=-R|\varepsilon,\qquad
+(R|\varepsilon)|N_U
+=R|SN_US^{-1}\varepsilon=0,
+\]</span>
+using <span class="math" data-tex="\(R|S=-R\)">\(R|S=-R\)</span> and <span class="math" data-tex="\(R|N_U=0\)">\(R|N_U=0\)</span>. Taking the sum and difference of <span class="math" data-tex="\(R\)">\(R\)</span> and <span class="math" data-tex="\(R|\varepsilon\)">\(R|\varepsilon\)</span> proves the assertion.</p>
+<p>Expanding the even norm, its <span class="math" data-tex="\(X^9\)">\(X^9\)</span> coefficient, divided by <span class="math" data-tex="\(i\)">\(i\)</span>, is
+<span class="math" data-tex="\(-270\lambda_3+420\lambda_5\)">\(-270\lambda_3+420\lambda_5\)</span>. The <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span>-term has identically zero norm. Thus
+<span class="math math-display" data-tex="\[
+\lambda_5=\frac9{14}\lambda_3.
+\tag{7.6}
+\]">\[
+\lambda_5=\frac9{14}\lambda_3.
+\tag{7.6}
+\]</span>
+For the odd norm the coefficients of <span class="math" data-tex="\(X^{10}\)">\(X^{10}\)</span> and <span class="math" data-tex="\(X^8\)">\(X^8\)</span> are
+<span class="math math-display" data-tex="\[
+-20\lambda_2+240\lambda_4-252\lambda_6,\qquad
+-450\lambda_2+2880\lambda_4-2520\lambda_6.
+\]">\[
+-20\lambda_2+240\lambda_4-252\lambda_6,\qquad
+-450\lambda_2+2880\lambda_4-2520\lambda_6.
+\]</span>
+Divide the first by four and the second by ninety and subtract: this yields
+<span class="math" data-tex="\(28\lambda_4-35\lambda_6=0\)">\(28\lambda_4-35\lambda_6=0\)</span>. Substituting back yields
+<span class="math math-display" data-tex="\[
+\lambda_4=\frac{25}{48}\lambda_2,\qquad
+\lambda_6=\frac5{12}\lambda_2.
+\tag{7.7}
+\]">\[
+\lambda_4=\frac{25}{48}\lambda_2,\qquad
+\lambda_6=\frac5{12}\lambda_2.
+\tag{7.7}
+\]</span>
+The complete factored answer is therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r_\Delta^+(X)&amp;=
+i\lambda_1(X^{10}-1)-45i\lambda_3X^2(X^2-1)^3,\\
+r_\Delta^-(X)&amp;=
+\frac52\lambda_2\,X(X^2-1)^2(X^2-4)(4X^2-1).
+\end{aligned}
+\tag{7.8}
+\]">\[
+\begin{aligned}
+r_\Delta^+(X)&amp;=
+i\lambda_1(X^{10}-1)-45i\lambda_3X^2(X^2-1)^3,\\
+r_\Delta^-(X)&amp;=
+\frac52\lambda_2\,X(X^2-1)^2(X^2-4)(4X^2-1).
+\end{aligned}
+\tag{7.8}
+\]</span>
+Expansion recovers every coefficient in (7.4), using (7.6)–(7.7). For the second factorization, set <span class="math" data-tex="\(t=X^2\)">\(t=X^2\)</span> and multiply
+<span class="math" data-tex="\((t-1)^2(t-4)(4t-1)=4t^4-25t^3+42t^2-25t+4\)">\((t-1)^2(t-4)(4t-1)=4t^4-25t^3+42t^2-25t+4\)</span>.
+The remaining critical values are the complementary ones already supplied by the functional equation, and
+<span class="math math-display" data-tex="\[
+L(\Delta,n)=\frac{(2\pi)^n}{(n-1)!}\lambda_n,\qquad 1\le n\le11.
+\tag{7.9}
+\]">\[
+L(\Delta,n)=\frac{(2\pi)^n}{(n-1)!}\lambda_n,\qquad 1\le n\le11.
+\tag{7.9}
+\]</span>
+Each <span class="math" data-tex="\(\lambda_n\)">\(\lambda_n\)</span> is the convergent integral
+<span class="math" data-tex="\(\int_0^\infty\Delta(iy)y^{n-1}\,dy\)">\(\int_0^\infty\Delta(iy)y^{n-1}\,dy\)</span>; no numerical approximation is needed for these exact identities.</p>
+<p>The two period relations do not determine <span class="math" data-tex="\(\lambda_1/\lambda_3\)">\(\lambda_1/\lambda_3\)</span>. Indeed, <span class="math" data-tex="\(X^{10}-1\)">\(X^{10}-1\)</span> itself satisfies both relations: its three terms in (7.5) telescope. Its presence is the one-dimensional even boundary term in the period space. The rationality theorem stated below concerns further arithmetic structure; it is not a deduction from (6.3) alone.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Verify the cocycle identity for (3.4), including the action on its polynomial factor, and calculate its base-point change.</li>
+<li><strong>Medium.</strong> For even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>, compute <span class="math" data-tex="\(\dim H^1(\mathrm{PSL}_2(\mathbb Z),V_{k-2}(\mathbb Q))\)">\(\dim H^1(\mathrm{PSL}_2(\mathbb Z),V_{k-2}(\mathbb Q))\)</span> and compare it with <span class="math" data-tex="\(2\dim S_k+1\)">\(2\dim S_k+1\)</span>. Compute weight two separately and explain why odd <span class="math" data-tex="\(k\)">\(k\)</span> does not supply the same projective module.</li>
+<li><strong>Medium.</strong> Prove both period relations using changes of integration endpoints. Keep track of the inverse in the right action.</li>
+<li><strong>Hard.</strong> Prove injectivity of (3.7) from the cup–Petersson identity. Explain why cusp cutoffs make the pairing vanish on coboundaries, and verify the constant in weight two.</li>
+</ol>
+<h2 id="9-complete-solutions">9. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>For <span class="math" data-tex="\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)">\(\gamma=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, direct substitution gives
+<span class="math math-display" data-tex="\[
+(dX-bY)-z(-cX+aY)
+=(cz+d)\left(X-\frac{az+b}{cz+d}Y\right).
+\]">\[
+(dX-bY)-z(-cX+aY)
+=(cz+d)\left(X-\frac{az+b}{cz+d}Y\right).
+\]</span>
+Its <span class="math" data-tex="\(m\)">\(m\)</span>-th power is (3.1). On pulling back <span class="math" data-tex="\(\omega_f\)">\(\omega_f\)</span>, the factors are <span class="math" data-tex="\((cz+d)^k\)">\((cz+d)^k\)</span> from <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\((cz+d)^{-m}\)">\((cz+d)^{-m}\)</span> from <span class="math" data-tex="\(v_{\gamma z}\)">\(v_{\gamma z}\)</span>, and <span class="math" data-tex="\((cz+d)^{-2}\)">\((cz+d)^{-2}\)</span> from the differential; since <span class="math" data-tex="\(k=m+2\)">\(k=m+2\)</span>, they cancel to give (3.3). Split the path <span class="math" data-tex="\(z_0\to\gamma\delta z_0\)">\(z_0\to\gamma\delta z_0\)</span> at <span class="math" data-tex="\(\gamma z_0\)">\(\gamma z_0\)</span>; the second integral is <span class="math" data-tex="\(\rho(\gamma)c_f(\delta)\)">\(\rho(\gamma)c_f(\delta)\)</span>, giving (1.2). If <span class="math" data-tex="\(b=\int_{z_0}^{z_1}\omega_f\)">\(b=\int_{z_0}^{z_1}\omega_f\)</span>, the three paths used in (3.5) contribute <span class="math" data-tex="\(-b,c_f(\gamma),\rho(\gamma)b\)">\(-b,c_f(\gamma),\rho(\gamma)b\)</span>. Their sum proves the base-point formula. Complex conjugation gives exactly the corresponding calculation for the antiholomorphic cocycle.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Write <span class="math" data-tex="\(d=k-1\)">\(d=k-1\)</span>. By (4.5), the two invariant dimensions are
+<span class="math" data-tex="\(d-2\lfloor k/4\rfloor\)">\(d-2\lfloor k/4\rfloor\)</span> and <span class="math" data-tex="\(d-2\lfloor k/3\rfloor\)">\(d-2\lfloor k/3\rfloor\)</span>. For <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>, the invariants of the whole group vanish by the upper and lower translations. Theorem 2.2 therefore gives
+<span class="math math-display" data-tex="\[
+\dim H^1(G,V_{k-2}(\mathbb Q))
+=-(k-1)+2\lfloor k/4\rfloor+2\lfloor k/3\rfloor.
+\tag{9.1}
+\]">\[
+\dim H^1(G,V_{k-2}(\mathbb Q))
+=-(k-1)+2\lfloor k/4\rfloor+2\lfloor k/3\rfloor.
+\tag{9.1}
+\]</span>
+These invariant dimensions over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> agree with those over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, since extending the field does not change the rank of the rational matrices defining their kernels. At level one <span class="math" data-tex="\(g=0,c=e_2=e_3=1\)">\(g=0,c=e_2=e_3=1\)</span>, and the cusp-space dimension is
+<span class="math math-display" data-tex="\[
+\dim S_k=-k/2+\lfloor k/4\rfloor+\lfloor k/3\rfloor.
+\]">\[
+\dim S_k=-k/2+\lfloor k/4\rfloor+\lfloor k/3\rfloor.
+\]</span>
+Comparison proves <span class="math" data-tex="\(\dim H^1=2\dim S_k+1\)">\(\dim H^1=2\dim S_k+1\)</span>. Thus the full cohomology has one additional dimension beyond its parabolic part.</p>
+<p>For <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, all three invariant spaces in (2.1) are <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so the difference map <span class="math" data-tex="\(\mathbb Q^2\to\mathbb Q\)">\(\mathbb Q^2\to\mathbb Q\)</span> is surjective and <span class="math" data-tex="\(H^1=0\)">\(H^1=0\)</span>. Also <span class="math" data-tex="\(S_2=0\)">\(S_2=0\)</span>, and the expression <span class="math" data-tex="\(2\dim S_2+1\)">\(2\dim S_2+1\)</span> is one, not zero. Finally odd <span class="math" data-tex="\(k\)">\(k\)</span> means odd <span class="math" data-tex="\(m\)">\(m\)</span>: the two lifts of a projective matrix act with opposite signs, so (1.1) does not descend to a <span class="math" data-tex="\(\mathrm{PSL}_2(\mathbb Z)\)">\(\mathrm{PSL}_2(\mathbb Z)\)</span>-module. If one works instead with the full modular group, (1.8) makes the odd-weight cohomology zero.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Change variables <span class="math" data-tex="\(z=\gamma w\)">\(z=\gamma w\)</span> in a cusp integral. Covariance gives
+<span class="math math-display" data-tex="\[
+\rho(\gamma^{-1})R_f
+=\int_{\gamma^{-1}0}^{\gamma^{-1}\infty}\omega_f.
+\tag{9.2}
+\]">\[
+\rho(\gamma^{-1})R_f
+=\int_{\gamma^{-1}0}^{\gamma^{-1}\infty}\omega_f.
+\tag{9.2}
+\]</span>
+For <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span>, the endpoints are <span class="math" data-tex="\(\infty,0\)">\(\infty,0\)</span>. Thus <span class="math" data-tex="\(R_f|S=-R_f\)">\(R_f|S=-R_f\)</span>.</p>
+<h1 id="for-u--1-the-endpoints-are--1-0-for-u--2-they-are-infty--1-hence-r_f-r_f-u-r_f-u-2">For <span class="math" data-tex="\(U^{-1}\)">\(U^{-1}\)</span>, the endpoints are <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>; for <span class="math" data-tex="\(U^{-2}\)">\(U^{-2}\)</span>, they are <span class="math" data-tex="\(\infty,-1\)">\(\infty,-1\)</span>. Hence
+[
+R_f+R_f|U+R_f|U^2</h1>
+<p>\int_0^\infty\omega_f+\int_{-1}^0\omega_f+\int_\infty^{-1}\omega_f=0.
+]
+Here all endpoints are rational cusps and all integrals converge. To justify the final concatenation, truncate the paths in cusp neighborhoods. The closed form has zero integral around the resulting loop in the half-plane, and the short high-level connecting pieces tend to zero by the cusp estimates. This proves the relation with the stated right action. On setting <span class="math" data-tex="\(Y=1\)">\(Y=1\)</span>, the substitution law becomes (6.2), so the same identities hold for <span class="math" data-tex="\(r_f\)">\(r_f\)</span>.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>For a coboundary period class, the integral primitive <span class="math" data-tex="\(F\)">\(F\)</span> of the coefficient form obeys
+<span class="math" data-tex="\(F(\gamma z)=\rho(\gamma)F(z)+(\rho(\gamma)-1)v\)">\(F(\gamma z)=\rho(\gamma)F(z)+(\rho(\gamma)-1)v\)</span>.
+Thus <span class="math" data-tex="\(F+v\)">\(F+v\)</span> is covariant. Replace the other form by its compact representative <span class="math" data-tex="\(\eta^c\)">\(\eta^c\)</span> from (5.3). The scalar form <span class="math" data-tex="\(B(F+v,\eta^c)\)">\(B(F+v,\eta^c)\)</span> has compact support and
+<span class="math math-display" data-tex="\[
+dB(F+v,\eta^c)=B(dF\wedge\eta^c).
+\]">\[
+dB(F+v,\eta^c)=B(dF\wedge\eta^c).
+\]</span>
+Green–Stokes on the quotient gives zero: paired boundaries cancel, the form is zero at all sufficiently high cusp boundaries, and the small elliptic circles tend to zero. Therefore the pairing depends on the classes and vanishes when either class is zero.</p>
+<p>In the kernel of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>, pair <span class="math" data-tex="\([c_f+c_{\bar g}]\)">\([c_f+c_{\bar g}]\)</span> with <span class="math" data-tex="\([c_{\bar f}]\)">\([c_{\bar f}]\)</span>. Its same-type term is zero, while its other term is
+<span class="math" data-tex="\(-(2i)^{k-1}\langle f,f\rangle_\Gamma\)">\(-(2i)^{k-1}\langle f,f\rangle_\Gamma\)</span>. Thus <span class="math" data-tex="\(f=0\)">\(f=0\)</span>. Pair <span class="math" data-tex="\([c_g]\)">\([c_g]\)</span> with the remaining zero class <span class="math" data-tex="\([c_{\bar g}]\)">\([c_{\bar g}]\)</span>; positivity gives <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. This proves injectivity in even weight. The central-sign argument proves the remaining case in (0.1). When <span class="math" data-tex="\(k=2\)">\(k=2\)</span>, <span class="math" data-tex="\(B\)">\(B\)</span> is ordinary multiplication, and <span class="math" data-tex="\(dz\wedge d\bar z=-2i\,dx\wedge dy\)">\(dz\wedge d\bar z=-2i\,dx\wedge dy\)</span>; hence the constant is exactly <span class="math" data-tex="\(-2i\)">\(-2i\)</span>, with the same division by the projective index as in (5.1).</p>
+<h2 id="appendix-a-the-marked-surface-presentation">Appendix A. The marked surface presentation</h2>
+<p>This proof supplies the exact handle, puncture and orbifold attaching word used in Section 4. The earlier finite-polygon handle theorem is lesson 03, Appendix A, Theorem S. Its disk and band constructions and ordered cap-attachment proof are A.1, A.3 and A.4 there. The elementary quotient, compactness and finite-path foundations remain the ones stated in that lesson. The analytic foundation requirements of lesson 06 remain separate.</p>
+<h3 id="a-1-statement-and-conventions">A.1. Statement and conventions</h3>
+<p>Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be a compact connected oriented surface supplied with a finite polygonal presentation. Let <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> be distinct labelled points. Appendix A, Theorem S of lesson 03 identifies <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span>, by its explicit oriented disk-and-band operations, with a sphere carrying <span class="math" data-tex="\(g\)">\(g\)</span> standard torus handles. Then there are based loops <span class="math" data-tex="\(A_i,B_i,C_s\)">\(A_i,B_i,C_s\)</span> in <span class="math" data-tex="\(\Sigma^\circ=\Sigma\setminus\{x_1,\ldots,x_n\}\)">\(\Sigma^\circ=\Sigma\setminus\{x_1,\ldots,x_n\}\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi_1(\Sigma^\circ)=\langle A_i,B_i,C_s\mid R=1\rangle,\\
+R=\prod_{i=1}^g[A_i,B_i]C_1\cdots C_n.
+\end{gathered}\tag{M1}
+\]">\[
+\begin{gathered}
+\pi_1(\Sigma^\circ)=\langle A_i,B_i,C_s\mid R=1\rangle,\\
+R=\prod_{i=1}^g[A_i,B_i]C_1\cdots C_n.
+\end{gathered}\tag{M1}
+\]</span>
+The generators in (M1) have indices <span class="math" data-tex="\(1\le i\le g\)">\(1\le i\le g\)</span> and <span class="math" data-tex="\(1\le s\le n\)">\(1\le s\le n\)</span>. Here <span class="math" data-tex="\([A,B]=ABA^{-1}B^{-1}\)">\([A,B]=ABA^{-1}B^{-1}\)</span>, paths multiply in the order traversed, and each <span class="math" data-tex="\(C_s\)">\(C_s\)</span> follows a connector to a small circle about <span class="math" data-tex="\(x_s\)">\(x_s\)</span>, makes one <strong>clockwise</strong> circuit in a positively oriented local coordinate, and returns along the connector. Thus its local winding number is <span class="math" data-tex="\(-1\)">\(-1\)</span>. The handle loops use the positive square basis: the first runs rightwards on the lower square side and the second upwards on its right side. This preserves the handle orientation used by the genus-one Stokes calculation in lesson 15, Section 7.1.</p>
+<p>Clockwise peripheral loops are also the boundary orientations of the surface after small disks about the marked points have been deleted: the surface lies on the left. This convention fixes the plus signs in (M1). Counterclockwise peripheral loops would be inverses and require a corresponding change in the written attaching word.</p>
+<p>The elementary inputs retained are the quotient topology; finite graph paths and reduced words; compactness and its finite-subdivision consequence; continuity in intervals, disks and rectangles; and the explicit disk, collar, band and cap constructions of lesson 03, Appendix A. No atlas-only triangulability, further surface classification, general van Kampen theorem, or source statement in Hatcher is used.</p>
+<h3 id="a-2-obtain-the-ordered-handle-word-from-the-square-models">A.2. Obtain the ordered handle word from the square models</h3>
+<p>For one torus take the oriented square <span class="math" data-tex="\([0,1]^2\)">\([0,1]^2\)</span> and identify opposite sides by translations, as in lesson 03, A.3, (S6). Starting at its lower-left corner, its positively oriented boundary reads
+<span class="math math-display" data-tex="\[
+a\,b\,a^{-1}\,b^{-1}=[a,b].\tag{M2}
+\]">\[
+a\,b\,a^{-1}\,b^{-1}=[a,b].\tag{M2}
+\]</span>
+The image of its boundary is the two-loop core graph. Remove a small central open disk from the abstract square before making these identifications. The abstract remaining region is an annulus; its outer polygon side is identified to the core graph and its inner circle is the boundary of the punctured torus. Its collar contraction to the core graph is exactly the mapping-cylinder contraction of A.4. In particular the clockwise inner circle maps to <span class="math" data-tex="\([a,b]^{-1}\)">\([a,b]^{-1}\)</span>, while the positive outer polygon boundary maps to <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>.</p>
+<p>Here is an explicit induction for connected sums, including the noncommutative order. Suppose an oriented closed handle model is obtained from a polygon disk <span class="math" data-tex="\(Q\)">\(Q\)</span> with boundary attached to a connected graph <span class="math" data-tex="\(G\)">\(G\)</span>, and let its positive boundary word based at a vertex <span class="math" data-tex="\(v\)">\(v\)</span> be <span class="math" data-tex="\(W\)">\(W\)</span>. Choose a central disk using the disk parametrization of A.1 and remove it. Remove a central disk from a new torus square as well. Before identifying either polygon's outer sides, each remaining region has product coordinates <span class="math" data-tex="\(S^1\times[0,1]\)">\(S^1\times[0,1]\)</span>. Identify their inner circles with opposite boundary orientations. The sewn region is an annulus <span class="math" data-tex="\(S^1\times[-1,1]\)">\(S^1\times[-1,1]\)</span>, as follows directly by reversing the circle coordinate on one of the two product collars.</p>
+<p>Choose the radial interval at angle zero, joining <span class="math" data-tex="\(v\)">\(v\)</span> on one outer polygon to the new square's corner <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span> on the other. Cut the sewn annulus along this interval. In the displayed product coordinates this just cuts <span class="math" data-tex="\(S^1\)">\(S^1\)</span> open to an interval, so the cut region is a rectangle and hence a disk. Let <span class="math" data-tex="\(p\)">\(p\)</span> denote the cut interval directed from <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(v&#x27;\)">\(v&#x27;\)</span>. The positive boundary of this new disk reads
+<span class="math math-display" data-tex="\[
+W\,p\,[a,b]\,p^{-1}.\tag{M3}
+\]">\[
+W\,p\,[a,b]\,p^{-1}.\tag{M3}
+\]</span>
+Both outer-boundary words use their original positive orientations; the two copies of the cut interval have opposite directions. Thus this is an actual cut construction of the attaching word, not a multiplication of commutators inferred from a handle count.</p>
+<p>After gluing the original outer sides and the two copies of <span class="math" data-tex="\(p\)">\(p\)</span>, the result is exactly the connected sum prescribed in A.3. Its graph is <span class="math" data-tex="\(G\)">\(G\)</span> joined to the new square core by the tree edge <span class="math" data-tex="\(p\)">\(p\)</span>. Enlarge a spanning tree of <span class="math" data-tex="\(G\)">\(G\)</span> by this edge. At the old root the new generators are <span class="math" data-tex="\(A=p a p^{-1}\)">\(A=p a p^{-1}\)</span>, <span class="math" data-tex="\(B=p b p^{-1}\)">\(B=p b p^{-1}\)</span>, including the existing tree connector from the root to <span class="math" data-tex="\(v\)">\(v\)</span> when needed. The last factor of (M3) becomes <span class="math" data-tex="\([A,B]\)">\([A,B]\)</span>. Repeating this construction gives a polygon disk <span class="math" data-tex="\(Q_g\)">\(Q_g\)</span>, a graph <span class="math" data-tex="\(G_g\)">\(G_g\)</span> made of <span class="math" data-tex="\(g\)">\(g\)</span> square cores joined by tree edges, and positive boundary word
+<span class="math math-display" data-tex="\[
+W_g=[A_1,B_1]\cdots[A_g,B_g].\tag{M4}
+\]">\[
+W_g=[A_1,B_1]\cdots[A_g,B_g].\tag{M4}
+\]</span>
+The spanning-tree calculation of A.4 says that these <span class="math" data-tex="\(2g\)">\(2g\)</span> letters freely generate <span class="math" data-tex="\(\pi_1(G_g)\)">\(\pi_1(G_g)\)</span>. Capping the mapping-cylinder neighborhood imposes exactly the normal closure of (M4), by the cap proof in A.4. No additional relation has been introduced by the bridges, because they belong to the spanning tree.</p>
+<p>For <span class="math" data-tex="\(g=0\)">\(g=0\)</span> use a disk with its entire boundary collapsed to one point. This is the sphere: in polar coordinates the map
+<span class="math math-display" data-tex="\[
+(r,\theta)\longmapsto
+\begin{pmatrix}
+\sin(\pi r)\cos\theta\\
+\sin(\pi r)\sin\theta\\
+\cos(\pi r)
+\end{pmatrix}
+\]">\[
+(r,\theta)\longmapsto
+\begin{pmatrix}
+\sin(\pi r)\cos\theta\\
+\sin(\pi r)\sin\theta\\
+\cos(\pi r)
+\end{pmatrix}
+\]</span>
+descends to a continuous bijection onto the unit sphere, with the center and boundary mapped to the two poles; compactness gives its continuous inverse. The core graph is a point and <span class="math" data-tex="\(W_0\)">\(W_0\)</span> is empty. This is also the zero-band capped disk of A.3.</p>
+<h3 id="a-3-put-the-labelled-marks-in-the-single-polygon-interior">A.3. Put the labelled marks in the single polygon interior</h3>
+<p>The handle identification need not initially put the marked points in the polygon interior. We make that step explicit. In a convex coordinate disk <span class="math" data-tex="\(D\)">\(D\)</span>, and for any interior point <span class="math" data-tex="\(a\)">\(a\)</span>, let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Phi_a(r,u)=a+r(u-a),\\
+0\le r\le1,\quad u\in\partial D.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Phi_a(r,u)=a+r(u-a),\\
+0\le r\le1,\quad u\in\partial D.
+\end{gathered}
+\]</span>
+This identifies the cone on <span class="math" data-tex="\(\partial D\)">\(\partial D\)</span> with <span class="math" data-tex="\(D\)">\(D\)</span>. For two interior points <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, <span class="math" data-tex="\(\Phi_b\Phi_a^{-1}\)">\(\Phi_b\Phi_a^{-1}\)</span> is a homeomorphism fixing <span class="math" data-tex="\(\partial D\)">\(\partial D\)</span> and taking <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. Replacing <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\((1-t)a+tb\)">\((1-t)a+tb\)</span> gives a continuous isotopy from the identity, so the map preserves orientation. Extended by the identity outside <span class="math" data-tex="\(D\)">\(D\)</span>, it is a surface homeomorphism. This supplies the point-moving operation without an isotopy-extension theorem.</p>
+<p>In the finite disk-and-band model, a path between two points can be taken as finitely many polygonal pieces in its disk and rectangle charts. It can avoid any finite set of other points: in a small disk about each obstruction replace the passage by an arc in the punctured disk. Compactness then subdivides the path into finitely many portions inside convex coordinate disks that miss those other points. The preceding point-moving maps transport one point along the path while fixing all the other marks.</p>
+<p>Choose an orientation-preserving disk parametrization of <span class="math" data-tex="\(Q_g\)">\(Q_g\)</span> by
+<span class="math" data-tex="\(R=[0,2n+1]\times[0,4]\)">\(R=[0,2n+1]\times[0,4]\)</span>, with its lower-left corner mapped to the chosen graph root. The desired target sites are <span class="math" data-tex="\((2s-\tfrac12,\tfrac52)\)">\((2s-\tfrac12,\tfrac52)\)</span>. If any is initially occupied, first transport all marks to distinct temporary sites in the polygon interior that avoid the initial marks and every desired target; only finitely many sites are forbidden. Then every desired target is empty. Transport the labelled marks one at a time to their desired sites, fixing all other marks at every step. Consequently, after an orientation-preserving homeomorphism, all marks lie in the single polygon interior in this prescribed labelled order. This moves the marked surface to the chosen model; it need not fix a previously chosen core graph. Around these sites choose the disjoint open rectangular disks
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D_s=(2s-1,2s)\times(2,3),\\
+1\le s\le n.
+\end{gathered}\tag{M5}
+\]">\[
+\begin{gathered}
+D_s=(2s-1,2s)\times(2,3),\\
+1\le s\le n.
+\end{gathered}\tag{M5}
+\]</span>
+Their square corners cause no topological difficulty: a radial disk parametrization identifies each with a round disk. On each punctured closed disk the homotopy in these radial coordinates
+<span class="math math-display" data-tex="\[
+(r,\theta)\longmapsto((1-t)r+t,\theta),\qquad 0&lt;r\le1,
+\]">\[
+(r,\theta)\longmapsto((1-t)r+t,\theta),\qquad 0&lt;r\le1,
+\]</span>
+fixes its boundary and retracts it to that boundary. Extended by the identity outside the disks, this proves that <span class="math" data-tex="\(\Sigma^\circ\)">\(\Sigma^\circ\)</span> deformation retracts onto
+<span class="math" data-tex="\(M=\Sigma\setminus\bigcup_sD_s\)">\(M=\Sigma\setminus\bigcup_sD_s\)</span>.</p>
+<h3 id="a-4-cut-the-punctured-polygon-into-one-disk-and-read-its-boundary">A.4. Cut the punctured polygon into one disk and read its boundary</h3>
+<p>In <span class="math" data-tex="\(R\setminus\bigcup_sD_s\)">\(R\setminus\bigcup_sD_s\)</span>, cut along the vertical intervals
+<span class="math math-display" data-tex="\[
+v_s=\{2s-\tfrac12\}\times[0,2].\tag{M6}
+\]">\[
+v_s=\{2s-\tfrac12\}\times[0,2].\tag{M6}
+\]</span>
+Each runs from the outer lower side to the middle of a hole's lower side. The cut space is a disk by the following finite verification. Its pieces are the top bar <span class="math" data-tex="\([0,2n+1]\times[3,4]\)">\([0,2n+1]\times[3,4]\)</span>; the <span class="math" data-tex="\(n+1\)">\(n+1\)</span> vertical bars with <span class="math" data-tex="\(x\)">\(x\)</span>-ranges
+<span class="math" data-tex="\([0,1],[2,3],\ldots,[2n,2n+1]\)">\([0,1],[2,3],\ldots,[2n,2n+1]\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>-range <span class="math" data-tex="\([0,3]\)">\([0,3]\)</span>; and the two half-rectangles below each hole, separated by (M6). The top bar meets each vertical bar along one interval. Each half-rectangle meets just its adjacent vertical bar along one interval. This is a tree of <span class="math" data-tex="\(3n+2\)">\(3n+2\)</span> disk pieces with <span class="math" data-tex="\(3n+1\)">\(3n+1\)</span> interval gluings. Induction using A.1's two-disk interval-gluing map proves that their cut union is a disk. The two banks of every cut are kept separate; they are not glued in this cut space.</p>
+<p>Let <span class="math" data-tex="\(s_s\)">\(s_s\)</span> be the path along the outer lower side from the root to the lower end of <span class="math" data-tex="\(v_s\)">\(v_s\)</span>. Orient <span class="math" data-tex="\(v_s\)">\(v_s\)</span> upwards. Let <span class="math" data-tex="\(d_s\)">\(d_s\)</span> make one clockwise circuit of <span class="math" data-tex="\(\partial D_s\)">\(\partial D_s\)</span>, starting at that cut's upper endpoint. Define the based peripheral loop
+<span class="math math-display" data-tex="\[
+C_s=s_s v_s d_s v_s^{-1}s_s^{-1}.\tag{M7}
+\]">\[
+C_s=s_s v_s d_s v_s^{-1}s_s^{-1}.\tag{M7}
+\]</span>
+These are loops in the quotient surface with the labelled disks removed. Follow the positive boundary of the cut disk, starting at the root and going rightwards along the lower outer side. At each cut it goes up one bank, clockwise around the hole, down the other bank, then resumes the outer side. Write out that boundary word and insert successive outer-side prefixes and their reverses. The resulting based word is exactly
+<span class="math math-display" data-tex="\[
+C_1C_2\cdots C_n W_g.\tag{M8}
+\]">\[
+C_1C_2\cdots C_n W_g.\tag{M8}
+\]</span>
+The order <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span> comes from the left-to-right coordinates (M5); each hole is clockwise because the cut disk lies on the left of its boundary. No factors are commuted. Cyclically rotating (M8) gives <span class="math" data-tex="\(W_g C_1\cdots C_n\)">\(W_g C_1\cdots C_n\)</span>. Indeed these two words are conjugate, so their normal closures agree.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be the graph consisting of <span class="math" data-tex="\(G_g\)">\(G_g\)</span>, the cut intervals, and the hole boundaries. Subdivide graph edges at the cut feet. A spanning tree of <span class="math" data-tex="\(G_g\)">\(G_g\)</span>, together with every <span class="math" data-tex="\(v_s\)">\(v_s\)</span> and all but one edge of each hole circle, is a spanning tree of <span class="math" data-tex="\(K\)">\(K\)</span>. Thus A.4 gives the free graph group on the <span class="math" data-tex="\(2g\)">\(2g\)</span> handle generators and <span class="math" data-tex="\(n\)">\(n\)</span> peripheral generators. In (M7) the prefix <span class="math" data-tex="\(s_s\)">\(s_s\)</span> can differ from a spanning-tree connector by a word in the handle generators. This only conjugates that peripheral free generator by such a word. It still gives a free basis: conjugating each new letter by a word in the fixed handle letters has the explicit inverse obtained by the inverse conjugations, while fixing those handle letters.</p>
+<p>Trim a collar of the boundary of the cut disk before identifying its paired sides. Its quotient is the mapping cylinder of the boundary map onto <span class="math" data-tex="\(K\)">\(K\)</span>, and retracts to <span class="math" data-tex="\(K\)">\(K\)</span> by the exact homotopy of A.4. The remaining central disk caps its inner collar circle. Along the hole boundaries a side occurs only once, giving a boundary of <span class="math" data-tex="\(M\)">\(M\)</span>; along the graph and cut sides the paired occurrences give the two-sided strips. Thus this construction produces precisely <span class="math" data-tex="\(M\)">\(M\)</span>. The cap proof of A.4 applies unchanged: choose its open disk and open collar annulus about this inner capping circle. The other boundary components lie away from that cover intersection and do not affect either its loop subdivision or its ordered triangle-grid argument. If the root is moved to that annulus, the attaching word is merely conjugated.</p>
+<p>Consequently <span class="math" data-tex="\(\pi_1(M)\)">\(\pi_1(M)\)</span> is the free graph group just calculated modulo exactly the normal closure of (M8). Using its conjugate <span class="math" data-tex="\(W_gC_1\cdots C_n\)">\(W_gC_1\cdots C_n\)</span> proves (M1), including the absence of additional relations. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, A.2 and the original cap proof already give the same assertion.</p>
+<figure><img src="figures/marked-surface-cut-models.png" alt="Exact square and puncture-cut models" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p>Figure A.1. Left: the positively oriented torus square has boundary word (M2). Right: the exact <span class="math" data-tex="\(n=3\)">\(n=3\)</span> instance of (M5)–(M6); dashed cuts have separate banks in the cut disk. Clockwise hole circuits and lower-side connectors give (M7) and the ordered word (M8). A.3–A.4 give the exact coordinates and general construction. The reproducible program is included with the course sources as <code>figures/draw_marked_surface.py</code>.</p>
+<h3 id="a-5-specialize-to-the-modular-marked-surface-and-its-orbifold-relations">A.5. Specialize to the modular marked surface and its orbifold relations</h3>
+<p>For lesson 15 let <span class="math" data-tex="\(\Sigma=X(\Gamma)\)">\(\Sigma=X(\Gamma)\)</span>. Label the elliptic points first, in any fixed order, and the cusps afterwards; thus <span class="math" data-tex="\(n=e_2+e_3+c\)">\(n=e_2+e_3+c\)</span>. Write their peripheral letters as <span class="math" data-tex="\(E_j\)">\(E_j\)</span> and <span class="math" data-tex="\(P_t\)">\(P_t\)</span>, respectively. The supplied quotient cells give the finite-polygon hypothesis, and The presentation (M1) gives the punctured-surface presentation with the long relation
+<span class="math math-display" data-tex="\[
+\prod_{i=1}^{g}[A_i,B_i]\prod_jE_j\prod_{t=1}^{c}P_t=1,\tag{M9}
+\]">\[
+\prod_{i=1}^{g}[A_i,B_i]\prod_jE_j\prod_{t=1}^{c}P_t=1,\tag{M9}
+\]</span>
+before imposing the finite-order relations.</p>
+<p>For completeness, the local quotient argument already used in Section 4 has the following precise finite-kernel justification. Let <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> be the elliptic lifts in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>, and put <span class="math" data-tex="\(Y&#x27;=\mathfrak H\setminus\Lambda\)">\(Y&#x27;=\mathfrak H\setminus\Lambda\)</span>. The free properly discontinuous action on <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span>, with the earlier ordinary quotient charts, makes <span class="math" data-tex="\(Y&#x27;\to\Sigma^\circ\)">\(Y&#x27;\to\Sigma^\circ\)</span> a covering. A path lifts by subdividing its compact parameter interval into evenly covered neighborhoods. Uniqueness of the local inverse branches gives uniqueness of the lift. A finite triangular subdivision of a homotopy square gives the same endpoint for homotopic paths, since the local branches agree on shared edges and a triangle lies in one such neighborhood. These are the needed path and homotopy lifting statements, directly from the charts.</p>
+<p>Fix an upstairs basepoint <span class="math" data-tex="\(z_0\)">\(z_0\)</span>. The endpoint of a lifted based loop is <span class="math" data-tex="\(\gamma z_0\)">\(\gamma z_0\)</span> for a unique <span class="math" data-tex="\(\gamma\in\bar\Gamma\)">\(\gamma\in\bar\Gamma\)</span>. With traversal-order multiplication this defines a homomorphism onto <span class="math" data-tex="\(\bar\Gamma\)">\(\bar\Gamma\)</span>: the lift of a second loop after the first is the translate by the first endpoint element of its original lift. Surjectivity follows by joining <span class="math" data-tex="\(z_0\)">\(z_0\)</span> to <span class="math" data-tex="\(\gamma z_0\)">\(\gamma z_0\)</span> by a path in <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span>. Such a path exists: take a polygonal path in the half-plane and detour around the finitely many lifts meeting its compact image. The kernel consists exactly of projected closed loops upstairs.</p>
+<p>The set <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> meets every compact subset in finitely many points. There are finitely many elliptic orbits, and proper discontinuity gives this finiteness for each orbit. A closed upstairs loop lies in an interior compact rectangle <span class="math" data-tex="\(R&#x27;\subset\mathfrak H\)">\(R&#x27;\subset\mathfrak H\)</span>, chosen with boundary avoiding <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and only finitely many points of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> lie in <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span>. The point-moving and rectangle-cut proof of A.3–A.4 applies in this rectangle while fixing its outer boundary. Keeping that outer boundary as one additional graph circle gives the relation
+<span class="math" data-tex="\(C_1\cdots C_r L=1\)">\(C_1\cdots C_r L=1\)</span>, where <span class="math" data-tex="\(L\)">\(L\)</span> is the outer circle. Eliminating <span class="math" data-tex="\(L\)">\(L\)</span> leaves the free group on the small peripheral circles. Hence the upstairs loop is a product of conjugates of small circles about finitely many lifts. This avoids assuming that an arbitrary continuous contraction has a finite or transverse inverse image of a puncture. The half-plane itself is simply connected by the explicit convex homotopy <span class="math" data-tex="\((1-t)z+tz_0\)">\((1-t)z+tz_0\)</span>.</p>
+<p>At an elliptic point of order <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span>, the earlier local chart is <span class="math" data-tex="\(w\mapsto w^{\nu_j}\)">\(w\mapsto w^{\nu_j}\)</span>. A clockwise circuit downstairs lifts to angular change <span class="math" data-tex="\(-2\pi/\nu_j\)">\(-2\pi/\nu_j\)</span>. A full clockwise circle upstairs projects to <span class="math" data-tex="\(\nu_j\)">\(\nu_j\)</span> clockwise circuits downstairs. The projected upstairs peripheral circles therefore give exactly conjugates of <span class="math" data-tex="\(E_j^{\nu_j}\)">\(E_j^{\nu_j}\)</span>. Conversely <span class="math" data-tex="\(E_j^{\nu_j}\)">\(E_j^{\nu_j}\)</span> lifts to a closed loop, so it lies in the kernel. The kernel is thus exactly their normal closure. Cusps have no lifts in <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span> and add no kernel generators.</p>
+<p>For a cusp of projective width <span class="math" data-tex="\(h_t\)">\(h_t\)</span>, the earlier chart <span class="math" data-tex="\(q=e^{2\pi iz/h_t}\)">\(q=e^{2\pi iz/h_t}\)</span> sends a clockwise <span class="math" data-tex="\(q\)">\(q\)</span>-circle to a lifted path ending at <span class="math" data-tex="\(z-h_t\)">\(z-h_t\)</span>. Thus our <span class="math" data-tex="\(P_t\)">\(P_t\)</span> maps, up to conjugacy, to <span class="math" data-tex="\(\alpha T^{-h_t}\alpha^{-1}\)">\(\alpha T^{-h_t}\alpha^{-1}\)</span>. It generates the same cusp stabilizer as its inverse. Lesson 15 requires a stabilizer generator and its fixed space, not a prescribed positive power; both choices give the same subgroup, parabolic condition and fixed space. Explicitly, <span class="math" data-tex="\((D^{-1}-1)V=-(D-1)D^{-1}V=(D-1)V\)">\((D^{-1}-1)V=-(D-1)D^{-1}V=(D-1)V\)</span>, and the fixed spaces of <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(D^{-1}\)">\(D^{-1}\)</span> agree. The inverse local rotation at an elliptic point likewise generates the same cyclic subgroup; summing all powers of a finite-order generator is unchanged by inversion, so its norm kernel and fixed space agree as well.</p>
+<p>Taking the quotient of (M9) by the finite-power kernel proves exactly
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar\Gamma=\langle A_i,B_i,E_j,P_t\\
+\mid R=1,\ E_j^{\nu_j}=1\rangle,\\
+R=\prod_i[A_i,B_i]\prod_jE_j\prod_tP_t,\\
+\nu_j\in\{2,3\}.
+\end{gathered}\tag{M10}
+\]">\[
+\begin{gathered}
+\bar\Gamma=\langle A_i,B_i,E_j,P_t\\
+\mid R=1,\ E_j^{\nu_j}=1\rangle,\\
+R=\prod_i[A_i,B_i]\prod_jE_j\prod_tP_t,\\
+\nu_j\in\{2,3\}.
+\end{gathered}\tag{M10}
+\]</span>
+This is lesson 15, (4.1), with an explicit orientation convention, labelled puncture order and ordered attaching construction. It closes that particular inherited marked-polygon presentation step relative to the stated elementary foundations and earlier quotient charts. It makes no claim that the analytic dimensions, period-space assertions, Manin periods, or the full Eichler–Shimura proof chain are thereby closed.</p>
+<h2 id="10-what-this-lesson-does-not-prove">10. What this lesson does not prove</h2>
+<p>The local arguments establish Mayer–Vietoris (Theorem 2.2), the base-independent parabolic cocycle (Theorem 3.1), the period relations (Theorem 6.1), the cohomology count from the surface presentation (Proposition 4.1), and injectivity of the period map (Lemma 5.1 and Proposition 5.2). Lesson 03, Appendix A, supplies the finite-polygon handle and cap-attachment proofs. This lesson’s Appendix A writes the exact marked commutator and peripheral presentation, including clockwise cusp generators and the finite upstairs-rectangle kernel argument. The marked-polygon, orbifold and relator arguments are now written locally, relative to the stated elementary topological foundations. The surjectivity step in Theorem 5.3 uses the earlier cusp-form dimension formula. That formula is derived from Riemann–Roch in the dimension-formulas lesson; its Appendix A now proves the arbitrary-line-bundle compact-curve theorem and genus bridge, while retaining explicit elementary analytic foundation requirements. Thus the local dimension comparison uses that written proof and inherits its remaining elementary foundation requirements. These prerequisites require programme proofs before the whole Eichler–Shimura argument can be counted as proved from earlier programme results alone.</p>
+<p>The earlier inputs are precisely the group generation in <a href="LG-MF-01.html">The upper half-plane and the modular group</a>, Proposition 4.1; the stabilizer and cusp descriptions in <a href="LG-MF-02.html">Congruence subgroups, cusps and elliptic points</a>, Proposition 2.1 and Section 3; the quotient charts and compactification in <a href="LG-MF-03.html">Modular curves and their genus</a>, Propositions 1.3 and 2.2 and Theorem 2.3, with the level-eleven counts in Section 4; the dimensions in <a href="LG-MF-06.html">Dimension formulas for congruence subgroups</a>, Theorem 4.1, and the order-one assertion at level eleven in Solution 3; Petersson positivity and normalization in <a href="LG-MF-07.html">The Petersson inner product and Poincaré series</a>, Theorem 1.1 and (1.2); and the Mellin identity and level-one functional equation in <a href="LG-MF-11.html">The L-function of a cusp form</a>, Theorem 2.1. The oriented surface polygon and cap theorem are lesson 03, Appendix A; the exact marked attaching word and orbifold kernel are this lesson, Appendix A.</p>
+<p>Two further level-one assertions are retained as explicit proof tasks. Their statements have freely accessible sources, but a source statement does not supply the local or earlier programme proof still required:</p>
+<ul>
+<li><strong>Manin's periods theorem.</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is a normalized Hecke eigenform and <span class="math" data-tex="\(K_f\)">\(K_f\)</span> its Fourier coefficient field, nonzero periods <span class="math" data-tex="\(\Omega_f^+,\Omega_f^-\)">\(\Omega_f^+,\Omega_f^-\)</span> can be chosen so that <span class="math" data-tex="\(r_f^+/\Omega_f^+\)">\(r_f^+/\Omega_f^+\)</span> and <span class="math" data-tex="\(r_f^-/\Omega_f^-\)">\(r_f^-/\Omega_f^-\)</span> have coefficients in <span class="math" data-tex="\(K_f\)">\(K_f\)</span>. Thus ratios of nonzero critical periods within either parity lie in <span class="math" data-tex="\(K_f\)">\(K_f\)</span>. The existence of this number field and the rational structure behind the assertion are not proved here.</li>
+<li><strong>The full period-space description.</strong> Let <span class="math" data-tex="\(W_m\)">\(W_m\)</span> be the space defined by (6.3), and <span class="math" data-tex="\(W_m^\pm\)">\(W_m^\pm\)</span> its even and odd parts. For even <span class="math" data-tex="\(k\ge4\)">\(k\ge4\)</span>, the odd period map <span class="math" data-tex="\(S_k\to W_m^-\)">\(S_k\to W_m^-\)</span> is an isomorphism, and the even period map induces an isomorphism <span class="math" data-tex="\(S_k\to W_m^+/\mathbb C(X^m-Y^m)\)">\(S_k\to W_m^+/\mathbb C(X^m-Y^m)\)</span>, after homogenization.</li>
+</ul>
+<p>Both statements are located in Zagier, <em>Periods of modular forms and Jacobi theta functions</em>, §2, page 452; the quotient description is also used on page 454. They require more than the two relations proved here. Deligne's original §2, Theorem 2.10, presents the related local-system formulation and points to Shimura and Verdier for its proof. We do not prove that geometric formulation or its comparison with étale cohomology in this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>Wiese 2018.</strong> G. Wiese, <em>Computational Arithmetic of Modular Forms</em>, §§3, 4.3–4.5 and 6.1–6.4. <a href="https://arxiv.org/abs/1809.04645v1">Original lecture notes</a>.</li>
+<li><strong>Deligne 1969.</strong> P. Deligne, <em>Formes modulaires et représentations <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adiques</em>, Bourbaki exposé 355, §2, Theorem 2.10, original French article. <a href="https://www.numdam.org/item/SB_1968-1969__11__139_0/">Original article</a>.</li>
+<li><strong>Zagier 1991.</strong> D. Zagier, <em>Periods of modular forms and Jacobi theta functions</em>, §2, pages 451–455. <a href="https://people.mpim-bonn.mpg.de/zagier/files/doi/10.1007/BF01245085/fulltext.pdf">Author's copy</a>.</li>
+<li><strong>Hatcher.</strong> A. Hatcher, <em>Algebraic Topology</em>, §1.2, Proposition 1.26 and the surface presentation on page 51. <a href="https://pi.math.cornell.edu/~hatcher/AT/ATch1.pdf">Author's chapter</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-14.html">← Theta series of lattices</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-16.html">Modular symbols and the algebraicity of Hecke eigenvalues →</a></span></nav>
+<p class="small source-link"><a href="src/group-cohomology-and-the-eichler-shimura-isomorphism.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

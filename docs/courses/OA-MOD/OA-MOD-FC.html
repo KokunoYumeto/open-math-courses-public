@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closing energy domains and comparing resolvents · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-FC.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 17 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="closing-energy-domains-and-comparing-resolvents">Closing energy domains and comparing resolvents</h1>
+<p><strong>Self-checked by the writing AI.</strong></p>
+<p>A quadratic expression on a convenient set of vectors does not yet determine a closed energy form. One must check whether limits in the energy norm still identify vectors uniquely in the original Hilbert space. This unit makes that test explicit, constructs the smallest closed extension, and explains which dense sets actually determine a form. It then recovers domain inclusion from the order of one pair of resolvents.</p>
+<p>The construction starts with the map from an energy-space completion to the original Hilbert space. Barry Simon's freely accessible paper describes this map and its closability test; we prove every step, including nondense domains, and supply the order argument through a bounded factorization below. The distinction between an operator domain and a form domain is also treated in the free paper of Zoltán Sebestyén and Zsigmond Tarcsay. Precise source loci appear at the end.</p>
+<h2 id="objects-and-dependencies"><span id="oa-mod-fc-01"></span><span id="OA-MOD-FC-01"></span>Objects and dependencies</h2>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be any complex Hilbert space, with inner product linear in its first variable. Let <span class="math" data-tex="\(q\)">\(q\)</span> be a nonnegative sesquilinear form on a linear subspace <span class="math" data-tex="\(D\subseteq H\)">\(D\subseteq H\)</span>. Density of <span class="math" data-tex="\(D\)">\(D\)</span> is not assumed. Write</p>
+<span class="math math-display" data-tex="\[
+q[x]=q(x,x),\qquad
+\|x\|_q^2=\|x\|^2+q[x].
+\]">\[
+q[x]=q(x,x),\qquad
+\|x\|_q^2=\|x\|^2+q[x].
+\]</span>
+<p>A form <span class="math" data-tex="\(r\)">\(r\)</span> <strong>extends</strong> <span class="math" data-tex="\(q\)">\(q\)</span> if <span class="math" data-tex="\(D\subseteq D(r)\)">\(D\subseteq D(r)\)</span> and <span class="math" data-tex="\(r(x,y)=q(x,y)\)">\(r(x,y)=q(x,y)\)</span> for <span class="math" data-tex="\(x,y\in D\)">\(x,y\in D\)</span>. We call <span class="math" data-tex="\(q\)">\(q\)</span> <strong>closable</strong> if it has a closed nonnegative extension on <span class="math" data-tex="\(H\)">\(H\)</span>. Here closedness means completeness of the form domain in its form norm. Extension is a statement about domains and values; it does not mean the ordering of extended diagonals defined in OA-MOD-QF-02.</p>
+<p>The Hilbert-space inputs have complete preceding proofs in <a href="OA-MOD-BK.html#oa-mod-bk-01">The bounded prerequisite boundary</a>: inner-product completion, continuous extension from a dense subspace, orthogonal projection, Riesz representation, bounded adjoints and the range-kernel identity. Its preceding <a href="notes/real-coercivity/real-coercive-equations.html">real Hilbert proof</a> supplies projection and real Riesz representation; the complex conversion is in BK-01. The nonnegative-form Cauchy–Schwarz inequality is proved in <a href="OA-MOD-QF.html#oa-mod-qf-02">A form includes its domain</a>. In particular <span class="math" data-tex="\(\|\cdot\|_q\)">\(\|\cdot\|_q\)</span> is an inner-product norm.</p>
+<p>The operator applications use <a href="OA-MOD-QF.html#oa-mod-qf-03">Representation with the exact square-root domain</a> for closed-form representation with its exact operator and square-root domains, <a href="OA-MOD-QF.html#oa-mod-qf-05">Resolvents as energy minimizers</a> for the energy variational formula, and <a href="OA-MOD-QF.html#oa-mod-qf-10">Problems with solutions, Problem 5</a> for finite sums. The spectral integral construction and its domains are proved in <a href="OA-MOD-SK.html#oa-mod-sk-04">Bounded Borel functions and the spectral measure–Changes of variable, powers, and actual ranges</a>, with the cutoff convergence in <a href="OA-MOD-SK.html#oa-mod-sk-09">Convergence and cutoffs</a>. FC-06 proves its bounded factorization directly on a Hilbert space; it needs no weight, algebra-membership or bicommutant argument. FC-07 recalls the elementary adjoint-inclusion proof.</p>
+<p>For the solved models, <a href="notes/analytic-programme/spectral-scalar-prerequisites.html#ss1-scalar-l2-on-every-measure-space">SS1</a> proves the scalar <span class="math" data-tex="\(L^2\)">\(L^2\)</span> construction, Cauchy–Schwarz and completeness. Weighted sequence norms are the same construction for counting measure with positive weights, or the isometric change of variables <span class="math" data-tex="\(x_n\mapsto w_n^{1/2}x_n\)">\(x_n\mapsto w_n^{1/2}x_n\)</span>. The finite-coordinate truncations converge because the defining nonnegative series has vanishing tails. The elementary series comparisons used below require no summation formula: for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>, <span class="math" data-tex="\(n^{-2}\le (n-1)^{-1}-n^{-1}\)">\(n^{-2}\le (n-1)^{-1}-n^{-1}\)</span>, so <span class="math" data-tex="\(\sum n^{-2}&lt;\infty\)">\(\sum n^{-2}&lt;\infty\)</span>, whereas each block <span class="math" data-tex="\(2^k\le n&lt;2^{k+1}\)">\(2^k\le n&lt;2^{k+1}\)</span> contributes at least <span class="math" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-tex="\(\sum n^{-1}\)">\(\sum n^{-1}\)</span>.</p>
+<h2 id="the-completion-test-and-canonical-closure"><span id="oa-mod-fc-02"></span><span id="OA-MOD-FC-02"></span>The completion test and canonical closure</h2>
+<p><strong>Theorem.</strong> Complete the inner-product space <span class="math" data-tex="\((D,\langle\cdot,\cdot\rangle_q)\)">\((D,\langle\cdot,\cdot\rangle_q)\)</span> to a Hilbert space <span class="math" data-tex="\(V\)">\(V\)</span>, and denote its isometric dense inclusion by <span class="math" data-tex="\(\iota:D\to V\)">\(\iota:D\to V\)</span>. There is a unique contraction <span class="math" data-tex="\(j:V\to H\)">\(j:V\to H\)</span> satisfying <span class="math" data-tex="\(j\iota x=x\)">\(j\iota x=x\)</span>. The following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(q\)">\(q\)</span> has a closed nonnegative extension on <span class="math" data-tex="\(H\)">\(H\)</span>.</li>
+<li>If <span class="math" data-tex="\(x_n\in D\)">\(x_n\in D\)</span>, <span class="math" data-tex="\(x_n\to0\)">\(x_n\to0\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(q[x_n-x_m]\to0\)">\(q[x_n-x_m]\to0\)</span> as <span class="math" data-tex="\(n,m\to\infty\)">\(n,m\to\infty\)</span>, then <span class="math" data-tex="\(q[x_n]\to0\)">\(q[x_n]\to0\)</span>.</li>
+<li><span class="math" data-tex="\(j\)">\(j\)</span> is injective.</li>
+</ol>
+<p>When they hold, the closure <span class="math" data-tex="\(\overline q\)">\(\overline q\)</span> has the exact domain and values</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(\overline q)&amp;=j(V),\\
+\overline q(ju,jv)
+&amp;=\langle u,v\rangle_V-\langle ju,jv\rangle_H
+\qquad(u,v\in V).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(\overline q)&amp;=j(V),\\
+\overline q(ju,jv)
+&amp;=\langle u,v\rangle_V-\langle ju,jv\rangle_H
+\qquad(u,v\in V).
+\end{aligned}
+\]</span>
+<p>It is closed, extends <span class="math" data-tex="\(q\)">\(q\)</span>, and its original domain <span class="math" data-tex="\(D\)">\(D\)</span> is dense in <span class="math" data-tex="\(D(\overline q)\)">\(D(\overline q)\)</span> for the form norm. Every closed extension of <span class="math" data-tex="\(q\)">\(q\)</span> extends <span class="math" data-tex="\(\overline q\)">\(\overline q\)</span>.</p>
+<p><strong>Proof.</strong> The inclusion <span class="math" data-tex="\(D\to H\)">\(D\to H\)</span> has norm at most one for the form norm, so it extends uniquely to the contraction <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(r\)">\(r\)</span> is a closed extension. Under the hypotheses of condition 2, the sequence <span class="math" data-tex="\(x_n\)">\(x_n\)</span> is Cauchy for the <span class="math" data-tex="\(r\)">\(r\)</span>-norm: its Hilbert-norm differences and its form differences both tend to zero. Completeness gives a limit in <span class="math" data-tex="\(D(r)\)">\(D(r)\)</span>. The continuous inclusion into <span class="math" data-tex="\(H\)">\(H\)</span> identifies that limit as zero. Hence <span class="math" data-tex="\(q[x_n]=r[x_n]\to0\)">\(q[x_n]=r[x_n]\to0\)</span>. This proves <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>.</p>
+<p>If <span class="math" data-tex="\(u\in\ker j\)">\(u\in\ker j\)</span>, choose <span class="math" data-tex="\(x_n\in D\)">\(x_n\in D\)</span> with <span class="math" data-tex="\(\iota x_n\to u\)">\(\iota x_n\to u\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>. Then <span class="math" data-tex="\(x_n\to0\)">\(x_n\to0\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(q[x_n-x_m]\to0\)">\(q[x_n-x_m]\to0\)</span>. Condition 2 gives</p>
+<span class="math math-display" data-tex="\[
+\|u\|_V^2=\lim_n\bigl(\|x_n\|^2+q[x_n]\bigr)=0.
+\]">\[
+\|u\|_V^2=\lim_n\bigl(\|x_n\|^2+q[x_n]\bigr)=0.
+\]</span>
+<p>Thus <span class="math" data-tex="\(j\)">\(j\)</span> is injective. Conversely, a sequence as in condition 2 is Cauchy in the form norm, so <span class="math" data-tex="\(\iota x_n\)">\(\iota x_n\)</span> converges to some <span class="math" data-tex="\(u\in V\)">\(u\in V\)</span>. Its Hilbert limit gives <span class="math" data-tex="\(ju=0\)">\(ju=0\)</span>. Injectivity forces <span class="math" data-tex="\(u=0\)">\(u=0\)</span>, proving condition 2.</p>
+<p>Now assume injectivity. The displayed formula is well-defined because a vector of <span class="math" data-tex="\(j(V)\)">\(j(V)\)</span> has a unique preimage. It is sesquilinear and nonnegative since <span class="math" data-tex="\(j\)">\(j\)</span> is a contraction. Moreover,</p>
+<span class="math math-display" data-tex="\[
+\|ju\|^2+\overline q[ju]=\|u\|_V^2.
+\]">\[
+\|ju\|^2+\overline q[ju]=\|u\|_V^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(j\)">\(j\)</span>, viewed as a map from <span class="math" data-tex="\(V\)">\(V\)</span> onto the new form domain with its form norm, is an isometry onto a complete space. This proves closedness. Substitution of <span class="math" data-tex="\(u=\iota x\)">\(u=\iota x\)</span> and <span class="math" data-tex="\(v=\iota y\)">\(v=\iota y\)</span> shows extension. Density of <span class="math" data-tex="\(\iota(D)\)">\(\iota(D)\)</span> proves the asserted density in form norm.</p>
+<p>Finally, let <span class="math" data-tex="\(r\)">\(r\)</span> be any closed extension. For <span class="math" data-tex="\(u\in V\)">\(u\in V\)</span>, choose <span class="math" data-tex="\(\iota x_n\to u\)">\(\iota x_n\to u\)</span>. The sequence is Cauchy for the <span class="math" data-tex="\(r\)">\(r\)</span>-norm and hence converges there to a vector <span class="math" data-tex="\(y\in D(r)\)">\(y\in D(r)\)</span>. In <span class="math" data-tex="\(H\)">\(H\)</span> it converges to <span class="math" data-tex="\(ju\)">\(ju\)</span>, so <span class="math" data-tex="\(y=ju\)">\(y=ju\)</span>. Passing to the limit in the <span class="math" data-tex="\(r\)">\(r\)</span>-inner product, for two such sequences, proves <span class="math" data-tex="\(r(ju,jv)=\overline q(ju,jv)\)">\(r(ju,jv)=\overline q(ju,jv)\)</span>. Hence <span class="math" data-tex="\(r\)">\(r\)</span> extends <span class="math" data-tex="\(\overline q\)">\(\overline q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The range <span class="math" data-tex="\(j(V)\)">\(j(V)\)</span> need not be closed in <span class="math" data-tex="\(H\)">\(H\)</span>. It is complete for a stronger norm. No bounded inverse <span class="math" data-tex="\(j^{-1}:j(V)\to V\)">\(j^{-1}:j(V)\to V\)</span> for the Hilbert norm is asserted.</p>
+<p>An equivalent concrete description is useful:</p>
+<span class="math math-display" data-tex="\[
+D(\overline q)=
+\left\{x\in H:
+\begin{array}{l}
+\text{some }x_n\in D\text{ converges to }x\text{ in }H,\\
+q[x_n-x_m]\longrightarrow0
+\end{array}
+\right\},
+\qquad
+\overline q[x]=\lim_n q[x_n].
+\]">\[
+D(\overline q)=
+\left\{x\in H:
+\begin{array}{l}
+\text{some }x_n\in D\text{ converges to }x\text{ in }H,\\
+q[x_n-x_m]\longrightarrow0
+\end{array}
+\right\},
+\qquad
+\overline q[x]=\lim_n q[x_n].
+\]</span>
+<p>The completion theorem proves both existence and independence of the limit; Hilbert-norm convergence by itself does not.</p>
+<h2 id="closedness-and-lower-semicontinuity-on-all-vectors">Closedness and lower semicontinuity on all vectors</h2>
+<p>For any form <span class="math" data-tex="\(q\)">\(q\)</span>, define <span class="math" data-tex="\(\widetilde q:H\to[0,\infty]\)">\(\widetilde q:H\to[0,\infty]\)</span> by <span class="math" data-tex="\(q[x]\)">\(q[x]\)</span> on <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span> and <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> elsewhere.</p>
+<p><strong>Theorem.</strong> A nonnegative form is closed if and only if <span class="math" data-tex="\(\widetilde q\)">\(\widetilde q\)</span> is lower semicontinuous in the norm topology of <span class="math" data-tex="\(H\)">\(H\)</span>. No density hypothesis is required.</p>
+<p><strong>Proof of necessity without spectral calculus.</strong> If <span class="math" data-tex="\(q\)">\(q\)</span> is closed, put <span class="math" data-tex="\(V=D(q)\)">\(V=D(q)\)</span> with its form norm and let <span class="math" data-tex="\(j:V\to H\)">\(j:V\to H\)</span> be its inclusion. For <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+G(x)=\sup_{f\in H}
+\left(2\operatorname{Re}\langle x,f\rangle_H
+-\|j^*f\|_V^2\right).
+\]">\[
+G(x)=\sup_{f\in H}
+\left(2\operatorname{Re}\langle x,f\rangle_H
+-\|j^*f\|_V^2\right).
+\]</span>
+<p>We claim that</p>
+<span class="math math-display" data-tex="\[
+G(x)=\|x\|^2+\widetilde q[x].
+\]">\[
+G(x)=\|x\|^2+\widetilde q[x].
+\]</span>
+<p>First, <span class="math" data-tex="\(\operatorname{ran}j^*\)">\(\operatorname{ran}j^*\)</span> is dense in <span class="math" data-tex="\(V\)">\(V\)</span>: a vector orthogonal to that range lies in <span class="math" data-tex="\(\ker j=\{0\}\)">\(\ker j=\{0\}\)</span>. If <span class="math" data-tex="\(x=ju\)">\(x=ju\)</span>, the expression in the supremum equals</p>
+<span class="math math-display" data-tex="\[
+2\operatorname{Re}\langle u,j^*f\rangle_V-\|j^*f\|_V^2
+=\|u\|_V^2-\|u-j^*f\|_V^2.
+\]">\[
+2\operatorname{Re}\langle u,j^*f\rangle_V-\|j^*f\|_V^2
+=\|u\|_V^2-\|u-j^*f\|_V^2.
+\]</span>
+<p>Density gives <span class="math" data-tex="\(G(ju)=\|u\|_V^2=\|ju\|^2+q[ju]\)">\(G(ju)=\|u\|_V^2=\|ju\|^2+q[ju]\)</span>.</p>
+<p>If <span class="math" data-tex="\(G(x)=C&lt;\infty\)">\(G(x)=C&lt;\infty\)</span>, the term <span class="math" data-tex="\(f=0\)">\(f=0\)</span> gives <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span>. Varying a complex scalar multiplying <span class="math" data-tex="\(f\)">\(f\)</span>, and minimizing the corresponding quadratic, gives</p>
+<span class="math math-display" data-tex="\[
+|\langle x,f\rangle|^2\leq C\|j^*f\|_V^2
+\qquad(f\in H).
+\]">\[
+|\langle x,f\rangle|^2\leq C\|j^*f\|_V^2
+\qquad(f\in H).
+\]</span>
+<p>When <span class="math" data-tex="\(j^*f=0\)">\(j^*f=0\)</span>, the same conclusion follows by scaling the linear term: it must vanish. Therefore <span class="math" data-tex="\(j^*f\mapsto\langle x,f\rangle\)">\(j^*f\mapsto\langle x,f\rangle\)</span> is a well-defined bounded conjugate-linear functional on the dense subspace <span class="math" data-tex="\(\operatorname{ran}j^*\)">\(\operatorname{ran}j^*\)</span>. By Riesz representation it has the form <span class="math" data-tex="\(\langle u,j^*f\rangle_V\)">\(\langle u,j^*f\rangle_V\)</span> for some <span class="math" data-tex="\(u\in V\)">\(u\in V\)</span>. The adjoint identity then gives <span class="math" data-tex="\(\langle x,f\rangle=\langle ju,f\rangle\)">\(\langle x,f\rangle=\langle ju,f\rangle\)</span> for every <span class="math" data-tex="\(f\)">\(f\)</span>, so <span class="math" data-tex="\(x=ju\)">\(x=ju\)</span>. Consequently <span class="math" data-tex="\(G(x)=+\infty\)">\(G(x)=+\infty\)</span> outside <span class="math" data-tex="\(j(V)\)">\(j(V)\)</span>, proving the claim.</p>
+<p>Each function in the supremum defining <span class="math" data-tex="\(G\)">\(G\)</span> is norm continuous and real-valued. Hence <span class="math" data-tex="\(G\)">\(G\)</span> is lower semicontinuous. Subtraction of the continuous function <span class="math" data-tex="\(x\mapsto\|x\|^2\)">\(x\mapsto\|x\|^2\)</span> proves that <span class="math" data-tex="\(\widetilde q\)">\(\widetilde q\)</span> is lower semicontinuous.</p>
+<p><strong>Proof of sufficiency.</strong> Let <span class="math" data-tex="\(x_n\)">\(x_n\)</span> be Cauchy in the form norm. It has a Hilbert-norm limit <span class="math" data-tex="\(x\)">\(x\)</span>. The numbers <span class="math" data-tex="\(q[x_n]\)">\(q[x_n]\)</span> are bounded, so lower semicontinuity implies <span class="math" data-tex="\(\widetilde q[x]&lt;\infty\)">\(\widetilde q[x]&lt;\infty\)</span>, or <span class="math" data-tex="\(x\in D(q)\)">\(x\in D(q)\)</span>. For any <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(q[x_n-x_m]\leq\varepsilon^2\)">\(q[x_n-x_m]\leq\varepsilon^2\)</span> for <span class="math" data-tex="\(n,m\geq N\)">\(n,m\geq N\)</span>. For each fixed <span class="math" data-tex="\(n\geq N\)">\(n\geq N\)</span>, lower semicontinuity applied as <span class="math" data-tex="\(m\to\infty\)">\(m\to\infty\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+q[x_n-x]\leq\liminf_m q[x_n-x_m]\leq\varepsilon^2.
+\]">\[
+q[x_n-x]\leq\liminf_m q[x_n-x_m]\leq\varepsilon^2.
+\]</span>
+<p>Thus <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in the form norm. The domain is complete. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof uses sequences only for completeness in a metric norm; it places no countability condition on a basis or on later families of forms. The supremum formula proves topological lower semicontinuity directly.</p>
+<h2 id="closability-and-lower-semicontinuity-on-the-given-domain">Closability and lower semicontinuity on the given domain</h2>
+<p><strong>Theorem.</strong> A nonnegative form <span class="math" data-tex="\(q\)">\(q\)</span> on <span class="math" data-tex="\(D\subseteq H\)">\(D\subseteq H\)</span> is closable if and only if the function <span class="math" data-tex="\(x\mapsto q[x]\)">\(x\mapsto q[x]\)</span> is lower semicontinuous on <span class="math" data-tex="\(D\)">\(D\)</span> for the topology inherited from the Hilbert norm.</p>
+<p>Equivalently, for every sequence <span class="math" data-tex="\(x_n\in D\)">\(x_n\in D\)</span> with Hilbert-norm limit <span class="math" data-tex="\(x\in D\)">\(x\in D\)</span>,</p>
+<span class="math math-display" data-tex="\[
+q[x]\leq\liminf_n q[x_n].
+\]">\[
+q[x]\leq\liminf_n q[x_n].
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(q\)">\(q\)</span> is closable, its closure is closed by OA-MOD-FC-02. The extended diagonal of that closure is lower semicontinuous by OA-MOD-FC-03. Restriction to <span class="math" data-tex="\(D\)">\(D\)</span> gives the assertion.</p>
+<p>Conversely, suppose the stated relative lower semicontinuity holds. Let <span class="math" data-tex="\(x_n\)">\(x_n\)</span> satisfy condition 2 of OA-MOD-FC-02. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, the sequence <span class="math" data-tex="\(x_n-x_m\)">\(x_n-x_m\)</span> lies in <span class="math" data-tex="\(D\)">\(D\)</span> and converges in <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(x_n\in D\)">\(x_n\in D\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+q[x_n]\leq\liminf_m q[x_n-x_m].
+\]">\[
+q[x_n]\leq\liminf_m q[x_n-x_m].
+\]</span>
+<p>The right side is arbitrarily small for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, by the form-Cauchy hypothesis. Thus <span class="math" data-tex="\(q[x_n]\to0\)">\(q[x_n]\to0\)</span>, and OA-MOD-FC-02 supplies a closed extension. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The distinction between the two topologies of the assertion is substantive. A zero form on a proper dense subspace is closable. Its extension by infinity is not lower semicontinuous on <span class="math" data-tex="\(H\)">\(H\)</span>, so the original form is not closed. Both claims are checked explicitly in OA-MOD-FC-08.</p>
+<h2 id="cores-determine-the-domain-not-just-a-dense-set-of-vectors">Cores determine the domain, not just a dense set of vectors</h2>
+<p>For a closed form <span class="math" data-tex="\(q\)">\(q\)</span>, a linear subspace <span class="math" data-tex="\(E\subseteq D(q)\)">\(E\subseteq D(q)\)</span> is a <strong>form core</strong> if it is dense in <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span> for <span class="math" data-tex="\(\|\cdot\|_q\)">\(\|\cdot\|_q\)</span>.</p>
+<p><strong>Proposition.</strong> The restriction <span class="math" data-tex="\(q|_E\)">\(q|_E\)</span> is closable, and its closure is exactly <span class="math" data-tex="\(q\)">\(q\)</span> if and only if <span class="math" data-tex="\(E\)">\(E\)</span> is a form core. More generally, its closed domain is the closure of <span class="math" data-tex="\(E\)">\(E\)</span> inside the form Hilbert space <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>, with the restricted form.</p>
+<p><strong>Proof.</strong> The original <span class="math" data-tex="\(q\)">\(q\)</span> is a closed extension. Complete <span class="math" data-tex="\(E\)">\(E\)</span> in the restricted form norm. Its completion is the closed subspace <span class="math" data-tex="\(\overline E^{\|\cdot\|_q}\)">\(\overline E^{\|\cdot\|_q}\)</span> of the Hilbert space <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>. The inclusion of this subspace into <span class="math" data-tex="\(H\)">\(H\)</span> is injective. OA-MOD-FC-02 therefore identifies the closure with exactly this subspace and this form. It equals <span class="math" data-tex="\(q\)">\(q\)</span> precisely when the subspace is all of <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Spectral core proposition.</strong> Let <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span> be self-adjoint and <span class="math" data-tex="\(q_A[x]=\|A^{1/2}x\|^2\)">\(q_A[x]=\|A^{1/2}x\|^2\)</span>. Then <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> is a form core. The subspace</p>
+<span class="math math-display" data-tex="\[
+E_{\mathrm{cut}}
+=\bigcup_{n\geq1} E_A([0,n])H
+\]">\[
+E_{\mathrm{cut}}
+=\bigcup_{n\geq1} E_A([0,n])H
+\]</span>
+<p>is both a form core for <span class="math" data-tex="\(q_A\)">\(q_A\)</span> and an operator core for <span class="math" data-tex="\(A\)">\(A\)</span>. An operator core means density in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> for <span class="math" data-tex="\((\|x\|^2+\|Ax\|^2)^{1/2}\)">\((\|x\|^2+\|Ax\|^2)^{1/2}\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(x\in D(A^{1/2})\)">\(x\in D(A^{1/2})\)</span>, write <span class="math" data-tex="\(x_n=E_A([0,n])x\)">\(x_n=E_A([0,n])x\)</span>. It lies in <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|x-x_n\|_{q_A}^2
+=\int_{(n,\infty)}(1+t)\,d\langle E_A(t)x,x\rangle
+\longrightarrow0.
+\]">\[
+\|x-x_n\|_{q_A}^2
+=\int_{(n,\infty)}(1+t)\,d\langle E_A(t)x,x\rangle
+\longrightarrow0.
+\]</span>
+<p>The integral is finite because <span class="math" data-tex="\(x\in D(A^{1/2})\)">\(x\in D(A^{1/2})\)</span>. The same truncations applied to <span class="math" data-tex="\(x\in D(A)\)">\(x\in D(A)\)</span> give convergence in the operator graph norm by replacing <span class="math" data-tex="\(1+t\)">\(1+t\)</span> with <span class="math" data-tex="\(1+t^2\)">\(1+t^2\)</span>. This proves both assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Any operator core for <span class="math" data-tex="\(A\)">\(A\)</span> is a form core: graph-norm convergence implies form-norm convergence because <span class="math" data-tex="\(t\leq1+t^2\)">\(t\leq1+t^2\)</span>, and <span class="math" data-tex="\(D(A)\)">\(D(A)\)</span> is already a form core. Mere density in <span class="math" data-tex="\(H\)">\(H\)</span> is insufficient; a dense subspace can be closed and proper in the form norm, as OA-MOD-FC-08 demonstrates.</p>
+<h2 id="one-resolvent-inequality-recovers-the-whole-form-order">One resolvent inequality recovers the whole form order</h2>
+<p><strong>Bounded factorization.</strong> Let <span class="math" data-tex="\(X:H\to K\)">\(X:H\to K\)</span> and <span class="math" data-tex="\(Y:H\to L\)">\(Y:H\to L\)</span> be bounded maps of Hilbert spaces and assume <span class="math" data-tex="\(Y^*Y\le X^*X\)">\(Y^*Y\le X^*X\)</span>. On <span class="math" data-tex="\(\operatorname{ran}X\)">\(\operatorname{ran}X\)</span>, define <span class="math" data-tex="\(V(X\xi)=Y\xi\)">\(V(X\xi)=Y\xi\)</span>. The inequality</p>
+<span class="math math-display" data-tex="\[
+\|Y\xi\|^2\le\|X\xi\|^2
+\tag{FC.1}
+\]">\[
+\|Y\xi\|^2\le\|X\xi\|^2
+\tag{FC.1}
+\]</span>
+<p>makes the definition independent of the preimage and contractive. It extends uniquely to <span class="math" data-tex="\(\overline{\operatorname{ran}X}\)">\(\overline{\operatorname{ran}X}\)</span>, and extension by zero on its orthogonal complement gives a contraction <span class="math" data-tex="\(V:K\to L\)">\(V:K\to L\)</span> with <span class="math" data-tex="\(Y=VX\)">\(Y=VX\)</span>. This is the unique such contraction required to vanish on that complement. The construction includes zero spaces and noninjective <span class="math" data-tex="\(X\)">\(X\)</span>; no inverse of <span class="math" data-tex="\(X\)">\(X\)</span> was assumed.</p>
+<p><strong>Theorem.</strong> For nonnegative self-adjoint operators <span class="math" data-tex="\(A_1,A_2\)">\(A_1,A_2\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, the following are equivalent:</p>
+<ol>
+<li>
+<p><span class="math" data-tex="\(D(A_2^{1/2})\subseteq D(A_1^{1/2})\)">\(D(A_2^{1/2})\subseteq D(A_1^{1/2})\)</span>, and <span class="math" data-tex="\(\|A_1^{1/2}x\|^2\leq\|A_2^{1/2}x\|^2\)">\(\|A_1^{1/2}x\|^2\leq\|A_2^{1/2}x\|^2\)</span> on <span class="math" data-tex="\(D(A_2^{1/2})\)">\(D(A_2^{1/2})\)</span>.</p>
+</li>
+<li>
+<p>For some <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(A_2+\lambda I)^{-1}\leq(A_1+\lambda I)^{-1}.
+\]">\[
+(A_2+\lambda I)^{-1}\leq(A_1+\lambda I)^{-1}.
+\]</span>
+</li>
+<li>
+<p>The inequality in condition 2 holds for every <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>.</p>
+</li>
+</ol>
+<p>The operators need not commute. The inequality in condition 1 is between forms, not an assertion that the unbounded operators have the same domain.</p>
+<p><strong>Proof.</strong> OA-MOD-QF-05 gives <span class="math" data-tex="\(1\Rightarrow3\)">\(1\Rightarrow3\)</span>, and <span class="math" data-tex="\(3\Rightarrow2\)">\(3\Rightarrow2\)</span> is immediate. Fix a <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> as in condition 2 and put</p>
+<span class="math math-display" data-tex="\[
+B_j=(A_j+\lambda I)^{-1},\qquad j=1,2.
+\]">\[
+B_j=(A_j+\lambda I)^{-1},\qquad j=1,2.
+\]</span>
+<p>Both operators are bounded, positive, and injective. Apply (FC.1) to <span class="math" data-tex="\(X=B_1^{1/2}\)">\(X=B_1^{1/2}\)</span> and <span class="math" data-tex="\(Y=B_2^{1/2}\)">\(Y=B_2^{1/2}\)</span>; then <span class="math" data-tex="\(Y^*Y=B_2\le B_1=X^*X\)">\(Y^*Y=B_2\le B_1=X^*X\)</span>. It gives <span class="math" data-tex="\(B_2^{1/2}=V B_1^{1/2}\)">\(B_2^{1/2}=V B_1^{1/2}\)</span> for a contraction <span class="math" data-tex="\(V\)">\(V\)</span>. Taking adjoints, using that the square roots are self-adjoint, gives</p>
+<span class="math math-display" data-tex="\[
+B_2^{1/2}=B_1^{1/2}C,\qquad C=V^*,\quad\|C\|\leq1.
+\]">\[
+B_2^{1/2}=B_1^{1/2}C,\qquad C=V^*,\quad\|C\|\leq1.
+\]</span>
+<p>The spectral calculus gives actual range equalities and norms</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ran}B_j^{1/2}=D(A_j^{1/2}),\qquad
+\|B_j^{-1/2}x\|^2
+=\lambda\|x\|^2+\|A_j^{1/2}x\|^2.
+\]">\[
+\operatorname{ran}B_j^{1/2}=D(A_j^{1/2}),\qquad
+\|B_j^{-1/2}x\|^2
+=\lambda\|x\|^2+\|A_j^{1/2}x\|^2.
+\]</span>
+<p>Here the domain equalities can be checked at the scalar level, rather than inferred formally from inverse symbols. The functions <span class="math" data-tex="\((t+\lambda)^{1/2}\)">\((t+\lambda)^{1/2}\)</span> and <span class="math" data-tex="\(t^{1/2}\)">\(t^{1/2}\)</span>, for <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, have the same squared-integrability domain, because</p>
+<span class="math math-display" data-tex="\[
+\min(1,\lambda)(1+t)\le t+\lambda\le\max(1,\lambda)(1+t).
+\tag{FC.2}
+\]">\[
+\min(1,\lambda)(1+t)\le t+\lambda\le\max(1,\lambda)(1+t).
+\tag{FC.2}
+\]</span>
+<p>The function <span class="math" data-tex="\((t+\lambda)^{-1/2}\)">\((t+\lambda)^{-1/2}\)</span> is bounded and never zero. SK-07's proved inverse-range rule therefore identifies its range with that domain, and its inverse has squared norm equal to the integral of <span class="math" data-tex="\(t+\lambda\)">\(t+\lambda\)</span>. This proves both displayed assertions with their actual domains.</p>
+<p>For <span class="math" data-tex="\(x\in D(A_2^{1/2})\)">\(x\in D(A_2^{1/2})\)</span>, let <span class="math" data-tex="\(\xi=B_2^{-1/2}x\)">\(\xi=B_2^{-1/2}x\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+x=B_2^{1/2}\xi=B_1^{1/2}C\xi.
+\]">\[
+x=B_2^{1/2}\xi=B_1^{1/2}C\xi.
+\]</span>
+<p>Thus <span class="math" data-tex="\(x\in D(A_1^{1/2})\)">\(x\in D(A_1^{1/2})\)</span>. Injectivity of <span class="math" data-tex="\(B_1^{1/2}\)">\(B_1^{1/2}\)</span> gives <span class="math" data-tex="\(B_1^{-1/2}x=C\xi\)">\(B_1^{-1/2}x=C\xi\)</span>, and therefore</p>
+<span class="math math-display" data-tex="\[
+\lambda\|x\|^2+\|A_1^{1/2}x\|^2
+=\|C\xi\|^2
+\leq\|\xi\|^2
+=\lambda\|x\|^2+\|A_2^{1/2}x\|^2.
+\]">\[
+\lambda\|x\|^2+\|A_1^{1/2}x\|^2
+=\|C\xi\|^2
+\leq\|\xi\|^2
+=\lambda\|x\|^2+\|A_2^{1/2}x\|^2.
+\]</span>
+<p>Canceling the Hilbert-norm term proves condition 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument reads the form domain directly from the range of a bounded square root. It does not infer domain inclusion from a pointwise inequality on a previously chosen common subspace.</p>
+<h2 id="when-a-form-sum-equals-an-operator-sum">When a form sum equals an operator sum</h2>
+<p>Let <span class="math" data-tex="\(A_1,\ldots,A_m\geq0\)">\(A_1,\ldots,A_m\geq0\)</span> be self-adjoint, and assume</p>
+<span class="math math-display" data-tex="\[
+D=\bigcap_{k=1}^m D(A_k^{1/2})
+\]">\[
+D=\bigcap_{k=1}^m D(A_k^{1/2})
+\]</span>
+<p>is dense in <span class="math" data-tex="\(H\)">\(H\)</span>. The sum <span class="math" data-tex="\(q[x]=\sum_k\|A_k^{1/2}x\|^2\)">\(q[x]=\sum_k\|A_k^{1/2}x\|^2\)</span> is closed on <span class="math" data-tex="\(D\)">\(D\)</span>, by the finite-sum proof in OA-MOD-QF-10. Its representing nonnegative self-adjoint operator is the <strong>form sum</strong>, denoted <span class="math" data-tex="\(A_{\mathrm{form}}\)">\(A_{\mathrm{form}}\)</span>.</p>
+<p><strong>Proposition.</strong> On <span class="math" data-tex="\(D_{\mathrm{alg}}=\bigcap_k D(A_k)\)">\(D_{\mathrm{alg}}=\bigcap_k D(A_k)\)</span>, the algebraic sum <span class="math" data-tex="\(Sx=\sum_k A_kx\)">\(Sx=\sum_k A_kx\)</span> is a restriction of <span class="math" data-tex="\(A_{\mathrm{form}}\)">\(A_{\mathrm{form}}\)</span>. If <span class="math" data-tex="\(S\)">\(S\)</span> is densely defined and essentially self-adjoint on that domain, then</p>
+<span class="math math-display" data-tex="\[
+A_{\mathrm{form}}=\overline S.
+\]">\[
+A_{\mathrm{form}}=\overline S.
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(x\in D_{\mathrm{alg}}\)">\(x\in D_{\mathrm{alg}}\)</span> and <span class="math" data-tex="\(v\in D\)">\(v\in D\)</span>, the spectral pairing identity gives</p>
+<span class="math math-display" data-tex="\[
+q(x,v)=\sum_k\langle A_kx,v\rangle
+=\langle Sx,v\rangle.
+\]">\[
+q(x,v)=\sum_k\langle A_kx,v\rangle
+=\langle Sx,v\rangle.
+\]</span>
+<p>The graph characterization in OA-MOD-QF-03 yields <span class="math" data-tex="\(x\in D(A_{\mathrm{form}})\)">\(x\in D(A_{\mathrm{form}})\)</span> and <span class="math" data-tex="\(A_{\mathrm{form}}x=Sx\)">\(A_{\mathrm{form}}x=Sx\)</span>. Since <span class="math" data-tex="\(A_{\mathrm{form}}\)">\(A_{\mathrm{form}}\)</span> is closed, <span class="math" data-tex="\(\overline S\subseteq A_{\mathrm{form}}\)">\(\overline S\subseteq A_{\mathrm{form}}\)</span>.</p>
+<p>For densely defined operators, <span class="math" data-tex="\(T\subseteq U\)">\(T\subseteq U\)</span> implies <span class="math" data-tex="\(U^*\subseteq T^*\)">\(U^*\subseteq T^*\)</span>: the adjoint identity holding for every vector in the larger domain also holds in the smaller domain, with the same representing vector. If <span class="math" data-tex="\(S\)">\(S\)</span> is essentially self-adjoint, both <span class="math" data-tex="\(\overline S\)">\(\overline S\)</span> and <span class="math" data-tex="\(A_{\mathrm{form}}\)">\(A_{\mathrm{form}}\)</span> are self-adjoint. Taking adjoints of their inclusion gives the reverse inclusion. Hence equality holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Density of <span class="math" data-tex="\(D\)">\(D\)</span> alone does not assert essential self-adjointness of <span class="math" data-tex="\(S\)">\(S\)</span>, or even density of <span class="math" data-tex="\(D_{\mathrm{alg}}\)">\(D_{\mathrm{alg}}\)</span>. Those are separate hypotheses in the stated implication.</p>
+<h2 id="problems-with-complete-solutions">Problems with complete solutions</h2>
+<p><strong>Problem 1: two semicontinuity assertions.</strong> In <span class="math" data-tex="\(H=\ell^2(\mathbb N)\)">\(H=\ell^2(\mathbb N)\)</span>, put <span class="math" data-tex="\(D=c_{00}\)">\(D=c_{00}\)</span> and <span class="math" data-tex="\(q[x]=0\)">\(q[x]=0\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span>. Determine closedness, closability, and the closure.</p>
+<p><strong>Solution.</strong> The form norm is the Hilbert norm, and the completion is <span class="math" data-tex="\(H\)">\(H\)</span>, with injective extension of the inclusion. Hence <span class="math" data-tex="\(q\)">\(q\)</span> is closable and its closure is the zero form on all of <span class="math" data-tex="\(H\)">\(H\)</span>. It is not closed: for instance the truncations of <span class="math" data-tex="\((2^{-n})_{n\geq1}\)">\((2^{-n})_{n\geq1}\)</span> form a Cauchy sequence in <span class="math" data-tex="\(D\)">\(D\)</span> whose Hilbert limit is outside <span class="math" data-tex="\(D\)">\(D\)</span>. On <span class="math" data-tex="\(D\)">\(D\)</span>, the diagonal is the constant zero function and is continuous. Extended by infinity to <span class="math" data-tex="\(H\)">\(H\)</span>, it is not lower semicontinuous at that limit: the approximating energies are zero and the value at the limit is infinite.</p>
+<p><strong>Problem 2: a singular observation.</strong> Regard <span class="math" data-tex="\(D=C([0,1])\)">\(D=C([0,1])\)</span> as a subspace of <span class="math" data-tex="\(L^2([0,1])\)">\(L^2([0,1])\)</span> and put <span class="math" data-tex="\(q(f,g)=f(0)\overline{g(0)}\)">\(q(f,g)=f(0)\overline{g(0)}\)</span>. Is it closable?</p>
+<p><strong>Solution.</strong> A continuous function vanishing almost everywhere is zero everywhere, so the identification of <span class="math" data-tex="\(D\)">\(D\)</span> with its <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-class is injective and the form is well-defined. Let <span class="math" data-tex="\(f_n(t)=\max(1-nt,0)\)">\(f_n(t)=\max(1-nt,0)\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\|f_n\|_2^2=\frac1{3n},\qquad
+q[f_n-f_m]=0,\qquad q[f_n]=1.
+\]">\[
+\|f_n\|_2^2=\frac1{3n},\qquad
+q[f_n-f_m]=0,\qquad q[f_n]=1.
+\]</span>
+<p>Thus the completion test in OA-MOD-FC-02 fails. There is no closed extension of this form agreeing with it on all continuous functions. The issue is the form's observation at a single point, which the Hilbert norm cannot detect.</p>
+<p><strong>Problem 3: Hilbert density without a form core.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+D(q)=\left\{x:\sum_{n\geq1}n^2|x_n|^2&lt;\infty\right\},
+\qquad q[x]=\sum_{n\geq1}n^2|x_n|^2.
+\]">\[
+D(q)=\left\{x:\sum_{n\geq1}n^2|x_n|^2&lt;\infty\right\},
+\qquad q[x]=\sum_{n\geq1}n^2|x_n|^2.
+\]</span>
+<p>Set <span class="math" data-tex="\(\ell(x)=\sum_{n\geq1}x_n\)">\(\ell(x)=\sum_{n\geq1}x_n\)</span> and <span class="math" data-tex="\(E=\ker\ell\)">\(E=\ker\ell\)</span> inside <span class="math" data-tex="\(D(q)\)">\(D(q)\)</span>. Prove that <span class="math" data-tex="\(E\)">\(E\)</span> is dense in <span class="math" data-tex="\(H\)">\(H\)</span> but is not a form core.</p>
+<p><strong>Solution.</strong> Weighted Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\sum_n|x_n|
+\leq\left(\sum_n n^2|x_n|^2\right)^{1/2}
+\left(\sum_n n^{-2}\right)^{1/2}.
+\]">\[
+\sum_n|x_n|
+\leq\left(\sum_n n^2|x_n|^2\right)^{1/2}
+\left(\sum_n n^{-2}\right)^{1/2}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is defined and continuous for the form norm. Its kernel is a proper closed subspace of the form Hilbert space, since <span class="math" data-tex="\(\ell(e_1)=1\)">\(\ell(e_1)=1\)</span>. It cannot be a form core.</p>
+<p>To see Hilbert density, let <span class="math" data-tex="\(x\)">\(x\)</span> have finite support. Choose a block of <span class="math" data-tex="\(N\)">\(N\)</span> coordinates outside that support, and let <span class="math" data-tex="\(h_N\)">\(h_N\)</span> equal <span class="math" data-tex="\(1/N\)">\(1/N\)</span> on that block and zero elsewhere. Then <span class="math" data-tex="\(\ell(h_N)=1\)">\(\ell(h_N)=1\)</span>, <span class="math" data-tex="\(\|h_N\|=N^{-1/2}\)">\(\|h_N\|=N^{-1/2}\)</span>, and <span class="math" data-tex="\(x-\ell(x)h_N\in E\)">\(x-\ell(x)h_N\in E\)</span> converges to <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(H\)">\(H\)</span>. Finite-support vectors are dense in <span class="math" data-tex="\(H\)">\(H\)</span>, so <span class="math" data-tex="\(E\)">\(E\)</span> is dense there. The restriction <span class="math" data-tex="\(q|_E\)">\(q|_E\)</span> is already closed, since <span class="math" data-tex="\(E\)">\(E\)</span> is closed in the form norm. Its closure is itself and is a proper restriction of <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Problem 4: one parameter and different domains.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(A_1\)">\(A_1\)</span> be multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(A_2\)">\(A_2\)</span> multiplication by <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, each on its maximal operator domain. Verify the three equivalent assertions of OA-MOD-FC-06 and show that their form domains differ.</p>
+<p><strong>Solution.</strong> The scalar inequality</p>
+<span class="math math-display" data-tex="\[
+\frac1{n^2+\lambda}\leq\frac1{n+\lambda}
+\qquad(n\geq1,\ \lambda&gt;0)
+\]">\[
+\frac1{n^2+\lambda}\leq\frac1{n+\lambda}
+\qquad(n\geq1,\ \lambda&gt;0)
+\]</span>
+<p>gives resolvent order. The form domains are the weighted spaces with energies <span class="math" data-tex="\(\sum n|x_n|^2\)">\(\sum n|x_n|^2\)</span> and <span class="math" data-tex="\(\sum n^2|x_n|^2\)">\(\sum n^2|x_n|^2\)</span>, respectively. The second lies in the first and has the larger energy. The vector <span class="math" data-tex="\(x_n=n^{-3/2}\)">\(x_n=n^{-3/2}\)</span> has finite first energy <span class="math" data-tex="\(\sum n^{-2}\)">\(\sum n^{-2}\)</span> and infinite second energy <span class="math" data-tex="\(\sum n^{-1}\)">\(\sum n^{-1}\)</span>. Thus the inclusion is strict. Resolvent order recovers this inclusion; it does not erase it.</p>
+<figure><img src="assets/form-domain-completion.png" alt="Energy completion and a point observation invisible in the Hilbert norm" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> The left panel is the exact completion diagram in FC-02: <span class="math" data-tex="\(j\iota x=x\)">\(j\iota x=x\)</span>, and closability is equivalent to <span class="math" data-tex="\(\ker j=\{0\}\)">\(\ker j=\{0\}\)</span>. It depicts maps, not an embedding of an infinite-dimensional space in the plane. The right panel plots exactly <span class="math" data-tex="\(f_n(t)=\max(1-nt,0)\)">\(f_n(t)=\max(1-nt,0)\)</span> for <span class="math" data-tex="\(n=1,3,8\)">\(n=1,3,8\)</span> from Problem 2. Every point-observation energy is <span class="math" data-tex="\(1\)">\(1\)</span>, every difference has energy zero, and <span class="math" data-tex="\(\|f_n\|_2^2=1/(3n)\)">\(\|f_n\|_2^2=1/(3n)\)</span>. The limiting element of the energy completion has norm <span class="math" data-tex="\(1\)">\(1\)</span> and is sent to zero by <span class="math" data-tex="\(j\)">\(j\)</span>, so it is a nonzero kernel vector. This last claim follows because <span class="math" data-tex="\(f_n\)">\(f_n\)</span> is Cauchy in the energy norm and <span class="math" data-tex="\(\|f_n\|_q^2=1+1/(3n)\to1\)">\(\|f_n\|_q^2=1+1/(3n)\to1\)</span>. Reproducible drawing source.</p>
+<h2 id="use-in-the-weight-course">Use in the weight course</h2>
+<p>For a candidate spatial energy initially defined on bounded vectors, OA-MOD-FC-02 reduces closability to a concrete zero-limit test. OA-MOD-FC-05 explains the additional assertion required when a construction calls those bounded vectors a core. Once the form has been represented, OA-MOD-FC-06 turns a bounded resolvent inequality into the full domain-and-energy order statement.</p>
+<p>These implications do not themselves prove the density or closability of any particular spatial form. Those weight-theoretic hypotheses remain in the spatial-derivative unit. The results here also do not replace the spectral-calculus foundation needed by the operator applications.</p>
+<h2 id="references-and-proof-provenance">References and proof provenance</h2>
+<ul>
+<li>Barry Simon, <a href="https://math.caltech.edu/SimonPapers/81.pdf"><em>A canonical decomposition for quadratic forms with applications to monotone convergence theorems</em></a>, freely accessible author copy, Section 1, pp. 377–378. The energy-completion map and its kernel test are the source comparison for FC-02. Proposition 1.1 states resolvent/form order; FC-06 supplies the complete factorization and domain proof here. No external proof pointer in the paper is used as a programme proof.</li>
+<li>Zoltán Sebestyén and Zsigmond Tarcsay, <a href="https://arxiv.org/pdf/2505.09588v1"><em>Basic representation theorems of forms</em>, arXiv:2505.09588v1</a>, Section 2, Lemma 2.1, pp. 2–3, and Corollaries 2.7–2.8, p. 7. These give a free comparison for form representation and closability. FC-02–FC-04 supply the nondense-domain arguments in full; the operator representation used here is the earlier QF-03 proof.</li>
+</ul>
+<p>The original programme proofs and all four solved problems are retained. The local factorization, explicit inverse-domain check, elementary model prerequisites and completion illustration were added by GPT-6 Astra (OpenAI), Ultra, October 2026. Original programme exposition and the new additions are CC0-1.0; no human source prose or figure is imported.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-QF.html">← Recovering operators from energy forms</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-CI.html">Compatible pairs and complex interpolation →</a></span></nav>
+<p class="small source-link"><a href="src/form-domains-and-cores.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>

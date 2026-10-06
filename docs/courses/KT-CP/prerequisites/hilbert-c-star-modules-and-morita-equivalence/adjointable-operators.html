@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="DB7091A3CE1DAFFE195A55E3A5BEB1469BC12A272BE3ADA2A4DB2AC323FC9429">
+<title>Adjointable operators — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-hilbert-c-star-modules-and-morita-equivalence/adjointable-operators</span></nav>
+<article id="lesson" class="lesson"><h1 id="adjointable-operators">Adjointable operators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Hilbert module carries both a norm and an inner product with values in a C*-algebra. Its operators must respect this extra information. Bounded module maps need not have adjoints, and closed submodules need not admit orthogonal projections. We will see both failures explicitly. We will then prove that adjointable maps form a C*-algebra, develop their order properties, and show how closed range restores orthogonal decompositions and polar decomposition.</p>
+<p>The prerequisite is <a href="hilbert-c-star-modules.html">Hilbert C*-modules</a>. We use its norm Cauchy–Schwarz inequality and finite direct sums, together with elementary C*-algebra functional calculus and the Banach-space open mapping and closed graph theorems. Their precise statements and references are collected near the end. Basic references are [Blackadar 2006], [Blackadar 1998] and [Emerson 2024].</p>
+<p>Throughout, <span class="math" data-tex="\(A\)">\(A\)</span> is a C*-algebra, possibly nonunital, and <span class="math" data-tex="\(E,F\)">\(E,F\)</span> are right Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-modules. Inner products are linear in the second variable:</p>
+<span class="math math-display" data-tex="\[
+\langle xa,yb\rangle=a^*\langle x,y\rangle b,
+\qquad \|x\|^2=\|\langle x,x\rangle\|.
+\]">\[
+\langle xa,yb\rangle=a^*\langle x,y\rangle b,
+\qquad \|x\|^2=\|\langle x,x\rangle\|.
+\]</span>
+<p>A map <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> is <strong>adjointable</strong> if there is a map <span class="math" data-tex="\(T^*:F\to E\)">\(T^*:F\to E\)</span> such that</p>
+<span id="equation-1"></span><span class="math math-display" data-tex="\[
+\langle Tx,y\rangle_F=\langle x,T^*y\rangle_E
+\quad(x\in E,\ y\in F).
+\tag{1}
+\]">\[
+\langle Tx,y\rangle_F=\langle x,T^*y\rangle_E
+\quad(x\in E,\ y\in F).
+\tag{1}
+\]</span>
+<p>We initially impose neither linearity nor boundedness: both will follow. Write <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span> for these maps and <span class="math" data-tex="\(\mathcal L(E)=\mathcal L(E,E)\)">\(\mathcal L(E)=\mathcal L(E,E)\)</span>.</p>
+<h2 id="1-a-closed-submodule-without-a-projection">1. A closed submodule without a projection</h2>
+<p>Before developing the operator algebra, it helps to see why the adjoint condition matters. Regard <span class="math" data-tex="\(A=C[0,1]\)">\(A=C[0,1]\)</span> as a Hilbert module over itself, with <span class="math" data-tex="\(\langle f,g\rangle=\overline f g\)">\(\langle f,g\rangle=\overline f g\)</span>. The ideal</p>
+<span class="math math-display" data-tex="\[
+I=\{f\in C[0,1]:f(0)=0\}
+\]">\[
+I=\{f\in C[0,1]:f(0)=0\}
+\]</span>
+<p>is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module with the same inner product. Indeed, evaluation at zero is continuous, so its kernel <span class="math" data-tex="\(I\)">\(I\)</span> is closed and complete. Restriction identifies <span class="math" data-tex="\(I\)">\(I\)</span> with <span class="math" data-tex="\(C_0((0,1])\)">\(C_0((0,1])\)</span>: extending a function by zero is continuous precisely when it vanishes at the missing endpoint.</p>
+<p><span id="proposition-1-1"></span><strong>Proposition 1.1.</strong> The inclusion <span class="math" data-tex="\(j:I\to A\)">\(j:I\to A\)</span> is an isometric <span class="math" data-tex="\(A\)">\(A\)</span>-linear map with closed range, but it is not adjointable.</p>
+<p><strong>Proof.</strong> The norm and module action on <span class="math" data-tex="\(I\)">\(I\)</span> are inherited from <span class="math" data-tex="\(A\)">\(A\)</span>, so the first assertions follow directly. If an adjoint existed, put <span class="math" data-tex="\(h=j^*(1)\in I\)">\(h=j^*(1)\in I\)</span>. Equation (1) would imply</p>
+<span class="math math-display" data-tex="\[
+\overline{f(t)}=\overline{f(t)}h(t)
+\quad(f\in I).
+\]">\[
+\overline{f(t)}=\overline{f(t)}h(t)
+\quad(f\in I).
+\]</span>
+<p>Choose <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span>. Then <span class="math" data-tex="\(h(t)=1\)">\(h(t)=1\)</span> for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Continuity gives <span class="math" data-tex="\(h(0)=1\)">\(h(0)=1\)</span>, whereas membership in <span class="math" data-tex="\(I\)">\(I\)</span> requires <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>. This contradiction proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a submodule <span class="math" data-tex="\(M\subseteq E\)">\(M\subseteq E\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+M^\perp=\{x\in E:\langle m,x\rangle=0\text{ for every }m\in M\}.
+\]">\[
+M^\perp=\{x\in E:\langle m,x\rangle=0\text{ for every }m\in M\}.
+\]</span>
+<p>Conjugate symmetry makes the reverse inner products vanish too. The complement is a closed submodule: each condition is closed by Cauchy–Schwarz, and the conditions are preserved by the right action.</p>
+<p>In our example <span class="math" data-tex="\(I^\perp=\{0\}\)">\(I^\perp=\{0\}\)</span>. In fact, if <span class="math" data-tex="\(g\in I^\perp\)">\(g\in I^\perp\)</span>, testing against <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> gives <span class="math" data-tex="\(tg(t)=0\)">\(tg(t)=0\)</span>. Hence <span class="math" data-tex="\(g\)">\(g\)</span> vanishes on <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>, and continuity gives <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>. Thus</p>
+<span id="equation-2"></span><span class="math math-display" data-tex="\[
+I\oplus I^\perp=I\ne A,
+\qquad I^{\perp\perp}=A.
+\tag{2}
+\]">\[
+I\oplus I^\perp=I\ne A,
+\qquad I^{\perp\perp}=A.
+\tag{2}
+\]</span>
+<p>Closedness alone therefore supplies neither an orthogonal decomposition nor equality with the double orthogonal complement. Even preservation of the inner product does not guarantee an adjoint when the map is not onto.</p>
+<h2 id="2-the-algebra-forced-by-an-adjoint">2. The algebra forced by an adjoint</h2>
+<p>The boundedness argument needs completeness rather than an assumption that the adjoint is continuous. Here are the Banach-space facts in the form we will use.</p>
+<p><strong>Lemma (Complete graphs and bounded maps).</strong> A bounded surjection between Banach spaces is open. A linear map defined on a whole Banach space, with values in another Banach space and a closed graph, is bounded. The bounded maps into a Banach space form a Banach space in the operator norm.</p>
+<p><em>Proof.</em> Recall the elementary category argument. A complete metric space cannot be a countable union of closed sets with empty interior: starting in any open ball, choose nested closed balls avoiding the successive sets, with positive radii tending to zero and each ball inside the preceding interior. Their centers form a Cauchy sequence. Its limit belongs to every ball and hence avoids every set, a contradiction.</p>
+<p>Let <span class="math" data-tex="\(S:X\to Y\)">\(S:X\to Y\)</span> be bounded and onto. The closed sets <span class="math" data-tex="\(\overline{S(nB_X)}\)">\(\overline{S(nB_X)}\)</span>, for positive integers <span class="math" data-tex="\(n\)">\(n\)</span>, cover <span class="math" data-tex="\(Y\)">\(Y\)</span>, where <span class="math" data-tex="\(B_X\)">\(B_X\)</span> is the closed unit ball. One has interior. Subtracting two points in a small ball in that interior and using linearity gives
+<span class="math" data-tex="\(\delta B_Y\subset\overline{S(B_X)}\)">\(\delta B_Y\subset\overline{S(B_X)}\)</span> for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, after rescaling. For <span class="math" data-tex="\(\|y\|&lt;\delta/2\)">\(\|y\|&lt;\delta/2\)</span>, successively choose <span class="math" data-tex="\(x_j\)">\(x_j\)</span> with <span class="math" data-tex="\(\|x_j\|\leq2^{-j}\)">\(\|x_j\|\leq2^{-j}\)</span> so that</p>
+<span class="math math-display" data-tex="\[
+\left\|y-S\sum_{k=1}^j x_k\right\|&lt;\delta 2^{-j-1}.
+\]">\[
+\left\|y-S\sum_{k=1}^j x_k\right\|&lt;\delta 2^{-j-1}.
+\]</span>
+<p>Each choice is possible by the rescaled closure inclusion. Completeness gives <span class="math" data-tex="\(x=\sum_jx_j\)">\(x=\sum_jx_j\)</span>, with <span class="math" data-tex="\(\|x\|\leq1\)">\(\|x\|\leq1\)</span>, and continuity gives <span class="math" data-tex="\(Sx=y\)">\(Sx=y\)</span>. Hence the image of a unit ball contains a neighborhood of zero. Scaling and translation prove openness, and a bounded bijection therefore has bounded inverse.</p>
+<p>For a closed graph <span class="math" data-tex="\(G\subset X\oplus Y\)">\(G\subset X\oplus Y\)</span>, use <span class="math" data-tex="\(\|(x,y)\|=\|x\|+\|y\|\)">\(\|(x,y)\|=\|x\|+\|y\|\)</span>. The graph is Banach and its first-coordinate projection onto <span class="math" data-tex="\(X\)">\(X\)</span> is a bounded bijection. Its inverse is bounded by the preceding argument; composing with the second-coordinate projection makes the original map bounded. Finally an operator-norm Cauchy sequence of bounded maps has pointwise limits in its Banach codomain. Passing its uniform Cauchy estimates to those limits gives a bounded linear limit and convergence in operator norm. ∎</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1.</strong> An adjointable map is complex-linear, <span class="math" data-tex="\(A\)">\(A\)</span>-linear and bounded. Its adjoint is unique, is itself adjointable, and satisfies <span class="math" data-tex="\((T^*)^*=T\)">\((T^*)^*=T\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(S_1,S_2\)">\(S_1,S_2\)</span> satisfy (1), then <span class="math" data-tex="\(\langle x,(S_1-S_2)y\rangle=0\)">\(\langle x,(S_1-S_2)y\rangle=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>. Taking <span class="math" data-tex="\(x=(S_1-S_2)y\)">\(x=(S_1-S_2)y\)</span> proves uniqueness. Taking adjoints of the values in (1) gives <span class="math" data-tex="\(\langle T^*y,x\rangle=\langle y,Tx\rangle\)">\(\langle T^*y,x\rangle=\langle y,Tx\rangle\)</span>. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is the adjoint of <span class="math" data-tex="\(T^*\)">\(T^*\)</span>.</p>
+<p>For <span class="math" data-tex="\(x_1,x_2\in E\)">\(x_1,x_2\in E\)</span>, additivity of the inner products shows</p>
+<span class="math math-display" data-tex="\[
+\langle T(x_1+x_2)-Tx_1-Tx_2,y\rangle=0
+\quad(y\in F).
+\]">\[
+\langle T(x_1+x_2)-Tx_1-Tx_2,y\rangle=0
+\quad(y\in F).
+\]</span>
+<p>Testing against the vector on the left proves additivity of <span class="math" data-tex="\(T\)">\(T\)</span>. The same calculation with a scalar proves complex homogeneity. For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle T(xa),y\rangle
+=a^*\langle x,T^*y\rangle
+=\langle (Tx)a,y\rangle,
+\]">\[
+\langle T(xa),y\rangle
+=a^*\langle x,T^*y\rangle
+=\langle (Tx)a,y\rangle,
+\]</span>
+<p>so <span class="math" data-tex="\(T(xa)=(Tx)a\)">\(T(xa)=(Tx)a\)</span>. These arguments apply to <span class="math" data-tex="\(T^*\)">\(T^*\)</span> as well.</p>
+<p>To prove boundedness, suppose <span class="math" data-tex="\(x_n\to x\)">\(x_n\to x\)</span> in <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(Tx_n\to z\)">\(Tx_n\to z\)</span> in <span class="math" data-tex="\(F\)">\(F\)</span>. For each fixed <span class="math" data-tex="\(y\in F\)">\(y\in F\)</span>, Cauchy–Schwarz gives</p>
+<span class="math math-display" data-tex="\[
+\langle z,y\rangle
+=\lim_n\langle Tx_n,y\rangle
+=\lim_n\langle x_n,T^*y\rangle
+=\langle Tx,y\rangle.
+\]">\[
+\langle z,y\rangle
+=\lim_n\langle Tx_n,y\rangle
+=\lim_n\langle x_n,T^*y\rangle
+=\langle Tx,y\rangle.
+\]</span>
+<p>Hence <span class="math" data-tex="\(z=Tx\)">\(z=Tx\)</span>. The graph is closed, and the closed graph theorem makes <span class="math" data-tex="\(T\)">\(T\)</span> bounded. Notice that this argument did not assume continuity of <span class="math" data-tex="\(T^*\)">\(T^*\)</span>; only the fixed vector <span class="math" data-tex="\(T^*y\)">\(T^*y\)</span> was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="theorem-2-2"></span><strong>Theorem 2.2.</strong> The space <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span> is complete in the operator norm, and</p>
+<span id="equation-3"></span><span class="math math-display" data-tex="\[
+\|T^*\|=\|T\|,
+\qquad \|T^*T\|=\|T\|^2.
+\tag{3}
+\]">\[
+\|T^*\|=\|T\|,
+\qquad \|T^*T\|=\|T\|^2.
+\tag{3}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, with composition and adjoint, is a C*-algebra. If <span class="math" data-tex="\(E\ne0\)">\(E\ne0\)</span>, its identity is <span class="math" data-tex="\(1_E\)">\(1_E\)</span>, even when <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital.</p>
+<p><strong>Proof.</strong> Cauchy–Schwarz and the choice <span class="math" data-tex="\(y=z/\|z\|\)">\(y=z/\|z\|\)</span> for <span class="math" data-tex="\(z\ne0\)">\(z\ne0\)</span> yield the useful norm formula</p>
+<span class="math math-display" data-tex="\[
+\|z\|=\sup_{\|y\|\le1}\|\langle z,y\rangle\|.
+\]">\[
+\|z\|=\sup_{\|y\|\le1}\|\langle z,y\rangle\|.
+\]</span>
+<p>Apply this to <span class="math" data-tex="\(z=Tx\)">\(z=Tx\)</span> and use (1). It follows that <span class="math" data-tex="\(\|Tx\|\le\|x\|\|T^*\|\)">\(\|Tx\|\le\|x\|\|T^*\|\)</span>, and therefore <span class="math" data-tex="\(\|T\|\le\|T^*\|\)">\(\|T\|\le\|T^*\|\)</span>. Interchanging <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span> proves the first identity. Also,</p>
+<span class="math math-display" data-tex="\[
+\|Tx\|^2
+=\|\langle x,T^*Tx\rangle\|
+\le\|x\|\|T^*Tx\|
+\le\|T^*T\|\|x\|^2.
+\]">\[
+\|Tx\|^2
+=\|\langle x,T^*Tx\rangle\|
+\le\|x\|\|T^*Tx\|
+\le\|T^*T\|\|x\|^2.
+\]</span>
+<p>Taking the supremum over the unit ball gives <span class="math" data-tex="\(\|T\|^2\le\|T^*T\|\)">\(\|T\|^2\le\|T^*T\|\)</span>. Submultiplicativity and the first identity give the reverse inequality.</p>
+<p>If <span class="math" data-tex="\(T_n\)">\(T_n\)</span> is Cauchy, then so is <span class="math" data-tex="\(T_n^*\)">\(T_n^*\)</span>. Completeness of the spaces of bounded maps gives norm limits <span class="math" data-tex="\(T_n\to T\)">\(T_n\to T\)</span> and <span class="math" data-tex="\(T_n^*\to S\)">\(T_n^*\to S\)</span>. Passing to the limit in (1) shows <span class="math" data-tex="\(S=T^*\)">\(S=T^*\)</span>. Thus the limit remains adjointable.</p>
+<p>Direct substitution in (1) proves that adjoints respect sums, conjugate scalars and reverse composition: <span class="math" data-tex="\((ST)^*=T^*S^*\)">\((ST)^*=T^*S^*\)</span> whenever the domains fit. The identity has itself as adjoint. These facts, completeness, submultiplicativity and (3) are precisely the C*-algebra axioms for <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The domains matter. For distinct <span class="math" data-tex="\(E,F\)">\(E,F\)</span>, the space <span class="math" data-tex="\(\mathcal L(E,F)\)">\(\mathcal L(E,F)\)</span> is a Banach space, with adjoint mapping it to <span class="math" data-tex="\(\mathcal L(F,E)\)">\(\mathcal L(F,E)\)</span>; it has no internal composition law in general.</p>
+<p><span id="example-2-3"></span><strong>Example 2.3: matrices.</strong> Suppose <span class="math" data-tex="\(A\)">\(A\)</span> is unital and give <span class="math" data-tex="\(A^n\)">\(A^n\)</span> the inner product <span class="math" data-tex="\(\langle x,y\rangle=\sum_i x_i^*y_i\)">\(\langle x,y\rangle=\sum_i x_i^*y_i\)</span>. A matrix <span class="math" data-tex="\(b=(b_{ij})\in M_n(A)\)">\(b=(b_{ij})\in M_n(A)\)</span> acts by</p>
+<span class="math math-display" data-tex="\[
+(T_bx)_i=\sum_jb_{ij}x_j.
+\]">\[
+(T_bx)_i=\sum_jb_{ij}x_j.
+\]</span>
+<p>Expanding the inner product gives <span class="math" data-tex="\(T_b^*=T_{b^*}\)">\(T_b^*=T_{b^*}\)</span>, where <span class="math" data-tex="\((b^*)_{ji}=b_{ij}^*\)">\((b^*)_{ji}=b_{ij}^*\)</span>. Conversely, every <span class="math" data-tex="\(A\)">\(A\)</span>-linear map is determined by its values on the coordinate vectors <span class="math" data-tex="\(e_j\)">\(e_j\)</span>: since <span class="math" data-tex="\(x=\sum_j e_jx_j\)">\(x=\sum_j e_jx_j\)</span>, its columns are <span class="math" data-tex="\(Te_j\)">\(Te_j\)</span>. Thus</p>
+<span id="equation-4"></span><span class="math math-display" data-tex="\[
+\mathcal L(A^n)\cong M_n(A)
+\quad\text{for unital }A.
+\tag{4}
+\]">\[
+\mathcal L(A^n)\cong M_n(A)
+\quad\text{for unital }A.
+\tag{4}
+\]</span>
+<p>This is an isometric *-isomorphism, by the isometry theorem for injective C*-algebra homomorphisms. For a concrete projection, take <span class="math" data-tex="\(A=C[0,1]\)">\(A=C[0,1]\)</span>, let <span class="math" data-tex="\(u(t)=(\cos(\pi t),\sin(\pi t))^{\mathsf T}\)">\(u(t)=(\cos(\pi t),\sin(\pi t))^{\mathsf T}\)</span>, and put <span class="math" data-tex="\(p(t)=u(t)u(t)^*\)">\(p(t)=u(t)u(t)^*\)</span>. Pointwise, <span class="math" data-tex="\(p^2=p=p^*\)">\(p^2=p=p^*\)</span>, so <span class="math" data-tex="\(pA^2\)">\(pA^2\)</span> is an orthogonally complemented submodule. It contrasts with the ideal in (2).</p>
+<p>Unitality in (4) is essential. If <span class="math" data-tex="\(A=C_0((0,1])\)">\(A=C_0((0,1])\)</span>, the identity on <span class="math" data-tex="\(A\)">\(A\)</span> is adjointable but cannot be multiplication by an element of <span class="math" data-tex="\(A\)">\(A\)</span>: such an element would have to equal one at every positive point. The general identification <span class="math" data-tex="\(\mathcal L(A)\cong M(A)\)">\(\mathcal L(A)\cong M(A)\)</span> belongs to <a href="compact-operators-multipliers-and-the-strict-topology.html">Compact operators, multipliers and the strict topology</a>; it is announced here, with a reference in the final section.</p>
+<h2 id="3-positivity-seen-by-vectors-and-states">3. Positivity seen by vectors and states</h2>
+<p>In <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, positivity means positivity as an element of a C*-algebra. We first show how this order is reflected in the coefficient algebra <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The state tests used here have a concrete programme proof. The Gelfand–Naimark theorem in <em>Representations and positive functionals</em>, Theorem 7.2, represents <span class="math" data-tex="\(A\)">\(A\)</span> faithfully and nondegenerately on a Hilbert space. Its unit-vector functionals are states: a positive contractive approximate identity converges strongly to identity, so each such functional has norm one. If a self-adjoint element has nonnegative value at all states, its faithful operator image has nonnegative quadratic form and is positive by <em>C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</em>, Proposition 8.5(11). Faithfulness reflects positivity by Proposition 8.5(12). For a positive operator the supremum of its unit-vector quadratic forms equals its operator norm: the upper bound is immediate, and <span class="math" data-tex="\(\|b^{1/2}\xi\|^2\)">\(\|b^{1/2}\xi\|^2\)</span> has supremum <span class="math" data-tex="\(\|b^{1/2}\|^2=\|b\|\)">\(\|b^{1/2}\|^2=\|b\|\)</span>. Thus states detect positivity and recover the norm of positive elements. The zero algebra is interpreted separately.</p>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1.</strong> For <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span> and <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,</p>
+<span id="equation-5"></span><span class="math math-display" data-tex="\[
+\langle Tx,Tx\rangle\le\|T\|^2\langle x,x\rangle
+\quad\text{in }A.
+\tag{5}
+\]">\[
+\langle Tx,Tx\rangle\le\|T\|^2\langle x,x\rangle
+\quad\text{in }A.
+\tag{5}
+\]</span>
+<p>For <span class="math" data-tex="\(S\in\mathcal L(E)\)">\(S\in\mathcal L(E)\)</span>,</p>
+<span id="equation-6"></span><span class="math math-display" data-tex="\[
+S\ge0
+\quad\Longleftrightarrow\quad
+\langle Sx,x\rangle\ge0\text{ for every }x\in E.
+\tag{6}
+\]">\[
+S\ge0
+\quad\Longleftrightarrow\quad
+\langle Sx,x\rangle\ge0\text{ for every }x\in E.
+\tag{6}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(B\ge0\)">\(B\ge0\)</span> in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, its positive square root gives</p>
+<span id="equation-7"></span><span class="math math-display" data-tex="\[
+\langle Bx,x\rangle
+=\langle B^{1/2}x,B^{1/2}x\rangle\ge0.
+\tag{7}
+\]">\[
+\langle Bx,x\rangle
+=\langle B^{1/2}x,B^{1/2}x\rangle\ge0.
+\tag{7}
+\]</span>
+<p>This proves the forward implication in (6).</p>
+<p>Suppose now that all the forms in (6) are positive. They are self-adjoint, so <span class="math" data-tex="\(\langle x,(S-S^*)x\rangle=0\)">\(\langle x,(S-S^*)x\rangle=0\)</span>. An <span class="math" data-tex="\(A\)">\(A\)</span>-valued sesquilinear form is determined by its diagonal: expand at <span class="math" data-tex="\(x+y\)">\(x+y\)</span> and <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span> to recover both cross terms. Applying this observation gives <span class="math" data-tex="\(\langle x,(S-S^*)y\rangle=0\)">\(\langle x,(S-S^*)y\rangle=0\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, hence <span class="math" data-tex="\(S=S^*\)">\(S=S^*\)</span>.</p>
+<p>If a negative number belonged to <span class="math" data-tex="\(\sigma(S)\)">\(\sigma(S)\)</span>, choose a real continuous function <span class="math" data-tex="\(f\)">\(f\)</span>, nonzero on the spectrum, supported where <span class="math" data-tex="\(t\le-\delta\)">\(t\le-\delta\)</span> for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. Functional calculus gives <span class="math" data-tex="\(f(S)\ne0\)">\(f(S)\ne0\)</span>, so there is <span class="math" data-tex="\(y\)">\(y\)</span> with <span class="math" data-tex="\(x=f(S)y\ne0\)">\(x=f(S)y\ne0\)</span>. The operator</p>
+<span class="math math-display" data-tex="\[
+(-S-\delta1_E)f(S)^2
+\]">\[
+(-S-\delta1_E)f(S)^2
+\]</span>
+<p>is positive. By (7),</p>
+<span class="math math-display" data-tex="\[
+-\langle Sx,x\rangle-\delta\langle x,x\rangle\ge0.
+\]">\[
+-\langle Sx,x\rangle-\delta\langle x,x\rangle\ge0.
+\]</span>
+<p>Together with the assumed positivity of <span class="math" data-tex="\(\langle Sx,x\rangle\)">\(\langle Sx,x\rangle\)</span>, this forces <span class="math" data-tex="\(\langle x,x\rangle=0\)">\(\langle x,x\rangle=0\)</span>, a contradiction. Thus <span class="math" data-tex="\(\sigma(S)\subseteq[0,\infty)\)">\(\sigma(S)\subseteq[0,\infty)\)</span>, proving (6).</p>
+<p>For a map <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span>, the operator <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> belongs to <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, and <span class="math" data-tex="\(\langle T^*Tx,x\rangle=\langle Tx,Tx\rangle\ge0\)">\(\langle T^*Tx,x\rangle=\langle Tx,Tx\rangle\ge0\)</span>. The now-proved criterion (6) makes <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> positive, even when <span class="math" data-tex="\(E\)">\(E\)</span> and <span class="math" data-tex="\(F\)">\(F\)</span> differ. By (3) and functional calculus, <span class="math" data-tex="\(\|T\|^2 1_E-T^*T\ge0\)">\(\|T\|^2 1_E-T^*T\ge0\)</span>. Applying (7) to this operator proves (5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Inequality (5) contains more information than its norm consequence. For <span class="math" data-tex="\(A=C(X)\)">\(A=C(X)\)</span>, it compares two functions at every point; taking their supremum norms would discard that information.</p>
+<p><span id="proposition-3-2"></span><strong>Proposition 3.2: localization by states.</strong> Let <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> be a state of <span class="math" data-tex="\(A\)">\(A\)</span>. Define the scalar semidefinite inner product</p>
+<span class="math math-display" data-tex="\[
+(x,y)_\varphi=\varphi(\langle x,y\rangle),
+\qquad N_\varphi=\{x:\varphi(\langle x,x\rangle)=0\}.
+\]">\[
+(x,y)_\varphi=\varphi(\langle x,y\rangle),
+\qquad N_\varphi=\{x:\varphi(\langle x,x\rangle)=0\}.
+\]</span>
+<p>Divide by <span class="math" data-tex="\(N_\varphi\)">\(N_\varphi\)</span> and complete to obtain a Hilbert space <span class="math" data-tex="\(E_\varphi\)">\(E_\varphi\)</span>. Every <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span> induces a bounded operator <span class="math" data-tex="\(T_\varphi:E_\varphi\to F_\varphi\)">\(T_\varphi:E_\varphi\to F_\varphi\)</span>, with</p>
+<span id="equation-8"></span><span class="math math-display" data-tex="\[
+(T_\varphi)^*=(T^*)_\varphi,
+\qquad \|T\|=\sup_\varphi\|T_\varphi\|.
+\tag{8}
+\]">\[
+(T_\varphi)^*=(T^*)_\varphi,
+\qquad \|T\|=\sup_\varphi\|T_\varphi\|.
+\tag{8}
+\]</span>
+<p>Also <span class="math" data-tex="\(S\ge0\)">\(S\ge0\)</span> if and only if every <span class="math" data-tex="\(S_\varphi\ge0\)">\(S_\varphi\ge0\)</span>.</p>
+<p><strong>Proof.</strong> Applying <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> to (5) proves <span class="math" data-tex="\(T(N_\varphi)\subseteq N_\varphi\)">\(T(N_\varphi)\subseteq N_\varphi\)</span> in the respective domain and codomain, and gives <span class="math" data-tex="\(\|T_\varphi\|\le\|T\|\)">\(\|T_\varphi\|\le\|T\|\)</span>. Equation (1) gives the adjoint identity on the dense quotient spaces, hence on their completions.</p>
+<p>Put <span class="math" data-tex="\(C=\sup_\varphi\|T_\varphi\|\)">\(C=\sup_\varphi\|T_\varphi\|\)</span>. For every <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\varphi(\langle Tx,Tx\rangle)
+\le C^2\varphi(\langle x,x\rangle)
+\le C^2\|x\|^2.
+\]">\[
+\varphi(\langle Tx,Tx\rangle)
+\le C^2\varphi(\langle x,x\rangle)
+\le C^2\|x\|^2.
+\]</span>
+<p>The norm of a positive element of <span class="math" data-tex="\(A\)">\(A\)</span> is the supremum of its values under states. Thus <span class="math" data-tex="\(\|Tx\|\le C\|x\|\)">\(\|Tx\|\le C\|x\|\)</span>, proving (8). If every <span class="math" data-tex="\(S_\varphi\)">\(S_\varphi\)</span> is positive, then <span class="math" data-tex="\(\varphi(\langle Sx,x\rangle)\ge0\)">\(\varphi(\langle Sx,x\rangle)\ge0\)</span> for all states. States detect positivity in <span class="math" data-tex="\(A\)">\(A\)</span>, so (6) applies. The converse follows from (7) after applying each state. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No right <span class="math" data-tex="\(A\)">\(A\)</span>-module structure is asserted on the scalar quotient <span class="math" data-tex="\(E/N_\varphi\)">\(E/N_\varphi\)</span>. A state supplies a Hilbert-space test, and adjointability supplies the estimate that lets the operator pass to that test.</p>
+<h2 id="4-orthogonal-decompositions-require-adjoints">4. Orthogonal decompositions require adjoints</h2>
+<p>A closed submodule <span class="math" data-tex="\(M\subseteq E\)">\(M\subseteq E\)</span> is <strong>orthogonally complemented</strong> if every vector has a unique expression <span class="math" data-tex="\(m+n\)">\(m+n\)</span> with <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span>, <span class="math" data-tex="\(n\in M^\perp\)">\(n\in M^\perp\)</span>. We write <span class="math" data-tex="\(E=M\oplus M^\perp\)">\(E=M\oplus M^\perp\)</span>.</p>
+<p><span id="proposition-4-1"></span><strong>Proposition 4.1.</strong> For a closed submodule <span class="math" data-tex="\(M\subseteq E\)">\(M\subseteq E\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(M\)">\(M\)</span> is orthogonally complemented.</li>
+<li><span class="math" data-tex="\(M=pE\)">\(M=pE\)</span> for a projection <span class="math" data-tex="\(p=p^*=p^2\in\mathcal L(E)\)">\(p=p^*=p^2\in\mathcal L(E)\)</span>.</li>
+<li>The inclusion <span class="math" data-tex="\(j:M\to E\)">\(j:M\to E\)</span> is adjointable.</li>
+</ol>
+<p><strong>Proof.</strong> Under the first condition define <span class="math" data-tex="\(p(m+n)=m\)">\(p(m+n)=m\)</span>. Uniqueness makes <span class="math" data-tex="\(p\)">\(p\)</span> linear and <span class="math" data-tex="\(A\)">\(A\)</span>-linear. Orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\|m\|^2\le\|\langle m,m\rangle+\langle n,n\rangle\|
+=\|m+n\|^2,
+\]">\[
+\|m\|^2\le\|\langle m,m\rangle+\langle n,n\rangle\|
+=\|m+n\|^2,
+\]</span>
+<p>so <span class="math" data-tex="\(p\)">\(p\)</span> is bounded. Expanding the inner products of two decomposed vectors gives <span class="math" data-tex="\(\langle px,y\rangle=\langle x,py\rangle\)">\(\langle px,y\rangle=\langle x,py\rangle\)</span>; hence <span class="math" data-tex="\(p=p^*\)">\(p=p^*\)</span> and <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>.</p>
+<p>Conversely, for a projection <span class="math" data-tex="\(p\)">\(p\)</span>, the submodules <span class="math" data-tex="\(pE\)">\(pE\)</span> and <span class="math" data-tex="\((1_E-p)E\)">\((1_E-p)E\)</span> are closed, orthogonal, and sum to <span class="math" data-tex="\(E\)">\(E\)</span>. If <span class="math" data-tex="\(x\perp pE\)">\(x\perp pE\)</span>, then <span class="math" data-tex="\(\langle px,px\rangle=\langle px,x\rangle=0\)">\(\langle px,px\rangle=\langle px,x\rangle=0\)</span>, so <span class="math" data-tex="\(px=0\)">\(px=0\)</span>. Thus <span class="math" data-tex="\((pE)^\perp=(1_E-p)E\)">\((pE)^\perp=(1_E-p)E\)</span>.</p>
+<p>If <span class="math" data-tex="\(j\)">\(j\)</span> has an adjoint, inner-product preservation gives <span class="math" data-tex="\(j^*j=1_M\)">\(j^*j=1_M\)</span>, and <span class="math" data-tex="\(jj^*\)">\(jj^*\)</span> is a projection onto <span class="math" data-tex="\(M\)">\(M\)</span>. If a projection onto <span class="math" data-tex="\(M\)">\(M\)</span> exists, the same map viewed as <span class="math" data-tex="\(E\to M\)">\(E\to M\)</span> is the adjoint of <span class="math" data-tex="\(j\)">\(j\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For any adjointable <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span>, one always has</p>
+<span id="equation-9"></span><span class="math math-display" data-tex="\[
+(\operatorname{ran}T)^\perp=\ker T^*,
+\qquad (\operatorname{ran}T^*)^\perp=\ker T.
+\tag{9}
+\]">\[
+(\operatorname{ran}T)^\perp=\ker T^*,
+\qquad (\operatorname{ran}T^*)^\perp=\ker T.
+\tag{9}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(y\perp\operatorname{ran}T\)">\(y\perp\operatorname{ran}T\)</span> means <span class="math" data-tex="\(\langle x,T^*y\rangle=0\)">\(\langle x,T^*y\rangle=0\)</span> for every <span class="math" data-tex="\(x\)">\(x\)</span>, which is equivalent to <span class="math" data-tex="\(T^*y=0\)">\(T^*y=0\)</span>. The other equality follows by interchanging <span class="math" data-tex="\(T,T^*\)">\(T,T^*\)</span>. Equation (9) alone does not allow taking a double complement and concluding equality with a closed range; (2) explains the obstruction.</p>
+<h2 id="5-closed-range-creates-a-spectral-gap">5. Closed range creates a spectral gap</h2>
+<p><span id="theorem-5-1"></span><strong>Theorem 5.1 (closed range theorem).</strong> If <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span> has closed range, then <span class="math" data-tex="\(T^*\)">\(T^*\)</span> has closed range and</p>
+<span id="equation-10"></span><span class="math math-display" data-tex="\[
+E=\ker T\oplus\operatorname{ran}T^*,
+\qquad
+F=\operatorname{ran}T\oplus\ker T^*.
+\tag{10}
+\]">\[
+E=\ker T\oplus\operatorname{ran}T^*,
+\qquad
+F=\operatorname{ran}T\oplus\ker T^*.
+\tag{10}
+\]</span>
+<p>Both sums are orthogonal. In particular, the range and kernel submodules in (10) are ranges of adjointable projections.</p>
+<p><em>Reference:</em> [Blackadar 2006, Theorem II.7.2.9], which attributes the theorem to Miščenko.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, the statements are immediate. Otherwise let <span class="math" data-tex="\(K=\ker T\)">\(K=\ker T\)</span>, a closed submodule, and put <span class="math" data-tex="\(Q=T^*T\ge0\)">\(Q=T^*T\ge0\)</span>. Since <span class="math" data-tex="\(\langle x,Qx\rangle=\langle Tx,Tx\rangle\)">\(\langle x,Qx\rangle=\langle Tx,Tx\rangle\)</span>, we have <span class="math" data-tex="\(\ker Q=K\)">\(\ker Q=K\)</span>.</p>
+<p>The induced bounded map of Banach spaces</p>
+<span class="math math-display" data-tex="\[
+\overline T:E/K\longrightarrow\operatorname{ran}T
+\]">\[
+\overline T:E/K\longrightarrow\operatorname{ran}T
+\]</span>
+<p>is bijective. The quotient is Banach: from a Cauchy sequence of classes choose a subsequence whose successive quotient distances are less than <span class="math" data-tex="\(2^{-j}\)">\(2^{-j}\)</span>. By adjusting representatives by elements of <span class="math" data-tex="\(K\)">\(K\)</span>, lift this subsequence to vectors whose successive distances are less than <span class="math" data-tex="\(2^{1-j}\)">\(2^{1-j}\)</span>. They form a Cauchy sequence in <span class="math" data-tex="\(E\)">\(E\)</span>, so their limit gives a limit class. The original Cauchy sequence has the same limit. Closedness of <span class="math" data-tex="\(K\)">\(K\)</span> ensures that the quotient seminorm is a norm.</p>
+<p>The range is Banach by the closed-range hypothesis. The open mapping theorem gives a constant <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> such that</p>
+<span id="equation-11"></span><span class="math math-display" data-tex="\[
+\operatorname{dist}(x,K)\le C\|Tx\|.
+\tag{11}
+\]">\[
+\operatorname{dist}(x,K)\le C\|Tx\|.
+\tag{11}
+\]</span>
+<p>We claim that</p>
+<span id="equation-12"></span><span class="math math-display" data-tex="\[
+\sigma(Q)\cap(0,C^{-2})=\varnothing.
+\tag{12}
+\]">\[
+\sigma(Q)\cap(0,C^{-2})=\varnothing.
+\tag{12}
+\]</span>
+<p>Suppose instead that <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> lies in this interval. Choose a real continuous <span class="math" data-tex="\(f\)">\(f\)</span> supported in a compact interval <span class="math" data-tex="\([a,b]\subset(0,C^{-2})\)">\([a,b]\subset(0,C^{-2})\)</span>, with <span class="math" data-tex="\(f(\lambda)=1\)">\(f(\lambda)=1\)</span>. Then <span class="math" data-tex="\(f(Q)\ne0\)">\(f(Q)\ne0\)</span>. Choose <span class="math" data-tex="\(y\)">\(y\)</span> such that <span class="math" data-tex="\(x=f(Q)y\ne0\)">\(x=f(Q)y\ne0\)</span>.</p>
+<p>For <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, functional calculus gives <span class="math" data-tex="\(f(Q)k=f(0)k=0\)">\(f(Q)k=f(0)k=0\)</span>; this identity follows first for polynomials and then by uniform approximation. Since <span class="math" data-tex="\(f(Q)\)">\(f(Q)\)</span> is self-adjoint, <span class="math" data-tex="\(x\perp K\)">\(x\perp K\)</span>. Therefore, for every <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|x-k\|^2
+=\|\langle x,x\rangle+\langle k,k\rangle\|
+\ge\|x\|^2.
+\]">\[
+\|x-k\|^2
+=\|\langle x,x\rangle+\langle k,k\rangle\|
+\ge\|x\|^2.
+\]</span>
+<p>Taking <span class="math" data-tex="\(k=0\)">\(k=0\)</span> shows <span class="math" data-tex="\(\operatorname{dist}(x,K)=\|x\|\)">\(\operatorname{dist}(x,K)=\|x\|\)</span>. This equality uses only orthogonality of this particular vector, and does not assume that <span class="math" data-tex="\(K\)">\(K\)</span> is complemented.</p>
+<p>The scalar function <span class="math" data-tex="\((b-t)f(t)^2\)">\((b-t)f(t)^2\)</span> is nonnegative on <span class="math" data-tex="\(\sigma(Q)\)">\(\sigma(Q)\)</span>. By functional calculus and (7),</p>
+<span class="math math-display" data-tex="\[
+\langle Tx,Tx\rangle
+=\langle x,Qx\rangle
+\le b\langle x,x\rangle.
+\]">\[
+\langle Tx,Tx\rangle
+=\langle x,Qx\rangle
+\le b\langle x,x\rangle.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\|Tx\|\le\sqrt b\|x\|\)">\(\|Tx\|\le\sqrt b\|x\|\)</span>. Combined with (11), this gives <span class="math" data-tex="\(1\le C\sqrt b&lt;1\)">\(1\le C\sqrt b&lt;1\)</span>, a contradiction. This proves (12).</p>
+<p>On the spectrum of <span class="math" data-tex="\(Q\)">\(Q\)</span>, the function</p>
+<span class="math math-display" data-tex="\[
+g(0)=0,\qquad g(t)=t^{-1}\quad(t&gt;0)
+\]">\[
+g(0)=0,\qquad g(t)=t^{-1}\quad(t&gt;0)
+\]</span>
+<p>is continuous by (12); if zero is absent, only the second formula is needed. Define <span class="math" data-tex="\(G=g(Q)\)">\(G=g(Q)\)</span> and <span class="math" data-tex="\(p=QG\)">\(p=QG\)</span>. Functional calculus gives</p>
+<span class="math math-display" data-tex="\[
+p=p^*=p^2,\qquad Q(1_E-p)=0,\qquad GQG=G.
+\]">\[
+p=p^*=p^2,\qquad Q(1_E-p)=0,\qquad GQG=G.
+\]</span>
+<p>We have <span class="math" data-tex="\((1_E-p)E=K\)">\((1_E-p)E=K\)</span>: one inclusion follows from <span class="math" data-tex="\(Q(1_E-p)=0\)">\(Q(1_E-p)=0\)</span>, and for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>, <span class="math" data-tex="\(pk=0\)">\(pk=0\)</span>. Also <span class="math" data-tex="\(T(1_E-p)=0\)">\(T(1_E-p)=0\)</span>, so its adjoint gives <span class="math" data-tex="\((1_E-p)T^*=0\)">\((1_E-p)T^*=0\)</span>. Consequently</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ran}T^*\subseteq pE,
+\qquad
+pE=QGE\subseteq\operatorname{ran}T^*.
+\]">\[
+\operatorname{ran}T^*\subseteq pE,
+\qquad
+pE=QGE\subseteq\operatorname{ran}T^*.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\operatorname{ran}T^*=pE\)">\(\operatorname{ran}T^*=pE\)</span>, which is closed, and the first decomposition in (10) follows.</p>
+<p>Finally put <span class="math" data-tex="\(q=TGT^*\in\mathcal L(F)\)">\(q=TGT^*\in\mathcal L(F)\)</span>. It is self-adjoint, and</p>
+<span class="math math-display" data-tex="\[
+q^2=TGQGT^*=TGT^*=q,
+\qquad qT=T GQ=Tp=T.
+\]">\[
+q^2=TGQGT^*=TGT^*=q,
+\qquad qT=T GQ=Tp=T.
+\]</span>
+<p>The formula for <span class="math" data-tex="\(q\)">\(q\)</span> gives <span class="math" data-tex="\(qF\subseteq\operatorname{ran}T\)">\(qF\subseteq\operatorname{ran}T\)</span>, while <span class="math" data-tex="\(qT=T\)">\(qT=T\)</span> gives the reverse inclusion. Hence <span class="math" data-tex="\(qF=\operatorname{ran}T\)">\(qF=\operatorname{ran}T\)</span>. Its orthogonal complement is <span class="math" data-tex="\(\ker T^*\)">\(\ker T^*\)</span> by (9), proving the second decomposition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof explains the mechanism: closed range prevents nonzero singular values from approaching zero. The resulting continuous inverse on the nonzero spectrum produces actual projections in the operator algebra.</p>
+<p>A <strong>partial isometry</strong> <span class="math" data-tex="\(V\in\mathcal L(E,F)\)">\(V\in\mathcal L(E,F)\)</span> is an operator for which <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> and <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> are projections. A polar decomposition <span class="math" data-tex="\(T=V|T|\)">\(T=V|T|\)</span>, where <span class="math" data-tex="\(|T|=(T^*T)^{1/2}\)">\(|T|=(T^*T)^{1/2}\)</span>, requires <span class="math" data-tex="\(V\)">\(V\)</span> to have initial submodule <span class="math" data-tex="\(\overline{\operatorname{ran}|T|}\)">\(\overline{\operatorname{ran}|T|}\)</span> and final submodule <span class="math" data-tex="\(\overline{\operatorname{ran}T}\)">\(\overline{\operatorname{ran}T}\)</span>. It is zero on the orthogonal complement of the initial submodule.</p>
+<p><span id="corollary-5-2"></span><strong>Corollary 5.2.</strong> Every adjointable operator with closed range has such a polar decomposition. Its initial projection is the projection <span class="math" data-tex="\(p\)">\(p\)</span> onto <span class="math" data-tex="\(\operatorname{ran}T^*\)">\(\operatorname{ran}T^*\)</span>, and its final projection is the projection <span class="math" data-tex="\(q\)">\(q\)</span> onto <span class="math" data-tex="\(\operatorname{ran}T\)">\(\operatorname{ran}T\)</span>.</p>
+<p><strong>Proof.</strong> Use the spectral gap in Theorem 5.1 and define <span class="math" data-tex="\(H=h(Q)\)">\(H=h(Q)\)</span> by <span class="math" data-tex="\(h(0)=0\)">\(h(0)=0\)</span> and <span class="math" data-tex="\(h(t)=t^{-1/2}\)">\(h(t)=t^{-1/2}\)</span> on the positive spectrum. Put <span class="math" data-tex="\(V=TH\)">\(V=TH\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+V^*V=HQH=p,\qquad VV^*=TH^2T^*=q,
+\qquad V|T|=THQ^{1/2}=Tp=T.
+\]">\[
+V^*V=HQH=p,\qquad VV^*=TH^2T^*=q,
+\qquad V|T|=THQ^{1/2}=Tp=T.
+\]</span>
+<p>Since <span class="math" data-tex="\(Q^{1/2}\)">\(Q^{1/2}\)</span> is invertible on <span class="math" data-tex="\(pE\)">\(pE\)</span> and zero on <span class="math" data-tex="\((1_E-p)E\)">\((1_E-p)E\)</span>, its range is <span class="math" data-tex="\(pE\)">\(pE\)</span>. The final submodule is <span class="math" data-tex="\(qF\)">\(qF\)</span>. These are exactly the required submodules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="example-5-3"></span><strong>Example 5.3: polar decomposition can fail.</strong> Let <span class="math" data-tex="\(A=C([-1,1])\)">\(A=C([-1,1])\)</span>, <span class="math" data-tex="\(E=A\)">\(E=A\)</span>, and let <span class="math" data-tex="\(T\)">\(T\)</span> be multiplication by the coordinate <span class="math" data-tex="\(s\)">\(s\)</span>. It is self-adjoint and <span class="math" data-tex="\(|T|\)">\(|T|\)</span> is multiplication by <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. By (4) with <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, any <span class="math" data-tex="\(V\in\mathcal L(A)\)">\(V\in\mathcal L(A)\)</span> is multiplication by a continuous function <span class="math" data-tex="\(v\)">\(v\)</span>. The equation <span class="math" data-tex="\(V|T|=T\)">\(V|T|=T\)</span> forces</p>
+<span class="math math-display" data-tex="\[
+v(s)=1\ (s&gt;0),\qquad v(s)=-1\ (s&lt;0),
+\]">\[
+v(s)=1\ (s&gt;0),\qquad v(s)=-1\ (s&lt;0),
+\]</span>
+<p>which no continuous function satisfies. There is no polar decomposition, even before imposing the support conditions.</p>
+<p>Here the range is not closed. The functions <span class="math" data-tex="\(s/(|s|+\varepsilon)^{1/2}\)">\(s/(|s|+\varepsilon)^{1/2}\)</span> belong to <span class="math" data-tex="\(sA\)">\(sA\)</span> and converge uniformly to <span class="math" data-tex="\(\operatorname{sgn}(s)\sqrt{|s|}\)">\(\operatorname{sgn}(s)\sqrt{|s|}\)</span>, extended by zero at zero. The error is at most <span class="math" data-tex="\(\sqrt\varepsilon\)">\(\sqrt\varepsilon\)</span>. The limit cannot equal <span class="math" data-tex="\(sf(s)\)">\(sf(s)\)</span> with continuous <span class="math" data-tex="\(f\)">\(f\)</span>, because it would force <span class="math" data-tex="\(f(s)=1/\sqrt{|s|}\)">\(f(s)=1/\sqrt{|s|}\)</span> away from zero.</p>
+<h2 id="6-when-an-isomorphism-is-unitary">6. When an isomorphism is unitary</h2>
+<p>An operator <span class="math" data-tex="\(U\in\mathcal L(E,F)\)">\(U\in\mathcal L(E,F)\)</span> is <strong>unitary</strong> if <span class="math" data-tex="\(U^*U=1_E\)">\(U^*U=1_E\)</span> and <span class="math" data-tex="\(UU^*=1_F\)">\(UU^*=1_F\)</span>. Thus <span class="math" data-tex="\(U^*=U^{-1}\)">\(U^*=U^{-1}\)</span>. The following characterization separates preservation of length from the existence of an adjoint.</p>
+<p><span id="theorem-6-1"></span><strong>Theorem 6.1.</strong> A complex-linear <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(U:E\to F\)">\(U:E\to F\)</span> is unitary if and only if it is surjective and preserves inner products. Equivalently, it is unitary if and only if it is surjective and isometric for the module norms.</p>
+<p><strong>Proof.</strong> A unitary preserves inner products because</p>
+<span class="math math-display" data-tex="\[
+\langle Ux,Uy\rangle=\langle x,U^*Uy\rangle=\langle x,y\rangle,
+\]">\[
+\langle Ux,Uy\rangle=\langle x,U^*Uy\rangle=\langle x,y\rangle,
+\]</span>
+<p>and it is surjective because <span class="math" data-tex="\(UU^*=1_F\)">\(UU^*=1_F\)</span>. Conversely, an inner-product-preserving surjection is injective. If <span class="math" data-tex="\(y=Uz\)">\(y=Uz\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\langle Ux,y\rangle=\langle Ux,Uz\rangle
+=\langle x,z\rangle=\langle x,U^{-1}y\rangle.
+\]">\[
+\langle Ux,y\rangle=\langle Ux,Uz\rangle
+=\langle x,z\rangle=\langle x,U^{-1}y\rangle.
+\]</span>
+<p>Thus <span class="math" data-tex="\(U^{-1}\)">\(U^{-1}\)</span> is its adjoint, proving unitarity.</p>
+<p>It remains to show that an isometric module map preserves inner products. This step does not need surjectivity. Fix <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, put <span class="math" data-tex="\(a=\langle x,x\rangle\)">\(a=\langle x,x\rangle\)</span>, <span class="math" data-tex="\(b=\langle Ux,Ux\rangle\)">\(b=\langle Ux,Ux\rangle\)</span>, and work in the unitization <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span> if necessary. The module action extends by <span class="math" data-tex="\(x(c+\lambda1)=xc+\lambda x\)">\(x(c+\lambda1)=xc+\lambda x\)</span>; <span class="math" data-tex="\(U\)">\(U\)</span> respects it by complex linearity and <span class="math" data-tex="\(A\)">\(A\)</span>-linearity.</p>
+<p>For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, put <span class="math" data-tex="\(r=(a+\varepsilon1)^{-1/2}\in\widetilde A\)">\(r=(a+\varepsilon1)^{-1/2}\in\widetilde A\)</span>. Functional calculus gives <span class="math" data-tex="\(rar\le1\)">\(rar\le1\)</span>, so <span class="math" data-tex="\(\|xr\|\le1\)">\(\|xr\|\le1\)</span>. Isometry gives <span class="math" data-tex="\(\|(Ux)r\|\le1\)">\(\|(Ux)r\|\le1\)</span>, hence <span class="math" data-tex="\(rbr\le1\)">\(rbr\le1\)</span>, since a positive element of norm at most one is at most the identity. Multiplying this inequality on both sides by <span class="math" data-tex="\(r^{-1}\)">\(r^{-1}\)</span> yields <span class="math" data-tex="\(b\le a+\varepsilon1\)">\(b\le a+\varepsilon1\)</span>. Letting <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> gives <span class="math" data-tex="\(b\le a\)">\(b\le a\)</span>.</p>
+<p>Repeat with <span class="math" data-tex="\(r=(b+\varepsilon1)^{-1/2}\)">\(r=(b+\varepsilon1)^{-1/2}\)</span>. The same norm equality now yields <span class="math" data-tex="\(a\le b+\varepsilon1\)">\(a\le b+\varepsilon1\)</span>, hence <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span>. Thus <span class="math" data-tex="\(a=b\)">\(a=b\)</span>. Polarizing this diagonal equality proves <span class="math" data-tex="\(\langle Ux,Uy\rangle=\langle x,y\rangle\)">\(\langle Ux,Uy\rangle=\langle x,y\rangle\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The preceding paragraph applies when <span class="math" data-tex="\(U\)">\(U\)</span> is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Proposition 1.1 shows why surjectivity cannot be dropped from the adjointability conclusion. A bounded module bijection need not itself be unitary either. Multiplication by two on any nonzero module is an adjointable bijection, but it multiplies squared inner products by four. By contrast, the map defined by a unitary matrix in (4) preserves the inner product and is a Hilbert-module isomorphism in this sense.</p>
+<h2 id="7-exercises-with-complete-solutions">7. Exercises with complete solutions</h2>
+<h3 id="exercise-7-1-basic-recover-an-operator-from-its-columns">Exercise 7.1 — basic: recover an operator from its columns</h3>
+<p>Let <span class="math" data-tex="\(A\)">\(A\)</span> be unital. Prove <span class="math" data-tex="\(\mathcal L(A^n)\cong M_n(A)\)">\(\mathcal L(A^n)\cong M_n(A)\)</span>, including the adjoint formula. For <span class="math" data-tex="\(A=C[0,1]\)">\(A=C[0,1]\)</span>, determine the range and kernel of the projection with constant matrix <span class="math" data-tex="\(\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)">\(\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(e_j\)">\(e_j\)</span> for the coordinate vector whose <span class="math" data-tex="\(j\)">\(j\)</span>-th entry is <span class="math" data-tex="\(1_A\)">\(1_A\)</span>. For <span class="math" data-tex="\(T\in\mathcal L(A^n)\)">\(T\in\mathcal L(A^n)\)</span>, set <span class="math" data-tex="\(b_{ij}=(Te_j)_i\)">\(b_{ij}=(Te_j)_i\)</span>. Since <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(A\)">\(A\)</span>-linear,</p>
+<span class="math math-display" data-tex="\[
+Tx=T\Bigl(\sum_j e_jx_j\Bigr)=\sum_j(Te_j)x_j=T_bx.
+\]">\[
+Tx=T\Bigl(\sum_j e_jx_j\Bigr)=\sum_j(Te_j)x_j=T_bx.
+\]</span>
+<p>Conversely, for any matrix <span class="math" data-tex="\(b\)">\(b\)</span>, expanding the finite sums gives</p>
+<span class="math math-display" data-tex="\[
+\langle T_bx,y\rangle
+=\sum_{i,j}x_j^*b_{ij}^*y_i
+=\langle x,T_{b^*}y\rangle.
+\]">\[
+\langle T_bx,y\rangle
+=\sum_{i,j}x_j^*b_{ij}^*y_i
+=\langle x,T_{b^*}y\rangle.
+\]</span>
+<p>Thus each matrix defines an adjointable map, its adjoint is the conjugate transpose, and columns determine it uniquely. Matrix products agree with composition. This proves a bijective *-homomorphism; the C*-algebra isometry theorem makes it isometric. The displayed projection has range <span class="math" data-tex="\(A\oplus0\)">\(A\oplus0\)</span> and kernel <span class="math" data-tex="\(0\oplus A\)">\(0\oplus A\)</span>, which are orthogonal complements.</p>
+<h3 id="exercise-7-2-intermediate-the-missing-endpoint-obstructs-an-adjoint">Exercise 7.2 — intermediate: the missing endpoint obstructs an adjoint</h3>
+<p>For <span class="math" data-tex="\(I=C_0((0,1])\subseteq C[0,1]\)">\(I=C_0((0,1])\subseteq C[0,1]\)</span>, prove that the inclusion is bounded and <span class="math" data-tex="\(C[0,1]\)">\(C[0,1]\)</span>-linear but has no adjoint. Identify the contradiction using a single vector of the target.</p>
+<p><strong>Solution.</strong> Extend the functions by zero at zero. The extension preserves the supremum norm and commutes with multiplication by <span class="math" data-tex="\(C[0,1]\)">\(C[0,1]\)</span>, so the inclusion is a module map of norm one. If it had an adjoint, the target vector <span class="math" data-tex="\(1\)">\(1\)</span> would be sent to <span class="math" data-tex="\(h\in I\)">\(h\in I\)</span>. Testing the adjoint equation with <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> gives <span class="math" data-tex="\(t=t h(t)\)">\(t=t h(t)\)</span>. Thus <span class="math" data-tex="\(h(t)=1\)">\(h(t)=1\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. A continuous extension has value one at zero, contrary to <span class="math" data-tex="\(h\in I\)">\(h\in I\)</span>. Hence there is no adjoint.</p>
+<h3 id="exercise-7-3-intermediate-an-order-estimate-rather-than-a-norm-estimate">Exercise 7.3 — intermediate: an order estimate rather than a norm estimate</h3>
+<p>For <span class="math" data-tex="\(T\in\mathcal L(E)\)">\(T\in\mathcal L(E)\)</span>, derive (5) from positivity of <span class="math" data-tex="\(\|T\|^2 1_E-T^*T\)">\(\|T\|^2 1_E-T^*T\)</span>. Explain which algebra contains each positive element.</p>
+<p><strong>Solution.</strong> The operator <span class="math" data-tex="\(B=\|T\|^2 1_E-T^*T\)">\(B=\|T\|^2 1_E-T^*T\)</span> is positive in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, since <span class="math" data-tex="\(T^*T\ge0\)">\(T^*T\ge0\)</span> has norm <span class="math" data-tex="\(\|T\|^2\)">\(\|T\|^2\)</span>. Its square root belongs to <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|T\|^2\langle x,x\rangle-\langle Tx,Tx\rangle
+=\langle x,Bx\rangle
+=\langle B^{1/2}x,B^{1/2}x\rangle\ge0.
+\]">\[
+\|T\|^2\langle x,x\rangle-\langle Tx,Tx\rangle
+=\langle x,Bx\rangle
+=\langle B^{1/2}x,B^{1/2}x\rangle\ge0.
+\]</span>
+<p>The last element is positive in <span class="math" data-tex="\(A\)">\(A\)</span>. Therefore the comparison is in the order of <span class="math" data-tex="\(A\)">\(A\)</span>, and taking norms only afterward gives <span class="math" data-tex="\(\|Tx\|\le\|T\|\|x\|\)">\(\|Tx\|\le\|T\|\|x\|\)</span>.</p>
+<h3 id="exercise-7-4-intermediate-a-closed-submodule-with-zero-complement">Exercise 7.4 — intermediate: a closed submodule with zero complement</h3>
+<p>Give a proper closed submodule <span class="math" data-tex="\(M\subset E\)">\(M\subset E\)</span> for which <span class="math" data-tex="\(M\oplus M^\perp\ne E\)">\(M\oplus M^\perp\ne E\)</span>. Compute <span class="math" data-tex="\(M^\perp\)">\(M^\perp\)</span> and <span class="math" data-tex="\(M^{\perp\perp}\)">\(M^{\perp\perp}\)</span>, and decide whether <span class="math" data-tex="\(M\)">\(M\)</span> can be the range of an adjointable projection.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(E=C[0,1]\)">\(E=C[0,1]\)</span>, <span class="math" data-tex="\(M=\{f:f(0)=0\}\)">\(M=\{f:f(0)=0\}\)</span>. It is closed as the kernel of the continuous evaluation map, and proper because <span class="math" data-tex="\(1\notin M\)">\(1\notin M\)</span>. If <span class="math" data-tex="\(g\in M^\perp\)">\(g\in M^\perp\)</span>, testing against <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> gives <span class="math" data-tex="\(tg(t)=0\)">\(tg(t)=0\)</span>, so continuity forces <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Hence <span class="math" data-tex="\(M^\perp=0\)">\(M^\perp=0\)</span> and <span class="math" data-tex="\(M^{\perp\perp}=E\)">\(M^{\perp\perp}=E\)</span>. It follows that <span class="math" data-tex="\(M\oplus M^\perp=M\ne E\)">\(M\oplus M^\perp=M\ne E\)</span>. By Proposition 4.1 it cannot be the range of an adjointable projection.</p>
+<h3 id="exercise-7-5-advanced-construct-the-polar-factor">Exercise 7.5 — advanced: construct the polar factor</h3>
+<p>Assume <span class="math" data-tex="\(T\in\mathcal L(E,F)\)">\(T\in\mathcal L(E,F)\)</span> has closed range. Use the closed range theorem to construct <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(T=V|T|\)">\(T=V|T|\)</span>, <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> the projection onto <span class="math" data-tex="\(\operatorname{ran}T^*\)">\(\operatorname{ran}T^*\)</span>, and <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> the projection onto <span class="math" data-tex="\(\operatorname{ran}T\)">\(\operatorname{ran}T\)</span>. Determine the action of <span class="math" data-tex="\(V\)">\(V\)</span> on both summands of <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(N=\operatorname{ran}T^*\)">\(N=\operatorname{ran}T^*\)</span> and <span class="math" data-tex="\(R=\operatorname{ran}T\)">\(R=\operatorname{ran}T\)</span>. The theorem gives orthogonal sums <span class="math" data-tex="\(E=\ker T\oplus N\)">\(E=\ker T\oplus N\)</span>, <span class="math" data-tex="\(F=R\oplus\ker T^*\)">\(F=R\oplus\ker T^*\)</span>, so their inclusions and projections are adjointable. The restriction <span class="math" data-tex="\(T_0:N\to R\)">\(T_0:N\to R\)</span> is an adjointable bijection: it is injective because <span class="math" data-tex="\(N\perp\ker T\)">\(N\perp\ker T\)</span>, and it is onto because every preimage can be projected onto <span class="math" data-tex="\(N\)">\(N\)</span>. Its adjoint is <span class="math" data-tex="\(T^*|_R\)">\(T^*|_R\)</span>.</p>
+<p>Its bounded inverse is adjointable. Indeed, <span class="math" data-tex="\(T^*|_R:R\to N\)">\(T^*|_R:R\to N\)</span> is bijective: it is onto by projecting a preimage in <span class="math" data-tex="\(F\)">\(F\)</span> onto <span class="math" data-tex="\(R\)">\(R\)</span>, and its kernel is <span class="math" data-tex="\(R\cap\ker T^*=0\)">\(R\cap\ker T^*=0\)</span>. For <span class="math" data-tex="\(r=T_0n\)">\(r=T_0n\)</span> and <span class="math" data-tex="\(m\in N\)">\(m\in N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle T_0^{-1}r,m\rangle
+=\langle n,m\rangle
+=\langle T_0n,(T_0^*)^{-1}m\rangle.
+\]">\[
+\langle T_0^{-1}r,m\rangle
+=\langle n,m\rangle
+=\langle T_0n,(T_0^*)^{-1}m\rangle.
+\]</span>
+<p>Thus <span class="math" data-tex="\((T_0^{-1})^*=(T_0^*)^{-1}\)">\((T_0^{-1})^*=(T_0^*)^{-1}\)</span>. In particular, <span class="math" data-tex="\(Q_0=T_0^*T_0\in\mathcal L(N)\)">\(Q_0=T_0^*T_0\in\mathcal L(N)\)</span> is positive and invertible. Define <span class="math" data-tex="\(V\)">\(V\)</span> to vanish on <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span>, and on <span class="math" data-tex="\(N\)">\(N\)</span> set</p>
+<span class="math math-display" data-tex="\[
+V|_N=T_0Q_0^{-1/2}:N\longrightarrow R.
+\]">\[
+V|_N=T_0Q_0^{-1/2}:N\longrightarrow R.
+\]</span>
+<p>This construction uses adjointable projections and inclusions, hence defines an adjointable map. On <span class="math" data-tex="\(N\)">\(N\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(V|_N)^*(V|_N)=1_N,
+\qquad
+(V|_N)(V|_N)^*=T_0Q_0^{-1}T_0^*=1_R,
+\]">\[
+(V|_N)^*(V|_N)=1_N,
+\qquad
+(V|_N)(V|_N)^*=T_0Q_0^{-1}T_0^*=1_R,
+\]</span>
+<p>where <span class="math" data-tex="\(Q_0^{-1}=T_0^{-1}(T_0^*)^{-1}\)">\(Q_0^{-1}=T_0^{-1}(T_0^*)^{-1}\)</span>. Therefore <span class="math" data-tex="\(V^*V\)">\(V^*V\)</span> and <span class="math" data-tex="\(VV^*\)">\(VV^*\)</span> are the required projections. On <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(|T|=Q_0^{1/2}\)">\(|T|=Q_0^{1/2}\)</span>, so <span class="math" data-tex="\(V|T|=T_0\)">\(V|T|=T_0\)</span>; on <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span>, both sides vanish. Thus <span class="math" data-tex="\(T=V|T|\)">\(T=V|T|\)</span>. If <span class="math" data-tex="\(T=0\)">\(T=0\)</span>, choose <span class="math" data-tex="\(V=0\)">\(V=0\)</span> directly.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The Hilbert-module prerequisite supplies the norm Cauchy–Schwarz inequality <span class="math" data-tex="\(\|\langle x,y\rangle\|\le\|x\|\|y\|\)">\(\|\langle x,y\rangle\|\le\|x\|\|y\|\)</span>, the bound <span class="math" data-tex="\(\|xa\|\le\|x\|\|a\|\)">\(\|xa\|\le\|x\|\|a\|\)</span>, and completeness of finite direct sums with the summed inner product. References are [Blackadar 1998, Definition 13.1.1, Proposition 13.1.3 and Examples 13.1.2] and [Blackadar 2006, Proposition II.7.1.4 and Examples II.7.1.7(ii),(iv)].</p>
+<p>We use the following foundational C*-algebra facts without reproving them. Continuous functional calculus for a self-adjoint element <span class="math" data-tex="\(a\)">\(a\)</span> respects products, involution and uniform limits, gives <span class="math" data-tex="\(\|f(a)\|=\max_{t\in\sigma(a)}|f(t)|\)">\(\|f(a)\|=\max_{t\in\sigma(a)}|f(t)|\)</span>, and sends nonnegative functions to positive elements. Positive elements have positive square roots; <span class="math" data-tex="\(c^*c\ge0\)">\(c^*c\ge0\)</span>; the positive cone is closed; <span class="math" data-tex="\(0\le a\le b\)">\(0\le a\le b\)</span> implies <span class="math" data-tex="\(\|a\|\le\|b\|\)">\(\|a\|\le\|b\|\)</span>. References are [Blackadar 2006, Corollary II.2.3.1, Proposition II.2.3.2 and II.3.1.2–II.3.1.8]. The norm comparison also follows immediately by evaluating states. An injective *-homomorphism of C*-algebras is isometric [Blackadar 2006, Corollary II.2.2.9].</p>
+<p>States detect positivity, <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span> exactly when <span class="math" data-tex="\(\varphi(a)\ge0\)">\(\varphi(a)\ge0\)</span> for every state, and for positive <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(\|a\|=\sup_\varphi\varphi(a)\)">\(\|a\|=\sup_\varphi\varphi(a)\)</span> [Blackadar 2006, Proposition II.6.3.3 and Corollary II.6.3.5]. For the zero algebra these statements and the localization conclusions are read with the empty supremum equal to zero.</p>
+<p>The Banach-space open mapping theorem, closed graph theorem and completeness of bounded-map spaces are proved in the opening lemma of Section 2; compare [Blackadar 2006, I.2.1.1 and Theorems I.2.1.4–I.2.1.5] for the classical formulations. Quotient completeness is proved in Theorem 5.1.</p>
+<p>Finally, the canonical isomorphism <span class="math" data-tex="\(\mathcal L(A)\cong M(A)\)">\(\mathcal L(A)\cong M(A)\)</span> for arbitrary <span class="math" data-tex="\(A\)">\(A\)</span> is announced, not proved [Emerson 2024, Proposition 5.5.13]. Its construction is reserved for <em>Compact operators, multipliers and the strict topology</em>. All operator theorems and counterexamples developed above, including the surjective-isometry characterization, have proofs in this lesson.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Blackadar 2006]</strong> B. Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006; <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">author's revised edition, 2017</a>.</li>
+<li><strong>[Blackadar 1998]</strong> B. Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Mathematical Sciences Research Institute Publications 5, Cambridge University Press, 1998. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li><strong>[Emerson 2024]</strong> H. Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, Birkhäuser, 2024.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/hilbert-c-star-modules-and-morita-equivalence/adjointable-operators.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

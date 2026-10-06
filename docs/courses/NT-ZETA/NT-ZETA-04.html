@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poisson summation, theta, and the functional equation · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 4 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="poisson-summation-theta-and-the-functional-equation">Poisson summation, theta, and the functional equation</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The functional equation of zeta comes from a symmetry of the Gaussian under Fourier transformation. Summing that Gaussian over the integers creates a theta series; taking its Mellin transform converts inversion of the positive real variable into reflection of the complex variable. A second route, through a contour around a branch cut, explains the special values and derives the same functional equation from residues.</p>
+<p>We use <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, especially Proposition 3.1 for the Euler product and nonvanishing on <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>, and Theorem 5.1 for
+<span class="math math-display" data-tex="$$
+\zeta(s)=\frac1{s-1}+\gamma+O(s-1).
+\tag{1}
+$$">$$
+\zeta(s)=\frac1{s-1}+\gamma+O(s-1).
+\tag{1}
+$$</span>
+We also use the proved gamma identities and continuous logarithm from <a href="NT-ZETA-03.html">The Gamma function and Stirling's formula</a>, and the integration and residue theorems of <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50">Complex Analysis</a>. The freely readable primary comparison is Riemann’s memoir in the Wilkins transcription listed below.</p>
+<p>Write <span class="math" data-tex="$s=\sigma+it$">$s=\sigma+it$</span>. Our Fourier transform is
+<span class="math math-display" data-tex="$$
+\widehat f(\xi)=\int_{\mathbb R}f(u)e^{-2\pi iu\xi}\,du.
+\tag{2}
+$$">$$
+\widehat f(\xi)=\int_{\mathbb R}f(u)e^{-2\pi iu\xi}\,du.
+\tag{2}
+$$</span>
+We denote the theta series by <span class="math" data-tex="$\Theta(x)$">$\Theta(x)$</span>, keeping <span class="math" data-tex="$\theta(x)$">$\theta(x)$</span> for the prime sum and <span class="math" data-tex="$\vartheta(t)$">$\vartheta(t)$</span> for the Riemann–Siegel phase. The completed functions are
+<span class="math math-display" data-tex="$$
+\zeta_{\mathbb Q}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \xi(s)=\tfrac12s(s-1)\zeta_{\mathbb Q}(s),
+\qquad \Xi(t)=\xi(1/2+it).
+\tag{3}
+$$">$$
+\zeta_{\mathbb Q}(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad \xi(s)=\tfrac12s(s-1)\zeta_{\mathbb Q}(s),
+\qquad \Xi(t)=\xi(1/2+it).
+\tag{3}
+$$</span>
+Thus <span class="math" data-tex="$\zeta_{\mathbb Q}$">$\zeta_{\mathbb Q}$</span> has two poles, while <span class="math" data-tex="$\xi$">$\xi$</span> will be entire. Formula (3) also gives the dictionary with the completed zeta function used in <em>Weil's proof for curves and what is missing over the integers</em>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="periodization-and-its-fourier-coefficients">Periodization and its Fourier coefficients</h2>
+<p>First we prove the uniqueness assertion needed to turn Fourier coefficients into an identity of functions.</p>
+<p><strong>Lemma 1.1 (continuous Fourier uniqueness).</strong> If a continuous one-periodic function <span class="math" data-tex="$h$">$h$</span> has
+<span class="math math-display" data-tex="$$
+\int_0^1h(x)e^{-2\pi ikx}\,dx=0
+\quad\text{for every }k\in\mathbb Z,
+$$">$$
+\int_0^1h(x)e^{-2\pi ikx}\,dx=0
+\quad\text{for every }k\in\mathbb Z,
+$$</span>
+then <span class="math" data-tex="$h=0$">$h=0$</span>.</p>
+<p><strong>Proof.</strong> The Fejér kernel is
+<span class="math math-display" data-tex="$$
+K_N(x)=\frac1{N+1}\left|\sum_{j=0}^Ne^{2\pi ijx}\right|^2.
+$$">$$
+K_N(x)=\frac1{N+1}\left|\sum_{j=0}^Ne^{2\pi ijx}\right|^2.
+$$</span>
+It is nonnegative, one-periodic, and has integral one: expansion of the square leaves exactly the <span class="math" data-tex="$N+1$">$N+1$</span> diagonal terms after integration. If the distance of <span class="math" data-tex="$x$">$x$</span> from an integer is at least <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>, the geometric-series formula gives
+<span class="math math-display" data-tex="$$
+K_N(x)\le\frac1{(N+1)\sin^2(\pi\eta)}.
+$$">$$
+K_N(x)\le\frac1{(N+1)\sin^2(\pi\eta)}.
+$$</span>
+Uniform continuity of <span class="math" data-tex="$h$">$h$</span> now proves <span class="math" data-tex="$h*K_N\to h$">$h*K_N\to h$</span> uniformly. Indeed, write the difference as <span class="math" data-tex="$\int_0^1(h(y-x)-h(y))K_N(x)dx$">$\int_0^1(h(y-x)-h(y))K_N(x)dx$</span>. On the part within distance <span class="math" data-tex="$\eta$">$\eta$</span> of an integer the difference is uniformly small; on the rest use the displayed bound and <span class="math" data-tex="$2\|h\|_\infty$">$2\|h\|_\infty$</span>. On the other hand, <span class="math" data-tex="$K_N$">$K_N$</span> is a finite linear combination of exponentials. All its convolutions with <span class="math" data-tex="$h$">$h$</span> vanish by the assumed coefficients. Hence their uniform limit <span class="math" data-tex="$h$">$h$</span> vanishes. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 1.2 (Poisson summation).</strong> Suppose <span class="math" data-tex="$f$">$f$</span> and <span class="math" data-tex="$\widehat f$">$\widehat f$</span> are continuous and, for some <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+|f(u)|+|\widehat f(u)|\le C(1+|u|)^{-1-\delta}.
+\tag{4}
+$$">$$
+|f(u)|+|\widehat f(u)|\le C(1+|u|)^{-1-\delta}.
+\tag{4}
+$$</span>
+Then for every real <span class="math" data-tex="$x$">$x$</span>,
+<span class="math math-display" data-tex="$$
+\sum_{n\in\mathbb Z}f(n+x)
+=\sum_{k\in\mathbb Z}\widehat f(k)e^{2\pi ikx}.
+\tag{5}
+$$">$$
+\sum_{n\in\mathbb Z}f(n+x)
+=\sum_{k\in\mathbb Z}\widehat f(k)e^{2\pi ikx}.
+\tag{5}
+$$</span>
+Both series converge absolutely, uniformly for <span class="math" data-tex="$x$">$x$</span> in bounded intervals. In particular <span class="math" data-tex="$\sum_nf(n)=\sum_k\widehat f(k)$">$\sum_nf(n)=\sum_k\widehat f(k)$</span>.</p>
+<p><strong>Proof.</strong> The bound on <span class="math" data-tex="$f$">$f$</span> makes its periodization <span class="math" data-tex="$P(x)=\sum_nf(n+x)$">$P(x)=\sum_nf(n+x)$</span> continuous and one-periodic, with uniform convergence on <span class="math" data-tex="$[0,1]$">$[0,1]$</span>. Absolute integration permits interchange with its Fourier coefficient:
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\int_0^1P(x)e^{-2\pi ikx}dx
+&amp;=\sum_n\int_n^{n+1}f(u)e^{-2\pi iku}du\\
+&amp;=\widehat f(k).
+\end{aligned}
+$$">$$
+\begin{aligned}
+\int_0^1P(x)e^{-2\pi ikx}dx
+&amp;=\sum_n\int_n^{n+1}f(u)e^{-2\pi iku}du\\
+&amp;=\widehat f(k).
+\end{aligned}
+$$</span>
+The right side of (5) converges absolutely and uniformly by (4), so it defines a continuous periodic function with those same coefficients. Their difference is zero by Lemma 1.1. Periodicity extends the uniform convergence assertion to bounded intervals. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="the-gaussian-and-inversion-of-the-theta-series">The Gaussian and inversion of the theta series</h2>
+<p><strong>Lemma 2.1.</strong> For <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\widehat{\bigl(e^{-\pi a u^2}\bigr)}(\xi)
+=a^{-1/2}e^{-\pi\xi^2/a}.
+\tag{6}
+$$">$$
+\widehat{\bigl(e^{-\pi a u^2}\bigr)}(\xi)
+=a^{-1/2}e^{-\pi\xi^2/a}.
+\tag{6}
+$$</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="$g(\xi)$">$g(\xi)$</span> be the transform on the left. Differentiation under the integral and integration by parts are justified by Gaussian decay. Since <span class="math" data-tex="$f&#x27;(u)=-2\pi au f(u)$">$f&#x27;(u)=-2\pi au f(u)$</span>,
+<span class="math math-display" data-tex="$$
+g&#x27;(\xi)=\frac ia\int_{\mathbb R}f&#x27;(u)e^{-2\pi iu\xi}du
+=-\frac{2\pi\xi}{a}g(\xi).
+$$">$$
+g&#x27;(\xi)=\frac ia\int_{\mathbb R}f&#x27;(u)e^{-2\pi iu\xi}du
+=-\frac{2\pi\xi}{a}g(\xi).
+$$</span>
+Also <span class="math" data-tex="$g(0)=a^{-1/2}$">$g(0)=a^{-1/2}$</span>: substitution and <span class="math" data-tex="$\Gamma(1/2)=\sqrt\pi$">$\Gamma(1/2)=\sqrt\pi$</span> give <span class="math" data-tex="$\int_{\mathbb R}e^{-\pi u^2}du=1$">$\int_{\mathbb R}e^{-\pi u^2}du=1$</span>. Solving the differential equation proves (6). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Define, for <span class="math" data-tex="$x&gt;0$">$x&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\Theta(x)=\sum_{n\in\mathbb Z}e^{-\pi n^2x},
+\qquad \omega(x)=\frac{\Theta(x)-1}{2}
+=\sum_{n=1}^\infty e^{-\pi n^2x}.
+\tag{7}
+$$">$$
+\Theta(x)=\sum_{n\in\mathbb Z}e^{-\pi n^2x},
+\qquad \omega(x)=\frac{\Theta(x)-1}{2}
+=\sum_{n=1}^\infty e^{-\pi n^2x}.
+\tag{7}
+$$</span>
+All derivatives of these series converge uniformly on compact subsets of <span class="math" data-tex="$(0,\infty)$">$(0,\infty)$</span>.</p>
+<p><strong>Proposition 2.2 (Jacobi transformation).</strong> For every <span class="math" data-tex="$x&gt;0$">$x&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\Theta(1/x)=\sqrt x\,\Theta(x),
+\qquad
+\omega(x)=x^{-1/2}\omega(1/x)+\tfrac12(x^{-1/2}-1).
+\tag{8}
+$$">$$
+\Theta(1/x)=\sqrt x\,\Theta(x),
+\qquad
+\omega(x)=x^{-1/2}\omega(1/x)+\tfrac12(x^{-1/2}-1).
+\tag{8}
+$$</span></p>
+<p><strong>Proof.</strong> Apply Theorem 1.2 at zero to <span class="math" data-tex="$e^{-\pi xu^2}$">$e^{-\pi xu^2}$</span> and use (6). This gives <span class="math" data-tex="$\Theta(x)=x^{-1/2}\Theta(1/x)$">$\Theta(x)=x^{-1/2}\Theta(1/x)$</span>. Subtract the constant terms to obtain the second identity. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For <span class="math" data-tex="$x\ge1$">$x\ge1$</span>,
+<span class="math math-display" data-tex="$$
+0&lt;\omega(x)\le C e^{-\pi x},
+\tag{9}
+$$">$$
+0&lt;\omega(x)\le C e^{-\pi x},
+\tag{9}
+$$</span>
+because <span class="math" data-tex="$e^{-\pi n^2x}\le e^{-\pi x}e^{-\pi(n^2-1)}$">$e^{-\pi n^2x}\le e^{-\pi x}e^{-\pi(n^2-1)}$</span> and the remaining series converges. Together with (8), this describes both ends of the positive real axis.</p>
+<p><strong>Example 2.3.</strong> Direct summation gives
+<span class="math math-display" data-tex="$$
+\Theta(2)\simeq1.00373488549,\qquad
+\Theta(1/2)\simeq1.41949548808.
+$$">$$
+\Theta(2)\simeq1.00373488549,\qquad
+\Theta(1/2)\simeq1.41949548808.
+$$</span>
+Multiplying the first number by <span class="math" data-tex="$\sqrt2$">$\sqrt2$</span> gives the second. The terms decay quickly: when computing <span class="math" data-tex="$\Theta(x)$">$\Theta(x)$</span> by the terms <span class="math" data-tex="$|n|\le N$">$|n|\le N$</span>, its omitted tail is at most
+<span class="math math-display" data-tex="$$
+\frac{2e^{-\pi x(N+1)^2}}{1-e^{-\pi x(2N+3)}}.
+\tag{10}
+$$">$$
+\frac{2e^{-\pi x(N+1)^2}}{1-e^{-\pi x(2N+3)}}.
+\tag{10}
+$$</span>
+To see this, bound each successive ratio in the tail by <span class="math" data-tex="$e^{-\pi x(2N+3)}$">$e^{-\pi x(2N+3)}$</span>.</p>
+<h2 id="mellin-transformation-and-reflection-in-the-critical-strip">Mellin transformation and reflection in the critical strip</h2>
+<p><strong>Theorem 3.1 (completed continuation).</strong> The completed zeta function extends meromorphically to <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span> by
+<span class="math math-display" data-tex="$$
+\zeta_{\mathbb Q}(s)
+=-\frac1s+\frac1{s-1}
++\int_1^\infty\omega(x)
+\left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+\tag{11}
+$$">$$
+\zeta_{\mathbb Q}(s)
+=-\frac1s+\frac1{s-1}
++\int_1^\infty\omega(x)
+\left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+\tag{11}
+$$</span>
+Its only poles are simple poles at zero and one, of residues <span class="math" data-tex="$-1$">$-1$</span> and <span class="math" data-tex="$1$">$1$</span>. It satisfies <span class="math" data-tex="$\zeta_{\mathbb Q}(s)=\zeta_{\mathbb Q}(1-s)$">$\zeta_{\mathbb Q}(s)=\zeta_{\mathbb Q}(1-s)$</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, termwise integration, justified by the absolute majorant with exponent <span class="math" data-tex="$\sigma$">$\sigma$</span>, gives
+<span class="math math-display" data-tex="$$
+\int_0^\infty\omega(x)x^{s/2}\frac{dx}{x}
+=\sum_{n=1}^\infty(\pi n^2)^{-s/2}\Gamma(s/2)
+=\zeta_{\mathbb Q}(s).
+\tag{12}
+$$">$$
+\int_0^\infty\omega(x)x^{s/2}\frac{dx}{x}
+=\sum_{n=1}^\infty(\pi n^2)^{-s/2}\Gamma(s/2)
+=\zeta_{\mathbb Q}(s).
+\tag{12}
+$$</span>
+Split the integral at one. On <span class="math" data-tex="$(0,1)$">$(0,1)$</span> insert (8), and change variables <span class="math" data-tex="$x=1/y$">$x=1/y$</span> in its first term. The transformed term is <span class="math" data-tex="$\int_1^\infty\omega(y)y^{(1-s)/2}dy/y$">$\int_1^\infty\omega(y)y^{(1-s)/2}dy/y$</span>. The remaining terms integrate to
+<span class="math math-display" data-tex="$$
+\frac12\int_0^1(x^{(s-1)/2}-x^{s/2})\frac{dx}{x}
+=\frac1{s-1}-\frac1s.
+$$">$$
+\frac12\int_0^1(x^{(s-1)/2}-x^{s/2})\frac{dx}{x}
+=\frac1{s-1}-\frac1s.
+$$</span>
+This proves (11) initially on <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>. By (9), its integral is entire: on any compact set in <span class="math" data-tex="$s$">$s$</span>, the integrand and each of its derivatives are bounded by a fixed power of <span class="math" data-tex="$x$">$x$</span> and <span class="math" data-tex="$\log x$">$\log x$</span> times <span class="math" data-tex="$e^{-\pi x}$">$e^{-\pi x}$</span>. The polar part has the specified residues. Both that part and the integral are unchanged by <span class="math" data-tex="$s\mapsto1-s$">$s\mapsto1-s$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Corollary 3.2.</strong> Zeta is meromorphic on <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>, with only a simple pole at one, of residue one, and
+<span class="math math-display" data-tex="$$
+\zeta(1-s)=2(2\pi)^{-s}\cos(\pi s/2)\Gamma(s)\zeta(s).
+\tag{13}
+$$">$$
+\zeta(1-s)=2(2\pi)^{-s}\cos(\pi s/2)\Gamma(s)\zeta(s).
+\tag{13}
+$$</span>
+Moreover <span class="math" data-tex="$\zeta(0)=-1/2$">$\zeta(0)=-1/2$</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$Q(z)=1/\Gamma(z)$">$Q(z)=1/\Gamma(z)$</span>. The formula
+<span class="math" data-tex="$\zeta(s)=\pi^{s/2}Q(s/2)\zeta_{\mathbb Q}(s)$">$\zeta(s)=\pi^{s/2}Q(s/2)\zeta_{\mathbb Q}(s)$</span> agrees with the defining series on <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> and gives a meromorphic continuation everywhere. The zero <span class="math" data-tex="$Q(s/2)=s/2+O(s^2)$">$Q(s/2)=s/2+O(s^2)$</span> cancels the pole <span class="math" data-tex="$-1/s$">$-1/s$</span> at zero, giving the stated value. At one, its prefactor is <span class="math" data-tex="$\sqrt\pi/\Gamma(1/2)=1$">$\sqrt\pi/\Gamma(1/2)=1$</span>, so the pole has residue one. All other possible poles are absent.</p>
+<p>The symmetric equation gives
+<span class="math math-display" data-tex="$$
+\zeta(1-s)=\pi^{1/2-s}
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}\zeta(s).
+$$">$$
+\zeta(1-s)=\pi^{1/2-s}
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}\zeta(s).
+$$</span>
+Reflection and duplication, both proved in the preceding lesson, give
+<span class="math math-display" data-tex="$$
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}
+=\frac{\cos(\pi s/2)}\pi
+\Gamma(s/2)\Gamma((1+s)/2)
+=2^{1-s}\pi^{-1/2}\cos(\pi s/2)\Gamma(s).
+$$">$$
+\frac{\Gamma(s/2)}{\Gamma((1-s)/2)}
+=\frac{\cos(\pi s/2)}\pi
+\Gamma(s/2)\Gamma((1+s)/2)
+=2^{1-s}\pi^{-1/2}\cos(\pi s/2)\Gamma(s).
+$$</span>
+Insertion proves (13) wherever the individual factors are finite, and hence as a meromorphic identity. The continuation agrees with the one in the first lesson by the identity theorem. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.3 (zeros and the entire completion).</strong> The zeros of <span class="math" data-tex="$\zeta$">$\zeta$</span> in <span class="math" data-tex="$\sigma&lt;0$">$\sigma&lt;0$</span> are exactly <span class="math" data-tex="$-2,-4,-6,\ldots$">$-2,-4,-6,\ldots$</span>, all simple. All remaining zeros lie in <span class="math" data-tex="$0\le\sigma\le1$">$0\le\sigma\le1$</span>; these nontrivial zeros, with their multiplicities, are invariant under <span class="math" data-tex="$s\mapsto1-s$">$s\mapsto1-s$</span> and <span class="math" data-tex="$s\mapsto\overline s$">$s\mapsto\overline s$</span>. The function <span class="math" data-tex="$\xi$">$\xi$</span> in (3) is entire, satisfies
+<span class="math math-display" data-tex="$$
+\xi(1-s)=\xi(s),\qquad
+\xi(\overline s)=\overline{\xi(s)},\qquad
+\xi(0)=\xi(1)=\tfrac12,
+\tag{14}
+$$">$$
+\xi(1-s)=\xi(s),\qquad
+\xi(\overline s)=\overline{\xi(s)},\qquad
+\xi(0)=\xi(1)=\tfrac12,
+\tag{14}
+$$</span>
+and is real on the real axis. For real <span class="math" data-tex="$t$">$t$</span>, <span class="math" data-tex="$\Xi(t)$">$\Xi(t)$</span> is real and even.</p>
+<p><strong>Proof.</strong> In <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> the Euler product has no zeros, and neither does gamma. Hence <span class="math" data-tex="$\zeta_{\mathbb Q}$">$\zeta_{\mathbb Q}$</span> is nonzero there. Reflection makes it nonzero for <span class="math" data-tex="$\sigma&lt;0$">$\sigma&lt;0$</span> as well. In that left half-plane, its multiplication by <span class="math" data-tex="$\pi^{s/2}Q(s/2)$">$\pi^{s/2}Q(s/2)$</span> introduces precisely the simple zeros <span class="math" data-tex="$s=-2,-4,\ldots$">$s=-2,-4,\ldots$</span>. There are no zeros for <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, so all others lie in the stated closed strip. We are not yet asserting nonvanishing on its two boundary lines.</p>
+<p>Multiplying (11) by <span class="math" data-tex="$s(s-1)/2$">$s(s-1)/2$</span> removes both poles and gives an entire function, with endpoint values <span class="math" data-tex="$1/2$">$1/2$</span>. It satisfies reflection. Conjugation holds first for the zeta series and gamma integral, and then by continuation. Thus it holds for <span class="math" data-tex="$\xi$">$\xi$</span> too. Within the closed strip the zeros of <span class="math" data-tex="$\xi$">$\xi$</span> and of <span class="math" data-tex="$\zeta$">$\zeta$</span> agree, with multiplicity: the gamma factor is nonzero and finite except at zero, where the completed endpoint value is nonzero; one is also not a zero. Outside the strip <span class="math" data-tex="$\xi$">$\xi$</span> has no zeros. This proves the zero symmetries. On <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>, reflection identifies <span class="math" data-tex="$\xi(s)$">$\xi(s)$</span> with <span class="math" data-tex="$\xi(\overline s)$">$\xi(\overline s)$</span>, so it is real and its value is unchanged by <span class="math" data-tex="$t\mapsto-t$">$t\mapsto-t$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="a-contour-proof-and-the-values-at-integers">A contour proof and the values at integers</h2>
+<p>We now give the other proof of the functional equation from [Riemann 1859], with a specified contour and an estimate at infinity. It also provides a short route to all the integer values.</p>
+<p>Choose <span class="math" data-tex="$0&lt;\varepsilon&lt;2\pi$">$0&lt;\varepsilon&lt;2\pi$</span>. Let <span class="math" data-tex="$H_\varepsilon$">$H_\varepsilon$</span> run inward along the lower bank of the positive real axis from infinity to <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>, clockwise around <span class="math" data-tex="$|z|=\varepsilon$">$|z|=\varepsilon$</span>, and then outward along the upper bank to infinity. Use the principal <span class="math" data-tex="$\operatorname{Log}(-z)$">$\operatorname{Log}(-z)$</span> on <span class="math" data-tex="$\mathbb C\setminus[0,\infty)$">$\mathbb C\setminus[0,\infty)$</span>: its values on the lower and upper banks are <span class="math" data-tex="$\log x+i\pi$">$\log x+i\pi$</span> and <span class="math" data-tex="$\log x-i\pi$">$\log x-i\pi$</span>, respectively. Define
+<span class="math math-display" data-tex="$$
+J(s)=\int_{H_\varepsilon}
+\frac{(-z)^{s-1}}{e^z-1}\,dz.
+\tag{15}
+$$">$$
+J(s)=\int_{H_\varepsilon}
+\frac{(-z)^{s-1}}{e^z-1}\,dz.
+\tag{15}
+$$</span>
+The rays have their limiting bank values. The small circle is clockwise; this orientation fixes the sign of every residue below.</p>
+<figure><img src="figures/hankel_contour.png" alt="The slit annulus for the Hankel residue argument, with clockwise inner circle, counterclockwise outer circle and poles at plus or minus two pi i and four pi i." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>The contour in the proof of Theorem 4.1, with <span class="math" data-tex="$N=2$">$N=2$</span>, <span class="math" data-tex="$R_2=5\pi$">$R_2=5\pi$</span> and <span class="math" data-tex="$\varepsilon=2\pi/5$">$\varepsilon=2\pi/5$</span>. Coordinates are scaled by <span class="math" data-tex="$2\pi$">$2\pi$</span>. The separated banks schematically show their limiting directions: upper outward, lower inward. Together with the clockwise inner and counterclockwise outer circles they bound the slit annulus positively. The four marked nonzero poles are enclosed; zero is excluded.</em></p>
+<p><strong>Theorem 4.1 (Hankel continuation).</strong> The integral <span class="math" data-tex="$J$">$J$</span> is entire and independent of <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span> in <span class="math" data-tex="$(0,2\pi)$">$(0,2\pi)$</span>, and
+<span class="math math-display" data-tex="$$
+\zeta(s)=\frac{\Gamma(1-s)}{2\pi i}J(s)
+\tag{16}
+$$">$$
+\zeta(s)=\frac{\Gamma(1-s)}{2\pi i}J(s)
+\tag{16}
+$$</span>
+as a meromorphic identity. Enlarging this contour gives (13) without using the theta transformation.</p>
+<p><strong>Proof.</strong> For fixed <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>, the rays decay exponentially at infinity, and the circle is compact and avoids all poles. The integrals converge locally uniformly in <span class="math" data-tex="$s$">$s$</span>, including after every differentiation, so <span class="math" data-tex="$J$">$J$</span> is entire. Applying Cauchy's theorem to the slit annulus between two allowable radii proves independence of <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>; there are no poles in that annulus.</p>
+<p>For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> we may let <span class="math" data-tex="$\varepsilon\downarrow0$">$\varepsilon\downarrow0$</span>, since the small-circle contribution is <span class="math" data-tex="$O_s(\varepsilon^{\sigma-1})$">$O_s(\varepsilon^{\sigma-1})$</span>. The ray contributions, including their directions, give
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+J(s)&amp;=\left(e^{-i\pi(s-1)}-e^{i\pi(s-1)}\right)
+\int_0^\infty\frac{x^{s-1}}{e^x-1}\,dx\\
+&amp;=2i\sin(\pi s)\Gamma(s)\zeta(s).
+\end{aligned}
+\tag{17}
+$$">$$
+\begin{aligned}
+J(s)&amp;=\left(e^{-i\pi(s-1)}-e^{i\pi(s-1)}\right)
+\int_0^\infty\frac{x^{s-1}}{e^x-1}\,dx\\
+&amp;=2i\sin(\pi s)\Gamma(s)\zeta(s).
+\end{aligned}
+\tag{17}
+$$</span>
+The last integral identity follows by expanding <span class="math" data-tex="$(e^x-1)^{-1}=\sum_{n\ge1}e^{-nx}$">$(e^x-1)^{-1}=\sum_{n\ge1}e^{-nx}$</span> and absolutely integrating, with majorant <span class="math" data-tex="$\Gamma(\sigma)\zeta(\sigma)$">$\Gamma(\sigma)\zeta(\sigma)$</span>. Reflection for gamma turns (17) into (16).</p>
+<p>This also establishes continuation directly. The factor <span class="math" data-tex="$\Gamma(1-s)$">$\Gamma(1-s)$</span> has poles only at positive integers. At an integer <span class="math" data-tex="$n$">$n$</span>, the two rays in (15) cancel, and the circle gives
+<span class="math math-display" data-tex="$$
+J(n)=-2\pi i\mathop{\rm Res}_{z=0}
+\frac{(-z)^{n-1}}{e^z-1}.
+\tag{18}
+$$">$$
+J(n)=-2\pi i\mathop{\rm Res}_{z=0}
+\frac{(-z)^{n-1}}{e^z-1}.
+\tag{18}
+$$</span>
+For <span class="math" data-tex="$n\ge2$">$n\ge2$</span> the integrand is holomorphic at zero, so <span class="math" data-tex="$J(n)=0$">$J(n)=0$</span> and the pole of gamma is removable in (16). At <span class="math" data-tex="$n=1$">$n=1$</span>, <span class="math" data-tex="$J(1)=-2\pi i$">$J(1)=-2\pi i$</span>, while <span class="math" data-tex="$\Gamma(1-s)=-1/(s-1)+O(1)$">$\Gamma(1-s)=-1/(s-1)+O(1)$</span>, producing the simple pole with residue one. There are no other poles. This reasoning is independent of (11).</p>
+<p>To obtain the functional equation independently, suppose <span class="math" data-tex="$\sigma&lt;0$">$\sigma&lt;0$</span> and set <span class="math" data-tex="$R_N=2\pi(N+1/2)$">$R_N=2\pi(N+1/2)$</span>. Close the truncated Hankel contour by the outer circle <span class="math" data-tex="$|z|=R_N$">$|z|=R_N$</span>, traversed counterclockwise from the upper to the lower bank. It is the positively oriented boundary of a slit annulus. The enclosed poles are <span class="math" data-tex="$z=2\pi ik$">$z=2\pi ik$</span>, <span class="math" data-tex="$0&lt;|k|\le N$">$0&lt;|k|\le N$</span>, all simple with residues <span class="math" data-tex="$(-2\pi ik)^{s-1}$">$(-2\pi ik)^{s-1}$</span>.</p>
+<p>The outer-circle integral tends to zero. Here are the bounds that justify that step. The distance of this circle from each <span class="math" data-tex="$2\pi ik$">$2\pi ik$</span> is at least <span class="math" data-tex="$\pi$">$\pi$</span>, by the reverse triangle inequality. On <span class="math" data-tex="$\Re z\le-1$">$\Re z\le-1$</span>, <span class="math" data-tex="$|e^z-1|\ge1-e^{-1}$">$|e^z-1|\ge1-e^{-1}$</span>; on <span class="math" data-tex="$\Re z\ge1$">$\Re z\ge1$</span>, <span class="math" data-tex="$|e^z-1|\ge(1-e^{-1})e^{\Re z}$">$|e^z-1|\ge(1-e^{-1})e^{\Re z}$</span>. In the strip <span class="math" data-tex="$|\Re z|\le1$">$|\Re z|\le1$</span>, periodicity in <span class="math" data-tex="$\Im z$">$\Im z$</span> and the separation from the zeros give a fixed positive lower bound for <span class="math" data-tex="$|e^z-1|$">$|e^z-1|$</span>: reduce the imaginary part modulo <span class="math" data-tex="$2\pi$">$2\pi$</span> to a compact rectangle avoiding the zeros. Consequently its reciprocal is bounded uniformly on all the circles. Also
+<span class="math math-display" data-tex="$$
+|(-z)^{s-1}|\le e^{\pi|t|}R_N^{\sigma-1}.
+$$">$$
+|(-z)^{s-1}|\le e^{\pi|t|}R_N^{\sigma-1}.
+$$</span>
+Multiplication by the circle length bounds its integral by <span class="math" data-tex="$O_s(R_N^\sigma)$">$O_s(R_N^\sigma)$</span>, which tends to zero. The truncated ray tails tend to zero exponentially.</p>
+<p>The residue theorem therefore gives an absolutely convergent series
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+\frac{J(s)}{2\pi i}
+&amp;=\sum_{k\ne0}(-2\pi ik)^{s-1}\\
+&amp;=2(2\pi)^{s-1}\sin(\pi s/2)\zeta(1-s).
+\end{aligned}
+\tag{19}
+$$">$$
+\begin{aligned}
+\frac{J(s)}{2\pi i}
+&amp;=\sum_{k\ne0}(-2\pi ik)^{s-1}\\
+&amp;=2(2\pi)^{s-1}\sin(\pi s/2)\zeta(1-s).
+\end{aligned}
+\tag{19}
+$$</span>
+Indeed, the two arguments of <span class="math" data-tex="$-2\pi ik$">$-2\pi ik$</span> are <span class="math" data-tex="$-\pi/2$">$-\pi/2$</span> for <span class="math" data-tex="$k&gt;0$">$k&gt;0$</span> and <span class="math" data-tex="$\pi/2$">$\pi/2$</span> for <span class="math" data-tex="$k&lt;0$">$k&lt;0$</span>. Their sum of phase factors is <span class="math" data-tex="$2\cos(\pi(s-1)/2)=2\sin(\pi s/2)$">$2\cos(\pi(s-1)/2)=2\sin(\pi s/2)$</span>, and <span class="math" data-tex="$\sum_{k\ge1}k^{\sigma-1}$">$\sum_{k\ge1}k^{\sigma-1}$</span> converges. Equations (16) and (19) give
+<span class="math math-display" data-tex="$$
+\zeta(s)=2(2\pi)^{s-1}\Gamma(1-s)\sin(\pi s/2)\zeta(1-s).
+\tag{20}
+$$">$$
+\zeta(s)=2(2\pi)^{s-1}\Gamma(1-s)\sin(\pi s/2)\zeta(1-s).
+\tag{20}
+$$</span>
+Replacing <span class="math" data-tex="$s$">$s$</span> by <span class="math" data-tex="$1-s$">$1-s$</span> gives (13), first in a half-plane and then meromorphically everywhere. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Define the Bernoulli numbers by the convergent Taylor series
+<span class="math math-display" data-tex="$$
+\frac z{e^z-1}=\sum_{k=0}^\infty B_k\frac{z^k}{k!}
+\quad(|z|&lt;2\pi).
+\tag{21}
+$$">$$
+\frac z{e^z-1}=\sum_{k=0}^\infty B_k\frac{z^k}{k!}
+\quad(|z|&lt;2\pi).
+\tag{21}
+$$</span></p>
+<p>The singularity at zero on the left is removable. Its first coefficients are <span class="math" data-tex="$B_0=1$">$B_0=1$</span>, <span class="math" data-tex="$B_1=-1/2$">$B_1=-1/2$</span>, <span class="math" data-tex="$B_2=1/6$">$B_2=1/6$</span>, <span class="math" data-tex="$B_3=0$">$B_3=0$</span>, <span class="math" data-tex="$B_4=-1/30$">$B_4=-1/30$</span>. They follow by multiplying (21) by <span class="math" data-tex="$(e^z-1)/z$">$(e^z-1)/z$</span> and comparing coefficients. Since <span class="math" data-tex="$z/(e^z-1)+z/2$">$z/(e^z-1)+z/2$</span> is even, <span class="math" data-tex="$B_{2k+1}=0$">$B_{2k+1}=0$</span> for <span class="math" data-tex="$k\ge1$">$k\ge1$</span>. The convention <span class="math" data-tex="$B_1=-1/2$">$B_1=-1/2$</span> agrees with the first lesson.</p>
+<p><strong>Theorem 4.2 (integer values).</strong> For every integer <span class="math" data-tex="$n\ge0$">$n\ge0$</span> and every integer <span class="math" data-tex="$k\ge1$">$k\ge1$</span>,
+<span class="math math-display" data-tex="$$
+\zeta(-n)=\frac{(-1)^n B_{n+1}}{n+1},
+\qquad
+\zeta(2k)=\frac{(-1)^{k+1}(2\pi)^{2k}B_{2k}}{2(2k)!}.
+\tag{22}
+$$">$$
+\zeta(-n)=\frac{(-1)^n B_{n+1}}{n+1},
+\qquad
+\zeta(2k)=\frac{(-1)^{k+1}(2\pi)^{2k}B_{2k}}{2(2k)!}.
+\tag{22}
+$$</span>
+Also
+<span class="math math-display" data-tex="$$
+\zeta&#x27;(0)=-\tfrac12\log(2\pi),
+\qquad \frac{\zeta&#x27;(0)}{\zeta(0)}=\log(2\pi).
+\tag{23}
+$$">$$
+\zeta&#x27;(0)=-\tfrac12\log(2\pi),
+\qquad \frac{\zeta&#x27;(0)}{\zeta(0)}=\log(2\pi).
+\tag{23}
+$$</span></p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="$s=-n$">$s=-n$</span>, the integrand in (18) is
+<span class="math math-display" data-tex="$$
+(-1)^{n+1}z^{-n-1}\frac1{e^z-1}.
+$$">$$
+(-1)^{n+1}z^{-n-1}\frac1{e^z-1}.
+$$</span>
+Its residue is <span class="math" data-tex="$(-1)^{n+1}B_{n+1}/(n+1)!$">$(-1)^{n+1}B_{n+1}/(n+1)!$</span> by (21). Multiply (18) by <span class="math" data-tex="$\Gamma(1+n)/(2\pi i)=n!/(2\pi i)$">$\Gamma(1+n)/(2\pi i)=n!/(2\pi i)$</span> to obtain the negative-value formula, including zero. Set <span class="math" data-tex="$s=2k$">$s=2k$</span> in (13), use <span class="math" data-tex="$\Gamma(2k)=(2k-1)!$">$\Gamma(2k)=(2k-1)!$</span> and <span class="math" data-tex="$\cos\pi k=(-1)^k$">$\cos\pi k=(-1)^k$</span>, and insert <span class="math" data-tex="$\zeta(1-2k)=-B_{2k}/(2k)$">$\zeta(1-2k)=-B_{2k}/(2k)$</span>. Solving gives the positive-value formula.</p>
+<p>For the derivative, put <span class="math" data-tex="$s=w$">$s=w$</span> in (20) and let <span class="math" data-tex="$w\to0$">$w\to0$</span>. Proposition 5.1 in the gamma lesson gives
+<span class="math math-display" data-tex="$$
+\Gamma(1-w)=1+\gamma w+O(w^2),
+\qquad \zeta(1-w)=-\frac1w+\gamma+O(w).
+$$">$$
+\Gamma(1-w)=1+\gamma w+O(w^2),
+\qquad \zeta(1-w)=-\frac1w+\gamma+O(w).
+$$</span>
+Their product is <span class="math" data-tex="$-1/w+O(w)$">$-1/w+O(w)$</span>: the two constant contributions cancel. Moreover
+<span class="math math-display" data-tex="$$
+2(2\pi)^{w-1}\sin(\pi w/2)
+=\frac w2\bigl(1+w\log(2\pi)+O(w^2)\bigr).
+$$">$$
+2(2\pi)^{w-1}\sin(\pi w/2)
+=\frac w2\bigl(1+w\log(2\pi)+O(w^2)\bigr).
+$$</span>
+Thus <span class="math" data-tex="$\zeta(w)=-1/2-w\log(2\pi)/2+O(w^2)$">$\zeta(w)=-1/2-w\log(2\pi)/2+O(w^2)$</span>, proving (23). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 4.3.</strong> The coefficients just computed give
+<span class="math math-display" data-tex="$$
+\zeta(2)=\frac{\pi^2}6,\quad
+\zeta(4)=\frac{\pi^4}{90},\quad
+\zeta(-1)=-\frac1{12},\quad
+\zeta(-3)=\frac1{120}.
+$$">$$
+\zeta(2)=\frac{\pi^2}6,\quad
+\zeta(4)=\frac{\pi^4}{90},\quad
+\zeta(-1)=-\frac1{12},\quad
+\zeta(-3)=\frac1{120}.
+$$</span>
+The negative even values vanish because the corresponding odd Bernoulli numbers vanish. The theorem says nothing comparable about a closed evaluation of <span class="math" data-tex="$\zeta(3)$">$\zeta(3)$</span>.</p>
+<p>An integer is critical for the two gamma factors in the symmetric equation if neither <span class="math" data-tex="$\Gamma(s/2)$">$\Gamma(s/2)$</span> nor <span class="math" data-tex="$\Gamma((1-s)/2)$">$\Gamma((1-s)/2)$</span> has a pole there. The poles proved in the gamma lesson show directly that these integers are exactly <span class="math" data-tex="$2k$">$2k$</span> and <span class="math" data-tex="$1-2k$">$1-2k$</span> for <span class="math" data-tex="$k\ge1$">$k\ge1$</span>. Thus the paired special values in (22) occur at precisely these integers.</p>
+<h2 id="a-shifted-sum-hurwitz-zeta">A shifted sum: Hurwitz zeta</h2>
+<p>The same separation of a singular small-variable expansion from an exponentially decaying tail works without the theta symmetry.</p>
+<p><strong>Proposition 5.1.</strong> For <span class="math" data-tex="$0&lt;a\le1$">$0&lt;a\le1$</span>, the series
+<span class="math math-display" data-tex="$$
+\zeta(s,a)=\sum_{n=0}^\infty(n+a)^{-s}\quad(\sigma&gt;1)
+\tag{24}
+$$">$$
+\zeta(s,a)=\sum_{n=0}^\infty(n+a)^{-s}\quad(\sigma&gt;1)
+\tag{24}
+$$</span>
+has a meromorphic continuation with only a simple pole at one, of residue one, and
+<span class="math math-display" data-tex="$$
+\zeta(0,a)=\tfrac12-a.
+\tag{25}
+$$">$$
+\zeta(0,a)=\tfrac12-a.
+\tag{25}
+$$</span></p>
+<p><strong>Proof.</strong> Absolute integration of the geometric series gives
+<span class="math math-display" data-tex="$$
+\Gamma(s)\zeta(s,a)=\int_0^\infty t^{s-1}K_a(t)dt,
+\qquad K_a(t)=\frac{e^{-at}}{1-e^{-t}}.
+$$">$$
+\Gamma(s)\zeta(s,a)=\int_0^\infty t^{s-1}K_a(t)dt,
+\qquad K_a(t)=\frac{e^{-at}}{1-e^{-t}}.
+$$</span>
+At infinity <span class="math" data-tex="$K_a$">$K_a$</span> decays exponentially. At zero it has the convergent Laurent expansion
+<span class="math math-display" data-tex="$$
+K_a(t)=\sum_{j=0}^{M-1}c_jt^{j-1}+O_a(t^{M-1}),
+\qquad c_0=1,\quad c_1=\tfrac12-a,
+\tag{26}
+$$">$$
+K_a(t)=\sum_{j=0}^{M-1}c_jt^{j-1}+O_a(t^{M-1}),
+\qquad c_0=1,\quad c_1=\tfrac12-a,
+\tag{26}
+$$</span>
+for every integer <span class="math" data-tex="$M\ge1$">$M\ge1$</span>. The coefficients exist because <span class="math" data-tex="$tK_a(t)$">$tK_a(t)$</span> is analytic near zero. On <span class="math" data-tex="$\sigma&gt;1-M$">$\sigma&gt;1-M$</span>, define
+<span class="math math-display" data-tex="$$
+\begin{aligned}
+F_M(s)={}&amp;\int_1^\infty t^{s-1}K_a(t)dt\\
+&amp;+\int_0^1 t^{s-1}
+ \left(K_a(t)-\sum_{j=0}^{M-1}c_jt^{j-1}\right)dt
++\sum_{j=0}^{M-1}\frac{c_j}{s+j-1}.
+\end{aligned}
+\tag{27}
+$$">$$
+\begin{aligned}
+F_M(s)={}&amp;\int_1^\infty t^{s-1}K_a(t)dt\\
+&amp;+\int_0^1 t^{s-1}
+ \left(K_a(t)-\sum_{j=0}^{M-1}c_jt^{j-1}\right)dt
++\sum_{j=0}^{M-1}\frac{c_j}{s+j-1}.
+\end{aligned}
+\tag{27}
+$$</span>
+The remainder integral is locally uniformly convergent there, as are its <span class="math" data-tex="$s$">$s$</span> derivatives. Thus <span class="math" data-tex="$F_M$">$F_M$</span> is meromorphic in that half-plane and agrees with <span class="math" data-tex="$\Gamma(s)\zeta(s,a)$">$\Gamma(s)\zeta(s,a)$</span> for <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>. Multiplication by the entire function <span class="math" data-tex="$Q(s)=1/\Gamma(s)$">$Q(s)=1/\Gamma(s)$</span> removes the possible simple poles at <span class="math" data-tex="$s=0,-1,-2,\ldots$">$s=0,-1,-2,\ldots$</span>, because <span class="math" data-tex="$Q$">$Q$</span> has simple zeros at precisely those points. The remaining pole at one has residue <span class="math" data-tex="$c_0Q(1)=1$">$c_0Q(1)=1$</span>. As <span class="math" data-tex="$M$">$M$</span> varies, these continuations agree on overlaps by the identity theorem, and their domains cover the plane.</p>
+<p>Take <span class="math" data-tex="$M\ge2$">$M\ge2$</span> near zero. There <span class="math" data-tex="$F_M(s)=c_1/s+O(1)$">$F_M(s)=c_1/s+O(1)$</span> and <span class="math" data-tex="$Q(s)=s+O(s^2)$">$Q(s)=s+O(s^2)$</span>, so their product at zero is <span class="math" data-tex="$c_1=1/2-a$">$c_1=1/2-a$</span>. This proves (25). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>For example <span class="math" data-tex="$\zeta(0,1/3)=1/6$">$\zeta(0,1/3)=1/6$</span> and <span class="math" data-tex="$\zeta(0,1)= -1/2$">$\zeta(0,1)= -1/2$</span>. At <span class="math" data-tex="$a=1/2$">$a=1/2$</span>, separating the odd positive integers gives
+<span class="math math-display" data-tex="$$
+\zeta(s,1/2)=(2^s-1)\zeta(s),
+$$">$$
+\zeta(s,1/2)=(2^s-1)\zeta(s),
+$$</span>
+first for <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span> and then by continuation; at zero both sides vanish, agreeing with (25).</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Derive (13) from the symmetric functional equation using gamma reflection and duplication.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove that <span class="math" data-tex="$\Xi(t)$">$\Xi(t)$</span> is real and even for real <span class="math" data-tex="$t$">$t$</span>, and show
+<span class="math math-display" data-tex="$$
+\zeta(1/2+it)=e^{-2i\vartheta(t)}\zeta(1/2-it),
+\tag{28}
+$$">$$
+\zeta(1/2+it)=e^{-2i\vartheta(t)}\zeta(1/2-it),
+\tag{28}
+$$</span>
+where <span class="math" data-tex="$\vartheta$">$\vartheta$</span> is the continuous phase defined in the gamma lesson.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute <span class="math" data-tex="$\zeta&#x27;(0)$">$\zeta&#x27;(0)$</span> from the functional equation and the Laurent expansion (1). Explain the cancellation involving Euler's constant.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute <span class="math" data-tex="$\zeta(-1)$">$\zeta(-1)$</span> and <span class="math" data-tex="$\zeta(-3)$">$\zeta(-3)$</span> both from Bernoulli numbers and from <span class="math" data-tex="$\zeta(2)$">$\zeta(2)$</span> and <span class="math" data-tex="$\zeta(4)$">$\zeta(4)$</span> in (13).</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Give the Hankel proof of continuation and the functional equation. Specify the branch and orientation, justify cancellation of the gamma poles, and prove the outer-contour integral tends to zero.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Continue <span class="math" data-tex="$\zeta(s,a)$">$\zeta(s,a)$</span> for <span class="math" data-tex="$0&lt;a\le1$">$0&lt;a\le1$</span> and evaluate it at zero by subtracting its small-variable kernel expansion.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> Write <span class="math" data-tex="$\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)$">$\pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)$</span>. Reflection at <span class="math" data-tex="$(1-s)/2$">$(1-s)/2$</span> gives
+<span class="math math-display" data-tex="$$
+\frac1{\Gamma((1-s)/2)}
+=\frac{\cos(\pi s/2)}\pi\Gamma((1+s)/2).
+$$">$$
+\frac1{\Gamma((1-s)/2)}
+=\frac{\cos(\pi s/2)}\pi\Gamma((1+s)/2).
+$$</span>
+Duplication at <span class="math" data-tex="$s/2$">$s/2$</span> gives <span class="math" data-tex="$\Gamma(s/2)\Gamma((1+s)/2)=2^{1-s}\sqrt\pi\Gamma(s)$">$\Gamma(s/2)\Gamma((1+s)/2)=2^{1-s}\sqrt\pi\Gamma(s)$</span>. Combining the powers of <span class="math" data-tex="$\pi$">$\pi$</span> yields <span class="math" data-tex="$2^{1-s}\pi^{-s}=2(2\pi)^{-s}$">$2^{1-s}\pi^{-s}=2(2\pi)^{-s}$</span>, proving (13). These manipulations first hold away from poles and then extend meromorphically.</p>
+<p><strong>Solution 2.</strong> For <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>, <span class="math" data-tex="$1-s=\overline s$">$1-s=\overline s$</span>. Equations (14) give <span class="math" data-tex="$\xi(s)=\xi(\overline s)=\overline{\xi(s)}$">$\xi(s)=\xi(\overline s)=\overline{\xi(s)}$</span>, proving reality. Replacing <span class="math" data-tex="$t$">$t$</span> by <span class="math" data-tex="$-t$">$-t$</span> gives the same value, proving evenness. Let <span class="math" data-tex="$A(s)=\pi^{-s/2}\Gamma(s/2)$">$A(s)=\pi^{-s/2}\Gamma(s/2)$</span>. It is nonzero and finite at these points, and <span class="math" data-tex="$A(\overline s)=\overline{A(s)}$">$A(\overline s)=\overline{A(s)}$</span>. Completed reflection gives
+<span class="math math-display" data-tex="$$
+\zeta(s)=\frac{\overline{A(s)}}{A(s)}\zeta(\overline s).
+$$">$$
+\zeta(s)=\frac{\overline{A(s)}}{A(s)}\zeta(\overline s).
+$$</span>
+The continuous logarithm <span class="math" data-tex="$L$">$L$</span> in the gamma lesson gives
+<span class="math" data-tex="$A(s)=\exp(L(1/4+it/2)-(s/2)\log\pi)$">$A(s)=\exp(L(1/4+it/2)-(s/2)\log\pi)$</span>. The imaginary part of <span class="math" data-tex="$L(1/4+it/2)-(s/2)\log\pi$">$L(1/4+it/2)-(s/2)\log\pi$</span> is exactly <span class="math" data-tex="$\vartheta(t)$">$\vartheta(t)$</span>. Therefore <span class="math" data-tex="$\overline{A(s)}/A(s)=e^{-2i\vartheta(t)}$">$\overline{A(s)}/A(s)=e^{-2i\vartheta(t)}$</span>, proving (28) even at zeros, since no division by zeta was used.</p>
+<p><strong>Solution 3.</strong> Equation (20) gives a product with a factor vanishing to first order and a factor with a simple pole. Write
+<span class="math math-display" data-tex="$$
+\Gamma(1-w)\zeta(1-w)
+=(1+\gamma w+O(w^2))(-1/w+\gamma+O(w))
+=-1/w+O(w).
+$$">$$
+\Gamma(1-w)\zeta(1-w)
+=(1+\gamma w+O(w^2))(-1/w+\gamma+O(w))
+=-1/w+O(w).
+$$</span>
+The <span class="math" data-tex="$+\gamma$">$+\gamma$</span> and <span class="math" data-tex="$-\gamma$">$-\gamma$</span> contributions cancel. The remaining factor is
+<span class="math" data-tex="$w/2+w^2\log(2\pi)/2+O(w^3)$">$w/2+w^2\log(2\pi)/2+O(w^3)$</span>. Multiplication gives <span class="math" data-tex="$\zeta(w)=-1/2-w\log(2\pi)/2+O(w^2)$">$\zeta(w)=-1/2-w\log(2\pi)/2+O(w^2)$</span>, hence <span class="math" data-tex="$\zeta&#x27;(0)=-\log(2\pi)/2$">$\zeta&#x27;(0)=-\log(2\pi)/2$</span>. Dividing by <span class="math" data-tex="$\zeta(0)=-1/2$">$\zeta(0)=-1/2$</span> gives <span class="math" data-tex="$\log(2\pi)$">$\log(2\pi)$</span>.</p>
+<p><strong>Solution 4.</strong> Formula (22) gives <span class="math" data-tex="$\zeta(-1)=-B_2/2=-1/12$">$\zeta(-1)=-B_2/2=-1/12$</span> and <span class="math" data-tex="$\zeta(-3)=-B_4/4=1/120$">$\zeta(-3)=-B_4/4=1/120$</span>. Independently, (13) at <span class="math" data-tex="$s=2$">$s=2$</span> gives
+<span class="math math-display" data-tex="$$
+\zeta(-1)=-\frac{2}{(2\pi)^2}\Gamma(2)\zeta(2)
+=-\frac{2}{4\pi^2}\frac{\pi^2}6=-\frac1{12}.
+$$">$$
+\zeta(-1)=-\frac{2}{(2\pi)^2}\Gamma(2)\zeta(2)
+=-\frac{2}{4\pi^2}\frac{\pi^2}6=-\frac1{12}.
+$$</span>
+At <span class="math" data-tex="$s=4$">$s=4$</span> it gives
+<span class="math math-display" data-tex="$$
+\zeta(-3)=\frac{2}{(2\pi)^4}\Gamma(4)\zeta(4)
+=\frac{12}{16\pi^4}\frac{\pi^4}{90}=\frac1{120}.
+$$">$$
+\zeta(-3)=\frac{2}{(2\pi)^4}\Gamma(4)\zeta(4)
+=\frac{12}{16\pi^4}\frac{\pi^4}{90}=\frac1{120}.
+$$</span>
+Both calculations include the cosine sign and the factorial <span class="math" data-tex="$\Gamma(4)=6$">$\Gamma(4)=6$</span>.</p>
+<p><strong>Solution 5.</strong> Take the clockwise contour <span class="math" data-tex="$H_\varepsilon$">$H_\varepsilon$</span> and principal <span class="math" data-tex="$\operatorname{Log}(-z)$">$\operatorname{Log}(-z)$</span> specified before (15). Exponential decay on its two rays and compactness of its circle make <span class="math" data-tex="$J(s)$">$J(s)$</span> entire; Cauchy's theorem in a slit annulus makes it independent of <span class="math" data-tex="$\varepsilon&lt;2\pi$">$\varepsilon&lt;2\pi$</span>. For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, shrinking the circle gives
+<span class="math math-display" data-tex="$$
+J(s)=2i\sin(\pi s)\int_0^\infty\frac{x^{s-1}}{e^x-1}dx
+=2i\sin(\pi s)\Gamma(s)\zeta(s).
+$$">$$
+J(s)=2i\sin(\pi s)\int_0^\infty\frac{x^{s-1}}{e^x-1}dx
+=2i\sin(\pi s)\Gamma(s)\zeta(s).
+$$</span>
+Gamma reflection gives (16). At each positive integer <span class="math" data-tex="$n\ge2$">$n\ge2$</span> the ray values agree and cancel. The remaining clockwise circle integrates a function holomorphic at zero, so <span class="math" data-tex="$J(n)=0$">$J(n)=0$</span> and the gamma pole cancels. At one its residue is one, so <span class="math" data-tex="$J(1)=-2\pi i$">$J(1)=-2\pi i$</span>, and the residue in (16) is one.</p>
+<p>For <span class="math" data-tex="$\sigma&lt;0$">$\sigma&lt;0$</span>, close the truncated contour by the counterclockwise circle of radius <span class="math" data-tex="$2\pi(N+1/2)$">$2\pi(N+1/2)$</span>. The full boundary is positively oriented around the poles <span class="math" data-tex="$2\pi ik$">$2\pi ik$</span> with <span class="math" data-tex="$0&lt;|k|\le N$">$0&lt;|k|\le N$</span>. The reciprocal of <span class="math" data-tex="$e^z-1$">$e^z-1$</span> is uniformly bounded on these circles: outside <span class="math" data-tex="$|\Re z|\le1$">$|\Re z|\le1$</span> use <span class="math" data-tex="$1-e^{-1}$">$1-e^{-1}$</span> and <span class="math" data-tex="$(1-e^{-1})e^{\Re z}$">$(1-e^{-1})e^{\Re z}$</span>, while inside that strip reduce modulo <span class="math" data-tex="$2\pi i$">$2\pi i$</span> and use the distance at least <span class="math" data-tex="$\pi$">$\pi$</span> from every zero. The factor <span class="math" data-tex="$(-z)^{s-1}$">$(-z)^{s-1}$</span> has modulus at most <span class="math" data-tex="$e^{\pi|t|}R^{\sigma-1}$">$e^{\pi|t|}R^{\sigma-1}$</span>, so the outer integral is <span class="math" data-tex="$O_s(R^\sigma)\to0$">$O_s(R^\sigma)\to0$</span>. Thus
+<span class="math math-display" data-tex="$$
+\frac{J(s)}{2\pi i}
+=\sum_{k\ne0}(-2\pi ik)^{s-1}
+=2(2\pi)^{s-1}\sin(\pi s/2)\zeta(1-s),
+$$">$$
+\frac{J(s)}{2\pi i}
+=\sum_{k\ne0}(-2\pi ik)^{s-1}
+=2(2\pi)^{s-1}\sin(\pi s/2)\zeta(1-s),
+$$</span>
+with an absolutely convergent sum because <span class="math" data-tex="$\sigma-1&lt;-1$">$\sigma-1&lt;-1$</span>. Multiplication by <span class="math" data-tex="$\Gamma(1-s)$">$\Gamma(1-s)$</span> proves (20), and continuation followed by <span class="math" data-tex="$s\mapsto1-s$">$s\mapsto1-s$</span> proves (13). This establishes the entire second route with its limits and signs.</p>
+<p><strong>Solution 6.</strong> For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, expand <span class="math" data-tex="$e^{-at}/(1-e^{-t})=\sum_{n\ge0}e^{-(n+a)t}$">$e^{-at}/(1-e^{-t})=\sum_{n\ge0}e^{-(n+a)t}$</span> and integrate absolutely to obtain <span class="math" data-tex="$\Gamma(s)\zeta(s,a)$">$\Gamma(s)\zeta(s,a)$</span>. At zero,
+<span class="math math-display" data-tex="$$
+K_a(t)=t^{-1}+(1/2-a)+O_a(t),
+$$">$$
+K_a(t)=t^{-1}+(1/2-a)+O_a(t),
+$$</span>
+and its Laurent series can be subtracted to any order, since <span class="math" data-tex="$tK_a$">$tK_a$</span> is analytic near zero. After subtracting <span class="math" data-tex="$\sum_{j=0}^{M-1}c_jt^{j-1}$">$\sum_{j=0}^{M-1}c_jt^{j-1}$</span> on <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, the remainder integral converges for <span class="math" data-tex="$\sigma&gt;1-M$">$\sigma&gt;1-M$</span>; adding <span class="math" data-tex="$\sum_jc_j/(s+j-1)$">$\sum_jc_j/(s+j-1)$</span> restores the original expression. This is precisely (27), and its derivatives converge locally uniformly away from the indicated rational poles. Multiplying by <span class="math" data-tex="$Q(s)$">$Q(s)$</span> cancels every pole at <span class="math" data-tex="$s\le0$">$s\le0$</span> in this list; at one <span class="math" data-tex="$Q(1)=1$">$Q(1)=1$</span> gives residue one. The compatible half-planes for arbitrary <span class="math" data-tex="$M$">$M$</span> cover <span class="math" data-tex="$\mathbb C$">$\mathbb C$</span>. Near zero, <span class="math" data-tex="$F_M(s)=(1/2-a)/s+O(1)$">$F_M(s)=(1/2-a)/s+O(1)$</span> and <span class="math" data-tex="$Q(s)=s+O(s^2)$">$Q(s)=s+O(s^2)$</span>, so <span class="math" data-tex="$\zeta(0,a)=1/2-a$">$\zeta(0,a)=1/2-a$</span>.</p>
+<h2 id="what-this-lesson-assumes">What this lesson assumes</h2>
+<p>The internal preceding lessons supply the Euler product, the Laurent constant of zeta, and all gamma identities used here. Basic complex integration comes from Complex Analysis. Poisson summation, both functional-equation arguments and the special-value formulas are proved in this lesson. Nonvanishing on the boundary of the critical strip, the zero count and the Hadamard product belong to later lessons.</p>
+<h2 id="freely-readable-sources">Freely readable sources</h2>
+<ul>
+<li>B. Riemann, <a href="https://www.claymath.org/wp-content/uploads/2023/04/Wilkins-transcription.pdf"><em>Ueber die Anzahl der Primzahlen unter einer gegebenen Grösse</em></a> (1859), freely readable D. R. Wilkins transcription, December 1998, 10 pages. Transcription pages 2–4: contour and theta arguments.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-03.html">← The Gamma function and Stirling&#x27;s formula</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-05.html">Entire functions of order one and the Hadamard product of ξ →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

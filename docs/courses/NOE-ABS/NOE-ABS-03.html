@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orders and the discriminant theorem · The abstract theory of ideals</title>
+<meta name="description" content="A lesson of the course The abstract theory of ideals. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-ABS/NOE-ABS-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The abstract theory of ideals</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 6</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="orders-and-the-discriminant-theorem">Orders and the discriminant theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A prime can divide the discriminant for two different reasons: the field extension can ramify, or an order can lose information before reduction. The trace pairing detects both. We will prove the criterion for arbitrary orders, over any Dedekind base, and keep inseparable residue fields in view.</p>
+<p>We assume the ideal theory of <a href="NOE-ABS-01.html">Noether's axioms for Dedekind domains</a>, elementary traces of linear maps, and the characterization of a finite étale algebra over a field as a finite product of finite separable extensions [Milne FT, Proposition 8.6 and Corollary 8.7; Stacks, Tag 00U3]. Basic references are [Noether], [Milne] and [Stacks].</p>
+<h2 id="1-the-trace-measures-multiplication">1. The trace measures multiplication</h2>
+<p>For a finite-dimensional commutative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(E\)">\(E\)</span>, multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> is a linear map <span class="math" data-tex="\(m_a:E\to E\)">\(m_a:E\to E\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_{E/k}(a)=\operatorname{trace}(m_a),\qquad
+t_E(a,b)=\operatorname{Tr}_{E/k}(ab).
+\]">\[
+\operatorname{Tr}_{E/k}(a)=\operatorname{trace}(m_a),\qquad
+t_E(a,b)=\operatorname{Tr}_{E/k}(ab).
+\]</span>
+<p>The regular representation, not a reduced trace from a noncommutative algebra, is meant here.</p>
+<p><strong>Lemma 1.1.</strong> Every nilpotent element of <span class="math" data-tex="\(E\)">\(E\)</span> is in the radical of <span class="math" data-tex="\(t_E\)">\(t_E\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(n^r=0\)">\(n^r=0\)</span>, then <span class="math" data-tex="\((na)^r=0\)">\((na)^r=0\)</span> for every <span class="math" data-tex="\(a\)">\(a\)</span>, by commutativity. Multiplication by <span class="math" data-tex="\(na\)">\(na\)</span> is nilpotent. Its characteristic polynomial is a power of <span class="math" data-tex="\(T\)">\(T\)</span>, so its trace is zero. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2.</strong> For a finite field extension <span class="math" data-tex="\(F/k\)">\(F/k\)</span>, its trace pairing is nondegenerate if and only if <span class="math" data-tex="\(F/k\)">\(F/k\)</span> is separable.</p>
+<p><strong>Proof in the separable case.</strong> By the primitive element theorem write <span class="math" data-tex="\(F=k(\theta)\)">\(F=k(\theta)\)</span>, with distinct conjugates <span class="math" data-tex="\(\theta_1,\ldots,\theta_n\)">\(\theta_1,\ldots,\theta_n\)</span> in a splitting field. For the power basis, the trace matrix is <span class="math" data-tex="\(V^{\mathsf T}V\)">\(V^{\mathsf T}V\)</span>, where <span class="math" data-tex="\(V_{ij}=\theta_i^{j-1}\)">\(V_{ij}=\theta_i^{j-1}\)</span>. Indeed, after scalar extension multiplication is diagonal in the decomposition into embeddings, so trace is the sum of the embedded elements. The Vandermonde determinant <span class="math" data-tex="\(\prod_{i&lt;j}(\theta_j-\theta_i)\)">\(\prod_{i&lt;j}(\theta_j-\theta_i)\)</span> is nonzero. Therefore the trace determinant is nonzero.</p>
+<p><strong>Proof in the inseparable case.</strong> The characteristic is <span class="math" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. Let <span class="math" data-tex="\(F_s\)">\(F_s\)</span> be the maximal separable subextension. The extension <span class="math" data-tex="\(F/F_s\)">\(F/F_s\)</span> is purely inseparable and nontrivial: for every algebraic element, a sufficiently high <span class="math" data-tex="\(p\)">\(p\)</span>-power is separable, which proves the first assertion. A finite purely inseparable extension can be built as a tower of degree-<span class="math" data-tex="\(p\)">\(p\)</span> extensions. In a degree-<span class="math" data-tex="\(p\)">\(p\)</span> step with basis <span class="math" data-tex="\(1,u,\ldots,u^{p-1}\)">\(1,u,\ldots,u^{p-1}\)</span> and <span class="math" data-tex="\(u^p\)">\(u^p\)</span> in the base, multiplication by <span class="math" data-tex="\(u^j\)">\(u^j\)</span> has zero diagonal for <span class="math" data-tex="\(1\le j&lt;p\)">\(1\le j&lt;p\)</span>, and multiplication by <span class="math" data-tex="\(1\)">\(1\)</span> has trace <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Thus the trace map at that step is zero. Transitivity of trace makes <span class="math" data-tex="\(\operatorname{Tr}_{F/F_s}\)">\(\operatorname{Tr}_{F/F_s}\)</span>, and then <span class="math" data-tex="\(\operatorname{Tr}_{F/k}\)">\(\operatorname{Tr}_{F/k}\)</span>, zero. Transitivity follows by expressing a multiplication matrix in blocks over a basis of the intermediate field and summing its diagonal block traces. Hence the pairing is degenerate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.3.</strong> A finite commutative <span class="math" data-tex="\(k\)">\(k\)</span>-algebra is étale over <span class="math" data-tex="\(k\)">\(k\)</span> if and only if its trace pairing is nondegenerate.</p>
+<p><strong>Proof.</strong> A nondegenerate pairing has no nonzero nilpotents by Lemma 1.1. A reduced finite-dimensional commutative algebra is a product of fields: it is Artinian, its finitely many maximal ideals are pairwise comaximal, their intersection is the zero nilradical, and the Chinese remainder theorem gives the product. On a product the trace pairing is the orthogonal direct sum of the field pairings. Lemma 1.2 now says that every factor must be separable. Conversely, a product of separable fields has a nondegenerate direct-sum pairing. This is exactly the finite étale characterization. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over an imperfect field, reducedness alone is insufficient. For example, <span class="math" data-tex="\(\mathbb F_p(t)[u]/(u^p-t)\)">\(\mathbb F_p(t)[u]/(u^p-t)\)</span> is a field and has identically zero trace pairing.</p>
+<h2 id="2-a-determinant-over-the-base-ring">2. A determinant over the base ring</h2>
+<p>For a finite free <span class="math" data-tex="\(R\)">\(R\)</span>-algebra <span class="math" data-tex="\(E\)">\(E\)</span>, define trace from its multiplication matrices and, in a basis <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{disc}(e_1,\ldots,e_n)=
+\det\bigl(\operatorname{Tr}(e_i e_j)\bigr)_{i,j}.
+\]">\[
+\operatorname{disc}(e_1,\ldots,e_n)=
+\det\bigl(\operatorname{Tr}(e_i e_j)\bigr)_{i,j}.
+\]</span>
+<p>A basis change with matrix <span class="math" data-tex="\(P\)">\(P\)</span> changes the trace matrix to <span class="math" data-tex="\(P^{\mathsf T}TP\)">\(P^{\mathsf T}TP\)</span>, so the determinant changes by <span class="math" data-tex="\((\det P)^2\)">\((\det P)^2\)</span>. The discriminant generates a well-defined ideal, though its chosen generator depends on the basis.</p>
+<p><strong>Proposition 2.1.</strong> Traces, trace pairings and their determinants commute with arbitrary base change for a finite free algebra.</p>
+<p><strong>Proof.</strong> A multiplication matrix in the base-changed basis is the image of the original matrix. Its diagonal sum, every entry of the trace matrix, and its determinant are obtained by applying the ring map to the original expressions. No flatness of the ring map is needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> now be Dedekind, with fraction field <span class="math" data-tex="\(K\)">\(K\)</span>, and let <span class="math" data-tex="\(L/K\)">\(L/K\)</span> be finite separable of degree <span class="math" data-tex="\(n\)">\(n\)</span>. An <strong><span class="math" data-tex="\(R\)">\(R\)</span>-order</strong> <span class="math" data-tex="\(O\subseteq L\)">\(O\subseteq L\)</span> is a subring containing <span class="math" data-tex="\(R\)">\(R\)</span>, finite as an <span class="math" data-tex="\(R\)">\(R\)</span>-module, with <span class="math" data-tex="\(KO=L\)">\(KO=L\)</span>. It is torsion-free, so is locally free of rank <span class="math" data-tex="\(n\)">\(n\)</span>: at a nonzero prime the base is a DVR and a finite torsion-free module over a PID is free. Thus <span class="math" data-tex="\(O\)">\(O\)</span> is finite projective. Trace lands in <span class="math" data-tex="\(R\)">\(R\)</span>; it agrees locally with multiplication trace and hence agrees generically with field trace.</p>
+<p>Define <span class="math" data-tex="\(\mathfrak d_{O/R}\)">\(\mathfrak d_{O/R}\)</span> by these local trace determinants. Equivalently, the determinant of the trace map <span class="math" data-tex="\(O\to\operatorname{Hom}_R(O,R)\)">\(O\to\operatorname{Hom}_R(O,R)\)</span> is a section of the corresponding determinant line. A change of local basis multiplies its coefficient by a unit square, so its vanishing ideal is unambiguous. Nondegeneracy over <span class="math" data-tex="\(K\)">\(K\)</span> makes this a nonzero ideal.</p>
+<h2 id="3-noether-s-theorem-for-orders">3. Noether's theorem for orders</h2>
+<p><strong>Theorem 3.1.</strong> For every nonzero prime <span class="math" data-tex="\(\mathfrak p\subset R\)">\(\mathfrak p\subset R\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathfrak p\mid\mathfrak d_{O/R}
+\quad\Longleftrightarrow\quad
+O/\mathfrak pO\text{ is not étale over }R/\mathfrak p.
+\]">\[
+\mathfrak p\mid\mathfrak d_{O/R}
+\quad\Longleftrightarrow\quad
+O/\mathfrak pO\text{ is not étale over }R/\mathfrak p.
+\]</span>
+<p><strong>Proof.</strong> Localize at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, choose a free basis of <span class="math" data-tex="\(O_{\mathfrak p}\)">\(O_{\mathfrak p}\)</span>, and reduce its trace matrix modulo <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Proposition 2.1 identifies that reduced matrix with the trace matrix of <span class="math" data-tex="\(O/\mathfrak pO\)">\(O/\mathfrak pO\)</span>. The discriminant ideal is contained in <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> precisely when this matrix is singular. Theorem 1.3 identifies singularity with failure of étaleness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Noether, Sections 6–8]. The proof applies equally to number fields, function fields, relative orders and imperfect residue fields.</p>
+<p>For the integral closure <span class="math" data-tex="\(B\)">\(B\)</span>, prime factorization and the Chinese remainder theorem give</p>
+<span class="math math-display" data-tex="\[
+B/\mathfrak pB\simeq\prod_{\mathfrak P\mid\mathfrak p}B/\mathfrak P^{e_{\mathfrak P}}.
+\]">\[
+B/\mathfrak pB\simeq\prod_{\mathfrak P\mid\mathfrak p}B/\mathfrak P^{e_{\mathfrak P}}.
+\]</span>
+<p>A factor with <span class="math" data-tex="\(e_{\mathfrak P}&gt;1\)">\(e_{\mathfrak P}&gt;1\)</span> has nonzero nilpotents; a factor with <span class="math" data-tex="\(e_{\mathfrak P}=1\)">\(e_{\mathfrak P}=1\)</span> is its residue field. Hence the discriminant of the maximal order vanishes precisely when some ramification index exceeds one or some residue extension is inseparable. For number fields all finite residue extensions are separable, yielding Dedekind's familiar ramification criterion. This is also <a href="../NT-ANT/decomposition-of-primes-in-extensions.html">Decomposition of primes in extensions</a>, Theorem 5.4. The short deduction above places that maximal-order theorem inside the arbitrary-order criterion of Theorem 3.1.</p>
+<p>If <span class="math" data-tex="\(O\subseteq B\)">\(O\subseteq B\)</span>, their local bases are related by an inclusion matrix <span class="math" data-tex="\(P\)">\(P\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\mathfrak d_{O/R}=\mathfrak i_{B/O}^{\,2}\mathfrak d_{B/R}.
+\]">\[
+\mathfrak d_{O/R}=\mathfrak i_{B/O}^{\,2}\mathfrak d_{B/R}.
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathfrak i_{B/O}\)">\(\mathfrak i_{B/O}\)</span> is the index ideal with <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>-exponent <span class="math" data-tex="\(\operatorname{length}_{R_{\mathfrak p}}(B_{\mathfrak p}/O_{\mathfrak p})\)">\(\operatorname{length}_{R_{\mathfrak p}}(B_{\mathfrak p}/O_{\mathfrak p})\)</span>. Over a DVR, diagonal reduction of <span class="math" data-tex="\(P\)">\(P\)</span> shows that this length is <span class="math" data-tex="\(v_{\mathfrak p}(\det P)\)">\(v_{\mathfrak p}(\det P)\)</span>, and the determinant basis-change formula proves the assertion. Over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> this is the usual square of the integer lattice index.</p>
+<p>For a computational test of maximality, <a href="../NT-ANT/discriminants-and-integral-bases.html">Discriminants and integral bases</a>, Theorem 2.6, proves <strong>Dedekind's index criterion</strong>. Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be an integral primitive element of a number field, with monic minimal polynomial <span class="math" data-tex="\(f\in\mathbb Z[T]\)">\(f\in\mathbb Z[T]\)</span>. Write <span class="math" data-tex="\(\bar f=\prod_i\bar g_i^{e_i}\)">\(\bar f=\prod_i\bar g_i^{e_i}\)</span> modulo a rational prime <span class="math" data-tex="\(p\)">\(p\)</span>, with distinct monic irreducible factors, choose monic integer lifts <span class="math" data-tex="\(g_i\)">\(g_i\)</span>, and put</p>
+<span class="math math-display" data-tex="\[
+F=\bigl(f-\prod_i g_i^{e_i}\bigr)/p\in\mathbb Z[T].
+\]">\[
+F=\bigl(f-\prod_i g_i^{e_i}\bigr)/p\in\mathbb Z[T].
+\]</span>
+<p>Then <span class="math" data-tex="\(p\)">\(p\)</span> does not divide <span class="math" data-tex="\([\mathcal O_L:\mathbb Z[\alpha]]\)">\([\mathcal O_L:\mathbb Z[\alpha]]\)</span> if and only if <span class="math" data-tex="\(\bar g_i\nmid\bar F\)">\(\bar g_i\nmid\bar F\)</span> for every repeated factor <span class="math" data-tex="\(e_i\ge2\)">\(e_i\ge2\)</span>. This stated input tests the defect of the order; Theorem 3.1 tests its entire non-étale fibre. The integer index-discriminant formula is also proved there, Theorem 2.3 and equations (2)–(3); our local determinant argument above gives its relative ideal form.</p>
+<p>Noether's 1929 <em>Über Maximalbereiche aus ganzzahligen Funktionen</em> studies a related denominator problem: starting from a finitely generated ring of integral functions, saturate it by nonzero integer denominators and ask which primes and denominator powers are required [Noether, opening paragraphs]. In the present discriminant theorem, the maximal order means the integral closure in the field.</p>
+<h2 id="4-four-reductions-worth-comparing">4. Four reductions worth comparing</h2>
+<p>For a quadratic field of discriminant <span class="math" data-tex="\(d_K\)">\(d_K\)</span>, write its integer ring as <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span>. The order <span class="math" data-tex="\(O_f=\mathbb Z+f\mathbb Z\omega\)">\(O_f=\mathbb Z+f\mathbb Z\omega\)</span> has basis <span class="math" data-tex="\(1,f\omega\)">\(1,f\omega\)</span>, so <span class="math" data-tex="\(\operatorname{disc}(O_f)=f^2d_K\)">\(\operatorname{disc}(O_f)=f^2d_K\)</span>. This distinguishes primes dividing the conductor from primes ramifying in the maximal order.</p>
+<p>For <span class="math" data-tex="\(O=\mathbb Z[3i]\)">\(O=\mathbb Z[3i]\)</span>, set <span class="math" data-tex="\(u=3i\)">\(u=3i\)</span>. Its defining polynomial is <span class="math" data-tex="\(T^2+9\)">\(T^2+9\)</span>; its trace matrix in <span class="math" data-tex="\(1,u\)">\(1,u\)</span> is <span class="math" data-tex="\(\operatorname{diag}(2,-18)\)">\(\operatorname{diag}(2,-18)\)</span>. Thus its discriminant is <span class="math" data-tex="\(-36\)">\(-36\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+O/3O=\mathbb F_3[u]/(u^2).
+\]">\[
+O/3O=\mathbb F_3[u]/(u^2).
+\]</span>
+<p>The class of <span class="math" data-tex="\(u\)">\(u\)</span> is nonzero although <span class="math" data-tex="\(u=3i\)">\(u=3i\)</span> in the ambient field: <span class="math" data-tex="\(i\notin O\)">\(i\notin O\)</span>, so <span class="math" data-tex="\(u\notin3O\)">\(u\notin3O\)</span>. By contrast <span class="math" data-tex="\(\mathbb Z[i]/3\mathbb Z[i]=\mathbb F_9\)">\(\mathbb Z[i]/3\mathbb Z[i]=\mathbb F_9\)</span>, since <span class="math" data-tex="\(T^2+1\)">\(T^2+1\)</span> is irreducible over <span class="math" data-tex="\(\mathbb F_3\)">\(\mathbb F_3\)</span>. The prime <span class="math" data-tex="\(3\)">\(3\)</span> is unramified in the field but divides the order's discriminant.</p>
+<p>For <span class="math" data-tex="\(\operatorname{char}k\ne2\)">\(\operatorname{char}k\ne2\)</span>, the finite free algebra <span class="math" data-tex="\(k[t][u]/(u^2-t)\)">\(k[t][u]/(u^2-t)\)</span> has trace matrix <span class="math" data-tex="\(\operatorname{diag}(2,2t)\)">\(\operatorname{diag}(2,2t)\)</span>, with discriminant <span class="math" data-tex="\(4t\)">\(4t\)</span>. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> the fibre is the dual-number algebra; at a nonzero <span class="math" data-tex="\(t\)">\(t\)</span>-value the derivative <span class="math" data-tex="\(2u\)">\(2u\)</span> is invertible in the fibre, which is étale even if it does not split over the residue field.</p>
+<p>For a relative arithmetic example, let <span class="math" data-tex="\(K=\mathbb Q(i)\)">\(K=\mathbb Q(i)\)</span>, <span class="math" data-tex="\(R=\mathbb Z[i]\)">\(R=\mathbb Z[i]\)</span>, and <span class="math" data-tex="\(O=R[\sqrt3]\subseteq K(\sqrt3)\)">\(O=R[\sqrt3]\subseteq K(\sqrt3)\)</span>. In the relative basis <span class="math" data-tex="\(1,\sqrt3\)">\(1,\sqrt3\)</span>, the trace matrix is <span class="math" data-tex="\(\operatorname{diag}(2,6)\)">\(\operatorname{diag}(2,6)\)</span> and the discriminant ideal is <span class="math" data-tex="\((12)\subset R\)">\((12)\subset R\)</span>. At the prime <span class="math" data-tex="\((3)\)">\((3)\)</span>, whose residue field is <span class="math" data-tex="\(\mathbb F_9\)">\(\mathbb F_9\)</span>, the fibre is <span class="math" data-tex="\(\mathbb F_9[u]/(u^2)\)">\(\mathbb F_9[u]/(u^2)\)</span>. At <span class="math" data-tex="\((1+i)\)">\((1+i)\)</span>, the residue characteristic is two and the fibre is <span class="math" data-tex="\(\mathbb F_2[u]/((u+1)^2)\)">\(\mathbb F_2[u]/((u+1)^2)\)</span>. Away from these primes the trace determinant is a unit. No principal global basis is required in Theorem 3.1; this example merely happens to have one.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Compute the discriminant and the fibre at <span class="math" data-tex="\(3\)">\(3\)</span> of <span class="math" data-tex="\(\mathbb Z[3i]\)">\(\mathbb Z[3i]\)</span>.</li>
+<li><strong>Medium.</strong> For monic <span class="math" data-tex="\(f\in k[T]\)">\(f\in k[T]\)</span> of degree <span class="math" data-tex="\(n\)">\(n\)</span>, show that the discriminant of the power basis of <span class="math" data-tex="\(k[T]/(f)\)">\(k[T]/(f)\)</span> equals <span class="math" data-tex="\((-1)^{n(n-1)/2}N(f&#x27;(u))\)">\((-1)^{n(n-1)/2}N(f&#x27;(u))\)</span>. Deduce that it is nonzero exactly when <span class="math" data-tex="\(f\)">\(f\)</span> is square-free.</li>
+<li><strong>Medium.</strong> Calculate the trace pairing of <span class="math" data-tex="\(\mathbb F_p(t^{1/p})/\mathbb F_p(t)\)">\(\mathbb F_p(t^{1/p})/\mathbb F_p(t)\)</span> without invoking separability criteria.</li>
+<li><strong>Medium.</strong> Find the bad primes of <span class="math" data-tex="\(O=\mathbb Z[\sqrt5]\)">\(O=\mathbb Z[\sqrt5]\)</span>, and describe their fibres. Compare with the maximal order.</li>
+<li><strong>Hard.</strong> Give the relative discriminant criterion for an <span class="math" data-tex="\(O_K\)">\(O_K\)</span>-order in a finite extension of number fields, allowing the order to be nonfree over <span class="math" data-tex="\(O_K\)">\(O_K\)</span>.</li>
+</ol>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>1.</strong> The basis <span class="math" data-tex="\(1,3i\)">\(1,3i\)</span> gives the diagonal entries <span class="math" data-tex="\(2,-18\)">\(2,-18\)</span>, so the determinant is <span class="math" data-tex="\(-36\)">\(-36\)</span>. Reduction of the presentation <span class="math" data-tex="\(\mathbb Z[T]/(T^2+9)\)">\(\mathbb Z[T]/(T^2+9)\)</span> gives <span class="math" data-tex="\(\mathbb F_3[T]/(T^2)\)">\(\mathbb F_3[T]/(T^2)\)</span>. Its nonzero nilpotent <span class="math" data-tex="\(T\)">\(T\)</span> explains the degeneracy.</p>
+<p><strong>2.</strong> When <span class="math" data-tex="\(f\)">\(f\)</span> has distinct roots <span class="math" data-tex="\(r_i\)">\(r_i\)</span>, the determinant is <span class="math" data-tex="\(\prod_{i&lt;j}(r_j-r_i)^2\)">\(\prod_{i&lt;j}(r_j-r_i)^2\)</span>. The norm of <span class="math" data-tex="\(f&#x27;(u)\)">\(f&#x27;(u)\)</span> is <span class="math" data-tex="\(\prod_i f&#x27;(r_i)=(-1)^{n(n-1)/2}\prod_{i&lt;j}(r_j-r_i)^2\)">\(\prod_i f&#x27;(r_i)=(-1)^{n(n-1)/2}\prod_{i&lt;j}(r_j-r_i)^2\)</span>. To include repeated roots and every characteristic, regard both sides as polynomials with integer coefficients in the coefficients of a universal monic polynomial. They agree over characteristic zero on the dense set of distinct-root polynomials, hence are the same universal polynomial. Specialization proves the formula for all <span class="math" data-tex="\(f\)">\(f\)</span>. Over an algebraic closure, <span class="math" data-tex="\(N(f&#x27;(u))\)">\(N(f&#x27;(u))\)</span> is the resultant <span class="math" data-tex="\(\operatorname{Res}(f,f&#x27;)\)">\(\operatorname{Res}(f,f&#x27;)\)</span>; it is zero exactly when a root is repeated. This also follows directly from the root product formula by specialization.</p>
+<p><strong>3.</strong> Put <span class="math" data-tex="\(u^p=t\)">\(u^p=t\)</span>. Multiplication by <span class="math" data-tex="\(u^j\)">\(u^j\)</span>, <span class="math" data-tex="\(1\le j&lt;p\)">\(1\le j&lt;p\)</span>, cyclically shifts the power basis with factors of <span class="math" data-tex="\(t\)">\(t\)</span> on wraparound, so every diagonal entry is zero. Multiplication by <span class="math" data-tex="\(1\)">\(1\)</span> has trace <span class="math" data-tex="\(p=0\)">\(p=0\)</span>. Linearity shows that every element has trace zero, and consequently every pairing entry is zero.</p>
+<p><strong>4.</strong> In <span class="math" data-tex="\(1,\sqrt5\)">\(1,\sqrt5\)</span>, the trace matrix is <span class="math" data-tex="\(\operatorname{diag}(2,10)\)">\(\operatorname{diag}(2,10)\)</span>, so the discriminant is <span class="math" data-tex="\(20\)">\(20\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span>, the fibre is <span class="math" data-tex="\(\mathbb F_2[u]/((u+1)^2)\)">\(\mathbb F_2[u]/((u+1)^2)\)</span>; at <span class="math" data-tex="\(5\)">\(5\)</span>, it is <span class="math" data-tex="\(\mathbb F_5[u]/(u^2)\)">\(\mathbb F_5[u]/(u^2)\)</span>. These are the only bad primes. The maximal order has basis <span class="math" data-tex="\(1,(1+\sqrt5)/2\)">\(1,(1+\sqrt5)/2\)</span>, index two and discriminant five. Its fibre at <span class="math" data-tex="\(2\)">\(2\)</span> is the field <span class="math" data-tex="\(\mathbb F_4\)">\(\mathbb F_4\)</span>, using <span class="math" data-tex="\(T^2-T-1\)">\(T^2-T-1\)</span> modulo two. Thus <span class="math" data-tex="\(2\)">\(2\)</span> is bad only because of the smaller order, whereas <span class="math" data-tex="\(5\)">\(5\)</span> ramifies in the field.</p>
+<p><strong>5.</strong> The ring <span class="math" data-tex="\(O_K\)">\(O_K\)</span> is Dedekind. A finite torsion-free order is free over each localization at a nonzero prime. Choose such a local basis, reduce its multiplication matrices, and apply Theorem 1.3 to the residue algebra. Changes between local bases multiply the discriminant coefficient by a unit square, so the criterion is independent of the choices and defines the relative discriminant ideal. It detects precisely the non-étale fibres and includes index primes of nonmaximal orders.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The primitive element theorem [Milne FT, Theorem 5.1], the Artinian product structure [Stacks, Tag 00KJ], the local DVR characterization [Tag 034X], and the finite étale field-algebra characterization [Milne FT, Proposition 8.6 and Corollary 8.7; Stacks, Tag 00U3] are prerequisites. Dedekind’s index criterion is stated with the <em>Discriminants and integral bases</em>, Theorem 2.6 locator above. The trace-form criterion itself, including inseparable fields, is proved here. The quadratic integral-basis criterion supplies the maximal orders in the examples. Noncommutative orders use different trace conventions and are outside this theorem; [Voight] explains that setting.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne]</strong> J. S. Milne, <em>Fields and Galois Theory</em>, Theorems 5.1 and 5.18, Proposition 8.6 and Corollary 8.7, and <em>Algebraic Number Theory</em>, Chapters 2–3 (quadratic bases in the Introduction, p. 8); <a href="https://www.jmilne.org/math/CourseNotes/">author's notes</a>.</li>
+<li><strong>[Stacks]</strong> The Stacks Project, Tags <a href="https://stacks.math.columbia.edu/tag/0BIE">0BIE</a>, <a href="https://stacks.math.columbia.edu/tag/0BVH">0BVH</a> and <a href="https://stacks.math.columbia.edu/tag/0BJF">0BJF</a>. The corresponding <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html">AI Integrated Stacks Project English reader</a> contains AI-proposed corrections and additions, not reviewed by the Stacks Project's maintainers.</li>
+<li><strong>[Noether]</strong> Emmy Noether, <em>Der Diskriminantensatz für die Ordnungen eines algebraischen Zahl- oder Funktionenkörpers</em>, Journal für die reine und angewandte Mathematik <strong>157</strong> (1927), 82–104, especially Sections 6–8; and <em>Über Maximalbereiche aus ganzzahligen Funktionen</em>, Matematicheskii Sbornik <strong>36</strong> (1929), 65–72.</li>
+<li><strong>[Voight]</strong> John Voight, <em>Quaternion Algebras</em>, Graduate Texts in Mathematics 288, Springer, 2021, Chapters 7 and 9–15, <a href="https://math.dartmouth.edu/~jvoight/quat.html">author's edition</a>.</li>
+<li><strong>Additional prerequisite tags:</strong> <a href="https://stacks.math.columbia.edu/tag/00KJ">00KJ</a>, <a href="https://stacks.math.columbia.edu/tag/00U3">00U3</a>, and <a href="https://stacks.math.columbia.edu/tag/034X">034X</a>.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NOE-ABS-02.html">← The converse and composition series</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-ABS-04.html">Three differents →</a></span></nav>
+<p class="small source-link"><a href="src/NOE-ABS-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-ABS">Repository</a></nav>
+</footer>
+</body>
+</html>

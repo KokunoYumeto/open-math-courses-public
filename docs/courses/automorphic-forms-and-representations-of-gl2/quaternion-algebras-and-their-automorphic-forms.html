@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quaternion algebras and their automorphic forms · Automorphic forms and representations of GL(2)</title>
+<meta name="description" content="A lesson of the course Automorphic forms and representations of GL(2). Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/automorphic-forms-and-representations-of-gl2/quaternion-algebras-and-their-automorphic-forms.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Automorphic forms and representations of GL(2)</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="quaternion-algebras-and-their-automorphic-forms">Quaternion algebras and their automorphic forms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The split algebra <span class="math" data-tex="\(M_2\)">\(M_2\)</span> produces the noncompact modular quotient and its Eisenstein spectrum. A quaternion division algebra gives another form of the same local matrix group, but its rational quotient is compact after removing the centre. In the definite rational case, imposing weight zero and maximal finite level reduces automorphic forms to functions on finitely many ideal classes. Hecke operators then become explicit integer matrices. We will obtain a two-dimensional example whose nonconstant eigenvalue is the coefficient <span class="math" data-tex="\(-2\)">\(-2\)</span> of the level-eleven newform.</p>
+<p>The representation conventions are those of Lesson 12. Central simple algebras and the Brauer group, Sections 6–7, supplies quaternion conjugation, reduced trace and reduced norm. The arithmetic proof provider is now the written class-field lesson <a href="../NT-CFT/brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields</a>: Proposition 24.1 and Theorem 24.2 prove the local invariant and its restriction rule; Theorem 24.4 proves the global localization exact sequence. We deduce the needed quaternion classification from these statements below, including global fields of characteristic two. Corollary 24.5 of that provider gives the rational case. Our inner products are linear in the first variable.</p>
+<h2 id="1-the-local-compact-quotient">1. The local compact quotient</h2>
+<p>A quaternion algebra <span class="math" data-tex="\(D\)">\(D\)</span> over a field <span class="math" data-tex="\(F\)">\(F\)</span> is a central simple algebra of dimension four. It is either <span class="math" data-tex="\(M_2(F)\)">\(M_2(F)\)</span> or a division algebra: the matrix size and the dimension of its division representative multiply to four. Write <span class="math" data-tex="\(\overline x\)">\(\overline x\)</span> for its standard conjugation, and
+<span class="math math-display" data-tex="\[
+\operatorname{trd}(x)=x+\overline x,\qquad
+\operatorname{nrd}(x)=x\overline x,\qquad
+\operatorname{nrd}(xy)=\operatorname{nrd}(x)\operatorname{nrd}(y).
+\tag{1.1}
+\]">\[
+\operatorname{trd}(x)=x+\overline x,\qquad
+\operatorname{nrd}(x)=x\overline x,\qquad
+\operatorname{nrd}(xy)=\operatorname{nrd}(x)\operatorname{nrd}(y).
+\tag{1.1}
+\]</span>
+In characteristic different from two, the symbol algebra <span class="math" data-tex="\((a,b)_F\)">\((a,b)_F\)</span> has generators satisfying <span class="math" data-tex="\(i^2=a\)">\(i^2=a\)</span>, <span class="math" data-tex="\(j^2=b\)">\(j^2=b\)</span>, <span class="math" data-tex="\(ij=-ji\)">\(ij=-ji\)</span>. Its norm is <span class="math" data-tex="\(x_0^2-a x_1^2-b x_2^2+ab x_3^2\)">\(x_0^2-a x_1^2-b x_2^2+ab x_3^2\)</span>. The cyclic model (1.2) below works in every characteristic. In the split algebra, reduced norm is determinant.</p>
+<p><strong>Local classification.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is a nonarchimedean local field, there is exactly one quaternion division algebra up to <span class="math" data-tex="\(F\)">\(F\)</span>-isomorphism. Let <span class="math" data-tex="\(L/F\)">\(L/F\)</span> be the unramified quadratic extension and <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> a uniformizer. This algebra and its maximal order have the descriptions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D=L\oplus Lj,\qquad j^2=\varpi,\qquad jx=\overline xj\quad(x\in L),\\
+\mathcal O_D=\mathcal O_L\oplus\mathcal O_Lj,\qquad
+v_D(x)=v_F(\operatorname{nrd}(x))\quad(x\ne0).
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+D=L\oplus Lj,\qquad j^2=\varpi,\qquad jx=\overline xj\quad(x\in L),\\
+\mathcal O_D=\mathcal O_L\oplus\mathcal O_Lj,\qquad
+v_D(x)=v_F(\operatorname{nrd}(x))\quad(x\ne0).
+\end{gathered}
+\tag{1.2}
+\]</span>
+Here <span class="math" data-tex="\(v_D\)">\(v_D\)</span> is a discrete valuation with <span class="math" data-tex="\(v_D(j)=1\)">\(v_D(j)=1\)</span>; its valuation ring is <span class="math" data-tex="\(\mathcal O_D\)">\(\mathcal O_D\)</span>. Notice the sign <span class="math" data-tex="\(\operatorname{nrd}(j)=-\varpi\)">\(\operatorname{nrd}(j)=-\varpi\)</span>, since <span class="math" data-tex="\(\overline j=-j\)">\(\overline j=-j\)</span>. The valuation still equals one.</p>
+<p><strong>Proof of classification.</strong> Quaternion conjugation identifies an algebra with its opposite, so its Brauer class has order dividing two. Theorem 24.2 of the linked class-field lesson identifies <span class="math" data-tex="\(\operatorname{Br}(F)\)">\(\operatorname{Br}(F)\)</span> with <span class="math" data-tex="\(\mathbb Q/\mathbb Z\)">\(\mathbb Q/\mathbb Z\)</span>. A division quaternion algebra has nonzero class and therefore invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Proposition 24.1 gives that invariant to the unramified cyclic algebra in (1.2), with arithmetic Frobenius and parameter <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>. Its explicit norm calculation just below proves it is division. Thus every division quaternion algebra has the same Brauer class as this model. Uniqueness of the division representative, proved in the linked central-simple-algebra lesson, makes them isomorphic. Over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, Theorem 24.2 gives just two classes; Hamilton's positive definite norm makes it the nonzero degree-two division representative. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> the Brauer group is zero and every quaternion algebra is split. This proves all three classifications. Their original locators are Voight, Theorem 13.3.11, with Lemma 13.3.2 and Proposition 13.3.4. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The valuation and order assertions in this model can be checked directly. For <span class="math" data-tex="\(x=a+bj\)">\(x=a+bj\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{nrd}(x)=N_{L/F}(a)-\varpi N_{L/F}(b),\qquad
+v_D(x)=\min\{2v_L(a),\,1+2v_L(b)\}.
+\]">\[
+\operatorname{nrd}(x)=N_{L/F}(a)-\varpi N_{L/F}(b),\qquad
+v_D(x)=\min\{2v_L(a),\,1+2v_L(b)\}.
+\]</span>
+The two finite valuations have different parity and cannot cancel. This proves anisotropy, the valuation inequality for addition, and the stated valuation ring; multiplicativity follows from (1.1). That ring is closed under multiplication by the displayed relations and is a full compact lattice. Every order is contained in it, because an element of negative valuation would have powers escaping that compact order. It is therefore the unique maximal order. These checks work also in residue characteristic two.</p>
+<p><strong>Theorem 1.1.</strong> For the local division algebra, <span class="math" data-tex="\(D^\times/F^\times\)">\(D^\times/F^\times\)</span> is compact. Every irreducible smooth complex representation of <span class="math" data-tex="\(D^\times\)">\(D^\times\)</span> is finite-dimensional.</p>
+<p><strong>Proof of compactness.</strong> A scalar <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> has valuation two, because its reduced norm is <span class="math" data-tex="\(\varpi^2\)">\(\varpi^2\)</span>. Multiplying an element by a suitable scalar power makes its valuation either zero or one. The elements of valuation zero are <span class="math" data-tex="\(\mathcal O_D^\times\)">\(\mathcal O_D^\times\)</span>; those of valuation one are <span class="math" data-tex="\(j\mathcal O_D^\times\)">\(j\mathcal O_D^\times\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+D^\times=\varpi^{\mathbb Z}C,
+\qquad C=\mathcal O_D^\times\cup j\mathcal O_D^\times.
+\tag{1.3}
+\]">\[
+D^\times=\varpi^{\mathbb Z}C,
+\qquad C=\mathcal O_D^\times\cup j\mathcal O_D^\times.
+\tag{1.3}
+\]</span>
+The order is a compact rank-four <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>-lattice. Its units are a closed subset, being the inverse image of <span class="math" data-tex="\(\mathcal O_F^\times\)">\(\mathcal O_F^\times\)</span> under the continuous norm map. Thus <span class="math" data-tex="\(C\)">\(C\)</span> is compact and maps onto the central quotient, proving the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of finite dimension.</strong> We first justify the scalar action needed in using (1.3); an unrestricted infinite-dimensional form of Schur's lemma would not suffice.</p>
+<p>Let <span class="math" data-tex="\(V\)">\(V\)</span> be irreducible and smooth, and choose <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>. It is cyclic by irreducibility. Its stabilizer contains an open subgroup. The second-countable group <span class="math" data-tex="\(D^\times\)">\(D^\times\)</span> has only countably many cosets of any open subgroup: these cosets are disjoint open sets, and each contains a distinct member of a countable basis. The orbit of <span class="math" data-tex="\(v\)">\(v\)</span>, and hence a spanning set of <span class="math" data-tex="\(V\)">\(V\)</span>, is countable.</p>
+<p>Let <span class="math" data-tex="\(T\)">\(T\)</span> be the action of the central scalar <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>. Every <span class="math" data-tex="\(T-\lambda\)">\(T-\lambda\)</span> is a module endomorphism. If it is nonzero, its kernel is zero and its image is all of <span class="math" data-tex="\(V\)">\(V\)</span>, by irreducibility. Suppose <span class="math" data-tex="\(T\)">\(T\)</span> were not scalar. Every <span class="math" data-tex="\(T-\lambda\)">\(T-\lambda\)</span> would then be invertible, and so would every nonzero polynomial in <span class="math" data-tex="\(T\)">\(T\)</span>, after factoring that polynomial over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. The vectors
+<span class="math math-display" data-tex="\[
+(T-\lambda)^{-1}v\qquad(\lambda\in\mathbb C)
+\tag{1.4}
+\]">\[
+(T-\lambda)^{-1}v\qquad(\lambda\in\mathbb C)
+\tag{1.4}
+\]</span>
+would be linearly independent. Indeed, multiply a finite alleged relation by <span class="math" data-tex="\(\prod_r(T-\lambda_r)\)">\(\prod_r(T-\lambda_r)\)</span>. The resulting polynomial is
+<span class="math" data-tex="\(P(t)=\sum_r c_r\prod_{s\ne r}(t-\lambda_s)\)">\(P(t)=\sum_r c_r\prod_{s\ne r}(t-\lambda_s)\)</span>; evaluating at <span class="math" data-tex="\(\lambda_r\)">\(\lambda_r\)</span> shows that it is nonzero if some <span class="math" data-tex="\(c_r\ne0\)">\(c_r\ne0\)</span>. Then <span class="math" data-tex="\(P(T)v=0\)">\(P(T)v=0\)</span> contradicts invertibility. An uncountable independent set contradicts the countable spanning set. Therefore <span class="math" data-tex="\(T=c\operatorname{id}\)">\(T=c\operatorname{id}\)</span>, with <span class="math" data-tex="\(c\ne0\)">\(c\ne0\)</span>.</p>
+<p>Smoothness makes the map <span class="math" data-tex="\(x\mapsto xv\)">\(x\mapsto xv\)</span> locally constant. On the compact set <span class="math" data-tex="\(C\)">\(C\)</span> it has finite image, since finitely many stabilizer cosets cover <span class="math" data-tex="\(C\)">\(C\)</span>. Formula (1.3) now says that the whole orbit of <span class="math" data-tex="\(v\)">\(v\)</span> is contained in the union of scalar multiples of this finite set. It spans a finite-dimensional space, which is <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.2 — the precise finite-quotient assertion.</strong> Such a representation has a smooth central character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Its projective image is finite. After twisting by an unramified character of the reduced norm, the representation itself factors through a finite quotient of <span class="math" data-tex="\(D^\times\)">\(D^\times\)</span>.</p>
+<p><strong>Proof.</strong> Finite-dimensional Schur's lemma makes every central element scalar. The common stabilizer of a basis is open and lies in the kernel <span class="math" data-tex="\(U\)">\(U\)</span> of the representation. Thus <span class="math" data-tex="\(U\)">\(U\)</span> is an open normal subgroup. The projective representation has kernel containing <span class="math" data-tex="\(F^\times U\)">\(F^\times U\)</span>, and
+<span class="math" data-tex="\(D^\times/(F^\times U)\)">\(D^\times/(F^\times U)\)</span> is a discrete quotient of the compact group in Theorem 1.1, hence finite.</p>
+<p>Choose <span class="math" data-tex="\(b\in\mathbb C^\times\)">\(b\in\mathbb C^\times\)</span> with <span class="math" data-tex="\(b^2=c^{-1}\)">\(b^2=c^{-1}\)</span>, and define the unramified character <span class="math" data-tex="\(\nu(x)=b^{v_F(x)}\)">\(\nu(x)=b^{v_F(x)}\)</span>. The twist <span class="math" data-tex="\(\nu\circ\operatorname{nrd}\)">\(\nu\circ\operatorname{nrd}\)</span> makes the scalar <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> act as <span class="math" data-tex="\(b^2c=1\)">\(b^2c=1\)</span>. Its kernel <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span> is open, so it factors through
+<span class="math" data-tex="\(D^\times/(\varpi^{\mathbb Z}U&#x27;)\)">\(D^\times/(\varpi^{\mathbb Z}U&#x27;)\)</span>. This quotient is discrete and has the compact set <span class="math" data-tex="\(C\)">\(C\)</span> as a set of representatives, hence is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A representation with nontrivial <span class="math" data-tex="\(\chi\)">\(\chi\)</span> need not be a representation of <span class="math" data-tex="\(D^\times/F^\times\)">\(D^\times/F^\times\)</span>. For example, the one-dimensional character <span class="math" data-tex="\(|\operatorname{nrd}|_F\)">\(|\operatorname{nrd}|_F\)</span> acts on a scalar <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(|a|_F^2\)">\(|a|_F^2\)</span>. The finite assertion modulo the centre is about its projective action; literal descent requires trivial central character.</p>
+<h2 id="2-ramification-and-the-global-group">2. Ramification and the global group</h2>
+<p>For a quaternion algebra over a global field <span class="math" data-tex="\(F\)">\(F\)</span>, set
+<span class="math math-display" data-tex="\[
+\operatorname{Ram}(D)=\{v:D\otimes_FF_v\text{ is division}\}.
+\tag{2.1}
+\]">\[
+\operatorname{Ram}(D)=\{v:D\otimes_FF_v\text{ is division}\}.
+\tag{2.1}
+\]</span>
+<strong>Global classification.</strong> This set is finite, contains no complex place, has even cardinality, and determines the algebra up to <span class="math" data-tex="\(F\)">\(F\)</span>-isomorphism. Conversely each finite even set of noncomplex places occurs.</p>
+<p><strong>Proof.</strong> Theorem 24.4 of the linked class-field lesson proves that localization embeds <span class="math" data-tex="\(\operatorname{Br}(F)\)">\(\operatorname{Br}(F)\)</span> into the direct sum of its local Brauer groups, with image exactly the tuples whose invariant sum is zero. The local classification just proved identifies the quaternion invariants as zero or <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Finite support and the sum law give finiteness and even cardinality. The tuple determines the Brauer class. Equal degree-two central simple algebras in that class are isomorphic by uniqueness of the division representative and their matrix size.</p>
+<p>For existence, let <span class="math" data-tex="\(S\)">\(S\)</span> be a nonempty finite even set of noncomplex places. The localization theorem supplies a class <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with invariant <span class="math" data-tex="\(1/2\)">\(1/2\)</span> at <span class="math" data-tex="\(S\)">\(S\)</span> and zero elsewhere. We must show that it has a degree-two representative; a two-torsion Brauer class over an arbitrary field would not suffice. Choose a separable quadratic extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span> that remains a field at every place in <span class="math" data-tex="\(S\)">\(S\)</span>. In characteristic different from two, weak approximation supplies <span class="math" data-tex="\(d\in F\)">\(d\in F\)</span> of valuation one at each specified finite place and negative at each specified real place. Then <span class="math" data-tex="\(E=F(\sqrt d)\)">\(E=F(\sqrt d)\)</span> has the required local degree two. In characteristic two all places are finite. At each place in <span class="math" data-tex="\(S\)">\(S\)</span>, choose an integral <span class="math" data-tex="\(a_v\)">\(a_v\)</span> whose residue has trace one to <span class="math" data-tex="\(\mathbb F_2\)">\(\mathbb F_2\)</span>, and use weak approximation to choose <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span> congruent to <span class="math" data-tex="\(a_v\)">\(a_v\)</span> modulo that maximal ideal. The polynomial <span class="math" data-tex="\(X^2+X+a\)">\(X^2+X+a\)</span> is locally irreducible: a root of negative valuation is impossible, and an integral root would have residue with trace-zero Artin–Schreier image. Its derivative is one. Thus it defines a separable quadratic field <span class="math" data-tex="\(E/F\)">\(E/F\)</span> with the same local property, also in characteristic two.</p>
+<p>Restriction multiplies a local invariant by its extension degree, by Theorem 24.2. Hence every invariant of <span class="math" data-tex="\(\beta|_E\)">\(\beta|_E\)</span> is zero: degree two kills <span class="math" data-tex="\(1/2\)">\(1/2\)</span> at <span class="math" data-tex="\(S\)">\(S\)</span>, and the other original invariants were zero. Global injectivity over <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(\beta|_E=0\)">\(\beta|_E=0\)</span>. The finite splitting criterion in the linked central-simple-algebra lesson, Theorem 4.2, now gives an algebra in class <span class="math" data-tex="\(\beta\)">\(\beta\)</span> of degree <span class="math" data-tex="\([E:F]=2\)">\([E:F]=2\)</span>. Because <span class="math" data-tex="\(S\ne\varnothing\)">\(S\ne\varnothing\)</span>, it is nonsplit and therefore quaternion division. For <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, use <span class="math" data-tex="\(M_2(F)\)">\(M_2(F)\)</span>. This proves existence in every global field and completes the classification. The rational version is Voight, Main Theorem 14.1.3 and Proposition 14.2.1; the general version is Main Theorem 14.6.1 and Remark 14.6.10. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, the algebra is <strong>definite</strong> when <span class="math" data-tex="\(\infty\in\operatorname{Ram}(D)\)">\(\infty\in\operatorname{Ram}(D)\)</span>, so <span class="math" data-tex="\(D_\infty\simeq\mathbb H\)">\(D_\infty\simeq\mathbb H\)</span>. Write <span class="math" data-tex="\(B_{p,\infty}\)">\(B_{p,\infty}\)</span> for the algebra ramified exactly at <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, and <span class="math" data-tex="\(d_D\)">\(d_D\)</span> for the product of its finite ramified primes. An indefinite algebra can still be division over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>: splitting at infinity does not make it split at all places. At a split finite place its multiplicative group is <span class="math" data-tex="\(\mathrm{GL}_2(F_v)\)">\(\mathrm{GL}_2(F_v)\)</span>; at a ramified one Theorem 1.1 applies.</p>
+<p>Put <span class="math" data-tex="\(G=D^\times\)">\(G=D^\times\)</span>. An automorphic form is a left <span class="math" data-tex="\(G(\mathbb Q)\)">\(G(\mathbb Q)\)</span>-invariant smooth function on <span class="math" data-tex="\(G(\mathbb A)\)">\(G(\mathbb A)\)</span>, right invariant under some finite compact open subgroup, finite under a maximal compact group at infinity and under the centre of the real enveloping algebra, with the usual moderate growth. We can impose a central character
+<span class="math math-display" data-tex="\[
+\phi(zg)=\omega(z)\phi(g),\qquad
+\omega:\mathbb Q^\times\backslash\mathbb A^\times\longrightarrow\mathbb C^\times.
+\tag{2.2}
+\]">\[
+\phi(zg)=\omega(z)\phi(g),\qquad
+\omega:\mathbb Q^\times\backslash\mathbb A^\times\longrightarrow\mathbb C^\times.
+\tag{2.2}
+\]</span>
+For unitary <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, its Hilbert space is measured modulo the adelic centre, exactly as in <a href="why-the-cuspidal-spectrum-is-discrete.html">Lesson 4</a>. Compactness below makes the growth condition automatic in fixed central character, and makes smooth automorphic forms square integrable. Square integrability here always means modulo the centre with a unitary central character.</p>
+<p>For a division quaternion algebra, there are no proper rational parabolic subgroups. In the matrix form of this rank-one group, a proper parabolic stabilizes a nontrivial flag, equivalently a proper nonzero right ideal of reduced dimension one. To see the descent, split the algebra over a finite Galois extension. The right ideal associated with a line consists of matrices whose images lie in that line. Conjugating the parabolic conjugates this ideal, so a rational parabolic makes the corresponding ideal stable under the descent action. Galois descent of a linear subspace then gives a proper nonzero right ideal of the rational algebra. A division algebra has no such ideal: if an ideal contains <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, it contains <span class="math" data-tex="\(xx^{-1}=1\)">\(xx^{-1}=1\)</span>. Thus there are no constant-term conditions to impose, and all its automorphic forms are cuspidal in the rational-parabolic sense. This includes the characters <span class="math" data-tex="\(\xi\circ\operatorname{nrd}\)">\(\xi\circ\operatorname{nrd}\)</span>. The exclusion of such characters in transfer to the cuspidal <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> spectrum will matter in Lesson 19.</p>
+<h2 id="3-a-finite-class-set-and-a-compact-adelic-quotient">3. A finite class set and a compact adelic quotient</h2>
+<p>We shall use the following local-to-global fact explicitly. If full <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>-lattices <span class="math" data-tex="\(L_\ell\subset D_\ell\)">\(L_\ell\subset D_\ell\)</span> equal a fixed full lattice's completions at almost all primes, then
+<span class="math math-display" data-tex="\[
+L=D\cap\prod_\ell L_\ell
+\]">\[
+L=D\cap\prod_\ell L_\ell
+\]</span>
+is a full <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-lattice with <span class="math" data-tex="\(L\otimes\mathbb Z_\ell=L_\ell\)">\(L\otimes\mathbb Z_\ell=L_\ell\)</span> at every prime. To prove it, choose <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span> such that
+<span class="math math-display" data-tex="\[
+M\mathcal O_\ell\subset L_\ell\subset M^{-1}\mathcal O_\ell
+\]">\[
+M\mathcal O_\ell\subset L_\ell\subset M^{-1}\mathcal O_\ell
+\]</span>
+for all primes, with equality to <span class="math" data-tex="\(\mathcal O_\ell\)">\(\mathcal O_\ell\)</span> outside the divisors of <span class="math" data-tex="\(M\)">\(M\)</span>. The finite group <span class="math" data-tex="\(M^{-1}\mathcal O/M\mathcal O\)">\(M^{-1}\mathcal O/M\mathcal O\)</span> is the direct sum of its primary parts, by the integer Chinese remainder theorem. Choose in each part the subgroup prescribed by <span class="math" data-tex="\(L_\ell/M\mathcal O_\ell\)">\(L_\ell/M\mathcal O_\ell\)</span>, and take its inverse image in <span class="math" data-tex="\(M^{-1}\mathcal O\)">\(M^{-1}\mathcal O\)</span>. This constructs exactly <span class="math" data-tex="\(L\)">\(L\)</span> and proves the completion assertion. Containment, products and multiplication stability can all be checked in these completions; an element is in the global lattice exactly when it is in every local lattice. In particular the same construction glues local right ideals or orders. This is the lattice dictionary used below.</p>
+<p>Let <span class="math" data-tex="\(D\)">\(D\)</span> be definite over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and let <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> be a maximal order. A fractional right ideal is a full lattice <span class="math" data-tex="\(I\subset D\)">\(I\subset D\)</span> stable under right multiplication by <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. At every finite place it is principal, <span class="math" data-tex="\(I_p=x_p\mathcal O_p\)">\(I_p=x_p\mathcal O_p\)</span>. At a split place, matrix units show that a right ideal consists of matrices with columns in a fixed full rank-two lattice; a basis matrix for that lattice is such an <span class="math" data-tex="\(x_p\)">\(x_p\)</span>. At a division place, choose <span class="math" data-tex="\(a\)">\(a\)</span> of least valuation in the ideal. Every <span class="math" data-tex="\(b\)">\(b\)</span> in it has <span class="math" data-tex="\(a^{-1}b\in\mathcal O_D\)">\(a^{-1}b\in\mathcal O_D\)</span>, and right stability gives the converse inclusion, so the ideal is <span class="math" data-tex="\(a\mathcal O_D\)">\(a\mathcal O_D\)</span>. The local-global dictionary is Voight, Section 27.6, especially Lemma 27.6.8. Two ideals are equivalent if <span class="math" data-tex="\(J=\alpha I\)">\(J=\alpha I\)</span> for <span class="math" data-tex="\(\alpha\in D^\times\)">\(\alpha\in D^\times\)</span>. Their classes form <span class="math" data-tex="\(\operatorname{Cls}(\mathcal O)\)">\(\operatorname{Cls}(\mathcal O)\)</span>.</p>
+<p>We use the same dictionary for norm and inverse. Define the positive rational <span class="math" data-tex="\(q_I\)">\(q_I\)</span> by <span class="math" data-tex="\(q_I\mathbb Z=\operatorname{nrd}(I)\)">\(q_I\mathbb Z=\operatorname{nrd}(I)\)</span>. Let
+<span class="math math-display" data-tex="\[
+\mathcal O_L(I)=\{a\in D:aI\subset I\},\qquad
+I^{-1}=\{a\in D:aI\subset\mathcal O\}.
+\tag{3.1}
+\]">\[
+\mathcal O_L(I)=\{a\in D:aI\subset I\},\qquad
+I^{-1}=\{a\in D:aI\subset\mathcal O\}.
+\tag{3.1}
+\]</span>
+Local multiplication gives <span class="math" data-tex="\(\overline I=q_I I^{-1}\)">\(\overline I=q_I I^{-1}\)</span>, and
+<span class="math" data-tex="\(I J^{-1}=\{a:aJ\subset I\}\)">\(I J^{-1}=\{a:aJ\subset I\}\)</span>. These follow locally from principal ideals and then by intersecting the local lattices. The latter product is the additive span of products; it is a lattice of homomorphisms, not a commutative ideal product.</p>
+<p><strong>Lemma 3.1.</strong> The class set is finite. Each <span class="math" data-tex="\(\mathcal O_L(I)^\times\)">\(\mathcal O_L(I)^\times\)</span> is finite.</p>
+<p><strong>Proof.</strong> Identify <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span> with <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span> with squared Euclidean norm <span class="math" data-tex="\(\operatorname{nrd}\)">\(\operatorname{nrd}\)</span>, and let <span class="math" data-tex="\(V\)">\(V\)</span> be the covolume of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>. Left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> has real determinant <span class="math" data-tex="\(\operatorname{nrd}(a)^2\)">\(\operatorname{nrd}(a)^2\)</span>; it scales lengths by <span class="math" data-tex="\(\sqrt{\operatorname{nrd}(a)}\)">\(\sqrt{\operatorname{nrd}(a)}\)</span>. The local principal description therefore gives
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(I)=q_I^2V,
+\qquad \operatorname{covol}(I^{-1})=q_I^{-2}V.
+\tag{3.2}
+\]">\[
+\operatorname{covol}(I)=q_I^2V,
+\qquad \operatorname{covol}(I^{-1})=q_I^{-2}V.
+\tag{3.2}
+\]</span>
+For an integral ideal, the first equality can also be read as
+<span class="math" data-tex="\([\mathcal O:I]=q_I^2\)">\([\mathcal O:I]=q_I^2\)</span>; fractional ideals follow by clearing denominators. The inverse equality follows from <span class="math" data-tex="\(I^{-1}=q_I^{-1}\overline I\)">\(I^{-1}=q_I^{-1}\overline I\)</span>, since conjugation preserves volume.</p>
+<p>Let <span class="math" data-tex="\(v_4\)">\(v_4\)</span> be the volume of the unit ball in this Euclidean space. Choose <span class="math" data-tex="\(R\)">\(R\)</span> with
+<span class="math" data-tex="\(R^4=17V/(v_4q_I^2)\)">\(R^4=17V/(v_4q_I^2)\)</span>. Minkowski's convex-body theorem, proved in the earlier lattice lesson cited in Section 7, says that a symmetric convex body of volume greater than <span class="math" data-tex="\(2^4\)">\(2^4\)</span> times the lattice covolume contains a nonzero lattice point. Applied to the radius-<span class="math" data-tex="\(R\)">\(R\)</span> ball in <span class="math" data-tex="\(I^{-1}\)">\(I^{-1}\)</span>, it supplies <span class="math" data-tex="\(0\ne a\in I^{-1}\)">\(0\ne a\in I^{-1}\)</span>. Then <span class="math" data-tex="\(aI\subset\mathcal O\)">\(aI\subset\mathcal O\)</span>, lies in the same class, and
+<span class="math math-display" data-tex="\[
+[\mathcal O:aI]
+ =\operatorname{nrd}(a)^2q_I^2
+ \le R^4q_I^2=\frac{17V}{v_4}.
+\tag{3.3}
+\]">\[
+[\mathcal O:aI]
+ =\operatorname{nrd}(a)^2q_I^2
+ \le R^4q_I^2=\frac{17V}{v_4}.
+\tag{3.3}
+\]</span>
+This bound is independent of <span class="math" data-tex="\(I\)">\(I\)</span>. Choose an integer <span class="math" data-tex="\(M\)">\(M\)</span> at least that bound. Any subgroup of <span class="math" data-tex="\(\mathcal O\simeq\mathbb Z^4\)">\(\mathcal O\simeq\mathbb Z^4\)</span> of index <span class="math" data-tex="\(k\le M\)">\(k\le M\)</span> contains <span class="math" data-tex="\(k\mathcal O\)">\(k\mathcal O\)</span>, and therefore contains <span class="math" data-tex="\(M!\mathcal O\)">\(M!\mathcal O\)</span>. There are only finitely many subgroups between <span class="math" data-tex="\(M!\mathcal O\)">\(M!\mathcal O\)</span> and <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, proving finiteness of the classes.</p>
+<p>A unit of a definite order has positive integral norm, whose inverse is also integral, so its norm is one. The units of <span class="math" data-tex="\(\mathcal O_L(I)\)">\(\mathcal O_L(I)\)</span> lie in the compact unit sphere and in a discrete lattice, hence are finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ideal dictionary also gives
+<span class="math math-display" data-tex="\[
+\operatorname{Cls}(\mathcal O)
+ \simeq D^\times\backslash D^\times(\mathbb A_f)/\widehat{\mathcal O}^{\times},
+\qquad
+[g]\longmapsto[D\cap g\widehat{\mathcal O}].
+\tag{3.4}
+\]">\[
+\operatorname{Cls}(\mathcal O)
+ \simeq D^\times\backslash D^\times(\mathbb A_f)/\widehat{\mathcal O}^{\times},
+\qquad
+[g]\longmapsto[D\cap g\widehat{\mathcal O}].
+\tag{3.4}
+\]</span>
+Surjectivity chooses local generators; equality of classes means those generators differ by rational left multiplication and local right units. This proves the displayed equivalence using the local dictionary.</p>
+<p><strong>Theorem 3.2.</strong> For definite <span class="math" data-tex="\(D/\mathbb Q\)">\(D/\mathbb Q\)</span>,
+<span class="math math-display" data-tex="\[
+X_D=D^\times\backslash D^\times(\mathbb A)/\mathbb A^\times
+\tag{3.5}
+\]">\[
+X_D=D^\times\backslash D^\times(\mathbb A)/\mathbb A^\times
+\tag{3.5}
+\]</span>
+is compact.</p>
+<p><strong>Proof.</strong> First
+<span class="math" data-tex="\(\mathbb H^\times/\mathbb R^\times\simeq S^3/\{\pm1\}\)">\(\mathbb H^\times/\mathbb R^\times\simeq S^3/\{\pm1\}\)</span>: send <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(x/\sqrt{\operatorname{nrd}(x)}\)">\(x/\sqrt{\operatorname{nrd}(x)}\)</span>, and a negative scalar changes that unit quaternion only by sign. This is a continuous quotient of a compact sphere.</p>
+<p>Choose finitely many representatives <span class="math" data-tex="\(g_1,\ldots,g_h\)">\(g_1,\ldots,g_h\)</span> in (3.4). Every adelic element, after rational left multiplication, has finite component <span class="math" data-tex="\(g_i u\)">\(g_i u\)</span> with <span class="math" data-tex="\(u\in\widehat{\mathcal O}^{\times}\)">\(u\in\widehat{\mathcal O}^{\times}\)</span>. Its real component is arbitrary in <span class="math" data-tex="\(\mathbb H^\times\)">\(\mathbb H^\times\)</span>; after a real central scalar it is represented by a unit quaternion. Hence the finite union of compact sets
+<span class="math math-display" data-tex="\[
+\bigcup_{i=1}^h S^3\times g_i\widehat{\mathcal O}^{\times}
+\tag{3.6}
+\]">\[
+\bigcup_{i=1}^h S^3\times g_i\widehat{\mathcal O}^{\times}
+\tag{3.6}
+\]</span>
+maps onto <span class="math" data-tex="\(X_D\)">\(X_D\)</span>. Its image is compact. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="3-1-compactness-without-definiteness">3.1. Compactness without definiteness</h3>
+<p>The real factor need not be compact. We replace that condition by the fact that a division algebra has no nonzero element of reduced norm zero. The proof uses the written Minkowski theorem cited in Section 7 and elementary lattice bases.</p>
+<p><strong>Lemma — bounded lattice bases.</strong> Given <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, every full lattice <span class="math" data-tex="\(L\subset\mathbb R^n\)">\(L\subset\mathbb R^n\)</span> with covolume at most <span class="math" data-tex="\(C\)">\(C\)</span>, and with <span class="math" data-tex="\(\|v\|\ge\epsilon\)">\(\|v\|\ge\epsilon\)</span> for <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, has a basis of bounded length, with bound depending only on these three quantities.</p>
+<p><strong>Proof.</strong> In dimension one a basis has length equal to the covolume. For the induction step choose a shortest nonzero vector <span class="math" data-tex="\(v\)">\(v\)</span>, of length <span class="math" data-tex="\(a\)">\(a\)</span>. Minkowski's theorem on a ball of volume greater than <span class="math" data-tex="\(2^nC\)">\(2^nC\)</span> bounds <span class="math" data-tex="\(a\)">\(a\)</span> above; by hypothesis <span class="math" data-tex="\(a\ge\epsilon\)">\(a\ge\epsilon\)</span>. The vector is primitive, since a proper integer division of it in <span class="math" data-tex="\(L\)">\(L\)</span> would be shorter. Extend it to an integral lattice basis and project orthogonally onto <span class="math" data-tex="\(v^\perp\)">\(v^\perp\)</span>. The projected basis is independent, so its image <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> is a full lattice of covolume
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(L&#x27;)=\operatorname{covol}(L)/a\le C/\epsilon.
+\]">\[
+\operatorname{covol}(L&#x27;)=\operatorname{covol}(L)/a\le C/\epsilon.
+\]</span>
+Any nonzero projected vector has a lift whose coefficient along <span class="math" data-tex="\(v\)">\(v\)</span> has absolute length at most <span class="math" data-tex="\(a/2\)">\(a/2\)</span>, after subtracting a multiple of <span class="math" data-tex="\(v\)">\(v\)</span>. Minimality of <span class="math" data-tex="\(a\)">\(a\)</span> forces its projected length to be at least <span class="math" data-tex="\(\sqrt3\,a/2\)">\(\sqrt3\,a/2\)</span>. Thus <span class="math" data-tex="\(L&#x27;\)">\(L&#x27;\)</span> satisfies the induction hypothesis with lower length <span class="math" data-tex="\(\sqrt3\,\epsilon/2\)">\(\sqrt3\,\epsilon/2\)</span>. Lift its bounded basis, again reducing each parallel component to length at most <span class="math" data-tex="\(a/2\)">\(a/2\)</span>. Together with <span class="math" data-tex="\(v\)">\(v\)</span> these lifts form a basis of <span class="math" data-tex="\(L\)">\(L\)</span> of bounded length. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.3 — compactness over a number field.</strong> If <span class="math" data-tex="\(F\)">\(F\)</span> is a number field and <span class="math" data-tex="\(D/F\)">\(D/F\)</span> a quaternion division algebra, then both
+<span class="math math-display" data-tex="\[
+D(F)^\times\backslash D^\times(\mathbb A_F)^1,
+\qquad
+D(F)^\times\backslash D^\times(\mathbb A_F)/
+                 \mathbb A_F^\times
+\tag{3.8}
+\]">\[
+D(F)^\times\backslash D^\times(\mathbb A_F)^1,
+\qquad
+D(F)^\times\backslash D^\times(\mathbb A_F)/
+                 \mathbb A_F^\times
+\tag{3.8}
+\]</span>
+are compact. The superscript <span class="math" data-tex="\(1\)">\(1\)</span> means
+<span class="math" data-tex="\(\lvert\operatorname{nrd}(g)\rvert_{\mathbb A_F}=1\)">\(\lvert\operatorname{nrd}(g)\rvert_{\mathbb A_F}=1\)</span>.</p>
+<p><strong>Proof.</strong> Choose a full order <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> over <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>. Such an order can be constructed without a maximal-order theorem: choose a basis <span class="math" data-tex="\(1,e_1,e_2,e_3\)">\(1,e_1,e_2,e_3\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span>, and an integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> clearing the denominators of every multiplication coefficient. Then
+<span class="math" data-tex="\(\mathcal O_F1+\sum_{r=1}^3N\mathcal O_Fe_r\)">\(\mathcal O_F1+\sum_{r=1}^3N\mathcal O_Fe_r\)</span> is a full order. It is a full <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-lattice of rank <span class="math" data-tex="\(n=4[F:\mathbb Q]\)">\(n=4[F:\mathbb Q]\)</span>. Fix a positive Euclidean metric on
+<span class="math math-display" data-tex="\[
+D_\infty=D\otimes_{\mathbb Q}\mathbb R
+        =\prod_{v\mid\infty}D_v
+\]">\[
+D_\infty=D\otimes_{\mathbb Q}\mathbb R
+        =\prod_{v\mid\infty}D_v
+\]</span>
+and let <span class="math" data-tex="\(V\)">\(V\)</span> be the covolume of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>.</p>
+<p>For <span class="math" data-tex="\(g=(g_\infty,g_f)\)">\(g=(g_\infty,g_f)\)</span> in the first adelic group, form the right <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>-lattice
+<span class="math math-display" data-tex="\[
+I_g=D(F)\cap g_f\widehat{\mathcal O},\qquad
+L_g=g_\infty^{-1}I_g\subset D_\infty.
+\tag{3.9}
+\]">\[
+I_g=D(F)\cap g_f\widehat{\mathcal O},\qquad
+L_g=g_\infty^{-1}I_g\subset D_\infty.
+\tag{3.9}
+\]</span>
+The Chinese remainder proof of the Section 3 lattice dictionary applies here to the underlying rank-<span class="math" data-tex="\(n\)">\(n\)</span> integer lattice: at a rational prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, group together the completions at <span class="math" data-tex="\(v\mid\ell\)">\(v\mid\ell\)</span>. Thus the completion of <span class="math" data-tex="\(I_g\)">\(I_g\)</span> at each finite <span class="math" data-tex="\(v\)">\(v\)</span> is exactly <span class="math" data-tex="\(g_v\mathcal O_v\)">\(g_v\mathcal O_v\)</span>.</p>
+<p>Left multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> on a quaternion algebra has determinant <span class="math" data-tex="\(\operatorname{nrd}(a)^2\)">\(\operatorname{nrd}(a)^2\)</span> over its centre. This is the matrix identity after splitting the algebra, and hence is an identity before splitting. For real volume, the complex places contribute the squared complex absolute value. The local lattice-index formula and real change of variables consequently give
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(L_g)
+ =V\left|\operatorname{nrd}(g_f)\right|_f^{-2}
+      \left|\operatorname{nrd}(g_\infty)\right|_\infty^{-2}
+ =V.
+\tag{3.10}
+\]">\[
+\operatorname{covol}(L_g)
+ =V\left|\operatorname{nrd}(g_f)\right|_f^{-2}
+      \left|\operatorname{nrd}(g_\infty)\right|_\infty^{-2}
+ =V.
+\tag{3.10}
+\]</span></p>
+<p>There is also a uniform lower bound for the lengths of its nonzero vectors. Write such a vector as <span class="math" data-tex="\(x=g_\infty^{-1}a\)">\(x=g_\infty^{-1}a\)</span>, with <span class="math" data-tex="\(0\ne a\in I_g\)">\(0\ne a\in I_g\)</span>. Since <span class="math" data-tex="\(D\)">\(D\)</span> is division, <span class="math" data-tex="\(\operatorname{nrd}(a)\ne0\)">\(\operatorname{nrd}(a)\ne0\)</span>. At every finite <span class="math" data-tex="\(v\)">\(v\)</span>, the element <span class="math" data-tex="\(g_v^{-1}a\)">\(g_v^{-1}a\)</span> belongs to the order, so its reduced norm is integral. Integrality follows because the multiplication operator on a finite integral module makes its eigenvalues integral, and the reduced norm belongs to the integrally closed ring <span class="math" data-tex="\(\mathcal O_{F_v}\)">\(\mathcal O_{F_v}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+|\operatorname{nrd}(a)|_f
+ \le|\operatorname{nrd}(g_f)|_f.
+\]">\[
+|\operatorname{nrd}(a)|_f
+ \le|\operatorname{nrd}(g_f)|_f.
+\]</span>
+The product formula and the module-one condition now show
+<span class="math math-display" data-tex="\[
+|\operatorname{nrd}(x)|_\infty
+ =\frac{|\operatorname{nrd}(a)|_\infty}
+        {|\operatorname{nrd}(g_\infty)|_\infty}
+ \ge1.
+\tag{3.11}
+\]">\[
+|\operatorname{nrd}(x)|_\infty
+ =\frac{|\operatorname{nrd}(a)|_\infty}
+        {|\operatorname{nrd}(g_\infty)|_\infty}
+ \ge1.
+\tag{3.11}
+\]</span>
+On this fixed real vector space the continuous homogeneous expression on the left has degree <span class="math" data-tex="\(2[F:\mathbb Q]\)">\(2[F:\mathbb Q]\)</span>: degree two at a real place and degree four at a complex place. Its maximum on the Euclidean unit sphere is a finite constant <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+1\le A\|x\|^{2[F:\mathbb Q]}.
+\]">\[
+1\le A\|x\|^{2[F:\mathbb Q]}.
+\]</span>
+All the lattices <span class="math" data-tex="\(L_g\)">\(L_g\)</span> have shortest length at least one fixed positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>.</p>
+<p>The bounded-basis lemma supplies a basis matrix <span class="math" data-tex="\(T_g\)">\(T_g\)</span> for each <span class="math" data-tex="\(L_g\)">\(L_g\)</span> with uniformly bounded entries. Its determinant has absolute value <span class="math" data-tex="\(V\)">\(V\)</span>, so its inverse is uniformly bounded too, by the cofactor formula. Choose a <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-basis <span class="math" data-tex="\(o_1,\ldots,o_n\)">\(o_1,\ldots,o_n\)</span> of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, and write <span class="math" data-tex="\(R(o)\)">\(R(o)\)</span> for right multiplication on <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>. Right stability of <span class="math" data-tex="\(L_g\)">\(L_g\)</span> says that all the matrices
+<span class="math math-display" data-tex="\[
+T_g^{-1}R(o_r)T_g
+\tag{3.12}
+\]">\[
+T_g^{-1}R(o_r)T_g
+\tag{3.12}
+\]</span>
+are integral. Uniform bounds on <span class="math" data-tex="\(T_g\)">\(T_g\)</span> and its inverse bound their entries. There are only finitely many possible tuples (3.12).</p>
+<p>For each tuple which occurs, choose a representative <span class="math" data-tex="\(g_\mu\)">\(g_\mu\)</span> and its basis matrix <span class="math" data-tex="\(T_\mu\)">\(T_\mu\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> has that tuple, the real linear map
+<span class="math math-display" data-tex="\[
+T_gT_\mu^{-1}
+\]">\[
+T_gT_\mu^{-1}
+\]</span>
+commutes with every <span class="math" data-tex="\(R(o_r)\)">\(R(o_r)\)</span>, hence with the right action of all <span class="math" data-tex="\(D_\infty\)">\(D_\infty\)</span>, since the <span class="math" data-tex="\(o_r\)">\(o_r\)</span> span it over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. A map commuting with that right regular action is left multiplication by its value <span class="math" data-tex="\(b\)">\(b\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span>: for every <span class="math" data-tex="\(y\)">\(y\)</span>, its value at <span class="math" data-tex="\(y=1y\)">\(y=1y\)</span> is <span class="math" data-tex="\(by\)">\(by\)</span>. Invertibility makes <span class="math" data-tex="\(b\in D_\infty^\times\)">\(b\in D_\infty^\times\)</span>, and the bounds on the matrices bound both <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span>. The equality of lattices is
+<span class="math math-display" data-tex="\[
+L_g=bL_{g_\mu},\qquad
+I_g=\gamma I_{g_\mu},
+\quad
+\gamma=g_\infty b g_{\mu,\infty}^{-1}.
+\tag{3.13}
+\]">\[
+L_g=bL_{g_\mu},\qquad
+I_g=\gamma I_{g_\mu},
+\quad
+\gamma=g_\infty b g_{\mu,\infty}^{-1}.
+\tag{3.13}
+\]</span>
+Although <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> was initially an archimedean element, it is rational over <span class="math" data-tex="\(F\)">\(F\)</span>. Pick <span class="math" data-tex="\(0\ne a\in I_{g_\mu}\)">\(0\ne a\in I_{g_\mu}\)</span>. The division hypothesis makes <span class="math" data-tex="\(a^{-1}\in D(F)\)">\(a^{-1}\in D(F)\)</span>; equation (3.13) puts <span class="math" data-tex="\(\gamma a\)">\(\gamma a\)</span> in <span class="math" data-tex="\(I_g\subset D(F)\)">\(I_g\subset D(F)\)</span>. Thus <span class="math" data-tex="\(\gamma=(\gamma a)a^{-1}\in D(F)^\times\)">\(\gamma=(\gamma a)a^{-1}\in D(F)^\times\)</span>.</p>
+<p>Taking completions in (3.13) gives
+<span class="math math-display" data-tex="\[
+g_f=\gamma g_{\mu,f}u,\qquad
+u\in\widehat{\mathcal O}^{\times}.
+\]">\[
+g_f=\gamma g_{\mu,f}u,\qquad
+u\in\widehat{\mathcal O}^{\times}.
+\]</span>
+Indeed the quotient multiplier carries <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> onto itself; it and its inverse therefore belong to that order. The archimedean part of <span class="math" data-tex="\(\gamma^{-1}g\)">\(\gamma^{-1}g\)</span> is <span class="math" data-tex="\(g_{\mu,\infty}b^{-1}\)">\(g_{\mu,\infty}b^{-1}\)</span>. For each of the finitely many <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, these archimedean parts lie in a compact set: the bounds on <span class="math" data-tex="\(b\)">\(b\)</span> and <span class="math" data-tex="\(b^{-1}\)">\(b^{-1}\)</span> keep them in a closed bounded subset of the invertible real algebra. Its finite parts lie in the compact set <span class="math" data-tex="\(g_{\mu,f}\widehat{\mathcal O}^\times\)">\(g_{\mu,f}\widehat{\mathcal O}^\times\)</span>. Intersecting these compact products with the closed module-one group gives a finite union of compact sets of representatives. This proves compactness of the first quotient in (3.8).</p>
+<p>Finally the idele module over a number field takes every positive real value, by varying a positive archimedean coordinate. Given any <span class="math" data-tex="\(g\)">\(g\)</span>, choose a central idele <span class="math" data-tex="\(c\)">\(c\)</span> with
+<span class="math math-display" data-tex="\[
+|c|_{\mathbb A_F}
+  =|\operatorname{nrd}(g)|_{\mathbb A_F}^{-1/2}.
+\]">\[
+|c|_{\mathbb A_F}
+  =|\operatorname{nrd}(g)|_{\mathbb A_F}^{-1/2}.
+\]</span>
+Its reduced norm is <span class="math" data-tex="\(c^2\)">\(c^2\)</span>, so <span class="math" data-tex="\(cg\)">\(cg\)</span> has module one. The compact first quotient therefore maps onto the central quotient. Its continuous image is compact, proving the second assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem uses division over <span class="math" data-tex="\(F\)">\(F\)</span>, rather than division at every completion. At a split real place the group can be noncompact; (3.11), the bounded bases and the integral right actions provide the compact representatives.</p>
+<p><strong>Proposition 3.4.</strong> With a unitary central character, the right regular Hilbert representation on this compact quotient is a discrete Hilbert sum of irreducible representations, each with finite multiplicity.</p>
+<p><strong>Proof.</strong> We explain the compact convolution input, then apply the functional argument already proved in Lesson 4, Theorem 5.2. For trivial central character put <span class="math" data-tex="\(\overline G=G(\mathbb A)/\mathbb A^\times\)">\(\overline G=G(\mathbb A)/\mathbb A^\times\)</span> and <span class="math" data-tex="\(\Gamma=G(\mathbb Q)/\mathbb Q^\times\)">\(\Gamma=G(\mathbb Q)/\mathbb Q^\times\)</span>. The latter is discrete: use its faithful adjoint action on the rational trace-zero space; rational matrices form a discrete subgroup of adelic matrices. For compactly supported smooth <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\overline G\)">\(\overline G\)</span>, convolution has kernel
+<span class="math math-display" data-tex="\[
+K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y).
+\tag{3.7}
+\]">\[
+K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y).
+\tag{3.7}
+\]</span>
+Choose a compact set of representatives for <span class="math" data-tex="\(\Gamma\backslash\overline G\)">\(\Gamma\backslash\overline G\)</span>. Only finitely many <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> can contribute anywhere on this set squared: they lie in its product with <span class="math" data-tex="\(\operatorname{supp}f\)">\(\operatorname{supp}f\)</span> and the inverse representative set, a compact set meeting the discrete <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> finitely. Thus <span class="math" data-tex="\(K_f\)">\(K_f\)</span> is bounded on the compact finite-volume quotient and is square integrable. Its operator is Hilbert–Schmidt and compact, as proved in Lesson 4, Proposition 5.1 and Solution 7.1.</p>
+<p>Smooth compact approximate identities converge strongly to the identity. Their positive products <span class="math" data-tex="\(R(f)^*R(f)\)">\(R(f)^*R(f)\)</span> are compact. The proof of Lesson 4, Theorem 5.2, uses a smallest nonzero intersection of a positive eigenspace with invariant subspaces to find an irreducible subspace in every nonzero invariant subspace. A maximal orthogonal family exhausts the Hilbert space. Infinite multiplicity of any one irreducible would give an infinite-dimensional positive eigenspace of a compact operator, which is impossible. These arguments apply to the whole space here because its kernels are compact without deleting a constant term.</p>
+<p>For unitary <span class="math" data-tex="\(\omega\)">\(\omega\)</span>, the kernel is the same local periodization in the associated central-character line bundle. Changing representatives multiplies its terms by phases of absolute value one. The finite-sum bound, compactness and the positive approximate-identity argument are unchanged. This proves the assertion in every fixed unitary central character. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-functions-on-classes-and-brandt-matrices">4. Functions on classes and Brandt matrices</h2>
+<p>Impose trivial central character, right <span class="math" data-tex="\(\widehat{\mathcal O}^{\times}\)">\(\widehat{\mathcal O}^{\times}\)</span>-invariance, and <strong>weight zero</strong>, meaning invariance under all of <span class="math" data-tex="\(D_\infty^\times\)">\(D_\infty^\times\)</span>. The resulting automorphic space is
+<span class="math math-display" data-tex="\[
+\mathcal M(\mathcal O)=\{f:\operatorname{Cls}(\mathcal O)\longrightarrow\mathbb C\}.
+\tag{4.1}
+\]">\[
+\mathcal M(\mathcal O)=\{f:\operatorname{Cls}(\mathcal O)\longrightarrow\mathbb C\}.
+\tag{4.1}
+\]</span>
+To check the centre in this identification, any finite idele can be written as a rational scalar times an element of <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span>: choose the rational scalar with its finitely many nonzero prime valuations. These two factors are already removed in (3.4). The real centre is removed by weight zero. Thus no further ideal classes are identified. Conversely a function on classes gives such an adelic function; all real derivatives vanish, and the finite class space ensures the required finiteness conditions.</p>
+<p>Choose right ideals <span class="math" data-tex="\(I_1,\ldots,I_h\)">\(I_1,\ldots,I_h\)</span> representing the classes, and set
+<span class="math math-display" data-tex="\[
+q_i=q_{I_i},\qquad
+w_i=\#\bigl(\mathcal O_L(I_i)^\times/\{\pm1\}\bigr),\qquad
+\langle f,g\rangle=\sum_{i=1}^h\frac{f_i\overline{g_i}}{w_i}.
+\tag{4.2}
+\]">\[
+q_i=q_{I_i},\qquad
+w_i=\#\bigl(\mathcal O_L(I_i)^\times/\{\pm1\}\bigr),\qquad
+\langle f,g\rangle=\sum_{i=1}^h\frac{f_i\overline{g_i}}{w_i}.
+\tag{4.2}
+\]</span>
+The <span class="math" data-tex="\(w_i\)">\(w_i\)</span> are finite by Lemma 3.1. These weights also agree, up to one common normalization, with quotient measure: the real compact fibre above a class is divided by its stabilizer <span class="math" data-tex="\(\mathcal O_L(I_i)^\times/\{\pm1\}\)">\(\mathcal O_L(I_i)^\times/\{\pm1\}\)</span>. We can prove the required adjoint statement directly from ideal counts, independently of this measure interpretation.</p>
+<p>For an integer <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, define the <strong>row-convention Brandt matrix</strong> by
+<span class="math math-display" data-tex="\[
+B(n)_{ij}=
+\#\{J\subset I_i:J\text{ a right }\mathcal O\text{-ideal},
+ q_J=nq_i,\ [J]=[I_j]\}.
+\tag{4.3}
+\]">\[
+B(n)_{ij}=
+\#\{J\subset I_i:J\text{ a right }\mathcal O\text{-ideal},
+ q_J=nq_i,\ [J]=[I_j]\}.
+\tag{4.3}
+\]</span>
+It acts on column vectors of function values:
+<span class="math math-display" data-tex="\[
+(T_nf)_i=\sum_j B(n)_{ij}f_j.
+\tag{4.4}
+\]">\[
+(T_nf)_i=\sum_j B(n)_{ij}f_j.
+\tag{4.4}
+\]</span>
+Every ideal here is locally principal because the order is maximal. The count is finite: such a <span class="math" data-tex="\(J\)">\(J\)</span> has additive index <span class="math" data-tex="\([I_i:J]=n^2\)">\([I_i:J]=n^2\)</span>, so contains <span class="math" data-tex="\(n^2I_i\)">\(n^2I_i\)</span>. Voight's introductory convention, (41.1.1), counts source classes in columns; its matrix is the transpose of (4.3).</p>
+<p>Let <span class="math" data-tex="\(\ell\nmid d_D\)">\(\ell\nmid d_D\)</span>. Under <span class="math" data-tex="\(\mathcal O_\ell\simeq M_2(\mathbb Z_\ell)\)">\(\mathcal O_\ell\simeq M_2(\mathbb Z_\ell)\)</span>, a right ideal consists of matrices whose columns belong to a fixed lattice <span class="math" data-tex="\(L\subset\mathbb Q_\ell^2\)">\(L\subset\mathbb Q_\ell^2\)</span>. The lattice determines the ideal: multiplying by matrix units isolates either column, and moves it to the other position. Norm ratio <span class="math" data-tex="\(\ell\)">\(\ell\)</span> means <span class="math" data-tex="\([\mathbb Z_\ell^2:L]=\ell\)">\([\mathbb Z_\ell^2:L]=\ell\)</span>. Such lattices contain <span class="math" data-tex="\(\ell\mathbb Z_\ell^2\)">\(\ell\mathbb Z_\ell^2\)</span>, and correspond to lines in <span class="math" data-tex="\(\mathbb F_\ell^2\)">\(\mathbb F_\ell^2\)</span>. There are <span class="math" data-tex="\(\ell+1\)">\(\ell+1\)</span>. At all other places keep the given ideal, and intersect the local lattices to recover the global one. Thus
+<span class="math math-display" data-tex="\[
+\sum_j B(\ell)_{ij}=\ell+1=\sigma_1(\ell).
+\tag{4.5}
+\]">\[
+\sum_j B(\ell)_{ij}=\ell+1=\sigma_1(\ell).
+\tag{4.5}
+\]</span>
+More generally the number of index-<span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span> sublattices of <span class="math" data-tex="\(\mathbb Z_\ell^2\)">\(\mathbb Z_\ell^2\)</span> is <span class="math" data-tex="\(1+\ell+\cdots+\ell^r\)">\(1+\ell+\cdots+\ell^r\)</span>. An upper-triangular lattice basis has diagonal <span class="math" data-tex="\(\ell^a,\ell^b\)">\(\ell^a,\ell^b\)</span>, <span class="math" data-tex="\(a+b=r\)">\(a+b=r\)</span>, and <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span> choices for its other entry modulo <span class="math" data-tex="\(\ell^a\)">\(\ell^a\)</span>. Summing over <span class="math" data-tex="\(a\)">\(a\)</span> proves the count. At a division prime there is one ideal for each valuation, namely the corresponding power of the maximal ideal. These statements specify the row degrees of all <span class="math" data-tex="\(B(n)\)">\(B(n)\)</span> by multiplying the local counts.</p>
+<p>We count all ideals of norm ratio <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>, including those divisible by the scalar <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. A primitive-distance operator on the lattice tree has a different degree at <span class="math" data-tex="\(r=2\)">\(r=2\)</span>. In particular <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span> has row sum <span class="math" data-tex="\(1+\ell+\ell^2\)">\(1+\ell+\ell^2\)</span>, whereas a distance-two operator has row sum <span class="math" data-tex="\(\ell(\ell+1)\)">\(\ell(\ell+1)\)</span>.</p>
+<p><strong>Theorem 4.1 — Brandt operators.</strong> All <span class="math" data-tex="\(B(n)\)">\(B(n)\)</span> commute. They are self-adjoint for (4.2), equivalently
+<span class="math math-display" data-tex="\[
+\frac{B(n)_{ij}}{w_i}=\frac{B(n)_{ji}}{w_j}.
+\tag{4.6}
+\]">\[
+\frac{B(n)_{ij}}{w_i}=\frac{B(n)_{ji}}{w_j}.
+\tag{4.6}
+\]</span>
+They admit a common orthogonal eigenbasis with real eigenvalues.</p>
+<p><strong>Proof of self-adjointness.</strong> An ideal counted in (4.3) has the form <span class="math" data-tex="\(aI_j\)">\(aI_j\)</span>. The allowed multipliers are precisely
+<span class="math math-display" data-tex="\[
+S_{ij}(n)=\{a\in I_iI_j^{-1}:\operatorname{nrd}(a)=nq_i/q_j\}.
+\tag{4.7}
+\]">\[
+S_{ij}(n)=\{a\in I_iI_j^{-1}:\operatorname{nrd}(a)=nq_i/q_j\}.
+\tag{4.7}
+\]</span>
+Two multipliers give the same ideal exactly when they differ on the right by a unit of <span class="math" data-tex="\(\mathcal O_L(I_j)\)">\(\mathcal O_L(I_j)\)</span>. That unit group has order <span class="math" data-tex="\(2w_j\)">\(2w_j\)</span>, and acts freely. Hence
+<span class="math math-display" data-tex="\[
+\#S_{ij}(n)=2w_jB(n)_{ij}.
+\tag{4.8}
+\]">\[
+\#S_{ij}(n)=2w_jB(n)_{ij}.
+\tag{4.8}
+\]</span>
+These sets are finite, since a positive norm sphere meets a lattice finitely.</p>
+<p>Conjugating the product lattice and using <span class="math" data-tex="\(\overline I=q_I I^{-1}\)">\(\overline I=q_I I^{-1}\)</span> gives
+<span class="math math-display" data-tex="\[
+\overline{I_iI_j^{-1}}=(q_i/q_j)I_jI_i^{-1}.
+\tag{4.9}
+\]">\[
+\overline{I_iI_j^{-1}}=(q_i/q_j)I_jI_i^{-1}.
+\tag{4.9}
+\]</span>
+For <span class="math" data-tex="\(a\in S_{ij}(n)\)">\(a\in S_{ij}(n)\)</span>, put
+<span class="math math-display" data-tex="\[
+a&#x27;=na^{-1}=(q_j/q_i)\overline a.
+\tag{4.10}
+\]">\[
+a&#x27;=na^{-1}=(q_j/q_i)\overline a.
+\tag{4.10}
+\]</span>
+Equation (4.9) places <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> in <span class="math" data-tex="\(I_jI_i^{-1}\)">\(I_jI_i^{-1}\)</span>, and multiplicativity gives
+<span class="math" data-tex="\(\operatorname{nrd}(a&#x27;)=nq_j/q_i\)">\(\operatorname{nrd}(a&#x27;)=nq_j/q_i\)</span>. Applying the same construction again returns <span class="math" data-tex="\(a\)">\(a\)</span>. Thus (4.10) is a bijection <span class="math" data-tex="\(S_{ij}(n)\simeq S_{ji}(n)\)">\(S_{ij}(n)\simeq S_{ji}(n)\)</span>. Formula (4.8) yields
+<span class="math" data-tex="\(w_j B(n)_{ij}=w_i B(n)_{ji}\)">\(w_j B(n)_{ij}=w_i B(n)_{ji}\)</span>, which is exactly (4.6). Inserting this equality into the two finite sums defining <span class="math" data-tex="\(\langle T_nf,g\rangle\)">\(\langle T_nf,g\rangle\)</span> and <span class="math" data-tex="\(\langle f,T_ng\rangle\)">\(\langle f,T_ng\rangle\)</span> proves self-adjointness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of commutativity.</strong> We prove commutativity of the local algebras that produce (4.3), including prime powers.</p>
+<p>At a split place put <span class="math" data-tex="\(K=\mathrm{GL}_2(\mathbb Z_\ell)\)">\(K=\mathrm{GL}_2(\mathbb Z_\ell)\)</span>, and normalize Haar measure by <span class="math" data-tex="\(\operatorname{vol}K=1\)">\(\operatorname{vol}K=1\)</span>. Every double coset in <span class="math" data-tex="\(\mathrm{GL}_2(\mathbb Q_\ell)\)">\(\mathrm{GL}_2(\mathbb Q_\ell)\)</span> has a representative
+<span class="math" data-tex="\(\operatorname{diag}(\ell^a,\ell^b)\)">\(\operatorname{diag}(\ell^a,\ell^b)\)</span>, by the elementary-divisor theorem for lattices, allowing negative integers after clearing denominators. Transposition fixes this representative and preserves <span class="math" data-tex="\(K\)">\(K\)</span>, so it fixes every double coset as a set. Every compactly supported bi-<span class="math" data-tex="\(K\)">\(K\)</span>-invariant function <span class="math" data-tex="\(h\)">\(h\)</span> therefore satisfies <span class="math" data-tex="\(h^t(x):=h(x^t)=h(x)\)">\(h^t(x):=h(x^t)=h(x)\)</span>.</p>
+<p>Transposition preserves Haar measure. Explicitly an invariant measure on invertible matrices is a constant times
+<span class="math" data-tex="\(dX/|\det X|_\ell^2\)">\(dX/|\det X|_\ell^2\)</span>; left or right multiplication by <span class="math" data-tex="\(A\)">\(A\)</span> changes the additive four-coordinate measure by <span class="math" data-tex="\(|\det A|_\ell^2\)">\(|\det A|_\ell^2\)</span>, and changes the denominator by the same factor. Transposition changes neither. Its reversal of multiplication then gives
+<span class="math math-display" data-tex="\[
+(h_1*h_2)^t=h_2^t*h_1^t.
+\tag{4.11}
+\]">\[
+(h_1*h_2)^t=h_2^t*h_1^t.
+\tag{4.11}
+\]</span>
+For completeness, transpose the convolution integral and substitute <span class="math" data-tex="\(z=y^t\)">\(z=y^t\)</span>. Its integrand becomes <span class="math" data-tex="\(h_1^t(z)h_2^t(xz^{-1})\)">\(h_1^t(z)h_2^t(xz^{-1})\)</span>. Substitute <span class="math" data-tex="\(u=xz^{-1}\)">\(u=xz^{-1}\)</span>; inversion and translations preserve Haar measure in this unimodular group. The integral is <span class="math" data-tex="\(\int h_2^t(u)h_1^t(u^{-1}x)\,du\)">\(\int h_2^t(u)h_1^t(u^{-1}x)\,du\)</span>, proving (4.11). The convolution is again bi-<span class="math" data-tex="\(K\)">\(K\)</span>-invariant, hence fixed by transposition. Thus <span class="math" data-tex="\(h_1*h_2=h_2*h_1\)">\(h_1*h_2=h_2*h_1\)</span>.</p>
+<p>At a division place <span class="math" data-tex="\(\mathcal O_D^\times\)">\(\mathcal O_D^\times\)</span> is normal in <span class="math" data-tex="\(D^\times\)">\(D^\times\)</span>: conjugation preserves <span class="math" data-tex="\(v_D\)">\(v_D\)</span>. The quotient is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, by that valuation. Its bi-unit Hecke algebra is the convolution algebra of finitely supported functions on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, which is commutative. Different places commute because their group coordinates and product convolutions are independent.</p>
+<p>Finally, at a good prime the operator for norm ratio <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span> is the characteristic function of
+<span class="math math-display" data-tex="\[
+\{x\in M_2(\mathbb Z_\ell):v_\ell(\det x)=r\},
+\tag{4.12}
+\]">\[
+\{x\in M_2(\mathbb Z_\ell):v_\ell(\det x)=r\},
+\tag{4.12}
+\]</span>
+restricted to invertible matrices. This compact bi-<span class="math" data-tex="\(K\)">\(K\)</span> set is the finite union of double cosets with nonnegative elementary-divisor exponents summing to <span class="math" data-tex="\(r\)">\(r\)</span>. At a division prime use <span class="math" data-tex="\(j^r\mathcal O_D^\times\)">\(j^r\mathcal O_D^\times\)</span>. Take their product over primes dividing <span class="math" data-tex="\(n\)">\(n\)</span>, with unit characteristic functions elsewhere. Right convolution on (4.1) sums over its right-unit cosets, each of measure one. Those cosets are exactly the local subideals of norm ratio <span class="math" data-tex="\(n\)">\(n\)</span>; the local-global lattice dictionary identifies them with the ideals in (4.3). Thus this convolution is <span class="math" data-tex="\(T_n\)">\(T_n\)</span>. The preceding local commutativity proves <span class="math" data-tex="\(T_mT_n=T_nT_m\)">\(T_mT_n=T_nT_m\)</span> for all <span class="math" data-tex="\(m,n\)">\(m,n\)</span>. When <span class="math" data-tex="\(m,n\)">\(m,n\)</span> are coprime the same description also gives <span class="math" data-tex="\(T_mT_n=T_{mn}\)">\(T_mT_n=T_{mn}\)</span>.</p>
+<p>For the final assertion, diagonalize any one self-adjoint operator. All commuting operators preserve its orthogonal eigenspaces. If an eigenspace has a nonscalar restriction of another operator, diagonalize that restriction and refine the orthogonal decomposition. Each refinement increases the number of nonzero summands, which is bounded by <span class="math" data-tex="\(h\)">\(h\)</span>. Eventually every operator is scalar on every summand; an orthonormal basis in those summands is a common eigenbasis. Self-adjointness makes every eigenvalue real. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The normalization is the unscaled integral Hecke operator. At a split prime its unitary Satake eigenvalue is <span class="math" data-tex="\(\ell^{1/2}(\alpha_\ell+\beta_\ell)\)">\(\ell^{1/2}(\alpha_\ell+\beta_\ell)\)</span>, as in <a href="unramified-representations-of-gl2-and-satake-parameters.html">Lesson 13</a>. The constant function has eigenvalue <span class="math" data-tex="\(\ell+1\)">\(\ell+1\)</span>. These conventions also give the usual weight-two classical coefficients in the later correspondence.</p>
+<h3 id="4-1-count-the-classes-with-their-stabilizers">4.1. Count the classes with their stabilizers</h3>
+<p>The weights in (4.2) are necessary even when the question is only the number of classes. We first compute their sum and then count the units which make the ordinary class number differ from that sum. Throughout this subsection, <span class="math" data-tex="\(D/\mathbb Q\)">\(D/\mathbb Q\)</span> is definite, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> is maximal, and <span class="math" data-tex="\(d=d_D\)">\(d=d_D\)</span>.</p>
+<p><strong>Lemma 4.2 — the lattice volume.</strong> For the Euclidean metric <span class="math" data-tex="\(\|x\|^2=\operatorname{nrd}(x)\)">\(\|x\|^2=\operatorname{nrd}(x)\)</span> on <span class="math" data-tex="\(D_\infty\simeq\mathbb H\)">\(D_\infty\simeq\mathbb H\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{covol}(\mathcal O)=d/4.
+\tag{4.13}
+\]">\[
+\operatorname{covol}(\mathcal O)=d/4.
+\tag{4.13}
+\]</span></p>
+<p><strong>Proof.</strong> The integral pairing is <span class="math" data-tex="\(T(x,y)=\operatorname{trd}(xy)\)">\(T(x,y)=\operatorname{trd}(xy)\)</span>. We compute its discriminant locally. A maximal order in the split algebra over <span class="math" data-tex="\(\mathbb Q_\ell\)">\(\mathbb Q_\ell\)</span> is an endomorphism ring of a lattice: if <span class="math" data-tex="\(R\)">\(R\)</span> is any order, the lattice <span class="math" data-tex="\(R\mathbb Z_\ell^2\)">\(R\mathbb Z_\ell^2\)</span> is full and <span class="math" data-tex="\(R\)">\(R\)</span>-stable, so
+<span class="math math-display" data-tex="\[
+R\subset\operatorname{End}_{\mathbb Z_\ell}(R\mathbb Z_\ell^2);
+\]">\[
+R\subset\operatorname{End}_{\mathbb Z_\ell}(R\mathbb Z_\ell^2);
+\]</span>
+maximality gives equality. Choosing a lattice basis identifies it with <span class="math" data-tex="\(M_2(\mathbb Z_\ell)\)">\(M_2(\mathbb Z_\ell)\)</span>. The four matrix units give a trace-pairing determinant of absolute <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic value one.</p>
+<p>At a division place use (1.2). Every order lies in <span class="math" data-tex="\(\mathcal O_D\)">\(\mathcal O_D\)</span>: a member of negative valuation would have powers of unbounded size, whereas all its powers belong to the compact order. Thus the maximal order is <span class="math" data-tex="\(\mathcal O_D\)">\(\mathcal O_D\)</span>. Choose an integral basis <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> of the unramified quadratic ring <span class="math" data-tex="\(\mathcal O_L\)">\(\mathcal O_L\)</span>. Its trace pairing is perfect: modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span> it is the nondegenerate trace pairing of a finite separable field extension. In the basis <span class="math" data-tex="\(e_1,e_2,e_1j,e_2j\)">\(e_1,e_2,e_1j,e_2j\)</span>, the quaternion trace pairing has zero off-diagonal blocks. The first block is the quadratic trace pairing; the second is
+<span class="math math-display" data-tex="\[
+\ell\bigl(\operatorname{Tr}_{L/\mathbb Q_\ell}(e_r\overline e_s)\bigr)_{r,s}.
+\]">\[
+\ell\bigl(\operatorname{Tr}_{L/\mathbb Q_\ell}(e_r\overline e_s)\bigr)_{r,s}.
+\]</span>
+Conjugation preserves the integral lattice, so the matrix in parentheses has unit determinant. The four-dimensional determinant therefore has valuation two, including at <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>.</p>
+<p>A globally maximal order is maximal at each finite place. Otherwise enlarging at that place and keeping the other local lattices unchanged, by the lattice dictionary of Section 3, gives a strictly larger global order. The pairing is integral: multiplication by an element of an order preserves an integral lattice, so its eigenvalues are algebraic integers. Its reduced trace is the rational sum of its two distinct eigenvalues, or twice the single eigenvalue in the scalar case, and is consequently an integer. Apply this to each product <span class="math" data-tex="\(xy\)">\(xy\)</span>. The local calculations give <span class="math" data-tex="\(|\det T|=d^2\)">\(|\det T|=d^2\)</span>.</p>
+<p>Finally <span class="math" data-tex="\(\operatorname{trd}(x\overline y)=2\langle x,y\rangle\)">\(\operatorname{trd}(x\overline y)=2\langle x,y\rangle\)</span> in the real norm metric. Conjugation has real determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it does not change the absolute determinant of the trace pairing. If <span class="math" data-tex="\(V=\operatorname{covol}(\mathcal O)\)">\(V=\operatorname{covol}(\mathcal O)\)</span>, its Gram determinant is <span class="math" data-tex="\(2^4V^2\)">\(2^4V^2\)</span>. Thus <span class="math" data-tex="\(16V^2=d^2\)">\(16V^2=d^2\)</span>, giving (4.13). This also proves the maximality test used below. An order contained in a maximal order has trace discriminant equal to that of the maximal order times the square of its lattice index. Hence reduced discriminant <span class="math" data-tex="\(d\)">\(d\)</span> forces index one. A maximal overorder exists because the positive integral discriminant prevents an infinite chain of strict overorders. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3 — the mass.</strong> The stabilizer weights satisfy
+<span class="math math-display" data-tex="\[
+\sum_{[I]\in\operatorname{Cls}(\mathcal O)}\frac1{w_I}
+=\frac1{12}\prod_{\ell\mid d}(\ell-1).
+\tag{4.14}
+\]">\[
+\sum_{[I]\in\operatorname{Cls}(\mathcal O)}\frac1{w_I}
+=\frac1{12}\prod_{\ell\mid d}(\ell-1).
+\tag{4.14}
+\]</span></p>
+<p><strong>Proof.</strong> Count integral right ideals by their additive index:
+<span class="math math-display" data-tex="\[
+Z_{\mathcal O}(s)
+=\sum_{J\subset\mathcal O}[\mathcal O:J]^{-s}
+=\sum_{n\ge1}a_n n^{-2s},\qquad \operatorname{Re}s&gt;1.
+\tag{4.15}
+\]">\[
+Z_{\mathcal O}(s)
+=\sum_{J\subset\mathcal O}[\mathcal O:J]^{-s}
+=\sum_{n\ge1}a_n n^{-2s},\qquad \operatorname{Re}s&gt;1.
+\tag{4.15}
+\]</span>
+The local counts proved after (4.5) give <span class="math" data-tex="\(a_{\ell^r}=1+\ell+\cdots+\ell^r\)">\(a_{\ell^r}=1+\ell+\cdots+\ell^r\)</span> at split primes and <span class="math" data-tex="\(a_{\ell^r}=1\)">\(a_{\ell^r}=1\)</span> at division primes. Specifying independent local ideals and intersecting their lattices proves <span class="math" data-tex="\(a_{mn}=a_ma_n\)">\(a_{mn}=a_ma_n\)</span> for coprime <span class="math" data-tex="\(m,n\)">\(m,n\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+Z_{\mathcal O}(s)
+=\zeta(2s)\zeta(2s-1)
+  \prod_{\ell\mid d}(1-\ell^{1-2s}).
+\tag{4.16}
+\]">\[
+Z_{\mathcal O}(s)
+=\zeta(2s)\zeta(2s-1)
+  \prod_{\ell\mid d}(1-\ell^{1-2s}).
+\tag{4.16}
+\]</span>
+For the split local factor, expand <span class="math" data-tex="\((1-T)^{-1}(1-\ell T)^{-1}\)">\((1-T)^{-1}(1-\ell T)^{-1}\)</span>, whose coefficient of <span class="math" data-tex="\(T^r\)">\(T^r\)</span> is the required sum, and take <span class="math" data-tex="\(T=\ell^{-2s}\)">\(T=\ell^{-2s}\)</span>. At a division place only <span class="math" data-tex="\((1-T)^{-1}\)">\((1-T)^{-1}\)</span> remains. These products converge absolutely on the asserted half-plane.</p>
+<p>We need two scalar constants, which can be checked directly. Integration of the counting function of the positive integers gives
+<span class="math math-display" data-tex="\[
+\zeta(u)=\frac{u}{u-1}
+ -u\int_1^\infty\{x\}x^{-u-1}\,dx.
+\]">\[
+\zeta(u)=\frac{u}{u-1}
+ -u\int_1^\infty\{x\}x^{-u-1}\,dx.
+\]</span>
+The integral is holomorphic for <span class="math" data-tex="\(\operatorname{Re}u&gt;0\)">\(\operatorname{Re}u&gt;0\)</span>, so the residue at <span class="math" data-tex="\(u=1\)">\(u=1\)</span> is one. Also two integrations by parts give the cosine coefficients in
+<span class="math math-display" data-tex="\[
+x^2=\frac{\pi^2}{3}
+ +4\sum_{n\ge1}\frac{(-1)^n\cos(nx)}{n^2}
+ \qquad(-\pi\le x\le\pi).
+\]">\[
+x^2=\frac{\pi^2}{3}
+ +4\sum_{n\ge1}\frac{(-1)^n\cos(nx)}{n^2}
+ \qquad(-\pi\le x\le\pi).
+\]</span>
+The series converges uniformly and has exactly those coefficients. Its difference from <span class="math" data-tex="\(x^2\)">\(x^2\)</span> is a continuous periodic function with every Fourier coefficient zero. Convolution with the Fejér kernels makes that difference zero: these are nonnegative trigonometric polynomials of integral one whose mass outside every neighborhood of zero tends to zero, since
+<span class="math math-display" data-tex="\[
+\frac1N\left|\sum_{r=0}^{N-1}e^{irx}\right|^2
+ \le\frac1{N\sin^2(x/2)}.
+\]">\[
+\frac1N\left|\sum_{r=0}^{N-1}e^{irx}\right|^2
+ \le\frac1{N\sin^2(x/2)}.
+\]</span>
+Uniform continuity makes their convolutions converge uniformly to the difference. This proves the equality. Evaluating at <span class="math" data-tex="\(x=\pi\)">\(x=\pi\)</span> gives <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>. Equation (4.16) therefore has residue
+<span class="math math-display" data-tex="\[
+\operatorname*{Res}_{s=1}Z_{\mathcal O}(s)
+=\frac{\pi^2}{12}\prod_{\ell\mid d}(1-\ell^{-1}).
+\tag{4.17}
+\]">\[
+\operatorname*{Res}_{s=1}Z_{\mathcal O}(s)
+=\frac{\pi^2}{12}\prod_{\ell\mid d}(1-\ell^{-1}).
+\tag{4.17}
+\]</span></p>
+<p>Compute the same residue class by class. Fix <span class="math" data-tex="\(I\)">\(I\)</span>, with <span class="math" data-tex="\(q=q_I\)">\(q=q_I\)</span> and <span class="math" data-tex="\(w=w_I\)">\(w=w_I\)</span>. Ideals in its class contained in <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> are <span class="math" data-tex="\(aI\)">\(aI\)</span>, for nonzero <span class="math" data-tex="\(a\in I^{-1}\)">\(a\in I^{-1}\)</span>, modulo right multiplication of <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(\mathcal O_L(I)^\times\)">\(\mathcal O_L(I)^\times\)</span>. This action is free and has <span class="math" data-tex="\(2w\)">\(2w\)</span> elements. The part belonging to this class is
+<span class="math math-display" data-tex="\[
+Z_{[I]}(s)=\frac{q^{-2s}}{2w}
+  \sum_{0\ne a\in I^{-1}}\|a\|^{-4s}.
+\tag{4.18}
+\]">\[
+Z_{[I]}(s)=\frac{q^{-2s}}{2w}
+  \sum_{0\ne a\in I^{-1}}\|a\|^{-4s}.
+\tag{4.18}
+\]</span>
+Indeed <span class="math" data-tex="\(\operatorname{nrd}(aI)=\operatorname{nrd}(a)q\)">\(\operatorname{nrd}(aI)=\operatorname{nrd}(a)q\)</span>, so the exponents agree with the additive index.</p>
+<p>For a full lattice <span class="math" data-tex="\(L\subset\mathbb R^4\)">\(L\subset\mathbb R^4\)</span> of covolume <span class="math" data-tex="\(c\)">\(c\)</span>, let <span class="math" data-tex="\(N_L(R)\)">\(N_L(R)\)</span> count its nonzero points of length at most <span class="math" data-tex="\(R\)">\(R\)</span>. A bounded fundamental parallelepiped has some diameter <span class="math" data-tex="\(b\)">\(b\)</span>. Tiles based at points inside the radius-<span class="math" data-tex="\(R\)">\(R\)</span> ball lie inside the radius-<span class="math" data-tex="\(R+b\)">\(R+b\)</span> ball. Conversely, tiles meeting the radius-<span class="math" data-tex="\(R-b\)">\(R-b\)</span> ball are based inside the radius-<span class="math" data-tex="\(R\)">\(R\)</span> ball. Comparing volumes, and omitting the zero point, proves
+<span class="math math-display" data-tex="\[
+N_L(R)=\frac{v_4}{c}R^4+O_L(R^3+1),
+\qquad v_4=\pi^2/2.
+\tag{4.19}
+\]">\[
+N_L(R)=\frac{v_4}{c}R^4+O_L(R^3+1),
+\qquad v_4=\pi^2/2.
+\tag{4.19}
+\]</span>
+The value of <span class="math" data-tex="\(v_4\)">\(v_4\)</span> follows by integrating two polar-coordinate planes. Summation by parts writes the lattice series, up to the entire finite correction for lengths below one, as
+<span class="math math-display" data-tex="\[
+4s\int_1^\infty N_L(R)R^{-4s-1}\,dR.
+\]">\[
+4s\int_1^\infty N_L(R)R^{-4s-1}\,dR.
+\]</span>
+Its main term is <span class="math" data-tex="\((v_4/c)s/(s-1)\)">\((v_4/c)s/(s-1)\)</span>; the error integral is holomorphic for <span class="math" data-tex="\(\operatorname{Re}s&gt;3/4\)">\(\operatorname{Re}s&gt;3/4\)</span>. This proves continuation near one and residue <span class="math" data-tex="\(v_4/c\)">\(v_4/c\)</span>.</p>
+<p>Apply it to <span class="math" data-tex="\(L=I^{-1}\)">\(L=I^{-1}\)</span>, whose covolume is <span class="math" data-tex="\(q^{-2}d/4\)">\(q^{-2}d/4\)</span> by (3.2) and Lemma 4.2. Equation (4.18) has residue <span class="math" data-tex="\(\pi^2/(wd)\)">\(\pi^2/(wd)\)</span>. There are finitely many classes by Lemma 3.1, so their residues add. Equate that sum with (4.17) and cancel <span class="math" data-tex="\(\pi^2/d\)">\(\pi^2/d\)</span>. The result is (4.14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.4 — the ordinary class number at prime discriminant.</strong> For <span class="math" data-tex="\(D=B_{p,\infty}\)">\(D=B_{p,\infty}\)</span>, <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>,
+<span class="math math-display" data-tex="\[
+h_p=\frac{p-1}{12}
+ +\frac14\left(1-\left(\frac{-4}{p}\right)\right)
+ +\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{4.20}
+\]">\[
+h_p=\frac{p-1}{12}
+ +\frac14\left(1-\left(\frac{-4}{p}\right)\right)
+ +\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{4.20}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R_i=\mathcal O_L(I_i)\)">\(R_i=\mathcal O_L(I_i)\)</span>. A unit has norm one, and its integral trace lies between <span class="math" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>. Trace <span class="math" data-tex="\(2\)">\(2\)</span> or <span class="math" data-tex="\(-2\)">\(-2\)</span> forces the quaternion to be <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Let <span class="math" data-tex="\(r_i\)">\(r_i\)</span> count roots of <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> in <span class="math" data-tex="\(R_i\)">\(R_i\)</span>, and let <span class="math" data-tex="\(t_i\)">\(t_i\)</span> count roots of <span class="math" data-tex="\(X^2-X+1\)">\(X^2-X+1\)</span>. Trace zero gives the first roots; trace one gives the second; negating gives a bijection from trace one to trace minus one. These cases account for every unit, so
+<span class="math math-display" data-tex="\[
+2w_i=2+r_i+2t_i,\qquad
+h_p-\sum_i\frac1{w_i}
+=\sum_i\frac{r_i}{2w_i}+\sum_i\frac{t_i}{w_i}.
+\tag{4.21}
+\]">\[
+2w_i=2+r_i+2t_i,\qquad
+h_p-\sum_i\frac1{w_i}
+=\sum_i\frac{r_i}{2w_i}+\sum_i\frac{t_i}{w_i}.
+\tag{4.21}
+\]</span>
+We count the right side by embeddings, without assuming a classification of finite quaternion unit groups.</p>
+<p>Take first <span class="math" data-tex="\(E=\mathbb Q(i)\)">\(E=\mathbb Q(i)\)</span>, then <span class="math" data-tex="\(E=\mathbb Q(\sqrt{-3})\)">\(E=\mathbb Q(\sqrt{-3})\)</span>, with its full ring <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>. Their unit groups have orders four and six; write <span class="math" data-tex="\(w_E=2\)">\(w_E=2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>. Both rings have class number one. In the Gaussian lattice, coordinate rounding leaves squared distance at most <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. In the basis <span class="math" data-tex="\(1,e^{i\pi/3}\)">\(1,e^{i\pi/3}\)</span> of the second lattice, rounding both coefficients leaves squared distance at most <span class="math" data-tex="\(3/4\)">\(3/4\)</span>. Division with remainder of smaller norm follows in both rings. Choosing a nonzero element of least norm in an ideal proves that ideal principal, by the descent of Proposition 5.1.</p>
+<p>If <span class="math" data-tex="\(p\)">\(p\)</span> splits in <span class="math" data-tex="\(E\)">\(E\)</span>, there is no embedding <span class="math" data-tex="\(E\hookrightarrow D\)">\(E\hookrightarrow D\)</span>: its completion would embed <span class="math" data-tex="\(\mathbb Q_p\times\mathbb Q_p\)">\(\mathbb Q_p\times\mathbb Q_p\)</span> in a division algebra, which has no nontrivial idempotent. If <span class="math" data-tex="\(p\)">\(p\)</span> is inert, an embedding exists explicitly. In the Gaussian case <span class="math" data-tex="\((-1,-p)_{\mathbb Q}\)">\((-1,-p)_{\mathbb Q}\)</span> has ramification precisely <span class="math" data-tex="\(\{p,\infty\}\)">\(\{p,\infty\}\)</span>, and contains <span class="math" data-tex="\(i\)">\(i\)</span>. In the second case use <span class="math" data-tex="\((-3,-p)_{\mathbb Q}\)">\((-3,-p)_{\mathbb Q}\)</span>. The Hilbert-symbol rules used in Section 5 check this. At <span class="math" data-tex="\(p\)">\(p\)</span> the first parameter is a nonsquare. At other odd primes not dividing that parameter both parameters are units. The odd-unit symbol at <span class="math" data-tex="\(2\)">\(2\)</span> is positive in both cases: for the first case use <span class="math" data-tex="\(p\equiv3\pmod4\)">\(p\equiv3\pmod4\)</span>; for the second, <span class="math" data-tex="\((-3-1)/2\)">\((-3-1)/2\)</span> is even. At <span class="math" data-tex="\(3\)">\(3\)</span> in the second case the remaining symbol is <span class="math" data-tex="\((-p/3)=1\)">\((-p/3)=1\)</span>, since <span class="math" data-tex="\(p\equiv2\pmod3\)">\(p\equiv2\pmod3\)</span>. Both real symbols are negative. Global classification from Section 2 identifies these algebras with <span class="math" data-tex="\(B_{p,\infty}\)">\(B_{p,\infty}\)</span>. The Legendre symbols in (4.20) are nonzero because <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, so split and inert exhaust the possibilities.</p>
+<p>Suppose <span class="math" data-tex="\(p\)">\(p\)</span> is inert, and fix such an embedded <span class="math" data-tex="\(E\)">\(E\)</span>. Let <span class="math" data-tex="\(e_i(E)\)">\(e_i(E)\)</span> be the number of embeddings <span class="math" data-tex="\(\mathcal O_E\hookrightarrow R_i\)">\(\mathcal O_E\hookrightarrow R_i\)</span> modulo conjugation by <span class="math" data-tex="\(R_i^\times\)">\(R_i^\times\)</span>. Each embedding extends to the fraction field; Skolem–Noether identifies it with the fixed embedding after rational conjugation. The pairs consisting of an ideal class and an embedding consequently identify with lattices <span class="math" data-tex="\(I\)">\(I\)</span> satisfying <span class="math" data-tex="\(\mathcal O_EI\subset I\)">\(\mathcal O_EI\subset I\)</span>, modulo left multiplication by <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>. The dictionary (3.4) parametrizes them by
+<span class="math math-display" data-tex="\[
+E^\times\backslash X/\widehat{\mathcal O}^{\times},
+\qquad
+X=\{x\in D^\times(\mathbb A_f):
+ x^{-1}\widehat{\mathcal O}_E x\subset\widehat{\mathcal O}\}.
+\tag{4.22}
+\]">\[
+E^\times\backslash X/\widehat{\mathcal O}^{\times},
+\qquad
+X=\{x\in D^\times(\mathbb A_f):
+ x^{-1}\widehat{\mathcal O}_E x\subset\widehat{\mathcal O}\}.
+\tag{4.22}
+\]</span>
+Indeed <span class="math" data-tex="\(I=D\cap x\widehat{\mathcal O}\)">\(I=D\cap x\widehat{\mathcal O}\)</span> is left <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>-stable exactly when the local inclusions hold. Changing its right local generators changes <span class="math" data-tex="\(x\)">\(x\)</span> by <span class="math" data-tex="\(\widehat{\mathcal O}^\times\)">\(\widehat{\mathcal O}^\times\)</span>. After changing the embedding to the fixed one, precisely its centralizer <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span> remains as the allowed rational change. Thus the equivalence relation in (4.22) also agrees with that of the pairs.</p>
+<p>At <span class="math" data-tex="\(\ell\ne p\)">\(\ell\ne p\)</span>, identify <span class="math" data-tex="\(D_\ell\)">\(D_\ell\)</span> with <span class="math" data-tex="\(M_2(\mathbb Q_\ell)\)">\(M_2(\mathbb Q_\ell)\)</span>. Its column space is the rank-one <span class="math" data-tex="\(E_\ell\)">\(E_\ell\)</span>-module <span class="math" data-tex="\(E_\ell\)">\(E_\ell\)</span>; when <span class="math" data-tex="\(E_\ell\)">\(E_\ell\)</span> is split, this means its two eigenspaces. The condition in <span class="math" data-tex="\(X\)">\(X\)</span> says that the column lattice <span class="math" data-tex="\(x_\ell\mathbb Z_\ell^2\)">\(x_\ell\mathbb Z_\ell^2\)</span> is an <span class="math" data-tex="\(\mathcal O_{E,\ell}\)">\(\mathcal O_{E,\ell}\)</span>-module. In the field case it is a fractional ideal of a discrete valuation ring, hence principal. In the split case the two idempotents decompose it as two fractional <span class="math" data-tex="\(\mathbb Z_\ell\)">\(\mathbb Z_\ell\)</span>-ideals, again principal as a module over the product ring. Consequently there is one local double coset under <span class="math" data-tex="\(E_\ell^\times\)">\(E_\ell^\times\)</span> on the left and <span class="math" data-tex="\(\mathcal O_\ell^\times\)">\(\mathcal O_\ell^\times\)</span> on the right. This includes the primes ramified in <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>At <span class="math" data-tex="\(p\)">\(p\)</span>, the maximal division order is invariant under conjugation and meets <span class="math" data-tex="\(E_p\)">\(E_p\)</span> in <span class="math" data-tex="\(\mathcal O_{E,p}\)">\(\mathcal O_{E,p}\)</span>; hence <span class="math" data-tex="\(X_p=D_p^\times\)">\(X_p=D_p^\times\)</span>. The valuation <span class="math" data-tex="\(v_D\)">\(v_D\)</span> identifies <span class="math" data-tex="\(D_p^\times/\mathcal O_{D,p}^\times\)">\(D_p^\times/\mathcal O_{D,p}^\times\)</span> with <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. The unramified quadratic group <span class="math" data-tex="\(E_p^\times\)">\(E_p^\times\)</span> has even valuations, so there are exactly two local double cosets. For each of these orientations, and the unique cosets elsewhere, choose a representative <span class="math" data-tex="\(x\)">\(x\)</span>. The remaining global quotient is
+<span class="math math-display" data-tex="\[
+E^\times\backslash\mathbb A_{E,f}^\times/
+\widehat{\mathcal O}_E^\times.
+\]">\[
+E^\times\backslash\mathbb A_{E,f}^\times/
+\widehat{\mathcal O}_E^\times.
+\]</span>
+For its denominator, the ring
+<span class="math math-display" data-tex="\[
+E_\ell\cap x_\ell\mathcal O_\ell x_\ell^{-1}
+\]">\[
+E_\ell\cap x_\ell\mathcal O_\ell x_\ell^{-1}
+\]</span>
+contains <span class="math" data-tex="\(\mathcal O_{E,\ell}\)">\(\mathcal O_{E,\ell}\)</span> by the definition of <span class="math" data-tex="\(X\)">\(X\)</span>. Every one of its members is integral, so this is exactly the maximal ring <span class="math" data-tex="\(\mathcal O_{E,\ell}\)">\(\mathcal O_{E,\ell}\)</span>; its units are the stabilizer. The quotient is therefore the ideal class group of <span class="math" data-tex="\(E\)">\(E\)</span>, which is trivial as proved above. All local representatives can be chosen integral at almost all places, so they form restricted adeles. The lattice dictionary gives actual global ideals for them. We have proved
+<span class="math math-display" data-tex="\[
+\sum_i e_i(E)=2
+\quad\text{if \(p\) is inert, and }0\text{ if \(p\) splits.}
+\tag{4.23}
+\]">\[
+\sum_i e_i(E)=2
+\quad\text{if \(p\) is inert, and }0\text{ if \(p\) splits.}
+\tag{4.23}
+\]</span></p>
+<p>The centralizer of an embedded <span class="math" data-tex="\(E\)">\(E\)</span> in <span class="math" data-tex="\(D\)">\(D\)</span> is <span class="math" data-tex="\(E\)">\(E\)</span> by the double-centralizer theorem. Its intersection with <span class="math" data-tex="\(R_i\)">\(R_i\)</span> is <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span>, since elements of <span class="math" data-tex="\(R_i\)">\(R_i\)</span> are integral. An embedding's stabilizer under <span class="math" data-tex="\(R_i^\times\)">\(R_i^\times\)</span> thus has <span class="math" data-tex="\(2w_E\)">\(2w_E\)</span> elements, and its orbit has <span class="math" data-tex="\(w_i/w_E\)">\(w_i/w_E\)</span> elements. An embedding is determined by the image of <span class="math" data-tex="\(i\)">\(i\)</span>, or of the trace-one sixth root of unity. It follows that
+<span class="math math-display" data-tex="\[
+r_i=\frac{w_i}{2}e_i(\mathbb Q(i)),\qquad
+t_i=\frac{w_i}{3}e_i(\mathbb Q(\sqrt{-3})).
+\tag{4.24}
+\]">\[
+r_i=\frac{w_i}{2}e_i(\mathbb Q(i)),\qquad
+t_i=\frac{w_i}{3}e_i(\mathbb Q(\sqrt{-3})).
+\tag{4.24}
+\]</span>
+Insert (4.23)–(4.24) into (4.21), and use the mass (4.14). The correction terms are exactly those in (4.20), with every stabilizer factor accounted for. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are Eichler's mass and class-number formulas. Voight's Theorems 25.3.15 and 30.1.5 give the reference conventions. The local counts, lattice residue and embedding-orbit arguments above supply the proofs used here; the following examples therefore require no external class-counting theorem.</p>
+<h2 id="5-two-computed-definite-examples">5. Two computed definite examples</h2>
+<h3 id="5-1-the-hurwitz-order">5.1. The Hurwitz order</h3>
+<p>For <span class="math" data-tex="\(D=(-1,-1)_{\mathbb Q}\)">\(D=(-1,-1)_{\mathbb Q}\)</span>, the real norm is the sum of four squares. Its ramification set is <span class="math" data-tex="\(\{2,\infty\}\)">\(\{2,\infty\}\)</span>: at odd primes both parameters are units and the Hilbert symbol is <span class="math" data-tex="\(+1\)">\(+1\)</span>; at <span class="math" data-tex="\(2\)">\(2\)</span> it is <span class="math" data-tex="\((-1)^{((-1-1)/2)^2}=-1\)">\((-1)^{((-1-1)/2)^2}=-1\)</span>, and at infinity both parameters are negative. These Hilbert-symbol rules are Voight, Section 14.2. Thus this is <span class="math" data-tex="\(B_{2,\infty}\)">\(B_{2,\infty}\)</span>.</p>
+<p>Its Hurwitz order is
+<span class="math math-display" data-tex="\[
+\mathcal O_H=\mathbb Z^4\ \cup\ (\mathbb Z+\tfrac12)^4
+\tag{5.1}
+\]">\[
+\mathcal O_H=\mathbb Z^4\ \cup\ (\mathbb Z+\tfrac12)^4
+\tag{5.1}
+\]</span>
+in coordinates <span class="math" data-tex="\(1,i,j,k\)">\(1,i,j,k\)</span>. To verify it is an order, write it as the Lipschitz order plus <span class="math" data-tex="\(\mathbb Z h\)">\(\mathbb Z h\)</span>, where <span class="math" data-tex="\(h=(1+i+j+k)/2\)">\(h=(1+i+j+k)/2\)</span>. Left and right multiplication of <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(i,j,k\)">\(i,j,k\)</span> gives elements with four half-integral coordinates, and <span class="math" data-tex="\(h^2=h-1\)">\(h^2=h-1\)</span>. Thus products remain in this lattice. The trace Gram matrix of the Lipschitz order is <span class="math" data-tex="\(\operatorname{diag}(2,-2,-2,-2)\)">\(\operatorname{diag}(2,-2,-2,-2)\)</span>, with absolute determinant <span class="math" data-tex="\(16\)">\(16\)</span>. Enlarging by index two divides the determinant by four, so the Hurwitz reduced discriminant is <span class="math" data-tex="\(2\)">\(2\)</span>. The maximal-order discriminant criterion in Lemma 4.2 proves maximality.</p>
+<p><strong>Proposition 5.1.</strong> The Hurwitz order has class number one and <span class="math" data-tex="\(24\)">\(24\)</span> units. Its weight-zero class space is one-dimensional, and <span class="math" data-tex="\(B(\ell)=[\ell+1]\)">\(B(\ell)=[\ell+1]\)</span> for every odd prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>Proof.</strong> Round the four coordinates of any <span class="math" data-tex="\(x\in\mathbb H\)">\(x\in\mathbb H\)</span> to integers. The squared distance to that point is at most <span class="math" data-tex="\(4(1/2)^2=1\)">\(4(1/2)^2=1\)</span>. Equality requires every coordinate to be a half-integer; then <span class="math" data-tex="\(x\)">\(x\)</span> itself belongs to <span class="math" data-tex="\(\mathcal O_H\)">\(\mathcal O_H\)</span> and has distance zero from the order. Hence in every case there is <span class="math" data-tex="\(q\in\mathcal O_H\)">\(q\in\mathcal O_H\)</span> with <span class="math" data-tex="\(\operatorname{nrd}(x-q)&lt;1\)">\(\operatorname{nrd}(x-q)&lt;1\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I\subset\mathcal O_H\)">\(I\subset\mathcal O_H\)</span> be a nonzero right ideal and choose <span class="math" data-tex="\(a\in I\setminus\{0\}\)">\(a\in I\setminus\{0\}\)</span> of minimum positive norm. For <span class="math" data-tex="\(b\in I\)">\(b\in I\)</span>, approximate <span class="math" data-tex="\(a^{-1}b\)">\(a^{-1}b\)</span> by such a <span class="math" data-tex="\(q\)">\(q\)</span>. Then
+<span class="math math-display" data-tex="\[
+r=b-aq\in I,
+\qquad \operatorname{nrd}(r)
+ =\operatorname{nrd}(a)\operatorname{nrd}(a^{-1}b-q)
+ &lt;\operatorname{nrd}(a).
+\tag{5.2}
+\]">\[
+r=b-aq\in I,
+\qquad \operatorname{nrd}(r)
+ =\operatorname{nrd}(a)\operatorname{nrd}(a^{-1}b-q)
+ &lt;\operatorname{nrd}(a).
+\tag{5.2}
+\]</span>
+Minimality forces <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. Thus <span class="math" data-tex="\(I=a\mathcal O_H\)">\(I=a\mathcal O_H\)</span>, and clearing a scalar denominator gives the same conclusion for fractional ideals. There is one class.</p>
+<p>Norm-one integral coordinates give <span class="math" data-tex="\(\pm1,\pm i,\pm j,\pm k\)">\(\pm1,\pm i,\pm j,\pm k\)</span>, eight units. Norm-one half-integral coordinates must each be <span class="math" data-tex="\(\pm1/2\)">\(\pm1/2\)</span>, giving sixteen further units. Conversely all these elements have integral conjugates and norm one, hence are units. So <span class="math" data-tex="\(w=24/2=12\)">\(w=24/2=12\)</span>. With one class, the degree calculation (4.5) gives the asserted scalar Brandt matrix. At the ramified prime <span class="math" data-tex="\(2\)">\(2\)</span> the corresponding matrix is instead <span class="math" data-tex="\([1]\)">\([1]\)</span>, since its local ideal is unique. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="5-2-an-order-in-b_-11-infty">5.2. An order in <span class="math" data-tex="\(B_{11,\infty}\)">\(B_{11,\infty}\)</span></h3>
+<p>Take
+<span class="math math-display" data-tex="\[
+D=(-1,-11)_{\mathbb Q},\qquad i^2=-1,\quad j^2=-11,\quad k=ij,
+\qquad u=\frac{1+j}{2},\quad v=\frac{i+k}{2}.
+\tag{5.3}
+\]">\[
+D=(-1,-11)_{\mathbb Q},\qquad i^2=-1,\quad j^2=-11,\quad k=ij,
+\qquad u=\frac{1+j}{2},\quad v=\frac{i+k}{2}.
+\tag{5.3}
+\]</span>
+At odd primes other than <span class="math" data-tex="\(11\)">\(11\)</span> the parameters are units, so the Hilbert symbol is <span class="math" data-tex="\(+1\)">\(+1\)</span>. At <span class="math" data-tex="\(11\)">\(11\)</span> it is <span class="math" data-tex="\(({-1}/11)=-1\)">\(({-1}/11)=-1\)</span>. At <span class="math" data-tex="\(2\)">\(2\)</span> the odd-unit formula gives <span class="math" data-tex="\((-1)^{(-1)(-6)}=+1\)">\((-1)^{(-1)(-6)}=+1\)</span>, and at infinity it is <span class="math" data-tex="\(-1\)">\(-1\)</span>. The algebra is therefore <span class="math" data-tex="\(B_{11,\infty}\)">\(B_{11,\infty}\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal O_1=\mathbb Z+\mathbb Zi+\mathbb Zu+\mathbb Zv\)">\(\mathcal O_1=\mathbb Z+\mathbb Zi+\mathbb Zu+\mathbb Zv\)</span>. The identities
+<span class="math math-display" data-tex="\[
+i^2=-1,\qquad u^2=u-3,\qquad iu=v,\qquad ui=i-v
+\tag{5.4}
+\]">\[
+i^2=-1,\qquad u^2=u-3,\qquad iu=v,\qquad ui=i-v
+\tag{5.4}
+\]</span>
+reduce products to this lattice. In particular <span class="math" data-tex="\(iv=-u\)">\(iv=-u\)</span>, <span class="math" data-tex="\(vi=u-1\)">\(vi=u-1\)</span>, <span class="math" data-tex="\(uv=3i\)">\(uv=3i\)</span>, <span class="math" data-tex="\(vu=v-3i\)">\(vu=v-3i\)</span>, and <span class="math" data-tex="\(v^2=-3\)">\(v^2=-3\)</span>, so it is an order. The trace pairing in this basis is
+<span class="math math-display" data-tex="\[
+\bigl(\operatorname{trd}(e_re_s)\bigr)_{r,s}
+ =\begin{pmatrix}
+2&amp;0&amp;1&amp;0\\
+0&amp;-2&amp;0&amp;-1\\
+1&amp;0&amp;-5&amp;0\\
+0&amp;-1&amp;0&amp;-6
+\end{pmatrix}.
+\tag{5.5}
+\]">\[
+\bigl(\operatorname{trd}(e_re_s)\bigr)_{r,s}
+ =\begin{pmatrix}
+2&amp;0&amp;1&amp;0\\
+0&amp;-2&amp;0&amp;-1\\
+1&amp;0&amp;-5&amp;0\\
+0&amp;-1&amp;0&amp;-6
+\end{pmatrix}.
+\tag{5.5}
+\]</span>
+Its determinant is <span class="math" data-tex="\(-121\)">\(-121\)</span>; the reduced discriminant is <span class="math" data-tex="\(11\)">\(11\)</span>, equal to the algebra's discriminant. Lemma 4.2 therefore proves this order maximal.</p>
+<p>Theorems 4.3–4.4 count its classes and stabilizers. For a maximal order in <span class="math" data-tex="\(B_{p,\infty}\)">\(B_{p,\infty}\)</span>, <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>, Eichler's formula is
+<span class="math math-display" data-tex="\[
+h_p=\frac{p-1}{12}
+ +\frac14\left(1-\left(\frac{-4}{p}\right)\right)
+ +\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{5.6}
+\]">\[
+h_p=\frac{p-1}{12}
+ +\frac14\left(1-\left(\frac{-4}{p}\right)\right)
+ +\frac13\left(1-\left(\frac{-3}{p}\right)\right).
+\tag{5.6}
+\]</span>
+This is Theorem 4.4. Its mass formula, Theorem 4.3, is
+<span class="math math-display" data-tex="\[
+\sum_{[I]}\frac1{w_I}=\frac{p-1}{12},
+\tag{5.7}
+\]">\[
+\sum_{[I]}\frac1{w_I}=\frac{p-1}{12},
+\tag{5.7}
+\]</span>
+The formulas were proved above; we now compute the substitution, weights and matrix entries.</p>
+<p>The nonzero squares modulo <span class="math" data-tex="\(11\)">\(11\)</span> are <span class="math" data-tex="\(1,3,4,5,9\)">\(1,3,4,5,9\)</span>. Both <span class="math" data-tex="\(-4\equiv7\)">\(-4\equiv7\)</span> and <span class="math" data-tex="\(-3\equiv8\)">\(-3\equiv8\)</span> are nonsquares. Hence
+<span class="math math-display" data-tex="\[
+h_{11}=\frac56+\frac12+\frac23=2,
+\qquad \frac1{w_1}+\frac1{w_2}=\frac56.
+\tag{5.8}
+\]">\[
+h_{11}=\frac56+\frac12+\frac23=2,
+\qquad \frac1{w_1}+\frac1{w_2}=\frac56.
+\tag{5.8}
+\]</span>
+For <span class="math" data-tex="\(a,b,c,d\in\mathbb Z\)">\(a,b,c,d\in\mathbb Z\)</span>, direct evaluation of the norm gives
+<span class="math math-display" data-tex="\[
+\operatorname{nrd}(a+bi+cu+dv)
+ =(a+c/2)^2+(b+d/2)^2+\frac{11}{4}(c^2+d^2).
+\tag{5.9}
+\]">\[
+\operatorname{nrd}(a+bi+cu+dv)
+ =(a+c/2)^2+(b+d/2)^2+\frac{11}{4}(c^2+d^2).
+\tag{5.9}
+\]</span>
+If this equals one or two, then <span class="math" data-tex="\(c=d=0\)">\(c=d=0\)</span>, since otherwise its last term alone exceeds two. Norm one therefore gives <span class="math" data-tex="\(\pm1,\pm i\)">\(\pm1,\pm i\)</span>, so <span class="math" data-tex="\(w_1=2\)">\(w_1=2\)</span>. Norm two gives exactly <span class="math" data-tex="\(\pm1\pm i\)">\(\pm1\pm i\)</span>, four elements. The other class has <span class="math" data-tex="\(1/w_2=5/6-1/2=1/3\)">\(1/w_2=5/6-1/2=1/3\)</span>, so <span class="math" data-tex="\(w_2=3\)">\(w_2=3\)</span>.</p>
+<p>Label <span class="math" data-tex="\(I_1=\mathcal O_1\)">\(I_1=\mathcal O_1\)</span>. Formula (4.8) gives <span class="math" data-tex="\(B(2)_{11}=4/(2w_1)=1\)">\(B(2)_{11}=4/(2w_1)=1\)</span>. Each row has sum three. Thus <span class="math" data-tex="\(B(2)_{12}=2\)">\(B(2)_{12}=2\)</span>. Detailed balance (4.6) now forces <span class="math" data-tex="\(B(2)_{21}/3=2/2=1\)">\(B(2)_{21}/3=2/2=1\)</span>, hence <span class="math" data-tex="\(B(2)_{21}=3\)">\(B(2)_{21}=3\)</span> and <span class="math" data-tex="\(B(2)_{22}=0\)">\(B(2)_{22}=0\)</span>. We have obtained
+<span class="math math-display" data-tex="\[
+B(2)=\begin{pmatrix}1&amp;2\\3&amp;0\end{pmatrix},
+\qquad
+\det(tI-B(2))=t^2-t-6=(t-3)(t+2).
+\tag{5.10}
+\]">\[
+B(2)=\begin{pmatrix}1&amp;2\\3&amp;0\end{pmatrix},
+\qquad
+\det(tI-B(2))=t^2-t-6=(t-3)(t+2).
+\tag{5.10}
+\]</span>
+The eigenvectors are <span class="math" data-tex="\((1,1)^t\)">\((1,1)^t\)</span> for <span class="math" data-tex="\(3\)">\(3\)</span>, and <span class="math" data-tex="\((2,-3)^t\)">\((2,-3)^t\)</span> for <span class="math" data-tex="\(-2\)">\(-2\)</span>. The second has weighted mean zero:
+<span class="math" data-tex="\(2/2-3/3=0\)">\(2/2-3/3=0\)</span>. Its squared norm is <span class="math" data-tex="\(4/2+9/3=5\)">\(4/2+9/3=5\)</span>, while the constant vector has squared norm <span class="math" data-tex="\(1/2+1/3=5/6\)">\(1/2+1/3=5/6\)</span>. Thus the eigenlines are orthogonal for exactly our weights. In ordinary Euclidean coordinates the matrix is not symmetric; in weighted coordinates,
+<span class="math math-display" data-tex="\[
+\operatorname{diag}(1/2,1/3)B(2)
+ =\begin{pmatrix}1/2&amp;1\\1&amp;0\end{pmatrix}
+\tag{5.11}
+\]">\[
+\operatorname{diag}(1/2,1/3)B(2)
+ =\begin{pmatrix}1/2&amp;1\\1&amp;0\end{pmatrix}
+\tag{5.11}
+\]</span>
+is symmetric, checking the convention.</p>
+<h3 id="5-3-comparison-with-the-classical-coefficient">5.3. Comparison with the classical coefficient</h3>
+<p>The normalized level-eleven form is
+<span class="math math-display" data-tex="\[
+f_{11}(z)=\eta(z)^2\eta(11z)^2
+ =q\prod_{m\ge1}(1-q^m)^2(1-q^{11m})^2,
+\qquad q=e^{2\pi iz}.
+\tag{5.12}
+\]">\[
+f_{11}(z)=\eta(z)^2\eta(11z)^2
+ =q\prod_{m\ge1}(1-q^m)^2(1-q^{11m})^2,
+\qquad q=e^{2\pi iz}.
+\tag{5.12}
+\]</span>
+Its modularity, vanishing at both cusps, and <span class="math" data-tex="\(\dim S_2(\Gamma_0(11))=1\)">\(\dim S_2(\Gamma_0(11))=1\)</span> were proved in <a href="../LG-MF/LG-MF-09.html">LG-MF-09, Section 6</a>. We import those exact assertions. The oldspace is zero: the only proper divisor is one, and <span class="math" data-tex="\(S_2(\mathrm{SL}_2(\mathbb Z))=0\)">\(S_2(\mathrm{SL}_2(\mathbb Z))=0\)</span> by <a href="../LG-MF/LG-MF-06.html">LG-MF-06, Theorem 4.1 and Section 4.1</a>. The old/new definition is <a href="../LG-MF/LG-MF-10.html">LG-MF-10, Section 1</a>. Therefore this is a newform.</p>
+<p>Here its first coefficients can be calculated without invoking the correspondence. Modulo <span class="math" data-tex="\(q^4\)">\(q^4\)</span>, the factors beyond <span class="math" data-tex="\(m=3\)">\(m=3\)</span> do not matter before the initial <span class="math" data-tex="\(q\)">\(q\)</span>, and the <span class="math" data-tex="\(11m\)">\(11m\)</span>-factors are one. The finite multiplication is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(1-q)^2(1-q^2)^2
+ &amp;=1-2q-q^2+4q^3+O(q^4),\\
+(1-q)^2(1-q^2)^2(1-q^3)^2
+ &amp;=1-2q-q^2+2q^3+O(q^4).
+\end{aligned}
+\tag{5.13}
+\]">\[
+\begin{aligned}
+(1-q)^2(1-q^2)^2
+ &amp;=1-2q-q^2+4q^3+O(q^4),\\
+(1-q)^2(1-q^2)^2(1-q^3)^2
+ &amp;=1-2q-q^2+2q^3+O(q^4).
+\end{aligned}
+\tag{5.13}
+\]</span>
+Thus <span class="math" data-tex="\(f_{11}=q-2q^2-q^3+2q^4+O(q^5)\)">\(f_{11}=q-2q^2-q^3+2q^4+O(q^5)\)</span>, and <span class="math" data-tex="\(a_2=-2\)">\(a_2=-2\)</span>. This agrees with (5.10). Theorem 4.1 proves a simultaneous eigenline in the weighted-mean-zero class space, since its dimension is one. Identifying all of its good-prime eigenvalues with those of <span class="math" data-tex="\(f_{11}\)">\(f_{11}\)</span> is the Jacquet–Langlands correspondence, to be stated precisely in Lesson 19. The matrix was determined here by quaternionic counts and arithmetic formulas, without using that identification.</p>
+<h2 id="6-exercises-and-complete-solutions">6. Exercises and complete solutions</h2>
+<p><strong>Exercise 6.1 — easy.</strong> Prove <span class="math" data-tex="\(\mathbb H^\times/\mathbb R^\times\)">\(\mathbb H^\times/\mathbb R^\times\)</span> compact. Describe the residual sign when using norm-one representatives.</p>
+<p><strong>Solution 6.1.</strong> The norm of <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> is a positive real number, so write
+<span class="math" data-tex="\(x=r u\)">\(x=r u\)</span>, <span class="math" data-tex="\(r=\sqrt{\operatorname{nrd}(x)}&gt;0\)">\(r=\sqrt{\operatorname{nrd}(x)}&gt;0\)</span>, <span class="math" data-tex="\(\operatorname{nrd}(u)=1\)">\(\operatorname{nrd}(u)=1\)</span>. The unit quaternions form the sphere <span class="math" data-tex="\(S^3\)">\(S^3\)</span>, a compact subset of <span class="math" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>. Positive scalars change <span class="math" data-tex="\(r\)">\(r\)</span> but leave <span class="math" data-tex="\(u\)">\(u\)</span> unchanged; negative scalars change <span class="math" data-tex="\(u\)">\(u\)</span> to <span class="math" data-tex="\(-u\)">\(-u\)</span>. Thus the continuous map <span class="math" data-tex="\(S^3\to\mathbb H^\times/\mathbb R^\times\)">\(S^3\to\mathbb H^\times/\mathbb R^\times\)</span> is onto with fibres <span class="math" data-tex="\(\{u,-u\}\)">\(\{u,-u\}\)</span>. The quotient is <span class="math" data-tex="\(S^3/\{\pm1\}\)">\(S^3/\{\pm1\}\)</span>, and is compact as the continuous image of <span class="math" data-tex="\(S^3\)">\(S^3\)</span>. Equivalently it is <span class="math" data-tex="\(\mathrm{SO}(3)\)">\(\mathrm{SO}(3)\)</span>, but that identification is not needed for the proof.</p>
+<p><strong>Exercise 6.2 — medium.</strong> Compute the class number for a maximal order of <span class="math" data-tex="\(B_{11,\infty}\)">\(B_{11,\infty}\)</span> and its <span class="math" data-tex="\(T_2\)">\(T_2\)</span> Brandt matrix. State the class ordering, inner product and eigenvectors.</p>
+<p><strong>Solution 6.2.</strong> Work with the order <span class="math" data-tex="\(\mathcal O_1\)">\(\mathcal O_1\)</span> in (5.3)–(5.4). Its multiplication table is integral and its trace determinant is <span class="math" data-tex="\(-11^2\)">\(-11^2\)</span>, so Lemma 4.2 makes it maximal. Modulo <span class="math" data-tex="\(11\)">\(11\)</span>, the nonzero squares <span class="math" data-tex="\(1,3,4,5,9\)">\(1,3,4,5,9\)</span> exclude <span class="math" data-tex="\(-4\)">\(-4\)</span> and <span class="math" data-tex="\(-3\)">\(-3\)</span>. Substitution into Theorem 4.4 gives
+<span class="math math-display" data-tex="\[
+h=10/12+(1/4)(1-(-1))+(1/3)(1-(-1))=2.
+\tag{6.1}
+\]">\[
+h=10/12+(1/4)(1-(-1))+(1/3)(1-(-1))=2.
+\tag{6.1}
+\]</span>
+Take the first ideal class to be <span class="math" data-tex="\([\mathcal O_1]\)">\([\mathcal O_1]\)</span>, and the second to be the other class; no additional choice of a representative affects the following count. In (5.9), norm at most two forces <span class="math" data-tex="\(c=d=0\)">\(c=d=0\)</span>. Norm one gives four units, so <span class="math" data-tex="\(w_1=2\)">\(w_1=2\)</span>. The mass formula gives <span class="math" data-tex="\(1/w_2=10/12-1/2=1/3\)">\(1/w_2=10/12-1/2=1/3\)</span>, hence <span class="math" data-tex="\(w_2=3\)">\(w_2=3\)</span>. Norm two gives four elements. Their right-unit orbits each have four elements, so there is one norm-two subideal in the first class: <span class="math" data-tex="\(B_{11}=1\)">\(B_{11}=1\)</span>. As <span class="math" data-tex="\(2\)">\(2\)</span> is split, there are three norm-two subideals in total, so <span class="math" data-tex="\(B_{12}=2\)">\(B_{12}=2\)</span>. Balance is <span class="math" data-tex="\(B_{12}/w_1=B_{21}/w_2\)">\(B_{12}/w_1=B_{21}/w_2\)</span>, forcing <span class="math" data-tex="\(B_{21}=3\)">\(B_{21}=3\)</span>. Its row degree then gives <span class="math" data-tex="\(B_{22}=0\)">\(B_{22}=0\)</span>.</p>
+<p>Thus the row-sum matrix on column functions is <span class="math" data-tex="\(\left(\begin{smallmatrix}1&amp;2\\3&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}1&amp;2\\3&amp;0\end{smallmatrix}\right)\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+B(2)\binom{1}{1}=3\binom{1}{1},
+\qquad B(2)\binom{2}{-3}=-2\binom{2}{-3}.
+\tag{6.2}
+\]">\[
+B(2)\binom{1}{1}=3\binom{1}{1},
+\qquad B(2)\binom{2}{-3}=-2\binom{2}{-3}.
+\tag{6.2}
+\]</span>
+The product is <span class="math" data-tex="\(f_1\overline g_1/2+f_2\overline g_2/3\)">\(f_1\overline g_1/2+f_2\overline g_2/3\)</span>. The two vectors are orthogonal because <span class="math" data-tex="\(2/2-3/3=0\)">\(2/2-3/3=0\)</span>. The eigenvalue <span class="math" data-tex="\(-2\)">\(-2\)</span> agrees with the independently multiplied coefficient of (5.12). Transposing the matrix without changing the vector convention or the weights would lose this calculation.</p>
+<p><strong>Exercise 6.3 — medium.</strong> Establish the finite-image assertion for an irreducible smooth complex representation of a local quaternion division group, keeping track of the centre. Decide when it literally descends to the central quotient.</p>
+<p><strong>Solution 6.3.</strong> Theorem 1.1 proves finite dimension without assuming a central character first. For a finite basis, intersect the open stabilizers of all its vectors; the intersection acts identically. The kernel <span class="math" data-tex="\(U\)">\(U\)</span> is therefore open and normal. By finite-dimensional Schur, <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> acts through a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, so the projective action has kernel containing <span class="math" data-tex="\(F^\times U\)">\(F^\times U\)</span>. Its quotient is discrete and is a quotient of the compact <span class="math" data-tex="\(D^\times/F^\times\)">\(D^\times/F^\times\)</span>; it is finite. This proves finite projective image modulo the centre.</p>
+<p>For an actual finite image, write the action of the scalar uniformizer as <span class="math" data-tex="\(c\operatorname{id}\)">\(c\operatorname{id}\)</span>, choose <span class="math" data-tex="\(b^2=c^{-1}\)">\(b^2=c^{-1}\)</span>, and twist by <span class="math" data-tex="\(b^{v_F(\operatorname{nrd}(x))}\)">\(b^{v_F(\operatorname{nrd}(x))}\)</span>. The scalar uniformizer now acts as <span class="math" data-tex="\(b^2c=1\)">\(b^2c=1\)</span>. If <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span> is the open kernel of the twist, then (1.3) makes <span class="math" data-tex="\(D^\times/(\varpi^{\mathbb Z}U&#x27;)\)">\(D^\times/(\varpi^{\mathbb Z}U&#x27;)\)</span> compact and discrete, hence finite. The twisted representation factors through that finite group.</p>
+<p>The original representation descends to <span class="math" data-tex="\(D^\times/F^\times\)">\(D^\times/F^\times\)</span> exactly when <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span>. Even a one-dimensional <span class="math" data-tex="\(|\operatorname{nrd}|_F\)">\(|\operatorname{nrd}|_F\)</span> has nontrivial central action <span class="math" data-tex="\(|a|_F^2\)">\(|a|_F^2\)</span>, so literal descent for arbitrary central character would be false. For trivial central character the preceding projective quotient is already an actual finite representation quotient. This is the required qualification of “a finite quotient modulo the centre.”</p>
+<p><strong>Exercise 6.4 — hard.</strong> Prove commutativity of all Brandt matrices, including operators at prime powers. Explain why coprime-prime commutation alone is insufficient.</p>
+<p><strong>Solution 6.4.</strong> At a good place, use right-unit cosets of integral invertible matrices of determinant valuation <span class="math" data-tex="\(r\)">\(r\)</span>. They parameterize all sublattices of index <span class="math" data-tex="\(\ell^r\)">\(\ell^r\)</span>, and hence the corresponding local subideals. Elementary divisors show every bi-<span class="math" data-tex="\(K\)">\(K\)</span> double coset has a diagonal representative fixed by transpose. Thus all bi-<span class="math" data-tex="\(K\)">\(K\)</span> functions equal their transposes. For Haar measure <span class="math" data-tex="\(dX/|\det X|^2\)">\(dX/|\det X|^2\)</span>, transpose preserves measure and reverses multiplication. The convolution substitution in (4.11) therefore gives
+<span class="math math-display" data-tex="\[
+h_1*h_2=(h_1*h_2)^t=h_2^t*h_1^t=h_2*h_1.
+\tag{6.3}
+\]">\[
+h_1*h_2=(h_1*h_2)^t=h_2^t*h_1^t=h_2*h_1.
+\tag{6.3}
+\]</span>
+This applies to every determinant-valuation union, not only the prime operator. At a ramified place, the unit group is normal, the valuation quotient is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, and convolution is the commutative convolution on that abelian group. Different places commute in the product group. The local-global lattice intersection and the norm formula identify the product convolution with the count (4.3); the right cosets all have volume one. Therefore every pair <span class="math" data-tex="\(B(m),B(n)\)">\(B(m),B(n)\)</span> commutes.</p>
+<p>A proof only for distinct primes would not address two different powers of the same prime. The local algebra argument does. It also avoids replacing our full norm operator by a primitive sphere: at a good prime, the scalar sublattice <span class="math" data-tex="\(\ell\mathbb Z_\ell^2\)">\(\ell\mathbb Z_\ell^2\)</span> contributes to norm <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span>, but represents distance zero after homothety. Its contribution explains why the full norm degree is <span class="math" data-tex="\(1+\ell+\ell^2\)">\(1+\ell+\ell^2\)</span>. The row sums of products and all prime powers are consistent with the same local convolution convention.</p>
+<h2 id="7-proof-providers-and-source-locators">7. Proof providers and source locators</h2>
+<p>The local and global quaternion classifications in Sections 1–2 are deduced from the written <a href="../NT-CFT/brauer-groups-of-local-and-global-fields.html">Brauer groups of local and global fields</a>, Proposition 24.1 and Theorems 24.2 and 24.4. The invariant uses arithmetic Frobenius, is <span class="math" data-tex="\(1/2\)">\(1/2\)</span> for quaternion division, is zero at complex places, and multiplies by the local extension degree under restriction. The global existence proof above constructs a quadratic splitting field before applying the finite splitting criterion; it covers characteristic two. The explicit valuation and maximal local ring in (1.2) are checked here. Original locators are Voight, Theorem 13.3.11, Main Theorems 14.1.3 and 14.6.1. The Hilbert-symbol rules used in Sections 4.1 and 5 have the local-field and class-field providers; their reference formulas are Voight (12.4.10) and (12.4.14), criteria 12.4.12, and Proposition 14.2.1. Quaternion conjugation, reduced norm, Skolem–Noether, the double-centralizer theorem and the finite splitting criterion are Central simple algebras and the Brauer group, Theorems 2.1, 3.1 and 4.2 and Sections 6–7.</p>
+<p>The local-to-global lattice dictionary is proved in Section 3 by the finite Chinese remainder theorem. Local principality is proved there by matrix units and the division valuation; (3.2), (3.4) and the convolution interpretation use these arguments. Minkowski's precise proof provider is the written <a href="../NT-ANT/lattices-minkowskis-theorem-and-the-minkowski-embedding.html">Lattices, Minkowski's theorem and the Minkowski embedding</a>, Theorem 7.1: a centrally symmetric convex body in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> of volume greater than <span class="math" data-tex="\(2^n\)">\(2^n\)</span> times the lattice covolume contains a nonzero lattice point. Lemma 3.1 applies it with <span class="math" data-tex="\(n=4\)">\(n=4\)</span>. Lemma 4.2 proves the maximal-order discriminant and volume assertions, including the maximality test used in both examples. Voight's original corresponding locators are Lemmas 27.3.6 and 27.6.8, Theorem 17.5.5 and Theorem 15.5.5.</p>
+<p>Theorems 4.3–4.4 prove the maximal rational mass and prime-discriminant class-number formulas. Their original references are Voight, Theorems 25.3.15 and 30.1.5, with Main Theorem 30.8.6. The mass argument here includes the local Euler factors, lattice counting error, meromorphic residue and volume constant. The class-number argument includes existence of the two quadratic embeddings, all local ideal orbits, their global quotient and the unit stabilizers. Section 5 and Solution 6.2 use those proved formulas.</p>
+<p>General division-algebra adelic compactness over number fields is proved in Theorem 3.3, using the bounded-basis lemma, the product formula and the integral right actions. Definiteness is not required. Its original locator is Voight, Main Theorem 27.6.14. The discrete-spectrum argument is Lesson 4, Proposition 5.1, Theorem 5.2 and Solution 7.1, after checking the compact-kernel hypothesis here. Jacquet–Langlands, Lemma 14.1, is the original automorphic discrete finite-multiplicity assertion. Its Theorem 14.2 concerns continuation and functional equations for quaternionic automorphic <span class="math" data-tex="\(L\)">\(L\)</span>-functions, rather than quaternion classification.</p>
+<p>The modularity, cusp conditions and dimension of <span class="math" data-tex="\(f_{11}\)">\(f_{11}\)</span> are <a href="../LG-MF/LG-MF-09.html">Hecke operators for congruence groups</a>, Section 6 and Solution 1. Level-one weight-two vanishing is <a href="../LG-MF/LG-MF-06.html">Dimension formulas for congruence subgroups</a>, Theorem 4.1 and Section 4.1; old and new forms are <a href="../LG-MF/LG-MF-10.html">Oldforms, newforms and the theory of Atkin, Lehner and Li</a>, Section 1. All-prime identification of the nonconstant quaternionic eigenline uses the correspondence in Lesson 19; no transfer theorem enters the computation of <span class="math" data-tex="\(T_2\)">\(T_2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>J. Voight, <a href="https://jvoight.github.io/quat.html"><em>Quaternion Algebras</em></a>, Graduate Texts in Mathematics 288, Springer, 2021. The complete assigned comparison scopes are §§13.1–13.4, 14.1–14.6, 27.3, 27.6, 28.4–28.5 and 41.1–41.4. Additional exact inputs are §§11.1–11.3, 12.4, 15.5, 17.5, 25.3, 30.1 and 30.8. Sections 28.4–28.5 concern strong approximation and norm class maps; they do not turn a definite class set into a single class. Sections 41.3–41.4 compare the Brandt multiplication and adjoint conventions.</li>
+<li>H. Jacquet and R. P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §14, Lemma 14.1 and Theorem 14.2, with its complete proof through Lemma 14.2.1. The latter theorem's quaternionic <span class="math" data-tex="\(L\)">\(L\)</span>-function context prepares the correspondence in Lesson 19.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="eisenstein-series-on-gl2-and-the-continuous-spectrum.html">← Eisenstein series on GL₂(A) and the continuous spectrum</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="the-trace-formula-for-a-compact-quotient.html">The trace formula for a compact quotient →</a></span></nav>
+<p class="small source-link"><a href="src/quaternion-algebras-and-their-automorphic-forms.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/automorphic-forms-and-representations-of-gl2">Repository</a></nav>
+</footer>
+</body>
+</html>

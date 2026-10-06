@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The proof as a map · Geometric Langlands</title><link rel="stylesheet" href="reader.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],
+processEscapes:false},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']},
+startup:{ready:()=>{MathJax.startup.defaultReady();}}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head><body><main><nav><a href="index.html">Course contents</a> · <a href="GL-GLC-14.html">Previous lesson</a></nav><aside class="notice">Draft. Self-checked by the writing AI.</aside><article class="lesson"><h1>The proof as a map</h1>
+<p>Draft. Self-checked by the writing AI.</p>
+<p>The proof has two decisive reductions. First, the Langlands functor is an equivalence once its specified algebra unit is invertible. Second, the unit can be checked on the irreducible spectral open and on objects supported on its complement. Eisenstein series control the supported part by induction. Ambidexterity and generic opers turn the open part into a finite-monodromy vector bundle. The multiplicity argument then removes nontrivial character lines and counts every remaining component.</p>
+<p>Work over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero, with a smooth projective connected curve <span class="math-inline">\(X/k\)</span> and a connected reductive group <span class="math-inline">\(G\)</span>. Write
+<span class="math-display">\[
+Y=\operatorname{LS}_{\check G}(X),\qquad U=Y^{\mathrm{irred}},\qquad Z=Y\setminus U,
+\]</span>
+<span class="math-display">\[
+\mathcal C_G=\operatorname{Dmod}_{1/2}(\operatorname{Bun}_G),\qquad
+\mathcal D_G=\operatorname{IndCoh}_{\mathrm{Nilp}}(Y).
+\]</span>
+The spectral stack is derived and de Rham. The half twist, spectral action, singular-support convention, and normalization of the actual functor are those in <a href="GL-GLC-11.html" title="Constructing the Langlands functor (GLC I)">Constructing the Langlands functor (GLC I)</a>. The localization and parabolic comparisons are developed in <a href="GL-GLC-12.html" title="Kac-Moody localization and the fundamental local equivalence (GLC II)">Kac-Moody localization and the fundamental local equivalence (GLC II)</a> and <a href="GL-GLC-13.html" title="Eisenstein series and the reduction to the cuspidal part (GLC III)">Eisenstein series and the reduction to the cuspidal part (GLC III)</a>. The finite-monodromy and component-count arguments are proved at their stated hypotheses in <a href="GL-GLC-14.html" title="Ambidexterity, opers and multiplicity one (GLC IV and V)">Ambidexterity, opers and multiplicity one (GLC IV and V)</a>.</p>
+<p>This lesson proves the assembly as a theorem about specified categories, functors, an algebra and geometric comparison maps. The constructions and geometric theorems supplying those hypotheses remain mathematical inputs. The conclusion of the assembly is the exact equivalence of the given Langlands functor, with its given adjunction unit. It does not follow from an unrelated equivalence between the two categories.</p>
+<p>We use stable, presentable <span class="math-inline">\(k\)</span>-linear DG categories and coherent adjunctions. Exact functors preserve cofiber sequences; an object with zero cofiber is an equivalence. These categorical and derived sheaf frameworks are explicit foundational premises, as in the preceding lessons.</p>
+<h2>The theorem and its precise scope</h2>
+<p>Let <span class="math-inline">\(k\)</span> be algebraically closed of characteristic zero, let <span class="math-inline">\(X/k\)</span> be a smooth projective connected curve, and let <span class="math-inline">\(G/k\)</span> be connected reductive. Write <span class="math-inline">\(H=\check G\)</span> for its Langlands dual and <span class="math-inline">\(S=\operatorname{LS}_H(X)\)</span> for the <strong>derived</strong> stack of de Rham local systems. Fix the square-root convention for the half twist. The main result of Dennis Gaitsgory and Sam Raskin's <a href="https://arxiv.org/abs/2409.09856v3"><em>Proof of the geometric Langlands conjecture V: the multiplicity one theorem</em>, v3</a> is that the functor constructed in Part I is an equivalence
+<span class="math-display">\[
+\mathbb L_G:
+\operatorname{Dmod}_{1/2}(\operatorname{Bun}_G)
+\xrightarrow{\ \sim\ }
+\operatorname{IndCoh}_{\operatorname{Nilp}}(S).
+\tag{15.C1}
+\]</span>
+Its statement appears as Conjecture 1.1.3, whose proof is the conclusion of the paper. The introduction and §1 specify the functor and the preceding results used to prove it.</p>
+<p>The automorphic category in (15.C1) is the entire category of half-twisted D-modules. The nilpotent condition on the right concerns <strong>coherent singular support</strong> in <span class="math-inline">\(\operatorname{Sing}(S)\)</span>. It is not a requirement to discard D-modules with nonnilpotent characteristic varieties on the left. Passing to the restricted correspondence introduces an additional, different nilpotent condition on the automorphic side.</p>
+<p>There is no genus restriction in (15.C1), and neither adjoint type nor simply connectedness is an assumption of the final theorem. Those conditions enter particular stages of its proof. The simple adjoint case in genus at least two, excluding genus two and type <span class="math-inline">\(A_1\)</span>, admits the simplest dimension argument. Low genus and type <span class="math-inline">\(A_1\)</span> are treated separately. The reductions for general reductive groups include central isogenies and the action of central torsors; one cannot replace these reductions by the assertion that the theorem for adjoint groups automatically gives every group.</p>
+<p>The five-paper project is joint work of Dima Arinkin, Dario Beraldo, Justin Campbell, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin, and Nick Rozenblyum. Different papers have different subsets of these authors. In particular, Parts I and V have Gaitsgory and Raskin as their authors.</p>
+<p>The theorem is a deep geometric input here. Its deduction from the named categorical and geometric hypotheses is the assembly argument of this lesson; the full proofs of those geometric hypotheses are not reproduced.</p>
+<h2>The inputs and the maps they supply</h2>
+<p>Put <span class="math-inline">\(\mathcal V=\operatorname{QCoh}(Y)\)</span>, with its specified action <span class="math-inline">\(a\star d\)</span> on <span class="math-inline">\(\mathcal D_G\)</span>. The following hypotheses describe actual maps, rather than just isomorphism classes of objects.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Hypothesis</th>
+<th>Mathematical content</th>
+<th>Source and preceding lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1: the functor and its monad</td>
+<td>A continuous functor <span class="math-inline">\(L:\mathcal C_G\to\mathcal D_G\)</span>, its left adjoint <span class="math-inline">\(F\)</span>, and a coherent identification <span class="math-inline">\(LF\simeq A\star(-)\)</span> for a unital associative <span class="math-inline">\(A\in\mathcal V\)</span>. The adjunction unit is induced by the specified <span class="math-inline">\(u:\mathcal O_Y\to A\)</span>.</td>
+<td>GLC I, §1, and GLC III, §16; the construction and monad sections of the preceding lessons. QCoh-linearity alone does not establish this global algebra comparison.</td>
+</tr>
+<tr>
+<td>H2: support and Eisenstein comparison</td>
+<td>Exact localization <span class="math-inline">\(S_Z(K)\to K\to j_*j^*K\)</span>, where <span class="math-inline">\(S_Z\)</span> is the supported-object functor. Under full GLC for every proper Levi, the specified map <span class="math-inline">\(S_Z(u)\)</span> is an equivalence.</td>
+<td>GLC III, §§16–17; Proposition 13.B and the proper-Levi reduction.</td>
+</tr>
+<tr>
+<td>H3: conservativity</td>
+<td><span class="math-inline">\(L\)</span> reflects equivalences.</td>
+<td>GLC IV v1, Theorem 1.5.5, using proper-Levi GLC, the Whittaker theorem and cuspidal temperedness.</td>
+</tr>
+<tr>
+<td>H4: the irreducible bundle</td>
+<td><span class="math-inline">\(A_U=j^*A\)</span> is a classical vector bundle with a flat finite-monodromy connection.</td>
+<td>GLC IV v1, Main Theorem 3.1.8 and Proposition 4.2.8; the two adjoint comparisons and oper homology in the preceding lesson.</td>
+</tr>
+<tr>
+<td>H5: component and character description</td>
+<td>For semisimple <span class="math-inline">\(G\)</span> in the stated genus range, <span class="math-inline">\(U\)</span> has <span class="math-inline">\(c=|Z(G)|\)</span> nonempty open and closed components. On each, the finite-monodromy bundle is a finite direct sum of the specified character lines <span class="math-inline">\(\mathcal L_{\mathcal P}\)</span> arising from central torsors. The trivial torsor gives <span class="math-inline">\(\mathcal O\)</span>.</td>
+<td>GLC V v3, Theorem 4.3.2 and Corollary 4.3.3; Lemmas 14.R1–14.R3 supply the elementary representation deductions.</td>
+</tr>
+<tr>
+<td>H6: extension for the supported comparison</td>
+<td>The groups <span class="math-inline">\(H^0R\Gamma(Y,S_Z(\mathcal O_Y\otimes\mathcal L))\)</span> and <span class="math-inline">\(H^1R\Gamma(Y,S_Z(\mathcal O_Y\otimes\mathcal L))\)</span> vanish for the relevant invertible lines. Supported objects commute with their tensor products, so H2 transfers this vanishing to <span class="math-inline">\(A\otimes\mathcal L\)</span>.</td>
+<td>GLC V v3, Theorem 5.3.2, Corollary 5.3.3 and Proposition 5.3.5; the ring, section and supported-transfer proofs in Lemmas 14.R6–14.R8. The stack and descent premises are additional inputs.</td>
+</tr>
+<tr>
+<td>H7: vacuum sections and positivity</td>
+<td><span class="math-inline">\(\dim_kH^0R\Gamma(Y,A)=c\)</span>. For every nontrivial central torsor <span class="math-inline">\(\mathcal P\)</span>, <span class="math-inline">\(H^0R\Gamma(Y,A\otimes\mathcal L_{\mathcal P}^{-1})=0\)</span>. The rank on every component is positive.</td>
+<td>GLC V v3, Theorems 5.1.5, 5.1.7, 5.2.3–5.2.8 and their vacuum and gerbe constructions in §§6 and 8. The comparison with vacuum Hom spaces and nonvanishing are part of this premise.</td>
+</tr>
+<tr>
+<td>H8: the remaining group and genus reductions</td>
+<td>Compatible change-of-group and product equivalences, the full torus base case, and the separate irreducible-unit results in the low-genus or type <span class="math-inline">\(A_1\)</span> cases.</td>
+<td>GLC V v3, §§2–3, and GLC IV v1, §§1.7 and 4.5.</td>
+</tr>
+</tbody>
+</table></div>
+<p>H5–H7 apply to the semisimple large-genus argument with <span class="math-inline">\(g\geq2\)</span>, excluding a type <span class="math-inline">\(A_1\)</span> factor when <span class="math-inline">\(g=2\)</span>. Those are hypotheses of this argument, not exclusions from the final geometric Langlands theorem. H8 supplies the other cases and group forms. A positive-dimensional connected centre is handled through the torus and change-of-group theorems; the finite cardinal <span class="math-inline">\(|Z(G)|\)</span> in H5 is used only in the semisimple calculation.</p>
+<p>The role of GLC II in H4 is substantial. Its critical localization and fundamental local equivalence supply the lower square used to identify the right adjoint. The Whittaker square supplies the left-adjoint comparison. In the fixed dualities, the common geometric adjoint is
+<span class="math-display">\[
+L_{\mathrm{cusp}}^L\simeq
+\tau_G L_{\mathrm{cusp}}^\vee[-2d_N]
+\simeq L_{\mathrm{cusp}}^R,
+\qquad d_N=\dim\operatorname{Bun}_{N_{\rho(\omega_X)}}.
+\tag{15.A1}
+\]</span>
+The determinant lines and shifts cancel in the precise comparisons of the preceding lesson. Tensor-self-adjunction, together with its affine-local compactness and perfection premises, gives a perfect self-dual tensor object. Its identification with generic-oper homology removes every nonzero cohomological degree. Pseudo-proper presentations give the further finite-monodromy assertion. Thus H4 involves the actual two squares, their normalizations, fibre comparison and monodromy geometry. Bare object self-duality would not provide all these conclusions.</p>
+<h2>Assembling the irreducible-unit argument</h2>
+<p><strong>Lemma 15.A (extension from the supported unit).</strong> Under H2 and H6, restriction induces isomorphisms
+<span class="math-display">\[
+H^0R\Gamma(Y,A\otimes\mathcal L)
+\xrightarrow{\sim}
+H^0R\Gamma(U,A_U\otimes j^*\mathcal L)
+\tag{15.A2}
+\]</span>
+for each relevant line <span class="math-inline">\(\mathcal L\)</span>, including the trivial line.</p>
+<p><strong>Proof.</strong> Apply <span class="math-inline">\(R\Gamma(Y,-)\)</span> to the supplied localization triangle for <span class="math-inline">\(A\otimes\mathcal L\)</span>. Its relevant cohomology sequence is
+<span class="math-display">\[
+H^0R\Gamma(Y,S_Z(A\otimes\mathcal L))
+\longrightarrow H^0R\Gamma(Y,A\otimes\mathcal L)
+\longrightarrow H^0R\Gamma(U,A_U\otimes j^*\mathcal L)
+\longrightarrow H^1R\Gamma(Y,S_Z(A\otimes\mathcal L)).
+\]</span>
+The supported tensor comparison and H2 identify the outside groups with those of <span class="math-inline">\(S_Z(\mathcal O_Y\otimes\mathcal L)\)</span>. H6 makes them zero. Exactness gives (15.A2). The map used is induced by the specified unit. This is the supported-transfer argument of Lemma 14.R8, with its full hypotheses retained. <span class="math-inline">\(\square\)</span></p>
+<p><strong>Theorem 15.B (multiplicity one on all components).</strong> Assume H2 and H4–H7. Then the specified algebra unit <span class="math-inline">\(u_U:\mathcal O_U\to A_U\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> On a component <span class="math-inline">\(U_\alpha\)</span>, H5 gives
+<span class="math-display">\[
+A_U|_{U_\alpha}\simeq
+\bigoplus_{\mathcal P}
+\mathcal L_{\mathcal P}^{\oplus n_{\mathcal P,\alpha}}|_{U_\alpha}.
+\tag{15.A3}
+\]</span>
+This is a decomposition of vector bundles. No product decomposition of algebras is asserted.</p>
+<p>Fix a nontrivial <span class="math-inline">\(\mathcal P\)</span>. After tensoring with <span class="math-inline">\(\mathcal L_{\mathcal P}^{-1}\)</span>, its matching summands are trivial line bundles. The inclusions of these summands have retractions. Taking sections therefore retains their injections. Constants on a nonempty component give an injection from <span class="math-inline">\(k\)</span>: a nonzero scalar stays nonzero after pullback to a geometric point. Extend these sections by zero on every other open and closed component. Thus
+<span class="math-display">\[
+k^{n_{\mathcal P,\alpha}}
+\hookrightarrow H^0R\Gamma(U,A_U\otimes\mathcal L_{\mathcal P}^{-1}).
+\]</span>
+By Lemma 15.A and H7, the space on the right is zero. Hence <span class="math-inline">\(n_{\mathcal P,\alpha}=0\)</span>. This works for every nontrivial torsor and every component. We obtain
+<span class="math-display">\[
+A_U|_{U_\alpha}\simeq\mathcal O_{U_\alpha}^{\oplus n_\alpha}.
+\tag{15.A4}
+\]</span></p>
+<p>There are <span class="math-inline">\(c\)</span> components and H7 makes every <span class="math-inline">\(n_\alpha\)</span> positive. Constants on all summands and all components are independent: restriction to a component and projection to a summand recover each coefficient. Consequently
+<span class="math-display">\[
+\bigoplus_{\alpha=1}^c k^{n_\alpha}
+\hookrightarrow H^0R\Gamma(U,A_U).
+\]</span>
+Lemma 15.A and H7 give
+<span class="math-display">\[
+c\leq\sum_{\alpha=1}^c n_\alpha
+\leq\dim_kH^0R\Gamma(U,A_U)
+=\dim_kH^0R\Gamma(Y,A)=c.
+\tag{15.A5}
+\]</span>
+Every term is a positive integer, so all terms equal one. The argument did not need a separate theorem that the global functions on each component were already scalars.</p>
+<p>Finally work locally on <span class="math-inline">\(U\)</span>, with a generator <span class="math-inline">\(e\)</span> of the rank-one bundle. Write <span class="math-inline">\(u_U(1)=ae\)</span> and <span class="math-inline">\(e\cdot e=be\)</span>. The two-sided unit law gives <span class="math-inline">\(ab=1\)</span>. The scalar <span class="math-inline">\(a\)</span> is invertible, so the actual unit is an isomorphism. These local inverses glue because they invert the same map. This is the rank-one argument of Lemma 14.R11. It proves invertibility of the specified unit, completing the theorem. <span class="math-inline">\(\square\)</span></p>
+<p>Positivity in (15.A5) is a separate premise. A zero algebra object has a formal unit, so unitality does not exclude rank zero. Vacuum nonvanishing or the stated generic-oper existence comparison supplies the needed nonzero rank. Likewise H6 uses the supported comparison for <span class="math-inline">\(A\)</span>; Cohen–Macaulayness of <span class="math-inline">\(Y\)</span> alone is not a section-extension theorem for every coherent or derived object.</p>
+<h2>From the open unit to the actual equivalence</h2>
+<p><strong>Lemma 15.C (the support test).</strong> Under the exact localization premise in H2, if <span class="math-inline">\(j^*u\)</span> and <span class="math-inline">\(S_Z(u)\)</span> are equivalences, then <span class="math-inline">\(u\)</span> is an equivalence.</p>
+<p><strong>Proof.</strong> Set <span class="math-inline">\(K=\operatorname{cofib}(u)\)</span>. Exactness gives <span class="math-inline">\(j^*K=0\)</span> and <span class="math-inline">\(S_Z(K)=0\)</span>. The supplied localization triangle becomes
+<span class="math-display">\[
+0\longrightarrow K\longrightarrow j_*0=0.
+\]</span>
+It follows that <span class="math-inline">\(K=0\)</span>, hence <span class="math-inline">\(u\)</span> is an equivalence. Both tests concern the same map. The supported functor is not an underived closed restriction. This is Proposition 13.B applied with its matching localization hypotheses. <span class="math-inline">\(\square\)</span></p>
+<p><strong>Theorem 15.D (formal assembly for a fixed group).</strong> Suppose H1–H3 hold and the specified open unit <span class="math-inline">\(u_U\)</span> is an equivalence. Then the actual functor <span class="math-inline">\(L\)</span> is an equivalence, with inverse <span class="math-inline">\(F\)</span>. In particular, H1–H7 prove this assertion in their stated semisimple and genus range.</p>
+<p><strong>Proof.</strong> H2 and Lemma 15.C make <span class="math-inline">\(u\)</span> invertible. The coherent monad identification in H1 identifies the adjunction unit, at <span class="math-inline">\(d\in\mathcal D_G\)</span>, with
+<span class="math-display">\[
+\eta_d:d\simeq\mathcal O_Y\star d
+\xrightarrow{u\star\mathrm{id}_d}A\star d\simeq LF(d).
+\tag{15.A6}
+\]</span>
+Functoriality of the action makes every <span class="math-inline">\(\eta_d\)</span> an equivalence. This direction requires no additional faithfulness assumption on the action.</p>
+<p>Let <span class="math-inline">\(\varepsilon:FL\to\mathrm{Id}_{\mathcal C_G}\)</span> be the counit. The given adjunction has the triangle homotopy
+<span class="math-display">\[
+L(\varepsilon_c)\circ\eta_{Lc}\simeq\mathrm{id}_{Lc}.
+\tag{15.A7}
+\]</span>
+Since <span class="math-inline">\(\eta_{Lc}\)</span> is invertible, <span class="math-inline">\(L(\varepsilon_c)\)</span> is its inverse. H3 now makes <span class="math-inline">\(\varepsilon_c\)</span> an equivalence. Both the unit and counit are equivalences of functors. The other triangle homotopy,
+<span class="math-display">\[
+\varepsilon_{Fd}\circ F(\eta_d)\simeq\mathrm{id}_{Fd},
+\tag{15.A8}
+\]</span>
+is their second cancellation identity. Thus the specified adjunction gives mutually inverse coherent equivalences <span class="math-inline">\(F\)</span> and <span class="math-inline">\(L\)</span>. This is precisely the adjunction criterion proved in Proposition 13.A; neither a separate monadic reconstruction theorem nor a different candidate equivalence is needed. Under H4–H7, Theorem 15.B supplies its open-unit hypothesis. <span class="math-inline">\(\square\)</span></p>
+<p><strong>Corollary 15.E (all groups and genera, at the complete inputs).</strong> Suppose the full torus equivalence, the proper-Levi comparisons, H1–H7 in their actual ranges, and every comparison and exceptional-case assertion in H8 are supplied. Then the specified de Rham Langlands functor is an equivalence for every connected reductive <span class="math-inline">\(G\)</span> and every genus.</p>
+<p><strong>Proof.</strong> Induct on semisimple rank, with the full torus theorem at rank zero. At rank <span class="math-inline">\(r\)</span>, first treat every almost simple simply-connected automorphic group <span class="math-inline">\(S\)</span> of that rank. Every proper Levi of <span class="math-inline">\(S\)</span> has smaller semisimple rank, so its full equivalence is available. H2 supplies the supported-unit comparison, and H1 and H3 supply the monad and conservativity. In the large-genus case outside the stated type <span class="math-inline">\(A_1\)</span> exception, Theorem 15.B supplies the irreducible unit. In the exceptional cases H8 supplies its separate proof; if the irreducible open is empty, its restriction is automatically an equivalence. Theorem 15.D proves the full equivalence for <span class="math-inline">\(S\)</span>.</p>
+<p>Now take an arbitrary rank-<span class="math-inline">\(r\)</span> connected reductive <span class="math-inline">\(G\)</span>. Its structural central-isogeny reduction uses its connected central torus and the almost simple factors of its simply-connected derived cover. Each factor has rank at most <span class="math-inline">\(r\)</span>: lower-rank factors are covered by induction, and rank-<span class="math-inline">\(r\)</span> factors by the preceding paragraph. The full torus theorem and the product comparisons in H8 give the equivalence for the covering product. The actual linear base-change comparisons in H8 transport that equivalence to the specified <span class="math-inline">\(L_G\)</span>: tensor its inverse and its unit and counit with the given base-change category. This does not assume that the central isogeny lowers semisimple rank, nor that an arbitrary algebra unit reflects through a nonfaithful action. The rank and base-change computations are proved below. Every reductive group has finite semisimple rank, so this finishes the induction and includes every genus. <span class="math-inline">\(\square\)</span></p>
+<p>The centre machinery cannot be omitted merely because the easiest introductory case has adjoint <span class="math-inline">\(G\)</span>. The final group-form reduction uses simply-connected automorphic groups. Their duals are adjoint and may have several spectral components. The character lines, central translations, gerbe compatibility, and the count of every component are exactly what completes that case.</p>
+<h2>A computed obstruction to copying the dimension argument</h2>
+<p>Let <span class="math-inline">\(S=(\mathbb G_m)^2\)</span> and <span class="math-inline">\(A=\mathcal O_S^{\times n}\)</span> as a product algebra, with <span class="math-inline">\(n\geq1\)</span>. Its specified unit is the diagonal map
+<span class="math-display">\[
+\mathcal O_S\longrightarrow\mathcal O_S^{\times n},\qquad a\longmapsto(a,\ldots,a).
+\]</span>
+For <span class="math-inline">\(n&gt;1\)</span> it is not surjective: <span class="math-inline">\((1,0,\ldots,0)\)</span> is not diagonal. Yet
+<span class="math-display">\[
+H^0(S,A)=k[x^{\pm1},y^{\pm1}]^{\oplus n}
+\]</span>
+is infinite-dimensional for every positive <span class="math-inline">\(n\)</span>. Indeed the Laurent monomials <span class="math-inline">\(x^m\)</span>, <span class="math-inline">\(m\in\mathbb Z\)</span>, are independent: a finite relation becomes an ordinary polynomial relation after multiplication by a sufficiently large power of <span class="math-inline">\(x\)</span>, and its coefficients are zero. An infinite-dimensional section space supplies no finite upper bound <span class="math-inline">\(n\leq c\)</span> of the kind in (15.A5).</p>
+<p>Under the topological presentation of a genus-one surface group as <span class="math-inline">\(\mathbb Z^2\)</span>, this affine torus is its rank-one Betti representation space: a representation in <span class="math-inline">\(\mathbb G_m\)</span> is specified by two arbitrary invertible elements. Conjugation is trivial. That topological presentation and the interpretation as a spectral stack, including its stabilizer and derived data, are additional premises; the explicit coordinate calculation already demonstrates the obstruction. It does not assert that the displayed product algebra is the actual Betti Langlands algebra. The de Rham-to-Betti implication uses comparison theorems with their own nilpotent and restricted categories, rather than repeating this failed finite-dimension estimate on a Betti character space.</p>
+<h2>The dependencies in one diagram</h2>
+<p><img src="src/figures/geometric-langlands-proof-map.svg" alt="The five-paper geometric inputs and the proved formal arrows to the specified Langlands equivalence" /></p>
+<p>Figure 15.A. Purple boxes name geometric inputs, yellow records the separate positive-rank premise, and green boxes name the implications proved here. The two localization comparisons feed the normalized common adjoint in (15.A1). The open unit, supported unit and conservativity have distinct roles. The component count retains every central component; the full torus and group-form comparisons close the induction.</p>
+<h2>Induction includes the centre</h2>
+<p>Fix a smooth projective connected curve <span class="math-inline">\(X\)</span> over an algebraically closed field <span class="math-inline">\(k\)</span> of characteristic zero. For each connected reductive group <span class="math-inline">\(G\)</span>, retain the specified, normalized functor
+<span class="math-display">\[
+L_G:\mathcal C_G\longrightarrow\mathcal D_G,
+\qquad
+\mathcal C_G=\operatorname{Dmod}_{1/2}(\operatorname{Bun}_G),
+\qquad
+\mathcal D_G=\operatorname{IndCoh}_{\mathrm{Nilp}}
+(\operatorname{LS}_{\check G}).
+\]</span>
+Let <span class="math-inline">\(\mathsf E(G)\)</span> mean that this functor is an equivalence on the entire stated categories. This assertion includes all central sectors.</p>
+<p>The reductive-group structure used in the induction is an explicit input. A choice of maximal torus and Borel gives a finite set <span class="math-inline">\(\Delta_G\)</span> of simple roots; standard parabolics correspond to subsets <span class="math-inline">\(J\subseteq\Delta_G\)</span>, every parabolic is conjugate to a standard one, and its Levi quotient <span class="math-inline">\(M_J\)</span> has semisimple rank <span class="math-inline">\(|J|\)</span>. Semisimple rank equals the rank of the root span, or of the derived group. A connected reductive group of semisimple rank zero is a torus, including the trivial torus. These structural theorems are not proved here.</p>
+<p>Under that input, a proper parabolic gives
+<span class="math-display">\[
+\operatorname{rk}_{\mathrm{ss}}(M_J)=|J|
+&lt;|\Delta_G|=\operatorname{rk}_{\mathrm{ss}}(G).
+\tag{15.I1}
+\]</span>
+This is exactly the decrease established at the structural premises in <a href="GL-GLC-13.html" title="Eisenstein series and the reduction to the cuspidal part (GLC III)">Eisenstein series and the reduction to the cuspidal part (GLC III)</a>, “Induction on semisimple rank.” The assertion concerns the Levi quotient itself, with its central torus.</p>
+<p><strong>Proposition 15.I1 (the finite induction).</strong> Suppose:</p>
+<ol>
+<li>For every torus <span class="math-inline">\(T\)</span>, the full specified categorical functor <span class="math-inline">\(L_T\)</span> is an equivalence.</li>
+<li>For every positive-rank connected reductive <span class="math-inline">\(G\)</span>, the geometric assembly inputs give the implication
+<span class="math-display">\[
+\bigl(\mathsf E(M)\text{ for every proper Levi quotient }M\bigr)
+\ \Longrightarrow\ \mathsf E(G).
+\tag{15.I2}
+\]</span></li>
+</ol>
+<p>Then <span class="math-inline">\(\mathsf E(G)\)</span> holds for every connected reductive <span class="math-inline">\(G\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math-inline">\(\mathsf P(r)\)</span> assert <span class="math-inline">\(\mathsf E(G)\)</span> for every such group of semisimple rank at most <span class="math-inline">\(r\)</span>. The rank-zero structure input and the full torus equivalence give <span class="math-inline">\(\mathsf P(0)\)</span>. Suppose <span class="math-inline">\(\mathsf P(r-1)\)</span> and take a group of rank <span class="math-inline">\(r\)</span>. Every proper Levi quotient has rank at most <span class="math-inline">\(r-1\)</span> by (15.I1), so its full equivalence is available. Applying (15.I2) proves <span class="math-inline">\(\mathsf E(G)\)</span>. Groups of smaller rank were already covered, giving <span class="math-inline">\(\mathsf P(r)\)</span>. Each root set is finite, so ordinary induction reaches every group. <span class="math-inline">\(\square\)</span></p>
+<p>The base case requires a categorical equivalence with its inverse and coherent comparison maps. A transform on selected line bundles, an equivalence of hearts, or a scalar endomorphism calculation does not supply this premise.</p>
+<p>Here is the precise categorical content of the rank-step input. Supply <span class="math-inline">\(F_G\dashv L_G\)</span>, conservativity of <span class="math-inline">\(L_G\)</span>, and a unit-compatible monad description <span class="math-inline">\(L_GF_G\simeq A_G\star-\)</span>. Proper-Levi geometric Langlands must supply the comparison of the <strong>specified unit</strong> on sections supported in the reducible locus. The irreducible calculation must supply the restriction of that same unit on the complementary open locus. Under the exact open–closed triangle, Proposition 13.B in <a href="GL-GLC-13.html" title="Eisenstein series and the reduction to the cuspidal part (GLC III)">Eisenstein series and the reduction to the cuspidal part (GLC III)</a>, “Detecting a morphism on an open set and its complement,” makes the global algebra unit invertible. The monad unit is then invertible by its specified action comparison. Proposition 13.A, “A conservative right adjoint is controlled by its unit,” finishes the step: the triangle
+<span class="math-display">\[
+L_G(\varepsilon_c)\eta_{L_Gc}\simeq\operatorname{id}_{L_Gc}
+\]</span>
+makes <span class="math-inline">\(L_G(\varepsilon_c)\)</span> invertible, and conservativity makes <span class="math-inline">\(\varepsilon_c\)</span> invertible. The unit and counit exhibit inverse functors. All geometric existence, support and irreducible-unit assertions in this paragraph remain inputs.</p>
+<h3>A block computation of the decreasing rank</h3>
+<p>For <span class="math-inline">\(G=\mathrm{GL}_n\)</span>, conjugation by <span class="math-inline">\(\operatorname{diag}(t_1,\ldots,t_n)\)</span> sends the matrix unit <span class="math-inline">\(E_{ij}\)</span> to <span class="math-inline">\((t_i/t_j)E_{ij}\)</span>. Thus its roots are <span class="math-inline">\(e_i-e_j\)</span>, where <span class="math-inline">\(e_i\)</span> is the <span class="math-inline">\(i\)</span>-th coordinate character. Their rational span is the hyperplane
+<span class="math-display">\[
+\left\{(a_1,\ldots,a_n)\in\mathbb Q^n:
+\sum_i a_i=0\right\}.
+\]</span>
+Indeed every difference belongs to this hyperplane, and <span class="math-inline">\(e_i-e_n\)</span>, <span class="math-inline">\(1\leq i&lt;n\)</span>, are an independent spanning list. Consequently <span class="math-inline">\(\operatorname{rk}_{\mathrm{ss}}(\mathrm{GL}_n)=n-1\)</span>.</p>
+<p>Take a composition <span class="math-inline">\(n=n_1+\cdots+n_s\)</span>, with all <span class="math-inline">\(n_i&gt;0\)</span>. The block upper-triangular parabolic has block diagonal Levi
+<span class="math-display">\[
+M=\prod_{i=1}^s\mathrm{GL}_{n_i}.
+\]</span>
+Within each block the root span is the hyperplane whose block-coordinate sum is zero. These subspaces have disjoint coordinate supports, so their direct sum has dimension
+<span class="math-display">\[
+\operatorname{rk}_{\mathrm{ss}}(M)
+=\sum_i(n_i-1)=n-s.
+\tag{15.I3}
+\]</span>
+Its diagonal torus still has dimension <span class="math-inline">\(n\)</span>, the total rank of <span class="math-inline">\(\mathrm{GL}_n\)</span>. If <span class="math-inline">\(s\geq2\)</span>, the flag defining the parabolic has a nonzero proper step, and a matrix exchanging a vector in that step with one outside it does not preserve the flag. The parabolic is proper, and <span class="math-inline">\(n-s&lt;n-1\)</span>.</p>
+<p>For <span class="math-inline">\(\mathrm{SL}_n\)</span>, the same flag gives
+<span class="math-display">\[
+M=\left\{(g_1,\ldots,g_s)\in
+\prod_i\mathrm{GL}_{n_i}:\prod_i\det(g_i)=1\right\}.
+\]</span>
+Its full diagonal torus is still the diagonal torus of <span class="math-inline">\(\mathrm{SL}_n\)</span>, of dimension <span class="math-inline">\(n-1\)</span>. The root characters are the same within-block differences. Rationally the character space of this torus is
+<span class="math-inline">\(\mathbb Q^n/\mathbb Q(e_1+\cdots+e_n)\)</span>. The coordinate-sum-zero subspace meets the discarded line only in zero, since <span class="math-inline">\(n\ne0\)</span> in <span class="math-inline">\(\mathbb Q\)</span>. Therefore all the independence calculations for the root spans survive restriction, and the Levi again has semisimple rank <span class="math-inline">\(n-s\)</span>. The standard torus and root interpretation of this dimension is the reductive-group structure premise already stated.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Group and proper block Levi</th>
+<th>Total rank of group and Levi</th>
+<th>Semisimple ranks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math-inline">\(\mathrm{GL}_4\)</span>, <span class="math-inline">\(\mathrm{GL}_2\times\mathrm{GL}_2\)</span></td>
+<td><span class="math-inline">\(4,\ 4\)</span></td>
+<td><span class="math-inline">\(3,\ 2\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathrm{SL}_4\)</span>, <span class="math-inline">\(S(\mathrm{GL}_2\times\mathrm{GL}_2)\)</span></td>
+<td><span class="math-inline">\(3,\ 3\)</span></td>
+<td><span class="math-inline">\(3,\ 2\)</span></td>
+</tr>
+<tr>
+<td><span class="math-inline">\(\mathrm{GL}_n\)</span>, all blocks of size one</td>
+<td><span class="math-inline">\(n,\ n\)</span></td>
+<td><span class="math-inline">\(n-1,\ 0\)</span></td>
+</tr>
+</tbody>
+</table></div>
+<p>The last Levi is <span class="math-inline">\(\mathbb G_m^n\)</span>, rather than a rank-zero trivial group. Its torus equivalence is a substantive base-case input.</p>
+<h3>What a change of group must provide</h3>
+<p>The structural reduction uses the central isogeny
+<span class="math-display">\[
+Z(G)^0\times G_{\mathrm{der}}^{\mathrm{sc}}\longrightarrow G
+\]</span>
+and the product decomposition of a simply connected semisimple group into its almost simple factors. Existence of these maps and decompositions, and the geometric change-of-group theorem for the relevant almost isogenies, are explicit unproved inputs. An isomorphism of rational root spans alone cannot compare the categories of bundles or local systems.</p>
+<p>Precisely, a permitted change of group must supply a presentable right <span class="math-inline">\(\mathcal V_1\)</span>-module <span class="math-inline">\(\mathcal B\)</span>, geometric comparison equivalences
+<span class="math-display">\[
+\mathcal C_2\simeq\mathcal B\otimes_{\mathcal V_1}\mathcal C_1,
+\qquad
+\mathcal D_2\simeq\mathcal B\otimes_{\mathcal V_1}\mathcal D_1,
+\tag{15.I4}
+\]</span>
+and a coherent square identifying the actual <span class="math-inline">\(L_2\)</span> with
+<span class="math-inline">\(\operatorname{id}_{\mathcal B}\otimes_{\mathcal V_1}L_1\)</span>.
+Here <span class="math-inline">\(\mathcal V_1\)</span> is the supplied spectral monoidal category. This formulation accommodates the precise spectral base change of the change-of-group theorem without assuming a description of it from root data. It must incorporate all allowed components, central-character projectors, gerbes and half-twist normalizations. The theorem must establish the required direction of these comparisons.</p>
+<p>If <span class="math-inline">\(L_1\)</span> is a <span class="math-inline">\(\mathcal V_1\)</span>-linear equivalence, its inverse has the transported linear structure. Tensor that inverse with <span class="math-inline">\(\mathcal B\)</span>. Tensoring the unit and counit gives the two inverse comparisons for (15.I4), and tensoring their triangle homotopies preserves the coherences. Thus <span class="math-inline">\(L_2\)</span> is an equivalence. This is the mapping and coherence argument of <a href="GL-GLC-10.html" title="The categorical conjecture and its variants">The categorical conjecture and its variants</a>, “C2. Base change of an equivalence retains its linear structure.”</p>
+<p>For products, require the actual Künneth comparisons
+<span class="math-display">\[
+\mathcal C_{G_1\times G_2}\simeq\mathcal C_{G_1}\otimes_k\mathcal C_{G_2},
+\quad
+\mathcal D_{G_1\times G_2}\simeq\mathcal D_{G_1}\otimes_k\mathcal D_{G_2},
+\quad
+L_{G_1\times G_2}\simeq L_{G_1}\otimes_k L_{G_2}.
+\tag{15.I5}
+\]</span>
+Then <span class="math-inline">\(L_{G_1}^{-1}\otimes_k L_{G_2}^{-1}\)</span> is an inverse, by the same unit-and-counit calculation. The geometry of D-module and nilpotent-IndCoh Künneth, and compatibility with the specified functors, is not proved here. With these inputs, the structural central-isogeny reduction transfers the theorem from the torus and almost simple factors to <span class="math-inline">\(G\)</span>. That transfer retains the centre; it does not establish equivalence of categories by forgetting it.</p>
+<h3>The automorphic group and its dual have different centres</h3>
+<p>For semisimple <span class="math-inline">\(G\)</span>, the root-datum duality premise identifies
+<span class="math-display">\[
+G\text{ adjoint}\quad\Longleftrightarrow\quad
+\check G\text{ simply connected}.
+\tag{15.I6}
+\]</span>
+It also identifies the fundamental-group data of <span class="math-inline">\(\check G\)</span> with the character data of the finite centre <span class="math-inline">\(Z(G)\)</span>. These structure statements and the geometric fundamental-group theorem for the irreducible local-system components remain inputs.</p>
+<p>Thus the simply connected <strong>spectral</strong> group in the topology calculation corresponds to an adjoint <strong>automorphic</strong> group. For example, <span class="math-inline">\(\mathrm{SL}_n\)</span> has centre <span class="math-inline">\(\mu_n\)</span>: a central matrix commutes with all diagonal matrices and elementary matrices, which first makes it diagonal and then makes its diagonal entries equal; determinant one gives <span class="math-inline">\(\lambda^n=1\)</span>. For <span class="math-inline">\(n&gt;1\)</span> this centre is nontrivial in the stated field. Its dual is <span class="math-inline">\(\mathrm{PGL}_n\)</span> under the root-datum premise. Conversely, the adjoint automorphic form <span class="math-inline">\(\mathrm{PGL}_n\)</span> has simply connected spectral dual <span class="math-inline">\(\mathrm{SL}_n\)</span>. Automorphic simply connectedness therefore does not eliminate the central sectors.</p>
+<p>The relevant calculation in <a href="GL-GLC-14.html" title="Ambidexterity, opers and multiplicity one (GLC IV and V)">Ambidexterity, opers and multiplicity one (GLC IV and V)</a>, “Multiplicity one and the finite centre,” retains every nonempty component <span class="math-inline">\(U_\alpha\)</span>, indexed there by <span class="math-inline">\(Z(G)^\vee\)</span>. At its stated geometric hypotheses, nontrivial central line summands are removed by Lemma 14.R9: twisting exposes a copy of the structure sheaf, whose nonzero constant section contradicts the stipulated vanishing. Afterward write <span class="math-inline">\(A|_{U_\alpha}\simeq\mathcal O_{U_\alpha}^{\oplus n_\alpha}\)</span>.</p>
+<p>The large-genus geometric calculation has <span class="math-inline">\(g\geq2\)</span>, with type <span class="math-inline">\(A_1\)</span> factors excluded when <span class="math-inline">\(g=2\)</span>. The remaining genera and that exception require the separate geometric reductions; the counting lemmas themselves require only their explicit section, component and positivity premises.</p>
+<p>The further premises are positivity <span class="math-inline">\(n_\alpha\geq1\)</span>, extension of the relevant sections, and the whole-vacuum count
+<span class="math-display">\[
+\dim_k H^0\operatorname{End}(\mathrm{Vac})
+=c,\qquad c=|Z(G)|.
+\]</span>
+Lemma 14.R10 injects <span class="math-inline">\(\bigoplus_\alpha k^{n_\alpha}\)</span> into that space, so
+<span class="math-display">\[
+c\leq\sum_\alpha n_\alpha\leq c.
+\]</span>
+Every <span class="math-inline">\(n_\alpha\)</span> is one. Lemma 14.R11 then uses the <strong>algebra unit</strong>: if <span class="math-inline">\(u(1)=ae\)</span> and <span class="math-inline">\(e^2=be\)</span> in a local rank-one basis, the unit law gives <span class="math-inline">\(ab=1\)</span>, proving <span class="math-inline">\(u\)</span> invertible. A scalar endomorphism statement for a single vacuum summand must not replace the count <span class="math-inline">\(c\)</span> for the whole vacuum. For a reductive group with positive-dimensional centre, this finite-centre formula itself requires the stated torus and change-of-group reductions; its cardinality cannot be used as if the centre were finite.</p>
+<h2>What the equivalence says about an eigenvalue</h2>
+<p>The foundations in this section are premises: presentable stable linear categories, their mapping complexes, coherent module functors, relative tensor products representing balanced continuous functors, derived module categories and their tensor products, and computation of derived Hom by projective resolutions. The geometric spectral action and its identification with the full Hecke/fusion action are additional inputs.</p>
+<p>Put <span class="math-inline">\(\mathcal V=\operatorname{QCoh}(Y)\)</span> and suppose given a continuous <span class="math-inline">\(\mathcal V\)</span>-linear equivalence
+<span class="math-display">\[
+L:\mathcal C\xrightarrow{\sim}\mathcal D.
+\]</span>
+Choose a point <span class="math-inline">\(\sigma:\operatorname{Spec}\kappa\to Y\)</span>, over the required field extension, together with the continuous strong monoidal character <span class="math-inline">\(\sigma^*:\mathcal V\to D(\kappa)\)</span>. Define the categorical fibres
+<span class="math-display">\[
+\mathcal C_\sigma=D(\kappa)\otimes_{\mathcal V}\mathcal C,
+\qquad
+\mathcal D_\sigma=D(\kappa)\otimes_{\mathcal V}\mathcal D.
+\tag{15.E1}
+\]</span></p>
+<p><strong>Proposition 15.E1 (transport of the complete fibre).</strong> The specified functor
+<span class="math-display">\[
+L_\sigma=\operatorname{id}_{D(\kappa)}\otimes_{\mathcal V}L:
+\mathcal C_\sigma\xrightarrow{\sim}\mathcal D_\sigma
+\tag{15.E2}
+\]</span>
+is an equivalence, including its mapping complexes and higher coherences.</p>
+<p><strong>Proof.</strong> Transport the linear structure of <span class="math-inline">\(L\)</span> to its inverse <span class="math-inline">\(F\)</span>. Its action comparison is obtained by applying <span class="math-inline">\(F\)</span> to that of <span class="math-inline">\(L\)</span> and inserting the chosen inverse comparisons. Each module associativity and unit diagram commutes because applying the fully faithful <span class="math-inline">\(L\)</span> makes it the corresponding diagram for <span class="math-inline">\(L\)</span>. Define <span class="math-inline">\(F_\sigma=\operatorname{id}\otimes_{\mathcal V}F\)</span>. The natural equivalences <span class="math-inline">\(FL\simeq\operatorname{Id}\)</span> and <span class="math-inline">\(LF\simeq\operatorname{Id}\)</span> are linear, and the balanced tensor universal property transports them to
+<span class="math-display">\[
+F_\sigma L_\sigma\simeq\operatorname{Id}_{\mathcal C_\sigma},
+\qquad
+L_\sigma F_\sigma\simeq\operatorname{Id}_{\mathcal D_\sigma}.
+\]</span>
+Their triangles transport by the same property. These are inverse functors, and hence give natural equivalences on all mapping complexes. <span class="math-inline">\(\square\)</span></p>
+<p><span class="math-display">\[
+\begin{array}{ccc}
+\mathcal C&amp;\xrightarrow{\ L\ }&amp;\mathcal D\\
+\downarrow&amp;&amp;\downarrow\\
+\mathcal C_\sigma&amp;\xrightarrow{\ L_\sigma\ }&amp;\mathcal D_\sigma
+\end{array}
+\]</span></p>
+<p>Figure 15.E. The vertical arrows are the canonical categorical base-change functors into (15.E1), and the square commutes by the balanced tensor construction. Proposition 15.E1 transports an inverse and its comparison maps. Geometric realization of the fibres and detection of a nonzero underlying object require the additional premises below.</p>
+<p>There is a second formal comparison which does not yet identify fibres with geometric eigen-objects. Define the coherent eigen-category
+<span class="math-display">\[
+\operatorname{Eig}_\sigma(\mathcal C)
+=\operatorname{Fun}_{\mathcal V}^{L}(D(\kappa),\mathcal C).
+\tag{15.E3}
+\]</span>
+An object has value <span class="math-inline">\(E\)</span> on <span class="math-inline">\(\kappa\)</span>, with the coherent scalar structure and equivalences
+<span class="math-display">\[
+a\star E\simeq\sigma^*(a)\otimes_\kappa E
+\]</span>
+for all <span class="math-inline">\(a\)</span>, satisfying the module constraints. Postcomposition with <span class="math-inline">\(L\)</span> gives
+<span class="math-inline">\(\operatorname{Eig}_\sigma(\mathcal C)\simeq
+\operatorname{Eig}_\sigma(\mathcal D)\)</span>: postcompose with <span class="math-inline">\(F\)</span> for the inverse, and apply the natural inverse comparisons to the functors and their transformations. Compatibility with Hecke eigensheaves requires the supplied spectral/Hecke comparison, including fusion.</p>
+<p>To identify (15.E3) with (15.E1), require an actual fibre comparison. One sufficient case is an affine probe with the algebra-object comparison of Proposition C3.1 in <a href="GL-GLC-10.html" title="The categorical conjecture and its variants">The categorical conjecture and its variants</a>, “C3. Scheme structures, point fibres and eigen-objects.” Its proof uses the augmented free bar resolution to identify base change with coherent residue-algebra module objects and continuous module functors. For a general stack point, the corresponding relative-duality or geometric comparison remains an explicit premise. A point with a chosen framing, its residual gerbe, and its isomorphism class are different probes; automorphisms of <span class="math-inline">\(\sigma\)</span> must be retained in the chosen comparison.</p>
+<p>Now assume <span class="math-inline">\(\mathcal D_\sigma\)</span> contains a specified nonzero object <span class="math-inline">\(d_\sigma\)</span>. Equation (15.E2) produces
+<span class="math-display">\[
+e_\sigma=F_\sigma(d_\sigma)\ne0,
+\]</span>
+because an equivalence reflects zero objects. This proves existence in the categorical fibre. To obtain a nonzero underlying automorphic object, also supply the eigen/fibre comparison and an exact conservative forgetful functor
+<span class="math-display">\[
+U_\sigma:\mathcal C_\sigma\longrightarrow\mathcal C.
+\tag{15.E4}
+\]</span>
+Then <span class="math-inline">\(U_\sigma(e_\sigma)\ne0\)</span>: otherwise the map <span class="math-inline">\(0\to e_\sigma\)</span> becomes an equivalence, contradicting conservativity. Faithfulness on degree-zero morphisms is another sufficient zero-detection premise: if the image were zero, faithfulness would make <span class="math-inline">\(\operatorname{id}_{e_\sigma}=0\)</span>, which forces a zero object. In the affine module-object situation forgetting is conservative by construction. It is not inferred for an arbitrary stack probe. Spectral-fibre nonvanishing and geometric forgetting are substantive inputs in this existence deduction.</p>
+<p>If these fibre, Hecke and zero-detection inputs are supplied for every irreducible <span class="math-inline">\(\sigma\)</span>, over all the fields required by the geometric statement, the same proof gives a nonzero eigensheaf for each of those eigenvalues. The universal nonvanishing premise is not established by naming an irreducible locus.</p>
+<p>For a sharper conclusion, supply a <span class="math-inline">\(\kappa\)</span>-linear equivalence
+<span class="math-display">\[
+B_\sigma:D(\kappa)\xrightarrow{\sim}\mathcal D_\sigma.
+\tag{15.E5}
+\]</span>
+Let <span class="math-inline">\(E_\sigma=F_\sigma B_\sigma(\kappa)\)</span>. The resulting <span class="math-inline">\(\kappa\)</span>-linear equivalence sends <span class="math-inline">\(V\)</span> to <span class="math-inline">\(V\otimes_\kappa E_\sigma\)</span>: its module constraint applied to <span class="math-inline">\(V\otimes_\kappa\kappa\)</span> gives exactly this formula. It therefore classifies all objects of the coherent fibre. Its mapping comparison gives
+<span class="math-display">\[
+\operatorname{Map}_{\mathcal C_\sigma}(E_\sigma,E_\sigma)
+\simeq\operatorname{RHom}_\kappa(\kappa,\kappa)
+\simeq\kappa[0].
+\tag{15.E6}
+\]</span>
+This is a conclusion inside the coherent fibre. The forgetful functor (15.E4) need not be fully faithful, so (15.E6) alone does not compute the endomorphisms of the underlying D-module.</p>
+<p>Even under (15.E5), the fibre contains <span class="math-inline">\(E_\sigma\)</span>, <span class="math-inline">\(E_\sigma\oplus E_\sigma\)</span>, and <span class="math-inline">\(E_\sigma[1]\)</span>. Their preimages are <span class="math-inline">\(\kappa\)</span>, <span class="math-inline">\(\kappa^2\)</span>, and <span class="math-inline">\(\kappa[1]\)</span>, which have different graded cohomology, so these objects are inequivalent. A categorical eigenvalue theorem does not assert uniqueness of every eigen-object, nor a rank for an underlying sheaf.</p>
+<p>If a continuous coefficient functor <span class="math-inline">\(W_\sigma:\mathcal C_\sigma\to D(\kappa)\)</span> is <strong>specified to be the inverse of this equivalence</strong>, objects equipped with a chosen coefficient trivialization <span class="math-inline">\(W_\sigma(e)\simeq\kappa\)</span> form a contractible space. Indeed <span class="math-inline">\(W_\sigma\)</span> induces an equivalence on maximal subgroupoids; the space of pairs <span class="math-inline">\((e,W_\sigma(e)\xrightarrow{\sim}\kappa)\)</span> is its homotopy fibre at <span class="math-inline">\(\kappa\)</span>, and the homotopy fibre of an equivalence is contractible. This is a precise normalized uniqueness statement. Without the chosen trivialization, <span class="math-inline">\(E_\sigma\)</span> has scalar automorphisms <span class="math-inline">\(\kappa^\times\)</span>. Establishing the actual Whittaker coefficient comparison, its shifts, and any heart, holonomicity or characteristic-cycle conclusion is additional geometry.</p>
+<p>Finally, a one-dimensional degree-zero endomorphism space does not imply (15.E5). In <span class="math-inline">\(D(\kappa)\times D(\kappa)\)</span>, the object <span class="math-inline">\((\kappa,0)\)</span> has endomorphism complex <span class="math-inline">\(\kappa[0]\)</span>, but a nonzero orthogonal summand <span class="math-inline">\((0,\kappa)\)</span> remains. This product cannot be equivalent to <span class="math-inline">\(D(\kappa)\)</span>. To see this, split a complex of vector spaces by choosing complements to boundaries inside cycles, and complements to cycles in each cochain group. It is its graded cohomology plus contractible two-term summands. Every nonzero complex therefore has a shift of <span class="math-inline">\(\kappa\)</span> as a summand; any two nonzero complexes admit a nonzero map in some degree. The two displayed product objects instead have zero mapping complex in every degree. Even concentration of the endomorphism complex of a chosen object therefore requires a generation premise to reconstruct a whole category. A statement only about <span class="math-inline">\(H^0\)</span> supplies less information still. For <span class="math-inline">\(R=\kappa[t]\)</span> and <span class="math-inline">\(M=R/(t)\)</span>, the exact free resolution
+<span class="math-display">\[
+0\longrightarrow R\xrightarrow{t}R\longrightarrow M\longrightarrow0
+\]</span>
+is exact because multiplication by <span class="math-inline">\(t\)</span> is injective in the polynomial domain. Applying <span class="math-inline">\(\operatorname{Hom}_R(-,M)\)</span> gives zero differential, with <span class="math-inline">\(M\simeq\kappa\)</span> in degrees zero and one. Thus
+<span class="math-display">\[
+H^0\operatorname{RHom}_R(M,M)=\kappa,
+\qquad
+H^1\operatorname{RHom}_R(M,M)=\kappa.
+\]</span>
+This scalar degree-zero calculation neither removes higher self-extensions nor proves a fibre equivalence.</p>
+<p>The consequences are therefore conditional on the specified global equivalence, actual fibre and Hecke comparisons, spectral nonvanishing, and the applicable forgetful or coefficient premises. The rank-one algebra conclusion of Lesson 14, existence of a nonzero eigensheaf, and uniqueness after coefficient normalization are distinct deductions with distinct hypotheses.</p>
+<h2>Why the theorem also gives Betti Langlands</h2>
+<p>For the Betti version, take <span class="math-inline">\(X\)</span> and <span class="math-inline">\(G\)</span> over <span class="math-inline">\(\mathbb C\)</span>, and take a coefficient field <span class="math-inline">\(\mathsf e\)</span> of characteristic zero. The dual group on the spectral side is over <span class="math-inline">\(\mathsf e\)</span>. The resulting equivalence is
+<span class="math-display">\[
+\mathbb L_G^{B}:
+\operatorname{Shv}^{B}_{1/2,\operatorname{Nilp}}(\operatorname{Bun}_G)
+\xrightarrow{\ \sim\ }
+\operatorname{IndCoh}_{\operatorname{Nilp}}
+  (\operatorname{LS}^{B}_{H}(X)).
+\tag{15.C2}
+\]</span>
+The left side consists of Betti sheaves with singular support in the global nilpotent cone. Its full version need not consist of ind-constructible sheaves. Dennis Gaitsgory and Sam Raskin prove the implication from de Rham to Betti in <a href="https://arxiv.org/abs/2405.03599v3">Part I, v3, Theorem 3.5.2</a>. Theorem 3.5.6 gives the equivalence of the full de Rham, restricted de Rham, full Betti, and restricted Betti statements.</p>
+<p>Here is the content of the restricted statements. On the de Rham side the automorphic category is
+<span class="math-display">\[
+\operatorname{Dmod}_{1/2,\operatorname{Nilp}}(\operatorname{Bun}_G).
+\]</span>
+On the Betti side it is
+<span class="math-display">\[
+\operatorname{Shv}^{B,\mathrm{constr}}_{1/2,\operatorname{Nilp}}
+(\operatorname{Bun}_G),
+\]</span>
+where “constr” means the ind-constructible sheaf theory. Their spectral categories are
+<span class="math-inline">\(\operatorname{IndCoh}_{\operatorname{Nilp}}(\operatorname{LS}^{\mathrm{restr}}_H)\)</span>
+and
+<span class="math-inline">\(\operatorname{IndCoh}_{\operatorname{Nilp}}(\operatorname{LS}^{B,\mathrm{restr}}_H)\)</span>.
+Restricted variation is defined by the Tannakian category of constructible local systems; it retains infinitesimal deformation theory and stacky stabilizers. It is not the discrete set of local systems.</p>
+<p>The comparison uses the following geometric premises, which remain unproved here:</p>
+<ol>
+<li>Nilpotent D-modules lie in the regular-singular sheaf theory. Riemann–Hilbert identifies this category with the ind-constructible nilpotent Betti category, and identifies the two restricted spectral stacks.</li>
+<li>The spectral action identifies restriction with tensoring over <span class="math-inline">\(\operatorname{QCoh}(S)\)</span> by its subcategory supported on restricted variation. The corresponding statement holds in the Betti setting.</li>
+<li>The restricted Whittaker-normalized coarse functors agree under Riemann–Hilbert. Coarsening is an equivalence on eventually coconnective objects, and the Langlands functors send the relevant compact generators to such objects.</li>
+<li>Restricted tempered equivalence detects full tempered equivalence after ground-field extensions. The tempered-to-full comparison uses the group and its Levi subgroups, compact generation, miraculous duality, temperedness of the required extensions, and normalized Eisenstein compatibility.</li>
+</ol>
+<p>At these premises the implications are complete. Tensor an equivalence with the restricted spectral module to obtain the restricted equivalence. Under Riemann–Hilbert the coarse functors agree; premise 3 therefore identifies their lifts on compact generators. Since the functors preserve colimits, this identifies them on the whole compactly generated restricted categories.</p>
+<p>To explain the last step, let <span class="math-inline">\(u^R\)</span> be tempered projection and <span class="math-inline">\(\Psi\)</span> spectral coarsening. Part I, Propositions 5.2.3–5.2.4, supplies full faithfulness of <span class="math-inline">\(u^R\)</span> on automorphic compacts and identifies their coarse images with
+<span class="math-inline">\(\operatorname{Coh}_{\operatorname{Nilp}}(S)\)</span>, assuming tempered Langlands for the group and its Levis. Coarsening is fully faithful on coherent objects. Thus for compacts <span class="math-inline">\(c,d\)</span>,
+<span class="math-display">\[
+\operatorname{Map}(c,d)
+\simeq\operatorname{Map}(u^Rc,u^Rd)
+\simeq\operatorname{Map}(\Psi\mathbb L_Gc,\Psi\mathbb L_Gd)
+\simeq\operatorname{Map}(\mathbb L_Gc,\mathbb L_Gd).
+\]</span>
+Every coherent object with nilpotent support occurs as an image. Ind-completion now proves equivalence: full faithfulness extends from compact objects using the colimit descriptions of objects and compactness in the mapping variable, and essential surjectivity follows because those coherent objects generate the spectral category. Propositions 5.5.2–5.5.3 supply the analogous Betti premises. This closes the formal passage back from the restricted Betti statement to (15.C2).</p>
+<p>For coefficient field <span class="math-inline">\(\mathbb C\)</span>, Riemann–Hilbert supplies the middle comparison directly. The field-extension and coefficient comparisons used to obtain arbitrary characteristic-zero <span class="math-inline">\(\mathsf e\)</span> are additional geometric inputs in Part I; Riemann–Hilbert alone is not that general comparison.</p>
+<p>The role of “tempered” in this argument is categorical. Its spectral category is <span class="math-inline">\(\operatorname{QCoh}\)</span>, while the full spectral category is <span class="math-inline">\(\operatorname{IndCoh}_{\operatorname{Nilp}}\)</span>. The proof does not identify tempered projection with the identity on every automorphic object.</p>
+<h2>Eigensheaves and what multiplicity one means</h2>
+<p>Fix a <span class="math-inline">\(k\)</span>-point <span class="math-inline">\(\sigma:\operatorname{Spec}k\to S\)</span>. The category of eigensheaves with an eigenstructure for <span class="math-inline">\(\sigma\)</span> is the relative tensor product
+<span class="math-display">\[
+\mathcal C_\sigma=
+\operatorname{Dmod}_{1/2}(\operatorname{Bun}_G)
+\underset{\operatorname{QCoh}(S)}\otimes\operatorname{Vect}_k.
+\tag{15.C3}
+\]</span>
+Here the action on <span class="math-inline">\(\operatorname{Vect}_k\)</span> is pullback along the specified point. Linearity of (15.C1) gives an equivalence with the corresponding spectral fibre category.</p>
+<p>For an <strong>irreducible</strong> <span class="math-inline">\(\sigma\)</span>, meaning that it has no reduction to a proper parabolic of <span class="math-inline">\(H\)</span>, the spectral-fibre theorem used in Part I, §6.1.1, identifies that fibre with <span class="math-inline">\(\operatorname{Vect}_k\)</span>. This is an additional geometric premise, not a consequence of the existence of the point alone. At that premise,
+<span class="math-display">\[
+\mathcal C_\sigma\simeq\operatorname{Vect}_k.
+\tag{15.C4}
+\]</span>
+Consequently a chosen one-dimensional vector space in the prescribed degree has a nonzero inverse image; every object of <span class="math-inline">\(\mathcal C_\sigma\)</span> is obtained by tensoring this generator with a complex of vector spaces. The statement concerns the category with eigenstructure. It does not say that the underlying D-module is always simple.</p>
+<p>For the normalization of Part I, put
+<span class="math-display">\[
+c_G=\dim(\operatorname{Bun}_G)
+-\dim(\operatorname{Bun}_{N,\rho(\omega_X)}).
+\]</span>
+The canonical object <span class="math-inline">\(\widetilde{\mathcal F}_\sigma\in\mathcal C_\sigma\)</span> corresponds to <span class="math-inline">\(k[-c_G]\)</span>. Let <span class="math-inline">\(\mathcal F_\sigma\)</span> be its underlying D-module. <a href="https://arxiv.org/abs/2405.03599v3">Part I, v3, Theorem 6.1.3</a> states that <span class="math-inline">\(\mathcal F_\sigma\)</span> is regular holonomic, has nilpotent singular support, lies in the D-module heart, and is semisimple. If <span class="math-inline">\(S_\sigma=\operatorname{Aut}(\sigma)\)</span> is the ordinary stabilizer, then
+<span class="math-display">\[
+\mathcal F_\sigma\simeq
+\bigoplus_{\rho\in\operatorname{Irr}(S_\sigma)}
+\mathcal F_{\sigma,\rho}^{\oplus\dim\rho},
+\tag{15.C5}
+\]</span>
+with pairwise distinct simple regular holonomic constituents. A positive-dimensional central stabilizer can make this an infinite direct sum; the expression should not silently be replaced by a finite packet.</p>
+<p>The geometric premises for (15.C5) are that <span class="math-inline">\(S_\sigma\)</span> is reductive, that its residual gerbe embeds closedly in the appropriate restricted component, and that the shifted correspondence on that component is t-exact and carries <span class="math-inline">\(\mathcal F_\sigma\)</span> to the pushforward of <span class="math-inline">\(k\)</span>. The latter corresponds to the regular representation of <span class="math-inline">\(S_\sigma\)</span>. The algebraic matrix-coefficient decomposition, an additional representation-theoretic input unproved here, is
+<span class="math-inline">\(\bigoplus_\rho\rho\otimes\rho^\vee\)</span>.
+Conditional on that decomposition, the multiplicity deduction is complete: as a left representation it has <span class="math-inline">\(\dim\rho\)</span> copies of <span class="math-inline">\(\rho\)</span>; the fully faithful residual-gerbe embedding and the t-exact equivalence preserve simples and their multiplicities. The regular-singularity, t-exactness, and residual-gerbe assertions remain unproved geometric inputs.</p>
+<p>Under the additional hypotheses <span class="math-inline">\(g(X)\ge2\)</span> and connected centre of <span class="math-inline">\(G\)</span>, the same theorem gives
+<span class="math-display">\[
+\operatorname{CC}(\mathcal F_\sigma)
+=[\operatorname{Nilp}].
+\tag{15.C6}
+\]</span>
+The right side is the cycle of the scheme-theoretic zero fibre of the Hitchin map, including its component multiplicities. It is stronger than containment of singular support. The characteristic-cycle calculation is also unproved here.</p>
+<h2>The boundary of the 2024 theorem</h2>
+<p>Part V's introduction, “What is not done in this paper?”, distinguishes six further problems from its global unramified characteristic-zero result:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Further problem</th>
+<th>Additional structure beyond (15.C1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Iwahori ramification</td>
+<td>Parabolic level structure and the corresponding tame local categories</td>
+</tr>
+<tr>
+<td>Local wild ramification</td>
+<td>Local systems with wild singularity on a punctured disc</td>
+</tr>
+<tr>
+<td>Global wild ramification</td>
+<td>Ramified global parameters and their local compatibility</td>
+</tr>
+<tr>
+<td>Quantum geometric Langlands</td>
+<td>A noncritical level or twisting parameter</td>
+</tr>
+<tr>
+<td>Restricted <span class="math-inline">\(\ell\)</span>-adic Langlands in positive characteristic</td>
+<td>A different ground characteristic and constructible sheaf theory</td>
+</tr>
+<tr>
+<td>Langlands on the Fargues–Fontaine curve</td>
+<td>An analytic curve and the categorical local arithmetic theory</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are exclusions from the theorem, not an assertion that every such problem remains untouched after 2024. In particular, the positive characteristic result below substantially advances the fifth item.</p>
+<p>The authors also propose routes toward a more direct proof in the original unramified setting. The oper route would prove contractibility of generic oper structures on each irreducible local system; once the higher homology vanishes and the resulting algebra is a vector bundle, connectedness reduces its fibre rank to one. The microlocal route would strengthen the comparison between Whittaker coefficients and microsheaves on the generically regular part of the nilpotent cone. Conservativity by itself does not supply this full faithfulness. The Verlinde route would assemble the Betti category through nodal degeneration and then use the Betti-to-de Rham implication. The arithmetic route would specialize and use an appropriate multiplicity-one theorem for unramified cusp forms with excursion operators.</p>
+<p>These paragraphs describe proposed mechanisms, not additional proofs. The generic-oper geometry, strengthened microlocal compatibility, degeneration gluing, and required arithmetic multiplicity-one statement are separate inputs.</p>
+<h2>Positive characteristic: the component qualification</h2>
+<p>Dennis Gaitsgory and Sam Raskin's <a href="https://arxiv.org/abs/2508.02237v1"><em>Geometric Langlands in positive characteristic from characteristic zero</em>, v1</a>, Main Theorem 1.3.9, constructs a <span class="math-inline">\(\operatorname{QCoh}\)</span>-linear equivalence
+<span class="math-display">\[
+\mathbb L_G^{\mathrm{restr}}:
+\operatorname{Shv}_{\operatorname{Nilp}}(\operatorname{Bun}_G)
+\xrightarrow{\ \sim\ }
+\operatorname{IndCoh}_{\operatorname{Nilp}}(S&#x27;_G),
+\qquad S&#x27;_G\subseteq\operatorname{LS}^{\mathrm{restr}}_H(X),
+\tag{15.C7}
+\]</span>
+where <span class="math-inline">\(S&#x27;_G\)</span> is a union of connected components. The ground field is algebraically closed, the curve is smooth and complete, and the sheaf theory is ind-constructible <span class="math-inline">\(\overline{\mathbb Q}_\ell\)</span>-adic étale sheaves, with <span class="math-inline">\(\ell\ne\operatorname{char}k\)</span> in positive characteristic. Each restricted component is labelled by a semisimple local system; it includes its stacky and nonreduced deformation data.</p>
+<p>The characteristic hypotheses inherited from the nilpotent-support theory are part of the statement. Precisely, the input conditions in <a href="https://arxiv.org/abs/2010.01906v2"><em>The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support</em>, v2, §14.4.1 and §D.1.1</a>, by Dima Arinkin, Dennis Gaitsgory, David Kazhdan, Sam Raskin, Nick Rozenblyum, and Yakov Varshavsky, require:</p>
+<ol>
+<li>A nondegenerate invariant symmetric form on <span class="math-inline">\(\mathfrak g\)</span>, nondegenerate on the centre of every Levi subalgebra.</li>
+<li>The Chevalley quotient map <span class="math-inline">\(\mathfrak t/\!/W\to\mathfrak g/\!/G\)</span> is an isomorphism, also for each Levi.</li>
+<li>The centralizer of a semisimple Lie-algebra element is a Levi subgroup.</li>
+<li>Over every field extension under consideration, including extensions that are not algebraically closed, a nilpotent Lie-algebra element belongs to the Lie algebra of the unipotent radical of a parabolic defined over that extension.</li>
+</ol>
+<p>The cited source supplies these inputs in the indicated good-characteristic range. For <span class="math-inline">\(GL_n\)</span> in positive characteristic, the first three stated conditions amount to <span class="math-inline">\(p&gt;n\)</span>. Nilpotent Jordan flags supply the fourth condition. Thus “for any <span class="math-inline">\(k\)</span>” in the theorem's <span class="math-inline">\(GL_n\)</span> clause retains the standing hypotheses of the sheaf theory.</p>
+<p>The theorem proves <span class="math-inline">\(S&#x27;_G=\operatorname{LS}^{\mathrm{restr}}_H\)</span> in characteristic zero and for <span class="math-inline">\(G=GL_n\)</span> under those standing assumptions. For a general group in positive characteristic, the equality remains a conjecture in this edition. In particular, existence of an eigensheaf for every irreducible parameter is not asserted by (15.C7).</p>
+<p>The proof mechanism begins with comparison to characteristic-zero Betti theory. It lifts the curve over Witt vectors and constructs specialization by nearby cycles. Compatibility with Hecke functors, Eisenstein series, and the vacuum Poincaré object gives the Langlands comparison square. The decisive additional property is that the selected nilpotent specialization functor is a Verdier quotient. Its proof uses universal local acyclicity of the diagonal kernel and the Drinfeld–Lafforgue–Vinberg compactification. Those geometric results, including the resulting description of the selected spectral components, remain unproved here.</p>
+<p>Over a finite field, with Frobenius-compatible normalization, Corollary 1.5.6 identifies compactly supported automorphic functions with
+<span class="math-display">\[
+\operatorname{Funct}_c(\operatorname{Bun}_G(\mathbb F_q),
+\overline{\mathbb Q}_\ell)
+\simeq
+\Gamma^{\operatorname{IndCoh}}
+\big((S&#x27;_G)^{\operatorname{Frob}},\omega\big).
+\tag{15.C8}
+\]</span>
+The inputs are the Frobenius compatibility of (15.C7), the automorphic trace/local-term theorem, and the spectral trace calculation. Once these hold, (15.C8) follows by applying the categorical trace to the equivalence and composing the two trace identifications.</p>
+<p>For semisimple <span class="math-inline">\(G\)</span>, Corollary 1.5.8 gives <strong>at most</strong> one dimension for the excursion eigenspace of an irreducible Weil parameter. At the geometric premise that its arithmetic component is <span class="math-inline">\(B\Gamma\)</span> for a finite stabilizer <span class="math-inline">\(\Gamma\)</span>, the calculation is complete: the dualizing sheaf there is the structure sheaf, and
+<span class="math-inline">\(\Gamma(B\Gamma,k)=k\)</span>.
+Indeed, averaging over <span class="math-inline">\(\Gamma\)</span> makes invariants exact in characteristic zero, so higher group cohomology vanishes. The answer is one dimension if the component belongs to the selected union, and zero if it does not. The theorem therefore does not supply the missing nonvanishing for all parameters.</p>
+<h2>Loop-group representations and factorization</h2>
+<p>Let <span class="math-inline">\(k\)</span> be algebraically closed of characteristic zero, let <span class="math-inline">\(X/k\)</span> be smooth, let <span class="math-inline">\(x_0\in X(k)\)</span>, and let <span class="math-inline">\(G\)</span> be reductive. Lin Chen, Yuchen Fu, Dennis Gaitsgory, and David Yang prove in <a href="https://arxiv.org/abs/2511.02916v2"><em>Representations of loop groups as factorization module categories</em>, v2, Theorem 2.1.6</a> that the functor
+<span class="math-display">\[
+LG_{x_0}\text{-}\operatorname{mod}
+\longrightarrow
+\operatorname{Dmod}(\operatorname{Gr}_G)
+\text{-}\operatorname{mod}^{\mathrm{fact}}_{x_0}
+\tag{15.C9}
+\]</span>
+is fully faithful as a functor of 2-categories. It is constructed by tensoring a categorical loop-group representation with the factorization bimodule obtained from the affine Grassmannian with infinite level at <span class="math-inline">\(x_0\)</span>. Full faithfulness means that the induced functor between the categories of compatible functors is an equivalence. Essential surjectivity is not part of the theorem.</p>
+<p>The proof first rewrites these functor categories as factorization modules for the dualizing algebra <span class="math-inline">\(\omega_{\operatorname{Gr}_G}\)</span>, then reduces loop-group actions to almost trivial and finally trivial actions. Categorical Koszul duality and a comparison of monads finish the reduction. The geometry of fusion and the homology comparison are deep inputs, unproved here.</p>
+<p>The derived application in Theorem 10.1.8 identifies integrable loop-group representations at the integral level determined by a factorization line bundle with factorization modules for the integrable vacuum algebra. The level is required to be nonnegative definite on every simple factor. The comparison respects the forgetful functors to complexes of vector spaces; its assertion is derived, rather than merely an equivalence of abelian hearts.</p>
+<p>There is a specific foundational repair relevant to Part II. Warning C.9.13 explains that a previously used Ran simplicial diagram is not an étale hypercover: its connecting maps fail the required schematic property, and the first matching map is not surjective even on field-valued points. The same defect affects the argument of Part II, §B.11.14. The replacement is the descent statement for crystals of categories in Lemmas C.9.14–C.9.15, used in the external-fusion theorem C.9.9.</p>
+<p>The replacement has a different mechanism. After the appropriate Zariski reduction, the fibre combinatorics decomposes into one binary choice for each free graph-intersection class. The resulting simplicial set is a finite product of copies of <span class="math-inline">\(\Delta^1\)</span>, hence is contractible: contract each interval to its initial vertex, and take the product contraction. At the additional geometric descent premises, this gives the required descent of crystals. It does not turn the original diagram into an étale hypercover. The categorical descent theorem and the homotopy-coherent external-fusion construction remain unproved inputs here.</p>
+<h2>Tempered and generic automorphic functions</h2>
+<p>Dennis Gaitsgory, Vincent Lafforgue, and Sam Raskin's <a href="https://arxiv.org/abs/2603.26925v2"><em>Tempered vs generic automorphic functions and the canonical filtration on automorphic functions</em>, v2</a> concerns a smooth complete curve and a split reductive group over <span class="math-inline">\(\mathbb F_q\)</span>, with <span class="math-inline">\(\overline{\mathbb Q}_\ell\)</span> coefficients and the standing hypotheses of (15.C7). Put
+<span class="math-display">\[
+A=\Gamma(\operatorname{LS}^{\mathrm{arithm}}_H,\mathcal O),
+\qquad
+B=\Gamma^{\operatorname{IndCoh}}
+((S&#x27;_G)^{\operatorname{Frob}},\omega).
+\]</span>
+Here <span class="math-inline">\(A\)</span> is the excursion algebra. The spectral <strong>tempered</strong> subspace is the image of
+<span class="math-display">\[
+\phi:\Gamma((S&#x27;_G)^{\operatorname{Frob}},\mathcal O)\to B
+\tag{15.C10}
+\]</span>
+transported through (15.C8). This map comes from the normalized zero-singular-support embedding by taking traces. Its image is defined without asserting that <span class="math-inline">\(\phi\)</span> is injective.</p>
+<p>Theorem 1.3.10 identifies the vacuum Poincaré function with <span class="math-inline">\(\phi(1)\)</span>. Corollary 2.4.5 consequently identifies the spectral tempered subspace with the <strong>non-degenerate</strong> subspace, defined as the <span class="math-inline">\(A\)</span>-submodule generated by that function. The algebraic deduction is complete: restriction from the whole arithmetic stack to its open-and-closed selected union gives a surjection
+<span class="math-display">\[
+A\twoheadrightarrow A&#x27;
+=\Gamma((S&#x27;_G)^{\operatorname{Frob}},\mathcal O).
+\]</span>
+Since <span class="math-inline">\(\phi\)</span> is <span class="math-inline">\(A\)</span>-linear, <span class="math-inline">\(A\phi(1)=\phi(A&#x27;)\)</span>. This is exactly equality of the two subspaces. The vacuum comparison and the arithmetic-stack assertions used here remain unproved inputs.</p>
+<p>For a closed invariant subset <span class="math-inline">\(Y\)</span> of the nilpotent cone, the paper constructs the trace map from
+<span class="math-inline">\(\operatorname{IndCoh}_Y(\operatorname{LS}^{\mathrm{restr}}_H)\)</span>
+to the full automorphic trace. Its interpretation as an injective filtration uses Conjecture 2.1.5: the Frobenius trace on every individual nilpotent-orbit quotient is concentrated in degree zero. The finite-orbit filtration and trace excision then give the injectivity formally, by the long exact cohomology sequences for successive orbit quotients. Those excision and geometric identifications are additional premises. The conjecture is not silently a theorem in this edition.</p>
+<p>For semisimple <span class="math-inline">\(G\)</span>, Theorem 2.5.8 identifies non-degenerate cuspidal functions with functions supported on the irreducible arithmetic locus, <strong>conditionally on Conjecture 2.1.5</strong>, as Remark 2.5.9 explicitly records. Pointwise purity of irreducible Weil parameters then gives one inclusion into analytically tempered cuspidal functions. Equality with the analytically tempered subspace, rationality of the orbit filtration, and the general Arthur-parameter description remain conjectural in this edition. In particular, the word “tempered” in (15.C10) should not be used to claim the full analytic Ramanujan or Arthur conjecture.</p>
+<h2>The surveys and the next categorical level</h2>
+<p>David Ben-Zvi's <a href="https://arxiv.org/abs/2605.23167v1"><em>What is the Geometric Langlands Correspondence about?</em>, v1, §5</a> organizes the proof around three compatible measurements:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Automorphic measurement</th>
+<th>Spectral counterpart</th>
+<th>Role in the proof</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eisenstein series</td>
+<td>Spectral Eisenstein series</td>
+<td>Induction through proper Levi subgroups</td>
+</tr>
+<tr>
+<td>Whittaker coefficient</td>
+<td>Global sections</td>
+<td>Normalization and detection</td>
+</tr>
+<tr>
+<td>Kac–Moody localization</td>
+<td>Opers</td>
+<td>Construction and spectral generation</td>
+</tr>
+</tbody>
+</table></div>
+<p>This is an explanatory picture of the theorem. Its schematic rank-one spectral description must be supplied with the ind-coherent correction, and its multiplicity-one picture must be supplied with the irreducible-fibre hypothesis in (15.C4). The survey also explains why critical Kac–Moody localization is particularly tied to the de Rham setting. Its account provides perspective, not a replacement proof of the local or global compatibilities.</p>
+<p>Dennis Gaitsgory's <a href="https://arxiv.org/abs/2509.24902v1"><em>Local and global Langlands conjecture(s) over function fields</em>, v1</a> formulates a further programme with a precise change in categorical level. Its §1 reviews (15.C7) and the trace description (15.C8). Its §§2–3 then formulate local and ramified conjectures; Appendix A explains the trace formalism.</p>
+<p>The local conjecture, 2.6.10, proposes a 2-categorical equivalence
+<span class="math-display">\[
+LG\text{-}\operatorname{Cat}_{\mathrm{restr}}
+\simeq
+2\text{-}\operatorname{IndCoh}_{\operatorname{Nilp}}
+(\operatorname{LS}^{\mathrm{restr}}_H(\mathring D)).
+\tag{15.C11}
+\]</span>
+The left side uses the sheaf-family formalism <span class="math-inline">\(\operatorname{AGCat}\)</span>, rather than arbitrary actions on a plain DG category. The right side is a category of categories with the appropriate singular-support condition, rather than simply modules over <span class="math-inline">\(\operatorname{QCoh}\)</span>. In its account of the restricted local representation theory for <span class="math-inline">\(p&gt;|W|\)</span>, the survey records progress toward an abstract equivalence and separately identifies compatibility with the spectral Bernstein-centre action as an outstanding requirement. This is the status reported in this v1 account, not a verification of a subsequent completed local correspondence.</p>
+<p>Assume (15.C11) is Frobenius compatible, assume the local trace conjecture 2.5.12, and assume the spectral fixed-point trace calculation. Taking traces then gives the proposed equivalence, Corollary-of-Conjecture 2.7.9,
+<span class="math-display">\[
+\operatorname{Shv}(\operatorname{Isoc}_G)
+\simeq
+\operatorname{IndCoh}
+(\operatorname{LS}^{\mathrm{arithm}}_H(\mathring D)).
+\tag{15.C12}
+\]</span>
+Here <span class="math-inline">\(\operatorname{Isoc}_G\)</span> is the loop-group Frobenius-twisted conjugacy quotient, interpreted in the survey's sheaf theory. The formal implication is simply the composition of the trace equivalence with the two assumed calculations. None of those three geometric premises is proved here. Relating its automorphic side to sheaves on the Fargues–Fontaine stack is another comparison, not a consequence of (15.C1) alone.</p>
+<p>For a finite set of ramification points <span class="math-inline">\(D\)</span>, the global conjecture 3.4.4 identifies the Hecke-lisse category at full level with the relative spectral object for
+<span class="math-display">\[
+\operatorname{LS}^{\mathrm{restr}}_H(X-D)
+\longrightarrow
+\operatorname{LS}^{\mathrm{restr}}_H(\mathring D_D)
+\]</span>
+under the local 2-categorical equivalence. With restrictedness, dualizability, the ramified trace conjecture, Frobenius-compatible global–local identification, and the class calculation assumed, Corollary-of-Conjecture 3.5.9 describes the enhanced automorphic object by the ind-coherent pushforward of the dualizing sheaf of the global arithmetic parameter stack. Ordinary smooth compactly supported full-level automorphic functions are recovered by the specified functor from that enhanced object. These are conditional descriptions; they do not extend the 2024 theorem to arbitrary ramification.</p>
+<h2>Exercises and solutions</h2>
+<p><strong>Exercise 15.1 (easy).</strong> Draw the dependency diagram of the five geometric Langlands papers. Specify the mathematical map or property carried by each decisive arrow.</p>
+<p><strong>Solution 15.1.</strong> Start with GLC I's actual functor and spectral action. Its construction feeds H1. GLC III supplies the left adjoint and the global algebra monad, then uses full GLC for the proper Levis to supply H2. Thus its induction input comes from a smaller semisimple rank, not from the conclusion for the same group.</p>
+<p>The Whittaker comparison and GLC II's normalized critical localization square feed the two adjoint identifications in GLC IV. Their common normalized adjoint (15.A1) gives tensor-self-adjunction. At the compactness and fibre premises, its generic-oper description gives H4. The separate Whittaker and cuspidal temperedness inputs give H3; finite monodromy by itself is not conservativity.</p>
+<p>GLC V supplies H5, H6 and H7: central character lines, the geometric supported-section extension, and the vacuum Hom calculations with nonvanishing. The arrow from H5–H7 to the irreducible unit is Theorem 15.B. The arrow from that open unit and H2 to the global unit is Lemma 15.C. Finally H1 and H3 turn the global unit into the equivalence by Theorem 15.D. The torus base case and H8 close the induction and all remaining genera. These statements label every decisive arrow in the displayed proof map; a bare linear list of five paper titles would not show the proper-Levi induction or the separate conservativity branch.</p>
+<p><strong>Exercise 15.2 (easy).</strong> List the inputs needed in the semisimple multiplicity argument when the automorphic group has nontrivial centre. Explain why proving only the adjoint case is insufficient. Compute the component count for <span class="math-inline">\(G=\mathrm{SL}_2\)</span> under H5–H7.</p>
+<p><strong>Solution 15.2.</strong> The extra finite-centre data are the component index <span class="math-inline">\(Z(G)^\vee\)</span>, the character lines <span class="math-inline">\(\mathcal L_{\mathcal P}\)</span> attached to central torsors, compatibility of the spectral component projectors with automorphic central-character projectors, compatibility of the inverse character line with translation by <span class="math-inline">\(\mathcal P\)</span>, and the twisted-vacuum Hom vanishing for every nontrivial <span class="math-inline">\(\mathcal P\)</span>. The two-categorical gerbe Fourier–Mukai theorem supplies the last compatibilities. The whole vacuum endomorphism dimension is <span class="math-inline">\(|Z(G)|\)</span>, while the individual character summands have scalar endomorphisms. Positivity must hold on every component.</p>
+<p>For <span class="math-inline">\(\mathrm{SL}_2\)</span>, a matrix commuting with every diagonal matrix is diagonal; commuting also with the upper and lower elementary unipotent matrices makes its two diagonal entries equal. Its determinant is one, so its centre consists of <span class="math-inline">\(I\)</span> and <span class="math-inline">\(-I\)</span> in characteristic zero. Thus H5 gives two components. After twisted vanishing removes all nontrivial line summands, write their positive ranks as <span class="math-inline">\(n_+\)</span> and <span class="math-inline">\(n_-\)</span>. H6–H7 give
+<span class="math-display">\[
+2\leq n_++n_-\leq\dim H^0R\Gamma(Y,A)=2.
+\]</span>
+Hence <span class="math-inline">\(n_+=n_-=1\)</span>, and the unit law makes the unit invertible on both components. Replacing the global dimension by one would contradict the two nonzero ranks.</p>
+<p>The automorphic group <span class="math-inline">\(\mathrm{SL}_2\)</span> is simply connected, and its dual is <span class="math-inline">\(\mathrm{PGL}_2\)</span>; this is the group-form setting that needs the two components. In contrast, an adjoint automorphic group has simply-connected dual in the semisimple dual root data. The general group reduction uses simply-connected automorphic groups, so the adjoint shortcut does not finish it. A positive-dimensional centre also requires the separate torus/change-of-group comparison; the finite two-component computation is not a calculation for <span class="math-inline">\(\mathrm{GL}_2\)</span>.</p>
+<p><strong>Exercise 15.3 (medium).</strong> Identify the de Rham-specific part of the proof. Explain why the Betti implication does not follow by substituting the Betti stack into the same dimension count.</p>
+<p><strong>Solution 15.3.</strong> The formal support test and adjunction criterion are abstract categorical deductions. The de Rham-specific data are the geometry of the local-system stack, its component character lines, its supported-section comparison, and particularly the finite global-section dimension in H7. The inequality (15.A5) uses that dimension as a finite bound on the positive trivial multiplicities.</p>
+<p>The computed torus example has the independent sections <span class="math-inline">\(x^m\)</span> for every integer <span class="math-inline">\(m\)</span>. Thus the section space of every positive-rank trivial bundle is infinite-dimensional. Even the diagonal unit into <span class="math-inline">\(\mathcal O_S^{\times n}\)</span> for <span class="math-inline">\(n&gt;1\)</span> is noninvertible while its section space has that same infinite dimension. An estimate of the form “infinite dimension is at least <span class="math-inline">\(n\)</span>” cannot force <span class="math-inline">\(n=1\)</span>. This proves the precise logical failure of transplanting the count. The example is an obstruction to that argument, not a counterexample to Betti geometric Langlands.</p>
+<p>The Betti conclusion instead requires the de Rham/Betti and full/restricted comparison theorems stated in GLC I, with their specified nilpotent categories. Supply those comparisons and apply them to the already established de Rham equivalence. Neither abstract categorical equivalence alone nor a change of notation for <span class="math-inline">\(Y\)</span> supplies them. Their geometric proofs remain separate inputs in this lesson.</p>
+<p><strong>Exercise 15.4 (medium).</strong> Formulate the induction on semisimple rank, including its base case and the statement needed for every proper Levi.</p>
+<p><strong>Solution 15.4.</strong> Let <span class="math-inline">\(\mathsf P(r)\)</span> mean that the full specified functor is an equivalence for every connected reductive group of semisimple rank at most <span class="math-inline">\(r\)</span>, for every curve in the stated characteristic-zero de Rham setting. The base assertion <span class="math-inline">\(\mathsf P(0)\)</span> is full torus GLC, including all torus forms and the required categorical compatibilities.</p>
+<p>Assume <span class="math-inline">\(\mathsf P(r-1)\)</span>. First treat the rank-<span class="math-inline">\(r\)</span> almost simple simply-connected groups. Every proper Levi has smaller semisimple rank by the reductive root-datum statement, so its full GLC follows from the induction hypothesis. It is not enough to know only a tempered equivalence for that Levi, and its absolute rank need not be smaller. Apply the Eisenstein and supported-unit comparison with all these full proper-Levi hypotheses. Supply the construction, global algebra monad and conservativity. Establish the irreducible unit through H4–H7 in their range and through the separate H8 exceptional-case assertions otherwise. Lemma 15.C proves the global unit and Theorem 15.D proves the equivalence for these groups.</p>
+<p>For arbitrary rank-<span class="math-inline">\(r\)</span> <span class="math-inline">\(G\)</span>, its simply-connected derived factors have ranks at most <span class="math-inline">\(r\)</span>. Their full equivalences have just been proved or are lower-rank cases. Combine them with the full central-torus equivalence by the actual product comparisons, and use the specified central-isogeny/base-change comparison to transfer the resulting equivalence to <span class="math-inline">\(L_G\)</span>. Its inverse is transferred by the same tensor construction. Thus <span class="math-inline">\(\mathsf P(r)\)</span> holds. The central isogeny does not decrease semisimple rank; it is not a further application of the induction hypothesis at rank <span class="math-inline">\(r-1\)</span>.</p>
+<p>Every connected reductive group has finite semisimple rank, so induction reaches every group. None of the full torus theorem, proper-Levi geometric comparison, group-change comparison, or exceptional-case theorem is proved by the induction itself. The induction is a proof of the consequence once those inputs are supplied.</p>
+<p><strong>Exercise 15.5 (hard).</strong> Write the complete formal derivation of geometric Langlands from H1–H8, including the specified unit, every component, and the coherent adjunction conclusion.</p>
+<p><strong>Solution 15.5.</strong> Fix an almost simple simply-connected group in the induction step of Solution 15.4. Its proper-Levi hypotheses give the equivalence <span class="math-inline">\(S_Z(u)\)</span> in H2. In the semisimple large-genus case, tensor that comparison with each relevant character line and use H6. The low cohomology sequence of the localization triangle has zero outside groups, so global degree-zero sections of <span class="math-inline">\(A\)</span> and of each twist extend uniquely to <span class="math-inline">\(U\)</span>, as in (15.A2).</p>
+<p>H4–H5 decompose <span class="math-inline">\(A_U\)</span> on each <span class="math-inline">\(U_\alpha\)</span> into the central character lines. For nontrivial <span class="math-inline">\(\mathcal P\)</span>, tensor with <span class="math-inline">\(\mathcal L_{\mathcal P}^{-1}\)</span>. Each matching summand contributes an independent constant section, extended by zero on all other components. H7 makes the global twisted section space zero, and extension makes the open twisted section space zero. Therefore every matching nontrivial multiplicity is zero. Only <span class="math-inline">\(\mathcal O_{U_\alpha}^{\oplus n_\alpha}\)</span> remains.</p>
+<p>H7 supplies <span class="math-inline">\(n_\alpha\geq1\)</span> for each of the <span class="math-inline">\(c\)</span> components. Their constant sections give <span class="math-inline">\(\sum n_\alpha\)</span> independent sections. Extension and the vacuum dimension give <span class="math-inline">\(\sum n_\alpha\leq c\)</span>; positivity gives <span class="math-inline">\(\sum n_\alpha\geq c\)</span>. Hence all <span class="math-inline">\(n_\alpha=1\)</span>. Write the local algebra generator as <span class="math-inline">\(e\)</span>, its unit as <span class="math-inline">\(ae\)</span>, and its square as <span class="math-inline">\(be\)</span>. The unit law <span class="math-inline">\(ab=1\)</span> makes the specified <span class="math-inline">\(u_U\)</span> invertible. In the exceptional genera and type <span class="math-inline">\(A_1\)</span> cases, use the separate H8 open-unit results instead.</p>
+<p>Now let <span class="math-inline">\(K\)</span> be the cofiber of the global <span class="math-inline">\(u\)</span>. Its open restriction is zero, and its supported object is zero by H2. The localization triangle gives <span class="math-inline">\(K=0\)</span>. Thus the actual global unit is an equivalence. H1 turns it, through the action's unit constraint, into the equivalence <span class="math-inline">\(\eta_d:d\to LF(d)\)</span> for every <span class="math-inline">\(d\)</span>. For <span class="math-inline">\(c\in\mathcal C_G\)</span>, the triangle identity identifies <span class="math-inline">\(L(\varepsilon_c)\)</span> with <span class="math-inline">\(\eta_{Lc}^{-1}\)</span>. H3 reflects its invertibility, so every counit <span class="math-inline">\(\varepsilon_c\)</span> is an equivalence. The other triangle identity gives the second cancellation homotopy. Hence <span class="math-inline">\(F\)</span> and the specified <span class="math-inline">\(L\)</span> are coherent inverse equivalences.</p>
+<p>This proves the rank-<span class="math-inline">\(r\)</span> assertion for the almost simple simply-connected groups from lower-rank assertions. For an arbitrary rank-<span class="math-inline">\(r\)</span> reductive group, combine the established factor equivalences and the torus base case through the actual product comparison. Transfer the inverse equivalence, its unit and counit, and their triangle homotopies through the actual central-isogeny base-change comparison. This proves the specified <span class="math-inline">\(L_G\)</span> is an equivalence. The full torus base case and finite-rank induction now give every connected reductive group, with all genera included by H8. Every geometric comparison used in the derivation remains one of H1–H8; no source citation replaces its proof.</p>
+<h2>Geometric inputs not proved here</h2>
+<p>The proofs above establish the implications between the specified maps in H1–H8. A complete proof for the actual geometric categories also needs the following mathematics.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Required theorem or construction</th>
+<th>Precise role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bundle and derived de Rham local-system stacks, half twists, nilpotent singular support, D-module and IndCoh operations, their spectral action and higher coherence</td>
+<td>Construct the categories and the actual functor in H1.</td>
+</tr>
+<tr>
+<td>The Whittaker construction and its bounded lift; the full torus transform</td>
+<td>Supply the functor and the base case, including its normalizations.</td>
+</tr>
+<tr>
+<td>The full critical fundamental local equivalence, corrected factorization and localization comparisons, and cuspidal support and duality</td>
+<td>Supply the lower adjoint square used in H4.</td>
+</tr>
+<tr>
+<td>Eisenstein generation, parabolic compatibilities, the global QCoh algebra kernel and its specified supported unit</td>
+<td>Establish H1–H2 under all full proper-Levi equivalences.</td>
+</tr>
+<tr>
+<td>Whittaker nonvanishing and enhanced conservativity, together with cuspidal temperedness and the corresponding de Rham comparison</td>
+<td>Establish H3; the ordinary vacuum coefficient alone is not asserted conservative on the whole automorphic category.</td>
+</tr>
+<tr>
+<td>Both normalized adjoint comparisons, generic-oper homology and pseudo-proper base change, rational-map/Ran comparisons, and finite-monodromy geometry</td>
+<td>Establish H4, including perfection and the classical vector-bundle assertion.</td>
+</tr>
+<tr>
+<td>Fundamental groups and components, central character-line descent, purity and the stable-connection comparison</td>
+<td>Establish H5 in its actual genus range.</td>
+</tr>
+<tr>
+<td>The local-complete-intersection and Cohen–Macaulay theorem, the codimension bounds and stack local-cohomology descent</td>
+<td>Supply the geometric form of H6. The regular-pair and fraction deductions alone do not construct these stacks.</td>
+</tr>
+<tr>
+<td>Vacuum nonvanishing, its endomorphism and twisted-Hom calculations, and the gerbe Fourier–Mukai/Hecke theorem</td>
+<td>Establish H7 and positivity on every component.</td>
+</tr>
+<tr>
+<td>Group-change and product compatibilities, the type <span class="math-inline">\(A\)</span> oper theorem, and the separate genus-zero and genus-one inputs</td>
+<td>Establish H8 and ensure that the exceptional cases are included.</td>
+</tr>
+<tr>
+<td>The actual equivalences between full, restricted, tempered, de Rham and Betti categories; the spectral-fibre/eigensheaf comparison</td>
+<td>Establish the comparison and consequence statements at their stated hypotheses.</td>
+</tr>
+<tr>
+<td>Stable and enriched categories, coherent adjunctions, derived tensor products and local cohomology, compactness/perfection and descent</td>
+<td>Supply the frameworks explicitly assumed by the formal deductions.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The support test proves something precise: the same unit map is invertible if its open restriction and its supported comparison are invertible. The component count proves something equally precise: all positive trivial multiplicities are one when the global section dimension is the number of components. Establishing the geometric maps and finite-dimensional section theorem is the remaining substance required to apply these deductions to geometric Langlands.</p>
+<p>The later positive-characteristic, factorization and automorphic-function theorems stated above also have their own geometric and arithmetic proofs. Their statements describe developments beyond the 2024 theorem. They do not retrospectively supply an omitted proof of a hypothesis in H1–H8 merely by appearing in a reference list.</p>
+<p>Original lesson text and proof-map figure: CC0-1.0. The linked freely accessible works credit their human mathematical authors; no source citation is a substitute for a proof.</p>
+<h2>Human sources and further reading</h2>
+<p>These freely accessible author papers supply the constructions and geometric theorems discussed in this lesson. The references give credit and a route for further reading; they do not replace proofs of the geometric inputs left open here.</p>
+<ul>
+<li><strong>GLC I.</strong> Dennis Gaitsgory and Sam Raskin, <a href="https://arxiv.org/abs/2405.03599v3"><em>Proof of the geometric Langlands conjecture I: construction of the functor</em></a>, version 3. Construction and bounds of the Langlands functor, comparison of variants, and the structure of Hecke eigensheaves.</li>
+<li><strong>GLC II.</strong> Dima Arinkin, Dario Beraldo, Justin Campbell, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin and Nick Rozenblyum, <a href="https://arxiv.org/abs/2405.03648v3"><em>Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE</em></a>, version 3. The critical fundamental local equivalence, localization, and the local-to-global comparison.</li>
+<li><strong>GLC III.</strong> Justin Campbell, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin and Nick Rozenblyum, <a href="https://arxiv.org/abs/2409.07051v1"><em>Proof of the geometric Langlands conjecture III: compatibility with parabolic induction</em></a>, version 1. Normalized Eisenstein and constant-term comparisons, the left adjoint, the algebra monad, and the proper-Levi reduction.</li>
+<li><strong>GLC IV.</strong> Dmitry Arinkin, Dario Beraldo, Lin Chen, Joakim Færgeman, Dennis Gaitsgory, Kevin Lin, Sam Raskin and Nick Rozenblyum, <a href="https://arxiv.org/abs/2409.08670v1"><em>Proof of the geometric Langlands conjecture IV: ambidexterity</em></a>, version 1. The normalized adjoints, generic opers, and the finite-monodromy description on the irreducible locus.</li>
+<li><strong>GLC V.</strong> Dennis Gaitsgory and Sam Raskin, <a href="https://arxiv.org/abs/2409.09856v3"><em>Proof of the geometric Langlands conjecture V: the multiplicity one theorem</em></a>, version 3. Changes of group and low genus, spectral topology, central sectors, vacuum endomorphisms, and the final multiplicity calculation.</li>
+</ul>
+</article><footer>Original programme text: CC0-1.0. Human mathematical sources are credited in each lesson.</footer></main></body></html>

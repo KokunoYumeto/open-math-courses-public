@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local regularity, sharp embeddings, and compactness</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="local-regularity-sharp-embeddings-and-compactness">Local regularity, sharp embeddings, and compactness</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Weighted Fourier norms are global. An equation on an open set needs norms that ignore growth at infinity and near the boundary. Smooth cutoffs make that localization possible. They also give a way to prove that our embedding conditions are necessary: a fixed compactly supported function, moved to high frequency, tests the weight at the frequency where it is placed.</p>
+<p>The prerequisite lesson is <a href="AN02-L002.html">Measuring regularity with weighted Fourier spaces</a>. We also use the Banach closed graph theorem, Arzelà–Ascoli, and smooth compact cutoffs on open subsets of Euclidean space. Grubb [Grubb] and Melrose [Melrose] give background. The functional-analytic proofs used here are the linked internal closed-graph and compact-limit arguments. All weights and Fourier normalizations are those of the preceding lesson. Write <span class="math" data-tex="\(p&#x27;\)">\(p&#x27;\)</span> for the conjugate exponent, including the endpoints.</p>
+<p><a href="AN02-L042.html">Continuous functionals, test families and compact limits</a>, Section 3, proves the compact subsequence arguments. The closed graph theorem is <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 14.5, and the cutoff construction is <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a>, Section 13.10.</p>
+<h2 id="modulation-reads-a-weight-at-one-point">Modulation reads a weight at one point</h2>
+<p>Fix a nonzero <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span>, and set <span class="math" data-tex="\(\phi_\eta(x)=e^{i\eta\cdot x}\phi(x)\)">\(\phi_\eta(x)=e^{i\eta\cdot x}\phi(x)\)</span>. The Fourier transform is <span class="math" data-tex="\(\widehat\phi(\xi-\eta)\)">\(\widehat\phi(\xi-\eta)\)</span>. For every moderate weight <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+c_{\phi,k,p}k(\eta)\leq\|\phi_\eta\|_{p,k}
+\leq C_{\phi,k,p}k(\eta),
+\tag{1}
+\]">\[
+c_{\phi,k,p}k(\eta)\leq\|\phi_\eta\|_{p,k}
+\leq C_{\phi,k,p}k(\eta),
+\tag{1}
+\]</span>
+where the constants are positive, finite, and independent of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<p>To prove this, put <span class="math" data-tex="\(h=\xi-\eta\)">\(h=\xi-\eta\)</span> and use
+<span class="math math-display" data-tex="\[
+\frac{k(\eta)}{M_k(-h)}\leq k(\eta+h)\leq k(\eta)M_k(h).
+\]">\[
+\frac{k(\eta)}{M_k(-h)}\leq k(\eta+h)\leq k(\eta)M_k(h).
+\]</span>
+The upper constant is <span class="math" data-tex="\((2\pi)^{-n/p}\|M_k\widehat\phi\|_p\)">\((2\pi)^{-n/p}\|M_k\widehat\phi\|_p\)</span>; the lower constant is <span class="math" data-tex="\((2\pi)^{-n/p}\|\widehat\phi/M_k(-\cdot)\|_p\)">\((2\pi)^{-n/p}\|\widehat\phi/M_k(-\cdot)\|_p\)</span>. Both are finite because <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> is Schwartz and <span class="math" data-tex="\(M_k\)">\(M_k\)</span> has polynomial growth. The lower constant is nonzero because Fourier inversion shows <span class="math" data-tex="\(\widehat\phi\ne0\)">\(\widehat\phi\ne0\)</span>. The same reasoning uses essential suprema when <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>.</p>
+<h2 id="which-weighted-inclusions-are-possible">Which weighted inclusions are possible?</h2>
+<p><strong>Theorem 2.1.</strong> For moderate weights <span class="math" data-tex="\(k_1,k_2\)">\(k_1,k_2\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(k_1\leq Ck_2\)">\(k_1\leq Ck_2\)</span> everywhere for some finite <span class="math" data-tex="\(C\)">\(C\)</span>.</li>
+<li><span class="math" data-tex="\(B_{p,k_2}\)">\(B_{p,k_2}\)</span> is continuously included in <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span>.</li>
+<li>On some nonempty open set <span class="math" data-tex="\(X\)">\(X\)</span>, every compactly supported distribution in <span class="math" data-tex="\(B_{p,k_2}\)">\(B_{p,k_2}\)</span> with support in <span class="math" data-tex="\(X\)">\(X\)</span> also belongs to <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> The first condition directly gives the norm bound in the second, and the second implies the third. Assume the third. Choose a closed ball <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> with positive radius. The space of <span class="math" data-tex="\(B_{p,k_2}\)">\(B_{p,k_2}\)</span> distributions supported in <span class="math" data-tex="\(K\)">\(K\)</span> is closed and hence Banach: convergence in <span class="math" data-tex="\(B_{p,k_2}\)">\(B_{p,k_2}\)</span> implies convergence in distributions, which preserves vanishing off <span class="math" data-tex="\(K\)">\(K\)</span>. The inclusion into <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span> has closed graph because both norms give distributional convergence to the same limit. The closed graph theorem therefore makes the inclusion bounded. Apply it to <span class="math" data-tex="\(\phi_\eta\)">\(\phi_\eta\)</span>, for a fixed nonzero <span class="math" data-tex="\(\phi\)">\(\phi\)</span> supported in the interior of <span class="math" data-tex="\(K\)">\(K\)</span>, and use (1). It follows that <span class="math" data-tex="\(k_1(\eta)\leq Ck_2(\eta)\)">\(k_1(\eta)\leq Ck_2(\eta)\)</span> for every <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular,
+<span class="math math-display" data-tex="\[
+B_{p,k_1}\cap B_{p,k_2}=B_{p,k_1+k_2},
+\qquad
+\max(\|u\|_{p,k_1},\|u\|_{p,k_2})
+\leq\|u\|_{p,k_1+k_2}
+\leq\|u\|_{p,k_1}+\|u\|_{p,k_2}.
+\]">\[
+B_{p,k_1}\cap B_{p,k_2}=B_{p,k_1+k_2},
+\qquad
+\max(\|u\|_{p,k_1},\|u\|_{p,k_2})
+\leq\|u\|_{p,k_1+k_2}
+\leq\|u\|_{p,k_1}+\|u\|_{p,k_2}.
+\]</span>
+The two inequalities follow from pointwise comparison and Minkowski. They include the essential-supremum endpoint.</p>
+<h2 id="the-exact-threshold-for-classical-derivatives">The exact threshold for classical derivatives</h2>
+<p><strong>Theorem 3.1.</strong> Let <span class="math" data-tex="\(j\geq0\)">\(j\geq0\)</span> be an integer. The condition
+<span class="math math-display" data-tex="\[
+\frac{(1+|\xi|)^j}{k(\xi)}\in L^{p&#x27;}(\mathbb R^n)
+\tag{2}
+\]">\[
+\frac{(1+|\xi|)^j}{k(\xi)}\in L^{p&#x27;}(\mathbb R^n)
+\tag{2}
+\]</span>
+implies a continuous inclusion <span class="math" data-tex="\(B_{p,k}\subset C_b^j(\mathbb R^n)\)">\(B_{p,k}\subset C_b^j(\mathbb R^n)\)</span>. Conversely, if every <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> distribution with compact support in some nonempty open set <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(C^j\)">\(C^j\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, then (2) holds. Here <span class="math" data-tex="\(C_b^j\)">\(C_b^j\)</span> has the norm given by the sum of the suprema of all derivatives of order at most <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Proof of sufficiency.</strong> For <span class="math" data-tex="\(|\alpha|\leq j\)">\(|\alpha|\leq j\)</span>, Hölder gives
+<span class="math math-display" data-tex="\[
+\int|\xi^\alpha\widehat u(\xi)|\,d\xi
+\leq\|k\widehat u\|_p\|\xi^\alpha/k\|_{p&#x27;}.
+\]">\[
+\int|\xi^\alpha\widehat u(\xi)|\,d\xi
+\leq\|k\widehat u\|_p\|\xi^\alpha/k\|_{p&#x27;}.
+\]</span>
+The inverse Fourier integrals of these functions converge absolutely. Dominated convergence makes them continuous, and differentiation in the distributional sense identifies them with <span class="math" data-tex="\(D^\alpha u\)">\(D^\alpha u\)</span>. Their uniform bounds prove the continuous inclusion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of necessity.</strong> Choose <span class="math" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one near a point <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. By the hypothesis, <span class="math" data-tex="\(u\mapsto\chi u\)">\(u\mapsto\chi u\)</span> maps <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> into <span class="math" data-tex="\(C_b^j(\mathbb R^n)\)">\(C_b^j(\mathbb R^n)\)</span>: its support is compactly contained in <span class="math" data-tex="\(X\)">\(X\)</span>, so extension by zero introduces no boundary issue. Its graph is closed. Indeed convergence in the weighted norm gives distributional convergence, and convergence in <span class="math" data-tex="\(C_b^j\)">\(C_b^j\)</span> gives the same distributional limit. Thus the Banach closed graph theorem gives
+<span class="math" data-tex="\(\|\chi u\|_{C_b^j}\leq A\|u\|_{p,k}\)">\(\|\chi u\|_{C_b^j}\leq A\|u\|_{p,k}\)</span>.</p>
+<p>Apply this to inverse transforms of smooth compactly supported frequency functions <span class="math" data-tex="\(g\)">\(g\)</span>. Since <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, evaluation of the derivative there yields
+<span class="math math-display" data-tex="\[
+\left|\int e^{ix_0\cdot\xi}\xi^\alpha g(\xi)\,d\xi\right|
+\leq A_\alpha\|kg\|_p,
+\qquad |\alpha|\leq j.
+\]">\[
+\left|\int e^{ix_0\cdot\xi}\xi^\alpha g(\xi)\,d\xi\right|
+\leq A_\alpha\|kg\|_p,
+\qquad |\alpha|\leq j.
+\]</span>
+The converse form of Hölder's inequality now says <span class="math" data-tex="\(\xi^\alpha/k\in L^{p&#x27;}\)">\(\xi^\alpha/k\in L^{p&#x27;}\)</span>. This converse also covers both endpoints: an integral functional bounded on <span class="math" data-tex="\(L^1\)">\(L^1\)</span> has an essentially bounded density, and a density bounded as an integral functional on compactly supported <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> tests is integrable. Restrict first to finite frequency sets and approximate the required bounded tests by smooth functions there; continuity and strict positivity of <span class="math" data-tex="\(k\)">\(k\)</span> allow that approximation in the displayed integral. Let the sets increase to all of space. Finally, <span class="math" data-tex="\((1+|\xi|)^j\)">\((1+|\xi|)^j\)</span> is bounded by a fixed constant times <span class="math" data-tex="\(\sum_{|\alpha|\leq j}|\xi^\alpha|\)">\(\sum_{|\alpha|\leq j}|\xi^\alpha|\)</span>, and the reverse comparison also holds. The finitely many conditions give (2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 3.2.</strong> For <span class="math" data-tex="\(k=\langle\xi\rangle^s\)">\(k=\langle\xi\rangle^s\)</span> and <span class="math" data-tex="\(1&lt;p\leq\infty\)">\(1&lt;p\leq\infty\)</span>, condition (2) is exactly <span class="math" data-tex="\(s&gt;j+n/p&#x27;\)">\(s&gt;j+n/p&#x27;\)</span>. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, it is <span class="math" data-tex="\(s\geq j\)">\(s\geq j\)</span>. The strict inequality in the former case comes from the logarithmic divergence at equality. At <span class="math" data-tex="\(p=2\)">\(p=2\)</span> this recovers the usual Sobolev threshold. At <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, integrability is already part of the Fourier norm, so equality is allowed.</p>
+<h2 id="compactness-after-fixing-physical-support">Compactness after fixing physical support</h2>
+<p>Let <span class="math" data-tex="\(B_{p,k}(K)\)">\(B_{p,k}(K)\)</span> denote distributions in <span class="math" data-tex="\(B_{p,k}\)">\(B_{p,k}\)</span> supported in a fixed compact set <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> If
+<span class="math math-display" data-tex="\[
+\frac{k_1(\xi)}{k_2(\xi)}\longrightarrow0
+\quad\text{as }|\xi|\longrightarrow\infty,
+\tag{3}
+\]">\[
+\frac{k_1(\xi)}{k_2(\xi)}\longrightarrow0
+\quad\text{as }|\xi|\longrightarrow\infty,
+\tag{3}
+\]</span>
+then the inclusion <span class="math" data-tex="\(B_{p,k_2}(K)\to B_{p,k_1}\)">\(B_{p,k_2}(K)\to B_{p,k_1}\)</span> is compact. Conversely, if this inclusion is compact for one compact <span class="math" data-tex="\(K\)">\(K\)</span> with nonempty interior, then (3) holds. The theorem includes <span class="math" data-tex="\(p=\infty\)">\(p=\infty\)</span>.</p>
+<p><strong>Proof of sufficiency.</strong> Let <span class="math" data-tex="\(u_l\)">\(u_l\)</span> be bounded in <span class="math" data-tex="\(B_{p,k_2}(K)\)">\(B_{p,k_2}(K)\)</span>, and choose <span class="math" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span> equal to one near <span class="math" data-tex="\(K\)">\(K\)</span>. Since <span class="math" data-tex="\(u_l=\psi u_l\)">\(u_l=\psi u_l\)</span>,
+<span class="math math-display" data-tex="\[
+\widehat u_l=(2\pi)^{-n}\widehat\psi*\widehat u_l.
+\]">\[
+\widehat u_l=(2\pi)^{-n}\widehat\psi*\widehat u_l.
+\]</span>
+Differentiate the smooth Schwartz kernel and apply Hölder. For every multiindex <span class="math" data-tex="\(\beta\)">\(\beta\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial^\beta\widehat u_l(\xi)|
+\leq(2\pi)^{-n}\|k_2\widehat u_l\|_p
+\left\|\frac{\partial^\beta\widehat\psi(\xi-\cdot)}{k_2(\cdot)}\right\|_{p&#x27;}.
+\]">\[
+|\partial^\beta\widehat u_l(\xi)|
+\leq(2\pi)^{-n}\|k_2\widehat u_l\|_p
+\left\|\frac{\partial^\beta\widehat\psi(\xi-\cdot)}{k_2(\cdot)}\right\|_{p&#x27;}.
+\]</span>
+The last norm is uniformly bounded for <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in any fixed ball, because <span class="math" data-tex="\(1/k_2\)">\(1/k_2\)</span> has polynomial growth and the kernel and all its derivatives are Schwartz. Thus the Fourier transforms are uniformly bounded and equicontinuous on every compact set. Arzelà–Ascoli and a diagonal selection give a subsequence converging uniformly on each compact frequency set.</p>
+<p>Given <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, choose a ball outside which <span class="math" data-tex="\(k_1/k_2\leq\delta\)">\(k_1/k_2\leq\delta\)</span>. On the ball, uniform convergence and boundedness of <span class="math" data-tex="\(k_1\)">\(k_1\)</span> imply convergence in weighted <span class="math" data-tex="\(L^p\)">\(L^p\)</span>, including the supremum norm. Off the ball, the norm of a difference is at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span> times its bounded <span class="math" data-tex="\(k_2\)">\(k_2\)</span>-norm. The subsequence is therefore Cauchy in <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span>, which is complete. This proves compactness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of necessity.</strong> Choose a nonzero <span class="math" data-tex="\(\phi\in C_c^\infty(\operatorname{int}K)\)">\(\phi\in C_c^\infty(\operatorname{int}K)\)</span>. For any sequence <span class="math" data-tex="\(|\eta_l|\to\infty\)">\(|\eta_l|\to\infty\)</span>, put
+<span class="math" data-tex="\(u_l=e^{i\eta_l\cdot x}\phi(x)/k_2(\eta_l)\)">\(u_l=e^{i\eta_l\cdot x}\phi(x)/k_2(\eta_l)\)</span>.
+Equation (1) makes this a bounded sequence in <span class="math" data-tex="\(B_{p,k_2}(K)\)">\(B_{p,k_2}(K)\)</span>. It converges to zero in distributions: pairing with a test function produces the value of the rapidly decreasing Fourier transform of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> times that test function at <span class="math" data-tex="\(-\eta_l\)">\(-\eta_l\)</span>, divided by a weight with a polynomial lower bound. Every convergent subsequence in <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span> must therefore have limit zero. Compactness implies that the whole sequence tends to zero in that norm, since otherwise a subsequence bounded away from zero would have a convergent further subsequence. The lower bound in (1) gives
+<span class="math" data-tex="\(c k_1(\eta_l)/k_2(\eta_l)\leq\|u_l\|_{p,k_1}\to0\)">\(c k_1(\eta_l)/k_2(\eta_l)\leq\|u_l\|_{p,k_1}\to0\)</span>.
+The original escaping sequence was arbitrary, so (3) follows. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="passing-to-an-open-set">Passing to an open set</h2>
+<p>There is a general operation behind localization. Let <span class="math" data-tex="\(F\subset\mathcal D&#x27;(X)\)">\(F\subset\mathcal D&#x27;(X)\)</span> be a linear subspace stable under multiplication by compactly supported smooth functions. Set
+<span class="math math-display" data-tex="\[
+F_{\mathrm{loc}}=\{u:\chi u\in F\text{ for every }\chi\in C_c^\infty(X)\}.
+\]">\[
+F_{\mathrm{loc}}=\{u:\chi u\in F\text{ for every }\chi\in C_c^\infty(X)\}.
+\]</span>
+Call a cutoff-stable space local if membership of all its localized products implies membership of the distribution itself.</p>
+<p><strong>Lemma 5.0.</strong> The space <span class="math" data-tex="\(F_{\mathrm{loc}}\)">\(F_{\mathrm{loc}}\)</span> is the smallest local space containing <span class="math" data-tex="\(F\)">\(F\)</span>. Its compactly supported elements are exactly the compactly supported elements of <span class="math" data-tex="\(F\)">\(F\)</span>. For any local space <span class="math" data-tex="\(G\)">\(G\)</span>, membership is also determined point by point: if each <span class="math" data-tex="\(x\)">\(x\)</span> has a cutoff <span class="math" data-tex="\(\chi_x\)">\(\chi_x\)</span> nonzero at <span class="math" data-tex="\(x\)">\(x\)</span> with <span class="math" data-tex="\(\chi_xu\in G\)">\(\chi_xu\in G\)</span>, then <span class="math" data-tex="\(u\in G\)">\(u\in G\)</span>.</p>
+<p><strong>Proof.</strong> Cutoff stability gives <span class="math" data-tex="\(F\subset F_{\mathrm{loc}}\)">\(F\subset F_{\mathrm{loc}}\)</span> and stability of <span class="math" data-tex="\(F_{\mathrm{loc}}\)">\(F_{\mathrm{loc}}\)</span>. To see that it is local, suppose <span class="math" data-tex="\(\chi u\in F_{\mathrm{loc}}\)">\(\chi u\in F_{\mathrm{loc}}\)</span> for every cutoff. For a particular <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, choose <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near its support. Then <span class="math" data-tex="\(\chi u=\psi(\chi u)\in F\)">\(\chi u=\psi(\chi u)\in F\)</span>, proving <span class="math" data-tex="\(u\in F_{\mathrm{loc}}\)">\(u\in F_{\mathrm{loc}}\)</span>. Any local space containing <span class="math" data-tex="\(F\)">\(F\)</span> contains <span class="math" data-tex="\(F_{\mathrm{loc}}\)">\(F_{\mathrm{loc}}\)</span> by its defining membership rule. If <span class="math" data-tex="\(u\)">\(u\)</span> is compactly supported, a cutoff equal to one near its support gives <span class="math" data-tex="\(u=\chi u\)">\(u=\chi u\)</span>, proving the equality of the compactly supported parts.</p>
+<p>For the pointwise assertion, fix a compactly supported cutoff <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Choose finitely many of the <span class="math" data-tex="\(\chi_x\)">\(\chi_x\)</span> such that <span class="math" data-tex="\(S=\sum_l|\chi_l|^2&gt;0\)">\(S=\sum_l|\chi_l|^2&gt;0\)</span> on a neighborhood of <span class="math" data-tex="\(\operatorname{supp}\psi\)">\(\operatorname{supp}\psi\)</span>. The smooth compactly supported multipliers <span class="math" data-tex="\(a_l=\psi\overline{\chi_l}/S\)">\(a_l=\psi\overline{\chi_l}/S\)</span>, extended by zero off that neighborhood, satisfy <span class="math" data-tex="\(\psi u=\sum_l a_l(\chi_lu)\in G\)">\(\psi u=\sum_l a_l(\chi_lu)\in G\)</span>. Locality gives <span class="math" data-tex="\(u\in G\)">\(u\in G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an open <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span>, define
+<span class="math math-display" data-tex="\[
+B_{p,k}^{\mathrm{loc}}(X)=
+\{u\in\mathcal D&#x27;(X):\chi u\in B_{p,k}\text{ for every }
+\chi\in C_c^\infty(X)\}.
+\]">\[
+B_{p,k}^{\mathrm{loc}}(X)=
+\{u\in\mathcal D&#x27;(X):\chi u\in B_{p,k}\text{ for every }
+\chi\in C_c^\infty(X)\}.
+\]</span>
+The product <span class="math" data-tex="\(\chi u\)">\(\chi u\)</span> is extended by zero to all of space. Give this space the seminorms <span class="math" data-tex="\(u\mapsto\|\chi u\|_{p,k}\)">\(u\mapsto\|\chi u\|_{p,k}\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> This is a Fréchet space. Multiplication by every <span class="math" data-tex="\(a\in C^\infty(X)\)">\(a\in C^\infty(X)\)</span> is continuous. The inclusion into <span class="math" data-tex="\(\mathcal D&#x27;(X)\)">\(\mathcal D&#x27;(X)\)</span> is continuous, and <span class="math" data-tex="\(C^r(X)\)">\(C^r(X)\)</span> is continuously included for some finite integer <span class="math" data-tex="\(r\)">\(r\)</span> depending on the weight. A compactly supported element of the local space belongs to the global space, and on distributions supported in a fixed compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> the local and global topologies agree.</p>
+<p><strong>Proof.</strong> Choose compact sets <span class="math" data-tex="\(K_l\subset\operatorname{int}K_{l+1}\)">\(K_l\subset\operatorname{int}K_{l+1}\)</span> exhausting <span class="math" data-tex="\(X\)">\(X\)</span>, and cutoffs <span class="math" data-tex="\(\chi_l\)">\(\chi_l\)</span> equal to one near <span class="math" data-tex="\(K_l\)">\(K_l\)</span>, with support in <span class="math" data-tex="\(\operatorname{int}K_{l+1}\)">\(\operatorname{int}K_{l+1}\)</span>. Every seminorm is bounded by a constant times one of the countable seminorms <span class="math" data-tex="\(\|\chi_lu\|_{p,k}\)">\(\|\chi_lu\|_{p,k}\)</span>: if <span class="math" data-tex="\(\operatorname{supp}\chi\subset K_l\)">\(\operatorname{supp}\chi\subset K_l\)</span>, then <span class="math" data-tex="\(\chi u=\chi(\chi_lu)\)">\(\chi u=\chi(\chi_lu)\)</span>, and the cutoff estimate from the preceding lesson applies. These seminorms separate distributions, so they define a metrizable Hausdorff locally convex topology.</p>
+<p>For completeness, let <span class="math" data-tex="\(u_j\)">\(u_j\)</span> be Cauchy in all those seminorms. Write <span class="math" data-tex="\(v_l=\lim_j\chi_lu_j\)">\(v_l=\lim_j\chi_lu_j\)</span> in the global Banach space. For a test function <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> supported in <span class="math" data-tex="\(K_l\)">\(K_l\)</span>, define <span class="math" data-tex="\(\langle u,\varphi\rangle=\langle v_l,\varphi\rangle\)">\(\langle u,\varphi\rangle=\langle v_l,\varphi\rangle\)</span>. The definition is unchanged on enlarging <span class="math" data-tex="\(l\)">\(l\)</span>, by distributional convergence of the same pairings <span class="math" data-tex="\(\langle u_j,\varphi\rangle\)">\(\langle u_j,\varphi\rangle\)</span>. It defines a distribution because, on every fixed compact test support, the pairing is that of one distribution <span class="math" data-tex="\(v_l\)">\(v_l\)</span>. For any cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, take <span class="math" data-tex="\(l\)">\(l\)</span> with <span class="math" data-tex="\(\chi_l=1\)">\(\chi_l=1\)</span> near its support. Then <span class="math" data-tex="\(\chi u=\chi v_l\)">\(\chi u=\chi v_l\)</span>, and the global cutoff estimate proves both membership and convergence in its seminorm. Thus the local space is complete.</p>
+<p>For a smooth multiplier, choose <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>. Then <span class="math" data-tex="\(\chi au=(\chi a)(\psi u)\)">\(\chi au=(\chi a)(\psi u)\)</span>, and <span class="math" data-tex="\(\chi a\)">\(\chi a\)</span> is a compactly supported smooth multiplier. This proves continuity. Distributional continuity follows from the global inclusion applied to a cutoff equal to one near each test support. If <span class="math" data-tex="\(k(\xi)\leq A\langle\xi\rangle^N\)">\(k(\xi)\leq A\langle\xi\rangle^N\)</span>, choose an integer <span class="math" data-tex="\(r&gt;N+n\)">\(r&gt;N+n\)</span>. Integration by parts gives
+<span class="math" data-tex="\(\langle\xi\rangle^r|\widehat{\chi f}(\xi)|\leq C\sum_{|\alpha|\leq r}\|\partial^\alpha(\chi f)\|_1\)">\(\langle\xi\rangle^r|\widehat{\chi f}(\xi)|\leq C\sum_{|\alpha|\leq r}\|\partial^\alpha(\chi f)\|_1\)</span>
+for <span class="math" data-tex="\(f\in C^r(X)\)">\(f\in C^r(X)\)</span>. It follows that <span class="math" data-tex="\(\|\chi f\|_{p,k}\)">\(\|\chi f\|_{p,k}\)</span> is bounded by a finite <span class="math" data-tex="\(C^r\)">\(C^r\)</span> seminorm for every <span class="math" data-tex="\(p\)">\(p\)</span>. Finally, a cutoff equal to one near <span class="math" data-tex="\(K\)">\(K\)</span> recovers a distribution supported in <span class="math" data-tex="\(K\)">\(K\)</span> itself; in the other direction all local seminorms are bounded by its global norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.2.</strong> The weight comparison in Theorem 2.1 is also necessary and sufficient for
+<span class="math" data-tex="\(B_{p,k_2}^{\mathrm{loc}}(X)\subset B_{p,k_1}^{\mathrm{loc}}(X)\)">\(B_{p,k_2}^{\mathrm{loc}}(X)\subset B_{p,k_1}^{\mathrm{loc}}(X)\)</span>
+on any nonempty open <span class="math" data-tex="\(X\)">\(X\)</span>. Condition (2) is necessary and sufficient for
+<span class="math" data-tex="\(B_{p,k}^{\mathrm{loc}}(X)\subset C^j(X)\)">\(B_{p,k}^{\mathrm{loc}}(X)\subset C^j(X)\)</span>.
+Condition (3) is necessary and sufficient for every bounded subset of <span class="math" data-tex="\(B_{p,k_2}^{\mathrm{loc}}(X)\)">\(B_{p,k_2}^{\mathrm{loc}}(X)\)</span> to be precompact in <span class="math" data-tex="\(B_{p,k_1}^{\mathrm{loc}}(X)\)">\(B_{p,k_1}^{\mathrm{loc}}(X)\)</span>.</p>
+<p><strong>Proof.</strong> The first two sufficiencies follow after applying the global results to a cutoff equal to one near each point. Their necessities follow by considering compactly supported distributions in a ball contained in <span class="math" data-tex="\(X\)">\(X\)</span>. For the compactness sufficiency, apply Theorem 4.1 to <span class="math" data-tex="\(\chi_lu_j\)">\(\chi_lu_j\)</span> on its fixed compact support and choose subsequences successively for <span class="math" data-tex="\(l=1,2,\ldots\)">\(l=1,2,\ldots\)</span>. A diagonal subsequence is Cauchy in every target seminorm, so Theorem 5.1 gives its limit. Both local spaces are metrizable; this sequential argument characterizes relative compactness. Conversely, the global unit ball with support in a fixed ball is bounded locally, and local convergence on that fixed support is global convergence. Theorem 4.1 then gives (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 5.3.</strong> For nonzero <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+<span class="math" data-tex="\(Q(D):B_{p,k}^{\mathrm{loc}}(X)\to B_{p,k/S_Q}^{\mathrm{loc}}(X)\)">\(Q(D):B_{p,k}^{\mathrm{loc}}(X)\to B_{p,k/S_Q}^{\mathrm{loc}}(X)\)</span>
+is continuous. If <span class="math" data-tex="\(u\in B_{p,k_1}^{\mathrm{loc}}(\mathbb R^n)\)">\(u\in B_{p,k_1}^{\mathrm{loc}}(\mathbb R^n)\)</span> has compact support and <span class="math" data-tex="\(v\in B_{\infty,k_2}^{\mathrm{loc}}(\mathbb R^n)\)">\(v\in B_{\infty,k_2}^{\mathrm{loc}}(\mathbb R^n)\)</span>, then
+<span class="math" data-tex="\(u*v\in B_{p,k_1k_2}^{\mathrm{loc}}(\mathbb R^n)\)">\(u*v\in B_{p,k_1k_2}^{\mathrm{loc}}(\mathbb R^n)\)</span>.</p>
+<p><strong>Proof.</strong> For a cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, choose <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near its support. Locally there, <span class="math" data-tex="\(Q(D)u=Q(D)(\psi u)\)">\(Q(D)u=Q(D)(\psi u)\)</span>. The global differential bound followed by multiplication by <span class="math" data-tex="\(\chi\)">\(\chi\)</span> proves the first claim. In the second claim <span class="math" data-tex="\(u\)">\(u\)</span> belongs globally to <span class="math" data-tex="\(B_{p,k_1}\)">\(B_{p,k_1}\)</span>. Choose <span class="math" data-tex="\(\psi=1\)">\(\psi=1\)</span> near the compact set <span class="math" data-tex="\(\operatorname{supp}\chi-\operatorname{supp}u\)">\(\operatorname{supp}\chi-\operatorname{supp}u\)</span>. Then <span class="math" data-tex="\(u*v=u*(\psi v)\)">\(u*v=u*(\psi v)\)</span> near <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>. The global convolution and cutoff bounds prove the result. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Countable intersections of these local spaces, with all their seminorms, are again Fréchet by the same completeness argument. In particular,
+<span class="math math-display" data-tex="\[
+C^\infty(X)=\bigcap_{r=0}^\infty B_{\infty,\langle\xi\rangle^r}^{\mathrm{loc}}(X).
+\]">\[
+C^\infty(X)=\bigcap_{r=0}^\infty B_{\infty,\langle\xi\rangle^r}^{\mathrm{loc}}(X).
+\]</span>
+Smooth localized functions have rapidly decreasing transforms, giving one inclusion. The derivative criterion with arbitrarily large <span class="math" data-tex="\(r\)">\(r\)</span> gives the other.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 (entry).</strong> On a fixed compact set with nonempty interior, when is the inclusion from <span class="math" data-tex="\(B_{p,\langle\xi\rangle^s}\)">\(B_{p,\langle\xi\rangle^s}\)</span> to <span class="math" data-tex="\(B_{p,\langle\xi\rangle^t}\)">\(B_{p,\langle\xi\rangle^t}\)</span> bounded, and when is it compact?</p>
+<p><strong>Solution.</strong> Their weight ratio is <span class="math" data-tex="\(\langle\xi\rangle^{t-s}\)">\(\langle\xi\rangle^{t-s}\)</span>. It is bounded precisely when <span class="math" data-tex="\(t\leq s\)">\(t\leq s\)</span>, and tends to zero precisely when <span class="math" data-tex="\(t&lt;s\)">\(t&lt;s\)</span>. Theorems 2.1 and 4.1 give the two assertions. Nonempty interior is needed for the necessity argument using a nonzero test function.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Prove that <span class="math" data-tex="\(k(\xi_1,\xi_2)=\langle\xi_1\rangle^{7/4}\langle\xi_2\rangle^{7/4}\)">\(k(\xi_1,\xi_2)=\langle\xi_1\rangle^{7/4}\langle\xi_2\rangle^{7/4}\)</span> gives <span class="math" data-tex="\(B_{2,k}^{\mathrm{loc}}(\mathbb R^2)\subset C^1\)">\(B_{2,k}^{\mathrm{loc}}(\mathbb R^2)\subset C^1\)</span>. Explain how its two exponents relate to an isotropic weight.</p>
+<p><strong>Solution.</strong> Take <span class="math" data-tex="\(k(\xi_1,\xi_2)=\langle\xi_1\rangle^a\langle\xi_2\rangle^b\)">\(k(\xi_1,\xi_2)=\langle\xi_1\rangle^a\langle\xi_2\rangle^b\)</span>, with <span class="math" data-tex="\(a,b&gt;3/2\)">\(a,b&gt;3/2\)</span>. Since <span class="math" data-tex="\(1+|\xi|\leq C(\langle\xi_1\rangle+\langle\xi_2\rangle)\)">\(1+|\xi|\leq C(\langle\xi_1\rangle+\langle\xi_2\rangle)\)</span>, the squared integrability in (2) follows from the separate integrability of <span class="math" data-tex="\(\langle\xi_1\rangle^{2-2a}\langle\xi_2\rangle^{-2b}\)">\(\langle\xi_1\rangle^{2-2a}\langle\xi_2\rangle^{-2b}\)</span> and its counterpart with the exponent two on the second variable. One may choose <span class="math" data-tex="\(a=b=7/4\)">\(a=b=7/4\)</span>, whereas an isotropic weight <span class="math" data-tex="\(\langle\xi\rangle^s\)">\(\langle\xi\rangle^s\)</span> in dimension two needs <span class="math" data-tex="\(s&gt;2\)">\(s&gt;2\)</span>. These are different weights: this comparison does not assert an inclusion based on a single common numerical order.</p>
+<p><strong>Exercise 3 (intermediate).</strong> Why can Theorem 4.1 not omit the requirement of fixed physical support? Use <span class="math" data-tex="\(k_2=\langle\xi\rangle\)">\(k_2=\langle\xi\rangle\)</span>, <span class="math" data-tex="\(k_1=1\)">\(k_1=1\)</span>, <span class="math" data-tex="\(p=2\)">\(p=2\)</span>.</p>
+<p><strong>Solution.</strong> Choose a nonzero compactly supported smooth <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and translate it by integer multiples of a vector long enough that the supports are disjoint. Translation multiplies its Fourier transform by a phase and preserves both norms, so the sequence is bounded in <span class="math" data-tex="\(B_{2,k_2}\)">\(B_{2,k_2}\)</span>. Its members have pairwise <span class="math" data-tex="\(L^2=B_{2,1}\)">\(L^2=B_{2,1}\)</span> distance <span class="math" data-tex="\(\sqrt2\|\phi\|_2\)">\(\sqrt2\|\phi\|_2\)</span>, so it has no convergent subsequence there. The frequency ratio tends to zero, but physical mass escapes to infinity.</p>
+<p><strong>Exercise 4 (advanced).</strong> Let <span class="math" data-tex="\(k_1/k_2\to0\)">\(k_1/k_2\to0\)</span>. Show that a sequence bounded in <span class="math" data-tex="\(B_{p,k_2}^{\mathrm{loc}}(X)\)">\(B_{p,k_2}^{\mathrm{loc}}(X)\)</span> and converging in distributions to <span class="math" data-tex="\(u\)">\(u\)</span> converges to <span class="math" data-tex="\(u\)">\(u\)</span> in <span class="math" data-tex="\(B_{p,k_1}^{\mathrm{loc}}(X)\)">\(B_{p,k_1}^{\mathrm{loc}}(X)\)</span>.</p>
+<p><strong>Solution.</strong> Proposition 5.2 gives relative compactness in the target space. Every target-convergent subsequence has the same distributional limit <span class="math" data-tex="\(u\)">\(u\)</span>, by continuity into distributions, so <span class="math" data-tex="\(u\)">\(u\)</span> belongs to the target space. If the original sequence failed to converge there, some target seminorm and a subsequence would stay at a positive distance from <span class="math" data-tex="\(u\)">\(u\)</span>. Relative compactness would give a further convergent subsequence, whose limit must be <span class="math" data-tex="\(u\)">\(u\)</span>, contradicting that positive distance. Thus the whole sequence converges.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Grubb] Gerd Grubb, <em>Distributions and Operators</em>, open lecture-note versions, 2007–2008, Fourier and Sobolev sections. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Author's lecture-note index</a>.</li>
+<li>[Melrose] Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004, sections on Sobolev spaces and compactness. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Internal closed graph theorem: <a href="prerequisites/banach-foundation-bridges.html#section-14-5">Banach estimates, quotient spaces and compact parameter arguments</a>, Section 14.5, with the target-seminorm estimate.</li>
+<li>Internal compact-limit argument: <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a>, Proposition 3.1 and its following compact-frequency-ball adapter.</li>
+<li>Internal cutoff construction: <a href="prerequisites/metric-foundation-bridges.html#section-13-10">Metric and topological foundations</a>, Section 13.10.</li>
+</ul>
+</main></body></html>

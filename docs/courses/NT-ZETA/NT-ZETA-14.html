@@ -1,0 +1,2094 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Riemann hypothesis and its standard equivalents · The Riemann zeta function</title>
+<meta name="description" content="A lesson of the course The Riemann zeta function. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-14.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The Riemann zeta function</a> <span aria-hidden="true">›</span> <span>Lesson 14 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-riemann-hypothesis-and-its-standard-equivalents">The Riemann hypothesis and its standard equivalents</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-check is by the writing AI. Original exposition and calculations are public domain (CC0). The identified adaptation in Sections 6.1–6.5 retains CC BY 4.0.</em></p>
+<p>The Riemann hypothesis says that every nontrivial zero has real part one half. Through the explicit formula, this gives a square-root scale for the error in counting primes. Conversely, a sufficiently small prime-counting error continues the logarithmic derivative into a larger half-plane and excludes zeros there. We prove both directions and the corresponding equivalents involving the Möbius function. We then develop the divisor-sum and fractional-part approximation criteria, connecting the latter to a full Mellin-space proof. Exact lessons supply the positivity criteria and the finite-field theorem. These different formulations also explain what finite numerical evidence can establish.</p>
+<p>The functional equation and zero symmetries are proved in <a href="NT-ZETA-04.html">Poisson summation, theta, and the functional equation</a>. We use <a href="NT-ZETA-11.html">Perron's formula and the explicit formula for prime counting</a>, Theorem 2.2, and the zero-count estimates in <a href="NT-ZETA-10.html">Counting the zeros</a>, Theorem 4.1. Partial summation and prime-power comparisons come from <a href="NT-ZETA-02.html">Counting primes by elementary means</a>. The bounded-coefficient Perron formula is <a href="NT-ZETA-12.html">The prime number theorem with the classical error term</a>, Lemma 3.1. The analytic bridge below uses the fully proved Borel–Carathéodory and strip-interpolation arguments from lessons five and six.</p>
+<p>Write <span class="math" data-tex="$M(x)=\sum_{n\le x}\mu(n)$">$M(x)=\sum_{n\le x}\mu(n)$</span>, <span class="math" data-tex="$\psi(x)=\sum_{n\le x}\Lambda(n)$">$\psi(x)=\sum_{n\le x}\Lambda(n)$</span> and <span class="math" data-tex="$\theta(x)=\sum_{p\le x}\log p$">$\theta(x)=\sum_{p\le x}\log p$</span>. Here <span class="math" data-tex="$\psi$">$\psi$</span> never denotes the gamma logarithmic derivative. Set <span class="math" data-tex="$\tau=|t|+4$">$\tau=|t|+4$</span>. We use <span class="math" data-tex="$\operatorname{li}(x)=\operatorname{Ei}(\log x)$">$\operatorname{li}(x)=\operatorname{Ei}(\log x)$</span>, rather than the shifted integral <span class="math" data-tex="$\operatorname{Li}(x)=\int_2^xdu/\log u$">$\operatorname{Li}(x)=\int_2^xdu/\log u$</span>.</p>
+<p>The integration and complex-analysis tools used in this lesson are proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A, Lemmas A.1–A.4.</p>
+<h2 id="1-the-zero-boundary-and-prime-counting">1. The zero boundary and prime counting</h2>
+<p><strong>Theorem 1.1.</strong> Suppose <span class="math" data-tex="$1/2\le\Theta\le1$">$1/2\le\Theta\le1$</span> and every nontrivial zero satisfies <span class="math" data-tex="$\beta\le\Theta$">$\beta\le\Theta$</span>. Then
+<span class="math math-display" data-tex="$$
+\psi(x)-x\ll x^\Theta\log^2x\qquad(x\ge2).
+\tag{1.1}
+$$">$$
+\psi(x)-x\ll x^\Theta\log^2x\qquad(x\ge2).
+\tag{1.1}
+$$</span>
+Conversely, if <span class="math" data-tex="$0\le\alpha&lt;1$">$0\le\alpha&lt;1$</span> and, for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\psi(x)-x=O_\varepsilon(x^{\alpha+\varepsilon}),
+\tag{1.2}
+$$">$$
+\psi(x)-x=O_\varepsilon(x^{\alpha+\varepsilon}),
+\tag{1.2}
+$$</span>
+then every nontrivial zero has <span class="math" data-tex="$\beta\le\alpha$">$\beta\le\alpha$</span>.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$T=x$">$T=x$</span> in the sharp explicit formula. The sum of <span class="math" data-tex="$1/|\rho|$">$1/|\rho|$</span> over <span class="math" data-tex="$|\gamma|&lt;x$">$|\gamma|&lt;x$</span> is <span class="math" data-tex="$O(\log^2x)$">$O(\log^2x)$</span>, so its zero contribution is at most <span class="math" data-tex="$Cx^\Theta\log^2x$">$Cx^\Theta\log^2x$</span>. The remaining terms are <span class="math" data-tex="$O(\log^2x)$">$O(\log^2x)$</span> and the half-weight correction at a prime power is <span class="math" data-tex="$O(\log x)$">$O(\log x)$</span>. They are absorbed in (1.1).</p>
+<p>For the converse put <span class="math" data-tex="$E(u)=\psi(u)-u$">$E(u)=\psi(u)-u$</span>. In <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span>, partial summation gives
+<span class="math math-display" data-tex="$$
+-\frac{\zeta&#x27;}\zeta(s)
+=s\int_1^\infty\psi(u)u^{-s-1}\,du
+=\frac{s}{s-1}+s\int_1^\infty E(u)u^{-s-1}\,du.
+\tag{1.3}
+$$">$$
+-\frac{\zeta&#x27;}\zeta(s)
+=s\int_1^\infty\psi(u)u^{-s-1}\,du
+=\frac{s}{s-1}+s\int_1^\infty E(u)u^{-s-1}\,du.
+\tag{1.3}
+$$</span>
+Thus the exact pole-subtracted identity is
+<span class="math math-display" data-tex="$$
+-\frac{\zeta&#x27;}\zeta(s)-\frac1{s-1}
+=1+s\int_1^\infty E(u)u^{-s-1}\,du.
+\tag{1.4}
+$$">$$
+-\frac{\zeta&#x27;}\zeta(s)-\frac1{s-1}
+=1+s\int_1^\infty E(u)u^{-s-1}\,du.
+\tag{1.4}
+$$</span>
+The constant one is the contribution of the lower endpoint in the integral of <span class="math" data-tex="$u$">$u$</span>.</p>
+<p>The right side of (1.4) is holomorphic for <span class="math" data-tex="$\Re s&gt;\alpha$">$\Re s&gt;\alpha$</span>. On any compact subset choose <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span> smaller than its distance from that boundary. The majorant <span class="math" data-tex="$C_\varepsilon u^{\alpha+\varepsilon-\sigma-1}$">$C_\varepsilon u^{\alpha+\varepsilon-\sigma-1}$</span> is integrable uniformly there; it justifies holomorphy by locally uniform convergence of the truncated integrals. The identity theorem for meromorphic functions extends (1.4) to that half-plane. A zero of order <span class="math" data-tex="$m$">$m$</span> at <span class="math" data-tex="$\rho\ne1$">$\rho\ne1$</span> would give a pole of residue <span class="math" data-tex="$-m$">$-m$</span> on its left side, whereas its right side is holomorphic. Hence no zero lies there. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The hypotheses force <span class="math" data-tex="$\alpha\ge1/2$">$\alpha\ge1/2$</span> if they hold: the functional equation pairs a zero of real part <span class="math" data-tex="$\beta$">$\beta$</span> with one of real part <span class="math" data-tex="$1-\beta$">$1-\beta$</span>, and there are nontrivial zeros. We need no assumption that the supremum of the real parts is attained.</p>
+<h2 id="2-von-koch-s-prime-counting-bounds">2. Von Koch's prime-counting bounds</h2>
+<p><strong>Theorem 2.1.</strong> Under RH,
+<span class="math math-display" data-tex="$$
+\psi(x)=x+O(\sqrt x\log^2x),\qquad
+\pi(x)=\operatorname{li}(x)+O(\sqrt x\log x).
+\tag{2.1}
+$$">$$
+\psi(x)=x+O(\sqrt x\log^2x),\qquad
+\pi(x)=\operatorname{li}(x)+O(\sqrt x\log x).
+\tag{2.1}
+$$</span>
+Conversely the second bound implies RH.</p>
+<p><strong>Proof.</strong> The first bound follows from Theorem 1.1 with <span class="math" data-tex="$\Theta=1/2$">$\Theta=1/2$</span>. Since <span class="math" data-tex="$\psi(x)-\theta(x)\ll\sqrt x$">$\psi(x)-\theta(x)\ll\sqrt x$</span>, it gives <span class="math" data-tex="$\theta(x)=x+O(\sqrt x\log^2x)$">$\theta(x)=x+O(\sqrt x\log^2x)$</span>. In the exact identity
+<span class="math math-display" data-tex="$$
+\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(u)}{u\log^2u}\,du,
+$$">$$
+\pi(x)=\frac{\theta(x)}{\log x}
++\int_2^x\frac{\theta(u)}{u\log^2u}\,du,
+$$</span>
+the endpoint error is <span class="math" data-tex="$O(\sqrt x\log x)$">$O(\sqrt x\log x)$</span> and the error integral is <span class="math" data-tex="$O(\int_2^x u^{-1/2}du)=O(\sqrt x)$">$O(\int_2^x u^{-1/2}du)=O(\sqrt x)$</span>. The main terms equal <span class="math" data-tex="$\operatorname{Li}(x)+2/\log2$">$\operatorname{Li}(x)+2/\log2$</span>, whose constant difference from <span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span> is absorbed. This proves the second bound.</p>
+<p>Conversely, write <span class="math" data-tex="$\pi(x)=\operatorname{li}(x)+R(x)$">$\pi(x)=\operatorname{li}(x)+R(x)$</span>, with <span class="math" data-tex="$R(x)=O(\sqrt x\log x)$">$R(x)=O(\sqrt x\log x)$</span>. Partial summation gives
+<span class="math math-display" data-tex="$$
+\theta(x)=\pi(x)\log x-\int_2^x\frac{\pi(u)}u\,du.
+$$">$$
+\theta(x)=\pi(x)\log x-\int_2^x\frac{\pi(u)}u\,du.
+$$</span>
+Replacing <span class="math" data-tex="$\pi$">$\pi$</span> by <span class="math" data-tex="$\operatorname{li}$">$\operatorname{li}$</span> yields <span class="math" data-tex="$x$">$x$</span> plus a fixed constant: the derivative of the resulting expression is one. Its error is
+<span class="math math-display" data-tex="$$
+R(x)\log x-\int_2^xR(u)u^{-1}du
+=O(\sqrt x\log^2x),
+$$">$$
+R(x)\log x-\int_2^xR(u)u^{-1}du
+=O(\sqrt x\log^2x),
+$$</span>
+since <span class="math" data-tex="$\int_2^x u^{-1/2}\log u\,du\ll\sqrt x\log x$">$\int_2^x u^{-1/2}\log u\,du\ll\sqrt x\log x$</span>. Restoring prime powers gives the same bound for <span class="math" data-tex="$\psi-x$">$\psi-x$</span>. Theorem 1.1 excludes zeros with real part greater than <span class="math" data-tex="$1/2$">$1/2$</span>, and symmetry excludes those with real part less than <span class="math" data-tex="$1/2$">$1/2$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="3-a-reciprocal-bound-under-rh">3. A reciprocal bound under RH</h2>
+<p>The implication from RH to a bound for <span class="math" data-tex="$M(x)$">$M(x)$</span> needs a growth estimate for <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span>, as well as nonvanishing. A zero-free half-plane alone does not supply that estimate.</p>
+<p><strong>Lemma 3.1 (interpolation of logarithmic powers).</strong> Let <span class="math" data-tex="$a&lt;b$">$a&lt;b$</span> and <span class="math" data-tex="$f$">$f$</span> be holomorphic on a neighbourhood of their closed vertical strip. Suppose <span class="math" data-tex="$f$">$f$</span> grows at most <span class="math" data-tex="$D\exp(D(1+|t|)^C)$">$D\exp(D(1+|t|)^C)$</span> there and
+<span class="math math-display" data-tex="$$
+f(a+it)\ll\log(|t|+4),\qquad f(b+it)\ll1.
+$$">$$
+f(a+it)\ll\log(|t|+4),\qquad f(b+it)\ll1.
+$$</span>
+Then
+<span class="math math-display" data-tex="$$
+f(\sigma+it)\ll(\log(|t|+4))^{(b-\sigma)/(b-a)}
+\qquad(a\le\sigma\le b).
+\tag{3.1}
+$$">$$
+f(\sigma+it)\ll(\log(|t|+4))^{(b-\sigma)/(b-a)}
+\qquad(a\le\sigma\le b).
+\tag{3.1}
+$$</span></p>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="$t_0$">$t_0$</span>, set <span class="math" data-tex="$T=|t_0|+4$">$T=|t_0|+4$</span>, <span class="math" data-tex="$L(z)=(b-z)/(b-a)$">$L(z)=(b-z)/(b-a)$</span>, and choose <span class="math" data-tex="$c$">$c$</span> with <span class="math" data-tex="$a+c\ge1$">$a+c\ge1$</span>. Normalize by
+<span class="math math-display" data-tex="$$
+g(z)=\frac{f(z+it_0)\exp(-L(z)\log\log T)}{z+c}.
+$$">$$
+g(z)=\frac{f(z+it_0)\exp(-L(z)\log\log T)}{z+c}.
+$$</span>
+On the left boundary, <span class="math" data-tex="$\log(|t_0+y|+4)/\log T\le1+|y|$">$\log(|t_0+y|+4)/\log T\le1+|y|$</span>, while <span class="math" data-tex="$|a+c+iy|\gg1+|y|$">$|a+c+iy|\gg1+|y|$</span>. The modulus of the exponential factor is <span class="math" data-tex="$1/\log T$">$1/\log T$</span> there. On the right boundary its modulus is one, and the denominator is bounded away from zero. Thus both boundary values of <span class="math" data-tex="$g$">$g$</span> are bounded independently of <span class="math" data-tex="$t_0$">$t_0$</span>.</p>
+<p>Choose <span class="math" data-tex="$0&lt;k&lt;\pi/(b-a)$">$0&lt;k&lt;\pi/(b-a)$</span> and multiply <span class="math" data-tex="$g(z)$">$g(z)$</span> by <span class="math" data-tex="$\exp[-\epsilon\cos(k(z-(a+b)/2))]$">$\exp[-\epsilon\cos(k(z-(a+b)/2))]$</span>. The real part of the cosine is at least <span class="math" data-tex="$\cos(k(b-a)/2)\cosh(k\Im z)&gt;0$">$\cos(k(b-a)/2)\cosh(k\Im z)&gt;0$</span> throughout the strip. This damping makes the horizontal boundaries tend to zero and leaves the vertical bound unchanged. The maximum principle on increasing rectangles, followed by <span class="math" data-tex="$\epsilon\downarrow0$">$\epsilon\downarrow0$</span>, bounds <span class="math" data-tex="$g$">$g$</span> in the strip. At real <span class="math" data-tex="$z=\sigma$">$z=\sigma$</span>, restoring its normalization proves (3.1). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Theorem 3.2.</strong> Assume RH. For every fixed <span class="math" data-tex="$\sigma_0&gt;1/2$">$\sigma_0&gt;1/2$</span> and every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\frac1{\zeta(\sigma+it)}\ll_{\sigma_0,\varepsilon}\tau^\varepsilon
+\qquad(\sigma\ge\sigma_0).
+\tag{3.2}
+$$">$$
+\frac1{\zeta(\sigma+it)}\ll_{\sigma_0,\varepsilon}\tau^\varepsilon
+\qquad(\sigma\ge\sigma_0).
+\tag{3.2}
+$$</span>
+The reciprocal has its removable zero at one.</p>
+<p><strong>Proof.</strong> The function <span class="math" data-tex="$F(s)=(s-1)\zeta(s)$">$F(s)=(s-1)\zeta(s)$</span> is holomorphic and nonzero in <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span> under RH, including <span class="math" data-tex="$F(1)=1$">$F(1)=1$</span>. This half-plane is simply connected, so
+<span class="math math-display" data-tex="$$
+H(s)=\log\frac{F(s)}{s+1}
+$$">$$
+H(s)=\log\frac{F(s)}{s+1}
+$$</span>
+has an analytic branch, normalized by its real value at <span class="math" data-tex="$s=2$">$s=2$</span>. On the line two it equals the Euler logarithm plus <span class="math" data-tex="$\log(s-1)-\log(s+1)$">$\log(s-1)-\log(s+1)$</span>, with the usual branches in the right half-plane; both terms are uniformly bounded there. Hence <span class="math" data-tex="$H(2+it)=O(1)$">$H(2+it)=O(1)$</span>.</p>
+<p>Fix <span class="math" data-tex="$0&lt;\delta&lt;1/4$">$0&lt;\delta&lt;1/4$</span>. On the disc centred at <span class="math" data-tex="$2+it$">$2+it$</span> of radius <span class="math" data-tex="$3/2-\delta$">$3/2-\delta$</span>, the elementary growth bound for zeta gives <span class="math" data-tex="$\Re H=O_\delta(\log\tau)$">$\Re H=O_\delta(\log\tau)$</span>. Away from a fixed neighbourhood of one use
+<span class="math math-display" data-tex="$$
+\Re H(s)=\log|\zeta(s)|+\log\left|\frac{s-1}{s+1}\right|,
+$$">$$
+\Re H(s)=\log|\zeta(s)|+\log\left|\frac{s-1}{s+1}\right|,
+$$</span>
+where the second term is nonpositive for <span class="math" data-tex="$\Re s&gt;0$">$\Re s&gt;0$</span>. Zeta has polynomial growth on the fixed range <span class="math" data-tex="$1/2+\delta\le\Re s\le7/2$">$1/2+\delta\le\Re s\le7/2$</span>, and all heights in the disc differ from <span class="math" data-tex="$t$">$t$</span> by at most <span class="math" data-tex="$3/2$">$3/2$</span>. Near one, <span class="math" data-tex="$F/(s+1)$">$F/(s+1)$</span> is holomorphic and nonzero, so compactness supplies the same bound. Borel–Carathéodory for <span class="math" data-tex="$H(s)-H(2+it)$">$H(s)-H(2+it)$</span>, with inner radius <span class="math" data-tex="$3/2-2\delta$">$3/2-2\delta$</span>, gives
+<span class="math math-display" data-tex="$$
+|H(\sigma+it)|\ll_\delta\log\tau
+\qquad(1/2+2\delta\le\sigma\le2).
+\tag{3.3}
+$$">$$
+|H(\sigma+it)|\ll_\delta\log\tau
+\qquad(1/2+2\delta\le\sigma\le2).
+\tag{3.3}
+$$</span>
+This also supplies the growth condition for Lemma 3.1. Interpolating between <span class="math" data-tex="$a=1/2+2\delta$">$a=1/2+2\delta$</span> and <span class="math" data-tex="$b=2$">$b=2$</span> improves (3.3) to
+<span class="math math-display" data-tex="$$
+|H(\sigma+it)|\ll_\delta(\log\tau)^{(2-\sigma)/(3/2-2\delta)}.
+$$">$$
+|H(\sigma+it)|\ll_\delta(\log\tau)^{(2-\sigma)/(3/2-2\delta)}.
+$$</span>
+Choose <span class="math" data-tex="$\delta$">$\delta$</span> with <span class="math" data-tex="$a&lt;\sigma_0$">$a&lt;\sigma_0$</span> if <span class="math" data-tex="$\sigma_0&lt;2$">$\sigma_0&lt;2$</span>. The exponent is then uniformly at most some <span class="math" data-tex="$q&lt;1$">$q&lt;1$</span> on <span class="math" data-tex="$\sigma_0\le\sigma\le2$">$\sigma_0\le\sigma\le2$</span>. Consequently
+<span class="math math-display" data-tex="$$
+\left|\frac1{\zeta(s)}\right|
+=\left|\frac{s-1}{s+1}\right|e^{-\Re H(s)}
+\le\exp(C_\delta(\log\tau)^q)\ll_{\sigma_0,\varepsilon}\tau^\varepsilon.
+$$">$$
+\left|\frac1{\zeta(s)}\right|
+=\left|\frac{s-1}{s+1}\right|e^{-\Re H(s)}
+\le\exp(C_\delta(\log\tau)^q)\ll_{\sigma_0,\varepsilon}\tau^\varepsilon.
+$$</span>
+The last step follows from <span class="math" data-tex="$(\log\tau)^q=o(\log\tau)$">$(\log\tau)^q=o(\log\tau)$</span>; enlarge the constant to cover bounded heights. For <span class="math" data-tex="$\sigma\ge2$">$\sigma\ge2$</span>, the absolutely convergent reciprocal series bounds the left side by <span class="math" data-tex="$\zeta(2)$">$\zeta(2)$</span>. This also covers the case <span class="math" data-tex="$\sigma_0\ge2$">$\sigma_0\ge2$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="4-the-equivalent-assertions">4. The equivalent assertions</h2>
+<p><strong>Theorem 4.1.</strong> Each of the following is equivalent to RH:</p>
+<ol>
+<li>For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, <span class="math" data-tex="$\psi(x)-x=O_\varepsilon(x^{1/2+\varepsilon})$">$\psi(x)-x=O_\varepsilon(x^{1/2+\varepsilon})$</span>.</li>
+<li><span class="math" data-tex="$\pi(x)-\operatorname{li}(x)=O(\sqrt x\log x)$">$\pi(x)-\operatorname{li}(x)=O(\sqrt x\log x)$</span>.</li>
+<li>For every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>, <span class="math" data-tex="$M(x)=O_\varepsilon(x^{1/2+\varepsilon})$">$M(x)=O_\varepsilon(x^{1/2+\varepsilon})$</span>.</li>
+<li>The series <span class="math" data-tex="$\sum_{n\ge1}\mu(n)n^{-s}$">$\sum_{n\ge1}\mu(n)n^{-s}$</span> converges for every <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>; its sum is <span class="math" data-tex="$1/\zeta(s)$">$1/\zeta(s)$</span>, with the value zero at one.</li>
+</ol>
+<p><strong>Proof.</strong> The first two equivalents follow from Theorems 1.1 and 2.1 and the symmetry of the zeros.</p>
+<p>Assume RH and fix <span class="math" data-tex="$0&lt;\varepsilon&lt;1/2$">$0&lt;\varepsilon&lt;1/2$</span>. Put <span class="math" data-tex="$X=\lfloor x\rfloor+1/2$">$X=\lfloor x\rfloor+1/2$</span>, <span class="math" data-tex="$b=1/2+\varepsilon/4$">$b=1/2+\varepsilon/4$</span> and <span class="math" data-tex="$T=X$">$T=X$</span>. The finite Perron formula for the coefficients <span class="math" data-tex="$\mu(n)$">$\mu(n)$</span>, of modulus at most one, represents their sum with error <span class="math" data-tex="$O(X\log X/T)$">$O(X\log X/T)$</span>. Shift its line <span class="math" data-tex="$a=1+1/\log X$">$a=1+1/\log X$</span> to <span class="math" data-tex="$b$">$b$</span>. The function <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span> is holomorphic throughout the rectangle by RH, and its zero at one is removable; the kernel pole at zero lies outside. There are no residues.</p>
+<p>Theorem 3.2, with growth exponent <span class="math" data-tex="$\varepsilon/4$">$\varepsilon/4$</span>, bounds the new vertical integral by
+<span class="math math-display" data-tex="$$
+CX^b\int_0^T\frac{(t+4)^{\varepsilon/4}}{b+t}\,dt
+\ll_\varepsilon X^b T^{\varepsilon/4}
+=O_\varepsilon(X^{1/2+\varepsilon/2}).
+$$">$$
+CX^b\int_0^T\frac{(t+4)^{\varepsilon/4}}{b+t}\,dt
+\ll_\varepsilon X^b T^{\varepsilon/4}
+=O_\varepsilon(X^{1/2+\varepsilon/2}).
+$$</span>
+For <span class="math" data-tex="$X$">$X$</span> sufficiently large, the horizontal integrals have total modulus at most
+<span class="math math-display" data-tex="$$
+C T^{\varepsilon/4-1}\int_b^aX^\sigma\,d\sigma
+\ll_\varepsilon\frac{X T^{\varepsilon/4-1}}{\log X},
+$$">$$
+C T^{\varepsilon/4-1}\int_b^aX^\sigma\,d\sigma
+\ll_\varepsilon\frac{X T^{\varepsilon/4-1}}{\log X},
+$$</span>
+since <span class="math" data-tex="$X^a=eX$">$X^a=eX$</span>. The truncation error is <span class="math" data-tex="$O(\log X)$">$O(\log X)$</span>. Together these prove assertion 3, after enlarging constants and replacing <span class="math" data-tex="$X$">$X$</span> by <span class="math" data-tex="$x$">$x$</span>. Larger requested exponents follow from this smaller-exponent statement.</p>
+<p>Conversely, assertion 3 makes
+<span class="math math-display" data-tex="$$
+s\int_1^\infty M(u)u^{-s-1}\,du
+\tag{4.1}
+$$">$$
+s\int_1^\infty M(u)u^{-s-1}\,du
+\tag{4.1}
+$$</span>
+holomorphic for <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span> by the same compact-majorant argument as in (1.4). In <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span> it equals <span class="math" data-tex="$1/\zeta(s)$">$1/\zeta(s)$</span> by partial summation. Meromorphic continuation of their product gives <span class="math" data-tex="$\zeta(s)$">$\zeta(s)$</span> times (4.1) equal to one; hence zeta has no zero in that half-plane. Symmetry gives RH. Partial summation also shows directly that assertion 3 implies the ordinary series convergence and sum in assertion 4.</p>
+<p>For the converse from assertion 4, we justify local uniform convergence rather than assuming it from pointwise convergence. Choose a convergence point <span class="math" data-tex="$s_0$">$s_0$</span> with <span class="math" data-tex="$1/2&lt;\Re s_0&lt;\Re s$">$1/2&lt;\Re s_0&lt;\Re s$</span>. The partial sums <span class="math" data-tex="$B(N)=\sum_{n\le N}\mu(n)n^{-s_0}$">$B(N)=\sum_{n\le N}\mu(n)n^{-s_0}$</span> are bounded. Partial summation of <span class="math" data-tex="$\sum\mu(n)n^{-s_0}n^{-(s-s_0)}$">$\sum\mu(n)n^{-s_0}n^{-(s-s_0)}$</span> shows that its tails are <span class="math" data-tex="$O_K(N^{-d})$">$O_K(N^{-d})$</span> uniformly on any compact set <span class="math" data-tex="$K$">$K$</span> with <span class="math" data-tex="$d=\min_K\Re(s-s_0)&gt;0$">$d=\min_K\Re(s-s_0)&gt;0$</span>. The integral is bounded by a constant times <span class="math" data-tex="$\int_N^\infty u^{-d-1}du$">$\int_N^\infty u^{-d-1}du$</span> and its endpoint has the same power. The series therefore defines a holomorphic function to the right of <span class="math" data-tex="$s_0$">$s_0$</span>. Such half-planes cover <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>. It agrees with <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span> where the series is absolutely convergent, so again zeta cannot have a zero in the larger half-plane, and RH follows. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>The convergence-point argument also proves a more general fact: convergence at any complex <span class="math" data-tex="$s_0$">$s_0$</span> implies a holomorphic sum in <span class="math" data-tex="$\Re s&gt;\Re s_0$">$\Re s&gt;\Re s_0$</span> and excludes zeta zeros there. It does not assert convergence on the boundary line.</p>
+<h2 id="5-grönwall-s-maximal-order">5. Grönwall's maximal order</h2>
+<p>For a positive integer <span class="math" data-tex="$n$">$n$</span>, write <span class="math" data-tex="$\sigma_1(n)=\sum_{d\mid n}d$">$\sigma_1(n)=\sum_{d\mid n}d$</span>. The following unconditional result explains the normalization of the divisor-sum criteria.</p>
+<p><strong>Theorem 5.1 (Grönwall).</strong>
+<span class="math math-display" data-tex="$$
+\limsup_{n\to\infty}\frac{\sigma_1(n)}{n\log\log n}=e^\gamma.
+\tag{5.1}
+$$">$$
+\limsup_{n\to\infty}\frac{\sigma_1(n)}{n\log\log n}=e^\gamma.
+\tag{5.1}
+$$</span></p>
+<p><strong>Proof.</strong> Prime factorization gives
+<span class="math math-display" data-tex="$$
+\frac{\sigma_1(n)}n
+=\prod_{p^a\parallel n}\frac{1-p^{-a-1}}{1-p^{-1}}
+&lt;\prod_{p\mid n}(1-1/p)^{-1}\qquad(n&gt;1).
+$$">$$
+\frac{\sigma_1(n)}n
+=\prod_{p^a\parallel n}\frac{1-p^{-a-1}}{1-p^{-1}}
+&lt;\prod_{p\mid n}(1-1/p)^{-1}\qquad(n&gt;1).
+$$</span>
+Set <span class="math" data-tex="$y=\log n$">$y=\log n$</span>. The factors with <span class="math" data-tex="$p\le y$">$p\le y$</span> have product at most <span class="math" data-tex="$\prod_{p\le y}(1-1/p)^{-1}\sim e^\gamma\log y$">$\prod_{p\le y}(1-1/p)^{-1}\sim e^\gamma\log y$</span> by Mertens' third theorem. If there are <span class="math" data-tex="$k$">$k$</span> prime factors greater than <span class="math" data-tex="$y$">$y$</span>, their product divides <span class="math" data-tex="$n$">$n$</span>, so <span class="math" data-tex="$k\log y\le\log n=y$">$k\log y\le\log n=y$</span>. For large <span class="math" data-tex="$y$">$y$</span>, their remaining logarithmic contribution is at most
+<span class="math math-display" data-tex="$$
+\sum_{\substack{p\mid n\\p&gt;y}}-\log(1-1/p)
+\le\frac{2k}{y}\le\frac2{\log y}=o(1).
+$$">$$
+\sum_{\substack{p\mid n\\p&gt;y}}-\log(1-1/p)
+\le\frac{2k}{y}\le\frac2{\log y}=o(1).
+$$</span>
+This proves the upper bound for the limsup, uniformly over all sufficiently large integers.</p>
+<p>For the lower bound, let <span class="math" data-tex="$a_y=\lceil\log y\rceil$">$a_y=\lceil\log y\rceil$</span> and <span class="math" data-tex="$n_y=\prod_{p\le y}p^{a_y}$">$n_y=\prod_{p\le y}p^{a_y}$</span>. Then
+<span class="math math-display" data-tex="$$
+\frac{\sigma_1(n_y)}{n_y}
+=\prod_{p\le y}(1-1/p)^{-1}\prod_{p\le y}(1-p^{-a_y-1})
+\sim e^\gamma\log y.
+$$">$$
+\frac{\sigma_1(n_y)}{n_y}
+=\prod_{p\le y}(1-1/p)^{-1}\prod_{p\le y}(1-p^{-a_y-1})
+\sim e^\gamma\log y.
+$$</span>
+The second product tends to one because the sum of its missing factors is at most <span class="math" data-tex="$\sum_{m\ge2}m^{-a_y-1}\ll2^{-a_y}\to0$">$\sum_{m\ge2}m^{-a_y-1}\ll2^{-a_y}\to0$</span>; the inequality <span class="math" data-tex="$|\log(1-v)|\le2v$">$|\log(1-v)|\le2v$</span> applies eventually to all its factors. Finally <span class="math" data-tex="$\log n_y=a_y\theta(y)$">$\log n_y=a_y\theta(y)$</span>. The proved Chebyshev estimates give <span class="math" data-tex="$\theta(y)\asymp y$">$\theta(y)\asymp y$</span>, so
+<span class="math math-display" data-tex="$$
+\log\log n_y=\log y+\log a_y+O(1)=\log y+o(\log y).
+$$">$$
+\log\log n_y=\log y+\log a_y+O(1)=\log y+o(\log y).
+$$</span>
+Thus the quotient along <span class="math" data-tex="$n_y\to\infty$">$n_y\to\infty$</span> tends to <span class="math" data-tex="$e^\gamma$">$e^\gamma$</span>, proving the matching lower bound. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="6-divisor-sum-criteria">6. Divisor-sum criteria</h2>
+<p>Grönwall's theorem fixes the limiting maximal order. Robin's theorem asks for a strict bound at every integer beyond one exact cutoff; the limsup alone does not decide that question. Lagarias replaces the constant and iterated logarithms by harmonic numbers.</p>
+<p><strong>Theorem 6.1 (Robin and Lagarias).</strong> RH is equivalent to each of the following assertions:
+<span class="math math-display" data-tex="$$
+\sigma_1(n)&lt;e^\gamma n\log\log n\quad\hbox{for every integer }n&gt;5040;
+\tag{6.1}
+$$">$$
+\sigma_1(n)&lt;e^\gamma n\log\log n\quad\hbox{for every integer }n&gt;5040;
+\tag{6.1}
+$$</span>
+<span class="math math-display" data-tex="$$
+\sigma_1(n)\le H_n+e^{H_n}\log H_n\quad\hbox{for every integer }n\ge1,
+\qquad H_n=\sum_{k=1}^n\frac1k.
+\tag{6.2}
+$$">$$
+\sigma_1(n)\le H_n+e^{H_n}\log H_n\quad\hbox{for every integer }n\ge1,
+\qquad H_n=\sum_{k=1}^n\frac1k.
+\tag{6.2}
+$$</span>
+When RH holds, equality in (6.2) occurs only at <span class="math" data-tex="$n=1$">$n=1$</span>.</p>
+<p><strong>Proof source and licence.</strong> The mathematical reconstruction in Sections 6.1–6.5 below adapts Jonas Whidden's freely readable <a href="https://github.com/kimihiro64/Robin1984/releases/tag/v1.1.1">release 1.1.1</a>, at its <a href="https://github.com/kimihiro64/Robin1984/tree/acab1a31f31e0499518a4416b63281e0b4838f9c">pinned revision</a>. That adaptation retains <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The criterion is Robin's, and the harmonic criterion is Lagarias's; <a href="https://arxiv.org/pdf/math/0008177v2">Lagarias's free author preprint</a>, version 2, supplies a second comparison source. Changes in this exposition are the direct floor-count proof of the prime-power estimate, the displayed endpoint and kernel calculations, and a separate exact integer verification of the entire finite range. The 36 interval, parameter and cutoff choices are retained from the freely released certificate; their bounds are recomputed here. The new verifier and its original explanation are CC0. The arguments are given here; the companion remains an optional reading source.</p>
+<h3 id="6-1-the-exponent-budget-and-two-weighted-prime-errors">6.1. The exponent budget and two weighted prime errors</h3>
+<p>Put <span class="math" data-tex="$A(n)=\sigma_1(n)/n$">$A(n)=\sigma_1(n)/n$</span>, <span class="math" data-tex="$h=\log n$">$h=\log n$</span>, and
+<span class="math math-display" data-tex="$$
+\mathcal R(n)=\log A(n)-\gamma-\log\log h.
+$$">$$
+\mathcal R(n)=\log A(n)-\gamma-\log\log h.
+$$</span>
+Thus (6.1) is <span class="math" data-tex="$\mathcal R(n)&lt;0$">$\mathcal R(n)&lt;0$</span>. The symbol <span class="math" data-tex="$\mathcal R$">$\mathcal R$</span> has no relation to the Möbius sum <span class="math" data-tex="$M(x)$">$M(x)$</span>.</p>
+<p>For an integer <span class="math" data-tex="$m\ge1$">$m\ge1$</span>, and <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>, define
+<span class="math math-display" data-tex="$$
+w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}
+       =-\frac{d}{dt}\frac{t^{-m}}{\log t},\qquad
+I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,
+$$">$$
+w_m(t)=\frac{m\log t+1}{t^{m+1}(\log t)^2}
+       =-\frac{d}{dt}\frac{t^{-m}}{\log t},\qquad
+I_m(x)=\int_x^\infty(\psi(t)-t)w_m(t)\,dt,
+$$</span>
+<span class="math math-display" data-tex="$$
+P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,\qquad
+K_m(r,x)=\int_x^\infty t^r w_m(t)\,dt\quad(\Re r&lt;m).
+\tag{6.3}
+$$">$$
+P_m(x)=\int_x^\infty(\psi(t)-\theta(t))w_m(t)\,dt,\qquad
+K_m(r,x)=\int_x^\infty t^r w_m(t)\,dt\quad(\Re r&lt;m).
+\tag{6.3}
+$$</span>
+The classical error estimate proved in lesson twelve makes the <span class="math" data-tex="$I_1$">$I_1$</span> integral absolutely convergent. Chebyshev and the prime-power comparison in lesson two give absolute convergence of the other integrals used below.</p>
+<p><strong>Lemma 6.3 (weighted explicit formula, with its endpoint).</strong> Under RH, for <span class="math" data-tex="$m\ge1$">$m\ge1$</span> and <span class="math" data-tex="$x\ge2$">$x\ge2$</span>,
+<span class="math math-display" data-tex="$$
+I_m(x)=-\sum_\rho\frac{K_m(\rho,x)}{\rho}-T_m(x),\qquad
+0\le T_m(x)\le\frac{\log(2\pi)x^{-m}}{\log x},
+\tag{6.4}
+$$">$$
+I_m(x)=-\sum_\rho\frac{K_m(\rho,x)}{\rho}-T_m(x),\qquad
+0\le T_m(x)\le\frac{\log(2\pi)x^{-m}}{\log x},
+\tag{6.4}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+T_m(x)=\int_x^\infty w_m(t)
+ \left(\log(2\pi)+\tfrac12\log(1-t^{-2})\right)\,dt.
+$$">$$
+T_m(x)=\int_x^\infty w_m(t)
+ \left(\log(2\pi)+\tfrac12\log(1-t^{-2})\right)\,dt.
+$$</span>
+Zeros are counted with multiplicity. Put <span class="math" data-tex="$c_0=\gamma+2-\log(4\pi)$">$c_0=\gamma+2-\log(4\pi)$</span>. Then
+<span class="math math-display" data-tex="$$
+\begin{gathered}
+-B_m(x)-\frac{\log(2\pi)x^{-m}}{\log x}
+\le I_m(x)\le B_m(x),\\
+B_m(x)=\frac{c_0x^{1/2-m}}{\log x}
+  \left(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\right).
+\end{gathered}
+\tag{6.5}
+$$">$$
+\begin{gathered}
+-B_m(x)-\frac{\log(2\pi)x^{-m}}{\log x}
+\le I_m(x)\le B_m(x),\\
+B_m(x)=\frac{c_0x^{1/2-m}}{\log x}
+  \left(m+\frac1{\log x}+\frac4{(2m-1)(\log x)^2}\right).
+\end{gathered}
+\tag{6.5}
+$$</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="$m\ge2$">$m\ge2$</span>, integrate the truncated explicit formula of lesson eleven, Theorem 2.2, against <span class="math" data-tex="$w_m$">$w_m$</span>, and let its height <span class="math" data-tex="$T$">$T$</span> tend to infinity. Its first remainder contributes at most
+<span class="math math-display" data-tex="$$
+\frac C T\int_x^\infty t\log^2(tT)w_m(t)\,dt
+=O_x((\log T)^2/T),
+$$">$$
+\frac C T\int_x^\infty t\log^2(tT)w_m(t)\,dt
+=O_x((\log T)^2/T),
+$$</span>
+because <span class="math" data-tex="$\int_x^\infty t(1+\log^2t)w_m(t)\,dt&lt;\infty$">$\int_x^\infty t(1+\log^2t)w_m(t)\,dt&lt;\infty$</span> for <span class="math" data-tex="$m\ge2$">$m\ge2$</span>. The second remainder is bounded by the integrable function <span class="math" data-tex="$Cw_m(t)\log t$">$Cw_m(t)\log t$</span> and tends to zero off the countable set of prime powers. Dominated convergence removes it. The half-weight version <span class="math" data-tex="$\psi_0$">$\psi_0$</span> agrees with <span class="math" data-tex="$\psi$">$\psi$</span> almost everywhere in this integration. The pole term is <span class="math" data-tex="$K_m(1,x)$">$K_m(1,x)$</span>, and the constant and trivial-zero terms are exactly <span class="math" data-tex="$-T_m(x)$">$-T_m(x)$</span>. Formula (6.6) below bounds the integrated zero terms by a convergent sum under RH. Their height-ordered limit is therefore their absolutely convergent sum, proving (6.4).</p>
+<p>Write <span class="math" data-tex="$a=\rho-m$">$a=\rho-m$</span> and <span class="math" data-tex="$J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt$">$J_j(a,x)=\int_x^\infty t^{a-1}(\log t)^{-j}\,dt$</span>. Integration by parts gives
+<span class="math math-display" data-tex="$$
+\frac{K_m(\rho,x)}{\rho}
+=\frac{x^{\rho-m}}{\rho\log x}+J_1(a,x)
+=\frac{m x^{\rho-m}}{\rho(m-\rho)\log x}
+-\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}
++\frac{2J_3(a,x)}{(m-\rho)^2}.
+\tag{6.6}
+$$">$$
+\frac{K_m(\rho,x)}{\rho}
+=\frac{x^{\rho-m}}{\rho\log x}+J_1(a,x)
+=\frac{m x^{\rho-m}}{\rho(m-\rho)\log x}
+-\frac{x^{\rho-m}}{(m-\rho)^2(\log x)^2}
++\frac{2J_3(a,x)}{(m-\rho)^2}.
+\tag{6.6}
+$$</span>
+In particular the first expression contains a <strong>plus</strong> sign. Under RH,
+<span class="math" data-tex="$|m-\rho|\ge|\rho|$">$|m-\rho|\ge|\rho|$</span> and
+<span class="math math-display" data-tex="$$
+|J_3(a,x)|\le
+\frac{x^{1/2-m}}{(m-1/2)(\log x)^3}.
+$$">$$
+|J_3(a,x)|\le
+\frac{x^{1/2-m}}{(m-1/2)(\log x)^3}.
+$$</span>
+The product formula and its evaluated constant in lesson five, Section 5, imply
+<span class="math math-display" data-tex="$$
+\sum_\rho|\rho|^{-2}
+=2\sum_\rho\Re(1/\rho)
+=\gamma+2-\log(4\pi)=c_0;
+$$">$$
+\sum_\rho|\rho|^{-2}
+=2\sum_\rho\Re(1/\rho)
+=\gamma+2-\log(4\pi)=c_0;
+$$</span>
+here <span class="math" data-tex="$\Re(1/\rho)=1/(2|\rho|^2)$">$\Re(1/\rho)=1/(2|\rho|^2)$</span> under RH. Thus (6.6) sums to the bound (6.5). The integrand defining <span class="math" data-tex="$T_m$">$T_m$</span> is between zero and <span class="math" data-tex="$\log(2\pi)w_m$">$\log(2\pi)w_m$</span> for <span class="math" data-tex="$t\ge2$">$t\ge2$</span>, and <span class="math" data-tex="$\int_x^\infty w_m=x^{-m}/\log x$">$\int_x^\infty w_m=x^{-m}/\log x$</span>.</p>
+<p>For <span class="math" data-tex="$m=1$">$m=1$</span>, set
+<span class="math math-display" data-tex="$$
+q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad
+q&#x27;(t)=\frac{\log t(2\log t+3)}{(2\log t+1)^2}.
+$$">$$
+q(t)=\frac{t(\log t+1)}{2\log t+1},\qquad
+q&#x27;(t)=\frac{\log t(2\log t+3)}{(2\log t+1)^2}.
+$$</span>
+Since <span class="math" data-tex="$w_1=q w_2$">$w_1=q w_2$</span>, integration by parts gives
+<span class="math math-display" data-tex="$$
+I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt.
+$$">$$
+I_1(x)=q(x)I_2(x)+\int_x^\infty q&#x27;(t)I_2(t)\,dt.
+$$</span>
+The endpoint at infinity vanishes by (6.5) for <span class="math" data-tex="$m=2$">$m=2$</span>. The same operation on each zero kernel and on <span class="math" data-tex="$T_2$">$T_2$</span> gives (6.4) for <span class="math" data-tex="$m=1$">$m=1$</span>. Indeed <span class="math" data-tex="$q=O(t)$">$q=O(t)$</span>, <span class="math" data-tex="$q&#x27;=O(1)$">$q&#x27;=O(1)$</span>, and the summed kernel majorant is <span class="math" data-tex="$O(t^{-3/2}/\log t)$">$O(t^{-3/2}/\log t)$</span>, so all these endpoint integrals and interchanges converge absolutely. Formula (6.6) then proves (6.5) also at <span class="math" data-tex="$m=1$">$m=1$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 6.4 (the complete prime-power tail).</strong> For <span class="math" data-tex="$t\ge1$">$t\ge1$</span>,
+<span class="math math-display" data-tex="$$
+0\le\psi(t)-\theta(t)
+\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
+\tag{6.7}
+$$">$$
+0\le\psi(t)-\theta(t)
+\le\psi(t^{1/2})+\psi(t^{1/3})+\psi(t^{1/5}).
+\tag{6.7}
+$$</span>
+Under RH,
+<span class="math math-display" data-tex="$$
+P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)
+\quad(x\ge20000),
+\tag{6.8}
+$$">$$
+P_1(x)\le K_1(1/2,x)+\tfrac43K_1(1/3,x)
+\quad(x\ge20000),
+\tag{6.8}
+$$</span>
+<span class="math math-display" data-tex="$$
+P_2(x)\le\tfrac{213}{100}
+\frac{x^{-3/2}}{\log x}\quad(x\ge366).
+\tag{6.9}
+$$">$$
+P_2(x)\le\tfrac{213}{100}
+\frac{x^{-3/2}}{\log x}\quad(x\ge366).
+\tag{6.9}
+$$</span></p>
+<p><strong>Proof.</strong> Fix a prime <span class="math" data-tex="$p$">$p$</span>, and let <span class="math" data-tex="$k=\lfloor\log t/\log p\rfloor$">$k=\lfloor\log t/\log p\rfloor$</span>. Its contribution to the left side of (6.7) is <span class="math" data-tex="$(k-1)\log p$">$(k-1)\log p$</span> for <span class="math" data-tex="$k\ge1$">$k\ge1$</span>. Its contribution to the right side is
+<span class="math" data-tex="$(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p$">$(\lfloor k/2\rfloor+\lfloor k/3\rfloor+\lfloor k/5\rfloor)\log p$</span>.
+For <span class="math" data-tex="$0\le r&lt;30$">$0\le r&lt;30$</span>, direct division gives
+<span class="math math-display" data-tex="$$
+\lfloor r/2\rfloor+\lfloor r/3\rfloor+\lfloor r/5\rfloor\ge r-1.
+$$">$$
+\lfloor r/2\rfloor+\lfloor r/3\rfloor+\lfloor r/5\rfloor\ge r-1.
+$$</span>
+For <span class="math" data-tex="$k=30a+r$">$k=30a+r$</span>, the left expression increases by <span class="math" data-tex="$31a$">$31a$</span>, whereas <span class="math" data-tex="$k-1$">$k-1$</span> increases by <span class="math" data-tex="$30a$">$30a$</span>. This proves every integer case, and summing over primes proves (6.7). No numerical prime-distribution estimate is involved.</p>
+<p>For <span class="math" data-tex="$k=2,3,5$">$k=2,3,5$</span>, substitution <span class="math" data-tex="$t=u^k$">$t=u^k$</span> gives the exact identity
+<span class="math math-display" data-tex="$$
+\int_x^\infty\psi(t^{1/k})w_m(t)\,dt
+=K_m(1/k,x)+\frac1k I_{km}(x^{1/k}).
+\tag{6.10}
+$$">$$
+\int_x^\infty\psi(t^{1/k})w_m(t)\,dt
+=K_m(1/k,x)+\frac1k I_{km}(x^{1/k}).
+\tag{6.10}
+$$</span>
+This follows directly from
+<span class="math" data-tex="$k u^{k-1}w_m(u^k)=w_{km}(u)/k$">$k u^{k-1}w_m(u^k)=w_{km}(u)/k$</span>.
+The upper half of (6.5) therefore bounds the last term by <span class="math" data-tex="$B_{km}(x^{1/k})/k$">$B_{km}(x^{1/k})/k$</span>. In original <span class="math" data-tex="$x$">$x$</span> units that upper bound is
+<span class="math math-display" data-tex="$$
+\frac{c_0x^{1/(2k)-m}}{\log x}
+\left(km+\frac{k}{\log x}
++\frac{4k^2}{(2km-1)(\log x)^2}\right).
+\tag{6.11}
+$$">$$
+\frac{c_0x^{1/(2k)-m}}{\log x}
+\left(km+\frac{k}{\log x}
++\frac{4k^2}{(2km-1)(\log x)^2}\right).
+\tag{6.11}
+$$</span>
+For <span class="math" data-tex="$0&lt;r&lt;m$">$0&lt;r&lt;m$</span>, a single integration by parts also gives
+<span class="math math-display" data-tex="$$
+K_m(r,x)=\frac{m}{m-r}\frac{x^{r-m}}{\log x}
+-\frac{r}{m-r}J_2(r-m,x),\quad
+0\le J_2(r-m,x)\le\frac{x^{r-m}}{(m-r)(\log x)^2}.
+\tag{6.12}
+$$">$$
+K_m(r,x)=\frac{m}{m-r}\frac{x^{r-m}}{\log x}
+-\frac{r}{m-r}J_2(r-m,x),\quad
+0\le J_2(r-m,x)\le\frac{x^{r-m}}{(m-r)(\log x)^2}.
+\tag{6.12}
+$$</span></p>
+<p>Here are all the scalar bounds required for (6.8). For <span class="math" data-tex="$x\ge20000$">$x\ge20000$</span>,
+<span class="math math-display" data-tex="$$
+\log x\ge9,\quad c_0&lt;1/20,\quad
+x^{-2/15}\le27/100,\quad x^{-1/12}\le11/25,\quad
+x^{-1/6}\le1/5,\quad x^{-7/30}\le1/10.
+$$">$$
+\log x\ge9,\quad c_0&lt;1/20,\quad
+x^{-2/15}\le27/100,\quad x^{-1/12}\le11/25,\quad
+x^{-1/6}\le1/5,\quad x^{-7/30}\le1/10.
+$$</span>
+Each power bound follows by raising its asserted rational upper bound to the positive integer denominator and multiplying by the corresponding integer power of 20000. The logarithm and constant bounds are proved below. On the scale <span class="math" data-tex="$x^{-2/3}/\log x$">$x^{-2/3}/\log x$</span>, (6.11) for <span class="math" data-tex="$k=2,3,5$">$k=2,3,5$</span> is at most <span class="math" data-tex="$51/1000,35/1000,29/1000$">$51/1000,35/1000,29/1000$</span>, respectively. Formula (6.12) bounds the fifth-root main term by <span class="math" data-tex="$27/80$">$27/80$</span>, and bounds the third-root term below by <span class="math" data-tex="$17/12$">$17/12$</span>. Since
+<span class="math math-display" data-tex="$$
+\frac{51+35+29}{1000}+\frac{27}{80}
+&lt;\frac13\frac{17}{12},
+$$">$$
+\frac{51+35+29}{1000}+\frac{27}{80}
+&lt;\frac13\frac{17}{12},
+$$</span>
+the fifth-root term and all three errors fit inside one third of the third-root term. Summing (6.10) proves (6.8).</p>
+<p>For (6.9), <span class="math" data-tex="$\log x\ge5$">$\log x\ge5$</span> when <span class="math" data-tex="$x\ge366$">$x\ge366$</span>. On the scale <span class="math" data-tex="$x^{-3/2}/\log x$">$x^{-3/2}/\log x$</span>, use
+<span class="math math-display" data-tex="$$
+x^{-1/6}\le3/8,\quad x^{-3/10}\le7/40,\quad
+x^{-1/4}\le229/1000,\quad x^{-1/3}\le7/50,\quad
+x^{-2/5}\le19/200.
+$$">$$
+x^{-1/6}\le3/8,\quad x^{-3/10}\le7/40,\quad
+x^{-1/4}\le229/1000,\quad x^{-1/3}\le7/50,\quad
+x^{-2/5}\le19/200.
+$$</span>
+The same integer-power check at 366 proves these five bounds. By (6.11)–(6.12), the total coefficient is at most
+<span class="math math-display" data-tex="$$
+\begin{split}
+&amp;\frac43+\frac65\frac38+\frac{10}{9}\frac7{40}\\
+&amp;+\frac1{20}\left[
+ \left(4+\frac25+\frac{16}{175}\right)\frac{229}{1000}
++\left(6+\frac35+\frac{36}{275}\right)\frac7{50}
++\left(11+\frac{100}{475}\right)\frac{19}{200}\right]\\
+&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100}.
+\end{split}
+$$">$$
+\begin{split}
+&amp;\frac43+\frac65\frac38+\frac{10}{9}\frac7{40}\\
+&amp;+\frac1{20}\left[
+ \left(4+\frac25+\frac{16}{175}\right)\frac{229}{1000}
++\left(6+\frac35+\frac{36}{275}\right)\frac7{50}
++\left(11+\frac{100}{475}\right)\frac{19}{200}\right]\\
+&amp;=\frac{737896351}{346500000}&lt;\frac{213}{100}.
+\end{split}
+$$</span>
+Together with (6.7)–(6.10), this proves (6.9). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 6.5 (a budget for every integer).</strong> Under RH, if <span class="math" data-tex="$h=\log n\ge20000$">$h=\log n\ge20000$</span>, then
+<span class="math math-display" data-tex="$$
+\mathcal R(n)\le E(h)-C(h),
+\tag{6.13}
+$$">$$
+\mathcal R(n)\le E(h)-C(h),
+\tag{6.13}
+$$</span>
+where
+<span class="math math-display" data-tex="$$
+\begin{split}
+E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}
++\frac{(c_0-2)h^{-1/2}}{(\log h)^2}
++\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
+&amp;+\frac{2h^{-2/3}}{\log h}
++\frac{\log(2\pi)h^{-1}}{\log h},\\
+C(h)={}&amp;\sum_{p\le h/2}\min\left(\frac{\log p}{h\log h},\frac1{p^2}\right).
+\end{split}
+$$">$$
+\begin{split}
+E(h)={}&amp;\frac{(2+c_0)h^{-1/2}}{\log h}
++\frac{(c_0-2)h^{-1/2}}{(\log h)^2}
++\frac{(8+4c_0)h^{-1/2}}{(\log h)^3}\\
+&amp;+\frac{2h^{-2/3}}{\log h}
++\frac{\log(2\pi)h^{-1}}{\log h},\\
+C(h)={}&amp;\sum_{p\le h/2}\min\left(\frac{\log p}{h\log h},\frac1{p^2}\right).
+\end{split}
+$$</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$n=\prod p^{a_p}$">$n=\prod p^{a_p}$</span>, <span class="math" data-tex="$v_p=\log p/(h\log h)$">$v_p=\log p/(h\log h)$</span>, and
+<span class="math" data-tex="$m_p=\log(1-p^{-1})+p^{-1}\le0$">$m_p=\log(1-p^{-1})+p^{-1}\le0$</span>. The local geometric-series formula and <span class="math" data-tex="$\log(1-y)\le-y$">$\log(1-y)\le-y$</span> give, for <span class="math" data-tex="$a_p\ge1$">$a_p\ge1$</span>,
+<span class="math math-display" data-tex="$$
+\log\frac{\sigma_1(p^{a_p})}{p^{a_p}}-a_pv_p
+\le \frac1p-a_pv_p-p^{-a_p-1}-m_p.
+$$">$$
+\log\frac{\sigma_1(p^{a_p})}{p^{a_p}}-a_pv_p
+\le \frac1p-a_pv_p-p^{-a_p-1}-m_p.
+$$</span>
+For <span class="math" data-tex="$p\le h/2$">$p\le h/2$</span>, an exponent <span class="math" data-tex="$a_p=1$">$a_p=1$</span> loses <span class="math" data-tex="$p^{-2}$">$p^{-2}$</span> relative to the benchmark <span class="math" data-tex="$1/p-v_p$">$1/p-v_p$</span>; an exponent <span class="math" data-tex="$a_p\ge2$">$a_p\ge2$</span> loses at least <span class="math" data-tex="$v_p$">$v_p$</span>. If <span class="math" data-tex="$a_p=0$">$a_p=0$</span>, its zero contribution also loses at least <span class="math" data-tex="$\min(v_p,p^{-2})$">$\min(v_p,p^{-2})$</span>, because
+<span class="math math-display" data-tex="$$
+v_p\le1/h\le1/(2p),\qquad p^{-2}\le1/(2p).
+$$">$$
+v_p\le1/h\le1/(2p),\qquad p^{-2}\le1/(2p).
+$$</span>
+For <span class="math" data-tex="$h/2&lt;p\le h$">$h/2&lt;p\le h$</span> the benchmark is nonnegative: <span class="math" data-tex="$p\log p\le h\log h$">$p\log p\le h\log h$</span>. For <span class="math" data-tex="$p&gt;h$">$p&gt;h$</span> it is nonpositive, so no positive excess is gained by an actual exponent. Completing the finite sum to all primes through <span class="math" data-tex="$h$">$h$</span>, and using <span class="math" data-tex="$\sum a_pv_p=1/\log h$">$\sum a_pv_p=1/\log h$</span>, yields
+<span class="math math-display" data-tex="$$
+\log A(n)\le-\sum_p m_p+\sum_{p\le h}\frac1p
+-\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
+\tag{6.14}
+$$">$$
+\log A(n)\le-\sum_p m_p+\sum_{p\le h}\frac1p
+-\frac{\theta(h)}{h\log h}+\frac1{\log h}-C(h).
+\tag{6.14}
+$$</span>
+The use of all <span class="math" data-tex="$m_p$">$m_p$</span> is an upper bound because the omitted <span class="math" data-tex="$m_p$">$m_p$</span> are nonpositive.</p>
+<p>Let <span class="math" data-tex="$B_1^{\rm prime}$">$B_1^{\rm prime}$</span> denote the prime reciprocal constant from lesson two; its Mertens product proof gives
+<span class="math" data-tex="$B_1^{\rm prime}=\gamma+\sum_p m_p$">$B_1^{\rm prime}=\gamma+\sum_p m_p$</span>.
+Partial summation, with the same constant at infinity, gives
+<span class="math math-display" data-tex="$$
+\sum_{p\le x}\frac1p
+=\log\log x+B_1^{\rm prime}
++\frac{\theta(x)-x}{x\log x}
+-\int_x^\infty(\theta(t)-t)w_1(t)\,dt.
+\tag{6.15}
+$$">$$
+\sum_{p\le x}\frac1p
+=\log\log x+B_1^{\rm prime}
++\frac{\theta(x)-x}{x\log x}
+-\int_x^\infty(\theta(t)-t)w_1(t)\,dt.
+\tag{6.15}
+$$</span>
+The classical PNT error justifies the convergent tail. Substitution in (6.14) cancels the endpoint and the prime reciprocal constant, leaving
+<span class="math math-display" data-tex="$$
+\mathcal R(n)\le P_1(h)-I_1(h)-C(h).
+$$">$$
+\mathcal R(n)\le P_1(h)-I_1(h)-C(h).
+$$</span>
+From (6.12), with one further integration by parts,
+<span class="math math-display" data-tex="$$
+K_1(1/2,h)\le
+\frac{2h^{-1/2}}{\log h}
+-\frac{2h^{-1/2}}{(\log h)^2}
++\frac{8h^{-1/2}}{(\log h)^3},
+\quad
+K_1(1/3,h)\le\frac{3h^{-2/3}}{2\log h}.
+$$">$$
+K_1(1/2,h)\le
+\frac{2h^{-1/2}}{\log h}
+-\frac{2h^{-1/2}}{(\log h)^2}
++\frac{8h^{-1/2}}{(\log h)^3},
+\quad
+K_1(1/3,h)\le\frac{3h^{-2/3}}{2\log h}.
+$$</span>
+Now (6.5) and (6.8) give exactly <span class="math" data-tex="$E(h)-C(h)$">$E(h)-C(h)$</span>. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h3 id="6-2-the-strict-analytic-gap">6.2. The strict analytic gap</h3>
+<p><strong>Lemma 6.6 (the prime-square block, including both endpoints).</strong> Under RH, if <span class="math" data-tex="$h\ge74500$">$h\ge74500$</span>, and <span class="math" data-tex="$S(h)=h^{-1/2}/\log h$">$S(h)=h^{-1/2}/\log h$</span>, then
+<span class="math math-display" data-tex="$$
+E(h)&lt;\frac{113}{50}S(h)&lt;C(h).
+\tag{6.16}
+$$">$$
+E(h)&lt;\frac{113}{50}S(h)&lt;C(h).
+\tag{6.16}
+$$</span></p>
+<p><strong>Proof.</strong> First put
+<span class="math" data-tex="$\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt$">$\Theta_2(x)=\int_x^\infty\theta(t)w_2(t)\,dt$</span>.
+It equals <span class="math" data-tex="$K_2(1,x)+I_2(x)-P_2(x)$">$K_2(1,x)+I_2(x)-P_2(x)$</span>. Formulas (6.5), (6.9) and (6.12) imply, for <span class="math" data-tex="$x\ge366$">$x\ge366$</span>,
+<span class="math math-display" data-tex="$$
+\Theta_2(x)\ge
+\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}
+-\frac94\frac{x^{-3/2}}{\log x}
+-\frac{\log(2\pi)x^{-2}}{\log x}.
+\tag{6.17}
+$$">$$
+\Theta_2(x)\ge
+\frac{2x^{-1}}{\log x}-\frac{x^{-1}}{(\log x)^2}
+-\frac94\frac{x^{-3/2}}{\log x}
+-\frac{\log(2\pi)x^{-2}}{\log x}.
+\tag{6.17}
+$$</span>
+Indeed <span class="math" data-tex="$B_2(x)\le(7/60)x^{-3/2}/\log x$">$B_2(x)\le(7/60)x^{-3/2}/\log x$</span>, since
+<span class="math" data-tex="$c_0&lt;1/20$">$c_0&lt;1/20$</span>, <span class="math" data-tex="$\log x\ge5$">$\log x\ge5$</span>, and
+<span class="math" data-tex="$2+1/5+4/(3\cdot25)&lt;7/3$">$2+1/5+4/(3\cdot25)&lt;7/3$</span>; together with <span class="math" data-tex="$213/100$">$213/100$</span>, this is less than <span class="math" data-tex="$9/4$">$9/4$</span>. For <span class="math" data-tex="$x\ge2$">$x\ge2$</span>, nonnegativity of <span class="math" data-tex="$P_2$">$P_2$</span> also gives
+<span class="math math-display" data-tex="$$
+\Theta_2(x)\le\frac{2x^{-1}}{\log x}+B_2(x).
+\tag{6.18}
+$$">$$
+\Theta_2(x)\le\frac{2x^{-1}}{\log x}+B_2(x).
+\tag{6.18}
+$$</span></p>
+<p>Set <span class="math" data-tex="$s=\sqrt{2h}$">$s=\sqrt{2h}$</span>, <span class="math" data-tex="$b=h/2$">$b=h/2$</span>. Since <span class="math" data-tex="$h\log h\le s^2\log s$">$h\log h\le s^2\log s$</span>, monotonicity of <span class="math" data-tex="$u^2\log u$">$u^2\log u$</span> gives
+<span class="math math-display" data-tex="$$
+C(h)\ge\frac{\theta(s)}{s^2\log s}
++\sum_{s&lt;p\le b}p^{-2}.
+$$">$$
+C(h)\ge\frac{\theta(s)}{s^2\log s}
++\sum_{s&lt;p\le b}p^{-2}.
+$$</span>
+For <span class="math" data-tex="$p\le s$">$p\le s$</span>, each minimum is at least <span class="math" data-tex="$\log p/(s^2\log s)$">$\log p/(s^2\log s)$</span>; for <span class="math" data-tex="$p&gt;s$">$p&gt;s$</span>, it is <span class="math" data-tex="$p^{-2}$">$p^{-2}$</span>. Abel summation now cancels the lower endpoint exactly:
+<span class="math math-display" data-tex="$$
+\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}p^{-2}
+=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
+\tag{6.19}
+$$">$$
+\frac{\theta(s)}{s^2\log s}+\sum_{s&lt;p\le b}p^{-2}
+=\frac{\theta(b)}{b^2\log b}+\Theta_2(s)-\Theta_2(b).
+\tag{6.19}
+$$</span>
+Here the derivative of <span class="math" data-tex="$1/(u^2\log u)$">$1/(u^2\log u)$</span> is <span class="math" data-tex="$-w_2(u)$">$-w_2(u)$</span>. Drop the nonnegative first term, apply (6.17) at <span class="math" data-tex="$s$">$s$</span> and (6.18) at <span class="math" data-tex="$b$">$b$</span>, and divide by <span class="math" data-tex="$S(h)$">$S(h)$</span>. With <span class="math" data-tex="$L=\log h$">$L=\log h$</span>, <span class="math" data-tex="$c=\log2$">$c=\log2$</span>, the resulting lower bound is
+<span class="math math-display" data-tex="$$
+\begin{split}
+&amp;2\sqrt2\,\frac{L}{L+c}\left(1-\frac1{L+c}\right)
+-\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}
+-\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
+&amp;-4h^{-1/2}\frac{L}{L-c}
+-2\sqrt2\,c_0h^{-1}\frac{L}{L-c}
+ \left(2+\frac1{L-c}+\frac4{3(L-c)^2}\right).
+\end{split}
+\tag{6.20}
+$$">$$
+\begin{split}
+&amp;2\sqrt2\,\frac{L}{L+c}\left(1-\frac1{L+c}\right)
+-\frac94\,2^{1/4}h^{-1/4}\frac{L}{L+c}
+-\log(2\pi)h^{-1/2}\frac{L}{L+c}\\
+&amp;-4h^{-1/2}\frac{L}{L-c}
+-2\sqrt2\,c_0h^{-1}\frac{L}{L-c}
+ \left(2+\frac1{L-c}+\frac4{3(L-c)^2}\right).
+\end{split}
+\tag{6.20}
+$$</span></p>
+<p>All constants in this comparison have elementary rational proofs. Subtracting successive values of <span class="math" data-tex="$H_N-\log N$">$H_N-\log N$</span> gives
+<span class="math math-display" data-tex="$$
+H_N-\log N-\gamma
+=\sum_{k=N}^\infty\left(\log(1+1/k)-\frac1{k+1}\right).
+$$">$$
+H_N-\log N-\gamma
+=\sum_{k=N}^\infty\left(\log(1+1/k)-\frac1{k+1}\right).
+$$</span>
+Every summand is positive. The trapezoid bound for the strictly convex function <span class="math" data-tex="$1/t$">$1/t$</span> makes it smaller than
+<span class="math" data-tex="$\tfrac12(1/k-1/(k+1))$">$\tfrac12(1/k-1/(k+1))$</span>, so telescoping proves
+<span class="math" data-tex="$0&lt;H_N-\log N-\gamma&lt;1/(2N)$">$0&lt;H_N-\log N-\gamma&lt;1/(2N)$</span>.
+In particular <span class="math" data-tex="$\gamma&lt;H_{256}-\log256$">$\gamma&lt;H_{256}-\log256$</span>.
+The logarithm series used in Section 6.3 proves
+<span class="math math-display" data-tex="$$
+H_{256}\le15311/2500,\quad
+69314/100000\le\log2\le69315/100000,\quad
+\log(4\pi)\ge253/100.
+$$">$$
+H_{256}\le15311/2500,\quad
+69314/100000\le\log2\le69315/100000,\quad
+\log(4\pi)\ge253/100.
+$$</span>
+For the last inequality, the tangent identity
+<span class="math" data-tex="$\pi=16\arctan(1/5)-4\arctan(1/239)$">$\pi=16\arctan(1/5)-4\arctan(1/239)$</span>, with the alternating arctangent series, gives
+<span class="math math-display" data-tex="$$
+\pi&gt;16(1/5-1/375)-4/239&gt;157/50;
+$$">$$
+\pi&gt;16(1/5-1/375)-4/239&gt;157/50;
+$$</span>
+the branch is fixed because <span class="math" data-tex="$4\arctan(1/5)-\arctan(1/239)$">$4\arctan(1/5)-\arctan(1/239)$</span> lies in <span class="math" data-tex="$(0,\pi/2)$">$(0,\pi/2)$</span>. Indeed <span class="math" data-tex="$\pi&gt;2$">$\pi&gt;2$</span> follows from <span class="math" data-tex="$\pi/4=\int_0^1(1+t^2)^{-1}dt&gt;1/2$">$\pi/4=\int_0^1(1+t^2)^{-1}dt&gt;1/2$</span>, and this angle is between zero and <span class="math" data-tex="$4/5$">$4/5$</span>. The double-angle formula gives <span class="math" data-tex="$\tan(4\arctan(1/5))=120/119$">$\tan(4\arctan(1/5))=120/119$</span>; the subtraction formula then gives tangent <span class="math" data-tex="$(120/119-1/239)/(1+120/(119\cdot239))=1$">$(120/119-1/239)/(1+120/(119\cdot239))=1$</span>. Thus <span class="math" data-tex="$\log(4\pi)&gt;\log(314/25)&gt;253/100$">$\log(4\pi)&gt;\log(314/25)&gt;253/100$</span>.
+Consequently
+<span class="math math-display" data-tex="$$
+c_0&lt;15311/2500-8(69314/100000)+2-253/100
+=154/3125&lt;1/20.
+$$">$$
+c_0&lt;15311/2500-8(69314/100000)+2-253/100
+=154/3125&lt;1/20.
+$$</span>
+Also <span class="math" data-tex="$\pi&lt;22/7$">$\pi&lt;22/7$</span>, because
+<span class="math math-display" data-tex="$$
+\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}.
+$$">$$
+\frac{t^4(1-t)^4}{1+t^2}=t^6-4t^5+5t^4-4t^2+4-\frac4{1+t^2}.
+$$</span>
+Integration from zero to one gives <span class="math" data-tex="$22/7-\pi&gt;0$">$22/7-\pi&gt;0$</span>.
+Hence <span class="math" data-tex="$\log(2\pi)&lt;\log(44/7)&lt;46/25$">$\log(2\pi)&lt;\log(44/7)&lt;46/25$</span>.</p>
+<p>The same logarithm series and integer powers at <span class="math" data-tex="$h=74500$">$h=74500$</span> give
+<span class="math math-display" data-tex="$$
+L\ge56/5,\quad Lh^{-1/6}\le87/50,\quad h^{-1/2}\le1/272.
+$$">$$
+L\ge56/5,\quad Lh^{-1/6}\le87/50,\quad h^{-1/2}\le1/272.
+$$</span>
+The product <span class="math" data-tex="$Lh^{-1/6}$">$Lh^{-1/6}$</span> decreases thereafter because its logarithmic derivative with respect to <span class="math" data-tex="$L$">$L$</span> is <span class="math" data-tex="$-1/6+1/L&lt;0$">$-1/6+1/L&lt;0$</span>. The products involving <span class="math" data-tex="$L/(L\pm c)$">$L/(L\pm c)$</span> also decrease: their logarithmic derivatives are
+<span class="math" data-tex="$-a+c/[L(L+c)]$">$-a+c/[L(L+c)]$</span> or <span class="math" data-tex="$-a-c/[L(L-c)]$">$-a-c/[L(L-c)]$</span>, which are negative for the powers used here. Substitution in <span class="math" data-tex="$E/S$">$E/S$</span>, retaining its negative <span class="math" data-tex="$L^{-1}$">$L^{-1}$</span> coefficient, gives
+<span class="math math-display" data-tex="$$
+\frac{E(h)}{S(h)}
+\le
+2+\frac{37}{25}\frac5{56}+8\left(\frac5{56}\right)^2
++\frac1{20}\left(1+\frac5{56}+4\left(\frac5{56}\right)^2\right)
++\frac{46}{25}\frac1{272}
+=\frac{113}{50}-\frac{1677}{1332800}.
+\tag{6.21}
+$$">$$
+\frac{E(h)}{S(h)}
+\le
+2+\frac{37}{25}\frac5{56}+8\left(\frac5{56}\right)^2
++\frac1{20}\left(1+\frac5{56}+4\left(\frac5{56}\right)^2\right)
++\frac{46}{25}\frac1{272}
+=\frac{113}{50}-\frac{1677}{1332800}.
+\tag{6.21}
+$$</span>
+For (6.20), the needed bounds are
+<span class="math math-display" data-tex="$$
+\begin{gathered}
+\sqrt2\ge7071/5000,\quad2^{1/4}\le119/100,\\
+L/(L+c)\ge16/17,\quad1/(L+c)\le17/202,\\
+h^{-1/4}L/(L+c)\le573/10000,\\
+h^{-1/2}L/(L+c)\le7/2000,\\
+h^{-1/2}L/(L-c)\le197/50000,\quad L/(L-c)\le107/100.
+\end{gathered}
+$$">$$
+\begin{gathered}
+\sqrt2\ge7071/5000,\quad2^{1/4}\le119/100,\\
+L/(L+c)\ge16/17,\quad1/(L+c)\le17/202,\\
+h^{-1/4}L/(L+c)\le573/10000,\\
+h^{-1/2}L/(L+c)\le7/2000,\\
+h^{-1/2}L/(L-c)\le197/50000,\quad L/(L-c)\le107/100.
+\end{gathered}
+$$</span>
+The square and fourth-root bounds follow by squaring or taking fourth powers. For the remaining endpoint checks use
+<span class="math" data-tex="$56/5\le\log74500\le11219/1000$">$56/5\le\log74500\le11219/1000$</span>,
+<span class="math" data-tex="$74500^{-1/6}\le1549/10000$">$74500^{-1/6}\le1549/10000$</span>,
+<span class="math" data-tex="$74500^{-1/4}\le606/10000$">$74500^{-1/4}\le606/10000$</span>, and <span class="math" data-tex="$74500^{-1/2}\le1/272$">$74500^{-1/2}\le1/272$</span>;
+the asserted power inequalities follow by clearing denominators and raising to the respective powers. Monotonicity just proved extends them to every larger <span class="math" data-tex="$h$">$h$</span>. Since <span class="math" data-tex="$L-c&gt;10$">$L-c&gt;10$</span>, the last line of (6.20) has absolute value at most <span class="math" data-tex="$1/10000$">$1/10000$</span>. Therefore (6.20) is at least
+<span class="math math-display" data-tex="$$
+2\frac{7071}{5000}\frac{16}{17}\left(1-\frac{17}{202}\right)
+-\frac94\frac{119}{100}\frac{573}{10000}
+-\frac{46}{25}\frac7{2000}-4\frac{197}{50000}-\frac1{10000}
+=\frac{113}{50}+\frac{15597889}{6868000000}.
+\tag{6.22}
+$$">$$
+2\frac{7071}{5000}\frac{16}{17}\left(1-\frac{17}{202}\right)
+-\frac94\frac{119}{100}\frac{573}{10000}
+-\frac{46}{25}\frac7{2000}-4\frac{197}{50000}-\frac1{10000}
+=\frac{113}{50}+\frac{15597889}{6868000000}.
+\tag{6.22}
+$$</span>
+This proves both strict inequalities in (6.16). The coefficient checks use exact integers and the convergent logarithm series, not decimal estimates of prime functions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Lemmas 6.5–6.6 prove (6.1) under RH whenever <span class="math" data-tex="$\log n\ge74500$">$\log n\ge74500$</span>.</p>
+<h3 id="6-3-a-complete-finite-verification">6.3. A complete finite verification</h3>
+<p>The remaining interval is finite in logarithmic height, but contains far too many integers for a direct divisor sieve. We use an envelope that bounds every integer in an interval at once.</p>
+<p>The gain from raising the exponent of <span class="math" data-tex="$p$">$p$</span> from <span class="math" data-tex="$j-1$">$j-1$</span> to <span class="math" data-tex="$j$">$j$</span> is
+<span class="math math-display" data-tex="$$
+g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}.
+$$">$$
+g_{p,j}=\log\frac{p^{j+1}-1}{p(p^j-1)}.
+$$</span>
+For any rational <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>,
+<span class="math math-display" data-tex="$$
+\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad
+B_\varepsilon=\sum_{p,j}\max(0,g_{p,j}-\varepsilon\log p).
+\tag{6.23}
+$$">$$
+\log A(n)\le\varepsilon\log n+B_\varepsilon,\qquad
+B_\varepsilon=\sum_{p,j}\max(0,g_{p,j}-\varepsilon\log p).
+\tag{6.23}
+$$</span>
+The product formula for <span class="math" data-tex="$\sigma_1(p^a)/p^a$">$\sigma_1(p^a)/p^a$</span> telescopes into these gains. Extending its actual events to all positive events proves (6.23). The sum is finite: <span class="math" data-tex="$g_{p,j}/\log p$">$g_{p,j}/\log p$</span> decreases both in <span class="math" data-tex="$p$">$p$</span> and in <span class="math" data-tex="$j$">$j$</span>. For the <span class="math" data-tex="$p$">$p$</span> assertion, write the gain as
+<span class="math" data-tex="$\log(1+1/[p(1+p+\cdots+p^{j-1})])$">$\log(1+1/[p(1+p+\cdots+p^{j-1})])$</span>; its numerator decreases, while <span class="math" data-tex="$\log p$">$\log p$</span> increases. For the <span class="math" data-tex="$j$">$j$</span> assertion the denominator increases.</p>
+<p>Suppose integer cutoffs <span class="math" data-tex="$c_1,\ldots,c_r$">$c_1,\ldots,c_r$</span> satisfy
+<span class="math" data-tex="$g_{c_j+1,j}\le\varepsilon\log(c_j+1)$">$g_{c_j+1,j}\le\varepsilon\log(c_j+1)$</span> and
+<span class="math" data-tex="$g_{2,r+1}\le\varepsilon\log2$">$g_{2,r+1}\le\varepsilon\log2$</span>.
+These inequalities prove that no positive event is omitted outside the finite box <span class="math" data-tex="$p\le c_j$">$p\le c_j$</span>. On an interval <span class="math" data-tex="$h\in[a,b]$">$h\in[a,b]$</span>,
+<span class="math math-display" data-tex="$$
+\mathcal R(n)\le f_\varepsilon(h)
+=\varepsilon h+B_\varepsilon-\gamma-\log\log h.
+$$">$$
+\mathcal R(n)\le f_\varepsilon(h)
+=\varepsilon h+B_\varepsilon-\gamma-\log\log h.
+$$</span>
+Its second derivative is <span class="math" data-tex="$(\log h+1)/(h^2(\log h)^2)&gt;0$">$(\log h+1)/(h^2(\log h)^2)&gt;0$</span>.
+Thus <span class="math" data-tex="$f_\varepsilon(h)\le\max(f_\varepsilon(a),f_\varepsilon(b))$">$f_\varepsilon(h)\le\max(f_\varepsilon(a),f_\varepsilon(b))$</span>.
+A negative bound at both endpoints proves the inequality throughout the interval.</p>
+<p>The following complete verifier uses only integers. It checks every integer <span class="math" data-tex="$5041\le n\le720720$">$5041\le n\le720720$</span>, then the finite boxes for the 36 displayed rational intervals. Those intervals cover <span class="math" data-tex="$336/25\le h\le37283397387/500000&gt;74500$">$336/25\le h\le37283397387/500000&gt;74500$</span>; <span class="math" data-tex="$\log720720&gt;336/25$">$\log720720&gt;336/25$</span> provides the overlap. For logarithms, after extracting a power of two, use
+<span class="math math-display" data-tex="$$
+\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\quad
+z=\frac{r-1}{r+1},\quad1\le r\le2,\quad
+0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)}.
+$$">$$
+\log r=2\sum_{j=0}^{23}\frac{z^{2j+1}}{2j+1}+\mathcal E,\quad
+z=\frac{r-1}{r+1},\quad1\le r\le2,\quad
+0\le\mathcal E\le\frac{2z^{49}}{49(1-z^2)}.
+$$</span>
+Since <span class="math" data-tex="$z\le1/3$">$z\le1/3$</span> and <span class="math" data-tex="$Q=10^{24}$">$Q=10^{24}$</span>, the last bound is <span class="math" data-tex="$&lt;1/Q$">$&lt;1/Q$</span>.
+Every integer division below rounds in its indicated direction; this proves the returned logarithm intervals inductively. The harmonic lower bound
+<span class="math" data-tex="$\gamma&gt;H_N-\log N-1/(2N)$">$\gamma&gt;H_N-\log N-1/(2N)$</span> uses the trapezoid inequality for <span class="math" data-tex="$1/t$">$1/t$</span>, summed from <span class="math" data-tex="$N$">$N$</span> to infinity. The sieve is Eratosthenes, and the divisor loop adds each divisor to exactly its multiples. These observations prove the soundness of every test in the code; its output is a finite exact certificate.</p>
+<pre><code class="language-python">from functools import lru_cache
+from fractions import Fraction
+from math import isqrt, factorial
+Q=10**24
+M=24
+def ceildiv(a,b):return -(-a//b)
+def basiclog(n,d):
+    assert d&lt;=n&lt;=2*d
+    a,b=n-d,n+d
+    zl=a*Q//b;zu=ceildiv(a*Q,b)
+    ll=zl*zl//Q;uu=ceildiv(zu*zu,Q)
+    pl,pu=zl,zu;sl=su=0
+    for j in range(M):
+        sl+=pl//(2*j+1);su+=ceildiv(pu,2*j+1)
+        pl=pl*ll//Q;pu=ceildiv(pu*uu,Q)
+    return 2*sl,2*su+1
+LOG2=basiclog(2,1)
+@lru_cache(None)
+def logq(n,d=1):
+    assert n&gt;0 and d&gt;0
+    if n&lt;d:
+        lo,hi=logq(d,n);return -hi,-lo
+    k=0
+    while n&gt;2*d:d*=2;k+=1
+    lo,hi=basiclog(n,d)
+    return lo+k*LOG2[0],hi+k*LOG2[1]
+@lru_cache(None)
+def gain(p,j):
+    a=p**j
+    return logq(p*a-1,p*(a-1))
+N=1000
+gamma_lo=sum(Q//k for k in range(1,N+1))-logq(N)[1]-ceildiv(Q,2*N)
+rows=[
+    {&quot;lo&quot;:[336,25],&quot;hi&quot;:[22117363,1000000],&quot;lambda&quot;:[9771914406623,
+        500000000000000],&quot;cuts&quot;:[17,5,3,2,2]},
+    {&quot;lo&quot;:[22117363,1000000],&quot;hi&quot;:[35788699,1000000],
+        &quot;lambda&quot;:[2565510579241,250000000000000],&quot;cuts&quot;:[28,6,
+        3,2,2,2]},
+    {&quot;lo&quot;:[35788699,1000000],&quot;hi&quot;:[29149999,500000],&quot;lambda&quot;:[5519615043151,
+        1000000000000000],&quot;cuts&quot;:[46,8,4,3,2,2,2]},
+    {&quot;lo&quot;:[29149999,500000],&quot;hi&quot;:[47544747,500000],&quot;lambda&quot;:[3004424868557,
+        1000000000000000],&quot;cuts&quot;:[76,11,5,3,2,2,2]},
+    {&quot;lo&quot;:[47544747,500000],&quot;hi&quot;:[146801491,1000000],
+        &quot;lambda&quot;:[1724212981141,1000000000000000],&quot;cuts&quot;:[120,
+        14,6,4,3,2,2,2]},
+    {&quot;lo&quot;:[146801491,1000000],&quot;hi&quot;:[111686563,500000],
+        &quot;lambda&quot;:[8278925801,8000000000000],&quot;cuts&quot;:[184,17,7,
+        4,3,2,2,2,2]},
+    {&quot;lo&quot;:[111686563,500000],&quot;hi&quot;:[163594351,500000],
+        &quot;lambda&quot;:[80829194299,125000000000000],&quot;cuts&quot;:[274,21,
+        8,5,3,3,2,2,2,2]},
+    {&quot;lo&quot;:[163594351,500000],&quot;hi&quot;:[464815043,1000000],
+        &quot;lambda&quot;:[422180858753,1000000000000000],&quot;cuts&quot;:[395,
+        26,9,5,4,3,2,2,2,2]},
+    {&quot;lo&quot;:[464815043,1000000],&quot;hi&quot;:[130165559,200000],
+        &quot;lambda&quot;:[70868018799,250000000000000],&quot;cuts&quot;:[557,31,
+        11,6,4,3,2,2,2,2,2]},
+    {&quot;lo&quot;:[130165559,200000],&quot;hi&quot;:[893036263,1000000],
+        &quot;lambda&quot;:[38967393937,200000000000000],&quot;cuts&quot;:[771,37,
+        12,6,4,3,3,2,2,2,2]},
+    {&quot;lo&quot;:[893036263,1000000],&quot;hi&quot;:[240770673,200000],
+        &quot;lambda&quot;:[137136588803,1000000000000000],&quot;cuts&quot;:[1048,
+        43,13,7,5,3,3,2,2,2,2,2]},
+    {&quot;lo&quot;:[240770673,200000],&quot;hi&quot;:[63176719,40000],&quot;lambda&quot;:[99275427189,
+        1000000000000000],&quot;cuts&quot;:[1391,50,15,8,5,4,3,2,2,2,2,
+        2]},
+    {&quot;lo&quot;:[63176719,40000],&quot;hi&quot;:[2035337871,1000000],
+        &quot;lambda&quot;:[73775311097,1000000000000000],&quot;cuts&quot;:[1806,
+        57,16,8,5,4,3,3,2,2,2,2,2]},
+    {&quot;lo&quot;:[2035337871,1000000],&quot;hi&quot;:[518900301,200000],
+        &quot;lambda&quot;:[11152011487,200000000000000],&quot;cuts&quot;:[2314,65,
+        18,9,6,4,3,3,2,2,2,2,2]},
+    {&quot;lo&quot;:[518900301,200000],&quot;hi&quot;:[815385537,250000],
+        &quot;lambda&quot;:[42786768497,1000000000000000],&quot;cuts&quot;:[2927,
+        73,19,9,6,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[815385537,250000],&quot;hi&quot;:[406392661,100000],
+        &quot;lambda&quot;:[6654185407,200000000000000],&quot;cuts&quot;:[3662,82,
+        21,10,6,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[406392661,100000],&quot;hi&quot;:[1248690297,250000],
+        &quot;lambda&quot;:[2622639723,100000000000000],&quot;cuts&quot;:[4528,91,
+        22,10,6,5,4,3,3,2,2,2,2,2]},
+    {&quot;lo&quot;:[1248690297,250000],&quot;hi&quot;:[3045165617,500000],
+        &quot;lambda&quot;:[20930175389,1000000000000000],&quot;cuts&quot;:[5542,
+        101,24,11,7,5,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[3045165617,500000],&quot;hi&quot;:[458996953,62500],
+        &quot;lambda&quot;:[16893531041,1000000000000000],&quot;cuts&quot;:[6716,
+        111,25,12,7,5,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[458996953,62500],&quot;hi&quot;:[4387795691,500000],
+        &quot;lambda&quot;:[13794103247,1000000000000000],&quot;cuts&quot;:[8059,
+        122,27,12,7,5,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[4387795691,500000],&quot;hi&quot;:[10433152137,1000000],
+        &quot;lambda&quot;:[11354367573,1000000000000000],&quot;cuts&quot;:[9603,
+        133,29,13,8,5,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[10433152137,1000000],&quot;hi&quot;:[12279993269,1000000],
+        &quot;lambda&quot;:[2357543377,250000000000000],&quot;cuts&quot;:[11356,145,
+        31,13,8,6,4,3,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[12279993269,1000000],&quot;hi&quot;:[179906601,12500],
+        &quot;lambda&quot;:[1973616211,250000000000000],&quot;cuts&quot;:[13335,157,
+        32,14,8,6,4,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[179906601,12500],&quot;hi&quot;:[16784073643,1000000],
+        &quot;lambda&quot;:[6644793849,1000000000000000],&quot;cuts&quot;:[15587,
+        170,34,15,9,6,4,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[16784073643,1000000],&quot;hi&quot;:[9718846411,500000],
+        &quot;lambda&quot;:[1126354703,200000000000000],&quot;cuts&quot;:[18110,184,
+        36,15,9,6,5,4,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[9718846411,500000],&quot;hi&quot;:[22433188173,1000000],
+        &quot;lambda&quot;:[1200244709,250000000000000],&quot;cuts&quot;:[20934,197,
+        38,16,9,6,5,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[22433188173,1000000],&quot;hi&quot;:[1287242339,50000],
+        &quot;lambda&quot;:[2057220229,500000000000000],&quot;cuts&quot;:[24088,212,
+        40,16,9,6,5,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[1287242339,50000],&quot;hi&quot;:[7349340853,250000],
+        &quot;lambda&quot;:[3547339421,1000000000000000],&quot;cuts&quot;:[27570,
+        227,41,17,10,7,5,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[7349340853,250000],&quot;hi&quot;:[1338267981,40000],
+        &quot;lambda&quot;:[3072760897,1000000000000000],&quot;cuts&quot;:[31426,
+        242,43,18,10,7,5,4,3,3,3,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[1338267981,40000],&quot;hi&quot;:[9481137173,250000],
+        &quot;lambda&quot;:[2672852847,1000000000000000],&quot;cuts&quot;:[35690,
+        258,45,18,10,7,5,4,3,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[9481137173,250000],&quot;hi&quot;:[1070418171,25000],
+        &quot;lambda&quot;:[2335546837,1000000000000000],&quot;cuts&quot;:[40370,
+        275,47,19,11,7,5,4,3,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[1070418171,25000],&quot;hi&quot;:[48110318623,1000000],
+        &quot;lambda&quot;:[2050940953,1000000000000000],&quot;cuts&quot;:[45463,
+        292,49,19,11,7,5,4,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[48110318623,1000000],&quot;hi&quot;:[10789326747,200000],
+        &quot;lambda&quot;:[1807809003,1000000000000000],&quot;cuts&quot;:[51028,
+        310,51,20,11,7,5,4,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[10789326747,200000],&quot;hi&quot;:[30165067587,500000],
+        &quot;lambda&quot;:[1597827091,1000000000000000],&quot;cuts&quot;:[57137,
+        328,53,21,11,8,6,4,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[30165067587,500000],&quot;hi&quot;:[33566442549,500000],
+        &quot;lambda&quot;:[1418388113,1000000000000000],&quot;cuts&quot;:[63731,
+        346,55,21,12,8,6,4,4,3,3,2,2,2,2,2,2,2]},
+    {&quot;lo&quot;:[33566442549,500000],&quot;hi&quot;:[37283397387,500000],
+        &quot;lambda&quot;:[157973183,125000000000000],&quot;cuts&quot;:[70849,365,
+        57,22,12,8,6,5,4,3,3,2,2,2,2,2,2,2,2]},
+]
+cap=max(max(row['cuts'])+1 for row in rows)
+sieve=bytearray(b'\x01')*(cap+1);sieve[:2]=b'\x00\x00'
+for p in range(2,isqrt(cap)+1):
+    if sieve[p]:sieve[p*p::p] = b'\x00' * ((cap-p*p)//p+1)
+primes=[p for p in range(2,cap+1) if sieve[p]]
+out=[]
+for i,row in enumerate(rows):
+    an,ad=row['lambda'];cuts=row['cuts'];bu=0
+    for j,c in enumerate(cuts,1):
+        assert gain(c+1,j)[1]&lt;=an*logq(c+1)[0]//ad,(i,j,'cutoff')
+        for p in primes:
+            if p&gt;c:break
+            bu+=max(0,gain(p,j)[1]-an*logq(p)[0]//ad)
+    assert gain(2,len(cuts)+1)[1]&lt;=an*LOG2[0]//ad,(i,'last layer')
+    margins=[]
+    for rn,rd in [row['lo'],row['hi']]:
+        lh=logq(rn,rd)[0];llh=logq(lh,Q)[0]
+        margin=gamma_lo+llh-bu-ceildiv(an*rn*Q,ad*rd)
+        margins.append(margin)
+    assert min(margins)&gt;0,(i,margins)
+    out.append({'row':i,'endpoint_margins_scaled':margins})
+    print('Row',i,'exact endpoint margins:',margins,flush=True)
+assert rows[0]['lo']==[336,25]
+for left,right in zip(rows,rows[1:]):
+    assert Fraction(*left['hi'])==Fraction(*right['lo'])
+assert Fraction(*rows[-1]['hi'])&gt;=74500
+
+# The elementary coefficient checks used in Section 6.2.
+def lf(n,d=1):return Fraction(logq(n,d)[0],Q)
+def uf(n,d=1):return Fraction(logq(n,d)[1],Q)
+assert (sum((Fraction(1,k) for k in range(1,257)),Fraction())&lt;=Fraction(15311,
+        2500))
+assert lf(2)&gt;=Fraction(69314,100000)
+assert uf(2)&lt;=Fraction(69315,100000)
+assert lf(314,25)&gt;=Fraction(253,100)
+assert uf(44,7)&lt;=Fraction(46,25)
+assert lf(20000)&gt;=9 and lf(366)&gt;=5
+assert (Fraction(1,20)*(2+Fraction(2,9)+Fraction(16,243))*Fraction(11,
+        25)&lt;=Fraction(51,1000))
+assert (Fraction(1,20)*(3+Fraction(1,3)+Fraction(36,405))*Fraction(1,
+        5)&lt;=Fraction(35,1000))
+assert (Fraction(1,20)*(5+Fraction(5,9)+Fraction(100,
+        729))*Fraction(1,10)&lt;=Fraction(29,1000))
+# A rational proof of the exceptional endpoint in Example 6.9.
+gamma_hi=sum(ceildiv(Q,k) for k in range(1,N+1))-logq(N)[0]
+assert Fraction(gamma_hi,Q)&lt;Fraction(579,1000)
+r=Fraction(579,1000)
+e_upper=(sum((r**j/factorial(j) for j in range(20)),Fraction())
+         +r**20/factorial(20)/(1-r/21))
+assert e_upper&lt;Fraction(357,200)
+assert uf(logq(5040)[1],Q)&lt;Fraction(1073,500)
+assert Fraction(357,200)*Fraction(1073,500)*5040&lt;19344
+L0,L1=lf(74500),uf(74500)
+cl,cu=lf(2),uf(2)
+assert L0&gt;=Fraction(56,5) and L1&lt;=Fraction(11219,1000)
+assert 74500*Fraction(1549,10000)**6&gt;=1
+assert L1*Fraction(1549,10000)&lt;=Fraction(87,50)
+assert 74500*Fraction(606,10000)**4&gt;=1
+assert 74500&gt;=272**2
+assert Fraction(7071,5000)**2&lt;=2
+assert Fraction(119,100)**4&gt;=2
+assert L0/(L0+cu)&gt;=Fraction(16,17)
+assert 1/(L0+cl)&lt;=Fraction(17,202)
+assert Fraction(606,10000)*L1/(L1+cl)&lt;=Fraction(573,10000)
+assert Fraction(1,272)*L1/(L1+cl)&lt;=Fraction(7,2000)
+assert Fraction(1,272)*L0/(L0-cu)&lt;=Fraction(197,50000)
+assert L0/(L0-cu)&lt;=Fraction(107,100)
+assert (Fraction(3,20*74500)*Fraction(107,100)*(2+Fraction(1,
+        10)+Fraction(4,300))&lt;=Fraction(1,10000))
+for n,d,a,h in [(27,100,15,20000**2),(11,25,12,20000),
+        (1,5,6,20000),(1,10,30,20000**7),(3,8,6,366),(7,40,10,
+        366**3),(229,1000,4,366),(7,50,3,366),(19,200,5,366**2)]:
+    assert Fraction(n,d)**a*h&gt;=1
+assert all(k//2+k//3+k//5&gt;=k-1 for k in range(30))
+assert min(min(v['endpoint_margins_scaled']) for v in out)&gt;139*Q//10**6
+
+sigma=[0]*720721
+for d in range(1,720721):
+    for n in range(d,720721,d):sigma[n]+=d
+worst=(10*Q,None)
+for n in range(5041,720721):
+    ln=logq(n)[0];lln=logq(ln,Q)[0];llln=logq(lln,Q)[0]
+    margin=gamma_lo+llln-logq(sigma[n],n)[1]
+    assert margin&gt;0,(n,margin)
+    if margin&lt;worst[0]:worst=(margin,n)
+assert logq(720720)[0]&gt;ceildiv(336*Q,25)
+assert worst[0]&gt;14*Q//1000
+print('Startup minimum exact scaled margin and n:',worst)
+print('All 36 height intervals, startup integers '
+      'and coefficient checks passed.')
+</code></pre>
+<p>All 36 boxes and both endpoint tests pass. The smallest endpoint margin in that verification is greater than <span class="math" data-tex="$139/10^6$">$139/10^6$</span>. In the direct integer range the smallest logarithmic margin occurs at <span class="math" data-tex="$n=10080$">$n=10080$</span>, and is greater than <span class="math" data-tex="$14/1000$">$14/1000$</span>. These are downward bounds on exact integer margins, not rounded predicates. Together with (6.16), they prove the RH implication for every integer <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span>.</p>
+<h3 id="6-4-an-off-line-zero-forces-violations">6.4. An off-line zero forces violations</h3>
+<p>We give the converse, including the positivity principle that produces its oscillation. Define
+<span class="math math-display" data-tex="$$
+J(x)=I_1(x),\quad
+K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\quad
+F(x)=e^\gamma\log\theta(x)\prod_{p\le x}(1-1/p).
+$$">$$
+J(x)=I_1(x),\quad
+K(x)=\int_x^\infty(\theta(t)-t)w_1(t)\,dt,\quad
+F(x)=e^\gamma\log\theta(x)\prod_{p\le x}(1-1/p).
+$$</span>
+These definitions are used for sufficiently large <span class="math" data-tex="$x$">$x$</span>, so <span class="math" data-tex="$\theta(x)&gt;1$">$\theta(x)&gt;1$</span>.
+They do not assume RH. The classical PNT error in lesson twelve makes <span class="math" data-tex="$J,K$">$J,K$</span> absolutely convergent and bounded.</p>
+<p><strong>Lemma 6.7 (finite-product comparison).</strong>
+<span class="math math-display" data-tex="$$
+\log F(x)\le J(x)+4/x.
+\tag{6.24}
+$$">$$
+\log F(x)\le J(x)+4/x.
+\tag{6.24}
+$$</span></p>
+<p><strong>Proof.</strong> Formula (6.15), and
+<span class="math" data-tex="$\log(1-p^{-1})=-p^{-1}+m_p$">$\log(1-p^{-1})=-p^{-1}+m_p$</span>, give the exact identity
+<span class="math math-display" data-tex="$$
+\log F(x)=K(x)+R_\theta(x)+R_M(x),
+$$">$$
+\log F(x)=K(x)+R_\theta(x)+R_M(x),
+$$</span>
+<span class="math math-display" data-tex="$$
+R_\theta(x)=\log\log\theta(x)-\log\log x
+-\frac{\theta(x)-x}{x\log x},\qquad
+R_M(x)=-\sum_{p&gt;x}m_p.
+$$">$$
+R_\theta(x)=\log\log\theta(x)-\log\log x
+-\frac{\theta(x)-x}{x\log x},\qquad
+R_M(x)=-\sum_{p&gt;x}m_p.
+$$</span>
+The function <span class="math" data-tex="$y\mapsto\log\log y$">$y\mapsto\log\log y$</span> is concave for <span class="math" data-tex="$y&gt;1$">$y&gt;1$</span>, so its tangent at <span class="math" data-tex="$x$">$x$</span> proves <span class="math" data-tex="$R_\theta(x)\le0$">$R_\theta(x)\le0$</span>. The positive logarithm series gives
+<span class="math math-display" data-tex="$$
+0\le-m_p=\sum_{j\ge2}\frac1{jp^j}
+\le\frac1{p(p-1)}\le\frac2{p^2}.
+$$">$$
+0\le-m_p=\sum_{j\ge2}\frac1{jp^j}
+\le\frac1{p(p-1)}\le\frac2{p^2}.
+$$</span>
+Thus <span class="math" data-tex="$0\le R_M(x)\le4/x$">$0\le R_M(x)\le4/x$</span>, by comparison with the integer square tail. Finally
+<span class="math" data-tex="$J(x)-K(x)=P_1(x)\ge0$">$J(x)-K(x)=P_1(x)\ge0$</span>. These three facts prove (6.24). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 6.8 (negative weighted oscillation).</strong> If RH is false, there exist <span class="math" data-tex="$0&lt;b&lt;1/2$">$0&lt;b&lt;1/2$</span> and <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span> such that, for arbitrarily large <span class="math" data-tex="$x$">$x$</span>,
+<span class="math math-display" data-tex="$$
+J(x)\le-a x^{-b}.
+\tag{6.25}
+$$">$$
+J(x)\le-a x^{-b}.
+\tag{6.25}
+$$</span></p>
+<p><strong>Proof.</strong> By the symmetries already proved in lesson four, choose a zero
+<span class="math" data-tex="$\rho=\beta+i\gamma_\rho$">$\rho=\beta+i\gamma_\rho$</span> with <span class="math" data-tex="$1/2&lt;\beta&lt;1$">$1/2&lt;\beta&lt;1$</span>; lesson eight, Theorem 1.1, excludes the boundary line, and reflection excludes the other boundary.
+At its fixed ordinate choose a zero <span class="math" data-tex="$\rho_*$">$\rho_*$</span> having the largest real part; there are only finitely many zeros at this ordinate by isolation and the compactness of the closed critical strip. Write <span class="math" data-tex="$\beta_*=\Re\rho_*$">$\beta_*=\Re\rho_*$</span>, and choose
+<span class="math" data-tex="$1-\beta_*&lt;b&lt;1/2$">$1-\beta_*&lt;b&lt;1/2$</span>.</p>
+<p>We first compute the transform that detects this zero. For <span class="math" data-tex="$\Re z&gt;1$">$\Re z&gt;1$</span>, integration of the absolutely convergent von Mangoldt series gives
+<span class="math math-display" data-tex="$$
+\Phi_3(z):=\int_3^\infty(\psi(t)-t)t^{-z-1}\,dt
+=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}
+-\int_1^3(\psi(t)-t)t^{-z-1}\,dt.
+\tag{6.26}
+$$">$$
+\Phi_3(z):=\int_3^\infty(\psi(t)-t)t^{-z-1}\,dt
+=-\frac{\zeta&#x27;(z)}{z\zeta(z)}-\frac1{z-1}
+-\int_1^3(\psi(t)-t)t^{-z-1}\,dt.
+\tag{6.26}
+$$</span>
+The last integral is entire. The apparent pole at <span class="math" data-tex="$z=1$">$z=1$</span> cancels by the Laurent expansion of zeta there; a zero <span class="math" data-tex="$\rho$">$\rho$</span> of multiplicity <span class="math" data-tex="$d$">$d$</span> instead gives the genuine principal part <span class="math" data-tex="$-d/[\rho(z-\rho)]$">$-d/[\rho(z-\rho)]$</span>. The right side therefore continues <span class="math" data-tex="$\Phi_3$">$\Phi_3$</span> meromorphically.</p>
+<p>For <span class="math" data-tex="$t&gt;1$">$t&gt;1$</span>,
+<span class="math math-display" data-tex="$$
+w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du.
+$$">$$
+w_1(t)=\int_0^\infty(u+1)t^{-u-2}\,du.
+$$</span>
+For <span class="math" data-tex="$\Re s&lt;0$">$\Re s&lt;0$</span>, Fubini and the integral over <span class="math" data-tex="$3&lt;x&lt;t$">$3&lt;x&lt;t$</span> now give
+<span class="math math-display" data-tex="$$
+\int_3^\infty x^{s-1}J(x)\,dx
+=\int_0^\infty(u+1)
+\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}s\,du.
+\tag{6.27}
+$$">$$
+\int_3^\infty x^{s-1}J(x)\,dx
+=\int_0^\infty(u+1)
+\frac{\Phi_3(u+1-s)-3^s\Phi_3(u+1)}s\,du.
+\tag{6.27}
+$$</span>
+Fubini is absolute: the classical PNT bound controls the <span class="math" data-tex="$u=0$">$u=0$</span> endpoint, and the lower limit <span class="math" data-tex="$t=3$">$t=3$</span> gives exponential decay as <span class="math" data-tex="$u\to\infty$">$u\to\infty$</span>. At <span class="math" data-tex="$s=0$">$s=0$</span> the numerator has a removable quotient whenever the zero-dependent continuation is regular. Formula (6.27) thus gives a holomorphic continuation at every real <span class="math" data-tex="$s&lt;b$">$s&lt;b$</span>: its zeta arguments are real and greater than <span class="math" data-tex="$1-b&gt;1/2$">$1-b&gt;1/2$</span>, where there are no real zeros by lesson one, Theorem 5.1 and its Euler product, and the pole at one has been removed. On compact neighbourhoods of each such real <span class="math" data-tex="$s$">$s$</span>, the bounded <span class="math" data-tex="$u$">$u$</span>-range avoids zeros, and the large-<span class="math" data-tex="$u$">$u$</span> integrand decays exponentially. These bounds justify differentiation and the continuation, not merely a formal substitution in an improper integral.</p>
+<p>Suppose (6.25) fails. In particular, eventually <span class="math" data-tex="$J(x)+x^{-b}&gt;0$">$J(x)+x^{-b}&gt;0$</span>; choose its starting point <span class="math" data-tex="$X\ge3$">$X\ge3$</span>, and form the nonnegative measure
+<span class="math math-display" data-tex="$$
+d\mu(x)=\mathbf1_{x&gt;X}\bigl(J(x)+x^{-b}\bigr)\frac{dx}{x}.
+$$">$$
+d\mu(x)=\mathbf1_{x&gt;X}\bigl(J(x)+x^{-b}\bigr)\frac{dx}{x}.
+$$</span>
+Its transform is initially
+<span class="math math-display" data-tex="$$
+G(s)=\int_X^\infty x^s\,d\mu(x)
+=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}
+\quad(\Re s&lt;0).
+$$">$$
+G(s)=\int_X^\infty x^s\,d\mu(x)
+=\int_X^\infty x^{s-1}J(x)\,dx+\frac{X^{s-b}}{b-s}
+\quad(\Re s&lt;0).
+$$</span>
+Removing the finite interval <span class="math" data-tex="$[3,X]$">$[3,X]$</span> from (6.27) changes its continuation by an entire function. Consequently <span class="math" data-tex="$G$">$G$</span> has a holomorphic continuation near every real <span class="math" data-tex="$s&lt;b$">$s&lt;b$</span>.</p>
+<p>Here is the required positivity principle in full. Let <span class="math" data-tex="$\alpha$">$\alpha$</span> be the supremum of the real exponents for which a nonnegative measure on <span class="math" data-tex="$x&gt;X&gt;1$">$x&gt;X&gt;1$</span> has finite <span class="math" data-tex="$\int x^\sigma\,d\mu$">$\int x^\sigma\,d\mu$</span>. At an interior real exponent <span class="math" data-tex="$a&lt;\alpha$">$a&lt;\alpha$</span>, differentiating under a slightly larger exponential majorant gives
+<span class="math math-display" data-tex="$$
+G^{(k)}(a)=\int x^a(\log x)^k\,d\mu\ge0.
+$$">$$
+G^{(k)}(a)=\int x^a(\log x)^k\,d\mu\ge0.
+$$</span>
+If the analytic continuation were regular at a finite real boundary <span class="math" data-tex="$\alpha$">$\alpha$</span>, choose <span class="math" data-tex="$a$">$a$</span> close enough to <span class="math" data-tex="$\alpha$">$\alpha$</span> that its Taylor disk reaches <span class="math" data-tex="$\alpha+\eta$">$\alpha+\eta$</span> for some <span class="math" data-tex="$\eta&gt;0$">$\eta&gt;0$</span>. Its Taylor coefficients are these nonnegative moments. Monotone convergence applied to the exponential power series gives
+<span class="math math-display" data-tex="$$
+\int x^{a+d}\,d\mu
+=\sum_{k\ge0}\frac{d^k}{k!}G^{(k)}(a)&lt;\infty
+$$">$$
+\int x^{a+d}\,d\mu
+=\sum_{k\ge0}\frac{d^k}{k!}G^{(k)}(a)&lt;\infty
+$$</span>
+for a <span class="math" data-tex="$d&gt;0$">$d&gt;0$</span> with <span class="math" data-tex="$a+d&gt;\alpha$">$a+d&gt;\alpha$</span>, a contradiction. This proves that the real boundary cannot be regular. In our case the continuation is regular at every real exponent below <span class="math" data-tex="$b$">$b$</span>, so <span class="math" data-tex="$\alpha\ge b$">$\alpha\ge b$</span>. The actual integral <span class="math" data-tex="$G$">$G$</span> is therefore holomorphic throughout <span class="math" data-tex="$\Re s&lt;b$">$\Re s&lt;b$</span>; local exponential majorants also prove this assertion and its derivatives directly.</p>
+<p>Put <span class="math" data-tex="$s_0=1-\rho_*$">$s_0=1-\rho_*$</span>, whose real part is less than <span class="math" data-tex="$b$">$b$</span>, and approach it by <span class="math" data-tex="$s=s_0-\delta$">$s=s_0-\delta$</span>, <span class="math" data-tex="$\delta&gt;0$">$\delta&gt;0$</span>. In (6.27), the zeta argument is <span class="math" data-tex="$\rho_*+\delta+u$">$\rho_*+\delta+u$</span>. Maximality at this ordinate guarantees no zero on that ray for <span class="math" data-tex="$u+\delta&gt;0$">$u+\delta&gt;0$</span>. The small-<span class="math" data-tex="$u$">$u$</span> principal part in (6.26) is
+<span class="math math-display" data-tex="$$
+-\frac{d}{\rho_*}\frac1{\delta+u}+O(1).
+$$">$$
+-\frac{d}{\rho_*}\frac1{\delta+u}+O(1).
+$$</span>
+Its integral in (6.27) consequently has the nonzero divergent term
+<span class="math math-display" data-tex="$$
+-\frac{d}{\rho_*s_0}\log(1/\delta).
+$$">$$
+-\frac{d}{\rho_*s_0}\log(1/\delta).
+$$</span>
+The rest of the <span class="math" data-tex="$u$">$u$</span>-integral is bounded as <span class="math" data-tex="$\delta\downarrow0$">$\delta\downarrow0$</span>: away from the chosen endpoint it has no zero pole, and its large-<span class="math" data-tex="$u$">$u$</span> part decays exponentially. The subtracted term, finite startup integral, and added power <span class="math" data-tex="$X^{s-b}/(b-s)$">$X^{s-b}/(b-s)$</span> are all regular at <span class="math" data-tex="$s_0$">$s_0$</span>. The expression therefore tends to infinity in modulus. It agrees with the actual <span class="math" data-tex="$G$">$G$</span> along this ray by analytic continuation from <span class="math" data-tex="$\Re s&lt;0$">$\Re s&lt;0$</span>; the intervening horizontal ray is free of zero singularities for the same maximality reason. But the actual <span class="math" data-tex="$G$">$G$</span> is holomorphic at <span class="math" data-tex="$s_0$">$s_0$</span>, so is locally bounded. The contradiction proves (6.25). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Now let <span class="math" data-tex="$L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)$">$L_x=\operatorname{lcm}(1,\ldots,\lfloor x\rfloor)$</span>. For every prime <span class="math" data-tex="$p\le x$">$p\le x$</span>, write <span class="math" data-tex="$a_p=\lfloor\log x/\log p\rfloor$">$a_p=\lfloor\log x/\log p\rfloor$</span>. Then
+<span class="math" data-tex="$\log L_x=\psi(x)$">$\log L_x=\psi(x)$</span>, and its geometric-series factors give the exact identity
+<span class="math math-display" data-tex="$$
+\mathcal R(L_x)=-\log F(x)-D(x)-T(x),
+$$">$$
+\mathcal R(L_x)=-\log F(x)-D(x)-T(x),
+$$</span>
+<span class="math math-display" data-tex="$$
+D(x)=\log\log\psi(x)-\log\log\theta(x),\qquad
+T(x)=-\sum_{p\le x}\log(1-p^{-a_p-1}).
+\tag{6.28}
+$$">$$
+D(x)=\log\log\psi(x)-\log\log\theta(x),\qquad
+T(x)=-\sum_{p\le x}\log(1-p^{-a_p-1}).
+\tag{6.28}
+$$</span>
+Both losses are nonnegative. Chebyshev and the prime-power comparison give
+<span class="math" data-tex="$\psi(x)-\theta(x)=O(\sqrt x\log x)$">$\psi(x)-\theta(x)=O(\sqrt x\log x)$</span> and <span class="math" data-tex="$\theta(x)\asymp x$">$\theta(x)\asymp x$</span>.
+The mean-value theorem for <span class="math" data-tex="$\log\log y$">$\log\log y$</span> gives <span class="math" data-tex="$D(x)=O(x^{-1/2})$">$D(x)=O(x^{-1/2})$</span>.
+For <span class="math" data-tex="$p\le\sqrt x$">$p\le\sqrt x$</span>, <span class="math" data-tex="$p^{a_p+1}&gt;x$">$p^{a_p+1}&gt;x$</span>, so the sum of their missing factors is at most <span class="math" data-tex="$\sqrt x/x$">$\sqrt x/x$</span>. For <span class="math" data-tex="$p&gt;\sqrt x$">$p&gt;\sqrt x$</span>, <span class="math" data-tex="$a_p=1$">$a_p=1$</span>, and their square tail is at most <span class="math" data-tex="$\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})$">$\sum_{m&gt;\sqrt x}m^{-2}=O(x^{-1/2})$</span>. Since
+<span class="math" data-tex="$-\log(1-v)\le2v$">$-\log(1-v)\le2v$</span> for <span class="math" data-tex="$0\le v\le1/2$">$0\le v\le1/2$</span>, this proves <span class="math" data-tex="$T(x)=O(x^{-1/2})$">$T(x)=O(x^{-1/2})$</span>.
+Thus <span class="math" data-tex="$D(x)+T(x)=o(x^{-b})$">$D(x)+T(x)=o(x^{-b})$</span>.</p>
+<p>Combining (6.24)–(6.25) with (6.28), at arbitrarily large <span class="math" data-tex="$x$">$x$</span> one has
+<span class="math" data-tex="$\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0$">$\mathcal R(L_x)\ge(a/2)x^{-b}&gt;0$</span>.
+These are literal integer violations of (6.1), and <span class="math" data-tex="$L_x&gt;5040$">$L_x&gt;5040$</span> eventually. This proves the converse, and hence Robin's complete equivalence. It also proves the quantitative surplus needed next, rather than only one isolated counterexample.</p>
+<h3 id="6-5-the-harmonic-criterion-in-both-directions">6.5. The harmonic criterion in both directions</h3>
+<p>The RH implication follows from the harmonic comparison (6.30) below and Robin's inequality, with the finite range proved separately. For the converse, elementary integration gives
+<span class="math math-display" data-tex="$$
+H_n=\log n+\gamma+\eta_n,\qquad0&lt;\eta_n&lt;1/n.
+$$">$$
+H_n=\log n+\gamma+\eta_n,\qquad0&lt;\eta_n&lt;1/n.
+$$</span>
+Indeed, the preceding telescoping series for <span class="math" data-tex="$\eta_n$">$\eta_n$</span> has positive summands bounded by <span class="math" data-tex="$1/k-1/(k+1)$">$1/k-1/(k+1)$</span>, whose tail is <span class="math" data-tex="$1/n$">$1/n$</span>. The bounds already proved at <span class="math" data-tex="$N=1$">$N=1$</span> also give <span class="math" data-tex="$0&lt;\gamma&lt;1$">$0&lt;\gamma&lt;1$</span>.
+For sufficiently large <span class="math" data-tex="$n$">$n$</span>, <span class="math" data-tex="$e^{\eta_n}\le1+2/n$">$e^{\eta_n}\le1+2/n$</span>, and
+<span class="math math-display" data-tex="$$
+\log H_n\le\log\log n+\frac{\gamma+1}{\log n}.
+$$">$$
+\log H_n\le\log\log n+\frac{\gamma+1}{\log n}.
+$$</span>
+Since <span class="math" data-tex="$0&lt;\gamma&lt;1$">$0&lt;\gamma&lt;1$</span>, these imply, with an absolute constant <span class="math" data-tex="$C$">$C$</span>,
+<span class="math math-display" data-tex="$$
+\frac{H_n+e^{H_n}\log H_n}{n}
+\le e^\gamma\log\log n+\frac C{\log n}.
+\tag{6.29}
+$$">$$
+\frac{H_n+e^{H_n}\log H_n}{n}
+\le e^\gamma\log\log n+\frac C{\log n}.
+\tag{6.29}
+$$</span>
+The terms <span class="math" data-tex="$H_n/n$">$H_n/n$</span> and <span class="math" data-tex="$(\log\log n)/n$">$(\log\log n)/n$</span> are absorbed by the same upper bound.</p>
+<p>If RH were false, the integer sequence constructed after (6.28) would instead give
+<span class="math math-display" data-tex="$$
+\frac{\sigma_1(L_x)}{L_x}
+\ge e^\gamma\log\log L_x\,
+ \bigl(1+(a/2)x^{-b}\bigr).
+$$">$$
+\frac{\sigma_1(L_x)}{L_x}
+\ge e^\gamma\log\log L_x\,
+ \bigl(1+(a/2)x^{-b}\bigr).
+$$</span>
+Here <span class="math" data-tex="$\log L_x=\psi(x)\asymp x$">$\log L_x=\psi(x)\asymp x$</span>. The surplus
+<span class="math" data-tex="$\gg(\log x)x^{-b}$">$\gg(\log x)x^{-b}$</span> is larger than <span class="math" data-tex="$C/\log L_x=O(1/x)$">$C/\log L_x=O(1/x)$</span>, because <span class="math" data-tex="$b&lt;1/2$">$b&lt;1/2$</span>. It contradicts (6.2) by (6.29). Thus (6.2) implies RH.</p>
+<p>Here are useful elementary details of the passage to the harmonic criterion. Since <span class="math" data-tex="$H_n-\log n$">$H_n-\log n$</span> decreases to <span class="math" data-tex="$\gamma$">$\gamma$</span>, one has <span class="math" data-tex="$H_n\ge\log n+\gamma$">$H_n\ge\log n+\gamma$</span>. For <span class="math" data-tex="$n\ge3$">$n\ge3$</span>, both <span class="math" data-tex="$\log\log n$">$\log\log n$</span> and <span class="math" data-tex="$\log H_n$">$\log H_n$</span> are positive, and therefore
+<span class="math math-display" data-tex="$$
+e^{H_n}\log H_n\ge e^\gamma n\log\log n.
+\tag{6.30}
+$$">$$
+e^{H_n}\log H_n\ge e^\gamma n\log\log n.
+\tag{6.30}
+$$</span>
+Under RH, (6.1) and (6.30) make (6.2) strict for <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span>. At <span class="math" data-tex="$n=1$">$n=1$</span>, both sides of (6.2) equal one.</p>
+<p>For completeness, strictness in the remaining finite range has the following reproducible rational certificate. Put <span class="math" data-tex="$Q=10^6$">$Q=10^6$</span> and
+<span class="math math-display" data-tex="$$
+h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,
+\qquad z_n=\frac{h_n-1}{h_n+1}.
+$$">$$
+h_n=Q^{-1}\sum_{k=1}^n\lfloor Q/k\rfloor\le H_n,
+\qquad z_n=\frac{h_n-1}{h_n+1}.
+$$</span>
+For <span class="math" data-tex="$n\ge2$">$n\ge2$</span>, <span class="math" data-tex="$h_n&gt;1$">$h_n&gt;1$</span> and <span class="math" data-tex="$0&lt;z_n&lt;1$">$0&lt;z_n&lt;1$</span>. Positive series give
+<span class="math math-display" data-tex="$$
+e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad
+\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1}.
+\tag{6.31}
+$$">$$
+e^{h_n}\ge E_n:=\sum_{j=0}^{30}\frac{h_n^j}{j!},\qquad
+\log h_n\ge L_n:=2\sum_{j=0}^{19}\frac{z_n^{2j+1}}{2j+1}.
+\tag{6.31}
+$$</span>
+The logarithm series follows by integrating <span class="math" data-tex="$2/(1-z^2)$">$2/(1-z^2)$</span> from zero to <span class="math" data-tex="$z_n$">$z_n$</span>. Every term omitted in either series is positive. Since <span class="math" data-tex="$h+e^h\log h$">$h+e^h\log h$</span> is increasing for <span class="math" data-tex="$h&gt;1$">$h&gt;1$</span>, the exact inequalities
+<span class="math math-display" data-tex="$$
+\sigma_1(n)&lt;h_n+E_nL_n\qquad(2\le n\le5040)
+\tag{6.32}
+$$">$$
+\sigma_1(n)&lt;h_n+E_nL_n\qquad(2\le n\le5040)
+\tag{6.32}
+$$</span>
+imply the required strictness. The following complete calculation checks all 5039 inequalities (6.32) using only integers and rational fractions. It adds every divisor to exactly its multiples and evaluates the two positive truncated series. Every assertion passes, and the smallest rational margin occurs at <span class="math" data-tex="$n=2$">$n=2$</span>.</p>
+<pre><code class="language-python">from fractions import Fraction
+from math import factorial
+Q=10**6
+sigma=[0]*5041
+for d in range(1,5041):
+    for n in range(d,5041,d):sigma[n]+=d
+h=0
+minimum=None
+for n in range(1,5041):
+    h+=Q//n
+    if n==1:continue
+    H=Fraction(h,Q)
+    z=(H-1)/(H+1)
+    log_lower=2*sum((z**(2*j+1)/(2*j+1) for j in range(20)),Fraction())
+    exp_lower=sum((H**j/factorial(j) for j in range(31)),Fraction())
+    margin=H+exp_lower*log_lower-sigma[n]
+    assert margin&gt;0,(n,margin)
+    if minimum is None or margin&lt;minimum[1]:minimum=(n,margin)
+print('All 5039 strict harmonic inequalities passed; '
+      'smallest margin at',minimum[0])
+</code></pre>
+<p>Together with (6.30), these finite comparisons prove the equality assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Example 6.9 (the exceptional endpoint).</strong> Since <span class="math" data-tex="$5040=2^4\cdot3^2\cdot5\cdot7$">$5040=2^4\cdot3^2\cdot5\cdot7$</span>,
+<span class="math math-display" data-tex="$$
+\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344.
+$$">$$
+\sigma_1(5040)=(1+2+4+8+16)(1+3+9)(1+5)(1+7)=19344.
+$$</span>
+Direct numerical evaluation gives
+<span class="math math-display" data-tex="$$
+e^\gamma\,5040\log\log5040=19237.0615316637\ldots.
+$$">$$
+e^\gamma\,5040\log\log5040=19237.0615316637\ldots.
+$$</span>
+The first verifier also proves the strict rational bounds <span class="math" data-tex="$\gamma&lt;579/1000$">$\gamma&lt;579/1000$</span>, <span class="math" data-tex="$e^{579/1000}&lt;357/200$">$e^{579/1000}&lt;357/200$</span>, and <span class="math" data-tex="$\log\log5040&lt;1073/500$">$\log\log5040&lt;1073/500$</span>. The exponential bound uses its first 20 Taylor terms, with the remaining terms bounded by the geometric tail of ratio <span class="math" data-tex="$(579/1000)/21$">$(579/1000)/21$</span>. Thus
+<span class="math math-display" data-tex="$$
+e^\gamma5040\log\log5040&lt;\frac{357}{200}\frac{1073}{500}5040&lt;19344,
+$$">$$
+e^\gamma5040\log\log5040&lt;\frac{357}{200}\frac{1073}{500}5040&lt;19344,
+$$</span>
+which proves that Robin's inequality fails at 5040. The strict range <span class="math" data-tex="$n&gt;5040$">$n&gt;5040$</span> cannot be replaced by <span class="math" data-tex="$n\ge5040$">$n\ge5040$</span>. In contrast, the endpoint <span class="math" data-tex="$n=1$">$n=1$</span> belongs in (6.2), with its non-strict sign: <span class="math" data-tex="$H_1=1$">$H_1=1$</span>, <span class="math" data-tex="$\log H_1=0$">$\log H_1=0$</span>, and <span class="math" data-tex="$\sigma_1(1)=1$">$\sigma_1(1)=1$</span>.</p>
+<h2 id="7-the-nyman-beurling-approximation-criterion">7. The Nyman–Beurling approximation criterion</h2>
+<p>Let <span class="math" data-tex="$\{u\}=u-\lfloor u\rfloor$">$\{u\}=u-\lfloor u\rfloor$</span>. For <span class="math" data-tex="$0&lt;\theta\le1$">$0&lt;\theta\le1$</span> define
+<span class="math math-display" data-tex="$$
+f_\theta(x)=\{\theta/x\}-\theta\{1/x\}\qquad(0&lt;x&lt;1).
+\tag{7.1}
+$$">$$
+f_\theta(x)=\{\theta/x\}-\theta\{1/x\}\qquad(0&lt;x&lt;1).
+\tag{7.1}
+$$</span>
+Their linear span is exactly the set of finite sums <span class="math" data-tex="$\sum c_\nu\{\theta_\nu/x\}$">$\sum c_\nu\{\theta_\nu/x\}$</span> with <span class="math" data-tex="$0&lt;\theta_\nu\le1$">$0&lt;\theta_\nu\le1$</span> and <span class="math" data-tex="$\sum c_\nu\theta_\nu=0$">$\sum c_\nu\theta_\nu=0$</span>. Indeed (7.1) has this constraint, and subtracting <span class="math" data-tex="$\sum c_\nu\theta_\nu\{1/x\}=0$">$\sum c_\nu\theta_\nu\{1/x\}=0$</span> expresses every constrained sum through the <span class="math" data-tex="$f_\theta$">$f_\theta$</span>. Extend these functions by zero to <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>; the same formula already gives zero there. They are bounded and belong to <span class="math" data-tex="$L^2(0,1)$">$L^2(0,1)$</span>.</p>
+<figure><img src="figures/NT-ZETA-14/fractional_parts.png" alt="Fractional-part generators and cancellation of their tail" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1.</em> Left: exact generators (7.1), <span class="math" data-tex="$\theta=1/2,3/4$">$\theta=1/2,3/4$</span>, on <span class="math" data-tex="$0.08&lt;x&lt;1.5$">$0.08&lt;x&lt;1.5$</span>; jump endpoints are immaterial in <span class="math" data-tex="$L^2$">$L^2$</span>. Right: tails <span class="math" data-tex="$\theta/x$">$\theta/x$</span> and their constrained cancellation for <span class="math" data-tex="$x&gt;1$">$x&gt;1$</span>. Individual graphs do not establish density.</p>
+<p><strong>Theorem 7.1 (Nyman–Beurling).</strong> RH holds if and only if the span of the functions (7.1) is dense in <span class="math" data-tex="$L^2(0,1)$">$L^2(0,1)$</span>. Equivalently, the constant function one belongs to its closure.</p>
+<p>We give the analytic ingredients before the proof. The method follows the Möbius approximation of Báez-Duarte and its analytic treatments by Burnol and Bagchi. A smoothed finite sum supplies the uniform estimate needed here.</p>
+<p><strong>Lemma 7.2 (Mellin isometry and the fractional parts).</strong> On the line <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>, the Mellin transform
+<span class="math math-display" data-tex="$$
+\mathcal Tf(s)=\int_0^\infty f(x)x^{s-1}\,dx
+$$">$$
+\mathcal Tf(s)=\int_0^\infty f(x)x^{s-1}\,dx
+$$</span>
+extends to an isometry from <span class="math" data-tex="$L^2(0,\infty;dx)$">$L^2(0,\infty;dx)$</span> onto <span class="math" data-tex="$L^2(\mathbb R,dt/(2\pi))$">$L^2(\mathbb R,dt/(2\pi))$</span>. If <span class="math" data-tex="$f$">$f$</span> is supported in <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, its transform is also a holomorphic function for <span class="math" data-tex="$\Re s&gt;1/2$">$\Re s&gt;1/2$</span>, and evaluation there is continuous. Moreover
+<span class="math math-display" data-tex="$$
+\mathcal Tf_\theta(s)=-\frac{\zeta(s)}s(\theta^s-\theta)
+\qquad(\Re s&gt;1/2),
+\tag{7.2}
+$$">$$
+\mathcal Tf_\theta(s)=-\frac{\zeta(s)}s(\theta^s-\theta)
+\qquad(\Re s&gt;1/2),
+\tag{7.2}
+$$</span>
+with the removable value at one.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="$x=e^u$">$x=e^u$</span> and <span class="math" data-tex="$h(u)=e^{u/2}f(e^u)$">$h(u)=e^{u/2}f(e^u)$</span>. Then <span class="math" data-tex="$\int|h|^2du=\int|f|^2dx$">$\int|h|^2du=\int|f|^2dx$</span>, and the Mellin transform on the indicated line is the Fourier transform <span class="math" data-tex="$\int h(u)e^{itu}du$">$\int h(u)e^{itu}du$</span>.</p>
+<p>Here is the norm identity needed for that transform. Initially take smooth compactly supported <span class="math" data-tex="$h$">$h$</span>. Multiplying the squared Fourier transform by <span class="math" data-tex="$e^{-\eta t^2}$">$e^{-\eta t^2}$</span> and applying Fubini gives
+<span class="math math-display" data-tex="$$
+\frac1{2\pi}\int|\widehat h(t)|^2e^{-\eta t^2}dt
+=\int h(u)\overline{(h*K_\eta)(u)}du,
+\quad K_\eta(v)=\frac{e^{-v^2/(4\eta)}}{\sqrt{4\pi\eta}}.
+$$">$$
+\frac1{2\pi}\int|\widehat h(t)|^2e^{-\eta t^2}dt
+=\int h(u)\overline{(h*K_\eta)(u)}du,
+\quad K_\eta(v)=\frac{e^{-v^2/(4\eta)}}{\sqrt{4\pi\eta}}.
+$$</span>
+The Gaussian Fourier integral follows from the Gaussian calculation in the theta lesson. <span class="math" data-tex="$K_\eta$">$K_\eta$</span> has integral one and concentrates at zero; splitting at <span class="math" data-tex="$|v|=r$">$|v|=r$</span> proves <span class="math" data-tex="$h*K_\eta\to h$">$h*K_\eta\to h$</span> in <span class="math" data-tex="$L^2$">$L^2$</span>. Monotone convergence on the left gives the norm identity. Density extends the transform isometrically to <span class="math" data-tex="$L^2$">$L^2$</span>. Applying the inverse transform with the same Gaussian cutoff recovers every smooth compactly supported function, so the range, which is closed, is dense and hence all of <span class="math" data-tex="$L^2$">$L^2$</span>. This proves the isometry.</p>
+<p>For support in <span class="math" data-tex="$(0,1)$">$(0,1)$</span>, Cauchy–Schwarz gives
+<span class="math math-display" data-tex="$$
+|\mathcal Tf(s)|\le\frac{\|f\|_2}{\sqrt{2\sigma-1}}.
+\tag{7.3}
+$$">$$
+|\mathcal Tf(s)|\le\frac{\|f\|_2}{\sqrt{2\sigma-1}}.
+\tag{7.3}
+$$</span>
+On compact subsets with <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>, the same estimate with additional powers of <span class="math" data-tex="$|\log x|$">$|\log x|$</span> permits differentiation and proves holomorphy. For <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, summing the intervals where <span class="math" data-tex="$\lfloor\theta/x\rfloor$">$\lfloor\theta/x\rfloor$</span> is constant gives
+<span class="math math-display" data-tex="$$
+\int_0^1\{\theta/x\}x^{s-1}dx
+=\frac\theta{s-1}-\frac{\theta^s\zeta(s)}s.
+$$">$$
+\int_0^1\{\theta/x\}x^{s-1}dx
+=\frac\theta{s-1}-\frac{\theta^s\zeta(s)}s.
+$$</span>
+One can equivalently write <span class="math" data-tex="$\lfloor\theta/x\rfloor=\sum_{k\ge1}\mathbf1_{x\le\theta/k}$">$\lfloor\theta/x\rfloor=\sum_{k\ge1}\mathbf1_{x\le\theta/k}$</span> and integrate the absolutely convergent sum. Subtract the case <span class="math" data-tex="$\theta=1$">$\theta=1$</span> multiplied by <span class="math" data-tex="$\theta$">$\theta$</span>. The pole terms cancel, giving (7.2); holomorphic continuation extends it to <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>, and the bounded fractional parts give its boundary values. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 7.3 (a smoothed reciprocal approximation).</strong> Assume RH, fix <span class="math" data-tex="$0&lt;\epsilon&lt;1/4$">$0&lt;\epsilon&lt;1/4$</span> and <span class="math" data-tex="$0&lt;\eta&lt;1$">$0&lt;\eta&lt;1$</span>, and put
+<span class="math math-display" data-tex="$$
+P_{\epsilon,N}(s)=\sum_{n\le N}\frac{\mu(n)}{n^{s+\epsilon}}(1-n/N).
+$$">$$
+P_{\epsilon,N}(s)=\sum_{n\le N}\frac{\mu(n)}{n^{s+\epsilon}}(1-n/N).
+$$</span>
+For <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>,
+<span class="math math-display" data-tex="$$
+P_{\epsilon,N}(s)=\frac1{\zeta(s+\epsilon)}
++O_{\epsilon,\eta}(N^{-\epsilon/2}\tau^\eta).
+\tag{7.4}
+$$">$$
+P_{\epsilon,N}(s)=\frac1{\zeta(s+\epsilon)}
++O_{\epsilon,\eta}(N^{-\epsilon/2}\tau^\eta).
+\tag{7.4}
+$$</span></p>
+<p><strong>Proof.</strong> The absolutely convergent kernel integral, for <span class="math" data-tex="$c&gt;0$">$c&gt;0$</span>, is
+<span class="math math-display" data-tex="$$
+\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+\frac{y^w}{w(w+1)}dw=(1-y^{-1})_+.
+$$">$$
+\frac1{2\pi i}\int_{c-i\infty}^{c+i\infty}
+\frac{y^w}{w(w+1)}dw=(1-y^{-1})_+.
+$$</span>
+For <span class="math" data-tex="$y&gt;1$">$y&gt;1$</span>, close to the left and take residues at zero and minus one; for <span class="math" data-tex="$0&lt;y&lt;1$">$0&lt;y&lt;1$</span>, close to the right. The horizontal integrals vanish by the quadratic denominator, followed by the outer vertical line. At <span class="math" data-tex="$y=1$">$y=1$</span>, the integral is zero by continuity, justified by its integrable majorant on the fixed line. Choosing <span class="math" data-tex="$c=2$">$c=2$</span> and using the absolutely convergent reciprocal series gives
+<span class="math math-display" data-tex="$$
+P_{\epsilon,N}(s)=\frac1{2\pi i}\int_{2-i\infty}^{2+i\infty}
+\frac{N^w}{w(w+1)\zeta(s+\epsilon+w)}dw.
+$$">$$
+P_{\epsilon,N}(s)=\frac1{2\pi i}\int_{2-i\infty}^{2+i\infty}
+\frac{N^w}{w(w+1)\zeta(s+\epsilon+w)}dw.
+$$</span>
+Shift to <span class="math" data-tex="$\Re w=-\epsilon/2$">$\Re w=-\epsilon/2$</span>. Under RH the reciprocal is holomorphic in the intervening half-plane, including its removable zero at one. Only the kernel pole at zero is crossed, with residue <span class="math" data-tex="$1/\zeta(s+\epsilon)$">$1/\zeta(s+\epsilon)$</span>. Theorem 3.2 bounds the integrand on the new line by
+<span class="math math-display" data-tex="$$
+C_{\epsilon,\eta}N^{-\epsilon/2}
+\frac{(|t+v|+4)^\eta}{1+v^2}.
+$$">$$
+C_{\epsilon,\eta}N^{-\epsilon/2}
+\frac{(|t+v|+4)^\eta}{1+v^2}.
+$$</span>
+Since <span class="math" data-tex="$|t+v|+4\le\tau(1+|v|)$">$|t+v|+4\le\tau(1+|v|)$</span> and <span class="math" data-tex="$\eta&lt;1$">$\eta&lt;1$</span>, its integral is <span class="math" data-tex="$O(N^{-\epsilon/2}\tau^\eta)$">$O(N^{-\epsilon/2}\tau^\eta)$</span>. The same bound on horizontal segments is <span class="math" data-tex="$O_{N,t}(V^{\eta-2})$">$O_{N,t}(V^{\eta-2})$</span> as their heights <span class="math" data-tex="$V$">$V$</span> tend to infinity, justifying the shift. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Lemma 7.4 (a uniform zeta ratio).</strong> Under RH, on <span class="math" data-tex="$s=1/2+it$">$s=1/2+it$</span>,
+<span class="math math-display" data-tex="$$
+\left|\frac{\zeta(s)}{\zeta(s+\epsilon)}\right|
+\le C\tau^{\epsilon/2}\qquad(0&lt;\epsilon\le1/4).
+\tag{7.5}
+$$">$$
+\left|\frac{\zeta(s)}{\zeta(s+\epsilon)}\right|
+\le C\tau^{\epsilon/2}\qquad(0&lt;\epsilon\le1/4).
+\tag{7.5}
+$$</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="$\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$">$\xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$</span>. Its functional equation makes <span class="math" data-tex="$w\mapsto\xi(1/2+w)$">$w\mapsto\xi(1/2+w)$</span> even. Its Hadamard product, proved in the entire-function lesson, therefore takes the paired form
+<span class="math math-display" data-tex="$$
+\xi(1/2+w)=\xi(1/2)\prod_{\gamma&gt;0}(1+w^2/\gamma^2)
+$$">$$
+\xi(1/2+w)=\xi(1/2)\prod_{\gamma&gt;0}(1+w^2/\gamma^2)
+$$</span>
+under RH, with multiplicities. The sum <span class="math" data-tex="$\sum\gamma^{-2}$">$\sum\gamma^{-2}$</span> converges; pairing the genus-one factors leaves an exponential of degree at most one, whose linear term vanishes by evenness. There is no zero at <span class="math" data-tex="$1/2$">$1/2$</span>, since zeta has no real zero in <span class="math" data-tex="$(0,1)$">$(0,1)$</span> by the alternating-series identity. For <span class="math" data-tex="$w=it$">$w=it$</span>, each factor has modulus no larger than its value at <span class="math" data-tex="$w=\epsilon+it$">$w=\epsilon+it$</span>, because
+<span class="math math-display" data-tex="$$
+|\gamma^2+(\epsilon+it)^2|^2-(\gamma^2-t^2)^2
+=2\epsilon^2(\gamma^2+t^2)+\epsilon^4\ge0.
+$$">$$
+|\gamma^2+(\epsilon+it)^2|^2-(\gamma^2-t^2)^2
+=2\epsilon^2(\gamma^2+t^2)+\epsilon^4\ge0.
+$$</span>
+Taking the limits of the paired products gives <span class="math" data-tex="$|\xi(s)/\xi(s+\epsilon)|\le1$">$|\xi(s)/\xi(s+\epsilon)|\le1$</span>. Restoring the other factors gives
+<span class="math math-display" data-tex="$$
+\left|\frac{\zeta(s)}{\zeta(s+\epsilon)}\right|
+\le\pi^{-\epsilon/2}
+\left|\frac{(s+\epsilon)(s+\epsilon-1)}{s(s-1)}\right|
+\left|\frac{\Gamma((s+\epsilon)/2)}{\Gamma(s/2)}\right|.
+$$">$$
+\left|\frac{\zeta(s)}{\zeta(s+\epsilon)}\right|
+\le\pi^{-\epsilon/2}
+\left|\frac{(s+\epsilon)(s+\epsilon-1)}{s(s-1)}\right|
+\left|\frac{\Gamma((s+\epsilon)/2)}{\Gamma(s/2)}\right|.
+$$</span>
+The rational factor is bounded uniformly on this line and range of <span class="math" data-tex="$\epsilon$">$\epsilon$</span>. The uniform Stirling formula bounds the gamma ratio by <span class="math" data-tex="$C\tau^{\epsilon/2}$">$C\tau^{\epsilon/2}$</span> at large heights; compactness covers the remaining heights since the gamma arguments stay away from poles. This proves (7.5). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p><strong>Proof of Theorem 7.1.</strong> Assume RH. For fixed <span class="math" data-tex="$\epsilon$">$\epsilon$</span>, take the finite constrained sums
+<span class="math math-display" data-tex="$$
+g_{\epsilon,N}(x)=-\sum_{n\le N}\mu(n)n^{-\epsilon}(1-n/N)f_{1/n}(x).
+$$">$$
+g_{\epsilon,N}(x)=-\sum_{n\le N}\mu(n)n^{-\epsilon}(1-n/N)f_{1/n}(x).
+$$</span>
+By (7.2), their Mellin transforms on the critical line are
+<span class="math math-display" data-tex="$$
+\frac{\zeta(s)}s\bigl(P_{\epsilon,N}(s)-P_{\epsilon,N}(1)\bigr).
+$$">$$
+\frac{\zeta(s)}s\bigl(P_{\epsilon,N}(s)-P_{\epsilon,N}(1)\bigr).
+$$</span>
+As <span class="math" data-tex="$N\to\infty$">$N\to\infty$</span>, <span class="math" data-tex="$P_{\epsilon,N}(1)\to1/\zeta(1+\epsilon)$">$P_{\epsilon,N}(1)\to1/\zeta(1+\epsilon)$</span> by absolute convergence. Lemma 7.3, with <span class="math" data-tex="$\eta=1/16$">$\eta=1/16$</span>, shows that the transforms converge in <span class="math" data-tex="$L^2$">$L^2$</span> to
+<span class="math math-display" data-tex="$$
+G_\epsilon(s)=\frac{\zeta(s)}s
+\left(\frac1{\zeta(s+\epsilon)}-\frac1{\zeta(1+\epsilon)}\right).
+\tag{7.6}
+$$">$$
+G_\epsilon(s)=\frac{\zeta(s)}s
+\left(\frac1{\zeta(s+\epsilon)}-\frac1{\zeta(1+\epsilon)}\right).
+\tag{7.6}
+$$</span>
+Indeed the error in (7.4), multiplied by <span class="math" data-tex="$\zeta(s)/s$">$\zeta(s)/s$</span>, has a square-integrable majorant: the proved convexity bound gives <span class="math" data-tex="$\zeta(1/2+it)\ll\tau^{1/4+1/16}$">$\zeta(1/2+it)\ll\tau^{1/4+1/16}$</span>, so the product is <span class="math" data-tex="$O(\tau^{-5/8})$">$O(\tau^{-5/8})$</span>. The constant-term error multiplies the square-integrable function <span class="math" data-tex="$\zeta(s)/s$">$\zeta(s)/s$</span>. The isometry therefore makes (7.6) the transform of a member of the closed constrained span.</p>
+<p>Now let <span class="math" data-tex="$\epsilon\downarrow0$">$\epsilon\downarrow0$</span>. Except at the discrete zeros on the line, <span class="math" data-tex="$\zeta(s)/\zeta(s+\epsilon)\to1$">$\zeta(s)/\zeta(s+\epsilon)\to1$</span>, and the simple pole at one gives <span class="math" data-tex="$1/\zeta(1+\epsilon)\to0$">$1/\zeta(1+\epsilon)\to0$</span>. Thus (7.6) tends to <span class="math" data-tex="$1/s$">$1/s$</span> almost everywhere. Lemma 7.4 bounds its first term uniformly by <span class="math" data-tex="$C\tau^{-7/8}$">$C\tau^{-7/8}$</span>. Its second term is bounded by <span class="math" data-tex="$C|\zeta(s)/s|$">$C|\zeta(s)/s|$</span>, also square-integrable. Dominated convergence gives <span class="math" data-tex="$G_\epsilon\to1/s$">$G_\epsilon\to1/s$</span> in <span class="math" data-tex="$L^2$">$L^2$</span>. Since <span class="math" data-tex="$1/s$">$1/s$</span> is the transform of <span class="math" data-tex="$\mathbf1_{(0,1)}$">$\mathbf1_{(0,1)}$</span>, the constant one belongs to the closed span.</p>
+<p>Conversely, suppose one belongs to that closure and let <span class="math" data-tex="$\rho$">$\rho$</span> be a zero with <span class="math" data-tex="$\Re\rho&gt;1/2$">$\Re\rho&gt;1/2$</span>. Equation (7.2) says that every constrained finite sum has Mellin transform zero at <span class="math" data-tex="$\rho$">$\rho$</span>. The evaluation bound (7.3) preserves that zero under <span class="math" data-tex="$L^2$">$L^2$</span> limits. But the transform of one at <span class="math" data-tex="$\rho$">$\rho$</span> is <span class="math" data-tex="$1/\rho\ne0$">$1/\rho\ne0$</span>. This contradiction excludes such a zero; symmetry gives RH.</p>
+<p>Finally, membership of one in the closure implies density. Extend all functions by zero beyond one. For <span class="math" data-tex="$0&lt;a\le1$">$0&lt;a\le1$</span>, the bounded dilation <span class="math" data-tex="$D_a f(x)=f(x/a)$">$D_a f(x)=f(x/a)$</span> has norm <span class="math" data-tex="$\sqrt a\|f\|_2$">$\sqrt a\|f\|_2$</span> and preserves the span, since
+<span class="math math-display" data-tex="$$
+D_af_\theta=f_{a\theta}-\theta f_a.
+$$">$$
+D_af_\theta=f_{a\theta}-\theta f_a.
+$$</span>
+Hence its closure contains <span class="math" data-tex="$D_a\mathbf1_{(0,1)}=\mathbf1_{(0,a)}$">$D_a\mathbf1_{(0,1)}=\mathbf1_{(0,a)}$</span> for every <span class="math" data-tex="$a$">$a$</span>. Differences give all interval step functions, which are dense in <span class="math" data-tex="$L^2(0,1)$">$L^2(0,1)$</span> by approximation of square-integrable functions by simple functions and intervals. Density trivially implies membership of one, proving all the assertions. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="8-positivity-and-the-lindelöf-hypothesis">8. Positivity and the Lindelöf hypothesis</h2>
+<p>Li's criterion encodes the zero locations in a sequence of real numbers,
+<span class="math math-display" data-tex="$$
+\lambda_n=\sum_\rho\left[1-(1-1/\rho)^n\right]
+=\frac1{(n-1)!}\left.\frac{d^n}{ds^n}[s^{n-1}\log\xi(s)]\right|_{s=1}.
+\tag{8.1}
+$$">$$
+\lambda_n=\sum_\rho\left[1-(1-1/\rho)^n\right]
+=\frac1{(n-1)!}\left.\frac{d^n}{ds^n}[s^{n-1}\log\xi(s)]\right|_{s=1}.
+\tag{8.1}
+$$</span>
+The zero sum is symmetric in height and retains multiplicities. RH is equivalent to <span class="math" data-tex="$\lambda_n\ge0$">$\lambda_n\ge0$</span> for every <span class="math" data-tex="$n\ge1$">$n\ge1$</span>. The equality of the definitions and the criterion are proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-06.html">Li's criterion</a>, Proposition 1.1 and Theorem 3.2. That lesson also proves the positive-coefficient singularity theorem needed for the converse. A finite list of positive coefficients cannot replace the universal condition.</p>
+<p>Weil's criterion instead uses a quadratic form on test functions. With Mellin transform <span class="math" data-tex="$\widetilde g(s)=\int_0^\infty g(x)x^{s-1}dx$">$\widetilde g(s)=\int_0^\infty g(x)x^{s-1}dx$</span>, its zero form is
+<span class="math math-display" data-tex="$$
+Q(g)=\sum_\rho\widetilde g(\rho)
+\overline{\widetilde g(1-\bar\rho)}.
+\tag{8.2}
+$$">$$
+Q(g)=\sum_\rho\widetilde g(\rho)
+\overline{\widetilde g(1-\bar\rho)}.
+\tag{8.2}
+$$</span>
+Under RH, this becomes <span class="math" data-tex="$\sum_\rho|\widetilde g(\rho)|^2\ge0$">$\sum_\rho|\widetilde g(\rho)|^2\ge0$</span>. An exact test class is the space <span class="math" data-tex="$\mathcal G$">$\mathcal G$</span> for which <span class="math" data-tex="$h(u)=g(e^u)$">$h(u)=g(e^u)$</span> is smooth and <span class="math" data-tex="$e^{a|u|}h^{(k)}(u)$">$e^{a|u|}h^{(k)}(u)$</span> is bounded for every <span class="math" data-tex="$a&gt;0$">$a&gt;0$</span> and <span class="math" data-tex="$k\ge0$">$k\ge0$</span>. RH is equivalent to <span class="math" data-tex="$Q(g)\ge0$">$Q(g)\ge0$</span> for every <span class="math" data-tex="$g\in\mathcal G$">$g\in\mathcal G$</span>; the proof, including the converse built from Gaussians, is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html">Weil's proof for curves and what is missing over the integers</a>, Theorem 6.4. The compact-support criterion is proved in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-04.html"><em>Weil's positivity criterion</em></a>, Lemma 3.1 and Theorem 4.1. Its compact interpolation construction includes exact vanishing at any admissible finite set; take that set to be <span class="math" data-tex="$\{0,1\}$">$\{0,1\}$</span>. Thus <span class="math" data-tex="$g\in C_c^\infty(\mathbb R_+^*)$">$g\in C_c^\infty(\mathbb R_+^*)$</span>, with <span class="math" data-tex="$\widetilde g(0)=\widetilde g(1)=0$">$\widetilde g(0)=\widetilde g(1)=0$</span>, and RH is equivalent to <span class="math" data-tex="$Q(g)\ge0$">$Q(g)\ge0$</span> for every such <span class="math" data-tex="$g$">$g$</span>. The explicit formula expresses this form through local terms with only finitely many primes for each test function. The sign of a local distribution depends on the normalization; the zero form (8.2) fixes the sign used here.</p>
+<p>The Lindelöf hypothesis is the assertion <span class="math" data-tex="$\zeta(1/2+it)\ll_\varepsilon\tau^\varepsilon$">$\zeta(1/2+it)\ll_\varepsilon\tau^\varepsilon$</span> for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. It concerns growth on the line, whereas RH concerns all zero locations. The relation between these assertions is studied further in <a href="NT-ZETA-18.html">Growth on the critical line</a>, Section 2; that later lesson supplies its own argument. The reciprocal estimate in Theorem 3.2 already supplies one analytic ingredient for that later proof.</p>
+<h2 id="9-numerical-evidence-and-the-finite-field-theorem">9. Numerical evidence and the finite-field theorem</h2>
+<p>A finite verification needs a lower count on the critical line and an upper count for all zeros in the same region. Set <span class="math" data-tex="$F(t)=\xi(1/2+it)$">$F(t)=\xi(1/2+it)$</span>; conjugation and the functional equation proved in <a href="NT-ZETA-04.html">Poisson summation, theta and the functional equation</a> make <span class="math" data-tex="$F$">$F$</span> continuous and real. Fix a positive height with no boundary zero. If <span class="math" data-tex="$F$">$F$</span> has certified opposite signs at the endpoints of each of <span class="math" data-tex="$m$">$m$</span> disjoint intervals, continuity gives at least <span class="math" data-tex="$m$">$m$</span> distinct critical-line zeros. If a certified argument-principle calculation gives at most <span class="math" data-tex="$m$">$m$</span> nontrivial zeros in that region, counted with multiplicity, the counts agree. An omitted zero, an off-line pair or an extra multiplicity would increase the total, so every zero there is simple and on the line. The argument principle is proved in <a href="NT-ZETA-01.html">Dirichlet series and Euler products</a>, Appendix A. Sample signs alone supply only the lower count. Every fixed finite height leaves larger heights outside its conclusion.</p>
+<p>The geometric analogue is a theorem. For a smooth projective geometrically connected curve <span class="math" data-tex="$C/\mathbb F_q$">$C/\mathbb F_q$</span> of genus <span class="math" data-tex="$g$">$g$</span>,
+<span class="math math-display" data-tex="$$
+Z(C,T)=\frac{\prod_{j=1}^{2g}(1-\alpha_jT)}{(1-T)(1-qT)},
+\qquad |\alpha_j|=\sqrt q
+\tag{9.1}
+$$">$$
+Z(C,T)=\frac{\prod_{j=1}^{2g}(1-\alpha_jT)}{(1-T)(1-qT)},
+\qquad |\alpha_j|=\sqrt q
+\tag{9.1}
+$$</span>
+under every complex embedding. Appendix B below proves the surface intersection, degree, duality and Hodge inputs. The remaining correspondence argument is proved in the earlier programme lesson <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html">Weil's proof for curves and what is missing over the integers</a>, Sections 2–3, culminating in Theorem 3.12. Appendix B.5 gives the exact proof locators and matches their hypotheses. With <span class="math" data-tex="$T=q^{-s}$">$T=q^{-s}$</span>, a numerator zero has <span class="math" data-tex="$|T|=q^{-1/2}$">$|T|=q^{-1/2}$</span>, hence <span class="math" data-tex="$\Re s=1/2$">$\Re s=1/2$</span>.</p>
+<p>For higher dimensions, let <span class="math" data-tex="$X_0/\mathbb F_q$">$X_0/\mathbb F_q$</span> be smooth and projective, <span class="math" data-tex="$X=X_0\times_{\mathbb F_q}\overline{\mathbb F}_q$">$X=X_0\times_{\mathbb F_q}\overline{\mathbb F}_q$</span>, and <span class="math" data-tex="$\ell\ne\operatorname{char}\mathbb F_q$">$\ell\ne\operatorname{char}\mathbb F_q$</span>. Deligne's theorem asserts that
+<span class="math math-display" data-tex="$$
+\det(U-F\mid H^i_{\mathrm{\acute et}}(X,\mathbb Q_\ell))\in\mathbb Z[U]
+\tag{9.2}
+$$">$$
+\det(U-F\mid H^i_{\mathrm{\acute et}}(X,\mathbb Q_\ell))\in\mathbb Z[U]
+\tag{9.2}
+$$</span>
+is independent of <span class="math" data-tex="$\ell$">$\ell$</span>, and every complex conjugate <span class="math" data-tex="$\alpha$">$\alpha$</span> of an eigenvalue satisfies <span class="math" data-tex="$|\alpha|=q^{i/2}$">$|\alpha|=q^{i/2}$</span>. Here <span class="math" data-tex="$F$">$F$</span> has the geometric Frobenius convention, acting as <span class="math" data-tex="$q^r$">$q^r$</span> on <span class="math" data-tex="$\mathbb Q_\ell(-r)$">$\mathbb Q_\ell(-r)$</span>. The full proof provider is <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-LTF/the-riemann-hypothesis-over-finite-fields.html">The Riemann hypothesis over finite fields</a>, Theorem 1.1 and Sections 5–6; it is already written. Its Section 6 proves integrality and independence of <span class="math" data-tex="$\ell$">$\ell$</span>, as well as purity. The historical statement is Deligne, <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf"><em>La conjecture de Weil I</em>, freely readable full text</a>, Theorem (1.6). The apparently weaker all-conjugates purity statement is his Lemma (1.7); the integer-polynomial assertion is part of (1.6).</p>
+<p>Thus the analogy supplies a proved geometric model. It does not transfer that theorem to the ordinary Riemann zeta function: the finite-field proof uses geometric structures whose arithmetic counterparts require their own construction.</p>
+<h2 id="10-exercises-with-solutions">10. Exercises with solutions</h2>
+<p><strong>Exercise 1 (easy).</strong> Suppose <span class="math" data-tex="$\psi(x)-x\ll_\varepsilon x^{1/2+\varepsilon}$">$\psi(x)-x\ll_\varepsilon x^{1/2+\varepsilon}$</span> for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. Prove the same bound for <span class="math" data-tex="$\theta(x)-x$">$\theta(x)-x$</span>.</p>
+<p><strong>Solution.</strong> The prime-power comparison gives <span class="math" data-tex="$0\le\psi(x)-\theta(x)\ll\sqrt x$">$0\le\psi(x)-\theta(x)\ll\sqrt x$</span>. Subtract it from <span class="math" data-tex="$\psi(x)-x$">$\psi(x)-x$</span> and apply the triangle inequality. Since <span class="math" data-tex="$\sqrt x\le x^{1/2+\varepsilon}$">$\sqrt x\le x^{1/2+\varepsilon}$</span> for <span class="math" data-tex="$x\ge1$">$x\ge1$</span>, the requested bound follows for each <span class="math" data-tex="$\varepsilon$">$\varepsilon$</span>.</p>
+<p><strong>Exercise 2 (medium).</strong> Prove that RH is equivalent to <span class="math" data-tex="$M(x)=O_\varepsilon(x^{1/2+\varepsilon})$">$M(x)=O_\varepsilon(x^{1/2+\varepsilon})$</span> for every <span class="math" data-tex="$\varepsilon&gt;0$">$\varepsilon&gt;0$</span>. Identify why nonvanishing alone is insufficient for the forward direction.</p>
+<p><strong>Solution.</strong> Under RH, Theorem 3.2 supplies the reciprocal growth bound. Apply bounded-coefficient Perron at the half-integer <span class="math" data-tex="$X=\lfloor x\rfloor+1/2$">$X=\lfloor x\rfloor+1/2$</span> with <span class="math" data-tex="$T=X$">$T=X$</span> and shift to <span class="math" data-tex="$\sigma=1/2+\varepsilon/4$">$\sigma=1/2+\varepsilon/4$</span>. With reciprocal exponent <span class="math" data-tex="$\varepsilon/4$">$\varepsilon/4$</span>, the vertical integral is <span class="math" data-tex="$O_\varepsilon(X^{1/2+\varepsilon/2})$">$O_\varepsilon(X^{1/2+\varepsilon/2})$</span>, the horizontal integrals are <span class="math" data-tex="$O_\varepsilon(X^{\varepsilon/4}/\log X)$">$O_\varepsilon(X^{\varepsilon/4}/\log X)$</span>, and the Perron error is <span class="math" data-tex="$O(\log X)$">$O(\log X)$</span>. There is no residue. This is the desired bound, exactly as justified in Theorem 4.1. Nonvanishing permits the shift but does not bound its integrals.</p>
+<p>Conversely, the asserted estimates make <span class="math" data-tex="$s\int_1^\infty M(u)u^{-s-1}du$">$s\int_1^\infty M(u)u^{-s-1}du$</span> holomorphic in <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span>: on a compact set choose an exponent smaller than its distance from the boundary. It equals <span class="math" data-tex="$1/\zeta(s)$">$1/\zeta(s)$</span> for <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, hence its product with zeta is identically one by continuation. A zero in <span class="math" data-tex="$\sigma&gt;1/2$">$\sigma&gt;1/2$</span> would contradict this identity. Reflection symmetry then gives RH.</p>
+<p><strong>Exercise 3 (medium).</strong> Derive the von Koch bound for <span class="math" data-tex="$\pi$">$\pi$</span> from the RH bound for <span class="math" data-tex="$\psi$">$\psi$</span>.</p>
+<p><strong>Solution.</strong> Remove the <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span> prime-power contribution to get <span class="math" data-tex="$\theta(x)=x+O(\sqrt x\log^2x)$">$\theta(x)=x+O(\sqrt x\log^2x)$</span>. Insert this in the exact partial-summation identity <span class="math" data-tex="$\pi(x)=\theta(x)/\log x+\int_2^x\theta(u)/(u\log^2u)du$">$\pi(x)=\theta(x)/\log x+\int_2^x\theta(u)/(u\log^2u)du$</span>. The endpoint error is <span class="math" data-tex="$O(\sqrt x\log x)$">$O(\sqrt x\log x)$</span> and the integral error is <span class="math" data-tex="$O(\sqrt x)$">$O(\sqrt x)$</span>. The main term is <span class="math" data-tex="$\operatorname{Li}(x)+2/\log2$">$\operatorname{Li}(x)+2/\log2$</span>, whose constant difference from <span class="math" data-tex="$\operatorname{li}(x)$">$\operatorname{li}(x)$</span> is absorbed. Therefore <span class="math" data-tex="$\pi(x)=\operatorname{li}(x)+O(\sqrt x\log x)$">$\pi(x)=\operatorname{li}(x)+O(\sqrt x\log x)$</span>.</p>
+<p><strong>Exercise 4 (medium).</strong> If <span class="math" data-tex="$\sum\mu(n)n^{-s}$">$\sum\mu(n)n^{-s}$</span> converges at a complex point <span class="math" data-tex="$s_0$">$s_0$</span> with <span class="math" data-tex="$\sigma_0&lt;1$">$\sigma_0&lt;1$</span>, show that zeta has no zero in <span class="math" data-tex="$\sigma&gt;\sigma_0$">$\sigma&gt;\sigma_0$</span>.</p>
+<p><strong>Solution.</strong> The partial sums <span class="math" data-tex="$B(N)=\sum_{n\le N}\mu(n)n^{-s_0}$">$B(N)=\sum_{n\le N}\mu(n)n^{-s_0}$</span> are bounded. Partial summation of <span class="math" data-tex="$\sum\mu(n)n^{-s_0}n^{-(s-s_0)}$">$\sum\mu(n)n^{-s_0}n^{-(s-s_0)}$</span> gives tails bounded on a compact set <span class="math" data-tex="$K\subset\{\sigma&gt;\sigma_0\}$">$K\subset\{\sigma&gt;\sigma_0\}$</span> by <span class="math" data-tex="$C_KN^{-d}$">$C_KN^{-d}$</span>, where <span class="math" data-tex="$d=\min_K\Re(s-s_0)&gt;0$">$d=\min_K\Re(s-s_0)&gt;0$</span>. Thus the sum defines a holomorphic function there. It agrees with <span class="math" data-tex="$1/\zeta$">$1/\zeta$</span> in <span class="math" data-tex="$\sigma&gt;1$">$\sigma&gt;1$</span>, and meromorphic continuation makes its product with zeta identically one. At a zero this would give <span class="math" data-tex="$0=1$">$0=1$</span>. The conclusion concerns the open half-plane, with no claim on its boundary.</p>
+<p><strong>Exercise 5 (hard).</strong> Prove Grönwall's maximal-order theorem using Mertens' third theorem. Check that the lower-bound construction has the correct iterated-logarithm scale.</p>
+<p><strong>Solution.</strong> For the upper bound put <span class="math" data-tex="$y=\log n$">$y=\log n$</span>. The Euler product gives <span class="math" data-tex="$\sigma_1(n)/n&lt;\prod_{p\mid n}(1-1/p)^{-1}$">$\sigma_1(n)/n&lt;\prod_{p\mid n}(1-1/p)^{-1}$</span>. Primes at most <span class="math" data-tex="$y$">$y$</span> contribute at most <span class="math" data-tex="$(e^\gamma+o(1))\log y$">$(e^\gamma+o(1))\log y$</span>. The <span class="math" data-tex="$k$">$k$</span> larger prime factors obey <span class="math" data-tex="$k\log y\le y$">$k\log y\le y$</span>, so their product has logarithm at most <span class="math" data-tex="$2k/y\le2/\log y=o(1)$">$2k/y\le2/\log y=o(1)$</span>. This proves the upper limsup <span class="math" data-tex="$e^\gamma$">$e^\gamma$</span>.</p>
+<p>For the lower bound take <span class="math" data-tex="$a_y=\lceil\log y\rceil$">$a_y=\lceil\log y\rceil$</span> and <span class="math" data-tex="$n_y=\prod_{p\le y}p^{a_y}$">$n_y=\prod_{p\le y}p^{a_y}$</span>. The factors <span class="math" data-tex="$1-p^{-a_y-1}$">$1-p^{-a_y-1}$</span> have product tending to one because their missing-factor sum is <span class="math" data-tex="$O(2^{-a_y})$">$O(2^{-a_y})$</span>. Mertens then gives <span class="math" data-tex="$\sigma_1(n_y)/n_y\sim e^\gamma\log y$">$\sigma_1(n_y)/n_y\sim e^\gamma\log y$</span>. Chebyshev's estimates give <span class="math" data-tex="$\log n_y=a_y\theta(y)\asymp a_yy$">$\log n_y=a_y\theta(y)\asymp a_yy$</span>, whence <span class="math" data-tex="$\log\log n_y=\log y+\log a_y+O(1)\sim\log y$">$\log\log n_y=\log y+\log a_y+O(1)\sim\log y$</span>. Dividing proves the matching lower limsup. All uniform and endpoint details are in Theorem 5.1.</p>
+<h2 id="appendix-b-surface-and-curve-inputs-for-the-geometric-theorem">Appendix B. Surface and curve inputs for the geometric theorem</h2>
+<p>This appendix supplies the intersection, degree and Hodge arguments used by the curve theorem in Section 9. The cohomology and local algebra inputs are proved in the earlier programme lessons listed below. Each row names the precise written proofs and the hypotheses used here.</p>
+<table>
+<thead>
+<tr>
+<th>Name used below</th>
+<th>Earlier programme lesson and proof locator</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serre</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/serres-theorems-on-projective-schemes.html">Serre's theorems on projective schemes</a>, Theorems 2.1–2.2</td>
+<td>Eventual vanishing of higher cohomology and global generation for ample twists on proper schemes.</td>
+</tr>
+<tr>
+<td>Coherent</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/proper-morphisms-and-coherent-direct-images.html">Coherence of higher direct images under proper morphisms</a>, Lemma 1.2, Theorems 2.2 and 4.1, Corollary 5.1</td>
+<td>Extension across a closed complement, coherent filtrations and finite-dimensional proper cohomology on Noetherian schemes.</td>
+</tr>
+<tr>
+<td>Euler</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/euler-characteristics-and-hilbert-polynomials.html">Euler characteristics and Hilbert polynomials</a>, Proposition 1.1, field-extension calculation after Proposition 1.2, Theorems 2.1 and 3.1</td>
+<td>Additivity, field extension, polynomial Euler characteristics and positivity for ample twists.</td>
+</tr>
+<tr>
+<td>Affine</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/affine-cohomology-and-serres-criterion.html">Affine cohomology and Serre's criterion</a>, Theorems 2.2, 3.1, 3.2, 4.3 and 5.2, Corollary 5.3</td>
+<td>Affine vanishing, finite-cover computation, direct images and the finite-ideal affine criterion.</td>
+</tr>
+<tr>
+<td>Formal</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/the-theorem-on-formal-functions.html">The theorem on formal functions</a>, Corollary 4.2 and the final two paragraphs of Theorem 5.2's proof</td>
+<td>Completed proper direct images and the affine/coherent argument for finiteness.</td>
+</tr>
+<tr>
+<td>Duality</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/dualizing-sheaves-and-serre-duality-for-projective-schemes.html">Dualizing sheaves and Serre duality for projective schemes</a>, Lemma 2.1, equations (6)–(8), Theorems 4.1–4.2 and the local calculation in Theorem 5.1</td>
+<td>Projective equidimensional Cohen–Macaulay duality and the local Koszul identification.</td>
+</tr>
+<tr>
+<td>Ambient canonical line</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-QC/ext-sheaves-and-serre-duality-on-projective-space.html">Ext sheaves and Serre duality on projective space</a>, solution to Exercise 7.4</td>
+<td>The Euler-sequence determinant calculation of the canonical line on projective space.</td>
+</tr>
+<tr>
+<td>Regular</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-14.html">Regular local rings</a>, Theorem 1.1, Proposition 1.4 and solution to Exercise 7.2</td>
+<td>Regular local rings are Cohen–Macaulay domains; regular quotients and the one-dimensional DVR calculation.</td>
+</tr>
+<tr>
+<td>Koszul</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-13.html">Projective dimension and the Auslander–Buchsbaum formula</a>, Theorem 4.1</td>
+<td>The Koszul resolution of a regular sequence.</td>
+</tr>
+<tr>
+<td>Dimension</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-09.html">Krull dimension and Noether normalization</a>, Theorems 4.2, 4.3 and 6.1</td>
+<td>Finite-type dimensions, finite residue fields at closed points, and zero-dimensional proper closed subsets of integral curves.</td>
+</tr>
+<tr>
+<td>Differentials</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-16.html">Kähler differentials</a>, Theorems 2.1, 3.3 and 4.1, Proposition 5.2</td>
+<td>Base change, the conormal sequence and the diagonal conormal identification.</td>
+</tr>
+<tr>
+<td>Smooth</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-17.html">Formally smooth, unramified and étale ring maps</a>, Theorems 1.2, 3.1, 4.1 and 5.1</td>
+<td>Base change, composition and the locally split smooth conormal sequence.</td>
+</tr>
+<tr>
+<td>Smooth</td>
+<td><a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-CA/AG-CA-18.html">Smooth algebras over a field and the Jacobian criterion</a>, Theorem 2.1</td>
+<td>Regularity and locally free differentials of the expected rank.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b-1-mixed-euler-differences-and-intersection-numbers">B.1. Mixed Euler differences and intersection numbers</h3>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be proper over a field <span class="math" data-tex="$k$">$k$</span>. For a coherent sheaf <span class="math" data-tex="$F$">$F$</span> and an invertible sheaf <span class="math" data-tex="$N$">$N$</span>, put
+<span class="math math-display" data-tex="$$
+a_F(N)=\chi(X,F\otimes N),\qquad
+ \Delta_L a_F(N)=a_F(N\otimes L)-a_F(N).
+$$">$$
+a_F(N)=\chi(X,F\otimes N),\qquad
+ \Delta_L a_F(N)=a_F(N\otimes L)-a_F(N).
+$$</span>
+The Euler characteristic is finite by Coherent and a finite affine-cover complex. The difference operators commute, because tensor products of invertible sheaves commute.</p>
+<p><strong>Lemma B.1.</strong> If the support of <span class="math" data-tex="$F$">$F$</span> has dimension at most <span class="math" data-tex="$d$">$d$</span>, then every product of <span class="math" data-tex="$d+1$">$d+1$</span> operators <span class="math" data-tex="$\Delta _L$">$\Delta _L$</span> annihilates <span class="math" data-tex="$a_F$">$a_F$</span>, at every invertible base twist <span class="math" data-tex="$N$">$N$</span>.</p>
+<p><strong>Proof.</strong> For zero-dimensional support, the closed scheme cut out by the annihilator is finite over <span class="math" data-tex="$k$">$k$</span>. Indeed it has finitely many points, each open, with local Artinian coordinate ring and finite residue extension; its nilpotent filtration makes each coordinate ring finite-dimensional. An invertible module over a local Artinian ring is free of rank one. Twisting therefore preserves the dimension of global sections and higher cohomology is zero. Thus every first difference vanishes.</p>
+<p>Proceed by induction on support dimension. By Coherent, Theorem 2.2, and Euler additivity it suffices to treat a nonzero coherent ideal <span class="math" data-tex="$I$">$I$</span> on an integral closed subscheme <span class="math" data-tex="$V$">$V$</span>. For a fixed <span class="math" data-tex="$L$">$L$</span>, choose a generic isomorphism from <span class="math" data-tex="$I$">$I$</span> to <span class="math" data-tex="$I\otimes L$">$I\otimes L$</span>. Coherent, Lemma 1.2, extends it to a map from <span class="math" data-tex="$E=J^a I$">$E=J^a I$</span>, where <span class="math" data-tex="$J$">$J$</span> cuts out a closed complement of a dense open. This map and the inclusion into <span class="math" data-tex="$I$">$I$</span> are injective: their kernels are generically zero subsheaves of a torsion-free module on the integral scheme. Both cokernels <span class="math" data-tex="$Q,Q&#x27;$">$Q,Q&#x27;$</span> have support dimension less than <span class="math" data-tex="$\dim V$">$\dim V$</span>. Tensoring their exact sequences with <strong>any</strong> <span class="math" data-tex="$N$">$N$</span> gives
+<span class="math math-display" data-tex="$$
+\Delta_L a_I(N)=a_{Q&#x27;}(N)-a_Q(N).
+$$">$$
+\Delta_L a_I(N)=a_{Q&#x27;}(N)-a_Q(N).
+$$</span>
+By induction, any further <span class="math" data-tex="$d$">$d$</span> mixed differences annihilate the right-hand side. Reassembling the filtration proves the assertion. This argument proves mixed differences directly; the twists need not be ample. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Consequently, for line bundles <span class="math" data-tex="$L_1,...,L_r$">$L_1,...,L_r$</span>, the function
+<span class="math math-display" data-tex="$$
+(n_1,\ldots,n_r)\longmapsto
+ \chi(X,F\otimes L_1^{n_1}\otimes\cdots\otimes L_r^{n_r})
+$$">$$
+(n_1,\ldots,n_r)\longmapsto
+ \chi(X,F\otimes L_1^{n_1}\otimes\cdots\otimes L_r^{n_r})
+$$</span>
+is a numerical polynomial of total degree at most <span class="math" data-tex="$d$">$d$</span> on <strong>all</strong> of <span class="math" data-tex="$\mathbb Z^r$">$\mathbb Z^r$</span>. To justify this last step, apply the commuting forward differences in the standard coordinate directions. Successive discrete integration in the basis <span class="math" data-tex="$\binom{n_i}{j}$">$\binom{n_i}{j}$</span> gives
+<span class="math math-display" data-tex="$$
+\sum_{|\alpha|\le d}(\Delta_1^{\alpha_1}\cdots
+ \Delta_r^{\alpha_r}a)(0)\prod_i\binom{n_i}{\alpha_i}.
+$$">$$
+\sum_{|\alpha|\le d}(\Delta_1^{\alpha_1}\cdots
+ \Delta_r^{\alpha_r}a)(0)\prod_i\binom{n_i}{\alpha_i}.
+$$</span>
+The difference equations determine equality first on nonnegative integers and then backwards on negative integers. All differences of total order greater than <span class="math" data-tex="$d$">$d$</span> vanish by Lemma B.1. This proves both the polynomial formula and its total-degree bound.</p>
+<p>On a proper surface <span class="math" data-tex="$S$">$S$</span>, define
+<span class="math math-display" data-tex="$$
+(L\cdot M)=\chi(L\otimes M)-\chi(L)-\chi(M)+\chi(\mathcal O_S).
+ \tag{B.1}
+$$">$$
+(L\cdot M)=\chi(L\otimes M)-\chi(L)-\chi(M)+\chi(\mathcal O_S).
+ \tag{B.1}
+$$</span>
+This is an integer. Every third mixed difference vanishes, so <span class="math" data-tex="$\Delta _L \Delta _M \chi (N)$">$\Delta _L \Delta _M \chi (N)$</span> is independent of the invertible base twist <span class="math" data-tex="$N$">$N$</span>. It is symmetric. The operator identity
+<span class="math math-display" data-tex="$$
+\Delta_{L_1\otimes L_2}=\Delta_{L_1}+T_{L_1}\Delta_{L_2},
+ \qquad (T_La)(N)=a(N\otimes L),
+$$">$$
+\Delta_{L_1\otimes L_2}=\Delta_{L_1}+T_{L_1}\Delta_{L_2},
+ \qquad (T_La)(N)=a(N\otimes L),
+$$</span>
+together with that independence proves additivity in <span class="math" data-tex="$L$">$L$</span>; symmetry proves additivity in <span class="math" data-tex="$M$">$M$</span>. Negative powers are included. Thus (B.1) is a symmetric bilinear form on <span class="math" data-tex="$\operatorname{Pic}(S)$">$\operatorname{Pic}(S)$</span>, and extends to <span class="math" data-tex="$\operatorname{Pic}(S)\otimes\mathbb Q$">$\operatorname{Pic}(S)\otimes\mathbb Q$</span>.</p>
+<p>In particular, the coefficient of <span class="math" data-tex="$mn$">$mn$</span> in <span class="math" data-tex="$\chi (L^m\otimes M^n)$">$\chi (L^m\otimes M^n)$</span> is <span class="math" data-tex="$(L\cdot M)$">$(L\cdot M)$</span>. The one-variable formula is
+<span class="math math-display" data-tex="$$
+\chi(L^n)=\chi(\mathcal O_S)
+ +n\bigl(\chi(L)-\chi(\mathcal O_S)\bigr)
+ +\binom n2(L\cdot L)
+ =\tfrac12(L\cdot L)n^2+O(n).
+ \tag{B.2}
+$$">$$
+\chi(L^n)=\chi(\mathcal O_S)
+ +n\bigl(\chi(L)-\chi(\mathcal O_S)\bigr)
+ +\binom n2(L\cdot L)
+ =\tfrac12(L\cdot L)n^2+O(n).
+ \tag{B.2}
+$$</span>
+This supplies (S1), including symmetry, integrality and bilinearity; no surface Riemann–Roch formula has been assumed.</p>
+<h3 id="b-2-curve-degrees-and-restriction-to-a-cartier-divisor">B.2. Curve degrees and restriction to a Cartier divisor</h3>
+<p>For a proper scheme <span class="math" data-tex="$D$">$D$</span> of dimension at most one and an invertible sheaf <span class="math" data-tex="$A$">$A$</span>, define
+<span class="math math-display" data-tex="$$
+\deg_D A=\chi(D,A)-\chi(D,\mathcal O_D).
+$$">$$
+\deg_D A=\chi(D,A)-\chi(D,\mathcal O_D).
+$$</span>
+Lemma B.1 with <span class="math" data-tex="$d=1$">$d=1$</span> gives
+<span class="math math-display" data-tex="$$
+\deg_D(A\otimes B)=\deg_D A+\deg_D B.
+ \tag{B.3}
+$$">$$
+\deg_D(A\otimes B)=\deg_D A+\deg_D B.
+ \tag{B.3}
+$$</span>
+This holds also for a nonreduced or reducible <span class="math" data-tex="$D$">$D$</span>, and proves (C1).</p>
+<p>If <span class="math" data-tex="$Z$">$Z$</span> is an effective Cartier divisor on a proper integral curve <span class="math" data-tex="$D$">$D$</span>, it is zero-dimensional and finite. The exact sequence
+<span class="math math-display" data-tex="$$
+0\longrightarrow\mathcal O_D\longrightarrow\mathcal O_D(Z)
+ \longrightarrow\mathcal O_D(Z)|_Z\longrightarrow0
+$$">$$
+0\longrightarrow\mathcal O_D\longrightarrow\mathcal O_D(Z)
+ \longrightarrow\mathcal O_D(Z)|_Z\longrightarrow0
+$$</span>
+and the local Artinian calculation in B.1 imply
+<span class="math math-display" data-tex="$$
+\deg_D\mathcal O_D(Z)=\dim_k\Gamma(Z,\mathcal O_Z)&gt;0
+ \quad(Z\ne\varnothing).
+ \tag{B.4}
+$$">$$
+\deg_D\mathcal O_D(Z)=\dim_k\Gamma(Z,\mathcal O_Z)&gt;0
+ \quad(Z\ne\varnothing).
+ \tag{B.4}
+$$</span>
+The same reasoning shows <span class="math" data-tex="$h^0(Z,A|_Z)=\dim_k \Gamma (Z,\mathcal O_Z)$">$h^0(Z,A|_Z)=\dim_k \Gamma (Z,\mathcal O_Z)$</span> for any invertible <span class="math" data-tex="$A$">$A$</span>. If <span class="math" data-tex="$D$">$D$</span> is smooth and <span class="math" data-tex="$P$">$P$</span> is a closed point, Regular's DVR calculation makes <span class="math" data-tex="$P$">$P$</span> a Cartier divisor, and (B.4) gives <span class="math" data-tex="$\deg \mathcal O_D(P)=[k(P):k]$">$\deg \mathcal O_D(P)=[k(P):k]$</span>. This proves (C2). A nonzero section on an integral curve gives an effective Cartier zero divisor (possibly empty); hence a line bundle of negative degree has no nonzero section.</p>
+<p>Every invertible sheaf on a smooth integral proper curve has the form <span class="math" data-tex="$\mathcal O_D(E)$">$\mathcal O_D(E)$</span> for a divisor <span class="math" data-tex="$E$">$E$</span>. Indeed, choose a nonzero rational section. In a local trivialization its valuation at each closed point is defined by the DVR calculation in Regular. Only finitely many valuations are nonzero, because the section and its inverse are regular on a common dense open and its complement is a finite set. Multiplication by the rational section identifies the local lattice of <span class="math" data-tex="$\mathcal O_D(E)$">$\mathcal O_D(E)$</span> with the given line bundle. This also proves that its Euler degree equals the sum of the valuations weighted by residue degrees.</p>
+<p><strong>Lemma B.2 (degree under a finite curve map).</strong> For a nonconstant proper <span class="math" data-tex="$k$">$k$</span>-morphism <span class="math" data-tex="$f:D&#x27;\to D$">$f:D&#x27;\to D$</span> of integral curves, put <span class="math" data-tex="$e=[k(D&#x27;):k(D)]$">$e=[k(D&#x27;):k(D)]$</span>. Then <span class="math" data-tex="$f$">$f$</span> is finite and
+<span class="math math-display" data-tex="$$
+\deg_{D&#x27;}f^*A=e\deg_D A.
+ \tag{B.5}
+$$">$$
+\deg_{D&#x27;}f^*A=e\deg_D A.
+ \tag{B.5}
+$$</span>
+No separability hypothesis is imposed.</p>
+<p><strong>Proof.</strong> The function-field extension is finite by Dimension. Each closed fibre is a proper closed subset of the integral source curve, hence has dimension zero and finitely many points; the generic fibre has dimension zero as well. To use Formal without an external vanishing assertion, consider any infinitesimal fibre <span class="math" data-tex="$X_n$">$X_n$</span> over a Noetherian local Artinian quotient of a base local ring. Its underlying space is a finite zero-dimensional fibre. Each point is open and admits a singleton affine neighbourhood; therefore <span class="math" data-tex="$X_n$">$X_n$</span> is a finite disjoint union of affine schemes and is affine. Affine vanishing gives <span class="math" data-tex="$H^q(X_n,G_n)=0$">$H^q(X_n,G_n)=0$</span> for every coherent <span class="math" data-tex="$G_n$">$G_n$</span> and <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span>. Formal, Corollary 4.2, makes the completed stalk of <span class="math" data-tex="$R^qf_*G$">$R^qf_*G$</span> zero. Coherent finiteness and Nakayama make the uncompleted stalk zero. Over an affine open in <span class="math" data-tex="$D$">$D$</span>, Leray and the finite-ideal version of Affine's Serre criterion then make the inverse image affine. Its coordinate ring is finite over the base ring by Coherent. This proves finiteness, reproducing precisely the needed case of Formal's Theorem 5.2 with its vanishing input proved here.</p>
+<p>Now <span class="math" data-tex="$E=f_*\mathcal O_{D&#x27;}$">$E=f_*\mathcal O_{D&#x27;}$</span> is a torsion-free coherent sheaf of generic rank <span class="math" data-tex="$e$">$e$</span>. Choose a generic identification with <span class="math" data-tex="$\mathcal O_D^e$">$\mathcal O_D^e$</span>. Extending it as in Coherent, Lemma 1.2, produces a common lattice embedded into both sheaves, with zero-dimensional cokernels. Tensoring these exact sequences by <span class="math" data-tex="$A$">$A$</span> leaves the Euler characteristics of their cokernels unchanged. Subtracting before and after tensoring therefore gives
+<span class="math math-display" data-tex="$$
+\chi(D,E\otimes A)-\chi(D,E)
+ =e\bigl(\chi(D,A)-\chi(D,\mathcal O_D)\bigr).
+$$">$$
+\chi(D,E\otimes A)-\chi(D,E)
+ =e\bigl(\chi(D,A)-\chi(D,\mathcal O_D)\bigr).
+$$</span>
+For a finite map, higher direct images vanish by Affine, Theorem 3.2. Projection formula here is elementary: on an open where <span class="math" data-tex="$A$">$A$</span> is free of rank one, <span class="math" data-tex="$f_*f^*A=E\otimes A$">$f_*f^*A=E\otimes A$</span>, and these identifications agree under changes of frame. Proper pushforward of Euler characteristics now identifies the left side with <span class="math" data-tex="$\deg_{D&#x27;} f^*A$">$\deg_{D&#x27;} f^*A$</span>. This proves (B.5), hence (C3). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>If <span class="math" data-tex="$D$">$D$</span> is an effective Cartier divisor on a proper surface <span class="math" data-tex="$S$">$S$</span>, the exact multiplication sequences give
+<span class="math math-display" data-tex="$$
+\chi(N)-\chi(N(-D))=\chi(D,N|_D),\qquad
+ \chi(\mathcal O_S)-\chi(\mathcal O_S(-D))=\chi(D,\mathcal O_D).
+$$">$$
+\chi(N)-\chi(N(-D))=\chi(D,N|_D),\qquad
+ \chi(\mathcal O_S)-\chi(\mathcal O_S(-D))=\chi(D,\mathcal O_D).
+$$</span>
+Compute <span class="math" data-tex="$\Delta _N \Delta _{\mathcal O(D)} \chi$">$\Delta _N \Delta _{\mathcal O(D)} \chi$</span> at the base twist <span class="math" data-tex="$\mathcal O(-D)$">$\mathcal O(-D)$</span> and use its independence of the base twist from B.1. Subtraction gives
+<span class="math math-display" data-tex="$$
+(N\cdot\mathcal O_S(D))=\deg_D(N|_D).
+ \tag{B.6}
+$$">$$
+(N\cdot\mathcal O_S(D))=\deg_D(N|_D).
+ \tag{B.6}
+$$</span>
+This proves (S2), also when <span class="math" data-tex="$D$">$D$</span> is nonreduced or reducible.</p>
+<h3 id="b-3-smooth-duality-the-conormal-line-and-the-genus">B.3. Smooth duality, the conormal line and the genus</h3>
+<p>Let <span class="math" data-tex="$X$">$X$</span> be smooth, projective and geometrically integral of dimension <span class="math" data-tex="$n$">$n$</span> over <span class="math" data-tex="$k$">$k$</span>. Smooth and Regular show that it is equidimensional and Cohen–Macaulay, so Duality, Theorem 4.2, applies. We also need to identify its dualizing sheaf.</p>
+<p>Embed <span class="math" data-tex="$X$">$X$</span> in <span class="math" data-tex="$P^N$">$P^N$</span>. At a point of <span class="math" data-tex="$X$">$X$</span>, the ambient and quotient local rings are regular. Regular, Proposition 1.4, makes the embedding ideal locally a regular sequence of length <span class="math" data-tex="$c=N-n$">$c=N-n$</span>. Koszul's resolution and the local calculation in Duality give
+<span class="math math-display" data-tex="$$
+\omega_X^\circ\cong
+ \bigl(\det(I/I^2)\bigr)^\vee\otimes\omega_{P^N}|_X.
+$$">$$
+\omega_X^\circ\cong
+ \bigl(\det(I/I^2)\bigr)^\vee\otimes\omega_{P^N}|_X.
+$$</span>
+This calculation is local and does not require <span class="math" data-tex="$X$">$X$</span> to be a global complete intersection. To see that it glues, replace a local regular generating list by another. Its matrix modulo <span class="math" data-tex="$I$">$I$</span> changes the top Koszul generator by its determinant; the dual top Ext generator changes by the inverse determinant. These are exactly the transition functions of <span class="math" data-tex="$(\det(I/I^2))^\vee$">$(\det(I/I^2))^\vee$</span>.</p>
+<p>Differentials and Smooth give the locally split exact conormal sequence
+<span class="math math-display" data-tex="$$
+0\longrightarrow I/I^2\longrightarrow\Omega_{P^N/k}|_X
+ \longrightarrow\Omega_{X/k}\longrightarrow0.
+$$">$$
+0\longrightarrow I/I^2\longrightarrow\Omega_{P^N/k}|_X
+ \longrightarrow\Omega_{X/k}\longrightarrow0.
+$$</span>
+Taking determinants, and using the written ambient canonical-line calculation, identifies the last displayed dualizing line with <span class="math" data-tex="$\det \Omega _{X/k}$">$\det \Omega _{X/k}$</span>. Thus for an invertible <span class="math" data-tex="$A$">$A$</span>, Duality gives
+<span class="math math-display" data-tex="$$
+H^i(X,A)^\vee\cong
+ H^{n-i}(X,A^{-1}\otimes\det\Omega_{X/k}).
+ \tag{B.7}
+$$">$$
+H^i(X,A)^\vee\cong
+ H^{n-i}(X,A^{-1}\otimes\det\Omega_{X/k}).
+ \tag{B.7}
+$$</span>
+It also supplies vanishing above dimension <span class="math" data-tex="$n$">$n$</span> in this smooth projective case.</p>
+<p>For a smooth projective geometrically integral curve <span class="math" data-tex="$C$">$C$</span>, <span class="math" data-tex="$H^0(C,\mathcal O_C)=k$">$H^0(C,\mathcal O_C)=k$</span>. Indeed, it is a finite-dimensional domain by Coherent, hence a finite field extension of <span class="math" data-tex="$k$">$k$</span>. Field extension in Euler identifies its tensor product with an algebraic closure with the global functions of the integral curve over that closure. A finite-dimensional domain over an algebraically closed field is that field, so its original dimension is one. Put <span class="math" data-tex="$g=h^1(C,\mathcal O_C)$">$g=h^1(C,\mathcal O_C)$</span>. Taking <span class="math" data-tex="$A=\mathcal O_C$">$A=\mathcal O_C$</span> and <span class="math" data-tex="$A=\Omega _{C/k}$">$A=\Omega _{C/k}$</span> in (B.7) gives <span class="math" data-tex="$h^0(\Omega )=g$">$h^0(\Omega )=g$</span> and <span class="math" data-tex="$h^1(\Omega )=1$">$h^1(\Omega )=1$</span>. Consequently
+<span class="math math-display" data-tex="$$
+\deg_C\Omega_{C/k}=(g-1)-(1-g)=2g-2,
+$$">$$
+\deg_C\Omega_{C/k}=(g-1)-(1-g)=2g-2,
+$$</span>
+and the definition of degree and (B.7) give the curve Riemann–Roch formula
+<span class="math math-display" data-tex="$$
+h^0(C,A)-h^0(C,\Omega_{C/k}\otimes A^{-1})
+ =\deg_C A+1-g.
+ \tag{B.8}
+$$">$$
+h^0(C,A)-h^0(C,\Omega_{C/k}\otimes A^{-1})
+ =\deg_C A+1-g.
+ \tag{B.8}
+$$</span>
+This supplies the Riemann–Roch input of the written curve-zeta rationality proof as well.</p>
+<p>For every effective Cartier divisor <span class="math" data-tex="$D$">$D$</span> on <span class="math" data-tex="$S$">$S$</span>, its ideal is <span class="math" data-tex="$\mathcal O_S(-D)$">$\mathcal O_S(-D)$</span>, so its conormal sheaf is
+<span class="math math-display" data-tex="$$
+I_D/I_D^2=\mathcal O_S(-D)|_D.
+$$">$$
+I_D/I_D^2=\mathcal O_S(-D)|_D.
+$$</span>
+For the diagonal in <span class="math" data-tex="$C\times C$">$C\times C$</span>, Differentials, Theorem 4.1, gives <span class="math" data-tex="$I_\Delta /I_\Delta ^2=\Omega _{C/k}$">$I_\Delta /I_\Delta ^2=\Omega _{C/k}$</span>. The diagonal is a Cartier divisor: locally the ambient and quotient are regular, of codimension one, so Regular, Proposition 1.4, makes its ideal principal with a nonzerodivisor generator. Combining these assertions with (B.6) gives
+<span class="math math-display" data-tex="$$
+(\Delta\cdot\Delta)=-\deg_C\Omega_{C/k}=2-2g.
+$$">$$
+(\Delta\cdot\Delta)=-\deg_C\Omega_{C/k}=2-2g.
+$$</span>
+These assertions prove (C4), with the sign required in the correspondence proof.</p>
+<h3 id="b-4-the-hodge-consequence-including-its-equality-case">B.4. The Hodge consequence, including its equality case</h3>
+<p>Let <span class="math" data-tex="$S$">$S$</span> be a smooth projective geometrically integral surface. We first prove the assertion for a very ample integral hyperplane section, then extend it to <strong>any</strong> class of positive square.</p>
+<p>An integral hyperplane section can be obtained after a purely transcendental field extension without invoking a Bertini theorem. Embed <span class="math" data-tex="$S$">$S$</span> by a very ample line bundle in <span class="math" data-tex="$P^N$">$P^N$</span>. The incidence variety
+<span class="math math-display" data-tex="$$
+I=\{(x,h)\in S\times(P^N)^\vee:x\in h\}
+$$">$$
+I=\{(x,h)\in S\times(P^N)^\vee:x\in h\}
+$$</span>
+is a projective bundle over <span class="math" data-tex="$S$">$S$</span>: at <span class="math" data-tex="$x$">$x$</span>, hyperplanes through <span class="math" data-tex="$x$">$x$</span> form the projectivization of the kernel of the evaluation map from the constant space of linear forms onto the very ample line at <span class="math" data-tex="$x$">$x$</span>. Thus <span class="math" data-tex="$I$">$I$</span> is integral. Its projection onto the dual projective space is dominant. Every hyperplane meets <span class="math" data-tex="$S$">$S$</span>, since otherwise <span class="math" data-tex="$S$">$S$</span> would be a proper affine positive-dimensional scheme, whereas proper coherence makes the coordinate ring of such a scheme finite-dimensional and hence zero-dimensional. The generic fibre of this dominant morphism between integral schemes is integral: on affine charts its coordinate rings are localizations of domains. Its dimension is one, either by the function-field dimension formula or by <span class="math" data-tex="$\dim I=N+1$">$\dim I=N+1$</span> and <span class="math" data-tex="$\dim((P^N)^\vee)=N$">$\dim((P^N)^\vee)=N$</span>. Over <span class="math" data-tex="$K=k((P^N)^\vee )$">$K=k((P^N)^\vee )$</span>, write this generic hyperplane section as <span class="math" data-tex="$H$">$H$</span>. It is an effective Cartier divisor because a nonzero hyperplane equation is a nonzerodivisor on the integral surface.</p>
+<p>Field extension in Euler preserves every Euler characteristic, and consequently all intersection numbers from (B.1). Smoothness and geometric integrality also persist. It suffices to establish the desired numerical inequalities after this extension. In the rest of the proof we work over <span class="math" data-tex="$K$">$K$</span>, and omit it from the notation.</p>
+<p>By (B.6),
+<span class="math math-display" data-tex="$$
+H^2=\deg_H\mathcal O_S(H)|_H&gt;0.
+$$">$$
+H^2=\deg_H\mathcal O_S(H)|_H&gt;0.
+$$</span>
+The positivity follows from Euler, Theorem 3.1: the Euler polynomial of an ample line on a nonzero proper one-dimensional scheme has a positive linear coefficient, and that coefficient is its degree by (B.3). More generally, for any nonzero effective Cartier divisor <span class="math" data-tex="$B$">$B$</span> on <span class="math" data-tex="$S$">$S$</span>,
+<span class="math math-display" data-tex="$$
+H\cdot B=\deg_B\mathcal O_S(H)|_B&gt;0.
+ \tag{B.9}
+$$">$$
+H\cdot B=\deg_B\mathcal O_S(H)|_B&gt;0.
+ \tag{B.9}
+$$</span>
+Here <span class="math" data-tex="$B$">$B$</span> may be nonreduced or reducible; its dimension is one, and Euler's positivity theorem applies to <span class="math" data-tex="$\mathcal O_B$">$\mathcal O_B$</span>.</p>
+<p>We need a section bound on the integral curve <span class="math" data-tex="$H$">$H$</span> that depends only on degree. Choose a nonempty effective Cartier divisor <span class="math" data-tex="$Z$">$Z$</span> on <span class="math" data-tex="$H$">$H$</span>. Such a choice requires no smoothness of <span class="math" data-tex="$H$">$H$</span>: choose a closed point <span class="math" data-tex="$x$">$x$</span>, an ample line <span class="math" data-tex="$A$">$A$</span> and a sufficiently large power. Euler positivity and Serre, Theorem 2.2, make <span class="math" data-tex="$h^0(A^m)$">$h^0(A^m)$</span> grow, while evaluation at <span class="math" data-tex="$x$">$x$</span> has target of dimension <span class="math" data-tex="$[k(x):K]$">$[k(x):K]$</span>. A nonzero section in its kernel has a nonempty finite Cartier zero divisor <span class="math" data-tex="$Z$">$Z$</span>, because <span class="math" data-tex="$H$">$H$</span> is integral. Put <span class="math" data-tex="$a=\dim_K \Gamma (Z,\mathcal O_Z)&gt;0$">$a=\dim_K \Gamma (Z,\mathcal O_Z)&gt;0$</span>. For a line bundle <span class="math" data-tex="$B$">$B$</span> on <span class="math" data-tex="$H$">$H$</span> of degree <span class="math" data-tex="$d\ge 0$">$d\ge 0$</span>, take <span class="math" data-tex="$j=\lfloor d/a\rfloor+1$">$j=\lfloor d/a\rfloor+1$</span>. Repeatedly apply
+<span class="math math-display" data-tex="$$
+0\longrightarrow B(-(i+1)Z)\longrightarrow B(-iZ)
+ \longrightarrow B(-iZ)|_Z\longrightarrow0.
+$$">$$
+0\longrightarrow B(-(i+1)Z)\longrightarrow B(-iZ)
+ \longrightarrow B(-iZ)|_Z\longrightarrow0.
+$$</span>
+The last restriction has <span class="math" data-tex="$a$">$a$</span> global sections, and <span class="math" data-tex="$\deg B(-jZ)&lt;0$">$\deg B(-jZ)&lt;0$</span> makes its global sections zero. Hence
+<span class="math math-display" data-tex="$$
+h^0(H,B)\le a\bigl(\lfloor d/a\rfloor+1\bigr).
+ \tag{B.10}
+$$">$$
+h^0(H,B)\le a\bigl(\lfloor d/a\rfloor+1\bigr).
+ \tag{B.10}
+$$</span>
+For <span class="math" data-tex="$d&lt;0$">$d&lt;0$</span> it is zero. This proves a uniform bound for every fixed degree. It does not assume a rational point or a nonsingular hyperplane section.</p>
+<p>Let <span class="math" data-tex="$E$">$E$</span> be an integral line-bundle class with <span class="math" data-tex="$E\cdot H=0$">$E\cdot H=0$</span>. If <span class="math" data-tex="$\mathcal O_S(nE)$">$\mathcal O_S(nE)$</span> has a nonzero section, its Cartier zero divisor is either empty or has positive intersection with <span class="math" data-tex="$H$">$H$</span> by (B.9). Since <span class="math" data-tex="$nE\cdot H=0$">$nE\cdot H=0$</span>, that divisor must be empty. The section then trivializes the line bundle. Thus
+<span class="math math-display" data-tex="$$
+h^0(S,\mathcal O_S(nE))\le h^0(S,\mathcal O_S)
+ \quad(n\in\mathbf Z).
+ \tag{B.11}
+$$">$$
+h^0(S,\mathcal O_S(nE))\le h^0(S,\mathcal O_S)
+ \quad(n\in\mathbf Z).
+ \tag{B.11}
+$$</span>
+Let <span class="math" data-tex="$\omega _S=\det \Omega _{S/K}$">$\omega _S=\det \Omega _{S/K}$</span>. By (B.7),
+<span class="math math-display" data-tex="$$
+h^2(S,\mathcal O_S(nE))=h^0(S,\omega_S(-nE)).
+$$">$$
+h^2(S,\mathcal O_S(nE))=h^0(S,\omega_S(-nE)).
+$$</span>
+Choose a fixed integer <span class="math" data-tex="$j_0\ge 1$">$j_0\ge 1$</span> with <span class="math" data-tex="$\omega _S\cdot H-j_0 H^2&lt;0$">$\omega _S\cdot H-j_0 H^2&lt;0$</span>. A line bundle with negative intersection with <span class="math" data-tex="$H$">$H$</span> has no nonzero section by (B.9), so <span class="math" data-tex="$\omega _S(-nE-j_0H)$">$\omega _S(-nE-j_0H)$</span> has none. Restriction to <span class="math" data-tex="$H$">$H$</span> repeatedly gives
+<span class="math math-display" data-tex="$$
+h^0(S,\omega_S(-nE))
+ \le\sum_{j=0}^{j_0-1}h^0\bigl(H,\omega_S(-nE-jH)|_H\bigr).
+$$">$$
+h^0(S,\omega_S(-nE))
+ \le\sum_{j=0}^{j_0-1}h^0\bigl(H,\omega_S(-nE-jH)|_H\bigr).
+$$</span>
+The degree of its <span class="math" data-tex="$j$">$j$</span>th summand is <span class="math" data-tex="$\omega _S\cdot H-jH^2$">$\omega _S\cdot H-jH^2$</span>, independent of <span class="math" data-tex="$n$">$n$</span>. The bounds (B.10) therefore bound this sum independently of <span class="math" data-tex="$n$">$n$</span>. Since <span class="math" data-tex="$h^1\ge 0$">$h^1\ge 0$</span> and higher cohomology vanishes here, (B.11) implies an upper bound for <span class="math" data-tex="$\chi (\mathcal O_S(nE))$">$\chi (\mathcal O_S(nE))$</span> independent of <span class="math" data-tex="$n$">$n$</span>. Comparing with (B.2) forces
+<span class="math math-display" data-tex="$$
+E\cdot H=0\quad\Longrightarrow\quad E^2\le0.
+ \tag{B.12}
+$$">$$
+E\cdot H=0\quad\Longrightarrow\quad E^2\le0.
+ \tag{B.12}
+$$</span>
+Clearing denominators extends this to rational classes.</p>
+<p>If also <span class="math" data-tex="$E^2=0$">$E^2=0$</span>, let <span class="math" data-tex="$F$">$F$</span> be any rational line-bundle class and put
+<span class="math math-display" data-tex="$$
+F_0=F-\frac{F\cdot H}{H^2}H.
+$$">$$
+F_0=F-\frac{F\cdot H}{H^2}H.
+$$</span>
+For every rational <span class="math" data-tex="$t$">$t$</span>, <span class="math" data-tex="$(E+tF_0)\cdot H=0$">$(E+tF_0)\cdot H=0$</span>, so (B.12) gives
+<span class="math math-display" data-tex="$$
+2t(E\cdot F_0)+t^2 F_0^2\le0.
+$$">$$
+2t(E\cdot F_0)+t^2 F_0^2\le0.
+$$</span>
+Choosing sufficiently small rational <span class="math" data-tex="$t$">$t$</span> of both signs forces <span class="math" data-tex="$E\cdot F_0=0$">$E\cdot F_0=0$</span>; hence <span class="math" data-tex="$E\cdot F=0$">$E\cdot F=0$</span>. This proves that a zero-square class in <span class="math" data-tex="$H^\perp$">$H^\perp$</span> is numerically trivial.</p>
+<p>Finally let <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> be <strong>any</strong> rational class with <span class="math" data-tex="$H&#x27;^2&gt;0$">$H&#x27;^2&gt;0$</span>. There cannot be a two-dimensional rational subspace on which the intersection form is positive definite: that subspace would have a nonzero rational vector orthogonal to <span class="math" data-tex="$H$">$H$</span>, contradicting (B.12). If <span class="math" data-tex="$L\cdot H&#x27;=0$">$L\cdot H&#x27;=0$</span> and <span class="math" data-tex="$L^2&gt;0$">$L^2&gt;0$</span>, the span of <span class="math" data-tex="$H&#x27;$">$H&#x27;$</span> and <span class="math" data-tex="$L$">$L$</span> would be such a positive definite subspace. Therefore <span class="math" data-tex="$L^2\le 0$">$L^2\le 0$</span>. If <span class="math" data-tex="$L^2=0$">$L^2=0$</span>, apply this last nonpositivity to
+<span class="math math-display" data-tex="$$
+L+t\left(F-\frac{F\cdot H&#x27;}{H&#x27;^2}H&#x27;\right)
+$$">$$
+L+t\left(F-\frac{F\cdot H&#x27;}{H&#x27;^2}H&#x27;\right)
+$$</span>
+for arbitrary <span class="math" data-tex="$F$">$F$</span> and rational <span class="math" data-tex="$t$">$t$</span>. The same small-<span class="math" data-tex="$t$">$t$</span> argument makes <span class="math" data-tex="$L\cdot F=0$">$L\cdot F=0$</span> for every class <span class="math" data-tex="$F$">$F$</span>. Conversely a numerically trivial class has square zero. We have proved the precise input (S3):
+<span class="math math-display" data-tex="$$
+H&#x27;^2&gt;0,\quad L\cdot H&#x27;=0
+ \quad\Longrightarrow\quad L^2\le0,
+ \qquad L^2=0\iff L\text{ is numerically trivial}.
+ \tag{B.13}
+$$">$$
+H&#x27;^2&gt;0,\quad L\cdot H&#x27;=0
+ \quad\Longrightarrow\quad L^2\le0,
+ \qquad L^2=0\iff L\text{ is numerically trivial}.
+ \tag{B.13}
+$$</span>
+This argument establishes the numerical-triviality conclusion for original classes as well: all their pairings are unchanged by the field extension, so vanishing after extension implies their original pairings vanish.</p>
+<h3 id="b-5-application-to-the-existing-complete-curve-correspondence-proof">B.5. Application to the existing complete curve-correspondence proof</h3>
+<p>A smooth geometrically connected curve is geometrically integral: its regular local rings are domains, so its irreducible components cannot meet; the finitely many components are therefore open and closed, and connectedness leaves just one. Smoothness also makes it reduced. For <span class="math" data-tex="$C/\mathbb F_q$">$C/\mathbb F_q$</span> smooth, projective and geometrically integral, <span class="math" data-tex="$S=C\times C$">$S=C\times C$</span> satisfies the hypotheses just used. We use the field-extension formulation of geometric integrality: the curve remains integral after every extension of its base field. For an affine product chart with coordinate domains <span class="math" data-tex="$A,B$">$A,B$</span>, the map <span class="math" data-tex="$A\otimes B \to  A\otimes \operatorname{Frac}(B)$">$A\otimes B \to  A\otimes \operatorname{Frac}(B)$</span> is injective because tensoring vector spaces over the base field is exact. Its target is a domain by geometric integrality of the first factor. Hence the product chart is integral. These charts have nonempty mutual overlaps, since nonempty opens in each integral curve meet, so the product is integral; the same argument after any field extension makes it geometrically integral. The product is smooth by Smooth's base-change and composition proofs. A product of projective embeddings is projective through the Segre map: on the chart with a nonzero product coordinate, the rank-one matrix relations recover the two sets of affine coordinates, so this map is a closed immersion. Thus the preceding statements apply without a genus or field-size restriction.</p>
+<p>In <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/the-field-with-one-element/weil-s-proof-for-curves-and-what-is-missing-over-the-integers.html">Weil's proof for curves and what is missing over the integers</a>, the inputs stated in Section 3.1 are now supplied as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Provider input</th>
+<th>Proof in this appendix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(S1), multivariate Euler polynomial and integer symmetric bilinear intersection</td>
+<td>B.1, Lemma B.1 and equations (B.1)–(B.2)</td>
+</tr>
+<tr>
+<td>(S2), intersection by Cartier restriction</td>
+<td>B.2, equation (B.6)</td>
+</tr>
+<tr>
+<td>(S3), every positive-square class, including equality</td>
+<td>B.4, equation (B.13)</td>
+</tr>
+<tr>
+<td>(C1), additivity of curve degree</td>
+<td>B.2, equation (B.3)</td>
+</tr>
+<tr>
+<td>(C2), effective-divisor length and closed-point degree</td>
+<td>B.2, equation (B.4) and the DVR paragraph</td>
+</tr>
+<tr>
+<td>(C3), degree under any nonconstant proper integral-curve map</td>
+<td>B.2, Lemma B.2; inseparability is allowed</td>
+</tr>
+<tr>
+<td>(C4), Cartier conormal, diagonal conormal and degree <span class="math" data-tex="$2g-2$">$2g-2$</span></td>
+<td>B.3</td>
+</tr>
+<tr>
+<td>Curve Riemann–Roch and representation of line bundles by divisors</td>
+<td>B.3, equation (B.8), and the rational-section paragraph of B.2</td>
+</tr>
+</tbody>
+</table>
+<p>The remaining correspondence proof is already written, with these actual locators:</p>
+<ul>
+<li>Section 2, Theorems 2.3–2.4 and Corollary 2.5: finiteness of <span class="math" data-tex="$\operatorname{Pic}^0$">$\operatorname{Pic}^0$</span>, existence of a degree-one class, rationality, functional equation and power-sum point counts. These use the curve Riemann–Roch formula supplied in (B.8), not an imported curve-RH theorem. Lemma 2.7 and Proposition 2.8 prove the power-sum criterion for the moduli of the reciprocal roots.</li>
+<li>Lemmas 3.1–3.4: Cartier pullback, graphs, fibre intersections and the two correspondence degrees. A finite-map graph is Cartier also directly: it is a smooth integral curve in the smooth surface, so Regular, Proposition 1.4, makes the codimension-one ideal generated by one nonzerodivisor. These lemmas use exactly (S1), (S2), (C1)–(C3).</li>
+<li>Lemmas 3.5–3.6: <span class="math" data-tex="$\deg F^r=q^r$">$\deg F^r=q^r$</span> by a function-field tower calculation, and the reduced fixed-point scheme by <span class="math" data-tex="$a^{q^r}-a$">$a^{q^r}-a$</span>. These are full written arguments and do not assume the Riemann hypothesis.</li>
+<li>Proposition 3.7: <span class="math" data-tex="$(\Gamma _r\cdot \Gamma _s)=q^{\min(r,s)} N_{|r-s|}$">$(\Gamma _r\cdot \Gamma _s)=q^{\min(r,s)} N_{|r-s|}$</span>, with <span class="math" data-tex="$N_0=2-2g$">$N_0=2-2g$</span>, using the proved degree, restriction and conormal facts.</li>
+<li>Theorem 3.9: the trace pairing gives <span class="math" data-tex="$\langle \Gamma _r,\Gamma _s\rangle =q^{\min(r,s)} \sum _j \alpha _j^{|r-s|}$">$\langle \Gamma _r,\Gamma _s\rangle =q^{\min(r,s)} \sum _j \alpha _j^{|r-s|}$</span>.</li>
+<li>Theorem 3.10 and Corollary 3.11: set <span class="math" data-tex="$V=p_1^*B_1$">$V=p_1^*B_1$</span>, <span class="math" data-tex="$W=p_2^*B_1$">$W=p_2^*B_1$</span>. Their intersections are <span class="math" data-tex="$V^2=W^2=0$">$V^2=W^2=0$</span>, <span class="math" data-tex="$V\cdot W=1$">$V\cdot W=1$</span>; hence <span class="math" data-tex="$H&#x27;=V+W$">$H&#x27;=V+W$</span> has square <span class="math" data-tex="$2$">$2$</span>. Equation (B.13) gives nonnegativity of the correspondence pairing and the exact equality criterion. Positivity for integer combinations extends to rational and real combinations, so its quadratic discriminant gives Cauchy–Schwarz.</li>
+<li>Theorem 3.12: <span class="math" data-tex="$\langle \Delta ,\Gamma _r\rangle =q^r+1-N_r$">$\langle \Delta ,\Gamma _r\rangle =q^r+1-N_r$</span>, <span class="math" data-tex="$\langle \Delta ,\Delta \rangle =2g$">$\langle \Delta ,\Delta \rangle =2g$</span> and <span class="math" data-tex="$\langle \Gamma _r,\Gamma _r\rangle =2g q^r$">$\langle \Gamma _r,\Gamma _r\rangle =2g q^r$</span> give
+<span class="math math-display" data-tex="$$
+|N_r-q^r-1|\le 2gq^{r/2}.
+$$">$$
+|N_r-q^r-1|\le 2gq^{r/2}.
+$$</span>
+Proposition 2.8 then gives <span class="math" data-tex="$|\alpha _j|=\sqrt q$">$|\alpha _j|=\sqrt q$</span>, including the genus-zero case with no reciprocal roots.</li>
+</ul>
+<p>These calculations supply the surface and degree inputs of the earlier written curve proof, and therefore establish the geometric statement (9.1).</p>
+<h2 id="sources-and-attribution">Sources and attribution</h2>
+<p>The zero-boundary and prime-error comparison is Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em>, freely readable author preliminary version</a>, Chapter 6, Theorem 6.1. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a>, Sections II–IV, gives freely readable context. Sections 1–5 and 7 prove their results using the preceding lessons.</p>
+<p>Sections 6.1–6.5 adapt Whidden, <a href="https://github.com/kimihiro64/Robin1984/releases/download/v1.1.1/robin1984-formalization.pdf"><em>Robin's 1984 criterion for the Riemann hypothesis: a formally verified proof</em>, release 1.1.1</a>, revision <code>acab1a31f31e0499518a4416b63281e0b4838f9c</code>, under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The adaptation and changes are identified before Section 6.1. All arguments, 36 finite-cover rows and complete verification programs needed for Theorem 6.1 appear in this lesson. The exact integer programs and their original explanation are CC0. A second comparison is Lagarias, <a href="https://arxiv.org/pdf/math/0008177v2"><em>An elementary problem equivalent to the Riemann hypothesis</em>, free author preprint, version 2</a>, Theorem 1.1 and its proof. The course has executed its own finite certificates; it does not claim to have rerun the source's formal project.</p>
+<p>Burnol, <a href="https://arxiv.org/pdf/math/0202166v1"><em>On an analytic estimate in the theory of the Riemann zeta function and a theorem of Báez-Duarte</em>, free author preprint</a>, Sections 2–3, and Bagchi, <a href="https://arxiv.org/pdf/math/0607733v1"><em>On Nyman, Beurling and Báez-Duarte's Hilbert space reformulation of the Riemann hypothesis</em>, free author preprint</a>, Lemma 3 and Theorems 2 and 5, explain analytic versions of the approximation criterion. The proof here supplies the complete smoothed estimate (7.4) and uses the earlier proved convexity bound.</p>
+<p>Deligne, <a href="https://www.numdam.org/item/PMIHES_1974__43__273_0.pdf"><em>La conjecture de Weil I</em>, freely readable full text</a>, Theorem (1.6) and Lemma (1.7) is the free primary statement comparison for Section 9; its programme proof is located there. Connes, <a href="https://arxiv.org/pdf/2602.04022v1"><em>The Riemann Hypothesis: Past, Present and a Letter Through Time</em>, free author preprint, version 1</a>, surveys these formulations.</p>
+<p><strong>Exact source formula qualifications.</strong> In Lagarias, arXiv:math/0008177v2, the first display in the proof of Lemma 3.1 prints an infinite upper limit for the integral of <span class="math" data-tex="$\lfloor t\rfloor/t^2$">$\lfloor t\rfloor/t^2$</span>. For every integer <span class="math" data-tex="$n\ge1$">$n\ge1$</span>, the finite identity is
+<span class="math math-display" data-tex="$$
+\int_1^n\frac{\lfloor t\rfloor}{t^2}\,dt
+=\sum_{r=1}^n\int_r^n\frac{dt}{t^2}
+=\sum_{r=1}^n\left(\frac1r-\frac1n\right)=H_n-1.
+$$">$$
+\int_1^n\frac{\lfloor t\rfloor}{t^2}\,dt
+=\sum_{r=1}^n\int_r^n\frac{dt}{t^2}
+=\sum_{r=1}^n\left(\frac1r-\frac1n\right)=H_n-1.
+$$</span>
+The first equality uses <span class="math" data-tex="$\lfloor t\rfloor=\sum_{r=1}^n\mathbf1_{[r,\infty)}(t)$">$\lfloor t\rfloor=\sum_{r=1}^n\mathbf1_{[r,\infty)}(t)$</span> on <span class="math" data-tex="$[1,n)$">$[1,n)$</span>; the endpoint has no effect on the integral. The infinite integral diverges, since <span class="math" data-tex="$\lfloor t\rfloor\ge t/2$">$\lfloor t\rfloor\ge t/2$</span> for <span class="math" data-tex="$t\ge2$">$t\ge2$</span>. The source's next display, (3.4), has upper limit <span class="math" data-tex="$n$">$n$</span> correctly. Section 6.5 supplies the lesson's own harmonic comparison and finite proof.</p>
+<p>In Bagchi, arXiv:math/0607733v1, the proof of Theorem 2 drops the rational completion factor when asserting a uniform bound for <span class="math" data-tex="$|\zeta(s)/\zeta(s+\epsilon)|$">$|\zeta(s)/\zeta(s+\epsilon)|$</span> on <span class="math" data-tex="$\Re s\ge1/2$">$\Re s\ge1/2$</span>. For any fixed <span class="math" data-tex="$0&lt;\epsilon&lt;1/2$">$0&lt;\epsilon&lt;1/2$</span> and <span class="math" data-tex="$s=1+\delta$">$s=1+\delta$</span>, <span class="math" data-tex="$\delta\downarrow0$">$\delta\downarrow0$</span>, the earlier proved Laurent expansion at one and continuity in <span class="math" data-tex="$\Re s&gt;1$">$\Re s&gt;1$</span> give
+<span class="math math-display" data-tex="$$
+\frac{\zeta(1+\delta)}{\zeta(1+\epsilon+\delta)}
+\sim\frac1{\delta\zeta(1+\epsilon)}\longrightarrow+\infty.
+$$">$$
+\frac{\zeta(1+\delta)}{\zeta(1+\epsilon+\delta)}
+\sim\frac1{\delta\zeta(1+\epsilon)}\longrightarrow+\infty.
+$$</span>
+Here <span class="math" data-tex="$\zeta(1+\epsilon)&gt;0$">$\zeta(1+\epsilon)&gt;0$</span> by its convergent Dirichlet series, while <span class="math" data-tex="$|1+\delta|^{\epsilon/2}$">$|1+\delta|^{\epsilon/2}$</span> stays bounded. Thus that larger-domain bound fails near the pole. Lemma 7.4 proves precisely the critical-line bound needed here, retaining the rational, gamma and <span class="math" data-tex="$\pi$">$\pi$</span> factors. On that line its rational factor is uniformly bounded. This local source-domain correction does not contradict the approximation criterion.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-ZETA-13.html">← Growth bounds and wider zero-free regions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-ZETA-15.html">Oscillation of the error term →</a></span></nav>
+<p class="small source-link"><a href="src/NT-ZETA-14.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0. The adaptations identified in lessons 14, 17 and 19 retain CC BY 4.0; the notices are in the downloads.</p>
+<nav aria-label="Elsewhere"><a href="../../downloads/NT-ZETA-source.zip">Course sources</a><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-ZETA">Repository</a></nav>
+</footer>
+</body>
+</html>

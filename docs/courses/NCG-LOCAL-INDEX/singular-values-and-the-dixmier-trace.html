@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Singular values and the Dixmier trace · Spectral triples and the local index formula</title>
+<meta name="description" content="A lesson of the course Spectral triples and the local index formula. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NCG-LOCAL-INDEX/singular-values-and-the-dixmier-trace.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Spectral triples and the local index formula</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 3</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="singular-values-and-the-dixmier-trace">Singular values and the Dixmier trace</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra; editorial revision with OpenAI Codex, 3 October 2026. AI-written mathematical draft; not formally verified. Original course text is offered under CC0, excluding the marked Lord–Sukochev adaptation (CC BY-NC-SA 3.0) and the separately licensed prerequisite texts.</em></p>
+<p>What can we learn about an operator by observing only its first <span class="math" data-tex="\(N\)">\(N\)</span> singular values? A divergent sum may still have a stable logarithmic coefficient. To turn that coefficient into an integral, we must answer three different questions: which tails are too small to detect, how changing a spectral cutoff affects addition, and when the eventual answer is independent of a choice of limit.</p>
+<p>We first study the finite observations themselves and test them on a direct sum. We then identify the tails that disappear in the logarithmic ideal norm, before using a scale average to repair additivity. The resulting traces lead to two further tests: whether their value is canonical, and whether they preserve monotone convergence. Finally, the zeta and heat calculations show how to obtain an actual number without selecting a generalized limit.</p>
+<p>For the logarithmic-trace construction the human sources are [Dixmier 1966] and [Connes–Moscovici 1995]; [Carey–Rennie–Sedaev–Sukochev 2006] studies the connection with zeta asymptotics. The separately marked normality argument is adapted from Lord and Sukochev.</p>
+<p>Our entry prerequisites are complex Hilbert spaces, elementary finite-dimensional linear algebra, real and complex calculus, and integration with monotone and dominated convergence. The supporting proofs are collected in Section 9, with links at their points of use: <a href="#compact-positive-operators">compact decomposition</a>, <a href="#compact-resolvent-spectral-core">compact-resolvent domains</a>, <a href="#schatten-holder">Schatten estimates</a>, and <a href="#extension-used-to-construct-a-state">positive extensions of limits</a>. The bounded positive functional calculus and scalar measure construction have complete proofs in <a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a>, AN03-SPC-001–003; the trace-class facts are proved in <a href="../elliptic-boundary-reduction/traces-and-complexes.html#the-trace-ideal-from-paired-orthonormal-systems">Traces that survive passage to cohomology</a>, AN03-TRC-002–003. These are referenced proofs with their own licenses. In the sections on limits we use finite measures and polynomial approximation on a compact interval. Basic references are [Dixmier 1966], [Connes–Moscovici 1995], and [Carey–Rennie–Sedaev–Sukochev 2006]. Our trace class is on a separable complex Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, and <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> denotes its ordinary trace.</p>
+<h2 id="1-a-finite-spectral-budget">1. A finite spectral budget</h2>
+<p>A finite observation is a sum of the largest singular values, not the trace of a fixed compression. The choice of the leading subspace depends on the operator. This is why the variational formulas below will give inequalities for sums rather than exact additivity.</p>
+<p>The compact spectral decomposition and polar decomposition used here are proved in <a href="#compact-positive-operators">Lemma 9.1</a>, independently of this section. Start with that proof if these decompositions are not yet available.</p>
+<p>For compact <span class="math" data-tex="\(T\)">\(T\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+\mu_0(T)\geq\mu_1(T)\geq\cdots\geq0
+\]">\[
+\mu_0(T)\geq\mu_1(T)\geq\cdots\geq0
+\]</span>
+<p>be the eigenvalues of <span class="math" data-tex="\(|T|=(T^*T)^{1/2}\)">\(|T|=(T^*T)^{1/2}\)</span>, counted with multiplicity and padded by zeros. An equivalent description is</p>
+<span class="math math-display" data-tex="\[
+\mu_j(T)=\inf_{\operatorname{rank}R\leq j}\|T-R\|.
+\tag{1.1}
+\]">\[
+\mu_j(T)=\inf_{\operatorname{rank}R\leq j}\|T-R\|.
+\tag{1.1}
+\]</span>
+<p>Indeed, truncate the polar spectral decomposition after <span class="math" data-tex="\(j\)">\(j\)</span> terms for the upper bound. For the lower bound, the restriction of a rank-<span class="math" data-tex="\(j\)">\(j\)</span> operator to the span of the first <span class="math" data-tex="\(j+1\)">\(j+1\)</span> eigenvectors has a nonzero kernel vector <span class="math" data-tex="\(v\)">\(v\)</span>. On that span <span class="math" data-tex="\(\|Tv\|\geq\mu_j(T)\|v\|\)">\(\|Tv\|\geq\mu_j(T)\|v\|\)</span>. This also proves the minimax description using restrictions to orthogonal complements of <span class="math" data-tex="\(j\)">\(j\)</span>-dimensional subspaces.</p>
+<p>For <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span> write <span class="math" data-tex="\(S_N(T)=\sum_{j&lt;N}\mu_j(T)\)">\(S_N(T)=\sum_{j&lt;N}\mu_j(T)\)</span>. The trace-class prerequisite gives the ideal inequality and <span class="math" data-tex="\(|\operatorname{Tr}A|\leq\|A\|_1\)">\(|\operatorname{Tr}A|\leq\|A\|_1\)</span>. Specializing these facts gives</p>
+<span class="math math-display" data-tex="\[
+\|T\|_1=\sup_{\|X\|\leq1}|\operatorname{Tr}(TX)|
+\quad(T\text{ trace class}).
+\tag{1.2}
+\]">\[
+\|T\|_1=\sup_{\|X\|\leq1}|\operatorname{Tr}(TX)|
+\quad(T\text{ trace class}).
+\tag{1.2}
+\]</span>
+<p>For the reverse inequality in (1.2), write <span class="math" data-tex="\(T=U|T|\)">\(T=U|T|\)</span> and use <span class="math" data-tex="\(X=U^*\)">\(X=U^*\)</span>. Ordinary trace cyclicity gives <span class="math" data-tex="\(\operatorname{Tr}(TU^*)=\operatorname{Tr}|T|\)">\(\operatorname{Tr}(TU^*)=\operatorname{Tr}|T|\)</span>. For compact <span class="math" data-tex="\(T\)">\(T\)</span> of infinite trace norm, the same supremum over <strong>finite-rank</strong> contractions is infinite: choose <span class="math" data-tex="\(X=E_NU^*\)">\(X=E_NU^*\)</span>, with <span class="math" data-tex="\(E_N\)">\(E_N\)</span> the leading spectral projection of <span class="math" data-tex="\(|T|\)">\(|T|\)</span>. Restricting the supremum in this way avoids assigning an ordinary trace to a product outside the trace class.</p>
+<p><strong>Theorem 1.1 (Ky Fan variational formulas).</strong> For compact <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+S_N(T)=\sup_{\substack{E=E^*=E^2\\\operatorname{rank}E\leq N}}\|TE\|_1
+=\sup_{\substack{\|X\|\leq1\\\operatorname{rank}X\leq N}}|\operatorname{Tr}(TX)|.
+\tag{1.3}
+\]">\[
+S_N(T)=\sup_{\substack{E=E^*=E^2\\\operatorname{rank}E\leq N}}\|TE\|_1
+=\sup_{\substack{\|X\|\leq1\\\operatorname{rank}X\leq N}}|\operatorname{Tr}(TX)|.
+\tag{1.3}
+\]</span>
+<p>For positive <span class="math" data-tex="\(T\)">\(T\)</span>, one also has</p>
+<span class="math math-display" data-tex="\[
+S_N(T)=\sup_{\substack{E=E^*=E^2\\\operatorname{rank}E\leq N}}\operatorname{Tr}(TE).
+\tag{1.4}
+\]">\[
+S_N(T)=\sup_{\substack{E=E^*=E^2\\\operatorname{rank}E\leq N}}\operatorname{Tr}(TE).
+\tag{1.4}
+\]</span>
+<p><strong>Proof.</strong> Formula (1.1) implies <span class="math" data-tex="\(\mu_j(TE)\leq\mu_j(T)\)">\(\mu_j(TE)\leq\mu_j(T)\)</span>, since multiplication by a contraction does not increase the distance to the corresponding rank class. As <span class="math" data-tex="\(TE\)">\(TE\)</span> has rank at most <span class="math" data-tex="\(N\)">\(N\)</span>, its trace norm is at most <span class="math" data-tex="\(S_N(T)\)">\(S_N(T)\)</span>. Taking <span class="math" data-tex="\(E=E_N\)">\(E=E_N\)</span> gives equality. If <span class="math" data-tex="\(X\)">\(X\)</span> is a contraction of rank at most <span class="math" data-tex="\(N\)">\(N\)</span>, its range projection <span class="math" data-tex="\(E\)">\(E\)</span> has rank at most <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(TX=TEX\)">\(TX=TEX\)</span>, and <span class="math" data-tex="\(|\operatorname{Tr}(TX)|\leq\|TE\|_1\)">\(|\operatorname{Tr}(TX)|\leq\|TE\|_1\)</span>. The choice <span class="math" data-tex="\(X=E_NU^*\)">\(X=E_NU^*\)</span> gives equality. For positive <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(\operatorname{Tr}(TE)\leq\|TE\|_1\)">\(\operatorname{Tr}(TE)\leq\|TE\|_1\)</span>, and <span class="math" data-tex="\(E_N\)">\(E_N\)</span> again attains the bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus <span class="math" data-tex="\(S_N\)">\(S_N\)</span> is a norm. Formula (1.3) makes its triangle inequality visible, and (1.1) gives</p>
+<span class="math math-display" data-tex="\[
+S_N(ATB)\leq\|A\|\|B\|S_N(T).
+\tag{1.5}
+\]">\[
+S_N(ATB)\leq\|A\|\|B\|S_N(T).
+\tag{1.5}
+\]</span>
+<h2 id="2-allowing-a-fractional-budget">2. Allowing a fractional budget</h2>
+<p>A sum of two operators brings two potentially different leading subspaces into play. We will compare a fixed budget with the combined budget, so it is useful to allow a real cutoff. The following formula also makes the interpolation completely explicit. Define</p>
+<span class="math math-display" data-tex="\[
+S_t(T)=\inf_{T=X+Y}\bigl(\|X\|_1+t\|Y\|\bigr),\qquad t&gt;0,
+\tag{2.1}
+\]">\[
+S_t(T)=\inf_{T=X+Y}\bigl(\|X\|_1+t\|Y\|\bigr),\qquad t&gt;0,
+\tag{2.1}
+\]</span>
+<p>where <span class="math" data-tex="\(X\)">\(X\)</span> is trace class and <span class="math" data-tex="\(Y\)">\(Y\)</span> is compact. Put <span class="math" data-tex="\(N=\lfloor t\rfloor\)">\(N=\lfloor t\rfloor\)</span>, <span class="math" data-tex="\(\theta=t-N\)">\(\theta=t-N\)</span>.</p>
+<p><strong>Theorem 2.1.</strong> One has</p>
+<span class="math math-display" data-tex="\[
+S_t(T)=\sum_{j&lt;N}\mu_j(T)+\theta\mu_N(T).
+\tag{2.2}
+\]">\[
+S_t(T)=\sum_{j&lt;N}\mu_j(T)+\theta\mu_N(T).
+\tag{2.2}
+\]</span>
+<p>In particular <span class="math" data-tex="\(S_t\)">\(S_t\)</span> is increasing and concave in <span class="math" data-tex="\(t\)">\(t\)</span>, is affine between integers, and is a norm in <span class="math" data-tex="\(T\)">\(T\)</span> for each <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(T=X+Y\)">\(T=X+Y\)</span>, (1.3) and the triangle inequality give <span class="math" data-tex="\(S_m(T)\leq\|X\|_1+m\|Y\|\)">\(S_m(T)\leq\|X\|_1+m\|Y\|\)</span> at every integer <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, also at <span class="math" data-tex="\(m=0\)">\(m=0\)</span> with <span class="math" data-tex="\(S_0=0\)">\(S_0=0\)</span>. Taking the convex combination of <span class="math" data-tex="\(m=N,N+1\)">\(m=N,N+1\)</span> gives the lower bound in (2.1). For the reverse inequality put <span class="math" data-tex="\(c=\mu_N(T)\)">\(c=\mu_N(T)\)</span> and use the polar decomposition to set</p>
+<span class="math math-display" data-tex="\[
+X=U(|T|-c)_+,\qquad Y=U\min(|T|,c).
+\]">\[
+X=U(|T|-c)_+,\qquad Y=U\min(|T|,c).
+\]</span>
+<p>The first operator has finite rank, <span class="math" data-tex="\(\|Y\|=c\)">\(\|Y\|=c\)</span> unless both sides are zero, and</p>
+<span class="math math-display" data-tex="\[
+\|X\|_1+t\|Y\|=\sum_{j&lt;N}(\mu_j-c)+tc.
+\]">\[
+\|X\|_1+t\|Y\|=\sum_{j&lt;N}(\mu_j-c)+tc.
+\]</span>
+<p>This is (2.2), including ties among the eigenvalues. At <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span> it reduces to <span class="math" data-tex="\(t\|T\|\)">\(t\|T\|\)</span>. The decreasing slopes are precisely <span class="math" data-tex="\(\mu_N(T)\)">\(\mu_N(T)\)</span>, proving concavity. The infimum description proves homogeneity and subadditivity; positivity follows from <span class="math" data-tex="\(S_t(T)\geq\min(1,t)\|T\|\)">\(S_t(T)\geq\min(1,t)\|T\|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For positive compact <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, the two estimates we need are</p>
+<span class="math math-display" data-tex="\[
+S_t(A+B)\leq S_t(A)+S_t(B),
+\qquad S_{s+t}(A+B)\geq S_s(A)+S_t(B).
+\tag{2.3}
+\]">\[
+S_t(A+B)\leq S_t(A)+S_t(B),
+\qquad S_{s+t}(A+B)\geq S_s(A)+S_t(B).
+\tag{2.3}
+\]</span>
+<p><strong>Proof of the second estimate.</strong> For integers <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, choose their leading spectral subspaces and let <span class="math" data-tex="\(E\)">\(E\)</span> project onto the sum of those subspaces. Its rank is at most <span class="math" data-tex="\(s+t\)">\(s+t\)</span>. Positivity gives <span class="math" data-tex="\(\operatorname{Tr}(AE)\geq S_s(A)\)">\(\operatorname{Tr}(AE)\geq S_s(A)\)</span> and <span class="math" data-tex="\(\operatorname{Tr}(BE)\geq S_t(B)\)">\(\operatorname{Tr}(BE)\geq S_t(B)\)</span>; apply (1.4). For real <span class="math" data-tex="\(s,t\)">\(s,t\)</span>, divide the quadrant into triangles whose vertices have integral coordinates and whose edges lie on integral lines for <span class="math" data-tex="\(s,t,s+t\)">\(s,t,s+t\)</span>. On each triangle every term of the desired inequality is affine, by (2.2). The integral-vertex inequalities imply the inequality throughout the triangle. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 1 (basic).</strong> Let <span class="math" data-tex="\(T=\operatorname{diag}(5,2,1,0,\ldots)\)">\(T=\operatorname{diag}(5,2,1,0,\ldots)\)</span>. Compute <span class="math" data-tex="\(S_{1/2}(T)\)">\(S_{1/2}(T)\)</span>, <span class="math" data-tex="\(S_{3/2}(T)\)">\(S_{3/2}(T)\)</span>, and <span class="math" data-tex="\(S_{7/2}(T)\)">\(S_{7/2}(T)\)</span>, and exhibit minimizing decompositions in (2.1).</p>
+<p><strong>Solution.</strong> Formula (2.2) gives <span class="math" data-tex="\(5/2,6,8\)">\(5/2,6,8\)</span>. At <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>, take <span class="math" data-tex="\(X=0,Y=T\)">\(X=0,Y=T\)</span>. At <span class="math" data-tex="\(t=3/2\)">\(t=3/2\)</span>, use <span class="math" data-tex="\(c=2\)">\(c=2\)</span>, so <span class="math" data-tex="\(X=\operatorname{diag}(3,0,0,\ldots)\)">\(X=\operatorname{diag}(3,0,0,\ldots)\)</span> and <span class="math" data-tex="\(Y=\operatorname{diag}(2,2,1,0,\ldots)\)">\(Y=\operatorname{diag}(2,2,1,0,\ldots)\)</span>, yielding <span class="math" data-tex="\(3+(3/2)2=6\)">\(3+(3/2)2=6\)</span>. At <span class="math" data-tex="\(t=7/2\)">\(t=7/2\)</span>, take <span class="math" data-tex="\(X=T,Y=0\)">\(X=T,Y=0\)</span>. Theorem 2.1 proves each lower bound, so these are minima.</p>
+<p>The next test isolates the obstruction that the logarithmic average must remove.</p>
+<p><strong>Exercise 3 (intermediate).</strong> On <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>, let <span class="math" data-tex="\(A=T\oplus0\)">\(A=T\oplus0\)</span> and <span class="math" data-tex="\(B=0\oplus T\)">\(B=0\oplus T\)</span>, with <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>. Prove <span class="math" data-tex="\(S_{2N}(A+B)=2S_N(T)\)">\(S_{2N}(A+B)=2S_N(T)\)</span>. Use <span class="math" data-tex="\(T\)">\(T\)</span> with eigenvalues <span class="math" data-tex="\(1/(j+1)\)">\(1/(j+1)\)</span> to explain why <span class="math" data-tex="\(S_N\)">\(S_N\)</span> is not additive even on positive operators.</p>
+<p><strong>Solution.</strong> The singular values of <span class="math" data-tex="\(A+B=T\oplus T\)">\(A+B=T\oplus T\)</span> repeat every singular value of <span class="math" data-tex="\(T\)">\(T\)</span> twice, proving the identity. But <span class="math" data-tex="\(S_N(A)+S_N(B)=2S_N(T)\)">\(S_N(A)+S_N(B)=2S_N(T)\)</span>, while <span class="math" data-tex="\(S_N(A+B)=2S_{N/2}(T)\)">\(S_N(A+B)=2S_{N/2}(T)\)</span> by (2.2). For <span class="math" data-tex="\(N=2\)">\(N=2\)</span> these are three and two, respectively. Exact additivity fails before the averaging and quotient steps.</p>
+<h2 id="3-logarithmic-size-and-the-additivity-defect">3. Logarithmic size and the additivity defect</h2>
+<p>Fix <span class="math" data-tex="\(a&gt;e\)">\(a&gt;e\)</span>. The ideal of logarithmic size is</p>
+<span class="math math-display" data-tex="\[
+\mathcal M_{1,\infty}=\left\{T\text{ compact}:\|T\|_{\mathcal M}:=
+\sup_{t\geq a}\frac{S_t(T)}{\log t}&lt;\infty\right\}.
+\tag{3.1}
+\]">\[
+\mathcal M_{1,\infty}=\left\{T\text{ compact}:\|T\|_{\mathcal M}:=
+\sup_{t\geq a}\frac{S_t(T)}{\log t}&lt;\infty\right\}.
+\tag{3.1}
+\]</span>
+<p>This ideal is also denoted <span class="math" data-tex="\(\mathcal L^{(1,\infty)}\)">\(\mathcal L^{(1,\infty)}\)</span>. We keep <span class="math" data-tex="\(\mathcal L_{1,\infty}\)">\(\mathcal L_{1,\infty}\)</span> for the potentially smaller condition <span class="math" data-tex="\(\mu_j(T)=O((j+1)^{-1})\)">\(\mu_j(T)=O((j+1)^{-1})\)</span>; the two conditions are not definitions of the same normed space.</p>
+<p>The norms (2.1) prove the triangle inequality in (3.1), and <span class="math" data-tex="\(\|T\|\leq(S_a(T)/\log a)\log a\)">\(\|T\|\leq(S_a(T)/\log a)\log a\)</span> proves that it dominates the operator norm up to a fixed constant. The ideal estimate (1.5) extends to real <span class="math" data-tex="\(t\)">\(t\)</span> by (2.1). This is a Banach ideal: a Cauchy sequence converges in operator norm to a compact <span class="math" data-tex="\(T\)">\(T\)</span>; (1.1) implies continuity of each <span class="math" data-tex="\(S_t\)">\(S_t\)</span>, and taking the supremum in (3.1) shows convergence in <span class="math" data-tex="\(\|\cdot\|_{\mathcal M}\)">\(\|\cdot\|_{\mathcal M}\)</span>.</p>
+<h3 id="first-question-which-tails-can-finite-rank-approximation-remove">First question: which tails can finite-rank approximation remove?</h3>
+<p>Before constructing a trace, we can decide when the entire logarithmic observation is negligible. This is a statement about the ideal norm, not about any choice of state.</p>
+<p><strong>Proposition 3.1 (vanishing logarithmic tails).</strong> The norm closure of finite-rank operators is exactly</p>
+<span class="math math-display" data-tex="\[
+\mathcal M_0=\{T\in\mathcal M_{1,\infty}:S_t(T)=o(\log t)\}.
+\tag{3.2}
+\]">\[
+\mathcal M_0=\{T\in\mathcal M_{1,\infty}:S_t(T)=o(\log t)\}.
+\tag{3.2}
+\]</span>
+<p>In particular, <span class="math" data-tex="\(\mu_j(T)=o((j+1)^{-1})\)">\(\mu_j(T)=o((j+1)^{-1})\)</span> implies <span class="math" data-tex="\(T\in\mathcal M_0\)">\(T\in\mathcal M_0\)</span>.</p>
+<p><strong>Proof.</strong> A finite-rank operator has bounded <span class="math" data-tex="\(S_t\)">\(S_t\)</span>. Norm approximation and the triangle inequality show the forward implication in (3.2). Conversely, truncate the polar spectral decomposition at <span class="math" data-tex="\(N\)">\(N\)</span>, writing its tail as <span class="math" data-tex="\(R_N\)">\(R_N\)</span>. For fixed <span class="math" data-tex="\(b\geq a\)">\(b\geq a\)</span>, (2.2) gives <span class="math" data-tex="\(S_t(R_N)\leq t\mu_N(T)\)">\(S_t(R_N)\leq t\mu_N(T)\)</span> when <span class="math" data-tex="\(a\leq t\leq b\)">\(a\leq t\leq b\)</span>, and <span class="math" data-tex="\(S_t(R_N)\leq S_t(T)\)">\(S_t(R_N)\leq S_t(T)\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>. First choose <span class="math" data-tex="\(b\)">\(b\)</span> so the latter ratio is small for <span class="math" data-tex="\(t\geq b\)">\(t\geq b\)</span>, then let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span> to control the bounded interval. This proves norm approximation. Finally split the sum of singular values into a finite initial segment and a tail bounded by <span class="math" data-tex="\(\epsilon\sum_{j\leq t}(j+1)^{-1}\)">\(\epsilon\sum_{j\leq t}(j+1)^{-1}\)</span>, then let <span class="math" data-tex="\(\epsilon\to0\)">\(\epsilon\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The approximation statement does not say that a nonzero logarithmic coefficient exists for every other operator. To obtain an additive observation even when no ordinary coefficient exists, we must address the cutoff discrepancy seen in Exercise 3.</p>
+<h3 id="second-question-can-a-change-of-scale-be-averaged-away">Second question: can a change of scale be averaged away?</h3>
+<p>In the coordinate <span class="math" data-tex="\(x=\log u\)">\(x=\log u\)</span>, doubling the cutoff shifts <span class="math" data-tex="\(x\)">\(x\)</span> by the fixed amount <span class="math" data-tex="\(\log2\)">\(\log2\)</span>. This suggests averaging <span class="math" data-tex="\(S_{e^x}(T)/x\)">\(S_{e^x}(T)/x\)</span> over <span class="math" data-tex="\(x\)">\(x\)</span>; the estimate below controls both the shifted endpoints and the change in its denominator. For <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span> define the averaged logarithmic mean</p>
+<span class="math math-display" data-tex="\[
+C_\lambda(T)=\frac1{\log\lambda}\int_a^\lambda
+\frac{S_u(T)}{\log u}\,\frac{du}{u},\qquad\lambda\geq a.
+\tag{3.3}
+\]">\[
+C_\lambda(T)=\frac1{\log\lambda}\int_a^\lambda
+\frac{S_u(T)}{\log u}\,\frac{du}{u},\qquad\lambda\geq a.
+\tag{3.3}
+\]</span>
+<p>This is a bounded continuous function with <span class="math" data-tex="\(0\leq C_\lambda(T)\leq\|T\|_{\mathcal M}\)">\(0\leq C_\lambda(T)\leq\|T\|_{\mathcal M}\)</span>.</p>
+<p><strong>Theorem 3.2 (averaged additivity).</strong> If <span class="math" data-tex="\(A,B\geq0\)">\(A,B\geq0\)</span> and <span class="math" data-tex="\(S_u(A)\leq C_A\log u, S_u(B)\leq C_B\log u\)">\(S_u(A)\leq C_A\log u, S_u(B)\leq C_B\log u\)</span> for <span class="math" data-tex="\(u\geq a\)">\(u\geq a\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+0\leq C_\lambda(A)+C_\lambda(B)-C_\lambda(A+B)
+\leq(C_A+C_B)\frac{(\log\log\lambda+2)\log2}{\log\lambda}.
+\tag{3.4}
+\]">\[
+0\leq C_\lambda(A)+C_\lambda(B)-C_\lambda(A+B)
+\leq(C_A+C_B)\frac{(\log\log\lambda+2)\log2}{\log\lambda}.
+\tag{3.4}
+\]</span>
+<p><strong>Proof.</strong> The first estimate in (2.3) gives the lower bound. For the upper bound use <span class="math" data-tex="\(S_{2u}(A+B)\geq S_u(A)+S_u(B)\)">\(S_{2u}(A+B)\geq S_u(A)+S_u(B)\)</span>. After changing variable <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span>, the sum of the two means is bounded by</p>
+<span class="math math-display" data-tex="\[
+\frac1{\log\lambda}\int_{2a}^{2\lambda}
+\frac{S_v(A+B)}{\log(v/2)}\,\frac{dv}{v}.
+\]">\[
+\frac1{\log\lambda}\int_{2a}^{2\lambda}
+\frac{S_v(A+B)}{\log(v/2)}\,\frac{dv}{v}.
+\]</span>
+<p>Replacing <span class="math" data-tex="\(\log(v/2)\)">\(\log(v/2)\)</span> by <span class="math" data-tex="\(\log v\)">\(\log v\)</span> changes this by at most</p>
+<span class="math math-display" data-tex="\[
+\frac{(C_A+C_B)\log2}{\log\lambda}
+\int_{2a}^{2\lambda}\frac{dv}{v\log(v/2)}
+=\frac{(C_A+C_B)\log2}{\log\lambda}
+(\log\log\lambda-\log\log a).
+\]">\[
+\frac{(C_A+C_B)\log2}{\log\lambda}
+\int_{2a}^{2\lambda}\frac{dv}{v\log(v/2)}
+=\frac{(C_A+C_B)\log2}{\log\lambda}
+(\log\log\lambda-\log\log a).
+\]</span>
+<p>Moving the integration interval from <span class="math" data-tex="\([2a,2\lambda]\)">\([2a,2\lambda]\)</span> to <span class="math" data-tex="\([a,\lambda]\)">\([a,\lambda]\)</span> changes the integral with denominator <span class="math" data-tex="\(\log v\)">\(\log v\)</span> by at most <span class="math" data-tex="\(2(C_A+C_B)\log2/\log\lambda\)">\(2(C_A+C_B)\log2/\log\lambda\)</span>. Since <span class="math" data-tex="\(\log\log a&gt;0\)">\(\log\log a&gt;0\)</span>, these estimates imply (3.4). They hold also when the two intervals overlap only partially. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus (3.4) answers the direct-sum obstruction quantitatively: the averaged observations are additive up to a function tending to zero. The denominator correction contributes <span class="math" data-tex="\(\log\log\lambda/\log\lambda\)">\(\log\log\lambda/\log\lambda\)</span>, and the endpoint intervals contribute <span class="math" data-tex="\(2/\log\lambda\)">\(2/\log\lambda\)</span>, both with the stated factor <span class="math" data-tex="\((C_A+C_B)\log2\)">\((C_A+C_B)\log2\)</span>. No ordinary limit of <span class="math" data-tex="\(S_u(T)/\log u\)">\(S_u(T)/\log u\)</span> has been assumed.</p>
+<h2 id="4-from-means-to-traces">4. From means to traces</h2>
+<p>The estimate just proved has a natural target: regard two bounded continuous observations as the same when their difference tends to zero. This retains a possibly nonconvergent observation while making its trace identities exact.</p>
+<p>Let <span class="math" data-tex="\(\mathcal Q=C_b([a,\infty))/C_0([a,\infty))\)">\(\mathcal Q=C_b([a,\infty))/C_0([a,\infty))\)</span>. Taking the class of (3.3), Theorem 3.2 gives an additive homogeneous map on the positive cone. Every selfadjoint element <span class="math" data-tex="\(T\)">\(T\)</span> of the ideal has <span class="math" data-tex="\(T=T_+-T_-\)">\(T=T_+-T_-\)</span> with <span class="math" data-tex="\(T_\pm\geq0\)">\(T_\pm\geq0\)</span> in the ideal. Define</p>
+<span class="math math-display" data-tex="\[
+\Theta(T)=[C(T_+)]-[C(T_-)],
+\]">\[
+\Theta(T)=[C(T_+)]-[C(T_-)],
+\]</span>
+<p>and then extend complex linearly. This does not depend on the positive decomposition: <span class="math" data-tex="\(A-B=A&#x27;-B&#x27;\)">\(A-B=A&#x27;-B&#x27;\)</span> implies <span class="math" data-tex="\(A+B&#x27;=A&#x27;+B\)">\(A+B&#x27;=A&#x27;+B\)</span>, and additivity in the quotient proves equality.</p>
+<p><strong>Theorem 4.1.</strong> The map <span class="math" data-tex="\(\Theta:\mathcal M_{1,\infty}\to\mathcal Q\)">\(\Theta:\mathcal M_{1,\infty}\to\mathcal Q\)</span> is positive, complex linear, and satisfies</p>
+<span class="math math-display" data-tex="\[
+\Theta(ST)=\Theta(TS)\qquad(S\in B(H),\ T\in\mathcal M_{1,\infty}).
+\tag{4.1}
+\]">\[
+\Theta(ST)=\Theta(TS)\qquad(S\in B(H),\ T\in\mathcal M_{1,\infty}).
+\tag{4.1}
+\]</span>
+<p>It vanishes on trace-class operators.</p>
+<p><strong>Proof.</strong> A unitary conjugation preserves every singular value, hence preserves <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> first on positive operators and then on the whole ideal. For unitary <span class="math" data-tex="\(U\)">\(U\)</span>, apply this invariance to <span class="math" data-tex="\(TU\)">\(TU\)</span> to obtain <span class="math" data-tex="\(\Theta(UT)=\Theta(TU)\)">\(\Theta(UT)=\Theta(TU)\)</span>. A selfadjoint contraction <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\((V+V^*)/2\)">\((V+V^*)/2\)</span>, where <span class="math" data-tex="\(V=S+i(1-S^2)^{1/2}\)">\(V=S+i(1-S^2)^{1/2}\)</span> is unitary. Splitting a general bounded operator into real and imaginary selfadjoint parts and rescaling therefore proves (4.1). For positive trace-class <span class="math" data-tex="\(T\)">\(T\)</span>,</p>
+<span class="math math-display" data-tex="\[
+0\leq C_\lambda(T)\leq\|T\|_1
+\frac{\log\log\lambda-\log\log a}{\log\lambda}\longrightarrow0.
+\]">\[
+0\leq C_\lambda(T)\leq\|T\|_1
+\frac{\log\log\lambda-\log\log a}{\log\lambda}\longrightarrow0.
+\]</span>
+<p>Linearity gives the assertion for all trace-class operators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <strong>generalized limit</strong> here is a state <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. Passing from a quotient-valued observation to a number requires such a state.</p>
+<p><strong>Lemma 4.2 (existence of generalized limits).</strong> The quotient <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> has states obtained by evaluation along any sequence <span class="math" data-tex="\(\lambda_j\to\infty\)">\(\lambda_j\to\infty\)</span> followed by a positive extension of the ordinary sequence limit.</p>
+<p><strong>Proof.</strong> On convergent real sequences, the ordinary limit is a norm-one functional. <a href="#extension-used-to-construct-a-state">Lemma 9.4</a> extends it to all bounded sequences, proves positivity, and then complexifies it. Evaluation along <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> followed by this extension annihilates <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, since every function in <span class="math" data-tex="\(C_0\)">\(C_0\)</span> evaluates to a sequence with limit zero. It therefore gives a positive unital functional on <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A countable version of the choice of state is sometimes enough. For a separable unital C*-subalgebra of <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span>, choose representatives <span class="math" data-tex="\(f_1,f_2,\ldots\)">\(f_1,f_2,\ldots\)</span> of a dense countable set. Successive subsequences of evaluations at <span class="math" data-tex="\(\lambda=n+a\)">\(\lambda=n+a\)</span>, followed by a diagonal subsequence, make every <span class="math" data-tex="\(f_j\)">\(f_j\)</span> converge. The limits extend by continuity to a positive unital functional on the subalgebra: the evaluation estimates are bounded by the quotient norm <span class="math" data-tex="\(\limsup_{\lambda\to\infty}|f(\lambda)|\)">\(\limsup_{\lambda\to\infty}|f(\lambda)|\)</span>, and positive quotient classes have representatives whose negative parts tend to zero. This uses countably many subsequence choices and does not require simultaneous choices for all bounded functions.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_\omega(T)=\omega(\Theta(T)).
+\tag{4.2}
+\]">\[
+\operatorname{Tr}_\omega(T)=\omega(\Theta(T)).
+\tag{4.2}
+\]</span>
+<p><strong>Theorem 4.3.</strong> Each <span class="math" data-tex="\(\operatorname{Tr}_\omega\)">\(\operatorname{Tr}_\omega\)</span> is a positive bounded trace on <span class="math" data-tex="\(\mathcal M_{1,\infty}\)">\(\mathcal M_{1,\infty}\)</span>, invariant under bounded similarity and zero on the norm closure of finite-rank operators.</p>
+<p><strong>Proof.</strong> Positivity and cyclicity follow from Theorem 4.1. On positive operators its value lies between zero and <span class="math" data-tex="\(\|T\|_{\mathcal M}\)">\(\|T\|_{\mathcal M}\)</span>. For selfadjoint <span class="math" data-tex="\(T\)">\(T\)</span>, positivity and <span class="math" data-tex="\(-|T|\leq T\leq |T|\)">\(-|T|\leq T\leq |T|\)</span> give the same bound in absolute value. For general <span class="math" data-tex="\(T\)">\(T\)</span>, the ideal norm triangle inequality gives <span class="math" data-tex="\(\|\operatorname{Re}T\|_{\mathcal M},\|\operatorname{Im}T\|_{\mathcal M}\leq\|T\|_{\mathcal M}\)">\(\|\operatorname{Re}T\|_{\mathcal M},\|\operatorname{Im}T\|_{\mathcal M}\leq\|T\|_{\mathcal M}\)</span>, yielding a bound <span class="math" data-tex="\(2\|T\|_{\mathcal M}\)">\(2\|T\|_{\mathcal M}\)</span>. This sufficient continuity bound, together with vanishing on finite rank, proves vanishing on its closure. Similarity follows from cyclicity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This construction uses arbitrary states <strong>after</strong> logarithmic averaging. If one applies a generalized limit directly to <span class="math" data-tex="\(S_t(T)/\log t\)">\(S_t(T)/\log t\)</span>, an invariance hypothesis on that generalized limit is needed for the additivity argument. The convention (4.2) specifies exactly which family of traces is under discussion.</p>
+<h3 id="a-singular-integral-need-not-satisfy-monotone-convergence">A singular integral need not satisfy monotone convergence</h3>
+<p><em>Adapted from Steven Lord and Fedor Sukochev, <strong>Measure Theory in Noncommutative Spaces</strong>, <a href="https://arxiv.org/html/1009.3095v1#S1">arXiv:1009.3095v1</a>, 16 September 2010, Introduction, the argument following (1.6). This subsection, including its proof and the AI changes, is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0 Unported</a>: credit the authors and source, retain this notice, use it noncommercially, and distribute adaptations and translations under the same licence. The complete licence is included. GPT-6.1 Sol (OpenAI), Ultra, adapted and checked the argument on 2 October 2026: replaced the spectral weight by an arbitrary positive operator in our logarithmic ideal, used our trace convention (4.2), expanded the positivity and continuity proofs, and distinguished norm closure from strong closure. No author endorsement is implied.</em></p>
+<p><strong>Proposition 4.4.</strong> Let <span class="math" data-tex="\(H\)">\(H\)</span> be separable and infinite dimensional, let <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span> belong to <span class="math" data-tex="\(\mathcal M_{1,\infty}\)">\(\mathcal M_{1,\infty}\)</span>, and put
+<span class="math math-display" data-tex="\[
+\Phi_\omega(A)=\operatorname{Tr}_\omega(AT),\qquad A\in B(H).
+\]">\[
+\Phi_\omega(A)=\operatorname{Tr}_\omega(AT),\qquad A\in B(H).
+\]</span>
+This is a bounded positive linear functional. If <span class="math" data-tex="\(\operatorname{Tr}_\omega(T)&gt;0\)">\(\operatorname{Tr}_\omega(T)&gt;0\)</span>, it fails monotone convergence on <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>: there are finite-rank projections <span class="math" data-tex="\(P_N\uparrow I\)">\(P_N\uparrow I\)</span> strongly with
+<span class="math math-display" data-tex="\[
+\Phi_\omega(P_N)=0\quad\hbox{for every }N,
+\qquad \Phi_\omega(I)&gt;0.
+\]">\[
+\Phi_\omega(P_N)=0\quad\hbox{for every }N,
+\qquad \Phi_\omega(I)&gt;0.
+\]</span>
+In particular it is not normal, where normality means preservation of increasing bounded positive suprema.</p>
+<p><strong>Proof.</strong> The ideal estimate in Section 2 puts <span class="math" data-tex="\(AT\)">\(AT\)</span> in <span class="math" data-tex="\(\mathcal M_{1,\infty}\)">\(\mathcal M_{1,\infty}\)</span>. Linearity follows from Theorem 4.3. For <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span>, the bounded positive square root and cyclicity give
+<span class="math math-display" data-tex="\[
+\Phi_\omega(A)=\operatorname{Tr}_\omega(A^{1/2}TA^{1/2})\geq0.
+\]">\[
+\Phi_\omega(A)=\operatorname{Tr}_\omega(A^{1/2}TA^{1/2})\geq0.
+\]</span>
+If <span class="math" data-tex="\(B=B^*\)">\(B=B^*\)</span>, write it as the difference of the positive operators <span class="math" data-tex="\(B+\|B\|I\)">\(B+\|B\|I\)</span> and <span class="math" data-tex="\(\|B\|I\)">\(\|B\|I\)</span>. Its functional value is real. Splitting a general operator into real and imaginary selfadjoint parts therefore gives <span class="math" data-tex="\(\Phi_\omega(A^*)=\overline{\Phi_\omega(A)}\)">\(\Phi_\omega(A^*)=\overline{\Phi_\omega(A)}\)</span>. Now positivity applied to <span class="math" data-tex="\((A+zI)^*(A+zI)\)">\((A+zI)^*(A+zI)\)</span>, for all <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, yields the scalar quadratic inequality
+<span class="math math-display" data-tex="\[
+|\Phi_\omega(A)|^2\leq
+\Phi_\omega(A^*A)\Phi_\omega(I)
+\leq\|A\|^2\Phi_\omega(I)^2.
+\]">\[
+|\Phi_\omega(A)|^2\leq
+\Phi_\omega(A^*A)\Phi_\omega(I)
+\leq\|A\|^2\Phi_\omega(I)^2.
+\]</span>
+If <span class="math" data-tex="\(\Phi_\omega(I)=0\)">\(\Phi_\omega(I)=0\)</span>, the same quadratic inequality forces every value to be zero. Otherwise it proves boundedness with norm <span class="math" data-tex="\(\Phi_\omega(I)\)">\(\Phi_\omega(I)\)</span>.</p>
+<p>Choose an orthonormal basis and let <span class="math" data-tex="\(P_N\)">\(P_N\)</span> project onto its first <span class="math" data-tex="\(N\)">\(N\)</span> vectors. Parseval gives <span class="math" data-tex="\(P_N\uparrow I\)">\(P_N\uparrow I\)</span> strongly. The product <span class="math" data-tex="\(P_NT\)">\(P_NT\)</span> has finite rank, so Theorem 4.3 gives <span class="math" data-tex="\(\Phi_\omega(P_N)=0\)">\(\Phi_\omega(P_N)=0\)</span>. But <span class="math" data-tex="\(\Phi_\omega(I)=\operatorname{Tr}_\omega(T)&gt;0\)">\(\Phi_\omega(I)=\operatorname{Tr}_\omega(T)&gt;0\)</span>. This proves the asserted failure of monotone convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus a logarithmic trace can define a positive integral while failing the convergence property of ordinary measure integration on the ambient algebra. Its restriction to a smaller algebra needs its own normality check. Norm continuity gives a unique extension from an algebra to its <strong>norm</strong> closure; it does not give a unique extension to its strong or weak closure. The argument above makes no assertion that <span class="math" data-tex="\(A\mapsto\Phi_\omega(A)\)">\(A\mapsto\Phi_\omega(A)\)</span> is a trace on every coefficient algebra.</p>
+<p><em>End of the Lord–Sukochev adaptation. The following original course text is CC0.</em></p>
+<h2 id="5-when-the-choice-disappears">5. When the choice disappears</h2>
+<p>There are two distinct independence questions. First, does every generalized limit assign the same number? Second, does the quotient-valued observation depend on a choice of equivalent Hilbert norm? The first is a scalar limiting question; the second follows from cyclicity.</p>
+<h3 id="agreement-of-all-scalar-observations">Agreement of all scalar observations</h3>
+<p><strong>Lemma 5.1.</strong> For <span class="math" data-tex="\(f\in C_b([a,\infty))\)">\(f\in C_b([a,\infty))\)</span>, all states on <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> give the same value on <span class="math" data-tex="\([f]\)">\([f]\)</span> if and only if <span class="math" data-tex="\(f\)">\(f\)</span> has an ordinary limit at infinity.</p>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(f\to L\)">\(f\to L\)</span>, its quotient class is the constant <span class="math" data-tex="\(L\)">\(L\)</span>. If <span class="math" data-tex="\(f\)">\(f\)</span> has no limit, boundedness gives two sequences escaping to infinity on which <span class="math" data-tex="\(f\)">\(f\)</span> converges to distinct complex numbers. The sequence-evaluation states constructed above have those two values. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>, <strong>measurability for the family (4.2)</strong> therefore means exactly that <span class="math" data-tex="\(C_\lambda(T)\)">\(C_\lambda(T)\)</span> converges. For general <span class="math" data-tex="\(T\)">\(T\)</span>, choose the bounded continuous representative</p>
+<span class="math math-display" data-tex="\[
+C_\lambda((\operatorname{Re}T)_+)-C_\lambda((\operatorname{Re}T)_-)
++iC_\lambda((\operatorname{Im}T)_+)-iC_\lambda((\operatorname{Im}T)_-).
+\]">\[
+C_\lambda((\operatorname{Re}T)_+)-C_\lambda((\operatorname{Re}T)_-)
++iC_\lambda((\operatorname{Im}T)_+)-iC_\lambda((\operatorname{Im}T)_-).
+\]</span>
+<p>Lemma 5.1 gives the same criterion for this representative. A different positive decomposition changes it by a function tending to zero.</p>
+<h3 id="error-rates-and-equivalent-hilbert-norms">Error rates and equivalent Hilbert norms</h3>
+<p>The construction also records more than a limiting number. The error bound in Theorem 3.2 allows a finer comparison of asymptotic observations.</p>
+<p>The cyclic observation in Theorem 4.1 has a finer algebraic version. Put <span class="math" data-tex="\(\rho(\lambda)=\log\log\lambda/\log\lambda\)">\(\rho(\lambda)=\log\log\lambda/\log\lambda\)</span>, and quotient bounded continuous functions by those that are <span class="math" data-tex="\(O(\rho)\)">\(O(\rho)\)</span>. This is an algebraic quotient, not asserted to be a C*-algebra. The bound (3.4) proves additivity already in that quotient; the same unitary argument proves (4.1) there as well. The trace-class bound is also <span class="math" data-tex="\(O(\rho)\)">\(O(\rho)\)</span>. Thus we retain the rate at which the trace identities become exact, before passing to the larger ideal of all functions tending to zero.</p>
+<p><strong>Corollary 5.2 (equivalent Hilbert norms).</strong> If two Hilbert inner products give the same norm topology, the two resulting maps <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> agree after identifying their underlying vector spaces. The same holds for the finer algebraic quotient.</p>
+<p><strong>Proof.</strong> Equivalent Hilbert norms give a bounded positive invertible change of metric. Its square root identifies the new Hilbert space isometrically with the old one, transporting <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(STS^{-1}\)">\(STS^{-1}\)</span> for a bounded invertible <span class="math" data-tex="\(S\)">\(S\)</span>. Formula (4.1) applied to <span class="math" data-tex="\(ST\)">\(ST\)</span> and <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> gives <span class="math" data-tex="\(\Theta(STS^{-1})=\Theta(T)\)">\(\Theta(STS^{-1})=\Theta(T)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.3 (the harmonic boundary).</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(Te_j=\frac{3}{j+1}e_j\)">\(Te_j=\frac{3}{j+1}e_j\)</span>, indexing from zero. The integral comparison for the harmonic series gives <span class="math" data-tex="\(S_N(T)=3\log N+O(1)\)">\(S_N(T)=3\log N+O(1)\)</span>, so every trace (4.2) gives three. The operator <span class="math" data-tex="\(T^2\)">\(T^2\)</span> is trace class and every such trace gives zero. These values distinguish ordinary summability from its logarithmic boundary.</p>
+<p><strong>Exercise 2 (intermediate).</strong> Show that a positive compact operator with eigenvalues <span class="math" data-tex="\((j+2)^{-1}(\log(j+2))^{-1}\)">\((j+2)^{-1}(\log(j+2))^{-1}\)</span> belongs to <span class="math" data-tex="\(\mathcal M_0\)">\(\mathcal M_0\)</span>, although its ordinary trace is infinite.</p>
+<p><strong>Solution.</strong> The eigenvalues decrease. Integral comparison with <span class="math" data-tex="\(1/(x\log x)\)">\(1/(x\log x)\)</span> gives <span class="math" data-tex="\(S_N=\log\log N+O(1)\)">\(S_N=\log\log N+O(1)\)</span>. This diverges, but <span class="math" data-tex="\(S_N/\log N\to0\)">\(S_N/\log N\to0\)</span>. Real interpolation and Proposition 3.1 give membership in <span class="math" data-tex="\(\mathcal M_0\)">\(\mathcal M_0\)</span>, hence zero value for every trace (4.2).</p>
+<p>These calculations separate a nonzero logarithmic coefficient from an infinite ordinary trace that is nevertheless invisible to every trace in (4.2). Proposition 3.1 identifies the ideal-norm approximation behind the second conclusion.</p>
+<h2 id="6-recovering-the-coefficient-from-a-zeta-function">6. Recovering the coefficient from a zeta function</h2>
+<p>The criterion in Section 5 asks for a limit of spectral observations. In applications, a zeta function or a heat trace may be easier to compute. We now connect these data in two steps: a Tauberian argument converts a Laplace asymptotic into an eigenvalue threshold, and a singular-value bound converts that threshold into a rank cutoff. Keeping these steps separate makes the extra hypothesis visible.</p>
+<p><strong>Theorem 6.1 (a Tauberian equivalence).</strong> Suppose <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span> and <span class="math" data-tex="\(\mu_j(T)\leq C/(j+1)\)">\(\mu_j(T)\leq C/(j+1)\)</span>. Write <span class="math" data-tex="\(\zeta_T(s)=\operatorname{Tr}(T^s)\)">\(\zeta_T(s)=\operatorname{Tr}(T^s)\)</span> for real <span class="math" data-tex="\(s&gt;1\)">\(s&gt;1\)</span>. For <span class="math" data-tex="\(L\geq0\)">\(L\geq0\)</span>, the following are equivalent:</p>
+<span class="math math-display" data-tex="\[
+\lim_{s\downarrow1}(s-1)\zeta_T(s)=L,
+\qquad
+\lim_{N\to\infty}\frac1{\log N}\sum_{j&lt;N}\mu_j(T)=L.
+\tag{6.1}
+\]">\[
+\lim_{s\downarrow1}(s-1)\zeta_T(s)=L,
+\qquad
+\lim_{N\to\infty}\frac1{\log N}\sum_{j&lt;N}\mu_j(T)=L.
+\tag{6.1}
+\]</span>
+<p>In either case every trace (4.2) takes the value <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Proof.</strong> Rescale <span class="math" data-tex="\(T\)">\(T\)</span>, if necessary, so <span class="math" data-tex="\(\|T\|\leq1\)">\(\|T\|\leq1\)</span>. Both limits scale by the same factor, since <span class="math" data-tex="\(c^{1+\epsilon}\to c\)">\(c^{1+\epsilon}\to c\)</span>. Zero eigenvalues contribute nothing. Define the positive measure</p>
+<span class="math math-display" data-tex="\[
+dU(t)=\sum_{\mu_j&gt;0}\mu_j\delta_{-\log\mu_j}(dt),\quad t\geq0.
+\]">\[
+dU(t)=\sum_{\mu_j&gt;0}\mu_j\delta_{-\log\mu_j}(dt),\quad t\geq0.
+\]</span>
+<p>It is finite on bounded intervals, and</p>
+<span class="math math-display" data-tex="\[
+\zeta_T(1+\epsilon)=\int_0^\infty e^{-\epsilon t}\,dU(t).
+\tag{6.2}
+\]">\[
+\zeta_T(1+\epsilon)=\int_0^\infty e^{-\epsilon t}\,dU(t).
+\tag{6.2}
+\]</span>
+<p>We first prove that <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> times this Laplace transform tends to <span class="math" data-tex="\(L\)">\(L\)</span> exactly when <span class="math" data-tex="\(U([0,R])/R\to L\)">\(U([0,R])/R\to L\)</span>. The reverse direction follows from Tonelli:</p>
+<span class="math math-display" data-tex="\[
+\epsilon\int e^{-\epsilon t}\,dU(t)
+=\epsilon^2\int_0^\infty e^{-\epsilon t}U([0,t])\,dt.
+\]">\[
+\epsilon\int e^{-\epsilon t}\,dU(t)
+=\epsilon^2\int_0^\infty e^{-\epsilon t}U([0,t])\,dt.
+\]</span>
+<p>If <span class="math" data-tex="\(U([0,t])=Lt+o(t)\)">\(U([0,t])=Lt+o(t)\)</span>, divide the integral at a fixed large threshold. The bounded initial part tends to zero, and the tail error is bounded by <span class="math" data-tex="\(\epsilon^2\int e^{-\epsilon t}\epsilon_0t\,dt=\epsilon_0\)">\(\epsilon^2\int e^{-\epsilon t}\epsilon_0t\,dt=\epsilon_0\)</span>. The main integral is <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>For the forward direction, let <span class="math" data-tex="\(d\nu_R(u)=R^{-1}dU(Ru)\)">\(d\nu_R(u)=R^{-1}dU(Ru)\)</span>. The assumed limit gives, for every integer <span class="math" data-tex="\(k\geq1\)">\(k\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\int e^{-ku}\,d\nu_R(u)=R^{-1}\zeta_T(1+k/R)\longrightarrow L/k.
+\]">\[
+\int e^{-ku}\,d\nu_R(u)=R^{-1}\zeta_T(1+k/R)\longrightarrow L/k.
+\]</span>
+<p>Push <span class="math" data-tex="\(e^{-u}d\nu_R(u)\)">\(e^{-u}d\nu_R(u)\)</span> to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> by <span class="math" data-tex="\(x=e^{-u}\)">\(x=e^{-u}\)</span>. Its <span class="math" data-tex="\(m\)">\(m\)</span>-th moment tends to <span class="math" data-tex="\(L/(m+1)\)">\(L/(m+1)\)</span> for every integer <span class="math" data-tex="\(m\geq0\)">\(m\geq0\)</span>, precisely the moments of <span class="math" data-tex="\(L\,dx\)">\(L\,dx\)</span>. Polynomial approximation and the bounded zeroth moments imply convergence against every continuous function on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Continuous upper and lower approximations to <span class="math" data-tex="\(x^{-1}1_{[e^{-1},1]}(x)\)">\(x^{-1}1_{[e^{-1},1]}(x)\)</span>, with arbitrarily short transition intervals, then show</p>
+<span class="math math-display" data-tex="\[
+\nu_R([0,1])\longrightarrow L\int_{e^{-1}}^1\frac{dx}{x}=L.
+\]">\[
+\nu_R([0,1])\longrightarrow L\int_{e^{-1}}^1\frac{dx}{x}=L.
+\]</span>
+<p>The limiting Lebesgue measure gives zero mass to the endpoints, so those transitions add no persistent error. This is the desired Tauberian direction.</p>
+<p>It remains to compare an eigenvalue threshold with a rank threshold. The difference between <span class="math" data-tex="\(U([0,\log N])\)">\(U([0,\log N])\)</span> and <span class="math" data-tex="\(S_N(T)\)">\(S_N(T)\)</span> is uniformly bounded: omitted terms among the first <span class="math" data-tex="\(N\)">\(N\)</span> are each below <span class="math" data-tex="\(1/N\)">\(1/N\)</span>, with total at most one; included terms beyond <span class="math" data-tex="\(N\)">\(N\)</span> must have <span class="math" data-tex="\(j+1\leq CN\)">\(j+1\leq CN\)</span>, and their sum is bounded by <span class="math" data-tex="\(C\sum_{N&lt;j+1\leq CN}(j+1)^{-1}\)">\(C\sum_{N&lt;j+1\leq CN}(j+1)^{-1}\)</span>. This harmonic sum is bounded independently of <span class="math" data-tex="\(N\)">\(N\)</span>. Taking <span class="math" data-tex="\(N=\lfloor e^R\rfloor\)">\(N=\lfloor e^R\rfloor\)</span>, the interval between <span class="math" data-tex="\(e^{-R}\)">\(e^{-R}\)</span> and <span class="math" data-tex="\(1/N\)">\(1/N\)</span> contains at most <span class="math" data-tex="\(Ce^R\)">\(Ce^R\)</span> terms, each at most <span class="math" data-tex="\(1/N\)">\(1/N\)</span>; their total is at most <span class="math" data-tex="\(2C\)">\(2C\)</span> for large <span class="math" data-tex="\(R\)">\(R\)</span>. This proves equivalence with the second limit in (6.1). Formula (2.2) passes it to real cutoffs. An ordinary Cesàro average preserves a limit, so (3.3) also tends to <span class="math" data-tex="\(L\)">\(L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The upper bound on singular values is a hypothesis of this theorem. It has not been deduced merely from membership in <span class="math" data-tex="\(\mathcal M_{1,\infty}\)">\(\mathcal M_{1,\infty}\)</span>.</p>
+<p>For the heat application, the eigenbasis and graph-domain assertions are supplied by <a href="#compact-resolvent-spectral-core">Lemma 9.2</a>, whose proof uses only the compact spectral decomposition and selfadjointness. No trace construction is used in that spectral argument.</p>
+<p><strong>Corollary 6.2 (heat normalization).</strong> Let <span class="math" data-tex="\(Q\geq cI&gt;0\)">\(Q\geq cI&gt;0\)</span> have compact resolvent, and suppose</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(e^{-tQ})\sim A\,t^{-p},\qquad t\downarrow0,\quad p&gt;0,\quad A&gt;0.
+\]">\[
+\operatorname{Tr}(e^{-tQ})\sim A\,t^{-p},\qquad t\downarrow0,\quad p&gt;0,\quad A&gt;0.
+\]</span>
+<p>Then <span class="math" data-tex="\(Q^{-p}\)">\(Q^{-p}\)</span> satisfies the hypothesis of Theorem 6.1 and</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_\omega(Q^{-p})=\frac{A}{\Gamma(p+1)}.
+\tag{6.3}
+\]">\[
+\operatorname{Tr}_\omega(Q^{-p})=\frac{A}{\Gamma(p+1)}.
+\tag{6.3}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(N_Q(R)\)">\(N_Q(R)\)</span> counts eigenvalues at most <span class="math" data-tex="\(R\)">\(R\)</span>, then <span class="math" data-tex="\(e^{-1}N_Q(R)\leq\operatorname{Tr}(e^{-Q/R})=O(R^p)\)">\(e^{-1}N_Q(R)\leq\operatorname{Tr}(e^{-Q/R})=O(R^p)\)</span>. Thus the eigenvalues of <span class="math" data-tex="\(Q^{-p}\)">\(Q^{-p}\)</span> are <span class="math" data-tex="\(O((j+1)^{-1})\)">\(O((j+1)^{-1})\)</span>. Functional calculus and Tonelli give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(Q^{-p(1+\epsilon)})=
+\frac1{\Gamma(p+p\epsilon)}\int_0^\infty
+\operatorname{Tr}(e^{-tQ})t^{p+p\epsilon}\,\frac{dt}{t}.
+\]">\[
+\operatorname{Tr}(Q^{-p(1+\epsilon)})=
+\frac1{\Gamma(p+p\epsilon)}\int_0^\infty
+\operatorname{Tr}(e^{-tQ})t^{p+p\epsilon}\,\frac{dt}{t}.
+\]</span>
+<p>For <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, exponential decay follows from <span class="math" data-tex="\(Q\geq cI\)">\(Q\geq cI\)</span> and the finite heat trace at <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>. That part disappears after multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. On a sufficiently small interval the heat trace differs from <span class="math" data-tex="\(At^{-p}\)">\(At^{-p}\)</span> by at most <span class="math" data-tex="\(\eta t^{-p}\)">\(\eta t^{-p}\)</span>. Its main integral is <span class="math" data-tex="\(A/(p\epsilon)\)">\(A/(p\epsilon)\)</span>; the error is bounded by <span class="math" data-tex="\(\eta/(p\epsilon)\)">\(\eta/(p\epsilon)\)</span>. Let <span class="math" data-tex="\(\epsilon\downarrow0\)">\(\epsilon\downarrow0\)</span>, then <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span>, and use <span class="math" data-tex="\(\Gamma(p+1)=p\Gamma(p)\)">\(\Gamma(p+1)=p\Gamma(p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 6.3 (the two frequency directions).</strong> On the circle of length <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span>, let <span class="math" data-tex="\(Q=1-\partial_x^2\)">\(Q=1-\partial_x^2\)</span>. Its eigenvalues are <span class="math" data-tex="\(1+k^2\)">\(1+k^2\)</span>, <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span>. Riemann sums give</p>
+<span class="math math-display" data-tex="\[
+\sqrt t\sum_{k\in\mathbb Z}e^{-t(1+k^2)}\longrightarrow\int_{\mathbb R}e^{-y^2}dy=\sqrt\pi.
+\]">\[
+\sqrt t\sum_{k\in\mathbb Z}e^{-t(1+k^2)}\longrightarrow\int_{\mathbb R}e^{-y^2}dy=\sqrt\pi.
+\]</span>
+<p>For a rigorous tail estimate, bound each decreasing Gaussian tail by an integral; the central Riemann sum converges uniformly on fixed compact intervals. Formula (6.3), with <span class="math" data-tex="\(p=1/2\)">\(p=1/2\)</span>, gives <span class="math" data-tex="\(\operatorname{Tr}_\omega(Q^{-1/2})=2\)">\(\operatorname{Tr}_\omega(Q^{-1/2})=2\)</span>. The two signs of the frequency account for the factor two.</p>
+<h2 id="7-from-logarithmic-traces-to-geometry">7. From logarithmic traces to geometry</h2>
+<p>The classical trace calculation follows after the Fourier and symbol estimates in <a href="hypoelliptic-calculus-and-the-transverse-geometry-of-diffeomorphisms.html">Classical pseudodifferential traces</a>. Its full proof uses the logarithmic trace constructed here.</p>
+<h2 id="8-examples-and-solved-exercises">8. Examples and solved exercises</h2>
+<p>Exercises 1 and 3 accompany the finite-cutoff construction in Section 2; Exercise 2 tests negligible tails in Section 5. The following problems connect the heat computation to geometry and to the spectral tools in Section 9.</p>
+<p><strong>Exercise 4 (advanced).</strong> Let <span class="math" data-tex="\(Q=1-\Delta\)">\(Q=1-\Delta\)</span> on a rectangular flat torus with side lengths <span class="math" data-tex="\(\ell_1,\ldots,\ell_d\)">\(\ell_1,\ldots,\ell_d\)</span>. Compute <span class="math" data-tex="\(\operatorname{Tr}_\omega(Q^{-d/2})\)">\(\operatorname{Tr}_\omega(Q^{-d/2})\)</span>.</p>
+<p><strong>Solution.</strong> The eigenvalues are <span class="math" data-tex="\(1+\sum_j(2\pi k_j/\ell_j)^2\)">\(1+\sum_j(2\pi k_j/\ell_j)^2\)</span>. Gaussian Riemann sums, with the same integral tail bound as Example 6.3 in each coordinate, give</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}(e^{-tQ})\sim
+\frac{\ell_1\cdots\ell_d}{(4\pi t)^{d/2}}.
+\]">\[
+\operatorname{Tr}(e^{-tQ})\sim
+\frac{\ell_1\cdots\ell_d}{(4\pi t)^{d/2}}.
+\]</span>
+<p>Apply (6.3) with <span class="math" data-tex="\(p=d/2\)">\(p=d/2\)</span>. The value is</p>
+<span class="math math-display" data-tex="\[
+\frac{\ell_1\cdots\ell_d}{(4\pi)^{d/2}\Gamma(d/2+1)}.
+\]">\[
+\frac{\ell_1\cdots\ell_d}{(4\pi)^{d/2}\Gamma(d/2+1)}.
+\]</span>
+<p>For <span class="math" data-tex="\(\ell_j=2\pi\)">\(\ell_j=2\pi\)</span>, it is <span class="math" data-tex="\(\pi^{d/2}/\Gamma(d/2+1)\)">\(\pi^{d/2}/\Gamma(d/2+1)\)</span>, the Euclidean volume of the unit ball. The shift by one removes the zero eigenvalue and changes no high-frequency coefficient.</p>
+<p><strong>Exercise 5 (advanced).</strong> Suppose <span class="math" data-tex="\(Q\geq cI&gt;0\)">\(Q\geq cI&gt;0\)</span> has heat trace <span class="math" data-tex="\(At^{-p}+O(t^{-p+\alpha})\)">\(At^{-p}+O(t^{-p+\alpha})\)</span>, with <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. Prove that <span class="math" data-tex="\(\operatorname{Tr}(Q^{-z})\)">\(\operatorname{Tr}(Q^{-z})\)</span> has a meromorphic continuation to <span class="math" data-tex="\(\operatorname{Re}z&gt;p-\alpha\)">\(\operatorname{Re}z&gt;p-\alpha\)</span>, with residue <span class="math" data-tex="\(A/\Gamma(p)\)">\(A/\Gamma(p)\)</span> at <span class="math" data-tex="\(z=p\)">\(z=p\)</span>.</p>
+<p><strong>Solution.</strong> Subtract <span class="math" data-tex="\(At^{-p}\)">\(At^{-p}\)</span> in the Mellin integral on <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>. The remaining integral converges locally uniformly when <span class="math" data-tex="\(\operatorname{Re}z&gt;p-\alpha\)">\(\operatorname{Re}z&gt;p-\alpha\)</span>, even after any <span class="math" data-tex="\(z\)">\(z\)</span>-derivative, since powers of <span class="math" data-tex="\(|\log t|\)">\(|\log t|\)</span> are integrable with a strictly positive exponent margin. The large-<span class="math" data-tex="\(t\)">\(t\)</span> integral is entire by exponential decay. The subtracted term is <span class="math" data-tex="\(A/(z-p)\)">\(A/(z-p)\)</span>, multiplied by <span class="math" data-tex="\(1/\Gamma(z)\)">\(1/\Gamma(z)\)</span>, giving the stated residue. At <span class="math" data-tex="\(z=p(1+\epsilon)\)">\(z=p(1+\epsilon)\)</span>, multiplication by <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> produces <span class="math" data-tex="\(A/\Gamma(p+1)\)">\(A/\Gamma(p+1)\)</span>, consistent with (6.3).</p>
+<p><strong>Exercise 6 (advanced).</strong> Explain why the multiplier
+<span class="math" data-tex="\((1-\Delta_{\mathrm{flat}})^{-n/2}\)">\((1-\Delta_{\mathrm{flat}})^{-n/2}\)</span> on <span class="math" data-tex="\(L^2(\mathbb R^n)\)">\(L^2(\mathbb R^n)\)</span> does not belong to the compact ideal, although its classical symbol has order <span class="math" data-tex="\(-n\)">\(-n\)</span>.</p>
+<p><strong>Solution.</strong> On the Fourier side it is multiplication by the positive function
+<span class="math" data-tex="\((1+|\xi|^2)^{-n/2}\)">\((1+|\xi|^2)^{-n/2}\)</span>. Choose infinitely many disjoint measurable subsets of a fixed finite ball, all with positive measure, and normalized functions supported on them. These functions are orthonormal; their images remain mutually orthogonal and have norm bounded below by the minimum of the multiplier on that ball. Thus the images have no convergent subsequence. The multiplier is not compact. This shows why compactness of the base, compact localization, or another genuine global condition is necessary before applying a logarithmic compact-operator trace.</p>
+<p><strong>Exercise 7 (intermediate).</strong> Let <span class="math" data-tex="\(A=\operatorname{diag}(4,1)\)">\(A=\operatorname{diag}(4,1)\)</span> and <span class="math" data-tex="\(B=\operatorname{diag}(1,3)\)">\(B=\operatorname{diag}(1,3)\)</span>. Verify (9.3) for <span class="math" data-tex="\(p=q=2,r=1\)">\(p=q=2,r=1\)</span>. Decide whether the bound must be an equality, and give a nonzero equality example with those exponents.</p>
+<p><strong>Solution.</strong> The product has singular values <span class="math" data-tex="\(4,3\)">\(4,3\)</span>, so <span class="math" data-tex="\(\|AB\|_1=7\)">\(\|AB\|_1=7\)</span>, whereas <span class="math" data-tex="\(\|A\|_2\|B\|_2=\sqrt{17}\sqrt{10}=\sqrt{170}&gt;7\)">\(\|A\|_2\|B\|_2=\sqrt{17}\sqrt{10}=\sqrt{170}&gt;7\)</span>. Equality is not required. Taking <span class="math" data-tex="\(B=A\)">\(B=A\)</span> gives <span class="math" data-tex="\(\|A^2\|_1=17=\|A\|_2^2\)">\(\|A^2\|_1=17=\|A\|_2^2\)</span>; the product-vector and scalar Hölder bounds are both equalities in that case.</p>
+<p><strong>Exercise 8 (intermediate).</strong> On <span class="math" data-tex="\(\ell^2(\{1,2,3,\ldots\})\)">\(\ell^2(\{1,2,3,\ldots\})\)</span>, let <span class="math" data-tex="\(De_j=je_j\)">\(De_j=je_j\)</span>. Determine <span class="math" data-tex="\(\operatorname{Dom}D\)">\(\operatorname{Dom}D\)</span>. Does <span class="math" data-tex="\(x_j=1/j\)">\(x_j=1/j\)</span> belong to it? Show that its finite truncations converge in <span class="math" data-tex="\(H\)">\(H\)</span> but their images under <span class="math" data-tex="\(D\)">\(D\)</span> do not.</p>
+<p><strong>Solution.</strong> Formula (9.2) gives <span class="math" data-tex="\(\operatorname{Dom}D=\{x:\sum_jj^2|x_j|^2&lt;\infty\}\)">\(\operatorname{Dom}D=\{x:\sum_jj^2|x_j|^2&lt;\infty\}\)</span>. The stated vector belongs to <span class="math" data-tex="\(H\)">\(H\)</span>, because <span class="math" data-tex="\(\sum j^{-2}&lt;\infty\)">\(\sum j^{-2}&lt;\infty\)</span>, but its domain sum is <span class="math" data-tex="\(\sum1=\infty\)">\(\sum1=\infty\)</span>. Its truncations have <span class="math" data-tex="\(H\)">\(H\)</span> tails with squared norm <span class="math" data-tex="\(\sum_{j&gt;N}j^{-2}\to0\)">\(\sum_{j&gt;N}j^{-2}\to0\)</span>. Their <span class="math" data-tex="\(D\)">\(D\)</span>-images have entries one through the cutoff, so the squared distance between cutoffs <span class="math" data-tex="\(M&gt;N\)">\(M&gt;N\)</span> is <span class="math" data-tex="\(M-N\)">\(M-N\)</span>. They are not Cauchy. Graph convergence is the essential condition in Lemma 9.2.</p>
+<p><strong>Exercise 9 (advanced).</strong> In (9.6), take three heat lengths <span class="math" data-tex="\(1/2,0,1/2\)">\(1/2,0,1/2\)</span>. Identify the Schatten exponents and show why the zero interval does not invalidate the estimate.</p>
+<p><strong>Solution.</strong> The two nontrivial heat factors have exponent two and norm <span class="math" data-tex="\((\operatorname{Tr}e^{-uD^2})^{1/2}\)">\((\operatorname{Tr}e^{-uD^2})^{1/2}\)</span>. The middle heat factor is the identity, with exponent infinity and norm one. Bounded coefficients can be included as infinite-exponent factors. Iterated Hölder gives a trace-norm bound equal to the product of coefficient norms times <span class="math" data-tex="\(\operatorname{Tr}e^{-uD^2}\)">\(\operatorname{Tr}e^{-uD^2}\)</span>. The reciprocal exponents add to <span class="math" data-tex="\(1/2+0+1/2=1\)">\(1/2+0+1/2=1\)</span>, exactly as required. No negative power of a heat length is introduced.</p>
+<p><span id="spectral-decomposition-and-schatten-estimates"></span>
+<span id="9-spectral-and-ideal-facts-behind-the-estimates"></span></p>
+<h2 id="9-spectral-decomposition-and-schatten-estimates">9. Spectral decomposition and Schatten estimates</h2>
+<p>These supporting proofs can be read at their points of use. Lemma 9.1 supplies the decomposition needed in Section 1; Lemma 9.2 supplies the eigenbasis used in the heat calculation; Lemma 9.4 constructs the states used in Section 4. Theorem 9.3 uses the rank-approximation formula (1.1), but neither logarithmic traces nor the Tauberian argument, and supplies the precise product estimate for later heat brackets. The elementary Hilbert facts in our entry base include orthogonal projections, adjoints, Parseval for an orthonormal basis, and completeness. The positive bounded functional calculus is the interval construction AN03-SPC-003 in <a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a>: its proof starts with Bernstein polynomials, constructs scalar measures and bounded Borel operators, and proves multiplicativity. It does not assume the compact spectral theorem. Its injectivity premise loses no bounded positive operators: split off the kernel, apply the construction to its invariant orthogonal complement after rescaling to a contraction, and let a function act by its value at zero on the kernel. Continuous functions, including the positive square root, are uniform polynomial limits, so they commute with every operator commuting with the given positive operator.</p>
+<p><span id="compact-positive-operators"></span></p>
+<p><strong>Lemma 9.1 (compact positive operators).</strong> A positive compact operator <span class="math" data-tex="\(K\)">\(K\)</span> has an orthonormal basis of its kernel and its positive eigenspaces. Its nonzero eigenvalues have finite multiplicity and tend to zero if there are infinitely many.</p>
+<p><strong>Proof.</strong> Positivity of the form <span class="math" data-tex="\(\langle Kx,y\rangle\)">\(\langle Kx,y\rangle\)</span> and scalar quadratic minimization give
+<span class="math math-display" data-tex="\[
+|\langle Kx,y\rangle|^2\leq\langle Kx,x\rangle\langle Ky,y\rangle .
+\]">\[
+|\langle Kx,y\rangle|^2\leq\langle Kx,x\rangle\langle Ky,y\rangle .
+\]</span>
+Writing <span class="math" data-tex="\(a=\sup_{\|x\|=1}\langle Kx,x\rangle\)">\(a=\sup_{\|x\|=1}\langle Kx,x\rangle\)</span>, taking the supremum over unit <span class="math" data-tex="\(y\)">\(y\)</span> proves
+<span class="math" data-tex="\(\|Kx\|^2\leq a\langle Kx,x\rangle\)">\(\|Kx\|^2\leq a\langle Kx,x\rangle\)</span>. Thus <span class="math" data-tex="\(a=\|K\|\)">\(a=\|K\|\)</span>.
+If <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, choose unit <span class="math" data-tex="\(x_j\)">\(x_j\)</span> with <span class="math" data-tex="\(\langle Kx_j,x_j\rangle\to a\)">\(\langle Kx_j,x_j\rangle\to a\)</span>. Then
+<span class="math math-display" data-tex="\[
+\|(K-a)x_j\|^2
+\leq a^2-a\langle Kx_j,x_j\rangle\longrightarrow0.
+\tag{9.1}
+\]">\[
+\|(K-a)x_j\|^2
+\leq a^2-a\langle Kx_j,x_j\rangle\longrightarrow0.
+\tag{9.1}
+\]</span>
+Compactness gives a convergent subsequence of <span class="math" data-tex="\(Kx_j\)">\(Kx_j\)</span>; (9.1) then gives convergence of that subsequence of <span class="math" data-tex="\(x_j\)">\(x_j\)</span> to a unit eigenvector with eigenvalue <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>The orthogonal complement of an eigenspace is invariant under <span class="math" data-tex="\(K\)">\(K\)</span>, by selfadjointness. Repeat the construction there. An infinite orthonormal family of eigenvectors with eigenvalues bounded below by <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> would have images at pairwise distance at least <span class="math" data-tex="\(\sqrt2\varepsilon\)">\(\sqrt2\varepsilon\)</span>, contradicting compactness. This proves finite multiplicity away from zero and convergence of the selected eigenvalues to zero. If <span class="math" data-tex="\(K\)">\(K\)</span> were nonzero on the orthogonal complement of all selected eigenspaces, the same maximum argument would produce a positive eigenvalue there. Every previously selected maximum would be at least that value, giving the contradiction just proved. The remaining complement is therefore the kernel. Choose an orthonormal basis in that closed subspace. This proves the result, including finite rank and <span class="math" data-tex="\(K=0\)">\(K=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply this to <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> for compact <span class="math" data-tex="\(T\)">\(T\)</span>. On an eigenvector with eigenvalue <span class="math" data-tex="\(\mu^2&gt;0\)">\(\mu^2&gt;0\)</span>, put <span class="math" data-tex="\(Ve=T e/\mu\)">\(Ve=T e/\mu\)</span>. These images are orthonormal, since
+<span class="math" data-tex="\(\langle Te,Tf\rangle=\langle T^*Te,f\rangle\)">\(\langle Te,Tf\rangle=\langle T^*Te,f\rangle\)</span>. Extend <span class="math" data-tex="\(V\)">\(V\)</span> by zero on the kernel. It is a partial isometry and <span class="math" data-tex="\(T=V|T|\)">\(T=V|T|\)</span>, where <span class="math" data-tex="\(|T|\)">\(|T|\)</span> multiplies those eigenvectors by <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. This is the compact polar decomposition used in Section 1.</p>
+<p><span id="compact-resolvent-spectral-core"></span></p>
+<p><strong>Lemma 9.2 (a compact-resolvent spectral core).</strong> A selfadjoint <span class="math" data-tex="\(D\)">\(D\)</span> with compact resolvent has an orthonormal eigenbasis <span class="math" data-tex="\((e_j)\)">\((e_j)\)</span>, with real eigenvalues <span class="math" data-tex="\(d_j\)">\(d_j\)</span>. Each bounded interval contains only finitely many eigenvalues, counted with multiplicity, and
+<span class="math math-display" data-tex="\[
+\operatorname{Dom}D
+=\left\{x:\sum_j |d_j|^2|\langle x,e_j\rangle|^2&lt;\infty\right\}.
+\tag{9.2}
+\]">\[
+\operatorname{Dom}D
+=\left\{x:\sum_j |d_j|^2|\langle x,e_j\rangle|^2&lt;\infty\right\}.
+\tag{9.2}
+\]</span>
+Finite spectral sums are dense in this domain with its graph norm.</p>
+<p><strong>Proof.</strong> For either sign,
+<span class="math" data-tex="\(\|(D\pm i)x\|^2=\|Dx\|^2+\|x\|^2\)">\(\|(D\pm i)x\|^2=\|Dx\|^2+\|x\|^2\)</span>. The range is closed, using closedness of <span class="math" data-tex="\(D\)">\(D\)</span>, and its orthogonal complement is <span class="math" data-tex="\(\ker(D\mp i)=0\)">\(\ker(D\mp i)=0\)</span>, using the adjoint definition. Thus <span class="math" data-tex="\(D\pm i\)">\(D\pm i\)</span> are bijective with bounded inverses. Their resolvent identity shows that these inverses commute. Put
+<span class="math math-display" data-tex="\[
+R=(D-i)^{-1}(D+i)^{-1}.
+\]">\[
+R=(D-i)^{-1}(D+i)^{-1}.
+\]</span>
+Then <span class="math" data-tex="\(R=(D+i)^{-1*}(D+i)^{-1}\)">\(R=(D+i)^{-1*}(D+i)^{-1}\)</span> is positive, injective and compact. The identity <span class="math" data-tex="\(D(D\pm i)^{-1}=I\mp i(D\pm i)^{-1}\)">\(D(D\pm i)^{-1}=I\mp i(D\pm i)^{-1}\)</span> shows that its range is exactly <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span> and that <span class="math" data-tex="\(R=(1+D^2)^{-1}\)">\(R=(1+D^2)^{-1}\)</span> there.</p>
+<p>Lemma 9.1 decomposes <span class="math" data-tex="\(H\)">\(H\)</span> into the finite-dimensional positive eigenspaces of <span class="math" data-tex="\(R\)">\(R\)</span>; there is no kernel. Every such eigenspace lies in <span class="math" data-tex="\(\operatorname{Dom}D^2\)">\(\operatorname{Dom}D^2\)</span>. The resolvent identities imply <span class="math" data-tex="\(DRx=RDx\)">\(DRx=RDx\)</span> for <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span>, so <span class="math" data-tex="\(D\)">\(D\)</span> preserves each of them. Its restriction is a Hermitian matrix; finite-dimensional diagonalization gives a real eigenbasis. If <span class="math" data-tex="\(De_j=d_je_j\)">\(De_j=d_je_j\)</span>, then <span class="math" data-tex="\(Re_j=(1+d_j^2)^{-1}e_j\)">\(Re_j=(1+d_j^2)^{-1}e_j\)</span>. Compactness of <span class="math" data-tex="\(R\)">\(R\)</span> proves the bounded-interval assertion.</p>
+<p>For <span class="math" data-tex="\(x\in\operatorname{Dom}D\)">\(x\in\operatorname{Dom}D\)</span>, selfadjointness gives the coordinate of <span class="math" data-tex="\(Dx\)">\(Dx\)</span> as <span class="math" data-tex="\(d_j\langle x,e_j\rangle\)">\(d_j\langle x,e_j\rangle\)</span>, so (9.2) is necessary by Parseval. Conversely that condition makes the images of the finite partial sums converge in <span class="math" data-tex="\(H\)">\(H\)</span>. Closedness of <span class="math" data-tex="\(D\)">\(D\)</span> puts their limit in its domain and identifies its image with that coordinate sequence. The same argument proves graph density. Every scalar function of <span class="math" data-tex="\(D\)">\(D\)</span> consequently has its indicated square-sum domain, and the spectral cutoffs used in the next lessons converge in every graph norm on which the vector belongs. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(0&lt;p&lt;\infty\)">\(0&lt;p&lt;\infty\)</span>, define
+<span class="math math-display" data-tex="\[
+\mathcal S^p=\{T\text{ compact}:\sum_j\mu_j(T)^p&lt;\infty\},
+\qquad \|T\|_p=\left(\sum_j\mu_j(T)^p\right)^{1/p}.
+\]">\[
+\mathcal S^p=\{T\text{ compact}:\sum_j\mu_j(T)^p&lt;\infty\},
+\qquad \|T\|_p=\left(\sum_j\mu_j(T)^p\right)^{1/p}.
+\]</span>
+Use <span class="math" data-tex="\(\mathcal S^\infty=B(H)\)">\(\mathcal S^\infty=B(H)\)</span> and <span class="math" data-tex="\(\|T\|_\infty=\|T\|\)">\(\|T\|_\infty=\|T\|\)</span>. We need normed ideals for <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>; the product estimate itself also makes sense below one.</p>
+<p><span id="schatten-holder"></span></p>
+<p><strong>Theorem 9.3 (Schatten Hölder).</strong> If <span class="math" data-tex="\(0&lt;p,q,r\leq\infty\)">\(0&lt;p,q,r\leq\infty\)</span> and
+<span class="math" data-tex="\(1/r=1/p+1/q\)">\(1/r=1/p+1/q\)</span>, with <span class="math" data-tex="\(1/\infty=0\)">\(1/\infty=0\)</span>, then
+<span class="math math-display" data-tex="\[
+\|AB\|_r\leq\|A\|_p\|B\|_q.
+\tag{9.3}
+\]">\[
+\|AB\|_r\leq\|A\|_p\|B\|_q.
+\tag{9.3}
+\]</span>
+At least one finite exponent ensures compactness of the product. When both exponents are infinite, (9.3) is ordinary operator submultiplicativity.</p>
+<p><strong>Proof.</strong> First use finite-rank operators in a common finite-dimensional space. On its <span class="math" data-tex="\(k\)">\(k\)</span>-th exterior power, the singular decomposition gives
+<span class="math math-display" data-tex="\[
+\|\wedge^kT\|=\prod_{j&lt;k}\mu_j(T),\qquad
+\wedge^k(AB)=(\wedge^kA)(\wedge^kB).
+\]">\[
+\|\wedge^kT\|=\prod_{j&lt;k}\mu_j(T),\qquad
+\wedge^k(AB)=(\wedge^kA)(\wedge^kB).
+\]</span>
+Indeed the wedge products of distinct orthonormal singular vectors form orthonormal systems, and the largest coefficient is the product of the <span class="math" data-tex="\(k\)">\(k\)</span> largest singular values. Operator submultiplicativity therefore yields
+<span class="math math-display" data-tex="\[
+\prod_{j&lt;k}\mu_j(AB)\leq
+\prod_{j&lt;k}\mu_j(A)\mu_j(B)\qquad(k\geq1).
+\tag{9.4}
+\]">\[
+\prod_{j&lt;k}\mu_j(AB)\leq
+\prod_{j&lt;k}\mu_j(A)\mu_j(B)\qquad(k\geq1).
+\tag{9.4}
+\]</span></p>
+<p>Here is the precise passage from products to sums. If decreasing real vectors <span class="math" data-tex="\(u,v\)">\(u,v\)</span> satisfy <span class="math" data-tex="\(\sum_{j&lt;k}u_j\leq\sum_{j&lt;k}v_j\)">\(\sum_{j&lt;k}u_j\leq\sum_{j&lt;k}v_j\)</span> for every <span class="math" data-tex="\(k\)">\(k\)</span>, then for every real <span class="math" data-tex="\(t\)">\(t\)</span>
+<span class="math math-display" data-tex="\[
+\sum_j(u_j-t)_+
+=\max_{k\geq0}\sum_{j&lt;k}(u_j-t)
+\leq\max_{k\geq0}\sum_{j&lt;k}(v_j-t)
+=\sum_j(v_j-t)_+.
+\]">\[
+\sum_j(u_j-t)_+
+=\max_{k\geq0}\sum_{j&lt;k}(u_j-t)
+\leq\max_{k\geq0}\sum_{j&lt;k}(v_j-t)
+=\sum_j(v_j-t)_+.
+\]</span>
+For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, multiply by <span class="math" data-tex="\(r^2e^{rt}\)">\(r^2e^{rt}\)</span> and integrate over <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>. The identity
+<span class="math" data-tex="\(\int_{-\infty}^w r^2e^{rt}(w-t)\,dt=e^{rw}\)">\(\int_{-\infty}^w r^2e^{rt}(w-t)\,dt=e^{rw}\)</span> proves
+<span class="math" data-tex="\(\sum_j e^{ru_j}\leq\sum_j e^{rv_j}\)">\(\sum_j e^{ru_j}\leq\sum_j e^{rv_j}\)</span>.
+Apply this to
+<span class="math" data-tex="\(u_j=\log\mu_j(AB)\)">\(u_j=\log\mu_j(AB)\)</span>, <span class="math" data-tex="\(v_j=\log(\mu_j(A)\mu_j(B))\)">\(v_j=\log(\mu_j(A)\mu_j(B))\)</span>, using (9.4).
+Zeros cause no difficulty: discard the zero tail of the latter product vector, on which the product has rank zero by the rank inequality; replace any remaining zero in the former vector by a sufficiently small positive number. All prefix inequalities still hold, and passage of that number to zero gives
+<span class="math math-display" data-tex="\[
+\sum_j\mu_j(AB)^r
+\leq\sum_j(\mu_j(A)\mu_j(B))^r.
+\tag{9.5}
+\]">\[
+\sum_j\mu_j(AB)^r
+\leq\sum_j(\mu_j(A)\mu_j(B))^r.
+\tag{9.5}
+\]</span></p>
+<p>If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are finite, ordinary sequence Hölder with exponents <span class="math" data-tex="\(p/r,q/r\)">\(p/r,q/r\)</span> bounds the right side by <span class="math" data-tex="\(\|A\|_p^r\|B\|_q^r\)">\(\|A\|_p^r\|B\|_q^r\)</span>.
+To recall its proof, normalize the two nonnegative power sums to one and apply
+<span class="math" data-tex="\(ab\leq a^P/P+b^Q/Q\)">\(ab\leq a^P/P+b^Q/Q\)</span>, <span class="math" data-tex="\(1/P+1/Q=1\)">\(1/P+1/Q=1\)</span>, term by term. This scalar inequality follows by minimizing <span class="math" data-tex="\(a^P/P-ab+b^Q/Q\)">\(a^P/P-ab+b^Q/Q\)</span> in <span class="math" data-tex="\(a\)">\(a\)</span>. Zero norms are immediate.</p>
+<p>Finite-rank singular truncations <span class="math" data-tex="\(A_n,B_n\)">\(A_n,B_n\)</span> converge in operator norm and in their respective finite-exponent quantities. Their products converge in operator norm to <span class="math" data-tex="\(AB\)">\(AB\)</span>. Formula (1.1) gives
+<span class="math" data-tex="\(|\mu_j(S)-\mu_j(T)|\leq\|S-T\|\)">\(|\mu_j(S)-\mu_j(T)|\leq\|S-T\|\)</span>, so each product singular value converges. Taking every finite partial sum in (9.5) and then its supremum proves (9.3) for compact <span class="math" data-tex="\(A,B\)">\(A,B\)</span>.
+For a bounded factor, (1.1) gives directly
+<span class="math" data-tex="\(\mu_j(AB)\leq\|A\|\mu_j(B)\)">\(\mu_j(AB)\leq\|A\|\mu_j(B)\)</span> and
+<span class="math" data-tex="\(\mu_j(BA)\leq\|A\|\mu_j(B)\)">\(\mu_j(BA)\leq\|A\|\mu_j(B)\)</span>, by multiplying finite-rank approximants. These prove the infinite-exponent cases. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Iteration gives the corresponding estimate for any finite product, including bounded factors. In particular, if <span class="math" data-tex="\(s_j\geq0\)">\(s_j\geq0\)</span>, <span class="math" data-tex="\(\sum_j s_j=1\)">\(\sum_j s_j=1\)</span>, and <span class="math" data-tex="\(e^{-uD^2}\)">\(e^{-uD^2}\)</span> is trace class, then
+<span class="math math-display" data-tex="\[
+\left\|a_0e^{-us_0D^2}a_1e^{-us_1D^2}\cdots
+ a_ne^{-us_nD^2}\right\|_1
+\leq\left(\prod_{j=0}^n\|a_j\|\right)
+ \operatorname{Tr}(e^{-uD^2}).
+\tag{9.6}
+\]">\[
+\left\|a_0e^{-us_0D^2}a_1e^{-us_1D^2}\cdots
+ a_ne^{-us_nD^2}\right\|_1
+\leq\left(\prod_{j=0}^n\|a_j\|\right)
+ \operatorname{Tr}(e^{-uD^2}).
+\tag{9.6}
+\]</span>
+For <span class="math" data-tex="\(s_j&gt;0\)">\(s_j&gt;0\)</span>, its heat factor has Schatten exponent <span class="math" data-tex="\(1/s_j\)">\(1/s_j\)</span> and norm
+<span class="math" data-tex="\((\operatorname{Tr}e^{-uD^2})^{s_j}\)">\((\operatorname{Tr}e^{-uD^2})^{s_j}\)</span>. For <span class="math" data-tex="\(s_j=0\)">\(s_j=0\)</span>, it is the identity with operator norm one. Thus (9.6) holds also on the boundary of the simplex, with constant one. This is the estimate required in the heat cocycle.</p>
+<p>For completeness, <span class="math" data-tex="\(\mathcal S^p\)">\(\mathcal S^p\)</span> is a Banach ideal when <span class="math" data-tex="\(1\leq p&lt;\infty\)">\(1\leq p&lt;\infty\)</span>. Hölder and bounded trace duality give
+<span class="math math-display" data-tex="\[
+\|T\|_p=\sup_{\substack{X\text{ finite rank}\\\|X\|_{p&#x27;}\leq1}}
+ |\operatorname{Tr}(TX)|,\qquad 1/p+1/p&#x27;=1.
+\tag{9.7}
+\]">\[
+\|T\|_p=\sup_{\substack{X\text{ finite rank}\\\|X\|_{p&#x27;}\leq1}}
+ |\operatorname{Tr}(TX)|,\qquad 1/p+1/p&#x27;=1.
+\tag{9.7}
+\]</span>
+For the reverse inequality when <span class="math" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, take <span class="math" data-tex="\(T=V|T|\)">\(T=V|T|\)</span> and test with
+<span class="math" data-tex="\(|T|^{p-1}P_N V^*/(\sum_{j&lt;N}\mu_j(T)^p)^{1/p&#x27;}\)">\(|T|^{p-1}P_N V^*/(\sum_{j&lt;N}\mu_j(T)^p)^{1/p&#x27;}\)</span>; let <span class="math" data-tex="\(N\to\infty\)">\(N\to\infty\)</span>. For <span class="math" data-tex="\(p=1\)">\(p=1\)</span>, test with <span class="math" data-tex="\(P_NV^*\)">\(P_NV^*\)</span>. Zero partial sums are omitted. Formula (9.7) proves the triangle inequality. A Cauchy sequence in this norm is Cauchy in operator norm and has a compact operator limit. Continuity of each singular value and finite partial sums show
+<span class="math" data-tex="\(\|T-T_n\|_p\leq\liminf_m\|T_m-T_n\|_p\)">\(\|T-T_n\|_p\leq\liminf_m\|T_m-T_n\|_p\)</span>, which proves convergence in the ideal norm and completeness. Bounded left and right multiplication obey (9.3). These facts justify the trace-norm integrals and approximations later in the course.</p>
+<p><span id="extension-used-to-construct-a-state"></span></p>
+<p><strong>Lemma 9.4 (the extension used to construct a state).</strong> A bounded real linear functional on a subspace of a real normed space has an extension with the same norm. In particular, the ordinary limit on convergent sequences extends to a positive unital complex functional of norm one on <span class="math" data-tex="\(\ell^\infty\)">\(\ell^\infty\)</span>.</p>
+<p><strong>Proof.</strong> The norm-preserving extension theorem is proved in <a href="../elliptic-boundary-reduction/banach-foundation-bridges.html#hahnbanach-and-scalar-norm-tests">Banach foundations</a>, Section 5. Its proof uses the explicitly stated Zorn choice principle and a one-dimensional extension interval; no completeness or closedness of the subspace is required. Apply its real form to the limit functional on real convergent sequences. We prove the additional positivity and quotient-state adapter here.</p>
+<p>For the limit functional <span class="math" data-tex="\(l\)">\(l\)</span> on real convergent sequences, this gives <span class="math" data-tex="\(l(1)=\|l\|=1\)">\(l(1)=\|l\|=1\)</span> on real <span class="math" data-tex="\(\ell^\infty\)">\(\ell^\infty\)</span>. If <span class="math" data-tex="\(0\leq x\leq1\)">\(0\leq x\leq1\)</span>, then
+<span class="math" data-tex="\(l(x)=1-l(1-x)\geq0\)">\(l(x)=1-l(1-x)\geq0\)</span>; rescaling proves positivity for every bounded nonnegative sequence. Complexify by
+<span class="math" data-tex="\(L(x+iy)=l(x)+il(y)\)">\(L(x+iy)=l(x)+il(y)\)</span>. This is complex linear and positive. If <span class="math" data-tex="\(L(z)\ne0\)">\(L(z)\ne0\)</span>, choose a scalar <span class="math" data-tex="\(c\)">\(c\)</span> of modulus one with <span class="math" data-tex="\(cL(z)=|L(z)|\)">\(cL(z)=|L(z)|\)</span>. Then
+<span class="math math-display" data-tex="\[
+|L(z)|=l(\operatorname{Re}(cz))\leq\|z\|_\infty.
+\]">\[
+|L(z)|=l(\operatorname{Re}(cz))\leq\|z\|_\infty.
+\]</span>
+Thus its complex norm is one and it extends the complex ordinary limit. Composition with sequence evaluation gives the quotient states used in Section 4. The same choice principle also permits the algebraic basis extensions used for residue cochains later in the course; it supplies existence without a continuity assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>[Lord–Sukochev 2010] Steven Lord and Fedor Sukochev, <em>Measure Theory in Noncommutative Spaces</em>, SIGMA 6 (2010), 072, 36 pages; <a href="https://arxiv.org/abs/1009.3095v1">exact arXiv v1</a>, <a href="https://arxiv.org/html/1009.3095v1">readable text</a>. The marked subsection adapts the full Introduction argument following (1.6), under CC BY-NC-SA 3.0.</p>
+</li>
+<li>
+<p>[Carey–Rennie–Sedaev–Sukochev 2006] Alan L. Carey, Adam Rennie, Aleksandr Sedaev, and Fedor A. Sukochev, <em>The Dixmier trace and asymptotics of zeta functions</em>, <a href="https://arxiv.org/abs/math/0611629">open preprint</a>.</p>
+</li>
+<li>
+<p>[Connes–Moscovici 1995] Alain Connes and Henri Moscovici, <em>The local index formula in noncommutative geometry</em>, Geometric and Functional Analysis 5 (1995), 174–243; <a href="https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_19/M_95_19.pdf">IHÉS preprint</a>.</p>
+</li>
+<li>
+<p>[Dixmier 1966] Jacques Dixmier, <em>Existence de traces non normales</em>, Comptes Rendus de l’Académie des Sciences de Paris, Série A–B 262 (1966), A1107–A1108.</p>
+</li>
+<li>
+<p><a href="../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction">Positive spectral calculus</a> <em>Spectral measures with the original operator domain retained</em>, Elliptic Operators &amp; Boundary Problems, AN03-P005, especially AN03-SPC-001–004; <a href="../elliptic-boundary-reduction/src/lower-bounded-spectral-calculus.md">proof source</a>. Independently written programme proof, CC0. Sections 1–4 retain the full spectral measure and operator-domain statements.</p>
+</li>
+<li>
+<p><a href="../elliptic-boundary-reduction/banach-foundation-bridges.html#hahnbanach-and-scalar-norm-tests">Banach foundations</a> <em>Banach estimates, quotient spaces and compact parameter arguments</em>, Elliptic Operators &amp; Boundary Problems, AN03-P004, Sections 4–8, reader-facing draft dated September 2026. Independently written programme proof, CC0. Sections 4–8 include the complete-metric Baire theorem and the full Banach-space consequences.</p>
+</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="spectral-triples-and-dimension-spectrum.html">Spectral triples and dimension spectrum →</a></span></nav>
+<p class="small source-link"><a href="src/singular-values-and-the-dixmier-trace.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NCG-LOCAL-INDEX">Repository</a></nav>
+</footer>
+</body>
+</html>

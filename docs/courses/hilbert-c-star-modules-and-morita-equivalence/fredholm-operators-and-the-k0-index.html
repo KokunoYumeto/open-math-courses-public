@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fredholm operators and the K₀ index · Hilbert C*-modules and Morita equivalence</title>
+<meta name="description" content="A lesson of the course Hilbert C*-modules and Morita equivalence. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/hilbert-c-star-modules-and-morita-equivalence/fredholm-operators-and-the-k0-index.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hilbert C*-modules and Morita equivalence</a> <span aria-hidden="true">›</span> <span>Lesson 7 of 14</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="fredholm-operators-and-the-k₀-index">Fredholm operators and the K₀ index</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For Hilbert spaces, a Fredholm operator has closed range and finite-dimensional kernel and cokernel. A Hilbert-module Fredholm operator can have nonclosed range. Its index therefore needs a definition that remains meaningful before kernels become finite projective modules. We construct that definition through the quotient by compact operators, compare it with the kernel formula whenever that formula applies, and determine when a compact perturbation can supply closed range.</p>
+<p>The prerequisites are <a href="adjointable-operators.html">Adjointable operators</a>, <a href="compact-operators-multipliers-and-the-strict-topology.html">Compact operators, multipliers and the strict topology</a>, <a href="finite-projective-modules-frames-and-k0.html">Finite projective modules, frames and K₀</a>, and <a href="kasparovs-stabilization-theorem.html">Kasparov's stabilization theorem</a>. We also use the basic operator K-theory of stable projections and invertibles, its homotopy invariance and matrix stability, and its index boundary map, with the exact locators collected below. Inner products are linear in the second variable. Our sign convention is kernel minus cokernel.</p>
+<h2 id="1-fredholmness-without-closed-range">1. Fredholmness without closed range</h2>
+<p><strong>Definition 1.1.</strong> An adjointable <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> is Fredholm when an adjointable <span class="math" data-tex="\(S:F\to E\)">\(S:F\to E\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ST-1_E\in\mathcal K(E),\qquad TS-1_F\in\mathcal K(F).
+\tag{1.1}
+\]">\[
+ST-1_E\in\mathcal K(E),\qquad TS-1_F\in\mathcal K(F).
+\tag{1.1}
+\]</span>
+Such an <span class="math" data-tex="\(S\)">\(S\)</span> is a parametrix. For <span class="math" data-tex="\(E=F\)">\(E=F\)</span>, this says precisely that the image of <span class="math" data-tex="\(T\)">\(T\)</span> in <span class="math" data-tex="\(\mathcal L(E)/\mathcal K(E)\)">\(\mathcal L(E)/\mathcal K(E)\)</span> is invertible: a lift of the inverse is a parametrix, and (1.1) proves the converse.</p>
+<p>Products and adjoints of Fredholm operators are Fredholm. For a product <span class="math" data-tex="\(T_2T_1\)">\(T_2T_1\)</span>, compose the parametrices in the reverse order and expand the two defects. The rank-one composition formulas make every term compact. Taking adjoints gives a parametrix for <span class="math" data-tex="\(T^*\)">\(T^*\)</span>. Compact perturbations preserve (1.1), and Fredholm endomorphisms form a norm-open set because invertibility is open in the quotient.</p>
+<p><strong>Proposition 1.2 (Closed-range defects).</strong> If a Fredholm <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> has closed range, then <span class="math" data-tex="\(\ker T\)">\(\ker T\)</span> and <span class="math" data-tex="\(\ker T^*\)">\(\ker T^*\)</span> have compact identity operators. They admit finite Parseval frames and are finite projective Hilbert modules.</p>
+<p><em>Proof.</em> The closed-range theorem gives adjointable orthogonal projections <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> onto the two kernels. Since <span class="math" data-tex="\(TP=0\)">\(TP=0\)</span>, compressing (1.1) gives
+<span class="math math-display" data-tex="\[
+P(ST-1_E)P=-P.
+\]">\[
+P(ST-1_E)P=-P.
+\]</span>
+Thus <span class="math" data-tex="\(P\in\mathcal K(E)\)">\(P\in\mathcal K(E)\)</span>. Similarly <span class="math" data-tex="\(QT=0\)">\(QT=0\)</span> gives <span class="math" data-tex="\(Q(TS-1_F)Q=-Q\)">\(Q(TS-1_F)Q=-Q\)</span>, so <span class="math" data-tex="\(Q\in\mathcal K(F)\)">\(Q\in\mathcal K(F)\)</span>. Compression identifies <span class="math" data-tex="\(P\mathcal K(E)P\)">\(P\mathcal K(E)P\)</span> with <span class="math" data-tex="\(\mathcal K(PE)\)">\(\mathcal K(PE)\)</span>, by <span class="math" data-tex="\(P\theta_{x,y}P=\theta_{Px,Py}\)">\(P\theta_{x,y}P=\theta_{Px,Py}\)</span>. Its identity is <span class="math" data-tex="\(P\)">\(P\)</span>, hence compact. The finite-frame theorem of the preceding lesson on projective modules applies; the same argument applies to <span class="math" data-tex="\(QF\)">\(QF\)</span>. ∎</p>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, these modules are represented by projections with entries in <span class="math" data-tex="\(A\)">\(A\)</span>, and determine classes in the relative group <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. The assertion does not say that every relative K₀ class has such an individual projection representative.</p>
+<h2 id="2-the-quotient-definition-of-the-index">2. The quotient definition of the index</h2>
+<p>Write
+<span class="math math-display" data-tex="\[
+D=\mathcal K(H_A)\cong\mathbb K\otimes_{\min}A,\qquad
+M=\mathcal L(H_A)=M(D),\qquad Q_A=M/D.
+\tag{2.1}
+\]">\[
+D=\mathcal K(H_A)\cong\mathbb K\otimes_{\min}A,\qquad
+M=\mathcal L(H_A)=M(D),\qquad Q_A=M/D.
+\tag{2.1}
+\]</span>
+The case <span class="math" data-tex="\(A=0\)">\(A=0\)</span> is trivial; the following constructions concern <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. Let <span class="math" data-tex="\(\pi:M\to Q_A\)">\(\pi:M\to Q_A\)</span> be the quotient map.</p>
+<p>For an extension <span class="math" data-tex="\(0\to J\to B\to B/J\to0\)">\(0\to J\to B\to B/J\to0\)</span> with <span class="math" data-tex="\(B\)">\(B\)</span> unital, its index boundary map has the following convention. Given an invertible <span class="math" data-tex="\(u\in M_n(B/J)\)">\(u\in M_n(B/J)\)</span>, take an invertible lift <span class="math" data-tex="\(W\in M_{2n}(B)\)">\(W\in M_{2n}(B)\)</span> of <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span>. With <span class="math" data-tex="\(e=\operatorname{diag}(1_n,0_n)\)">\(e=\operatorname{diag}(1_n,0_n)\)</span>, set
+<span class="math math-display" data-tex="\[
+\partial[u]=[WeW^{-1}]-[e]\in K_0(J).
+\tag{2.2}
+\]">\[
+\partial[u]=[WeW^{-1}]-[e]\in K_0(J).
+\tag{2.2}
+\]</span>
+The difference of idempotents is relative: <span class="math" data-tex="\(WeW^{-1}-e\in M_{2n}(J)\)">\(WeW^{-1}-e\in M_{2n}(J)\)</span>. Similarity to projections gives its usual C*-algebra K₀ interpretation. The well-definedness, independence and naturality of this homomorphism are proved in <a href="../KT-OPK/the-index-map-and-the-exact-sequence-at-k0.html">The index map and the exact sequence at K₀</a>, Theorem 2.2; Proposition 5.1 there gives its normalized unitary version. Blackadar, Definition 8.3.1 and Propositions 8.3.3–8.3.4, are the classical references.</p>
+<p>The required invertible lift can be built directly. If <span class="math" data-tex="\(t,s\)">\(t,s\)</span> lift <span class="math" data-tex="\(u,u^{-1}\)">\(u,u^{-1}\)</span>, respectively, the product
+<span class="math math-display" data-tex="\[
+W=
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;0\\-s&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}
+\tag{2.3}
+\]">\[
+W=
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;0\\-s&amp;1\end{pmatrix}
+\begin{pmatrix}1&amp;t\\0&amp;1\end{pmatrix}
+\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}
+\tag{2.3}
+\]</span>
+is invertible, since every factor is. Multiplication in the quotient gives <span class="math" data-tex="\(\operatorname{diag}(u,u^{-1})\)">\(\operatorname{diag}(u,u^{-1})\)</span>. No invertible lift of <span class="math" data-tex="\(u\)">\(u\)</span> alone is assumed.</p>
+<p>For a general extension, use the forced unitizations <span class="math" data-tex="\(B^\dagger=B\oplus\mathbb C\)">\(B^\dagger=B\oplus\mathbb C\)</span> and <span class="math" data-tex="\((B/J)^\dagger\)">\((B/J)^\dagger\)</span>, adjoining a new unit even if an algebra already has one. The quotient extends to the unital extension
+<span class="math math-display" data-tex="\[
+0\longrightarrow J\longrightarrow B^\dagger
+\longrightarrow(B/J)^\dagger\longrightarrow0.
+\]">\[
+0\longrightarrow J\longrightarrow B^\dagger
+\longrightarrow(B/J)^\dagger\longrightarrow0.
+\]</span>
+Represent a <span class="math" data-tex="\(K_1(B/J)\)">\(K_1(B/J)\)</span> class by an invertible <span class="math" data-tex="\(u\)">\(u\)</span> in a matrix algebra over <span class="math" data-tex="\((B/J)^\dagger\)">\((B/J)^\dagger\)</span> with scalar part <span class="math" data-tex="\(1_n\)">\(1_n\)</span>. Take <span class="math" data-tex="\(t,s\)">\(t,s\)</span> over <span class="math" data-tex="\(B^\dagger\)">\(B^\dagger\)</span> lifting <span class="math" data-tex="\(u,u^{-1}\)">\(u,u^{-1}\)</span>; their scalar parts are <span class="math" data-tex="\(1_n\)">\(1_n\)</span>. Construction (2.3) now takes place over <span class="math" data-tex="\(B^\dagger\)">\(B^\dagger\)</span>, with its adjoined unit, and the scalar part of <span class="math" data-tex="\(W\)">\(W\)</span> is <span class="math" data-tex="\(1_{2n}\)">\(1_{2n}\)</span>. Consequently <span class="math" data-tex="\(WeW^{-1}-e\)">\(WeW^{-1}-e\)</span> lies in <span class="math" data-tex="\(M_{2n}(J)\)">\(M_{2n}(J)\)</span>, and (2.2) is a relative class in <span class="math" data-tex="\(K_0(J)\)">\(K_0(J)\)</span>. This is the unitized convention proved in <a href="../KT-OPK/nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a>, Theorem 1.1, and <a href="../KT-OPK/the-index-map-and-the-exact-sequence-at-k0.html">The index map and the exact sequence at K₀</a>, Section 2. In our Fredholm application <span class="math" data-tex="\(B=M(D)\)">\(B=M(D)\)</span> is already unital, so the first displayed construction applies directly.</p>
+<p><strong>Definition 2.1.</strong> For Fredholm <span class="math" data-tex="\(T\in M\)">\(T\in M\)</span>, define
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_A(T)=\partial[\pi(T)]\in K_0(D)\cong K_0(A).
+\tag{2.4}
+\]">\[
+\operatorname{Ind}_A(T)=\partial[\pi(T)]\in K_0(D)\cong K_0(A).
+\tag{2.4}
+\]</span>
+The last identification is basic matrix stability of K-theory, with the coordinate corner <span class="math" data-tex="\(a\mapsto e_{11}\otimes a\)">\(a\mapsto e_{11}\otimes a\)</span>. This defines an index for every coefficient algebra <span class="math" data-tex="\(A\)">\(A\)</span>, even when <span class="math" data-tex="\(H_A\)">\(H_A\)</span> is not countably generated.</p>
+<p>Here is a projection formula useful in the nonunital case. Multiply <span class="math" data-tex="\(T\)">\(T\)</span> on the right by a positive invertible function of <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> to obtain a contraction <span class="math" data-tex="\(t\)">\(t\)</span> whose quotient is the unitary polar part of <span class="math" data-tex="\(\pi(T)\)">\(\pi(T)\)</span>. Explicitly, choose <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> smaller than the lower bound of the spectrum of <span class="math" data-tex="\(\pi(T^*T)\)">\(\pi(T^*T)\)</span>, and put
+<span class="math math-display" data-tex="\[
+t=Tg(T^*T),\qquad g(s)=(\max(s,c))^{-1/2}.
+\]">\[
+t=Tg(T^*T),\qquad g(s)=(\max(s,c))^{-1/2}.
+\]</span>
+Then <span class="math" data-tex="\(t^*t\leq1\)">\(t^*t\leq1\)</span>, and <span class="math" data-tex="\(\pi(t)\)">\(\pi(t)\)</span> is unitary. The positive invertible interpolation between <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(g(T^*T)\)">\(g(T^*T)\)</span> shows <span class="math" data-tex="\([\pi(t)]=[\pi(T)]\)">\([\pi(t)]=[\pi(T)]\)</span> in <span class="math" data-tex="\(K_1(Q_A)\)">\(K_1(Q_A)\)</span>.</p>
+<p>Set <span class="math" data-tex="\(d=(1-t^*t)^{1/2}\)">\(d=(1-t^*t)^{1/2}\)</span>, <span class="math" data-tex="\(d&#x27;=(1-tt^*)^{1/2}\)">\(d&#x27;=(1-tt^*)^{1/2}\)</span>. Both are compact. The matrix
+<span class="math math-display" data-tex="\[
+W_t=\begin{pmatrix}t&amp;-d&#x27;\\d&amp;t^*\end{pmatrix}
+\]">\[
+W_t=\begin{pmatrix}t&amp;-d&#x27;\\d&amp;t^*\end{pmatrix}
+\]</span>
+is unitary: <span class="math" data-tex="\(td=d&#x27;t\)">\(td=d&#x27;t\)</span> follows first for polynomials from <span class="math" data-tex="\(t(t^*t)=(tt^*)t\)">\(t(t^*t)=(tt^*)t\)</span>, then for the square-root function by uniform approximation. This identity and the two defect identities give <span class="math" data-tex="\(W_t^*W_t=W_tW_t^*=1\)">\(W_t^*W_t=W_tW_t^*=1\)</span>. Its quotient is <span class="math" data-tex="\(\operatorname{diag}(\pi(t),\pi(t)^*)\)">\(\operatorname{diag}(\pi(t),\pi(t)^*)\)</span>. Thus (2.2) gives
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_A(T)=[p_t]-[e],\qquad
+p_t=\begin{pmatrix}
+tt^*&amp;td\\dt^*&amp;1-t^*t
+\end{pmatrix},\quad e=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.
+\tag{2.5}
+\]">\[
+\operatorname{Ind}_A(T)=[p_t]-[e],\qquad
+p_t=\begin{pmatrix}
+tt^*&amp;td\\dt^*&amp;1-t^*t
+\end{pmatrix},\quad e=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}.
+\tag{2.5}
+\]</span>
+Here <span class="math" data-tex="\(p_t-e\in M_2(D)\)">\(p_t-e\in M_2(D)\)</span>, so this is an actual relative projection class, rather than a difference of presumed finite kernels.</p>
+<p><strong>Theorem 2.2 (Kernel comparison).</strong> If a Fredholm endomorphism <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(H_A\)">\(H_A\)</span> has closed range, then
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_A(T)=[\ker T]-[\ker T^*].
+\tag{2.6}
+\]">\[
+\operatorname{Ind}_A(T)=[\ker T]-[\ker T^*].
+\tag{2.6}
+\]</span></p>
+<p><em>Proof.</em> The closed-range theorem supplies the polar partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(T\)">\(T\)</span>, with <span class="math" data-tex="\(v^*v=1-P\)">\(v^*v=1-P\)</span>, <span class="math" data-tex="\(vv^*=1-Q\)">\(vv^*=1-Q\)</span>, where <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> are the kernel projections. Its quotient is the unitary polar part of <span class="math" data-tex="\(\pi(T)\)">\(\pi(T)\)</span>, so their K₁ classes agree. Proposition 1.2 makes <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> compact. Substituting <span class="math" data-tex="\(v\)">\(v\)</span> for <span class="math" data-tex="\(t\)">\(t\)</span> in (2.5), <span class="math" data-tex="\(d=P\)">\(d=P\)</span> and <span class="math" data-tex="\(vP=0\)">\(vP=0\)</span>, hence <span class="math" data-tex="\(p_v=\operatorname{diag}(1-Q,P)\)">\(p_v=\operatorname{diag}(1-Q,P)\)</span>. Relative addition gives
+<span class="math" data-tex="\([p_v]-[e]=[P]-[Q]\)">\([p_v]-[e]=[P]-[Q]\)</span>.
+Under the coordinate stability identification, these projection classes are exactly the classes of the two finite-frame modules. ∎</p>
+<p><strong>Theorem 2.3 (Index laws).</strong> The index is unchanged by compact perturbation or a norm-continuous Fredholm path. It vanishes on invertible operators and satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Ind}(T\oplus S)&amp;=\operatorname{Ind}(T)+\operatorname{Ind}(S),\\
+\operatorname{Ind}(ST)&amp;=\operatorname{Ind}(S)+\operatorname{Ind}(T),\\
+\operatorname{Ind}(T^*)&amp;=-\operatorname{Ind}(T).
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+\operatorname{Ind}(T\oplus S)&amp;=\operatorname{Ind}(T)+\operatorname{Ind}(S),\\
+\operatorname{Ind}(ST)&amp;=\operatorname{Ind}(S)+\operatorname{Ind}(T),\\
+\operatorname{Ind}(T^*)&amp;=-\operatorname{Ind}(T).
+\end{aligned}
+\tag{2.7}
+\]</span>
+Finite standard sums are identified with <span class="math" data-tex="\(H_A\)">\(H_A\)</span> by coordinate reindexing.</p>
+<p><em>Proof.</em> Compact perturbations have identical quotient images. A Fredholm path gives a path of invertibles in the quotient, whose stable K₁ class is constant. For an invertible lift, use <span class="math" data-tex="\(W=\operatorname{diag}(T,T^{-1})\)">\(W=\operatorname{diag}(T,T^{-1})\)</span> in (2.2); it commutes with <span class="math" data-tex="\(e\)">\(e\)</span>, giving zero. Direct sum is addition in both K₁ and K₀, and <span class="math" data-tex="\(\partial\)">\(\partial\)</span> is a homomorphism. The basic K₁ identity <span class="math" data-tex="\([uv]=[u]+[v]\)">\([uv]=[u]+[v]\)</span> gives the composition law. The adjoint of an invertible has the K₁ class of its inverse, by polar deformation, giving the last law. These arguments use no closed-range perturbation. ∎</p>
+<h2 id="3-stable-multipliers-have-zero-k-theory">3. Stable multipliers have zero K-theory</h2>
+<p><strong>Theorem 3.1.</strong> For every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+K_0(M(\mathbb K\otimes A))=K_1(M(\mathbb K\otimes A))=0.
+\tag{3.1}
+\]">\[
+K_0(M(\mathbb K\otimes A))=K_1(M(\mathbb K\otimes A))=0.
+\tag{3.1}
+\]</span></p>
+<p><em>Proof.</em> Choose a bijection <span class="math" data-tex="\(\mathbb N^2\to\mathbb N\)">\(\mathbb N^2\to\mathbb N\)</span>. It identifies the countable orthogonal sum of copies of <span class="math" data-tex="\(H_A\)">\(H_A\)</span> with <span class="math" data-tex="\(H_A\)">\(H_A\)</span>, giving isometries <span class="math" data-tex="\(v_j\in M\)">\(v_j\in M\)</span> with orthogonal ranges spanning the module. Define
+<span class="math math-display" data-tex="\[
+\alpha(x)=\sum_{j\geq1}v_jxv_j^*.
+\tag{3.2}
+\]">\[
+\alpha(x)=\sum_{j\geq1}v_jxv_j^*.
+\tag{3.2}
+\]</span>
+This is the bounded adjointable diagonal operator consisting of copies of <span class="math" data-tex="\(x\)">\(x\)</span>; its adjoint consists of copies of <span class="math" data-tex="\(x^*\)">\(x^*\)</span>. Consequently <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a unital *-homomorphism. The series converges strictly, since its tails tend pointwise to zero on vectors and on adjoints, hence on compact operators by the strict-topology criterion.</p>
+<p>Let <span class="math" data-tex="\(w\)">\(w\)</span> shift the summands: <span class="math" data-tex="\(wv_j=v_{j+1}\)">\(wv_j=v_{j+1}\)</span>. It is an isometry, and
+<span class="math math-display" data-tex="\[
+\alpha(x)=v_1xv_1^*+w\alpha(x)w^*,\qquad
+v_1v_1^*+ww^*=1.
+\tag{3.3}
+\]">\[
+\alpha(x)=v_1xv_1^*+w\alpha(x)w^*,\qquad
+v_1v_1^*+ww^*=1.
+\tag{3.3}
+\]</span>
+An isometric corner <span class="math" data-tex="\(x\mapsto vxv^*\)">\(x\mapsto vxv^*\)</span> induces the identity on both K-groups. For projections this follows from the rectangular partial isometry <span class="math" data-tex="\(vp\)">\(vp\)</span>. For a unitary <span class="math" data-tex="\(u\)">\(u\)</span>, its image under the unitized corner map is <span class="math" data-tex="\(vuv^*+1-vv^*\)">\(vuv^*+1-vv^*\)</span>. The unitary
+<span class="math math-display" data-tex="\[
+Z=\begin{pmatrix}v&amp;1-vv^*\\0&amp;v^*\end{pmatrix}
+\]">\[
+Z=\begin{pmatrix}v&amp;1-vv^*\\0&amp;v^*\end{pmatrix}
+\]</span>
+conjugates <span class="math" data-tex="\(\operatorname{diag}(u,1)\)">\(\operatorname{diag}(u,1)\)</span> to
+<span class="math" data-tex="\(\operatorname{diag}(vuv^*+1-vv^*,1)\)">\(\operatorname{diag}(vuv^*+1-vv^*,1)\)</span>.
+Stable K₁ classes are unchanged by conjugation, so the same conclusion holds. These arguments apply in every matrix algebra.</p>
+<p>The two ranges in (3.3) are orthogonal. Their sum therefore induces the sum of their K-theory maps, as is seen on block projections and block unitaries. Hence
+<span class="math math-display" data-tex="\[
+\alpha_*=\mathrm{id}_*+\alpha_*.
+\]">\[
+\alpha_*=\mathrm{id}_*+\alpha_*.
+\]</span>
+Cancellation in either abelian K-group gives <span class="math" data-tex="\(\mathrm{id}_*=0\)">\(\mathrm{id}_*=0\)</span>, proving (3.1). ∎</p>
+<p><strong>Corollary 3.2.</strong> The boundary maps give isomorphisms
+<span class="math math-display" data-tex="\[
+K_i(A)\cong K_{1-i}(Q_A),\qquad i=0,1.
+\tag{3.4}
+\]">\[
+K_i(A)\cong K_{1-i}(Q_A),\qquad i=0,1.
+\tag{3.4}
+\]</span>
+Every element of <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> is the index of a Fredholm operator on <span class="math" data-tex="\(H_A\)">\(H_A\)</span>.</p>
+<p><em>Proof.</em> Apply the six-term exact sequence to <span class="math" data-tex="\(0\to D\to M\to Q_A\to0\)">\(0\to D\to M\to Q_A\to0\)</span>. Both K-groups of <span class="math" data-tex="\(M\)">\(M\)</span> vanish by Theorem 3.1, so the two boundary maps are injective and surjective. Basic matrix stability identifies <span class="math" data-tex="\(K_i(D)\)">\(K_i(D)\)</span> with <span class="math" data-tex="\(K_i(A)\)">\(K_i(A)\)</span>.</p>
+<p>For the final assertion, represent a preimage under <span class="math" data-tex="\(\partial\)">\(\partial\)</span> by an invertible matrix <span class="math" data-tex="\(u\)">\(u\)</span> over <span class="math" data-tex="\(Q_A\)">\(Q_A\)</span>. Lift its entries to a matrix <span class="math" data-tex="\(T\)">\(T\)</span> over <span class="math" data-tex="\(M\)">\(M\)</span>; its quotient is invertible, so <span class="math" data-tex="\(T\)">\(T\)</span> is Fredholm on <span class="math" data-tex="\(H_A^n\)">\(H_A^n\)</span>. Coordinate reindexing gives a Fredholm on <span class="math" data-tex="\(H_A\)">\(H_A\)</span>, with the same class under matrix stability and therefore the prescribed index. No unstabilized representability assertion about <span class="math" data-tex="\(K_1(Q_A)\)">\(K_1(Q_A)\)</span> is needed. ∎</p>
+<p>There is also a complete stable classification. Fredholm operators on finite sums of <span class="math" data-tex="\(H_A\)">\(H_A\)</span>, modulo norm-continuous Fredholm paths and addition of invertible summands, form <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> through the index. To verify injectivity, equal indices give equal stable K₁ classes of the quotient invertibles, by Corollary 3.2. After adding identity matrices, there is a quotient path between them. Approximate that path by a sufficiently fine polygonal path with the same endpoints. Its segments remain invertible because the original path and its inverses are uniformly bounded. Choose lifts of its finitely many vertices, fixing the prescribed endpoint lifts, and interpolate linearly. Their images are the invertible polygonal path, so the lifted path is Fredholm. Conversely every permitted equivalence preserves the index by Theorem 2.3. Surjectivity is the last part of Corollary 3.2.</p>
+<h2 id="4-closed-range-perturbations-and-their-limitation">4. Closed-range perturbations and their limitation</h2>
+<p><strong>Theorem 4.1 (Unital coefficients).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is unital, every Fredholm operator on <span class="math" data-tex="\(H_A\)">\(H_A\)</span> has an <span class="math" data-tex="\(A\)">\(A\)</span>-compact perturbation with closed range.</p>
+<p><em>Proof.</em> First normalize <span class="math" data-tex="\(T\)">\(T\)</span> to the essentially unitary contraction <span class="math" data-tex="\(t=TD\)">\(t=TD\)</span> used in Section 2, where <span class="math" data-tex="\(D=g(T^*T)\)">\(D=g(T^*T)\)</span> is positive invertible. It suffices to perturb <span class="math" data-tex="\(t\)">\(t\)</span>, since multiplication on the right by <span class="math" data-tex="\(D^{-1}\)">\(D^{-1}\)</span> preserves closed range and compactness of a perturbation.</p>
+<p>Because <span class="math" data-tex="\(\pi(tt^*)=1\)">\(\pi(tt^*)=1\)</span>, the positive compact
+<span class="math math-display" data-tex="\[
+k=(\tfrac12-tt^*)_+
+\]">\[
+k=(\tfrac12-tt^*)_+
+\]</span>
+satisfies <span class="math" data-tex="\(tt^*+k\geq\tfrac12\,1\)">\(tt^*+k\geq\tfrac12\,1\)</span>. Let <span class="math" data-tex="\(P_N\)">\(P_N\)</span> be the first <span class="math" data-tex="\(N\)">\(N\)</span>-coordinate projection on <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. It is compact here because <span class="math" data-tex="\(A\)">\(A\)</span> is unital. Choose <span class="math" data-tex="\(N\)">\(N\)</span> with
+<span class="math" data-tex="\(\|k-P_NkP_N\|&lt;1/4\)">\(\|k-P_NkP_N\|&lt;1/4\)</span>, using strict convergence of the coordinate projections on compacts. Since <span class="math" data-tex="\(P_NkP_N\leq\|k\|P_N\)">\(P_NkP_N\leq\|k\|P_N\)</span>, choose <span class="math" data-tex="\(c\geq\max(1,\|k\|)\)">\(c\geq\max(1,\|k\|)\)</span>; then
+<span class="math math-display" data-tex="\[
+tt^*+cP_N\geq\tfrac14\,1.
+\]">\[
+tt^*+cP_N\geq\tfrac14\,1.
+\]</span>
+For the coordinate inclusion <span class="math" data-tex="\(J:A^N\to H_A\)">\(J:A^N\to H_A\)</span>, form
+<span class="math math-display" data-tex="\[
+R=(t,\sqrt c\,J):H_A\oplus A^N\to H_A.
+\]">\[
+R=(t,\sqrt c\,J):H_A\oplus A^N\to H_A.
+\]</span>
+Its <span class="math" data-tex="\(RR^*=tt^*+cP_N\)">\(RR^*=tt^*+cP_N\)</span> is invertible. Thus
+<span class="math math-display" data-tex="\[
+V=(RR^*)^{-1/2}R
+\]">\[
+V=(RR^*)^{-1/2}R
+\]</span>
+is a coisometry. The difference <span class="math" data-tex="\(V-R\)">\(V-R\)</span> is compact, because <span class="math" data-tex="\(RR^*-1\)">\(RR^*-1\)</span> is compact and functional calculus gives <span class="math" data-tex="\((RR^*)^{-1/2}-1\)">\((RR^*)^{-1/2}-1\)</span> compact. In the domain <span class="math" data-tex="\(H_A\oplus A^N\)">\(H_A\oplus A^N\)</span>, <span class="math" data-tex="\(R^*R-1\)">\(R^*R-1\)</span> is also compact: its upper-left block is <span class="math" data-tex="\(t^*t-1\)">\(t^*t-1\)</span>; the other blocks factor through the finite free summand. Therefore
+<span class="math math-display" data-tex="\[
+q=1-V^*V
+\]">\[
+q=1-V^*V
+\]</span>
+is a compact projection onto <span class="math" data-tex="\(\ker R\)">\(\ker R\)</span>.</p>
+<p>We need to move <span class="math" data-tex="\(q\)">\(q\)</span> into finitely many coordinates. Let <span class="math" data-tex="\(M_0\)">\(M_0\)</span> be projection onto the added <span class="math" data-tex="\(A^N\)">\(A^N\)</span>, and let <span class="math" data-tex="\(P_L\)">\(P_L\)</span> be a finite-coordinate projection containing <span class="math" data-tex="\(M_0\)">\(M_0\)</span>. For sufficiently large <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(\|(1-P_L)q\|\)">\(\|(1-P_L)q\|\)</span> is small. The positive operator <span class="math" data-tex="\(qP_Lq\)">\(qP_Lq\)</span> is then invertible in the corner with identity <span class="math" data-tex="\(q\)">\(q\)</span>. The partial isometry
+<span class="math math-display" data-tex="\[
+b=P_Lq(qP_Lq)^{-1/2}
+\]">\[
+b=P_Lq(qP_Lq)^{-1/2}
+\]</span>
+has <span class="math" data-tex="\(b^*b=q\)">\(b^*b=q\)</span> and <span class="math" data-tex="\(r=bb^*\leq P_L\)">\(r=bb^*\leq P_L\)</span>. As <span class="math" data-tex="\(\|(1-P_L)q\|\to0\)">\(\|(1-P_L)q\|\to0\)</span>, <span class="math" data-tex="\(b\to q\)">\(b\to q\)</span> in norm, so <span class="math" data-tex="\(r\to q\)">\(r\to q\)</span>; arrange <span class="math" data-tex="\(\|r-q\|&lt;1\)">\(\|r-q\|&lt;1\)</span>.</p>
+<p>There is a unitary <span class="math" data-tex="\(u=1+\text{compact}\)">\(u=1+\text{compact}\)</span> with <span class="math" data-tex="\(uqu^*=r\)">\(uqu^*=r\)</span>. To verify this, put
+<span class="math math-display" data-tex="\[
+a=rq+(1-r)(1-q).
+\]">\[
+a=rq+(1-r)(1-q).
+\]</span>
+Then <span class="math" data-tex="\(aq=ra\)">\(aq=ra\)</span>, <span class="math" data-tex="\(a-1\)">\(a-1\)</span> is compact, and
+<span class="math" data-tex="\(a^*a=1-(r-q)^2\)">\(a^*a=1-(r-q)^2\)</span>, which is invertible. The same computation for <span class="math" data-tex="\(aa^*\)">\(aa^*\)</span> makes <span class="math" data-tex="\(a\)">\(a\)</span> invertible. Its polar unitary <span class="math" data-tex="\(u=a(a^*a)^{-1/2}\)">\(u=a(a^*a)^{-1/2}\)</span> has the asserted properties.</p>
+<p>Set <span class="math" data-tex="\(W=Vu^*\)">\(W=Vu^*\)</span>. It is a coisometry with <span class="math" data-tex="\(W^*W=1-r\)">\(W^*W=1-r\)</span> and differs compactly from <span class="math" data-tex="\(R\)">\(R\)</span>. With <span class="math" data-tex="\(i:H_A\to H_A\oplus A^N\)">\(i:H_A\to H_A\oplus A^N\)</span> the original-summand inclusion, define
+<span class="math math-display" data-tex="\[
+t_1=W(1-P_L)i.
+\tag{4.1}
+\]">\[
+t_1=W(1-P_L)i.
+\tag{4.1}
+\]</span>
+The difference <span class="math" data-tex="\(t_1-t=(W-R)i-WP_Li\)">\(t_1-t=(W-R)i-WP_Li\)</span> is compact. Since <span class="math" data-tex="\(r\leq P_L\)">\(r\leq P_L\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span> is isometric on <span class="math" data-tex="\((1-P_L)(H_A\oplus A^N)\)">\((1-P_L)(H_A\oplus A^N)\)</span>. Thus <span class="math" data-tex="\(t_1\)">\(t_1\)</span> has closed range. Its kernel is the finite-coordinate module <span class="math" data-tex="\((P_L-M_0)(H_A\oplus A^N)\)">\((P_L-M_0)(H_A\oplus A^N)\)</span>; its cokernel is the finite projective module
+<span class="math" data-tex="\(W(P_L-r)(H_A\oplus A^N)\)">\(W(P_L-r)(H_A\oplus A^N)\)</span>.
+Indeed these two target subspaces are orthogonal and exhaust the target, by <span class="math" data-tex="\(WW^*=1\)">\(WW^*=1\)</span>. Finally <span class="math" data-tex="\(t_1D^{-1}\)">\(t_1D^{-1}\)</span> is the required compact perturbation of <span class="math" data-tex="\(T\)">\(T\)</span>. ∎</p>
+<p>The argument retains finitely many coordinates in order to discard all finite-dimensional interactions at once. It does not assume that the sum of two finite projective submodules is closed.</p>
+<p><strong>Example 4.2 (A nonunital obstruction).</strong> Let <span class="math" data-tex="\(A=C_0(\mathbb C)\)">\(A=C_0(\mathbb C)\)</span>, and let
+<span class="math math-display" data-tex="\[
+f(z)=\frac{z}{\sqrt{1+|z|^2}},\qquad
+T=\operatorname{diag}(f,1,1,\ldots)\in\mathcal L(H_A).
+\]">\[
+f(z)=\frac{z}{\sqrt{1+|z|^2}},\qquad
+T=\operatorname{diag}(f,1,1,\ldots)\in\mathcal L(H_A).
+\]</span>
+The defect <span class="math" data-tex="\(1-T^*T=1-TT^*\)">\(1-T^*T=1-TT^*\)</span> is the first-coordinate operator with entry <span class="math" data-tex="\((1+|z|^2)^{-1}\)">\((1+|z|^2)^{-1}\)</span>, hence compact. Thus <span class="math" data-tex="\(T\)">\(T\)</span> is Fredholm. Its relative index projection (2.5), after removing the unchanged coordinates, is
+<span class="math math-display" data-tex="\[
+p(z)=\frac1{1+|z|^2}
+\begin{pmatrix}|z|^2&amp;z\\\overline z&amp;1\end{pmatrix},
+\qquad
+\operatorname{Ind}_A(T)=[p]-[e_{11}].
+\tag{4.2}
+\]">\[
+p(z)=\frac1{1+|z|^2}
+\begin{pmatrix}|z|^2&amp;z\\\overline z&amp;1\end{pmatrix},
+\qquad
+\operatorname{Ind}_A(T)=[p]-[e_{11}].
+\tag{4.2}
+\]</span>
+This class is nonzero. The projection extends to the one-point compactification <span class="math" data-tex="\(S^2\)">\(S^2\)</span> with value <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span> at infinity. Its range is the line spanned by <span class="math" data-tex="\((z,1)\)">\((z,1)\)</span> on the finite chart; on the other chart use <span class="math" data-tex="\((1,1/z)\)">\((1,1/z)\)</span>. On the circle <span class="math" data-tex="\(|z|=1\)">\(|z|=1\)</span>, the unit-vector transition is multiplication by <span class="math" data-tex="\(z\)">\(z\)</span>, of winding number one. The winding argument in the preceding projective-module lesson proves that this line bundle <span class="math" data-tex="\(L\)">\(L\)</span> is nontrivial.</p>
+<p>It also proves that <span class="math" data-tex="\([L]-[1]\)">\([L]-[1]\)</span> is not merely zero after stable addition. Otherwise <span class="math" data-tex="\(L\oplus V\cong1\oplus V\)">\(L\oplus V\cong1\oplus V\)</span> for some bundle <span class="math" data-tex="\(V\)">\(V\)</span>, by the Grothendieck construction and the bundle/module correspondence. Taking top exterior powers gives <span class="math" data-tex="\(L\otimes\det V\cong\det V\)">\(L\otimes\det V\cong\det V\)</span>; tensoring with the dual determinant line would make <span class="math" data-tex="\(L\)">\(L\)</span> trivial, a contradiction. Thus (4.2) is a nonzero relative class.</p>
+<p>On the other hand, <span class="math" data-tex="\(D=C_0(\mathbb C,\mathbb K)\)">\(D=C_0(\mathbb C,\mathbb K)\)</span> has no nonzero projections. A continuous projection has norm zero or one at each point; connectedness makes that norm constant, and vanishing at infinity forces it to be zero. If any compact perturbation of <span class="math" data-tex="\(T\)">\(T\)</span> had closed range, Proposition 1.2 would make its kernel projections compact and therefore zero. The closed-range decomposition would then make it invertible, and Theorem 2.3 would give index zero, contradicting (4.2).</p>
+<p>Consequently the unital hypothesis in Theorem 4.1 cannot be removed. The quotient index and the stable-multiplier computation, however, remain valid for arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>. Nonunital relative classes are precisely why defining every index by finite kernels would lose information.</p>
+<h2 id="5-fredholm-triples-and-arbitrary-coefficient-algebras">5. Fredholm triples and arbitrary coefficient algebras</h2>
+<p>A Fredholm triple is <span class="math" data-tex="\((E,F,T)\)">\((E,F,T)\)</span>, with <span class="math" data-tex="\(E,F\)">\(E,F\)</span> countably generated Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-modules and <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span> Fredholm. We impose unitary equivalence, norm-continuous Fredholm homotopy on fixed modules, and addition or removal of triples whose operator is invertible. Addition is orthogonal direct sum. This describes the even Fredholm model; it does not include the additional left action needed for a general Kasparov bimodule.</p>
+<p><strong>Lemma 5.1 (The <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital case).</strong> If <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital, these triples are classified by <span class="math" data-tex="\(K_0(B)\)">\(K_0(B)\)</span>.</p>
+<p><em>Proof.</em> The module <span class="math" data-tex="\(H_B\)">\(H_B\)</span> is countably generated, so one may add its degenerate identity triple. Stabilization identifies both <span class="math" data-tex="\(E\oplus H_B\)">\(E\oplus H_B\)</span> and <span class="math" data-tex="\(F\oplus H_B\)">\(F\oplus H_B\)</span> with <span class="math" data-tex="\(H_B\)">\(H_B\)</span>. The resulting operator is a standard-module Fredholm, and Section 3 classifies it by its index. Changing either stabilization unitary multiplies its quotient on one side by the image of an actual unitary. That unitary's quotient K₁ class is zero because <span class="math" data-tex="\(K_1(\mathcal L(H_B))=0\)">\(K_1(\mathcal L(H_B))=0\)</span>. Thus the index and the classified triple are independent of the choices. Stable matrix additions in Section 3 are additions of countably generated invertible triples here. Conversely every standard Fredholm is such a triple. ∎</p>
+<p>For arbitrary <span class="math" data-tex="\(A\)">\(A\)</span>, adding the identity on <span class="math" data-tex="\(H_A\)">\(H_A\)</span> would leave this collection if <span class="math" data-tex="\(A\)">\(A\)</span> were not <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital. We instead reduce the data of each triple to a separable subalgebra and check that extension of coefficients respects its index.</p>
+<p><strong>Lemma 5.2 (Naturality under coefficient extension).</strong> Let <span class="math" data-tex="\(B\subseteq C\)">\(B\subseteq C\)</span> be <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital C*-algebras. Tensoring a countably generated <span class="math" data-tex="\(B\)">\(B\)</span>-triple with the correspondence <span class="math" data-tex="\(C_C\)">\(C_C\)</span> preserves Fredholmness and carries its index to the image under <span class="math" data-tex="\(K_0(B)\to K_0(C)\)">\(K_0(B)\to K_0(C)\)</span>. Nondegeneracy of the inclusion is not required.</p>
+<p><em>Proof.</em> The left action of <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(C_C\)">\(C_C\)</span> is compact, since <span class="math" data-tex="\(\mathcal K(C)=C\)">\(\mathcal K(C)=C\)</span>. The tensor-compactness theorem therefore carries both parametrix defects to compacts. If <span class="math" data-tex="\(x_j\)">\(x_j\)</span> generates a module and <span class="math" data-tex="\(u_n\)">\(u_n\)</span> is a sequential approximate identity of <span class="math" data-tex="\(B\)">\(B\)</span>, the vectors <span class="math" data-tex="\(x_j\otimes u_n\)">\(x_j\otimes u_n\)</span> generate the extended module: <span class="math" data-tex="\(x_ju_n\to x_j\)">\(x_ju_n\to x_j\)</span>, and balancing approximates every tensor in the generating span by their <span class="math" data-tex="\(C\)">\(C\)</span>-span. Thus countable generation is preserved.</p>
+<p>It remains to verify the coefficient map on the index. After the <span class="math" data-tex="\(B\)">\(B\)</span>-stabilization in Lemma 5.1, tensoring gives a Fredholm on
+<span class="math math-display" data-tex="\[
+L=H_B\otimes_B C\cong\ell^2\boxtimes J,\qquad
+J=\overline{\operatorname{span}}BC.
+\]">\[
+L=H_B\otimes_B C\cong\ell^2\boxtimes J,\qquad
+J=\overline{\operatorname{span}}BC.
+\]</span>
+Stabilize <span class="math" data-tex="\(L\)">\(L\)</span> over <span class="math" data-tex="\(C\)">\(C\)</span>. The tensor homomorphism from <span class="math" data-tex="\(\mathcal L(H_B)\)">\(\mathcal L(H_B)\)</span>, acting on the <span class="math" data-tex="\(L\)">\(L\)</span> summand and by zero on its complement, sends <span class="math" data-tex="\(\mathcal K(H_B)\)">\(\mathcal K(H_B)\)</span> into <span class="math" data-tex="\(\mathcal K(H_C)\)">\(\mathcal K(H_C)\)</span>. It gives a possibly nonunital homomorphism of the two compact extensions. Unitizing and adding the identity on the complementary summand carries an invertible quotient representative to the stabilized extended Fredholm. Applying this homomorphism to the lift in (2.2) proves naturality of the boundary map. We must identify its compact K₀ map with coefficient inclusion.</p>
+<p>The right ideal <span class="math" data-tex="\(J\)">\(J\)</span> has <span class="math" data-tex="\(\mathcal K(J)=\overline{JJ^*}\subseteq C\)">\(\mathcal K(J)=\overline{JJ^*}\subseteq C\)</span>, acting by left multiplication. Indeed the rank-one map for <span class="math" data-tex="\(x,y\in J\)">\(x,y\in J\)</span> is multiplication by <span class="math" data-tex="\(xy^*\)">\(xy^*\)</span>, and that representation is faithful: an element of <span class="math" data-tex="\(\overline{JJ^*}\)">\(\overline{JJ^*}\)</span> annihilating <span class="math" data-tex="\(J\)">\(J\)</span> annihilates its own dense product span and hence is zero. Notice <span class="math" data-tex="\(B\subseteq J\)">\(B\subseteq J\)</span> and <span class="math" data-tex="\(B\subseteq\overline{JJ^*}\)">\(B\subseteq\overline{JJ^*}\)</span>, by its own approximate identity and positive square roots.</p>
+<p>Inside <span class="math" data-tex="\(\mathcal K_C(J\oplus C)\)">\(\mathcal K_C(J\oplus C)\)</span>, the formulas
+<span class="math math-display" data-tex="\[
+\rho_t(b)=
+\begin{pmatrix}
+\cos^2(t)b&amp;\cos(t)\sin(t)b\\
+\cos(t)\sin(t)b&amp;\sin^2(t)b
+\end{pmatrix},
+\qquad 0\leq t\leq\pi/2,
+\tag{5.1}
+\]">\[
+\rho_t(b)=
+\begin{pmatrix}
+\cos^2(t)b&amp;\cos(t)\sin(t)b\\
+\cos(t)\sin(t)b&amp;\sin^2(t)b
+\end{pmatrix},
+\qquad 0\leq t\leq\pi/2,
+\tag{5.1}
+\]</span>
+give a norm-continuous homotopy of *-homomorphisms. The off-diagonal multiplication maps are compact because <span class="math" data-tex="\(b\in J\)">\(b\in J\)</span>; the diagonal entries belong to <span class="math" data-tex="\(\mathcal K(J)\)">\(\mathcal K(J)\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>, respectively. Matrix multiplication, using <span class="math" data-tex="\(\cos^2t+\sin^2t=1\)">\(\cos^2t+\sin^2t=1\)</span>, proves multiplicativity. The endpoints are the upper <span class="math" data-tex="\(B\)">\(B\)</span>-corner and its ordinary inclusion in the lower <span class="math" data-tex="\(C\)">\(C\)</span>-corner.</p>
+<p>After stabilization of <span class="math" data-tex="\(J\oplus C\)">\(J\oplus C\)</span>, this homotopy proves equality of their maps into <span class="math" data-tex="\(K_0(\mathcal K(H_C))\)">\(K_0(\mathcal K(H_C))\)</span>. The lower corner gives the usual coordinate coefficient map. More explicitly, any adjointable isometric embedding <span class="math" data-tex="\(C\to H_C\)">\(C\to H_C\)</span> gives the same map as the first-coordinate embedding. If <span class="math" data-tex="\(i,j\)">\(i,j\)</span> are two such embeddings, <span class="math" data-tex="\(v=ij^*\)">\(v=ij^*\)</span> has initial and final projections <span class="math" data-tex="\(P_j,P_i\)">\(P_j,P_i\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}v&amp;1-P_i\\1-P_j&amp;-v^*\end{pmatrix}
+\]">\[
+\begin{pmatrix}v&amp;1-P_i\\1-P_j&amp;-v^*\end{pmatrix}
+\]</span>
+is a unitary on <span class="math" data-tex="\(H_C\oplus H_C\)">\(H_C\oplus H_C\)</span> conjugating their two compact corner homomorphisms after adjoining a zero summand. This is valid for relative K₀ classes as well, by unitization. Matrix amplification of (5.1) identifies the tensor compact map with <span class="math" data-tex="\(K_0(B)\to K_0(C)\)">\(K_0(B)\to K_0(C)\)</span>. Boundary naturality now gives the asserted index identity. The degenerate summand used in the initial stabilization remains invertible after tensoring, so removing it does not change the index. ∎</p>
+<p><strong>Lemma 5.3 (Separable reduction).</strong> Every countably generated Fredholm <span class="math" data-tex="\(A\)">\(A\)</span>-triple is obtained by tensoring a Fredholm triple over some separable C*-subalgebra <span class="math" data-tex="\(B\subseteq A\)">\(B\subseteq A\)</span> with <span class="math" data-tex="\(A_A\)">\(A_A\)</span>.</p>
+<p><em>Proof.</em> Choose countable generating sets <span class="math" data-tex="\(X\subseteq E\)">\(X\subseteq E\)</span>, <span class="math" data-tex="\(Y\subseteq F\)">\(Y\subseteq F\)</span>, and a parametrix <span class="math" data-tex="\(S\)">\(S\)</span>. Add the vectors occurring in finite-rank approximations of <span class="math" data-tex="\(ST-1_E\)">\(ST-1_E\)</span> and <span class="math" data-tex="\(TS-1_F\)">\(TS-1_F\)</span>, choosing one approximation within <span class="math" data-tex="\(1/n\)">\(1/n\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. Enlarge the two countable sets repeatedly so that
+<span class="math math-display" data-tex="\[
+TX\subseteq Y,\quad T^*Y\subseteq X,\quad
+SY\subseteq X,\quad S^*X\subseteq Y.
+\]">\[
+TX\subseteq Y,\quad T^*Y\subseteq X,\quad
+SY\subseteq X,\quad S^*X\subseteq Y.
+\]</span>
+Let <span class="math" data-tex="\(B\)">\(B\)</span> be generated by all inner products within <span class="math" data-tex="\(X\)">\(X\)</span> and within <span class="math" data-tex="\(Y\)">\(Y\)</span>. It is separable. It is <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital: a countable norm-dense sequence generates <span class="math" data-tex="\(B_B\)">\(B_B\)</span> as a module, using its nondegenerate action, so the earlier countability criterion applies to <span class="math" data-tex="\(\mathcal K(B)=B\)">\(\mathcal K(B)=B\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E_B=\overline{\operatorname{span}}XB\)">\(E_B=\overline{\operatorname{span}}XB\)</span>, and define <span class="math" data-tex="\(F_B\)">\(F_B\)</span> similarly, with closure in the original module norm. Their inner products lie in <span class="math" data-tex="\(B\)">\(B\)</span>, making them complete Hilbert <span class="math" data-tex="\(B\)">\(B\)</span>-modules. Each <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span> actually belongs to <span class="math" data-tex="\(E_B\)">\(E_B\)</span>: if <span class="math" data-tex="\(u_n\)">\(u_n\)</span> is a <span class="math" data-tex="\(B\)">\(B\)</span> approximate identity, then
+<span class="math math-display" data-tex="\[
+\|x-xu_n\|^2
+=\|(1-u_n)\langle x,x\rangle(1-u_n)\|\longrightarrow0.
+\]">\[
+\|x-xu_n\|^2
+=\|(1-u_n)\langle x,x\rangle(1-u_n)\|\longrightarrow0.
+\]</span>
+The analogous assertion holds for <span class="math" data-tex="\(Y\)">\(Y\)</span>. The operator and adjoint inclusions therefore restrict <span class="math" data-tex="\(T,S,T^*,S^*\)">\(T,S,T^*,S^*\)</span> to these modules. The chosen finite-rank approximations restrict to compacts, proving that the restricted <span class="math" data-tex="\(T_B\)">\(T_B\)</span> is Fredholm.</p>
+<p>Multiplication gives a unitary
+<span class="math math-display" data-tex="\[
+E_B\otimes_B A\longrightarrow E,\qquad x\otimes a\longmapsto xa.
+\tag{5.2}
+\]">\[
+E_B\otimes_B A\longrightarrow E,\qquad x\otimes a\longmapsto xa.
+\tag{5.2}
+\]</span>
+It preserves inner products since both are <span class="math" data-tex="\(a^*\langle x,y\rangle b\)">\(a^*\langle x,y\rangle b\)</span>. Its image contains <span class="math" data-tex="\(XA\)">\(XA\)</span>, dense in <span class="math" data-tex="\(E\)">\(E\)</span>. The analogous unitary for <span class="math" data-tex="\(F\)">\(F\)</span> identifies the extended <span class="math" data-tex="\(T_B\)">\(T_B\)</span> with <span class="math" data-tex="\(T\)">\(T\)</span>. ∎</p>
+<p><strong>Theorem 5.4 (Fredholm-triple presentation).</strong> For every C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, the equivalence classes of countably generated Fredholm triples form an abelian group naturally identified with <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. For <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital <span class="math" data-tex="\(A\)">\(A\)</span>, this identification is the standard-module index after stabilization.</p>
+<p><em>Proof.</em> Descend a triple to <span class="math" data-tex="\(B\)">\(B\)</span> as in Lemma 5.3 and define its index to be the image of its <span class="math" data-tex="\(B\)">\(B\)</span>-index in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. This definition is independent of the reduction. Given two reductions, take a separable subalgebra <span class="math" data-tex="\(C\subseteq A\)">\(C\subseteq A\)</span> containing both coefficient algebras and their countable vector inner products. Also include coefficients in countable approximations expressing each reduction's generating vectors in the other's generating <span class="math" data-tex="\(A\)">\(A\)</span>-span. Such approximations exist since both <span class="math" data-tex="\(A\)">\(A\)</span>-extensions are the original modules. Over this enlarged <span class="math" data-tex="\(C\)">\(C\)</span>, the closures of the two generating spans coincide; their operators coincide by restriction. Lemma 5.2 identifies both index images with this common <span class="math" data-tex="\(C\)">\(C\)</span>-index, proving independence.</p>
+<p>Direct sums can be reduced simultaneously, so the index is additive. An invertible triple reduces with its inverse and has zero index. Unitary equivalence can likewise be included in the countable data, so it preserves the index.</p>
+<p>For a norm-continuous Fredholm path, the reduction can be made simultaneously for the whole path. Locally there are norm-continuous parametrices: near <span class="math" data-tex="\(T_0\)">\(T_0\)</span>, if <span class="math" data-tex="\(S_0\)">\(S_0\)</span> is a parametrix and <span class="math" data-tex="\(\delta=T_t-T_0\)">\(\delta=T_t-T_0\)</span> is small, use
+<span class="math math-display" data-tex="\[
+S_t=(1+S_0\delta)^{-1}S_0
+=S_0(1+\delta S_0)^{-1}.
+\]">\[
+S_t=(1+S_0\delta)^{-1}S_0
+=S_0(1+\delta S_0)^{-1}.
+\]</span>
+Multiplication shows that its two defects are compact. Patch finitely many local choices by a scalar partition of unity; the defects remain compact since the weights sum to one. Include the operators, their adjoints and finite-rank defect approximations at rational parameter values in Lemma 5.3. Norm continuity makes the resulting restricted modules invariant and the defects compact for every parameter. The reduced path has constant <span class="math" data-tex="\(B\)">\(B\)</span>-index, hence the original path has constant <span class="math" data-tex="\(A\)">\(A\)</span>-index.</p>
+<p>Every <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span> class comes from a separable subalgebra <span class="math" data-tex="\(B\)">\(B\)</span>: its finite matrix projections over <span class="math" data-tex="\(A^+\)">\(A^+\)</span> have only finitely many coefficient entries after subtracting scalar parts. Generate <span class="math" data-tex="\(B\)">\(B\)</span> by those entries. Corollary 3.2 represents the resulting <span class="math" data-tex="\(B\)">\(B\)</span>-class by a standard <span class="math" data-tex="\(B\)">\(B\)</span>-Fredholm. Tensor with <span class="math" data-tex="\(A_A\)">\(A_A\)</span>; compactness and countable generation are preserved by the argument of Lemma 5.2, giving an <span class="math" data-tex="\(A\)">\(A\)</span>-triple with the prescribed index. This proves surjectivity.</p>
+<p>If a descended <span class="math" data-tex="\(B\)">\(B\)</span>-index has zero image in <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>, its equality to zero has a finite stable projection-equivalence witness in matrices over <span class="math" data-tex="\(A^+\)">\(A^+\)</span>. Include that witness's coefficient entries in a separable <span class="math" data-tex="\(C\subseteq A\)">\(C\subseteq A\)</span> containing <span class="math" data-tex="\(B\)">\(B\)</span>. If the witness is expressed by a homotopy, include its values at rational parameters; norm closure includes the whole homotopy. The index is then already zero in <span class="math" data-tex="\(K_0(C)\)">\(K_0(C)\)</span>. Lemmas 5.1 and 5.2 make the extended <span class="math" data-tex="\(C\)">\(C\)</span>-triple equivalent to a degenerate triple. Tensoring that equivalence with <span class="math" data-tex="\(A_A\)">\(A_A\)</span> preserves compactness, norm homotopies, unitary equivalence and invertibility. It also preserves countable generation: use generators tensored with a sequential approximate identity of <span class="math" data-tex="\(C\)">\(C\)</span>, exactly as in Lemma 5.2. Thus the original <span class="math" data-tex="\(A\)">\(A\)</span>-triple is zero.</p>
+<p>Finally <span class="math" data-tex="\((F,E,T^*)\)">\((F,E,T^*)\)</span> has the negative index of <span class="math" data-tex="\((E,F,T)\)">\((E,F,T)\)</span>, as is seen after a common separable reduction and Lemma 5.1. The preceding zero-index argument makes their sum zero as a triple class. Therefore every class has an inverse. Additivity, surjectivity and the zero-index argument now prove injectivity as well, completing the group identification. ∎</p>
+<p>The same reduction compares this index with the finite-kernel formula when a countably generated triple has closed range. The spectral-gap functional calculus supplying its kernel projections restricts to the reduced modules. The restricted projections are compact by the parametrix-compression proof, and tensoring them back gives the original kernels and their finite projective classes. Thus the kernel-minus-cokernel convention is preserved throughout, including nonunital coefficient extension.</p>
+<h2 id="6-numerical-family-and-geometric-indices">6. Numerical, family and geometric indices</h2>
+<p><strong>Example 6.1 (Complex coefficients).</strong> For <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, <span class="math" data-tex="\(H_A=\ell^2\)">\(H_A=\ell^2\)</span> and module compacts are ordinary compact operators. The Hilbert-space Fredholm theorem makes the range closed and the two kernels finite-dimensional. Their projection classes in <span class="math" data-tex="\(K_0(\mathbb C)=\mathbb Z\)">\(K_0(\mathbb C)=\mathbb Z\)</span> are their dimensions, so
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_{\mathbb C}(T)
+=\dim\ker T-\dim\ker T^*.
+\]">\[
+\operatorname{Ind}_{\mathbb C}(T)
+=\dim\ker T-\dim\ker T^*.
+\]</span>
+In particular the unilateral shift has index <span class="math" data-tex="\(-1\)">\(-1\)</span>. This sign agrees with the boundary computation (2.5).</p>
+<p><strong>Example 6.2 (A family index bundle).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be compact Hausdorff and let <span class="math" data-tex="\(x\mapsto T_x\)">\(x\mapsto T_x\)</span> be a norm-continuous family of Fredholm operators on a fixed separable infinite-dimensional Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>. The module <span class="math" data-tex="\(C(X,H)\)">\(C(X,H)\)</span> is <span class="math" data-tex="\(H_{C(X)}\)">\(H_{C(X)}\)</span> after choosing an orthonormal basis: finite-coordinate approximation is uniform on the compact image of a continuous section, so the completed column norm is exactly its supremum norm. The family gives an adjointable operator <span class="math" data-tex="\(T\)">\(T\)</span>; the adjoint family is norm continuous too.</p>
+<p>This operator is module Fredholm. Near each <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, the parametrix formula used in Theorem 5.4 supplies a norm-continuous parametrix family from one at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. A finite subordinate partition of unity patches these to <span class="math" data-tex="\(S_x\)">\(S_x\)</span>. The two defects are norm-continuous families of compact operators, hence belong to <span class="math" data-tex="\(\mathcal K(C(X,H))\)">\(\mathcal K(C(X,H))\)</span>. Indeed a compact subset of <span class="math" data-tex="\(\mathbb K(H)\)">\(\mathbb K(H)\)</span> is uniformly approximated by finite-coordinate compressions, giving finite matrices of continuous functions.</p>
+<p>There is a uniform finite augmentation without normalizing <span class="math" data-tex="\(T\)">\(T\)</span>. Choose <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> below the spectrum of the positive invertible <span class="math" data-tex="\(\pi(TT^*)\)">\(\pi(TT^*)\)</span> in the module quotient. Then <span class="math" data-tex="\(k=(\varepsilon-TT^*)_+\)">\(k=(\varepsilon-TT^*)_+\)</span> is compact and <span class="math" data-tex="\(TT^*+k\geq\varepsilon\,1\)">\(TT^*+k\geq\varepsilon\,1\)</span>. Uniform finite-coordinate compression of <span class="math" data-tex="\(k\)">\(k\)</span>, as in Theorem 4.1, gives <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> with <span class="math" data-tex="\(TT^*+cP_N\geq(\varepsilon/2)1\)">\(TT^*+cP_N\geq(\varepsilon/2)1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+R_x:H\oplus\mathbb C^N\to H,\qquad
+R_x(h,a)=T_xh+\sqrt c\,Ja
+\]">\[
+R_x:H\oplus\mathbb C^N\to H,\qquad
+R_x(h,a)=T_xh+\sqrt c\,Ja
+\]</span>
+is onto for every <span class="math" data-tex="\(x\)">\(x\)</span>. Its kernel projection
+<span class="math" data-tex="\(1-R_x^*(R_xR_x^*)^{-1}R_x\)">\(1-R_x^*(R_xR_x^*)^{-1}R_x\)</span>
+is norm continuous. It is module compact: in the quotient the finite summand disappears, and <span class="math" data-tex="\(\pi(T)^*(\pi(T)\pi(T)^*)^{-1}\pi(T)=1\)">\(\pi(T)^*(\pi(T)\pi(T)^*)^{-1}\pi(T)=1\)</span>, so the projection has zero quotient image. Its fibres therefore have finite rank. The projective-module/bundle correspondence gives a vector bundle <span class="math" data-tex="\(V=\ker R\)">\(V=\ker R\)</span>, and the family index is
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}(T)=[V]-[X\times\mathbb C^N]\in K^0(X).
+\tag{6.1}
+\]">\[
+\operatorname{Ind}(T)=[V]-[X\times\mathbb C^N]\in K^0(X).
+\tag{6.1}
+\]</span>
+To check the formula against the module index, join <span class="math" data-tex="\(R\)">\(R\)</span> to <span class="math" data-tex="\((T,0)\)">\((T,0)\)</span> by scaling the finite-column term. Every operator on this path is Fredholm, because that term is compact. The closed-range kernel formula gives <span class="math" data-tex="\(\operatorname{Ind}(R)=[V]\)">\(\operatorname{Ind}(R)=[V]\)</span>, while direct sum with the finite-module triple <span class="math" data-tex="\((C(X)^N,0,0)\)">\((C(X)^N,0,0)\)</span> gives
+<span class="math" data-tex="\(\operatorname{Ind}(T,0)=\operatorname{Ind}(T)+[C(X)^N]\)">\(\operatorname{Ind}(T,0)=\operatorname{Ind}(T)+[C(X)^N]\)</span>.
+Equation (6.1) follows. The construction makes no assumption that the kernels of the original family form bundles.</p>
+<p>Every class is realized by such a norm-continuous family. If it is <span class="math" data-tex="\([p]-[q]\)">\([p]-[q]\)</span> for finite continuous matrix projections, on <span class="math" data-tex="\(\ell^2\otimes\mathbb C^n\)">\(\ell^2\otimes\mathbb C^n\)</span> use
+<span class="math math-display" data-tex="\[
+T_p=S^*\otimes p+1\otimes(1-p),
+\]">\[
+T_p=S^*\otimes p+1\otimes(1-p),
+\]</span>
+whose kernel is <span class="math" data-tex="\(p\mathbb C^n\)">\(p\mathbb C^n\)</span> and cokernel is zero. For <span class="math" data-tex="\(q\)">\(q\)</span>, use <span class="math" data-tex="\(S\otimes q+1\otimes(1-q)\)">\(S\otimes q+1\otimes(1-q)\)</span>, with the reverse defects. Their direct sum varies in norm continuously with <span class="math" data-tex="\(x\)">\(x\)</span> and has the prescribed index bundle. This is the realization direction of the family-index picture; no contractibility theorem for the whole Hilbert-space unitary group is used.</p>
+<p><strong>Example 6.3 (A Mishchenko-Fomenko index).</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be a countable discrete group, let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed even-dimensional spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> manifold, and let <span class="math" data-tex="\(f:M\to BG\)">\(f:M\to BG\)</span>. The associated flat module bundle
+<span class="math math-display" data-tex="\[
+\mathcal L_f=\widehat M\times_G C^*G
+\]">\[
+\mathcal L_f=\widehat M\times_G C^*G
+\]</span>
+has rank-one free right <span class="math" data-tex="\(C^*G\)">\(C^*G\)</span>-module fibres; <span class="math" data-tex="\(G\)">\(G\)</span> acts on them by left multiplication by its canonical unitaries. If <span class="math" data-tex="\(E\)">\(E\)</span> is a Hermitian bundle on <span class="math" data-tex="\(M\)">\(M\)</span>, the Dirac operator twisted by <span class="math" data-tex="\(E\otimes\mathcal L_f\)">\(E\otimes\mathcal L_f\)</span> has a Mishchenko-Fomenko index in <span class="math" data-tex="\(K_0(C^*G)\)">\(K_0(C^*G)\)</span>. The exact assigned programme dependency is <em>The Baum–Connes assembly map and the conjecture</em>, Section 2, in <em>Kasparov’s KK-theory</em>: the Mishchenko–Fomenko construction and its comparison with assembly for the Dirac class of a proper cocompact action. Specializing to the covering classified by <span class="math" data-tex="\(f\)">\(f\)</span> gives the index map on <span class="math" data-tex="\([M,f,E]\)">\([M,f,E]\)</span>. This assigned proof is planned; Land, Definitions 3.3–3.4 and Proposition 3.5, credits the geometric statement.</p>
+<p>The required content of that planned section includes the coefficient Sobolev construction, the compact-remainder elliptic parametrix and its bounded Fredholm realization, followed by the Dirac-index comparison, for this countable discrete covering and unital coefficient algebra. These analytic requirements are not claimed to be written merely by naming the index. Our bounded module results describe its index and its invariance, and unitality of <span class="math" data-tex="\(C^*G\)">\(C^*G\)</span> permits the finite-projective kernel description after compact perturbation. The preceding bounded index theory is proved without this geometric application; the later assembly comparison uses that bounded index, so it supplies no circular proof of it.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (Basic: the numerical index).</strong> Recover the ordinary Fredholm index for <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>.</p>
+<p><em>Solution.</em> Module rank-one operators on <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> are ordinary rank-one operators, so their norm closure is the usual compact ideal. The Hilbert-space Fredholm theorem gives closed range and finite-dimensional kernels. Theorem 2.2 identifies the boundary index with their projection-class difference. Under the rank isomorphism <span class="math" data-tex="\(K_0(\mathbb C)\cong\mathbb Z\)">\(K_0(\mathbb C)\cong\mathbb Z\)</span>, this is <span class="math" data-tex="\(\dim\ker T-\dim\ker T^*\)">\(\dim\ker T-\dim\ker T^*\)</span>. The shift has zero kernel and one-dimensional cokernel, so its value is <span class="math" data-tex="\(-1\)">\(-1\)</span>. ∎</p>
+<p><strong>Exercise 7.2 (Intermediate: compact kernel identity).</strong> Prove finite generation of the two kernels for a closed-range Fredholm <span class="math" data-tex="\(T:E\to F\)">\(T:E\to F\)</span>.</p>
+<p><em>Solution.</em> The closed-range theorem makes the kernel projections <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> adjointable. Compression of the two parametrix identities gives
+<span class="math" data-tex="\(P=-P(ST-1)P\)">\(P=-P(ST-1)P\)</span> and <span class="math" data-tex="\(Q=-Q(TS-1)Q\)">\(Q=-Q(TS-1)Q\)</span>, so they are compact. The rank-one compression formula identifies their corner algebras with the compact algebras on their ranges. Hence each kernel has compact identity. The finite-frame theorem constructs vectors <span class="math" data-tex="\(x_i\)">\(x_i\)</span> with <span class="math" data-tex="\(\sum_i\theta_{x_i,x_i}=1\)">\(\sum_i\theta_{x_i,x_i}=1\)</span>, giving <span class="math" data-tex="\(x=\sum_i x_i\langle x_i,x\rangle\)">\(x=\sum_i x_i\langle x_i,x\rangle\)</span>. This is algebraic finite generation; the Gram projection identifies the kernel with a projection module. No assertion about arbitrary nonclosed-range kernels is used. ∎</p>
+<p><strong>Exercise 7.3 (Intermediate: both multiplier K-groups).</strong> Prove (3.1) by an infinite direct-sum argument.</p>
+<p><em>Solution.</em> Reindex <span class="math" data-tex="\(H_A^\infty\)">\(H_A^\infty\)</span> as <span class="math" data-tex="\(H_A\)">\(H_A\)</span> and take the diagonal amplification <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Separating its first summand gives
+<span class="math" data-tex="\(\alpha(x)=v_1xv_1^*+w\alpha(x)w^*\)">\(\alpha(x)=v_1xv_1^*+w\alpha(x)w^*\)</span>,
+where the two range projections are orthogonal and sum to one. A corner made by an isometry induces the identity on K₀, using the partial isometry <span class="math" data-tex="\(vp\)">\(vp\)</span>, and on K₁, using the explicit unitary <span class="math" data-tex="\(Z\)">\(Z\)</span> in Theorem 3.1 after unitization. Orthogonal direct sum is addition of the induced K-theory maps, so <span class="math" data-tex="\(\alpha_*=\mathrm{id}_*+\alpha_*\)">\(\alpha_*=\mathrm{id}_*+\alpha_*\)</span> on each group. Cancellation proves both groups zero. The infinite sums are bounded adjointable diagonal operators and converge strictly, which is sufficient; no norm convergence of their finite partial sums is claimed. ∎</p>
+<p><strong>Exercise 7.4 (Intermediate: the coefficient shift).</strong> For unital <span class="math" data-tex="\(A\)">\(A\)</span>, compute the index of <span class="math" data-tex="\(S_A(a_1,a_2,\ldots)=(0,a_1,a_2,\ldots)\)">\(S_A(a_1,a_2,\ldots)=(0,a_1,a_2,\ldots)\)</span>.</p>
+<p><em>Solution.</em> It is an adjointable isometry with
+<span class="math" data-tex="\(S_A^*S_A=1\)">\(S_A^*S_A=1\)</span> and <span class="math" data-tex="\(1-S_AS_A^*=P_1\)">\(1-S_AS_A^*=P_1\)</span>, projection onto the first <span class="math" data-tex="\(A\)">\(A\)</span>-coordinate. Since <span class="math" data-tex="\(A\)">\(A\)</span> is unital, <span class="math" data-tex="\(P_1=\theta_{e_1,e_1}\)">\(P_1=\theta_{e_1,e_1}\)</span> is compact. Thus <span class="math" data-tex="\(S_A\)">\(S_A\)</span> is Fredholm with closed range, kernel zero and cokernel <span class="math" data-tex="\(A_A\)">\(A_A\)</span>. Its index is <span class="math" data-tex="\(-[1_A]\in K_0(A)\)">\(-[1_A]\in K_0(A)\)</span>. The unital condition matters: for nonunital <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, <span class="math" data-tex="\(P_1\)">\(P_1\)</span> need not be compact, since the identity on <span class="math" data-tex="\(A_A\)">\(A_A\)</span> is a multiplier rather than an element of <span class="math" data-tex="\(\mathcal K(A)=A\)">\(\mathcal K(A)=A\)</span>. ∎</p>
+<p><strong>Exercise 7.5 (Advanced: compare the family index).</strong> Construct the index bundle of a norm-continuous Fredholm family over compact <span class="math" data-tex="\(X\)">\(X\)</span> and compare it with the <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-module index.</p>
+<p><em>Solution.</em> Use <span class="math" data-tex="\(C(X,H)=H_{C(X)}\)">\(C(X,H)=H_{C(X)}\)</span>. Local continuous parametrices patch by a finite partition of unity, with compact operator defects; their compact-image uniform finite-coordinate approximations prove module Fredholmness. Choose a finite coordinate space <span class="math" data-tex="\(\mathbb C^N\)">\(\mathbb C^N\)</span> and <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> so that <span class="math" data-tex="\([T_x,\sqrt c\,J]\)">\([T_x,\sqrt c\,J]\)</span> is onto everywhere, using a positive compact correction of <span class="math" data-tex="\(TT^*\)">\(TT^*\)</span> and uniform finite-coordinate approximation. The continuous projection
+<span class="math" data-tex="\(1-R_x^*(R_xR_x^*)^{-1}R_x\)">\(1-R_x^*(R_xR_x^*)^{-1}R_x\)</span>
+defines its finite-rank kernel bundle <span class="math" data-tex="\(V\)">\(V\)</span>. Set the index bundle to <span class="math" data-tex="\([V]-[\mathbb C^N]\)">\([V]-[\mathbb C^N]\)</span>.</p>
+<p>Scaling <span class="math" data-tex="\(J\)">\(J\)</span> supplies a Fredholm path from <span class="math" data-tex="\(R\)">\(R\)</span> to <span class="math" data-tex="\((T,0)\)">\((T,0)\)</span>. Theorem 2.3 and the triple presentation give
+<span class="math" data-tex="\([V]=\operatorname{Ind}(R)=\operatorname{Ind}(T)+[\mathbb C^N]\)">\([V]=\operatorname{Ind}(R)=\operatorname{Ind}(T)+[\mathbb C^N]\)</span>.
+Thus the bundle class equals the module index. Changing the augmentation yields the same class by that equality, and norm-continuous family homotopies preserve it. Pointwise kernel dimensions of <span class="math" data-tex="\(T_x\)">\(T_x\)</span> may jump; they are not used to form the bundle. ∎</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the preceding course proofs of closed-range decompositions, compact composition and compression, finite frames and relative K₀, stabilization, and tensor compactness. The relevant locators are the closed-range theorem in <em>Adjointable operators</em>, the finite-frame equivalences in <em>Finite projective modules, frames and K₀</em>, Theorem 3.1 of <em>Kasparov's stabilization theorem</em>, and Theorem 2.4 of <em>Tensor products and C*-correspondences</em>.</p>
+<p>The written programme proofs supplying operator K-theory are <a href="../KT-OPK/idempotents-projections-and-their-equivalences.html">Idempotents, projections and their equivalences</a>, Theorems 4.2–4.3; <a href="../KT-OPK/the-grothendieck-group-and-k0-of-a-unital-algebra.html">The Grothendieck group and K₀ of a unital algebra</a>, Theorems 3.2 and 4.2; <a href="../KT-OPK/nonunital-algebras-unitization-relative-classes-and-half-exactness.html">Nonunital algebras: unitization, relative classes and half-exactness</a>, Theorem 1.1; <a href="../KT-OPK/matrix-stability-stability-and-continuity-of-k0.html">Matrix stability, stability and continuity of K₀</a>, Theorems 1.1 and 4.1; and <a href="../KT-OPK/invertibles-unitaries-and-k1.html">Invertibles, unitaries and K₁</a>, Theorems 2.2 and 3.1 and Corollary 4.2. These supply the equivalence relations, relative classes, homotopy invariance, both stability maps and the product/direct-sum law. The boundary map is <a href="../KT-OPK/the-index-map-and-the-exact-sequence-at-k0.html">The index map and the exact sequence at K₀</a>, Theorem 2.2, and exactness is <a href="../KT-OPK/six-term-exact-sequence-and-exponential-map.html">The six-term exact sequence and the exponential map</a>, Theorem 2.1, for arbitrary C*-algebra extensions. Blackadar, Sections 5.1–5.5, 8.1, 8.3 and 9.3, credits their classical formulations. We prove the closed-range comparison, multiplier computation, quotient isomorphisms and Fredholm-triple classification here. Naturality is also visible directly by applying coefficient maps to the lifts.</p>
+<p>For complex coefficients we use Theorem 1.1 of <em>Fredholm operators and the stable index</em>: invertibility modulo Hilbert-space compacts is equivalent to closed range and finite-dimensional kernel and cokernel. That lesson denotes cokernel minus kernel by <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, so our index is <span class="math" data-tex="\(-\kappa\)">\(-\kappa\)</span>. The family example uses the finite-rank bundle correspondence proved earlier and the cutoff and finite-partition lemma proved in Section 5 of <em>Finite projective modules, frames and K₀</em>. Its realization argument is explicit; we do not prove the full Atiyah–Jänich classifying-space theorem.</p>
+<p>The geometric application has the exact planned provider <em>The Baum–Connes assembly map and the conjecture</em>, Section 2, in <em>Kasparov’s KK-theory</em>, with the coefficient analytic and comparison requirements stated in Example 6.3. Land, Proposition 3.5, remains the source credit. No completed elliptic or assembly proof is claimed before that assigned provider is written. The Fredholm-triple presentation describes even coefficient K-theory; the full definition and product of Kasparov groups belong to a separate course.</p>
+<h2 id="references">References</h2>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Sections 5.2, 5.5, 8.1, 8.3, 9.3 and 12.2; Section 17.5 for the Fredholm picture of Kasparov theory. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+<p>[Blackadar 2006] Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, II.7.2.9 for the closed-range theorem. <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition</a>.</p>
+<p>[Connes 1982] Alain Connes, “A survey of foliations and operator algebras,” <em>Operator Algebras and Applications</em>, Part I, Proceedings of Symposia in Pure Mathematics 38, American Mathematical Society, 1982, 521–628, the section on C*-modules and continuous fields over the leaf space. <a href="https://alainconnes.org/wp-content/uploads/foliationsfine.pdf">Author's text</a>.</p>
+<p>[Land] Markus Land, “The analytical assembly map and index theory,” <em>Journal of Noncommutative Geometry</em> 9 (2015), 603–619; Section 3, especially Proposition 3.5. <a href="https://arxiv.org/abs/1306.5657v2">Author's preprint, version 2</a>.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="kasparovs-stabilization-theorem.html">← Kasparov&#x27;s stabilization theorem</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="unbounded-regular-operators.html">Unbounded regular operators →</a></span></nav>
+<p class="small source-link"><a href="src/fredholm-operators-and-the-k0-index.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/hilbert-c-star-modules-and-morita-equivalence">Repository</a></nav>
+</footer>
+</body>
+</html>
